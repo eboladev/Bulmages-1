@@ -1155,11 +1155,12 @@ void SubForm3::on_mui_paganterior_clicked() {
 }
 
 
-void SubForm3::imprimirPDF(const QString &plantilla) {
+void SubForm3::imprimirPDF(const QString &titular) {
     _depura("SubForm3::imprimir", 0);
 
-    QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + plantilla.toAscii() + ".rml";
-    QString archivod = confpr->valor(CONF_DIR_USER) + plantilla.toAscii() + ".rml";
+    /// Los listados siempre usan la misma plantilla para imprimir listado.
+    QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "listado.rml";
+    QString archivod = confpr->valor(CONF_DIR_USER) + "listado.rml";
     QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
     /// Copiamos el archivo.
 #ifdef WINDOWS
@@ -1195,8 +1196,11 @@ void SubForm3::imprimirPDF(const QString &plantilla) {
     fitxersortidatxt += imprimir();
     fitxersortidatxt += "</blockTable>";
 
+    /// Reemplazamos en la impresion el parametro [story] por el resultado de la impresion
     buff.replace("[story]", fitxersortidatxt);
-    //buff.replace("[titulo]", plantilla);
+    /// La plantilla de listados admite unicamente el parametro titular que es lo que cambia
+    /// en todos los listados
+    buff.replace("[titulo]", titular);
 
     if (file.open(QIODevice::WriteOnly)) {
 
@@ -1206,7 +1210,7 @@ void SubForm3::imprimirPDF(const QString &plantilla) {
         file.close();
     } // end if
 
-    invocaPDF(plantilla.toAscii());
+    invocaPDF("listado");
     _depura("END SubForm3::imprimir", 0);
 }
 

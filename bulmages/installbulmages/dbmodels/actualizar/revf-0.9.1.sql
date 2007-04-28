@@ -297,6 +297,28 @@ BEGIN
 	IF NOT FOUND THEN
 		INSERT INTO configuracion (nombre, valor) VALUES (''IRPF'', ''0''); 		 
 	END IF;
+
+	SELECT INTO as * FROM pg_tables  WHERE tablename=''banco'';
+	IF NOT FOUND THEN
+		CREATE TABLE banco (
+			idbanco serial PRIMARY KEY,
+			nombanco character varying(50),
+			dirbanco character varying(150),
+			poblbanco character varying(50),
+			cpbanco character varying(20),
+			telbanco character varying(20),
+			faxbanco character varying(20),
+			emailbanco character varying(100),
+			contactobanco character varying,
+			codentidadbanco character varying(14),
+			codagenciabanco character varying(17),
+			numcuentabanco  character varying(17),
+			dcbanco character varying(2),
+			comentbanco character varying,
+			webbanco character varying(100)
+		);
+	END IF;
+
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;
@@ -323,10 +345,9 @@ DROP FUNCTION aux() CASCADE;
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 BEGIN
     ALTER TABLE cliente RENAME COLUMN bancocliente TO bancocliente_viejo;
-    ALTER TABLE cliente ADD COLUMN bancocliente_nuevo character(120);
-    UPDATE cliente SET bancocliente_nuevo = bancocliente_viejo;
+    ALTER TABLE cliente ADD COLUMN bancocliente character(120);
+    UPDATE cliente SET bancocliente = bancocliente_viejo;
     ALTER TABLE cliente DROP COLUMN bancocliente_viejo;
-    ALTER TABLE cliente RENAME COLUMN bancocliente_nuevo TO bancocliente;
     RETURN 0;
 END;
 '   LANGUAGE plpgsql;
@@ -345,9 +366,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.9.1-0007'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.9.1-0008'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.1-0007'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.1-0008'');
 	END IF;
 	RETURN 0;
 END;

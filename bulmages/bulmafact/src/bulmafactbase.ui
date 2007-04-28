@@ -25,7 +25,7 @@
      <x>0</x>
      <y>0</y>
      <width>738</width>
-     <height>26</height>
+     <height>28</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuCompras" >
@@ -43,17 +43,6 @@
     <addaction name="separator" />
     <addaction name="actionNuevo_Pago" />
     <addaction name="actionListado_de_Pagos" />
-   </widget>
-   <widget class="QMenu" name="menuArticulos" >
-    <property name="title" >
-     <string>Articulo&amp;s</string>
-    </property>
-    <addaction name="actionGestion_Familias" />
-    <addaction name="actionGestion_Tipos_Articulo" />
-    <addaction name="actionNuevo_Articulo" />
-    <addaction name="actionListado_de_Articulos" />
-    <addaction name="separator" />
-    <addaction name="actionInventarios" />
    </widget>
    <widget class="QMenu" name="menuVentas" >
     <property name="title" >
@@ -89,6 +78,24 @@
     <addaction name="separator" />
     <addaction name="actionAcerta_de" />
    </widget>
+   <widget class="QMenu" name="menuEmpresa" >
+    <property name="title" >
+     <string>E&amp;mpresa</string>
+    </property>
+    <addaction name="actionParametros" />
+    <addaction name="actionSalir" />
+   </widget>
+   <widget class="QMenu" name="menuArticulos" >
+    <property name="title" >
+     <string>Articulo&amp;s</string>
+    </property>
+    <addaction name="actionGestion_Familias" />
+    <addaction name="actionGestion_Tipos_Articulo" />
+    <addaction name="actionNuevo_Articulo" />
+    <addaction name="actionListado_de_Articulos" />
+    <addaction name="separator" />
+    <addaction name="actionInventarios" />
+   </widget>
    <widget class="QMenu" name="menuMaestro" >
     <property name="title" >
      <string>Maest&amp;ro</string>
@@ -105,19 +112,14 @@
     <addaction name="separator" />
     <addaction name="actionTrabajadores" />
     <addaction name="separator" />
+    <addaction name="actionBancos" />
+    <addaction name="separator" />
     <addaction name="actionFormas_de_Pago" />
     <addaction name="separator" />
     <addaction name="actionAlmacenes" />
     <addaction name="separator" />
     <addaction name="actionTipoIVA" />
     <addaction name="actionTasaIVA" />
-   </widget>
-   <widget class="QMenu" name="menuEmpresa" >
-    <property name="title" >
-     <string>E&amp;mpresa</string>
-    </property>
-    <addaction name="actionParametros" />
-    <addaction name="actionSalir" />
    </widget>
    <addaction name="menuEmpresa" />
    <addaction name="menuCompras" />
@@ -463,6 +465,9 @@
    </property>
   </action>
   <action name="actionTrabajadores" >
+   <property name="icon" >
+    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_trabajadores.48x48.png</iconset>
+   </property>
    <property name="text" >
     <string>&amp;Trabajadores</string>
    </property>
@@ -532,6 +537,9 @@
    </property>
   </action>
   <action name="actionAlmacenes" >
+   <property name="icon" >
+    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_almacen.48x48.png</iconset>
+   </property>
    <property name="text" >
     <string>&amp;Almacenes</string>
    </property>
@@ -578,6 +586,14 @@
    </property>
    <property name="text" >
     <string>Tasas de IVA</string>
+   </property>
+  </action>
+  <action name="actionBancos" >
+   <property name="icon" >
+    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_bancos.48x48.png</iconset>
+   </property>
+   <property name="text" >
+    <string>Bancos</string>
    </property>
   </action>
  </widget>

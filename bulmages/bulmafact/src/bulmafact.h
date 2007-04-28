@@ -90,6 +90,7 @@ public slots:
     virtual void on_actionProvincias_triggered();
     virtual void on_actionSeries_de_Factura_triggered();
     virtual void on_actionTrabajadores_triggered();
+    virtual void on_actionBancos_triggered();
     virtual void on_actionVentana_Completa_triggered();
     virtual void on_actionAcerta_de_triggered();
     virtual void on_actionAlmacenes_triggered();

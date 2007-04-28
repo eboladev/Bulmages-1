@@ -62,6 +62,7 @@
 #include "providerslist.h"
 #include "tiposarticuloview.h"
 #include "trabajadorview.h"
+#include "bancoview.h"
 #include "listtipoivaview.h"
 #include "listtasaivaview.h"
 
@@ -766,6 +767,17 @@ void company::s_trabajadores() {
     m_pWorkspace->addWindow(t);
     t->show();
     _depura("END company::s_trabajadores", 0);
+}
+
+/** Crea y Presenta la ventana de bancos
+*/
+/// \TODO: Deberia dividirse en dos y deberia pasar por sistema de plugins.
+void company::s_bancos() {
+    _depura("company::s_bancos", 0);
+    BancoView *t = new BancoView(this, NULL);
+    m_pWorkspace->addWindow(t);
+    t->show();
+    _depura("END company::s_bancos", 0);
 }
 
 /** Crea y Presenta la ventana de Series de Factura

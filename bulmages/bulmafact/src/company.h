@@ -125,6 +125,7 @@ public:
     void s_FPago();
     void s_Familias();
     void s_trabajadores();
+    void s_bancos();
     void s_seriesFactura();
     void s_listPedidosCli();
     void s_listFacturasCli();

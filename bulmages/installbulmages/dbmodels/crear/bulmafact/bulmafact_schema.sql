@@ -110,6 +110,34 @@ CREATE TABLE almacen (
     UNIQUE(codigoalmacen)
 );
 
+-- ** banco **
+-- codigoalmacen: Codigo numerico del almacen.
+-- nomalmacen: Nombre identificativo del almacen.
+-- diralmacen: Direccion del almacen.
+-- poblalmacen: Poblacion del almacen.
+-- cpalmacen: Codigo Postal del almacen.
+-- telalmacen: Telefono del almacen.
+-- faxalmacen: Fax del almacen.
+-- emailalmacen: Direccion de correo electronico del almacen.
+\echo -n ':: Banco ... '
+CREATE TABLE banco (
+    idbanco serial PRIMARY KEY,
+    nombanco character varying(50),
+    dirbanco character varying(150),
+    poblbanco character varying(50),
+    cpbanco character varying(20),
+    telbanco character varying(20),
+    faxbanco character varying(20),
+    emailbanco character varying(100),
+    contactobanco character varying,
+    codentidadbanco character varying(14),
+    codagenciabanco character varying(17),
+    numcuentabanco  character varying(17),
+    dcbanco character varying(2),
+    comentbanco character varying,
+    webbanco character varying(100)
+);
+
 
 -- ** trabajador **
 -- nomtrabajador: Nombre del trabajador.

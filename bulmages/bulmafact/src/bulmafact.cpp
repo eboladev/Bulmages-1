@@ -399,11 +399,20 @@ void bulmafact::on_actionSeries_de_Factura_triggered() {
     m_company->s_seriesFactura();
     _depura("END bulmafact::on_actionSeries_de_Factura_triggered", 0);
 }
+
+
 void bulmafact::on_actionTrabajadores_triggered() {
     _depura("bulmafact::on_actionTrabajadores_triggered", 0);
     m_company->s_trabajadores();
     _depura("END bulmafact::on_actionTrabajadores_triggered", 0);
 }
+
+void bulmafact::on_actionBancos_triggered() {
+    _depura("bulmafact::on_actionBancos_triggered", 0);
+    m_company->s_bancos();
+    _depura("END bulmafact::on_actionBancos_triggered", 0);
+}
+
 void bulmafact::on_actionVentana_Completa_triggered() {
     _depura("bulmafact::on_actionVentana_Completa_triggered", 0);
     s_ventanaCompleta();
