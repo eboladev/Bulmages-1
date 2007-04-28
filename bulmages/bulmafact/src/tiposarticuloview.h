@@ -47,12 +47,8 @@ public:
     ~TipoArticuloList();
     bool trataModificado();
     void mostrarplantilla();
-    void setModoConsulta() {
-        m_modoConsulta = TRUE;
-    }
-    void setModoEdicion() {
-        m_modoConsulta = FALSE;
-    }
+    void setModoConsulta();
+    void setModoEdicion();
     QString codtipo_articulo();
     QString idtipo_articulo();
     QString desctipo_articulo();
@@ -66,9 +62,7 @@ public slots:
     virtual void on_mui_crear_clicked();
     virtual void on_mui_borrar_clicked();
     virtual void on_m_listTipos_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous);
-    virtual void on_mui_aceptar_clicked() {
-        close();
-    }
+    virtual void on_mui_aceptar_clicked();
 
 signals:
     void selected(QString);

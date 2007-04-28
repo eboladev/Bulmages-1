@@ -56,49 +56,19 @@ public:
     void pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq);
     void inicializar();
     void manageArticle(int);
-    void pintaNumPresupuesto(QString id) {
-        m_numpresupuesto->setText(id);
-    }
-    void pintaFPresupuesto(QString id) {
-        m_fpresupuesto->setText(id);
-    }
-    void pintaVencPresupuesto(QString id) {
-        m_vencpresupuesto->setText(id);
-    }
-    void pintaContractPresupuesto(QString id) {
-        m_contactpresupuesto->setText(id);
-    }
-    void pintaTelPresupuesto(QString id) {
-        m_telpresupuesto->setText(id);
-    }
-    void pintaComentPresupuesto(QString id) {
-        m_comentpresupuesto->setPlainText(id);
-    }
-    void pintaidcliente(QString id) {
-        m_cliente->setidcliente(id);
-    }
-    void pintarefPresupuesto(QString id) {
-        m_refpresupuesto->setText(id);
-    }
-    void pintaidforma_pago(QString id) {
-        m_forma_pago->setidforma_pago(id);
-    }
-    void pintaidalmacen(QString id) {
-        m_almacen->setidalmacen(id);
-    }
-    void pintaidtrabajador(QString id) {
-        m_trabajador->setidtrabajador(id);
-    }
-    void pintaprocesadoPresupuesto(QString id) {
-        if (id == "t" || id == "TRUE") {
-            m_procesadopresupuesto->setChecked(TRUE);
-        } else {
-            m_procesadopresupuesto->setChecked(FALSE);
-        }
-    }
-    void pintadescPresupuesto(QString id) {
-        m_descpresupuesto->setText(id);
-    }
+    void pintaNumPresupuesto(QString id);
+    void pintaFPresupuesto(QString id);
+    void pintaVencPresupuesto(QString id);
+    void pintaContractPresupuesto(QString id);
+    void pintaTelPresupuesto(QString id);
+    void pintaComentPresupuesto(QString id);
+    void pintaidcliente(QString id);
+    void pintarefPresupuesto(QString id);
+    void pintaidforma_pago(QString id);
+    void pintaidalmacen(QString id);
+    void pintaidtrabajador(QString id);
+    void pintaprocesadoPresupuesto(QString id);
+    void pintadescPresupuesto(QString id);
 
 private:
     void generarPedidoCliente();
@@ -109,23 +79,13 @@ public:
     virtual int cargar(QString id);
 
 public slots:
-    virtual void on_mui_guardar_clicked() {
-        guardar();
-    }
+    virtual void on_mui_guardar_clicked();
     virtual void on_mui_imprimir_clicked();
     /// Este slot se activa cuando hay cambios en los subformularios.
-    virtual void s_pintaTotales() {
-        calculaypintatotales();
-    }
-    virtual void on_mui_pasarapedido_clicked() {
-        generarPedidoCliente();
-    }
-    virtual void on_m_descuentos_editFinish(int, int) {
-        calculaypintatotales();
-    }
-    virtual void on_subform2_editFinish(int, int) {
-        calculaypintatotales();
-    }
+    virtual void s_pintaTotales();
+    virtual void on_mui_pasarapedido_clicked();
+    virtual void on_m_descuentos_editFinish(int, int);
+    virtual void on_subform2_editFinish(int, int);
     virtual void on_m_cliente_valueChanged(QString id);
 };
 

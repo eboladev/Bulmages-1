@@ -47,6 +47,10 @@ TrabajadorView::TrabajadorView(company *emp, QWidget *parent)
 }
 
 
+void imprimir() {
+    _depura("TrabajadorView::imprimir", 0);
+}
+
 /// Carga el query de la base de datos y carga el qlistview.
 void TrabajadorView::pintar() {
     mui_lista->clear();

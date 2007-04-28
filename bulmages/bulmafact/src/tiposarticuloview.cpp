@@ -42,16 +42,16 @@ TipoArticuloList::TipoArticuloList(company *comp, QWidget *parent, bool modoCons
     m_listTipos->setHeaderLabels(headers);
     m_idtipo = "";
     if (modoConsulta) {
-	   setModoConsulta();
-	   groupBox1->hide();
-	   mui_detalles->hide();
-	   mui_crear->hide();
-	   mui_guardar->hide();
-	   mui_borrar->hide();
-	   mui_cancelar->hide();
-	   mui_aceptar->hide();
+       setModoConsulta();
+       groupBox1->hide();
+       mui_detalles->hide();
+       mui_crear->hide();
+       mui_guardar->hide();
+       mui_borrar->hide();
+       mui_cancelar->hide();
+       mui_aceptar->hide();
     } else {
-    	setModoEdicion();
+        setModoEdicion();
        setAttribute(Qt::WA_DeleteOnClose);
        companyact->meteWindow(windowTitle(), this);
     } // end if
@@ -63,6 +63,21 @@ TipoArticuloList::TipoArticuloList(company *comp, QWidget *parent, bool modoCons
 TipoArticuloList::~TipoArticuloList() {
     _depura("TipoArticuloList::~TipoArticuloList", 0);
     _depura("END TipoArticuloList::~TipoArticuloList", 0);
+}
+
+
+void TipoArticuloList::setModoConsulta() {
+    m_modoConsulta = TRUE;
+}
+
+
+void TipoArticuloList::setModoEdicion() {
+    m_modoConsulta = FALSE;
+}
+
+
+void on_mui_aceptar_clicked() {
+    close();
 }
 
 
@@ -101,9 +116,9 @@ QString TipoArticuloList::codtipo_articulo() {
     _depura("TipoArticuloList::codtipo_articulo", 0);
     QTreeWidgetItem *it = m_listTipos->currentItem();
     if (it) {
-    	return it->text(COL_CODTIPOARTICULO);
+        return it->text(COL_CODTIPOARTICULO);
     } else {
-	   return "";
+       return "";
     } // end if
     _depura("END TipoArticuloList::codtipo_articulo", 0);
 }
@@ -112,9 +127,9 @@ QString TipoArticuloList::idtipo_articulo() {
     _depura("TipoArticuloList::idtipo_articulo", 0);
     QTreeWidgetItem *it = m_listTipos->currentItem();
     if (it) {
-    	return it->text(COL_IDTIPOARTICULO);
+        return it->text(COL_IDTIPOARTICULO);
     } else {
-	   return "";
+       return "";
     } // end if
     _depura("TipoArticuloList::idtipo_articulo", 0);
 }
@@ -123,9 +138,9 @@ QString TipoArticuloList::desctipo_articulo() {
     _depura("TipoArticuloList::desctipo_articulo", 0);
     QTreeWidgetItem *it = m_listTipos->currentItem();
     if (it) {
-	   return it->text(COL_DESCTIPOARTICULO);
+       return it->text(COL_DESCTIPOARTICULO);
     } else {
-	   return "";
+       return "";
     } // end if
     _depura("END TipoArticuloList::desctipo_articulo", 0);
 }

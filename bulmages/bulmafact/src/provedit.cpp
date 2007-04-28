@@ -51,10 +51,10 @@ ProveedorView::ProveedorView(company *comp, QWidget *parent)
         addDBCampo("urlproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("URL"));
         addDBCampo("comentproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Comentarios"));
         addDBCampo("codproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Codigo"));
-	addDBCampo("regimenfiscalproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Proveedor", "Regimen Fiscal"));
-	addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Proveedor", "Forma_Pago"));
-	addDBCampo("recargoeqproveedor", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("Proveedor", "Recargo de Equivalencia"));
-	addDBCampo("irpfproveedor", DBCampo::DBnumeric, DBCampo::DBNothing, QApplication::translate("Proveedor", "IRPF"));
+    addDBCampo("regimenfiscalproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Proveedor", "Regimen Fiscal"));
+    addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Proveedor", "Forma_Pago"));
+    addDBCampo("recargoeqproveedor", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("Proveedor", "Recargo de Equivalencia"));
+    addDBCampo("irpfproveedor", DBCampo::DBnumeric, DBCampo::DBNothing, QApplication::translate("Proveedor", "IRPF"));
 
 
         setupUi(this);
@@ -81,7 +81,7 @@ ProveedorView::ProveedorView(company *comp, QWidget *parent)
         m_listpagosprov->setcompany(m_companyact);
         m_listpagosprov->hideBusqueda();
 
-	mui_forma_pago->setcompany(m_companyact);
+    mui_forma_pago->setcompany(m_companyact);
         mui_forma_pago->setidforma_pago("0");
 
 
@@ -100,6 +100,10 @@ ProveedorView::~ProveedorView() {
     _depura("END ProveedorView::~ProveedorView", 0);
 }
 
+
+void on_mui_guardar_clicked() {
+    guardar();
+}
 
 
 /// Esta funcion carga un proveedor de la base de datos y lo presenta.
@@ -130,15 +134,15 @@ int ProveedorView::cargar(QString idprov) {
         m_provproveedor->setProvincia(DBvalue("provproveedor"));
         mui_codproveedor->setText(DBvalue("codproveedor"));
         mui_forma_pago->setidforma_pago(DBvalue("idforma_pago"));
-	mui_regimenfiscalproveedor->setRegimenFiscal(DBvalue("regimenfiscalproveedor"));
-	mui_irpfproveedor->setText(DBvalue("irpfproveedor"));
+    mui_regimenfiscalproveedor->setRegimenFiscal(DBvalue("regimenfiscalproveedor"));
+    mui_irpfproveedor->setText(DBvalue("irpfproveedor"));
 
-	/// Pintamos el recargo de equivalencia
-	if (DBvalue("recargoeqproveedor") == "t") {
-		mui_recargoeqproveedor->setChecked(TRUE);
-	} else {
-		mui_recargoeqproveedor->setChecked(FALSE);
-	} // end if
+    /// Pintamos el recargo de equivalencia
+    if (DBvalue("recargoeqproveedor") == "t") {
+        mui_recargoeqproveedor->setChecked(TRUE);
+    } else {
+        mui_recargoeqproveedor->setChecked(FALSE);
+    } // end if
 
         dialogChanges_cargaInicial();
 

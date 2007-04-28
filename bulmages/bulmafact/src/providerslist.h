@@ -38,16 +38,8 @@ public:
     ~ProveedorListSubform() {}
 
 public slots:
-    virtual void cargar() {
-        _depura("ProveedorListSubform::cargar\n", 0);
-        QString SQLQuery = "SELECT * FROM proveedor";
-        cursor2 * cur= companyact()->cargacursor(SQLQuery);
-        SubForm3::cargar(cur);
-        delete cur;
-    }
-    virtual void cargar(QString a) {
-        SubForm3::cargar(a);
-    }
+    virtual void cargar();
+    virtual void cargar(QString a);
 };
 
 
@@ -77,61 +69,29 @@ public:
     ProveedorList(company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode);
     ~ProveedorList();
     void presenta();
-    void modoseleccion() {
-        m_modo = SelectMode;
-    }
-    void modoedicion() {
-        m_modo = EditMode;
-    }
-    QString idprovider() {
-        return m_idprovider;
-    }
-    QString cifprovider() {
-        return m_cifprovider;
-    }
-    QString nomprovider() {
-        return m_nomprovider;
-    }
-    void hideBotonera() {
-        m_botonera->hide();
-    }
-    void showBotonera() {
-        m_botonera->show();
-    }
-    void hideBusqueda() {
-        m_busqueda->hide();
-    }
-    void showBusqueda() {
-        m_busqueda->show();
-    }
+    void modoseleccion();
+    void modoedicion();
+    QString idprovider();
+    QString cifprovider();
+    QString nomprovider();
+    void hideBotonera();
+    void showBotonera();
+    void hideBusqueda();
+    void showBusqueda();
 
 public slots:
-    virtual void on_mui_filtro_textChanged(const QString &text) {
-        if (text.size() >= 3) {
-            on_mui_actualizar_clicked();
-        } // end if
-    }
+    virtual void on_mui_filtro_textChanged(const QString &text);
     virtual void editar(int);
     virtual void on_mui_crear_clicked();
     virtual void s_findProvider();
     virtual void on_mui_editar_clicked();
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_imprimir_clicked();
-    virtual void on_mui_actualizar_clicked() {
-        presenta();
-    }
+    virtual void on_mui_actualizar_clicked();
     virtual void on_mui_exportar_clicked();
     virtual void on_mui_importar_clicked();
-    void on_mui_list_itemDoubleClicked( QTableWidgetItem *) {
-        on_mui_editar_clicked();
-    }
-    virtual void on_mui_configurar_toggled(bool checked) {
-        if (checked) {
-            mui_list->showConfig();
-        } else {
-            mui_list->hideConfig();
-        } // end if
-    }
+    void on_mui_list_itemDoubleClicked(QTableWidgetItem *);
+    virtual void on_mui_configurar_toggled(bool checked);
 
 signals:
     void selected(QString);

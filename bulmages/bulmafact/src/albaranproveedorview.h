@@ -37,6 +37,7 @@
 
 class company;
 
+
 /** Se encarga de la ventana de albar&aacute;n de proveedor.
     Deriva de Ficha para temas de visualizacion y de AlbaranProveedor para cuestiones
     de manejo de la base de datos.
@@ -89,7 +90,7 @@ public:
 
 public slots:
     virtual void on_mui_facturar_clicked() {
-	generarFacturaProveedor();
+    generarFacturaProveedor();
     };
     virtual void s_comentalbaranptextChanged() {
         setcomentalbaranp(m_comentalbaranp->toPlainText());

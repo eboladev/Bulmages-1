@@ -40,19 +40,11 @@ class AlbaranesProveedorListSubform : public SubForm2Bf {
 
 public:
     AlbaranesProveedorListSubform(QWidget *parent = 0);
-    ~AlbaranesProveedorListSubform() {};
+    ~AlbaranesProveedorListSubform();
 
 public slots:
-    virtual void cargar() {
-        _depura("AlbaranesProveedorListSubform::cargar\n", 0);
-        QString SQLQuery = "SELECT * FROM albaranp";
-        cursor2 *cur = companyact()->cargacursor(SQLQuery);
-        SubForm3::cargar(cur);
-        delete cur;
-    };
-    virtual void cargar(QString query) {
-        SubForm3::cargar(query);
-    };
+    virtual void cargar();
+    virtual void cargar(QString query);
 };
 
 
@@ -63,15 +55,14 @@ public slots:
 /// \TODO: Deberia derivar de Ficha o Listado en lugar de QWidget.
 class AlbaranesProveedor : public Ficha, public Ui_AlbaranesProveedorListBase {
     Q_OBJECT
+
 private:
     /// El puntero m_companyact que se propaga por practicamente todas las clases de la aplicacion.
     company *m_companyact;
-
     /// Indicador de modo edicion o modo seleccion
     /// == 0 es modo edicion.
     /// == 1 es modo selector.
     int m_modo;
-    
     /// En el caso de estar en modo seleccion esta variable de clase indicara el identificador seleccionado.
     QString mdb_idalbaranp;
 
@@ -80,75 +71,30 @@ public:
     AlbaranesProveedor(company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0);
     ~AlbaranesProveedor();
     void presenta();
-    void modoseleccion() {
-        m_modo = 1;
-    };
-    void modoedicion() {
-        m_modo = 0;
-    };
-    void setcompany(company *comp) {
-        m_companyact = comp;
-        m_proveedor->setcompany(comp);
-        m_articulo->setcompany(comp);
-        mui_list->setcompany(comp);
-    };
-    QString idalbaranp() {
-        return mdb_idalbaranp;
-    };
-    void hideBotonera() {
-        m_botonera->hide();
-    };
-    void showBotonera() {
-        m_botonera->show();
-    };
-    void hideBusqueda() {
-        m_busqueda->hide();
-    };
-    void showBusqueda() {
-        m_busqueda->show();
-    };
+    void modoseleccion();
+    void modoedicion();
+    void setcompany(company *comp);
+    QString idalbaranp();
+    void hideBotonera();
+    void showBotonera();
+    void hideBusqueda();
+    void showBusqueda();
     void imprimir();
-    void meteWindow(QString nom, QObject *obj) {
-        if (m_companyact != NULL) {
-            m_companyact->meteWindow(nom, obj);
-        } // end if
-    };
-    void setidproveedor(QString val) {
-        m_proveedor->setidproveedor(val);
-    };
-    void setidarticulo(QString val) {
-        m_articulo->setidarticulo(val);
-    };
+    void meteWindow(QString nom, QObject *obj);
+    void setidproveedor(QString val);
+    void setidarticulo(QString val);
     QString generaFiltro();
     void editar(int);
     virtual void on_mui_borrar_clicked();
 
 public slots:
-    virtual void on_m_filtro_textChanged(const QString &text) {
-        if (text.size() >= 3)
-            on_mui_actualizar_clicked();
-    };
-    void on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
-        on_mui_editar_clicked();
-    };
+    virtual void on_m_filtro_textChanged(const QString &text);
+    void on_mui_list_itemDoubleClicked(QTableWidgetItem *);
     virtual void on_mui_editar_clicked();
-    virtual void on_mui_crear_clicked()  {
-        if (m_companyact != NULL)
-            m_companyact->s_newAlbaranPro();
-    };
-    virtual void on_mui_imprimir_clicked() {
-        imprimir();
-    };
-    virtual void on_mui_actualizar_clicked() {
-        presenta();
-    };
-    virtual void on_mui_configurar_toggled(bool checked) {
-        if (checked) {
-            mui_list->showConfig();
-        } else {
-            mui_list->hideConfig();
-        } // end if
-    };
+    virtual void on_mui_crear_clicked();
+    virtual void on_mui_imprimir_clicked();
+    virtual void on_mui_actualizar_clicked();
+    virtual void on_mui_configurar_toggled(bool checked);
 
 signals:
     void selected(QString);

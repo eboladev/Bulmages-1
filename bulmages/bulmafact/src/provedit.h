@@ -46,9 +46,7 @@ public:
     virtual int guardar();
 
 public slots:
-    virtual void on_mui_guardar_clicked() {
-        guardar();
-    }
+    virtual void on_mui_guardar_clicked();
     virtual void on_mui_crear_clicked();
     virtual void on_mui_borrar_clicked();
 };

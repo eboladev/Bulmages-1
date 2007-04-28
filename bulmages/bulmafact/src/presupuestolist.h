@@ -65,80 +65,32 @@ public:
     PresupuestoList(company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0);
     ~PresupuestoList();
     void presenta();
-    int modo() {
-        return m_modo;
-    }
-    company *getcompany() {
-        return m_companyact;
-    }
-    QString idpresupuesto() {
-        return m_idpresupuesto;
-    }
-    void modoseleccion() {
-        m_modo = 1;
-    }
-    void modoedicion() {
-        m_modo = 0;
-    }
-    void setcompany (company *comp) {
-        m_companyact = comp;
-        m_cliente->setcompany(comp);
-        m_articulo->setcompany(comp);
-        mui_list->setcompany(comp);
-    }
-    void hideBotonera() {
-        m_botonera->hide();
-    }
-    void showBotonera() {
-        m_botonera->show();
-    }
-    void hideBusqueda() {
-        m_busqueda->hide();
-    }
-    void showBusqueda() {
-        m_busqueda->show();
-    }
+    int modo();
+    company *getcompany();
+    QString idpresupuesto();
+    void modoseleccion();
+    void modoedicion();
+    void setcompany (company *comp);
+    void hideBotonera();
+    void showBotonera();
+    void hideBusqueda();
+    void showBusqueda();
     void imprimir();
-    void meteWindow(QString nom, QObject *obj) {
-        if (m_companyact != NULL) {
-            m_companyact->meteWindow(nom, obj);
-        } // end if
-    }
-    void setidcliente(QString val) {
-        m_cliente->setidcliente(val);
-    }
-    void setidarticulo(QString val) {
-        m_articulo->setidarticulo(val);
-    }
+    void meteWindow(QString nom, QObject *obj);
+    void setidcliente(QString val);
+    void setidarticulo(QString val);
     QString generaFiltro();
     void editar(int);
     virtual void on_mui_borrar_clicked();
 
 public slots:
-    virtual void on_m_filtro_textChanged(const QString &text) {
-        if (text.size() >= 3)
-            on_mui_actualizar_clicked();
-    }
-    virtual void on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
-        on_mui_editar_clicked();
-    }
+    virtual void on_m_filtro_textChanged(const QString &text);
+    virtual void on_mui_list_itemDoubleClicked(QTableWidgetItem *);
     virtual void on_mui_editar_clicked();
-    virtual void on_mui_crear_clicked() {
-        m_companyact->s_newPresupuestoCli();
-    }
-    virtual void on_mui_imprimir_clicked() {
-        imprimir();
-    }
-    virtual void on_mui_actualizar_clicked() {
-        presenta();
-    }
-    virtual void on_mui_configurar_toggled(bool checked) {
-        if (checked) {
-            mui_list->showConfig();
-        } else {
-            mui_list->hideConfig();
-        } // end if
-    }
+    virtual void on_mui_crear_clicked();
+    virtual void on_mui_imprimir_clicked();
+    virtual void on_mui_actualizar_clicked();
+    virtual void on_mui_configurar_toggled(bool checked);
 
 signals:
     void selected(QString);

@@ -46,9 +46,7 @@ private:
     /// Se encarga de hacer la carga del query inicial y de mostrar la lista bien
     /// y presentar el elemento que se especifique.
     void pintar();
-    virtual void imprimir() {
-        _depura("TrabajadorView::imprimir", 0);
-    };
+    virtual void imprimir();
 
 public:
     TrabajadorView(company * emp, QWidget *parent = 0);

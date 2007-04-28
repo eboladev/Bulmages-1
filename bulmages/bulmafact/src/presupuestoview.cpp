@@ -105,6 +105,100 @@ PresupuestoView::~PresupuestoView() {
 }
 
 
+void PresupuestoView::pintaNumPresupuesto(QString id) {
+    m_numpresupuesto->setText(id);
+}
+
+
+void PresupuestoView::pintaFPresupuesto(QString id) {
+    m_fpresupuesto->setText(id);
+}
+
+
+void PresupuestoView::pintaVencPresupuesto(QString id) {
+    m_vencpresupuesto->setText(id);
+}
+
+
+void PresupuestoView::pintaContractPresupuesto(QString id) {
+    m_contactpresupuesto->setText(id);
+}
+
+
+void PresupuestoView::pintaTelPresupuesto(QString id) {
+    m_telpresupuesto->setText(id);
+}
+
+
+void PresupuestoView::pintaComentPresupuesto(QString id) {
+    m_comentpresupuesto->setPlainText(id);
+}
+
+
+void PresupuestoView::pintaidcliente(QString id) {
+    m_cliente->setidcliente(id);
+}
+
+
+void PresupuestoView::pintarefPresupuesto(QString id) {
+    m_refpresupuesto->setText(id);
+}
+
+
+void PresupuestoView::pintaidforma_pago(QString id) {
+    m_forma_pago->setidforma_pago(id);
+}
+
+
+void PresupuestoView::pintaidalmacen(QString id) {
+    m_almacen->setidalmacen(id);
+}
+
+
+void PresupuestoView::pintaidtrabajador(QString id) {
+    m_trabajador->setidtrabajador(id);
+}
+
+
+void PresupuestoView::pintaprocesadoPresupuesto(QString id) {
+    if (id == "t" || id == "TRUE") {
+        m_procesadopresupuesto->setChecked(TRUE);
+    } else {
+        m_procesadopresupuesto->setChecked(FALSE);
+    } // end if
+}
+
+
+void PresupuestoView::on_mui_guardar_clicked() {
+    guardar();
+}
+
+
+void PresupuestoView::s_pintaTotales() {
+    calculaypintatotales();
+}
+
+
+void PresupuestoView::on_mui_pasarapedido_clicked() {
+    generarPedidoCliente();
+}
+
+
+void PresupuestoView::on_m_descuentos_editFinish(int, int) {
+    calculaypintatotales();
+}
+
+
+void PresupuestoView::on_subform2_editFinish(int, int) {
+    calculaypintatotales();
+}
+
+
+void PresupuestoView::pintadescPresupuesto(QString id) {
+    m_descpresupuesto->setText(id);
+}
+
+
 void PresupuestoView::on_mui_imprimir_clicked() {
     _depura("PresupuestoView::on_mui_imprimir_clicked", 0);
     imprimir();

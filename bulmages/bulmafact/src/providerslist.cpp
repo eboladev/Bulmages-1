@@ -64,6 +64,77 @@ ProveedorList::~ProveedorList() {
 }
 
 
+void ProveedorList::modoseleccion() {
+    m_modo = SelectMode;
+}
+
+
+void ProveedorList::modoedicion() {
+    m_modo = EditMode;
+}
+
+
+QString ProveedorList::idprovider() {
+    return m_idprovider;
+}
+
+
+QString ProveedorList::cifprovider() {
+    return m_cifprovider;
+}
+
+
+QString ProveedorList::nomprovider() {
+    return m_nomprovider;
+}
+
+
+void ProveedorList::hideBotonera() {
+    m_botonera->hide();
+}
+
+
+void ProveedorList::showBotonera() {
+    m_botonera->show();
+}
+
+
+void ProveedorList::hideBusqueda() {
+    m_busqueda->hide();
+}
+
+
+void ProveedorList::showBusqueda() {
+    m_busqueda->show();
+}
+
+
+void on_mui_filtro_textChanged(const QString &text) {
+    if (text.size() >= 3) {
+        on_mui_actualizar_clicked();
+    } // end if
+}
+
+
+void on_mui_actualizar_clicked() {
+    presenta();
+}
+
+
+void on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
+    on_mui_editar_clicked();
+}
+
+
+void on_mui_configurar_toggled(bool checked) {
+    if (checked) {
+        mui_list->showConfig();
+    } else {
+        mui_list->hideConfig();
+    } // end if
+}
+
+
 void ProveedorList::presenta() {
     _depura("ProveedorList::presenta", 0);
     mui_list->cargar("SELECT * FROM proveedor WHERE nomproveedor LIKE '%" + mui_filtro->text() + "%'");
@@ -175,6 +246,21 @@ void ProveedorList::on_mui_importar_clicked() {
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
+
+void ProveedorListSubform::cargar() {
+    _depura("ProveedorListSubform::cargar\n", 0);
+    QString SQLQuery = "SELECT * FROM proveedor";
+    cursor2 * cur= companyact()->cargacursor(SQLQuery);
+    SubForm3::cargar(cur);
+    delete cur;
+}
+
+
+void ProveedorListSubform::cargar(QString a) {
+    SubForm3::cargar(a);
+}
+
+
 ProveedorListSubform::ProveedorListSubform(QWidget *parent) : SubForm2Bf(parent) {
     setDBTableName("proveedor");
     setDBCampoId("idproveedor");

@@ -77,6 +77,111 @@ PresupuestoList::~PresupuestoList() {
 }
 
 
+int PresupuestoList::modo() {
+    return m_modo;
+}
+
+
+company *PresupuestoList::getcompany() {
+    return m_companyact;
+}
+
+
+QString PresupuestoList::idpresupuesto() {
+    return m_idpresupuesto;
+}
+
+
+void PresupuestoList::modoseleccion() {
+    m_modo = 1;
+}
+
+
+void PresupuestoList::modoedicion() {
+    m_modo = 0;
+}
+
+
+void PresupuestoList::setcompany(company *comp) {
+    m_companyact = comp;
+    m_cliente->setcompany(comp);
+    m_articulo->setcompany(comp);
+    mui_list->setcompany(comp);
+}
+
+
+void PresupuestoList::hideBotonera() {
+    m_botonera->hide();
+}
+
+
+void PresupuestoList::showBotonera() {
+    m_botonera->show();
+}
+
+
+void PresupuestoList::hideBusqueda() {
+    m_busqueda->hide();
+}
+
+
+void PresupuestoList::showBusqueda() {
+    m_busqueda->show();
+}
+
+
+void PresupuestoList::meteWindow(QString nom, QObject *obj) {
+    if (m_companyact != NULL) {
+        m_companyact->meteWindow(nom, obj);
+    } // end if
+}
+
+
+void PresupuestoList::setidcliente(QString val) {
+    m_cliente->setidcliente(val);
+}
+
+
+void PresupuestoList::setidarticulo(QString val) {
+    m_articulo->setidarticulo(val);
+}
+
+
+void on_m_filtro_textChanged(const QString &text) {
+    if (text.size() >= 3)
+        on_mui_actualizar_clicked();
+}
+
+
+void on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
+    on_mui_editar_clicked();
+}
+
+
+void on_mui_crear_clicked() {
+    m_companyact->s_newPresupuestoCli();
+}
+
+
+void on_mui_imprimir_clicked() {
+    imprimir();
+}
+
+
+void on_mui_actualizar_clicked() {
+    presenta();
+}
+
+
+void on_mui_configurar_toggled(bool checked) {
+    if (checked) {
+        mui_list->showConfig();
+    } else {
+        mui_list->hideConfig();
+    } // end if
+}
+
+
 void PresupuestoList::presenta() {
     _depura("PresupuestoList::presenta", 0);
 
@@ -243,5 +348,5 @@ void PresupuestoListSubForm::cargar() {
 void PresupuestoListSubForm::cargar(QString query) {
         _depura("PresupuestoListSubForm::cargar", 0, query);
         SubForm3::cargar(query);
-	_depura("PresupuestoListSubForm::cargar", 0);
+    _depura("PresupuestoListSubForm::cargar", 0);
 }

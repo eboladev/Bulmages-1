@@ -28,7 +28,7 @@
 */
 AlbaranProveedor::AlbaranProveedor(company *comp, QWidget *parent)
         : FichaBf(comp, parent) {
-    _depura("AlbaranProveedor::AlbaranProveedor", 0);	
+    _depura("AlbaranProveedor::AlbaranProveedor", 0);
     setDBTableName("albaranp");
     setDBCampoId("idalbaranp");
     addDBCampo("idalbaranp", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("AlbaranProveedor", "Id albaran proveedor"));
@@ -40,7 +40,7 @@ AlbaranProveedor::AlbaranProveedor(company *comp, QWidget *parent)
     addDBCampo("idalmacen", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("AlbaranProveedor", "Id almacen"));
     addDBCampo("refalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("AlbaranProveedor", "Referencia albaran proveedor"));
     addDBCampo("descalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("AlbaranProveedor", "Descripcion albaran proveedor"));
-    _depura("END AlbaranProveedor::AlbaranProveedor", 0);	
+    _depura("END AlbaranProveedor::AlbaranProveedor", 0);
 }
 
 
@@ -49,6 +49,103 @@ AlbaranProveedor::AlbaranProveedor(company *comp, QWidget *parent)
 AlbaranProveedor::~AlbaranProveedor() {
     _depura("AlbaranProveedor::~AlbaranProveedor", 0);
     _depura("END AlbaranProveedor::~AlbaranProveedor", 0);
+}
+
+
+void AlbaranProveedor::pintaidalbaranp(QString) {
+    _depura("AlbaranProveedor::pintaidalbaranp", 0);
+}
+
+
+void AlbaranProveedor::pintanumalbaranp(QString) {
+    _depura("AlbaranProveedor::pintanumalbaranp", 0);
+}
+
+
+void AlbaranProveedor::pintafechaalbaranp(QString) {
+    _depura("AlbaranProveedor::pintafechaalbaranp", 0);
+}
+
+
+void AlbaranProveedor::pintacomentalbaranp(QString) {
+    _depura("AlbaranProveedor::pintacomentalbaranp", 0);
+}
+
+
+void AlbaranProveedor::pintaidproveedor(QString) {
+    _depura("AlbaranProveedor::pintaidproveedor", 0);
+}
+
+
+void AlbaranProveedor::pintaidforma_pago(QString) {
+    _depura("AlbaranProveedor::pintaidforma_pago", 0);
+}
+
+
+void AlbaranProveedor::pintaidalmacen(QString) {
+    _depura("AlbaranProveedor::pintaidalmacen", 0);
+}
+
+
+void AlbaranProveedor::pintadescalbaranp(QString) {
+    _depura("AlbaranProveedor::pintadescalbaranp", 0);
+}
+
+
+void AlbaranProveedor::pintarefalbaranp(QString) {
+    _depura("AlbaranProveedor::pintarefalbaranp", 0);
+}
+
+
+void AlbaranProveedor::setidalbaranp(QString val) {
+    setDBvalue("idalbaranp", val);
+    m_listalineas->setColumnValue("idalbaranp", val);
+    m_listadescuentos->setColumnValue("idalbaranp", val);
+}
+
+
+void AlbaranProveedor::setnumalbaranp(QString val) {
+    setDBvalue("numalbaranp", val);
+}
+
+
+void AlbaranProveedor::setfechaalbaranp(QString val) {
+    setDBvalue("fechaalbaranp", val);
+}
+
+
+void AlbaranProveedor::setloginusuario(QString val) {
+    setDBvalue("loginusuario", val);
+}
+
+
+void AlbaranProveedor::setcomentalbaranp(QString val) {
+    setDBvalue("comentalbaranp", val);
+}
+
+
+void AlbaranProveedor::setidproveedor(QString val) {
+    setDBvalue("idproveedor", val);
+}
+
+
+void AlbaranProveedor::setidforma_pago(QString val) {
+    setDBvalue("idforma_pago", val);
+}
+
+
+void AlbaranProveedor::setidalmacen(QString val) {
+    setDBvalue("idalmacen", val);
+}
+
+
+void AlbaranProveedor::setrefalbaranp(QString val) {
+    setDBvalue("refalbaranp", val);
+}
+
+
+void AlbaranProveedor::setdescalbaranp(QString val) {
+    setDBvalue("descalbaranp", val);
 }
 
 
@@ -134,7 +231,7 @@ int AlbaranProveedor::cargar(QString idbudget) {
     Para ello hace el guardado de DBRecord y luego guarda las lineas y los descuentos.
     Una vez hecho el guardado se hace una carga para recuperar posibles datos que haya
     introducido la base de datos como la referencia.
-    
+
     Si algo falla devuelve una excepcion -1.
 */
 int AlbaranProveedor::guardar() {
@@ -148,8 +245,8 @@ int AlbaranProveedor::guardar() {
         m_listadescuentos->guardar();
         m_companyact->commit();
 
-	/// Hacemos una carga para recuperar la referencia
-	cargar(id);
+    /// Hacemos una carga para recuperar la referencia
+    cargar(id);
 
         _depura("END AlbaranProveedor::guardar", 0);
         return 0;
