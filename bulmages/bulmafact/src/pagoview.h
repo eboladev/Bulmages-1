@@ -46,67 +46,26 @@ public:
     PagoView(company *, QWidget *);
     ~PagoView();
     void manageArticle(int);
-    void pintafechapago(QString id) {
-        mui_fechapago->setText(id);
-    }
-    void pintacomentpago(QString id) {
-        mui_comentpago->setText(id);
-    }
-    void pintaidproveedor(QString id) {
-        mui_proveedor->setidproveedor(id);
-    }
-    void pintarefpago(QString id) {
-        mui_refpago->setText(id);
-    }
-    void pintacantpago(QString id) {
-        mui_cantpago->setText(id);
-    }
-    void pintaprevisionpago(QString id) {
-        if (id == "t" || id == "TRUE") {
-            mui_previsionpago->setChecked(TRUE);
-        } else {
-            mui_previsionpago->setChecked(FALSE);
-        } // end if
-    }
+    void pintafechapago(QString id);
+    void pintacomentpago(QString id);
+    void pintaidproveedor(QString id);
+    void pintarefpago(QString id);
+    void pintacantpago(QString id);
+    void pintaidbanco(QString id);
+    void pintaprevisionpago(QString id);
     virtual int guardar() {return Pago::guardar();};
     virtual int borrar() {return Pago::borrar();};
-    virtual int cargar(QString id) {
-        try {
-            if (Pago::cargar(id))
-                throw -1;
-            setWindowTitle(tr("Pago") + " " + DBvalue("refpago"));
-            dialogChanges_cargaInicial();
-            companyact->meteWindow(windowTitle(), this);
-        } catch (...) {
-            return -1;
-        } // end try
-        return 0;
-    }
+    virtual int cargar(QString id);
     virtual int sacaWindow();
 
 public slots:
-    virtual void on_mui_comentpago_textChanged(const QString &str) {
-        setcomentpago(str);
-    }
-    virtual void on_mui_refpago_valueChanged(const QString &str) {
-        setrefpago(str);
-    }
-    virtual void on_mui_cantpago_textChanged(const QString &str) {
-        setcantpago(str);
-    }
-    virtual void on_mui_previsionpago_stateChanged(int i) {
-        if (i) {
-            setprevisionpago("TRUE");
-        } else {
-            setprevisionpago("FALSE");
-        } // end if
-    }
-    virtual void on_mui_proveedor_valueChanged(QString id) {
-        setidproveedor(id);
-    }
-    virtual void on_mui_fechapago_valueChanged(QString id) {
-        setfechapago(id);
-    }
+    virtual void on_mui_comentpago_textChanged(const QString &str);
+    virtual void on_mui_refpago_valueChanged(const QString &str);
+    virtual void on_mui_cantpago_textChanged(const QString &str);
+    virtual void on_mui_previsionpago_stateChanged(int i);
+    virtual void on_mui_proveedor_valueChanged(QString id);
+    virtual void on_mui_fechapago_valueChanged(QString id);
+    virtual void on_mui_idbanco_valueChanged(QString id);
 };
 
 #endif

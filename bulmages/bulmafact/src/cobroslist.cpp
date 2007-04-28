@@ -61,6 +61,8 @@ CobrosList::CobrosList(company *comp, QWidget *parent, Qt::WFlags flag)
     m_companyact = comp;
     m_cliente->setcompany(comp);
     mui_list->setcompany(comp);
+    mui_idbanco->setcompany(comp);
+    mui_idbanco->setidbanco("0");
     presenta();
     setModoEdicion();
     mdb_idcobro = "";
@@ -86,11 +88,10 @@ CobrosList::~CobrosList() {
 void CobrosList::presenta() {
     _depura("CobrosList::presentar", 0);
     if (m_companyact != NULL) {
-        mui_list->cargar("SELECT * FROM cobro NATURAL LEFT JOIN cliente NATURAL LEFT JOIN trabajador WHERE 1 = 1 " + generaFiltro());
+        mui_list->cargar("SELECT * FROM cobro NATURAL LEFT JOIN cliente NATURAL LEFT JOIN trabajador NATURAL LEFT JOIN banco WHERE 1 = 1 " + generaFiltro());
         /// Hacemos el calculo del total.
-        cursor2 *cur = m_companyact->cargacursor("SELECT SUM(cantcobro) AS total FROM cobro WHERE 1 = 1 " + generaFiltro());
-        m_total->setText(cur->valor("total"));
-        delete cur;
+	Fixed total = mui_list->sumarCampo("cantcobro");
+	m_total->setText(total.toQString());
     } // end if
     _depura("END CobrosList::presentar", 0);
 }
@@ -125,6 +126,9 @@ QString CobrosList::generaFiltro() {
 
     if (m_fechafin->text() != "")
         filtro += " AND fechacobro <= '" + m_fechafin->text() + "' ";
+
+    if (mui_idbanco->idbanco() != "") 
+	filtro += " AND idbanco = "+mui_idbanco->idbanco();
 
     _depura("END CobrosList::generaFiltro", 0);
     return (filtro);
@@ -252,6 +256,8 @@ void CobrosList::setcompany(company *comp) {
     m_companyact = comp;
     m_cliente->setcompany(comp);
     mui_list->setcompany(comp);
+    mui_idbanco->setcompany(comp);
+    mui_idbanco->setidbanco("0");
 }
 
 /** Devuelve el identificador del cobro seleccionado
@@ -351,6 +357,7 @@ CobrosListSubForm::CobrosListSubForm(QWidget *parent) : SubForm2Bf(parent) {
     addSHeader("mailcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Direccion de correo electronico"));
     addSHeader("fechacobro", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Fecha de cobro"));
     addSHeader("cantcobro", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Cantidad"));
+    addSHeader("nombanco", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Banco"));
     addSHeader("refcobro", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Referencia del cobro"));
     addSHeader("previsioncobro", DBCampo::DBboolean, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Prevision de cobro"));
     addSHeader("comentcobro", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Comentarios"));

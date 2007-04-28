@@ -47,7 +47,7 @@ TrabajadorView::TrabajadorView(company *emp, QWidget *parent)
 }
 
 
-void imprimir() {
+void TrabajadorView::imprimir() {
     _depura("TrabajadorView::imprimir", 0);
 }
 

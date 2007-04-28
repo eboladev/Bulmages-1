@@ -156,6 +156,8 @@ BEGIN
 		UPDATE proveedor SET irpfproveedor = 0;
 		ALTER TABLE proveedor ALTER COLUMN irpfproveedor SET DEFAULT 0;
 	END IF;
+
+
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;
@@ -319,6 +321,13 @@ BEGIN
 		);
 	END IF;
 
+	SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''idbanco'' AND relname=''cobro'';
+	IF NOT FOUND THEN
+		ALTER TABLE cobro ADD COLUMN idbanco INTEGER;
+		ALTER TABLE cobro ADD CONSTRAINT idbancofk FOREIGN KEY (idbanco) REFERENCES banco(idbanco);
+		ALTER TABLE pago ADD COLUMN idbanco INTEGER;
+		ALTER TABLE pago ADD CONSTRAINT idbancofk FOREIGN KEY (idbanco) REFERENCES banco(idbanco);
+	END IF;
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;
@@ -366,9 +375,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.9.1-0008'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.9.1-0009'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.1-0008'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.1-0009'');
 	END IF;
 	RETURN 0;
 END;

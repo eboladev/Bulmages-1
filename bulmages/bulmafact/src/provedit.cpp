@@ -101,7 +101,7 @@ ProveedorView::~ProveedorView() {
 }
 
 
-void on_mui_guardar_clicked() {
+void ProveedorView::on_mui_guardar_clicked() {
     guardar();
 }
 

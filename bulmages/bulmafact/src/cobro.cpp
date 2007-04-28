@@ -40,6 +40,7 @@ Cobro::Cobro(company *comp) : DBRecord(comp) {
     addDBCampo("refcobro", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cobro", "Referencia del cobro"));
     addDBCampo("cantcobro", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate("Cobro", "Cantidad"));
     addDBCampo("comentcobro", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cobro", "Comentarios"));
+    addDBCampo("idbanco", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Banco", "Comentarios"));
     _depura("END Cobro::Cobro", 0);
 }
 
@@ -64,6 +65,7 @@ void Cobro::pintar() {
     pintarefcobro(DBvalue("refcobro"));
     pintaprevisioncobro(DBvalue("previsioncobro"));
     pintacomentcobro(DBvalue("comentcobro"));
+    pintaidbanco(DBvalue("idbanco"));
     _depura("END Cobro::pintar", 0);
 }
 
@@ -138,4 +140,10 @@ void Cobro::setcomentcobro(QString val) {
     _depura("Cobro::setcomentcobro", 0);
     setDBvalue("comentcobro", val);
     _depura("END Cobro::setcomentcobro", 0);
+}
+
+void Cobro::setidbanco(QString val) {
+    _depura("Cobro::setidbanco", 0);
+    setDBvalue("idbanco", val);
+    _depura("END Cobro::setidbanco", 0);
 }

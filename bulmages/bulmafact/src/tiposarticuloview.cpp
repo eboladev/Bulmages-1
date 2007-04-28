@@ -76,7 +76,7 @@ void TipoArticuloList::setModoEdicion() {
 }
 
 
-void on_mui_aceptar_clicked() {
+void TipoArticuloList::on_mui_aceptar_clicked() {
     close();
 }
 
@@ -276,6 +276,5 @@ void TipoArticuloList::on_mui_borrar_clicked() {
     it = m_listTipos->takeTopLevelItem(m_listTipos->indexOfTopLevelItem(m_listTipos->currentItem()));
     delete it;
     _depura("END TipoArticuloList::on_mui_borrar_clicked", 0);
-
 }
 

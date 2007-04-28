@@ -160,7 +160,8 @@ HEADERS += bulmafact.h \
 	   listtipoivaview.h \
 	   listtasaivaview.h \
 	   busquedatipoiva.h \
-	   bancoview.h
+	   bancoview.h \
+	   busquedabanco.h
 
 SOURCES += bulmafact.cpp \
            main.cpp \
@@ -247,7 +248,8 @@ SOURCES += bulmafact.cpp \
 	   listtipoivaview.cpp \
 	   listtasaivaview.cpp \
 	   busquedatipoiva.cpp \
-	   bancoview.cpp
+	   bancoview.cpp \
+	   busquedabanco.cpp
 
 
 INCLUDEPATH += ../../bulmalib \

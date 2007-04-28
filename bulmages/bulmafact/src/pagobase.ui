@@ -1,7 +1,5 @@
 <ui version="4.0" >
  <author>Tomeu Borrás</author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>PagoBase</class>
  <widget class="QWidget" name="PagoBase" >
   <property name="geometry" >
@@ -181,7 +179,7 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaReferencia" name="mui_refpago" />
+         <widget class="BusquedaReferencia" native="1" name="mui_refpago" />
         </item>
        </layout>
       </widget>
@@ -204,7 +202,7 @@
        <number>5</number>
       </property>
       <item row="1" column="0" colspan="4" >
-       <widget class="BusquedaProveedor" name="mui_proveedor" >
+       <widget class="BusquedaProveedor" native="1" name="mui_proveedor" >
         <property name="minimumSize" >
          <size>
           <width>250</width>
@@ -212,19 +210,6 @@
          </size>
         </property>
        </widget>
-      </item>
-      <item row="4" column="0" colspan="4" >
-       <spacer>
-        <property name="orientation" >
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" >
-         <size>
-          <width>428</width>
-          <height>16</height>
-         </size>
-        </property>
-       </spacer>
       </item>
       <item row="3" column="0" >
        <widget class="QLabel" name="textLabel1_4_4" >
@@ -247,42 +232,18 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="3" >
+      <item row="5" column="0" colspan="4" >
        <spacer>
         <property name="orientation" >
-         <enum>Qt::Horizontal</enum>
+         <enum>Qt::Vertical</enum>
         </property>
         <property name="sizeHint" >
          <size>
-          <width>162</width>
-          <height>26</height>
+          <width>428</width>
+          <height>16</height>
          </size>
         </property>
        </spacer>
-      </item>
-      <item row="3" column="1" colspan="2" >
-       <widget class="QLineEdit" name="mui_cantpago" >
-        <property name="enabled" >
-         <bool>true</bool>
-        </property>
-        <property name="font" >
-         <font>
-          <family>Sans Serif</family>
-          <pointsize>12</pointsize>
-          <weight>75</weight>
-          <italic>false</italic>
-          <bold>true</bold>
-          <underline>false</underline>
-          <strikeout>false</strikeout>
-         </font>
-        </property>
-        <property name="text" >
-         <string>0.00</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignRight</set>
-        </property>
-       </widget>
       </item>
       <item row="2" column="1" colspan="3" >
        <widget class="QLineEdit" name="mui_comentpago" />
@@ -308,6 +269,30 @@
         </property>
        </widget>
       </item>
+      <item row="3" column="1" colspan="2" >
+       <widget class="QLineEdit" name="mui_cantpago" >
+        <property name="enabled" >
+         <bool>true</bool>
+        </property>
+        <property name="font" >
+         <font>
+          <family>Sans Serif</family>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
+          <underline>false</underline>
+          <strikeout>false</strikeout>
+         </font>
+        </property>
+        <property name="text" >
+         <string>0.00</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight</set>
+        </property>
+       </widget>
+      </item>
       <item row="0" column="0" >
        <widget class="QLabel" name="textLabel1_2_3" >
         <property name="text" >
@@ -319,7 +304,7 @@
        </widget>
       </item>
       <item row="0" column="1" >
-       <widget class="BusquedaFecha" name="mui_fechapago" >
+       <widget class="BusquedaFecha" native="1" name="mui_fechapago" >
         <property name="sizePolicy" >
          <sizepolicy>
           <hsizetype>7</hsizetype>
@@ -329,6 +314,19 @@
          </sizepolicy>
         </property>
        </widget>
+      </item>
+      <item row="3" column="3" >
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" >
+         <size>
+          <width>162</width>
+          <height>26</height>
+         </size>
+        </property>
+       </spacer>
       </item>
       <item row="0" column="2" colspan="2" >
        <layout class="QHBoxLayout" >
@@ -362,6 +360,30 @@
          </widget>
         </item>
        </layout>
+      </item>
+      <item row="4" column="0" >
+       <widget class="QLabel" name="textLabel1_4_5" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>5</hsizetype>
+          <vsizetype>0</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text" >
+         <string>Banco:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="buddy" >
+         <cstring>mui_cantpago</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1" >
+       <widget class="BusquedaBanco" name="mui_idbanco" />
       </item>
      </layout>
     </widget>
@@ -406,28 +428,27 @@
   </layout>
  </widget>
  <layoutdefault spacing="2" margin="5" />
- <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
+   <class>BusquedaBanco</class>
+   <extends>QComboBox</extends>
+   <header>busquedabanco.h</header>
+  </customwidget>
+  <customwidget>
    <class>BusquedaFecha</class>
-   <extends></extends>
+   <extends>QWidget</extends>
    <header>../../../bulmalib/busquedafecha.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
   <customwidget>
    <class>BusquedaReferencia</class>
    <extends>QWidget</extends>
    <header>busquedareferencia.h</header>
    <container>1</container>
-   <pixmap></pixmap>
   </customwidget>
   <customwidget>
    <class>BusquedaProveedor</class>
-   <extends></extends>
+   <extends>QWidget</extends>
    <header>busquedaproveedor.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
  </customwidgets>
  <tabstops>

@@ -55,27 +55,15 @@ public:
     ;
     virtual void pintacomentpago(QString) {}
     ;
-    void setidpago(QString val) {
-        setDBvalue("idpago", val);
-    };
-    void setidproveedor(QString val) {
-        setDBvalue("idproveedor", val);
-    };
-    void setfechapago(QString val) {
-        setDBvalue("fechapago", val);
-    };
-    void setcantpago(QString val) {
-        setDBvalue("cantpago", val);
-    };
-    void setrefpago(QString val) {
-        setDBvalue("refpago", val);
-    };
-    void setprevisionpago(QString val) {
-        setDBvalue("previsionpago", val);
-    };
-    void setcomentpago(QString val) {
-        setDBvalue("comentpago", val);
-    };
+    virtual void pintaidbanco(QString) {};
+    void setidpago(QString val);
+    void setidproveedor(QString val);
+    void setfechapago(QString val);
+    void setcantpago(QString val);
+    void setrefpago(QString val);
+    void setprevisionpago(QString val);
+    void setcomentpago(QString val);
+    void setidbanco(QString val);
 };
 
 #endif

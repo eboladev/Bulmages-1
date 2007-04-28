@@ -28,7 +28,7 @@
 #include "busquedaproveedor.h"
 #include "funcaux.h"
 #include "subform2bf.h"
-
+#include "fichabf.h"
 
 /// Administra el detalle del listado de pagos.
 /** */
@@ -47,7 +47,7 @@ public:
 
 /// Muestra y administra el listado de pagos.
 /** */
-class PagosList : public QWidget, private Ui_PagosListBase {
+class PagosList : public FichaBf, private Ui_PagosListBase {
     Q_OBJECT
 
 private:
@@ -62,41 +62,16 @@ public:
     PagosList(company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0);
     ~PagosList();
     void presentar();
-    void modoseleccion() {
-        m_modo = 1;
-    };
-    void modoedicion() {
-        m_modo = 0;
-    };
-    void setcompany (company *comp)	{
-        m_companyact = comp;
-        m_proveedor->setcompany(comp);
-	mui_list->setcompany(comp);
-    };
-    QString idpago() {
-        return mdb_idpago;
-    };
-    void hideBotonera() {
-        m_botonera->hide();
-    };
-    void showBotonera() {
-        m_botonera->show();
-    };
-    void hideBusqueda() {
-        m_busqueda->hide();
-    };
-    void showBusqueda() {
-        m_busqueda->show();
-    };
+    void modoseleccion();
+    void modoedicion();
+    void setcompany (company *comp);
+    QString idpago();
+    void hideBotonera();
+    void showBotonera();
+    void hideBusqueda();
+    void showBusqueda();
     void imprimir();
-    void meteWindow(QString nom, QObject *obj) {
-        if (m_companyact != NULL) {
-            m_companyact->meteWindow(nom, obj);
-        } // end if
-    };
-    void setidproveedor(QString val) {
-        m_proveedor->setidproveedor(val);
-    };
+    void setidproveedor(QString val);
     QString generaFiltro();
 
 
@@ -106,18 +81,9 @@ public slots:
     virtual void on_mui_editar_clicked();
     virtual void on_mui_crear_clicked();
     virtual void on_mui_borrar_clicked();
-    virtual void on_mui_imprimir_clicked() {
-        imprimir();
-    };
-    virtual void on_mui_actualizar_clicked() {
-        presentar();
-    };
-    virtual void on_mui_configurar_toggled(bool checked) {
-        if (checked)
-            mui_list->showConfig();
-        else
-            mui_list->hideConfig();
-    };
+    virtual void on_mui_imprimir_clicked();
+    virtual void on_mui_actualizar_clicked();
+    virtual void on_mui_configurar_toggled(bool checked);
 };
 
 #endif

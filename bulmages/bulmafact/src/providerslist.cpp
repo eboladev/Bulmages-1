@@ -109,24 +109,24 @@ void ProveedorList::showBusqueda() {
 }
 
 
-void on_mui_filtro_textChanged(const QString &text) {
+void ProveedorList::on_mui_filtro_textChanged(const QString &text) {
     if (text.size() >= 3) {
         on_mui_actualizar_clicked();
     } // end if
 }
 
 
-void on_mui_actualizar_clicked() {
+void ProveedorList::on_mui_actualizar_clicked() {
     presenta();
 }
 
 
-void on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
+void ProveedorList::on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
     on_mui_editar_clicked();
 }
 
 
-void on_mui_configurar_toggled(bool checked) {
+void ProveedorList::on_mui_configurar_toggled(bool checked) {
     if (checked) {
         mui_list->showConfig();
     } else {

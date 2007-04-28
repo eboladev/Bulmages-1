@@ -604,7 +604,8 @@ CREATE TABLE cobro (
     refcobro character varying(12) NOT NULL,
     previsioncobro boolean DEFAULT FALSE,
     comentcobro character varying(500),
-    idtrabajador integer REFERENCES trabajador(idtrabajador)
+    idtrabajador integer REFERENCES trabajador(idtrabajador),
+    idbanco integer REFERENCES banco(idbanco)
 );
    
 
@@ -623,7 +624,8 @@ CREATE TABLE pago (
     refpago character varying(12) NOT NULL,
     previsionpago boolean DEFAULT FALSE,
     comentpago character varying(500),
-    idtrabajador integer REFERENCES trabajador(idtrabajador)   
+    idtrabajador integer REFERENCES trabajador(idtrabajador),
+    idbanco integer REFERENCES banco(idbanco)
 );
 
 

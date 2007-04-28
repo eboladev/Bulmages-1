@@ -37,6 +37,7 @@ Pago::Pago(company *comp) : DBRecord(comp) {
     addDBCampo("refpago", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Pago", "Referencia de pago"));
     addDBCampo("cantpago", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate("Pago", "Cantidad"));
     addDBCampo("comentpago", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Pago", "Comentario del pago"));
+    addDBCampo("idbanco", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Pago", "Banco"));
 }
 
 
@@ -74,6 +75,7 @@ void Pago::pintar() {
     pintarefpago(DBvalue("refpago"));
     pintaprevisionpago(DBvalue("previsionpago"));
     pintacomentpago(DBvalue("comentpago"));
+    pintaidbanco(DBvalue("idbanco"));
 }
 
 
@@ -113,3 +115,44 @@ int Pago::guardar() {
     } // end try
 }
 
+
+    void Pago::setidpago(QString val) {
+	_depura("Pago::setidpago", 0);
+        setDBvalue("idpago", val);
+	_depura("END Pago::setidpago", 0);
+    }
+    void Pago::setidproveedor(QString val) {
+	_depura("Pago::setidproveedor", 0);
+        setDBvalue("idproveedor", val);
+	_depura("END Pago::setidproveedor", 0);
+    }
+    void Pago::setfechapago(QString val) {
+	_depura("Pago::setfechapago", 0);
+        setDBvalue("fechapago", val);
+	_depura("END Pago::setfechapago", 0);
+    }
+    void Pago::setcantpago(QString val) {
+	_depura("Pago::setcantpago", 0);
+        setDBvalue("cantpago", val);
+	_depura("END Pago::setcantpago", 0);
+    }
+    void Pago::setrefpago(QString val) {
+	_depura("Pago::setrefpago", 0);
+        setDBvalue("refpago", val);
+	_depura("END Pago::setrefpago", 0);
+    }
+    void Pago::setprevisionpago(QString val) {
+	_depura("Pago::setprevisionpago", 0);
+        setDBvalue("previsionpago", val);
+	_depura("END Pago::setprevisionpago", 0);
+    }
+    void Pago::setcomentpago(QString val) {
+	_depura("Pago::setcomentpago", 0);
+        setDBvalue("comentpago", val);
+	_depura("END Pago::setcomentpago", 0);
+    }
+    void Pago::setidbanco(QString val) {
+	_depura("Pago::setidbanco", 0);
+        setDBvalue("idbanco", val);
+	_depura("END Pago::setidbanco", 0);
+    }

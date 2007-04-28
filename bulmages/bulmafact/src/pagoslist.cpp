@@ -34,7 +34,7 @@
 
 
 PagosList::PagosList(QWidget *parent, Qt::WFlags flag)
-        : QWidget(parent, flag) {
+        : FichaBf(NULL, parent, flag) {
     m_companyact = NULL;
     setupUi(this);
     m_modo = 0;
@@ -45,11 +45,13 @@ PagosList::PagosList(QWidget *parent, Qt::WFlags flag)
 
 
 PagosList::PagosList(company *comp, QWidget *parent, Qt::WFlags flag)
-        : QWidget(parent, flag) {
+        : FichaBf(comp, parent, flag) {
     m_companyact = comp;
     setupUi(this);
     m_proveedor->setcompany(comp);
     mui_list->setcompany(comp);
+    mui_idbanco->setcompany(comp);
+    mui_idbanco->setidbanco("0");
     presentar();
     m_modo = 0;
     mdb_idpago = "";
@@ -66,15 +68,14 @@ PagosList::~PagosList() {
 
 
 void PagosList::presentar() {
-    _depura("PagosList::presentar()\n", 0);
+    _depura("PagosList::presentar()", 0);
     if (m_companyact != NULL ) {
-        mui_list->cargar("SELECT * FROM pago NATURAL LEFT JOIN proveedor NATURAL LEFT JOIN trabajador WHERE 1 = 1 " + generaFiltro());
+        mui_list->cargar("SELECT * FROM pago NATURAL LEFT JOIN proveedor NATURAL LEFT JOIN trabajador NATURAL LEFT JOIN banco WHERE 1 = 1 " + generaFiltro());
         /// Hacemos el calculo del total.
-        cursor2 *cur = m_companyact->cargacursor("SELECT SUM(cantpago) AS total FROM pago WHERE 1 = 1 " + generaFiltro());
-        m_total->setText(cur->valor("total"));
-        delete cur;
+        Fixed total = mui_list->sumarCampo("cantpago");
+        m_total->setText(total.toQString());
     } // end if
-    _depura("END PagosList::presentar()\n", 0);
+    _depura("END PagosList::presentar()", 0);
 }
 
 
@@ -103,6 +104,8 @@ QString PagosList::generaFiltro() {
     if (m_fechafin->text() != "") {
         filtro += " AND fechapago <= '" + m_fechafin->text() + "' ";
     } // end if
+    if (mui_idbanco->idbanco() != "")
+        filtro += " AND idbanco = "+mui_idbanco->idbanco();
     _depura("END PagosList::generaFiltro", 0);
     return (filtro);
 }
@@ -156,7 +159,7 @@ void PagosList::on_mui_list_customContextMenuRequested(const QPoint &) {
 
 
 void PagosList::on_mui_crear_clicked() {
-    fprintf(stderr, "Iniciamos el boton_crear\n");
+    fprintf(stderr, "Iniciamos el boton_crear");
     PagoView *bud = m_companyact->newPagoView();
     m_companyact->m_pWorkspace->addWindow(bud);
     bud->show();
@@ -167,7 +170,7 @@ void PagosList::on_mui_crear_clicked() {
 
 void PagosList::imprimir() {
     _depura("PagosList::imprimir", 0);
-     mui_list->imprimirPDF(tr("Pagos a proveedores"));
+    mui_list->imprimirPDF(tr("Pagos a proveedores"));
     _depura("END PagosList::imprimir", 0);
 }
 
@@ -180,18 +183,70 @@ void PagosList::on_mui_borrar_clicked() {
         return;
     } // end if
     try {
-	   mdb_idpago = mui_list->DBvalue("idpago");
-	   if (m_modo == 0 && mdb_idpago != "") {
-		  PagoView *bud = new PagoView(m_companyact, NULL);
-		  bud->cargar(mdb_idpago);
-		  bud->borrar();
-	   } // end if
-	   presentar();
+        mdb_idpago = mui_list->DBvalue("idpago");
+        if (m_modo == 0 && mdb_idpago != "") {
+            PagoView *bud = new PagoView(m_companyact, NULL);
+            bud->cargar(mdb_idpago);
+            bud->borrar();
+        } // end if
+        presentar();
     } catch (...)  {
-    	mensajeInfo(tr("Error al borrar el pago"));
+        mensajeInfo(tr("Error al borrar el pago"));
     } // end try
     _depura("END PagosList::on_mui_borrar_clicked", 0);
 }
+
+void PagosList::setcompany (company *comp)	{
+    _depura("PagosList::setcompany", 0);
+    m_companyact = comp;
+    m_proveedor->setcompany(comp);
+    mui_list->setcompany(comp);
+    mui_idbanco->setcompany(comp);
+    mui_idbanco->setidbanco("0");
+    _depura("END PagosList::setcompany", 0);
+}
+
+void PagosList::on_mui_imprimir_clicked() {
+    imprimir();
+}
+void PagosList::on_mui_actualizar_clicked() {
+    presentar();
+}
+void PagosList::on_mui_configurar_toggled(bool checked) {
+    if (checked)
+        mui_list->showConfig();
+    else
+        mui_list->hideConfig();
+}
+
+void PagosList::modoseleccion() {
+    m_modo = 1;
+}
+void PagosList::modoedicion() {
+    m_modo = 0;
+}
+
+QString PagosList::idpago() {
+    return mdb_idpago;
+}
+void PagosList::hideBotonera() {
+    m_botonera->hide();
+}
+void PagosList::showBotonera() {
+    m_botonera->show();
+}
+void PagosList::hideBusqueda() {
+    m_busqueda->hide();
+}
+void PagosList::showBusqueda() {
+    m_busqueda->show();
+}
+
+void PagosList::setidproveedor(QString val) {
+    m_proveedor->setidproveedor(val);
+}
+
+
 
 
 /// =============================================================================
@@ -208,6 +263,7 @@ PagosListSubForm::PagosListSubForm(QWidget *parent) : SubForm2Bf(parent) {
     addSHeader("emailproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Email proveedor"));
     addSHeader("fechapago", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Fecha de pago"));
     addSHeader("cantpago", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Cantidad"));
+    addSHeader("nombanco", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Banco"));
     addSHeader("refpago", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Referencia de pago"));
     addSHeader("previsionpago", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Prevision pago"));
     addSHeader("comentpago", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Comentario pago"));

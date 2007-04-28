@@ -49,6 +49,7 @@ public:
     void setrefcobro(QString val);
     void setprevisioncobro(QString val);
     void setcomentcobro(QString val);
+    void setidbanco(QString val);
     virtual void pintaidcobro(QString) {}
     ;
     virtual void pintaidcliente(QString) {}
@@ -63,6 +64,7 @@ public:
     ;
     virtual void pintacomentcobro(QString) {}
     ;
+    virtual void pintaidbanco(QString) {}
 };
 
 #endif

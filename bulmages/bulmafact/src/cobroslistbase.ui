@@ -21,10 +21,10 @@
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>5</number>
+    <number>9</number>
    </property>
    <property name="spacing" >
-    <number>5</number>
+    <number>6</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -397,10 +397,10 @@
      </property>
      <layout class="QVBoxLayout" >
       <property name="margin" >
-       <number>5</number>
+       <number>9</number>
       </property>
       <property name="spacing" >
-       <number>5</number>
+       <number>6</number>
       </property>
       <item>
        <layout class="QHBoxLayout" >
@@ -538,6 +538,35 @@
         </item>
        </layout>
       </item>
+      <item>
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="textLabel1_5" >
+          <property name="text" >
+           <string>Banco:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="BusquedaBanco" name="mui_idbanco" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>13</hsizetype>
+            <vsizetype>13</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
      </layout>
     </widget>
    </item>
@@ -656,6 +685,11 @@
  </widget>
  <layoutdefault spacing="3" margin="5" />
  <customwidgets>
+  <customwidget>
+   <class>BusquedaBanco</class>
+   <extends>QComboBox</extends>
+   <header>busquedabanco.h</header>
+  </customwidget>
   <customwidget>
    <class>CobrosListSubForm</class>
    <extends>QTableWidget</extends>

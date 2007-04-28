@@ -45,6 +45,7 @@ CobroView::CobroView(company *comp, QWidget *parent)
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
         mui_cliente->setcompany(comp);
         mui_refcobro->setcompany(comp);
+	mui_idbanco->setcompany(comp);
         dialogChanges_cargaInicial();
         companyact->meteWindow(windowTitle(), this, FALSE);
     } catch (...) {
@@ -136,6 +137,15 @@ void CobroView::pintacantcobro(QString id) {
     _depura("END CobroView::pintacantcobro", 0);
 }
 
+
+/** EScribe el banco del cobro el parametro indicado
+**/
+void CobroView::pintaidbanco(QString id) {
+    _depura("CobroView::pintaidbanco", 0);
+    mui_idbanco->setidbanco(id);
+    _depura("END CobroView::pintaidbanco", 0);
+}
+
 /** Escribe en el QCheckBox de prevision si el parametro indicado
 **/
 void CobroView::pintaprevisioncobro(QString id) {
@@ -222,4 +232,9 @@ void CobroView::on_mui_fechacobro_valueChanged(QString id) {
     _depura("END CobroView::on_mui_fechacobro_valueChanged", 0);
 }
 
+void CobroView::on_mui_idbanco_valueChanged(QString id) {
+	_depura("CobroView::on_mui_idbanco_valueChanged", 0);
+	setidbanco(id);
+	_depura("END CobroView::on_mui_idbanco_valueChanged", 0);
+}
 

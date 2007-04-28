@@ -55,6 +55,7 @@ public:
     void pintarefcobro(QString id);
     void pintacantcobro(QString id);
     void pintaprevisioncobro(QString id);
+    void pintaidbanco(QString id);
     virtual int guardar();
     virtual int borrar();
     virtual int sacaWindow();
@@ -68,6 +69,7 @@ public slots:
     virtual void on_mui_previsioncobro_stateChanged(int i);
     virtual void on_mui_cliente_valueChanged(QString id);
     virtual void on_mui_fechacobro_valueChanged(QString id);
+    virtual void on_mui_idbanco_valueChanged(QString id);
 };
 
 #endif
