@@ -91,6 +91,8 @@ void ArticuloView::pintar() {
     m_obserarticulo->setPlainText(DBvalue("obserarticulo"));
     m_pvparticulo->setText(DBvalue("pvparticulo"));
     m_abrevarticulo->setText(DBvalue("abrevarticulo"));
+    mui_pesoundarticulo->setText(DBvalue("pesoundarticulo"));
+    mui_volumenundarticulo->setText(DBvalue("volumenundarticulo"));
 
     m_codigocompletoarticulo->setText(DBvalue("codigocompletoarticulo"));
     /// Pintamos el stockable y el presentable.
@@ -134,20 +136,19 @@ int ArticuloView::cargar(QString idarticulo) {
             throw -1;
         } // end if
 
-	/// Cargamos los componentes.
+        /// Cargamos los componentes.
         m_componentes->cargar(DBvalue("idarticulo"));
-	
-        /// Pintamos para que la visualizacion sea correcta con la carga.
-	pintar();
-//        setWindowTitle(tr("Articulo") + " " + DBvalue("codigocompletoarticulo"));
 
-	/// Metemosl a ventana en el workSpace para que corrija el titulo.
+        /// Pintamos para que la visualizacion sea correcta con la carga.
+        pintar();
+
+        /// Metemosl a ventana en el workSpace para que corrija el titulo.
         ret = m_companyact->meteWindow(windowTitle(), this);
         if (ret) {
             throw -1;
         } // end if
 
-	/// Iniciamos el control de cambios para que se considere que no hay cambios realizados.
+        /// Iniciamos el control de cambios para que se considere que no hay cambios realizados.
         dialogChanges_cargaInicial();
 
 
@@ -194,26 +195,6 @@ int ArticuloView::cargarcomboiva(QString idIva) {
 }
 
 
-/** SLOT que se invoca al pulsar sobre el bot&oacute;n de borrar.
-    Pregunta si se desea borrar y en caso afirmativo hace el borrado.
-    Una vez acabo resetea el control de cambios para que se considere que no hay cambios.
-*/
-/*
-void ArticuloView::on_mui_borrar_clicked() {
-    _depura("ArticuloView::on_mui_borrar_clicked", 0);
-
-    if (DBvalue("idarticulo") != "") {
-        if (QMessageBox::question(this,
-                                  tr("Borrar articulo"),
-                                  tr("Esta a punto de borrar un articulo. Desea continuar?"),
-                                  tr("&Si"), tr("&No"), 0, 1, 0) == 0) {
-            borrar();
-            dialogChanges_cargaInicial();
-        } // end if
-    } // end if
-    _depura("END ArticuloView::on_mui_borrar_clicked", 0);
-}
-*/
 
 
 /** SLOT que responde a la finalizacion de edicion del codigocompleto del articulo.
@@ -253,6 +234,8 @@ int ArticuloView::guardar() {
         setDBvalue("abrevarticulo", m_abrevarticulo->text());
         setDBvalue("pvparticulo", m_pvparticulo->text());
         setDBvalue("idtipo_iva", m_cursorcombo->valor("idtipo_iva", m_combotipo_iva->currentIndex()));
+        setDBvalue("pesoundarticulo", mui_pesoundarticulo->text());
+        setDBvalue("volumenundarticulo", mui_volumenundarticulo->text());
 
         if (Articulo::guardar() != 0) {
             throw -1;
@@ -286,7 +269,7 @@ int ArticuloView::guardar() {
 }
 
 
-/** Metodo de borrar un articulo. 
+/** Metodo de borrar un articulo.
     Hace las comprobaciones necesarias para el guardado.
     Crea una transaccion de borrado para borrar primero los componentes y luego la ficha.
     Tambien lanza los plugins por si hay componentes adicionales en el borrado.
@@ -323,7 +306,7 @@ int ArticuloView::borrar() {
     Es el metodo de guardado quien determina como almacenarla.
 */
 void ArticuloView::on_mui_cambiarimagen_clicked() {
-    _depura("ArticuloView::INIT_s_cambiarimagen()\n", 0);
+    _depura("ArticuloView::INIT_s_cambiarimagen()", 0);
     m_archivoimagen = QFileDialog::getOpenFileName(
                           this,
                           tr("Abrir ventana de archivo"),
@@ -331,20 +314,14 @@ void ArticuloView::on_mui_cambiarimagen_clicked() {
                           tr("Imagenes (*.jpg)"));
 
     m_imagen->setPixmap(QPixmap(m_archivoimagen));
-    _depura("ArticuloView::END_s_cambiarimagen()\n", 0);
+    _depura("ArticuloView::END_s_cambiarimagen()", 0);
 }
 
 
-/** Este metodo responde a la pulsacion del boton aceptar.
-*/
-/// \TODO: Deberia estar implementado en la clase Ficha y ser eliminado de aqui.
-/*
-void ArticuloView::on_mui_aceptar_clicked() {
-    _depura("ArticuloView::on_mui_aceptar_clicked", 0);
+void ArticuloView::on_mui_guardar_clicked() {
+    _depura("ArticuloView::on_mui_guardar_clicked", 0);
     try {
         guardar();
-        close();
     } catch (...) {}
-    _depura("END ArticuloView::on_mui_aceptar_clicked", 0);
+    _depura("END ArticuloView::on_mui_guardar_clicked", 0);
 }
-*/

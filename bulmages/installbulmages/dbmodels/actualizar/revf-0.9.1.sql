@@ -328,6 +328,19 @@ BEGIN
 		ALTER TABLE pago ADD COLUMN idbanco INTEGER;
 		ALTER TABLE pago ADD CONSTRAINT idbancofk FOREIGN KEY (idbanco) REFERENCES banco(idbanco);
 	END IF;
+
+	SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''productofisicofamilia'' AND relname=''familia'';
+	IF NOT FOUND THEN
+		ALTER TABLE familia ADD COLUMN productofisicofamilia BOOLEAN DEFAULT TRUE;
+		UPDATE familia SET productofisicofamilia = TRUE;
+		ALTER TABLE familia ALTER COLUMN productofisicofamilia SET NOT NULL;
+	END IF;
+
+	SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''pesoundarticulo'' AND relname=''articulo'';
+	IF NOT FOUND THEN
+		ALTER TABLE articulo ADD COLUMN pesoundarticulo NUMERIC(12,2) DEFAULT 0;
+		ALTER TABLE articulo ADD COLUMN volumenundarticulo NUMERIC(12,2) DEFAULT 0;
+	END IF;
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;
@@ -375,9 +388,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.9.1-0009'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.9.1-0010'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.1-0009'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.1-0010'');
 	END IF;
 	RETURN 0;
 END;

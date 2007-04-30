@@ -234,6 +234,8 @@ CREATE TABLE serie_factura (
 -- descfamilia: Descripcion extendida de la familia.
 -- codigocompletofamilia: Codigo completo de la familia. Es la concatenacion del codigo de
 --                        familia con sus codigos padres. Este campo es de solo lectura.
+-- productofisicofamilia: TRUE es producto Fisico, FALSE es servicio.
+
 \echo -n ':: Familia ... '
 CREATE TABLE familia (
     idfamilia serial PRIMARY KEY,
@@ -241,7 +243,8 @@ CREATE TABLE familia (
     nombrefamilia character varying(50) NOT NULL,
     descfamilia character varying(300),
     padrefamilia integer REFERENCES familia(idfamilia),
-    codigocompletofamilia character varying(50) UNIQUE
+    codigocompletofamilia character varying(50) UNIQUE;
+    productofisicofamilia boolean DEFAULT TRUE NOT NULL
 );
 
 
@@ -336,7 +339,9 @@ CREATE TABLE articulo (
     -- de acceder al precio del articulo.
     -- Para obtener el precio de un articulo se debe usar la funcion articulo.
     -- Para saber el iva correspondiente a un articulo se debe usar la funcion ivaarticulo.
-    pvparticulo numeric(12,2) NOT NULL DEFAULT 0
+    pvparticulo numeric(12,2) NOT NULL DEFAULT 0,
+    pesoundarticulo numeric(12,2) DEFAULT 0,
+    volumenundarticulo numeric(12,2) DEFAULT 0
 );
 
 
@@ -2919,3 +2924,26 @@ CREATE TRIGGER cambiadoalbaranpt
 COMMIT;
 
 \echo '********* FIN FICHERO DE ESTRUCTURA DE LA BASE DE DATOS DE BULMAFACT *********'
+
+-- ================================== ACTUALIZACION  ===================================
+-- =====================================================================================
+
+-- Agregamos nuevos parametros de configuracion
+--
+CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
+DECLARE
+	as RECORD;
+BEGIN
+	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
+	IF FOUND THEN
+		UPDATE CONFIGURACION SET valor = ''0.9.1-0010'' WHERE nombre = ''DatabaseRevision'';
+	ELSE
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.1-0010'');
+	END IF;
+	RETURN 0;
+END;
+'   LANGUAGE plpgsql;
+SELECT actualizarevision();
+DROP FUNCTION actualizarevision() CASCADE;
+\echo "Actualizada la revision de la base de datos a la version 0.9.1"
+

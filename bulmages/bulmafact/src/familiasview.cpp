@@ -33,6 +33,7 @@
 #define COL_DESCFAMILIA         2
 #define COL_IDFAMILIA           3
 #define COL_CODFAMILIA          4
+#define COL_PRODUCTOFISICOFAMILIA 5
 
 
 FamiliasView::FamiliasView(company *comp, QWidget *parent, bool modoConsulta)
@@ -50,6 +51,7 @@ FamiliasView::FamiliasView(company *comp, QWidget *parent, bool modoConsulta)
 
     m_listFamilias->setColumnHidden(COL_IDFAMILIA, TRUE);
     m_listFamilias->setColumnHidden(COL_CODFAMILIA, TRUE);
+    m_listFamilias->setColumnHidden(COL_PRODUCTOFISICOFAMILIA, TRUE);
 
     m_semaforoPintar = FALSE;
 
@@ -105,6 +107,7 @@ void FamiliasView::pintar() {
         it->setText(COL_DESCFAMILIA, cursoraux1->valor("descfamilia"));
         it->setText(COL_IDFAMILIA, cursoraux1->valor("idfamilia"));
         it->setText(COL_CODCOMPLETOFAMILIA, cursoraux1->valor("codigocompletofamilia"));
+	it->setText(COL_PRODUCTOFISICOFAMILIA, cursoraux1->valor("productofisicofamilia"));
         m_listFamilias->expandItem(it);
         cursoraux1->siguienteregistro();
     } // end while
@@ -120,6 +123,7 @@ void FamiliasView::pintar() {
         it->setText(COL_DESCFAMILIA, cursoraux2->valor("descfamilia"));
         it->setText(COL_IDFAMILIA, cursoraux2->valor("idfamilia"));
         it->setText(COL_CODCOMPLETOFAMILIA, cursoraux2->valor("codigocompletofamilia"));
+	it->setText(COL_PRODUCTOFISICOFAMILIA, cursoraux2->valor("productofisicofamilia"));
         m_listFamilias->expandItem(it);
         cursoraux2->siguienteregistro();
     } // end while
@@ -206,6 +210,11 @@ void FamiliasView::mostrarplantilla() {
         m_descFamilia->setPlainText(cursorfamilia->valor("descfamilia"));
         m_codCompletoFamilia->setText(cursorfamilia->valor("codigocompletofamilia"));
         m_codFamilia->setText(cursorfamilia->valor("codigofamilia"));
+	if (cursorfamilia->valor("productofisicofamilia") == "t") {
+		mui_productofamilia->setChecked(TRUE);
+	} else {
+		mui_serviciofamilia->setChecked(TRUE);
+	} // end if
     } // end if
     delete cursorfamilia;
     /// Comprobamos cual es la cadena inicial.
@@ -234,15 +243,21 @@ bool FamiliasView::trataModificado() {
 /// Lo que hace es que se hace un update de todos los campos.
 void FamiliasView::on_mui_guardar_clicked() {
     _depura("FamiliasView::on_mui_guardar_clicked", 0);
+    QString prodfam;
     try {
         if (m_idfamilia == "") {
             mensajeInfo(tr("Debe seleccionar una familia"));
             return;
         } // end if
+	if (mui_productofamilia->isChecked()) {
+		prodfam = " TRUE ";
+	} else {
+		prodfam = " FALSE ";
+	} // end if
         QString query = "UPDATE familia SET nombrefamilia = '" +
                         m_companyact->sanearCadena(m_nomFamilia->text()) + "', descfamilia = '" +
                         m_companyact->sanearCadena(m_descFamilia->toPlainText()) + "' , codigofamilia = '" +
-                        m_companyact->sanearCadena(m_codFamilia->text()) + "' WHERE idfamilia =" + m_idfamilia;
+                        m_companyact->sanearCadena(m_codFamilia->text()) + "', productofisicofamilia= " + prodfam + " WHERE idfamilia =" + m_idfamilia;
         int error = m_companyact->ejecuta(query);
         if (error)
             throw -1;
@@ -270,6 +285,7 @@ void FamiliasView::pintar(QTreeWidgetItem *it) {
             it->setText(COL_DESCFAMILIA, cursoraux1->valor("descfamilia"));
             it->setText(COL_IDFAMILIA, cursoraux1->valor("idfamilia"));
             it->setText(COL_CODCOMPLETOFAMILIA, cursoraux1->valor("codigocompletofamilia"));
+	    it->setText(COL_PRODUCTOFISICOFAMILIA, cursoraux1->valor("productofisicofamilia"));	
         } // end if
         delete cursoraux1;
     } // end if

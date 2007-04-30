@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>690</width>
-    <height>490</height>
+    <height>588</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -29,7 +29,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>5</number>
+      <number>0</number>
      </property>
      <item>
       <widget class="QLabel" name="label_2" >
@@ -317,10 +317,117 @@
       <property name="spacing" >
        <number>5</number>
       </property>
-      <item row="1" column="0" colspan="4" >
+      <item row="3" column="0" >
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="textLabel1" >
+          <property name="text" >
+           <string>Nombre:</string>
+          </property>
+          <property name="alignment" >
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+          <property name="buddy" >
+           <cstring>m_nomFamilia</cstring>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="m_nomFamilia" />
+        </item>
+       </layout>
+      </item>
+      <item row="4" column="0" >
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="label" >
+          <property name="text" >
+           <string>Codigo completo:</string>
+          </property>
+          <property name="alignment" >
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+          <property name="buddy" >
+           <cstring>m_codCompletoFamilia</cstring>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="m_codCompletoFamilia" />
+        </item>
+       </layout>
+      </item>
+      <item row="2" column="0" >
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="label" >
+          <property name="text" >
+           <string>Codigo:</string>
+          </property>
+          <property name="alignment" >
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+          <property name="buddy" >
+           <cstring>m_codFamilia</cstring>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="m_codFamilia" />
+        </item>
+       </layout>
+      </item>
+      <item rowspan="3" row="2" column="1" >
+       <widget class="QGroupBox" name="groupBox" >
+        <property name="title" >
+         <string>Tipo Articulos</string>
+        </property>
+        <layout class="QVBoxLayout" >
+         <property name="margin" >
+          <number>9</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="QRadioButton" name="mui_serviciofamilia" >
+           <property name="text" >
+            <string>Servicio</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="mui_productofamilia" >
+           <property name="text" >
+            <string>Producto</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="1" column="0" colspan="2" >
        <widget class="QTextEdit" name="m_descFamilia" />
       </item>
-      <item row="0" column="0" colspan="4" >
+      <item row="0" column="0" colspan="2" >
        <widget class="QLabel" name="label" >
         <property name="sizePolicy" >
          <sizepolicy>
@@ -332,45 +439,6 @@
         </property>
         <property name="text" >
          <string>Descripcion:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2" >
-       <widget class="QLabel" name="label" >
-        <property name="text" >
-         <string>Codigo:</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="3" >
-       <widget class="QLineEdit" name="m_codFamilia" />
-      </item>
-      <item row="2" column="1" >
-       <widget class="QLineEdit" name="m_nomFamilia" />
-      </item>
-      <item row="3" column="0" >
-       <widget class="QLabel" name="label" >
-        <property name="text" >
-         <string>Codigo completo:</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1" colspan="3" >
-       <widget class="QLineEdit" name="m_codCompletoFamilia" />
-      </item>
-      <item row="2" column="0" >
-       <widget class="QLabel" name="textLabel1" >
-        <property name="text" >
-         <string>Nombre:</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>

@@ -20,10 +20,10 @@
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>9</number>
+    <number>5</number>
    </property>
    <property name="spacing" >
-    <number>6</number>
+    <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -31,7 +31,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>5</number>
+      <number>0</number>
      </property>
      <item>
       <widget class="QLabel" name="label" >
@@ -617,11 +617,248 @@
       </attribute>
       <layout class="QGridLayout" >
        <property name="margin" >
-        <number>5</number>
+        <number>9</number>
        </property>
        <property name="spacing" >
-        <number>5</number>
+        <number>6</number>
        </property>
+       <item rowspan="2" row="1" column="0" >
+        <widget class="QGroupBox" name="groupBox_2" >
+         <property name="sizePolicy" >
+          <sizepolicy>
+           <hsizetype>5</hsizetype>
+           <vsizetype>5</vsizetype>
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="title" >
+          <string>Informacion del articulo:</string>
+         </property>
+         <layout class="QGridLayout" >
+          <property name="margin" >
+           <number>5</number>
+          </property>
+          <property name="spacing" >
+           <number>5</number>
+          </property>
+          <item row="4" column="1" colspan="2" >
+           <widget class="QLineEdit" name="mui_pesoundarticulo" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="focusPolicy" >
+             <enum>Qt::StrongFocus</enum>
+            </property>
+            <property name="alignment" >
+             <set>Qt::AlignRight</set>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="5" >
+           <widget class="QLineEdit" name="mui_volumenundarticulo" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="focusPolicy" >
+             <enum>Qt::StrongFocus</enum>
+            </property>
+            <property name="alignment" >
+             <set>Qt::AlignRight</set>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="3" colspan="2" >
+           <widget class="QLabel" name="textLabel3_2_5" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>5</hsizetype>
+              <vsizetype>5</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text" >
+             <string>Volumen Unidad:</string>
+            </property>
+            <property name="alignment" >
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0" >
+           <widget class="QLabel" name="textLabel3_2_4" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>5</hsizetype>
+              <vsizetype>5</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text" >
+             <string>Peso Unidad:</string>
+            </property>
+            <property name="alignment" >
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1" >
+           <widget class="QLineEdit" name="m_pvparticulo" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="focusPolicy" >
+             <enum>Qt::StrongFocus</enum>
+            </property>
+            <property name="alignment" >
+             <set>Qt::AlignRight</set>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0" >
+           <widget class="QLabel" name="textLabel3_2_3" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>5</hsizetype>
+              <vsizetype>5</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text" >
+             <string>P.V.P. s/IVA:</string>
+            </property>
+            <property name="alignment" >
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1" colspan="5" >
+           <widget class="QLineEdit" name="m_nombrearticulo" />
+          </item>
+          <item row="1" column="0" >
+           <widget class="QLabel" name="textLabel2" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>5</hsizetype>
+              <vsizetype>5</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text" >
+             <string>Nombre del articulo:</string>
+            </property>
+            <property name="alignment" >
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1" colspan="5" >
+           <widget class="QLineEdit" name="m_abrevarticulo" >
+            <property name="enabled" >
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0" >
+           <widget class="QLabel" name="textLabel12" >
+            <property name="enabled" >
+             <bool>true</bool>
+            </property>
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>5</hsizetype>
+              <vsizetype>5</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text" >
+             <string>Texto para etiqueta:</string>
+            </property>
+            <property name="alignment" >
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="2" colspan="2" >
+           <widget class="QLabel" name="textLabel10" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>5</hsizetype>
+              <vsizetype>5</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text" >
+             <string>Tipo de I.V.A.:</string>
+            </property>
+            <property name="alignment" >
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="4" colspan="2" >
+           <widget class="QComboBox" name="m_combotipo_iva" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>123</width>
+              <height>0</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" colspan="6" >
+           <widget class="BusquedaTipoArticulo" native="1" name="m_tipoarticulo" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>7</hsizetype>
+              <vsizetype>7</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>0</width>
+              <height>74</height>
+             </size>
+            </property>
+            <property name="focusPolicy" >
+             <enum>Qt::StrongFocus</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
        <item row="3" column="1" >
         <spacer>
          <property name="orientation" >
@@ -638,100 +875,18 @@
          </property>
         </spacer>
        </item>
-       <item rowspan="2" row="0" column="1" >
-        <widget class="QGroupBox" name="groupBox_4" >
-         <property name="title" >
-          <string>Imagen del articulo:</string>
+       <item row="3" column="0" >
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Vertical</enum>
          </property>
-         <layout class="QVBoxLayout" >
-          <property name="margin" >
-           <number>5</number>
-          </property>
-          <property name="spacing" >
-           <number>5</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="m_imagen" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>5</hsizetype>
-              <vsizetype>5</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize" >
-             <size>
-              <width>150</width>
-              <height>150</height>
-             </size>
-            </property>
-            <property name="frameShape" >
-             <enum>QFrame::Box</enum>
-            </property>
-            <property name="frameShadow" >
-             <enum>QFrame::Sunken</enum>
-            </property>
-            <property name="pixmap" >
-             <pixmap/>
-            </property>
-            <property name="scaledContents" >
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="mui_cambiarimagen" >
-            <property name="text" >
-             <string>Cam&amp;biar imagen</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item row="2" column="1" >
-        <widget class="QGroupBox" name="groupBox_3" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>5</hsizetype>
-           <vsizetype>0</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
+         <property name="sizeHint" >
+          <size>
+           <width>20</width>
+           <height>21</height>
+          </size>
          </property>
-         <property name="title" >
-          <string>Otros datos:</string>
-         </property>
-         <layout class="QVBoxLayout" >
-          <property name="margin" >
-           <number>5</number>
-          </property>
-          <property name="spacing" >
-           <number>5</number>
-          </property>
-          <item>
-           <widget class="QCheckBox" name="m_presentablearticulo" >
-            <property name="toolTip" >
-             <string>Incluir este artículo en el catálogo.</string>
-            </property>
-            <property name="text" >
-             <string>&amp;Incluir en el catálogo.</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="m_controlstockarticulo" >
-            <property name="toolTip" >
-             <string>Activar el control de stock para este artículo.</string>
-            </property>
-            <property name="text" >
-             <string>Activar el &amp;control de stock.</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
+        </spacer>
        </item>
        <item row="0" column="0" >
         <widget class="QGroupBox" name="groupBox" >
@@ -805,180 +960,100 @@
          </layout>
         </widget>
        </item>
-       <item rowspan="2" row="1" column="0" >
-        <widget class="QGroupBox" name="groupBox_2" >
+       <item row="2" column="1" >
+        <widget class="QGroupBox" name="groupBox_3" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>5</hsizetype>
-           <vsizetype>5</vsizetype>
+           <vsizetype>0</vsizetype>
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
          <property name="title" >
-          <string>Informacion del articulo:</string>
+          <string>Otros datos:</string>
          </property>
-         <layout class="QGridLayout" >
+         <layout class="QVBoxLayout" >
           <property name="margin" >
            <number>5</number>
           </property>
           <property name="spacing" >
            <number>5</number>
           </property>
-          <item row="0" column="0" colspan="4" >
-           <widget class="BusquedaTipoArticulo" native="1" name="m_tipoarticulo" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>7</hsizetype>
-              <vsizetype>7</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize" >
-             <size>
-              <width>0</width>
-              <height>74</height>
-             </size>
-            </property>
-            <property name="focusPolicy" >
-             <enum>Qt::StrongFocus</enum>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="3" >
-           <widget class="QComboBox" name="m_combotipo_iva" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>0</hsizetype>
-              <vsizetype>0</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize" >
-             <size>
-              <width>123</width>
-              <height>0</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="2" >
-           <widget class="QLabel" name="textLabel10" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>5</hsizetype>
-              <vsizetype>5</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
+          <item>
+           <widget class="QCheckBox" name="m_presentablearticulo" >
+            <property name="toolTip" >
+             <string>Incluir este artículo en el catálogo.</string>
             </property>
             <property name="text" >
-             <string>Tipo de I.V.A.:</string>
-            </property>
-            <property name="alignment" >
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             <string>&amp;Incluir en el catálogo.</string>
             </property>
            </widget>
           </item>
-          <item row="3" column="1" >
-           <widget class="QLineEdit" name="m_pvparticulo" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>0</hsizetype>
-              <vsizetype>0</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="focusPolicy" >
-             <enum>Qt::StrongFocus</enum>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0" >
-           <widget class="QLabel" name="textLabel3_2_3" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>5</hsizetype>
-              <vsizetype>5</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
+          <item>
+           <widget class="QCheckBox" name="m_controlstockarticulo" >
+            <property name="toolTip" >
+             <string>Activar el control de stock para este artículo.</string>
             </property>
             <property name="text" >
-             <string>P.V.P. s/IVA:</string>
-            </property>
-            <property name="alignment" >
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             <string>Activar el &amp;control de stock.</string>
             </property>
            </widget>
-          </item>
-          <item row="2" column="0" >
-           <widget class="QLabel" name="textLabel12" >
-            <property name="enabled" >
-             <bool>true</bool>
-            </property>
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>5</hsizetype>
-              <vsizetype>5</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="text" >
-             <string>Texto para etiqueta:</string>
-            </property>
-            <property name="alignment" >
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="1" colspan="3" >
-           <widget class="QLineEdit" name="m_abrevarticulo" >
-            <property name="enabled" >
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0" >
-           <widget class="QLabel" name="textLabel2" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>5</hsizetype>
-              <vsizetype>5</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="text" >
-             <string>Nombre del articulo:</string>
-            </property>
-            <property name="alignment" >
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1" colspan="3" >
-           <widget class="QLineEdit" name="m_nombrearticulo" />
           </item>
          </layout>
         </widget>
        </item>
-       <item row="3" column="0" >
-        <spacer>
-         <property name="orientation" >
-          <enum>Qt::Vertical</enum>
+       <item rowspan="2" row="0" column="1" >
+        <widget class="QGroupBox" name="groupBox_4" >
+         <property name="title" >
+          <string>Imagen del articulo:</string>
          </property>
-         <property name="sizeHint" >
-          <size>
-           <width>20</width>
-           <height>21</height>
-          </size>
-         </property>
-        </spacer>
+         <layout class="QVBoxLayout" >
+          <property name="margin" >
+           <number>5</number>
+          </property>
+          <property name="spacing" >
+           <number>5</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="m_imagen" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>5</hsizetype>
+              <vsizetype>5</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>150</width>
+              <height>150</height>
+             </size>
+            </property>
+            <property name="frameShape" >
+             <enum>QFrame::Box</enum>
+            </property>
+            <property name="frameShadow" >
+             <enum>QFrame::Sunken</enum>
+            </property>
+            <property name="pixmap" >
+             <pixmap/>
+            </property>
+            <property name="scaledContents" >
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="mui_cambiarimagen" >
+            <property name="text" >
+             <string>Cam&amp;biar imagen</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
        </item>
       </layout>
      </widget>

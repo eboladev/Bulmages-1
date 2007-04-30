@@ -48,6 +48,8 @@ Articulo::Articulo(company *comp, QWidget *parent, Qt::WFlags f ) : FichaBf(comp
   addDBCampo("stockarticulo", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Articulo", "Stock"));
   addDBCampo("inactivoarticulo", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("Articulo", "Inactivo"));
   addDBCampo("pvparticulo", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate("Articulo", "P.V.P. base"));
+  addDBCampo("pesoundarticulo", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate("Articulo", "Peso Unidad"));
+  addDBCampo("volumenundarticulo", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate("Articulo", "Volumen Unidad"));
   _depura("END Articulo::Articulo", 0);
 }
 
@@ -57,29 +59,4 @@ Articulo::~Articulo() {
     _depura("END Articulo::~Articulo", 0);
 }
 
-/** Se encarga de realizar el pintado de la ficha a partir de los datos cargados
-    en el DBRecord.
-*/
-void Articulo::pintar() {
-  _depura("Articulo::pintar", 0);
-  /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
-  int res = g_plugins->lanza("Articulo_pintar", this);
-  if (res != 0)
-    return;
-  pintaidarticulo(DBvalue("idarticulo"));
-  pintacodarticulo(DBvalue("codarticulo"));
-  pintanomarticulo(DBvalue("nomarticulo"));
-  pintaabrevarticulo(DBvalue("abrevarticulo"));
-  pintaobservarticulo(DBvalue("observarticulo"));
-  pintapresentablearticulo(DBvalue("presentablearticulo"));
-  pintacontrolstockarticulo(DBvalue("controlstockarticulo"));
-  pintaidtipo_articulo(DBvalue("idtipo_articulo"));
-  pintaidtipo_iva(DBvalue("idtipo_iva"));
-  pintacodigocompletoarticulo(DBvalue("codigocompletoarticulo"));
-  pintaidfamilia(DBvalue("idfamilia"));
-  pintastockarticulo(DBvalue("stockarticulo"));
-  pintainactivoarticulo(DBvalue("inactivoarticulo"));
-  pintapvparticulo(DBvalue("pvparticulo"));
-  _depura("END Articulo::pintar", 0);
-}
 
