@@ -30,6 +30,7 @@
 #include "funcaux.h"
 #include "pgimportfiles.h"
 #include "informereferencia.h"
+#include "plugins.h"
 
 
 /** Inicializa todos los componentes del listado.
@@ -41,6 +42,11 @@ ClientsList::ClientsList(company *comp, QWidget *parent, Qt::WFlags flag, edmode
     _depura("ClientsList::ClientsList", 0);
     setupUi(this);
     m_companyact = comp;
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("ClientsList_ClientsList", this);
+    if (res != 0)
+        return;
+
     mui_list->setcompany(comp);
     mdb_idcliente = "";
     mdb_cifcliente = "";
@@ -133,16 +139,6 @@ void ClientsList::on_mui_imprimir_clicked() {
 }
 
 
-/** SLOT que responde a la pulsacion del boton informecliente.
-    El informe es un informe de todas las operaciones realizadas por cada cliente y un resumen de totales del mismo.
-    Instancia InformeClientes, lo inicializa y lo lanza.
-*/
-void ClientsList::on_mui_informeclientes_clicked() {
-    _depura("ClientsList::on_mui_informeclientes_clicked", 0);
-    InformeClientes info(m_companyact);
-    info.generarInforme();
-    _depura("END ClientsList::on_mui_informeclientes_clicked", 0);
-}
 
 
 /** SLOT que responde a la pulsacion del boton borrar.
@@ -302,7 +298,7 @@ void ClientsList::on_mui_configurar_toggled(bool checked) {
     } // end if
 }
 
-
+    company *ClientsList::getcompany() {return m_companyact;}
 
 /// =============================================================================
 ///                    SUBFORMULARIO

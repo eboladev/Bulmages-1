@@ -1,6 +1,8 @@
 /***************************************************************************
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2006 by Fco. Javier M. C.                               *
+ *   fcojavmc@todo-redes.com                                               *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -17,48 +19,41 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-
-#ifndef __INFORMEREFERENCIA__
-#define __INFORMEREFERENCIA__
-
-#include <QString>
+#include <QToolButton>
 
 
-class company;
+#include "informeqtoolbutton.h"
 
 
-/// Genera un informe utilizando una referencia.
-/** */
-class InformeReferencia {
-private:
-    QString m_referencia;
-    company* companyact;
+#include "plugininformeclientes.h"
+#include "company.h"
+#include "funcaux.h"
 
-public:
-    InformeReferencia(company *);
-    ~InformeReferencia();
-    void setreferencia(QString val) {
-        m_referencia = val;
-    };
-    void generarinforme();
-};
+void entryPoint(bulmafact *bges) {
+    _depura("Estoy dentro del plugin de informe Clientes", 0);
+}
 
 
-/// Genera un informe utilizando un identificador de cliente.
-/** */
-class InformeCliente {
-private:
-    QString m_idcliente;
-    company* companyact;
 
-public:
-    InformeCliente(company *);
-    ~InformeCliente();
-    void setCliente(QString val) {
-        m_idcliente = val;
-    };
-    void generarInforme();
-};
+int ClientsList_ClientsList(ClientsList *l) {
+       _depura("ClientsList_ClientsList", 0);
+//================================
+       InformeQToolButton *mui_exporta_efactura2 = new InformeQToolButton( l,  l->mui_plugbotones);
 
-#endif
+       QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *>("hboxLayout1");
+       if (!m_hboxLayout1) {
+                m_hboxLayout1 = new QHBoxLayout(l->mui_plugbotones);
+                m_hboxLayout1->setSpacing(5);
+                m_hboxLayout1->setMargin(5);
+                m_hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));
+       } // end if
+       m_hboxLayout1->addWidget(mui_exporta_efactura2);
+//================================
+       _depura("END ClientsList_ClientsList", 0);
+       return 0;
+}
+
+
+
+
 

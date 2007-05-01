@@ -18,47 +18,24 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef __INFORMEREFERENCIA__
-#define __INFORMEREFERENCIA__
-
-#include <QString>
-
-
-class company;
-
-
-/// Genera un informe utilizando una referencia.
-/** */
-class InformeReferencia {
-private:
-    QString m_referencia;
-    company* companyact;
-
-public:
-    InformeReferencia(company *);
-    ~InformeReferencia();
-    void setreferencia(QString val) {
-        m_referencia = val;
-    };
-    void generarinforme();
-};
-
-
-/// Genera un informe utilizando un identificador de cliente.
-/** */
-class InformeCliente {
-private:
-    QString m_idcliente;
-    company* companyact;
-
-public:
-    InformeCliente(company *);
-    ~InformeCliente();
-    void setCliente(QString val) {
-        m_idcliente = val;
-    };
-    void generarInforme();
-};
-
+#ifdef Q_WS_WIN
+# define MY_EXPORT __declspec(dllexport)
+#else
+# define MY_EXPORT
 #endif
+
+#include <QStringList>
+#include <QWidget>
+#include <QIcon>
+#include <QObject>
+
+#include "clientslist.h"
+#include "bulmafact.h"
+
+
+extern "C" MY_EXPORT void entryPoint(bulmafact *);
+
+extern "C" MY_EXPORT int ClientsList_ClientsList(ClientsList *);
+
+
 

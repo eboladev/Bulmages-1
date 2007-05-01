@@ -72,6 +72,7 @@ private:
 public:
     ClientsList(company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode);
     ~ClientsList();
+    company *getcompany();
     void selectMode();
     void editMode();
     void presenta();
@@ -90,7 +91,6 @@ public slots:
     virtual void on_mui_crear_clicked();
     virtual void on_mui_editar_clicked();
     virtual void on_mui_imprimir_clicked();
-    virtual void on_mui_informeclientes_clicked();
     virtual void on_mui_actualizar_clicked();
     virtual void on_mui_exportar_clicked();
     virtual void on_mui_importar_clicked();
