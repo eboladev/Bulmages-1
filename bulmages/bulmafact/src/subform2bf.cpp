@@ -360,14 +360,18 @@ QWidget *QSubForm2BfDelegate::createEditor(QWidget *parent, const QStyleOptionVi
         QTextEditDelegate *editor = new QTextEditDelegate(parent);
         editor->setObjectName("QTextEditDelegate");
         return editor;
+/*
     } else if (linea->nomcampo() == "cant" + m_subform->tableName()
                || linea->nomcampo() == "pvp" + m_subform->tableName()
                || linea->nomcampo() == "descuento" + m_subform->tableName()
                || linea->nomcampo() == "iva" + m_subform->tableName()) {
+
         QDoubleSpinBox *editor = new QDoubleSpinBox(parent);
         editor->setMinimum(-1000000);
         editor->setMaximum(1000000);
         return editor;
+*/
+
     } else if (linea->nomcampo() == "codigocompletoarticulo") {
         BusquedaArticuloDelegate *editor = new BusquedaArticuloDelegate(parent);
         editor->setcompany((company *)m_subform->companyact());
@@ -398,15 +402,22 @@ void QSubForm2BfDelegate::setModelData(QWidget *editor, QAbstractItemModel *mode
         QTextEditDelegate *textedit = qobject_cast<QTextEditDelegate *>(editor);
         model->setData(index, textedit->toPlainText());
         return;
+/// Quitamos el SpinBox para cantidades porque funciona realmente mal */
+/*
     } else if (linea->nomcampo() == "cant" + m_subform->tableName()
                || linea->nomcampo() == "pvp" + m_subform->tableName()
                || linea->nomcampo() == "descuento" + m_subform->tableName()
                || linea->nomcampo() == "iva" + m_subform->tableName()   ) {
+
         QDoubleSpinBox *spinBox = static_cast<QDoubleSpinBox*>(editor);
-        spinBox->interpretText();
+	// Esto funciona como el culo. con cantidad 1090,89 se va
+        //spinBox->interpretText();
         QString value = spinBox->text();
-        //value = value.replace(",", ".");
+        // value = value.replace(",", ".");
         model->setData(index, value );
+
+*/
+
     } else if (linea->nomcampo() == "codigocompletoarticulo") {
         BusquedaArticuloDelegate *comboBox = static_cast<BusquedaArticuloDelegate*>(editor);
         QString value = comboBox->currentText();
@@ -433,13 +444,18 @@ void QSubForm2BfDelegate::setEditorData(QWidget* editor, const QModelIndex& inde
         QString data = index.model()->data(index, Qt::DisplayRole).toString();
         QTextEditDelegate *textedit = qobject_cast<QTextEditDelegate*>(editor);
         textedit->setText(data);
+/// Quitamos el SpinBox para cantidades pq funciona realmente mal
+/*
     } else if (linea->nomcampo() == "cant" + m_subform->tableName()
                || linea->nomcampo() == "pvp" + m_subform->tableName()
                || linea->nomcampo() == "descuento" + m_subform->tableName()
                || linea->nomcampo() == "iva" + m_subform->tableName()   ) {
+
         QString value = index.model()->data(index, Qt::DisplayRole).toString();
         QDoubleSpinBox *spinBox = static_cast<QDoubleSpinBox*>(editor);
         spinBox->setValue(value.toDouble());
+*/
+
     } else if (linea->nomcampo() == "codigocompletoarticulo") {
         QString value = index.model()->data(index, Qt::DisplayRole).toString();
         BusquedaArticuloDelegate *comboBox = static_cast<BusquedaArticuloDelegate*>(editor);

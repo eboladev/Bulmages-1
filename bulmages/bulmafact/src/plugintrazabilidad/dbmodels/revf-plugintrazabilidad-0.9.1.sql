@@ -77,7 +77,7 @@ DECLARE
         rec RECORD;
 
 BEGIN
-	DROP TABLE movimiento;
+--	DROP TABLE movimiento;
         SELECT INTO rec * FROM pg_attribute WHERE attname = ''idmovimiento'';
         IF NOT FOUND THEN
                 CREATE TABLE movimiento (

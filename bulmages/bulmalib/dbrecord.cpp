@@ -120,6 +120,7 @@ QString DBCampo::valorcampoprep(int &error) {
     case DBnumeric:
         if (m_valorcampo == "")
             return "NULL";
+//	m_valorcampo.replace(".", "");
         m_valorcampo.replace(",", ".");
         return "'" + m_conexionbase->sanearCadena(m_valorcampo) + "'";
     case DBboolean:

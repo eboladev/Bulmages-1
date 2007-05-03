@@ -101,7 +101,7 @@ QString Fixed::toQString() {
     do {
         if (n == precision) {
             if (n > 0 || options & DECIMAL)
-                buffer[sizeof(buffer) - ++n] = '.';
+                buffer[sizeof(buffer) - ++n] = ',';
             units = n;
         }
         Fixed_numerator y;
