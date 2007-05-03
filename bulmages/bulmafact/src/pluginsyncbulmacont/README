@@ -1,0 +1,29 @@
+Sincronizacion con Bulmacont.
+==============================
+
+(C) 2007 Conetxia Soluciones Informaticas.
+Software Bajo Licencia G.P.L. (Vea el archivo COPYNG adjunto)
+
+
+Versión: 0.9.1
+
+
+Prerequisitos:
+
+Debe instalarse DBlink que esta en el paquete postgresql-contrib
+
+para poner DBlink en la base de datos seleccionada debe hacerse:
+
+	$ psql database < dblink.sql
+
+Instalacion del plugin
+----------------------
+
+Debe ejecutarse el script de funcionamiento en la base de datos seleccionada.
+
+Ejemplo:
+	$ psql bulmafact < revf-pluginsyncbulmacont-0.9.1.sql
+
+Una vez instalado el plugin debe configurarse el parametro de la facturacion DataBaseContabilidad y especificar en dicho parametro la base de datos de contabilidad que se debe actualizar automaticamente.
+
+Una vez hechos estos pasos todas las operaciones que realicemos con faturacion serán traspasadas a contabilidad.

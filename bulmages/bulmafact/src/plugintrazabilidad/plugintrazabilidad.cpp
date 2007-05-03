@@ -101,6 +101,10 @@ int ListLinFacturaProveedorView_ListLinFacturaProveedorView(ListLinFacturaProvee
 int SubForm2Bf_on_mui_list_editFinished(SubForm2Bf *subform) {
     _depura("SubForm2Bf_on_mui_list_editFinished", 0);
 
+    if(subform->m_prevRow == -1 || subform->m_prevCol == -1) {
+	return 0;
+    } // end if
+
     SDBRecord *rec = subform->lineaat(subform->m_prevRow);
     SDBCampo *camp = (SDBCampo *) subform->item(subform->m_prevRow, subform->m_prevCol);
     SDBCampo *campact = (SDBCampo *) subform->item(subform->currentRow(), subform->currentColumn());
@@ -111,6 +115,7 @@ int SubForm2Bf_on_mui_list_editFinished(SubForm2Bf *subform) {
 	cursor2 *cur = subform->companyact()->cargacursor(query);
 	if (!cur->eof()) {
 		if (campact->nomcampo() == "codigocompletoarticulo") {
+			subform->situarse1(subform->m_prevRow, subform->m_prevCol);
 			campact->setText(cur->valor("codigocompletoarticulo"));
 		} else {
 			rec->setDBvalue("idarticulo", cur->valor("idarticulo"));
