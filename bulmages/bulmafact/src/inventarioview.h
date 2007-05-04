@@ -40,28 +40,16 @@ class InventarioView : public Ficha, public Ui_InventarioBase, public Inventario
 public:
     InventarioView(company *, QWidget *parent = 0);
     ~InventarioView();
-    void pintaidinventario(QString) {}
-    void pintafechainventario(QString id) {
-        mui_fechainventario->setText(id);
-    }
-    void pintanominventario(QString id) {
-        mui_nominventario->setText(id);
-    }
+    void pintaidinventario(QString);
+    void pintafechainventario(QString id);
+    void pintanominventario(QString id);
     virtual int sacaWindow();
 
 public slots:
     virtual void on_mui_guardar2_clicked();
-    virtual void on_mui_aceptar_clicked() {
-        setfechainventario(mui_fechainventario->text());
-        setnominventario(mui_nominventario->text());
-        if (!Inventario::guardar()) {
-            close();
-        } // end if
-    }
+    virtual void on_mui_aceptar_clicked();
     virtual void on_mui_borrar2_clicked();
-    virtual void on_mui_pregenerar_clicked() {
-        pregenerar();
-    }
+    virtual void on_mui_pregenerar_clicked();
 };
 
 #endif

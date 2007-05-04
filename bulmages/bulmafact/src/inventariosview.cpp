@@ -27,10 +27,38 @@
 #include "funcaux.h"
 #include "inventarioview.h"
 
+
 #define COL_IDINVENTARIO 0
 #define COL_NOMINVENTARIO 1
 #define COL_FECHAINVENTARIO 2
 
+
+// ==============================================
+//             InventariosView
+// ==============================================
+
+void InventariosView::setcompany(company *comp) {
+    companyact = comp;
+    mui_listado->setcompany(comp);
+}
+
+void InventariosView::meteWindow(QString nom, QObject *obj) {
+    if (companyact != NULL) {
+        companyact->meteWindow(nom, obj);
+    } // end if
+}
+
+void InventariosView::on_mui_listado_itemDoubleClicked(QTableWidgetItem *) {
+    on_mui_editar_clicked();
+}
+
+void InventariosView::on_mui_crear_clicked() {
+    companyact->s_newInventario();
+}
+
+void InventariosView::on_mui_listado_itemDoubleClicked() {
+    on_mui_editar_clicked();
+}
 
 InventariosView::InventariosView(QWidget *parent, Qt::WFlags flag)
         : Ficha(parent, flag) {
@@ -97,10 +125,103 @@ void InventariosView::on_mui_borrar2_clicked() {
     } // end if
 }
 
+void InventariosView::on_mui_imprimir_clicked() {
+	_depura("InventariosView::on_mui_imprimir_clicked", 0);
+
+   QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "listado.rml";
+    QString archivod = confpr->valor(CONF_DIR_USER) + "listado.rml";
+    QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
+
+    /// Copiamos el archivo.
+#ifdef WINDOWS
+
+    archivo = "copy " + archivo + " " + archivod;
+#else
+
+    archivo = "cp " + archivo + " " + archivod;
+#endif
+
+    system (archivo.toAscii().constData());
+    /// Copiamos el logo
+#ifdef WINDOWS
+
+    archivologo = "copy " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
+#else
+
+    archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
+#endif
+
+    system(archivologo.toAscii().constData());
+
+
+    QFile file;
+    file.setFileName(archivod);
+    file.open(QIODevice::ReadOnly);
+    QTextStream stream(&file);
+    QString buff = stream.readAll();
+    file.close();
+
+
+	QString txt = "<blockTable style=\"tabla\" repeatRows=\"1\">\n";
+	txt += "<tr>\n\t<td></td>\n";
+	
+	QString query = "SELECT * FROM articulo ";
+	cursor2 *almacenes = companyact->cargacursor("SELECT * FROM almacen");
+	while (!almacenes->eof()) {
+		QString idalmacen = almacenes->valor("idalmacen");
+		query += " LEFT JOIN ( SELECT stock AS stock"+idalmacen+", idarticulo FROM stock_almacen WHERE idalmacen="+almacenes->valor("idalmacen")+") AS t" + idalmacen +" ON " + " t"+idalmacen+".idarticulo = articulo.idarticulo";
+
+		txt += "\t<td>" + almacenes->valor("nomalmacen") + "</td>\n";
+		almacenes->siguienteregistro();
+	} // end while
+	txt += "</tr>\n";
+	query += " WHERE articulo.stockarticulo <> 0";
+
+
+	cursor2 *cstock = companyact->cargacursor(query);
+	while (!cstock->eof()) {
+		txt += "<tr>\n";
+		txt += "\t<td>" + cstock->valor("nomarticulo")+"</td>\n";
+		almacenes->primerregistro();
+		while(!almacenes->eof()) {
+			txt += "\t<td>"+cstock->valor("stock"+almacenes->valor("idalmacen"))+"</td>\n";
+			almacenes->siguienteregistro();
+		} // end while
+		cstock->siguienteregistro();
+		txt += "</tr>\n";
+	} // end while
+	delete cstock;
+	delete almacenes;
+	txt += "</blockTable>\n";
+
+    buff.replace("[story]", txt);
+    buff.replace("[titulo]", "Listado de Stocks");
+
+
+    if (file.open(QIODevice::WriteOnly)) {
+        QTextStream stream(&file);
+        stream << buff;
+        file.close();
+    } // end if
+
+    invocaPDF("listado");
+	_depura("END InventariosView::on_mui_imprimir_clicked", 0);
+}
+
 
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
+
+void InventariosSubForm::cargar() {
+    _depura("InventariosSubForm::cargar", 0);
+    QString SQLQuery = "SELECT * FROM inventario";
+    cursor2 * cur= companyact()->cargacursor(SQLQuery);
+    SubForm3::cargar(cur);
+    delete cur;
+    _depura("END InventariosSubForm::cargar", 0);
+}
+
 InventariosSubForm::InventariosSubForm(QWidget *parent) : SubForm2Bf(parent) {
     setDBTableName("inventario");
     setDBCampoId("idinventario");

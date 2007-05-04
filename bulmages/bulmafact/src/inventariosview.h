@@ -33,17 +33,10 @@ class InventariosSubForm : public SubForm2Bf {
 
 public:
     InventariosSubForm(QWidget *parent = 0);
-    ~InventariosSubForm() {}
-    ;
+    ~InventariosSubForm() {};
 
 public slots:
-    virtual void cargar() {
-        _depura("InventariosSubform::cargar\n", 0);
-        QString SQLQuery = "SELECT * FROM inventario";
-        cursor2 * cur= companyact()->cargacursor(SQLQuery);
-        SubForm3::cargar(cur);
-        delete cur;
-    };
+    virtual void cargar();
 };
 
 
@@ -63,29 +56,17 @@ public:
     InventariosView(company *,QWidget *parent = 0);
     ~InventariosView();
     void inicializa();
-    void setcompany(company *comp) {
-        companyact = comp;
-        mui_listado->setcompany(comp);
-    }
-    void meteWindow(QString nom, QObject *obj) {
-        if (companyact != NULL) {
-            companyact->meteWindow(nom, obj);
-        }
-    }
+    void setcompany(company *comp);
+    void meteWindow(QString nom, QObject *obj);
     virtual int sacaWindow();
 
 public slots:
-    virtual void on_mui_listado_itemDoubleClicked(QTableWidgetItem *) {
-        on_mui_editar_clicked();
-    }
-    virtual void on_mui_crear_clicked() {
-        companyact->s_newInventario();
-    }
+    virtual void on_mui_listado_itemDoubleClicked(QTableWidgetItem *);
+    virtual void on_mui_crear_clicked();
     virtual void on_mui_editar_clicked();
-    virtual void on_mui_listado_itemDoubleClicked() {
-        on_mui_editar_clicked();
-    }
+    virtual void on_mui_listado_itemDoubleClicked();
     virtual void on_mui_borrar2_clicked();
+    virtual void on_mui_imprimir_clicked();
 };
 
 #endif

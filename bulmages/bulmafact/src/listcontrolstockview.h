@@ -35,17 +35,11 @@ class ListControlStockView : public SubForm2Bf {
 public:
     QString mdb_idinventario;
     ListControlStockView(QWidget *parent = 0, const char *name = 0);
-    ~ListControlStockView() {}
-    ;
+    ~ListControlStockView();
     int borrar();
-
 public slots:
     virtual void cargar(QString);
-    virtual int guardar() {
-        SubForm2Bf::guardar();
-        cargar(mdb_idinventario);
-        return 0;
-    }
+    virtual int guardar();
     virtual void pregenerar();
 };
 

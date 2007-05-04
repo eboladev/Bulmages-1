@@ -89,17 +89,18 @@ int Inventario::cargar(QString idbudget) {
 
 int Inventario::guardar() {
     _depura("Inventario::guardar()", 0);
+    companyact->begin();
     try {
         QString id;
-        companyact->begin();
         DBsave(id);
         setidinventario(id);
         listalineas->guardar();
         companyact->commit();
+        cargar(id);
         _depura("END Inventario::guardar()", 0);
         return 0;
     } catch (...) {
-        _depura("Error guardando el inventario", 1);
+        _depura("Error guardando el inventario", 2);
         companyact->rollback();
         return -1;
     } // end try
@@ -112,91 +113,62 @@ void Inventario::pregenerar() {
     _depura("END Inventario::pregenerar", 0);
 }
 
+void Inventario::setListControlStock(ListControlStockView *a) {
+    _depura("Inventario::setListControlStock", 0);
+    listalineas = a;
+    listalineas->setcompany(companyact);
+}
+
+ListControlStockView *Inventario::getlistalineas() {
+    return listalineas;
+}
+
+void Inventario::pintaidinventario(QString) {}
+void Inventario::pintafechainventario(QString) {}
+void Inventario::pintanominventario(QString) {}
+void Inventario::setidinventario(QString val) {
+    setDBvalue("idinventario", val);
+    listalineas->setColumnValue("idinventario", val);
+}
+void Inventario::setfechainventario(QString val) {
+    setDBvalue("fechainventario", val);
+}
+void Inventario::setnominventario(QString val) {
+    setDBvalue("nominventario", val);
+}
+
+
 
 void Inventario::imprimirInventario() {
-    /*
-        /// Copiamos el archivo
-        QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"facturap.rml";
-        archivo = "cp "+archivo+" /tmp/facturap.rml";
-        system (archivo.ascii());
-        
-        /// Copiamos el logo
-        archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
-        archivo = "cp "+archivo+" /tmp/logo.jpg";
-        system (archivo.ascii());
-        
-        QFile file;
-        file.setName( "/tmp/facturap.rml" );
-        file.open( QIODevice::ReadOnly );
-        QTextStream stream(&file);
-        QString buff = stream.read();
-        file.close();
-        QString fitxersortidatxt;
-        // Linea de totales del presupuesto
-     
-        QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor="+mdb_idproveedor;
-        cursor2 *cur = companyact->cargacursor(SQLQuery);
-        if(!cur->eof()) {
-            buff.replace("[dirproveedor]",cur->valor("dirproveedor"));
-            buff.replace("[poblproveedor]",cur->valor("poblproveedor"));
-            buff.replace("[telproveedor]",cur->valor("telproveedor"));
-            buff.replace("[nomproveedor]",cur->valor("nomproveedor"));
-            buff.replace("[cifproveedor]",cur->valor("cifproveedor"));
-        }// end if
-        buff.replace("[numfacturap]",mdb_numfacturap);
-        buff.replace("[ffacturap]",mdb_ffacturap);
-        buff.replace("[comentfacturap]",mdb_comentfacturap);
-        buff.replace("[descfacturap]",mdb_descfacturap);
-        buff.replace("[reffacturap]",mdb_reffacturap);
-        buff.replace("[codigoserie_facturap]",mdb_codigoserie_facturap);
-        fitxersortidatxt = "<blockTable style=\"tabla\" colWidths=\"10cm, 2cm, 2cm, 3cm\" repeatRows=\"1\">";
-        fitxersortidatxt += "<tr>";
-        fitxersortidatxt += "	<td>Concepto</td>";
-        fitxersortidatxt += "	<td>Cantidad</td>";
-        fitxersortidatxt += "	<td>Precio Und.</td>";
-        fitxersortidatxt += "	<td>Total</td>";
-        fitxersortidatxt += "</tr>";
-     
-        QString l;
-        LinInventario *linea;
-        uint i = 0;
-        for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
-            fitxersortidatxt += "<tr>";
-            fitxersortidatxt += "	<td>"+linea->desclfacturap()+"</td>";
-            fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->cantlfacturap().toFloat())+"</td>";
-            fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->pvplfacturap().toFloat())+"</td>";
-            fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->cantlfacturap().toFloat() * linea->pvplfacturap().toFloat())+"</td>";
-            fitxersortidatxt += "</tr>";
-            i++;
-        }// end for
-        fitxersortidatxt += "<tr>";
-        fitxersortidatxt += "	<td></td>";
-        fitxersortidatxt += "	<td></td>";
-        fitxersortidatxt += "	<td>Base</td>";
-        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",listalineas->calculabase())+"</td>";
-        fitxersortidatxt += "</tr>";
-        fitxersortidatxt += "<tr>";
-        fitxersortidatxt += "	<td></td>";
-        fitxersortidatxt += "	<td></td>";
-        fitxersortidatxt += "	<td>Iva</td>";
-        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f", listalineas->calculaiva())+"</td>";
-        fitxersortidatxt += "</tr>";
-        fitxersortidatxt += "<tr>";
-        fitxersortidatxt += "	<td></td>";
-        fitxersortidatxt += "	<td></td>";
-        fitxersortidatxt += "	<td>Total</td>";
-        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",listalineas->calculabase()+listalineas->calculaiva())+"</td>";
-        fitxersortidatxt += "</tr>";
-        fitxersortidatxt += "</blockTable>";
-     
-        buff.replace("[story]",fitxersortidatxt);
-        if ( file.open( QIODevice::WriteOnly ) ) {
-            QTextStream stream( &file );
-            stream << buff;
-            file.close();
-        }// end if
-        system("btrml2pdf /tmp/facturap.rml > /tmp/facturap.pdf");
-        system("kpdf /tmp/facturap.pdf");
-    */
+	_depura("Inventario::imprimirInventario", 0);
+	QString txt = "<blockTable>\n";
+	txt += "<tr><td></td>\n";
+	
+	QString query = "SELECT idarticulo, codigocompeltoarticulo, nomarticulo FROM articulo ";
+	cursor2 *almacenes = companyact->cargacursor("SELECT * FROM almacen");
+	while (!almacenes->eof()) {
+		QString idalmacen = almacenes->valor("idalmacen");
+		query += " LEFT JOIN ( SELECT stock, idarticulo FROM stock_almacen WHERE idalmacen="+almacenes->valor("idalmacen")+") AS t" + idalmacen +" ON " + " t"+idalmacen+".idarticulo = articulo.idarticulo";
+		txt += "<td>" + almacenes->valor("nomalmacen") + "</td>";
+		almacenes->siguienteregistro();
+	} // end while
+	delete almacenes;
+	txt += "</tr>\n";
+
+	cursor2 *cstock = companyact->cargacursor(query);
+	while (!cstock->eof()) {
+		txt += "<tr>\n";
+		txt += "<td>" + cstock->valor("nomarticulo");
+		for (int i = 0; i < cstock->numcampos(); i++) {
+			txt += "<td>"+cstock->valor(i)+"</td>";
+		} // end for
+		cstock->siguienteregistro();
+		txt += "\n";
+		txt += "</tr>\n";
+	} // end while
+	delete cstock;
+
+	_depura(txt, 2);
+	_depura("END Inventario::imprimirInventario", 0);
 }
 
