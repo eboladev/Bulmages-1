@@ -66,6 +66,7 @@ protected:
     bool m_sorting;
     /// Indica si se usa ordenacion por la base de datos. (Su uso implica que exista en la tabla el campo orden)
     bool m_orden;
+
 public:
     int m_prevRow;  /// Indica cual es el ultimo campo (fila) que se ha editado.
     int m_prevCol;  /// Indica cual es el ultimo campo (columna) que se ha editado.

@@ -1,3 +1,9 @@
+
+SUBDIRS += src/plugincatalogo
+SUBDIRS += src/plugininformeclientes
+
+r1964{
+include(privatecode.pro)
 TEMPLATE = subdirs 
 
 CONFIG += ordered

@@ -349,7 +349,7 @@ void QSubForm2BcDelegate::setModelData(QWidget *editor, QAbstractItemModel *mode
     _depura("QSubForm2BcDelegate::setModelData", 0, "CurrentRow: " + QString::number(index.row()));
 
     /// Si la fila o columna pasadas son invalidas salimos.
-    if ( index.column() < 0 || index.row() < 0)
+    if (index.column() < 0 || index.row() < 0)
         return;
 
     SHeader *linea;
@@ -359,7 +359,11 @@ void QSubForm2BcDelegate::setModelData(QWidget *editor, QAbstractItemModel *mode
         model->setData(index, textedit->toPlainText());
         return;
 
-    } else if (linea->nomcampo() == "debe" || linea->nomcampo() == "haber" + m_subform->tableName()) {
+// TODO: 04/05/07 Se quita esta linea porque hacia que los valores en la celda "haber" no apareciese
+//        con decimales. Ademas no se que es lo que tiene que hacer
+//
+//    } else if (linea->nomcampo() == "debe" || linea->nomcampo() == "haber" + m_subform->tableName()) {
+    } else if (linea->nomcampo() == "debe" || linea->nomcampo() == "haber") {
         QDoubleSpinBox2 *spinBox = static_cast<QDoubleSpinBox2*>(editor);
         spinBox->interpretText();
         QString value = spinBox->text();

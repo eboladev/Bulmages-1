@@ -20,7 +20,7 @@
 
 #include <QWidget>
 #include <QComboBox>
-
+#include <QDateTime>
 
 #include "asientosview.h"
 #include "asiento1view.h"
@@ -80,7 +80,6 @@ void asientosview::on_mui_list_cellDoubleClicked(int, int) {
 
 /// Inicializa la ventana, haciendo la consulta pertinente a la base de datos
 /// y presentando los resultados en pantalla.
-/// \TODO Falta tener en cuenta el filtrado por fechas.
 void asientosview::inicializa() {
     _depura("asientosview::inicializa", 0);
     QString cantapunt = mui_cantidadapunte->text();
@@ -93,6 +92,9 @@ void asientosview::inicializa() {
     QString textcantapunt = "";
     QString textnombreasiento = "";
     QString textejercicio = "";
+    QString buscafechainicial = mui_fechaInicial->text();
+    QString buscafechafinal = mui_fechaFinal->text();
+
     int pand = 0;
 
     /// Componemos la consulta a partir de la parte de filtrado.
@@ -117,11 +119,56 @@ void asientosview::inicializa() {
         textnombreasiento += " asiento.idasiento in (SELECT idasiento FROM apunte WHERE conceptocontable LIKE '%" + nombreasiento + "%' )";
         pand = 1;
     } // end if
-    if (mui_ejercicio->currentIndex() != 0) {
-        if (pand) {
-            textejercicio = " AND EXTRACT(YEAR FROM fecha) = '" + ejercicio + "'";
+
+    /// Comprobamos si faltan fechas de inicio o de fin en la busqueda y las establecemos
+    /// automaticamente.
+
+    /// Regla: Se prioriza la busqueda por fechas independientemente del ejercicio.
+    ///         de esta manera si se ha especificado 'fecha inicial' y 'fecha final'
+    ///         entonces el combobox de 'ejercicio' queda anulado.
+    /// Regla: Si esta especificado 'ejercicio' pero solo una fecha 'inicial' o 'final'
+    ///         se pone automaticamente la fecha que falta.
+    if (buscafechainicial != "" && buscafechafinal == "") {
+        /// Falta fecha final.
+        if (mui_ejercicio->currentIndex() == 0) {
+            /// Todos los ejercicios.
+            textejercicio = " WHERE fecha >= '" + QDateTime::fromString(buscafechainicial, "dd/MM/yyyy").toString("yyyy-MM-dd") + "'";
         } else {
-            textejercicio = " WHERE EXTRACT(YEAR FROM fecha) = '" + ejercicio + "'";
+            /// Ejercicio seleccionado. Maximo hasta final de ese a&ntilde;o,
+            buscafechafinal = "31/12/" + mui_ejercicio->currentText();
+            mui_fechaFinal->setText(buscafechafinal);
+            textejercicio = " WHERE fecha >= '" + QDateTime::fromString(buscafechainicial, "dd/MM/yyyy").toString("yyyy-MM-dd") + "' AND fecha <= '" + QDateTime::fromString(buscafechafinal, "dd/MM/yyyy").toString("yyyy-MM-dd") + "'";
+        } // end if
+    } else if (buscafechainicial == "" && buscafechafinal != "") {
+        /// Falta fecha inicial.
+        if (mui_ejercicio->currentIndex() == 0) {
+            /// Todos los ejercicios.
+            textejercicio = " WHERE fecha <= '" + QDateTime::fromString(buscafechafinal, "dd/MM/yyyy").toString("yyyy-MM-dd") + "'";
+        } else {
+            /// Ejercicio seleccionado. Maximo hasta final de ese a&ntilde;o,
+            buscafechainicial = "01/01/" + mui_ejercicio->currentText();
+            mui_fechaInicial->setText(buscafechainicial);
+            textejercicio = " WHERE fecha >= '" + QDateTime::fromString(buscafechainicial, "dd/MM/yyyy").toString("yyyy-MM-dd") + "' AND fecha <= '" + QDateTime::fromString(buscafechafinal, "dd/MM/yyyy").toString("yyyy-MM-dd") + "'";
+        } // end if
+    } else if (buscafechainicial != "" && buscafechafinal != "") {
+        /// Hay fecha inicial y fecha final.
+        /// Primero se comprueba que la fecha final sea mayor que la fecha inicial.
+        if (QDateTime::fromString(buscafechainicial, "dd/MM/yyyy") > QDateTime::fromString(buscafechafinal, "dd/MM/yyyy")) {
+            /// Error de fechas.
+            mensajeAviso(tr("La fecha inicial es posterior a la fecha final."));
+            return;
+        } else {
+            textejercicio = " WHERE fecha >= '" + QDateTime::fromString(buscafechainicial, "dd/MM/yyyy").toString("yyyy-MM-dd") + "' AND fecha <= '" + QDateTime::fromString(buscafechafinal, "dd/MM/yyyy").toString("yyyy-MM-dd") + "'";
+        } // end if
+    } else if (buscafechainicial == "" && buscafechafinal == "" && mui_ejercicio->currentIndex() != 0) {
+        /// No hay ninguna fecha.
+        if (mui_ejercicio->currentIndex() != 0) {
+            /// Ejercicio seleccionado.
+            if (pand) {
+                textejercicio = " AND EXTRACT(YEAR FROM fecha) = '" + ejercicio + "'";
+            } else {
+                textejercicio = " WHERE EXTRACT(YEAR FROM fecha) = '" + ejercicio + "'";
+            } // end if
         } // end if
     } // end if
 

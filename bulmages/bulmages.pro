@@ -5,11 +5,12 @@
 
 CONFIG = ordered
 
-  TEMPLATE = subdirs
+TEMPLATE = subdirs
 
-  SUBDIRS += bulmalib
-  SUBDIRS += bulmafact
-  SUBDIRS += bulmacont
-  SUBDIRS += bulmages
+SUBDIRS += bulmalib
+SUBDIRS += bulmafact
+SUBDIRS += bulmacont
+SUBDIRS += bulmages \
+bulmacont \
+bulmafact
 #  SUBDIRS += bulmatpv
-  
