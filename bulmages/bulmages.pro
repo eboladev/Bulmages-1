@@ -10,7 +10,6 @@ TEMPLATE = subdirs
 SUBDIRS += bulmalib
 SUBDIRS += bulmafact
 SUBDIRS += bulmacont
-SUBDIRS += bulmages \
-bulmacont \
-bulmafact
+SUBDIRS += bulmages
+
 #  SUBDIRS += bulmatpv
