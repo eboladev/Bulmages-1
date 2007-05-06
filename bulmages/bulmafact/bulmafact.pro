@@ -13,5 +13,6 @@ SUBDIRS += src/plugintrazabilidad
 SUBDIRS += src/pluginbarcodeopen
 SUBDIRS += src/plugincatalogo
 SUBDIRS += src/plugininformeclientes
+SUBDIRS += src/plugininventario
 
 include(privatecode.pro)

@@ -43,8 +43,6 @@
 #include "familiasview.h"
 #include "fpagoview.h"
 #include "funcaux.h"
-#include "inventariosview.h"
-#include "inventarioview.h"
 #include "listalmacenview.h"
 #include "listconfiguracionview.h"
 #include "listprovinciasview.h"
@@ -833,29 +831,6 @@ void company::s_newArticulo() {
 }
 
 
-/** Crea y Presenta la ventana de listado de inventarios
-*/
-/// \TODO: Deberia dividirse en dos y deberia pasar por sistema de plugins.
-void company::s_inventarios() {
-    _depura("company::s_inventarios", 0);
-    InventariosView *bud = new InventariosView(this, 0);
-    m_pWorkspace->addWindow(bud);
-    bud->show();
-    _depura("END company::s_inventarios", 0);
-}
-
-
-/** Crea y Presenta un inventario.
-*/
-/// \TODO: Deberia dividirse en dos y deberia pasar por sistema de plugins.
-void company::s_newInventario() {
-    _depura("company::s_newInventario", 0);
-    InventarioView *bud = new InventarioView(this, 0);
-    m_pWorkspace->addWindow(bud);
-    bud->show();
-    bud->mui_nominventario->setFocus();
-    _depura("END company::s_newInventario", 0);
-}
 
 
 /** Crea una instancia de la clase AlbaranClienteView

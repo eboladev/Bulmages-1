@@ -377,6 +377,103 @@ SELECT aux();
 DROP FUNCTION aux() CASCADE;
 
 
+
+
+
+-- SELECT drop_if_exists_table('controlstock');
+-- SELECT drop_if_exists_table('inventario');
+-- SELECT drop_if_exists_table('stock_almacen');
+
+SELECT drop_if_exists_proc('narticulo','');
+SELECT drop_if_exists_proc('darticulo','');
+SELECT drop_if_exists_proc('nalmacen','');
+SELECT drop_if_exists_proc('dalmacen','');
+SELECT drop_if_exists_proc('modificadostockalmacen', '');
+SELECT drop_if_exists_proc('disminuyecontrolstock', '');
+SELECT drop_if_exists_proc('disminuyecontrolstock1', '');
+SELECT drop_if_exists_proc('disminuyecontrolstock2', '');
+SELECT drop_if_exists_proc('aumentacontrolstock', '');
+SELECT drop_if_exists_proc('cambiaalbaran', '');
+SELECT drop_if_exists_proc('cambiaalbaranp', '');
+
+
+SELECT drop_if_exists_proc('disminuyestock', '');
+\echo -n ':: Funcion para disminuir stock ... '
+CREATE FUNCTION disminuyestock() RETURNS "trigger"
+AS '
+DECLARE
+BEGIN
+    -- Hacemos el update del stock del articulo
+    UPDATE articulo SET stockarticulo = stockarticulo + OLD.cantlalbaran WHERE idarticulo= OLD.idarticulo;
+    RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+
+\echo -n ':: Disparador que disminuye stock al borrar o actualizar el detalle de un albaran a cliente ... '
+CREATE TRIGGER disminuyestockt
+    AFTER DELETE OR UPDATE ON lalbaran
+    FOR EACH ROW
+    EXECUTE PROCEDURE disminuyestock();
+
+SELECT drop_if_exists_proc('aumentastock', '');
+\echo -n ':: Funcion para aumentar stock ... '
+CREATE FUNCTION aumentastock() RETURNS "trigger"
+AS '
+DECLARE
+BEGIN
+    -- Hacemos el update del stock del articulo
+    UPDATE articulo SET stockarticulo = stockarticulo - NEW.cantlalbaran WHERE idarticulo = NEW.idarticulo;
+    RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+
+\echo -n ':: Disparador que aumenta stock al insertar o actualizar el detalle de un albaran a cliente ... '
+CREATE TRIGGER aumentastockt
+    AFTER INSERT OR UPDATE ON lalbaran
+    FOR EACH ROW
+    EXECUTE PROCEDURE aumentastock();
+
+SELECT drop_if_exists_proc('disminuyestockp', '');
+\echo -n ':: Funcion disminuye stockp ... '
+CREATE FUNCTION disminuyestockp() RETURNS "trigger"
+AS '
+DECLARE
+
+BEGIN
+    -- Hacemos el update del stock del articulo
+    UPDATE articulo SET stockarticulo = stockarticulo - OLD.cantlalbaranp WHERE idarticulo= OLD.idarticulo;
+    RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+
+\echo -n ':: Disparador que disminuye stock al borrar o actualizar el detalle de un albaran de proveedor ... '
+CREATE TRIGGER disminuyestockpt
+    AFTER DELETE OR UPDATE ON lalbaranp
+    FOR EACH ROW
+    EXECUTE PROCEDURE disminuyestockp();
+
+SELECT drop_if_exists_proc('aumentastockp', '');
+\echo -n ':: Funcion que aumenta el stock al recibir mercancias de un proveedor ... '
+CREATE FUNCTION aumentastockp() RETURNS "trigger"
+AS '
+DECLARE
+BEGIN
+    UPDATE articulo SET stockarticulo = stockarticulo + NEW.cantlalbaranp WHERE idarticulo = NEW.idarticulo;
+    RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+
+\echo -n ':: Disparador que aumenta stock al insertar o actualizar el detalle de un albaran de proveedor ... '
+CREATE TRIGGER aumentastockpt
+    AFTER INSERT OR UPDATE ON lalbaranp
+    FOR EACH ROW
+    EXECUTE PROCEDURE aumentastockp(); 
+
+
 -- ================================== ACTUALIZACION  ===================================
 -- =====================================================================================
 
@@ -388,9 +485,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.9.1-0010'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.9.1-0011'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.1-0010'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.1-0011'');
 	END IF;
 	RETURN 0;
 END;

@@ -53,7 +53,12 @@ void InventariosView::on_mui_listado_itemDoubleClicked(QTableWidgetItem *) {
 }
 
 void InventariosView::on_mui_crear_clicked() {
-    companyact->s_newInventario();
+            InventarioView *bud = new InventarioView(companyact, 0);
+            if (bud->cargar("0"))
+                return;
+            companyact->m_pWorkspace->addWindow(bud);
+            bud->show();
+            bud->mui_nominventario->setFocus();
 }
 
 void InventariosView::on_mui_listado_itemDoubleClicked() {

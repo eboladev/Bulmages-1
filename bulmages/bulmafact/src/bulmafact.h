@@ -82,7 +82,6 @@ public slots:
     virtual void on_actionGestion_Tipos_Articulo_triggered();
     virtual void on_actionNuevo_Articulo_triggered();
     virtual void on_actionListado_de_Articulos_triggered();
-    virtual void on_actionInventarios_triggered();
     virtual void on_actionNuevo_Proveedor_triggered();
     virtual void on_actionListado_Proveedores_triggered();
     virtual void on_actionNuevo_Cliente_triggered();

@@ -2514,135 +2514,15 @@ END;
 ' LANGUAGE plpgsql;
 
 
--- ========================== CONTROL DE STOCK =======================
-
--- ** inventario **
-\echo -n ':: Inventario ... '
-CREATE TABLE inventario (
-    idinventario SERIAL PRIMARY KEY,
-    nominventario varchar NOT NULL,
-    fechainventario date default now()
-);
-
-
--- ** controlstock **
--- stockantcontrolstock: Es un campo de solo lectura, es autorregulado internamente mediante
---                       disparadores (triggers).
-\echo -n ':: Control de stock ... '
-CREATE TABLE controlstock (
-    idinventario integer NOT NULL REFERENCES inventario(idinventario),
-    idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
-    idarticulo integer NOT NULL REFERENCES articulo(idarticulo),
-    stockantcontrolstock numeric(12, 2) NOT NULL,
-    stocknewcontrolstock numeric(12, 2) NOT NULL,
-    punteocontrolstock boolean NOT NULL DEFAULT FALSE,
-    PRIMARY KEY (idinventario, idalmacen, idarticulo)
-);
-
-
--- ** stock_almacen **
--- Esta tabla es mantenida por el SGDB y sirve solo para hacer consultas.
-\echo -n ':: Stock por almacen ... '
-CREATE TABLE stock_almacen (
-    idarticulo integer NOT NULL REFERENCES articulo(idarticulo),
-    idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
-    stock numeric(12, 2) DEFAULT 0,
-    PRIMARY KEY (idarticulo, idalmacen)
-);
-
-
-\echo -n ':: Funcion para insertar un nuevo articulo en el stock ... '
-CREATE FUNCTION narticulo() RETURNS "trigger"
-AS '
-DECLARE
-    as RECORD;
-
-BEGIN
-    FOR as IN SELECT * FROM almacen LOOP
-	INSERT INTO stock_almacen (idarticulo, idalmacen, stock) VALUES (NEW.idarticulo, as.idalmacen, 0);
-    END LOOP;
-    RETURN NEW;
-END;
-' LANGUAGE plpgsql;
-
-
-\echo -n ':: Disparador para insertar un nuevo articulo en el stock ... '
-CREATE TRIGGER narticulot
-    AFTER INSERT ON articulo
-    FOR EACH ROW
-    EXECUTE PROCEDURE narticulo();
-
-
-\echo -n ':: Funcion para borrar un articulo en el stock ... '
-CREATE FUNCTION darticulo() RETURNS "trigger"
-AS '
-DECLARE
-
-BEGIN
-    DELETE FROM stock_almacen WHERE idarticulo = OLD.idarticulo;
-    RETURN OLD;
-END;
-' LANGUAGE plpgsql;
-
-
-\echo -n ':: Disparador para borrar un articulo en el stock ... '
-CREATE TRIGGER darticulot
-    BEFORE DELETE ON articulo
-    FOR EACH ROW
-    EXECUTE PROCEDURE darticulo();
-
-
-\echo -n ':: Funcion para insertar stock en un almacen ... '
-CREATE FUNCTION nalmacen() RETURNS "trigger"
-AS '
-DECLARE
-    as RECORD;
-
-BEGIN
-    FOR as IN SELECT * FROM articulo LOOP
-	INSERT INTO stock_almacen (idarticulo, idalmacen, stock) VALUES (as.idarticulo, NEW.idalmacen, 0);
-    END LOOP;
-    RETURN NEW;
-END;
-' LANGUAGE plpgsql;
-
-
-\echo -n ':: Disparador al insertar stock en un almacen ... '
-CREATE TRIGGER nalmacent
-    AFTER INSERT ON almacen
-    FOR EACH ROW
-    EXECUTE PROCEDURE nalmacen();
-
-
-\echo -n ':: Funcion que borra stock de un almacen ... '
-CREATE FUNCTION dalmacen() RETURNS "trigger"
-AS '
-DECLARE
-
-BEGIN
-    DELETE FROM stock_almacen WHERE idalmacen = OLD.idalmacen;
-    RETURN OLD;
-END;
-' LANGUAGE plpgsql;
-
-
-\echo -n ':: Disparador que borra stock de un almacen ... '
-CREATE TRIGGER dalmacent
-    BEFORE DELETE ON almacen
-    FOR EACH ROW
-    EXECUTE PROCEDURE dalmacen();
-
+-- ========================== CONTROL DE STOCK ==============================
 
 \echo -n ':: Funcion para disminuir stock ... '
 CREATE FUNCTION disminuyestock() RETURNS "trigger"
 AS '
 DECLARE
-
 BEGIN
     -- Hacemos el update del stock del articulo
     UPDATE articulo SET stockarticulo = stockarticulo + OLD.cantlalbaran WHERE idarticulo= OLD.idarticulo;
-    -- Hacemos el update del stock por almacenes
-    UPDATE stock_almacen SET stock = stock + OLD.cantlalbaran WHERE idarticulo = OLD.idarticulo AND idalmacen IN (SELECT idalmacen FROM albaran WHERE idalbaran = OLD.idalbaran);
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -2655,16 +2535,14 @@ CREATE TRIGGER disminuyestockt
     EXECUTE PROCEDURE disminuyestock();
 
 
+
 \echo -n ':: Funcion para aumentar stock ... '
 CREATE FUNCTION aumentastock() RETURNS "trigger"
 AS '
 DECLARE
-
 BEGIN
     -- Hacemos el update del stock del articulo
     UPDATE articulo SET stockarticulo = stockarticulo - NEW.cantlalbaran WHERE idarticulo = NEW.idarticulo;
-    -- Hacemos el update del stock por almacenes
-    UPDATE stock_almacen SET stock = stock - NEW.cantlalbaran WHERE idarticulo = NEW.idarticulo AND idalmacen IN (SELECT idalmacen FROM albaran WHERE idalbaran=NEW.idalbaran);
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -2674,7 +2552,7 @@ END;
 CREATE TRIGGER aumentastockt
     AFTER INSERT OR UPDATE ON lalbaran
     FOR EACH ROW
-    EXECUTE PROCEDURE aumentastock();    
+    EXECUTE PROCEDURE aumentastock();
 
 
 \echo -n ':: Funcion disminuye stockp ... '
@@ -2685,8 +2563,6 @@ DECLARE
 BEGIN
     -- Hacemos el update del stock del articulo
     UPDATE articulo SET stockarticulo = stockarticulo - OLD.cantlalbaranp WHERE idarticulo= OLD.idarticulo;
-    -- Hacemos el update del stock por almacenes
-    UPDATE stock_almacen SET stock = stock - OLD.cantlalbaranp WHERE idarticulo = OLD.idarticulo AND idalmacen IN (SELECT idalmacen FROM albaranp WHERE idalbaranp=OLD.idalbaranp);
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -2703,11 +2579,8 @@ CREATE TRIGGER disminuyestockpt
 CREATE FUNCTION aumentastockp() RETURNS "trigger"
 AS '
 DECLARE
-
 BEGIN
     UPDATE articulo SET stockarticulo = stockarticulo + NEW.cantlalbaranp WHERE idarticulo = NEW.idarticulo;
-    -- Hacemos el update del stock por almacenes
-    UPDATE stock_almacen SET stock = stock + NEW.cantlalbaranp WHERE idarticulo = NEW.idarticulo AND idalmacen IN (SELECT idalmacen FROM albaranp WHERE idalbaranp=NEW.idalbaranp);
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -2746,178 +2619,8 @@ CREATE TRIGGER modificastocktrigger
     EXECUTE PROCEDURE modificadostock();
 
 
-\echo -n ':: Funcion que modificado el stock de un almacen ... '
-CREATE OR REPLACE FUNCTION modificadostockalmacen() RETURNS "trigger"
-AS '
-DECLARE 
-    cant numeric;
-    as RECORD;
-
-BEGIN
-    IF NEW.stock <> OLD.stock THEN
-	cant := NEW.stock - OLD.stock;
-	FOR as IN SELECT * FROM comparticulo WHERE idarticulo = NEW.idarticulo LOOP
-	    UPDATE stock_almacen SET stock = stock + cant * as.cantcomparticulo WHERE idarticulo = as.idcomponente AND idalmacen = NEW.idalmacen;
-	END LOOP;
-    END IF;
-    RETURN NEW;
-END;
-' LANGUAGE plpgsql;
 
 
-\echo -n ':: Disparador que modifica el stock de un almacen ... '
-CREATE TRIGGER modificastocktrigger
-    AFTER UPDATE ON stock_almacen
-    FOR EACH ROW
-    EXECUTE PROCEDURE modificadostockalmacen();
-
-
--- ========= REGULACION AUTOMATICA CONTROL STOCK =====================
-
-
-\echo -n ':: Funcion que disminuye control de stock ... '
-CREATE FUNCTION disminuyecontrolstock() RETURNS "trigger"
-AS '
-DECLARE
-
-BEGIN
-    -- Hacemos el update del stock del articulo
-    UPDATE articulo SET stockarticulo = stockarticulo - OLD.stocknewcontrolstock + OLD.stockantcontrolstock WHERE idarticulo= OLD.idarticulo;
-    -- Hacemos el update del stock por almacenes
-    UPDATE stock_almacen SET stock = stock - OLD.stocknewcontrolstock + OLD.stockantcontrolstock WHERE idarticulo = OLD.idarticulo AND idalmacen = OLD.idalmacen;
-    RETURN OLD;
-END;
-' LANGUAGE plpgsql;
-
-
-\echo -n ':: Disparador que disminuye stock al borrar en control de stock ... '
-CREATE TRIGGER disminuyecontrolstockt
-    BEFORE DELETE ON controlstock
-    FOR EACH ROW
-    EXECUTE PROCEDURE disminuyecontrolstock();
-
-
-\echo -n ':: Funcion que disminuye el control de stock ... '
-CREATE FUNCTION disminuyecontrolstock1() RETURNS "trigger"
-AS '
-DECLARE
-    rant RECORD;
-
-BEGIN
-    -- Cogemos el stock anterior.
-    FOR rant IN SELECT * FROM stock_almacen WHERE idarticulo = NEW.idarticulo AND idalmacen = NEW.idalmacen LOOP
-	NEW.stockantcontrolstock := rant.stock;
-    END LOOP;
-    RETURN NEW;
-END;
-' LANGUAGE plpgsql;
-
-
-\echo -n ':: Disparador que disminuye control stock ... '
-CREATE TRIGGER disminuyecontrolstockt1
-    BEFORE INSERT ON controlstock
-    FOR EACH ROW
-    EXECUTE PROCEDURE disminuyecontrolstock1();
-
-
-\echo -n ':: Funcion que disminuye control stock ... '
-CREATE FUNCTION disminuyecontrolstock2() RETURNS "trigger"
-AS '
-DECLARE
-    rant RECORD;
-
-BEGIN
-    -- Hacemos el update del stock del articulo
-    UPDATE articulo SET stockarticulo = stockarticulo - OLD.stocknewcontrolstock + OLD.stockantcontrolstock WHERE idarticulo= OLD.idarticulo;
-    -- Hacemos el update del stock por almacenes
-    UPDATE stock_almacen SET stock = stock - OLD.stocknewcontrolstock + OLD.stockantcontrolstock WHERE idarticulo = OLD.idarticulo AND idalmacen = OLD.idalmacen;
-    -- Cogemos el stock anterior.
-    FOR rant IN SELECT * FROM stock_almacen WHERE idarticulo = NEW.idarticulo AND idalmacen = NEW.idalmacen LOOP
-	NEW.stockantcontrolstock := rant.stock;
-    END LOOP;
-    RETURN NEW;
-END;
-' LANGUAGE plpgsql;
-
-
-\echo -n ':: Disparador que disminuye control de stock ... '
-CREATE TRIGGER disminuyecontrolstockt2
-    BEFORE UPDATE ON controlstock
-    FOR EACH ROW
-    EXECUTE PROCEDURE disminuyecontrolstock2();
-
-
-\echo -n ':: Funcion que aumenta control de stock ... '
-CREATE FUNCTION aumentacontrolstock() RETURNS "trigger"
-AS '
-DECLARE
-
-BEGIN
-    UPDATE articulo SET stockarticulo = stockarticulo + NEW.stocknewcontrolstock - NEW.stockantcontrolstock WHERE idarticulo = NEW.idarticulo;
-    -- Hacemos el update del stock por almacenes
-    UPDATE stock_almacen SET stock = NEW.stocknewcontrolstock WHERE idarticulo = NEW.idarticulo AND idalmacen = NEW.idalmacen;
-    RETURN NEW;
-END;
-' LANGUAGE plpgsql;
-
-
-\echo -n ':: Disparador que controla el control de stock ... '
-CREATE TRIGGER aumentacontrolstockt
-    AFTER INSERT OR UPDATE ON controlstock
-    FOR EACH ROW
-    EXECUTE PROCEDURE aumentacontrolstock(); 
-
-
--- Cuando cambiamos el almacen en un albaran o albaranp hay problemas con el control de stock
--- que se descuadra.
-\echo -n ':: Funcion que actualiza el stock al cambiar un albaran a cliente ... '
-CREATE FUNCTION cambiaalbaran() RETURNS "trigger"
-AS '
-DECLARE
-    as RECORD;
-
-BEGIN
-    IF NEW.idalmacen <> OLD.idalmacen THEN
-	FOR as IN SELECT * FROM lalbaran WHERE idalbaran = NEW.idalbaran LOOP
-    	    UPDATE stock_almacen SET stock = stock + as.cantlalbaran WHERE idarticulo = as.idarticulo AND idalmacen = OLD.idalmacen;
-	    UPDATE stock_almacen SET stock = stock - as.cantlalbaran WHERE idarticulo = as.idarticulo AND idalmacen = NEW.idalmacen;
-	END LOOP;
-    END IF;
-    RETURN NEW;
-END;
-' LANGUAGE plpgsql;
-
-
-\echo -n ':: Disparador que controla cuando se actualiza un albaran a un cliente ... '
-CREATE TRIGGER cambiadoalbarant
-    AFTER UPDATE ON albaran
-    FOR EACH ROW
-    EXECUTE PROCEDURE cambiaalbaran();
-
-
-\echo -n ':: Funcion que actualiza el stock al cambiar un albaran de proveedor ... '
-CREATE FUNCTION cambiaalbaranp() RETURNS "trigger"
-AS '
-DECLARE
-    as RECORD;
-
-BEGIN
-    IF NEW.idalmacen <> OLD.idalmacen THEN
-	FOR as IN SELECT * FROM lalbaranp WHERE idalbaranp = NEW.idalbaranp LOOP
-	    UPDATE stock_almacen SET stock = stock - as.cantlalbaranp WHERE idarticulo = as.idarticulo AND idalmacen = OLD.idalmacen;
-	    UPDATE stock_almacen SET stock = stock + as.cantlalbaranp WHERE idarticulo = as.idarticulo AND idalmacen = NEW.idalmacen;
-	END LOOP;
-    END IF;
-    RETURN NEW;
-END;
-' LANGUAGE plpgsql;
-
-
-\echo -n ':: Disparador que controla cuando se actualiza un albaran de proveedor ... '
-CREATE TRIGGER cambiadoalbaranpt
-    AFTER UPDATE ON albaranp
-    FOR EACH ROW
-    EXECUTE PROCEDURE cambiaalbaranp();
 
 
 \echo -n ':: '
@@ -2936,9 +2639,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.9.1-0010'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.9.1-0011'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.1-0010'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.1-0011'');
 	END IF;
 	RETURN 0;
 END;

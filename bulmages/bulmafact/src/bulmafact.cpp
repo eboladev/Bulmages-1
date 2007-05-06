@@ -364,11 +364,7 @@ void bulmafact::on_actionListado_de_Articulos_triggered() {
     m_company->listarticles();
     _depura("END bulmafact::on_actionListado_de_Articulos_triggered", 0);
 }
-void bulmafact::on_actionInventarios_triggered() {
-    _depura("bulmafact::on_actionInventarios_triggered", 0);
-    m_company->s_inventarios();
-    _depura("END bulmafact::on_actionInventarios_triggered", 0);
-}
+
 void bulmafact::on_actionNuevo_Proveedor_triggered() {
     _depura("bulmafact::on_actionNuevo_Proveedor_triggered", 0);
     m_company->s_newProveedorView();

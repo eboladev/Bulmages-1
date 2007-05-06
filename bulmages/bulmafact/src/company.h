@@ -150,8 +150,6 @@ public:
     void s_newfamiliasview();
     void s_provincias();
     void s_almacenes();
-    void s_inventarios();
-    void s_newInventario();
     void viewPagosList();
     void viewCobrosList();
     void s_TipoIVAView();

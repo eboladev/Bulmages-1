@@ -56,8 +56,6 @@ FORMS += aboutbase.ui \
          familiasbase.ui \
          busquedafamiliabase.ui \
          listseriefacturabase.ui \
-         inventariosbase.ui \
-         inventariobase.ui \
          clientebase.ui \
          presupuestoslistbase.ui \
          bulmafactbase.ui \
@@ -144,10 +142,6 @@ HEADERS += bulmafact.h \
            aboutview.h \
            busquedaprovincia.h \
            listprovinciasview.h \
-           inventariosview.h \
-           inventarioview.h \
-           inventario.h \
-           listcontrolstockview.h \
            cliente.h \
            clienteview.h \
            articulo.h \
@@ -232,10 +226,6 @@ SOURCES += bulmafact.cpp \
            aboutview.cpp \
            busquedaprovincia.cpp \
            listprovinciasview.cpp \
-           inventariosview.cpp \
-           inventarioview.cpp \
-           inventario.cpp \
-           listcontrolstockview.cpp \
            cliente.cpp \
            clienteview.cpp \
            articulo.cpp \
