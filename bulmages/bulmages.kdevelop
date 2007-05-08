@@ -78,7 +78,7 @@
       <envvars/>
     </run>
     <general>
-      <activedir>bulmafact/src</activedir>
+      <activedir>bulmafact/src/plugincontratos</activedir>
     </general>
     <make>
       <abortonerror>true</abortonerror>
