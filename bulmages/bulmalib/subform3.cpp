@@ -299,9 +299,9 @@ bool SubForm3::existsHeader(const QString &head) {
     for (int i = 0; i < m_lcabecera.size(); ++i) {
         linea = m_lcabecera.at(i);
         if (linea->nomcampo() == head) {
-   		 _depura("END SubForm3::existsHeader", 0);
-        	return TRUE;
-	} // end if
+            _depura("END SubForm3::existsHeader", 0);
+            return TRUE;
+        } // end if
     } // end for
     _depura("END SubForm3::existsHeader", 0);
     return FALSE;
@@ -573,21 +573,35 @@ void SubForm3::cargar(cursor2 *cur) {
         reg = m_lista.at(i);
         QRegExp patronFecha("^.*00:00:00.*$"); /// Para emparejar los valores fechas.
         for (int j = 0; j < reg->lista()->size(); ++j) {
-           camp = (SDBCampo *) reg->lista()->at(j);
-           /// Si es una fecha lo truncamos a 10 caracteres para presentar solo la fecha.
-           if (patronFecha.exactMatch(camp->valorcampo())) {
-                camp->set(camp->valorcampo().left(10));
-	   } // end if
-           mui_list->setItem(i, j, camp);
+            camp = (SDBCampo *) reg->lista()->at(j);
+            /// Si es una fecha lo truncamos a 10 caracteres para presentar solo la fecha.
+            if (patronFecha.exactMatch(camp->valorcampo())) {
+                camp->set
+                (camp->valorcampo().left(10));
+            } // end if
+            mui_list->setItem(i, j, camp);
         } // end for
     } // end for
+
+    /// Si estamos con campos de ordenacion ordenamos tras la carga el listado
+    if (m_orden) {
+        for (int i = 0; i < m_lcabecera.size(); ++i) {
+            if (m_lcabecera.at(i)->nomcampo()  == "orden" + m_tablename)
+                mui_list->sortItems(i);
+        } // end for
+    } else {
+    /// Si no estamos con campos de ordenacion ordenamos por lo que toca.
+	/// Ordenamos la tabla.
+	mui_list->ordenar();
+    } // end if
+
     nuevoRegistro();
-    /// Ordenamos la tabla.
-    mui_list->ordenar();
+
     /// configuramos que registros son visibles y que registros no lo son.
     on_mui_confcol_clicked();
     /// Reactivamos el sorting
     mui_list->setSortingEnabled(m_sorting);
+
     _depura("END SubForm3::cargar", 0);
 }
 
@@ -704,17 +718,18 @@ void SubForm3::on_mui_list_editFinished(int row, int col, int key) {
 int SubForm3::addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp) {
     _depura("SubForm3::addSHeader (" + nom + ")", 0);
     SHeader *camp = new SHeader(nom, typ, res, opt, nomp);
-    camp->set("");
+    camp->set
+    ("");
     m_lcabecera.append(camp);
     mui_listcolumnas->insertRow(mui_listcolumnas->rowCount());
     QTableWidgetItem *it = new QTableWidgetItem("");
     it->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsEditable);
 
     if (opt & SHeader::DBNoView) {
-       mui_list->hideColumn(mui_listcolumnas->rowCount() -1);
-       it->setCheckState(Qt::Unchecked);
+        mui_list->hideColumn(mui_listcolumnas->rowCount() -1);
+        it->setCheckState(Qt::Unchecked);
     } else {
-       it->setCheckState(Qt::Checked);
+        it->setCheckState(Qt::Checked);
     } // end if
 
     if (opt & SHeader::DBBlockView) {
@@ -959,7 +974,7 @@ void SubForm3::cargaconfig() {
     QString line;
     int error = 1;
     if (file.open(QIODevice::ReadOnly)) {
-    error = 0;
+        error = 0;
         QTextStream stream(&file);
         /// Establecemos la columna de ordenacion
         QString linea = stream.readLine();
@@ -972,7 +987,7 @@ void SubForm3::cargaconfig() {
         /// Establecemos el numero de filas por pagina
         linea = stream.readLine();
         if (linea.toInt() > 0) {
-                mui_filaspagina->setValue(linea.toInt());
+            mui_filaspagina->setValue(linea.toInt());
         } // end if
 
         /// Establecemos el ancho de las columnas.
@@ -982,7 +997,7 @@ void SubForm3::cargaconfig() {
                 mui_list->setColumnWidth(i, linea.toInt());
             } else {
                 mui_list->setColumnWidth(i, 30);
-                 error = 1;
+                error = 1;
             } // end if
         } // end for
 
@@ -994,7 +1009,7 @@ void SubForm3::cargaconfig() {
             } else if (linea == "0") {
                 mui_listcolumnas->item(i, 0)->setCheckState(Qt::Unchecked);
             } else {
-                  error = 1;
+                error = 1;
             } // end if
         } // end for
         file.close();
@@ -1003,7 +1018,7 @@ void SubForm3::cargaconfig() {
 
     /// Si se ha producido algun error en la carga hacemos un maquetado automatico.
     if (error)
-    mui_list->resizeColumnsToContents();
+        mui_list->resizeColumnsToContents();
 
     m_primero = FALSE;
     _depura("END SubForm3::cargaconfig", 0);
@@ -1043,26 +1058,26 @@ void SubForm3::on_mui_list_pressedMinus(int, int) {
 
 
 QString SubForm3::imprimir() {
-	_depura("SubForm3::imprimir", 0);
-	QString fitxersortidarml = "<tr>\n";
-	for (int h = 0; h < mui_listcolumnas->rowCount(); ++h) {
-		if (mui_listcolumnas->item(h, 0)->checkState() == Qt::Checked) {
-		fitxersortidarml += "    <td>" + XMLProtect(mui_listcolumnas->item(h, 2)->text()) + "</td>\n";
-		} // end if
-	} // end for
-	fitxersortidarml += "</tr>\n";
-    	for (int i = 0; i < mui_list->rowCount(); ++i) {
-		fitxersortidarml += "<tr>\n";
-		for (int j = 0; j < mui_listcolumnas->rowCount(); ++j) {
-			if (mui_listcolumnas->item(j, 0)->checkState() == Qt::Checked) {
-				QString restante;
-				fitxersortidarml += "    <td>" + XMLProtect(mui_list->item(i, j)->text()) + "</td>\n";	
-			} // end if
-		} // end for
-		fitxersortidarml += "</tr>\n";
-	} // end for
-	_depura("END SubForm3::imprimir", 0);
-	return fitxersortidarml;
+    _depura("SubForm3::imprimir", 0);
+    QString fitxersortidarml = "<tr>\n";
+    for (int h = 0; h < mui_listcolumnas->rowCount(); ++h) {
+        if (mui_listcolumnas->item(h, 0)->checkState() == Qt::Checked) {
+            fitxersortidarml += "    <td>" + XMLProtect(mui_listcolumnas->item(h, 2)->text()) + "</td>\n";
+        } // end if
+    } // end for
+    fitxersortidarml += "</tr>\n";
+    for (int i = 0; i < mui_list->rowCount(); ++i) {
+        fitxersortidarml += "<tr>\n";
+        for (int j = 0; j < mui_listcolumnas->rowCount(); ++j) {
+            if (mui_listcolumnas->item(j, 0)->checkState() == Qt::Checked) {
+                QString restante;
+                fitxersortidarml += "    <td>" + XMLProtect(mui_list->item(i, j)->text()) + "</td>\n";
+            } // end if
+        } // end for
+        fitxersortidarml += "</tr>\n";
+    } // end for
+    _depura("END SubForm3::imprimir", 0);
+    return fitxersortidarml;
 }
 
 
@@ -1309,6 +1324,6 @@ void SubForm3::on_mui_list_currentCellChanged(int, int, int row, int col) {
 
 void SubForm3::setinsercion(bool b) {
     _depura("SubForm3::setinsercion", 0);
-        m_insercion = b;
+    m_insercion = b;
     _depura("END SubForm3::setinsercion", 0);
 }

@@ -44,7 +44,7 @@ void myplugininv::inicializa(bulmafact *bges) {
     /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
     m_bges = bges;
     m_companyact = bges->getcompany();
-    QAction *planCuentas = new QAction(tr("&Inventarios NEW"), 0);
+    QAction *planCuentas = new QAction(tr("&Inventarios"), 0);
     planCuentas->setStatusTip(tr("Inventarios"));
     planCuentas->setWhatsThis(tr("Inventarios"));
     bges->menuArticulos->addSeparator();

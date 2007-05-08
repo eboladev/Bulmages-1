@@ -25,7 +25,7 @@
      <x>0</x>
      <y>0</y>
      <width>738</width>
-     <height>28</height>
+     <height>29</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuCompras" >
@@ -85,17 +85,6 @@
     <addaction name="actionParametros" />
     <addaction name="actionSalir" />
    </widget>
-   <widget class="QMenu" name="menuArticulos" >
-    <property name="title" >
-     <string>Articulo&amp;s</string>
-    </property>
-    <addaction name="actionGestion_Familias" />
-    <addaction name="actionGestion_Tipos_Articulo" />
-    <addaction name="actionNuevo_Articulo" />
-    <addaction name="actionListado_de_Articulos" />
-    <addaction name="separator" />
-    <addaction name="actionInventarios" />
-   </widget>
    <widget class="QMenu" name="menuMaestro" >
     <property name="title" >
      <string>Maest&amp;ro</string>
@@ -120,6 +109,16 @@
     <addaction name="separator" />
     <addaction name="actionTipoIVA" />
     <addaction name="actionTasaIVA" />
+   </widget>
+   <widget class="QMenu" name="menuArticulos" >
+    <property name="title" >
+     <string>Articulo&amp;s</string>
+    </property>
+    <addaction name="actionGestion_Familias" />
+    <addaction name="actionGestion_Tipos_Articulo" />
+    <addaction name="actionNuevo_Articulo" />
+    <addaction name="actionListado_de_Articulos" />
+    <addaction name="separator" />
    </widget>
    <addaction name="menuEmpresa" />
    <addaction name="menuCompras" />
@@ -412,11 +411,6 @@
    </property>
    <property name="text" >
     <string>&amp;Articulos</string>
-   </property>
-  </action>
-  <action name="actionInventarios" >
-   <property name="text" >
-    <string>&amp;Inventarios</string>
    </property>
   </action>
   <action name="actionNuevo_Proveedor" >
