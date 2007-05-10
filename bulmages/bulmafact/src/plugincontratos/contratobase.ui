@@ -14,7 +14,7 @@
    <string>Nuevo Contrato</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_facturas.48x48.png</iconset>
+   <iconset resource="../../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_documentos.48x48.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
@@ -29,7 +29,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>5</number>
+      <number>0</number>
      </property>
      <item>
       <widget class="QLabel" name="pixmapLabel1" >
@@ -54,7 +54,7 @@
         </size>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_facturas.48x48.png</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_documentos.48x48.png</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>
@@ -99,10 +99,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Guardar factura</string>
+           <string>Guardar Contrato</string>
           </property>
           <property name="whatsThis" >
-           <string>Guardar factura</string>
+           <string>Guardar Contrato</string>
           </property>
           <property name="text" >
            <string/>
@@ -133,10 +133,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Borrar factura</string>
+           <string>Borrar Contrato</string>
           </property>
           <property name="whatsThis" >
-           <string>Borrar factura</string>
+           <string>Borrar Contrato</string>
           </property>
           <property name="text" >
            <string/>
@@ -153,7 +153,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_imprimir" >
+         <widget class="QToolButton" name="mui_facturar" >
           <property name="minimumSize" >
            <size>
             <width>32</width>
@@ -167,16 +167,16 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Imprimir factura</string>
+           <string>Facturar Periodos Pendientes</string>
           </property>
           <property name="whatsThis" >
-           <string>Imprimir factura</string>
+           <string>Facturar Periodos Pendientes</string>
           </property>
           <property name="text" >
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_filePrint.xpm</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Bulmafact32x32/images/png/32x32/i_bulmages_ventas_facturas_automaticas.32x32.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -233,8 +233,8 @@
           </property>
           <property name="sizeHint" >
            <size>
-            <width>21</width>
-            <height>26</height>
+            <width>81</width>
+            <height>32</height>
            </size>
           </property>
          </spacer>
@@ -597,7 +597,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QTabWidget" name="Facturas" >
+    <widget class="QTabWidget" name="Detalle" >
      <property name="enabled" >
       <bool>true</bool>
      </property>
@@ -615,9 +615,25 @@
      <property name="currentIndex" >
       <number>0</number>
      </property>
+     <widget class="QWidget" name="tab" >
+      <attribute name="title" >
+       <string>Detalle</string>
+      </attribute>
+      <layout class="QGridLayout" >
+       <property name="margin" >
+        <number>9</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item row="0" column="0" >
+        <widget class="ListLinContratoView" name="mui_lineas" />
+       </item>
+      </layout>
+     </widget>
      <widget class="QWidget" name="tab1" >
       <attribute name="title" >
-       <string>&amp;Detalle</string>
+       <string>&amp;Facturas</string>
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
@@ -735,6 +751,11 @@
    <class>FacturasContratoListSubForm</class>
    <extends>QWidget</extends>
    <header>contratoview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ListLinContratoView</class>
+   <extends>QTableWidget</extends>
+   <header>listlincontratoview.h</header>
   </customwidget>
   <customwidget>
    <class>BusquedaCliente</class>

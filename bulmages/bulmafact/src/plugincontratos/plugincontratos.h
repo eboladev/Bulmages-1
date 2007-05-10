@@ -30,28 +30,11 @@
 #include <QApplication>
 #include <QObject>
 
-#include "postgresiface2.h"
 #include "bulmafact.h"
-
+#include "clienteview.h"
 
 extern "C" MY_EXPORT int entryPoint(bulmafact *);
+extern "C" MY_EXPORT int ClienteView_ClienteView(ClienteView *);
+extern "C" MY_EXPORT int ClienteView_cargar(ClienteView *);
 
 
-extern QApplication2 *theApp;
-
-
-class myplugincont : public QObject {
-    Q_OBJECT
-
-public:
-    postgresiface2 *m_conexionbase;
-    bulmafact *m_bulmafact;
-
-public:
-    myplugincont();
-    ~myplugincont();
-    void inicializa(bulmafact *);
-
-public slots:
-    void elslot();
-};

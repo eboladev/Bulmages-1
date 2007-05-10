@@ -55,10 +55,6 @@ ClienteView::ClienteView(company *comp, QWidget *parent)
         } // end if
         m_provcliente->setcompany(m_companyact);
         m_provcliente->setProvincia("");
-        /// Desabilitamos los tabs que a&uacute;n no se usan.
-        mui_tab->setTabEnabled(6, FALSE);
-        mui_tab->setTabEnabled(7, FALSE);
-        mui_tab->setTabEnabled(8, FALSE);
         /// Inicializamos las pantallas auxiliares a esta.
         m_listpresupuestos->setcompany(m_companyact);
         m_listpedidos->setcompany(m_companyact);
@@ -110,6 +106,13 @@ int ClienteView::cargar(QString idcliente) {
         setWindowTitle(tr("Cliente") + " " + DBvalue("nomcliente"));
         m_companyact->meteWindow(windowTitle(), this);
 
+        /// Disparamos los plugins.
+        int res = g_plugins->lanza("ClienteView_cargar", this);
+        if (res != 0) {
+            return res;
+        } // end if
+
+
         /// Hacemos que el listado de presupuestos de un cliente se inicialize.
         m_listpresupuestos->setidcliente(idcliente);
         m_listpresupuestos->presenta();
@@ -130,6 +133,7 @@ int ClienteView::cargar(QString idcliente) {
         mensajeInfo(tr("Error al cargar el cliente"));
         return -1;
     } // end try
+    g_plugins->lanza("ClienteView_cargar_post", this);
     _depura("ClienteView::cargar", 0);
     return 0;
 }

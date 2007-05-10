@@ -105,6 +105,8 @@ void Contrato::pintar() {
     pintadescontrato(DBvalue("descontrato"));
     pintanomcontrato(DBvalue("nomcontrato"));
     pintaloccontrato(DBvalue("loccontrato"));
+    /// Pintamoslas lineas
+    m_listalineas->pintar();
     _depura("END pintaContrato", 0);
 }
 
@@ -126,8 +128,8 @@ int Contrato::cargar(QString idbudget) {
         DBload(cur);
     } // end if
     delete cur;
+    m_listalineas->cargar(idbudget);
     pintar();
-    m_listalineas->cargar("SELECT * FROM factura LEFT JOIN cliente ON cliente.idcliente = factura.idcliente LEFT JOIN almacen ON factura.idalmacen = almacen.idalmacen  WHERE factura.idcliente ="+DBvalue("idcliente")+ " AND reffactura = '"+DBvalue("refcontrato")+"'");
     _depura("END Contrato::cargar", 0);
     return 0;
 }
@@ -150,6 +152,8 @@ int Contrato::guardar() {
         m_companyact->begin();
         DBsave(id);
         setDBvalue("idcontrato", id);
+	m_listalineas->setColumnValue("idcontrato", id);
+	m_listalineas->guardar();
         m_companyact->commit();
 
 	/// Hacemos una carga para recuperar datos como la referencia

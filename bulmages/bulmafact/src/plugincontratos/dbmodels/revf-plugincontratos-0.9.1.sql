@@ -2,7 +2,6 @@
 -- Modificación de campos y funciones de la BD para la adaptacion para el plugin de Contratos
 --
 \echo "********* INICIADO FICHERO DE ESTRUCTURA DEL PLUGIN DE CONTRATOS *********"
-
 \echo ":: Establecemos los mensajes minimos a avisos y otros parametros ... "
 \echo -n ":: "
 SET client_min_messages TO WARNING;
@@ -58,7 +57,7 @@ DECLARE
 	rec RECORD;
 
 BEGIN
-	SELECT INTO rec * FROM pg_attribute WHERE attname = ''idcontrato'';
+	SELECT INTO rec * FROM pg_attribute WHERE attname = ''refcontrato'';
 	IF NOT FOUND THEN
 		CREATE TABLE contrato (
 			idcontrato SERIAL PRIMARY KEY,
@@ -70,6 +69,19 @@ BEGIN
 			periodicidadcontrato INTERVAL,
 			descontrato VARCHAR,
 			loccontrato VARCHAR
+		);
+	END IF;
+
+	SELECT INTO rec * FROM pg_attribute WHERE attname = ''idlcontrato'';
+	IF NOT FOUND THEN
+		CREATE TABLE lcontrato (
+			idlcontrato SERIAL PRIMARY KEY,
+			idcontrato INTEGER NOT NULL REFERENCES contrato(idcontrato),
+			idarticulo INTEGER NOT NULL REFERENCES articulo(idarticulo),
+			cantlcontrato NUMERIC(12,2) DEFAULT 1,
+			pvplcontrato NUMERIC(12,2) DEFAULT 0,
+			desclcontrato CHARACTER VARYING,
+			ordenlcontrato INTEGER
 		);
 	END IF;
 	RETURN 0;
@@ -92,9 +104,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre=''DBRev-Contratos'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.9.1-0001'' WHERE nombre=''DBRev-Contratos'';
+		UPDATE CONFIGURACION SET valor=''0.9.1-0002'' WHERE nombre=''DBRev-Contratos'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DBRev-Contratos'', ''0.9.1-0001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DBRev-Contratos'', ''0.9.1-0002'');
 	END IF;
 	RETURN 0;
 END;

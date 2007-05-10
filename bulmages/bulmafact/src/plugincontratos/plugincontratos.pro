@@ -84,9 +84,11 @@ FORMS +=  contratoslistbase.ui  \
 SOURCES = plugincontratos.cpp	\
 	  contratoslist.cpp \
 	  contrato.cpp \
-	  contratoview.cpp
+	  contratoview.cpp \
+	  listlincontratoview.cpp
 
 HEADERS = plugincontratos.h \
 	  contratoslist.h \
 	  contrato.h \
-	  contratoview.h
+	  contratoview.h \
+	  listlincontratoview.h

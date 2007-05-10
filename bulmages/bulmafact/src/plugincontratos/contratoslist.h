@@ -25,6 +25,24 @@
 #include "company.h"
 #include "subform2bf.h"
 #include "ficha.h"
+#include "bulmafact.h"
+
+class myplugincont : public QObject {
+    Q_OBJECT
+
+public:
+    postgresiface2 *m_conexionbase;
+    bulmafact *m_bulmafact;
+
+public:
+    myplugincont();
+    ~myplugincont();
+    void inicializa(bulmafact *);
+
+public slots:
+    void elslot();
+};
+
 
 
 /** Subformulario de contratoes.

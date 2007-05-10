@@ -68,3 +68,25 @@ int entryPoint(bulmafact *bges) {
     return 0;
 }
 
+
+int ClienteView_ClienteView(ClienteView *art) {
+    _depura("ClienteView_ClienteView", 0);
+    /// Para que funcione bien debemos iniciar con SelectMode y luego pasar a EditMode ya que si no se hace un meteWindow y no es deseable.
+    ContratosList *l = new ContratosList(art->companyact(), art, 0, ContratosList::SelectMode);
+    l->setObjectName(QString::fromUtf8("ccontratoslist"));
+    art->mui_tab->addTab(l, "Contratos");
+    l->editMode();
+    _depura("END ClienteView_ClienteView", 0);
+    return 0;
+}
+
+int ClienteView_cargar(ClienteView *art) {
+    _depura("ClienteView_cargar", 0);
+    ContratosList *l = art->findChild<ContratosList *>("ccontratoslist");
+    l->mui_idcliente->setidcliente(art->DBvalue("idcliente"));
+    l->on_mui_actualizar_clicked();
+    _depura("END ClienteView_cargar", 0);
+    return 0;
+}
+
+

@@ -294,11 +294,24 @@
        <number>5</number>
       </property>
       <item>
-       <widget class="QCheckBox" name="m_procesados" >
+       <widget class="QCheckBox" name="mui_caducados" >
         <property name="text" >
-         <string>Pro&amp;cesados</string>
+         <string>Caducados</string>
         </property>
        </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_2" >
+        <property name="text" >
+         <string>Cliente</string>
+        </property>
+        <property name="buddy" >
+         <cstring>mui_idcliente</cstring>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="BusquedaCliente" name="mui_idcliente" />
       </item>
       <item>
        <spacer>
@@ -310,7 +323,7 @@
         </property>
         <property name="sizeHint" >
          <size>
-          <width>50</width>
+          <width>401</width>
           <height>31</height>
          </size>
         </property>
@@ -330,6 +343,11 @@
    <class>ContratosListSubform</class>
    <extends>QTableWidget</extends>
    <header>contratoslist.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaCliente</class>
+   <extends>QLineEdit</extends>
+   <header>busquedacliente.h</header>
   </customwidget>
  </customwidgets>
  <resources>

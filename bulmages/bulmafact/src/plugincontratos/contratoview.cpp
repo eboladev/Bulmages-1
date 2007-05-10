@@ -51,11 +51,12 @@ ContratoView::ContratoView(company *comp, QWidget *parent)
             return;
 
         subform2->setcompany(comp);
+        mui_lineas->setcompany(comp);
         mui_idcliente->setcompany(comp);
         mui_refcontrato->setcompany(comp);
 
         /// Inicializamos FichaBf
-        setListaLineas(subform2);
+        setListaLineas(mui_lineas);
         comp->meteWindow(windowTitle(), this, FALSE);
     } catch (...) {
         mensajeInfo(tr("Error al crear la contrato"));
@@ -100,6 +101,8 @@ int ContratoView::cargar(QString id) {
             setWindowTitle(tr("Contrato") + " " + DBvalue("refcontrato") + " " + DBvalue("idcontrato"));
             m_companyact->meteWindow(windowTitle(), this);
         } // end if
+        mui_lineas->cargar(id);
+        subform2->cargar("SELECT * FROM factura LEFT JOIN cliente ON cliente.idcliente = factura.idcliente LEFT JOIN almacen ON factura.idalmacen = almacen.idalmacen  WHERE factura.idcliente ="+DBvalue("idcliente")+ " AND reffactura = '"+DBvalue("refcontrato")+"'");
         dialogChanges_cargaInicial();
     } catch (...) {
         return -1;
@@ -148,28 +151,34 @@ void ContratoView::pintaidcliente(QString id) {
     mui_idcliente->setidcliente(id);
 }
 
+
 void ContratoView::pintafincontrato(QString id) {
     mui_fincontrato->setText(id);
 }
+
 
 void ContratoView::pintaffincontrato(QString id) {
     mui_ffincontrato->setText(id);
 }
 
+
 void ContratoView::pintadescontrato(QString id) {
     mui_descontrato->setText(id);
 }
+
 
 void ContratoView::pintarefcontrato(QString id) {
     mui_refcontrato->setText(id);
 }
 
+
 void ContratoView::pintanomcontrato(QString id) {
     mui_nomcontrato->setText(id);
 }
 
+
 void ContratoView::pintaperiodicidadcontrato(QString id) {
-	_depura("ContratoView::pintaperiodicidadcontrato", 0, id);
+    _depura("ContratoView::pintaperiodicidadcontrato", 0, id);
     mui_periodicidadcontrato->setperiodo(id);
 }
 
@@ -177,48 +186,81 @@ void ContratoView::pintaloccontrato(QString id) {
     mui_loccontrato->setText(id);
 }
 
+
 void ContratoView::on_subform2_itemDoubleClicked(QTableWidgetItem *) {
     _depura("ContratoView::on_subform2_itemDoubleClicked", 0);
     QString idfactura = subform2->DBvalue(QString("idfactura"), subform2->currentRow());
-        FacturaView *prov = m_companyact->newFacturaView();
-        if (prov->cargar(idfactura)) {
-            delete prov;
-            return;
-        } // end if
-        m_companyact->m_pWorkspace->addWindow(prov);
-        prov->show();
+    FacturaView *prov = m_companyact->newFacturaView();
+    if (prov->cargar(idfactura)) {
+        delete prov;
+        return;
+    } // end if
+    m_companyact->m_pWorkspace->addWindow(prov);
+    prov->show();
     _depura("END ContratoView::on_subform2_itemDoubleClicked", 0);
 }
 
+
 void ContratoView::on_mui_facturar_clicked() {
-	_depura("ContratoView::on_mui_facturar_clicked", 2);
-	int periodo = 1;
-	QString query;
-	bool end = FALSE;
-	while(!end) {
-		query = "SELECT count(idfactura) AS cuenta FROM factura WHERE ffactura >= '"+DBvalue("fincontrato")+"'::DATE "+QString::value(periodo-1)+"*'"+DBvalue("periodicidadcontrato")+"'";
-		query += " AND ffactura <  '"+DBvalue("fincontrato")+"'::DATE "+QString::value(periodo)+"*'"+DBvalue("periodicidadcontrato")+"'";
-		query += " AND idcliente = "+DBvalue("idcliente");
-		cursor2 *cur = m_companyact->cargacursor(query);
-		if(!cur->eof()) {
-		} else {
-			// GENERAMOS LA FACTURA
-			FacturaView *prov = m_companyact->newFacturaView();
-			m_companyact->m_pWorkspace->addWindow(prov);
-			prov->show();
+    _depura("ContratoView::on_mui_facturar_clicked", 0);
+    int periodo = 1;
+    QString query;
+    bool end = FALSE;
+    while(!end) {
+	query = "SELECT ('"+DBvalue("fincontrato")+"'::DATE +"+QString::number(periodo-1)+"* '"+DBvalue("periodicidadcontrato")+"'::INTERVAL) AS finperiodo";
+	query += ", ('"+DBvalue("fincontrato")+"'::DATE +"+QString::number(periodo)+"* '"+DBvalue("periodicidadcontrato")+"'::INTERVAL) AS ffinperiodo";
+	cursor2 *cur1=m_companyact->cargacursor(query);
+
+        query = "SELECT count(idfactura) AS cuenta FROM factura WHERE ffactura >= '"+cur1->valor("finperiodo")+"'";
+        query += " AND ffactura <  '"+cur1->valor("ffinperiodo")+"'";
+	query += " AND reffactura = '"+DBvalue("refcontrato")+"'";
+        query += " AND idcliente = "+DBvalue("idcliente");
+
+        cursor2 *cur = m_companyact->cargacursor(query);
+        if(cur->valor("cuenta") != "0") {
+		if (cur->valor("cuenta") != "1") {
+			_depura("Detectada doble factura en un periodo", 2, cur->valor("cuenta"));
 		} // end if
+	} else {
+            // GENERAMOS LA FACTURA
+            FacturaView *fac = m_companyact->newFacturaView();
+            m_companyact->m_pWorkspace->addWindow(fac);
+            fac->cargar("0");
+            fac->show();
+            fac->setDBvalue("reffactura", DBvalue("refcontrato"));
+            fac->setDBvalue("idcliente", DBvalue("idcliente"));
+            fac->setDBvalue("descfactura", DBvalue("nomcontrato")+" Periodo:  "+cur1->valor("finperiodo").left(10)+ " -- "+cur1->valor("ffinperiodo").left(10));
 
+            QString l;
+            SDBRecord *linea, *linea1;
+            for (int i = 0; i < m_listalineas->rowCount(); ++i) {
+                linea = m_listalineas->lineaat(i);
+                if (linea->DBvalue( "idarticulo") != "") {
+                    linea1 = fac->getlistalineas()->lineaat(fac->getlistalineas()->rowCount() - 1);
+                    linea1->setDBvalue("idarticulo", linea->DBvalue("idarticulo"));
+                    linea1->setDBvalue("codigocompletoarticulo", linea->DBvalue("codigocompletoarticulo"));
+                    linea1->setDBvalue("nomarticulo", linea->DBvalue("nomarticulo"));
+                    linea1->setDBvalue("desclfactura", linea->DBvalue("desclcontrato"));
+                    linea1->setDBvalue("descuentolfactura", "0");
+                    linea1->setDBvalue("cantlfactura", linea->DBvalue("cantlcontrato"));
+                    linea1->setDBvalue("pvplfactura", linea->DBvalue("pvplcontrato"));
+                    fac->getlistalineas()->nuevoRegistro();
+                } // end if
+            } // end for
+            fac->calculaypintatotales();
+            fac->pintaFactura();
+        } // end if
+        delete cur;
 
-		delete cur;
-
-		query = "SELECT now() < '"+DBvalue("fincontrato")+"'::DATE *"+QString::number(periodo)+" AS dato";
-		cur = m_companyact->cargacursor(query);
-		if(cur->dato == "t") {
-			end = TRUE;
-		}// end if
-
-	} // end while
-	_depura("END ContratoView::on_mui_facturar_clicked", 2);
+        query = "SELECT (now() < '"+DBvalue("fincontrato")+"'::DATE + '"+DBvalue("periodicidadcontrato")+"'::INTERVAL *"+QString::number(periodo)+" ) AS dato";
+        cur = m_companyact->cargacursor(query);
+        if(cur->valor("dato") == "t") {
+            end = TRUE;
+        }// end if
+	delete cur1;
+        periodo++;
+    } // end while
+    _depura("END ContratoView::on_mui_facturar_clicked", 0);
 }
 
 /// =============================================================================

@@ -49,6 +49,7 @@ ContratosList::ContratosList(company *comp, QWidget *parent, Qt::WFlags flag, ed
         return;
 
     mui_list->setcompany(comp);
+    mui_idcliente->setcompany(comp);
     mdb_idcontrato = "";
     mdb_nomcontrato = "";
     m_modo = editmode;
@@ -82,7 +83,13 @@ ContratosList::~ContratosList() {
 /// \TODO: Mejorar el sistema de filtrado incluyendo una funcion de generar Filtro.
 void ContratosList::presenta() {
     _depura("ContratosList::presenta", 0);
-    mui_list->cargar("SELECT * FROM contrato NATURAL LEFT JOIN cliente  WHERE nomcontrato LIKE '%" + m_findClient->text() + "%' ORDER BY nomcontrato");
+    QString where;
+
+    if (mui_idcliente->idcliente() != "") {
+	where = " AND contrato.idcliente = "+mui_idcliente->idcliente();
+    } // end if
+
+    mui_list->cargar("SELECT * FROM contrato NATURAL LEFT JOIN cliente  WHERE nomcontrato LIKE '%" + m_findClient->text() + "%' "+where+" ORDER BY nomcontrato");
     _depura("END ContratosList::presenta", 0);
 }
 
