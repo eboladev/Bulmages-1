@@ -11,6 +11,9 @@ createdb $nombrebd
 # Esquema de la base de datos.
 psql $nombrebd < bulmacont_schema.sql
 # Datos iniciales.
+echo "--------------------------------------------"
+echo "Datos iniciales:"
+echo "--------------------------------------------"
 psql $nombrebd < t_ainteligente_data.sql
 psql $nombrebd < t_amortizacion_data.sql
 psql $nombrebd < t_apunte_data.sql
@@ -32,4 +35,5 @@ psql $nombrebd < t_cuenta_data1.sql
 psql $nombrebd < t_borrador_data.sql
 psql $nombrebd < t_registroiva_data.sql
 psql $nombrebd < t_tipoiva_data.sql
+echo "--------------------------------------------"
  

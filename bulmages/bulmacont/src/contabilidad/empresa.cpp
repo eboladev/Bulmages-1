@@ -20,7 +20,6 @@
 
 #include <QObject>
 
-
 #include "empresa.h"
 #include "abreempresaview.h"
 #include "listcuentasview1.h"
@@ -535,24 +534,36 @@ int empresa::librobalancetree() {
 
 void empresa::Abrirasientos() {
     _depura("empresa::Abrirasientos", 0);
-    cursor2 *cur = cargacursor("SELECT abreasientos()");
+    cursor2 *cur = NULL;
+    try {
+        cur = cargacursor("SELECT abreasientos()");
+        //introapunts2->cargaasientos();
+        //introapunts2->boton_fin();
+        //introapunts2->show();
+        g_main->statusBar()->showMessage(QObject::tr("Se han espaciado los asientos"), 2000);
+    } catch (...) {
+        mensajeError("Ha habido un error al espaciar los asientos");
+    }
     delete cur;
-    introapunts2->cargaasientos();
-    introapunts2->boton_fin();
-    introapunts2->show();
     _depura("END empresa::Abrirasientos", 0);
 }
 
 
 void empresa::Ordenarasientos() {
-    _depura("empresa::Ordenarasientos", 0);
+    _depura("empresa::Ordenarasientos", 10);
     QString query= "SELECT reordenaasientosall()";
-    cursor2 *cur = cargacursor(query, "hola");
+    cursor2 *cur = NULL;
+    try {
+        cur = cargacursor(query, "hola");
+        //introapunts2->cargaasientos();
+        //introapunts2->boton_fin();
+        //introapunts2->show();
+        g_main->statusBar()->showMessage(QObject::tr("Se han ordenado los asientos"), 2000);
+    } catch (...) {
+        mensajeError("Ha habido un error al ordenar los asientos");
+    }
     delete cur;
-    introapunts2->cargaasientos();
-    introapunts2->boton_fin();
-    introapunts2->show();
-    _depura("END empresa::Ordenarasientos", 0);
+    _depura("END empresa::Ordenarasientos", 10);
 }
 
 

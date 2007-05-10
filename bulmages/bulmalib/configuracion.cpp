@@ -74,7 +74,7 @@ configuracion::configuracion(QString nombreprograma) {
     QFile genericGlobalConfFile;
     QFile programGlobalConfFile;
     QFile genericLocalConfFile;
-    QFile programLocalConfFile;    
+    QFile programLocalConfFile;
     QDir dirGlobalConf(m_dirGlobalConf);
     QString dirusuario = getenv("HOME");
     m_dirLocalConf = dirusuario + "/.bulmages/";
@@ -96,6 +96,8 @@ configuracion::configuracion(QString nombreprograma) {
             exit(-1);
         } else {
             /// 1) Leemos la configuracion del archivo generico global.
+            mensaje = "--> El archivo '" + m_dirGlobalConf + m_genericGlobalConfFile + "' existe. Se va a leer.<--\n";
+            fprintf(stderr, mensaje.toAscii().constData());
             leeconfig(m_dirGlobalConf + m_genericGlobalConfFile);
         }// end if
     } // end if
@@ -106,6 +108,8 @@ configuracion::configuracion(QString nombreprograma) {
         fprintf(stderr, mensaje.toAscii().constData());
     } else {
         /// 2) Leemos la configuracion del archivo especifico global.
+        mensaje = "--> El archivo '" + m_dirGlobalConf + m_programGlobalConfFile + "' existe. Se va a leer.<--\n";
+        fprintf(stderr, mensaje.toAscii().constData());
         leeconfig(m_dirGlobalConf + m_programGlobalConfFile);
     }// end if
 
@@ -127,6 +131,8 @@ configuracion::configuracion(QString nombreprograma) {
         fprintf(stderr, mensaje.toAscii().constData());
     } else {
         /// 3) Leemos la configuracion del archivo generico local.
+        mensaje = "--> El archivo '" + m_dirLocalConf + m_genericLocalConfFile + "' existe. Se va a leer.<--\n";
+        fprintf(stderr, mensaje.toAscii().constData());
         leeconfig(m_dirLocalConf + m_genericLocalConfFile);
     }// end if
 
@@ -135,12 +141,13 @@ configuracion::configuracion(QString nombreprograma) {
         fprintf(stderr, mensaje.toAscii().constData());
     } else {
         /// 4) Leemos la configuracion del archivo especifico local.
+        mensaje = "--> El archivo '" + m_dirLocalConf + m_programLocalConfFile + "' existe. Se va a leer.<--\n";
+        fprintf(stderr, mensaje.toAscii().constData());
         leeconfig(m_dirLocalConf + m_programLocalConfFile);
     }// end if
 
     setValor(CONF_DIR_USER, m_dirLocalConf);
     setValor(CONF_PRIVILEGIOS_USUARIO, "1");
-    setValor(CONF_ALERTAS_DB, "Yes");
     setValor(CONF_LOGIN_USER, "");
     setValor(CONF_PASSWORD_USER, "");
 }
@@ -289,12 +296,14 @@ QString configuracion::nombre(int i) {
         return "CONF_BG_LINFACTURASCLIENTE";
     if (i == CONF_BG_DESCFACTURASCLIENTE )
         return "CONF_BG_DESCFACTURASCLIENTE";
-    if (i == CONF_BG_LISTARTICULOS )
+    if (i == CONF_BG_LISTARTICULOS)
         return "CONF_BG_LISTARTICULOS";
-    if (i == CONF_DIR_CANUALES )
+    if (i == CONF_DIR_CANUALES)
         return "CONF_DIR_CANUALES";
-    if (i == CONF_DEBUG )
+    if (i == CONF_DEBUG)
         return "CONF_DEBUG";
+    if (i == CONF_ALERTAS_DB)
+        return "CONF_ALERTAS_DB";
     return "";
 }
 
@@ -327,17 +336,17 @@ void configuracion::saveconfig() {
 /// contains the configuration.
 /// Lee la configuracion del fichero de configuracion pasado y rellena la estructura.
 bool configuracion::leeconfig(QString fich) {
-    fprintf(stderr, "Leyendo configuracion");
+    _depura("configuracion::leeconfig", 0);
     QFile arch(fich);
     if (arch.open(QIODevice::ReadOnly)) {
+        fprintf(stderr, "Leyendo configuracion\n");
         QTextStream in(&arch);
         while (!in.atEnd()) {
             QString cad = in.readLine();
-
-	    /// Hacemos la lectura de lineas de configuracion multilinea.
-	    while (cad.endsWith("\\")) {
-		cad = cad.left(cad.length()-2) + in.readLine().trimmed();
-	    } // end while
+            /// Hacemos la lectura de lineas de configuracion multilinea.
+            while (cad.endsWith("\\")) {
+                cad = cad.left(cad.length() - 2) + in.readLine().trimmed();
+            } // end while
 
             for (int i = 0; i < 1000; i++) {
                 if (cad.startsWith(nombre(i)) && nombre(i) != "") {
@@ -349,8 +358,10 @@ bool configuracion::leeconfig(QString fich) {
             } // end for
         } // end while
         arch.close();
+        fprintf(stderr, "FIN Leyendo configuracion\n");
         return TRUE;
     } // end if
+    _depura("END configuracion::leeconfig", 0);
     return FALSE;
 }
 

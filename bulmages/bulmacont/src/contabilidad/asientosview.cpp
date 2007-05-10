@@ -82,14 +82,18 @@ void asientosview::on_mui_list_cellDoubleClicked(int, int) {
 /// y presentando los resultados en pantalla.
 void asientosview::inicializa() {
     _depura("asientosview::inicializa", 0);
-    QString cantapunt = mui_cantidadapunte->text();
     QString saldototal = mui_saldoasiento->text();
-    QString nombreasiento = mui_nombreasiento->text();
+    /// Pasamos el texto a minusculas para hacer la busqueda 'case insensitive'.
+    QString nombreasiento = mui_nombreasiento->text().toLower();
     QString ejercicio = mui_ejercicio->currentText();
+    QString apuntemayoroigual = mui_mayoroigual->text();
+    QString apuntemenoroigual = mui_menoroigual->text();
     QString query;
     QString cadwhere;
     QString textsaldototal = "";
-    QString textcantapunt = "";
+    QString textoparentesis = "";
+    QString textapuntemayoroigual = "";
+    QString textapuntemenoroigual = "";
     QString textnombreasiento = "";
     QString textejercicio = "";
     QString buscafechainicial = mui_fechaInicial->text();
@@ -100,23 +104,43 @@ void asientosview::inicializa() {
     /// Componemos la consulta a partir de la parte de filtrado.
     if (saldototal != "") {
         cadwhere = " WHERE ";
-        textsaldototal = " asiento.idasiento IN (SELECT idasiento FROM (SELECT idasiento, SUM(debe) AS total FROM apunte GROUP BY idasiento) AS foo WHERE foo.total = " + saldototal + ")";
+        textsaldototal = " asiento.idasiento IN (SELECT idasiento FROM (SELECT idasiento, SUM(debe) AS totaldebe, SUM(haber) as totalhaber FROM apunte GROUP BY idasiento) AS foo WHERE foo.totaldebe = " + saldototal + " OR foo.totalhaber = " + saldototal + ")";
         pand = 1;
     } // end if
-    if (cantapunt != "" ) {
+    if (apuntemayoroigual != "") {
         cadwhere = " WHERE ";
         if (pand) {
-            textcantapunt = " AND ";
+            /// Ya existe un saldototal ('igual a') por lo que se hace un OR a la consulta.
+            textapuntemayoroigual = " OR (";
         } // end if
-        textcantapunt += " asiento.idasiento IN (SELECT idasiento FROM apunte WHERE debe = " + cantapunt + " OR haber = " + cantapunt + ")";
+        textapuntemayoroigual += " asiento.idasiento IN (SELECT idasiento FROM apunte WHERE debe >= " + apuntemayoroigual + " OR haber >= " + apuntemayoroigual + ")";
         pand = 1;
     } // end if
+    if (apuntemenoroigual != "") {
+        cadwhere = " WHERE ";
+        if (pand) {
+            if (apuntemayoroigual != "") {
+                /// Hay definido un 'mayor o igual' y tambien un 'igual a'.
+                textapuntemenoroigual = " AND ";
+            } else {
+                /// No se ha definido un 'mayor o igual' pero si un 'igual a'.
+                textapuntemenoroigual = " OR (";
+            }// end if
+        } // end if
+        textapuntemenoroigual += " asiento.idasiento IN (SELECT idasiento FROM apunte WHERE debe <= " + apuntemenoroigual + " OR haber <= " + apuntemenoroigual + ")";
+        pand = 1;
+    } // end if
+    /// Se mira si se tiene que cerrar el parentesis en la consulta a la base de datos.
+    if (saldototal != "" && (apuntemenoroigual != "" || apuntemayoroigual != "")) {
+        textoparentesis = ")";
+    } // end if
+
     if (nombreasiento != "") {
         cadwhere = " WHERE ";
         if (pand) {
             textnombreasiento = " AND ";
         } // end if
-        textnombreasiento += " asiento.idasiento in (SELECT idasiento FROM apunte WHERE conceptocontable LIKE '%" + nombreasiento + "%' )";
+        textnombreasiento += " asiento.idasiento in (SELECT idasiento FROM apunte WHERE lower(conceptocontable) LIKE '%" + nombreasiento + "%' )";
         pand = 1;
     } // end if
 
@@ -192,7 +216,7 @@ void asientosview::inicializa() {
         } // end if
     } // end if
 
-    query = "SELECT asiento.ordenasiento, asiento.idasiento, asiento.fecha, totaldebe, totalhaber, numap, numborr, comentariosasiento, clase FROM asiento LEFT JOIN (SELECT count(idborrador) AS numborr, idasiento FROM borrador GROUP BY idasiento) AS foo1 ON foo1.idasiento = asiento.idasiento LEFT JOIN (SELECT SUM(debe) AS totaldebe, SUM(haber) AS totalhaber, count(idapunte) AS numap, idasiento FROM apunte GROUP BY idasiento) AS fula ON asiento.idasiento = fula.idasiento " + cadwhere + textsaldototal + textcantapunt + textnombreasiento + textejercicio + " ORDER BY EXTRACT (YEAR FROM asiento.fecha), asiento.ordenasiento";
+    query = "SELECT asiento.ordenasiento, asiento.idasiento, asiento.fecha, totaldebe, totalhaber, numap, numborr, comentariosasiento, clase FROM asiento LEFT JOIN (SELECT count(idborrador) AS numborr, idasiento FROM borrador GROUP BY idasiento) AS foo1 ON foo1.idasiento = asiento.idasiento LEFT JOIN (SELECT SUM(debe) AS totaldebe, SUM(haber) AS totalhaber, count(idapunte) AS numap, idasiento FROM apunte GROUP BY idasiento) AS fula ON asiento.idasiento = fula.idasiento " + cadwhere + textsaldototal + textapuntemayoroigual + textapuntemenoroigual + textoparentesis + textnombreasiento + textejercicio + " ORDER BY EXTRACT (YEAR FROM asiento.fecha), asiento.ordenasiento";
     cursor2 *cursoraux = m_companyact->cargacursor(query);
     mui_list->cargar(cursoraux);
     delete cursoraux;
@@ -204,7 +228,6 @@ void asientosview::inicializa() {
     int ejercicioIndice;
     ejercicioIndice = mui_ejercicio->findText(ejercicio);
     mui_ejercicio->setCurrentIndex(ejercicioIndice);
-
 
     /// Calculamos el total en el subformulario y lo presentamos.
     Fixed td= mui_list->sumarCampo("totaldebe");

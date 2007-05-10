@@ -63,15 +63,28 @@ cursor2::cursor2(QString nombre, PGconn *conn1, QString SQLQuery) {
         registroactual = 0;
         _depura(SQLQuery, 0);
         result = PQexec(conn, SQLQuery.toAscii().data());
-        if (!result) {
-            m_error = TRUE;
-            _depura(PQerrorMessage(conn));
-            _depura("QUERY command failed [" + SQLQuery + "]");
-            if (confpr->valor(CONF_ALERTAS_DB) == "Yes")
-                msgError(QString("Ha ocurrido un error al hacer una consulta con la base de datos."), SQLQuery + QString("\n") + (QString) PQerrorMessage(conn));
-            PQclear(result);
-            throw -1;
-        } // end if
+
+        /// TODO: Switch en pruebas 9/5/07. Si todo OK borrarlo pasado 9/6/07.
+        switch (PQresultStatus(result)) {
+            case PGRES_COMMAND_OK:
+                break;
+            case PGRES_NONFATAL_ERROR:
+            case PGRES_FATAL_ERROR:
+            case NULL:
+                m_error = TRUE;
+                _depura(PQerrorMessage(conn));
+                _depura("QUERY command failed [" + SQLQuery + "]", 10);
+                if (confpr->valor(CONF_ALERTAS_DB) == "Yes") {
+                    msgError(QString(QObject::tr("Error al hacer la consulta con la base de datos.")) + "\n:: " + QString(PQresultErrorField(result, PG_DIAG_MESSAGE_PRIMARY)) + " ::", SQLQuery + QString("\n") + (QString) PQerrorMessage(conn));
+                } // end if
+                g_main->statusBar()->showMessage(QString(PQresultErrorField(result, PG_DIAG_MESSAGE_PRIMARY)), 4000);
+                PQclear(result);
+                throw -1;
+                break;
+            default:
+                break;
+        } // end switch
+
         nregistros = PQntuples(result);
         ncampos = PQnfields(result);
         registroactual = 0;
@@ -418,7 +431,8 @@ cursor2 *postgresiface2::cargacursor(QString Query, QString nomcursor) {
     try {
         cur = new cursor2(nomcursor, conn, Query);
     } catch (...) {
-        _depura("postgresiface2::cargacursor La base de datos genero un error: " + Query, 3);
+        _depura("postgresiface2::cargacursor La base de datos genero un error: ", 10);
+        _depura(Query, 10);
         delete cur;
         throw -1;
     } // end try

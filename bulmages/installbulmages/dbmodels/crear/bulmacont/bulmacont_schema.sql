@@ -1,23 +1,55 @@
+-- -------------------------------------------------------------------------------------------
+-- (C) Tomeu Borras Riera. <tborras@conetxia.com>
+--
+--   This program is free software; you can redistribute it and/or modify
+--   it under the terms of the GNU General Public License as published by
+--   the Free Software Foundation; either version 2 of the License, or
+--   (at your option) any later version.
+--
+--   This program is distributed in the hope that it will be useful,
+--   but WITHOUT ANY WARRANTY; without even the implied warranty of
+--   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+--   GNU General Public License for more details.
+--
+--   You should have received a copy of the GNU General Public License
+--   along with this program; if not, write to the
+--   Free Software Foundation, Inc.,
+--   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+-- -------------------------------------------------------------------------------------------
+-- Usage:    psql database_name < bulmacont_schema.sql
+-- -------------------------------------------------------------------------------------------
+
+\echo '********* INICIADO FICHERO DE ESTRUCTURA DE LA BASE DE DATOS DE BULMACONT *********'
 
 --
 -- PostgreSQL database definition of BulmaCont
 -- Creamos el lenguaje plpgsql y lo preparamos para ser usado con toda la base de datos.
+\echo -n ':: '
 BEGIN;
 
+\echo ':: Establecemos los mensajes minimos a avisos y otros parametros ... '
+\echo -n ':: '
+SET client_min_messages TO warning;
+\echo -n ':: '
 SET client_encoding = 'UNICODE';
+\echo -n ':: '
 SET check_function_bodies = false;
+\echo -n ':: '
 SET search_path = public, pg_catalog;
 
 
+\echo -n ':: plpgsql_call_handler ... '
 CREATE FUNCTION plpgsql_call_handler() RETURNS language_handler
     AS '$libdir/plpgsql', 'plpgsql_call_handler'
     LANGUAGE c;
 
-
+\echo -n ':: Establecemos el lenguaje de procedimientos ... '
 CREATE TRUSTED PROCEDURAL LANGUAGE plpgsql HANDLER plpgsql_call_handler;
 
 
+\echo -n ':: '
 REVOKE ALL ON SCHEMA public FROM PUBLIC;
+\echo -n ':: '
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
@@ -29,12 +61,13 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 -- idconfiguracion = El identificador (No tiene ningun uso especial).
 -- nombre = El nombre del parametro de configuracion.
 -- valor = El valor que toma dicho parametro.
+\echo -n ':: Configuracion ... '
 CREATE TABLE configuracion (
     nombre character varying(25) PRIMARY KEY,
     valor character varying(350)
 );
 
-
+\echo -n ':: Grupo ... '
 CREATE TABLE grupo (
     idgrupo serial PRIMARY KEY,
     descripcion character varying(50)
@@ -70,6 +103,7 @@ CREATE TABLE grupo (
 -- webent_cuenta = Pagina web ligada con la entidad
 -- tipocuenta = Campo de tipo integer que en realidad es un ENUM (para los valores que ahora no recuerdo y falta
 --              rellenar) ??????
+\echo -n ':: Cuenta ... '
 CREATE TABLE cuenta (
     idcuenta serial PRIMARY KEY,
     codigo character varying(12) NOT NULL,
@@ -99,6 +133,7 @@ CREATE TABLE cuenta (
 
 
 -- La tabla canal refleja los canales a los que puede pertenecer un apunte determinado.
+\echo -n ':: Canal ... '
 CREATE TABLE canal (
     idcanal serial PRIMARY KEY,
     descripcion character varying(100),
@@ -106,6 +141,7 @@ CREATE TABLE canal (
 );
 
 
+\echo -n ':: Centro de coste ... '
 CREATE TABLE c_coste (
     idc_coste serial PRIMARY KEY,
     descripcion character varying(100),
@@ -117,7 +153,7 @@ CREATE TABLE c_coste (
     haber numeric(12, 2) DEFAULT 0
 );
 
-
+\echo -n ':: Acumulado centro de coste ... '
 CREATE TABLE acumulado_c_coste (
     idacumulado_c_coste serial PRIMARY KEY,
     idcuenta integer NOT NULL REFERENCES cuenta(idcuenta),
@@ -126,7 +162,7 @@ CREATE TABLE acumulado_c_coste (
     haber numeric(12, 2) DEFAULT 0
 );
 
-
+\echo -n ':: Acumulado canal ... '
 CREATE TABLE acumulado_canal (
     idacumulado_canal serial PRIMARY KEY,
     idcuenta integer NOT NULL REFERENCES cuenta(idcuenta),
@@ -135,16 +171,15 @@ CREATE TABLE acumulado_canal (
     haber numeric(12, 2) DEFAULT 0
 );
 
-
+\echo -n ':: Diario (La tabla diario esta en desuso, aunque de momento se crea.) ... '
 CREATE TABLE diario (
     iddiario serial PRIMARY KEY,
     descripcion character varying(100)
 );
-\echo "La tabla diario esta en desuso, aunque de momento se crea."
-
 
 -- El campo ordenasiento se puede dejar en nulo solo porque luego el trigger lo reasigna. Con un default
 -- sera ma adecuado pero no se como se implementa un default tan complicado.
+\echo -n ':: Asiento ... '
 CREATE TABLE asiento (
     idasiento serial PRIMARY KEY,
     descripcion character varying(100),
@@ -154,7 +189,7 @@ CREATE TABLE asiento (
     clase smallint DEFAULT 0
 );
 
-
+\echo -n ':: Archivo documental ... '
 CREATE TABLE adocumental (
     idadocumental serial PRIMARY KEY,
     idasiento integer REFERENCES asiento(idasiento),
@@ -164,7 +199,7 @@ CREATE TABLE adocumental (
     archivoadocumental character varying(300)
 );
 
-
+\echo -n ':: Apunte ... '
 CREATE TABLE apunte (
     idapunte serial PRIMARY KEY,
     codigoborrador integer,
@@ -186,7 +221,7 @@ CREATE TABLE apunte (
     punteo boolean DEFAULT false
 );
 
-
+\echo -n ':: Borrador ... '
 CREATE TABLE borrador (
     idborrador serial PRIMARY KEY,
     codigoborrador integer,
@@ -222,6 +257,7 @@ CREATE TABLE borrador (
 --                            3 - anyos
 -- plazoentrerecibofpago = Numero de plazos en los siguientes recibos.
 -- tipoplazoentrerecibofpago = (Igual que tipoplazoprimerpagofpago).
+\echo -n ':: Forma de pago ... '
 CREATE TABLE fpago (
     idfpago serial PRIMARY KEY,
     nomfpago character varying(50),
@@ -240,6 +276,7 @@ CREATE TABLE fpago (
 -- idtipoiva = Identificador de la tabla.
 -- nombretipoiva = Da un nombre al tipo de IVA.
 -- Porcentajetipoiva = El porcentaje que corresponde con este tipo.
+\echo -n ':: Tipo de IVA ... '
 CREATE TABLE tipoiva (
     idtipoiva serial PRIMARY KEY,
     nombretipoiva character varying(25) UNIQUE,
@@ -251,6 +288,7 @@ CREATE TABLE tipoiva (
 -- ffactura = Fecha de la factura.
 -- iva = Es un campo de solo lectura que se actualiza con los valores del IVA.
 -- factemitida = Indica si es una factura emitida o recibida.
+\echo -n ':: Registro de IVA ... '
 CREATE TABLE registroiva (
     idregistroiva serial PRIMARY KEY,
     contrapartida integer REFERENCES cuenta(idcuenta),
@@ -284,6 +322,7 @@ CREATE TABLE registroiva (
 -- fcobroprevcobro = Fecha en que se ha realizado el cobro / pago.
 -- idregistroiva = Registro de IVA con el que se corresponde, o factura con la que se corresponde.
 -- tipoprevcobro = Indica si es un cobro o un pago. TRUE --> COBRO FALSE -->PAGO.
+\echo -n ':: Prevision de cobro ... '
 CREATE TABLE prevcobro (
     idprevcobro serial PRIMARY KEY,
     fprevistaprevcobro date,
@@ -298,10 +337,9 @@ CREATE TABLE prevcobro (
     tipoprevcobro boolean NOT NULL DEFAULT FALSE,
     docprevcobro character varying(50)
 );
-\echo "Se ha creado la tabla prevcobro."
-
 
 -- Esta tabla especifica para cada factura los IVAs correspondientes.
+\echo -n ':: IVA ... '
 CREATE TABLE iva (
    idiva serial PRIMARY KEY,
    idtipoiva integer NOT NULL REFERENCES tipoiva (idtipoiva),
@@ -309,16 +347,15 @@ CREATE TABLE iva (
    baseiva numeric(12, 2) DEFAULT 0,
    ivaiva numeric(12, 2) DEFAULT 0
 );
-\echo "Se ha creado la tabla 'iva'".
 
-
+\echo -n ':: Asiento inteligente ... '
 CREATE TABLE ainteligente (
     idainteligente serial PRIMARY KEY,
     descripcion character varying(100),
     comentariosasiento character varying(2000)
 );
 
-
+\echo -n ':: Linea de asientos inteligentes (Pte. borrar)... '
 CREATE TABLE binteligente (
     idbinteligente serial PRIMARY KEY,
     idainteligente integer,
@@ -336,12 +373,11 @@ CREATE TABLE binteligente (
     idc_coste character varying(100)
 );
 
-
+\echo -n ':: Balance ... '
 CREATE TABLE balance (
     idbalance serial PRIMARY KEY,
     nombrebalance character varying(150)
 );
-\echo "Se ha creado balance."
 
 
 -- La casilla tipomasapatrimonial:
@@ -349,6 +385,7 @@ CREATE TABLE balance (
 -- 1.- Solo presentar si el saldo es > 0,
 -- 2.- Solo presentar si el saldo es < 0,
 -- 3.- Presentar en valor absoluto.
+\echo -n ':: Masa patrimonial ... '
 CREATE TABLE mpatrimonial (
     idmpatrimonial serial PRIMARY KEY,
     idbalance integer REFERENCES balance(idbalance),
@@ -359,13 +396,13 @@ CREATE TABLE mpatrimonial (
     opdesc integer,
     tipompatrimonial integer DEFAULT 0
 );
-\echo "Se ha creado la tabla mpatrimonial."
 
 
 -- La casilla tipocompmasap:
 -- 0.- normal,
 -- 1.- Solo presentar si el saldo es > 0,
 -- 2.- Solo presentar si el saldo es < 0.
+\echo -n ':: Componente de masa patrimonial ... '
 CREATE TABLE compmasap (
     idcompmasap serial PRIMARY KEY,
     idcuenta integer REFERENCES cuenta(idcuenta),
@@ -376,9 +413,9 @@ CREATE TABLE compmasap (
     tipocompmasap integer DEFAULT 0,
     nombre character varying(150)
 );
-\echo "Se ha creado la tabla compmasap."
 
 
+\echo -n ':: Componente de balance ... '
 CREATE TABLE compbalance (
     idcompbalance serial PRIMARY KEY,
     idbalance integer NOT NULL REFERENCES balance(idbalance),
@@ -387,9 +424,8 @@ CREATE TABLE compbalance (
     orden integer,
     tabulacion integer
 );
-\echo "Se ha creado la tabla compbalance."
 
-
+\echo -n ':: Amortizacion ... '
 CREATE TABLE amortizacion (
     idamortizacion serial NOT NULL,
     idcuentaactivo integer,
@@ -408,9 +444,9 @@ CREATE TABLE amortizacion (
     telproveedor character varying(20),
     agrupacion character varying(150)
 );
-\echo "Se ha creado la tabla amortizacion."
 
 
+\echo -n ':: Linea de amortizacion ... '
 CREATE TABLE linamortizacion (
     idlinamortizacion serial NOT NULL,
     idamortizacion integer,
@@ -419,24 +455,24 @@ CREATE TABLE linamortizacion (
     fechaprevista date,
     cantidad numeric(12, 2)
 );
-\echo "Se ha creado la tabla linamortizacion."
 
 
+\echo -n ':: Ejercicios ... '
 CREATE TABLE ejercicios (
     ejercicio integer,
     periodo smallint,
     bloqueado boolean
 );
-\echo "Se ha creado la tabla ejercicios."
 
 
+\echo -n ':: Funcion abre asientos ... '
 CREATE FUNCTION abreasientos() RETURNS integer
     AS '
---DECLARE as RECORD;
+--DECLARE bs RECORD;
 --DECLARE res RECORD;
 BEGIN
---    FOR as IN SELECT * FROM asiento ORDER BY idasiento DESC LOOP
---      SELECT INTO res cambiaasiento(as.idasiento, as.idasiento * 3);
+--    FOR bs IN SELECT * FROM asiento ORDER BY idasiento DESC LOOP
+--      SELECT INTO res cambiaasiento(bs.idasiento, bs.idasiento * 3);
 --    END LOOP;
 --  Abrir los asientos es modificar el campo ordenasiento de los mismos para que se reorganicen
     UPDATE asiento SET ordenasiento = ordenasiento * 3;
@@ -446,18 +482,19 @@ END;
     LANGUAGE plpgsql;
 
 
+\echo -n ':: Funcion cambia asiento ... '
 CREATE FUNCTION cambiaasiento(integer, integer) RETURNS integer
     AS '
 DECLARE
     idinicial ALIAS FOR $1;
     idfinal ALIAS FOR $2;
-    as RECORD;
+    bs RECORD;
 BEGIN
     -- Esta funcion cambia un asiento de sitio, el asiento inicial y lo pone en el asiento final
     -- El problema es que si el asiento final debe estar vacio.
-    SELECT INTO as * FROM asiento WHERE idasiento = idinicial;
+    SELECT INTO bs * FROM asiento WHERE idasiento = idinicial;
     IF FOUND THEN
-        INSERT INTO asiento (idasiento, fecha, descripcion, comentariosasiento) VALUES (idfinal, as.fecha, as.descripcion, as.comentariosasiento);
+        INSERT INTO asiento (idasiento, fecha, descripcion, comentariosasiento) VALUES (idfinal, bs.fecha, bs.descripcion, bs.comentariosasiento);
         UPDATE borrador SET idasiento = idfinal WHERE idasiento = idinicial;
         UPDATE apunte SET idasiento = idfinal WHERE idasiento = idinicial;
         DELETE FROM asiento WHERE idasiento = idinicial;
@@ -469,6 +506,7 @@ END;
 
 
 -- La contrapartida de un apunte donde todo son ceros es la misma que el apunte.
+\echo -n ':: Funcion calcular contrapartida ... '
 CREATE FUNCTION ccontrapartida(integer) RETURNS integer
     AS '
 DECLARE
@@ -479,7 +517,7 @@ DECLARE
 BEGIN
     SELECT INTO apt * FROM apunte WHERE idapunte= midapunte;
 -- Este metodo de buscar contrapartidas es poco eficaz por lo que de momento
--- Tenemos desabilitada la opci� de las contrapartidas asi como debe ser.    
+-- Tenemos desabilitada la opcion de las contrapartidas asi como debe ser.    
 -- MUCHO OJO, PUEDE TENER GRAVES CONSECUENCIAS
     IF apt.contrapartida ISNULL THEN
 --          RETURN apt.idcuenta;
@@ -506,10 +544,11 @@ END;
 -- Esta funcion es invocada desde 'cierraasiento' porque que al cerrar el asiento se calculan las contrapartidas de
 -- todos los apuntes.
 -- Esta es de momento la forma mas eficiente de calcular contrapartidas.
+\echo -n ':: Funcion contrapartidas de un asiento ... '
 CREATE FUNCTION contraasiento(integer) RETURNS NUMERIC(12, 2)
    AS '
 DECLARE
-   midasiento ALIAS FOR $1;
+    midasiento ALIAS FOR $1;
     midapunte ALIAS FOR $1;
     apt RECORD;
     aptasien RECORD;
@@ -532,26 +571,26 @@ BEGIN
     ctadebe := 0;
     ctahaber := 0;
     descuadre := 0;
-    FOR  cont IN SELECT  idcuenta,idapunte, debe, haber, orden FROM apunte WHERE idasiento = midasiento ORDER BY orden LOOP
+    FOR cont IN SELECT idcuenta,idapunte, debe, haber, orden FROM apunte WHERE idasiento = midasiento ORDER BY orden LOOP
 	-- Si es el debe maximo lo hacemos constar.
 	IF cont.debe >= maxdebe THEN
             maxdebe := cont.debe;
             apmaxdebe := cont.idapunte;
 	    ctadebe := cont.idcuenta;
         END IF;
-        -- Si es el haber mximo lo hacemos constar
+        -- Si es el haber maximo lo hacemos constar.
         IF cont.haber >= maxhaber THEN
             maxhaber := cont.haber;
             apmaxhaber := cont.idapunte;
 	    ctahaber := cont.idcuenta;
         END IF;
-        -- Calculamos el descuadre
+        -- Calculamos el descuadre.
     	descuadre := descuadre + cont.debe;
         descuadre := descuadre - cont.haber;
         -- Si es el descuadre inicializamos las variables.
         IF descuadre = 0 AND ctadebe <> 0 AND ctahaber <> 0 THEN
-            UPDATE apunte SET contrapartida= ctahaber WHERE  haber=0 AND idasiento = midasiento AND orden <= cont.orden AND contrapartida ISNULL;
-            UPDATE apunte SET contrapartida= ctadebe WHERE  debe=0 AND idasiento = midasiento AND orden <= cont.orden AND contrapartida ISNULL;
+            UPDATE apunte SET contrapartida= ctahaber WHERE haber=0 AND idasiento = midasiento AND orden <= cont.orden AND contrapartida ISNULL;
+            UPDATE apunte SET contrapartida= ctadebe WHERE debe=0 AND idasiento = midasiento AND orden <= cont.orden AND contrapartida ISNULL;
             maxdebe := 0;
             maxhaber := 0;
             apmaxdebe:=0;
@@ -570,6 +609,7 @@ END;
 -- ser erroneo.
 -- Esta funcion esta mucho mas perfeccionada con lo que es menos probable un error. Por tanto se sugiere la migracion
 -- a esta nueva funcion.
+\echo -n ':: Funcion buscar contrapartida ... '
 CREATE FUNCTION bcontrapartida(integer) RETURNS integer
     AS '
 DECLARE
@@ -586,12 +626,12 @@ DECLARE
     salidadebe BOOLEAN;
     salidahaber BOOLEAN;
 BEGIN
---  RAISE NOTICE ''Em pezamos'';
+--  RAISE NOTICE ''Empezamos'';
     SELECT INTO apt contrapartida, idasiento FROM apunte WHERE idapunte = midapunte;
     IF apt.contrapartida ISNULL THEN
         -- Inicializamos las variables.
         descuadre := 0;
-        maxdebe :=0;
+        maxdebe := 0;
         maxhaber := 0;
         apmaxdebe := 0;
         apmaxhaber := 0;
@@ -611,16 +651,16 @@ BEGIN
                 maxdebe := cont.debe;
                 apmaxdebe := cont.idapunte;
             END IF;
-            -- Si es el haber mximo lo hacemos constar
+            -- Si es el haber maximo lo hacemos constar.
             IF cont.haber > maxhaber THEN
                 maxhaber := cont.haber;
                 apmaxhaber := cont.idapunte;
             END IF;
-            -- Calculamos el descuadre
+            -- Calculamos el descuadre.
             descuadre := descuadre + cont.debe;
             descuadre := descuadre - cont.haber;
             -- Si es el descuadre inicializamos las variables.
-            IF (descuadre = 0) THEN  -- Asi nos aseguramos que valores positivos tambi� entran.
+            IF (descuadre = 0) THEN  -- Asi nos aseguramos que valores positivos tambien entran.
                 IF (salidadebe = TRUE) THEN
                     RETURN apmaxdebe;
                 END IF;
@@ -648,6 +688,7 @@ END;
 -- erroneo.
 -- Esta funcion esta mucho mas perfeccionada con lo que es menos probable un error. Por tanto se sugiere la migracion
 -- a esta nueva funcion.
+\echo -n ':: Funcion buscar contrapartida borrador ... '
 CREATE FUNCTION bcontrapartidaborr(integer) RETURNS integer
     AS '
 DECLARE
@@ -689,16 +730,16 @@ BEGIN
                 maxdebe := cont.debe;
                 apmaxdebe := cont.idborrador;
             END IF;
-            -- Si es el haber mximo lo hacemos constar
+            -- Si es el haber maximo lo hacemos constar.
             IF cont.haber > maxhaber THEN
                 maxhaber := cont.haber;
                 apmaxhaber := cont.idborrador;
             END IF;
-            -- Calculamos el descuadre
+            -- Calculamos el descuadre.
             descuadre := descuadre + cont.debe;
             descuadre := descuadre - cont.haber;
             -- Si es el descuadre inicializamos las variables.
-            IF (descuadre*descuadre < 0.001) THEN  -- Asi nos aseguramos que valores positivos tambien entran.
+            IF (descuadre * descuadre < 0.001) THEN  -- Asi nos aseguramos que valores positivos tambien entran.
                 IF (salidadebe = TRUE) THEN
                     RETURN apmaxdebe;
                 END IF;
@@ -707,7 +748,7 @@ BEGIN
                 END IF;
                 maxdebe := 0;
                 maxhaber := 0;
-                apmaxdebe:=0;
+                apmaxdebe := 0;
                 apmaxhaber := 0;
             END IF;
         END LOOP;
@@ -720,13 +761,14 @@ END;'
     LANGUAGE plpgsql;
 
 
+\echo -n ':: Funcion ID cuenta ... '
 CREATE FUNCTION id_cuenta(character varying) RETURNS integer
     AS '
 DECLARE
    codcuenta ALIAS FOR $1;
-   cta  RECORD;
+   cta RECORD;
 BEGIN
-   SELECT INTO cta idcuenta FROM cuenta  WHERE codigo = "codcuenta";
+   SELECT INTO cta idcuenta FROM cuenta WHERE codigo = "codcuenta";
    IF FOUND THEN
         RETURN cta.idcuenta;
    ELSE
@@ -737,6 +779,7 @@ END;
     LANGUAGE plpgsql;
 
 
+\echo -n ':: Funcion nivel de codigo de cuenta ... '
 CREATE FUNCTION nivel(character varying) RETURNS integer
     AS '
 DECLARE
@@ -748,6 +791,7 @@ END;
     LANGUAGE plpgsql;
 
 
+\echo -n ':: Funcion saldo total masa patrimonial ... '
 CREATE OR REPLACE FUNCTION saldototalmpatrimonial(integer) RETURNS NUMERIC(12, 2)
     AS '
 DECLARE
@@ -816,6 +860,7 @@ END;
 ' LANGUAGE plpgsql;
 
 
+\echo -n ':: Funcion saldo masa patrimonial ... '
 CREATE OR REPLACE FUNCTION saldompatrimonial(integer, date, date) RETURNS numeric(12, 2)
     AS '
 DECLARE
@@ -886,6 +931,7 @@ END;
 ' LANGUAGE plpgsql;
 
 
+\echo -n ':: Funcion debe de masa patrimonial ... '
 CREATE FUNCTION debempatrimonial(integer, date, date) RETURNS numeric(12, 2)
     AS '
 DECLARE
@@ -918,6 +964,7 @@ END;
     LANGUAGE plpgsql;
 
 
+\echo -n ':: Funcion haber de masa patrimonial ... '
 CREATE FUNCTION habermpatrimonial(integer, date, date) RETURNS numeric(12, 2)
     AS '
 DECLARE
@@ -950,6 +997,7 @@ END;
     LANGUAGE plpgsql;
 
 
+\echo -n ':: Funcion saldo total ... '
 CREATE FUNCTION saldototal(character varying, date, date) RETURNS numeric(12, 2)
     AS '
 DECLARE
@@ -979,6 +1027,7 @@ END;
 '    LANGUAGE plpgsql;
 
 
+\echo -n ':: Funcion debe total entre fechas ... '
 CREATE FUNCTION debetotal(integer, date, date) RETURNS numeric(12,2)
     AS '
 DECLARE
@@ -1010,6 +1059,7 @@ END;
     LANGUAGE plpgsql;
 
 
+\echo -n ':: Funcion debe total ... '
 CREATE FUNCTION debetotal1(integer) RETURNS numeric(12, 2)
     AS '
 DECLARE
@@ -1038,6 +1088,7 @@ END;
     LANGUAGE plpgsql;
 
 
+\echo -n ':: Funcion haber total entre fechas ... '
 CREATE FUNCTION habertotal(integer, date, date) RETURNS numeric(12, 2)
     AS '
 DECLARE
@@ -1068,6 +1119,7 @@ END;
     LANGUAGE plpgsql;
 
 
+\echo -n ':: Funcion haber total ... '
 CREATE FUNCTION habertotal1(integer) RETURNS numeric(12, 2)
     AS '
 DECLARE
@@ -1096,6 +1148,7 @@ END;
     LANGUAGE plpgsql;
 
 
+\echo -n ':: Funcion recalcula saldos ... '
 CREATE FUNCTION recalculasaldos() RETURNS numeric(12,2)
     AS '
 DECLARE
@@ -1114,6 +1167,7 @@ END;
     LANGUAGE plpgsql;
 
     
+\echo -n ':: Funcion recalcula saldos 2 ... '
 CREATE FUNCTION recalculasaldos2() RETURNS integer
     AS '
 DECLARE
@@ -1171,6 +1225,7 @@ END;
 '    LANGUAGE plpgsql;
 
 
+\echo -n ':: Funcion aumenta valor ... '
 CREATE FUNCTION aumenta_valor() RETURNS "trigger"
     AS '
 DECLARE
@@ -1203,12 +1258,14 @@ END;
     LANGUAGE plpgsql;
 
 
+\echo -n ':: Disparador nuevo apunte aumente valor ... '
 CREATE TRIGGER nuevo_apunte
     AFTER INSERT OR UPDATE ON apunte
     FOR EACH ROW
     EXECUTE PROCEDURE aumenta_valor();
 
 
+\echo -n ':: Funcion disminuye valor ... '
 CREATE FUNCTION disminuye_valor() RETURNS "trigger"
     AS '
 DECLARE
@@ -1243,12 +1300,14 @@ END;
     LANGUAGE plpgsql;
 
 
+\echo -n ':: Disparador nuevo apunte disminuye valor ... '
 CREATE TRIGGER nuevo_apunte1
     AFTER UPDATE ON apunte
     FOR EACH ROW
     EXECUTE PROCEDURE disminuye_valor();
 
 
+\echo -n ':: Funcion disminuye valor ... '
 CREATE FUNCTION disminuye_valor1() RETURNS "trigger"
     AS '
 DECLARE
@@ -1282,12 +1341,14 @@ END;
     LANGUAGE plpgsql;
 
 
+\echo -n ':: Disoparador nuevo apunte disminuye valor ... '
 CREATE TRIGGER nuevo_apunte2
     AFTER DELETE ON apunte
     FOR EACH ROW
     EXECUTE PROCEDURE disminuye_valor1();
 
 
+\echo -n ':: Funcion crea cuenta ... '
 CREATE FUNCTION creacuenta() RETURNS "trigger"
     AS '
 DECLARE
@@ -1305,12 +1366,14 @@ END;
     LANGUAGE plpgsql;
 
 
+\echo -n ':: Disparador nueva cuenta ... '
 CREATE TRIGGER nueva_cuenta
     AFTER INSERT ON cuenta
     FOR EACH ROW
     EXECUTE PROCEDURE creacuenta();
 
 
+\echo -n ':: Funcion borra cuenta ... '
 CREATE FUNCTION borracuenta() RETURNS "trigger"
     AS '
 DECLARE
@@ -1328,12 +1391,14 @@ END;
     LANGUAGE plpgsql;
 
 
+\echo -n ':: Disparador borra cuenta ... '
 CREATE TRIGGER borra_cuenta
     BEFORE DELETE ON cuenta
     FOR EACH ROW
     EXECUTE PROCEDURE borracuenta();
 
 
+\echo -n ':: Funcion crea canal ... '
 CREATE FUNCTION creacanal() RETURNS "trigger"
     AS '
 DECLARE
@@ -1348,12 +1413,14 @@ END;
     LANGUAGE plpgsql;
 
 
+\echo -n ':: Disparador nuevo canal ... '
 CREATE TRIGGER nuevo_canal
     AFTER INSERT ON canal
     FOR EACH ROW
     EXECUTE PROCEDURE creacanal();
     
 
+\echo -n ':: Funcion borra canal ... '
 CREATE FUNCTION borracanal() RETURNS "trigger"
     AS '
 BEGIN
@@ -1364,12 +1431,14 @@ END;
     LANGUAGE plpgsql;
 
 
+\echo -n ':: Disparador borra canal ... '
 CREATE TRIGGER borra_canal
     BEFORE DELETE ON canal
     FOR EACH ROW
     EXECUTE PROCEDURE borracanal();
     
 
+\echo -n ':: Funcion crea centro de coste ... '
 CREATE FUNCTION creaccoste() RETURNS "trigger"
     AS '
 DECLARE
@@ -1384,12 +1453,14 @@ END;
     LANGUAGE plpgsql;
 
 
+\echo -n ':: Disparador nuevo centro de coste ... '
 CREATE TRIGGER nuevo_ccoste
     AFTER INSERT ON c_coste
     FOR EACH ROW
     EXECUTE PROCEDURE creaccoste();
 
 
+\echo -n ':: Funcion borra centro de coste ... '
 CREATE FUNCTION borraccoste() RETURNS "trigger"
     AS '
 BEGIN
@@ -1400,12 +1471,14 @@ END;
     LANGUAGE plpgsql;
 
 
+\echo -n ':: Disparador borra centro de coste ... '
 CREATE TRIGGER borra_ccoste
     BEFORE DELETE ON c_coste
     FOR EACH ROW
     EXECUTE PROCEDURE borraccoste();
 
 
+\echo -n ':: Funcion propaga acumulado cuenta ... '
 CREATE FUNCTION propagaacumuladocuenta() RETURNS "trigger"
     AS '
 DECLARE
@@ -1424,12 +1497,14 @@ END;
     LANGUAGE plpgsql;
 
 
+\echo -n ':: Disparador propaga acumulado cuenta ... '
 CREATE TRIGGER propaga_acumulado_cuenta
     AFTER UPDATE ON cuenta
     FOR EACH ROW
     EXECUTE PROCEDURE propagaacumuladocuenta();
 
 
+\echo -n ':: Funcion propaga acumulado centro de coste ... '
 CREATE FUNCTION propagaacumuladoccoste() RETURNS "trigger"
     AS '
 DECLARE
@@ -1447,12 +1522,14 @@ END;
     LANGUAGE plpgsql;
 
 
+\echo -n ':: Disparador propaga acumulado centro de coste ... '
 CREATE TRIGGER propaga_acumulado_ccoste
     AFTER UPDATE ON c_coste
     FOR EACH ROW
     EXECUTE PROCEDURE propagaacumuladoccoste();
     
 
+\echo -n ':: Funcion acumulados canal ... '
 CREATE FUNCTION acumulados_canal() RETURNS "trigger"
     AS '
 DECLARE
@@ -1475,19 +1552,21 @@ END;
     LANGUAGE plpgsql;
 
 
+\echo -n ':: Disparador acumulados canal ... '
 CREATE TRIGGER acumulados_canal_fk
     AFTER UPDATE ON acumulado_canal
     FOR EACH ROW
     EXECUTE PROCEDURE acumulados_canal();
 
 
+\echo -n ':: Funcion abre asiento ... '
 CREATE FUNCTION abreasiento(integer) RETURNS integer
     AS '
 DECLARE
     id_asiento ALIAS FOR $1;
 BEGIN
-    -- Para prevenir la apertura de un asiento en teoría bloqueado primero lo modificamos para que salte el trigger.
-    -- Esto debería hacer las comprobaciones por si mismo pero asi es mas comodo.
+    -- Para prevenir la apertura de un asiento en teoria bloqueado primero lo modificamos para que salte el trigger.
+    -- Esto deberia hacer las comprobaciones por si mismo pero asi es mas comodo.
     UPDATE asiento SET idasiento = idasiento WHERE idasiento = id_asiento;
     UPDATE apunte SET idasiento = idasiento WHERE idasiento = id_asiento;
 
@@ -1498,6 +1577,7 @@ END;
     LANGUAGE plpgsql;
 
 
+\echo -n ':: Funcion cierra asiento ... '
 CREATE FUNCTION cierraasiento(integer) RETURNS integer
     AS '
 DECLARE
@@ -1505,7 +1585,7 @@ DECLARE
     mrecord RECORD;
 BEGIN
     DELETE FROM apunte WHERE idasiento=id_asiento;
-     -- // Linia Afegida per Josep B.
+     -- // Linia afegida per Josep B.
     FOR mrecord IN SELECT * from borrador WHERE idasiento = id_asiento LOOP
 	INSERT INTO apunte (codigoborrador, idasiento, iddiario, fecha, conceptocontable, idcuenta, descripcion, debe,
 		    haber, contrapartida, comentario, idcanal, marcaconciliacion, idc_coste, idtipoiva, orden) VALUES
@@ -1522,17 +1602,18 @@ END;
     LANGUAGE plpgsql;
 
 
+\echo -n ':: Funcion reordena asientos por ejercicio ... '
 CREATE FUNCTION reordenaasientos(integer) RETURNS integer
     AS '
 DECLARE
     ejercicio ALIAS FOR $1;
-    as RECORD;
+    bs RECORD;
     cont integer;
 BEGIN
     cont := 1;
-    FOR as IN SELECT * from asiento WHERE EXTRACT(YEAR FROM fecha) = ejercicio ORDER BY fecha, ordenasiento LOOP
-        IF (cont <> as.ordenasiento) THEN
-            UPDATE asiento SET ordenasiento = cont WHERE idasiento = as.idasiento;
+    FOR bs IN SELECT * FROM asiento WHERE EXTRACT(YEAR FROM fecha) = ejercicio ORDER BY fecha, ordenasiento LOOP
+        IF (cont <> bs.ordenasiento) THEN
+            UPDATE asiento SET ordenasiento = cont WHERE idasiento = bs.idasiento;
         END IF;
         cont := cont + 1;
     END LOOP;
@@ -1541,13 +1622,14 @@ END;
 '    LANGUAGE plpgsql;
 
 
+\echo -n ':: Funcion reordena todos los asientos ... '
 CREATE OR REPLACE FUNCTION reordenaasientosall() RETURNS integer
     AS '
 DECLARE
     bs RECORD;
     ejercicio integer;
 BEGIN
-    FOR bs IN SELECT DISTINCT EXTRACT (YEAR  FROM FECHA) AS ano FROM asiento ORDER BY ano LOOP
+    FOR bs IN SELECT DISTINCT EXTRACT (YEAR FROM FECHA) AS ano FROM asiento ORDER BY ano LOOP
         ejercicio = bs.ano;
         PERFORM reordenaasientos(ejercicio);
     END LOOP;
@@ -1557,7 +1639,7 @@ END;
 
 
 -- **********************************************************************
--- APARTADO DE COMPROBACIONES DE INTEGRIDAD EXTRA Y DETECCI� DE ERRORES.
+-- APARTADO DE COMPROBACIONES DE INTEGRIDAD EXTRA Y DETECCION DE ERRORES.
 -- **********************************************************************
 -- **********************************************************************
 --
@@ -1565,6 +1647,7 @@ END;
 -- DROP TRIGGER restriccionescuentatrigger ON cuenta CASCADE;
 -- DROP FUNCTION restriccionescuenta();
 --
+\echo -n ':: Funcion restricciones de cuenta ... '
 CREATE FUNCTION restriccionescuenta() RETURNS "trigger"
     AS '
 DECLARE
@@ -1590,12 +1673,14 @@ END;
 ' LANGUAGE plpgsql;
 
 
+\echo -n ':: Disparador restricciones de cuenta ... '
 CREATE TRIGGER restriccionescuentatrigger
     BEFORE INSERT OR UPDATE ON cuenta
     FOR EACH ROW
     EXECUTE PROCEDURE restriccionescuenta();
 
     
+\echo -n ':: Funcion restricciones al borrado de cuenta ... '
 CREATE OR REPLACE FUNCTION restriccionesborradocuenta() RETURNS "trigger"
     AS '
 DECLARE
@@ -1610,13 +1695,15 @@ END;
 ' LANGUAGE plpgsql;
 
 
+\echo -n ':: Disparador restricciones al borrado de cuenta ... '
 CREATE TRIGGER restriccionesborradocuentatrigger
     BEFORE DELETE ON cuenta
     FOR EACH ROW
     EXECUTE PROCEDURE restriccionesborradocuenta();    
     
 
-CREATE FUNCTION restriccionesborrador () RETURNS "trigger"
+\echo -n ':: Funcion restricciones borrador ... '
+CREATE FUNCTION restriccionesborrador() RETURNS "trigger"
 AS '
 DECLARE
     cta RECORD;
@@ -1626,65 +1713,67 @@ BEGIN
     SELECT INTO cta * FROM cuenta WHERE idcuenta = NEW.idcuenta;
     IF FOUND THEN
         IF cta.bloqueada THEN
-	    RAISE EXCEPTION '' Cuenta bloqueada, no se puede utilizar esta cuenta '';
+	    RAISE EXCEPTION ''Cuenta bloqueada, no se puede utilizar esta cuenta %'', NEW.idcuenta;
         END IF;
         IF cta.nodebe THEN
             IF NEW.debe <> 0 THEN
-                RAISE EXCEPTION '' Cuenta bloqueada por debe, solo permite haber '';
+                RAISE EXCEPTION ''Cuenta bloqueada por debe, solo permite haber %'', NEW.idcuenta;
             END IF;
         END IF;
         IF cta.nohaber THEN
             IF NEW.haber <> 0 THEN
-                RAISE EXCEPTION '' Cuenta bloqueada por haber, solo permite debe '';
+                RAISE EXCEPTION ''Cuenta bloqueada por haber, solo permite debe %'', NEW.idcuenta;
             END IF;
         END IF;
     ELSE
-	RAISE EXCEPTION '' Cuenta inexistente '';
+	RAISE EXCEPTION ''Cuenta inexistente %'', NEW.idcuenta;
     END IF;
 	
-    SELECT INTO  ej  * FROM ejercicios WHERE ejercicio = EXTRACT (YEAR FROM NEW.fecha) AND periodo = 0;
+    SELECT INTO ej * FROM ejercicios WHERE ejercicio = EXTRACT (YEAR FROM NEW.fecha) AND periodo = 0;
     IF FOUND THEN
 	IF ej.bloqueado = TRUE THEN
-    	    RAISE EXCEPTION '' Periodo bloqueado '';
+    	    RAISE EXCEPTION ''Periodo bloqueado %'', NEW.fecha;
 	END IF;
     ELSE
-	RAISE EXCEPTION '' Ejercicio Inexistente'';
+	RAISE EXCEPTION ''Ejercicio Inexistente %'', ej.ejercicio;
     END IF;
 
-    SELECT INTO  ej * FROM ejercicios WHERE ejercicio = EXTRACT (YEAR FROM NEW.fecha) AND periodo = EXTRACT (MONTH FROM NEW.fecha);
+    SELECT INTO ej * FROM ejercicios WHERE ejercicio = EXTRACT (YEAR FROM NEW.fecha) AND periodo = EXTRACT (MONTH FROM NEW.fecha);
     IF ej.bloqueado = TRUE THEN
-	RAISE EXCEPTION '' Periodo bloqueado '';
+	RAISE EXCEPTION ''Periodo bloqueado %'', NEW.fecha;
     END IF;
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
 
 
+\echo -n ':: Disparador restricciones borrador ... '
 CREATE TRIGGER restriccionesborradortrigger
     BEFORE INSERT OR UPDATE ON borrador
     FOR EACH ROW
     EXECUTE PROCEDURE restriccionesborrador();
     
     
+\echo -n ':: Funcion restricciones asiento ... '
 CREATE FUNCTION restriccionesasiento() RETURNS "trigger"
     AS '
 DECLARE
     ej RECORD;
 BEGIN
-    SELECT INTO  ej  * FROM ejercicios WHERE ejercicio = EXTRACT (YEAR FROM NEW.fecha) AND periodo = 0;
+    SELECT INTO ej * FROM ejercicios WHERE ejercicio = EXTRACT (YEAR FROM NEW.fecha) AND periodo = 0;
     IF FOUND THEN
     	IF ej.bloqueado = TRUE THEN
-	    RAISE EXCEPTION '' Periodo bloqueado '';
+	    RAISE EXCEPTION ''Periodo bloqueado %'', NEW.fecha;
 	END IF;
     ELSE
-	RAISE EXCEPTION '' Ejercicio Inexistente'';
+	RAISE EXCEPTION ''Ejercicio Inexistente %'', ej.ejercicio;
     END IF;
-    SELECT INTO  ej * FROM ejercicios WHERE ejercicio = EXTRACT (YEAR FROM NEW.fecha) AND periodo = EXTRACT (MONTH FROM NEW.fecha);
+    SELECT INTO ej * FROM ejercicios WHERE ejercicio = EXTRACT (YEAR FROM NEW.fecha) AND periodo = EXTRACT (MONTH FROM NEW.fecha);
     IF ej.bloqueado = TRUE THEN
-	RAISE EXCEPTION '' Periodo bloqueado '';
+	RAISE EXCEPTION ''Periodo bloqueado %'', NEW.fecha;
     END IF;
     IF NEW.ordenasiento ISNULL OR NEW.ordenasiento = 0 THEN
-	SELECT INTO ej max(ordenasiento) + 1 AS max, count(idasiento) as cuenta FROM asiento WHERE EXTRACT (YEAR FROM NEW.fecha)= EXTRACT(YEAR FROM fecha);
+	SELECT INTO ej max(ordenasiento) + 1 AS max, count(idasiento) AS cuenta FROM asiento WHERE EXTRACT (YEAR FROM NEW.fecha) = EXTRACT(YEAR FROM fecha);
 	IF ej.cuenta > 0 THEN
 	    NEW.ordenasiento = ej.max;
 	ELSE
@@ -1696,12 +1785,14 @@ END;
 ' LANGUAGE plpgsql;
 
 
+\echo -n ':: Disparador restricciones asiento ... '
 CREATE TRIGGER restriccionesasientotrigger
    BEFORE INSERT OR UPDATE ON asiento
    FOR EACH ROW
    EXECUTE PROCEDURE restriccionesasiento();
 
 
+\echo -n ':: Funcion borrado asiento desde un disparador ... '
 CREATE FUNCTION tr_borradoasiento() RETURNS "trigger"
     AS '
 BEGIN
@@ -1711,6 +1802,7 @@ END;
 ' LANGUAGE plpgsql;
 
 
+\echo -n ':: Disparador restricciones borrado de asiento ... '
 CREATE TRIGGER restriccionesborradoasientotrigger
    BEFORE DELETE ON asiento
    FOR EACH ROW
@@ -1718,25 +1810,28 @@ CREATE TRIGGER restriccionesborradoasientotrigger
 
    
 -- Propaga los acumulados de IVA.
+\echo -n ':: Funcion inserta tipo de IVA ... '
 CREATE FUNCTION inserttipoiva() RETURNS "trigger"
     AS '
 DECLARE
     mrecord RECORD;
 BEGIN
     FOR mrecord IN SELECT * FROM registroiva LOOP
-	INSERT INTO iva (idregistroiva, idtipoiva,baseiva) VALUES(mrecord.idregistroiva, NEW.idtipoiva,0);
+	INSERT INTO iva (idregistroiva, idtipoiva,baseiva) VALUES(mrecord.idregistroiva, NEW.idtipoiva, 0);
     END LOOP;
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
 
 
+\echo -n ':: Disparador nuevo tipo de IVA ... '
 CREATE TRIGGER nuevotipoiva
    AFTER INSERT ON tipoiva
    FOR EACH ROW
    EXECUTE PROCEDURE inserttipoiva();
 
 
+\echo -n ':: Funcion borra tipo de IVA ... '
 CREATE FUNCTION deletetipoiva() RETURNS "trigger"
     AS '
 DECLARE
@@ -1748,12 +1843,14 @@ END;
 '    LANGUAGE plpgsql;
 
 
+\echo -n ':: Disparador borra tipo de IVA ... '
 CREATE TRIGGER borratipoiva
    BEFORE DELETE ON tipoiva
    FOR EACH ROW
    EXECUTE PROCEDURE deletetipoiva();
 
 
+\echo -n ':: Funcion cambiado IVA ... '
 CREATE OR REPLACE FUNCTION cambiadoiva() RETURNS "trigger"
     AS '
 DECLARE
@@ -1767,12 +1864,14 @@ END;
 '    LANGUAGE plpgsql;
 
 
+\echo -n ':: Disparador cambio tipo IVA ... '
 CREATE TRIGGER civa
    AFTER INSERT OR UPDATE ON iva
    FOR EACH ROW
    EXECUTE PROCEDURE cambiadoiva();  
    
    
+\echo -n ':: Funcion cambiado IVA ... '
 CREATE OR REPLACE FUNCTION cambiadoivad() RETURNS "trigger"
     AS '
 DECLARE
@@ -1786,6 +1885,7 @@ END;
 '    LANGUAGE plpgsql;
 
 
+\echo -n ':: Disparador cambiado IVA ... '
 CREATE TRIGGER civad
    AFTER DELETE ON iva
    FOR EACH ROW
@@ -1797,6 +1897,10 @@ CREATE TRIGGER civad
 -- ******************************************************
 
 
+\echo -n ':: '
 COMMENT ON SCHEMA public IS 'Standard public schema';
 
+\echo -n ':: '
 COMMIT;
+
+\echo '********* FIN FICHERO DE ESTRUCTURA DE LA BASE DE DATOS DE BULMACONT *********'
