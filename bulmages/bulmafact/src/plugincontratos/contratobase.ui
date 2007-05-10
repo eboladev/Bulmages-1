@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Nueva factura a cliente</string>
+   <string>Nuevo Contrato</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_facturas.48x48.png</iconset>
@@ -263,6 +263,9 @@
           <property name="text" >
            <string>Referencia:</string>
           </property>
+          <property name="buddy" >
+           <cstring>mui_refcontrato</cstring>
+          </property>
          </widget>
         </item>
         <item>
@@ -352,10 +355,13 @@
        <property name="text" >
         <string>Descripcion:</string>
        </property>
+       <property name="buddy" >
+        <cstring>mui_nomcontrato</cstring>
+       </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="mui_desccontrato" >
+      <widget class="QLineEdit" name="mui_nomcontrato" >
        <property name="sizePolicy" >
         <sizepolicy>
          <hsizetype>7</hsizetype>
@@ -404,14 +410,14 @@
      <property name="frameShadow" >
       <enum>QFrame::Raised</enum>
      </property>
-     <layout class="QHBoxLayout" >
+     <layout class="QGridLayout" >
       <property name="margin" >
        <number>5</number>
       </property>
       <property name="spacing" >
        <number>5</number>
       </property>
-      <item>
+      <item rowspan="3" row="0" column="0" >
        <widget class="BusquedaCliente" native="1" name="mui_idcliente" >
         <property name="sizePolicy" >
          <sizepolicy>
@@ -429,7 +435,116 @@
         </property>
        </widget>
       </item>
-      <item>
+      <item row="2" column="1" >
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="label8_3" >
+          <property name="font" >
+           <font>
+            <family>Sans Serif</family>
+            <pointsize>9</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
+            <underline>false</underline>
+            <strikeout>false</strikeout>
+           </font>
+          </property>
+          <property name="text" >
+           <string>Periodicidad Facturas:</string>
+          </property>
+          <property name="alignment" >
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+          <property name="buddy" >
+           <cstring>mui_periodicidadcontrato</cstring>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="BusquedaPeriodo" name="mui_periodicidadcontrato" />
+        </item>
+       </layout>
+      </item>
+      <item row="3" column="0" colspan="2" >
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="label" >
+          <property name="text" >
+           <string>Ubicación:</string>
+          </property>
+          <property name="buddy" >
+           <cstring>mui_loccontrato</cstring>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="mui_loccontrato" />
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="1" >
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="label8_2" >
+          <property name="font" >
+           <font>
+            <family>Sans Serif</family>
+            <pointsize>9</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
+            <underline>false</underline>
+            <strikeout>false</strikeout>
+           </font>
+          </property>
+          <property name="text" >
+           <string>Fecha de finalizacion:</string>
+          </property>
+          <property name="alignment" >
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="BusquedaFecha" native="1" name="mui_ffincontrato" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>7</hsizetype>
+            <vsizetype>13</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize" >
+           <size>
+            <width>100</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="0" column="1" >
        <layout class="QHBoxLayout" >
         <property name="margin" >
          <number>0</number>
@@ -498,7 +613,7 @@
       </font>
      </property>
      <property name="currentIndex" >
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tab1" >
       <attribute name="title" >
@@ -512,11 +627,11 @@
         <number>6</number>
        </property>
        <item>
-        <widget class="FacturasListSubform" native="1" name="subform2" >
+        <widget class="FacturasContratoListSubForm" native="1" name="subform2" >
          <property name="sizePolicy" >
           <sizepolicy>
-           <hsizetype>7</hsizetype>
-           <vsizetype>7</vsizetype>
+           <hsizetype>13</hsizetype>
+           <vsizetype>13</vsizetype>
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -537,7 +652,7 @@
         <number>6</number>
        </property>
        <item>
-        <widget class="QTextEdit" name="mui_comentcontrato" />
+        <widget class="QTextEdit" name="mui_descontrato" />
        </item>
       </layout>
      </widget>
@@ -617,14 +732,19 @@
    <header>busquedareferencia.h</header>
   </customwidget>
   <customwidget>
-   <class>FacturasListSubform</class>
+   <class>FacturasContratoListSubForm</class>
    <extends>QWidget</extends>
-   <header>facturaslist.h</header>
+   <header>contratoview.h</header>
   </customwidget>
   <customwidget>
    <class>BusquedaCliente</class>
    <extends>QWidget</extends>
    <header>busquedacliente.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaPeriodo</class>
+   <extends>QComboBox</extends>
+   <header>busquedaperiodo.h</header>
   </customwidget>
  </customwidgets>
  <resources>
@@ -638,8 +758,8 @@
    <slot>setShown(bool)</slot>
    <hints>
     <hint type="sourcelabel" >
-     <x>25</x>
-     <y>85</y>
+     <x>27</x>
+     <y>83</y>
     </hint>
     <hint type="destinationlabel" >
      <x>85</x>

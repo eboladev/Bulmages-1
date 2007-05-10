@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2004 by J. M. Estopa Rey                                *
- *   pepma@telefonica.net                                                  *
+ *   Copyright (C) 2007 by Asociación Iglues                               *
+ *   info@iglues.org                                                       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -92,8 +92,6 @@ public slots:
     virtual void on_mui_editar_clicked();
     virtual void on_mui_imprimir_clicked();
     virtual void on_mui_actualizar_clicked();
-    virtual void on_mui_exportar_clicked();
-    virtual void on_mui_importar_clicked();
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_configurar_toggled(bool checked);
 

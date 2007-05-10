@@ -166,51 +166,6 @@ void ContratosList::on_mui_borrar_clicked() {
 }
 
 
-/** SLOT que responde a la pulsacion del boton exportar.
-    Saca un dialog selector de archivo para que indiquemos a que archivo exportar.
-    Llama a bulmafact2XML para hacer la exportacion.
-*/
-void ContratosList::on_mui_exportar_clicked() {
-    _depura("ContratosList::on_mui_exportar_clicked", 0);
-    QFile filexml(QFileDialog::getSaveFileName(
-                      this,
-                      tr("Elija el archivo"),
-                      confpr->valor(CONF_DIR_USER),
-                      tr("Clientes (*.xml)")));
-
-    if (filexml.open(QIODevice::WriteOnly)) {
-        bulmafact2XML(filexml, IMPORT_CLIENTES);
-        filexml.close();
-    } else {
-        _depura("ERROR AL ABRIR EL ARCHIVO\n", 2);
-    } // end if
-    _depura("END ContratosList::on_mui_exportar_clicked", 0);
-}
-
-
-/** SLOT que responde a la pulsacion del boton importar.
-    Saca un selector de archivos para indicar desde que archivo importar.
-    Llama a XML2BulmaFact para hacer la importacion.
-    Refresca el listado.
-*/
-void ContratosList::on_mui_importar_clicked() {
-    _depura("ContratosList::on_mui_importar_clicked", 0);
-    QFile filexml(QFileDialog::getOpenFileName(
-                      this,
-                      tr("Elija el archivo"),
-                      confpr->valor(CONF_DIR_USER),
-                      tr("Clientes (*.xml)")));
-
-    if (filexml.open(QIODevice::ReadOnly)) {
-        XML2BulmaFact(filexml, IMPORT_CLIENTES);
-        filexml.close();
-        presenta();
-    } else {
-        _depura("ERROR AL ABRIR EL ARCHIVO\n", 2);
-    } // end if
-    _depura("ContratosList::on_mui_importar_clicked", 0);
-}
-
 /** Establece el modo de funcionamiento como selector para esta ventana
 **/
 void ContratosList::selectMode() {
@@ -281,7 +236,12 @@ void ContratosList::on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
 /** SLOT automatico que se ejecuta al pulsar sobre el boton de crear en la botonera
 **/
 void ContratosList::on_mui_crear_clicked() {
-    m_companyact->s_newClienteView();
+	_depura("ContratosList::on_mui_crear_clicked", 0);
+        ContratoView *prov = new ContratoView(m_companyact);
+	prov->cargar("0");
+        m_companyact->m_pWorkspace->addWindow(prov);
+        prov->show();
+	_depura("END ContratosList::on_mui_crear_clicked", 0);
 }
 
 /** SLOT automatico que se ejecuta al pulsar sobre el boton de actualizar en la botonera

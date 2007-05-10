@@ -71,7 +71,6 @@ COMMIT;
 BEGIN;
 INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva) VALUES(1, 0, '0001-01-01');
 INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva) VALUES(2, 16.00, '0001-01-01');
-INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva) VALUES(2, 17.00, '2005-01-01');
 \echo -n ':: Tasa de IVA ... '
 COMMIT;
 

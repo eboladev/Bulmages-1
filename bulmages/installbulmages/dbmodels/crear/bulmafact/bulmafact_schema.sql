@@ -243,7 +243,7 @@ CREATE TABLE familia (
     nombrefamilia character varying(50) NOT NULL,
     descfamilia character varying(300),
     padrefamilia integer REFERENCES familia(idfamilia),
-    codigocompletofamilia character varying(50) UNIQUE;
+    codigocompletofamilia character varying(50) UNIQUE,
     productofisicofamilia boolean DEFAULT TRUE NOT NULL
 );
 

@@ -67,7 +67,7 @@ BEGIN
 			nomcontrato VARCHAR NOT NULL,
 			fincontrato DATE,
 			ffincontrato DATE,
-			periodicidadcontrato TIMESTAMP,
+			periodicidadcontrato INTERVAL,
 			descontrato VARCHAR,
 			loccontrato VARCHAR
 		);

@@ -51,9 +51,9 @@ BusquedaPeriodo::BusquedaPeriodo(QWidget *parent) : QComboBox(parent) {
 
     m_valores[0] = "@ 7 days";
     m_valores[1] = "@ 15 days";
-    m_valores[2] = "@ 1 month";
-    m_valores[3] = "@ 3 month";
-    m_valores[4] = "@ 6 month";
+    m_valores[2] = "@ 1 mon";
+    m_valores[3] = "@ 3 mons";
+    m_valores[4] = "@ 6 mons";
     m_valores[5] = "@ 1 year";
     m_valores[6] = "@ 2 year";
     m_valores[7] = "";
@@ -77,6 +77,7 @@ void BusquedaPeriodo::setperiodo(QString periodo) {
     _depura("BusquedaPeriodo::setperiodo", 0);
     int i = 0;
     while (m_valores[i] != periodo && m_valores[i] != "") {
+//	_depura(m_valores[i]+" "+periodo, 2);
         i++;
     } // end while
     if (m_valores[i] != "")

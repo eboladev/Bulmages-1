@@ -52,6 +52,10 @@ public:
     virtual void pintarefcontrato(QString);
     virtual void pintafincontrato(QString );
     virtual void pintadescontrato(QString);
+    virtual void pintanomcontrato(QString);
+    virtual void pintaffincontrato(QString);
+    virtual void pintaloccontrato(QString);
+    virtual void pintaperiodicidadcontrato(QString);
     virtual void inicialize();
     virtual QString calculateValues();
 

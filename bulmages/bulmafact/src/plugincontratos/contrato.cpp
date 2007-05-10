@@ -34,11 +34,15 @@ Contrato::Contrato(company *comp, QWidget *parent) : FichaBf(comp, parent) {
     m_companyact = comp;
     setDBTableName("contrato");
     setDBCampoId("idcontrato");
-    addDBCampo("idcontrato", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Contrato", "Id contrato"));
-    addDBCampo("idcliente", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("Contrato", "Id cliente"));
+    addDBCampo("idcontrato",  DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Contrato", "Id contrato"));
+    addDBCampo("idcliente",   DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("Contrato", "Id cliente"));
     addDBCampo("refcontrato", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Contrato", "Referencia contrato"));
     addDBCampo("descontrato", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Contrato", "Descripcion contrato"));
-    addDBCampo("fincontrato", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Contrato", "Descripcion contrato"));
+    addDBCampo("nomcontrato", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Contrato", "Descripcion contrato"));
+    addDBCampo("loccontrato", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Contrato", "Descripcion contrato"));
+    addDBCampo("periodicidadcontrato", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Contrato", "Descripcion contrato"));
+    addDBCampo("fincontrato",  DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Contrato", "Descripcion contrato"));
+    addDBCampo("ffincontrato", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Contrato", "Descripcion contrato"));
     _depura("END Contrato::Contrato", 0);
 }
 
@@ -95,8 +99,12 @@ void Contrato::pintar() {
     _depura("pintaContrato", 0);
     pintaidcliente(DBvalue("idcliente"));
     pintafincontrato(DBvalue("fincontrato"));
+    pintaffincontrato(DBvalue("ffincontrato"));
+    pintaperiodicidadcontrato(DBvalue("periodicidadcontrato"));
     pintarefcontrato(DBvalue("refcontrato"));
     pintadescontrato(DBvalue("descontrato"));
+    pintanomcontrato(DBvalue("nomcontrato"));
+    pintaloccontrato(DBvalue("loccontrato"));
     _depura("END pintaContrato", 0);
 }
 
@@ -119,7 +127,7 @@ int Contrato::cargar(QString idbudget) {
     } // end if
     delete cur;
     pintar();
-    m_listalineas->cargar(idbudget);
+    m_listalineas->cargar("SELECT * FROM factura LEFT JOIN cliente ON cliente.idcliente = factura.idcliente LEFT JOIN almacen ON factura.idalmacen = almacen.idalmacen  WHERE factura.idcliente ="+DBvalue("idcliente")+ " AND reffactura = '"+DBvalue("refcontrato")+"'");
     _depura("END Contrato::cargar", 0);
     return 0;
 }
@@ -173,12 +181,13 @@ int Contrato::guardar() {
 /** Funciones para ser derivadas en las clases de pintado
 **/
     void Contrato::pintaidcliente(QString) {}
-    
     void Contrato::pintarefcontrato(QString) {}
-        
     void Contrato::pintafincontrato(QString ) {}
-    
     void Contrato::pintadescontrato(QString) {}
+    void Contrato::pintanomcontrato(QString) {}
+    void Contrato::pintaffincontrato(QString) {}
+    void Contrato::pintaloccontrato(QString) {}
+    void Contrato::pintaperiodicidadcontrato(QString) {}
     
     void Contrato::inicialize() {}
     
