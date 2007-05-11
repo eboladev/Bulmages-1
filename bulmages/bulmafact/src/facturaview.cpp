@@ -41,6 +41,7 @@
 #include "listlinfacturaview.h"
 #include "plugins.h"
 
+
 /** Inicializa la pantalla.
     Inicializa todos los componentes y mete la pantalla en el workSpace.
 */
@@ -50,12 +51,12 @@ FacturaView::FacturaView(company *comp, QWidget *parent)
     setAttribute(Qt::WA_DeleteOnClose);
     try {
         setupUi(this);
-        
+
         /// Disparamos los plugins.
         int res = g_plugins->lanza("FacturaView_FacturaView", this);
         if (res != 0)
             return;
-        
+
         subform2->setcompany(comp);
         m_almacen->setcompany(comp);
         m_forma_pago->setcompany(comp);
@@ -63,10 +64,10 @@ FacturaView::FacturaView(company *comp, QWidget *parent)
         m_descuentos->setcompany(comp);
         m_codigoserie_factura->setcompany(comp);
         m_reffactura->setcompany(comp);
-	
-	    /// Inicializamos FichaBf
-	    setListaLineas(subform2);
-	    setListaDescuentos(m_descuentos);
+
+        /// Inicializamos FichaBf
+        setListaLineas(subform2);
+        setListaDescuentos(m_descuentos);
 
         m_totalBases->setReadOnly(TRUE);
         m_totalBases->setAlignment(Qt::AlignRight);
@@ -139,7 +140,7 @@ void FacturaView::on_mui_cobrar_clicked() {
 
 
 /** Carga una factura de la base de datos.
-    Deleta toda la carga a la clase \ref Factura 
+    Deleta toda la carga a la clase \ref Factura
     Cambia el titulo de la ventana y reseta el control de cambios.
 */
 int FacturaView::cargar(QString id) {
@@ -254,7 +255,7 @@ int FacturaView::guardar() {
 
 
 /** SLOT que responde a la pulsacion del boton mui_veralbaranes.
-    Busca todos los albaranes con la misma referencia y para cada uno de ellos instancia la clase \ref AlbaranClienteView 
+    Busca todos los albaranes con la misma referencia y para cada uno de ellos instancia la clase \ref AlbaranClienteView
 */
 void FacturaView::on_mui_veralbaranes_clicked() {
     _depura("FacturaView::on_mui_veralbaranes_clicked", 0);
@@ -277,9 +278,9 @@ void FacturaView::on_mui_veralbaranes_clicked() {
 
 
 void FacturaView::on_m_cliente_valueChanged(QString id) {
-	_depura("FacturaView::on_m_cliente_valueChanged", 0);
-	subform2->setIdCliente(id);
-	m_forma_pago->setIdCliente(id);
-	_depura("END FacturaView::on_m_cliente_valueChanged", 0);
+    _depura("FacturaView::on_m_cliente_valueChanged", 0);
+    subform2->setIdCliente(id);
+    m_forma_pago->setIdCliente(id);
+    _depura("END FacturaView::on_m_cliente_valueChanged", 0);
 }
 

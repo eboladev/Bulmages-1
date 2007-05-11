@@ -147,7 +147,7 @@ int cursor2::numcampo(QString campo) {
         i++;
     } // end while
     if (i == numcampos()) {
-        _depura("cursor2::numcampo", 2, "Campo: " + campo + " no existe en la consulta: " + m_query);
+        //_depura("cursor2::numcampo", 2, "Campo: " + campo + " no existe en la consulta: " + m_query);
         return -1;
     } // end if
     _depura("END cursor2::numcampo", 0);

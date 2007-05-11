@@ -70,21 +70,22 @@ void BusquedaCliente::pinta() {
 void BusquedaCliente::setidcliente(QString val) {
     _depura("BusquedaCliente::setidcliente", 0);
     mdb_idcliente = val;
-    QString SQLQuery = "SELECT * FROM cliente WHERE idcliente = '" + mdb_idcliente + "'";
-    cursor2 *cur = companyact->cargacursor(SQLQuery);
 
-    if(!cur->eof()) {
-        mdb_cifcliente = cur->valor("cifcliente");
-        mdb_nomcliente = cur->valor("nomcliente");
-        mdb_codcliente = cur->valor("codcliente");
-    } else {
+    if (val == "") {
         mdb_idcliente = "";
         mdb_nomcliente = "";
         mdb_cifcliente = "";
         mdb_codcliente = "";
+    } else {
+        QString SQLQuery = "SELECT * FROM cliente WHERE idcliente = '" + mdb_idcliente + "'";
+        cursor2 *cur = companyact->cargacursor(SQLQuery);
+        if (!cur->eof()) {
+            mdb_nomcliente = cur->valor("nomcliente");
+            mdb_cifcliente = cur->valor("cifcliente");
+            mdb_codcliente = cur->valor("codcliente");
+        } // end if
+        delete cur;
     } // end if
-
-    delete cur;
     pinta();
     _depura("END BusquedaCliente::setidcliente", 0);
 }

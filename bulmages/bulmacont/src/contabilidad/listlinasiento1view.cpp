@@ -56,6 +56,11 @@ ListLinAsiento1View::ListLinAsiento1View(QWidget *parent, const char *)
 }
 
 
+ListLinAsiento1View::~ListLinAsiento1View() {
+    _depura("ListLinAsiento1View::~ListLinAsiento1View"), 0;
+}
+
+
 /// Fabrica el men&uacute; contextual.
 void ListLinAsiento1View::contextMenuEvent(QContextMenuEvent *) {
     _depura("SubForm2Bc::contextMenuEvent", 0);

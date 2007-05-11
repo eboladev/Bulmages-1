@@ -30,7 +30,7 @@ class empresa;
 
 
 /// Esta clase mantiene la generaci&oacute;n de extractos contables.
-/** A partir de esta panalla se pueden llevar a cabo todos los temas de punteo y
+/** A partir de esta pantalla se pueden llevar a cabo todos los temas de punteo y
     casaci&oacute;n.
     Y acceso a filtrado. Tambi&eacute;n desde esta pantalla se puede pedir m&aacute;s
     informaci&oacute;n de una cuenta determinada. */
@@ -69,6 +69,7 @@ public slots:
     virtual void on_mui_guardarpunteo_clicked();
     virtual void on_mui_cargarpunteos_clicked();
     virtual void on_mui_configurar_clicked();
+    virtual void on_mui_list_cellDoubleClicked(int, int columna);
 };
 
 #endif

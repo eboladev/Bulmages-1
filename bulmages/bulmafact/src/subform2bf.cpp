@@ -245,31 +245,39 @@ void SubForm2Bf::contextMenuEvent(QContextMenuEvent *) {
 
 void SubForm2Bf::setIdCliente(QString id) {
     _depura("SubForm2Bf::setIdCliente", 0, id);
-    mdb_idcliente = id;
 
-    /// Reseteamos los valores
+    /// Reseteamos los valores.
     for (int i = 0; i < rowCount() - 1; i++) {
         SDBRecord *rec = lineaat(i);
-        rec->setDBvalue("iva"+m_tablename, "0");
-        rec->setDBvalue("reqeq"+m_tablename, "0");
+        rec->setDBvalue("iva" + m_tablename, "0");
+        rec->setDBvalue("reqeq" + m_tablename, "0");
     } // end for
 
-    cursor2 *curcliente = companyact()->cargacursor("SELECT recargoeqcliente, regimenfiscalcliente FROM cliente WHERE idcliente="+mdb_idcliente);
-    if (! curcliente->eof()) {
+    mdb_idcliente = id;
+
+    /// Si el idcliente no existe salimos.
+    if (id == "") {
+        _depura("END SubForm2Bf::setIdCliente", 0, "idcliente invalido");
+        return;
+    } // end if
+
+    cursor2 *curcliente = companyact()->cargacursor("SELECT recargoeqcliente, regimenfiscalcliente FROM cliente WHERE idcliente = " + mdb_idcliente);
+
+    if (!curcliente->eof()) {
 
         /// Cuando se cambia el cliente se deben recalcular las lineas por si hay Recargo Equivalente
         for (int i = 0; i < rowCount() - 1; i++) {
             SDBRecord *rec = lineaat(i);
             cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE idarticulo = " + rec->DBvalue("idarticulo") );
             cursor2 *cur1 = companyact()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor("idtipo_iva") + " ORDER BY fechatasa_iva LIMIT 1");
-            if (!cur->eof() ) {
+            if (!cur->eof()) {
 
                 if (curcliente->valor("regimenfiscalcliente") == "Normal") {
-                    rec->setDBvalue("iva"+m_tablename, cur1->valor("porcentasa_iva"));
+                    rec->setDBvalue("iva" + m_tablename, cur1->valor("porcentasa_iva"));
                 } // end if
 
                 if (curcliente->valor("recargoeqcliente") == "t") {
-                    rec->setDBvalue("reqeq"+m_tablename, cur1->valor("porcentretasa_iva"));
+                    rec->setDBvalue("reqeq" + m_tablename, cur1->valor("porcentretasa_iva"));
                 } // end if
 
             } // end if
@@ -319,16 +327,16 @@ void SubForm2Bf::setIdProveedor(QString id) {
 }
 
 void SubForm2Bf::setcompany(postgresiface2 *c) {
-	_depura("SubForm2Bf::setcompany", 0);
+    _depura("SubForm2Bf::setcompany", 0);
         SubForm3::setcompany(c);
         m_delegate->setcompany(c);
-	_depura("END SubForm2Bf::setcompany", 0);
+    _depura("END SubForm2Bf::setcompany", 0);
 }
 
 void SubForm2Bf::setDelete(bool f) {
-	_depura("SubForm2Bf::setDelete", 0);
+    _depura("SubForm2Bf::setDelete", 0);
         m_delete = f;
-	_depura("END SubForm2Bf::setDelete", 0);
+    _depura("END SubForm2Bf::setDelete", 0);
 }
 
 
@@ -410,7 +418,7 @@ void QSubForm2BfDelegate::setModelData(QWidget *editor, QAbstractItemModel *mode
                || linea->nomcampo() == "iva" + m_subform->tableName()   ) {
 
         QDoubleSpinBox *spinBox = static_cast<QDoubleSpinBox*>(editor);
-	// Esto funciona como el culo. con cantidad 1090,89 se va
+    // Esto funciona como el culo. con cantidad 1090,89 se va
         //spinBox->interpretText();
         QString value = spinBox->text();
         // value = value.replace(",", ".");
@@ -502,13 +510,13 @@ bool QSubForm2BfDelegate::eventFilter(QObject *obj, QEvent *event) {
 }
 
 void QSubForm2BfDelegate::setcompany(postgresiface2 *c) {
-	_depura("QSubForm2BfDelegate::setcompany", 0);
+    _depura("QSubForm2BfDelegate::setcompany", 0);
         m_companyact = c;
-	_depura("END QSubForm2BfDelegate::setcompany", 0);
+    _depura("END QSubForm2BfDelegate::setcompany", 0);
 }
 
 postgresiface2 * QSubForm2BfDelegate::companyact() {
-	_depura("QSubForm2BfDelegate::companyact", 0);
-	_depura("END QSubForm2BfDelegate::companyact", 0);
+    _depura("QSubForm2BfDelegate::companyact", 0);
+    _depura("END QSubForm2BfDelegate::companyact", 0);
         return m_companyact;
 }

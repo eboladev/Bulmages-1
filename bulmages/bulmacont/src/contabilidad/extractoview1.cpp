@@ -81,6 +81,21 @@ extractoview1::~extractoview1()
 }
 
 
+void extractoview1::on_mui_list_cellDoubleClicked(int, int columna) {
+    _depura("asientosview::on_mui_list_cellDoubleClicked", 0);
+    QString textoHeader;
+    textoHeader =  mui_list->cabecera()->at(columna)->nomcampo().toAscii();
+    if (textoHeader == "ordenasiento") {
+        QString idasiento = mui_list->DBvalue("idasiento");
+        m_companyact->intapuntsempresa()->muestraasiento(idasiento);
+        m_companyact->intapuntsempresa()->show();
+        m_companyact->intapuntsempresa()->setFocus();
+        m_companyact->muestraapuntes1();
+    } // end if
+    _depura("END asientosview::on_mui_list_cellDoubleClicked", 0);
+}
+
+
 void extractoview1::on_mui_actualizar_clicked() {
     accept();
 }
@@ -236,8 +251,7 @@ void extractoview1::on_mui_guardar_clicked()
 }
 
 
-/// Esta funci&oacute;n se encarga de montar la consulta que va a hacer la consulta en
-/// la base de datos.
+/// Esta funci&oacute;n se encarga de montar la consulta que va a hacer a la base de datos.
 void extractoview1::presentar()
 {
     _depura ( "extractoview1::presentar", 0 );
@@ -310,7 +324,7 @@ void extractoview1::presentar()
         cont = " * ";
     } // end if
 
-    query = "SELECT * FROM ((SELECT "+cont+" FROM " + tabla + " WHERE  idcuenta = " + idcuenta + " AND fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' " + ccostes + " " + ccanales + " " + tipopunteo + ") AS t2 LEFT JOIN cuenta ON t2.idcuenta = cuenta.idcuenta) AS t1 LEFT JOIN asiento ON asiento.idasiento = t1.idasiento ";
+    query = "SELECT * FROM ((SELECT " + cont + " FROM " + tabla + " WHERE  idcuenta = " + idcuenta + " AND fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' " + ccostes + " " + ccanales + " " + tipopunteo + ") AS t2 LEFT JOIN cuenta ON t2.idcuenta = cuenta.idcuenta) AS t1 LEFT JOIN asiento ON asiento.idasiento = t1.idasiento ";
     query += " LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste FROM c_coste) AS t5 ON t5.idc_coste = t1.idc_coste ";
     query += " LEFT JOIN (SELECT idcanal, nombre AS nombrecanal FROM canal) AS t6 ON t6.idcanal = t1.idcanal ";
     query += " ORDER BY t1.fecha, ordenasiento, t1.orden";

@@ -22,6 +22,368 @@
    <property name="spacing" >
     <number>5</number>
    </property>
+   <item row="3" column="0" >
+    <widget class="ExtractoSubForm" name="mui_list" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>7</hsizetype>
+       <vsizetype>7</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" >
+    <widget class="QFrame" name="frame_2" >
+     <property name="frameShape" >
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow" >
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>5</number>
+      </property>
+      <property name="spacing" >
+       <number>5</number>
+      </property>
+      <item row="0" column="4" >
+       <widget class="QLabel" name="TextLabel2_4" >
+        <property name="text" >
+         <string>Saldo inicial:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="TextLabel1_3" >
+        <property name="text" >
+         <string>Cuenta:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3" >
+       <widget class="QLabel" name="TextLabel2_3" >
+        <property name="text" >
+         <string>Haber inicial:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2" >
+       <widget class="QLabel" name="TextLabel2_2" >
+        <property name="text" >
+         <string>Debe inicial:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3" >
+       <widget class="QLineEdit" name="inicialhaber" >
+        <property name="enabled" >
+         <bool>true</bool>
+        </property>
+        <property name="maximumSize" >
+         <size>
+          <width>100</width>
+          <height>32767</height>
+         </size>
+        </property>
+        <property name="palette" >
+         <palette>
+          <active>
+           <colorrole role="Base" >
+            <brush brushstyle="SolidPattern" >
+             <color alpha="255" >
+              <red>238</red>
+              <green>238</green>
+              <blue>238</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </active>
+          <inactive>
+           <colorrole role="Base" >
+            <brush brushstyle="SolidPattern" >
+             <color alpha="255" >
+              <red>238</red>
+              <green>238</green>
+              <blue>238</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </inactive>
+          <disabled>
+           <colorrole role="Base" >
+            <brush brushstyle="SolidPattern" >
+             <color alpha="255" >
+              <red>255</red>
+              <green>255</green>
+              <blue>255</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </disabled>
+         </palette>
+        </property>
+        <property name="readOnly" >
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" >
+       <widget class="QLabel" name="TextLabel2_2_2" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>7</hsizetype>
+          <vsizetype>5</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text" >
+         <string>Nombre de la cuenta:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2" >
+       <widget class="QLineEdit" name="inicialdebe" >
+        <property name="enabled" >
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>4</hsizetype>
+          <vsizetype>0</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize" >
+         <size>
+          <width>100</width>
+          <height>32767</height>
+         </size>
+        </property>
+        <property name="palette" >
+         <palette>
+          <active>
+           <colorrole role="Base" >
+            <brush brushstyle="SolidPattern" >
+             <color alpha="255" >
+              <red>238</red>
+              <green>238</green>
+              <blue>238</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </active>
+          <inactive>
+           <colorrole role="Base" >
+            <brush brushstyle="SolidPattern" >
+             <color alpha="255" >
+              <red>238</red>
+              <green>238</green>
+              <blue>238</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </inactive>
+          <disabled>
+           <colorrole role="Base" >
+            <brush brushstyle="SolidPattern" >
+             <color alpha="255" >
+              <red>255</red>
+              <green>255</green>
+              <blue>255</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </disabled>
+         </palette>
+        </property>
+        <property name="readOnly" >
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QLineEdit" name="codigocuenta" >
+        <property name="enabled" >
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>4</hsizetype>
+          <vsizetype>0</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize" >
+         <size>
+          <width>75</width>
+          <height>32767</height>
+         </size>
+        </property>
+        <property name="palette" >
+         <palette>
+          <active>
+           <colorrole role="Base" >
+            <brush brushstyle="SolidPattern" >
+             <color alpha="255" >
+              <red>238</red>
+              <green>238</green>
+              <blue>238</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </active>
+          <inactive>
+           <colorrole role="Base" >
+            <brush brushstyle="SolidPattern" >
+             <color alpha="255" >
+              <red>238</red>
+              <green>238</green>
+              <blue>238</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </inactive>
+          <disabled>
+           <colorrole role="Base" >
+            <brush brushstyle="SolidPattern" >
+             <color alpha="255" >
+              <red>255</red>
+              <green>255</green>
+              <blue>255</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </disabled>
+         </palette>
+        </property>
+        <property name="readOnly" >
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" >
+       <widget class="QLineEdit" name="nombrecuenta" >
+        <property name="enabled" >
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>4</hsizetype>
+          <vsizetype>0</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize" >
+         <size>
+          <width>700</width>
+          <height>32767</height>
+         </size>
+        </property>
+        <property name="palette" >
+         <palette>
+          <active>
+           <colorrole role="Base" >
+            <brush brushstyle="SolidPattern" >
+             <color alpha="255" >
+              <red>238</red>
+              <green>238</green>
+              <blue>238</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </active>
+          <inactive>
+           <colorrole role="Base" >
+            <brush brushstyle="SolidPattern" >
+             <color alpha="255" >
+              <red>238</red>
+              <green>238</green>
+              <blue>238</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </inactive>
+          <disabled>
+           <colorrole role="Base" >
+            <brush brushstyle="SolidPattern" >
+             <color alpha="255" >
+              <red>255</red>
+              <green>255</green>
+              <blue>255</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </disabled>
+         </palette>
+        </property>
+        <property name="readOnly" >
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="4" >
+       <widget class="QLineEdit" name="inicialsaldo" >
+        <property name="enabled" >
+         <bool>true</bool>
+        </property>
+        <property name="maximumSize" >
+         <size>
+          <width>100</width>
+          <height>32767</height>
+         </size>
+        </property>
+        <property name="palette" >
+         <palette>
+          <active>
+           <colorrole role="Base" >
+            <brush brushstyle="SolidPattern" >
+             <color alpha="255" >
+              <red>238</red>
+              <green>238</green>
+              <blue>238</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </active>
+          <inactive>
+           <colorrole role="Base" >
+            <brush brushstyle="SolidPattern" >
+             <color alpha="255" >
+              <red>238</red>
+              <green>238</green>
+              <blue>238</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </inactive>
+          <disabled>
+           <colorrole role="Base" >
+            <brush brushstyle="SolidPattern" >
+             <color alpha="255" >
+              <red>255</red>
+              <green>255</green>
+              <blue>255</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </disabled>
+         </palette>
+        </property>
+        <property name="readOnly" >
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
    <item row="1" column="0" >
     <widget class="QFrame" name="frame" >
      <property name="frameShape" >
@@ -32,10 +394,10 @@
      </property>
      <layout class="QGridLayout" >
       <property name="margin" >
-       <number>9</number>
+       <number>5</number>
       </property>
       <property name="spacing" >
-       <number>6</number>
+       <number>5</number>
       </property>
       <item row="3" column="4" >
        <widget class="QLineEdit" name="mui_saldoinf" >
@@ -702,368 +1064,6 @@
      </item>
     </layout>
    </item>
-   <item row="2" column="0" >
-    <widget class="QFrame" name="frame_2" >
-     <property name="frameShape" >
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow" >
-      <enum>QFrame::Raised</enum>
-     </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
-       <number>5</number>
-      </property>
-      <property name="spacing" >
-       <number>5</number>
-      </property>
-      <item row="0" column="4" >
-       <widget class="QLabel" name="TextLabel2_4" >
-        <property name="text" >
-         <string>Saldo inicial:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0" >
-       <widget class="QLabel" name="TextLabel1_3" >
-        <property name="text" >
-         <string>Cuenta:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="3" >
-       <widget class="QLabel" name="TextLabel2_3" >
-        <property name="text" >
-         <string>Haber inicial:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="2" >
-       <widget class="QLabel" name="TextLabel2_2" >
-        <property name="text" >
-         <string>Debe inicial:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="3" >
-       <widget class="QLineEdit" name="inicialhaber" >
-        <property name="enabled" >
-         <bool>true</bool>
-        </property>
-        <property name="maximumSize" >
-         <size>
-          <width>100</width>
-          <height>32767</height>
-         </size>
-        </property>
-        <property name="palette" >
-         <palette>
-          <active>
-           <colorrole role="Base" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
-              <red>238</red>
-              <green>238</green>
-              <blue>238</blue>
-             </color>
-            </brush>
-           </colorrole>
-          </active>
-          <inactive>
-           <colorrole role="Base" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
-              <red>238</red>
-              <green>238</green>
-              <blue>238</blue>
-             </color>
-            </brush>
-           </colorrole>
-          </inactive>
-          <disabled>
-           <colorrole role="Base" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-            </brush>
-           </colorrole>
-          </disabled>
-         </palette>
-        </property>
-        <property name="readOnly" >
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1" >
-       <widget class="QLabel" name="TextLabel2_2_2" >
-        <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>7</hsizetype>
-          <vsizetype>5</vsizetype>
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text" >
-         <string>Nombre de la cuenta:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2" >
-       <widget class="QLineEdit" name="inicialdebe" >
-        <property name="enabled" >
-         <bool>true</bool>
-        </property>
-        <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>4</hsizetype>
-          <vsizetype>0</vsizetype>
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="maximumSize" >
-         <size>
-          <width>100</width>
-          <height>32767</height>
-         </size>
-        </property>
-        <property name="palette" >
-         <palette>
-          <active>
-           <colorrole role="Base" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
-              <red>238</red>
-              <green>238</green>
-              <blue>238</blue>
-             </color>
-            </brush>
-           </colorrole>
-          </active>
-          <inactive>
-           <colorrole role="Base" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
-              <red>238</red>
-              <green>238</green>
-              <blue>238</blue>
-             </color>
-            </brush>
-           </colorrole>
-          </inactive>
-          <disabled>
-           <colorrole role="Base" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-            </brush>
-           </colorrole>
-          </disabled>
-         </palette>
-        </property>
-        <property name="readOnly" >
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0" >
-       <widget class="QLineEdit" name="codigocuenta" >
-        <property name="enabled" >
-         <bool>true</bool>
-        </property>
-        <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>4</hsizetype>
-          <vsizetype>0</vsizetype>
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="maximumSize" >
-         <size>
-          <width>75</width>
-          <height>32767</height>
-         </size>
-        </property>
-        <property name="palette" >
-         <palette>
-          <active>
-           <colorrole role="Base" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
-              <red>238</red>
-              <green>238</green>
-              <blue>238</blue>
-             </color>
-            </brush>
-           </colorrole>
-          </active>
-          <inactive>
-           <colorrole role="Base" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
-              <red>238</red>
-              <green>238</green>
-              <blue>238</blue>
-             </color>
-            </brush>
-           </colorrole>
-          </inactive>
-          <disabled>
-           <colorrole role="Base" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-            </brush>
-           </colorrole>
-          </disabled>
-         </palette>
-        </property>
-        <property name="readOnly" >
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1" >
-       <widget class="QLineEdit" name="nombrecuenta" >
-        <property name="enabled" >
-         <bool>true</bool>
-        </property>
-        <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>4</hsizetype>
-          <vsizetype>0</vsizetype>
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="maximumSize" >
-         <size>
-          <width>700</width>
-          <height>32767</height>
-         </size>
-        </property>
-        <property name="palette" >
-         <palette>
-          <active>
-           <colorrole role="Base" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
-              <red>238</red>
-              <green>238</green>
-              <blue>238</blue>
-             </color>
-            </brush>
-           </colorrole>
-          </active>
-          <inactive>
-           <colorrole role="Base" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
-              <red>238</red>
-              <green>238</green>
-              <blue>238</blue>
-             </color>
-            </brush>
-           </colorrole>
-          </inactive>
-          <disabled>
-           <colorrole role="Base" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-            </brush>
-           </colorrole>
-          </disabled>
-         </palette>
-        </property>
-        <property name="readOnly" >
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="4" >
-       <widget class="QLineEdit" name="inicialsaldo" >
-        <property name="enabled" >
-         <bool>true</bool>
-        </property>
-        <property name="maximumSize" >
-         <size>
-          <width>100</width>
-          <height>32767</height>
-         </size>
-        </property>
-        <property name="palette" >
-         <palette>
-          <active>
-           <colorrole role="Base" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
-              <red>238</red>
-              <green>238</green>
-              <blue>238</blue>
-             </color>
-            </brush>
-           </colorrole>
-          </active>
-          <inactive>
-           <colorrole role="Base" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
-              <red>238</red>
-              <green>238</green>
-              <blue>238</blue>
-             </color>
-            </brush>
-           </colorrole>
-          </inactive>
-          <disabled>
-           <colorrole role="Base" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-            </brush>
-           </colorrole>
-          </disabled>
-         </palette>
-        </property>
-        <property name="readOnly" >
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="3" column="0" >
-    <widget class="ExtractoSubForm" name="mui_list" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>7</hsizetype>
-       <vsizetype>7</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-    </widget>
-   </item>
    <item row="4" column="0" >
     <widget class="QGroupBox" name="groupBox" >
      <property name="title" >
@@ -1147,6 +1147,8 @@
         <property name="font" >
          <font>
           <pointsize>12</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
          </font>
         </property>
         <property name="alignment" >

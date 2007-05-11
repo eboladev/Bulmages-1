@@ -230,7 +230,7 @@ void Asiento1::cerrar() {
 }
 
 
-Asiento1::estadoasiento  Asiento1::estadoAsiento1() {
+Asiento1::estadoasiento Asiento1::estadoAsiento1() {
     _depura("Asiento1::estadoasiento", 0);
     if (DBvalue("idasiento") == "")
         return ASVacio;
