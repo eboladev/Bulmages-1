@@ -40,16 +40,16 @@
 
 
 PagoView::PagoView(company *comp, QWidget *parent)
-        : Ficha(parent), Pago(comp) {
+        :  Pago(comp, parent) {
     try {
         setAttribute(Qt::WA_DeleteOnClose);
         setupUi(this);
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
-        mui_proveedor->setcompany(comp);
-        mui_refpago->setcompany(comp);
-        mui_idbanco->setcompany(comp);
+        mui_proveedor->setEmpresaBase(comp);
+        mui_refpago->setEmpresaBase(comp);
+        mui_idbanco->setEmpresaBase(comp);
         dialogChanges_cargaInicial();
-        companyact->meteWindow(windowTitle(), this, FALSE);
+        empresaBase()->meteWindow(windowTitle(), this, FALSE);
     } catch (...) {
         mensajeInfo(tr("Error al crear el pago"));
     } // end try
@@ -64,7 +64,7 @@ PagoView::~PagoView() {
 
 
 int PagoView::sacaWindow() {
-    companyact->sacaWindow(this);
+    empresaBase()->sacaWindow(this);
     return 0;
 }
 
@@ -75,7 +75,7 @@ int PagoView::cargar(QString id) {
             throw -1;
         setWindowTitle(tr("Pago") + " " + DBvalue("refpago")+" "+ DBvalue("idpago"));
         dialogChanges_cargaInicial();
-        companyact->meteWindow(windowTitle(), this);
+        empresaBase()->meteWindow(windowTitle(), this);
     } catch (...) {
         return -1;
     } // end try

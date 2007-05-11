@@ -32,9 +32,7 @@
 #include "busquedacliente.h"
 #include "busquedafecha.h"
 #include "subform2bf.h"
-
-
-class company;
+#include "fichabf.h"
 
 
 class ListZonaComercialSubForm : public SubForm2Bf {
@@ -42,13 +40,12 @@ class ListZonaComercialSubForm : public SubForm2Bf {
 
 public:
     ListZonaComercialSubForm(QWidget *parent = 0);
-    ~ListZonaComercialSubForm() {}
-    ;
+    ~ListZonaComercialSubForm() {};
 
 public slots:
     virtual void cargar() {
         _depura("ListZonaComercialSubForm::cargar\n",0);
-        cursor2 *cur = companyact()->cargacursor("SELECT * FROM zonacomercial");
+        cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM zonacomercial");
         SubForm3::cargar(cur);
         delete cur;
     };
@@ -58,11 +55,8 @@ public slots:
 #include "ui_listzonacomercialbase.h"
 
 
-class ListZonaComercialView : public QWidget, public Ui_ListZonaComercialBase {
+class ListZonaComercialView : public FichaBf, public Ui_ListZonaComercialBase {
     Q_OBJECT
-
-public:
-    company *companyact;
 
 public:
     ListZonaComercialView(company *, QWidget *);

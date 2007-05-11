@@ -40,14 +40,13 @@
 
 
 ListAlmacenView::ListAlmacenView(company *comp, QWidget *parent)
-        : Ficha(parent) {
+        : FichaBf(comp, parent) {
     _depura("ListAlmacenView::ListAlmacenView", 1);
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
-    companyact = comp;
-    mui_listado->setcompany(comp);
+    mui_listado->setEmpresaBase(comp);
     mui_listado->cargar();
-    companyact->meteWindow(windowTitle(), this);
+    empresaBase()->meteWindow(windowTitle(), this);
     _depura("END ListAlmacenView::ListAlmacenView", 1);
 }
 
@@ -68,10 +67,6 @@ ListAlmacenView::~ListAlmacenView() {
 }
 
 
-int ListAlmacenView::sacaWindow() {
-    companyact->sacaWindow(this);
-    return 0;
-}
 
 /// ===================================== SUBFORMULARIO ===============================================
 ListAlmacenSubForm::ListAlmacenSubForm(QWidget *parent) : SubForm2Bf(parent) {
@@ -85,7 +80,7 @@ ListAlmacenSubForm::ListAlmacenSubForm(QWidget *parent) : SubForm2Bf(parent) {
 
 void ListAlmacenSubForm::cargar() {
         _depura("ListAlmacenSubForm::cargar", 0);
-        cursor2 * cur= companyact()->cargacursor("SELECT * FROM almacen");
+        cursor2 * cur= empresaBase()->cargacursor("SELECT * FROM almacen");
         SubForm3::cargar(cur);
         delete cur;
         _depura("END ListAlmacenSubForm::cargar", 0);

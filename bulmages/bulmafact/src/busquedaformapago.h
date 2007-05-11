@@ -26,24 +26,23 @@
 #include "company.h"
 #include "postgresiface2.h"
 #include "funcaux.h"
-
+#include "blwidget.h"
 
 /// Permite buscar y seleccionar una forma de pago.
 /** Widget que permite buscar y seleccionar una
     forma de pago. Aparece en forma de comboBox. */
-class BusquedaFormaPago : public QComboBox {
+class BusquedaFormaPago : public QComboBox, public PEmpresaBase {
     Q_OBJECT
 
 private:
-    /// Puntero a la clase company para poder trabajar con la Base de Datos y pasar mensajes.
-    company *companyact;
+
     /// Cursor de la base de datos que contiene las formas de pago disponibles.
     cursor2 *m_cursorcombo;
 
 public:
     BusquedaFormaPago(QWidget *parent = 0);
     ~BusquedaFormaPago();
-    void setcompany(company *comp);
+
     virtual void setidforma_pago(QString idforma_pago);
     QString idforma_pago();
     virtual void setIdCliente(QString);

@@ -22,7 +22,7 @@
 #define FPAGOVIEW_H
 
 #include "ui_fpagobase.h"
-#include "ficha.h"
+#include "fichabf.h"
 #include "postgresiface2.h"
 
 
@@ -31,11 +31,10 @@ class company;
 
 /// Muestra y administra la ventana de formas de pago.
 /** */
-class FPagoView : public Ficha, private Ui_FPagoBase {
+class FPagoView : public FichaBf, private Ui_FPagoBase {
     Q_OBJECT
 
 private:
-    company *m_companyact;
     cursor2 *m_cursorFPagoView;
     /// Indica cu&aacute;l es el objeto que se est&aacute; mostrando.
     QString mdb_idforma_pago;

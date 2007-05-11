@@ -25,7 +25,7 @@
 #include "busquedaarticulo.h"
 #include "company.h"
 #include "subform2bf.h"
-#include "ficha.h"
+#include "fichabf.h"
 
 
 /// Subformulario de albaranes de clientes.
@@ -59,7 +59,7 @@ public slots:
 */
 /// \TODO: Deberia crearse una clase derivada de Ficha que fuese Listado y que
 /// incorporase algunas funcionalidades comunes a todos los listados.
-class AlbaranClienteList : public Ficha, public Ui_AlbaranClienteListBase {
+class AlbaranClienteList : public FichaBf, public Ui_AlbaranClienteListBase {
     Q_OBJECT
 
 public:
@@ -69,9 +69,6 @@ public:
     };
 
 private:
-    /// El puntero a company que se propaga siempre en toda la aplicacion.
-    company *m_companyact;
-
     /// El modo del listado, modo edicion o modo selector.
     /// m_modo == 0 es modo edicion.
     /// m_modo == 1 es modo selector.
@@ -84,13 +81,12 @@ private:
 public:
     AlbaranClienteList(QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
     AlbaranClienteList(company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
+    void setEmpresaBase(company *);
     ~AlbaranClienteList();
     void presenta();
     void modoseleccion();
     void modoedicion();
     void imprimir();
-    void setcompany(company *comp);
-    company *getcompany();
     void hideBotonera();
     void showBotonera();
     void hideBusqueda();

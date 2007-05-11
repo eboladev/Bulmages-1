@@ -51,7 +51,6 @@ class PagosList : public FichaBf, private Ui_PagosListBase {
     Q_OBJECT
 
 private:
-    company *m_companyact;
     /// m_modo == 0 es modo edicion.
     /// m_modo == 1 es modo selector.
     int m_modo;
@@ -64,7 +63,7 @@ public:
     void presentar();
     void modoseleccion();
     void modoedicion();
-    void setcompany (company *comp);
+    void setEmpresaBase (company *comp);
     QString idpago();
     void hideBotonera();
     void showBotonera();

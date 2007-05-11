@@ -27,7 +27,7 @@
 #include "busquedacliente.h"
 #include "busquedaarticulo.h"
 #include "subform2bf.h"
-
+#include "fichabf.h"
 
 class RutaComercialListSubForm : public SubForm2Bf {
     Q_OBJECT
@@ -41,7 +41,7 @@ public slots:
     virtual void cargar() {
         _depura("RutaComercialListSubForm::cargar\n", 0);
         QString SQLQuery = "SELECT * FROM presupuesto";
-        cursor2 * cur= companyact()->cargacursor(SQLQuery);
+        cursor2 * cur= empresaBase()->cargacursor(SQLQuery);
         SubForm3::cargar(cur);
         delete cur;
     };
@@ -55,11 +55,10 @@ public slots:
 #include "ui_rutacomerciallistbase.h"
 
 
-class RutaComercialList : public QWidget, public Ui_RutaComercialListBase {
+class RutaComercialList : public FichaBf, public Ui_RutaComercialListBase {
     Q_OBJECT
 
 private:
-    company *m_companyact;
     /// m_modo == 0 es modo edici&oacute;n
     /// m_modo == 1 es modo selector.
     int m_modo;
@@ -74,7 +73,7 @@ public:
         return m_modo;
     };
     company *getcompany() {
-        return m_companyact;
+        return empresaBase();
     };
     QString idpresupuesto() {
         return m_idpresupuesto;
@@ -85,10 +84,7 @@ public:
     void modoedicion() {
         m_modo = 0;
     };
-    void setcompany(company *comp) {
-        m_companyact = comp;
-        m_cliente->setcompany(comp);
-    };
+    void setEmpresaBase(company *comp);
     void hideBotonera() {
         m_botonera->hide();
     };
@@ -103,8 +99,8 @@ public:
     };
     void imprimir();
     void meteWindow(QString nom, QObject *obj) {
-        if (m_companyact != NULL) {
-            m_companyact->meteWindow(nom, obj);
+        if (empresaBase() != NULL) {
+            empresaBase()->meteWindow(nom, obj);
         }
     };
     void setidcliente(QString val) {

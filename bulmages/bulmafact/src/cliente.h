@@ -24,7 +24,8 @@
 #include <QString>
 
 #include "company.h"
-#include "dbrecord.h"
+#include "fichabf.h"
+
 
 /// Administra los datos de un cliente.
 /** Esta clase se encarga del trabajo entre un cliente y la base de datos.
@@ -35,15 +36,11 @@
 	setXXX son utlizados para alterar valores de un cliente.
 	pintaXXX son utilizados para invocar a al repintado de determinado elemento.
 */
-class Cliente : public DBRecord {
+class Cliente : public FichaBf {
 
-protected:
-    /// Puntero a la clase company que permite trabajar con la base de datos y el paso de parametros.
-    company *m_companyact;
 
 public:
-    Cliente(company *);
-    company* companyact();
+    Cliente(company *, QWidget *);
     virtual ~Cliente();
     virtual void pintaCliente();
     virtual int guardar();

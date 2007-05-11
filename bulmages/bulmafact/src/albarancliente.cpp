@@ -303,15 +303,15 @@ AlbaranCliente::~AlbaranCliente() {
 int AlbaranCliente::borrar() {
     _depura("AlbaranCliente::borrar", 0);
     if (DBvalue("idalbaran") != "")  {
-        m_companyact->begin();
+        empresaBase()->begin();
         m_listalineas->borrar();
         m_listadescuentos->borrar();
-        int error = m_companyact->ejecuta("DELETE FROM albaran WHERE idalbaran = " + DBvalue("idalbaran"));
+        int error = empresaBase()->ejecuta("DELETE FROM albaran WHERE idalbaran = " + DBvalue("idalbaran"));
         if (error)  {
-            m_companyact->rollback();
+            empresaBase()->rollback();
             return -1;
         }
-        m_companyact->commit();
+        empresaBase()->commit();
     }
     _depura("END AlbaranCliente::borrar", 0);
     return 0;
@@ -364,7 +364,7 @@ void AlbaranCliente::pintar() {
 int AlbaranCliente::cargar(QString idalbaran)  {
     _depura("AlbaranCliente::cargar", 0);
     QString query = "SELECT * FROM albaran WHERE idalbaran = " + idalbaran;
-    cursor2 *cur = m_companyact->cargacursor(query);
+    cursor2 *cur = empresaBase()->cargacursor(query);
     if (!cur->eof())
         DBload(cur);
     delete cur;
@@ -389,21 +389,21 @@ int AlbaranCliente::cargar(QString idalbaran)  {
 int AlbaranCliente::guardar() {
     _depura("AlbaranCliente::guardar", 0);
     /// Todo el guardado es una transaccion.
-    m_companyact->begin();
+    empresaBase()->begin();
     try {
         QString id;
         DBsave(id);
         setidalbaran(id);
         m_listalineas->guardar();
         m_listadescuentos->guardar();
-        m_companyact->commit();
+        empresaBase()->commit();
         /// Hacemos una carga para recuperar datos como la referencia y el numero de albaran
         cargar(id);
         _depura("END AlbaranCliente::guardar", 0);
         return 0;
     } catch (...) {
         _depura("AlbaranCliente::guardar error al guardar albaran cliente", 0);
-        m_companyact->rollback();
+        empresaBase()->rollback();
         throw -1;
     } // end try
 }

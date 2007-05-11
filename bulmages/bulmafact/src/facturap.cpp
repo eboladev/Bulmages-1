@@ -68,15 +68,15 @@ int FacturaProveedor::borrar() {
     _depura("FacturaProveedor::borrar", 0);
     int error = 0;
     if (DBvalue("idfacturap") != "") {
-        m_companyact->begin();
+        empresaBase()->begin();
         error = m_listalineas->borrar();
         error += m_listadescuentos->borrar();
         error += DBRecord::borrar();
         if (error) {
-            m_companyact->rollback();
+            empresaBase()->rollback();
             return -1;
         } // end if
-        m_companyact->commit();
+        empresaBase()->commit();
     } // end if
     _depura("END FacturaProveedor::borrar", 0);
     return 0;
@@ -112,7 +112,7 @@ int FacturaProveedor::cargar(QString idfacturap) {
     try {
         inicialize();
         QString query = "SELECT * FROM facturap WHERE idfacturap=" + idfacturap;
-        cursor2 * cur = m_companyact->cargacursor(query);
+        cursor2 * cur = empresaBase()->cargacursor(query);
         if (cur->eof()) {
             delete cur;
             throw -1;
@@ -142,14 +142,14 @@ int FacturaProveedor::cargar(QString idfacturap) {
 */
 int FacturaProveedor::guardar() {
     _depura("FacturaProveedor::guardar()", 0);
-    m_companyact->begin();
+    empresaBase()->begin();
     try {
         QString id;
         DBsave(id);
         setidfacturap(id);
         m_listalineas->guardar();
         m_listadescuentos->guardar();
-        m_companyact->commit();
+        empresaBase()->commit();
 
         /// Hacemos una carga para recuperar referencias y demás datos
         cargar(id);
@@ -158,7 +158,7 @@ int FacturaProveedor::guardar() {
         return 0;
     } catch (...) {
         mensajeInfo("FacturaProveedor::guardar() se produjo un error al guardar");
-        m_companyact->rollback();
+        empresaBase()->rollback();
         throw -1;
     } // end try
 }
@@ -211,7 +211,7 @@ void FacturaProveedor::imprimirFacturaProveedor() {
 
     /// Linea de totales del presupuesto
     QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor = " + DBvalue("idproveedor");
-    cursor2 *cur = m_companyact->cargacursor(SQLQuery);
+    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
     if(!cur->eof()) {
         buff.replace("[dirproveedor]", cur->valor("dirproveedor"));
         buff.replace("[poblproveedor]", cur->valor("poblproveedor"));

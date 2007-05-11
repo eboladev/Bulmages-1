@@ -24,6 +24,7 @@
 #include <QLineEdit>
 #include <QLabel>
 
+#include "blwidget.h"
 #include "ui_busquedatipoarticulobase.h"
 
 
@@ -32,12 +33,10 @@ class company;
 /// Permite buscar y seleccionar un tipo de art&iacute;culo.
 /** Este Widget permite buscar y seleccionar un
     tipo de art&iacute;culo. */
-class BusquedaTipoArticulo : public QWidget, public Ui_BusquedaTipoArticuloBase {
+class BusquedaTipoArticulo : public BLWidget, public Ui_BusquedaTipoArticuloBase {
     Q_OBJECT
 
 private:
-    /// Puntero a la clase company que se propaga por toda la aplicacion para poder trabajar con BAses de datos y hacer paso de mensajes.
-    company *m_companyact;
     /// Almacena el idtipo_articulo del elemento seleccionado.
     QString mdb_idtipo_articulo;
     /// Almacena la descripcion del tipo de articulo seleccionado.
@@ -48,7 +47,6 @@ private:
 public:
     BusquedaTipoArticulo(QWidget *parent = 0);
     ~BusquedaTipoArticulo();
-    void setcompany(company *comp);
     virtual QString codtipo_articulo();
     virtual QString idtipo_articulo();
     virtual QString desctipo_articulo();

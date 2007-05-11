@@ -25,7 +25,7 @@
 
 
 ComercialClienteView::ComercialClienteView(QWidget *parent)
-        : QWidget(parent) {
+        : FichaBf(NULL, parent) {
     _depura("ComercialClienteView::ComercialClienteView", 0);
     setupUi(this);
     _depura("ENd ComercialClienteView::ComercialClienteView", 0);
@@ -36,3 +36,9 @@ ComercialClienteView::~ComercialClienteView() {
     _depura("ENd ~ComercialClienteView::ComercialClienteView", 0);
 }
 
+void ComercialClienteView::setEmpresaBase(company *comp) {
+        _depura("ComercialClienteView::setcompany", 0);
+	PEmpresaBase::setEmpresaBase( comp);
+        mui_zonacomercial->setEmpresaBase(comp);
+        mui_zonacomercial->setidzonacomercial("0");
+    }

@@ -26,7 +26,7 @@
 #include "company.h"
 #include "funcaux.h"
 #include "subform2bf.h"
-#include "ficha.h"
+#include "fichabf.h"
 
 
 /// Administra las l&iacute;neas de detalle de pedidos a proveedor.
@@ -38,9 +38,9 @@ public:
     PedidosProveedorListSubform(QWidget *parent = 0);
     ~PedidosProveedorListSubform() {}
     virtual void cargar() {
-        _depura("PedidosProveedorListSubform::cargar\n", 0);
+        _depura("PedidosProveedorListSubform::cargar", 0);
         QString SQLQuery = "SELECT * FROM pedidoproveedor";
-        cursor2 *cur = companyact()->cargacursor(SQLQuery);
+        cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
         SubForm3::cargar(cur);
         delete cur;
     }
@@ -55,11 +55,10 @@ public:
 
 /// Muestra y administra la ventana con la informaci&oacute;n de los pedidos a proveedor.
 /** */
-class PedidosProveedorList : public Ficha, public Ui_PedidosProveedorListBase {
+class PedidosProveedorList : public FichaBf, public Ui_PedidosProveedorListBase {
     Q_OBJECT
 
 private:
-    company *m_companyact;
     /// m_modo == 0 es modo edicion.
     /// m_modo == 1 es modo selector.
     int m_modo;
@@ -77,10 +76,10 @@ public:
         m_modo = 0;
     }
     void imprimir();
-    void setcompany(company *comp) {
-        m_companyact = comp;
-        m_proveedor->setcompany(comp);
-        mui_list->setcompany(comp);
+    void setEmpresaBase(company *comp) {
+        FichaBf::setEmpresaBase(comp);
+        m_proveedor->setEmpresaBase(comp);
+        mui_list->setEmpresaBase(comp);
     }
     void hideBotonera() {
         m_botonera->hide();
@@ -101,8 +100,8 @@ public:
         m_proveedor->setidproveedor(val);
     }
     void meteWindow(QString nom, QObject *obj) {
-        if (m_companyact != NULL) {
-            m_companyact->meteWindow(nom, obj);
+        if (empresaBase() != NULL) {
+            empresaBase()->meteWindow(nom, obj);
         } // end if
     }
     QString generarFiltro();
@@ -125,7 +124,7 @@ public slots:
         presenta();
     }
     virtual void on_mui_crear_clicked() {
-        m_companyact->s_newPedidoPro();
+        empresaBase()->s_newPedidoPro();
     }
     virtual void s_filtrar() {
         presenta();

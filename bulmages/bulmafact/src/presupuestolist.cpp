@@ -33,14 +33,13 @@
 
 
 PresupuestoList::PresupuestoList(QWidget *parent, Qt::WFlags flag)
-        : Ficha(parent, flag) {
+        : FichaBf(NULL, parent, flag) {
     _depura("PresupuestoList::PresupuestoList(1)", 0);
     setupUi(this);
     /// Disparamos los plugins.
     int res = g_plugins->lanza("PresupuestoList_PresupuestoList", this);
     if (res != 0)
         return;
-    m_companyact = NULL;
     m_modo = 0;
     m_idpresupuesto = "";
     meteWindow(windowTitle(), this);
@@ -50,17 +49,16 @@ PresupuestoList::PresupuestoList(QWidget *parent, Qt::WFlags flag)
 
 
 PresupuestoList::PresupuestoList(company *comp, QWidget *parent, Qt::WFlags flag)
-        : Ficha(parent, flag) {
+        : FichaBf(comp, parent, flag) {
     _depura("PresupuestoList::PresupuestoList(2)", 0);
     setupUi(this);
     /// Disparamos los plugins.
     int res = g_plugins->lanza("PresupuestoList_PresupuestoList", this);
     if (res != 0)
         return;
-    m_companyact = comp;
-    m_cliente->setcompany(comp);
-    m_articulo->setcompany(comp);
-    mui_list->setcompany(comp);
+    m_cliente->setEmpresaBase(comp);
+    m_articulo->setEmpresaBase(comp);
+    mui_list->setEmpresaBase(comp);
     presenta();
     m_modo = 0;
     m_idpresupuesto = "";
@@ -72,7 +70,7 @@ PresupuestoList::PresupuestoList(company *comp, QWidget *parent, Qt::WFlags flag
 
 PresupuestoList::~PresupuestoList() {
     _depura("PresupuestoList::~PresupuestoList", 0);
-    m_companyact->sacaWindow(this);
+    empresaBase()->sacaWindow(this);
     _depura("END PresupuestoList::~PresupuestoList", 0);
 }
 
@@ -82,9 +80,6 @@ int PresupuestoList::modo() {
 }
 
 
-company *PresupuestoList::getcompany() {
-    return m_companyact;
-}
 
 
 QString PresupuestoList::idpresupuesto() {
@@ -102,11 +97,11 @@ void PresupuestoList::modoedicion() {
 }
 
 
-void PresupuestoList::setcompany(company *comp) {
-    m_companyact = comp;
-    m_cliente->setcompany(comp);
-    m_articulo->setcompany(comp);
-    mui_list->setcompany(comp);
+void PresupuestoList::setEmpresaBase(company *comp) {
+    PEmpresaBase::setEmpresaBase(comp);
+    m_cliente->setEmpresaBase(comp);
+    m_articulo->setEmpresaBase(comp);
+    mui_list->setEmpresaBase(comp);
 }
 
 
@@ -131,8 +126,8 @@ void PresupuestoList::showBusqueda() {
 
 
 void PresupuestoList::meteWindow(QString nom, QObject *obj) {
-    if (m_companyact != NULL) {
-        m_companyact->meteWindow(nom, obj);
+    if (empresaBase() != NULL) {
+        empresaBase()->meteWindow(nom, obj);
     } // end if
 }
 
@@ -159,7 +154,7 @@ void PresupuestoList::on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
 
 
 void PresupuestoList::on_mui_crear_clicked() {
-    m_companyact->s_newPresupuestoCli();
+    empresaBase()->s_newPresupuestoCli();
 }
 
 
@@ -189,7 +184,7 @@ void PresupuestoList::presenta() {
     mui_list->cargar("SELECT *, totalpresupuesto AS total, bimppresupuesto AS base, imppresupuesto AS impuestos FROM presupuesto LEFT JOIN  cliente ON presupuesto.idcliente=cliente.idcliente LEFT JOIN almacen ON presupuesto.idalmacen=almacen.idalmacen WHERE 1=1 " + generaFiltro());
 
     /// Hacemos el calculo del total.
-    cursor2 *cur = m_companyact->cargacursor("SELECT SUM(totalpresupuesto) AS total FROM presupuesto LEFT JOIN cliente ON presupuesto.idcliente=cliente.idcliente LEFT JOIN almacen ON presupuesto.idalmacen=almacen.idalmacen WHERE 1=1 " + generaFiltro());
+    cursor2 *cur = empresaBase()->cargacursor("SELECT SUM(totalpresupuesto) AS total FROM presupuesto LEFT JOIN cliente ON presupuesto.idcliente=cliente.idcliente LEFT JOIN almacen ON presupuesto.idalmacen=almacen.idalmacen WHERE 1=1 " + generaFiltro());
     m_total->setText(cur->valor("total"));
     delete cur;
 
@@ -238,12 +233,12 @@ void PresupuestoList::editar(int row) {
     try {
         m_idpresupuesto = mui_list->DBvalue(QString("idpresupuesto"), row);
         if (m_modo == 0) {
-            PresupuestoView *prov = m_companyact->nuevoPresupuestoView();
+            PresupuestoView *prov = empresaBase()->nuevoPresupuestoView();
             if (prov->cargar(m_idpresupuesto)) {
                 delete prov;
                 return;
             }
-            m_companyact->m_pWorkspace->addWindow(prov);
+            empresaBase()->m_pWorkspace->addWindow(prov);
             prov->show();
         } else {
             emit(selected(m_idpresupuesto));
@@ -284,7 +279,7 @@ void PresupuestoList::on_mui_borrar_clicked() {
     try {
         m_idpresupuesto = mui_list->DBvalue(QString("idpresupuesto"));
         if (m_modo == 0) {
-            PresupuestoView *pv = m_companyact->nuevoPresupuestoView();
+            PresupuestoView *pv = empresaBase()->nuevoPresupuestoView();
             if (pv->cargar(m_idpresupuesto))
                 throw -1;
             pv->on_mui_borrar_clicked();
@@ -339,7 +334,7 @@ PresupuestoListSubForm::PresupuestoListSubForm(QWidget *parent, const char *) : 
 void PresupuestoListSubForm::cargar() {
         _depura("PresupuestoListSubForm::cargar", 0);
         QString SQLQuery = "SELECT * FROM presupuesto";
-        cursor2 *cur= companyact()->cargacursor(SQLQuery);
+        cursor2 *cur= empresaBase()->cargacursor(SQLQuery);
         SubForm3::cargar(cur);
         delete cur;
         _depura("END PresupuestoListSubForm::cargar", 0);

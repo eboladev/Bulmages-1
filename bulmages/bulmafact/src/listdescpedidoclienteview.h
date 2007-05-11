@@ -40,7 +40,7 @@ public slots:
     virtual void cargar(QString idpedidocliente) {
         _depura("ListDescuentoPedidoClienteView::cargar\n", 0);
         mdb_idpedidocliente = idpedidocliente;
-        cursor2 * cur= companyact()->cargacursor("SELECT * FROM dpedidocliente WHERE idpedidocliente = " + mdb_idpedidocliente);
+        cursor2 * cur= empresaBase()->cargacursor("SELECT * FROM dpedidocliente WHERE idpedidocliente = " + mdb_idpedidocliente);
         SubForm3::cargar(cur);
         delete cur;
     };

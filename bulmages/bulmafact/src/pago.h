@@ -25,16 +25,13 @@
 
 #include "company.h"
 #include "dbrecord.h"
-
+#include "fichabf.h"
 
 /// Almacena la informaci&oacute;n de un pago.
 /** */
-class Pago : public DBRecord {
-protected:
-    company *companyact;
-
+class Pago : public FichaBf {
 public:
-    Pago(company *);
+    Pago(company *, QWidget *);
     virtual ~Pago();
     virtual int cargar(QString);
     virtual void pintar();

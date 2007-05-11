@@ -29,12 +29,10 @@
 #define EMAIL "efactura@conetxia.com"
 #define DIREMAIL "/home/arturo/efacturamail"
 
-EFacturaRecepcion::EFacturaRecepcion(company *emp, QWidget *parent) : QWidget(parent) {
+EFacturaRecepcion::EFacturaRecepcion(company *emp, QWidget *parent) : FichaBf(emp, parent) {
 	QString query;
 	
 	setupUi(this);  // Para que el form se inicialice bien
-	
-	m_companyact = emp;
 }
 
 EFacturaRecepcion::~EFacturaRecepcion() {}
@@ -45,16 +43,16 @@ void EFacturaRecepcion::on_mui_recibir_clicked() {
 	/// Obtenemos los valores de configuracion necesarios para obtener eFacturas por e-mail
 	
 	QString query = "SELECT valor FROM configuracion WHERE nombre = 'eFactura_dirEmail'";
-	cursor2 *dirEmail = m_companyact->cargacursor(query);
+	cursor2 *dirEmail = empresaBase()->cargacursor(query);
 
 	query = "SELECT valor FROM configuracion WHERE nombre = 'eFactura_serverRec'";
-	cursor2 *serverRec = m_companyact->cargacursor(query);
+	cursor2 *serverRec = empresaBase()->cargacursor(query);
 	
 	query = "SELECT valor FROM configuracion WHERE nombre = 'eFactura_Email'";
-	cursor2 *Email = m_companyact->cargacursor(query);
+	cursor2 *Email = empresaBase()->cargacursor(query);
 
 	query = "SELECT valor FROM configuracion WHERE nombre = 'eFactura_Password'";
-	cursor2 *Password = m_companyact->cargacursor(query);
+	cursor2 *Password = empresaBase()->cargacursor(query);
 
 	/// Comprobamos que el directorio especificado existeAboutView
 	

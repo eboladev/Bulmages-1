@@ -23,17 +23,13 @@
 
 #include "company.h"
 #include "ui_comercialclientebase.h"
+#include "fichabf.h"
 
-
-class ComercialClienteView : public QWidget, public Ui_ComercialClienteBase {
+class ComercialClienteView : public FichaBf, public Ui_ComercialClienteBase {
     Q_OBJECT
 
 public:
-    void setcompany(company *comp) {
-        _depura("ComercialClienteView::setcompany", 0);
-        mui_zonacomercial->setcompany(comp);
-        mui_zonacomercial->setidzonacomercial("0");
-    };
+    void setEmpresaBase(company *comp);
     ComercialClienteView(QWidget *parent = 0);
     ~ComercialClienteView();
 };

@@ -26,7 +26,7 @@
 #include "company.h"
 #include "funcaux.h"
 #include "subform2bf.h"
-#include "ficha.h"
+#include "fichabf.h"
 
 
 /// Administra las l&iacute;neas de detalle del listado de pedidos de cliente.
@@ -42,7 +42,7 @@ public slots:
     virtual void cargar() {
         _depura("PedidosClienteListSubform::cargar", 0);
         QString SQLQuery = "SELECT * FROM pedidocliente";
-        cursor2 *cur = companyact()->cargacursor(SQLQuery);
+        cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
         SubForm3::cargar(cur);
         delete cur;
     }
@@ -57,11 +57,10 @@ public slots:
 
 /// Muestra y administra el listado de pedidos de cliente.
 /** */
-class PedidosClienteList : public Ficha, public Ui_PedidosClienteListBase {
+class PedidosClienteList : public FichaBf, public Ui_PedidosClienteListBase {
     Q_OBJECT
 
 private:
-    company *m_companyact;
     /// m_modo == 0 es modo edicion.
     /// m_modo == 1 es modo selector.
     int m_modo;
@@ -79,14 +78,11 @@ public:
         m_modo = 0;
     }
     void imprimir();
-    void setcompany(company *comp) {
-        m_companyact = comp;
-        m_cliente->setcompany(comp);
-        mui_list->setcompany(comp);
+    void setEmpresaBase(company *comp) {
+        FichaBf::setEmpresaBase(comp);
+        m_cliente->setEmpresaBase(comp);
+        mui_list->setEmpresaBase(comp);
     }
-    company *getcompany() {
-	return m_companyact;
-    };
     void hideBotonera() {
         m_botonera->hide();
     }
@@ -107,8 +103,8 @@ public:
         m_cliente->setidcliente(val);
     }
     void meteWindow(QString nom, QObject *obj) {
-        if (m_companyact != NULL) {
-            m_companyact->meteWindow(nom, obj);
+        if (empresaBase() != NULL) {
+            empresaBase()->meteWindow(nom, obj);
         } // end if
     }
     void editar(int);
@@ -128,7 +124,7 @@ public slots:
         imprimir();
     }
     virtual void on_mui_crear_clicked() {
-        m_companyact->s_newPedidoClienteView();
+        empresaBase()->s_newPedidoClienteView();
     }
     virtual void on_mui_actualizar_clicked() {
         presenta();

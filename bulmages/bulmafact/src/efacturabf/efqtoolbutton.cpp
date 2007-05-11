@@ -32,10 +32,9 @@
 #define _PLANTILLA_ "/usr/share/bulmages/efactura/plantilla_efactura.xml"
 #define _RESULTADO_ "/tmp/efactura.xml"
 
-EFQToolButton::EFQToolButton(FacturaView *fac, QWidget *parent) : QToolButton(parent) {
+EFQToolButton::EFQToolButton(FacturaView *fac, QWidget *parent) : QToolButton(parent), PEmpresaBase() {
 	_depura("EFQToolButton::EFQToolButton", 0);
 	m_factura = fac;
-	m_companyact = fac->_company();
 	connect(this, SIGNAL(clicked()), this, SLOT(click()));
 	_depura("END EFQToolButton::EFQToolButton", 0);
 }
@@ -69,7 +68,7 @@ void EFQToolButton::escribe_linea_factura(QString &string, cursor2 *lfactura, in
 	QString numero = QString::number(numerolinea);
 	
 	QString query = "SELECT * FROM articulo WHERE idarticulo = " + lfactura->valor("idarticulo");
-	cursor2 *articulo = m_companyact->cargacursor(query);
+	cursor2 *articulo = empresaBase()->cargacursor(query);
 	
 	QString string_iva = lfactura->valor("ivalfactura");
 	QString string_bimp = lfactura->valor("pvplfactura");
@@ -167,35 +166,35 @@ void EFQToolButton::exporta_factura_ubl() {
 	
 	// Datos de la factura que no estan en el DBRecord
 	query = "SELECT totalfactura, bimpfactura, impfactura FROM factura WHERE idfactura = " + m_factura->DBvalue("idfactura");
-	cursor2 *factura_totales = m_companyact->cargacursor(query);
+	cursor2 *factura_totales = empresaBase()->cargacursor(query);
 	
 	// Datos del cliente
 	query = "SELECT * FROM cliente WHERE idcliente = " + m_factura->DBvalue("idcliente");
-	cursor2 *cliente = m_companyact->cargacursor(query);
+	cursor2 *cliente = empresaBase()->cargacursor(query);
 	
 	// Datos del trabajador que emitio la factura
 	query = "SELECT * FROM trabajador WHERE idtrabajador = " + m_factura->DBvalue("idtrabajador");
-	cursor2 *trabajador = m_companyact->cargacursor(query);
+	cursor2 *trabajador = empresaBase()->cargacursor(query);
 	
 	// Datos de la forma de pago convenida
 	query = "SELECT * FROM forma_pago WHERE idforma_pago = " + m_factura->DBvalue("idforma_pago");
-	cursor2 *forma_pago = m_companyact->cargacursor(query);
+	cursor2 *forma_pago = empresaBase()->cargacursor(query);
 	
 	// Datos de la propia empresa
 	query = "SELECT * FROM configuracion WHERE nombre = 'NombreEmpresa'";
-	cursor2 *nombre_empresa = m_companyact->cargacursor(query);
+	cursor2 *nombre_empresa = empresaBase()->cargacursor(query);
 	
 	query = "SELECT * FROM configuracion WHERE nombre = 'CIF'";
-	cursor2 *cif_empresa = m_companyact->cargacursor(query);
+	cursor2 *cif_empresa = empresaBase()->cargacursor(query);
 	
 	query = "SELECT * FROM configuracion WHERE nombre = 'DireccionCompleta'";
-	cursor2 *dir_empresa = m_companyact->cargacursor(query);
+	cursor2 *dir_empresa = empresaBase()->cargacursor(query);
 	
 	query = "SELECT * FROM configuracion WHERE nombre = 'Ciudad'";
-	cursor2 *ciudad_empresa = m_companyact->cargacursor(query);
+	cursor2 *ciudad_empresa = empresaBase()->cargacursor(query);
 	
 	query = "SELECT * FROM configuracion WHERE nombre = 'CodPostal'";
-	cursor2 *cp_empresa = m_companyact->cargacursor(query);
+	cursor2 *cp_empresa = empresaBase()->cargacursor(query);
 	
 	FacturaXml.replace("[numfactura]", m_factura->DBvalue("numfactura"));
 	FacturaXml.replace("[ffactura]", m_factura->DBvalue("ffactura"));
@@ -224,7 +223,7 @@ void EFQToolButton::exporta_factura_ubl() {
 	/// Obtenemos las lineas de factura y las escribimos en el buffer
 	
 	query = "SELECT * FROM lfactura WHERE idfactura = " + m_factura->DBvalue("idfactura");
-	cursor2 *lfacturas = m_companyact->cargacursor(query);
+	cursor2 *lfacturas = empresaBase()->cargacursor(query);
 	
 	// Por si las moscas...
 	lfacturas->primerregistro();
@@ -249,7 +248,7 @@ void EFQToolButton::exporta_factura_ubl() {
 		
 	/// Descuento al PVP de la factura (cogidos de la tabla dfactura)
 	query = "SELECT * FROM dfactura WHERE idfactura = " + m_factura->DBvalue("idfactura");
-	cursor2 *descuentos_factura = m_companyact->cargacursor(query);	
+	cursor2 *descuentos_factura = empresaBase()->cargacursor(query);	
 
 	QString DescuentosFactura = "\n";
 	

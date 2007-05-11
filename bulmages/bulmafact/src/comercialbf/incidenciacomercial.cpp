@@ -27,8 +27,7 @@
 #include "plugins.h"
 
 
-IncidenciaComercial::IncidenciaComercial(company *comp) : DBRecord(comp) {
-    m_companyact = comp;
+IncidenciaComercial::IncidenciaComercial(company *comp, QWidget *parent) : FichaBf(comp, parent) {
     setDBTableName("incidenciacomercial");
     setDBCampoId("idincidenciacomercial");
     addDBCampo("idincidenciacomercial", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("IncidenciaComercial", "Identificador"));

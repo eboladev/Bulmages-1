@@ -37,13 +37,13 @@ public:
     SubForm2Bf *m_listadescuentos;
 
     /// Puntero a la clase company para poder trabajar con la base de datos y hacer traspaso de mensajes.
-    company *m_companyact;
+//    company *m_companyact();
 
 public:
-    company * getcompany() {
-	return m_companyact;
-    };
-    FichaBf(company *comp, QWidget *parent = 0, Qt::WFlags f = 0);
+    /// \TODO: A eliminar.
+    company *getcompany();
+    company *empresaBase();
+    FichaBf(company *comp, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode);
     virtual ~FichaBf();
     void setListaLineas(SubForm2Bf *form) {
         m_listalineas = form;

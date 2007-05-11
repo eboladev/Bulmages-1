@@ -23,6 +23,7 @@
 
 #include <QComboBox>
 
+#include "blwidget.h"
 #include "company.h"
 #include "postgresiface2.h"
 
@@ -30,13 +31,11 @@
 /// Clase que sirve para seleccionar un almac&eacute;n.
 /** Creamos un QComboBox que sirve para presentar la lista de almacenes
     disponibles para poder seleccionar uno de ellos.*/
-class BusquedaAlmacen : public QComboBox {
+class BusquedaAlmacen : public QComboBox, public PEmpresaBase {
     Q_OBJECT
 
 private:
     /// El puntero a company para que se pueda trabajar con la base de datos.
-    company *companyact;
-    /// En este cursor guardamos los resultados del query de almacenes. Que se corresponde con los presentados en el comboBox.
     cursor2 *m_cursorcombo;
     /// Indica cual es el codigo de almacen por defecto.
     QString m_codigoalmacen;
@@ -44,9 +43,10 @@ private:
 public:
     BusquedaAlmacen(QWidget *parent = 0, const char *name = 0);
     ~BusquedaAlmacen();
-    void setcompany(company *comp);
+
     virtual void setidalmacen(QString idalmacen);
     QString idalmacen();
+    void setEmpresaBase(company *);
 
 public slots:
     void m_activated(int index);

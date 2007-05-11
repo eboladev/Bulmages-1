@@ -28,21 +28,19 @@
 
 #include "ui_busquedaarticulobase.h"
 
+#include "blwidget.h"
 
 class company;
 
 
-class BusquedaArticuloDelegate : public QComboBox {
+class BusquedaArticuloDelegate : public QComboBox, public PEmpresaBase {
 Q_OBJECT
 private:
-	company *m_companyact;
     /// Este cursor almacena el listado de series de factura para poder trabajar con ellas.
     cursor2 *m_cursorcombo;
-
 public:
     BusquedaArticuloDelegate(QWidget *parent = 0);
     ~BusquedaArticuloDelegate();
-    void setcompany(company *comp);
 public slots:
     virtual void s_editTextChanged(const QString &);
 };
@@ -52,12 +50,11 @@ public slots:
 /// Permite buscar y seleccionar un art&iacute;culo.
 /** Muestra la parte del formulario que permite buscar y seleccionar un
     art&iacute;culo. */
-class BusquedaArticulo : public QWidget, public Ui_BusquedaArticuloBase {
+class BusquedaArticulo : public QWidget, public Ui_BusquedaArticuloBase, public PEmpresaBase {
     Q_OBJECT
 
 private:
-    /// Puntero de la clase company que permite trabajar con la base de datos y el paso de mensajes.
-    company *companyact;
+
     /// El Widget almacena el idarticulo seleccionado en esta variable.
     QString mdb_idarticulo;
     /// BusquedaArticulo almacena el nombre del articulo seleccionado en esta variable.
@@ -68,7 +65,6 @@ private:
 public:
     BusquedaArticulo(QWidget *parent = 0);
     ~BusquedaArticulo();
-    void setcompany(company *comp);
     virtual QString codigocompletoarticulo();
     virtual QString idarticulo();
     virtual QString nomarticulo();

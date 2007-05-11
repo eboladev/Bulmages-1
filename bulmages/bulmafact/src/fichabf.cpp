@@ -28,22 +28,37 @@
 class Fixed;
 
 
-FichaBf::FichaBf(company *comp, QWidget *parent, Qt::WFlags f)
-        : Ficha(parent, f), DBRecord(comp) {
+FichaBf::FichaBf(company *comp, QWidget *parent, Qt::WFlags f, edmode modo)
+        : Ficha(comp, parent, f, modo), DBRecord(comp) {
     _depura("FichaBf::FichaBf", 0);
     m_listalineas = NULL;
     m_listadescuentos = NULL;
-    m_companyact = comp;
+//    empresaBase() = comp;
+//    setEmpresaBase(comp);
     _depura("END FichaBf::FichaBf", 0);
 }
 
 
 FichaBf::~FichaBf() {
     _depura("FichaBf::~FichaBf", 0, this->windowTitle());
-    m_companyact->sacaWindow(this);
+    empresaBase()->sacaWindow(this);
     _depura("END FichaBf::~FichaBf", 0);
 }
 
+
+company * FichaBf::getcompany() {
+    _depura("FichaBf::getcompany", 0);
+    // return empresaBase();
+    _depura("END FichaBf::getcompany", 0);
+    return (company *) empresaBase();
+}
+
+company * FichaBf::empresaBase() {
+    _depura("FichaBf::getcompany", 0);
+    // return empresaBase();
+    _depura("END FichaBf::getcompany", 0);
+    return (company *) Ficha::empresaBase();
+}
 
 /** Calcula los totales de factura, descuentos e impuestos y invoca al metodo de pintaTotales para
     que se pinten dichos valores en la pantalla.
@@ -57,14 +72,14 @@ void FichaBf::calculaypintatotales() {
     QString l;
     Fixed irpf("0");
 
-    cursor2 *cur = m_companyact->cargacursor("SELECT * FROM configuracion WHERE nombre = 'IRPF'");
+    cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM configuracion WHERE nombre = 'IRPF'");
     if (!cur->eof()) {
         irpf = Fixed(cur->valor("valor"));
     } // end if
     delete cur;
 
     if (exists("idproveedor")) {
-        cur = m_companyact->cargacursor("SELECT irpfproveedor FROM proveedor WHERE idproveedor = " + DBvalue("idproveedor"));
+        cur = empresaBase()->cargacursor("SELECT irpfproveedor FROM proveedor WHERE idproveedor = " + DBvalue("idproveedor"));
         if (!cur->eof()) {
             irpf = Fixed(cur->valor("irpfproveedor"));
         } // end if
@@ -158,7 +173,7 @@ void FichaBf::generaRML() {
 
     Fixed irpf("0");
 
-    cursor2 *cur = m_companyact->cargacursor("SELECT * FROM configuracion WHERE nombre = 'IRPF'");
+    cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM configuracion WHERE nombre = 'IRPF'");
     if (!cur->eof()) {
         irpf = Fixed(cur->valor("valor"));
     } // end if
@@ -194,7 +209,7 @@ void FichaBf::generaRML() {
 
     /// Linea de totales del Presupuesto.
     QString SQLQuery = "SELECT * FROM cliente WHERE idcliente = " + DBvalue("idcliente");
-    cur = m_companyact->cargacursor(SQLQuery);
+    cur = empresaBase()->cargacursor(SQLQuery);
     if (!cur->eof()) {
         buff.replace("[dircliente]", cur->valor("dircliente"));
         buff.replace("[poblcliente]", cur->valor("poblcliente"));
@@ -369,19 +384,19 @@ void FichaBf::imprimir() {
 */
 int FichaBf::sacaWindow() {
     _depura("FichaBf::sacaWindow", 0, this->windowTitle());
-    m_companyact->sacaWindow(this);
+    empresaBase()->sacaWindow(this);
     _depura("END FichaBf::sacaWindow", 0);
     return 0;
 }
 
 
-    void FichaBf::meteWindow(QString nom, QObject *obj) {
-	_depura("FichaBf::meteWindow", 0);
-        if (m_companyact != NULL) {
-            m_companyact->meteWindow(nom, obj);
-        }
-	_depura("END FichaBf::meteWindow", 0);
+void FichaBf::meteWindow(QString nom, QObject *obj) {
+    _depura("FichaBf::meteWindow", 0);
+    if (empresaBase() != NULL) {
+        empresaBase()->meteWindow(nom, obj);
     }
+    _depura("END FichaBf::meteWindow", 0);
+}
 
 /** Guarda la ficha en la base de datos
     Este metodo puede ser invocado desde la clase ficha o desde la pantalla previa

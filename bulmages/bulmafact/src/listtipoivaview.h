@@ -32,10 +32,8 @@
 #include "busquedacliente.h"
 #include "busquedafecha.h"
 #include "subform2bf.h"
-#include "ficha.h"
+#include "fichabf.h"
 
-
-class company;
 
 /// Muestra y administra las l&iacute;neas de detalle del listado de almacenes.
 /** */
@@ -56,17 +54,11 @@ public slots:
 
 /// Muestra y administra el listado de almacenes.
 /** */
-class ListTipoIVAView : public Ficha, public Ui_ListTipoIVABase {
+class ListTipoIVAView : public FichaBf, public Ui_ListTipoIVABase {
     Q_OBJECT
-
-public:
-    company *companyact;
-
 public:
     ListTipoIVAView(company *comp, QWidget *parent);
     ~ListTipoIVAView();
-    virtual int sacaWindow();
-
 public slots:
     virtual void on_mui_aceptar_clicked();
 };

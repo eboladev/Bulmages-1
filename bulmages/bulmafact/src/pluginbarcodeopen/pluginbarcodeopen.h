@@ -32,20 +32,18 @@
 #include "qapplication2.h"
 #include "bulmafact.h"
 #include "postgresiface2.h"
-
+#include "blwidget.h"
 
 extern "C" MY_EXPORT void entryPoint(bulmafact *);
 
 extern QApplication2 *theApp;
 
 
-class myplugin : public QObject {
+class myplugin : public QObject, PEmpresaBase {
     Q_OBJECT
 
 public:
-    company *m_companyact;
     bulmafact *m_bulmafact;
-    postgresiface2 *conexionbase;
 
 public:
     myplugin();

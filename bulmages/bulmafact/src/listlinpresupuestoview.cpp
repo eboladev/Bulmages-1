@@ -55,7 +55,7 @@ void ListLinPresupuestoView::cargar(QString idpresupuesto) {
     _depura("ListLinPresupuestoView::cargar", 0);
     mdb_idpresupuesto = idpresupuesto;
     /// Al hacer la carge usamos el ordenlpresupuesto para indicar que el campo de ordenacion es el que toca.
-    cursor2 *cur = companyact()->cargacursor("SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE idpresupuesto = " + mdb_idpresupuesto +" ORDER BY ordenlpresupuesto");
+    cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE idpresupuesto = " + mdb_idpresupuesto +" ORDER BY ordenlpresupuesto");
     SubForm3::cargar(cur);
     delete cur;
     _depura("END ListLinPresupuestoView::cargar", 0);

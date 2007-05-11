@@ -27,10 +27,9 @@
     en el hecho de que la clase aun no ha sido completamente inicializada.
 */
 BusquedaCliente::BusquedaCliente(QWidget *parent)
-        : QWidget(parent) {
+        : BLWidget(parent) {
     _depura("BusquedaCliente::BusquedaCliente", 0);
     setupUi(this);
-    companyact = NULL;
     mdb_idcliente = "";
     mdb_nomcliente = "";
     mdb_cifcliente = "";
@@ -68,7 +67,7 @@ void BusquedaCliente::pinta() {
     Al finalizar llama al metodo pinta() para que se refelejen visualmente los cambios.
 */
 void BusquedaCliente::setidcliente(QString val) {
-    _depura("BusquedaCliente::setidcliente", 0);
+    _depura("BusquedaCliente::setidcliente", 0, val);
     mdb_idcliente = val;
 
     if (val == "") {
@@ -78,7 +77,7 @@ void BusquedaCliente::setidcliente(QString val) {
         mdb_codcliente = "";
     } else {
         QString SQLQuery = "SELECT * FROM cliente WHERE idcliente = '" + mdb_idcliente + "'";
-        cursor2 *cur = companyact->cargacursor(SQLQuery);
+        cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
         if (!cur->eof()) {
             mdb_nomcliente = cur->valor("nomcliente");
             mdb_cifcliente = cur->valor("cifcliente");
@@ -100,7 +99,7 @@ void BusquedaCliente::setcifcliente(QString val) {
     _depura("BusquedaCliente::setcifcliente", 0, val);
     mdb_cifcliente = val;
     QString SQLQuery = "SELECT * FROM cliente WHERE cifcliente = '" + mdb_cifcliente + "'";
-    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
 
     if(!cur->eof()) {
         mdb_idcliente = cur->valor("idcliente");
@@ -128,7 +127,7 @@ void BusquedaCliente::on_mui_buscar_clicked() {
     QDialog *diag = new QDialog(0);
     diag->setModal(true);
 
-    ClientsList *clients = new ClientsList(companyact, diag, 0, ClientsList::SelectMode);
+    ClientsList *clients = new ClientsList((company *)empresaBase(), diag, 0, ClientsList::SelectMode);
     connect(clients, SIGNAL(selected(QString)), diag, SLOT(accept()));
 
     /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
@@ -172,7 +171,7 @@ void BusquedaCliente::on_m_cifcliente_textChanged(const QString &val) {
 
     bool encontrado = FALSE;
     QString SQLQuery = "SELECT * FROM cliente WHERE cifcliente = '" + val + "'";
-    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
     if(!cur->eof()) {
         mdb_idcliente = cur->valor("idcliente");
         mdb_nomcliente = cur->valor("nomcliente");
@@ -184,7 +183,7 @@ void BusquedaCliente::on_m_cifcliente_textChanged(const QString &val) {
 
     if (! encontrado) {
         QString SQLQuery = "SELECT * FROM cliente WHERE codcliente = '" + val + "'";
-        cur = companyact->cargacursor(SQLQuery);
+        cur = empresaBase()->cargacursor(SQLQuery);
         if(!cur->eof()) {
             mdb_idcliente = cur->valor("idcliente");
             mdb_nomcliente = cur->valor("nomcliente");
@@ -198,7 +197,7 @@ void BusquedaCliente::on_m_cifcliente_textChanged(const QString &val) {
 
     if (! encontrado) {
         QString SQLQuery = "SELECT * FROM cliente WHERE upper(nomcliente) LIKE upper('%" + val + "%')";
-        cur = companyact->cargacursor(SQLQuery);
+        cur = empresaBase()->cargacursor(SQLQuery);
         if(cur->numregistros() == 1) {
             mdb_idcliente = cur->valor("idcliente");
             mdb_nomcliente = cur->valor("nomcliente");
@@ -223,11 +222,6 @@ void BusquedaCliente::on_m_cifcliente_textChanged(const QString &val) {
     } // end if
     _depura("END BusquedaCliente::on_m_cifcliente_textChanged", 0);
 
-}
-
-
-void BusquedaCliente::setcompany(company *comp) {
-    companyact = comp;
 }
 
 

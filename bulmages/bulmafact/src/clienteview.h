@@ -26,15 +26,12 @@
 #include "ui_clientebase.h"
 
 
-class company;
-
-
 /** Clase que se encarga de la pantalla de cliente.
     Deriva de la clase Ficha para la estandarizacion de pantallas y
     de la clase Cliente para el manejo con la base de datos.
     Se encarga de recibir y lanzar eventos.
 */
-class ClienteView : public Ficha, public Ui_ClienteBase, public Cliente {
+class ClienteView : public Cliente, public Ui_ClienteBase  {
     Q_OBJECT
 
 public:

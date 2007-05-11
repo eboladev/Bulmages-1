@@ -50,7 +50,7 @@ private:
 public:
     BusquedaFamilia(QWidget *parent = 0);
     ~BusquedaFamilia();
-    void setcompany(company *comp);
+    void setEmpresaBase(company *comp);
     virtual QString codigocompletofamilia();
     virtual QString idfamilia();
     virtual QString nombrefamilia();

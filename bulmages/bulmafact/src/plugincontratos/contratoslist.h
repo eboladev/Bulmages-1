@@ -24,7 +24,7 @@
 #include "pgimportfiles.h"
 #include "company.h"
 #include "subform2bf.h"
-#include "ficha.h"
+#include "fichabf.h"
 #include "bulmafact.h"
 
 class myplugincont : public QObject {
@@ -65,7 +65,7 @@ public:
     Tiene dos modos de funcionamiento (Edicion y Seleccion)
 */
 /// \TODO: Deberia crearse la clase Listado para poner en ella mas funcionalidades comunes a los listados.
-class ContratosList : public Ficha, public Ui_ContratosListBase, public pgimportfiles {
+class ContratosList : public FichaBf, public Ui_ContratosListBase, public pgimportfiles {
     Q_OBJECT
 
 public:
@@ -84,8 +84,7 @@ private:
     QString mdb_nomcontrato;
     /// Almacena el cifcontratoe del registro seleccionado.
     QString mdb_refcontrato;
-    /// Puntero a la clase company para poder trabajar con la Base de Datos y poder hacer paso de mensajes.
-    company *m_companyact;
+
 
 public:
     ContratosList(company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode);

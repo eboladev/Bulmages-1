@@ -40,8 +40,8 @@ myplugin::~myplugin() {}
 
 void myplugin::elslot() {
     _depura("myplugin::elslot", 0);
-	MovimientosView *mov = new MovimientosView(m_companyact);
-        m_companyact->pWorkspace()->addWindow(mov);
+	MovimientosView *mov = new MovimientosView((company *)empresaBase());
+        empresaBase()->pWorkspace()->addWindow(mov);
 	mov->show();
     _depura("END myplugin::elslot", 0);
 }
@@ -49,7 +49,7 @@ void myplugin::elslot() {
 
 void myplugin::inicializa(bulmafact *bges) {
     /// Creamos el men&uacute;.
-    m_companyact = bges->getcompany();
+    setEmpresaBase(bges->getcompany());
     m_bulmafact = bges;
     QAction *accion = new QAction("&Movimientos", 0);
     accion->setStatusTip("Ventana de Movimientos");
@@ -112,7 +112,7 @@ int SubForm2Bf_on_mui_list_editFinished(SubForm2Bf *subform) {
 
     if (camp->nomcampo() == "lote"+subform->tableName()) {
 	QString query = "SELECT * FROM movimiento LEFT JOIN articulo ON movimiento.idarticulo = articulo.idarticulo WHERE lotemovimiento = '"+camp->valorcampo()+"'";
-	cursor2 *cur = subform->companyact()->cargacursor(query);
+	cursor2 *cur = subform->empresaBase()->cargacursor(query);
 	if (!cur->eof()) {
 		if (campact->nomcampo() == "codigocompletoarticulo") {
 			subform->situarse1(subform->m_prevRow, subform->m_prevCol);

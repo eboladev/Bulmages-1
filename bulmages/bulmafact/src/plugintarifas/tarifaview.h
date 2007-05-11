@@ -24,25 +24,22 @@
 #include "ui_tarifabase.h"
 #include "postgresiface2.h"
 #include "dialogchanges.h"
-#include "dbrecord.h"
+#include "fichabf.h"
 
 
-class company;
 
-class TarifaView : public QWidget, public Ui_TarifaBase, public dialogChanges, public DBRecord {
+class TarifaView : public FichaBf, public Ui_TarifaBase {
     Q_OBJECT
 
 private:
     QString m_idtarifa;
     QString m_nomtarifa;
-    company *m_companyact;
     cursor2 *m_cursorcombo;
-
 public:
     TarifaView(company *emp, QWidget *parent = 0);
     ~TarifaView();
     company *companyact() {
-        return m_companyact;
+        return empresaBase();
     };
 
 public:

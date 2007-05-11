@@ -75,7 +75,7 @@ void BusquedaBanco::setidbanco(QString idbanco) {
 
 /** Inicializa la clase con el puntero a la empresa que se esta utilizando.
 **/
-void BusquedaBanco::setcompany(company *comp) {
+void BusquedaBanco::setEmpresaBase(company *comp) {
     _depura("BusquedaBanco::setcompany", 0);
     companyact = comp;
     _depura("END BusquedaBanco::setcompany", 0);

@@ -43,7 +43,7 @@
     Resetea el control de cambios.
 */
 ClienteView::ClienteView(company *comp, QWidget *parent)
-        : Ficha(parent), Cliente(comp) {
+        : Cliente(comp, parent) {
     _depura("ClienteView::ClienteView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     try {
@@ -53,26 +53,26 @@ ClienteView::ClienteView(company *comp, QWidget *parent)
         if (res != 0) {
             return;
         } // end if
-        m_provcliente->setcompany(m_companyact);
+        m_provcliente->setcompany(empresaBase());
         m_provcliente->setProvincia("");
         /// Inicializamos las pantallas auxiliares a esta.
-        m_listpresupuestos->setcompany(m_companyact);
-        m_listpedidos->setcompany(m_companyact);
-        m_listalbaranes->setcompany(m_companyact);
-        m_listfacturas->setcompany(m_companyact);
-        m_listcobros->setcompany(m_companyact);
-        mui_forma_pago->setcompany(m_companyact);
-        mui_forma_pago->setidforma_pago("0");
+        m_listpresupuestos->setEmpresaBase(empresaBase());
+        m_listpedidos->setEmpresaBase(empresaBase());
+        m_listalbaranes->setEmpresaBase(empresaBase());
+        m_listfacturas->setEmpresaBase(empresaBase());
+        m_listcobros->setEmpresaBase(empresaBase());
+        mui_forma_pago->setEmpresaBase(empresaBase());
+        mui_forma_pago->setidforma_pago("");
 
         /// Metemos la ventana en el workSpace.
-        m_companyact->meteWindow(windowTitle(), this, FALSE);
+        empresaBase()->meteWindow(windowTitle(), this, FALSE);
         dialogChanges_cargaInicial();
         /// Disparamos los plugins.
         res = g_plugins->lanza("ClienteView_ClienteView_Post", this);
     } catch (...) {
         mensajeInfo(tr("Error al crear el cliente"));
     } // end try
-    _depura("ClienteView::ClienteView", 0);
+    _depura("END ClienteView::ClienteView", 0);
 }
 
 
@@ -82,7 +82,7 @@ ClienteView::~ClienteView() {
     _depura("ClienteView::~ClienteView", 0);
     /// Disparamos los plugins.
     g_plugins->lanza("ClienteView_Des_ClienteView", this);
-    m_companyact->sacaWindow(this);
+    empresaBase()->sacaWindow(this);
     _depura("END ClienteView::~ClienteView", 0);
 }
 
@@ -104,14 +104,13 @@ int ClienteView::cargar(QString idcliente) {
     try {
         Cliente::cargar(idcliente);
         setWindowTitle(tr("Cliente") + " " + DBvalue("nomcliente"));
-        m_companyact->meteWindow(windowTitle(), this);
+        empresaBase()->meteWindow(windowTitle(), this);
 
         /// Disparamos los plugins.
         int res = g_plugins->lanza("ClienteView_cargar", this);
         if (res != 0) {
             return res;
         } // end if
-
 
         /// Hacemos que el listado de presupuestos de un cliente se inicialize.
         m_listpresupuestos->setidcliente(idcliente);
@@ -124,9 +123,9 @@ int ClienteView::cargar(QString idcliente) {
         m_listfacturas->presenta();
         m_listcobros->setidcliente(idcliente);
         m_listcobros->presenta();
+
         /// Pintamos
         pintaCliente();
-
         /// Reseteamos el control de cambios.
         dialogChanges_cargaInicial();
     } catch (...) {
@@ -244,7 +243,7 @@ void ClienteView::on_mui_borrar_clicked() {
 */
 void ClienteView::on_mui_informe_clicked() {
     _depura("ClienteView::on_mui_informe_clicked", 0);
-    InformeCliente inf(companyact());
+    InformeCliente inf(empresaBase());
     inf.setCliente(DBvalue("idcliente"));
     inf.generarInforme();
     _depura("END ClienteView::on_mui_informe_clicked", 0);

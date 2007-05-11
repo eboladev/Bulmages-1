@@ -29,9 +29,8 @@
     Hace la conexion del SIGNAL activated con m_activated para tratar el evento.
 */
 BusquedaTrabajador::BusquedaTrabajador(QWidget *parent)
-        : QComboBox(parent) {
+        : QComboBox(parent), PEmpresaBase() {
     _depura("BusquedaTrabajador::BusquedaTrabajador", 0);
-    companyact = NULL;
     m_cursorcombo = NULL;
     connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
     _depura("END BusquedaTrabajador::BusquedaTrabajador", 0);
@@ -56,7 +55,7 @@ void BusquedaTrabajador::setidtrabajador(QString idtrabajador) {
     _depura("BusquedaTrabajador::setidtrabajador", 0);
     if (m_cursorcombo != NULL)
         delete m_cursorcombo;
-    m_cursorcombo = companyact->cargacursor("SELECT * FROM trabajador");
+    m_cursorcombo = empresaBase()->cargacursor("SELECT * FROM trabajador");
     int i = 0;
     int i1 = 0;
     clear();
@@ -73,13 +72,7 @@ void BusquedaTrabajador::setidtrabajador(QString idtrabajador) {
 }
 
 
-/** Inicializa la clase con el puntero a la empresa que se esta utilizando.
-**/
-void BusquedaTrabajador::setcompany(company *comp) {
-    _depura("BusquedaTrabajador::setcompany", 0);
-    companyact = comp;
-    _depura("END BusquedaTrabajador::setcompany", 0);
-}
+
 
 /** Devuelve el identificador del trabajador seleccionado
 **/

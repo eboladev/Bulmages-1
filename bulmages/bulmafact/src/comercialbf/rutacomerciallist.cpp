@@ -32,10 +32,9 @@
 
 
 RutaComercialList::RutaComercialList(QWidget *parent)
-        : QWidget(parent) {
+        : FichaBf(NULL, parent) {
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
-    m_companyact = NULL;
     m_modo = 0;
     m_idpresupuesto = "";
     meteWindow(windowTitle(), this);
@@ -44,11 +43,10 @@ RutaComercialList::RutaComercialList(QWidget *parent)
 
 
 RutaComercialList::RutaComercialList(company *comp, QWidget *parent)
-        : QWidget(parent) {
+        : FichaBf(comp, parent) {
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
-    m_companyact = comp;
-    m_cliente->setcompany(comp);
+    m_cliente->setEmpresaBase(comp);
     presenta();
     m_modo = 0;
     m_idpresupuesto = "";
@@ -59,14 +57,18 @@ RutaComercialList::RutaComercialList(company *comp, QWidget *parent)
 
 RutaComercialList::~RutaComercialList() {
     _depura("RutaComercialList::~RutaComercialList", 0);
-    m_companyact->sacaWindow(this);
+    empresaBase()->sacaWindow(this);
 }
 
+void RutaComercialList::setEmpresaBase(company *comp) {
+    PEmpresaBase::setEmpresaBase(comp);
+    m_cliente->setEmpresaBase(comp);
+}
 
 void RutaComercialList::presenta() {
     _depura("RutaComercialList::presenta()\n", 0);
     QString SQLQuery = "SELECT * FROM (SELECT * FROM rutacomercial NATURAL LEFT JOIN incidenciacomercial UNION SELECT * FROM rutacomercial NATURAL RIGHT JOIN incidenciacomercial WHERE incidenciacomercial.idrutacomercial IS NULL) AS t1 NATURAL LEFT JOIN trabajador LEFT JOIN (SELECT * FROM cliente NATURAL LEFT JOIN zonacomercial) AS t2 ON t1.idcliente = t2.idcliente WHERE 1 = 1 " + generaFiltro();
-    cursor2 *cur = m_companyact->cargacursor(SQLQuery);
+    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
     mui_list->cargar(cur);
     delete cur;
     _depura("end RutaComercialList::presenta()\n", 0);
@@ -91,10 +93,10 @@ void RutaComercialList::editar(int row) {
     _depura("RutaComercialList::editar", 0);
     QString idrutacomercial = mui_list->DBvalue("idrutacomercial", row);
     QString idincidenciacomercial = mui_list->DBvalue("idincidenciacomercial", row);
-    RutaComercialIncView *rut = new RutaComercialIncView(m_companyact, NULL);
+    RutaComercialIncView *rut = new RutaComercialIncView(empresaBase(), NULL);
     if (rut->cargar(idrutacomercial, idincidenciacomercial))
         return;
-    m_companyact->m_pWorkspace->addWindow(rut);
+    empresaBase()->m_pWorkspace->addWindow(rut);
     rut->show();
     _depura("END RutaComercialList::editar", 0);
 }
@@ -111,8 +113,8 @@ void RutaComercialList::on_mui_editar_clicked() {
 
 void RutaComercialList::on_mui_crear_clicked() {
     _depura("RutaComercialList::on_mui_crear_clicked", 0);
-    RutaComercialIncView *rut = new RutaComercialIncView(m_companyact, NULL);
-    m_companyact->m_pWorkspace->addWindow(rut);
+    RutaComercialIncView *rut = new RutaComercialIncView(empresaBase(), NULL);
+    empresaBase()->m_pWorkspace->addWindow(rut);
     rut->show();
     _depura("END RutaComercialList::on_mui_crear_clicked", 0);
 }
@@ -124,16 +126,20 @@ void RutaComercialList::imprimir() {
     QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
     /// Copiamos el archivo.
 #ifdef WINDOWS
+
     archivo = "copy " + archivo + " " + archivod;
 #else
 
     archivo = "cp " + archivo + " " + archivod;
 #endif
+
     system(archivo.toAscii());
     /// Copiamos el logo.
 #ifdef WINDOWS
+
     archivologo = "copy " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #else
+
     archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #endif
 
@@ -166,7 +172,7 @@ void RutaComercialList::on_mui_borrar_clicked() {
     _depura("RutaComercialList::on_mui_borrar_clicked", 0);
     QString idrutacomercial = mui_list->DBvalue("idrutacomercial");
     QString idincidenciacomercial = mui_list->DBvalue("idincidenciacomercial");
-    RutaComercialIncView *rut = new RutaComercialIncView(m_companyact, NULL);
+    RutaComercialIncView *rut = new RutaComercialIncView(empresaBase(), NULL);
     if (rut->cargar(idrutacomercial, idincidenciacomercial))
         return;
     rut->on_mui_borrar_clicked();

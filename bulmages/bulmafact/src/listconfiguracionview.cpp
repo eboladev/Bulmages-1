@@ -44,10 +44,10 @@ ListConfiguracionView::ListConfiguracionView(company *comp, QWidget *parent) : F
     _depura("ListConfiguracionView::ListConfiguracionView", 1);
     setupUi(this);
     this->setAttribute(Qt::WA_DeleteOnClose);
-    mui_listado->setcompany(m_companyact);
+    mui_listado->setEmpresaBase(empresaBase());
     mui_listado->cargar();
 
-    m_companyact->meteWindow(windowTitle(), this, FALSE);
+    empresaBase()->meteWindow(windowTitle(), this, FALSE);
     _depura("END ListConfiguracionView::ListConfiguracionView", 1);
 }
 

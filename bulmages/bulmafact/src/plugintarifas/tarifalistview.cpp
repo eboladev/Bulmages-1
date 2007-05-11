@@ -26,13 +26,12 @@
 
 
 TarifaListView::TarifaListView(company *comp, QWidget *parent, edmode editmodo)
-        : QWidget(parent), pgimportfiles(comp) {
+        : FichaBf(comp, parent), pgimportfiles(comp) {
     _depura("TarifaListView::INIT_TarifaListView()\n", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     m_modo = editmodo;
     setupUi(this);
-    m_companyact = comp;
-    mui_list->setcompany(m_companyact);
+    mui_list->setEmpresaBase(empresaBase());
     mui_list->cargar();
     comp->meteWindow(tr("Tarifas"), this);
     _depura("TarifaListView::END_TarifaListView()\n", 0);
@@ -41,7 +40,7 @@ TarifaListView::TarifaListView(company *comp, QWidget *parent, edmode editmodo)
 
 TarifaListView::~TarifaListView() {
     _depura("TarifaListView::INIT_destructor()\n", 0);
-    m_companyact->sacaWindow(this);
+    empresaBase()->sacaWindow(this);
     _depura("TarifaListView::END_destructor()\n", 0);
 }
 
@@ -60,8 +59,8 @@ void TarifaListView::on_mui_editar_clicked() {
 
 void TarifaListView::editar(int row) {
     _depura("TarifaListView::editar", 0);
-    TarifaView *tar = new TarifaView(m_companyact, 0);
-    m_companyact->m_pWorkspace->addWindow(tar);
+    TarifaView *tar = new TarifaView(empresaBase(), 0);
+    empresaBase()->m_pWorkspace->addWindow(tar);
     tar->cargar(mui_list->DBvalue(QString("idtarifa"), row));
     tar->show();
 }
@@ -69,10 +68,10 @@ void TarifaListView::editar(int row) {
 
 void TarifaListView::on_mui_crear_clicked() {
     _depura("TarifaListView::editar", 0);
-    TarifaView *tar = new TarifaView(m_companyact, parentWidget());
+    TarifaView *tar = new TarifaView(empresaBase(), parentWidget());
     /// Hacemos una carga "especial" para que se carguen todos los elementos.
     tar->cargar("0");
-    m_companyact->m_pWorkspace->addWindow(tar);
+    empresaBase()->m_pWorkspace->addWindow(tar);
     tar->show();
 }
 
@@ -80,7 +79,7 @@ void TarifaListView::on_mui_crear_clicked() {
 void TarifaListView::on_mui_borrar_clicked() {
     _depura("TarifaListView::on_mui_borrar_clicked\n", 0);
     int a = mui_list->currentRow();
-    TarifaView *tar = new TarifaView(m_companyact, 0);
+    TarifaView *tar = new TarifaView(empresaBase(), 0);
     tar->cargar(mui_list->DBvalue(QString("idtarifa"), a));
     tar->on_mui_borrar_clicked();
     delete tar;

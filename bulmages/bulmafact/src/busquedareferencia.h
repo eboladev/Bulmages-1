@@ -25,24 +25,19 @@
 #include <QLabel>
 
 #include "ui_busquedareferenciabase.h"
+#include "blwidget.h"
 
-
-class company;
 
 
 /// Permite introducir una referencia.
 /** Este Widget permite introducir una referencia. */
-class BusquedaReferencia : public QWidget, public Ui_BusquedaReferenciaBase {
+class BusquedaReferencia : public BLWidget, public Ui_BusquedaReferenciaBase {
     Q_OBJECT
 
-private:
-    /// Puntero a la clase company que permite trabajar con la Base de Datos y el paso de mensajes.
-    company *m_companyact;
 
 public:
     BusquedaReferencia(QWidget *parent = 0);
     ~BusquedaReferencia();
-    void setcompany(company *comp);
     virtual void setText(QString val);
     virtual QString text();
 

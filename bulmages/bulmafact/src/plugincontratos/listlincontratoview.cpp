@@ -22,42 +22,39 @@
 #include <QKeyEvent>
 #include <QEvent>
 
+#include "listlincontratoview.h"
 #include "articulolist.h"
-#include "listlinpedidoclienteview.h"
 #include "funcaux.h"
 #include "fixed.h"
+#include "plugins.h"
 
 
-ListLinPedidoClienteView::ListLinPedidoClienteView(QWidget *parent) : SubForm2Bf(parent) {
-    _depura("ListLinPedidoClienteView::ListLinPedidoClienteView", 0);
-    setDBTableName("lpedidocliente");
-    setDBCampoId("numlpedidocliente");
-    addSHeader("puntlpedidocliente", DBCampo::DBboolean, DBCampo::DBNotNull, SHeader::DBNone, tr("Puntl pedido cliente"));
+ListLinContratoView::ListLinContratoView(QWidget *parent) : SubForm2Bf(parent) {
+    _depura("ListLinContratoView::ListLinContratoView", 0);
+    setDBTableName("lcontrato");
+    setDBCampoId("idlcontrato");
     addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id articulo"));
     addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Codigo completo articulo"));
     addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("Nombre articulo"));
-    addSHeader("numlpedidocliente", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr("Numl pedido cliente"));
-    addSHeader("desclpedidocliente", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Descl pedido cliente"));
-    addSHeader("cantlpedidocliente", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Cantl pedido cliente"));
-    addSHeader("pvplpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr("PVPl pedido cliente"));
-    addSHeader("ivalpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr("IVAl pedido cliente"));
-    addSHeader("reqeqlpedidocliente", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, tr("% Recargo E.Q."));
-    addSHeader("descuentolpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr("Descuentol pedido cliente"));
-    addSHeader("idpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id pedido cliente"));
-    addSHeader("ordenlpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Orden"));
+    addSHeader("idlcontrato", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr("Idl contrato"));
+    addSHeader("desclcontrato", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Descripcionl contrato"));
+    addSHeader("cantlcontrato", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Cantidadl contrato"));
+    addSHeader("pvplcontrato", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("PVPl contrato"));
+    addSHeader("idcontrato", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id contrato"));
+    addSHeader("ordenlcontrato", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Orden"));
     setinsercion(TRUE);
     setOrdenEnabled(TRUE);
-    _depura("END ListLinPedidoClienteView::ListLinPedidoClienteView", 0);
+    _depura("END ListLinContratoView::ListLinContratoView", 0);
 }
 
 
-void ListLinPedidoClienteView::cargar(QString idpedidocliente) {
-    _depura("ListLinPedidoClienteView::cargar", 0);
-    mdb_idpedidocliente = idpedidocliente;
-    cursor2 * cur= empresaBase()->cargacursor("SELECT * FROM lpedidocliente LEFT JOIN articulo ON lpedidocliente.idarticulo = articulo.idarticulo WHERE idpedidocliente=" + mdb_idpedidocliente + " ORDER BY ordenlpedidocliente");
+void ListLinContratoView::cargar(QString idcontrato) {
+    _depura("ListLinContratoView::cargar", 0);
+    mdb_idcontrato = idcontrato;
+    cursor2 * cur= empresaBase()->cargacursor("SELECT * FROM lcontrato LEFT JOIN articulo ON lcontrato.idarticulo = articulo.idarticulo WHERE idcontrato=" + mdb_idcontrato + " ORDER BY ordenlcontrato");
     SubForm3::cargar(cur);
     delete cur;
-    _depura("END ListLinPedidoClienteView::cargar", 0);
+    _depura("END ListLinContratoView::cargar", 0);
 }
 
 

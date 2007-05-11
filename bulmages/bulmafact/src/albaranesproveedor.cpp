@@ -40,10 +40,9 @@
     Inicializa todos los componentes, se pone en modo edicion y mete la ventana en el workSpace.
 */
 AlbaranesProveedor::AlbaranesProveedor(QWidget *parent, Qt::WFlags flag)
-        : Ficha(parent) {
+        : FichaBf(NULL, parent) {
     _depura("AlbaranesProveedor::AlbaranesProveedor", 0);
     setupUi(this);
-    m_companyact = NULL;
     m_modo = 0;
     mdb_idalbaranp = "";
     meteWindow(windowTitle(), this);
@@ -62,11 +61,11 @@ void AlbaranesProveedor::modoedicion() {
 }
 
 
-void AlbaranesProveedor::setcompany(company *comp) {
-    m_companyact = comp;
-    m_proveedor->setcompany(comp);
-    m_articulo->setcompany(comp);
-    mui_list->setcompany(comp);
+void AlbaranesProveedor::setEmpresaBase(company *comp) {
+    PEmpresaBase::setEmpresaBase(comp);
+    m_proveedor->setEmpresaBase(comp);
+    m_articulo->setEmpresaBase(comp);
+    mui_list->setEmpresaBase(comp);
 }
 
 
@@ -82,8 +81,8 @@ void AlbaranesProveedor::on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
 
 
 void AlbaranesProveedor::on_mui_crear_clicked()  {
-    if (m_companyact != NULL)
-        m_companyact->s_newAlbaranPro();
+    if (empresaBase() != NULL)
+        empresaBase()->s_newAlbaranPro();
 }
 
 
@@ -107,8 +106,8 @@ void AlbaranesProveedor::on_mui_configurar_toggled(bool checked) {
 
 
 void AlbaranesProveedor::meteWindow(QString nom, QObject *obj) {
-    if (m_companyact != NULL) {
-        m_companyact->meteWindow(nom, obj);
+    if (empresaBase() != NULL) {
+        empresaBase()->meteWindow(nom, obj);
     } // end if
 }
 
@@ -155,13 +154,12 @@ void AlbaranesProveedor::showBusqueda() {
     Oculta la parte de Busqueda.
 */
 AlbaranesProveedor::AlbaranesProveedor(company *comp, QWidget *parent, Qt::WFlags flag)
-        : Ficha(parent) {
+        : FichaBf(comp, parent) {
     _depura("AlbaranesProveedor::AlbaranesProveedor", 0);
     setupUi(this);
-    m_companyact = comp;
-    m_proveedor->setcompany(comp);
-    m_articulo->setcompany(comp);
-    mui_list->setcompany(comp);
+    m_proveedor->setEmpresaBase(comp);
+    m_articulo->setEmpresaBase(comp);
+    mui_list->setEmpresaBase(comp);
     presenta();
     m_modo = 0;
     mdb_idalbaranp = "";
@@ -175,8 +173,8 @@ AlbaranesProveedor::AlbaranesProveedor(company *comp, QWidget *parent, Qt::WFlag
 */
 AlbaranesProveedor::~AlbaranesProveedor() {
     _depura("AlbaranesProveedor::~AlbaranesProveedor", 0);
-    m_companyact->refreshAlbaranesProveedor();
-    m_companyact->sacaWindow(this);
+    empresaBase()->refreshAlbaranesProveedor();
+    empresaBase()->sacaWindow(this);
     _depura("END AlbaranesProveedor::~AlbaranesProveedor", 0);
 }
 
@@ -187,7 +185,7 @@ AlbaranesProveedor::~AlbaranesProveedor() {
 */
 void AlbaranesProveedor::presenta() {
     _depura("AlbaranesProveedor::presenta", 0);
-    if (m_companyact != NULL ) {
+    if (empresaBase() != NULL ) {
         mui_list->cargar("SELECT *, totalalbaranp AS total, " \
                         "bimpalbaranp AS base, impalbaranp AS impuestos " \
                         "FROM albaranp LEFT " \
@@ -198,7 +196,7 @@ void AlbaranesProveedor::presenta() {
                         "forma_pago.idforma_pago WHERE 1 = 1 " + generaFiltro());
 
         /// Hacemos el calculo del total.
-        cursor2 *cur = m_companyact->cargacursor("SELECT SUM(totalalbaranp) " \
+        cursor2 *cur = empresaBase()->cargacursor("SELECT SUM(totalalbaranp) " \
                                         "AS total FROM albaranp LEFT JOIN proveedor ON " \
                                         "albaranp.idproveedor = proveedor.idproveedor LEFT " \
                                         "JOIN almacen ON albaranp.idalmacen = almacen.idalmacen " \
@@ -251,12 +249,12 @@ void AlbaranesProveedor::editar(int row) {
     _depura("AlbaranesProveedor::editar", 0);
     mdb_idalbaranp = mui_list->DBvalue(QString("idalbaranp"), row);
     if (m_modo == 0) {
-        AlbaranProveedorView *prov = new AlbaranProveedorView(m_companyact, 0);
+        AlbaranProveedorView *prov = new AlbaranProveedorView(empresaBase(), 0);
         if (prov->cargar(mdb_idalbaranp)) {
             delete prov;
             return;
         } // end if
-        m_companyact->m_pWorkspace->addWindow(prov);
+        empresaBase()->m_pWorkspace->addWindow(prov);
         prov->show();
     } else {
         emit(selected(mdb_idalbaranp));
@@ -307,7 +305,7 @@ void AlbaranesProveedor::on_mui_borrar_clicked() {
     try {
         mdb_idalbaranp = mui_list->DBvalue(QString("idalbaranp"));
         if (m_modo == 0) {
-            AlbaranProveedorView *apv = m_companyact->newAlbaranProveedorView();
+            AlbaranProveedorView *apv = empresaBase()->newAlbaranProveedorView();
             if (apv->cargar(mdb_idalbaranp)) {
                 throw -1;
             } // end if
@@ -362,9 +360,9 @@ AlbaranesProveedorListSubform::AlbaranesProveedorListSubform(QWidget *parent) : 
 
 
 void AlbaranesProveedorListSubform::cargar() {
-    _depura("AlbaranesProveedorListSubform::cargar\n", 0);
+    _depura("AlbaranesProveedorListSubform::cargar", 0);
     QString SQLQuery = "SELECT * FROM albaranp";
-    cursor2 *cur = companyact()->cargacursor(SQLQuery);
+    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
     SubForm3::cargar(cur);
     delete cur;
 }

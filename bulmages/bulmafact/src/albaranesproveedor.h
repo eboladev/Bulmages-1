@@ -28,7 +28,7 @@
 #include "busquedaarticulo.h"
 #include "funcaux.h"
 #include "subform2bf.h"
-#include "ficha.h"
+#include "fichabf.h"
 
 
 /// Clase que maneja el subformulario de los albaranes de proveedor.
@@ -53,12 +53,10 @@ public slots:
 
 /// Clase que controla la pantalla de listado de albaranes a proveedor.
 /// \TODO: Deberia derivar de Ficha o Listado en lugar de QWidget.
-class AlbaranesProveedor : public Ficha, public Ui_AlbaranesProveedorListBase {
+class AlbaranesProveedor : public FichaBf, public Ui_AlbaranesProveedorListBase {
     Q_OBJECT
 
 private:
-    /// El puntero m_companyact que se propaga por practicamente todas las clases de la aplicacion.
-    company *m_companyact;
     /// Indicador de modo edicion o modo seleccion
     /// == 0 es modo edicion.
     /// == 1 es modo selector.
@@ -73,7 +71,7 @@ public:
     void presenta();
     void modoseleccion();
     void modoedicion();
-    void setcompany(company *comp);
+    void setEmpresaBase(company *comp);
     QString idalbaranp();
     void hideBotonera();
     void showBotonera();

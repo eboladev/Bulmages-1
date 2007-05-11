@@ -25,7 +25,7 @@
 
 #include "company.h"
 #include "postgresiface2.h"
-
+#include "blwidget.h"
 
 /// Permite  seleccionar una serie de factura.
 /** Este Widget permite buscar y seleccionar un
@@ -33,12 +33,10 @@
     Antes de utilizarlo debe ser inicializa con setcompany.   
     Cuando se cambia el elemento seleccionado emite un SIGNAL valueChanged().
 */
-class BusquedaSerieFactura : public QComboBox {
+class BusquedaSerieFactura : public QComboBox, PEmpresaBase {
     Q_OBJECT
 
 private:
-    /// Puntero a la clase compay que permite trabajar con la Base de Datos y el paso de parametros.
-    company *companyact;
     /// Este cursor almacena el listado de series de factura para poder trabajar con ellas.
     cursor2 *m_cursorcombo;
     /// Indica cual es el codigo de la serie de factura por defecto.
@@ -47,7 +45,7 @@ private:
 public:
     BusquedaSerieFactura(QWidget *parent = 0);
     ~BusquedaSerieFactura();
-    void setcompany(company *comp);
+    void setEmpresaBase(company *comp);
     virtual void setcodigoserie_factura(QString);
     QString codigoserie_factura();
 

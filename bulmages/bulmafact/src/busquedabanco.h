@@ -46,7 +46,7 @@ private:
 public:
     BusquedaBanco(QWidget *parent = 0);
     ~BusquedaBanco();
-    void setcompany(company *comp);
+    void setEmpresaBase(company *comp);
     virtual void setidbanco(QString idbanco);
     QString idbanco();
 

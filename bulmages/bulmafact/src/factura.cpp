@@ -31,7 +31,6 @@
 */
 Factura::Factura(company *comp, QWidget *parent) : FichaBf(comp, parent) {
     _depura("Factura::Factura", 0);
-    m_companyact = comp;
     setDBTableName("factura");
     setDBCampoId("idfactura");
     addDBCampo("idfactura", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Factura", "Id factura"));
@@ -67,23 +66,23 @@ Factura::~Factura() {
 int Factura::borrar() {
     _depura("Factura::borrar", 0);
     if (DBvalue("idfactura") != "") {
-        m_companyact->begin();
+        empresaBase()->begin();
         int error = m_listalineas->borrar();
         if (error) {
-            m_companyact->rollback();
+            empresaBase()->rollback();
             return -1;
         } // end if
         error = m_listadescuentos->borrar();
         if (error) {
-            m_companyact->rollback();
+            empresaBase()->rollback();
             return -1;
         } // end if
         error = DBRecord::borrar();
         if (error) {
-            m_companyact->rollback();
+            empresaBase()->rollback();
             return -1;
         } // end if
-        m_companyact->commit();
+        empresaBase()->commit();
     } // end if
     _depura("END Factura::borrar", 0);
     return 0;
@@ -133,7 +132,8 @@ int Factura::cargar(QString idbudget) {
     _depura("Factura::cargar", 0);
     inicialize();
     QString query = "SELECT * FROM factura WHERE idfactura = " + idbudget;
-    cursor2 *cur= m_companyact->cargacursor(query);
+    cursor2 * cur= empresaBase()->cargacursor(query);
+
     if (!cur->eof()) {
         DBload(cur);
     } // end if
@@ -162,19 +162,19 @@ int Factura::guardar() {
         /// Calculamos el proximo numero de factura para poder insertarlo en caso de que este sea nulo.
         if (DBvalue("numfactura") == "") {
             QString SQLQueryn = "SELECT MAX(numfactura) + 1 AS num FROM factura WHERE codigoserie_factura = '" + DBvalue("codigoserie_factura") + "'";
-            cursor2 *cur = m_companyact->cargacursor(SQLQueryn);
+            cursor2 *cur = empresaBase()->cargacursor(SQLQueryn);
             if (!cur->eof())
                 setDBvalue("numfactura", cur->valor("num"));
             pintaNumFactura(DBvalue("numfactura"));
             delete cur;
         } // end if
         QString id;
-        m_companyact->begin();
+        empresaBase()->begin();
         DBsave(id);
         setidfactura(id);
         m_listalineas->guardar();
         m_listadescuentos->guardar();
-        m_companyact->commit();
+        empresaBase()->commit();
 
     /// Hacemos una carga para recuperar datos como la referencia
     cargar(id);
@@ -183,7 +183,7 @@ int Factura::guardar() {
         return 0;
     } catch (...) {
         _depura("Factura::guardar() se produjo un error guardando la factura", 0);
-        m_companyact->rollback();
+        empresaBase()->rollback();
         throw  -1;
     } // end try
 }
@@ -194,7 +194,7 @@ int Factura::guardar() {
     company * Factura::_company() {
     _depura("Factura::_company", 0);
     _depura("END Factura::_company", 0);
-        return m_companyact;
+        return empresaBase();
     }
 
 /** Devuelve la serie de factura que tiene establecida la factura

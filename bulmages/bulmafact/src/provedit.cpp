@@ -58,9 +58,8 @@ ProveedorView::ProveedorView(company *comp, QWidget *parent)
 
 
         setupUi(this);
-        m_companyact = comp;
 
-        m_provproveedor->setcompany(m_companyact);
+        m_provproveedor->setcompany(empresaBase());
         m_provproveedor->setProvincia("");
 
         /// Desabilitamos los tabs que aun no se usan
@@ -69,23 +68,23 @@ ProveedorView::ProveedorView(company *comp, QWidget *parent)
         masdf->setTabEnabled(7, FALSE);
 
         /// Cargamos el listado de pedidos del proveedor y dejamos presentable.
-        m_listpedidosprov->setcompany(m_companyact);
+        m_listpedidosprov->setEmpresaBase(empresaBase());
         m_listpedidosprov->hideBusqueda();
 
-        m_albaranesprov->setcompany(m_companyact);
+        m_albaranesprov->setEmpresaBase(empresaBase());
         m_albaranesprov->hideBusqueda();
 
-        m_listfacturasprov->setcompany(m_companyact);
+        m_listfacturasprov->setEmpresaBase(empresaBase());
         m_listfacturasprov->hideBusqueda();
 
-        m_listpagosprov->setcompany(m_companyact);
+        m_listpagosprov->setEmpresaBase(empresaBase());
         m_listpagosprov->hideBusqueda();
 
-    mui_forma_pago->setcompany(m_companyact);
+        mui_forma_pago->setEmpresaBase(empresaBase());
         mui_forma_pago->setidforma_pago("0");
 
 
-        m_companyact->meteWindow(windowTitle(), this, FALSE);
+        empresaBase()->meteWindow(windowTitle(), this, FALSE);
         dialogChanges_cargaInicial();
     } catch(...) {
         mensajeInfo(tr("Error al crear el proveedor"));
@@ -113,7 +112,7 @@ int ProveedorView::cargar(QString idprov) {
     _depura("ProveedorView::cargar", 0, idprov);
     try {
         QString query = "SELECT * FROM proveedor WHERE idproveedor = " + idprov;
-        cursor2 * cur = m_companyact->cargacursor(query);
+        cursor2 * cur = empresaBase()->cargacursor(query);
         if (!cur->eof()) {
             DBload(cur);
         } // end if
@@ -158,7 +157,7 @@ int ProveedorView::cargar(QString idprov) {
 
         /// Cambiamos el titulo de la ventana para que salga reflejado donde toca.
         setWindowTitle(tr("Proveedor") + " " + DBvalue("nomproveedor"));
-        m_companyact->meteWindow(windowTitle(), this);
+        empresaBase()->meteWindow(windowTitle(), this);
     } catch(...) {
         return -1;
     } // end try
@@ -233,16 +232,16 @@ int ProveedorView::guardar() {
     setDBvalue("regimenfiscalproveedor", mui_regimenfiscalproveedor->currentText());
     setDBvalue("irpfproveedor", mui_irpfproveedor->text());
     QString id;
-    m_companyact->begin();
+    empresaBase()->begin();
     try {
         DBRecord::guardar();
-        m_companyact->commit();
+        empresaBase()->commit();
         dialogChanges_cargaInicial();
         _depura("END ProveedorView::guardar", 0);
         return 0;
     } catch (...) {
         _depura("error al guardar el proveedor", 1);
-        m_companyact->rollback();
+        empresaBase()->rollback();
         return -1;
     }
 }

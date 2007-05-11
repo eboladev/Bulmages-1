@@ -41,21 +41,20 @@
 
 
 RutaComercialIncView::RutaComercialIncView(company *comp, QWidget *parent)
-        : QWidget(parent) {
+        : FichaBf(comp, parent) {
     _depura("RutaComercialIncView::RutaComercialIncView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
-    m_companyact = comp;
-    mui_rutacomercial->setcompany(comp);
-    mui_incidenciacomercial->setcompany(comp);
-    m_companyact->meteWindow(windowTitle(), this);
+    mui_rutacomercial->setEmpresaBase(comp);
+    mui_incidenciacomercial->setEmpresaBase(comp);
+    empresaBase()->meteWindow(windowTitle(), this);
     _depura("END RutaComercialIncView::RutaComercialIncView", 0);
 }
 
 
 RutaComercialIncView::~RutaComercialIncView() {
     _depura("RutaComercialIncView::~RutaComercialIncView", 0);
-    m_companyact->sacaWindow(this);
+    empresaBase()->sacaWindow(this);
     _depura("END RutaComercialIncView::~RutaComercialIncView", 0);
 }
 

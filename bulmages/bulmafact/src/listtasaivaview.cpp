@@ -40,14 +40,13 @@
 
 
 ListTasaIVAView::ListTasaIVAView(company *comp, QWidget *parent)
-        : Ficha(parent) {
+        : FichaBf(comp, parent) {
     _depura("ListTasaIVAView::ListTasaIVAView", 1);
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
-    companyact = comp;
-    mui_listado->setcompany(comp);
+    mui_listado->setEmpresaBase(comp);
     mui_listado->cargar();
-    companyact->meteWindow(windowTitle(), this);
+    empresaBase()->meteWindow(windowTitle(), this);
     _depura("END ListTasaIVAView::ListTasaIVAView", 1);
 }
 
@@ -68,13 +67,6 @@ ListTasaIVAView::~ListTasaIVAView() {
 }
 
 
-int ListTasaIVAView::sacaWindow() {
-    _depura("ListTasaIVAView::sacaWindow", 0);
-    companyact->sacaWindow(this);
-    _depura("END ListTasaIVAView::sacaWindow", 0);
-    return 0;
-}
-
 /// ===================================== SUBFORMULARIO ===============================================
 ListTasaIVASubForm::ListTasaIVASubForm(QWidget *parent) : SubForm2Bf(parent) {
     _depura("ListTasaIVASubForm::ListTasaIVASubForm", 0);
@@ -92,7 +84,7 @@ ListTasaIVASubForm::ListTasaIVASubForm(QWidget *parent) : SubForm2Bf(parent) {
 
 void ListTasaIVASubForm::cargar() {
         _depura("ListTasaIVASubForm::cargar", 0);
-        cursor2 * cur= companyact()->cargacursor("SELECT * FROM tasa_iva LEFT JOIN tipo_iva on tasa_iva.idtipo_iva = tipo_iva.idtipo_iva");
+        cursor2 * cur= empresaBase()->cargacursor("SELECT * FROM tasa_iva LEFT JOIN tipo_iva on tasa_iva.idtipo_iva = tipo_iva.idtipo_iva");
         SubForm3::cargar(cur);
         delete cur;
         _depura("END ListTasaIVASubForm::cargar", 0);

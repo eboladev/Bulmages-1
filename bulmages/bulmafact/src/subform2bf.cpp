@@ -65,7 +65,7 @@ void SubForm2Bf::on_mui_list_pressedAsterisk(int row, int col) {
     if (camp->nomcampo() != "codigocompletoarticulo")
         return;
     _depura("ListCompArticuloView::searchArticle", 0);
-    ArticuloList *artlist = new ArticuloList((company *) companyact(), NULL, 0, ArticuloList::SelectMode);
+    ArticuloList *artlist = new ArticuloList((company *) empresaBase(), NULL, 0, ArticuloList::SelectMode);
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
     this->setEnabled(false);
     artlist->show();
@@ -74,7 +74,7 @@ void SubForm2Bf::on_mui_list_pressedAsterisk(int row, int col) {
     this->setEnabled(true);
     QString idArticle = artlist->idArticle();
     delete artlist;
-    cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE idarticulo = " + idArticle);
+    cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM articulo WHERE idarticulo = " + idArticle);
     if (!cur->eof()) {
         rec->setDBvalue("idarticulo", idArticle);
         rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
@@ -102,7 +102,7 @@ void SubForm2Bf::on_mui_list_pressedMinus(int row, int col) {
 
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row, col);
-    cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE idarticulo = " + rec->DBvalue("idarticulo"));
+    cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM articulo WHERE idarticulo = " + rec->DBvalue("idarticulo"));
     if (!cur->eof()) {
         rec->setDBvalue(camp->nomcampo(), cur->valor("obserarticulo"));
         /// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
@@ -133,14 +133,14 @@ void SubForm2Bf::on_mui_list_editFinished(int row, int col, int key) {
     } // end if
 
     if (camp->nomcampo() == "desctipo_iva") {
-        cursor2 *cur = companyact()->cargacursor("SELECT * FROM tipo_iva WHERE desctipo_iva = '"+camp->text()+"'");
+        cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM tipo_iva WHERE desctipo_iva = '"+camp->text()+"'");
         if (!cur->eof()) {
             rec->setDBvalue("idtipo_iva", cur->valor("idtipo_iva"));
         } // end if
     } // end if
 
     if (camp->nomcampo() == "codigocompletoarticulo") {
-        cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE codigocompletoarticulo = '" + camp->text() + "'");
+        cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM articulo WHERE codigocompletoarticulo = '" + camp->text() + "'");
         if (!cur->eof()) {
             rec->setDBvalue("idarticulo", cur->valor("idarticulo"));
             rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
@@ -158,7 +158,7 @@ void SubForm2Bf::on_mui_list_editFinished(int row, int col, int key) {
                 rec->setDBvalue("pvp"+m_tablename, cur->valor("pvparticulo"));
             } // end if
         } // end if
-        cursor2 *cur1 = companyact()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor("idtipo_iva") + " ORDER BY fechatasa_iva LIMIT 1");
+        cursor2 *cur1 = empresaBase()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor("idtipo_iva") + " ORDER BY fechatasa_iva LIMIT 1");
         if (!cur->eof() ) {
             if(m_tablename == "lpresupuesto"
                     || m_tablename == "lpedidocliente"
@@ -169,7 +169,7 @@ void SubForm2Bf::on_mui_list_editFinished(int row, int col, int key) {
                     || m_tablename == "lfactura") {
                 rec->setDBvalue("iva"+m_tablename, cur1->valor("porcentasa_iva"));
                 /// Calculamos el recargo equivalente.
-                cursor2 *cur2 = companyact()->cargacursor("SELECT recargoeqcliente FROM cliente WHERE idcliente="+mdb_idcliente);
+                cursor2 *cur2 = empresaBase()->cargacursor("SELECT recargoeqcliente FROM cliente WHERE idcliente="+mdb_idcliente);
                 if (!cur2->eof()) {
                     if (cur2->valor("recargoeqcliente") == "t") {
                         rec->setDBvalue("reqeq"+m_tablename, cur1->valor("porcentretasa_iva"));
@@ -179,7 +179,7 @@ void SubForm2Bf::on_mui_list_editFinished(int row, int col, int key) {
                 } // end if
                 delete cur2;
 
-                cur2 = companyact()->cargacursor("SELECT recargoeqproveedor FROM proveedor WHERE idproveedor="+mdb_idproveedor);
+                cur2 = empresaBase()->cargacursor("SELECT recargoeqproveedor FROM proveedor WHERE idproveedor="+mdb_idproveedor);
                 if (!cur2->eof()) {
                     if (cur2->valor("recargoeqproveedor") == "t") {
                         rec->setDBvalue("reqeq"+m_tablename, cur1->valor("porcentretasa_iva"));
@@ -255,21 +255,22 @@ void SubForm2Bf::setIdCliente(QString id) {
 
     mdb_idcliente = id;
 
+
     /// Si el idcliente no existe salimos.
     if (id == "") {
         _depura("END SubForm2Bf::setIdCliente", 0, "idcliente invalido");
         return;
     } // end if
 
-    cursor2 *curcliente = companyact()->cargacursor("SELECT recargoeqcliente, regimenfiscalcliente FROM cliente WHERE idcliente = " + mdb_idcliente);
+    cursor2 *curcliente = empresaBase()->cargacursor("SELECT recargoeqcliente, regimenfiscalcliente FROM cliente WHERE idcliente = " + mdb_idcliente);
 
     if (!curcliente->eof()) {
 
         /// Cuando se cambia el cliente se deben recalcular las lineas por si hay Recargo Equivalente
         for (int i = 0; i < rowCount() - 1; i++) {
             SDBRecord *rec = lineaat(i);
-            cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE idarticulo = " + rec->DBvalue("idarticulo") );
-            cursor2 *cur1 = companyact()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor("idtipo_iva") + " ORDER BY fechatasa_iva LIMIT 1");
+            cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM articulo WHERE idarticulo = " + rec->DBvalue("idarticulo") );
+            cursor2 *cur1 = empresaBase()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor("idtipo_iva") + " ORDER BY fechatasa_iva LIMIT 1");
             if (!cur->eof()) {
 
                 if (curcliente->valor("regimenfiscalcliente") == "Normal") {
@@ -301,14 +302,14 @@ void SubForm2Bf::setIdProveedor(QString id) {
         rec->setDBvalue("reqeq"+m_tablename, "0");
     } // end for
 
-    cursor2 *curproveedor = companyact()->cargacursor("SELECT recargoeqproveedor, regimenfiscalproveedor FROM proveedor WHERE idproveedor="+mdb_idproveedor);
+    cursor2 *curproveedor = empresaBase()->cargacursor("SELECT recargoeqproveedor, regimenfiscalproveedor FROM proveedor WHERE idproveedor="+mdb_idproveedor);
     if (! curproveedor->eof()) {
 
         /// Cuando se cambia el cliente se deben recalcular las lineas por si hay Recargo Equivalente
         for (int i = 0; i < rowCount() - 1; i++) {
             SDBRecord *rec = lineaat(i);
-            cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE idarticulo = " + rec->DBvalue("idarticulo") );
-            cursor2 *cur1 = companyact()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor("idtipo_iva") + " ORDER BY fechatasa_iva LIMIT 1");
+            cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM articulo WHERE idarticulo = " + rec->DBvalue("idarticulo") );
+            cursor2 *cur1 = empresaBase()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor("idtipo_iva") + " ORDER BY fechatasa_iva LIMIT 1");
             if (!cur->eof() ) {
                 if (curproveedor->valor("regimenfiscalproveedor") == "Normal") {
                     rec->setDBvalue("iva"+m_tablename, cur1->valor("porcentasa_iva"));
@@ -326,10 +327,10 @@ void SubForm2Bf::setIdProveedor(QString id) {
     _depura("END SubForm2Bf::setIdProveedor", 0);
 }
 
-void SubForm2Bf::setcompany(postgresiface2 *c) {
+void SubForm2Bf::setEmpresaBase(EmpresaBase *c) {
     _depura("SubForm2Bf::setcompany", 0);
-        SubForm3::setcompany(c);
-        m_delegate->setcompany(c);
+        SubForm3::setEmpresaBase(c);
+        m_delegate->setEmpresaBase(c);
     _depura("END SubForm2Bf::setcompany", 0);
 }
 
@@ -343,7 +344,7 @@ void SubForm2Bf::setDelete(bool f) {
 /// ===============================================================
 ///  Tratamientos del Item Delegate
 /// ===============================================================
-QSubForm2BfDelegate::QSubForm2BfDelegate(QObject *parent = 0) : QItemDelegate(parent) {
+QSubForm2BfDelegate::QSubForm2BfDelegate(QObject *parent = 0) : QItemDelegate(parent), PEmpresaBase() {
     _depura("QSubForm2BfDelegate::QSubForm2BfDelegate", 0);
     m_subform = (SubForm2Bf *) parent;
     installEventFilter(this);
@@ -382,11 +383,11 @@ QWidget *QSubForm2BfDelegate::createEditor(QWidget *parent, const QStyleOptionVi
 
     } else if (linea->nomcampo() == "codigocompletoarticulo") {
         BusquedaArticuloDelegate *editor = new BusquedaArticuloDelegate(parent);
-        editor->setcompany((company *)m_subform->companyact());
+        editor->setEmpresaBase((company *)m_subform->empresaBase());
         return editor;
     } else if (linea->nomcampo() == "desctipo_iva") {
         BusquedaTipoIVADelegate *editor = new BusquedaTipoIVADelegate(parent);
-        editor->setcompany((company *)m_subform->companyact());
+        editor->setEmpresaBase((company *)m_subform->empresaBase());
         return editor;
     } else  {
         return QItemDelegate::createEditor(parent, option, index);
@@ -509,14 +510,4 @@ bool QSubForm2BfDelegate::eventFilter(QObject *obj, QEvent *event) {
     return QItemDelegate::eventFilter(obj, event);
 }
 
-void QSubForm2BfDelegate::setcompany(postgresiface2 *c) {
-    _depura("QSubForm2BfDelegate::setcompany", 0);
-        m_companyact = c;
-    _depura("END QSubForm2BfDelegate::setcompany", 0);
-}
 
-postgresiface2 * QSubForm2BfDelegate::companyact() {
-    _depura("QSubForm2BfDelegate::companyact", 0);
-    _depura("END QSubForm2BfDelegate::companyact", 0);
-        return m_companyact;
-}

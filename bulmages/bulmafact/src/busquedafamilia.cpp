@@ -142,7 +142,7 @@ void BusquedaFamilia::on_m_codigocompletofamilia_textChanged(const QString &val)
     _depura("END BusquedaFamilia::on_m_codigocompletofamilia_textChanged", 0);
 }
 
-void BusquedaFamilia::setcompany(company *comp) {
+void BusquedaFamilia::setEmpresaBase(company *comp) {
     _depura("BusquedaFamilia::setcompany", 0);
     companyact = comp;
     _depura("END BusquedaFamilia::setcompany", 0);

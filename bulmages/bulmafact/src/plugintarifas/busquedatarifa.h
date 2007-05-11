@@ -25,22 +25,18 @@
 
 #include "company.h"
 #include "postgresiface2.h"
+#include "blwidget.h"
 
-
-class BusquedaTarifa : public QComboBox {
+class BusquedaTarifa : public QComboBox, public PEmpresaBase {
     Q_OBJECT
 
 private:
-    company *companyact;
     cursor2 *m_cursorcombo;
     QString mdb_idtarifa;
 
 public:
     BusquedaTarifa(QWidget *parent = 0);
     ~BusquedaTarifa();
-    void setcompany(company *comp) {
-        companyact = comp;
-    };
     virtual void setidtarifa(QString idtarifa);
     QString idtarifa() {
         return mdb_idtarifa;

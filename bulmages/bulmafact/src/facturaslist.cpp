@@ -38,11 +38,10 @@
     Inicializando la clase con este constructor precisa que sea establecido el company con setcompany.
 */
 FacturasList::FacturasList(QWidget *parent, Qt::WFlags flag, edmode editmodo)
-        : Ficha(parent, flag) {
+        : FichaBf(NULL, parent, flag) {
     _depura("FacturasList::FacturasList", 0);
     setupUi(this);
     iniciaForm();
-    m_companyact = NULL;
     m_modo = editmodo;
     mdb_idfactura = "";
     if (m_modo == EditMode) {
@@ -55,14 +54,13 @@ FacturasList::FacturasList(QWidget *parent, Qt::WFlags flag, edmode editmodo)
 /** Inicializa todos los componentes y prepara la ventana para funcionar.
 */
 FacturasList::FacturasList(company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo)
-        : Ficha(parent, flag) {
+        : FichaBf(comp, parent, flag) {
     _depura("FacturasList::FacturasList", 0);
     setupUi(this);
     iniciaForm();
-    m_companyact = comp;
-    m_cliente->setcompany(m_companyact);
-    m_articulo->setcompany(m_companyact);
-    mui_list->setcompany(m_companyact);
+    m_cliente->setEmpresaBase(empresaBase());
+    m_articulo->setEmpresaBase(empresaBase());
+    mui_list->setEmpresaBase(empresaBase());
     presenta();
     m_modo = editmodo;
     mdb_idfactura = "";
@@ -91,7 +89,7 @@ void FacturasList::iniciaForm() {
 */
 FacturasList::~FacturasList() {
     _depura("FacturasList::~FacturasList", 0);
-    m_companyact->sacaWindow(this);
+    empresaBase()->sacaWindow(this);
     _depura("END FacturasList::~FacturasList", 0);
 }
 
@@ -104,7 +102,7 @@ void FacturasList::presenta() {
     mui_list->cargar("SELECT *, totalfactura AS total, bimpfactura AS base, impfactura AS impuestos FROM factura LEFT JOIN cliente ON factura.idcliente = cliente.idcliente LEFT JOIN almacen ON factura.idalmacen = almacen.idalmacen WHERE 1 = 1 " + generaFiltro());
 
     /// Hacemos el calculo del total.
-    cursor2 *cur = m_companyact->cargacursor("SELECT SUM(totalfactura) AS total, SUM(bimpfactura) AS base, SUM(impfactura) AS impuestos FROM factura LEFT JOIN cliente ON factura.idcliente = cliente.idcliente LEFT JOIN almacen ON factura.idalmacen = almacen.idalmacen WHERE 1 = 1 " + generaFiltro());
+    cursor2 *cur = empresaBase()->cargacursor("SELECT SUM(totalfactura) AS total, SUM(bimpfactura) AS base, SUM(impfactura) AS impuestos FROM factura LEFT JOIN cliente ON factura.idcliente = cliente.idcliente LEFT JOIN almacen ON factura.idalmacen = almacen.idalmacen WHERE 1 = 1 " + generaFiltro());
     mui_totalbimponible->setText(cur->valor("base"));
     mui_totalimpuestos->setText(cur->valor("impuestos"));
     mui_totalfacturas->setText(cur->valor("total"));
@@ -162,12 +160,12 @@ void FacturasList::editar(int row) {
     _depura("FacturasList::editar", 0);
     mdb_idfactura = mui_list->DBvalue(QString("idfactura"), row);
     if (m_modo == 0) {
-        FacturaView *prov = m_companyact->newFacturaView();
+        FacturaView *prov = empresaBase()->newFacturaView();
         if (prov->cargar(mdb_idfactura)) {
             delete prov;
             return;
         } // end if
-        m_companyact->m_pWorkspace->addWindow(prov);
+        empresaBase()->m_pWorkspace->addWindow(prov);
         prov->show();
     } else {
         emit(selected(mdb_idfactura));
@@ -216,7 +214,7 @@ void FacturasList::on_mui_borrar_clicked() {
     try {
         mdb_idfactura = mui_list->DBvalue(QString("idfactura"));
         if (m_modo == 0) {
-            FacturaView *fv = m_companyact->newFacturaView();
+            FacturaView *fv = empresaBase()->newFacturaView();
             if (fv->cargar(mdb_idfactura))
                 throw -1;
             fv->on_mui_borrar_clicked();

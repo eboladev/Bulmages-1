@@ -42,7 +42,7 @@
 #include "dbrecord.h"
 
 
-CatalogoQToolButton::CatalogoQToolButton(ArticuloList *art , QWidget *parent) : QToolButton(parent) {
+CatalogoQToolButton::CatalogoQToolButton(ArticuloList *art , QWidget *parent) : QToolButton(parent), PEmpresaBase() {
     _depura("CatalogoQToolButton::CatalogoQToolButton", 0);
     m_articuloList = art;
     setBoton();
@@ -67,7 +67,7 @@ void CatalogoQToolButton::setBoton() {
 void CatalogoQToolButton::click() {
     _depura("CatalogoQToolButton::click", 0);
 
-    m_companyact = m_articuloList->getcompany();
+    setEmpresaBase(m_articuloList->empresaBase());
 
     QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "articulos.rml";
     QString archivod = confpr->valor(CONF_DIR_USER) + "articulos.rml";
@@ -120,7 +120,7 @@ QString CatalogoQToolButton::detalleArticulos() {
     QString texto = "";
 
 
-    cursor2 *cur = m_companyact->cargacursor(m_articuloList->formaQuery());
+    cursor2 *cur = empresaBase()->cargacursor(m_articuloList->formaQuery());
     while (!cur->eof()) {
         texto += "<blockTable style=\"tabla1\">\n";
         texto += "<tr>\n";

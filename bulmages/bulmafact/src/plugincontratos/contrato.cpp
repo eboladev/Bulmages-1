@@ -31,7 +31,6 @@
 */
 Contrato::Contrato(company *comp, QWidget *parent) : FichaBf(comp, parent) {
     _depura("Contrato::Contrato", 0);
-    m_companyact = comp;
     setDBTableName("contrato");
     setDBCampoId("idcontrato");
     addDBCampo("idcontrato",  DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Contrato", "Id contrato"));
@@ -64,18 +63,18 @@ Contrato::~Contrato() {
 int Contrato::borrar() {
     _depura("Contrato::borrar", 0);
     if (DBvalue("idcontrato") != "") {
-        m_companyact->begin();
+        empresaBase()->begin();
         int error = m_listalineas->borrar();
         if (error) {
-            m_companyact->rollback();
+            empresaBase()->rollback();
             return -1;
         } // end if
         error = DBRecord::borrar();
         if (error) {
-            m_companyact->rollback();
+            empresaBase()->rollback();
             return -1;
         } // end if
-        m_companyact->commit();
+        empresaBase()->commit();
     } // end if
     _depura("END Contrato::borrar", 0);
     return 0;
@@ -123,7 +122,7 @@ int Contrato::cargar(QString idbudget) {
     _depura("Contrato::cargar", 0);
     inicialize();
     QString query = "SELECT * FROM contrato WHERE idcontrato = " + idbudget;
-    cursor2 * cur= m_companyact->cargacursor(query);
+    cursor2 * cur= empresaBase()->cargacursor(query);
     if (!cur->eof()) {
         DBload(cur);
     } // end if
@@ -149,12 +148,12 @@ int Contrato::guardar() {
     try {
         /// Calculamos el proximo numero de contrato para poder insertarlo en caso de que este sea nulo.
         QString id;
-        m_companyact->begin();
+        empresaBase()->begin();
         DBsave(id);
         setDBvalue("idcontrato", id);
 	m_listalineas->setColumnValue("idcontrato", id);
 	m_listalineas->guardar();
-        m_companyact->commit();
+        empresaBase()->commit();
 
 	/// Hacemos una carga para recuperar datos como la referencia
 	cargar(id);
@@ -163,7 +162,7 @@ int Contrato::guardar() {
         return 0;
     } catch (...) {
         _depura("Contrato::guardar() se produjo un error guardando la contrato", 0);
-        m_companyact->rollback();
+        empresaBase()->rollback();
         throw  -1;
     } // end try
 }
@@ -174,7 +173,7 @@ int Contrato::guardar() {
     company * Contrato::_company() {
 	_depura("Contrato::_company", 0);
 	_depura("END Contrato::_company", 0);
-        return m_companyact;
+        return empresaBase();
     }
 
 

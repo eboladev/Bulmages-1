@@ -34,10 +34,9 @@
 #include "dialogchanges.h"
 
 
-class company;
 
 
-class IncidenciaComercialView : public QWidget, private Ui_IncidenciaComercialBase, public IncidenciaComercial, public dialogChanges {
+class IncidenciaComercialView : public IncidenciaComercial, private Ui_IncidenciaComercialBase {
     Q_OBJECT
 
 public:
@@ -47,47 +46,9 @@ public:
     void closeEvent(QCloseEvent *);
     virtual void pintar() {}
     ;
-    void setcompany(company *comp) {
-        _depura("IncidenciaComercialView::setcompany", 0);
-        IncidenciaComercial::setcompany(comp);
-        mui_idcliente->setcompany(comp);
-        mui_idtrabajador->setcompany(comp);
-        mui_idtrabajador->setidtrabajador("0");
-        _depura("END IncidenciaComercialView::setcompany", 0);
-
-    };
-    virtual int guardar() {
-        _depura("IncidenciaComercialView::guardar", 0);
-        if (mui_fechaincidenciacomercial->text() == "")
-            return 0;
-        setDBvalue("fechaincidenciacomercial", mui_fechaincidenciacomercial->text());
-        setDBvalue("idcliente", mui_idcliente->idcliente());
-        setDBvalue("comentincidenciacomercial", mui_comentincidenciacomercial->toPlainText());
-        setDBvalue("idtrabajador", mui_idtrabajador->idtrabajador());
-        setDBvalue("estadoincidenciacomercial", mui_estadoincidenciacomercial->estado());
-        setDBvalue("horaincidenciacomercial", mui_horaincidenciacomercial->text());
-        setDBvalue("refincidenciacomercial", mui_refincidenciacomercial->text());
-        int err = IncidenciaComercial::guardar();
-        _depura("END IncidenciaComercialView::guardar", 0);
-        return err;
-    };
-
-public slots:
-    virtual int cargar(QString id) {
-        _depura("IncidenciaComercialView::cargar", 0);
-        int err = IncidenciaComercial::cargar(id);
-        setWindowTitle(tr("Incidencia comercial") + " " + DBvalue("idincidenciacomercial"));
-        mui_fechaincidenciacomercial->setText(DBvalue("fechaincidenciacomercial"));
-        mui_idcliente->setidcliente(DBvalue("idcliente"));
-        mui_comentincidenciacomercial->setPlainText(DBvalue("comentincidenciacomercial"));
-        mui_idtrabajador->setidtrabajador(DBvalue("idtrabajador"));
-        mui_estadoincidenciacomercial->setestado(DBvalue("estadoincidenciacomercial"));
-        mui_horaincidenciacomercial->setText(DBvalue("horaincidenciacomercial"));
-        mui_refincidenciacomercial->setText(DBvalue("refincidenciacomercial"));
-        dialogChanges_cargaInicial();
-        _depura("IncidenciaComercialView::cargar", 0);
-        return err;
-    };
+    void setEmpresaBase(company *comp);
+    virtual int guardar();
+    virtual int cargar(QString id);
 };
 
 #endif

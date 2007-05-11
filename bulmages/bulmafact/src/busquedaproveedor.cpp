@@ -30,10 +30,9 @@
     si han sido creados o no.
 */
 BusquedaProveedor::BusquedaProveedor(QWidget *parent)
-        : QWidget(parent) {
+        : BLWidget(parent) {
     _depura("BusquedaProveedor::BusquedaProveedor", 0);
     setupUi(this);
-    companyact = NULL;
     mdb_idproveedor = "";
     mdb_nomproveedor = "";
     mdb_cifproveedor = "";
@@ -74,7 +73,7 @@ void BusquedaProveedor::setidproveedor(QString val) {
     _depura("BusquedaProveedor::setidproveedor", 0);
     mdb_idproveedor = val;
     QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor = '" + mdb_idproveedor + "'";
-    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
     if (!cur->eof()) {
         mdb_cifproveedor = cur->valor("cifproveedor");
         mdb_nomproveedor = cur->valor("nomproveedor");
@@ -99,7 +98,7 @@ void BusquedaProveedor::setcifproveedor(QString val) {
     _depura("BusquedaProveedor::setcifproveedor", 0);
     mdb_cifproveedor = val;
     QString SQLQuery = "SELECT * FROM proveedor WHERE cifproveedor = '" + mdb_cifproveedor + "'";
-    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
 
     if (!cur->eof()) {
         mdb_idproveedor = cur->valor("idproveedor");
@@ -129,7 +128,7 @@ void BusquedaProveedor::on_mui_buscar_clicked() {
     QDialog *diag = new QDialog(0);
     diag->setModal(true);
 
-    ProveedorList *providers = new ProveedorList(companyact, diag, 0, ProveedorList::SelectMode);
+    ProveedorList *providers = new ProveedorList((company *) empresaBase(), diag, 0, ProveedorList::SelectMode);
     connect(providers, SIGNAL(selected(QString)), diag, SLOT(accept()));
 
     /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
@@ -174,7 +173,7 @@ void BusquedaProveedor::on_m_cifproveedor_textChanged(const QString &val) {
 
     bool encontrado = FALSE;
     QString SQLQuery = "SELECT * FROM proveedor WHERE cifproveedor = '" + val + "'";
-    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
     if (!cur->eof()) {
         mdb_idproveedor = cur->valor("idproveedor");
         mdb_nomproveedor = cur->valor("nomproveedor");
@@ -186,7 +185,7 @@ void BusquedaProveedor::on_m_cifproveedor_textChanged(const QString &val) {
 
     if (!encontrado) {
         QString SQLQuery = "SELECT * FROM proveedor WHERE codproveedor = '" + val + "'";
-        cur = companyact->cargacursor(SQLQuery);
+        cur = empresaBase()->cargacursor(SQLQuery);
         if(!cur->eof()) {
             mdb_idproveedor = cur->valor("idproveedor");
             mdb_nomproveedor = cur->valor("nomproveedor");
@@ -199,7 +198,7 @@ void BusquedaProveedor::on_m_cifproveedor_textChanged(const QString &val) {
 
     if (!encontrado) {
         QString SQLQuery = "SELECT * FROM proveedor WHERE upper(nomproveedor) LIKE upper('%" + val + "%')";
-        cur = companyact->cargacursor(SQLQuery);
+        cur = empresaBase()->cargacursor(SQLQuery);
         if(cur->numregistros() == 1) {
             mdb_idproveedor = cur->valor("idproveedor");
             mdb_nomproveedor = cur->valor("nomproveedor");
@@ -221,13 +220,6 @@ void BusquedaProveedor::on_m_cifproveedor_textChanged(const QString &val) {
     _depura("END BusquedaProveedor::on_m_cifproveedor_textChanged", 0);
 }
 
-/** Inicializa la clase con el puntero a la empresa
-**/
-void BusquedaProveedor::setcompany(company *comp) {
-    _depura("BusquedaProveedor::setcompany", 0);
-    companyact = comp;
-    _depura("END BusquedaProveedor::setcompany", 0);
-}
 
 /** Devuelve el cif del proveedor seleccionado, si no hay ningun proveedor seleccionado devuelve un string vacio
 **/

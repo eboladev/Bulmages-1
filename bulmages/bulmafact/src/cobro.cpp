@@ -28,9 +28,8 @@
 
 /** Inicializa el DBRecord para que trabaje con la tabla cobro.
 */
-Cobro::Cobro(company *comp) : DBRecord(comp) {
+Cobro::Cobro(company *comp, QWidget *parent) : FichaBf(comp, parent) {
     _depura("Cobro::Cobro", 0);
-    companyact = comp;
     setDBTableName("cobro");
     setDBCampoId("idcobro");
     addDBCampo("idcobro", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Cobro", "ID cobro"));
@@ -82,10 +81,10 @@ int Cobro::guardar() {
     _depura("Cobro::guardar", 0);
     try {
         QString id;
-        companyact->begin();
+        empresaBase()->begin();
         DBsave(id);
         setidcobro(id);
-        companyact->commit();
+        empresaBase()->commit();
 
         /// Hacemos una carga para que se actualizen datos como la referencia.
         cargar(id);
@@ -94,7 +93,7 @@ int Cobro::guardar() {
         return 0;
     } catch (...) {
         mensajeInfo("Error inesperado al guardar");
-        companyact->rollback();
+        empresaBase()->rollback();
         return -1;
     } // end try
 }

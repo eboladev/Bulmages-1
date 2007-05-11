@@ -63,7 +63,7 @@ void ListLinPedidoProveedorView::on_mui_list_editFinished(int row, int col, int 
     } // end if
 
     if (camp->nomcampo() == "codigocompletoarticulo") {
-        cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE codigocompletoarticulo='" + camp->text() + "'");
+        cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM articulo WHERE codigocompletoarticulo='" + camp->text() + "'");
         if (!cur->eof() ) {
             rec->setDBvalue("idarticulo", cur->valor("idarticulo"));
             rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
@@ -74,7 +74,7 @@ void ListLinPedidoProveedorView::on_mui_list_editFinished(int row, int col, int 
             rec->setDBvalue("pvplpedidoproveedor", cur->valor("pvparticulo"));
         } // end if
 
-        cursor2 *cur1 = companyact()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva=" + cur->valor("idtipo_iva") + "ORDER BY fechatasa_iva LIMIT 1");
+        cursor2 *cur1 = empresaBase()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva=" + cur->valor("idtipo_iva") + "ORDER BY fechatasa_iva LIMIT 1");
         if (!cur->eof()) {
 	    rec->setDBvalue("ivalpedidoproveedor", cur1->valor("porcentasa_iva"));
         } // end if
@@ -88,7 +88,7 @@ void ListLinPedidoProveedorView::on_mui_list_editFinished(int row, int col, int 
 void ListLinPedidoProveedorView::cargar(QString idpedidoproveedor) {
         _depura("ListLinPedidoProveedorView::cargar\n", 0);
         mdb_idpedidoproveedor = idpedidoproveedor;
-        cursor2 * cur= companyact()->cargacursor("SELECT * FROM lpedidoproveedor LEFT JOIN articulo ON lpedidoproveedor.idarticulo = articulo.idarticulo WHERE idpedidoproveedor=" + mdb_idpedidoproveedor + " ORDER BY ordenlpedidoproveedor");
+        cursor2 * cur= empresaBase()->cargacursor("SELECT * FROM lpedidoproveedor LEFT JOIN articulo ON lpedidoproveedor.idarticulo = articulo.idarticulo WHERE idpedidoproveedor=" + mdb_idpedidoproveedor + " ORDER BY ordenlpedidoproveedor");
         SubForm3::cargar(cur);
         delete cur;
 }

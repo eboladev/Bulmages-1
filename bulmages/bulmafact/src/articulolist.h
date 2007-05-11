@@ -49,7 +49,7 @@ public:
 */
 /// \TODO: Deberia crearse la clase Listado y hacer que esta clase derive de Listado en lugar
 /// derivar de Ficha.
-class ArticuloList : public Ficha, public Ui_ArticuloListBase, public pgimportfiles {
+class ArticuloList : public FichaBf, public Ui_ArticuloListBase, public pgimportfiles {
     Q_OBJECT
 
 private:
@@ -59,17 +59,13 @@ private:
     QString mdb_nomarticulo;
     /// El codigo completo del articulo seleccionado si estamos en modo seleccion.
     QString mdb_codigocompletoarticulo;
-    /// El indicador del modo (Seleccion o Edicion). Esta funcionalidad deberia pasarse a la clase Listado.
-    company *m_companyact;
+
 
     void inicializar();
 
 public:
     ArticuloList(company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
     virtual ~ArticuloList();
-    company *getcompany() {
-        return m_companyact;
-    };
     QString formaQuery();
     QString idArticle() {
         return mdb_idarticulo;
@@ -109,7 +105,7 @@ public slots:
     virtual void on_mui_exportar_clicked();
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_crear_clicked() {
-        m_companyact->s_newArticulo();
+        empresaBase()->s_newArticulo();
     };
     virtual void on_mui_imprimir_clicked() {
         s_imprimir1();

@@ -69,7 +69,7 @@ FamiliasView::FamiliasView(company *comp, QWidget *parent, bool modoConsulta)
     } else {
         setModoEdicion();
         setAttribute(Qt::WA_DeleteOnClose);
-        m_companyact->meteWindow(windowTitle(), this);
+        empresaBase()->meteWindow(windowTitle(), this);
     } // end if
     pintar();
     _depura("END FamiliasView::FamiliasView", 0);
@@ -96,7 +96,7 @@ void FamiliasView::pintar() {
     } // end while
 
 
-    cursoraux1 = m_companyact->cargacursor("SELECT * FROM familia WHERE padrefamilia IS NULL ORDER BY idfamilia");
+    cursoraux1 = empresaBase()->cargacursor("SELECT * FROM familia WHERE padrefamilia IS NULL ORDER BY idfamilia");
     while (!cursoraux1->eof()) {
         padre = cursoraux1->valor("padrefamilia").toInt();
         idfamilia = cursoraux1->valor("idfamilia").toInt();
@@ -112,7 +112,7 @@ void FamiliasView::pintar() {
         cursoraux1->siguienteregistro();
     } // end while
     delete cursoraux1;
-    cursoraux2 = m_companyact->cargacursor("SELECT * FROM familia WHERE padrefamilia IS NOT NULL ORDER BY idfamilia");
+    cursoraux2 = empresaBase()->cargacursor("SELECT * FROM familia WHERE padrefamilia IS NOT NULL ORDER BY idfamilia");
     while (!cursoraux2->eof()) {
         padre = cursoraux2->valor("padrefamilia").toInt();
         idfamilia = cursoraux2->valor("idfamilia").toInt();
@@ -204,7 +204,7 @@ void FamiliasView::mostrarplantilla() {
     _depura("FamiliasView::mostrarplantilla", 0);
     QString query;
     query= "SELECT * from familia WHERE idfamilia = " + m_idfamilia;
-    cursor2 *cursorfamilia = m_companyact->cargacursor(query);
+    cursor2 *cursorfamilia = empresaBase()->cargacursor(query);
     if (!cursorfamilia->eof()) {
         m_nomFamilia->setText(cursorfamilia->valor("nombrefamilia"));
         m_descFamilia->setPlainText(cursorfamilia->valor("descfamilia"));
@@ -255,10 +255,10 @@ void FamiliasView::on_mui_guardar_clicked() {
 		prodfam = " FALSE ";
 	} // end if
         QString query = "UPDATE familia SET nombrefamilia = '" +
-                        m_companyact->sanearCadena(m_nomFamilia->text()) + "', descfamilia = '" +
-                        m_companyact->sanearCadena(m_descFamilia->toPlainText()) + "' , codigofamilia = '" +
-                        m_companyact->sanearCadena(m_codFamilia->text()) + "', productofisicofamilia= " + prodfam + " WHERE idfamilia =" + m_idfamilia;
-        int error = m_companyact->ejecuta(query);
+                        empresaBase()->sanearCadena(m_nomFamilia->text()) + "', descfamilia = '" +
+                        empresaBase()->sanearCadena(m_descFamilia->toPlainText()) + "' , codigofamilia = '" +
+                        empresaBase()->sanearCadena(m_codFamilia->text()) + "', productofisicofamilia= " + prodfam + " WHERE idfamilia =" + m_idfamilia;
+        int error = empresaBase()->ejecuta(query);
         if (error)
             throw -1;
         /// Guardamos la informacion de la fila que esta seleccionada para volver
@@ -278,7 +278,7 @@ void FamiliasView::on_mui_guardar_clicked() {
 void FamiliasView::pintar(QTreeWidgetItem *it) {
     QString idfamilia = it->text(COL_IDFAMILIA);
     if (it) {
-        cursor2 *cursoraux1 = m_companyact->cargacursor("SELECT * FROM familia WHERE idfamilia = " + idfamilia);
+        cursor2 *cursoraux1 = empresaBase()->cargacursor("SELECT * FROM familia WHERE idfamilia = " + idfamilia);
         if (!cursoraux1->eof()) {
             it->setText(COL_NOMFAMILIA, cursoraux1->valor("nombrefamilia"));
             it->setText(COL_CODFAMILIA, cursoraux1->valor("codigofamilia"));
@@ -297,7 +297,7 @@ void FamiliasView::pintar(QTreeWidgetItem *it) {
 void FamiliasView::on_mui_crear_clicked() {
     _depura("FamiliasView::on_mui_crear_clicked", 0);
     try {
-        m_companyact->begin();
+        empresaBase()->begin();
         /// Si se ha modificado el contenido advertimos y guardamos.
         trataModificado();
         QString padrefamilia;
@@ -308,18 +308,18 @@ void FamiliasView::on_mui_crear_clicked() {
 
         QString query = "INSERT INTO familia (nombrefamilia, descfamilia, padrefamilia, codigofamilia) VALUES ('NUEVA FAMILIA', 'Descripcion de la familia', " + padrefamilia + ", 'XXX')";
 
-        int error = m_companyact->ejecuta(query);
+        int error = empresaBase()->ejecuta(query);
         if (error) {
             throw -1;
         } // end if
-        cursor2 *cur = m_companyact->cargacursor("SELECT max(idfamilia) AS idfamilia FROM familia");
-        m_companyact->commit();
+        cursor2 *cur = empresaBase()->cargacursor("SELECT max(idfamilia) AS idfamilia FROM familia");
+        empresaBase()->commit();
         m_idfamilia = cur->valor("idfamilia");
         delete cur;
         pintar();
         _depura("END FamiliasView::on_mui_crear_clicked", 0);
     } catch (...) {
-        m_companyact->rollback();
+        empresaBase()->rollback();
         mensajeInfo("Error al crear la familia");
     } // end try
 }
@@ -356,7 +356,7 @@ int FamiliasView::borrar() {
 	} // end if
     try {
         QString query = "DELETE FROM FAMILIA WHERE idfamilia = " + m_idfamilia;
-        int error = m_companyact->ejecuta(query);
+        int error = empresaBase()->ejecuta(query);
         if (error)
             throw -1;
 	m_idfamilia = "";
@@ -414,7 +414,7 @@ void FamiliasView::on_mui_imprimir_clicked() {
     fitxersortidatxt += "        <td>" + tr("Nombre") + "</td>";
     fitxersortidatxt += "</tr>";
 
-    cursor2 *cur = m_companyact->cargacursor("SELECT * FROM familia ORDER BY codigocompletofamilia");
+    cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM familia ORDER BY codigocompletofamilia");
     while(!cur->eof()) {
         fitxersortidatxt += "<tr>";
         fitxersortidatxt += "        <td>" + cur->valor("codigocompletofamilia") + "</td>";

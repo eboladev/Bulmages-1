@@ -26,15 +26,14 @@
 
 #include "postgresiface2.h"
 #include "bulmafact.h"
-
+#include "blwidget.h"
 
 extern "C" MY_EXPORT int entryPoint(bulmafact *);
 
-class myplugininv : public QObject {
+class myplugininv : public QObject, PEmpresaBase {
     Q_OBJECT
 
 public:
-    company *m_companyact;
     bulmafact *m_bges;
 
 public:

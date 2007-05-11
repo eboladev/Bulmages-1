@@ -31,14 +31,13 @@
 
 
 PedidosClienteList::PedidosClienteList(QWidget *parent, Qt::WFlags flag)
-        : Ficha(parent, flag) {
+        : FichaBf(NULL, parent, flag) {
     _depura("PedidosClienteList::PedidosClienteList", 0);
     setupUi(this);
     /// Disparamos los plugins.
     int res = g_plugins->lanza("PedidosClienteList_PedidosClienteList", this);
     if (res != 0)
         return;
-    m_companyact = NULL;
     m_modo = 0;
     m_idpedidocliente = "";
     meteWindow(windowTitle(), this);
@@ -47,18 +46,16 @@ PedidosClienteList::PedidosClienteList(QWidget *parent, Qt::WFlags flag)
 }
 
 
-PedidosClienteList::PedidosClienteList(company *comp, QWidget *parent, Qt::WFlags flag)
-        : Ficha(parent, flag) {
+PedidosClienteList::PedidosClienteList(company *comp, QWidget *parent, Qt::WFlags flag): FichaBf(comp, parent, flag) {
     _depura("PedidosClienteList::PedidosClienteList", 0);
     setupUi(this);
     /// Disparamos los plugins.
     int res = g_plugins->lanza("PedidosClienteList_PedidosClienteList", this);
     if (res != 0)
         return;
-    m_companyact = comp;
-    m_cliente->setcompany(comp);
-    m_articulo->setcompany(comp);
-    mui_list->setcompany(comp);
+    m_cliente->setEmpresaBase(comp);
+    m_articulo->setEmpresaBase(comp);
+    mui_list->setEmpresaBase(comp);
     presenta();
     m_modo = 0;
     m_idpedidocliente = "";
@@ -70,7 +67,7 @@ PedidosClienteList::PedidosClienteList(company *comp, QWidget *parent, Qt::WFlag
 
 PedidosClienteList::~PedidosClienteList() {
     _depura("PedidosClienteList::~PedidosClienteList", 0);
-    m_companyact->sacaWindow(this);
+    empresaBase()->sacaWindow(this);
     _depura("END PedidosClienteList::~PedidosClienteList", 0);
 }
 
@@ -81,7 +78,7 @@ void PedidosClienteList::presenta() {
     mui_list->cargar("SELECT *, totalpedidocliente AS total, bimppedidocliente AS base, imppedidocliente AS impuestos FROM pedidocliente LEFT JOIN  cliente ON pedidocliente.idcliente = cliente.idcliente LEFT JOIN almacen ON pedidocliente.idalmacen=almacen.idalmacen WHERE 1 = 1 " + generarFiltro());
 
     /// Hacemos el calculo del total.
-    cursor2 *cur = m_companyact->cargacursor("SELECT SUM(totalpedidocliente) AS total FROM pedidocliente LEFT JOIN cliente ON pedidocliente.idcliente=cliente.idcliente LEFT JOIN almacen ON pedidocliente.idalmacen = almacen.idalmacen WHERE 1 = 1 " + generarFiltro());
+    cursor2 *cur = empresaBase()->cargacursor("SELECT SUM(totalpedidocliente) AS total FROM pedidocliente LEFT JOIN cliente ON pedidocliente.idcliente=cliente.idcliente LEFT JOIN almacen ON pedidocliente.idalmacen = almacen.idalmacen WHERE 1 = 1 " + generarFiltro());
     m_total->setText(cur->valor("total"));
     delete cur;
     _depura("END PedidosClienteList::presenta", 0);
@@ -126,12 +123,12 @@ void PedidosClienteList::editar(int row) {
     try {
         m_idpedidocliente = mui_list->DBvalue(QString("idpedidocliente"), row);
         if (m_modo == 0) {
-            PedidoClienteView *prov = new PedidoClienteView(m_companyact, 0);
+            PedidoClienteView *prov = new PedidoClienteView(empresaBase(), 0);
             if (prov->cargar(m_idpedidocliente)) {
                 delete prov;
                 return;
             } // end if
-            m_companyact->m_pWorkspace->addWindow(prov);
+            empresaBase()->m_pWorkspace->addWindow(prov);
             prov->show();
         } else {
             emit(selected(m_idpedidocliente));
@@ -171,7 +168,7 @@ void PedidosClienteList::on_mui_borrar_clicked() {
     try {
         m_idpedidocliente = mui_list->DBvalue(QString("idpedidocliente"));
         if (m_modo == 0) {
-            PedidoClienteView *pcv = m_companyact->newPedidoClienteView();
+            PedidoClienteView *pcv = empresaBase()->newPedidoClienteView();
             if (pcv->cargar(m_idpedidocliente)) {
                 throw -1;
             } // end if

@@ -26,8 +26,7 @@
 #include "configuracion.h"
 
 
-Pago::Pago(company *comp) : DBRecord(comp) {
-    companyact = comp;
+Pago::Pago(company *comp, QWidget *parent) : FichaBf(comp, parent) {
     setDBTableName("pago");
     setDBCampoId("idpago");
     addDBCampo("idpago", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Pago", "Id pago"));
@@ -47,13 +46,13 @@ Pago::~Pago() {}
 int Pago::borrar() {
     _depura("Pago::borrar", 0);
     if (DBvalue("idpago") != "") {
-        companyact->begin();
-        int error = companyact->ejecuta("DELETE FROM pago WHERE idpago = " + DBvalue("idpago"));
+        empresaBase()->begin();
+        int error = empresaBase()->ejecuta("DELETE FROM pago WHERE idpago = " + DBvalue("idpago"));
         if (error) {
-            companyact->rollback();
+            empresaBase()->rollback();
             return -1;
         } // end if
-        companyact->commit();
+        empresaBase()->commit();
         vaciar();
         pintar();
     } // end if
@@ -83,7 +82,7 @@ void Pago::pintar() {
 int Pago::cargar(QString idpago) {
     _depura("Pago::cargar", 0);
     QString query = "SELECT * FROM pago WHERE idpago = " + idpago;
-    cursor2 * cur = companyact->cargacursor(query);
+    cursor2 * cur = empresaBase()->cargacursor(query);
     if (!cur->eof()) {
         DBload(cur);
     } // end if
@@ -98,10 +97,10 @@ int Pago::guardar() {
     _depura("Pago::guardar", 0);
     try {
         QString id;
-        companyact->begin();
+        empresaBase()->begin();
         DBsave(id);
         setidpago(id);
-        companyact->commit();
+        empresaBase()->commit();
 
 	/// Hacemos una carga para que se actualizen datos como la referencia
 	cargar(id);
@@ -110,7 +109,7 @@ int Pago::guardar() {
         return 0;
     } catch (...) {
         mensajeInfo("Error inesperado al guardar");
-        companyact->rollback();
+        empresaBase()->rollback();
 	return -1;
     } // end try
 }

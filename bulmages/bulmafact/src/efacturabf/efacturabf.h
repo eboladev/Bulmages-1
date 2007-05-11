@@ -33,6 +33,7 @@
 #include "bulmafact.h"
 #include "company.h"
 #include "facturasplist.h"
+#include "blwidget.h"
 
 extern "C" MY_EXPORT void entryPoint(bulmafact *);
 extern "C" MY_EXPORT int FacturaView_FacturaView(FacturaView *);
@@ -40,11 +41,8 @@ extern "C" MY_EXPORT int FacturasProveedorList_FacturasProveedorList_Post(Factur
 extern QApplication2 *theApp;
 
 
-class efacturabf : public QObject {
+class efacturabf : public QObject, PEmpresaBase {
 	Q_OBJECT
-
-private:
-	company *m_companyact;
 
 public:
 	efacturabf();

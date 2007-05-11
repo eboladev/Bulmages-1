@@ -21,17 +21,18 @@
 #include <QWidget>
 #include <QToolButton>
 #include <QString>
-#include "company.h"
-#include "funcaux.h"
 #include <QtXml/QDomDocument>
 #include <QMap>
 #include <QString>
+#include "company.h"
+#include "funcaux.h"
+#include "blwidget.h"
 
-class EFQToolButtonImportar : public QToolButton {
+
+class EFQToolButtonImportar : public QToolButton, PEmpresaBase {
 	Q_OBJECT
 
 private:
-	company *m_companyact;
 	FacturasProveedorList *m_faclistado;
 	
 public:

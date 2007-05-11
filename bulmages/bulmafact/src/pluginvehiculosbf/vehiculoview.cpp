@@ -26,13 +26,11 @@
 
 /// Constructor de Clase
 VehiculoView::VehiculoView(company *emp, QWidget *parent)
-        : Ficha(parent), DBRecord(emp) {
+        : FichaBf(emp, parent) {
     _depura("VehiculoView::VehiculoView", 0);
     this->setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
-    m_companyact = emp;
-
-    mui_listadomantvehiculo->setcompany(emp);
+    mui_listadomantvehiculo->setEmpresaBase(emp);
 
     /// Inicializamos la clase para la base de datos.
     setDBTableName("vehiculo");
@@ -56,7 +54,7 @@ VehiculoView::VehiculoView(company *emp, QWidget *parent)
     mui_listadomantvehiculo->setinsercion(TRUE);
 
     /// Fin de nuevas amortizaciones
-    m_companyact->meteWindow(windowTitle(), this);
+    empresaBase()->meteWindow(windowTitle(), this);
     cargar("1");
     _depura("END VehiculoView::VehiculoView", 0);
 }
@@ -64,7 +62,7 @@ VehiculoView::VehiculoView(company *emp, QWidget *parent)
 
 VehiculoView::~VehiculoView() {
     _depura("VehiculoView::~VehiculoView", 0);
-    m_companyact->sacaWindow(this);
+    empresaBase()->sacaWindow(this);
     _depura("END VehiculoView::~VehiculoView", 0);
 }
 
@@ -108,7 +106,7 @@ int VehiculoView::cargar(QString idvehiculo) {
 	mui_listadomantvehiculo->cargar(mantenimientos);
 
         dialogChanges_cargaInicial();
-        m_companyact->meteWindow(windowTitle(), this);
+        empresaBase()->meteWindow(windowTitle(), this);
         _depura("END VehiculoView::cargar", 0);
         return 0;
     } catch (...) {

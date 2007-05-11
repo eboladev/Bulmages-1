@@ -23,12 +23,13 @@
 #include "company.h"
 #include "funcaux.h"
 #include "fixed.h"
+#include "blwidget.h"
 
-class EFQToolButton : public QToolButton {
+
+class EFQToolButton : public QToolButton, PEmpresaBase {
 	Q_OBJECT
 
 private:
-	company *m_companyact;
 	FacturaView *m_factura;
 	
 public:

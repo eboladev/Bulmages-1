@@ -50,10 +50,10 @@ ContratoView::ContratoView(company *comp, QWidget *parent)
         if (res != 0)
             return;
 
-        subform2->setcompany(comp);
-        mui_lineas->setcompany(comp);
-        mui_idcliente->setcompany(comp);
-        mui_refcontrato->setcompany(comp);
+        subform2->setEmpresaBase(comp);
+        mui_lineas->setEmpresaBase(comp);
+        mui_idcliente->setEmpresaBase(comp);
+        mui_refcontrato->setEmpresaBase(comp);
 
         /// Inicializamos FichaBf
         setListaLineas(mui_lineas);
@@ -99,7 +99,7 @@ int ContratoView::cargar(QString id) {
         Contrato::cargar(id);
         if (DBvalue("idcontrato") != "") {
             setWindowTitle(tr("Contrato") + " " + DBvalue("refcontrato") + " " + DBvalue("idcontrato"));
-            m_companyact->meteWindow(windowTitle(), this);
+            empresaBase()->meteWindow(windowTitle(), this);
         } // end if
         mui_lineas->cargar(id);
         subform2->cargar("SELECT * FROM factura LEFT JOIN cliente ON cliente.idcliente = factura.idcliente LEFT JOIN almacen ON factura.idalmacen = almacen.idalmacen  WHERE factura.idcliente ="+DBvalue("idcliente")+ " AND reffactura = '"+DBvalue("refcontrato")+"'");
@@ -190,12 +190,12 @@ void ContratoView::pintaloccontrato(QString id) {
 void ContratoView::on_subform2_itemDoubleClicked(QTableWidgetItem *) {
     _depura("ContratoView::on_subform2_itemDoubleClicked", 0);
     QString idfactura = subform2->DBvalue(QString("idfactura"), subform2->currentRow());
-    FacturaView *prov = m_companyact->newFacturaView();
+    FacturaView *prov = empresaBase()->newFacturaView();
     if (prov->cargar(idfactura)) {
         delete prov;
         return;
     } // end if
-    m_companyact->m_pWorkspace->addWindow(prov);
+    empresaBase()->m_pWorkspace->addWindow(prov);
     prov->show();
     _depura("END ContratoView::on_subform2_itemDoubleClicked", 0);
 }
@@ -209,22 +209,22 @@ void ContratoView::on_mui_facturar_clicked() {
     while(!end) {
 	query = "SELECT ('"+DBvalue("fincontrato")+"'::DATE +"+QString::number(periodo-1)+"* '"+DBvalue("periodicidadcontrato")+"'::INTERVAL) AS finperiodo";
 	query += ", ('"+DBvalue("fincontrato")+"'::DATE +"+QString::number(periodo)+"* '"+DBvalue("periodicidadcontrato")+"'::INTERVAL) AS ffinperiodo";
-	cursor2 *cur1=m_companyact->cargacursor(query);
+	cursor2 *cur1=empresaBase()->cargacursor(query);
 
         query = "SELECT count(idfactura) AS cuenta FROM factura WHERE ffactura >= '"+cur1->valor("finperiodo")+"'";
         query += " AND ffactura <  '"+cur1->valor("ffinperiodo")+"'";
 	query += " AND reffactura = '"+DBvalue("refcontrato")+"'";
         query += " AND idcliente = "+DBvalue("idcliente");
 
-        cursor2 *cur = m_companyact->cargacursor(query);
+        cursor2 *cur = empresaBase()->cargacursor(query);
         if(cur->valor("cuenta") != "0") {
 		if (cur->valor("cuenta") != "1") {
 			_depura("Detectada doble factura en un periodo", 2, cur->valor("cuenta"));
 		} // end if
 	} else {
             // GENERAMOS LA FACTURA
-            FacturaView *fac = m_companyact->newFacturaView();
-            m_companyact->m_pWorkspace->addWindow(fac);
+            FacturaView *fac = empresaBase()->newFacturaView();
+            empresaBase()->m_pWorkspace->addWindow(fac);
             fac->cargar("0");
             fac->show();
             fac->setDBvalue("reffactura", DBvalue("refcontrato"));
@@ -253,7 +253,7 @@ void ContratoView::on_mui_facturar_clicked() {
         delete cur;
 
         query = "SELECT (now() < '"+DBvalue("fincontrato")+"'::DATE + '"+DBvalue("periodicidadcontrato")+"'::INTERVAL *"+QString::number(periodo)+" ) AS dato";
-        cur = m_companyact->cargacursor(query);
+        cur = empresaBase()->cargacursor(query);
         if(cur->valor("dato") == "t") {
             end = TRUE;
         }// end if

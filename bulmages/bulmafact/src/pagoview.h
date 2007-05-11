@@ -39,7 +39,7 @@ class company;
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un pago.
 /** */
-class PagoView : public Ficha, private Ui_PagoBase, public Pago {
+class PagoView : public Pago, public Ui_PagoBase  {
     Q_OBJECT
 
 public:

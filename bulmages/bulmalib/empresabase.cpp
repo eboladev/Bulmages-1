@@ -105,7 +105,7 @@ QString EmpresaBase::searchCompany(QString tipo) {
     _depura("EmpresaBase::searchCompany", 0);
     abreempresaview *nuevae = new abreempresaview(0, tipo);
     nuevae->exec();
-    _depura("Vamos a cambiar la empresa \n", 0);
+    _depura("Vamos a cambiar la empresa", 0);
     QString bd = nuevae->nomDB();
     _depura("Empresa cambiada a " + bd, 0);
     delete nuevae;

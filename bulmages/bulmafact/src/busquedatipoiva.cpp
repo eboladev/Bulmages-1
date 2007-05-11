@@ -28,9 +28,8 @@
     Conecta el SIGNAL activated() con m_activated() para tratarlo.
 */
 BusquedaTipoIVADelegate::BusquedaTipoIVADelegate(QWidget *parent)
-        : QComboBox(parent) {
+        : QComboBox(parent), PEmpresaBase() {
     _depura("BusquedaTipoIVADelegate::BusquedaTipoIVADelegate", 0);
-    m_companyact = NULL;
     m_cursorcombo = NULL;
     setSizeAdjustPolicy(QComboBox::AdjustToContents);
     connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
@@ -60,7 +59,7 @@ void BusquedaTipoIVADelegate::set(const QString &cod) {
     if (m_cursorcombo != NULL)
         delete m_cursorcombo;
 
-    m_cursorcombo = m_companyact->cargacursor("SELECT desctipo_iva FROM tipo_iva ");
+    m_cursorcombo = empresaBase()->cargacursor("SELECT desctipo_iva FROM tipo_iva ");
     clear();
     while (!m_cursorcombo->eof()) {
         addItem(m_cursorcombo->valor("desctipo_iva"));
@@ -74,8 +73,5 @@ void BusquedaTipoIVADelegate::set(const QString &cod) {
     _depura("END BusquedaTipoIVADelegate::set", 0);
 }
 
-void BusquedaTipoIVADelegate::setcompany(company *comp) {
-	_depura("BusquedaTipoIVADelegate::setcompany", 0);
-        m_companyact = comp;
-	_depura("END BusquedaTipoIVADelegate::setcompany", 0);
-}
+
+

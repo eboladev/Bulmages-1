@@ -38,16 +38,16 @@
     Mete la ventana en el workSpace si estamos en modo edicion.
 */
 ClientsList::ClientsList(company *comp, QWidget *parent, Qt::WFlags flag, edmode editmode)
-        : Ficha(parent, flag), pgimportfiles(comp) {
+        : FichaBf(comp, parent, flag), pgimportfiles(comp) {
     _depura("ClientsList::ClientsList", 0);
     setupUi(this);
-    m_companyact = comp;
+
     /// Disparamos los plugins.
     int res = g_plugins->lanza("ClientsList_ClientsList", this);
     if (res != 0)
         return;
 
-    mui_list->setcompany(comp);
+    mui_list->setEmpresaBase(comp);
     mdb_idcliente = "";
     mdb_cifcliente = "";
     mdb_nomcliente = "";
@@ -55,7 +55,7 @@ ClientsList::ClientsList(company *comp, QWidget *parent, Qt::WFlags flag, edmode
     hideBusqueda();
     /// Si estamos en el modo edici&oacute;n metemos la ventana en el workSpace.
     if (m_modo == EditMode) {
-        m_companyact->meteWindow(windowTitle(), this);
+        empresaBase()->meteWindow(windowTitle(), this);
     } else {
         setWindowTitle(tr("Selector de clientes"));
         mui_editar->setHidden(TRUE);
@@ -74,7 +74,7 @@ ClientsList::ClientsList(company *comp, QWidget *parent, Qt::WFlags flag, edmode
 */
 ClientsList::~ClientsList() {
     _depura("ClientsList::~ClientsList", 0);
-    m_companyact->sacaWindow(this);
+    empresaBase()->sacaWindow(this);
     _depura("END ClientsList::~ClientsList", 0);
 }
 
@@ -101,12 +101,12 @@ void ClientsList::editar(int row) {
     mdb_cifcliente = mui_list->DBvalue("cifcliente", row);
     mdb_nomcliente = mui_list->DBvalue("nomcliente", row);
     if (m_modo == 0) {
-        ClienteView *prov = m_companyact->newClienteView();
+        ClienteView *prov = empresaBase()->newClienteView();
         if (prov->cargar(mdb_idcliente)) {
             delete prov;
             return;
         } // end if
-        m_companyact->m_pWorkspace->addWindow(prov);
+        empresaBase()->m_pWorkspace->addWindow(prov);
         prov->show();
     } else {
         emit(selected(mdb_idcliente));
@@ -149,7 +149,7 @@ void ClientsList::on_mui_borrar_clicked() {
     _depura("ClientsList::on_mui_borrar_clicked", 0);
     try {
         QString idcliente = mui_list->DBvalue("idcliente");
-        ClienteView *cli = m_companyact->newClienteView();
+        ClienteView *cli = empresaBase()->newClienteView();
         if (cli->cargar(idcliente)) {
             delete cli;
             throw -1;
@@ -279,7 +279,7 @@ void ClientsList::on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
 /** SLOT automatico que se ejecuta al pulsar sobre el boton de crear en la botonera
 **/
 void ClientsList::on_mui_crear_clicked() {
-    m_companyact->s_newClienteView();
+    empresaBase()->s_newClienteView();
 }
 
 /** SLOT automatico que se ejecuta al pulsar sobre el boton de actualizar en la botonera
@@ -298,7 +298,6 @@ void ClientsList::on_mui_configurar_toggled(bool checked) {
     } // end if
 }
 
-    company *ClientsList::getcompany() {return m_companyact;}
 
 /// =============================================================================
 ///                    SUBFORMULARIO

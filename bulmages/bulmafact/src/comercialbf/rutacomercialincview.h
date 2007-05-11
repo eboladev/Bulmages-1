@@ -33,14 +33,10 @@
 #include "funcaux.h"
 
 
-class company;
 
 
-class RutaComercialIncView : public QWidget, public Ui_RutaComercialIncBase {
+class RutaComercialIncView : public FichaBf, public Ui_RutaComercialIncBase {
     Q_OBJECT
-
-private:
-    company *m_companyact;
 
 public:
     RutaComercialIncView(company *, QWidget *);
@@ -61,7 +57,7 @@ public slots:
         int err = mui_rutacomercial->cargar(id);
         err = mui_incidenciacomercial->cargar(id1);
         setWindowTitle(tr("Accion comercial") + " " + mui_rutacomercial->DBvalue("idrutacomercial") + " + " + mui_incidenciacomercial->DBvalue("idincidenciacomercial"));
-        m_companyact->meteWindow(windowTitle(), this);
+        empresaBase()->meteWindow(windowTitle(), this);
         _depura("END RutaComercialIncView::cargar", 0);
         return err;
     };

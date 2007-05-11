@@ -38,25 +38,24 @@
     Mete la ventana en el workSpace si estamos en modo edicion.
 */
 ContratosList::ContratosList(company *comp, QWidget *parent, Qt::WFlags flag, edmode editmode)
-        : Ficha(parent, flag), pgimportfiles(comp) {
+        : FichaBf(comp, parent, flag), pgimportfiles(comp) {
     _depura("ContratosList::ContratosList", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
-    m_companyact = comp;
     /// Disparamos los plugins.
     int res = g_plugins->lanza("ContratosList_ContratosList", this);
     if (res != 0)
         return;
 
-    mui_list->setcompany(comp);
-    mui_idcliente->setcompany(comp);
+    mui_list->setEmpresaBase(comp);
+    mui_idcliente->setEmpresaBase(comp);
     mdb_idcontrato = "";
     mdb_nomcontrato = "";
     m_modo = editmode;
     hideBusqueda();
     /// Si estamos en el modo edici&oacute;n metemos la ventana en el workSpace.
     if (m_modo == EditMode) {
-        m_companyact->meteWindow(windowTitle(), this);
+        empresaBase()->meteWindow(windowTitle(), this);
     } else {
         setWindowTitle(tr("Selector de contratos"));
         mui_editar->setHidden(TRUE);
@@ -73,7 +72,7 @@ ContratosList::ContratosList(company *comp, QWidget *parent, Qt::WFlags flag, ed
 */
 ContratosList::~ContratosList() {
     _depura("ContratosList::~ContratosList", 0);
-    m_companyact->sacaWindow(this);
+    empresaBase()->sacaWindow(this);
     _depura("END ContratosList::~ContratosList", 0);
 }
 
@@ -107,12 +106,12 @@ void ContratosList::editar(int row) {
     mdb_refcontrato = mui_list->DBvalue("refcontrato", row);
     mdb_nomcontrato = mui_list->DBvalue("nomcontrato", row);
     if (m_modo == 0) {
-        ContratoView *prov = new ContratoView(m_companyact);
+        ContratoView *prov = new ContratoView((company *)empresaBase());
         if (prov->cargar(mdb_idcontrato)) {
             delete prov;
             return;
         } // end if
-        m_companyact->m_pWorkspace->addWindow(prov);
+        empresaBase()->m_pWorkspace->addWindow(prov);
         prov->show();
     } else {
         emit(selected(mdb_idcontrato));
@@ -157,7 +156,7 @@ void ContratosList::on_mui_borrar_clicked() {
     try {
 /*
         QString idcontrato = mui_list->DBvalue("idcontrato");
-        ClienteView *cli = m_companyact->newClienteView();
+        ClienteView *cli = empresaBase()->newClienteView();
         if (cli->cargar(idcontrato)) {
             delete cli;
             throw -1;
@@ -244,9 +243,9 @@ void ContratosList::on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
 **/
 void ContratosList::on_mui_crear_clicked() {
 	_depura("ContratosList::on_mui_crear_clicked", 0);
-        ContratoView *prov = new ContratoView(m_companyact);
+        ContratoView *prov = new ContratoView((company *) empresaBase());
 	prov->cargar("0");
-        m_companyact->m_pWorkspace->addWindow(prov);
+        empresaBase()->m_pWorkspace->addWindow(prov);
         prov->show();
 	_depura("END ContratosList::on_mui_crear_clicked", 0);
 }
@@ -267,7 +266,7 @@ void ContratosList::on_mui_configurar_toggled(bool checked) {
     } // end if
 }
 
-    company *ContratosList::getcompany() {return m_companyact;}
+    company *ContratosList::getcompany() {return empresaBase();}
 
 /// =============================================================================
 ///                    SUBFORMULARIO

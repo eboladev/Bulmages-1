@@ -32,9 +32,8 @@
 
 
 PedidosProveedorList::PedidosProveedorList(QWidget *parent, Qt::WFlags flag)
-        : Ficha(parent, flag) {
+        : FichaBf (NULL, parent, flag) {
     setupUi(this);
-    m_companyact = NULL;
     m_modo = 0;
     mdb_idpedidoproveedor = "";
     meteWindow(windowTitle(), this);
@@ -43,12 +42,11 @@ PedidosProveedorList::PedidosProveedorList(QWidget *parent, Qt::WFlags flag)
 
 
 PedidosProveedorList::PedidosProveedorList(company *comp, QWidget *parent, Qt::WFlags flag)
-        : Ficha(parent, flag) {
+        : FichaBf(comp, parent, flag) {
     setupUi(this);
-    m_companyact = comp;
-    m_proveedor->setcompany(comp);
-    m_articulo->setcompany(comp);
-    mui_list->setcompany(comp);
+    m_proveedor->setEmpresaBase(comp);
+    m_articulo->setEmpresaBase(comp);
+    mui_list->setEmpresaBase(comp);
     presenta();
     m_modo = 0;
     mdb_idpedidoproveedor = "";
@@ -59,7 +57,7 @@ PedidosProveedorList::PedidosProveedorList(company *comp, QWidget *parent, Qt::W
 
 PedidosProveedorList::~PedidosProveedorList() {
     _depura("PedidosProveedorList::~PedidosProveedorList", 0);
-    m_companyact->sacaWindow(this);
+    empresaBase()->sacaWindow(this);
     _depura("END PedidosProveedorList::~PedidosProveedorList", 0);
 }
 
@@ -67,7 +65,7 @@ PedidosProveedorList::~PedidosProveedorList() {
 void PedidosProveedorList::presenta() {
     mui_list->cargar("SELECT *, totalpedidoproveedor AS total, bimppedidoproveedor AS base, imppedidoproveedor AS impuestos FROM pedidoproveedor LEFT JOIN proveedor ON pedidoproveedor.idproveedor=proveedor.idproveedor LEFT JOIN almacen ON pedidoproveedor.idalmacen=almacen.idalmacen WHERE 1=1 " + generarFiltro());
     /// Hacemos el calculo del total.
-    cursor2 *cur = m_companyact->cargacursor("SELECT SUM(totalpedidoproveedor) AS total FROM pedidoproveedor LEFT JOIN proveedor ON pedidoproveedor.idproveedor=proveedor.idproveedor LEFT JOIN almacen ON pedidoproveedor.idalmacen=almacen.idalmacen WHERE 1=1 " + generarFiltro());
+    cursor2 *cur = empresaBase()->cargacursor("SELECT SUM(totalpedidoproveedor) AS total FROM pedidoproveedor LEFT JOIN proveedor ON pedidoproveedor.idproveedor=proveedor.idproveedor LEFT JOIN almacen ON pedidoproveedor.idalmacen=almacen.idalmacen WHERE 1=1 " + generarFiltro());
     m_total->setText(cur->valor("total"));
     delete cur;
 }
@@ -122,7 +120,7 @@ void PedidosProveedorList::on_mui_borrar_clicked() {
     try {
         mdb_idpedidoproveedor = mui_list->DBvalue(QString("idpedidoproveedor"));
         if (m_modo == 0) {
-            PedidoProveedorView *ppv = m_companyact->nuevoPedidoProveedorView();
+            PedidoProveedorView *ppv = empresaBase()->nuevoPedidoProveedorView();
             if (ppv->cargar(mdb_idpedidoproveedor)) {
                 throw -1;
             } // end if
@@ -142,12 +140,12 @@ void PedidosProveedorList::editar(int row) {
     try {
 	   mdb_idpedidoproveedor = mui_list->DBvalue(QString("idpedidoproveedor"), row);
 	   if (m_modo == 0) {
-		  PedidoProveedorView *prov = new PedidoProveedorView(m_companyact, 0);
+		  PedidoProveedorView *prov = new PedidoProveedorView(empresaBase(), 0);
 		  if (prov->cargar(mdb_idpedidoproveedor)) {
 		  delete prov;
 		  return;
 		  } // end if
-		  m_companyact->m_pWorkspace->addWindow(prov);
+		  empresaBase()->m_pWorkspace->addWindow(prov);
 		  prov->show();
 	   } else {
 		  emit(selected(mdb_idpedidoproveedor));

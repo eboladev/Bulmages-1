@@ -40,7 +40,7 @@ InventarioView::InventarioView(company *comp, QWidget *parent)
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
-    subform2->setcompany(comp);
+    subform2->setEmpresaBase(comp);
     setListControlStock(subform2);
     comp->meteWindow(windowTitle(), this);
     _depura("END InventarioView::InventarioView", 0);

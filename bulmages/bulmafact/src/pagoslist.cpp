@@ -35,7 +35,6 @@
 
 PagosList::PagosList(QWidget *parent, Qt::WFlags flag)
         : FichaBf(NULL, parent, flag) {
-    m_companyact = NULL;
     setupUi(this);
     m_modo = 0;
     mdb_idpago = "";
@@ -46,12 +45,11 @@ PagosList::PagosList(QWidget *parent, Qt::WFlags flag)
 
 PagosList::PagosList(company *comp, QWidget *parent, Qt::WFlags flag)
         : FichaBf(comp, parent, flag) {
-    m_companyact = comp;
     setupUi(this);
-    m_proveedor->setcompany(comp);
-    mui_list->setcompany(comp);
-    mui_idbanco->setcompany(comp);
-    mui_idbanco->setidbanco("0");
+    m_proveedor->setEmpresaBase(comp);
+    mui_list->setEmpresaBase(comp);
+    mui_idbanco->setEmpresaBase(comp);
+    mui_idbanco->setidbanco("");
     presentar();
     m_modo = 0;
     mdb_idpago = "";
@@ -61,7 +59,7 @@ PagosList::PagosList(company *comp, QWidget *parent, Qt::WFlags flag)
 
 
 PagosList::~PagosList() {
-    m_companyact->sacaWindow(this);
+    empresaBase()->sacaWindow(this);
 }
 
 
@@ -69,7 +67,7 @@ PagosList::~PagosList() {
 
 void PagosList::presentar() {
     _depura("PagosList::presentar()", 0);
-    if (m_companyact != NULL ) {
+    if (empresaBase() != NULL ) {
         mui_list->cargar("SELECT * FROM pago NATURAL LEFT JOIN proveedor NATURAL LEFT JOIN trabajador NATURAL LEFT JOIN banco WHERE 1 = 1 " + generaFiltro());
         /// Hacemos el calculo del total.
         Fixed total = mui_list->sumarCampo("cantpago");
@@ -125,12 +123,12 @@ void PagosList::on_mui_editar_clicked() {
 void PagosList::on_mui_list_cellDoubleClicked(int, int) {
     mdb_idpago = mui_list->DBvalue("idpago");
     if (m_modo == 0 && mdb_idpago != "") {
-        PagoView *bud = m_companyact->newPagoView();
+        PagoView *bud = empresaBase()->newPagoView();
         if (bud->cargar(mdb_idpago)) {
             delete bud;
             return;
         } // end if
-        m_companyact->m_pWorkspace->addWindow(bud);
+        empresaBase()->m_pWorkspace->addWindow(bud);
         bud->show();
     } else {
         close();
@@ -160,8 +158,8 @@ void PagosList::on_mui_list_customContextMenuRequested(const QPoint &) {
 
 void PagosList::on_mui_crear_clicked() {
     fprintf(stderr, "Iniciamos el boton_crear");
-    PagoView *bud = m_companyact->newPagoView();
-    m_companyact->m_pWorkspace->addWindow(bud);
+    PagoView *bud = empresaBase()->newPagoView();
+    empresaBase()->m_pWorkspace->addWindow(bud);
     bud->show();
     bud->setidproveedor(m_proveedor->idproveedor());
     bud->pintar();
@@ -185,7 +183,7 @@ void PagosList::on_mui_borrar_clicked() {
     try {
         mdb_idpago = mui_list->DBvalue("idpago");
         if (m_modo == 0 && mdb_idpago != "") {
-            PagoView *bud = new PagoView(m_companyact, NULL);
+            PagoView *bud = new PagoView(empresaBase(), NULL);
             bud->cargar(mdb_idpago);
             bud->borrar();
         } // end if
@@ -196,13 +194,13 @@ void PagosList::on_mui_borrar_clicked() {
     _depura("END PagosList::on_mui_borrar_clicked", 0);
 }
 
-void PagosList::setcompany (company *comp)	{
+void PagosList::setEmpresaBase (company *comp)	{
     _depura("PagosList::setcompany", 0);
-    m_companyact = comp;
-    m_proveedor->setcompany(comp);
-    mui_list->setcompany(comp);
-    mui_idbanco->setcompany(comp);
-    mui_idbanco->setidbanco("0");
+    PEmpresaBase::setEmpresaBase(comp);
+    m_proveedor->setEmpresaBase(comp);
+    mui_list->setEmpresaBase(comp);
+    mui_idbanco->setEmpresaBase(comp);
+    mui_idbanco->setidbanco("");
     _depura("END PagosList::setcompany", 0);
 }
 

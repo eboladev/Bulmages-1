@@ -23,7 +23,7 @@
 
 #include "pgimportfiles.h"
 #include "subform2bf.h"
-#include "ficha.h"
+#include "fichabf.h"
 
 class company;
 
@@ -48,7 +48,7 @@ public slots:
 
 /// Muestra y administra la ventana con el listado de proveedores.
 /** */
-class ProveedorList : public Ficha, public Ui_ProveedorListBase, public pgimportfiles {
+class ProveedorList : public FichaBf, public Ui_ProveedorListBase, public pgimportfiles {
     Q_OBJECT
 
 public:
@@ -59,7 +59,6 @@ public:
     };
 
 private:
-    company *m_companyact;
     edmode m_modo;
     QString m_idprovider;
     QString m_cifprovider;

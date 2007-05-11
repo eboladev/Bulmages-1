@@ -33,18 +33,17 @@
 
 
 ProveedorList::ProveedorList(company *comp, QWidget *parent, Qt::WFlags flag, edmode editmode)
-        : Ficha(parent, flag), pgimportfiles(comp) {
+        : FichaBf(comp, parent, flag), pgimportfiles(comp) {
     _depura("ProveedorList::ProveedorList", 0);
     setupUi(this);
-    m_companyact = comp;
-    mui_list->setcompany(comp);
+    mui_list->setEmpresaBase(comp);
     hideBusqueda();
     m_modo = editmode;
     m_idprovider = "";
     m_cifprovider = "";
     m_nomprovider = "";
     if (m_modo == EditMode) {
-        m_companyact->meteWindow(windowTitle(), this);
+        empresaBase()->meteWindow(windowTitle(), this);
     } else {
         setWindowTitle(tr("Selector de proveedores"));
         mui_editar->setHidden(TRUE);
@@ -60,7 +59,7 @@ ProveedorList::ProveedorList(company *comp, QWidget *parent, Qt::WFlags flag, ed
 
 
 ProveedorList::~ProveedorList() {
-    m_companyact->sacaWindow(this);
+    empresaBase()->sacaWindow(this);
 }
 
 
@@ -144,8 +143,8 @@ void ProveedorList::presenta() {
 
 void ProveedorList::on_mui_crear_clicked() {
     _depura("ProveedorList::on_mui_crear_clicked", 0);
-    ProveedorView *prov = new ProveedorView(m_companyact, 0);
-    m_companyact->m_pWorkspace->addWindow(prov);
+    ProveedorView *prov = new ProveedorView(empresaBase(), 0);
+    empresaBase()->m_pWorkspace->addWindow(prov);
     prov->show();
     _depura("END ProveedorList::on_mui_crear_clicked", 0);
 }
@@ -162,12 +161,12 @@ void ProveedorList::editar(int row) {
     m_cifprovider = mui_list->DBvalue(QString("cifproveedor"), row);
     m_nomprovider = mui_list->DBvalue(QString("nomproveedor"), row);
     if (m_modo == 0) {
-        ProveedorView *prov = new ProveedorView(m_companyact, 0);
+        ProveedorView *prov = new ProveedorView(empresaBase(), 0);
         if (prov->cargar(mui_list->DBvalue(QString("idproveedor"), row))) {
             delete prov;
             return;
         }
-        m_companyact->m_pWorkspace->addWindow(prov);
+        empresaBase()->m_pWorkspace->addWindow(prov);
         prov->show();
     } else {
         emit(selected(m_idprovider));
@@ -192,7 +191,7 @@ void ProveedorList::on_mui_borrar_clicked() {
     _depura("ProveedorList::on_mui_borrar_clicked", 0);
     try {
         QString idprov = mui_list->DBvalue(QString("idproveedor"));
-        ProveedorView *prov = m_companyact->newProveedorView();
+        ProveedorView *prov = empresaBase()->newProveedorView();
         prov->cargar(idprov);
         prov->on_mui_borrar_clicked();
         delete prov;
@@ -250,7 +249,7 @@ void ProveedorList::on_mui_importar_clicked() {
 void ProveedorListSubform::cargar() {
     _depura("ProveedorListSubform::cargar\n", 0);
     QString SQLQuery = "SELECT * FROM proveedor";
-    cursor2 * cur= companyact()->cargacursor(SQLQuery);
+    cursor2 * cur= empresaBase()->cargacursor(SQLQuery);
     SubForm3::cargar(cur);
     delete cur;
 }

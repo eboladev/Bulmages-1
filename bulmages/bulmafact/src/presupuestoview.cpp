@@ -55,13 +55,13 @@ PresupuestoView::PresupuestoView(company *comp, QWidget *parent)
         if (res != 0)
             return;
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
-        subform2->setcompany(comp);
-        m_descuentos->setcompany(comp);
-        m_cliente->setcompany(comp);
-        m_forma_pago->setcompany(comp);
-        m_almacen->setcompany(comp);
-        m_trabajador->setcompany(comp);
-        m_refpresupuesto->setcompany(comp);
+        subform2->setEmpresaBase(comp);
+        m_descuentos->setEmpresaBase(comp);
+        m_cliente->setEmpresaBase(comp);
+        m_forma_pago->setEmpresaBase(comp);
+        m_almacen->setEmpresaBase(comp);
+        m_trabajador->setEmpresaBase(comp);
+        m_refpresupuesto->setEmpresaBase(comp);
 
         setListaLineas(subform2);
         setListaDescuentos(m_descuentos);
@@ -100,7 +100,7 @@ void PresupuestoView::inicializar() {
 
 PresupuestoView::~PresupuestoView() {
     _depura("PresupuestoView::~PresupuestoView", 0);
-    m_companyact->refreshPresupuestos();
+    ((company *)empresaBase())->refreshPresupuestos();
     _depura("END PresupuestoView::~PresupuestoView", 0);
 }
 
@@ -223,7 +223,7 @@ void PresupuestoView::generarPedidoCliente() {
     _depura("PresupuestoView::generarPedidoCliente", 0);
     /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos.
     QString SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + DBvalue("refpresupuesto") + "' AND idcliente = "+DBvalue("idcliente");
-    cursor2 *cur = m_companyact->cargacursor(SQLQuery);
+    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
     if(!cur->eof()) {
 
 
@@ -235,8 +235,8 @@ void PresupuestoView::generarPedidoCliente() {
                                   tr("&Si"), tr("&No"), QString::null, 0, 1)) {
             return;
         }
-        PedidoClienteView *bud = m_companyact->newPedidoClienteView();
-        m_companyact->m_pWorkspace->addWindow(bud);
+        PedidoClienteView *bud = getcompany()->newPedidoClienteView();
+        empresaBase()->m_pWorkspace->addWindow(bud);
         bud->cargar(cur->valor("idpedidocliente"));
         bud->show();
         delete cur;
@@ -254,9 +254,9 @@ void PresupuestoView::generarPedidoCliente() {
     //        return;
 
     /// Creamos el pedido.
-    PedidoClienteView *bud = m_companyact->newPedidoClienteView();
+    PedidoClienteView *bud = getcompany()->newPedidoClienteView();
     bud->cargar("0");
-    m_companyact->m_pWorkspace->addWindow(bud);
+    empresaBase()->m_pWorkspace->addWindow(bud);
 
     /// Traspasamos toda la informacion del presupuesto al pedido.
     bud->setidcliente(DBvalue("idcliente"));
@@ -315,7 +315,7 @@ int PresupuestoView::cargar(QString id) {
         if (Presupuesto::cargar(id))
             throw -1;
         setWindowTitle(tr("Presupuesto") + " " + DBvalue("refpresupuesto") + " " + DBvalue("idpresupuesto"));
-        m_companyact->meteWindow(windowTitle(), this);
+        empresaBase()->meteWindow(windowTitle(), this);
         dialogChanges_cargaInicial();
         _depura("END PresupuestoView::cargar", 0);
     } catch(...) {

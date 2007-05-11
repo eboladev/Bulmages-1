@@ -54,7 +54,7 @@ void ListCompArticuloView::pressedAsterisk(int row, int col) {
     if (camp->nomcampo() != "codigocompletoarticulo")
         return;
     _depura("ListCompArticuloView::searchArticle", 0);
-    ArticuloList *artlist = new ArticuloList((company *)companyact(), NULL, 0, ArticuloList::SelectMode);
+    ArticuloList *artlist = new ArticuloList((company *)empresaBase(), NULL, 0, ArticuloList::SelectMode);
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
     this->setEnabled(false);
     artlist->show();
@@ -63,7 +63,7 @@ void ListCompArticuloView::pressedAsterisk(int row, int col) {
     this->setEnabled(true);
     QString idArticle = artlist->idArticle();
     delete artlist;
-    cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE idarticulo=" + idArticle);
+    cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM articulo WHERE idarticulo=" + idArticle);
     if (!cur->eof() ) {
         rec->setDBvalue("idcomponente", idArticle);
         rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
@@ -82,7 +82,7 @@ void ListCompArticuloView::editFinished(int row, int col) {
     SDBCampo *camp = (SDBCampo *) item(row, col);
     camp->refresh();
     if (camp->nomcampo() == "codigocompletoarticulo") {
-        cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE codigocompletoarticulo='" + camp->text() + "'");
+        cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM articulo WHERE codigocompletoarticulo='" + camp->text() + "'");
         if (!cur->eof() ) {
             rec->setDBvalue("idcomponente", cur->valor("idarticulo"));
             rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
@@ -104,7 +104,7 @@ ListCompArticuloView::~ListCompArticuloView() {
 void ListCompArticuloView::cargar(QString idarticulo) {
         _depura("ListCompActiculo::cargar", 0);
         mdb_idarticulo = idarticulo;
-        cursor2 * cur= companyact()->cargacursor("SELECT * FROM comparticulo, articulo WHERE comparticulo.idarticulo=" + mdb_idarticulo + " AND articulo.idarticulo = comparticulo.idcomponente");
+        cursor2 * cur= empresaBase()->cargacursor("SELECT * FROM comparticulo, articulo WHERE comparticulo.idarticulo=" + mdb_idarticulo + " AND articulo.idarticulo = comparticulo.idcomponente");
         SubForm3::cargar(cur);
         delete cur;
         _depura("END ListCompActiculo::cargar", 0);

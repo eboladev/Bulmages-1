@@ -26,16 +26,11 @@
 #include "fichabf.h"
 
 
-class company;
-
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un proveedor.
 /** */
 class ProveedorView : public FichaBf, public Ui_ProveedorBase {
     Q_OBJECT
-
-private:
-    company *m_companyact;
 
 public:
     ProveedorView(company *comp, QWidget *parent = 0);

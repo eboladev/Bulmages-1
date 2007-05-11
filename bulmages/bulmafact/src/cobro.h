@@ -23,22 +23,19 @@
 
 #include <QString>
 #include <QObject>
+#include <QWidget>
 
 #include "company.h"
 #include "dbrecord.h"
-
+#include "fichabf.h"
 
 /** Clase que interactua entre la pantalla de Cobro y la base de datos.
     Incorpora los metodos de guardado de datos y abstraye metodos de visualizacion.
 */
-class Cobro : public DBRecord {
-
-protected:
-    /// Puntero a la clase company para poder trabajar con la Base de Datos y con el paso de mensajes.
-    company *companyact;
+class Cobro : public FichaBf {
 
 public:
-    Cobro(company *);
+    Cobro(company *, QWidget *);
     virtual ~Cobro();
     virtual int guardar();
     virtual void pintar();

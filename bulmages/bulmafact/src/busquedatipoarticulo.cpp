@@ -27,10 +27,9 @@
     si un elemento ha sido inicializado o no.
 */
 BusquedaTipoArticulo::BusquedaTipoArticulo(QWidget *parent)
-        : QWidget(parent) {
+        : BLWidget(parent) {
     _depura("BusquedaTipoArticulo::BusquedaTipoArticulo", 0);
     setupUi(this);
-    m_companyact = NULL;
     mdb_idtipo_articulo = "";
     mdb_desctipo_articulo = "";
     mdb_codtipo_articulo = "";
@@ -53,19 +52,22 @@ BusquedaTipoArticulo::~BusquedaTipoArticulo() {
 void BusquedaTipoArticulo::setidtipo_articulo(QString val) {
     _depura("BusquedaTipoArticulo::setidtipo_articulo", 0);
     mdb_idtipo_articulo = val;
-    QString SQLQuery = "SELECT * FROM tipo_articulo WHERE idtipo_articulo = '" + mdb_idtipo_articulo + "'";
-    cursor2 *cur = m_companyact->cargacursor(SQLQuery);
 
-    if(!cur->eof()) {
-        mdb_codtipo_articulo = cur->valor("codtipo_articulo");
-        mdb_desctipo_articulo = cur->valor("desctipo_articulo");
-    } else {
+    /// Comprobamos que hayamos pasado un parametro valido.
+    if (val == "") {
         mdb_idtipo_articulo = "";
         mdb_desctipo_articulo = "";
         mdb_codtipo_articulo = "";
+    } else {
+	QString SQLQuery = "SELECT * FROM tipo_articulo WHERE idtipo_articulo = '" + mdb_idtipo_articulo + "'";
+	cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
+	
+	if(!cur->eof()) {
+		mdb_codtipo_articulo = cur->valor("codtipo_articulo");
+		mdb_desctipo_articulo = cur->valor("desctipo_articulo");
+	} // end if
+    	delete cur;
     } // end if
-
-    delete cur;
     m_codtipo_articulo->setText(mdb_codtipo_articulo);
     m_desctipo_articulo->setText(mdb_desctipo_articulo);
     _depura("END BusquedaTipoArticulo::setidtipo_articulo", 0);
@@ -80,7 +82,7 @@ void BusquedaTipoArticulo::setcodtipo_articulo(QString val) {
     _depura("BusquedaTipoArticulo::setcodtipo_articulo", 0);
     mdb_codtipo_articulo = val;
     QString SQLQuery = "SELECT * FROM tipo_articulo WHERE codtipo_articulo = '" + mdb_codtipo_articulo + "'";
-    cursor2 *cur = m_companyact->cargacursor(SQLQuery);
+    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
 
     if(!cur->eof()) {
         mdb_idtipo_articulo = cur->valor("idtipo_articulo");
@@ -109,7 +111,7 @@ void BusquedaTipoArticulo::on_mui_buscar_clicked() {
     QDialog *diag = new QDialog(0);
     diag->setModal(true);
 
-    TipoArticuloList *tip = m_companyact->newTipoArticuloList(diag, TRUE);
+    TipoArticuloList *tip = ((company *)empresaBase())->newTipoArticuloList(diag, TRUE);
     connect(tip, SIGNAL(selected(QString)), diag, SLOT(accept()));
 
     /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
@@ -146,7 +148,7 @@ void BusquedaTipoArticulo::on_m_codtipo_articulo_textChanged(const QString &val)
     _depura("BusquedaTipoArticulo::on_m_codtipo_articulo_textChanged", 0);
     mdb_codtipo_articulo = val;
     QString SQLQuery = "SELECT * FROM tipo_articulo WHERE codtipo_articulo = '" + mdb_codtipo_articulo + "'";
-    cursor2 *cur = m_companyact->cargacursor(SQLQuery);
+    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
 
     if(!cur->eof()) {
         mdb_idtipo_articulo = cur->valor("idtipo_articulo");
@@ -164,13 +166,6 @@ void BusquedaTipoArticulo::on_m_codtipo_articulo_textChanged(const QString &val)
 }
 
 
-/** Inicializa la clase con el puntero a la empresa que se esta utilizando
-**/
-void BusquedaTipoArticulo::setcompany(company *comp) {
-    _depura("BusquedaTipoArticulo::setcompany", 0);
-    m_companyact = comp;
-    _depura("END BusquedaTipoArticulo::setcompany", 0);
-}
 
 /** Devuelve el codigo de tipo de articulo seleccionado, si no hay ningun elemento seleccionado devuelve
     un string vacio

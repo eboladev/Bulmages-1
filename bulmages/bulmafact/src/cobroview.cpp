@@ -37,17 +37,17 @@
     Mete la ventana en el workSpace.
 */
 CobroView::CobroView(company *comp, QWidget *parent)
-        : Ficha(parent), Cobro(comp) {
+        : Cobro(comp, parent) {
     _depura("CobroView::CobroView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     try {
         setupUi(this);
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
-        mui_cliente->setcompany(comp);
-        mui_refcobro->setcompany(comp);
-	mui_idbanco->setcompany(comp);
+        mui_cliente->setEmpresaBase(comp);
+        mui_refcobro->setEmpresaBase(comp);
+	mui_idbanco->setEmpresaBase(comp);
         dialogChanges_cargaInicial();
-        companyact->meteWindow(windowTitle(), this, FALSE);
+        empresaBase()->meteWindow(windowTitle(), this, FALSE);
     } catch (...) {
         mensajeInfo(tr("Error al crear el cobro"));
     } // end try
@@ -59,7 +59,7 @@ CobroView::CobroView(company *comp, QWidget *parent)
 */
 CobroView::~CobroView() {
     _depura("CobroView::~CobroView", 0);
-    companyact->refreshCobrosCliente();
+    ((company *)empresaBase())->refreshCobrosCliente();
     _depura("END CobroView::~CobroView", 0);
 }
 
@@ -69,7 +69,7 @@ CobroView::~CobroView() {
 */
 int CobroView::sacaWindow() {
     _depura("CobroView::sacaWindow", 0);
-    companyact->sacaWindow(this);
+    empresaBase()->sacaWindow(this);
     _depura("END CobroView::sacaWindow", 0);
     return 0;
 }
@@ -89,7 +89,7 @@ int CobroView::cargar(QString id) {
         setWindowTitle(tr("Cobro") + " " + DBvalue("refcobro") + " " + DBvalue("idcobro"));
         pintar();
         dialogChanges_cargaInicial();
-        companyact->meteWindow(windowTitle(), this);
+        empresaBase()->meteWindow(windowTitle(), this);
     } catch (...) {
         return -1;
     } // end try

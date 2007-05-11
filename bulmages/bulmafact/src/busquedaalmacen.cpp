@@ -28,9 +28,8 @@
 /** Constructor del Widget conecta las se&ntilde;ales y prepara los componentes.
 */
 BusquedaAlmacen::BusquedaAlmacen(QWidget *parent, const char *)
-        : QComboBox(parent) {
+        : QComboBox(parent), PEmpresaBase() {
     _depura("BusquedaAlmacen::BusquedaAlmacen", 0);
-    companyact = NULL;
     m_cursorcombo = NULL;
     connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
     m_codigoalmacen = "";
@@ -55,7 +54,7 @@ void BusquedaAlmacen::setidalmacen(QString idalmacen) {
     if (m_cursorcombo != NULL) {
         delete m_cursorcombo;
     } // end if
-    m_cursorcombo = companyact->cargacursor("SELECT * FROM almacen ORDER BY nomalmacen");
+    m_cursorcombo = empresaBase()->cargacursor("SELECT * FROM almacen ORDER BY nomalmacen");
     int i = 0;
     int i1 = 0;
     int i2 = 0;
@@ -92,15 +91,15 @@ QString BusquedaAlmacen::idalmacen() {
 }
 
 
-void BusquedaAlmacen::setcompany(company *comp) {
-	_depura("BusquedaAlmacen::setcompany", 0);
-	companyact = comp;
-	cursor2 *cur = companyact->cargacursor("SELECT * FROM configuracion WHERE nombre ='AlmacenDefecto'");
+void BusquedaAlmacen::setEmpresaBase(company *comp) {
+	_depura("BusquedaAlmacen::setEmpresaBase", 0);
+	PEmpresaBase::setEmpresaBase(comp);
+	cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM configuracion WHERE nombre ='AlmacenDefecto'");
 	if (!cur->eof()) {
 		m_codigoalmacen = cur->valor("valor");
 	} // end if
 	delete cur;
-	_depura("END BusquedaAlmacen::setcompany", 0);
+	_depura("END BusquedaAlmacen::setEmpresaBase", 0);
 }
 
 

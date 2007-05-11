@@ -64,7 +64,7 @@ ListLinAlbaranProveedorView::ListLinAlbaranProveedorView(QWidget *parent) : SubF
 void ListLinAlbaranProveedorView::cargar(QString idalbaranp) {
     _depura("ListLinPedidoProveedorView::cargar", 0);
     mdb_idalbaranp = idalbaranp;
-    cursor2 * cur= companyact()->cargacursor("SELECT * FROM lalbaranp LEFT JOIN articulo ON lalbaranp.idarticulo = articulo.idarticulo WHERE idalbaranp = " + mdb_idalbaranp + " ORDER BY ordenlalbaranp");
+    cursor2 * cur= empresaBase()->cargacursor("SELECT * FROM lalbaranp LEFT JOIN articulo ON lalbaranp.idarticulo = articulo.idarticulo WHERE idalbaranp = " + mdb_idalbaranp + " ORDER BY ordenlalbaranp");
     SubForm3::cargar(cur);
     delete cur;
     _depura("END ListLinPedidoProveedorView::cargar", 0);

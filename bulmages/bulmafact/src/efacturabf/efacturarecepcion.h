@@ -25,14 +25,10 @@
 
 #include <ui_efacturarecepcionbase.h>
 #include "company.h"
+#include "fichabf.h"
 
-
-class EFacturaRecepcion : public QWidget, public Ui_EFacturaRecepcionBase {
+class EFacturaRecepcion : public FichaBf, public Ui_EFacturaRecepcionBase {
 	Q_OBJECT
-
-private:
-	company *m_companyact;
-
 public:
 	EFacturaRecepcion(company *emp, QWidget *parent = 0);
 	~EFacturaRecepcion();

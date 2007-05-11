@@ -24,35 +24,16 @@
 #include <QString>
 
 #include "company.h"
-#include "dbrecord.h"
+#include "fichabf.h"
 
 
-class RutaComercial : public DBRecord {
-protected:
-    company *m_companyact;
+class RutaComercial : public FichaBf {
 
 public:
-    RutaComercial(company *);
-    company* companyact() {
-        return m_companyact;
-    };
-    void setcompany(company *comp) {
-        m_companyact = comp;
-        DBRecord::setconexionbase(comp);
-    };
+    RutaComercial(company *, QWidget *);
     virtual ~RutaComercial();
     virtual void pintar();
-    virtual int cargar(QString id) {
-        _depura("RutaComercial::cargar", 0);
-        QString query = "SELECT * FROM rutacomercial WHERE idrutacomercial = " + id;
-        cursor2 *cur = m_companyact->cargacursor(query);
-        if (!cur->eof())  {
-            DBload(cur);
-        }
-        delete cur;
-        _depura("END RutaComercial::cargar", 0);
-        return 0;
-    };
+    virtual int cargar(QString id);
 };
 
 #endif

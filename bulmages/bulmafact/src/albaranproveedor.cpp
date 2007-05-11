@@ -158,17 +158,17 @@ int AlbaranProveedor::borrar() {
     _depura("AlbaranProveedor::borrar", 0);
     try {
         if (DBvalue("idalbaranp") != "")  {
-            m_companyact->begin();
+            empresaBase()->begin();
             m_listalineas->borrar();
             m_listadescuentos->borrar();
-            m_companyact->ejecuta("DELETE FROM albaranp WHERE idalbaranp = " + DBvalue("idalbaranp"));
-            m_companyact->commit();
+            empresaBase()->ejecuta("DELETE FROM albaranp WHERE idalbaranp = " + DBvalue("idalbaranp"));
+            empresaBase()->commit();
         } // end if
         _depura("END AlbaranProveedor::borrar", 0);
         return 0;
     } catch (...) {
         mensajeInfo( "Error al borrar el Albaran de Proveedor");
-        m_companyact->rollback();
+        empresaBase()->rollback();
         return -1;
     } // end catch
 }
@@ -212,7 +212,7 @@ void AlbaranProveedor::pintar()  {
 int AlbaranProveedor::cargar(QString idbudget) {
     _depura("AlbaranProveedor::cargar", 0);
     QString query = "SELECT * FROM albaranp WHERE idalbaranp =" + idbudget;
-    cursor2 * cur = m_companyact->cargacursor(query);
+    cursor2 * cur = empresaBase()->cargacursor(query);
 
     if (!cur->eof())
         DBload(cur);
@@ -238,12 +238,12 @@ int AlbaranProveedor::guardar() {
     _depura("AlbaranProveedor::guardar", 0);
     QString id;
     try {
-        m_companyact->begin();
+        empresaBase()->begin();
         DBsave(id);
         setidalbaranp(id);
         m_listalineas->guardar();
         m_listadescuentos->guardar();
-        m_companyact->commit();
+        empresaBase()->commit();
 
     /// Hacemos una carga para recuperar la referencia
     cargar(id);
@@ -252,7 +252,7 @@ int AlbaranProveedor::guardar() {
         return 0;
     } catch(...) {
         _depura("AlbaranProveedor::guardar error al guardar", 2);
-        m_companyact->rollback();
+        empresaBase()->rollback();
         throw -1;
     } // end catch
 }

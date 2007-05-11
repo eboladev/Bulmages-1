@@ -41,7 +41,7 @@ BancoView::BancoView(company *emp, QWidget *parent)
     m_cursorbancos = NULL;
     m_item = NULL;
     pintar();
-    m_companyact->meteWindow(windowTitle(), this);
+    empresaBase()->meteWindow(windowTitle(), this);
     _depura("END BancoView::BancoView", 0);
 }
 
@@ -52,7 +52,7 @@ void BancoView::pintar() {
     if (m_cursorbancos != NULL) {
         delete m_cursorbancos;
     } // end if
-    m_cursorbancos = m_companyact->cargacursor("SELECT * FROM banco ORDER BY nombanco");
+    m_cursorbancos = empresaBase()->cargacursor("SELECT * FROM banco ORDER BY nombanco");
     while (!m_cursorbancos->eof()) {
         new QListWidgetItem(m_cursorbancos->valor("nombanco") , mui_lista);
         m_cursorbancos->siguienteregistro();
@@ -102,32 +102,32 @@ void BancoView::on_mui_guardar_clicked() {
     _depura("BancoView::on_mui_guardar_clicked", 0);
 
     QString query = "UPDATE banco SET ";
-    query += "nombanco='" + m_companyact->sanearCadena(mui_nombanco->text()) + "'";
-    query += ", dirbanco='" + m_companyact->sanearCadena(mui_dirbanco->text()) + "'";
-    query += ", poblbanco='" + m_companyact->sanearCadena(mui_poblbanco->text()) + "'";
-    query += ", cpbanco='" + m_companyact->sanearCadena(mui_cpbanco->text()) + "'";
-    query += ", telbanco='" + m_companyact->sanearCadena(mui_telbanco->text()) + "'";
-    query += ", faxbanco='" + m_companyact->sanearCadena(mui_faxbanco->text()) + "'";
-    query += ", emailbanco='" + m_companyact->sanearCadena(mui_emailbanco->text()) + "'";
-    query += ", contactobanco='" + m_companyact->sanearCadena(mui_contactobanco->text()) + "'";
-    query += ", codentidadbanco='" + m_companyact->sanearCadena(mui_codentidadbanco->text()) + "'";
-    query += ", codagenciabanco='" + m_companyact->sanearCadena(mui_codagenciabanco->text()) + "'";
-    query += ", numcuentabanco='" + m_companyact->sanearCadena(mui_numcuentabanco->text()) + "'";
-    query += ", dcbanco='" + m_companyact->sanearCadena(mui_dcbanco->text()) + "'";
-    query += ", comentbanco='" + m_companyact->sanearCadena(mui_comentbanco->toPlainText()) + "'";
-    query += ",  webbanco='" + m_companyact->sanearCadena(mui_webbanco->text()) + "'";
-    query += " WHERE idbanco=" + m_companyact->sanearCadena(mdb_idbanco);
+    query += "nombanco='" + empresaBase()->sanearCadena(mui_nombanco->text()) + "'";
+    query += ", dirbanco='" + empresaBase()->sanearCadena(mui_dirbanco->text()) + "'";
+    query += ", poblbanco='" + empresaBase()->sanearCadena(mui_poblbanco->text()) + "'";
+    query += ", cpbanco='" + empresaBase()->sanearCadena(mui_cpbanco->text()) + "'";
+    query += ", telbanco='" + empresaBase()->sanearCadena(mui_telbanco->text()) + "'";
+    query += ", faxbanco='" + empresaBase()->sanearCadena(mui_faxbanco->text()) + "'";
+    query += ", emailbanco='" + empresaBase()->sanearCadena(mui_emailbanco->text()) + "'";
+    query += ", contactobanco='" + empresaBase()->sanearCadena(mui_contactobanco->text()) + "'";
+    query += ", codentidadbanco='" + empresaBase()->sanearCadena(mui_codentidadbanco->text()) + "'";
+    query += ", codagenciabanco='" + empresaBase()->sanearCadena(mui_codagenciabanco->text()) + "'";
+    query += ", numcuentabanco='" + empresaBase()->sanearCadena(mui_numcuentabanco->text()) + "'";
+    query += ", dcbanco='" + empresaBase()->sanearCadena(mui_dcbanco->text()) + "'";
+    query += ", comentbanco='" + empresaBase()->sanearCadena(mui_comentbanco->toPlainText()) + "'";
+    query += ",  webbanco='" + empresaBase()->sanearCadena(mui_webbanco->text()) + "'";
+    query += " WHERE idbanco=" + empresaBase()->sanearCadena(mdb_idbanco);
 
-    int error = m_companyact->ejecuta(query);
+    int error = empresaBase()->ejecuta(query);
     if (error) {
-        m_companyact->rollback();
+        empresaBase()->rollback();
         return;
     } // end if
     if (m_cursorbancos != NULL) {
         delete m_cursorbancos;
     } // end if
 
-    m_cursorbancos = m_companyact->cargacursor("SELECT * FROM banco ORDER BY nombanco");
+    m_cursorbancos = empresaBase()->cargacursor("SELECT * FROM banco ORDER BY nombanco");
 
     if (m_item) {
         m_item->setText( mui_nombanco->text());
@@ -161,14 +161,14 @@ void BancoView::on_mui_nuevo_clicked() {
     /// Si se ha modificado el contenido advertimos y guardamos.
     trataModificado();
     QString query = "INSERT INTO banco (nombanco) VALUES ('NUEVO BANCO')";
-    m_companyact->begin();
-    int error = m_companyact->ejecuta(query);
+    empresaBase()->begin();
+    int error = empresaBase()->ejecuta(query);
     if (error) {
-        m_companyact->rollback();
+        empresaBase()->rollback();
         return;
     } // end if
-    cursor2 *cur = m_companyact->cargacursor("SELECT max(idbanco) AS idbanco FROM banco");
-    m_companyact->commit();
+    cursor2 *cur = empresaBase()->cargacursor("SELECT max(idbanco) AS idbanco FROM banco");
+    empresaBase()->commit();
     mdb_idbanco = cur->valor("idbanco");
     delete cur;
     pintar();
@@ -181,14 +181,14 @@ void BancoView::on_mui_nuevo_clicked() {
 void BancoView::on_mui_borrar_clicked() {
     _depura("BancoView::on_mui_borrar_clicked", 0);
     trataModificado();
-    m_companyact->begin();
+    empresaBase()->begin();
     QString query = "DELETE FROM banco WHERE idbanco = " + mdb_idbanco;
-    int error = m_companyact->ejecuta(query);
+    int error = empresaBase()->ejecuta(query);
     if (error) {
-        m_companyact->rollback();
+        empresaBase()->rollback();
         return;
     } // end if
-    m_companyact->commit();
+    empresaBase()->commit();
     pintar();
     _depura("END BancoView::on_mui_borrar_clicked", 0);
 }

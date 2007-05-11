@@ -57,7 +57,7 @@ SubForm2Bc::~SubForm2Bc() {
 
 
 void SubForm2Bc::setcompany(postgresiface2 *c) {
-    SubForm3::setcompany(c);
+    PEmpresaBase::setEmpresaBase((EmpresaBase *)c);
     m_delegate->setcompany(c);
 }
 
@@ -75,12 +75,12 @@ void SubForm2Bc::on_mui_list_pressedAsterisk(int row, int col) {
     ///TODO: De esta manera se recarga de la base de datos toda la info de las cuentas cada
     /// vez que se necesita la lista de cuentas. Hay que buscar la manera de que este siempre
     /// disponible para no cargar el trabajo a la red ni al gestor de base de datos.
-    listcuentasview1 *listcuentas = new listcuentasview1((empresa *)m_companyact, diag, 0, listcuentasview1::SelectMode);
+    listcuentasview1 *listcuentas = new listcuentasview1((empresa *)empresaBase(), diag, 0, listcuentasview1::SelectMode);
     listcuentas->inicializa();
     connect(listcuentas, SIGNAL(selected(QString)), diag, SLOT(accept()));
     diag->exec();
     if (listcuentas->codcuenta() != "") {
-        cursor2 *cur = companyact()->cargacursor("SELECT * FROM cuenta WHERE codigo = '" + listcuentas->codcuenta() + "'");
+        cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM cuenta WHERE codigo = '" + listcuentas->codcuenta() + "'");
         if (!cur->eof()) {
             if (camp->nomcampo() == "codigo") {
                 rec->setDBvalue("idcuenta", cur->valor("idcuenta"));
@@ -119,8 +119,8 @@ void SubForm2Bc::on_mui_list_editFinished(int row, int col, int key) {
     SDBCampo *camp = (SDBCampo *) item(row, col);
     camp->refresh();
     if (camp->nomcampo() == "codigo") {
-        QString codigoext = extiendecodigo(camp->text(), ((empresa *) m_companyact)->numdigitosempresa());
-        cursor2 *cur = companyact()->cargacursor("SELECT * FROM cuenta WHERE codigo = '" + codigoext + "'");
+        QString codigoext = extiendecodigo(camp->text(), ((empresa *) empresaBase())->numdigitosempresa());
+        cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM cuenta WHERE codigo = '" + codigoext + "'");
         if (!cur->eof() ) {
             rec->setDBvalue("idcuenta", cur->valor("idcuenta"));
             rec->setDBvalue("codigo", cur->valor("codigo"));
@@ -141,7 +141,7 @@ void SubForm2Bc::on_mui_list_editFinished(int row, int col, int key) {
 /// Muestra la ventana de asiento.
 void SubForm2Bc::boton_asiento() {
     _depura("SubForm2Bc::boton_asiento", 0);
-    empresa *companyact = (empresa *) m_companyact;
+    empresa *companyact = (empresa *) empresaBase();
     QString numasiento = DBvalue("idasiento");
     if (numasiento != "") {
         companyact->intapuntsempresa()->muestraasiento(numasiento.toInt());
@@ -157,7 +157,7 @@ void SubForm2Bc::boton_asiento() {
 /// 2 -> del a&ntilde;o actual
 void SubForm2Bc::boton_extracto1(int tipo) {
     _depura("SubForm2Bc::boton_extracto1", 0);
-    empresa *companyact = (empresa *) m_companyact;
+    empresa *companyact = (empresa *) empresaBase();
     QDate fecha1, fecha2, fechaact;
     QString fecha = DBvalue("fecha").left(10);
     QString codigo = DBvalue("codigo");
@@ -191,7 +191,7 @@ void SubForm2Bc::boton_extracto1(int tipo) {
 /// 2 -> del a&ntilde;o actual
 void SubForm2Bc::boton_diario1(int tipo) {
     _depura("SubForm2Bc::boton_diario1", 0);
-    empresa *companyact = (empresa *) m_companyact;
+    empresa *companyact = (empresa *) empresaBase();
     QDate fecha1, fecha2, fechaact, fechaact1;
     fechaact = normalizafecha(DBvalue("fecha").left(10));
     fechaact1 = normalizafecha(DBvalue("fecha").left(10));
@@ -224,7 +224,7 @@ void SubForm2Bc::boton_diario1(int tipo) {
 /// 2 -> del a&ntilde;o actual mirado a partir de la fecha de inicio.
 void SubForm2Bc::boton_balance1(int tipo) {
     _depura("SubForm2Bc::boton_balance1", 0);
-    empresa *companyact = (empresa *) m_companyact;
+    empresa *companyact = (empresa *) empresaBase();
     QString fecha = DBvalue("fecha").left(10);
     QString codigo = DBvalue("codigo");
     QDate fecha1, fecha2, fechaact, fechaact1;
@@ -258,7 +258,7 @@ void SubForm2Bc::boton_balance1(int tipo) {
 /// 2 -> del a&ntilde;o actual mirado a partir de la fecha de inicio.
 void SubForm2Bc::boton_balancetree(int tipo) {
     _depura("SubForm2Bc::boton_balance2",0);
-    empresa *companyact = (empresa *) m_companyact;
+    empresa *companyact = (empresa *) empresaBase();
     QString fecha = DBvalue("fecha").left(10);
     QString codigo = DBvalue("codigo");
     QDate fecha1, fecha2, fechaact, fechaact1;
@@ -335,7 +335,7 @@ QWidget *QSubForm2BcDelegate::createEditor(QWidget *parent, const QStyleOptionVi
         return editor;
     } else if (linea->nomcampo() == "codigo") {
         BusquedaCuentaDelegate *editor = new BusquedaCuentaDelegate(parent);
-        editor->setcompany((empresa *)m_subform->companyact());
+        editor->setcompany((empresa *)m_subform->empresaBase());
         return editor;
     } else {
         return QItemDelegate::createEditor(parent, option, index);

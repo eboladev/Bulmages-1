@@ -39,7 +39,7 @@
 
 void InventariosView::setcompany(company *comp) {
     companyact = comp;
-    mui_listado->setcompany(comp);
+    mui_listado->setEmpresaBase(comp);
 }
 
 void InventariosView::meteWindow(QString nom, QObject *obj) {
@@ -78,7 +78,7 @@ InventariosView::InventariosView(company *comp, QWidget *parent)
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     companyact = comp;
-    mui_listado->setcompany(comp);
+    mui_listado->setEmpresaBase(comp);
     mui_listado->cargar();
     meteWindow(windowTitle(), this);
 }
@@ -221,7 +221,7 @@ void InventariosView::on_mui_imprimir_clicked() {
 void InventariosSubForm::cargar() {
     _depura("InventariosSubForm::cargar", 0);
     QString SQLQuery = "SELECT * FROM inventario";
-    cursor2 * cur= companyact()->cargacursor(SQLQuery);
+    cursor2 * cur= empresaBase()->cargacursor(SQLQuery);
     SubForm3::cargar(cur);
     delete cur;
     _depura("END InventariosSubForm::cargar", 0);

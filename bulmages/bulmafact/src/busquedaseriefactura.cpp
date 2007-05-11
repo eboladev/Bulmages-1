@@ -30,9 +30,8 @@
     Conecta el SIGNAL activated() con m_activated() para tratarlo.
 */
 BusquedaSerieFactura::BusquedaSerieFactura(QWidget *parent)
-        : QComboBox(parent) {
+        : QComboBox(parent), PEmpresaBase() {
     _depura("BusquedaSerieFactura::BusquedaSerieFactura", 0);
-    companyact = NULL;
     m_cursorcombo = NULL;
     m_codigoserie_factura = "";
     connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
@@ -58,7 +57,7 @@ void BusquedaSerieFactura::setcodigoserie_factura(QString codigo) {
     _depura("BusquedaSerieFactura::setcodigoserie_factura", 0);
     if (m_cursorcombo != NULL)
         delete m_cursorcombo;
-    m_cursorcombo = companyact->cargacursor("SELECT * FROM serie_factura");
+    m_cursorcombo = empresaBase()->cargacursor("SELECT * FROM serie_factura");
     int i = 0;
     int i1 = 0;
     int i2 = 0;
@@ -101,9 +100,9 @@ QString BusquedaSerieFactura::codigoserie_factura() {
 }
 
 
-void BusquedaSerieFactura::setcompany(company *comp) {
-        companyact = comp;
-	cursor2 *cur = companyact->cargacursor("SELECT * FROM configuracion WHERE nombre ='SerieFacturaDefecto'");
+void BusquedaSerieFactura::setEmpresaBase(company *comp) {
+        PEmpresaBase::setEmpresaBase(comp);
+	cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM configuracion WHERE nombre ='SerieFacturaDefecto'");
 	if (!cur->eof()) {
 		m_codigoserie_factura = cur->valor("valor");
 	} // end if

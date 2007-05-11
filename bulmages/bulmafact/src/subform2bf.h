@@ -35,10 +35,8 @@ class SubForm2Bf;
 
 /// Clase SubForm2BfDelegate
 /** Se encarga del control de los Widgets de Edicion del sistema.*/
-class QSubForm2BfDelegate : public QItemDelegate {
+class QSubForm2BfDelegate : public QItemDelegate, public PEmpresaBase {
 private:
-    /// Clase padre y acceso a base de datos.
-    postgresiface2 *m_companyact;
     SubForm2Bf *m_subform;
 
 public:
@@ -47,8 +45,6 @@ public:
     void setEditorData(QWidget *, const QModelIndex &index) const;
     void setModelData(QWidget *editor,  QAbstractItemModel *model, const QModelIndex &index) const;
     QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const;
-    void setcompany(postgresiface2 *);
-    postgresiface2 *companyact();
     virtual bool eventFilter(QObject *obj, QEvent *event);
 };
 
@@ -72,7 +68,7 @@ public:
     virtual ~SubForm2Bf();
     void setDelete(bool);
     virtual void cargar(QString query);
-    virtual void setcompany(postgresiface2 *);
+    virtual void setEmpresaBase(EmpresaBase *);
 
 public slots:
     virtual void contextMenuEvent(QContextMenuEvent *);

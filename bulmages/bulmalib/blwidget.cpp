@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2006 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,51 +18,43 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef BUSQUEDACLIENTE_H
-#define BUSQUEDACLIENTE_H
-
-#include <QLineEdit>
-#include <QLabel>
 #include "blwidget.h"
-#include "ui_busquedaclientebase.h"
 
 
-/// Permite buscar y seleccionar un cliente.
-/** Implementa un Widget que permite buscar y seleccionar un
-    cliente de BulmaFact de forma generica. */
-class BusquedaCliente : public BLWidget, public Ui_BusquedaClienteBase {
-    Q_OBJECT
+PEmpresaBase::PEmpresaBase(EmpresaBase *emp) {
+	m_empresaBase = emp;
+}
 
-private:
-    /// Almacena el idcliente del cliente seleccionado.
-    QString mdb_idcliente;
-    /// Almacena el nombrecliente del cliente seleccionado.
-    QString mdb_nomcliente;
-    /// Almacena el cifcliente del cliente seleccionado.
-    QString mdb_cifcliente;
-    /// Almacena el codigo cliente del cliente seleccionado.
-    QString mdb_codcliente;
-    /// Impide que se produzca un dead-lock entre pintar y on_mui_text_changed.
-    bool m_semaforo;
+PEmpresaBase::PEmpresaBase() {
+	m_empresaBase = NULL;
+}
 
-public:
-    BusquedaCliente(QWidget *parent = 0);
-    ~BusquedaCliente();
-    void pinta();
-    virtual QString cifcliente();
-    virtual QString idcliente();
-    virtual QString nomcliente();
-    virtual void setidcliente(QString val);
-    virtual void setcifcliente(QString val);
+PEmpresaBase::~PEmpresaBase() {
+}
 
-public slots:
-    virtual void on_mui_buscar_clicked();
-    virtual void on_m_cifcliente_textChanged(const QString &);
-    virtual void on_m_cifcliente_editingFinished();
+void PEmpresaBase::setEmpresaBase(EmpresaBase *emp) {
+    m_empresaBase = emp;
+}
 
-signals:
-    void valueChanged(QString);
-};
+EmpresaBase *PEmpresaBase::empresaBase() {
+    return m_empresaBase;
+}
 
-#endif
+
+BLWidget::BLWidget(QWidget *parent, Qt::WFlags f) : QWidget(parent, f), PEmpresaBase() {
+    _depura("BLWidget::BLWidget", 0);
+    _depura("END BLWidget::BLWidget", 0);
+}
+
+BLWidget::BLWidget(EmpresaBase *emp, QWidget *parent, Qt::WFlags f) : QWidget(parent, f), PEmpresaBase(emp) {
+    _depura("BLWidget::BLWidget", 0);
+    _depura("END BLWidget::BLWidget", 0);
+}
+
+
+BLWidget::~BLWidget() {
+    _depura("BLWidget::~BLWidget", 0);
+    _depura("END BLWidget::~BLWidget", 0);
+}
+
 

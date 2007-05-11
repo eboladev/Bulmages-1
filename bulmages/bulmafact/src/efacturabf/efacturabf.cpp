@@ -45,13 +45,13 @@ efacturabf::~efacturabf() {}
 
 /// Esto es lo que se activa al hacer click sobre el menu
 void efacturabf::elslot() {
-	EFactura *ef = new EFactura(m_companyact);
+	EFactura *ef = new EFactura((company *)empresaBase());
 	ef->show();
 	
-// 	EFacturaEnvio *efv = new EFacturaEnvio(m_companyact);
+// 	EFacturaEnvio *efv = new EFacturaEnvio(empresaBase());
 // 	efv->show();
 	
-// 	EFacturaRecepcion *efr = new EFacturaRecepcion(m_companyact);
+// 	EFacturaRecepcion *efr = new EFacturaRecepcion(empresaBase());
 // 	efr->show();
 	
 //     fprintf(stderr,"Sa ha activado el slot\n");
@@ -63,13 +63,13 @@ void efacturabf::elslot() {
 }
 
 void efacturabf::elslot1() {
-	EFacturaRecepcion *efr = new EFacturaRecepcion(m_companyact);
+	EFacturaRecepcion *efr = new EFacturaRecepcion((company *)empresaBase());
 	efr->show();
 }
 
 void efacturabf::inicializa(bulmafact *bges) {
 	/// Creamos la conexion de la base de datos
-	m_companyact = bges->getcompany();
+	setEmpresaBase(bges->getcompany());
 	
 	/// Creamos el menu.
 // 	QMenu *pPluginMenu = new QMenu("&Factura Electronica");

@@ -37,12 +37,11 @@
     Inicializando la clase con este constructor precisa que sea establecido el company con setcompany.
 */
 MovimientosView::MovimientosView(QWidget *parent, edmode editmodo)
-        : Ficha(parent, 0) {
+        : FichaBf(NULL, parent, 0) {
     _depura("MovimientosView::MovimientosView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     iniciaForm();
-    m_companyact = NULL;
     m_modo = editmodo;
     mdb_idfactura = "";
     if (m_modo == EditMode) {
@@ -55,15 +54,14 @@ MovimientosView::MovimientosView(QWidget *parent, edmode editmodo)
 /** Inicializa todos los componentes y prepara la ventana para funcionar.
 */
 MovimientosView::MovimientosView(company *comp, QWidget *parent, edmode editmodo)
-        : Ficha(parent, 0) {
+        : FichaBf(comp, parent, 0) {
     _depura("MovimientosView::MovimientosView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     iniciaForm();
-    m_companyact = comp;
-    m_cliente->setcompany(m_companyact);
-    m_articulo->setcompany(m_companyact);
-    mui_list->setcompany(m_companyact);
+    m_cliente->setEmpresaBase(empresaBase());
+    m_articulo->setEmpresaBase(empresaBase());
+    mui_list->setEmpresaBase(empresaBase());
     presenta();
     m_modo = editmodo;
     mdb_idfactura = "";
@@ -92,7 +90,7 @@ void MovimientosView::iniciaForm() {
 */
 MovimientosView::~MovimientosView() {
     _depura("MovimientosView::~MovimientosView", 0);
-    m_companyact->sacaWindow(this);
+    empresaBase()->sacaWindow(this);
     _depura("END MovimientosView::~MovimientosView", 0);
 }
 

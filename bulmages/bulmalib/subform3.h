@@ -31,14 +31,14 @@
 #include "qtable2.h"
 #include "subform.h"
 #include "fixed.h"
-
+#include "blwidget.h"
 
 /// SubForm3, constructor de la clase base para subformularios.
 /** Proporciona un widget que combina la clase QTable con los
 registros de la base de datos proporcionando un potente manejador
 tabular de datos que puede generar desde listados hasta subformularios
 */
-class SubForm3: public QWidget, public Ui_SubForm3Base {
+class SubForm3: public BLWidget, public Ui_SubForm3Base {
     Q_OBJECT
 
 protected:
@@ -51,7 +51,7 @@ protected:
     /// Lista de subformularios marcados para ser borrados.
     QList<SDBRecord *> m_listaborrar;
     /// Clase padre y acceso a base de datos.
-    postgresiface2 *m_companyact;
+//    postgresiface2 *m_companyact;
     /// Fichero de configuracion del subformulario.
     QString m_fileconfig;
     /// Campo Identificador de la tabla en la BD.
@@ -152,8 +152,10 @@ public:
     QString imprimir();
     void sortItems(int col, Qt::SortOrder orden);
     void setinsercion(bool b);
+/*
     void setcompany(postgresiface2 *c);
     postgresiface2 *companyact();
+*/
     void setDBTableName(QString nom);
     QString tableName();
     void setFileConfig(QString nom);

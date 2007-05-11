@@ -40,7 +40,6 @@ CobrosList::CobrosList(QWidget *parent, Qt::WFlags flag)
         : FichaBf(NULL, parent, flag) {
     _depura("CobrosList::CobrosList", 0);
     setupUi(this);
-    m_companyact = NULL;
     setModoEdicion();
     mdb_idcobro = "";
     meteWindow(windowTitle(), this);
@@ -58,10 +57,9 @@ CobrosList::CobrosList(company *comp, QWidget *parent, Qt::WFlags flag)
         : FichaBf(comp, parent, flag) {
     _depura("CobrosList::CobrosList",0);
     setupUi(this);
-    m_companyact = comp;
-    m_cliente->setcompany(comp);
-    mui_list->setcompany(comp);
-    mui_idbanco->setcompany(comp);
+    m_cliente->setEmpresaBase(comp);
+    mui_list->setEmpresaBase(comp);
+    mui_idbanco->setEmpresaBase(comp);
     mui_idbanco->setidbanco("0");
     presenta();
     setModoEdicion();
@@ -76,7 +74,7 @@ CobrosList::CobrosList(company *comp, QWidget *parent, Qt::WFlags flag)
 */
 CobrosList::~CobrosList() {
     _depura("CobrosList::~CobrosList", 0);
-    m_companyact->sacaWindow(this);
+    empresaBase()->sacaWindow(this);
     _depura("END CobrosList::~CobrosList", 0);
 }
 
@@ -87,7 +85,7 @@ CobrosList::~CobrosList() {
 */
 void CobrosList::presenta() {
     _depura("CobrosList::presentar", 0);
-    if (m_companyact != NULL) {
+    if (empresaBase() != NULL) {
         mui_list->cargar("SELECT * FROM cobro NATURAL LEFT JOIN cliente NATURAL LEFT JOIN trabajador NATURAL LEFT JOIN banco WHERE 1 = 1 " + generaFiltro());
         /// Hacemos el calculo del total.
 	Fixed total = mui_list->sumarCampo("cantcobro");
@@ -156,8 +154,8 @@ void CobrosList::on_mui_editar_clicked() {
 */
 void CobrosList::on_mui_crear_clicked() {
     _depura("CobrosList::on_mui_crear_clicked", 0);
-    CobroView *bud = m_companyact->newCobroView();
-    m_companyact->m_pWorkspace->addWindow(bud);
+    CobroView *bud = empresaBase()->newCobroView();
+    empresaBase()->m_pWorkspace->addWindow(bud);
     bud->show();
     bud->setidcliente(m_cliente->idcliente());
     bud->pintar();
@@ -190,7 +188,7 @@ void CobrosList::on_mui_borrar_clicked() {
     try {
         mdb_idcobro = mui_list->DBvalue("idcobro");
         if (modoEdicion()) {
-            CobroView *cv = m_companyact->newCobroView();
+            CobroView *cv = empresaBase()->newCobroView();
             if (cv->cargar(mdb_idcobro))
                 throw -1;
             cv->on_mui_borrar_clicked();
@@ -213,12 +211,12 @@ void CobrosList::on_mui_list_cellDoubleClicked(int, int) {
     try {
         mdb_idcobro = mui_list->DBvalue("idcobro");
         if (modoEdicion()) {
-            CobroView *bud = m_companyact->newCobroView();
+            CobroView *bud = empresaBase()->newCobroView();
             if (bud->cargar(mdb_idcobro)) {
                 delete bud;
                 return;
             } // end if
-            m_companyact->m_pWorkspace->addWindow(bud);
+            empresaBase()->m_pWorkspace->addWindow(bud);
             bud->show();
         } else {
             close();
@@ -252,12 +250,12 @@ void CobrosList::on_mui_list_customContextMenuRequested(const QPoint &) {
 
 /** Inicializa la clase con el puntero a la company que se esta utilizando
 **/
-void CobrosList::setcompany(company *comp) {
-    m_companyact = comp;
-    m_cliente->setcompany(comp);
-    mui_list->setcompany(comp);
-    mui_idbanco->setcompany(comp);
-    mui_idbanco->setidbanco("0");
+void CobrosList::setEmpresaBase(company *comp) {
+    PEmpresaBase::setEmpresaBase(comp);
+    m_cliente->setEmpresaBase(comp);
+    mui_list->setEmpresaBase(comp);
+    mui_idbanco->setEmpresaBase(comp);
+    mui_idbanco->setidbanco("");
 }
 
 /** Devuelve el identificador del cobro seleccionado

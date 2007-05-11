@@ -31,7 +31,7 @@
 #include "busquedacliente.h"
 #include "busquedafecha.h"
 #include "dialogchanges.h"
-#include "ficha.h"
+#include "fichabf.h"
 
 
 class company;
@@ -42,7 +42,7 @@ class company;
     Deriva de Ficha para metodos comunes a todas las ventanas.
     Deriva de Cobro para el manejo de la Base de datos.    
 */
-class CobroView : public Ficha, private Ui_CobroBase, public Cobro {
+class CobroView : public Cobro, public Ui_CobroBase {
     Q_OBJECT
 
 public:

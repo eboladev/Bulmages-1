@@ -32,13 +32,12 @@
 
 
 #include "articulolist.h"
+#include "blwidget.h"
 
-
-class CatalogoQToolButton : public QToolButton {
+class CatalogoQToolButton : public QToolButton, PEmpresaBase {
 	Q_OBJECT
 
 private:
-	company *m_companyact;
 	ArticuloList *m_articuloList;
 
 public:

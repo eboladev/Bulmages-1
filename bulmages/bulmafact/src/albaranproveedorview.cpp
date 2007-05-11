@@ -56,12 +56,12 @@ AlbaranProveedorView::AlbaranProveedorView(company *comp, QWidget *parent)
         int res = g_plugins->lanza("AlbaranProveedorView_AlbaranProveedorView", this);
         if (res != 0)
             return;
-        subform2->setcompany(comp);
-        m_almacen->setcompany(comp);
-        m_forma_pago->setcompany(comp);
-        m_proveedor->setcompany(comp);
-        m_descuentos->setcompany(comp);
-        m_refalbaranp->setcompany(comp);
+        subform2->setEmpresaBase(comp);
+        m_almacen->setEmpresaBase(comp);
+        m_forma_pago->setEmpresaBase(comp);
+        m_proveedor->setEmpresaBase(comp);
+        m_descuentos->setEmpresaBase(comp);
+        m_refalbaranp->setEmpresaBase(comp);
 
         setListaLineas(subform2);
         setListaDescuentos(m_descuentos);
@@ -76,8 +76,8 @@ AlbaranProveedorView::AlbaranProveedorView(company *comp, QWidget *parent)
         m_totalalbaranp->setAlignment(Qt::AlignRight);
         pintaidforma_pago("0");
         pintaidalmacen("0");
-        if (m_companyact != NULL)
-            m_companyact->meteWindow(windowTitle(), this, FALSE);
+        if (empresaBase() != NULL)
+            empresaBase()->meteWindow(windowTitle(), this, FALSE);
     } catch (...) {
         mensajeInfo(tr("Error al crear el albaran proveedor"));
     } // end try
@@ -89,7 +89,7 @@ AlbaranProveedorView::AlbaranProveedorView(company *comp, QWidget *parent)
 */
 AlbaranProveedorView::~AlbaranProveedorView() {
     _depura("AlbaranProveedorView::~AlbaranProveedorView", 0);
-    m_companyact->refreshAlbaranesProveedor();
+    empresaBase()->refreshAlbaranesProveedor();
     _depura("END AlbaranProveedorView::~AlbaranProveedorView", 0);
 }
 
@@ -138,11 +138,11 @@ void AlbaranProveedorView::generarFactura()  {
     /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos
     /// y salimos de la funcion.
     QString SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + DBvalue("refalbaranp") + "'";
-    cursor2 *cur = m_companyact->cargacursor(SQLQuery);
+    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
 
     if (!cur->eof()) {
-        FacturaProveedorView *bud = m_companyact->newFacturaProveedorView();
-        m_companyact->m_pWorkspace->addWindow(bud);
+        FacturaProveedorView *bud = empresaBase()->newFacturaProveedorView();
+        empresaBase()->m_pWorkspace->addWindow(bud);
         bud->cargar(cur->valor("idfacturap"));
         bud->show();
         return;
@@ -159,8 +159,8 @@ void AlbaranProveedorView::generarFactura()  {
     } // end if
 
     /// Creamos la factura.
-    FacturaProveedorView *bud = m_companyact->newFacturaProveedorView();
-    m_companyact->m_pWorkspace->addWindow(bud);
+    FacturaProveedorView *bud = empresaBase()->newFacturaProveedorView();
+    empresaBase()->m_pWorkspace->addWindow(bud);
 
     bud->setcomentfacturap(DBvalue("comentalbaranp"));
     bud->setidforma_pago(DBvalue("idforma_pago"));
@@ -197,7 +197,7 @@ int AlbaranProveedorView::cargar(QString id) {
         AlbaranProveedor::cargar(id);
         if (DBvalue("idalbaranp") != "") {
             setWindowTitle(tr("Albaran de proveedor") + " " + DBvalue("refalbaranp") + " " + DBvalue("idalbaranp"));
-            m_companyact->meteWindow(windowTitle(), this);
+            empresaBase()->meteWindow(windowTitle(), this);
             dialogChanges_cargaInicial();
         } // end if
     } catch (...) {
@@ -255,8 +255,8 @@ void AlbaranProveedorView::on_mui_guardar_clicked() {
 ///  \TODO: Actualmente no esta comprobando que el pago ya exista.
 void AlbaranProveedorView::on_mui_pagar_clicked() {
     _depura("AlbaranProveedorView::on_mui_pagar_clicked", 0);
-    PagoView *bud = m_companyact->newPagoView();
-    m_companyact->m_pWorkspace->addWindow(bud);
+    PagoView *bud = empresaBase()->newPagoView();
+    empresaBase()->m_pWorkspace->addWindow(bud);
     bud->setidproveedor(DBvalue("idproveedor"));
     bud->setcantpago(m_totalalbaranp->text());
     bud->setrefpago(DBvalue("refalbaranp"));
@@ -274,11 +274,11 @@ void AlbaranProveedorView::on_mui_pagar_clicked() {
 void AlbaranProveedorView::on_mui_verpedidosproveedor_clicked() {
     _depura("AlbaranProveedorView::on_mui_verpedidos_clicked", 0);
     QString query = "SELECT * FROM pedidoproveedor WHERE refpedidoproveedor = '" + DBvalue("refalbaranp") + "'";
-    cursor2 *cur = m_companyact->cargacursor(query);
+    cursor2 *cur = empresaBase()->cargacursor(query);
     while (!cur->eof()) {
-        PedidoProveedorView *pedpro = m_companyact->nuevoPedidoProveedorView();
+        PedidoProveedorView *pedpro = empresaBase()->nuevoPedidoProveedorView();
         pedpro->cargar(cur->valor("idpedidoproveedor"));
-        m_companyact->m_pWorkspace->addWindow( pedpro);
+        empresaBase()->m_pWorkspace->addWindow( pedpro);
         pedpro->show();
         cur->siguienteregistro();
     } // end while
@@ -298,7 +298,7 @@ void AlbaranProveedorView::generarFacturaProveedor() {
     /// Comprobamos que existe una factura para este cliente, y en caso afirmativo lo mostramos
     /// y salimos de la funci&oacute;n.
     QString SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + DBvalue("refalbaranp") + "' AND idproveedor ="+DBvalue("idproveedor");
-    cursor2 *cur = m_companyact->cargacursor(SQLQuery);
+    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
 
     if (!cur->eof()) {
 
@@ -310,8 +310,8 @@ void AlbaranProveedorView::generarFacturaProveedor() {
 				tr("&Si"), tr("&No"), QString::null, 0, 1)) {
 		return;
 	}
-        FacturaProveedorView *bud = m_companyact->newFacturaProveedorView();
-        m_companyact->m_pWorkspace->addWindow(bud);
+        FacturaProveedorView *bud = empresaBase()->newFacturaProveedorView();
+        empresaBase()->m_pWorkspace->addWindow(bud);
         bud->cargar(cur->valor("idfacturap"));
         bud->show();
         return;
@@ -328,8 +328,8 @@ void AlbaranProveedorView::generarFacturaProveedor() {
 //    }
 
     /// Creamos la factura.
-    FacturaProveedorView *bud = m_companyact->newFacturaProveedorView();
-    m_companyact->m_pWorkspace->addWindow(bud);
+    FacturaProveedorView *bud = empresaBase()->newFacturaProveedorView();
+    empresaBase()->m_pWorkspace->addWindow(bud);
 
     /// Cargamos un elemento que no existe para inicializar bien la clase.
     bud->inicializar();

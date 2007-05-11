@@ -36,7 +36,7 @@
 #include "listlinalbaranclienteview.h"
 #include "listlinfacturaview.h"
 #include "listlinfacturapview.h"
-
+#include "blwidget.h"
 
 extern "C" MY_EXPORT int entryPoint(bulmafact *);
 extern "C" MY_EXPORT int ListLinAlbaranProveedorView_ListLinAlbaranProveedorView(ListLinAlbaranProveedorView *);
@@ -48,11 +48,10 @@ extern "C" MY_EXPORT int SubForm2Bf_on_mui_list_editFinished(SubForm2Bf *);
 extern QApplication2 *theApp;
 
 
-class myplugin : public QObject {
+class myplugin : public QObject, PEmpresaBase {
     Q_OBJECT
 
 public:
-    company *m_companyact;
     bulmafact *m_bulmafact;
 
 public:

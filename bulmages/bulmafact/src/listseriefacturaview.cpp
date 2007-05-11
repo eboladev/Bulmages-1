@@ -39,14 +39,13 @@
 
 
 ListSerieFacturaView::ListSerieFacturaView(company *comp, QWidget *parent)
-        : Ficha(parent) {
+        : FichaBf(comp, parent) {
     _depura("INIT_ListSerieFacturaView::ListSerieFacturaView", 1);
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
-    companyact = comp;
-    mui_listado->setcompany(comp);
+    mui_listado->setEmpresaBase(comp);
     mui_listado->cargar();
-    companyact->meteWindow(windowTitle(), this);
+    empresaBase()->meteWindow(windowTitle(), this);
     _depura("END_ListSerieFacturaView::ListSerieFacturaView", 1);
 }
 
@@ -56,11 +55,6 @@ ListSerieFacturaView::~ListSerieFacturaView() {
     _depura("END ListSerieFacturaView::~ListSerieFacturaView", 0);
 }
 
-
-int ListSerieFacturaView::sacaWindow() {
-    companyact->sacaWindow(this);
-    return 0;
-}
 
 /// ===================================== SUBFORMULARIO ===============================================
 ListSerieFacturaSubForm::ListSerieFacturaSubForm(QWidget *parent) : SubForm2Bf(parent) {

@@ -24,25 +24,15 @@
 #include <QString>
 
 #include "company.h"
-#include "dbrecord.h"
+#include "fichabf.h"
 
 
-class IncidenciaComercial : public DBRecord {
-
-protected:
-    company *m_companyact;
+class IncidenciaComercial : public FichaBf {
 
 public:
-    IncidenciaComercial(company *);
-    company* companyact() {
-        return m_companyact;
-    };
+    IncidenciaComercial(company *, QWidget *);
     virtual ~IncidenciaComercial();
     virtual void pintar();
-    void setcompany(company *comp) {
-        m_companyact = comp;
-        DBRecord::setconexionbase(comp);
-    };
 };
 
 #endif

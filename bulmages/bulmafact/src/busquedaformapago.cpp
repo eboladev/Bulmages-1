@@ -21,7 +21,6 @@
 #include <QComboBox>
 
 #include "busquedaformapago.h"
-#include "company.h"
 
 
 /** Inicializa todos los componenetes a NULL para que no se produzcan confusiones
@@ -30,9 +29,8 @@
 */
 /// \TODO: No deberia usarse m_activated como signal ya que confunde con una variable de clase.
 BusquedaFormaPago::BusquedaFormaPago(QWidget *parent)
-        : QComboBox(parent) {
+        : QComboBox(parent), PEmpresaBase() {
     _depura("BusquedaFormaPago::BusquedaFormaPago", 0);
-    companyact = NULL;
     m_cursorcombo = NULL;
     connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
     _depura("END BusquedaFormaPago::BusquedaFormaPago", 0);
@@ -58,7 +56,7 @@ void BusquedaFormaPago::setidforma_pago(QString idforma_pago) {
     _depura("BusquedaFormaPago::setidforma_pago", 0);
     if (m_cursorcombo != NULL)
         delete m_cursorcombo;
-    m_cursorcombo = companyact->cargacursor("SELECT * FROM forma_pago");
+    m_cursorcombo = empresaBase()->cargacursor("SELECT * FROM forma_pago");
     int i = 0;
     int i1 = 0;
     clear();
@@ -69,7 +67,7 @@ void BusquedaFormaPago::setidforma_pago(QString idforma_pago) {
             i1 = i;
         addItem(m_cursorcombo->valor("descforma_pago"));
         m_cursorcombo->siguienteregistro();
-    }
+    } // end while
     setCurrentIndex(i1);
     _depura("END BusquedaFormaPago::setidforma_pago", 0);
 }
@@ -78,13 +76,15 @@ void BusquedaFormaPago::setidforma_pago(QString idforma_pago) {
 void BusquedaFormaPago::setIdCliente(QString idcliente) {
     _depura("BusquedaFormaPago::setIdCliente", 0, idcliente);
 
+
     /// Si el idcliente no existe salimos.
     if (idcliente == "") {
         _depura("END BusquedaFormaPago::setIdCliente", 0, "idcliente invalido");
         return;
     } // end if
 
-    cursor2 *cur = companyact->cargacursor("SELECT idforma_pago FROM cliente WHERE idcliente = " + idcliente);
+    cursor2 *cur = empresaBase()->cargacursor("SELECT idforma_pago FROM cliente WHERE idcliente = " + idcliente);
+
     if (!cur->eof()) {
         setidforma_pago(cur->valor("idforma_pago"));
     } // end if
@@ -95,7 +95,9 @@ void BusquedaFormaPago::setIdCliente(QString idcliente) {
 
 void BusquedaFormaPago::setIdProveedor(QString idproveedor) {
     _depura("BusquedaFormaPago::setIdProveedor", 0, idproveedor);
-    cursor2 * cur = companyact->cargacursor("SELECT idforma_pago FROM proveedor WHERE idproveedor = " + idproveedor);
+
+    cursor2 * cur = empresaBase()->cargacursor("SELECT idforma_pago FROM proveedor WHERE idproveedor="+idproveedor);
+
     if (!cur->eof()) {
         setidforma_pago(cur->valor("idforma_pago"));
     } // end if
@@ -114,13 +116,6 @@ void BusquedaFormaPago::m_activated(int index) {
     _depura("END BusquedaFormaPago::m_activated", 0);
 }
 
-/** Inicializa la clase con el puntero adecuado a la empresa
-**/
-void BusquedaFormaPago::setcompany(company *comp) {
-    _depura("BusquedaFormaPago::setcompany", 0);
-    companyact = comp;
-    _depura("END BusquedaFormaPago::setcompany", 0);
-}
 
 /** Devuelve el identificador de forma de pago indicado
 **/

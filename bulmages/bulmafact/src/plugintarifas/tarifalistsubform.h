@@ -30,17 +30,10 @@ class TarifaListSubform : public SubForm2Bf {
 
 public:
     TarifaListSubform(QWidget *parent = 0);
-    ~TarifaListSubform() {}
-    ;
+    ~TarifaListSubform() {}    ;
 
 public slots:
-    virtual void cargar() {
-        _depura("TarifaListSubform::cargar\n", 0);
-        QString SQLQuery = "SELECT * FROM tarifa";
-        cursor2 *cur = companyact()->cargacursor(SQLQuery);
-        SubForm3::cargar(cur);
-        delete cur;
-    };
+    virtual void cargar();
 };
 
 #endif

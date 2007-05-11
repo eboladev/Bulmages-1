@@ -131,14 +131,6 @@ void SubForm3::showConfig() {
 }
 
 
-void SubForm3::setcompany(postgresiface2 *c) {
-    m_companyact = c;
-}
-
-
-postgresiface2 *SubForm3::companyact() {
-    return m_companyact;
-}
 
 
 void SubForm3::setDBTableName(QString nom) {
@@ -188,10 +180,9 @@ void SubForm3::procesaMenu(QAction *) {
 
 
 /// SubForm3, constructor de la clase base para subformularios.
-SubForm3::SubForm3(QWidget *parent) : QWidget(parent) {
+SubForm3::SubForm3(QWidget *parent) : BLWidget(parent) {
     setupUi(this);
     _depura("SubForm3::SubForm3", 0);
-    m_companyact = NULL;
     mui_list->setSelectionMode(QAbstractItemView::SingleSelection);
     mui_list->setSelectionBehavior(QAbstractItemView::SelectRows);
     mui_list->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
@@ -313,7 +304,7 @@ bool SubForm3::existsHeader(const QString &head) {
 /// Nota: Esta funcion es de uso interno, no debe ser usada.
 SDBRecord *SubForm3::newSDBRecord() {
     _depura("SubForm3::newSDBRecord", 0);
-    SDBRecord *rec = new SDBRecord(m_companyact);
+    SDBRecord *rec = new SDBRecord(empresaBase());
     rec->setDBTableName(m_tablename);
     rec->setDBCampoId(m_campoid);
 
@@ -608,7 +599,7 @@ void SubForm3::cargar(cursor2 *cur) {
 
 void SubForm3::cargar(QString query) {
     _depura("SubForm3::cargar", 0);
-    cursor2 *cur = m_companyact->cargacursor(query);
+    cursor2 *cur = empresaBase()->cargacursor(query);
     cargar(cur);
     delete cur;
     _depura("END SubForm3::cargar", 0);
@@ -896,7 +887,7 @@ int SubForm3::borrar(int row) {
         SDBRecord *rec, *rac;
         SDBCampo *camp;
 
-        rac = new SDBRecord(m_companyact);
+        rac = new SDBRecord(empresaBase());
 
         /// Cogemos el elemento correspondiente, partimos de mui_list, tb podriamos usar lineaat
         rec = lineaat(row);
@@ -914,7 +905,7 @@ int SubForm3::borrar(int row) {
         /// Sacamos celda a celda toda la fila
         for (int i = 0; i < mui_list->columnCount(); i++) {
             camp = (SDBCampo *) mui_list->item(row,i);
-            SDBCampo * it= new SDBCampo(rac, m_companyact, camp->nomcampo(), camp->tipo(), camp->restrictcampo(), camp->nompresentacion());
+            SDBCampo * it= new SDBCampo(rac, empresaBase(), camp->nomcampo(), camp->tipo(), camp->restrictcampo(), camp->nompresentacion());
             rac->lista()->append(it);
             it->set
             ( camp->valorcampo());
@@ -1083,11 +1074,11 @@ QString SubForm3::imprimir() {
 
 void SubForm3::on_mui_confquery_clicked() {
     _depura("SubForm3::on_mui_confquery_clicked ", 0);
-    if (m_companyact == NULL) {
+    if (empresaBase() == NULL) {
         mensajeInfo("no se ha inicializado bien la clase");
         return;
     } // end if
-    cursor2 *cur = m_companyact->cargacursor(mui_query->toPlainText());
+    cursor2 *cur = empresaBase()->cargacursor(mui_query->toPlainText());
     cargar(cur);
     delete cur;
     _depura("END SubForm3::on_mui_confquery_clicked ", 0);

@@ -32,21 +32,20 @@
 
 
 TarifaView::TarifaView(company *comp, QWidget *parent)
-        : QWidget(parent) ,dialogChanges(this), DBRecord(comp) {
+        : FichaBf(comp, parent) {
     _depura("TarifaView::INIT_constructor()\n", 0);
     setAttribute(Qt::WA_DeleteOnClose);
-    m_companyact = comp;
     setupUi(this);
     setDBTableName("tarifa");
     setDBCampoId("idtarifa");
     addDBCampo("idtarifa", DBCampo::DBint, DBCampo::DBPrimaryKey, tr("ID tarifa"));
     addDBCampo("nomtarifa", DBCampo::DBvarchar, DBCampo::DBNotNull, tr("Nombre de la tarifa"));
-    mui_idfamilia->setcompany(comp);
-    mui_almacen->setcompany(comp);
-    mui_almacen->setidalmacen("0");
-    mui_list->setcompany(comp);
+    mui_idfamilia->setEmpresaBase(comp);
+    mui_almacen->setEmpresaBase(comp);
+    mui_almacen->setidalmacen("");
+    mui_list->setEmpresaBase(comp);
 
-    if (m_companyact->meteWindow(tr("Tarifa edicion"), this))
+    if (empresaBase()->meteWindow(tr("Tarifa edicion"), this))
         return;
 
     dialogChanges_cargaInicial();
@@ -56,7 +55,7 @@ TarifaView::TarifaView(company *comp, QWidget *parent)
 
 TarifaView::~TarifaView() {
     _depura("TarifaView::INIT_destructor()\n", 0);
-    m_companyact->sacaWindow(this);
+    empresaBase()->sacaWindow(this);
     _depura("TarifaView::END_destructor()\n", 0);
 }
 
@@ -106,7 +105,7 @@ int TarifaView::cargar(QString idtarifa) {
     mui_list->cargar(formaQuery(idtarifa));
 
     setWindowTitle(tr("Tarifa") + " " + DBvalue("nomtarifa"));
-    if (m_companyact->meteWindow(windowTitle(), this))
+    if (empresaBase()->meteWindow(windowTitle(), this))
         return -1;
 
     dialogChanges_cargaInicial();
@@ -160,13 +159,13 @@ void TarifaView::on_mui_borrar_clicked() {
                                   tr("Borrar tarifa"),
                                   tr("Esta a punto de borrar una tarifa. Desea continuar?"),
                                   tr("&Si"), tr("&No"), 0, 1, 0) == 0) {
-            m_companyact->begin();
+            empresaBase()->begin();
             int error = mui_list->borrar();
             error += borrar();
             if (error) {
-                m_companyact->rollback();
+                empresaBase()->rollback();
             } else
-                m_companyact->commit();
+                empresaBase()->commit();
             dialogChanges_cargaInicial();
             close();
         } // end if

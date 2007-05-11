@@ -24,9 +24,9 @@
 #include "ui_tarifalistbase.h"
 #include "company.h"
 #include "pgimportfiles.h"
+#include "fichabf.h"
 
-
-class TarifaListView : public QWidget, private Ui_TarifaListBase, public pgimportfiles {
+class TarifaListView : public FichaBf, private Ui_TarifaListBase, public pgimportfiles {
     Q_OBJECT
 
 public:
@@ -36,7 +36,6 @@ public:
     };
 
 private:
-    company *m_companyact;
     edmode m_modo;
 
 public:

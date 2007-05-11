@@ -26,21 +26,17 @@
 #include "company.h"
 #include "postgresiface2.h"
 #include "funcaux.h"
+#include "blwidget.h"
 
-
-class BusquedaZonaComercial : public QComboBox {
+class BusquedaZonaComercial : public QComboBox, public PEmpresaBase {
     Q_OBJECT
 
 private:
-    company *companyact;
     cursor2 *m_cursorcombo;
 
 public:
     BusquedaZonaComercial(QWidget *parent = 0);
     ~BusquedaZonaComercial();
-    void setcompany(company *comp) {
-        companyact = comp;
-    };
     virtual void setidzonacomercial(QString idzonacomercial);
     QString idzonacomercial() {
         return m_cursorcombo->valor("idzonacomercial", currentIndex() - 1);

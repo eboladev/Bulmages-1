@@ -23,6 +23,7 @@
 
 #include "qtable2.h"
 #include "subform2bf.h"
+#include "blwidget.h"
 
 
 class ListLTarifaView : public SubForm2Bf {
@@ -67,13 +68,11 @@ public slots:
 
 /// OJO. Esta clase est&aacute; definida aqu&iacute; pero es el lanzador del plugin para las
 /// entradas del men&uacute; del plugin.
-class myplugin1 : public QObject {
+class myplugin1 : public QObject, public PEmpresaBase {
     Q_OBJECT
 
 public:
     bulmafact *m_bges;
-    company *m_companyact;
-
 public:
     myplugin1();
     ~myplugin1();

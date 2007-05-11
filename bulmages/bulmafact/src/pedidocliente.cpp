@@ -57,15 +57,15 @@ PedidoCliente::~PedidoCliente() {
 int PedidoCliente::borrar() {
     _depura("PedidoCliente::borrar", 0);
     if (DBvalue("idpedidocliente") != "") {
-        m_companyact->begin();
+        empresaBase()->begin();
         m_listalineas->borrar();
         m_listadescuentos->borrar();
-        int error = m_companyact->ejecuta("DELETE FROM pedidocliente WHERE idpedidocliente = " + DBvalue("idpedidocliente"));
+        int error = empresaBase()->ejecuta("DELETE FROM pedidocliente WHERE idpedidocliente = " + DBvalue("idpedidocliente"));
         if (error) {
-            m_companyact->rollback();
+            empresaBase()->rollback();
             return -1;
         } // end if
-        m_companyact->commit();
+        empresaBase()->commit();
     } // end if
     _depura("PedidoCliente::borrar", 0);
     return 0;
@@ -103,7 +103,7 @@ void PedidoCliente::pintar() {
 int PedidoCliente::cargar(QString idbudget) {
     _depura("PedidoCliente::cargar", 0);
     QString query = "SELECT * FROM pedidocliente WHERE idpedidocliente = " + idbudget;
-    cursor2 *cur = m_companyact->cargacursor(query);
+    cursor2 *cur = empresaBase()->cargacursor(query);
     if (!cur->eof()) {
         DBload(cur);
     } // end if
@@ -119,20 +119,20 @@ int PedidoCliente::cargar(QString idbudget) {
 int PedidoCliente::guardar() {
     _depura("PedidoCliente::guardar", 0);
     QString id;
-    m_companyact->begin();
+    empresaBase()->begin();
     try {
         DBsave(id);
         setidpedidocliente(id);
         m_listalineas->guardar();
         m_listadescuentos->guardar();
-        m_companyact->commit();
+        empresaBase()->commit();
         /// Hacemos una carga para recuperar los campos Referencia y num.
         cargar(id);
         _depura("END PedidoCliente::guardar", 0);
         return 0;
     } catch (...) {
         _depura("PedidoCliente::guardar se produjo un error al guardar, cancelamos la operacion", 0);
-        m_companyact->rollback();
+        empresaBase()->rollback();
         throw -1;
     } // end try
 }

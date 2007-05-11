@@ -24,7 +24,7 @@
 #include "pgimportfiles.h"
 #include "company.h"
 #include "subform2bf.h"
-#include "ficha.h"
+#include "fichabf.h"
 
 
 /** Subformulario de clientes.
@@ -47,7 +47,7 @@ public:
     Tiene dos modos de funcionamiento (Edicion y Seleccion)
 */
 /// \TODO: Deberia crearse la clase Listado para poner en ella mas funcionalidades comunes a los listados.
-class ClientsList : public Ficha, public Ui_ClientsListBase, public pgimportfiles {
+class ClientsList : public FichaBf, public Ui_ClientsListBase, public pgimportfiles {
     Q_OBJECT
 
 public:
@@ -66,13 +66,12 @@ private:
     QString mdb_nomcliente;
     /// Almacena el cifcliente del registro seleccionado.
     QString mdb_cifcliente;
-    /// Puntero a la clase company para poder trabajar con la Base de Datos y poder hacer paso de mensajes.
-    company *m_companyact;
+
 
 public:
     ClientsList(company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode);
     ~ClientsList();
-    company *getcompany();
+
     void selectMode();
     void editMode();
     void presenta();

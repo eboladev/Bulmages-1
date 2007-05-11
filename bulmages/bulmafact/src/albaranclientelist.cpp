@@ -33,7 +33,7 @@
 void AlbaranClienteListSubform::cargar() {
     _depura("AlbaranClienteListSubform::cargar\n", 0);
     QString SQLQuery = "SELECT * FROM albaran";
-    cursor2 * cur= companyact()->cargacursor(SQLQuery);
+    cursor2 * cur= empresaBase()->cargacursor(SQLQuery);
     SubForm3::cargar(cur);
     delete cur;
 }
@@ -51,18 +51,6 @@ void AlbaranClienteList::modoseleccion() {
 
 void AlbaranClienteList::modoedicion() {
     m_modo = 0;
-}
-
-
-void AlbaranClienteList::setcompany(company *comp) {
-    m_companyact = comp;
-    m_cliente->setcompany(comp);
-    mui_list->setcompany(comp);
-}
-
-
-company *AlbaranClienteList::getcompany() {
-    return m_companyact;
 }
 
 
@@ -97,8 +85,8 @@ QString AlbaranClienteList::idCliDelivNote() {
 
 
 void AlbaranClienteList::meteWindow(QString nom, QObject *obj) {
-    if (m_companyact != NULL) {
-        m_companyact->meteWindow(nom, obj);
+    if (empresaBase() != NULL) {
+        empresaBase()->meteWindow(nom, obj);
     } // end if
 }
 
@@ -116,7 +104,7 @@ void AlbaranClienteList::on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
 
 
 void AlbaranClienteList::on_mui_crear_clicked() {
-    m_companyact->s_newAlbaranClienteView();
+    empresaBase()->s_newAlbaranClienteView();
 }
 
 
@@ -147,14 +135,13 @@ void AlbaranClienteList::on_mui_configurar_toggled(bool checked) {
     Usando esta clase tampoco se inicializan bien los widgets que contiene.
 */
 AlbaranClienteList::AlbaranClienteList(QWidget *parent, Qt::WFlags flags, edmode editmodo)
-        : Ficha(parent, flags) {
+        : FichaBf(NULL, parent, flags) {
     _depura("AlbaranClienteList::AlbaranClienteList", 0);
     setupUi(this);
     /// Disparamos los plugins.
     int res = g_plugins->lanza("AlbaranClienteList_AlbaranClienteList", this);
     if (res != 0)
         return;
-    m_companyact = NULL;
     m_modo = editmodo;
     mdb_idalbaran = "";
     if (m_modo == EditMode)
@@ -171,31 +158,39 @@ AlbaranClienteList::AlbaranClienteList(QWidget *parent, Qt::WFlags flags, edmode
     Mete la ventana en el workspace.
 */
 AlbaranClienteList::AlbaranClienteList(company *comp, QWidget *parent, Qt::WFlags, edmode editmodo)
-        : Ficha(parent) {
+        : FichaBf(comp, parent) {
     _depura("AlbaranClienteList::AlbaranClienteList", 0);
     setupUi(this);
     /// Disparamos los plugins.
     int res = g_plugins->lanza("AlbaranClienteList_AlbaranClienteList", this);
     if (res != 0)
         return;
-    m_companyact = comp;
-    m_cliente->setcompany(comp);
-    m_articulo->setcompany(comp);
-    mui_list->setcompany(comp);
+    m_cliente->setEmpresaBase(comp);
+    m_articulo->setEmpresaBase(comp);
+    mui_list->setEmpresaBase(comp);
     presenta();
     m_modo = editmodo;
     mdb_idalbaran = "";
     if (m_modo == EditMode)
-        m_companyact->meteWindow(windowTitle(), this);
+        empresaBase()->meteWindow(windowTitle(), this);
     hideBusqueda();
     _depura("END AlbaranClienteList::AlbaranClienteList", 0);
+}
+
+void AlbaranClienteList::setEmpresaBase(company *comp) {
+    _depura("AlbaranClienteList::setEmpresaBase", 0);
+    PEmpresaBase::setEmpresaBase(comp);
+    m_cliente->setEmpresaBase(comp);
+    m_articulo->setEmpresaBase(comp);
+    mui_list->setEmpresaBase(comp);
+    _depura("END AlbaranClienteList::setEmpresaBase", 0);
 }
 
 
 /** Destructor de la clase */
 AlbaranClienteList::~AlbaranClienteList() {
     _depura("AlbaranClienteList::~AlbaranClienteList", 0);
-    m_companyact->sacaWindow(this);
+    empresaBase()->sacaWindow(this);
     _depura("END AlbaranClienteList::~AlbaranClienteList", 0);
 }
 
@@ -208,7 +203,7 @@ void AlbaranClienteList::presenta() {
 
     mui_list->cargar("SELECT *, totalalbaran AS total, bimpalbaran AS base, impalbaran AS impuestos FROM albaran LEFT JOIN  cliente ON albaran.idcliente = cliente.idcliente LEFT JOIN almacen ON albaran.idalmacen = almacen.idalmacen LEFT JOIN forma_pago ON albaran.idforma_pago = forma_pago.idforma_pago WHERE 1 = 1 " + generarFiltro());
     /// Hacemos el calculo del total.
-    cursor2 *cur = m_companyact->cargacursor("SELECT SUM(totalalbaran) AS total FROM albaran LEFT JOIN cliente ON albaran.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen = albaran.idalmacen where 1 = 1 " + generarFiltro());
+    cursor2 *cur = empresaBase()->cargacursor("SELECT SUM(totalalbaran) AS total FROM albaran LEFT JOIN cliente ON albaran.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen = albaran.idalmacen where 1 = 1 " + generarFiltro());
     m_total->setText(cur->valor("total"));
     delete cur;
 
@@ -220,7 +215,7 @@ void AlbaranClienteList::presenta() {
      o bien haciendo doble click en el modo de edicion se desea invocar la accion
      Editar el elemento si estamos en modo editmode o cerrar la ventana y emitir
      un signal selected() si estamos en el modo selector.
-
+ 
      Primero determina el idalbaran seleccionado, luego crea la instancia de
      la ventana de edicion AlbaranClienteView y lo mete en el workspace.
      Por ultimo hace que dicha ventana carge de la base de datos el idalbaran
@@ -230,12 +225,12 @@ void AlbaranClienteList::editar(int row) {
     _depura("AlbaranClienteList::editar", 0);
     mdb_idalbaran = mui_list->DBvalue(QString("idalbaran"), row);
     if (m_modo == 0) {
-        AlbaranClienteView *prov = m_companyact->newAlbaranClienteView();
+        AlbaranClienteView *prov = empresaBase()->newAlbaranClienteView();
         if (prov->cargar(mdb_idalbaran)) {
             delete prov;
             return;
         } // end if
-        m_companyact->m_pWorkspace->addWindow(prov);
+        empresaBase()->m_pWorkspace->addWindow(prov);
         prov->show();
     } else {
         emit(selected(mdb_idalbaran));
@@ -276,7 +271,7 @@ void AlbaranClienteList::on_mui_borrar_clicked() {
     try {
         mdb_idalbaran = mui_list->DBvalue(QString("idalbaran"));
         if (m_modo == 0) {
-            AlbaranClienteView *acv = m_companyact->newAlbaranClienteView();
+            AlbaranClienteView *acv = empresaBase()->newAlbaranClienteView();
             if (acv->cargar(mdb_idalbaran))
                 throw -1;
             acv->on_mui_borrar_clicked();

@@ -51,44 +51,44 @@ void myplugin::elslot() {
     if (ok && !text.isEmpty()) {
         QStringList listaelem = text.split(" ");
         if (listaelem.at(0) == QString("FAC")) {
-            FacturaView *prov = m_companyact->newFacturaView();
+            FacturaView *prov = ((company *)empresaBase())->newFacturaView();
             if (prov->cargar(listaelem.at(1))) {
                 delete prov;
                 return;
             } // end if
-            m_companyact->m_pWorkspace->addWindow(prov);
+            empresaBase()->m_pWorkspace->addWindow(prov);
             prov->show();
         } else if (listaelem.at(0) == QString("PRE")) {
-            PresupuestoView *prov = m_companyact->nuevoPresupuestoView();
+            PresupuestoView *prov = ((company *)empresaBase())->nuevoPresupuestoView();
             if (prov->cargar(listaelem.at(1))) {
                 delete prov;
                 return;
             } // end if
-            m_companyact->m_pWorkspace->addWindow(prov);
+            empresaBase()->m_pWorkspace->addWindow(prov);
             prov->show();
         } else if (listaelem.at(0) == QString("PED")) {
-            PedidoClienteView *prov = new PedidoClienteView(m_companyact, 0);
+            PedidoClienteView *prov = new PedidoClienteView((company *)empresaBase(), 0);
             if (prov->cargar(listaelem.at(1))) {
                 delete prov;
                 return;
             } // end if
-            m_companyact->m_pWorkspace->addWindow(prov);
+            empresaBase()->m_pWorkspace->addWindow(prov);
             prov->show();
         } else if (listaelem.at(0) == QString("ALB")) {
-            AlbaranClienteView *prov = m_companyact->newAlbaranClienteView();
+            AlbaranClienteView *prov = ((company *)empresaBase())->newAlbaranClienteView();
             if (prov->cargar(listaelem.at(1))) {
                 delete prov;
                 return;
             } // end if
-            m_companyact->m_pWorkspace->addWindow(prov);
+            empresaBase()->m_pWorkspace->addWindow(prov);
             prov->show();
         } else if (listaelem.at(0) == QString("PEDP")) {
-            PedidoProveedorView *prov = new PedidoProveedorView(m_companyact, 0);
+            PedidoProveedorView *prov = new PedidoProveedorView((company *)empresaBase(), 0);
             if (prov->cargar(listaelem.at(1))) {
                 delete prov;
                 return;
             } // end if
-            m_companyact->m_pWorkspace->addWindow(prov);
+            empresaBase()->m_pWorkspace->addWindow(prov);
             prov->show();
         } // end if
     } // end if
@@ -97,7 +97,7 @@ void myplugin::elslot() {
 
 void myplugin::inicializa(bulmafact *bges) {
     /// Creamos el men&uacute;.
-    m_companyact = bges->getcompany();
+    setEmpresaBase(bges->getcompany());
     m_bulmafact = bges;
     QMenu *pPluginMenu;
     /// Miramos si existe un menu Herramientas

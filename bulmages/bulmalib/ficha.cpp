@@ -63,7 +63,16 @@ void Ficha::on_mui_guardar_clicked() {
 }
 
 
-Ficha::Ficha(QWidget *parent, Qt::WFlags f, edmode modo) : QWidget(parent, f), dialogChanges(this) {
+
+
+Ficha::Ficha(QWidget *parent, Qt::WFlags f, edmode modo) : BLWidget(parent, f), dialogChanges(this) {
+    _depura("Ficha::Ficha", 0);
+    m_modo=modo;
+    dialogChanges_cargaInicial();
+    _depura("END Ficha::Ficha", 0);
+}
+
+Ficha::Ficha(EmpresaBase *emp, QWidget *parent, Qt::WFlags f, edmode modo) : BLWidget(emp, parent, f), dialogChanges(this) {
     _depura("Ficha::Ficha", 0);
     m_modo=modo;
     dialogChanges_cargaInicial();
@@ -96,8 +105,8 @@ void Ficha::on_mui_borrar_clicked() {
     int val = QMessageBox::question(this,
                                     tr("Borrar") + " " + windowTitle(),
                                     tr("Desea eliminar '") + " " + windowTitle() + "' ?",
-                                   QMessageBox::Yes,
-                                   QMessageBox::Cancel | QMessageBox::Escape | QMessageBox::Default);
+                                    QMessageBox::Yes,
+                                    QMessageBox::Cancel | QMessageBox::Escape | QMessageBox::Default);
 
     if (val == QMessageBox::Yes) {
         if (!borrar()) {

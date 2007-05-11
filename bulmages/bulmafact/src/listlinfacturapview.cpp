@@ -65,7 +65,7 @@ ListLinFacturaProveedorView::ListLinFacturaProveedorView(QWidget *parent)
 void ListLinFacturaProveedorView::cargar(QString idfacturap) {
     _depura("ListLinFacturaProveedorView::cargar", 0);
     mdb_idfacturap = idfacturap;
-    cursor2 *cur = companyact()->cargacursor("SELECT * FROM lfacturap LEFT JOIN articulo ON lfacturap.idarticulo = articulo.idarticulo WHERE idfacturap = " + mdb_idfacturap + " ORDER BY ordenlfacturap");
+    cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM lfacturap LEFT JOIN articulo ON lfacturap.idarticulo = articulo.idarticulo WHERE idfacturap = " + mdb_idfacturap + " ORDER BY ordenlfacturap");
     SubForm3::cargar(cur);
     delete cur;
     _depura("END ListLinFacturaProveedorView::cargar", 0);

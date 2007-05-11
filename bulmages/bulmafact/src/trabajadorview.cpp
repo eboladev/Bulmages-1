@@ -42,7 +42,7 @@ TrabajadorView::TrabajadorView(company *emp, QWidget *parent)
     m_cursortrabajadores = NULL;
     m_item = NULL;
     pintar();
-    m_companyact->meteWindow(windowTitle(), this);
+    empresaBase()->meteWindow(windowTitle(), this);
     _depura("END TrabajadorView::TrabajadorView", 0);
 }
 
@@ -57,7 +57,7 @@ void TrabajadorView::pintar() {
     if (m_cursortrabajadores != NULL) {
         delete m_cursortrabajadores;
     } // end if
-    m_cursortrabajadores = m_companyact->cargacursor("SELECT * FROM trabajador ORDER BY apellidostrabajador");
+    m_cursortrabajadores = empresaBase()->cargacursor("SELECT * FROM trabajador ORDER BY apellidostrabajador");
     while (!m_cursortrabajadores->eof()) {
         new QListWidgetItem(m_cursortrabajadores->valor("apellidostrabajador") + " " + m_cursortrabajadores->valor("nomtrabajador"), mui_lista);
         m_cursortrabajadores->siguienteregistro();
@@ -109,26 +109,26 @@ void TrabajadorView::on_mui_guardar_clicked() {
         m_textactivotrabajador = "TRUE";
     } // end if
     QString query = "UPDATE trabajador SET ";
-    query += "  nomtrabajador='" + m_companyact->sanearCadena(m_nomtrabajador->text()) + "'";
-    query += ", apellidostrabajador= '" + m_companyact->sanearCadena(m_apellidostrabajador->text()) + "'";
-    query += ", nsstrabajador = '" + m_companyact->sanearCadena(m_nsstrabajador->text()) + "'";
-    query += ", dirtrabajador = '" + m_companyact->sanearCadena(m_dirtrabajador->text()) + "'";
-    query += ", teltrabajador = '" + m_companyact->sanearCadena(m_teltrabajador->text()) + "'";
-    query += ", moviltrabajador = '" + m_companyact->sanearCadena(m_moviltrabajador->text()) + "'";
-    query += ", emailtrabajador = '" + m_companyact->sanearCadena(m_emailtrabajador->text()) + "'";
-    query += ", activotrabajador = " + m_companyact->sanearCadena(m_textactivotrabajador);
-    query += " WHERE idtrabajador=" + m_companyact->sanearCadena(mdb_idtrabajador);
+    query += "  nomtrabajador='" + empresaBase()->sanearCadena(m_nomtrabajador->text()) + "'";
+    query += ", apellidostrabajador= '" + empresaBase()->sanearCadena(m_apellidostrabajador->text()) + "'";
+    query += ", nsstrabajador = '" + empresaBase()->sanearCadena(m_nsstrabajador->text()) + "'";
+    query += ", dirtrabajador = '" + empresaBase()->sanearCadena(m_dirtrabajador->text()) + "'";
+    query += ", teltrabajador = '" + empresaBase()->sanearCadena(m_teltrabajador->text()) + "'";
+    query += ", moviltrabajador = '" + empresaBase()->sanearCadena(m_moviltrabajador->text()) + "'";
+    query += ", emailtrabajador = '" + empresaBase()->sanearCadena(m_emailtrabajador->text()) + "'";
+    query += ", activotrabajador = " + empresaBase()->sanearCadena(m_textactivotrabajador);
+    query += " WHERE idtrabajador=" + empresaBase()->sanearCadena(mdb_idtrabajador);
 
-    int error = m_companyact->ejecuta(query);
+    int error = empresaBase()->ejecuta(query);
     if (error) {
-        m_companyact->rollback();
+        empresaBase()->rollback();
         return;
     } // end if
     if (m_cursortrabajadores != NULL) {
         delete m_cursortrabajadores;
     } // end if
 
-    m_cursortrabajadores = m_companyact->cargacursor("SELECT * FROM trabajador ORDER BY apellidostrabajador");
+    m_cursortrabajadores = empresaBase()->cargacursor("SELECT * FROM trabajador ORDER BY apellidostrabajador");
 
     if (m_item) {
         m_item->setText(m_apellidostrabajador->text() + m_nomtrabajador->text());
@@ -166,14 +166,14 @@ void TrabajadorView::on_mui_nuevo_clicked() {
     /// Si se ha modificado el contenido advertimos y guardamos.
     trataModificado();
     QString query = "INSERT INTO trabajador (nomtrabajador, apellidostrabajador, nsstrabajador) VALUES ('NUEVO TRABAJADOR','NUEVO TRABAJADOR','000000000000')";
-    m_companyact->begin();
-    int error = m_companyact->ejecuta(query);
+    empresaBase()->begin();
+    int error = empresaBase()->ejecuta(query);
     if (error) {
-        m_companyact->rollback();
+        empresaBase()->rollback();
         return;
     } // end if
-    cursor2 *cur = m_companyact->cargacursor("SELECT max(idtrabajador) AS idtrabajador FROM trabajador");
-    m_companyact->commit();
+    cursor2 *cur = empresaBase()->cargacursor("SELECT max(idtrabajador) AS idtrabajador FROM trabajador");
+    empresaBase()->commit();
     mdb_idtrabajador = cur->valor("idtrabajador");
     delete cur;
     pintar();
@@ -186,14 +186,14 @@ void TrabajadorView::on_mui_nuevo_clicked() {
 void TrabajadorView::on_mui_borrar_clicked() {
     _depura("TrabajadorView::on_mui_borrar_clicked", 0);
     trataModificado();
-    m_companyact->begin();
+    empresaBase()->begin();
     QString query = "DELETE FROM trabajador WHERE idtrabajador = " + mdb_idtrabajador;
-    int error = m_companyact->ejecuta(query);
+    int error = empresaBase()->ejecuta(query);
     if (error) {
-        m_companyact->rollback();
+        empresaBase()->rollback();
         return;
     } // end if
-    m_companyact->commit();
+    empresaBase()->commit();
     pintar();
     _depura("END TrabajadorView::on_mui_borrar_clicked", 0);
 }

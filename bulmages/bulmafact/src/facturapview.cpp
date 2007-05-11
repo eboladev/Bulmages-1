@@ -47,11 +47,11 @@ FacturaProveedorView::FacturaProveedorView(company *comp, QWidget *parent)
     try {
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
         setupUi(this);
-        subform2->setcompany(comp);
-        m_forma_pago->setcompany(comp);
-        m_proveedor->setcompany(comp);
-        m_descuentos->setcompany(comp);
-        m_reffacturap->setcompany(comp);
+        subform2->setEmpresaBase(comp);
+        m_forma_pago->setEmpresaBase(comp);
+        m_proveedor->setEmpresaBase(comp);
+        m_descuentos->setEmpresaBase(comp);
+        m_reffacturap->setEmpresaBase(comp);
 
 	setListaLineas(subform2);
 	setListaDescuentos(m_descuentos);
@@ -76,7 +76,7 @@ FacturaProveedorView::FacturaProveedorView(company *comp, QWidget *parent)
 */
 FacturaProveedorView::~FacturaProveedorView() {
     _depura("FacturaProveedorView::~FacturaProveedorView", 0);
-    m_companyact->refreshFacturasProveedor();
+    empresaBase()->refreshFacturasProveedor();
     _depura("END FacturaProveedorView::~FacturaProveedorView", 0);
 
 }
@@ -118,8 +118,8 @@ void FacturaProveedorView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixe
 /// \TODO: Deberia ser directamente on_mui_pagar_clicked()
 void FacturaProveedorView::s_nuevoPago() {
     _depura("FacturaProveedorView::s_nuevoPago", 0);
-    PagoView *bud = m_companyact->newPagoView();
-    m_companyact->m_pWorkspace->addWindow(bud);
+    PagoView *bud = empresaBase()->newPagoView();
+    empresaBase()->m_pWorkspace->addWindow(bud);
     bud->setidproveedor(DBvalue("idproveedor"));
     bud->setcantpago(m_totalfacturap->text());
     bud->setrefpago(DBvalue("reffacturap"));
@@ -141,7 +141,7 @@ int FacturaProveedorView::cargar(QString id) {
     try {
         FacturaProveedor::cargar(id);
         setWindowTitle(tr("Factura de proveedor") + " " + DBvalue("reffacturap") + " - " + DBvalue("numfacturap"));
-        m_companyact->meteWindow(windowTitle(), this);
+        empresaBase()->meteWindow(windowTitle(), this);
         dialogChanges_cargaInicial();
     } catch (...) {
         return -1;
@@ -185,11 +185,11 @@ int FacturaProveedorView::guardar() {
 void FacturaProveedorView::on_mui_veralbaranes_clicked() {
 	_depura("FacturaProveedorView::on_mui_veralbaranes_clicked", 0);
 	QString query = "SELECT * FROM albaranp WHERE refalbaranp='"+DBvalue("reffacturap")+"'";
-	cursor2 *cur = m_companyact->cargacursor(query);
+	cursor2 *cur = empresaBase()->cargacursor(query);
 	while (!cur->eof()) {
-		AlbaranProveedorView *albpro = m_companyact->newAlbaranProveedorView();
+		AlbaranProveedorView *albpro = empresaBase()->newAlbaranProveedorView();
 		albpro->cargar(cur->valor("idalbaranp"));
-		m_companyact->m_pWorkspace->addWindow( albpro);
+		empresaBase()->m_pWorkspace->addWindow( albpro);
 		albpro->show();
 		cur->siguienteregistro();
 	} // end while

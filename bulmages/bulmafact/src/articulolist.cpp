@@ -45,21 +45,20 @@
     Hace la presentacion inicial.
 */
 ArticuloList::ArticuloList(company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo)
-        : Ficha(parent, flag, editmodo), pgimportfiles(comp) {
+        : FichaBf(comp, parent, flag, editmodo), pgimportfiles(comp) {
     _depura("ArticuloList::ArticuloList", 0);
     setupUi(this);
     /// Disparamos los plugins.
     int res = g_plugins->lanza("ArticuloList_ArticuloList", this);
     if (res != 0)
         return;
-    m_companyact = comp;
-    m_tipoarticulo->setcompany(comp);
-    m_familia->setcompany(comp);
-    mui_list->setcompany(comp);
+    m_tipoarticulo->setEmpresaBase(comp);
+    m_familia->setEmpresaBase(comp);
+    mui_list->setEmpresaBase(comp);
     m_usadoarticulo->setCheckState(Qt::Unchecked);
 
     if (modoEdicion()) {
-        m_companyact->meteWindow(windowTitle(), this);
+        empresaBase()->meteWindow(windowTitle(), this);
     } else {
         setWindowTitle(tr("Selector de articulos"));
         mui_editar->setHidden(TRUE);
@@ -97,8 +96,8 @@ void ArticuloList::editArticle(int row) {
     mdb_nomarticulo = mui_list->DBvalue("nomarticulo", row);
     mdb_codigocompletoarticulo = mui_list->DBvalue("codigocompletoarticulo", row);
     if (modoEdicion()) {
-        ArticuloView *art = m_companyact->newArticuloView();
-        m_companyact->m_pWorkspace->addWindow(art);
+        ArticuloView *art = empresaBase()->newArticuloView();
+        empresaBase()->m_pWorkspace->addWindow(art);
         /// Si la carga no va bien entonces terminamos.
         if (art->cargar(mdb_idarticulo)) {
             delete art;
@@ -132,7 +131,7 @@ void ArticuloList::on_mui_editar_clicked() {
 /** No requiere de ninguna accion adicional */
 ArticuloList::~ArticuloList() {
     _depura("ArticuloList::~ArticuloList", 0);
-    m_companyact->sacaWindow(this);
+    empresaBase()->sacaWindow(this);
     _depura("END ArticuloList::~ArticuloList", 0);
 }
 
@@ -156,7 +155,7 @@ void ArticuloList::on_mui_borrar_clicked() {
                 tr("Esta a punto de borrar un articulo. Estos datos pueden dar problemas."),
                 QMessageBox::Yes, QMessageBox::No)) {
             QString SQLQuery = "DELETE FROM articulo WHERE idarticulo = " + idarticulo;
-            int error = m_companyact->ejecuta(SQLQuery);
+            int error = empresaBase()->ejecuta(SQLQuery);
             if (error)
                 throw -1;
             presenta();

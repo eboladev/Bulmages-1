@@ -39,10 +39,10 @@
 #include "listdescfacturaprovview.h"
 #include "dbrecord.h"
 
-EFQToolButtonImportar::EFQToolButtonImportar(FacturasProveedorList *faclistado, QWidget *parent) : QToolButton(parent) {
+EFQToolButtonImportar::EFQToolButtonImportar(FacturasProveedorList *faclistado, QWidget *parent) : QToolButton(parent), PEmpresaBase() {
 	_depura("EFQToolButtonImportar::EFQToolButtonImportar", 0);
 	m_faclistado = faclistado;
-	m_companyact = faclistado->get_company();
+	setEmpresaBase(faclistado->empresaBase());
 	connect(this, SIGNAL(clicked()), this, SLOT(click()));
 	_depura("END EFQToolButtonImportar::EFQToolButtonImportar", 0);
 }
@@ -231,7 +231,7 @@ void EFQToolButtonImportar::importa_factura_ubl() {
 	QString idProveedor = obten_id_proveedor(&doc);
 		
 	QString query = "SELECT * FROM proveedor WHERE cifproveedor = '" + idProveedor + "'";
-	cursor2 *proveedor = m_companyact->cargacursor(query);
+	cursor2 *proveedor = empresaBase()->cargacursor(query);
 		
 	if (proveedor->numregistros() == 0) {
 		_depura("El proveedor con CIF " + idProveedor + " no existe en la base de datos. Hay que crearlo antes de importar esta factura.", 2);
@@ -241,8 +241,8 @@ void EFQToolButtonImportar::importa_factura_ubl() {
 
 /// Mostramos la ficha con la informacion de la factura importada --------------------------------------
 	
-	FacturaProveedorView *fp = m_companyact->newFacturaProveedorView();
-	m_companyact->m_pWorkspace->addWindow(fp);
+	FacturaProveedorView *fp = ((company *)empresaBase())->newFacturaProveedorView();
+	empresaBase()->m_pWorkspace->addWindow(fp);
 	fp->inicializar();
 	fp->pintar();
 	fp->show();
@@ -340,7 +340,7 @@ void EFQToolButtonImportar::importa_factura_ubl() {
 		/// Si no es asi, mandamos una alerta al usuario y anyadimos ese
 		/// articulo a la linea como articulo generico		
 		query = "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + mapa_lfactura["idarticulo"] + "'";
-		articulo = m_companyact->cargacursor(query);
+		articulo = empresaBase()->cargacursor(query);
 		
 		/// Si no obtenemos resultados cargamos en el cursor articulo los
 		/// valores que necesitamos (idarticulo y nomarticulo)
@@ -349,13 +349,13 @@ void EFQToolButtonImportar::importa_factura_ubl() {
 			
 			/// Obtenemos el codigo de articulo generico
 			query = "SELECT valor FROM configuracion WHERE nombre = 'CodArticuloGenerico'";
-			articulo = m_companyact->cargacursor(query);
+			articulo = empresaBase()->cargacursor(query);
 			
 			mapa_lfactura["idarticulo"] = articulo->valor("valor");
 			
 			/// Datos necesarios para guardar correctamente la linea de factura
 			query = "SELECT idarticulo, nomarticulo FROM articulo WHERE codigocompletoarticulo = '" + articulo->valor("valor") + "'";
-			articulo = m_companyact->cargacursor(query);
+			articulo = empresaBase()->cargacursor(query);
 		} // end if
 			
 		idarticulo  = articulo->valor("idarticulo");
@@ -401,8 +401,8 @@ void EFQToolButtonImportar::importa_factura_ubl() {
 	
 /// Damos valores a los campos DBvalue -----------------------------------------------------------------
 	
-	lineas->setcompany(m_companyact);
-	descuentos->setcompany(m_companyact);
+	lineas->setEmpresaBase(empresaBase());
+	descuentos->setEmpresaBase(empresaBase());
 
 	fp->setidproveedor(idProveedor);
 	fp->setreffacturap(""); /// El valor lo pone el usuario que importa la factura

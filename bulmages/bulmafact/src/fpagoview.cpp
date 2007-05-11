@@ -29,15 +29,14 @@
 
 /// Constructor de la clase inicializa la clase y llama a la clase de pintar para que pinte.
 FPagoView::FPagoView(company *emp,QWidget *parent)
-        : Ficha(parent) {
+        : FichaBf(emp, parent) {
     _depura("FPagoView::FPagoView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
-    m_companyact = emp;
     setModoEdicion();
     m_cursorFPagoView = NULL;
     m_item = NULL;
-    m_companyact->meteWindow(windowTitle(), this);
+    empresaBase()->meteWindow(windowTitle(), this);
     pintar();
     _depura("END FPagoView::FPagoView", 0);
 }
@@ -48,7 +47,7 @@ void FPagoView::pintar() {
     mui_lista->clear();
     if (m_cursorFPagoView != NULL)
         delete m_cursorFPagoView;
-    m_cursorFPagoView = m_companyact->cargacursor("SELECT * FROM forma_pago ORDER BY idforma_pago");
+    m_cursorFPagoView = empresaBase()->cargacursor("SELECT * FROM forma_pago ORDER BY idforma_pago");
     mui_lista->clear();
     while (!m_cursorFPagoView->eof()) {
         new QListWidgetItem(m_cursorFPagoView->valor("descforma_pago"), mui_lista);
@@ -69,7 +68,7 @@ FPagoView::~FPagoView() {
 
 
 int FPagoView::sacaWindow() {
-    m_companyact->sacaWindow(this);
+    empresaBase()->sacaWindow(this);
     return 0;
 }
 
@@ -92,14 +91,14 @@ void FPagoView::on_mui_lista_currentItemChanged(QListWidgetItem *cur, QListWidge
 void FPagoView::on_mui_guardar_clicked() {
     try {
         QString query = "UPDATE forma_pago SET descforma_pago = '" +
-                        m_companyact->sanearCadena(m_descforma_pago->text()) + "', dias1tforma_pago= " +
-                        m_companyact->sanearCadena(m_dias1tforma_pago->text()) + " , descuentoforma_pago = "+
-                        m_companyact->sanearCadena(m_descuentoforma_pago->text()) + " WHERE idforma_pago =" + mdb_idforma_pago;
-        m_companyact->ejecuta(query);
+                        empresaBase()->sanearCadena(m_descforma_pago->text()) + "', dias1tforma_pago= " +
+                        empresaBase()->sanearCadena(m_dias1tforma_pago->text()) + " , descuentoforma_pago = "+
+                        empresaBase()->sanearCadena(m_descuentoforma_pago->text()) + " WHERE idforma_pago =" + mdb_idforma_pago;
+        empresaBase()->ejecuta(query);
         if (m_cursorFPagoView != NULL) {
             delete m_cursorFPagoView;
         } // end if
-        m_cursorFPagoView = m_companyact->cargacursor("SELECT * FROM forma_pago ORDER BY idforma_pago");
+        m_cursorFPagoView = empresaBase()->cargacursor("SELECT * FROM forma_pago ORDER BY idforma_pago");
         if (m_item) {
             m_item->setText(m_descforma_pago->text());
         } // end if
@@ -132,14 +131,14 @@ void FPagoView::on_mui_crear_clicked() {
     /// Si se ha modificado el contenido advertimos y guardamos.
     trataModificado();
     QString query = "INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) VALUES ('NUEVA FORMA DE PAGO', 0, 0)";
-    m_companyact->begin();
-    int error = m_companyact->ejecuta(query);
+    empresaBase()->begin();
+    int error = empresaBase()->ejecuta(query);
     if (error) {
-        m_companyact->rollback();
+        empresaBase()->rollback();
         return;
     } // end if
-    cursor2 *cur = m_companyact->cargacursor("SELECT max(idforma_pago) AS idFPagoView FROM forma_pago");
-    m_companyact->commit();
+    cursor2 *cur = empresaBase()->cargacursor("SELECT max(idforma_pago) AS idFPagoView FROM forma_pago");
+    empresaBase()->commit();
     mdb_idforma_pago = cur->valor("idFPagoView");
     delete cur;
     pintar();
@@ -150,14 +149,14 @@ void FPagoView::on_mui_crear_clicked() {
 /// Lo que hace es que se hace un update de todos los campos.
 void FPagoView::on_mui_borrar_clicked() {
     trataModificado();
-    m_companyact->begin();
+    empresaBase()->begin();
     QString query = "DELETE FROM forma_pago WHERE idforma_pago = " + mdb_idforma_pago;
-    int error = m_companyact->ejecuta(query);
+    int error = empresaBase()->ejecuta(query);
     if (error) {
-        m_companyact->rollback();
+        empresaBase()->rollback();
         return;
     } // end if
-    m_companyact->commit();
+    empresaBase()->commit();
     pintar();
 }
 

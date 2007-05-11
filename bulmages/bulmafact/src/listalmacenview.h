@@ -32,7 +32,7 @@
 #include "busquedacliente.h"
 #include "busquedafecha.h"
 #include "subform2bf.h"
-#include "ficha.h"
+#include "fichabf.h"
 
 
 class company;
@@ -56,16 +56,12 @@ public slots:
 
 /// Muestra y administra el listado de almacenes.
 /** */
-class ListAlmacenView : public Ficha, public Ui_ListAlmacenBase {
+class ListAlmacenView : public FichaBf, public Ui_ListAlmacenBase {
     Q_OBJECT
-
-public:
-    company *companyact;
 
 public:
     ListAlmacenView(company *comp, QWidget *parent);
     ~ListAlmacenView();
-    virtual int sacaWindow();
 
 public slots:
     virtual void on_mui_aceptar_clicked();

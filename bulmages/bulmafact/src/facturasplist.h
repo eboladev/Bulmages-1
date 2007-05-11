@@ -26,7 +26,7 @@
 #include "company.h"
 #include "funcaux.h"
 #include "subform2bf.h"
-#include "ficha.h"
+#include "fichabf.h"
 
 
 /// Administra el detalle del listado de facturas de proveedor.
@@ -42,7 +42,7 @@ public slots:
     virtual void cargar() {
         _depura("AlbaranesProveedorListSubform::cargar\n", 0);
         QString SQLQuery = "SELECT * FROM facturap";
-        cursor2 *cur= companyact()->cargacursor(SQLQuery);
+        cursor2 *cur= empresaBase()->cargacursor(SQLQuery);
         SubForm3::cargar(cur);
         delete cur;
     }
@@ -57,11 +57,10 @@ public slots:
 
 /// Administra el listado de facturas de proveedor.
 /** */
-class FacturasProveedorList : public Ficha, public Ui_FacturasProveedorListBase {
+class FacturasProveedorList : public FichaBf, public Ui_FacturasProveedorListBase {
     Q_OBJECT
 
 private:
-    company *m_companyact;
     /// m_modo == 0 es modo edicion.
     /// m_modo == 1 es modo selector.
     int m_modo;
@@ -72,18 +71,18 @@ public:
     FacturasProveedorList(company *,QWidget *parent = 0);
     ~FacturasProveedorList();
     void presenta();
-    void setcompany (company *comp) {
-        m_companyact = comp;
-        m_proveedor->setcompany(comp);
-        m_articulo->setcompany(comp);
-        mui_list->setcompany(comp);
+    void setEmpresaBase (company *comp) {
+        FichaBf::setEmpresaBase(comp);
+        m_proveedor->setEmpresaBase(comp);
+        m_articulo->setEmpresaBase(comp);
+        mui_list->setEmpresaBase(comp);
     }
     company* get_company() {
-       return m_companyact;
+       return empresaBase();
     }
     void meteWindow(QString nom, QObject *obj) {
-        if (m_companyact != NULL) {
-            m_companyact->meteWindow(nom, obj);
+        if (empresaBase() != NULL) {
+            empresaBase()->meteWindow(nom, obj);
         } // end if
     }
     void modoseleccion() {
@@ -132,7 +131,7 @@ public slots:
         presenta();
     };
     virtual void on_mui_crear_clicked() {
-        m_companyact->s_newFacturaPro();
+        empresaBase()->s_newFacturaPro();
     };
     virtual void on_mui_editar_clicked();
     virtual void on_mui_imprimir_clicked();

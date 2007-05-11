@@ -32,13 +32,12 @@
 
 
 #include "clientslist.h"
+#include "blwidget.h"
 
-
-class InformeQToolButton : public QToolButton {
+class InformeQToolButton : public QToolButton, PEmpresaBase {
 	Q_OBJECT
 
 private:
-	company *m_companyact;
 	ClientsList *m_clientsList;
 
 public:

@@ -60,7 +60,7 @@ public:
     CobrosList(company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0);
     ~CobrosList();
     void presenta();
-    void setcompany(company *comp);
+    void setEmpresaBase(company *comp);
     QString idcobro();
     void hideBotonera();
     void showBotonera();

@@ -27,10 +27,9 @@
     errores al introducir el puntero a company.
 */
 BusquedaArticulo::BusquedaArticulo(QWidget *parent)
-        : QWidget(parent) {
+        : QWidget(parent), PEmpresaBase() {
     _depura("BusquedaArticulo::BusquedaArticulo", 0);
     setupUi(this);
-    companyact = NULL;
     mdb_idarticulo = "";
     mdb_nomarticulo = "";
     mdb_codigocompletoarticulo = "";
@@ -53,7 +52,7 @@ void BusquedaArticulo::setidarticulo(QString val) {
     _depura("BusquedaArticulo::setidarticulo", 0);
     mdb_idarticulo = val;
     QString SQLQuery = "SELECT * FROM articulo WHERE idarticulo='" + mdb_idarticulo + "'";
-    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
 
     if(!cur->eof()) {
         mdb_codigocompletoarticulo = cur->valor("codigocompletoarticulo");
@@ -78,7 +77,7 @@ void BusquedaArticulo::setcodigocompletoarticulo(QString val) {
     _depura("BusquedaArticulo::setcodigocompletoarticulo", 0);
     mdb_codigocompletoarticulo = val;
     QString SQLQuery = "SELECT * FROM articulo WHERE codigocompletoarticulo='" + mdb_codigocompletoarticulo + "'";
-    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
     if(!cur->eof()) {
         mdb_idarticulo = cur->valor("idarticulo");
         mdb_nomarticulo = cur->valor("nomarticulo");
@@ -103,7 +102,7 @@ void BusquedaArticulo::on_mui_buscar_clicked() {
     _depura("BusquedaArticulo::on_mui_buscar_clicked", 0);
     QDialog *diag = new QDialog(0);
     diag->setModal(true);
-    ArticuloList *articulos = new ArticuloList(companyact, diag, 0, ArticuloList::SelectMode);
+    ArticuloList *articulos = new ArticuloList( (company *) empresaBase(), diag, 0, ArticuloList::SelectMode);
     connect(articulos, SIGNAL(selected(QString)), diag, SLOT(accept()));
 
     /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
@@ -135,7 +134,7 @@ void BusquedaArticulo::on_m_codigocompletoarticulo_textChanged(const QString &va
     _depura("BusquedaArticulo::on_m_codigocompletoarticulo_textChanged", 0);
     mdb_codigocompletoarticulo = val;
     QString SQLQuery = "SELECT * FROM articulo WHERE codigocompletoarticulo='" + mdb_codigocompletoarticulo + "'";
-    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
     if(!cur->eof()) {
         mdb_idarticulo = cur->valor("idarticulo");
         mdb_nomarticulo = cur->valor("nomarticulo");
@@ -151,12 +150,6 @@ void BusquedaArticulo::on_m_codigocompletoarticulo_textChanged(const QString &va
 }
 
 
-
-void BusquedaArticulo::setcompany(company *comp) {
-    _depura("BusquedaArticulo::setcompany", 0);
-    companyact = comp;
-    _depura("END BusquedaArticulo::setcompany", 0);
-}
 
 QString BusquedaArticulo::codigocompletoarticulo() {
     _depura("BusquedaArticulo::codigocompletoarticulo", 0);
@@ -185,9 +178,8 @@ QString BusquedaArticulo::nomarticulo() {
     Conecta el SIGNAL activated() con m_activated() para tratarlo.
 */
 BusquedaArticuloDelegate::BusquedaArticuloDelegate(QWidget *parent)
-        : QComboBox(parent) {
+        : QComboBox(parent) , PEmpresaBase() {
     _depura("BusquedaArticuloDelegate::BusquedaArticuloDelegate", 0);
-    m_companyact = NULL;
     m_cursorcombo = NULL;
     setEditable(true);
     setSizeAdjustPolicy(QComboBox::AdjustToContents);
@@ -235,7 +227,7 @@ void BusquedaArticuloDelegate::s_editTextChanged(const QString &cod) {
     codigo = codigo.left(codigo.indexOf(".-"));
 
 
-    m_cursorcombo = m_companyact->cargacursor("SELECT codigocompletoarticulo, nomarticulo FROM articulo WHERE codigocompletoarticulo LIKE '"+codigo+"%' ORDER BY codigocompletoarticulo LIMIT 25");
+    m_cursorcombo = empresaBase()->cargacursor("SELECT codigocompletoarticulo, nomarticulo FROM articulo WHERE codigocompletoarticulo LIKE '"+codigo+"%' ORDER BY codigocompletoarticulo LIMIT 25");
     clear();
     while (!m_cursorcombo->eof()) {
         addItem(m_cursorcombo->valor("codigocompletoarticulo") + ".-" + m_cursorcombo->valor("nomarticulo"));
@@ -248,8 +240,3 @@ void BusquedaArticuloDelegate::s_editTextChanged(const QString &cod) {
 }
 
 
-void BusquedaArticuloDelegate::setcompany(company *comp) {
-    _depura("BusquedaArticuloDelegate::setcompany", 0);
-    m_companyact = comp;
-    _depura("END BusquedaArticuloDelegate::setcompany", 0);
-}

@@ -26,9 +26,11 @@
 
 #include "dialogchanges.h"
 #include "funcaux.h"
+#include "empresabase.h"
+#include "blwidget.h"
 
 
-class Ficha : public QWidget, public dialogChanges {
+class Ficha : public BLWidget, public dialogChanges {
     Q_OBJECT
 public:
     enum edmode
@@ -49,6 +51,7 @@ protected:
 
 public:
     Ficha(QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode);
+    Ficha(EmpresaBase *emp = NULL, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode);
     virtual ~Ficha();
     virtual int guardar();
     virtual int borrar();

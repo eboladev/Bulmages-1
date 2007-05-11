@@ -25,9 +25,8 @@
 
 
 BusquedaZonaComercial::BusquedaZonaComercial(QWidget *parent)
-        : QComboBox(parent) {
+        : QComboBox(parent), PEmpresaBase() {
     _depura("BusquedaZonaComercial::BusquedaZonaComercial", 0);
-    companyact = NULL;
     m_cursorcombo = NULL;
     connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
     _depura("END BusquedaZonaComercial::BusquedaZonaComercial", 0);
@@ -43,7 +42,7 @@ BusquedaZonaComercial::~BusquedaZonaComercial() {
 void BusquedaZonaComercial::setidzonacomercial(QString idzonacomercial) {
     if (m_cursorcombo != NULL)
         delete m_cursorcombo;
-    m_cursorcombo = companyact->cargacursor("SELECT * FROM zonacomercial");
+    m_cursorcombo = empresaBase()->cargacursor("SELECT * FROM zonacomercial");
     int i = 0;
     int i1 = 0;
     clear();

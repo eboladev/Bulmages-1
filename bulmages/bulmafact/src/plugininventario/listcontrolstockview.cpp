@@ -59,7 +59,7 @@ void ListControlStockView::cargar(QString idinventario) {
 
 int ListControlStockView::borrar() {
     _depura("ListControlStockView::borrar", 0);
-    companyact()->ejecuta("DELETE FROM controlstock WHERE idinventario = " + mdb_idinventario);
+    empresaBase()->ejecuta("DELETE FROM controlstock WHERE idinventario = " + mdb_idinventario);
     _depura("END ListControlStockView::borrar", 0);
     return 0;
 }

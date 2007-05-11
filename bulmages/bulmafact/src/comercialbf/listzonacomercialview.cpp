@@ -38,20 +38,19 @@
 
 
 ListZonaComercialView::ListZonaComercialView(company *comp, QWidget *parent)
-        : QWidget (parent) {
+        : FichaBf (comp, parent) {
     _depura("INIT_ListZonaComercialView::ListZonaComercialView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
-    companyact = comp;
-    mui_listado->setcompany(comp);
+    mui_listado->setEmpresaBase(comp);
     mui_listado->cargar();
-    companyact->meteWindow(windowTitle(), this);
+    empresaBase()->meteWindow(windowTitle(), this);
     _depura("END_ListZonaComercialView::ListZonaComercialView", 0);
 }
 
 
 ListZonaComercialView::~ListZonaComercialView() {
-    companyact->sacaWindow(this);
+    empresaBase()->sacaWindow(this);
 }
 
 

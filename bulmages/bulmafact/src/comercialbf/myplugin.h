@@ -24,15 +24,13 @@
 #include <QObject>
 
 #include "bulmafact.h"
+#include "blwidget.h"
 
-
-class mypluginbf : public QObject {
+class mypluginbf : public QObject, PEmpresaBase {
     Q_OBJECT
 
 private:
     bulmafact *m_bges;
-    company *m_companyact;
-
 public:
     mypluginbf();
     virtual ~mypluginbf();

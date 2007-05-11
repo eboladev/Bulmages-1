@@ -40,14 +40,13 @@
 
 
 ListTipoIVAView::ListTipoIVAView(company *comp, QWidget *parent)
-        : Ficha(parent) {
+        : FichaBf(comp, parent) {
     _depura("ListTipoIVAView::ListTipoIVAView", 1);
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
-    companyact = comp;
-    mui_listado->setcompany(comp);
+    mui_listado->setEmpresaBase(comp);
     mui_listado->cargar();
-    companyact->meteWindow(windowTitle(), this);
+    empresaBase()->meteWindow(windowTitle(), this);
     _depura("END ListTipoIVAView::ListTipoIVAView", 1);
 }
 
@@ -67,13 +66,14 @@ ListTipoIVAView::~ListTipoIVAView() {
     _depura("END ListTipoIVAView::~ListTipoIVAView", 0);
 }
 
-
+/*
 int ListTipoIVAView::sacaWindow() {
     _depura("ListTipoIVAView::sacaWindow", 0);
     companyact->sacaWindow(this);
     _depura("END ListTipoIVAView::sacaWindow", 0);
     return 0;
 }
+*/
 
 /// ===================================== SUBFORMULARIO ===============================================
 ListTipoIVASubForm::ListTipoIVASubForm(QWidget *parent) : SubForm2Bf(parent) {
@@ -88,7 +88,7 @@ ListTipoIVASubForm::ListTipoIVASubForm(QWidget *parent) : SubForm2Bf(parent) {
 
 void ListTipoIVASubForm::cargar() {
         _depura("ListTipoIVASubForm::cargar", 0);
-        cursor2 * cur= companyact()->cargacursor("SELECT * FROM tipo_iva");
+        cursor2 * cur= empresaBase()->cargacursor("SELECT * FROM tipo_iva");
         SubForm3::cargar(cur);
         delete cur;
         _depura("END ListTipoIVASubForm::cargar", 0);

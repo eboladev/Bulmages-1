@@ -41,7 +41,7 @@
 #define coma "'"
 
 RutaComercialView::RutaComercialView(company *comp, QWidget *parent)
-        : QWidget(parent), RutaComercial(comp), dialogChanges(this) {
+        :  RutaComercial(comp, parent) {
     _depura("RutaComercialView::RutaComercialView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
@@ -51,7 +51,7 @@ RutaComercialView::RutaComercialView(company *comp, QWidget *parent)
 
 
 RutaComercialView::RutaComercialView(QWidget *parent)
-        : QWidget(parent), RutaComercial(NULL), dialogChanges(this) {
+        : RutaComercial(NULL, parent) {
     _depura("RutaComercialView::RutaComercialView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
@@ -65,18 +65,42 @@ RutaComercialView::~RutaComercialView() {
 }
 
 
-void RutaComercialView::closeEvent(QCloseEvent *e) {
-    _depura("closeEvent", 0);
-    if (dialogChanges_hayCambios())  {
-        int val = QMessageBox::warning(this,
-                                       tr("Guardar cobro"),
-                                       tr("Desea guardar los cambios?"),
-                                       tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
-        if (val == 0)
-            guardar();
-        if (val == 2)
-            e->ignore();
-    } // end if
-    _depura("END closeEvent", 0);
+
+void RutaComercialView::setEmpresaBase(company *comp) {
+    _depura("RutaComercialView::setEmpresaBase", 0);
+    PEmpresaBase::setEmpresaBase(comp);
+    mui_idcliente->setEmpresaBase(comp);
+    _depura("END RutaComercialView::setEmpresaBase", 0);
 }
+
+int RutaComercialView::guardar() {
+    _depura("RutaComercialView::guardar", 0);
+    if (mui_fecharutacomercial->text() == "")
+        return 0;
+    setDBvalue("fecharutacomercial", mui_fecharutacomercial->text());
+    setDBvalue("idcliente", mui_idcliente->idcliente());
+    setDBvalue("comentariosrutacomercial", mui_comentrutacomercial->toPlainText());
+    setDBvalue("horarutacomercial", mui_horarutacomercial->text());
+    setDBvalue("refrutacomercial", mui_refrutacomercial->text());
+    int err = RutaComercial::guardar();
+    _depura("END RutaComercialView::guardar", 0);
+    return err;
+}
+
+int RutaComercialView::cargar(QString id) {
+    _depura("RutaComercialView::cargar", 0);
+    int err = RutaComercial::cargar(id);
+    setWindowTitle(tr("Ruta comercial") + " " + DBvalue("idrutacomercial"));
+    mui_fecharutacomercial->setText(DBvalue("fecharutacomercial"));
+    mui_idcliente->setidcliente(DBvalue("idcliente"));
+    mui_comentrutacomercial->setPlainText(DBvalue("comentariosrutacomercial"));
+    mui_horarutacomercial->setText(DBvalue("horarutacomercial"));
+    mui_refrutacomercial->setText(DBvalue("refrutacomercial"));
+    dialogChanges_cargaInicial();
+    _depura("RutaComercialView::cargar", 0);
+    return err;
+}
+
+
+
 

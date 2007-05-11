@@ -28,15 +28,15 @@
 #include "tarifalistview.h"
 
 
-myplugin1::myplugin1() {}
+myplugin1::myplugin1() : PEmpresaBase() {}
 
 
 myplugin1::~myplugin1() {}
 
 
 void myplugin1::elslot() {
-    TarifaListView *tar = new TarifaListView(m_companyact, NULL);
-    m_companyact->m_pWorkspace->addWindow(tar);
+    TarifaListView *tar = new TarifaListView(((company *)empresaBase()), NULL);
+    empresaBase()->m_pWorkspace->addWindow(tar);
     tar->show();
 }
 
@@ -44,7 +44,8 @@ void myplugin1::elslot() {
 void myplugin1::inicializa(bulmafact *bges) {
     /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
     m_bges = bges;
-    m_companyact = bges->getcompany();
+    setEmpresaBase(bges->getcompany());
+   
     QAction *planCuentas = new QAction(tr("&Tarifas"), 0);
     planCuentas->setStatusTip(tr("Tarifas"));
     planCuentas->setWhatsThis(tr("Tarifas"));
@@ -79,7 +80,7 @@ int ClienteView_ClienteView(ClienteView *cli) {
 
     BusquedaTarifa *bus = new BusquedaTarifa(cli->m_frameplugin);
     bus->setObjectName(QString::fromUtf8("bus"));
-    bus->setcompany(cli->companyact());
+    bus->setEmpresaBase(cli->empresaBase());
     bus->setidtarifa("");
     hboxLayout160->addWidget(bus);
 
@@ -107,7 +108,7 @@ int ArticuloView_ArticuloView(ArticuloView *art) {
     _depura("ArticuloView_ArticuloView", 0);
     ListLTarifaView *l = new ListLTarifaView(art);
     l->setObjectName(QString::fromUtf8("ltarifas"));
-    l->setcompany( art->getcompany());
+    l->setEmpresaBase( art->empresaBase());
     l->cargar("0");
     art->mui_tab->addTab(l, "Tarifas");
     _depura("END ArticuloView_ArticuloView", 0);

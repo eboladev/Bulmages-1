@@ -27,7 +27,7 @@
 #include "busquedacliente.h"
 #include "busquedaarticulo.h"
 #include "subform2bf.h"
-#include "ficha.h"
+#include "fichabf.h"
 
 
 /// Administra el listado de presupuestos.
@@ -50,11 +50,10 @@ public slots:
 
 /// Muestra y administra la ventana con el listado de presupuestos.
 /** */
-class PresupuestoList : public Ficha, public Ui_PresupuestosListBase {
+class PresupuestoList : public FichaBf, public Ui_PresupuestosListBase {
     Q_OBJECT
 
 private:
-    company *m_companyact;
     /// m_modo == 0 es modo edicion.
     /// m_modo == 1 es modo selector.
     int m_modo;
@@ -66,11 +65,10 @@ public:
     ~PresupuestoList();
     void presenta();
     int modo();
-    company *getcompany();
     QString idpresupuesto();
     void modoseleccion();
     void modoedicion();
-    void setcompany (company *comp);
+    void setEmpresaBase (company *comp);
     void hideBotonera();
     void showBotonera();
     void hideBusqueda();

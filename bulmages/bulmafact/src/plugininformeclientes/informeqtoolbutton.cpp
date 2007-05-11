@@ -42,7 +42,7 @@
 #include "dbrecord.h"
 
 
-InformeQToolButton::InformeQToolButton(ClientsList *art , QWidget *parent) : QToolButton(parent) {
+InformeQToolButton::InformeQToolButton(ClientsList *art , QWidget *parent) : QToolButton(parent), PEmpresaBase() {
     _depura("InformeQToolButton::InformeQToolButton", 0);
     m_clientsList = art;
     setBoton();
@@ -67,7 +67,7 @@ void InformeQToolButton::setBoton() {
 void InformeQToolButton::click() {
     _depura("InformeQToolButton::click", 0);
     // Puede que no se haya actualizado bien el company
-    m_companyact = m_clientsList->getcompany();
+    setEmpresaBase(m_clientsList->empresaBase());
 
     QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "informeclientes.rml";
     QString archivod = confpr->valor(CONF_DIR_USER) + "informeclientes.rml";
@@ -103,7 +103,7 @@ void InformeQToolButton::click() {
 
     /// Sacamos los datos del cliente.
     QString SQLQuery = "SELECT * FROM cliente ";
-    cursor2 *cur = m_companyact->cargacursor(SQLQuery);
+    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
     while (!cur->eof()) {
 	QString gen = generarCliente(cur->valor("idcliente"));
 	if (gen != "") {
@@ -142,7 +142,7 @@ QString InformeQToolButton::generarCliente(QString idcliente) {
     SQLQuery += " UNION SELECT refalbaran FROM albaran AS referencia WHERE idcliente = " + idcliente;
     SQLQuery += " UNION SELECT reffactura FROM factura AS referencia WHERE idcliente = " + idcliente;
     SQLQuery += " UNION SELECT refcobro FROM cobro AS referencia WHERE idcliente = " + idcliente;
-    cursor2 *cur = m_companyact->cargacursor(SQLQuery);
+    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
     if (cur->eof()) {
 	delete cur;
 	return "";
@@ -173,7 +173,7 @@ QString InformeQToolButton::generarCliente(QString idcliente) {
     SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlalbaran) AS cantlalbarant  FROM lalbaran WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE refalbaran IN " + referencias + ") GROUP BY idarticulo) AS t3 ON t3.idarticulo = articulo.idarticulo ";
     SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlfactura) AS cantlfacturat  FROM lfactura WHERE idfactura IN (SELECT idfactura FROM factura WHERE reffactura IN " + referencias + ") GROUP BY idarticulo) AS t4 ON t4.idarticulo = articulo.idarticulo ";
     SQLQuery += " WHERE  (cantlpresupuestot <>0 OR cantlpedidoclientet <> 0 OR cantlalbarant <> 0 OR cantlfacturat <> 0) ";
-    cur = m_companyact->cargacursor(SQLQuery);
+    cur = empresaBase()->cargacursor(SQLQuery);
     while (!cur->eof() ) {
         fitxersortidatxt += "<tr>\n";
         fitxersortidatxt += "    <td>" + cur->valor("nomarticulo") + "</td>\n";
@@ -207,7 +207,7 @@ QString InformeQToolButton::generarCliente(QString idcliente) {
     SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlfacturap) AS cantlfacturapt  FROM lfacturap WHERE idfacturap IN (SELECT idfacturap FROM facturap WHERE reffacturap IN " + referencias + ") GROUP BY idarticulo) AS t4 ON t4.idarticulo = articulo.idarticulo ";
     SQLQuery += " WHERE  ( cantlpedidoproveedort <> 0 OR cantlalbaranpt <> 0 OR cantlfacturapt <> 0) ";
 
-    cur = m_companyact->cargacursor(SQLQuery);
+    cur = empresaBase()->cargacursor(SQLQuery);
     while (!cur->eof() ) {
         fitxersortidatxt += "<tr>\n";
         fitxersortidatxt += "    <td>" + cur->valor("nomarticulo") + "</td>\n";
@@ -238,31 +238,31 @@ QString InformeQToolButton::generarCliente(QString idcliente) {
 
     /// Total presupuestado.
     SQLQuery = "SELECT SUM(totalpresupuesto) AS tpres FROM presupuesto WHERE refpresupuesto IN " + referencias;
-    cur = m_companyact->cargacursor(SQLQuery);
+    cur = empresaBase()->cargacursor(SQLQuery);
     fitxersortidatxt += "    <td>" + cur->valor("tpres") + "</td>\n";
     delete cur;
 
     /// Total pedido.
     SQLQuery = "SELECT SUM(totalpedidocliente) AS tpedcli FROM pedidocliente WHERE refpedidocliente IN " + referencias;
-    cur = m_companyact->cargacursor(SQLQuery);
+    cur = empresaBase()->cargacursor(SQLQuery);
     fitxersortidatxt += "    <td>" + cur->valor("tpedcli") + "</td>\n";
     delete cur;
 
     /// Total trabajado.
     SQLQuery = "SELECT SUM(totalalbaran) AS talb FROM albaran WHERE refalbaran IN " + referencias;
-    cur = m_companyact->cargacursor(SQLQuery);
+    cur = empresaBase()->cargacursor(SQLQuery);
     fitxersortidatxt += "    <td>" + cur->valor("talb") + "</td>\n";
     delete cur;
 
     /// Total facturado.
     SQLQuery = "SELECT SUM(totalfactura) AS tfact FROM factura WHERE reffactura IN " + referencias;
-    cur = m_companyact->cargacursor(SQLQuery);
+    cur = empresaBase()->cargacursor(SQLQuery);
     fitxersortidatxt += "    <td>" + cur->valor("tfact") + "</td>\n";
     delete cur;
 
     /// Total cobrado.
     SQLQuery = "SELECT SUM(cantcobro) AS tcobro FROM cobro WHERE refcobro IN " + referencias;
-    cur = m_companyact->cargacursor(SQLQuery);
+    cur = empresaBase()->cargacursor(SQLQuery);
     fitxersortidatxt += "     <td>" + cur->valor("tcobro") + "</td>\n";
     delete cur;
 
@@ -285,25 +285,25 @@ QString InformeQToolButton::generarCliente(QString idcliente) {
 
     /// Total pedido.
     SQLQuery = "SELECT SUM(totalpedidoproveedor) AS tpedpro FROM pedidoproveedor WHERE refpedidoproveedor IN " + referencias;
-    cur = m_companyact->cargacursor(SQLQuery);
+    cur = empresaBase()->cargacursor(SQLQuery);
     fitxersortidatxt += "    <td>" + cur->valor("tpedpro") + "</td>\n";
     delete cur;
 
     /// Total trabajado.
     SQLQuery = "SELECT SUM(totalalbaranp) AS talbp FROM albaranp WHERE refalbaranp IN " + referencias;
-    cur = m_companyact->cargacursor(SQLQuery);
+    cur = empresaBase()->cargacursor(SQLQuery);
     fitxersortidatxt += "    <td>" + cur->valor("talbp") + "</td>\n";
     delete cur;
 
     /// Total facturado.
     SQLQuery = "SELECT SUM(totalfacturap) AS tfactp FROM facturap WHERE reffacturap IN " + referencias;
-    cur = m_companyact->cargacursor(SQLQuery);
+    cur = empresaBase()->cargacursor(SQLQuery);
     fitxersortidatxt += "    <td>" + cur->valor("tfactp") + "</td>\n";
     delete cur;
 
     /// Total cobrado.
     SQLQuery = "SELECT SUM(cantpago) AS tpago FROM pago WHERE refpago IN " + referencias;
-    cur = m_companyact->cargacursor(SQLQuery);
+    cur = empresaBase()->cargacursor(SQLQuery);
     fitxersortidatxt += "     <td>" + cur->valor("tpago") + "</td>\n";
     delete cur;
 

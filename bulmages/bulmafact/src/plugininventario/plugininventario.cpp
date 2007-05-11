@@ -33,9 +33,8 @@ myplugininv::~myplugininv() {}
 
 
 void myplugininv::elslot() {
-
-    InventariosView *tar = new InventariosView(m_companyact, NULL);
-    m_companyact->m_pWorkspace->addWindow(tar);
+    InventariosView *tar = new InventariosView((company *)empresaBase(), NULL);
+    empresaBase()->m_pWorkspace->addWindow(tar);
     tar->show();
 }
 
@@ -43,7 +42,7 @@ void myplugininv::elslot() {
 void myplugininv::inicializa(bulmafact *bges) {
     /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
     m_bges = bges;
-    m_companyact = bges->getcompany();
+    setEmpresaBase(bges->getcompany());
     QAction *planCuentas = new QAction(tr("&Inventarios"), 0);
     planCuentas->setStatusTip(tr("Inventarios"));
     planCuentas->setWhatsThis(tr("Inventarios"));

@@ -54,15 +54,15 @@ ArticuloView::ArticuloView(company *comp, QWidget *parent)
         if (res != 0)
             return;
 
-        m_familia->setcompany(comp);
-        m_tipoarticulo->setcompany(comp);
-        m_componentes->setcompany(comp);
+        m_familia->setEmpresaBase(comp);
+        m_tipoarticulo->setEmpresaBase(comp);
+        m_componentes->setEmpresaBase(comp);
         m_archivoimagen = "";
         cargarcomboiva("0");
         m_componentes->cargar("0");
 
         m_imagen->setPixmap(QPixmap("/usr/share/bulmages/logopeq.png"));
-        m_companyact->meteWindow(windowTitle(), this, FALSE);
+        empresaBase()->meteWindow(windowTitle(), this, FALSE);
         dialogChanges_cargaInicial();
     } catch (...) {
         mensajeInfo(tr("Error al crear el articulo"));
@@ -118,7 +118,7 @@ void ArticuloView::pintar() {
 /// Si el par&aacute;metro pasado no es un identificador v&aacute;lido entonces se pone
 /// la ventana de edici&oacute;n en modo de inserci&oacute;n.
 int ArticuloView::cargar(QString idarticulo) {
-    _depura("ArticuloView::cargar()\n", 0);
+    _depura("ArticuloView::cargar", 0);
     try {
         setDBvalue("idarticulo", idarticulo);
 
@@ -143,7 +143,7 @@ int ArticuloView::cargar(QString idarticulo) {
         pintar();
 
         /// Metemosl a ventana en el workSpace para que corrija el titulo.
-        ret = m_companyact->meteWindow(windowTitle(), this);
+        ret = empresaBase()->meteWindow(windowTitle(), this);
         if (ret) {
             throw -1;
         } // end if
@@ -171,7 +171,7 @@ int ArticuloView::cargarcomboiva(QString idIva) {
         delete m_cursorcombo;
     } // end if
     m_combotipo_iva->clear();
-    m_cursorcombo = m_companyact->cargacursor("SELECT * FROM tipo_iva");
+    m_cursorcombo = empresaBase()->cargacursor("SELECT * FROM tipo_iva");
     if (m_cursorcombo->error()) {
         delete m_cursorcombo;
         return -1;
@@ -205,7 +205,7 @@ void ArticuloView::on_m_codigocompletoarticulo_editingFinished() {
     _depura("ArticuloView::on_m_codigocompletoarticulo_editingFinished", 0);
 
     QString SQlQuery = "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + m_codigocompletoarticulo->text() + "'";
-    cursor2 *cur = m_companyact->cargacursor(SQlQuery);
+    cursor2 *cur = empresaBase()->cargacursor(SQlQuery);
     if (!cur->eof()) {
         cargar(cur->valor("idarticulo"));
     } // end if
@@ -242,7 +242,7 @@ int ArticuloView::guardar() {
         } // end if
         /// Guardamos la imagen, si es que existe.
         if (m_archivoimagen != "") {
-            cursor2 *cur1 = m_companyact->cargacursor("SELECT codigocompletoarticulo FROM articulo WHERE idarticulo = " + DBvalue("idarticulo"));
+            cursor2 *cur1 = empresaBase()->cargacursor("SELECT codigocompletoarticulo FROM articulo WHERE idarticulo = " + DBvalue("idarticulo"));
             QString cadena = "cp " + m_archivoimagen + " " + confpr->valor(CONF_DIR_IMG_ARTICLES) + cur1->valor("codigocompletoarticulo") + ".jpg";
             delete cur1;
             system(cadena.toAscii().constData());
@@ -281,7 +281,7 @@ int ArticuloView::guardar() {
 int ArticuloView::borrar() {
     _depura ("ArticuloView::borrar", 0);
     try {
-        m_companyact->begin();
+        empresaBase()->begin();
         /// Disparamos los plugins
         int res = g_plugins->lanza("ArticuloView_borrar", this);
         if (res != 0) {
@@ -289,13 +289,13 @@ int ArticuloView::borrar() {
         } // end if
         m_componentes->borrar();
         Articulo::borrar();
-        m_companyact->commit();
+        empresaBase()->commit();
         close();
         _depura("END ArticuloView::borrar", 0);
         return 0;
     } catch (...) {
         mensajeInfo("Error en el borrado del articulo");
-        m_companyact->rollback();
+        empresaBase()->rollback();
         return 0;
     }
 }

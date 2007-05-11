@@ -25,31 +25,21 @@
 #include "dialogchanges.h"
 #include "ui_vehiculobase.h"
 #include "dbrecord.h"
-#include "ficha.h"
+#include "fichabf.h"
 
-class company;
 
 
 /// Clase que muestra la ventana de amortizaci&oacute;n.
 /** Formulario de introducci&oacute;n y/o visi&oacute;n de amortizaciones. */
-class VehiculoView : public Ficha, Ui_VehiculoBase, DBRecord {
+class VehiculoView : public FichaBf, Ui_VehiculoBase{
     Q_OBJECT
-
-private:
-    /// Empresa con la que se trabaja.
-    company *m_companyact;
 
 public:
     VehiculoView(company *, QWidget *parent = 0);
     ~VehiculoView();
     virtual int cargar(QString idvehiculo);
     virtual int guardar();
-//    virtual int borrar();
 
-
-public slots:
-//    virtual void contextMenuRequested(int, int, const QPoint &);
-//    virtual void on_mui_guardar_clicked();
 };
 
 #endif

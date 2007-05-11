@@ -46,13 +46,13 @@ PedidoProveedorView::PedidoProveedorView(company *comp, QWidget *parent)
     try {
         setupUi(this);
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
-        mui_lineasDetalle->setcompany(comp);
-        mui_proveedor->setcompany(comp);
-        mui_formaPago->setcompany(comp);
-        mui_descuentos->setcompany(comp);
-        mui_almacenDestino->setcompany(comp);
-        mui_trabajador->setcompany(comp);
-        mui_referenciaPedido->setcompany(comp);
+        mui_lineasDetalle->setEmpresaBase(comp);
+        mui_proveedor->setEmpresaBase(comp);
+        mui_formaPago->setEmpresaBase(comp);
+        mui_descuentos->setEmpresaBase(comp);
+        mui_almacenDestino->setEmpresaBase(comp);
+        mui_trabajador->setEmpresaBase(comp);
+        mui_referenciaPedido->setEmpresaBase(comp);
 
         setListaLineas(mui_lineasDetalle);
         setListaDescuentos(mui_descuentos);
@@ -69,7 +69,7 @@ PedidoProveedorView::PedidoProveedorView(company *comp, QWidget *parent)
 
 PedidoProveedorView::~PedidoProveedorView() {
     _depura("PedidoProveedorView::~PedidoProveedorView", 0);
-    m_companyact->refreshPedidosProveedor();
+    empresaBase()->refreshPedidosProveedor();
     _depura("END PedidoProveedorView::~PedidoProveedorView", 0);
 }
 
@@ -116,7 +116,7 @@ int PedidoProveedorView::cargar(QString id) {
         if (PedidoProveedor::cargar(id))
             throw -1;
         setWindowTitle(tr("Pedido a proveedor") + " " + DBvalue("refpedidoproveedor") +" "+ DBvalue("idpedidoproveedor"));
-        m_companyact->meteWindow(windowTitle(), this);
+        empresaBase()->meteWindow(windowTitle(), this);
         dialogChanges_cargaInicial();
         _depura("END PedidoProveedorView::cargar", 0);
     } catch (...) {
@@ -166,8 +166,8 @@ void PedidoProveedorView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed
 
 void PedidoProveedorView::on_mui_pagar_clicked() {
     _depura("PedidoProveedorView::on_mui_pagar_clicked", 0);
-    PagoView *bud = m_companyact->newPagoView();
-    m_companyact->m_pWorkspace->addWindow(bud);
+    PagoView *bud = empresaBase()->newPagoView();
+    empresaBase()->m_pWorkspace->addWindow(bud);
     bud->setidproveedor(DBvalue("idproveedor"));
     bud->setcantpago(mui_totalPedido->text());
     bud->setrefpago(DBvalue("refpedidoproveedor"));
@@ -183,10 +183,10 @@ void PedidoProveedorView::generarAlbaran() {
     _depura("PedidoProveedorView::generarAlbaran", 0);
     /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la funcion.
     QString SQLQuery = "SELECT * FROM albaranp WHERE refalbaranp = '" + DBvalue("refpedidoproveedor") + "'";
-    cursor2 *cur = m_companyact->cargacursor(SQLQuery);
+    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
     if (!cur->eof()) {
-        AlbaranProveedorView *bud = new AlbaranProveedorView(m_companyact, NULL);
-        m_companyact->m_pWorkspace->addWindow(bud);
+        AlbaranProveedorView *bud = new AlbaranProveedorView(empresaBase(), NULL);
+        empresaBase()->m_pWorkspace->addWindow(bud);
         bud->cargar(cur->valor("idalbaranp"));
         bud->show();
         return;
@@ -203,8 +203,8 @@ void PedidoProveedorView::generarAlbaran() {
         return;
 
     /// Creamos el pedido.
-    AlbaranProveedorView *bud = m_companyact->newAlbaranProveedorView();
-    m_companyact->m_pWorkspace->addWindow(bud);
+    AlbaranProveedorView *bud = empresaBase()->newAlbaranProveedorView();
+    empresaBase()->m_pWorkspace->addWindow(bud);
     bud->inicializar();
 
     bud->setcomentalbaranp(DBvalue("comentpedidoproveedor"));

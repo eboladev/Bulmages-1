@@ -27,8 +27,7 @@
 #include "plugins.h"
 
 
-RutaComercial::RutaComercial(company *comp) : DBRecord(comp) {
-    m_companyact = comp;
+RutaComercial::RutaComercial(company *comp, QWidget *parent) : FichaBf(comp, parent) {
     setDBTableName("rutacomercial");
     setDBCampoId("idrutacomercial");
     addDBCampo("idrutacomercial", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("RutaComercial", "Identificador"));
@@ -52,4 +51,17 @@ void RutaComercial::pintar() {
     _depura("funcion no sobrecargada", 2);
     _depura("END RutaComercial::pintar", 0);
 }
+
+int RutaComercial::cargar(QString id) {
+    _depura("RutaComercial::cargar", 0);
+    QString query = "SELECT * FROM rutacomercial WHERE idrutacomercial = " + id;
+    cursor2 *cur = empresaBase()->cargacursor(query);
+    if (!cur->eof())  {
+        DBload(cur);
+    }
+    delete cur;
+    _depura("END RutaComercial::cargar", 0);
+    return 0;
+}
+
 

@@ -36,51 +36,17 @@
 class company;
 
 
-class RutaComercialView : public QWidget, private Ui_RutaComercialBase, public RutaComercial, public dialogChanges {
+class RutaComercialView : public RutaComercial, public Ui_RutaComercialBase {
     Q_OBJECT
 
 public:
+    RutaComercialView(company *, QWidget *parent = NULL);
     RutaComercialView(QWidget *parent = NULL);
     ~RutaComercialView();
-    RutaComercialView(company *, QWidget *parent = NULL);
-    void closeEvent(QCloseEvent *);
-    virtual void pintar() {}
-    ;
-    void setcompany(company *comp) {
-        _depura("RutaComercialView::setcompany", 0);
-        RutaComercial::setcompany(comp);
-        mui_idcliente->setcompany(comp);
-        _depura("END RutaComercialView::setcompany", 0);
-    };
-
-    virtual int guardar() {
-        _depura("RutaComercialView::guardar", 0);
-        if (mui_fecharutacomercial->text() == "")
-            return 0;
-        setDBvalue("fecharutacomercial", mui_fecharutacomercial->text());
-        setDBvalue("idcliente", mui_idcliente->idcliente());
-        setDBvalue("comentariosrutacomercial", mui_comentrutacomercial->toPlainText());
-        setDBvalue("horarutacomercial", mui_horarutacomercial->text());
-        setDBvalue("refrutacomercial", mui_refrutacomercial->text());
-        int err = RutaComercial::guardar();
-        _depura("END RutaComercialView::guardar", 0);
-        return err;
-    };
-
-public slots:
-    virtual int cargar(QString id) {
-        _depura("RutaComercialView::cargar", 0);
-        int err = RutaComercial::cargar(id);
-        setWindowTitle(tr("Ruta comercial") + " " + DBvalue("idrutacomercial"));
-        mui_fecharutacomercial->setText(DBvalue("fecharutacomercial"));
-        mui_idcliente->setidcliente(DBvalue("idcliente"));
-        mui_comentrutacomercial->setPlainText(DBvalue("comentariosrutacomercial"));
-        mui_horarutacomercial->setText(DBvalue("horarutacomercial"));
-        mui_refrutacomercial->setText(DBvalue("refrutacomercial"));
-        dialogChanges_cargaInicial();
-        _depura("RutaComercialView::cargar", 0);
-        return err;
-    };
+    virtual void pintar() {};
+    void setEmpresaBase(company *comp);
+    virtual int guardar();
+    virtual int cargar(QString id);
 };
 
 #endif

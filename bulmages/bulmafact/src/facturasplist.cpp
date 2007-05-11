@@ -37,7 +37,7 @@
     Mete la ventana en el workSpace.
 */
 FacturasProveedorList::FacturasProveedorList(QWidget *parent, Qt::WFlags flag)
-        : Ficha(parent, flag) {
+        : FichaBf(NULL, parent, flag) {
     _depura("FacturasProveedorList::FacturasProveedorList", 0);
     setupUi(this);
     /// Disparamos los plugins.
@@ -45,7 +45,6 @@ FacturasProveedorList::FacturasProveedorList(QWidget *parent, Qt::WFlags flag)
     if (res != 0) {
         return;
     } // end if
-    m_companyact = NULL;
     m_modo = 0;
     mdb_idfacturap = "";
     meteWindow(windowTitle(), this);
@@ -59,7 +58,7 @@ FacturasProveedorList::FacturasProveedorList(QWidget *parent, Qt::WFlags flag)
     mete la ventana en el workSpace().
 */
 FacturasProveedorList::FacturasProveedorList(company *comp, QWidget *parent)
-        : Ficha(parent) {
+        : FichaBf(comp, parent) {
     _depura("FacturasProveedorList::FacturasProveedorList", 0);
     setupUi(this);
     /// Disparamos los plugins.
@@ -67,10 +66,9 @@ FacturasProveedorList::FacturasProveedorList(company *comp, QWidget *parent)
     if (res != 0) {
     	return;
     } // end if
-    m_companyact = comp;
-    m_proveedor->setcompany(m_companyact);
-    m_articulo->setcompany(m_companyact);
-    mui_list->setcompany(comp);
+    m_proveedor->setEmpresaBase(empresaBase());
+    m_articulo->setEmpresaBase(empresaBase());
+    mui_list->setEmpresaBase(comp);
     presenta();
     m_modo = 0;
     mdb_idfacturap = "";
@@ -88,7 +86,7 @@ FacturasProveedorList::FacturasProveedorList(company *comp, QWidget *parent)
 */
 FacturasProveedorList::~FacturasProveedorList() {
     _depura("FacturasProveedorList::~FacturasProveedorList", 0);
-    m_companyact->sacaWindow(this);
+    empresaBase()->sacaWindow(this);
     _depura("END FacturasProveedorList::~FacturasProveedorList", 0);
 }
 
@@ -101,7 +99,7 @@ void FacturasProveedorList::presenta() {
     mui_list->cargar("SELECT *, totalfacturap AS total, bimpfacturap AS base, impfacturap AS impuestos  FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  " + generaFiltro());
 
     /// Hacemos el calculo del total.
-    cursor2 *cur = m_companyact->cargacursor("SELECT SUM(totalfacturap) AS total FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  " + generaFiltro());
+    cursor2 *cur = empresaBase()->cargacursor("SELECT SUM(totalfacturap) AS total FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  " + generaFiltro());
     m_total->setText(cur->valor("total"));
     delete cur;
     _depura("END FacturasProveedorList::presenta", 0);
@@ -151,12 +149,12 @@ void FacturasProveedorList::editar(int row) {
     try {
 	   mdb_idfacturap = mui_list->DBvalue(QString("idfacturap"), row);
 	   if (m_modo == 0) {
-		  FacturaProveedorView *prov = m_companyact->newFacturaProveedorView();
+		  FacturaProveedorView *prov = empresaBase()->newFacturaProveedorView();
 		  if (prov->cargar(mdb_idfacturap)) {
 			 delete prov;
 			 return;
 		  } // end if
-		  m_companyact->m_pWorkspace->addWindow(prov);
+		  empresaBase()->m_pWorkspace->addWindow(prov);
 		  prov->show();
 	   } else {
 		  emit(selected(mdb_idfacturap));
@@ -198,7 +196,7 @@ void FacturasProveedorList::on_mui_borrar_clicked() {
     } // end if
     try {
 	   mdb_idfacturap = mui_list->DBvalue("idfacturap");
-	   FacturaProveedorView *bud = m_companyact->newFacturaProveedorView();
+	   FacturaProveedorView *bud = empresaBase()->newFacturaProveedorView();
 	   bud->cargar(mdb_idfacturap);
 	   bud->on_mui_borrar_clicked();
 	   delete bud;

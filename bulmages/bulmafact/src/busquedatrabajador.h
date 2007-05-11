@@ -26,7 +26,7 @@
 #include "company.h"
 #include "postgresiface2.h"
 #include "funcaux.h"
-
+#include "blwidget.h"
 
 /// Permite buscar y seleccionar un trabajador.
 /** Este comboBox permite buscar y seleccionar un
@@ -34,19 +34,16 @@
     Antes de utilizarlo debe ser inicializado con setcompany().
     Cuando se cambia el valor del Widget se emite un SIGNAL valueChanged().
 */
-class BusquedaTrabajador : public QComboBox {
+class BusquedaTrabajador : public QComboBox, public PEmpresaBase {
     Q_OBJECT
 
 private:
-    /// Puntero a la clase company para poder trabajar con la Base de datos y poder hacer paso de mensajes.
-    company *companyact;
     /// Cursor que almacena el listado de trabajadores y sobre el que se construye el comboBox.
     cursor2 *m_cursorcombo;
 
 public:
     BusquedaTrabajador(QWidget *parent = 0);
     ~BusquedaTrabajador();
-    void setcompany(company *comp);
     virtual void setidtrabajador(QString idtrabajador);
     QString idtrabajador();
 

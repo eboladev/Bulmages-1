@@ -57,13 +57,13 @@ FacturaView::FacturaView(company *comp, QWidget *parent)
         if (res != 0)
             return;
 
-        subform2->setcompany(comp);
-        m_almacen->setcompany(comp);
-        m_forma_pago->setcompany(comp);
-        m_cliente->setcompany(comp);
-        m_descuentos->setcompany(comp);
-        m_codigoserie_factura->setcompany(comp);
-        m_reffactura->setcompany(comp);
+        subform2->setEmpresaBase(comp);
+        m_almacen->setEmpresaBase(comp);
+        m_forma_pago->setEmpresaBase(comp);
+        m_cliente->setEmpresaBase(comp);
+        m_descuentos->setEmpresaBase(comp);
+        m_codigoserie_factura->setEmpresaBase(comp);
+        m_reffactura->setEmpresaBase(comp);
 
         /// Inicializamos FichaBf
         setListaLineas(subform2);
@@ -90,7 +90,7 @@ FacturaView::FacturaView(company *comp, QWidget *parent)
 */
 FacturaView::~FacturaView() {
     _depura("FacturaView::~FacturaView", 0);
-    m_companyact->refreshFacturas();
+    getcompany()->refreshFacturas();
     _depura("END FacturaView::~FacturaView", 0);
 }
 
@@ -127,8 +127,8 @@ void FacturaView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, F
 */
 void FacturaView::on_mui_cobrar_clicked() {
     _depura("FacturaView::on_mui_cobrar_clicked", 0);
-    CobroView *bud = m_companyact->newCobroView();
-    m_companyact->m_pWorkspace->addWindow(bud);
+    CobroView *bud = getcompany()->newCobroView();
+    empresaBase()->m_pWorkspace->addWindow(bud);
     bud->setidcliente(DBvalue("idcliente"));
     bud->setcantcobro(m_totalfactura->text());
     bud->setrefcobro(DBvalue("reffactura"));
@@ -149,7 +149,7 @@ int FacturaView::cargar(QString id) {
         Factura::cargar(id);
         if (DBvalue("idfactura") != "") {
             setWindowTitle(tr("Factura") + " " + DBvalue("reffactura") + " " + DBvalue("idfactura"));
-            m_companyact->meteWindow(windowTitle(), this);
+            empresaBase()->meteWindow(windowTitle(), this);
         } // end if
         dialogChanges_cargaInicial();
     } catch (...) {
@@ -168,7 +168,7 @@ void FacturaView::on_mui_agregaralbaran_clicked() {
     _depura("FacturaView::on_mui_agregaralbaran_clicked", 0);
     QDialog *diag = new QDialog(0);
     diag->setModal(true);
-    AlbaranClienteList *fac = new AlbaranClienteList(m_companyact, diag, 0, AlbaranClienteList::SelectMode);
+    AlbaranClienteList *fac = new AlbaranClienteList(getcompany(), diag, 0, AlbaranClienteList::SelectMode);
     connect(fac, SIGNAL(selected(QString)), diag, SLOT(accept()));
 
     /// Hacemos que las opciones de filtrado del listado ya esten bien.
@@ -185,7 +185,7 @@ void FacturaView::on_mui_agregaralbaran_clicked() {
         return;
 
     /// Creamos la factura.
-    AlbaranClienteView *bud = new AlbaranClienteView(m_companyact, NULL);
+    AlbaranClienteView *bud = new AlbaranClienteView(getcompany(), NULL);
     bud->cargar(idalbaran);
 
     /// Agregamos a comentarios que albaran se corresponde.
@@ -260,11 +260,11 @@ int FacturaView::guardar() {
 void FacturaView::on_mui_veralbaranes_clicked() {
     _depura("FacturaView::on_mui_veralbaranes_clicked", 0);
     QString SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + DBvalue("reffactura") + "'";
-    cursor2 *cur = m_companyact->cargacursor(SQLQuery);
+    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
     if (!cur->eof()) {
         while (!cur->eof()) {
-            AlbaranClienteView *bud = new AlbaranClienteView(m_companyact, NULL);
-            m_companyact->m_pWorkspace->addWindow(bud);
+            AlbaranClienteView *bud = new AlbaranClienteView(getcompany(), NULL);
+            empresaBase()->m_pWorkspace->addWindow(bud);
             bud->cargar(cur->valor("idalbaran"));
             bud->show();
             cur->siguienteregistro();

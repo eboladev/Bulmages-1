@@ -26,13 +26,10 @@
 
 #include <ui_efacturabase.h>
 #include "company.h"
+#include "fichabf.h"
 
-
-class EFactura : public QWidget, public Ui_EFacturaBase {
+class EFactura : public FichaBf, public Ui_EFacturaBase {
 	Q_OBJECT
-
-private:
-	company *m_companyact;
 
 public:
 	EFactura(company *emp, QWidget *parent = 0);

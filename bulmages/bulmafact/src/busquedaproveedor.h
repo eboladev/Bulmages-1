@@ -25,7 +25,7 @@
 #include <QLabel>
 
 #include "ui_busquedaproveedorbase.h"
-
+#include "blwidget.h"
 
 class company;
 
@@ -33,12 +33,11 @@ class company;
 /// Permite buscar y seleccionar un proveedor.
 /** Widget que permite buscar y seleccionar un
     proveedor. */
-class BusquedaProveedor : public QWidget, public Ui_BusquedaProveedorBase {
+class BusquedaProveedor : public BLWidget, public Ui_BusquedaProveedorBase {
     Q_OBJECT
 
 private:
-    /// Puntero a la clase company para poder trabajar con la Base de Datos y pasar mensajes.
-    company *companyact;
+
     /// Almacena el idproveedor seleccionado.
     QString mdb_idproveedor;
     /// Almacena el nomproveedor seleccionado.
@@ -52,8 +51,7 @@ private:
 
 public:
     BusquedaProveedor(QWidget *parent = 0);
-    ~BusquedaProveedor();
-    void setcompany(company *comp);
+    virtual ~BusquedaProveedor();
     void pinta();
 
     virtual void setidproveedor(QString val);

@@ -50,7 +50,7 @@ int ClienteView_ClienteView_Post(ClienteView *cli) {
     cli->addDBCampo("comentcomercialcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("ClienteView_ClienteView_Post", "Comentarios para el comercial"));
     /// Creamos la pesta&ntilde;a de comercial y la tratamos.
     ComercialClienteView *l = new ComercialClienteView(cli);
-    l->setcompany(cli->companyact());
+    l->setEmpresaBase(cli->empresaBase());
     l->setObjectName(QString::fromUtf8("lcomercial"));
     cli->mui_tab->addTab(l, QApplication::translate("ClienteView_ClienteView_Post", "&Comercial"));
     cli->mui_tab->removeTab(8);

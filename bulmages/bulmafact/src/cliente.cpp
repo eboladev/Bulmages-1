@@ -30,9 +30,8 @@
 /** Inicializa todos los componentes.
     Prepara el DBRecord para trabajar con la tabla cliente.
 */
-Cliente::Cliente(company *comp) : DBRecord(comp) {
+Cliente::Cliente(company *comp, QWidget *parent) : FichaBf(comp, parent) {
     _depura("Cliente::Cliente", 0);
-    m_companyact = comp;
     setDBTableName("cliente");
     setDBCampoId("idcliente");
     addDBCampo("idcliente", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Cliente", "ID cliente"));
@@ -78,13 +77,13 @@ Cliente::~Cliente() {
 void Cliente::borraCliente() {
     _depura("Cliente::borraCliente", 0);
     if (DBvalue("idcliente") != "") {
-        m_companyact->begin();
-        int error = m_companyact->ejecuta("DELETE FROM cliente WHERE idcliente = " + DBvalue("idcliente"));
+        empresaBase()->begin();
+        int error = empresaBase()->ejecuta("DELETE FROM cliente WHERE idcliente = " + DBvalue("idcliente"));
         if (error) {
-            m_companyact->rollback();
+            empresaBase()->rollback();
             return;
         } // end if
-        m_companyact->commit();
+        empresaBase()->commit();
         vaciaCliente();
     } // end if
     _depura("END Cliente::borraCliente", 0);
@@ -150,7 +149,7 @@ void Cliente::pintaCliente() {
 int Cliente::cargar(QString idcliente) {
     _depura("Cliente::cargar", 0);
     QString query = "SELECT * FROM cliente WHERE idcliente = " + idcliente;
-    cursor2 *cur = m_companyact->cargacursor(query);
+    cursor2 *cur = empresaBase()->cargacursor(query);
     if (!cur->eof()) {
         DBload(cur);
     } // end if
@@ -172,27 +171,21 @@ int Cliente::cargar(QString idcliente) {
 int Cliente::guardar() {
     _depura("Cliente::guardar", 0);
     QString id;
-    m_companyact->begin();
+    empresaBase()->begin();
     try {
         DBsave(id);
         setDBvalue("idcliente", id);
-        m_companyact->commit();
+        empresaBase()->commit();
         _depura("END Cliente::guardar", 0);
         return 0;
     } catch (...) {
         _depura("error al guardar el cliente", 1);
-        m_companyact->rollback();
+        empresaBase()->rollback();
         return -1;
     } // end try
 }
 
-/** Devuelve el punteo a la clase company que se esta utilizando
-**/
-company* Cliente::companyact() {
-    _depura("Cliente::companyact", 0);
-    _depura("END Cliente::companyact", 0);
-    return m_companyact;
-}
+
 
 
 

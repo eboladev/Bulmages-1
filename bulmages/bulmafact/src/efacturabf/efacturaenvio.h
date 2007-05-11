@@ -31,7 +31,7 @@ class EFacturaEnvio : public QWidget, public Ui_EFacturaEnvioBase {
 	Q_OBJECT
 
 private:
-	company *m_companyact;
+	company *empresaBase();
 
 public:
 	EFacturaEnvio(company *emp, QWidget *parent = 0);

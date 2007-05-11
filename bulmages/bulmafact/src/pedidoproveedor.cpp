@@ -59,13 +59,13 @@ int PedidoProveedor::borrar() {
     if (DBvalue("idpedidoproveedor") != "") {
         m_listalineas->borrar();
         m_listadescuentos->borrar();
-        m_companyact->begin();
-        int error = m_companyact->ejecuta("DELETE FROM pedidoproveedor WHERE idpedidoproveedor = " + DBvalue("idpedidoproveedor"));
+        empresaBase()->begin();
+        int error = empresaBase()->ejecuta("DELETE FROM pedidoproveedor WHERE idpedidoproveedor = " + DBvalue("idpedidoproveedor"));
         if (error) {
-            m_companyact->rollback();
+            empresaBase()->rollback();
             return -1;
         } // end if
-        m_companyact->commit();
+        empresaBase()->commit();
         vaciaPedidoProveedor();
         pintar();
     } // end if
@@ -106,7 +106,7 @@ void PedidoProveedor::pintar() {
 int PedidoProveedor::cargar(QString idbudget) {
     _depura("PedidoProveedor::cargar", 0);
     QString query = "SELECT * FROM pedidoproveedor WHERE idpedidoproveedor=" + idbudget;
-    cursor2 * cur= m_companyact->cargacursor(query);
+    cursor2 * cur= empresaBase()->cargacursor(query);
     if (!cur->eof()) {
         DBload(cur);
     } // end if
@@ -123,7 +123,7 @@ int PedidoProveedor::guardar() {
     _depura("PedidoProveedor::guardar", 0);
     QString id;
     try {
-        m_companyact->begin();
+        empresaBase()->begin();
         int error = DBsave(id);
         if (error)
             throw -1;
@@ -134,7 +134,7 @@ int PedidoProveedor::guardar() {
         error = m_listadescuentos->guardar();
         if (error)
             throw -1;
-        m_companyact->commit();
+        empresaBase()->commit();
 
 	/// Hacemos una carga para recuperar la referencia
 	cargar(id);
@@ -142,7 +142,7 @@ int PedidoProveedor::guardar() {
         _depura("END PedidoProveedor::guardar", 0);
         return 0;
     } catch (...) {
-        m_companyact->rollback();
+        empresaBase()->rollback();
         _depura("PedidoProveedor::guardar Error al guardar el pedido proveedor", 2);
         throw -1;
     } // end try
@@ -192,7 +192,7 @@ void PedidoProveedor::imprimirPedidoProveedor() {
 
     /// Linea de totales del presupuesto.
     QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor = " + DBvalue("idproveedor");
-    cursor2 *cur = m_companyact->cargacursor(SQLQuery);
+    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
     if(!cur->eof()) {
         buff.replace("[dirproveedor]", cur->valor("dirproveedor"));
         buff.replace("[poblproveedor]", cur->valor("poblproveedor"));

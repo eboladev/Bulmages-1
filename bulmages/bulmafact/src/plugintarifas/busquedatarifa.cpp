@@ -26,8 +26,7 @@
 
 
 BusquedaTarifa::BusquedaTarifa(QWidget *parent)
-        : QComboBox(parent) {
-    companyact = NULL;
+        : QComboBox(parent), PEmpresaBase() {
     m_cursorcombo = NULL;
     connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
 }
@@ -41,7 +40,7 @@ void BusquedaTarifa::setidtarifa(QString idtarifa) {
     mdb_idtarifa = idtarifa;
     if (m_cursorcombo != NULL)
         delete m_cursorcombo;
-    m_cursorcombo = companyact->cargacursor("SELECT * FROM tarifa");
+    m_cursorcombo = empresaBase()->cargacursor("SELECT * FROM tarifa");
     int i = 0;
     int i1 = 0;
     clear();

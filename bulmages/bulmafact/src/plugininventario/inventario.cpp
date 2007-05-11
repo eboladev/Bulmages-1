@@ -116,7 +116,7 @@ void Inventario::pregenerar() {
 void Inventario::setListControlStock(ListControlStockView *a) {
     _depura("Inventario::setListControlStock", 0);
     listalineas = a;
-    listalineas->setcompany(companyact);
+    listalineas->setEmpresaBase(companyact);
 }
 
 ListControlStockView *Inventario::getlistalineas() {

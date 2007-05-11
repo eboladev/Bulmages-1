@@ -41,7 +41,7 @@
 
 
 IncidenciaComercialView::IncidenciaComercialView(company *comp, QWidget *parent)
-        : QWidget(parent), IncidenciaComercial(comp), dialogChanges(this) {
+        : IncidenciaComercial(comp, parent) {
     _depura("IncidenciaComercialView::IncidenciaComercialView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
@@ -51,7 +51,7 @@ IncidenciaComercialView::IncidenciaComercialView(company *comp, QWidget *parent)
 
 
 IncidenciaComercialView::IncidenciaComercialView(QWidget *parent)
-        : QWidget(parent) , IncidenciaComercial(NULL) ,dialogChanges(this) {
+        :  IncidenciaComercial(NULL, parent) {
     _depura("IncidenciaComercialView::IncidenciaComercialView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
@@ -77,5 +77,48 @@ void IncidenciaComercialView::closeEvent(QCloseEvent *e) {
         if (val == 2)
             e->ignore();
     } // end if
+}
+
+void IncidenciaComercialView::setEmpresaBase(company *comp) {
+    _depura("IncidenciaComercialView::setcompany", 0);
+    PEmpresaBase::setEmpresaBase(comp);
+    mui_idcliente->setEmpresaBase(comp);
+    mui_idtrabajador->setEmpresaBase(comp);
+    mui_idtrabajador->setidtrabajador("");
+    _depura("END IncidenciaComercialView::setcompany", 0);
+
+}
+
+int IncidenciaComercialView::guardar() {
+    _depura("IncidenciaComercialView::guardar", 0);
+    if (mui_fechaincidenciacomercial->text() == "")
+        return 0;
+    setDBvalue("fechaincidenciacomercial", mui_fechaincidenciacomercial->text());
+    setDBvalue("idcliente", mui_idcliente->idcliente());
+    setDBvalue("comentincidenciacomercial", mui_comentincidenciacomercial->toPlainText());
+    setDBvalue("idtrabajador", mui_idtrabajador->idtrabajador());
+    setDBvalue("estadoincidenciacomercial", mui_estadoincidenciacomercial->estado());
+    setDBvalue("horaincidenciacomercial", mui_horaincidenciacomercial->text());
+    setDBvalue("refincidenciacomercial", mui_refincidenciacomercial->text());
+    int err = IncidenciaComercial::guardar();
+    _depura("END IncidenciaComercialView::guardar", 0);
+    return err;
+}
+
+
+int IncidenciaComercialView::cargar(QString id) {
+    _depura("IncidenciaComercialView::cargar", 0);
+    int err = IncidenciaComercial::cargar(id);
+    setWindowTitle(tr("Incidencia comercial") + " " + DBvalue("idincidenciacomercial"));
+    mui_fechaincidenciacomercial->setText(DBvalue("fechaincidenciacomercial"));
+    mui_idcliente->setidcliente(DBvalue("idcliente"));
+    mui_comentincidenciacomercial->setPlainText(DBvalue("comentincidenciacomercial"));
+    mui_idtrabajador->setidtrabajador(DBvalue("idtrabajador"));
+    mui_estadoincidenciacomercial->setestado(DBvalue("estadoincidenciacomercial"));
+    mui_horaincidenciacomercial->setText(DBvalue("horaincidenciacomercial"));
+    mui_refincidenciacomercial->setText(DBvalue("refincidenciacomercial"));
+    dialogChanges_cargaInicial();
+    _depura("IncidenciaComercialView::cargar", 0);
+    return err;
 }
 
