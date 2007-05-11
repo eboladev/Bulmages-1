@@ -279,7 +279,7 @@ void company::listarticles() {
 void company::refreshArticles() {
     _depura("company::refreshArticles", 0);
     if (m_articleslist != NULL)
-        m_articleslist->presenta();
+        m_articleslist->presentar();
     _depura("END company::refreshArticles", 0);
 }
 

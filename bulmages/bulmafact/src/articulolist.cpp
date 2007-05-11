@@ -45,7 +45,7 @@
     Hace la presentacion inicial.
 */
 ArticuloList::ArticuloList(company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo)
-        : FichaBf(comp, parent, flag, editmodo), pgimportfiles(comp) {
+        : Listado(comp, parent, flag, editmodo), pgimportfiles(comp) {
     _depura("ArticuloList::ArticuloList", 0);
     setupUi(this);
     /// Disparamos los plugins.
@@ -55,6 +55,7 @@ ArticuloList::ArticuloList(company *comp, QWidget *parent, Qt::WFlags flag, edmo
     m_tipoarticulo->setEmpresaBase(comp);
     m_familia->setEmpresaBase(comp);
     mui_list->setEmpresaBase(comp);
+    setSubForm(mui_list);
     m_usadoarticulo->setCheckState(Qt::Unchecked);
 
     if (modoEdicion()) {
@@ -68,7 +69,7 @@ ArticuloList::ArticuloList(company *comp, QWidget *parent, Qt::WFlags flag, edmo
         mui_importar->setHidden(TRUE);
         mui_imprimir->setHidden(TRUE);
     } // end if
-    presenta();
+    presentar();
     hideBusqueda();
     _depura("END ArticuloList::ArticuloList", 0);
 }
@@ -76,10 +77,10 @@ ArticuloList::ArticuloList(company *comp, QWidget *parent, Qt::WFlags flag, edmo
 
 /** Hace la carga del subformulario para presentar el listado.
 */
-void ArticuloList::presenta() {
-    _depura("ArticuloList::INIT_presenta()\n", 0);
+void ArticuloList::presentar() {
+    _depura("ArticuloList::INIT_presenta", 0);
     mui_list->cargar(formaQuery());
-    _depura("ArticuloList::END_presenta()\n", 0);
+    _depura("ArticuloList::END_presenta", 0);
 }
 
 /** Se encarga de la accion preseleccionada al hacer doble click o al darle
@@ -90,13 +91,13 @@ void ArticuloList::presenta() {
     valor seleccionado.
 */
 /// \TODO: este metodo deberia ser editar
-void ArticuloList::editArticle(int row) {
-    _depura("ArticuloList::editArticle()\n", 0);
+void ArticuloList::editar(int row) {
+    _depura("ArticuloList::editar", 0);
     mdb_idarticulo = mui_list->DBvalue("idarticulo", row);
     mdb_nomarticulo = mui_list->DBvalue("nomarticulo", row);
     mdb_codigocompletoarticulo = mui_list->DBvalue("codigocompletoarticulo", row);
     if (modoEdicion()) {
-        ArticuloView *art = empresaBase()->newArticuloView();
+        ArticuloView *art = ((company *)empresaBase())->newArticuloView();
         empresaBase()->m_pWorkspace->addWindow(art);
         /// Si la carga no va bien entonces terminamos.
         if (art->cargar(mdb_idarticulo)) {
@@ -109,29 +110,16 @@ void ArticuloList::editArticle(int row) {
         close();
         emit(selected(mdb_idarticulo));
     } // end if
-    _depura("ArticuloList::END_editArticle()\n", 0);
+    _depura("ArticuloList::END_editArticle", 0);
 }
 
 
-/** SLOT que responde al boton de editar articulo
-    Comprueba que haya un elemento seleccionado y llama a editArticle.
-*/
-void ArticuloList::on_mui_editar_clicked() {
-    _depura("ArticuloList::INIT_s_editArticle()\n", 0);
-    int a = mui_list->currentRow();
-    if (a < 0) {
-        mensajeInfo(tr("Tiene que seleccionar un articulo"));
-        return;
-    } // end if
-    editArticle(a);
-    _depura("ArticuloList::END_s_editArticle()\n", 0);
-}
+
 
 
 /** No requiere de ninguna accion adicional */
 ArticuloList::~ArticuloList() {
     _depura("ArticuloList::~ArticuloList", 0);
-    empresaBase()->sacaWindow(this);
     _depura("END ArticuloList::~ArticuloList", 0);
 }
 
@@ -158,7 +146,7 @@ void ArticuloList::on_mui_borrar_clicked() {
             int error = empresaBase()->ejecuta(SQLQuery);
             if (error)
                 throw -1;
-            presenta();
+            presentar();
         } // end if
         _depura("END ArticuloList::on_mui_borrar_clicked", 0);
     } catch (...) {
@@ -204,7 +192,7 @@ QString ArticuloList::formaQuery() {
 
 /** La impresion del listado esta completamente delegada en SubForm3.
 */
-void ArticuloList::s_imprimir1() {
+void ArticuloList::imprimir() {
     _depura("ArticuloList::s_imprimir1", 0);
     mui_list->imprimirPDF("Listado de artículos");
     _depura("END ArticuloList::s_imprimir1", 0);
@@ -236,7 +224,7 @@ void ArticuloList::on_mui_exportar_clicked() {
     Hace la importacion a traves de XML2BulmaFact.
 */
 void ArticuloList::on_mui_importar_clicked() {
-    _depura("ArticuloList::INIT_s_importar()\n", 0);
+    _depura("ArticuloList::INIT_s_importar", 0);
     QFile filexml(QFileDialog::getOpenFileName(this,
                   tr("Elija el archivo"),
                   confpr->valor(CONF_DIR_USER),
@@ -245,22 +233,15 @@ void ArticuloList::on_mui_importar_clicked() {
     if (filexml.open(QIODevice::ReadOnly)) {
         XML2BulmaFact(filexml, IMPORT_ARTICULOS);
         filexml.close();
-        presenta();
+        presentar();
     } else {
-        _depura("ERROR AL ABRIR EL ARCHIVO\n", 2);
+        _depura("ERROR AL ABRIR EL ARCHIVO", 2);
     } // end if
-    _depura("ArticuloList::END_s_importar()\n", 0);
+    _depura("ArticuloList::END_s_importar", 0);
 }
 
 
-/** SLOT que responde al doble click sobre un elemento del listado
-    llama a editArticle para que actue correspondientemente.
-*/
-void ArticuloList::on_mui_list_cellDoubleClicked(int a, int) {
-    _depura("ArticuloList::on_mui_list_cellDoubleClicked", 0);
-    editArticle(a);
-    _depura("END ArticuloList::on_mui_list_cellDoubleClicked", 0);
-}
+
 
 /** \TODO: REVISAR ESTE METODO YA QUE NO PARECE SER EL ADECUADO
     EN LA LLAMADA DE SUBMENUS
@@ -281,6 +262,37 @@ void ArticuloList::on_mui_list_customContextMenuRequested(const QPoint &) {
     delete popup;
 }
 
+    void ArticuloList::on_mui_crear_clicked() {
+        ((company *)empresaBase())->s_newArticulo();
+    }
+
+    void ArticuloList::on_mui_list_toogledConfig(bool check) {
+        mui_configurar->setChecked(check);
+    }
+
+    QString ArticuloList::idArticle() {
+        return mdb_idarticulo;
+    }
+
+    QString ArticuloList::idarticulo() {
+        return mdb_idarticulo;
+    }
+
+    QString ArticuloList::nomarticulo() {
+        return mdb_nomarticulo;
+    }
+
+    QString ArticuloList::codigocompletoarticulo() {
+        return mdb_codigocompletoarticulo;
+    }
+
+void ArticuloList::hideBusqueda() {
+    m_busqueda->hide();
+}
+
+void ArticuloList::showBusqueda() {
+    m_busqueda->show();
+}
 
 /// =============================================================================
 ///                    SUBFORMULARIO
@@ -307,3 +319,5 @@ ArticuloListSubForm::ArticuloListSubForm(QWidget *parent, const char *)
     _depura("END ArticuloListSubForm::ArticuloListSubForm", 0);
 }
 
+ArticuloListSubForm::~ArticuloListSubForm() {
+}

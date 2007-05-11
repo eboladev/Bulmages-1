@@ -48,7 +48,8 @@ HEADERS += postgresiface2.h \
 	   empresabase.h \
 	   qtexteditdelegate.h \
            qdoublespinbox2.h \
-	   blwidget.h
+	   blwidget.h \
+	   listado.h
 	   
 SOURCES += postgresiface2.cpp \
            configuracion.cpp \
@@ -76,7 +77,8 @@ SOURCES += postgresiface2.cpp \
 	   empresabase.cpp \
 	   qtexteditdelegate.cpp \
            qdoublespinbox2.cpp \
-	   blwidget.cpp
+	   blwidget.cpp \
+	   listado.cpp
 	   
 RESOURCES = ../bulmages.qrc
 TEMPLATE = lib
