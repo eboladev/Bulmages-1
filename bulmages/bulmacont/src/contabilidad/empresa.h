@@ -122,6 +122,7 @@ public:
     void cierraempresa();
     void abreempresa();
     void regularizaempresa();
+    void regularizaempresa(QString, QString);
     void maximiza();
     void Abrirasientos();
     void Ordenarasientos();

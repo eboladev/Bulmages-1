@@ -376,13 +376,13 @@ void BalancePrintView::presentar(char *tipus) {
 
             /// Presentaci&oacute;n html normal.
             if (html) {
-                QString cadena = confpr->valor(CONF_NAVEGADOR) + " " + confpr->valor(CONF_DIR_USER) + "balance.txt";
+                QString cadena = confpr->valor(CONF_NAVEGADOR) + " " + confpr->valor(CONF_DIR_USER) + "balance.html";
                 system (cadena.toAscii().constData());
             }
 
             /// Presentaci&oacute;n Kugar normal.
             if (kugar) {
-                QString cadena = "kugar " + confpr->valor(CONF_DIR_USER) + "balance.txt";
+                QString cadena = "kugar " + confpr->valor(CONF_DIR_USER) + "balance.kud";
                 system (cadena.toAscii().constData());
             }
         }

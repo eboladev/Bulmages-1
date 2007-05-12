@@ -154,38 +154,30 @@ void Asiento1View::iniciar_asiento_nuevo(QString nuevoordenasiento) {
     _depura("Asiento1View::iniciar_asiento_nuevo", 0);
     try {
         /// TRATAMIENTO DE BASE DE DATOS.
-        QString idasiento = "";
-        QString ordenasiento = "1";
-        QString fecha = mui_fecha->text();
-        m_companyact->begin();
-        QString query = "SELECT MAX(ordenasiento) + 1 AS orden FROM asiento WHERE EXTRACT(YEAR FROM fecha) = '" + fecha.right(4) + "'";
-        cursor2 *cur = m_companyact->cargacursor(query);
-
-        /// Comprobamos que el orden es correcto porque si no hay registros puede
-        /// dar una excepcion.
-        bool conversionok;
-        int ord = (cur->valor("orden")).toInt(&conversionok);
-        if (conversionok) {
-            /// nuevoordenasiento = "" cuando no hay un numero de orden preestablecido
-            /// de creacion del nuevo asiento.
-            if (nuevoordenasiento == "") {
+        QString idasiento, ordenasiento, query;
+	QString fecha = mui_fecha->text();
+	cursor2 *cur;
+	m_companyact->begin();
+        if (nuevoordenasiento == "") {
+		QString query = "SELECT MAX(ordenasiento)+1 AS orden FROM asiento WHERE EXTRACT(YEAR FROM fecha) = '" + fecha.left(10).right(4) + "'";
+   		cur = m_companyact->cargacursor(query);
                 ordenasiento = cur->valor("orden");
-            } else {
+        	delete cur;
+        } else {
                 ordenasiento = nuevoordenasiento;
-            } // end if
         } // end if
-        delete cur;
 
         /// Creamos el asiento en la base de datos.
-        query = "INSERT INTO asiento (fecha, ordenasiento) VALUES ('" + m_companyact->sanearCadena(fecha) + "', " + ordenasiento + ")";
-        m_companyact->ejecuta(query);
-        query = "SELECT MAX(idasiento) AS id FROM asiento";
+        query = "SELECT MAX(idasiento)+1 AS id FROM asiento";
         cur = m_companyact->cargacursor(query);
         if (!cur->eof())
             idasiento = cur->valor("id");
         delete cur;
-        m_companyact->commit();
-        /// FIN TRATAMIENTO DE BASE DE DATOS.
+        //m_companyact->commit();
+        query = "INSERT INTO asiento (idasiento, fecha, ordenasiento) VALUES (" + idasiento + ", '" + m_companyact->sanearCadena(fecha) + "', " + ordenasiento + ")";
+        m_companyact->ejecuta(query);
+	m_companyact->commit();
+	/// FIN TRATAMIENTO DE BASE DE DATOS.
         cargaasientos();
         muestraasiento(idasiento.toInt());
         abrir();
@@ -299,13 +291,17 @@ void Asiento1View::prepguardar() {
     _depura("END Asiento1View::prepguardar", 0);
 }
 
-
 void Asiento1View::on_mui_borrar_clicked() {
+	bool atendido = TRUE; // asumimos que habra que atender al dialogo de confirmacion de borrado
+	on_mui_borrar_clicked(atendido);
+}
+
+void Asiento1View::on_mui_borrar_clicked(bool atendido) {
     _depura("Asiento1View::on_mui_borrar_clicked", 0);
     QString idasientosig = idasientosiguiente();
     QString idasientoant = idasientoanterior();
     int resultadoborrar;
-    resultadoborrar = Asiento1::borrar();
+    resultadoborrar = Asiento1::borrar(atendido);
 
     /// Comprueba si se ha cancelado el borrado.
     if (resultadoborrar == 2) return;
@@ -544,6 +540,7 @@ bool eventos_mui_ordenasiento::eventFilter(QObject *obj, QEvent *event) {
 void ListAsientos::boton_filtrar() {
     _depura("Funcion no implementada", 2);
 }
+
 
 
 void ListAsientos::muestraasiento(QString) {

@@ -91,6 +91,7 @@ public:
     void asientocerradop();
     void iniciar_asiento_nuevo(QString nuevoordenasiento = "");
     virtual void on_mui_borrar_clicked();
+    virtual void on_mui_borrar_clicked(bool);
 
 public slots:
     virtual void on_mui_abrirasiento_clicked();

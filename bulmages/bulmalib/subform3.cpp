@@ -265,8 +265,8 @@ void SubForm3::setOrdenEnabled(bool sorting) {
 
 bool SubForm3::ordenEnabled() {
     _depura("SubForm3::ordenEnabled", 0);
-    _depura("END SubForm3::ordenEnabled", 0);
     return m_orden;
+    _depura("END SubForm3::ordenEnabled", 0);
 }
 
 
@@ -357,10 +357,13 @@ void SubForm3::nuevoRegistro() {
 
     mui_list->insertRow(m_lista.size() - 1);
     SDBCampo *camp;
-    for (int i = 0; i < rec->lista()->size(); ++i) {
+    for (int i=0; i < rec->lista()->size(); ++i) {
         camp = (SDBCampo *) rec->lista()->at(i);
         mui_list->setItem(m_lista.size() - 1, i, camp);
     } // end for
+
+    /// Nos posicionamos en una celda del nuevo registro ya que si no un bug no nos permite usar currentRow()
+   mui_list->setCurrentCell(m_lista.size() - 1, 2);
 
     /// Activamos el sorting debido a un error en las Qt4
     mui_list->setSortingEnabled(m_sorting);
@@ -608,9 +611,9 @@ void SubForm3::cargar(QString query) {
 
 /// Devuelve la linea que se esta tratando actualmente.
 SDBRecord *SubForm3::lineaact() {
-    _depura("SubForm3::lineaact", 0);
-    _depura("END SubForm3::lineaact", 0);
+    _depura("SubForm3::lineaact", 0); 
     return lineaat(mui_list->currentRow());
+   _depura("END SubForm3::lineaact", 0);
 }
 
 

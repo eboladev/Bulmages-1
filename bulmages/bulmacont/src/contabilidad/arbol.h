@@ -25,13 +25,14 @@
 
 #include "postgresiface2.h"
 #include "funcaux.h"
+#include "fixed.h"
 
 
 /// Clase que crea una estructura en forma de arbol para almacenar el plan contable.
-/** Fichero de definici&oacute;n de las clase arbol. Crea una estructura tipo arbol para
-    almacenar en memoria din&aacute;mica todas las cuentas del plan contable de
+/** Fichero de definicion de las clase arbol. Crea una estructura tipo arbol para
+    almacenar en memoria dinamica todas las cuentas del plan contable de
     la base de datos y calcula sus saldos cuando se genera.
-    La potencia de esta estructura radica en la actualizaci&oacute;n autom&aacute;ica de
+    La potencia de esta estructura radica en la actualizacion automatica de
     todos los estados de cada cuenta (las hojas) cada vez que se modifican los valores
     de alguna de ellas.
 */
@@ -47,7 +48,7 @@ private:
         QString codigo; /// C&oacute;digo de la cuenta.
         QString descripcion; /// Su descripci&oacute;n contable.
         /// Los valores a calcular.
-        double saldoant, debe, haber, saldo, debeej, haberej, saldoej;
+        Fixed saldoant, debe, haber, saldo, debeej, haberej, saldoej;
         int numapuntes; /// N&uacute;mero de apuntes que modifican los valores a calcular.
         tiporama* ramas; /// Puntero a m&aacute;s ramas con hojas.
     };
@@ -73,10 +74,9 @@ public:
     void actualizahojas(cursor2*);
     /// Inicializa el acceso al arbol cambiando el valor de la variable "visitada".
     void inicia();
-    /// Mueve el puntero que indexa una hoja del arbol, seg&uacute;n condicionen los
-    /// par&aacute;metros, para que se acceda a la informaci&oacute;n que contiene.
+    /// Mueve el puntero que indexa una hoja del arbol: primer parametro indica el nivel en el que queremos deshojar; el segundo si deshoja o no otros niveles
     bool deshoja(unsigned int, bool);
-    /// Devuelve el contenido de valor solicitado como par&aacute;metro.
+    /// Devuelve el valor solicitado: codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej, etc.
     QString hojaactual(QString);
     /// Se posiciona el puntero en la hoja cuyo codigo corresponde al pasado por parametro e informa del exito o no
     /// El segundo parametro indica a que nivel de profundidad buscar las cuentas; por defecto a 4, el m�imo exigido en un balance abreviado

@@ -107,7 +107,8 @@ QString DBCampo::valorcampoprep(int &error) {
     case DBint:
         if (m_valorcampo == "")
             return "NULL";
-        m_valorcampo.replace(",", ".");
+        if (m_valorcampo.contains("."))
+		m_valorcampo.remove(".");
         return "'" + m_conexionbase->sanearCadena(m_valorcampo) + "'";
     case DBvarchar:
         if (m_valorcampo == "")
@@ -120,8 +121,11 @@ QString DBCampo::valorcampoprep(int &error) {
     case DBnumeric:
         if (m_valorcampo == "")
             return "NULL";
-//	m_valorcampo.replace(".", "");
-        m_valorcampo.replace(",", ".");
+	if (m_valorcampo.contains(".") && m_valorcampo.contains(",")) {
+		m_valorcampo.remove(".");
+		m_valorcampo.replace(",", ".");
+	} else
+		m_valorcampo.replace(",", ".");
         return "'" + m_conexionbase->sanearCadena(m_valorcampo) + "'";
     case DBboolean:
         if (m_valorcampo == "")
@@ -200,20 +204,20 @@ DBRecord::~DBRecord() {
 int DBRecord::DBload(cursor2 *cur) {
     _depura("DBRecord::DBload", 0);
     m_nuevoCampo = FALSE;
-    DBCampo *linea;
+    DBCampo *campo;
     int error = 0;
     for (int i = 0; i < m_lista.size(); ++i) {
-        linea = m_lista.at(i);
-        if (! (linea->restrictcampo() & DBCampo::DBNoLoad)) {
-        QString nom = linea->nomcampo();
+        campo = m_lista.at(i);
+        if (! (campo->restrictcampo() & DBCampo::DBNoLoad)) {
+        QString nom = campo->nomcampo();
         QString val = cur->valor(nom);
-        if ((linea->restrictcampo() & DBCampo::DBPrimaryKey) && (val == ""))
+        if ((campo->restrictcampo() & DBCampo::DBPrimaryKey) && (val == ""))
         m_nuevoCampo = TRUE;
-        if ((linea->restrictcampo() & DBCampo::DBDupPrimaryKey) && (val == ""))
+        if ((campo->restrictcampo() & DBCampo::DBDupPrimaryKey) && (val == ""))
         m_nuevoCampo = TRUE;
-        error += linea->set(val);
+        error += campo->set(val);
         /// Al ser una carga consideramos que los cambios estan inicializados.
-        linea->resetCambio();
+        campo->resetCambio();
     } // end if
     } // end for
     _depura("END DBRecord::DBload", 0);
@@ -224,10 +228,10 @@ int DBRecord::DBload(cursor2 *cur) {
 void DBRecord::DBclear() {
     _depura("DBRecord::DBclear", 0);
     m_nuevoCampo = TRUE;
-    DBCampo *linea;
+    DBCampo *campo;
     for(int i = 0; i < m_lista.size(); ++i) {
-        linea = m_lista.at(i);
-        linea->set("");
+        campo = m_lista.at(i);
+        campo->set("");
     } // end for
     _depura("END DBRecord::DBclear", 0);
 }
@@ -236,7 +240,7 @@ void DBRecord::DBclear() {
 int DBRecord::DBsave(QString &id) {
     _depura("DBRecord::DBsave - " + id, 0);
     try {
-        DBCampo *linea;
+        DBCampo *campo;
         QString listcampos = "";
         QString listvalores = "";
         QString queryupdate = "";
@@ -246,44 +250,44 @@ int DBRecord::DBsave(QString &id) {
         QString querywhere = "";
         int err = 0;
         for (int i = 0; i < m_lista.size(); ++i) {
-            linea = m_lista.at(i);
-            if (linea->restrictcampo() & DBCampo::DBDupPrimaryKey) {
-                QString lin = linea->valorcampoprep(err);
+            campo = m_lista.at(i);
+            if (campo->restrictcampo() & DBCampo::DBDupPrimaryKey) {
+                QString lin = campo->valorcampoprep(err);
                 if (err)
                     throw (-1);
-                querywhere += separadorwhere + linea->nompresentacion() + " = " + lin;
+                querywhere += separadorwhere + campo->nompresentacion() + " = " + lin;
                 separadorwhere = " AND ";
             } // end if
-            if (!(linea->restrictcampo() & DBCampo::DBNoSave)) {
+            if (!(campo->restrictcampo() & DBCampo::DBNoSave)) {
                 /// Si el campo es requerido y no esta entonces salimos sin dar error.
                 /// No es lo mismo que los not null ya que estos si dan error
-                if (linea->restrictcampo() & DBCampo::DBRequired) {
-                    if (linea->valorcampo() == "")
+                if (campo->restrictcampo() & DBCampo::DBRequired) {
+                    if (campo->valorcampo() == "")
                         return 0;
                 } // end if
-                if (linea->restrictcampo() & DBCampo::DBPrimaryKey) {
-                    QString lin = linea->valorcampoprep(err);
+                if (campo->restrictcampo() & DBCampo::DBPrimaryKey) {
+                    QString lin = campo->valorcampoprep(err);
                     if (err)
                         throw -1;
-                    querywhere += separadorwhere + linea->nomcampo() + " = " + lin;
+                    querywhere += separadorwhere + campo->nomcampo() + " = " + lin;
                     separadorwhere = " AND ";
                 } // end if
-                if (linea->valorcampoprep(err) != "") {
-                    queryupdate += separador1 + linea->nomcampo() + "=" + linea->valorcampoprep(err);
+                if (campo->valorcampoprep(err) != "") {
+                    queryupdate += separador1 + campo->nomcampo() + "=" + campo->valorcampoprep(err);
                     separador1 = ", ";
                 } // end if
                 if (err)
                     throw -1;
-                if ((linea->valorcampoprep(err) != "NULL") && (linea->valorcampoprep(err) != "")) {
-                    listcampos += separador + linea->nomcampo();
-                    listvalores += separador + linea->valorcampoprep(err);
+                if ((campo->valorcampoprep(err) != "NULL") && (campo->valorcampoprep(err) != "")) {
+                    listcampos += separador + campo->nomcampo();
+                    listvalores += separador + campo->valorcampoprep(err);
                     if (err)
                         throw -1;
                     separador = ", ";
                 } // end if
                 /// Si es el ID entonces lo asignamos porque ya tiene el valor correspondiente.
-                if (m_campoid == linea->nomcampo()) {
-                    id = linea->valorcampo();
+                if (m_campoid == campo->nomcampo()) {
+                    id = campo->valorcampo();
                 } // end if
             } // end if
         } // end for
@@ -311,18 +315,18 @@ int DBRecord::DBsave(QString &id) {
 
 int DBRecord::setDBvalue(QString nomb, QString valor) {
     _depura("DBRecord::setDBvalue", 0);
-    DBCampo *linea;
+    DBCampo *campo;
     int error = 0;
     int i = 0;
-    linea = m_lista.value(i);
-    while (linea && linea->nomcampo() != nomb)
-        linea = m_lista.value(++i);
-    if (!linea) {
+    campo = m_lista.value(i);
+    while (campo && campo->nomcampo() != nomb)
+	campo = m_lista.value(++i) ;
+    if (!campo) {
         _depura("Campo " + nomb + " no encontrado", 2);
         return -1;
     } // end if
-    if (linea->nomcampo() == nomb)
-        error = linea->set(valor);
+    if (campo->nomcampo() == nomb)
+        error = campo->set(valor);
     _depura("END DBRecord::setDBvalue", 0);
     return error;
 }
@@ -330,17 +334,17 @@ int DBRecord::setDBvalue(QString nomb, QString valor) {
 
 QString DBRecord::DBvalue(QString nomb) {
     _depura("DBRecord::value", 0, nomb);
-    DBCampo *linea;
+    DBCampo *campo;
     int i = 0;
-    linea = m_lista.value(i);
-    while (linea && linea->nomcampo() != nomb)
-        linea = m_lista.value(++i);
-    if (!linea) {
+    campo = m_lista.value(i);
+    while (campo && campo->nomcampo() != nomb)
+        campo = m_lista.value(++i);
+    if (!campo) {
         _depura("Campo " + nomb + " no encontrado", 2);
         return "";
     } // end if
-    if (linea->nomcampo() == nomb) {
-        return linea->valorcampo();
+    if (campo->nomcampo() == nomb) {
+        return campo->valorcampo();
     } // end if
     return "";
 }
@@ -348,15 +352,15 @@ QString DBRecord::DBvalue(QString nomb) {
 
 bool DBRecord::exists(QString nomb) {
     _depura("DBRecord::exists", 0, nomb);
-    DBCampo *linea;
+    DBCampo *campo;
     int i = 0;
-    linea = m_lista.value(i);
-    while (linea && linea->nomcampo() != nomb)
-        linea = m_lista.value(++i);
-    if (!linea) {
+    campo = m_lista.value(i);
+    while (campo && campo->nomcampo() != nomb)
+        campo = m_lista.value(++i);
+    if (!campo) {
         return FALSE;
     } // end if
-    if (linea->nomcampo() == nomb) {
+    if (campo->nomcampo() == nomb) {
         return TRUE;
     } // end if
     return FALSE;
@@ -365,18 +369,18 @@ bool DBRecord::exists(QString nomb) {
 
 QString DBRecord::DBvalueprep(QString nomb) {
     _depura("DBRecord::DBvalueprep", 0);
-    DBCampo *linea;
+    DBCampo *campo;
     int i = 0;
-    linea = m_lista.value(i);
-    while (linea && linea->nomcampo() != nomb)
-        linea = m_lista.value(++i);
-    if (!linea) {
+    campo = m_lista.value(i);
+    while (campo && campo->nomcampo() != nomb)
+        campo = m_lista.value(++i);
+    if (!campo) {
         mensajeAviso("No se ha encontrado el campo '" + nomb + "'.");
         return "";
     } // end if
-    if (linea->nomcampo() == nomb) {
+    if (campo->nomcampo() == nomb) {
         int err;
-        return linea->valorcampoprep(err);
+        return campo->valorcampoprep(err);
     } // end if
     return "";
 }
@@ -395,28 +399,28 @@ int DBRecord::addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp
 int DBRecord::borrar() {
     _depura("DBRecord::borrar", 0);
     try {
-        DBCampo *linea;
+        DBCampo *campo;
         QString separadorwhere = "";
         QString querywhere = "";
 
         for (int i = 0; i < m_lista.size(); ++i) {
-            linea = m_lista.at(i);
-            if (linea->restrictcampo() & DBCampo::DBDupPrimaryKey) {
+            campo = m_lista.at(i);
+            if (campo->restrictcampo() & DBCampo::DBDupPrimaryKey) {
                 int err;
-                QString lin = linea->valorcampoprep(err);
+                QString lin = campo->valorcampoprep(err);
                 if (err)
                     throw -1;
-                querywhere += separadorwhere + linea->nompresentacion() + " = " + lin;
+                querywhere += separadorwhere + campo->nompresentacion() + " = " + lin;
                 separadorwhere = " AND ";
             } // end if
 
-            if (!(linea->restrictcampo() & DBCampo::DBNoSave)) {
-                if (linea->restrictcampo() & DBCampo::DBPrimaryKey) {
+            if (!(campo->restrictcampo() & DBCampo::DBNoSave)) {
+                if (campo->restrictcampo() & DBCampo::DBPrimaryKey) {
                     int err;
-                    QString lin = linea->valorcampoprep(err);
+                    QString lin = campo->valorcampoprep(err);
                     if (err)
                         throw -1;
-                    querywhere += separadorwhere + linea->nomcampo() + " = " + lin;
+                    querywhere += separadorwhere + campo->nomcampo() + " = " + lin;
                     separadorwhere = " AND ";
                 } // end if
             } // end if
@@ -469,7 +473,7 @@ void DBRecord::imprimir() {
 /// Impresion de un Pedido de Proveedor
 /** Usa la plantilla pedidoproveedor.rml */
     _depura("DBRecord::imprimir", 0);
-        DBCampo *linea;
+        DBCampo *campo;
     QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "ficha.rml";
     QString archivod = confpr->valor(CONF_DIR_USER) + "ficha.rml";
     QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
@@ -506,11 +510,11 @@ void DBRecord::imprimir() {
 
     /// Impresion de la tabla de contenidos.
     for (int i = 0; i < m_lista.size(); ++i) {
-            linea = m_lista.at(i);
+            campo = m_lista.at(i);
         fitxersortidatxt += "<tr>\n";
-        fitxersortidatxt += "   <td>" + linea->nomcampo() + "</td>\n";
-        fitxersortidatxt += "   <td>" + linea->nompresentacion() + "</td>\n";
-        fitxersortidatxt += "   <td>" + linea->valorcampo() + "</td>\n";
+        fitxersortidatxt += "   <td>" + campo->nomcampo() + "</td>\n";
+        fitxersortidatxt += "   <td>" + campo->nompresentacion() + "</td>\n";
+        fitxersortidatxt += "   <td>" + campo->valorcampo() + "</td>\n";
         fitxersortidatxt += "</tr>";
     } // end for
 

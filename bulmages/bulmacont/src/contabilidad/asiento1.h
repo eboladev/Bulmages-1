@@ -57,7 +57,7 @@ public:
     QString idasiento();
     /// Establece cual es la lista subformulario del presupuesto.
     void setListLinAsiento1(ListLinAsiento1View *a);
-    virtual int borrar();
+    virtual int borrar(bool);
     virtual void pintaidasiento(QString);
     virtual void pintadescripcion(QString);
     virtual void pintafecha(QString);
@@ -69,7 +69,7 @@ public:
     virtual void trataestadoAsiento1();
     virtual void asiento_cierre();
     virtual void asiento_apertura();
-    virtual void asiento_regularizacion();
+    virtual void asiento_regularizacion(QString, QString);
 };
 
 #endif

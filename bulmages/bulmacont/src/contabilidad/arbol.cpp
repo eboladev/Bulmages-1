@@ -56,7 +56,7 @@ void Arbol::nuevarama(cursor2 *ramas) {
     hoja->idcuenta = atoi(ramas->valor("idcuenta").toAscii().constData());
     hoja->codigo = QString(ramas->valor("codigo"));
     hoja->descripcion = QString(ramas->valor("descripcion"));
-    hoja->saldoant = hoja->debe = hoja->haber = hoja->saldo = hoja->debeej = hoja->haberej = hoja->saldoej = 0.00;
+    hoja->saldoant = hoja->debe = hoja->haber = hoja->saldo = hoja->debeej = hoja->haberej = hoja->saldoej = Fixed("0.00");
     hoja->numapuntes = 0;
     hoja->ramas = NULL;
     /// Buscamos en que rama hay que poner la hoja.
@@ -84,7 +84,7 @@ void Arbol::inicializa(cursor2 *ramas) {
                 hoja->idcuenta = atoi(ramas->valor("idcuenta").toAscii().constData());
                 hoja->codigo = QString(ramas->valor("codigo"));
                 hoja->descripcion = QString(ramas->valor("descripcion"));
-                hoja->saldoant = hoja->debe = hoja->haber = hoja->saldo = hoja->debeej = hoja->haberej = hoja->saldoej = 0.00;
+                hoja->saldoant = hoja->debe = hoja->haber = hoja->saldo = hoja->debeej = hoja->haberej = hoja->saldoej = Fixed("0.00");
                 hoja->numapuntes = 0;
                 hoja->ramas = NULL;
                 rama = new tiporama;
@@ -131,7 +131,7 @@ void Arbol::SintetizarRamas(cursor2 **cuentas, tiporama **ramas) {
         hoja->idcuenta = atoi(ptrcuentas->valor("idcuenta").toAscii().constData());
         hoja->codigo = ptrcuentas->valor("codigo");
         hoja->descripcion = ptrcuentas->valor("descripcion");
-        hoja->saldoant = hoja->debe = hoja->haber = hoja->saldo = hoja->debeej = hoja->haberej = hoja->saldoej = 0.00;
+        hoja->saldoant = hoja->debe = hoja->haber = hoja->saldo = hoja->debeej = hoja->haberej = hoja->saldoej = Fixed("0.00");
         hoja->numapuntes = 0;
         hoja->ramas = NULL;
         guia->hoja = hoja;
@@ -159,13 +159,13 @@ void Arbol::actualizahojas(cursor2 *cuenta) {
     if (hojaraiz->ramas) {
         ActualizarHoja(&(hojaraiz->ramas), cuenta, &actualizado);
         if (actualizado) {
-            hojaraiz->saldoant += cuenta->valor("saldoant").toDouble();
-            hojaraiz->debe += cuenta->valor("debe").toDouble();
-            hojaraiz->haber += cuenta->valor("haber").toDouble();
-            hojaraiz->saldo += cuenta->valor("saldo").toDouble();
-            hojaraiz->debeej += cuenta->valor("debeej").toDouble();
-            hojaraiz->haberej += cuenta->valor("haberej").toDouble();
-            hojaraiz->saldoej += cuenta->valor("saldoej").toDouble();
+            hojaraiz->saldoant = hojaraiz->saldoant + Fixed(cuenta->valor("saldoant"));
+            hojaraiz->debe = hojaraiz->debe + Fixed(cuenta->valor("debe"));
+            hojaraiz->haber = hojaraiz->haber + Fixed(cuenta->valor("haber"));
+            hojaraiz->saldo = hojaraiz->saldo + Fixed(cuenta->valor("saldo"));
+            hojaraiz->debeej = hojaraiz->debeej + Fixed(cuenta->valor("debeej"));
+            hojaraiz->haberej = hojaraiz->haberej + Fixed(cuenta->valor("haberej"));
+            hojaraiz->saldoej = hojaraiz->saldoej + Fixed(cuenta->valor("saldoej"));
             hojaraiz->numapuntes += cuenta->valor("numapuntes").toInt();
         } // end if
     } // end if
@@ -181,13 +181,13 @@ void Arbol::ActualizarHoja(tiporama** ramaraiz, cursor2* cuenta, bool* actualiza
         int idcuenta = atoi(cuenta->valor("idcuenta").toAscii().constData());
         if (rama->hoja->idcuenta == idcuenta) {
             /// Ponemos los valores obtenidos de la BD.
-            rama->hoja->saldoant = cuenta->valor("saldoant").toDouble();
-            rama->hoja->debe = cuenta->valor("debe").toDouble();
-            rama->hoja->haber = cuenta->valor("haber").toDouble();
-            rama->hoja->saldo = cuenta->valor("saldo").toDouble();
-            rama->hoja->debeej = cuenta->valor("debeej").toDouble();
-            rama->hoja->haberej = cuenta->valor("haberej").toDouble();
-            rama->hoja->saldoej = cuenta->valor("saldoej").toDouble();
+            rama->hoja->saldoant = Fixed(cuenta->valor("saldoant"));
+            rama->hoja->debe = Fixed(cuenta->valor("debe"));
+            rama->hoja->haber = Fixed(cuenta->valor("haber"));
+            rama->hoja->saldo = Fixed(cuenta->valor("saldo"));
+            rama->hoja->debeej = Fixed(cuenta->valor("debeej"));
+            rama->hoja->haberej = Fixed(cuenta->valor("haberej"));
+            rama->hoja->saldoej = Fixed(cuenta->valor("saldoej"));
             rama->hoja->numapuntes = cuenta->valor("numapuntes").toInt();
             *actualizado = true;
         } else {
@@ -195,13 +195,13 @@ void Arbol::ActualizarHoja(tiporama** ramaraiz, cursor2* cuenta, bool* actualiza
                 ActualizarHoja(&(rama->hoja->ramas), cuenta, &(*actualizado));
                 /// A la vuelta, actualizamos los valores si alguna hoja fue actualizada.
                 if (*actualizado) {
-                    rama->hoja->saldoant += cuenta->valor("saldoant").toDouble();
-                    rama->hoja->debe += cuenta->valor("debe").toDouble();
-                    rama->hoja->haber += cuenta->valor("haber").toDouble();
-                    rama->hoja->saldo += cuenta->valor("saldo").toDouble();
-                    rama->hoja->debeej += cuenta->valor("debeej").toDouble();
-                    rama->hoja->haberej += cuenta->valor("haberej").toDouble();
-                    rama->hoja->saldoej += cuenta->valor("saldoej").toDouble();
+                    rama->hoja->saldoant = rama->hoja->saldoant + Fixed(cuenta->valor("saldoant"));
+                    rama->hoja->debe = rama->hoja->debe + Fixed(cuenta->valor("debe"));
+                    rama->hoja->haber = rama->hoja->haber + Fixed(cuenta->valor("haber"));
+                    rama->hoja->saldo = rama->hoja->saldo + Fixed(cuenta->valor("saldo"));
+                    rama->hoja->debeej = rama->hoja->debeej + Fixed(cuenta->valor("debeej"));
+                    rama->hoja->haberej = rama->hoja->haberej + Fixed(cuenta->valor("haberej"));
+                    rama->hoja->saldoej = rama->hoja->saldoej + Fixed(cuenta->valor("saldoej"));
                     rama->hoja->numapuntes += cuenta->valor("numapuntes").toInt();
                 } // end if
             } // end if
@@ -333,23 +333,27 @@ QString Arbol::hojaactual(QString valor) {
     _depura("Arbol::hojaactual", 0);
     QString resultado;
     if (valor == "saldoant")
-        resultado.setNum(hoja->saldoant,'f', 2);
-    if (valor == "debe" )
-        resultado.setNum(hoja->debe,'f', 2);
-    if (valor == "haber" )
-        resultado.setNum(hoja->haber,'f', 2);
-    if (valor == "saldo" )
-        resultado.setNum(hoja->saldo,'f', 2);
-    if (valor == "debeej" )
-        resultado.setNum(hoja->debeej,'f', 2);
-    if (valor == "haberej" )
-        resultado.setNum(hoja->haberej,'f', 2);
-    if (valor == "saldoej" )
-        resultado.setNum(hoja->saldoej,'f', 2);
-    if (valor == "codigo" )
+        resultado = hoja->saldoant.toQString();
+    else if (valor == "debe" )
+        resultado = hoja->debe.toQString();
+    else if (valor == "haber" )
+        resultado = hoja->haber.toQString();
+    else if (valor == "saldo" )
+        resultado = hoja->saldo.toQString();
+    else if (valor == "debeej" )
+        resultado = hoja->debeej.toQString();
+    else if (valor == "haberej" )
+        resultado = hoja->haberej.toQString();
+    else if (valor == "saldoej" )
+        resultado = hoja->saldoej.toQString();
+    else if (valor == "codigo" )
         resultado = hoja->codigo;
-    if (valor == "descripcion" )
+    else if (valor == "descripcion" )
         resultado = hoja->descripcion;
+    else if (valor == "idcuenta" )
+        resultado.setNum(hoja->idcuenta);
+    else
+	_depura("Campo " + valor + " no encontrado en la hoja del arbol", 2);
     return resultado;
     _depura("END Arbol::hojaactual", 0);
 }

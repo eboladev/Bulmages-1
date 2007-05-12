@@ -29,6 +29,7 @@
 #include "fixed.h"
 #include "postgresiface2.h"
 #include "arbol.h"
+#include "asiento1view.h"
 
 #ifndef WIN32
 #include <unistd.h>
@@ -89,7 +90,7 @@ void CAnualesPrintView::on_mui_aceptar_clicked()
     } // end if
 
 
-    /** Versiï¿½ sin ARBOL
+    /** Version sin ARBOL
 
         /// Ponemos todos los valores de las cuentas. Hacemos la carga.
         QDomNodeList lcuentas = m_doc.elementsByTagName("CUENTA");
@@ -112,13 +113,13 @@ void CAnualesPrintView::on_mui_aceptar_clicked()
 
     **/
 
-    /** Versiï¿½ con ARBOL: mï¿½ rollo de codï¿½o pero muuuucho mas eficiente **/
-
-    /// Vamos a crear un &aacute;rbol en la mem&oacute;ria din&aacute;mica con
+    /** Version con ARBOL: mas rollo de codigo pero muuuucho mas eficiente **/
+    /// Vamos a crear un arbol en la memoria dinamica con
     /// los distintos niveles de cuentas.
 
+
     // Primero, averiguaremos la cantidad de ramas iniciales (tantos como
-    // n&uacute;mero de cuentas de nivel 2) y las vamos creando.
+    // numero de cuentas de nivel 2) y las vamos creando.
     empresaactual->begin();
     QString query = "SELECT *, nivel(codigo) AS nivel FROM cuenta ORDER BY codigo";
     cursor2 *ramas;
@@ -138,16 +139,26 @@ void CAnualesPrintView::on_mui_aceptar_clicked()
     arbolP1->inicializa ( ramas );
     arbolP2->inicializa ( ramas );
     delete ramas;
+    empresaactual->commit();
+
+    QRegExp rx("^.*perdidas y ganancias.*$"); // filtro para saber si es el de perdidas y ganancias
+    rx.setCaseSensitivity(Qt::CaseInsensitive);
+    QString asiento;
+    // Discernimos entre Balances y Cuenta de Resultados
+    if(rx.exactMatch(m_doc.elementsByTagName("TITULO").item(0).toElement().text()))
+	// Hay que excluir el asiento de Regularizacion para el calculo de beneficios o perdidas si existe ya en el periodo
+	asiento = "%Asiento de Regularizaci%";
+    else
+	asiento = "%Asiento de Cierre%"; // No hay que tener en cuenta el asiento de cierre para obtener los saldos
+
+    // OJO!! Antes de nada, hay que calcular el asiento de REGULARIZACION que nos guarda el resultado en la 129
+    Asiento1View *asientoReg;
+    empresaactual->regularizaempresa(finicial, ffinal);
+    asientoReg = empresaactual->intapuntsempresa2();
 
     // Ahora, recopilamos todos los apuntes agrupados por cuenta para poder
     // establecer as&iacute; los valores de cada cuenta para el periodo 1.
-    QRegExp rx("^.*perdidas y ganancias.*$");
-    rx.setCaseSensitivity(Qt::CaseInsensitive);
-    QString asiento;
-    if(rx.exactMatch(m_doc.elementsByTagName("TITULO").item(0).toElement().text()))
-	asiento = "%Asiento de Regularizaci%";
-    else
-	asiento = "%Asiento de Cierre%";
+    empresaactual->begin();
     query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = EXTRACT(year FROM timestamp '"+finicial+"') GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '"+finicial+"' AND fecha <= '"+ffinal+"' AND conceptocontable NOT SIMILAR TO '"+asiento+"' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '"+finicial+"' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo";
     cursor2 *hojas;
     hojas = empresaactual->cargacursor ( query, "Periodo1" );
@@ -157,9 +168,16 @@ void CAnualesPrintView::on_mui_aceptar_clicked()
         arbolP1->actualizahojas ( hojas );
         hojas->siguienteregistro();
     } // end while
+    empresaactual->commit();
+    asientoReg->on_mui_borrar_clicked(FALSE); // borramos el asiento temporal creado indicando que no queremos confirmacion
+
+    // Para el segundo periodo, calculamos el asiento de REGULARIZACION que nos guarda el resultado en la 129
+    empresaactual->regularizaempresa(finicial1, ffinal1);
+    asientoReg = empresaactual->intapuntsempresa2();
 
     // Ahora, recopilamos todos los apuntes agrupados por cuenta para poder
     // establecer as&iacute; los valores de cada cuenta para el periodo 2.
+    empresaactual->begin();
     query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = EXTRACT(year FROM timestamp '"+finicial1+"') GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '"+finicial1+"' AND fecha <= '"+ffinal1+"' AND conceptocontable NOT SIMILAR TO '"+asiento+"' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '"+finicial1+"' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo";
     hojas = empresaactual->cargacursor ( query, "Periodo2" );
     // Para cada cuenta con sus saldos calculados hay que actualizar hojas del &aacute;rbol.
@@ -169,6 +187,8 @@ void CAnualesPrintView::on_mui_aceptar_clicked()
         hojas->siguienteregistro();
     } // end while
     delete hojas;
+    empresaactual->commit();
+    asientoReg->on_mui_borrar_clicked(FALSE); // borramos indicando que no queremos confirmacion
 
     QDomNodeList lcuentas = m_doc.elementsByTagName ( "CUENTA" );
     for ( int i = 0; i < lcuentas.count(); i++ )
@@ -176,28 +196,18 @@ void CAnualesPrintView::on_mui_aceptar_clicked()
         QDomNode cuenta = lcuentas.item ( i );
         QDomElement e1 = cuenta.toElement();
         QString valorP1, valorP2;
-        Fixed valor = Fixed ( "0.0" );
+        Fixed valor = Fixed ( "0.00" );
         if ( !e1.isNull() )
         {
             if ( arbolP1->irHoja ( e1.text() ) )
-            {
-                valor = Fixed ( arbolP1->hojaactual ( "saldoant" ) );
-                valor = valor + Fixed ( arbolP1->hojaactual ( "saldo" ) );
-            }
+                valor = Fixed ( arbolP1->hojaactual ( "saldo" ) );
             else
-            {
-                valor = Fixed ( "0.0" );
-            } // end if
+                valor = Fixed ( "0.00" );
             valorP1 = valor.toQString();
             if ( arbolP2->irHoja ( e1.text() ) )
-            {
-                valor = Fixed ( arbolP2->hojaactual ( "saldoant" ) );
-                valor = valor + Fixed ( arbolP2->hojaactual ( "saldo" ) );
-            }
+                valor = Fixed ( arbolP2->hojaactual ( "saldo" ) );
             else
-            {
-                valor = Fixed ( "0.0" );
-            } // end if
+                valor = Fixed ( "0.00" );
             valorP2 = valor.toQString();
             QDomNode c = e1.parentNode();
             agregaValores ( c, valorP1, valorP2 );
@@ -207,11 +217,10 @@ void CAnualesPrintView::on_mui_aceptar_clicked()
     /// Eliminamos el &aacute;rbol y cerramos la conexi&oacute;n con la BD.
     delete arbolP1;
     delete arbolP2;
-    empresaactual->commit();
 
-    /** Fin de la versiï¿½ con ARBOL **/
+    /** Fin de la version con ARBOL **/
 
-    /// HAcemos el calculo recursivo del balance.
+    /// Hacemos el calculo recursivo del balance.
     bool terminado = FALSE;
     while ( !terminado )
     {
@@ -471,7 +480,7 @@ void CAnualesPrintView::imprimir ( QString periodo1finicial, QString periodo1ffi
                 QString vact = formul.firstChildElement ( "VALORACT" ).toElement().text();
 		vact = spanish.toString(vact.toDouble(), 'f', 2);
                 QString vant = formul.firstChildElement ( "VALORANT" ).toElement().text();
-		vant = spanish.toString(vact.toDouble(), 'f', 2);
+		vant = spanish.toString(vant.toDouble(), 'f', 2);
                 QString texto = item.firstChildElement ( "CONCEPTO" ).toElement().text();
                 fitxersortidatxt += "<tr>\n";
                 fitxersortidatxt += "<td>"+texto+"</td>\n";

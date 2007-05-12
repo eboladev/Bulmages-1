@@ -23,10 +23,13 @@
 #include <QFile>
 
 #include "asiento1.h"
+#include "asiento1view.h"
 #include "fixed.h"
 #include "funcaux.h"
 #include "plugins.h"
 #include "empresa.h"
+#include "arbol.h"
+#include "fixed.h"
 
 
 Asiento1::Asiento1(empresa *comp, QWidget *parent) : FichaBc (comp, parent) {
@@ -38,7 +41,7 @@ Asiento1::Asiento1(empresa *comp, QWidget *parent) : FichaBc (comp, parent) {
     addDBCampo("descripcion", DBCampo::DBvarchar, DBCampo::DBNoSave, QApplication::translate("Asiento1", "Descripcion del asiento"));
     addDBCampo("fecha", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Asiento1", "Fecha del asiento"));
     addDBCampo("comentariosasiento", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Asiento1", "Comentarios del asiento"));
-    addDBCampo("ordenasiento", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("Asiento1", "Orden de asiento"));
+    addDBCampo("ordenasiento", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Asiento1", "Orden de asiento"));
     addDBCampo("clase", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Asiento1", "Tipo de asiento"));
     listalineas = NULL;
     _depura("END Asiento1::Asiento1", 0);
@@ -101,8 +104,143 @@ void Asiento1::asiento_apertura() {
 }
 
 
-void Asiento1::asiento_regularizacion() {
-    _depura("Funcion no implementada", 2);
+void Asiento1::asiento_regularizacion(QString finicial, QString ffinal) {
+    _depura("Asiento1::regularizacion", 0);
+	// Primero, cogemos los saldos de las cuentas usando la clase Arbol
+	m_companyact->begin();
+	QString query = "SELECT *, nivel(codigo) AS nivel FROM cuenta ORDER BY codigo";
+	cursor2 *ramas;
+	ramas = m_companyact->cargacursor ( query, "Ramas" );
+	Arbol *arbol;
+	arbol = new Arbol;
+	while ( !ramas->eof() )
+	{
+		if ( atoi ( ramas->valor ( "nivel" ).toAscii().constData() ) == 2 )
+		{ /// Cuenta ra&iacute;z.
+			arbol->nuevarama ( ramas );
+		} // end if
+		ramas->siguienteregistro();
+	} // end while
+	arbol->inicializa ( ramas );
+	delete ramas;
+	query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = EXTRACT(year FROM timestamp '"+finicial+"') GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '"+finicial+"' AND fecha <= '"+ffinal+"' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '"+finicial+"' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta WHERE cuenta.codigo SIMILAR TO '6%|7%' ORDER BY codigo";
+	cursor2 *hojas;
+	hojas = m_companyact->cargacursor ( query, "Regularizacion" );
+	// Para cada cuenta con sus saldos calculados hay que actualizar hojas del &aacute;rbol.
+	while ( !hojas->eof() )
+	{
+		arbol->actualizahojas(hojas);
+		hojas->siguienteregistro();
+	} // end while
+
+	// Ahora, habrá que introducir apuntes en el nuevo asiento creado para tal fin
+	// Para ello, abrimos un asiento con fecha actual y le ponemos sus apuntes con ffinal para obtener los resultados del periodo
+	Asiento1View *introapunts2 = m_companyact->intapuntsempresa2();
+	m_companyact->commit();
+	introapunts2->iniciar_asiento_nuevo(); // abrimos el asiento
+	QString idasiento = introapunts2->idasiento();
+	Fixed debe129 = Fixed("0.00");	// para acumular el debe que tendra la cuenta de regularizacion
+	Fixed haber129 = Fixed("0.00"); // para acumular el haber que tendra la cuenta de regularizacion
+	Fixed debe, haber;
+	listalineas->setinsercion(TRUE);
+	listalineas->borrar(listalineas->currentRow());
+	SDBRecord *apunte;
+	SDBCampo *campo;
+	arbol->inicia();
+	while(arbol->deshoja(7,FALSE)){
+		listalineas->nuevoRegistro();
+		apunte = listalineas->lineaact();
+		switch (arbol->hojaactual("codigo").left(1).toInt()) {
+		case 6:
+			haber = arbol->hojaactual("saldo"); // las cuentas del grupo 6 se regularizan por el haber
+			debe129 = debe129 + haber; // acumulamos a la contrapartida de regularizacion
+			for(int i=0; i < apunte->lista()->size(); ++i){
+				campo = (SDBCampo *) apunte->lista()->at(i);
+				if(campo->nomcampo() == "fecha")
+					campo->set(ffinal);
+				else if (campo->nomcampo() == "haber")
+					campo->set(haber.toQString());
+				else if (campo->nomcampo() == "debe")
+					campo->set("0.00");
+				else if (campo->nomcampo() == "conceptocontable")
+					campo->set("Asiento de Regularizacion");
+				else if (campo->nomcampo() == "idcuenta")
+					campo->set(arbol->hojaactual("idcuenta"));
+				else if (campo->nomcampo() == "idasiento")
+					campo->set(idasiento);
+			} // end while
+			break;
+		case 7:
+			debe = arbol->hojaactual("saldo"); // las cuentas del grupo 7 se regularizan por el debe
+			debe = debe * -1; // cambiamos el signo
+			haber129 = haber129 + debe; // acumulamos a la contrapartida de regularizacion
+			for(int i=0; i < apunte->lista()->size(); ++i){
+				campo = (SDBCampo *) apunte->lista()->at(i);
+				if(campo->nomcampo() == "fecha")
+					campo->set(ffinal);
+				else if (campo->nomcampo() == "debe")
+					campo->set(debe.toQString());
+				else if (campo->nomcampo() == "haber")
+					campo->set("0.00");
+				else if (campo->nomcampo() == "conceptocontable")
+					campo->set("Asiento de Regularizacion");
+				else if (campo->nomcampo() == "idcuenta")
+					campo->set(arbol->hojaactual("idcuenta"));
+				else if (campo->nomcampo() == "idasiento")
+					campo->set(idasiento);
+			} // end while
+		}
+	}
+	// Buscamos la cuenta de regularizacion
+	m_companyact->begin();
+	query = "select idcuenta, codigo from cuenta where padre in (select idcuenta from cuenta where codigo='129')";
+	cursor2 *regularizacion;
+	regularizacion = m_companyact->cargacursor ( query, "Regularizacion" );
+	QString idcuenta = regularizacion->valor("idcuenta");
+	QString codigo = regularizacion->valor("codigo");
+	m_companyact->commit();
+
+	// Ahora, introducimos los dos ultimos apuntes de regularizacion
+	listalineas->nuevoRegistro();
+	apunte = listalineas->lineaact();
+	for(int i=0; i < apunte->lista()->size(); ++i){
+		campo = (SDBCampo *) apunte->lista()->at(i);
+		if(campo->nomcampo() == "fecha")
+			campo->set(ffinal);
+		else if (campo->nomcampo() == "debe")
+			campo->set(debe129.toQString());
+		else if (campo->nomcampo() == "haber")
+			campo->set("0.00");
+		else if (campo->nomcampo() == "conceptocontable")
+			campo->set("Asiento de Regularizacion");
+		else if (campo->nomcampo() == "idcuenta")
+			campo->set(idcuenta);
+		else if (campo->nomcampo() == "idasiento")
+			campo->set(idasiento);
+	} // end while
+	listalineas->nuevoRegistro();
+	apunte = listalineas->lineaact();
+	for(int i=0; i < apunte->lista()->size(); ++i){
+		campo = (SDBCampo *) apunte->lista()->at(i);
+		if(campo->nomcampo() == "fecha")
+			campo->set(ffinal);
+		else if (campo->nomcampo() == "debe") 
+			campo->set("0.00");
+		else if (campo->nomcampo() == "haber") 
+			campo->set(haber129.toQString());
+		else if (campo->nomcampo() == "conceptocontable") 
+			campo->set("Asiento de Regularizacion");
+		else if (campo->nomcampo() == "idcuenta")
+			campo->set(idcuenta);
+		else if (campo->nomcampo() == "idasiento")
+			campo->set(idasiento);
+	} // end while
+	//listalineas->setOrdenEnabled(TRUE);
+ 	listalineas->guardar(); // guardamos los apuntes
+	listalineas->setinsercion(FALSE);
+	introapunts2->on_mui_cerrarasiento_clicked(); // cerramos el asiento
+	introapunts2->asientocerradop(); // y en la ventana de introduccioin de apuntes lo mostramos cerrado
+    _depura("END Asiento1::regularizacion", 0);
 }
 
 
@@ -112,30 +250,44 @@ void Asiento1::asiento_regularizacion() {
                  3: Se ha borrado correctamente.
                 -1: Ha habido algun error.
 */
-int Asiento1::borrar() {
+int Asiento1::borrar(bool atendido) {
     _depura("Asiento1::borrar", 0);
     int error;
     if (DBvalue("idasiento") != "") {
-        switch (QMessageBox::warning(0,
-                                     QApplication::translate("Asiento1", "Borrar asiento"),
-                                     QApplication::translate("Asiento1", "Se va a borrar el asiento. Esta seguro?"),
-                                     QMessageBox::Ok,
-                                     QMessageBox::Cancel)) {
-        case QMessageBox::Ok: /// Retry clicked or Enter pressed.
-            m_companyact->begin();
-            listalineas->borrar();
-            error = m_companyact->ejecuta("DELETE FROM apunte WHERE idasiento = " + DBvalue("idasiento"));
-            error += m_companyact->ejecuta("DELETE FROM asiento WHERE idasiento = " + DBvalue("idasiento"));
-            if (error) {
-                m_companyact->rollback();
-                return -1;
-            } // end if
-            m_companyact->commit();
-            vaciar();
-            return 3;
-        case QMessageBox::Cancel: /// Abort clicked or Escape pressed.
-            return 2;
-        } // end switch
+	if (atendido) {
+		switch (QMessageBox::warning(0,
+			QApplication::translate("Asiento1", "Borrar asiento"),
+			QApplication::translate("Asiento1", "Se va a borrar el asiento. Esta seguro?"),
+			QMessageBox::Ok,
+			QMessageBox::Cancel)) {
+		case QMessageBox::Ok: /// Retry clicked or Enter pressed.
+		m_companyact->begin();
+		listalineas->borrar();
+		error = m_companyact->ejecuta("DELETE FROM apunte WHERE idasiento = " + DBvalue("idasiento"));
+		error += m_companyact->ejecuta("DELETE FROM asiento WHERE idasiento = " + DBvalue("idasiento"));
+		if (error) {
+			m_companyact->rollback();
+			return -1;
+		} // end if
+		m_companyact->commit();
+		vaciar();
+		return 3;
+		case QMessageBox::Cancel: /// Abort clicked or Escape pressed.
+		return 2;
+		} // end switch
+	} else {
+		m_companyact->begin();
+		listalineas->borrar();
+		error = m_companyact->ejecuta("DELETE FROM apunte WHERE idasiento = " + DBvalue("idasiento"));
+		error += m_companyact->ejecuta("DELETE FROM asiento WHERE idasiento = " + DBvalue("idasiento"));
+		if (error) {
+			m_companyact->rollback();
+			return -1;
+		} // end if
+		m_companyact->commit();
+		vaciar();
+		return 3;
+	} // end if
     } // end if
     _depura("END Asiento1::borrar", 0);
     return 0;

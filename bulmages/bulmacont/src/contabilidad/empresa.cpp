@@ -604,11 +604,18 @@ void empresa::abreempresa() {
 
 void empresa::regularizaempresa() {
     _depura("empresa::regularizaempresa", 0);
-    introapunts2->show();
-    introapunts2->asiento_regularizacion();
+	QString hoy = QDate::currentDate().toString("dd/MM/yyyy");
+	QString finicial = "01/01/"+hoy.right(4);
+	regularizaempresa(finicial, hoy); // TODO: Habria que preguntar con que fecha realizar la regularizacion
     _depura("END empresa::regularizaempresa", 0);
 }
 
+void empresa::regularizaempresa(QString finicial, QString ffinal) {
+    _depura("empresa::regularizaempresa", 0);
+	introapunts2->show();
+    	introapunts2->asiento_regularizacion(finicial, ffinal);
+    _depura("END empresa::regularizaempresa", 0);
+}
 
 void empresa::Filtro() {
     _depura("empresa::Filtro", 0);
