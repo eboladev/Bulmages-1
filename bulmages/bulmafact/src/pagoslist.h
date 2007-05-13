@@ -28,7 +28,7 @@
 #include "busquedaproveedor.h"
 #include "funcaux.h"
 #include "subform2bf.h"
-#include "fichabf.h"
+#include "listado.h"
 
 /// Administra el detalle del listado de pagos.
 /** */
@@ -37,8 +37,7 @@ class PagosListSubForm : public SubForm2Bf {
 
 public:
     PagosListSubForm(QWidget *parent = 0);
-    ~PagosListSubForm() {}
-    ;
+    ~PagosListSubForm();
 };
 
 
@@ -47,13 +46,10 @@ public:
 
 /// Muestra y administra el listado de pagos.
 /** */
-class PagosList : public FichaBf, private Ui_PagosListBase {
+class PagosList : public Listado, private Ui_PagosListBase {
     Q_OBJECT
 
 private:
-    /// m_modo == 0 es modo edicion.
-    /// m_modo == 1 es modo selector.
-    int m_modo;
     QString mdb_idpago;
 
 public:
@@ -61,28 +57,15 @@ public:
     PagosList(company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0);
     ~PagosList();
     void presentar();
-    void modoseleccion();
-    void modoedicion();
     void setEmpresaBase (company *comp);
     QString idpago();
-    void hideBotonera();
-    void showBotonera();
-    void hideBusqueda();
-    void showBusqueda();
     void imprimir();
     void setidproveedor(QString val);
     QString generaFiltro();
+    void crear();
+    void borrar();
+    void editar(int);
 
-
-public slots:
-    virtual void on_mui_list_cellDoubleClicked(int, int);
-    virtual void on_mui_list_customContextMenuRequested(const QPoint &);
-    virtual void on_mui_editar_clicked();
-    virtual void on_mui_crear_clicked();
-    virtual void on_mui_borrar_clicked();
-    virtual void on_mui_imprimir_clicked();
-    virtual void on_mui_actualizar_clicked();
-    virtual void on_mui_configurar_toggled(bool checked);
 };
 
 #endif

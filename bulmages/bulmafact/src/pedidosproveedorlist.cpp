@@ -32,37 +32,35 @@
 
 
 PedidosProveedorList::PedidosProveedorList(QWidget *parent, Qt::WFlags flag)
-        : FichaBf (NULL, parent, flag) {
+        : Listado (NULL, parent, flag) {
     setupUi(this);
-    m_modo = 0;
     mdb_idpedidoproveedor = "";
-    meteWindow(windowTitle(), this);
+    setSubForm(mui_list);
     hideBusqueda();
 }
 
 
 PedidosProveedorList::PedidosProveedorList(company *comp, QWidget *parent, Qt::WFlags flag)
-        : FichaBf(comp, parent, flag) {
+        : Listado(comp, parent, flag) {
     setupUi(this);
     m_proveedor->setEmpresaBase(comp);
     m_articulo->setEmpresaBase(comp);
     mui_list->setEmpresaBase(comp);
-    presenta();
-    m_modo = 0;
+    presentar();
+    setSubForm(mui_list);
     mdb_idpedidoproveedor = "";
-    meteWindow(windowTitle(), this);
+    empresaBase()->meteWindow(windowTitle(), this);
     hideBusqueda();
 }
 
 
 PedidosProveedorList::~PedidosProveedorList() {
     _depura("PedidosProveedorList::~PedidosProveedorList", 0);
-    empresaBase()->sacaWindow(this);
     _depura("END PedidosProveedorList::~PedidosProveedorList", 0);
 }
 
 
-void PedidosProveedorList::presenta() {
+void PedidosProveedorList::presentar() {
     mui_list->cargar("SELECT *, totalpedidoproveedor AS total, bimppedidoproveedor AS base, imppedidoproveedor AS impuestos FROM pedidoproveedor LEFT JOIN proveedor ON pedidoproveedor.idproveedor=proveedor.idproveedor LEFT JOIN almacen ON pedidoproveedor.idalmacen=almacen.idalmacen WHERE 1=1 " + generarFiltro());
     /// Hacemos el calculo del total.
     cursor2 *cur = empresaBase()->cargacursor("SELECT SUM(totalpedidoproveedor) AS total FROM pedidoproveedor LEFT JOIN proveedor ON pedidoproveedor.idproveedor=proveedor.idproveedor LEFT JOIN almacen ON pedidoproveedor.idalmacen=almacen.idalmacen WHERE 1=1 " + generarFiltro());
@@ -110,8 +108,8 @@ void PedidosProveedorList::imprimir() {
 }
 
 
-void PedidosProveedorList::on_mui_borrar_clicked() {
-    _depura("PedidosProveedorList::on_mui_borrar_clicked", 0);
+void PedidosProveedorList::borrar() {
+    _depura("PedidosProveedorList::borrar", 0);
     int a = mui_list->currentRow();
     if (a < 0) {
         mensajeInfo(tr("Debe seleccionar una linea"));
@@ -119,52 +117,65 @@ void PedidosProveedorList::on_mui_borrar_clicked() {
     } // end if
     try {
         mdb_idpedidoproveedor = mui_list->DBvalue(QString("idpedidoproveedor"));
-        if (m_modo == 0) {
-            PedidoProveedorView *ppv = empresaBase()->nuevoPedidoProveedorView();
+        if (modoEdicion()) {
+            PedidoProveedorView *ppv = ((company *)empresaBase())->nuevoPedidoProveedorView();
             if (ppv->cargar(mdb_idpedidoproveedor)) {
                 throw -1;
             } // end if
             ppv->on_mui_borrar_clicked();
             ppv->close();
         } // end if
-        presenta();
+        presentar();
     } catch (...) {
         mensajeInfo(tr("Error al borrar el pedido a proveedor"));
     } // end try
-    _depura("END PedidosProveedorList::on_mui_borrar_clicked", 0);
+    _depura("END PedidosProveedorList::borrar", 0);
 }
 
 
 void PedidosProveedorList::editar(int row) {
     _depura("PedidosProveedorList::editar", 0);
     try {
-	   mdb_idpedidoproveedor = mui_list->DBvalue(QString("idpedidoproveedor"), row);
-	   if (m_modo == 0) {
-		  PedidoProveedorView *prov = new PedidoProveedorView(empresaBase(), 0);
-		  if (prov->cargar(mdb_idpedidoproveedor)) {
-		  delete prov;
-		  return;
-		  } // end if
-		  empresaBase()->m_pWorkspace->addWindow(prov);
-		  prov->show();
-	   } else {
-		  emit(selected(mdb_idpedidoproveedor));
-	   } // end if
+        mdb_idpedidoproveedor = mui_list->DBvalue(QString("idpedidoproveedor"), row);
+        if (modoEdicion()) {
+            PedidoProveedorView *prov = new PedidoProveedorView((company *)empresaBase(), 0);
+            if (prov->cargar(mdb_idpedidoproveedor)) {
+                delete prov;
+                return;
+            } // end if
+            empresaBase()->m_pWorkspace->addWindow(prov);
+            prov->show();
+        } else {
+            emit(selected(mdb_idpedidoproveedor));
+        } // end if
     } catch (...) {
-    	mensajeInfo(tr("Error al cargar el pedido proveedor"));
+        mensajeInfo(tr("Error al cargar el pedido proveedor"));
     } // end try
     _depura("END PedidosProveedorList::editar", 0);
 }
 
 
-void PedidosProveedorList::on_mui_editar_clicked() {
-    int a = mui_list->currentRow();
-    if (a < 0) {
-        mensajeInfo(tr("Debe seleccionar una linea"));
-        return;
-    } else {
-        editar(a);
-    } // end if
+void PedidosProveedorList::crear() {
+    _depura("PedidosProveedorList::crear", 0);
+    PedidoProveedorView *prov = new PedidoProveedorView((company *)empresaBase(), 0);
+    empresaBase()->m_pWorkspace->addWindow(prov);
+    prov->show();
+    _depura("END PedidosProveedorList::crear", 0);
+}
+
+
+void PedidosProveedorList::setEmpresaBase(company *comp) {
+    PEmpresaBase::setEmpresaBase(comp);
+    m_proveedor->setEmpresaBase(comp);
+    mui_list->setEmpresaBase(comp);
+}
+
+QString PedidosProveedorList::idpedidoproveedor() {
+    return mdb_idpedidoproveedor;
+}
+
+void PedidosProveedorList::setidproveedor(QString val) {
+    m_proveedor->setidproveedor(val);
 }
 
 
@@ -195,3 +206,17 @@ PedidosProveedorListSubform::PedidosProveedorListSubform(QWidget *parent) : SubF
     setSortingEnabled(TRUE);
 }
 
+void PedidosProveedorListSubform::cargar() {
+    _depura("PedidosProveedorListSubform::cargar", 0);
+    QString SQLQuery = "SELECT * FROM pedidoproveedor";
+    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
+    SubForm3::cargar(cur);
+    delete cur;
+}
+
+
+void PedidosProveedorListSubform::cargar(QString query) {
+    SubForm3::cargar(query);
+}
+
+PedidosProveedorListSubform::~PedidosProveedorListSubform() {}

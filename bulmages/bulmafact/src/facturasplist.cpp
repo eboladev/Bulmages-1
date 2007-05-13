@@ -37,7 +37,7 @@
     Mete la ventana en el workSpace.
 */
 FacturasProveedorList::FacturasProveedorList(QWidget *parent, Qt::WFlags flag)
-        : FichaBf(NULL, parent, flag) {
+        : Listado(NULL, parent, flag) {
     _depura("FacturasProveedorList::FacturasProveedorList", 0);
     setupUi(this);
     /// Disparamos los plugins.
@@ -45,9 +45,8 @@ FacturasProveedorList::FacturasProveedorList(QWidget *parent, Qt::WFlags flag)
     if (res != 0) {
         return;
     } // end if
-    m_modo = 0;
     mdb_idfacturap = "";
-    meteWindow(windowTitle(), this);
+    setSubForm(mui_list);
     hideBusqueda();
     g_plugins->lanza("FacturasProveedorList_FacturasProveedorList_Post", this);
     _depura("FacturasProveedorList::FacturasProveedorList", 0);
@@ -58,26 +57,26 @@ FacturasProveedorList::FacturasProveedorList(QWidget *parent, Qt::WFlags flag)
     mete la ventana en el workSpace().
 */
 FacturasProveedorList::FacturasProveedorList(company *comp, QWidget *parent)
-        : FichaBf(comp, parent) {
+        : Listado(comp, parent) {
     _depura("FacturasProveedorList::FacturasProveedorList", 0);
     setupUi(this);
     /// Disparamos los plugins.
     int res = g_plugins->lanza("FacturasProveedorList_FacturasProveedorList", this);
     if (res != 0) {
-    	return;
+        return;
     } // end if
     m_proveedor->setEmpresaBase(empresaBase());
     m_articulo->setEmpresaBase(empresaBase());
     mui_list->setEmpresaBase(comp);
-    presenta();
-    m_modo = 0;
+    presentar();
+    setSubForm(mui_list);
     mdb_idfacturap = "";
-    meteWindow(windowTitle(), this);
+    empresaBase()->meteWindow(windowTitle(), this);
     hideBusqueda();
-    
+
     /// Disparamos los plugins.
     g_plugins->lanza("FacturasProveedorList_FacturasProveedorList_Post", this);
-    
+
     _depura("END FacturasProveedorList::FacturasProveedorList", 0);
 }
 
@@ -86,7 +85,6 @@ FacturasProveedorList::FacturasProveedorList(company *comp, QWidget *parent)
 */
 FacturasProveedorList::~FacturasProveedorList() {
     _depura("FacturasProveedorList::~FacturasProveedorList", 0);
-    empresaBase()->sacaWindow(this);
     _depura("END FacturasProveedorList::~FacturasProveedorList", 0);
 }
 
@@ -94,19 +92,19 @@ FacturasProveedorList::~FacturasProveedorList() {
 /** Hace la carga inicial del listado.
     Tambien hace el calculo de totales y lo presenta.
 */
-void FacturasProveedorList::presenta() {
-    _depura("FacturasProveedorList::presenta", 0);
+void FacturasProveedorList::presentar() {
+    _depura("FacturasProveedorList::presentar", 0);
     mui_list->cargar("SELECT *, totalfacturap AS total, bimpfacturap AS base, impfacturap AS impuestos  FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  " + generaFiltro());
 
     /// Hacemos el calculo del total.
     cursor2 *cur = empresaBase()->cargacursor("SELECT SUM(totalfacturap) AS total FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  " + generaFiltro());
     m_total->setText(cur->valor("total"));
     delete cur;
-    _depura("END FacturasProveedorList::presenta", 0);
+    _depura("END FacturasProveedorList::presentar", 0);
 }
 
 
-/** Metodo auxiliar que crea la clausula WHERE del query de carga  \ref presenta() 
+/** Metodo auxiliar que crea la clausula WHERE del query de carga  \ref presenta()
     La clausula WHERE utiliza todas las opciones de filtrado para crearse.
 */
 QString FacturasProveedorList::generaFiltro() {
@@ -147,39 +145,24 @@ QString FacturasProveedorList::generaFiltro() {
 void FacturasProveedorList::editar(int row) {
     _depura("FacturasProveedorList::editar", 0);
     try {
-	   mdb_idfacturap = mui_list->DBvalue(QString("idfacturap"), row);
-	   if (m_modo == 0) {
-		  FacturaProveedorView *prov = empresaBase()->newFacturaProveedorView();
-		  if (prov->cargar(mdb_idfacturap)) {
-			 delete prov;
-			 return;
-		  } // end if
-		  empresaBase()->m_pWorkspace->addWindow(prov);
-		  prov->show();
-	   } else {
-		  emit(selected(mdb_idfacturap));
-	   } // end if
+        mdb_idfacturap = mui_list->DBvalue(QString("idfacturap"), row);
+        if (modoEdicion()) {
+            FacturaProveedorView *prov = ((company *)empresaBase())->newFacturaProveedorView();
+            if (prov->cargar(mdb_idfacturap)) {
+                delete prov;
+                return;
+            } // end if
+            empresaBase()->m_pWorkspace->addWindow(prov);
+            prov->show();
+        } else {
+            emit(selected(mdb_idfacturap));
+        } // end if
     } catch(...) {
-    	mensajeInfo(tr("Error al cargar la factura proveedor"));
+        mensajeInfo(tr("Error al cargar la factura proveedor"));
     } // end try
     _depura("END FacturasProveedorList::editar", 0);
 }
 
-
-/** SLOT que responde a la pulsacion del boton mui_editar en el formulario.
-    comprueba que exista una fila seleccionada y llama al metodo \ref editar()
-*/
-void FacturasProveedorList::on_mui_editar_clicked() {
-    _depura("FacturasProveedorList::on_mui_editar_clicked", 0);
-    int a = mui_list->currentRow();
-    if (a < 0) {
-        mensajeInfo(tr("Debe seleccionar una linea"));
-        return;
-    } else {
-        editar(a);
-    } // end if
-    _depura("END FacturasProveedorList::on_mui_editar_clicked", 0);
-}
 
 
 /** SLOT que responde a la pulsacion del boton mui_borrar en el formulario.
@@ -187,34 +170,60 @@ void FacturasProveedorList::on_mui_editar_clicked() {
     y lanza el metodo \ref FacturaProveedorView::on_mui_borrar_clicked()
     Una vez borrado recarga el listado para que se actualicen los cambios.
 */
-void FacturasProveedorList::on_mui_borrar_clicked() {
-    _depura("FacturasProveedorList::on_mui_borrar_clicked", 0);
+void FacturasProveedorList::borrar() {
+    _depura("FacturasProveedorList::borrar", 0);
     int a = mui_list->currentRow();
     if (a < 0) {
         mensajeInfo(tr("Debe seleccionar una linea"));
         return;
     } // end if
     try {
-	   mdb_idfacturap = mui_list->DBvalue("idfacturap");
-	   FacturaProveedorView *bud = empresaBase()->newFacturaProveedorView();
-	   bud->cargar(mdb_idfacturap);
-	   bud->on_mui_borrar_clicked();
-	   delete bud;
-	   presenta();
+        mdb_idfacturap = mui_list->DBvalue("idfacturap");
+        FacturaProveedorView *bud = ((company *)empresaBase())->newFacturaProveedorView();
+        bud->cargar(mdb_idfacturap);
+        bud->on_mui_borrar_clicked();
+        delete bud;
+        presentar();
     } catch (...) {
-    	mensajeInfo(tr("Error al borrar la factura de proveedor"));
+        mensajeInfo(tr("Error al borrar la factura de proveedor"));
     } // end try
-    _depura("END FacturasProveedorList::on_mui_borrar_clicked", 0);
+    _depura("END FacturasProveedorList::borrar", 0);
 }
 
 
 /** SLOT que responde a la pulsacion del boton mui_imprimir.
     La impresion de listados esta completamente delegada en SubForm3
 */
-void FacturasProveedorList::on_mui_imprimir_clicked() {
+void FacturasProveedorList::imprimir() {
     _depura("FacturasProveedorList::on_mui_imprimir_clicked", 0);
     mui_list->imprimirPDF(tr("Facturas de proveedores"));
     _depura("END FacturasProveedorList::on_mui_imprimir_clicked", 0);
+}
+
+
+void FacturasProveedorList::setEmpresaBase (company *comp) {
+    PEmpresaBase::setEmpresaBase(comp);
+    m_proveedor->setEmpresaBase(comp);
+    m_articulo->setEmpresaBase(comp);
+    mui_list->setEmpresaBase(comp);
+}
+
+QString FacturasProveedorList::idfacturap() {
+    return mdb_idfacturap;
+}
+
+
+void FacturasProveedorList::setidproveedor(QString val) {
+    m_proveedor->setidproveedor(val);
+}
+
+
+void FacturasProveedorList::setidarticulo(QString val) {
+    m_articulo->setidarticulo(val);
+}
+
+void FacturasProveedorList::crear() {
+    ((company *)empresaBase())->s_newFacturaPro();
 }
 
 
@@ -246,3 +255,13 @@ FacturasProveedorListSubform::FacturasProveedorListSubform(QWidget *parent) : Su
     _depura("END FacturasProveedorListSubform::FacturasProveedorListSubform", 0);
 }
 
+void FacturasProveedorListSubform::cargar() {
+    _depura("AlbaranesProveedorListSubform::cargar\n", 0);
+    QString SQLQuery = "SELECT * FROM facturap";
+    cursor2 *cur= empresaBase()->cargacursor(SQLQuery);
+    SubForm3::cargar(cur);
+    delete cur;
+}
+void FacturasProveedorListSubform::cargar(QString query) {
+    SubForm3::cargar(query);
+}

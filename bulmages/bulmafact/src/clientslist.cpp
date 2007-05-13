@@ -23,6 +23,7 @@
 #include <QFileDialog>
 #include <QCheckBox>
 #include <QMessageBox>
+#include <QMenu>
 
 #include "clientslist.h"
 #include "clienteview.h"
@@ -38,7 +39,7 @@
     Mete la ventana en el workSpace si estamos en modo edicion.
 */
 ClientsList::ClientsList(company *comp, QWidget *parent, Qt::WFlags flag, edmode editmode)
-        : FichaBf(comp, parent, flag), pgimportfiles(comp) {
+        : Listado(comp, parent, flag), pgimportfiles(comp) {
     _depura("ClientsList::ClientsList", 0);
     setupUi(this);
 
@@ -48,13 +49,13 @@ ClientsList::ClientsList(company *comp, QWidget *parent, Qt::WFlags flag, edmode
         return;
 
     mui_list->setEmpresaBase(comp);
+    setSubForm( mui_list);
     mdb_idcliente = "";
     mdb_cifcliente = "";
     mdb_nomcliente = "";
-    m_modo = editmode;
     hideBusqueda();
     /// Si estamos en el modo edici&oacute;n metemos la ventana en el workSpace.
-    if (m_modo == EditMode) {
+    if (modoEdicion()) {
         empresaBase()->meteWindow(windowTitle(), this);
     } else {
         setWindowTitle(tr("Selector de clientes"));
@@ -65,7 +66,7 @@ ClientsList::ClientsList(company *comp, QWidget *parent, Qt::WFlags flag, edmode
         mui_importar->setHidden(TRUE);
         mui_imprimir->setHidden(TRUE);
     } // end if
-    presenta();
+    presentar();
     _depura("END ClientsList::ClientsList", 0);
 }
 
@@ -74,7 +75,6 @@ ClientsList::ClientsList(company *comp, QWidget *parent, Qt::WFlags flag, edmode
 */
 ClientsList::~ClientsList() {
     _depura("ClientsList::~ClientsList", 0);
-    empresaBase()->sacaWindow(this);
     _depura("END ClientsList::~ClientsList", 0);
 }
 
@@ -82,7 +82,7 @@ ClientsList::~ClientsList() {
 /** Todo el listado de clientes lo presenta el Subformulario mui_list del tipo ListLinCliente.
 */
 /// \TODO: Mejorar el sistema de filtrado incluyendo una funcion de generar Filtro.
-void ClientsList::presenta() {
+void ClientsList::presentar() {
     _depura("ClientsList::presenta", 0);
     mui_list->cargar("SELECT * FROM cliente  WHERE nomcliente LIKE '%" + m_findClient->text() + "%' ORDER BY nomcliente");
     _depura("END ClientsList::presenta", 0);
@@ -100,8 +100,8 @@ void ClientsList::editar(int row) {
     mdb_idcliente = mui_list->DBvalue("idcliente", row);
     mdb_cifcliente = mui_list->DBvalue("cifcliente", row);
     mdb_nomcliente = mui_list->DBvalue("nomcliente", row);
-    if (m_modo == 0) {
-        ClienteView *prov = empresaBase()->newClienteView();
+    if (modoEdicion()) {
+        ClienteView *prov = ((company *)empresaBase())->newClienteView();
         if (prov->cargar(mdb_idcliente)) {
             delete prov;
             return;
@@ -115,24 +115,10 @@ void ClientsList::editar(int row) {
 }
 
 
-/** SLOT que responde a la pulsacion del boton editar.
-    Comprueba que existe un elemento seleccionado y llama al metodo editar().
-*/
-void ClientsList::on_mui_editar_clicked() {
-    _depura("ClientsList::on_mui_editar_clicked", 0);
-    if (mui_list->currentRow() < 0) {
-        _depura("Debe seleccionar un elemento", 2);
-        return;
-    } // end if
-    editar(mui_list->currentRow());
-    _depura("END ClientsList::on_mui_editar_clicked", 0);
-}
-
-
 /** SLOT que responde a la pulsacion del boton imprimir.
     La impresion de listados esta completamente delegada a SubForm3
 */
-void ClientsList::on_mui_imprimir_clicked() {
+void ClientsList::imprimir() {
     _depura("ClientsList::on_mui_imprimir_clicked", 0);
     mui_list->imprimirPDF(tr("Listado de Clientes"));
     _depura("ClientsList::on_mui_imprimir_clicked", 0);
@@ -140,23 +126,22 @@ void ClientsList::on_mui_imprimir_clicked() {
 
 
 
-
 /** SLOT que responde a la pulsacion del boton borrar.
     Instancia la clase ClienteView, lo inicializa con el cliente seleccionado y le lanza el evento de borrar.
     Esta es la forma adecuada de borrar desde el listado ya que asi preservamos el tema plugins.
 */
-void ClientsList::on_mui_borrar_clicked() {
+void ClientsList::borrar() {
     _depura("ClientsList::on_mui_borrar_clicked", 0);
     try {
         QString idcliente = mui_list->DBvalue("idcliente");
-        ClienteView *cli = empresaBase()->newClienteView();
+        ClienteView *cli = ((company *)empresaBase())->newClienteView();
         if (cli->cargar(idcliente)) {
             delete cli;
             throw -1;
         } // end if
         cli->on_mui_borrar_clicked();
         delete cli;
-        presenta();
+        presentar();
     } catch (...) {
         mensajeInfo(tr("Error al borrar un cliente"));
     } // end try
@@ -175,12 +160,11 @@ void ClientsList::on_mui_exportar_clicked() {
                       tr("Elija el archivo"),
                       confpr->valor(CONF_DIR_USER),
                       tr("Clientes (*.xml)")));
-
     if (filexml.open(QIODevice::WriteOnly)) {
         bulmafact2XML(filexml, IMPORT_CLIENTES);
         filexml.close();
     } else {
-        _depura("ERROR AL ABRIR EL ARCHIVO\n", 2);
+        _depura("ERROR AL ABRIR EL ARCHIVO", 2);
     } // end if
     _depura("END ClientsList::on_mui_exportar_clicked", 0);
 }
@@ -202,23 +186,11 @@ void ClientsList::on_mui_importar_clicked() {
     if (filexml.open(QIODevice::ReadOnly)) {
         XML2BulmaFact(filexml, IMPORT_CLIENTES);
         filexml.close();
-        presenta();
+        presentar();
     } else {
         _depura("ERROR AL ABRIR EL ARCHIVO\n", 2);
     } // end if
     _depura("ClientsList::on_mui_importar_clicked", 0);
-}
-
-/** Establece el modo de funcionamiento como selector para esta ventana
-**/
-void ClientsList::selectMode() {
-    m_modo = SelectMode;
-}
-
-/** Establece el modo de funcionamiento como selector para edicion para esta ventana
-**/
-void ClientsList::editMode() {
-    m_modo = EditMode;
 }
 
 /** Devuelve el identificador del cliente seleccionado
@@ -238,66 +210,33 @@ QString ClientsList::nomclient() {
 QString ClientsList::cifclient() {
     return mdb_cifcliente;
 }
-/** Oculta la botonera
-*/
-void ClientsList::hideBotonera() {
-    m_botonera->hide();
-}
 
-/** Muestra la botonera
-**/
-void ClientsList::showBotonera() {
-    m_botonera->show();
-}
-
-/** Oculta el layer de busqueda
-**/
-void ClientsList::hideBusqueda() {
-    m_busqueda->hide();
-}
-
-/** Muestra el layer de busqueda
-**/
-void ClientsList::showBusqueda() {
-    m_busqueda->show();
-}
-
-/** SLOT automatico que se ejecuta al cambiar el texto del QLineEdit de filtrado general
-**/
-void ClientsList::on_m_filtro_textChanged(const QString &text) {
-    if (text.size() >= 3) {
-        on_mui_actualizar_clicked();
-    } // end if
-}
-
-/** SLOT automatico que se ejecuta al hacer doble click sobre un elemento determinado de la lista
-**/
-void ClientsList::on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
-    on_mui_editar_clicked();
-}
 
 /** SLOT automatico que se ejecuta al pulsar sobre el boton de crear en la botonera
 **/
-void ClientsList::on_mui_crear_clicked() {
-    empresaBase()->s_newClienteView();
+void ClientsList::crear() {
+    ((company *)empresaBase())->s_newClienteView();
 }
 
-/** SLOT automatico que se ejecuta al pulsar sobre el boton de actualizar en la botonera
-**/
-void ClientsList::on_mui_actualizar_clicked() {
-    presenta();
-}
 
-/** SLOT automatico que se ejecuta al pulsar sobre el boton configurar en la botonera
-**/
-void ClientsList::on_mui_configurar_toggled(bool checked) {
-    if (checked) {
-        mui_list->showConfig();
-    } else {
-        mui_list->hideConfig();
-    } // end if
+/** \TODO: REVISAR ESTE METODO YA QUE NO PARECE SER EL ADECUADO
+    EN LA LLAMADA DE SUBMENUS
+*/
+void ClientsList::submenu(const QPoint &) {
+    _depura("ArticuloList::on_mui_list_customContextMenuRequested", 0);
+    int a = mui_list->currentRow();
+    if (a < 0)
+        return;
+    QMenu *popup = new QMenu(this);
+    QAction *edit = popup->addAction(tr("Editar cliente"));
+    QAction *del = popup->addAction(tr("Borrar cliente"));
+    QAction *opcion = popup->exec(QCursor::pos());
+    if (opcion == del)
+        on_mui_borrar_clicked();
+    if (opcion == edit)
+        on_mui_editar_clicked();
+    delete popup;
 }
-
 
 /// =============================================================================
 ///                    SUBFORMULARIO

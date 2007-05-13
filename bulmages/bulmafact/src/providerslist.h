@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2004 by J. M. Torres Rigo                               *
- *   joanmi@bulma.net                                                      *
+ *   Copyright (C) 2007 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -23,9 +23,7 @@
 
 #include "pgimportfiles.h"
 #include "subform2bf.h"
-#include "fichabf.h"
-
-class company;
+#include "listado.h"
 
 
 /// Administra el listado de proveedores.
@@ -48,18 +46,11 @@ public slots:
 
 /// Muestra y administra la ventana con el listado de proveedores.
 /** */
-class ProveedorList : public FichaBf, public Ui_ProveedorListBase, public pgimportfiles {
+class ProveedorList : public Listado, public Ui_ProveedorListBase, public pgimportfiles {
     Q_OBJECT
 
-public:
-    enum edmode
-    {
-        EditMode = 0,
-        SelectMode = 1
-    };
 
 private:
-    edmode m_modo;
     QString m_idprovider;
     QString m_cifprovider;
     QString m_nomprovider;
@@ -67,30 +58,18 @@ private:
 public:
     ProveedorList(company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode);
     ~ProveedorList();
-    void presenta();
-    void modoseleccion();
-    void modoedicion();
+    void presentar();
+    void editar(int);
+    void imprimir();
+    void crear();
+    void borrar();
     QString idprovider();
     QString cifprovider();
     QString nomprovider();
-    void hideBotonera();
-    void showBotonera();
-    void hideBusqueda();
-    void showBusqueda();
 
 public slots:
-    virtual void on_mui_filtro_textChanged(const QString &text);
-    virtual void editar(int);
-    virtual void on_mui_crear_clicked();
-    virtual void s_findProvider();
-    virtual void on_mui_editar_clicked();
-    virtual void on_mui_borrar_clicked();
-    virtual void on_mui_imprimir_clicked();
-    virtual void on_mui_actualizar_clicked();
     virtual void on_mui_exportar_clicked();
     virtual void on_mui_importar_clicked();
-    void on_mui_list_itemDoubleClicked(QTableWidgetItem *);
-    virtual void on_mui_configurar_toggled(bool checked);
 
 signals:
     void selected(QString);

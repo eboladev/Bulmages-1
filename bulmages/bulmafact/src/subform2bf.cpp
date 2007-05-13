@@ -72,7 +72,7 @@ void SubForm2Bf::on_mui_list_pressedAsterisk(int row, int col) {
     while (!artlist->isHidden())
         theApp->processEvents();
     this->setEnabled(true);
-    QString idArticle = artlist->idArticle();
+    QString idArticle = artlist->idarticulo();
     delete artlist;
     cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM articulo WHERE idarticulo = " + idArticle);
     if (!cur->eof()) {

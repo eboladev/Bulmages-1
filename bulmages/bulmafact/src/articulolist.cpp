@@ -129,7 +129,7 @@ ArticuloList::~ArticuloList() {
 */
 /// \TODO: Deberia crear una instancia del articulo e invocar a su metodo de borrado
 /// ya que si hay algun plugin puede que no se vea afectado por este metodo.
-void ArticuloList::on_mui_borrar_clicked() {
+void ArticuloList::borrar() {
     _depura("ArticuloList::on_mui_borrar_clicked", 0);
     int a = mui_list->currentRow();
     if (a < 0) {
@@ -246,7 +246,7 @@ void ArticuloList::on_mui_importar_clicked() {
 /** \TODO: REVISAR ESTE METODO YA QUE NO PARECE SER EL ADECUADO
     EN LA LLAMADA DE SUBMENUS
 */
-void ArticuloList::on_mui_list_customContextMenuRequested(const QPoint &) {
+void ArticuloList::submenu(const QPoint &) {
     _depura("ArticuloList::on_mui_list_customContextMenuRequested", 0);
     int a = mui_list->currentRow();
     if (a < 0)
@@ -262,37 +262,22 @@ void ArticuloList::on_mui_list_customContextMenuRequested(const QPoint &) {
     delete popup;
 }
 
-    void ArticuloList::on_mui_crear_clicked() {
-        ((company *)empresaBase())->s_newArticulo();
-    }
-
-    void ArticuloList::on_mui_list_toogledConfig(bool check) {
-        mui_configurar->setChecked(check);
-    }
-
-    QString ArticuloList::idArticle() {
-        return mdb_idarticulo;
-    }
-
-    QString ArticuloList::idarticulo() {
-        return mdb_idarticulo;
-    }
-
-    QString ArticuloList::nomarticulo() {
-        return mdb_nomarticulo;
-    }
-
-    QString ArticuloList::codigocompletoarticulo() {
-        return mdb_codigocompletoarticulo;
-    }
-
-void ArticuloList::hideBusqueda() {
-    m_busqueda->hide();
+void ArticuloList::crear() {
+    ((company *)empresaBase())->s_newArticulo();
 }
 
-void ArticuloList::showBusqueda() {
-    m_busqueda->show();
+QString ArticuloList::idarticulo() {
+    return mdb_idarticulo;
 }
+
+QString ArticuloList::nomarticulo() {
+    return mdb_nomarticulo;
+}
+
+QString ArticuloList::codigocompletoarticulo() {
+    return mdb_codigocompletoarticulo;
+}
+
 
 /// =============================================================================
 ///                    SUBFORMULARIO
@@ -319,5 +304,4 @@ ArticuloListSubForm::ArticuloListSubForm(QWidget *parent, const char *)
     _depura("END ArticuloListSubForm::ArticuloListSubForm", 0);
 }
 
-ArticuloListSubForm::~ArticuloListSubForm() {
-}
+ArticuloListSubForm::~ArticuloListSubForm() {}

@@ -24,7 +24,7 @@
 #include "pgimportfiles.h"
 #include "company.h"
 #include "subform2bf.h"
-#include "fichabf.h"
+#include "listado.h"
 
 
 /** Subformulario de clientes.
@@ -47,19 +47,9 @@ public:
     Tiene dos modos de funcionamiento (Edicion y Seleccion)
 */
 /// \TODO: Deberia crearse la clase Listado para poner en ella mas funcionalidades comunes a los listados.
-class ClientsList : public FichaBf, public Ui_ClientsListBase, public pgimportfiles {
+class ClientsList : public Listado, public Ui_ClientsListBase, public pgimportfiles {
     Q_OBJECT
-
-public:
-    enum edmode
-    {
-        EditMode = 0,
-        SelectMode = 1
-    };
-
 private:
-    /// Indica si la pantalla esta en modo edicion o en modo seleccion.
-    edmode m_modo;
     /// Almacene el idcliente del registro seleccionado.
     QString mdb_idcliente;
     /// Almacena el nomcliente del cliente seleccionado.
@@ -72,29 +62,19 @@ public:
     ClientsList(company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode);
     ~ClientsList();
 
-    void selectMode();
-    void editMode();
-    void presenta();
+    void presentar();
+    void editar(int);
+    void imprimir();
+    void crear();
+    void borrar();
     QString idclient();
     QString nomclient();
     QString cifclient();
-    void hideBotonera();
-    void showBotonera();
-    void hideBusqueda();
-    void showBusqueda();
-    void editar(int);
+    void submenu(const QPoint &);
 
 public slots:
-    virtual void on_m_filtro_textChanged(const QString &text);
-    void on_mui_list_itemDoubleClicked(QTableWidgetItem *);
-    virtual void on_mui_crear_clicked();
-    virtual void on_mui_editar_clicked();
-    virtual void on_mui_imprimir_clicked();
-    virtual void on_mui_actualizar_clicked();
     virtual void on_mui_exportar_clicked();
     virtual void on_mui_importar_clicked();
-    virtual void on_mui_borrar_clicked();
-    virtual void on_mui_configurar_toggled(bool checked);
 
 signals:
     void selected(QString);

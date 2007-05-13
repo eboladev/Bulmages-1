@@ -47,33 +47,44 @@ private:
     edmode m_modo;
 
 protected:
-    void setModoConsulta();
-    void setModoEdicion();
-    bool modoEdicion();
-    bool modoConsulta();
     void setSubForm(SubForm3 *);
+
 
 
 public:
     Listado(QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode);
     Listado(EmpresaBase *emp = NULL, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode);
-
-    void hideBusqueda();
-    void showBusqueda();
     virtual void editar(int);
     virtual void imprimir();
     virtual void presentar();
-
     virtual ~Listado();
     virtual int sacaWindow();
+    virtual void submenu(const QPoint &);
+    virtual void crear();
+    virtual void borrar();
+    void hideBotonera();
+    void showBotonera();
+    void hideBusqueda();
+    void showBusqueda();
+    void setModoConsulta();
+    void setModoEdicion();
+    bool modoEdicion();
+    bool modoConsulta();
 
 public slots:
+    virtual void on_mui_list_customContextMenuRequested(const QPoint &);
     virtual void on_mui_list_cellDoubleClicked(int, int);
+    virtual void on_mui_list_toogledConfig(bool check);
     virtual void on_m_filtro_textChanged(const QString &text);
     virtual void on_mui_actualizar_clicked();
     virtual void on_mui_imprimir_clicked();
     virtual void on_mui_editar_clicked();
     virtual void on_mui_configurar_toggled(bool checked);
+    virtual void on_mui_borrar_clicked();
+    virtual void on_mui_crear_clicked();
+
+signals:
+    void selected(QString);
 };
 
 #endif

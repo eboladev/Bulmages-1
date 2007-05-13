@@ -27,7 +27,7 @@
 #include "busquedacliente.h"
 #include "busquedaarticulo.h"
 #include "subform2bf.h"
-#include "fichabf.h"
+#include "listado.h"
 
 
 /// Administra el listado de presupuestos.
@@ -50,45 +50,27 @@ public slots:
 
 /// Muestra y administra la ventana con el listado de presupuestos.
 /** */
-class PresupuestoList : public FichaBf, public Ui_PresupuestosListBase {
+class PresupuestoList : public Listado, public Ui_PresupuestosListBase {
     Q_OBJECT
 
 private:
-    /// m_modo == 0 es modo edicion.
-    /// m_modo == 1 es modo selector.
-    int m_modo;
     QString m_idpresupuesto;
 
 public:
     PresupuestoList(QWidget *parent = 0, Qt::WFlags flag = 0);
     PresupuestoList(company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0);
     ~PresupuestoList();
-    void presenta();
-    int modo();
+    void presentar();
+    void editar(int);
+    void borrar();
+    void crear();
     QString idpresupuesto();
-    void modoseleccion();
-    void modoedicion();
     void setEmpresaBase (company *comp);
-    void hideBotonera();
-    void showBotonera();
-    void hideBusqueda();
-    void showBusqueda();
     void imprimir();
-    void meteWindow(QString nom, QObject *obj);
     void setidcliente(QString val);
     void setidarticulo(QString val);
     QString generaFiltro();
-    void editar(int);
-    virtual void on_mui_borrar_clicked();
 
-public slots:
-    virtual void on_m_filtro_textChanged(const QString &text);
-    virtual void on_mui_list_itemDoubleClicked(QTableWidgetItem *);
-    virtual void on_mui_editar_clicked();
-    virtual void on_mui_crear_clicked();
-    virtual void on_mui_imprimir_clicked();
-    virtual void on_mui_actualizar_clicked();
-    virtual void on_mui_configurar_toggled(bool checked);
 
 signals:
     void selected(QString);

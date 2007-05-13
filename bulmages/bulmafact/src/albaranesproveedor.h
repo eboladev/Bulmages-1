@@ -28,7 +28,7 @@
 #include "busquedaarticulo.h"
 #include "funcaux.h"
 #include "subform2bf.h"
-#include "fichabf.h"
+#include "listado.h"
 
 
 /// Clase que maneja el subformulario de los albaranes de proveedor.
@@ -53,14 +53,10 @@ public slots:
 
 /// Clase que controla la pantalla de listado de albaranes a proveedor.
 /// \TODO: Deberia derivar de Ficha o Listado en lugar de QWidget.
-class AlbaranesProveedor : public FichaBf, public Ui_AlbaranesProveedorListBase {
+class AlbaranesProveedor : public Listado, public Ui_AlbaranesProveedorListBase {
     Q_OBJECT
 
 private:
-    /// Indicador de modo edicion o modo seleccion
-    /// == 0 es modo edicion.
-    /// == 1 es modo selector.
-    int m_modo;
     /// En el caso de estar en modo seleccion esta variable de clase indicara el identificador seleccionado.
     QString mdb_idalbaranp;
 
@@ -68,34 +64,16 @@ public:
     AlbaranesProveedor(QWidget *parent = 0, Qt::WFlags flag = 0);
     AlbaranesProveedor(company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0);
     ~AlbaranesProveedor();
-    void presenta();
-    void modoseleccion();
-    void modoedicion();
+    void presentar();
     void setEmpresaBase(company *comp);
     QString idalbaranp();
-    void hideBotonera();
-    void showBotonera();
-    void hideBusqueda();
-    void showBusqueda();
     void imprimir();
-    void meteWindow(QString nom, QObject *obj);
     void setidproveedor(QString val);
     void setidarticulo(QString val);
     QString generaFiltro();
     void editar(int);
-    virtual void on_mui_borrar_clicked();
-
-public slots:
-    virtual void on_m_filtro_textChanged(const QString &text);
-    void on_mui_list_itemDoubleClicked(QTableWidgetItem *);
-    virtual void on_mui_editar_clicked();
-    virtual void on_mui_crear_clicked();
-    virtual void on_mui_imprimir_clicked();
-    virtual void on_mui_actualizar_clicked();
-    virtual void on_mui_configurar_toggled(bool checked);
-
-signals:
-    void selected(QString);
+    void borrar();
+    void crear();
 };
 
 #endif

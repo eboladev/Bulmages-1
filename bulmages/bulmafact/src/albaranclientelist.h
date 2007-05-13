@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Alvaro de Miguel                                *
- *   alvaro.demiguel@gmail.com                                             *
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -25,7 +25,7 @@
 #include "busquedaarticulo.h"
 #include "company.h"
 #include "subform2bf.h"
-#include "fichabf.h"
+#include "listado.h"
 
 
 /// Subformulario de albaranes de clientes.
@@ -43,7 +43,7 @@ class AlbaranClienteListSubform : public SubForm2Bf {
 
 public:
     AlbaranClienteListSubform(QWidget *parent = 0);
-    ~AlbaranClienteListSubform() {}
+    ~AlbaranClienteListSubform();
 
 public slots:
     virtual void cargar();
@@ -59,22 +59,11 @@ public slots:
 */
 /// \TODO: Deberia crearse una clase derivada de Ficha que fuese Listado y que
 /// incorporase algunas funcionalidades comunes a todos los listados.
-class AlbaranClienteList : public FichaBf, public Ui_AlbaranClienteListBase {
+class AlbaranClienteList : public Listado, public Ui_AlbaranClienteListBase {
     Q_OBJECT
 
-public:
-    enum edmode {
-        EditMode = 0,
-        SelectMode = 1
-    };
 
 private:
-    /// El modo del listado, modo edicion o modo selector.
-    /// m_modo == 0 es modo edicion.
-    /// m_modo == 1 es modo selector.
-    /// \TODO: Traspasar a la clase listado.
-    int m_modo;
-
     /// En el modo selector esta variable indica el elemento seleccionado.
     QString mdb_idalbaran;
 
@@ -83,29 +72,14 @@ public:
     AlbaranClienteList(company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
     void setEmpresaBase(company *);
     ~AlbaranClienteList();
-    void presenta();
-    void modoseleccion();
-    void modoedicion();
+    void presentar();
     void imprimir();
-    void hideBotonera();
-    void showBotonera();
-    void hideBusqueda();
-    void showBusqueda();
+    void editar(int);
+    void borrar();
+    void crear();
     void setidcliente(QString val);
     QString idCliDelivNote();
-    void meteWindow(QString nom, QObject *obj);
     QString generarFiltro();
-    void editar(int);
-    virtual void on_mui_borrar_clicked();
-
-public slots:
-    virtual void on_m_filtro_textChanged(const QString &text);
-    virtual void on_mui_list_itemDoubleClicked(QTableWidgetItem *);
-    virtual void on_mui_crear_clicked();
-    virtual void on_mui_editar_clicked();
-    virtual void on_mui_imprimir_clicked();
-    virtual void on_mui_actualizar_clicked();
-    virtual void on_mui_configurar_toggled(bool checked);
 
 signals:
     /// Estando en modo seleccion al seleccionar un elemento se emite esta se&ntilde;al.

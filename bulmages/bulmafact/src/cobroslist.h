@@ -27,7 +27,7 @@
 #include "busquedacliente.h"
 #include "funcaux.h"
 #include "subform2bf.h"
-#include "fichabf.h"
+#include "listado.h"
 
 
 /** Subformulario especializado en el trabajo con Cobros.
@@ -48,7 +48,7 @@ public:
     Deriva de la clase Ficha para estandarizacion de Formularios.
     Controla los eventos y la sincronizacion del listado con el filtrado.
 */
-class CobrosList : public FichaBf, private Ui_CobrosListBase {
+class CobrosList : public Listado, private Ui_CobrosListBase {
     Q_OBJECT
 
 private:
@@ -59,26 +59,16 @@ public:
     CobrosList(QWidget *parent = 0, Qt::WFlags flag = 0);
     CobrosList(company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0);
     ~CobrosList();
-    void presenta();
+    void presentar();
     void setEmpresaBase(company *comp);
     QString idcobro();
-    void hideBotonera();
-    void showBotonera();
-    void hideBusqueda();
-    void showBusqueda();
     void imprimir();
     void setidcliente(QString val);
     QString generaFiltro();
-    virtual void on_mui_borrar_clicked();
-
-public slots:
-    virtual void on_mui_list_cellDoubleClicked(int, int);
-    virtual void on_mui_list_customContextMenuRequested(const QPoint &);
-    virtual void on_mui_editar_clicked();
-    virtual void on_mui_crear_clicked();
-    virtual void on_mui_imprimir_clicked();
-    virtual void on_mui_actualizar_clicked();
-    virtual void on_mui_configurar_toggled(bool checked);
+    void borrar();
+    void crear();
+    void editar(int);
+    void submenu(const QPoint &);
 };
 
 #endif

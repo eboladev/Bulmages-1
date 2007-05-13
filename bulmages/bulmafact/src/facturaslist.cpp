@@ -38,14 +38,14 @@
     Inicializando la clase con este constructor precisa que sea establecido el company con setcompany.
 */
 FacturasList::FacturasList(QWidget *parent, Qt::WFlags flag, edmode editmodo)
-        : FichaBf(NULL, parent, flag) {
+        : Listado(NULL, parent, flag) {
     _depura("FacturasList::FacturasList", 0);
     setupUi(this);
     iniciaForm();
-    m_modo = editmodo;
     mdb_idfactura = "";
-    if (m_modo == EditMode) {
-        meteWindow(windowTitle(), this);
+    setSubForm(mui_list);
+    if (modoEdicion()) {
+        empresaBase()->meteWindow(windowTitle(), this);
     } // end if
     hideBusqueda();
     _depura("END FacturasList::FacturasList", 0);
@@ -54,18 +54,18 @@ FacturasList::FacturasList(QWidget *parent, Qt::WFlags flag, edmode editmodo)
 /** Inicializa todos los componentes y prepara la ventana para funcionar.
 */
 FacturasList::FacturasList(company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo)
-        : FichaBf(comp, parent, flag) {
+        : Listado(comp, parent, flag) {
     _depura("FacturasList::FacturasList", 0);
     setupUi(this);
     iniciaForm();
     m_cliente->setEmpresaBase(empresaBase());
     m_articulo->setEmpresaBase(empresaBase());
     mui_list->setEmpresaBase(empresaBase());
-    presenta();
-    m_modo = editmodo;
+    setSubForm(mui_list);
+    presentar();
     mdb_idfactura = "";
-    if (m_modo == EditMode) {
-        meteWindow(windowTitle(), this);
+    if (modoEdicion()) {
+        empresaBase()->meteWindow(windowTitle(), this);
     } // end if
     hideBusqueda();
     _depura("END FacturasList::FacturasList", 0);
@@ -89,14 +89,13 @@ void FacturasList::iniciaForm() {
 */
 FacturasList::~FacturasList() {
     _depura("FacturasList::~FacturasList", 0);
-    empresaBase()->sacaWindow(this);
     _depura("END FacturasList::~FacturasList", 0);
 }
 
 
 /** Hace la carga del subformulario y el calculo de los totales.
 */
-void FacturasList::presenta() {
+void FacturasList::presentar() {
     _depura("FacturasList::presenta", 0);
 
     mui_list->cargar("SELECT *, totalfactura AS total, bimpfactura AS base, impfactura AS impuestos FROM factura LEFT JOIN cliente ON factura.idcliente = cliente.idcliente LEFT JOIN almacen ON factura.idalmacen = almacen.idalmacen WHERE 1 = 1 " + generaFiltro());
@@ -108,7 +107,7 @@ void FacturasList::presenta() {
     mui_totalfacturas->setText(cur->valor("total"));
     delete cur;
 
-    _depura("END FacturasList::presenta", 1);
+    _depura("END FacturasList::presentar", 0);
 }
 
 
@@ -159,8 +158,8 @@ QString FacturasList::generaFiltro() {
 void FacturasList::editar(int row) {
     _depura("FacturasList::editar", 0);
     mdb_idfactura = mui_list->DBvalue(QString("idfactura"), row);
-    if (m_modo == 0) {
-        FacturaView *prov = empresaBase()->newFacturaView();
+    if (modoEdicion()) {
+        FacturaView *prov = ((company *)empresaBase())->newFacturaView();
         if (prov->cargar(mdb_idfactura)) {
             delete prov;
             return;
@@ -173,26 +172,12 @@ void FacturasList::editar(int row) {
     _depura("END FacturasList::editar", 0);
 }
 
-/** SLOT que responde a la pulsacion del boton editar en el listado.
-    Comprueba que exista un elemento seleccionado y
-    llama al metodo \ref editar().
-*/
-void FacturasList::on_mui_editar_clicked() {
-    _depura("FacturasList::on_mui_editar_clicked", 0);
-    int a = mui_list->currentRow();
-    if (a >= 0) {
-        editar(a);
-    } else {
-        mensajeInfo(tr("Debe seleccionar una linea"));
-    } // end if
-    _depura("END FacturasList::on_mui_editar_clicked", 0);
-}
 
 
 /** SLOT que responde a la pulsacion del boton de imprimir.
     La impresion de listados esta completamente delegada en SubForm2Bf
 */
-void FacturasList::on_mui_imprimir_clicked() {
+void FacturasList::imprimir() {
     _depura("FacturasList::on_mui_imprimir_clicked", 0);
     mui_list->imprimirPDF(tr("Facturas a clientes"));
     _depura("FacturasList::on_mui_imprimir_clicked", 0);
@@ -204,8 +189,8 @@ void FacturasList::on_mui_imprimir_clicked() {
     metodo de borrar.
     La ventaja de hacerlo de esta forma es que si hay plugins en la factura, estos tambien se ejecutaran.
 */
-void FacturasList::on_mui_borrar_clicked() {
-    _depura("FacturasList::on_mui_borrar_clicked", 0);
+void FacturasList::borrar() {
+    _depura("FacturasList::borrar", 0);
     int a = mui_list->currentRow();
     if (a < 0) {
         mensajeInfo(tr("Debe seleccionar una linea"));
@@ -213,20 +198,45 @@ void FacturasList::on_mui_borrar_clicked() {
     } // end if
     try {
         mdb_idfactura = mui_list->DBvalue(QString("idfactura"));
-        if (m_modo == 0) {
-            FacturaView *fv = empresaBase()->newFacturaView();
+        if (modoEdicion()) {
+            FacturaView *fv = ((company *)empresaBase())->newFacturaView();
             if (fv->cargar(mdb_idfactura))
                 throw -1;
             fv->on_mui_borrar_clicked();
             fv->close();
         } // end if
-        presenta();
+        presentar();
     } catch (...) {
         mensajeInfo(tr("Error al borrar la factura a cliente"));
     } // end try
-    _depura("END FacturasList::on_mui_borrar_clicked", 0);
+    _depura("END FacturasList::borrar", 0);
 }
 
+void FacturasList::setEmpresaBase (company *comp) {
+    PEmpresaBase::setEmpresaBase(comp);
+    m_cliente->setEmpresaBase(comp);
+    m_articulo->setEmpresaBase(comp);
+    mui_list->setEmpresaBase(comp);
+}
+
+QString FacturasList::idfactura() {
+    return mdb_idfactura;
+}
+
+void FacturasList::setidcliente(QString val) {
+    m_cliente->setidcliente(val);
+}
+
+
+void FacturasList::setidarticulo(QString val) {
+    m_articulo->setidarticulo(val);
+}
+
+void FacturasList::crear() {
+        FacturaView *prov = ((company *)empresaBase())->newFacturaView();
+        empresaBase()->m_pWorkspace->addWindow(prov);
+        prov->show();
+}
 
 /// =============================================================================
 ///                    SUBFORMULARIO
@@ -263,5 +273,20 @@ FacturasListSubform::FacturasListSubform(QWidget *parent, const char *) : SubFor
     setDelete(FALSE);
     setSortingEnabled(TRUE);
     _depura("END FacturasListSubform::FacturasListSubform", 0);
+}
+
+
+FacturasListSubform::~FacturasListSubform() {}
+
+void FacturasListSubform::cargar() {
+    _depura("FacturasListSubform::cargar\n", 0);
+    QString SQLQuery = "SELECT * FROM factura";
+    cursor2 *cur= empresaBase()->cargacursor(SQLQuery);
+    SubForm3::cargar(cur);
+    delete cur;
+}
+
+void FacturasListSubform::cargar(QString query) {
+    SubForm3::cargar(query);
 }
 

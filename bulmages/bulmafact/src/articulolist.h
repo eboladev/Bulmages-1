@@ -63,22 +63,21 @@ public:
     ArticuloList(company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
     virtual ~ArticuloList();
     QString formaQuery();
-    QString idArticle();
     QString idarticulo();
     QString nomarticulo();
     QString codigocompletoarticulo();
     void presentar();
     void editar(int);
     void imprimir();
-    void hideBusqueda();
-    void showBusqueda();
+    void borrar();
+    void crear();
+    void submenu(const QPoint &);
+
 public slots:
-    virtual void on_mui_list_customContextMenuRequested(const QPoint &);
     virtual void on_mui_importar_clicked();
     virtual void on_mui_exportar_clicked();
-    virtual void on_mui_borrar_clicked();
-    virtual void on_mui_crear_clicked();
-    virtual void on_mui_list_toogledConfig(bool check);
+
+
 signals:
     void selected(QString);
 };

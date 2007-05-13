@@ -40,24 +40,13 @@
     Inicializa todos los componentes, se pone en modo edicion y mete la ventana en el workSpace.
 */
 AlbaranesProveedor::AlbaranesProveedor(QWidget *parent, Qt::WFlags flag)
-        : FichaBf(NULL, parent) {
+        : Listado(NULL, parent) {
     _depura("AlbaranesProveedor::AlbaranesProveedor", 0);
     setupUi(this);
-    m_modo = 0;
     mdb_idalbaranp = "";
-    meteWindow(windowTitle(), this);
+    setSubForm(mui_list);
     hideBusqueda();
     _depura("END AlbaranesProveedor::AlbaranesProveedor", 0);
-}
-
-
-void AlbaranesProveedor::modoseleccion() {
-    m_modo = 1;
-}
-
-
-void AlbaranesProveedor::modoedicion() {
-    m_modo = 0;
 }
 
 
@@ -69,47 +58,13 @@ void AlbaranesProveedor::setEmpresaBase(company *comp) {
 }
 
 
-void AlbaranesProveedor::on_m_filtro_textChanged(const QString &text) {
-    if (text.size() >= 3)
-        on_mui_actualizar_clicked();
-}
 
 
-void AlbaranesProveedor::on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
-    on_mui_editar_clicked();
-}
-
-
-void AlbaranesProveedor::on_mui_crear_clicked()  {
+void AlbaranesProveedor::crear()  {
     if (empresaBase() != NULL)
-        empresaBase()->s_newAlbaranPro();
+        ((company *)empresaBase())->s_newAlbaranPro();
 }
 
-
-void AlbaranesProveedor::on_mui_imprimir_clicked() {
-    imprimir();
-}
-
-
-void AlbaranesProveedor::on_mui_actualizar_clicked() {
-    presenta();
-}
-
-
-void AlbaranesProveedor::on_mui_configurar_toggled(bool checked) {
-    if (checked) {
-        mui_list->showConfig();
-    } else {
-        mui_list->hideConfig();
-    } // end if
-}
-
-
-void AlbaranesProveedor::meteWindow(QString nom, QObject *obj) {
-    if (empresaBase() != NULL) {
-        empresaBase()->meteWindow(nom, obj);
-    } // end if
-}
 
 
 void AlbaranesProveedor::setidproveedor(QString val) {
@@ -127,25 +82,6 @@ QString AlbaranesProveedor::idalbaranp() {
 }
 
 
-void AlbaranesProveedor::hideBotonera() {
-    m_botonera->hide();
-}
-
-
-void AlbaranesProveedor::showBotonera() {
-    m_botonera->show();
-}
-
-
-void AlbaranesProveedor::hideBusqueda() {
-    m_busqueda->hide();
-}
-
-
-void AlbaranesProveedor::showBusqueda() {
-    m_busqueda->show();
-}
-
 
 /** Constructor completo de la clase con el puntero a Company adecuado.
     Inicializa todos los componentes con company.
@@ -154,16 +90,16 @@ void AlbaranesProveedor::showBusqueda() {
     Oculta la parte de Busqueda.
 */
 AlbaranesProveedor::AlbaranesProveedor(company *comp, QWidget *parent, Qt::WFlags flag)
-        : FichaBf(comp, parent) {
+        : Listado(comp, parent) {
     _depura("AlbaranesProveedor::AlbaranesProveedor", 0);
     setupUi(this);
     m_proveedor->setEmpresaBase(comp);
     m_articulo->setEmpresaBase(comp);
     mui_list->setEmpresaBase(comp);
-    presenta();
-    m_modo = 0;
+    setSubForm(mui_list);
+    presentar();
     mdb_idalbaranp = "";
-    meteWindow(windowTitle(), this);
+    empresaBase()->meteWindow(windowTitle(), this);
     hideBusqueda();
     _depura("END AlbaranesProveedor::AlbaranesProveedor", 0);
 }
@@ -173,8 +109,6 @@ AlbaranesProveedor::AlbaranesProveedor(company *comp, QWidget *parent, Qt::WFlag
 */
 AlbaranesProveedor::~AlbaranesProveedor() {
     _depura("AlbaranesProveedor::~AlbaranesProveedor", 0);
-    empresaBase()->refreshAlbaranesProveedor();
-    empresaBase()->sacaWindow(this);
     _depura("END AlbaranesProveedor::~AlbaranesProveedor", 0);
 }
 
@@ -183,8 +117,8 @@ AlbaranesProveedor::~AlbaranesProveedor() {
     Calcula el total de albaranes con las opciones de filtrado descritas y
     lo presenta.
 */
-void AlbaranesProveedor::presenta() {
-    _depura("AlbaranesProveedor::presenta", 0);
+void AlbaranesProveedor::presentar() {
+    _depura("AlbaranesProveedor::presentar", 0);
     if (empresaBase() != NULL ) {
         mui_list->cargar("SELECT *, totalalbaranp AS total, " \
                         "bimpalbaranp AS base, impalbaranp AS impuestos " \
@@ -204,7 +138,7 @@ void AlbaranesProveedor::presenta() {
         m_total->setText(cur->valor("total"));
         delete cur;
     }
-    _depura("END AlbaranesProveedor::presenta().", 0);
+    _depura("END AlbaranesProveedor::presentar", 0);
 }
 
 
@@ -248,8 +182,8 @@ QString AlbaranesProveedor::generaFiltro() {
 void AlbaranesProveedor::editar(int row) {
     _depura("AlbaranesProveedor::editar", 0);
     mdb_idalbaranp = mui_list->DBvalue(QString("idalbaranp"), row);
-    if (m_modo == 0) {
-        AlbaranProveedorView *prov = new AlbaranProveedorView(empresaBase(), 0);
+    if (modoEdicion()) {
+        AlbaranProveedorView *prov = new AlbaranProveedorView((company *)empresaBase(), 0);
         if (prov->cargar(mdb_idalbaranp)) {
             delete prov;
             return;
@@ -262,22 +196,6 @@ void AlbaranesProveedor::editar(int row) {
     _depura("END AlbaranesProveedor::editar", 0);
 }
 
-
-/** SLOT de la pulsacion sobre el boton de editar.
-    Si existe un elemento seleccionado llama al metodo editar()
-*/
-void AlbaranesProveedor::on_mui_editar_clicked() {
-    _depura("AlbaranesProveedor::on_mui_editar_clicked", 0);
-    int a = mui_list->currentRow();
-    if (a < 0) {
-        mensajeInfo(tr("Debe seleccionar una linea"));
-        return;
-    } else {
-        editar(a);
-    } // end if
-    _depura("END AlbaranesProveedor::on_mui_editar_clicked", 0);
-
-}
 
 
 /** La impresion de listados esta completamente delegada a la clase SubForm3
@@ -295,8 +213,8 @@ void AlbaranesProveedor::imprimir() {
     producir.
     Tras el borrado repinta la pantalla.
 */
-void AlbaranesProveedor::on_mui_borrar_clicked() {
-    _depura("AlbaranesProveedor::on_mui_borrar_clicked", 0);
+void AlbaranesProveedor::borrar() {
+    _depura("AlbaranesProveedor::borrar", 0);
     int a = mui_list->currentRow();
     if (a < 0) {
         mensajeInfo(tr("Debe seleccionar una linea"));
@@ -304,19 +222,19 @@ void AlbaranesProveedor::on_mui_borrar_clicked() {
     } // end if
     try {
         mdb_idalbaranp = mui_list->DBvalue(QString("idalbaranp"));
-        if (m_modo == 0) {
-            AlbaranProveedorView *apv = empresaBase()->newAlbaranProveedorView();
+        if (modoEdicion()) {
+            AlbaranProveedorView *apv = ((company *)empresaBase())->newAlbaranProveedorView();
             if (apv->cargar(mdb_idalbaranp)) {
                 throw -1;
             } // end if
             apv->on_mui_borrar_clicked();
             apv->close();
         } // end if
-        presenta();
+        presentar();
     } catch (...) {
         mensajeInfo(tr("Error al borrar albaran de proveedor"));
     } // end try
-    _depura("END AlbaranesProveedor::on_mui_borrar_clicked", 0);
+    _depura("END AlbaranesProveedor::borrar", 0);
 }
 
 

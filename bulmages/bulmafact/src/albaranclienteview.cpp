@@ -128,7 +128,7 @@ void AlbaranClienteView::s_verpresupuesto() {
     if (cur->numregistros() > 1) {
 	/// \TODO Debe pasar por company la creacion de esta ventana
         PresupuestoList *list = new PresupuestoList(getcompany(), NULL);
-        list->modoseleccion();
+        list->setModoConsulta();
         list->show();
 
         while (!list->isHidden())  {

@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Alvaro de Miguel                                *
- *   alvaro.demiguel@gmail.com                                             *
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -44,36 +44,6 @@ void AlbaranClienteListSubform::cargar(QString query) {
 }
 
 
-void AlbaranClienteList::modoseleccion() {
-    m_modo = 1;
-}
-
-
-void AlbaranClienteList::modoedicion() {
-    m_modo = 0;
-}
-
-
-void AlbaranClienteList::hideBotonera() {
-    m_botonera->hide();
-}
-
-
-void AlbaranClienteList::showBotonera() {
-    m_botonera->show();
-}
-
-
-void AlbaranClienteList::hideBusqueda() {
-    m_busqueda->hide();
-}
-
-
-void AlbaranClienteList::showBusqueda() {
-    m_busqueda->show();
-}
-
-
 void AlbaranClienteList::setidcliente(QString val) {
     m_cliente->setidcliente(val);
 }
@@ -84,47 +54,13 @@ QString AlbaranClienteList::idCliDelivNote() {
 }
 
 
-void AlbaranClienteList::meteWindow(QString nom, QObject *obj) {
-    if (empresaBase() != NULL) {
-        empresaBase()->meteWindow(nom, obj);
-    } // end if
+
+void AlbaranClienteList::crear() {
+    ((company *)empresaBase())->s_newAlbaranClienteView();
 }
 
 
-void AlbaranClienteList::on_m_filtro_textChanged(const QString &text) {
-    if (text.size() >= 3) {
-        on_mui_actualizar_clicked();
-    } // end if
-}
 
-
-void AlbaranClienteList::on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
-    on_mui_editar_clicked();
-}
-
-
-void AlbaranClienteList::on_mui_crear_clicked() {
-    empresaBase()->s_newAlbaranClienteView();
-}
-
-
-void AlbaranClienteList::on_mui_imprimir_clicked() {
-    imprimir();
-}
-
-
-void AlbaranClienteList::on_mui_actualizar_clicked() {
-    presenta();
-}
-
-
-void AlbaranClienteList::on_mui_configurar_toggled(bool checked) {
-    if (checked) {
-        mui_list->showConfig();
-    } else {
-        mui_list->hideConfig();
-    } // end if
-}
 
 
 /** Constructor de la clase sin inicializacion de company. Usando este
@@ -135,17 +71,17 @@ void AlbaranClienteList::on_mui_configurar_toggled(bool checked) {
     Usando esta clase tampoco se inicializan bien los widgets que contiene.
 */
 AlbaranClienteList::AlbaranClienteList(QWidget *parent, Qt::WFlags flags, edmode editmodo)
-        : FichaBf(NULL, parent, flags) {
+        : Listado(NULL, parent, flags) {
     _depura("AlbaranClienteList::AlbaranClienteList", 0);
     setupUi(this);
     /// Disparamos los plugins.
     int res = g_plugins->lanza("AlbaranClienteList_AlbaranClienteList", this);
     if (res != 0)
         return;
-    m_modo = editmodo;
     mdb_idalbaran = "";
-    if (m_modo == EditMode)
-        meteWindow(windowTitle(), this);
+    setSubForm(mui_list);
+    if (modoEdicion())
+        empresaBase()->meteWindow(windowTitle(), this);
     hideBusqueda();
     _depura("END AlbaranClienteList::AlbaranClienteList", 0);
 }
@@ -158,7 +94,7 @@ AlbaranClienteList::AlbaranClienteList(QWidget *parent, Qt::WFlags flags, edmode
     Mete la ventana en el workspace.
 */
 AlbaranClienteList::AlbaranClienteList(company *comp, QWidget *parent, Qt::WFlags, edmode editmodo)
-        : FichaBf(comp, parent) {
+        : Listado(comp, parent) {
     _depura("AlbaranClienteList::AlbaranClienteList", 0);
     setupUi(this);
     /// Disparamos los plugins.
@@ -168,10 +104,10 @@ AlbaranClienteList::AlbaranClienteList(company *comp, QWidget *parent, Qt::WFlag
     m_cliente->setEmpresaBase(comp);
     m_articulo->setEmpresaBase(comp);
     mui_list->setEmpresaBase(comp);
-    presenta();
-    m_modo = editmodo;
+    presentar();
+    setSubForm(mui_list);
     mdb_idalbaran = "";
-    if (m_modo == EditMode)
+    if (modoEdicion())
         empresaBase()->meteWindow(windowTitle(), this);
     hideBusqueda();
     _depura("END AlbaranClienteList::AlbaranClienteList", 0);
@@ -190,7 +126,6 @@ void AlbaranClienteList::setEmpresaBase(company *comp) {
 /** Destructor de la clase */
 AlbaranClienteList::~AlbaranClienteList() {
     _depura("AlbaranClienteList::~AlbaranClienteList", 0);
-    empresaBase()->sacaWindow(this);
     _depura("END AlbaranClienteList::~AlbaranClienteList", 0);
 }
 
@@ -198,8 +133,8 @@ AlbaranClienteList::~AlbaranClienteList() {
 /** Carga el listado de la base de datos y lo presenta.
     Tambien carga el total y lo presenta.
 */
-void AlbaranClienteList::presenta() {
-    _depura("AlbaranClienteList::presenta\n");
+void AlbaranClienteList::presentar() {
+    _depura("AlbaranClienteList::presentar");
 
     mui_list->cargar("SELECT *, totalalbaran AS total, bimpalbaran AS base, impalbaran AS impuestos FROM albaran LEFT JOIN  cliente ON albaran.idcliente = cliente.idcliente LEFT JOIN almacen ON albaran.idalmacen = almacen.idalmacen LEFT JOIN forma_pago ON albaran.idforma_pago = forma_pago.idforma_pago WHERE 1 = 1 " + generarFiltro());
     /// Hacemos el calculo del total.
@@ -207,7 +142,7 @@ void AlbaranClienteList::presenta() {
     m_total->setText(cur->valor("total"));
     delete cur;
 
-    _depura("End AlbaranClienteList::presenta");
+    _depura("End AlbaranClienteList::presentar");
 }
 
 
@@ -224,8 +159,8 @@ void AlbaranClienteList::presenta() {
 void AlbaranClienteList::editar(int row) {
     _depura("AlbaranClienteList::editar", 0);
     mdb_idalbaran = mui_list->DBvalue(QString("idalbaran"), row);
-    if (m_modo == 0) {
-        AlbaranClienteView *prov = empresaBase()->newAlbaranClienteView();
+    if (modoEdicion()) {
+        AlbaranClienteView *prov = ((company *)empresaBase())->newAlbaranClienteView();
         if (prov->cargar(mdb_idalbaran)) {
             delete prov;
             return;
@@ -239,30 +174,14 @@ void AlbaranClienteList::editar(int row) {
 }
 
 
-/** Metodo que responde a la pulsacion del boton editar en el formulario.
-    Comprueba que exista un elemento seleccionado y si es el caso llama
-    al metodo editar, si no termina devolviendo un mensaje.
-*/
-void AlbaranClienteList::on_mui_editar_clicked() {
-    _depura("AlbaranClienteList::on_mui_editar_clicked", 0);
-    int a = mui_list->currentRow();
-    if (a >= 0) {
-        editar(a);
-    } else {
-        mensajeInfo(tr("Debe seleccionar una linea"));
-    } // end if
-    _depura("END AlbaranClienteList::on_mui_editar_clicked", 0);
-
-}
-
 
 /** Responde a la pulsacion del boton borrar en el formulario.
     Carga el elemento seleccionado e invoca a su metodo de borrar.
 */
 /// \todo: Comprobar que se libera bien la memoria.
 /// \todo: Intentar que no se tenga que recargar todo el listado y que simplemente se borre la fila seleccionada.
-void AlbaranClienteList::on_mui_borrar_clicked() {
-    _depura("AlbaranClienteList::on_mui_borrar_clicked", 0);
+void AlbaranClienteList::borrar() {
+    _depura("AlbaranClienteList::borrar", 0);
     int a = mui_list->currentRow();
     if (a < 0) {
         mensajeInfo(tr("Debe seleccionar una linea"));
@@ -270,18 +189,18 @@ void AlbaranClienteList::on_mui_borrar_clicked() {
     } // end if
     try {
         mdb_idalbaran = mui_list->DBvalue(QString("idalbaran"));
-        if (m_modo == 0) {
-            AlbaranClienteView *acv = empresaBase()->newAlbaranClienteView();
+        if (modoEdicion()) {
+            AlbaranClienteView *acv = ((company *)empresaBase())->newAlbaranClienteView();
             if (acv->cargar(mdb_idalbaran))
                 throw -1;
             acv->on_mui_borrar_clicked();
             acv->close();
         } // end if
-        presenta();
+        presentar();
     } catch (...) {
         mensajeInfo(tr("Error al borrar el albaran a cliente"));
     } // end try
-    _depura("END AlbaranClienteList::on_mui_borrar_clicked", 0);
+    _depura("END AlbaranClienteList::borrar", 0);
 }
 
 
@@ -371,3 +290,4 @@ AlbaranClienteListSubform::AlbaranClienteListSubform(QWidget *parent) : SubForm2
     _depura("END AlbaranClienteListSubform::AlbaranClienteListSubform", 0);
 }
 
+AlbaranClienteListSubform::~AlbaranClienteListSubform() {}

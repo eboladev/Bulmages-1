@@ -26,7 +26,7 @@
 #include "company.h"
 #include "funcaux.h"
 #include "subform2bf.h"
-#include "fichabf.h"
+#include "listado.h"
 
 
 /// Administra el detalle del listado de facturas de proveedor.
@@ -39,16 +39,8 @@ public:
     ~FacturasProveedorListSubform() {}
 
 public slots:
-    virtual void cargar() {
-        _depura("AlbaranesProveedorListSubform::cargar\n", 0);
-        QString SQLQuery = "SELECT * FROM facturap";
-        cursor2 *cur= empresaBase()->cargacursor(SQLQuery);
-        SubForm3::cargar(cur);
-        delete cur;
-    }
-    virtual void cargar(QString query) {
-        SubForm3::cargar(query);
-    }
+    virtual void cargar();
+    virtual void cargar(QString query);
 };
 
 
@@ -57,94 +49,26 @@ public slots:
 
 /// Administra el listado de facturas de proveedor.
 /** */
-class FacturasProveedorList : public FichaBf, public Ui_FacturasProveedorListBase {
+class FacturasProveedorList : public Listado, public Ui_FacturasProveedorListBase {
     Q_OBJECT
 
 private:
-    /// m_modo == 0 es modo edicion.
-    /// m_modo == 1 es modo selector.
-    int m_modo;
     QString mdb_idfacturap;
 
 public:
     FacturasProveedorList(QWidget *parent = 0, Qt::WFlags flag = 0);
     FacturasProveedorList(company *,QWidget *parent = 0);
     ~FacturasProveedorList();
-    void presenta();
-    void setEmpresaBase (company *comp) {
-        FichaBf::setEmpresaBase(comp);
-        m_proveedor->setEmpresaBase(comp);
-        m_articulo->setEmpresaBase(comp);
-        mui_list->setEmpresaBase(comp);
-    }
-    company* get_company() {
-       return empresaBase();
-    }
-    void meteWindow(QString nom, QObject *obj) {
-        if (empresaBase() != NULL) {
-            empresaBase()->meteWindow(nom, obj);
-        } // end if
-    }
-    void modoseleccion() {
-        m_modo = 1;
-    }
-    void modoedicion() {
-        m_modo = 0;
-    }
-    QString idfacturap() {
-        return mdb_idfacturap;
-    }
-    void hideBusqueda() {
-        m_busqueda->hide();
-    }
-    void showBusqueda() {
-        m_busqueda->show();
-    }
-    void hideBotonera() {
-        m_botonera->hide();
-    }
-    void showBotonera() {
-        m_botonera->show();
-    }
-    void setidproveedor(QString val) {
-        m_proveedor->setidproveedor(val);
-    }
-    void setidarticulo(QString val) {
-        m_articulo->setidarticulo(val);
-    }
+    void presentar();
+    void setEmpresaBase (company *comp);
+    QString idfacturap();
+    void setidproveedor(QString val);
+    void setidarticulo(QString val);
     QString generaFiltro();
-    /// Funciones que se encargan de guardar y cargar la configuracion del listado.
-    void guardaconfig();
-    void cargaconfig();
     void editar(int);
-    virtual void on_mui_borrar_clicked();
-
-public slots:
-    virtual void on_m_filtro_textChanged(const QString &text) {
-        if (text.size() >= 3)
-            on_mui_actualizar_clicked();
-    };
-    void on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
-        on_mui_editar_clicked();
-    };
-    virtual void on_mui_actualizar_clicked() {
-        presenta();
-    };
-    virtual void on_mui_crear_clicked() {
-        empresaBase()->s_newFacturaPro();
-    };
-    virtual void on_mui_editar_clicked();
-    virtual void on_mui_imprimir_clicked();
-    virtual void on_mui_configurar_toggled(bool checked) {
-        if (checked) {
-            mui_list->showConfig();
-        } else {
-            mui_list->hideConfig();
-        } // end if
-    };
-
-signals:
-    void selected(QString);
+    void borrar();
+    void crear();
+    void imprimir();
 };
 
 #endif

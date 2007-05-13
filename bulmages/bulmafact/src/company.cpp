@@ -592,7 +592,7 @@ void company::s_newFacturaCli() {
 */
 void company::refreshPresupuestos() {
     _depura("company::refreshPresupuestos", 0);
-    m_presupuestosList->presenta();
+    m_presupuestosList->presentar();
     _depura("END company::refreshPresupuestos", 0);
 }
 
@@ -604,7 +604,7 @@ void company::refreshPresupuestos() {
 void company::refreshFacturas() {
     _depura("company::refreshFacturas", 0);
     if (m_facturasList != NULL)
-        m_facturasList->presenta();
+        m_facturasList->presentar();
     _depura("END company::refreshFacturas", 0);
 }
 
@@ -616,7 +616,7 @@ void company::refreshFacturas() {
 void company::refreshFacturasProveedor() {
     _depura("company::refreshFacturasProveedor", 0);
     if (m_facturasproveedorlist != NULL)
-        m_facturasproveedorlist->presenta();
+        m_facturasproveedorlist->presentar();
     _depura("END company::refreshFacturasProveedor", 0);
 
 }
@@ -654,7 +654,7 @@ void company::newClientDelivNote() {
 void company::refreshClientDelivNotes() {
     _depura("company::refreshClientDelivNotes", 0);
     if (m_clientDelivNotesList != NULL)
-        m_clientDelivNotesList->presenta();
+        m_clientDelivNotesList->presentar();
     _depura("END company::refreshClientDelivNotes", 0);
 }
 
@@ -666,7 +666,7 @@ void company::refreshClientDelivNotes() {
 void company::refreshAlbaranesCliente() {
     _depura("company::refreshAlbaranesCliente", 0);
     if (m_clientDelivNotesList != NULL)
-        m_clientDelivNotesList->presenta();
+        m_clientDelivNotesList->presentar();
     _depura("company::refreshAlbaranesCliente", 0);
 }
 
@@ -678,7 +678,7 @@ void company::refreshAlbaranesCliente() {
 void company::refreshAlbaranesProveedor() {
     _depura("company::refreshAlbaranesProveedor", 0);
     if (m_albaranesproveedor != NULL)
-        m_albaranesproveedor->presenta();
+        m_albaranesproveedor->presentar();
     _depura("END company::refreshAlbaranesProveedor", 0);
 }
 
@@ -690,7 +690,7 @@ void company::refreshAlbaranesProveedor() {
 void company::refreshClientes() {
     _depura("company::refreshClientes", 0);
     if (m_clientsList != NULL)
-        m_clientsList->presenta();
+        m_clientsList->presentar();
     _depura("END company::refreshClientes", 0);
 }
 
@@ -715,7 +715,7 @@ void company::newPedidoCliente() {
 void company::refreshCobrosCliente() {
     _depura("company::refreshCobrosCliente", 0);
     if (m_cobrosList != NULL)
-        m_cobrosList->presenta();
+        m_cobrosList->presentar();
     _depura("END company::refreshCobrosCliente", 0);
 }
 
@@ -727,7 +727,7 @@ void company::refreshCobrosCliente() {
 void company::refreshPedidosCliente() {
     _depura("company::refreshPedidosCliente", 0);
     if (m_pedidosclienteList != NULL)
-        m_pedidosclienteList->presenta();
+        m_pedidosclienteList->presentar();
     _depura("END company::refreshPedidosCliente", 0);
 }
 
@@ -739,7 +739,7 @@ void company::refreshPedidosCliente() {
 void company::refreshPedidosProveedor() {
     _depura("company::refreshPedidosProveedor", 0);
     if (m_pedidosproveedorList != NULL)
-        m_pedidosproveedorList->presenta();
+        m_pedidosproveedorList->presentar();
     _depura("END company::refreshPedidosProveedor", 0);
 }
 

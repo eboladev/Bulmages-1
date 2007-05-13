@@ -34,32 +34,30 @@
 
 
 PagosList::PagosList(QWidget *parent, Qt::WFlags flag)
-        : FichaBf(NULL, parent, flag) {
+        : Listado(NULL, parent, flag) {
     setupUi(this);
-    m_modo = 0;
     mdb_idpago = "";
-    meteWindow(windowTitle(), this);
+    setSubForm(mui_list);
     hideBusqueda();
 }
 
 
 PagosList::PagosList(company *comp, QWidget *parent, Qt::WFlags flag)
-        : FichaBf(comp, parent, flag) {
+        : Listado(comp, parent, flag) {
     setupUi(this);
     m_proveedor->setEmpresaBase(comp);
     mui_list->setEmpresaBase(comp);
     mui_idbanco->setEmpresaBase(comp);
     mui_idbanco->setidbanco("");
     presentar();
-    m_modo = 0;
     mdb_idpago = "";
-    meteWindow(windowTitle(), this);
+    setSubForm(mui_list);
+    empresaBase()->meteWindow(windowTitle(), this);
     hideBusqueda();
 }
 
 
 PagosList::~PagosList() {
-    empresaBase()->sacaWindow(this);
 }
 
 
@@ -109,21 +107,13 @@ QString PagosList::generaFiltro() {
 }
 
 
-void PagosList::on_mui_editar_clicked() {
-    int a = mui_list->currentRow();
-    if (a < 0) {
-        mensajeInfo(tr("Debe seleccionar una linea"));
-        return;
-    } else {
-        on_mui_list_cellDoubleClicked(a, 0);
-    } // end if
-}
 
 
-void PagosList::on_mui_list_cellDoubleClicked(int, int) {
+
+void PagosList::editar(int) {
     mdb_idpago = mui_list->DBvalue("idpago");
-    if (m_modo == 0 && mdb_idpago != "") {
-        PagoView *bud = empresaBase()->newPagoView();
+    if (modoEdicion() && mdb_idpago != "") {
+        PagoView *bud = ((company *)empresaBase())->newPagoView();
         if (bud->cargar(mdb_idpago)) {
             delete bud;
             return;
@@ -136,29 +126,9 @@ void PagosList::on_mui_list_cellDoubleClicked(int, int) {
 }
 
 
-void PagosList::on_mui_list_customContextMenuRequested(const QPoint &) {
-    _depura("PagosList::on_mui_list_customContextMenuRequested", 0);
-    int a = mui_list->currentRow();
-    if (a < 0) {
-        return;
-    } // end if
-    QMenu *popup = new QMenu(this);
-    QAction *edit = popup->addAction(tr("Editar pago"));
-    QAction *del = popup->addAction(tr("Borrar pago"));
-    QAction *opcion = popup->exec(QCursor::pos());
-    if (opcion == del) {
-        on_mui_borrar_clicked();
-    } // end if
-    if (opcion == edit) {
-        on_mui_editar_clicked();
-    } // end if
-    delete popup;
-}
-
-
-void PagosList::on_mui_crear_clicked() {
-    fprintf(stderr, "Iniciamos el boton_crear");
-    PagoView *bud = empresaBase()->newPagoView();
+void PagosList::crear() {
+    _depura("PagosList::crear", 0);
+    PagoView *bud = ((company *)empresaBase())->newPagoView();
     empresaBase()->m_pWorkspace->addWindow(bud);
     bud->show();
     bud->setidproveedor(m_proveedor->idproveedor());
@@ -173,8 +143,8 @@ void PagosList::imprimir() {
 }
 
 
-void PagosList::on_mui_borrar_clicked() {
-    _depura("PagosList::on_mui_borrar_clicked", 0);
+void PagosList::borrar() {
+    _depura("PagosList::borrar", 0);
     int a = mui_list->currentRow();
     if (a < 0) {
         mensajeInfo(tr("Debe seleccionar una linea"));
@@ -182,8 +152,8 @@ void PagosList::on_mui_borrar_clicked() {
     } // end if
     try {
         mdb_idpago = mui_list->DBvalue("idpago");
-        if (m_modo == 0 && mdb_idpago != "") {
-            PagoView *bud = new PagoView(empresaBase(), NULL);
+        if (modoEdicion() && mdb_idpago != "") {
+            PagoView *bud = new PagoView((company *)empresaBase(), NULL);
             bud->cargar(mdb_idpago);
             bud->borrar();
         } // end if
@@ -191,53 +161,22 @@ void PagosList::on_mui_borrar_clicked() {
     } catch (...)  {
         mensajeInfo(tr("Error al borrar el pago"));
     } // end try
-    _depura("END PagosList::on_mui_borrar_clicked", 0);
+    _depura("END PagosList::borrar", 0);
 }
 
 void PagosList::setEmpresaBase (company *comp)	{
-    _depura("PagosList::setcompany", 0);
+    _depura("PagosList::setEmpresaBase", 0);
     PEmpresaBase::setEmpresaBase(comp);
     m_proveedor->setEmpresaBase(comp);
     mui_list->setEmpresaBase(comp);
     mui_idbanco->setEmpresaBase(comp);
     mui_idbanco->setidbanco("");
-    _depura("END PagosList::setcompany", 0);
+    _depura("END PagosList::setEmpresaBase", 0);
 }
 
-void PagosList::on_mui_imprimir_clicked() {
-    imprimir();
-}
-void PagosList::on_mui_actualizar_clicked() {
-    presentar();
-}
-void PagosList::on_mui_configurar_toggled(bool checked) {
-    if (checked)
-        mui_list->showConfig();
-    else
-        mui_list->hideConfig();
-}
-
-void PagosList::modoseleccion() {
-    m_modo = 1;
-}
-void PagosList::modoedicion() {
-    m_modo = 0;
-}
 
 QString PagosList::idpago() {
     return mdb_idpago;
-}
-void PagosList::hideBotonera() {
-    m_botonera->hide();
-}
-void PagosList::showBotonera() {
-    m_botonera->show();
-}
-void PagosList::hideBusqueda() {
-    m_busqueda->hide();
-}
-void PagosList::showBusqueda() {
-    m_busqueda->show();
 }
 
 void PagosList::setidproveedor(QString val) {
@@ -272,4 +211,7 @@ PagosListSubForm::PagosListSubForm(QWidget *parent) : SubForm2Bf(parent) {
     setDelete(FALSE);
     setSortingEnabled(TRUE);
 }
+
+PagosListSubForm::~PagosListSubForm() {}
+    
 

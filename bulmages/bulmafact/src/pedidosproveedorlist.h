@@ -26,7 +26,7 @@
 #include "company.h"
 #include "funcaux.h"
 #include "subform2bf.h"
-#include "fichabf.h"
+#include "listado.h"
 
 
 /// Administra las l&iacute;neas de detalle de pedidos a proveedor.
@@ -36,17 +36,9 @@ class PedidosProveedorListSubform : public SubForm2Bf {
 
 public:
     PedidosProveedorListSubform(QWidget *parent = 0);
-    ~PedidosProveedorListSubform() {}
-    virtual void cargar() {
-        _depura("PedidosProveedorListSubform::cargar", 0);
-        QString SQLQuery = "SELECT * FROM pedidoproveedor";
-        cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
-        SubForm3::cargar(cur);
-        delete cur;
-    }
-    virtual void cargar(QString query) {
-        SubForm3::cargar(query);
-    }
+    ~PedidosProveedorListSubform();
+    virtual void cargar();
+    virtual void cargar(QString query);
 };
 
 
@@ -55,91 +47,26 @@ public:
 
 /// Muestra y administra la ventana con la informaci&oacute;n de los pedidos a proveedor.
 /** */
-class PedidosProveedorList : public FichaBf, public Ui_PedidosProveedorListBase {
+class PedidosProveedorList : public Listado, public Ui_PedidosProveedorListBase {
     Q_OBJECT
 
 private:
-    /// m_modo == 0 es modo edicion.
-    /// m_modo == 1 es modo selector.
-    int m_modo;
     QString mdb_idpedidoproveedor;
 
 public:
     PedidosProveedorList(QWidget *parent = 0, Qt::WFlags flag = 0);
     PedidosProveedorList(company *, QWidget *parent = 0, Qt::WFlags flag = 0);
     ~PedidosProveedorList();
-    void presenta();
-    void modoseleccion() {
-        m_modo = 1;
-    }
-    void modoedicion() {
-        m_modo = 0;
-    }
+    void presentar();
     void imprimir();
-    void setEmpresaBase(company *comp) {
-        FichaBf::setEmpresaBase(comp);
-        m_proveedor->setEmpresaBase(comp);
-        mui_list->setEmpresaBase(comp);
-    }
-    void hideBotonera() {
-        m_botonera->hide();
-    }
-    void showBotonera() {
-        m_botonera->show();
-    }
-    void hideBusqueda() {
-        m_busqueda->hide();
-    }
-    void showBusqueda() {
-        m_busqueda->show();
-    }
-    QString idpedidoproveedor() {
-        return mdb_idpedidoproveedor;
-    }
-    void setidproveedor(QString val) {
-        m_proveedor->setidproveedor(val);
-    }
-    void meteWindow(QString nom, QObject *obj) {
-        if (empresaBase() != NULL) {
-            empresaBase()->meteWindow(nom, obj);
-        } // end if
-    }
+    void setEmpresaBase(company *comp);
+    QString idpedidoproveedor();
+    void setidproveedor(QString val);
     QString generarFiltro();
     void editar(int);
-    virtual void on_mui_borrar_clicked();
+    void borrar();
+    void crear();
 
-public slots:
-    virtual void on_m_filtro_textChanged(const QString &text) {
-        if (text.size() >= 3) {
-            on_mui_actualizar_clicked();
-        } // end if
-    }
-    void on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
-        on_mui_editar_clicked();
-    }
-    virtual void on_mui_imprimir_clicked() {
-        imprimir();
-    }
-    virtual void on_mui_actualizar_clicked() {
-        presenta();
-    }
-    virtual void on_mui_crear_clicked() {
-        empresaBase()->s_newPedidoPro();
-    }
-    virtual void s_filtrar() {
-        presenta();
-    }
-    virtual void on_mui_editar_clicked();
-    virtual void on_mui_configurar_toggled(bool checked) {
-        if (checked) {
-            mui_list->showConfig();
-        } else {
-            mui_list->hideConfig();
-        } // end if
-    }
-
-signals:
-    void selected(QString);
 };
 
 #endif

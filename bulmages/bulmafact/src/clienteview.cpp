@@ -114,15 +114,15 @@ int ClienteView::cargar(QString idcliente) {
 
         /// Hacemos que el listado de presupuestos de un cliente se inicialize.
         m_listpresupuestos->setidcliente(idcliente);
-        m_listpresupuestos->presenta();
+        m_listpresupuestos->presentar();
         m_listpedidos->setidcliente(idcliente);
-        m_listpedidos->presenta();
+        m_listpedidos->presentar();
         m_listalbaranes->setidcliente(idcliente);
-        m_listalbaranes->presenta();
+        m_listalbaranes->presentar();
         m_listfacturas->setidcliente(idcliente);
-        m_listfacturas->presenta();
+        m_listfacturas->presentar();
         m_listcobros->setidcliente(idcliente);
-        m_listcobros->presenta();
+        m_listcobros->presentar();
 
         /// Pintamos
         pintaCliente();

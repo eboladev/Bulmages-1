@@ -37,15 +37,14 @@
     Este constructor no es completo, debe inicializarse con setcompany para que la clase pueda operar.    
 */
 CobrosList::CobrosList(QWidget *parent, Qt::WFlags flag)
-        : FichaBf(NULL, parent, flag) {
+        : Listado(NULL, parent, flag) {
     _depura("CobrosList::CobrosList", 0);
     setupUi(this);
     setModoEdicion();
     mdb_idcobro = "";
-    meteWindow(windowTitle(), this);
+    setSubForm(mui_list);
     hideBusqueda();
     _depura("END CobrosList::CobrosList", 0);
-
 }
 
 
@@ -54,17 +53,19 @@ CobrosList::CobrosList(QWidget *parent, Qt::WFlags flag)
     Mete la ventana en el workSpace.
 */
 CobrosList::CobrosList(company *comp, QWidget *parent, Qt::WFlags flag)
-        : FichaBf(comp, parent, flag) {
+        : Listado(comp, parent, flag) {
     _depura("CobrosList::CobrosList",0);
     setupUi(this);
     m_cliente->setEmpresaBase(comp);
     mui_list->setEmpresaBase(comp);
     mui_idbanco->setEmpresaBase(comp);
-    mui_idbanco->setidbanco("0");
-    presenta();
+    mui_idbanco->setidbanco("");
+    setSubForm(mui_list);
+    presentar();
     setModoEdicion();
     mdb_idcobro = "";
-    meteWindow(windowTitle(), this);
+    if(modoEdicion()) 
+    	empresaBase()->meteWindow(windowTitle(), this);
     hideBusqueda();
     _depura("END CobrosList::CobrosList", 0);
 }
@@ -74,7 +75,6 @@ CobrosList::CobrosList(company *comp, QWidget *parent, Qt::WFlags flag)
 */
 CobrosList::~CobrosList() {
     _depura("CobrosList::~CobrosList", 0);
-    empresaBase()->sacaWindow(this);
     _depura("END CobrosList::~CobrosList", 0);
 }
 
@@ -83,7 +83,7 @@ CobrosList::~CobrosList() {
     PAra ello genera los SELECTS con ayuda de generaFiltro y los pasa al SubFormulario para que los presente.
     Tambien hace un select de calculo de totales y lo presenta en el textEdit correspondiente.
 */
-void CobrosList::presenta() {
+void CobrosList::presentar() {
     _depura("CobrosList::presentar", 0);
     if (empresaBase() != NULL) {
         mui_list->cargar("SELECT * FROM cobro NATURAL LEFT JOIN cliente NATURAL LEFT JOIN trabajador NATURAL LEFT JOIN banco WHERE 1 = 1 " + generaFiltro());
@@ -133,33 +133,18 @@ QString CobrosList::generaFiltro() {
 }
 
 
-/** SLOT que responde a la pulsacion del boton editar en el listado.
-    comprueba que exista un elemento seleccionado y llama a la funcion de editar().
-*/
-/// \TODO: Deberia crearse el metodo editar() en lugar de llamar a on_mui_list_cellDoubleClicked().
-void CobrosList::on_mui_editar_clicked() {
-    _depura("CobrosList::on_mui_editar_clicked", 0);
-    int a = mui_list->currentRow();
-    if (a >= 0) {
-        on_mui_list_cellDoubleClicked(a, 0);
-    } else {
-        mensajeInfo(tr("Debe seleccionar una linea"));
-    } // end if
-    _depura("END CobrosList::on_mui_editar_clicked", 0);
-}
-
 
 /** SLOT que responde a la pulsacion del boton de crear en el listado.
     Instancia la clase CobroView, y la presenta.
 */
-void CobrosList::on_mui_crear_clicked() {
-    _depura("CobrosList::on_mui_crear_clicked", 0);
-    CobroView *bud = empresaBase()->newCobroView();
+void CobrosList::crear() {
+    _depura("CobrosList::crear", 0);
+    CobroView *bud = ((company *)empresaBase())->newCobroView();
     empresaBase()->m_pWorkspace->addWindow(bud);
     bud->show();
     bud->setidcliente(m_cliente->idcliente());
     bud->pintar();
-    _depura("CobrosList::on_mui_crear_clicked", 0);
+    _depura("CobrosList::crear", 0);
 }
 
 
@@ -178,8 +163,8 @@ void CobrosList::imprimir() {
     Esta es la forma correcta de implementar un borrado a partir de un listado
     ya que de esta forma si existen plugins que alteren el borrado tambien seran invocados.
 */
-void CobrosList::on_mui_borrar_clicked() {
-    _depura("CobrosList::on_mui_borrar_clicked",0);
+void CobrosList::borrar() {
+    _depura("CobrosList::borrar",0);
     int a = mui_list->currentRow();
     if (a < 0) {
         mensajeInfo(tr("Debe seleccionar una linea"));
@@ -188,17 +173,17 @@ void CobrosList::on_mui_borrar_clicked() {
     try {
         mdb_idcobro = mui_list->DBvalue("idcobro");
         if (modoEdicion()) {
-            CobroView *cv = empresaBase()->newCobroView();
+            CobroView *cv = ((company *)empresaBase())->newCobroView();
             if (cv->cargar(mdb_idcobro))
                 throw -1;
             cv->on_mui_borrar_clicked();
             cv->close();
         } // end if
-        presenta();
+        presentar();
     } catch (...) {
         mensajeInfo(tr("Error al borrar el cobro a cliente"));
     } // end try
-    _depura("END:CobrosList::on_mui_borrar_clicked",0);
+    _depura("END:CobrosList::borrar",0);
 }
 
 
@@ -206,12 +191,12 @@ void CobrosList::on_mui_borrar_clicked() {
     Dependiendo del modo (Edicion o Seleccion) hace unas operaciones u otras.
 */
 /// \TODO: Deberia crearse el metodo editar y este llamar a ese.
-void CobrosList::on_mui_list_cellDoubleClicked(int, int) {
+void CobrosList::editar(int) {
     _depura("CobrosList::on_mui_list_cellDoubleClicked", 0);
     try {
         mdb_idcobro = mui_list->DBvalue("idcobro");
         if (modoEdicion()) {
-            CobroView *bud = empresaBase()->newCobroView();
+            CobroView *bud = ((company *)empresaBase())->newCobroView();
             if (bud->cargar(mdb_idcobro)) {
                 delete bud;
                 return;
@@ -231,7 +216,7 @@ void CobrosList::on_mui_list_cellDoubleClicked(int, int) {
 /** SLOT que responde a la peticion de menu contextual en el subformulario.
 */
 /// \TODO: Revisar si este metodo es util.
-void CobrosList::on_mui_list_customContextMenuRequested(const QPoint &) {
+void CobrosList::submenu(const QPoint &) {
     _depura("PagosList::on_mui_list_customContextMenuRequested", 0);
     int a = mui_list->currentRow();
     if (a < 0)
@@ -266,75 +251,12 @@ QString CobrosList::idcobro() {
     return mdb_idcobro;
 }
 
-/** Oculta el layer de botones
-**/
-void CobrosList::hideBotonera() {
-    _depura("CobrosList::hideBotonera", 0);
-    m_botonera->hide();
-    _depura("END CobrosList::hideBotonera", 0);
-}
-
-/** Muestra el layer de botones
-**/
-void CobrosList::showBotonera() {
-    _depura("CobrosList::showBotonera", 0);
-    m_botonera->show();
-    _depura("END CobrosList::showBotonera", 0);
-}
-
-/** Oculta el layer de opciones de filtrado
-**/
-void CobrosList::hideBusqueda() {
-    _depura("CobrosList::hideBusqueda", 0);
-    m_busqueda->hide();
-    _depura("END CobrosList::hideBusqueda", 0);
-}
-
-/** Muestra el layer de opciones de filtrado
-**/
-void CobrosList::showBusqueda() {
-    _depura("CobrosList::showBusqueda", 0);
-    m_busqueda->show();
-    _depura("END CobrosList::showBusqueda", 0);
-}
-
 /** Inicializa la la case con un cliente determiando. Lo establece en las opciones de filtrado
     no actualiza el listado
 **/
 void CobrosList::setidcliente(QString val) {
     m_cliente->setidcliente(val);
 }
-
-/** SLOT automatico que se ejecuta al pulsar sobre el boton de imprimir
-**/
-void CobrosList::on_mui_imprimir_clicked() {
-    _depura("CobrosList::on_mui_imprimir_clicked", 0);
-    imprimir();
-    _depura("END CobrosList::on_mui_imprimir_clicked", 0);
-}
-
-/** SLOT automatico que se ejecuta al pulsar sobre el boton de actualizar
-**/
-void CobrosList::on_mui_actualizar_clicked() {
-    _depura("CobrosList::on_mui_actualizar_clicked", 0);
-    presenta();
-    _depura("END CobrosList::on_mui_actualizar_clicked", 0);
-}
-
-/** SLOT automatico que se ejecuta al pulsar sobre el boton de configurar listado
-**/
-void CobrosList::on_mui_configurar_toggled(bool checked) {
-    _depura("CobrosList::on_mui_configurar_toggled", 0);
-    if (checked) {
-        mui_list->showConfig();
-    } else {
-        mui_list->hideConfig();
-    } // end if
-    _depura("END CobrosList::on_mui_configurar_toggled", 0);
-}
-
-
-
 
 
 /// =============================================================================

@@ -147,11 +147,11 @@ int ProveedorView::cargar(QString idprov) {
 
         /// Cargamos las ventanas auxiliares.
         m_listpedidosprov->setidproveedor(DBvalue("idproveedor"));
-        m_listpedidosprov->presenta();
+        m_listpedidosprov->presentar();
         m_albaranesprov->setidproveedor(DBvalue("idproveedor"));
-        m_albaranesprov->presenta();
+        m_albaranesprov->presentar();
         m_listfacturasprov->setidproveedor(DBvalue("idproveedor"));
-        m_listfacturasprov->presenta();
+        m_listfacturasprov->presentar();
         m_listpagosprov->setidproveedor(DBvalue("idproveedor"));
         m_listpagosprov->presentar();
 

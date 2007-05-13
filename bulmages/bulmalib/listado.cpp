@@ -18,8 +18,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <QMenu>
 #include "listado.h"
 #include "empresabase.h"
+
+
 
 void Listado::setModoConsulta() {
     m_modo = SelectMode;
@@ -85,6 +88,14 @@ void Listado::editar(int) {
     _depura("metodo para ser reimplementado en clases hijas", 2);
 }
 
+void Listado::crear() {
+    _depura("metodo para ser reimplementado en clases hijas", 2);
+}
+
+void Listado::borrar() {
+    _depura("metodo para ser reimplementado en clases hijas", 2);
+}
+
 void Listado::imprimir() {
     m_listado->imprimirPDF("");
 }
@@ -110,6 +121,14 @@ void Listado::on_mui_imprimir_clicked() {
     imprimir();
 }
 
+void Listado::on_mui_crear_clicked() {
+    crear();
+}
+
+void Listado::on_mui_borrar_clicked() {
+    borrar();
+}
+
 /** SLOT que responde al boton de editar articulo
     Comprueba que haya un elemento seleccionado y llama a editArticle.
 */
@@ -131,3 +150,66 @@ void Listado::on_mui_configurar_toggled(bool checked) {
         m_listado->hideConfig();
     } // end if
 }
+
+/** \TODO: REVISAR ESTE METODO YA QUE NO PARECE SER EL ADECUADO
+    EN LA LLAMADA DE SUBMENUS
+*/
+void Listado::on_mui_list_customContextMenuRequested(const QPoint &p) {
+    _depura("Listado::on_mui_list_customContextMenuRequested", 0);
+    submenu(p);
+    _depura("END Listado::on_mui_list_customContextMenuRequested", 0);
+}
+
+/** \TODO: REVISAR ESTE METODO YA QUE NO PARECE SER EL ADECUADO
+    EN LA LLAMADA DE SUBMENUS
+*/
+void Listado::submenu(const QPoint &) {
+    _depura("ArticuloList::on_mui_list_customContextMenuRequested", 0);
+    int a = m_listado->currentRow();
+    if (a < 0)
+        return;
+    QMenu *popup = new QMenu(this);
+    QAction *edit = popup->addAction(tr("Editar"));
+    QAction *del = popup->addAction(tr("Borrar"));
+    QAction *opcion = popup->exec(QCursor::pos());
+    if (opcion == del)
+        on_mui_borrar_clicked();
+    if (opcion == edit)
+        on_mui_editar_clicked();
+    delete popup;
+}
+
+void Listado::on_mui_list_toogledConfig(bool check) {
+    QToolButton *botonconfigurar = findChild<QToolButton *>("mui_configurar");
+    if (botonconfigurar)
+        botonconfigurar->setChecked(check);
+}
+
+void Listado::hideBotonera() {
+    QWidget *botonera = findChild<QWidget *>("m_botonera");
+    if (botonera)
+        botonera->hide();
+}
+
+
+void Listado::showBotonera() {
+    QWidget *botonera = findChild<QWidget *>("m_botonera");
+    if (botonera)
+        botonera->show();
+}
+
+
+void Listado::hideBusqueda() {
+    QWidget *busqueda = findChild<QWidget *>("m_busqueda");
+    if (busqueda)
+        busqueda->hide();
+}
+
+
+void Listado::showBusqueda() {
+    QWidget *busqueda = findChild<QWidget *>("m_busqueda");
+    if (busqueda)
+        busqueda->show();
+}
+
+
