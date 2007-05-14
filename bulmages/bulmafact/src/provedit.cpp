@@ -143,7 +143,6 @@ int ProveedorView::cargar(QString idprov) {
         mui_recargoeqproveedor->setChecked(FALSE);
     } // end if
 
-        dialogChanges_cargaInicial();
 
         /// Cargamos las ventanas auxiliares.
         m_listpedidosprov->setidproveedor(DBvalue("idproveedor"));
@@ -154,6 +153,10 @@ int ProveedorView::cargar(QString idprov) {
         m_listfacturasprov->presentar();
         m_listpagosprov->setidproveedor(DBvalue("idproveedor"));
         m_listpagosprov->presentar();
+
+
+	/// Reseteamos el control de cambios.
+        dialogChanges_cargaInicial();
 
         /// Cambiamos el titulo de la ventana para que salga reflejado donde toca.
         setWindowTitle(tr("Proveedor") + " " + DBvalue("nomproveedor"));
@@ -198,6 +201,8 @@ void ProveedorView::on_mui_crear_clicked() {
     m_comentproveedor->setPlainText("");
     mui_codproveedor->setText("");
     mui_irpfproveedor->setText("");
+
+    /// Reseteamos el control de cambios
     dialogChanges_cargaInicial();
     _depura("END ProveedorView::on_mui_crear_clicked", 0);
 }

@@ -20,6 +20,26 @@
 
 #include "ficha.h"
 
+Ficha::Ficha(QWidget *parent, Qt::WFlags f, edmode modo) : BLWidget(parent, f), dialogChanges(this) {
+    _depura("Ficha::Ficha", 0);
+    m_modo=modo;
+    dialogChanges_cargaInicial();
+    _depura("END Ficha::Ficha", 0);
+}
+
+Ficha::Ficha(EmpresaBase *emp, QWidget *parent, Qt::WFlags f, edmode modo) : BLWidget(emp, parent, f), dialogChanges(this) {
+    _depura("Ficha::Ficha", 0);
+    m_modo=modo;
+    dialogChanges_cargaInicial();
+    _depura("END Ficha::Ficha", 0);
+}
+
+
+Ficha::~Ficha() {
+    _depura("Ficha::~Ficha", 0, this->windowTitle());
+    sacaWindow();
+    _depura("END Ficha::~Ficha", 0);
+}
 
 void Ficha::setModoConsulta() {
     m_modo = SelectMode;
@@ -42,49 +62,28 @@ bool Ficha::modoConsulta() {
 
 
 int Ficha::guardar() {
-    _depura("Ficha::guardar existe solo para ser derivado", 0);
+    _depura("Ficha::guardar existe solo para ser derivado", 2);
     return 0;
 }
 
 
 int Ficha::borrar() {
-    _depura("Ficha::borrar existe solo para ser derivado", 0);
+    _depura("Ficha::borrar existe solo para ser derivado", 2);
     return 0;
 }
 
 
 void Ficha::on_mui_cancelar_clicked() {
     _depura("Ficha::on_mui_cancelar_clicked", 0);
+    close();
     _depura("END Ficha::on_mui_cancelar_clicked", 0);
 }
 
 
 void Ficha::on_mui_guardar_clicked() {
+    _depura("Ficha::on_mui_guardar_clicked", 0);
     guardar();
-}
-
-
-
-
-Ficha::Ficha(QWidget *parent, Qt::WFlags f, edmode modo) : BLWidget(parent, f), dialogChanges(this) {
-    _depura("Ficha::Ficha", 0);
-    m_modo=modo;
-    dialogChanges_cargaInicial();
-    _depura("END Ficha::Ficha", 0);
-}
-
-Ficha::Ficha(EmpresaBase *emp, QWidget *parent, Qt::WFlags f, edmode modo) : BLWidget(emp, parent, f), dialogChanges(this) {
-    _depura("Ficha::Ficha", 0);
-    m_modo=modo;
-    dialogChanges_cargaInicial();
-    _depura("END Ficha::Ficha", 0);
-}
-
-
-Ficha::~Ficha() {
-    _depura("Ficha::~Ficha", 0, this->windowTitle());
-    sacaWindow();
-    _depura("END Ficha::~Ficha", 0);
+    _depura("END Ficha::on_mui_guardar_clicked", 0);
 }
 
 
@@ -140,7 +139,7 @@ void Ficha::closeEvent(QCloseEvent *e) {
         } // end if
         /// \TODO Este sacaWindow encubre un bug. Debe tratarse de otra forma el
         /// sacar las ventanas de listventanas.
-        sacaWindow();
+//        sacaWindow();
     } catch (...) {
         mensajeInfo(tr("No se pudo cerrar la ventana debido a un error"));
         e->ignore();

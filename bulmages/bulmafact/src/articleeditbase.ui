@@ -5,7 +5,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>714</width>
+    <width>788</width>
     <height>576</height>
    </rect>
   </property>
@@ -1159,22 +1159,5 @@
  <resources>
   <include location="../../bulmages.qrc" />
  </resources>
- <connections>
-  <connection>
-   <sender>mui_cancelar</sender>
-   <signal>clicked()</signal>
-   <receiver>ArticuloBase</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>667</x>
-     <y>522</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>647</x>
-     <y>533</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>
