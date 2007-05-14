@@ -54,7 +54,8 @@ int Ficha::borrar() {
 
 
 void Ficha::on_mui_cancelar_clicked() {
-    close();
+    _depura("Ficha::on_mui_cancelar_clicked", 0);
+    _depura("END Ficha::on_mui_cancelar_clicked", 0);
 }
 
 

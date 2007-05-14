@@ -43,7 +43,7 @@ private:
 
 public:
     dialogChanges(QObject *ob);
-    ~dialogChanges() {}
+    ~dialogChanges();
     void dialogChanges_cargaInicial();
     bool dialogChanges_hayCambios();
 

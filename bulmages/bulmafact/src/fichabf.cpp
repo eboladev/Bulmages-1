@@ -33,8 +33,6 @@ FichaBf::FichaBf(company *comp, QWidget *parent, Qt::WFlags f, edmode modo)
     _depura("FichaBf::FichaBf", 0);
     m_listalineas = NULL;
     m_listadescuentos = NULL;
-//    empresaBase() = comp;
-//    setEmpresaBase(comp);
     _depura("END FichaBf::FichaBf", 0);
 }
 

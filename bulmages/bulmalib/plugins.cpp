@@ -45,11 +45,13 @@ void Plugins::cargaLibs(const QString libs) {
     /// Hacemos la carga de los plugins.
     QString cad = libs;
     _depura("Plugins::cargaLibs", 0, cad);
-    if (cad == "") return;
+    if (cad == "") {
+    	_depura("END Plugins::cargaLibs", 0, cad);
+	return;
+    } // end if
     QStringList plugins = cad.split(";");
     for (QStringList::Iterator it = plugins.begin(); it != plugins.end(); ++it) {
         QLibrary *lib = new QLibrary(*it);
-        _depura("Plugins::cargaLibs", 0, "Plugins::Resolviendo la libreria: " + *it);
         lib->load();
         if (!lib->isLoaded()) {
             mensajeInfo("No se ha podido cargar la libreria: " + *it);
@@ -67,10 +69,10 @@ int Plugins::lanza(const char *func, void *clase) {
     for (int i = 0; i < m_lista.size(); ++i) {
         myFunction = (MyPrototype) m_lista.at(i)->resolve(func);
         if (myFunction) {
-            _depura("Plugins::lanza", 0, "Encontrada una funcion correspondiente con el prototipo");
+            _depura("Plugins_lanza", 0, "Encontrada una funcion correspondiente con el prototipo");
             a = myFunction(clase);
         } else {
-            _depura("Plugins::lanza", 0, "No ha entrado la libreria");
+            _depura("Plugins_lanza", 0, "No ha entrado la libreria");
         } // end if
     } // end for
     _depura("END Plugins::lanza", 0);
@@ -84,10 +86,10 @@ int Plugins::lanza(const char *func, void *clase, void **ret) {
     for (int i = 0; i < m_lista.size(); ++i) {
         myFunction1 = (MyPrototype1) m_lista.at(i)->resolve(func);
         if (myFunction1) {
-            _depura("Plugins::lanza", 0, "Encontrada una funcion correspondiente con el prototipo");
+            _depura("Plugins_lanza", 0, "Encontrada una funcion correspondiente con el prototipo");
             a = myFunction1(clase, ret);
         } else {
-            _depura("Plugins::lanza", 0, "No ha entrado la libreria");
+            _depura("Plugins_lanza", 0, "No ha entrado la libreria");
         } // end if
     } // end for
     _depura("END Plugins::lanza", 0);

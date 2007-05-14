@@ -44,9 +44,6 @@ FacturasList::FacturasList(QWidget *parent, Qt::WFlags flag, edmode editmodo)
     iniciaForm();
     mdb_idfactura = "";
     setSubForm(mui_list);
-    if (modoEdicion()) {
-        empresaBase()->meteWindow(windowTitle(), this);
-    } // end if
     hideBusqueda();
     _depura("END FacturasList::FacturasList", 0);
 }

@@ -194,7 +194,7 @@ int listventanas::seleccionaWindow(QString nombre, QObject *obj) {
             QListWidgetItem1 *m = (QListWidgetItem1 *)m_listBox->item(i);
             /// Encuentra la ventana en la lista.
             if (m->object() == obj) {
-                _depura("listventanas::Se ha encontrado la ventana", 0, nombre);
+                _depura("END listventanas::seleccionaWindow", 0, "Se ha encontrado la ventana" + nombre);
                 m_listBox->setCurrentItem(m);
                 return 0;
             } // end if

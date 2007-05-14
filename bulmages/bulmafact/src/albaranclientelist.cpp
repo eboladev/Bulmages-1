@@ -31,7 +31,7 @@
 
 
 void AlbaranClienteListSubform::cargar() {
-    _depura("AlbaranClienteListSubform::cargar\n", 0);
+    _depura("AlbaranClienteListSubform::cargar", 0);
     QString SQLQuery = "SELECT * FROM albaran";
     cursor2 * cur= empresaBase()->cargacursor(SQLQuery);
     SubForm3::cargar(cur);
@@ -80,8 +80,6 @@ AlbaranClienteList::AlbaranClienteList(QWidget *parent, Qt::WFlags flags, edmode
         return;
     mdb_idalbaran = "";
     setSubForm(mui_list);
-    if (modoEdicion())
-        empresaBase()->meteWindow(windowTitle(), this);
     hideBusqueda();
     _depura("END AlbaranClienteList::AlbaranClienteList", 0);
 }

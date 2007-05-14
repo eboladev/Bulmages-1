@@ -36,9 +36,6 @@ public:
     SubForm2Bf *m_listalineas;
     SubForm2Bf *m_listadescuentos;
 
-    /// Puntero a la clase company para poder trabajar con la base de datos y hacer traspaso de mensajes.
-//    company *m_companyact();
-
 public:
     /// \TODO: A eliminar.
     company *getcompany();
@@ -62,7 +59,7 @@ public:
     virtual void calculaypintatotales();
     virtual void pintatotales(Fixed, Fixed, Fixed, Fixed, Fixed, Fixed) {};
     virtual int sacaWindow();
-virtual void meteWindow(QString nom, QObject *obj);
+    virtual void meteWindow(QString nom, QObject *obj);
     virtual int guardar();
     virtual int borrar();
 };

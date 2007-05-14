@@ -45,9 +45,9 @@
 ClienteView::ClienteView(company *comp, QWidget *parent)
         : Cliente(comp, parent) {
     _depura("ClienteView::ClienteView", 0);
+    setupUi(this);
     setAttribute(Qt::WA_DeleteOnClose);
     try {
-        setupUi(this);
         /// Disparamos los plugins.
         int res = g_plugins->lanza("ClienteView_ClienteView", this);
         if (res != 0) {
@@ -55,6 +55,7 @@ ClienteView::ClienteView(company *comp, QWidget *parent)
         } // end if
         m_provcliente->setcompany(empresaBase());
         m_provcliente->setProvincia("");
+
         /// Inicializamos las pantallas auxiliares a esta.
         m_listpresupuestos->setEmpresaBase(empresaBase());
         m_listpedidos->setEmpresaBase(empresaBase());

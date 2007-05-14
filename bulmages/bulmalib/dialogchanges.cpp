@@ -32,6 +32,7 @@ dialogChanges::dialogChanges(QObject *ob) {
     _depura("END dialogChanges::dialogChanges", 0);
 }
 
+dialogChanges::~dialogChanges() {}
 
 void dialogChanges::dialogChanges_cargaInicial() {
     _depura("dialogChanges::dialogChanges_cargaInicial", 0);
@@ -42,24 +43,29 @@ void dialogChanges::dialogChanges_cargaInicial() {
     QList<QTextEdit *> l1 = m_obje->findChildren<QTextEdit *>();
     QListIterator<QTextEdit *> it1 (l1);
     while (it1.hasNext()) {
-        m_listaQText[m_maxQText++] = it1.next();
+	QTextEdit *item = it1.next();
+	if (item->objectName() != "") 
+        	m_listaQText[m_maxQText++] = item;
     } // end while
 
     QList<QLineEdit *> l2 = m_obje->findChildren<QLineEdit *>();
     QListIterator<QLineEdit *> it2 (l2);
     while (it2.hasNext()) {
-        m_listaQLine[m_maxQLine++] = it2.next();
+	QLineEdit *item = it2.next();
+	if (item->objectName() != "")
+        	m_listaQLine[m_maxQLine++] = item;
     } // end while
 
     QList<QTableWidget *> l3 = m_obje->findChildren<QTableWidget *>();
-    QListIterator<QTableWidget *> it3 (l3);
+    QListIterator<QTableWidget *> it3(l3);
     while (it3.hasNext()) {
-        m_listaQTable[m_maxQTable++] = it3.next();
+	QTableWidget *item = it3.next();
+	if (item->objectName() != "")
+        	m_listaQTable[m_maxQTable++] = item;
     } // end while
 
     valorinicial = calculateValues();
-    _depura(valorinicial.toAscii(), 0);
-    _depura("END dialogChanges::dialogChanges_cargaInicial", 0);
+    _depura("END dialogChanges::dialogChanges_cargaInicial", 0, valorinicial.toAscii());
 }
 
 
@@ -86,14 +92,25 @@ QString dialogChanges::calculateValues() {
 QString dialogChanges::retrieveValues(QString qsWidget) {
     _depura("dialogChanges::retrieveValues", 0);
     QString values = "";
-    for (int i = 0; i < m_maxQLine; i++) {
-        if (m_listaQLine[i] != NULL)
-            values += ((QLineEdit*)m_listaQLine[i])->text();
-    } // end for
-    for (int i = 0; i < m_maxQText; i++) {
-        if (m_listaQText[i] != NULL)
-            values += ((QTextEdit*)m_listaQText[i])->toPlainText();
-    } // end for
+    if (qsWidget == "QLineEdit") {
+        for (int i = 0; i < m_maxQLine; i++) {
+            if (m_listaQLine[i] != NULL) {
+                if ( ((QLineEdit*)m_listaQLine[i])->objectName()!= "") {
+                 //_depura("QLineEdit " + QString::number(i) + ((QLineEdit*)m_listaQLine[i])->objectName(), 2, ((QLineEdit*)m_listaQLine[i])->text());
+                    values += ((QLineEdit*)m_listaQLine[i])->text();
+		} // end if
+            } // end if
+        } // end for
+    } // end if
+    if (qsWidget == "QTextEdit") {
+        for (int i = 0; i < m_maxQText; i++) {
+            if (m_listaQText[i] != NULL) {
+                if ( ((QTextEdit*)m_listaQText[i])->objectName() != "")
+                    //_depura("QTextEdit " + QString::number(i) + ((QTextEdit*)m_listaQText[i])->objectName(), 2, ((QTextEdit*)m_listaQText[i])->toPlainText());
+                    values += ((QTextEdit*)m_listaQText[i])->toPlainText();
+            } // end if
+        } // end for
+    } // end if
     if (qsWidget == "QTableWidget") {
         for (int i = 0; i < m_maxQTable; i++) {
             if (m_listaQTable[i] != NULL) {
@@ -105,6 +122,7 @@ QString dialogChanges::retrieveValues(QString qsWidget) {
             } // end if
         } // end for
     } // end if
+
     _depura("END dialogChanges::retrieveValues", 0);
     return values;
 }
