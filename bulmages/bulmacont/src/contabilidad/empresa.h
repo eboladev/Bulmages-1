@@ -46,8 +46,8 @@ class BalanceTreeView;
 class Asiento1View;
 class DiarioView;
 class BalanceView;
-class asientosview;
-class cuentaview;
+class AsientosView;
+class CuentaView;
 
 
 /// Soporte principal para cada empresa contable.
@@ -71,7 +71,7 @@ private:
     extractoview1 *extracto;
     BalanceView *balance;
     Asiento1View *introapunts2;
-    asientosview *m_listasientos;
+    AsientosView *m_listasientos;
     listcuentasview1 *m_listcuentas;
     unsigned int numdigitos; /// El n&uacute;mero de d&iacute;gitos que tienen las cuentas.
     /// Hay unos selectores generales, que van a ser estos y que indican con que se trabaja,
@@ -141,7 +141,7 @@ public:
     /// Gesti&oacute;n de cobros y pagos.
     int cobPag();
     virtual void s_asiento1();
-    cuentaview *newcuentaview();
+    CuentaView *newcuentaview();
 };
 
 #endif

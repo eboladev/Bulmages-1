@@ -46,14 +46,12 @@ FichaBf::~FichaBf() {
 
 company * FichaBf::getcompany() {
     _depura("FichaBf::getcompany", 0);
-    // return empresaBase();
     _depura("END FichaBf::getcompany", 0);
     return (company *) empresaBase();
 }
 
 company * FichaBf::empresaBase() {
     _depura("FichaBf::getcompany", 0);
-    // return empresaBase();
     _depura("END FichaBf::getcompany", 0);
     return (company *) Ficha::empresaBase();
 }

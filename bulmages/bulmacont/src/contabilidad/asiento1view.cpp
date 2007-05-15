@@ -51,7 +51,7 @@ Asiento1View::Asiento1View(empresa *emp, QWidget *parent, int)
     eventos_mui_ordenasiento *eventosOrdenAsiento = new eventos_mui_ordenasiento(this);
     mui_ordenasiento->installEventFilter(eventosOrdenAsiento);
 
-    mui_list->setcompany(emp);
+    mui_list->setEmpresaBase(emp);
     setListLinAsiento1(mui_list);
 
     /// Ocultamos los detalles del asiento.
@@ -60,7 +60,7 @@ Asiento1View::Asiento1View(empresa *emp, QWidget *parent, int)
     cargaasientos();
     /// Desplazamos hasta el último asiento.
     boton_fin();
-    m_companyact->meteWindow(windowTitle(), this);
+    empresaBase()->meteWindow(windowTitle(), this);
     _depura("END Asiento1View::Asiento1View", 0);
 }
 
@@ -69,7 +69,6 @@ Asiento1View::Asiento1View(empresa *emp, QWidget *parent, int)
 */
 Asiento1View::~Asiento1View() {
     _depura("Asiento1View::~Asiento1View", 0);
-    m_companyact->sacaWindow(this);
     _depura("END Asiento1View::~Asiento1View", 0);
 }
 
@@ -157,10 +156,10 @@ void Asiento1View::iniciar_asiento_nuevo(QString nuevoordenasiento) {
         QString idasiento, ordenasiento, query;
 	QString fecha = mui_fecha->text();
 	cursor2 *cur;
-	m_companyact->begin();
+	empresaBase()->begin();
         if (nuevoordenasiento == "") {
 		QString query = "SELECT MAX(ordenasiento)+1 AS orden FROM asiento WHERE EXTRACT(YEAR FROM fecha) = '" + fecha.left(10).right(4) + "'";
-   		cur = m_companyact->cargacursor(query);
+   		cur = empresaBase()->cargacursor(query);
                 ordenasiento = cur->valor("orden");
         	delete cur;
         } else {
@@ -169,14 +168,14 @@ void Asiento1View::iniciar_asiento_nuevo(QString nuevoordenasiento) {
 
         /// Creamos el asiento en la base de datos.
         query = "SELECT MAX(idasiento)+1 AS id FROM asiento";
-        cur = m_companyact->cargacursor(query);
+        cur = empresaBase()->cargacursor(query);
         if (!cur->eof())
             idasiento = cur->valor("id");
         delete cur;
-        //m_companyact->commit();
-        query = "INSERT INTO asiento (idasiento, fecha, ordenasiento) VALUES (" + idasiento + ", '" + m_companyact->sanearCadena(fecha) + "', " + ordenasiento + ")";
-        m_companyact->ejecuta(query);
-	m_companyact->commit();
+        //empresaBase()->commit();
+        query = "INSERT INTO asiento (idasiento, fecha, ordenasiento) VALUES (" + idasiento + ", '" + empresaBase()->sanearCadena(fecha) + "', " + ordenasiento + ")";
+        empresaBase()->ejecuta(query);
+	empresaBase()->commit();
 	/// FIN TRATAMIENTO DE BASE DE DATOS.
         cargaasientos();
         muestraasiento(idasiento.toInt());
@@ -186,7 +185,7 @@ void Asiento1View::iniciar_asiento_nuevo(QString nuevoordenasiento) {
         return;
     } catch (...) {
         mensajeInfo("Asiento no pudo crearse");
-        m_companyact->rollback();
+        empresaBase()->rollback();
     } // end try
 }
 
@@ -214,7 +213,7 @@ void Asiento1View::on_mui_fecha_editingFinished() {
     para que actualize los cambios. */
 void Asiento1View::on_mui_duplicar_clicked() {
     _depura("Asiento1View::on_mui_duplicar_clicked", 0);
-    DuplicarAsientoView *dupli = new DuplicarAsientoView(m_companyact, 0);
+    DuplicarAsientoView *dupli = new DuplicarAsientoView(empresaBase(), 0);
     /// Establecemos los par&aacute;metros para el nuevo asiento a duplicar.
     dupli->inicializa(mui_ordenasiento->text(), mui_ordenasiento->text());
     dupli->exec();
@@ -238,9 +237,9 @@ void Asiento1View::on_mui_inteligente_clicked() {
     } else {
         numasiento = 0;
     } // end if
-    aplinteligentesview *nueva = new aplinteligentesview(m_companyact, 0);
+    aplinteligentesview *nueva = new aplinteligentesview(empresaBase(), 0);
     nueva->inicializa(numasiento);
-    m_companyact->pWorkspace()->addWindow(nueva);
+    empresaBase()->pWorkspace()->addWindow(nueva);
     nueva->show();
     _depura("END Asiento1View::on_mui_inteligente_clicked", 0);
 }
@@ -254,7 +253,7 @@ void Asiento1View::boton_cargarasiento() {
     _depura("Asiento1View::boton_cargarasiento", 0);
     QString idas = "";
     QString query = "SELECT idasiento FROM asiento WHERE ordenasiento = " + mui_ordenasiento->text() + " ORDER BY ordenasiento DESC";
-    cursor2 *curs = m_companyact->cargacursor(query);
+    cursor2 *curs = empresaBase()->cargacursor(query);
     if (!curs->eof()) {
         idas = curs->valor("idasiento");
         cargar(idas);
@@ -397,7 +396,7 @@ void ListAsientos::cargaasientos() {
     } // end if
     /// Se ordenan los asientos por a&ntilde;o y por n&uacute;mero de orden.
     query = "SELECT * FROM asiento " + cadwhere + textsaldototal + textcantapunt + textnombreasiento + textejercicio + " ORDER BY EXTRACT (YEAR FROM fecha), ordenasiento";
-    cursorasientos = m_companyact->cargacursor(query);
+    cursorasientos = empresaBase()->cargacursor(query);
     if (cursorasientos->eof()) {
         _depura("No existe ningun asiento para mostrar.", 0);
     } // end if

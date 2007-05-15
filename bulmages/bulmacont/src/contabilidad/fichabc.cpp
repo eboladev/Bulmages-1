@@ -29,30 +29,18 @@ class Fixed;
 
 
 FichaBc::FichaBc(empresa *comp, QWidget *parent, Qt::WFlags f)
-        : Ficha(parent, f), DBRecord(comp) {
+        : Ficha(comp, parent, f), DBRecord(comp) {
     _depura("FichaBc::FichaBc", 0);
     m_listalineas = NULL;
-    m_companyact = comp;
     _depura("END FichaBc::FichaBc", 0);
 }
 
 
 FichaBc::~FichaBc() {
     _depura("FichaBc::~FichaBc", 0);
+    empresaBase()->sacaWindow(this);
     _depura("END FichaBc::~FichaBc", 0);
 }
-
-
-/** Saca la ventana del workSpace.
-    Este metodo es invocado desde la clase Ficha.
-*/
-int FichaBc::sacaWindow() {
-    _depura("FichaBc::sacaWindow", 0);
-    m_companyact->sacaWindow(this);
-    _depura("END FichaBc::sacaWindow", 0);
-    return 0;
-}
-
 
 void FichaBc::setListaLineas(SubForm2Bc * form) {
     _depura("FichaBc::setListaLineas", 0);
@@ -64,5 +52,11 @@ SubForm2Bc* FichaBc::listalineas() {
     _depura("FichaBc::listalineas", 0);
     _depura("END FichaBc::listalineas", 0);
     return m_listalineas;
+}
+
+empresa *FichaBc::empresaBase() {
+    _depura("FichaBc::empresaBase", 0);
+    _depura("END FichaBc::empresaBase", 0);
+    return (empresa *)PEmpresaBase::empresaBase();
 }
 

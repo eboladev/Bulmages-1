@@ -196,8 +196,9 @@ void aplinteligentesview::on_mui_comboainteligentes_activated(int) {
 /// Si la plantilla no existe el resultado es indefinido.
 void aplinteligentesview::muestraplantilla(QString plantilla) {
     _depura("aplinteligentesview::muestraplantilla", 0);
-    while (mui_comboainteligentes->currentText() != plantilla)
-        mui_comboainteligentes->setCurrentIndex(mui_comboainteligentes->currentIndex()+1);
+    int i = mui_comboainteligentes->findText(plantilla);
+    if (i >= 0)
+	mui_comboainteligentes->setCurrentIndex(i);
     mostrarplantilla();
     _depura("aplinteligentesview::muestraplantilla", 0);
 }

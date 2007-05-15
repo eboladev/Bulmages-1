@@ -70,6 +70,7 @@ public:
     virtual void cargar(QString query);
     virtual void setEmpresaBase(EmpresaBase *);
 
+
 public slots:
     virtual void contextMenuEvent(QContextMenuEvent *);
     virtual void on_mui_list_editFinished(int row, int col, int key);

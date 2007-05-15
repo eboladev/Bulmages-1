@@ -18,40 +18,17 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef SUBFORM2BC1_H
-#define SUBFORM2BC1_H
+#ifndef __SUBFORM2BC1_H
+#define __SUBFORM2BC1_H
 
-#include <QEvent>
 
 #include "subform3.h"
-#include "qdoublespinbox2.h"
+#include "blwidget.h"
 
 
-class SubForm2Bc;
+class QSubForm2BcDelegate;
+class empresa;
 
-
-/// Clase SubForm2BcDelegate
-/** Se encarga del control de los Widgets de Edicion del sistema.*/
-class QSubForm2BcDelegate : public QItemDelegate {
-private:
-    /// Clase padre y acceso a base de datos.
-    postgresiface2 *m_companyact;
-    SubForm2Bc *m_subform;
-
-public:
-    QSubForm2BcDelegate(QObject *);
-    ~QSubForm2BcDelegate();
-    void setEditorData(QWidget *, const QModelIndex &index) const;
-    void setModelData(QWidget *editor,  QAbstractItemModel *model, const QModelIndex &index) const;
-    QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const;
-    void setcompany(postgresiface2 *c);
-    postgresiface2 *companyact();
-    virtual bool eventFilter(QObject *obj, QEvent *event);
-};
-
-
-///
-/** */
 class SubForm2Bc : public SubForm3 {
     Q_OBJECT
 
@@ -68,12 +45,30 @@ public:
     virtual void boton_diario1(int);
     virtual void creaMenu(QMenu *);
     virtual void procesaMenu(QAction *);
-    virtual void setcompany(postgresiface2 *c);
+    virtual void setEmpresaBase(EmpresaBase *c);
+    empresa *empresaBase();
 
 public slots:
     virtual void on_mui_list_editFinished(int row, int col, int key);
     virtual void on_mui_list_pressedSlash(int row, int col);
     virtual void on_mui_list_pressedAsterisk(int row, int col);
+};
+
+
+/// Clase SubForm2BcDelegate
+/** Se encarga del control de los Widgets de Edicion del sistema.*/
+class QSubForm2BcDelegate : public QItemDelegate, public PEmpresaBase {
+private:
+    /// Clase padre y acceso a base de datos.
+    SubForm2Bc *m_subform;
+
+public:
+    QSubForm2BcDelegate(QObject *);
+    ~QSubForm2BcDelegate();
+    void setEditorData(QWidget *, const QModelIndex &index) const;
+    void setModelData(QWidget *editor,  QAbstractItemModel *model, const QModelIndex &index) const;
+    QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const;
+    virtual bool eventFilter(QObject *obj, QEvent *event);
 };
 
 #endif

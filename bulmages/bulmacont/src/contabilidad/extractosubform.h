@@ -28,7 +28,7 @@
 ///
 /** */
 class ExtractoSubForm : public SubForm2Bc {
-    Q_OBJECT
+Q_OBJECT
 
 public:
     ExtractoSubForm(QWidget *parent = 0, const char *name = 0);

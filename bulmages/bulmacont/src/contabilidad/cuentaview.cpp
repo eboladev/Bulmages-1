@@ -22,32 +22,30 @@
 #include "empresa.h"
 
 
-cuentaview::cuentaview(empresa *emp, QWidget *parent, Qt::WFlags fl)
-        : Ficha(parent, fl) {
-    _depura("cuentaview::cuentaview", 0);
+CuentaView::CuentaView(empresa *emp, QWidget *parent, Qt::WFlags fl)
+        : FichaBc(emp, parent, fl) {
+    _depura("CuentaView::CuentaView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     idcuenta = 0;
-    empresaactual = emp;
-    conexionbase = emp->bdempresa();
     numdigitos = emp->numdigitosempresa();
     inicializa();
     dialogChanges_cargaInicial();
-    empresaactual->meteWindow(windowTitle(), this);
-    _depura("END cuentaview::cuentaview", 0);
+    empresaBase()->meteWindow(windowTitle(), this);
+    _depura("END CuentaView::CuentaView", 0);
 }
 
 
 /// Saca el formulario, crea una cuenta y devuelve su identificador.
-void cuentaview::cuentanueva(QString cod) {
-    _depura("cuentaview::cuentanueva", 0);
+void CuentaView::cuentanueva(QString cod) {
+    _depura("CuentaView::cuentanueva", 0);
     codigo->setText(cod);
     /// Vamos a buscar el posible padre de una cuenta y lo pondremos como toca.
-    QString cpadre = conexionbase->searchParent(cod);
+    QString cpadre = empresaBase()->searchParent(cod);
     codigopadre->setText(cpadre);
     /// Tambi&eacute;n buscaremos el grupo y lo pondremos como toca.
     QString query = "SELECT * FROM cuenta WHERE codigo = '" + cpadre + "'";
-    cursor2 *cur = conexionbase->cargacursor(query);
+    cursor2 *cur = empresaBase()->cargacursor(query);
 
     /// Y tambi&eacute;n buscaremos los tipos y los usaremos.
     if (!cur->eof()) {
@@ -110,36 +108,35 @@ void cuentaview::cuentanueva(QString cod) {
         combogrupos->setCurrentIndex(i);
         delete cur;
     } // end if
-    _depura("END cuentaview::cuentanueva", 0);
+    _depura("END CuentaView::cuentanueva", 0);
 }
 
 
-cuentaview::~cuentaview() {
-    _depura("cuentaview::~cuentaview", 0);
-    empresaactual->sacaWindow(this);
-    _depura("cuentaview::~cuentaview", 0);
+CuentaView::~CuentaView() {
+    _depura("CuentaView::~CuentaView", 0);
+    _depura("CuentaView::~CuentaView", 0);
 }
 
 
-void cuentaview::on_mui_borrar_clicked() {
+void CuentaView::on_mui_borrar_clicked() {
     borrarCuenta();
 }
 
 
-void cuentaview::on_mui_guardar_clicked() {
+void CuentaView::on_mui_guardar_clicked() {
     guardarCuenta();
 }
 
 
-void cuentaview::on_mui_aceptar_clicked() {
+void CuentaView::on_mui_aceptar_clicked() {
     guardarCuenta();
     close();
 }
 
 
 /// Esta funci&oacute;n se activa cada vez que se pulsa una tecla sobre la cuenta.
-void cuentaview::cambiapadre(const QString &cadena) {
-    _depura("cuentaview::cambiapadre", 0);
+void CuentaView::cambiapadre(const QString &cadena) {
+    _depura("CuentaView::cambiapadre", 0);
     QString cad;
     cursor2 *cursoraux;
     cad = codigopadre->text();
@@ -148,9 +145,9 @@ void cuentaview::cambiapadre(const QString &cadena) {
         if (i != 0) {
             cad.replace(i, 1, "%");
         } // end if
-        conexionbase->begin();
-        cursoraux = conexionbase->cargacuenta(0, cad);
-        conexionbase->commit();
+        empresaBase()->begin();
+        cursoraux = empresaBase()->cargacuenta(0, cad);
+        empresaBase()->commit();
         if (!cursoraux->eof()) {
             codigopadre->setText(cursoraux->valor(1));
         } // end if
@@ -158,15 +155,15 @@ void cuentaview::cambiapadre(const QString &cadena) {
     } // end if
     /// Para quitar el warning.
     cadena.isNull();
-    _depura("END cuentaview::cambiapadre", 0);
+    _depura("END CuentaView::cambiapadre", 0);
 }
 
 
 /// Este es el SLOT que se activa al pulsar el bot&oacute;n ok del formulario.
 /** Lo que hace es recoger los datos del formulario y hacer una inserci&oacute;n
     o una modificaci&oacute;n de la tabla de cuentas. */
-void cuentaview::closeEvent(QCloseEvent *e) {
-    _depura("cuentaview::closeEvent", 0);
+void CuentaView::closeEvent(QCloseEvent *e) {
+    _depura("CuentaView::closeEvent", 0);
     if (dialogChanges_hayCambios()) {
         int val = QMessageBox::warning(this,
                                        tr("Guardar cuenta"),
@@ -181,19 +178,19 @@ void cuentaview::closeEvent(QCloseEvent *e) {
         if (val == 2)
             e->ignore();
     } // end if
-    _depura("END cuentaview::closeEvent", 0);
+    _depura("END CuentaView::closeEvent", 0);
 }
 
 
-int cuentaview::inicializa() {
-    _depura("cuentaview::inicializa", 0);
+int CuentaView::inicializa() {
+    _depura("CuentaView::inicializa", 0);
     cursor2 *cursorgrupos;
     for (int i = 0; i < 100; i++) {
         idgrupos[i] = -1;
     } // end for
-    conexionbase->begin();
-    cursorgrupos = conexionbase->cargagrupos();
-    conexionbase->commit();
+    empresaBase()->begin();
+    cursorgrupos = empresaBase()->cargagrupos();
+    empresaBase()->commit();
     while (!cursorgrupos->eof()) {
         combogrupos->addItem(cursorgrupos->valor("descripcion"));
         idgrupos[combogrupos->count() - 1] = cursorgrupos->valor("idgrupo").toInt();
@@ -201,24 +198,24 @@ int cuentaview::inicializa() {
     } // end while
     delete cursorgrupos;
     return 0;
-    _depura("END cuentaview::inicializa", 0);
+    _depura("END CuentaView::inicializa", 0);
 }
 
 
-int cuentaview::cargacuenta(int idcuenta1) {
-    _depura("cuentaview::cargacuenta", 0);
+int CuentaView::cargacuenta(int idcuenta1) {
+    _depura("CuentaView::cargacuenta", 0);
     QString cadena;
     int cpadre;
     cursor2 *cursorcuenta, *cursorpadre;
     idcuenta = idcuenta1;
-    conexionbase->begin();
-    cursorcuenta = conexionbase->cargacuenta(idcuenta1);
-    conexionbase->commit();
+    empresaBase()->begin();
+    cursorcuenta = empresaBase()->cargacuenta(idcuenta1);
+    empresaBase()->commit();
     codigo->setText(cursorcuenta->valor("codigo"));
 
     /// Cambiamos el t&iacute;tulo de la ventana con el c&oacute;digo.
     setWindowTitle(tr("Cuenta") + " " + codigo->text());
-    empresaactual->meteWindow(windowTitle(), this);
+    empresaBase()->meteWindow(windowTitle(), this);
 
     descripcion->setText(cursorcuenta->valor("descripcion"));
     debe->setText(cursorcuenta->valor("debe"));
@@ -280,9 +277,9 @@ int cuentaview::cargacuenta(int idcuenta1) {
     /// aparezca en el formulario.
     cpadre = atoi(cursorcuenta->valor(4).toAscii());
     if (cpadre != 0) {
-        conexionbase->begin();
-        cursorpadre = conexionbase->cargacuenta(cpadre);
-        conexionbase->commit();
+        empresaBase()->begin();
+        cursorpadre = empresaBase()->cargacuenta(cpadre);
+        empresaBase()->commit();
         cadena = cursorpadre->valor(1);
         codigopadre->setText(cadena);
         codigopadre->setReadOnly(TRUE);
@@ -304,19 +301,19 @@ int cuentaview::cargacuenta(int idcuenta1) {
     dialogChanges_cargaInicial();
 
     return 0;
-    _depura("END cuentaview::cargacuenta", 0);
+    _depura("END CuentaView::cargacuenta", 0);
 }
 
 
-int cuentaview::nuevacuenta(QString codpadre, int idgrupo) {
-    _depura("cuentaview::nuevacuenta", 0);
+int CuentaView::nuevacuenta(QString codpadre, int idgrupo) {
+    _depura("CuentaView::nuevacuenta", 0);
     /// Suponiendo que las cuentas son num&eacute;ricas, al crear una nueva cuenta
     /// buscamos entre las que ser&aacute;n sus hermanas y le asignamos el n&uacute;mero
     /// siguiente que le corresponda.
     QString cpadreaux;
     QString query;
     query.sprintf("SELECT * FROM cuenta WHERE padre = id_cuenta('%s') ORDER BY codigo DESC", codpadre.toAscii().constData());
-    cursor2 *cur = conexionbase->cargacursor(query);
+    cursor2 *cur = empresaBase()->cargacursor(query);
     if (!cur->eof()) {
         long int valor = cur->valor("codigo").toLong();
         valor ++;
@@ -361,22 +358,22 @@ int cuentaview::nuevacuenta(QString codpadre, int idgrupo) {
     if (idgrupos[i] == idgrupo)
         combogrupos->setCurrentIndex(i);
     return 0;
-    _depura("END cuentaview::nuevacuenta", 0);
+    _depura("END CuentaView::nuevacuenta", 0);
 }
 
 /// Esta funci&oacute;n se dispara cuando se ha pulsado
 /// return sobre el bot&oacute;n del c&oacute;digo.
-void cuentaview::codigo_ret() {
-    _depura("cuentaview::codigo_ret", 0);
+void CuentaView::codigo_ret() {
+    _depura("CuentaView::codigo_ret", 0);
     QString cod = codigo->text();
     cod = extiendecodigo(cod, numdigitos);
     codigo->setText(cod);
-    _depura("END cuentaview::codigo_ret", 0);
+    _depura("END CuentaView::codigo_ret", 0);
 }
 
 
-void cuentaview::guardarCuenta() {
-    _depura("cuentaview::guardarCuenta", 0);
+void CuentaView::guardarCuenta() {
+    _depura("CuentaView::guardarCuenta", 0);
     QString codigocuenta;
     int idpadre = 0;
     cursor2 *cursoraux;
@@ -384,9 +381,9 @@ void cuentaview::guardarCuenta() {
     /// calculamos el id correspondiente consultando en la base de datos.
     codigocuenta = codigopadre->text();
     if (codigocuenta != "") {
-        conexionbase->begin();
-        cursoraux = conexionbase->cargacuenta(0, codigocuenta);
-        conexionbase->commit();
+        empresaBase()->begin();
+        cursoraux = empresaBase()->cargacuenta(0, codigocuenta);
+        empresaBase()->commit();
         idpadre = atoi(cursoraux->valor("idcuenta").toAscii());
         delete cursoraux;
     } // end if
@@ -408,70 +405,70 @@ void cuentaview::guardarCuenta() {
     /// Si se trata de una modificaci&oacute;n modificamos y si se trata de
     /// una inserci&oacute;n insertamos :)
     if (idcuenta != 0) {
-        conexionbase->begin();
-        conexionbase->modificacuenta(idcuenta,
-                                     conexionbase->sanearCadena(descripcion->text()),
-                                     conexionbase->sanearCadena(codigo->text()),
+        empresaBase()->begin();
+        empresaBase()->modificacuenta(idcuenta,
+                                     empresaBase()->sanearCadena(descripcion->text()),
+                                     empresaBase()->sanearCadena(codigo->text()),
                                      imputacion->isChecked(),
                                      bloqueada->isChecked(),
                                      idgrupos[combogrupos->currentIndex()],
                                      TRUE,
-                                     conexionbase->sanearCadena(nombreent->text()),
-                                     conexionbase->sanearCadena(cif->text()),
-                                     conexionbase->sanearCadena(direccion->text()),
-                                     conexionbase->sanearCadena(cp->text()),
-                                     conexionbase->sanearCadena(telf->text()),
-                                     conexionbase->sanearCadena(coments->toPlainText()),
-                                     conexionbase->sanearCadena(banco->text()),
-                                     conexionbase->sanearCadena(email->text()),
-                                     conexionbase->sanearCadena(web->text()),
+                                     empresaBase()->sanearCadena(nombreent->text()),
+                                     empresaBase()->sanearCadena(cif->text()),
+                                     empresaBase()->sanearCadena(direccion->text()),
+                                     empresaBase()->sanearCadena(cp->text()),
+                                     empresaBase()->sanearCadena(telf->text()),
+                                     empresaBase()->sanearCadena(coments->toPlainText()),
+                                     empresaBase()->sanearCadena(banco->text()),
+                                     empresaBase()->sanearCadena(email->text()),
+                                     empresaBase()->sanearCadena(web->text()),
                                      tipocuenta,
                                      nodebe->isChecked(),
                                      nohaber->isChecked());
-        conexionbase->commit();
+        empresaBase()->commit();
     } else {
-        conexionbase->begin();
-        conexionbase->nuevacuenta(conexionbase->sanearCadena(descripcion->text()),
-                                  conexionbase->sanearCadena(codigo->text()),
+        empresaBase()->begin();
+        ((postgresiface2 *) empresaBase())->nuevacuenta(empresaBase()->sanearCadena(descripcion->text()),
+                                  empresaBase()->sanearCadena(codigo->text()),
                                   idpadre,
                                   idgrupos[combogrupos->currentIndex()],
-                                  conexionbase->sanearCadena(nombreent->text()),
-                                  conexionbase->sanearCadena(cif->text()),
-                                  conexionbase->sanearCadena(direccion->text()),
-                                  conexionbase->sanearCadena(cp->text()),
-                                  conexionbase->sanearCadena(telf->text()),
-                                  conexionbase->sanearCadena(coments->toPlainText()),
-                                  conexionbase->sanearCadena(banco->text()),
-                                  conexionbase->sanearCadena(email->text()),
-                                  conexionbase->sanearCadena(web->text()),
+                                  empresaBase()->sanearCadena(nombreent->text()),
+                                  empresaBase()->sanearCadena(cif->text()),
+                                  empresaBase()->sanearCadena(direccion->text()),
+                                  empresaBase()->sanearCadena(cp->text()),
+                                  empresaBase()->sanearCadena(telf->text()),
+                                  empresaBase()->sanearCadena(coments->toPlainText()),
+                                  empresaBase()->sanearCadena(banco->text()),
+                                  empresaBase()->sanearCadena(email->text()),
+                                  empresaBase()->sanearCadena(web->text()),
                                   tipocuenta,
                                   nodebe->isChecked(),
                                   nohaber->isChecked());
         QString query = "SELECT max(idcuenta) AS id from cuenta";
-        cursoraux = conexionbase->cargacursor(query, "maxidcuenta");
+        cursoraux = empresaBase()->cargacursor(query, "maxidcuenta");
         idcuenta = atoi(cursoraux->valor("id").toAscii());
-        conexionbase->commit();
+        empresaBase()->commit();
         delete cursoraux;
     } // end if
     /// Estamos probando la nueva forma de almacenar cambios.
     dialogChanges_cargaInicial();
-    _depura("END cuentaview::guardarCuenta", 0);
+    _depura("END CuentaView::guardarCuenta", 0);
 }
 
 
-void cuentaview::borrarCuenta() {
-    _depura("cuentaview::borrarCuenta", 0);
+void CuentaView::borrarCuenta() {
+    _depura("CuentaView::borrarCuenta", 0);
     switch (QMessageBox::warning(this,
                                  tr("Borrar cuenta"),
                                  tr("Se va a borrar la cuenta,\nEsto puede ocasionar perdida de datos\nTal vez deberia pensarselo mejor antes\nporque igual su trabajo se pierde."),
                                  QMessageBox::Ok, QMessageBox::Cancel)) {
     case QMessageBox::Ok: /// Retry clicked or Enter pressed.
-        conexionbase->ejecuta("DELETE FROM cuenta WHERE idcuenta = " + QString::number(idcuenta));
+        empresaBase()->ejecuta("DELETE FROM cuenta WHERE idcuenta = " + QString::number(idcuenta));
         close();
         break;
     case QMessageBox::Cancel: /// Abort clicked or Escape pressed.
         break;
     } // end switch
-    _depura("cuentaview::borrarCuenta", 0);
+    _depura("CuentaView::borrarCuenta", 0);
 }
 

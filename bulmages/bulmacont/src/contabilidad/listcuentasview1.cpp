@@ -270,7 +270,7 @@ void listcuentasview1::on_ListView1_itemDoubleClicked(QTreeWidgetItem *it, int) 
     mdb_idcuenta = it->text(cidcuenta);
     mdb_desccuenta = it->text(cdesccuenta);
     if (m_modo == EditMode) {
-        cuentaview *nuevae = new cuentaview(empresaactual, 0);
+        CuentaView *nuevae = new CuentaView(empresaactual, 0);
         nuevae->cargacuenta(atoi(idcuenta().toAscii()));
         inicializa();
         empresaactual->pWorkspace()->addWindow(nuevae);
@@ -299,7 +299,7 @@ void listcuentasview1::on_mui_crear_clicked()  {
     } // end if
 
     QTreeWidgetItem *it;
-    cuentaview *nuevae = new cuentaview(empresaactual, 0);
+    CuentaView *nuevae = new CuentaView(empresaactual, 0);
 
     it = ListView1->currentItem();
     if (it) {
@@ -332,7 +332,7 @@ void listcuentasview1::on_mui_editar_clicked()  {
     mdb_codcuenta = it->text(ccuenta);
     mdb_idcuenta = it->text(cidcuenta);
     mdb_desccuenta = it->text(cdesccuenta);
-    cuentaview *nuevae = new cuentaview(empresaactual, 0);
+    CuentaView *nuevae = new CuentaView(empresaactual, 0);
     nuevae->cargacuenta(atoi(idcuenta().toAscii()));
     empresaactual->pWorkspace()->addWindow(nuevae);
     nuevae->show();

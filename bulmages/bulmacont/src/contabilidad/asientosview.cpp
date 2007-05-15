@@ -29,59 +29,58 @@
 
 /// El constructor de la clase inicializa algunas estructuras y configura la visi&oacute;n
 /// de la pantalla.
-asientosview::asientosview(empresa *emp, QWidget *parent)
-        : Ficha(parent) {
-    _depura("asientosview::asientosview", 0);
+AsientosView::AsientosView(empresa *emp, QWidget *parent)
+        : FichaBc(emp, parent) {
+    _depura("AsientosView::AsientosView", 0);
     setupUi(this);
-    m_companyact = emp;
-    mui_list->setcompany(emp);
+    mui_list->setEmpresaBase(emp);
 
     rellenaListaEjercicio();
 
     mui_filtrar->toggle();
-    m_companyact->meteWindow(windowTitle(), this);
-    _depura("END asientosview::asientosview", 0);
+    empresaBase()->meteWindow(windowTitle(), this);
+    _depura("END AsientosView::AsientosView", 0);
 }
 
 
-void asientosview::rellenaListaEjercicio() {
-    _depura("asientosview::rellenaListaEjercicio", 0);
+void AsientosView::rellenaListaEjercicio() {
+    _depura("AsientosView::rellenaListaEjercicio", 0);
     /// Actualiza el contenido del combobox.
     mui_ejercicio->clear();
     mui_ejercicio->insertItem(0, tr("(todos)"));
     QString SQLQuery = "SELECT DISTINCT EXTRACT (YEAR FROM fecha) AS ano FROM borrador";
-    cursor2 *cur = m_companyact->cargacursor(SQLQuery);
+    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
     while (!cur->eof()) {
         mui_ejercicio->addItem(cur->valor("ano"));
         cur->siguienteregistro();
     } // end while
     delete cur;
-    _depura("END asientosview::rellenaListaEjercicio", 0);
+    _depura("END AsientosView::rellenaListaEjercicio", 0);
 }
 
 
-asientosview::~asientosview() {
-    _depura("asientosview::~asientosview\n", 0);
-    m_companyact->sacaWindow(this);
-    _depura("END asientosview::~asientosview\n", 0);
+AsientosView::~AsientosView() {
+    _depura("AsientosView::~AsientosView\n", 0);
+    empresaBase()->sacaWindow(this);
+    _depura("END AsientosView::~AsientosView\n", 0);
 }
 
 
-void asientosview::on_mui_list_cellDoubleClicked(int, int) {
-    _depura("asientosview::on_mui_list_cellDoubleClicked", 0);
+void AsientosView::on_mui_list_cellDoubleClicked(int, int) {
+    _depura("AsientosView::on_mui_list_cellDoubleClicked", 0);
     QString idasiento = mui_list->DBvalue("idasiento");
-    m_companyact->intapuntsempresa()->muestraasiento(idasiento);
-    m_companyact->intapuntsempresa()->show();
-    m_companyact->intapuntsempresa()->setFocus();
-    m_companyact->muestraapuntes1();
-    _depura("END asientosview::on_mui_list_cellDoubleClicked", 0);
+    empresaBase()->intapuntsempresa()->muestraasiento(idasiento);
+    empresaBase()->intapuntsempresa()->show();
+    empresaBase()->intapuntsempresa()->setFocus();
+    empresaBase()->muestraapuntes1();
+    _depura("END AsientosView::on_mui_list_cellDoubleClicked", 0);
 }
 
 
 /// Inicializa la ventana, haciendo la consulta pertinente a la base de datos
 /// y presentando los resultados en pantalla.
-void asientosview::inicializa() {
-    _depura("asientosview::inicializa", 0);
+void AsientosView::inicializa() {
+    _depura("AsientosView::inicializa", 0);
     QString saldototal = mui_saldoasiento->text();
     /// Pasamos el texto a minusculas para hacer la busqueda 'case insensitive'.
     QString nombreasiento = mui_nombreasiento->text().toLower();
@@ -217,7 +216,7 @@ void asientosview::inicializa() {
     } // end if
 
     query = "SELECT asiento.ordenasiento, asiento.idasiento, asiento.fecha, totaldebe, totalhaber, numap, numborr, comentariosasiento, clase FROM asiento LEFT JOIN (SELECT count(idborrador) AS numborr, idasiento FROM borrador GROUP BY idasiento) AS foo1 ON foo1.idasiento = asiento.idasiento LEFT JOIN (SELECT SUM(debe) AS totaldebe, SUM(haber) AS totalhaber, count(idapunte) AS numap, idasiento FROM apunte GROUP BY idasiento) AS fula ON asiento.idasiento = fula.idasiento " + cadwhere + textsaldototal + textapuntemayoroigual + textapuntemenoroigual + textoparentesis + textnombreasiento + textejercicio + " ORDER BY EXTRACT (YEAR FROM asiento.fecha), asiento.ordenasiento";
-    cursor2 *cursoraux = m_companyact->cargacursor(query);
+    cursor2 *cursoraux = empresaBase()->cargacursor(query);
     mui_list->cargar(cursoraux);
     delete cursoraux;
 
@@ -235,30 +234,30 @@ void asientosview::inicializa() {
     mui_totalDebe->setText(td.toQString());
     mui_totalHaber->setText(th.toQString());
 
-    _depura("END asientosview::inicializa", 0);
+    _depura("END AsientosView::inicializa", 0);
 }
 
 
-void asientosview::on_mui_imprimir_clicked() {
-    _depura("asientosview::on_mui_imprimir_clicked", 0);
+void AsientosView::on_mui_imprimir_clicked() {
+    _depura("AsientosView::on_mui_imprimir_clicked", 0);
     mui_list->imprimirPDF(tr("Asientos"));
-    _depura("END asientosview::on_mui_imprimir_clicked", 0);
+    _depura("END AsientosView::on_mui_imprimir_clicked", 0);
 }
 
 
-void asientosview::on_mui_configurar_toggled(bool checked) {
-    _depura("asientosview::on_mui_configurar_toggled", 0);
+void AsientosView::on_mui_configurar_toggled(bool checked) {
+    _depura("AsientosView::on_mui_configurar_toggled", 0);
     if (checked) {
         mui_list->showConfig();
     } else {
         mui_list->hideConfig();
     } // end if
-    _depura("END asientosview::on_mui_configurar_toggled", 0);
+    _depura("END AsientosView::on_mui_configurar_toggled", 0);
 }
 
 
-void asientosview::on_mui_actualizar_clicked() {
-    _depura("asientosview::on_mui_actualizar_clicked", 0);
+void AsientosView::on_mui_actualizar_clicked() {
+    _depura("AsientosView::on_mui_actualizar_clicked", 0);
     inicializa();
-    _depura("END asientosview::on_mui_actualizar_clicked", 0);
+    _depura("END AsientosView::on_mui_actualizar_clicked", 0);
 }

@@ -34,7 +34,6 @@
 
 Asiento1::Asiento1(empresa *comp, QWidget *parent) : FichaBc (comp, parent) {
     _depura("Asiento1::Asiento1", 0);
-    m_companyact = comp;
     setDBTableName("asiento");
     setDBCampoId("idasiento");
     addDBCampo("idasiento", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Asiento1", "Id asiento"));
@@ -107,10 +106,10 @@ void Asiento1::asiento_apertura() {
 void Asiento1::asiento_regularizacion(QString finicial, QString ffinal) {
     _depura("Asiento1::regularizacion", 0);
 	// Primero, cogemos los saldos de las cuentas usando la clase Arbol
-	m_companyact->begin();
+	empresaBase()->begin();
 	QString query = "SELECT *, nivel(codigo) AS nivel FROM cuenta ORDER BY codigo";
 	cursor2 *ramas;
-	ramas = m_companyact->cargacursor ( query, "Ramas" );
+	ramas = empresaBase()->cargacursor ( query, "Ramas" );
 	Arbol *arbol;
 	arbol = new Arbol;
 	while ( !ramas->eof() )
@@ -125,7 +124,7 @@ void Asiento1::asiento_regularizacion(QString finicial, QString ffinal) {
 	delete ramas;
 	query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = EXTRACT(year FROM timestamp '"+finicial+"') GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '"+finicial+"' AND fecha <= '"+ffinal+"' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '"+finicial+"' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta WHERE cuenta.codigo SIMILAR TO '6%|7%' ORDER BY codigo";
 	cursor2 *hojas;
-	hojas = m_companyact->cargacursor ( query, "Regularizacion" );
+	hojas = empresaBase()->cargacursor ( query, "Regularizacion" );
 	// Para cada cuenta con sus saldos calculados hay que actualizar hojas del &aacute;rbol.
 	while ( !hojas->eof() )
 	{
@@ -135,8 +134,8 @@ void Asiento1::asiento_regularizacion(QString finicial, QString ffinal) {
 
 	// Ahora, habrá que introducir apuntes en el nuevo asiento creado para tal fin
 	// Para ello, abrimos un asiento con fecha actual y le ponemos sus apuntes con ffinal para obtener los resultados del periodo
-	Asiento1View *introapunts2 = m_companyact->intapuntsempresa2();
-	m_companyact->commit();
+	Asiento1View *introapunts2 = empresaBase()->intapuntsempresa2();
+	empresaBase()->commit();
 	introapunts2->iniciar_asiento_nuevo(); // abrimos el asiento
 	QString idasiento = introapunts2->idasiento();
 	Fixed debe129 = Fixed("0.00");	// para acumular el debe que tendra la cuenta de regularizacion
@@ -192,13 +191,13 @@ void Asiento1::asiento_regularizacion(QString finicial, QString ffinal) {
 		}
 	}
 	// Buscamos la cuenta de regularizacion
-	m_companyact->begin();
+	empresaBase()->begin();
 	query = "select idcuenta, codigo from cuenta where padre in (select idcuenta from cuenta where codigo='129')";
 	cursor2 *regularizacion;
-	regularizacion = m_companyact->cargacursor ( query, "Regularizacion" );
+	regularizacion = empresaBase()->cargacursor ( query, "Regularizacion" );
 	QString idcuenta = regularizacion->valor("idcuenta");
 	QString codigo = regularizacion->valor("codigo");
-	m_companyact->commit();
+	empresaBase()->commit();
 
 	// Ahora, introducimos los dos ultimos apuntes de regularizacion
 	listalineas->nuevoRegistro();
@@ -261,30 +260,30 @@ int Asiento1::borrar(bool atendido) {
 			QMessageBox::Ok,
 			QMessageBox::Cancel)) {
 		case QMessageBox::Ok: /// Retry clicked or Enter pressed.
-		m_companyact->begin();
+		empresaBase()->begin();
 		listalineas->borrar();
-		error = m_companyact->ejecuta("DELETE FROM apunte WHERE idasiento = " + DBvalue("idasiento"));
-		error += m_companyact->ejecuta("DELETE FROM asiento WHERE idasiento = " + DBvalue("idasiento"));
+		error = empresaBase()->ejecuta("DELETE FROM apunte WHERE idasiento = " + DBvalue("idasiento"));
+		error += empresaBase()->ejecuta("DELETE FROM asiento WHERE idasiento = " + DBvalue("idasiento"));
 		if (error) {
-			m_companyact->rollback();
+			empresaBase()->rollback();
 			return -1;
 		} // end if
-		m_companyact->commit();
+		empresaBase()->commit();
 		vaciar();
 		return 3;
 		case QMessageBox::Cancel: /// Abort clicked or Escape pressed.
 		return 2;
 		} // end switch
 	} else {
-		m_companyact->begin();
+		empresaBase()->begin();
 		listalineas->borrar();
-		error = m_companyact->ejecuta("DELETE FROM apunte WHERE idasiento = " + DBvalue("idasiento"));
-		error += m_companyact->ejecuta("DELETE FROM asiento WHERE idasiento = " + DBvalue("idasiento"));
+		error = empresaBase()->ejecuta("DELETE FROM apunte WHERE idasiento = " + DBvalue("idasiento"));
+		error += empresaBase()->ejecuta("DELETE FROM asiento WHERE idasiento = " + DBvalue("idasiento"));
 		if (error) {
-			m_companyact->rollback();
+			empresaBase()->rollback();
 			return -1;
 		} // end if
-		m_companyact->commit();
+		empresaBase()->commit();
 		vaciar();
 		return 3;
 	} // end if
@@ -323,7 +322,7 @@ void Asiento1::pintar() {
 int Asiento1::cargar(QString idasiento) {
     _depura("Asiento1::cargar", 0, idasiento);
     QString query = "SELECT * FROM asiento WHERE idasiento = " + idasiento;
-    cursor2 *cur = m_companyact->cargacursor(query);
+    cursor2 *cur = empresaBase()->cargacursor(query);
     if (!cur->eof()) {
         DBload(cur);
     } // end if
@@ -355,7 +354,7 @@ void Asiento1::abrir() {
         _depura("No hay asiento");
         return;
     }
-    m_companyact->abreasiento(id.toInt());
+    empresaBase()->abreasiento(id.toInt());
     trataestadoAsiento1();
 }
 
@@ -374,7 +373,7 @@ void Asiento1::cerrar() {
         return;
     }
 
-    cursor2 *cur = m_companyact->cargacursor("SELECT cierraasiento(" + id + ")");
+    cursor2 *cur = empresaBase()->cargacursor("SELECT cierraasiento(" + id + ")");
     delete cur;
     vaciar();
     cargar(id);
@@ -388,12 +387,12 @@ Asiento1::estadoasiento Asiento1::estadoAsiento1() {
         return ASVacio;
 
     QString SQLQuery1 = "SELECT count(idapunte) AS cuenta1 FROM apunte WHERE idasiento = " + DBvalue("idasiento");
-    cursor2 *cur1 = m_companyact->cargacursor(SQLQuery1);
+    cursor2 *cur1 = empresaBase()->cargacursor(SQLQuery1);
     QString numap = cur1->valor("cuenta1");
     delete cur1;
 
     QString SQLQuery = "SELECT count(idborrador) AS cuenta FROM borrador WHERE idasiento = " + DBvalue("idasiento");
-    cursor2 *cur = m_companyact->cargacursor(SQLQuery);
+    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
     QString numborr = cur->valor("cuenta");
     delete cur;
 
@@ -412,12 +411,12 @@ Asiento1::estadoasiento Asiento1::estadoAsiento1() {
 int Asiento1::guardar() {
     _depura("Asiento1::guardar", 0);
     QString id;
-    m_companyact->begin();
+    empresaBase()->begin();
     try {
         DBsave(id);
         setidasiento(id);
         listalineas->guardar();
-        m_companyact->commit();
+        empresaBase()->commit();
         /// Disparamos los plugins
         int res = g_plugins->lanza("Asiento1_guardaAsiento1_post", this);
         if (res != 0)
@@ -425,12 +424,12 @@ int Asiento1::guardar() {
         _depura("END Asiento1::guardar",0);
 
         if (estadoAsiento1() == ASCerrado)
-            m_companyact->cierraasiento(id.toInt());
+            empresaBase()->cierraasiento(id.toInt());
         g_main->statusBar()->showMessage(tr("El asiento se ha guardado correctamente."), 2000);
         return 0;
     } catch (...) {
         _depura("Error guardando, se cancela la operacion", 1);
-        m_companyact->rollback();
+        empresaBase()->rollback();
         return -1;
     } // end try
 }
@@ -439,7 +438,7 @@ int Asiento1::guardar() {
 empresa *Asiento1::companyact() {
     _depura("Asiento1::companyact", 0);
     _depura("END Asiento1::companyact", 0);
-    return m_companyact;
+    return empresaBase();
 }
 
 

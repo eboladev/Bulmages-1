@@ -334,6 +334,8 @@ void SubForm2Bf::setEmpresaBase(EmpresaBase *c) {
     _depura("END SubForm2Bf::setcompany", 0);
 }
 
+
+
 void SubForm2Bf::setDelete(bool f) {
     _depura("SubForm2Bf::setDelete", 0);
         m_delete = f;

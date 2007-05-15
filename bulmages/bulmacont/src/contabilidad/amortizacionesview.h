@@ -30,7 +30,7 @@ class empresa;
 
 /** Trata la ventana de Listado de Amortizaciones.
 */
-class amortizacionesview : public FichaBc, public Ui_AmortizacionesBase {
+class AmortizacionesView : public FichaBc, public Ui_AmortizacionesBase {
     Q_OBJECT
 private:
 
@@ -40,8 +40,8 @@ private:
     QString mdb_nomamortizacion;
 
 public:
-   amortizacionesview(empresa *, QWidget *);
-    ~amortizacionesview();
+   AmortizacionesView(empresa *, QWidget *);
+    ~AmortizacionesView();
     void inicializatabla();
     void editAmortizacion(int);
 public slots:

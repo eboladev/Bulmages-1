@@ -33,7 +33,7 @@ propiedadesempresa::propiedadesempresa(empresa *emp, QWidget *parent)
     m_companyact = emp;
     inicializa();
 
-    mui_subform->setcompany(m_companyact);
+    mui_subform->setEmpresaBase(m_companyact);
     mui_subform->cargar();
     //mui_subform->setResizeMode(QHeaderView::Stretch);
 

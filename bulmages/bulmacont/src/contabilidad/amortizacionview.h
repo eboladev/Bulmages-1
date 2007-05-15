@@ -25,7 +25,7 @@
 #include "dialogchanges.h"
 #include "subform2bc.h"
 #include "dbrecord.h"
-#include "ficha.h"
+#include "fichabc.h"
 
 
 class empresa;
@@ -47,12 +47,11 @@ public:
 
 /// Clase que muestra la ventana de amortizaci&oacute;n.
 /** Formulario de introducci&oacute;n y/o visi&oacute;n de amortizaciones. */
-class AmortizacionView : public Ficha, Ui_AmortizacionBase, DBRecord {
+class AmortizacionView : public FichaBc, public Ui_AmortizacionBase {
     Q_OBJECT
 
 private:
-    /// Empresa con la que se trabaja.
-    empresa *m_companyact;
+
     /// Esta variable indica cual es el &iacute;ndice de la cuenta de activo de la
     /// amortizaci&oacute;n que estamos viendo. Si no se est&aacute; mostrando una
     /// cuenta este valor vale "".
@@ -73,8 +72,6 @@ public:
 
 public slots:
     virtual void on_mui_btcalcular_clicked();
-    virtual void contextMenuRequested(int, int, const QPoint &);
-    virtual void on_mui_guardar_clicked();
 };
 
 #endif

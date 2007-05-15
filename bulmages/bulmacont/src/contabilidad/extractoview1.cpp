@@ -49,7 +49,7 @@ extractoview1::extractoview1(empresa *emp, QWidget *parent, int) : Ficha(parent)
 {
     _depura("extractoview1::extractoview1", 0);
     setupUi(this);
-    mui_list->setcompany ( emp );
+    mui_list->setEmpresaBase( emp );
     m_companyact = emp;
 
     /// Iniciamos los componentes

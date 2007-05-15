@@ -24,7 +24,7 @@
 #include <QEvent>
 #include <QLocale>
 
-#include "subform3.h"
+
 #include "subform2bc.h"
 #include "funcaux.h"
 #include "empresa.h"
@@ -32,6 +32,7 @@
 #include "extractoview1.h"
 #include "balance1view.h"
 #include "qtexteditdelegate.h"
+#include "qdoublespinbox2.h"
 
 /// Incluimos las imagenes que catalogan los tipos de cuentas.
 #include "images/cactivo.xpm"
@@ -56,11 +57,18 @@ SubForm2Bc::~SubForm2Bc() {
 }
 
 
-void SubForm2Bc::setcompany(postgresiface2 *c) {
-    PEmpresaBase::setEmpresaBase((EmpresaBase *)c);
-    m_delegate->setcompany(c);
+void SubForm2Bc::setEmpresaBase(EmpresaBase *c) {
+    _depura("SubForm2Bc::setEmpresaBase", 0);
+    PEmpresaBase::setEmpresaBase(c);
+    m_delegate->setEmpresaBase(c);
+    _depura("END SubForm2Bc::setEmpresaBase", 0);
 }
 
+empresa *SubForm2Bc::empresaBase() {
+    _depura("SubForm2Bc::empresaBase", 0);
+    _depura("END SubForm2Bc::empresaBase", 0);
+    return (empresa *) PEmpresaBase::empresaBase();
+}
 
 void SubForm2Bc::on_mui_list_pressedAsterisk(int row, int col) {
     _depura ("SubForm2Bc::on_mui_list_pressedAsterisk", 0);
@@ -108,7 +116,8 @@ void SubForm2Bc::on_mui_list_pressedSlash(int row, int col) {
     if (camp->nomcampo() == "fecha")
         return;
     QString text = editaTexto(camp->text());
-    camp->set(text);
+    camp->set
+    (text);
     _depura("END SubForm2Bc::on_mui_list_pressedSlash", 0);
 }
 
@@ -303,7 +312,7 @@ void SubForm2Bc::procesaMenu(QAction *ac) {
 /// ===============================================================
 ///  Tratamientos del Item Delegate
 /// ===============================================================
-QSubForm2BcDelegate::QSubForm2BcDelegate(QObject *parent = 0) : QItemDelegate(parent) {
+QSubForm2BcDelegate::QSubForm2BcDelegate(QObject *parent = 0) : QItemDelegate(parent), PEmpresaBase() {
     _depura("QSubForm2BcDelegate::QSubForm2BcDelegate", 0);
     m_subform = (SubForm2Bc *) parent;
     installEventFilter(this);
@@ -359,10 +368,10 @@ void QSubForm2BcDelegate::setModelData(QWidget *editor, QAbstractItemModel *mode
         model->setData(index, textedit->toPlainText());
         return;
 
-// TODO: 04/05/07 Se quita esta linea porque hacia que los valores en la celda "haber" no apareciese
-//        con decimales. Ademas no se que es lo que tiene que hacer
-//
-//    } else if (linea->nomcampo() == "debe" || linea->nomcampo() == "haber" + m_subform->tableName()) {
+        // TODO: 04/05/07 Se quita esta linea porque hacia que los valores en la celda "haber" no apareciese
+        //        con decimales. Ademas no se que es lo que tiene que hacer
+        //
+        //    } else if (linea->nomcampo() == "debe" || linea->nomcampo() == "haber" + m_subform->tableName()) {
     } else if (linea->nomcampo() == "debe" || linea->nomcampo() == "haber") {
         QDoubleSpinBox2 *spinBox = static_cast<QDoubleSpinBox2*>(editor);
         spinBox->interpretText();
@@ -372,7 +381,7 @@ void QSubForm2BcDelegate::setModelData(QWidget *editor, QAbstractItemModel *mode
         BusquedaCuentaDelegate *comboBox = static_cast<BusquedaCuentaDelegate*>(editor);
         QString value = comboBox->currentText();
         value = value.left(value.indexOf(".-"));
-        QString codigoext = extiendecodigo(value, ((empresa *) m_companyact)->numdigitosempresa());
+        QString codigoext = extiendecodigo(value,  m_subform->empresaBase()->numdigitosempresa());
         model->setData(index, codigoext);
     } else {
         QItemDelegate::setModelData(editor, model, index);
@@ -440,13 +449,4 @@ bool QSubForm2BcDelegate::eventFilter(QObject *obj, QEvent *event) {
     return QItemDelegate::eventFilter(obj, event);
 }
 
-
-void QSubForm2BcDelegate::setcompany(postgresiface2 *c) {
-    m_companyact = c;
-}
-
-
-postgresiface2 *QSubForm2BcDelegate::companyact() {
-    return m_companyact;
-}
 

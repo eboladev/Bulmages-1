@@ -47,7 +47,7 @@ DiarioView::DiarioView(empresa *emp, QWidget *parent, int)
     _depura("DiarioView::DiarioView", 0);
     setupUi(this);
     m_companyact = emp;
-    mui_list->setcompany(emp);
+    mui_list->setEmpresaBase(emp);
     mui_contrapartida->setempresa(emp);
     /// Iniciamos los componentes de la fecha para que al principio aparezcan
     /// como el a&ntilde;o inicial.

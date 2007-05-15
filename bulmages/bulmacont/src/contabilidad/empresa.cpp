@@ -205,7 +205,7 @@ int empresa::inicializa1() {
 
     /// pb = 75%
     m_progressbar->setValue(75);
-    m_listasientos = new asientosview(this, 0);
+    m_listasientos = new AsientosView(this, 0);
     m_listasientos->inicializa();
     m_pWorkspace->addWindow(m_listasientos);
 
@@ -314,9 +314,9 @@ int empresa::cambioejercicio() {
 
 
 /// Crea la ventana de edici&oacute;n de cuentas y devuelve un puntero a esta.
-cuentaview* empresa::newcuentaview() {
+CuentaView* empresa::newcuentaview() {
     _depura("empresa::newcuentaview", 0);
-    cuentaview *nuevae = new cuentaview(this, 0);
+    CuentaView *nuevae = new CuentaView(this, 0);
     _depura("END empresa::newcuentaview", 0);
     return nuevae;
 }
@@ -324,7 +324,7 @@ cuentaview* empresa::newcuentaview() {
 
 int empresa::nuevacuenta() {
     _depura("empresa::nuevacuenta", 0);
-    cuentaview *nuevae = newcuentaview();
+    CuentaView *nuevae = newcuentaview();
     m_pWorkspace->addWindow(nuevae);
     nuevae->show();
     _depura("END empresa::nuevacuenta", 0);
@@ -360,7 +360,7 @@ int empresa::propiedadempresa() {
 
 int empresa::amortizaciones() {
     _depura("empresa::amortizaciones", 0);
-    amortizacionesview *amors = new amortizacionesview(this, 0);
+    AmortizacionesView *amors = new AmortizacionesView(this, 0);
     m_pWorkspace->addWindow(amors);
     amors->show();
     _depura("END empresa::amortizaciones", 0);

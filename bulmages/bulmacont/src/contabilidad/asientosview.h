@@ -23,7 +23,7 @@
 
 
 #include "ui_asientolistbase.h"
-#include "ficha.h"
+#include "fichabc.h"
 
 
 class empresa;
@@ -32,18 +32,15 @@ class empresa;
 /// Muestra un listado de todos los asientos existentes e informa de si est&aacute;n
 /// abiertos o cerrados.
 /** */
-class asientosview : public Ficha, public Ui_AsientoListBase {
+class AsientosView : public FichaBc, public Ui_AsientoListBase {
     Q_OBJECT
 
 private:
     void rellenaListaEjercicio();
 
 public:
-    empresa *m_companyact;
-
-public:
-    asientosview(empresa *emp, QWidget *parent = 0);
-    ~asientosview();
+    AsientosView(empresa *emp, QWidget *parent = 0);
+    ~AsientosView();
     void inicializa();
 
 public slots:

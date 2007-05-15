@@ -38,12 +38,11 @@ public:
     SubForm2Bc *m_listalineas;
     /// Puntero a la clase company para poder trabajar con la base de datos y hacer
     /// traspaso de mensajes.
-    empresa *m_companyact;
+    empresa *empresaBase();
     FichaBc(empresa *comp, QWidget *parent = 0, Qt::WFlags f = 0);
     virtual ~FichaBc();
     void setListaLineas(SubForm2Bc * form);
     SubForm2Bc* listalineas();
-    virtual int sacaWindow();
 };
 
 #endif

@@ -34,7 +34,7 @@
 #include "postgresiface2.h"
 #include "funcaux.h"
 #include "dialogchanges.h"
-#include "ficha.h"
+#include "fichabc.h"
 
 
 class empresa;
@@ -42,7 +42,7 @@ class empresa;
 
 /// Visualiza una cuenta.
 /** */
-class cuentaview : public Ficha, public Ui_CuentaBase {
+class CuentaView : public FichaBc, public Ui_CuentaBase {
     Q_OBJECT
 
 private:
@@ -50,17 +50,15 @@ private:
     void borrarCuenta();
 
 public:
-    empresa *empresaactual;
     int idcuenta;
     int idgrupos[100];
-    postgresiface2 *conexionbase;
     /// Esta variable indica el n&uacute;mero de d&iacute;gitos que tiene la
     /// contabilidad en sus cuentas.
     unsigned int numdigitos;
 
 public:
-    cuentaview(empresa *emp, QWidget *, Qt::WFlags fl = 0);
-    ~cuentaview();
+    CuentaView(empresa *emp, QWidget *, Qt::WFlags fl = 0);
+    ~CuentaView();
     int inicializa();
     int nuevacuenta(QString, int);
     void cuentanueva(QString);

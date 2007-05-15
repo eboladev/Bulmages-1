@@ -39,7 +39,6 @@ public:
 
 protected:
     ListLinAsiento1View *listalineas;
-    empresa *m_companyact;
 
 public:
     Asiento1(empresa *, QWidget *parent);

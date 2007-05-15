@@ -51,8 +51,8 @@ RegistroIvaView::RegistroIvaView(empresa *comp, QWidget *parent)
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
     m_contrapartida->setempresa(comp);
     setLineas( mui_listIva);
-    mui_listIva->setcompany(comp);
-    mui_listPrevCobro->setcompany(comp);
+    mui_listIva->setEmpresaBase(comp);
+    mui_listPrevCobro->setEmpresaBase(comp);
     /// Preparamos la lista de cobros y pagos.
     m_cursorFPago = NULL;
     cargarComboFPago("NULL");
