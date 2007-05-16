@@ -172,7 +172,7 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked() {
     delete cur;
 
 
-    SQLQuery = "SELECT * FROM facturap WHERE refacturap = '" + mui_referencia->text() + "'";
+    SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + mui_referencia->text() + "'";
     cur = empresaBase()->cargacursor(SQLQuery);
     while (!cur->eof()) {
         FacturaProveedorView *bud = ((company *)empresaBase())->newFacturaProveedorView();

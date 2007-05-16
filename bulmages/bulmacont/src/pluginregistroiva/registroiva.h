@@ -36,16 +36,12 @@
 class RegistroIva : public FichaBc {
 protected:
     SubForm2Bc *m_lineas;
-    empresa *m_companyact;
 
 public:
     void setLineas(SubForm2Bc *l) {
         m_lineas = l;
     };
     RegistroIva(empresa *, QWidget *);
-    empresa * _company() {
-        return m_companyact;
-    };
     QString idregistroiva() {
         return DBvalue("idregistroiva");
     };
@@ -206,6 +202,7 @@ public:
     virtual int borrar();
     virtual void calculaypintatotales() {}
     ;
+    virtual void recalculaIva() {_depura("no implementada", 2);};
     void vaciaRegistroIva();
     int buscaborradorservicio(int);
     int buscaborradorcliente(int);

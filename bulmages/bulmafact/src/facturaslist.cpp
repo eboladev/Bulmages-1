@@ -230,9 +230,9 @@ void FacturasList::setidarticulo(QString val) {
 }
 
 void FacturasList::crear() {
-        FacturaView *prov = ((company *)empresaBase())->newFacturaView();
-        empresaBase()->m_pWorkspace->addWindow(prov);
-        prov->show();
+	_depura("FacturasList::crear", 0);
+        ((company *)empresaBase())->s_newFacturaCli();
+	_depura("END FacturasList::crear", 0);
 }
 
 /// =============================================================================

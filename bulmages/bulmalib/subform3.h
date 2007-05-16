@@ -50,8 +50,6 @@ protected:
     QList<SDBRecord *> m_lista;
     /// Lista de subformularios marcados para ser borrados.
     QList<SDBRecord *> m_listaborrar;
-    /// Clase padre y acceso a base de datos.
-//    postgresiface2 *m_companyact;
     /// Fichero de configuracion del subformulario.
     QString m_fileconfig;
     /// Campo Identificador de la tabla en la BD.

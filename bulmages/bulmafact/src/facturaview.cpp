@@ -59,10 +59,13 @@ FacturaView::FacturaView(company *comp, QWidget *parent)
 
         subform2->setEmpresaBase(comp);
         m_almacen->setEmpresaBase(comp);
+	m_almacen->setidalmacen("");
         m_forma_pago->setEmpresaBase(comp);
+	m_forma_pago->setidforma_pago("");
         m_cliente->setEmpresaBase(comp);
         m_descuentos->setEmpresaBase(comp);
         m_codigoserie_factura->setEmpresaBase(comp);
+	m_codigoserie_factura->setcodigoserie_factura("");
         m_reffactura->setEmpresaBase(comp);
 
         /// Inicializamos FichaBf
@@ -101,6 +104,7 @@ void FacturaView::inicializar() {
     _depura("FacturaView::inicializar", 0);
     subform2->inicializar();
     m_descuentos->inicializar();
+    pintaFactura();
     dialogChanges_cargaInicial();
     _depura("END FacturaView::inicializar", 0);
 }

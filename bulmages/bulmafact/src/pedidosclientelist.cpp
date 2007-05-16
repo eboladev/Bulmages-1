@@ -120,6 +120,7 @@ void PedidosClienteList::crear() {
     _depura("PedidosClienteList:crear", 0);
     PedidoClienteView *prov = new PedidoClienteView((company *)empresaBase(), 0);
     empresaBase()->m_pWorkspace->addWindow(prov);
+    prov->inicializar();
     prov->show();
     _depura("END PedidosClienteList:crear", 0);
 }

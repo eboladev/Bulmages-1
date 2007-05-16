@@ -93,7 +93,7 @@ RegistroIvaView::RegistroIvaView(empresa *comp, QWidget *parent)
     mui_listPrevCobro->addSHeader("tipocuenta", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone, tr("tipocuenta"));
 
     mui_listPrevCobro->setinsercion(TRUE);
-    m_companyact->meteWindow(windowTitle(), this);
+    empresaBase()->meteWindow(windowTitle(), this);
     g_plugins->lanza("RegistroIvaView_RegistroIvaView_Post", this);
     _depura("Fin de la inicializacion de RegistroIvaView", 0);
 }
@@ -101,7 +101,6 @@ RegistroIvaView::RegistroIvaView(empresa *comp, QWidget *parent)
 
 RegistroIvaView::~RegistroIvaView() {
     _depura("RegistroIvaView::~RegistroIvaView", 0);
-    m_companyact->sacaWindow(this);
     _depura("END RegistroIvaView::~RegistroIvaView", 0);
 }
 
@@ -117,7 +116,7 @@ void RegistroIvaView::cargarComboFPago(QString idfpago) {
     _depura("RegistroIvaView::cargarComboFPago", 0);
     if (m_cursorFPago != NULL)
         delete m_cursorFPago;
-    m_cursorFPago = m_companyact->cargacursor("SELECT * FROM fpago");
+    m_cursorFPago = empresaBase()->cargacursor("SELECT * FROM fpago");
     int i = 0;
     int i1 = 0;
     while (!m_cursorFPago->eof()) {
@@ -134,7 +133,7 @@ void RegistroIvaView::cargarComboFPago(QString idfpago) {
     _depura("RegistroIvaView::cargarComboFPago", 0);
 }
 
-
+/*
 void RegistroIvaView::on_mui_borrar_clicked() {
     _depura("RegistroIvaView::on_mui_borrar_clicked",0);
     if (QMessageBox::warning(this,
@@ -147,7 +146,7 @@ void RegistroIvaView::on_mui_borrar_clicked() {
     } // end if
     _depura("END RegistroIvaView::on_mui_borrar_clicked", 0);
 }
-
+*/
 
 int RegistroIvaView::cargar(QString id) {
     int error = 0;
@@ -168,10 +167,10 @@ int RegistroIvaView::cargar(QString id) {
 }
 
 
-void RegistroIvaView::on_mui_guardar_clicked() {
-    _depura("RegistroIvaView::on_mui_guardar_clicked", 0);
+int RegistroIvaView::guardar() {
+    _depura("RegistroIvaView::guardar", 0);
     try {
-        m_companyact->begin();
+        empresaBase()->begin();
         setcontrapartida(m_contrapartida->idcuenta());
         setbaseimp(m_baseImponible->text());
         setiva(m_importeiva->text());
@@ -187,16 +186,15 @@ void RegistroIvaView::on_mui_guardar_clicked() {
         mui_listIva->setColumnValue("idregistroiva", DBvalue("idregistroiva"));
         mui_listIva->guardar();
         mui_listPrevCobro->setColumnValue("idregistroiva", DBvalue("idregistroiva"));
-        _depura("guardamos las previsiones de cobro", 2);
         mui_listPrevCobro->guardar();
-        _depura("fin del guardado", 2);
-        m_companyact->commit();
+        empresaBase()->commit();
         dialogChanges_cargaInicial();
     } catch (...) {
         mensajeInfo("Error al guardar el Registro de IVA");
-        m_companyact->rollback();
+        empresaBase()->rollback();
     } // end try
-    _depura("END RegistroIvaView::guardaRegistroIva", 3);
+    _depura("END RegistroIvaView::guardar");
+    return 0;
 }
 
 

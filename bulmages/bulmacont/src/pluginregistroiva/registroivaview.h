@@ -46,7 +46,7 @@ private:
 
 public:
     RegistroIvaView(empresa *, QWidget *);
-    ~RegistroIvaView();
+    virtual ~RegistroIvaView();
     void manageArticle(int);
     virtual void pintaidregistroiva(const QString &) {}
     ;
@@ -95,7 +95,7 @@ public:
         if (val == "t" || val == "TRUE")
             m_factEmitida->setChecked(TRUE);
         else
-            m_factSoportada->setChecked(FALSE);
+            m_factSoportada->setChecked(TRUE);
     };
 virtual void pintarectificaaregistroiva(const QString &) {}
     ;
@@ -106,27 +106,31 @@ virtual void pintarectificaaregistroiva(const QString &) {}
             m_incregistroIVA->setChecked(FALSE);
     };
 
-private:
-    void generarPedidoCliente();
-    void cargarComboFPago(QString);
-
-public slots:
-    virtual void on_mui_guardar_clicked();
-    virtual int borrar() {
-        return RegistroIva::borrar();
-    };
-    virtual int cargar(QString id);
-    virtual void on_mui_borrar_clicked();
-    virtual void on_mui_generarPrevisiones_clicked();
-    /// Este slot se activa cuando hay cambios en los subformularios.
-    virtual void s_listIvaChanged() {
-        _depura("s_listIvaChanged", 0);
+    virtual void recalculaIva() {
         Fixed base = mui_listIva->sumarCampo("baseiva");
         Fixed iva = mui_listIva->sumarCampo("ivaiva");
         setbaseimp(base.toQString());
         setiva(iva.toQString());
         pintabaseimp(base.toQString());
         pintaiva(iva.toQString());
+    };
+    virtual int guardar();
+    int cargar(QString id);
+    virtual int borrar() {
+        return RegistroIva::borrar();
+    };
+
+private:
+    void generarPedidoCliente();
+    void cargarComboFPago(QString);
+
+public slots:
+    virtual void on_mui_generarPrevisiones_clicked();
+    /// Este slot se activa cuando hay cambios en los subformularios.
+    virtual void on_mui_listIva_editFinish(int, int) {
+        _depura("RegistroIvaView::on_mui_listIva_editFinish", 0);
+	recalculaIva();
+        _depura("END RegistroIvaView::on_mui_listIva_editFinish", 0);
     };
 };
 

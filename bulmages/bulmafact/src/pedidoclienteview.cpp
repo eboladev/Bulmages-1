@@ -56,9 +56,12 @@ PedidoClienteView::PedidoClienteView(company *comp, QWidget *parent)
         subform3->setEmpresaBase(comp);
         m_cliente->setEmpresaBase(comp);
         m_forma_pago->setEmpresaBase(comp);
+	m_forma_pago->setidforma_pago("");
         m_descuentos->setEmpresaBase(comp);
         m_almacen->setEmpresaBase(comp);
+	m_almacen->setidalmacen("");
         m_trabajador->setEmpresaBase(comp);
+	m_trabajador->setidtrabajador("");
         m_refpedidocliente->setEmpresaBase(comp);
         setListaLineas(subform3);
         setListaDescuentos(m_descuentos);
@@ -81,6 +84,7 @@ void PedidoClienteView::inicializar() {
     _depura("PedidoClienteView::inicializar", 0);
     subform3->inicializar();
     m_descuentos->inicializar();
+    pintar();
     dialogChanges_cargaInicial();
     _depura("END PedidoClienteView::inicializar", 0);
 }
