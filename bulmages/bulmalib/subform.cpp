@@ -113,12 +113,7 @@ int SDBCampo::set(QString val) {
             setCheckState(Qt::Unchecked);
         } // end if
     } else if (tipo() == DBCampo::DBnumeric && importe.exactMatch(val)) {
-        setText(val.replace(".",","));
-        /// Esta solucion no funciona bien, falla con cantidades superiores a 999
-        /*QLocale::setDefault(QLocale(QLocale::Spanish, QLocale::Spain));
-        QLocale spanish;
-        setText(spanish.toString(val.toDouble(), 'f', 2));
-        */
+	setText(val);
     } else if (tipo() == DBCampo::DBdate) {
         setText(val.left(10));
     } else {

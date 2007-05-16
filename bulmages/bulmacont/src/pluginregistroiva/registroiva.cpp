@@ -31,7 +31,7 @@
 typedef QMap<QString, Fixed> base;
 
 
-RegistroIva::RegistroIva(empresa *comp) : DBRecord(comp) {
+RegistroIva::RegistroIva(empresa *comp, QWidget *parent) : FichaBc(comp, parent) {
     _depura("RegistroIva::RegistroIva", 0);
     m_companyact = comp;
     setDBTableName("registroiva");
@@ -169,6 +169,7 @@ int RegistroIva::buscaborradorservicio(int idborrador) {
         SQLQuery.sprintf("DELETE FROM lacosa WHERE idborrador NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d) AND contrapartida NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d)", idborrador, idborrador, idborrador, idborrador);
         error = m_companyact->ejecuta(SQLQuery);
         if (error) {
+	    _depura("Error en la creacion del temporary table", 2);
             m_companyact->rollback();
             return -1;
         } // end if
@@ -246,6 +247,7 @@ int RegistroIva::buscaborradorcliente(int idborrador) {
         m_companyact->begin();
         SQLQuery.sprintf("CREATE TEMPORARY TABLE lacosa AS SELECT idborrador, bcontrapartidaborr(idborrador) AS contrapartida , cuenta.cifent_cuenta, cuenta.idcuenta AS idcuenta, codigo, borrador.debe AS debe, borrador.haber AS haber, borrador.debe+borrador.haber AS totalfactura FROM borrador LEFT JOIN cuenta ON borrador.idcuenta=cuenta.idcuenta where borrador.idasiento IN (SELECT idasiento FROM borrador WHERE idborrador = %d)", idborrador);
         int error = m_companyact->ejecuta(SQLQuery);
+
         SQLQuery.sprintf("DELETE FROM lacosa WHERE idborrador NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d) AND contrapartida NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d)", idborrador, idborrador, idborrador, idborrador);
         error = m_companyact->ejecuta(SQLQuery);
         /// Cogemos de la configuracion las cuentas que queremos que se apunten.
@@ -348,15 +350,25 @@ void RegistroIva::inicializa1(int idapunte1) {
   */
 int RegistroIva::buscaborradoriva(int idborrador) {
     _depura("RegistroIva::buscaborradoriva", 0);
+    int error = 0;
     try {
         m_companyact->begin();
         QString SQLQuery;
-        SQLQuery.sprintf("CREATE TEMPORARY TABLE lacosa AS SELECT borrador.debe AS ivadebe, borrador.haber AS ivahaber, idborrador, bcontrapartidaborr(idborrador) AS contrapartida , cuenta.idcuenta AS idcuenta, codigo, borrador.fecha AS fecha  FROM borrador, cuenta WHERE borrador.idcuenta=cuenta.idcuenta AND borrador.idasiento IN (SELECT idasiento FROM borrador WHERE idborrador = %d)", idborrador);
-        int error = m_companyact->ejecuta(SQLQuery);
+        SQLQuery.sprintf("CREATE TABLE lacosa AS SELECT borrador.debe AS ivadebe, borrador.haber AS ivahaber, idborrador, bcontrapartidaborr(idborrador) AS contrapartida , cuenta.idcuenta AS idcuenta, codigo, borrador.fecha AS fecha  FROM borrador, cuenta WHERE borrador.idcuenta=cuenta.idcuenta AND borrador.idasiento IN (SELECT idasiento FROM borrador WHERE idborrador = %d)", idborrador);
+        error = m_companyact->ejecuta(SQLQuery);
+	if (error) {
+		_depura("error en la base de datos", 2);
+		_depura(SQLQuery, 2);
+	} // end if
+
         SQLQuery.sprintf("DELETE FROM lacosa WHERE idborrador NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d) AND contrapartida NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d)", idborrador, idborrador, idborrador, idborrador);
         error = m_companyact->ejecuta(SQLQuery);
+	if (error) {
+		_depura("error en la base de datos", 2);
+		_depura(SQLQuery, 2);
+	} // end if
         /// Cargamos los registros que quedan porque seguro que son de IVA.
-        SQLQuery = "SELECT *, max(debe, haber) AS ivaiva, max (ivadebe, ivahaber) AS baseiva FROM tipoiva LEFT JOIN lacosa ON tipoiva.idcuenta=lacosa.idcuenta LEFT JOIN (SELECT idcuenta, contrapartida, IVAdebe AS debe, IVAhaber AS haber FROM lacosa) AS base ON (base.debe * porcentajetipoiva / 100)::NUMERIC(12, 1)=lacosa.ivadebe::NUMERIC(12,1) AND (base.haber * porcentajetipoiva / 100)::NUMERIC(12,2) = lacosa.ivahaber::NUMERIC(12,1) ORDER BY codigo";
+        SQLQuery = "SELECT *, GREATEST(debe, haber) AS ivaiva, GREATEST (ivadebe, ivahaber) AS baseiva FROM tipoiva LEFT JOIN lacosa ON tipoiva.idcuenta=lacosa.idcuenta LEFT JOIN (SELECT idcuenta, contrapartida, IVAdebe AS debe, IVAhaber AS haber FROM lacosa) AS base ON (base.debe * porcentajetipoiva / 100)::NUMERIC(12, 1)=lacosa.ivadebe::NUMERIC(12,1) AND (base.haber * porcentajetipoiva / 100)::NUMERIC(12,2) = lacosa.ivahaber::NUMERIC(12,1) ORDER BY codigo";
         cursor2 *cur = m_companyact->cargacursor(SQLQuery);
         _depura("cargamos el iva", 3);
         m_lineas->cargar(cur);

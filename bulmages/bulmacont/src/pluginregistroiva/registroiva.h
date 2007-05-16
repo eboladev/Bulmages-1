@@ -28,12 +28,12 @@
 #include "listiva.h"
 #include "listlinprevcobro.h"
 #include "empresa.h"
-#include "dbrecord.h"
+#include "fichabc.h"
 
 
 /// Clase que hace de intermediaria entre la tabla de presupuesto de la base de datos y
 /// el programa.
-class RegistroIva : public DBRecord {
+class RegistroIva : public FichaBc {
 protected:
     SubForm2Bc *m_lineas;
     empresa *m_companyact;
@@ -42,7 +42,7 @@ public:
     void setLineas(SubForm2Bc *l) {
         m_lineas = l;
     };
-    RegistroIva(empresa *);
+    RegistroIva(empresa *, QWidget *);
     empresa * _company() {
         return m_companyact;
     };

@@ -115,7 +115,9 @@ void SubForm2Bf::on_mui_list_pressedMinus(int row, int col) {
 
 void SubForm2Bf::on_mui_list_editFinished(int row, int col, int key) {
     _depura("SubForm2Bf::on_mui_list_editFinished", 0);
-
+    cursor2 *cur2 = NULL;
+    cursor2 *cur = NULL;
+    cursor2 *cur1 = NULL;
 
     /// Disparamos los plugins.
     int res = g_plugins->lanza("SubForm2Bf_on_mui_list_editFinished", this);
@@ -133,14 +135,14 @@ void SubForm2Bf::on_mui_list_editFinished(int row, int col, int key) {
     } // end if
 
     if (camp->nomcampo() == "desctipo_iva") {
-        cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM tipo_iva WHERE desctipo_iva = '"+camp->text()+"'");
+        cur = empresaBase()->cargacursor("SELECT * FROM tipo_iva WHERE desctipo_iva = '"+camp->text()+"'");
         if (!cur->eof()) {
             rec->setDBvalue("idtipo_iva", cur->valor("idtipo_iva"));
         } // end if
     } // end if
 
     if (camp->nomcampo() == "codigocompletoarticulo") {
-        cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM articulo WHERE codigocompletoarticulo = '" + camp->text() + "'");
+        cur = empresaBase()->cargacursor("SELECT * FROM articulo WHERE codigocompletoarticulo = '" + camp->text() + "'");
         if (!cur->eof()) {
             rec->setDBvalue("idarticulo", cur->valor("idarticulo"));
             rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
@@ -157,8 +159,14 @@ void SubForm2Bf::on_mui_list_editFinished(int row, int col, int key) {
                 rec->setDBvalue("descuento"+m_tablename, "0.00");
                 rec->setDBvalue("pvp"+m_tablename, cur->valor("pvparticulo"));
             } // end if
+	} else {
+		mensajeAviso(tr("Articulo inexistente"));
+		delete cur;
+		return;
         } // end if
-        cursor2 *cur1 = empresaBase()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor("idtipo_iva") + " ORDER BY fechatasa_iva LIMIT 1");
+
+
+        cur1 = empresaBase()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor("idtipo_iva") + " ORDER BY fechatasa_iva LIMIT 1");
         if (!cur->eof() ) {
             if(m_tablename == "lpresupuesto"
                     || m_tablename == "lpedidocliente"
@@ -168,31 +176,41 @@ void SubForm2Bf::on_mui_list_editFinished(int row, int col, int key) {
                     || m_tablename == "lalbaran"
                     || m_tablename == "lfactura") {
                 rec->setDBvalue("iva"+m_tablename, cur1->valor("porcentasa_iva"));
-                /// Calculamos el recargo equivalente.
-                cursor2 *cur2 = empresaBase()->cargacursor("SELECT recargoeqcliente FROM cliente WHERE idcliente="+mdb_idcliente);
-                if (!cur2->eof()) {
-                    if (cur2->valor("recargoeqcliente") == "t") {
-                        rec->setDBvalue("reqeq"+m_tablename, cur1->valor("porcentretasa_iva"));
-                    } else {
-                        rec->setDBvalue("reqeq"+m_tablename, "0");
-                    } // end if
-                } // end if
-                delete cur2;
 
-                cur2 = empresaBase()->cargacursor("SELECT recargoeqproveedor FROM proveedor WHERE idproveedor="+mdb_idproveedor);
-                if (!cur2->eof()) {
-                    if (cur2->valor("recargoeqproveedor") == "t") {
-                        rec->setDBvalue("reqeq"+m_tablename, cur1->valor("porcentretasa_iva"));
-                    } else {
-                        rec->setDBvalue("reqeq"+m_tablename, "0");
+
+                /// Calculamos el recargo equivalente.
+                if (mdb_idcliente != "") {
+                    cur2 = empresaBase()->cargacursor("SELECT recargoeqcliente FROM cliente WHERE idcliente="+mdb_idcliente);
+                    if (!cur2->eof()) {
+                        if (cur2->valor("recargoeqcliente") == "t") {
+                            rec->setDBvalue("reqeq"+m_tablename, cur1->valor("porcentretasa_iva"));
+                        } // end if
                     } // end if
+                    delete cur2;
+                } else {
+                    rec->setDBvalue("reqeq"+m_tablename, "0");
                 } // end if
-                delete cur2;
+
+
+
+                if (mdb_idproveedor != "") {
+                    cur2 = empresaBase()->cargacursor("SELECT recargoeqproveedor FROM proveedor WHERE idproveedor="+mdb_idproveedor);
+                    if (!cur2->eof()) {
+                        if (cur2->valor("recargoeqproveedor") == "t") {
+                            rec->setDBvalue("reqeq"+m_tablename, cur1->valor("porcentretasa_iva"));
+                        } // end if
+                    } // end if
+                    delete cur2;
+                } else {
+                    rec->setDBvalue("reqeq"+m_tablename, "0");
+                } // end if
 
             } // end if
         } // end if
-        delete cur1;
-        delete cur;
+        if (cur1 != NULL)
+            delete cur1;
+        if (cur != NULL)
+            delete cur;
     } // end if
 
     SubForm3::on_mui_list_editFinished(row, col, key);
@@ -295,6 +313,9 @@ void SubForm2Bf::setIdProveedor(QString id) {
     _depura("SubForm2Bf::setIdProveedor", 0, id);
     mdb_idproveedor = id;
 
+    if (mdb_idproveedor == "") 
+	return;
+
     /// Reseteamos los valores
     for (int i = 0; i < rowCount() - 1; i++) {
         SDBRecord *rec = lineaat(i);
@@ -329,8 +350,8 @@ void SubForm2Bf::setIdProveedor(QString id) {
 
 void SubForm2Bf::setEmpresaBase(EmpresaBase *c) {
     _depura("SubForm2Bf::setcompany", 0);
-        SubForm3::setEmpresaBase(c);
-        m_delegate->setEmpresaBase(c);
+    SubForm3::setEmpresaBase(c);
+    m_delegate->setEmpresaBase(c);
     _depura("END SubForm2Bf::setcompany", 0);
 }
 
@@ -338,7 +359,7 @@ void SubForm2Bf::setEmpresaBase(EmpresaBase *c) {
 
 void SubForm2Bf::setDelete(bool f) {
     _depura("SubForm2Bf::setDelete", 0);
-        m_delete = f;
+    m_delete = f;
     _depura("END SubForm2Bf::setDelete", 0);
 }
 
@@ -371,17 +392,17 @@ QWidget *QSubForm2BfDelegate::createEditor(QWidget *parent, const QStyleOptionVi
         QTextEditDelegate *editor = new QTextEditDelegate(parent);
         editor->setObjectName("QTextEditDelegate");
         return editor;
-/*
-    } else if (linea->nomcampo() == "cant" + m_subform->tableName()
-               || linea->nomcampo() == "pvp" + m_subform->tableName()
-               || linea->nomcampo() == "descuento" + m_subform->tableName()
-               || linea->nomcampo() == "iva" + m_subform->tableName()) {
-
-        QDoubleSpinBox *editor = new QDoubleSpinBox(parent);
-        editor->setMinimum(-1000000);
-        editor->setMaximum(1000000);
-        return editor;
-*/
+        /*
+            } else if (linea->nomcampo() == "cant" + m_subform->tableName()
+                       || linea->nomcampo() == "pvp" + m_subform->tableName()
+                       || linea->nomcampo() == "descuento" + m_subform->tableName()
+                       || linea->nomcampo() == "iva" + m_subform->tableName()) {
+         
+                QDoubleSpinBox *editor = new QDoubleSpinBox(parent);
+                editor->setMinimum(-1000000);
+                editor->setMaximum(1000000);
+                return editor;
+        */
 
     } else if (linea->nomcampo() == "codigocompletoarticulo") {
         BusquedaArticuloDelegate *editor = new BusquedaArticuloDelegate(parent);
@@ -413,21 +434,21 @@ void QSubForm2BfDelegate::setModelData(QWidget *editor, QAbstractItemModel *mode
         QTextEditDelegate *textedit = qobject_cast<QTextEditDelegate *>(editor);
         model->setData(index, textedit->toPlainText());
         return;
-/// Quitamos el SpinBox para cantidades porque funciona realmente mal */
-/*
-    } else if (linea->nomcampo() == "cant" + m_subform->tableName()
-               || linea->nomcampo() == "pvp" + m_subform->tableName()
-               || linea->nomcampo() == "descuento" + m_subform->tableName()
-               || linea->nomcampo() == "iva" + m_subform->tableName()   ) {
-
-        QDoubleSpinBox *spinBox = static_cast<QDoubleSpinBox*>(editor);
-    // Esto funciona como el culo. con cantidad 1090,89 se va
-        //spinBox->interpretText();
-        QString value = spinBox->text();
-        // value = value.replace(",", ".");
-        model->setData(index, value );
-
-*/
+        /// Quitamos el SpinBox para cantidades porque funciona realmente mal */
+        /*
+            } else if (linea->nomcampo() == "cant" + m_subform->tableName()
+                       || linea->nomcampo() == "pvp" + m_subform->tableName()
+                       || linea->nomcampo() == "descuento" + m_subform->tableName()
+                       || linea->nomcampo() == "iva" + m_subform->tableName()   ) {
+         
+                QDoubleSpinBox *spinBox = static_cast<QDoubleSpinBox*>(editor);
+            // Esto funciona como el culo. con cantidad 1090,89 se va
+                //spinBox->interpretText();
+                QString value = spinBox->text();
+                // value = value.replace(",", ".");
+                model->setData(index, value );
+         
+        */
 
     } else if (linea->nomcampo() == "codigocompletoarticulo") {
         BusquedaArticuloDelegate *comboBox = static_cast<BusquedaArticuloDelegate*>(editor);
@@ -455,17 +476,17 @@ void QSubForm2BfDelegate::setEditorData(QWidget* editor, const QModelIndex& inde
         QString data = index.model()->data(index, Qt::DisplayRole).toString();
         QTextEditDelegate *textedit = qobject_cast<QTextEditDelegate*>(editor);
         textedit->setText(data);
-/// Quitamos el SpinBox para cantidades pq funciona realmente mal
-/*
-    } else if (linea->nomcampo() == "cant" + m_subform->tableName()
-               || linea->nomcampo() == "pvp" + m_subform->tableName()
-               || linea->nomcampo() == "descuento" + m_subform->tableName()
-               || linea->nomcampo() == "iva" + m_subform->tableName()   ) {
-
-        QString value = index.model()->data(index, Qt::DisplayRole).toString();
-        QDoubleSpinBox *spinBox = static_cast<QDoubleSpinBox*>(editor);
-        spinBox->setValue(value.toDouble());
-*/
+        /// Quitamos el SpinBox para cantidades pq funciona realmente mal
+        /*
+            } else if (linea->nomcampo() == "cant" + m_subform->tableName()
+                       || linea->nomcampo() == "pvp" + m_subform->tableName()
+                       || linea->nomcampo() == "descuento" + m_subform->tableName()
+                       || linea->nomcampo() == "iva" + m_subform->tableName()   ) {
+         
+                QString value = index.model()->data(index, Qt::DisplayRole).toString();
+                QDoubleSpinBox *spinBox = static_cast<QDoubleSpinBox*>(editor);
+                spinBox->setValue(value.toDouble());
+        */
 
     } else if (linea->nomcampo() == "codigocompletoarticulo") {
         QString value = index.model()->data(index, Qt::DisplayRole).toString();
@@ -474,7 +495,8 @@ void QSubForm2BfDelegate::setEditorData(QWidget* editor, const QModelIndex& inde
     } else if (linea->nomcampo() == "desctipo_iva") {
         QString value = index.model()->data(index, Qt::DisplayRole).toString();
         BusquedaTipoIVADelegate *comboBox = static_cast<BusquedaTipoIVADelegate*>(editor);
-        comboBox->set(value);
+        comboBox->set
+        (value);
     } else {
         QItemDelegate::setEditorData(editor, index);
     } // end if

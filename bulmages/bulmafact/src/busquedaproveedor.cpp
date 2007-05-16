@@ -72,19 +72,21 @@ BusquedaProveedor::~BusquedaProveedor() {
 void BusquedaProveedor::setidproveedor(QString val) {
     _depura("BusquedaProveedor::setidproveedor", 0);
     mdb_idproveedor = val;
-    QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor = '" + mdb_idproveedor + "'";
-    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
-    if (!cur->eof()) {
-        mdb_cifproveedor = cur->valor("cifproveedor");
-        mdb_nomproveedor = cur->valor("nomproveedor");
-        mdb_codproveedor = cur->valor("codproveedor");
+    if (mdb_idproveedor != "") {
+	QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor = '" + mdb_idproveedor + "'";
+	cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
+	if (!cur->eof()) {
+		mdb_cifproveedor = cur->valor("cifproveedor");
+		mdb_nomproveedor = cur->valor("nomproveedor");
+		mdb_codproveedor = cur->valor("codproveedor");
+	} // end if
+	delete cur;
     } else {
         mdb_idproveedor = "";
         mdb_nomproveedor = "";
         mdb_cifproveedor = "";
         mdb_codproveedor = "";
     } // end if
-    delete cur;
     pinta();
     _depura("END BusquedaProveedor::setidproveedor", 0);
 }

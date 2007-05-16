@@ -333,6 +333,7 @@ void AlbaranProveedorView::generarFacturaProveedor() {
 
     /// Cargamos un elemento que no existe para inicializar bien la clase.
     bud->inicializar();
+
     bud->setcomentfacturap(DBvalue("comentalbaranp"));
     bud->setidforma_pago(DBvalue("idforma_pago"));
     bud->setreffacturap(DBvalue("refalbaranp"));

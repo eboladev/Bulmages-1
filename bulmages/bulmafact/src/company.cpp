@@ -369,7 +369,6 @@ void company::s_newFacturaPro() {
     FacturaProveedorView *bud = newFacturaProveedorView();
     m_pWorkspace->addWindow(bud);
     bud->inicializar();
-    bud->pintar();
     bud->show();
     _depura("END company::s_newFacturaPro", 0);
 }

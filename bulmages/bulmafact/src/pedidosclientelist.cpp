@@ -116,6 +116,15 @@ QString PedidosClienteList::generarFiltro() {
 }
 
 
+void PedidosClienteList::crear() {
+    _depura("PedidosClienteList:crear", 0);
+    PedidoClienteView *prov = new PedidoClienteView((company *)empresaBase(), 0);
+    empresaBase()->m_pWorkspace->addWindow(prov);
+    prov->show();
+    _depura("END PedidosClienteList:crear", 0);
+}
+
+
 /// \TODO: Company debe instanciar la clase y no hacerse asi como esta ahora.
 void PedidosClienteList::editar(int row) {
     _depura("ProveedorList::editar", 0);

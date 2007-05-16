@@ -39,7 +39,7 @@
 
 
 int entryPoint(Bulmacont *) {
-    _depura("Punto de entrada del plugin registroIVA", 10);
+    _depura("Punto de entrada del plugin registroIVA", 0);
     return 0;
 }
 

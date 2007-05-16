@@ -56,7 +56,7 @@ public:
     virtual int guardar() {return Pago::guardar();};
     virtual int borrar() {return Pago::borrar();};
     virtual int cargar(QString id);
-    virtual int sacaWindow();
+
 
 public slots:
     virtual void on_mui_comentpago_textChanged(const QString &str);

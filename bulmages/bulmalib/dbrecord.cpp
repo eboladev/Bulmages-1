@@ -56,7 +56,8 @@ DBCampo::dbtype DBCampo::tipo() {
 }
 
 
-int DBCampo::set(QString val) {
+int DBCampo::set
+    (QString val) {
     m_valorcampo = val;
     return 0;
 }
@@ -107,8 +108,6 @@ QString DBCampo::valorcampoprep(int &error) {
     case DBint:
         if (m_valorcampo == "")
             return "NULL";
-        if (m_valorcampo.contains("."))
-		m_valorcampo.remove(".");
         return "'" + m_conexionbase->sanearCadena(m_valorcampo) + "'";
     case DBvarchar:
         if (m_valorcampo == "")
@@ -121,11 +120,7 @@ QString DBCampo::valorcampoprep(int &error) {
     case DBnumeric:
         if (m_valorcampo == "")
             return "NULL";
-	if (m_valorcampo.contains(".") && m_valorcampo.contains(",")) {
-		m_valorcampo.remove(".");
-		m_valorcampo.replace(",", ".");
-	} else
-		m_valorcampo.replace(",", ".");
+        m_valorcampo.replace(",", ".");
         return "'" + m_conexionbase->sanearCadena(m_valorcampo) + "'";
     case DBboolean:
         if (m_valorcampo == "")
@@ -209,16 +204,17 @@ int DBRecord::DBload(cursor2 *cur) {
     for (int i = 0; i < m_lista.size(); ++i) {
         campo = m_lista.at(i);
         if (! (campo->restrictcampo() & DBCampo::DBNoLoad)) {
-        QString nom = campo->nomcampo();
-        QString val = cur->valor(nom);
-        if ((campo->restrictcampo() & DBCampo::DBPrimaryKey) && (val == ""))
-        m_nuevoCampo = TRUE;
-        if ((campo->restrictcampo() & DBCampo::DBDupPrimaryKey) && (val == ""))
-        m_nuevoCampo = TRUE;
-        error += campo->set(val);
-        /// Al ser una carga consideramos que los cambios estan inicializados.
-        campo->resetCambio();
-    } // end if
+            QString nom = campo->nomcampo();
+            QString val = cur->valor(nom);
+            if ((campo->restrictcampo() & DBCampo::DBPrimaryKey) && (val == ""))
+                m_nuevoCampo = TRUE;
+            if ((campo->restrictcampo() & DBCampo::DBDupPrimaryKey) && (val == ""))
+                m_nuevoCampo = TRUE;
+            error += campo->set
+                     (val);
+            /// Al ser una carga consideramos que los cambios estan inicializados.
+            campo->resetCambio();
+        } // end if
     } // end for
     _depura("END DBRecord::DBload", 0);
     return error;
@@ -231,7 +227,8 @@ void DBRecord::DBclear() {
     DBCampo *campo;
     for(int i = 0; i < m_lista.size(); ++i) {
         campo = m_lista.at(i);
-        campo->set("");
+        campo->set
+        ("");
     } // end for
     _depura("END DBRecord::DBclear", 0);
 }
@@ -320,13 +317,14 @@ int DBRecord::setDBvalue(QString nomb, QString valor) {
     int i = 0;
     campo = m_lista.value(i);
     while (campo && campo->nomcampo() != nomb)
-	campo = m_lista.value(++i) ;
+        campo = m_lista.value(++i) ;
     if (!campo) {
         _depura("Campo " + nomb + " no encontrado", 2);
         return -1;
     } // end if
     if (campo->nomcampo() == nomb)
-        error = campo->set(valor);
+        error = campo->set
+                (valor);
     _depura("END DBRecord::setDBvalue", 0);
     return error;
 }
@@ -389,7 +387,8 @@ QString DBRecord::DBvalueprep(QString nomb) {
 int DBRecord::addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp = "") {
     _depura("DBRecord::addDBCampo", 0);
     DBCampo *camp = new DBCampo(m_conexionbase, nom, typ, res, nomp);
-    camp->set("");
+    camp->set
+    ("");
     m_lista.append(camp);
     _depura("END DBRecord::addDBCampo", 0);
     return 0;
@@ -470,10 +469,10 @@ int DBRecord::cargar(QString id) {
 
 
 void DBRecord::imprimir() {
-/// Impresion de un Pedido de Proveedor
-/** Usa la plantilla pedidoproveedor.rml */
+    /// Impresion de un Pedido de Proveedor
+    /** Usa la plantilla pedidoproveedor.rml */
     _depura("DBRecord::imprimir", 0);
-        DBCampo *campo;
+    DBCampo *campo;
     QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "ficha.rml";
     QString archivod = confpr->valor(CONF_DIR_USER) + "ficha.rml";
     QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
@@ -510,7 +509,7 @@ void DBRecord::imprimir() {
 
     /// Impresion de la tabla de contenidos.
     for (int i = 0; i < m_lista.size(); ++i) {
-            campo = m_lista.at(i);
+        campo = m_lista.at(i);
         fitxersortidatxt += "<tr>\n";
         fitxersortidatxt += "   <td>" + campo->nomcampo() + "</td>\n";
         fitxersortidatxt += "   <td>" + campo->nompresentacion() + "</td>\n";
@@ -528,6 +527,6 @@ void DBRecord::imprimir() {
     } // end if
 
     invocaPDF("ficha");
-   _depura("END DBRecord::imprimir", 0);
+    _depura("END DBRecord::imprimir", 0);
 }
 

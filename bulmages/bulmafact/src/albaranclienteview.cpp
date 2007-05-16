@@ -71,6 +71,7 @@ AlbaranClienteView::AlbaranClienteView(company *comp, QWidget *parent)
         setListaLineas(subform2);
         setListaDescuentos(m_descuentos);
         comp->meteWindow(windowTitle(), this, FALSE);
+        dialogChanges_cargaInicial();
     } catch (...) {
         mensajeInfo(tr("Error al crear el albaran a cliente"));
     } // end try

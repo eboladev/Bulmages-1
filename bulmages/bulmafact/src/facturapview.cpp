@@ -48,9 +48,11 @@ FacturaProveedorView::FacturaProveedorView(company *comp, QWidget *parent)
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
         setupUi(this);
         subform2->setEmpresaBase(comp);
-        m_forma_pago->setEmpresaBase(comp);
-        m_proveedor->setEmpresaBase(comp);
         m_descuentos->setEmpresaBase(comp);
+        m_forma_pago->setEmpresaBase(comp);
+	m_forma_pago->setidforma_pago("");
+        m_proveedor->setEmpresaBase(comp);
+	m_proveedor->setidproveedor("");
         m_reffacturap->setEmpresaBase(comp);
 
 	setListaLineas(subform2);
@@ -65,10 +67,11 @@ FacturaProveedorView::FacturaProveedorView(company *comp, QWidget *parent)
         m_totalfacturap->setReadOnly(TRUE);
         m_totalfacturap->setAlignment(Qt::AlignRight);
         comp->meteWindow(windowTitle(), this, FALSE);
+
     } catch (...) {
         mensajeInfo(tr("Error al crear la factura proveedor"));
     } // end try
-    _depura("END FacturaProveedorView::FacturaProveedorView");
+    _depura("END FacturaProveedorView::FacturaProveedorView", 0);
 }
 
 
@@ -90,6 +93,7 @@ void FacturaProveedorView::inicializar() {
     _depura("FacturaProveedorView::inicializar", 0);
     subform2->inicializar();
     m_descuentos->inicializar();
+    pintar();
     dialogChanges_cargaInicial();
     _depura("END FacturaProveedorView::inicializar", 0);
 }
@@ -169,7 +173,7 @@ int FacturaProveedorView::guardar() {
         setidforma_pago(m_forma_pago->idforma_pago());
         setprocesadafacturap(m_procesadafacturap->isChecked() ? "TRUE" : "FALSE");
         FacturaProveedor::guardar();
-        dialogChanges_cargaInicial();
+        cargar(DBvalue("idfacturap"));
     } catch (...) {
         mensajeInfo(tr("Error al guardar la factura proveedor"));
         throw -1;
@@ -198,17 +202,7 @@ void FacturaProveedorView::on_mui_veralbaranes_clicked() {
 }
 
 
-/** SLOT que responde a la pulsacion del boton guardar en la ficha de factura de proveedor.
-	Llama al metodo guardar y hace una carga para refrescar valores que haya podido meter
-	la base de datos.
-*/
-/// \TODO: Hacer que la carga se haga en el guardar de FacturaProveedor.
-void FacturaProveedorView::on_mui_guardar_clicked() {
-    	_depura("FacturaProveedorView::on_mui_guardar_clicked", 0);
-        guardar();
-        cargar(DBvalue("idfacturap"));
-    	_depura("END FacturaProveedorView::on_mui_guardar_clicked", 0);
-}
+
 
 void FacturaProveedorView::on_m_proveedor_valueChanged(QString id) {
 	_depura("FacturaProveedorView::on_m_proveedor_valueChanged", 0);

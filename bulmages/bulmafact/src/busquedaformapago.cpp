@@ -96,6 +96,10 @@ void BusquedaFormaPago::setIdCliente(QString idcliente) {
 void BusquedaFormaPago::setIdProveedor(QString idproveedor) {
     _depura("BusquedaFormaPago::setIdProveedor", 0, idproveedor);
 
+    /// Si no es un proveedor valido salimos.
+    if (idproveedor == "")
+	return;
+
     cursor2 * cur = empresaBase()->cargacursor("SELECT idforma_pago FROM proveedor WHERE idproveedor="+idproveedor);
 
     if (!cur->eof()) {

@@ -103,7 +103,7 @@ void Factura::vaciaFactura() {
 */
 /// \TODO: Deberia llamarse pintar.
 void Factura::pintaFactura() {
-    _depura("pintaFactura", 0);
+    _depura("Factura::pintaFactura", 0);
     pintaidcliente(DBvalue("idcliente"));
     pintaidalmacen(DBvalue("idalmacen"));
     pintaNumFactura(DBvalue("numfactura"));
@@ -116,7 +116,7 @@ void Factura::pintaFactura() {
     pintadescfactura(DBvalue("descfactura"));
     /// Pinta el subformulario de detalle del factura.
     calculaypintatotales();
-    _depura("END pintaFactura", 0);
+    _depura("END Factura::pintaFactura", 0);
 }
 
 

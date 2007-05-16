@@ -63,13 +63,12 @@ public:
     void imprimir();
     void editar(int);
     void borrar();
+    void crear();
     void setEmpresaBase(company *comp);
     void setidcliente(QString val);
     QString idpedidocliente();
     QString generarFiltro();
 
-signals:
-    void selected(QString);
 };
 
 #endif

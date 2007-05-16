@@ -68,13 +68,15 @@ void FichaBf::calculaypintatotales() {
     QString l;
     Fixed irpf("0");
 
+
+
     cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM configuracion WHERE nombre = 'IRPF'");
     if (!cur->eof()) {
         irpf = Fixed(cur->valor("valor"));
     } // end if
     delete cur;
 
-    if (exists("idproveedor")) {
+    if (exists("idproveedor") && DBvalue("idproveedor") != "") {
         cur = empresaBase()->cargacursor("SELECT irpfproveedor FROM proveedor WHERE idproveedor = " + DBvalue("idproveedor"));
         if (!cur->eof()) {
             irpf = Fixed(cur->valor("irpfproveedor"));

@@ -48,8 +48,9 @@ PagoView::PagoView(company *comp, QWidget *parent)
         mui_proveedor->setEmpresaBase(comp);
         mui_refpago->setEmpresaBase(comp);
         mui_idbanco->setEmpresaBase(comp);
-        dialogChanges_cargaInicial();
         empresaBase()->meteWindow(windowTitle(), this, FALSE);
+	pintar();
+        dialogChanges_cargaInicial();
     } catch (...) {
         mensajeInfo(tr("Error al crear el pago"));
     } // end try
@@ -62,11 +63,6 @@ PagoView::~PagoView() {
     _depura("END PagoView::~PagoView", 0);
 }
 
-
-int PagoView::sacaWindow() {
-    empresaBase()->sacaWindow(this);
-    return 0;
-}
 
 int PagoView::cargar(QString id) {
     _depura("PagoView::cargar", 0);

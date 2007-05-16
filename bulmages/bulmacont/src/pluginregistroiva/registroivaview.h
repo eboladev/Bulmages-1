@@ -36,7 +36,7 @@
 class empresa;
 
 
-class RegistroIvaView : public Ficha, public Ui_RegistroIvaBase, public RegistroIva {
+class RegistroIvaView : public RegistroIva, public Ui_RegistroIvaBase {
     Q_OBJECT
 
 private:

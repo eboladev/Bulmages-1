@@ -81,8 +81,6 @@ public:
     virtual int cargar(QString id);
 
 public slots:
-    virtual void on_mui_guardar_clicked();
-
     virtual void on_mui_pagar_clicked() {
         s_nuevoPago();
     };
