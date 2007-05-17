@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+// #ifndef EFQTOOLBUTTON_H
+// #define EFQTOOLBUTTON_H
+		
 #include <QWidget>
 #include <QToolButton>
 #include "company.h"
