@@ -78,7 +78,7 @@
       <envvars/>
     </run>
     <general>
-      <activedir>bulmalib</activedir>
+      <activedir>bulmages/src</activedir>
     </general>
     <make>
       <abortonerror>true</abortonerror>

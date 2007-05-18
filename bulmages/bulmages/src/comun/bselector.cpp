@@ -35,16 +35,14 @@ BSelector::BSelector(QWidget *parent)
         : QMainWindow(parent) {
     setupUi(this);
 
-    /// signals and slots connections.
-    QObject::connect(salir, SIGNAL(clicked()), this, SLOT(salir_clicked()));
     QObject::connect(seleccionaempresa, SIGNAL(clicked()), this, SLOT(seleccionaempresa_clicked()));
-    QObject::connect(m_iglues, SIGNAL(clicked()), this, SLOT(m_iglues_clicked()));
     QObject::connect(m_bulmatpv, SIGNAL(clicked()), this, SLOT(m_bulmatpv_clicked()));
     QObject::connect(m_bulmacont, SIGNAL(clicked()), this, SLOT(contabilidad_clicked()));
     QObject::connect(m_galopin, SIGNAL(clicked()), this, SLOT(produccion_clicked()));
     QObject::connect(m_bulmafact, SIGNAL(clicked()), this, SLOT(m_bulmafact_clicked()));
     QObject::connect(configura, SIGNAL(clicked()), this, SLOT(configura_clicked()));
-    QObject::connect(m_bcontaweb, SIGNAL(clicked()), this, SLOT(m_bcontaweb_clicked()));
+/*    QObject::connect(m_bcontaweb, SIGNAL(clicked()), this, SLOT(m_bcontaweb_clicked()));
+*/
 
     /// Al crear el selector, todos los modulos estan cerrados = NULL
     m_tipoempresa = "";
@@ -62,19 +60,11 @@ BSelector::BSelector(QWidget *parent)
     if (!f3.exists())
         m_galopin->setEnabled(FALSE);
     QFile f4("/var/www/bcontaweb");
-    if (!f4.exists())
-        m_bcontaweb->setEnabled(FALSE);
 }
 
 
 BSelector::~BSelector() {}
 
-
-/// Boton salir.
-void BSelector::salir_clicked() {
-    //ctllog->add(LOG_SEG | LOG_TRA, 1,"BslSld002","---Saliendo de la aplicacion---" );
-    close();
-}
 
 
 /// Boton para abrir el dialogo de configuraciones personalizadas.
@@ -86,7 +76,7 @@ void BSelector::configura_clicked() {
 
 
 /// Boton para entrar en la ventana de Iglues.
-void BSelector::m_iglues_clicked() {
+void BSelector::on_m_iglues_clicked() {
     QString cadena;
     cadena = confpr->valor(CONF_NAVEGADOR) + " http://www.iglues.org &";
     system(cadena.toAscii().constData());
@@ -149,9 +139,9 @@ void BSelector::produccion_clicked() {
 
 
 /// Boton para entrar en el modulo de STOCKS Y ALMACENES.º
-void BSelector::m_bcontaweb_clicked() {
+void BSelector::on_mui_info_clicked() {
     QString cadena;
-    cadena = confpr->valor(CONF_NAVEGADOR) + " http://localhost/bcontaweb/ &";
+    cadena = confpr->valor(CONF_NAVEGADOR) + " http://www.iglues.org/wiki &";
     system(cadena.toAscii().constData());
 }
 

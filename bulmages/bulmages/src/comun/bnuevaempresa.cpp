@@ -53,23 +53,8 @@ void BNuevaEmpresa::accept() {
     } // end if
 
     QString cadena = confpr->valor(CONF_PROGDATA);
-    cadena += "dbmodels/creabulmages --texto " + nombredb + " 1 " + nombreEmp + " " + ejercicioempresa->text().trimmed() + " " + "";
+    cadena += "dbmodels/creabulmacont --texto " + nombredb + " 1 " + nombreEmp + " " + ejercicioempresa->text().trimmed() + " " + "";
     system(cadena.toAscii().constData());
-    postgresiface2 *DBconn = new postgresiface2();
-    DBconn->inicializa(nombredb);
-    QString query = "UPDATE configuracion SET valor = '" + nombreEmp + "' WHERE nombre = 'NombreEmpresa'";
-    DBconn->begin();
-    DBconn->ejecuta(query);
-    query = "UPDATE configuracion SET valor = '" + ejercicioempresa->text() + "' WHERE nombre = 'Ejercicio'";
-    DBconn->ejecuta(query);
-    /// Creamos el ejercicio.
-    for (int x = 0; x <= 12; x++) {
-        query.sprintf("INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES('%s', '%d', 'f')", ejemp.toAscii().constData(), x);
-        DBconn->ejecuta(query);
-    } // end for
-    DBconn->commit();
-    delete DBconn;
-
     /// Hacemos una recarga de empresas pq sabemos a ciencia cierta que ha cambiado el listado.
     abreempresaview *abre = new abreempresaview(NULL, "hola", "hola");
     abre->on_mui_actualizar_clicked();

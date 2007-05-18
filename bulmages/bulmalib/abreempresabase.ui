@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>539</width>
-    <height>298</height>
+    <width>640</width>
+    <height>477</height>
    </rect>
   </property>
   <property name="sizePolicy" >
@@ -49,6 +49,130 @@
     <number>5</number>
    </property>
    <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>5</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="label_2" >
+       <property name="minimumSize" >
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
+       <property name="maximumSize" >
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
+       <property name="text" >
+        <string/>
+       </property>
+       <property name="pixmap" >
+        <pixmap resource="../bulmages.qrc" >:/BulmaCont32x32/images/png/i_empresa.xpm</pixmap>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QFrame" name="m_botonera" >
+       <property name="frameShape" >
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow" >
+        <enum>QFrame::Raised</enum>
+       </property>
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>5</number>
+        </property>
+        <property name="spacing" >
+         <number>5</number>
+        </property>
+        <item>
+         <widget class="QToolButton" name="mui_actualizar" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="toolTip" >
+           <string>Actualizar Listado</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Actualizar Listado de Empresas</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../bulmages.qrc" >:/Genericos32x32/images/png/i_reload.png</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+N</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QFrame" name="mui_plugbotones" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>1</hsizetype>
+            <vsizetype>5</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="frameShape" >
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="frameShadow" >
+           <enum>QFrame::Plain</enum>
+          </property>
+          <property name="lineWidth" >
+           <number>0</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType" >
+           <enum>QSizePolicy::Expanding</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>101</width>
+            <height>34</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
     <layout class="QVBoxLayout" >
      <property name="margin" >
       <number>0</number>
@@ -83,49 +207,6 @@
           </size>
          </property>
         </spacer>
-       </item>
-       <item>
-        <widget class="QToolButton" name="mui_actualizar" >
-         <property name="minimumSize" >
-          <size>
-           <width>22</width>
-           <height>22</height>
-          </size>
-         </property>
-         <property name="maximumSize" >
-          <size>
-           <width>22</width>
-           <height>22</height>
-          </size>
-         </property>
-         <property name="focusPolicy" >
-          <enum>Qt::TabFocus</enum>
-         </property>
-         <property name="contextMenuPolicy" >
-          <enum>Qt::NoContextMenu</enum>
-         </property>
-         <property name="toolTip" >
-          <string>Actualiza el listado de empresas</string>
-         </property>
-         <property name="whatsThis" >
-          <string>Actualiza el listado de empresas</string>
-         </property>
-         <property name="text" >
-          <string>Actualizar</string>
-         </property>
-         <property name="icon" >
-          <iconset resource="../bulmages.qrc" >:/Genericos32x32/images/png/i_reload.png</iconset>
-         </property>
-         <property name="iconSize" >
-          <size>
-           <width>22</width>
-           <height>22</height>
-          </size>
-         </property>
-         <property name="shortcut" >
-          <string>F5</string>
-         </property>
-        </widget>
        </item>
       </layout>
      </item>
@@ -212,7 +293,6 @@
  <layoutdefault spacing="2" margin="5" />
  <tabstops>
   <tabstop>mui_empresas</tabstop>
-  <tabstop>mui_actualizar</tabstop>
   <tabstop>botonAceptar</tabstop>
   <tabstop>botonCancelar</tabstop>
  </tabstops>

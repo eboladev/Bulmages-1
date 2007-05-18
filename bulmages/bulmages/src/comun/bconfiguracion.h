@@ -54,6 +54,7 @@ private:
     void cargarFichaBulmages();
     void cargarFichaUsuarios();
     void tablaconfiguracion();
+    void restaurarEmpresa();
 
 private slots:
     virtual void cerrar();
@@ -63,19 +64,19 @@ private slots:
     virtual void FontChanged(const QString &);
     virtual void FontSizeChanged(int);
     virtual void salvarEmpresa();
-    virtual void BotonA_4restaurarEmpresa();
     virtual void BotonA_10aceptar();
     virtual void BotonA_11rechazar();
     virtual void BotonA_6nombreEmpresa();
     virtual void BotonA_61clonarEmpresa();
     virtual void nuevaEmpresa();
     virtual void borrarEmpresa();
-    virtual void nuevoEjercicio();
     virtual void BotonB_1Aplicar();
     virtual void BotonB_2Desacer();
     virtual void nuevaFacturacion();
     virtual void BotonContaplus();
     virtual void s_importexportbulmafact();
+    virtual void on_mui_restaurarc_clicked();
+    virtual void on_mui_restaurarf_clicked();
 };
 
 #endif

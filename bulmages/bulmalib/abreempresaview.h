@@ -23,6 +23,7 @@
 
 #include <QString>
 #include <QDialog>
+#include <QFile>
 
 #include "ui_abreempresabase.h"
 
@@ -82,6 +83,7 @@ private:
     /// Inserta una companya en el QList mui_empresas definido en el di&aacute;logo.
     void insertCompany(QString, QString, QString, QString);
     void preparamui_empresas();
+    void trataEmpresa(QString, QFile *);
 
 private slots:
     /// Al pulsar el bot&oacute;n de cancelar se aborta la ejecuci&oacute;n del programa.

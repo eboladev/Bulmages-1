@@ -22,7 +22,6 @@
 
 #include <fstream>
 
-#include <QFile>
 #include <QLineEdit>
 #include <QMessageBox>
 #include <QString>
@@ -210,7 +209,7 @@ void abreempresaview::cargaArchivo() {
     QString dir1= confpr->valor(CONF_DIR_USER) + LISTEMPRESAS;
 
     /// Si el archivo no existe hacemos una recarga.
-    _depura("Vamos a comprobar la existencia\n", 1);
+    _depura("Vamos a comprobar la existencia", 1);
     /// Comprobamos la existencia del directorio personalizado de BulmaG&eacute;s. Y si no...
     if (!QFile::exists(dir1)) {
         /// Hacemos una recarga de mui_empresas porque sabemos a que ha cambiado el listado.
@@ -233,15 +232,15 @@ void abreempresaview::cargaArchivo() {
         lineatexto = filestr.readLine();
         /// Separa los diferentes campos de la l&iacute;nea de texto y la asigna a las variables.
         QStringList listacampos = lineatexto.split("\t");
-       if (listacampos.count() == 4){
-           nombre = listacampos[0];
-           ano = listacampos[1];
-           nombd = listacampos[2];
-           tipo = listacampos[3];
-           if (tipo == m_tipo || m_tipo == "") {
-              insertCompany(nombre, ano, nombd, tipo);
-           } // end if
-       } // end if
+        if (listacampos.count() == 4) {
+            nombre = listacampos[0];
+            ano = listacampos[1];
+            nombd = listacampos[2];
+            tipo = listacampos[3];
+            if (tipo == m_tipo || m_tipo == "") {
+                insertCompany(nombre, ano, nombd, tipo);
+            } // end if
+        } // end if
     } // end while
     file.close();
     _depura("abreempresaview::cargaArchivo", 0);
@@ -265,59 +264,27 @@ void abreempresaview::guardaArchivo() {
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
         return;
     } // end if
-    QTextStream filestr(&file);
+
     /// Deshabilitamos las alertas para que no aparezcan avisos con bases de datos
     /// que no son del sistema.
     confpr->setValor(CONF_ALERTAS_DB, "No");
     /// Nos conectamos a la base de datos 'template1' para obtener un listado de todas
     /// las bases de datos existentes.
-    postgresiface2 *db, *db1;
+    postgresiface2 *db;
     db = new postgresiface2();
     db->inicializa(QString("template1"));
-    QString nombre;
-    QString nomdb = "";
-    QString ano;
-    QString tipo;
+
     cursor2 *curs = db->cargacursor("SELECT datname FROM pg_database");
+
+
+
     /// Preparamos el listado
     preparamui_empresas();
+
+
     /// Para cada base de datos nos intentamos conectanos y mirar de qu&eacute; tipo es.
     while (!curs->eof()) {
-        if (!curs->valor("datname").startsWith("template")) {
-            db1 = new postgresiface2();
-            db1->inicializa(curs->valor("datname"));
-            try {
-                cursor2 *curs1 = db1->cargacursor("SELECT * FROM configuracion WHERE nombre = 'Tipo'");
-                if (!curs1->eof()) {
-                    tipo = curs1->valor("valor");
-                    nomdb = curs->valor("datname");
-                } // end if
-                delete curs1;
-                curs1 = db1->cargacursor("SELECT * FROM configuracion WHERE nombre = 'NombreEmpresa'");
-                if (!curs1->eof()) {
-                    nombre = curs1->valor("valor");
-                } // end if
-                delete curs1;
-                curs1 = db1->cargacursor("SELECT * FROM configuracion WHERE nombre = 'Ejercicio'");
-                if (!curs1->eof()) {
-                    ano = curs1->valor("valor");
-                } // end if
-                delete curs1;
-            } catch (...) {}
-            if (nomdb != "") {
-                if (tipo == m_tipo || m_tipo == "") {
-                    insertCompany(nombre, ano, nomdb, tipo);
-                }// end if
-                /// Independientemente de si deben mostrarse o no hay que guardarlas
-                /// en el archivo.
-                filestr << nombre.toAscii().data() << "\t";
-                filestr << ano.toAscii().data() << "\t";
-                filestr << nomdb.toAscii().data() << "\t";
-                filestr << tipo.toAscii().data()  << endl;
-                nomdb = "";
-            } // end if
-            delete db1;
-        } // end if
+        trataEmpresa(curs->valor("datname"), &file);
         curs->siguienteregistro();
     } // end while
     delete curs;
@@ -327,6 +294,64 @@ void abreempresaview::guardaArchivo() {
     _depura("END abreempresaview::guardaArchivo", 0);
 }
 
+
+
+void abreempresaview::trataEmpresa(QString empresa, QFile *file) {
+    QTextStream filestr(file);
+    postgresiface2 *db1;
+    QString nombre;
+    QString nomdb = "";
+    QString ano;
+    QString tipo;
+    if (!empresa.startsWith("template")) {
+        db1 = new postgresiface2();
+        db1->inicializa(empresa);
+        try {
+            cursor2 *cursa = db1->cargacursor("SELECT * FROM pg_tables WHERE tablename = 'configuracion'");
+            if (cursa->eof()) {
+                delete cursa;
+                return;
+            } // end if
+            delete cursa;
+            cursor2 *curs1 = db1->cargacursor("SELECT * FROM configuracion WHERE nombre = 'Tipo'");
+            if (!curs1->eof()) {
+                tipo = curs1->valor("valor");
+                nomdb = empresa;
+            } else {
+                delete curs1;
+                return;
+            } // end if
+            delete curs1;
+            curs1 = db1->cargacursor("SELECT * FROM configuracion WHERE nombre = 'NombreEmpresa'");
+            if (!curs1->eof()) {
+                nombre = curs1->valor("valor");
+            } else {
+                delete curs1;
+                return;
+            } // end if
+            delete curs1;
+            curs1 = db1->cargacursor("SELECT * FROM configuracion WHERE nombre = 'Ejercicio'");
+            if (!curs1->eof()) {
+                ano = curs1->valor("valor");
+            } // end if
+            delete curs1;
+        } catch (...) {}
+        if (nomdb != "") {
+            if (tipo == m_tipo || m_tipo == "") {
+                insertCompany(nombre, ano, nomdb, tipo);
+            }// end if
+            /// Independientemente de si deben mostrarse o no hay que guardarlas
+            /// en el archivo.
+            filestr << nombre.toAscii().data() << "\t";
+            filestr << ano.toAscii().data() << "\t";
+            filestr << nomdb.toAscii().data() << "\t";
+            filestr << tipo.toAscii().data()  << endl;
+            nomdb = "";
+        } // end if
+        delete db1;
+    } // end if
+
+}
 
 /// Recarga la lista de mui_empresas haciendo las gestiones necesarias con el motor de
 /// base de datos. Al mismo tiempo guarda el archivo de bases de datos en el

@@ -46,11 +46,9 @@ BConfiguracion::BConfiguracion(BSelector *ref, QWidget *parent, Qt::WFlags f = 0
     QObject::connect(pushButtonF_X, SIGNAL(clicked()), this, SLOT(cerrar()));
     QObject::connect(pushButtonA_1_2, SIGNAL(clicked()), this, SLOT(nuevaFacturacion()));
     QObject::connect(pushButton32, SIGNAL(clicked()), this, SLOT(BotonContaplus()));
-    QObject::connect(pushButtonA_4, SIGNAL(clicked()), this, SLOT(BotonA_4restaurarEmpresa()));
     QObject::connect(m_borrarempresa, SIGNAL(clicked()), this, SLOT(borrarEmpresa()));
     QObject::connect(pushButtonA_1, SIGNAL(clicked()), this, SLOT(nuevaEmpresa()));
     QObject::connect(m_backup, SIGNAL(clicked()), this, SLOT(salvarEmpresa()));
-    QObject::connect(pushButtonA_5, SIGNAL(clicked()), this, SLOT(nuevoEjercicio()));
     QObject::connect(pushButton32_2, SIGNAL(clicked()), this, SLOT(s_importexportbulmafact()));
 
     PunteroAlSelector = ref;
@@ -237,34 +235,6 @@ void BConfiguracion::borrarEmpresa() {
 }
 
 
-/// Aqui creamos un nuevo ejercicio para la empresa que tengamos abierta en el
-/// momento de llamar a este proceso.
-void BConfiguracion::nuevoEjercicio() {
-    QString query;
-    int x;
-    QString ejer;
-    postgresiface2 *DBconn = new postgresiface2();
-    DBconn->inicializa(PunteroAlSelector->empresaDB());
-    ejer = m_ejercicio->text();
-    if (ejer == "") {
-        DBconn->begin();
-        query.sprintf("SELECT MAX(ejercicio) AS ejercicio FROM ejercicios WHERE periodo = 0");
-        cursor2 *curA = DBconn->cargacursor(query, "curA");
-        if (!curA->eof())
-            ejer = curA->valor("ejercicio");
-        ejer.setNum(ejer.toInt() + 1);
-        if (ejer.toInt() < 2000)
-            ejer = "2003";
-    } // end if
-    for (x = 0; x <= 12; x++) {
-        query.sprintf("INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES('%s', '%d', 'f')", ejer.toAscii().constData(), x);
-        DBconn->ejecuta(query);
-    } // end for
-    DBconn->commit();
-    QMessageBox::information(this, tr("Nuevo ejercicio"), "El ejercicio (" + ejer + ") ha sido creado con exito", "&Aceptar");
-}
-
-
 /// Creamos una copia de seguridad de una base de datos.
 void BConfiguracion::salvarEmpresa() {
     QString dbEmpresa;
@@ -285,7 +255,7 @@ void BConfiguracion::salvarEmpresa() {
                 fn = fn + ".pgdump";
             fprintf(stderr, "Vamos a guardar la empresa en el fichero %s\n", fn.toAscii().constData());
             QString cadena;
-            cadena.sprintf("%sguardaemp %s %s %s", confpr->valor(CONF_EJECUTABLES).toAscii().constData(), PGserver.toAscii().constData(), dbEmpresa.toAscii().constData(), fn.toAscii().constData());
+            cadena.sprintf("pg_dump %s > %s",  dbEmpresa.toAscii().constData(), fn.toAscii().constData());
             fprintf(stderr, "%s\n", cadena.toAscii().constData());
             system(cadena.toAscii().constData());
         } // end if
@@ -295,8 +265,8 @@ void BConfiguracion::salvarEmpresa() {
 
 /// Restauramos una copia de seguridad de una base de datos.
 /// Para cargar la empresa debe estar sin ningun usuario dentro de ella.
-void BConfiguracion::BotonA_4restaurarEmpresa() {
-    fprintf(stderr, "Restaurar empresa \n");
+void BConfiguracion::restaurarEmpresa() {
+    _depura( "BConfiguracion::restaurarEmpresa", 0);
     QString dbEmpresa;
     QString PGserver;
     PGserver = confpr->valor(CONF_SERVIDOR).toAscii().constData();
@@ -309,11 +279,16 @@ void BConfiguracion::BotonA_4restaurarEmpresa() {
                      tr("Empresas (*.pgdump)"));
 
         if (!fn.isEmpty()) {
-            QString comando = "cargaemp " + PGserver + " " + dbEmpresa + " " + fn;
-            fprintf(stderr, "%s\n", comando.toAscii().constData());
+
+	    QString comando = "dropdb " + dbEmpresa;
+            system (comando.toAscii().constData());
+	    comando = "createdb "+dbEmpresa;
+            system (comando.toAscii().constData());
+            comando = "psql " + dbEmpresa + "< " + fn;
             system (comando.toAscii().constData());
         } // end if
     } // end if
+    _depura( "END BConfiguracion::restaurarEmpresa", 0);
 }
 
 
@@ -341,4 +316,7 @@ void BConfiguracion::listView2_clickBotonDerecho(QListWidgetItem *, const QPoint
 
 /// Por conveniencia (Bug QT??).
 void BConfiguracion::listiView2_clickMouse(int, QListWidgetItem *, const QPoint&, int) {}
+
+    void BConfiguracion::on_mui_restaurarc_clicked() {restaurarEmpresa();}
+    void BConfiguracion::on_mui_restaurarf_clicked() {restaurarEmpresa();}
 
