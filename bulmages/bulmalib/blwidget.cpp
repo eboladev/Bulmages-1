@@ -22,19 +22,23 @@
 
 
 PEmpresaBase::PEmpresaBase(EmpresaBase *emp) {
-	m_empresaBase = emp;
+    m_empresaBase = emp;
 }
 
+
 PEmpresaBase::PEmpresaBase() {
-	m_empresaBase = NULL;
+    m_empresaBase = NULL;
 }
+
 
 PEmpresaBase::~PEmpresaBase() {
 }
 
+
 void PEmpresaBase::setEmpresaBase(EmpresaBase *emp) {
     m_empresaBase = emp;
 }
+
 
 EmpresaBase *PEmpresaBase::empresaBase() {
     return m_empresaBase;
@@ -46,6 +50,7 @@ BLWidget::BLWidget(QWidget *parent, Qt::WFlags f) : QWidget(parent, f), PEmpresa
     _depura("END BLWidget::BLWidget", 0);
 }
 
+
 BLWidget::BLWidget(EmpresaBase *emp, QWidget *parent, Qt::WFlags f) : QWidget(parent, f), PEmpresaBase(emp) {
     _depura("BLWidget::BLWidget", 0);
     _depura("END BLWidget::BLWidget", 0);
@@ -56,5 +61,4 @@ BLWidget::~BLWidget() {
     _depura("BLWidget::~BLWidget", 0);
     _depura("END BLWidget::~BLWidget", 0);
 }
-
 

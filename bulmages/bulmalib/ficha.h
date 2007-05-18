@@ -32,6 +32,7 @@
 
 class Ficha : public BLWidget, public dialogChanges {
     Q_OBJECT
+
 public:
     enum edmode
     {

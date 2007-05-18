@@ -32,6 +32,8 @@
 #include "subform.h"
 #include "fixed.h"
 #include "blwidget.h"
+#include "plugins.h"
+
 
 /// SubForm3, constructor de la clase base para subformularios.
 /** Proporciona un widget que combina la clase QTable con los
@@ -65,15 +67,28 @@ protected:
     /// Indica si se usa ordenacion por la base de datos. (Su uso implica que exista en la tabla el campo orden)
     bool m_orden;
 
+
+    /// Texto de la celda que se coge para saber si se tienen que unir con RowSpan.
+    QString m_textoceldaParaRowSpan;
+    /// Define que columna se va a coger para unir las filas que sean iguales.
+    QString m_columnaParaRowSpan;
+    /// Se utiliza para saber en que fila comenzamos a contar para unir con RowSpan las filas
+    /// que son iguales.
+    int m_filaInicialRowSpan;
+
+
+
 public:
-    int m_prevRow;  /// Indica cual es el ultimo campo (fila) que se ha editado.
-    int m_prevCol;  /// Indica cual es el ultimo campo (columna) que se ha editado.
+    /// Indica cual es el &uacute;ltimo campo (fila) que se ha editado.
+    int m_prevRow;
+    /// Indica cual es el &uacute;ltimo campo (columna) que se ha editado.
+    int m_prevCol;
 
 protected:
-    /// Guarda la configuracion de presentacion del subformulario
-    /// en el directorio .bulmages del home del usuario.
+    /// Guarda la configuraci&oacute;n de presentaci&oacute;n del subformulario
+    /// en el directorio .bulmages situado dentro del directorio 'home' del usuario.
     void guardaconfig();
-    /// Carga la configuracion que tenia el formulario la ultima
+    /// Carga la configuraci&oacute;n que ten&iacute;a el formulario la &uacute;ltima
     /// vez que fue utilizado por el usuario.
     void cargaconfig();
     /// Prepara las columnas de la tabla del formulario y pone en
@@ -96,14 +111,14 @@ public:
     bool sortingEnabled();
     /// Establece en el subformulario un modo de funcionamiento mediante
     /// el cual el orden de los elementos se almacena en la base de datos
-    /// mediante un campo orden"tabla" de tipo numerico.
+    /// mediante un campo orden"tabla" de tipo num&eacute;rico.
     void setOrdenEnabled(bool);
-    /// Indica si esta establecido el modo de ordenacion en la base
+    /// Indica si esta establecido el modo de ordenaci&oacute;n en la base
     /// de datos.
     bool ordenEnabled();
     /// Indica si una fila determinada del subformulario esta lista
     /// para intentar ser guardada en la base de datos. O lo que es lo mismo
-    /// si todos los campos necesarios para guardar el registro estan
+    /// si todos los campos necesarios para guardar el registro est&aacute;n
     /// rellenados
     bool campoCompleto(int row);
     /// Establece el modo de borrado de registros que permite al subformulario
@@ -111,10 +126,10 @@ public:
     void setDelete(bool f);
     SubForm3(QWidget *parent);
     virtual ~SubForm3();
-    /// Devuelve el elemento del subformulario ubicado en la posicion
+    /// Devuelve el elemento del subformulario ubicado en la posici&oacute;n
     /// indicada
     SDBCampo *item(int row, int col);
-    /// Devuelve el numero total de columnas del subformulario.
+    /// Devuelve el n&uacute;mero total de columnas del subformulario.
     int columnCount();
     /// Muestra la columna indicada en el subformulario.
     void showColumn(int i);
@@ -124,9 +139,9 @@ public:
     void setColumnWidth(int i, int j);
     /// Oculta la columna indicada.
     void hideColumn(int i);
-    /// Devuelve la fila que en la actualidad poee el foco en el subformulario.
+    /// Devuelve la fila que en la actualidad posee el foco en el subformulario.
     int currentRow();
-    /// Devuelve el numero de filas en el subformulario.
+    /// Devuelve el n&uacute;mero de filas en el subformulario.
     int rowCount();
     /// Devuelve la columna que en la actualidad posee el foco del subformulario.
     int currentColumn();
@@ -146,10 +161,13 @@ public:
     void hideConfig();
     /// Muestra el configurador del subformulario
     void showConfig();
-    /// Hace la impresion del subformulario en formato de tabla RML
+    /// Hace la impresion del subformulario en formato de tabla RML.
     QString imprimir();
     void sortItems(int col, Qt::SortOrder orden);
     void setinsercion(bool b);
+    /// Define que campo se utilizar&aacute; para unir las filas que tengan el mismo texto (rowSpan).
+    /// Es &uacute;til en contabilidad para unir filas del mismo asiento.
+    void setColumnToRowSpan(QString campo);
 /*
     void setcompany(postgresiface2 *c);
     postgresiface2 *companyact();

@@ -75,8 +75,6 @@ BalanceView::BalanceView(empresa *emp, QWidget *parent, int)
     mui_combocoste->setcompany(emp);
     mui_combocoste->setidc_coste("0");
 
-    /// Activamos las se&ntilde;ales.
-    connect(mui_actualizar, SIGNAL(clicked()), this, SLOT(accept()));
     m_companyact->meteWindow(windowTitle(), this);
     _depura("END BalanceView::BalanceView", 0);
 }
@@ -86,6 +84,13 @@ BalanceView::~BalanceView() {
     _depura("BalanceView::~BalanceView", 0);
     m_companyact->sacaWindow(this);
     _depura("END BalanceView::~BalanceView", 0);
+}
+
+
+void BalanceView::on_mui_actualizar_clicked() {
+    _depura("BalanceView::on_mui_actualizar_clicked", 0);
+    accept();
+    _depura("END BalanceView::on_mui_actualizar_clicked", 0);
 }
 
 
@@ -158,7 +163,16 @@ void BalanceView::presentarSyS(QString finicial, QString ffinal, QString cinicia
     /// seg&uacute;n los per&iacute;odos que necesitemos acotar.
     /// Para ello, vamos a recopilar todos los apuntes introducidos agrupados por cuenta
     /// para poder averiguar el estado contable de cada cuenta.
-    query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe) - sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = '" + ffinal.right(4) + "') GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe) - sum(haber)) AS saldo FROM apunte WHERE fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' GROUP BY idcuenta) AS periodo ON periodo.idcuenta = ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe) - sum(haber)) AS saldoant FROM apunte WHERE fecha < '" + finicial + "' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta = anterior.idcuenta ORDER BY codigo";
+    query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM ";
+
+    query += "(SELECT idcuenta, codigo FROM cuenta) AS cuenta ";
+
+    query += " LEFT JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe) - sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = '" + ffinal.right(4) + "' GROUP BY idcuenta) AS ejercicio ON ejercicio.idcuenta = cuenta.idcuenta";
+
+    query += " LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe) - sum(haber)) AS saldo FROM apunte WHERE fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' GROUP BY idcuenta) AS periodo ON periodo.idcuenta = ejercicio.idcuenta ";
+
+    query += " LEFT OUTER JOIN (SELECT idcuenta, (sum(debe) - sum(haber)) AS saldoant FROM apunte WHERE fecha < '" + finicial + "' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta = anterior.idcuenta ORDER BY codigo";
+
     fprintf(stderr,"Query: %s\n", query.toAscii().data());
     /// \bug OJO!! falta usar el querycoste.
     /// Poblamos el &aacute;rbol de hojas (cuentas).

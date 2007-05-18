@@ -28,20 +28,23 @@
 #include "funcaux.h"
 #include "empresabase.h"
 
-class PEmpresaBase  {
+
+class PEmpresaBase {
 private:
     /// Indica si es modo consulta o modo edicion. (altera el comportamiento del
     /// doble click sobre la lista)
     EmpresaBase *m_empresaBase;
+
 public:
     void setEmpresaBase(EmpresaBase *);
     EmpresaBase *empresaBase();
-public:
 
+public:
     PEmpresaBase(EmpresaBase *);
     PEmpresaBase();
     ~PEmpresaBase();
 };
+
 
 class BLWidget : public QWidget, public PEmpresaBase {
     Q_OBJECT

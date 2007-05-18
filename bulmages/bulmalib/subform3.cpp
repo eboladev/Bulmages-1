@@ -131,8 +131,6 @@ void SubForm3::showConfig() {
 }
 
 
-
-
 void SubForm3::setDBTableName(QString nom) {
     m_tablename = nom;
     m_fileconfig = nom;
@@ -181,8 +179,18 @@ void SubForm3::procesaMenu(QAction *) {
 
 /// SubForm3, constructor de la clase base para subformularios.
 SubForm3::SubForm3(QWidget *parent) : BLWidget(parent) {
-    setupUi(this);
     _depura("SubForm3::SubForm3", 0);
+    setupUi(this);
+
+    m_textoceldaParaRowSpan = "";
+    m_filaInicialRowSpan = -1;
+
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("SubForm3_SubForm3", this);
+    if (res != 0) {
+        return;
+    } // end if
+
     mui_list->setSelectionMode(QAbstractItemView::SingleSelection);
     mui_list->setSelectionBehavior(QAbstractItemView::SelectRows);
     mui_list->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
@@ -223,13 +231,15 @@ SubForm3::SubForm3(QWidget *parent) : BLWidget(parent) {
     m_lista.clear();
     m_listaborrar.clear();
 
-
     /// Inicializamos los valores de columna y fila previas para que no tengan un valor indefinido.
     /// Se inicializan con -1 para considerar que no hay celda previa.
     m_prevCol = -1;
     m_prevRow = -1;
 
     setDelete(TRUE);
+
+    /// Disparamos los plugins.
+    g_plugins->lanza("SubForm3_SubForm3_Post", this);
     _depura("END SubForm3::SubForm3", 0);
 }
 
@@ -508,10 +518,22 @@ int SubForm3::inicializar() {
 }
 
 
+void SubForm3::setColumnToRowSpan(QString campo) {
+    _depura("SubForm3::setColumnToRowSpan", 0);
+    m_columnaParaRowSpan = campo;
+    _depura("END SubForm3::setColumnToRowSpan", 0);
+}
+
+
 /// Carga una tabla a partir del recordset que se le ha pasado.
 /** Este m&eacute;todo genera, a partir del recordset pasado como par&aacute;metro el listado y lo muestra. */
 void SubForm3::cargar(cursor2 *cur) {
     _depura("SubForm3::cargar", 0);
+    SDBRecord *reg;
+    SDBCampo *camp;
+    SDBRecord *reg2;
+    SDBCampo *camp2;
+
     /// Desactivamos el sorting debido a un error en las Qt4
     mui_list->setSortingEnabled(FALSE);
     /// Ponemos la consulta a la vista para que pueda ser editada.
@@ -527,9 +549,20 @@ void SubForm3::cargar(cursor2 *cur) {
     if (pagact <= 0)
         pagact = 1;
 
+    /// Reseteamos el "rowSpan" de la tabla antes de borrar las filas.
+    for (int i = 0; i < m_lista.size(); ++i) {
+        reg = m_lista.at(i);
+        for (int j = 0; j < reg->lista()->size(); ++j) {
+            SHeader *head = m_lcabecera.at(j);
+            if (head->nomcampo() == m_columnaParaRowSpan) {
+                mui_list->setSpan(i, j, 1, 1);
+            } // end if
+        } // end for
+    } // end for
     /// Vaciamos la tabla para que no contenga registros.
     mui_list->clear();
     mui_list->setRowCount(0);
+
     /// Vaciamos el recordset para que no contenga registros.
     while (m_lista.count()) {
         rec = m_lista.takeFirst();
@@ -553,16 +586,15 @@ void SubForm3::cargar(cursor2 *cur) {
         m_lista.append(rec);
         cur->siguienteregistro();
     } // end while
+
     /// Inicializamos las columnas y pintamos las cabeceras.
     mui_list->setColumnCount(m_lcabecera.count());
     pintaCabeceras();
     if (m_primero)
         cargaconfig();
+
     /// Inicializamos la tabla con las filas necesarias.
     mui_list->setRowCount(m_lista.count());
-
-    SDBRecord *reg;
-    SDBCampo *camp;
     for (int i = 0; i < m_lista.size(); ++i) {
         reg = m_lista.at(i);
         QRegExp patronFecha("^.*00:00:00.*$"); /// Para emparejar los valores fechas.
@@ -571,11 +603,85 @@ void SubForm3::cargar(cursor2 *cur) {
             /// Si es una fecha lo truncamos a 10 caracteres para presentar solo la fecha.
             if (patronFecha.exactMatch(camp->valorcampo())) {
                 camp->set
-                (camp->valorcampo().left(10));
+                        (camp->valorcampo().left(10));
             } // end if
+            /// Rellena la tabla con los datos.
             mui_list->setItem(i, j, camp);
         } // end for
     } // end for
+
+    ///TODO: 18/05/07 REVISAR EL FUNCIONAMIENTO PORQUE QT HACE COSAS RARAS EN LA TABLA
+    /// Y NO MUESTRA BIEN LAS COSAS SI NO RECARGAS.
+
+
+    /// Establece el "rowSpan" de la tabla.
+    QString textoCeldaAnterior;
+    QString textoCeldaActual;
+
+    /// Recorre las filas.
+    m_filaInicialRowSpan = -1;
+
+    for (int i = 0; i < m_lista.size(); ++i) {
+        reg = m_lista.at(i);
+        int j = 0; /// //TODO: 18/05/07 FORZADO A columna 0 PARA PROBAR;
+        SHeader *head = m_lcabecera.at(j);
+        if (head->nomcampo() == m_columnaParaRowSpan) {
+            camp = (SDBCampo *) reg->lista()->at(j);
+            textoCeldaActual = camp->valorcampo();
+            /// mira lo que hay en la fila anterior si existe.
+            if (i > 0) {
+                reg2 = m_lista.at(i - 1);
+                camp2 = (SDBCampo *) reg2->lista()->at(j);
+                textoCeldaAnterior = camp2->valorcampo();
+                if (textoCeldaActual == textoCeldaAnterior) {
+                    /// activamos el indice de celdas iguales
+                    if (m_filaInicialRowSpan == -1) {
+                        m_filaInicialRowSpan = i - 1;
+                    }
+                    /// hay un registro despues. No = dibuja rowspan.
+                    if (i == (m_lista.size() - 1)) {
+                        fprintf(stderr, "ultimo registro de la tabla. Se dibuja.\n");
+                        QString texto = "filainicial: " + QString::number(m_filaInicialRowSpan) + " - altura: " + QString::number(i - m_filaInicialRowSpan + 1)  + "\n";
+                        fprintf(stderr, texto.toAscii());
+                        mui_list->setSpan(m_filaInicialRowSpan, j, i - m_filaInicialRowSpan + 1, 1);
+                    }
+                } else {
+                    /// comprobamos si queda algo pendiente de hacer rowspan.
+                    if (m_filaInicialRowSpan != -1) {
+                        /// rospan desde inicio iguales hasta fila anterior.
+                        fprintf(stderr, "registro diferente pero queda pendiente algo. Se dibuja.\n");
+                        QString texto = "filainicial: " + QString::number(m_filaInicialRowSpan) + " - altura: " + QString::number(i - m_filaInicialRowSpan)  + "\n";
+                        fprintf(stderr, texto.toAscii());
+                        mui_list->setSpan(m_filaInicialRowSpan, j, i - m_filaInicialRowSpan, 1);
+                    }
+                    m_filaInicialRowSpan = -1;
+                }
+            }
+        }
+
+        /*
+        for (int j = 0; j < reg->lista()->size(); ++j) {
+            camp = (SDBCampo *) reg->lista()->at(j);
+            SHeader *head = m_lcabecera.at(j);
+            if (head->nomcampo() == m_columnaParaRowSpan) {
+                /// Comprobamos si el valor de la celda es igual a la anterior celda.
+                textoCeldaActual = camp->valorcampo();
+                if (textoCeldaActual == textoCeldaAnterior) {
+                    if (m_filaInicialRowSpan == -1) {
+                        /// guardamos el numero de la fila que inicia el grupo de filas iguales.
+                        /// = fila actual -1 => fila anterior.
+                        m_filaInicialRowSpan = i - 1;
+                    } // end if
+                    mui_list->setSpan(m_filaInicialRowSpan, j, i - m_filaInicialRowSpan + 1, 1);
+                } else {
+                    m_filaInicialRowSpan = -1;
+                } // end if
+                textoCeldaAnterior = camp->valorcampo();
+            }
+        } // end for
+        */
+    } // end for
+    fprintf(stderr, "-----------------------------------\n");
 
     /// Si estamos con campos de ordenacion ordenamos tras la carga el listado
     if (m_orden) {
@@ -585,8 +691,8 @@ void SubForm3::cargar(cursor2 *cur) {
         } // end for
     } else {
     /// Si no estamos con campos de ordenacion ordenamos por lo que toca.
-	/// Ordenamos la tabla.
-	mui_list->ordenar();
+    /// Ordenamos la tabla.
+    mui_list->ordenar();
     } // end if
 
     nuevoRegistro();
@@ -611,7 +717,7 @@ void SubForm3::cargar(QString query) {
 
 /// Devuelve la linea que se esta tratando actualmente.
 SDBRecord *SubForm3::lineaact() {
-    _depura("SubForm3::lineaact", 0); 
+    _depura("SubForm3::lineaact", 0);
     return lineaat(mui_list->currentRow());
    _depura("END SubForm3::lineaact", 0);
 }
@@ -970,15 +1076,15 @@ void SubForm3::cargaconfig() {
     if (file.open(QIODevice::ReadOnly)) {
         error = 0;
         QTextStream stream(&file);
-        /// Establecemos la columna de ordenacion
+        /// Establecemos la columna de ordenaci&oacute;n
         QString linea = stream.readLine();
         mui_list->setcolorden(linea.toInt());
 
-        /// Establecemos el tipo de ordenacion
+        /// Establecemos el tipo de ordenaci&oacute;n
         linea = stream.readLine();
         mui_list->settipoorden(linea.toInt());
 
-        /// Establecemos el numero de filas por pagina
+        /// Establecemos el n&uacute;mero de filas por p&aacute;gina
         linea = stream.readLine();
         if (linea.toInt() > 0) {
             mui_filaspagina->setValue(linea.toInt());
@@ -1010,7 +1116,7 @@ void SubForm3::cargaconfig() {
         on_mui_confcol_clicked();
     } // end if
 
-    /// Si se ha producido algun error en la carga hacemos un maquetado automatico.
+    /// Si se ha producido alg&uacute;n error en la carga hacemos un maquetado autom&aacute;tico.
     if (error)
         mui_list->resizeColumnsToContents();
 

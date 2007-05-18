@@ -67,6 +67,7 @@ private:
 public slots:
     virtual void accept();
     virtual void on_mui_imprimir_clicked();
+    virtual void on_mui_actualizar_clicked();
 
 private slots:
     virtual void nivelactivated(int);

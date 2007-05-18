@@ -235,6 +235,9 @@
             <height>22</height>
            </size>
           </property>
+          <property name="shortcut" >
+           <string>F5</string>
+          </property>
           <property name="checkable" >
            <bool>false</bool>
           </property>
@@ -577,11 +580,6 @@
  <layoutdefault spacing="2" margin="5" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaFecha</class>
-   <extends>QWidget</extends>
-   <header>../../../bulmalib/busquedafecha.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaCuenta</class>
    <extends>QWidget</extends>
    <header>busquedacuenta.h</header>
@@ -590,6 +588,11 @@
    <class>DiarioSubForm</class>
    <extends>QFrame</extends>
    <header>diariosubform.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaFecha</class>
+   <extends>QWidget</extends>
+   <header>../../../bulmalib/busquedafecha.h</header>
   </customwidget>
  </customwidgets>
  <resources>
