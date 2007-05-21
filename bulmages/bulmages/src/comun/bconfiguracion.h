@@ -77,6 +77,8 @@ private slots:
     virtual void s_importexportbulmafact();
     virtual void on_mui_restaurarc_clicked();
     virtual void on_mui_restaurarf_clicked();
+    virtual void on_mui_borrarempresabc_clicked();
+    virtual void on_mui_borrarempresabf_clicked();
 };
 
 #endif

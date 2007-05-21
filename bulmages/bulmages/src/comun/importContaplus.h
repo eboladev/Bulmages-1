@@ -36,8 +36,7 @@ private:
 
 public:
     importContaplus(postgresiface2 *, QWidget *, Qt::WFlags);
-    ~importContaplus() {}
-    ;
+    ~importContaplus();
     void alerta(int, int);
     void mensajeria(QString);
 

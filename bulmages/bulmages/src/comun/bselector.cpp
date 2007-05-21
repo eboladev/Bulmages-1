@@ -23,6 +23,7 @@
 
 #include "ui_selectorbase.h"
 #include "bselector.h"
+#include "funcaux.h"
 
 #ifndef WIN32
 #include <unistd.h>
@@ -41,8 +42,8 @@ BSelector::BSelector(QWidget *parent)
     QObject::connect(m_galopin, SIGNAL(clicked()), this, SLOT(produccion_clicked()));
     QObject::connect(m_bulmafact, SIGNAL(clicked()), this, SLOT(m_bulmafact_clicked()));
     QObject::connect(configura, SIGNAL(clicked()), this, SLOT(configura_clicked()));
-/*    QObject::connect(m_bcontaweb, SIGNAL(clicked()), this, SLOT(m_bcontaweb_clicked()));
-*/
+    /*    QObject::connect(m_bcontaweb, SIGNAL(clicked()), this, SLOT(m_bcontaweb_clicked()));
+    */
 
     /// Al crear el selector, todos los modulos estan cerrados = NULL
     m_tipoempresa = "";
@@ -148,6 +149,7 @@ void BSelector::on_mui_info_clicked() {
 
 /// Boton para entrar en el modulo de Facturacion.
 void BSelector::m_bulmafact_clicked() {
+    _depura("BSelector::m_bulmafact_clicked", 0);
     if (m_tipoempresa != "BulmaFact" ) {
         abreempresaview *empcont = new abreempresaview(0, "BulmaFact", "abreempresa", true);
         empcont->modonodestructivo();
@@ -159,5 +161,23 @@ void BSelector::m_bulmafact_clicked() {
         sprintf(cadena, "bulmafact bulmafact %s %s %s &", m_empresabd.toAscii().constData(), confpr->valor(CONF_LOGIN_USER).toAscii().constData(), confpr->valor(CONF_PASSWORD_USER).toAscii().constData());
         system (cadena);
     } // end if
+    _depura("END BSelector::m_bulmafact_clicked", 0);
+}
+
+QString BSelector::empresaDB() {
+    return m_empresabd;
+}
+void BSelector::setEmpresaBD(QString emp) {
+    m_empresabd = emp;
+}
+
+QString BSelector::tipoEmpresa() {
+    return m_tipoempresa;
+}
+
+void BSelector::setTipoEmpresa(QString tip) {
+    _depura("BSelector::setTipoEmpresa", 0);
+    m_tipoempresa = tip;
+    _depura("END BSelector::setTipoEmpresa", 0);
 }
 

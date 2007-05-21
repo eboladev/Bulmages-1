@@ -46,7 +46,6 @@ BConfiguracion::BConfiguracion(BSelector *ref, QWidget *parent, Qt::WFlags f = 0
     QObject::connect(pushButtonF_X, SIGNAL(clicked()), this, SLOT(cerrar()));
     QObject::connect(pushButtonA_1_2, SIGNAL(clicked()), this, SLOT(nuevaFacturacion()));
     QObject::connect(pushButton32, SIGNAL(clicked()), this, SLOT(BotonContaplus()));
-    QObject::connect(m_borrarempresa, SIGNAL(clicked()), this, SLOT(borrarEmpresa()));
     QObject::connect(pushButtonA_1, SIGNAL(clicked()), this, SLOT(nuevaEmpresa()));
     QObject::connect(m_backup, SIGNAL(clicked()), this, SLOT(salvarEmpresa()));
     QObject::connect(pushButton32_2, SIGNAL(clicked()), this, SLOT(s_importexportbulmafact()));
@@ -280,9 +279,9 @@ void BConfiguracion::restaurarEmpresa() {
 
         if (!fn.isEmpty()) {
 
-	    QString comando = "dropdb " + dbEmpresa;
+            QString comando = "dropdb " + dbEmpresa;
             system (comando.toAscii().constData());
-	    comando = "createdb "+dbEmpresa;
+            comando = "createdb "+dbEmpresa;
             system (comando.toAscii().constData());
             comando = "psql " + dbEmpresa + "< " + fn;
             system (comando.toAscii().constData());
@@ -317,6 +316,16 @@ void BConfiguracion::listView2_clickBotonDerecho(QListWidgetItem *, const QPoint
 /// Por conveniencia (Bug QT??).
 void BConfiguracion::listiView2_clickMouse(int, QListWidgetItem *, const QPoint&, int) {}
 
-    void BConfiguracion::on_mui_restaurarc_clicked() {restaurarEmpresa();}
-    void BConfiguracion::on_mui_restaurarf_clicked() {restaurarEmpresa();}
+void BConfiguracion::on_mui_restaurarc_clicked() {
+    restaurarEmpresa();
+}
+void BConfiguracion::on_mui_restaurarf_clicked() {
+    restaurarEmpresa();
+}
 
+void BConfiguracion::on_mui_borrarempresabc_clicked() {
+    borrarEmpresa();
+}
+void BConfiguracion::on_mui_borrarempresabf_clicked() {
+    borrarEmpresa();
+}

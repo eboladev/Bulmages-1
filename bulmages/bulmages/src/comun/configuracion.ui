@@ -134,7 +134,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="m_borrarempresa" >
+          <widget class="QPushButton" name="mui_borrarempresabc" >
            <property name="toolTip" >
             <string>Borra por completo una empresa</string>
            </property>
@@ -280,7 +280,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="m_borrarempresa_2" >
+          <widget class="QPushButton" name="mui_borrarempresabf" >
            <property name="toolTip" >
             <string>Borra por completo una empresa</string>
            </property>
@@ -733,7 +733,7 @@
  <layoutdefault spacing="6" margin="11" />
  <tabstops>
   <tabstop>pushButtonA_1</tabstop>
-  <tabstop>m_borrarempresa</tabstop>
+  <tabstop>mui_borrarempresabc</tabstop>
   <tabstop>m_backup</tabstop>
   <tabstop>mui_restaurarc</tabstop>
   <tabstop>m_tab</tabstop>

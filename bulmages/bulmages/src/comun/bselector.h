@@ -42,18 +42,10 @@ private:
 public:
     BSelector(QWidget *parent = 0);
     ~BSelector();
-    QString empresaDB() {
-        return m_empresabd;
-    };
-    void setEmpresaBD(QString emp) {
-        m_empresabd = emp;
-    };
-    QString tipoEmpresa() {
-        return m_tipoempresa;
-    };
-    void setTipoEmpresa(QString tip) {
-        m_tipoempresa = tip;
-    };
+    QString empresaDB();
+    void setEmpresaBD(QString emp);
+    QString tipoEmpresa();
+    void setTipoEmpresa(QString tip);
 
 public slots:
     virtual void seleccionaempresa_clicked();
