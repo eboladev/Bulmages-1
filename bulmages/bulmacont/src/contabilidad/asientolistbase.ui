@@ -262,7 +262,7 @@
       </sizepolicy>
      </property>
      <property name="sortingEnabled" >
-      <bool>true</bool>
+      <bool>false</bool>
      </property>
     </widget>
    </item>
@@ -555,6 +555,10 @@
   </customwidget>
  </customwidgets>
  <tabstops>
+  <tabstop>mui_imprimir</tabstop>
+  <tabstop>mui_filtrar</tabstop>
+  <tabstop>mui_configurar</tabstop>
+  <tabstop>mui_actualizar</tabstop>
   <tabstop>mui_ejercicio</tabstop>
   <tabstop>mui_fechaInicial</tabstop>
   <tabstop>mui_fechaFinal</tabstop>
@@ -563,10 +567,6 @@
   <tabstop>mui_mayoroigual</tabstop>
   <tabstop>mui_menoroigual</tabstop>
   <tabstop>mui_list</tabstop>
-  <tabstop>mui_imprimir</tabstop>
-  <tabstop>mui_filtrar</tabstop>
-  <tabstop>mui_configurar</tabstop>
-  <tabstop>mui_actualizar</tabstop>
   <tabstop>mui_totalDebe</tabstop>
   <tabstop>mui_totalHaber</tabstop>
  </tabstops>

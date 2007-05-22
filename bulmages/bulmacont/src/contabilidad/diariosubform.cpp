@@ -53,17 +53,19 @@ DiarioSubForm::DiarioSubForm(QWidget *parent, const char *) : SubForm2Bc(parent)
     addSHeader("iddiario", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("iddiario"));
     addSHeader("idcuenta", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("idcuenta"));
     addSHeader("orden", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("orden"));
-    setColumnToRowSpan("idasiento");
+    setColumnToRowSpan("ordenasiento");
     setinsercion(FALSE);
     setOrdenEnabled(FALSE);
-    //setSortingEnabled(TRUE);
+    setOrdenPorQuery(TRUE);
     _depura("DiarioSubForm::DiarioSubForm", 0);
 }
+
 
 DiarioSubForm::~DiarioSubForm() {
     _depura("DiarioSubForm::~DiarioSubForm", 0);
     _depura("END DiarioSubForm::~DiarioSubForm", 0);
 }
+
 
 void DiarioSubForm::contextMenuEvent(QContextMenuEvent *) {
     _depura("DiarioSubForm::contextMenuEvent", 0);

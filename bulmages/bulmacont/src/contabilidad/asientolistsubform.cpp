@@ -31,8 +31,8 @@ AsientoListSubform::AsientoListSubform(QWidget *parent, const char *)
     setFileConfig("AsientoListSubform");
     setDBCampoId("idasiento");
     addSHeader("idasiento", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("Id asiento"));
-    addSHeader("fecha", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Fecha"));
     addSHeader("ordenasiento", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Orden"));
+    addSHeader("fecha", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Fecha"));
     addSHeader("numap", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Apuntes"));
     addSHeader("numborr", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Borrador"));
     addSHeader("totaldebe", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Debe"));
@@ -41,6 +41,7 @@ AsientoListSubform::AsientoListSubform(QWidget *parent, const char *)
     addSHeader("clase", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Clase"));
     setinsercion(FALSE);
     setDelete(FALSE);
+    setOrdenPorQuery(TRUE);
     _depura("END AsientoListSubform::AsientoListSubform", 0);
 }
 

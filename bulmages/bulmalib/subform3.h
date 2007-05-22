@@ -24,6 +24,7 @@
 #include <Qt>
 #include <QWidget>
 #include <QHeaderView>
+#include <QPalette>
 
 #include "ui_subform3base.h"
 #include "postgresiface2.h"
@@ -66,8 +67,8 @@ protected:
     bool m_sorting;
     /// Indica si se usa ordenacion por la base de datos. (Su uso implica que exista en la tabla el campo orden)
     bool m_orden;
-
-
+    /// Indica que no se va aplicar ninguna ordenaci&oacute;n a la consulta de la base de datos.
+    bool m_ordenporquery;
     /// Texto de la celda que se coge para saber si se tienen que unir con RowSpan.
     QString m_textoceldaParaRowSpan;
     /// Define que columna se va a coger para unir las filas que sean iguales.
@@ -75,8 +76,6 @@ protected:
     /// Se utiliza para saber en que fila comenzamos a contar para unir con RowSpan las filas
     /// que son iguales.
     int m_filaInicialRowSpan;
-
-
 
 public:
     /// Indica cual es el &uacute;ltimo campo (fila) que se ha editado.
@@ -105,6 +104,12 @@ public:
 public:
     /// Establece el modo de funcionamiento del scroll horizontal.
     void setHorizontalScrollMode(QAbstractItemView::ScrollMode mode);
+    /// Establece los colores para dibujar el fondo de las filas.
+    /// Si la propiedad 'alternatingRowColors' est&aacute; en TRUE entonces de usan
+    /// los dos colores, si est&aacute; en FALSE s&oacute;lo se usa 'ColorFondo1'.
+    /// Estos valores corresponden a QPalette::Base y QPalette::AlternateBase.
+    void setColorFondo1(QString color);
+    void setColorFondo2(QString color);
     /// Establece que los elementos del subformulario son ordenables
     void setSortingEnabled(bool);
     /// Indica si los elementos del subformulario son ordenables.
@@ -113,6 +118,7 @@ public:
     /// el cual el orden de los elementos se almacena en la base de datos
     /// mediante un campo orden"tabla" de tipo num&eacute;rico.
     void setOrdenEnabled(bool);
+    void setOrdenPorQuery(bool);
     /// Indica si esta establecido el modo de ordenaci&oacute;n en la base
     /// de datos.
     bool ordenEnabled();

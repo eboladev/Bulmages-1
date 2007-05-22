@@ -6,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>640</width>
-    <height>477</height>
+    <height>350</height>
    </rect>
   </property>
   <property name="sizePolicy" >
@@ -75,6 +75,9 @@
        </property>
        <property name="pixmap" >
         <pixmap resource="../bulmages.qrc" >:/BulmaCont32x32/images/png/i_empresa.xpm</pixmap>
+       </property>
+       <property name="scaledContents" >
+        <bool>true</bool>
        </property>
       </widget>
      </item>
@@ -293,6 +296,7 @@
  <layoutdefault spacing="2" margin="5" />
  <tabstops>
   <tabstop>mui_empresas</tabstop>
+  <tabstop>mui_actualizar</tabstop>
   <tabstop>botonAceptar</tabstop>
   <tabstop>botonCancelar</tabstop>
  </tabstops>

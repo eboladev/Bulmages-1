@@ -207,6 +207,7 @@ SubForm3::SubForm3(QWidget *parent) : BLWidget(parent) {
     m_primero = TRUE;
     m_sorting = FALSE;
     m_orden = FALSE;
+    m_ordenporquery = FALSE;
 
     /// Para el listado de columnas hacemos una inicializacion.
     QStringList headers;
@@ -525,6 +526,26 @@ void SubForm3::setColumnToRowSpan(QString campo) {
 }
 
 
+void SubForm3::setColorFondo1(QString color) {
+    _depura("SubForm3::setColorFondo1", 0);
+    QPalette p = mui_list->palette();
+    QBrush brocha = QBrush(QColor(color), Qt::SolidPattern);
+    p.setBrush(QPalette::Base, QBrush(QColor(color), Qt::SolidPattern));
+    mui_list->setPalette(p);
+    _depura("END SubForm3::setColorFondo1", 0);
+}
+
+
+void SubForm3::setColorFondo2(QString color) {
+    _depura("SubForm3::setColorFondo2", 0);
+    QPalette p = mui_list->palette();
+    QBrush brocha = QBrush(QColor(color), Qt::SolidPattern);
+    p.setBrush(QPalette::AlternateBase, brocha);
+    mui_list->setPalette(p);
+    _depura("END SubForm3::setColorFondo1", 0);
+}
+
+
 /// Carga una tabla a partir del recordset que se le ha pasado.
 /** Este m&eacute;todo genera, a partir del recordset pasado como par&aacute;metro el listado y lo muestra. */
 void SubForm3::cargar(cursor2 *cur) {
@@ -559,6 +580,7 @@ void SubForm3::cargar(cursor2 *cur) {
             } // end if
         } // end for
     } // end for
+
     /// Vaciamos la tabla para que no contenga registros.
     mui_list->clear();
     mui_list->setRowCount(0);
@@ -610,10 +632,6 @@ void SubForm3::cargar(cursor2 *cur) {
         } // end for
     } // end for
 
-    ///TODO: 18/05/07 REVISAR EL FUNCIONAMIENTO PORQUE QT HACE COSAS RARAS EN LA TABLA
-    /// Y NO MUESTRA BIEN LAS COSAS SI NO RECARGAS.
-
-
     /// Establece el "rowSpan" de la tabla.
     QString textoCeldaAnterior;
     QString textoCeldaActual;
@@ -621,88 +639,71 @@ void SubForm3::cargar(cursor2 *cur) {
     /// Recorre las filas.
     m_filaInicialRowSpan = -1;
 
+    /// Pone el RowSpan a las filas que son iguales.
     for (int i = 0; i < m_lista.size(); ++i) {
         reg = m_lista.at(i);
-        int j = 0; /// //TODO: 18/05/07 FORZADO A columna 0 PARA PROBAR;
-        SHeader *head = m_lcabecera.at(j);
-        if (head->nomcampo() == m_columnaParaRowSpan) {
-            camp = (SDBCampo *) reg->lista()->at(j);
-            textoCeldaActual = camp->valorcampo();
-            /// mira lo que hay en la fila anterior si existe.
-            if (i > 0) {
-                reg2 = m_lista.at(i - 1);
-                camp2 = (SDBCampo *) reg2->lista()->at(j);
-                textoCeldaAnterior = camp2->valorcampo();
-                if (textoCeldaActual == textoCeldaAnterior) {
-                    /// activamos el indice de celdas iguales
-                    if (m_filaInicialRowSpan == -1) {
-                        m_filaInicialRowSpan = i - 1;
-                    }
-                    /// hay un registro despues. No = dibuja rowspan.
-                    if (i == (m_lista.size() - 1)) {
-                        fprintf(stderr, "ultimo registro de la tabla. Se dibuja.\n");
-                        QString texto = "filainicial: " + QString::number(m_filaInicialRowSpan) + " - altura: " + QString::number(i - m_filaInicialRowSpan + 1)  + "\n";
-                        fprintf(stderr, texto.toAscii());
-                        mui_list->setSpan(m_filaInicialRowSpan, j, i - m_filaInicialRowSpan + 1, 1);
-                    }
-                } else {
-                    /// comprobamos si queda algo pendiente de hacer rowspan.
-                    if (m_filaInicialRowSpan != -1) {
-                        /// rospan desde inicio iguales hasta fila anterior.
-                        fprintf(stderr, "registro diferente pero queda pendiente algo. Se dibuja.\n");
-                        QString texto = "filainicial: " + QString::number(m_filaInicialRowSpan) + " - altura: " + QString::number(i - m_filaInicialRowSpan)  + "\n";
-                        fprintf(stderr, texto.toAscii());
-                        mui_list->setSpan(m_filaInicialRowSpan, j, i - m_filaInicialRowSpan, 1);
-                    }
-                    m_filaInicialRowSpan = -1;
-                }
-            }
-        }
-
-        /*
         for (int j = 0; j < reg->lista()->size(); ++j) {
-            camp = (SDBCampo *) reg->lista()->at(j);
             SHeader *head = m_lcabecera.at(j);
             if (head->nomcampo() == m_columnaParaRowSpan) {
-                /// Comprobamos si el valor de la celda es igual a la anterior celda.
+                camp = (SDBCampo *) reg->lista()->at(j);
                 textoCeldaActual = camp->valorcampo();
-                if (textoCeldaActual == textoCeldaAnterior) {
-                    if (m_filaInicialRowSpan == -1) {
-                        /// guardamos el numero de la fila que inicia el grupo de filas iguales.
-                        /// = fila actual -1 => fila anterior.
-                        m_filaInicialRowSpan = i - 1;
+                /// mira lo que hay en la fila anterior si existe.
+                if (i > 0) {
+                    reg2 = m_lista.at(i - 1);
+                    camp2 = (SDBCampo *) reg2->lista()->at(j);
+                    textoCeldaAnterior = camp2->valorcampo();
+                    if (textoCeldaActual == textoCeldaAnterior) {
+                        /// activamos el indice de celdas iguales
+                        if (m_filaInicialRowSpan == -1) {
+                            m_filaInicialRowSpan = i - 1;
+                        } // end if
+                        /// hay un registro despues. No = dibuja rowspan.
+                        if (i == (m_lista.size() - 1)) {
+                            mui_list->setSpan(m_filaInicialRowSpan, j, i - m_filaInicialRowSpan + 1, 1);
+                        } // end if
+                    } else {
+                        /// comprobamos si queda algo pendiente de hacer rowspan.
+                        if (m_filaInicialRowSpan != -1) {
+                            /// rospan desde inicio iguales hasta fila anterior.
+                            mui_list->setSpan(m_filaInicialRowSpan, j, i - m_filaInicialRowSpan, 1);
+                        }
+                        m_filaInicialRowSpan = -1;
                     } // end if
-                    mui_list->setSpan(m_filaInicialRowSpan, j, i - m_filaInicialRowSpan + 1, 1);
-                } else {
-                    m_filaInicialRowSpan = -1;
                 } // end if
-                textoCeldaAnterior = camp->valorcampo();
-            }
+            } // end if
         } // end for
-        */
     } // end for
-    fprintf(stderr, "-----------------------------------\n");
 
-    /// Si estamos con campos de ordenacion ordenamos tras la carga el listado
-    if (m_orden) {
-        for (int i = 0; i < m_lcabecera.size(); ++i) {
-            if (m_lcabecera.at(i)->nomcampo()  == "orden" + m_tablename)
-                mui_list->sortItems(i);
-        } // end for
-    } else {
-    /// Si no estamos con campos de ordenacion ordenamos por lo que toca.
-    /// Ordenamos la tabla.
-    mui_list->ordenar();
+    /// Si est&aacute; definido no aplicamos ninguna ordenaci&oacute;n.
+    if (!m_ordenporquery) {
+        /// Si estamos con campos de ordenacion ordenamos tras la carga el listado
+        if (m_orden) {
+            for (int i = 0; i < m_lcabecera.size(); ++i) {
+                if (m_lcabecera.at(i)->nomcampo() == "orden" + m_tablename)
+                    mui_list->sortItems(i);
+            } // end for
+        } else {
+            /// Si no estamos con campos de ordenaci&oacute;n ordenamos por lo que toca.
+            /// Ordenamos la tabla.
+            mui_list->ordenar();
+        } // end if
     } // end if
 
     nuevoRegistro();
 
-    /// configuramos que registros son visibles y que registros no lo son.
+    /// Configuramos que registros son visibles y que registros no lo son.
     on_mui_confcol_clicked();
     /// Reactivamos el sorting
     mui_list->setSortingEnabled(m_sorting);
 
     _depura("END SubForm3::cargar", 0);
+}
+
+
+void SubForm3::setOrdenPorQuery(bool ordenactivado) {
+    _depura("SubForm3::setOrdenPorQuery", 0);
+    m_ordenporquery = ordenactivado;
+    _depura("END SubForm3::setOrdenPorQuery", 0);
 }
 
 

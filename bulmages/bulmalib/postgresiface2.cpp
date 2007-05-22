@@ -89,11 +89,18 @@ cursor2::cursor2(QString nombre, PGconn *conn1, QString SQLQuery) {
         ncampos = PQnfields(result);
         registroactual = 0;
         /// Depuramos todo.
+        fprintf(stderr, "------------ RESULTADO DE LA CONSULTA -----------------\n");
+        QString err;
+        err.sprintf("Numero de registros: %d, Numero de campos: %d\n", nregistros, ncampos);
+        fprintf(stderr, err.toAscii());
+        fprintf(stderr, "--------- FIN RESULTADO DE LA CONSULTA ----------------\n");
+        /*
         _depura("------------ RESULTADO DE LA CONSULTA -----------------");
         QString err;
         err.sprintf("Numero de registros: %d, Numero de campos: %d", nregistros, ncampos);
         _depura(err);
         _depura("--------- FIN RESULTADO DE LA CONSULTA ----------------");
+        */
     } catch (...) {
         _depura("cursor2::cursor2: Error en la consulta: " + SQLQuery, 3);
         throw -1;

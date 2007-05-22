@@ -156,12 +156,13 @@ void DiarioView::presentar() {
     _depura("DiarioView::presentar", 0);
     QString query = "SELECT *, cuenta.descripcion AS descripcioncuenta FROM borrador LEFT JOIN cuenta ON cuenta.idcuenta = borrador.idcuenta ";
     query += " LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste FROM c_coste) AS t1 ON t1.idc_coste = borrador.idc_coste ";
-    query += " LEFT JOIN (SELECT ordenasiento, idasiento, fecha FROM asiento) AS t5 ON t5.idasiento = borrador.idasiento";
+    query += " LEFT JOIN (SELECT (ordenasiento || ' - ' || fecha) AS ordenasiento, idasiento, fecha FROM asiento) AS t5 ON t5.idasiento = borrador.idasiento";
     query += " LEFT JOIN (SELECT idcanal, nombre as nombrecanal FROM canal) AS t2 ON t2.idcanal = borrador.idcanal";
     query += " LEFT JOIN (SELECT idregistroiva, factura, idborrador FROM registroiva) AS t3 ON t3.idborrador = borrador.idborrador ";
     QString cad = "";
     QString cadwhere=" WHERE ";
     QString cadand = "";
+    QString totalcadena = "";
 
     if (mui_fechainicial->text() != "") {
         cad += cadwhere + cadand + "borrador.fecha >= '" + mui_fechainicial->text() + "'";
@@ -175,7 +176,9 @@ void DiarioView::presentar() {
         cadand = " AND ";
     } // end if
 
-    cursor2 *cur = m_companyact->cargacursor(query + cad + " ORDER BY t5.fecha, t5.ordenasiento ");
+    totalcadena = query + cad + " ORDER BY t5.fecha, t5.ordenasiento ";
+
+    cursor2 *cur = m_companyact->cargacursor(totalcadena);
     mui_list->cargar(cur);
     delete cur;
 

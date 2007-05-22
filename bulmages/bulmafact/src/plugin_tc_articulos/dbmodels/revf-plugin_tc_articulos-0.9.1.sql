@@ -82,45 +82,65 @@ DECLARE
 BEGIN
         SELECT INTO rec * FROM pg_attribute WHERE attname = ''idtalla'';
         IF NOT FOUND THEN
-                CREATE TABLE talla (
+                CREATE TABLE tc_talla (
                         idtalla SERIAL PRIMARY KEY,
                         nomtalla CHARACTER VARYING(50)
                 );
-                CREATE TABLE color (
+                CREATE TABLE tc_color (
                         idcolor SERIAL PRIMARY KEY,
                         nomcolor CHARACTER VARYING(50),
 			rgbcolor CHARACTER VARYING(13)
                 );
-                CREATE TABLE articulo_talla (
+                CREATE TABLE tc_articulo_talla (
                         idtalla INTEGER NOT NULL,
                         idarticulo INTEGER NOT NULL,
-			incprecio NUMERIC(12, 2),
+			incprecioarticulo_talla NUMERIC(12, 2),
 			PRIMARY KEY (idtalla, idarticulo)
                 );
-                CREATE TABLE articulo_color (
+                CREATE TABLE tc_articulo_color (
                         idcolor INTEGER NOT NULL,
                         idarticulo INTEGER NOT NULL,
-			incprecio NUMERIC(12, 2),
+			incprecioarticulo_color NUMERIC(12, 2),
 			PRIMARY KEY (idcolor, idarticulo)
                 );
 		CREATE TABLE tc_stock_almacen (
-			idtc_stock_almacen SERIAL PRIMARY KEY,
+			idstock_almacen SERIAL PRIMARY KEY,
 			idarticulo INTEGER NOT NULL REFERENCES articulo(idarticulo),
 			idalmacen INTEGER NOT NULL REFERENCES almacen(idalmacen),
-			idtalla INTEGER,
-			idcolor INTEGER,
-			stock numeric(12, 2) DEFAULT 0
+			cantstock_almacen numeric(12, 2) DEFAULT 0
+		);
+		CREATE TABLE tc_stock_tallacolor (
+			idstock_almacen INTEGER NOT NULL REFERENCES tc_stock_almacen(idstock_almacen),
+			idtalla INTEGER REFERENCES tc_talla(idtalla),
+			idcolor INTEGER REFERENCES tc_color(idcolor),
+			cantstock_tallacolor NUMERIC(12,2) DEFAULT 0
 		);
         END IF;
 
-	SELECT INTO rec attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''idtalla'' AND relname=''lalbaran'';
+	SELECT INTO rec attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid = pg_class.oid WHERE attname = ''idtalla'' AND relname = ''lalbaran'';
 	IF NOT FOUND THEN
+		-- Alteramos la tabla de presupuestos.
+		ALTER TABLE lpresupuesto ADD COLUMN idtalla INTEGER;
+		ALTER TABLE lpresupuesto ADD COLUMN idcolor INTEGER;
+		-- Agregamos cambios a los pedidos.
+		ALTER TABLE lpedidocliente ADD COLUMN idtalla INTEGER;
+		ALTER TABLE lpedidocliente ADD COLUMN idcolor INTEGER;
+		-- Agregamos cambios a los pedidos de proveedor.
+		ALTER TABLE lpedidoproveedor ADD COLUMN idtalla INTEGER;
+		ALTER TABLE lpedidoproveedor ADD COLUMN idcolor INTEGER;
+		-- Agregamos campos a los albaranes.
 		ALTER TABLE lalbaran ADD COLUMN idtalla INTEGER;
 		ALTER TABLE lalbaran ADD COLUMN idcolor INTEGER;
+		-- Agregamos campos a los albaranes de proveedor.
 		ALTER TABLE lalbaranp ADD COLUMN idtalla INTEGER;
 		ALTER TABLE lalbaranp ADD COLUMN idcolor INTEGER;
+		-- Agregamos cambios a las factura.
+		ALTER TABLE lfactura ADD COLUMN idtalla INTEGER;
+		ALTER TABLE lfactura ADD COLUMN idcolor INTEGER;
+		-- Agregamos cambios a las facturap.
+		ALTER TABLE lfacturap ADD COLUMN idtalla INTEGER;
+		ALTER TABLE lfacturap ADD COLUMN idcolor INTEGER;
 	END IF;
-
 
         RETURN 0;
 END;
@@ -130,120 +150,53 @@ DROP FUNCTION aux() CASCADE;
 \echo ":: Agregamos las tablas de tallas, colores y stock... "
 
 
-
-SELECT drop_if_exists_proc('tc_disminuyestock', '');
-CREATE FUNCTION tc_disminuyestock() RETURNS "trigger"
+SELECT drop_if_exists_proc('tc_insertlalbaran', '');
+CREATE FUNCTION tc_insertlalbaran() RETURNS "trigger"
 AS '
 DECLARE
-
+   bs RECORD;
+   stockalmacen RECORD;
+   m_idalmacen INTEGER;
 BEGIN
-    -- Hacemos el update del stock por almacenes
-    UPDATE tc_stock_almacen SET stock = stock + OLD.cantlalbaran WHERE idarticulo = OLD.idarticulo AND idtalla = OLD.idtalla AND idcolor = OLD.idcolor AND idalmacen IN (SELECT idalmacen FROM albaran WHERE idalbaran = OLD.idalbaran);
-    RETURN NEW;
-END;
-' LANGUAGE plpgsql;
+    SELECT INTO bs * FROM albaran WHERE idalbaran = NEW.idalbaran;
+    m_idalmacen := bs.idalmacen;
 
-\echo -n ':: Disparador que disminuye stock al borrar o actualizar el detalle de un albaran a cliente ... '
-CREATE TRIGGER tc_disminuyestockt
-    AFTER DELETE OR UPDATE ON lalbaran
-    FOR EACH ROW
-    EXECUTE PROCEDURE tc_disminuyestock();
-
-SELECT drop_if_exists_proc('tc_aumentastock', '');
-
-\echo -n ':: Funcion para aumentar stock ... '
-CREATE FUNCTION tc_aumentastock() RETURNS "trigger"
-AS '
-DECLARE
-	bs RECORD;
-	almacen INTEGER;
-BEGIN
-    -- Cojo el almacen del albaran
-    SELECT INTO bs idalmacen FROM albaran WHERE idalbaran = NEW.idalbaran;
-    almacen := bs.idalmacen;
-
-    -- Compruebo que exista el registro de stock para hacer o bien un insert o un update.
-    SELECT INTO bs * from tc_stock_almacen WHERE idarticulo = NEW.idarticulo AND idtalla = NEW.idtalla AND idcolor = NEW.idcolor AND idalmacen = almacen;
-    IF FOUND THEN
-	-- Hacemos el update del stock por almacenes
-	UPDATE tc_stock_almacen SET stock = stock - NEW.cantlalbaran WHERE idarticulo = NEW.idarticulo AND idtalla = NEW.idtalla AND idcolor = NEW.idcolor AND idalmacen = almacen;
+    -- Tratamos el control de stock general.
+    SELECT INTO stockalmacen * FROM tc_stock_almacen WHERE idalmacen = m_idalmacen AND idarticulo = NEW.idarticulo;
+    IF NOT FOUND THEN
+	INSERT INTO tc_stock_almacen (idarticulo, idalmacen, cantstock_almacen) VALUES (NEW.idarticulo, m_idalmacen, -NEW.cantlalbaran);
+	SELECT INTO stockalmacen * FROM tc_stock_almacen WHERE idalmacen = m_idalmacen AND idarticulo = NEW.idarticulo;	
     ELSE
-	-- Hacemos el insert del stock por almacenes
-	INSERT INTO tc_stock_almacen (idarticulo, idalmacen, idtalla, idcolor, stock) VALUES (NEW.idarticulo, almacen, NEW.idtalla, NEW.idcolor, -NEW.cantlalbaran);
+	UPDATE tc_stock_almacen SET cantstock_almacen = cantstock_almacen - NEW.cantlalbaran WHERE idarticulo=NEW.idarticulo AND idalmacen = m_idalmacen;
     END IF;
+
+    -- Tratamos el control de stock para tallas y colores.
+    IF NEW.idtalla IS NOT NULL OR NEW.idcolor IS NOT NULL THEN
+	SELECT INTO bs * FROM tc_stock_tallacolor WHERE idstock_almacen = stockalmacen.idstock_almacen AND idtalla = NEW.idtalla AND idcolor = NEW.idcolor;
+	IF NOT FOUND THEN
+		INSERT INTO tc_stock_tallacolor (idstock_almacen, idtalla, idcolor, cantstock_tallacolor) VALUES (stockalmacen.idstock_almacen, NEW.idtalla, NEW.idcolor, -NEW.cantlalbaran);
+	ELSE
+		UPDATE tc_stock_tallacolor SET cantstock_tallacolor = cantstock_tallacolor -NEW.cantlalbaran WHERE idstock_almacen = stockalmacen.idstock_almacen AND idtalla = NEW.idtalla AND idcolor = NEW.idcolor;
+	END IF;			
+    END IF;
+    
+    
     RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
 
-
-\echo -n ':: Disparador que aumenta stock al insertar o actualizar el detalle de un albaran a cliente ... '
-CREATE TRIGGER tc_aumentastockt
-    AFTER INSERT OR UPDATE ON lalbaran
+\echo -n ':: Disparador que disminuye stock al insertar una linea en el detalle de un albaran a cliente ... '
+CREATE TRIGGER tc_insertlalbarant
+    AFTER INSERT ON lalbaran
     FOR EACH ROW
-    EXECUTE PROCEDURE tc_aumentastock();    
+    EXECUTE PROCEDURE tc_insertlalbaran();
 
 
 
--- ====================== PARTE DE ALBARANES DE PROVEEDOR
-
-SELECT drop_if_exists_proc('tc_disminuyestockp', '');
-CREATE FUNCTION tc_disminuyestockp() RETURNS "trigger"
-AS '
-DECLARE
-BEGIN
-    -- Hacemos el update del stock por almacenes
-    UPDATE tc_stock_almacen SET stock = stock + OLD.cantlalbaranp WHERE idarticulo = OLD.idarticulo AND idtalla = OLD.idtalla AND idcolor = OLD.idcolor AND idalmacen IN (SELECT idalmacen FROM albaranp WHERE idalbaranp = OLD.idalbaranp);
-    RETURN NEW;
-END;
-' LANGUAGE plpgsql;
-
-\echo -n ':: Disparador que disminuye stock al borrar o actualizar el detalle de un albaran a cliente ... '
-CREATE TRIGGER tc_disminuyestockpt
-    AFTER DELETE OR UPDATE ON lalbaranp
-    FOR EACH ROW
-    EXECUTE PROCEDURE tc_disminuyestockp();
-
-SELECT drop_if_exists_proc('tc_aumentastockp', '');
-\echo -n ':: Funcion para aumentar stock ... '
-CREATE FUNCTION tc_aumentastockp() RETURNS "trigger"
-AS '
-DECLARE
-	bs RECORD;
-	almacen INTEGER;
-BEGIN
-    -- Cojo el almacen del albaranp
-    SELECT INTO bs idalmacen FROM albaranp WHERE idalbaranp = NEW.idalbaranp;
-    almacen := bs.idalmacen;
-
-    IF NEW.idtalla IS NULL THEN
-	NEW.idtalla := 0;
-    END IF;
-
-    IF NEW.idcolor IS NULL THEN
-	NEW.idcolor := 0;
-    END IF;
 
 
-    -- Compruebo que exista el registro de stock para hacer o bien un insert o un update.
-    SELECT INTO bs * from tc_stock_almacen WHERE idarticulo = NEW.idarticulo AND idtalla = NEW.idtalla AND idcolor = NEW.idcolor AND idalmacen = almacen;
-    IF FOUND THEN
-	-- Hacemos el update del stock por almacenes
-	RAISE NOTICE '' Entramos '';
-	UPDATE tc_stock_almacen SET stock = stock - NEW.cantlalbaranp WHERE idarticulo = NEW.idarticulo AND idtalla = NEW.idtalla AND idcolor = NEW.idcolor AND idalmacen = almacen;
-    ELSE
-	-- Hacemos el insert del stock por almacenes
-	INSERT INTO tc_stock_almacen (idarticulo, idalmacen, idtalla, idcolor, stock) VALUES (NEW.idarticulo, almacen, NEW.idtalla, NEW.idcolor, -NEW.cantlalbaranp);
-    END IF;
-    RETURN NEW;
-END;
-' LANGUAGE plpgsql;
+-- ====================================================================================HECHO
 
-
-\echo -n ':: Disparador que aumenta stock al insertar o actualizar el detalle de un albaran a cliente ... '
-CREATE TRIGGER tc_aumentastockpt
-    AFTER INSERT OR UPDATE ON lalbaranp
-    FOR EACH ROW
-    EXECUTE PROCEDURE tc_aumentastockp();    
 
 
 -- ==============================================================================
@@ -274,3 +227,4 @@ DROP FUNCTION drop_if_exists_proc(text,text) CASCADE;
 
 
 COMMIT;
+
