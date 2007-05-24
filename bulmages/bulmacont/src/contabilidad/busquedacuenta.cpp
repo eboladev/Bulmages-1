@@ -228,6 +228,7 @@ void BusquedaCuenta::s_lostFocus() {
         delete cursorcta;
     } // end if
     emit(valueChanged(mdb_idcuenta));
+    g_plugins->lanza("BusquedaCuenta_s_lostFocus_post", this);
     _depura("END BusquedaCuenta::s_lostFocus", 0);
 }
 

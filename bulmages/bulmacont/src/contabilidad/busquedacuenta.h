@@ -67,6 +67,7 @@ public:
     BusquedaCuenta(QWidget *parent = 0);
     ~BusquedaCuenta();
     void setempresa(empresa *comp);
+    empresa *_empresa() {return m_companyact;};
     QString text();
     virtual void setText(QString val);
     virtual QString codigocuenta();

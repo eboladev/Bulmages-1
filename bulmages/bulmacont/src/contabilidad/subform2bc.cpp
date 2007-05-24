@@ -143,6 +143,7 @@ void SubForm2Bc::on_mui_list_editFinished(int row, int col, int key) {
         rec->setDBvalue( "fecha", nfecha);
     } // end if
     SubForm3::on_mui_list_editFinished(row, col, key);
+    g_plugins->lanza("SubForm2Bc_editFinished_post", this);
     _depura("END SubForm2Bc::editFinished", 0);
 }
 
