@@ -108,6 +108,36 @@ END;
 '
     LANGUAGE plpgsql;
 
+-- ================================= CAMBIO DE CONTRAPARTIDA =============================
+-- =======================================================================================
+CREATE OR REPLACE FUNCTION ccontrapartida(integer)
+  RETURNS integer AS '
+DECLARE 
+    midapunte ALIAS FOR $1;
+    apt RECORD;
+    aptasien RECORD;
+BEGIN
+    SELECT INTO apt * FROM apunte WHERE idapunte= midapunte;
+    IF apt.contrapartida ISNULL THEN
+	IF apt.debe = 0 THEN
+	    SELECT INTO aptasien * FROM apunte WHERE idasiento = apt.idasiento AND debe <> 0 ORDER BY debe DESC;
+	    IF FOUND THEN
+		RETURN aptasien.idcuenta;
+	    END IF;
+	ELSE
+	    SELECT INTO aptasien * FROM apunte WHERE idasiento = apt.idasiento AND haber <> 0 ORDER BY haber DESC;
+	    IF FOUND THEN
+		RETURN aptasien.idcuenta;
+	    END IF;
+	END IF;
+    ELSE
+	RETURN apt.contrapartida;
+    END IF;
+    RETURN NULL;
+END;
+'  LANGUAGE plpgsql;
+ALTER FUNCTION ccontrapartida(integer) OWNER TO postgres;
+
 
 SELECT drop_if_exists_proc('restriccionesasiento', '');
 CREATE OR REPLACE FUNCTION restriccionesasiento() RETURNS "trigger"

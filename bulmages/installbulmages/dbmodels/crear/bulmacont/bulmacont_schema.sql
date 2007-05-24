@@ -507,32 +507,32 @@ END;
 
 -- La contrapartida de un apunte donde todo son ceros es la misma que el apunte.
 \echo -n ':: Funcion calcular contrapartida ... '
-CREATE FUNCTION ccontrapartida(integer) RETURNS integer
-    AS '
-DECLARE
+CREATE FUNCTION ccontrapartida(integer)
+  RETURNS integer AS '
+DECLARE 
     midapunte ALIAS FOR $1;
     apt RECORD;
     aptasien RECORD;
-    contra RECORD;
 BEGIN
     SELECT INTO apt * FROM apunte WHERE idapunte= midapunte;
--- Este metodo de buscar contrapartidas es poco eficaz por lo que de momento
--- Tenemos desabilitada la opcion de las contrapartidas asi como debe ser.    
--- MUCHO OJO, PUEDE TENER GRAVES CONSECUENCIAS
     IF apt.contrapartida ISNULL THEN
---          RETURN apt.idcuenta;
-        SELECT INTO contra idcuenta FROM apunte WHERE idapunte = bcontrapartida(midapunte);
-        IF FOUND THEN
-                RETURN contra.idcuenta;
-        ELSE
-                RETURN apt.idcuenta;
-        END IF;
+	IF apt.debe = 0 THEN
+	    SELECT INTO aptasien * FROM apunte WHERE idasiento = apt.idasiento AND debe <> 0 ORDER BY debe DESC;
+	    IF FOUND THEN
+		RETURN aptasien.idcuenta;
+	    END IF;
+	ELSE
+	    SELECT INTO aptasien * FROM apunte WHERE idasiento = apt.idasiento AND haber <> 0 ORDER BY haber DESC;
+	    IF FOUND THEN
+		RETURN aptasien.idcuenta;
+	    END IF;
+	END IF;
     ELSE
-        RETURN apt.contrapartida;
+	RETURN apt.contrapartida;
     END IF;
+    RETURN NULL;
 END;
-'
-    LANGUAGE plpgsql;
+'  LANGUAGE plpgsql;
 
     
 -- Creo que haciendo una funcion que cierre todas las contrapartidas de un asiento dado tendria
