@@ -300,8 +300,8 @@ int CuentaView::cargacuenta(int idcuenta1) {
     /// Estamos probando la nueva forma de almacenar cambios.
     dialogChanges_cargaInicial();
 
-    return 0;
     _depura("END CuentaView::cargacuenta", 0);
+    return 0;
 }
 
 
@@ -353,12 +353,14 @@ int CuentaView::nuevacuenta(QString codpadre, int idgrupo) {
     /// Establecemos el valor del padre y del grupo.
     codigopadre->setText(codpadre);
     int i = 0;
-    while (idgrupos[i] != idgrupo && i < 100)
+    while (idgrupos[i] != idgrupo && i < 100) {
         i++;
-    if (idgrupos[i] == idgrupo)
+    } // end while
+    if (idgrupos[i] == idgrupo) {
         combogrupos->setCurrentIndex(i);
-    return 0;
+    } // end if
     _depura("END CuentaView::nuevacuenta", 0);
+    return 0;
 }
 
 /// Esta funci&oacute;n se dispara cuando se ha pulsado

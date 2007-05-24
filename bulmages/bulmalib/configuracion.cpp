@@ -176,6 +176,8 @@ QString configuracion::nombre(int i) {
         return "CONF_FONTFAMILY_APUNTES";
     if (i == CONF_BG_DIARIO)
         return "CONF_BG_DIARIO";
+    if (i == CONF_BG_ALT_DIARIO)
+        return "CONF_BG_ALT_DIARIO";
     if (i == CONF_FG_DIARIO1)
         return "CONF_FG_DIARIO1";
     if (i == CONF_FG_DIARIO2)
@@ -350,7 +352,7 @@ bool configuracion::leeconfig(QString fich) {
 
             for (int i = 0; i < 1000; i++) {
                 if (cad.startsWith(nombre(i)) && nombre(i) != "") {
-                    _depura("[" + nombre(i) + "]" + "--->" + cad, 1);
+                    _depura("[" + nombre(i) + "]" + "--->" + cad, 0);
                     cad = cad.right(cad.length() - nombre(i).length());
                     cad = cad.trimmed();
                     m_valores[i] = cad;

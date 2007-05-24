@@ -78,7 +78,7 @@
       <envvars/>
     </run>
     <general>
-      <activedir>bulmacont/src/contabilidad</activedir>
+      <activedir>bulmafact/src/plugininventario</activedir>
     </general>
     <make>
       <abortonerror>true</abortonerror>

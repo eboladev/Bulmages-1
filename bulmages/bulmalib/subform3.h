@@ -76,6 +76,9 @@ protected:
     /// Se utiliza para saber en que fila comenzamos a contar para unir con RowSpan las filas
     /// que son iguales.
     int m_filaInicialRowSpan;
+    QColor m_colorfondo1;
+    QColor m_colorfondo2;
+    void ponItemColorFondo(QTableWidget *twidget, int filainicial, int totalfilas, QColor colorfondo);
 
 public:
     /// Indica cual es el &uacute;ltimo campo (fila) que se ha editado.
@@ -102,6 +105,9 @@ public:
     QList<SHeader *> *cabecera();
 
 public:
+    /// Define si el listado presentar&aacute; las filas con colores alternativos.
+    void setListadoPijama(bool pijama);
+    bool listadoPijama();
     /// Establece el modo de funcionamiento del scroll horizontal.
     void setHorizontalScrollMode(QAbstractItemView::ScrollMode mode);
     /// Establece los colores para dibujar el fondo de las filas.

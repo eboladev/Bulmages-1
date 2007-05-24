@@ -180,6 +180,7 @@ QString selectccosteview::nomcoste() {
 
     delete *m_iterador;
     _depura("END selectccosteview::nomcoste", 0);
+    return "";
 }
 
 

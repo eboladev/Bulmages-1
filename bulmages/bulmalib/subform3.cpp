@@ -177,6 +177,23 @@ void SubForm3::procesaMenu(QAction *) {
 }
 
 
+void SubForm3::setListadoPijama(bool pijama) {
+    _depura("SubForm3::setListadoPijama", 0);
+    if (pijama) {
+        mui_list->setAlternatingRowColors(TRUE);
+    } else {
+        mui_list->setAlternatingRowColors(FALSE);
+    } // end if
+    _depura("END SubForm3::setListadoPijama", 0);
+}
+
+
+bool SubForm3::listadoPijama() {
+    _depura("SubForm3::listadoPijama", 0);
+    return mui_list->alternatingRowColors();
+    _depura("END SubForm3::listadoPijama", 0);
+}
+
 /// SubForm3, constructor de la clase base para subformularios.
 SubForm3::SubForm3(QWidget *parent) : BLWidget(parent) {
     _depura("SubForm3::SubForm3", 0);
@@ -194,9 +211,14 @@ SubForm3::SubForm3(QWidget *parent) : BLWidget(parent) {
     mui_list->setSelectionMode(QAbstractItemView::SingleSelection);
     mui_list->setSelectionBehavior(QAbstractItemView::SelectRows);
     mui_list->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
-    mui_list->setAlternatingRowColors(TRUE);
     mui_list->setSortingEnabled(FALSE); /// TODO:Hay un Bug que impide ordenar bien los elementos.
     mui_list->horizontalHeader()->setMovable(TRUE);
+    /// Valor por defecto en todos los listados.
+    setListadoPijama(TRUE);
+    QPalette p;
+    p = mui_list->palette();
+    m_colorfondo1 = p.color(QPalette::Normal, QPalette::Base);
+    m_colorfondo2 = p.color(QPalette::Normal, QPalette::AlternateBase);
 
     /// Capturamos la secuencia de teclas para hacer aparecer o desaparecer
     /// el panel de configuracion del subform3.
@@ -528,21 +550,31 @@ void SubForm3::setColumnToRowSpan(QString campo) {
 
 void SubForm3::setColorFondo1(QString color) {
     _depura("SubForm3::setColorFondo1", 0);
-    QPalette p = mui_list->palette();
-    QBrush brocha = QBrush(QColor(color), Qt::SolidPattern);
-    p.setBrush(QPalette::Base, QBrush(QColor(color), Qt::SolidPattern));
-    mui_list->setPalette(p);
+    m_colorfondo1 = QColor(color);
     _depura("END SubForm3::setColorFondo1", 0);
 }
 
 
 void SubForm3::setColorFondo2(QString color) {
     _depura("SubForm3::setColorFondo2", 0);
-    QPalette p = mui_list->palette();
-    QBrush brocha = QBrush(QColor(color), Qt::SolidPattern);
-    p.setBrush(QPalette::AlternateBase, brocha);
-    mui_list->setPalette(p);
+    m_colorfondo2 = QColor(color);
     _depura("END SubForm3::setColorFondo1", 0);
+}
+
+
+void SubForm3::ponItemColorFondo(QTableWidget *twidget, int filainicial, int totalfilas, QColor colorfondo) {
+    SDBRecord *reg3;
+    ///TODO: Si hay que poner color al fondo de las filas se pone el que toque.
+    if (listadoPijama() == FALSE) {
+        /// Recorre todos los items de las filas afectadas.
+        for (int k = filainicial; k < filainicial + totalfilas; ++k) {
+            reg3 = m_lista.at(k);
+            for (int r = 0; r < reg3->lista()->size(); ++r) {
+                /// Pone el color
+                twidget->item(k, r)->setBackground(QBrush(colorfondo));
+            } // end for
+        } // end for
+    } // end if
 }
 
 
@@ -551,9 +583,11 @@ void SubForm3::setColorFondo2(QString color) {
 void SubForm3::cargar(cursor2 *cur) {
     _depura("SubForm3::cargar", 0);
     SDBRecord *reg;
-    SDBCampo *camp;
     SDBRecord *reg2;
+    SDBCampo *camp;
     SDBCampo *camp2;
+    QColor colorfondo = m_colorfondo1;
+    bool coloraponerfondo = FALSE;
 
     /// Desactivamos el sorting debido a un error en las Qt4
     mui_list->setSortingEnabled(FALSE);
@@ -659,14 +693,34 @@ void SubForm3::cargar(cursor2 *cur) {
                         } // end if
                         /// hay un registro despues. No = dibuja rowspan.
                         if (i == (m_lista.size() - 1)) {
+                            ponItemColorFondo(mui_list, m_filaInicialRowSpan, i - m_filaInicialRowSpan + 1, colorfondo);
                             mui_list->setSpan(m_filaInicialRowSpan, j, i - m_filaInicialRowSpan + 1, 1);
+
+                            if (coloraponerfondo == FALSE) {
+                                colorfondo = m_colorfondo2;
+                                coloraponerfondo = TRUE;
+                            } else {
+                                colorfondo = m_colorfondo1;
+                                coloraponerfondo = FALSE;
+                            } // end if
+
                         } // end if
                     } else {
                         /// comprobamos si queda algo pendiente de hacer rowspan.
                         if (m_filaInicialRowSpan != -1) {
                             /// rospan desde inicio iguales hasta fila anterior.
+                            ponItemColorFondo(mui_list, m_filaInicialRowSpan, i - m_filaInicialRowSpan, colorfondo);
                             mui_list->setSpan(m_filaInicialRowSpan, j, i - m_filaInicialRowSpan, 1);
-                        }
+
+                            if (coloraponerfondo == FALSE) {
+                                colorfondo = m_colorfondo2;
+                                coloraponerfondo = TRUE;
+                            } else {
+                                colorfondo = m_colorfondo1;
+                                coloraponerfondo = FALSE;
+                            } // end if
+
+                        } // end if
                         m_filaInicialRowSpan = -1;
                     } // end if
                 } // end if

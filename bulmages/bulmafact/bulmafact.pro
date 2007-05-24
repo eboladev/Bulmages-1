@@ -25,6 +25,7 @@ SUBDIRS += src/plugincontratos
 
 # Dentro del archivo privatecode.pro basta tener una directiva SUBDIRS apuntando al directorio del
 # plugin.
-include(privatecode.pro)
+include(privatecode.pro){    SUBDIRS += ../../../privatecode/bulmafact/plugin_tr_arqueocaja
+}
 
 

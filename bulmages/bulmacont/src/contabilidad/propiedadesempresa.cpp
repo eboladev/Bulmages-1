@@ -53,7 +53,6 @@ propiedadesempresa::~propiedadesempresa() {
 int propiedadesempresa::inicializa() {
     _depura("propiedadesempresa::inicializa", 0);
     int num;
-    int i;
 
     QString query = "SELECT * FROM configuracion WHERE nombre = 'CodCuenta'";
     cursor2 *curs = m_companyact->cargacursor(query);
@@ -63,8 +62,8 @@ int propiedadesempresa::inicializa() {
     } // end if
     delete curs;
 
-    return 0;
     _depura("END propiedadesempresa::inicializa", 0);
+    return 0;
 }
 
 

@@ -106,13 +106,13 @@ void AmortizacionesView::on_mui_borrar_clicked() {
 
 /// SLOT que responde a la pulsacion del boton actualizar. Que hace que se redibuje el listado de amortizaciones.
 void AmortizacionesView::on_mui_actualizar_clicked() {
-	_depura("AmortizacionesView::on_mui_actualizar_clicked", 0);
-	inicializatabla();
-	_depura("END AmortizacionesView::on_mui_actualizar_clicked", 0);
+    _depura("AmortizacionesView::on_mui_actualizar_clicked", 0);
+    inicializatabla();
+    _depura("END AmortizacionesView::on_mui_actualizar_clicked", 0);
 }
 
 /** Se encarga de la accion preseleccionada al hacer doble click o al darle
-    al boton de editar. 
+    al boton de editar.
     Si estamos en modo seleccion actualiza el valor de los campos de seleccion y
     cierra la ventana.
     Si estamos en modo edicion abre una instancia de ArticuloView y lo carga con el
@@ -120,7 +120,7 @@ void AmortizacionesView::on_mui_actualizar_clicked() {
 */
 /// \TODO: este metodo deberia ser editar
 void AmortizacionesView::editAmortizacion(int row) {
-    _depura("AmortizacionesView::editAmortizacion", 0);
+    _depura("AmortizacionesView::editAmortizacion " + row, 0);
     mdb_idamortizacion = mui_listado->DBvalue("idamortizacion");
     mdb_nomamortizacion = mui_listado->DBvalue("nomamortizacion");
     if (modoEdicion()) {

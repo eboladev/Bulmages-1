@@ -53,7 +53,13 @@ DiarioSubForm::DiarioSubForm(QWidget *parent, const char *) : SubForm2Bc(parent)
     addSHeader("iddiario", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("iddiario"));
     addSHeader("idcuenta", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("idcuenta"));
     addSHeader("orden", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("orden"));
+    /// Van juntas. Desactivas un tipo de pijama y se activa otro personalizado al hacer 'rowspan'.
+    setListadoPijama(FALSE);
     setColumnToRowSpan("ordenasiento");
+    /// ------------------ ///
+    setColorFondo1(confpr->valor(CONF_BG_DIARIO));
+    setColorFondo2(confpr->valor(CONF_BG_ALT_DIARIO));
+
     setinsercion(FALSE);
     setOrdenEnabled(FALSE);
     setOrdenPorQuery(TRUE);

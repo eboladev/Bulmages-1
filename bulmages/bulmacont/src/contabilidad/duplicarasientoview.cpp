@@ -80,11 +80,11 @@ void DuplicarAsientoView::on_mui_aceptar_clicked() {
     QString asientof = aofinal->text();
     QString query1, query2;
     QString textidasiento;
-    int ordeninicial = 0;
-    int idasientoinicial = 0;
+    //int ordeninicial = 0;
+    //int idasientoinicial = 0;
 
-	QString idasiento;
-	QString ordenasiento;
+    QString idasiento;
+    QString ordenasiento;
 
     QString textordeninicial;
     QDate fedinicial = normalizafecha(fdinicial->text());
@@ -116,13 +116,13 @@ void DuplicarAsientoView::on_mui_aceptar_clicked() {
         empresaactual->ejecuta(query1);
 
 
-	query1 = "SELECT * FROM asiento  ORDER BY idasiento DESC LIMIT 1";
-	cursor2 *cursaux = empresaactual->cargacursor(query1);
-	if (!cursaux->eof()) {
-		idasiento = cursaux->valor("idasiento");
-		ordenasiento = cursaux->valor("ordenasiento");
-	} // end if
-	delete cursaux;
+    query1 = "SELECT * FROM asiento  ORDER BY idasiento DESC LIMIT 1";
+    cursor2 *cursaux = empresaactual->cargacursor(query1);
+    if (!cursaux->eof()) {
+        idasiento = cursaux->valor("idasiento");
+        ordenasiento = cursaux->valor("ordenasiento");
+    } // end if
+    delete cursaux;
 
 
 
@@ -157,9 +157,9 @@ void DuplicarAsientoView::on_mui_aceptar_clicked() {
             curborrador->siguienteregistro();
         } // end while
         delete curborrador;
-	query2 = "SELECT cierraasiento("+idasiento+")";
-	cursor2 *cur = empresaactual->cargacursor(query2);
-	delete cur;
+    query2 = "SELECT cierraasiento("+idasiento+")";
+    cursor2 *cur = empresaactual->cargacursor(query2);
+    delete cur;
         curasiento->siguienteregistro();
     } // end while
     delete curasiento;
