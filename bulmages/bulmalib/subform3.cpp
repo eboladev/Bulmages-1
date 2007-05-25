@@ -564,7 +564,7 @@ void SubForm3::setColorFondo2(QString color) {
 
 void SubForm3::ponItemColorFondo(QTableWidget *twidget, int filainicial, int totalfilas, QColor colorfondo) {
     SDBRecord *reg3;
-    ///TODO: Si hay que poner color al fondo de las filas se pone el que toque.
+    /// Si hay que poner color al fondo de las filas se pone el que toque.
     if (listadoPijama() == FALSE) {
         /// Recorre todos los items de las filas afectadas.
         for (int k = filainicial; k < filainicial + totalfilas; ++k) {
@@ -673,7 +673,7 @@ void SubForm3::cargar(cursor2 *cur) {
     /// Recorre las filas.
     m_filaInicialRowSpan = -1;
 
-    /// Pone el RowSpan a las filas que son iguales.
+    /// Pone el 'rowSpan' a las filas que son iguales.
     for (int i = 0; i < m_lista.size(); ++i) {
         reg = m_lista.at(i);
         for (int j = 0; j < reg->lista()->size(); ++j) {
@@ -681,7 +681,7 @@ void SubForm3::cargar(cursor2 *cur) {
             if (head->nomcampo() == m_columnaParaRowSpan) {
                 camp = (SDBCampo *) reg->lista()->at(j);
                 textoCeldaActual = camp->valorcampo();
-                /// mira lo que hay en la fila anterior si existe.
+                /// Mira lo que hay en la fila anterior si existe.
                 if (i > 0) {
                     reg2 = m_lista.at(i - 1);
                     camp2 = (SDBCampo *) reg2->lista()->at(j);
@@ -691,7 +691,7 @@ void SubForm3::cargar(cursor2 *cur) {
                         if (m_filaInicialRowSpan == -1) {
                             m_filaInicialRowSpan = i - 1;
                         } // end if
-                        /// hay un registro despues. No = dibuja rowspan.
+                        /// hay un registro despu&eacute;s. No, dibuja 'rowSpan'.
                         if (i == (m_lista.size() - 1)) {
                             ponItemColorFondo(mui_list, m_filaInicialRowSpan, i - m_filaInicialRowSpan + 1, colorfondo);
                             mui_list->setSpan(m_filaInicialRowSpan, j, i - m_filaInicialRowSpan + 1, 1);
@@ -706,9 +706,9 @@ void SubForm3::cargar(cursor2 *cur) {
 
                         } // end if
                     } else {
-                        /// comprobamos si queda algo pendiente de hacer rowspan.
+                        /// Comprobamos si queda algo pendiente de hacer 'rowSpan'.
                         if (m_filaInicialRowSpan != -1) {
-                            /// rospan desde inicio iguales hasta fila anterior.
+                            /// 'rowSpan' desde inicio iguales hasta fila anterior.
                             ponItemColorFondo(mui_list, m_filaInicialRowSpan, i - m_filaInicialRowSpan, colorfondo);
                             mui_list->setSpan(m_filaInicialRowSpan, j, i - m_filaInicialRowSpan, 1);
 
@@ -720,6 +720,16 @@ void SubForm3::cargar(cursor2 *cur) {
                                 coloraponerfondo = FALSE;
                             } // end if
 
+                        } else {
+                            /// El registro s&oacute;lo tiene una fila.
+                            ponItemColorFondo(mui_list, i - 1, 1, colorfondo);
+                            if (coloraponerfondo == FALSE) {
+                                colorfondo = m_colorfondo2;
+                                coloraponerfondo = TRUE;
+                            } else {
+                                colorfondo = m_colorfondo1;
+                                coloraponerfondo = FALSE;
+                            } // end if
                         } // end if
                         m_filaInicialRowSpan = -1;
                     } // end if
