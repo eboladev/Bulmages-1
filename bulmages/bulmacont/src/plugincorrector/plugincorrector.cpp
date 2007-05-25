@@ -42,7 +42,7 @@ void entryPoint(Bulmacont *bcont) {
 
     doc1->setGeometry(100, 100, 100, 500);
     doc1->resize(330, 400);
-    doc1->setFloating(TRUE);
+    bcont->addDockWidget(Qt::RightDockWidgetArea, doc1);
     doc1->show();
 
     correctorwidget *corr = new correctorwidget(doc1);

@@ -86,3 +86,69 @@ void BusquedaCCoste::setidc_coste(QString idc_coste) {
     _depura("END BusquedaCCoste::setidc_coste", 0, idc_coste);
 }
 
+
+/// ===================================================================
+/// Busqueda Cuenta Delegate para usar con los subforms
+/// ===================================================================
+/** Inicializa todos los componentes del Widget a NULL para que no haya posibles confusiones
+    sobre si un elemento ha sido creado o no.
+    Conecta el SIGNAL activated() con m_activated() para tratarlo.
+*/
+BusquedaCCosteDelegate::BusquedaCCosteDelegate(QWidget *parent)
+        : QComboBox(parent) {
+    _depura("BusquedaCCosteDelegate::BusquedaCCosteDelegate", 10);
+    m_companyact = NULL;
+    setEditable(true);
+    setSizeAdjustPolicy(QComboBox::AdjustToContents);
+    connect(this, SIGNAL(editTextChanged(const QString &)), this, SLOT(s_editTextChanged(const QString &)));
+    _depura("END BusquedaCCosteDelegate::BusquedaCCosteDelegate", 0);
+}
+
+
+void BusquedaCCosteDelegate::setcompany(empresa *comp) {
+    m_companyact = comp;
+}
+
+
+/** Libera la memoria reservada.
+*/
+BusquedaCCosteDelegate::~BusquedaCCosteDelegate() {
+    _depura("BusquedaCCosteDelegate::~BusquedaCCosteDelegate", 10);
+    _depura("END BusquedaCCosteDelegate::~BusquedaCCosteDelegate", 0);
+}
+
+
+/** Permite indicar al Widget cual es la serie de factura seleccionada por defecto.
+    Recarga cursor de serie_factura y cuando encuentra un registro cuyo codigoserie_factura coincide con el pasado
+    como parametro lo establece como el registro activo por el comboBox.
+*/
+void BusquedaCCosteDelegate::s_editTextChanged(const QString &cod) {
+    _depura("BusquedaCCosteDelegate::s_editTextChanged", 0);
+    static bool semaforo = FALSE;
+    QString codigo = cod;
+
+    if (semaforo) {
+        return;
+    } else {
+        semaforo = TRUE;
+    } // end if
+
+    m_cursorcombo = m_companyact->cargacursor("SELECT nombre FROM c_coste WHERE nombre LIKE '" + codigo + "%' ORDER BY nombre LIMIT 25");
+    clear();
+
+    ///TODO: La idea es que salga en el desplegable del combobox el listado de cuentas que
+    /// coincidan con el texto escrito para poder elegirlo.
+    while (!m_cursorcombo->eof()) {
+        //addItem(m_cursorcombo->valor("codigo") + ".-" + m_cursorcombo->valor("descripcion"));
+	addItem(m_cursorcombo->valor("nombre"));
+        m_cursorcombo->siguienteregistro();
+    }
+    delete m_cursorcombo;
+    setEditText(cod);
+
+    semaforo = FALSE;
+    _depura("END BusquedaCCosteDelegate::s_editTextChanged", 0);
+}
+
+
+

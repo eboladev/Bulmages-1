@@ -136,16 +136,15 @@ QString selectcanalview::cadcanal() {
 QString selectcanalview::nomcanal() {
     _depura("selectcanalview::nomcanal", 0);
     QTreeWidgetItemIterator m_iterador(m_listCanales);
+    QString value= "";
 
     if ((*m_iterador)->checkState(0) == Qt::Checked) {
-        fprintf(stderr, "nomcanal: %s\n", (*m_iterador)->text(0).toAscii().constData());
-        return (*m_iterador)->text(0);
-    } else {
-        return "";
+        value = (*m_iterador)->text(0);
     } // end if
 
     delete *m_iterador;
     _depura("END selectcanalview::nomcanal", 0);
+    return value;
 }
 
 

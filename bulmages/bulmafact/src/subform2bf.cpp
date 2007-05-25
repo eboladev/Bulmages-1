@@ -91,8 +91,7 @@ void SubForm2Bf::on_mui_list_pressedSlash(int row, int col) {
     _depura("SubForm2Bf::pressedSlash", 0);
     SDBCampo *camp = (SDBCampo *) item(row, col);
     QString text = editaTexto(camp->text());
-    camp->set
-    (text);
+    camp->set(text);
     _depura("END SubForm2Bf::pressedSlash", 0);
 }
 
@@ -495,8 +494,7 @@ void QSubForm2BfDelegate::setEditorData(QWidget* editor, const QModelIndex& inde
     } else if (linea->nomcampo() == "desctipo_iva") {
         QString value = index.model()->data(index, Qt::DisplayRole).toString();
         BusquedaTipoIVADelegate *comboBox = static_cast<BusquedaTipoIVADelegate*>(editor);
-        comboBox->set
-        (value);
+        comboBox->set(value);
     } else {
         QItemDelegate::setEditorData(editor, index);
     } // end if

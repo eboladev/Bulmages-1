@@ -27,6 +27,26 @@
 #include "postgresiface2.h"
 
 
+class BusquedaCanalDelegate : public QComboBox {
+    Q_OBJECT
+
+private:
+    empresa *m_companyact;
+    /// Este cursor almacena el listado de series de factura para poder trabajar con ellas.
+    cursor2 *m_cursorcombo;
+    QCompleter *completar;
+
+public:
+    BusquedaCanalDelegate(QWidget *parent = 0);
+    ~BusquedaCanalDelegate();
+    void setcompany(empresa *comp);
+
+public slots:
+    virtual void s_editTextChanged(const QString &);
+};
+
+
+
 class BusquedaCanal : public QComboBox {
     Q_OBJECT
 

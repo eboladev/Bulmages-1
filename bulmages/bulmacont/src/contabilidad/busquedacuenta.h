@@ -52,6 +52,8 @@ public slots:
 };
 
 
+
+
 class BusquedaCuenta : public QWidget, public Ui_BusquedaCuentaBase {
     Q_OBJECT
 

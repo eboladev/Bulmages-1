@@ -28,6 +28,27 @@
 class empresa;
 
 
+
+class BusquedaCCosteDelegate : public QComboBox {
+    Q_OBJECT
+
+private:
+    empresa *m_companyact;
+    /// Este cursor almacena el listado de series de factura para poder trabajar con ellas.
+    cursor2 *m_cursorcombo;
+    QCompleter *completar;
+
+public:
+    BusquedaCCosteDelegate(QWidget *parent = 0);
+    ~BusquedaCCosteDelegate();
+    void setcompany(empresa *comp);
+
+public slots:
+    virtual void s_editTextChanged(const QString &);
+};
+
+
+
 class BusquedaCCoste : public QComboBox {
     Q_OBJECT
 

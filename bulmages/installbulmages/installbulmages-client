@@ -166,6 +166,7 @@ cp -r ainteligentes /usr/share/bulmages
 cp -r balances /usr/share/bulmages
 #cp -r kugar /usr/share/bulmages
 cp -r openreports /usr/share/bulmages
+cp -r planescontabiles /usr/share/bulmages
 
 
 ############################################

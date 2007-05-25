@@ -32,12 +32,13 @@ BusquedaCuenta::BusquedaCuenta(QWidget *parent)
     mdb_nomcuenta = "";
     mdb_codigocuenta = "";
     mdb_tipocuenta = "";
-    connect(mui_codigocuenta, SIGNAL(editingFinished()), this, SLOT(s_lostFocus()));
+//    connect(mui_codigocuenta, SIGNAL(editingFinished()), this, SLOT(s_lostFocus()));
     _depura("END BusquedaCuenta::BusquedaCuenta", 0);
 }
 
 
 BusquedaCuenta::~BusquedaCuenta() {
+    _depura("BusquedaCuenta::~BusquedaCuenta", 0);
     _depura("END BusquedaCuenta::~BusquedaCuenta", 0);
 }
 
@@ -233,6 +234,14 @@ void BusquedaCuenta::s_lostFocus() {
 }
 
 
+void BusquedaCuenta::s_returnPressed() {
+    _depura("BusquedaCuenta::s_returnPressed", 10);
+    s_lostFocus();
+    emit returnPressed();
+    _depura("END BusquedaCuenta::s_returnPressed", 10);
+}
+
+
 /// ===================================================================
 /// Busqueda Cuenta Delegate para usar con los subforms
 /// ===================================================================
@@ -248,7 +257,7 @@ BusquedaCuentaDelegate::BusquedaCuentaDelegate(QWidget *parent)
     setEditable(true);
     setSizeAdjustPolicy(QComboBox::AdjustToContents);
 //    setCompleter(0);
-//    connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
+    connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
     connect(this, SIGNAL(editTextChanged(const QString &)), this, SLOT(s_editTextChanged(const QString &)));
     _depura("END BusquedaCuentaDelegate::BusquedaCuentaDelegate", 0);
 }
@@ -263,8 +272,6 @@ void BusquedaCuentaDelegate::setcompany(empresa *comp) {
 */
 BusquedaCuentaDelegate::~BusquedaCuentaDelegate() {
     _depura("BusquedaCuentaDelegate::~BusquedaCuentaDelegate", 10);
-    if (m_cursorcombo != NULL)
-        delete m_cursorcombo;
     _depura("END BusquedaCuentaDelegate::~BusquedaCuentaDelegate", 0);
 }
 
@@ -277,7 +284,6 @@ void BusquedaCuentaDelegate::s_editTextChanged(const QString &cod) {
     _depura("BusquedaCuentaDelegate::s_editTextChanged", 10);
     static bool semaforo = FALSE;
     QString codigo = cod;
-    QStringList listacodigos;
 
     if (codigo.size() < 3) {
         /// Si hay menos de 3 caracteres en el QComboBox no tiene que aparecer el autocompletar.
@@ -295,32 +301,22 @@ void BusquedaCuentaDelegate::s_editTextChanged(const QString &cod) {
 
     codigo = codigo.left(codigo.indexOf(".-"));
     m_cursorcombo = m_companyact->cargacursor("SELECT codigo, descripcion FROM cuenta WHERE codigo LIKE '" + codigo + "%' ORDER BY codigo LIMIT 25");
+    clear();
 
     ///TODO: La idea es que salga en el desplegable del combobox el listado de cuentas que
     /// coincidan con el texto escrito para poder elegirlo.
     while (!m_cursorcombo->eof()) {
-        //addItem(m_cursorcombo->valor("codigo") + ".-" + m_cursorcombo->valor("descripcion"));
-        listacodigos << m_cursorcombo->valor("codigo");
+        addItem(m_cursorcombo->valor("codigo") + ".-" + m_cursorcombo->valor("descripcion"));
         m_cursorcombo->siguienteregistro();
-    }
-    listacodigos.clear();
-    listacodigos << "hola";
+    } // end while
+    delete m_cursorcombo;
 
-    completar = new QCompleter(listacodigos, this);
-    completar->setCompletionMode(QCompleter::PopupCompletion);
-    completar->setCaseSensitivity(Qt::CaseInsensitive);
-
-    setCompleter(completar);
+    setEditText(cod);
 
     semaforo = FALSE;
     _depura("END BusquedaCuentaDelegate::s_editTextChanged", 0);
 }
 
 
-void BusquedaCuenta::s_returnPressed() {
-    _depura("s_returnPressed", 10);
-    s_lostFocus();
-    emit returnPressed();
-}
 
 

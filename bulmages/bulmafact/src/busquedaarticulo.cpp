@@ -194,8 +194,6 @@ BusquedaArticuloDelegate::BusquedaArticuloDelegate(QWidget *parent)
 */
 BusquedaArticuloDelegate::~BusquedaArticuloDelegate() {
     _depura("BusquedaArticuloDelegate::~BusquedaArticuloDelegate", 0);
-    if (m_cursorcombo != NULL)
-        delete m_cursorcombo;
     _depura("END BusquedaArticuloDelegate::~BusquedaArticuloDelegate", 0);
 }
 
@@ -219,10 +217,6 @@ void BusquedaArticuloDelegate::s_editTextChanged(const QString &cod) {
     }
 
 
-    if (m_cursorcombo != NULL)
-        delete m_cursorcombo;
-    //    while (count() )
-    //	removeItem(0);
 
     codigo = codigo.left(codigo.indexOf(".-"));
 
@@ -233,6 +227,7 @@ void BusquedaArticuloDelegate::s_editTextChanged(const QString &cod) {
         addItem(m_cursorcombo->valor("codigocompletoarticulo") + ".-" + m_cursorcombo->valor("nomarticulo"));
         m_cursorcombo->siguienteregistro();
     }
+    delete m_cursorcombo;
     setEditText(cod);
     //    showPopup();
     semaforo = FALSE;

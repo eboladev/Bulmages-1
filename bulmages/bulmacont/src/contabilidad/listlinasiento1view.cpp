@@ -41,16 +41,18 @@ ListLinAsiento1View::ListLinAsiento1View(QWidget *parent, const char *)
     addSHeader("haber", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Haber"));
     addSHeader("contrapartida", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr("Contrapartida"));
     addSHeader("comentario", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr("Comentario"));
-    addSHeader("idcanal", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("ID Canal"));
+    addSHeader("idcanal", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone, tr("ID Canal"));
+    addSHeader("nomcanal", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Canal"));
     addSHeader("marcaconciliacion", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr("Conciliacion"));
-    addSHeader("idc_coste", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr("Id centro de coste"));
+    addSHeader("idc_coste", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoWrite | SHeader::DBNoView, tr("Id centro de coste"));
+    addSHeader("nomc_coste", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr("Centro de coste"));
     addSHeader("idapunte", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr("Id apunte"));
     addSHeader("idtipoiva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr("Id tipo de IVA"));
     addSHeader("orden", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr("Orden"));
     addSHeader("idborrador", DBCampo::DBint,  DBCampo::DBPrimaryKey, SHeader::DBNoWrite | SHeader::DBNoView, tr("Id borrador"));
     addSHeader("idasiento", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite | SHeader::DBNoView, tr("Id asiento"));
 //    addSHeader("idcuenta", DBCampo::DBvarchar, DBCampo::DBNotNull | DBCampo::DBRequired, SHeader::DBNoWrite | SHeader::DBNoView, tr("Id cuenta"));
-    addSHeader("idcuenta", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite | SHeader::DBNoView, tr("Id cuenta"));
+    addSHeader("idcuenta", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoWrite | SHeader::DBNoView, tr("Id cuenta"));
     addSHeader("tipocuenta", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr("Tipo de cuenta"));
     setinsercion(TRUE);
     _depura("END ListLinAsiento1View::ListLinAsiento1View", 0);
@@ -58,7 +60,7 @@ ListLinAsiento1View::ListLinAsiento1View(QWidget *parent, const char *)
 
 
 ListLinAsiento1View::~ListLinAsiento1View() {
-    _depura("ListLinAsiento1View::~ListLinAsiento1View"), 0;
+    _depura("ListLinAsiento1View::~ListLinAsiento1View", 0);
 }
 
 
@@ -144,8 +146,8 @@ void ListLinAsiento1View::cargar(QString idasiento) {
     _depura("AsientoSubForm::cargar", 0);
     QString SQLQuery = "SELECT * FROM borrador ";
     SQLQuery += " LEFT JOIN (SELECT codigo, descripcion AS descripcioncuenta, idcuenta, tipocuenta FROM cuenta) AS t1 ON t1.idcuenta = borrador.idcuenta ";
-    SQLQuery += " LEFT JOIN (SELECT idcanal, nombre AS nombrecanal, descripcion AS descripcioncanal FROM canal) AS t2 ON borrador.idcanal = t2.idcanal ";
-    SQLQuery += " LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste, descripcion AS descripcionc_coste FROM c_coste) AS t3 ON borrador.idc_coste = t3.idc_coste ";
+    SQLQuery += " LEFT JOIN (SELECT idcanal, nombre AS nomcanal, descripcion AS descanal FROM canal) AS t2 ON borrador.idcanal = t2.idcanal ";
+    SQLQuery += " LEFT JOIN (SELECT idc_coste, nombre AS nomc_coste, descripcion AS descc_coste FROM c_coste) AS t3 ON borrador.idc_coste = t3.idc_coste ";
     SQLQuery += " LEFT JOIN (SELECT idregistroiva, factura, ffactura, idborrador FROM registroiva) AS t4 ON borrador.idborrador = t4.idborrador ";
     SQLQuery += "WHERE idasiento = " + idasiento + " ORDER BY orden";
     cursor2 *cur = empresaBase()->cargacursor(SQLQuery);

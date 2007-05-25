@@ -33,6 +33,7 @@
 #include "balance1view.h"
 #include "qtexteditdelegate.h"
 #include "qdoublespinbox2.h"
+#include "busquedacanal.h"
 
 /// Incluimos las imagenes que catalogan los tipos de cuentas.
 #include "images/cactivo.xpm"
@@ -78,6 +79,9 @@ void SubForm2Bc::on_mui_list_pressedAsterisk(int row, int col) {
     if (camp->nomcampo() != "codigo" && camp->nomcampo() != "codigoctacliente")
         return;
 
+
+    // Nos llevamos el foco para que no haya un EditorDelegado que no se actualice bien.
+    mui_list->setCurrentCell(row, col +1);
     QDialog *diag = new QDialog(0);
     diag->setModal(true);
     ///TODO: De esta manera se recarga de la base de datos toda la info de las cuentas cada
@@ -87,25 +91,33 @@ void SubForm2Bc::on_mui_list_pressedAsterisk(int row, int col) {
     listcuentas->inicializa();
     connect(listcuentas, SIGNAL(selected(QString)), diag, SLOT(accept()));
     diag->exec();
-    if (listcuentas->codcuenta() != "") {
-        cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM cuenta WHERE codigo = '" + listcuentas->codcuenta() + "'");
+    QString codigo = listcuentas->codcuenta();
+    delete diag;
+
+    if (codigo != "") {
+        QString query = "SELECT * FROM cuenta WHERE codigo = '" + codigo + "'";
+        cursor2 *cur = empresaBase()->cargacursor(query);
         if (!cur->eof()) {
             if (camp->nomcampo() == "codigo") {
                 rec->setDBvalue("idcuenta", cur->valor("idcuenta"));
                 rec->setDBvalue("codigo", cur->valor("codigo"));
                 rec->setDBvalue("tipocuenta", cur->valor("tipocuenta"));
                 rec->setDBvalue("descripcion", cur->valor("descripcion"));
+		/// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
+		on_mui_list_editFinished(row, col, Qt::Key_Return);
             } // end if
             if (camp->nomcampo() == "codigoctacliente") {
                 rec->setDBvalue("idctacliente", cur->valor("idcuenta"));
                 rec->setDBvalue("codigoctacliente", cur->valor("codigo"));
                 rec->setDBvalue("tipoctacliente", cur->valor("tipocuenta"));
                 rec->setDBvalue("nomctacliente", cur->valor("descripcion"));
+		/// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
+		on_mui_list_editFinished(row, col, Qt::Key_Return);
             } // end if
         } // end if
         delete cur;
     } // end if
-    delete diag;
+
     _depura ("END SubForm2Bc::on_mui_list_pressedAsterisk", 0);
 }
 
@@ -124,17 +136,54 @@ void SubForm2Bc::on_mui_list_pressedSlash(int row, int col) {
 
 void SubForm2Bc::on_mui_list_editFinished(int row, int col, int key) {
     _depura("SubForm2Bc::editFinished", 0);
+
+
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("SubForm2Bc_on_mui_list_editFinished", this);
+    if (res != 0)
+        return;
+
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row, col);
     camp->refresh();
-    if (camp->nomcampo() == "codigo") {
+
+
+    /// Si el campo no ha sido cambiado se sale.
+    if ( ! camp->cambiado() ) {
+        SubForm3::on_mui_list_editFinished(row, col, key);
+        return;
+    } // end if
+
+
+    if (camp->nomcampo() == "codigo" && camp->text() != "*") {
         QString codigoext = extiendecodigo(camp->text(), ((empresa *) empresaBase())->numdigitosempresa());
-        cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM cuenta WHERE codigo = '" + codigoext + "'");
+	QString query = "SELECT * FROM cuenta WHERE codigo = '" + codigoext + "'";
+        cursor2 *cur = empresaBase()->cargacursor(query);
         if (!cur->eof() ) {
             rec->setDBvalue("idcuenta", cur->valor("idcuenta"));
             rec->setDBvalue("codigo", cur->valor("codigo"));
             rec->setDBvalue("tipocuenta", cur->valor("tipocuenta"));
             rec->setDBvalue("descripcioncuenta", cur->valor("descripcion"));
+            delete cur;
+        } else {
+		_depura("No existe cuenta", 2);
+		delete cur;
+		return;
+        } // end if
+    } // end if
+    if (camp->nomcampo() == "nomcanal") {
+        QString query = "SELECT * FROM canal WHERE nombre = '" + camp->text() + "'";
+        cursor2 *cur = empresaBase()->cargacursor(query);
+        if (!cur->eof() ) {
+            rec->setDBvalue("idcanal", cur->valor("idcanal"));
+        } // end if
+        delete cur;
+    } // end if
+    if (camp->nomcampo() == "nomc_coste") {
+        QString query = "SELECT * FROM c_coste WHERE nombre = '" + camp->text() + "'";
+        cursor2 *cur = empresaBase()->cargacursor(query);
+        if (!cur->eof() ) {
+            rec->setDBvalue("idc_coste", cur->valor("idc_coste"));
         } // end if
         delete cur;
     } // end if
@@ -298,13 +347,13 @@ void SubForm2Bc::boton_balancetree(int tipo) {
 
 void SubForm2Bc::creaMenu(QMenu *menu) {
     _depura("SubForm2Bc::pintaMenu", 0);
-    QAction *ac = menu->addAction(tr("Submenu de contabilidad"));
+    menu->addAction(tr("Submenu de contabilidad"));
     menu->addSeparator();
     _depura("END SubForm2Bc::pintaMenu", 0);
 }
 
 
-void SubForm2Bc::procesaMenu(QAction *ac) {
+void SubForm2Bc::procesaMenu(QAction *) {
     _depura("SubForm2Bc::procesaMenu", 0);
     _depura("END SubForm2Bc::procesaMenu", 0);
 }
@@ -347,6 +396,14 @@ QWidget *QSubForm2BcDelegate::createEditor(QWidget *parent, const QStyleOptionVi
         BusquedaCuentaDelegate *editor = new BusquedaCuentaDelegate(parent);
         editor->setcompany((empresa *)m_subform->empresaBase());
         return editor;
+    } else if (linea->nomcampo() == "nomcanal") {
+        BusquedaCanalDelegate *editor = new BusquedaCanalDelegate(parent);
+        editor->setcompany((empresa *)m_subform->empresaBase());
+        return editor;
+    } else if (linea->nomcampo() == "nomc_coste") {
+        BusquedaCCosteDelegate *editor = new BusquedaCCosteDelegate(parent);
+        editor->setcompany((empresa *)m_subform->empresaBase());
+        return editor;
     } else {
         return QItemDelegate::createEditor(parent, option, index);
     } // end if
@@ -384,7 +441,14 @@ void QSubForm2BcDelegate::setModelData(QWidget *editor, QAbstractItemModel *mode
         value = value.left(value.indexOf(".-"));
         QString codigoext = extiendecodigo(value,  m_subform->empresaBase()->numdigitosempresa());
         model->setData(index, codigoext);
-    } else {
+    } else if (linea->nomcampo() == "nomcanal") {
+        BusquedaCanalDelegate *comboBox = static_cast<BusquedaCanalDelegate*>(editor);
+        QString value = comboBox->currentText();
+        model->setData(index, value);
+    } else if (linea->nomcampo() == "nomc_coste") {
+        BusquedaCCosteDelegate *comboBox = static_cast<BusquedaCCosteDelegate*>(editor);
+        QString value = comboBox->currentText();
+        model->setData(index, value);    } else {
         QItemDelegate::setModelData(editor, model, index);
     } // end if
     _depura("END QSubForm2BcDelegate::setModelData", 0);
@@ -410,6 +474,16 @@ void QSubForm2BcDelegate::setEditorData(QWidget *editor, const QModelIndex &inde
     } else if (linea->nomcampo() == "codigo") {
         QString value = index.model()->data(index, Qt::DisplayRole).toString();
         BusquedaCuentaDelegate *comboBox = static_cast<BusquedaCuentaDelegate*>(editor);
+        comboBox->addItem(value);
+        comboBox->lineEdit()->selectAll();
+    } else if (linea->nomcampo() == "nomcanal") {
+        QString value = index.model()->data(index, Qt::DisplayRole).toString();
+        BusquedaCanalDelegate *comboBox = static_cast<BusquedaCanalDelegate*>(editor);
+        comboBox->addItem(value);
+        comboBox->lineEdit()->selectAll();
+    } else if (linea->nomcampo() == "nomc_coste") {
+        QString value = index.model()->data(index, Qt::DisplayRole).toString();
+        BusquedaCCosteDelegate *comboBox = static_cast<BusquedaCCosteDelegate*>(editor);
         comboBox->addItem(value);
         comboBox->lineEdit()->selectAll();
     } else {
@@ -441,7 +515,6 @@ bool QSubForm2BcDelegate::eventFilter(QObject *obj, QEvent *event) {
                 return TRUE;
             if (obj->objectName() == "QTextEditDelegate") {
                 obj->event(event);
-                _depura("QSubForm2BcDelegate::eventFilter", 2, "Se ha pulsado el enter");
                 return TRUE;
             } // end if
         } // end switch
