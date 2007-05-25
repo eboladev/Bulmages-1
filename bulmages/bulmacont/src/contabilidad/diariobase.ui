@@ -196,7 +196,7 @@
            </size>
           </property>
           <property name="checkable" >
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
           <property name="checked" >
            <bool>false</bool>
@@ -315,27 +315,20 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="3" >
-       <widget class="QLabel" name="TextLabel1_2_2" >
+      <item row="2" column="0" colspan="3" >
+       <widget class="QCheckBox" name="mui_asAbiertos" >
         <property name="text" >
-         <string>Fecha final:</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         <string>&amp;Incluir asientos abiertos</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="0" >
-       <widget class="QLabel" name="TextLabel1_3" >
-        <property name="text" >
-         <string>Fecha inicial:</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
+      <item row="1" column="5" >
+       <widget class="QLineEdit" name="mui_saldosuperior" />
       </item>
-      <item row="0" column="1" colspan="2" >
+      <item row="1" column="2" >
+       <widget class="QLineEdit" name="mui_saldoinferior" />
+      </item>
+      <item row="0" column="2" >
        <widget class="BusquedaFecha" native="1" name="mui_fechainicial" >
         <property name="sizePolicy" >
          <sizepolicy>
@@ -353,7 +346,17 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="4" colspan="2" >
+      <item row="0" column="0" colspan="2" >
+       <widget class="QLabel" name="TextLabel1_3" >
+        <property name="text" >
+         <string>Fecha inicial:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="5" >
        <widget class="BusquedaFecha" native="1" name="mui_fechafinal" >
         <property name="minimumSize" >
          <size>
@@ -363,18 +366,15 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="0" colspan="3" >
-       <widget class="QCheckBox" name="mui_asAbiertos" >
+      <item row="0" column="3" colspan="2" >
+       <widget class="QLabel" name="TextLabel1_2_2" >
         <property name="text" >
-         <string>&amp;Incluir asientos abiertos</string>
+         <string>Fecha final:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
-      </item>
-      <item row="1" column="5" >
-       <widget class="QLineEdit" name="mui_saldosuperior" />
-      </item>
-      <item row="1" column="2" >
-       <widget class="QLineEdit" name="mui_saldoinferior" />
       </item>
      </layout>
     </widget>

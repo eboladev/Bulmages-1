@@ -182,7 +182,7 @@ void FacturasList::imprimir() {
 
 
 /** SLOT que responde a la pulsacion del boton borrar.
-    Crea una instancia de FacuturaView, carga el elemento seleccionado e invoca al 
+    Crea una instancia de FacuturaView, carga el elemento seleccionado e invoca al
     metodo de borrar.
     La ventaja de hacerlo de esta forma es que si hay plugins en la factura, estos tambien se ejecutaran.
 */
@@ -230,9 +230,9 @@ void FacturasList::setidarticulo(QString val) {
 }
 
 void FacturasList::crear() {
-	_depura("FacturasList::crear", 0);
+    _depura("FacturasList::crear", 0);
         ((company *)empresaBase())->s_newFacturaCli();
-	_depura("END FacturasList::crear", 0);
+    _depura("END FacturasList::crear", 0);
 }
 
 /// =============================================================================
@@ -256,6 +256,7 @@ FacturasListSubform::FacturasListSubform(QWidget *parent, const char *) : SubFor
     addSHeader("impuestos", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Impuestos"));
     addSHeader("total", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Total"));
     addSHeader("procesadafactura", DBCampo::DBboolean, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Procesada"));
+    addSHeader("descfactura", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Descripcion"));
     addSHeader("idfactura", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Id factura"));
     addSHeader("reffactura", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("Ref factura"));
     addSHeader("codigoserie_factura", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Serie"));

@@ -580,6 +580,10 @@ void SubForm3::ponItemColorFondo(QTableWidget *twidget, int filainicial, int tot
 
 /// Carga una tabla a partir del recordset que se le ha pasado.
 /** Este m&eacute;todo genera, a partir del recordset pasado como par&aacute;metro el listado y lo muestra. */
+/**
+ *
+ * @param cur
+ */
 void SubForm3::cargar(cursor2 *cur) {
     _depura("SubForm3::cargar", 0);
     SDBRecord *reg;
@@ -588,6 +592,11 @@ void SubForm3::cargar(cursor2 *cur) {
     SDBCampo *camp2;
     QColor colorfondo = m_colorfondo1;
     bool coloraponerfondo = FALSE;
+
+    //porcentajeCarga *pc = new porcentajeCarga();
+    //pc->mostrar();
+    //theApp->processEvents(QEventLoop::ExcludeUserInputEvents);
+
 
     /// Desactivamos el sorting debido a un error en las Qt4
     mui_list->setSortingEnabled(FALSE);
@@ -636,11 +645,14 @@ void SubForm3::cargar(cursor2 *cur) {
         nr--;
     } // end while
     /// Recorremos el recordset y ponemos los registros en un orden determinado.
+    int porcentajecarga = 0;
     while (!cur->eof() && m_lista.count() < filpag) {
+        //theApp->processEvents(QEventLoop::ExcludeUserInputEvents);
         SDBRecord *rec = newSDBRecord();
         rec->DBload(cur);
         m_lista.append(rec);
         cur->siguienteregistro();
+        porcentajecarga++;
     } // end while
 
     /// Inicializamos las columnas y pintamos las cabeceras.
@@ -760,6 +772,7 @@ void SubForm3::cargar(cursor2 *cur) {
     /// Reactivamos el sorting
     mui_list->setSortingEnabled(m_sorting);
 
+    //pc->cerrar();
     _depura("END SubForm3::cargar", 0);
 }
 

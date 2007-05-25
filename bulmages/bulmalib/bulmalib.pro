@@ -13,7 +13,8 @@ FORMS += logpassbase.ui \
          abreempresabase.ui \
          msgerrorbase.ui \
          busquedafechabase.ui \
-         subform3base.ui 
+         subform3base.ui \
+	 porcentajecargabase.ui
 
 TRANSLATIONS += bulmalib_es.ts \
                 bulmalib_ca.ts \
@@ -49,8 +50,8 @@ HEADERS += postgresiface2.h \
 	   qtexteditdelegate.h \
            qdoublespinbox2.h \
 	   blwidget.h \
-	   listado.h
-	   
+	   listado.h \
+           porcentajecarga.h
 SOURCES += postgresiface2.cpp \
            configuracion.cpp \
            numerocuenta.cpp \
@@ -78,8 +79,8 @@ SOURCES += postgresiface2.cpp \
 	   qtexteditdelegate.cpp \
            qdoublespinbox2.cpp \
 	   blwidget.cpp \
-	   listado.cpp
-	   
+	   listado.cpp \
+           porcentajecarga.cpp
 RESOURCES = ../bulmages.qrc
 TEMPLATE = lib
 LANGUAGE = C++

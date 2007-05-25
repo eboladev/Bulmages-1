@@ -28,7 +28,7 @@ DiarioSubForm::DiarioSubForm(QWidget *parent, const char *) : SubForm2Bc(parent)
     setFileConfig( "DiarioSubForm");
     setDBCampoId("idborrador");
     addSHeader("idasiento", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("idasiento"));
-    addSHeader("ordenasiento", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Asiento"));
+    addSHeader("ordenasientoconfecha", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Asiento"));
     addSHeader("fecha", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Fecha"));
     addSHeader("codigo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Cuenta"));
     addSHeader("descripcion", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Descripcion"));
@@ -55,7 +55,7 @@ DiarioSubForm::DiarioSubForm(QWidget *parent, const char *) : SubForm2Bc(parent)
     addSHeader("orden", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("orden"));
     /// Van juntas. Desactivas un tipo de pijama y se activa otro personalizado al hacer 'rowspan'.
     setListadoPijama(FALSE);
-    setColumnToRowSpan("ordenasiento");
+    setColumnToRowSpan("ordenasientoconfecha");
     /// ------------------ ///
     setColorFondo1(confpr->valor(CONF_BG_DIARIO));
     setColorFondo2(confpr->valor(CONF_BG_ALT_DIARIO));
