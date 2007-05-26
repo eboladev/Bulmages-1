@@ -18,7 +18,7 @@
 # ------------------------------------------------------------------------------------------------
 
 
-version="v0.9.1"
+version="v0.9.3"
 
 #Buscamos el parametro para saber si es texto o no
 if [ "$1" = "--texto" ]; then
@@ -114,7 +114,7 @@ tiempo
 
 
 if [ "$3" = "1" -o "$3" = "2" ]; then
-# Aquí se pondrian los scripts que carguen datos por defecto que puedan ser necesarios pero no imprescindibles
+# Aqui se pondrian los scripts que carguen datos por defecto que puedan ser necesarios pero no imprescindibles
 # p.e. Codificacion de Surtido AECOC, lista de provincias espanyolas, codigos postales...
    tiempo
 fi

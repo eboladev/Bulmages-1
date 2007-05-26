@@ -47,11 +47,12 @@ SOURCES += main.cpp \
            comun/importContaplus.cpp \
 	   comun/importexportbulmafactview.cpp
 
-TRANSLATIONS += ibulmages_es.ts \
-                ibulmages_ca.ts \
-                ibulmages_en.ts \
-                ibulmages_fr.ts \
-                ibulmages_de.ts 
+TRANSLATIONS += bulmages_es.ts \
+                bulmages_ca.ts \
+                bulmages_en.ts \
+                bulmages_fr.ts \
+                bulmages_de.ts \
+                bulmages_zz.ts
 
 unix{
 

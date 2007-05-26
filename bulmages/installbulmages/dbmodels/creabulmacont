@@ -19,7 +19,7 @@
 # La diferencia entre este script y el installbulmages es que este no hace falta que se ejecute como ROOT
 # -------------------------------------------------------------------------------------------------------
 
-version="v0.9.1"
+version="v0.9.3"
 texto="1"
 ptexto="--texto"
 

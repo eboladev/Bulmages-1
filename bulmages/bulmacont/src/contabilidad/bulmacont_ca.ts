@@ -164,134 +164,162 @@
     </message>
 </context>
 <context>
-    <name>AmortizacionView</name>
+    <name>AmortizacionSubForm</name>
     <message>
-        <location filename="amortizacionview.cpp" line="88"/>
-        <source>Id lineas de amortizacion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="amortizacionview.cpp" line="78"/>
-        <source>Identificador</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="amortizacionview.cpp" line="204"/>
-        <source>Error en la carga de la amortizacion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="amortizacionview.cpp" line="321"/>
-        <source>Anual</source>
-        <translation type="unfinished">Anual</translation>
-    </message>
-    <message>
-        <location filename="amortizacionview.cpp" line="323"/>
-        <source>Mensual</source>
-        <translation type="unfinished">Mensual</translation>
-    </message>
-    <message>
-        <location filename="amortizacionview.cpp" line="325"/>
-        <source>Semestral</source>
-        <translation type="unfinished">Semestral</translation>
-    </message>
-    <message>
-        <location filename="amortizacionview.cpp" line="327"/>
-        <source>Trimestral</source>
-        <translation type="unfinished">Trimestral</translation>
-    </message>
-    <message>
-        <location filename="amortizacionview.cpp" line="64"/>
-        <source>Nombre de la amortizacion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="amortizacionview.cpp" line="65"/>
-        <source>Descripcion de la amortizacion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="amortizacionview.cpp" line="66"/>
-        <source>Fecha de la compra</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="amortizacionview.cpp" line="67"/>
-        <source>Fecha 1a cuota</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="amortizacionview.cpp" line="68"/>
-        <source>Valor de la compra</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="amortizacionview.cpp" line="69"/>
-        <source>Periodicidad</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="amortizacionview.cpp" line="70"/>
-        <source>Numero de cuotas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="amortizacionview.cpp" line="71"/>
-        <source>Metodo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="amortizacionview.cpp" line="72"/>
-        <source>NIF del proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="amortizacionview.cpp" line="73"/>
-        <source>Nombre del proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="amortizacionview.cpp" line="74"/>
-        <source>Direccion del proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="amortizacionview.cpp" line="75"/>
-        <source>Telefono del proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="amortizacionview.cpp" line="76"/>
-        <source>Agrupacion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="amortizacionview.cpp" line="89"/>
-        <source>Id amortizacion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="amortizacionview.cpp" line="79"/>
-        <source>Id cuenta amortizacion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="amortizacionview.cpp" line="84"/>
-        <source>Ejercicio</source>
-        <translation type="unfinished">Exercici</translation>
-    </message>
-    <message>
-        <location filename="amortizacionview.cpp" line="85"/>
-        <source>Fecha prevista</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="amortizacionview.cpp" line="86"/>
-        <source>Cantidad</source>
+        <location filename="amortizacionview.cpp" line="104"/>
+        <source>Generar asiento</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="amortizacionview.cpp" line="87"/>
+        <source>Ver asiento</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="amortizacionview.cpp" line="92"/>
+        <source>Desvincular asiento</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="amortizacionview.cpp" line="99"/>
+        <source>Borrar asiento</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="amortizacionview.cpp" line="77"/>
+        <source>Borrar cuota</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AmortizacionView</name>
+    <message>
+        <location filename="amortizacionview.cpp" line="211"/>
+        <source>Id lineas de amortizacion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="amortizacionview.cpp" line="201"/>
+        <source>Identificador</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="amortizacionview.cpp" line="320"/>
+        <source>Error en la carga de la amortizacion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="amortizacionview.cpp" line="437"/>
+        <source>Anual</source>
+        <translation type="unfinished">Anual</translation>
+    </message>
+    <message>
+        <location filename="amortizacionview.cpp" line="439"/>
+        <source>Mensual</source>
+        <translation type="unfinished">Mensual</translation>
+    </message>
+    <message>
+        <location filename="amortizacionview.cpp" line="441"/>
+        <source>Semestral</source>
+        <translation type="unfinished">Semestral</translation>
+    </message>
+    <message>
+        <location filename="amortizacionview.cpp" line="443"/>
+        <source>Trimestral</source>
+        <translation type="unfinished">Trimestral</translation>
+    </message>
+    <message>
+        <location filename="amortizacionview.cpp" line="187"/>
+        <source>Nombre de la amortizacion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="amortizacionview.cpp" line="188"/>
+        <source>Descripcion de la amortizacion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="amortizacionview.cpp" line="189"/>
+        <source>Fecha de la compra</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="amortizacionview.cpp" line="190"/>
+        <source>Fecha 1a cuota</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="amortizacionview.cpp" line="191"/>
+        <source>Valor de la compra</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="amortizacionview.cpp" line="192"/>
+        <source>Periodicidad</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="amortizacionview.cpp" line="193"/>
+        <source>Numero de cuotas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="amortizacionview.cpp" line="194"/>
+        <source>Metodo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="amortizacionview.cpp" line="195"/>
+        <source>NIF del proveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="amortizacionview.cpp" line="196"/>
+        <source>Nombre del proveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="amortizacionview.cpp" line="197"/>
+        <source>Direccion del proveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="amortizacionview.cpp" line="198"/>
+        <source>Telefono del proveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="amortizacionview.cpp" line="199"/>
+        <source>Agrupacion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="amortizacionview.cpp" line="212"/>
+        <source>Id amortizacion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="amortizacionview.cpp" line="202"/>
+        <source>Id cuenta amortizacion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="amortizacionview.cpp" line="207"/>
+        <source>Ejercicio</source>
+        <translation type="unfinished">Exercici</translation>
+    </message>
+    <message>
+        <location filename="amortizacionview.cpp" line="208"/>
+        <source>Fecha prevista</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="amortizacionview.cpp" line="209"/>
+        <source>Cantidad</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="amortizacionview.cpp" line="210"/>
         <source>Id asiento</source>
         <translation type="unfinished"></translation>
     </message>
@@ -331,6 +359,19 @@
     <message>
         <location filename="amortizacionesbase.ui" line="174"/>
         <source>F5</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AmortizacionesView</name>
+    <message>
+        <location filename="amortizacionesview.cpp" line="41"/>
+        <source>Id amortizacion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="amortizacionesview.cpp" line="42"/>
+        <source>Nombre</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -375,65 +416,70 @@
 <context>
     <name>Asiento1</name>
     <message>
-        <location filename="asiento1.cpp" line="37"/>
+        <location filename="asiento1.cpp" line="39"/>
         <source>Id asiento</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="asiento1.cpp" line="38"/>
+        <location filename="asiento1.cpp" line="40"/>
         <source>Descripcion del asiento</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="asiento1.cpp" line="39"/>
+        <location filename="asiento1.cpp" line="41"/>
         <source>Fecha del asiento</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="asiento1.cpp" line="40"/>
+        <location filename="asiento1.cpp" line="42"/>
         <source>Comentarios del asiento</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="asiento1.cpp" line="41"/>
+        <location filename="asiento1.cpp" line="43"/>
         <source>Orden de asiento</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="asiento1.cpp" line="42"/>
+        <location filename="asiento1.cpp" line="44"/>
         <source>Tipo de asiento</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="asiento1.cpp" line="60"/>
+        <location filename="asiento1.cpp" line="258"/>
         <source>Borrar asiento</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="asiento1.cpp" line="61"/>
+        <location filename="asiento1.cpp" line="259"/>
         <source>Se va a borrar el asiento. Esta seguro?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="asiento1.cpp" line="428"/>
+        <source>El asiento se ha guardado correctamente.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>Asiento1View</name>
     <message>
-        <location filename="asiento1view.cpp" line="274"/>
+        <location filename="asiento1view.cpp" line="263"/>
         <source>Asiento inexistente.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="asiento1view.cpp" line="275"/>
+        <location filename="asiento1view.cpp" line="264"/>
         <source>Desea crear un nuevo asiento en esa posicion?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="asiento1view.cpp" line="276"/>
+        <location filename="asiento1view.cpp" line="265"/>
         <source>&amp;Si</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="asiento1view.cpp" line="276"/>
+        <location filename="asiento1view.cpp" line="265"/>
         <source>&amp;No</source>
         <translation type="unfinished"></translation>
     </message>
@@ -486,22 +532,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="asientobase.ui" line="767"/>
+        <location filename="asientobase.ui" line="773"/>
         <source>Apertura</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="asientobase.ui" line="772"/>
+        <location filename="asientobase.ui" line="778"/>
         <source>Normal</source>
         <translation type="unfinished"></translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="asientobase.ui" line="777"/>
+        <location filename="asientobase.ui" line="783"/>
         <source>Regularización</source>
         <translation type="unfinished">Regularització</translation>
     </message>
     <message>
-        <location filename="asientobase.ui" line="782"/>
+        <location filename="asientobase.ui" line="788"/>
         <source>Cierre</source>
         <translation type="unfinished"></translation>
     </message>
@@ -571,22 +617,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="asientobase.ui" line="669"/>
+        <location filename="asientobase.ui" line="675"/>
         <source>Descuadre:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="asientobase.ui" line="835"/>
+        <location filename="asientobase.ui" line="841"/>
         <source>Saldo:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="asientobase.ui" line="928"/>
+        <location filename="asientobase.ui" line="934"/>
         <source>Total Debe:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="asientobase.ui" line="1007"/>
+        <location filename="asientobase.ui" line="1013"/>
         <source>Total Haber:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -599,55 +645,85 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="asientolistbase.ui" line="91"/>
+        <location filename="asientolistbase.ui" line="335"/>
         <source>Imprimir</source>
         <translation type="unfinished">Imprimir</translation>
     </message>
     <message>
-        <location filename="asientolistbase.ui" line="125"/>
+        <location filename="asientolistbase.ui" line="369"/>
         <source>Filtrar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="asientolistbase.ui" line="165"/>
+        <location filename="asientolistbase.ui" line="409"/>
         <source>Configurar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="asientolistbase.ui" line="205"/>
+        <location filename="asientolistbase.ui" line="449"/>
         <source>Actualizar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="asientolistbase.ui" line="279"/>
-        <source>Ejercicio:</source>
+        <location filename="asientolistbase.ui" line="66"/>
+        <source>y   ( &gt;=</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="asientolistbase.ui" line="299"/>
-        <source>Asientos que tengan apuntes con cantidad igual a:</source>
+        <location filename="asientolistbase.ui" line="94"/>
+        <source>y &lt;=</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="asientolistbase.ui" line="309"/>
-        <source>Asientos con saldo:</source>
+        <location filename="asientolistbase.ui" line="122"/>
+        <source>)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="asientolistbase.ui" line="316"/>
-        <source>Asientos cuyo nombre se parezca a:</source>
+        <location filename="asientolistbase.ui" line="140"/>
+        <source>Fecha &amp;inicial:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="asientolistbase.ui" line="174"/>
+        <source>&amp;Concepto contable:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="asientolistbase.ui" line="207"/>
+        <source>&amp;Partida igual a:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="asientolistbase.ui" line="220"/>
+        <source>&amp;Ejercicio:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="asientolistbase.ui" line="241"/>
+        <source>Fecha &amp;final:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="asientolistbase.ui" line="516"/>
+        <source>Total Debe:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="asientolistbase.ui" line="530"/>
+        <source>Total Haber:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>AsientoListSubform</name>
     <message>
-        <location filename="asientolistsubform.cpp" line="34"/>
+        <location filename="asientolistsubform.cpp" line="35"/>
         <source>Fecha</source>
         <translation type="unfinished">Data</translation>
     </message>
     <message>
-        <location filename="asientolistsubform.cpp" line="35"/>
+        <location filename="asientolistsubform.cpp" line="34"/>
         <source>Orden</source>
         <translation type="unfinished">Ordre</translation>
     </message>
@@ -682,32 +758,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="asientolistsubform.cpp" line="80"/>
+        <location filename="asientolistsubform.cpp" line="82"/>
         <source>Borrar registro</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="asientolistsubform.cpp" line="83"/>
+        <location filename="asientolistsubform.cpp" line="85"/>
         <source>Ajustar columa</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="asientolistsubform.cpp" line="84"/>
+        <location filename="asientolistsubform.cpp" line="86"/>
         <source>Ajustar altura</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="asientolistsubform.cpp" line="85"/>
+        <location filename="asientolistsubform.cpp" line="87"/>
         <source>Ajustar columnas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="asientolistsubform.cpp" line="86"/>
+        <location filename="asientolistsubform.cpp" line="88"/>
         <source>Ajustar alturas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="asientolistsubform.cpp" line="88"/>
+        <location filename="asientolistsubform.cpp" line="90"/>
         <source>Ver configurador de subformulario</source>
         <translation type="unfinished"></translation>
     </message>
@@ -715,6 +791,24 @@
         <location filename="asientolistsubform.cpp" line="33"/>
         <source>Id asiento</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AsientosView</name>
+    <message>
+        <location filename="asientosview.cpp" line="50"/>
+        <source>(todos)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="asientosview.cpp" line="197"/>
+        <source>La fecha inicial es posterior a la fecha final.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="asientosview.cpp" line="244"/>
+        <source>Asientos</source>
+        <translation type="unfinished">Assentaments</translation>
     </message>
 </context>
 <context>
@@ -739,7 +833,7 @@
     <name>BalanceBase</name>
     <message>
         <location filename="balancebase.ui" line="28"/>
-        <source>Balance de Cuentas</source>
+        <source>Balance de cuentas</source>
         <translation type="unfinished">Balanç de Contes</translation>
     </message>
     <message>
@@ -951,87 +1045,87 @@
 <context>
     <name>BalanceSubForm</name>
     <message>
-        <location filename="balancesubform.cpp" line="30"/>
+        <location filename="balancesubform.cpp" line="31"/>
         <source>idcuenta</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="balancesubform.cpp" line="31"/>
+        <location filename="balancesubform.cpp" line="32"/>
         <source>tipocuenta</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="balancesubform.cpp" line="32"/>
+        <location filename="balancesubform.cpp" line="33"/>
         <source>codigo</source>
         <translation type="unfinished">codi</translation>
     </message>
     <message>
-        <location filename="balancesubform.cpp" line="33"/>
+        <location filename="balancesubform.cpp" line="34"/>
         <source>descripcion</source>
         <translation type="unfinished">descripció</translation>
     </message>
     <message>
-        <location filename="balancesubform.cpp" line="34"/>
+        <location filename="balancesubform.cpp" line="35"/>
         <source>asaldo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="balancesubform.cpp" line="35"/>
+        <location filename="balancesubform.cpp" line="36"/>
         <source>tdebe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="balancesubform.cpp" line="36"/>
+        <location filename="balancesubform.cpp" line="37"/>
         <source>thaber</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="balancesubform.cpp" line="37"/>
+        <location filename="balancesubform.cpp" line="38"/>
         <source>tsaldo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="balancesubform.cpp" line="38"/>
+        <location filename="balancesubform.cpp" line="39"/>
         <source>ejdebe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="balancesubform.cpp" line="39"/>
+        <location filename="balancesubform.cpp" line="40"/>
         <source>ejhaber</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="balancesubform.cpp" line="40"/>
+        <location filename="balancesubform.cpp" line="41"/>
         <source>ejsaldo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="balancesubform.cpp" line="72"/>
+        <location filename="balancesubform.cpp" line="74"/>
         <source>Borrar registro</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="balancesubform.cpp" line="74"/>
+        <location filename="balancesubform.cpp" line="76"/>
         <source>Ajustar columa</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="balancesubform.cpp" line="75"/>
+        <location filename="balancesubform.cpp" line="77"/>
         <source>Ajustar altura</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="balancesubform.cpp" line="76"/>
+        <location filename="balancesubform.cpp" line="78"/>
         <source>Ajustar columnas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="balancesubform.cpp" line="77"/>
+        <location filename="balancesubform.cpp" line="79"/>
         <source>Ajustar alturas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="balancesubform.cpp" line="79"/>
+        <location filename="balancesubform.cpp" line="81"/>
         <source>Ver configurador de subformulario</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1200,47 +1294,47 @@
 <context>
     <name>BalanceView</name>
     <message>
-        <location filename="balanceview.cpp" line="177"/>
+        <location filename="balanceview.cpp" line="191"/>
         <source>Codigo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="balanceview.cpp" line="177"/>
+        <location filename="balanceview.cpp" line="191"/>
         <source>Denominacion</source>
         <translation type="unfinished">Denominació</translation>
     </message>
     <message>
-        <location filename="balanceview.cpp" line="177"/>
+        <location filename="balanceview.cpp" line="191"/>
         <source>Saldo anterior</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="balanceview.cpp" line="177"/>
+        <location filename="balanceview.cpp" line="191"/>
         <source>Debe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="balanceview.cpp" line="177"/>
+        <location filename="balanceview.cpp" line="191"/>
         <source>Haber</source>
         <translation type="unfinished">Haber</translation>
     </message>
     <message>
-        <location filename="balanceview.cpp" line="177"/>
+        <location filename="balanceview.cpp" line="191"/>
         <source>Saldo</source>
         <translation type="unfinished">Saldo</translation>
     </message>
     <message>
-        <location filename="balanceview.cpp" line="177"/>
+        <location filename="balanceview.cpp" line="191"/>
         <source>Debe ejercicio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="balanceview.cpp" line="177"/>
+        <location filename="balanceview.cpp" line="191"/>
         <source>Haber ejercicio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="balanceview.cpp" line="177"/>
+        <location filename="balanceview.cpp" line="191"/>
         <source>Saldo ejercicio</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1248,82 +1342,82 @@
 <context>
     <name>BbloqFecha</name>
     <message>
-        <location filename="bbloqfecha.cpp" line="91"/>
+        <location filename="bbloqfecha.cpp" line="96"/>
         <source>Octubre</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bbloqfecha.cpp" line="95"/>
+        <location filename="bbloqfecha.cpp" line="100"/>
         <source>Septiembre</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bbloqfecha.cpp" line="51"/>
+        <location filename="bbloqfecha.cpp" line="56"/>
         <source>Ejercicio</source>
         <translation type="unfinished">Exercici</translation>
     </message>
     <message>
-        <location filename="bbloqfecha.cpp" line="51"/>
+        <location filename="bbloqfecha.cpp" line="56"/>
         <source>Estado</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bbloqfecha.cpp" line="83"/>
+        <location filename="bbloqfecha.cpp" line="88"/>
         <source>Diciembre</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bbloqfecha.cpp" line="87"/>
+        <location filename="bbloqfecha.cpp" line="92"/>
         <source>Noviembre</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bbloqfecha.cpp" line="99"/>
+        <location filename="bbloqfecha.cpp" line="104"/>
         <source>Agosto</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bbloqfecha.cpp" line="103"/>
+        <location filename="bbloqfecha.cpp" line="108"/>
         <source>Julio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bbloqfecha.cpp" line="107"/>
+        <location filename="bbloqfecha.cpp" line="112"/>
         <source>Junio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bbloqfecha.cpp" line="111"/>
+        <location filename="bbloqfecha.cpp" line="116"/>
         <source>Mayo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bbloqfecha.cpp" line="115"/>
+        <location filename="bbloqfecha.cpp" line="120"/>
         <source>Abril</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bbloqfecha.cpp" line="119"/>
+        <location filename="bbloqfecha.cpp" line="124"/>
         <source>Marzo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bbloqfecha.cpp" line="123"/>
+        <location filename="bbloqfecha.cpp" line="128"/>
         <source>Febrero</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bbloqfecha.cpp" line="127"/>
+        <location filename="bbloqfecha.cpp" line="132"/>
         <source>Enero</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bbloqfecha.cpp" line="144"/>
+        <location filename="bbloqfecha.cpp" line="149"/>
         <source>Bloqueado</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bbloqfecha.cpp" line="145"/>
+        <location filename="bbloqfecha.cpp" line="150"/>
         <source>Abierto</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1331,212 +1425,207 @@
 <context>
     <name>BulmaContBase</name>
     <message>
-        <location filename="bulmacontbase.ui" line="426"/>
+        <location filename="bulmacontbase.ui" line="423"/>
         <source>Anterior</source>
         <translation type="unfinished">Anterior</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="415"/>
+        <location filename="bulmacontbase.ui" line="412"/>
         <source>Siguiente</source>
         <translation type="unfinished">Següent</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="319"/>
+        <location filename="bulmacontbase.ui" line="316"/>
         <source>Asientos Inteligentes</source>
         <translation type="unfinished">Assentaments Inteligents</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="437"/>
+        <location filename="bulmacontbase.ui" line="434"/>
         <source>Inicio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="448"/>
+        <location filename="bulmacontbase.ui" line="445"/>
         <source>Fin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="399"/>
+        <location filename="bulmacontbase.ui" line="396"/>
         <source>A&amp;yuda</source>
         <translation type="unfinished">A&amp;juda</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="57"/>
+        <location filename="bulmacontbase.ui" line="53"/>
         <source>&amp;Herramientas</source>
         <translation type="unfinished">&amp;Estris de fer feina</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="30"/>
+        <location filename="bulmacontbase.ui" line="42"/>
         <source>&amp;Maestro</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="79"/>
+        <location filename="bulmacontbase.ui" line="98"/>
         <source>&amp;Listados</source>
         <translation type="unfinished">&amp;Llistats</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="102"/>
+        <location filename="bulmacontbase.ui" line="80"/>
         <source>&amp;Empresa</source>
         <translation type="unfinished">&amp;Empresa</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="172"/>
+        <location filename="bulmacontbase.ui" line="174"/>
         <source>&amp;Ordenar asientos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="177"/>
+        <location filename="bulmacontbase.ui" line="179"/>
         <source>Asiento de a&amp;pertura</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="182"/>
+        <location filename="bulmacontbase.ui" line="184"/>
         <source>Asiento de &amp;regularizacion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="187"/>
+        <location filename="bulmacontbase.ui" line="189"/>
         <source>Asiento de &amp;cierre</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="192"/>
+        <location filename="bulmacontbase.ui" line="194"/>
         <source>Cuentas a&amp;nuales</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="197"/>
+        <location filename="bulmacontbase.ui" line="199"/>
         <source>Masas &amp;patrimoniales</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="202"/>
+        <location filename="bulmacontbase.ui" line="204"/>
         <source>Registro de &amp;IVA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="207"/>
-        <source>&amp;Modelo 347 no oficial</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="bulmacontbase.ui" line="212"/>
+        <location filename="bulmacontbase.ui" line="209"/>
         <source>&amp;Cobros y pagos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="217"/>
+        <location filename="bulmacontbase.ui" line="214"/>
         <source>&amp;Amortizaciones</source>
         <translation type="unfinished">&amp;Amortitzacions</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="225"/>
+        <location filename="bulmacontbase.ui" line="222"/>
         <source>&amp;Plan Contable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="233"/>
+        <location filename="bulmacontbase.ui" line="230"/>
         <source>&amp;Asientos</source>
         <translation type="unfinished">&amp;Assentaments</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="244"/>
+        <location filename="bulmacontbase.ui" line="241"/>
         <source>Apuntes &amp;contables</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="255"/>
+        <location filename="bulmacontbase.ui" line="252"/>
         <source>Libro &amp;Mayor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="263"/>
+        <location filename="bulmacontbase.ui" line="260"/>
         <source>Libro &amp;Diario</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="290"/>
+        <location filename="bulmacontbase.ui" line="287"/>
         <source>Formas de &amp;pago</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="295"/>
+        <location filename="bulmacontbase.ui" line="292"/>
         <source>Tipos de &amp;IVA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="303"/>
+        <location filename="bulmacontbase.ui" line="300"/>
         <source>Centros de cos&amp;te</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="311"/>
+        <location filename="bulmacontbase.ui" line="308"/>
         <source>&amp;Canales</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="327"/>
+        <location filename="bulmacontbase.ui" line="324"/>
         <source>&amp;Imprimir</source>
         <translation type="unfinished">&amp;Imprimir</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="335"/>
+        <location filename="bulmacontbase.ui" line="332"/>
         <source>&amp;Guardar</source>
         <translation type="unfinished">&amp;Desar</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="343"/>
+        <location filename="bulmacontbase.ui" line="340"/>
         <source>&amp;Actualizar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="351"/>
+        <location filename="bulmacontbase.ui" line="348"/>
         <source>&amp;Filtrar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="356"/>
+        <location filename="bulmacontbase.ui" line="353"/>
         <source>&amp;Recalcular saldos iniciales</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="361"/>
+        <location filename="bulmacontbase.ui" line="358"/>
         <source>&amp;Sustituir cuentas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="366"/>
+        <location filename="bulmacontbase.ui" line="363"/>
         <source>&amp;Bloquear fechas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="371"/>
+        <location filename="bulmacontbase.ui" line="368"/>
         <source>&amp;Canal por defecto</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="376"/>
+        <location filename="bulmacontbase.ui" line="373"/>
         <source>Centro de cos&amp;te por defecto</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="381"/>
+        <location filename="bulmacontbase.ui" line="378"/>
         <source>&amp;Pantalla completa</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="389"/>
+        <location filename="bulmacontbase.ui" line="386"/>
         <source>Ordenar &amp;ventanas</source>
         <translation type="unfinished"></translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="bulmacontbase.ui" line="394"/>
+        <location filename="bulmacontbase.ui" line="391"/>
         <source>Organización en &amp;cascada</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="407"/>
+        <location filename="bulmacontbase.ui" line="404"/>
         <source>&amp;Acerca de BulmaCont</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1546,145 +1635,160 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="48"/>
+        <location filename="bulmacontbase.ui" line="64"/>
         <source>Ventana</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="90"/>
+        <location filename="bulmacontbase.ui" line="30"/>
         <source>&amp;Ver</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="148"/>
-        <source>Co&amp;nfiguracion...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="bulmacontbase.ui" line="154"/>
+        <location filename="bulmacontbase.ui" line="156"/>
         <source>Configuracion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="159"/>
+        <location filename="bulmacontbase.ui" line="161"/>
         <source>&amp;Salir del programa</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="162"/>
+        <location filename="bulmacontbase.ui" line="164"/>
         <source>Ctrl+Q</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="167"/>
+        <location filename="bulmacontbase.ui" line="169"/>
         <source>&amp;Espaciar asientos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="236"/>
+        <location filename="bulmacontbase.ui" line="233"/>
         <source>Ctrl+L</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="247"/>
+        <location filename="bulmacontbase.ui" line="244"/>
         <source>Ctrl+A</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="271"/>
+        <location filename="bulmacontbase.ui" line="268"/>
         <source>&amp;Balance de Cuentas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="279"/>
+        <location filename="bulmacontbase.ui" line="276"/>
         <source>Balance &amp;jerarquico de Sumas y Saldos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="285"/>
+        <location filename="bulmacontbase.ui" line="282"/>
         <source>Balance jerarquico de Sumas y Saldos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="384"/>
+        <location filename="bulmacontbase.ui" line="381"/>
         <source>F11</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="402"/>
+        <location filename="bulmacontbase.ui" line="399"/>
         <source>F1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="418"/>
+        <location filename="bulmacontbase.ui" line="415"/>
         <source>Ctrl+PgDown</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="429"/>
+        <location filename="bulmacontbase.ui" line="426"/>
         <source>Ctrl+PgUp</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="440"/>
+        <location filename="bulmacontbase.ui" line="437"/>
         <source>Ctrl+Home</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="451"/>
+        <location filename="bulmacontbase.ui" line="448"/>
         <source>Ctrl+End</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="462"/>
+        <location filename="bulmacontbase.ui" line="459"/>
         <source>Indexador</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="465"/>
+        <location filename="bulmacontbase.ui" line="462"/>
         <source>Ctrl+I</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="bulmacontbase.ui" line="150"/>
+        <source>&amp;Propiedades de la empresa...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="bulmacontbase.ui" line="467"/>
+        <source>Listado &amp;347</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="bulmacontbase.ui" line="472"/>
+        <source>&quot;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="bulmacontbase.ui" line="477"/>
+        <source>&apos;&apos;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>Bulmacont</name>
     <message>
-        <location filename="bulmacont.cpp" line="150"/>
+        <location filename="bulmacont.cpp" line="402"/>
         <source>Listo.</source>
         <translation type="unfinished">Enllestit.</translation>
     </message>
     <message>
-        <location filename="bulmacont.cpp" line="109"/>
+        <location filename="bulmacont.cpp" line="351"/>
         <source>Deshaciendo la ultima accion...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacont.cpp" line="115"/>
+        <location filename="bulmacont.cpp" line="359"/>
         <source>Cortando seleccion...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacont.cpp" line="121"/>
+        <location filename="bulmacont.cpp" line="367"/>
         <source>Copiando la seleccion al portapapeles...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacont.cpp" line="127"/>
+        <location filename="bulmacont.cpp" line="375"/>
         <source>Insertando el contenido del portapapeles...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacont.cpp" line="133"/>
+        <location filename="bulmacont.cpp" line="383"/>
         <source>Cambinado barra de estado...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacont.cpp" line="144"/>
+        <location filename="bulmacont.cpp" line="396"/>
         <source>Cambiando a modo de pantalla completa...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacont.cpp" line="161"/>
+        <location filename="bulmacont.cpp" line="417"/>
         <source>Listado de cuentas</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1761,7 +1865,7 @@
 <context>
     <name>CAnualesView</name>
     <message>
-        <location filename="canualesview.cpp" line="58"/>
+        <location filename="canualesview.cpp" line="78"/>
         <source>Archivo</source>
         <translation type="unfinished">Fitxer</translation>
     </message>
@@ -2058,6 +2162,52 @@
     </message>
 </context>
 <context>
+    <name>CuentaView</name>
+    <message>
+        <location filename="cuentaview.cpp" line="169"/>
+        <source>Guardar cuenta</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="cuentaview.cpp" line="170"/>
+        <source>Desea guardar los cambios?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="cuentaview.cpp" line="171"/>
+        <source>&amp;Si</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="cuentaview.cpp" line="171"/>
+        <source>&amp;No</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="cuentaview.cpp" line="171"/>
+        <source>&amp;Cancelar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="cuentaview.cpp" line="217"/>
+        <source>Cuenta</source>
+        <translation type="unfinished">Conta</translation>
+    </message>
+    <message>
+        <location filename="cuentaview.cpp" line="464"/>
+        <source>Borrar cuenta</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="cuentaview.cpp" line="465"/>
+        <source>Se va a borrar la cuenta,
+Esto puede ocasionar perdida de datos
+Tal vez deberia pensarselo mejor antes
+porque igual su trabajo se pierde.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DiarioBase</name>
     <message>
         <location filename="diariobase.ui" line="13"/>
@@ -2065,19 +2215,19 @@
         <translation type="unfinished">Diari</translation>
     </message>
     <message>
-        <location filename="diariobase.ui" line="366"/>
+        <location filename="diariobase.ui" line="321"/>
         <source>&amp;Incluir asientos abiertos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="diariobase.ui" line="285"/>
+        <location filename="diariobase.ui" line="288"/>
         <source>Apuntes con contrapartida:</source>
         <translation type="unfinished">Apunts amb contrapartida:</translation>
     </message>
     <message>
         <location filename="diariobase.ui" line="110"/>
         <source>Imprimir</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Imprimir</translation>
     </message>
     <message>
         <location filename="diariobase.ui" line="144"/>
@@ -2095,33 +2245,38 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="diariobase.ui" line="298"/>
+        <location filename="diariobase.ui" line="301"/>
         <source>Apuntes con saldo inferior a:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="diariobase.ui" line="308"/>
+        <location filename="diariobase.ui" line="311"/>
         <source>Apuntes con saldo superior a:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="diariobase.ui" line="318"/>
+        <location filename="diariobase.ui" line="372"/>
         <source>Fecha final:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="diariobase.ui" line="328"/>
+        <location filename="diariobase.ui" line="352"/>
         <source>Fecha inicial:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="diariobase.ui" line="418"/>
+        <location filename="diariobase.ui" line="421"/>
         <source>Total Debe:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="diariobase.ui" line="497"/>
+        <location filename="diariobase.ui" line="500"/>
         <source>Total Haber:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="diariobase.ui" line="239"/>
+        <source>F5</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2191,52 +2346,47 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="35"/>
-        <source>codigo</source>
-        <translation type="unfinished">codi</translation>
-    </message>
-    <message>
-        <location filename="diariosubform.cpp" line="36"/>
+        <location filename="diariosubform.cpp" line="41"/>
         <source>tipocuenta</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="92"/>
+        <location filename="diariosubform.cpp" line="101"/>
         <source>Borrar registro</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="95"/>
+        <location filename="diariosubform.cpp" line="104"/>
         <source>Ajustar columa</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="96"/>
+        <location filename="diariosubform.cpp" line="105"/>
         <source>Ajustar altura</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="97"/>
+        <location filename="diariosubform.cpp" line="106"/>
         <source>Ajustar columnas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="98"/>
+        <location filename="diariosubform.cpp" line="107"/>
         <source>Ajustar alturas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="100"/>
+        <location filename="diariosubform.cpp" line="109"/>
         <source>Ver configurador de subformulario</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="30"/>
+        <location filename="diariosubform.cpp" line="39"/>
         <source>idborrador</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="31"/>
+        <location filename="diariosubform.cpp" line="40"/>
         <source>codigoborrador</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2246,77 +2396,72 @@
         <translation type="unfinished">ordre</translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="33"/>
+        <location filename="diariosubform.cpp" line="32"/>
         <source>Fecha</source>
         <translation type="unfinished">Data</translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="34"/>
+        <location filename="diariosubform.cpp" line="35"/>
         <source>Concepto</source>
         <translation type="unfinished">Concepte</translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="37"/>
-        <source>descripcion</source>
-        <translation type="unfinished">descripció</translation>
-    </message>
-    <message>
-        <location filename="diariosubform.cpp" line="39"/>
+        <location filename="diariosubform.cpp" line="36"/>
         <source>Debe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="40"/>
+        <location filename="diariosubform.cpp" line="37"/>
         <source>Haber</source>
         <translation type="unfinished">Haber</translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="41"/>
+        <location filename="diariosubform.cpp" line="43"/>
         <source>Contrapartida</source>
         <translation type="unfinished">Contrapartida</translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="42"/>
+        <location filename="diariosubform.cpp" line="38"/>
         <source>Comentario</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="43"/>
+        <location filename="diariosubform.cpp" line="44"/>
         <source>Canal</source>
         <translation type="unfinished">Canal</translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="44"/>
+        <location filename="diariosubform.cpp" line="45"/>
         <source>MarcaConciliacion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="45"/>
+        <location filename="diariosubform.cpp" line="46"/>
         <source>Centro Coste</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="46"/>
+        <location filename="diariosubform.cpp" line="47"/>
         <source>Factura</source>
         <translation type="unfinished">Factura</translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="47"/>
+        <location filename="diariosubform.cpp" line="48"/>
         <source>idapunte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="48"/>
+        <location filename="diariosubform.cpp" line="49"/>
         <source>idtipoiva</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="49"/>
+        <location filename="diariosubform.cpp" line="50"/>
         <source>idregistroiva</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="50"/>
+        <location filename="diariosubform.cpp" line="30"/>
         <source>idasiento</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2336,20 +2481,35 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="38"/>
-        <source>descripcion Cuenta</source>
+        <location filename="diariosubform.cpp" line="31"/>
+        <source>Asiento</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="diariosubform.cpp" line="33"/>
+        <source>Cuenta</source>
+        <translation type="unfinished">Conta</translation>
+    </message>
+    <message>
+        <location filename="diariosubform.cpp" line="34"/>
+        <source>Descripcion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="diariosubform.cpp" line="42"/>
+        <source>Descripcion de Cuenta</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>DiarioView</name>
     <message>
-        <location filename="diarioview.cpp" line="117"/>
+        <location filename="diarioview.cpp" line="127"/>
         <source>Guardar Libro Diario</source>
         <translation type="unfinished">Desar el Llibre diari</translation>
     </message>
     <message>
-        <location filename="diarioview.cpp" line="119"/>
+        <location filename="diarioview.cpp" line="129"/>
         <source>Diarios (*.txt)</source>
         <translation type="unfinished">Diaris (*.txt)</translation>
     </message>
@@ -2425,22 +2585,22 @@
         <translation type="unfinished">Extracte de contes</translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="513"/>
+        <location filename="extractobase.ui" line="875"/>
         <source>Actualizar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="87"/>
+        <location filename="extractobase.ui" line="449"/>
         <source>&amp;Incluir asientos abiertos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="275"/>
+        <location filename="extractobase.ui" line="637"/>
         <source>&amp;Todos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="94"/>
+        <location filename="extractobase.ui" line="456"/>
         <source>Apuntes con contrapartida:</source>
         <translation type="unfinished">Apunts amb contrapartida:</translation>
     </message>
@@ -2450,112 +2610,112 @@
         <translation type="unfinished">Totals:</translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="193"/>
+        <location filename="extractobase.ui" line="555"/>
         <source>Punteo:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="55"/>
+        <location filename="extractobase.ui" line="417"/>
         <source>Apuntes con saldo superior a:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="77"/>
+        <location filename="extractobase.ui" line="439"/>
         <source>Apuntes con saldo inferior a:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="107"/>
+        <location filename="extractobase.ui" line="469"/>
         <source>Fecha inicial:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="137"/>
+        <location filename="extractobase.ui" line="499"/>
         <source>Fecha final:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="157"/>
+        <location filename="extractobase.ui" line="519"/>
         <source>Cuenta inicial:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="167"/>
+        <location filename="extractobase.ui" line="529"/>
         <source>Cuenta final:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="245"/>
+        <location filename="extractobase.ui" line="607"/>
         <source>Apuntes &amp;no punteados</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="260"/>
+        <location filename="extractobase.ui" line="622"/>
         <source>Ap&amp;untes punteados</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="359"/>
+        <location filename="extractobase.ui" line="721"/>
         <source>Guardar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="399"/>
+        <location filename="extractobase.ui" line="761"/>
         <source>Imprimir</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Imprimir</translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="433"/>
+        <location filename="extractobase.ui" line="795"/>
         <source>Mostrar/Oculatar filtro</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="473"/>
+        <location filename="extractobase.ui" line="835"/>
         <source>Configurar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="569"/>
+        <location filename="extractobase.ui" line="931"/>
         <source>Casacion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="603"/>
+        <location filename="extractobase.ui" line="965"/>
         <source>Guardar punteo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="637"/>
+        <location filename="extractobase.ui" line="999"/>
         <source>Cargar punteo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="671"/>
+        <location filename="extractobase.ui" line="1033"/>
         <source>Borrar punteo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="723"/>
+        <location filename="extractobase.ui" line="55"/>
         <source>Saldo inicial:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="730"/>
+        <location filename="extractobase.ui" line="62"/>
         <source>Cuenta:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="737"/>
+        <location filename="extractobase.ui" line="69"/>
         <source>Haber inicial:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="744"/>
+        <location filename="extractobase.ui" line="76"/>
         <source>Debe inicial:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="812"/>
+        <location filename="extractobase.ui" line="144"/>
         <source>Nombre de la cuenta:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2570,7 +2730,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="1169"/>
+        <location filename="extractobase.ui" line="1171"/>
         <source>Saldo:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2616,87 +2776,77 @@
 <context>
     <name>ExtractoSubForm</name>
     <message>
-        <location filename="extractosubform.cpp" line="38"/>
+        <location filename="extractosubform.cpp" line="50"/>
         <source>idcuenta</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="39"/>
-        <source>codigo</source>
-        <translation type="unfinished">codi</translation>
-    </message>
-    <message>
-        <location filename="extractosubform.cpp" line="40"/>
+        <location filename="extractosubform.cpp" line="51"/>
         <source>tipocuenta</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="85"/>
+        <location filename="extractosubform.cpp" line="93"/>
         <source>Borrar registro</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="88"/>
+        <location filename="extractosubform.cpp" line="96"/>
         <source>Ajustar columa</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="89"/>
+        <location filename="extractosubform.cpp" line="97"/>
         <source>Ajustar altura</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="90"/>
+        <location filename="extractosubform.cpp" line="98"/>
         <source>Ajustar columnas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="91"/>
+        <location filename="extractosubform.cpp" line="99"/>
         <source>Ajustar alturas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="93"/>
+        <location filename="extractosubform.cpp" line="101"/>
         <source>Ver configurador de subformulario</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="31"/>
-        <source>punteo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="extractosubform.cpp" line="32"/>
+        <location filename="extractosubform.cpp" line="46"/>
         <source>idapunte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="33"/>
+        <location filename="extractosubform.cpp" line="47"/>
         <source>codigoborrador</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="34"/>
+        <location filename="extractosubform.cpp" line="48"/>
         <source>idasiento</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="35"/>
+        <location filename="extractosubform.cpp" line="49"/>
         <source>iddiario</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="36"/>
+        <location filename="extractosubform.cpp" line="37"/>
         <source>Fecha</source>
         <translation type="unfinished">Data</translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="37"/>
+        <location filename="extractosubform.cpp" line="41"/>
         <source>Concepto</source>
         <translation type="unfinished">Concepte</translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="41"/>
+        <location filename="extractosubform.cpp" line="38"/>
         <source>Cuenta</source>
         <translation type="unfinished">Conta</translation>
     </message>
@@ -2711,44 +2861,64 @@
         <translation type="unfinished">Haber</translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="44"/>
+        <location filename="extractosubform.cpp" line="52"/>
         <source>contrapartida</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="45"/>
-        <source>comentario</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="extractosubform.cpp" line="46"/>
+        <location filename="extractosubform.cpp" line="54"/>
         <source>idcanal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="47"/>
+        <location filename="extractosubform.cpp" line="55"/>
         <source>Canal</source>
         <translation type="unfinished">Canal</translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="48"/>
+        <location filename="extractosubform.cpp" line="56"/>
         <source>marcaconciliacion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="49"/>
+        <location filename="extractosubform.cpp" line="57"/>
         <source>idc_coste</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="50"/>
+        <location filename="extractosubform.cpp" line="58"/>
         <source>idtipoiva</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="51"/>
-        <source>orden</source>
-        <translation type="unfinished">ordre</translation>
+        <location filename="extractosubform.cpp" line="36"/>
+        <source>Punteo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="extractosubform.cpp" line="39"/>
+        <source>Asiento</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="extractosubform.cpp" line="44"/>
+        <source>Saldo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="extractosubform.cpp" line="53"/>
+        <source>Comentario</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="extractosubform.cpp" line="59"/>
+        <source>Orden</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="extractosubform.cpp" line="40"/>
+        <source>Descripcion</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2817,12 +2987,12 @@
 <context>
     <name>ListConfiguracionSubForm</name>
     <message>
-        <location filename="propiedadesempresa.cpp" line="144"/>
+        <location filename="propiedadesempresa.cpp" line="149"/>
         <source>Nombre</source>
         <translation type="unfinished">Nom</translation>
     </message>
     <message>
-        <location filename="propiedadesempresa.cpp" line="145"/>
+        <location filename="propiedadesempresa.cpp" line="150"/>
         <source>Valor</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2913,179 +3083,242 @@
 <context>
     <name>ListLinAsiento1View</name>
     <message>
-        <location filename="listlinasiento1view.cpp" line="33"/>
+        <location filename="listlinasiento1view.cpp" line="35"/>
         <source>Fecha</source>
         <translation type="unfinished">Data</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="37"/>
+        <location filename="listlinasiento1view.cpp" line="39"/>
         <source>Concepto contable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="50"/>
+        <location filename="listlinasiento1view.cpp" line="53"/>
         <source>Id cuenta</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="34"/>
+        <location filename="listlinasiento1view.cpp" line="36"/>
         <source>Codigo</source>
         <translation type="unfinished">codi</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="51"/>
+        <location filename="listlinasiento1view.cpp" line="54"/>
         <source>Tipo de cuenta</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="35"/>
+        <location filename="listlinasiento1view.cpp" line="37"/>
         <source>Descripcion de la cuenta</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="36"/>
+        <location filename="listlinasiento1view.cpp" line="38"/>
         <source>Descripcion</source>
         <translation type="unfinished">descripció</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="38"/>
+        <location filename="listlinasiento1view.cpp" line="40"/>
         <source>Debe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="39"/>
+        <location filename="listlinasiento1view.cpp" line="41"/>
         <source>Haber</source>
         <translation type="unfinished">Haber</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="40"/>
+        <location filename="listlinasiento1view.cpp" line="42"/>
         <source>Contrapartida</source>
         <translation type="unfinished">Contrapartida</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="41"/>
+        <location filename="listlinasiento1view.cpp" line="43"/>
         <source>Comentario</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="42"/>
+        <location filename="listlinasiento1view.cpp" line="44"/>
         <source>ID Canal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="43"/>
+        <location filename="listlinasiento1view.cpp" line="45"/>
         <source>Conciliacion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="44"/>
+        <location filename="listlinasiento1view.cpp" line="46"/>
         <source>Id centro de coste</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="45"/>
+        <location filename="listlinasiento1view.cpp" line="47"/>
         <source>Id apunte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="46"/>
+        <location filename="listlinasiento1view.cpp" line="48"/>
         <source>Id tipo de IVA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="47"/>
+        <location filename="listlinasiento1view.cpp" line="49"/>
         <source>Orden</source>
         <translation type="unfinished">ordre</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="48"/>
+        <location filename="listlinasiento1view.cpp" line="50"/>
         <source>Id borrador</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="49"/>
+        <location filename="listlinasiento1view.cpp" line="51"/>
         <source>Id asiento</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="86"/>
+        <location filename="listlinasiento1view.cpp" line="94"/>
         <source>Borrar registro</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="88"/>
+        <location filename="listlinasiento1view.cpp" line="96"/>
         <source>Ajustar columa</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="89"/>
+        <location filename="listlinasiento1view.cpp" line="97"/>
         <source>Ajustar altura</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="90"/>
+        <location filename="listlinasiento1view.cpp" line="98"/>
         <source>Ajustar columnas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="91"/>
+        <location filename="listlinasiento1view.cpp" line="99"/>
         <source>Ajustar alturas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="93"/>
+        <location filename="listlinasiento1view.cpp" line="101"/>
         <source>Ver configurador de subformulario</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="71"/>
+        <location filename="listlinasiento1view.cpp" line="79"/>
         <source>Mostrar asiento</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="73"/>
+        <location filename="listlinasiento1view.cpp" line="81"/>
         <source>Mostrar extracto (dia)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="74"/>
+        <location filename="listlinasiento1view.cpp" line="82"/>
         <source>Mostrar extracto (mes)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="75"/>
+        <location filename="listlinasiento1view.cpp" line="83"/>
         <source>Mostrar extracto (ano)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="77"/>
+        <location filename="listlinasiento1view.cpp" line="85"/>
         <source>Mostrar balance (dia)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="78"/>
+        <location filename="listlinasiento1view.cpp" line="86"/>
         <source>Mostrar balance (mes)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="79"/>
+        <location filename="listlinasiento1view.cpp" line="87"/>
         <source>Mostrar balance (ano)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="81"/>
+        <location filename="listlinasiento1view.cpp" line="89"/>
         <source>Mostrar balance jerarquico (dia)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="82"/>
+        <location filename="listlinasiento1view.cpp" line="90"/>
         <source>Mostrar balance jerarquico (mes)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="83"/>
+        <location filename="listlinasiento1view.cpp" line="91"/>
         <source>Mostrar balance jerarquico (ano)</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Listado347Base</name>
+    <message>
+        <location filename="listado347base.ui" line="14"/>
+        <source>Listado para el modelo 347</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="listado347base.ui" line="89"/>
+        <source>Imprimir</source>
+        <translation type="unfinished">Imprimir</translation>
+    </message>
+    <message>
+        <location filename="listado347base.ui" line="104"/>
+        <source>Ctrl+P</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="listado347base.ui" line="129"/>
+        <source>Recalcular</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="listado347base.ui" line="141"/>
+        <source>F5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="listado347base.ui" line="179"/>
+        <source>Ver filtro</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="listado347base.ui" line="194"/>
+        <source>Ctrl+F</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="listado347base.ui" line="246"/>
+        <source>Importe:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="listado347base.ui" line="259"/>
+        <source>Fecha final:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="listado347base.ui" line="269"/>
+        <source>Fecha inicial:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="listado347base.ui" line="305"/>
+        <source>Ventas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="listado347base.ui" line="321"/>
+        <source>Compras</source>
+        <translation type="unfinished">Compres</translation>
     </message>
 </context>
 <context>
@@ -3182,12 +3415,12 @@
 <context>
     <name>Mod300ps</name>
     <message>
-        <location filename="modelo300.cpp" line="148"/>
+        <location filename="modelo300.cpp" line="156"/>
         <source>Creando formulario</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modelo300.cpp" line="148"/>
+        <location filename="modelo300.cpp" line="156"/>
         <source>&amp;Cancelar</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3276,64 +3509,6 @@
     </message>
 </context>
 <context>
-    <name>Modelo347Base</name>
-    <message>
-        <location filename="modelo347base.ui" line="14"/>
-        <source>Listado para el modelo 347</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="modelo347base.ui" line="179"/>
-        <source>Imprimir</source>
-        <translation type="unfinished">Imprimir</translation>
-    </message>
-    <message>
-        <location filename="modelo347base.ui" line="129"/>
-        <source>Recalcular</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="modelo347base.ui" line="283"/>
-        <source>Ventas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="modelo347base.ui" line="299"/>
-        <source>Compras</source>
-        <translation type="unfinished">Compres</translation>
-    </message>
-    <message>
-        <location filename="modelo347base.ui" line="104"/>
-        <source>Ctrl+P</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="modelo347base.ui" line="141"/>
-        <source>F5</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="modelo347base.ui" line="194"/>
-        <source>Ctrl+F</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="modelo347base.ui" line="246"/>
-        <source>Fecha inicial:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="modelo347base.ui" line="256"/>
-        <source>Importe:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="modelo347base.ui" line="269"/>
-        <source>Fecha final:</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>PropiedadesEmpresaBase</name>
     <message>
         <location filename="propiedadesempresabase.ui" line="16"/>
@@ -3341,14 +3516,14 @@
         <translation type="unfinished"></translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="propiedadesempresabase.ui" line="161"/>
+        <location filename="propiedadesempresabase.ui" line="185"/>
         <source>xxxx --&gt; Dígitos de plan contable.
 yyyy --&gt; Dígitos de cuenta.</source>
         <translation type="unfinished">xxxx --&gt; Dígits del pla contable.
 yyyy --&gt; Dígits de la conta.</translation>
     </message>
     <message>
-        <location filename="propiedadesempresabase.ui" line="192"/>
+        <location filename="propiedadesempresabase.ui" line="216"/>
         <source>Modi&amp;ficar plan contable</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3368,17 +3543,17 @@ yyyy --&gt; Dígits de la conta.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="propiedadesempresabase.ui" line="129"/>
+        <location filename="propiedadesempresabase.ui" line="142"/>
         <source>Modelo del código de cuenta:</source>
         <translation type="unfinished"></translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="propiedadesempresabase.ui" line="144"/>
+        <location filename="propiedadesempresabase.ui" line="162"/>
         <source>Dígitos estanda&amp;r</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="propiedadesempresabase.ui" line="231"/>
+        <location filename="propiedadesempresabase.ui" line="284"/>
         <source>Propiedades generales</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3386,28 +3561,28 @@ yyyy --&gt; Dígits de la conta.</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="modelo300.cpp" line="133"/>
+        <location filename="modelo300.cpp" line="141"/>
         <source>Formulario 300</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modelo300.cpp" line="102"/>
+        <location filename="modelo300.cpp" line="108"/>
         <source>Generar de todas formas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modelo300.cpp" line="102"/>
+        <location filename="modelo300.cpp" line="108"/>
         <source>Volver</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modelo300.cpp" line="101"/>
+        <location filename="modelo300.cpp" line="107"/>
         <source>Aviso: El numero de cuenta bancario introducido
 no se corresponde con un CCC correcto.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modelo300.cpp" line="137"/>
+        <location filename="modelo300.cpp" line="145"/>
         <source>Lo siento, no encuentro el formulario original en pdf.
 Pruebe a descargarlo desde www.aeat.es y guaedelo en
 /usr/share/bulmages/formularios/ o en
@@ -3415,8 +3590,18 @@ Pruebe a descargarlo desde www.aeat.es y guaedelo en
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modelo300.cpp" line="138"/>
+        <location filename="modelo300.cpp" line="146"/>
         <source>&amp;Aceptar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="empresa.cpp" line="543"/>
+        <source>Se han espaciado los asientos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="empresa.cpp" line="561"/>
+        <source>Se han ordenado los asientos</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3543,7 +3728,7 @@ Pruebe a descargarlo desde www.aeat.es y guaedelo en
     </message>
     <message>
         <location filename="sobrebase.ui" line="573"/>
-        <source>Contabilidad GPL - Version 0.9.1 -</source>
+        <source>Contabilidad GPL - Version 0.9.3 -</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3583,75 +3768,75 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>Splash</name>
     <message>
-        <location filename="splashscreen.cpp" line="111"/>
+        <location filename="splashscreen.cpp" line="118"/>
         <source>Comprobando nivel de combustible</source>
         <translation>Carregant el Solitari en segon pla</translation>
     </message>
     <message>
-        <location filename="splashscreen.cpp" line="112"/>
+        <location filename="splashscreen.cpp" line="119"/>
         <source>Calibrando los lasers del lector de CD</source>
         <translation>Calibrant els lasers del lector de CD</translation>
     </message>
     <message>
-        <location filename="splashscreen.cpp" line="117"/>
+        <location filename="splashscreen.cpp" line="124"/>
         <source>Haciendo PING contra el servidor de la MetaBase</source>
         <translation>Entrant al Jabber, per veure als amics</translation>
     </message>
     <message>
-        <location filename="splashscreen.cpp" line="118"/>
+        <location filename="splashscreen.cpp" line="125"/>
         <source>Dejando tiempo libre al sistema</source>
         <translation>Eliminant altres programes de Contabilitat</translation>
     </message>
     <message>
-        <location filename="splashscreen.cpp" line="119"/>
+        <location filename="splashscreen.cpp" line="126"/>
         <source>Sincronizando fases Alfa Beta</source>
         <translation>Enjegant la WebCam</translation>
     </message>
     <message>
-        <location filename="splashscreen.cpp" line="115"/>
+        <location filename="splashscreen.cpp" line="122"/>
         <source>Golpecitos de reajuste del HD</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="splashscreen.cpp" line="113"/>
+        <location filename="splashscreen.cpp" line="120"/>
         <source>Comprobando la disquetera y la memoria fisica</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="splashscreen.cpp" line="114"/>
+        <location filename="splashscreen.cpp" line="121"/>
         <source>Induciendo energia quantica, entre su RAM y su ROM</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="splashscreen.cpp" line="116"/>
+        <location filename="splashscreen.cpp" line="123"/>
         <source>Probando la velocidad del ventilador de la CPU y su frecuencia</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="splashscreen.cpp" line="120"/>
+        <location filename="splashscreen.cpp" line="127"/>
         <source>Flusheando datos con vidas inteligentes superiores</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="splashscreen.cpp" line="121"/>
+        <location filename="splashscreen.cpp" line="128"/>
         <source>Permutando las tablas de particion del Sistema Operativo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="splashscreen.cpp" line="40"/>
-        <source>&lt;center&gt;&lt;font size=+1 color=&quot;#fff8a1&quot;&gt;BulmaCont&lt;/font&gt;&amp;nbsp;&lt;font color=&quot;#ff5e00&quot;&gt;0.9.1&lt;/font&gt;&lt;/center&gt;</source>
+        <location filename="splashscreen.cpp" line="129"/>
+        <source>Crackeando BulmaCont</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="splashscreen.cpp" line="122"/>
-        <source>Crackeando BulmaCont</source>
+        <location filename="splashscreen.cpp" line="41"/>
+        <source>&lt;center&gt;&lt;font size=+1 color=&quot;#fff8a1&quot;&gt;BulmaCont&lt;/font&gt;&amp;nbsp;&lt;font color=&quot;#ff5e00&quot;&gt;0.9.3&lt;/font&gt;&lt;/center&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>SubForm2Bc</name>
     <message>
-        <location filename="subform2bc.cpp" line="280"/>
+        <location filename="subform2bc.cpp" line="301"/>
         <source>Submenu de contabilidad</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3702,21 +3887,8 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>aplinteligentesview</name>
     <message>
-        <location filename="aplinteligentesview.cpp" line="498"/>
+        <location filename="aplinteligentesview.cpp" line="499"/>
         <source>Error al crear el asiento</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>asientosview</name>
-    <message>
-        <location filename="asientosview.cpp" line="140"/>
-        <source>Asientos</source>
-        <translation type="unfinished">Assentaments</translation>
-    </message>
-    <message>
-        <location filename="asientosview.cpp" line="46"/>
-        <source>(todos)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3756,54 +3928,54 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>canalview</name>
     <message>
-        <location filename="canalview.cpp" line="121"/>
+        <location filename="canalview.cpp" line="123"/>
         <source>Desea guardar los cambios.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="canalview.cpp" line="163"/>
+        <location filename="canalview.cpp" line="165"/>
         <source>Guardar canal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="canalview.cpp" line="122"/>
+        <location filename="canalview.cpp" line="124"/>
         <source>&amp;Guardar</source>
         <translation type="unfinished">&amp;Desar</translation>
     </message>
     <message>
-        <location filename="canalview.cpp" line="165"/>
+        <location filename="canalview.cpp" line="167"/>
         <source>&amp;Cancelar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="canalview.cpp" line="142"/>
+        <location filename="canalview.cpp" line="144"/>
         <source>Borrar canal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="canalview.cpp" line="144"/>
+        <location filename="canalview.cpp" line="146"/>
         <source>Se va a borrar la forma de pago,
                                      Esto puede ocasionar perdida de datos
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="canalview.cpp" line="145"/>
+        <location filename="canalview.cpp" line="147"/>
         <source>&amp;Borrar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="canalview.cpp" line="164"/>
+        <location filename="canalview.cpp" line="166"/>
         <source>Desea guardar los cambios?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="canalview.cpp" line="165"/>
+        <location filename="canalview.cpp" line="167"/>
         <source>&amp;Si</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="canalview.cpp" line="165"/>
+        <location filename="canalview.cpp" line="167"/>
         <source>&amp;No</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3869,48 +4041,48 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished">Nom</translation>
     </message>
     <message>
-        <location filename="ccosteview.cpp" line="211"/>
+        <location filename="ccosteview.cpp" line="222"/>
         <source>Guardar centro de coste</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ccosteview.cpp" line="212"/>
+        <location filename="ccosteview.cpp" line="223"/>
         <source>Desea guardar los cambios?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ccosteview.cpp" line="119"/>
+        <location filename="ccosteview.cpp" line="122"/>
         <source>&amp;Guardar</source>
         <translation type="unfinished">&amp;Desar</translation>
     </message>
     <message>
-        <location filename="ccosteview.cpp" line="213"/>
+        <location filename="ccosteview.cpp" line="224"/>
         <source>&amp;Cancelar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ccosteview.cpp" line="192"/>
+        <location filename="ccosteview.cpp" line="202"/>
         <source>Borrar centro de coste</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ccosteview.cpp" line="193"/>
+        <location filename="ccosteview.cpp" line="203"/>
         <source>Se va a borrar el centro de coste.
 Esta operacion puede ocasionar perdida de datos.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ccosteview.cpp" line="194"/>
+        <location filename="ccosteview.cpp" line="204"/>
         <source>&amp;Borrar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ccosteview.cpp" line="213"/>
+        <location filename="ccosteview.cpp" line="224"/>
         <source>&amp;Si</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ccosteview.cpp" line="213"/>
+        <location filename="ccosteview.cpp" line="224"/>
         <source>&amp;No</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3926,123 +4098,77 @@ Esta operacion puede ocasionar perdida de datos.</source>
     </message>
 </context>
 <context>
-    <name>cuentaview</name>
-    <message>
-        <location filename="cuentaview.cpp" line="148"/>
-        <source>Guardar cuenta</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="cuentaview.cpp" line="149"/>
-        <source>Desea guardar los cambios?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="cuentaview.cpp" line="150"/>
-        <source>&amp;Si</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="cuentaview.cpp" line="150"/>
-        <source>&amp;No</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="cuentaview.cpp" line="150"/>
-        <source>&amp;Cancelar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="cuentaview.cpp" line="193"/>
-        <source>Cuenta</source>
-        <translation type="unfinished">Conta</translation>
-    </message>
-    <message>
-        <location filename="cuentaview.cpp" line="431"/>
-        <source>Borrar cuenta</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="cuentaview.cpp" line="432"/>
-        <source>Se va a borrar la cuenta,
-Esto puede ocasionar perdida de datos
-Tal vez deberia pensarselo mejor antes
-porque igual su trabajo se pierde.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>extractoview1</name>
     <message>
-        <location filename="extractoview1.cpp" line="170"/>
+        <location filename="extractoview1.cpp" line="212"/>
         <source>Diarios (*.txt)</source>
         <translation>Diaris (*.txt)</translation>
     </message>
     <message>
-        <location filename="extractoview1.cpp" line="371"/>
+        <location filename="extractoview1.cpp" line="435"/>
         <source>Punteos (*.pto)</source>
         <translation>Puntejos (*.pto)</translation>
     </message>
     <message>
-        <location filename="extractoview1.cpp" line="168"/>
+        <location filename="extractoview1.cpp" line="210"/>
         <source>Guardar libro diario</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractoview1.cpp" line="369"/>
+        <location filename="extractoview1.cpp" line="433"/>
         <source>Guardar punteo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractoview1.cpp" line="399"/>
+        <location filename="extractoview1.cpp" line="467"/>
         <source>Borrar punteo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractoview1.cpp" line="402"/>
-        <source>Se dispone a borrar el punteo. Este cambio                                         es irrecuperable si no ha guardado su el punte.                                         Desea continuar?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="extractoview1.cpp" line="423"/>
+        <location filename="extractoview1.cpp" line="493"/>
         <source>Cargar punteo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="extractoview1.cpp" line="425"/>
+        <location filename="extractoview1.cpp" line="495"/>
         <source>Punteo (*.pto)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="extractoview1.cpp" line="470"/>
+        <source>Se dispone a borrar el punteo. Este cambio                                             es irrecuperable si no ha guardado su el punte.                                             Desea continuar?</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>fpagoview</name>
     <message>
-        <location filename="fpagoview.cpp" line="200"/>
+        <location filename="fpagoview.cpp" line="215"/>
         <source>Guardar forma de pago</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="fpagoview.cpp" line="201"/>
+        <location filename="fpagoview.cpp" line="216"/>
         <source>Desea guardar los cambios?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="fpagoview.cpp" line="180"/>
+        <location filename="fpagoview.cpp" line="193"/>
         <source>Borrar forma de pago</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="fpagoview.cpp" line="162"/>
+        <location filename="fpagoview.cpp" line="173"/>
         <source>Nueva forma de pago</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="fpagoview.cpp" line="176"/>
+        <location filename="fpagoview.cpp" line="189"/>
         <source>Tiene que seleccionar una forma de pago antes de borrarla</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="fpagoview.cpp" line="181"/>
+        <location filename="fpagoview.cpp" line="194"/>
         <source>Se va a borrar la forma de pago.
 Esto puede ocasionar perdida de datos.
 Tal vez deberia pensarselo mejor antes
@@ -4123,27 +4249,27 @@ porque igual su trabajo se pierde.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listcuentasview1.cpp" line="344"/>
+        <location filename="listcuentasview1.cpp" line="349"/>
         <source>Debe seleccionar una cuenta</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listcuentasview1.cpp" line="348"/>
+        <location filename="listcuentasview1.cpp" line="353"/>
         <source>Borrar cuenta</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listcuentasview1.cpp" line="349"/>
+        <location filename="listcuentasview1.cpp" line="354"/>
         <source>Se procedera a borrar la cuenta.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listcuentasview1.cpp" line="486"/>
+        <location filename="listcuentasview1.cpp" line="492"/>
         <source>Elija el archivo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listcuentasview1.cpp" line="488"/>
+        <location filename="listcuentasview1.cpp" line="494"/>
         <source>Plan contable (*.xml)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4151,12 +4277,12 @@ porque igual su trabajo se pierde.</source>
 <context>
     <name>mpatrimonialesview</name>
     <message>
-        <location filename="mpatrimonialesview.cpp" line="62"/>
+        <location filename="mpatrimonialesview.cpp" line="89"/>
         <source>CODIGO</source>
         <translation>CODI</translation>
     </message>
     <message>
-        <location filename="mpatrimonialesview.cpp" line="62"/>
+        <location filename="mpatrimonialesview.cpp" line="89"/>
         <source>Masa patrimonial</source>
         <translation>Massa Patrimonial</translation>
     </message>
@@ -4164,22 +4290,22 @@ porque igual su trabajo se pierde.</source>
 <context>
     <name>mpatrimonialview</name>
     <message>
-        <location filename="mpatrimonialview.cpp" line="37"/>
+        <location filename="mpatrimonialview.cpp" line="38"/>
         <source>identificador</source>
         <translation>identificador</translation>
     </message>
     <message>
-        <location filename="mpatrimonialview.cpp" line="37"/>
+        <location filename="mpatrimonialview.cpp" line="38"/>
         <source>codigo</source>
         <translation>codi</translation>
     </message>
     <message>
-        <location filename="mpatrimonialview.cpp" line="37"/>
+        <location filename="mpatrimonialview.cpp" line="38"/>
         <source>descripcion</source>
         <translation>descripció</translation>
     </message>
     <message>
-        <location filename="mpatrimonialview.cpp" line="37"/>
+        <location filename="mpatrimonialview.cpp" line="38"/>
         <source>tipo</source>
         <translation>tipus</translation>
     </message>
@@ -4187,32 +4313,32 @@ porque igual su trabajo se pierde.</source>
 <context>
     <name>propiedadesempresa</name>
     <message>
-        <location filename="propiedadesempresa.cpp" line="89"/>
+        <location filename="propiedadesempresa.cpp" line="88"/>
         <source>Guardar cambios</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="propiedadesempresa.cpp" line="90"/>
+        <location filename="propiedadesempresa.cpp" line="89"/>
         <source>Desea guardar los cambios?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="propiedadesempresa.cpp" line="91"/>
+        <location filename="propiedadesempresa.cpp" line="90"/>
         <source>&amp;Guardar</source>
         <translation type="unfinished">&amp;Desar</translation>
     </message>
     <message>
-        <location filename="propiedadesempresa.cpp" line="91"/>
+        <location filename="propiedadesempresa.cpp" line="90"/>
         <source>&amp;No guardar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="propiedadesempresa.cpp" line="128"/>
+        <location filename="propiedadesempresa.cpp" line="127"/>
         <source>Salir del programa</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="propiedadesempresa.cpp" line="129"/>
+        <location filename="propiedadesempresa.cpp" line="128"/>
         <source>Para que los cambios tengan efecto
 debe salir del programa y volver a entrar.
 
@@ -4220,12 +4346,12 @@ Salir ahora?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="propiedadesempresa.cpp" line="130"/>
+        <location filename="propiedadesempresa.cpp" line="129"/>
         <source>&amp;Salir</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="propiedadesempresa.cpp" line="130"/>
+        <location filename="propiedadesempresa.cpp" line="129"/>
         <source>&amp;No salir</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4289,7 +4415,7 @@ Salir ahora?</source>
 <context>
     <name>sobreview</name>
     <message>
-        <location filename="sobreview.cpp" line="36"/>
+        <location filename="sobreview.cpp" line="38"/>
         <source>Compilado usando la version de QT:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4297,22 +4423,22 @@ Salir ahora?</source>
 <context>
     <name>tipoivaview</name>
     <message>
-        <location filename="tipoivaview.cpp" line="173"/>
+        <location filename="tipoivaview.cpp" line="182"/>
         <source>Guardar tipo de IVA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tipoivaview.cpp" line="174"/>
+        <location filename="tipoivaview.cpp" line="183"/>
         <source>Desea guardar los cambios?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tipoivaview.cpp" line="151"/>
+        <location filename="tipoivaview.cpp" line="159"/>
         <source>Borrar tipo de IVA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tipoivaview.cpp" line="152"/>
+        <location filename="tipoivaview.cpp" line="160"/>
         <source>Se va a borrar el tipo de IVA. 
 Esto puede ocasionar perdida de datos.</source>
         <translation type="unfinished"></translation>

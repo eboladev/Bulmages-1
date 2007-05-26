@@ -38,7 +38,7 @@ Splash::Splash() : QDialog(0, Qt::FramelessWindowHint) {
 
     l0->setAlignment(Qt::AlignTop);
     l0->setFont(QFont("Arial", 20, QFont::Bold));
-    l0->setText(tr("<center><font size=+1 color=\"#fff8a1\">BulmaCont</font>&nbsp;<font color=\"#ff5e00\">0.9.1</font></center>"));
+    l0->setText(tr("<center><font size=+1 color=\"#fff8a1\">BulmaCont</font>&nbsp;<font color=\"#ff5e00\">0.9.3</font></center>"));
 
     l1 = new QTextBrowser(this);
     l1->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);

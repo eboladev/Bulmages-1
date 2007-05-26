@@ -66,9 +66,9 @@ int main(int argc, char **argv) {
 
     traductor = new QTranslator(0);
     if (confpr->valor(CONF_TRADUCCION) == "locales") {
-        traductor->load(QString("ibulmages_") + QLocale::system().name(), confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+        traductor->load(QString("bulmages_") + QLocale::system().name(), confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
     } else {
-        QString archivo = "ibulmages_" + confpr->valor(CONF_TRADUCCION);
+        QString archivo = "bulmages_" + confpr->valor(CONF_TRADUCCION);
         traductor->load(archivo.toAscii().constData(), confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
     } // end if
     a.installTranslator(traductor);

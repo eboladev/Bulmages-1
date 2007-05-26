@@ -1,7 +1,7 @@
 #!/bin/bash
 
-nombrebd="bulmacont"
-#nombrebd=$1
+#nombrebd="bulmacont"
+nombrebd=$1
 
 echo $nombrebd
 

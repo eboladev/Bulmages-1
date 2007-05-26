@@ -34,6 +34,8 @@ class empresa;
 /// Clase Asiento1.
 /** */
 class Asiento1 : public FichaBc {
+    Q_OBJECT
+
 public:
     enum estadoasiento {ASVacio = 0, ASAbierto = 1, ASCerrado = 2};
 
