@@ -141,6 +141,18 @@ void listventanas::vaciar() {
 }
 
 
+void listventanas::vaciarCompleto() {
+    _depura("listventanas::vaciarCompleto", 0);
+    /// Buscamos la ventana correspondiente y la borramos.
+    int i = 0;
+    while (i < m_listBox->count()) {
+        QListWidgetItem1 *m = (QListWidgetItem1 *)m_listBox->item(i);
+        delete m->object();
+    } // end while
+    _depura("END listventanas::vaciarCompleto", 0);
+}
+
+
 /// This function provides the ability of push a window in the dock window
 /// nombre This QString is the name of the window that was shown in the listbox
 /// obj This QObject * contains the pointer of the window for furtner reference.

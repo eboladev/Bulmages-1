@@ -32,7 +32,9 @@ correctorwidget::correctorwidget(QWidget* parent, Qt::WFlags fl)
 }
 
 
-correctorwidget::~correctorwidget() {}
+correctorwidget::~correctorwidget() {
+    _depura("Salida del plugin Corrector", 10);
+}
 
 
 /** Se ha pulsado sobre el boton de configuracion de reglas.

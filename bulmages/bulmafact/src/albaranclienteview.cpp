@@ -101,6 +101,7 @@ void AlbaranClienteView::inicializar() {
     _depura("END AlbaranClienteView::inicializar", 0);
 }
 
+
 /** Pinta los totales en las casillas correspondientes
 */
 void AlbaranClienteView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq) {
@@ -117,7 +118,7 @@ void AlbaranClienteView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed 
 
 /** Metodo que responde a la opcion de ver el presupuesto correspondiente con
     este albaran.
-    
+
     Busca los presupuestos por referencia y abre los que tienen la misma referencia.
 */
 void AlbaranClienteView::s_verpresupuesto() {
@@ -127,7 +128,7 @@ void AlbaranClienteView::s_verpresupuesto() {
     cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
 
     if (cur->numregistros() > 1) {
-	/// \TODO Debe pasar por company la creacion de esta ventana
+        /// \TODO Debe pasar por company la creacion de esta ventana
         PresupuestoList *list = new PresupuestoList(getcompany(), NULL);
         list->setModoConsulta();
         list->show();
@@ -339,7 +340,7 @@ int AlbaranClienteView::cargar(QString id) {
     se meten en el sistema de la base de datos.
     Luego se deja el guardado a la clase AlbaranCliente que tambien guarda
     las lineas y los descuentos.
-    
+
     Si algo falla se genera una excepcion.
 */
 int AlbaranClienteView::guardar() {
@@ -387,6 +388,7 @@ void AlbaranClienteView::on_mui_cobrar_clicked() {
     _depura("END AlbaranClienteView::on_mui_cobrar_clicked", 0);
 }
 
+
 void AlbaranClienteView::on_m_cliente_valueChanged(QString id) {
     _depura("AlbaranClienteView::on_m_cliente_valueChanged", 0);
     subform2->setIdCliente(id);
@@ -395,18 +397,20 @@ void AlbaranClienteView::on_m_cliente_valueChanged(QString id) {
 }
 
 
-
-
 void AlbaranClienteView::pintaNumAlbaran(QString val) {
     m_numalbaran->setText(val);
 }
+
+
 void AlbaranClienteView::pintafechaalbaran(QString val) {
     m_fechaalbaran->setText(val);
 }
 
+
 void AlbaranClienteView::pintaComentAlbaran(QString val) {
     m_comentalbaran->setPlainText(val);
 }
+
 
 void AlbaranClienteView::pintaComentPrivAlbaran(QString val) {
     m_comentprivalbaran->setPlainText(val);
@@ -417,33 +421,41 @@ void AlbaranClienteView::pintaidcliente(QString val) {
     m_cliente->setidcliente(val);
 }
 
+
 void AlbaranClienteView::pintaidforma_pago(QString val) {
     m_forma_pago->setidforma_pago(val);
 }
+
 
 void AlbaranClienteView::pintaidalmacen(QString id) {
     m_almacen->setidalmacen(id);
 }
 
+
 void AlbaranClienteView::pintaidtrabajador(QString id) {
     m_trabajador->setidtrabajador(id);
 }
+
 
 void AlbaranClienteView::pintadescalbaran(QString val) {
     m_descalbaran->setText(val);
 }
 
+
 void AlbaranClienteView::pintarefalbaran(QString val) {
     m_refalbaran->setText(val);
 }
+
 
 void AlbaranClienteView::pintacontactalbaran(QString val) {
     m_contactalbaran->setText(val);
 }
 
+
 void AlbaranClienteView::pintatelalbaran(QString val) {
     m_telalbaran->setText(val);
 }
+
 
 void AlbaranClienteView::pintaprocesadoalbaran(QString id) {
     if (id == "t" || id == "TRUE") {
@@ -458,31 +470,39 @@ int AlbaranClienteView::borrar() {
     return AlbaranCliente::borrar();
 }
 
+
 void AlbaranClienteView::on_mui_guardar_clicked() {
     guardar();
 }
+
 
 /// Este slot se activa cuando hay cambios en los subformularios.
 void AlbaranClienteView::s_pintaTotales() {
     calculaypintatotales();
 }
 
+
 void AlbaranClienteView::on_mui_imprimir_clicked() {
     imprimir();
 }
+
 
 void AlbaranClienteView::on_mui_facturar_clicked() {
     generarFactura();
 }
 
+
 void AlbaranClienteView::on_mui_agregarafactura_clicked() {
     agregarFactura();
 }
+
 
 void AlbaranClienteView::on_m_descuentos_editFinish(int, int) {
     calculaypintatotales();
 }
 
+
 void AlbaranClienteView::on_subform2_editFinish(int, int) {
     calculaypintatotales();
 }
+

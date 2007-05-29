@@ -92,6 +92,7 @@ bulmafact::bulmafact(QString bd) : QMainWindow() {
     _depura("END bulmafact::bulmafact", 0);
 }
 
+
 /** Hacemos la creacion de las ventanas principales para que enten en plugins
 */
 void bulmafact::createMainWindows() {
@@ -99,6 +100,7 @@ void bulmafact::createMainWindows() {
     m_company->createMainWindows();
     _depura("END bulmafact::createMainWindows", 0);
 }
+
 
 /** Libera memoria destruyendo todos los objetos creados.
 */
@@ -228,6 +230,7 @@ void bulmafact::documentacionError(const QString docError) {
     _depura("Error en la ayuda: " + docError, 10);
 }
 
+
 void bulmafact::setActionIndexador(bool visible) {
     _depura("bulmafact::setActionIndexador", 0);
     if (visible == TRUE) {
@@ -237,6 +240,7 @@ void bulmafact::setActionIndexador(bool visible) {
     } // end if
     _depura("END bulmafact::setActionIndexador", 0);
 }
+
 
 void bulmafact::on_actionIndexador_triggered() {
     _depura("bulmafact::on_actionIndexador_triggered", 0);
@@ -262,11 +266,13 @@ void bulmafact::on_actionTasaIVA_triggered() {
     _depura("END bulmafact::on_actionTasaIVA_triggered", 0);
 }
 
+
 QWorkspace2 * bulmafact::workspace() {
     _depura("bulmafact::workspace", 0);
     _depura("END bulmafact::workspace", 0);
     return pWorkspace;
 }
+
 
 company * bulmafact::getcompany() {
     _depura("bulmafact::getcompany", 0);
@@ -274,122 +280,168 @@ company * bulmafact::getcompany() {
     return m_company;
 }
 
+
 void bulmafact::on_actionNuevo_Pedido_Proveedor_triggered() {
     _depura("bulmafact::on_actionNuevo_Pedido_Proveedor_triggered", 0);
     m_company->s_newPedidoPro();
     _depura("END bulmafact::on_actionNuevo_Pedido_Proveedor_triggered", 0);
 }
+
+
 void bulmafact::on_actionListado_Pedidos_Proveedor_triggered() {
     _depura("bulmafact::on_actionListado_Pedidos_Proveedor_triggered", 0);
     m_company->s_listPedidosPro();
     _depura("END bulmafact::on_actionListado_Pedidos_Proveedor_triggered", 0);
 }
+
+
 void bulmafact::on_actionNuevo_Albaran_Proveedor_triggered() {
     _depura("bulmafact::on_actionNuevo_Albaran_Proveedor_triggered", 0);
     m_company->s_newAlbaranPro();
     _depura("END bulmafact::on_actionNuevo_Albaran_Proveedor_triggered", 0);
 }
+
+
 void bulmafact::on_actionListado_Albaranes_Proveedor_triggered() {
     _depura("bulmafact::on_actionListado_Albaranes_Proveedor_triggered", 0);
     m_company->lAlbaranesProveedor();
     _depura("END bulmafact::on_actionListado_Albaranes_Proveedor_triggered", 0);
 }
+
+
 void bulmafact::on_actionNueva_Factura_Proveedor_triggered() {
     _depura("bulmafact::on_actionNueva_Factura_Proveedor_triggered", 0);
     m_company->s_newFacturaPro();
     _depura("END bulmafact::on_actionNueva_Factura_Proveedor_triggered", 0);
 }
+
+
 void bulmafact::on_actionListado_Facturas_Proveedor_triggered() {
     _depura("bulmafact::on_actionListado_Facturas_Proveedor_triggered", 0);
     m_company->s_listFacturasPro();
     _depura("END bulmafact::on_actionListado_Facturas_Proveedor_triggered", 0);
 }
+
+
 void bulmafact::on_actionNuevo_Presupuesto_triggered() {
     _depura("bulmafact::on_actionNuevo_Presupuesto_triggered", 0);
     m_company->s_newPresupuestoCli();
     _depura("END bulmafact::on_actionNuevo_Presupuesto_triggered", 0);
 }
+
+
 void bulmafact::on_actionListado_Presupuestos_triggered() {
     _depura("bulmafact::on_actionListado_Presupuestos_triggered", 0);
     m_company->listBudgets();
     _depura("END bulmafact::on_actionListado_Presupuestos_triggered", 0);
 }
+
+
 void bulmafact::on_actionNuevo_Pedido_Cliente_triggered() {
     _depura("bulmafact::on_actionNuevo_Pedido_Cliente_triggered", 0);
     m_company->s_newPedidoClienteView();
     _depura("END bulmafact::on_actionNuevo_Pedido_Cliente_triggered", 0);
 }
+
+
 void bulmafact::on_actionListado_Pedidos_Cliente_triggered() {
     _depura("bulmafact::on_actionListado_Pedidos_Cliente_triggered", 0);
     m_company->s_listPedidosCli();
     _depura("END bulmafact::on_actionListado_Pedidos_Cliente_triggered", 0);
 }
+
+
 void bulmafact::on_actionNuevo_Albaran_Cliente_triggered() {
     _depura("bulmafact::on_actionNuevo_Albaran_Cliente_triggered", 0);
     m_company->s_newAlbaranClienteView();
     _depura("END bulmafact::on_actionNuevo_Albaran_Cliente_triggered", 0);
 }
+
+
 void bulmafact::on_actionListado_Albaranes_Cliente_triggered() {
     _depura("bulmafact::on_actionListado_Albaranes_Cliente_triggered", 0);
     m_company->listClientDelivNotes();
     _depura("END bulmafact::on_actionListado_Albaranes_Cliente_triggered", 0);
 }
+
+
 void bulmafact::on_actionNueva_Factura_Cliente_triggered() {
     _depura("bulmafact::on_actionNueva_Factura_Cliente_triggered", 0);
     m_company->s_newFacturaCli();
     _depura("END bulmafact::on_actionNueva_Factura_Cliente_triggered", 0);
 }
+
+
 void bulmafact::on_actionListado_Facturas_Cliente_triggered() {
     _depura("bulmafact::on_actionListado_Facturas_Cliente_triggered", 0);
     m_company->s_listFacturasCli();
     _depura("END bulmafact::on_actionListado_Facturas_Cliente_triggered", 0);
 }
+
+
 void bulmafact::on_actionGestion_Familias_triggered() {
     _depura("bulmafact::on_actionGestion_Familias_triggered", 0);
     m_company->s_newfamiliasview();
     _depura("END bulmafact::on_actionGestion_Familias_triggered", 0);
 }
+
+
 void bulmafact::on_actionGestion_Tipos_Articulo_triggered() {
     _depura("bulmafact::on_actionGestion_Tipos_Articulo_triggered", 0);
     m_company->s_newTipoArticuloList();
     _depura("END bulmafact::on_actionGestion_Tipos_Articulo_triggered", 0);
 }
+
+
 void bulmafact::on_actionNuevo_Articulo_triggered() {
     _depura("bulmafact::on_actionNuevo_Articulo_triggered", 0);
     m_company->s_newArticulo();
     _depura("END bulmafact::on_actionNuevo_Articulo_triggered", 0);
 }
+
+
 void bulmafact::on_actionListado_de_Articulos_triggered() {
     _depura("bulmafact::on_actionListado_de_Articulos_triggered", 0);
     m_company->listarticles();
     _depura("END bulmafact::on_actionListado_de_Articulos_triggered", 0);
 }
 
+
 void bulmafact::on_actionNuevo_Proveedor_triggered() {
     _depura("bulmafact::on_actionNuevo_Proveedor_triggered", 0);
     m_company->s_newProveedorView();
     _depura("END bulmafact::on_actionNuevo_Proveedor_triggered", 0);
 }
+
+
 void bulmafact::on_actionListado_Proveedores_triggered() {
     _depura("bulmafact::on_actionListado_Proveedores_triggered", 0);
     m_company->listproviders();
     _depura("END bulmafact::on_actionListado_Proveedores_triggered", 0);
 }
+
+
 void bulmafact::on_actionNuevo_Cliente_triggered() {
     _depura("bulmafact::on_actionNuevo_Cliente_triggered", 0);
     m_company->s_newClienteView();
     _depura("END bulmafact::on_actionNuevo_Cliente_triggered", 0);
 }
+
+
 void bulmafact::on_actionListado_Clientes_triggered() {
     _depura("bulmafact::on_actionListado_Clientes_triggered", 0);
     m_company->listClients();
     _depura("END bulmafact::on_actionListado_Clientes_triggered", 0);
 }
+
+
 void bulmafact::on_actionProvincias_triggered() {
     _depura("bulmafact::on_actionProvincias_triggered", 0);
     m_company->s_provincias();
     _depura("END bulmafact::on_actionProvincias_triggered", 0);
 }
+
+
 void bulmafact::on_actionSeries_de_Factura_triggered() {
     _depura("bulmafact::on_actionSeries_de_Factura_triggered", 0);
     m_company->s_seriesFactura();
@@ -403,56 +455,73 @@ void bulmafact::on_actionTrabajadores_triggered() {
     _depura("END bulmafact::on_actionTrabajadores_triggered", 0);
 }
 
+
 void bulmafact::on_actionBancos_triggered() {
     _depura("bulmafact::on_actionBancos_triggered", 0);
     m_company->s_bancos();
     _depura("END bulmafact::on_actionBancos_triggered", 0);
 }
 
+
 void bulmafact::on_actionVentana_Completa_triggered() {
     _depura("bulmafact::on_actionVentana_Completa_triggered", 0);
     s_ventanaCompleta();
     _depura("END bulmafact::on_actionVentana_Completa_triggered", 0);
 }
+
+
 void bulmafact::on_actionAcerta_de_triggered() {
     _depura("bulmafact::on_actionAcerta_de_triggered", 0);
     s_About();
     _depura("END bulmafact::on_actionAcerta_de_triggered", 0);
 }
+
+
 void bulmafact::on_actionAlmacenes_triggered() {
     _depura("bulmafact::on_actionAlmacenes_triggered", 0);
     m_company->s_almacenes();
     _depura("END bulmafact::on_actionAlmacenes_triggered", 0);
 }
+
+
 void bulmafact::on_actionListado_de_Pagos_triggered() {
     _depura("bulmafact::on_actionListado_de_Pagos_triggered", 0);
     m_company->viewPagosList();
     _depura("END bulmafact::on_actionListado_de_Pagos_triggered", 0);
 }
+
+
 void bulmafact::on_actionNuevo_Pago_triggered() {
     _depura("bulmafact::on_actionNuevo_Pago_triggered", 0);
     m_company->s_newPagoView();
     _depura("END bulmafact::on_actionNuevo_Pago_triggered", 0);
 }
+
+
 void bulmafact::on_actionNuevo_Cobro_triggered() {
     _depura("bulmafact::on_actionNuevo_Cobro_triggered", 0);
     m_company->s_newCobroView();
     _depura("END bulmafact::on_actionNuevo_Cobro_triggered", 0);
 }
+
+
 void bulmafact::on_actionListado_de_Cobros_triggered() {
     _depura("bulmafact::on_actionListado_de_Cobros_triggered", 0);
     m_company->viewCobrosList();
     _depura("END bulmafact::on_actionListado_de_Cobros_triggered", 0);
 }
+
+
 void bulmafact::on_actionParametros_triggered() {
     _depura("bulmafact::on_actionParametros_triggered", 0);
     m_company->s_newListConfiguracionView();
     _depura("END bulmafact::on_actionParametros_triggered", 0);
 }
+
+
 void bulmafact::on_actionFormas_de_Pago_triggered() {
     _depura("bulmafact::on_actionFormas_de_Pago_triggered", 0);
     s_FPago();
     _depura("END bulmafact::on_actionFormas_de_Pago_triggered", 0);
 }
-
 

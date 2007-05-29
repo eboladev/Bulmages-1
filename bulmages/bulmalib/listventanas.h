@@ -74,6 +74,7 @@ public:
     void sacaWindow(QObject *);
     void cambiaVisible(bool);
     void vaciar();
+    void vaciarCompleto();
 
 protected:
     void closeEvent(QCloseEvent *event);

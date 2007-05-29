@@ -90,6 +90,14 @@ Bulmacont::Bulmacont(QWidget *parent, Qt::WFlags f, QString DB)
 
 Bulmacont::~Bulmacont() {
     _depura("Bulmacont::~Bulmacont", 0);
+    delete m_pWorkspace;
+    /// En MS-Windows no termina bien la ejecucion del programa y por eso
+    /// agregamos esta salida rapida.
+#ifdef WINDOWS
+
+    exit(0);
+#endif
+
     _depura("END Bulmacont::~Bulmacont", 0);
 }
 
@@ -459,12 +467,14 @@ void Bulmacont::slotWindowNewWindow() {}
 void Bulmacont::closeEvent(QCloseEvent *) {
     _depura("Bulmacont::closeEvent", 0);
     delete m_empresaactual;
-#ifdef WINDOWS
+    m_empresaactual = NULL;
+    delete m_list;
+    m_list = NULL;
 
+#ifdef WINDOWS
     exit(0);
 #endif
 
-    delete m_pWorkspace;
     _depura("END Bulmacont::closeEvent", 0);
 }
 
@@ -495,6 +505,9 @@ void Bulmacont::on_actionAcerca_de_triggered() {
 void Bulmacont::informaindexador(QWidget *w) {
     _depura("Bulmacont::informaindexador", 0);
     /// No existe una ventana que activar.
+    if (m_empresaactual == NULL)
+        return;
+
     if (w == NULL) {
         m_empresaactual->deSeleccionaWindow();
         return;

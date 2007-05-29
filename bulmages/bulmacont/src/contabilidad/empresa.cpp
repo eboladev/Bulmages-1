@@ -74,30 +74,8 @@ empresa::empresa() : EmpresaBase() {
 
 empresa::~empresa() {
     _depura("empresa::~empresa", 0);
-    if (diario) {
-        delete diario;
-    } // end if
-    if (extracto) {
-        delete extracto;
-    } // end if
-    if (balance1) {
-        delete balance1;
-    } // end if
-    if (balance) {
-        delete balance;
-    } // end if
-    if (selccostes) {
-        delete selccostes;
-    } // end if
-    if (selcanales) {
-        delete selcanales;
-    } // end if
-    if (introapunts2) {
-        delete introapunts2;
-    } // end if
-    if (m_listasientos) {
-        delete m_listasientos;
-    } // end if
+    /// Borramos todas las ventanas.
+    m_listventanas->vaciarCompleto();
     _depura("END empresa::~empresa", 0);
 }
 
@@ -604,16 +582,16 @@ void empresa::abreempresa() {
 
 void empresa::regularizaempresa() {
     _depura("empresa::regularizaempresa", 0);
-	QString hoy = QDate::currentDate().toString("dd/MM/yyyy");
-	QString finicial = "01/01/"+hoy.right(4);
-	regularizaempresa(finicial, hoy); // TODO: Habria que preguntar con que fecha realizar la regularizacion
+    QString hoy = QDate::currentDate().toString("dd/MM/yyyy");
+    QString finicial = "01/01/"+hoy.right(4);
+    regularizaempresa(finicial, hoy); // TODO: Habria que preguntar con que fecha realizar la regularizacion
     _depura("END empresa::regularizaempresa", 0);
 }
 
 void empresa::regularizaempresa(QString finicial, QString ffinal) {
     _depura("empresa::regularizaempresa", 0);
-	introapunts2->show();
-    	introapunts2->asiento_regularizacion(finicial, ffinal);
+    introapunts2->show();
+        introapunts2->asiento_regularizacion(finicial, ffinal);
     _depura("END empresa::regularizaempresa", 0);
 }
 

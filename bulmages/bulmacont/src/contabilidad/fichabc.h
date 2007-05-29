@@ -43,6 +43,8 @@ public:
     virtual ~FichaBc();
     void setListaLineas(SubForm2Bc * form);
     SubForm2Bc* listalineas();
+    virtual int sacaWindow();
+    virtual void meteWindow(QString nom, QObject *obj);
 };
 
 #endif
