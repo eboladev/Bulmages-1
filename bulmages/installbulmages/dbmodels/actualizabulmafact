@@ -82,7 +82,8 @@ function linea {
 linea
 info "Comprobamos que sea una base de datos de bulmafact"
 TIPO=`psql -t $2 -c "SELECT valor FROM configuracion WHERE nombre='Tipo'" 2> /dev/null`
-echo $TIPO
+DBVERSION=`psql -t $2 -c "SELECT valor FROM configuracion WHERE nombre='DatabaseRevision'" 2> /dev/null`
+echo $TIPO " version " $DBVERSION
 if [ ! "$TIPO" = " BulmaFact" ]; then
 	info "No es una base de datos de BulmaFact"
 	exit

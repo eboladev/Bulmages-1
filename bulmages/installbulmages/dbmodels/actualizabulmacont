@@ -90,6 +90,9 @@ if [ ! "$TIPO" = " BulmaCont" ]; then
 fi
 tiempo
 
+
+
+
 linea
 info "Realizamos backup de $2 en /tmp/backup no olvide poner el backup a buen recaudo"
 if [ ! -e /tmp/backup ]; then
