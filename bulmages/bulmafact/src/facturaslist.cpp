@@ -72,7 +72,7 @@ FacturasList::FacturasList(company *comp, QWidget *parent, Qt::WFlags flag, edmo
 void FacturasList::iniciaForm() {
     _depura("FacturasList::iniciaForm");
     /// Disparamos los plugins.
-    int res = g_plugins->lanza("FacturasList_FacturasList", this);
+    int res = g_plugins->lanza("FacturasList_iniciaForm", this);
     if (res != 0)
         return;
     mui_procesada->insertItem(0, tr("Todas las facturas"));
@@ -115,25 +115,25 @@ QString FacturasList::generaFiltro() {
     /// Tratamiento de los filtros.
     QString filtro = "";
     if (m_filtro->text() != "") {
-        filtro = " AND ( descfactura LIKE '%" + m_filtro->text() + "%' ";
+        filtro = " AND ( lower(descfactura) LIKE lower('%" + m_filtro->text() + "%') ";
         filtro +=" OR reffactura LIKE '" + m_filtro->text() + "%' ";
-        filtro +=" OR nomcliente LIKE '%" + m_filtro->text() + "%') ";
+        filtro +=" OR lower(nomcliente) LIKE lower('%" + m_filtro->text() + "%')) ";
     } else {
         filtro = "";
     } // end if
     if (m_cliente->idcliente() != "") {
         filtro += " AND factura.idcliente = " + m_cliente->idcliente();
     } // end if
-    if (mui_procesada->currentIndex() == 0) {
-        /// Muestra las procesadas y no procesadas.
-        filtro += "";
-    } else if (mui_procesada->currentIndex() == 1) {
+
+    /// Tratamos los procesados y no procesados en las facturas para el filtraje.
+    if (mui_procesada->currentIndex() == 1) {
         /// Muestra solo las procesadas.
         filtro += " AND procesadafactura ";
     } else if (mui_procesada->currentIndex() == 2) {
         /// Muestra solo las NO procesadas.
         filtro += " AND NOT procesadafactura ";
     } // end if
+
     if (m_articulo->idarticulo() != "") {
         filtro += " AND idfactura IN (SELECT DISTINCT idfactura FROM lfactura WHERE idarticulo = '" + m_articulo->idarticulo() + "') ";
     } // end if

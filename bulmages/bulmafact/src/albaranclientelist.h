@@ -80,6 +80,7 @@ public:
     void setidcliente(QString val);
     QString idCliDelivNote();
     QString generarFiltro();
+    void iniciaForm();
 
 signals:
     /// Estando en modo seleccion al seleccionar un elemento se emite esta se&ntilde;al.

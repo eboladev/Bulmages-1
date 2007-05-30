@@ -68,6 +68,7 @@ public:
     void setidcliente(QString val);
     QString idpedidocliente();
     QString generarFiltro();
+    void iniciaForm();
 
 };
 

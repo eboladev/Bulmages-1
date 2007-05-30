@@ -41,6 +41,7 @@ PedidosClienteList::PedidosClienteList(QWidget *parent, Qt::WFlags flag)
     m_idpedidocliente = "";
     setSubForm(mui_list);
     hideBusqueda();
+    iniciaForm();
     _depura("END PedidosClienteList::PedidosClienteList", 0);
 }
 
@@ -60,9 +61,21 @@ PedidosClienteList::PedidosClienteList(company *comp, QWidget *parent, Qt::WFlag
     m_idpedidocliente = "";
     empresaBase()->meteWindow(windowTitle(), this);
     hideBusqueda();
+    iniciaForm();
     _depura("END PedidosClienteList::PedidosClienteList", 0);
 }
 
+void PedidosClienteList::iniciaForm() {
+    _depura("PedidosClienteList::iniciaForm");
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("PedidosClienteList_iniciaForm", this);
+    if (res != 0)
+        return;
+    mui_procesada->insertItem(0, tr("Todos los pedidos"));
+    mui_procesada->insertItem(1, tr("Pedidos procesados"));
+    mui_procesada->insertItem(2, tr("Pedidos no procesados"));
+    _depura("END PedidosClienteList::iniciaForm");
+}
 
 PedidosClienteList::~PedidosClienteList() {
     _depura("PedidosClienteList::~PedidosClienteList", 0);
@@ -89,20 +102,27 @@ QString PedidosClienteList::generarFiltro() {
 
     QString filtro = "";
     if (m_filtro->text() != "") {
-        filtro = " AND ( descpedidocliente LIKE '%" + m_filtro->text() + "%' ";
+        filtro = " AND ( lower(descpedidocliente) LIKE lower('%" + m_filtro->text() + "%') ";
         filtro +=" OR refpedidocliente LIKE '" + m_filtro->text() + "%' ";
-        filtro += " OR nomcliente LIKE '%" + m_filtro->text() + "%') ";
+        filtro += " OR lower(nomcliente) LIKE lower('%" + m_filtro->text() + "%')) ";
     } else {
         filtro = "";
     } // end if
     if (m_cliente->idcliente() != "") {
         filtro += " AND pedidocliente.idcliente = " + m_cliente->idcliente();
     } // end if
-    if (!m_procesados->isChecked()) {
+
+    /// Tratamos los elementos procesados y no procesados.
+    if (mui_procesada->currentIndex() == 1) {
+        /// Muestra solo las procesadas.
+        filtro += " AND procesadopedidocliente";
+    } else if (mui_procesada->currentIndex() == 2) {
+        /// Muestra solo las NO procesadas.
         filtro += " AND NOT procesadopedidocliente ";
-    } else {
-        filtro += " AND procesadopedidocliente ";
-    }// end if
+    } // end if
+
+
+
     if (m_articulo->idarticulo() != "") {
         filtro += " AND idpedidocliente IN (SELECT DISTINCT idpedidocliente FROM lpedidocliente WHERE idarticulo = '" + m_articulo->idarticulo() + "')";
     } // end if

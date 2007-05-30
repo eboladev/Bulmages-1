@@ -66,6 +66,7 @@ public:
     void editar(int);
     void borrar();
     void crear();
+    void iniciaForm();
 
 };
 

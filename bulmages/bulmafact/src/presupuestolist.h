@@ -70,6 +70,7 @@ public:
     void setidcliente(QString val);
     void setidarticulo(QString val);
     QString generaFiltro();
+    void iniciaForm();
 
 
 signals:

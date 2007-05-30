@@ -43,6 +43,7 @@ PresupuestoList::PresupuestoList(QWidget *parent, Qt::WFlags flag)
     m_idpresupuesto = "";
     setSubForm(mui_list);
     hideBusqueda();
+    iniciaForm();
     _depura("END PresupuestoList::PresupuestoList(1)", 0);
 }
 
@@ -63,7 +64,21 @@ PresupuestoList::PresupuestoList(company *comp, QWidget *parent, Qt::WFlags flag
     m_idpresupuesto = "";
     empresaBase()->meteWindow(windowTitle(), this);
     hideBusqueda();
+    iniciaForm();
     _depura("END PresupuestoList::PresupuestoList(2)", 0);
+}
+
+
+void PresupuestoList::iniciaForm() {
+    _depura("PresupuestoList::iniciaForm");
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("PresupuestoList_iniciaForm", this);
+    if (res != 0)
+        return;
+    mui_procesada->insertItem(0, tr("Todos los presupuestos"));
+    mui_procesada->insertItem(1, tr("Presupuestos procesados"));
+    mui_procesada->insertItem(2, tr("Presupuestos no procesados"));
+    _depura("END PresupuestoList::iniciaForm");
 }
 
 
@@ -128,22 +143,23 @@ QString PresupuestoList::generaFiltro() {
     QString filtro = "";
 
     if (m_filtro->text() != "") {
-        filtro = " AND (descpresupuesto LIKE '%" + m_filtro->text() + "%' ";
+        filtro = " AND ( lower(descpresupuesto) LIKE lower('%" + m_filtro->text() + "%') ";
         filtro += " OR refpresupuesto LIKE '" + m_filtro->text() + "%' ";
-        filtro += " OR nomcliente LIKE '%" + m_filtro->text() + "%') ";
-    } else {
-        filtro = "";
+        filtro += " OR lower(nomcliente) LIKE lower('%" + m_filtro->text() + "%')) ";
     } // end if
 
     if (m_cliente->idcliente() != "") {
         filtro += " AND presupuesto.idcliente = " + m_cliente->idcliente();
     } // end if
 
-    if (!m_procesados->isChecked() ) {
+    /// Tratamos los elementos procesados y no procesados.
+    if (mui_procesada->currentIndex() == 1) {
+        /// Muestra solo las procesadas.
+        filtro += " AND procesadopresupuesto";
+    } else if (mui_procesada->currentIndex() == 2) {
+        /// Muestra solo las NO procesadas.
         filtro += " AND NOT procesadopresupuesto ";
-    } else {
-        filtro += " AND procesadopresupuesto ";
-    }// end if
+    } // end if
 
     if (m_articulo->idarticulo() != "") {
         filtro += " AND idpresupuesto IN (SELECT DISTINCT idpresupuesto FROM lpresupuesto WHERE idarticulo='" + m_articulo->idarticulo() + "')";

@@ -46,6 +46,7 @@ AlbaranesProveedor::AlbaranesProveedor(QWidget *parent, Qt::WFlags flag)
     mdb_idalbaranp = "";
     setSubForm(mui_list);
     hideBusqueda();
+    iniciaForm();
     _depura("END AlbaranesProveedor::AlbaranesProveedor", 0);
 }
 
@@ -101,8 +102,22 @@ AlbaranesProveedor::AlbaranesProveedor(company *comp, QWidget *parent, Qt::WFlag
     mdb_idalbaranp = "";
     empresaBase()->meteWindow(windowTitle(), this);
     hideBusqueda();
+    iniciaForm();
     _depura("END AlbaranesProveedor::AlbaranesProveedor", 0);
 }
+
+void AlbaranesProveedor::iniciaForm() {
+    _depura("FacturasProveedorList::iniciaForm");
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("AlbaranesProveedor_iniciaForm", this);
+    if (res != 0)
+        return;
+    mui_procesada->insertItem(0, tr("Todos los albaranes"));
+    mui_procesada->insertItem(1, tr("Albaranes procesados"));
+    mui_procesada->insertItem(2, tr("Albaranes no procesados"));
+    _depura("END AlbaranesProveedor::iniciaForm");
+}
+
 
 
 /** Refresca la ventana de listados de albaranes.
@@ -150,19 +165,23 @@ QString AlbaranesProveedor::generaFiltro() {
     QString filtro = "";
 
     if (m_filtro->text() != "") {
-        filtro = " AND (descalbaranp LIKE '%" + m_filtro->text() + "%' ";
-        filtro +=" OR nomproveedor LIKE '%" + m_filtro->text() + "%') ";
-    } else {
-        filtro = "";
+        filtro = " AND ( lower(descalbaranp) LIKE lower('%" + m_filtro->text() + "%') ";
+        filtro +=" OR refalbaranp LIKE '" + m_filtro->text() + "%' ";
+        filtro +=" OR lower(nomproveedor) LIKE lower('%" + m_filtro->text() + "%')) ";
     }
 
     if (m_proveedor->idproveedor() != "")
         filtro += " AND albaranp.idproveedor = " + m_proveedor->idproveedor();
-    if (!m_procesados->isChecked()) {
+
+    /// Tratamos los elementos procesados y no procesados.
+    if (mui_procesada->currentIndex() == 1) {
+        /// Muestra solo las procesadas.
+        filtro += " AND procesadoalbaranp";
+    } else if (mui_procesada->currentIndex() == 2) {
+        /// Muestra solo las NO procesadas.
         filtro += " AND NOT procesadoalbaranp ";
-    } else {
-        filtro += " AND procesadoalbaranp ";
     } // end if
+
     if (m_articulo->idarticulo() != "")
         filtro += " AND idalbaranp IN (SELECT DISTINCT idalbaranp FROM lalbaranp " \
                   "WHERE idarticulo = '" + m_articulo->idarticulo() + "')";

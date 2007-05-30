@@ -81,6 +81,7 @@ AlbaranClienteList::AlbaranClienteList(QWidget *parent, Qt::WFlags flag, edmode 
     mdb_idalbaran = "";
     setSubForm(mui_list);
     hideBusqueda();
+    iniciaForm();
     _depura("END AlbaranClienteList::AlbaranClienteList", 0);
 }
 
@@ -108,8 +109,22 @@ AlbaranClienteList::AlbaranClienteList(company *comp, QWidget *parent, Qt::WFlag
     if (modoEdicion())
         empresaBase()->meteWindow(windowTitle(), this);
     hideBusqueda();
+    iniciaForm();
     _depura("END AlbaranClienteList::AlbaranClienteList", 0);
 }
+
+void AlbaranClienteList::iniciaForm() {
+    _depura("AlbaranClienteList::iniciaForm");
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("AlbaranClienteList_iniciaForm", this);
+    if (res != 0)
+        return;
+    mui_procesada->insertItem(0, tr("Todos los albaranes"));
+    mui_procesada->insertItem(1, tr("Albaranes procesados"));
+    mui_procesada->insertItem(2, tr("Albaranes no procesados"));
+    _depura("END AlbaranClienteList::iniciaForm");
+}
+
 
 void AlbaranClienteList::setEmpresaBase(company *comp) {
     _depura("AlbaranClienteList::setEmpresaBase", 0);
@@ -221,9 +236,9 @@ QString AlbaranClienteList::generarFiltro() {
     QString filtro = "";
 
     if (m_filtro->text() != "") {
-        filtro = " AND ( descalbaran LIKE '%" + m_filtro->text() + "%' ";
+        filtro = " AND ( lower(descalbaran) LIKE lower('%" + m_filtro->text() + "%') ";
         filtro +=" OR refalbaran LIKE '"+m_filtro->text()+"%' ";
-        filtro +=" OR nomcliente LIKE '%" + m_filtro->text() + "%') ";
+        filtro +=" OR lower(nomcliente) LIKE lower('%" + m_filtro->text() + "%')) ";
     } else {
         filtro = "";
     } // end if
@@ -234,10 +249,13 @@ QString AlbaranClienteList::generarFiltro() {
     if (m_articulo->idarticulo() != "")
         filtro += " AND idalbaran IN (SELECT DISTINCT idalbaran FROM lalbaran WHERE idarticulo='" + m_articulo->idarticulo() + "')";
 
-    if (!m_procesados->isChecked()) {
+    /// Tratamos los elementos procesados y no procesados.
+    if (mui_procesada->currentIndex() == 1) {
+        /// Muestra solo las procesadas.
+        filtro += " AND procesadoalbaran";
+    } else if (mui_procesada->currentIndex() == 2) {
+        /// Muestra solo las NO procesadas.
         filtro += " AND NOT procesadoalbaran ";
-    } else {
-        filtro += " AND procesadoalbaran ";
     } // end if
 
     if (m_fechain->text() != "")

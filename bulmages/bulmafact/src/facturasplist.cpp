@@ -48,6 +48,7 @@ FacturasProveedorList::FacturasProveedorList(QWidget *parent, Qt::WFlags flag)
     mdb_idfacturap = "";
     setSubForm(mui_list);
     hideBusqueda();
+    iniciaForm();
     g_plugins->lanza("FacturasProveedorList_FacturasProveedorList_Post", this);
     _depura("FacturasProveedorList::FacturasProveedorList", 0);
 }
@@ -73,11 +74,25 @@ FacturasProveedorList::FacturasProveedorList(company *comp, QWidget *parent)
     mdb_idfacturap = "";
     empresaBase()->meteWindow(windowTitle(), this);
     hideBusqueda();
+    iniciaForm();
 
     /// Disparamos los plugins.
     g_plugins->lanza("FacturasProveedorList_FacturasProveedorList_Post", this);
 
+
     _depura("END FacturasProveedorList::FacturasProveedorList", 0);
+}
+
+void FacturasProveedorList::iniciaForm() {
+    _depura("FacturasProveedorList::iniciaForm");
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("FacturasProveedorList_iniciaForm", this);
+    if (res != 0)
+        return;
+    mui_procesada->insertItem(0, tr("Todas las facturas"));
+    mui_procesada->insertItem(1, tr("Facturas procesadas"));
+    mui_procesada->insertItem(2, tr("Facturas no procesadas"));
+    _depura("END FacturasProveedorList::iniciaForm");
 }
 
 
@@ -112,19 +127,23 @@ QString FacturasProveedorList::generaFiltro() {
     /// Tratamiento de los filtros.
     QString filtro = "";
     if (m_filtro->text() != "") {
-        filtro = " AND ( descfacturap LIKE '%" + m_filtro->text() + "%' ";
-        filtro +=" OR nomproveedor LIKE '%" + m_filtro->text() + "%') ";
-    } else {
-        filtro = "";
+        filtro = " AND ( lower(descfacturap) LIKE lower('%" + m_filtro->text() + "%') ";
+        filtro +=" OR reffacturap LIKE '" + m_filtro->text() + "%' ";
+        filtro +=" OR lower(nomproveedor) LIKE lower('%" + m_filtro->text() + "%')) ";
     } // end if
     if (m_proveedor->idproveedor() != "") {
         filtro += " AND facturap.idproveedor = " + m_proveedor->idproveedor();
     } // end if
-    if (!m_procesada->isChecked() ) {
+
+    /// Tratamos los elementos procesados y no procesados.
+    if (mui_procesada->currentIndex() == 1) {
+        /// Muestra solo las procesadas.
+        filtro += " AND procesadafacturap";
+    } else if (mui_procesada->currentIndex() == 2) {
+        /// Muestra solo las NO procesadas.
         filtro += " AND NOT procesadafacturap ";
-    } else {
-        filtro += " AND procesadafacturap ";
-    }// end if
+    } // end if
+
     if (m_articulo->idarticulo() != "") {
         filtro += " AND idfacturap IN (SELECT DISTINCT idfacturap FROM lfacturap WHERE idarticulo = '" + m_articulo->idarticulo() + "')";
     } // end if

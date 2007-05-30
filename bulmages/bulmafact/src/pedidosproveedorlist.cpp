@@ -33,15 +33,19 @@
 
 PedidosProveedorList::PedidosProveedorList(QWidget *parent, Qt::WFlags flag)
         : Listado (NULL, parent, flag) {
+    _depura("PedidosProveedorList::PedidosProveedorList", 0);
     setupUi(this);
     mdb_idpedidoproveedor = "";
     setSubForm(mui_list);
     hideBusqueda();
+    iniciaForm();
+    _depura("END PedidosProveedorList::PedidosProveedorList", 0);
 }
 
 
 PedidosProveedorList::PedidosProveedorList(company *comp, QWidget *parent, Qt::WFlags flag)
         : Listado(comp, parent, flag) {
+    _depura("PedidosProveedorList::PedidosProveedorList", 0);
     setupUi(this);
     m_proveedor->setEmpresaBase(comp);
     m_articulo->setEmpresaBase(comp);
@@ -51,12 +55,26 @@ PedidosProveedorList::PedidosProveedorList(company *comp, QWidget *parent, Qt::W
     mdb_idpedidoproveedor = "";
     empresaBase()->meteWindow(windowTitle(), this);
     hideBusqueda();
-}
+    iniciaForm();
+    _depura("END PedidosProveedorList::PedidosProveedorList", 0);
 
+}
 
 PedidosProveedorList::~PedidosProveedorList() {
     _depura("PedidosProveedorList::~PedidosProveedorList", 0);
     _depura("END PedidosProveedorList::~PedidosProveedorList", 0);
+}
+
+void PedidosProveedorList::iniciaForm() {
+    _depura("PedidosProveedorList::iniciaForm");
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("PedidosProveedorList_iniciaForm", this);
+    if (res != 0)
+        return;
+    mui_procesada->insertItem(0, tr("Todos los pedidos"));
+    mui_procesada->insertItem(1, tr("Pedidos procesados"));
+    mui_procesada->insertItem(2, tr("Pedidos no procesados"));
+    _depura("END PedidosProveedorList::iniciaForm");
 }
 
 
@@ -74,19 +92,25 @@ QString PedidosProveedorList::generarFiltro() {
     QString filtro = "";
 
     if (m_filtro->text() != "") {
-        filtro = " AND ( descpedidoproveedor LIKE '%" + m_filtro->text() + "%' ";
-        filtro += " OR nomproveedor LIKE '%" + m_filtro->text() + "%') ";
-    } else {
-        filtro = "";
+        filtro = " AND ( lower(descpedidoproveedor) LIKE lower('%" + m_filtro->text() + "%') ";
+        filtro +=" OR refpedidoproveedor LIKE '" + m_filtro->text() + "%' ";
+        filtro += " OR lower(nomproveedor) LIKE lower('%" + m_filtro->text() + "%')) ";
     } // end if
     if (m_proveedor->idproveedor() != "") {
         filtro += " AND pedidoproveedor.idproveedor = " + m_proveedor->idproveedor();
     } // end if
-    if (!m_procesados->isChecked()) {
+
+
+    /// Tratamos los elementos procesados y no procesados.
+    if (mui_procesada->currentIndex() == 1) {
+        /// Muestra solo las procesadas.
+        filtro += " AND procesadopedidoproveedor";
+    } else if (mui_procesada->currentIndex() == 2) {
+        /// Muestra solo las NO procesadas.
         filtro += " AND NOT procesadopedidoproveedor ";
-    } else {
-        filtro += " AND procesadopedidoproveedor ";
-    }// end if
+    } // end if
+
+
     if (m_articulo->idarticulo() != "") {
         filtro += " AND idpedidoproveedor IN (SELECT DISTINCT idpedidoproveedor FROM lpedidoproveedor WHERE idarticulo = '" + m_articulo->idarticulo() + "')";
     } // end if

@@ -82,7 +82,7 @@ QString ProveedorList::nomprovider() {
 
 void ProveedorList::presentar() {
     _depura("ProveedorList::presentar", 0);
-    mui_list->cargar("SELECT * FROM proveedor WHERE nomproveedor LIKE '%" + mui_filtro->text() + "%'");
+    mui_list->cargar("SELECT * FROM proveedor WHERE lower(nomproveedor) LIKE lower('%" + mui_filtro->text() + "%')");
     _depura("END ProveedorList::presentar", 0);
 }
 

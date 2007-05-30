@@ -1,15 +1,12 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>BusquedaProveedorBase</class>
  <widget class="QWidget" name="BusquedaProveedorBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>321</width>
-    <height>215</height>
+    <width>176</width>
+    <height>66</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -111,7 +108,6 @@
   </layout>
  </widget>
  <layoutdefault spacing="0" margin="0" />
- <pixmapfunction></pixmapfunction>
  <resources>
   <include location="../../bulmages.qrc" />
  </resources>

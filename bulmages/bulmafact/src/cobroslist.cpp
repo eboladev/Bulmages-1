@@ -101,10 +101,11 @@ QString CobrosList::generaFiltro() {
     _depura("CobrosList::generaFiltro", 0);
     QString filtro = "";
     if (m_filtro->text() != "") {
-        filtro = " AND ( desccobro LIKE '%" + m_filtro->text() + "%' ";
-    } else {
-        filtro = "";
+        filtro = " AND ( lower(comentcobro) LIKE lower('%" + m_filtro->text() + "%') ";
+        filtro +=" OR refcobro LIKE '" + m_filtro->text() + "%' ";
+        filtro +=" OR lower(nomcliente) LIKE lower('%" + m_filtro->text() + "%')) ";
     } // end if
+
     if (m_cliente->idcliente() != "") {
         filtro += " AND cobro.idcliente = " + m_cliente->idcliente();
     } // end if

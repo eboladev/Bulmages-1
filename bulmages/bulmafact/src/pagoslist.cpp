@@ -79,7 +79,9 @@ QString PagosList::generaFiltro() {
     _depura("PagosList::generaFiltro", 0);
     QString filtro = "";
     if (m_filtro->text() != "") {
-        filtro = " AND ( descpago LIKE '%" + m_filtro->text() + "%' ";
+        filtro = " AND ( lower(descpago) LIKE lower('%" + m_filtro->text() + "%') ";
+        filtro +=" OR refpago LIKE '" + m_filtro->text() + "%' ";
+        filtro +=" OR lower(nomproveedor) LIKE lower('%" + m_filtro->text() + "%')) ";
     } else {
         filtro = "";
     } // end if

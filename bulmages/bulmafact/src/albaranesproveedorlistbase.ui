@@ -403,20 +403,31 @@
          <number>0</number>
         </property>
         <property name="spacing" >
-         <number>3</number>
+         <number>6</number>
         </property>
         <item>
-         <widget class="QCheckBox" name="m_procesados" >
-          <property name="text" >
-           <string>Procesados</string>
+         <widget class="BusquedaProveedor" native="1" name="m_proveedor" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>7</hsizetype>
+            <vsizetype>13</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="BusquedaArticulo" native="1" name="m_articulo" />
-        </item>
-        <item>
-         <widget class="BusquedaProveedor" native="1" name="m_proveedor" />
+         <widget class="BusquedaArticulo" native="1" name="m_articulo" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>7</hsizetype>
+            <vsizetype>13</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -426,8 +437,40 @@
          <number>0</number>
         </property>
         <property name="spacing" >
-         <number>3</number>
+         <number>6</number>
         </property>
+        <item>
+         <widget class="QLabel" name="label_2" >
+          <property name="text" >
+           <string>Mostrar:</string>
+          </property>
+          <property name="alignment" >
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="mui_procesada" >
+          <property name="minimumSize" >
+           <size>
+            <width>200</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>200</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="focusPolicy" >
+           <enum>Qt::StrongFocus</enum>
+          </property>
+          <property name="frame" >
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
         <item>
          <widget class="QLabel" name="label" >
           <property name="text" >
@@ -455,7 +498,7 @@
           </property>
           <property name="sizeHint" >
            <size>
-            <width>200</width>
+            <width>51</width>
             <height>21</height>
            </size>
           </property>
@@ -477,22 +520,6 @@
            </size>
           </property>
          </widget>
-        </item>
-        <item>
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType" >
-           <enum>QSizePolicy::Preferred</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>101</width>
-            <height>21</height>
-           </size>
-          </property>
-         </spacer>
         </item>
        </layout>
       </item>
@@ -1044,14 +1071,14 @@
  <layoutdefault spacing="3" margin="5" />
  <customwidgets>
   <customwidget>
-   <class>AlbaranesProveedorListSubform</class>
-   <extends>QTableWidget</extends>
-   <header>albaranesproveedor.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaProveedor</class>
    <extends>QWidget</extends>
    <header>busquedaproveedor.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaArticulo</class>
+   <extends>QWidget</extends>
+   <header>busquedaarticulo.h</header>
   </customwidget>
   <customwidget>
    <class>BusquedaFecha</class>
@@ -1059,9 +1086,9 @@
    <header>../../../bulmalib/busquedafecha.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaArticulo</class>
-   <extends>QWidget</extends>
-   <header>busquedaarticulo.h</header>
+   <class>AlbaranesProveedorListSubform</class>
+   <extends>QTableWidget</extends>
+   <header>albaranesproveedor.h</header>
   </customwidget>
  </customwidgets>
  <resources>

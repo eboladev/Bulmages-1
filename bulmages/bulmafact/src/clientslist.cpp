@@ -84,7 +84,7 @@ ClientsList::~ClientsList() {
 /// \TODO: Mejorar el sistema de filtrado incluyendo una funcion de generar Filtro.
 void ClientsList::presentar() {
     _depura("ClientsList::presenta", 0);
-    mui_list->cargar("SELECT * FROM cliente  WHERE nomcliente LIKE '%" + m_findClient->text() + "%' ORDER BY nomcliente");
+    mui_list->cargar("SELECT * FROM cliente  WHERE lower(nomcliente) LIKE lower('%" + m_findClient->text() + "%') ORDER BY nomcliente");
     _depura("END ClientsList::presenta", 0);
 }
 
