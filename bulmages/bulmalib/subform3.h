@@ -142,6 +142,8 @@ public:
     /// Devuelve el elemento del subformulario ubicado en la posici&oacute;n
     /// indicada
     SDBCampo *item(int row, int col);
+    /// Pone el foco en una celda determinada.
+    void setCurrentItem(int row, int col);
     /// Devuelve el n&uacute;mero total de columnas del subformulario.
     int columnCount();
     /// Muestra la columna indicada en el subformulario.
@@ -181,10 +183,6 @@ public:
     /// Define que campo se utilizar&aacute; para unir las filas que tengan el mismo texto (rowSpan).
     /// Es &uacute;til en contabilidad para unir filas del mismo asiento.
     void setColumnToRowSpan(QString campo);
-/*
-    void setcompany(postgresiface2 *c);
-    postgresiface2 *companyact();
-*/
     void setDBTableName(QString nom);
     QString tableName();
     void setFileConfig(QString nom);

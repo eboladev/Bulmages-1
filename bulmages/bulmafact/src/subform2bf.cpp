@@ -118,10 +118,12 @@ void SubForm2Bf::on_mui_list_editFinished(int row, int col, int key) {
     cursor2 *cur = NULL;
     cursor2 *cur1 = NULL;
 
+
     /// Disparamos los plugins.
     int res = g_plugins->lanza("SubForm2Bf_on_mui_list_editFinished", this);
     if (res != 0)
         return;
+
 
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row, col);

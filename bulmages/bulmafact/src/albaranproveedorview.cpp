@@ -347,6 +347,7 @@ void AlbaranProveedorView::generarFacturaProveedor() {
         linea = m_listalineas->lineaat(i);
         if (linea->DBvalue( "idarticulo") != "") {
             linea1 = bud->getlistalineas()->lineaat(bud->getlistalineas()->rowCount() - 1);
+            bud->getlistalineas()->nuevoRegistro();
             linea1->setDBvalue("desclfacturap", linea->DBvalue("desclalbaranp"));
             linea1->setDBvalue("cantlfacturap", linea->DBvalue("cantlalbaranp"));
             linea1->setDBvalue("pvplfacturap", linea->DBvalue("pvplalbaranp"));
@@ -355,7 +356,6 @@ void AlbaranProveedorView::generarFacturaProveedor() {
             linea1->setDBvalue("codigocompletoarticulo", linea->DBvalue("codigocompletoarticulo"));
             linea1->setDBvalue("nomarticulo", linea->DBvalue("nomarticulo"));
             linea1->setDBvalue("ivalfacturap", linea->DBvalue("ivalalbaranp"));
-            bud->getlistalineas()->nuevoRegistro();
         } // end if
     } // end for
     bud->calculaypintatotales();

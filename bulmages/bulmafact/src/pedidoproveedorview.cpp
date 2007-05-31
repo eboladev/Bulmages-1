@@ -221,6 +221,7 @@ void PedidoProveedorView::generarAlbaran() {
         linea = m_listalineas->lineaat(i);
         if (linea->DBvalue("idarticulo") != "") {
             linea2 = bud->getlistalineas()->lineaat(bud->getlistalineas()->rowCount() - 1);
+            bud->getlistalineas()->nuevoRegistro();
             linea2->setDBvalue("desclalbaranp", linea->DBvalue("desclpedidoproveedor"));
             linea2->setDBvalue("cantlalbaranp", linea->DBvalue("cantlpedidoproveedor"));
             linea2->setDBvalue("pvplalbaranp", linea->DBvalue("pvplpedidoproveedor"));
@@ -229,7 +230,6 @@ void PedidoProveedorView::generarAlbaran() {
             linea2->setDBvalue("codigocompletoarticulo", linea->DBvalue("codigocompletoarticulo"));
             linea2->setDBvalue("nomarticulo", linea->DBvalue("nomarticulo"));
             linea2->setDBvalue("ivalalbaranp", linea->DBvalue("ivalpedidoproveedor"));
-            bud->getlistalineas()->nuevoRegistro();
         } // end if
     } // end for
 

@@ -56,8 +56,7 @@ DBCampo::dbtype DBCampo::tipo() {
 }
 
 
-int DBCampo::set
-    (QString val) {
+int DBCampo::set(QString val) {
     m_valorcampo = val;
     return 0;
 }
@@ -323,8 +322,7 @@ int DBRecord::setDBvalue(QString nomb, QString valor) {
         return -1;
     } // end if
     if (campo->nomcampo() == nomb)
-        error = campo->set
-                (valor);
+        error = campo->set(valor);
     _depura("END DBRecord::setDBvalue", 0);
     return error;
 }

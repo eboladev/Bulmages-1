@@ -277,6 +277,7 @@ void PresupuestoView::generarPedidoCliente() {
         linea = m_listalineas->lineaat(i);
         if (linea->DBvalue("idarticulo") != "") {
             linea2 = bud->getlistalineas()->lineaat(bud->getlistalineas()->rowCount() - 1);
+            bud->getlistalineas()->nuevoRegistro();
             linea2->setDBvalue("desclpedidocliente", linea->DBvalue("desclpresupuesto"));
             linea2->setDBvalue("cantlpedidocliente", linea->DBvalue("cantlpresupuesto"));
             linea2->setDBvalue("pvplpedidocliente", linea->DBvalue("pvplpresupuesto"));
@@ -285,7 +286,6 @@ void PresupuestoView::generarPedidoCliente() {
             linea2->setDBvalue("idarticulo", linea->DBvalue("idarticulo"));
             linea2->setDBvalue("codigocompletoarticulo", linea->DBvalue("codigocompletoarticulo"));
             linea2->setDBvalue("nomarticulo", linea->DBvalue("nomarticulo"));
-            bud->getlistalineas()->nuevoRegistro();
         } // end if
     } // end for
 

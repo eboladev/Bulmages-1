@@ -55,6 +55,10 @@ SDBCampo *SubForm3::item(int row, int col) {
     return (SDBCampo *) mui_list->item(row, col);
 }
 
+void SubForm3::setCurrentItem(int row, int col) {
+    mui_list->setCurrentItem( item(row, col));
+}
+
 
 int SubForm3::columnCount() {
     return mui_list->columnCount();

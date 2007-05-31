@@ -101,6 +101,8 @@ int ListLinFacturaProveedorView_ListLinFacturaProveedorView(ListLinFacturaProvee
 int SubForm2Bf_on_mui_list_editFinished(SubForm2Bf *subform) {
     _depura("SubForm2Bf_on_mui_list_editFinished", 0);
 
+/*
+
     if(subform->m_prevRow == -1 || subform->m_prevCol == -1) {
 	return 0;
     } // end if
@@ -109,6 +111,8 @@ int SubForm2Bf_on_mui_list_editFinished(SubForm2Bf *subform) {
     SDBCampo *camp = (SDBCampo *) subform->item(subform->m_prevRow, subform->m_prevCol);
     SDBCampo *campact = (SDBCampo *) subform->item(subform->currentRow(), subform->currentColumn());
     camp->refresh();
+
+
 
     if (camp->nomcampo() == "lote"+subform->tableName()) {
 	QString query = "SELECT * FROM movimiento LEFT JOIN articulo ON movimiento.idarticulo = articulo.idarticulo WHERE lotemovimiento = '"+camp->valorcampo()+"'";
@@ -127,6 +131,7 @@ int SubForm2Bf_on_mui_list_editFinished(SubForm2Bf *subform) {
 	delete cur;
     } // end if
 
+*/
     return 0;
 
     _depura("END SubForm2Bf_on_mui_list_editFinished", 0);

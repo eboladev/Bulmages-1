@@ -229,6 +229,7 @@ void AlbaranClienteView::generarFactura() {
     bud->setreffactura(DBvalue("refalbaran"));
     bud->setidcliente(DBvalue("idcliente"));
     bud->setidalmacen(DBvalue("idalmacen"));
+
     bud->pintaFactura();
     bud->show();
 
@@ -238,19 +239,24 @@ void AlbaranClienteView::generarFactura() {
         linea = m_listalineas->lineaat(i);
         if (linea->DBvalue( "idarticulo") != "") {
             linea1 = bud->getlistalineas()->lineaat(bud->getlistalineas()->rowCount() - 1);
+            /// Haciendo el nuevo registro antes nos evitamos problemas de foco.
+            bud->getlistalineas()->nuevoRegistro();
+            linea1->setDBvalue("codigocompletoarticulo", linea->DBvalue("codigocompletoarticulo"));
             linea1->setDBvalue("desclfactura", linea->DBvalue("desclalbaran"));
             linea1->setDBvalue("cantlfactura", linea->DBvalue("cantlalbaran"));
             linea1->setDBvalue("pvplfactura", linea->DBvalue("pvplalbaran"));
+            linea1->setDBvalue("ivalfactura", linea->DBvalue("ivalalbaran"));
             linea1->setDBvalue("descuentolfactura", linea->DBvalue("descuentolalbaran"));
             linea1->setDBvalue("idarticulo", linea->DBvalue("idarticulo"));
-            linea1->setDBvalue("codigocompletoarticulo", linea->DBvalue("codigocompletoarticulo"));
             linea1->setDBvalue("nomarticulo", linea->DBvalue("nomarticulo"));
-            linea1->setDBvalue("ivalfactura", linea->DBvalue("ivalalbaran"));
-            bud->getlistalineas()->nuevoRegistro();
+            linea1->refresh();
         } // end if
     } // end for
     bud->calculaypintatotales();
     m_procesadoalbaran->setChecked(TRUE);
+
+
+
     _depura("END AlbaranClienteView::generarFactura", 0);
 }
 

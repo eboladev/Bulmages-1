@@ -164,8 +164,7 @@ void PedidoClienteView::generarAlbaran() {
     bud->setcontactalbaran(DBvalue("contactpedidocliente"));
     bud->settelalbaran(DBvalue("telpedidocliente"));
     bud->setidtrabajador(DBvalue("idtrabajador"));
-    bud->pintar();
-    bud->show();
+
 
     /// Traspasamos las lineas al albaran.
     SDBRecord *linea, *linea1;
@@ -173,15 +172,15 @@ void PedidoClienteView::generarAlbaran() {
         linea = m_listalineas->lineaat(i);
         if (linea->DBvalue("idarticulo") != "") {
             linea1 = bud->getlistalineas()->lineaat(bud->getlistalineas()->rowCount() - 1);
+            bud->getlistalineas()->nuevoRegistro();
             linea1->setDBvalue("desclalbaran", linea->DBvalue("desclpedidocliente"));
             linea1->setDBvalue("cantlalbaran", linea->DBvalue("cantlpedidocliente"));
             linea1->setDBvalue("pvplalbaran", linea->DBvalue("pvplpedidocliente"));
+            linea1->setDBvalue("ivalalbaran", linea->DBvalue("ivalpedidocliente"));
             linea1->setDBvalue("descuentolalbaran", linea->DBvalue("descuentolpedidocliente"));
             linea1->setDBvalue("idarticulo", linea->DBvalue("idarticulo"));
             linea1->setDBvalue("codigocompletoarticulo", linea->DBvalue("codigocompletoarticulo"));
             linea1->setDBvalue("nomarticulo", linea->DBvalue("nomarticulo"));
-            linea1->setDBvalue("ivalalbaran", linea->DBvalue("ivalpedidocliente"));
-            bud->getlistalineas()->nuevoRegistro();
         } // end if
     } // end for
 
@@ -195,6 +194,9 @@ void PedidoClienteView::generarAlbaran() {
             bud->getlistadescuentos()->nuevoRegistro();
         } // end if
     } // end for
+    /// Pintamos el pedido y lo presentamos.
+    bud->pintar();
+    bud->show();
     _depura("END PedidoClienteView::generarAlbaran", 0);
 }
 
