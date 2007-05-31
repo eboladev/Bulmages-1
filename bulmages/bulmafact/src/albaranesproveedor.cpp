@@ -40,7 +40,7 @@
     Inicializa todos los componentes, se pone en modo edicion y mete la ventana en el workSpace.
 */
 AlbaranesProveedor::AlbaranesProveedor(QWidget *parent, Qt::WFlags flag)
-        : Listado(NULL, parent) {
+        : Listado(NULL, parent, flag) {
     _depura("AlbaranesProveedor::AlbaranesProveedor", 0);
     setupUi(this);
     mdb_idalbaranp = "";
@@ -91,7 +91,7 @@ QString AlbaranesProveedor::idalbaranp() {
     Oculta la parte de Busqueda.
 */
 AlbaranesProveedor::AlbaranesProveedor(company *comp, QWidget *parent, Qt::WFlags flag)
-        : Listado(comp, parent) {
+        : Listado(comp, parent, flag) {
     _depura("AlbaranesProveedor::AlbaranesProveedor", 0);
     setupUi(this);
     m_proveedor->setEmpresaBase(comp);

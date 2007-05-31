@@ -455,7 +455,7 @@
          <widget class="QComboBox" name="mui_procesada" >
           <property name="minimumSize" >
            <size>
-            <width>200</width>
+            <width>100</width>
             <height>0</height>
            </size>
           </property>
@@ -1076,16 +1076,6 @@
  <layoutdefault spacing="3" margin="5" />
  <customwidgets>
   <customwidget>
-   <class>AlbaranClienteListSubform</class>
-   <extends>QTableWidget</extends>
-   <header>albaranclientelist.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaFecha</class>
-   <extends>QWidget</extends>
-   <header>../../../bulmalib/busquedafecha.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaCliente</class>
    <extends>QWidget</extends>
    <header>busquedacliente.h</header>
@@ -1094,6 +1084,16 @@
    <class>BusquedaArticulo</class>
    <extends>QWidget</extends>
    <header>busquedaarticulo.h</header>
+  </customwidget>
+  <customwidget>
+   <class>AlbaranClienteListSubform</class>
+   <extends>QTableWidget</extends>
+   <header>albaranclientelist.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaFecha</class>
+   <extends>QWidget</extends>
+   <header>../../../bulmalib/busquedafecha.h</header>
   </customwidget>
  </customwidgets>
  <resources>

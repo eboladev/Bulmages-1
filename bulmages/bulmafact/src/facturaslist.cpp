@@ -38,7 +38,7 @@
     Inicializando la clase con este constructor precisa que sea establecido el company con setcompany.
 */
 FacturasList::FacturasList(QWidget *parent, Qt::WFlags flag, edmode editmodo)
-        : Listado(NULL, parent, flag) {
+        : Listado(NULL, parent, flag, editmodo) {
     _depura("FacturasList::FacturasList", 0);
     setupUi(this);
     iniciaForm();
@@ -51,7 +51,7 @@ FacturasList::FacturasList(QWidget *parent, Qt::WFlags flag, edmode editmodo)
 /** Inicializa todos los componentes y prepara la ventana para funcionar.
 */
 FacturasList::FacturasList(company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo)
-        : Listado(comp, parent, flag) {
+        : Listado(comp, parent, flag, editmodo) {
     _depura("FacturasList::FacturasList", 0);
     setupUi(this);
     iniciaForm();

@@ -109,7 +109,7 @@ void AlbaranProveedorView::inicializar() {
 
 /** Pinta los totales indicados en sus correspondientes textEdit.
 */
-void AlbaranProveedorView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq) {
+void AlbaranProveedorView::pintatotales(Fixed iva, Fixed base, Fixed, Fixed desc, Fixed irpf, Fixed reqeq) {
     _depura("AlbaranProveedorView::pintatotales", 0);
     m_totalalbaranp->setText((iva + base).toQString());
     m_totalBases->setText(base.toQString());

@@ -410,10 +410,16 @@
           <property name="sizePolicy" >
            <sizepolicy>
             <hsizetype>7</hsizetype>
-            <vsizetype>13</vsizetype>
+            <vsizetype>1</vsizetype>
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
+          </property>
+          <property name="minimumSize" >
+           <size>
+            <width>0</width>
+            <height>80</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -422,10 +428,16 @@
           <property name="sizePolicy" >
            <sizepolicy>
             <hsizetype>7</hsizetype>
-            <vsizetype>13</vsizetype>
+            <vsizetype>1</vsizetype>
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
+          </property>
+          <property name="minimumSize" >
+           <size>
+            <width>0</width>
+            <height>80</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -453,7 +465,7 @@
          <widget class="QComboBox" name="mui_procesada" >
           <property name="minimumSize" >
            <size>
-            <width>200</width>
+            <width>100</width>
             <height>0</height>
            </size>
           </property>

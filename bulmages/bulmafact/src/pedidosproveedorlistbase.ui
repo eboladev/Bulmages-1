@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>772</width>
+    <width>666</width>
     <height>518</height>
    </rect>
   </property>
@@ -407,6 +407,14 @@
         </property>
         <item>
          <widget class="BusquedaProveedor" native="1" name="m_proveedor" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>7</hsizetype>
+            <vsizetype>13</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="minimumSize" >
            <size>
             <width>250</width>
@@ -416,7 +424,16 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaArticulo" native="1" name="m_articulo" />
+         <widget class="BusquedaArticulo" native="1" name="m_articulo" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>7</hsizetype>
+            <vsizetype>13</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -442,7 +459,7 @@
          <widget class="QComboBox" name="mui_procesada" >
           <property name="minimumSize" >
            <size>
-            <width>200</width>
+            <width>100</width>
             <height>0</height>
            </size>
           </property>
@@ -637,11 +654,6 @@
  <layoutdefault spacing="2" margin="5" />
  <customwidgets>
   <customwidget>
-   <class>PedidosProveedorListSubform</class>
-   <extends>QTableWidget</extends>
-   <header>pedidosproveedorlist.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaArticulo</class>
    <extends>QWidget</extends>
    <header>busquedaarticulo.h</header>
@@ -655,6 +667,11 @@
    <class>BusquedaFecha</class>
    <extends>QWidget</extends>
    <header>../../../bulmalib/busquedafecha.h</header>
+  </customwidget>
+  <customwidget>
+   <class>PedidosProveedorListSubform</class>
+   <extends>QTableWidget</extends>
+   <header>pedidosproveedorlist.h</header>
   </customwidget>
  </customwidgets>
  <resources>
