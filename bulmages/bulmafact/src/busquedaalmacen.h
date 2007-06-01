@@ -43,7 +43,6 @@ private:
 public:
     BusquedaAlmacen(QWidget *parent = 0, const char *name = 0);
     ~BusquedaAlmacen();
-
     virtual void setidalmacen(QString idalmacen);
     QString idalmacen();
     void setEmpresaBase(company *);

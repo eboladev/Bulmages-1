@@ -33,9 +33,11 @@
 /** */
 class FacturasListSubform : public SubForm2Bf {
     Q_OBJECT
+
 public:
     FacturasListSubform(QWidget *parent = 0, const char *name = 0);
     ~FacturasListSubform();
+
 public slots:
     virtual void cargar();
     virtual void cargar(QString query);

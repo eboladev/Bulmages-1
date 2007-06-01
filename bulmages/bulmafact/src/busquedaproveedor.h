@@ -27,6 +27,7 @@
 #include "ui_busquedaproveedorbase.h"
 #include "blwidget.h"
 
+
 class company;
 
 
@@ -37,7 +38,6 @@ class BusquedaProveedor : public BLWidget, public Ui_BusquedaProveedorBase {
     Q_OBJECT
 
 private:
-
     /// Almacena el idproveedor seleccionado.
     QString mdb_idproveedor;
     /// Almacena el nomproveedor seleccionado.
@@ -51,9 +51,8 @@ private:
 
 public:
     BusquedaProveedor(QWidget *parent = 0);
-    virtual ~BusquedaProveedor();
     void pinta();
-
+    virtual ~BusquedaProveedor();
     virtual void setidproveedor(QString val);
     virtual void setcifproveedor(QString val);
     virtual QString cifproveedor();

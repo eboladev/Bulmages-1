@@ -31,11 +31,11 @@
 #include "facturapview.h"
 #include "plugins.h"
 
+
 /** Inicializa todos los componentes del listado a NULL para que no exista consusion sobre
     si un elemento ha sido inicializado o no.
     Al construir la clase con este constructor debe ser inicializada con setcompany().
-    Mete la ventana en el workSpace.
-*/
+    Mete la ventana en el workSpace. */
 FacturasProveedorList::FacturasProveedorList(QWidget *parent, Qt::WFlags flag)
         : Listado(NULL, parent, flag) {
     _depura("FacturasProveedorList::FacturasProveedorList", 0);
@@ -55,8 +55,7 @@ FacturasProveedorList::FacturasProveedorList(QWidget *parent, Qt::WFlags flag)
 
 
 /** Inicializa todos los componentes, hace la carga inicial con \ref presenta()
-    mete la ventana en el workSpace().
-*/
+    mete la ventana en el workSpace(). */
 FacturasProveedorList::FacturasProveedorList(company *comp, QWidget *parent)
         : Listado(comp, parent) {
     _depura("FacturasProveedorList::FacturasProveedorList", 0);
@@ -79,7 +78,6 @@ FacturasProveedorList::FacturasProveedorList(company *comp, QWidget *parent)
     /// Disparamos los plugins.
     g_plugins->lanza("FacturasProveedorList_FacturasProveedorList_Post", this);
 
-
     _depura("END FacturasProveedorList::FacturasProveedorList", 0);
 }
 
@@ -96,8 +94,7 @@ void FacturasProveedorList::iniciaForm() {
 }
 
 
-/** No precisa de acciones especiales en el destructor.
-*/
+/** No precisa de acciones especiales en el destructor. */
 FacturasProveedorList::~FacturasProveedorList() {
     _depura("FacturasProveedorList::~FacturasProveedorList", 0);
     _depura("END FacturasProveedorList::~FacturasProveedorList", 0);
@@ -105,8 +102,7 @@ FacturasProveedorList::~FacturasProveedorList() {
 
 
 /** Hace la carga inicial del listado.
-    Tambien hace el calculo de totales y lo presenta.
-*/
+    Tambien hace el calculo de totales y lo presenta. */
 void FacturasProveedorList::presentar() {
     _depura("FacturasProveedorList::presentar", 0);
     mui_list->cargar("SELECT *, totalfacturap AS total, bimpfacturap AS base, impfacturap AS impuestos  FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  " + generaFiltro());
@@ -120,8 +116,7 @@ void FacturasProveedorList::presentar() {
 
 
 /** Metodo auxiliar que crea la clausula WHERE del query de carga  \ref presenta()
-    La clausula WHERE utiliza todas las opciones de filtrado para crearse.
-*/
+    La clausula WHERE utiliza todas las opciones de filtrado para crearse. */
 QString FacturasProveedorList::generaFiltro() {
     _depura("FacturasProveedorList::generaFiltro", 0);
     /// Tratamiento de los filtros.
@@ -158,6 +153,7 @@ QString FacturasProveedorList::generaFiltro() {
     return (filtro);
 }
 
+
 /// Este metodo responmde a la accion predeterminada sobre el listado
 /// Normalmente consiste en abrir la ficha del elemento seleccionado,
 /// en este caso, una factura de proveedor
@@ -183,12 +179,10 @@ void FacturasProveedorList::editar(int row) {
 }
 
 
-
 /** SLOT que responde a la pulsacion del boton mui_borrar en el formulario.
     Crea una instancia de \ref FacturaProveedorView carga el elemento seleccionado
     y lanza el metodo \ref FacturaProveedorView::on_mui_borrar_clicked()
-    Una vez borrado recarga el listado para que se actualicen los cambios.
-*/
+    Una vez borrado recarga el listado para que se actualicen los cambios. */
 void FacturasProveedorList::borrar() {
     _depura("FacturasProveedorList::borrar", 0);
     int a = mui_list->currentRow();
@@ -211,8 +205,7 @@ void FacturasProveedorList::borrar() {
 
 
 /** SLOT que responde a la pulsacion del boton mui_imprimir.
-    La impresion de listados esta completamente delegada en SubForm3
-*/
+    La impresion de listados esta completamente delegada en SubForm3. */
 void FacturasProveedorList::imprimir() {
     _depura("FacturasProveedorList::on_mui_imprimir_clicked", 0);
     mui_list->imprimirPDF(tr("Facturas de proveedores"));
@@ -226,6 +219,7 @@ void FacturasProveedorList::setEmpresaBase (company *comp) {
     m_articulo->setEmpresaBase(comp);
     mui_list->setEmpresaBase(comp);
 }
+
 
 QString FacturasProveedorList::idfacturap() {
     return mdb_idfacturap;
@@ -241,6 +235,7 @@ void FacturasProveedorList::setidarticulo(QString val) {
     m_articulo->setidarticulo(val);
 }
 
+
 void FacturasProveedorList::crear() {
     ((company *)empresaBase())->s_newFacturaPro();
 }
@@ -249,8 +244,7 @@ void FacturasProveedorList::crear() {
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
-/** Prepara el subformulario para que trabaje con la tabla facturap.
-*/
+/** Prepara el subformulario para que trabaje con la tabla facturap. */
 FacturasProveedorListSubform::FacturasProveedorListSubform(QWidget *parent) : SubForm2Bf(parent) {
     _depura("FacturasProveedorListSubform::FacturasProveedorListSubform", 0);
     setDBTableName("facturap");
@@ -274,13 +268,26 @@ FacturasProveedorListSubform::FacturasProveedorListSubform(QWidget *parent) : Su
     _depura("END FacturasProveedorListSubform::FacturasProveedorListSubform", 0);
 }
 
+
+FacturasProveedorListSubform::~FacturasProveedorListSubform() {
+    _depura("FacturasProveedorListSubform::~FacturasProveedorListSubform", 0);
+    _depura("END FacturasProveedorListSubform::~FacturasProveedorListSubform", 0);
+}
+
+
 void FacturasProveedorListSubform::cargar() {
-    _depura("AlbaranesProveedorListSubform::cargar\n", 0);
+    _depura("AlbaranesProveedorListSubform::cargar()\n", 0);
     QString SQLQuery = "SELECT * FROM facturap";
     cursor2 *cur= empresaBase()->cargacursor(SQLQuery);
     SubForm3::cargar(cur);
     delete cur;
+    _depura("END AlbaranesProveedorListSubform::cargar()\n", 0);
 }
+
+
 void FacturasProveedorListSubform::cargar(QString query) {
+    _depura("AlbaranesProveedorListSubform::cargar(QString query)\n", 0);
     SubForm3::cargar(query);
+    _depura("END AlbaranesProveedorListSubform::cargar(QString query)\n", 0);
 }
+

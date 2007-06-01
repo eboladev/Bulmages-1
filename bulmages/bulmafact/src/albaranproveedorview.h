@@ -49,86 +49,40 @@ public:
     AlbaranProveedorView(company *, QWidget *);
     ~AlbaranProveedorView();
     void inicializar();
-    void pintaidalbaranp(QString) {}
-    ;
-    void pintanumalbaranp(QString val) {
-        m_numalbaranp->setText(val);
-    };
-    void pintafechaalbaranp(QString val) {
-        m_fechaalbaranp->setText(val);
-    };
+    void pintaidalbaranp(QString);
+    void pintanumalbaranp(QString val);
+    void pintafechaalbaranp(QString val);
     void pintaIdUsuario(QString);
-    void pintaComentAlbaran(QString val) {
-        m_comentalbaranp->setPlainText(val);
-    };
-    void pintaidproveedor(QString val) {
-        m_proveedor->setidproveedor(val);
-    };
-    void pintaidforma_pago(QString val) {
-        m_forma_pago->setidforma_pago(val);
-    };
-
-    void pintaidalmacen(QString id) {
-        m_almacen->setidalmacen(id);
-    };
-    void pintadescalbaranp(QString val) {
-        m_descalbaranp->setText(val);
-    };
-    void pintarefalbaranp(QString val) {
-        m_refalbaranp->setText(val);
-    };
+    void pintaComentAlbaran(QString val);
+    void pintaidproveedor(QString val);
+    void pintaidforma_pago(QString val);
+    void pintaidalmacen(QString id);
+    void pintadescalbaranp(QString val);
+    void pintarefalbaranp(QString val);
     void pintatotales(Fixed, Fixed, Fixed, Fixed, Fixed, Fixed);
     void generarFactura();
-
     /// Estos metodos deben existir para poder trabajar con la clase Ficha
     virtual int guardar();
     virtual int cargar(QString id);
-    virtual int borrar() {
-        return AlbaranProveedor::borrar();
-    };
+    virtual int borrar();
     void generarFacturaProveedor();
 
 public slots:
-    virtual void on_mui_facturar_clicked() {
-    generarFacturaProveedor();
-    };
-    virtual void s_comentalbaranptextChanged() {
-        setcomentalbaranp(m_comentalbaranp->toPlainText());
-    };
-    virtual void s_almacenvalueChanged(QString val) {
-        setidalmacen(val);
-    };
-    virtual void s_numalbaranptextChanged(const QString &val) {
-        setnumalbaranp(val);
-    };
-    virtual void s_proveedorvalueChanged(QString val) {
-        setidproveedor(val);
-    };
-    virtual void s_fechaalbaranpvalueChanged(QString val) {
-        setfechaalbaranp(val);
-    };
-    virtual void s_forma_pagovalueChanged(QString val) {
-        setidforma_pago(val);
-    };
-    virtual void s_refalbaranptextChanged(const QString &val) {
-        setrefalbaranp(val);
-    };
-    virtual void s_descalbaranptextChanged(const QString &val) {
-        setdescalbaranp(val);
-    };
+    virtual void on_mui_facturar_clicked();
+    virtual void s_comentalbaranptextChanged();
+    virtual void s_almacenvalueChanged(QString val);
+    virtual void s_numalbaranptextChanged(const QString &val);
+    virtual void s_proveedorvalueChanged(QString val);
+    virtual void s_fechaalbaranpvalueChanged(QString val);
+    virtual void s_forma_pagovalueChanged(QString val);
+    virtual void s_refalbaranptextChanged(const QString &val);
+    virtual void s_descalbaranptextChanged(const QString &val);
     virtual void on_mui_guardar_clicked();
-    virtual void s_printAlbaranProveedor() {}
-    ;
+    virtual void s_printAlbaranProveedor();
     virtual void s_verpedidoproveedor();
-    virtual void s_generarFactura() {
-        generarFactura();
-    };
-    virtual void on_m_descuentos_editFinish(int, int) {
-        calculaypintatotales();
-    };
-    virtual void on_subform2_editFinish(int, int) {
-        calculaypintatotales();
-    };
+    virtual void s_generarFactura();
+    virtual void on_m_descuentos_editFinish(int, int);
+    virtual void on_subform2_editFinish(int, int);
     virtual void on_mui_pagar_clicked();
     virtual void on_mui_verpedidosproveedor_clicked();
     virtual void on_m_proveedor_valueChanged(QString);

@@ -102,6 +102,30 @@ void AlbaranClienteView::inicializar() {
 }
 
 
+void AlbaranClienteView::pintaNumFactura(QString) {
+    _depura("AlbaranClienteView::pintaNumFactura", 0);
+    _depura("END AlbaranClienteView::pintaNumFactura", 0);
+}
+
+
+void AlbaranClienteView::pintaIdUsuario(QString) {
+    _depura("AlbaranClienteView::pintaIdUsuario", 0);
+    _depura("END AlbaranClienteView::pintaIdUsuario", 0);
+}
+
+
+void AlbaranClienteView::pintaIdAlbaran(QString) {
+    _depura("AlbaranClienteView::pintaIdAlbaran", 0);
+    _depura("END AlbaranClienteView::pintaIdAlbaran", 0);
+}
+
+
+void AlbaranClienteView::pintaIdFactura(QString) {
+    _depura("AlbaranClienteView::pintaIdFactura", 0);
+    _depura("END AlbaranClienteView::pintaIdFactura", 0);
+}
+
+
 /** Pinta los totales en las casillas correspondientes
 */
 void AlbaranClienteView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq) {

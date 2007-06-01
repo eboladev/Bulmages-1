@@ -36,7 +36,7 @@ class FacturasProveedorListSubform : public SubForm2Bf {
 
 public:
     FacturasProveedorListSubform(QWidget *parent = 0);
-    ~FacturasProveedorListSubform() {}
+    ~FacturasProveedorListSubform();
 
 public slots:
     virtual void cargar();
@@ -59,12 +59,12 @@ public:
     FacturasProveedorList(QWidget *parent = 0, Qt::WFlags flag = 0);
     FacturasProveedorList(company *,QWidget *parent = 0);
     ~FacturasProveedorList();
+    QString idfacturap();
+    QString generaFiltro();
     void presentar();
     void setEmpresaBase (company *comp);
-    QString idfacturap();
     void setidproveedor(QString val);
     void setidarticulo(QString val);
-    QString generaFiltro();
     void editar(int);
     void borrar();
     void crear();

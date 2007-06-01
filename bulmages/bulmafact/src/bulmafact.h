@@ -102,6 +102,7 @@ public slots:
     virtual void on_actionIndexador_triggered();
     virtual void on_actionTipoIVA_triggered();
     virtual void on_actionTasaIVA_triggered();
+
 private slots:
     /// Este SLOT sirve para actualizar el Indexador cuando se activa una ventana
     void informaindexador(QWidget *w);

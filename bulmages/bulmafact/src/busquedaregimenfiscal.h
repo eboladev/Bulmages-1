@@ -32,13 +32,11 @@
 class BusquedaRegimenFiscal : public QComboBox {
     Q_OBJECT
 
-private:
-
 public:
     BusquedaRegimenFiscal(QWidget *parent = 0);
     ~BusquedaRegimenFiscal();
-    virtual void setRegimenFiscal(QString regimen);
     QString regimenFiscal();
+    virtual void setRegimenFiscal(QString regimen);
 
 public slots:
     virtual void m_activated(int index);

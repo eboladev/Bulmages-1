@@ -38,8 +38,7 @@
 
 
 /** Inicializa todos los componentes de la clase.
-    mete la ventana en el workSpace.
-*/
+    mete la ventana en el workSpace. */
 FacturaProveedorView::FacturaProveedorView(company *comp, QWidget *parent)
         : FacturaProveedor(comp, parent) {
     _depura("FacturaProveedorView::FacturaProveedorView", 0);
@@ -50,13 +49,13 @@ FacturaProveedorView::FacturaProveedorView(company *comp, QWidget *parent)
         subform2->setEmpresaBase(comp);
         m_descuentos->setEmpresaBase(comp);
         m_forma_pago->setEmpresaBase(comp);
-	m_forma_pago->setidforma_pago("");
+        m_forma_pago->setidforma_pago("");
         m_proveedor->setEmpresaBase(comp);
-	m_proveedor->setidproveedor("");
+        m_proveedor->setidproveedor("");
         m_reffacturap->setEmpresaBase(comp);
 
-	setListaLineas(subform2);
-	setListaDescuentos(m_descuentos);
+        setListaLineas(subform2);
+        setListaDescuentos(m_descuentos);
 
         m_totalBases->setReadOnly(TRUE);
         m_totalBases->setAlignment(Qt::AlignRight);
@@ -67,7 +66,6 @@ FacturaProveedorView::FacturaProveedorView(company *comp, QWidget *parent)
         m_totalfacturap->setReadOnly(TRUE);
         m_totalfacturap->setAlignment(Qt::AlignRight);
         comp->meteWindow(windowTitle(), this, FALSE);
-
     } catch (...) {
         mensajeInfo(tr("Error al crear la factura proveedor"));
     } // end try
@@ -75,8 +73,8 @@ FacturaProveedorView::FacturaProveedorView(company *comp, QWidget *parent)
 }
 
 
-/** Al destruir una factura de proveedor se hace un refresco del listado de facturas de proveedor.
-*/
+/** Al destruir una factura de proveedor se hace un refresco del listado
+    de facturas de proveedor. */
 FacturaProveedorView::~FacturaProveedorView() {
     _depura("FacturaProveedorView::~FacturaProveedorView", 0);
     empresaBase()->refreshFacturasProveedor();
@@ -85,10 +83,90 @@ FacturaProveedorView::~FacturaProveedorView() {
 }
 
 
+void FacturaProveedorView::pintaidproveedor(QString id) {
+    _depura("FacturaProveedorView::pintaidproveedor", 0);
+    m_proveedor->setidproveedor(id);
+    _depura("END FacturaProveedorView::pintaidproveedor", 0);
+}
 
-/** inicializar debe ser invocado cuando se crea una nueva ficha sin cargar ningun date de la base de datos (por ejemplo una nueva ficha).
-    Sirve para inicializar los componenetes sin necesidad de query alguno
-*/
+
+void FacturaProveedorView::pintanumfacturap(QString id) {
+    _depura("FacturaProveedorView::pintanumfacturap", 0);
+    m_numfacturap->setText(id);
+    _depura("END FacturaProveedorView::pintanumfacturap", 0);
+}
+
+
+void FacturaProveedorView::pintafechafacturap(QString id) {
+    _depura("FacturaProveedorView::pintafechafacturap", 0);
+    m_fechafacturap->setText(id);
+    _depura("END FacturaProveedorView::pintafechafacturap", 0);
+}
+
+
+void FacturaProveedorView::pintadescfacturap(QString id) {
+    _depura("FacturaProveedorView::pintadescfacturap", 0);
+    m_descfacturap->setText(id);
+    _depura("END FacturaProveedorView::pintadescfacturap", 0);
+}
+
+
+void FacturaProveedorView::pintaComentFacturaProveedor(QString id) {
+    _depura("FacturaProveedorView::pintaComentFacturaProveedor", 0);
+    m_comentfacturap->setPlainText(id);
+    _depura("END FacturaProveedorView::pintaComentFacturaProveedor", 0);
+}
+
+
+void FacturaProveedorView::pintareffacturap(QString id) {
+    _depura("FacturaProveedorView::pintareffacturap", 0);
+    m_reffacturap->setText(id);
+    _depura("END FacturaProveedorView::pintareffacturap", 0);
+}
+
+
+void FacturaProveedorView::pintaidforma_pago(QString id) {
+    _depura("FacturaProveedorView::pintaidforma_pago", 0);
+    m_forma_pago->setidforma_pago(id);
+    _depura("END FacturaProveedorView::pintaidforma_pago", 0);
+}
+
+
+void FacturaProveedorView::pintaprocesadafacturap(QString id) {
+    _depura("FacturaProveedorView::pintaprocesadafacturap", 0);
+    if (id == "t" || id == "TRUE") {
+        m_procesadafacturap->setChecked(TRUE);
+    } else {
+        m_procesadafacturap->setChecked(FALSE);
+    } // end if
+    _depura("END FacturaProveedorView::pintaprocesadafacturap", 0);
+}
+
+
+void FacturaProveedorView::on_mui_pagar_clicked() {
+    _depura("FacturaProveedorView::on_mui_pagar_clicked", 0);
+    s_nuevoPago();
+    _depura("END FacturaProveedorView::on_mui_pagar_clicked", 0);
+}
+
+
+void FacturaProveedorView::on_m_descuentos_editFinish(int, int) {
+    _depura("FacturaProveedorView::on_m_descuentos_editFinish", 0);
+    calculaypintatotales();
+    _depura("END FacturaProveedorView::on_m_descuentos_editFinish", 0);
+}
+
+
+void FacturaProveedorView::on_subform2_editFinish(int, int) {
+    _depura("FacturaProveedorView::on_subform2_editFinish", 0);
+    calculaypintatotales();
+    _depura("END FacturaProveedorView::on_subform2_editFinish", 0);
+}
+
+
+/** inicializar debe ser invocado cuando se crea una nueva ficha sin cargar ningun
+    date de la base de datos (por ejemplo una nueva ficha).
+    Sirve para inicializar los componenetes sin necesidad de query alguno */
 void FacturaProveedorView::inicializar() {
     _depura("FacturaProveedorView::inicializar", 0);
     subform2->inicializar();
@@ -99,11 +177,8 @@ void FacturaProveedorView::inicializar() {
 }
 
 
-
-
 /** Pinta los totales de la Factura de proveedor.
-    Este metodo se llama desde FacturaProveedor.
-*/
+    Este metodo se llama desde FacturaProveedor. */
 void FacturaProveedorView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq) {
     _depura("PresupuestoView::pintatotales", 0);
     m_totalBases->setText(QString(base.toQString()));
@@ -114,6 +189,7 @@ void FacturaProveedorView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixe
     m_totalReqEq->setText(QString(reqeq.toQString()));
     _depura("END PresupuestoView::pintatotales", 0);
 }
+
 
 /** Metodo que responde al hacer un nuevo pago desde la factura.
     Crea una instancia de \ref PagoView y la lanza poniendole los parametros
@@ -138,8 +214,7 @@ void FacturaProveedorView::s_nuevoPago() {
     Deleta toda la funcionalidad a la clase FacturaProveedor excepto el cambio de titulo
     de la ventana y el reseteo del control de cambios.
     Si todo va bien devuelve 0
-    Si algo falla devuelve -1
-*/
+    Si algo falla devuelve -1 */
 int FacturaProveedorView::cargar(QString id) {
     _depura("FacturaProveedorView::cargar", 0);
     try {
@@ -159,8 +234,7 @@ int FacturaProveedorView::cargar(QString id) {
      Pone los valores de los cambios del formulario en el DBRecord mediante los metodos setXXX
      Llama al metodo guardar() de FacturaProveedor quien hace el guardado en la base de datos.
      Si algo falla saca un mensaje de error y produce una excepcion -1.
-     Si todo va bien devuelve 0.
-*/
+     Si todo va bien devuelve 0. */
 int FacturaProveedorView::guardar() {
     _depura("FacturaProveedorView::guardar", 0);
     try {
@@ -184,30 +258,27 @@ int FacturaProveedorView::guardar() {
 
 /** SLOT que responde  a la pulsacion del boton ver albaranes.
     Consulta todos los albaranes con la misma referencia.
-    Los instancia y los carga.
-*/
+    Los instancia y los carga. */
 void FacturaProveedorView::on_mui_veralbaranes_clicked() {
-	_depura("FacturaProveedorView::on_mui_veralbaranes_clicked", 0);
-	QString query = "SELECT * FROM albaranp WHERE refalbaranp='"+DBvalue("reffacturap")+"'";
-	cursor2 *cur = empresaBase()->cargacursor(query);
-	while (!cur->eof()) {
-		AlbaranProveedorView *albpro = empresaBase()->newAlbaranProveedorView();
-		albpro->cargar(cur->valor("idalbaranp"));
-		empresaBase()->m_pWorkspace->addWindow( albpro);
-		albpro->show();
-		cur->siguienteregistro();
-	} // end while
-	delete cur;	
-	_depura("END FacturaProveedorView::on_mui_veralbaranes_clicked", 0);
+    _depura("FacturaProveedorView::on_mui_veralbaranes_clicked", 0);
+    QString query = "SELECT * FROM albaranp WHERE refalbaranp='"+DBvalue("reffacturap")+"'";
+    cursor2 *cur = empresaBase()->cargacursor(query);
+    while (!cur->eof()) {
+        AlbaranProveedorView *albpro = empresaBase()->newAlbaranProveedorView();
+        albpro->cargar(cur->valor("idalbaranp"));
+        empresaBase()->m_pWorkspace->addWindow( albpro);
+        albpro->show();
+        cur->siguienteregistro();
+    } // end while
+    delete cur;
+    _depura("END FacturaProveedorView::on_mui_veralbaranes_clicked", 0);
 }
 
 
-
-
 void FacturaProveedorView::on_m_proveedor_valueChanged(QString id) {
-	_depura("FacturaProveedorView::on_m_proveedor_valueChanged", 0);
-	subform2->setIdProveedor(id);
-	m_forma_pago->setIdProveedor(id);
-	_depura("END FacturaProveedorView::on_m_proveedor_valueChanged", 0);
+    _depura("FacturaProveedorView::on_m_proveedor_valueChanged", 0);
+    subform2->setIdProveedor(id);
+    m_forma_pago->setIdProveedor(id);
+    _depura("END FacturaProveedorView::on_m_proveedor_valueChanged", 0);
 }
 

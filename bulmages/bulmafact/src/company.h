@@ -64,8 +64,7 @@ class ListTipoIVAView;
 /// Clase company (empresa).
 /** Clase principal del programa donde se almacenan y gestionan
     todos los datos de la empresa con la que se est&aacute; trabajando.
-    Deriva de postgresiface ya que tiene el tratamiento de la base de datos.
-*/
+    Deriva de postgresiface ya que tiene el tratamiento de la base de datos. */
 class company : public EmpresaBase {
 private:
     /// Puntero a la ventana de lista de proveedores. Esta ventana se abre una vez al principio.

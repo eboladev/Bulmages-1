@@ -30,7 +30,7 @@
 /// Permite  seleccionar una serie de factura.
 /** Este Widget permite buscar y seleccionar un
     n&uacute;mero de serie de factura.
-    Antes de utilizarlo debe ser inicializa con setcompany.   
+    Antes de utilizarlo debe ser inicializa con setcompany.
     Cuando se cambia el elemento seleccionado emite un SIGNAL valueChanged().
 */
 class BusquedaSerieFactura : public QComboBox, PEmpresaBase {
@@ -46,8 +46,8 @@ public:
     BusquedaSerieFactura(QWidget *parent = 0);
     ~BusquedaSerieFactura();
     void setEmpresaBase(company *comp);
-    virtual void setcodigoserie_factura(QString);
     QString codigoserie_factura();
+    virtual void setcodigoserie_factura(QString);
 
 public slots:
     void m_activated(int index);

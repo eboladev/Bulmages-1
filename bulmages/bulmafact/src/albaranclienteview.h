@@ -45,7 +45,7 @@ class company;
 /// Muestra el albar&aacute;n a cliente.
 /** Clase que globaliza los Albaranes a Cliente derivando de las clases Ficha y AlbaranCliente.
     Se encarga del control de la pantalla de albaranes a clientes, el paso de mensajes y la visualizacion.
-    Contiene todos los metodos de pintado que son llamados desde AlbaranCliente.    
+    Contiene todos los metodos de pintado que son llamados desde AlbaranCliente.
 */
 class AlbaranClienteView : public AlbaranCliente, public Ui_AlbaranClienteBase {
     Q_OBJECT
@@ -54,15 +54,15 @@ public:
     AlbaranClienteView(company *, QWidget *);
     ~AlbaranClienteView();
     void inicializar();
-    void pintaIdAlbaran(QString) {};
+    void pintaIdAlbaran(QString);
     void pintaNumAlbaran(QString val);
     void pintafechaalbaran(QString val);
-    void pintaIdUsuario(QString) {};
+    void pintaIdUsuario(QString);
     void pintaComentAlbaran(QString val);
     void pintaComentPrivAlbaran(QString val);
     void pintaidcliente(QString val);
     void pintaidforma_pago(QString val);
-    void pintaIdFactura(QString) {};
+    void pintaIdFactura(QString);
     void pintaidalmacen(QString id);
     void pintaidtrabajador(QString id);
     void pintadescalbaran(QString val);
@@ -70,7 +70,7 @@ public:
     void pintacontactalbaran(QString val);
     void pintatelalbaran(QString val);
     void pintaprocesadoalbaran(QString id);
-    void pintaNumFactura(QString) {};
+    void pintaNumFactura(QString);
     void pintatotales(Fixed, Fixed, Fixed, Fixed, Fixed, Fixed);
     void generarFactura();
     void agregarFactura();

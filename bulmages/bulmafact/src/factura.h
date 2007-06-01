@@ -31,17 +31,15 @@
 #include "fichabf.h"
 
 /// Administra los datos de una factura a cliente.
-/** Intermedia entre la base de datos y la pantalla de presentacion.
-*/
+/** Intermedia entre la base de datos y la pantalla de presentacion. */
 class Factura : public FichaBf {
-Q_OBJECT
+    Q_OBJECT
 
 public:
     Factura(company *, QWidget *parent);
     virtual ~Factura();
     /// Establece cu&aacute;l es la lista subformulario del presupuesto. Normalmente para
     /// apuntar listlinpresupuestoview.
-
     company *_company();
     QString codigoserie_factura();
     QString idcliente();
@@ -54,10 +52,7 @@ public:
     QString descfactura();
     QString idfactura();
     QString idforma_pago();
-    virtual int cargar(QString);
     void pintaFactura();
-    virtual int guardar();
-    virtual int  borrar();
     void setidcliente(QString val);
     void setidalmacen(QString val);
     void setreffactura(QString val);
@@ -70,7 +65,9 @@ public:
     void setidforma_pago(QString val);
     void setprocesadafactura(QString val);
     void vaciaFactura();
-
+    virtual int cargar(QString);
+    virtual int guardar();
+    virtual int borrar();
     virtual void pintaidcliente(QString);
     virtual void pintareffactura(QString);
     virtual void pintaNumFactura(QString );
@@ -85,7 +82,6 @@ public:
     virtual void calculateImports();
     virtual void inicialize();
     virtual QString calculateValues();
-
 };
 
 #endif

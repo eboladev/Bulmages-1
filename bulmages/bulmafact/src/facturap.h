@@ -32,14 +32,12 @@
 #include "fichabf.h"
 
 
-/** Hace de intermediario entre la base de datos y la pantalla de Factura Proveedor.
-*/
+/** Hace de intermediario entre la base de datos y la pantalla de Factura Proveedor. */
 class FacturaProveedor : public FichaBf {
-Q_OBJECT
+    Q_OBJECT
+
 public:
     FacturaProveedor(company *, QWidget *);
-    virtual ~FacturaProveedor();
-    virtual int borrar();
     void setidproveedor(QString val);
     void setreffacturap(QString val);
     void setnumfacturap(QString val);
@@ -49,6 +47,8 @@ public:
     void setidfacturap(QString val);
     void setidforma_pago(QString val);
     void setprocesadafacturap(QString val);
+    virtual ~FacturaProveedor();
+    virtual int borrar();
     virtual void imprimirFacturaProveedor();
     virtual int cargar(QString);
     virtual void pintar();

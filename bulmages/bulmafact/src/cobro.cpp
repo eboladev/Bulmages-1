@@ -43,18 +43,65 @@ Cobro::Cobro(company *comp, QWidget *parent) : FichaBf(comp, parent) {
     _depura("END Cobro::Cobro", 0);
 }
 
-/** No requiere de acciones especiales en el constructor.
-*/
+
+/** No requiere de acciones especiales en el constructor. */
 Cobro::~Cobro() {
     _depura("Cobro::~Cobro", 0);
     _depura("END Cobro::~Cobro", 0);
 }
 
 
+void Cobro::pintaidcobro(QString) {
+    _depura("Cobro::pintaidcobro", 0);
+    _depura("END Cobro::pintaidcobro", 0);
+}
+
+
+void Cobro::pintaidcliente(QString) {
+    _depura("Cobro::pintaidcliente", 0);
+    _depura("END Cobro::pintaidcliente", 0);
+}
+
+
+void Cobro::pintafechacobro(QString) {
+    _depura("Cobro::pintafechacobro", 0);
+    _depura("END Cobro::pintafechacobro", 0);
+}
+
+
+void Cobro::pintacantcobro(QString) {
+    _depura("Cobro::pintacantcobro", 0);
+    _depura("END Cobro::pintacantcobro", 0);
+}
+
+
+void Cobro::pintarefcobro(QString) {
+    _depura("Cobro::pintarefcobro", 0);
+    _depura("END Cobro::pintarefcobro", 0);
+}
+
+
+void Cobro::pintaprevisioncobro(QString) {
+    _depura("Cobro::pintaprevisioncobro", 0);
+    _depura("END Cobro::pintaprevisioncobro", 0);
+}
+
+
+void Cobro::pintacomentcobro(QString) {
+    _depura("Cobro::pintacomentcobro", 0);
+    _depura("END Cobro::pintacomentcobro", 0);
+}
+
+
+void Cobro::pintaidbanco(QString) {
+    _depura("Cobro::pintaidbanco", 0);
+    _depura("END Cobro::pintaidbanco", 0);
+}
+
+
 /** Este mapa se encarga de pintar el cobro a traves de la pantalla de presentacion.
     Para ello utiliza los metodos virtuales pintarXXX() que deben estar implementados
-    en la clase de visualizacion.
-*/
+    en la clase de visualizacion. */
 void Cobro::pintar() {
     _depura("Cobro::pintar", 0);
     pintaidcobro(DBvalue("idcobro"));
@@ -73,10 +120,9 @@ void Cobro::pintar() {
     Crea una transaccion e invoca al metodo DBsave de DBRecord.
     Una vez guardado se hace una carga para incorporar los elementos que haya podido
     introducir la base de datos (p. ej: La referencia del cobro).
-    
+
     Si se produce un error genera un mensaje de error y devuelve -1.
-    Si todo va bien devuelve 0.
-*/
+    Si todo va bien devuelve 0. */
 int Cobro::guardar() {
     _depura("Cobro::guardar", 0);
     try {
@@ -105,11 +151,13 @@ void Cobro::setidcobro(QString val) {
     _depura("END Cobro::setidcobro", 0);
 }
 
+
 void Cobro::setidcliente(QString val) {
     _depura("Cobro::setidcliente", 0);
     setDBvalue("idcliente", val);
     _depura("END Cobro::setidcliente", 0);
 }
+
 
 void Cobro::setfechacobro(QString val) {
     _depura("Cobro::setfechacobro", 0);
@@ -117,11 +165,13 @@ void Cobro::setfechacobro(QString val) {
     _depura("END Cobro::setfechacobro", 0);
 }
 
+
 void Cobro::setcantcobro(QString val) {
     _depura("Cobro::setcantcobro", 0);
     setDBvalue("cantcobro", val);
     _depura("END Cobro::setcantcobro", 0);
 }
+
 
 void Cobro::setrefcobro(QString val) {
     _depura("Cobro::setrefcobro", 0);
@@ -129,11 +179,13 @@ void Cobro::setrefcobro(QString val) {
     _depura("END Cobro::setrefcobro", 0);
 }
 
+
 void Cobro::setprevisioncobro(QString val) {
     _depura("Cobro::setprevisioncobro", 0);
     setDBvalue("previsioncobro", val);
     _depura("END Cobro::setprevisioncobro", 0);
 }
+
 
 void Cobro::setcomentcobro(QString val) {
     _depura("Cobro::setcomentcobro", 0);
@@ -141,8 +193,10 @@ void Cobro::setcomentcobro(QString val) {
     _depura("END Cobro::setcomentcobro", 0);
 }
 
+
 void Cobro::setidbanco(QString val) {
     _depura("Cobro::setidbanco", 0);
     setDBvalue("idbanco", val);
     _depura("END Cobro::setidbanco", 0);
 }
+

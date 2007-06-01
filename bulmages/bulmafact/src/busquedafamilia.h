@@ -31,9 +31,8 @@ class company;
 
 
 /// Permite buscar y seleccionar una familia de art&iacute;culos.
-/** Este Widget permite buscar y seleccionar una familia de art&iacute;culos. 
-    Para usar en forma de selector de articulos.
-*/
+/** Este Widget permite buscar y seleccionar una familia de art&iacute;culos.
+    Para usar en forma de selector de articulos. */
 class BusquedaFamilia : public QWidget, public Ui_BusquedaFamiliaBase {
     Q_OBJECT
 

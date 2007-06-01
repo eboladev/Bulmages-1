@@ -28,8 +28,7 @@
 
 
 /** Inicializa todos los componentes.
-    Prepara el DBRecord para trabajar con la tabla cliente.
-*/
+    Prepara el DBRecord para trabajar con la tabla cliente. */
 Cliente::Cliente(company *comp, QWidget *parent) : FichaBf(comp, parent) {
     _depura("Cliente::Cliente", 0);
     setDBTableName("cliente");
@@ -62,11 +61,154 @@ Cliente::Cliente(company *comp, QWidget *parent) : FichaBf(comp, parent) {
 }
 
 
-/** No requiere de acciones adicionales.
-*/
+/** No requiere de acciones adicionales. */
 Cliente::~Cliente() {
     _depura("Cliente::~Cliente", 0);
     _depura("END Cliente::~Cliente", 0);
+}
+
+
+void Cliente::pintaidcliente(QString) {
+    _depura("Cliente::pintaidcliente", 0);
+    _depura("END Cliente::pintaidcliente", 0);
+}
+
+
+void Cliente::pintanomcliente(QString) {
+    _depura("Cliente::pintanomcliente", 0);
+    _depura("END Cliente::pintanomcliente", 0);
+}
+
+
+void Cliente::pintanomaltcliente(QString) {
+    _depura("Cliente::pintanomaltcliente", 0);
+    _depura("END Cliente::pintanomaltcliente", 0);
+}
+
+
+void Cliente::pintacifcliente(QString) {
+    _depura("Cliente::pintacifcliente", 0);
+    _depura("END Cliente::pintacifcliente", 0);
+}
+
+
+void Cliente::pintabancocliente(QString) {
+    _depura("Cliente::pintabancocliente", 0);
+    _depura("END Cliente::pintabancocliente", 0);
+}
+
+
+void Cliente::pintadircliente(QString) {
+    _depura("Cliente::pintadircliente", 0);
+    _depura("END Cliente::pintadircliente", 0);
+}
+
+
+void Cliente::pintapoblcliente(QString) {
+    _depura("Cliente::pintapoblcliente", 0);
+    _depura("END Cliente::pintapoblcliente", 0);
+}
+
+
+void Cliente::pintacpcliente(QString) {
+    _depura("Cliente::pintacpcliente", 0);
+    _depura("END Cliente::pintacpcliente", 0);
+}
+
+
+void Cliente::pintatelcliente(QString) {
+    _depura("Cliente::pintatelcliente", 0);
+    _depura("END Cliente::pintatelcliente", 0);
+}
+
+
+void Cliente::pintateltrabcliente(QString) {
+    _depura("Cliente::pintateltrabcliente", 0);
+    _depura("END Cliente::pintateltrabcliente", 0);
+}
+
+
+void Cliente::pintamovilcliente(QString) {
+    _depura("Cliente::pintamovilcliente", 0);
+    _depura("END Cliente::pintamovilcliente", 0);
+}
+
+
+void Cliente::pintafaxcliente(QString) {
+    _depura("Cliente::pintafaxcliente", 0);
+    _depura("END Cliente::pintafaxcliente", 0);
+}
+
+
+void Cliente::pintamailcliente(QString) {
+    _depura("Cliente::pintamailcliente", 0);
+    _depura("END Cliente::pintamailcliente", 0);
+}
+
+
+void Cliente::pintaurlcliente(QString) {
+    _depura("Cliente::pintaurlcliente", 0);
+    _depura("END Cliente::pintaurlcliente", 0);
+}
+
+
+void Cliente::pintafaltacliente(QString) {
+    _depura("Cliente::pintafaltacliente", 0);
+    _depura("END Cliente::pintafaltacliente", 0);
+}
+
+
+void Cliente::pintafbajacliente(QString) {
+    _depura("Cliente::pintafbajacliente", 0);
+    _depura("END Cliente::pintafbajacliente", 0);
+}
+
+
+void Cliente::pintacomentcliente(QString) {
+    _depura("Cliente::pintacomentcliente", 0);
+    _depura("END Cliente::pintacomentcliente", 0);
+}
+
+
+void Cliente::pintainactivocliente(QString) {
+    _depura("Cliente::pintainactivocliente", 0);
+    _depura("END Cliente::pintainactivocliente", 0);
+}
+
+
+void Cliente::pintaprovcliente(QString) {
+    _depura("Cliente::pintaprovcliente", 0);
+    _depura("END Cliente::pintaprovcliente", 0);
+}
+
+
+void Cliente::pintacodcliente(QString) {
+    _depura("Cliente::pintacodcliente", 0);
+    _depura("END Cliente::pintacodcliente", 0);
+}
+
+
+void Cliente::pintacorpcliente(QString) {
+    _depura("Cliente::pintacorpcliente", 0);
+    _depura("END Cliente::pintacorpcliente", 0);
+}
+
+
+void Cliente::pintaidforma_pago(QString) {
+    _depura("Cliente::pintaidforma_pago", 0);
+    _depura("END Cliente::pintaidforma_pago", 0);
+}
+
+
+void Cliente::pintarecargoeqcliente(QString) {
+    _depura("Cliente::pintarecargoeqcliente", 0);
+    _depura("END Cliente::pintarecargoeqcliente", 0);
+}
+
+
+void Cliente::pintaregimenfiscalcliente(QString) {
+    _depura("Cliente::pintaregimenfiscalcliente", 0);
+    _depura("END Cliente::pintaregimenfiscalcliente", 0);
 }
 
 
@@ -91,8 +233,7 @@ void Cliente::borraCliente() {
 
 
 /** Vacia los valores que pueda contener DBRecord para asegurarnos que no hay
-    Basura en las variables.
-*/
+    Basura en las variables. */
 void Cliente::vaciaCliente() {
     _depura("Cliente::vaciaCliente", 0);
     DBclear();
@@ -102,8 +243,7 @@ void Cliente::vaciaCliente() {
 
 /** Se encarga de pintar un cliente.
     PAra ello coge todos los valores del DBRecord y llama a los metodos pintar que deben
-    estar reimplementados en la clase de visualizacion.
-*/
+    estar reimplementados en la clase de visualizacion. */
 void Cliente::pintaCliente() {
     _depura("Cliente::pintaCliente", 0);
 
@@ -163,7 +303,7 @@ int Cliente::cargar(QString idcliente) {
     Delega en DBRecord la composicion del query y la ejecucion del mismo.
     Sin embargo crea la transaccion de borrado y la finaliza.
     Tambien trata las posibles excepciones.
-    
+
     Si todo va bien devuelve 0.
     Si se produce algun error devuelve -1.
 */
@@ -184,8 +324,4 @@ int Cliente::guardar() {
         return -1;
     } // end try
 }
-
-
-
-
 

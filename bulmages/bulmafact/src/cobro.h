@@ -29,11 +29,10 @@
 #include "dbrecord.h"
 #include "fichabf.h"
 
-/** Clase que interactua entre la pantalla de Cobro y la base de datos.
-    Incorpora los metodos de guardado de datos y abstraye metodos de visualizacion.
-*/
-class Cobro : public FichaBf {
 
+/** Clase que interactua entre la pantalla de Cobro y la base de datos.
+    Incorpora los metodos de guardado de datos y abstraye metodos de visualizacion. */
+class Cobro : public FichaBf {
 public:
     Cobro(company *, QWidget *);
     virtual ~Cobro();
@@ -47,21 +46,14 @@ public:
     void setprevisioncobro(QString val);
     void setcomentcobro(QString val);
     void setidbanco(QString val);
-    virtual void pintaidcobro(QString) {}
-    ;
-    virtual void pintaidcliente(QString) {}
-    ;
-    virtual void pintafechacobro(QString) {}
-    ;
-    virtual void pintacantcobro(QString) {}
-    ;
-    virtual void pintarefcobro(QString) {}
-    ;
-    virtual void pintaprevisioncobro(QString) {}
-    ;
-    virtual void pintacomentcobro(QString) {}
-    ;
-    virtual void pintaidbanco(QString) {}
+    virtual void pintaidcobro(QString);
+    virtual void pintaidcliente(QString);
+    virtual void pintafechacobro(QString);
+    virtual void pintacantcobro(QString);
+    virtual void pintarefcobro(QString);
+    virtual void pintaprevisioncobro(QString);
+    virtual void pintacomentcobro(QString);
+    virtual void pintaidbanco(QString);
 };
 
 #endif

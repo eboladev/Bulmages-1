@@ -29,10 +29,11 @@
 
 
 /// Muestra y administra el listado de los componentes de un art&iacute;culo.
-/** Implementa el subformulario de componentes de articulo que aparece en la ficha de articulo. 
-    Sobrecarga los metodos necesarios para que el subformulario trabaje con la tabla comparticulo de la base de datos.
-    Al ser una clase derivada de SubForm2Bf para funcionar debe ser previamente inicializada con setcompany.
-*/
+/** Implementa el subformulario de componentes de articulo que aparece en la ficha de articulo.
+    Sobrecarga los metodos necesarios para que el subformulario trabaje con la tabla comparticulo
+    de la base de datos.
+    Al ser una clase derivada de SubForm2Bf para funcionar debe ser previamente inicializada
+    con setcompany. */
 class ListCompArticuloView : public SubForm2Bf {
     Q_OBJECT
 

@@ -77,7 +77,6 @@ public slots:
     virtual void on_mui_importar_clicked();
     virtual void on_mui_exportar_clicked();
 
-
 signals:
     void selected(QString);
 };

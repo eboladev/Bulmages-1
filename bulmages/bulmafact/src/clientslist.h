@@ -49,6 +49,7 @@ public:
 /// \TODO: Deberia crearse la clase Listado para poner en ella mas funcionalidades comunes a los listados.
 class ClientsList : public Listado, public Ui_ClientsListBase, public pgimportfiles {
     Q_OBJECT
+
 private:
     /// Almacene el idcliente del registro seleccionado.
     QString mdb_idcliente;
@@ -57,11 +58,9 @@ private:
     /// Almacena el cifcliente del registro seleccionado.
     QString mdb_cifcliente;
 
-
 public:
     ClientsList(company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode);
     ~ClientsList();
-
     void presentar();
     void editar(int);
     void imprimir();

@@ -31,14 +31,11 @@
 /** Esta clase se encarga del trabajo entre un cliente y la base de datos.
     ESta hecha para trabajar conjuntamente con una clase de visualizacion que muestre
     los datos del cliente.
-    
+
     Tiene dos tipos de metodos especiales:
-	setXXX son utlizados para alterar valores de un cliente.
-	pintaXXX son utilizados para invocar a al repintado de determinado elemento.
-*/
+    setXXX son utlizados para alterar valores de un cliente.
+    pintaXXX son utilizados para invocar a al repintado de determinado elemento. */
 class Cliente : public FichaBf {
-
-
 public:
     Cliente(company *, QWidget *);
     virtual ~Cliente();
@@ -47,52 +44,30 @@ public:
     virtual void borraCliente();
     virtual void vaciaCliente();
     virtual int cargar(QString);
-
-    virtual void pintaidcliente(QString) {}
-    ;
-    virtual void pintanomcliente(QString) {}
-    ;
-    virtual void pintanomaltcliente(QString) {}
-    ;
-    virtual void pintacifcliente(QString) {}
-    ;
-    virtual void pintabancocliente(QString) {}
-    ;
-    virtual void pintadircliente(QString) {}
-    ;
-    virtual void pintapoblcliente(QString) {}
-    ;
-    virtual void pintacpcliente(QString) {}
-    ;
-    virtual void pintatelcliente(QString) {};
-
-    virtual void pintateltrabcliente(QString) {};
-
-    virtual void pintamovilcliente(QString) {};
-
-    virtual void pintafaxcliente(QString) {}
-    ;
-    virtual void pintamailcliente(QString) {}
-    ;
-    virtual void pintaurlcliente(QString) {}
-    ;
-    virtual void pintafaltacliente(QString) {}
-    ;
-    virtual void pintafbajacliente(QString) {}
-    ;
-    virtual void pintacomentcliente(QString) {}
-    ;
-    virtual void pintainactivocliente(QString) {}
-    ;
-    virtual void pintaprovcliente(QString) {}
-    ;
-    virtual void pintacodcliente(QString) {}
-    ;
-    virtual void pintacorpcliente(QString) {}
-    ;
-    virtual void pintaidforma_pago(QString) {};
-    virtual void pintarecargoeqcliente(QString) {};
-    virtual void pintaregimenfiscalcliente(QString) {};
+    virtual void pintaidcliente(QString);
+    virtual void pintanomcliente(QString);
+    virtual void pintanomaltcliente(QString);
+    virtual void pintacifcliente(QString);
+    virtual void pintabancocliente(QString);
+    virtual void pintadircliente(QString);
+    virtual void pintapoblcliente(QString);
+    virtual void pintacpcliente(QString);
+    virtual void pintatelcliente(QString);
+    virtual void pintateltrabcliente(QString);
+    virtual void pintamovilcliente(QString);
+    virtual void pintafaxcliente(QString);
+    virtual void pintamailcliente(QString);
+    virtual void pintaurlcliente(QString);
+    virtual void pintafaltacliente(QString);
+    virtual void pintafbajacliente(QString);
+    virtual void pintacomentcliente(QString);
+    virtual void pintainactivocliente(QString);
+    virtual void pintaprovcliente(QString);
+    virtual void pintacodcliente(QString);
+    virtual void pintacorpcliente(QString);
+    virtual void pintaidforma_pago(QString);
+    virtual void pintarecargoeqcliente(QString);
+    virtual void pintaregimenfiscalcliente(QString);
 };
 
 #endif

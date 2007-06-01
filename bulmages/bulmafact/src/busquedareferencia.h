@@ -34,7 +34,6 @@
 class BusquedaReferencia : public BLWidget, public Ui_BusquedaReferenciaBase {
     Q_OBJECT
 
-
 public:
     BusquedaReferencia(QWidget *parent = 0);
     ~BusquedaReferencia();

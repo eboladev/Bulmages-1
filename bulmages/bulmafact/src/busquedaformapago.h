@@ -35,18 +35,17 @@ class BusquedaFormaPago : public QComboBox, public PEmpresaBase {
     Q_OBJECT
 
 private:
-
     /// Cursor de la base de datos que contiene las formas de pago disponibles.
     cursor2 *m_cursorcombo;
 
 public:
     BusquedaFormaPago(QWidget *parent = 0);
     ~BusquedaFormaPago();
-
-    virtual void setidforma_pago(QString idforma_pago);
     QString idforma_pago();
+    virtual void setidforma_pago(QString idforma_pago);
     virtual void setIdCliente(QString);
     virtual void setIdProveedor(QString);
+
 public slots:
     virtual void m_activated(int index);
 

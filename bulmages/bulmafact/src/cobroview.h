@@ -36,12 +36,12 @@
 
 class company;
 
+
 /** Ventana de ficha de cobro.
     Se encarga de la presentacion de la ficha de cobro y del tratamiento de eventos producidos
     en dicha ventana.
     Deriva de Ficha para metodos comunes a todas las ventanas.
-    Deriva de Cobro para el manejo de la Base de datos.    
-*/
+    Deriva de Cobro para el manejo de la Base de datos. */
 class CobroView : public Cobro, public Ui_CobroBase {
     Q_OBJECT
 
@@ -62,7 +62,6 @@ public:
 
 public slots:
     virtual int cargar(QString id);
-
     virtual void on_mui_comentcobro_textChanged(const QString &str);
     virtual void on_mui_refcobro_valueChanged(const QString &str);
     virtual void on_mui_cantcobro_textChanged(const QString &str);

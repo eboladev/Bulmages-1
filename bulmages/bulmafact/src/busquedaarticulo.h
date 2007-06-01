@@ -34,17 +34,19 @@ class company;
 
 
 class BusquedaArticuloDelegate : public QComboBox, public PEmpresaBase {
-Q_OBJECT
+    Q_OBJECT
+
 private:
     /// Este cursor almacena el listado de series de factura para poder trabajar con ellas.
     cursor2 *m_cursorcombo;
+
 public:
     BusquedaArticuloDelegate(QWidget *parent = 0);
     ~BusquedaArticuloDelegate();
+
 public slots:
     virtual void s_editTextChanged(const QString &);
 };
-
 
 
 /// Permite buscar y seleccionar un art&iacute;culo.
@@ -54,7 +56,6 @@ class BusquedaArticulo : public QWidget, public Ui_BusquedaArticuloBase, public 
     Q_OBJECT
 
 private:
-
     /// El Widget almacena el idarticulo seleccionado en esta variable.
     QString mdb_idarticulo;
     /// BusquedaArticulo almacena el nombre del articulo seleccionado en esta variable.
