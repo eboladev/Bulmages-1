@@ -106,7 +106,7 @@ unix{
     OBJECTS_DIR = .obj
     LIBS += -lpq
     LIBS += -rdynamic
-    CONFIG += release
+    CONFIG += release debug
     #        CONFIG += qt debug
     TARGET = bulmalib
     DESTDIR = ../installbulmages

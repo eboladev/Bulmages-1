@@ -31,28 +31,25 @@
 
 class PEmpresaBase {
 private:
-    /// Indica si es modo consulta o modo edicion. (altera el comportamiento del
-    /// doble click sobre la lista)
-    EmpresaBase *m_empresaBase;
+  /// Indica si es modo consulta o modo edicion. (altera el comportamiento del
+  /// doble click sobre la lista)
+  EmpresaBase *m_empresaBase;
 
 public:
-    void setEmpresaBase(EmpresaBase *);
-    EmpresaBase *empresaBase();
-
-public:
-    PEmpresaBase(EmpresaBase *);
-    PEmpresaBase();
-    ~PEmpresaBase();
+  PEmpresaBase(EmpresaBase *);
+  PEmpresaBase();
+  ~PEmpresaBase();
+  void setEmpresaBase(EmpresaBase *);
+  EmpresaBase *empresaBase();
 };
 
-
 class BLWidget : public QWidget, public PEmpresaBase {
-    Q_OBJECT
+  Q_OBJECT
 
 public:
-    BLWidget(QWidget *parent = 0, Qt::WFlags f = 0);
-    BLWidget(EmpresaBase *, QWidget *parent = 0, Qt::WFlags f = 0);
-    ~BLWidget();
+  BLWidget(QWidget *parent = 0, Qt::WFlags f = 0);
+  BLWidget(EmpresaBase *, QWidget *parent = 0, Qt::WFlags f = 0);
+  ~BLWidget();
 };
 
 #endif

@@ -27,7 +27,6 @@
 
 #include "ui_abreempresabase.h"
 
-
 /// Abre el di&aacute;logo de seleccionar una empresa.
 /** Esta clase muestra el di&aacute;logo de seleccionar una empresa y espera a que se haga doble
     click sobre uno de los elementos que contiene, se haga click en aceptar o se de la
@@ -36,64 +35,63 @@
     Se puede especificar, si es preciso, un tipo de mui_empresas a mostrar
     (bulmacont o bulmafact) para facilitar la selecci&oacute;n de elementos. */
 class abreempresaview : public QDialog, public Ui_abreempresabase {
-    Q_OBJECT
+  Q_OBJECT
 
 public:
-    /// Establece el modo destructivo.
-    void mododestructivo();
-    /// Establece el modo no destructivo.
-    void modonodestructivo();
-    /// Inicia las variables m_tipo y m_tipoempresa y carga el archivo para hacer la
-    /// presentaci&oacute;n.
-    abreempresaview(QWidget *parent = 0, QString tipo = 0, const char *name = 0, bool modal = true);
-    ~abreempresaview();
-    /// Devuelve el nombre de la base de datos seleccionada.
-    QString nomDB();
-    /// Devuelve el nombre de la empresa seleccionada.
-    QString nomEmpresa();
-    /// Devuelve el tipo de empresa que se ha seleccionado.
-    QString tipoEmpresa();
+  /// Establece el modo destructivo.
+  void mododestructivo();
+  /// Establece el modo no destructivo.
+  void modonodestructivo();
+  /// Inicia las variables m_tipo y m_tipoempresa y carga el archivo para hacer la
+  /// presentaci&oacute;n.
+  abreempresaview(QWidget *parent = 0, QString tipo = 0, const char *name = 0, bool modal = true);
+  ~abreempresaview();
+  /// Devuelve el nombre de la base de datos seleccionada.
+  QString nomDB();
+  /// Devuelve el nombre de la empresa seleccionada.
+  QString nomEmpresa();
+  /// Devuelve el tipo de empresa que se ha seleccionado.
+  QString tipoEmpresa();
 
 public slots:
-    /// Este SLOT se activa al seleccionar una compa&ntilde;ia y pulsar INTRO.
-    virtual void accept();
-    /// This SLOT searches in the databases of postgres all the companyes needed.
-    virtual void on_mui_actualizar_clicked();
+  /// Este SLOT se activa al seleccionar una compa&ntilde;ia y pulsar INTRO.
+  virtual void accept();
+  /// This SLOT searches in the databases of postgres all the companyes needed.
+  virtual void on_mui_actualizar_clicked();
 
 private:
-    /// Se usa para almacenar el nombre de la base de datos seleccionada.
-    QString m_empresabd;
-    /// Se usa para almacenar el nombre de la empresa seleccionada.
-    QString m_nombreempresa;
-    /// Se usa para tener presente que tipo de elementos queremos que el selector muestre.
-    QString m_tipo;
-    /// Se usa para devolver el tipo de empresa que se ha seleccionado en el selector.
-    QString m_tipoempresa;
-    /// Almacena el nombre del usuario que desea acceder.
-    QString user;
-    /// Almacena el password del usuario que desa acceder.
-    QString password;
-    /// Indica el modo en que opera la ventana. Cerrando la aplicacion al cancelar
-    /// o cerrando solo la ventana. Por defecto es 0 -> cerrar aplicaci&oacute;n.
-    int m_modo;
-    /// Guarda en el archivo especificado en LISTEMPRESAS la lista de mui_empresas disponibles.
-    void guardaArchivo();
-    /// Carga del archivo especificado en LISTEMPRESAS la lista de mui_empresas disponibles.
-    void cargaArchivo();
-    /// Inserta una companya en el QList mui_empresas definido en el di&aacute;logo.
-    void insertCompany(QString, QString, QString, QString);
-    void preparamui_empresas();
-    void trataEmpresa(QString, QFile *);
+  /// Se usa para almacenar el nombre de la base de datos seleccionada.
+  QString m_empresabd;
+  /// Se usa para almacenar el nombre de la empresa seleccionada.
+  QString m_nombreempresa;
+  /// Se usa para tener presente que tipo de elementos queremos que el selector muestre.
+  QString m_tipo;
+  /// Se usa para devolver el tipo de empresa que se ha seleccionado en el selector.
+  QString m_tipoempresa;
+  /// Almacena el nombre del usuario que desea acceder.
+  QString user;
+  /// Almacena el password del usuario que desa acceder.
+  QString password;
+  /// Indica el modo en que opera la ventana. Cerrando la aplicacion al cancelar
+  /// o cerrando solo la ventana. Por defecto es 0 -> cerrar aplicaci&oacute;n.
+  bool m_modo;
+  /// Guarda en el archivo especificado en LISTEMPRESAS la lista de mui_empresas disponibles.
+  void guardaArchivo();
+  /// Carga del archivo especificado en LISTEMPRESAS la lista de mui_empresas disponibles.
+  void cargaArchivo();
+  /// Inserta una companya en el QList mui_empresas definido en el di&aacute;logo.
+  void insertCompany(QString, QString, QString, QString);
+  void preparamui_empresas();
+  void trataEmpresa(QString, QFile *);
 
 private slots:
-    /// Al pulsar el bot&oacute;n de cancelar se aborta la ejecuci&oacute;n del programa.
-    virtual void s_botonCancelar();
-    bool close(bool);
-    void mui_empresasdobleclick();
+  /// Al pulsar el bot&oacute;n de cancelar se aborta la ejecuci&oacute;n del programa.
+  virtual void s_botonCancelar();
+  bool close(bool);
+  void mui_empresasdobleclick();
 
 protected:
-    bool eventFilter(QObject *obj, QEvent *ev);
+  bool eventFilter(QObject *obj, QEvent *ev);
 };
 
 #endif
-
