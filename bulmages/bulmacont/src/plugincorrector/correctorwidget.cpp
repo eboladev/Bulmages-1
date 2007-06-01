@@ -59,7 +59,7 @@ void correctorwidget::on_mui_corregir_clicked() {
     cur = conexionbase->cargacursor(query);
     while (!cur->eof()) {
         QString cadena;
-        cadena.sprintf("<img src='/usr/share/bulmages/icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>%s</B> esta abierto, esto causa que el asiento no modifique el estado de las cuentas.", cur->valor("ordenasiento").toAscii().constData());
+        cadena.sprintf("<img src='/usr/share/bulmages/icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>%s</B> con fecha <B>%s</B> esta abierto, esto causa que el asiento no modifique el estado de las cuentas.", cur->valor("ordenasiento").toAscii().constData(), cur->valor("fecha").toAscii().constData());
         agregarError(cadena, "asiento", cur->valor("idasiento").toAscii().constData());
         cur->siguienteregistro();
     } // end while

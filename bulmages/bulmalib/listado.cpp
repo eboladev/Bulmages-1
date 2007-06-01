@@ -46,13 +46,13 @@ bool Listado::modoConsulta() {
 
 Listado::Listado(QWidget *parent, Qt::WFlags f, edmode modo) : BLWidget(parent, f) {
     _depura("Listado::Listado", 0);
-    m_modo=modo;
+    m_modo = modo;
     _depura("END Listado::Listado", 0);
 }
 
 Listado::Listado(EmpresaBase *emp, QWidget *parent, Qt::WFlags f, edmode modo) : BLWidget(emp, parent, f) {
     _depura("Listado::Listado", 0);
-    m_modo=modo;
+    m_modo = modo;
     _depura("END Listado::Listado", 0);
 }
 
@@ -64,7 +64,6 @@ Listado::~Listado() {
 }
 
 
-
 int Listado::sacaWindow() {
     _depura("Listado::sacaWindow", 0);
     _depura("Listado::sacaWindow existe solo para ser derivado", 0);
@@ -72,7 +71,6 @@ int Listado::sacaWindow() {
     _depura("END Listado::sacaWindow", 0);
     return 0;
 }
-
 
 
 /** SLOT que responde al doble click sobre un elemento del listado
@@ -84,28 +82,36 @@ void Listado::on_mui_list_cellDoubleClicked(int a, int) {
     _depura("END ArticuloList::on_mui_list_cellDoubleClicked", 0);
 }
 
+
 void Listado::editar(int) {
     _depura("metodo para ser reimplementado en clases hijas", 2);
 }
+
 
 void Listado::crear() {
     _depura("metodo para ser reimplementado en clases hijas", 2);
 }
 
+
 void Listado::borrar() {
     _depura("metodo para ser reimplementado en clases hijas", 2);
 }
+
 
 void Listado::imprimir() {
     m_listado->imprimirPDF("");
 }
 
+
 void Listado::presentar() {
     _depura("metodo para ser reimplementado en clases hijas", 2);
 }
+
+
 void Listado::setSubForm(SubForm3 *list) {
     m_listado = list;
 }
+
 
 void Listado::on_m_filtro_textChanged(const QString &text) {
     if (text.size() >= 3) {
@@ -113,21 +119,26 @@ void Listado::on_m_filtro_textChanged(const QString &text) {
     } // end if
 }
 
+
 void Listado::on_mui_actualizar_clicked() {
     presentar();
 }
+
 
 void Listado::on_mui_imprimir_clicked() {
     imprimir();
 }
 
+
 void Listado::on_mui_crear_clicked() {
     crear();
 }
 
+
 void Listado::on_mui_borrar_clicked() {
     borrar();
 }
+
 
 /** SLOT que responde al boton de editar articulo
     Comprueba que haya un elemento seleccionado y llama a editArticle.
@@ -143,6 +154,7 @@ void Listado::on_mui_editar_clicked() {
     _depura("ArticuloList::END_s_editArticle", 0);
 }
 
+
 void Listado::on_mui_configurar_toggled(bool checked) {
     if (checked) {
         m_listado->showConfig();
@@ -150,6 +162,7 @@ void Listado::on_mui_configurar_toggled(bool checked) {
         m_listado->hideConfig();
     } // end if
 }
+
 
 /** \TODO: REVISAR ESTE METODO YA QUE NO PARECE SER EL ADECUADO
     EN LA LLAMADA DE SUBMENUS
@@ -159,6 +172,7 @@ void Listado::on_mui_list_customContextMenuRequested(const QPoint &p) {
     submenu(p);
     _depura("END Listado::on_mui_list_customContextMenuRequested", 0);
 }
+
 
 /** \TODO: REVISAR ESTE METODO YA QUE NO PARECE SER EL ADECUADO
     EN LA LLAMADA DE SUBMENUS
@@ -179,11 +193,13 @@ void Listado::submenu(const QPoint &) {
     delete popup;
 }
 
+
 void Listado::on_mui_list_toogledConfig(bool check) {
     QToolButton *botonconfigurar = findChild<QToolButton *>("mui_configurar");
     if (botonconfigurar)
         botonconfigurar->setChecked(check);
 }
+
 
 void Listado::hideBotonera() {
     QWidget *botonera = findChild<QWidget *>("m_botonera");
@@ -211,5 +227,4 @@ void Listado::showBusqueda() {
     if (busqueda)
         busqueda->show();
 }
-
 

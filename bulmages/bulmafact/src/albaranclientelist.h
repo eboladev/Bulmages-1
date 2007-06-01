@@ -62,7 +62,6 @@ public slots:
 class AlbaranClienteList : public Listado, public Ui_AlbaranClienteListBase {
     Q_OBJECT
 
-
 private:
     /// En el modo selector esta variable indica el elemento seleccionado.
     QString mdb_idalbaran;

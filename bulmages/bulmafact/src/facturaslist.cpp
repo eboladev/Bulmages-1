@@ -48,6 +48,7 @@ FacturasList::FacturasList(QWidget *parent, Qt::WFlags flag, edmode editmodo)
     _depura("END FacturasList::FacturasList", 0);
 }
 
+
 /** Inicializa todos los componentes y prepara la ventana para funcionar.
 */
 FacturasList::FacturasList(company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo)

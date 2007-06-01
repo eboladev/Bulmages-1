@@ -21,9 +21,8 @@
 #ifndef ASIENTOSVIEW_H
 #define ASIENTOSVIEW_H
 
-
 #include "ui_asientolistbase.h"
-#include "fichabc.h"
+#include "listado.h"
 
 
 class empresa;
@@ -32,22 +31,20 @@ class empresa;
 /// Muestra un listado de todos los asientos existentes e informa de si est&aacute;n
 /// abiertos o cerrados.
 /** */
-class AsientosView : public FichaBc, public Ui_AsientoListBase {
+class AsientosView : public Listado, public Ui_AsientoListBase {
     Q_OBJECT
 
 private:
     void rellenaListaEjercicio();
 
 public:
-    AsientosView(empresa *emp, QWidget *parent = 0);
+    AsientosView(empresa *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
     ~AsientosView();
-    void inicializa();
+    void presentar();
+    void imprimir();
 
 public slots:
     virtual void on_mui_list_cellDoubleClicked(int, int);
-    virtual void on_mui_actualizar_clicked();
-    virtual void on_mui_configurar_toggled(bool checked);
-    virtual void on_mui_imprimir_clicked();
 };
 
 #endif

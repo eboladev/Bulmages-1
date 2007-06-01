@@ -29,15 +29,20 @@
 
 /// El constructor de la clase inicializa algunas estructuras y configura la visi&oacute;n
 /// de la pantalla.
-AsientosView::AsientosView(empresa *emp, QWidget *parent)
-        : FichaBc(emp, parent) {
+AsientosView::AsientosView(empresa *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo)
+    : Listado(comp, parent, flag) {
     _depura("AsientosView::AsientosView", 0);
     setupUi(this);
-    mui_list->setEmpresaBase(emp);
+
+    mui_mostrar->insertItem(0, tr("Todos los asientos"));
+    mui_mostrar->insertItem(1, tr("Asientos cerrados"));
+    mui_mostrar->insertItem(2, tr("Asientos abiertos"));
 
     rellenaListaEjercicio();
 
     mui_filtrar->toggle();
+    mui_list->setEmpresaBase(comp);
+    setSubForm(mui_list);
     empresaBase()->meteWindow(windowTitle(), this);
     _depura("END AsientosView::AsientosView", 0);
 }
@@ -69,18 +74,18 @@ AsientosView::~AsientosView() {
 void AsientosView::on_mui_list_cellDoubleClicked(int, int) {
     _depura("AsientosView::on_mui_list_cellDoubleClicked", 0);
     QString idasiento = mui_list->DBvalue("idasiento");
-    empresaBase()->intapuntsempresa()->muestraasiento(idasiento);
-    empresaBase()->intapuntsempresa()->show();
-    empresaBase()->intapuntsempresa()->setFocus();
-    empresaBase()->muestraapuntes1();
+    ((empresa *)empresaBase())->intapuntsempresa()->muestraasiento(idasiento);
+    ((empresa *)empresaBase())->intapuntsempresa()->show();
+    ((empresa *)empresaBase())->intapuntsempresa()->setFocus();
+    ((empresa *)empresaBase())->muestraapuntes1();
     _depura("END AsientosView::on_mui_list_cellDoubleClicked", 0);
 }
 
 
 /// Inicializa la ventana, haciendo la consulta pertinente a la base de datos
 /// y presentando los resultados en pantalla.
-void AsientosView::inicializa() {
-    _depura("AsientosView::inicializa", 0);
+void AsientosView::presentar() {
+    _depura("AsientosView::presentar", 0);
     QString saldototal = mui_saldoasiento->text();
     /// Pasamos el texto a minusculas para hacer la busqueda 'case insensitive'.
     QString nombreasiento = mui_nombreasiento->text().toLower();
@@ -89,6 +94,7 @@ void AsientosView::inicializa() {
     QString apuntemenoroigual = mui_menoroigual->text();
     QString query;
     QString cadwhere;
+    QString muestra = "";
     QString textsaldototal = "";
     QString textoparentesis = "";
     QString textapuntemayoroigual = "";
@@ -159,6 +165,7 @@ void AsientosView::inicializa() {
                 textejercicio = " AND fecha >= '" + QDateTime::fromString(buscafechainicial, "dd/MM/yyyy").toString("yyyy-MM-dd") + "'";
             } else {
                 textejercicio = " WHERE fecha >= '" + QDateTime::fromString(buscafechainicial, "dd/MM/yyyy").toString("yyyy-MM-dd") + "'";
+                pand = 1;
             } // end if
         } else {
             /// Ejercicio seleccionado. Maximo hasta final de ese a&ntilde;o,
@@ -168,6 +175,7 @@ void AsientosView::inicializa() {
                 textejercicio = " AND fecha >= '" + QDateTime::fromString(buscafechainicial, "dd/MM/yyyy").toString("yyyy-MM-dd") + "' AND fecha <= '" + QDateTime::fromString(buscafechafinal, "dd/MM/yyyy").toString("yyyy-MM-dd") + "'";
             } else {
                 textejercicio = " WHERE fecha >= '" + QDateTime::fromString(buscafechainicial, "dd/MM/yyyy").toString("yyyy-MM-dd") + "' AND fecha <= '" + QDateTime::fromString(buscafechafinal, "dd/MM/yyyy").toString("yyyy-MM-dd") + "'";
+                pand = 1;
             } // end if
         } // end if
     } else if (buscafechainicial == "" && buscafechafinal != "") {
@@ -178,6 +186,7 @@ void AsientosView::inicializa() {
                 textejercicio = " AND fecha <= '" + QDateTime::fromString(buscafechafinal, "dd/MM/yyyy").toString("yyyy-MM-dd") + "'";
             } else {
                 textejercicio = " WHERE fecha <= '" + QDateTime::fromString(buscafechafinal, "dd/MM/yyyy").toString("yyyy-MM-dd") + "'";
+                pand = 1;
             } // end if
         } else {
             /// Ejercicio seleccionado. Maximo hasta final de ese a&ntilde;o,
@@ -187,6 +196,7 @@ void AsientosView::inicializa() {
                 textejercicio = " AND fecha >= '" + QDateTime::fromString(buscafechainicial, "dd/MM/yyyy").toString("yyyy-MM-dd") + "' AND fecha <= '" + QDateTime::fromString(buscafechafinal, "dd/MM/yyyy").toString("yyyy-MM-dd") + "'";
             } else {
                 textejercicio = " WHERE fecha >= '" + QDateTime::fromString(buscafechainicial, "dd/MM/yyyy").toString("yyyy-MM-dd") + "' AND fecha <= '" + QDateTime::fromString(buscafechafinal, "dd/MM/yyyy").toString("yyyy-MM-dd") + "'";
+                pand = 1;
             } // end if
         } // end if
     } else if (buscafechainicial != "" && buscafechafinal != "") {
@@ -201,6 +211,7 @@ void AsientosView::inicializa() {
                 textejercicio = " AND fecha >= '" + QDateTime::fromString(buscafechainicial, "dd/MM/yyyy").toString("yyyy-MM-dd") + "' AND fecha <= '" + QDateTime::fromString(buscafechafinal, "dd/MM/yyyy").toString("yyyy-MM-dd") + "'";
             } else {
                 textejercicio = " WHERE fecha >= '" + QDateTime::fromString(buscafechainicial, "dd/MM/yyyy").toString("yyyy-MM-dd") + "' AND fecha <= '" + QDateTime::fromString(buscafechafinal, "dd/MM/yyyy").toString("yyyy-MM-dd") + "'";
+                pand = 1;
             } // end if
         } // end if
     } else if (buscafechainicial == "" && buscafechafinal == "" && mui_ejercicio->currentIndex() != 0) {
@@ -211,11 +222,29 @@ void AsientosView::inicializa() {
                 textejercicio = " AND EXTRACT(YEAR FROM fecha) = '" + ejercicio + "'";
             } else {
                 textejercicio = " WHERE EXTRACT(YEAR FROM fecha) = '" + ejercicio + "'";
+                pand = 1;
             } // end if
         } // end if
     } // end if
 
-    query = "SELECT asiento.ordenasiento, asiento.idasiento, asiento.fecha, totaldebe, totalhaber, numap, numborr, comentariosasiento, clase FROM asiento LEFT JOIN (SELECT count(idborrador) AS numborr, idasiento FROM borrador GROUP BY idasiento) AS foo1 ON foo1.idasiento = asiento.idasiento LEFT JOIN (SELECT SUM(debe) AS totaldebe, SUM(haber) AS totalhaber, count(idapunte) AS numap, idasiento FROM apunte GROUP BY idasiento) AS fula ON asiento.idasiento = fula.idasiento " + cadwhere + textsaldototal + textapuntemayoroigual + textapuntemenoroigual + textoparentesis + textnombreasiento + textejercicio + " ORDER BY EXTRACT (YEAR FROM asiento.fecha), asiento.ordenasiento";
+    /// Mostramos todos los asientos, solo los cerrados o solo los abiertos.
+    if (mui_mostrar->currentIndex() == 1) {
+        /// Muestra solo los cerrados.
+        if (pand) {
+            muestra += " AND numap IS NOT NULL ";
+        } else {
+            muestra += " WHERE numap IS NOT NULL ";
+        } // end if
+    } else if (mui_mostrar->currentIndex() == 2) {
+        /// Muestra solo los abiertos.
+        if (pand) {
+            muestra += " AND numap IS NULL ";
+        } else {
+            muestra += " WHERE numap IS NULL ";
+        } // end if
+    } // end if
+
+    query = "SELECT asiento.ordenasiento, asiento.idasiento, asiento.fecha, totaldebe, totalhaber, numap, numborr, comentariosasiento, clase FROM asiento LEFT JOIN (SELECT count(idborrador) AS numborr, idasiento FROM borrador GROUP BY idasiento) AS foo1 ON foo1.idasiento = asiento.idasiento LEFT JOIN (SELECT SUM(debe) AS totaldebe, SUM(haber) AS totalhaber, count(idapunte) AS numap, idasiento FROM apunte GROUP BY idasiento) AS fula ON asiento.idasiento = fula.idasiento " + cadwhere + textsaldototal + textapuntemayoroigual + textapuntemenoroigual + textoparentesis + textnombreasiento + textejercicio + muestra + " ORDER BY EXTRACT (YEAR FROM asiento.fecha), asiento.ordenasiento";
 
     cursor2 *cursoraux = empresaBase()->cargacursor(query);
     mui_list->cargar(cursoraux);
@@ -235,30 +264,14 @@ void AsientosView::inicializa() {
     mui_totalDebe->setText(td.toQString());
     mui_totalHaber->setText(th.toQString());
 
-    _depura("END AsientosView::inicializa", 0);
+    _depura("END AsientosView::presentar", 0);
 }
 
 
-void AsientosView::on_mui_imprimir_clicked() {
+void AsientosView::imprimir() {
     _depura("AsientosView::on_mui_imprimir_clicked", 0);
     mui_list->imprimirPDF(tr("Asientos"));
     _depura("END AsientosView::on_mui_imprimir_clicked", 0);
 }
 
 
-void AsientosView::on_mui_configurar_toggled(bool checked) {
-    _depura("AsientosView::on_mui_configurar_toggled", 0);
-    if (checked) {
-        mui_list->showConfig();
-    } else {
-        mui_list->hideConfig();
-    } // end if
-    _depura("END AsientosView::on_mui_configurar_toggled", 0);
-}
-
-
-void AsientosView::on_mui_actualizar_clicked() {
-    _depura("AsientosView::on_mui_actualizar_clicked", 0);
-    inicializa();
-    _depura("END AsientosView::on_mui_actualizar_clicked", 0);
-}

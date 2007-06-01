@@ -54,13 +54,9 @@ QString AlbaranClienteList::idCliDelivNote() {
 }
 
 
-
 void AlbaranClienteList::crear() {
     ((company *)empresaBase())->s_newAlbaranClienteView();
 }
-
-
-
 
 
 /** Constructor de la clase sin inicializacion de company. Usando este
@@ -163,7 +159,7 @@ void AlbaranClienteList::presentar() {
      o bien haciendo doble click en el modo de edicion se desea invocar la accion
      Editar el elemento si estamos en modo editmode o cerrar la ventana y emitir
      un signal selected() si estamos en el modo selector.
- 
+
      Primero determina el idalbaran seleccionado, luego crea la instancia de
      la ventana de edicion AlbaranClienteView y lo mete en el workspace.
      Por ultimo hace que dicha ventana carge de la base de datos el idalbaran

@@ -215,6 +215,7 @@ SubForm3::SubForm3(QWidget *parent) : BLWidget(parent) {
     mui_list->setSelectionMode(QAbstractItemView::SingleSelection);
     mui_list->setSelectionBehavior(QAbstractItemView::SelectRows);
     mui_list->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
+    mui_list->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
     mui_list->setSortingEnabled(FALSE); /// TODO:Hay un Bug que impide ordenar bien los elementos.
     mui_list->horizontalHeader()->setMovable(TRUE);
     /// Valor por defecto en todos los listados.

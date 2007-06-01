@@ -141,13 +141,13 @@ int main(int argc, char **argv) {
         mensajeInfo("Error inesperado en BulmaCont, el programa se cerrara.");
     } // end try
 
-    fprintf(stderr, "--> MAIN::Cerrando el programa. <--\n");
     /// Liberamos memoria.
     delete bges;
     delete theApp;
     delete traductor;
     delete confpr;
 
+    fprintf(stderr, "--> MAIN::Cerrando el programa. <--\n");
     return valorsalida;
 }
 

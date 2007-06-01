@@ -183,8 +183,8 @@ int empresa::inicializa1() {
 
     /// pb = 75%
     m_progressbar->setValue(75);
-    m_listasientos = new AsientosView(this, 0);
-    m_listasientos->inicializa();
+    m_listasientos = new AsientosView(this);
+    m_listasientos->presentar();
     m_pWorkspace->addWindow(m_listasientos);
 
     /// pb = 90%
