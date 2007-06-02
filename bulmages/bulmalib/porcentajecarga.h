@@ -1,6 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2007 by Fco. Javier M. C.                               *
  *   fcojavmc@todo-redes.com                                               *
+ *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *

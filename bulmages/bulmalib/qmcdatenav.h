@@ -3,6 +3,7 @@
  *   All rights reserved.                                                  *
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   http://www.iglues.org                                                 *
  *                                                                         *
  *   See LICENSE.BSD for details.                                          *
  *                                                                         *

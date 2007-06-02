@@ -1,6 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2003 by Josep Burcion                                   *
  *   josep@burcion.com                                                     *
+ *   http://www.iglues.org Asociación Iglues -- Gestión Empresarial Linux  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *

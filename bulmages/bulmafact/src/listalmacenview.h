@@ -3,6 +3,7 @@
  *   tborras@conetxia.com                                                  *
  *   Copyright (C) 2006 by Fco. Javier M. C. (Porting to QT4)              *
  *   fcojavmc@todo-redes.com                                               *
+ *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *

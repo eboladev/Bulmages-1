@@ -1,6 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2004 by J. M. Torres Rigo                               *
  *   joanmi@bulma.net                                                      *
+ *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
