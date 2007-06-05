@@ -699,6 +699,7 @@ CREATE TABLE alb_pro (
 );
 
 
+-- TODO: ESTA TABLA ESTA MARCADA PARA SER BORRADA.....................................
 -- ** lpedido **
 -- numlpedido: Numero de linea de pedido.
 -- desclpedido: Descripcion de la linea de pedido.
@@ -823,7 +824,7 @@ CREATE TABLE dpresupuesto (
 \echo -n ':: Lineas de presupuesto ... '
 CREATE TABLE lpresupuesto (
     idlpresupuesto serial PRIMARY KEY,
-    desclpresupuesto character varying(150),
+    desclpresupuesto character varying,
     cantlpresupuesto numeric(12, 2),
     pvplpresupuesto numeric(12, 2),
     ivalpresupuesto numeric(12, 2),
@@ -998,7 +999,7 @@ CREATE TABLE dpedidocliente (
 \echo -n ':: Lineas de pedido de cliente ... '
 CREATE TABLE lpedidocliente (
     numlpedidocliente serial PRIMARY KEY,
-    desclpedidocliente character varying(150),
+    desclpedidocliente character varying,
     cantlpedidocliente numeric(12, 2),
     pvplpedidocliente numeric(12, 2),
     prevlpedidocliente date,
@@ -1161,7 +1162,7 @@ CREATE TABLE dfactura (
 \echo -n ':: Lineas de factura ... '
 CREATE TABLE lfactura (
     idlfactura serial PRIMARY KEY,
-    desclfactura character varying(150),
+    desclfactura character varying,
     cantlfactura numeric(12, 2),
     pvplfactura numeric(12, 2),
     ivalfactura numeric(12, 2),
@@ -1410,7 +1411,7 @@ CREATE TRIGGER restriccionesfacturaptrigger
 \echo -n ':: Lineas de factura de proveedor ... '
 CREATE TABLE lfacturap (
     idlfacturap serial PRIMARY KEY,
-    desclfacturap character varying(150),
+    desclfacturap character varying,
     cantlfacturap numeric(12, 2),
     pvplfacturap numeric(12, 2),
     ivalfacturap numeric(12, 2),
@@ -1635,7 +1636,7 @@ CREATE TRIGGER restriccionesalbaranptrigger
 
 CREATE TABLE lalbaranp (
     numlalbaranp serial PRIMARY KEY,
-    desclalbaranp character varying(100),
+    desclalbaranp character varying,
     cantlalbaranp numeric(12, 2),
     ivalalbaranp numeric(12, 2),
     reqeqlalbaranp NUMERIC(12,2) DEFAULT 0,
@@ -1940,7 +1941,7 @@ CREATE TABLE dalbaran (
 \echo -n ':: Lineas de albaran ... '
 CREATE TABLE lalbaran (
     numlalbaran serial PRIMARY KEY,
-    desclalbaran character varying(100),
+    desclalbaran character varying,
     cantlalbaran numeric(12, 2),
     pvplalbaran numeric(12, 2),
     descuentolalbaran numeric(12, 2),
@@ -2184,7 +2185,7 @@ CREATE TABLE dpedidoproveedor (
 \echo -n ':: Lineas de pedido a proveedor ... '
 CREATE TABLE lpedidoproveedor (
     numlpedidoproveedor serial PRIMARY KEY,
-    desclpedidoproveedor character varying(150),
+    desclpedidoproveedor character varying,
     cantlpedidoproveedor numeric(12, 2),
     pvplpedidoproveedor numeric(12, 2),
     prevlpedidoproveedor date,

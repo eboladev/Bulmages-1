@@ -395,13 +395,13 @@ void SubForm3::nuevoRegistro() {
 
     mui_list->insertRow(m_lista.size() - 1);
     SDBCampo *camp;
-    for (int i=0; i < rec->lista()->size(); ++i) {
+    for (int i = 0; i < rec->lista()->size(); ++i) {
         camp = (SDBCampo *) rec->lista()->at(i);
         mui_list->setItem(m_lista.size() - 1, i, camp);
     } // end for
 
     /// Nos posicionamos en una celda del nuevo registro ya que si no un bug no nos permite usar currentRow()
-   mui_list->setCurrentCell(m_lista.size() - 1, 2);
+    mui_list->setCurrentCell(m_lista.size() - 1, 2);
 
     /// Activamos el sorting debido a un error en las Qt4
     mui_list->setSortingEnabled(m_sorting);
@@ -1096,14 +1096,13 @@ int SubForm3::borrar(int row) {
 
         /// Sacamos celda a celda toda la fila
         for (int i = 0; i < mui_list->columnCount(); i++) {
-            camp = (SDBCampo *) mui_list->item(row,i);
-            SDBCampo * it= new SDBCampo(rac, empresaBase(), camp->nomcampo(), camp->tipo(), camp->restrictcampo(), camp->nompresentacion());
+            camp = (SDBCampo *) mui_list->item(row, i);
+            SDBCampo *it = new SDBCampo(rac, empresaBase(), camp->nomcampo(), camp->tipo(), camp->restrictcampo(), camp->nompresentacion());
             rac->lista()->append(it);
-            it->set
-            ( camp->valorcampo());
+            it->set(camp->valorcampo());
         } // end for
 
-        _depura("quitamos la columna del listado", 0);
+        _depura("quitamos la columna del listado", 10);
         mui_list->removeRow(row);
 
         delete rec;
