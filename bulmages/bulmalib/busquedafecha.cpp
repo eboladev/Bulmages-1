@@ -19,9 +19,8 @@
  ***************************************************************************/
 
 #include "busquedafecha.h"
-#include "calendario.h"
 #include "funcaux.h"
-
+ #include <QCalendarWidget>
 
 void BusquedaFecha::setfecha(QString val) {
     m_fecha->setText(val);
@@ -80,13 +79,30 @@ BusquedaFecha::~BusquedaFecha() {
 
 
 void BusquedaFecha::s_searchFecha() {
-    QList<QDate> a;
-    calendario *cal = new calendario(0);
-    cal->exec();
-    a = cal->dn->selectedDates();
-    m_fecha->setText(a.first().toString("dd/MM/yyyy"));
-    delete cal;
+    _depura("BusquedaFecha::s_searchFecha", 0);
+
+    QDialog *diag = new QDialog(0);
+    diag->setModal(true);
+    QCalendarWidget *calend = new QCalendarWidget( diag);
+    connect(calend, SIGNAL(activated ( const QDate & )), diag, SLOT(accept()));
+
+    /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
+    /// para que sea redimensionable y aparezca el titulo de la ventana.
+    QHBoxLayout *layout = new QHBoxLayout;
+    layout->addWidget(calend);
+    layout->setMargin(0);
+    layout->setSpacing(0);
+    diag->setLayout(layout);
+    diag->setWindowTitle("Seleccione Fecha");
+    diag->exec();
+
+    m_fecha->setText(calend->selectedDate().toString("dd/MM/yyyy"));
+
+    delete calend;
+    delete diag;
+
     emit(valueChanged(m_fecha->text()));
+    _depura("END BusquedaFecha::s_searchFecha", 0);
 }
 
 

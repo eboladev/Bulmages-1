@@ -29,7 +29,6 @@
 #include "importContaplus.h"
 #include "pgimportfiles.h"
 #include "busquedafecha.h"
-#include "calendario.h"
 
 
 QProgressBar *progress;

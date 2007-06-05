@@ -24,7 +24,6 @@
 #include "postgresiface2.h"
 #include "empresa.h"
 #include "aplinteligentesview.h"
-#include "calendario.h"
 #include "busquedacuenta.h"
 
 

@@ -24,7 +24,6 @@
 
 #include "canualesprintview.h"
 #include "funcaux.h"
-#include "calendario.h"
 #include "empresa.h"
 #include "fixed.h"
 #include "postgresiface2.h"

@@ -29,8 +29,6 @@ HEADERS += postgresiface2.h \
            funcaux.h \
            logpass.h \
            abreempresaview.h \
-           calendario.h \
-           qmcdatenav.h \
            dialogchanges.h \
            fixed.h \
            msgerror.h \
@@ -58,8 +56,6 @@ SOURCES += postgresiface2.cpp \
            funcaux.cpp \
            logpass.cpp \
            abreempresaview.cpp \
-           calendario.cpp \
-           qmcdatenav.cpp \
            dialogchanges.cpp \
            fixed.cpp \
            msgerror.cpp \

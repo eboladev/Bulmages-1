@@ -33,7 +33,6 @@
 #include "diarioprintview.h"
 #include "diarioprint.h"
 #include "configuracion.h"
-#include "calendario.h"
 #include "asiento1view.h"
 #include "extractoview1.h"
 #include "balanceview.h"

@@ -23,7 +23,6 @@
 #include <QDomDocument>
 
 #include "aplinteligentesview.h"
-#include "calendario.h"
 #include "empresa.h"
 #include "asiento1view.h"
 

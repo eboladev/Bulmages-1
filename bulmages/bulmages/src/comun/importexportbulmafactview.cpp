@@ -29,7 +29,6 @@
 #include "importexportbulmafactview.h"
 #include "pgimportfiles.h"
 #include "busquedafecha.h"
-#include "calendario.h"
 
 
 void ImportExportBulmafactView::alerta(int a, int b) {
@@ -67,8 +66,8 @@ void ImportExportBulmafactView::botonBuscarXML() {
 
 
 void ImportExportBulmafactView::botonImportar() {
+    _depura("ImportExportBulmafactView::botonImportar", 0);
     inicializaMensajeria();
-    fprintf(stderr, "ImportExportBulmafactView::botonImportar()\n");
     QString finicial = m_fechainicial->text();
     QString ffinal = m_fechafinal->text();
     QFile filexml(m_XML->text());
@@ -76,6 +75,7 @@ void ImportExportBulmafactView::botonImportar() {
     XML2BulmaFact(filexml);
     filexml.close();
     m_mensajes->setText("");
+    _depura("END ImportExportBulmafactView::botonImportar", 0);
 }
 
 

@@ -20,7 +20,6 @@
 
 #include "cambiactaview.h"
 #include "listcuentasview1.h"
-#include "calendario.h"
 #include "empresa.h"
 
 #define CONEXIONBASE empresaactual->bdempresa()

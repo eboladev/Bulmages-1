@@ -29,6 +29,25 @@
 #include "funcaux.h"
 #include "blwidget.h"
 
+/** Convierte en los SubForms los datos del tipo desctipo_iva en selectores del tipo QComboBox
+    de esta forma la introduccion de tipos de IVA es sencilla.
+    Esta clase se usa conjuntamente con SubForm2Bf para el cambio del editor
+    estandar por un ComboBox */
+class BusquedaTrabajadorDelegate : public QComboBox, public PEmpresaBase {
+    Q_OBJECT
+
+private:
+    /// Este cursor almacena el listado de series de factura para poder trabajar con ellas.
+    cursor2 *m_cursorcombo;
+
+public:
+    BusquedaTrabajadorDelegate(QWidget *parent = 0);
+    ~BusquedaTrabajadorDelegate();
+    virtual void set(const QString &);
+};
+
+
+
 /// Permite buscar y seleccionar un trabajador.
 /** Este comboBox permite buscar y seleccionar un
     trabajador. Aparece en forma de desplegable.

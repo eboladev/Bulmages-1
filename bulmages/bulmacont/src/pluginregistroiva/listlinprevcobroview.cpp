@@ -50,9 +50,9 @@
 #include <QPixmap>
 #include <QKeyEvent>
 #include <QEvent>
+#include <QMenu>
 
 #include "configuracion.h"
-#include "calendario.h"
 #include "asiento1view.h"
 #include "listlinprevcobroview.h"
 

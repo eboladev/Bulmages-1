@@ -26,7 +26,6 @@
 
 #include "balanceview.h"
 #include "empresa.h"
-#include "calendario.h"
 #include "arbol.h"
 #include "postgresiface2.h"
 #include "balanceprintview.h"

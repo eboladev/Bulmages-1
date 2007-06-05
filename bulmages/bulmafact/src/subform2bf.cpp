@@ -1,6 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   http://www.iglues.org -- BulmaFact Facturación GPL                    *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -30,6 +31,7 @@
 #include "busquedaarticulo.h"
 #include "busquedatipoiva.h"
 #include "qtexteditdelegate.h"
+#include "busquedatrabajador.h"
 #include "plugins.h"
 
 
@@ -139,6 +141,13 @@ void SubForm2Bf::on_mui_list_editFinished(int row, int col, int key) {
         cur = empresaBase()->cargacursor("SELECT * FROM tipo_iva WHERE desctipo_iva = '"+camp->text()+"'");
         if (!cur->eof()) {
             rec->setDBvalue("idtipo_iva", cur->valor("idtipo_iva"));
+        } // end if
+    } // end if
+
+    if (camp->nomcampo() == "nomtrabajador") {
+        cur = empresaBase()->cargacursor("SELECT * FROM trabajador WHERE apellidostrabajador ||', '||nomtrabajador = '"+camp->text()+"'");
+        if (!cur->eof()) {
+            rec->setDBvalue("idtrabajador", cur->valor("idtrabajador"));
         } // end if
     } // end if
 
@@ -413,6 +422,10 @@ QWidget *QSubForm2BfDelegate::createEditor(QWidget *parent, const QStyleOptionVi
         BusquedaTipoIVADelegate *editor = new BusquedaTipoIVADelegate(parent);
         editor->setEmpresaBase((company *)m_subform->empresaBase());
         return editor;
+    } else if (linea->nomcampo() == "nomtrabajador") {
+        BusquedaTrabajadorDelegate *editor = new BusquedaTrabajadorDelegate(parent);
+        editor->setEmpresaBase((company *)m_subform->empresaBase());
+        return editor;
     } else  {
         return QItemDelegate::createEditor(parent, option, index);
     } // end if
@@ -460,6 +473,10 @@ void QSubForm2BfDelegate::setModelData(QWidget *editor, QAbstractItemModel *mode
         BusquedaTipoIVADelegate *comboBox = static_cast<BusquedaTipoIVADelegate*>(editor);
         QString value = comboBox->currentText();
         model->setData(index, value);
+    } else if(linea->nomcampo() == "nomtrabajador") {
+        BusquedaTrabajadorDelegate *comboBox = static_cast<BusquedaTrabajadorDelegate*>(editor);
+        QString value = comboBox->currentText();
+        model->setData(index, value);
     } else {
         QItemDelegate::setModelData(editor, model, index);
     } // end if
@@ -496,6 +513,10 @@ void QSubForm2BfDelegate::setEditorData(QWidget* editor, const QModelIndex& inde
     } else if (linea->nomcampo() == "desctipo_iva") {
         QString value = index.model()->data(index, Qt::DisplayRole).toString();
         BusquedaTipoIVADelegate *comboBox = static_cast<BusquedaTipoIVADelegate*>(editor);
+        comboBox->set(value);
+    } else if (linea->nomcampo() == "nomtrabajador") {
+        QString value = index.model()->data(index, Qt::DisplayRole).toString();
+        BusquedaTrabajadorDelegate *comboBox = static_cast<BusquedaTrabajadorDelegate*>(editor);
         comboBox->set(value);
     } else {
         QItemDelegate::setEditorData(editor, index);

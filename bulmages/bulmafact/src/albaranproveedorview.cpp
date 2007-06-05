@@ -517,7 +517,6 @@ void AlbaranProveedorView::generarFacturaProveedor() {
         } // end if
     } // end for
     bud->calculaypintatotales();
-//    m_procesadoalbaranp->setChecked(TRUE);
     _depura("END AlbaranClienteView::generarFactura", 0);
 }
 

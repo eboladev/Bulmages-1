@@ -22,9 +22,9 @@
 #include "regivaprintview.h"
 #include "registroivaview.h"
 #include "empresa.h"
-#include "calendario.h"
 #include "asiento1view.h"
 
+#include <QMenu>
 
 ListRegistroIvaView::ListRegistroIvaView(empresa * emp, QString, QWidget *parent)
         : QWidget(parent) {

@@ -29,7 +29,6 @@
 #include "extractoview1.h"
 #include "extractoprintview.h"
 #include "libromayorprint.h"
-#include "calendario.h"
 #include "empresa.h"
 #include "asiento1view.h"
 #include "balanceview.h"
