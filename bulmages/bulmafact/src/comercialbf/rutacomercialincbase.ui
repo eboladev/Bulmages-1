@@ -1,7 +1,5 @@
 <ui version="4.0" >
  <author>Tomeu Borras</author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>RutaComercialIncBase</class>
  <widget class="QWidget" name="RutaComercialIncBase" >
   <property name="geometry" >
@@ -76,7 +74,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_save.xpm</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_save.xpm</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -104,7 +102,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_editDelete.png</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_editDelete.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -313,21 +311,16 @@
   </layout>
  </widget>
  <layoutdefault spacing="2" margin="2" />
- <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
    <class>RutaComercialView</class>
    <extends>QFrame</extends>
    <header>rutacomercialview.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
   <customwidget>
    <class>IncidenciaComercialView</class>
    <extends>QFrame</extends>
    <header>incidenciacomercialview.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
  </customwidgets>
  <resources>

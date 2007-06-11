@@ -1,7 +1,5 @@
 <ui version="4.0" >
  <author>Tomeu Borras Riera</author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>RutaComercialListBase</class>
  <widget class="QWidget" name="RutaComercialListBase" >
   <property name="enabled" >
@@ -73,7 +71,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_fileNew.xpm</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_fileNew.xpm</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -95,7 +93,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_edit.png</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_edit.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -117,7 +115,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_editDelete.png</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_dele.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -139,7 +137,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_filePrint.xpm</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_filePrint.xpm</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -161,7 +159,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_find.png</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_find.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -186,7 +184,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_reload.png</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_reload.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -255,7 +253,7 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaCliente" name="m_cliente" />
+         <widget class="BusquedaCliente" native="1" name="m_cliente" />
         </item>
         <item>
          <spacer>
@@ -291,7 +289,7 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaFecha" name="m_fechain" />
+         <widget class="BusquedaFecha" native="1" name="m_fechain" />
         </item>
         <item>
          <spacer>
@@ -317,7 +315,7 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaFecha" name="m_fechafin" />
+         <widget class="BusquedaFecha" native="1" name="m_fechafin" />
         </item>
         <item>
          <spacer>
@@ -383,28 +381,21 @@
   </layout>
  </widget>
  <layoutdefault spacing="3" margin="5" />
- <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
    <class>BusquedaCliente</class>
-   <extends></extends>
+   <extends>QWidget</extends>
    <header>busquedacliente.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
   <customwidget>
    <class>RutaComercialListSubForm</class>
    <extends>QTableWidget</extends>
    <header>rutacomerciallist.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
   <customwidget>
    <class>BusquedaFecha</class>
-   <extends></extends>
+   <extends>QWidget</extends>
    <header>../../../../bulmalib/busquedafecha.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
  </customwidgets>
  <resources>

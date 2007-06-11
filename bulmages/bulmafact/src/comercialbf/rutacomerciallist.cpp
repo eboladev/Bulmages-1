@@ -32,32 +32,29 @@
 
 
 RutaComercialList::RutaComercialList(QWidget *parent)
-        : FichaBf(NULL, parent) {
+        : Listado(NULL, parent) {
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
-    m_modo = 0;
     m_idpresupuesto = "";
-    meteWindow(windowTitle(), this);
-    hideBusqueda();
 }
 
 
 RutaComercialList::RutaComercialList(company *comp, QWidget *parent)
-        : FichaBf(comp, parent) {
+        : Listado(comp, parent) {
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
-    m_cliente->setEmpresaBase(comp);
+    setSubForm(mui_list);
+    m_cliente->setEmpresaBase(empresaBase());
+    mui_list->setEmpresaBase(comp);
     presenta();
-    m_modo = 0;
     m_idpresupuesto = "";
     hideBusqueda();
-    meteWindow(windowTitle(), this);
+    empresaBase()->meteWindow(windowTitle(), this);
 }
 
 
 RutaComercialList::~RutaComercialList() {
     _depura("RutaComercialList::~RutaComercialList", 0);
-    empresaBase()->sacaWindow(this);
 }
 
 void RutaComercialList::setEmpresaBase(company *comp) {
@@ -93,28 +90,23 @@ void RutaComercialList::editar(int row) {
     _depura("RutaComercialList::editar", 0);
     QString idrutacomercial = mui_list->DBvalue("idrutacomercial", row);
     QString idincidenciacomercial = mui_list->DBvalue("idincidenciacomercial", row);
-    RutaComercialIncView *rut = new RutaComercialIncView(empresaBase(), NULL);
+    RutaComercialIncView *rut = new RutaComercialIncView((company *)empresaBase(), NULL);
     if (rut->cargar(idrutacomercial, idincidenciacomercial))
         return;
     empresaBase()->m_pWorkspace->addWindow(rut);
+    empresaBase()->meteWindow("Nueva incidencia Comercial", rut);
     rut->show();
     _depura("END RutaComercialList::editar", 0);
 }
 
 
-void RutaComercialList::on_mui_editar_clicked() {
-    int a = mui_list->currentRow();
-    if (a >= 0)
-        editar(a);
-    else
-        _depura("Debe seleccionar una linea", 2);
-}
 
 
 void RutaComercialList::on_mui_crear_clicked() {
     _depura("RutaComercialList::on_mui_crear_clicked", 0);
-    RutaComercialIncView *rut = new RutaComercialIncView(empresaBase(), NULL);
+    RutaComercialIncView *rut = new RutaComercialIncView((company *)empresaBase(), NULL);
     empresaBase()->m_pWorkspace->addWindow(rut);
+    empresaBase()->meteWindow("Nueva Incidencia Comercial",rut);
     rut->show();
     _depura("END RutaComercialList::on_mui_crear_clicked", 0);
 }
@@ -172,12 +164,24 @@ void RutaComercialList::on_mui_borrar_clicked() {
     _depura("RutaComercialList::on_mui_borrar_clicked", 0);
     QString idrutacomercial = mui_list->DBvalue("idrutacomercial");
     QString idincidenciacomercial = mui_list->DBvalue("idincidenciacomercial");
-    RutaComercialIncView *rut = new RutaComercialIncView(empresaBase(), NULL);
+    RutaComercialIncView *rut = new RutaComercialIncView((company *)empresaBase(), NULL);
     if (rut->cargar(idrutacomercial, idincidenciacomercial))
         return;
     rut->on_mui_borrar_clicked();
     _depura("END RutaComercialList::on_mui_borrar_clicked", 0);
 }
+
+
+    QString RutaComercialList::idpresupuesto() {
+        return m_idpresupuesto;
+    }
+
+
+    void RutaComercialList::setidcliente(QString val) {
+        m_cliente->setidcliente(val);
+    }
+
+
 
 
 /// =============================================================================

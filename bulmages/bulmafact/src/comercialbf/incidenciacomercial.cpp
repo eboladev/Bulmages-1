@@ -28,6 +28,7 @@
 
 
 IncidenciaComercial::IncidenciaComercial(company *comp, QWidget *parent) : FichaBf(comp, parent) {
+    _depura("IncidenciaComercial::IncidenciaComercial", 0);
     setDBTableName("incidenciacomercial");
     setDBCampoId("idincidenciacomercial");
     addDBCampo("idincidenciacomercial", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("IncidenciaComercial", "Identificador"));
@@ -38,6 +39,7 @@ IncidenciaComercial::IncidenciaComercial(company *comp, QWidget *parent) : Ficha
     addDBCampo("estadoincidenciacomercial", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("IncidenciaComercial", "Estado"));
     addDBCampo("horaincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("IncidenciaComercial", "Hora"));
     addDBCampo("refincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("IncidenciaComercial", "Referencia"));
+    _depura("END IncidenciaComercial::IncidenciaComercial", 0);
 }
 
 
@@ -46,10 +48,23 @@ IncidenciaComercial::~IncidenciaComercial() {}
 
 void IncidenciaComercial::pintar() {
     _depura("IncidenciaComercial::pintar", 0);
-    /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
+    /// Disparamos los plugins con IncidenciaComercial_pintar
     int res = g_plugins->lanza("IncidenciaComercial_pintar", this);
     if (res != 0)
         return;
     _depura("END IncidenciaComercial::pintar", 0);
 }
 
+int IncidenciaComercial::cargar(QString id) {
+    _depura("IncidenciaComercial::cargar", 0);
+    QString query = "SELECT * FROM incidenciacomercial WHERE idincidenciacomercial = " + id;
+    cursor2 *cur = empresaBase()->cargacursor(query);
+    if (!cur->eof())  {
+        DBload(cur);
+    }
+    delete cur;
+    setWindowTitle(tr("Ruta comercial") + " " + DBvalue("idincidenciacomercial"));
+    dialogChanges_cargaInicial();
+    _depura("END IncidenciaComercial::cargar", 0);
+    return 0;
+}

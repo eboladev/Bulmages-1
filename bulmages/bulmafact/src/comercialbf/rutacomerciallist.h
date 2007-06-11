@@ -27,7 +27,7 @@
 #include "busquedacliente.h"
 #include "busquedaarticulo.h"
 #include "subform2bf.h"
-#include "fichabf.h"
+#include "listado.h"
 
 class RutaComercialListSubForm : public SubForm2Bf {
     Q_OBJECT
@@ -55,13 +55,11 @@ public slots:
 #include "ui_rutacomerciallistbase.h"
 
 
-class RutaComercialList : public FichaBf, public Ui_RutaComercialListBase {
+class RutaComercialList : public Listado, public Ui_RutaComercialListBase {
     Q_OBJECT
 
 private:
-    /// m_modo == 0 es modo edici&oacute;n
-    /// m_modo == 1 es modo selector.
-    int m_modo;
+
     QString m_idpresupuesto;
 
 public:
@@ -69,59 +67,22 @@ public:
     RutaComercialList(company *comp = NULL, QWidget *parent = 0);
     ~RutaComercialList();
     void presenta();
-    int modo() {
-        return m_modo;
-    };
-    company *getcompany() {
-        return empresaBase();
-    };
-    QString idpresupuesto() {
-        return m_idpresupuesto;
-    };
-    void modoseleccion() {
-        m_modo = 1;
-    };
-    void modoedicion() {
-        m_modo = 0;
-    };
+
+    QString idpresupuesto();
+
     void setEmpresaBase(company *comp);
-    void hideBotonera() {
-        m_botonera->hide();
-    };
-    void showBotonera() {
-        m_botonera->show();
-    };
-    void hideBusqueda() {
-        m_busqueda->hide();
-    };
-    void showBusqueda() {
-        m_busqueda->show();
-    };
     void imprimir();
-    void meteWindow(QString nom, QObject *obj) {
-        if (empresaBase() != NULL) {
-            empresaBase()->meteWindow(nom, obj);
-        }
-    };
-    void setidcliente(QString val) {
-        m_cliente->setidcliente(val);
-    };
+    void setidcliente(QString val);
     QString generaFiltro();
     void editar(int);
 
 public slots:
-    virtual void on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
-        on_mui_editar_clicked();
-    };
-    virtual void on_mui_editar_clicked();
+
+
     virtual void on_mui_crear_clicked();
     virtual void on_mui_borrar_clicked();
-    virtual void on_mui_imprimir_clicked() {
-        imprimir();
-    };
-    virtual void on_mui_actualizar_clicked() {
-        presenta();
-    };
+
+
 
 signals:
     void selected(QString);

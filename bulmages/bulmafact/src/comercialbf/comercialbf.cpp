@@ -53,9 +53,6 @@ int ClienteView_ClienteView_Post(ClienteView *cli) {
     l->setEmpresaBase(cli->empresaBase());
     l->setObjectName(QString::fromUtf8("lcomercial"));
     cli->mui_tab->addTab(l, QApplication::translate("ClienteView_ClienteView_Post", "&Comercial"));
-    cli->mui_tab->removeTab(8);
-    cli->mui_tab->removeTab(7);
-    cli->mui_tab->removeTab(6);
     _depura("END ClienteView_ClienteView_Post", 0);
     return 0;
 }

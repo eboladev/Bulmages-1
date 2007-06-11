@@ -78,7 +78,7 @@
       <envvars/>
     </run>
     <general>
-      <activedir>privateplugins/pluginllamadas</activedir>
+      <activedir>bulmafact/src/comercialbf</activedir>
     </general>
     <make>
       <abortonerror>true</abortonerror>

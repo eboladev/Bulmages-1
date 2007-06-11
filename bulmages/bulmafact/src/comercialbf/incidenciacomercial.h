@@ -33,6 +33,7 @@ public:
     IncidenciaComercial(company *, QWidget *);
     virtual ~IncidenciaComercial();
     virtual void pintar();
+    virtual int cargar(QString);
 };
 
 #endif

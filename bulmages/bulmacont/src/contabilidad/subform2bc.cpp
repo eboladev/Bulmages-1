@@ -404,6 +404,9 @@ QWidget *QSubForm2BcDelegate::createEditor(QWidget *parent, const QStyleOptionVi
         BusquedaCCosteDelegate *editor = new BusquedaCCosteDelegate(parent);
         editor->setcompany((empresa *)m_subform->empresaBase());
         return editor;
+    } else if (linea->nomcampo().startsWith("fecha")) {
+        BusquedaFecha *editor = new BusquedaFecha(parent);
+        return editor;
     } else {
         return QItemDelegate::createEditor(parent, option, index);
     } // end if
@@ -448,7 +451,12 @@ void QSubForm2BcDelegate::setModelData(QWidget *editor, QAbstractItemModel *mode
     } else if (linea->nomcampo() == "nomc_coste") {
         BusquedaCCosteDelegate *comboBox = static_cast<BusquedaCCosteDelegate*>(editor);
         QString value = comboBox->currentText();
-        model->setData(index, value);    } else {
+        model->setData(index, value);
+    } else if (linea->nomcampo().startsWith("fecha")) {
+        BusquedaFecha *comboBox = static_cast<BusquedaFecha*>(editor);
+        QString value = comboBox->text();
+        model->setData(index, value);
+    } else {
         QItemDelegate::setModelData(editor, model, index);
     } // end if
     _depura("END QSubForm2BcDelegate::setModelData", 0);
@@ -486,6 +494,11 @@ void QSubForm2BcDelegate::setEditorData(QWidget *editor, const QModelIndex &inde
         BusquedaCCosteDelegate *comboBox = static_cast<BusquedaCCosteDelegate*>(editor);
         comboBox->addItem(value);
         comboBox->lineEdit()->selectAll();
+    } else if (linea->nomcampo().startsWith("fecha")) {
+        QString value = index.model()->data(index, Qt::DisplayRole).toString();
+        BusquedaFecha *comboBox = static_cast<BusquedaFecha*>(editor);
+        comboBox->setText(value);
+        comboBox->m_fecha->selectAll();
     } else {
         QItemDelegate::setEditorData(editor, index);
     } // end if

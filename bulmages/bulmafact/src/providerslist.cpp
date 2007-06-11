@@ -37,6 +37,12 @@ ProveedorList::ProveedorList(company *comp, QWidget *parent, Qt::WFlags flag, ed
     _depura("ProveedorList::ProveedorList", 0);
     setupUi(this);
     mui_list->setEmpresaBase(comp);
+
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("ProveedorList_ProveedorList", this);
+    if (res != 0)
+        return;
+
     setSubForm(mui_list);
     hideBusqueda();
     m_idprovider = "";

@@ -97,7 +97,7 @@ int RutaComercialView::cargar(QString id) {
     mui_horarutacomercial->setText(DBvalue("horarutacomercial"));
     mui_refrutacomercial->setText(DBvalue("refrutacomercial"));
     dialogChanges_cargaInicial();
-    _depura("RutaComercialView::cargar", 0);
+    _depura("END RutaComercialView::cargar", 0);
     return err;
 }
 

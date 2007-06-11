@@ -28,6 +28,7 @@
 
 
 RutaComercial::RutaComercial(company *comp, QWidget *parent) : FichaBf(comp, parent) {
+    _depura("RutaComercial::RutaComercial", 0);
     setDBTableName("rutacomercial");
     setDBCampoId("idrutacomercial");
     addDBCampo("idrutacomercial", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("RutaComercial", "Identificador"));
@@ -36,6 +37,7 @@ RutaComercial::RutaComercial(company *comp, QWidget *parent) : FichaBf(comp, par
     addDBCampo("comentariosrutacomercial", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("RutaComercial", "Comentarios"));
     addDBCampo("horarutacomercial", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("RutaComercial", "Hora"));
     addDBCampo("refrutacomercial",  DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("RutaComercial", "Referencia"));
+    _depura("END RutaComercial::RutaComercial", 0);
 }
 
 
