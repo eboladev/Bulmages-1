@@ -62,8 +62,8 @@ void BusquedaAlmacen::setidalmacen(QString idalmacen) {
     addItem("--");
     while (!m_cursorcombo->eof()) {
        i++;
-	   if (m_cursorcombo->valor("codigoalmacen") == m_codigoalmacen)
-	       i2 = i;
+       if (m_cursorcombo->valor("codigoalmacen") == m_codigoalmacen)
+           i2 = i;
             if (m_cursorcombo->valor("idalmacen") == idalmacen)
                 i1 = i;
             addItem(m_cursorcombo->valor("nomalmacen"));
@@ -79,37 +79,37 @@ void BusquedaAlmacen::setidalmacen(QString idalmacen) {
 
 
 QString BusquedaAlmacen::idalmacen() {
-	_depura("BusquedaAlmacen::idalmacen", 0);
+    _depura("BusquedaAlmacen::idalmacen", 0);
         int index= currentIndex();
         if (index > 0) {
-	    _depura("END BusquedaAlmacen::idalmacen", 0);
+            _depura("END BusquedaAlmacen::idalmacen", 0);
             return(m_cursorcombo->valor("idalmacen", index - 1));
         } else {
-	    _depura("END BusquedaAlmacen::idalmacen", 0);
+            _depura("END BusquedaAlmacen::idalmacen", 0);
             return "";
         } // end if
 }
 
 
 void BusquedaAlmacen::setEmpresaBase(company *comp) {
-	_depura("BusquedaAlmacen::setEmpresaBase", 0);
-	PEmpresaBase::setEmpresaBase(comp);
-	cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM configuracion WHERE nombre ='AlmacenDefecto'");
-	if (!cur->eof()) {
-		m_codigoalmacen = cur->valor("valor");
-	} // end if
-	delete cur;
-	_depura("END BusquedaAlmacen::setEmpresaBase", 0);
+    _depura("BusquedaAlmacen::setEmpresaBase", 0);
+    PEmpresaBase::setEmpresaBase(comp);
+    cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM configuracion WHERE nombre ='AlmacenDefecto'");
+    if (!cur->eof()) {
+        m_codigoalmacen = cur->valor("valor");
+    } // end if
+    delete cur;
+    _depura("END BusquedaAlmacen::setEmpresaBase", 0);
 }
 
 
 void BusquedaAlmacen::m_activated(int index) {
-	_depura("BusquedaAlmacen::m_activated", 0);
+    _depura("BusquedaAlmacen::m_activated", 0);
         if (index > 0) {
             emit(valueChanged(m_cursorcombo->valor("idalmacen", index - 1)));
         } else {
             emit(valueChanged(""));
         } // end if
-	_depura("END BusquedaAlmacen::m_activated", 0);
+    _depura("END BusquedaAlmacen::m_activated", 0);
 }
 

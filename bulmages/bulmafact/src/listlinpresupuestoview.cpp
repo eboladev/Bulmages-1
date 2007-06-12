@@ -46,7 +46,8 @@ ListLinPresupuestoView::ListLinPresupuestoView(QWidget *parent) : SubForm2Bf(par
     addSHeader("idpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id presupuesto"));
     addSHeader("ordenlpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Orden"));
     setinsercion(TRUE);
-    setOrdenEnabled(TRUE);
+    setOrdenEnabled(FALSE);
+    setOrdenPorQuery(TRUE);
     _depura("END ListLinPresupuestoView::ListLinPresupuestoView", 0);
 }
 

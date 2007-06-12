@@ -21,6 +21,7 @@
 #include <QLineEdit>
 #include <QTextEdit>
 #include <QTableWidget>
+#include <QComboBox>
 
 #include "dialogchanges.h"
 #include "funcaux.h"
@@ -32,36 +33,100 @@ dialogChanges::dialogChanges(QObject *ob) {
     _depura("END dialogChanges::dialogChanges", 0);
 }
 
+
 dialogChanges::~dialogChanges() {}
+
 
 void dialogChanges::dialogChanges_cargaInicial() {
     _depura("dialogChanges::dialogChanges_cargaInicial", 0);
     m_maxQText = 0;
     m_maxQLine = 0;
     m_maxQTable = 0;
+    m_maxQComboBox = 0;
+
+    QListIterator<QObject *> it_excluidos (m_listaExcluidos);
+
+    /// TODO: 8/6/07 En pruebas.
+    QList<QComboBox *> l4 = m_obje->findChildren<QComboBox *>();
+    QListIterator<QComboBox *> it4 (l4);
+    while (it4.hasNext()) {
+        QComboBox *item = it4.next();
+        if (item->objectName() != "") {
+
+            /// Itera por los QObjects que estan excluidos de comprobacion de cambios.
+            it_excluidos.toFront();
+            while (it_excluidos.hasNext()) {
+                /// Comparamos
+                if (it_excluidos.next() == (QObject *) item) {
+                    _depura("Se ha encontrado objeto a excluir", 0);
+                } else {
+                    m_listaQComboBox[m_maxQComboBox++] = item;
+                } // end if
+            } // end while
+
+        } // end if
+    } // end while
+    /// ---------------
+
 
     QList<QTextEdit *> l1 = m_obje->findChildren<QTextEdit *>();
     QListIterator<QTextEdit *> it1 (l1);
     while (it1.hasNext()) {
-	QTextEdit *item = it1.next();
-	if (item->objectName() != "") 
-        	m_listaQText[m_maxQText++] = item;
+        QTextEdit *item = it1.next();
+        if (item->objectName() != "") {
+
+            /// Itera por los QObjects que estan excluidos de comprobacion de cambios.
+            it_excluidos.toFront();
+            while (it_excluidos.hasNext()) {
+                /// Comparamos
+                if (it_excluidos.next() == (QObject *) item) {
+                    _depura("Se ha encontrado objeto a excluir", 0);
+                } else {
+                    m_listaQText[m_maxQText++] = item;
+                } // end if
+            } // end while
+
+        } // end if
     } // end while
 
     QList<QLineEdit *> l2 = m_obje->findChildren<QLineEdit *>();
     QListIterator<QLineEdit *> it2 (l2);
     while (it2.hasNext()) {
-	QLineEdit *item = it2.next();
-	if (item->objectName() != "")
-        	m_listaQLine[m_maxQLine++] = item;
+        QLineEdit *item = it2.next();
+        if (item->objectName() != "") {
+
+            /// Itera por los QObjects que estan excluidos de comprobacion de cambios.
+            it_excluidos.toFront();
+            while (it_excluidos.hasNext()) {
+                /// Comparamos
+                if (it_excluidos.next() == (QObject *) item) {
+                    _depura("Se ha encontrado objeto a excluir", 0);
+                } else {
+                    m_listaQLine[m_maxQLine++] = item;
+                } // end if
+            } // end while
+
+        } // end if
     } // end while
 
     QList<QTableWidget *> l3 = m_obje->findChildren<QTableWidget *>();
     QListIterator<QTableWidget *> it3(l3);
     while (it3.hasNext()) {
-	QTableWidget *item = it3.next();
-	if (item->objectName() != "")
-        	m_listaQTable[m_maxQTable++] = item;
+        QTableWidget *item = it3.next();
+        if (item->objectName() != "") {
+
+            /// Itera por los QObjects que estan excluidos de comprobacion de cambios.
+            it_excluidos.toFront();
+            while (it_excluidos.hasNext()) {
+                /// Comparamos
+                if (it_excluidos.next() == (QObject *) item) {
+                    _depura("Se ha encontrado objeto a excluir", 0);
+                } else {
+                    m_listaQTable[m_maxQTable++] = item;
+                } // end if
+            } // end while
+
+        } // end if
     } // end while
 
     valorinicial = calculateValues();
@@ -84,30 +149,86 @@ QString dialogChanges::calculateValues() {
     QString values = retrieveValues("QTableWidget");
     values += retrieveValues("QLineEdit");
     values += retrieveValues("QTextEdit");
+    values += retrieveValues("QComboBox");
     _depura("END dialogChanges::calculateValues", 0);
     return values;
+}
+
+
+void dialogChanges::dialogChanges_setQObjectExcluido(QObject *objetoexcluido) {
+    _depura("dialogChanges::dialogChanges_setQObjectExcluido", 0);
+    m_listaExcluidos.append(objetoexcluido);
+    _depura("END dialogChanges::dialogChanges_setQObjectExcluido", 0);
 }
 
 
 QString dialogChanges::retrieveValues(QString qsWidget) {
     _depura("dialogChanges::retrieveValues", 0);
     QString values = "";
+    QListIterator<QObject *> it_excluidos (m_listaExcluidos);
+
+
+    /// TODO: 8/6/07 En pruebas.
+    if (qsWidget == "QComboBox") {
+        for (int i = 0; i < m_maxQComboBox; i++) {
+            if (m_listaQComboBox[i] != NULL) {
+                if (((QComboBox*)m_listaQComboBox[i])->objectName() != "") {
+
+                    /// Itera por los QObjects que estan excluidos de comprobacion de cambios.
+                    it_excluidos.toFront();
+                    while (it_excluidos.hasNext()) {
+                        /// Comparamos
+                        if (it_excluidos.next() == m_listaQComboBox[i]) {
+                            _depura("Se ha encontrado objeto a excluir", 0);
+                        } else {
+                            values += ((QComboBox*)m_listaQComboBox[i])->currentIndex();
+                        } // end if
+                    } // end while
+
+                } // end if
+            } // end if
+        } // end for
+    } // end if
+    /// --------------------
+
+
+
     if (qsWidget == "QLineEdit") {
         for (int i = 0; i < m_maxQLine; i++) {
             if (m_listaQLine[i] != NULL) {
-                if ( ((QLineEdit*)m_listaQLine[i])->objectName()!= "") {
-                 //_depura("QLineEdit " + QString::number(i) + ((QLineEdit*)m_listaQLine[i])->objectName(), 2, ((QLineEdit*)m_listaQLine[i])->text());
-                    values += ((QLineEdit*)m_listaQLine[i])->text();
-		} // end if
+                if (((QLineEdit*)m_listaQLine[i])->objectName() != "") {
+
+                    /// Itera por los QObjects que estan excluidos de comprobacion de cambios.
+                    it_excluidos.toFront();
+                    while (it_excluidos.hasNext()) {
+                        /// Comparamos
+                        if (it_excluidos.next() == m_listaQLine[i]) {
+                            _depura("Se ha encontrado objeto a excluir", 0);
+                        } else {
+                            values += ((QLineEdit*)m_listaQLine[i])->text();
+                        } // end if
+                    } // end while
+
+                } // end if
             } // end if
         } // end for
     } // end if
     if (qsWidget == "QTextEdit") {
         for (int i = 0; i < m_maxQText; i++) {
             if (m_listaQText[i] != NULL) {
-                if ( ((QTextEdit*)m_listaQText[i])->objectName() != "")
-                    //_depura("QTextEdit " + QString::number(i) + ((QTextEdit*)m_listaQText[i])->objectName(), 2, ((QTextEdit*)m_listaQText[i])->toPlainText());
-                    values += ((QTextEdit*)m_listaQText[i])->toPlainText();
+                if (((QTextEdit*)m_listaQText[i])->objectName() != "")
+
+                    /// Itera por los QObjects que estan excluidos de comprobacion de cambios.
+                    it_excluidos.toFront();
+                    while (it_excluidos.hasNext()) {
+                        /// Comparamos
+                        if (it_excluidos.next() == m_listaQText[i]) {
+                            _depura("Se ha encontrado objeto a excluir", 0);
+                        } else {
+                            values += ((QTextEdit*)m_listaQText[i])->toPlainText();
+                        } // end if
+                    } // end while
+
             } // end if
         } // end for
     } // end if
@@ -116,7 +237,18 @@ QString dialogChanges::retrieveValues(QString qsWidget) {
             if (m_listaQTable[i] != NULL) {
                 for (int k = 0; k < ((QTableWidget*)m_listaQTable[i])->rowCount(); k++) {
                     for (int l = 0; l < ((QTableWidget*)m_listaQTable[i])->columnCount(); l++) {
-                        values += (((QTableWidget*)m_listaQTable[i]))->item(k, l)->text();
+
+                        /// Itera por los QObjects que estan excluidos de comprobacion de cambios.
+                        it_excluidos.toFront();
+                        while (it_excluidos.hasNext()) {
+                            /// Comparamos
+                            if (it_excluidos.next() == m_listaQTable[i]) {
+                                _depura("Se ha encontrado objeto a excluir", 0);
+                            } else {
+                                values += (((QTableWidget*)m_listaQTable[i]))->item(k, l)->text();
+                            } // end if
+                        } // end while
+
                     } // end for
                 } // end for
             } // end if

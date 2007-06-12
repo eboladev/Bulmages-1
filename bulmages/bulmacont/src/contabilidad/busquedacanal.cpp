@@ -67,6 +67,7 @@ void BusquedaCanal::setidcanal(QString idcanal) {
     _depura("END BusquedaCanal::setidcanal", 0, idcanal);
 }
 
+
 void BusquedaCanal::m_activated(int index) {
     _depura("BusquedaCanal::m_activated", 0);
     if (index > 0) {
@@ -76,6 +77,7 @@ void BusquedaCanal::m_activated(int index) {
     } // end if
     _depura("END BusquedaCanal::m_activated", 0);
 }
+
 
 QString BusquedaCanal::idcanal() {
     _depura("BusquedaCanal::idcanal", 0);
@@ -89,14 +91,12 @@ QString BusquedaCanal::idcanal() {
 }
 
 
-
 /// ===================================================================
 /// Busqueda Cuenta Delegate para usar con los subforms
 /// ===================================================================
 /** Inicializa todos los componentes del Widget a NULL para que no haya posibles confusiones
     sobre si un elemento ha sido creado o no.
-    Conecta el SIGNAL activated() con m_activated() para tratarlo.
-*/
+    Conecta el SIGNAL activated() con m_activated() para tratarlo. */
 BusquedaCanalDelegate::BusquedaCanalDelegate(QWidget *parent)
         : QComboBox(parent) {
     _depura("BusquedaCanalDelegate::BusquedaCanalDelegate", 10);
@@ -143,7 +143,7 @@ void BusquedaCanalDelegate::s_editTextChanged(const QString &cod) {
     /// coincidan con el texto escrito para poder elegirlo.
     while (!m_cursorcombo->eof()) {
         //addItem(m_cursorcombo->valor("codigo") + ".-" + m_cursorcombo->valor("descripcion"));
-	addItem(m_cursorcombo->valor("nombre"));
+        addItem(m_cursorcombo->valor("nombre"));
         m_cursorcombo->siguienteregistro();
     }
     delete m_cursorcombo;
@@ -152,9 +152,4 @@ void BusquedaCanalDelegate::s_editTextChanged(const QString &cod) {
     semaforo = FALSE;
     _depura("END BusquedaCanalDelegate::s_editTextChanged", 0);
 }
-
-
-
-
-
 

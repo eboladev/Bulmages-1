@@ -20,25 +20,26 @@
 
 #include "busquedafecha.h"
 #include "funcaux.h"
- #include <QCalendarWidget>
+#include <QCalendarWidget>
+
 
 void BusquedaFecha::setfecha(QString val) {
-    m_fecha->setText(val);
+    mui_textoFecha->setText(val);
 }
 
 
 void BusquedaFecha::setText(QString val) {
-    m_fecha->setText(val);
+    mui_textoFecha->setText(val);
 }
 
 
 QString BusquedaFecha::fecha() {
-    return m_fecha->text();
+    return mui_textoFecha->text();
 }
 
 
 QString BusquedaFecha::text() {
-    return m_fecha->text();
+    return mui_textoFecha->text();
 }
 
 
@@ -49,12 +50,12 @@ void BusquedaFecha::s_returnPressed() {
 
 
 void BusquedaFecha::selectAll() {
-    m_fecha->selectAll();
+    mui_textoFecha->selectAll();
 }
 
 
 void BusquedaFecha::setFocus() {
-    m_fecha->setFocus();
+    mui_textoFecha->setFocus();
 }
 
 
@@ -63,12 +64,13 @@ void BusquedaFecha::setFocus() {
 BusquedaFecha::BusquedaFecha(QWidget *parent) : QWidget(parent) {
     _depura("BusquedaFecha::BusquedaFecha", 0);
     setupUi(this);
-    QObject::connect(m_searchcliente, SIGNAL(clicked(bool)), this, SLOT(s_searchFecha()));
-    QObject::connect(m_fecha, SIGNAL(returnPressed()), this, SLOT(s_returnPressed()));
-    QObject::connect(m_fecha, SIGNAL(editingFinished()), this, SLOT(s_fechalostFocus()));
-    QObject::connect(m_fecha, SIGNAL(editingFinished()), this, SIGNAL(editingFinished()));
+    QObject::connect(mui_busquedaFecha, SIGNAL(clicked(bool)), this, SLOT(s_searchFecha()));
+    QObject::connect(mui_textoFecha, SIGNAL(returnPressed()), this, SLOT(s_returnPressed()));
+    QObject::connect(mui_textoFecha, SIGNAL(editingFinished()), this, SLOT(s_fechalostFocus()));
+    QObject::connect(mui_textoFecha, SIGNAL(editingFinished()), this, SIGNAL(editingFinished()));
     _depura("BusquedaFecha::BusquedaFecha", 0);
 }
+
 
 /** No requiere de acciones especiales en el destructor.
 */
@@ -84,7 +86,7 @@ void BusquedaFecha::s_searchFecha() {
     QDialog *diag = new QDialog(0);
     diag->setModal(true);
     QCalendarWidget *calend = new QCalendarWidget( diag);
-    connect(calend, SIGNAL(activated ( const QDate & )), diag, SLOT(accept()));
+    connect(calend, SIGNAL(activated(const QDate &)), diag, SLOT(accept()));
 
     /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
     /// para que sea redimensionable y aparezca el titulo de la ventana.
@@ -96,12 +98,12 @@ void BusquedaFecha::s_searchFecha() {
     diag->setWindowTitle("Seleccione Fecha");
     diag->exec();
 
-    m_fecha->setText(calend->selectedDate().toString("dd/MM/yyyy"));
+    mui_textoFecha->setText(calend->selectedDate().toString("dd/MM/yyyy"));
 
     delete calend;
     delete diag;
 
-    emit(valueChanged(m_fecha->text()));
+    emit(valueChanged(mui_textoFecha->text()));
     _depura("END BusquedaFecha::s_searchFecha", 0);
 }
 
@@ -111,20 +113,20 @@ void BusquedaFecha::s_fechatextChanged(const QString &texto) {
     if (texto == "+")
         s_searchFecha();
     if (texto == "*")
-        m_fecha->setText(QDate::currentDate().toString("dd/MM/yyyy"));
-    m_fecha->setText(normalizafecha(texto).toString("dd/MM/yyyy"));
+        mui_textoFecha->setText(QDate::currentDate().toString("dd/MM/yyyy"));
+    mui_textoFecha->setText(normalizafecha(texto).toString("dd/MM/yyyy"));
     if (texto == "") {
-        m_fecha->setText("");
+        mui_textoFecha->setText("");
         return;
     } // end if
-    emit(valueChanged(m_fecha->text()));
+    emit(valueChanged(mui_textoFecha->text()));
     _depura("END BusquedaFecha::s_fechatextChanged", 0);
 }
 
 
 void BusquedaFecha::s_fechalostFocus() {
     _depura("BusquedaFecha::s_fechalostFocus", 0);
-    QString fech = m_fecha->text();
+    QString fech = mui_textoFecha->text();
     if (fech != "")
         s_fechatextChanged(fech);
     _depura("END BusquedaFecha::s_fechalostFocus", 0);

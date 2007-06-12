@@ -32,9 +32,16 @@ canalview::canalview(empresa *emp, QWidget *parent)
     conexionbase = empresaactual->bdempresa();
     mui_idcanal->setcompany(emp);
     mui_idcanal->setidcanal("0");
+
+    m_nomcanal = new QLineEdit();
+    m_nomcanal->setText("");
+    m_desccanal = new QTextEdit();
+    m_desccanal->setPlainText("");
+
     idcanal = 0;
+    dialogChanges_setQObjectExcluido(mui_idcanal);
     dialogChanges_cargaInicial();
-    pintar();
+    on_mui_idcanal_valueChanged(0);
     empresaactual->meteWindow(windowTitle(), this);
     _depura("END canalview::canalview", 0);
 }
@@ -51,6 +58,9 @@ void canalview::pintar() {
     _depura("canalview::pintar", 0);
     /// Si el combocoste no esta vacio se muestra el registro que contiene.
     if (idcanal != 0) {
+        /// Habilita los campos para ser editados.
+        mui_nomcanal->setEnabled(TRUE);
+        mui_desccanal->setEnabled(TRUE);
         mostrarplantilla();
     } else {
         idcanal = mui_idcanal->idcanal().toInt();
@@ -68,13 +78,32 @@ void canalview::pintar() {
 void canalview::on_mui_idcanal_valueChanged(QString numcombo) {
     _depura("canalview::on_mui_idcanal_valueChanged", 0);
     int idcanal1 = numcombo.toInt();
-    if (dialogChanges_hayCambios()) {
+    static bool flipflop = FALSE;
+
+    if (dialogChanges_hayCambios() && flipflop) {
         if (QMessageBox::warning(this,
                                  tr("Guardar canal"),
                                  tr("Desea guardar los cambios."),
                                  tr("&Guardar"), tr("&Cancelar"), 0 , 0, 1) == 0)
             on_mui_guardar_clicked();
     } // end if
+
+    /// Comprueba que el ID del 'combobox' este en la primera posicion '--' y deshabilita los
+    /// campos de texto.
+    if (idcanal1 == 0) {
+        mui_nomcanal->setText("");
+        mui_nomcanal->setEnabled(FALSE);
+        mui_desccanal->setPlainText("");
+        mui_desccanal->setEnabled(FALSE);
+        flipflop = FALSE;
+        return;
+    } else {
+        /// Habilita los campos para ser editados.
+        mui_nomcanal->setEnabled(TRUE);
+        mui_desccanal->setEnabled(TRUE);
+    } // end if
+
+    flipflop = TRUE;
     idcanal = idcanal1;
     mostrarplantilla();
     _depura("END canalview::on_mui_idcanal_valueChanged", 0);
@@ -85,11 +114,11 @@ void canalview::on_mui_idcanal_valueChanged(QString numcombo) {
 void canalview::mostrarplantilla() {
     _depura("canalview::mostrarplantilla", 0);
     QString query;
-    query.sprintf("SELECT * from canal WHERE idcanal = %d", idcanal);
+    QTextStream(&query) << "SELECT * from canal WHERE idcanal = '" << idcanal << "'";
     cursor2 *cursorcanal = conexionbase->cargacursor(query);
     if (!cursorcanal->eof()) {
-        nomcanal->setText(cursorcanal->valor("nombre"));
-        desccanal->setPlainText(cursorcanal->valor("descripcion"));
+        mui_nomcanal->setText(cursorcanal->valor("nombre"));
+        mui_desccanal->setPlainText(cursorcanal->valor("descripcion"));
     } // end if
     mui_idcanal->setidcanal(QString::number(idcanal));
     dialogChanges_cargaInicial();
@@ -100,13 +129,14 @@ void canalview::mostrarplantilla() {
 
 void canalview::on_mui_guardar_clicked() {
     _depura("canalview::on_mui_guardar_clicked", 0);
-    QString nom = nomcanal->text();
-    QString desc = desccanal->toPlainText();
+    QString nom = mui_nomcanal->text();
+    QString desc = mui_desccanal->toPlainText();
     QString query;
-    query.sprintf ("UPDATE canal SET nombre ='%s', descripcion = '%s' WHERE idcanal = %d",
-                   conexionbase->sanearCadena(nom).toAscii().constData(),
-                   conexionbase->sanearCadena(desc).toAscii().constData(),
-                   idcanal);
+    QTextStream(&query) << "UPDATE canal SET nombre = '"
+                        << conexionbase->sanearCadena(nom).toAscii().constData()
+                        << "', descripcion = '"
+                        << conexionbase->sanearCadena(desc).toAscii().constData()
+                        << "' WHERE idcanal = '" << idcanal << "'";
     conexionbase->ejecuta(query);
     dialogChanges_cargaInicial();
     pintar();
@@ -124,11 +154,12 @@ void canalview::on_mui_crear_clicked() {
                                  tr("&Guardar"), tr("&Cancelar"), 0 , 0, 1) == 0)
             on_mui_guardar_clicked();
     } // end if
-    QString query;
-    query.sprintf("INSERT INTO canal (nombre, descripcion) VALUES ('Nuevo Canal', 'Escriba su descripcion')");
+    QString query = "";
+    QTextStream(&query) << "INSERT INTO canal (nombre, descripcion) VALUES ('" << tr("Nuevo canal") << "', '" << tr("Escriba su descripcion") << "')";
     conexionbase->begin();
     conexionbase->ejecuta(query);
-    query.sprintf("SELECT MAX(idcanal) AS id FROM canal");
+    query = "";
+    QTextStream(&query) << "SELECT MAX(idcanal) AS id FROM canal";
     cursor2 *cur = conexionbase->cargacursor(query, "queryy");
     idcanal = atoi(cur->valor("id").toAscii());
     delete cur;
@@ -142,8 +173,7 @@ void canalview::on_mui_borrar_clicked() {
     _depura("canalview::on_mui_borrar_clicked", 0);
     switch (QMessageBox::warning(this,
                                  tr("Borrar canal"),
-                                 tr("Se va a borrar la forma de pago,\n \
-                                    Esto puede ocasionar perdida de datos\n"),
+                                 tr("Se va a borrar este canal.\nEsto puede ocasionar perdida de datos."),
                                  tr("&Borrar"), tr("&Cancelar"), 0 , 0, 1)) {
     case 0: /// Retry clicked or Enter pressed.
         QString query;
@@ -160,7 +190,7 @@ void canalview::on_mui_borrar_clicked() {
 
 void canalview::closeEvent(QCloseEvent *e) {
     _depura("ccosteview::closeEvent", 0);
-    if (dialogChanges_hayCambios())	{
+    if (dialogChanges_hayCambios()) {
         int val = QMessageBox::warning(this,
                                        tr("Guardar canal"),
                                        tr("Desea guardar los cambios?"),

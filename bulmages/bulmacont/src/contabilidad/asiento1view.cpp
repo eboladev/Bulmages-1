@@ -154,20 +154,20 @@ void Asiento1View::iniciar_asiento_nuevo(QString nuevoordenasiento) {
     try {
         /// TRATAMIENTO DE BASE DE DATOS.
         QString idasiento, ordenasiento, query;
-	QString fecha = mui_fecha->text();
-	cursor2 *cur;
-	empresaBase()->begin();
+        QString fecha = mui_fecha->text();
+        cursor2 *cur;
+        empresaBase()->begin();
         if (nuevoordenasiento == "") {
-		QString query = "SELECT MAX(ordenasiento)+1 AS orden FROM asiento WHERE EXTRACT(YEAR FROM fecha) = '" + fecha.left(10).right(4) + "'";
-   		cur = empresaBase()->cargacursor(query);
-                ordenasiento = cur->valor("orden");
-        	delete cur;
+            QString query = "SELECT COALESCE(MAX(ordenasiento) + 1, 1) AS orden FROM asiento WHERE EXTRACT(YEAR FROM fecha) = '" + fecha.left(10).right(4) + "'";
+            cur = empresaBase()->cargacursor(query);
+            ordenasiento = cur->valor("orden");
+            delete cur;
         } else {
-                ordenasiento = nuevoordenasiento;
+            ordenasiento = nuevoordenasiento;
         } // end if
 
         /// Creamos el asiento en la base de datos.
-        query = "SELECT MAX(idasiento)+1 AS id FROM asiento";
+        query = "SELECT COALESCE(MAX(idasiento) + 1, 1) AS id FROM asiento";
         cur = empresaBase()->cargacursor(query);
         if (!cur->eof())
             idasiento = cur->valor("id");
@@ -175,8 +175,8 @@ void Asiento1View::iniciar_asiento_nuevo(QString nuevoordenasiento) {
         //empresaBase()->commit();
         query = "INSERT INTO asiento (idasiento, fecha, ordenasiento) VALUES (" + idasiento + ", '" + empresaBase()->sanearCadena(fecha) + "', " + ordenasiento + ")";
         empresaBase()->ejecuta(query);
-	empresaBase()->commit();
-	/// FIN TRATAMIENTO DE BASE DE DATOS.
+        empresaBase()->commit();
+        /// FIN TRATAMIENTO DE BASE DE DATOS.
         cargaasientos();
         muestraasiento(idasiento.toInt());
         abrir();
@@ -291,8 +291,8 @@ void Asiento1View::prepguardar() {
 }
 
 void Asiento1View::on_mui_borrar_clicked() {
-	bool atendido = TRUE; // asumimos que habra que atender al dialogo de confirmacion de borrado
-	on_mui_borrar_clicked(atendido);
+    bool atendido = TRUE; // asumimos que habra que atender al dialogo de confirmacion de borrado
+    on_mui_borrar_clicked(atendido);
 }
 
 void Asiento1View::on_mui_borrar_clicked(bool atendido) {

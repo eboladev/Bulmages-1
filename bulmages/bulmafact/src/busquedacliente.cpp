@@ -23,6 +23,7 @@
 #include "company.h"
 #include "funcaux.h"
 
+
 /** Inicializa la clase poniendo a NULL todos los valores para que no haya confusion
     en el hecho de que la clase aun no ha sido completamente inicializada.
 */
@@ -30,6 +31,10 @@ BusquedaCliente::BusquedaCliente(QWidget *parent)
         : BLWidget(parent) {
     _depura("BusquedaCliente::BusquedaCliente", 0);
     setupUi(this);
+    /// Establecemos los Buddies:
+    mui_labelCliente->setText(tr("Clien&te"));
+    mui_labelCliente->setBuddy(mui_buscar);
+
     mdb_idcliente = "";
     mdb_nomcliente = "";
     mdb_cifcliente = "";

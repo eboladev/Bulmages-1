@@ -1,7 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org						   *
+ *   http://www.iglues.org                         *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -52,21 +52,24 @@ FacturaView::FacturaView(company *comp, QWidget *parent)
     setAttribute(Qt::WA_DeleteOnClose);
     try {
         setupUi(this);
+        /// Establecemos algunos Buddies.
+        mui_labelAlmacen->setText(tr("Al&macen"));
+        mui_labelAlmacen->setBuddy(m_almacen);
 
         /// Disparamos los plugins.
         int res = g_plugins->lanza("FacturaView_FacturaView", this);
-        if (res != 0)
+        if (res != 0) {
             return;
-
+        } // end if
         subform2->setEmpresaBase(comp);
         m_almacen->setEmpresaBase(comp);
-	m_almacen->setidalmacen("");
+        m_almacen->setidalmacen("");
         m_forma_pago->setEmpresaBase(comp);
-	m_forma_pago->setidforma_pago("");
+        m_forma_pago->setidforma_pago("");
         m_cliente->setEmpresaBase(comp);
         m_descuentos->setEmpresaBase(comp);
         m_codigoserie_factura->setEmpresaBase(comp);
-	m_codigoserie_factura->setcodigoserie_factura("");
+        m_codigoserie_factura->setcodigoserie_factura("");
         m_reffactura->setEmpresaBase(comp);
 
         /// Inicializamos FichaBf

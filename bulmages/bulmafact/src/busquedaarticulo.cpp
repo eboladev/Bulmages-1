@@ -23,9 +23,9 @@
 #include "company.h"
 #include "funcaux.h"
 
+
 /** Inicializa todos los componentes a null para que no haya posibles
-    errores al introducir el puntero a company.
-*/
+    errores al introducir el puntero a company. */
 BusquedaArticulo::BusquedaArticulo(QWidget *parent)
         : QWidget(parent), PEmpresaBase() {
     _depura("BusquedaArticulo::BusquedaArticulo", 0);
@@ -68,6 +68,7 @@ void BusquedaArticulo::setidarticulo(QString val) {
     m_nomarticulo->setText(mdb_nomarticulo);
     _depura("END BusquedaArticulo::setidarticulo", 0);
 }
+
 
 /** Con este metodo indicamos cual es el articulo que debe presentar el Widget
     como seleccionado, indicando cual es su codigocompleto ya que es un indice
@@ -150,18 +151,19 @@ void BusquedaArticulo::on_m_codigocompletoarticulo_textChanged(const QString &va
 }
 
 
-
 QString BusquedaArticulo::codigocompletoarticulo() {
     _depura("BusquedaArticulo::codigocompletoarticulo", 0);
     _depura("END BusquedaArticulo::codigocompletoarticulo", 0);
     return m_codigocompletoarticulo->text();
 }
 
+
 QString BusquedaArticulo::idarticulo() {
     _depura("BusquedaArticulo::idarticulo", 0);
     _depura("END BusquedaArticulo::idarticulo", 0);
     return mdb_idarticulo;
 }
+
 
 QString BusquedaArticulo::nomarticulo() {
     _depura("BusquedaArticulo::nomarticulo", 0);
@@ -170,11 +172,11 @@ QString BusquedaArticulo::nomarticulo() {
 }
 
 
-// ==================================================================0
-// Busqueda Articulo Delegate para usar con los subforms
-// ===================================================================
+/// ===================================================================
+/// Busqueda Articulo Delegate para usar con los subforms
+/// ===================================================================
 /** Inicializa todos los componentes del Widget a NULL para que no haya posibles confusiones
-    sobre si un elemento ha sido creado o no. 
+    sobre si un elemento ha sido creado o no.
     Conecta el SIGNAL activated() con m_activated() para tratarlo.
 */
 BusquedaArticuloDelegate::BusquedaArticuloDelegate(QWidget *parent)
@@ -182,16 +184,13 @@ BusquedaArticuloDelegate::BusquedaArticuloDelegate(QWidget *parent)
     _depura("BusquedaArticuloDelegate::BusquedaArticuloDelegate", 0);
     m_cursorcombo = NULL;
     setEditable(true);
-    setSizeAdjustPolicy(QComboBox::AdjustToContents);
-    //    setCompleter(0);
     connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
     connect(this, SIGNAL(editTextChanged(const QString &)), this, SLOT(s_editTextChanged(const QString &)));
     _depura("END BusquedaArticuloDelegate::BusquedaArticuloDelegate", 0);
 }
 
 
-/** Libera la memoria reservada.
-*/
+/** Libera la memoria reservada. */
 BusquedaArticuloDelegate::~BusquedaArticuloDelegate() {
     _depura("BusquedaArticuloDelegate::~BusquedaArticuloDelegate", 0);
     _depura("END BusquedaArticuloDelegate::~BusquedaArticuloDelegate", 0);
@@ -207,31 +206,28 @@ void BusquedaArticuloDelegate::s_editTextChanged(const QString &cod) {
     static bool semaforo = FALSE;
     QString codigo = cod;
 
-    if (codigo.size() < 3)
+    if (codigo.size() < 3) {
         return;
+    } // end if
 
     if (semaforo) {
         return;
     } else  {
         semaforo = TRUE;
-    }
-
-
+    } // end if
 
     codigo = codigo.left(codigo.indexOf(".-"));
-
 
     m_cursorcombo = empresaBase()->cargacursor("SELECT codigocompletoarticulo, nomarticulo FROM articulo WHERE codigocompletoarticulo LIKE '"+codigo+"%' ORDER BY codigocompletoarticulo LIMIT 25");
     clear();
     while (!m_cursorcombo->eof()) {
         addItem(m_cursorcombo->valor("codigocompletoarticulo") + ".-" + m_cursorcombo->valor("nomarticulo"));
         m_cursorcombo->siguienteregistro();
-    }
+    } // end while
     delete m_cursorcombo;
     setEditText(cod);
     //    showPopup();
     semaforo = FALSE;
     _depura("END BusquedaArticuloDelegate::s_editTextChanged", 0);
 }
-
 

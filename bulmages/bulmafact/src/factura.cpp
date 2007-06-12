@@ -153,18 +153,18 @@ int Factura::cargar(QString idbudget) {
     Despues guarda las lineas y descuentos.
     Al finalizar el guardado hace un cargar para repintar todos los elementos.
     Si todo va bien devuelve 0
-    Si se produce un error genera una excepcion -1
-*/
+    Si se produce un error genera una excepcion -1 */
 int Factura::guardar() {
     _depura("Factura::guardar", 0);
     QString fecha;
     try {
         /// Calculamos el proximo numero de factura para poder insertarlo en caso de que este sea nulo.
         if (DBvalue("numfactura") == "") {
-            QString SQLQueryn = "SELECT MAX(numfactura) + 1 AS num FROM factura WHERE codigoserie_factura = '" + DBvalue("codigoserie_factura") + "'";
+            QString SQLQueryn = "SELECT COALESCE(MAX(numfactura) + 1, 1) AS num FROM factura WHERE codigoserie_factura = '" + DBvalue("codigoserie_factura") + "'";
             cursor2 *cur = empresaBase()->cargacursor(SQLQueryn);
-            if (!cur->eof())
+            if (!cur->eof()) {
                 setDBvalue("numfactura", cur->valor("num"));
+            } // end if
             pintaNumFactura(DBvalue("numfactura"));
             delete cur;
         } // end if
@@ -176,8 +176,8 @@ int Factura::guardar() {
         m_listadescuentos->guardar();
         empresaBase()->commit();
 
-    /// Hacemos una carga para recuperar datos como la referencia
-    cargar(id);
+        /// Hacemos una carga para recuperar datos como la referencia
+        cargar(id);
 
         _depura("END Factura::guardar", 0);
         return 0;

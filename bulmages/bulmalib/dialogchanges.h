@@ -36,17 +36,21 @@ private:
     int m_maxQLine;
     int m_maxQText;
     int m_maxQTable;
+    int m_maxQComboBox;
     QString valorinicial;
     QObject *m_obje;
     QObject *m_listaQLine[999];
     QObject *m_listaQText[999];
     QObject *m_listaQTable[999];
+    QObject *m_listaQComboBox[999];
+    QList<QObject*> m_listaExcluidos;
 
 public:
     dialogChanges(QObject *ob);
     ~dialogChanges();
     void dialogChanges_cargaInicial();
     bool dialogChanges_hayCambios();
+    void dialogChanges_setQObjectExcluido(QObject *objetoexcluido);
 
 private:
     QString calculateValues();

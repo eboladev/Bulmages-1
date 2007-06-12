@@ -67,7 +67,6 @@ ListAlmacenView::~ListAlmacenView() {
 }
 
 
-
 /// ===================================== SUBFORMULARIO ===============================================
 ListAlmacenSubForm::ListAlmacenSubForm(QWidget *parent) : SubForm2Bf(parent) {
     setDBTableName("almacen");
@@ -78,6 +77,7 @@ ListAlmacenSubForm::ListAlmacenSubForm(QWidget *parent) : SubForm2Bf(parent) {
     setinsercion(TRUE);
 }
 
+
 void ListAlmacenSubForm::cargar() {
         _depura("ListAlmacenSubForm::cargar", 0);
         cursor2 * cur= empresaBase()->cargacursor("SELECT * FROM almacen");
@@ -85,3 +85,4 @@ void ListAlmacenSubForm::cargar() {
         delete cur;
         _depura("END ListAlmacenSubForm::cargar", 0);
 }
+

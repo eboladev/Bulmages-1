@@ -26,6 +26,7 @@
 #include <QComboBox>
 #include <QLineEdit>
 #include <QCloseEvent>
+#include <QTextStream>
 
 #include "ui_canalbase.h"
 #include "postgresiface2.h"
@@ -39,10 +40,15 @@ class empresa;
 class canalview : public Ficha, public Ui_canaldlg {
     Q_OBJECT
 
+private:
+    QLineEdit *m_nomcanal;
+    QTextEdit *m_desccanal;
+
 public:
     postgresiface2 *conexionbase;
     int canales[100];
-    int idcanal; /// Indica cual es el canal que se esta visualizando.
+    /// Indica cual es el canal que se esta visualizando.
+    int idcanal;
     /// Si su valor es 0 entonces es que no se esta visualizando ningun centro de coste.
     empresa *empresaactual;
 
@@ -51,12 +57,12 @@ public:
     ~canalview();
     void mostrarplantilla();
     void pintar();
+    void on_mui_borrar_clicked();
 
 public slots:
     virtual void on_mui_idcanal_valueChanged(QString);
     virtual void on_mui_guardar_clicked();
     virtual void on_mui_crear_clicked();
-    virtual void on_mui_borrar_clicked();
     virtual void closeEvent(QCloseEvent *);
 };
 
