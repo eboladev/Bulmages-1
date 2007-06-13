@@ -365,3 +365,11 @@ void mensajeError(QString cad) {
                              QString::null, 0);
 }
 
+
+void centrarEnPantalla(QWidget *ventana) {
+    QRect rect;
+    QDesktopWidget *escritorio = new QDesktopWidget();
+    rect = escritorio->availableGeometry();
+    ventana->move (rect.center() - ventana->rect().center());
+}
+

@@ -25,7 +25,7 @@
 
 BusquedaCuenta::BusquedaCuenta(QWidget *parent)
         : QWidget(parent) {
-    _depura("BusquedaCuenta::BusquedaCuenta", 10);
+    _depura("BusquedaCuenta::BusquedaCuenta", 0);
     setupUi(this);
     m_companyact = NULL;
     mdb_idcuenta = "";
@@ -45,6 +45,11 @@ BusquedaCuenta::~BusquedaCuenta() {
 
 QString BusquedaCuenta::text() {
     return mdb_codigocuenta;
+}
+
+
+empresa *BusquedaCuenta::_empresa() {
+    return m_companyact;
 }
 
 

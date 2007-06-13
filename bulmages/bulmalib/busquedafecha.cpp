@@ -18,9 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <QCalendarWidget>
+
 #include "busquedafecha.h"
 #include "funcaux.h"
-#include <QCalendarWidget>
 
 
 void BusquedaFecha::setfecha(QString val) {
@@ -55,7 +56,7 @@ void BusquedaFecha::selectAll() {
 
 
 void BusquedaFecha::setFocus() {
-    mui_textoFecha->setFocus();
+    mui_textoFecha->setFocus(Qt::OtherFocusReason);
 }
 
 
@@ -85,7 +86,9 @@ void BusquedaFecha::s_searchFecha() {
 
     QDialog *diag = new QDialog(0);
     diag->setModal(true);
-    QCalendarWidget *calend = new QCalendarWidget( diag);
+    QCalendarWidget *calend = new QCalendarWidget(diag);
+    /// Se pone el 1er dia del calendario a lunes.
+    calend->setFirstDayOfWeek(Qt::Monday);
     connect(calend, SIGNAL(activated(const QDate &)), diag, SLOT(accept()));
 
     /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
@@ -95,7 +98,7 @@ void BusquedaFecha::s_searchFecha() {
     layout->setMargin(0);
     layout->setSpacing(0);
     diag->setLayout(layout);
-    diag->setWindowTitle("Seleccione Fecha");
+    diag->setWindowTitle(tr("Seleccione fecha"));
     diag->exec();
 
     mui_textoFecha->setText(calend->selectedDate().toString("dd/MM/yyyy"));

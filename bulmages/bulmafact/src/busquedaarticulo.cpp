@@ -180,7 +180,7 @@ QString BusquedaArticulo::nomarticulo() {
     Conecta el SIGNAL activated() con m_activated() para tratarlo.
 */
 BusquedaArticuloDelegate::BusquedaArticuloDelegate(QWidget *parent)
-        : QComboBox(parent) , PEmpresaBase() {
+        : QComboBox(parent), PEmpresaBase() {
     _depura("BusquedaArticuloDelegate::BusquedaArticuloDelegate", 0);
     m_cursorcombo = NULL;
     setEditable(true);

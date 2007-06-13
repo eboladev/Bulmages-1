@@ -30,7 +30,7 @@
 
 
 class QDoubleSpinBox2 : public QDoubleSpinBox {
-Q_OBJECT
+    Q_OBJECT
 
 public:
     QDoubleSpinBox2(QWidget *parent = 0);

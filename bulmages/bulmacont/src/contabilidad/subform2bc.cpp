@@ -24,7 +24,6 @@
 #include <QEvent>
 #include <QLocale>
 
-
 #include "subform2bc.h"
 #include "funcaux.h"
 #include "empresa.h"
@@ -65,11 +64,13 @@ void SubForm2Bc::setEmpresaBase(EmpresaBase *c) {
     _depura("END SubForm2Bc::setEmpresaBase", 0);
 }
 
+
 empresa *SubForm2Bc::empresaBase() {
     _depura("SubForm2Bc::empresaBase", 0);
     _depura("END SubForm2Bc::empresaBase", 0);
     return (empresa *) PEmpresaBase::empresaBase();
 }
+
 
 void SubForm2Bc::on_mui_list_pressedAsterisk(int row, int col) {
     _depura ("SubForm2Bc::on_mui_list_pressedAsterisk", 0);
@@ -79,8 +80,7 @@ void SubForm2Bc::on_mui_list_pressedAsterisk(int row, int col) {
     if (camp->nomcampo() != "codigo" && camp->nomcampo() != "codigoctacliente")
         return;
 
-
-    // Nos llevamos el foco para que no haya un EditorDelegado que no se actualice bien.
+    /// Nos llevamos el foco para que no haya un EditorDelegado que no se actualice bien.
     mui_list->setCurrentCell(row, col +1);
     QDialog *diag = new QDialog(0);
     diag->setModal(true);
@@ -103,16 +103,16 @@ void SubForm2Bc::on_mui_list_pressedAsterisk(int row, int col) {
                 rec->setDBvalue("codigo", cur->valor("codigo"));
                 rec->setDBvalue("tipocuenta", cur->valor("tipocuenta"));
                 rec->setDBvalue("descripcion", cur->valor("descripcion"));
-		/// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
-		on_mui_list_editFinished(row, col, Qt::Key_Return);
+                /// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
+                on_mui_list_editFinished(row, col, Qt::Key_Return);
             } // end if
             if (camp->nomcampo() == "codigoctacliente") {
                 rec->setDBvalue("idctacliente", cur->valor("idcuenta"));
                 rec->setDBvalue("codigoctacliente", cur->valor("codigo"));
                 rec->setDBvalue("tipoctacliente", cur->valor("tipocuenta"));
                 rec->setDBvalue("nomctacliente", cur->valor("descripcion"));
-		/// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
-		on_mui_list_editFinished(row, col, Qt::Key_Return);
+                /// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
+                on_mui_list_editFinished(row, col, Qt::Key_Return);
             } // end if
         } // end if
         delete cur;
@@ -149,7 +149,7 @@ void SubForm2Bc::on_mui_list_editFinished(int row, int col, int key) {
 
 
     /// Si el campo no ha sido cambiado se sale.
-    if ( ! camp->cambiado() ) {
+    if (!camp->cambiado()) {
         SubForm3::on_mui_list_editFinished(row, col, key);
         return;
     } // end if
@@ -157,7 +157,7 @@ void SubForm2Bc::on_mui_list_editFinished(int row, int col, int key) {
 
     if (camp->nomcampo() == "codigo" && camp->text() != "*") {
         QString codigoext = extiendecodigo(camp->text(), ((empresa *) empresaBase())->numdigitosempresa());
-	QString query = "SELECT * FROM cuenta WHERE codigo = '" + codigoext + "'";
+        QString query = "SELECT * FROM cuenta WHERE codigo = '" + codigoext + "'";
         cursor2 *cur = empresaBase()->cargacursor(query);
         if (!cur->eof() ) {
             rec->setDBvalue("idcuenta", cur->valor("idcuenta"));
@@ -166,9 +166,9 @@ void SubForm2Bc::on_mui_list_editFinished(int row, int col, int key) {
             rec->setDBvalue("descripcioncuenta", cur->valor("descripcion"));
             delete cur;
         } else {
-		_depura("No existe cuenta", 2);
-		delete cur;
-		return;
+            _depura("No existe cuenta", 2);
+            delete cur;
+            return;
         } // end if
     } // end if
     if (camp->nomcampo() == "nomcanal") {
@@ -189,7 +189,7 @@ void SubForm2Bc::on_mui_list_editFinished(int row, int col, int key) {
     } // end if
     if (camp->nomcampo() == "fecha") {
         QString nfecha = normalizafecha( camp->text()).toString("dd/MM/yyyy");
-        rec->setDBvalue( "fecha", nfecha);
+        rec->setDBvalue("fecha", nfecha);
     } // end if
     SubForm3::on_mui_list_editFinished(row, col, key);
     g_plugins->lanza("SubForm2Bc_editFinished_post", this);
@@ -498,7 +498,7 @@ void QSubForm2BcDelegate::setEditorData(QWidget *editor, const QModelIndex &inde
         QString value = index.model()->data(index, Qt::DisplayRole).toString();
         BusquedaFecha *comboBox = static_cast<BusquedaFecha*>(editor);
         comboBox->setText(value);
-        comboBox->m_fecha->selectAll();
+        comboBox->mui_textoFecha->selectAll();
     } else {
         QItemDelegate::setEditorData(editor, index);
     } // end if

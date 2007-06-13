@@ -1,7 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org -- BulmaFact Facturación GPL                    *
+ *   http://www.iglues.org -- BulmaFact Facturacion GPL                    *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -120,12 +120,10 @@ void SubForm2Bf::on_mui_list_editFinished(int row, int col, int key) {
     cursor2 *cur = NULL;
     cursor2 *cur1 = NULL;
 
-
     /// Disparamos los plugins.
     int res = g_plugins->lanza("SubForm2Bf_on_mui_list_editFinished", this);
     if (res != 0)
         return;
-
 
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row, col);
@@ -138,14 +136,14 @@ void SubForm2Bf::on_mui_list_editFinished(int row, int col, int key) {
     } // end if
 
     if (camp->nomcampo() == "desctipo_iva") {
-        cur = empresaBase()->cargacursor("SELECT * FROM tipo_iva WHERE desctipo_iva = '"+camp->text()+"'");
+        cur = empresaBase()->cargacursor("SELECT * FROM tipo_iva WHERE desctipo_iva = '" + camp->text() + "'");
         if (!cur->eof()) {
             rec->setDBvalue("idtipo_iva", cur->valor("idtipo_iva"));
         } // end if
     } // end if
 
     if (camp->nomcampo() == "nomtrabajador") {
-        cur = empresaBase()->cargacursor("SELECT * FROM trabajador WHERE apellidostrabajador ||', '||nomtrabajador = '"+camp->text()+"'");
+        cur = empresaBase()->cargacursor("SELECT * FROM trabajador WHERE apellidostrabajador ||', '||nomtrabajador = '" + camp->text() + "'");
         if (!cur->eof()) {
             rec->setDBvalue("idtrabajador", cur->valor("idtrabajador"));
         } // end if
@@ -169,16 +167,16 @@ void SubForm2Bf::on_mui_list_editFinished(int row, int col, int key) {
                 rec->setDBvalue("descuento"+m_tablename, "0.00");
                 rec->setDBvalue("pvp"+m_tablename, cur->valor("pvparticulo"));
             } // end if
-	} else {
-		mensajeAviso(tr("Articulo inexistente"));
-		delete cur;
-		return;
-        } // end if
+    } else {
+        mensajeAviso(tr("Articulo inexistente"));
+        delete cur;
+        return;
+    } // end if
 
 
         cur1 = empresaBase()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor("idtipo_iva") + " ORDER BY fechatasa_iva LIMIT 1");
         if (!cur->eof() ) {
-            if(m_tablename == "lpresupuesto"
+            if (m_tablename == "lpresupuesto"
                     || m_tablename == "lpedidocliente"
                     || m_tablename == "lpedidoproveedor"
                     || m_tablename == "lalbaranp"
@@ -186,7 +184,6 @@ void SubForm2Bf::on_mui_list_editFinished(int row, int col, int key) {
                     || m_tablename == "lalbaran"
                     || m_tablename == "lfactura") {
                 rec->setDBvalue("iva"+m_tablename, cur1->valor("porcentasa_iva"));
-
 
                 /// Calculamos el recargo equivalente.
                 if (mdb_idcliente != "") {
@@ -200,8 +197,6 @@ void SubForm2Bf::on_mui_list_editFinished(int row, int col, int key) {
                 } else {
                     rec->setDBvalue("reqeq"+m_tablename, "0");
                 } // end if
-
-
 
                 if (mdb_idproveedor != "") {
                     cur2 = empresaBase()->cargacursor("SELECT recargoeqproveedor FROM proveedor WHERE idproveedor="+mdb_idproveedor);
@@ -323,8 +318,8 @@ void SubForm2Bf::setIdProveedor(QString id) {
     _depura("SubForm2Bf::setIdProveedor", 0, id);
     mdb_idproveedor = id;
 
-    if (mdb_idproveedor == "") 
-	return;
+    if (mdb_idproveedor == "")
+    return;
 
     /// Reseteamos los valores
     for (int i = 0; i < rowCount() - 1; i++) {
@@ -358,13 +353,13 @@ void SubForm2Bf::setIdProveedor(QString id) {
     _depura("END SubForm2Bf::setIdProveedor", 0);
 }
 
+
 void SubForm2Bf::setEmpresaBase(EmpresaBase *c) {
     _depura("SubForm2Bf::setcompany", 0);
     SubForm3::setEmpresaBase(c);
     m_delegate->setEmpresaBase(c);
     _depura("END SubForm2Bf::setcompany", 0);
 }
-
 
 
 void SubForm2Bf::setDelete(bool f) {
@@ -407,7 +402,7 @@ QWidget *QSubForm2BfDelegate::createEditor(QWidget *parent, const QStyleOptionVi
                        || linea->nomcampo() == "pvp" + m_subform->tableName()
                        || linea->nomcampo() == "descuento" + m_subform->tableName()
                        || linea->nomcampo() == "iva" + m_subform->tableName()) {
-         
+
                 QDoubleSpinBox *editor = new QDoubleSpinBox(parent);
                 editor->setMinimum(-1000000);
                 editor->setMaximum(1000000);
@@ -454,14 +449,14 @@ void QSubForm2BfDelegate::setModelData(QWidget *editor, QAbstractItemModel *mode
                        || linea->nomcampo() == "pvp" + m_subform->tableName()
                        || linea->nomcampo() == "descuento" + m_subform->tableName()
                        || linea->nomcampo() == "iva" + m_subform->tableName()   ) {
-         
+
                 QDoubleSpinBox *spinBox = static_cast<QDoubleSpinBox*>(editor);
             // Esto funciona como el culo. con cantidad 1090,89 se va
                 //spinBox->interpretText();
                 QString value = spinBox->text();
                 // value = value.replace(",", ".");
                 model->setData(index, value );
-         
+
         */
 
     } else if (linea->nomcampo() == "codigocompletoarticulo") {
@@ -500,7 +495,7 @@ void QSubForm2BfDelegate::setEditorData(QWidget* editor, const QModelIndex& inde
                        || linea->nomcampo() == "pvp" + m_subform->tableName()
                        || linea->nomcampo() == "descuento" + m_subform->tableName()
                        || linea->nomcampo() == "iva" + m_subform->tableName()   ) {
-         
+
                 QString value = index.model()->data(index, Qt::DisplayRole).toString();
                 QDoubleSpinBox *spinBox = static_cast<QDoubleSpinBox*>(editor);
                 spinBox->setValue(value.toDouble());

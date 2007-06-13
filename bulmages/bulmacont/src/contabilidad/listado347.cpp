@@ -18,13 +18,13 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "listado347.h"
-#include "funcaux.h"
-
 #include <errno.h>
 #include <QLocale>
 #include <QFile>
 #include <QTextStream>
+
+#include "listado347.h"
+#include "funcaux.h"
 
 
 Listado347::Listado347(postgresiface2 *DBconnect, QString ejerActual, QWidget *parent, Qt::WFlags f)
@@ -37,12 +37,14 @@ Listado347::Listado347(postgresiface2 *DBconnect, QString ejerActual, QWidget *p
    DBConn = DBconnect;
    /// Carga las tablas en pantalla.
    on_m_boton_recalcular_clicked();
+   centrarEnPantalla(this);
    _depura("END Listado347::Listado347", 0);
 }
 
 
 Listado347::~Listado347() {
     _depura("Listado347::~Listado347", 0);
+    centrarEnPantalla(this);
 }
 
 

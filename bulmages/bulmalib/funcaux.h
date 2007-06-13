@@ -29,6 +29,7 @@
 
 #include <QDateTime>
 #include <QMessageBox>
+#include <QDesktopWidget>
 
 #include <stdio.h>
 #include <sstream>
@@ -88,6 +89,9 @@ void mensajeError(QString cad);
 /// especificado por CONF_DIR_USER.
 void invocaPDF(const QString arch);
 void generaPDF(const QString arch);
+
+void centrarEnPantalla(QWidget *ventana);
+
 
 #endif
 

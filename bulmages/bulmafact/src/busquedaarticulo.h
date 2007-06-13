@@ -28,8 +28,8 @@
 #include "postgresiface2.h"
 
 #include "ui_busquedaarticulobase.h"
-
 #include "blwidget.h"
+
 
 class company;
 

@@ -38,6 +38,7 @@ QString const QDoubleSpinBox2::text() {
     return a;
 }
 
+
 void QDoubleSpinBox2::setValue(double valor) {
     QDoubleSpinBox::setValue(valor);
 }

@@ -53,8 +53,6 @@ public slots:
 };
 
 
-
-
 class BusquedaCuenta : public QWidget, public Ui_BusquedaCuentaBase {
     Q_OBJECT
 
@@ -70,7 +68,7 @@ public:
     BusquedaCuenta(QWidget *parent = 0);
     ~BusquedaCuenta();
     void setempresa(empresa *comp);
-    empresa *_empresa() {return m_companyact;};
+    empresa *_empresa();
     QString text();
     virtual void setText(QString val);
     virtual QString codigocuenta();
