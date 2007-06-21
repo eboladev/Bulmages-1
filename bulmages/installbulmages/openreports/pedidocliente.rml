@@ -56,6 +56,18 @@
 </blockTable>
 
 <storyPlace x="0cm" y="0cm" width="15cm" height="1cm">
+	<place x="4cm" y="3.5cm" width="15cm" height="2.5cm">
+<blockTable>
+<tr>
+<td align="right">
+	[descuentos]
+</td>
+</tr>
+</blockTable>
+</place>
+</storyPlace>
+
+<storyPlace x="0cm" y="0cm" width="15cm" height="1cm">
 <place x="12cm" y="2cm" width="15cm" height="2.5cm">
 <blockTable>
 <tr>

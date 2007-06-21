@@ -276,11 +276,11 @@ void FichaBf::generaRML() {
     Fixed porcentt("0.00");
     SDBRecord *linea1;
     if (m_listadescuentos->rowCount() - 1) {
-        fitxersortidatxt += "<blockTable style=\"tabladescuento\" colWidths=\"12cm, 2cm, 3cm\" repeatRows=\"1\">\n";
+        fitxersortidatxt += "<blockTable style=\"tabladescuento\">\n";
         fitxersortidatxt += "<tr>\n";
         fitxersortidatxt += "    <td>" + QApplication::translate("Presupuesto", "Descuento") + "</td>\n";
         fitxersortidatxt += "    <td>" + QApplication::translate("Presupuesto", "Porcentaje") + "</td>\n";
-        fitxersortidatxt += "    <td>" + QApplication::translate("Presupuesto", "Total") + "</td>\n";
+        fitxersortidatxt += "    <td>" + QApplication::translate("Presupuesto", "Total Desc.") + "</td>\n";
         fitxersortidatxt += "</tr>\n";
         for (int i = 0; i < (m_listadescuentos->rowCount() - 1); ++i) {
             linea1 = m_listadescuentos->lineaat(i);
