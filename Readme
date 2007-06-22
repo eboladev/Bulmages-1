@@ -1,0 +1,91 @@
+README Bulmages Debian Repos
+============================
+
+v0.1 Initial release 20070622 lpa
+
+
+------------------------------------------------------------------------------
+The debian directory of bulmages is located in the berlios cluster. The box
+that the developers could access is:
+
+shell.berlios.de
+
+In this machine one could access to the ftp directory here:
+/home/groups/ftp/pub/bulmages/
+
+The debian directory is under that directory inside the debian folder and is organized as follows:
+
+-- dists
+    |-- etch
+    |   `-- main
+    |       |-- binary-amd64
+    |       |   |-- Packages.gz
+    |       |   |-- Release
+    |       |   |-- Release.gpg
+    |       |   |-- bulmacont_0.9.1-3~bpo_amd64.deb
+    |       |   |-- bulmafact_0.9.1-3~bpo_amd64.deb
+    |       |   |-- bulmages-admin_0.9.1-3~bpo_amd64.deb
+    |       |   |-- bulmages-common_0.9.1-3~bpo_all.deb -> ../binary-i386/bulmages-common_0.9.1-3~bpo_all.deb
+    |       |   |-- bulmages-docs_0.9.1-3~bpo_all.deb -> ../binary-i386/bulmages-docs_0.9.1-3~bpo_all.deb
+    |       |   |-- bulmages-servers_0.9.1-3~bpo_all.deb -> ../binary-i386/bulmages-servers_0.9.1-3~bpo_all.deb
+    |       |   |-- bulmages_0.9.1-3~bpo_amd64.deb
+    |       |   |-- libbulmalib1-dev_0.9.1-3~bpo_amd64.deb
+    |       |   `-- libbulmalib1_0.9.1-3~bpo_amd64.deb
+    |       |-- binary-i386
+    |       |   |-- Packages.gz
+    |       |   |-- Release
+    |       |   |-- Release.gpg
+    |       |   |-- bulmacont_0.9.1-3~bpo_i386.deb
+    |       |   |-- bulmafact_0.9.1-3~bpo_i386.deb
+    |       |   |-- bulmages-admin_0.9.1-3~bpo_i386.deb
+    |       |   |-- bulmages-common_0.9.1-3~bpo_all.deb
+    |       |   |-- bulmages-docs_0.9.1-3~bpo_all.deb
+    |       |   |-- bulmages-servers_0.9.1-3~bpo_all.deb
+    |       |   |-- bulmages_0.9.1-3~bpo_i386.deb
+    |       |   |-- libbulmalib1-dev_0.9.1-3~bpo_i386.deb
+    |       |   `-- libbulmalib1_0.9.1-3~bpo_i386.deb
+    |       `-- source
+    |           |-- Sources.gz
+    |           |-- bulmages_0.9.1-3~bpo.diff.gz
+    |           |-- bulmages_0.9.1-3~bpo.dsc
+    |           |-- bulmages_0.9.1-3~bpo_amd64.changes
+    |           `-- bulmages_0.9.1.orig.tar.gz
+    `-- stable -> etch
+
+
+In the binary-amd64 and binary-i386 are the packages of this platforms. Look that the _all packages are only phisically on the binary-i386 and the binary-amd64 are only symbolic links (as the stable link).
+
+The procedure to create the debian needed files is:
+
+#step 1
+dpkg-scanpackages dists/etch/main/binary-i386 /dev/null  | gzip -9c >
+dists/etch/main/binary-i386/Packages.gz        
+
+#step 2
+dpkg-scanpackages dists/etch/main/binary-amd64 /dev/null  | gzip -9c >
+dists/etch/main/binary-amd64/Packages.gz        
+
+With this two steps the Packages.gz file is create. Note that the dpkg-scanpackages is runned under the debian directory.
+
+#step 3
+dpkg-scansources dists/etch/main/source /dev/null  | gzip -9c
+dists/etch/main/source/Sources.gz            
+
+this step is the Sources.gz is created.
+
+#step 4
+There's one Release file (and signed, in this case by me) in each binary-* directory and contains:
+
+-----------------------------------------------
+Archive: stable
+Component: main
+Origin: Iglues
+Label: Packages for Debian Etch
+Architecture: amd64
+-----------------------------------------------
+The field Architecture is filled with the proper value or the arch.
+
+Finally is better to clean a bit the directories with:
+
+find . -name *~ -print0 | xargs -0 rm -f
+
