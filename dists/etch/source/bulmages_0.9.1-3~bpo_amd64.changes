@@ -1,0 +1,38 @@
+Format: 1.7
+Date: Thu, 14 Jun 2007 21:48:44 +0200
+Source: bulmages
+Binary: bulmages-docs bulmages bulmages-servers bulmages-admin bulmafact bulmacont libbulmalib1 libbulmalib1-dev bulmages-common
+Architecture: source all amd64
+Version: 0.9.1-3~bpo
+Distribution: unstable
+Urgency: low
+Maintainer: René Mérou <ochominutosdearco@gmail.com>
+Changed-By: Leopold Palomo Avellaneda <lepalom@wol.es>
+Description: 
+ bulmacont  - Spanish accounting program
+ bulmafact  - Spanish invoicing program
+ bulmages   - Accounting and invoicing programs for Spanish little businesses
+ bulmages-admin - Small GUI to launch some management programs for little businesse
+ bulmages-common - Bulmages invoicing and accounting, config and common stuff
+ bulmages-docs - Bulmages invoicing and accounting documentation files
+ bulmages-servers - Spanish accounting program server
+ libbulmalib1 - bulmages headers (runtime)
+ libbulmalib1-dev - bulmages headers for development
+Changes: 
+ bulmages (0.9.1-3~bpo) unstable; urgency=low
+ .
+   [Leopold Palomo Avellaneda]
+   * Modified the dependencies to make easyly a backport to etch.
+     Now it checks about the Postgresql >=8.1 (client and server)
+Files: 
+ 5cf2cd8089a1e11ca94295bfe0a2caf3 613 kde optional bulmages_0.9.1-3~bpo.dsc
+ fc07a76ce84d60d923cdfa4ef6fbbc8e 20 kde optional bulmages_0.9.1-3~bpo.diff.gz
+ ac9443a362de0b8825dd4c6eb5dca573 4768 kde optional bulmages_0.9.1-3~bpo_amd64.deb
+ af837a8ba0c69e9b33e367b86f7e358f 3546 kde optional bulmages-admin_0.9.1-3~bpo_amd64.deb
+ bb4c4bba00dc6ae9a2043bef13c9937e 1313106 kde optional bulmages-common_0.9.1-3~bpo_all.deb
+ bf98d953e1f6cf4dc42d032c322d0c39 3434 doc optional bulmages-docs_0.9.1-3~bpo_all.deb
+ f9941a2b689a5542f4d0cfbee8a3aa70 885584 kde optional bulmacont_0.9.1-3~bpo_amd64.deb
+ b59cf670fbec25ebfd5af314b35f3f24 973062 kde optional bulmafact_0.9.1-3~bpo_amd64.deb
+ a25794d38db48e3c13a187ec90ea3108 6778 kde optional bulmages-servers_0.9.1-3~bpo_all.deb
+ 310dd90bfc702fb39bb925d08c047726 22546 libdevel optional libbulmalib1-dev_0.9.1-3~bpo_amd64.deb
+ 59f35164d29750ffdd27f891dafa8a1c 1420042 libs optional libbulmalib1_0.9.1-3~bpo_amd64.deb
