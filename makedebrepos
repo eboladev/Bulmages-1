@@ -1,0 +1,85 @@
+#!/bin/bash
+# Script to create a debian repos
+# Leopold Palomo <lepalom@wol.es>
+# v0.1 20070622
+# -- dists
+#     |-- etch
+#     |   `-- main
+#     |       |-- binary-amd64
+#     |       |   |-- Packages.gz
+#     |       |   |-- Release
+#     |       |   |-- Release.gpg
+#     |       |   |-- .....
+#     |       |   `-- .....
+#     |       |-- binary-i386
+#     |       |   |-- Packages.gz
+#     |       |   |-- Release
+#     |       |   |-- Release.gpg
+#     |       |   |-- ......
+#     |       |   `-- ......
+#     |       `-- source
+#     |           |-- Sources.gz
+#     |           |-- *.diff.gz
+#     |           |-- *.dsc
+#     |           |-- *.changes
+#     |           `-- *.orig.tar.gz
+#     `-- stable -> etch
+
+#step 1
+if [ -n "$1" ]
+then
+ echo "Making a repository in the directory $1"
+ reposdir=$1
+fi
+if [ $# -lt 1 ]
+then
+ echo "This script needs at least one command-line argument with the directory"
+ exit 0
+fi
+echo "Verificating the integrity of the repository"
+DIRECTORIES="/dists/etch/main/binary-i386 /dists/etch/main/binary-amd64 /dists/etch/main/source"
+for dir in $DIRECTORIES
+do
+	echo "Checking the directory $reposdir$dir:"
+	if [ -n $reposdir$dir ] 
+	then 
+		echo "OK"
+	else
+		echo "Fail the directory "
+		exit 0
+	fi
+done
+
+dpkg-scanpackages $reposdir/dists/etch/main/binary-i386 /dev/null \
+  | gzip -9c > $reposdir/dists/etch/main/binary-i386/Packages.gz        
+
+#step 2
+dpkg-scanpackages $reposdir/dists/etch/main/binary-amd64 /dev/null \
+ | gzip -9c > $reposdir/dists/etch/main/binary-amd64/Packages.gz        
+
+#step 3
+dpkg-scansources $reposdir/dists/etch/main/source /dev/null  \
+| gzip -9c > $reposdir/dists/etch/main/source/Sources.gz            
+
+#step 4
+#There's one Release file (and signed, in this case by me) in each binary-* directory and contains:
+#!/bin/bash
+DISTRO=stable
+ARCH="i386 amd64"
+#The field Architecture is filled with the proper value or the arch.
+for i in $ARCH
+do
+        rm -f $reposdir/dists/$DISTRO/main/binary-$i/Release
+		touch $reposdir/dists/$DISTRO/main/binary-$i/Release
+		echo "Archive: $DISTRO"  >> $reposdir/dists/$DISTRO/main/binary-$i/Release
+        echo "Component: main" >> $reposdir/dists/$DISTRO/main/binary-$i/Release
+        echo "Origin: Iglues" >> $reposdir/dists/$DISTRO/main/binary-$i/Release
+        echo "Label: Packages for Debian Etch" >> $reposdir/dists/$DISTRO/main/binary-$i/Release
+        echo "Architecture: $i" >> $reposdir/dists/$DISTRO/main/binary-$i/Release
+		gpg --sign $reposdir/dists/$DISTRO/main/binary-$i/Release
+done
+
+#Finally is better to clean a bit the directories with:
+
+find $reposdir -name *~ -print0 | xargs -0 rm -f
+
