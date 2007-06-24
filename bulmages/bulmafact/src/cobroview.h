@@ -70,6 +70,7 @@ public slots:
     virtual void on_mui_cliente_valueChanged(QString id);
     virtual void on_mui_fechacobro_valueChanged(QString id);
     virtual void on_mui_idbanco_valueChanged(QString id);
+    virtual void on_mui_imprimir_clicked();
 };
 
 #endif
