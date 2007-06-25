@@ -40,6 +40,10 @@ CobrosList::CobrosList(QWidget *parent, Qt::WFlags flag)
         : Listado(NULL, parent, flag) {
     _depura("CobrosList::CobrosList", 0);
     setupUi(this);
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("CobrosList_CobrosList", this);
+    if (res != 0)
+        return;
     setModoEdicion();
     mdb_idcobro = "";
     setSubForm(mui_list);
@@ -56,6 +60,10 @@ CobrosList::CobrosList(company *comp, QWidget *parent, Qt::WFlags flag)
         : Listado(comp, parent, flag) {
     _depura("CobrosList::CobrosList",0);
     setupUi(this);
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("CobrosList_CobrosList", this);
+    if (res != 0)
+        return;
     m_cliente->setEmpresaBase(comp);
     mui_list->setEmpresaBase(comp);
     mui_idbanco->setEmpresaBase(comp);
@@ -268,6 +276,10 @@ void CobrosList::setidcliente(QString val) {
 */
 CobrosListSubForm::CobrosListSubForm(QWidget *parent) : SubForm2Bf(parent) {
     _depura("CobrosListSubForm::CobrosListSubForm", 0);
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("CobrosListSubForm_CobrosListSubForm", this);
+    if (res != 0)
+        return;
     setDBTableName("cobro");
     setDBCampoId("idcobro");
     addSHeader("idcobro", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("ID cobro"));

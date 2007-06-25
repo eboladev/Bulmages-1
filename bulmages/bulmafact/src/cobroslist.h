@@ -48,7 +48,7 @@ public:
 /** Clase que presenta el listado de Cobros.
     Deriva de la clase Ficha para estandarizacion de Formularios.
     Controla los eventos y la sincronizacion del listado con el filtrado. */
-class CobrosList : public Listado, private Ui_CobrosListBase {
+class CobrosList : public Listado, public Ui_CobrosListBase {
     Q_OBJECT
 
 private:
