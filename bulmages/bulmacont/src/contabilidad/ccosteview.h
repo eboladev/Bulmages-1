@@ -38,7 +38,7 @@ class empresa;
 
 /// Visualiza un centro de coste.
 /** */
-class ccosteview : public Ficha, public Ui_ccostedlg {
+class ccosteview : public Ficha, public Ui_ccostebase {
     Q_OBJECT
 
 public:

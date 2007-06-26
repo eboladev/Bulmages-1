@@ -39,6 +39,7 @@
 #include "qworkspace2.h"
 #include "listcuentasview1.h"
 #include "empresabase.h"
+#include "paisview.h"
 
 
 class selectccosteview;
@@ -49,6 +50,7 @@ class DiarioView;
 class BalanceView;
 class AsientosView;
 class CuentaView;
+class PaisView;
 
 
 /// Soporte principal para cada empresa contable.
@@ -143,6 +145,7 @@ public:
     int cobPag();
     virtual void s_asiento1();
     CuentaView *newcuentaview();
+    void muestrapaises();
 };
 
 #endif

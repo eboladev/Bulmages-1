@@ -1,24 +1,21 @@
 <ui version="4.0" >
- <class>ccostebase</class>
- <widget class="QWidget" name="ccostebase" >
+ <class>paisbase</class>
+ <widget class="QWidget" name="paisbase" >
   <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>555</width>
+    <width>556</width>
     <height>515</height>
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Centros de Coste</string>
+   <string>Paises</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_centroCoste.xpm</iconset>
   </property>
-  <layout class="QVBoxLayout" >
-   <property name="spacing" >
-    <number>5</number>
-   </property>
+  <layout class="QGridLayout" >
    <property name="leftMargin" >
     <number>5</number>
    </property>
@@ -31,7 +28,13 @@
    <property name="bottomMargin" >
     <number>5</number>
    </property>
-   <item>
+   <property name="horizontalSpacing" >
+    <number>5</number>
+   </property>
+   <property name="verticalSpacing" >
+    <number>5</number>
+   </property>
+   <item row="0" column="0" >
     <layout class="QHBoxLayout" >
      <property name="spacing" >
       <number>5</number>
@@ -63,7 +66,7 @@
         </size>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_centroCoste.xpm</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_gestortareas.48x48.png</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>
@@ -111,6 +114,12 @@
             <height>32</height>
            </size>
           </property>
+          <property name="toolTip" >
+           <string>Nuevo pais</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Nuevo pais</string>
+          </property>
           <property name="text" >
            <string/>
           </property>
@@ -142,6 +151,12 @@
             <height>32</height>
            </size>
           </property>
+          <property name="toolTip" >
+           <string>Borrar pais</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Borrar pais</string>
+          </property>
           <property name="text" >
            <string/>
           </property>
@@ -172,6 +187,12 @@
             <width>32</width>
             <height>32</height>
            </size>
+          </property>
+          <property name="toolTip" >
+           <string>Guardar pais</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Guardar pais</string>
           </property>
           <property name="text" >
            <string/>
@@ -221,10 +242,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Imprimir pedido</string>
+           <string>Ver/ocultar datos pais</string>
           </property>
           <property name="whatsThis" >
-           <string>Imprimir pedido</string>
+           <string>Ver/ocultar datos pais</string>
           </property>
           <property name="text" >
            <string/>
@@ -270,24 +291,25 @@
      </item>
     </layout>
    </item>
-   <item>
-    <widget class="QTreeWidget" name="mui_list" >
-     <column>
-      <property name="text" >
-       <string>1</string>
-      </property>
-     </column>
+   <item row="1" column="0" >
+    <widget class="QTableWidget" name="mui_list" >
+     <property name="editTriggers" >
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+     <property name="selectionMode" >
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior" >
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
     </widget>
    </item>
-   <item>
+   <item row="2" column="0" >
     <widget class="QGroupBox" name="groupBox" >
      <property name="title" >
-      <string>Contenido del centro de coste:</string>
+      <string>Datos del pais:</string>
      </property>
-     <layout class="QVBoxLayout" >
-      <property name="spacing" >
-       <number>5</number>
-      </property>
+     <layout class="QGridLayout" >
       <property name="leftMargin" >
        <number>5</number>
       </property>
@@ -300,74 +322,93 @@
       <property name="bottomMargin" >
        <number>5</number>
       </property>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="spacing" >
-         <number>5</number>
+      <property name="horizontalSpacing" >
+       <number>5</number>
+      </property>
+      <property name="verticalSpacing" >
+       <number>5</number>
+      </property>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="textLabel1" >
+        <property name="text" >
+         <string>Nombre del pais:</string>
         </property>
-        <property name="leftMargin" >
-         <number>0</number>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
-        <property name="topMargin" >
-         <number>0</number>
-        </property>
-        <property name="rightMargin" >
-         <number>0</number>
-        </property>
-        <property name="bottomMargin" >
-         <number>0</number>
-        </property>
-        <item>
-         <widget class="QLabel" name="textLabel1" >
-          <property name="text" >
-           <string>Nombre:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="nomcentro" />
-        </item>
-       </layout>
+       </widget>
       </item>
-      <item>
-       <layout class="QVBoxLayout" >
-        <property name="spacing" >
-         <number>5</number>
+      <item row="0" column="1" colspan="2" >
+       <widget class="QLineEdit" name="mui_descpais" >
+        <property name="maxLength" >
+         <number>50</number>
         </property>
-        <property name="leftMargin" >
-         <number>0</number>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QLabel" name="textLabel1_2" >
+        <property name="text" >
+         <string>Codigo 2 letras:</string>
         </property>
-        <property name="topMargin" >
-         <number>0</number>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
-        <property name="rightMargin" >
-         <number>0</number>
+       </widget>
+      </item>
+      <item row="1" column="1" >
+       <widget class="QLineEdit" name="mui_cod2pais" >
+        <property name="maxLength" >
+         <number>2</number>
         </property>
-        <property name="bottomMargin" >
-         <number>0</number>
+       </widget>
+      </item>
+      <item row="1" column="2" >
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
         </property>
-        <item>
-         <widget class="QLabel" name="textLabel1_2" >
-          <property name="sizePolicy" >
-           <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text" >
-           <string>Descripción:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QTextEdit" name="desccoste" />
-        </item>
-       </layout>
+        <property name="sizeHint" >
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="2" column="0" >
+       <widget class="QLabel" name="textLabel1_3" >
+        <property name="text" >
+         <string>Codigo 3 letras:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1" >
+       <widget class="QLineEdit" name="mui_cod3pais" >
+        <property name="maxLength" >
+         <number>3</number>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2" >
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" >
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
       </item>
      </layout>
     </widget>
    </item>
-   <item>
+   <item row="3" column="0" >
     <layout class="QHBoxLayout" >
      <property name="spacing" >
       <number>5</number>
@@ -419,7 +460,7 @@
   <connection>
    <sender>pushButton2</sender>
    <signal>clicked()</signal>
-   <receiver>ccostebase</receiver>
+   <receiver>paisbase</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel" >

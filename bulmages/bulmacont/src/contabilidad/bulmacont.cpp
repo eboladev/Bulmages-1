@@ -499,6 +499,19 @@ void Bulmacont::on_actionAcerca_de_triggered() {
 }
 
 
+void Bulmacont::on_actionPaises_triggered() {
+    m_empresaactual->muestrapaises();
+}
+
+
+void Bulmacont::on_actionProvincias_triggered() {
+    //_depura("Bulmacont::on_actionProvincias_triggered", 0);
+    //provinciaview *provincia = new provinciaview(0);
+    //provincia->exec();
+    //_depura("END Bulmacont::on_actionProvincias_triggered", 0);
+}
+
+
 /** Captura el evento de cambio de ventana en el workSpace y actua sobre el
     listado de ventanas para que seleccione la ventana adecuada.
 */
@@ -512,6 +525,7 @@ void Bulmacont::informaindexador(QWidget *w) {
         m_empresaactual->deSeleccionaWindow();
         return;
     } // end if
+    m_empresaactual->deSeleccionaWindow();
     m_empresaactual->seleccionaWindow(w->windowTitle(), w);
 
     QString texto = "Window activated. " + w->windowTitle() + "\n";

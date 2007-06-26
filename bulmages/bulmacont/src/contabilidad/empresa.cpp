@@ -591,7 +591,7 @@ void empresa::regularizaempresa() {
 void empresa::regularizaempresa(QString finicial, QString ffinal) {
     _depura("empresa::regularizaempresa", 0);
     introapunts2->show();
-        introapunts2->asiento_regularizacion(finicial, ffinal);
+    introapunts2->asiento_regularizacion(finicial, ffinal);
     _depura("END empresa::regularizaempresa", 0);
 }
 
@@ -658,5 +658,14 @@ void empresa::canaldefecto() {
     _depura("empresa::canaldefecto", 0);
     selcanales->exec();
     _depura("END empresa::canaldefecto", 0);
+}
+
+
+void empresa::muestrapaises() {
+    _depura("Bulmacont::on_actionPaises_triggered", 0);
+    PaisView *pais = new PaisView(this, 0);
+    m_pWorkspace->addWindow(pais);
+    pais->show();
+    _depura("END Bulmacont::on_actionPaises_triggered", 0);
 }
 

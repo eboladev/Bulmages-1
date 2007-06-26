@@ -55,7 +55,16 @@ void Listado347::on_m_boton_recalcular_clicked() {
     QLocale spanish;
 
     /// A por la tabla de Ventas...pedazo de consulta SQL.
-    QString query = "SELECT codigo, descripcion, cifent_cuenta as cif, cpent_cuenta as cp, importe FROM cuenta INNER JOIN (SELECT idcuenta, sum(apunte.debe) as importe FROM apunte WHERE conceptocontable NOT SIMILAR TO '%(Asiento de Cierre|Asiento de Apertura)%' AND idasiento IN (SELECT idasiento FROM (SELECT idcuenta FROM cuenta WHERE codigo LIKE '4770%') AS iva INNER JOIN apunte USING (idcuenta) WHERE fecha <= '"+ffinal->text()+"' AND fecha >= '"+finicial->text()+"' GROUP BY idasiento) AND idcuenta IN (SELECT idcuenta FROM cuenta WHERE codigo LIKE '4300%') GROUP BY idcuenta) AS facturado USING(idcuenta) WHERE importe > "+importe->text()+" ORDER BY descripcion";
+    QString query =  "SELECT codigo, descripcion, cifent_cuenta as cif, cpent_cuenta as cp, importe FROM cuenta ";
+            query += "INNER JOIN (SELECT idcuenta, sum(apunte.debe) as importe FROM apunte ";
+            query += "WHERE conceptocontable NOT SIMILAR TO '%(Asiento de Cierre|Asiento de Apertura)%' AND ";
+            query += "idasiento IN (SELECT idasiento FROM (SELECT idcuenta FROM cuenta ";
+            query += "WHERE codigo LIKE '4770%') AS iva INNER JOIN apunte USING (idcuenta) ";
+            query += "WHERE fecha <= '" + ffinal->text() + "' AND fecha >= '" + finicial->text() + "' ";
+            query += "GROUP BY idasiento) AND idcuenta IN (SELECT idcuenta FROM cuenta ";
+            query += "WHERE codigo LIKE '4300%') GROUP BY idcuenta) AS facturado USING(idcuenta) ";
+            query += "WHERE importe > " + importe->text() + " ORDER BY descripcion";
+
     DBConn->begin();
     cursor2 *recordSet = DBConn->cargacursor(query, "recordSet");
     DBConn->commit();
@@ -76,15 +85,25 @@ void Listado347::on_m_boton_recalcular_clicked() {
         tablaventas->setItem(i, 2, item);
         item = new QTableWidgetItem(recordSet->valor("cp"));
         tablaventas->setItem(i, 3, item);
-    query = spanish.toString(recordSet->valor("importe").toDouble(), 'f', 2);
+        query = spanish.toString(recordSet->valor("importe").toDouble(), 'f', 2);
         item = new QTableWidgetItem(query);
-    item->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
+        item->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
         tablaventas->setItem(i, 4, item);
         ++i;
         recordSet->siguienteregistro();
     } // end while
     /// A por la tabla de Compras...
-    query = "SELECT codigo, descripcion, cifent_cuenta as cif, cpent_cuenta as cp, importe FROM cuenta INNER JOIN (SELECT idcuenta, sum(apunte.haber) as importe FROM apunte WHERE conceptocontable NOT SIMILAR TO '%(Asiento de Cierre|Asiento de Apertura)%' AND idasiento IN (SELECT idasiento FROM (SELECT idcuenta FROM cuenta WHERE codigo LIKE '4720%') AS iva INNER JOIN apunte USING (idcuenta) WHERE fecha <= '"+ffinal->text()+"' AND fecha >= '"+finicial->text() +"' GROUP BY idasiento) AND idcuenta IN (SELECT idcuenta FROM cuenta WHERE codigo SIMILAR TO '4(0|1)00%') GROUP BY idcuenta) AS facturado USING(idcuenta) WHERE importe > "+importe->text()+" ORDER BY descripcion";
+    query =  "SELECT codigo, descripcion, cifent_cuenta as cif, cpent_cuenta as cp, importe FROM cuenta ";
+    query += "INNER JOIN (SELECT idcuenta, sum(apunte.haber) as importe FROM apunte ";
+    query += "WHERE conceptocontable NOT SIMILAR TO '%(Asiento de Cierre|Asiento de Apertura)%' ";
+    query += "AND idasiento IN (SELECT idasiento FROM (SELECT idcuenta FROM cuenta ";
+    query += "WHERE codigo LIKE '4720%') AS iva ";
+    query += "INNER JOIN apunte USING (idcuenta) ";
+    query += "WHERE fecha <= '" + ffinal->text() + "' AND fecha >= '" + finicial->text() + "' ";
+    query += "GROUP BY idasiento) AND idcuenta IN (SELECT idcuenta FROM cuenta ";
+    query += "WHERE codigo SIMILAR TO '4(0|1)00%') GROUP BY idcuenta) AS facturado USING(idcuenta) ";
+    query += "WHERE importe > " + importe->text() + " ORDER BY descripcion";
+
     DBConn->begin();
     recordSet = DBConn->cargacursor(query, "recordSet");
     DBConn->commit();
@@ -102,9 +121,9 @@ void Listado347::on_m_boton_recalcular_clicked() {
         tablacompras->setItem(i, 2, item);
         item = new QTableWidgetItem(recordSet->valor("cp"));
         tablacompras->setItem(i, 3, item);
-    query = spanish.toString(recordSet->valor("importe").toDouble(), 'f', 2);
+        query = spanish.toString(recordSet->valor("importe").toDouble(), 'f', 2);
         item = new QTableWidgetItem(query);
-    item->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
+        item->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
         tablacompras->setItem(i, 4, item);
         ++i;
         recordSet->siguienteregistro();
@@ -170,3 +189,4 @@ void Listado347::on_ffinal_editingFinished(){
     ffinal->setText(normalizafecha(ffinal->text()).toString("dd/MM/yyyy"));
     _depura("END Listado347::ffinal_exit", 0);
 }
+

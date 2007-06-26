@@ -47,6 +47,8 @@
     <addaction name="actionCentros_de_Coste" />
     <addaction name="actionCanales" />
     <addaction name="separator" />
+    <addaction name="actionPaises" />
+    <addaction name="actionProvincias" />
    </widget>
    <widget class="QMenu" name="menuHerramientas" >
     <property name="title" >
@@ -127,7 +129,10 @@
     </size>
    </property>
    <attribute name="toolBarArea" >
-    <number>4</number>
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak" >
+    <bool>false</bool>
    </attribute>
    <addaction name="actionConfiguracion" />
    <addaction name="actionPlan_Contable" />
@@ -475,6 +480,16 @@
   <action name="action_2" >
    <property name="text" >
     <string>''</string>
+   </property>
+  </action>
+  <action name="actionPaises" >
+   <property name="text" >
+    <string>Paises</string>
+   </property>
+  </action>
+  <action name="actionProvincias" >
+   <property name="text" >
+    <string>Provincias</string>
    </property>
   </action>
  </widget>

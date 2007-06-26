@@ -1,7 +1,4 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>CAnualesBase</class>
  <widget class="QWidget" name="CAnualesBase" >
   <property name="geometry" >
@@ -19,19 +16,37 @@
    <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_estadisticas.xpm</iconset>
   </property>
   <layout class="QVBoxLayout" >
-   <property name="margin" >
-    <number>5</number>
-   </property>
    <property name="spacing" >
     <number>2</number>
    </property>
+   <property name="leftMargin" >
+    <number>5</number>
+   </property>
+   <property name="topMargin" >
+    <number>5</number>
+   </property>
+   <property name="rightMargin" >
+    <number>5</number>
+   </property>
+   <property name="bottomMargin" >
+    <number>5</number>
+   </property>
    <item>
-    <widget class="QTableWidget" name="mui_listado" />
+    <widget class="QTableWidget" name="mui_listado" >
+     <property name="editTriggers" >
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+     <property name="selectionMode" >
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior" >
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11" />
- <pixmapfunction></pixmapfunction>
  <resources>
   <include location="../../../bulmages.qrc" />
  </resources>

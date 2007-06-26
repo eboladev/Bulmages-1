@@ -90,9 +90,10 @@ listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, Qt::WFlags fla
 
 
 listcuentasview1::~listcuentasview1() {
-    _depura("listcuentasview1::~listcuentasview1", 0);
-    if (m_modo == EditMode)
+    _depura("listcuentasview1::~listcuentasview1", 10);
+    if (m_modo == EditMode) {
         empresaactual->sacaWindow(this);
+    }// end if
     _depura("END listcuentasview1::~listcuentasview1", 0);
 }
 

@@ -67,6 +67,28 @@ CREATE TABLE configuracion (
     valor character varying(350)
 );
 
+
+-- ** pais **
+-- cod2pais: Codigo internacional de dos digitos.
+-- cod3pais: Codigo internacional de tres digitos.
+-- descpais: Cescripcion del pais.
+\echo -n ':: Pais ... '
+CREATE TABLE pais (
+    idpais serial PRIMARY KEY,
+    cod2pais character varying(2),
+    cod3pais character varying(3),
+    descpais character varying(50)
+);
+
+-- -- 
+-- ** provincia **
+\echo -n ':: Provincia ... '
+CREATE TABLE provincia (
+    idprovincia SERIAL PRIMARY KEY,
+    provincia character varying(500)
+);
+
+
 \echo -n ':: Grupo ... '
 CREATE TABLE grupo (
     idgrupo serial PRIMARY KEY,
@@ -128,7 +150,10 @@ CREATE TABLE cuenta (
     bancoent_cuenta character varying(30),
     emailent_cuenta character varying(50),
     webent_cuenta character varying(70),
-    tipocuenta integer DEFAULT 1
+    tipocuenta integer DEFAULT 1,
+    pais INTEGER REFERENCES pais (idpais),
+    provincia INTEGER REFERENCES provincia (idprovincia),
+    poblacion CHARACTER VARYING(150)
 );
 
 
@@ -1183,7 +1208,7 @@ BEGIN
     -- Creamos la tabla con el arbol de cuentas y sus valores (se ha considerado hasta nivel 4).
     CREATE TEMPORARY TABLE temp4 AS (SELECT n1.codigo AS cod1, n1.debe AS debe1, n1.haber AS haber1, n2.codigo AS cod2, n2.debe AS debe2, n2.haber AS haber2, n3.codigo AS cod3, n3.debe AS debe3, n3.haber AS haber3, n4.codigo AS cod4, n4.debe AS debe4, n4.haber AS haber4 FROM (SELECT idcuenta, codigo, debe, haber FROM cuenta WHERE padre IS NULL) AS n1 INNER JOIN (SELECT idcuenta, padre, codigo, debe, haber FROM cuenta) AS n2 ON n1.idcuenta=n2.padre INNER JOIN (SELECT idcuenta, padre, codigo, debe, haber FROM cuenta) AS n3 ON n2.idcuenta = n3.padre LEFT JOIN (SELECT padre, codigo, debe, haber FROM cuenta) AS n4 ON n3.idcuenta = n4.padre);
    
-    -- Ahora iremos actualizando las ramas desde las hojas hasta las raizes.
+    -- Ahora iremos actualizando las ramas desde las hojas hasta las raices.
     -- Primero, tendremos en cuenta aquellas cuentas que estan en un nivel 4, calculamos la suma de su nivel y
     -- subimos el dato al nivel 3.
     CREATE TEMPORARY TABLE temp3 AS (SELECT cod1, cod2, cod3, sum(debe4) AS debe3, sum(haber4) AS haber3 FROM temp4 WHERE debe4 IS NOT NULL group by cod1, cod2, cod3 order by cod3);

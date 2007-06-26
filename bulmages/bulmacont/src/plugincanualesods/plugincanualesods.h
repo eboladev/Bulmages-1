@@ -1,9 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2003 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   Copyright (C) 2003 by Antoni Mirabete i Teres                         *
- *   amirabet@biada.org                                                    *
- *   http://www.iglues.org Asociacion Iglues -- Contabilidad Linux         *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -21,50 +18,45 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef DIARIOPRINTVIEW_H
-#define DIARIOPRINTVIEW_H
+#ifdef Q_WS_WIN
+# define MY_EXPORT __declspec(dllexport)
+#else
+# define MY_EXPORT
+#endif
 
-#include <errno.h>
-
+#include <QStringList>
 #include <QWidget>
-#include <QToolButton>
-#include <QRadioButton>
+#include <QIcon>
+#include <QApplication>
+#include <QObject>
+#include <QTextStream>
 
-#include "ui_diarioprintbase.h"
+#include "bulmacont.h"
 #include "postgresiface2.h"
-
-/// Declaramos la clase empresa como amiga para que la compilaci&oacute; no sea complicada.
 #include "empresa.h"
 
 
-/// Ventana de impresi&oacute; de diarios.
-/// @class DiarioPrintView diarioprintview.h
-/** Es la ventana de impresi&oacute; de diarios. */
-class DiarioPrintView : public QDialog, public Ui_DiarioPrintBase {
+extern "C" MY_EXPORT void entryPoint(Bulmacont *);
+
+extern QApplication2 *theApp;
+
+
+class pluginCAnualesODS : public QObject {
     Q_OBJECT
 
-public:
-    /// La base de datos con la que trabaja esta clase.
-    postgresiface2 *conexionbase;
-    /// La empresa con la que trabaja esta clase.
-    empresa *empresaactual;
-    int numdigitos;
-    /// Puntero al filtrado de datos.
-
-public:
-    /// Establece cual es la ventana de filtro de diario. Es imprescindible
-    /// inicializar el filtro antes de mostrar la ventana o el bot&oacute;n de filtro
-    /// no funcionar&aacute;.
-    DiarioPrintView(empresa *emp, QWidget *parent);
-    ~DiarioPrintView();
-    void presentar(char *tipus = "html");
-
 private:
-    QString montaQuery();
+    Fixed saldoCuenta(int cuenta);
+
+public:
+    empresa *empresaact;
+    postgresiface2 *conexionbase;
+
+public:
+    pluginCAnualesODS();
+    ~pluginCAnualesODS();
+    void inicializa(Bulmacont *);
 
 public slots:
-    virtual void accept();
+    void balanceSituacionODS();
 };
-
-#endif
 

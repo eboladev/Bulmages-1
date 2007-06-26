@@ -1,8 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2003 by Tomeu Borras Riera                              *
- *   tborras@conetxia.com                                                  *
- *   Copyright (C) 2003 by Antoni Mirabete i Teres                         *
- *   amirabet@biada.org                                                    *
+ *   Copyright (C) 2007 by Fco. Javier M. C.                               *
+ *   fcojavmc@todo-redes.com                                               *
  *   http://www.iglues.org Asociacion Iglues -- Contabilidad Linux         *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,49 +19,47 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef DIARIOPRINTVIEW_H
-#define DIARIOPRINTVIEW_H
-
-#include <errno.h>
+#ifndef CPAISVIEW_H
+#define CPAISVIEW_H
 
 #include <QWidget>
-#include <QToolButton>
-#include <QRadioButton>
+//#include <QComboBox>
+#include <QLineEdit>
+#include <QCloseEvent>
 
-#include "ui_diarioprintbase.h"
+#include "ui_paisbase.h"
 #include "postgresiface2.h"
+#include "dialogchanges.h"
+#include "fichabc.h"
 
-/// Declaramos la clase empresa como amiga para que la compilaci&oacute; no sea complicada.
-#include "empresa.h"
+
+class empresa;
 
 
-/// Ventana de impresi&oacute; de diarios.
-/// @class DiarioPrintView diarioprintview.h
-/** Es la ventana de impresi&oacute; de diarios. */
-class DiarioPrintView : public QDialog, public Ui_DiarioPrintBase {
+/// Visualiza un centro de coste.
+/** */
+class PaisView : public Ficha, public Ui_paisbase {
     Q_OBJECT
 
 public:
-    /// La base de datos con la que trabaja esta clase.
     postgresiface2 *conexionbase;
-    /// La empresa con la que trabaja esta clase.
+    int idpais; /// Indica cual es el centro de coste que se esta visualizando.
+    /// Si su valor es 0 entonces es que no se esta visualizando ning&uacute;n centro de coste.
     empresa *empresaactual;
-    int numdigitos;
-    /// Puntero al filtrado de datos.
 
 public:
-    /// Establece cual es la ventana de filtro de diario. Es imprescindible
-    /// inicializar el filtro antes de mostrar la ventana o el bot&oacute;n de filtro
-    /// no funcionar&aacute;.
-    DiarioPrintView(empresa *emp, QWidget *parent);
-    ~DiarioPrintView();
-    void presentar(char *tipus = "html");
-
-private:
-    QString montaQuery();
+    PaisView(empresa *, QWidget *parent = 0);
+    ~PaisView();
+    void pintar();
+    void mostrarplantilla();
+    virtual void on_mui_borrar_clicked();
 
 public slots:
-    virtual void accept();
+    virtual void on_mui_guardar_clicked();
+    virtual void on_mui_crear_clicked();
+    virtual void on_mui_list_itemSelectionChanged();
+    //virtual void on_mui_list_itemChanged(QTableWidgetItem *);
+    virtual void closeEvent(QCloseEvent *);
 };
 
 #endif

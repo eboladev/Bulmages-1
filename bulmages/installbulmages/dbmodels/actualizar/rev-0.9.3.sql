@@ -78,8 +78,32 @@ DROP FUNCTION compruebarevision() CASCADE;
 
 
 
-
-
+CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
+DECLARE
+	bs RECORD;
+BEGIN
+	SELECT INTO bs * FROM pg_tables WHERE tablename=''pais'';
+	IF NOT FOUND THEN
+		CREATE TABLE pais (
+			idpais SERIAL PRIMARY KEY,
+			cod2pais CHARACTER varying(2),
+			cod3pais CHARACTER varying(3),
+			descpais CHARACTER varying(50)
+		);
+		CREATE TABLE provincia (
+			idprovincia SERIAL PRIMARY KEY,
+			provincia CHARACTER VARYING(500)
+		);
+		ALTER TABLE cuenta ADD COLUMN pais INTEGER REFERENCES pais (idpais);
+		ALTER TABLE cuenta ADD COLUMN provincia INTEGER REFERENCES provincia (idprovincia);
+		ALTER TABLE cuenta ADD COLUMN poblacion CHARACTER VARYING(150);
+	END IF;
+	RETURN 0;
+END;
+'   LANGUAGE plpgsql;
+SELECT aux();
+DROP FUNCTION aux() CASCADE;
+\echo "Creamos tablas 'pais' y 'provincia'. Se modifica 'cuenta'."
 
 
 -- ================================== FIN PARCHE. ACTUALIZACION  =======================

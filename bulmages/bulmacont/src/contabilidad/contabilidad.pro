@@ -66,7 +66,8 @@ FORMS += bulmacontbase.ui \
 	 mpatrimonialesbase.ui \
 	 mpatrimonialbase.ui \
 	 listado347base.ui \
-	 modelo300base.ui
+	 modelo300base.ui \
+	 paisbase.ui
 
 #FORMS3 +=  mod300dlg.ui 
 
@@ -130,7 +131,8 @@ HEADERS += splashscreen.h \
 	   balancesubform.h \
 	   busquedaccoste.h \
 	   busquedacanal.h \
-	   fichabc.h
+	   fichabc.h \
+	   paisview.h
 
 SOURCES += main.cpp \
            splashscreen.cpp \
@@ -186,7 +188,8 @@ SOURCES += main.cpp \
 	   balancesubform.cpp \
 	   busquedaccoste.cpp \
 	   busquedacanal.cpp \
-	   fichabc.cpp
+	   fichabc.cpp \
+	   paisview.cpp
 
 unix{
     UI_DIR = .ui

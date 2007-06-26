@@ -97,10 +97,11 @@ void listventanas::dclicked() {
     _depura("listventanas::dclicked", 0);
     QWidget *widget = (QWidget *)((QListWidgetItem1 *) m_listBox->currentItem())->object();
     if (widget != NULL) {
-        if (widget->isMaximized() == TRUE)
+        if (widget->isMaximized() == TRUE) {
             widget->showNormal();
-        else
+        } else {
             widget->showMaximized();
+        } // end if
     } // end if
     _depura("END listventanas::dclicked", 0);
 }
@@ -189,7 +190,7 @@ int listventanas::meteWindow(QString nombre, QObject *obj, bool compdup) {
             m->setNombre(nombre);
         } // end if
     } catch (...) {
-        mensajeInfo(tr("listventanas::meteWindow ventana duplicada"));
+        _depura("listventanas::meteWindow ventana duplicada", 0);
         throw -1;
     } // end try
     _depura("END listventanas::meteWindow", 0);
