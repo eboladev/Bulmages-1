@@ -36,6 +36,7 @@ Cobro::Cobro(company *comp, QWidget *parent) : FichaBf(comp, parent) {
     addDBCampo("idcliente", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("Cobro", "ID cliente"));
     addDBCampo("previsioncobro", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("Cobro", "Prevision de cobro"));
     addDBCampo("fechacobro", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Cobro", "Fecha de cobro"));
+    addDBCampo("fechavenccobro", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Cobro", "Fecha de vencimiento"));
     addDBCampo("refcobro", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cobro", "Referencia del cobro"));
     addDBCampo("cantcobro", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate("Cobro", "Cantidad"));
     addDBCampo("comentcobro", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cobro", "Comentarios"));
@@ -66,6 +67,11 @@ void Cobro::pintaidcliente(QString) {
 void Cobro::pintafechacobro(QString) {
     _depura("Cobro::pintafechacobro", 0);
     _depura("END Cobro::pintafechacobro", 0);
+}
+
+void Cobro::pintafechavenccobro(QString) {
+    _depura("Cobro::pintafechavenccobro", 0);
+    _depura("END Cobro::pintafechavenccobro", 0);
 }
 
 
@@ -107,6 +113,7 @@ void Cobro::pintar() {
     pintaidcobro(DBvalue("idcobro"));
     pintaidcliente(DBvalue("idcliente"));
     pintafechacobro(DBvalue("fechacobro"));
+    pintafechavenccobro(DBvalue("fechavenccobro"));
     pintacantcobro(DBvalue("cantcobro"));
     pintarefcobro(DBvalue("refcobro"));
     pintaprevisioncobro(DBvalue("previsioncobro"));
@@ -165,6 +172,11 @@ void Cobro::setfechacobro(QString val) {
     _depura("END Cobro::setfechacobro", 0);
 }
 
+void Cobro::setfechavenccobro(QString val) {
+    _depura("Cobro::setfechavenccobro", 0);
+    setDBvalue("fechavenccobro", val);
+    _depura("END Cobro::setfechavenccobro", 0);
+}
 
 void Cobro::setcantcobro(QString val) {
     _depura("Cobro::setcantcobro", 0);

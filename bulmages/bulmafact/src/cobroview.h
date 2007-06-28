@@ -51,6 +51,7 @@ public:
     ~CobroView();
     void manageArticle(int);
     void pintafechacobro(QString id);
+    void pintafechavenccobro(QString id);
     void pintacomentcobro(QString id);
     void pintaidcliente(QString id);
     void pintarefcobro(QString id);
@@ -69,6 +70,7 @@ public slots:
     virtual void on_mui_previsioncobro_stateChanged(int i);
     virtual void on_mui_cliente_valueChanged(QString id);
     virtual void on_mui_fechacobro_valueChanged(QString id);
+    virtual void on_mui_fechavenccobro_valueChanged(QString id);
     virtual void on_mui_idbanco_valueChanged(QString id);
     virtual void on_mui_imprimir_clicked();
 };

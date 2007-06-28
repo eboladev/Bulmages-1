@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>467</width>
-    <height>300</height>
+    <width>486</width>
+    <height>398</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -18,10 +18,10 @@
   </property>
   <layout class="QGridLayout" >
    <property name="margin" >
-    <number>5</number>
+    <number>9</number>
    </property>
    <property name="spacing" >
-    <number>5</number>
+    <number>6</number>
    </property>
    <item row="0" column="1" colspan="3" >
     <widget class="QFrame" name="frame" >
@@ -215,24 +215,6 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="4" >
-    <widget class="BusquedaCliente" native="1" name="mui_cliente" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>7</hsizetype>
-       <vsizetype>5</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="minimumSize" >
-      <size>
-       <width>0</width>
-       <height>60</height>
-      </size>
-     </property>
-    </widget>
-   </item>
    <item row="1" column="0" colspan="4" >
     <widget class="QCheckBox" name="mui_previsioncobro" >
      <property name="sizePolicy" >
@@ -248,23 +230,7 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="3" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeType" >
-      <enum>QSizePolicy::Preferred</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>20</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="4" column="0" colspan="2" >
+   <item row="5" column="0" colspan="2" >
     <widget class="QLabel" name="textLabel1_2_2_3_2" >
      <property name="text" >
       <string>Descripcion del cobro:</string>
@@ -277,19 +243,7 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="2" colspan="2" >
-    <widget class="QLineEdit" name="mui_comentcobro" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>5</hsizetype>
-       <vsizetype>0</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-    </widget>
-   </item>
-   <item row="8" column="0" colspan="4" >
+   <item row="9" column="0" colspan="4" >
     <layout class="QHBoxLayout" >
      <property name="margin" >
       <number>0</number>
@@ -329,7 +283,7 @@
      </item>
     </layout>
    </item>
-   <item row="5" column="2" >
+   <item row="6" column="2" >
     <widget class="QLineEdit" name="mui_cantcobro" >
      <property name="enabled" >
       <bool>true</bool>
@@ -363,7 +317,7 @@
      </property>
     </widget>
    </item>
-   <item row="5" column="3" >
+   <item row="6" column="3" >
     <spacer>
      <property name="orientation" >
       <enum>Qt::Horizontal</enum>
@@ -379,23 +333,10 @@
      </property>
     </spacer>
    </item>
-   <item row="7" column="0" colspan="4" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>449</width>
-       <height>31</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="6" column="2" >
+   <item row="7" column="2" >
     <widget class="BusquedaBanco" name="mui_idbanco" />
    </item>
-   <item row="5" column="0" colspan="2" >
+   <item row="6" column="0" colspan="2" >
     <widget class="QLabel" name="textLabel1_4_4" >
      <property name="text" >
       <string>Total cobro:</string>
@@ -408,7 +349,7 @@
      </property>
     </widget>
    </item>
-   <item row="6" column="0" colspan="2" >
+   <item row="7" column="0" colspan="2" >
     <widget class="QLabel" name="textLabel1_4_5" >
      <property name="text" >
       <string>Banco:</string>
@@ -421,7 +362,32 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="0" colspan="2" >
+   <item row="8" column="0" colspan="4" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>457</width>
+       <height>81</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="5" column="2" colspan="2" >
+    <widget class="QLineEdit" name="mui_comentcobro" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>5</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="2" >
     <widget class="QLabel" name="textLabel1_2_3" >
      <property name="text" >
       <string>Fecha cobro:</string>
@@ -431,8 +397,86 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="2" >
+   <item row="2" column="2" >
     <widget class="BusquedaFecha" native="1" name="mui_fechacobro" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>5</hsizetype>
+       <vsizetype>5</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize" >
+      <size>
+       <width>150</width>
+       <height>0</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="3" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Preferred</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="3" column="3" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Preferred</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="4" column="0" colspan="4" >
+    <widget class="BusquedaCliente" native="1" name="mui_cliente" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>7</hsizetype>
+       <vsizetype>5</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize" >
+      <size>
+       <width>0</width>
+       <height>60</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="2" >
+    <widget class="QLabel" name="textLabel1_2_4" >
+     <property name="text" >
+      <string>Fecha vencimiento:</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2" >
+    <widget class="BusquedaFecha" native="1" name="mui_fechavenccobro" >
      <property name="sizePolicy" >
       <sizepolicy>
        <hsizetype>5</hsizetype>
@@ -454,16 +498,6 @@
  <layoutdefault spacing="4" margin="3" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaCliente</class>
-   <extends>QWidget</extends>
-   <header>busquedacliente.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaBanco</class>
-   <extends>QComboBox</extends>
-   <header>busquedabanco.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaReferencia</class>
    <extends>QLineEdit</extends>
    <header>busquedareferencia.h</header>
@@ -472,6 +506,16 @@
    <class>BusquedaFecha</class>
    <extends>QWidget</extends>
    <header>../../../bulmalib/busquedafecha.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaCliente</class>
+   <extends>QWidget</extends>
+   <header>busquedacliente.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaBanco</class>
+   <extends>QComboBox</extends>
+   <header>busquedabanco.h</header>
   </customwidget>
  </customwidgets>
  <resources>

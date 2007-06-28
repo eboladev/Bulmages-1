@@ -107,6 +107,14 @@ void CobroView::pintafechacobro(QString id) {
     _depura("END CobroView::pintafechacobro", 0);
 }
 
+/** Escribe en el QLineEdit de fecha la fecha indicada
+**/
+void CobroView::pintafechavenccobro(QString id) {
+    _depura("CobroView::pintafechavenccobro", 0);
+    mui_fechavenccobro->setText(id);
+    _depura("END CobroView::pintafechavenccobro", 0);
+}
+
 /** Escribe en los comentarios del cobro los comentarios indicados
 **/
 void CobroView::pintacomentcobro(QString id) {
@@ -232,6 +240,15 @@ void CobroView::on_mui_fechacobro_valueChanged(QString id) {
     _depura("CobroView::on_mui_fechacobro_valueChanged", 0);
     setfechacobro(id);
     _depura("END CobroView::on_mui_fechacobro_valueChanged", 0);
+}
+
+/** SLOT automatico que se ejecuta al cambiar la fecha
+	Actualiza los valores del cobro con la fecha indicada
+**/
+void CobroView::on_mui_fechavenccobro_valueChanged(QString id) {
+    _depura("CobroView::on_mui_fechavenccobro_valueChanged", 0);
+    setfechavenccobro(id);
+    _depura("END CobroView::on_mui_fechavenccobro_valueChanged", 0);
 }
 
 void CobroView::on_mui_idbanco_valueChanged(QString id) {
