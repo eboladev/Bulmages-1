@@ -366,10 +366,211 @@ void mensajeError(QString cad) {
 }
 
 
+QString  num2texto(QString numero, QString moneda, QString singular)
+{
+    //si es 0 el número, no tiene caso procesar toda la información
+    if(numero == "0"){
+        return "cero "+moneda+" 00/100";
+    }
+    
+    //en caso que sea un peso, pues igual que el 0 aparte que no muestre el plural "pesos"
+    if(numero == "1"){
+        return "un "+singular+" 00/100";
+    }
+    
+    QMap<QString , QString > numeros;
+    //numeros["unidad"][0][0]="cero";
+    numeros["unidad10"]="un";
+    numeros["unidad20"]="dos";
+    numeros["unidad30"]="tres";
+    numeros["unidad40"]="cuatro";
+    numeros["unidad50"]="cinco";
+    numeros["unidad60"]="seis";
+    numeros["unidad70"]="siete";
+    numeros["unidad80"]="ocho";
+    numeros["unidad90"]="nueve";
+
+    numeros["decenas10"]="diez";
+    numeros["decenas20"]="veinte";
+    numeros["decenas30"]="treinta";
+    numeros["decenas40"]="cuarenta";
+    numeros["decenas50"]="cincuenta";
+    numeros["decenas60"]="sesenta";
+    numeros["decenas70"]="setenta";
+    numeros["decenas80"]="ochenta";
+    numeros["decenas90"]="noventa";
+    numeros["decenas110"]="dieci";
+    numeros["decenas111"]="once";
+    numeros["decenas112"]="doce";
+    numeros["decenas113"]="trece";
+    numeros["decenas114"]="catorce";
+    numeros["decenas115"]="quince";
+    numeros["decenas21"]="veinti";
+    numeros["decenas31"]="treinta y ";
+    numeros["decenas41"]="cuarenta y ";
+    numeros["decenas51"]="cincuenta y ";
+    numeros["decenas61"]="sesenta y ";
+    numeros["decenas71"]="setenta y ";
+    numeros["decenas81"]="ochenta y ";
+    numeros["decenas91"]="noventa y ";
+
+    numeros["centenas10"]="cien";
+    numeros["centenas20"]="doscientos ";
+    numeros["centenas30"]="trecientos ";
+    numeros["centenas40"]="cuatrocientos ";
+    numeros["centenas50"]="quinientos ";
+    numeros["centenas60"]="seiscientos ";
+    numeros["centenas70"]="setecientos ";
+    numeros["centenas80"]="ochocientos ";
+    numeros["centenas90"]="novecientos ";
+    numeros["centenas11"]="ciento ";
+
+    QMap<QString, QString> postfijos;
+    postfijos["1-0"]="";
+    postfijos["10-0"]="";
+    postfijos["100-0"]="";
+    postfijos["1000-0"]=" mil ";
+    postfijos["10000-0"]=" mil ";
+    postfijos["100000-0"]=" mil ";
+    postfijos["1000000-0"]=" millon ";
+    postfijos["10000000-0"]=" millon ";
+    postfijos["100000000-0"]=" millon ";
+    postfijos["1000000-1"]=" millones ";
+    postfijos["10000000-1"]=" millones ";
+    postfijos["100000000-1"]=" millones ";
+
+    QString decimal_break = ".";
+    //echo "test run on ".$numero."<br>";
+    QString entero = numero.split(decimal_break).at(0);
+    QString decimal = numero.split(decimal_break).at(1);
+
+//    $entero=strtok($numero,$decimal_break);
+//    $decimal=strtok($decimal_break);
+    if (decimal == "") {
+        decimal = "00";
+    }
+    if (decimal.size() < 2) {
+        decimal = decimal + "0";
+    }
+    if (decimal.size() > 2) {
+        decimal = decimal.right(2);
+    }
+    //echo "entero ".$entero."<br> decimal ".$decimal."<br>";
+
+    QString entero_breakdown = entero;
+
+    QString breakdown_key = "1000000000000";
+    QString num_string="";
+    QMap<QString, QString> breakdown;
+    QString chundreds = "";
+    QString tens = "";
+    QString ctens = "";
+    QString cctens = "";
+    QString ones = "";
+    QString cpostfijos = "";
+    while (breakdown_key.toDouble() > 0.5) {
+//	_depura(num_string, 2);
+        breakdown["entero"+breakdown_key+"number"]= /*floor(*/ QString::number(entero_breakdown.toLongLong() / breakdown_key.toLongLong());
+
+//	_depura(breakdown["entero"+breakdown_key+"number"], 2);
+
+        //echo " ".$breakdown["entero"][$breakdown_key]["number"]."<br>";
+        if (breakdown["entero"+breakdown_key+"number"].toLongLong() > 0) {
+            //echo " further process <br>";
+            breakdown["entero"+breakdown_key+"100"] = /*floor(*/ QString::number(breakdown["entero" + breakdown_key + "number"].toLongLong() / 100);
+            breakdown["entero"+breakdown_key+"10"] = /*floor( */ QString::number((breakdown["entero" + breakdown_key + "number"].toLongLong() % 100) / 10);
+            breakdown["entero"+breakdown_key+"1"] = /*floor(*/   QString::number(breakdown["entero" + breakdown_key + "number"].toLongLong() % 10);
+            //echo " 100 ->".$breakdown["entero"][$breakdown_key][100]."<br>";
+            //echo " 10   ->".$breakdown["entero"][$breakdown_key][10]."<br>";
+            //echo " 1     ->".$breakdown["entero"][$breakdown_key][1]."<br>";
+
+            QString hundreds = breakdown["entero"+breakdown_key+"100"];
+            // if not a closed value at hundredths
+            if ((breakdown["entero"+breakdown_key+"10"].toLongLong() + breakdown["entero"+breakdown_key+"1"].toLongLong()) > 0) {
+                chundreds = "1";
+            } else {
+                chundreds = "0";
+            }
+
+            if (numeros.contains("centenas" + hundreds + chundreds)) {
+                //echo " centenas ".numeros["centenas"][$hundreds][$chundreds]."<br>";
+                num_string += numeros["centenas"+hundreds+chundreds];
+            } else {
+                //echo " centenas ".numeros["centenas"][$hundreds][0]."<br>";
+                if(numeros.contains("centenas"+hundreds+"0")){
+                    num_string += numeros["centenas"+hundreds+"0"];
+                }
+            }
+
+            if ((breakdown["entero"+breakdown_key+"1"].toLongLong()) > 0) {
+                ctens = "1";
+                tens = breakdown["entero"+breakdown_key+"10"];
+                //echo "NOT CLOSE TENTHS<br>";
+                if (breakdown["entero"+breakdown_key+"10"].toLongLong() == 1) {
+                    if (breakdown["entero"+breakdown_key+"1"].toLongLong() < 6 ) {
+                        cctens = breakdown["entero"+breakdown_key+"1"];
+                        //echo " decenas ".numeros["decenas"][$tens][$ctens][$cctens]."<br>";
+                        num_string += numeros["decenas"+tens+ctens+cctens];
+                    } else {
+                        //echo " decenas ".numeros["decenas"][$tens][$ctens][0]."<br>";
+                        num_string += numeros["decenas"+tens+ctens+"0"];
+                    }
+                } else {
+                    //echo " decenas ".numeros["decenas"][$tens][$ctens]."<br>";
+                    if(numeros.contains("decenas"+tens+ctens)){
+                        num_string += numeros["decenas"+tens+ctens];
+                    }
+                }
+            } else {
+                //echo "CLOSED TENTHS<br>";
+                ctens = "0";
+                tens = breakdown["entero"+breakdown_key+"10"];
+                //echo " decenas ".numeros["decenas"][$tens][$ctens]."<br>";
+                if(numeros.contains("decenas"+tens+ctens)){
+                    num_string += numeros["decenas"+tens+ctens];
+                }
+            }
+
+
+
+            if (cctens == "") {
+                ones = breakdown["entero"+breakdown_key+"1"];
+                if (numeros.contains("unidad"+ones+"0")) {
+                    //echo " tens ".numeros["unidad"][$ones][0]."<br>";
+                    num_string += numeros["unidad"+ones+"0"];
+                }
+            }
+            
+            cpostfijos = "-1";
+            if (breakdown["entero"+breakdown_key+"number"].toLongLong() > 1) {
+                cpostfijos = "1";
+            }
+
+
+            if (postfijos.contains(breakdown_key+"-"+cpostfijos)) {
+                num_string += postfijos[breakdown_key+"-"+cpostfijos];
+            } else {
+                num_string += postfijos[breakdown_key+"-0"];
+            }
+        }
+        cctens = "";
+        entero_breakdown = QString::number(entero_breakdown.toInt() % breakdown_key.toLongLong());
+        breakdown_key = QString::number(breakdown_key.toLongLong() / 1000);
+
+        //echo "CADENA ".$num_string."<br>";
+    }
+    return  num_string+" "+moneda+" "+decimal+"/100 M.N.";
+
+}
+
+
+
+
 void centrarEnPantalla(QWidget *ventana) {
     QRect rect;
     QDesktopWidget *escritorio = new QDesktopWidget();
     rect = escritorio->availableGeometry();
     ventana->move (rect.center() - ventana->rect().center());
 }
+
 
