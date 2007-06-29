@@ -43,16 +43,15 @@ class Splash : public QDialog {
     Q_OBJECT
 
 private:
-    QTextBrowser *l1;
     QProgressBar *barra;
+    QLabel *m_label, *m_label1, *l0;
+    QPixmap *image0;
 
 public:
     Splash();
     ~Splash();
-
-public slots:
-    void paint();
-    bool event(QEvent *);
+    void mensaje(QString);
+    void setBarraProgreso(int);
 
 private slots:
     void barraprogreso();

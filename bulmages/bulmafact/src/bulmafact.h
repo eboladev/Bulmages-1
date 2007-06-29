@@ -55,7 +55,7 @@ public:
     ~bulmafact();
     QWorkspace2 *workspace();
     company *getcompany();
-    void createMainWindows();
+    void createMainWindows(Splash *);
 
 public slots:
     virtual void closeEvent(QCloseEvent *);

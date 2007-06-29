@@ -31,6 +31,7 @@
 #include "qworkspace2.h"
 #include "empresabase.h"
 
+#include "splashscreen.h"
 
 class ProveedorList;
 class ClientsList;
@@ -110,7 +111,7 @@ public:
     ClienteView *newClienteView();
     ProveedorView *newProveedorView();
     ArticuloView *newArticuloView();
-    void createMainWindows();
+    void createMainWindows(Splash *);
     void refreshArticles();
     void refreshPresupuestos();
     void refreshCobrosCliente();

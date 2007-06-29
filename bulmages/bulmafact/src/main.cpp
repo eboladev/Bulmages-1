@@ -97,12 +97,15 @@ int main(int argc, char **argv) {
 
         /// Cargamos el splashScreen.
         Splash *splashScr = new Splash();
-        delete splashScr;
+        splashScr->mensaje("Iniciando clases");
+        splashScr->setBarraProgreso(1);
 
         /// Leemos los argumentos pasados por la linea de comandos.
         QString db = argv[2];
         QString us = argv[3];
         QString pass = argv[4];
+
+
 
         /// Dependiendo de los argumentos pasados se lanza con unas opciones u otras para la
         /// conexion con la base de datos.
@@ -110,8 +113,10 @@ int main(int argc, char **argv) {
             confpr->setValor(CONF_LOGIN_USER, us);
             confpr->setValor(CONF_PASSWORD_USER, pass);
             bges = new bulmafact(db);
+	    bges->hide();
         } else if (argc == 3) {
             bges = new bulmafact(db);
+	    bges->hide();
         } else {
             logpass *login1 = new logpass(0, "");
             if (!login1->authOK()) {
@@ -123,7 +128,14 @@ int main(int argc, char **argv) {
             }
             delete login1;
             bges = new bulmafact("");
+	    bges->hide();
         } // end if
+
+	splashScr->show();
+        splashScr->mensaje("Leyendo configuracion");
+        splashScr->setBarraProgreso(2);
+
+
 
         /// Leemos la configuracion especifica de la base de datos que se ha abierto.
         QString confEsp = CONFGLOBAL + bges->getcompany()->nameDB() + ".conf";
@@ -134,6 +146,10 @@ int main(int argc, char **argv) {
         } else {
             confpr->leeconfig(confEsp);
         } // end if
+
+
+        splashScr->mensaje("Cargando Traducciones");
+        splashScr->setBarraProgreso(3);
 
         /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
         traductor = new QTranslator(0);
@@ -156,16 +172,31 @@ int main(int argc, char **argv) {
         } // end if
         theApp->installTranslator(traductor);
 
+        splashScr->mensaje("Cargando Plugins");
+        splashScr->setBarraProgreso(4);
+
         /// Hacemos la carga de las librerias que contienen los plugins.
         g_plugins->cargaLibs(confpr->valor(CONF_PLUGINS_BULMAFACT));
+
+        splashScr->mensaje("Lanzando Plugins");
+        splashScr->setBarraProgreso(5);
 
         /// Disparamos los plugins con entryPoint.
         g_plugins->lanza("entryPoint", bges);
 
+        splashScr->mensaje("Inicializando Componentes");
+        splashScr->setBarraProgreso(6);
         /// Lanzamos la creacion de las ventanas principales.
-        bges->createMainWindows();
+        bges->createMainWindows(splashScr);
 
         g_main = bges;
+
+        splashScr->mensaje("Terminado");
+        splashScr->setBarraProgreso(10);
+
+        delete splashScr;
+	bges->show();
+
         theApp->exec();
     } catch (...) {
         mensajeInfo(QApplication::translate("main", "Error inesperado en BulmaFact. El programa se cerrara."));

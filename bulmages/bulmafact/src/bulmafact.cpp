@@ -67,7 +67,6 @@ bulmafact::bulmafact(QString bd) : QMainWindow() {
     vboxlayout->addWidget(pWorkspace);
     vboxlayout->addWidget(m_pb);
 
-    showNormal();
     m_company = new company();
     m_company->setProgressBar(m_pb);
     m_company->init(bd, "BulmaFact");
@@ -95,9 +94,9 @@ bulmafact::bulmafact(QString bd) : QMainWindow() {
 
 /** Hacemos la creacion de las ventanas principales para que enten en plugins
 */
-void bulmafact::createMainWindows() {
+void bulmafact::createMainWindows(Splash *splashScr) {
     _depura("bulmafact::createMainWindows", 0);
-    m_company->createMainWindows();
+    m_company->createMainWindows(splashScr);
     _depura("END bulmafact::createMainWindows", 0);
 }
 

@@ -26,116 +26,86 @@
 
 
 Splash::Splash() : QDialog(0, Qt::FramelessWindowHint) {
-    QPixmap image0;
-    image0.load(confpr->valor(CONF_SPLASH_BULMAFACT));
+    image0 = new QPixmap();
+    image0->load(confpr->valor(CONF_SPLASH_BULMAFACT));
+
     /// Se modifica la paleta para que utilize la imagen como fondo.
     QPalette p = this->palette();
-    p.setBrush(QPalette::Window, image0);
+    p.setBrush(QPalette::Window, *image0);
     this->setPalette(p);
 
-    QLabel *l0 = new QLabel(this);
-    l0->setTextFormat(Qt::RichText);
-    l0->setGeometry(0, 0, image0.width(), image0.height());
+    /// Centramos la ventana en la pantalla.
+    QDesktopWidget *pantalla = new QDesktopWidget();
+    setGeometry((pantalla->screenGeometry().width() / 2) - (image0->width() / 2), (pantalla->screenGeometry().height() / 2) - ((image0->height() + 58) / 2), image0->width(), image0->height());
+    delete pantalla;
 
+    l0 = new QLabel(this);
+    l0->setTextFormat(Qt::RichText);
+    l0->setGeometry(0, 0, image0->width(), image0->height());
     l0->setAlignment(Qt::AlignTop);
     l0->setFont(QFont("Arial", 20, QFont::Bold));
     l0->setText(tr("<center><font size=+1 color=\"#a3ffa3\">BulmaFact</font>&nbsp;<font color=\"#0000ff\">0.9.3</font></center>"));
 
-    l1 = new QTextBrowser(this);
-    l1->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    l1->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    m_label = new QLabel(this);
+    m_label->setTextFormat(Qt::RichText);
+    m_label->setGeometry(0, image0->height() - 80, image0->width(), 15);
+    m_label->setAlignment(Qt::AlignTop);
+    m_label->setFont(QFont("helvetica", 8, QFont::Bold));
+    m_label->show();
 
-    l1->setAlignment(Qt::AlignBottom);
-    l1->setFont(QFont("helvetica", 9, QFont::Normal));
-    l1->setGeometry(0, image0.height() - 23, image0.width(), 58);
 
-    QPalette pl1 = l1->palette();
-    pl1.setBrush(QPalette::Base, QColor("#DDDDDD"));
-    l1->setPalette(pl1);
+    m_label1 = new QLabel(this);
+    m_label1->setAlignment(Qt::AlignBottom);
+    m_label1->setFont(QFont("helvetica", 9, QFont::Normal));
+    m_label1->setGeometry(0, image0->height() - 50, image0->width(), 50);
+
+
 
     barra = new QProgressBar(this);
     barra->setTextVisible(FALSE);
     /// Poniendo el minimo y maximo a 0 hace el efecto especial.
-    barra->setRange(0, 10);
-    barra->setGeometry(0, image0.height() - 38, image0.width(), 15);
+    barra->setRange(0, 100);
+    barra->setGeometry(0, image0->height() - 65, image0->width(), 15);
     QPalette pbarra = barra->palette();
     QColor colorfondobarra = QColor("#000000");
     colorfondobarra.setAlpha(100);
     pbarra.setBrush(QPalette::Base, colorfondobarra);
     barra->setPalette(pbarra);
 
-    this->paint();
-
-    QTimer timer1(this);
-    connect(&timer1, SIGNAL(timeout()), SLOT(paint()));
-    timer1.start(1750);
-
-    QTimer timer2(this);
-    connect(&timer2, SIGNAL(timeout()), SLOT(barraprogreso()));
-    timer2.start(50);
-
-    /// Centramos la ventana en la pantalla.
-    QDesktopWidget *pantalla = new QDesktopWidget();
-    move((pantalla->screenGeometry().width() / 2) - (image0.width() / 2), (pantalla->screenGeometry().height() / 2) - ((image0.height() + 58) / 2));
-
-    /// Nos muestra la ventana en modo MODAL.
-    exec();
 }
 
 
 Splash::~Splash() {
-    delete l1;
+    delete l0;
+    delete m_label;
+    delete m_label1;
+    delete image0;
 }
 
 
-bool Splash::event(QEvent *evt) {
-    if (evt->type() == QEvent::KeyPress) {
-        close();
-    } // end if
-    if (evt->type() == QEvent::MouseButtonDblClick) {
-        close();
-    } // end if
-    return QDialog::event(evt);
-}
 
 
-void Splash::paint() {
+void Splash::mensaje(QString mens) {
+    _depura(mens, 0);
     static int a = 0;
-    int cantidadmensajes;
+    static QString cadant="";
     QString cad = "";
-    QString mensajes[] = {
-                             tr("Calibrando los lasers del lector de CD"),
-                             tr("Comprobando la disquetera y la memoria RAM"),
-                             tr("Induciendo energia cuantica, entre su RAM y su ROM"),
-                             tr("Pequenyos golpecitos de reajuste del HD"),
-                             tr("Probando la velocidad del ventilador de la CPU"),
-                             tr("Haciendo PING contra el servidor de la MetaBase"),
-                             tr("Fallando a Segmento"),
-                             tr("Dejando tiempo libre al sistema"),
-                             tr("Sincronizando fases Alfa Beta"),
-                             tr("Flusheando datos con vidas inteligentes superiores"),
-                             tr("Permutando las particiones del Sistema Operativo"),
-                             tr("Crackeando BulmaFact")};
-
-    /// Cuenta el numero de mensajes.
-    cantidadmensajes = sizeof(mensajes) / sizeof(mensajes[0]);
-
-    if (a) {
-        cad = cad + "<FONT COLOR='#FF0000'>&nbsp;.......&nbsp;<B>OK</B></FONT><BR>";
-    } // end if
-
-    /// Recorre todos los elementos del array de mensajes cada vez que se llama a la funcion.
-    /// Cuando termina de recorrerlos todos cierra la ventana y el programa continua.
-    if (a >= cantidadmensajes)
-        this->close();
-
-    cad = cad + "<FONT COLOR='#000066'>" + mensajes[a] + "</FONT>";
+    QString cad1 = "";
+    if (a != 0)
+            cad1 = "<FONT SIZE=\"-3\" COLOR='#FF0000'>&nbsp;.......&nbsp;<B>OK</B></FONT><BR>";
+    cad = cad + "<FONT SIZE=\"-3\" COLOR='#000066'>" + mens + "</FONT>";
     a++;
-    l1->insertHtml(cad);
-    /// Asegura que los ultimos mensajes son visibles haciendo el desplazamiento necesario.
-    l1->ensureCursorVisible();
+    m_label1->setText(cadant+cad1+cad);
+    m_label1->repaint();
+    m_label->setText(mens);
+    m_label->repaint();
+    repaint();
+    cadant = cad;
 }
 
+void Splash::setBarraProgreso(int progreso) {
+        barra->setValue(progreso);
+}
 
 void Splash::barraprogreso() {
     if (barra->value() < 10) {
