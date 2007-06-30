@@ -1230,17 +1230,24 @@ Desea crearla?</source>
     </message>
 </context>
 <context>
+    <name>BusquedaCliente</name>
+    <message>
+        <source>Clien&amp;te</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>BusquedaClienteBase</name>
     <message>
         <source>Form1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Clien&amp;te:</source>
+        <source>Ctrl+T</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Ctrl+T</source>
+        <source>Cliente:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2193,10 +2200,6 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Numero de factura:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Serie:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2262,6 +2265,10 @@ Esta seguro que desea borrarlo?</source>
     </message>
     <message>
         <source>Registrar cobro a cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>N&amp;umero de factura:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2498,6 +2505,10 @@ Esta seguro que desea borrarlo?</source>
     </message>
     <message>
         <source>Fecha:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Al&amp;macen</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

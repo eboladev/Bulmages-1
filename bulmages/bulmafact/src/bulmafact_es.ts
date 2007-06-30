@@ -1230,17 +1230,24 @@ Desea crearla?</source>
     </message>
 </context>
 <context>
+    <name>BusquedaCliente</name>
+    <message>
+        <source>Clien&amp;te</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>BusquedaClienteBase</name>
     <message>
         <source>Form1</source>
         <translation></translation>
     </message>
     <message>
-        <source>Clien&amp;te:</source>
-        <translation type="unfinished">Cliente:</translation>
+        <source>Ctrl+T</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Ctrl+T</source>
+        <source>Cliente:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2193,10 +2200,6 @@ Esta seguro que desea borrarlo?</source>
         <translation>Descripción:</translation>
     </message>
     <message>
-        <source>Numero de factura:</source>
-        <translation>Número de factura:</translation>
-    </message>
-    <message>
         <source>Serie:</source>
         <translation>Serie:</translation>
     </message>
@@ -2263,6 +2266,10 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <source>Registrar cobro a cliente</source>
         <translation></translation>
+    </message>
+    <message>
+        <source>N&amp;umero de factura:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2500,6 +2507,10 @@ Esta seguro que desea borrarlo?</source>
         <source>Fecha:</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Al&amp;macen</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FacturasList</name>
@@ -2731,10 +2742,6 @@ Esta seguro que desea borrarlo?</source>
 </context>
 <context>
     <name>FacturasProveedorListBase</name>
-    <message>
-        <source>Procesa&amp;da</source>
-        <translation type="obsolete">Procesa&amp;da</translation>
-    </message>
     <message>
         <source>Nueva factura</source>
         <translation></translation>
@@ -5609,14 +5616,6 @@ Desea crearlo?</source>
     <message>
         <source>&lt;center&gt;&lt;font size=+1 color=&quot;#a3ffa3&quot;&gt;BulmaFact&lt;/font&gt;&amp;nbsp;&lt;font color=&quot;#0000ff&quot;&gt;0.9.3&lt;/font&gt;&lt;/center&gt;</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Induciendo energia cuantica, entre su RAM y su ROM</source>
-        <translation type="obsolete">Induciendo energía cuántica, entre su RAM y su ROM</translation>
-    </message>
-    <message>
-        <source>Pequenyos golpecitos de reajuste del HD</source>
-        <translation type="obsolete">Pequeños golpecitos de reajuste del HD</translation>
     </message>
 </context>
 <context>
