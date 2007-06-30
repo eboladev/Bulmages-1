@@ -118,7 +118,7 @@ void company::createMainWindows(Splash *splash) {
     /// Establecemos el porcentaje del carga de informaci&oacute;n en las diferentes ventanas.
     /// pb = 0%
     _depura("company::createMainWindows inicializamos m_articleslist\n", 1);
-    splash->mensaje("Inicializando listado de Articulos");
+    splash->mensaje(QApplication::translate("company", "Inicializando listado de Articulos"));
     splash->setBarraProgreso(7);
     m_progressbar->setValue(0);
     m_articleslist = new ArticuloList(this);
@@ -127,7 +127,7 @@ void company::createMainWindows(Splash *splash) {
 
     /// pb = 8%
     _depura("company::createMainWindows inicializamos m_providerslist\n", 1);
-    splash->mensaje("Inicializando listado de Proveedores");
+    splash->mensaje(QApplication::translate("company","Inicializando listado de Proveedores"));
     splash->setBarraProgreso(10);
     m_progressbar->setValue(8);
     m_clientsList = new ClientsList(this);
@@ -136,7 +136,7 @@ void company::createMainWindows(Splash *splash) {
 
     /// pb = 16%
     _depura("company::createMainWindows inicializamos m_clientesList\n", 1);
-    splash->mensaje("Inicializando listado de Clientes");
+    splash->mensaje(QApplication::translate("company","Inicializando listado de Clientes"));
     splash->setBarraProgreso(16);
     m_progressbar->setValue(16);
     m_providerslist = new ProveedorList(this);
@@ -145,7 +145,7 @@ void company::createMainWindows(Splash *splash) {
 
     /// pb = 32%
     _depura("company::createMainWindows inicializamos m_presupuestosList\n", 1);
-    splash->mensaje("Inicializando listado de Presupuestos");
+    splash->mensaje(QApplication::translate("company","Inicializando listado de Presupuestos"));
     splash->setBarraProgreso(32);
     m_progressbar->setValue(32);
     m_presupuestosList = new PresupuestoList(this);
@@ -154,7 +154,7 @@ void company::createMainWindows(Splash *splash) {
 
     /// pb = 40%
     _depura("company::createMainWindows inicializamos m_pedidosclienteList\n", 1);
-    splash->mensaje("Inicializando listado de Pedidos Cliente");
+    splash->mensaje(QApplication::translate("company","Inicializando listado de Pedidos Cliente"));
     splash->setBarraProgreso(40);
     m_progressbar->setValue(40);
     m_pedidosclienteList = new PedidosClienteList(this);
@@ -163,7 +163,7 @@ void company::createMainWindows(Splash *splash) {
 
     /// pb = 48%
     _depura("company::createMainWindows inicializamos m_clientDelivNotesList\n", 1);
-    splash->mensaje("Inicializando listado de Albaranes Cliente");
+    splash->mensaje(QApplication::translate("company","Inicializando listado de Albaranes Cliente"));
     splash->setBarraProgreso(48);
     m_progressbar->setValue(48);
     m_clientDelivNotesList = new AlbaranClienteList(this);
@@ -172,7 +172,7 @@ void company::createMainWindows(Splash *splash) {
 
     /// pb = 56%
     _depura("company::createMainWindows inicializamos m_facturasList\n", 1);
-    splash->mensaje("Inicializando listado de Facturas");
+    splash->mensaje(QApplication::translate("company","Inicializando listado de Facturas"));
     splash->setBarraProgreso(56);
     m_progressbar->setValue(56);
     m_facturasList = new FacturasList(this);
@@ -181,7 +181,7 @@ void company::createMainWindows(Splash *splash) {
 
     /// pb = 64%
     _depura("company::createMainWindows inicializamos m_cobrosList\n", 1);
-    splash->mensaje("Inicializando listado de Cobros");
+    splash->mensaje(QApplication::translate("company","Inicializando listado de Cobros"));
     splash->setBarraProgreso(64);
     m_progressbar->setValue(64);
     m_cobrosList = new CobrosList(this);
@@ -190,7 +190,7 @@ void company::createMainWindows(Splash *splash) {
 
     /// pb = 72%
     _depura("company::createMainWindows inicializamos m_pedidosproveedorlist\n", 1);
-    splash->mensaje("Inicializando listado de Pedidos Proveedor");
+    splash->mensaje(QApplication::translate("company","Inicializando listado de Pedidos Proveedor"));
     splash->setBarraProgreso(72);
     m_progressbar->setValue(72);
     m_pedidosproveedorList = new PedidosProveedorList(this);
@@ -199,7 +199,7 @@ void company::createMainWindows(Splash *splash) {
 
     /// pb = 80%
     _depura("company::createMainWindows inicializamos m_albaranesproveedorlist\n", 1);
-    splash->mensaje("Inicializando listado de Albaranes Proveedor");
+    splash->mensaje(QApplication::translate("company","Inicializando listado de Albaranes Proveedor"));
     splash->setBarraProgreso(80);
     m_progressbar->setValue(80);
     m_albaranesproveedor = new AlbaranesProveedor(this);
@@ -208,7 +208,7 @@ void company::createMainWindows(Splash *splash) {
 
     /// pb = 88%
     _depura("company::createMainWindows inicializamos m_facturasproveedorlist\n", 1);
-    splash->mensaje("Inicializando listado de Facturas Proveedor");
+    splash->mensaje(QApplication::translate("company","Inicializando listado de Facturas Proveedor"));
     splash->setBarraProgreso(88);
     m_progressbar->setValue(88);
     m_facturasproveedorlist = new FacturasProveedorList(this);
@@ -217,7 +217,7 @@ void company::createMainWindows(Splash *splash) {
 
     /// pb = 96%
     _depura("company::createMainWindows inicializamos m_pagosList\n", 1);
-    splash->mensaje("Inicializando listado de Pagos");
+    splash->mensaje(QApplication::translate("company","Inicializando listado de Pagos"));
     splash->setBarraProgreso(96);
     m_progressbar->setValue(96);
     m_pagosList = new PagosList(this);

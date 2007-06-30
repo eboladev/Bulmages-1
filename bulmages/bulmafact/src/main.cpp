@@ -97,7 +97,7 @@ int main(int argc, char **argv) {
 
         /// Cargamos el splashScreen.
         Splash *splashScr = new Splash();
-        splashScr->mensaje("Iniciando clases");
+        splashScr->mensaje(QApplication::translate("main","Iniciando clases"));
         splashScr->setBarraProgreso(1);
 
         /// Leemos los argumentos pasados por la linea de comandos.
@@ -132,7 +132,7 @@ int main(int argc, char **argv) {
         } // end if
 
 	splashScr->show();
-        splashScr->mensaje("Leyendo configuracion");
+        splashScr->mensaje(QApplication::translate("main","Leyendo configuracion"));
         splashScr->setBarraProgreso(2);
 
 
@@ -148,7 +148,7 @@ int main(int argc, char **argv) {
         } // end if
 
 
-        splashScr->mensaje("Cargando Traducciones");
+        splashScr->mensaje(QApplication::translate("main","Cargando Traducciones"));
         splashScr->setBarraProgreso(3);
 
         /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
@@ -172,27 +172,27 @@ int main(int argc, char **argv) {
         } // end if
         theApp->installTranslator(traductor);
 
-        splashScr->mensaje("Cargando Plugins");
+        splashScr->mensaje(QApplication::translate("main","Cargando Plugins"));
         splashScr->setBarraProgreso(4);
 
         /// Hacemos la carga de las librerias que contienen los plugins.
         g_plugins->cargaLibs(confpr->valor(CONF_PLUGINS_BULMAFACT));
 
-        splashScr->mensaje("Lanzando Plugins");
+        splashScr->mensaje(QApplication::translate("main","Lanzando Plugins"));
         splashScr->setBarraProgreso(5);
 
         /// Disparamos los plugins con entryPoint.
         g_plugins->lanza("entryPoint", bges);
 
-        splashScr->mensaje("Inicializando Componentes");
+        splashScr->mensaje(QApplication::translate("main","Inicializando Componentes"));
         splashScr->setBarraProgreso(6);
         /// Lanzamos la creacion de las ventanas principales.
         bges->createMainWindows(splashScr);
 
         g_main = bges;
 
-        splashScr->mensaje("Terminado");
-        splashScr->setBarraProgreso(10);
+        splashScr->mensaje(QApplication::translate("main","Terminado"));
+        splashScr->setBarraProgreso(100);
 
         delete splashScr;
 	bges->show();
