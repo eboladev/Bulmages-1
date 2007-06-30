@@ -605,6 +605,7 @@ CREATE TABLE cobro (
     idcobro serial PRIMARY KEY,
     idcliente integer NOT NULL REFERENCES cliente(idcliente),
     fechacobro date DEFAULT NOW(),
+    fechavenccobro date DEFAULT NOW(),
     cantcobro numeric(12, 2) DEFAULT 0,
     refcobro character varying(12) NOT NULL,
     previsioncobro boolean DEFAULT FALSE,

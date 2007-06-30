@@ -90,6 +90,24 @@ DROP FUNCTION aux() CASCADE;
 \echo "Ampliada la capacidad de los campos de descripcion en las lineas de detalle"
 
 
+CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
+BEGIN
+    ALTER TABLE	lpresupuesto ALTER COLUMN desclpresupuesto TYPE character varying;
+    ALTER TABLE lpedidocliente ALTER COLUMN desclpedidocliente TYPE character varying;
+    ALTER TABLE lpedidoproveedor ALTER COLUMN desclpedidoproveedor TYPE character varying;
+    ALTER TABLE	lalbaranp ALTER COLUMN desclalbaranp TYPE character varying;
+    ALTER TABLE	lalbaran ALTER COLUMN desclalbaran TYPE character varying;
+    ALTER TABLE	lfactura ALTER COLUMN desclfactura TYPE character varying;
+    ALTER TABLE	lfacturap ALTER COLUMN desclfacturap TYPE character varying;
+    RETURN 0;
+END;
+' LANGUAGE plpgsql;
+SELECT aux();
+DROP FUNCTION aux() CASCADE;
+\echo "Agregado el campo de Fecha Vencimiento de cobro"
+
+
+
 -- ================================== ACTUALIZACION  ===================================
 -- =====================================================================================
 
@@ -99,11 +117,12 @@ CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
 	as RECORD;
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
-	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.9.3-0001'' WHERE nombre = ''DatabaseRevision'';
-	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.3-0001'');
+	SELECT INTO as * FROM pg_attribute WHERE attname=''fechavenccobro'';
+	IF NOT FOUND THEN
+
+		ALTER TABLE cobro ADD COLUMN fechavenccobro date;
+		ALTER TABLE cobro ALTER COLUMN fechavenccobro SET DEFAULT NOW();
+
 	END IF;
 	RETURN 0;
 END;
