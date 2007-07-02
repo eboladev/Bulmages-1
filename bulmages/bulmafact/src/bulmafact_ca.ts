@@ -1614,72 +1614,72 @@ Desitja crear-la?</translation>
     <message>
         <location filename="" line="0"/>
         <source>ID cliente</source>
-        <translation type="unfinished">Id client</translation>
+        <translation>ID client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nombre del cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom del client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nombre alternativo del cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom alternatiu del client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>C.I.F. del cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>C.I.F. del client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Numero cuenta corriente</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre compte corrent</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Direccion</source>
-        <translation type="unfinished"></translation>
+        <translation>Direcció</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Poblacion</source>
-        <translation type="unfinished"></translation>
+        <translation>Població</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Provincia</source>
-        <translation type="unfinished"></translation>
+        <translation>Provincia</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Codigo postal</source>
-        <translation type="unfinished"></translation>
+        <translation>Codi postal</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Numero de telefono</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre de telèfon</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Numero de telefono en el trabajo</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre de telèfon en el treball</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Numero de telefono movil</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre de telèfon móbil</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Numero de fax</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre de fax</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Direccion electronica</source>
-        <translation type="unfinished"></translation>
+        <translation>Direcció electrònica</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -1719,17 +1719,17 @@ Desitja crear-la?</translation>
     <message>
         <location filename="" line="0"/>
         <source>Regimen fiscal</source>
-        <translation type="unfinished"></translation>
+        <translation>Règim fiscal</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Forma de pago</source>
-        <translation type="unfinished"></translation>
+        <translation>Forma de pagament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Recargo de Equivalencia</source>
-        <translation type="unfinished"></translation>
+        <translation>Recàrreg d&apos;equivalència</translation>
     </message>
 </context>
 <context>
@@ -1737,187 +1737,187 @@ Desitja crear-la?</translation>
     <message>
         <location filename="" line="0"/>
         <source>Cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Pres&amp;upuestos</source>
-        <translation type="unfinished"></translation>
+        <translation>Press&amp;uposts</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Pedidos</source>
-        <translation type="unfinished"></translation>
+        <translation>Comanes</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Albaranes</source>
-        <translation type="unfinished"></translation>
+        <translation>Albarans</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Facturas</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Factutes</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Guardar cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Desar client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Borrar cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Esborrar client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Datos generales</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Dades generals</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nombre comercial:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom comercial:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Direccion:</source>
-        <translation type="unfinished"></translation>
+        <translation>Direcció:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Codigo postal:</source>
-        <translation type="unfinished"></translation>
+        <translation>Codi postal:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Poblacion:</source>
-        <translation type="unfinished"></translation>
+        <translation>Població:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Provincia:</source>
-        <translation type="unfinished"></translation>
+        <translation>Provincia:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Pagina web:</source>
-        <translation type="unfinished"></translation>
+        <translation>Pàgina web:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Datos bancarios:</source>
-        <translation type="unfinished"></translation>
+        <translation>Dades bancaris:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Cancelar</source>
-        <translation type="unfinished">&amp;Cancel·lar</translation>
+        <translation>&amp;Cancel·lar</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Aceptar</source>
-        <translation type="unfinished">&amp;Aceptar</translation>
+        <translation>&amp;Aceptar</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Numero de fax:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre de fax:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Telefono del trabajo:</source>
-        <translation type="unfinished"></translation>
+        <translation>Telèfon del treball:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nombre completo:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom complet:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Telefono fijo:</source>
-        <translation type="unfinished"></translation>
+        <translation>Telèfon fix:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Correo electronico:</source>
-        <translation type="unfinished"></translation>
+        <translation>Correu electrònic:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Codigo de cliente:</source>
-        <translation type="unfinished"></translation>
+        <translation>Codi de client:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Empresa:</source>
-        <translation type="unfinished"></translation>
+        <translation>Empresa:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Telefono movil:</source>
-        <translation type="unfinished"></translation>
+        <translation>Telèfon móbil:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>C.I.F./N.I.F./N.I.E.:</source>
-        <translation type="unfinished"></translation>
+        <translation>C.I.F./N.I.F./N.I.E.:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Comentarios:</source>
-        <translation type="unfinished"></translation>
+        <translation>Comentaris:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Datos de comercio electronico:</source>
-        <translation type="unfinished"></translation>
+        <translation>Dades de comerci electrònic:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Regimen fiscal</source>
-        <translation type="unfinished"></translation>
+        <translation>Règim fiscal</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Forma de pago</source>
-        <translation type="unfinished"></translation>
+        <translation>Forma de pagament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Aplicar Recargo de Equivalencia</source>
-        <translation type="unfinished"></translation>
+        <translation>Aplicar Recarreg d&apos;equivalència</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Imprimir informe</source>
-        <translation type="unfinished"></translation>
+        <translation>Imprimir Informe</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Imprimir</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+D</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+P</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Cobros</source>
-        <translation type="unfinished"></translation>
+        <translation>Cobraments</translation>
     </message>
 </context>
 <context>
@@ -1925,87 +1925,87 @@ Desitja crear-la?</translation>
     <message>
         <location filename="" line="0"/>
         <source>ID cliente</source>
-        <translation type="unfinished">Id client</translation>
+        <translation>ID client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nombre de cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom de client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nombre alternativo del cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom alternatiu del client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>C.I.F.</source>
-        <translation type="unfinished"></translation>
+        <translation>C.I.F.</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Numero cuenta corriente</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom de compte corrent</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Direccion</source>
-        <translation type="unfinished">Direcció</translation>
+        <translation>Direcció</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Poblacion</source>
-        <translation type="unfinished">Població</translation>
+        <translation>Població</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Codigo postal</source>
-        <translation type="unfinished">Codi postal</translation>
+        <translation>Codi postal</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Numero de telefono</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre de telèfon</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Numero de fax</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre de fax</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Direccion de correo electronica</source>
-        <translation type="unfinished"></translation>
+        <translation>Direcció de correu electrònic</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Direccion URL</source>
-        <translation type="unfinished"></translation>
+        <translation>Direcció URL</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha de alta del cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Data d&apos;alta del client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha de baja del cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Data de baixa del client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Comentarios</source>
-        <translation type="unfinished">Comentaris</translation>
+        <translation>Comentaris</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Codigo</source>
-        <translation type="unfinished">Codi</translation>
+        <translation>Codi</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Empresa</source>
-        <translation type="unfinished"></translation>
+        <translation>Empresa</translation>
     </message>
 </context>
 <context>
@@ -2013,28 +2013,29 @@ Desitja crear-la?</translation>
     <message>
         <location filename="" line="0"/>
         <source>Error al crear el cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Error al crear el client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Error al cargar el cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Error al carregar el client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Edicion de clientes</source>
-        <translation type="unfinished"></translation>
+        <translation>Edició de clients</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Esta a punto de borrar un cliente.
 Esta seguro que desea borrarlo?</source>
-        <translation type="unfinished"></translation>
+        <translation>Està a punt d&apos;esborrar el client.
+Està segur de que vol esborrar-lo?</translation>
     </message>
 </context>
 <context>
@@ -2042,37 +2043,37 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Elija el archivo</source>
-        <translation type="unfinished"></translation>
+        <translation>Trii el arxiu</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Clientes (*.xml)</source>
-        <translation type="unfinished"></translation>
+        <translation>Clients (*.xml)</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Selector de clientes</source>
-        <translation type="unfinished"></translation>
+        <translation>Selector de clients</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Error al borrar un cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Esborrar un client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Listado de Clientes</source>
-        <translation type="unfinished"></translation>
+        <translation>Llistat de Clients</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Editar cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Borrar cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Esborrar client</translation>
     </message>
 </context>
 <context>
@@ -2080,72 +2081,72 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Clientes</source>
-        <translation type="unfinished"></translation>
+        <translation>Clients</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Exportar</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportar</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Importar</source>
-        <translation type="unfinished"></translation>
+        <translation>Importar</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Pro&amp;cesados</source>
-        <translation type="unfinished"></translation>
+        <translation>Pro&amp;cessats</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nuevo cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Nou client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Editar cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Borrar cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Esborrar client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Imprimir listado</source>
-        <translation type="unfinished">Imprimir llistat</translation>
+        <translation>Imprimir llistat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Filtrar clientes</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtrar clients</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Configurar listado</source>
-        <translation type="unfinished">Configurar llistat</translation>
+        <translation>Configurar llistat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Actualizar listado</source>
-        <translation type="unfinished">Actual·lizar llistat</translation>
+        <translation>Actual·lizar llistat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Exportar clientes</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportar clients</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Importar clientes</source>
-        <translation type="unfinished"></translation>
+        <translation>Importar clients</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Buscar:</source>
-        <translation type="unfinished">Sercar:</translation>
+        <translation>Cercar:</translation>
     </message>
 </context>
 <context>
@@ -2153,42 +2154,42 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>ID cobro</source>
-        <translation type="unfinished"></translation>
+        <translation>ID cobro</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>ID cliente</source>
-        <translation type="unfinished">Id client</translation>
+        <translation>ID client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Prevision de cobro</source>
-        <translation type="unfinished"></translation>
+        <translation>Pevisió de cobrament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha de cobro</source>
-        <translation type="unfinished"></translation>
+        <translation>Data de cobrament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Referencia del cobro</source>
-        <translation type="unfinished"></translation>
+        <translation>Referència de cobrament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Cantidad</source>
-        <translation type="unfinished"></translation>
+        <translation>Quantitat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Comentarios</source>
-        <translation type="unfinished">Comentaris</translation>
+        <translation>Comentaris</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha de vencimiento</source>
-        <translation type="unfinished"></translation>
+        <translation>Data de venciment</translation>
     </message>
 </context>
 <context>
@@ -2196,77 +2197,77 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Guardar cobro</source>
-        <translation type="unfinished"></translation>
+        <translation>Desar cobrament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Borrar cobro</source>
-        <translation type="unfinished"></translation>
+        <translation>Esborrar cobrament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Referencia:</source>
-        <translation type="unfinished">Referència:</translation>
+        <translation>Referència:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Prevision</source>
-        <translation type="unfinished"></translation>
+        <translation>Previsió</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha cobro:</source>
-        <translation type="unfinished"></translation>
+        <translation>Data de cobrament:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Total cobro:</source>
-        <translation type="unfinished"></translation>
+        <translation>Total cobrament:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Aceptar</source>
-        <translation type="unfinished">&amp;Aceptar</translation>
+        <translation>&amp;Aceptar</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Cancelar</source>
-        <translation type="unfinished">&amp;Cancel·lar</translation>
+        <translation>&amp;Cancel·lar</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nuevo cobro a cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Nou cobrament a client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descripcion del cobro:</source>
-        <translation type="unfinished"></translation>
+        <translation>Descripció del cobrament:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+D</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Banco:</source>
-        <translation type="unfinished"></translation>
+        <translation>Banc:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+I</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha vencimiento:</source>
-        <translation type="unfinished"></translation>
+        <translation>Data de venciment:</translation>
     </message>
 </context>
 <context>
@@ -2274,12 +2275,12 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Error al crear el cobro</source>
-        <translation type="unfinished"></translation>
+        <translation>Error al crear el cobrament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Cobro</source>
-        <translation type="unfinished"></translation>
+        <translation>Cobrament</translation>
     </message>
 </context>
 <context>
@@ -2287,32 +2288,32 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Editar cobro</source>
-        <translation type="unfinished"></translation>
+        <translation>Editatr el cobrament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Borrar cobro</source>
-        <translation type="unfinished"></translation>
+        <translation>Esborrar el cobrament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Debe seleccionar una fila primero</source>
-        <translation type="unfinished"></translation>
+        <translation>Ha de seleccionar una fila primer</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Debe seleccionar una linea</source>
-        <translation type="unfinished">Ha de seleccionar una línia</translation>
+        <translation>Ha de seleccionar una línia</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Cobros a clientes</source>
-        <translation type="unfinished"></translation>
+        <translation>Cobrament a clients</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Error al borrar el cobro a cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Error a l&apos;esborrar el cobrament a client</translation>
     </message>
 </context>
 <context>
@@ -2320,112 +2321,112 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Nuevo cobro</source>
-        <translation type="unfinished"></translation>
+        <translation>Nou cobrament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Editar cobro</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar el cobrament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Borrar cobro</source>
-        <translation type="unfinished"></translation>
+        <translation>Esborrar el cobrament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Imprimir listado</source>
-        <translation type="unfinished">Imprimir llistat</translation>
+        <translation>Imprimir llistat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Filtrar cobros</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtrar cobraments</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Configurar listado</source>
-        <translation type="unfinished">Configurar llistat</translation>
+        <translation>Configurar llistat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Actualizar listado</source>
-        <translation type="unfinished">Actual·lizar llistat</translation>
+        <translation>Actual·lizar llistat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Buscar:</source>
-        <translation type="unfinished">Sercar:</translation>
+        <translation>Cercar:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha inicial:</source>
-        <translation type="unfinished">Data inicial:</translation>
+        <translation>Data inicial:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha final:</source>
-        <translation type="unfinished">Data final:</translation>
+        <translation>Data final:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Total:</source>
-        <translation type="unfinished">Total:</translation>
+        <translation>Total:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Cobros Previstos</source>
-        <translation type="unfinished"></translation>
+        <translation>Cobraments previstos</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Cobros Efectivos</source>
-        <translation type="unfinished"></translation>
+        <translation>Cobraments Efectius</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Cobros a clientes</source>
-        <translation type="unfinished"></translation>
+        <translation>Cobraments a clients</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+N</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+E</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+D</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+P</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+F</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+B</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>F5</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Banco:</source>
-        <translation type="unfinished"></translation>
+        <translation>Banc:</translation>
     </message>
 </context>
 <context>
@@ -2433,82 +2434,82 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>ID cliente</source>
-        <translation type="unfinished">Id client</translation>
+        <translation>ID client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nombre</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>C.I.F.</source>
-        <translation type="unfinished"></translation>
+        <translation>C.I.F.</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Numero de telefono</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre de telèfon</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Direccion de correo electronico</source>
-        <translation type="unfinished"></translation>
+        <translation>Direcció de correu electrònic</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha de cobro</source>
-        <translation type="unfinished"></translation>
+        <translation>Data de cobrament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Cantidad</source>
-        <translation type="unfinished"></translation>
+        <translation>Quantitat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Referencia del cobro</source>
-        <translation type="unfinished"></translation>
+        <translation>Referència de cobrament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Prevision de cobro</source>
-        <translation type="unfinished"></translation>
+        <translation>Previsió de cobrament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Comentarios</source>
-        <translation type="unfinished">Comentaris</translation>
+        <translation>Comentaris</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>ID trabajador</source>
-        <translation type="unfinished"></translation>
+        <translation>ID treballador</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nombre del trabajador</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom del treballador</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Apellidos del trabajador</source>
-        <translation type="unfinished"></translation>
+        <translation>Cognoms del treballador</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>ID cobro</source>
-        <translation type="unfinished"></translation>
+        <translation>ID cobrament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Banco</source>
-        <translation type="unfinished"></translation>
+        <translation>Banc</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha de vencimiento</source>
-        <translation type="unfinished"></translation>
+        <translation>Data de venciment</translation>
     </message>
 </context>
 <context>
@@ -2516,77 +2517,77 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Plazo primer recibo (dias):</source>
-        <translation type="unfinished"></translation>
+        <translation>Termini primer rebut (dies):</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descuento:</source>
-        <translation type="unfinished"></translation>
+        <translation>Descompte:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Numero de plazos:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre de terminis:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Plazo entre recibos (dias):</source>
-        <translation type="unfinished"></translation>
+        <translation>Termini entre rebuts (dies):</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nueva forma de pago</source>
-        <translation type="unfinished"></translation>
+        <translation>Nova forma de pagament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Borrar forma de pago</source>
-        <translation type="unfinished"></translation>
+        <translation>Esborrar forma de pagament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Guardar forma de pago</source>
-        <translation type="unfinished"></translation>
+        <translation>Desar forma de pagament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Formas de pago</source>
-        <translation type="unfinished"></translation>
+        <translation>Formes de pagament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Informacion de la forma de pago:</source>
-        <translation type="unfinished"></translation>
+        <translation>Informació de la forma de pagament:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nombre de la forma de pago:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre de la forma de pagament:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Tipo plazo entre recibos:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipus de termini entre rebuts:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Tipo plazo primer pago:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipus de termini primer rebut:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Forma de pago:</source>
-        <translation type="unfinished">Forma de pagament:</translation>
+        <translation>Forma de pagament:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Aceptar</source>
-        <translation type="unfinished">&amp;Aceptar</translation>
+        <translation>&amp;Aceptar</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Cancelar</source>
-        <translation type="unfinished">&amp;Cancel·lar</translation>
+        <translation>&amp;Cancel·lar</translation>
     </message>
 </context>
 <context>
@@ -2594,12 +2595,12 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Guardar forma de pago</source>
-        <translation type="unfinished"></translation>
+        <translation>Desar forma de pagament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Desea guardar los cambios.</source>
-        <translation type="unfinished"></translation>
+        <translation>Desitja desar els canvis.</translation>
     </message>
 </context>
 <context>
@@ -2607,27 +2608,27 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Id factura</source>
-        <translation type="unfinished"></translation>
+        <translation>ID factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id cliente</source>
-        <translation type="unfinished">Id client</translation>
+        <translation>ID client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id almacen</source>
-        <translation type="unfinished">Id magatzem</translation>
+        <translation>ID magatzem</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Numero factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ffactura</source>
-        <translation type="unfinished"></translation>
+        <translation>Factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -2637,32 +2638,32 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Codigo serie factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Codi sèrie factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Comentario factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Comentari factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Referencia factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Referència factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descripcion factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Descripció factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id trabajador</source>
-        <translation type="unfinished">Id trabajador</translation>
+        <translation>ID treballador</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id formad de pago</source>
-        <translation type="unfinished"></translation>
+        <translation>ID forma de pagament</translation>
     </message>
 </context>
 <context>
@@ -2675,17 +2676,17 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Detalle</source>
-        <translation type="unfinished">&amp;Detall</translation>
+        <translation>&amp;Detall</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Desc&amp;uentos</source>
-        <translation type="unfinished"></translation>
+        <translation>Descom&amp;ptes</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Comentarios</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Comentaris</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -2695,77 +2696,77 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Guardar factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Desar factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Borrar factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Esborrar factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Imprimir factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Imprimir factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Referencia:</source>
-        <translation type="unfinished">Referència:</translation>
+        <translation>Referència:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descripcion:</source>
-        <translation type="unfinished">Descipciò:</translation>
+        <translation>Descipciò:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Serie:</source>
-        <translation type="unfinished"></translation>
+        <translation>Sèrie:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Forma de pago:</source>
-        <translation type="unfinished">Forma de pagament:</translation>
+        <translation>Forma de pagament:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha de creacion:</source>
-        <translation type="unfinished">Data de creaciò:</translation>
+        <translation>Data de creaciò:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Almacen:</source>
-        <translation type="unfinished">Magatzem:</translation>
+        <translation>Magatzem:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Cancelar</source>
-        <translation type="unfinished">&amp;Cancel·lar</translation>
+        <translation>&amp;Cancel·lar</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Aceptar</source>
-        <translation type="unfinished">&amp;Aceptar</translation>
+        <translation>&amp;Aceptar</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Agregar albaran a la factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Afegir albarà a la factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Mostrar/ocultar cabecera</source>
-        <translation type="unfinished">Mostrar/ocultar capçalera</translation>
+        <translation>Mostrar/ocultar capçalera</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descuentos:</source>
-        <translation type="unfinished">Descomptes:</translation>
+        <translation>Descomptes:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Base imponible:</source>
-        <translation type="unfinished">Base imposable:</translation>
+        <translation>Base imposable:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -2775,7 +2776,7 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Impuestos:</source>
-        <translation type="unfinished">Impostos:</translation>
+        <translation>Impostos:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -2790,22 +2791,22 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Nueva factura a cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Nova factura client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ver albaranes con la misma referencia</source>
-        <translation type="unfinished"></translation>
+        <translation>Veure albarans amb la mateixa referència</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Registrar cobro a cliente</source>
-        <translation type="unfinished">Registrar cobrament a client</translation>
+        <translation>Registrar cobrament a client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>N&amp;umero de factura:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre de fact&amp;ura:</translation>
     </message>
 </context>
 <context>
@@ -2813,22 +2814,22 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Id facturap</source>
-        <translation type="unfinished"></translation>
+        <translation>ID factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>ID proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Numero</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha</source>
-        <translation type="unfinished"></translation>
+        <translation>Data</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -2838,72 +2839,72 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Comentario facturap</source>
-        <translation type="unfinished"></translation>
+        <translation>Comentari factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Referencia facturap</source>
-        <translation type="unfinished"></translation>
+        <translation>Referència factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descripcion facturap</source>
-        <translation type="unfinished"></translation>
+        <translation>Descripció factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id trabajador</source>
-        <translation type="unfinished">Id trabajador</translation>
+        <translation>ID treballador</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id forma de pago</source>
-        <translation type="unfinished">Id forma de pagament</translation>
+        <translation>ID forma de pagament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Codigo</source>
-        <translation type="unfinished">Codi</translation>
+        <translation>Codi</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Concepto</source>
-        <translation type="unfinished">Concepte</translation>
+        <translation>Concepte</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Cant.</source>
-        <translation type="unfinished"></translation>
+        <translation>Quant.</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Precio</source>
-        <translation type="unfinished">Preu</translation>
+        <translation>Preu</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Desc.</source>
-        <translation type="unfinished"></translation>
+        <translation>Descr.</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Total</source>
-        <translation type="unfinished">Total</translation>
+        <translation>Total</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descuento</source>
-        <translation type="unfinished">Descompte</translation>
+        <translation>Descompte</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Porcentaje</source>
-        <translation type="unfinished">Porcentatge</translation>
+        <translation>Percentatge</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Base </source>
-        <translation type="unfinished">Base Imponible</translation>
+        <translation>Base Imponible</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -2913,7 +2914,7 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Total </source>
-        <translation type="unfinished">Total</translation>
+        <translation>Total(sp)</translation>
     </message>
 </context>
 <context>
@@ -2936,82 +2937,82 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Guardar factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Desar factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Borrar factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Esborrar factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Forma de pago:</source>
-        <translation type="unfinished">Forma de pagament:</translation>
+        <translation>Forma de pagament:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descripcion:</source>
-        <translation type="unfinished">Descipciò:</translation>
+        <translation>Descripció:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Cancelar</source>
-        <translation type="unfinished">&amp;Cancel·lar</translation>
+        <translation>&amp;Cancel·lar</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Aceptar</source>
-        <translation type="unfinished">&amp;Aceptar</translation>
+        <translation>&amp;Acceptar</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha de factura:</source>
-        <translation type="unfinished"></translation>
+        <translation>Data de factura:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descuen&amp;tos</source>
-        <translation type="unfinished">Descon&amp;tes</translation>
+        <translation>Descon&amp;tes</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Comentario&amp;s</source>
-        <translation type="unfinished">Comentari&amp;s</translation>
+        <translation>Comentari&amp;s</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descuentos:</source>
-        <translation type="unfinished">Descomptes:</translation>
+        <translation>Descomptes:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Base imponible:</source>
-        <translation type="unfinished">Base imposable:</translation>
+        <translation>Base imposable:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Impuestos:</source>
-        <translation type="unfinished">Impostos:</translation>
+        <translation>Impostos:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Total:</source>
-        <translation type="unfinished">Total:</translation>
+        <translation>Total:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nueva factura de proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Nova factura proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Referencia de la factura:</source>
-        <translation type="unfinished"></translation>
+        <translation>Referència de la factura:</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="" line="0"/>
         <source>Nº de factura:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nº de factura:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -3021,7 +3022,7 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Ver albaranes con la misma referencia</source>
-        <translation type="unfinished"></translation>
+        <translation>Veure albarans amb la mateixa referència</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -3031,12 +3032,12 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Registrar pago a proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Registrar pagament a proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Mostrar/ocultar cabecera</source>
-        <translation type="unfinished">Mostrar/ocultar capçalera</translation>
+        <translation>Mostrar/ocultar capçalera</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -3059,17 +3060,17 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Factura de proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Factura de proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Error al crear la factura proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Error al crear la factura proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Error al guardar la factura proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Error al desar la factura proveïdor</translation>
     </message>
 </context>
 <context>
@@ -3077,32 +3078,32 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>ALBARAN: Num </source>
-        <translation type="unfinished"></translation>
+        <translation>ALBARÄ: Num(sp)</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Error al crear la factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Error al crear la factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ref:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ref:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha:</source>
-        <translation type="unfinished"></translation>
+        <translation>data:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Al&amp;macen</source>
-        <translation type="unfinished"></translation>
+        <translation>Magatze&amp;m</translation>
     </message>
 </context>
 <context>
@@ -3110,22 +3111,22 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Debe seleccionar una linea</source>
-        <translation type="unfinished">Ha de seleccionar una línia</translation>
+        <translation>Ha de seleccionar una línia</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Facturas a clientes</source>
-        <translation type="unfinished"></translation>
+        <translation>Factura a clients</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Error al borrar la factura a cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Error a l&apos;esborrar la factura a client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Todas las facturas</source>
-        <translation type="unfinished"></translation>
+        <translation>Totes les factures</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -3135,7 +3136,7 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Facturas no procesadas</source>
-        <translation type="unfinished"></translation>
+        <translation>Factures no procesades</translation>
     </message>
 </context>
 <context>
@@ -3143,112 +3144,112 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Nueva factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Nova factira</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Editar factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Borrar factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Esborrar factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Imprimir listado</source>
-        <translation type="unfinished">Imprimir llistat</translation>
+        <translation>Imprimir llistat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Filtrar facturas</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtrar facturas</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Configurar listado</source>
-        <translation type="unfinished">Configurar llistat</translation>
+        <translation>Configurar llistat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Actualizar listado</source>
-        <translation type="unfinished">Actual·lizar llistat</translation>
+        <translation>Actual·lizar llistat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Buscar:</source>
-        <translation type="unfinished">Sercar:</translation>
+        <translation>Cercar:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha inicial:</source>
-        <translation type="unfinished">Data inicial:</translation>
+        <translation>Data inicial:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha final:</source>
-        <translation type="unfinished">Data final:</translation>
+        <translation>Data final:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Total:</source>
-        <translation type="unfinished">Total:</translation>
+        <translation>Total:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Facturas a clientes</source>
-        <translation type="unfinished"></translation>
+        <translation>Factures a clients</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+N</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+E</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+D</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+P</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+F</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+B</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>F5</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Base imponible:</source>
-        <translation type="unfinished">Base imposable:</translation>
+        <translation>Base imposable:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Impuestos:</source>
-        <translation type="unfinished">Impostos:</translation>
+        <translation>Impostos:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Mostrar:</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar:</translation>
     </message>
 </context>
 <context>
@@ -3256,87 +3257,87 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Ref factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Ref. factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id factura</source>
-        <translation type="unfinished"></translation>
+        <translation>ID factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Codigo almacen</source>
-        <translation type="unfinished"></translation>
+        <translation>Codi magatzem</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nombre cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Contact factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Contacte factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Telefono factura</source>
-        <translation type="unfinished"></translation>
+        <translation>factura de Telèfon</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Comentario factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Comentari factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id trabajador</source>
-        <translation type="unfinished">Id trabajador</translation>
+        <translation>ID treballador</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id cliente</source>
-        <translation type="unfinished">Id client</translation>
+        <translation>ID client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id almacen</source>
-        <translation type="unfinished">Id magatzem</translation>
+        <translation>ID magatzem</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Total</source>
-        <translation type="unfinished">Total</translation>
+        <translation>Total</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Base imponible</source>
-        <translation type="unfinished"></translation>
+        <translation>Base imposable</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Impuestos</source>
-        <translation type="unfinished"></translation>
+        <translation>Impostos</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>CIF cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>CIF Client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Serie</source>
-        <translation type="unfinished"></translation>
+        <translation>Sèrie</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Numero</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha</source>
-        <translation type="unfinished"></translation>
+        <translation>Data</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -3346,7 +3347,7 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Descripcion</source>
-        <translation type="unfinished"></translation>
+        <translation>Descripció</translation>
     </message>
 </context>
 <context>
@@ -3354,27 +3355,27 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Error al cargar la factura proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Error al carregar la factura proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Debe seleccionar una linea</source>
-        <translation type="unfinished">Ha de seleccionar una línia</translation>
+        <translation>Ha de seleccionar una línia</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Error al borrar la factura de proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Error a l&apos;esborrar la factura de proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Facturas de proveedores</source>
-        <translation type="unfinished"></translation>
+        <translation>Factures de proveïdors</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Todas las facturas</source>
-        <translation type="unfinished"></translation>
+        <translation>Totes les factures</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -3392,62 +3393,62 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Nueva factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Nova factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Editar factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Borrar factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Esborrar factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Imprimir listado</source>
-        <translation type="unfinished">Imprimir llistat</translation>
+        <translation>Imprimir llistat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Filtrar facturas</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtrar factures</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Configurar listado</source>
-        <translation type="unfinished">Configurar llistat</translation>
+        <translation>Configurar llistat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Actualizar listado</source>
-        <translation type="unfinished">Actual·lizar llistat</translation>
+        <translation>Actual·lizar llistat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Buscar:</source>
-        <translation type="unfinished">Sercar:</translation>
+        <translation>Cercar:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha inicial:</source>
-        <translation type="unfinished">Data inicial:</translation>
+        <translation>Data inicial:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha final:</source>
-        <translation type="unfinished">Data final:</translation>
+        <translation>Data final:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Total:</source>
-        <translation type="unfinished">Total:</translation>
+        <translation>Total:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Facturas de proveedores</source>
-        <translation type="unfinished"></translation>
+        <translation>Factures de proveïdors</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -3495,67 +3496,67 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Nombre proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id trabajador</source>
-        <translation type="unfinished">Id trabajador</translation>
+        <translation>ID treballador</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>ID proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Total</source>
-        <translation type="unfinished">Total</translation>
+        <translation>Total</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Base imponible</source>
-        <translation type="unfinished"></translation>
+        <translation>Base imposable</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Impuestos</source>
-        <translation type="unfinished"></translation>
+        <translation>Impostos</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Referencia factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Referència factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id factura</source>
-        <translation type="unfinished"></translation>
+        <translation>ID factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Numero factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Data factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Persona de contacto</source>
-        <translation type="unfinished"></translation>
+        <translation>Persona de contacte</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Telefono factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Telèfon factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Comentario factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Comentari factura</translation>
     </message>
 </context>
 <context>
@@ -3563,57 +3564,57 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Nombre</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Codigo</source>
-        <translation type="unfinished">Codi</translation>
+        <translation>Codi</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descripcion</source>
-        <translation type="unfinished"></translation>
+        <translation>Descripció</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id familia</source>
-        <translation type="unfinished"></translation>
+        <translation>ID familia</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Codigo completo</source>
-        <translation type="unfinished"></translation>
+        <translation>Codi complet</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Guardar familia</source>
-        <translation type="unfinished"></translation>
+        <translation>Desar familia</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Desea guardar los cambios?</source>
-        <translation type="unfinished"></translation>
+        <translation>Desitja dedar els canvis?</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Debe seleccionar una familia</source>
-        <translation type="unfinished"></translation>
+        <translation>Ha de selecionar una familia</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Borrar</source>
-        <translation type="unfinished"></translation>
+        <translation>Esborrar</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Desea eliminar</source>
-        <translation type="unfinished"></translation>
+        <translation>Desitja eliminar</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>No se ha podido borrar</source>
-        <translation type="unfinished"></translation>
+        <translation>No s&apos;ha pogut esborrar</translation>
     </message>
 </context>
 <context>
@@ -3621,37 +3622,37 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Articulo</source>
-        <translation type="unfinished"></translation>
+        <translation>Article</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Pres.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pres.</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Pedido</source>
-        <translation type="unfinished"></translation>
+        <translation>Comanda</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Entregado</source>
-        <translation type="unfinished"></translation>
+        <translation>Entregat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Facturado</source>
-        <translation type="unfinished"></translation>
+        <translation>Facturat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Cobrado</source>
-        <translation type="unfinished"></translation>
+        <translation>Cobrat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Pagado</source>
-        <translation type="unfinished"></translation>
+        <translation>Pagat</translation>
     </message>
 </context>
 <context>
@@ -3659,37 +3660,37 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Articulo</source>
-        <translation type="unfinished"></translation>
+        <translation>Article</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Pres.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pres.</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Pedido</source>
-        <translation type="unfinished"></translation>
+        <translation>Comanda</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Entregado</source>
-        <translation type="unfinished"></translation>
+        <translation>Entregat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Facturado</source>
-        <translation type="unfinished"></translation>
+        <translation>Facturat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Cobrado</source>
-        <translation type="unfinished"></translation>
+        <translation>Cobrat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Pagado</source>
-        <translation type="unfinished"></translation>
+        <translation>Pagat</translation>
     </message>
 </context>
 <context>
@@ -3697,17 +3698,17 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Almacenes</source>
-        <translation type="unfinished"></translation>
+        <translation>Magatzems</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Cancelar</source>
-        <translation type="unfinished">&amp;Cancel·lar</translation>
+        <translation>&amp;Cancel·lar</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Aceptar</source>
-        <translation type="unfinished">&amp;Aceptar</translation>
+        <translation>&amp;Acceptar</translation>
     </message>
 </context>
 <context>
@@ -3715,17 +3716,17 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Id almacen</source>
-        <translation type="unfinished">Id magatzem</translation>
+        <translation>ID magatzem</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Codigo almacen</source>
-        <translation type="unfinished"></translation>
+        <translation>Codi magatzem</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nombre almacen</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom magatzem</translation>
     </message>
 </context>
 <context>
@@ -3733,27 +3734,27 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Codigo completo del articulo</source>
-        <translation type="unfinished"></translation>
+        <translation>Codi complet del article</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nombre del articulo</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom del article</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Cantidad de componente de articulo</source>
-        <translation type="unfinished"></translation>
+        <translation>Quantitat de components d&apos;article</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>ID componente</source>
-        <translation type="unfinished"></translation>
+        <translation>ID component</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>ID articulo</source>
-        <translation type="unfinished"></translation>
+        <translation>ID article</translation>
     </message>
 </context>
 <context>
@@ -3761,17 +3762,17 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Cancelar</source>
-        <translation type="unfinished">&amp;Cancel·lar</translation>
+        <translation>&amp;Cancel·lar</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Aceptar</source>
-        <translation type="unfinished">&amp;Aceptar</translation>
+        <translation>&amp;Acceptar</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Propiedades de la empresa</source>
-        <translation type="unfinished"></translation>
+        <translation>Propietats de l&apos;empresa</translation>
     </message>
 </context>
 <context>
@@ -3779,12 +3780,12 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Nombre</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Valor</source>
-        <translation type="unfinished"></translation>
+        <translation>Valor</translation>
     </message>
 </context>
 <context>
@@ -3792,22 +3793,22 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Idd albaran</source>
-        <translation type="unfinished"></translation>
+        <translation>ID albarà</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Conceptd albaran</source>
-        <translation type="unfinished"></translation>
+        <translation>Concepte albarà</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Proporciond albaran</source>
-        <translation type="unfinished"></translation>
+        <translation>Proporció albarà</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id albaran</source>
-        <translation type="unfinished">Id albará</translation>
+        <translation>ID albarà</translation>
     </message>
 </context>
 <context>
@@ -3815,22 +3816,22 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Idd albaranp</source>
-        <translation type="unfinished"></translation>
+        <translation>ID albarà</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Conceptd albaranp</source>
-        <translation type="unfinished"></translation>
+        <translation>Concepte albarà</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Proporciond albaranp</source>
-        <translation type="unfinished"></translation>
+        <translation>Proporció albarà</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id albaranp</source>
-        <translation type="unfinished"></translation>
+        <translation>ID albarà</translation>
     </message>
 </context>
 <context>
@@ -3838,22 +3839,22 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Idd facturap</source>
-        <translation type="unfinished"></translation>
+        <translation>ID factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Conceptd facturap</source>
-        <translation type="unfinished"></translation>
+        <translation>Concepte factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Proporciond facturap</source>
-        <translation type="unfinished"></translation>
+        <translation>Proporció factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id facturap</source>
-        <translation type="unfinished"></translation>
+        <translation>ID factura</translation>
     </message>
 </context>
 <context>
@@ -3861,22 +3862,22 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>iddfactura</source>
-        <translation type="unfinished"></translation>
+        <translation>ID factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>conceptdfactura</source>
-        <translation type="unfinished"></translation>
+        <translation>Concept factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>proporciondfactura</source>
-        <translation type="unfinished"></translation>
+        <translation>Proporció factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>idfactura</source>
-        <translation type="unfinished"></translation>
+        <translation>ID factura</translation>
     </message>
 </context>
 <context>
@@ -3884,22 +3885,22 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Idd pedido cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>ID comanda client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Conceptd pedido cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Concepte comanda client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Proporciond pedido cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Proporció comanda client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id pedido cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>ID comanda client</translation>
     </message>
 </context>
 <context>
@@ -3907,22 +3908,22 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Idd pedido proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>ID comanda proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Conceptd pedido proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Concepte comanda proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Proporciond pedido proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Proporció comanda proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id pedido proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>ID comanda proveïdor</translation>
     </message>
 </context>
 <context>
@@ -3930,7 +3931,7 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Idd pedidocliente</source>
-        <translation type="unfinished"></translation>
+        <translation>ID comanda client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -3963,52 +3964,52 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Nombre articulo</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom article</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Numerol albaran</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom albarà</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descripcionl albaran</source>
-        <translation type="unfinished"></translation>
+        <translation>Descripció albarà</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Cantidadl albaran</source>
-        <translation type="unfinished"></translation>
+        <translation>Quantitat albarà</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>PVPl albaran</source>
-        <translation type="unfinished"></translation>
+        <translation>P.V.P. albarà</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>IVAl albaran</source>
-        <translation type="unfinished"></translation>
+        <translation>I.V.A. albarà</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descontl albaran</source>
-        <translation type="unfinished"></translation>
+        <translation>Descompte albarà</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id albaran</source>
-        <translation type="unfinished">Id albará</translation>
+        <translation>ID albará</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Orden</source>
-        <translation type="unfinished"></translation>
+        <translation>Ordre</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>% Recargo E.Q.</source>
-        <translation type="unfinished"></translation>
+        <translation>% Recareg E.Q.</translation>
     </message>
 </context>
 <context>
@@ -4016,62 +4017,62 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Id articulo</source>
-        <translation type="unfinished"></translation>
+        <translation>ID article</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Codigo completo articulo</source>
-        <translation type="unfinished"></translation>
+        <translation>Codi complet article</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nombre articulo</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom article</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Numerol albaranp</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre albarà</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descripcionl albaranp</source>
-        <translation type="unfinished"></translation>
+        <translation>Descripció albarà</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Cantidadl albaranp</source>
-        <translation type="unfinished"></translation>
+        <translation>Quantitat albarà</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>PVPl albaranp</source>
-        <translation type="unfinished"></translation>
+        <translation>P.V.P. albarà</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>IVAl albaranp</source>
-        <translation type="unfinished"></translation>
+        <translation>I.V.A. albarà</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descontl albaranp</source>
-        <translation type="unfinished"></translation>
+        <translation>Descompte albarà</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id albaranp</source>
-        <translation type="unfinished"></translation>
+        <translation>ID albarà</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Orden</source>
-        <translation type="unfinished"></translation>
+        <translation>Ordre</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Recargo albaranp</source>
-        <translation type="unfinished"></translation>
+        <translation>Recareg albarà</translation>
     </message>
 </context>
 <context>
@@ -4079,62 +4080,62 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Articulo</source>
-        <translation type="unfinished"></translation>
+        <translation>Article</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Codigo completo</source>
-        <translation type="unfinished"></translation>
+        <translation>Codi complet</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nombre</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Linea</source>
-        <translation type="unfinished"></translation>
+        <translation>Línia</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descripcion</source>
-        <translation type="unfinished"></translation>
+        <translation>Descripció</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Cantidad</source>
-        <translation type="unfinished"></translation>
+        <translation>Quantitat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>P.V.P.</source>
-        <translation type="unfinished"></translation>
+        <translation>P.V.P.</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>% I.V.A.</source>
-        <translation type="unfinished"></translation>
+        <translation>% I.V.A.</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descuento</source>
-        <translation type="unfinished">Descompte</translation>
+        <translation>Descompte</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>% Recargo</source>
-        <translation type="unfinished"></translation>
+        <translation>% Recareg</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Orden</source>
-        <translation type="unfinished"></translation>
+        <translation>Ordre</translation>
     </message>
 </context>
 <context>
@@ -4142,62 +4143,62 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Id articulo</source>
-        <translation type="unfinished"></translation>
+        <translation>ID article</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Codigo completo articulo</source>
-        <translation type="unfinished"></translation>
+        <translation>Codi complet article</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nombre articulo</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom article</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Idl factura</source>
-        <translation type="unfinished"></translation>
+        <translation>ID factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descripcionl factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Descripció factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Cantidadl factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Quantitat factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>PVPl factura</source>
-        <translation type="unfinished"></translation>
+        <translation>P.V.P. factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>IVAl factura</source>
-        <translation type="unfinished"></translation>
+        <translation>I.V.A. factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descuentol factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Descompte factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id factura</source>
-        <translation type="unfinished"></translation>
+        <translation>ID factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>% Recargo E.Q.</source>
-        <translation type="unfinished"></translation>
+        <translation>% Recarreg E.Q.</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Orden</source>
-        <translation type="unfinished"></translation>
+        <translation>Ordre</translation>
     </message>
 </context>
 <context>
@@ -4205,67 +4206,67 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Puntl pedido cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Punt comanda client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id articulo</source>
-        <translation type="unfinished"></translation>
+        <translation>ID article</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Codigo completo articulo</source>
-        <translation type="unfinished"></translation>
+        <translation>Codi complet article</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nombre articulo</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom article</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Numl pedido cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Num comanda client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descl pedido cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Descripció comanda client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Cantl pedido cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Quantitat comanda client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>PVPl pedido cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>P.V.P comanda client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>IVAl pedido cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>I.V.A. comanda client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descuentol pedido cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Descompte comanda client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id pedido cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>ID comanda client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>% Recargo E.Q.</source>
-        <translation type="unfinished"></translation>
+        <translation>% Recareg E.Q.</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Orden</source>
-        <translation type="unfinished"></translation>
+        <translation>Ordre</translation>
     </message>
 </context>
 <context>
@@ -4273,67 +4274,67 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>puntlpedidoproveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Punt comanda proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id articulo</source>
-        <translation type="unfinished"></translation>
+        <translation>ID article</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Codigo completo articulo</source>
-        <translation type="unfinished"></translation>
+        <translation>Codi complet article</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nombre articulo</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom article</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Numerol pedido proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom comanda proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descripcionl pedido proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Descripció comanda proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Cantidadl pedido proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Quantitat comanda proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>PVPl pedido proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>P.V.P. comanda proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>IVAl pedido proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>I.V.A. comanda proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descuentol pedido proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Descompte comanda proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id pedido proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>ID comanda proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Orden</source>
-        <translation type="unfinished"></translation>
+        <translation>Ordre</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Recargo pedido proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Recareg comanda proveïdor</translation>
     </message>
 </context>
 <context>
@@ -4341,22 +4342,22 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Id articulo</source>
-        <translation type="unfinished"></translation>
+        <translation>ID article</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Codigo completo</source>
-        <translation type="unfinished"></translation>
+        <translation>Codi complet</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nombre del articulo</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom de l&apos;article</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>No de linea</source>
-        <translation type="unfinished"></translation>
+        <translation>Nº de línia</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -4366,27 +4367,27 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Cantidad</source>
-        <translation type="unfinished"></translation>
+        <translation>Quantitat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Precio de venta s/IVA</source>
-        <translation type="unfinished"></translation>
+        <translation>Preu de venta s/I.V.A</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>% IVA</source>
-        <translation type="unfinished"></translation>
+        <translation>% I.V.A</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>% Recargo E.Q.</source>
-        <translation type="unfinished"></translation>
+        <translation>% Recarreg E.Q.</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>% Descuento</source>
-        <translation type="unfinished"></translation>
+        <translation>% Descompte</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -4396,7 +4397,7 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Orden</source>
-        <translation type="unfinished"></translation>
+        <translation>Ordre</translation>
     </message>
 </context>
 <context>
@@ -4404,27 +4405,27 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Provincias</source>
-        <translation type="unfinished"></translation>
+        <translation>Provincies</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Cerrar</source>
-        <translation type="unfinished"></translation>
+        <translation>Tan&amp;car</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Nuevo</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Nou</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Borrar</source>
-        <translation type="unfinished"></translation>
+        <translation>Es&amp;borrar</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Guardar</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Desar</translation>
     </message>
 </context>
 <context>
@@ -4432,7 +4433,7 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Provincia</source>
-        <translation type="unfinished"></translation>
+        <translation>Provincia</translation>
     </message>
 </context>
 <context>
@@ -4440,17 +4441,17 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Cancelar</source>
-        <translation type="unfinished">&amp;Cancel·lar</translation>
+        <translation>&amp;Cancel·lar</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Aceptar</source>
-        <translation type="unfinished">&amp;Aceptar</translation>
+        <translation>&amp;Acceptar</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Series de factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Sèries de factura</translation>
     </message>
 </context>
 <context>
@@ -4458,12 +4459,12 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Codigo serie factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Codi sèrie factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descripcion serie factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Descripció sèrie factura</translation>
     </message>
 </context>
 <context>
@@ -4471,17 +4472,17 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Tasas de IVA</source>
-        <translation type="unfinished"></translation>
+        <translation>Taxes d&apos;IVA</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Aceptar</source>
-        <translation type="unfinished">&amp;Aceptar</translation>
+        <translation>&amp;Acceptar</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Cancelar</source>
-        <translation type="unfinished">&amp;Cancel·lar</translation>
+        <translation>&amp;Cancel·lar</translation>
     </message>
 </context>
 <context>
@@ -4489,32 +4490,32 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Id Tasa IVA</source>
-        <translation type="unfinished"></translation>
+        <translation>ID Taxa IVA</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Tipo IVA</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipus IVA</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id Tipo IVA</source>
-        <translation type="unfinished"></translation>
+        <translation>ID Tipus IVA</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Porcentaje IVA</source>
-        <translation type="unfinished"></translation>
+        <translation>Percentatge IVA</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Porcentaje Recargo Equivalencia</source>
-        <translation type="unfinished"></translation>
+        <translation>Percentatge Recarreg Equivalència</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha Entrada en Vigor</source>
-        <translation type="unfinished"></translation>
+        <translation>Data Entrada en Vigor</translation>
     </message>
 </context>
 <context>
@@ -4522,17 +4523,17 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Tipos de IVA</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipus d&apos;IVA</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Aceptar</source>
-        <translation type="unfinished">&amp;Aceptar</translation>
+        <translation>&amp;Acceptar</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Cancelar</source>
-        <translation type="unfinished">&amp;Cancel·lar</translation>
+        <translation>&amp;Cancel·lar</translation>
     </message>
 </context>
 <context>
@@ -4540,12 +4541,12 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Id Tipo IVA</source>
-        <translation type="unfinished"></translation>
+        <translation>ID tipus IVA</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Tipo IVA</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipus IVA</translation>
     </message>
 </context>
 <context>
@@ -4553,42 +4554,42 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Id pago</source>
-        <translation type="unfinished"></translation>
+        <translation>ID pagament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>ID proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Previcion de pago</source>
-        <translation type="unfinished"></translation>
+        <translation>Previsió de pagament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha de pago</source>
-        <translation type="unfinished"></translation>
+        <translation>Data de pagament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Referencia de pago</source>
-        <translation type="unfinished"></translation>
+        <translation>Referència de pagament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Cantidad</source>
-        <translation type="unfinished"></translation>
+        <translation>Quantitat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Comentario del pago</source>
-        <translation type="unfinished"></translation>
+        <translation>Comentari del pagament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Banco</source>
-        <translation type="unfinished"></translation>
+        <translation>Banc</translation>
     </message>
 </context>
 <context>
@@ -4596,62 +4597,62 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Guardar pago</source>
-        <translation type="unfinished"></translation>
+        <translation>Desar pagament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Borrar pago</source>
-        <translation type="unfinished"></translation>
+        <translation>Esborrar pagament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Referencia:</source>
-        <translation type="unfinished">Referència:</translation>
+        <translation>Referència:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Total pago:</source>
-        <translation type="unfinished"></translation>
+        <translation>Total pagament:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nuevo pago a proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Nou pagament a proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>0.00</source>
-        <translation type="unfinished"></translation>
+        <translation>0.00</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descripcion del pago:</source>
-        <translation type="unfinished"></translation>
+        <translation>Descripció del pagament:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha de pago:</source>
-        <translation type="unfinished"></translation>
+        <translation>Data de pagament:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Provision de fondos</source>
-        <translation type="unfinished"></translation>
+        <translation>Provisió de fons</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Aceptar</source>
-        <translation type="unfinished">&amp;Aceptar</translation>
+        <translation>&amp;Acceptar</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Cancelar</source>
-        <translation type="unfinished">&amp;Cancel·lar</translation>
+        <translation>&amp;Cancel·lar</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Banco:</source>
-        <translation type="unfinished"></translation>
+        <translation>Banc:</translation>
     </message>
 </context>
 <context>
@@ -4659,12 +4660,12 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Error al crear el pago</source>
-        <translation type="unfinished"></translation>
+        <translation>Error al crear el pagament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Pago</source>
-        <translation type="unfinished"></translation>
+        <translation>Pagament</translation>
     </message>
 </context>
 <context>
@@ -4672,17 +4673,17 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Error al borrar el pago</source>
-        <translation type="unfinished"></translation>
+        <translation>Error a l&apos;esborrar el pagament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Debe seleccionar una linea</source>
-        <translation type="unfinished">Ha de seleccionar una línia</translation>
+        <translation>Ha de seleccionar una línia</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Pagos a proveedores</source>
-        <translation type="unfinished"></translation>
+        <translation>Pagaments a proveïdors</translation>
     </message>
 </context>
 <context>
@@ -4690,77 +4691,77 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Nuevo pago</source>
-        <translation type="unfinished"></translation>
+        <translation>Nou pagament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Editar pago</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar pagament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Borrar pago</source>
-        <translation type="unfinished"></translation>
+        <translation>Esborrar pagament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Imprimir listado</source>
-        <translation type="unfinished">Imprimir llistat</translation>
+        <translation>Imprimir llistat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Filtrar pagos</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtrar pagaments</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Configurar listado</source>
-        <translation type="unfinished">Configurar llistat</translation>
+        <translation>Configurar llistat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Actualizar listado</source>
-        <translation type="unfinished">Actual·lizar llistat</translation>
+        <translation>Actual·lizar llistat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Buscar:</source>
-        <translation type="unfinished">Sercar:</translation>
+        <translation>Cercar:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha inicial:</source>
-        <translation type="unfinished">Data inicial:</translation>
+        <translation>Data inicial:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha final:</source>
-        <translation type="unfinished">Data final:</translation>
+        <translation>Data final:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Total:</source>
-        <translation type="unfinished">Total:</translation>
+        <translation>Total:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Pagos Efectivos</source>
-        <translation type="unfinished"></translation>
+        <translation>Pagaments Efectius</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Previsiones de Pago</source>
-        <translation type="unfinished"></translation>
+        <translation>Previsions de Pagament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Pagos a proveedores</source>
-        <translation type="unfinished"></translation>
+        <translation>Pagaments a proveïdors</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Banco:</source>
-        <translation type="unfinished"></translation>
+        <translation>Banc:</translation>
     </message>
 </context>
 <context>
@@ -4768,77 +4769,77 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Id pago</source>
-        <translation type="unfinished"></translation>
+        <translation>ID pagament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>ID proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nombre proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>C.I.F. proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>C.I.F. proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Telefono proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Telèfon proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Email proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Email proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha de pago</source>
-        <translation type="unfinished"></translation>
+        <translation>Data de pagament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Cantidad</source>
-        <translation type="unfinished"></translation>
+        <translation>Quantitat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Referencia de pago</source>
-        <translation type="unfinished"></translation>
+        <translation>Referència de pagament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Prevision pago</source>
-        <translation type="unfinished"></translation>
+        <translation>Previsió de pagament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Comentario pago</source>
-        <translation type="unfinished"></translation>
+        <translation>Comentari pagament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id trabajador</source>
-        <translation type="unfinished">Id trabajador</translation>
+        <translation>ID treballador</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nombre de trabajador</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom de treballador</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Apellidos trabajador</source>
-        <translation type="unfinished"></translation>
+        <translation>Cognoms del treballador</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Banco</source>
-        <translation type="unfinished"></translation>
+        <translation>Banc</translation>
     </message>
 </context>
 <context>
@@ -4846,22 +4847,22 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Identificador</source>
-        <translation type="unfinished"></translation>
+        <translation>Identificador</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Almacen</source>
-        <translation type="unfinished"></translation>
+        <translation>Magatzem</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Numero pedido cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre comanda client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -4871,32 +4872,32 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Fecha</source>
-        <translation type="unfinished">Data</translation>
+        <translation>Data</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Forma pago</source>
-        <translation type="unfinished"></translation>
+        <translation>Forma pagament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Trabajador</source>
-        <translation type="unfinished"></translation>
+        <translation>Treballador</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Contacto</source>
-        <translation type="unfinished"></translation>
+        <translation>Contacte</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Telefono</source>
-        <translation type="unfinished">Telèfon</translation>
+        <translation>Telèfon</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Comentarios</source>
-        <translation type="unfinished">Comentaris</translation>
+        <translation>Comentaris</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -4906,37 +4907,37 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Referencia</source>
-        <translation type="unfinished"></translation>
+        <translation>Referència</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Total</source>
-        <translation type="unfinished">Total</translation>
+        <translation>Total</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descuento</source>
-        <translation type="unfinished">Descompte</translation>
+        <translation>Descompte</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Porcentaje</source>
-        <translation type="unfinished">Porcentatge</translation>
+        <translation>Percentatge</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Base </source>
-        <translation type="unfinished">Base Imponible</translation>
+        <translation>Base Imponible</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Iva </source>
-        <translation type="unfinished">Iva</translation>
+        <translation>Iva(sp)</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Total </source>
-        <translation type="unfinished">Total</translation>
+        <translation>Total(sp)</translation>
     </message>
 </context>
 <context>
@@ -4949,147 +4950,147 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Detalle</source>
-        <translation type="unfinished">&amp;Detall</translation>
+        <translation>&amp;Detall</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Desc&amp;uentos</source>
-        <translation type="unfinished"></translation>
+        <translation>Desc&amp;omptes</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Comentarios</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Comentaris</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>0.00</source>
-        <translation type="unfinished"></translation>
+        <translation>0.00</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Guardar pedido</source>
-        <translation type="unfinished"></translation>
+        <translation>Desar comanda</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Borrar pedido</source>
-        <translation type="unfinished"></translation>
+        <translation>Esborrar comanda</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Imprimir pedido</source>
-        <translation type="unfinished">Imprimir comanda</translation>
+        <translation>Imprimir comanda</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Referencia:</source>
-        <translation type="unfinished">Referència:</translation>
+        <translation>Referència:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descripcion del pedido:</source>
-        <translation type="unfinished"></translation>
+        <translation>Descripció de comanda:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Numero de pedido cliente:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre de comanda client:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Almacen:</source>
-        <translation type="unfinished">Magatzem:</translation>
+        <translation>Magatzem:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Trabajador:</source>
-        <translation type="unfinished">Trebajador:</translation>
+        <translation>Treballador:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Telefono de contacto:</source>
-        <translation type="unfinished">Telèfon de contacte:</translation>
+        <translation>Telèfon de contacte:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Cancelar</source>
-        <translation type="unfinished">&amp;Cancel·lar</translation>
+        <translation>&amp;Cancel·lar</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Aceptar</source>
-        <translation type="unfinished">&amp;Aceptar</translation>
+        <translation>&amp;Acceptar</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nuevo pedido de cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre de comanda de client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Mostrar/ocultar cabecera</source>
-        <translation type="unfinished">Mostrar/ocultar capçalera</translation>
+        <translation>Mostrar/ocultar capçalera</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Persona de contacto:</source>
-        <translation type="unfinished">Persona de contacte:</translation>
+        <translation>Persona de contacte:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descuentos:</source>
-        <translation type="unfinished">Descomptes:</translation>
+        <translation>Descomptes:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Base imponible:</source>
-        <translation type="unfinished">Base imposable:</translation>
+        <translation>Base imposable:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>I.R.P.F.:</source>
-        <translation type="unfinished">I.R.P.F.:</translation>
+        <translation>I.R.P.F.:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Impuestos:</source>
-        <translation type="unfinished">Impostos:</translation>
+        <translation>Impostos:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>R.E.:</source>
-        <translation type="unfinished">R.E.:</translation>
+        <translation>R.E.:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Total:</source>
-        <translation type="unfinished">Total:</translation>
+        <translation>Total:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ver presupuesto de este pedido</source>
-        <translation>Veure pressupost d&apos;aquesta comana</translation>
+        <translation>Veure pressupost d&apos;aquesta comanda</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Generar albaran a partir de este pedido</source>
-        <translation type="unfinished"></translation>
+        <translation>Generar albarà a partir d&apos;aquesta comanda</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Registrar cobro a cliente</source>
-        <translation type="unfinished">Registrar cobrament a client</translation>
+        <translation>Registrar cobrament a client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha de creacion:</source>
-        <translation type="unfinished">Data de creaciò:</translation>
+        <translation>Data de creaciò:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Forma de pago:</source>
-        <translation type="unfinished">Forma de pagament:</translation>
+        <translation>Forma de pagament:</translation>
     </message>
 </context>
 <context>
@@ -5097,32 +5098,32 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>&amp;No</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;No</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Si</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sí</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Error al crear el pedido cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Error al crear la comanda client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Pedido de cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Comanda de client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Albaran ya existe</source>
-        <translation type="unfinished"></translation>
+        <translation>Alvarà ya existent</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Existe un albaran a este cliente con la misma referencia que este pedido. Desea abrirlo para verificar?</source>
-        <translation type="unfinished"></translation>
+        <translation>Existeix un albarà a aquest client amb la mateixa referència que aquesta comanda.Desitja obrir-lo per a verificar?</translation>
     </message>
 </context>
 <context>
@@ -5130,32 +5131,32 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Id pedido proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>ID comanda proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>ID proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id almacen</source>
-        <translation type="unfinished">Id magatzem</translation>
+        <translation>ID magatzem</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Numero pedido proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre comanda proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha pedido proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Data comanda proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Comentario pedido</source>
-        <translation type="unfinished"></translation>
+        <translation>Comentari comanda</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -5165,32 +5166,32 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Descripcion pedido</source>
-        <translation type="unfinished"></translation>
+        <translation>Descripció comanda</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Referencia pedido</source>
-        <translation type="unfinished"></translation>
+        <translation>Referència comanda</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id forma de pago</source>
-        <translation type="unfinished">Id forma de pagament</translation>
+        <translation>ID forma de pagament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id trabajador</source>
-        <translation type="unfinished">Id trabajador</translation>
+        <translation>ID treballador</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Persona de contacto proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Persona de contacte proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Telefono proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Telèfon proveïdor</translation>
     </message>
 </context>
 <context>
@@ -5198,167 +5199,167 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Detalle</source>
-        <translation type="unfinished">&amp;Detall</translation>
+        <translation>&amp;Detall</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>0.00</source>
-        <translation type="unfinished"></translation>
+        <translation>0.00</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Foma de pago:</source>
-        <translation type="unfinished"></translation>
+        <translation>Forma de pagament:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Telefono de contacto:</source>
-        <translation type="unfinished">Telèfon de contacte:</translation>
+        <translation>Telèfon de contacte:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Cancelar</source>
-        <translation type="unfinished">&amp;Cancel·lar</translation>
+        <translation>&amp;Cancel·lar</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Aceptar</source>
-        <translation type="unfinished">&amp;Aceptar</translation>
+        <translation>&amp;Acceptar</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Imprimir pedido</source>
-        <translation type="unfinished">Imprimir comanda</translation>
+        <translation>Imprimir comanda</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Generar albaran a partir de este pedido</source>
-        <translation type="unfinished"></translation>
+        <translation>Generar albarà a partir de aquesta comanda</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Referencia del pedido:</source>
-        <translation type="unfinished"></translation>
+        <translation>Referència de la comanda:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Persona de contacto:</source>
-        <translation type="unfinished">Persona de contacte:</translation>
+        <translation>Persona de contacte:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descuen&amp;tos</source>
-        <translation type="unfinished">Descon&amp;tes</translation>
+        <translation>Descomp&amp;tes</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Comentario&amp;s</source>
-        <translation type="unfinished">Comentari&amp;s</translation>
+        <translation>Comentari&amp;s</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nuevo pedido a proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Nova comanda a proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descripcion:</source>
-        <translation type="unfinished">Descipciò:</translation>
+        <translation>Descipciò:</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="" line="0"/>
         <source>Nº de pedido:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nº de comanda:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Almacen de destino:</source>
-        <translation type="unfinished"></translation>
+        <translation>Magatzem de destí:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Emisor responsable:</source>
-        <translation type="unfinished"></translation>
+        <translation>Emisor responsable:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha del pedido:</source>
-        <translation type="unfinished"></translation>
+        <translation>Data de la comanda:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Pedido &amp;tramitado</source>
-        <translation type="unfinished"></translation>
+        <translation>Comanda &amp;tramitada</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descuentos:</source>
-        <translation type="unfinished">Descomptes:</translation>
+        <translation>Descomptes:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Base imponible:</source>
-        <translation type="unfinished">Base imposable:</translation>
+        <translation>Base imposable:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Impuestos:</source>
-        <translation type="unfinished">Impostos:</translation>
+        <translation>Impostos:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Total:</source>
-        <translation type="unfinished">Total:</translation>
+        <translation>Total:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Guardar pedido</source>
-        <translation type="unfinished"></translation>
+        <translation>Desar comanda</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Borrar pedido</source>
-        <translation type="unfinished"></translation>
+        <translation>Esborrar comanda</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>I.R.P.F.:</source>
-        <translation type="unfinished">I.R.P.F.:</translation>
+        <translation>I.R.P.F.:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>R.E.:</source>
-        <translation type="unfinished">R.E.:</translation>
+        <translation>R.E.:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+D</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+P</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Registrar pago a proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Registrar pagament a proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Mostrar/ocultar cabecera</source>
-        <translation type="unfinished">Mostrar/ocultar capçalera</translation>
+        <translation>Mostrar/ocultar capçalera</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+G</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -5366,33 +5367,34 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Error al crear el pedido a proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Error al crear la comanda a proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Pedido a proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Comanda a proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>El albaran de proveedor no existe</source>
-        <translation type="unfinished"></translation>
+        <translation>L&apos;albarà de proveïdor no existeix</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Si</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sí</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;No</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;No</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>No existe un albaran asociado a este pedido.
 Desea crearlo?</source>
-        <translation type="unfinished"></translation>
+        <translation>No existeix un albarà associat a aquesta comanda.
+Desitja crear-lo?</translation>
     </message>
 </context>
 <context>
@@ -5400,27 +5402,27 @@ Desea crearlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Error al cargar el pedido cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Error al carregar la comanda client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Debe seleccionar una linea</source>
-        <translation type="unfinished">Ha de seleccionar una línia</translation>
+        <translation>Ha de seleccionar una línia</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Pedidos de clientes</source>
-        <translation type="unfinished"></translation>
+        <translation>Comandas a clients</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Error al borrar el pedido de cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Error a l&apos;esborrar la comanda de client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Todos los pedidos</source>
-        <translation type="unfinished"></translation>
+        <translation>Totes les comandes</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -5438,102 +5440,102 @@ Desea crearlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Nuevo pedido</source>
-        <translation type="unfinished"></translation>
+        <translation>Nova comanda</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Editar pedido</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar comanda</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Borrar pedido</source>
-        <translation type="unfinished"></translation>
+        <translation>Esborrar comanda</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Imprimir listado</source>
-        <translation type="unfinished">Imprimir llistat</translation>
+        <translation>Imprimir llistat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Filtrar pedidos</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtrar comanda</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Configurar listado</source>
-        <translation type="unfinished">Configurar llistat</translation>
+        <translation>Configurar llistat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Actualizar listado</source>
-        <translation type="unfinished">Actual·lizar llistat</translation>
+        <translation>Actual·lizar llistat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Buscar:</source>
-        <translation type="unfinished">Sercar:</translation>
+        <translation>Cercar:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha inicial:</source>
-        <translation type="unfinished">Data inicial:</translation>
+        <translation>Data inicial:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha final:</source>
-        <translation type="unfinished">Data final:</translation>
+        <translation>Data final:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Total:</source>
-        <translation type="unfinished">Total:</translation>
+        <translation>Total:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Pedidos de clientes</source>
-        <translation type="unfinished"></translation>
+        <translation>Comandes de clients</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+N</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+E</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+D</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+P</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+F</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+B</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>F5</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Mostrar:</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar:</translation>
     </message>
 </context>
 <context>
@@ -5541,82 +5543,82 @@ Desea crearlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Id pedido cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>ID comanda client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Codigo de almacen</source>
-        <translation type="unfinished"></translation>
+        <translation>Codi de magatzem</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Referencia pedido cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Referència comanda client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Numero pedido cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre comanda client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descripcion pedido cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Descripció comanda client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nombre cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha pedido cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Data comanda client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Persona de contacto</source>
-        <translation type="unfinished"></translation>
+        <translation>Persona de contacte</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Telefono pedido cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Telèfon comanda client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Comentario pedido</source>
-        <translation type="unfinished"></translation>
+        <translation>Comentari comanda</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id trabajador</source>
-        <translation type="unfinished">Id trabajador</translation>
+        <translation>ID treballador</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id cliente</source>
-        <translation type="unfinished">Id client</translation>
+        <translation>ID client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id almacen</source>
-        <translation type="unfinished">Id magatzem</translation>
+        <translation>ID magatzem</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Total pedido</source>
-        <translation type="unfinished"></translation>
+        <translation>Total comanda</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Base imponible</source>
-        <translation type="unfinished"></translation>
+        <translation>Base imposable</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Impuestos</source>
-        <translation type="unfinished"></translation>
+        <translation>Impostos</translation>
     </message>
 </context>
 <context>
@@ -5624,27 +5626,27 @@ Desea crearlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Error al cargar el pedido proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Error al carregar la comanda proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Pedidos a proveedores</source>
-        <translation type="unfinished"></translation>
+        <translation>Comanda a proveïdores</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Debe seleccionar una linea</source>
-        <translation type="unfinished">Ha de seleccionar una línia</translation>
+        <translation>Ha de seleccionar una línia</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Error al borrar el pedido a proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Error a l&apos;esborrar la comanda a proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Todos los pedidos</source>
-        <translation type="unfinished"></translation>
+        <translation>Totes les comandes</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -5662,107 +5664,107 @@ Desea crearlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Imprimir listado</source>
-        <translation type="unfinished">Imprimir llistat</translation>
+        <translation>Imprimir llistat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Filtrar pedidos</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtrar comandes</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Configurar listado</source>
-        <translation type="unfinished">Configurar llistat</translation>
+        <translation>Configurar llistat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Actualizar listado</source>
-        <translation type="unfinished">Actual·lizar llistat</translation>
+        <translation>Actual·lizar llistat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Buscar:</source>
-        <translation type="unfinished">Sercar:</translation>
+        <translation>Cercar:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha inicial:</source>
-        <translation type="unfinished">Data inicial:</translation>
+        <translation>Data inicial:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha final:</source>
-        <translation type="unfinished">Data final:</translation>
+        <translation>Data final:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>0.00</source>
-        <translation type="unfinished"></translation>
+        <translation>0.00</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Pedidos a proveedores</source>
-        <translation type="unfinished"></translation>
+        <translation>Comandes a proveïdores</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Total:</source>
-        <translation type="unfinished">Total:</translation>
+        <translation>Total:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nuevo pedido a proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Nova comanda a proveïdores</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+N</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Editar pedido a proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar comanda proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+E</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Borrar pedido a proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Esborrar comanda a proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+D</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+P</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+F</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+B</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>F5</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Mostrar:</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar:</translation>
     </message>
 </context>
 <context>
@@ -5770,82 +5772,82 @@ Desea crearlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Codigo de almacen</source>
-        <translation type="unfinished"></translation>
+        <translation>Codi de magatzen</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descripcion pedido proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Descripció comanda proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nombre de proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre de proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha pedido proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Data comanda proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Persona de contacto proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Persona de contacte proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Telefono proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Telèfon proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Comentario pedido proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Comentari comanda proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id trabajador</source>
-        <translation type="unfinished">Id trabajador</translation>
+        <translation>ID treballador</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>ID proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id almacen</source>
-        <translation type="unfinished">Id magatzem</translation>
+        <translation>ID magatzem</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Impuestos</source>
-        <translation type="unfinished"></translation>
+        <translation>Impostos</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Referencia pedido</source>
-        <translation type="unfinished"></translation>
+        <translation>Referència comanda</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Base Imponible</source>
-        <translation type="unfinished"></translation>
+        <translation>Base imposable</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Total pedido</source>
-        <translation type="unfinished"></translation>
+        <translation>Total comanda</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id pedido</source>
-        <translation type="unfinished"></translation>
+        <translation>ID comanda</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Numero de pedido</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre de comanda</translation>
     </message>
 </context>
 <context>
@@ -5853,37 +5855,37 @@ Desea crearlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Descuento</source>
-        <translation type="unfinished">Descompte</translation>
+        <translation>Descompte</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Porcentaje</source>
-        <translation type="unfinished">Porcentatge</translation>
+        <translation>Percentatge</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Total</source>
-        <translation type="unfinished">Total</translation>
+        <translation>Total</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Base Imponible</source>
-        <translation type="unfinished">Base Imponible</translation>
+        <translation>Base Imponible</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>I.V.A.</source>
-        <translation type="unfinished"></translation>
+        <translation>I.V.A.</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>R.E.</source>
-        <translation type="unfinished"></translation>
+        <translation>R.E.</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>I.R.P.F (-</source>
-        <translation type="unfinished"></translation>
+        <translation>I.R.P.F (-</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -5893,12 +5895,12 @@ Desea crearlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>ID cliente</source>
-        <translation type="unfinished">Id client</translation>
+        <translation>ID client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>ID almacen</source>
-        <translation type="unfinished"></translation>
+        <translation>ID magatzem</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -5908,27 +5910,27 @@ Desea crearlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Fecha de creacion</source>
-        <translation type="unfinished"></translation>
+        <translation>Data de creació</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha de vencimiento</source>
-        <translation type="unfinished"></translation>
+        <translation>Data de venciment</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Persona de contacto</source>
-        <translation type="unfinished"></translation>
+        <translation>Persona de contacte</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Numero de telefono</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre de telèfon</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Comentarios</source>
-        <translation type="unfinished">Comentaris</translation>
+        <translation>Comentaris</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -5938,22 +5940,22 @@ Desea crearlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Referencia</source>
-        <translation type="unfinished"></translation>
+        <translation>Referència</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>ID forma de pago</source>
-        <translation type="unfinished"></translation>
+        <translation>ID forma de pagament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>ID trabajador</source>
-        <translation type="unfinished"></translation>
+        <translation>ID treballador</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Total Desc.</source>
-        <translation type="unfinished"></translation>
+        <translation>Total Desc.</translation>
     </message>
 </context>
 <context>
@@ -5981,17 +5983,17 @@ Desea crearlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Referencia:</source>
-        <translation type="unfinished">Referència:</translation>
+        <translation>Referència:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Mostrar/Ocultar cabecera</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar/Ocultar capçelera</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descripcion:</source>
-        <translation type="unfinished">Descipciò:</translation>
+        <translation>Descipciò:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -6001,42 +6003,42 @@ Desea crearlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Almacen:</source>
-        <translation type="unfinished">Magatzem:</translation>
+        <translation>Magatzem:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Trabajador:</source>
-        <translation type="unfinished">Trebajador:</translation>
+        <translation>Treballador:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Persona de contacto:</source>
-        <translation type="unfinished">Persona de contacte:</translation>
+        <translation>Persona de contacte:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha de creacion:</source>
-        <translation type="unfinished">Data de creaciò:</translation>
+        <translation>Data de creaciò:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha de vencimiento:</source>
-        <translation type="unfinished"></translation>
+        <translation>Data de venciment:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Forma de pago:</source>
-        <translation type="unfinished">Forma de pagament:</translation>
+        <translation>Forma de pagament:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Telefono de contacto:</source>
-        <translation type="unfinished">Telèfon de contacte:</translation>
+        <translation>Telèfon de contacte:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Pro&amp;cesado</source>
-        <translation type="unfinished"></translation>
+        <translation>Pro&amp;cesat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -6046,27 +6048,27 @@ Desea crearlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Desc&amp;uentos</source>
-        <translation type="unfinished"></translation>
+        <translation>Desc&amp;omptes</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Datos &amp;generales</source>
-        <translation type="unfinished"></translation>
+        <translation>Dades &amp;generals</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descuentos:</source>
-        <translation type="unfinished">Descomptes:</translation>
+        <translation>Descomptes:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>0.00</source>
-        <translation type="unfinished"></translation>
+        <translation>0.00</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Base imponible:</source>
-        <translation type="unfinished">Base imposable:</translation>
+        <translation>Base imposable:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -6076,7 +6078,7 @@ Desea crearlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Impuestos:</source>
-        <translation type="unfinished">Impostos:</translation>
+        <translation>Impostos:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -6091,7 +6093,7 @@ Desea crearlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Aceptar</source>
-        <translation>&amp;Aceptar</translation>
+        <translation>&amp;Acceptar</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -6139,7 +6141,7 @@ Desea crearlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Debe seleccionar una linea</source>
-        <translation type="unfinished">Ha de seleccionar una línia</translation>
+        <translation>Ha de seleccionar una línia</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -6197,32 +6199,32 @@ Desea crearlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Comentarios</source>
-        <translation type="unfinished">Comentaris</translation>
+        <translation>Comentaris</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>ID trabajador</source>
-        <translation type="unfinished"></translation>
+        <translation>ID treballador</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>ID cliente</source>
-        <translation type="unfinished">Id client</translation>
+        <translation>ID client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>ID almacen</source>
-        <translation type="unfinished"></translation>
+        <translation>ID magatzem</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Total Base imponible</source>
-        <translation type="unfinished"></translation>
+        <translation>Total Base Imposable</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Total impuestos</source>
-        <translation type="unfinished"></translation>
+        <translation>Total impostos</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -6250,12 +6252,12 @@ Desea crearlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>&amp;No</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;No</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Si</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sí</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -6270,7 +6272,7 @@ Desea crearlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Pedido existente</source>
-        <translation type="unfinished"></translation>
+        <translation>Comanda existent</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -6328,17 +6330,17 @@ Desea crearlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Filtrar pedidos</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtrar comandes</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Configurar listado</source>
-        <translation type="unfinished">Configurar llistat</translation>
+        <translation>Configurar llistat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Actualizar listado</source>
-        <translation type="unfinished">Actual·lizar llistat</translation>
+        <translation>Actual·lizar llistat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -6348,27 +6350,27 @@ Desea crearlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Buscar:</source>
-        <translation type="unfinished">Sercar:</translation>
+        <translation>Cercar:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha inicial:</source>
-        <translation type="unfinished">Data inicial:</translation>
+        <translation>Data inicial:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fecha final:</source>
-        <translation type="unfinished">Data final:</translation>
+        <translation>Data final:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Total:</source>
-        <translation type="unfinished">Total:</translation>
+        <translation>Total:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Mostrar:</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar:</translation>
     </message>
 </context>
 <context>
@@ -6376,22 +6378,22 @@ Desea crearlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Regimen Fiscal</source>
-        <translation type="unfinished"></translation>
+        <translation>Régimen Fiscal</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Forma_Pago</source>
-        <translation type="unfinished"></translation>
+        <translation>Forma_Pagament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Recargo de Equivalencia</source>
-        <translation type="unfinished"></translation>
+        <translation>Recarreg d&apos;Equivalència</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>IRPF</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -6399,222 +6401,222 @@ Desea crearlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ver</source>
-        <translation type="unfinished"></translation>
+        <translation>Ver</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Vigentes</source>
-        <translation type="unfinished"></translation>
+        <translation>Vigents</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Vencidos</source>
-        <translation type="unfinished"></translation>
+        <translation>Vençuts</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Todos</source>
-        <translation type="unfinished"></translation>
+        <translation>Tots</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nuevo proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Nou proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Guardar proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Desar proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Imprimir proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Imprimir proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Borrar proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Esborrar proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Provincia:</source>
-        <translation type="unfinished"></translation>
+        <translation>Provincia:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Cancelar</source>
-        <translation type="unfinished">&amp;Cancel·lar</translation>
+        <translation>&amp;Cancel·lar</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Aceptar</source>
-        <translation type="unfinished">&amp;Aceptar</translation>
+        <translation>&amp;Acceptar</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Resumen por articulos</source>
-        <translation type="unfinished"></translation>
+        <translation>Resum per articles</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+N</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+P</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Datos generales</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Dades generals</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Comentarios:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Comentaris:</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="" line="0"/>
         <source>Datos de comercio &amp;electrónico:</source>
-        <translation type="unfinished"></translation>
+        <translation>Dades de comerci &amp;electònic:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Forma de pago:</source>
-        <translation type="unfinished">Forma de pagament:</translation>
+        <translation>Forma de pagament:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;IRPF que aplica:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;IRPF que aplica:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>E-&amp;mail:</source>
-        <translation type="unfinished"></translation>
+        <translation>E-&amp;mail:</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="" line="0"/>
         <source>Página &amp;web:</source>
-        <translation type="unfinished"></translation>
+        <translation>Pàgina &amp;web:</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="" line="0"/>
         <source>Número de &amp;fax:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre de &amp;fax:</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="" line="0"/>
         <source>&amp;Teléfono:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Telèfon:</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="" line="0"/>
         <source>Població&amp;n:</source>
-        <translation type="unfinished"></translation>
+        <translation>Pob&amp;lació:</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="" line="0"/>
         <source>Direcció&amp;n:</source>
-        <translation type="unfinished"></translation>
+        <translation>Di&amp;recció:</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="" line="0"/>
         <source>Código &amp;postal:</source>
-        <translation type="unfinished"></translation>
+        <translation>Codi &amp;postal:</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="" line="0"/>
         <source>Di&amp;visión:</source>
-        <translation type="unfinished"></translation>
+        <translation>Di&amp;visió:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nombre comercia&amp;l:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom comercia&amp;l:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Nombre empresa:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Nom empresa:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>C.I.&amp;F. / N.I.F.</source>
-        <translation type="unfinished"></translation>
+        <translation>C.I.&amp;F. / N.I.F.</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="" line="0"/>
         <source>&amp;Código:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Codi:</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="" line="0"/>
         <source>Nuestro código de c&amp;liente:</source>
-        <translation type="unfinished"></translation>
+        <translation>El nostre codi de c&amp;lient:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Datos &amp;bancarios:</source>
-        <translation type="unfinished"></translation>
+        <translation>Dades &amp;bancaris:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Regimen &amp;fiscal:</source>
-        <translation type="unfinished"></translation>
+        <translation>Règim &amp;fiscal:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Aplicar Recargo de Equivalencia.</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Aplicar Recareg d&apos;Equivalència.</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Pedidos</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Comandes</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Albaranes</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Albarans</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Facturas</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Factures</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Pagos</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;pagaments</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Di&amp;visiones</source>
-        <translation type="unfinished"></translation>
+        <translation>Di&amp;visions</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Productos &amp;suministrados</source>
-        <translation type="unfinished"></translation>
+        <translation>Productes &amp;suminstrats</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Contratos</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Contractes</translation>
     </message>
 </context>
 <context>
@@ -6622,32 +6624,32 @@ Desea crearlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Proveedores (*.xml)</source>
-        <translation type="unfinished"></translation>
+        <translation>Proveïdors (*.xml)</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Seleccione el archivo</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecioni el arxiu</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Elija el archivo</source>
-        <translation type="unfinished"></translation>
+        <translation>Trii el arxiu</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Selector de proveedores</source>
-        <translation type="unfinished"></translation>
+        <translation>Selector de proveïdors</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Error al borrar el proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Error a l&apos;esborrar el proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Listado de Proveedores</source>
-        <translation type="unfinished"></translation>
+        <translation>Llistat de proveïdors</translation>
     </message>
 </context>
 <context>
@@ -6655,12 +6657,12 @@ Desea crearlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Exportar</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportar</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Importar</source>
-        <translation type="unfinished"></translation>
+        <translation>Importar</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -6670,57 +6672,57 @@ Desea crearlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Nuevo proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Nou proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Editar proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Borrar proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Esborrar proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Imprimir listado</source>
-        <translation type="unfinished">Imprimir llistat</translation>
+        <translation>Imprimir llistat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Filtrar proveedores</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtrar proveïdors</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Configurar listado</source>
-        <translation type="unfinished">Configurar llistat</translation>
+        <translation>Configurar llistat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Actualizar listado</source>
-        <translation type="unfinished">Actual·lizar llistat</translation>
+        <translation>Actual·lizar llistat</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Exportar proveedores</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportar proveïdors</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Importar proveedores</source>
-        <translation type="unfinished"></translation>
+        <translation>Importar proveïdors</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Buscar:</source>
-        <translation type="unfinished">Sercar:</translation>
+        <translation>Cercar:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Proveedores</source>
-        <translation type="unfinished"></translation>
+        <translation>Proveïdors</translation>
     </message>
 </context>
 <context>
@@ -6728,77 +6730,77 @@ Desea crearlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>ID proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>ID proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nombre</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nombre alternativo</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom alternatiu</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>C.I.F.</source>
-        <translation type="unfinished"></translation>
+        <translation>C.I.F.</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Codigo</source>
-        <translation type="unfinished">Codi</translation>
+        <translation>Codi</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Numero de cuenta corriente</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre de compte corrent</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Comentarios</source>
-        <translation type="unfinished">Comentaris</translation>
+        <translation>Comentaris</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Direccion</source>
-        <translation type="unfinished">Direcció</translation>
+        <translation>Direcció</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Poblacion</source>
-        <translation type="unfinished">Població</translation>
+        <translation>Població</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Codigo postal</source>
-        <translation type="unfinished">Codi postal</translation>
+        <translation>Codi postal</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Numero de telefono</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre de telèfon</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Numero de fax</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre de fax</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Direccion de correo electronico</source>
-        <translation type="unfinished"></translation>
+        <translation>Direcció de correu electrònic</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Direccion de URL</source>
-        <translation type="unfinished"></translation>
+        <translation>Direcció de URL</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Clave de acceso a la web del proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Clau d&apos;accés a la web del proveïdor</translation>
     </message>
 </context>
 <context>
@@ -6806,127 +6808,127 @@ Desea crearlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Guardar proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Desar proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Desea guardar los cambios?</source>
-        <translation type="unfinished"></translation>
+        <translation>Desitja desar els canvis?</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Borrar proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Esborrar proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Esta a punto de borrar un proveedor. Estos datos pueden dar problemas.</source>
-        <translation type="unfinished"></translation>
+        <translation>Està a punt d&apos;esborrar un proveïdor. Aquests dades poden donar problemes.</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Si</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sí</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;No</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;No</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Cancelar</source>
-        <translation type="unfinished">&amp;Cancel·lar</translation>
+        <translation>&amp;Cancel·lar</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Direccion</source>
-        <translation type="unfinished">Direcció</translation>
+        <translation>Direcció</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Poblacion</source>
-        <translation type="unfinished">Població</translation>
+        <translation>Població</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Provincia</source>
-        <translation type="unfinished">Provincia</translation>
+        <translation>Provincia</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Codigo postal</source>
-        <translation type="unfinished">Codi postal</translation>
+        <translation>Codi postal</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Numero de telefono</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre de telèfon</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Numero de fax</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre de fax</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Direccion electronica</source>
-        <translation type="unfinished">Direcció electrónica</translation>
+        <translation>Direcció electrònica</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>URL</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Comentarios</source>
-        <translation type="unfinished">Comentaris</translation>
+        <translation>Comentaris</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Codigo</source>
-        <translation type="unfinished">Codi</translation>
+        <translation>Codi</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>ID proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>ID proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nombre del proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre del proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nombre alternativo del proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre alternatiu del proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>C.I.F. del proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>C.I.F. del proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Codigo cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Codi client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Banco proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Banc proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Error al crear el proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Error al crear el proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Proveïdor</translation>
     </message>
 </context>
 <context>
@@ -6934,7 +6936,7 @@ Desea crearlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>&lt;center&gt;&lt;font size=+1 color=&quot;#a3ffa3&quot;&gt;BulmaFact&lt;/font&gt;&amp;nbsp;&lt;font color=&quot;#0000ff&quot;&gt;0.9.3&lt;/font&gt;&lt;/center&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;center&gt;&lt;font size=+1 color=&quot;#a3ffa3&quot;&gt;BulmaFact&lt;/font&gt;&amp;nbsp;&lt;font color=&quot;#0000ff&quot;&gt;0.9.3&lt;/font&gt;&lt;/center&gt;</translation>
     </message>
 </context>
 <context>
@@ -6942,37 +6944,37 @@ Desea crearlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Borrar registro</source>
-        <translation type="unfinished"></translation>
+        <translation>Esborrar registre</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ajustar columna</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajustar columna</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ajustar altura</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ajustar columnas</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajustar columnes</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ajustar alturas</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajustar altures</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ver/Ocultar configurador de subformulario</source>
-        <translation type="unfinished"></translation>
+        <translation>Ver/Ocultar configurador de subformulari</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Articulo inexistente</source>
-        <translation type="unfinished"></translation>
+        <translation>Article inexistent</translation>
     </message>
 </context>
 <context>
@@ -6980,27 +6982,27 @@ Desea crearlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Guardar familia</source>
-        <translation type="unfinished"></translation>
+        <translation>Desar familia</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Desea guardar los cambios?</source>
-        <translation type="unfinished"></translation>
+        <translation>Desitja desar els canvis?</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Id</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Codigo</source>
-        <translation type="unfinished">Codi</translation>
+        <translation>Codi</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descripcion</source>
-        <translation type="unfinished"></translation>
+        <translation>Descripció</translation>
     </message>
 </context>
 <context>
@@ -7008,77 +7010,77 @@ Desea crearlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Trabajadores</source>
-        <translation type="unfinished"></translation>
+        <translation>Treballadors</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Activo</source>
-        <translation type="unfinished"></translation>
+        <translation>Actiu</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nuevo trabajador</source>
-        <translation type="unfinished"></translation>
+        <translation>Nou treballador</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Guardar trabajador</source>
-        <translation type="unfinished"></translation>
+        <translation>Desar treballador</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Borrar trabajador</source>
-        <translation type="unfinished"></translation>
+        <translation>Esborrar treballador</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Informacion del trabajador:</source>
-        <translation type="unfinished"></translation>
+        <translation>Informació del treballador:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nombre:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Apellidos:</source>
-        <translation type="unfinished"></translation>
+        <translation>Cognoms:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Direccion:</source>
-        <translation type="unfinished"></translation>
+        <translation>Direcció:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Telefono:</source>
-        <translation type="unfinished"></translation>
+        <translation>Telèfon:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Telefono movil:</source>
-        <translation type="unfinished"></translation>
+        <translation>Telèfon móbil:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>E-mail:</source>
-        <translation type="unfinished"></translation>
+        <translation>E-mail:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Cambiar imagen</source>
-        <translation type="unfinished"></translation>
+        <translation>Canviar imatge</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Numero de la Seguridad Social:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre de la Seguretat Social:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Lista de trabajadores:</source>
-        <translation type="unfinished"></translation>
+        <translation>Llista de treballadors:</translation>
     </message>
 </context>
 <context>
@@ -7086,32 +7088,32 @@ Desea crearlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Guardar datos del trabajador</source>
-        <translation type="unfinished"></translation>
+        <translation>Desar dades del treballador</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Desea guardar los cambios?</source>
-        <translation type="unfinished"></translation>
+        <translation>Desitja desar els canvis?</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Si</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sí</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;No</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;No</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Seleccione archivo</source>
-        <translation type="unfinished"></translation>
+        <translation>Seleccioni arxiu</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Imagenes (*.jpg)</source>
-        <translation type="unfinished"></translation>
+        <translation>Imatges (*.jpg)</translation>
     </message>
 </context>
 <context>
@@ -7119,37 +7121,37 @@ Desea crearlo?</source>
     <message>
         <location filename="" line="0"/>
         <source>Acerca de BulmaFact</source>
-        <translation type="unfinished"></translation>
+        <translation>Sobre BulmaFact</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>A&amp;utores</source>
-        <translation type="unfinished"></translation>
+        <translation>A&amp;utors</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Sopor&amp;te</source>
-        <translation type="unfinished"></translation>
+        <translation>Supor&amp;t</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Acerca de</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sobre </translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Acuerdo de &amp;licencia</source>
-        <translation type="unfinished"></translation>
+        <translation>Acord de &amp;llicència</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Cerrar</source>
-        <translation type="unfinished"></translation>
+        <translation>Tan&amp;car</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Facturacion GPL - Version 0.9.3 -</source>
-        <translation type="unfinished"></translation>
+        <translation>Facturació GPL - Versió 0.9.3 -</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -7157,7 +7159,7 @@ Desea crearlo?</source>
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -7165,22 +7167,22 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="" line="0"/>
         <source>Listo</source>
-        <translation type="unfinished"></translation>
+        <translation>Llest</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>BulmaFact</source>
-        <translation type="unfinished"></translation>
+        <translation>BulmaFact</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Pulse aceptar para emitir un monton de facturas</source>
-        <translation type="unfinished"></translation>
+        <translation>Polsi acceptar per a emetre un munt de factures</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Pulse aceptar para recibir(destruir) un monton de facturas</source>
-        <translation type="unfinished"></translation>
+        <translation>Polsi aceptar per a rebre(destroir) un mount de factures</translation>
     </message>
 </context>
 <context>
@@ -7188,147 +7190,147 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="" line="0"/>
         <source>Listados</source>
-        <translation type="unfinished"></translation>
+        <translation>Llistats</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Fichas</source>
-        <translation type="unfinished"></translation>
+        <translation>Fitxes</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Venta&amp;na</source>
-        <translation type="unfinished"></translation>
+        <translation>Fi&amp;nestra</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>A&amp;yuda</source>
-        <translation type="unfinished"></translation>
+        <translation>A&amp;juda</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Ventas</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ventes</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+Q</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>F4</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>F6</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Tipos de articulo</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Tipus d&apos;article</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>F2</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Pro&amp;vincias</source>
-        <translation type="unfinished"></translation>
+        <translation>Pro&amp;vincies</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Se&amp;ries de factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Sè&amp;ries de factura</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Trabajadores</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Treballadors</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ventana &amp;completa</source>
-        <translation type="unfinished"></translation>
+        <translation>Finestra &amp;Completa</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Formas de pago</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Formes de pagament</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Almacenes</source>
-        <translation type="unfinished"></translation>
+        <translation>M&amp;agatzems</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Documentacion</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Documentació</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>F1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Gestion de &amp;familias</source>
-        <translation type="unfinished"></translation>
+        <translation>Gestió de &amp;families</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>BulmaFact - Facturacion GPL</source>
-        <translation type="unfinished"></translation>
+        <translation>BulmaFact - Facturació GPL</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>E&amp;mpresa</source>
-        <translation type="unfinished"></translation>
+        <translation>E&amp;mpresa</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Com&amp;pras</source>
-        <translation type="unfinished"></translation>
+        <translation>Com&amp;pres</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Articulo&amp;s</source>
-        <translation type="unfinished"></translation>
+        <translation>Article&amp;s</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Maest&amp;ro</source>
-        <translation type="unfinished"></translation>
+        <translation>Mest&amp;re</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>F11</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+I</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nuevo pe&amp;dido a proveedor...</source>
-        <translation type="unfinished"></translation>
+        <translation>Nova coman&amp;da a proveïdor...</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nuevo &amp;albaran de proveedor...</source>
-        <translation type="unfinished"></translation>
+        <translation>Nou &amp;albarà de proveïdor...</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nueva &amp;factura de proveedor...</source>
-        <translation type="unfinished"></translation>
+        <translation>Nova &amp;factura de proveïdor...</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -7348,57 +7350,57 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="" line="0"/>
         <source>Nueva &amp;factura a cliente...</source>
-        <translation type="unfinished"></translation>
+        <translation>Nova &amp;factura a client...</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nuevo &amp;articulo...</source>
-        <translation type="unfinished"></translation>
+        <translation>Nou &amp;article...</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nuevo &amp;proveedor...</source>
-        <translation type="unfinished"></translation>
+        <translation>Nou &amp;proveïdor...</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nuevo &amp;cliente...</source>
-        <translation type="unfinished"></translation>
+        <translation>Nou &amp;client...</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Acerca de BulmaFact</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Acerca de BulmaFact</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nuevo pa&amp;go a proveedor...</source>
-        <translation type="unfinished"></translation>
+        <translation>Nou pa&amp;gament a proveïdor...</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nuevo co&amp;bro a cliente...</source>
-        <translation type="unfinished"></translation>
+        <translation>Nou co&amp;brament a client...</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Salir del programa</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sortir del programa</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Pe&amp;didos a proveedores</source>
-        <translation type="unfinished"></translation>
+        <translation>Coman&amp;des a proveïdors</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Albaranes de proveedores</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Albarans de proveïdors</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Facturas de proveedores</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Factures de proveïdors</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -7413,77 +7415,77 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="" line="0"/>
         <source>&amp;Albaranes a clientes</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Albarans a clients</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Facturas a clientes</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Factures a clients</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Articulos</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Articles</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Proveedores</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Proveïdors</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Clientes</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Clients</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Pa&amp;gos a proveedores</source>
-        <translation type="unfinished"></translation>
+        <translation>Pa&amp;gaments a proveïdors</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Co&amp;bros a clientes</source>
-        <translation type="unfinished"></translation>
+        <translation>Co&amp;braments a clients</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Indexador</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Indexador</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Indexador</source>
-        <translation type="unfinished"></translation>
+        <translation>Indexador</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>F3</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Propiedades de la empresa...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;propietats de l&apos;empresa...</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Propiedades de la empresa</source>
-        <translation type="unfinished"></translation>
+        <translation>Propietats de l&apos;empresa</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Tipos de IVA</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipus d&apos;IVA</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Tasas de IVA</source>
-        <translation type="unfinished"></translation>
+        <translation>Taxes d&apos;IVA</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Bancos</source>
-        <translation type="unfinished"></translation>
+        <translation>Bancs</translation>
     </message>
 </context>
 <context>
@@ -7491,17 +7493,17 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="" line="0"/>
         <source>Inicializando listado de Articulos</source>
-        <translation type="unfinished"></translation>
+        <translation>Inicialitzant llistat d&apos;articles</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Inicializando listado de Proveedores</source>
-        <translation type="unfinished"></translation>
+        <translation>Inicialitzant llistat de proveïdors</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Inicializando listado de Clientes</source>
-        <translation type="unfinished"></translation>
+        <translation>Inicialitzant llistat de clients</translation>
     </message>
     <message>
         <location filename="" line="0"/>
@@ -7511,42 +7513,42 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="" line="0"/>
         <source>Inicializando listado de Pedidos Cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Initcializant llistat de Comandes Client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Inicializando listado de Albaranes Cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Inicialitzant llistat d&apos;albarans client</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Inicializando listado de Facturas</source>
-        <translation type="unfinished"></translation>
+        <translation>Inicialitzant llista de factures</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Inicializando listado de Cobros</source>
-        <translation type="unfinished"></translation>
+        <translation>inicialitzant llistat de cobraments</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Inicializando listado de Pedidos Proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Initcialitzant llistat de Comandes Proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Inicializando listado de Albaranes Proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Inicialitzant llistat d&apos;Albarans Proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Inicializando listado de Facturas Proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Inicialitzant llistat de Factures Proveïdor</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Inicializando listado de Pagos</source>
-        <translation type="unfinished"></translation>
+        <translation>Inicialitzant llistat de Pagaments</translation>
     </message>
 </context>
 <context>
@@ -7554,82 +7556,82 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="" line="0"/>
         <source>Familias</source>
-        <translation type="unfinished"></translation>
+        <translation>Families</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nueva Familia</source>
-        <translation type="unfinished"></translation>
+        <translation>Nova Familia</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Borrar Familia</source>
-        <translation type="unfinished"></translation>
+        <translation>Esborrar Familia</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Guardar Familia</source>
-        <translation type="unfinished"></translation>
+        <translation>Desar Familia</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Imprimir Familias</source>
-        <translation type="unfinished"></translation>
+        <translation>Imprimir Families</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Mostrar / Ocultar Detalle</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar / Ocultar Detall</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Contenido de la familia:</source>
-        <translation type="unfinished"></translation>
+        <translation>Contingut de la familia:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descripcion:</source>
-        <translation type="unfinished">Descipciò:</translation>
+        <translation>Descipciò:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Codigo:</source>
-        <translation type="unfinished"></translation>
+        <translation>Codi:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Codigo completo:</source>
-        <translation type="unfinished"></translation>
+        <translation>Codi complet:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nombre:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Cancelar</source>
-        <translation type="unfinished">&amp;Cancel·lar</translation>
+        <translation>&amp;Cancel·lar</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Aceptar</source>
-        <translation type="unfinished">&amp;Aceptar</translation>
+        <translation>&amp;Acceptar</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Tipo Articulos</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipus Articles</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Servicio</source>
-        <translation type="unfinished"></translation>
+        <translation>Servei</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Producto</source>
-        <translation type="unfinished"></translation>
+        <translation>Producte</translation>
     </message>
 </context>
 <context>
@@ -7637,42 +7639,42 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="" line="0"/>
         <source>Error inesperado en BulmaFact. El programa se cerrara.</source>
-        <translation type="unfinished"></translation>
+        <translation>Error inesperat en BulmaFact. El programa se tancarà.</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Iniciando clases</source>
-        <translation type="unfinished"></translation>
+        <translation>Inicialitzant classes</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Leyendo configuracion</source>
-        <translation type="unfinished"></translation>
+        <translation>Llegint configuració</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Cargando Traducciones</source>
-        <translation type="unfinished"></translation>
+        <translation>Carregant Traduccions</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Cargando Plugins</source>
-        <translation type="unfinished"></translation>
+        <translation>Carregant Plugins</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Lanzando Plugins</source>
-        <translation type="unfinished"></translation>
+        <translation>Llançant Plugins</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Inicializando Componentes</source>
-        <translation type="unfinished"></translation>
+        <translation>Inicialitzant Components</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Terminado</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminat</translation>
     </message>
 </context>
 <context>
@@ -7680,67 +7682,67 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="" line="0"/>
         <source>Tipos de articulo</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipus d&apos;article</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Guardar Tipo de articulo</source>
-        <translation type="unfinished"></translation>
+        <translation>Desar Tipus d&apos;article</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Borrar Tipo de articulo</source>
-        <translation type="unfinished"></translation>
+        <translation>Esborrar Tipus d&apos;article</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+D</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Nuevo Tipo de articulo</source>
-        <translation type="unfinished"></translation>
+        <translation>Nou Tipus d&apos;article</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Ctrl+N</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Mostrar / Ocultar Detalle</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar / Ocultar Detall</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Contenido de la familia:</source>
-        <translation type="unfinished"></translation>
+        <translation>Contingut de la familia:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Codigo:</source>
-        <translation type="unfinished"></translation>
+        <translation>Codi:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>Descripcion:</source>
-        <translation type="unfinished">Descipciò:</translation>
+        <translation>Descipciò:</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Cancelar</source>
-        <translation type="unfinished">&amp;Cancel·lar</translation>
+        <translation>&amp;Cancel·lar</translation>
     </message>
     <message>
         <location filename="" line="0"/>
         <source>&amp;Aceptar</source>
-        <translation type="unfinished">&amp;Aceptar</translation>
+        <translation>&amp;Acceptar</translation>
     </message>
 </context>
 </TS>
