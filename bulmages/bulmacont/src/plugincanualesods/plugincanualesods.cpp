@@ -83,7 +83,7 @@ void pluginCAnualesODS::formDatosBalance() {
 
 
 void pluginCAnualesODS::balanceSituacionODS() {
-    /// Se genera el Balance de Situacion en formato SXW (Hoja de calculo).
+    /// Se genera el Balance de Situacion en formato ODS (Hoja de calculo OpenOffice.org).
 
     QString archivosalida = "\
 #!/usr/bin/python\n\
@@ -114,7 +114,7 @@ doc.set_cell_property('bold', False)\n\
 doc.set_cell_value(2, 10, 'string', '   I.   Gastos de establecimiento')\n\
 doc.set_cell_value(3, 10, 'float', '" + saldoCuenta(20).toQString() + "')\n\
 \
-doc.set_cell_value(2, 11, 'string', '   II.  Inmovilizaciones inmatariales')\n\
+doc.set_cell_value(2, 11, 'string', '   II.  Inmovilizaciones inmateriales')\n\
 doc.set_cell_value(3, 11, 'formula', '=SUM(C12:C19)')\n\
 \
 doc.set_cell_value(2, 12, 'string', '       1. Gastos de investigación y desarrollo')\n\
@@ -204,7 +204,7 @@ doc.set_cell_property('bold', False)\n\
 \
 doc.set_cell_property('bold', True)\n\
 doc.set_cell_value(2, 41, 'string', 'D) Activo circulante')\n\
-doc.set_cell_value(3, 41, 'formula', '=C42+C43')\n\
+doc.set_cell_value(3, 41, 'formula', '=C42+C43+C51+C59+C68+C69+C70')\n\
 doc.set_cell_property('bold', False)\n\
 \
 doc.set_cell_value(2, 42, 'string', '   I.   Accionistas por desembolsos exigidos')\n\
@@ -234,6 +234,74 @@ doc.set_cell_value(3, 49, 'float', '" + saldoCuenta(407).toQString() + "')\n\
 doc.set_cell_value(2, 50, 'string', '       7. Provisiones')\n\
 doc.set_cell_value(3, 50, 'float', '" + (-saldoCuenta(39)).toQString() + "')\n\
 \
+doc.set_cell_value(2, 51, 'string', '   III. Deudores')\n\
+doc.set_cell_value(3, 51, 'formula', '=SUM(C52:C58)')\n\
+\
+doc.set_cell_value(2, 52, 'string', '       1. Clientes por ventas y prestaciones de servicios')\n\
+doc.set_cell_value(3, 52, 'float', '" + (saldoCuenta(430) + saldoCuenta(431) + saldoCuenta(435) - saldoCuenta(436)).toQString() + "')\n\
+\
+doc.set_cell_value(2, 53, 'string', '       2. Empresas del grupo, deudores')\n\
+doc.set_cell_value(3, 53, 'float', '" + (saldoCuenta(432) + saldoCuenta(551)).toQString() + "')\n\
+\
+doc.set_cell_value(2, 54, 'string', '       3. Empresas asociadas, deudores')\n\
+doc.set_cell_value(3, 54, 'float', '" + (saldoCuenta(433) + saldoCuenta(552)).toQString() + "')\n\
+\
+doc.set_cell_value(2, 55, 'string', '       4. Deudores varios')\n\
+doc.set_cell_value(3, 55, 'float', '" + (saldoCuenta(44) + saldoCuenta(553)).toQString() + "')\n\
+\
+doc.set_cell_value(2, 56, 'string', '       5. Personal')\n\
+doc.set_cell_value(3, 56, 'float', '" + (saldoCuenta(460) + saldoCuenta(544)).toQString() + "')\n\
+\
+doc.set_cell_value(2, 57, 'string', '       6. Administraciones Públicas')\n\
+doc.set_cell_value(3, 57, 'float', '" + (saldoCuenta(470) + saldoCuenta(471) + saldoCuenta(472) + saldoCuenta(474)).toQString() + "')\n\
+\
+doc.set_cell_value(2, 58, 'string', '       7. Provisiones')\n\
+doc.set_cell_value(3, 58, 'float', '" + ((-saldoCuenta(490)) + (-saldoCuenta(493)) + (-saldoCuenta(494))).toQString() + "')\n\
+\
+doc.set_cell_value(2, 59, 'string', '   IV.  Inversiones financieras temporales')\n\
+doc.set_cell_value(3, 59, 'formula', '=SUM(C60:C67)')\n\
+\
+doc.set_cell_value(2, 60, 'string', '       1. Participaciones en empresas del grupo')\n\
+doc.set_cell_value(3, 60, 'float', '" + (saldoCuenta(530) + (-saldoCuenta(538))).toQString() + "')\n\
+\
+doc.set_cell_value(2, 61, 'string', '       2. Créditos a empresas del grupo')\n\
+doc.set_cell_value(3, 61, 'float', '" + (saldoCuenta(532) + saldoCuenta(534) + saldoCuenta(536)).toQString() + "')\n\
+\
+doc.set_cell_value(2, 62, 'string', '       3. Participaciones en empresas asociadas')\n\
+doc.set_cell_value(3, 62, 'float', '" + (saldoCuenta(531) + (-saldoCuenta(539))).toQString() + "')\n\
+\
+doc.set_cell_value(2, 63, 'string', '       4. Creéditos a empresas asociadas')\n\
+doc.set_cell_value(3, 63, 'float', '" + (saldoCuenta(533) + saldoCuenta(535) + saldoCuenta(537)).toQString() + "')\n\
+\
+doc.set_cell_value(2, 64, 'string', '       5. Cartera de valores a corto plazo')\n\
+doc.set_cell_value(3, 64, 'float', '" + (saldoCuenta(540) + saldoCuenta(541) + saldoCuenta(546) + (-saldoCuenta(549))).toQString() + "')\n\
+\
+doc.set_cell_value(2, 65, 'string', '       6. Otros créditos')\n\
+doc.set_cell_value(3, 65, 'float', '" + (saldoCuenta(542) + saldoCuenta(543) + saldoCuenta(545) + saldoCuenta(547) + saldoCuenta(548)).toQString() + "')\n\
+\
+doc.set_cell_value(2, 66, 'string', '       7. Depósitos y fianzas constituidos a corto plazo')\n\
+doc.set_cell_value(3, 66, 'float', '" + (saldoCuenta(565) + saldoCuenta(566)).toQString() + "')\n\
+\
+doc.set_cell_value(2, 67, 'string', '       8. Provisiones')\n\
+doc.set_cell_value(3, 67, 'float', '" + ((-saldoCuenta(593)) + (-saldoCuenta(594)) + (-saldoCuenta(595)) + (-saldoCuenta(596)) + (-saldoCuenta(597)) + (-saldoCuenta(598))).toQString() + "')\n\
+\
+doc.set_cell_value(2, 68, 'string', '   V.   Acciones propias a corto plazo')\n\
+doc.set_cell_value(3, 68, 'formula', '=0')\n\
+\
+doc.set_cell_value(2, 69, 'string', '   VI.  Tesorería')\n\
+doc.set_cell_value(3, 69, 'float', '" + saldoCuenta(57).toQString() + "')\n\
+\
+doc.set_cell_value(2, 70, 'string', '   VII. Ajustes por periodificación')\n\
+doc.set_cell_value(3, 70, 'float', '" + (saldoCuenta(480) + saldoCuenta(580)).toQString() + "')\n\
+\
+doc.set_cell_property('bold', True)\n\
+doc.set_cell_value(2, 72, 'string', 'TOTAL GENERAL (A+B+C+D)')\n\
+doc.set_cell_value(3, 72, 'formula', '=C7+C9+C39+C41')\n\
+doc.set_cell_property('bold', False)\n\
+\
+\
+\
+\
 \
 \
 \
@@ -244,6 +312,43 @@ doc.set_cell_property('bold', True)\n\
 doc.set_cell_value(2, 2, 'string', 'BALANCE DE SITUACIÓN')\n\
 doc.set_cell_value(2, 5, 'string', 'PASIVO')\n\
 doc.set_cell_property('bold', False)\n\
+\
+doc.set_cell_property('bold', True)\n\
+doc.set_cell_value(2, 7, 'string', 'A) Fondos propios')\n\
+doc.set_cell_value(3, 7, 'formula', '=0')\n\
+doc.set_cell_property('bold', False)\n\
+\
+doc.set_cell_value(2, 8, 'string', '   I.   Capital suscrito')\n\
+doc.set_cell_value(3, 8, 'float', '" + saldoCuenta(10).toQString() + "')\n\
+\
+doc.set_cell_value(2, 9, 'string', '   II.  Prima de emisión')\n\
+doc.set_cell_value(3, 9, 'float', '" + saldoCuenta(110).toQString() + "')\n\
+\
+doc.set_cell_value(2, 10, 'string', '   III. Reserva de revalorización')\n\
+doc.set_cell_value(3, 10, 'float', '" + saldoCuenta(111).toQString() + "')\n\
+\
+doc.set_cell_value(2, 11, 'string', '   IV.  Reservas')\n\
+doc.set_cell_value(3, 11, 'formula', '=SUM(C12:C16)')\n\
+\
+doc.set_cell_value(2, 12, 'string', '       1. Reserva legal')\n\
+doc.set_cell_value(3, 12, 'float', '" + saldoCuenta(112).toQString() + "')\n\
+\
+doc.set_cell_value(2, 13, 'string', '       2. Reserva para acciones propias')\n\
+doc.set_cell_value(3, 13, 'float', '" + saldoCuenta(115).toQString() + "')\n\
+\
+doc.set_cell_value(2, 14, 'string', '       3. Reserva para acciones de la sociedad dominante')\n\
+doc.set_cell_value(3, 14, 'float', '" + saldoCuenta(114).toQString() + "')\n\
+\
+doc.set_cell_value(2, 15, 'string', '       4. Reservas estatutarias')\n\
+doc.set_cell_value(3, 15, 'float', '" + saldoCuenta(116).toQString() + "')\n\
+\
+doc.set_cell_value(2, 16, 'string', '       5. Otras reservas')\n\
+doc.set_cell_value(3, 16, 'float', '" + (saldoCuenta(113) + saldoCuenta(117) + saldoCuenta(118)).toQString() + "')\n\
+\
+\
+\
+\
+\
 \
 doc.new_sheet(\"Debe\")\n\n\
 doc.set_column_property(1, 'width', '0.5in')\n\
