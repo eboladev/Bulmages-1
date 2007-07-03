@@ -1,12 +1,20 @@
 # Archivo generado por el gestor qmake de kdevelop. 
 # -------------------------------------------------
 
+SOURCES += plugincanualesods.cpp \
+	   datosview.cpp
+
+HEADERS += plugincanualesods.h \
+	   datosview.h
+
+FORMS += datosbase.ui
 
 TEMPLATE = lib
 
 CONFIG += release \
           plugin \
-	  assistant
+	  assistant \
+          qt
 
 LIBS +=	 -rdynamic 	 
 
@@ -22,8 +30,12 @@ unix{
 		  ../contabilidad/.ui \
 		  /usr/include/qt4 \
 		  /usr/include/qt4/Qt \
-		  ../../src \
-		  ../../../bulmalib/.ui 
+		  /usr/include/QtXml \
+		  /usr/lib/qt4/include/QtXml \
+		  /usr/lib/qt4/include/Qt \
+		  ../../../bulmalib/.ui \
+		  .ui \
+		  ../.ui
 
     UI_DIR = .ui
     MOC_DIR = .moc
@@ -72,8 +84,4 @@ windows{
 
     LIBS += "C:\Archivos de programa\PostgreSQL\8.1\bin\libpq.dll"
 }
-
-SOURCES = plugincanualesods.cpp
-
-HEADERS = plugincanualesods.h
 

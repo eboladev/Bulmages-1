@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2002 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,50 +18,29 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
-#include <QStringList>
-#include <QWidget>
-#include <QIcon>
-#include <QApplication>
-#include <QObject>
-#include <QTextStream>
-
-#include "bulmacont.h"
-#include "postgresiface2.h"
-#include "empresa.h"
+#include "datosview.h"
 
 
-extern "C" MY_EXPORT void entryPoint(Bulmacont *);
+datosView::datosView(QWidget *parent) : QDialog(parent){
 
-extern QApplication2 *theApp;
+    setupUi(this);
+
+}
 
 
-class pluginCAnualesODS : public QObject {
-    Q_OBJECT
+datosView::~datosView() {
 
-private:
-    Fixed saldoCuenta(int cuenta);
-    QString ejercicioActual_fechaInicio;
-    QString ejercicioActual_fechaFin;
-    QString ejercicioAnterior_fechaInicio;
-    QString ejercicioAnterior_fechaFin;
+}
 
-public:
-    empresa *empresaact;
-    postgresiface2 *conexionbase;
 
-public:
-    pluginCAnualesODS();
-    ~pluginCAnualesODS();
-    void inicializa(Bulmacont *);
+void datosView::on_mui_cancelar_clicked() {
+    close();
+    setResult(Rejected);
+}
 
-public slots:
-    void balanceSituacionODS();
-    void formDatosBalance();
-};
+
+void datosView::on_mui_aceptar_clicked() {
+    close();
+    setResult(Accepted);
+}
 
