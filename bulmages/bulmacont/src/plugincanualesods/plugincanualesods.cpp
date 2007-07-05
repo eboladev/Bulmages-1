@@ -315,7 +315,7 @@ doc.set_cell_property('bold', False)\n\
 \
 doc.set_cell_property('bold', True)\n\
 doc.set_cell_value(2, 7, 'string', 'A) Fondos propios')\n\
-doc.set_cell_value(3, 7, 'formula', '=0')\n\
+doc.set_cell_value(3, 7, 'formula', '=C8+C9+C10+C11+C17+C21+C22')\n\
 doc.set_cell_property('bold', False)\n\
 \
 doc.set_cell_value(2, 8, 'string', '   I.   Capital suscrito')\n\
@@ -345,6 +345,173 @@ doc.set_cell_value(3, 15, 'float', '" + saldoCuenta(116).toQString() + "')\n\
 doc.set_cell_value(2, 16, 'string', '       5. Otras reservas')\n\
 doc.set_cell_value(3, 16, 'float', '" + (saldoCuenta(113) + saldoCuenta(117) + saldoCuenta(118)).toQString() + "')\n\
 \
+doc.set_cell_value(2, 17, 'string', '   V.   Resultados de ejercicios anteriores')\n\
+doc.set_cell_value(3, 17, 'formula', '=SUM(C18:C20)')\n\
+\
+doc.set_cell_value(2, 18, 'string', '       1. Remanente')\n\
+doc.set_cell_value(3, 18, 'float', '" + saldoCuenta(120).toQString() + "')\n\
+\
+doc.set_cell_value(2, 19, 'string', '       2. Resultados negativos de ejercicios anteriores')\n\
+doc.set_cell_value(3, 19, 'float', '" + (-saldoCuenta(121)).toQString() + "')\n\
+\
+doc.set_cell_value(2, 20, 'string', '       3. Aportaciones de socios para compensación de pérdidas')\n\
+doc.set_cell_value(3, 20, 'float', '" + saldoCuenta(122).toQString() + "')\n\
+\
+doc.set_cell_value(2, 21, 'string', '   VI.  Pérdidas y ganancias (beneficio o pérdida)')\n\
+doc.set_cell_value(3, 21, 'float', '" + saldoCuenta(129).toQString() + "')\n\
+\
+doc.set_cell_value(2, 22, 'string', '   VII. Dividendo a cuenta entregado en el ejercicio')\n\
+doc.set_cell_value(3, 22, 'float', '" + (-saldoCuenta(557)).toQString() + "')\n\
+\
+doc.set_cell_property('bold', True)\n\
+doc.set_cell_value(2, 24, 'string', 'B) Ingresos a distribuir en varios ejercicios')\n\
+doc.set_cell_value(3, 24, 'formula', '=SUM(C25:C27)')\n\
+doc.set_cell_property('bold', False)\n\
+\
+doc.set_cell_value(2, 25, 'string', '       1. Subvenciones de capital')\n\
+doc.set_cell_value(3, 25, 'float', '" + (saldoCuenta(130) + saldoCuenta(131)).toQString() + "')\n\
+\
+doc.set_cell_value(2, 26, 'string', '       2. Diferencias positivas de cambio')\n\
+doc.set_cell_value(3, 26, 'float', '" + saldoCuenta(136).toQString() + "')\n\
+\
+doc.set_cell_value(2, 27, 'string', '       3. Otros ingresos a distribuir en varios ejercicios')\n\
+doc.set_cell_value(3, 27, 'float', '" + saldoCuenta(135).toQString() + "')\n\
+\
+doc.set_cell_property('bold', True)\n\
+doc.set_cell_value(2, 29, 'string', 'C) Provisiones para riesgos y gastos')\n\
+doc.set_cell_value(3, 29, 'formula', '=SUM(C30:C33)')\n\
+doc.set_cell_property('bold', False)\n\
+\
+doc.set_cell_value(2, 30, 'string', '       1. Provisiones para pensiones y obligaciones similares')\n\
+doc.set_cell_value(3, 30, 'float', '" + saldoCuenta(140).toQString() + "')\n\
+\
+doc.set_cell_value(2, 31, 'string', '       2. Provisiones para impuestos')\n\
+doc.set_cell_value(3, 31, 'float', '" + saldoCuenta(141).toQString() + "')\n\
+\
+doc.set_cell_value(2, 32, 'string', '       3. Otras provisiones')\n\
+doc.set_cell_value(3, 32, 'float', '" + (saldoCuenta(142) + saldoCuenta(143)).toQString() + "')\n\
+\
+doc.set_cell_value(2, 33, 'string', '       4. Fondo de reversión')\n\
+doc.set_cell_value(3, 33, 'float', '" + saldoCuenta(144).toQString() + "')\n\
+\
+doc.set_cell_property('bold', True)\n\
+doc.set_cell_value(2, 35, 'string', 'D) Acreedores a largo plazo')\n\
+doc.set_cell_value(3, 35, 'formula', '=C36+C40+C41+C44+C48')\n\
+doc.set_cell_property('bold', False)\n\
+\
+doc.set_cell_value(2, 36, 'string', '   I.   Emisiones de obligaciones y otros valores negociables')\n\
+doc.set_cell_value(3, 11, 'formula', '=SUM(C37:C39)')\n\
+\
+doc.set_cell_value(2, 37, 'string', '       1. Obligaciones no convertibles')\n\
+doc.set_cell_value(3, 37, 'float', '" + saldoCuenta(150).toQString() + "')\n\
+\
+doc.set_cell_value(2, 38, 'string', '       2. Obligaciones convertibles')\n\
+doc.set_cell_value(3, 38, 'float', '" + saldoCuenta(151).toQString() + "')\n\
+\
+doc.set_cell_value(2, 39, 'string', '       3. Otras deudas representadas en valores negociables')\n\
+doc.set_cell_value(3, 39, 'float', '" + saldoCuenta(155).toQString() + "')\n\
+\
+doc.set_cell_value(2, 40, 'string', '   II.  Deudas con entidades de crédito')\n\
+doc.set_cell_value(3, 40, 'float', '" + saldoCuenta(170).toQString() + "')\n\
+\
+doc.set_cell_value(2, 41, 'string', '   III. Deudas con empresas del grupo y asociadas')\n\
+doc.set_cell_value(3, 41, 'formula', '=SUM(C42:C43)')\n\
+\
+doc.set_cell_value(2, 42, 'string', '       1. Deudas con empresas del grupo')\n\
+doc.set_cell_value(3, 42, 'float', '" + (saldoCuenta(160) + saldoCuenta(162) + saldoCuenta(164)).toQString() + "')\n\
+\
+doc.set_cell_value(2, 43, 'string', '       2. Deudas con empresas asociadas')\n\
+doc.set_cell_value(3, 43, 'float', '" + (saldoCuenta(161) + saldoCuenta(163) + saldoCuenta(165)).toQString() + "')\n\
+\
+doc.set_cell_value(2, 44, 'string', '   IV.  Otros acreedores')\n\
+doc.set_cell_value(2, 45, 'string', '       1. Deudas representadas por efectos a pagar')\n\
+doc.set_cell_value(3, 45, 'float', '" + saldoCuenta(174).toQString() + "')\n\
+\
+doc.set_cell_value(2, 46, 'string', '       2. Otras deudas')\n\
+doc.set_cell_value(3, 46, 'float', '" + (saldoCuenta(171) + saldoCuenta(172) + saldoCuenta(173)).toQString() + "')\n\
+\
+doc.set_cell_value(2, 47, 'string', '       3. Fianzas y depósitos recibidos a largo plazo')\n\
+doc.set_cell_value(3, 47, 'float', '" + (saldoCuenta(180) + saldoCuenta(185)).toQString() + "')\n\
+\
+doc.set_cell_value(2, 48, 'string', '   V.   Desembolsos pendientes sobre acciones, no exigidos')\n\
+doc.set_cell_value(2, 49, 'string', '       1. De empresas del grupo')\n\
+doc.set_cell_value(3, 49, 'float', '" + saldoCuenta(248).toQString() + "')\n\
+\
+doc.set_cell_value(2, 50, 'string', '       2. De empresas asociadas')\n\
+doc.set_cell_value(3, 50, 'float', '" + saldoCuenta(249).toQString() + "')\n\
+\
+doc.set_cell_value(2, 51, 'string', '       3. De otras empresas')\n\
+doc.set_cell_value(3, 51, 'float', '" + saldoCuenta(259).toQString() + "')\n\
+\
+doc.set_cell_property('bold', True)\n\
+doc.set_cell_value(2, 53, 'string', 'E) Acreedores a corto plazo')\n\
+doc.set_cell_value(3, 53, 'formula', '=0')\n\
+doc.set_cell_property('bold', False)\n\
+\
+doc.set_cell_value(2, 54, 'string', '   I.   Emisiones de obligaciones y otros valores negociables')\n\
+doc.set_cell_value(2, 55, 'string', '       1. Obligaciones no convertibles')\n\
+doc.set_cell_value(3, 55, 'float', '" + saldoCuenta(500).toQString() + "')\n\
+\
+doc.set_cell_value(2, 56, 'string', '       2. Obligaciones convertibles')\n\
+doc.set_cell_value(3, 56, 'float', '" + saldoCuenta(501).toQString() + "')\n\
+\
+doc.set_cell_value(2, 57, 'string', '       3. Otras deudas representadas en valores negociables')\n\
+doc.set_cell_value(3, 57, 'float', '" + saldoCuenta(505).toQString() + "')\n\
+\
+doc.set_cell_value(2, 58, 'string', '       4. Intereses de obligaciones y otros valores')\n\
+doc.set_cell_value(3, 58, 'float', '" + saldoCuenta(506).toQString() + "')\n\
+\
+doc.set_cell_value(2, 59, 'string', '   II.  Deudas con entidades de crédito')\n\
+doc.set_cell_value(2, 60, 'string', '       1. Préstamos y otras deudas')\n\
+doc.set_cell_value(3, 60, 'float', '" + saldoCuenta(520).toQString() + "')\n\
+\
+doc.set_cell_value(2, 61, 'string', '       2. Deudas por intereses')\n\
+doc.set_cell_value(3, 61, 'float', '" + saldoCuenta(526).toQString() + "')\n\
+\
+doc.set_cell_value(2, 62, 'string', '   III. Deudas con empresas del grupo y asociadas a corto plazo')\n\
+doc.set_cell_value(2, 63, 'string', '       1. Deudas con empresas del grupo')\n\
+doc.set_cell_value(3, 63, 'float', '" + (saldoCuenta(402) + saldoCuenta(510) + saldoCuenta(512) + saldoCuenta(514) + saldoCuenta(516) + saldoCuenta(551)).toQString() + "')\n\
+\
+doc.set_cell_value(2, 64, 'string', '       2. Deudas con empresas asociadas')\n\
+doc.set_cell_value(3, 64, 'float', '" + (saldoCuenta(403) + saldoCuenta(511) + saldoCuenta(513) + saldoCuenta(515) + saldoCuenta(517) + saldoCuenta(552)).toQString() + "')\n\
+\
+doc.set_cell_value(2, 65, 'string', '   IV.  Acreedores comerciales')\n\
+doc.set_cell_value(2, 66, 'string', '       1. Anticipos recibidos por pedidos')\n\
+doc.set_cell_value(3, 66, 'float', '" + saldoCuenta(437).toQString() + "')\n\
+\
+doc.set_cell_value(2, 67, 'string', '       2. Deudas por compras o prestaciones de servicios')\n\
+doc.set_cell_value(3, 67, 'float', '" + (saldoCuenta(400) + (-saldoCuenta(406)) + saldoCuenta(410) + saldoCuenta(419)).toQString() + "')\n\
+\
+doc.set_cell_value(2, 68, 'string', '       3. Deudas representadas por efectos a pagar')\n\
+doc.set_cell_value(3, 68, 'float', '" + (saldoCuenta(401) + saldoCuenta(411)).toQString() + "')\n\
+\
+doc.set_cell_value(2, 69, 'string', '   V.   Otras deudas no comerciales')\n\
+doc.set_cell_value(2, 70, 'string', '       1. Administraciones Públicas')\n\
+doc.set_cell_value(3, 70, 'float', '" + (saldoCuenta(475) + saldoCuenta(476) + saldoCuenta(477) + saldoCuenta(479)).toQString() + "')\n\
+\
+doc.set_cell_value(2, 71, 'string', '       2. Deudas representadas por efectos a pagar')\n\
+doc.set_cell_value(3, 71, 'float', '" + saldoCuenta(524).toQString() + "')\n\
+\
+doc.set_cell_value(2, 72, 'string', '       3. Otras deudas')\n\
+doc.set_cell_value(3, 72, 'float', '" + (saldoCuenta(509) + saldoCuenta(521) + saldoCuenta(523) + saldoCuenta(525) + saldoCuenta(527) + saldoCuenta(553) + saldoCuenta(555) + saldoCuenta(556)).toQString() + "')\n\
+\
+doc.set_cell_value(2, 73, 'string', '       4. Remuneraciones pendientes de pago')\n\
+doc.set_cell_value(3, 73, 'float', '" + saldoCuenta(465).toQString() + "')\n\
+\
+doc.set_cell_value(2, 74, 'string', '       5. Fianzas y depósitos recibidos a corto plazo')\n\
+doc.set_cell_value(3, 74, 'float', '" + (saldoCuenta(560) + saldoCuenta(561)).toQString() + "')\n\
+\
+doc.set_cell_value(2, 75, 'string', '   VI.  Provisiones para operaciones de tráfico')\n\
+doc.set_cell_value(3, 75, 'float', '" + saldoCuenta(499).toQString() + "')\n\
+\
+doc.set_cell_value(2, 76, 'string', '   VII. Ajustes por periodificación')\n\
+doc.set_cell_value(3, 76, 'float', '" + (saldoCuenta(485) + saldoCuenta(585)).toQString() + "')\n\
+\
+doc.set_cell_property('bold', True)\n\
+doc.set_cell_value(2, 78, 'string', 'TOTAL GENERAL (A+B+C+D+E)')\n\
+doc.set_cell_value(3, 78, 'formula', '=C7+C24+29+35+53')\n\
+doc.set_cell_property('bold', False)\n\
+\
 \
 \
 \
@@ -358,6 +525,94 @@ doc.set_cell_value(2, 2, 'string', 'CUENTA DE PÉRDIDAS Y GANANCIAS')\n\
 doc.set_cell_value(2, 5, 'string', 'DEBE')\n\
 doc.set_cell_property('bold', False)\n\
 \
+doc.set_cell_property('bold', True)\n\
+doc.set_cell_value(2, 7, 'string', 'A) GASTOS')\n\
+doc.set_cell_value(3, 7, 'formula', '=0')\n\
+doc.set_cell_property('bold', False)\n\
+\
+doc.set_cell_value(2, 8, 'string', '       1. Reducción de existencias de productos terminados y en curso de fabricación')\n\
+doc.set_cell_value(3, 8, 'float', '" + saldoCuenta(71).toQString() + "')\n\
+\
+doc.set_cell_value(2, 9, 'string', '       2. Aprovisionamientos')\n\
+doc.set_cell_value(3, 9, 'float', '" + (saldoCuenta(600) + (-saldoCuenta(6080))).toQString() + "')\n\
+\
+doc.set_cell_value(2, 10, 'string', '            a) Consumo de mercaderías')\n\
+doc.set_cell_value(3, 10, 'float', '" + ((-saldoCuenta(6090)) + saldoCuenta(610)).toQString() + "')\n\
+\
+doc.set_cell_value(2, 11, 'string', '            b) Consumo de materias primas y otras materias consumibles')\n\
+doc.set_cell_value(3, 11, 'float', '" + (saldoCuenta(601) + saldoCuenta(602) + (-saldoCuenta(6081)) + (-saldoCuenta(6082)) + (-saldoCuenta(6091)) + (-saldoCuenta(6092)) +saldoCuenta(611) + saldoCuenta(612)).toQString() + "')\n\
+\
+doc.set_cell_value(2, 12, 'string', '            c) Otros gastos externos')\n\
+doc.set_cell_value(3, 12, 'float', '" + saldoCuenta(607).toQString() + "')\n\
+\
+doc.set_cell_value(2, 13, 'string', '       3. Gastos de personal')\n\
+doc.set_cell_value(2, 14, 'string', '            a) Sueldos, salarios y asimilados')\n\
+doc.set_cell_value(3, 14, 'float', '" + (saldoCuenta(640) + saldoCuenta(641)).toQString() + "')\n\
+\
+doc.set_cell_value(2, 15, 'string', '            b) Cargas sociales')\n\
+doc.set_cell_value(3, 15, 'float', '" + (saldoCuenta(642) + saldoCuenta(643) + saldoCuenta(649)).toQString() + "')\n\
+\
+doc.set_cell_value(2, 16, 'string', '       4. Dotaciones para amortizaciones de inmovilizado')\n\
+doc.set_cell_value(3, 16, 'float', '" + saldoCuenta(68).toQString() + "')\n\
+\
+doc.set_cell_value(2, 17, 'string', '       5. Variación de las provisiones de tráfico')\n\
+doc.set_cell_value(2, 18, 'string', '            a) Variaciones de las provisiones de existencias')\n\
+doc.set_cell_value(3, 18, 'float', '" + (saldoCuenta(693) + (-saldoCuenta(793))).toQString() + "')\n\
+\
+doc.set_cell_value(2, 19, 'string', '            b) Variaciones de provisiones y pérdidas de créditos incobrables')\n\
+doc.set_cell_value(3, 19, 'float', '" + (saldoCuenta(650) + saldoCuenta(694) + (-saldoCuenta(794))).toQString() + "')\n\
+\
+doc.set_cell_value(2, 20, 'string', '            c) Variaciones de otras provisiones de tráfico')\n\
+doc.set_cell_value(3, 20, 'float', '" + (saldoCuenta(695) + (-saldoCuenta(795))).toQString() + "')\n\
+\
+doc.set_cell_value(2, 21, 'string', '       6. Otros gastos de explotación')\n\
+doc.set_cell_value(2, 22, 'string', '            a) Servicios exteriores')\n\
+doc.set_cell_value(2, 23, 'string', '            b) Tributos')\n\
+doc.set_cell_value(2, 24, 'string', '            c) Otros gastos de gestión corriente')\n\
+doc.set_cell_value(2, 25, 'string', '            d) Dotación al fondo de reversión')\n\
+\
+doc.set_cell_value(2, 27, 'string', '   I.   BENEFICIOS DE EXLOTACIÓN')\n\
+doc.set_cell_value(2, 28, 'string', '        (B1+B2+B3+B4-A1-A2-A3-A4-A5-A6)')\n\
+\
+doc.set_cell_value(2, 30, 'string', '       7. Gastos financieros y gastos asimilados')\n\
+doc.set_cell_value(2, 31, 'string', '            a) Por deudas con empresas del grupo')\n\
+doc.set_cell_value(2, 32, 'string', '            b) Por deudas con empresas asociadas')\n\
+doc.set_cell_value(2, 33, 'string', '            c) Por deudas con terceros y gastos asimilados')\n\
+doc.set_cell_value(2, 34, 'string', '            d) Pérdidas de inversiones financieras')\n\
+doc.set_cell_value(2, 35, 'string', '       8. Variación de las provisiones de inversiones financieras')\n\
+doc.set_cell_value(2, 36, 'string', '       9. Diferencias negativas de cambio')\n\
+\
+doc.set_cell_value(2, 38, 'string', '   II.  RESULTADOS FINANCIEROS POSITIVOS')\n\
+doc.set_cell_value(2, 39, 'string', '        (B5+B6+B7+B8-A7-A8-A9)')\n\
+\
+doc.set_cell_value(2, 41, 'string', '      10. Variación de las provisiones de inmobilizado inmaterial, material y cartera de control')\n\
+doc.set_cell_value(2, 42, 'string', '      11. Pérdidas procedentes del inmovilizado')\n\
+doc.set_cell_value(2, 43, 'string', '      12. Pérdidas por operaciones con acciones y obligaciones propias')\n\
+doc.set_cell_value(2, 44, 'string', '      13. Gastos extraordinarios')\n\
+doc.set_cell_value(2, 45, 'string', '      14. Gastos y pérdidas de otros ejercicios')\n\
+\
+doc.set_cell_value(2, 47, 'string', '   IV.  RESULTADOS EXTRAORDINARIOS POSITIVOS')\n\
+doc.set_cell_value(2, 48, 'string', '        (B9+B10+B11+B12+B13-A10-A11-A12-A13-A14)')\n\
+\
+doc.set_cell_value(2, 50, 'string', '   V.   BENEFICIOS ANTES DE IMPUESTOS')\n\
+doc.set_cell_value(2, 51, 'string', '        (AIII+AIV-BIII-BIV)')\n\
+\
+doc.set_cell_value(2, 53, 'string', '      15. Impuesto sobre Sociedades')\n\
+doc.set_cell_value(2, 54, 'string', '      16. Otros impuestos')\n\
+\
+doc.set_cell_value(2, 56, 'string', '   VI.  RESULTADO DEL EJERCICIO (BENEFICIOS)')\n\
+doc.set_cell_value(2, 57, 'string', '        (AV-A15-A16)')\n\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
 doc.new_sheet(\"Haber\")\n\n\
 doc.set_column_property(1, 'width', '0.5in')\n\
 doc.set_column_property(2, 'width', '5in')\n\
@@ -366,7 +621,63 @@ doc.set_cell_value(2, 2, 'string', 'CUENTA DE PÉRDIDAS Y GANANCIAS')\n\
 doc.set_cell_value(2, 5, 'string', 'HABER')\n\
 doc.set_cell_property('bold', False)\n\
 \
-# Guardamo el documento\n\
+doc.set_cell_value(2, 7, 'string', 'B) INGRESOS')\n\
+doc.set_cell_value(2, 8, 'string', '       1. Importe neto de la cifra de negocio')\n\
+doc.set_cell_value(2, 9, 'string', '            a) Ventas')\n\
+doc.set_cell_value(2, 10, 'string', '            b) Prestaciones de servicios')\n\
+doc.set_cell_value(2, 11, 'string', '            c) Devoluciones y \"rappels\" sobre ventas')\n\
+doc.set_cell_value(2, 12, 'string', '       2. Aumento de las existencias de productos terminados y en curso de fabricación')\n\
+doc.set_cell_value(2, 13, 'string', '       3. Trabajos efectuados por la empresa para el inmobilizado')\n\
+doc.set_cell_value(2, 14, 'string', '       4. Otros ingresos de explotación')\n\
+doc.set_cell_value(2, 15, 'string', '            a) Ingresos accesorios y otros de gestión corriente')\n\
+doc.set_cell_value(2, 16, 'string', '            b) Subvenciones')\n\
+doc.set_cell_value(2, 17, 'string', '            c) Exceso de provisiones de riesgos y gastos')\n\
+\
+doc.set_cell_value(2, 19, 'string', '   I.   PÉRDIDAS DE EXPLOTACIÓN')\n\
+doc.set_cell_value(2, 20, 'string', '        (A1+A2+A3+A4+A5+A6-B1-B2-B3-B4)')\n\
+\
+doc.set_cell_value(2, 22, 'string', '       5. Ingresos de participaciones en capital')\n\
+doc.set_cell_value(2, 23, 'string', '            a) En empresas del grupo')\n\
+doc.set_cell_value(2, 24, 'string', '            b) En empresas asociadas')\n\
+doc.set_cell_value(2, 25, 'string', '            c) En empresas fuera del grupo')\n\
+doc.set_cell_value(2, 26, 'string', '       6. Ingresos de otros valores mobiliarios y de créditos del activo inmovilizado')\n\
+doc.set_cell_value(2, 27, 'string', '            a) De empresas del grupo')\n\
+doc.set_cell_value(2, 28, 'string', '            b) De empresas asociadas')\n\
+doc.set_cell_value(2, 28, 'string', '            c) De empresas fuera del grupo')\n\
+doc.set_cell_value(2, 30, 'string', '       7. Otros intereses e ingresos asimilados')\n\
+doc.set_cell_value(2, 31, 'string', '            a) De empresas del grupo')\n\
+doc.set_cell_value(2, 32, 'string', '            b) De empresas asociadas')\n\
+doc.set_cell_value(2, 33, 'string', '            c) Otros intereses')\n\
+doc.set_cell_value(2, 34, 'string', '            d) Beneficios en inversiones financieras temporales')\n\
+doc.set_cell_value(2, 35, 'string', '       8. Diferencias positivas de cambio')\n\
+\
+doc.set_cell_value(2, 37, 'string', '   II.  RESULTADOS FINANCIEROS NEGATIVOS')\n\
+doc.set_cell_value(2, 38, 'string', '        (A7+A8+A9+A10-B5-B6-B7-B8)')\n\
+\
+doc.set_cell_value(2, 40, 'string', '   III. PÉRDIDAS DE LAS ACTIVIDADES ORDINARIAS')\n\
+doc.set_cell_value(2, 41, 'string', '        (BI+BII-A1-AII)')\n\
+\
+doc.set_cell_value(2, 43, 'string', '       9. Beneficios en enajenación de inmovilizado inmaterial, material y cartera de control')\n\
+doc.set_cell_value(2, 44, 'string', '      10. Beneficios por operaciones con acciones y obligaciones propias')\n\
+doc.set_cell_value(2, 45, 'string', '      11. Subvenciones de capital transferidas al resultado del ejercicio')\n\
+doc.set_cell_value(2, 46, 'string', '      12. Ingresos extraordinarios')\n\
+doc.set_cell_value(2, 47, 'string', '      13. Ingresos y beneficios de otros ejercicios')\n\
+\
+doc.set_cell_value(2, 49, 'string', '   IV. RESULTADOS EXTRAORDINARIOS NEGATIVOS')\n\
+doc.set_cell_value(2, 50, 'string', '       (A11+A12+A13+A14+A15-B9-B10-B11-B12-B13)')\n\
+\
+doc.set_cell_value(2, 52, 'string', '   V.  PÉRDIDAS ANTES DE IMPUESTOS')\n\
+doc.set_cell_value(2, 53, 'string', '       (BIII+BIV-AIII-AIV)')\n\
+\
+doc.set_cell_value(2, 55, 'string', '   VI. RESULTADO DEL EJERCICIO (PÉRDIDAS)')\n\
+doc.set_cell_value(2, 56, 'string', '       (BV+A16+A17)')\n\
+\
+\
+\
+\
+\
+\
+# Guardamos el documento\n\
 doc.save(\"salida.ods\")\n";
 
 
