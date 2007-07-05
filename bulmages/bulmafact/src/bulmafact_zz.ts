@@ -3,1230 +3,1230 @@
     <name>AboutView</name>
     <message>
         <source>Compilado usando la version de QT:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tuneado con las Qt:</translation>
     </message>
 </context>
 <context>
     <name>AlbaranCliente</name>
     <message>
         <source>Id albaran</source>
-        <translation type="unfinished">Id.</translation>
+        <translation>Id</translation>
     </message>
     <message>
         <source>Id cliente</source>
-        <translation type="unfinished">Id. Cli</translation>
+        <translation>Id. Cli</translation>
     </message>
     <message>
         <source>Id almacen</source>
-        <translation type="unfinished">Id. alm</translation>
+        <translation>Id. alm</translation>
     </message>
     <message>
         <source>Numero de albaran</source>
-        <translation type="unfinished">Er albaran</translation>
+        <translation>Er albaran</translation>
     </message>
     <message>
         <source>Fecha albaran</source>
-        <translation type="unfinished">Esto se hizo:</translation>
+        <translation>Esto se hizo el</translation>
     </message>
     <message>
         <source>Contacto albaran</source>
-        <translation type="unfinished">Si pasa algo preguntar por</translation>
+        <translation>Si pasa algo preguntar por</translation>
     </message>
     <message>
         <source>Telefono</source>
-        <translation type="unfinished">Er telefono</translation>
+        <translation>Er telefono</translation>
     </message>
     <message>
         <source>Comentario</source>
-        <translation type="unfinished">Pues sobre esto yo pienso que</translation>
+        <translation>Pues sobre esto yo pienso que</translation>
     </message>
     <message>
         <source>Comentario priv albaran</source>
-        <translation type="unfinished">Esto no se lo diremos al cliente</translation>
+        <translation>Esto no se lo diremos al cliente</translation>
     </message>
     <message>
         <source>Id forma de pago</source>
-        <translation type="unfinished">Id. FP</translation>
+        <translation>Id. FP</translation>
     </message>
     <message>
         <source>Id trabajador</source>
-        <translation type="unfinished">Id. trab</translation>
+        <translation>Id. trab</translation>
     </message>
     <message>
         <source>Procesado albaran</source>
-        <translation type="unfinished">Visto para sentencia</translation>
+        <translation>Visto para sentencia</translation>
     </message>
     <message>
         <source>Descripcion albaran</source>
-        <translation type="unfinished">El albaran va de</translation>
+        <translation>El albaran va de</translation>
     </message>
     <message>
         <source>Referencia albaran</source>
-        <translation type="unfinished">Referencia albaran</translation>
+        <translation>Referencia albaran</translation>
     </message>
 </context>
 <context>
     <name>AlbaranClienteBase</name>
     <message>
         <source>Guardar albaran</source>
-        <translation type="unfinished">Boton de la suerte</translation>
+        <translation>Boton de la suerte</translation>
     </message>
     <message>
         <source>Borrar albaran</source>
-        <translation type="unfinished">Cepillarse albaran</translation>
+        <translation>Cepillarse albaran</translation>
     </message>
     <message>
         <source>Imprimir albaran</source>
-        <translation type="unfinished">Sacarlo impreso</translation>
+        <translation>Sacarlo impreso</translation>
     </message>
     <message>
         <source>Agregar a factura</source>
-        <translation type="unfinished">A ver si lo pagan pronto poniendolo aqui</translation>
+        <translation>A ver si lo pagan pronto poniendolo aqui</translation>
     </message>
     <message>
         <source>Descripcion:</source>
-        <translation type="unfinished">Pensandolo bien:</translation>
+        <translation>Pensandolo bien:</translation>
     </message>
     <message encoding="UTF-8">
         <source>Nº de albaran:</source>
-        <translation type="unfinished">Num. alb</translation>
+        <translation>Num. alb:</translation>
     </message>
     <message>
         <source>Almacen:</source>
-        <translation type="unfinished">Almacen</translation>
+        <translation>Alacena:</translation>
     </message>
     <message>
         <source>Forma de pago:</source>
-        <translation type="unfinished">Como piensa pagarlo?</translation>
+        <translation>Como piensa pagarlo?:</translation>
     </message>
     <message>
         <source>Telefono de contacto:</source>
-        <translation type="unfinished">Para malas notocias llamar al</translation>
+        <translation>Para malas notocias llamar al:</translation>
     </message>
     <message>
         <source>Trabajador:</source>
-        <translation type="unfinished">Quien pondra las excusas cuando no este hecho?</translation>
+        <translation>Quien pondrá las excusas cuando no este hecho?:</translation>
     </message>
     <message>
         <source>Fecha de creacion:</source>
-        <translation type="unfinished"></translation>
+        <translation>Creado el:</translation>
     </message>
     <message>
         <source>Persona de contacto:</source>
-        <translation type="unfinished"></translation>
+        <translation>Brown passing:</translation>
     </message>
     <message>
         <source>Procesado</source>
-        <translation type="unfinished"></translation>
+        <translation>No darle mayor importacia</translation>
     </message>
     <message>
         <source>&amp;Detalle</source>
-        <translation type="unfinished">&amp;Bien mirado</translation>
+        <translation>Bien &amp;mirado</translation>
     </message>
     <message>
         <source>Descuen&amp;tos</source>
-        <translation type="unfinished">Indicador de simpatia</translation>
+        <translation>Indicado&amp;r de simpatia</translation>
     </message>
     <message>
         <source>Comentario&amp;s</source>
-        <translation type="unfinished">Me ha dicho la Paqui</translation>
+        <translation>Me ha dicho la Paq&amp;ui</translation>
     </message>
     <message>
         <source>Comentarios publicos:</source>
-        <translation type="unfinished">Vox populi</translation>
+        <translation>Vox populi:</translation>
     </message>
     <message>
         <source>Comentarios privados:</source>
-        <translation type="unfinished">Top Secret (no divulgar)</translation>
+        <translation>Top Secret (no divulgar):</translation>
     </message>
     <message>
         <source>0.00</source>
-        <translation type="unfinished"></translation>
+        <translation>0.00</translation>
     </message>
     <message>
         <source>&amp;Cancelar</source>
-        <translation type="unfinished">Quita quita,que caro</translation>
+        <translation>Quita &amp;quita,que caro</translation>
     </message>
     <message>
         <source>&amp;Aceptar</source>
-        <translation type="unfinished">Pos fale</translation>
+        <translation>Pos &amp;fale</translation>
     </message>
     <message>
         <source>Nuevo albaran de cliente</source>
-        <translation type="unfinished">Uno mas</translation>
+        <translation>Uno mas</translation>
     </message>
     <message>
         <source>Mostrar/ocultar cabecera</source>
-        <translation type="unfinished"></translation>
+        <translation>Quitar molestias de enmedio</translation>
     </message>
     <message>
         <source>Descuentos:</source>
-        <translation type="unfinished"></translation>
+        <translation>Descuentos:</translation>
     </message>
     <message>
         <source>Base imponible:</source>
-        <translation type="unfinished"></translation>
+        <translation>Base imposible:</translation>
     </message>
     <message>
         <source>Impuestos:</source>
-        <translation type="unfinished"></translation>
+        <translation>Hacienda se lleva:</translation>
     </message>
     <message>
         <source>Total:</source>
-        <translation type="unfinished"></translation>
+        <translation>Porca miseria:</translation>
     </message>
     <message>
         <source>R.E.:</source>
-        <translation type="unfinished"></translation>
+        <translation>R.E:</translation>
     </message>
     <message>
         <source>Registrar cobro a cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Cobrarle al pringao de turno</translation>
     </message>
     <message>
         <source>Generar factura a partir de este albaran</source>
-        <translation type="unfinished"></translation>
+        <translation>Hacer factura desde este albarán</translation>
     </message>
     <message>
         <source>Ver pedidos con la misma referencia</source>
-        <translation type="unfinished"></translation>
+        <translation>Ver pedidos con esta referencia</translation>
     </message>
     <message>
         <source>I.R.P.F.:</source>
-        <translation type="unfinished"></translation>
+        <translation>I.R.P.F.:</translation>
     </message>
     <message>
         <source>Referencia:</source>
-        <translation type="unfinished"></translation>
+        <translation>Referencia:</translation>
     </message>
 </context>
 <context>
     <name>AlbaranClienteList</name>
     <message>
         <source>Error al borrar el albaran a cliente</source>
-        <translation type="unfinished">Hemos metido la pata en alguna parte</translation>
+        <translation>Hemos metido la pata en alguna parte</translation>
     </message>
     <message>
         <source>Debe seleccionar una linea</source>
-        <translation type="unfinished"></translation>
+        <translation>Capullín, haz click sobre una línea</translation>
     </message>
     <message>
         <source>Albaranes a clientes</source>
-        <translation type="unfinished"></translation>
+        <translation>Albaranes a clientes</translation>
     </message>
     <message>
         <source>Todos los albaranes</source>
-        <translation type="unfinished"></translation>
+        <translation>Todos los albaranes</translation>
     </message>
     <message>
         <source>Albaranes procesados</source>
-        <translation type="unfinished"></translation>
+        <translation>Albaranes procesados</translation>
     </message>
     <message>
         <source>Albaranes no procesados</source>
-        <translation type="unfinished"></translation>
+        <translation>Albaranes a Vigilar</translation>
     </message>
 </context>
 <context>
     <name>AlbaranClienteListBase</name>
     <message>
         <source>Nuevo albaran</source>
-        <translation type="unfinished">Uno mas ...</translation>
+        <translation>Uno más</translation>
     </message>
     <message>
         <source>Editar albaran</source>
-        <translation type="unfinished">Toquetear albaran</translation>
+        <translation>Toquetear albaran</translation>
     </message>
     <message>
         <source>Borrar albaran</source>
-        <translation type="unfinished">A criar malvas</translation>
+        <translation>A criar malvas</translation>
     </message>
     <message>
         <source>Imprimir listado</source>
-        <translation type="unfinished">Gastar papel</translation>
+        <translation>Gastar papel</translation>
     </message>
     <message>
         <source>Filtrar albaranes</source>
-        <translation type="unfinished">Discriminar un poco</translation>
+        <translation>Discriminar un poco</translation>
     </message>
     <message>
         <source>Configurar listado</source>
-        <translation type="unfinished">Ajustar vision</translation>
+        <translation>Ajustar vision</translation>
     </message>
     <message>
         <source>Actualizar listado</source>
-        <translation type="unfinished">Otra vez !!!!</translation>
+        <translation>Repensarlo mejor</translation>
     </message>
     <message>
         <source>Buscar:</source>
-        <translation type="unfinished">Mirar a ver:</translation>
+        <translation>Mirar a ver:</translation>
     </message>
     <message>
         <source>Fecha inicial:</source>
-        <translation type="unfinished">Entre</translation>
+        <translation>Entre:</translation>
     </message>
     <message>
         <source>Fecha final:</source>
-        <translation type="unfinished">y entre</translation>
+        <translation>y entre:</translation>
     </message>
     <message>
         <source>Total: </source>
-        <translation type="unfinished">Cuanto dice ?</translation>
+        <translation>Todo todito, todo:</translation>
     </message>
     <message>
         <source>Albaranes a clientes</source>
-        <translation type="unfinished"></translation>
+        <translation>Alpañales a clientes</translation>
     </message>
     <message>
         <source>Ctrl+N</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Ctrl+E</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Ctrl+D</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Ctrl+P</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Ctrl+F</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Ctrl+B</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>F5</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Mostrar:</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar:</translation>
     </message>
 </context>
 <context>
     <name>AlbaranClienteListSubform</name>
     <message>
         <source>Referencia de albaran</source>
-        <translation type="unfinished"></translation>
+        <translation>Referencia</translation>
     </message>
     <message>
         <source>Codigo de almacen</source>
-        <translation type="unfinished"></translation>
+        <translation>Código Almacen</translation>
     </message>
     <message>
         <source>Numero de albaran</source>
-        <translation type="unfinished"></translation>
+        <translation>Num. Albaran</translation>
     </message>
     <message>
         <source>Fecha de albaran</source>
-        <translation type="unfinished"></translation>
+        <translation>Se hizo el dia</translation>
     </message>
     <message>
         <source>Nombre de cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre de la víctima</translation>
     </message>
     <message>
         <source>ID forma de pago</source>
-        <translation type="unfinished"></translation>
+        <translation>Id. Forma Pago</translation>
     </message>
     <message>
         <source>Descripcion de forma de pago</source>
-        <translation type="unfinished"></translation>
+        <translation>Descripción</translation>
     </message>
     <message>
         <source>ID trabajador</source>
-        <translation type="unfinished"></translation>
+        <translation>Id. Trabajador</translation>
     </message>
     <message>
         <source>ID cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Id. Cliente</translation>
     </message>
     <message>
         <source>ID albaran</source>
-        <translation type="unfinished"></translation>
+        <translation>Id. Albarán</translation>
     </message>
     <message>
         <source>Comentarios del albaran</source>
-        <translation type="unfinished"></translation>
+        <translation>Ha dicho la Paqui</translation>
     </message>
     <message>
         <source>ID almacen</source>
-        <translation type="unfinished"></translation>
+        <translation>Id. Alacena</translation>
     </message>
     <message>
         <source>Base imponible</source>
-        <translation type="unfinished">Teorico</translation>
+        <translation>Teorico</translation>
     </message>
     <message>
         <source>Impuestos</source>
-        <translation type="unfinished"></translation>
+        <translation>Hacienda (SGAE)</translation>
     </message>
     <message>
         <source>Total</source>
-        <translation type="unfinished"></translation>
+        <translation>Vaya que si</translation>
     </message>
     <message>
         <source>Descripcion</source>
-        <translation type="unfinished"></translation>
+        <translation>Descripción</translation>
     </message>
 </context>
 <context>
     <name>AlbaranClienteView</name>
     <message>
         <source>&amp;Si</source>
-        <translation type="unfinished">&amp;Fale</translation>
+        <translation>&amp;Fale</translation>
     </message>
     <message>
         <source>&amp;No</source>
-        <translation type="unfinished">&amp;Ni hablar</translation>
+        <translation>&amp;Ni hablar</translation>
     </message>
     <message>
         <source>Num. albaran</source>
-        <translation type="unfinished">Num. Alb</translation>
+        <translation>Num. Alb</translation>
     </message>
     <message>
         <source>Albaran a cliente</source>
-        <translation type="unfinished">Albaran Cliente</translation>
+        <translation>Albaran Cliente</translation>
     </message>
     <message>
         <source>Factura existente</source>
-        <translation type="unfinished"></translation>
+        <translation>La factura ya está</translation>
     </message>
     <message>
         <source>Existe una factura a este cliente con la misma referencia que este albaran. Desea abrirla para verificar?</source>
-        <translation type="unfinished"></translation>
+        <translation>Existe una factura a este cliente con la misma referencia que este albaran. Quiere u esencia comprobarlo?</translation>
     </message>
     <message>
         <source>Error al crear el albaran a cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>La cagamos al crear el albarán al cliente</translation>
     </message>
 </context>
 <context>
     <name>AlbaranProveedor</name>
     <message>
         <source>Id albaran proveedor</source>
-        <translation type="unfinished">Id. alb pro</translation>
+        <translation>Id. alb pro</translation>
     </message>
     <message>
         <source>Numero albaran proveedor</source>
-        <translation type="unfinished">Num. alb pro</translation>
+        <translation>Num. alb pro</translation>
     </message>
     <message>
         <source>Fecha albaran proveedor</source>
-        <translation type="unfinished">Cuando se hizo el trabajillo</translation>
+        <translation>Cuando se hizo el trabajillo</translation>
     </message>
     <message>
         <source>Comentario albaran proveedor</source>
-        <translation type="unfinished">Lo que pienso de la cosa</translation>
+        <translation>Lo que pienso de la cosa</translation>
     </message>
     <message>
         <source>Id proveedor</source>
-        <translation type="unfinished">Id. prov</translation>
+        <translation>Id. prov</translation>
     </message>
     <message>
         <source>Id forma de pago</source>
-        <translation type="unfinished">Id. FP</translation>
+        <translation>Id. FP</translation>
     </message>
     <message>
         <source>Id almacen</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Referencia albaran proveedor</source>
-        <translation type="unfinished">Referencia</translation>
+        <translation>Referencia</translation>
     </message>
     <message>
         <source>Descripcion albaran proveedor</source>
-        <translation type="unfinished">Lo que es</translation>
+        <translation>Lo que es</translation>
     </message>
 </context>
 <context>
     <name>AlbaranProveedorBase</name>
     <message>
         <source>Referencia:</source>
-        <translation type="unfinished"></translation>
+        <translation>Renferencia:</translation>
     </message>
     <message>
         <source>&amp;Detalle</source>
-        <translation type="unfinished">&amp;Lo que</translation>
+        <translation>&amp;Lo que</translation>
     </message>
     <message>
         <source>Desc&amp;uentos</source>
-        <translation type="unfinished">La quita</translation>
+        <translation>La q&amp;uita</translation>
     </message>
     <message>
         <source>&amp;Comentarios</source>
-        <translation type="unfinished">Todos pensamos que ...</translation>
+        <translation>&amp;Todos pensamos que</translation>
     </message>
     <message>
         <source>0.00</source>
-        <translation type="unfinished"></translation>
+        <translation>0.00</translation>
     </message>
     <message>
         <source>&amp;Aceptar</source>
-        <translation type="unfinished">Dale canya</translation>
+        <translation>D&amp;ale canya</translation>
     </message>
     <message>
         <source>Nuevo albaran de proveedor</source>
-        <translation type="unfinished">Otro papelote pal monton</translation>
+        <translation>Otro papelote pal monton</translation>
     </message>
     <message>
         <source>Descripcion:</source>
-        <translation type="unfinished">De que va la cosa?</translation>
+        <translation>De que va la cosa:</translation>
     </message>
     <message encoding="UTF-8">
         <source>Nº de albaran:</source>
-        <translation type="unfinished">Num. alb</translation>
+        <translation>Num. alb:</translation>
     </message>
     <message>
         <source>Fecha de creacion:</source>
-        <translation type="unfinished">Cuando se hizo</translation>
+        <translation>Cuando se hizo:</translation>
     </message>
     <message>
         <source>Forma de pago:</source>
-        <translation type="unfinished">Como aflojar la pasta</translation>
+        <translation>Como aflojar la pasta:</translation>
     </message>
     <message>
         <source>Almacen:</source>
-        <translation type="unfinished"></translation>
+        <translation>Almacén:</translation>
     </message>
     <message>
         <source>Descuentos:</source>
-        <translation type="unfinished">La quita</translation>
+        <translation>La quita:</translation>
     </message>
     <message>
         <source>Base imponible:</source>
-        <translation type="unfinished">En teoria</translation>
+        <translation>En teoria:</translation>
     </message>
     <message>
         <source>Impuestos:</source>
-        <translation type="unfinished">Hacienda somos todos</translation>
+        <translation>Hacienda somos todos:</translation>
     </message>
     <message>
         <source>&amp;Cancelar</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Quita, quita</translation>
     </message>
     <message>
         <source>I.R.P.F.</source>
-        <translation type="unfinished"></translation>
+        <translation>I.R.P.F.</translation>
     </message>
     <message>
         <source>Total:</source>
-        <translation type="unfinished"></translation>
+        <translation>Joer como se clava:</translation>
     </message>
     <message>
         <source>R.E.:</source>
-        <translation type="unfinished"></translation>
+        <translation>R.E.:</translation>
     </message>
     <message>
         <source>Guardar albaran</source>
-        <translation type="unfinished"></translation>
+        <translation>Almacenar bíticamente</translation>
     </message>
     <message>
         <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Borrar albaran</source>
-        <translation type="unfinished"></translation>
+        <translation>Mandarlo por ahi</translation>
     </message>
     <message>
         <source>Ctrl+D</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Ver pedidos a proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Ver los pedidos a proveedor</translation>
     </message>
     <message>
         <source>Generar factura a partir de este albaran</source>
-        <translation type="unfinished"></translation>
+        <translation>Generar factura a partir de este albarán</translation>
     </message>
     <message>
         <source>Registrar pago a proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Hacer efectivo el pago al proveedor</translation>
     </message>
     <message>
         <source>Mostrar/ocultar cabecera</source>
-        <translation type="unfinished"></translation>
+        <translation>Quitar cosas emprenyosas</translation>
     </message>
     <message>
         <source>Ctrl+G</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
     <name>AlbaranProveedorView</name>
     <message>
         <source>&amp;Si</source>
-        <translation type="unfinished">&amp;Bueeeno</translation>
+        <translation>&amp;Bueeeno</translation>
     </message>
     <message>
         <source>&amp;No</source>
-        <translation type="unfinished">Por encima de &amp;mi cadaver</translation>
+        <translation>Por encima de &amp;mi cadaver</translation>
     </message>
     <message>
         <source>Factura inexistente</source>
-        <translation type="unfinished">Que la factura no existe</translation>
+        <translation>Que la factura no existe</translation>
     </message>
     <message>
         <source>Error al crear el albaran proveedor</source>
-        <translation type="unfinished">Algo ha fallado, pa mi que has sido tu.</translation>
+        <translation>Algo ha fallado, pa mi que has sido tu</translation>
     </message>
     <message>
         <source>Albaran de proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>No existe una factura asociada a este albaran.
 Desea crearla?</source>
-        <translation type="unfinished"></translation>
+        <translation>No existe una factura asociada a este albaran.La creamos?</translation>
     </message>
     <message>
         <source>Factura de proveedor existente</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Existe una factura de este proveedor con la misma referencia que este albaran. Desea abrirla para verificar?</source>
-        <translation type="unfinished"></translation>
+        <translation>Existe una factura de este proveedor con la misma referencia que este albaran. Lo verificamos?</translation>
     </message>
 </context>
 <context>
     <name>AlbaranesProveedor</name>
     <message>
         <source>Error al borrar albaran de proveedor</source>
-        <translation type="unfinished">No va a ser tan facil deshacerse de las pruebas</translation>
+        <translation>No va a ser tan facil deshacerse de las pruebas</translation>
     </message>
     <message>
         <source>Albaranes de proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Debe seleccionar una linea</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Todos los albaranes</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Albaranes procesados</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Albaranes no procesados</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
     <name>AlbaranesProveedorListBase</name>
     <message>
         <source>Nuevo albaran</source>
-        <translation type="unfinished">Otro papelote pal monton</translation>
+        <translation>Otro papelote pal monton</translation>
     </message>
     <message>
         <source>Editar albaran</source>
-        <translation type="unfinished">Adulterar el contenido</translation>
+        <translation>Adulterar el contenido</translation>
     </message>
     <message>
         <source>Borrar albaran</source>
-        <translation type="unfinished">Eliminar pruebas</translation>
+        <translation>Eliminar pruebas</translation>
     </message>
     <message>
         <source>Imprimir listado</source>
-        <translation type="unfinished">Gastar papel</translation>
+        <translation>Gastar papel</translation>
     </message>
     <message>
         <source>Filtrar albaranes</source>
-        <translation type="unfinished">Ver mejor</translation>
+        <translation>Ver mejor</translation>
     </message>
     <message>
         <source>Configurar listado</source>
-        <translation type="unfinished">Afinar resultados</translation>
+        <translation>Afinar resultados</translation>
     </message>
     <message>
         <source>Actualizar listado</source>
-        <translation type="unfinished">Repensarlo mejor</translation>
+        <translation>Repensarlo mejor</translation>
     </message>
     <message>
         <source>Buscar:</source>
-        <translation type="unfinished"></translation>
+        <translation>Buscar:</translation>
     </message>
     <message>
         <source>Fecha inicial:</source>
-        <translation type="unfinished">Se empieza</translation>
+        <translation>Se empieza:</translation>
     </message>
     <message>
         <source>Fecha final:</source>
-        <translation type="unfinished">Se acaba</translation>
+        <translation>Se acaba:</translation>
     </message>
     <message>
         <source>Total: </source>
-        <translation type="unfinished">Tanto?</translation>
+        <translation>Tanto?:</translation>
     </message>
     <message>
         <source>Albaranes de proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation>Albaricoques de proveidor</translation>
     </message>
     <message>
         <source>Ctrl+N</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Ctrl+E</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Ctrl+D</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Ctrl+P</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Ctrl+F</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Ctrl+B</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>F5</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Mostrar:</source>
-        <translation type="unfinished"></translation>
+        <translation>A mem:</translation>
     </message>
 </context>
 <context>
     <name>AlbaranesProveedorListSubform</name>
     <message>
         <source>ID albaran</source>
-        <translation type="unfinished">Id. alb pro</translation>
+        <translation>Id. alb pro</translation>
     </message>
     <message>
         <source>Numero de albaran</source>
-        <translation type="unfinished">Num. alb pro</translation>
+        <translation>Num. alb pro</translation>
     </message>
     <message>
         <source>ID proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>ID forma de pago</source>
-        <translation type="unfinished">Como pagar</translation>
+        <translation>Como pagar</translation>
     </message>
     <message>
         <source>ID almacen</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Nombre del proveedor</source>
-        <translation type="unfinished">El mangante</translation>
+        <translation>El mangante</translation>
     </message>
     <message>
         <source>Nombre del almacen</source>
-        <translation type="unfinished"></translation>
+        <translation>Alacena</translation>
     </message>
     <message>
         <source>Descripcion de la forma de pago</source>
-        <translation type="unfinished">Como se paga ?</translation>
+        <translation>Como se paga</translation>
     </message>
     <message>
         <source>Base imponible</source>
-        <translation type="unfinished">Parece que es esto</translation>
+        <translation>Parece que es esto</translation>
     </message>
     <message>
         <source>Impuestos</source>
-        <translation type="unfinished">Para mantener algun politico</translation>
+        <translation>Para mantener algun politico</translation>
     </message>
     <message>
         <source>Total albaran</source>
-        <translation type="unfinished"></translation>
+        <translation>Menudo sablazo</translation>
     </message>
     <message>
         <source>Descripcion</source>
-        <translation type="unfinished"></translation>
+        <translation>Y la Paqui dice </translation>
     </message>
     <message>
         <source>Referencia</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Fecha</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Comentario</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Procesado</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
     <name>Articulo</name>
     <message>
         <source>Identificador</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Codigo</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Nombre del articulo</source>
-        <translation type="unfinished"></translation>
+        <translation>A esto lo llaman así</translation>
     </message>
     <message>
         <source>Abreviacion</source>
-        <translation type="unfinished"></translation>
+        <translation>Conocido como</translation>
     </message>
     <message>
         <source>Observaciones</source>
-        <translation type="unfinished"></translation>
+        <translation>Que dice la paqui que</translation>
     </message>
     <message>
         <source>Incluir en presentaciones</source>
-        <translation type="unfinished"></translation>
+        <translation>Ponerlo en los catálogos</translation>
     </message>
     <message>
         <source>Incluir en control de stock</source>
-        <translation type="unfinished"></translation>
+        <translation>Controlar que no roben de esto</translation>
     </message>
     <message>
         <source>Tipo de articulo</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Tipo de I.V.A.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipo de I.V.A.</translation>
     </message>
     <message>
         <source>Codigo completo</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Familia</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Stock</source>
-        <translation type="unfinished"></translation>
+        <translation>Supuestamente hay</translation>
     </message>
     <message>
         <source>Inactivo</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>P.V.P. base</source>
-        <translation type="unfinished"></translation>
+        <translation>Es asín de caro</translation>
     </message>
     <message>
         <source>Peso Unidad</source>
-        <translation type="unfinished"></translation>
+        <translation>Pesa musho </translation>
     </message>
     <message>
         <source>Volumen Unidad</source>
-        <translation type="unfinished"></translation>
+        <translation>Como de Gordo está</translation>
     </message>
 </context>
 <context>
     <name>ArticuloBase</name>
     <message>
         <source>Guardar</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Borrar</source>
-        <translation type="unfinished">Prescindir de ello</translation>
+        <translation>Prescindir de ello</translation>
     </message>
     <message>
         <source>Codigo completo:</source>
-        <translation type="unfinished"></translation>
+        <translation>Codigo completo:</translation>
     </message>
     <message>
         <source>&amp;Datos generales</source>
-        <translation type="unfinished">Comunmente es</translation>
+        <translation>&amp;Comunmente es</translation>
     </message>
     <message>
         <source>Subcodigo:</source>
-        <translation type="unfinished"></translation>
+        <translation>Subcodigo:</translation>
     </message>
     <message>
         <source>Tipo de I.V.A.:</source>
-        <translation type="unfinished">Tipo de impuesto</translation>
+        <translation>Tipo de impuesto:</translation>
     </message>
     <message>
         <source>Cam&amp;biar imagen</source>
-        <translation type="unfinished">Que aspecto tiene ?</translation>
+        <translation>Que as&amp;pecto tiene</translation>
     </message>
     <message>
         <source>C&amp;omponentes</source>
-        <translation type="unfinished"></translation>
+        <translation>C&amp;omponentes</translation>
     </message>
     <message>
         <source>Descripcio&amp;n</source>
-        <translation type="unfinished"></translation>
+        <translation>El pro&amp;specto dice</translation>
     </message>
     <message>
         <source>&amp;Cancelar</source>
-        <translation type="unfinished">Ya no lo quiero</translation>
+        <translation>&amp;Ya no lo quiero</translation>
     </message>
     <message>
         <source>&amp;Aceptar</source>
-        <translation type="unfinished">Si lo quiero</translation>
+        <translation>&amp;Si lo quiero</translation>
     </message>
     <message>
         <source>Nuevo articulo</source>
-        <translation type="unfinished">Otro mass</translation>
+        <translation>Otro mass</translation>
     </message>
     <message>
         <source>Codigo del articulo:</source>
-        <translation type="unfinished"></translation>
+        <translation>Código del artículo:</translation>
     </message>
     <message>
         <source>Informacion del articulo:</source>
-        <translation type="unfinished">Los prospectos dicen ...</translation>
+        <translation>Los prospectos dicen:</translation>
     </message>
     <message>
         <source>Nombre del articulo:</source>
-        <translation type="unfinished">Se llama</translation>
+        <translation>Se llama:</translation>
     </message>
     <message>
         <source>Texto para etiqueta:</source>
-        <translation type="unfinished">Y si lo etiqueto pondra ...</translation>
+        <translation>Y si lo etiqueto pondra:</translation>
     </message>
     <message>
         <source>Otros datos:</source>
-        <translation type="unfinished">Mas cosas</translation>
+        <translation>Mas cosas:</translation>
     </message>
     <message>
         <source>Imagen del articulo:</source>
-        <translation type="unfinished">Foto chula</translation>
+        <translation>Foto chula:</translation>
     </message>
     <message encoding="UTF-8">
         <source>Incluir este artículo en el catálogo.</source>
-        <translation type="unfinished"></translation>
+        <translation>Incluir este artículo en el catálogo.</translation>
     </message>
     <message encoding="UTF-8">
         <source>&amp;Incluir en el catálogo.</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Incluir en el catálogo.</translation>
     </message>
     <message encoding="UTF-8">
         <source>Activar el control de stock para este artículo.</source>
-        <translation type="unfinished"></translation>
+        <translation>Activar el control de stock para este artículo.</translation>
     </message>
     <message>
         <source>Activar el &amp;control de stock.</source>
-        <translation type="unfinished"></translation>
+        <translation>Activar el &amp;control de stock.</translation>
     </message>
     <message>
         <source>P.V.P. s/IVA:</source>
-        <translation type="unfinished"></translation>
+        <translation>P.V.P. s/IVA:</translation>
     </message>
     <message>
         <source>Volumen Unidad:</source>
-        <translation type="unfinished"></translation>
+        <translation>Enormidad de la cosa:</translation>
     </message>
     <message>
         <source>Peso Unidad:</source>
-        <translation type="unfinished"></translation>
+        <translation>Pesadez del chisme:</translation>
     </message>
 </context>
 <context>
     <name>ArticuloList</name>
     <message>
         <source>Borrar articulo</source>
-        <translation type="unfinished">Perder de vista</translation>
+        <translation>Perder de vista</translation>
     </message>
     <message>
         <source>Esta a punto de borrar un articulo. Estos datos pueden dar problemas.</source>
-        <translation type="unfinished">Si me lo quito de enmedio luego no te quejes?</translation>
+        <translation>Si me lo quito de enmedio luego no te quejes?.</translation>
     </message>
     <message>
         <source>Editar articulo</source>
-        <translation type="unfinished">Alterarlo</translation>
+        <translation>Alterarlo</translation>
     </message>
     <message>
         <source>Elija el archivo</source>
-        <translation type="unfinished">Que archivo uso?</translation>
+        <translation>Que archivo uso</translation>
     </message>
     <message>
         <source>Clientes (*.xml)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Selector de articulos</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Error al borrar el articulo</source>
-        <translation type="unfinished">La cagamos, seguro que yo no tengo la culpa?</translation>
+        <translation>La cagamos. Seguro que yo no tengo la culpa</translation>
     </message>
     <message>
         <source>Tiene que seleccionar un articulo</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
     <name>ArticuloListBase</name>
     <message>
         <source>Nuevo articulo</source>
-        <translation type="unfinished">Uno mas !!</translation>
+        <translation>Uno mas</translation>
     </message>
     <message>
         <source>Borrar articulo</source>
-        <translation type="unfinished">Multiplicar por cero</translation>
+        <translation>Multiplicar por cero</translation>
     </message>
     <message>
         <source>Imprimir listado</source>
-        <translation type="unfinished"></translation>
+        <translation>Gastar papel en sacar el listado impreso</translation>
     </message>
     <message>
         <source>Filtrar listado</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Configurar listado</source>
-        <translation type="unfinished">Dejar Bonito</translation>
+        <translation>Dejar Bonito</translation>
     </message>
     <message>
         <source>Actualizar listado</source>
-        <translation type="unfinished">Repensarlo todo</translation>
+        <translation>Repensarlo todo</translation>
     </message>
     <message>
         <source>Exportar articulos</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Importar articulos</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Exportar</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Buscar:</source>
-        <translation type="unfinished"></translation>
+        <translation>Buscar:</translation>
     </message>
     <message>
         <source>Solo usados</source>
-        <translation type="unfinished">Ver los populares</translation>
+        <translation>Ver los populares</translation>
     </message>
     <message>
         <source>S&amp;olo presentables</source>
-        <translation type="unfinished">Ver los guapos</translation>
+        <translation>Ver los &amp;guapos</translation>
     </message>
     <message>
         <source>Alt+O</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Articulos</source>
-        <translation type="unfinished"></translation>
+        <translation>Artículos</translation>
     </message>
     <message>
         <source>Editar articulo</source>
-        <translation type="unfinished"></translation>
+        <translation>Tunear la cosa</translation>
     </message>
 </context>
 <context>
     <name>ArticuloListSubForm</name>
     <message>
         <source>ID articulo</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Codigo completo del articulo</source>
-        <translation type="unfinished"></translation>
+        <translation>Código completo del artículo</translation>
     </message>
     <message>
         <source>Nombre del articulo</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre del invento</translation>
     </message>
     <message>
         <source>Descripcion abreviada del articulo</source>
-        <translation type="unfinished">Como se conoce al articulo?</translation>
+        <translation>Como se conoce al articulo</translation>
     </message>
     <message>
         <source>Observaciones sobre el articulo</source>
-        <translation type="unfinished">Yo pienso sobre esta cosa ...</translation>
+        <translation>Yo pienso sobre esta cosa</translation>
     </message>
     <message>
         <source>Descripcion del tipo de articulo</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Descripcion tipo de I.V.A.</source>
-        <translation type="unfinished"></translation>
+        <translation>Descripcion tipo de I.V.A.</translation>
     </message>
     <message>
         <source>P.V.P. articulo</source>
-        <translation type="unfinished"></translation>
+        <translation>P.V.P. articulo</translation>
     </message>
     <message>
         <source>Disponible en stock</source>
-        <translation type="unfinished">Aun quedan</translation>
+        <translation>Aun quedan</translation>
     </message>
 </context>
 <context>
     <name>ArticuloView</name>
     <message>
         <source>Imagenes (*.jpg)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Abrir ventana de archivo</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Error al crear el articulo</source>
-        <translation type="unfinished">La cagamos en alguna parte</translation>
+        <translation>La cagamos en alguna parte</translation>
     </message>
     <message>
         <source>Articulo</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Error en la carga del articulo</source>
-        <translation type="unfinished">Algo falla</translation>
+        <translation>Algo falla</translation>
     </message>
 </context>
 <context>
     <name>Banco</name>
     <message>
         <source>Comentarios</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
     <name>BancoBase</name>
     <message>
         <source>Bancos</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Borrar trabajador</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Guardar trabajador</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Nuevo trabajador</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Lista de bancos:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Informacion del banco:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message encoding="UTF-8">
         <source>Razón Social:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message encoding="UTF-8">
         <source>Dirección</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>CP:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message encoding="UTF-8">
         <source>Población:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message encoding="UTF-8">
         <source>Teléfono:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Fax:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>E-mail:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>URL:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Contacto:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Entidad</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Sucursal</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>DC</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Cuenta</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Comentarios</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
     <name>BancoView</name>
     <message>
         <source>Guardar datos del trabajador</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Desea guardar los cambios?</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>&amp;Si</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>&amp;No</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Jamás</translation>
     </message>
 </context>
 <context>
     <name>BusquedaArticuloBase</name>
     <message>
         <source>Form1</source>
-        <translation type="unfinished"></translation>
+        <translation>Artículo</translation>
     </message>
     <message>
         <source>Articulo</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Articulo:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1240,52 +1240,52 @@ Desea crearla?</source>
     <name>BusquedaClienteBase</name>
     <message>
         <source>Form1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Ctrl+T</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Cliente:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
     <name>BusquedaFamiliaBase</name>
     <message>
         <source>Form1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Familia</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Familia:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
     <name>BusquedaProveedorBase</name>
     <message>
         <source>Form1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Proveedor:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
     <name>BusquedaReferenciaBase</name>
     <message>
         <source>Form1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1742,159 +1742,159 @@ Esta seguro que desea borrarlo?</source>
     <name>Cobro</name>
     <message>
         <source>ID cobro</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>ID cliente</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Prevision de cobro</source>
-        <translation type="unfinished"></translation>
+        <translation>Lo tienes en el banco? o sigues esperando a cobrar algún dia</translation>
     </message>
     <message>
         <source>Fecha de cobro</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Referencia del cobro</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Cantidad</source>
-        <translation type="unfinished"></translation>
+        <translation>Toma Ya !!!! Te invitarás a algo </translation>
     </message>
     <message>
         <source>Comentarios</source>
-        <translation type="unfinished"></translation>
+        <translation>Espacio reservado para quejarse de los morosos</translation>
     </message>
     <message>
         <source>Fecha de vencimiento</source>
-        <translation type="unfinished"></translation>
+        <translation>Expira el</translation>
     </message>
 </context>
 <context>
     <name>CobroBase</name>
     <message>
         <source>Guardar cobro</source>
-        <translation type="unfinished"></translation>
+        <translation>A ver si hay suerte</translation>
     </message>
     <message>
         <source>Borrar cobro</source>
-        <translation type="unfinished"></translation>
+        <translation>Mierda</translation>
     </message>
     <message>
         <source>Referencia:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Prevision</source>
-        <translation type="unfinished"></translation>
+        <translation>Es sólo una ilusión</translation>
     </message>
     <message>
         <source>Fecha cobro:</source>
-        <translation type="unfinished"></translation>
+        <translation>Se cobraŕa el:</translation>
     </message>
     <message>
         <source>Total cobro:</source>
-        <translation type="unfinished"></translation>
+        <translation>Frotemonos las manos al ver este número:</translation>
     </message>
     <message>
         <source>&amp;Aceptar</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Genial</translation>
     </message>
     <message>
         <source>&amp;Cancelar</source>
-        <translation type="unfinished"></translation>
+        <translation>Pu&amp;es va a ser que NO</translation>
     </message>
     <message>
         <source>Nuevo cobro a cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Un cobro más</translation>
     </message>
     <message>
         <source>Descripcion del cobro:</source>
-        <translation type="unfinished"></translation>
+        <translation>Que dice que:</translation>
     </message>
     <message>
         <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Ctrl+D</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Banco:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Ctrl+I</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Fecha vencimiento:</source>
-        <translation type="unfinished"></translation>
+        <translation>Vencimiento:</translation>
     </message>
 </context>
 <context>
     <name>CobroView</name>
     <message>
         <source>Error al crear el cobro</source>
-        <translation type="unfinished"></translation>
+        <translation>Me fallas más que una escopeta de feria</translation>
     </message>
     <message>
         <source>Cobro</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
     <name>CobrosList</name>
     <message>
         <source>Editar cobro</source>
-        <translation type="unfinished"></translation>
+        <translation>Alterar contenido</translation>
     </message>
     <message>
         <source>Borrar cobro</source>
-        <translation type="unfinished"></translation>
+        <translation>A freir esparragos</translation>
     </message>
     <message>
         <source>Debe seleccionar una fila primero</source>
-        <translation type="unfinished"></translation>
+        <translation>Capullín, pulsame sobre una fila primero</translation>
     </message>
     <message>
         <source>Debe seleccionar una linea</source>
-        <translation type="unfinished"></translation>
+        <translation>Baru Bacca, push a line</translation>
     </message>
     <message>
         <source>Cobros a clientes</source>
-        <translation type="unfinished"></translation>
+        <translation>Cobros en especias</translation>
     </message>
     <message>
         <source>Error al borrar el cobro a cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Falló la cosa de eliminarlo</translation>
     </message>
 </context>
 <context>
     <name>CobrosListBase</name>
     <message>
         <source>Nuevo cobro</source>
-        <translation type="unfinished"></translation>
+        <translation>Nuevo Cobro</translation>
     </message>
     <message>
         <source>Editar cobro</source>
-        <translation type="unfinished"></translation>
+        <translation>Modificar cobro</translation>
     </message>
     <message>
         <source>Borrar cobro</source>
-        <translation type="unfinished"></translation>
+        <translation>A tomar por</translation>
     </message>
     <message>
         <source>Imprimir listado</source>
-        <translation type="unfinished"></translation>
+        <translation>Por lo menos usa papel reciclado</translation>
     </message>
     <message>
         <source>Filtrar cobros</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtrar y ajustar los cobros</translation>
     </message>
     <message>
         <source>Configurar listado</source>
@@ -3751,11 +3751,11 @@ Esta seguro que desea borrarlo?</source>
     </message>
     <message>
         <source>Descripcion del pago:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">El proveedor amenaza con:</translation>
     </message>
     <message>
         <source>Fecha de pago:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Y lo quiere para:</translation>
     </message>
     <message>
         <source>Provision de fondos</source>
@@ -3763,22 +3763,22 @@ Esta seguro que desea borrarlo?</source>
     </message>
     <message>
         <source>&amp;Aceptar</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Fale</translation>
     </message>
     <message>
         <source>&amp;Cancelar</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Va a ser que no</translation>
     </message>
     <message>
         <source>Banco:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
     <name>PagoView</name>
     <message>
         <source>Error al crear el pago</source>
-        <translation type="unfinished"></translation>
+        <translation>Algo fué mal. Usalo como excusa</translation>
     </message>
     <message>
         <source>Pago</source>
@@ -4830,7 +4830,7 @@ Desea crearlo?</source>
     <name>PresupuestoClienteBase</name>
     <message>
         <source>Nuevo presupuesto a cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Uno más pal bote</translation>
     </message>
     <message>
         <source>Ctrl+S</source>
@@ -4850,11 +4850,11 @@ Desea crearlo?</source>
     </message>
     <message>
         <source>Mostrar/Ocultar cabecera</source>
-        <translation type="unfinished"></translation>
+        <translation>Ver o No Ver !! That&apos;s the question</translation>
     </message>
     <message>
         <source>Descripcion:</source>
-        <translation type="unfinished"></translation>
+        <translation>Pos dice que:</translation>
     </message>
     <message>
         <source>Numero de presupuesto:</source>
@@ -4866,35 +4866,35 @@ Desea crearlo?</source>
     </message>
     <message>
         <source>Trabajador:</source>
-        <translation type="unfinished"></translation>
+        <translation>El pringao que ha hecho esto:</translation>
     </message>
     <message>
         <source>Persona de contacto:</source>
-        <translation type="unfinished"></translation>
+        <translation>Si hay dudas llamar aqui:</translation>
     </message>
     <message>
         <source>Fecha de creacion:</source>
-        <translation type="unfinished"></translation>
+        <translation>Lo hemos a dia de:</translation>
     </message>
     <message>
         <source>Fecha de vencimiento:</source>
-        <translation type="unfinished"></translation>
+        <translation>Es valido hasta:</translation>
     </message>
     <message>
         <source>Forma de pago:</source>
-        <translation type="unfinished"></translation>
+        <translation>Prometen pagarlo mediante:</translation>
     </message>
     <message>
         <source>Telefono de contacto:</source>
-        <translation type="unfinished"></translation>
+        <translation>Si todo va mal llamar a:</translation>
     </message>
     <message>
         <source>Pro&amp;cesado</source>
-        <translation type="unfinished"></translation>
+        <translation>Lo tengo &amp;controlado, no te preocupes</translation>
     </message>
     <message>
         <source>&amp;Detalle</source>
-        <translation type="unfinished"></translation>
+        <translation>Al cliente se le fue la olla y nos &amp;ha soltado este rollo</translation>
     </message>
     <message>
         <source>Desc&amp;uentos</source>
@@ -4930,31 +4930,31 @@ Desea crearlo?</source>
     </message>
     <message>
         <source>Total:</source>
-        <translation type="unfinished"></translation>
+        <translation>Y por esta miseria trabajamos:</translation>
     </message>
     <message>
         <source>&amp;Aceptar</source>
-        <translation type="unfinished"></translation>
+        <translation>F&amp;ale</translation>
     </message>
     <message>
         <source>&amp;Cancelar</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;No Fale</translation>
     </message>
     <message>
         <source>Guardar presupuesto</source>
-        <translation type="unfinished"></translation>
+        <translation>Lo damos por bueno</translation>
     </message>
     <message>
         <source>Borrar presupuesto</source>
-        <translation type="unfinished"></translation>
+        <translation>A criar malvas</translation>
     </message>
     <message>
         <source>Imprimir presupuesto</source>
-        <translation type="unfinished"></translation>
+        <translation>Gastar Papel</translation>
     </message>
     <message>
         <source>Generar pedido a partir de este presupuesto</source>
-        <translation type="unfinished"></translation>
+        <translation>El cliente ha dicho SI</translation>
     </message>
     <message>
         <source>Ctrl+G</source>
@@ -5071,30 +5071,30 @@ Desea crearlo?</source>
     </message>
     <message>
         <source>Error al crear el presupuesto</source>
-        <translation type="unfinished"></translation>
+        <translation>Algo chungo ha ido malamente con este fistro</translation>
     </message>
     <message>
         <source>Presupuesto</source>
-        <translation type="unfinished"></translation>
+        <translation>PorSupuesto</translation>
     </message>
     <message>
         <source>Pedido existente</source>
-        <translation type="unfinished"></translation>
+        <translation>Que no insistas más, el pedido no existe</translation>
     </message>
     <message>
         <source>Existe un pedido a este cliente con la misma referencia que este presupuesto. Desea abrirla para verificar?</source>
-        <translation type="unfinished"></translation>
+        <translation>Que ya hay un pedido con esta referencia, la abro o nos vamos a tomar un café ?</translation>
     </message>
 </context>
 <context>
     <name>PresupuestosListBase</name>
     <message>
         <source>Presupuestos a clientes</source>
-        <translation type="unfinished"></translation>
+        <translation>Prosapuestos a Clientes</translation>
     </message>
     <message>
         <source>Nuevo presupuesto</source>
-        <translation type="unfinished"></translation>
+        <translation>Uno más pal bote</translation>
     </message>
     <message>
         <source>Ctrl+N</source>
@@ -5102,7 +5102,7 @@ Desea crearlo?</source>
     </message>
     <message>
         <source>Editar presupuesto</source>
-        <translation type="unfinished"></translation>
+        <translation>Toquetearlo</translation>
     </message>
     <message>
         <source>Ctrl+E</source>
@@ -5110,7 +5110,7 @@ Desea crearlo?</source>
     </message>
     <message>
         <source>Borrar presupuesto</source>
-        <translation type="unfinished"></translation>
+        <translation>Mandarlo a criar malvas</translation>
     </message>
     <message>
         <source>Ctrl+D</source>
@@ -5118,7 +5118,7 @@ Desea crearlo?</source>
     </message>
     <message>
         <source>Imprimir listado</source>
-        <translation type="unfinished"></translation>
+        <translation>Gastar Papel, (piensa en la deforestación)</translation>
     </message>
     <message>
         <source>Ctrl+P</source>
@@ -5126,15 +5126,15 @@ Desea crearlo?</source>
     </message>
     <message>
         <source>Filtrar pedidos</source>
-        <translation type="unfinished"></translation>
+        <translation>Mirar a ver lo que si y lo que no</translation>
     </message>
     <message>
         <source>Configurar listado</source>
-        <translation type="unfinished"></translation>
+        <translation>Montártelo a tú gusto</translation>
     </message>
     <message>
         <source>Actualizar listado</source>
-        <translation type="unfinished"></translation>
+        <translation>Repensarlo mejor</translation>
     </message>
     <message>
         <source>F5</source>
@@ -5146,15 +5146,15 @@ Desea crearlo?</source>
     </message>
     <message>
         <source>Fecha inicial:</source>
-        <translation type="unfinished"></translation>
+        <translation>Empezó el:</translation>
     </message>
     <message>
         <source>Fecha final:</source>
-        <translation type="unfinished"></translation>
+        <translation>Termino al:</translation>
     </message>
     <message>
         <source>Total:</source>
-        <translation type="unfinished"></translation>
+        <translation>Si cobramos esto nos vamos al caribe:</translation>
     </message>
     <message>
         <source>Mostrar:</source>
@@ -5622,31 +5622,31 @@ Desea crearlo?</source>
     <name>SubForm2Bf</name>
     <message>
         <source>Borrar registro</source>
-        <translation type="unfinished"></translation>
+        <translation>Enviar este registro al otro barrio</translation>
     </message>
     <message>
         <source>Ajustar columna</source>
-        <translation type="unfinished"></translation>
+        <translation>Ver mejor la anchura para que la linea gorda no tape tanto</translation>
     </message>
     <message>
         <source>Ajustar altura</source>
-        <translation type="unfinished"></translation>
+        <translation>Hacer sitio a lo alto</translation>
     </message>
     <message>
         <source>Ajustar columnas</source>
-        <translation type="unfinished"></translation>
+        <translation>Esparcir el contenido</translation>
     </message>
     <message>
         <source>Ajustar alturas</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajustar Alturas</translation>
     </message>
     <message>
         <source>Ver/Ocultar configurador de subformulario</source>
-        <translation type="unfinished"></translation>
+        <translation>Ponermelo a mi gusto</translation>
     </message>
     <message>
         <source>Articulo inexistente</source>
-        <translation type="unfinished"></translation>
+        <translation>El artículo no está y te prometo que no he sido yo</translation>
     </message>
 </context>
 <context>

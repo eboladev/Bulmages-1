@@ -457,7 +457,7 @@ BEGIN
 		PERFORM dblink_exec(query);
 	ELSE
 		-- Hacemos el update del stock del articulo
-		query := 'INSERT INTO asiento (fecha, descripcion, comentariosasiento) VALUES ( ' || quote_literal(NEW.ffactura) || ', ''' || concpeto || ''' , ''' || concepto || ''')';
+		query := 'INSERT INTO asiento (fecha, descripcion, comentariosasiento) VALUES ( ' || quote_literal(NEW.ffactura) || ', ''' || concepto || ''' , ''' || concepto || ''')';
 		PERFORM dblink_exec(query);
 		SELECT INTO bs * FROM dblink('SELECT max(idasiento) AS id FROM asiento') AS t1 (id integer);
 		NEW.idasientofactura = bs.id;
