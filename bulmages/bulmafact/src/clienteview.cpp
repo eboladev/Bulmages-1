@@ -363,7 +363,9 @@ void ClienteView::on_mui_aceptar_clicked() {
 
 
 void ClienteView::on_mui_imprimir_clicked() {
-    imprimir();
+    _depura("ClienteView::on_mui_imprimir_clicked", 0);
+    DBRecord::imprimir();
+    _depura("END ClienteView::on_mui_imprimir_clicked", 0);
 }
 
 
