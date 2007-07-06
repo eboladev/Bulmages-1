@@ -1,0 +1,48 @@
+This package was debianized by René Mérou <rene.merou@gmail.com> on
+Sun,  2 Apr 2006 09:29:45 +0200.
+
+It was downloaded from http://download.berlios.de/bulmages/bulmages-0.5.1.1.tar.gz
+
+Copyright Holder:  (C) 2004-2006 IGLUES  <tborras@conetxia.com>
+
+Upstream Authors: Tomeu Borrás <tborras@conetxia.com>,  Josep Maria Estopa Rey
+<pepma@telefonica.net>, Josep Burción <josep@burcion.com >, René Mérou 
+<rene.merou@kdemail.net>, David Gutiérez <davidi@telefonica.net>, Joan Miquel 
+Torres Rigó <joanmi@bulma.net>, Francisco Santiago Capel Torres 
+<santiagocapel@yahoo.es>
+License:
+
+This program is free software; you can redistribute it and/or modify it
+under the terms of the "GNU General Public License". On Debian GNU/Linux
+systems, the complete text of that license can be found in
+`/usr/share/common-licenses/GPL'.
+
+* There are two files (fixed.h, i fixed.cpp that they was released as Public Domain and has been modified for bulmages)
+	Upstream: Philip Erdelsky's <pje@efgh.com>
+	Dowloaded from: http://efgh.com/software/fixed.htm 
+	Public Domain (C) 1998 
+
+* This program includes files from tiny SPRL project, edited to change some behavoires. We changed the name of binaries to bgtrml2pdf to avoid conflicts. The bgtrml2pdf is distributed under the terms of LGPL licence:
+It was downloaded from <http://www.tinyerp.org/download.php>.
+
+Copyright Holder: Tiny SPRL <http://www.tiny.be/>,
+		  Martin von Loewis <loewis@informatik.hu-berlin.de>,
+		  Terje Rosten <terjeros@phys.ntnu.no>,
+		  Nicolas Evrard
+
+	Copyright (C) 2000-2006 Tiny SPRL <http://www.tiny.be/>
+
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program; if not, write to the Free Software
+	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
