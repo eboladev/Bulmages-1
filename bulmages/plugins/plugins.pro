@@ -7,10 +7,4 @@ CONFIG = ordered
 
 TEMPLATE = subdirs
 
-SUBDIRS += bulmalib
-SUBDIRS += bulmafact
-SUBDIRS += bulmacont
-SUBDIRS += bulmages
-SUBDIRS += plugins
-
-#  SUBDIRS += bulmatpv
+SUBDIRS += pluginsubformsxc

@@ -222,7 +222,7 @@ void SubForm2Bf::on_mui_list_editFinished(int row, int col, int key) {
     _depura("END SubForm2Bf::on_mui_list_editFinished", 0);
 }
 
-
+/*
 void SubForm2Bf::contextMenuEvent(QContextMenuEvent *) {
     _depura("SubForm2Bf::contextMenuEvent", 0);
     QAction *del = NULL;
@@ -264,7 +264,7 @@ void SubForm2Bf::contextMenuEvent(QContextMenuEvent *) {
     delete popup;
     _depura("END SubForm2Bf::contextMenuEvent", 0);
 }
-
+*/
 
 void SubForm2Bf::setIdCliente(QString id) {
     _depura("SubForm2Bf::setIdCliente", 0, id);
