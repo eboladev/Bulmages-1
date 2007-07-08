@@ -99,16 +99,22 @@ void myplugsubformods::sacaods() {
 			QString textocabecera = (subf->mui_listcolumnas->item(h, 2)->text());
 			textocabecera.replace(QString("\n"), QString("\\n\\\n"));
 
+			/// Devuelve el ancho de la columna para ponerlo igual en el archivo de salida.
+			fitxersortidatxt += "doc.set_column_property(" + QString::number(x) + ", 'width', '" + QString::number((double) subf->mui_list->columnWidth(h) / 90) + "in')\n\n";
+
 			fitxersortidatxt += "doc.set_cell_property('bold', True)\n";
     	    		fitxersortidatxt += "doc.set_cell_value(" + QString::number(x++) + "," + QString::number(y) + ", 'string', '" + textocabecera + "')\n";
-			fitxersortidatxt += "doc.set_cell_property('bold', False)\n";
-			fitxersortidatxt += "\n";
+			fitxersortidatxt += "doc.set_cell_property('bold', False)\n";			
 
         } // end if
     } // end for
 
 
     y += 2;
+
+
+    bool resultconvdouble, resultconvinteger;
+    double resultadodouble, resultadointeger;
 
     /// Sacamos el contenido
     for (int i = 0; i < subf->mui_list->rowCount(); ++i) {
@@ -121,10 +127,38 @@ void myplugsubformods::sacaods() {
 			fitxersortidatxt += "# Fila "+ QString::number ( y ) +"\n";
 
 			QString textocontenido = (subf->mui_list->item(i, j)->text());
-			textocontenido.replace(QString("\n"), QString("\\n\\\n"));
 
-    	    		fitxersortidatxt += "doc.set_cell_value(" + QString::number(x++) + "," + QString::number(y) + ", 'string', '" + textocontenido + "')\n";
-			fitxersortidatxt += "\n";
+
+			//TODO: Mirar de mejorar el mecanismo de deteccion de tipo de dato.
+			
+			/// Detecta el tipo de dato que es para configurar el formato de la celda.
+			/// Comprueba que esta alineado a la derecha para saber si es un numero o un texto.
+			if (subf->mui_list->item(i, j)->textAlignment() == Qt::AlignRight) {
+			    /// Prueba con 'double'.
+			    resultadodouble = textocontenido.toDouble(&resultconvdouble);
+			    /// Prueba con 'integer'.
+			    resultadointeger = textocontenido.toInt(&resultconvinteger);
+			    /// Prueba con un porcentaje.
+				//TODO:
+			    /// Prueba con una fecha.
+				//TODO:
+			    
+			    if (resultconvdouble)  {
+				/// Es 'double'.
+        	    		fitxersortidatxt += "doc.set_cell_value(" + QString::number(x++) + "," + QString::number(y) + ", 'float' , '" + textocontenido + "')\n\n";
+			    } else if (resultconvinteger) {
+				/// Es un 'integer'.
+				fitxersortidatxt += "doc.set_cell_value(" + QString::number(x++) + "," + QString::number(y) + ", 'float' , '" + textocontenido + "')\n\n";
+			    } else {
+				/// Es tratado como un 'string'.
+    	    			textocontenido.replace(QString("\n"), QString("\\n\\\n"));
+    	    			fitxersortidatxt += "doc.set_cell_value(" + QString::number(x++) + "," + QString::number(y) + ", 'string', '" + textocontenido + "')\n\n";
+			    } // end if
+			} else {
+			    /// Es tratado como un 'string'.
+    	    		    textocontenido.replace(QString("\n"), QString("\\n\\\n"));
+    	    		    fitxersortidatxt += "doc.set_cell_value(" + QString::number(x++) + "," + QString::number(y) + ", 'string', '" + textocontenido + "')\n\n";
+			} // end if
 
             } // end if
         } // end forXMLProtect(subf->mui_list->item(i, j)->text())
