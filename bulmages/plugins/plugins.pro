@@ -7,4 +7,5 @@ CONFIG = ordered
 
 TEMPLATE = subdirs
 
-SUBDIRS += pluginsubformsxc
+SUBDIRS += pluginsubformsxc \
+           pluginsubformods
