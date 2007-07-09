@@ -83,6 +83,14 @@ windows {
     LIBS += "C:\Archivos de programa\PostgreSQL\8.1\bin\libpq.dll"
 }
 
+TRANSLATIONS += mypluginbf_es.ts \
+                mypluginbf_ca.ts \
+                mypluginbf_en.ts \
+                mypluginbf_fr.ts \
+                mypluginbf_de.ts \
+                mypluginbf_zz.ts 
+
+
 SOURCES = plugin.cpp
 
 HEADERS = plugin.h

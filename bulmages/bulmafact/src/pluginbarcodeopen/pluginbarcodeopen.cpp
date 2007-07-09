@@ -26,6 +26,9 @@
 #include <QMessageBox>
 #include <QInputDialog>
 #include <QStringList>
+#include <QTranslator>
+#include <QTextCodec>
+#include <QLocale>
 
 #include <stdio.h>
 
@@ -120,6 +123,17 @@ void myplugin::inicializa(bulmafact *bges) {
 
 
 void entryPoint(bulmafact *bges) {
+        /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
+        QTranslator *traductor = new QTranslator(0);
+        if (confpr->valor(CONF_TRADUCCION) == "locales") {
+            traductor->load(QString("pluginbarcodeopen_") + QLocale::system().name(),
+                            confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+        } else {
+            QString archivo = "pluginbarcodeopen_" + confpr->valor(CONF_TRADUCCION);
+           traductor->load(archivo, confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+        } // end if
+        theApp->installTranslator(traductor);
+
     myplugin *plug = new myplugin();
     plug->inicializa(bges);
 }

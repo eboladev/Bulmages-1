@@ -77,6 +77,15 @@ windows {
     LIBS += "C:\Archivos de programa\PostgreSQL\8.1\bin\libpq.dll"
 }
 
+TRANSLATIONS += comercialbf_es.ts \
+                comercialbf_ca.ts \
+                comercialbf_en.ts \
+                comercialbf_fr.ts \
+                comercialbf_de.ts \
+                comercialbf_zz.ts 
+
+
+
 FORMS +=  rutacomerciallistbase.ui \
  	  rutacomercialbase.ui \
 	  rutacomercialincbase.ui \

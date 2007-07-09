@@ -83,6 +83,14 @@ windows {
     LIBS += "C:\Archivos de programa\PostgreSQL\8.1\bin\libpq.dll"
 }
 
+TRANSLATIONS += pluginbarcodeopen_es.ts \
+                pluginbarcodeopen_ca.ts \
+                pluginbarcodeopen_en.ts \
+                pluginbarcodeopen_fr.ts \
+                pluginbarcodeopen_de.ts \
+                pluginbarcodeopen_zz.ts 
+
+
 SOURCES = pluginbarcodeopen.cpp
 
 HEADERS = pluginbarcodeopen.h
