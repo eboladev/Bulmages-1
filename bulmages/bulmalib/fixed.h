@@ -10,6 +10,7 @@
 #define H__FIXED
 
 #include <QString>
+#include <QChar>
 
 
 const int MAX_FIXED_PRECISION = 12;
@@ -41,7 +42,7 @@ public:
     Fixed operator [] (int) const;
     Fixed operator = (Fixed);
     Fixed operator = (int);
-    QString toQString();
+    QString toQString(QChar separadorDecimal = ',');
     friend Fixed operator + (Fixed, Fixed);
     friend Fixed operator - (Fixed, Fixed);
     friend Fixed operator * (Fixed, Fixed);

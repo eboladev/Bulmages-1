@@ -78,7 +78,7 @@
       <envvars/>
     </run>
     <general>
-      <activedir>bulmacont/src/plugincanualesods</activedir>
+      <activedir>bulmalib</activedir>
     </general>
     <make>
       <abortonerror>true</abortonerror>

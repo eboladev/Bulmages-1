@@ -80,7 +80,7 @@ Fixed operator / (int x, Fixed y) {
 }
 
 
-QString Fixed::toQString() {
+QString Fixed::toQString(QChar separadorDecimal) {
     setprecision(2);
     int options = COMMAS;
     Fixed_numerator x = value;
@@ -101,7 +101,12 @@ QString Fixed::toQString() {
     do {
         if (n == precision) {
             if (n > 0 || options & DECIMAL)
-                buffer[sizeof(buffer) - ++n] = ',';
+                /// 10/07/2007
+                /// Se cambio para poder poner otro caracter como separador decimal.
+                //buffer[sizeof(buffer) - ++n] = ',';
+
+                buffer[sizeof(buffer) - ++n] = separadorDecimal.toAscii();
+
             units = n;
         }
         Fixed_numerator y;
