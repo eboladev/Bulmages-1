@@ -51,7 +51,6 @@ ListLinPresupuestoView::ListLinPresupuestoView(QWidget *parent) : SubForm2Bf(par
     _depura("END ListLinPresupuestoView::ListLinPresupuestoView", 0);
 }
 
-
 void ListLinPresupuestoView::cargar(QString idpresupuesto) {
     _depura("ListLinPresupuestoView::cargar", 0);
     mdb_idpresupuesto = idpresupuesto;

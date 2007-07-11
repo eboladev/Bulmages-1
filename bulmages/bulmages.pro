@@ -13,4 +13,9 @@ SUBDIRS += bulmacont
 SUBDIRS += bulmages
 SUBDIRS += plugins
 
+exists(privateplugins) {
+SUBDIRS += privateplugins
+}
+
+
 #  SUBDIRS += bulmatpv

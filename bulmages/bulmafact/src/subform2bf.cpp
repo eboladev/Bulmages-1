@@ -61,12 +61,17 @@ void SubForm2Bf::cargar(QString query) {
 
 void SubForm2Bf::on_mui_list_pressedAsterisk(int row, int col) {
     _depura("SubForm2Bf::pressedAsterisk", 0);
+
+
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row, col);
 
-    if (camp->nomcampo() != "codigocompletoarticulo")
+    if (camp->nomcampo() != "codigocompletoarticulo") {
         return;
-    _depura("ListCompArticuloView::searchArticle", 0);
+    } // end if
+    
+    m_procesacambios = FALSE;
+
     ArticuloList *artlist = new ArticuloList((company *) empresaBase(), NULL, 0, ArticuloList::SelectMode);
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
     this->setEnabled(false);
@@ -81,10 +86,11 @@ void SubForm2Bf::on_mui_list_pressedAsterisk(int row, int col) {
         rec->setDBvalue("idarticulo", idArticle);
         rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
         rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
-        /// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
-        on_mui_list_editFinished(row, col, Qt::Key_Return);
     } // end if
     delete cur;
+    m_procesacambios = TRUE;
+    /// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
+    on_mui_list_cellChanged(row, col);
     _depura("END SubForm2Bf::pressedAsterisk", 0);
 }
 
@@ -106,34 +112,53 @@ void SubForm2Bf::on_mui_list_pressedMinus(int row, int col) {
     cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM articulo WHERE idarticulo = " + rec->DBvalue("idarticulo"));
     if (!cur->eof()) {
         rec->setDBvalue(camp->nomcampo(), cur->valor("obserarticulo"));
-        /// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
-        on_mui_list_editFinished(row, col, Qt::Key_Return);
     } // end if
     delete cur;
+    /// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
+    on_mui_list_cellChanged(row, col);
     _depura("END SubForm2Bf::pressedMinus", 0);
 }
 
 
-void SubForm2Bf::on_mui_list_editFinished(int row, int col, int key) {
-    _depura("SubForm2Bf::on_mui_list_editFinished", 0);
+//void SubForm2Bf::on_mui_list_editFinished(int row, int col, int key) {
+void SubForm2Bf::on_mui_list_cellChanged(int row, int col) {
+    _depura("SubForm2Bf::on_mui_list_cellChanged", 0, QString::number(row) + " " + QString::number(col));
+
+    if (!m_procesacambios) {
+        _depura("SubForm2Bf::on_mui_list_cellChanged", 0, QString::number(row) + " " + QString::number(col)+" m_procesacambios es FALSE");
+        return;
+    }
+    m_procesacambios = FALSE;
+
     cursor2 *cur2 = NULL;
     cursor2 *cur = NULL;
     cursor2 *cur1 = NULL;
 
     /// Disparamos los plugins.
     int res = g_plugins->lanza("SubForm2Bf_on_mui_list_editFinished", this);
-    if (res != 0)
+    if (res != 0) {
+        m_procesacambios = TRUE;
         return;
+    }
 
     SDBRecord *rec = lineaat(row);
+    if (rec == NULL) {
+        _depura ("SubForm2Bf::on_mui_list_cellChanged", 0, QString::number(row) + " " + QString::number(col)+ "la linea no existe");
+        m_procesacambios = TRUE;
+        return;
+    }
+
     SDBCampo *camp = (SDBCampo *) item(row, col);
     camp->refresh();
 
     /// Si el campo no ha sido cambiado se sale.
     if ( ! camp->cambiado() ) {
-        SubForm3::on_mui_list_editFinished(row, col, key);
+        _depura("SubForm2Bf::on_mui_list_cellChanged", 0, QString::number(row) + " " + QString::number(col)+ camp->valorcampo() + "Sin cambios");
+        m_procesacambios = TRUE;
+        SubForm3::on_mui_list_cellChanged(row, col);
         return;
     } // end if
+
 
     if (camp->nomcampo() == "desctipo_iva") {
         cur = empresaBase()->cargacursor("SELECT * FROM tipo_iva WHERE desctipo_iva = '" + camp->text() + "'");
@@ -141,6 +166,7 @@ void SubForm2Bf::on_mui_list_editFinished(int row, int col, int key) {
             rec->setDBvalue("idtipo_iva", cur->valor("idtipo_iva"));
         } // end if
     } // end if
+
 
     if (camp->nomcampo() == "nomtrabajador") {
         cur = empresaBase()->cargacursor("SELECT * FROM trabajador WHERE apellidostrabajador ||', '||nomtrabajador = '" + camp->text() + "'");
@@ -155,7 +181,7 @@ void SubForm2Bf::on_mui_list_editFinished(int row, int col, int key) {
             rec->setDBvalue("idarticulo", cur->valor("idarticulo"));
             rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
             rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
-            if(m_tablename == "lpresupuesto"
+            if (m_tablename == "lpresupuesto"
                     || m_tablename == "lpedidoproveedor"
                     || m_tablename == "lpedidocliente"
                     || m_tablename == "lalbaranp"
@@ -167,11 +193,12 @@ void SubForm2Bf::on_mui_list_editFinished(int row, int col, int key) {
                 rec->setDBvalue("descuento"+m_tablename, "0.00");
                 rec->setDBvalue("pvp"+m_tablename, cur->valor("pvparticulo"));
             } // end if
-    } else {
-        mensajeAviso(tr("Articulo inexistente"));
-        delete cur;
-        return;
-    } // end if
+        } else {
+            mensajeAviso(tr("Articulo inexistente"));
+            delete cur;
+            m_procesacambios = TRUE;
+            return;
+        } // end if
 
 
         cur1 = empresaBase()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor("idtipo_iva") + " ORDER BY fechatasa_iva LIMIT 1");
@@ -218,7 +245,9 @@ void SubForm2Bf::on_mui_list_editFinished(int row, int col, int key) {
             delete cur;
     } // end if
 
-    SubForm3::on_mui_list_editFinished(row, col, key);
+    m_procesacambios = TRUE;
+    SubForm3::on_mui_list_cellChanged(row, col);
+
     _depura("END SubForm2Bf::on_mui_list_editFinished", 0);
 }
 
@@ -319,7 +348,7 @@ void SubForm2Bf::setIdProveedor(QString id) {
     mdb_idproveedor = id;
 
     if (mdb_idproveedor == "")
-    return;
+        return;
 
     /// Reseteamos los valores
     for (int i = 0; i < rowCount() - 1; i++) {
@@ -375,6 +404,7 @@ void SubForm2Bf::setDelete(bool f) {
 QSubForm2BfDelegate::QSubForm2BfDelegate(QObject *parent = 0) : QItemDelegate(parent), PEmpresaBase() {
     _depura("QSubForm2BfDelegate::QSubForm2BfDelegate", 0);
     m_subform = (SubForm2Bf *) parent;
+//    m_subform->m_procesacambios = FALSE;
     installEventFilter(this);
     _depura("END QSubForm2BfDelegate::QSubForm2BfDelegate", 0);
 }
@@ -464,11 +494,11 @@ void QSubForm2BfDelegate::setModelData(QWidget *editor, QAbstractItemModel *mode
         QString value = comboBox->currentText();
         value = value.left(value.indexOf(".-"));
         model->setData(index, value);
-    } else if(linea->nomcampo() == "desctipo_iva") {
+    } else if (linea->nomcampo() == "desctipo_iva") {
         BusquedaTipoIVADelegate *comboBox = static_cast<BusquedaTipoIVADelegate*>(editor);
         QString value = comboBox->currentText();
         model->setData(index, value);
-    } else if(linea->nomcampo() == "nomtrabajador") {
+    } else if (linea->nomcampo() == "nomtrabajador") {
         BusquedaTrabajadorDelegate *comboBox = static_cast<BusquedaTrabajadorDelegate*>(editor);
         QString value = comboBox->currentText();
         model->setData(index, value);

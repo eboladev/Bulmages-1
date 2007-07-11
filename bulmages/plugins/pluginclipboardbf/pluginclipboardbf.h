@@ -1,7 +1,6 @@
 /***************************************************************************
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,34 +18,40 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef LISTLINPEDIDOPROVEEDORVIEW_H
-#define LISTLINPEDIDOPROVEEDORVIEW_H
+#ifdef Q_WS_WIN
+# define MY_EXPORT __declspec(dllexport)
+#else
+# define MY_EXPORT
+#endif
 
-#include <QEvent>
+#include <QStringList>
+#include <QWidget>
+#include <QIcon>
+#include <QObject>
 
-#include "company.h"
-#include "subform2bf.h"
-#include "fixed.h"
+#include "qapplication2.h"
+#include "bulmafact.h"
+#include "postgresiface2.h"
+#include "blwidget.h"
+
+extern "C" MY_EXPORT void entryPoint(bulmafact *);
+extern "C" MY_EXPORT int FacturaView_FacturaView(FacturaView *);
+
+extern QApplication2 *theApp;
 
 
-/// Muestra y administra las l&iacute;neas de detalle de un pedido a un proveedor.
-/** */
-class ListLinPedidoProveedorView : public SubForm2Bf {
+class myplugin : public QObject, PEmpresaBase {
     Q_OBJECT
 
 public:
-    QString mdb_idpedidoproveedor;
-    ListLinPedidoProveedorView(QWidget *parent = 0);
-    ~ListLinPedidoProveedorView() {}
-    ;
+    bulmafact *m_bulmafact;
+
+public:
+    myplugin();
+    ~myplugin();
+    void inicializa(bulmafact *);
 
 public slots:
-    virtual void cargar(QString idpedidoproveedor);
-    Fixed calculabase();
-    Fixed calculaiva();
-    virtual void on_mui_list_cellChanged(int, int);
-
+    void elslot();
 };
-
-#endif
 

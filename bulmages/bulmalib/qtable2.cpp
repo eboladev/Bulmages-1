@@ -203,7 +203,8 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
         switch (key) {
         case Qt::Key_Return:
         case Qt::Key_Enter:
-            emit editFinished(row, col, key);
+	    m_teclasalida = key;
+//            emit editFinished(row, col, key);
             return TRUE;
             break;
         } // end switch
@@ -215,6 +216,7 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
         int key = keyEvent->key();
         int col = currentColumn();
         int row = currentRow();
+        m_teclasalida = 0;
         /// Algunas veces se produce un eventfilter pero la fila no existe (-1) en esos
         /// casos abortamos la ejecucion del eventFilter para que no de fallos en la
         /// busqueda de que celda es.
@@ -226,7 +228,8 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
         switch (key) {
         case Qt::Key_Return:
         case Qt::Key_Enter:
-            emit editFinished(row, col, key);
+	    m_teclasalida = key;
+//            emit editFinished(row, col, key);
             return TRUE;
             break;
 

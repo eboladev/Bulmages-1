@@ -80,7 +80,10 @@ void SubForm2Bc::on_mui_list_pressedAsterisk(int row, int col) {
     if (camp->nomcampo() != "codigo" && camp->nomcampo() != "codigoctacliente")
         return;
 
+    m_procesacambios = FALSE;
+
     /// Nos llevamos el foco para que no haya un EditorDelegado que no se actualice bien.
+
     mui_list->setCurrentCell(row, col +1);
     QDialog *diag = new QDialog(0);
     diag->setModal(true);
@@ -103,21 +106,22 @@ void SubForm2Bc::on_mui_list_pressedAsterisk(int row, int col) {
                 rec->setDBvalue("codigo", cur->valor("codigo"));
                 rec->setDBvalue("tipocuenta", cur->valor("tipocuenta"));
                 rec->setDBvalue("descripcion", cur->valor("descripcion"));
-                /// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
-                on_mui_list_editFinished(row, col, Qt::Key_Return);
+
             } // end if
             if (camp->nomcampo() == "codigoctacliente") {
                 rec->setDBvalue("idctacliente", cur->valor("idcuenta"));
                 rec->setDBvalue("codigoctacliente", cur->valor("codigo"));
                 rec->setDBvalue("tipoctacliente", cur->valor("tipocuenta"));
                 rec->setDBvalue("nomctacliente", cur->valor("descripcion"));
-                /// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
-                on_mui_list_editFinished(row, col, Qt::Key_Return);
+
             } // end if
         } // end if
         delete cur;
     } // end if
 
+    m_procesacambios = TRUE;
+     /// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
+    on_mui_list_cellChanged(row, col);
     _depura ("END SubForm2Bc::on_mui_list_pressedAsterisk", 0);
 }
 
@@ -134,23 +138,38 @@ void SubForm2Bc::on_mui_list_pressedSlash(int row, int col) {
 }
 
 
-void SubForm2Bc::on_mui_list_editFinished(int row, int col, int key) {
-    _depura("SubForm2Bc::editFinished", 0);
+void SubForm2Bc::on_mui_list_cellChanged(int row, int col) {
+    _depura("SubForm2Bc::on_mui_list_cellChanged", 0);
 
+    if (!m_procesacambios) {
+        _depura("SubForm2Bf::on_mui_list_cellChanged", 0, QString::number(row) + " " + QString::number(col)+" m_procesacambios es FALSE");
+        return;
+    }
+    m_procesacambios = FALSE;
 
     /// Disparamos los plugins.
     int res = g_plugins->lanza("SubForm2Bc_on_mui_list_editFinished", this);
-    if (res != 0)
+    if (res != 0) {
+        m_procesacambios = TRUE;
         return;
+    } // end if
 
     SDBRecord *rec = lineaat(row);
+    if (rec == NULL) {
+        _depura ("SubForm2Bc::on_mui_list_cellChanged", 0, QString::number(row) + " " + QString::number(col)+ "la linea no existe");
+        m_procesacambios = TRUE;
+        return;
+    }
+
+
     SDBCampo *camp = (SDBCampo *) item(row, col);
     camp->refresh();
 
 
     /// Si el campo no ha sido cambiado se sale.
     if (!camp->cambiado()) {
-        SubForm3::on_mui_list_editFinished(row, col, key);
+	m_procesacambios = TRUE;
+        SubForm3::on_mui_list_cellChanged(row, col);
         return;
     } // end if
 
@@ -191,8 +210,12 @@ void SubForm2Bc::on_mui_list_editFinished(int row, int col, int key) {
         QString nfecha = normalizafecha( camp->text()).toString("dd/MM/yyyy");
         rec->setDBvalue("fecha", nfecha);
     } // end if
-    SubForm3::on_mui_list_editFinished(row, col, key);
+
     g_plugins->lanza("SubForm2Bc_editFinished_post", this);
+
+    m_procesacambios = TRUE;
+    SubForm3::on_mui_list_cellChanged(row, col);
+
     _depura("END SubForm2Bc::editFinished", 0);
 }
 

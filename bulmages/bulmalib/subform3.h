@@ -71,6 +71,9 @@ protected:
     bool m_orden;
     /// Indica que no se va aplicar ninguna ordenaci&oacute;n a la consulta de la base de datos.
     bool m_ordenporquery;
+    /// Indica si procesar cambios en las celdas o no
+    bool m_procesacambios;
+
     /// Texto de la celda que se coge para saber si se tienen que unir con RowSpan.
     QString m_textoceldaParaRowSpan;
     /// Define que columna se va a coger para unir las filas que sean iguales.
@@ -217,7 +220,6 @@ public slots:
     virtual void contextMenuEvent(QContextMenuEvent *);
     virtual void on_mui_confcol_clicked();
     virtual void on_mui_confquery_clicked();
-    virtual void on_mui_list_editFinished(int row, int col, int key);
     virtual void on_mui_list_pressedSlash(int row, int col);
     virtual void on_mui_list_pressedAsterisk(int row, int col);
     virtual void on_mui_list_pressedPlus(int row, int col);
@@ -232,7 +234,7 @@ public slots:
     virtual void on_mui_botonCerrar_clicked();
     virtual void on_mui_list_cellChanged(int, int);
     virtual void on_mui_list_itemChanged(QTableWidgetItem *it);
-    virtual void on_mui_list_currentCellChanged(int, int, int, int);
+//    virtual void on_mui_list_currentCellChanged(int, int, int, int);
 
 signals:
     void toogledConfig(bool);

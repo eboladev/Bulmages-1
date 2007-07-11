@@ -8,4 +8,5 @@ CONFIG = ordered
 TEMPLATE = subdirs
 
 SUBDIRS += pluginsubformsxc \
-           pluginsubformods
+           pluginsubformods \
+	   pluginclipboardbf

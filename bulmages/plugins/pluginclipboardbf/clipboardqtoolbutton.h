@@ -1,7 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2007 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,34 +18,42 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef LISTLINPEDIDOPROVEEDORVIEW_H
-#define LISTLINPEDIDOPROVEEDORVIEW_H
+#ifndef CLIPBOARDQTOOLBUTTON_H
+#define CLIPBOARDQTOOLBUTTON_H
 
-#include <QEvent>
-
+#include <QWidget>
+#include <QToolButton>
+#include <QString>
 #include "company.h"
-#include "subform2bf.h"
-#include "fixed.h"
+#include "funcaux.h"
+#include <QtXml/QDomDocument>
+#include <QMap>
+#include <QString>
 
 
-/// Muestra y administra las l&iacute;neas de detalle de un pedido a un proveedor.
-/** */
-class ListLinPedidoProveedorView : public SubForm2Bf {
-    Q_OBJECT
+#include "facturaview.h"
+#include "presupuestoview.h"
+#include "pedidoclienteview.h"
+#include "albaranclienteview.h"
+
+
+class ClipBoardQToolButton : public QToolButton {
+	Q_OBJECT
+
+private:
+	company *m_companyact;
+	PresupuestoView *m_presupuestoView;
+	PedidoClienteView *m_pedidoClienteView;
+	AlbaranClienteView *m_albaranClienteView;
+	FacturaView    *m_facturaView;	
 
 public:
-    QString mdb_idpedidoproveedor;
-    ListLinPedidoProveedorView(QWidget *parent = 0);
-    ~ListLinPedidoProveedorView() {}
-    ;
-
+	ClipBoardQToolButton(PresupuestoView *, PedidoClienteView *, AlbaranClienteView *,  FacturaView * , QWidget *parent = NULL);
+	~ClipBoardQToolButton();
+	void setBoton();
 public slots:
-    virtual void cargar(QString idpedidoproveedor);
-    Fixed calculabase();
-    Fixed calculaiva();
-    virtual void on_mui_list_cellChanged(int, int);
+	virtual void click();
 
 };
 
 #endif
-

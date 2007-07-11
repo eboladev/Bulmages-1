@@ -49,16 +49,16 @@ ListLinPedidoProveedorView::ListLinPedidoProveedorView(QWidget *parent) : SubFor
 }
 
 
-void ListLinPedidoProveedorView::on_mui_list_editFinished(int row, int col, int key) {
+void ListLinPedidoProveedorView::on_mui_list_cellChanged(int row, int col) {
     _depura("ListLinPedidoProveedorView::editFinished", 0);
-    SubForm3::on_mui_list_editFinished(row, col, key);
+    SubForm3::on_mui_list_cellChanged(row, col);
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row, col);
     camp->refresh();
 
     /// Si el campo no ha sido cambiado se termina sin cambiar nada.
     if ( ! camp->cambiado() ) {
-    	SubForm3::on_mui_list_editFinished(row, col, key);
+    	SubForm3::on_mui_list_cellChanged(row, col);
 	return;
     } // end if
 
