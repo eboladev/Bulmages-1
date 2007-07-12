@@ -273,11 +273,14 @@ void PresupuestoView::generarPedidoCliente() {
     /// Traspasamos las lineas del presupuesto a lineas del pedido.
     SDBRecord *linea;
     SDBRecord *linea2;
+
+
     for (int i = 0; i < m_listalineas->rowCount(); i++) {
         linea = m_listalineas->lineaat(i);
         if (linea->DBvalue("idarticulo") != "") {
             linea2 = bud->getlistalineas()->lineaat(bud->getlistalineas()->rowCount() - 1);
             bud->getlistalineas()->nuevoRegistro();
+            bud->getlistalineas()->setProcesarCambios(FALSE);
             linea2->setDBvalue("desclpedidocliente", linea->DBvalue("desclpresupuesto"));
             linea2->setDBvalue("cantlpedidocliente", linea->DBvalue("cantlpresupuesto"));
             linea2->setDBvalue("pvplpedidocliente", linea->DBvalue("pvplpresupuesto"));
@@ -286,8 +289,11 @@ void PresupuestoView::generarPedidoCliente() {
             linea2->setDBvalue("idarticulo", linea->DBvalue("idarticulo"));
             linea2->setDBvalue("codigocompletoarticulo", linea->DBvalue("codigocompletoarticulo"));
             linea2->setDBvalue("nomarticulo", linea->DBvalue("nomarticulo"));
+	    bud->getlistalineas()->setProcesarCambios(TRUE);
         } // end if
     } // end for
+
+
 
     /// Traspasamos los descuentos del presupuesto a descuentos del pedido.
     SDBRecord *linea1;
@@ -296,11 +302,14 @@ void PresupuestoView::generarPedidoCliente() {
         linea1 = m_listadescuentos->lineaat(i);
         if (linea1->DBvalue("proporciondpresupuesto") != "") {
             linea3 = bud->getlistadescuentos()->lineaat(bud->getlistadescuentos()->rowCount() - 1);
+	    bud->getlistadescuentos()->setProcesarCambios(FALSE);
             linea3->setDBvalue("conceptdpedidocliente", linea1->DBvalue("conceptdpresupuesto"));
             linea3->setDBvalue("proporciondpedidocliente", linea1->DBvalue("proporciondpresupuesto"));
+	    bud->getlistadescuentos()->setProcesarCambios(TRUE);
             bud->getlistadescuentos()->nuevoRegistro();
         } // end if
     } // end for
+
 
     /// Pintamos el pedido y lo presentamos.
     bud->pintar();

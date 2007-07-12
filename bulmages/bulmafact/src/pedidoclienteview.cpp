@@ -173,6 +173,7 @@ void PedidoClienteView::generarAlbaran() {
         if (linea->DBvalue("idarticulo") != "") {
             linea1 = bud->getlistalineas()->lineaat(bud->getlistalineas()->rowCount() - 1);
             bud->getlistalineas()->nuevoRegistro();
+	    bud->getlistalineas()->setProcesarCambios(FALSE);
             linea1->setDBvalue("desclalbaran", linea->DBvalue("desclpedidocliente"));
             linea1->setDBvalue("cantlalbaran", linea->DBvalue("cantlpedidocliente"));
             linea1->setDBvalue("pvplalbaran", linea->DBvalue("pvplpedidocliente"));
@@ -181,6 +182,7 @@ void PedidoClienteView::generarAlbaran() {
             linea1->setDBvalue("idarticulo", linea->DBvalue("idarticulo"));
             linea1->setDBvalue("codigocompletoarticulo", linea->DBvalue("codigocompletoarticulo"));
             linea1->setDBvalue("nomarticulo", linea->DBvalue("nomarticulo"));
+	    bud->getlistalineas()->setProcesarCambios(TRUE);
         } // end if
     } // end for
 
@@ -189,8 +191,10 @@ void PedidoClienteView::generarAlbaran() {
         linea1 = m_listadescuentos->lineaat(i);
         if (linea1->DBvalue("proporciondpedidocliente") != "") {
             linea = bud->getlistadescuentos()->lineaat(bud->getlistadescuentos()->rowCount() - 1);
+	    bud->getlistadescuentos()->setProcesarCambios(FALSE);
             linea->setDBvalue("conceptdalbaran", linea1->DBvalue("conceptdpedidocliente"));
             linea->setDBvalue("proporciondalbaran", linea1->DBvalue("proporciondpedidocliente"));
+	    bud->getlistadescuentos()->setProcesarCambios(TRUE);
             bud->getlistadescuentos()->nuevoRegistro();
         } // end if
     } // end for

@@ -30,28 +30,25 @@
 #include <QObject>
 
 #include "qapplication2.h"
-#include "bulmafact.h"
+#include "subform3.h"
 #include "postgresiface2.h"
 #include "blwidget.h"
 
-extern "C" MY_EXPORT void entryPoint(bulmafact *);
-extern "C" MY_EXPORT int FacturaView_FacturaView(FacturaView *);
+extern "C" MY_EXPORT int entryPoint(QApplication *);
+extern "C" MY_EXPORT int SubForm3_SubForm3_Post(SubForm3 *);
 
 extern QApplication2 *theApp;
 
 
-class myplugin : public QObject, PEmpresaBase {
+
+
+class myplugclipboard : public QObject {
     Q_OBJECT
-
 public:
-    bulmafact *m_bulmafact;
-
-public:
-    myplugin();
-    ~myplugin();
-    void inicializa(bulmafact *);
-
+    myplugclipboard(SubForm3 *);
+    ~myplugclipboard();
+    void pegaSXC();
 public slots:
-    void elslot();
+    virtual void s_pintaMenu(QMenu *);
+    virtual void s_trataMenu(QAction *);
 };
-

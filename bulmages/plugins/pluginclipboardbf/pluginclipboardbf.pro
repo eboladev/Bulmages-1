@@ -82,10 +82,9 @@ windows {
     LIBS += "C:\Archivos de programa\PostgreSQL\8.1\bin\libpq.dll"
 }
 
-SOURCES = pluginclipboardbf.cpp \
-          clipboardqtoolbutton.cpp
+SOURCES = pluginclipboardbf.cpp 
 
-HEADERS = pluginclipboardbf.h \
-	  clipboardqtoolbutton.h
+HEADERS = pluginclipboardbf.h 
+
 
 

@@ -81,6 +81,13 @@ void SubForm2Bf::on_mui_list_pressedAsterisk(int row, int col) {
     this->setEnabled(true);
     QString idArticle = artlist->idarticulo();
     delete artlist;
+
+    /// Si no tenemos un idarticulo salimos ya que significa que no se ha seleccionado ninguno.
+    if ( idArticle == "") {
+       m_procesacambios = TRUE;
+       return;
+    } // end if
+
     cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM articulo WHERE idarticulo = " + idArticle);
     if (!cur->eof()) {
         rec->setDBvalue("idarticulo", idArticle);

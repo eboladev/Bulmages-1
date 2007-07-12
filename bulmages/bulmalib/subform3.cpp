@@ -1534,27 +1534,25 @@ void SubForm3::on_mui_list_itemChanged(QTableWidgetItem *) {
     _depura("END SubForm3::on_mui_list_itemChanged", 0);
 }
 
-/*
-void SubForm3::on_mui_list_currentCellChanged(int, int, int row, int col) {
-    _depura("SubForm3::on_mui_list_currentCellChanged", 0, QString::number(col) +" "+ QString::number(row));
-
-    if (!m_procesacambios) return;
-    m_procesacambios = FALSE;
-
-    /// Establecemos las variables de clase para que los plugins puedan acceder a las coordenadas del elemento.
-    m_prevCol = col;
-    m_prevRow = row;
-    if (row >= 0 && col >= 0) {
-        on_mui_list_editFinished(row, col, 0);
-    } // end if
-    m_procesacambios = TRUE;
-
-    _depura("END SubForm3::on_mui_list_currentCellChanged", 0);
-}
-*/
-
 void SubForm3::setinsercion(bool b) {
     _depura("SubForm3::setinsercion", 0);
     m_insercion = b;
     _depura("END SubForm3::setinsercion", 0);
 }
+
+/** Establece si el subformulario debe considerar y tratar los cambios de celdas
+*/
+void SubForm3::setProcesarCambios(bool proc) {
+    _depura("SubForm3::setProcesarCambios", 0);
+   m_procesacambios = proc;
+    _depura("END SubForm3::setProcesarCambios", 0);
+}
+
+/** Indica si el subformulario esta considerando el tratamiento de celdas modificadas
+*/
+bool SubForm3::procesaCambios() {
+    _depura("SubForm3::procesaCambios", 0);
+	return m_procesacambios;
+    _depura("END SubForm3::procesaCambios", 0);
+}
+

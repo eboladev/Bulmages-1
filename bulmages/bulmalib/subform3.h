@@ -110,6 +110,8 @@ public:
     QList<SHeader *> *cabecera();
 
 public:
+    void setProcesarCambios(bool);
+    bool procesaCambios();
     /// Define si el listado presentar&aacute; las filas con colores alternativos.
     void setListadoPijama(bool pijama);
     bool listadoPijama();

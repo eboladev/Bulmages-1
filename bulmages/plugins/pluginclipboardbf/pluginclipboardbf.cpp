@@ -27,74 +27,98 @@
 #include <QInputDialog>
 #include <QStringList>
 #include <QClipboard>
+#include <QTextStream>
+#include <QTranslator>
+#include <QTextCodec>
+#include <QLocale>
 
 #include <stdio.h>
 
-#include "pluginclipboardbf.h"
 #include "company.h"
 #include "funcaux.h"
-#include "facturaview.h"
-#include "presupuestoview.h"
-#include "pedidoclienteview.h"
-#include "albaranclienteview.h"
-#include "pedidoproveedorview.h"
-#include "clipboardqtoolbutton.h"
+#include "pluginclipboardbf.h"
 
 
-myplugin::myplugin() {}
 
 
-myplugin::~myplugin() {}
 
-
-void myplugin::elslot() {
-   _depura(theApp->clipboard()->text(), 2);
+int entryPoint(QApplication *) {
+    _depura("Punto de Entrada del plugin de Clipboard", 0);
+        /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
+        QTranslator *traductor = new QTranslator(0);
+        if (confpr->valor(CONF_TRADUCCION) == "locales") {
+            traductor->load(QString("pluginclipboardbf_") + QLocale::system().name(),
+                            confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+        } else {
+            QString archivo = "pluginclipboardbf_" + confpr->valor(CONF_TRADUCCION);
+           traductor->load(archivo, confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+        } // end if
+        theApp->installTranslator(traductor);
+    _depura("END Punto de Entrada del plugin de Clipboard\n", 0);
+    return 0;
 }
 
 
-void myplugin::inicializa(bulmafact *bges) {
-    /// Creamos el men&uacute;.
-    setEmpresaBase(bges->getcompany());
-    m_bulmafact = bges;
-    QMenu *pPluginMenu;
-    /// Miramos si existe un menu Herramientas
-    pPluginMenu = bges->menuBar()->findChild<QMenu *>("Editar");
 
-    /// Creamos el men&uacute;.
-    if (!pPluginMenu) {
-        pPluginMenu = new QMenu("&Editar", bges->menuBar());
-        pPluginMenu->setObjectName(QString::fromUtf8("Editar"));
+int SubForm3_SubForm3_Post(SubForm3 *sub) {
+    _depura("SubForm3_SubForm3_Post", 0);
+   myplugclipboard *subformclip = new myplugclipboard(sub);
+   sub->connect(sub, SIGNAL(pintaMenu(QMenu *)), subformclip, SLOT(s_pintaMenu(QMenu *)));
+   sub->connect(sub, SIGNAL(trataMenu(QAction *)), subformclip, SLOT(s_trataMenu(QAction *)));
+   return 0;
+}
+
+
+
+myplugclipboard::myplugclipboard(SubForm3 *parent) : QObject(parent) {
+}
+
+
+myplugclipboard::~myplugclipboard(){
+}
+
+void myplugclipboard::s_pintaMenu(QMenu *menu) {
+    menu->addSeparator();
+    QAction *ajustac = menu->addAction(tr("Pegar desde Hoja de Calculo"));
+}
+
+void myplugclipboard::s_trataMenu(QAction *action) {
+    if (action->text() == tr("Pegar desde Hoja de Calculo")) {
+	pegaSXC();
     } // end if
-
-    QAction *accion = new QAction("&Pegado desde Hoja de Calculo", 0);
-    accion->setStatusTip("Pega Contenidos de facturas desde una hoja de calculo");
-    accion->setWhatsThis("Pega Contenidos de facturas desde una hoja de calculo");
-    connect(accion, SIGNAL(activated()), this, SLOT(elslot()));
-    pPluginMenu->addAction(accion);
-    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bges->menuBar()->insertMenu(bges->menuCompras->menuAction(), pPluginMenu);
 }
 
+void myplugclipboard::pegaSXC() {
+    _depura("myplugclipboard::pegaSXC", 0);
+        SubForm3 *subform = (SubForm3 *) parent();
+	QString clipboard = theApp->clipboard()->text();
 
-void entryPoint(bulmafact *bges) {
-    myplugin *plug = new myplugin();
-    plug->inicializa(bges);
-}
+	QStringList lineas = clipboard.split("\n");
 
-int FacturaView_FacturaView(FacturaView *l) {
-       _depura("FacturaView_FacturaView", 0);
-//================================
-       ClipBoardQToolButton *mui_exporta_efactura2 = new ClipBoardQToolButton(NULL, NULL, NULL, l, l->mui_plugbotones);
+	/// La primera linea tiene los nombres de las columnas.
+	QStringList campos = lineas.at(0).simplified().split(" ");
 
-       QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *>("hboxLayout1");
-       if (!m_hboxLayout1) {
-                m_hboxLayout1 = new QHBoxLayout(l->mui_plugbotones);
-                m_hboxLayout1->setSpacing(5);
-                m_hboxLayout1->setMargin(5);
-                m_hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));
-       } // end if
-       m_hboxLayout1->addWidget(mui_exporta_efactura2);
-//================================
-       _depura("END FacturaView_FacturaView", 0);
-       return 0;
+	/// Calculamos el tamanyo de cada campo.
+	int numcampos = campos.size();
+	int numchars  = lineas.at(0).size() / numcampos;
+
+	/// Iteramos para cada linea
+        for (int i = 1; i < lineas.size() -1 ; ++i) {
+		QString cadena_valores = lineas.at(i);
+
+		/// Creamos un elemento en la factura
+		SDBRecord  *linea1;
+		linea1 = subform->lineaat(subform->rowCount() - 1);
+		/// Haciendo el nuevo registro antes nos evitamos problemas de foco.
+		subform->nuevoRegistro();
+
+		/// Iteramos para cada columna.
+		for (int j = 0; j < campos.size(); ++j) {
+			/// Cogemos un valor.
+			QString valorcampo = cadena_valores.left(numchars).simplified();
+			cadena_valores = cadena_valores.right(cadena_valores.size()- numchars);
+			linea1->setDBvalue(campos.at(j), valorcampo);
+		} // end for
+	} // end for
+    _depura("END myplugclipboard::pegaSXC", 0);
 }

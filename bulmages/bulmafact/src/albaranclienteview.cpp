@@ -265,6 +265,7 @@ void AlbaranClienteView::generarFactura() {
             linea1 = bud->getlistalineas()->lineaat(bud->getlistalineas()->rowCount() - 1);
             /// Haciendo el nuevo registro antes nos evitamos problemas de foco.
             bud->getlistalineas()->nuevoRegistro();
+	    bud->getlistalineas()->setProcesarCambios(FALSE);
             linea1->setDBvalue("codigocompletoarticulo", linea->DBvalue("codigocompletoarticulo"));
             linea1->setDBvalue("desclfactura", linea->DBvalue("desclalbaran"));
             linea1->setDBvalue("cantlfactura", linea->DBvalue("cantlalbaran"));
@@ -273,9 +274,24 @@ void AlbaranClienteView::generarFactura() {
             linea1->setDBvalue("descuentolfactura", linea->DBvalue("descuentolalbaran"));
             linea1->setDBvalue("idarticulo", linea->DBvalue("idarticulo"));
             linea1->setDBvalue("nomarticulo", linea->DBvalue("nomarticulo"));
+	    bud->getlistalineas()->setProcesarCambios(TRUE);
             linea1->refresh();
         } // end if
     } // end for
+
+    /// Traspasamos los descuentos.
+    for (int i = 0; i < m_listadescuentos->rowCount(); ++i) {
+        linea1 = m_listadescuentos->lineaat(i);
+        if (linea1->DBvalue("proporciondalbaran") != "") {
+            linea = bud->getlistadescuentos()->lineaat(bud->getlistadescuentos()->rowCount() - 1);
+	    bud->getlistadescuentos()->setProcesarCambios(FALSE);
+            linea->setDBvalue("conceptdfactura", linea1->DBvalue("conceptdalbaran"));
+            linea->setDBvalue("proporciondfactura", linea1->DBvalue("proporciondalbaran"));
+	    bud->getlistadescuentos()->setProcesarCambios(TRUE);
+            bud->getlistadescuentos()->nuevoRegistro();
+        } // end if
+    } // end for
+
     bud->calculaypintatotales();
     m_procesadoalbaran->setChecked(TRUE);
 
@@ -327,6 +343,7 @@ void AlbaranClienteView::agregarFactura() {
         linea = m_listalineas->lineaat(i);
         if (linea->DBvalue("idarticulo") != "") {
             linea1 = bud->getlistalineas()->lineaat(bud->getlistalineas()->rowCount() - 1);
+	    bud->getlistalineas()->setProcesarCambios(FALSE);
             linea1->setDBvalue("desclfactura", linea->DBvalue("desclalbaran"));
             linea1->setDBvalue("cantlfactura", linea->DBvalue("cantlalbaran"));
             linea1->setDBvalue("pvplfactura", linea->DBvalue("pvplalbaran"));
@@ -335,6 +352,7 @@ void AlbaranClienteView::agregarFactura() {
             linea1->setDBvalue("codigocompletoarticulo", linea->DBvalue("codigocompletoarticulo"));
             linea1->setDBvalue("nomarticulo", linea->DBvalue("nomarticulo"));
             linea1->setDBvalue("ivalfactura", linea->DBvalue("ivalalbaran"));
+	    bud->getlistalineas()->setProcesarCambios(TRUE);
             bud->getlistalineas()->nuevoRegistro();
         } // end if
     } // end for
