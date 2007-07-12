@@ -11,7 +11,6 @@ SUBDIRS += src/contabilidad \
            src/pluginadocumental \
            src/plugincorrector \
            src/plugin  \
-           src/plugincanualessxw \
            src/plugincanualesods
 #Nota: Para implementar plugins que no van a ser liberados dentro del ambito de la asociacion IGLUES
 # como por ejemplo implementacions especificas. La mejor opcion es incluirlos dentro del directorio

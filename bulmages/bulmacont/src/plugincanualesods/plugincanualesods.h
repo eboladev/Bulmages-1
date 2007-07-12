@@ -47,10 +47,8 @@ class pluginCAnualesODS : public QObject {
 private:
     Fixed saldoCuenta(int cuenta);
     Fixed saldoCuentaAnt(int cuenta);
-    QString ejercicioActual_fechaInicio;
-    QString ejercicioActual_fechaFin;
-    QString ejercicioAnterior_fechaInicio;
-    QString ejercicioAnterior_fechaFin;
+    QString ejercicioActual_fechaBalance;
+    QString ejercicioAnterior_fechaBalance;
 
 public:
     empresa *empresaact;
