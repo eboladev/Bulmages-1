@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1">
 <context>
+    <name>BusquedaFecha</name>
+    <message>
+        <location filename="busquedafecha.cpp" line="101"/>
+        <source>Seleccione fecha</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>BusquedaFechaBase</name>
     <message>
-        <location filename="busquedafechabase.ui" line="30"/>
+        <location filename="busquedafechabase.ui" line="25"/>
         <source>Form1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -353,17 +361,17 @@
 <context>
     <name>Listado</name>
     <message>
-        <location filename="listado.cpp" line="139"/>
+        <location filename="listado.cpp" line="150"/>
         <source>Tiene que seleccionar un elemento</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listado.cpp" line="172"/>
+        <location filename="listado.cpp" line="186"/>
         <source>Editar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="listado.cpp" line="173"/>
+        <location filename="listado.cpp" line="187"/>
         <source>Borrar</source>
         <translation type="unfinished"></translation>
     </message>
@@ -385,157 +393,49 @@
     </message>
 </context>
 <context>
-    <name>QmcDateNav</name>
-    <message>
-        <location filename="qmcdatenav.cpp" line="145"/>
-        <source>SEPTEMBER</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="qmcdatenav.cpp" line="341"/>
-        <source>Sunday</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="qmcdatenav.cpp" line="342"/>
-        <source>Monday</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="qmcdatenav.cpp" line="343"/>
-        <source>Tuesday</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="qmcdatenav.cpp" line="344"/>
-        <source>Wednesday</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="qmcdatenav.cpp" line="345"/>
-        <source>Thursday</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="qmcdatenav.cpp" line="346"/>
-        <source>Friday</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="qmcdatenav.cpp" line="347"/>
-        <source>Saturday</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="qmcdatenav.cpp" line="923"/>
-        <source>January</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="qmcdatenav.cpp" line="927"/>
-        <source>February</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="qmcdatenav.cpp" line="931"/>
-        <source>March</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="qmcdatenav.cpp" line="935"/>
-        <source>April</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="qmcdatenav.cpp" line="939"/>
-        <source>May</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="qmcdatenav.cpp" line="943"/>
-        <source>June</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="qmcdatenav.cpp" line="947"/>
-        <source>July</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="qmcdatenav.cpp" line="951"/>
-        <source>August</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="qmcdatenav.cpp" line="955"/>
-        <source>September</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="qmcdatenav.cpp" line="959"/>
-        <source>October</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="qmcdatenav.cpp" line="963"/>
-        <source>November</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="qmcdatenav.cpp" line="967"/>
-        <source>December</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="qmcdatenav.cpp" line="1019"/>
-        <source>Go to Today</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>SubForm3</name>
     <message>
-        <location filename="subform3.cpp" line="236"/>
+        <location filename="subform3.cpp" line="251"/>
         <source>Nombre</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="subform3.cpp" line="236"/>
+        <location filename="subform3.cpp" line="251"/>
         <source>Nombre de campo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="subform3.cpp" line="236"/>
+        <location filename="subform3.cpp" line="251"/>
         <source>Visible</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="subform3.cpp" line="1430"/>
+        <location filename="subform3.cpp" line="1483"/>
         <source>Borrar registro</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="subform3.cpp" line="1432"/>
+        <location filename="subform3.cpp" line="1485"/>
         <source>Ajustar columa</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="subform3.cpp" line="1433"/>
+        <location filename="subform3.cpp" line="1486"/>
         <source>Ajustar altura</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="subform3.cpp" line="1435"/>
+        <location filename="subform3.cpp" line="1488"/>
         <source>Ajustar columnas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="subform3.cpp" line="1436"/>
+        <location filename="subform3.cpp" line="1489"/>
         <source>Ajustar alturas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="subform3.cpp" line="1439"/>
+        <location filename="subform3.cpp" line="1492"/>
         <source>Ver/Ocultar configurador de subformulario</source>
         <translation type="unfinished"></translation>
     </message>
@@ -665,32 +565,32 @@
 <context>
     <name>abreempresaview</name>
     <message>
-        <location filename="abreempresaview.cpp" line="125"/>
+        <location filename="abreempresaview.cpp" line="135"/>
         <source>&amp;Cierra el programa</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="abreempresaview.cpp" line="192"/>
+        <location filename="abreempresaview.cpp" line="199"/>
         <source>Para entrar, antes tiene que seleccionar una empresa.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="abreempresaview.cpp" line="372"/>
+        <location filename="abreempresaview.cpp" line="390"/>
         <source>Nombre</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="abreempresaview.cpp" line="372"/>
+        <location filename="abreempresaview.cpp" line="390"/>
         <source>Anyo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="abreempresaview.cpp" line="372"/>
+        <location filename="abreempresaview.cpp" line="390"/>
         <source>Archivo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="abreempresaview.cpp" line="372"/>
+        <location filename="abreempresaview.cpp" line="390"/>
         <source>Tipo</source>
         <translation type="unfinished"></translation>
     </message>
@@ -738,11 +638,6 @@
     <message>
         <location filename="listventanas.cpp" line="87"/>
         <source>Indexador</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="listventanas.cpp" line="180"/>
-        <source>listventanas::meteWindow ventana duplicada</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
