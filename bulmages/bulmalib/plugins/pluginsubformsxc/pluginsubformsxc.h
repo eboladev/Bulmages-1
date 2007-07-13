@@ -45,3 +45,4 @@ public slots:
     virtual void s_pintaMenu(QMenu *);
     virtual void s_trataMenu(QAction *);
 };
+

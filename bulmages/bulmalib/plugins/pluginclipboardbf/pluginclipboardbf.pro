@@ -12,17 +12,17 @@ LIBS +=	 -rdynamic
 
 VERSION = 1.0.0
 
-QMAKE_LIBDIR += ../../installbulmages
+QMAKE_LIBDIR += ../../../installbulmages
 
 unix{
-    TARGET = ../../installbulmages/plugins/pluginclipboardbf
+    TARGET = ../../../installbulmages/plugins/pluginclipboardbf
 
-    INCLUDEPATH += ../../bulmalib \
+    INCLUDEPATH += ../../../bulmalib/src \
 		  /usr/include/qt4 \
 		  /usr/include/qt4/Qt \
-		  ../../bulmafact/src \
-		  ../../bulmafact/src/.ui \
-		  ../../bulmalib/.ui \
+		  ../../../bulmafact/src \
+		  ../../../bulmafact/src/.ui \
+		  ../../../bulmalib/src/.ui \
 		  /usr/include/qt4 \
 		  /usr/include/qt4/Qt \
 		  /usr/include/qt4/QtXml \
@@ -65,7 +65,7 @@ windows {
     UI_DIR=.ui
     MOC_DIR=.moc
     OBJECTS_DIR = .obj
-    LIBS += ../../../bulmalib/release/libbulmalib.a \
+    LIBS += ../../../bulmalib/src/release/libbulmalib.a \
 	    C:\Qt\4.1.0\lib\libQtXml4.a \
 	    C:\Qt\4.1.0\lib\libQtXmld4.a 
 
@@ -74,8 +74,8 @@ windows {
 		   ..\..\src \
 		   ..\.. \
 		   ..\..\.. \
-		   ..\..\..\bulmalib \
-		   ..\..\..\bulmalib\.ui \
+		   ..\..\bulmalib\src \
+		   ..\..\bulmalib\src\.ui \
 		   C:\Qt\4.1.0\include\QtXml \
 		   "C:\Archivos de programa\PostgreSQL\8.1\include"
 

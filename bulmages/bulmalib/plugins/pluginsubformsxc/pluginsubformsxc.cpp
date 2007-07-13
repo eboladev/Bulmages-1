@@ -176,3 +176,4 @@ int SubForm3_SubForm3_Post(SubForm3 *sub) {
    sub->QObject::connect(sub, SIGNAL(trataMenu(QAction *)), subformsxc, SLOT(s_trataMenu(QAction *)));
    return 0;
 }
+

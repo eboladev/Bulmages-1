@@ -77,7 +77,7 @@ SOURCES += postgresiface2.cpp \
 	   blwidget.cpp \
 	   listado.cpp \
            porcentajecarga.cpp
-RESOURCES = ../bulmages.qrc
+RESOURCES = ../../bulmages.qrc
 TEMPLATE = lib
 LANGUAGE = C++
 INCLUDEPATH += . \
@@ -105,7 +105,7 @@ unix{
     CONFIG += release debug
     #        CONFIG += qt debug
     TARGET = bulmalib
-    DESTDIR = ../installbulmages
+    DESTDIR = ../../installbulmages
     exists(/usr/include/postgresql/libpq-fe.h){
         DEFINES += DISTRO_DEBIAN
     }
