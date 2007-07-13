@@ -6,11 +6,11 @@ CONFIG += ordered
 
 
 SUBDIRS += src/ \
-           src/plugins/pluginregistroiva \
-           src/plugins/pluginadocumental \
-           src/plugins/plugincorrector \
-           src/plugins/plugin \
-           src/plugins/plugincanualesods
+           plugins/pluginregistroiva \
+           plugins/pluginadocumental \
+           plugins/plugincorrector \
+           plugins/plugin \
+           plugins/plugincanualesods
 
 
 #Nota: Para implementar plugins que no van a ser liberados dentro del ambito de la asociacion IGLUES

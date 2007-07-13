@@ -9,19 +9,19 @@ exists(/usr/bin/distcc) {
 
 LANGUAGE = C++
 
-# TARGETDEPS += ../../../bulmalib/libbulmalib.a
-# RESOURCES += ../../../bulmages-recursos-graficos.qrc
+# TARGETDEPS += ../../bulmalib/libbulmalib.a
+# RESOURCES += ../../bulmages-recursos-graficos.qrc
 
-QMALE_LIBDIR += ../../../installbulmages
+QMALE_LIBDIR += ../../installbulmages
 
-INCLUDEPATH += ../../../bulmalib \
+INCLUDEPATH += ../../bulmalib \
                images \
                /usr/include/qt4 \
                /usr/include/qt4/Qt \
-               ../../../bulmalib/.ui \
+               ../../bulmalib/.ui \
                /usr/include/QtXml
 
-LIBPATH += ../../../installbulmages
+LIBPATH += ../../installbulmages
 
 CONFIG += release warn_on assistant debug
 
@@ -31,7 +31,7 @@ LIBS += -rdynamic \
 
 TEMPLATE = app
 
-TARGET = ../../../installbulmages/bulmacont
+TARGET = ../../installbulmages/bulmacont
 
 FORMS += bulmacontbase.ui \
 	 diariobase.ui \
@@ -200,7 +200,6 @@ unix{
     INCLUDEPATH += ../../bulmalib \
   		   ../../bulmalib/.ui \
 		   ../../bulmalib/.moc \
-		   comun \
 	   	   /usr/include/qt4 \
 		   /usr/include/qt4/Qt
 
@@ -245,8 +244,8 @@ win32{
      	    C:\Qt\4.1.1\lib\libQtXml4.a \
 #	    C:\Qt\4.1.1\lib\libQtXmld4.a 
 
-    INCLUDEPATH += ../../../bulmalib/libpq \
-                   ../contabilidad \
+    INCLUDEPATH += ../../bulmalib/libpq \
+                   ../src \
 		   .. \
  		   C:\Qt\4.1.1\include\QtXml
 
@@ -254,7 +253,7 @@ win32{
     INCLUDEPATH += "C:\Archivos de programa\PostgreSQL\8.1\include"
     LIBS += "C:\Archivos de programa\PostgreSQL\8.1\bin\libpq.dll"
 
-    TARGET = ../../../../installbulmages/bulmacont
+    TARGET = ../../../installbulmages/bulmacont
 }
 
 QT += xml  

@@ -25,7 +25,7 @@
 #include <QMap>
 #include <qxml.h>
 
-#include "../contabilidad/empresa.h"
+#include "empresa.h"
 
 
 class QString;

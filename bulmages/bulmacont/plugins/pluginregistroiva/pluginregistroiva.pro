@@ -5,8 +5,6 @@ exists(/usr/bin/distcc) {
     QMAKE_CXX = distcc g++
 }
 
-
-#The following line was inserted by qt3to4
 QT +=  xml
 
 TEMPLATE = lib
@@ -30,8 +28,8 @@ LIBS += -rdynamic \
         -lbulmalib
 
 INCLUDEPATH = ../../../bulmalib \
-              ../contabilidad \
-              ../contabilidad/.ui \
+              ../../src \
+              ../../src/.ui \
               /usr/include/qt4 \
               /usr/include/qt4/Qt \
               /usr/include/QtXml \

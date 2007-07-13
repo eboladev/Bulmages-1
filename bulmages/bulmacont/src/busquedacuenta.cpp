@@ -19,8 +19,8 @@
  ***************************************************************************/
 
 #include "busquedacuenta.h"
-#include "../contabilidad/listcuentasview1.h"
-#include "../contabilidad/empresa.h"
+#include "listcuentasview1.h"
+#include "empresa.h"
 
 
 BusquedaCuenta::BusquedaCuenta(QWidget *parent)
