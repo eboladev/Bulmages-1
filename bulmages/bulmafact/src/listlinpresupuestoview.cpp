@@ -33,6 +33,11 @@ ListLinPresupuestoView::ListLinPresupuestoView(QWidget *parent) : SubForm2Bf(par
     _depura("ListLinPresupuestoView::ListLinPresupuestoView", 0);
     setDBTableName("lpresupuesto");
     setDBCampoId("idlpresupuesto");
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("ListLinPresupuestoView_ListLinPresupuestoView", this);
+    if (res != 0) {
+         return;
+    } // end if
     addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id articulo"));
     addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Codigo completo"));
     addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("Nombre del articulo"));
@@ -48,6 +53,8 @@ ListLinPresupuestoView::ListLinPresupuestoView(QWidget *parent) : SubForm2Bf(par
     setinsercion(TRUE);
     setOrdenEnabled(TRUE);
     setOrdenPorQuery(FALSE);
+    /// Lanzamos los plugins
+    g_plugins->lanza("ListLinPresupuestoView_ListLinPresupuestoView_Post", this);
     _depura("END ListLinPresupuestoView::ListLinPresupuestoView", 0);
 }
 

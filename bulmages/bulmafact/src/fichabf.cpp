@@ -159,7 +159,7 @@ void FichaBf::calculaypintatotales() {
 void FichaBf::generaRML() {
     _depura("FichaBf::generaRML", 0);
     /// Disparamos los plugins
-    int res = g_plugins->lanza("FichaBf_imprimir", this);
+    int res = g_plugins->lanza("FichaBf_generaRML", this);
     if (res != 0) {
         return;
     } // end if
@@ -371,6 +371,11 @@ void FichaBf::generaRML() {
 
 void FichaBf::imprimir() {
     _depura("FichaBf::imprimir", 0);
+    /// Disparamos los plugins
+    int res = g_plugins->lanza("FichaBf_imprimir", this);
+    if (res != 0) {
+        return;
+    } // end if
     generaRML();
     invocaPDF(m_tablename);
     _depura("END FichaBf::imprimir", 0);

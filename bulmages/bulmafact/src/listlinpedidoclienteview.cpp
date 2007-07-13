@@ -32,6 +32,11 @@ ListLinPedidoClienteView::ListLinPedidoClienteView(QWidget *parent) : SubForm2Bf
     _depura("ListLinPedidoClienteView::ListLinPedidoClienteView", 0);
     setDBTableName("lpedidocliente");
     setDBCampoId("numlpedidocliente");
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("ListLinPedidoClienteView_ListLinPedidoClienteView", this);
+    if (res != 0) {
+         return;
+    } // end if
     addSHeader("puntlpedidocliente", DBCampo::DBboolean, DBCampo::DBNotNull, SHeader::DBNone, tr("Puntl pedido cliente"));
     addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id articulo"));
     addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Codigo completo articulo"));
@@ -45,8 +50,14 @@ ListLinPedidoClienteView::ListLinPedidoClienteView(QWidget *parent) : SubForm2Bf
     addSHeader("descuentolpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr("Descuentol pedido cliente"));
     addSHeader("idpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id pedido cliente"));
     addSHeader("ordenlpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Orden"));
+
+    /// Establecemos los modos de comportamiento del subformulario
     setinsercion(TRUE);
     setOrdenEnabled(TRUE);
+    setOrdenPorQuery(FALSE);
+
+    /// Lanzamos los plugins
+    g_plugins->lanza("ListLinPedidoClienteView_ListLinPedidoClienteView_Post", this);
     _depura("END ListLinPedidoClienteView::ListLinPedidoClienteView", 0);
 }
 
