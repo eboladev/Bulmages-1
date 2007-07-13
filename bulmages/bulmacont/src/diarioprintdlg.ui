@@ -357,7 +357,7 @@
 <customwidgets>
     <customwidget>
         <class>BusquedaFecha</class>
-        <header location="global">../../../bulmalib/busquedafecha.h</header>
+        <header location="global">../../bulmalib/src/busquedafecha.h</header>
         <sizehint>
             <width>50</width>
             <height>20</height>

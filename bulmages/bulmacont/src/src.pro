@@ -5,20 +5,15 @@ exists(/usr/bin/distcc) {
     QMAKE_CXX = distcc g++
 }
 
-#QMAKE_CLEAN = Makefile
-
 LANGUAGE = C++
-
-# TARGETDEPS += ../../bulmalib/libbulmalib.a
-# RESOURCES += ../../bulmages-recursos-graficos.qrc
 
 QMALE_LIBDIR += ../../installbulmages
 
-INCLUDEPATH += ../../bulmalib \
+INCLUDEPATH += ../../bulmalib/src \
                images \
                /usr/include/qt4 \
                /usr/include/qt4/Qt \
-               ../../bulmalib/.ui \
+               ../../bulmalib/src/.ui \
                /usr/include/QtXml
 
 LIBPATH += ../../installbulmages
@@ -197,9 +192,9 @@ unix{
     OBJECTS_DIR = .obj
     LIBS += -lpq
 
-    INCLUDEPATH += ../../bulmalib \
-  		   ../../bulmalib/.ui \
-		   ../../bulmalib/.moc \
+    INCLUDEPATH += ../../bulmalib/src \
+  		   ../../bulmalib/src/.ui \
+		   ../../bulmalib/src/.moc \
 	   	   /usr/include/qt4 \
 		   /usr/include/qt4/Qt
 
@@ -240,11 +235,11 @@ win32{
 
     OBJECTS_DIR = .obj
 
-    LIBS += ../../../bulmalib/release/libbulmalib0.a \
+    LIBS += ../../../bulmalib/src/release/libbulmalib0.a \
      	    C:\Qt\4.1.1\lib\libQtXml4.a \
 #	    C:\Qt\4.1.1\lib\libQtXmld4.a 
 
-    INCLUDEPATH += ../../bulmalib/libpq \
+    INCLUDEPATH += ../../bulmalib/src/libpq \
                    ../src \
 		   .. \
  		   C:\Qt\4.1.1\include\QtXml
