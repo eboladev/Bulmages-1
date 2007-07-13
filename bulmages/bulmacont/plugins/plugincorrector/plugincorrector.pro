@@ -19,8 +19,8 @@ LIBS += -lpq \
         -rdynamic
 
 INCLUDEPATH = ../../../bulmalib \
-              ../contabilidad \
-              ../contabilidad/.ui \
+              ../../src \
+              ../../src/.ui \
               /usr/include/qt4 \
               /usr/include/qt4/Qt \
               /usr/include/QtXml \

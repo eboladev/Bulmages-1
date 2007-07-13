@@ -4,7 +4,7 @@
 # Project related configuration options
 #---------------------------------------------------------------------------
 PROJECT_NAME           = Bulmacont
-PROJECT_NUMBER         = 0.4.5
+PROJECT_NUMBER         = 0.9.3
 OUTPUT_DIRECTORY       = 
 OUTPUT_LANGUAGE        = Spanish
 USE_WINDOWS_ENCODING   = NO

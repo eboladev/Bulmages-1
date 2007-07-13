@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 20xx by xxxxx xxxxxxx                                   *
- *   xxxxx@xxxxxxx.xxx                                                     *
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -17,3 +17,16 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
+#ifdef Q_WS_WIN
+# define MY_EXPORT __declspec(dllexport)
+#else
+# define MY_EXPORT
+#endif
+
+
+#include "bulmacont.h"
+
+
+extern "C" MY_EXPORT void entryPoint(Bulmacont *);
+

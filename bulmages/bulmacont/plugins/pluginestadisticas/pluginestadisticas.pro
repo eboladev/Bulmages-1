@@ -19,16 +19,15 @@ LIBS += -lqt-mt \
 	-rdynamic
 
 INCLUDEPATH = ../../../bulmalib \
-../contabilidad \
-/usr/include/qt \
-/usr/lib/qt4/include/Qt \
-../../src \
-../comun \
-../contabilidad \
-../images \
-../formularios \
-../../../bulmalib/.ui \
-../.ui 
+	      ../../src \
+	      ../../src/.ui \
+	      /usr/include/qt \
+              /usr/lib/qt4/include/Qt \
+              ../../src \
+	      ../images \
+              ../formularios \
+              ../../../bulmalib/.ui \
+              ../.ui 
 
 HEADERS += estadisticasview.h \
            resmensualview.h \

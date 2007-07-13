@@ -3,7 +3,7 @@
   <general>
     <author>Tomeu Borras</author>
     <email>tborras@conetxia.com</email>
-    <version>0.4.1</version>
+    <version>0.9.3</version>
     <projectmanagement>KDevTrollProject</projectmanagement>
     <primarylanguage>C++</primarylanguage>
     <keywords>
@@ -77,7 +77,7 @@
       <envvars/>
     </run>
     <general>
-      <activedir>src/pluginregistroiva</activedir>
+      <activedir>plugins/pluginregistroiva</activedir>
     </general>
     <make>
       <abortonerror>true</abortonerror>
