@@ -15,6 +15,7 @@ SUBDIRS += src/plugincatalogo
 SUBDIRS += src/plugininformeclientes
 SUBDIRS += src/plugininventario
 SUBDIRS += src/plugincontratos
+SUBDIRS += src/pluginticket
 
 
 #Nota: Para implementar plugins que no van a ser liberados dentro del ambito de la asociacion IGLUES
