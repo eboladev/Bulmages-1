@@ -1670,7 +1670,7 @@
   <customwidget>
    <class>BusquedaFecha</class>
    <extends>QWidget</extends>
-   <header>../../../bulmalib/busquedafecha.h</header>
+   <header>../../../bulmalib/src/busquedafecha.h</header>
   </customwidget>
   <customwidget>
    <class>BusquedaReferencia</class>
