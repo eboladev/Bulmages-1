@@ -25,7 +25,7 @@ QMAKE_LIBDIR += ../../../installbulmages
 unix{
     TARGET = ../../../installbulmages/plugins/canualesods
 
-    INCLUDEPATH = ../../../bulmalib \
+    INCLUDEPATH = ../../../bulmalib/src \
 		  ../../src \
 		  ../../src/.ui \
 		  /usr/include/qt4 \
@@ -33,7 +33,7 @@ unix{
 		  /usr/include/QtXml \
 		  /usr/lib/qt4/include/QtXml \
 		  /usr/lib/qt4/include/Qt \
-		  ../../../bulmalib/.ui \
+		  ../../../bulmalib/src/.ui \
 		  .ui \
 		  ../.ui
 
@@ -68,7 +68,7 @@ windows{
     UI_DIR = .ui
     MOC_DIR = .moc
     OBJECTS_DIR = .obj
-    LIBS += ../../../bulmalib/release/libbulmalib.a \
+    LIBS += ../../../bulmalib/src/release/libbulmalib.a \
 	    C:\Qt\4.1.0\lib\libQtXml4.a \
 	    C:\Qt\4.1.0\lib\libQtXmld4.a 
 
@@ -77,8 +77,8 @@ windows{
 		   ..\..\src \
 		   ..\.. \
 		   ..\..\.. \
-		   ..\..\..\bulmalib \
-		   ..\..\..\bulmalib\.ui \
+		   ..\..\..\bulmalib\src \
+		   ..\..\..\bulmalib\src\.ui \
 		   C:\Qt\4.1.0\include\QtXml \
 		   "C:\Archivos de programa\PostgreSQL\8.1\include"
 

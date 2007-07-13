@@ -5,9 +5,9 @@ QT += xml
 
 LANGUAGE = C++
 
-INCLUDEPATH += ../../bulmalib  \
-	       ../../bulmalib/.ui \
-	       ../../bulmalib/.moc \
+INCLUDEPATH += ../../bulmalib/src  \
+	       ../../bulmalib/src/.ui \
+	       ../../bulmalib/src/.moc \
 	       ../../bulmages/src/.ui \
 	       /usr/include/qt4 \
 	       /usr/include/qt4/Qt \
@@ -94,16 +94,16 @@ win32{
 
   OBJECTS_DIR = .obj
 
-  LIBS += ../../bulmalib/release/libbulmalib.a \
+  LIBS += ../../bulmalib/src/release/libbulmalib.a \
  	C:\Qt\4.1.0\lib\libQtXml4.a \
 	C:\Qt\4.1.0\lib\libQtXmld4.a 
 
-  INCLUDEPATH += ../../bulmalib/libpq \
-			../../bulmalib \
-			../../bulmalib/.ui \
-                 ../contabilidad \
-		 comun \
- 		 C:\Qt\4.1.0\include\QtXml
+  INCLUDEPATH += ../../bulmalib/src/libpq \
+			../../bulmalib/src \
+			../../bulmalib/src/.ui \
+                        ../bulmacont/src \
+    		        comun \
+ 	 	        C:\Qt\4.1.0\include\QtXml
 
 TARGET = ..\..\..\installbulmages\bulmages 
   INCLUDEPATH += "C:\Archivos de programa\PostgreSQL\8.1\include"

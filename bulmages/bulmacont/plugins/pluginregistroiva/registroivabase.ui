@@ -904,7 +904,7 @@
   <customwidget>
    <class>BusquedaFecha</class>
    <extends></extends>
-   <header>../../../bulmages/bulmalib/busquedafecha.h</header>
+   <header>../../../bulmalib/src/busquedafecha.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

@@ -18,7 +18,7 @@ DESTDIR = .
 LIBS += -lpq \
         -rdynamic
 
-INCLUDEPATH = ../../../bulmalib \
+INCLUDEPATH = ../../../bulmalib/src \
               ../../src \
               ../../src/.ui \
               /usr/include/qt4 \
@@ -26,7 +26,7 @@ INCLUDEPATH = ../../../bulmalib \
               /usr/include/QtXml \
               /usr/lib/qt4/include/QtXml \
               /usr/lib/qt4/include/Qt \
-              ../../../bulmalib/.ui \
+              ../../../bulmalib/src/.ui \
               .ui \
               ../.ui
 

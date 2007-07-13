@@ -41,8 +41,8 @@ unix{
 
 windows{
 DEFINES += WINDOWS
-LIBS += ../../bulmalib/release/bulmalib0.dll \
-INCLUDEPATH += ../../bulmalib/libpq \
+LIBS += ../../bulmalib/src/release/bulmalib0.dll \
+INCLUDEPATH += ../../bulmalib/src/libpq \
 ../src \
 .. \
 LIBS += "C:\Archivos de programa\PostgreSQL\8.1\bin\libpq.dll"

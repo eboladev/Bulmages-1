@@ -529,7 +529,7 @@
   <customwidget>
    <class>BusquedaFecha</class>
    <extends>QWidget</extends>
-   <header>../../../bulmages/bulmalib/busquedafecha.h</header>
+   <header>../../../bulmalib/src/busquedafecha.h</header>
   </customwidget>
   <customwidget>
    <class>SubForm2Bc</class>
