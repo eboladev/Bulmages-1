@@ -122,12 +122,12 @@
 <context>
     <name>ImportExportBulmafactView</name>
     <message>
-        <location filename="comun/importexportbulmafactview.cpp" line="65"/>
+        <location filename="comun/importexportbulmafactview.cpp" line="64"/>
         <source>Guardar archivo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="comun/importexportbulmafactview.cpp" line="65"/>
+        <location filename="comun/importexportbulmafactview.cpp" line="64"/>
         <source>Contaplus (*.xml)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -291,17 +291,17 @@
 <context>
     <name>importContaplus</name>
     <message>
-        <location filename="comun/importContaplus.cpp" line="90"/>
+        <location filename="comun/importContaplus.cpp" line="89"/>
         <source>Guardar archivo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="comun/importContaplus.cpp" line="76"/>
+        <location filename="comun/importContaplus.cpp" line="75"/>
         <source>Contaplus (*.xml)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="comun/importContaplus.cpp" line="90"/>
+        <location filename="comun/importContaplus.cpp" line="89"/>
         <source>Contaplus (*.txt)</source>
         <translation type="unfinished"></translation>
     </message>
