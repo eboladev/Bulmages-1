@@ -2,20 +2,8 @@ TEMPLATE = subdirs
 
 CONFIG += ordered
 
-SUBDIRS += src
-SUBDIRS += src/plugin
-SUBDIRS += src/plugintarifas
-#SUBDIRS += src/pluginstockmin
-SUBDIRS += src/comercialbf
-SUBDIRS += src/efacturabf
-SUBDIRS += src/pluginvehiculosbf
-SUBDIRS += src/plugintrazabilidad
-SUBDIRS += src/pluginbarcodeopen
-SUBDIRS += src/plugincatalogo
-SUBDIRS += src/plugininformeclientes
-SUBDIRS += src/plugininventario
-SUBDIRS += src/plugincontratos
-SUBDIRS += src/pluginticket
+SUBDIRS += src \
+           plugins/
 
 
 #Nota: Para implementar plugins que no van a ser liberados dentro del ambito de la asociacion IGLUES

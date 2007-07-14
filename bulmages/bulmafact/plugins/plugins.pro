@@ -1,12 +1,19 @@
-# Archivo generado por el gestor qmake de kdevelop. 
-# -------------------------------------------------
+TEMPLATE = subdirs 
 
-TEMPLATE = subdirs
 CONFIG += ordered
 
-
-SUBDIRS += src/ \
-           plugins/
+SUBDIRS += plugin \
+           plugintarifas \
+           comercialbf \
+           efacturabf \
+           pluginvehiculosbf \
+           plugintrazabilidad \
+           pluginbarcodeopen \
+           plugincatalogo \
+           plugininformeclientes \
+           plugininventario \
+           plugincontratos \
+           pluginticket
 
 
 #Nota: Para implementar plugins que no van a ser liberados dentro del ambito de la asociacion IGLUES
@@ -18,5 +25,5 @@ SUBDIRS += src/ \
 
 # Dentro del archivo privatecode.pro basta tener una directiva SUBDIRS apuntando al directorio del
 # plugin.
-
 include(privatecode.pro)
+

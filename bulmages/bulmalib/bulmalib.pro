@@ -6,4 +6,6 @@ CONFIG += ordered
 
 
 SUBDIRS += src/ \
-           plugins
+           plugins/
+
+
