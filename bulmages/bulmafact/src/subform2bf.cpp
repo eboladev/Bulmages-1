@@ -62,7 +62,6 @@ void SubForm2Bf::cargar(QString query) {
 void SubForm2Bf::on_mui_list_pressedAsterisk(int row, int col) {
     _depura("SubForm2Bf::pressedAsterisk", 0);
 
-
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row, col);
 

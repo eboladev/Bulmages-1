@@ -287,6 +287,8 @@ SubForm3::SubForm3(QWidget *parent) : BLWidget(parent) {
 /// Destructor de Clase que guarda la configuracion.
 SubForm3::~SubForm3() {
     _depura("SubForm3::~SubForm3", 0);
+    /// PAra destruir desactivamos el control de cambios.
+    m_procesacambios = FALSE;
     guardaconfig();
     _depura("END SubForm3::~SubForm3", 0);
 }
@@ -606,7 +608,7 @@ void SubForm3::ponItemColorFondo(QTableWidget *twidget, int filainicial, int tot
  * @param cur
  */
 void SubForm3::cargar(cursor2 *cur) {
-    _depura("SubForm3::cargar", 0);
+    _depura("SubForm3::cargar", 0, objectName());
     m_procesacambios = FALSE;
 
     SDBRecord *reg;
@@ -623,6 +625,7 @@ void SubForm3::cargar(cursor2 *cur) {
 
     /// Desactivamos el sorting debido a un error en las Qt4
     mui_list->setSortingEnabled(FALSE);
+
     /// Ponemos la consulta a la vista para que pueda ser editada.
     mui_query->setPlainText(cur->query());
     SDBRecord *rec;
@@ -657,16 +660,19 @@ void SubForm3::cargar(cursor2 *cur) {
         if (rec)
             delete rec;
     } // end while
+
     /// Ponemos los datos sobre la consulta.
     mui_numfilas->setText(QString::number(cur->numregistros()));
     int numpag = cur->numregistros() / filpag + 1;
     mui_numpaginas->setText(QString::number(numpag));
+
     /// Desplazamos hasta encontrar la p&aacute;gina adecuada.
     int nr = filpag * (pagact - 1);
     while (nr > 0  && !cur->eof()) {
         cur->siguienteregistro();
         nr--;
     } // end while
+
     /// Recorremos el recordset y ponemos los registros en un orden determinado.
     int porcentajecarga = 0;
     while (!cur->eof() && m_lista.count() < filpag) {
@@ -775,8 +781,8 @@ void SubForm3::cargar(cursor2 *cur) {
 
     /// Si est&aacute; definido no aplicamos ninguna ordenaci&oacute;n.
     if (!m_ordenporquery) {
-        /// Si estamos con campos de ordenacion ordenamos tras la carga el listado
         if (m_orden) {
+	    /// Si estamos con campos de ordenacion ordenamos tras la carga el listado
             for (int i = 0; i < m_lcabecera.size(); ++i) {
                 if (m_lcabecera.at(i)->nomcampo() == "orden" + m_tablename)
                     mui_list->sortItems(i);
@@ -788,10 +794,12 @@ void SubForm3::cargar(cursor2 *cur) {
         } // end if
     } // end if
 
+    /// Generamos el registro de insercion.
     nuevoRegistro();
 
-    /// Configuramos que registros son visibles y que registros no lo son.
+    /// Configuramos que registros son visibles y que registros no lo son
     on_mui_confcol_clicked();
+
     /// Reactivamos el sorting
     mui_list->setSortingEnabled(m_sorting);
 

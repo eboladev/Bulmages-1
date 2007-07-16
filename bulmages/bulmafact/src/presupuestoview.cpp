@@ -101,6 +101,9 @@ void PresupuestoView::inicializar() {
 PresupuestoView::~PresupuestoView() {
     _depura("PresupuestoView::~PresupuestoView", 0);
     ((company *)empresaBase())->refreshPresupuestos();
+
+    /// Disparamos los plugins.
+    g_plugins->lanza("PresupuestoView_DesPresupuestoView", this);
     _depura("END PresupuestoView::~PresupuestoView", 0);
 }
 
@@ -195,6 +198,10 @@ void PresupuestoView::on_subform2_editFinish(int, int) {
 
 
 void PresupuestoView::pintadescPresupuesto(QString id) {
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("PresupuestoView_pintadescPresupuesto", this);
+    if (res != 0)
+        return;
     m_descpresupuesto->setText(id);
 }
 
@@ -323,6 +330,10 @@ int PresupuestoView::cargar(QString id) {
     try {
         if (Presupuesto::cargar(id))
             throw -1;
+        /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
+        int res = g_plugins->lanza("PresupuestoView_cargar", this);
+        if (res != 0)
+            return 0;
         setWindowTitle(tr("Presupuesto") + " " + DBvalue("refpresupuesto") + " " + DBvalue("idpresupuesto"));
         empresaBase()->meteWindow(windowTitle(), this);
         dialogChanges_cargaInicial();
@@ -355,6 +366,8 @@ int PresupuestoView::guardar() {
         settelPresupuesto(m_telpresupuesto->text());
         setprocesadoPresupuesto(m_procesadopresupuesto->isChecked() ? "TRUE" : "FALSE");
         Presupuesto::guardar();
+        /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
+        g_plugins->lanza("PresupuestoView_guardar_Post", this);
         dialogChanges_cargaInicial();
     } catch (...) {
         _depura("PresupuestoView::guardar error al guardar el presupuesto", 0);

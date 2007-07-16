@@ -124,7 +124,7 @@ QTableWidgetItem2::~QTableWidgetItem2() {
 
 /// Esta funci&oacute;n ya es obsoleta y no se utiliza.
 bool QTableWidgetItem2::operator< (const QTableWidgetItem & other) const {
-    _depura("QTableWidgetItem2::operator<", 0);
+    _depura("QTableWidgetItem2::operator <", 0, text());
     bool oknumero;
     bool oknumero1;
     QString cad = text();
@@ -147,7 +147,7 @@ bool QTableWidgetItem2::operator< (const QTableWidgetItem & other) const {
         } // end if
         return cad < cad1;
     } // end if
-    _depura("END QTableWidgetItem2::operator<", 0);
+    _depura("END QTableWidgetItem2::operator <", 0, text());
     return TRUE;
 }
 
@@ -190,7 +190,6 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
     if (event->type() == QEvent::KeyPress) {
         QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
         int key = keyEvent->key();
-        int col = currentColumn();
         int row = currentRow();
         /// Algunas veces se produce un eventfilter pero la fila no existe (-1) en esos
         /// casos abortamos la ejecucion del eventFilter para que no de fallos en la
@@ -288,9 +287,12 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
 metodo de ordenacion.
 */
 void QTableWidget2::ordenar() {
-    _depura("QTableWidget2::ordenar ", 0);
-    sortByColumn(m_colorden);
-    _depura("END QTableWidget2::ordenar", 0);
+    _depura("QTableWidget2::ordenar ", 0, QString::number(m_colorden));
+    /// Puede ocurrir que el parametro de ordenacion sea invalido por cualquier extranyo motivo.
+    if (m_colorden < columnCount()) {
+    	sortByColumn(m_colorden);
+    } // end if
+    _depura("END QTableWidget2::ordenar", 0, QString::number(m_colorden));
 }
 
 

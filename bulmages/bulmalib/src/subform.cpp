@@ -120,33 +120,35 @@ int SDBCampo::set(QString val) {
 
 
 bool SDBCampo::operator< (const QTableWidgetItem &other) const {
-    _depura("SDBCampo::operator<", 1);
+    _depura("SDBCampo::operator <", 0, text());
     SDBCampo *ot = (SDBCampo *) &other;
     int tip = ot->tipo();
     if (tip == m_tipo) {
         QString val = ot->valorcampo();
 
         if (m_tipo == DBCampo::DBnumeric || m_tipo == DBCampo::DBint) {
-            _depura("SDBCampo::operator< es del tipo numerico:", 0, m_nomcampo + QString::number(m_tipo));
+            _depura("SDBCampo::operator < es del tipo numerico:", 0, m_nomcampo + QString::number(m_tipo));
             double db1 = m_valorcampo.toDouble();
             double db2 = val.toDouble();
             return (db1 < db2);
         } // end if
 
         if (m_tipo == DBCampo::DBdate) {
-            _depura("SDBCampo::operator< es del tipo fecha:", 0, m_nomcampo + QString::number(m_tipo));
-                    QDate fech = normalizafecha(m_valorcampo);
-                    QString db1 = fech.toString(Qt::ISODate);
+            _depura("SDBCampo::operator < es del tipo fecha:", 0, m_nomcampo + QString::number(m_tipo));
+            QDate fech = normalizafecha(m_valorcampo);
+            QString db1 = fech.toString(Qt::ISODate);
             QDate fech1 = normalizafecha(val);
             QString db2 = fech1.toString(Qt::ISODate);
             return (db1 < db2);
         } // end if
 
         if (m_tipo == DBCampo::DBvarchar) {
+            _depura("SDBCampo::operator < es del tipo varchar:", 0, m_nomcampo + QString::number(m_tipo));
             return (m_valorcampo < val);
-        }
+        } // end if
         _depura("tipo desconocido", 0);
     }
+    _depura("END SDBCampo::operator <", 0, text());
     return FALSE;
 }
 

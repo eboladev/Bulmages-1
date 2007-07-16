@@ -62,6 +62,8 @@ int Presupuesto::borrar() {
     _depura("Presupuesto::borrar", 0);
     if (DBvalue("idpresupuesto") != "") {
         empresaBase()->begin();
+        /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
+        g_plugins->lanza("Presupuesto_borrar", this);
         m_listalineas->borrar();
         m_listadescuentos->borrar();
         int error = empresaBase()->ejecuta("DELETE FROM presupuesto WHERE idpresupuesto = " + DBvalue("idpresupuesto"));
@@ -145,6 +147,8 @@ int Presupuesto::guardar() {
         setidPresupuesto(id);
         m_listalineas->guardar();
         m_listadescuentos->guardar();
+        /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
+        g_plugins->lanza("Presupuesto_guardar_Post", this);
         empresaBase()->commit();
         /// Hacemos una carga para recuperar el numero y la referencia.
         cargar(id);
