@@ -459,10 +459,18 @@
         </widget>
        </item>
        <item row="4" column="1" colspan="2" >
-        <widget class="QLineEdit" name="m_dircliente" />
+        <widget class="QLineEdit" name="m_dircliente" >
+         <property name="maxLength" >
+          <number>100</number>
+         </property>
+        </widget>
        </item>
        <item row="1" column="1" colspan="3" >
-        <widget class="QLineEdit" name="m_nomcliente" />
+        <widget class="QLineEdit" name="m_nomcliente" >
+         <property name="maxLength" >
+          <number>100</number>
+         </property>
+        </widget>
        </item>
        <item row="6" column="0" >
         <widget class="QLabel" name="textLabel2_8" >
@@ -501,7 +509,11 @@
         </widget>
        </item>
        <item row="7" column="1" >
-        <widget class="QLineEdit" name="mui_teltrabcliente" />
+        <widget class="QLineEdit" name="mui_teltrabcliente" >
+         <property name="maxLength" >
+          <number>20</number>
+         </property>
+        </widget>
        </item>
        <item row="5" column="2" >
         <widget class="QLabel" name="textLabel2_9_2" >
@@ -570,12 +582,19 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="maxLength" >
+            <number>10</number>
+           </property>
           </widget>
          </item>
         </layout>
        </item>
        <item row="6" column="3" >
-        <widget class="QLineEdit" name="m_faxcliente" />
+        <widget class="QLineEdit" name="m_faxcliente" >
+         <property name="maxLength" >
+          <number>20</number>
+         </property>
+        </widget>
        </item>
        <item row="2" column="0" >
         <widget class="QLabel" name="textLabel2_2_2" >
@@ -591,7 +610,11 @@
         </widget>
        </item>
        <item row="5" column="1" >
-        <widget class="QLineEdit" name="m_poblcliente" />
+        <widget class="QLineEdit" name="m_poblcliente" >
+         <property name="maxLength" >
+          <number>40</number>
+         </property>
+        </widget>
        </item>
        <item row="8" column="2" >
         <widget class="QLabel" name="textLabel2_8_3" >
@@ -624,7 +647,11 @@
           <number>0</number>
          </property>
          <item>
-          <widget class="QLineEdit" name="m_cifcliente" />
+          <widget class="QLineEdit" name="m_cifcliente" >
+           <property name="maxLength" >
+            <number>200</number>
+           </property>
+          </widget>
          </item>
          <item>
           <spacer>
@@ -642,7 +669,11 @@
         </layout>
        </item>
        <item row="6" column="1" >
-        <widget class="QLineEdit" name="m_telcliente" />
+        <widget class="QLineEdit" name="m_telcliente" >
+         <property name="maxLength" >
+          <number>20</number>
+         </property>
+        </widget>
        </item>
        <item row="1" column="0" >
         <widget class="QLabel" name="textLabel2_2" >
@@ -671,10 +702,18 @@
         </widget>
        </item>
        <item row="0" column="3" >
-        <widget class="QLineEdit" name="mui_codcliente" />
+        <widget class="QLineEdit" name="mui_codcliente" >
+         <property name="maxLength" >
+          <number>12</number>
+         </property>
+        </widget>
        </item>
        <item row="8" column="3" >
-        <widget class="QLineEdit" name="m_mailcliente" />
+        <widget class="QLineEdit" name="m_mailcliente" >
+         <property name="maxLength" >
+          <number>100</number>
+         </property>
+        </widget>
        </item>
        <item row="5" column="0" >
         <widget class="QLabel" name="textLabel2_9" >
@@ -690,7 +729,11 @@
         </widget>
        </item>
        <item row="8" column="1" >
-        <widget class="QLineEdit" name="m_urlcliente" />
+        <widget class="QLineEdit" name="m_urlcliente" >
+         <property name="maxLength" >
+          <number>150</number>
+         </property>
+        </widget>
        </item>
        <item row="3" column="0" >
         <widget class="QLabel" name="textLabel2_4" >
@@ -732,7 +775,11 @@
         </widget>
        </item>
        <item row="2" column="1" colspan="3" >
-        <widget class="QLineEdit" name="mui_corpcliente" />
+        <widget class="QLineEdit" name="mui_corpcliente" >
+         <property name="maxLength" >
+          <number>200</number>
+         </property>
+        </widget>
        </item>
        <item row="0" column="0" >
         <widget class="QLabel" name="textLabel2_5" >
@@ -748,10 +795,18 @@
         </widget>
        </item>
        <item row="3" column="1" colspan="3" >
-        <widget class="QLineEdit" name="m_nomaltcliente" />
+        <widget class="QLineEdit" name="m_nomaltcliente" >
+         <property name="maxLength" >
+          <number>300</number>
+         </property>
+        </widget>
        </item>
        <item row="7" column="3" >
-        <widget class="QLineEdit" name="mui_movilcliente" />
+        <widget class="QLineEdit" name="mui_movilcliente" >
+         <property name="maxLength" >
+          <number>20</number>
+         </property>
+        </widget>
        </item>
        <item row="13" column="0" colspan="4" >
         <layout class="QHBoxLayout" >

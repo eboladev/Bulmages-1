@@ -160,3 +160,13 @@ void FPagoView::on_mui_borrar_clicked() {
     pintar();
 }
 
+
+void FPagoView::setModoConsulta() {
+    m_modoConsulta = TRUE;
+}
+
+
+void FPagoView::setModoEdicion() {
+    m_modoConsulta = FALSE;
+}
+

@@ -13,7 +13,7 @@
    <string>Aplicar Asiento Inteligente</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/wizard.png</iconset>
+   <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/wizard.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
@@ -45,7 +45,7 @@
         </size>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/wizard.png</pixmap>
+        <pixmap resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/wizard.png</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>
@@ -95,7 +95,7 @@
            </size>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_save.xpm</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_save.xpm</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -296,7 +296,7 @@
   <tabstop>mui_cancelar</tabstop>
  </tabstops>
  <resources>
-  <include location="../../../bulmages.qrc" />
+  <include location="../../bulmages.qrc" />
  </resources>
  <connections>
   <connection>

@@ -537,7 +537,7 @@
         <string/>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../../bulmages.qrc" >:/Genericos48x48/images/png/bulmacont.png</pixmap>
+        <pixmap resource="../../bulmages.qrc" >:/Genericos48x48/images/png/bulmacont.png</pixmap>
        </property>
       </widget>
      </item>
@@ -737,7 +737,7 @@ p, li { white-space: pre-wrap; }
  </widget>
  <layoutdefault spacing="5" margin="5" />
  <resources>
-  <include location="../../../bulmages.qrc" />
+  <include location="../../bulmages.qrc" />
  </resources>
  <connections/>
 </ui>

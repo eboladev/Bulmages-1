@@ -13,7 +13,7 @@
    <string>Cuentas Anuales</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_estadisticas.xpm</iconset>
+   <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_estadisticas.xpm</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="spacing" >
@@ -48,7 +48,7 @@
  </widget>
  <layoutdefault spacing="6" margin="11" />
  <resources>
-  <include location="../../../bulmages.qrc" />
+  <include location="../../bulmages.qrc" />
  </resources>
  <connections/>
 </ui>

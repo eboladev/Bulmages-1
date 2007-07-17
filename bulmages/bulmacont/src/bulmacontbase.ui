@@ -13,7 +13,7 @@
    <string>BulmaCont - Contabilidad GPL</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/iconbulmacont.xpm</iconset>
+   <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/iconbulmacont.xpm</iconset>
   </property>
   <widget class="QWidget" name="centralwidget" />
   <widget class="QMenuBar" name="menubar" >
@@ -149,7 +149,7 @@
   </widget>
   <action name="actionConfiguracion" >
    <property name="icon" >
-    <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_configuracion.xpm</iconset>
+    <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_configuracion.xpm</iconset>
    </property>
    <property name="text" >
     <string>&amp;Propiedades de la empresa...</string>
@@ -221,7 +221,7 @@
   </action>
   <action name="actionPlan_Contable" >
    <property name="icon" >
-    <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_cuentas.xpm</iconset>
+    <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_cuentas.xpm</iconset>
    </property>
    <property name="text" >
     <string>&amp;Plan Contable</string>
@@ -229,7 +229,7 @@
   </action>
   <action name="actionAsientos" >
    <property name="icon" >
-    <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_asiento.xpm</iconset>
+    <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_asiento.xpm</iconset>
    </property>
    <property name="text" >
     <string>&amp;Asientos</string>
@@ -240,7 +240,7 @@
   </action>
   <action name="actionApuntes_Contables" >
    <property name="icon" >
-    <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_lapiz.xpm</iconset>
+    <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_lapiz.xpm</iconset>
    </property>
    <property name="text" >
     <string>Apuntes &amp;contables</string>
@@ -251,7 +251,7 @@
   </action>
   <action name="actionLibro_Mayor" >
    <property name="icon" >
-    <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_mayor.xpm</iconset>
+    <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_mayor.xpm</iconset>
    </property>
    <property name="text" >
     <string>Libro &amp;Mayor</string>
@@ -259,7 +259,7 @@
   </action>
   <action name="actionLibro_Diario" >
    <property name="icon" >
-    <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_diario.xpm</iconset>
+    <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_diario.xpm</iconset>
    </property>
    <property name="text" >
     <string>Libro &amp;Diario</string>
@@ -267,7 +267,7 @@
   </action>
   <action name="actionBalance_de_Cuentas" >
    <property name="icon" >
-    <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_balance.xpm</iconset>
+    <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_balance.xpm</iconset>
    </property>
    <property name="text" >
     <string>&amp;Balance de Cuentas</string>
@@ -275,7 +275,7 @@
   </action>
   <action name="actionBalance_Jer_rquico_de_Sumas_y_Saldos" >
    <property name="icon" >
-    <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_arbolBalance.xpm</iconset>
+    <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_arbolBalance.xpm</iconset>
    </property>
    <property name="text" >
     <string>Balance &amp;jerarquico de Sumas y Saldos</string>
@@ -299,7 +299,7 @@
   </action>
   <action name="actionCentros_de_Coste" >
    <property name="icon" >
-    <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_centroCoste.xpm</iconset>
+    <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_centroCoste.xpm</iconset>
    </property>
    <property name="text" >
     <string>Centros de cos&amp;te</string>
@@ -307,7 +307,7 @@
   </action>
   <action name="actionCanales" >
    <property name="icon" >
-    <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_canales.xpm</iconset>
+    <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_canales.xpm</iconset>
    </property>
    <property name="text" >
     <string>&amp;Canales</string>
@@ -315,7 +315,7 @@
   </action>
   <action name="actionAsientos_Inteligentes" >
    <property name="icon" >
-    <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_asientoListo.xpm</iconset>
+    <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_asientoListo.xpm</iconset>
    </property>
    <property name="text" >
     <string>Asientos Inteligentes</string>
@@ -323,7 +323,7 @@
   </action>
   <action name="actionImprimir" >
    <property name="icon" >
-    <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_filePrint.xpm</iconset>
+    <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_filePrint.xpm</iconset>
    </property>
    <property name="text" >
     <string>&amp;Imprimir</string>
@@ -331,7 +331,7 @@
   </action>
   <action name="actionGuardar" >
    <property name="icon" >
-    <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_save.xpm</iconset>
+    <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_save.xpm</iconset>
    </property>
    <property name="text" >
     <string>&amp;Guardar</string>
@@ -339,7 +339,7 @@
   </action>
   <action name="actionActualizar" >
    <property name="icon" >
-    <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_reload.png</iconset>
+    <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_reload.png</iconset>
    </property>
    <property name="text" >
     <string>&amp;Actualizar</string>
@@ -347,7 +347,7 @@
   </action>
   <action name="actionFiltrar" >
    <property name="icon" >
-    <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_find.png</iconset>
+    <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_find.png</iconset>
    </property>
    <property name="text" >
     <string>&amp;Filtrar</string>
@@ -411,7 +411,7 @@
   </action>
   <action name="actionSiguiente" >
    <property name="icon" >
-    <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_forward.xpm</iconset>
+    <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_forward.xpm</iconset>
    </property>
    <property name="text" >
     <string>Siguiente</string>
@@ -422,7 +422,7 @@
   </action>
   <action name="actionAnterior" >
    <property name="icon" >
-    <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_back.xpm</iconset>
+    <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_back.xpm</iconset>
    </property>
    <property name="text" >
     <string>Anterior</string>
@@ -433,7 +433,7 @@
   </action>
   <action name="actionInicio" >
    <property name="icon" >
-    <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_start.png</iconset>
+    <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_start.png</iconset>
    </property>
    <property name="text" >
     <string>Inicio</string>
@@ -444,7 +444,7 @@
   </action>
   <action name="actionFin" >
    <property name="icon" >
-    <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_finish.png</iconset>
+    <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_finish.png</iconset>
    </property>
    <property name="text" >
     <string>Fin</string>
@@ -494,7 +494,7 @@
   </action>
  </widget>
  <resources>
-  <include location="../../../bulmages.qrc" />
+  <include location="../../bulmages.qrc" />
  </resources>
  <connections>
   <connection>

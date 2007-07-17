@@ -52,12 +52,8 @@ private:
 public:
     FPagoView(company * emp, QWidget *parent = 0);
     ~FPagoView();
-    void setModoConsulta() {
-        m_modoConsulta = TRUE;
-    };
-    void setModoEdicion() {
-        m_modoConsulta = FALSE;
-    };
+    void setModoConsulta();
+    void setModoEdicion();
     bool trataModificado();
     virtual int sacaWindow();
 

@@ -14,7 +14,7 @@
    <string>Asiento</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_lapiz.xpm</iconset>
+   <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_lapiz.xpm</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
@@ -54,7 +54,7 @@
         </size>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_lapiz.xpm</pixmap>
+        <pixmap resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_lapiz.xpm</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>
@@ -128,7 +128,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/decrypted.png</iconset>
+           <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/decrypted.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -173,7 +173,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/encrypted.png</iconset>
+           <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/encrypted.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -218,7 +218,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_save.xpm</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_save.xpm</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -263,7 +263,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_fileNew.xpm</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_fileNew.xpm</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -308,7 +308,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_edit.png</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_edit.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -359,7 +359,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_editDelete.png</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_editDelete.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -404,7 +404,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/igualant.xpm</iconset>
+           <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/igualant.xpm</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -452,7 +452,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_immportar.png</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_immportar.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -497,7 +497,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_exportar.png</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_exportar.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -539,7 +539,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_iva.xpm</iconset>
+           <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_iva.xpm</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -584,7 +584,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/wizard.png</iconset>
+           <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/wizard.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -1102,7 +1102,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../../../bulmages.qrc" />
+  <include location="../../bulmages.qrc" />
  </resources>
  <connections>
   <connection>

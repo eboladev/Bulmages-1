@@ -49,7 +49,7 @@
       <string/>
      </property>
      <property name="icon" >
-      <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_cuentas.xpm</iconset>
+      <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_cuentas.xpm</iconset>
      </property>
     </widget>
    </item>
@@ -72,7 +72,7 @@
  </widget>
  <layoutdefault spacing="0" margin="0" />
  <resources>
-  <include location="../../../bulmages.qrc" />
+  <include location="../../bulmages.qrc" />
  </resources>
  <connections/>
 </ui>

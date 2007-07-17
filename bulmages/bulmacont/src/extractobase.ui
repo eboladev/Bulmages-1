@@ -13,7 +13,7 @@
    <string>Extracto de Cuentas</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_mayor.xpm</iconset>
+   <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_mayor.xpm</iconset>
   </property>
   <layout class="QGridLayout" >
    <property name="margin" >
@@ -678,7 +678,7 @@
         </size>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_mayor.xpm</pixmap>
+        <pixmap resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_mayor.xpm</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>
@@ -724,7 +724,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_save.xpm</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_save.xpm</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -764,7 +764,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_filePrint.xpm</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_filePrint.xpm</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -798,7 +798,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_find.png</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_find.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -838,7 +838,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_packageSettings.png</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_packageSettings.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -878,7 +878,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_reload.png</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_reload.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -934,7 +934,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_casacion.xpm</iconset>
+           <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_casacion.xpm</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -968,7 +968,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_save.xpm</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_save.xpm</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -1002,7 +1002,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_fileOpen2.png</iconset>
+           <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_fileOpen2.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -1036,7 +1036,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_editDelete.png</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_editDelete.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -1341,7 +1341,7 @@
   <tabstop>totalsaldo</tabstop>
  </tabstops>
  <resources>
-  <include location="../../../bulmages.qrc" />
+  <include location="../../bulmages.qrc" />
  </resources>
  <connections>
   <connection>

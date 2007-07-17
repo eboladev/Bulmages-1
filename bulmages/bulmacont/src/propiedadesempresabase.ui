@@ -16,7 +16,7 @@
    <string>Propiedades de la empresa</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_configuracion.xpm</iconset>
+   <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_configuracion.xpm</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
@@ -39,7 +39,7 @@
         <string/>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_configuracion.xpm</pixmap>
+        <pixmap resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_configuracion.xpm</pixmap>
        </property>
       </widget>
      </item>
@@ -70,7 +70,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_save.xpm</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_save.xpm</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -314,7 +314,7 @@ yyyy --> Dígitos de cuenta.</string>
   <tabstop>mui_modificarplan</tabstop>
  </tabstops>
  <resources>
-  <include location="../../../bulmages.qrc" />
+  <include location="../../bulmages.qrc" />
  </resources>
  <connections/>
 </ui>
