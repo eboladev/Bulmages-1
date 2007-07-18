@@ -14,7 +14,8 @@ SUBDIRS += plugin \
            plugininventario \
            plugincontratos \
            pluginticket \
-	   plugin_tc_articulos
+	   plugin_tc_articulos \
+	   pluginpromedios
 
 
 #Nota: Para implementar plugins que no van a ser liberados dentro del ambito de la asociacion IGLUES

@@ -1,0 +1,31 @@
+Plugin de  impresion de tickets
+=========================================
+
+(C) 2007 Asociación IGLUES.
+Software Bajo Licencia G.P.L. (Vea el archivo COPYNG adjunto)
+
+
+Versión: 0.9.1
+
+
+Descripcion: Permite ver de forma sencilla los promedios de compras y ventas para cada articulo.
+Las fichas de articulos obtienen una nueva pestanya de promedios que contiene la informacion sacada
+a partir de las compras y ventas.
+
+Compilacion
+===========
+
+Siguiendo el proceso de compilacion normal el plugin se compilará con el resto de bulmages y el plugin se ubicara en bulmages/installbulmages/plugins con el nombre libpluginpromedios.so
+
+
+
+Instalacion
+===========
+La instalacion no requiere de parches de base de datos ni pasos adicionales. Simplemente cambie el parametro CONF_PLUGINS_BULMAFACT para que llame al archivo de plugin y ya tendra
+la funcionalidad instalada.
+
+
+Nota de IGLUES
+==============
+Este plugin se suministra como codigo fuente ya que es muy sencillo el proceso de compilacion del mismo.
+
