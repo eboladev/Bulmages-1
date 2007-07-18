@@ -294,6 +294,7 @@ SubForm3::~SubForm3() {
 }
 
 
+/// Habilita o inhabilita el ordenado de columnas mediante el pulsar sobre ellas.
 void SubForm3::setSortingEnabled(bool sorting) {
     _depura("SubForm3::setSortingEnabled", 0);
     mui_list->setSortingEnabled(sorting);
@@ -307,7 +308,7 @@ bool SubForm3::sortingEnabled() {
     return m_sorting;
 }
 
-
+/// Establece si el subformulario se ordena mediante un campo orden en la base de datos.
 void SubForm3::setOrdenEnabled(bool sorting) {
     _depura("SubForm3::setOrdenEnabled", 0);
     m_orden = sorting;
@@ -618,26 +619,9 @@ void SubForm3::cargar(cursor2 *cur) {
     QColor colorfondo = m_colorfondo1;
     bool coloraponerfondo = FALSE;
 
-    //porcentajeCarga *pc = new porcentajeCarga();
-    //pc->mostrar();
-    //theApp->processEvents(QEventLoop::ExcludeUserInputEvents);
-
-
     /// Desactivamos el sorting debido a un error en las Qt4
     mui_list->setSortingEnabled(FALSE);
 
-    /// Ponemos la consulta a la vista para que pueda ser editada.
-    mui_query->setPlainText(cur->query());
-    SDBRecord *rec;
-
-    /// Tratramos con la paginacion.
-    int filpag = mui_filaspagina->text().toInt();
-    if (filpag <= 0)
-        filpag = 500;
-
-    int pagact = mui_paginaact->text().toInt();
-    if (pagact <= 0)
-        pagact = 1;
 
     /// Reseteamos el "rowSpan" de la tabla antes de borrar las filas.
     for (int i = 0; i < m_lista.size(); ++i) {
@@ -655,11 +639,33 @@ void SubForm3::cargar(cursor2 *cur) {
     mui_list->setRowCount(0);
 
     /// Vaciamos el recordset para que no contenga registros.
+    SDBRecord *rec;
     while (m_lista.count()) {
         rec = m_lista.takeFirst();
         if (rec)
             delete rec;
     } // end while
+
+    /// Inicializamos las columnas y pintamos las cabeceras.
+    mui_list->setColumnCount(m_lcabecera.count());
+    pintaCabeceras();
+    if (m_primero)
+        cargaconfig();
+
+    /// Ponemos la consulta a la vista para que pueda ser editada.
+    mui_query->setPlainText(cur->query());
+
+
+    /// Tratramos con la paginacion.
+    int filpag = mui_filaspagina->text().toInt();
+    if (filpag <= 0)
+        filpag = 500;
+
+    int pagact = mui_paginaact->text().toInt();
+    if (pagact <= 0)
+        pagact = 1;
+
+
 
     /// Ponemos los datos sobre la consulta.
     mui_numfilas->setText(QString::number(cur->numregistros()));
@@ -676,19 +682,12 @@ void SubForm3::cargar(cursor2 *cur) {
     /// Recorremos el recordset y ponemos los registros en un orden determinado.
     int porcentajecarga = 0;
     while (!cur->eof() && m_lista.count() < filpag) {
-        //theApp->processEvents(QEventLoop::ExcludeUserInputEvents);
         SDBRecord *rec = newSDBRecord();
         rec->DBload(cur);
         m_lista.append(rec);
         cur->siguienteregistro();
         porcentajecarga++;
     } // end while
-
-    /// Inicializamos las columnas y pintamos las cabeceras.
-    mui_list->setColumnCount(m_lcabecera.count());
-    pintaCabeceras();
-    if (m_primero)
-        cargaconfig();
 
     /// Inicializamos la tabla con las filas necesarias.
     mui_list->setRowCount(m_lista.count());
@@ -898,7 +897,6 @@ bool SubForm3::campoCompleto(int row) {
 
 /// M&eacute;todo que se dispara cuando se termina de editar un campo del Subformulario.
 /// Se encarga de resituar el cursor al lugar que se haya indicado.
-//void SubForm3::on_mui_list_editFinished(int row, int col, int key) {
 void SubForm3::on_mui_list_cellChanged(int row, int col) {
     _depura("SubForm3::on_mui_list_cellChanged", 0);
 

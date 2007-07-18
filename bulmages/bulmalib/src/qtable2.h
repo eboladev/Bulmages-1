@@ -48,7 +48,7 @@ public:
     QTableWidgetItem2(int type = Type, int mode = 0);
     QTableWidgetItem2(const QString &text, int type = Type, int mode = 0);
     ~QTableWidgetItem2();
-    virtual bool operator< (const QTableWidgetItem &other) const;
+//    virtual bool operator< (const QTableWidgetItem &other) const;
 };
 
 
@@ -76,13 +76,14 @@ public:
     virtual bool eventFilter(QObject *obj, QEvent *event);
     void setText(int x, int y, const QString &val);
     virtual void ordenar();
+    void sortByColumn(int column, Qt::SortOrder order = Qt::AscendingOrder);
+    void sortItems(int column, Qt::SortOrder order = Qt::AscendingOrder);
 
 public slots:
     virtual void sitemChanged(QTableWidgetItem *it);
 
 signals:
     void pulsadomas(int, int, int);
-//    void editFinished(int, int, int);
     void pressedAsterisk(int, int);
     void pressedPlus(int, int);
     void pressedMinus(int, int);

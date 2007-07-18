@@ -123,6 +123,7 @@ QTableWidgetItem2::~QTableWidgetItem2() {
 
 
 /// Esta funci&oacute;n ya es obsoleta y no se utiliza.
+/*
 bool QTableWidgetItem2::operator< (const QTableWidgetItem & other) const {
     _depura("QTableWidgetItem2::operator <", 0, text());
     bool oknumero;
@@ -150,7 +151,7 @@ bool QTableWidgetItem2::operator< (const QTableWidgetItem & other) const {
     _depura("END QTableWidgetItem2::operator <", 0, text());
     return TRUE;
 }
-
+*/
 
 int QTableWidget2::tipoorden() {
     return m_tipoorden;
@@ -198,12 +199,10 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
             return TRUE;
         } // end if
         Qt::KeyboardModifiers mod = keyEvent->modifiers();
-        /// ------------------ EL CAMBIO ------------------------------
         switch (key) {
         case Qt::Key_Return:
         case Qt::Key_Enter:
 	    m_teclasalida = key;
-//            emit editFinished(row, col, key);
             return TRUE;
             break;
         } // end switch
@@ -223,12 +222,10 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
             return TRUE;
         } // end if
         Qt::KeyboardModifiers mod = keyEvent->modifiers();
-        /// ------------------ EL CAMBIO ------------------------------
         switch (key) {
         case Qt::Key_Return:
         case Qt::Key_Enter:
 	    m_teclasalida = key;
-//            emit editFinished(row, col, key);
             return TRUE;
             break;
 
@@ -304,5 +301,17 @@ void QTableWidget2::setText(int x, int y, const QString & val) {
     QTableWidgetItem2 *newitem = new QTableWidgetItem2(val);
     setItem(x, y, newitem);
     _depura("END QTableWidget::setText", 0);
+}
+
+void QTableWidget2::sortByColumn(int column, Qt::SortOrder order) {
+	_depura("QTableWidget2::sortByColumn", 0);
+	QTableWidget::sortByColumn(column, order);
+	_depura("END QTableWidget2::sortByColumn", 0);
+}
+
+void QTableWidget2::sortItems(int column, Qt::SortOrder order) {
+	_depura("QTableWidget2::sortItems", 0);
+	QTableWidget::sortItems(column, order);
+	_depura("END QTableWidget2::sortItems", 0);
 }
 
