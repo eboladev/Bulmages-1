@@ -60,8 +60,9 @@ de edicion
 */
 void QTableItemTextDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const {
     _depura("QTableItemTextDelegate::setModelData", 0);
-        QTextEdit *textedit = qobject_cast<QTextEdit *>(editor);
-    model->setData(index, textedit->toPlainText()); _depura("END QTableItemTextDelegate::setModelData", 0);
+    QTextEdit *textedit = qobject_cast<QTextEdit *>(editor);
+    model->setData(index, textedit->toPlainText());
+    _depura("END QTableItemTextDelegate::setModelData", 0);
 
 }
 
@@ -122,37 +123,6 @@ QTableWidgetItem2::~QTableWidgetItem2() {
 }
 
 
-/// Esta funci&oacute;n ya es obsoleta y no se utiliza.
-/*
-bool QTableWidgetItem2::operator< (const QTableWidgetItem & other) const {
-    _depura("QTableWidgetItem2::operator <", 0, text());
-    bool oknumero;
-    bool oknumero1;
-    QString cad = text();
-    QString cad1 = other.text();
-
-    if (cad != "") {
-        /// Comprobamos si es un n&uacute;mero.
-        double ncad = cad.toDouble(&oknumero);
-        double ncad1 = cad1.toDouble(&oknumero1);
-        if (oknumero && oknumero1) {
-            return ncad < ncad1;
-        } // end if
-        QDate fcad = normalizafecha(cad);
-        QString acad = fcad.toString(Qt::ISODate);
-        QDate fcad1 = normalizafecha(cad1);
-        QString acad1 = fcad1.toString(Qt::ISODate);
-
-        if (acad[2] == '/' && acad1[2]== '/') {
-            return fcad < fcad1;
-        } // end if
-        return cad < cad1;
-    } // end if
-    _depura("END QTableWidgetItem2::operator <", 0, text());
-    return TRUE;
-}
-*/
-
 int QTableWidget2::tipoorden() {
     return m_tipoorden;
 }
@@ -182,6 +152,15 @@ QTableWidget2::~QTableWidget2() {
     _depura("END ~QTableWidget2", 0);
 }
 
+/// Habilita o inhabilita el ordenado de columnas mediante el pulsar sobre ellas.
+void QTableWidget2::setSortingEnabled(bool sorting) {
+    _depura("QTableWidget2::setSortingEnabled", 0);
+    /// OJO ARREGLO BUG. Mientras las Qt4.3 tengan el bug de ordenacion deshabilito el ordenar columnas.
+    QTableWidget::setSortingEnabled(FALSE);
+    _depura("END QTableWidget2::setSortingEnabled", 0);
+}
+
+
 
 /** EventFilter para QTableWidget2, procesa los eventos recibidos por la
 tabla y emite signals si lo considera adecuado.
@@ -202,7 +181,7 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
         switch (key) {
         case Qt::Key_Return:
         case Qt::Key_Enter:
-	    m_teclasalida = key;
+            m_teclasalida = key;
             return TRUE;
             break;
         } // end switch
@@ -225,7 +204,7 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
         switch (key) {
         case Qt::Key_Return:
         case Qt::Key_Enter:
-	    m_teclasalida = key;
+            m_teclasalida = key;
             return TRUE;
             break;
 
@@ -275,7 +254,7 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
             } // end if
         } // end switch
     } // end if
-    _depura("END QTableWidget2::eventFilter()\n", 1);
+    _depura("END QTableWidget2::eventFilter()", 1);
     return QTableWidget::eventFilter(obj, event);
 }
 
@@ -287,7 +266,7 @@ void QTableWidget2::ordenar() {
     _depura("QTableWidget2::ordenar ", 0, QString::number(m_colorden));
     /// Puede ocurrir que el parametro de ordenacion sea invalido por cualquier extranyo motivo.
     if (m_colorden < columnCount()) {
-    	sortByColumn(m_colorden);
+        sortByColumn(m_colorden);
     } // end if
     _depura("END QTableWidget2::ordenar", 0, QString::number(m_colorden));
 }
@@ -304,14 +283,14 @@ void QTableWidget2::setText(int x, int y, const QString & val) {
 }
 
 void QTableWidget2::sortByColumn(int column, Qt::SortOrder order) {
-	_depura("QTableWidget2::sortByColumn", 0);
-	QTableWidget::sortByColumn(column, order);
-	_depura("END QTableWidget2::sortByColumn", 0);
+    _depura("QTableWidget2::sortByColumn", 0);
+    QTableWidget::sortByColumn(column, order);
+    _depura("END QTableWidget2::sortByColumn", 0);
 }
 
 void QTableWidget2::sortItems(int column, Qt::SortOrder order) {
-	_depura("QTableWidget2::sortItems", 0);
-	QTableWidget::sortItems(column, order);
-	_depura("END QTableWidget2::sortItems", 0);
+    _depura("QTableWidget2::sortItems", 0);
+    QTableWidget::sortItems(column, order);
+    _depura("END QTableWidget2::sortItems", 0);
 }
 

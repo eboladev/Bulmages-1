@@ -77,6 +77,7 @@ public slots:
     virtual void on_mui_list_cellDoubleClicked(int, int);
     virtual void on_mui_list_toogledConfig(bool check);
     virtual void on_m_filtro_textChanged(const QString &text);
+    virtual void on_m_filtro_editingFinished();
     virtual void on_mui_actualizar_clicked();
     virtual void on_mui_imprimir_clicked();
     virtual void on_mui_editar_clicked();

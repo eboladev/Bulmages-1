@@ -78,6 +78,7 @@ public:
     virtual void ordenar();
     void sortByColumn(int column, Qt::SortOrder order = Qt::AscendingOrder);
     void sortItems(int column, Qt::SortOrder order = Qt::AscendingOrder);
+    void setSortingEnabled(bool);
 
 public slots:
     virtual void sitemChanged(QTableWidgetItem *it);

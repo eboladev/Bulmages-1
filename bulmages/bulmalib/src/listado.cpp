@@ -119,6 +119,16 @@ void Listado::on_m_filtro_textChanged(const QString &text) {
     } // end if
 }
 
+void Listado::on_m_filtro_editingFinished() {
+    _depura("Listado::on_m_filtro_editFinished", 0);
+    static QString valant = "";
+    QLineEdit *line = findChild<QLineEdit *>("m_filtro");
+    if (line->text() != valant) {
+	valant = line->text();
+        on_mui_actualizar_clicked();
+    } // end if
+    _depura("END Listado::on_m_filtro_editFinished", 0);
+}
 
 void Listado::on_mui_actualizar_clicked() {
     presentar();

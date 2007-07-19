@@ -226,7 +226,8 @@ SubForm3::SubForm3(QWidget *parent) : BLWidget(parent) {
     mui_list->setSelectionBehavior(QAbstractItemView::SelectRows);
     mui_list->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
     mui_list->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
-    mui_list->setSortingEnabled(FALSE); /// TODO:Hay un Bug que impide ordenar bien los elementos.
+    mui_list->setSortingEnabled(FALSE); 
+    /// TODO:Hay un Bug que impide ordenar bien los elementos.
     mui_list->horizontalHeader()->setMovable(TRUE);
     /// Valor por defecto en todos los listados.
     setListadoPijama(TRUE);
@@ -273,12 +274,10 @@ SubForm3::SubForm3(QWidget *parent) : BLWidget(parent) {
     /// Se inicializan con -1 para considerar que no hay celda previa.
     m_prevCol = -1;
     m_prevRow = -1;
-
     setDelete(TRUE);
 
     /// Disparamos los plugins.
     g_plugins->lanza("SubForm3_SubForm3_Post", this);
-
     m_procesacambios = TRUE;
     _depura("END SubForm3::SubForm3", 0);
 }
