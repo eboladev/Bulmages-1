@@ -88,7 +88,7 @@ QString ProveedorList::nomprovider() {
 
 void ProveedorList::presentar() {
     _depura("ProveedorList::presentar", 0);
-    mui_list->cargar("SELECT * FROM proveedor WHERE lower(nomproveedor) LIKE lower('%" + mui_filtro->text() + "%')");
+    mui_list->cargar("SELECT * FROM proveedor WHERE lower(nomproveedor) LIKE lower('%" + m_filtro->text() + "%')");
     _depura("END ProveedorList::presentar", 0);
 }
 
@@ -104,8 +104,6 @@ void ProveedorList::crear() {
 
 
 
-
-
 void ProveedorList::editar(int row) {
     _depura("ProveedorList::editar", 0);
     m_idprovider = mui_list->DBvalue(QString("idproveedor"), row);
@@ -116,7 +114,7 @@ void ProveedorList::editar(int row) {
         if (prov->cargar(mui_list->DBvalue(QString("idproveedor"), row))) {
             delete prov;
             return;
-        }
+        } // end if
         empresaBase()->m_pWorkspace->addWindow(prov);
         prov->show();
     } else {
@@ -191,20 +189,24 @@ void ProveedorList::on_mui_importar_clicked() {
 /// =============================================================================
 
 void ProveedorListSubform::cargar() {
-    _depura("ProveedorListSubform::cargar\n", 0);
+    _depura("ProveedorListSubform::cargar", 0);
     QString SQLQuery = "SELECT * FROM proveedor";
     cursor2 * cur= empresaBase()->cargacursor(SQLQuery);
     SubForm3::cargar(cur);
     delete cur;
+    _depura("END ProveedorListSubform::cargar", 0);
 }
 
 
 void ProveedorListSubform::cargar(QString a) {
+    _depura("ProveedorListSubform::cargar", 0);
     SubForm3::cargar(a);
+    _depura("END ProveedorListSubform::cargar", 0);
 }
 
 
 ProveedorListSubform::ProveedorListSubform(QWidget *parent) : SubForm2Bf(parent) {
+    _depura("ProveedorListSubform::ProveedorListSubform", 0);
     setDBTableName("proveedor");
     setDBCampoId("idproveedor");
     addSHeader("idproveedor", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("ID proveedor"));
@@ -226,5 +228,6 @@ ProveedorListSubform::ProveedorListSubform(QWidget *parent) : SubForm2Bf(parent)
     setinsercion(FALSE);
     setDelete(FALSE);
     setSortingEnabled(TRUE);
+    _depura("END ProveedorListSubform::ProveedorListSubform", 0);
 }
 
