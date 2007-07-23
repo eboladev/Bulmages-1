@@ -121,7 +121,7 @@ install: build
 
 
 	###########################################################################			
-	#bulmages-server
+	#bulmages-servers
 	###########################################################################	
 	#dirs
 	#dh_installdirs -pbulmages-server usr/share/dbconfig-common/data/bulmacont-server/install
@@ -149,9 +149,21 @@ install: build
 	dh_installdirs 	-pbulmages-docs 	usr/share/bulmages/docs	
 	
 	#/usr/share/docs
-	dh_install 	-pbulmages-docs      	bulmages/doc/* usr/share/bulmages/docs
+	dh_install 		-pbulmages-docs		bulmages/doc/* usr/share/bulmages/docs
+	
+	###########################################################################	
+	#libbulmalib1-dev
+	###########################################################################	
+	#bin
+
 	dh_install 	-plibbulmalib1-dev   bulmages/installbulmages/libbulmalib*.so usr/lib/
 	dh_install 	-plibbulmalib1-dev   bulmages/bulmalib/*.h usr/include/
+	
+	
+	###########################################################################	
+	#libbulmalib1
+	###########################################################################	
+	#bin
 	dh_install 	-plibbulmalib1       bulmages/installbulmages/libbulmalib*.so.* usr/lib/
 
 	
