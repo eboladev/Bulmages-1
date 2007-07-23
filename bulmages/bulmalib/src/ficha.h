@@ -59,6 +59,7 @@ public:
     virtual int borrar();
     virtual void closeEvent(QCloseEvent *);
     virtual int sacaWindow();
+    virtual void meteWindow(QString , QObject *, bool compdup = TRUE);
 
 public slots:
     virtual void on_mui_aceptar_clicked();

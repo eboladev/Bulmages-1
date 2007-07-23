@@ -1,0 +1,34 @@
+Plugin de Imnpresiones Multiples
+================================
+
+(C) 2007 Asociación Iglues
+Software Bajo Licencia G.P.L. (Vea el archivo COPYNG adjunto)
+
+
+Versión: 0.9.3
+
+
+Descripcion: Agrega un checkbox en cada uno de los miembros del listado de presupuestos, pedidos, albaranes y facturas.
+Agrega tres botones de menu en cada uno de dichos listados con las siguientes funcionalidades:
+
+	1.- Invertir Seleccion: Invierte el estado de los checkbox agregados.
+	2.- Imprimir multiples elementos: Imprime los elementos seleccionados de forma directa.
+	3.- Envio multiple de e-mail: Prepara el envio de e-mail con los documentos seleccionados como adjuntos.
+
+
+
+
+Instalacion
+===========
+La instalacion no requiere de parches de base de datos ni pasos adicionales. Simplemente cambie el parametro CONF_PLUGINS_BULMAFACT para que llame al archivo de plugin y ya tendra
+la funcionalidad instalada.
+
+
+
+Nota de Conetxia
+================
+Este plugin forma parte del software de Gestión BulmaGés.
+Si desea conocer nuevas versiones del plugin, u otros componentes relacionados con BulmaGés visite: http://bulmages.conetxia.com
+
+
+

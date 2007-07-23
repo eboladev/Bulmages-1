@@ -23,38 +23,13 @@
 #define __SUBFORM2BC1_H
 
 
+
+#include "empresa.h"
+#include "qtable2.h"
+#include "subform.h"
 #include "subform3.h"
-#include "blwidget.h"
 
-
-class QSubForm2BcDelegate;
-class empresa;
-
-class SubForm2Bc : public SubForm3 {
-    Q_OBJECT
-
-public:
-    QSubForm2BcDelegate *m_delegate;
-
-public:
-    SubForm2Bc(QWidget *parent = 0);
-    virtual ~SubForm2Bc();
-    virtual void boton_asiento();
-    virtual void boton_extracto1(int);
-    virtual void boton_balance1(int);
-    virtual void boton_balancetree(int);
-    virtual void boton_diario1(int);
-    virtual void creaMenu(QMenu *);
-    virtual void procesaMenu(QAction *);
-    virtual void setEmpresaBase(EmpresaBase *c);
-    empresa *empresaBase();
-
-public slots:
-    virtual void on_mui_list_cellChanged(int row, int col);
-    virtual void on_mui_list_pressedSlash(int row, int col);
-    virtual void on_mui_list_pressedAsterisk(int row, int col);
-};
-
+class SubForm2Bc;
 
 /// Clase SubForm2BcDelegate
 /** Se encarga del control de los Widgets de Edicion del sistema.*/
@@ -71,6 +46,33 @@ public:
     QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const;
     virtual bool eventFilter(QObject *obj, QEvent *event);
 };
+
+
+class SubForm2Bc : public SubForm3 {
+    Q_OBJECT
+public:
+    QSubForm2BcDelegate *m_delegate;
+
+public:
+    empresa * empresaBase();
+    SubForm2Bc(QWidget *parent = 0);
+    virtual ~SubForm2Bc();
+    virtual void boton_asiento();
+    virtual void boton_extracto1(int);
+    virtual void boton_balance1(int);
+    virtual void boton_balancetree(int);
+    virtual void boton_diario1(int);
+    virtual void creaMenu(QMenu *);
+    virtual void procesaMenu(QAction *);
+    virtual void setEmpresaBase(EmpresaBase *c);
+public slots:
+    virtual void on_mui_list_cellChanged(int row, int col);
+    virtual void on_mui_list_pressedSlash(int row, int col);
+    virtual void on_mui_list_pressedAsterisk(int row, int col);
+};
+
+
+
 
 #endif
 

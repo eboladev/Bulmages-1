@@ -21,7 +21,7 @@
 #include "busquedacuenta.h"
 #include "listcuentasview1.h"
 #include "empresa.h"
-
+#include "plugins.h"
 
 BusquedaCuenta::BusquedaCuenta(QWidget *parent)
         : QWidget(parent) {

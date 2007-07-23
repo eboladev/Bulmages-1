@@ -29,7 +29,7 @@
 #include "postgresiface2.h"
 #include "linprevcobro.h"
 #include "fixed.h"
-
+#include "funcaux.h"
 
 class ListLinPrevCobro {
 public:

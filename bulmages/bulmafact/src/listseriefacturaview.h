@@ -68,7 +68,7 @@ class ListSerieFacturaView : public FichaBf, public Ui_ListSerieFacturaBase {
 
 public:
     ListSerieFacturaView(company *, QWidget *);
-    ~ListSerieFacturaView();
+    virtual ~ListSerieFacturaView();
 
 public slots:
     virtual void on_mui_aceptar_clicked() {

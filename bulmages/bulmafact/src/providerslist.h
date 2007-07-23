@@ -58,7 +58,7 @@ private:
 
 public:
     ProveedorList(company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode);
-    ~ProveedorList();
+    virtual ~ProveedorList();
     void presentar();
     void editar(int);
     void imprimir();

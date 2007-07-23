@@ -22,7 +22,7 @@
 
 #include "importainteligente.h"
 #include "empresa.h"
-
+#include "funcaux.h"
 
 /// Constructor de la clase que inicializa las variables y coge los datos de base de
 /// datos a usar y empresa.

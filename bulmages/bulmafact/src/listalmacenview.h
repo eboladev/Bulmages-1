@@ -62,7 +62,7 @@ class ListAlmacenView : public FichaBf, public Ui_ListAlmacenBase {
 
 public:
     ListAlmacenView(company *comp, QWidget *parent);
-    ~ListAlmacenView();
+    virtual ~ListAlmacenView();
 
 public slots:
     virtual void on_mui_aceptar_clicked();

@@ -41,6 +41,9 @@
 #include "plugins.h"
 #include "bbloqfecha.h"
 #include "diarioview.h"
+#include "balanceview.h"
+#include "listado347.h"
+#include "paisview.h"
 
 #ifndef WIN32
 #include <unistd.h>
@@ -662,10 +665,17 @@ void empresa::canaldefecto() {
 
 
 void empresa::muestrapaises() {
-    _depura("Bulmacont::on_actionPaises_triggered", 0);
+    _depura("empresa::muestrapaises", 0);
     PaisView *pais = new PaisView(this, 0);
     m_pWorkspace->addWindow(pais);
     pais->show();
-    _depura("END Bulmacont::on_actionPaises_triggered", 0);
+    _depura("END empresa::muestrapaises", 0);
 }
 
+/*
+empresa* empresa::empresaBase() {
+        _depura("empresa::empresaBase", 0);
+        _depura("END empresa::empresaBase", 0);
+	return this;
+}
+*/

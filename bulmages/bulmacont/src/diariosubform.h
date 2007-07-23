@@ -19,15 +19,19 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef _DIARIO_SUBFORM
-#define _DIARIO_SUBFORM
+#ifndef _DIARIO_SUBFORM_
+#define _DIARIO_SUBFORM_
 
+#include "empresa.h"
 #include "subform2bc.h"
+#include "blwidget.h"
 
 ///
 /** SubFormulario de la pantalla de Diario.*/
+
+
 class DiarioSubForm : public SubForm2Bc {
-Q_OBJECT
+   Q_OBJECT
 
 public:
     DiarioSubForm(QWidget *parent = 0, const char *name = 0);

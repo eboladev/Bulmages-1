@@ -155,8 +155,7 @@ QTableWidget2::~QTableWidget2() {
 /// Habilita o inhabilita el ordenado de columnas mediante el pulsar sobre ellas.
 void QTableWidget2::setSortingEnabled(bool sorting) {
     _depura("QTableWidget2::setSortingEnabled", 0);
-    /// OJO ARREGLO BUG. Mientras las Qt4.3 tengan el bug de ordenacion deshabilito el ordenar columnas.
-    QTableWidget::setSortingEnabled(FALSE);
+    QTableWidget::setSortingEnabled(sorting);
     _depura("END QTableWidget2::setSortingEnabled", 0);
 }
 
@@ -254,7 +253,7 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
             } // end if
         } // end switch
     } // end if
-    _depura("END QTableWidget2::eventFilter()", 1);
+    _depura("END QTableWidget2::eventFilter()", 0);
     return QTableWidget::eventFilter(obj, event);
 }
 

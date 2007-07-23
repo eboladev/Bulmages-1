@@ -33,6 +33,7 @@
 #include "qtexteditdelegate.h"
 #include "qdoublespinbox2.h"
 #include "busquedacanal.h"
+#include "balanceview.h"
 
 /// Incluimos las imagenes que catalogan los tipos de cuentas.
 #include "images/cactivo.xpm"
@@ -65,11 +66,13 @@ void SubForm2Bc::setEmpresaBase(EmpresaBase *c) {
 }
 
 
+
 empresa *SubForm2Bc::empresaBase() {
     _depura("SubForm2Bc::empresaBase", 0);
     _depura("END SubForm2Bc::empresaBase", 0);
-    return (empresa *) PEmpresaBase::empresaBase();
+    return ((empresa *) PEmpresaBase::empresaBase());
 }
+
 
 
 void SubForm2Bc::on_mui_list_pressedAsterisk(int row, int col) {
@@ -326,7 +329,7 @@ void SubForm2Bc::boton_balance1(int tipo) {
             fecha2.setYMD(fechaact.year(), 12, 31);
             break;
         } // end switch
-        companyact->balanceempresa()->inicializa1(codigo, codigo, fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), "0");
+        empresaBase()->balanceempresa()->inicializa1(codigo, codigo, fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), "0");
         companyact->balanceempresa()->accept();
         companyact->librobalance();
     } // end if

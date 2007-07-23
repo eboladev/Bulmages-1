@@ -30,12 +30,14 @@
 #include "movimientosview.h"
 #include "funcaux.h"
 #include "plugins.h"
-
+#include "ficha.h"
+#include "empresabase.h"
 
 /** Prepara todos los componentes i los inicializa a NULL para que no haya dudas sobre si
     ya han sido inicializados o no.
     Inicializando la clase con este constructor precisa que sea establecido el company con setcompany.
 */
+/*
 MovimientosView::MovimientosView(QWidget *parent, edmode editmodo)
         : FichaBf(NULL, parent, 0) {
     _depura("MovimientosView::MovimientosView", 0);
@@ -50,6 +52,8 @@ MovimientosView::MovimientosView(QWidget *parent, edmode editmodo)
     hideBusqueda();
     _depura("END MovimientosView::MovimientosView", 0);
 }
+*/
+
 
 /** Inicializa todos los componentes y prepara la ventana para funcionar.
 */

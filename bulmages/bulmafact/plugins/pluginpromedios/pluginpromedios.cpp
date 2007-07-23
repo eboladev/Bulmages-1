@@ -59,7 +59,7 @@ void myplugin1::inicializa(bulmafact *bges) {
 
 */
 
-int entryPoint(bulmafact *bges) {
+int entryPoint(bulmafact *) {
     _depura("Punto de Entrada del plugin de Promedios", 0);
 //    myplugin1 *plug = new myplugin1();
 //    plug->inicializa(bges);
@@ -70,10 +70,8 @@ int entryPoint(bulmafact *bges) {
 
 int ArticuloView_ArticuloView(ArticuloView *art) {
     _depura("ArticuloView_ArticuloView", 0);
-    PromedioView *l = new PromedioView(art->getcompany(), art);
+    PromedioView *l = new PromedioView(art->empresaBase(), art);
     l->setObjectName(QString::fromUtf8("lpromedios"));
-//    l->setcompany( art->getcompany());
-//    l->cargar("0");
     art->mui_tab->addTab(l, "Promedios");
     _depura("END ArticuloView_ArticuloView", 0);
     return 0;

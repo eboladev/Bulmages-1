@@ -97,7 +97,7 @@ FacturaView::FacturaView(company *comp, QWidget *parent)
 */
 FacturaView::~FacturaView() {
     _depura("FacturaView::~FacturaView", 0);
-    getcompany()->refreshFacturas();
+    empresaBase()->refreshFacturas();
     _depura("END FacturaView::~FacturaView", 0);
 }
 
@@ -135,7 +135,7 @@ void FacturaView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, F
 */
 void FacturaView::on_mui_cobrar_clicked() {
     _depura("FacturaView::on_mui_cobrar_clicked", 0);
-    CobroView *bud = getcompany()->newCobroView();
+    CobroView *bud = empresaBase()->newCobroView();
     empresaBase()->m_pWorkspace->addWindow(bud);
     bud->setidcliente(DBvalue("idcliente"));
     bud->setcantcobro(m_totalfactura->text());
@@ -176,7 +176,7 @@ void FacturaView::on_mui_agregaralbaran_clicked() {
     _depura("FacturaView::on_mui_agregaralbaran_clicked", 0);
     QDialog *diag = new QDialog(0);
     diag->setModal(true);
-    AlbaranClienteList *fac = new AlbaranClienteList(getcompany(), diag, 0, AlbaranClienteList::SelectMode);
+    AlbaranClienteList *fac = new AlbaranClienteList(empresaBase(), diag, 0, AlbaranClienteList::SelectMode);
     connect(fac, SIGNAL(selected(QString)), diag, SLOT(accept()));
 
     /// Hacemos que las opciones de filtrado del listado ya esten bien.
@@ -193,7 +193,7 @@ void FacturaView::on_mui_agregaralbaran_clicked() {
         return;
 
     /// Creamos la factura.
-    AlbaranClienteView *bud = new AlbaranClienteView(getcompany(), NULL);
+    AlbaranClienteView *bud = new AlbaranClienteView(empresaBase(), NULL);
     bud->cargar(idalbaran);
 
     /// Agregamos a comentarios que albaran se corresponde.
@@ -271,7 +271,7 @@ void FacturaView::on_mui_veralbaranes_clicked() {
     cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
     if (!cur->eof()) {
         while (!cur->eof()) {
-            AlbaranClienteView *bud = new AlbaranClienteView(getcompany(), NULL);
+            AlbaranClienteView *bud = new AlbaranClienteView(empresaBase(), NULL);
             empresaBase()->m_pWorkspace->addWindow(bud);
             bud->cargar(cur->valor("idalbaran"));
             bud->show();

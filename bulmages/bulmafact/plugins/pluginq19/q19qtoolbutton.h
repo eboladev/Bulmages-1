@@ -1,7 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2007 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org Asociación Iglues -- Contabilidad Linux         *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -18,39 +17,42 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifndef IMPQTOOLBUTTON_H
+#define IMPQTOOLBUTTON_H
 
-#ifndef FICHABC_H
-#define FICHABC_H
+#include <QWidget>
+#include <QToolButton>
+#include <QString>
+#include "company.h"
+#include "funcaux.h"
+#include <QtXml/QDomDocument>
+#include <QMap>
+#include <QString>
+#include <QTextStream>
+#include "cobroslist.h"
 
-#include "ficha.h"
-#include "subform2bc.h"
-#include "dbrecord.h"
-#include "empresa.h"
 
+class Q19QToolButton : public QToolButton {
+	Q_OBJECT
 
-/** Esta clase es una plantilla para las ventanas de BulmaCont. Contiene metodos
-    comunes a todas las pantallas.
-*/
-class FichaBc : public Ficha, public DBRecord {
-    Q_OBJECT
-
+private:
+	company *m_companyact;
+	CobrosList     *m_cobrosList;
+	
 public:
-    /// Puntero al subformulario principal de la ventana (si no tiene debe estar a NULL)
-    SubForm2Bc *m_listalineas;
+	Q19QToolButton(CobrosList *cob = NULL, QWidget *parent = NULL);
+	~Q19QToolButton();
+	void setBoton();
+	QByteArray cobroQ19(QTextStream &, QString );
+	QByteArray cabeceraPresentador(QTextStream &, QString);
+	QByteArray cabeceraOrdenante(QTextStream &, QString);
+	QByteArray totalOrdenante(QTextStream &, QString, QString, QString);
+	QByteArray totalGeneral(QTextStream &, QString, QString, QString);
 
-public:
-    /// Puntero a la clase company para poder trabajar con la base de datos y hacer
-    /// traspaso de mensajes.
-    empresa *empresaBase();
-    FichaBc(empresa *comp, QWidget *parent = 0, Qt::WFlags f = 0);
-    virtual ~FichaBc();
-    void setListaLineas(SubForm2Bc * form);
-    SubForm2Bc* listalineas();
-/*
-    virtual int sacaWindow();
-    virtual void meteWindow(QString nom, QObject *obj);
-*/
+public slots:
+	virtual void click();
+
 };
 
-#endif
 
+#endif

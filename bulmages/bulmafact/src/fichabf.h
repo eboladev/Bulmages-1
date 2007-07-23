@@ -38,29 +38,17 @@ public:
     SubForm2Bf *m_listadescuentos;
 
 public:
-    /// \TODO: A eliminar.
-    company *getcompany();
     company *empresaBase();
     FichaBf(company *comp, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode);
     virtual ~FichaBf();
-    void setListaLineas(SubForm2Bf *form) {
-        m_listalineas = form;
-    };
-    void setListaDescuentos(SubForm2Bf *form) {
-        m_listadescuentos = form;
-    };
-    SubForm2Bf* getlistalineas() {
-        return m_listalineas;
-    };
-    SubForm2Bf* getlistadescuentos() {
-        return m_listadescuentos;
-    };
+    void setListaLineas(SubForm2Bf *form);
+    void setListaDescuentos(SubForm2Bf *form);
+    SubForm2Bf* getlistalineas();
+    SubForm2Bf* getlistadescuentos();
     virtual void imprimir();
     virtual void generaRML();
     virtual void calculaypintatotales();
     virtual void pintatotales(Fixed, Fixed, Fixed, Fixed, Fixed, Fixed) {};
-    virtual int sacaWindow();
-    virtual void meteWindow(QString nom, QObject *obj);
     virtual int guardar();
     virtual int borrar();
 };

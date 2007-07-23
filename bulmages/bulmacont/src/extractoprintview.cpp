@@ -26,6 +26,7 @@
 #include <QCheckBox>
 
 #include "extractoprintview.h"
+#include "extractoview1.h"
 #include "listcuentasview1.h"
 #include "selectccosteview.h"
 #include "selectcanalview.h"

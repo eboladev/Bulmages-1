@@ -87,7 +87,7 @@ void AmortizacionSubForm::procesaMenu(QAction *opcion) {
     if (opcion->text() == tr("Ver asiento") || opcion->text() == tr("Borrar asiento")) {
         /// Si se va a mostrar el asiento, o se va a borrar.
         QString idasiento = DBvalue("idasiento");
-        empresaBase()->intapuntsempresa()->muestraasiento(idasiento.toInt());
+        ((empresa *)empresaBase())->intapuntsempresa()->muestraasiento(idasiento.toInt());
     } // end if
     if (opcion->text() == tr("Desvincular asiento") || opcion->text() == tr("Borrar asiento")) {
         /// Si se va a desvincular el asiento o se va a borrar.
@@ -98,8 +98,8 @@ void AmortizacionSubForm::procesaMenu(QAction *opcion) {
     } // end if
     if (opcion->text() == tr("Borrar asiento")) {
         /// Si se va a borrar el asiento.
-	empresaBase()->intapuntsempresa()->show();
-        empresaBase()->intapuntsempresa()->on_mui_borrar_clicked();
+	((empresa *)empresaBase())->intapuntsempresa()->show();
+        ((empresa *)empresaBase())->intapuntsempresa()->on_mui_borrar_clicked();
     } // end if
     if (opcion->text() == tr("Generar asiento")) {
         /// Se va a generar el asiento.
@@ -129,7 +129,7 @@ void AmortizacionSubForm::procesaMenu(QAction *opcion) {
 	} // end if
 	delete cur;
 
-        aplinteligentesview *nueva = new aplinteligentesview(empresaBase(), 0);
+        aplinteligentesview *nueva = new aplinteligentesview(((empresa *)empresaBase()), 0);
         nueva->inicializa(0);
 
         nueva->muestraplantilla("amortizacion");
@@ -147,7 +147,7 @@ void AmortizacionSubForm::procesaMenu(QAction *opcion) {
 	nueva->on_mui_aceptar_clicked();
 
 	/// Cogemos los datos del asiento recien creado.
-        int numasiento1 = empresaBase()->intapuntsempresa()->idasiento().toInt();
+        int numasiento1 = ((empresa *)empresaBase())->intapuntsempresa()->idasiento().toInt();
         QString ordenasiento;
         QString SQLQuery = "SELECT * FROM asiento where idasiento = " + QString::number(numasiento1);
         empresaBase()->begin();

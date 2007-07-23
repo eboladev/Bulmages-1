@@ -149,8 +149,15 @@ void Ficha::closeEvent(QCloseEvent *e) {
 
 int Ficha::sacaWindow() {
     _depura("Ficha::sacaWindow", 0);
-    _depura("Ficha::sacaWindow existe solo para ser derivado", 0);
+    empresaBase()->sacaWindow(this);
     _depura("END Ficha::sacaWindow", 0);
     return 0;
 }
 
+void Ficha::meteWindow(QString nom, QObject *obj, bool compdup) {
+    _depura("Ficha::meteWindow", 0);
+    if (empresaBase() != NULL) {
+        empresaBase()->meteWindow(nom, obj, compdup);
+    }
+    _depura("END Ficha::meteWindow", 0);
+}

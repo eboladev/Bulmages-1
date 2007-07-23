@@ -45,6 +45,8 @@ void EmpresaBase::setProgressBar(QProgressBar *pb) {
 
 
 int EmpresaBase::meteWindow(QString nom, QObject *obj, bool compdup) {
+    _depura("EmpresaBase::meteWindow", 0);
+    _depura("END EmpresaBase::meteWindow", 0);
     return m_listventanas->meteWindow(nom, obj, compdup);
 }
 
@@ -60,7 +62,9 @@ int EmpresaBase::deSeleccionaWindow() {
 
 
 void EmpresaBase::sacaWindow(QObject *nom) {
+    _depura("EmpresaBase::sacaWindow", 0);
     m_listventanas->sacaWindow(nom);
+    _depura("END EmpresaBase::sacaWindow", 0);
 }
 
 

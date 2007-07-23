@@ -72,9 +72,9 @@ private:
     QString mdb_idfactura;
 
 public:
-    MovimientosView(QWidget *parent = 0, edmode editmodo = EditMode);
+//    MovimientosView(QWidget *parent = 0, edmode editmodo = EditMode);
     MovimientosView(company *,QWidget *parent = 0, edmode editmodo = EditMode);
-    ~MovimientosView();
+    virtual ~MovimientosView();
     void iniciaForm();
     void setEmpresaBase (company *comp) {
         PEmpresaBase::setEmpresaBase(comp);

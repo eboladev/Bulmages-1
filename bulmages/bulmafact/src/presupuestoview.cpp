@@ -242,7 +242,7 @@ void PresupuestoView::generarPedidoCliente() {
                                   tr("&Si"), tr("&No"), QString::null, 0, 1)) {
             return;
         }
-        PedidoClienteView *bud = getcompany()->newPedidoClienteView();
+        PedidoClienteView *bud = empresaBase()->newPedidoClienteView();
         empresaBase()->m_pWorkspace->addWindow(bud);
         bud->cargar(cur->valor("idpedidocliente"));
         bud->show();
@@ -261,7 +261,7 @@ void PresupuestoView::generarPedidoCliente() {
     //        return;
 
     /// Creamos el pedido.
-    PedidoClienteView *bud = getcompany()->newPedidoClienteView();
+    PedidoClienteView *bud = empresaBase()->newPedidoClienteView();
     bud->cargar("0");
     empresaBase()->m_pWorkspace->addWindow(bud);
 

@@ -1,7 +1,8 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org Asociación Iglues -- Contabilidad Linux         *
+ *   Copyright (C) 2006 by Fco. Javier M. C.                               *
+ *   fcojavmc@todo-redes.com                                               *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,38 +20,36 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef FICHABC_H
-#define FICHABC_H
+#include <QToolButton>
 
-#include "ficha.h"
-#include "subform2bc.h"
-#include "dbrecord.h"
-#include "empresa.h"
+#include "pluginq19.h"
+#include "funcaux.h"
+#include "presupuestolist.h"
+#include "q19qtoolbutton.h"
+#include "bulmafact.h"
+
+int entryPoint(bulmafact *) {
+    _depura("Estoy dentro del plugin de Q19", 0);
+    return 0;
+}
 
 
-/** Esta clase es una plantilla para las ventanas de BulmaCont. Contiene metodos
-    comunes a todas las pantallas.
-*/
-class FichaBc : public Ficha, public DBRecord {
-    Q_OBJECT
 
-public:
-    /// Puntero al subformulario principal de la ventana (si no tiene debe estar a NULL)
-    SubForm2Bc *m_listalineas;
 
-public:
-    /// Puntero a la clase company para poder trabajar con la base de datos y hacer
-    /// traspaso de mensajes.
-    empresa *empresaBase();
-    FichaBc(empresa *comp, QWidget *parent = 0, Qt::WFlags f = 0);
-    virtual ~FichaBc();
-    void setListaLineas(SubForm2Bc * form);
-    SubForm2Bc* listalineas();
-/*
-    virtual int sacaWindow();
-    virtual void meteWindow(QString nom, QObject *obj);
-*/
-};
+int CobrosList_CobrosList(CobrosList *l) {
+    _depura("CobrosList_CobrosList", 0);
 
-#endif
+    Q19QToolButton *sel = new Q19QToolButton( l, l->mui_plugbotones);
 
+    QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *>("hboxLayout1");
+    if (!m_hboxLayout1) {
+        m_hboxLayout1 = new QHBoxLayout(l->mui_plugbotones);
+        m_hboxLayout1->setSpacing(5);
+        m_hboxLayout1->setMargin(5);
+        m_hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));
+    } // end if
+    m_hboxLayout1->addWidget(sel);
+
+    _depura("END CobrosList_CobrosList", 0);
+    return 0;
+}

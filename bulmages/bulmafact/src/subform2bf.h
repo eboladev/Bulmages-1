@@ -73,7 +73,6 @@ public:
 
 
 public slots:
-//    virtual void contextMenuEvent(QContextMenuEvent *);
     virtual void on_mui_list_cellChanged(int row, int col);
     virtual void on_mui_list_pressedSlash(int row, int col);
     virtual void on_mui_list_pressedAsterisk(int row, int col);

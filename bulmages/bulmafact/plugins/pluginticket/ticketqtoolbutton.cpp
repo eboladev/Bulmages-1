@@ -76,7 +76,7 @@ void TicketQToolButton::click() {
 
     if (m_albaranClienteView != NULL) {
 
-        m_companyact = m_albaranClienteView->getcompany();
+        m_companyact = m_albaranClienteView->empresaBase();
 
 
         QFile file( "/dev/usblp0" );
@@ -196,7 +196,7 @@ void TicketQToolButton::click() {
     } // end if
 
     if (m_facturaView != NULL) {
-        m_companyact = m_facturaView->getcompany();
+        m_companyact = m_facturaView->empresaBase();
 
         //==========================
 

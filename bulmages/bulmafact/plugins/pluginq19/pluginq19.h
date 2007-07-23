@@ -1,7 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org Asociación Iglues -- Contabilidad Linux         *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,38 +18,18 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef FICHABC_H
-#define FICHABC_H
-
-#include "ficha.h"
-#include "subform2bc.h"
-#include "dbrecord.h"
-#include "empresa.h"
-
-
-/** Esta clase es una plantilla para las ventanas de BulmaCont. Contiene metodos
-    comunes a todas las pantallas.
-*/
-class FichaBc : public Ficha, public DBRecord {
-    Q_OBJECT
-
-public:
-    /// Puntero al subformulario principal de la ventana (si no tiene debe estar a NULL)
-    SubForm2Bc *m_listalineas;
-
-public:
-    /// Puntero a la clase company para poder trabajar con la base de datos y hacer
-    /// traspaso de mensajes.
-    empresa *empresaBase();
-    FichaBc(empresa *comp, QWidget *parent = 0, Qt::WFlags f = 0);
-    virtual ~FichaBc();
-    void setListaLineas(SubForm2Bc * form);
-    SubForm2Bc* listalineas();
-/*
-    virtual int sacaWindow();
-    virtual void meteWindow(QString nom, QObject *obj);
-*/
-};
-
+#ifdef Q_WS_WIN
+# define MY_EXPORT __declspec(dllexport)
+#else
+# define MY_EXPORT
 #endif
+
+
+#include "cobroslist.h"
+#include "bulmafact.h"
+
+
+extern "C" MY_EXPORT int CobrosList_CobrosList(CobrosList *);
+extern "C" MY_EXPORT int entryPoint(bulmafact *);
+
 

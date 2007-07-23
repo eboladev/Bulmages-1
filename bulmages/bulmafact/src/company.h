@@ -30,7 +30,6 @@
 #include "listventanas.h"
 #include "qworkspace2.h"
 #include "empresabase.h"
-
 #include "splashscreen.h"
 
 class ProveedorList;
@@ -96,7 +95,7 @@ private:
 
 public:
     company();
-    ~company();
+    virtual ~company();
     FacturasProveedorList *facturasProveedorList();
     PresupuestoList *presupuestoList();
     void listproviders();

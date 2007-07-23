@@ -22,6 +22,7 @@
 
 #include "importbalance.h"
 #include "empresa.h"
+#include "funcaux.h"
 
 /// Constructor de la clase que inicializa la empresa actual.
 /** La base de datos establece que de momento no se ha visitado ning&uacute;n tag .

@@ -24,43 +24,48 @@
 # define MY_EXPORT
 #endif
 
-#include <QStringList>
-#include <QWidget>
-#include <QIcon>
-#include <QApplication>
-#include <QObject>
-#include <QTextStream>
+#include "facturaslist.h"
+#include "presupuestolist.h"
+#include "pedidosclientelist.h"
+#include "albaranclientelist.h"
+#include "cobroslist.h"
+#include "bulmafact.h"
 
-#include "bulmacont.h"
-#include "postgresiface2.h"
-#include "empresa.h"
-#include "fixed.h"
+extern "C" MY_EXPORT int PresupuestoList_PresupuestoList(PresupuestoList *);
+extern "C" MY_EXPORT int PresupuestoListSubForm_PresupuestoListSubForm(PresupuestoListSubForm *);
 
-extern "C" MY_EXPORT void entryPoint(Bulmacont *);
+extern "C" MY_EXPORT int PedidosClienteList_PedidosClienteList(PedidosClienteList *);
+extern "C" MY_EXPORT int PedidosClienteListSubform_PedidosClienteListSubform(PedidosClienteListSubform *);
 
-extern QApplication2 *theApp;
+extern "C" MY_EXPORT int AlbaranClienteList_AlbaranClienteList(AlbaranClienteList *);
+extern "C" MY_EXPORT int AlbaranClienteListSubform_AlbaranClienteListSubform(AlbaranClienteListSubform *);
+
+extern "C" MY_EXPORT int FacturasList_FacturasList(FacturasList *);
+extern "C" MY_EXPORT int FacturasListSubform_FacturasListSubform(FacturasListSubform *);
+
+extern "C" MY_EXPORT int CobrosList_CobrosList(CobrosList *);
+extern "C" MY_EXPORT int CobrosListSubForm_CobrosListSubForm(CobrosListSubForm *);
 
 
-class pluginCAnualesODS : public QObject {
+extern "C" MY_EXPORT int entryPoint(bulmafact *);
+
+
+// extern QApplication2 *theApp;
+
+/*
+class myplugin : public QObject {
     Q_OBJECT
 
-private:
-    Fixed saldoCuenta(int cuenta);
-    Fixed saldoCuentaAnt(int cuenta);
-    QString ejercicioActual_fechaBalance;
-    QString ejercicioAnterior_fechaBalance;
-
 public:
-    empresa *empresaact;
     postgresiface2 *conexionbase;
 
 public:
-    pluginCAnualesODS();
-    ~pluginCAnualesODS();
-    void inicializa(Bulmacont *);
+    myplugin();
+    ~myplugin();
+    void inicializa(bulmafact *);
 
 public slots:
-    void balanceSituacionODS();
-    void formDatosBalance();
+    void elslot();
 };
 
+*/

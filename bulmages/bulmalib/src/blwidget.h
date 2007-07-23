@@ -39,9 +39,9 @@ private:
 public:
   PEmpresaBase(EmpresaBase *);
   PEmpresaBase();
-  ~PEmpresaBase();
-  void setEmpresaBase(EmpresaBase *);
-  EmpresaBase *empresaBase();
+  virtual ~PEmpresaBase();
+  virtual void setEmpresaBase(EmpresaBase *);
+  virtual EmpresaBase *empresaBase();
 };
 
 class BLWidget : public QWidget, public PEmpresaBase {

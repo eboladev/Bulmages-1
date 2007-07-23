@@ -20,6 +20,7 @@
 
 #include "duplicarasientoview.h"
 #include "empresa.h"
+#include "funcaux.h"
 
 #define NUMDIGITOS   empresaactual->numdigitosempresa()
 

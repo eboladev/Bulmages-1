@@ -44,12 +44,6 @@ FichaBf::~FichaBf() {
 }
 
 
-company * FichaBf::getcompany() {
-    _depura("FichaBf::getcompany", 0);
-    _depura("END FichaBf::getcompany", 0);
-    return (company *) empresaBase();
-}
-
 company * FichaBf::empresaBase() {
     _depura("FichaBf::getcompany", 0);
     _depura("END FichaBf::getcompany", 0);
@@ -385,14 +379,16 @@ void FichaBf::imprimir() {
 /** Saca la ventana del workSpace.
     Este metodo es invocado desde la clase Ficha.
 */
+/*
 int FichaBf::sacaWindow() {
     _depura("FichaBf::sacaWindow", 0, this->windowTitle());
     empresaBase()->sacaWindow(this);
     _depura("END FichaBf::sacaWindow", 0);
     return 0;
 }
+*/
 
-
+/*
 void FichaBf::meteWindow(QString nom, QObject *obj) {
     _depura("FichaBf::meteWindow", 0);
     if (empresaBase() != NULL) {
@@ -400,6 +396,7 @@ void FichaBf::meteWindow(QString nom, QObject *obj) {
     }
     _depura("END FichaBf::meteWindow", 0);
 }
+*/
 
 /** Guarda la ficha en la base de datos
     Este metodo puede ser invocado desde la clase ficha o desde la pantalla previa
@@ -419,3 +416,30 @@ int FichaBf::borrar() {
     _depura("END FichaBf::borrar", 0);
     return DBRecord::borrar();
 }
+
+
+void FichaBf::setListaLineas(SubForm2Bf *form) {
+    _depura("FichaBf::setListaLineas", 0);
+    m_listalineas = form;
+    _depura("END FichaBf::setListaLineas", 0);
+}
+
+void FichaBf::setListaDescuentos(SubForm2Bf *form) {
+    _depura("FichaBf::setListaDescuentos", 0);
+    m_listadescuentos = form;
+    _depura("END FichaBf::setListaDescuentos", 0);
+}
+
+SubForm2Bf* FichaBf::getlistalineas() {
+    _depura("FichaBf::getlistalineas", 0);
+    _depura("END FichaBf::getlistalineas", 0);
+    return m_listalineas;
+}
+
+SubForm2Bf* FichaBf::getlistadescuentos() {
+    _depura("FichaBf::getlistadescuentos", 0);
+    _depura("END FichaBf::getlistadescuentos", 0);
+    return m_listadescuentos;
+}
+
+

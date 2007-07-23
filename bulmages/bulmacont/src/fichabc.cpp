@@ -46,6 +46,7 @@ FichaBc::~FichaBc() {
 /** Saca la ventana del workSpace.
     Este metodo es invocado desde la clase Ficha.
  */
+/*
 int FichaBc::sacaWindow() {
     _depura("FichaBf::sacaWindow", 0, this->windowTitle());
     empresaBase()->sacaWindow(this);
@@ -61,7 +62,7 @@ void FichaBc::meteWindow(QString nom, QObject *obj) {
     }
     _depura("END FichaBc::meteWindow", 0);
 }
-
+*/
 
 void FichaBc::setListaLineas(SubForm2Bc * form) {
     _depura("FichaBc::setListaLineas", 0);
@@ -77,9 +78,11 @@ SubForm2Bc* FichaBc::listalineas() {
 }
 
 
-empresa *FichaBc::empresaBase() {
+empresa * FichaBc::empresaBase() {
     _depura("FichaBc::empresaBase", 0);
     _depura("END FichaBc::empresaBase", 0);
-    return (empresa *)PEmpresaBase::empresaBase();
+    return (empresa *)Ficha::empresaBase();
+//    return Ficha::empresaBase();
 }
+
 

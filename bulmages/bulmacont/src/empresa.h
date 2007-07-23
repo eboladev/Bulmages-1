@@ -31,15 +31,11 @@
 #include <QAssistantClient>
 #include <QLibraryInfo>
 
-#include "balanceview.h"
-#include "extractoview1.h"
-#include "listado347.h"
 #include "postgresiface2.h"
 #include "listventanas.h"
 #include "qworkspace2.h"
-#include "listcuentasview1.h"
 #include "empresabase.h"
-#include "paisview.h"
+#include "splashscreen.h"
 
 
 class selectccosteview;
@@ -51,6 +47,8 @@ class BalanceView;
 class AsientosView;
 class CuentaView;
 class PaisView;
+class extractoview1;
+class listcuentasview1;
 
 
 /// Soporte principal para cada empresa contable.
@@ -86,6 +84,7 @@ public:
     QString nombreDB;
 
 public:
+//    empresa * empresaBase();
     empresa();
     virtual ~empresa();
     /// Devuelve un puntero a la clase de la base de datos.

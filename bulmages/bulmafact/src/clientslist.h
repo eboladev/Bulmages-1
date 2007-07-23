@@ -61,7 +61,7 @@ private:
 
 public:
     ClientsList(company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode);
-    ~ClientsList();
+    virtual ~ClientsList();
     void presentar();
     void editar(int);
     void imprimir();
