@@ -102,7 +102,6 @@ BusquedaCanalDelegate::BusquedaCanalDelegate(QWidget *parent)
     _depura("BusquedaCanalDelegate::BusquedaCanalDelegate", 10);
     m_companyact = NULL;
     setEditable(true);
-    setSizeAdjustPolicy(QComboBox::AdjustToContents);
     connect(this, SIGNAL(editTextChanged(const QString &)), this, SLOT(s_editTextChanged(const QString &)));
     _depura("END BusquedaCanalDelegate::BusquedaCanalDelegate", 0);
 }

@@ -57,6 +57,7 @@ SDBCampo *SubForm3::item(int row, int col) {
     return (SDBCampo *) mui_list->item(row, col);
 }
 
+
 void SubForm3::setCurrentItem(int row, int col) {
     mui_list->setCurrentItem( item(row, col));
 }
@@ -200,6 +201,7 @@ bool SubForm3::listadoPijama() {
     _depura("END SubForm3::listadoPijama", 0);
 }
 
+
 /// SubForm3, constructor de la clase base para subformularios.
 SubForm3::SubForm3(QWidget *parent) : BLWidget(parent) {
     _depura("SubForm3::SubForm3", 0);
@@ -226,7 +228,7 @@ SubForm3::SubForm3(QWidget *parent) : BLWidget(parent) {
     mui_list->setSelectionBehavior(QAbstractItemView::SelectRows);
     mui_list->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
     mui_list->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
-    mui_list->setSortingEnabled(FALSE); 
+    mui_list->setSortingEnabled(FALSE);
     /// TODO:Hay un Bug que impide ordenar bien los elementos.
     mui_list->horizontalHeader()->setMovable(TRUE);
     /// Valor por defecto en todos los listados.
@@ -307,6 +309,7 @@ bool SubForm3::sortingEnabled() {
     return m_sorting;
 }
 
+
 /// Establece si el subformulario se ordena mediante un campo orden en la base de datos.
 void SubForm3::setOrdenEnabled(bool sorting) {
     _depura("SubForm3::setOrdenEnabled", 0);
@@ -383,9 +386,9 @@ SDBRecord *SubForm3::newSDBRecord() {
 
         /// Tratamos el tema de la alineacion dependiendo del tipo.
         if (head->tipo() == DBCampo::DBint || head->tipo() == DBCampo::DBnumeric || head->tipo() == DBCampo::DBdate) {
-            camp->setTextAlignment(Qt::AlignRight);
+            camp->setTextAlignment(Qt::AlignRight | Qt::AlignVCenter);
         } else {
-            camp->setTextAlignment(Qt::AlignLeft);
+            camp->setTextAlignment(Qt::AlignLeft | Qt::AlignVCenter);
         } // end if
     } // end for
     _depura("END SubForm3::newSDBRecord", 0);
@@ -780,7 +783,7 @@ void SubForm3::cargar(cursor2 *cur) {
     /// Si est&aacute; definido no aplicamos ninguna ordenaci&oacute;n.
     if (!m_ordenporquery) {
         if (m_orden) {
-	    /// Si estamos con campos de ordenacion ordenamos tras la carga el listado
+        /// Si estamos con campos de ordenacion ordenamos tras la carga el listado
             for (int i = 0; i < m_lcabecera.size(); ++i) {
                 if (m_lcabecera.at(i)->nomcampo() == "orden" + m_tablename)
                     mui_list->sortItems(i);
@@ -835,28 +838,28 @@ SDBRecord *SubForm3::lineaact() {
 SDBRecord *SubForm3::lineaat(int row) {
     _depura("SubForm3::lineaat()", 0, QString::number(row));
     try {
-//	m_procesacambios = FALSE;
-	
-	/// Si la lista no tiene suficientes elementos devolvemos NULL
-	if (mui_list->rowCount() < row || row < 0) {
-		throw -1;
-	} // end if
-	
-	/// Seleccionamos el campo especificado y lo devolvemos.
-	SDBCampo *camp = (SDBCampo*) mui_list->item(row, 0);
-	if (!camp) {
-		throw -1;
-	} // end if
-	SDBRecord *rec = (SDBRecord *) camp->pare();
-	
-	m_procesacambios = TRUE;
-	
-	_depura("END SubForm3::lineaat()", 0);
-	return rec;
+//  m_procesacambios = FALSE;
+
+    /// Si la lista no tiene suficientes elementos devolvemos NULL
+    if (mui_list->rowCount() < row || row < 0) {
+        throw -1;
+    } // end if
+
+    /// Seleccionamos el campo especificado y lo devolvemos.
+    SDBCampo *camp = (SDBCampo*) mui_list->item(row, 0);
+    if (!camp) {
+        throw -1;
+    } // end if
+    SDBRecord *rec = (SDBRecord *) camp->pare();
+
+    m_procesacambios = TRUE;
+
+    _depura("END SubForm3::lineaat()", 0);
+    return rec;
     } catch (...) {
         _depura ("SubForm3::lineaat linea inexistente", 2, QString::number(row));
-	m_procesacambios = TRUE;
-	return NULL;
+    m_procesacambios = TRUE;
+    return NULL;
     }
 }
 
@@ -870,7 +873,7 @@ bool SubForm3::campoCompleto(int row) {
     for (int i = 0; i < mui_list->columnCount(); i++) {
         camp = (SDBCampo *) mui_list->item(row,i);
 
-	/// Si el dato no es valido se sale
+    /// Si el dato no es valido se sale
         if (!camp) return FALSE;
 
         header = m_lcabecera.at(i);
@@ -899,7 +902,7 @@ bool SubForm3::campoCompleto(int row) {
 void SubForm3::on_mui_list_cellChanged(int row, int col) {
     _depura("SubForm3::on_mui_list_cellChanged", 0);
 
-    if(!m_procesacambios) return;
+    if (!m_procesacambios) return;
     m_procesacambios = FALSE;
 
     emit editFinish(row, col);
@@ -952,7 +955,9 @@ int SubForm3::addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QSt
     ("");
     m_lcabecera.append(camp);
     mui_listcolumnas->insertRow(mui_listcolumnas->rowCount());
-    QTableWidgetItem *it = new QTableWidgetItem("");
+    /// 19/07/2007
+    /// Cambiado QTableWidgetItem por QTableWidgetItem2 para usar nuevas funcionalidades.
+    QTableWidgetItem2 *it = new QTableWidgetItem2("");
     it->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsEditable);
 
     if (opt & SHeader::DBNoView) {
@@ -1557,7 +1562,7 @@ void SubForm3::setProcesarCambios(bool proc) {
 */
 bool SubForm3::procesaCambios() {
     _depura("SubForm3::procesaCambios", 0);
-	return m_procesacambios;
+    return m_procesacambios;
     _depura("END SubForm3::procesaCambios", 0);
 }
 

@@ -34,8 +34,8 @@ ListLinAsiento1View::ListLinAsiento1View(QWidget *parent, const char *)
     setDBCampoId("idborrador");
     addSHeader("fecha", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Fecha"));
     addSHeader("codigo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Codigo"));
-    addSHeader("descripcioncuenta", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("Descripcion de la cuenta"));
-    addSHeader("descripcion", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, tr("Descripcion"));
+    addSHeader("descripcioncuenta", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("Nombre de la cuenta"));
+    addSHeader("descripcion", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, tr("Descripcion del apunte"));
     addSHeader("conceptocontable", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, tr("Concepto contable"));
     addSHeader("debe", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Debe"));
     addSHeader("haber", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Haber"));

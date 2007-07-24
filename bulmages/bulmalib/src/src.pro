@@ -49,7 +49,10 @@ HEADERS += postgresiface2.h \
            qdoublespinbox2.h \
 	   blwidget.h \
 	   listado.h \
-           porcentajecarga.h
+           porcentajecarga.h \
+	   busquedafecha2.h
+	   
+	   
 SOURCES += postgresiface2.cpp \
            configuracion.cpp \
            numerocuenta.cpp \
@@ -76,7 +79,10 @@ SOURCES += postgresiface2.cpp \
            qdoublespinbox2.cpp \
 	   blwidget.cpp \
 	   listado.cpp \
-           porcentajecarga.cpp
+           porcentajecarga.cpp \
+	   busquedafecha2.cpp
+	   
+	   
 RESOURCES = ../../bulmages.qrc
 TEMPLATE = lib
 LANGUAGE = C++

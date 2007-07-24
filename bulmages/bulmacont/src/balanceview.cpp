@@ -127,10 +127,10 @@ void BalanceView::presentar() {
     /// ejecuci&oacute;n del programa.
     /// Se genera un &aacute;rbol din&aacute;mico en la memoria RAM que contendra todas
     /// y cada una de las cuentas del PGC con sus saldos.
-    if (sumasysaldosButton->isChecked()) {
+    //if (sumasysaldosButton->isChecked()) {
         /// Balance de Sumas y Saldos.
         presentarSyS(finicial, ffinal, cinicial, cfinal, nivel, idc_coste, jerarquico);
-    } // end if
+    //} // end if
     _depura("END BalanceView::presentar", 0);
 }
 

@@ -94,7 +94,7 @@ listcuentasview1::~listcuentasview1() {
     if (m_modo == EditMode) {
         empresaactual->sacaWindow(this);
     }// end if
-    _depura("END listcuentasview1::~listcuentasview1", 0);
+    _depura("END listcuentasview1::~listcuentasview1", 10);
 }
 
 

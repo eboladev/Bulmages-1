@@ -68,7 +68,7 @@ void SubForm2Bf::on_mui_list_pressedAsterisk(int row, int col) {
     if (camp->nomcampo() != "codigocompletoarticulo") {
         return;
     } // end if
-    
+
     m_procesacambios = FALSE;
 
     ArticuloList *artlist = new ArticuloList((company *) empresaBase(), NULL, 0, ArticuloList::SelectMode);
@@ -458,6 +458,12 @@ QWidget *QSubForm2BfDelegate::createEditor(QWidget *parent, const QStyleOptionVi
         editor->setEmpresaBase((company *)m_subform->empresaBase());
         return editor;
     } else  {
+//        QWidget *it = QItemDelegate::createEditor(parent, option, index);
+//        if (linea->tipo() == DBint) {
+            /// es un numero y se alinea a la derecha.
+//        } else {
+
+//        } // end if
         return QItemDelegate::createEditor(parent, option, index);
     } // end if
     _depura("END QSubForm2BfDelegate::createEditor", 0);

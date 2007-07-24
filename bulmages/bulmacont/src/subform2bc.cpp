@@ -77,6 +77,7 @@ empresa *SubForm2Bc::empresaBase() {
 
 void SubForm2Bc::on_mui_list_pressedAsterisk(int row, int col) {
     _depura ("SubForm2Bc::on_mui_list_pressedAsterisk", 0);
+
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row, col);
     /// Si no es un campo de tipo codigo salimos.
@@ -96,9 +97,10 @@ void SubForm2Bc::on_mui_list_pressedAsterisk(int row, int col) {
     listcuentasview1 *listcuentas = new listcuentasview1((empresa *)empresaBase(), diag, 0, listcuentasview1::SelectMode);
     listcuentas->inicializa();
     connect(listcuentas, SIGNAL(selected(QString)), diag, SLOT(accept()));
+
     diag->exec();
     QString codigo = listcuentas->codcuenta();
-    delete diag;
+    //delete diag;
 
     if (codigo != "") {
         QString query = "SELECT * FROM cuenta WHERE codigo = '" + codigo + "'";
@@ -144,10 +146,22 @@ void SubForm2Bc::on_mui_list_pressedSlash(int row, int col) {
 void SubForm2Bc::on_mui_list_cellChanged(int row, int col) {
     _depura("SubForm2Bc::on_mui_list_cellChanged", 0);
 
+    static bool semaforo = FALSE;
+
+    /// Evita que el metodo se ejecute 2 veces despues de procesar la celda.
+    if (semaforo == FALSE) {
+        semaforo = TRUE;
+    } else {
+        semaforo = FALSE;
+        return;
+    } // end if
+
+
     if (!m_procesacambios) {
         _depura("SubForm2Bf::on_mui_list_cellChanged", 0, QString::number(row) + " " + QString::number(col)+" m_procesacambios es FALSE");
         return;
-    }
+    } // end if
+
     m_procesacambios = FALSE;
 
     /// Disparamos los plugins.
@@ -171,7 +185,7 @@ void SubForm2Bc::on_mui_list_cellChanged(int row, int col) {
 
     /// Si el campo no ha sido cambiado se sale.
     if (!camp->cambiado()) {
-	m_procesacambios = TRUE;
+        m_procesacambios = TRUE;
         SubForm3::on_mui_list_cellChanged(row, col);
         return;
     } // end if
@@ -210,7 +224,7 @@ void SubForm2Bc::on_mui_list_cellChanged(int row, int col) {
         delete cur;
     } // end if
     if (camp->nomcampo() == "fecha") {
-        QString nfecha = normalizafecha( camp->text()).toString("dd/MM/yyyy");
+        QString nfecha = normalizafecha(camp->text()).toString("dd/MM/yyyy");
         rec->setDBvalue("fecha", nfecha);
     } // end if
 
@@ -409,7 +423,9 @@ QWidget *QSubForm2BcDelegate::createEditor(QWidget *parent, const QStyleOptionVi
     _depura("QSubForm2BcDelegate::createEditor", 0, "CurrentColumn: " + QString::number(index.column()));
     _depura("QSubForm2BcDelegate::createEditor", 0, "CurrentRow: " + QString::number(index.row()));
 
-    if (linea->nomcampo() == "desc" + m_subform->tableName()) {
+    if (linea->nomcampo().startsWith("desc")) {
+
+//    if (linea->nomcampo() == "desc" + m_subform->tableName()) {
         QTextEditDelegate *editor = new QTextEditDelegate(parent);
         editor->setObjectName("QTextEditDelegate");
         return editor;
@@ -431,10 +447,18 @@ QWidget *QSubForm2BcDelegate::createEditor(QWidget *parent, const QStyleOptionVi
         editor->setcompany((empresa *)m_subform->empresaBase());
         return editor;
     } else if (linea->nomcampo().startsWith("fecha")) {
-        BusquedaFecha *editor = new BusquedaFecha(parent);
+        BusquedaFecha2 *editor = new BusquedaFecha2(parent);
         return editor;
     } else {
-        return QItemDelegate::createEditor(parent, option, index);
+        /// DBint = 1, DBvarchar = 2, DBdate = 3, DBnumeric = 4, DBboolean
+        //if (linea->tipo() == DBCampo::DBint) {
+            //QSpinBox *editor = new QSpinBox(parent);
+            //return editor;
+            QLineEdit *editor = new QLineEdit(parent);
+            return editor;
+        //} else {
+        //    return QItemDelegate::createEditor(parent, option, index);
+        //} // end if
     } // end if
 }
 
@@ -450,7 +474,9 @@ void QSubForm2BcDelegate::setModelData(QWidget *editor, QAbstractItemModel *mode
 
     SHeader *linea;
     linea = m_subform->cabecera()->at(index.column());
-    if (linea->nomcampo() == "desc" + m_subform->tableName()) {
+    if (linea->nomcampo().startsWith("desc")) {
+
+//    if (linea->nomcampo() == "desc" + m_subform->tableName()) {
         QTextEditDelegate *textedit = qobject_cast<QTextEditDelegate *>(editor);
         model->setData(index, textedit->toPlainText());
         return;
@@ -479,12 +505,25 @@ void QSubForm2BcDelegate::setModelData(QWidget *editor, QAbstractItemModel *mode
         QString value = comboBox->currentText();
         model->setData(index, value);
     } else if (linea->nomcampo().startsWith("fecha")) {
-        BusquedaFecha *comboBox = static_cast<BusquedaFecha*>(editor);
-        QString value = comboBox->text();
+        BusquedaFecha2 *comboBox = static_cast<BusquedaFecha2*>(editor);
+        QString value = ((QLineEdit *)comboBox)->text();
         model->setData(index, value);
     } else {
-        QItemDelegate::setModelData(editor, model, index);
+        /// DBint = 1, DBvarchar = 2, DBdate = 3, DBnumeric = 4, DBboolean
+        //if (linea->tipo() == DBCampo::DBint) {
+        //    QSpinBox *spinBox = static_cast<QSpinBox*>(editor);
+        //    spinBox->interpretText();
+        //    int value = spinBox->value();
+        //    model->setData(index, value);
+        //} else {
+        //    QItemDelegate::setModelData(editor, model, index);
+        //} // end if
+        QLineEdit *lineedit = static_cast<QLineEdit*>(editor);
+        QString value = lineedit->text();
+        model->setData(index, value);
     } // end if
+
+
     _depura("END QSubForm2BcDelegate::setModelData", 0);
 }
 
@@ -495,7 +534,8 @@ void QSubForm2BcDelegate::setEditorData(QWidget *editor, const QModelIndex &inde
     _depura("QSubForm2BcDelegate::setEditorData", 0, "CurrentRow: " + QString::number(index.row()));
     SHeader *linea;
     linea = m_subform->cabecera()->at(index.column());
-    if (linea->nomcampo() == "desc" + m_subform->tableName()) {
+    //if (linea->nomcampo() == "desc" + m_subform->tableName()) {
+    if (linea->nomcampo().startsWith("desc")) {
         QString data = index.model()->data(index, Qt::DisplayRole).toString();
         QTextEditDelegate *textedit = qobject_cast<QTextEditDelegate*>(editor);
         textedit->setText(data);
@@ -509,6 +549,7 @@ void QSubForm2BcDelegate::setEditorData(QWidget *editor, const QModelIndex &inde
         QString value = index.model()->data(index, Qt::DisplayRole).toString();
         BusquedaCuentaDelegate *comboBox = static_cast<BusquedaCuentaDelegate*>(editor);
         comboBox->addItem(value);
+        //comboBox->lineEdit()->setText(value);
         comboBox->lineEdit()->selectAll();
     } else if (linea->nomcampo() == "nomcanal") {
         QString value = index.model()->data(index, Qt::DisplayRole).toString();
@@ -522,11 +563,21 @@ void QSubForm2BcDelegate::setEditorData(QWidget *editor, const QModelIndex &inde
         comboBox->lineEdit()->selectAll();
     } else if (linea->nomcampo().startsWith("fecha")) {
         QString value = index.model()->data(index, Qt::DisplayRole).toString();
-        BusquedaFecha *comboBox = static_cast<BusquedaFecha*>(editor);
-        comboBox->setText(value);
-        comboBox->mui_textoFecha->selectAll();
+        BusquedaFecha2 *bf = static_cast<BusquedaFecha2*>(editor);
+        ((QLineEdit *)bf)->setText(value);
+        ((QLineEdit *)bf)->selectAll();
     } else {
-        QItemDelegate::setEditorData(editor, index);
+        /// DBint = 1, DBvarchar = 2, DBdate = 3, DBnumeric = 4, DBboolean
+        //if (linea->tipo() == DBCampo::DBint) {
+        //    int value = index.model()->data(index, Qt::DisplayRole).toInt();
+        //    QSpinBox *spinBox = static_cast<QSpinBox*>(editor);
+        //    spinBox->setValue(value);
+        //} else {
+        //    QItemDelegate::setEditorData(editor, index);
+        //} // end if
+        QString value = index.model()->data(index, Qt::DisplayRole).toString();
+        QLineEdit *lineedit = static_cast<QLineEdit*>(editor);
+        lineedit->setText(value);
     } // end if
     _depura("END QSubForm2BcDelegate::setEditorData", 0);
 }

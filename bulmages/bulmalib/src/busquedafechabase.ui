@@ -1,6 +1,9 @@
 <ui version="4.0" >
  <class>BusquedaFechaBase</class>
  <widget class="QWidget" name="BusquedaFechaBase" >
+  <property name="windowModality" >
+   <enum>Qt::NonModal</enum>
+  </property>
   <property name="geometry" >
    <rect>
     <x>0</x>
@@ -21,6 +24,9 @@
     <height>22</height>
    </size>
   </property>
+  <property name="focusPolicy" >
+   <enum>Qt::StrongFocus</enum>
+  </property>
   <property name="windowTitle" >
    <string>Form1</string>
   </property>
@@ -38,26 +44,14 @@
     <number>0</number>
    </property>
    <property name="horizontalSpacing" >
-    <number>5</number>
+    <number>0</number>
    </property>
    <property name="verticalSpacing" >
-    <number>5</number>
+    <number>0</number>
    </property>
    <item row="0" column="0" >
     <layout class="QHBoxLayout" >
      <property name="spacing" >
-      <number>5</number>
-     </property>
-     <property name="leftMargin" >
-      <number>0</number>
-     </property>
-     <property name="topMargin" >
-      <number>0</number>
-     </property>
-     <property name="rightMargin" >
-      <number>0</number>
-     </property>
-     <property name="bottomMargin" >
       <number>0</number>
      </property>
      <item>
@@ -68,10 +62,32 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="minimumSize" >
+        <size>
+         <width>0</width>
+         <height>23</height>
+        </size>
+       </property>
        <property name="text" >
         <string/>
        </property>
       </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>5</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
      </item>
      <item>
       <widget class="QToolButton" name="mui_busquedaFecha" >
@@ -92,6 +108,9 @@
          <width>22</width>
          <height>22</height>
         </size>
+       </property>
+       <property name="focusPolicy" >
+        <enum>Qt::StrongFocus</enum>
        </property>
        <property name="text" >
         <string/>

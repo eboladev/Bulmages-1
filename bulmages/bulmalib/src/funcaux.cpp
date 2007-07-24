@@ -372,12 +372,12 @@ QString  num2texto(QString numero, QString moneda, QString singular)
     if(numero == "0"){
         return "cero "+moneda+" 00/100";
     }
-    
+
     //en caso que sea un peso, pues igual que el 0 aparte que no muestre el plural "pesos"
     if(numero == "1"){
         return "un "+singular+" 00/100";
     }
-    
+
     QMap<QString , QString > numeros;
     //numeros["unidad"][0][0]="cero";
     numeros["unidad10"]="un";
@@ -469,10 +469,10 @@ QString  num2texto(QString numero, QString moneda, QString singular)
     QString ones = "";
     QString cpostfijos = "";
     while (breakdown_key.toDouble() > 0.5) {
-//	_depura(num_string, 2);
+//  _depura(num_string, 2);
         breakdown["entero"+breakdown_key+"number"]= /*floor(*/ QString::number(entero_breakdown.toLongLong() / breakdown_key.toLongLong());
 
-//	_depura(breakdown["entero"+breakdown_key+"number"], 2);
+//  _depura(breakdown["entero"+breakdown_key+"number"], 2);
 
         //echo " ".$breakdown["entero"][$breakdown_key]["number"]."<br>";
         if (breakdown["entero"+breakdown_key+"number"].toLongLong() > 0) {
@@ -540,7 +540,7 @@ QString  num2texto(QString numero, QString moneda, QString singular)
                     num_string += numeros["unidad"+ones+"0"];
                 }
             }
-            
+
             cpostfijos = "-1";
             if (breakdown["entero"+breakdown_key+"number"].toLongLong() > 1) {
                 cpostfijos = "1";

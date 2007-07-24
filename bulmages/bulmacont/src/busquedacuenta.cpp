@@ -260,8 +260,6 @@ BusquedaCuentaDelegate::BusquedaCuentaDelegate(QWidget *parent)
     m_companyact = NULL;
     m_cursorcombo = NULL;
     setEditable(true);
-    setSizeAdjustPolicy(QComboBox::AdjustToContents);
-//    setCompleter(0);
     connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
     connect(this, SIGNAL(editTextChanged(const QString &)), this, SLOT(s_editTextChanged(const QString &)));
     _depura("END BusquedaCuentaDelegate::BusquedaCuentaDelegate", 0);

@@ -99,7 +99,6 @@ BusquedaCCosteDelegate::BusquedaCCosteDelegate(QWidget *parent)
     _depura("BusquedaCCosteDelegate::BusquedaCCosteDelegate", 10);
     m_companyact = NULL;
     setEditable(true);
-    setSizeAdjustPolicy(QComboBox::AdjustToContents);
     connect(this, SIGNAL(editTextChanged(const QString &)), this, SLOT(s_editTextChanged(const QString &)));
     _depura("END BusquedaCCosteDelegate::BusquedaCCosteDelegate", 0);
 }
@@ -140,7 +139,7 @@ void BusquedaCCosteDelegate::s_editTextChanged(const QString &cod) {
     /// coincidan con el texto escrito para poder elegirlo.
     while (!m_cursorcombo->eof()) {
         //addItem(m_cursorcombo->valor("codigo") + ".-" + m_cursorcombo->valor("descripcion"));
-	addItem(m_cursorcombo->valor("nombre"));
+    addItem(m_cursorcombo->valor("nombre"));
         m_cursorcombo->siguienteregistro();
     }
     delete m_cursorcombo;
