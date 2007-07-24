@@ -35,7 +35,7 @@ public:
     enum dbrestrict {DBNothing = 0, DBNotNull = 1, DBPrimaryKey = 2,
                      DBNoSave = 4, DBAuto = 8, DBDupPrimaryKey = 16, DBRequired = 32, DBNoLoad = 64};
 
-protected:
+private:
     QString m_nomcampo;
     QString m_valorcampo;
     QString m_nompresentacion;

@@ -39,10 +39,8 @@ class abreempresaview : public QDialog, public Ui_abreempresabase {
   Q_OBJECT
 
 public:
-  /// Establece el modo destructivo.
-  void mododestructivo();
-  /// Establece el modo no destructivo.
-  void modonodestructivo();
+  /// Asigna el modo de la ventana a destructivo (true) o no destructivo (false)
+  void setModoDestructivo(bool);
   /// Inicia las variables m_tipo y m_tipoempresa y carga el archivo para hacer la
   /// presentaci&oacute;n.
   abreempresaview(QWidget *parent = 0, QString tipo = 0, const char *name = 0, bool modal = true);
@@ -53,6 +51,8 @@ public:
   QString nomEmpresa();
   /// Devuelve el tipo de empresa que se ha seleccionado.
   QString tipoEmpresa();
+  /// Devuelve si se est&aacute; en modo destructivo o no.
+  bool modoDestructivo();
 
 public slots:
   /// Este SLOT se activa al seleccionar una compa&ntilde;ia y pulsar INTRO.
@@ -84,6 +84,13 @@ private:
   void insertCompany(QString, QString, QString, QString);
   void preparamui_empresas();
   void trataEmpresa(QString, QFile *);
+
+  /// Asigna el nombre de la base de datos seleccionada.
+  void setNomDB(QString);
+  /// Asigna el nombre de la empresa seleccionada.
+  void setNomEmpresa(QString);
+  /// Asigna el tipo de empresa que se ha seleccionado.
+  void setTipoEmpresa(QString);
 
 private slots:
   /// Al pulsar el bot&oacute;n de cancelar se aborta la ejecuci&oacute;n del programa.

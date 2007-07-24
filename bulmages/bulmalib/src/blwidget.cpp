@@ -29,6 +29,8 @@ PEmpresaBase::PEmpresaBase() {
 }
 
 PEmpresaBase::~PEmpresaBase() {
+  if(m_empresaBase != NULL)
+    delete m_empresaBase;
 }
 
 void PEmpresaBase::setEmpresaBase(EmpresaBase *emp) {
