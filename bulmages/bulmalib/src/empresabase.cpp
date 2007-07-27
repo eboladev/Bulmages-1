@@ -52,11 +52,15 @@ int EmpresaBase::meteWindow(QString nom, QObject *obj, bool compdup) {
 
 
 int EmpresaBase::seleccionaWindow(QString nom, QObject *obj) {
+    _depura("EmpresaBase::seleccionaWindow", 0);
+    _depura("END EmpresaBase::seleccionaWindow", 0);
     return m_listventanas->seleccionaWindow(nom, obj);
 }
 
 
 int EmpresaBase::deSeleccionaWindow() {
+    _depura("EmpresaBase::deSeleccionaWindow", 0);
+    _depura("END EmpresaBase::deSeleccionaWindow", 0);
     return m_listventanas->deSeleccionaWindow();
 }
 

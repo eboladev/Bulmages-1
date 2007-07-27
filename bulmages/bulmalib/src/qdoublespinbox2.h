@@ -25,6 +25,8 @@
 #include <QDoubleSpinBox>
 #include <QEvent>
 #include <QKeyEvent>
+#include <QAbstractSpinBox>
+#include <QLineEdit>
 
 #include "funcaux.h"
 
@@ -38,7 +40,6 @@ public:
     void setValue(double valor);
     QString const text();
     virtual bool eventFilter(QObject *obj, QEvent *event);
-
 };
 
 #endif

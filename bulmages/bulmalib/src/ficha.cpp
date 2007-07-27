@@ -1,4 +1,4 @@
-/***************************************************************************
+ /***************************************************************************
  *   Copyright (C) 2006 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
@@ -20,16 +20,18 @@
 
 #include "ficha.h"
 
+
 Ficha::Ficha(QWidget *parent, Qt::WFlags f, edmode modo) : BLWidget(parent, f), dialogChanges(this) {
     _depura("Ficha::Ficha", 0);
-    m_modo=modo;
+    m_modo = modo;
     dialogChanges_cargaInicial();
     _depura("END Ficha::Ficha", 0);
 }
 
+
 Ficha::Ficha(EmpresaBase *emp, QWidget *parent, Qt::WFlags f, edmode modo) : BLWidget(emp, parent, f), dialogChanges(this) {
     _depura("Ficha::Ficha", 0);
-    m_modo=modo;
+    m_modo = modo;
     dialogChanges_cargaInicial();
     _depura("END Ficha::Ficha", 0);
 }
@@ -40,6 +42,7 @@ Ficha::~Ficha() {
     sacaWindow();
     _depura("END Ficha::~Ficha", 0);
 }
+
 
 void Ficha::setModoConsulta() {
     m_modo = SelectMode;
@@ -147,17 +150,22 @@ void Ficha::closeEvent(QCloseEvent *e) {
     _depura("END Ficha::closeEvent", 0);
 }
 
+
 int Ficha::sacaWindow() {
     _depura("Ficha::sacaWindow", 0);
-    empresaBase()->sacaWindow(this);
+    if (empresaBase() != NULL) {
+        empresaBase()->sacaWindow(this);
+    } // end if
     _depura("END Ficha::sacaWindow", 0);
     return 0;
 }
+
 
 void Ficha::meteWindow(QString nom, QObject *obj, bool compdup) {
     _depura("Ficha::meteWindow", 0);
     if (empresaBase() != NULL) {
         empresaBase()->meteWindow(nom, obj, compdup);
-    }
+    } // end if
     _depura("END Ficha::meteWindow", 0);
 }
+

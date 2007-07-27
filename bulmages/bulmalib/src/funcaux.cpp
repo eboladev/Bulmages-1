@@ -171,7 +171,7 @@ QDate normalizafecha(QString fechaintro) {
         M = QDate::currentDate().month();
         y = QDate::currentDate().year();
     } // end switch
-    if (!fecharesult.setYMD(y, M, d))
+    if (!fecharesult.setDate(y, M, d))
         fecharesult = QDate::currentDate();
     return (fecharesult);
 }

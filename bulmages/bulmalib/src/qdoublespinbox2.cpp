@@ -22,7 +22,9 @@
 
 
 QDoubleSpinBox2::QDoubleSpinBox2(QWidget *parent) : QDoubleSpinBox(parent) {
+    installEventFilter(this);
     setAlignment(Qt::AlignRight);
+    setButtonSymbols(QAbstractSpinBox::NoButtons);
 }
 
 
@@ -45,21 +47,25 @@ void QDoubleSpinBox2::setValue(double valor) {
 
 
 bool QDoubleSpinBox2::eventFilter(QObject *obj, QEvent *event) {
-    /*
-    /// Si es un release de tecla se hace la funcionalidad especificada.
-    if (event->type() == QEvent::KeyPress || event->type() == QEvent::KeyRelease) {
-        _depura("se pulsa una tecla", 2);
+    /// Si es una pulsacion o release de tecla se hace la funcionalidad especificada.
+    if (event->type() == QEvent::KeyPress) {
         QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
         int key = keyEvent->key();
         Qt::KeyboardModifiers mod = keyEvent->modifiers();
         switch (key) {
             case Qt::Key_Period:
-                _depura("estoy", 2);
- //               QCoreApplication::sendEvent(obj, new QKeyEvent(QEvent::KeyPress, Qt::Key_Comma, 0, 0));
+                /// Se pone esto para que funcione el teclado numerico la introduccion del 'punto'
+                /// como separador decimal.
+                QLineEdit *linea = QAbstractSpinBox::lineEdit();
+                /// Comprueba que en el texto no haya ya una 'coma'.
+                QString strLinea = linea->text();
+                if (!strLinea.contains(",", Qt::CaseInsensitive)) {
+                    linea->setText(linea->text() + ",");
+                } // end if
                 return TRUE;
         } // end switch
     } // end if
-    */
+
     return QDoubleSpinBox::eventFilter(obj, event);
 }
 

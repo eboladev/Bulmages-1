@@ -357,9 +357,9 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
     QDate fechafi(2999, 12, 31);
     int orden = 0;
     if (m_fInicial != "")
-        fechain.setYMD(m_fInicial.mid(6, 4).toInt(), m_fInicial.mid(3, 2).toInt(), m_fInicial.mid(0, 2).toInt());
+        fechain.setDate(m_fInicial.mid(6, 4).toInt(), m_fInicial.mid(3, 2).toInt(), m_fInicial.mid(0, 2).toInt());
     if (m_fFinal != "")
-        fechafi.setYMD(m_fFinal.mid(6, 4).toInt(), m_fFinal.mid(3, 2).toInt(), m_fFinal.mid(0, 2).toInt());
+        fechafi.setDate(m_fFinal.mid(6, 4).toInt(), m_fFinal.mid(3, 2).toInt(), m_fFinal.mid(0, 2).toInt());
     /// Subcuentas.
     QTextStream stream(&subcuentas);
     while (!subcuentas.atEnd()) {
@@ -429,7 +429,7 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
         QString asiento = line.mid(pos, LEN_ASIEN).trimmed();
         pos += LEN_ASIEN;
         QString fecha = line.mid(pos, LEN_FECHA).trimmed();
-        fecha1.setYMD(fecha.mid(0, 4).toInt(), fecha.mid(4, 2).toInt(), fecha.mid(6, 2).toInt());
+        fecha1.setDate(fecha.mid(0, 4).toInt(), fecha.mid(4, 2).toInt(), fecha.mid(6, 2).toInt());
         fecha = fecha.mid(0, 4) + "-" + fecha.mid(4, 2) + "-" + fecha.mid(6, 2);
         pos += LEN_FECHA;
         QString subcta = line.mid(pos, LEN_SUBCTA).trimmed();
