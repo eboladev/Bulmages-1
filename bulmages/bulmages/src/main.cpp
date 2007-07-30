@@ -28,7 +28,7 @@
 #include "logpass.h"
 #include "postgresiface2.h"
 #include "funcaux.h"
-
+#include "plugins.h"
 
 /// Instancia de la aplicacion. Usada en algunos casos para acceder a determinadas
 /// funcionalidades como la traduccion.
@@ -45,6 +45,9 @@ int main(int argc, char **argv) {
     QApplication2 a(argc, argv);
     Q_INIT_RESOURCE(bulmages);
     theApp = &a;
+
+    /// Preparamos el sistema de plugins.
+    g_plugins = new Plugins();
 
     /// Definimos la codificaci&oacute;n a Unicode.
     QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
@@ -72,6 +75,13 @@ int main(int argc, char **argv) {
         traductor->load(archivo.toAscii().constData(), confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
     } // end if
     a.installTranslator(traductor);
+
+    /// Hacemos la carga de las librerias que contienen los plugins.
+    g_plugins->cargaLibs(confpr->valor(CONF_PLUGINS_BULMAGES));
+
+    /// Disparamos los plugins con entryPoint.
+    g_plugins->lanza("entryPoint", theApp);
+
 
     BSelector *bw = new BSelector();
     bw->setWindowTitle(theApp->translate("main", "Selector de BulmaGes"));

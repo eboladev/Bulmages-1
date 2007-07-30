@@ -24,6 +24,7 @@
 #include "ui_selectorbase.h"
 #include "bselector.h"
 #include "funcaux.h"
+#include "plugins.h"
 
 #ifndef WIN32
 #include <unistd.h>
@@ -36,14 +37,15 @@ BSelector::BSelector(QWidget *parent)
         : QMainWindow(parent) {
     setupUi(this);
 
+    g_plugins->lanza("BSelector_BSelector", this);
+
     QObject::connect(seleccionaempresa, SIGNAL(clicked()), this, SLOT(seleccionaempresa_clicked()));
     QObject::connect(m_bulmatpv, SIGNAL(clicked()), this, SLOT(m_bulmatpv_clicked()));
     QObject::connect(m_bulmacont, SIGNAL(clicked()), this, SLOT(contabilidad_clicked()));
     QObject::connect(m_galopin, SIGNAL(clicked()), this, SLOT(produccion_clicked()));
     QObject::connect(m_bulmafact, SIGNAL(clicked()), this, SLOT(m_bulmafact_clicked()));
     QObject::connect(configura, SIGNAL(clicked()), this, SLOT(configura_clicked()));
-    /*    QObject::connect(m_bcontaweb, SIGNAL(clicked()), this, SLOT(m_bcontaweb_clicked()));
-    */
+
 
     /// Al crear el selector, todos los modulos estan cerrados = NULL
     m_tipoempresa = "";
@@ -61,6 +63,7 @@ BSelector::BSelector(QWidget *parent)
     if (!f3.exists())
         m_galopin->setEnabled(FALSE);
     QFile f4("/var/www/bcontaweb");
+    g_plugins->lanza("BSelector_BSelector_Post", this);
 }
 
 
@@ -88,7 +91,7 @@ void BSelector::on_m_iglues_clicked() {
 void BSelector::m_bulmatpv_clicked() {
     if (m_tipoempresa != "BulmaFact") {
         abreempresaview *empcont = new abreempresaview(0, "BulmaFact", "abreempresa", true);
-        empcont->modonodestructivo();
+        empcont->setModoDestructivo(FALSE);
         empcont->exec();
         m_empresabd = empcont->nomDB();
     } // end while
@@ -103,7 +106,7 @@ void BSelector::m_bulmatpv_clicked() {
 /// Boton cambio de empresa y/o usuario.
 void BSelector::seleccionaempresa_clicked() {
     abreempresaview *empcont = new abreempresaview(0, "", "abreempresa", true);
-    empcont->modonodestructivo();
+    empcont->setModoDestructivo(FALSE);
     empcont->exec();
     m_empresabd = empcont->nomDB();
     /// Cambiamos el nombre en la pantalla.
@@ -117,7 +120,7 @@ void BSelector::seleccionaempresa_clicked() {
 void BSelector::contabilidad_clicked() {
     if (m_tipoempresa != "BulmaCont") {
         abreempresaview *empcont = new abreempresaview(0, "BulmaCont", "abreempresa", true);
-        empcont->modonodestructivo();
+        empcont->setModoDestructivo(FALSE);
         empcont->exec();
         m_empresabd = empcont->nomDB();
     } // end if
@@ -131,6 +134,8 @@ void BSelector::contabilidad_clicked() {
 
 /// Boton para entrar en el modulo de PRODUCCION.
 void BSelector::produccion_clicked() {
+    int res = g_plugins->lanza("BSelector_produccion_clicked", this);
+    if (res) return;
     /// Al crear un nuevo modulo, le paso como primer parametro un puntero al selector.
     /// De este modo puedo acceder facilmente al selector desde el modulo.
     QString cadena;
@@ -141,6 +146,8 @@ void BSelector::produccion_clicked() {
 
 /// Boton para entrar en el modulo de STOCKS Y ALMACENES.º
 void BSelector::on_mui_info_clicked() {
+    int res = g_plugins->lanza("BSelector_on_mui_info_clicked", this);
+    if (res) return;
     QString cadena;
     cadena = confpr->valor(CONF_NAVEGADOR) + " http://www.iglues.org/wiki &";
     system(cadena.toAscii().constData());
@@ -152,7 +159,7 @@ void BSelector::m_bulmafact_clicked() {
     _depura("BSelector::m_bulmafact_clicked", 0);
     if (m_tipoempresa != "BulmaFact" ) {
         abreempresaview *empcont = new abreempresaview(0, "BulmaFact", "abreempresa", true);
-        empcont->modonodestructivo();
+        empcont->setModoDestructivo(FALSE);
         empcont->exec();
         m_empresabd = empcont->nomDB();
     } // end while
