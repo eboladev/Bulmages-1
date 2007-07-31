@@ -9,11 +9,13 @@
     <x>0</x>
     <y>0</y>
     <width>150</width>
-    <height>30</height>
+    <height>40</height>
    </rect>
   </property>
   <property name="sizePolicy" >
-   <sizepolicy vsizetype="Preferred" hsizetype="Expanding" >
+   <sizepolicy>
+    <hsizetype>0</hsizetype>
+    <vsizetype>0</vsizetype>
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -31,33 +33,26 @@
    <string>Form1</string>
   </property>
   <layout class="QGridLayout" >
-   <property name="leftMargin" >
+   <property name="margin" >
     <number>0</number>
    </property>
-   <property name="topMargin" >
-    <number>0</number>
-   </property>
-   <property name="rightMargin" >
-    <number>0</number>
-   </property>
-   <property name="bottomMargin" >
-    <number>0</number>
-   </property>
-   <property name="horizontalSpacing" >
-    <number>0</number>
-   </property>
-   <property name="verticalSpacing" >
+   <property name="spacing" >
     <number>0</number>
    </property>
    <item row="0" column="0" >
     <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
      <property name="spacing" >
       <number>0</number>
      </property>
      <item>
       <widget class="QLineEdit" name="mui_textoFecha" >
        <property name="sizePolicy" >
-        <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+        <sizepolicy>
+         <hsizetype>0</hsizetype>
+         <vsizetype>0</vsizetype>
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -92,7 +87,9 @@
      <item>
       <widget class="QToolButton" name="mui_busquedaFecha" >
        <property name="sizePolicy" >
-        <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+        <sizepolicy>
+         <hsizetype>0</hsizetype>
+         <vsizetype>0</vsizetype>
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>

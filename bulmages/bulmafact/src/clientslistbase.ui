@@ -20,36 +20,18 @@
    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_clientes_listado.48x48.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>5</number>
+   </property>
    <property name="spacing" >
-    <number>5</number>
-   </property>
-   <property name="leftMargin" >
-    <number>5</number>
-   </property>
-   <property name="topMargin" >
-    <number>5</number>
-   </property>
-   <property name="rightMargin" >
-    <number>5</number>
-   </property>
-   <property name="bottomMargin" >
     <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>5</number>
+     </property>
      <property name="spacing" >
-      <number>0</number>
-     </property>
-     <property name="leftMargin" >
-      <number>0</number>
-     </property>
-     <property name="topMargin" >
-      <number>0</number>
-     </property>
-     <property name="rightMargin" >
-      <number>0</number>
-     </property>
-     <property name="bottomMargin" >
       <number>0</number>
      </property>
      <item>
@@ -71,19 +53,10 @@
         <enum>QFrame::Raised</enum>
        </property>
        <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>5</number>
+        </property>
         <property name="spacing" >
-         <number>5</number>
-        </property>
-        <property name="leftMargin" >
-         <number>5</number>
-        </property>
-        <property name="topMargin" >
-         <number>5</number>
-        </property>
-        <property name="rightMargin" >
-         <number>5</number>
-        </property>
-        <property name="bottomMargin" >
          <number>5</number>
         </property>
         <item>
@@ -293,7 +266,9 @@
         <item>
          <widget class="QFrame" name="mui_plugbotones" >
           <property name="sizePolicy" >
-           <sizepolicy vsizetype="Preferred" hsizetype="Minimum" >
+           <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -356,19 +331,10 @@
       <enum>QFrame::Raised</enum>
      </property>
      <layout class="QHBoxLayout" >
+      <property name="margin" >
+       <number>5</number>
+      </property>
       <property name="spacing" >
-       <number>5</number>
-      </property>
-      <property name="leftMargin" >
-       <number>5</number>
-      </property>
-      <property name="topMargin" >
-       <number>5</number>
-      </property>
-      <property name="rightMargin" >
-       <number>5</number>
-      </property>
-      <property name="bottomMargin" >
        <number>5</number>
       </property>
       <item>

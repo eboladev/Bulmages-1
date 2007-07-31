@@ -5,50 +5,34 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>186</width>
-    <height>69</height>
+    <width>193</width>
+    <height>88</height>
    </rect>
   </property>
   <property name="windowTitle" >
    <string>Form1</string>
   </property>
   <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>0</number>
+   </property>
    <property name="spacing" >
-    <number>5</number>
-   </property>
-   <property name="leftMargin" >
-    <number>0</number>
-   </property>
-   <property name="topMargin" >
-    <number>0</number>
-   </property>
-   <property name="rightMargin" >
-    <number>0</number>
-   </property>
-   <property name="bottomMargin" >
     <number>0</number>
    </property>
    <item>
     <layout class="QVBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
      <property name="spacing" >
-      <number>0</number>
-     </property>
-     <property name="leftMargin" >
-      <number>0</number>
-     </property>
-     <property name="topMargin" >
-      <number>0</number>
-     </property>
-     <property name="rightMargin" >
-      <number>0</number>
-     </property>
-     <property name="bottomMargin" >
       <number>0</number>
      </property>
      <item>
       <widget class="QLabel" name="mui_labelCliente" >
        <property name="sizePolicy" >
-        <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+        <sizepolicy>
+         <hsizetype>0</hsizetype>
+         <vsizetype>0</vsizetype>
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -66,25 +50,18 @@
      </item>
      <item>
       <layout class="QHBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
        <property name="spacing" >
         <number>5</number>
-       </property>
-       <property name="leftMargin" >
-        <number>0</number>
-       </property>
-       <property name="topMargin" >
-        <number>0</number>
-       </property>
-       <property name="rightMargin" >
-        <number>0</number>
-       </property>
-       <property name="bottomMargin" >
-        <number>0</number>
        </property>
        <item>
         <widget class="QLineEdit" name="m_cifcliente" >
          <property name="sizePolicy" >
-          <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+          <sizepolicy>
+           <hsizetype>7</hsizetype>
+           <vsizetype>0</vsizetype>
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -135,7 +112,9 @@
    <item>
     <widget class="QLabel" name="m_nomcliente" >
      <property name="sizePolicy" >
-      <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
+      <sizepolicy>
+       <hsizetype>7</hsizetype>
+       <vsizetype>0</vsizetype>
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>

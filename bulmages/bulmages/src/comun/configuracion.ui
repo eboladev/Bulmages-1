@@ -13,20 +13,11 @@
    <string>Configuración</string>
   </property>
   <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>5</number>
+   </property>
    <property name="spacing" >
-    <number>6</number>
-   </property>
-   <property name="leftMargin" >
-    <number>9</number>
-   </property>
-   <property name="topMargin" >
-    <number>9</number>
-   </property>
-   <property name="rightMargin" >
-    <number>9</number>
-   </property>
-   <property name="bottomMargin" >
-    <number>9</number>
+    <number>5</number>
    </property>
    <item>
     <widget class="QTabWidget" name="m_tab" >
@@ -44,37 +35,19 @@
        <string>B&amp;ulmaCont</string>
       </attribute>
       <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>11</number>
+       </property>
        <property name="spacing" >
         <number>6</number>
        </property>
-       <property name="leftMargin" >
-        <number>9</number>
-       </property>
-       <property name="topMargin" >
-        <number>9</number>
-       </property>
-       <property name="rightMargin" >
-        <number>9</number>
-       </property>
-       <property name="bottomMargin" >
-        <number>9</number>
-       </property>
        <item>
         <layout class="QHBoxLayout" >
+         <property name="margin" >
+          <number>11</number>
+         </property>
          <property name="spacing" >
           <number>6</number>
-         </property>
-         <property name="leftMargin" >
-          <number>0</number>
-         </property>
-         <property name="topMargin" >
-          <number>0</number>
-         </property>
-         <property name="rightMargin" >
-          <number>0</number>
-         </property>
-         <property name="bottomMargin" >
-          <number>0</number>
          </property>
          <item>
           <widget class="QLineEdit" name="lineEditA_1" >
@@ -112,20 +85,11 @@
        </item>
        <item>
         <layout class="QHBoxLayout" >
+         <property name="margin" >
+          <number>11</number>
+         </property>
          <property name="spacing" >
           <number>6</number>
-         </property>
-         <property name="leftMargin" >
-          <number>0</number>
-         </property>
-         <property name="topMargin" >
-          <number>0</number>
-         </property>
-         <property name="rightMargin" >
-          <number>0</number>
-         </property>
-         <property name="bottomMargin" >
-          <number>0</number>
          </property>
          <item>
           <widget class="QPushButton" name="m_backup" >
@@ -153,20 +117,11 @@
        </item>
        <item>
         <layout class="QHBoxLayout" >
+         <property name="margin" >
+          <number>11</number>
+         </property>
          <property name="spacing" >
           <number>6</number>
-         </property>
-         <property name="leftMargin" >
-          <number>0</number>
-         </property>
-         <property name="topMargin" >
-          <number>0</number>
-         </property>
-         <property name="rightMargin" >
-          <number>0</number>
-         </property>
-         <property name="bottomMargin" >
-          <number>0</number>
          </property>
          <item>
           <widget class="QPushButton" name="pushButtonA_1" >
@@ -226,37 +181,19 @@
        <string>Bulma&amp;Fact</string>
       </attribute>
       <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>11</number>
+       </property>
        <property name="spacing" >
         <number>6</number>
        </property>
-       <property name="leftMargin" >
-        <number>9</number>
-       </property>
-       <property name="topMargin" >
-        <number>9</number>
-       </property>
-       <property name="rightMargin" >
-        <number>9</number>
-       </property>
-       <property name="bottomMargin" >
-        <number>9</number>
-       </property>
        <item>
         <layout class="QHBoxLayout" >
+         <property name="margin" >
+          <number>11</number>
+         </property>
          <property name="spacing" >
           <number>6</number>
-         </property>
-         <property name="leftMargin" >
-          <number>0</number>
-         </property>
-         <property name="topMargin" >
-          <number>0</number>
-         </property>
-         <property name="rightMargin" >
-          <number>0</number>
-         </property>
-         <property name="bottomMargin" >
-          <number>0</number>
          </property>
          <item>
           <widget class="QLineEdit" name="lineEditA_1_2" >
@@ -294,20 +231,11 @@
        </item>
        <item>
         <layout class="QHBoxLayout" >
+         <property name="margin" >
+          <number>11</number>
+         </property>
          <property name="spacing" >
           <number>6</number>
-         </property>
-         <property name="leftMargin" >
-          <number>0</number>
-         </property>
-         <property name="topMargin" >
-          <number>0</number>
-         </property>
-         <property name="rightMargin" >
-          <number>0</number>
-         </property>
-         <property name="bottomMargin" >
-          <number>0</number>
          </property>
          <item>
           <widget class="QPushButton" name="m_backup_2" >
@@ -335,20 +263,11 @@
        </item>
        <item>
         <layout class="QHBoxLayout" >
+         <property name="margin" >
+          <number>11</number>
+         </property>
          <property name="spacing" >
           <number>6</number>
-         </property>
-         <property name="leftMargin" >
-          <number>0</number>
-         </property>
-         <property name="topMargin" >
-          <number>0</number>
-         </property>
-         <property name="rightMargin" >
-          <number>0</number>
-         </property>
-         <property name="bottomMargin" >
-          <number>0</number>
          </property>
          <item>
           <widget class="QPushButton" name="pushButtonA_1_2" >
@@ -411,20 +330,11 @@
        <string>Parametros</string>
       </attribute>
       <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>11</number>
+       </property>
        <property name="spacing" >
         <number>6</number>
-       </property>
-       <property name="leftMargin" >
-        <number>9</number>
-       </property>
-       <property name="topMargin" >
-        <number>9</number>
-       </property>
-       <property name="rightMargin" >
-        <number>9</number>
-       </property>
-       <property name="bottomMargin" >
-        <number>9</number>
        </property>
        <item>
         <widget class="QTableWidget" name="m_tconfiguracion" >
@@ -467,20 +377,11 @@
         <enum>QFrame::Raised</enum>
        </property>
        <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>11</number>
+        </property>
         <property name="spacing" >
          <number>6</number>
-        </property>
-        <property name="leftMargin" >
-         <number>9</number>
-        </property>
-        <property name="topMargin" >
-         <number>9</number>
-        </property>
-        <property name="rightMargin" >
-         <number>9</number>
-        </property>
-        <property name="bottomMargin" >
-         <number>9</number>
         </property>
         <item>
          <widget class="QToolButton" name="toolButton" >
@@ -576,25 +477,18 @@
         <enum>QFrame::Raised</enum>
        </property>
        <layout class="QVBoxLayout" >
+        <property name="margin" >
+         <number>11</number>
+        </property>
         <property name="spacing" >
          <number>6</number>
-        </property>
-        <property name="leftMargin" >
-         <number>9</number>
-        </property>
-        <property name="topMargin" >
-         <number>9</number>
-        </property>
-        <property name="rightMargin" >
-         <number>9</number>
-        </property>
-        <property name="bottomMargin" >
-         <number>9</number>
         </property>
         <item>
          <widget class="QToolButton" name="toolButton_6" >
           <property name="sizePolicy" >
-           <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
+           <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -619,7 +513,9 @@
         <item>
          <widget class="QToolButton" name="toolButton_7" >
           <property name="sizePolicy" >
-           <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
+           <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -644,7 +540,9 @@
         <item>
          <widget class="QToolButton" name="toolButton_8" >
           <property name="sizePolicy" >
-           <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
+           <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -669,7 +567,9 @@
         <item>
          <widget class="QToolButton" name="toolButton_5" >
           <property name="sizePolicy" >
-           <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
+           <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -694,7 +594,9 @@
         <item>
          <widget class="QToolButton" name="toolButton_9" >
           <property name="sizePolicy" >
-           <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
+           <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -734,37 +636,19 @@
         <enum>QFrame::Raised</enum>
        </property>
        <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>11</number>
+        </property>
         <property name="spacing" >
          <number>6</number>
         </property>
-        <property name="leftMargin" >
-         <number>9</number>
-        </property>
-        <property name="topMargin" >
-         <number>9</number>
-        </property>
-        <property name="rightMargin" >
-         <number>9</number>
-        </property>
-        <property name="bottomMargin" >
-         <number>9</number>
-        </property>
         <item>
          <layout class="QVBoxLayout" >
+          <property name="margin" >
+           <number>11</number>
+          </property>
           <property name="spacing" >
            <number>6</number>
-          </property>
-          <property name="leftMargin" >
-           <number>0</number>
-          </property>
-          <property name="topMargin" >
-           <number>0</number>
-          </property>
-          <property name="rightMargin" >
-           <number>0</number>
-          </property>
-          <property name="bottomMargin" >
-           <number>0</number>
           </property>
           <item>
            <widget class="QLabel" name="label" >
@@ -784,20 +668,11 @@
         </item>
         <item>
          <layout class="QVBoxLayout" >
+          <property name="margin" >
+           <number>11</number>
+          </property>
           <property name="spacing" >
            <number>6</number>
-          </property>
-          <property name="leftMargin" >
-           <number>0</number>
-          </property>
-          <property name="topMargin" >
-           <number>0</number>
-          </property>
-          <property name="rightMargin" >
-           <number>0</number>
-          </property>
-          <property name="bottomMargin" >
-           <number>0</number>
           </property>
           <item>
            <widget class="QLabel" name="label_2" >
@@ -822,20 +697,11 @@
    </item>
    <item>
     <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>11</number>
+     </property>
      <property name="spacing" >
       <number>6</number>
-     </property>
-     <property name="leftMargin" >
-      <number>0</number>
-     </property>
-     <property name="topMargin" >
-      <number>0</number>
-     </property>
-     <property name="rightMargin" >
-      <number>0</number>
-     </property>
-     <property name="bottomMargin" >
-      <number>0</number>
      </property>
      <item>
       <spacer>
