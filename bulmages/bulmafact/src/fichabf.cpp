@@ -249,7 +249,7 @@ void FichaBf::generaRML() {
 
         fitxersortidatxt += "<tr>\n";
         fitxersortidatxt += "    <td>" + XMLProtect(linea->DBvalue("codigocompletoarticulo")) + "</td>\n";
-        fitxersortidatxt += "    <td><para>" + XMLProtect(linea->DBvalue("desc" + m_listalineas->tableName())) + "</para></td>\n";
+        fitxersortidatxt += "    <td><para>" + XMLProtect(linea->DBvalue("desc" + m_listalineas->tableName())).replace(QChar('\n'), "</para><para>") + "</para></td>\n";
         fitxersortidatxt += "    <td>" + l.sprintf("%s", XMLProtect(linea->DBvalue("cant" + m_listalineas->tableName())).toAscii().constData()) + "</td>\n";
         fitxersortidatxt += "    <td>" + l.sprintf("%s", XMLProtect(linea->DBvalue("pvp" + m_listalineas->tableName())).toAscii().constData()) + "</td>\n";
         fitxersortidatxt += "    <td>" + l.sprintf("%s", XMLProtect(linea->DBvalue("descuento" + m_listalineas->tableName())).toAscii().constData()) + " %</td>\n";

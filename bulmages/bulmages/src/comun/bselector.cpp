@@ -174,6 +174,7 @@ void BSelector::m_bulmafact_clicked() {
 QString BSelector::empresaDB() {
     return m_empresabd;
 }
+
 void BSelector::setEmpresaBD(QString emp) {
     m_empresabd = emp;
 }
