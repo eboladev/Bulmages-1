@@ -239,25 +239,27 @@ void ImpQToolButton::click() {
                 Cobro *pres = new Cobro(m_companyact, 0);
                 pres->cargar(id);
 
-                QString col = QString::number(2- (i%3));
-                if (col == "0") col = "";
+		double col = 2 - (i%3);
+		if (col == 0) col = 0.5;
+		else if (col == 1) col = 10;
+		else if (col == 2) col = 19.5;
 
                 txt += " <storyPlace x=\"0cm\" y=\"0cm\" width=\"15cm\" height=\"1cm\">\n";
                 txt += " <setFont name=\"Courier\" size=\"8\"/>\n";
-                txt += " <drawString x=\"4.7cm\" y=\""+col+"7.6cm\">"+pres->DBvalue("idcobro")+"</drawString>\n";
-                txt += " <drawString x=\"7.2cm\" y=\""+col+"7.6cm\">PALMA DE MALLORCA</drawString>\n";
-                txt += " <drawString x=\"14.2cm\" y=\""+col+"7.6cm\">EUROS "+pres->DBvalue("cantcobro")+"</drawString>\n";
+                txt += " <drawString x=\"4.7cm\" y=\""+ QString::number(col+7.6) +"cm\">"+pres->DBvalue("idcobro")+"</drawString>\n";
+                txt += " <drawString x=\"7.2cm\" y=\""+ QString::number(col+7.6) +"cm\">PALMA DE MALLORCA</drawString>\n";
+                txt += " <drawString x=\"14.2cm\" y=\""+ QString::number(col+7.6) +"cm\">EUROS "+pres->DBvalue("cantcobro")+"</drawString>\n";
 
-                txt += " <drawString x=\"5.7cm\" y=\""+col+"6.8cm\">"+pres->DBvalue("fechacobro")+"</drawString>\n";
-                txt += " <drawString x=\"12.4cm\" y=\""+col+"6.8cm\">"+pres->DBvalue("fechacobro")+"</drawString>\n";
+                txt += " <drawString x=\"5.7cm\" y=\""+ QString::number(col+6.8) +"cm\">"+pres->DBvalue("fechacobro")+"</drawString>\n";
+                txt += " <drawString x=\"12.4cm\" y=\""+ QString::number(col+6.8) +"cm\">"+pres->DBvalue("fechacobro")+"</drawString>\n";
 
 		if (pres->DBvalue("idbanco") != "") {
 			QString query = "SELECT * FROM banco WHERE idbanco ="+pres->DBvalue("idbanco");
 			cursor2 *cur1 = m_companyact->cargacursor(query);
 			if (!cur1->eof()){
-				txt += " <drawString x=\"9.4cm\" y=\""+col+"4.4cm\">"+cur1->valor("nombanco")+"</drawString>\n";
-				txt += " <drawString x=\"9.4cm\" y=\""+col+"4cm\">"+cur1->valor("pobbanco")+"</drawString>\n";
-				txt += " <drawString x=\"12.4cm\" y=\""+col+"3.5cm\">"+cur1->valor("codentidadbanco")+" "+cur1->valor("codagenciabanco")+" "+cur1->valor("dcbanco")+" "+cur1->valor("numcuentabanco")+"</drawString>\n";
+				txt += " <drawString x=\"9.4cm\" y=\""+ QString::number(col+4.4) +"cm\">"+cur1->valor("nombanco")+"</drawString>\n";
+				txt += " <drawString x=\"9.4cm\" y=\""+ QString::number(col+4) +"cm\">"+cur1->valor("pobbanco")+"</drawString>\n";
+				txt += " <drawString x=\"12.4cm\" y=\""+ QString::number(col+3.5) +"cm\">"+cur1->valor("codentidadbanco")+" "+cur1->valor("codagenciabanco")+" "+cur1->valor("dcbanco")+" "+cur1->valor("numcuentabanco")+"</drawString>\n";
 			} // end if
 			delete cur1;
 		} // end if
@@ -267,21 +269,21 @@ void ImpQToolButton::click() {
 			QString query = "SELECT * FROM cliente WHERE idcliente ="+pres->DBvalue("idcliente");
 			cursor2 *cur = m_companyact->cargacursor(query);
 			if (!cur->eof()){
-				txt += " <drawString x=\"4.8cm\" y=\""+col+"2.3cm\">"+cur->valor("nomcliente")+"</drawString>\n";
-				txt += " <drawString x=\"4.8cm\" y=\""+col+"1.9cm\">"+cur->valor("nomaltcliente")+"</drawString>\n";
-				txt += " <drawString x=\"4.8cm\" y=\""+col+"1.5cm\">"+cur->valor("dircliente")+"</drawString>\n";
-				txt += " <drawString x=\"4.8cm\" y=\""+col+"1.1cm\">"+cur->valor("cpcliente")+" "+cur->valor("provcliente")+"</drawString>\n";
+				txt += " <drawString x=\"4.8cm\" y=\""+ QString::number(col+2.3) +"cm\">"+cur->valor("nomcliente")+"</drawString>\n";
+				txt += " <drawString x=\"4.8cm\" y=\""+ QString::number(col+1.9) +"cm\">"+cur->valor("nomaltcliente")+"</drawString>\n";
+				txt += " <drawString x=\"4.8cm\" y=\""+ QString::number(col+1.5) +"cm\">"+cur->valor("dircliente")+"</drawString>\n";
+				txt += " <drawString x=\"4.8cm\" y=\""+ QString::number(col+1.1) +"cm\">"+cur->valor("cpcliente")+" "+cur->valor("provcliente")+"</drawString>\n";
 			} // end if
 			delete cur;
 		} // end if
 
-                txt += " <drawString x=\"4.8cm\" y=\""+col+"5.6cm\">a</drawString>\n";
-                txt += " <drawString x=\"4.8cm\" y=\""+col+"5.2cm\">"+num2texto(pres->DBvalue("cantcobro"))+"</drawString>\n";
+                txt += " <drawString x=\"4.8cm\" y=\""+ QString::number(col+5.6) +"cm\">a</drawString>\n";
+                txt += " <drawString x=\"4.8cm\" y=\""+ QString::number(col+5.2) +"cm\">"+num2texto(pres->DBvalue("cantcobro"))+"</drawString>\n";
 
                 txt += " </storyPlace>\n";
 
                 if (i % 3 == 2)
-                    txt += "<nextFrame/>\n";
+                    txt += "<nextPage/>\n";
 
                 delete pres;
 
@@ -308,14 +310,9 @@ void ImpQToolButton::click() {
         } // end if
 
 
-
-        _depura("FichaBf::imprimir", 0);
-
         invocaPDF("recibos");
 
 	return;
-
-
     } // end if
 
 
@@ -662,7 +659,7 @@ void EmailQToolButton::click() {
                 cursor2 *curs = m_companyact->cargacursor( query);
                 QString email = curs->valor("mailcliente");
 
-                CobroView *pres = m_companyact->newCobroView();
+                Cobro *pres = new Cobro(m_companyact, 0);
                 pres->cargar(id);
 
                 /*
@@ -686,6 +683,7 @@ void EmailQToolButton::click() {
                 system(cad.toAscii().data());
 
                 res += confpr->valor(CONF_DIR_USER)+"recibo"+fecha+ref+".pdf ";
+                delete pres;
             } // end if
         } // end for
     } // end if

@@ -28,9 +28,11 @@
 
 
 SDBRecord::SDBRecord(postgresiface2 *con) : DBRecord(con) {
+  _depura("SDBRecord::SDBRecord", 0);
   static int creaciones = 0;
   creaciones++;
-  _depura("SDBrecord creados: " + QString::number(creaciones), 0);
+  _depura("SDBrecord::creados: ",0,  QString::number(creaciones));
+  _depura("END SDBRecord::SDBRecord", 0);
 }
 
 
@@ -38,7 +40,8 @@ SDBRecord::~SDBRecord() {
   static int destrucciones = 0;
   _depura("SDBRecord::~SDBRecord", 0);
   destrucciones++;
-  _depura("SDBrecord destruidos: " + QString::number(destrucciones), 0);
+  _depura("SDBrecord::destruidos: ",0 ,  QString::number(destrucciones));
+  _depura("SDBRecord::~SDBRecord", 0);
 }
 
 
