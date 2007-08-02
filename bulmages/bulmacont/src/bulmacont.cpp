@@ -55,7 +55,6 @@ Bulmacont::Bulmacont(QWidget *parent, Qt::WFlags f, QString DB)
     vboxlayout->addWidget(m_pWorkspace);
     vboxlayout->addWidget(m_pb);
 
-    showNormal();
 
     m_empresaactual = new empresa();
     m_empresaactual->setProgressBar(m_pb);
@@ -76,7 +75,6 @@ Bulmacont::Bulmacont(QWidget *parent, Qt::WFlags f, QString DB)
     addDockWidget(Qt::LeftDockWidgetArea, m_list);
 
     m_empresaactual->setListVentanas(m_list);
-    m_empresaactual->inicializa1();
 
     m_list->setVisible(TRUE);
     m_pb->setVisible(FALSE);

@@ -109,7 +109,7 @@ public:
     int librobalancetree();
     int registroiva();
     int listado347();
-    int inicializa1();
+    int createMainWindows(Splash *);
     int boton_siguiente();
     int boton_anterior();
     int boton_primero();

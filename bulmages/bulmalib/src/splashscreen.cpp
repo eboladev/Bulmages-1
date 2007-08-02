@@ -25,9 +25,9 @@
 #include "funcaux.h"
 
 
-Splash::Splash() : QDialog(0, Qt::FramelessWindowHint) {
+Splash::Splash(QString appSplash, QString appName, QString appVersion) : QDialog(0, Qt::FramelessWindowHint) {
     image0 = new QPixmap();
-    image0->load(confpr->valor(CONF_SPLASH_BULMAFACT));
+    image0->load(appSplash);
 
     /// Se modifica la paleta para que utilize la imagen como fondo.
     QPalette p = this->palette();
@@ -44,7 +44,7 @@ Splash::Splash() : QDialog(0, Qt::FramelessWindowHint) {
     l0->setGeometry(0, 0, image0->width(), image0->height());
     l0->setAlignment(Qt::AlignTop);
     l0->setFont(QFont("Arial", 20, QFont::Bold));
-    l0->setText(tr("<center><font size=+1 color=\"#a3ffa3\">BulmaFact</font>&nbsp;<font color=\"#0000ff\">0.9.3</font></center>"));
+    l0->setText("<center><font size=+1 color=\"#a3ffa3\">" + appName + "</font>&nbsp;<font color=\"#0000ff\">" + appVersion + "</font></center>");
 
     m_label = new QLabel(this);
     m_label->setTextFormat(Qt::RichText);

@@ -524,3 +524,16 @@ void bulmafact::on_actionFormas_de_Pago_triggered() {
     _depura("END bulmafact::on_actionFormas_de_Pago_triggered", 0);
 }
 
+void bulmafact::on_actionOrdenar_Ventanas_triggered() {
+    _depura("bulmafact::on_actionOrdenar_Ventanas_triggered", 0);
+    pWorkspace->tile();
+    _depura("END bulmafact::on_actionOrdenar_Ventanas_triggered", 0);
+}
+
+
+void bulmafact::on_actionOrganizaci_n_en_Cascada_triggered() {
+    _depura("bulmafact::on_actionOrganizacion_en_Cascada_triggered", 0);
+    pWorkspace->cascade();
+    _depura("END bulmafact::on_actionOrganizacion_en_Cascada_triggered", 0);
+}
+

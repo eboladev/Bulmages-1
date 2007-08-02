@@ -119,6 +119,7 @@
 #define CONF_FLIP                    192
 /// Indica que imagen utilizar como splash de BulmaCont.
 #define CONF_SPLASH                  199
+#define CONF_SPLASH_BULMACONT        170
 /// Indica que imagen utilizar como Background.
 #define CONF_BACKGROUND              200
 /// Indica que imagen utilizar como splash de Bulmafact.

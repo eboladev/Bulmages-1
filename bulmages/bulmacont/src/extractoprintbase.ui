@@ -5,33 +5,26 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>548</width>
-    <height>114</height>
+    <width>410</width>
+    <height>134</height>
    </rect>
   </property>
   <property name="windowTitle" >
    <string>Impresión del Extracto</string>
   </property>
   <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>5</number>
+   </property>
    <property name="spacing" >
-    <number>6</number>
-   </property>
-   <property name="leftMargin" >
-    <number>9</number>
-   </property>
-   <property name="topMargin" >
-    <number>9</number>
-   </property>
-   <property name="rightMargin" >
-    <number>9</number>
-   </property>
-   <property name="bottomMargin" >
-    <number>9</number>
+    <number>5</number>
    </property>
    <item>
     <widget class="QGroupBox" name="groupBox" >
      <property name="sizePolicy" >
-      <sizepolicy vsizetype="Fixed" hsizetype="Ignored" >
+      <sizepolicy>
+       <hsizetype>7</hsizetype>
+       <vsizetype>0</vsizetype>
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -39,43 +32,27 @@
      <property name="title" >
       <string>Formato:</string>
      </property>
-     <layout class="QHBoxLayout" >
+     <layout class="QVBoxLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
       <property name="spacing" >
-       <number>5</number>
-      </property>
-      <property name="leftMargin" >
-       <number>5</number>
-      </property>
-      <property name="topMargin" >
-       <number>5</number>
-      </property>
-      <property name="rightMargin" >
-       <number>5</number>
-      </property>
-      <property name="bottomMargin" >
-       <number>5</number>
+       <number>6</number>
       </property>
       <item>
        <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
         <property name="spacing" >
-         <number>6</number>
-        </property>
-        <property name="leftMargin" >
-         <number>0</number>
-        </property>
-        <property name="topMargin" >
-         <number>0</number>
-        </property>
-        <property name="rightMargin" >
-         <number>0</number>
-        </property>
-        <property name="bottomMargin" >
          <number>0</number>
         </property>
         <item>
          <widget class="QRadioButton" name="radiotexto" >
           <property name="sizePolicy" >
-           <sizepolicy vsizetype="Expanding" hsizetype="Preferred" >
+           <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -91,7 +68,9 @@
         <item>
          <widget class="QRadioButton" name="radiohtml" >
           <property name="sizePolicy" >
-           <sizepolicy vsizetype="Expanding" hsizetype="Preferred" >
+           <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -104,7 +83,9 @@
         <item>
          <widget class="QRadioButton" name="radiopropietario" >
           <property name="sizePolicy" >
-           <sizepolicy vsizetype="Expanding" hsizetype="Preferred" >
+           <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -129,27 +110,18 @@
      </property>
      <property name="sizeHint" >
       <size>
-       <width>530</width>
-       <height>81</height>
+       <width>400</width>
+       <height>16</height>
       </size>
      </property>
     </spacer>
    </item>
    <item>
     <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
      <property name="spacing" >
-      <number>6</number>
-     </property>
-     <property name="leftMargin" >
-      <number>0</number>
-     </property>
-     <property name="topMargin" >
-      <number>0</number>
-     </property>
-     <property name="rightMargin" >
-      <number>0</number>
-     </property>
-     <property name="bottomMargin" >
       <number>0</number>
      </property>
      <item>

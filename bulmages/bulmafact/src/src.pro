@@ -78,7 +78,6 @@ HEADERS += bulmafact.h \
            company.h \
            providerslist.h \
            provedit.h \
-           splashscreen.h \
            clientslist.h \
            articulolist.h \
            presupuestoview.h \
@@ -162,7 +161,6 @@ SOURCES += bulmafact.cpp \
            company.cpp \
            providerslist.cpp \
            provedit.cpp \
-           splashscreen.cpp \
            clientslist.cpp \
            articulolist.cpp \
            presupuestoview.cpp \

@@ -134,8 +134,9 @@ QString empresa::nombreempresa() {
 
 
 /// Inicializa la clase con el nombre de la base de datos y con el workspace.
-int empresa::inicializa1() {
+int empresa::createMainWindows(Splash *splash) {
     _depura("empresa::inicializa1", 0);
+    try {
     /// Calculamos el n&uacute;mero de d&iacute;gitos que tiene el nivel &uacute;ltimo
     /// de la empresa.
     QString query = "SELECT length(valor) AS numdigitos FROM configuracion WHERE nombre = 'CodCuenta'";
@@ -160,44 +161,64 @@ int empresa::inicializa1() {
 
     /// Establecemos el porcentaje del carga de informaci&oacute;n en las diferentes ventanas.
     /// pb = 0%
+    splash->mensaje(QApplication::translate("empresa", "Inicializando Extracto"));
+    splash->setBarraProgreso(7);
     m_progressbar->setValue(0);
     extracto = new extractoview1(this, 0);
     m_pWorkspace->addWindow(extracto);
 
     /// pb = 20%
+    splash->mensaje(QApplication::translate("empresa", "Inicializando Diario"));
+    splash->setBarraProgreso(20);
     m_progressbar->setValue(20);
     diario = new DiarioView(this, 0);
     m_pWorkspace->addWindow(diario);
 
     /// pb = 35%
+    splash->mensaje(QApplication::translate("empresa", "Inicializando Balance"));
+    splash->setBarraProgreso(35);
     m_progressbar->setValue(35);
     balance = new BalanceView(this, 0);
     m_pWorkspace->addWindow(balance);
 
     /// pb = 50%
+    splash->mensaje(QApplication::translate("company", "Inicializando Balance Jerarquico"));
+    splash->setBarraProgreso(50);
     m_progressbar->setValue(50);
     balance1 = new BalanceTreeView(this, 0);
     m_pWorkspace->addWindow(balance1);
 
     /// pb = 60%
+    splash->mensaje(QApplication::translate("company", "Inicializando Asientos"));
+    splash->setBarraProgreso(60);
     m_progressbar->setValue(60);
     introapunts2 = new Asiento1View(this, 0);
     m_pWorkspace->addWindow(introapunts2);
 
     /// pb = 75%
+    splash->mensaje(QApplication::translate("company", "Inicializando Asientos"));
+    splash->setBarraProgreso(75);
     m_progressbar->setValue(75);
     m_listasientos = new AsientosView(this);
     m_listasientos->presentar();
     m_pWorkspace->addWindow(m_listasientos);
 
     /// pb = 90%
+    splash->mensaje(QApplication::translate("company", "Inicializando Cuentas"));
+    splash->setBarraProgreso(90);
     m_progressbar->setValue(90);
     m_listcuentas = new listcuentasview1(this, 0);
     m_listcuentas->inicializa();
     m_pWorkspace->addWindow(m_listcuentas);
 
     /// pb = 100%
+    splash->mensaje(QApplication::translate("company", "Terminado"));
+    splash->setBarraProgreso(100);
     m_progressbar->setValue(100);
+
+    } catch(...) {
+        _depura("Error al iniciar la clase company", 2);
+    } // end try
 
     _depura("END empresa::inicializa1", 0);
     return(0);

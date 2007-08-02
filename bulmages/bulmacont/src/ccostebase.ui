@@ -16,36 +16,18 @@
    <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_centroCoste.xpm</iconset>
   </property>
   <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>5</number>
+   </property>
    <property name="spacing" >
-    <number>5</number>
-   </property>
-   <property name="leftMargin" >
-    <number>5</number>
-   </property>
-   <property name="topMargin" >
-    <number>5</number>
-   </property>
-   <property name="rightMargin" >
-    <number>5</number>
-   </property>
-   <property name="bottomMargin" >
     <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
      <property name="spacing" >
-      <number>5</number>
-     </property>
-     <property name="leftMargin" >
-      <number>0</number>
-     </property>
-     <property name="topMargin" >
-      <number>0</number>
-     </property>
-     <property name="rightMargin" >
-      <number>0</number>
-     </property>
-     <property name="bottomMargin" >
       <number>0</number>
      </property>
      <item>
@@ -79,23 +61,11 @@
         <enum>QFrame::Raised</enum>
        </property>
        <layout class="QGridLayout" >
-        <property name="leftMargin" >
-         <number>5</number>
+        <property name="margin" >
+         <number>11</number>
         </property>
-        <property name="topMargin" >
-         <number>5</number>
-        </property>
-        <property name="rightMargin" >
-         <number>5</number>
-        </property>
-        <property name="bottomMargin" >
-         <number>5</number>
-        </property>
-        <property name="horizontalSpacing" >
-         <number>5</number>
-        </property>
-        <property name="verticalSpacing" >
-         <number>5</number>
+        <property name="spacing" >
+         <number>6</number>
         </property>
         <item row="0" column="0" >
          <widget class="QToolButton" name="mui_crear" >
@@ -285,36 +255,18 @@
       <string>Contenido del centro de coste:</string>
      </property>
      <layout class="QVBoxLayout" >
+      <property name="margin" >
+       <number>5</number>
+      </property>
       <property name="spacing" >
-       <number>5</number>
-      </property>
-      <property name="leftMargin" >
-       <number>5</number>
-      </property>
-      <property name="topMargin" >
-       <number>5</number>
-      </property>
-      <property name="rightMargin" >
-       <number>5</number>
-      </property>
-      <property name="bottomMargin" >
        <number>5</number>
       </property>
       <item>
        <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
         <property name="spacing" >
-         <number>5</number>
-        </property>
-        <property name="leftMargin" >
-         <number>0</number>
-        </property>
-        <property name="topMargin" >
-         <number>0</number>
-        </property>
-        <property name="rightMargin" >
-         <number>0</number>
-        </property>
-        <property name="bottomMargin" >
          <number>0</number>
         </property>
         <item>
@@ -331,25 +283,18 @@
       </item>
       <item>
        <layout class="QVBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
         <property name="spacing" >
-         <number>5</number>
-        </property>
-        <property name="leftMargin" >
-         <number>0</number>
-        </property>
-        <property name="topMargin" >
-         <number>0</number>
-        </property>
-        <property name="rightMargin" >
-         <number>0</number>
-        </property>
-        <property name="bottomMargin" >
          <number>0</number>
         </property>
         <item>
          <widget class="QLabel" name="textLabel1_2" >
           <property name="sizePolicy" >
-           <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+           <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -369,19 +314,10 @@
    </item>
    <item>
     <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
      <property name="spacing" >
-      <number>5</number>
-     </property>
-     <property name="leftMargin" >
-      <number>0</number>
-     </property>
-     <property name="topMargin" >
-      <number>0</number>
-     </property>
-     <property name="rightMargin" >
-      <number>0</number>
-     </property>
-     <property name="bottomMargin" >
       <number>0</number>
      </property>
      <item>

@@ -104,9 +104,10 @@ int main(int argc, char **argv) {
         } // end if
         theApp->installTranslator(traductor);
 
-        /// Cargamos el SplashScreen de BulmaCont.
-        Splash *splashScr = new Splash();
-        delete splashScr;
+        /// Cargamos el splashScreen.
+        Splash *splashScr = new Splash(confpr->valor(CONF_SPLASH_BULMACONT), "BulmaCont", "0.9.3");
+        splashScr->mensaje(QApplication::translate("main","Iniciando clases"));
+        splashScr->setBarraProgreso(1);
 
         /// Miramos en los par&aacute;metros pasados al programa por si ya viene
         /// indicada la empresa y no hay que mostrar selector.
@@ -114,9 +115,11 @@ int main(int argc, char **argv) {
             confpr->setValor(CONF_LOGIN_USER, us);
             confpr->setValor(CONF_PASSWORD_USER, pass);
             bges = new Bulmacont(NULL, 0, db);
+	    bges->hide();
         } else if (argc == 3) {
             QString db= argv[2];
             bges = new Bulmacont(NULL, 0, db);
+	    bges->hide();
         } else {
             logpass *login1 = new logpass(0, "");
             if (!login1->authOK())
@@ -125,17 +128,74 @@ int main(int argc, char **argv) {
                 exit(1);
             delete login1;
             bges = new Bulmacont(NULL, 0, "");
+	    bges->hide();
         } // end if
 
-        /// Leemos la configuraci&oacute;n específica de la base de datos que se ha abierto.
-        QString confesp = CONFGLOBAL + bges->empresaactual()->nameDB() + ".conf";
-        confpr->leeconfig(confesp);
+	splashScr->show();
+        splashScr->mensaje(QApplication::translate("main","Leyendo configuracion"));
+        splashScr->setBarraProgreso(2);
+
+        /// Leemos la configuracion especifica de la base de datos que se ha abierto.
+        QString confEsp = CONFGLOBAL + bges->empresaactual()->nameDB() + ".conf";
+        QDir archivoConf;
+        if (!archivoConf.exists(confEsp)) {
+            QString mensaje = "--> El archivo '" + confEsp + "' no existe. <--\n";
+            fprintf(stderr, mensaje.toAscii().constData());
+        } else {
+            confpr->leeconfig(confEsp);
+        } // end if
 
         /// Cargamos las librerias de g_plugins.
         g_plugins->cargaLibs(confpr->valor(CONF_PLUGINS_BULMACONT));
         g_plugins->lanza("entryPoint", bges);
 
+        splashScr->mensaje(QApplication::translate("main","Cargando Traducciones"));
+        splashScr->setBarraProgreso(3);
+
+        /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
+        traductor = new QTranslator(0);
+        if (confpr->valor(CONF_TRADUCCION) == "locales") {
+            traductor->load(QString("bulmalib_") + QLocale::system().name(),
+                            confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+        } else {
+            QString archivo = "bulmalib_" + confpr->valor(CONF_TRADUCCION);
+            traductor->load(archivo, confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+        } // end if
+        theApp->installTranslator(traductor);
+
+        traductor = new QTranslator(0);
+        if (confpr->valor(CONF_TRADUCCION) == "locales") {
+            traductor->load(QString("bulmafact_") + QLocale::system().name(),
+                            confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+        } else {
+            QString archivo = "bulmafact_" + confpr->valor(CONF_TRADUCCION);
+            traductor->load(archivo.toAscii().constData(), confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+        } // end if
+        theApp->installTranslator(traductor);
+
+
+
+        /// Cargamos las librerias de g_plugins.
+        g_plugins->cargaLibs(confpr->valor(CONF_PLUGINS_BULMACONT));
+
+        splashScr->mensaje(QApplication::translate("main","Lanzando Plugins"));
+        splashScr->setBarraProgreso(5);
+
+        /// Disparamos los plugins con entryPoint.
+        g_plugins->lanza("entryPoint", bges);
+
+        splashScr->mensaje(QApplication::translate("main","Inicializando Componentes"));
+        splashScr->setBarraProgreso(6);
+
+
         g_main = bges;
+
+	bges->empresaactual()->createMainWindows(splashScr);
+
+        bges->show();
+
+	delete splashScr;
+
         valorsalida = theApp->exec();
     } catch (...) {
         mensajeInfo("Error inesperado en BulmaCont, el programa se cerrara.");

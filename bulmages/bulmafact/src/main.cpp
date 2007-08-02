@@ -96,7 +96,7 @@ int main(int argc, char **argv) {
         theApp->installTranslator(traductor);
 
         /// Cargamos el splashScreen.
-        Splash *splashScr = new Splash();
+        Splash *splashScr = new Splash(confpr->valor(CONF_SPLASH_BULMAFACT), "BulmaFact", "0.9.3");
         splashScr->mensaje(QApplication::translate("main","Iniciando clases"));
         splashScr->setBarraProgreso(1);
 
@@ -186,6 +186,7 @@ int main(int argc, char **argv) {
 
         splashScr->mensaje(QApplication::translate("main","Inicializando Componentes"));
         splashScr->setBarraProgreso(6);
+
         /// Lanzamos la creacion de las ventanas principales.
         bges->createMainWindows(splashScr);
 

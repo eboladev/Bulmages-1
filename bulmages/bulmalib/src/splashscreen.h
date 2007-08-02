@@ -48,7 +48,7 @@ private:
     QPixmap *image0;
 
 public:
-    Splash();
+    Splash(QString appSplash, QString appName, QString appVersion);
     ~Splash();
     void mensaje(QString);
     void setBarraProgreso(int);

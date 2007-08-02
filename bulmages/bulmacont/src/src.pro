@@ -73,8 +73,7 @@ TRANSLATIONS += bulmacont_es.ts \
                 bulmacont_de.ts \
 		bulmacont_zz.ts
 
-HEADERS += splashscreen.h \
-           bulmacont.h \
+HEADERS += bulmacont.h \
            sobreview.h \
            empresa.h \
            listcuentasview1.h \
@@ -130,7 +129,6 @@ HEADERS += splashscreen.h \
 	   paisview.h
 
 SOURCES += main.cpp \
-           splashscreen.cpp \
            bulmacont.cpp \
            sobreview.cpp \
            empresa.cpp \

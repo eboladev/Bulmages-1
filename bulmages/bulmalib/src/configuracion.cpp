@@ -230,6 +230,8 @@ QString configuracion::nombre(int i) {
         return "CONF_EDITOR";
     if (i == CONF_SPLASH)
         return "CONF_SPLASH";
+    if (i == CONF_SPLASH_BULMACONT)
+        return "CONF_SPLASH_BULMACONT";
     if (i == CONF_SPLASH_BULMAFACT)
         return "CONF_SPLASH_BULMAFACT";
     if (i == CONF_BACKGROUND)

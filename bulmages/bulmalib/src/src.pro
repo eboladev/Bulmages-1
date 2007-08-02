@@ -50,7 +50,8 @@ HEADERS += postgresiface2.h \
 	   blwidget.h \
 	   listado.h \
            porcentajecarga.h \
-	   busquedafecha2.h
+	   busquedafecha2.h \
+	   splashscreen.h
 	   
 	   
 SOURCES += postgresiface2.cpp \
@@ -80,7 +81,8 @@ SOURCES += postgresiface2.cpp \
 	   blwidget.cpp \
 	   listado.cpp \
            porcentajecarga.cpp \
-	   busquedafecha2.cpp
+	   busquedafecha2.cpp \
+	   splashscreen.cpp
 	   
 	   
 RESOURCES = ../../bulmages.qrc
