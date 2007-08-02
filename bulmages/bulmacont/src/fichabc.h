@@ -24,14 +24,13 @@
 
 #include "ficha.h"
 #include "subform2bc.h"
-#include "dbrecord.h"
 #include "empresa.h"
 
 
 /** Esta clase es una plantilla para las ventanas de BulmaCont. Contiene metodos
     comunes a todas las pantallas.
 */
-class FichaBc : public Ficha, public DBRecord {
+class FichaBc : public Ficha {
     Q_OBJECT
 
 public:
@@ -46,10 +45,7 @@ public:
     virtual ~FichaBc();
     void setListaLineas(SubForm2Bc * form);
     SubForm2Bc* listalineas();
-/*
-    virtual int sacaWindow();
-    virtual void meteWindow(QString nom, QObject *obj);
-*/
+
 };
 
 #endif

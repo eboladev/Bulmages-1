@@ -29,9 +29,9 @@
 #include "funcaux.h"
 #include "empresabase.h"
 #include "blwidget.h"
+#include "dbrecord.h"
 
-
-class Ficha : public BLWidget, public dialogChanges {
+class Ficha : public BLWidget, public DBRecord, public dialogChanges {
     Q_OBJECT
 
 public:

@@ -29,7 +29,7 @@ class Fixed;
 
 
 FichaBf::FichaBf(company *comp, QWidget *parent, Qt::WFlags f, edmode modo)
-        : Ficha(comp, parent, f, modo), DBRecord(comp) {
+        : Ficha(comp, parent, f, modo) {
     _depura("FichaBf::FichaBf", 0);
     m_listalineas = NULL;
     m_listadescuentos = NULL;

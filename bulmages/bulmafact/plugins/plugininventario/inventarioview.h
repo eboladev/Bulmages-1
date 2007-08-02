@@ -34,7 +34,7 @@
 
 /// Muestra y administra la ventana con los datos de un inventario.
 /** */
-class InventarioView : public Ficha, public Ui_InventarioBase, public Inventario {
+class InventarioView : public Inventario, public Ui_InventarioBase {
     Q_OBJECT
 
 public:

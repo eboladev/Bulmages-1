@@ -35,7 +35,7 @@
 
 
 InventarioView::InventarioView(company *comp, QWidget *parent)
-        : Ficha(parent), Inventario(comp) {
+        :  Inventario(comp, parent) {
     _depura("InventarioView::InventarioView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);

@@ -28,18 +28,18 @@
 #include "listcontrolstockview.h"
 #include "company.h"
 #include "funcaux.h"
-#include "dbrecord.h"
+#include "fichabf.h"
 
 
 /// Administra los datos de inventario.
 /** */
-class Inventario : public DBRecord {
+class Inventario : public FichaBf {
 protected:
     ListControlStockView *listalineas;
     company *companyact;
 
 public:
-    Inventario(company *);
+    Inventario(company *comp, QWidget *parent);
     virtual ~Inventario();
     void setListControlStock(ListControlStockView *a);
     ListControlStockView *getlistalineas();

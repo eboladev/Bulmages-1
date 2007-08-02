@@ -21,7 +21,7 @@
 #include "ficha.h"
 
 
-Ficha::Ficha(QWidget *parent, Qt::WFlags f, edmode modo) : BLWidget(parent, f), dialogChanges(this) {
+Ficha::Ficha(QWidget *parent, Qt::WFlags f, edmode modo) : BLWidget(parent, f), DBRecord(NULL), dialogChanges(this) {
     _depura("Ficha::Ficha", 0);
     m_modo = modo;
     dialogChanges_cargaInicial();
@@ -29,7 +29,7 @@ Ficha::Ficha(QWidget *parent, Qt::WFlags f, edmode modo) : BLWidget(parent, f), 
 }
 
 
-Ficha::Ficha(EmpresaBase *emp, QWidget *parent, Qt::WFlags f, edmode modo) : BLWidget(emp, parent, f), dialogChanges(this) {
+Ficha::Ficha(EmpresaBase *emp, QWidget *parent, Qt::WFlags f, edmode modo) : BLWidget(emp, parent, f), DBRecord(emp), dialogChanges(this) {
     _depura("Ficha::Ficha", 0);
     m_modo = modo;
     dialogChanges_cargaInicial();
@@ -97,7 +97,9 @@ void Ficha::on_mui_aceptar_clicked() {
             throw -1;
         } // end if
         close();
-    } catch (...) {} // end try
+    } catch (...) {
+	_depura("Error al guardar la ficha", 2);
+    } // end try
     _depura("Ficha::on_mui_aceptar_clicked", 0);
 }
 

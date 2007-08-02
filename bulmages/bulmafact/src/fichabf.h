@@ -24,14 +24,13 @@
 
 #include "ficha.h"
 #include "subform2bf.h"
-#include "dbrecord.h"
 #include "company.h"
 
 
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base como un QMap.
 typedef QMap<QString, Fixed> base;
 
-class FichaBf : public Ficha, public DBRecord {
+class FichaBf : public Ficha {
     Q_OBJECT
 public:
     SubForm2Bf *m_listalineas;

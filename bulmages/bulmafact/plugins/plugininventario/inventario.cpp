@@ -26,7 +26,7 @@
 #include "funcaux.h"
 
 
-Inventario::Inventario(company *comp) : DBRecord(comp) {
+Inventario::Inventario(company *comp, QWidget *parent) : FichaBf(comp, parent) {
     _depura("Inventario::Inventario", 0);
     companyact = comp;
     setDBTableName("inventario");
