@@ -949,7 +949,16 @@
         <number>5</number>
        </property>
        <item>
-        <widget class="ListLinPresupuestoView" native="1" name="subform2" />
+        <widget class="ListLinPresupuestoView" native="1" name="subform2" >
+         <property name="sizePolicy" >
+          <sizepolicy>
+           <hsizetype>7</hsizetype>
+           <vsizetype>7</vsizetype>
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -984,8 +993,8 @@
         <widget class="QTextEdit" name="m_comentpresupuesto" >
          <property name="sizePolicy" >
           <sizepolicy>
-           <hsizetype>0</hsizetype>
-           <vsizetype>0</vsizetype>
+           <hsizetype>7</hsizetype>
+           <vsizetype>7</vsizetype>
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -1745,21 +1754,6 @@
  <layoutdefault spacing="4" margin="3" />
  <customwidgets>
   <customwidget>
-   <class>ListDescuentoPresupuestoView</class>
-   <extends>QWidget</extends>
-   <header>listdescpresupuestoview.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaFecha</class>
-   <extends>QWidget</extends>
-   <header>../../../bulmalib/src/busquedafecha.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaTrabajador</class>
-   <extends>QWidget</extends>
-   <header>busquedatrabajador.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaReferencia</class>
    <extends>QLineEdit</extends>
    <header>busquedareferencia.h</header>
@@ -1783,6 +1777,21 @@
    <class>BusquedaAlmacen</class>
    <extends>QWidget</extends>
    <header>busquedaalmacen.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ListDescuentoPresupuestoView</class>
+   <extends>QWidget</extends>
+   <header>listdescpresupuestoview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaFecha</class>
+   <extends>QWidget</extends>
+   <header>../../../bulmalib/src/busquedafecha.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaTrabajador</class>
+   <extends>QWidget</extends>
+   <header>busquedatrabajador.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

@@ -215,7 +215,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_filePrint.xpm</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_print1.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -271,15 +271,15 @@
        <item row="12" column="0" colspan="4" >
         <layout class="QHBoxLayout" >
          <property name="margin" >
-          <number>5</number>
+          <number>0</number>
          </property>
          <property name="spacing" >
-          <number>6</number>
+          <number>0</number>
          </property>
          <item>
           <layout class="QVBoxLayout" >
            <property name="margin" >
-            <number>5</number>
+            <number>0</number>
            </property>
            <property name="spacing" >
             <number>6</number>
@@ -298,8 +298,8 @@
             <widget class="QTextEdit" name="m_comentcliente" >
              <property name="sizePolicy" >
               <sizepolicy>
-               <hsizetype>0</hsizetype>
-               <vsizetype>0</vsizetype>
+               <hsizetype>7</hsizetype>
+               <vsizetype>7</vsizetype>
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
@@ -311,7 +311,7 @@
          <item>
           <layout class="QVBoxLayout" >
            <property name="margin" >
-            <number>5</number>
+            <number>0</number>
            </property>
            <property name="spacing" >
             <number>6</number>
@@ -344,8 +344,8 @@
             <widget class="QTextEdit" name="m_clientEcomerceData" >
              <property name="sizePolicy" >
               <sizepolicy>
-               <hsizetype>0</hsizetype>
-               <vsizetype>0</vsizetype>
+               <hsizetype>7</hsizetype>
+               <vsizetype>7</vsizetype>
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
@@ -903,6 +903,11 @@
  <layoutdefault spacing="2" margin="5" />
  <customwidgets>
   <customwidget>
+   <class>BusquedaFormaPago</class>
+   <extends>QComboBox</extends>
+   <header>busquedaformapago.h</header>
+  </customwidget>
+  <customwidget>
    <class>FacturasList</class>
    <extends>QWidget</extends>
    <header>facturaslist.h</header>
@@ -936,11 +941,6 @@
    <class>AlbaranClienteList</class>
    <extends>QWidget</extends>
    <header>albaranclientelist.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaFormaPago</class>
-   <extends>QComboBox</extends>
-   <header>busquedaformapago.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

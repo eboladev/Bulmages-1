@@ -68,7 +68,7 @@
       <widget class="QFrame" name="frame_2" >
        <property name="sizePolicy" >
         <sizepolicy>
-         <hsizetype>0</hsizetype>
+         <hsizetype>7</hsizetype>
          <vsizetype>0</vsizetype>
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
@@ -1559,11 +1559,6 @@
  <layoutdefault spacing="2" margin="2" />
  <customwidgets>
   <customwidget>
-   <class>ListLinFacturaView</class>
-   <extends>QWidget</extends>
-   <header>listlinfacturaview.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaCliente</class>
    <extends>QWidget</extends>
    <header>busquedacliente.h</header>
@@ -1597,6 +1592,11 @@
    <class>BusquedaFormaPago</class>
    <extends>QWidget</extends>
    <header>busquedaformapago.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ListLinFacturaView</class>
+   <extends>QWidget</extends>
+   <header>listlinfacturaview.h</header>
   </customwidget>
  </customwidgets>
  <resources>

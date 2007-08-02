@@ -369,13 +369,13 @@ void mensajeError(QString cad) {
 QString  num2texto(QString numero, QString moneda, QString singular)
 {
     //si es 0 el número, no tiene caso procesar toda la información
-    if(numero == "0"){
-        return "cero "+moneda+" 00/100";
+    if(numero == "0" || numero == "00"){
+        return "cero "+moneda;
     }
 
     //en caso que sea un peso, pues igual que el 0 aparte que no muestre el plural "pesos"
     if(numero == "1"){
-        return "un "+singular+" 00/100";
+        return "un "+singular;
     }
 
     QMap<QString , QString > numeros;
@@ -559,7 +559,11 @@ QString  num2texto(QString numero, QString moneda, QString singular)
 
         //echo "CADENA ".$num_string."<br>";
     }
-    return  num_string+" "+moneda+" "+decimal+"/100 M.N.";
+//    return  num_string+" "+moneda+" "+decimal+"/100 M.N.";
+    if (decimal != "0" && decimal != "00")
+         return  num_string+" "+moneda+" con "+ num2texto(decimal + ".00"," centimos", " centimo");
+    else 
+         return  num_string + " " + moneda;
 
 }
 

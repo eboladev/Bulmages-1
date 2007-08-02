@@ -78,7 +78,7 @@
       <envvars/>
     </run>
     <general>
-      <activedir>bulmafact/plugins/pluginimpresionesmultiples</activedir>
+      <activedir>privateplugins/pluginmail</activedir>
     </general>
     <make>
       <abortonerror>true</abortonerror>

@@ -229,6 +229,7 @@ void ImpQToolButton::click() {
 
 
         /// Reseteamos los valores
+        int j = 0;
         for (int i = 0; i < sub->rowCount(); i++) {
             SDBRecord *rec = sub->lineaat(i);
             rec->refresh();
@@ -239,10 +240,11 @@ void ImpQToolButton::click() {
                 Cobro *pres = new Cobro(m_companyact, 0);
                 pres->cargar(id);
 
-		double col = 2 - (i%3);
-		if (col == 0) col = 0.5;
-		else if (col == 1) col = 10;
-		else if (col == 2) col = 19.5;
+		int col1 = j % 3;
+                double col = 0;
+		if (col1 == 2) col = 1.00;
+		if (col1 == 1) col = 10;
+		if (col1 == 0) col = 19.5;
 
                 txt += " <storyPlace x=\"0cm\" y=\"0cm\" width=\"15cm\" height=\"1cm\">\n";
                 txt += " <setFont name=\"Courier\" size=\"8\"/>\n";
@@ -251,7 +253,7 @@ void ImpQToolButton::click() {
                 txt += " <drawString x=\"14.2cm\" y=\""+ QString::number(col+7.6) +"cm\">EUROS "+pres->DBvalue("cantcobro")+"</drawString>\n";
 
                 txt += " <drawString x=\"5.7cm\" y=\""+ QString::number(col+6.8) +"cm\">"+pres->DBvalue("fechacobro")+"</drawString>\n";
-                txt += " <drawString x=\"12.4cm\" y=\""+ QString::number(col+6.8) +"cm\">"+pres->DBvalue("fechacobro")+"</drawString>\n";
+                txt += " <drawString x=\"12.4cm\" y=\""+ QString::number(col+6.8) +"cm\">"+pres->DBvalue("fechavenccobro")+"</drawString>\n";
 
 		if (pres->DBvalue("idbanco") != "") {
 			QString query = "SELECT * FROM banco WHERE idbanco ="+pres->DBvalue("idbanco");
@@ -270,7 +272,7 @@ void ImpQToolButton::click() {
 			cursor2 *cur = m_companyact->cargacursor(query);
 			if (!cur->eof()){
 				txt += " <drawString x=\"4.8cm\" y=\""+ QString::number(col+2.3) +"cm\">"+cur->valor("nomcliente")+"</drawString>\n";
-				txt += " <drawString x=\"4.8cm\" y=\""+ QString::number(col+1.9) +"cm\">"+cur->valor("nomaltcliente")+"</drawString>\n";
+//				txt += " <drawString x=\"4.8cm\" y=\""+ QString::number(col+1.9) +"cm\">"+cur->valor("nomaltcliente")+"</drawString>\n";
 				txt += " <drawString x=\"4.8cm\" y=\""+ QString::number(col+1.5) +"cm\">"+cur->valor("dircliente")+"</drawString>\n";
 				txt += " <drawString x=\"4.8cm\" y=\""+ QString::number(col+1.1) +"cm\">"+cur->valor("cpcliente")+" "+cur->valor("provcliente")+"</drawString>\n";
 			} // end if
@@ -282,9 +284,9 @@ void ImpQToolButton::click() {
 
                 txt += " </storyPlace>\n";
 
-                if (i % 3 == 2)
-                    txt += "<nextPage/>\n";
-
+                if (col1 == 2)
+                    txt += "<nextPage/><nextFrame/>\n";
+		j++;
                 delete pres;
 
             } // end if
