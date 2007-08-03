@@ -57,8 +57,6 @@ public:
     ~InventariosView();
     void inicializa();
     void setcompany(company *comp);
-    void meteWindow(QString nom, QObject *obj);
-    virtual int sacaWindow();
 
 public slots:
     virtual void on_mui_listado_itemDoubleClicked(QTableWidgetItem *);

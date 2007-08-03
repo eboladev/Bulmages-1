@@ -376,27 +376,7 @@ void FichaBf::imprimir() {
 }
 
 
-/** Saca la ventana del workSpace.
-    Este metodo es invocado desde la clase Ficha.
-*/
-/*
-int FichaBf::sacaWindow() {
-    _depura("FichaBf::sacaWindow", 0, this->windowTitle());
-    empresaBase()->sacaWindow(this);
-    _depura("END FichaBf::sacaWindow", 0);
-    return 0;
-}
-*/
 
-/*
-void FichaBf::meteWindow(QString nom, QObject *obj) {
-    _depura("FichaBf::meteWindow", 0);
-    if (empresaBase() != NULL) {
-        empresaBase()->meteWindow(nom, obj);
-    }
-    _depura("END FichaBf::meteWindow", 0);
-}
-*/
 
 /** Guarda la ficha en la base de datos
     Este metodo puede ser invocado desde la clase ficha o desde la pantalla previa

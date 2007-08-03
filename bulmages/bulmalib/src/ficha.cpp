@@ -20,9 +20,12 @@
 
 #include "ficha.h"
 
+#include <QMenu>
 
 Ficha::Ficha(QWidget *parent, Qt::WFlags f, edmode modo) : BLWidget(parent, f), DBRecord(NULL), dialogChanges(this) {
     _depura("Ficha::Ficha", 0);
+    setContextMenuPolicy(Qt::CustomContextMenu);
+    connect (this, SIGNAL(customContextMenuRequested(const QPoint &)), this, SLOT(on_customContextMenuRequested(const QPoint &)));
     m_modo = modo;
     dialogChanges_cargaInicial();
     _depura("END Ficha::Ficha", 0);
@@ -31,6 +34,9 @@ Ficha::Ficha(QWidget *parent, Qt::WFlags f, edmode modo) : BLWidget(parent, f), 
 
 Ficha::Ficha(EmpresaBase *emp, QWidget *parent, Qt::WFlags f, edmode modo) : BLWidget(emp, parent, f), DBRecord(emp), dialogChanges(this) {
     _depura("Ficha::Ficha", 0);
+
+    setContextMenuPolicy(Qt::CustomContextMenu);
+    connect (this, SIGNAL(customContextMenuRequested(const QPoint &)), this, SLOT(on_customContextMenuRequested(const QPoint &)));
     m_modo = modo;
     dialogChanges_cargaInicial();
     _depura("END Ficha::Ficha", 0);
@@ -171,3 +177,15 @@ void Ficha::meteWindow(QString nom, QObject *obj, bool compdup) {
     _depura("END Ficha::meteWindow", 0);
 }
 
+void Ficha::on_customContextMenuRequested(const QPoint &pos) {
+    QMenu *popup = new QMenu(this);
+    QAction *avconfig = popup->addAction(tr("Opciones Avanzadas de Ficha"));
+    QAction *avprint = popup->addAction(tr("Imprimir Ficha"));
+    QAction *opcion = popup->exec(QCursor::pos());
+    if (opcion == avconfig) {
+	_depura("Opciones Avanzadas de configuracion", 2);
+    } else if (opcion == avprint) {
+        Ficha::imprimir();
+    } // end if
+    delete popup;
+}

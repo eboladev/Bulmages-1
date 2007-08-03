@@ -42,11 +42,6 @@ void InventariosView::setcompany(company *comp) {
     mui_listado->setEmpresaBase(comp);
 }
 
-void InventariosView::meteWindow(QString nom, QObject *obj) {
-    if (companyact != NULL) {
-        companyact->meteWindow(nom, obj);
-    } // end if
-}
 
 void InventariosView::on_mui_listado_itemDoubleClicked(QTableWidgetItem *) {
     on_mui_editar_clicked();
@@ -87,10 +82,6 @@ InventariosView::InventariosView(company *comp, QWidget *parent)
 InventariosView::~InventariosView() {}
 
 
-int InventariosView::sacaWindow() {
-    companyact->sacaWindow(this);
-    return 0;
-}
 
 
 void InventariosView::on_mui_editar_clicked() {

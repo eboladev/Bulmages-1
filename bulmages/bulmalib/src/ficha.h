@@ -68,7 +68,7 @@ public slots:
     /// Despu&eacute;s quedar&aacute; obsoleto.
     virtual void on_mui_cancelar_clicked();
     virtual void on_mui_guardar_clicked();
-
+    virtual void on_customContextMenuRequested(const QPoint &pos);
 signals:
     virtual void cerrar();
 };
