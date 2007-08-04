@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include "ficha.h"
+#include "fichacfg.h"
 
 #include <QMenu>
 
@@ -183,9 +184,10 @@ void Ficha::on_customContextMenuRequested(const QPoint &pos) {
     QAction *avprint = popup->addAction(tr("Imprimir Ficha"));
     QAction *opcion = popup->exec(QCursor::pos());
     if (opcion == avconfig) {
-	_depura("Opciones Avanzadas de configuracion", 2);
+	FichaCfg *fich = new FichaCfg(empresaBase(), this, 0);
     } else if (opcion == avprint) {
         Ficha::imprimir();
     } // end if
     delete popup;
 }
+
