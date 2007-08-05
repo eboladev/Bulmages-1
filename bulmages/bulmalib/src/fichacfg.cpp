@@ -52,6 +52,29 @@ FichaCfg::FichaCfg(EmpresaBase *emp, Ficha *parent, Qt::WFlags f) : BLWidget(emp
     } // end while
     delete cur;
 
+/// Miramos los temas de DBRecord
+    mui_formtablename->setText(m_ficha->tableName());
+    mui_formcampoindice->setText(m_ficha->campoId());
+
+    QList<DBCampo *> *lista = m_ficha->lista();
+
+     mui_formelements->setRowCount(lista->size());
+     mui_formelements->setColumnCount(3);
+
+
+    /// Impresion de la tabla de contenidos.
+    for (int j = 0; j < lista->size(); ++j) {
+        DBCampo *campo = lista->at(j);
+		    QTableWidgetItem *newItem = new QTableWidgetItem(campo->nomcampo());
+    		    mui_formelements->setItem(j, 0, newItem);
+
+		    QTableWidgetItem *newItem1 = new QTableWidgetItem(campo->nompresentacion());
+    		    mui_formelements->setItem(j, 1, newItem1);
+
+		    QTableWidgetItem *newItem2 = new QTableWidgetItem(campo->valorcampo());
+    		    mui_formelements->setItem(j, 2, newItem2);
+    } // end for
+    
     _depura("FichaCfg::FichaCfg", 0);
 }
 
