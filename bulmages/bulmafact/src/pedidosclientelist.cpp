@@ -90,8 +90,11 @@ void PedidosClienteList::presentar() {
 
     /// Hacemos el calculo del total.
     cursor2 *cur = empresaBase()->cargacursor("SELECT SUM(totalpedidocliente) AS total FROM pedidocliente LEFT JOIN cliente ON pedidocliente.idcliente=cliente.idcliente LEFT JOIN almacen ON pedidocliente.idalmacen = almacen.idalmacen WHERE 1 = 1 " + generarFiltro());
-    m_total->setText(cur->valor("total"));
-    delete cur;
+    /// Esta consulta podria resultar NULL por problemas de permisos y debe tratarse el caso.
+    if (cur) {
+       m_total->setText(cur->valor("total"));
+       delete cur;
+    } // end if
     _depura("END PedidosClienteList::presenta", 0);
 }
 

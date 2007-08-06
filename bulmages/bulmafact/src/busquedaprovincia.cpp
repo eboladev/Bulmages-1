@@ -58,6 +58,8 @@ void BusquedaProvincia::setProvincia(QString provincia) {
     if (m_cursorcombo != NULL)
         delete m_cursorcombo;
     m_cursorcombo = companyact->cargacursor("SELECT * FROM provincia ORDER BY provincia");
+    /// Si ha habido un problema con la base de datos salimos.
+    if (!m_cursorcombo) return;
 
     int i = 0;
     int i1 = 0;

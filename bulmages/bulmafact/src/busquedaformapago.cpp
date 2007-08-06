@@ -57,6 +57,7 @@ void BusquedaFormaPago::setidforma_pago(QString idforma_pago) {
     if (m_cursorcombo != NULL)
         delete m_cursorcombo;
     m_cursorcombo = empresaBase()->cargacursor("SELECT * FROM forma_pago");
+    if (!m_cursorcombo) return;
     int i = 0;
     int i1 = 0;
     clear();
@@ -126,6 +127,7 @@ void BusquedaFormaPago::m_activated(int index) {
 QString BusquedaFormaPago::idforma_pago() {
     _depura("BusquedaFormaPago::idforma_pago", 0);
     _depura("END BusquedaFormaPago::idforma_pago", 0);
+    if (!m_cursorcombo) return "0";
     return (m_cursorcombo->valor("idforma_pago", currentIndex() - 1));
 }
 

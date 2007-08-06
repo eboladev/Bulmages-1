@@ -57,6 +57,8 @@ void BusquedaBanco::setidbanco(QString idbanco) {
     if (m_cursorcombo != NULL)
         delete m_cursorcombo;
     m_cursorcombo = companyact->cargacursor("SELECT * FROM banco");
+    /// Tratamos el caso en que no se haya devuelto nada.
+    if (m_cursorcombo == NULL) return;
     int i = 0;
     int i1 = 0;
     clear();
@@ -86,6 +88,8 @@ void BusquedaBanco::setEmpresaBase(company *comp) {
 QString BusquedaBanco::idbanco() {
     _depura("BusquedaBanco::idbanco", 0);
     _depura("END BusquedaBanco::idbanco", 0);
+    /// Como puede haber habido un error con la base de datos debemos tratar dicho caso.
+    if (!m_cursorcombo) return "0";
     return m_cursorcombo->valor("idbanco", currentIndex() - 1);
 }
 

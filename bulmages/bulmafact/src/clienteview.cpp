@@ -362,13 +362,6 @@ void ClienteView::on_mui_aceptar_clicked() {
 }
 
 
-void ClienteView::on_mui_imprimir_clicked() {
-    _depura("ClienteView::on_mui_imprimir_clicked", 0);
-    DBRecord::imprimir();
-    _depura("END ClienteView::on_mui_imprimir_clicked", 0);
-}
-
-
 void ClienteView::pintaidcliente(QString) {
     _depura("ClienteView::pintaidcliente", 0);
 }

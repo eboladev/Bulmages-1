@@ -100,10 +100,13 @@ void FacturasList::presentar() {
 
     /// Hacemos el calculo del total.
     cursor2 *cur = empresaBase()->cargacursor("SELECT SUM(totalfactura) AS total, SUM(bimpfactura) AS base, SUM(impfactura) AS impuestos FROM factura LEFT JOIN cliente ON factura.idcliente = cliente.idcliente LEFT JOIN almacen ON factura.idalmacen = almacen.idalmacen WHERE 1 = 1 " + generaFiltro());
-    mui_totalbimponible->setText(cur->valor("base"));
-    mui_totalimpuestos->setText(cur->valor("impuestos"));
-    mui_totalfacturas->setText(cur->valor("total"));
-    delete cur;
+    /// Esta consulta podria resultar en NULL y por tanto debe tratarse el caso
+    if (cur ) {
+	mui_totalbimponible->setText(cur->valor("base"));
+	mui_totalimpuestos->setText(cur->valor("impuestos"));
+	mui_totalfacturas->setText(cur->valor("total"));
+	delete cur;
+    } // end if
 
     _depura("END FacturasList::presentar", 0);
 }

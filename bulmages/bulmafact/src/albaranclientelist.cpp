@@ -146,10 +146,14 @@ void AlbaranClienteList::presentar() {
     _depura("AlbaranClienteList::presentar");
 
     mui_list->cargar("SELECT *, totalalbaran AS total, bimpalbaran AS base, impalbaran AS impuestos FROM albaran LEFT JOIN  cliente ON albaran.idcliente = cliente.idcliente LEFT JOIN almacen ON albaran.idalmacen = almacen.idalmacen LEFT JOIN forma_pago ON albaran.idforma_pago = forma_pago.idforma_pago WHERE 1 = 1 " + generarFiltro());
+
     /// Hacemos el calculo del total.
     cursor2 *cur = empresaBase()->cargacursor("SELECT SUM(totalalbaran) AS total FROM albaran LEFT JOIN cliente ON albaran.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen = albaran.idalmacen where 1 = 1 " + generarFiltro());
-    m_total->setText(cur->valor("total"));
-    delete cur;
+    /// Esta consulta podría resultar NULA y debe tratarse el caso
+    if (cur) {
+        m_total->setText(cur->valor("total"));
+        delete cur;
+    } // end if
 
     _depura("End AlbaranClienteList::presentar");
 }

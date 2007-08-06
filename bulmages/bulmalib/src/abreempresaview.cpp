@@ -277,12 +277,16 @@ void abreempresaview::guardaArchivo()
 
   /// Deshabilitamos las alertas para que no aparezcan avisos con bases de datos
   /// que no son del sistema.
+  QString alertas = confpr->valor(CONF_ALERTAS_DB);
   confpr->setValor(CONF_ALERTAS_DB, "No");
   /// Nos conectamos a la base de datos 'template1' para obtener un listado de todas
   /// las bases de datos existentes.
   postgresiface2 *db;
   db = new postgresiface2();
-  db->inicializa(QString("template1"));
+  if (db->inicializa(QString("template1")) )
+  if (db->inicializa(QString("bulmafact")) )
+  if (db->inicializa(QString("bulmacont")) )
+	return;
   cursor2 *curs = db->cargacursor("SELECT datname FROM pg_database");
 
   /// Preparamos el listado
@@ -295,13 +299,13 @@ void abreempresaview::guardaArchivo()
   } // end while
   delete curs;
   delete db;
-  confpr->setValor(CONF_ALERTAS_DB, "Yes");
+  confpr->setValor(CONF_ALERTAS_DB, alertas);
   file.close();
   _depura("END abreempresaview::guardaArchivo", 0);
 }
 
-void abreempresaview::trataEmpresa (QString empresa, QFile *file)
-{
+void abreempresaview::trataEmpresa (QString empresa, QFile *file) {
+  _depura("abreempresaview::trataEmpresa", 0, empresa);
   QTextStream filestr(file);
   postgresiface2 *db1;
   QString nombre;
@@ -313,12 +317,14 @@ void abreempresaview::trataEmpresa (QString empresa, QFile *file)
     db1->inicializa(empresa);
     try {
       cursor2 *cursa = db1->cargacursor("SELECT * FROM pg_tables WHERE tablename = 'configuracion'");
+      if (!cursa) return;
       if(cursa->eof()) {
 	delete cursa;
 	return;
       } // end if
       delete cursa;
       cursa = db1->cargacursor("SELECT * FROM configuracion WHERE nombre = 'Tipo'");
+      if(!cursa) return;
       if(!cursa->eof()) {
 	tipo = cursa->valor("valor");
 	nomdb = empresa;
@@ -328,6 +334,7 @@ void abreempresaview::trataEmpresa (QString empresa, QFile *file)
 	return;
       } // end if
       cursa = db1->cargacursor("SELECT * FROM configuracion WHERE nombre = 'NombreEmpresa'");
+      if (!cursa) return;
       if (!cursa->eof()) {
 	nombre = cursa->valor("valor");
 	delete cursa;
@@ -336,10 +343,12 @@ void abreempresaview::trataEmpresa (QString empresa, QFile *file)
 	return;
       } // end if
       cursa = db1->cargacursor("SELECT * FROM configuracion WHERE nombre = 'Ejercicio'");
-      if(!cursa->eof())
-	ano = cursa->valor("valor");
-      // end if
-      delete cursa;
+      if (cursa) {
+	if(!cursa->eof())
+		ano = cursa->valor("valor");
+	// end if
+	delete cursa;
+      } // end if
     } catch( ... ) {}
     if(nomdb != "") {
       if(tipo == m_tipo || m_tipo == "")
@@ -356,13 +365,13 @@ void abreempresaview::trataEmpresa (QString empresa, QFile *file)
 
     delete db1;
   } // end if
+  _depura("END abreempresaview::trataEmpresa", 0, empresa);
 }
 
 /// Recarga la lista de mui_empresas haciendo las gestiones necesarias con el motor de
 /// base de datos. Al mismo tiempo guarda el archivo de bases de datos en el
 /// archivo 'LISTEMPRESAS'.
-void abreempresaview::on_mui_actualizar_clicked()
-{
+void abreempresaview::on_mui_actualizar_clicked() {
   _depura("abreempresaview::on_mui_actualizar_clicked", 0);
   guardaArchivo();
   _depura("END abreempresaview::on_mui_actualizar_clicked", 0);

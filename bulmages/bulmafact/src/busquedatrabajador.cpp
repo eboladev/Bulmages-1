@@ -56,6 +56,7 @@ void BusquedaTrabajador::setidtrabajador(QString idtrabajador) {
     if (m_cursorcombo != NULL)
         delete m_cursorcombo;
     m_cursorcombo = empresaBase()->cargacursor("SELECT * FROM trabajador");
+    if (!m_cursorcombo) return;
     int i = 0;
     int i1 = 0;
     clear();
@@ -79,6 +80,7 @@ void BusquedaTrabajador::setidtrabajador(QString idtrabajador) {
 QString BusquedaTrabajador::idtrabajador() {
     _depura("BusquedaTrabajador::idtrabajador", 0);
     _depura("END BusquedaTrabajador::idtrabajador", 0);
+    if (!m_cursorcombo) return "0";
     return m_cursorcombo->valor("idtrabajador", currentIndex() - 1);
 }
 

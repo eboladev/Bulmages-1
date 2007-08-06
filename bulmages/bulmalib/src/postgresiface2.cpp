@@ -64,7 +64,7 @@ cursor2::cursor2(QString nombre, PGconn *conn1, QString SQLQuery) {
         _depura(SQLQuery, 0);
         result = PQexec(conn, SQLQuery.toAscii().data());
 
-        /// TODO: Switch en pruebas 9/5/07. Si todo OK borrarlo pasado 9/6/07.
+
         switch (PQresultStatus(result)) {
             case PGRES_COMMAND_OK:
                 break;
@@ -77,7 +77,11 @@ cursor2::cursor2(QString nombre, PGconn *conn1, QString SQLQuery) {
                 if (confpr->valor(CONF_ALERTAS_DB) == "Yes") {
                     msgError(QString(QObject::tr("Error al hacer la consulta con la base de datos.")) + "\n:: " + QString(PQresultErrorField(result, PG_DIAG_MESSAGE_PRIMARY)) + " ::", SQLQuery + QString("\n") + (QString) PQerrorMessage(conn));
                 } // end if
-                g_main->statusBar()->showMessage(QString(PQresultErrorField(result, PG_DIAG_MESSAGE_PRIMARY)), 4000);
+
+//		if (g_main->statusBar() ) {
+//                	g_main->statusBar()->showMessage(QString(PQresultErrorField(result, PG_DIAG_MESSAGE_PRIMARY)), 4000);
+//		} // end if
+
                 PQclear(result);
                 throw -1;
                 break;
@@ -430,10 +434,10 @@ cursor2 *postgresiface2::cargacursor(QString Query, QString nomcursor) {
     try {
         cur = new cursor2(nomcursor, conn, Query);
     } catch (...) {
-        _depura("postgresiface2::cargacursor La base de datos genero un error: ", 10);
-        _depura(Query, 10);
+        _depura("postgresiface2::cargacursor La base de datos genero un error: ", 0);
         delete cur;
-        throw -1;
+//        throw -1;
+	return NULL;
     } // end try
     _depura ("END postgresiface2::cargacursor", 0, nomcursor);
     return cur;

@@ -58,6 +58,7 @@ void BusquedaSerieFactura::setcodigoserie_factura(QString codigo) {
     if (m_cursorcombo != NULL)
         delete m_cursorcombo;
     m_cursorcombo = empresaBase()->cargacursor("SELECT * FROM serie_factura");
+    if(!m_cursorcombo) return;
     int i = 0;
     int i1 = 0;
     int i2 = 0;
@@ -103,6 +104,7 @@ QString BusquedaSerieFactura::codigoserie_factura() {
 void BusquedaSerieFactura::setEmpresaBase(company *comp) {
         PEmpresaBase::setEmpresaBase(comp);
 	cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM configuracion WHERE nombre ='SerieFacturaDefecto'");
+        if (!cur) return;
 	if (!cur->eof()) {
 		m_codigoserie_factura = cur->valor("valor");
 	} // end if

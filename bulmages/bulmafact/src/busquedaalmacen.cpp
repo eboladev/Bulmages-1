@@ -55,6 +55,7 @@ void BusquedaAlmacen::setidalmacen(QString idalmacen) {
         delete m_cursorcombo;
     } // end if
     m_cursorcombo = empresaBase()->cargacursor("SELECT * FROM almacen ORDER BY nomalmacen");
+    if (!m_cursorcombo) return;
     int i = 0;
     int i1 = 0;
     int i2 = 0;
@@ -95,10 +96,12 @@ void BusquedaAlmacen::setEmpresaBase(company *comp) {
     _depura("BusquedaAlmacen::setEmpresaBase", 0);
     PEmpresaBase::setEmpresaBase(comp);
     cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM configuracion WHERE nombre ='AlmacenDefecto'");
-    if (!cur->eof()) {
-        m_codigoalmacen = cur->valor("valor");
+    if (cur) {
+	if (!cur->eof()) {
+		m_codigoalmacen = cur->valor("valor");
+	} // end if
+	delete cur;
     } // end if
-    delete cur;
     _depura("END BusquedaAlmacen::setEmpresaBase", 0);
 }
 

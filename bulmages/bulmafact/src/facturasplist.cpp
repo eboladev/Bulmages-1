@@ -109,6 +109,8 @@ void FacturasProveedorList::presentar() {
 
     /// Hacemos el calculo del total.
     cursor2 *cur = empresaBase()->cargacursor("SELECT SUM(totalfacturap) AS total FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  " + generaFiltro());
+    /// Si ha habido un error con el query salimos
+    if (!cur) return;
     m_total->setText(cur->valor("total"));
     delete cur;
     _depura("END FacturasProveedorList::presentar", 0);

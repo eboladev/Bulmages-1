@@ -65,17 +65,21 @@ void FichaBf::calculaypintatotales() {
 
 
     cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM configuracion WHERE nombre = 'IRPF'");
-    if (!cur->eof()) {
-        irpf = Fixed(cur->valor("valor"));
+    if (cur) {
+	if (!cur->eof()) {
+		irpf = Fixed(cur->valor("valor"));
+	} // end if
+	delete cur;
     } // end if
-    delete cur;
 
     if (exists("idproveedor") && DBvalue("idproveedor") != "") {
         cur = empresaBase()->cargacursor("SELECT irpfproveedor FROM proveedor WHERE idproveedor = " + DBvalue("idproveedor"));
-        if (!cur->eof()) {
-            irpf = Fixed(cur->valor("irpfproveedor"));
-        } // end if
-        delete cur;
+        if (cur) {
+		if (!cur->eof()) {
+		irpf = Fixed(cur->valor("irpfproveedor"));
+		} // end if
+		delete cur;
+	} // end if
     } // end if
 
     for (int i = 0; i < m_listalineas->rowCount(); ++i) {
@@ -166,10 +170,12 @@ void FichaBf::generaRML() {
     Fixed irpf("0");
 
     cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM configuracion WHERE nombre = 'IRPF'");
-    if (!cur->eof()) {
-        irpf = Fixed(cur->valor("valor"));
+    if (cur) {
+	if (!cur->eof()) {
+		irpf = Fixed(cur->valor("valor"));
+	} // end if
+	delete cur;
     } // end if
-    delete cur;
 
     /// Copiamos el archivo.
 #ifdef WINDOWS

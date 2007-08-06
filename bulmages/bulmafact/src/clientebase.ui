@@ -189,46 +189,6 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_imprimir" >
-          <property name="enabled" >
-           <bool>true</bool>
-          </property>
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Imprimir</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Imprimir</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_print1.png</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="shortcut" >
-           <string>Ctrl+P</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <spacer>
           <property name="orientation" >
            <enum>Qt::Horizontal</enum>
@@ -903,16 +863,6 @@
  <layoutdefault spacing="2" margin="5" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaFormaPago</class>
-   <extends>QComboBox</extends>
-   <header>busquedaformapago.h</header>
-  </customwidget>
-  <customwidget>
-   <class>FacturasList</class>
-   <extends>QWidget</extends>
-   <header>facturaslist.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaProvincia</class>
    <extends>QWidget</extends>
    <header>busquedaprovincia.h</header>
@@ -941,6 +891,16 @@
    <class>AlbaranClienteList</class>
    <extends>QWidget</extends>
    <header>albaranclientelist.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaFormaPago</class>
+   <extends>QComboBox</extends>
+   <header>busquedaformapago.h</header>
+  </customwidget>
+  <customwidget>
+   <class>FacturasList</class>
+   <extends>QWidget</extends>
+   <header>facturaslist.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

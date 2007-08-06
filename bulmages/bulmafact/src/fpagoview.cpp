@@ -48,6 +48,7 @@ void FPagoView::pintar() {
     if (m_cursorFPagoView != NULL)
         delete m_cursorFPagoView;
     m_cursorFPagoView = empresaBase()->cargacursor("SELECT * FROM forma_pago ORDER BY idforma_pago");
+    if (!m_cursorFPagoView) return;
     mui_lista->clear();
     while (!m_cursorFPagoView->eof()) {
         new QListWidgetItem(m_cursorFPagoView->valor("descforma_pago"), mui_lista);

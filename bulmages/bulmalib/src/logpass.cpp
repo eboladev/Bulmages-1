@@ -48,7 +48,7 @@ logpass::~logpass() {}
 
 /// Valida si postgres puede abrir bases de datos y si no es asi pide login y password.
 void logpass::validar() {
-    _depura("logpass::validar()");
+    _depura("logpass::validar");
     m_login->setText(postgresiface2::sanearCadena(m_login->text()));
     m_authOK = false;
 
@@ -57,10 +57,24 @@ void logpass::validar() {
 
     /// Comprobamos si es un usuario v&aacute;lido.
     metabase = new postgresiface2();
-    if (!metabase->inicializa("template1")) {
+    if (!metabase->inicializa("bulmafact")) {
         m_authOK = true;
     } // end if
     delete metabase;
+    if (!m_authOK) {
+	metabase = new postgresiface2();
+	if (!metabase->inicializa("bulmacont")) {
+		m_authOK = true;
+	} // end if
+	delete metabase;
+    } // end if
+    if (!m_authOK) {
+	metabase = new postgresiface2();
+	if (!metabase->inicializa("template1")) {
+		m_authOK = true;
+	} // end if
+	delete metabase;
+    } // end if
 
     /// Si es v&aacute;lido abrimos el selector y si no mostramos un error y limpiamos
     /// el formulario.
@@ -74,5 +88,6 @@ void logpass::validar() {
         m_password->setText("");
         m_login->setFocus();
     } // end if
+    _depura("END logpass::validar");
 }
 

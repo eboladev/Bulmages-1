@@ -75,6 +75,28 @@ FichaCfg::FichaCfg(EmpresaBase *emp, Ficha *parent, Qt::WFlags f) : BLWidget(emp
     		    mui_formelements->setItem(j, 2, newItem2);
     } // end for
     
+
+    /// Privilegios de Usuario
+    QString queryusers = "SELECT usename, has_table_privilege(pg_user.usename, '"+m_ficha->tableName()+"', 'SELECT') AS pselect" \
+    ", has_table_privilege(pg_user.usename, '"+m_ficha->tableName()+"', 'INSERT') AS pinsert" \
+    ", has_table_privilege(pg_user.usename, '"+m_ficha->tableName()+"', 'UPDATE') AS pupdate" \
+    ", has_table_privilege(pg_user.usename, '"+m_ficha->tableName()+"', 'RULE') AS prules  FROM pg_user";
+    cur = empresaBase()->cargacursor(queryusers);
+
+     mui_usertable->setRowCount(cur->numregistros());
+     mui_usertable->setColumnCount(cur->numcampos());
+     i = 0;
+    while (!cur->eof()) {
+	for (int j = 0 ; j < cur->numcampos() ; j++) {
+		    QTableWidgetItem *newItem = new QTableWidgetItem(cur->valor(j, i));
+    		    mui_usertable->setItem(i, j, newItem);
+	} // end for
+	cur->siguienteregistro();
+	i++;
+    } // end while
+    delete cur;
+
+
     _depura("FichaCfg::FichaCfg", 0);
 }
 

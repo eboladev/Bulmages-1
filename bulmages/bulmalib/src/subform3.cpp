@@ -654,6 +654,10 @@ void SubForm3::cargar(cursor2 *cur) {
     if (m_primero)
         cargaconfig();
 
+    /// Si hay un problema con el cursor, se sale antes de generar Segmentation Fault.
+    if (cur == NULL) return;
+
+
     /// Ponemos la consulta a la vista para que pueda ser editada.
     mui_query->setPlainText(cur->query());
 
@@ -819,9 +823,13 @@ void SubForm3::setOrdenPorQuery(bool ordenactivado) {
 
 void SubForm3::cargar(QString query) {
     _depura("SubForm3::cargar", 0);
-    cursor2 *cur = empresaBase()->cargacursor(query);
-    cargar(cur);
-    delete cur;
+    try {
+       cursor2 *cur = empresaBase()->cargacursor(query);
+       cargar(cur);
+       delete cur;
+    } catch (...) {
+       _depura("SubForm3::cargar", 2, "Error en la carga de datos");
+    } // end try
     _depura("END SubForm3::cargar", 0);
 }
 

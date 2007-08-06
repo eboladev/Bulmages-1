@@ -150,6 +150,8 @@ void AlbaranesProveedor::presentar() {
                                         "albaranp.idproveedor = proveedor.idproveedor LEFT " \
                                         "JOIN almacen ON albaranp.idalmacen = almacen.idalmacen " \
                                         "WHERE 1 = 1 " + generaFiltro());
+	/// En caso de que el query haya fallado salimos.
+	if (!cur) return;
         m_total->setText(cur->valor("total"));
         delete cur;
     }
