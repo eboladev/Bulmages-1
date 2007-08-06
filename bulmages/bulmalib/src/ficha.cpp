@@ -22,6 +22,7 @@
 #include "fichacfg.h"
 
 #include <QMenu>
+#include <QToolButton>
 
 Ficha::Ficha(QWidget *parent, Qt::WFlags f, edmode modo) : BLWidget(parent, f), DBRecord(NULL), dialogChanges(this) {
     _depura("Ficha::Ficha", 0);
@@ -175,10 +176,15 @@ void Ficha::meteWindow(QString nom, QObject *obj, bool compdup) {
     if (empresaBase() != NULL) {
         empresaBase()->meteWindow(nom, obj, compdup);
     } // end if
+
+    /// De Forma rapida hacemos un tratamiento de los permisos
+    setDBTableName(tableName());
+
     _depura("END Ficha::meteWindow", 0);
 }
 
 void Ficha::on_customContextMenuRequested(const QPoint &pos) {
+    _depura("Ficha::on_customContextMenuRequested", 0);
     QMenu *popup = new QMenu(this);
     QAction *avconfig = popup->addAction(tr("Opciones Avanzadas de Ficha"));
     QAction *avprint = popup->addAction(tr("Imprimir Ficha"));
@@ -189,5 +195,28 @@ void Ficha::on_customContextMenuRequested(const QPoint &pos) {
         Ficha::imprimir();
     } // end if
     delete popup;
+    _depura("END Ficha::on_customContextMenuRequested", 0);
 }
 
+void Ficha::setDBTableName(QString nom) {
+    _depura("Ficha::setDBTableName", 0);
+    DBRecord::setDBTableName(nom);
+
+    cursor2 *cur = empresaBase()->cargacursor("SELECT has_table_privilege('"+nom+"', 'INSERT') AS pins");
+    if(cur) {
+	if (cur->valor("pins") == "f") {
+		/// Buscamos los permisos que tiene el usuario y desactivamos botones.
+		QToolButton *b = findChild<QToolButton *>("mui_guardar");
+		if (b) b->setDisabled(TRUE);
+		b = findChild<QToolButton *>("mui_borrar");
+		if (b) b->setDisabled(TRUE);
+	} // end if
+    } else {
+		/// Buscamos los permisos que tiene el usuario y desactivamos botones.
+		QToolButton *b = findChild<QToolButton *>("mui_guardar");
+		if (b) b->setDisabled(TRUE);
+		b = findChild<QToolButton *>("mui_borrar");
+		if (b) b->setDisabled(TRUE);
+    } // end if
+    _depura("END Ficha::setDBTableName", 0);
+}

@@ -57,7 +57,7 @@ ContratoView::ContratoView(company *comp, QWidget *parent)
 
         /// Inicializamos FichaBf
         setListaLineas(mui_lineas);
-        comp->meteWindow(windowTitle(), this, FALSE);
+        meteWindow(windowTitle(), this, FALSE);
     } catch (...) {
         mensajeInfo(tr("Error al crear la contrato"));
     }
@@ -99,7 +99,7 @@ int ContratoView::cargar(QString id) {
         Contrato::cargar(id);
         if (DBvalue("idcontrato") != "") {
             setWindowTitle(tr("Contrato") + " " + DBvalue("refcontrato") + " " + DBvalue("idcontrato"));
-            empresaBase()->meteWindow(windowTitle(), this);
+            meteWindow(windowTitle(), this);
         } // end if
         mui_lineas->cargar(id);
         subform2->cargar("SELECT * FROM factura LEFT JOIN cliente ON cliente.idcliente = factura.idcliente LEFT JOIN almacen ON factura.idalmacen = almacen.idalmacen  WHERE factura.idcliente ="+DBvalue("idcliente")+ " AND reffactura = '"+DBvalue("refcontrato")+"'");

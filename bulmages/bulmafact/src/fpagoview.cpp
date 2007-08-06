@@ -36,7 +36,7 @@ FPagoView::FPagoView(company *emp,QWidget *parent)
     setModoEdicion();
     m_cursorFPagoView = NULL;
     m_item = NULL;
-    empresaBase()->meteWindow(windowTitle(), this);
+    meteWindow(windowTitle(), this);
     pintar();
     _depura("END FPagoView::FPagoView", 0);
 }

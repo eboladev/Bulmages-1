@@ -62,7 +62,7 @@ ArticuloView::ArticuloView(company *comp, QWidget *parent)
         m_componentes->cargar("0");
 
         m_imagen->setPixmap(QPixmap("/usr/share/bulmages/logopeq.png"));
-        empresaBase()->meteWindow(windowTitle(), this, FALSE);
+        meteWindow(windowTitle(), this, FALSE);
         dialogChanges_cargaInicial();
     } catch (...) {
         mensajeInfo(tr("Error al crear el articulo"));
@@ -143,10 +143,7 @@ int ArticuloView::cargar(QString idarticulo) {
         pintar();
 
         /// Metemosl a ventana en el workSpace para que corrija el titulo.
-        ret = empresaBase()->meteWindow(windowTitle(), this);
-        if (ret) {
-            throw -1;
-        } // end if
+        meteWindow(windowTitle(), this);
 
         /// Iniciamos el control de cambios para que se considere que no hay cambios realizados.
         dialogChanges_cargaInicial();
@@ -172,6 +169,7 @@ int ArticuloView::cargarcomboiva(QString idIva) {
     } // end if
     m_combotipo_iva->clear();
     m_cursorcombo = empresaBase()->cargacursor("SELECT * FROM tipo_iva");
+    if (!m_cursorcombo) return -1;
     if (m_cursorcombo->error()) {
         delete m_cursorcombo;
         return -1;
@@ -206,6 +204,7 @@ void ArticuloView::on_m_codigocompletoarticulo_editingFinished() {
 
     QString SQlQuery = "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + m_codigocompletoarticulo->text() + "'";
     cursor2 *cur = empresaBase()->cargacursor(SQlQuery);
+    if (!cur) return;
     if (!cur->eof()) {
         cargar(cur->valor("idarticulo"));
     } // end if
@@ -243,6 +242,7 @@ int ArticuloView::guardar() {
         /// Guardamos la imagen, si es que existe.
         if (m_archivoimagen != "") {
             cursor2 *cur1 = empresaBase()->cargacursor("SELECT codigocompletoarticulo FROM articulo WHERE idarticulo = " + DBvalue("idarticulo"));
+	    if (!cur1) throw -1;
             QString cadena = "cp " + m_archivoimagen + " " + confpr->valor(CONF_DIR_IMG_ARTICLES) + cur1->valor("codigocompletoarticulo") + ".jpg";
             delete cur1;
             system(cadena.toAscii().constData());

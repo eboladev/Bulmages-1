@@ -65,7 +65,7 @@ PedidoClienteView::PedidoClienteView(company *comp, QWidget *parent)
         m_refpedidocliente->setEmpresaBase(comp);
         setListaLineas(subform3);
         setListaDescuentos(m_descuentos);
-        comp->meteWindow(windowTitle(), this, FALSE);
+        meteWindow(windowTitle(), this, FALSE);
     } catch (...) {
         mensajeInfo(tr("Error al crear el pedido cliente"));
     } // end try
@@ -225,7 +225,7 @@ int PedidoClienteView::cargar(QString id) {
             throw -1;
         } // end if
         setWindowTitle(tr("Pedido de cliente") + " " + DBvalue("refpedidocliente") + " " + DBvalue("idpedidocliente"));
-        empresaBase()->meteWindow(windowTitle(), this);
+        meteWindow(windowTitle(), this);
         dialogChanges_cargaInicial();
     } catch (...) {
         return -1;

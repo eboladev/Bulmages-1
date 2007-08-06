@@ -70,7 +70,7 @@ AlbaranClienteView::AlbaranClienteView(company *comp, QWidget *parent)
         m_refalbaran->setEmpresaBase(comp);
         setListaLineas(subform2);
         setListaDescuentos(m_descuentos);
-        comp->meteWindow(windowTitle(), this, FALSE);
+        meteWindow(windowTitle(), this, FALSE);
         dialogChanges_cargaInicial();
     } catch (...) {
         mensajeInfo(tr("Error al crear el albaran a cliente"));
@@ -374,7 +374,7 @@ int AlbaranClienteView::cargar(QString id) {
         if (AlbaranCliente::cargar(id))
             throw -1;
         setWindowTitle(tr("Albaran a cliente") + " " + DBvalue("refalbaran") + " " + DBvalue("idalbaran"));
-        empresaBase()->meteWindow(windowTitle(), this);
+        meteWindow(windowTitle(), this);
         dialogChanges_cargaInicial();
     } catch(...) {
         return -1;

@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="contextMenuPolicy" >
-   <enum>Qt::NoContextMenu</enum>
+   <enum>Qt::DefaultContextMenu</enum>
   </property>
   <property name="windowTitle" >
    <string>Nueva factura a cliente</string>
@@ -1559,11 +1559,6 @@
  <layoutdefault spacing="2" margin="2" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaCliente</class>
-   <extends>QWidget</extends>
-   <header>busquedacliente.h</header>
-  </customwidget>
-  <customwidget>
    <class>ListDescuentoFacturaView</class>
    <extends>QWidget</extends>
    <header>listdescfacturaview.h</header>
@@ -1597,6 +1592,11 @@
    <class>ListLinFacturaView</class>
    <extends>QWidget</extends>
    <header>listlinfacturaview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaCliente</class>
+   <extends>QWidget</extends>
+   <header>busquedacliente.h</header>
   </customwidget>
  </customwidgets>
  <resources>

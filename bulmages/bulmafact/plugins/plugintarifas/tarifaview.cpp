@@ -45,8 +45,7 @@ TarifaView::TarifaView(company *comp, QWidget *parent)
     mui_almacen->setidalmacen("");
     mui_list->setEmpresaBase(comp);
 
-    if (empresaBase()->meteWindow(tr("Tarifa edicion"), this))
-        return;
+    meteWindow(tr("Tarifa edicion"), this);
 
     dialogChanges_cargaInicial();
     _depura("TarifaView::END_constructor()\n", 0);
@@ -105,8 +104,7 @@ int TarifaView::cargar(QString idtarifa) {
     mui_list->cargar(formaQuery(idtarifa));
 
     setWindowTitle(tr("Tarifa") + " " + DBvalue("nomtarifa"));
-    if (empresaBase()->meteWindow(windowTitle(), this))
-        return -1;
+    meteWindow(windowTitle(), this);
 
     dialogChanges_cargaInicial();
     /// Tratamiento de excepciones.

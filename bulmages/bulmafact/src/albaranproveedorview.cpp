@@ -76,8 +76,7 @@ AlbaranProveedorView::AlbaranProveedorView(company *comp, QWidget *parent)
         m_totalalbaranp->setAlignment(Qt::AlignRight);
         pintaidforma_pago("0");
         pintaidalmacen("0");
-        if (empresaBase() != NULL)
-            empresaBase()->meteWindow(windowTitle(), this, FALSE);
+        meteWindow(windowTitle(), this, FALSE);
     } catch (...) {
         mensajeInfo(tr("Error al crear el albaran proveedor"));
     } // end try
@@ -355,7 +354,7 @@ int AlbaranProveedorView::cargar(QString id) {
         AlbaranProveedor::cargar(id);
         if (DBvalue("idalbaranp") != "") {
             setWindowTitle(tr("Albaran de proveedor") + " " + DBvalue("refalbaranp") + " " + DBvalue("idalbaranp"));
-            empresaBase()->meteWindow(windowTitle(), this);
+            meteWindow(windowTitle(), this);
             dialogChanges_cargaInicial();
         } // end if
     } catch (...) {

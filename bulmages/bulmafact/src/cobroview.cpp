@@ -49,7 +49,7 @@ CobroView::CobroView(company *comp, QWidget *parent)
         mui_refcobro->setEmpresaBase(comp);
 	mui_idbanco->setEmpresaBase(comp);
         dialogChanges_cargaInicial();
-        empresaBase()->meteWindow(windowTitle(), this, FALSE);
+        meteWindow(windowTitle(), this, FALSE);
     } catch (...) {
         mensajeInfo(tr("Error al crear el cobro"));
     } // end try
@@ -91,7 +91,7 @@ int CobroView::cargar(QString id) {
         setWindowTitle(tr("Cobro") + " " + DBvalue("refcobro") + " " + DBvalue("idcobro"));
         pintar();
         dialogChanges_cargaInicial();
-        empresaBase()->meteWindow(windowTitle(), this);
+        meteWindow(windowTitle(), this);
     } catch (...) {
         return -1;
     } // end try

@@ -60,6 +60,7 @@ public:
     virtual void closeEvent(QCloseEvent *);
     virtual int sacaWindow();
     virtual void meteWindow(QString , QObject *, bool compdup = TRUE);
+    void setDBTableName(QString nom);
 
 public slots:
     virtual void on_mui_aceptar_clicked();

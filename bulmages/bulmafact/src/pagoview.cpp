@@ -48,7 +48,7 @@ PagoView::PagoView(company *comp, QWidget *parent)
         mui_proveedor->setEmpresaBase(comp);
         mui_refpago->setEmpresaBase(comp);
         mui_idbanco->setEmpresaBase(comp);
-        empresaBase()->meteWindow(windowTitle(), this, FALSE);
+        meteWindow(windowTitle(), this, FALSE);
 	pintar();
         dialogChanges_cargaInicial();
     } catch (...) {
@@ -71,7 +71,7 @@ int PagoView::cargar(QString id) {
             throw -1;
         setWindowTitle(tr("Pago") + " " + DBvalue("refpago")+" "+ DBvalue("idpago"));
         dialogChanges_cargaInicial();
-        empresaBase()->meteWindow(windowTitle(), this);
+        meteWindow(windowTitle(), this);
     } catch (...) {
         return -1;
     } // end try

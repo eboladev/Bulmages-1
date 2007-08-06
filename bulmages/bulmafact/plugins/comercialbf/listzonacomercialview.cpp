@@ -44,7 +44,7 @@ ListZonaComercialView::ListZonaComercialView(company *comp, QWidget *parent)
     setupUi(this);
     mui_listado->setEmpresaBase(comp);
     mui_listado->cargar();
-    empresaBase()->meteWindow(windowTitle(), this);
+    meteWindow(windowTitle(), this);
     _depura("END_ListZonaComercialView::ListZonaComercialView", 0);
 }
 

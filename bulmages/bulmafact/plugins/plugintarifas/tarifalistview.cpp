@@ -33,7 +33,7 @@ TarifaListView::TarifaListView(company *comp, QWidget *parent, edmode editmodo)
     setupUi(this);
     mui_list->setEmpresaBase(empresaBase());
     mui_list->cargar();
-    comp->meteWindow(tr("Tarifas"), this);
+    meteWindow(tr("Tarifas"), this);
     _depura("TarifaListView::END_TarifaListView()\n", 0);
 }
 

@@ -65,7 +65,7 @@ FacturaProveedorView::FacturaProveedorView(company *comp, QWidget *parent)
         m_totalDiscounts->setAlignment(Qt::AlignRight);
         m_totalfacturap->setReadOnly(TRUE);
         m_totalfacturap->setAlignment(Qt::AlignRight);
-        comp->meteWindow(windowTitle(), this, FALSE);
+        meteWindow(windowTitle(), this, FALSE);
     } catch (...) {
         mensajeInfo(tr("Error al crear la factura proveedor"));
     } // end try
@@ -220,7 +220,7 @@ int FacturaProveedorView::cargar(QString id) {
     try {
         FacturaProveedor::cargar(id);
         setWindowTitle(tr("Factura de proveedor") + " " + DBvalue("reffacturap") + " - " + DBvalue("numfacturap"));
-        empresaBase()->meteWindow(windowTitle(), this);
+        meteWindow(windowTitle(), this);
         dialogChanges_cargaInicial();
     } catch (...) {
         return -1;

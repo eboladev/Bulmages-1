@@ -60,6 +60,8 @@ void BusquedaTipoIVADelegate::set(const QString &cod) {
         delete m_cursorcombo;
 
     m_cursorcombo = empresaBase()->cargacursor("SELECT desctipo_iva FROM tipo_iva ");
+    /// Comprobamos que no haya habido errores
+    if(!m_cursorcombo) return;
     clear();
     while (!m_cursorcombo->eof()) {
         addItem(m_cursorcombo->valor("desctipo_iva"));

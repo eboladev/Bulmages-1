@@ -55,7 +55,7 @@ ContratosList::ContratosList(company *comp, QWidget *parent, Qt::WFlags flag, ed
     hideBusqueda();
     /// Si estamos en el modo edici&oacute;n metemos la ventana en el workSpace.
     if (m_modo == EditMode) {
-        empresaBase()->meteWindow(windowTitle(), this);
+        meteWindow(windowTitle(), this);
     } else {
         setWindowTitle(tr("Selector de contratos"));
         mui_editar->setHidden(TRUE);

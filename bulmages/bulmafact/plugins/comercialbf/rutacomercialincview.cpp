@@ -48,7 +48,7 @@ RutaComercialIncView::RutaComercialIncView ( company *comp, QWidget *parent )
 	setupUi ( this );
 	mui_rutacomercial->setEmpresaBase ( comp );
 	mui_incidenciacomercial->setEmpresaBase ( comp );
-	empresaBase()->meteWindow ( windowTitle(), this );
+	meteWindow ( windowTitle(), this );
 	_depura ( "END RutaComercialIncView::RutaComercialIncView", 0 );
 }
 
@@ -97,7 +97,7 @@ int RutaComercialIncView::cargar ( QString id, QString id1 )
 	int err = mui_rutacomercial->cargar ( id );
 	err = mui_incidenciacomercial->cargar ( id1 );
 	setWindowTitle ( tr ( "Accion comercial" ) + " " + mui_rutacomercial->DBvalue ( "idrutacomercial" ) + " + " + mui_incidenciacomercial->DBvalue ( "idincidenciacomercial" ) );
-	empresaBase()->meteWindow ( windowTitle(), this );
+	meteWindow ( windowTitle(), this );
 	_depura ( "END RutaComercialIncView::cargar", 0 );
 	return err;
 }

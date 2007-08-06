@@ -84,7 +84,7 @@ FacturaView::FacturaView(company *comp, QWidget *parent)
         m_totalDiscounts->setAlignment(Qt::AlignRight);
         m_totalfactura->setReadOnly(TRUE);
         m_totalfactura->setAlignment(Qt::AlignRight);
-        comp->meteWindow(windowTitle(), this, FALSE);
+        meteWindow(windowTitle(), this, FALSE);
     } catch (...) {
         mensajeInfo(tr("Error al crear la factura"));
     }
@@ -157,7 +157,7 @@ int FacturaView::cargar(QString id) {
         Factura::cargar(id);
         if (DBvalue("idfactura") != "") {
             setWindowTitle(tr("Factura") + " " + DBvalue("reffactura") + " " + DBvalue("idfactura"));
-            empresaBase()->meteWindow(windowTitle(), this);
+            meteWindow(windowTitle(), this);
         } // end if
         dialogChanges_cargaInicial();
     } catch (...) {

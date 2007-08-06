@@ -42,7 +42,7 @@ InventarioView::InventarioView(company *comp, QWidget *parent)
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
     subform2->setEmpresaBase(comp);
     setListControlStock(subform2);
-    comp->meteWindow(windowTitle(), this);
+    meteWindow(windowTitle(), this);
     _depura("END InventarioView::InventarioView", 0);
 }
 

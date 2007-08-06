@@ -66,7 +66,7 @@ ClienteView::ClienteView(company *comp, QWidget *parent)
         mui_forma_pago->setidforma_pago("");
 
         /// Metemos la ventana en el workSpace.
-        empresaBase()->meteWindow(windowTitle(), this, FALSE);
+        meteWindow(windowTitle(), this, FALSE);
         dialogChanges_cargaInicial();
         /// Disparamos los plugins.
         res = g_plugins->lanza("ClienteView_ClienteView_Post", this);
@@ -105,7 +105,7 @@ int ClienteView::cargar(QString idcliente) {
     try {
         Cliente::cargar(idcliente);
         setWindowTitle(tr("Cliente") + " " + DBvalue("nomcliente"));
-        empresaBase()->meteWindow(windowTitle(), this);
+        meteWindow(windowTitle(), this);
 
         /// Disparamos los plugins.
         int res = g_plugins->lanza("ClienteView_cargar", this);

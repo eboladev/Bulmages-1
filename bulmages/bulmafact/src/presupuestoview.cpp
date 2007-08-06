@@ -78,7 +78,7 @@ PresupuestoView::PresupuestoView(company *comp, QWidget *parent)
         pintaidforma_pago("0");
         pintaidalmacen("0");
         pintaidtrabajador("0");
-        comp->meteWindow(windowTitle(), this, FALSE);
+        meteWindow(windowTitle(), this, FALSE);
         /// Disparamos los plugins por flanco descendente.
         g_plugins->lanza("PresupuestoView_PresupuestoView_Post", this);
     } catch (...) {
@@ -335,7 +335,7 @@ int PresupuestoView::cargar(QString id) {
         if (res != 0)
             return 0;
         setWindowTitle(tr("Presupuesto") + " " + DBvalue("refpresupuesto") + " " + DBvalue("idpresupuesto"));
-        empresaBase()->meteWindow(windowTitle(), this);
+        meteWindow(windowTitle(), this);
         dialogChanges_cargaInicial();
         _depura("END PresupuestoView::cargar", 0);
     } catch(...) {
