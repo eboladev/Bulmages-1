@@ -211,6 +211,7 @@ void Ficha::setDBTableName(QString nom) {
 		b = findChild<QToolButton *>("mui_borrar");
 		if (b) b->setDisabled(TRUE);
 	} // end if
+	delete cur;
     } else {
 		/// Buscamos los permisos que tiene el usuario y desactivamos botones.
 		QToolButton *b = findChild<QToolButton *>("mui_guardar");

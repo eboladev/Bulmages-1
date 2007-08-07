@@ -56,6 +56,8 @@ PedidosProveedorList::PedidosProveedorList(company *comp, QWidget *parent, Qt::W
     empresaBase()->meteWindow(windowTitle(), this);
     hideBusqueda();
     iniciaForm();
+    /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
+    trataPermisos("pedidoproveedor");
     _depura("END PedidosProveedorList::PedidosProveedorList", 0);
 
 }

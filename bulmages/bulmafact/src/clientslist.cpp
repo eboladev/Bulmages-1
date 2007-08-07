@@ -67,6 +67,8 @@ ClientsList::ClientsList(company *comp, QWidget *parent, Qt::WFlags flag, edmode
         mui_imprimir->setHidden(TRUE);
     } // end if
     presentar();
+    /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
+    trataPermisos("cliente");
     _depura("END ClientsList::ClientsList", 0);
 }
 

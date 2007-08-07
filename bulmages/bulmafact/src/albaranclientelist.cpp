@@ -106,6 +106,8 @@ AlbaranClienteList::AlbaranClienteList(company *comp, QWidget *parent, Qt::WFlag
         empresaBase()->meteWindow(windowTitle(), this);
     hideBusqueda();
     iniciaForm();
+    /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
+    trataPermisos("albaran");
     _depura("END AlbaranClienteList::AlbaranClienteList", 0);
 }
 

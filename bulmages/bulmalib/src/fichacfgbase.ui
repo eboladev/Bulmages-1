@@ -213,6 +213,39 @@
              <number>6</number>
             </property>
             <item>
+             <widget class="QLabel" name="label_5" >
+              <property name="text" >
+               <string>Usuario Actual</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="mui_currentuser" />
+            </item>
+            <item>
+             <spacer>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" >
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" >
+            <property name="margin" >
+             <number>0</number>
+            </property>
+            <property name="spacing" >
+             <number>6</number>
+            </property>
+            <item>
              <widget class="QLabel" name="label_4" >
               <property name="text" >
                <string>Propietario de la tablas</string>

@@ -65,6 +65,8 @@ PresupuestoList::PresupuestoList(company *comp, QWidget *parent, Qt::WFlags flag
     empresaBase()->meteWindow(windowTitle(), this);
     hideBusqueda();
     iniciaForm();
+    /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
+    trataPermisos("presupuesto");
     _depura("END PresupuestoList::PresupuestoList(2)", 0);
 }
 

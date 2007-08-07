@@ -71,6 +71,8 @@ ArticuloList::ArticuloList(company *comp, QWidget *parent, Qt::WFlags flag, edmo
     } // end if
     presentar();
     hideBusqueda();
+    /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
+    trataPermisos("articulo");
     _depura("END ArticuloList::ArticuloList", 0);
 }
 

@@ -10,8 +10,8 @@
     <height>490</height>
    </rect>
   </property>
-  <property name="contextMenuPolicy" >
-   <enum>Qt::DefaultContextMenu</enum>
+  <property name="focusPolicy" >
+   <enum>Qt::StrongFocus</enum>
   </property>
   <property name="windowTitle" >
    <string>Nueva factura a cliente</string>
@@ -614,7 +614,7 @@
        </widget>
       </item>
       <item row="2" column="3" >
-       <widget class="BusquedaFormaPago" native="1" name="m_forma_pago" >
+       <widget class="BusquedaFormaPago" name="m_forma_pago" >
         <property name="minimumSize" >
          <size>
           <width>150</width>
@@ -1559,21 +1559,6 @@
  <layoutdefault spacing="2" margin="2" />
  <customwidgets>
   <customwidget>
-   <class>ListDescuentoFacturaView</class>
-   <extends>QWidget</extends>
-   <header>listdescfacturaview.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaAlmacen</class>
-   <extends>QWidget</extends>
-   <header>busquedaalmacen.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaSerieFactura</class>
-   <extends>QWidget</extends>
-   <header>busquedaseriefactura.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaFecha</class>
    <extends>QWidget</extends>
    <header>../../../bulmalib/src/busquedafecha.h</header>
@@ -1584,11 +1569,6 @@
    <header>busquedareferencia.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaFormaPago</class>
-   <extends>QWidget</extends>
-   <header>busquedaformapago.h</header>
-  </customwidget>
-  <customwidget>
    <class>ListLinFacturaView</class>
    <extends>QWidget</extends>
    <header>listlinfacturaview.h</header>
@@ -1597,6 +1577,26 @@
    <class>BusquedaCliente</class>
    <extends>QWidget</extends>
    <header>busquedacliente.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ListDescuentoFacturaView</class>
+   <extends>QWidget</extends>
+   <header>listdescfacturaview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaAlmacen</class>
+   <extends>QWidget</extends>
+   <header>busquedaalmacen.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaFormaPago</class>
+   <extends>QComboBox</extends>
+   <header>busquedaformapago.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaSerieFactura</class>
+   <extends>QWidget</extends>
+   <header>busquedaseriefactura.h</header>
   </customwidget>
  </customwidgets>
  <resources>

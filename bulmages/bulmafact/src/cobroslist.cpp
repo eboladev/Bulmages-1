@@ -48,6 +48,7 @@ CobrosList::CobrosList(QWidget *parent, Qt::WFlags flag)
     mdb_idcobro = "";
     setSubForm(mui_list);
     hideBusqueda();
+
     _depura("END CobrosList::CobrosList", 0);
 }
 
@@ -75,6 +76,8 @@ CobrosList::CobrosList(company *comp, QWidget *parent, Qt::WFlags flag)
     if(modoEdicion()) 
     	empresaBase()->meteWindow(windowTitle(), this);
     hideBusqueda();
+    /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
+    trataPermisos("cobro");
     _depura("END CobrosList::CobrosList", 0);
 }
 

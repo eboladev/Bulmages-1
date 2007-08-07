@@ -66,6 +66,8 @@ FacturasList::FacturasList(company *comp, QWidget *parent, Qt::WFlags flag, edmo
         empresaBase()->meteWindow(windowTitle(), this);
     } // end if
     hideBusqueda();
+    /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
+    trataPermisos("factura");
     _depura("END FacturasList::FacturasList", 0);
 }
 

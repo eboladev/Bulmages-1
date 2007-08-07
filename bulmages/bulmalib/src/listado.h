@@ -71,6 +71,7 @@ public:
     void setModoEdicion();
     bool modoEdicion();
     bool modoConsulta();
+    void trataPermisos(QString nomtabla);
 
 public slots:
     virtual void on_mui_list_customContextMenuRequested(const QPoint &);

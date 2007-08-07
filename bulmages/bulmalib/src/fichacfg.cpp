@@ -96,6 +96,10 @@ FichaCfg::FichaCfg(EmpresaBase *emp, Ficha *parent, Qt::WFlags f) : BLWidget(emp
     } // end while
     delete cur;
 
+    cur = empresaBase()->cargacursor("SELECT user");
+    if (!cur) return;
+    mui_currentuser->setText(cur->valor("current_user"));
+    delete cur;
 
     _depura("FichaCfg::FichaCfg", 0);
 }

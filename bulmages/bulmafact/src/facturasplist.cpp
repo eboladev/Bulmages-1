@@ -74,6 +74,8 @@ FacturasProveedorList::FacturasProveedorList(company *comp, QWidget *parent)
     empresaBase()->meteWindow(windowTitle(), this);
     hideBusqueda();
     iniciaForm();
+    /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
+    trataPermisos("facturap");
 
     /// Disparamos los plugins.
     g_plugins->lanza("FacturasProveedorList_FacturasProveedorList_Post", this);
