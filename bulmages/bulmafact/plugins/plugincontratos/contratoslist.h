@@ -24,7 +24,7 @@
 #include "pgimportfiles.h"
 #include "company.h"
 #include "subform2bf.h"
-#include "fichabf.h"
+#include "listado.h"
 #include "bulmafact.h"
 
 class myplugincont : public QObject {
@@ -65,7 +65,7 @@ public:
     Tiene dos modos de funcionamiento (Edicion y Seleccion)
 */
 /// \TODO: Deberia crearse la clase Listado para poner en ella mas funcionalidades comunes a los listados.
-class ContratosList : public FichaBf, public Ui_ContratosListBase, public pgimportfiles {
+class ContratosList : public Listado, public Ui_ContratosListBase, public pgimportfiles {
     Q_OBJECT
 
 public:
@@ -89,7 +89,6 @@ private:
 public:
     ContratosList(company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode);
     ~ContratosList();
-    company *getcompany();
     void selectMode();
     void editMode();
     void presenta();

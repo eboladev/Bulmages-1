@@ -247,12 +247,20 @@ void Listado::trataPermisos(QString nomtabla) {
 		/// Buscamos los permisos que tiene el usuario y desactivamos botones.
 		QToolButton *b = findChild<QToolButton *>("mui_crear");
 		if (b) b->setDisabled(TRUE);
+		QToolButton *c = findChild<QToolButton *>("mui_importar");
+		if (c) c->setDisabled(TRUE);
+		QToolButton *d = findChild<QToolButton *>("mui_exportar");
+		if (d) d->setDisabled(TRUE);
 	} // end if
 	delete cur;
     } else {
 		/// Buscamos los permisos que tiene el usuario y desactivamos botones.
 		QToolButton *b = findChild<QToolButton *>("mui_crear");
 		if (b) b->setDisabled(TRUE);
+		QToolButton *c = findChild<QToolButton *>("mui_importar");
+		if (c) c->setDisabled(TRUE);
+		QToolButton *d = findChild<QToolButton *>("mui_exportar");
+		if (d) d->setDisabled(TRUE);
     } // end if
 
     cur = empresaBase()->cargacursor("SELECT has_table_privilege('"+nomtabla+"', 'UPDATE') AS pins");
@@ -263,6 +271,10 @@ void Listado::trataPermisos(QString nomtabla) {
 		if (b) b->setDisabled(TRUE);
 		QToolButton *c = findChild<QToolButton *>("mui_borrar");
 		if (c) c->setDisabled(TRUE);
+		QToolButton *e = findChild<QToolButton *>("mui_importar");
+		if (e) e->setDisabled(TRUE);
+		QToolButton *d = findChild<QToolButton *>("mui_exportar");
+		if (d) d->setDisabled(TRUE);
 	} // end if
 	delete cur;
     } else {
@@ -271,6 +283,10 @@ void Listado::trataPermisos(QString nomtabla) {
 		if (b) b->setDisabled(TRUE);
 		QToolButton *c = findChild<QToolButton *>("mui_borrar");
 		if (c) c->setDisabled(TRUE);
+		QToolButton *e = findChild<QToolButton *>("mui_importar");
+		if (e) e->setDisabled(TRUE);
+		QToolButton *d = findChild<QToolButton *>("mui_exportar");
+		if (d) d->setDisabled(TRUE);
     } // end if
 
     _depura("END Listado::trataPermisos", 0);

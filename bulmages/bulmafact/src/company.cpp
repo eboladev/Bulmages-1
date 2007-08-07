@@ -63,12 +63,13 @@
 #include "bancoview.h"
 #include "listtipoivaview.h"
 #include "listtasaivaview.h"
-
+#include "bulmafact.h"
 
 /** No precisa de operaciones en su construccion.
 */
-company::company() : EmpresaBase() {
+company::company(bulmafact *bges) : EmpresaBase() {
     _depura("company::company", 0);
+    m_bulmafact = bges;
     _depura("END company::company", 0);
 }
 
@@ -116,113 +117,274 @@ company::~company() {
 void company::createMainWindows(Splash *splash) {
     _depura("company::createMainWindows", 0);
     /// Establecemos el porcentaje del carga de informaci&oacute;n en las diferentes ventanas.
+
+
+
     /// pb = 0%
     _depura("company::createMainWindows inicializamos m_articleslist\n", 1);
     splash->mensaje(QApplication::translate("company", "Inicializando listado de Articulos"));
     splash->setBarraProgreso(7);
     m_progressbar->setValue(0);
-    m_articleslist = new ArticuloList(this);
-    m_pWorkspace->addWindow(m_articleslist);
-    m_articleslist->hide();
+    /// Comprobamos que tengamos permisos para trabajar con articulos.
+    cursor2 *cur = cargacursor("SELECT has_table_privilege('articulo', 'SELECT') AS pins");
+    m_bulmafact->actionListado_de_Articulos->setEnabled(FALSE);
+    m_bulmafact->actionNuevo_Articulo->setEnabled(FALSE);
+    m_bulmafact->actionGestion_Familias->setEnabled(FALSE);
+    m_bulmafact->actionGestion_Tipos_Articulo->setEnabled(FALSE);
+    if (cur) {
+	if (cur->valor("pins") == "t") {
+		m_articleslist = new ArticuloList(this);
+		m_pWorkspace->addWindow(m_articleslist);
+		m_articleslist->hide();
+		m_bulmafact->actionListado_de_Articulos->setEnabled(TRUE);
+		m_bulmafact->actionNuevo_Articulo->setEnabled(TRUE);
+		m_bulmafact->actionGestion_Familias->setEnabled(TRUE);
+		m_bulmafact->actionGestion_Tipos_Articulo->setEnabled(TRUE);
+	} // end if
+	delete cur;
+    } // end if
+
+
 
     /// pb = 8%
     _depura("company::createMainWindows inicializamos m_providerslist\n", 1);
     splash->mensaje(QApplication::translate("company","Inicializando listado de Proveedores"));
     splash->setBarraProgreso(10);
     m_progressbar->setValue(8);
-    m_clientsList = new ClientsList(this);
-    m_pWorkspace->addWindow(m_clientsList);
-    m_clientsList->hide();
+    /// Comprobamos que tengamos permisos para trabajar con clientes.
+    cur = cargacursor("SELECT has_table_privilege('cliente', 'SELECT') AS pins");
+    m_bulmafact->actionListado_Clientes->setEnabled(FALSE);
+    m_bulmafact->actionNuevo_Cliente->setEnabled(FALSE);
+    if (cur) {
+	if (cur->valor("pins") == "t") {
+		m_clientsList = new ClientsList(this);
+		m_pWorkspace->addWindow(m_clientsList);
+		m_clientsList->hide();
+		m_bulmafact->actionListado_Clientes->setEnabled(TRUE);
+		m_bulmafact->actionNuevo_Cliente->setEnabled(TRUE);
+	} // end if
+	delete cur;
+    } // end if
+
+
 
     /// pb = 16%
     _depura("company::createMainWindows inicializamos m_clientesList\n", 1);
     splash->mensaje(QApplication::translate("company","Inicializando listado de Clientes"));
     splash->setBarraProgreso(16);
     m_progressbar->setValue(16);
-    m_providerslist = new ProveedorList(this);
-    m_pWorkspace->addWindow(m_providerslist);
-    m_providerslist->hide();
+    /// Comprobamos que tengamos permisos para trabajar con clientes.
+    cur = cargacursor("SELECT has_table_privilege('proveedor', 'SELECT') AS pins");
+    m_bulmafact->actionListado_Proveedores->setEnabled(FALSE);
+    m_bulmafact->actionNuevo_Proveedor->setEnabled(FALSE);
+    if (cur) {
+	if (cur->valor("pins") == "t") {
+		m_providerslist = new ProveedorList(this);
+		m_pWorkspace->addWindow(m_providerslist);
+		m_providerslist->hide();
+		m_bulmafact->actionListado_Proveedores->setEnabled(TRUE);
+		m_bulmafact->actionNuevo_Proveedor->setEnabled(TRUE);
+	} // end if
+	delete cur;
+    } // end if
+
+
+
 
     /// pb = 32%
     _depura("company::createMainWindows inicializamos m_presupuestosList\n", 1);
     splash->mensaje(QApplication::translate("company","Inicializando listado de Presupuestos"));
     splash->setBarraProgreso(32);
     m_progressbar->setValue(32);
-    m_presupuestosList = new PresupuestoList(this);
-    m_pWorkspace->addWindow(m_presupuestosList);
-    m_presupuestosList->hide();
+    /// Comprobamos que tengamos permisos para trabajar con presupuestos.
+    cur = cargacursor("SELECT has_table_privilege('presupuesto', 'SELECT') AS pins");
+    m_bulmafact->actionListado_Presupuestos->setEnabled(FALSE);
+    m_bulmafact->actionNuevo_Presupuesto->setEnabled(FALSE);
+    if (cur) {
+	if (cur->valor("pins") == "t") {
+		m_presupuestosList = new PresupuestoList(this);
+		m_pWorkspace->addWindow(m_presupuestosList);
+		m_presupuestosList->hide();
+	        m_bulmafact->actionListado_Presupuestos->setEnabled(TRUE);
+	        m_bulmafact->actionNuevo_Presupuesto->setEnabled(TRUE);
+	} // end if
+	delete cur;
+    } // end if
+
 
     /// pb = 40%
     _depura("company::createMainWindows inicializamos m_pedidosclienteList\n", 1);
     splash->mensaje(QApplication::translate("company","Inicializando listado de Pedidos Cliente"));
     splash->setBarraProgreso(40);
     m_progressbar->setValue(40);
-    m_pedidosclienteList = new PedidosClienteList(this);
-    m_pWorkspace->addWindow(m_pedidosclienteList);
-    m_pedidosclienteList->hide();
+    /// Comprobamos que tengamos permisos para trabajar con pedidos de cliente.
+    cur = cargacursor("SELECT has_table_privilege('pedidocliente', 'SELECT') AS pins");
+    m_bulmafact->actionListado_Pedidos_Cliente->setEnabled(FALSE);
+    m_bulmafact->actionNuevo_Pedido_Cliente->setEnabled(FALSE);
+    if (cur) {
+	if (cur->valor("pins") == "t") {
+		m_pedidosclienteList = new PedidosClienteList(this);
+		m_pWorkspace->addWindow(m_pedidosclienteList);
+		m_pedidosclienteList->hide();
+		m_bulmafact->actionListado_Pedidos_Cliente->setEnabled(TRUE);
+    		m_bulmafact->actionNuevo_Pedido_Cliente->setEnabled(TRUE);
+	} // end if
+	delete cur;
+    } // end if
+
+
+
 
     /// pb = 48%
     _depura("company::createMainWindows inicializamos m_clientDelivNotesList\n", 1);
     splash->mensaje(QApplication::translate("company","Inicializando listado de Albaranes Cliente"));
     splash->setBarraProgreso(48);
     m_progressbar->setValue(48);
-    m_clientDelivNotesList = new AlbaranClienteList(this);
-    m_pWorkspace->addWindow(m_clientDelivNotesList);
-    m_clientDelivNotesList->hide();
+
+    /// Comprobamos que tengamos permisos para trabajar con albaranes.
+    cur = cargacursor("SELECT has_table_privilege('albaran', 'SELECT') AS pins");
+    m_bulmafact->actionListado_Albaranes_Cliente->setEnabled(FALSE);
+    m_bulmafact->actionNuevo_Albaran_Cliente->setEnabled(FALSE);
+    if (cur) {
+	if (cur->valor("pins") == "t") {
+		m_clientDelivNotesList = new AlbaranClienteList(this);
+		m_pWorkspace->addWindow(m_clientDelivNotesList);
+		m_clientDelivNotesList->hide();
+		m_bulmafact->actionListado_Albaranes_Cliente->setEnabled(TRUE);
+		m_bulmafact->actionNuevo_Albaran_Cliente->setEnabled(TRUE);
+	} // end if
+	delete cur;
+    } // end if
+
 
     /// pb = 56%
-    _depura("company::createMainWindows inicializamos m_facturasList\n", 1);
+    _depura("company::createMainWindows inicializamos m_facturasList", 0);
     splash->mensaje(QApplication::translate("company","Inicializando listado de Facturas"));
     splash->setBarraProgreso(56);
     m_progressbar->setValue(56);
-    m_facturasList = new FacturasList(this);
-    m_pWorkspace->addWindow(m_facturasList);
-    m_facturasList->hide();
+    /// Comprobamos que tengamos permisos para trabajar con Facturas.
+    cur = cargacursor("SELECT has_table_privilege('albaran', 'SELECT') AS pins");
+    m_bulmafact->actionListado_Facturas_Cliente->setEnabled(FALSE);
+    m_bulmafact->actionNueva_Factura_Cliente->setEnabled(FALSE);
+    if (cur) {
+	if (cur->valor("pins") == "t") {
+		m_facturasList = new FacturasList(this);
+		m_pWorkspace->addWindow(m_facturasList);
+		m_facturasList->hide();
+		m_bulmafact->actionListado_Facturas_Cliente->setEnabled(TRUE);
+		m_bulmafact->actionNueva_Factura_Cliente->setEnabled(TRUE);
+	} // end if
+	delete cur;
+    } // end if
+
+
+
 
     /// pb = 64%
     _depura("company::createMainWindows inicializamos m_cobrosList\n", 1);
     splash->mensaje(QApplication::translate("company","Inicializando listado de Cobros"));
     splash->setBarraProgreso(64);
     m_progressbar->setValue(64);
-    m_cobrosList = new CobrosList(this);
-    m_pWorkspace->addWindow(m_cobrosList);
-    m_cobrosList->hide();
+    /// Comprobamos que tengamos permisos para trabajar con Facturas.
+    cur = cargacursor("SELECT has_table_privilege('cobro', 'SELECT') AS pins");
+    m_bulmafact->actionListado_de_Cobros->setEnabled(FALSE);
+    m_bulmafact->actionNuevo_Cobro->setEnabled(FALSE);
+    if (cur) {
+	if (cur->valor("pins") == "t") {
+		m_cobrosList = new CobrosList(this);
+		m_pWorkspace->addWindow(m_cobrosList);
+		m_cobrosList->hide();
+		m_bulmafact->actionListado_de_Cobros->setEnabled(TRUE);
+		m_bulmafact->actionNuevo_Cobro->setEnabled(TRUE);
+	} // end if
+	delete cur;
+    } // end if
+
 
     /// pb = 72%
     _depura("company::createMainWindows inicializamos m_pedidosproveedorlist\n", 1);
     splash->mensaje(QApplication::translate("company","Inicializando listado de Pedidos Proveedor"));
     splash->setBarraProgreso(72);
     m_progressbar->setValue(72);
-    m_pedidosproveedorList = new PedidosProveedorList(this);
-    m_pWorkspace->addWindow(m_pedidosproveedorList);
-    m_pedidosproveedorList->hide();
+    /// Comprobamos que tengamos permisos para trabajar con Pedidos de Proveedor.
+    cur = cargacursor("SELECT has_table_privilege('pedidoproveedor', 'SELECT') AS pins");
+    m_bulmafact->actionListado_Pedidos_Proveedor->setEnabled(FALSE);
+    m_bulmafact->actionNuevo_Pedido_Proveedor->setEnabled(FALSE);
+    if (cur) {
+	if (cur->valor("pins") == "t") {
+		m_pedidosproveedorList = new PedidosProveedorList(this);
+		m_pWorkspace->addWindow(m_pedidosproveedorList);
+		m_pedidosproveedorList->hide();
+		m_bulmafact->actionListado_Pedidos_Proveedor->setEnabled(TRUE);
+		m_bulmafact->actionNuevo_Pedido_Proveedor->setEnabled(TRUE);
+	} // end if
+	delete cur;
+    } // end if
+
+
 
     /// pb = 80%
-    _depura("company::createMainWindows inicializamos m_albaranesproveedorlist\n", 1);
+    _depura("company::createMainWindows inicializamos m_albaranesproveedorlist", 1);
     splash->mensaje(QApplication::translate("company","Inicializando listado de Albaranes Proveedor"));
     splash->setBarraProgreso(80);
     m_progressbar->setValue(80);
-    m_albaranesproveedor = new AlbaranesProveedor(this);
-    m_pWorkspace->addWindow(m_albaranesproveedor);
-    m_albaranesproveedor->hide();
+    /// Comprobamos que tengamos permisos para trabajar con Albaranes de Proveedor.
+    cur = cargacursor("SELECT has_table_privilege('albaranp', 'SELECT') AS pins");
+    m_bulmafact->actionListado_Albaranes_Proveedor->setEnabled(FALSE);
+    m_bulmafact->actionNuevo_Albaran_Proveedor->setEnabled(FALSE);
+    if (cur) {
+	if (cur->valor("pins") == "t") {
+		m_albaranesproveedor = new AlbaranesProveedor(this);
+		m_pWorkspace->addWindow(m_albaranesproveedor);
+		m_albaranesproveedor->hide();
+		m_bulmafact->actionListado_Albaranes_Proveedor->setEnabled(TRUE);
+		m_bulmafact->actionNuevo_Albaran_Proveedor->setEnabled(TRUE);
+	} // end if
+	delete cur;
+    } // end if
+
+
 
     /// pb = 88%
-    _depura("company::createMainWindows inicializamos m_facturasproveedorlist\n", 1);
+    _depura("company::createMainWindows inicializamos m_facturasproveedorlist", 1);
     splash->mensaje(QApplication::translate("company","Inicializando listado de Facturas Proveedor"));
     splash->setBarraProgreso(88);
     m_progressbar->setValue(88);
-    m_facturasproveedorlist = new FacturasProveedorList(this);
-    m_pWorkspace->addWindow(m_facturasproveedorlist);
-    m_facturasproveedorlist->hide();
+    /// Comprobamos que tengamos permisos para trabajar con Facturas de Proveedor.
+    cur = cargacursor("SELECT has_table_privilege('facturap', 'SELECT') AS pins");
+    m_bulmafact->actionListado_Facturas_Proveedor->setEnabled(FALSE);
+    m_bulmafact->actionNueva_Factura_Proveedor->setEnabled(FALSE);
+    if (cur) {
+	if (cur->valor("pins") == "t") {
+		m_facturasproveedorlist = new FacturasProveedorList(this);
+		m_pWorkspace->addWindow(m_facturasproveedorlist);
+		m_facturasproveedorlist->hide();
+		m_bulmafact->actionListado_Facturas_Proveedor->setEnabled(TRUE);
+		m_bulmafact->actionNueva_Factura_Proveedor->setEnabled(TRUE);
+	} // end if
+	delete cur;
+    } // end if
+
 
     /// pb = 96%
     _depura("company::createMainWindows inicializamos m_pagosList\n", 1);
     splash->mensaje(QApplication::translate("company","Inicializando listado de Pagos"));
     splash->setBarraProgreso(96);
     m_progressbar->setValue(96);
-    m_pagosList = new PagosList(this);
-    m_pWorkspace->addWindow(m_pagosList);
-    m_pagosList->hide();
+    /// Comprobamos que tengamos permisos para trabajar con Facturas de Proveedor.
+    cur = cargacursor("SELECT has_table_privilege('pago', 'SELECT') AS pins");
+    m_bulmafact->actionListado_de_Pagos->setEnabled(FALSE);
+    m_bulmafact->actionNuevo_Pago->setEnabled(FALSE);
+    if (cur) {
+	if (cur->valor("pins") == "t") {
+		m_pagosList = new PagosList(this);
+		m_pWorkspace->addWindow(m_pagosList);
+		m_pagosList->hide();
+		m_bulmafact->actionListado_de_Pagos->setEnabled(TRUE);
+		m_bulmafact->actionNuevo_Pago->setEnabled(TRUE);
+	} // end if
+	delete cur;
+    } // end if
 
 
     /// pb = 100%

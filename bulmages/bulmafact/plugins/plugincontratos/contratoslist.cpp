@@ -38,7 +38,7 @@
     Mete la ventana en el workSpace si estamos en modo edicion.
 */
 ContratosList::ContratosList(company *comp, QWidget *parent, Qt::WFlags flag, edmode editmode)
-        : FichaBf(comp, parent, flag), pgimportfiles(comp) {
+        : Listado(comp, parent, flag), pgimportfiles(comp) {
     _depura("ContratosList::ContratosList", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
@@ -55,7 +55,7 @@ ContratosList::ContratosList(company *comp, QWidget *parent, Qt::WFlags flag, ed
     hideBusqueda();
     /// Si estamos en el modo edici&oacute;n metemos la ventana en el workSpace.
     if (m_modo == EditMode) {
-        meteWindow(windowTitle(), this);
+        empresaBase()->meteWindow(windowTitle(), this);
     } else {
         setWindowTitle(tr("Selector de contratos"));
         mui_editar->setHidden(TRUE);
@@ -64,6 +64,7 @@ ContratosList::ContratosList(company *comp, QWidget *parent, Qt::WFlags flag, ed
         mui_imprimir->setHidden(TRUE);
     } // end if
     presenta();
+    trataPermisos("contrato");
     _depura("END ContratosList::ContratosList", 0);
 }
 
@@ -266,7 +267,7 @@ void ContratosList::on_mui_configurar_toggled(bool checked) {
     } // end if
 }
 
-    company *ContratosList::getcompany() {return empresaBase();}
+
 
 /// =============================================================================
 ///                    SUBFORMULARIO

@@ -67,7 +67,7 @@ bulmafact::bulmafact(QString bd) : QMainWindow() {
     vboxlayout->addWidget(pWorkspace);
     vboxlayout->addWidget(m_pb);
 
-    m_company = new company();
+    m_company = new company(this);
     m_company->setProgressBar(m_pb);
     m_company->init(bd, "BulmaFact");
     m_company->setWorkspace(pWorkspace);
