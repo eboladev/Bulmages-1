@@ -141,6 +141,18 @@ void listventanas::vaciar() {
     _depura("END listventanas::vaciar", 0);
 }
 
+int listventanas::numVentanas() {
+    _depura("listventanas::numVentanas", 0);
+    _depura("END listventanas::numVentanas", 0);
+    return m_listBox->count();
+}
+
+QObject *listventanas::ventana(int index) {
+    _depura("listventanas::ventana", 0);
+    QListWidgetItem1 *m = (QListWidgetItem1 *)m_listBox->item(index);
+    _depura("END listventanas::ventana", 0);
+    return m->object();
+}
 
 void listventanas::vaciarCompleto() {
     _depura("listventanas::vaciarCompleto", 0);
@@ -176,7 +188,7 @@ int listventanas::meteWindow(QString nombre, QObject *obj, bool compdup) {
                 _depura("listventanas::mostramos la original", 0);
                 ((QWidget *)m->object())->hide();
                 ((QWidget *)m->object())->show();
-                 sacaWindow(obj);
+                sacaWindow(obj);
                 _depura("listventanas::Establecemos la nueva primaria", 0);
                 throw -1;
             } // end if

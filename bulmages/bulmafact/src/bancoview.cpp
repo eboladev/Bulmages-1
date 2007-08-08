@@ -35,6 +35,8 @@
 BancoView::BancoView(company *emp, QWidget *parent)
         : FichaBf(emp, parent) {
     _depura("BancoView::BancoView", 0);
+    /// Indicamos que vamos a operar con la tabla banco para que los permisos se traten adecuadamente.
+    setDBTableName("banco");
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     setModoEdicion();
@@ -180,6 +182,7 @@ void BancoView::on_mui_nuevo_clicked() {
 /// Lo que hace es que se hace un update de todos los campos.
 void BancoView::on_mui_borrar_clicked() {
     _depura("BancoView::on_mui_borrar_clicked", 0);
+    if (mdb_idbanco == "") return;
     trataModificado();
     empresaBase()->begin();
     QString query = "DELETE FROM banco WHERE idbanco = " + mdb_idbanco;

@@ -157,6 +157,8 @@ public:
     void viewCobrosList();
     void s_TipoIVAView();
     void s_TasaIVAView();
+    void guardaConf();
+    void cargaConf();
     FacturaProveedorView *newFacturaProveedorView();
     PresupuestoView *nuevoPresupuestoView();
     PedidoProveedorView *nuevoPedidoProveedorView();

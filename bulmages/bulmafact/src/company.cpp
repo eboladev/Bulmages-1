@@ -21,6 +21,9 @@
 #include <Qt>
 #include <QObject>
 #include <qnamespace.h>
+#include <QFile>
+#include <QTextStream>
+#include <QDomDocument>
 
 #include "stdio.h"
 
@@ -78,6 +81,9 @@ company::company(bulmafact *bges) : EmpresaBase() {
 company::~company() {
     _depura("company::~company", 0);
 
+    /// Guardamos la configuracion.
+    guardaConf();
+
     /// Borramos las ventanas flotantes antes de eliminar esta clase ya que se produciria un segfault
     m_listventanas->vaciar();
 
@@ -121,7 +127,7 @@ void company::createMainWindows(Splash *splash) {
 
 
     /// pb = 0%
-    _depura("company::createMainWindows inicializamos m_articleslist\n", 1);
+    _depura("company::createMainWindows inicializamos m_articleslist", 1);
     splash->mensaje(QApplication::translate("company", "Inicializando listado de Articulos"));
     splash->setBarraProgreso(7);
     m_progressbar->setValue(0);
@@ -132,22 +138,22 @@ void company::createMainWindows(Splash *splash) {
     m_bulmafact->actionGestion_Familias->setEnabled(FALSE);
     m_bulmafact->actionGestion_Tipos_Articulo->setEnabled(FALSE);
     if (cur) {
-	if (cur->valor("pins") == "t") {
-		m_articleslist = new ArticuloList(this);
-		m_pWorkspace->addWindow(m_articleslist);
-		m_articleslist->hide();
-		m_bulmafact->actionListado_de_Articulos->setEnabled(TRUE);
-		m_bulmafact->actionNuevo_Articulo->setEnabled(TRUE);
-		m_bulmafact->actionGestion_Familias->setEnabled(TRUE);
-		m_bulmafact->actionGestion_Tipos_Articulo->setEnabled(TRUE);
-	} // end if
-	delete cur;
+        if (cur->valor("pins") == "t") {
+            m_articleslist = new ArticuloList(this);
+            m_pWorkspace->addWindow(m_articleslist);
+            m_articleslist->hide();
+            m_bulmafact->actionListado_de_Articulos->setEnabled(TRUE);
+            m_bulmafact->actionNuevo_Articulo->setEnabled(TRUE);
+            m_bulmafact->actionGestion_Familias->setEnabled(TRUE);
+            m_bulmafact->actionGestion_Tipos_Articulo->setEnabled(TRUE);
+        } // end if
+        delete cur;
     } // end if
 
 
 
     /// pb = 8%
-    _depura("company::createMainWindows inicializamos m_providerslist\n", 1);
+    _depura("company::createMainWindows inicializamos m_providerslist", 1);
     splash->mensaje(QApplication::translate("company","Inicializando listado de Proveedores"));
     splash->setBarraProgreso(10);
     m_progressbar->setValue(8);
@@ -156,20 +162,20 @@ void company::createMainWindows(Splash *splash) {
     m_bulmafact->actionListado_Clientes->setEnabled(FALSE);
     m_bulmafact->actionNuevo_Cliente->setEnabled(FALSE);
     if (cur) {
-	if (cur->valor("pins") == "t") {
-		m_clientsList = new ClientsList(this);
-		m_pWorkspace->addWindow(m_clientsList);
-		m_clientsList->hide();
-		m_bulmafact->actionListado_Clientes->setEnabled(TRUE);
-		m_bulmafact->actionNuevo_Cliente->setEnabled(TRUE);
-	} // end if
-	delete cur;
+        if (cur->valor("pins") == "t") {
+            m_clientsList = new ClientsList(this);
+            m_pWorkspace->addWindow(m_clientsList);
+            m_clientsList->hide();
+            m_bulmafact->actionListado_Clientes->setEnabled(TRUE);
+            m_bulmafact->actionNuevo_Cliente->setEnabled(TRUE);
+        } // end if
+        delete cur;
     } // end if
 
 
 
     /// pb = 16%
-    _depura("company::createMainWindows inicializamos m_clientesList\n", 1);
+    _depura("company::createMainWindows inicializamos m_clientesList", 1);
     splash->mensaje(QApplication::translate("company","Inicializando listado de Clientes"));
     splash->setBarraProgreso(16);
     m_progressbar->setValue(16);
@@ -178,21 +184,21 @@ void company::createMainWindows(Splash *splash) {
     m_bulmafact->actionListado_Proveedores->setEnabled(FALSE);
     m_bulmafact->actionNuevo_Proveedor->setEnabled(FALSE);
     if (cur) {
-	if (cur->valor("pins") == "t") {
-		m_providerslist = new ProveedorList(this);
-		m_pWorkspace->addWindow(m_providerslist);
-		m_providerslist->hide();
-		m_bulmafact->actionListado_Proveedores->setEnabled(TRUE);
-		m_bulmafact->actionNuevo_Proveedor->setEnabled(TRUE);
-	} // end if
-	delete cur;
+        if (cur->valor("pins") == "t") {
+            m_providerslist = new ProveedorList(this);
+            m_pWorkspace->addWindow(m_providerslist);
+            m_providerslist->hide();
+            m_bulmafact->actionListado_Proveedores->setEnabled(TRUE);
+            m_bulmafact->actionNuevo_Proveedor->setEnabled(TRUE);
+        } // end if
+        delete cur;
     } // end if
 
 
 
 
     /// pb = 32%
-    _depura("company::createMainWindows inicializamos m_presupuestosList\n", 1);
+    _depura("company::createMainWindows inicializamos m_presupuestosList", 1);
     splash->mensaje(QApplication::translate("company","Inicializando listado de Presupuestos"));
     splash->setBarraProgreso(32);
     m_progressbar->setValue(32);
@@ -201,19 +207,19 @@ void company::createMainWindows(Splash *splash) {
     m_bulmafact->actionListado_Presupuestos->setEnabled(FALSE);
     m_bulmafact->actionNuevo_Presupuesto->setEnabled(FALSE);
     if (cur) {
-	if (cur->valor("pins") == "t") {
-		m_presupuestosList = new PresupuestoList(this);
-		m_pWorkspace->addWindow(m_presupuestosList);
-		m_presupuestosList->hide();
-	        m_bulmafact->actionListado_Presupuestos->setEnabled(TRUE);
-	        m_bulmafact->actionNuevo_Presupuesto->setEnabled(TRUE);
-	} // end if
-	delete cur;
+        if (cur->valor("pins") == "t") {
+            m_presupuestosList = new PresupuestoList(this);
+            m_pWorkspace->addWindow(m_presupuestosList);
+            m_presupuestosList->hide();
+            m_bulmafact->actionListado_Presupuestos->setEnabled(TRUE);
+            m_bulmafact->actionNuevo_Presupuesto->setEnabled(TRUE);
+        } // end if
+        delete cur;
     } // end if
 
 
     /// pb = 40%
-    _depura("company::createMainWindows inicializamos m_pedidosclienteList\n", 1);
+    _depura("company::createMainWindows inicializamos m_pedidosclienteList", 1);
     splash->mensaje(QApplication::translate("company","Inicializando listado de Pedidos Cliente"));
     splash->setBarraProgreso(40);
     m_progressbar->setValue(40);
@@ -222,21 +228,21 @@ void company::createMainWindows(Splash *splash) {
     m_bulmafact->actionListado_Pedidos_Cliente->setEnabled(FALSE);
     m_bulmafact->actionNuevo_Pedido_Cliente->setEnabled(FALSE);
     if (cur) {
-	if (cur->valor("pins") == "t") {
-		m_pedidosclienteList = new PedidosClienteList(this);
-		m_pWorkspace->addWindow(m_pedidosclienteList);
-		m_pedidosclienteList->hide();
-		m_bulmafact->actionListado_Pedidos_Cliente->setEnabled(TRUE);
-    		m_bulmafact->actionNuevo_Pedido_Cliente->setEnabled(TRUE);
-	} // end if
-	delete cur;
+        if (cur->valor("pins") == "t") {
+            m_pedidosclienteList = new PedidosClienteList(this);
+            m_pWorkspace->addWindow(m_pedidosclienteList);
+            m_pedidosclienteList->hide();
+            m_bulmafact->actionListado_Pedidos_Cliente->setEnabled(TRUE);
+            m_bulmafact->actionNuevo_Pedido_Cliente->setEnabled(TRUE);
+        } // end if
+        delete cur;
     } // end if
 
 
 
 
     /// pb = 48%
-    _depura("company::createMainWindows inicializamos m_clientDelivNotesList\n", 1);
+    _depura("company::createMainWindows inicializamos m_clientDelivNotesList", 1);
     splash->mensaje(QApplication::translate("company","Inicializando listado de Albaranes Cliente"));
     splash->setBarraProgreso(48);
     m_progressbar->setValue(48);
@@ -246,14 +252,14 @@ void company::createMainWindows(Splash *splash) {
     m_bulmafact->actionListado_Albaranes_Cliente->setEnabled(FALSE);
     m_bulmafact->actionNuevo_Albaran_Cliente->setEnabled(FALSE);
     if (cur) {
-	if (cur->valor("pins") == "t") {
-		m_clientDelivNotesList = new AlbaranClienteList(this);
-		m_pWorkspace->addWindow(m_clientDelivNotesList);
-		m_clientDelivNotesList->hide();
-		m_bulmafact->actionListado_Albaranes_Cliente->setEnabled(TRUE);
-		m_bulmafact->actionNuevo_Albaran_Cliente->setEnabled(TRUE);
-	} // end if
-	delete cur;
+        if (cur->valor("pins") == "t") {
+            m_clientDelivNotesList = new AlbaranClienteList(this);
+            m_pWorkspace->addWindow(m_clientDelivNotesList);
+            m_clientDelivNotesList->hide();
+            m_bulmafact->actionListado_Albaranes_Cliente->setEnabled(TRUE);
+            m_bulmafact->actionNuevo_Albaran_Cliente->setEnabled(TRUE);
+        } // end if
+        delete cur;
     } // end if
 
 
@@ -267,21 +273,21 @@ void company::createMainWindows(Splash *splash) {
     m_bulmafact->actionListado_Facturas_Cliente->setEnabled(FALSE);
     m_bulmafact->actionNueva_Factura_Cliente->setEnabled(FALSE);
     if (cur) {
-	if (cur->valor("pins") == "t") {
-		m_facturasList = new FacturasList(this);
-		m_pWorkspace->addWindow(m_facturasList);
-		m_facturasList->hide();
-		m_bulmafact->actionListado_Facturas_Cliente->setEnabled(TRUE);
-		m_bulmafact->actionNueva_Factura_Cliente->setEnabled(TRUE);
-	} // end if
-	delete cur;
+        if (cur->valor("pins") == "t") {
+            m_facturasList = new FacturasList(this);
+            m_pWorkspace->addWindow(m_facturasList);
+            m_facturasList->hide();
+            m_bulmafact->actionListado_Facturas_Cliente->setEnabled(TRUE);
+            m_bulmafact->actionNueva_Factura_Cliente->setEnabled(TRUE);
+        } // end if
+        delete cur;
     } // end if
 
 
 
 
     /// pb = 64%
-    _depura("company::createMainWindows inicializamos m_cobrosList\n", 1);
+    _depura("company::createMainWindows inicializamos m_cobrosList", 1);
     splash->mensaje(QApplication::translate("company","Inicializando listado de Cobros"));
     splash->setBarraProgreso(64);
     m_progressbar->setValue(64);
@@ -290,19 +296,19 @@ void company::createMainWindows(Splash *splash) {
     m_bulmafact->actionListado_de_Cobros->setEnabled(FALSE);
     m_bulmafact->actionNuevo_Cobro->setEnabled(FALSE);
     if (cur) {
-	if (cur->valor("pins") == "t") {
-		m_cobrosList = new CobrosList(this);
-		m_pWorkspace->addWindow(m_cobrosList);
-		m_cobrosList->hide();
-		m_bulmafact->actionListado_de_Cobros->setEnabled(TRUE);
-		m_bulmafact->actionNuevo_Cobro->setEnabled(TRUE);
-	} // end if
-	delete cur;
+        if (cur->valor("pins") == "t") {
+            m_cobrosList = new CobrosList(this);
+            m_pWorkspace->addWindow(m_cobrosList);
+            m_cobrosList->hide();
+            m_bulmafact->actionListado_de_Cobros->setEnabled(TRUE);
+            m_bulmafact->actionNuevo_Cobro->setEnabled(TRUE);
+        } // end if
+        delete cur;
     } // end if
 
 
     /// pb = 72%
-    _depura("company::createMainWindows inicializamos m_pedidosproveedorlist\n", 1);
+    _depura("company::createMainWindows inicializamos m_pedidosproveedorlist", 1);
     splash->mensaje(QApplication::translate("company","Inicializando listado de Pedidos Proveedor"));
     splash->setBarraProgreso(72);
     m_progressbar->setValue(72);
@@ -311,14 +317,14 @@ void company::createMainWindows(Splash *splash) {
     m_bulmafact->actionListado_Pedidos_Proveedor->setEnabled(FALSE);
     m_bulmafact->actionNuevo_Pedido_Proveedor->setEnabled(FALSE);
     if (cur) {
-	if (cur->valor("pins") == "t") {
-		m_pedidosproveedorList = new PedidosProveedorList(this);
-		m_pWorkspace->addWindow(m_pedidosproveedorList);
-		m_pedidosproveedorList->hide();
-		m_bulmafact->actionListado_Pedidos_Proveedor->setEnabled(TRUE);
-		m_bulmafact->actionNuevo_Pedido_Proveedor->setEnabled(TRUE);
-	} // end if
-	delete cur;
+        if (cur->valor("pins") == "t") {
+            m_pedidosproveedorList = new PedidosProveedorList(this);
+            m_pWorkspace->addWindow(m_pedidosproveedorList);
+            m_pedidosproveedorList->hide();
+            m_bulmafact->actionListado_Pedidos_Proveedor->setEnabled(TRUE);
+            m_bulmafact->actionNuevo_Pedido_Proveedor->setEnabled(TRUE);
+        } // end if
+        delete cur;
     } // end if
 
 
@@ -333,14 +339,14 @@ void company::createMainWindows(Splash *splash) {
     m_bulmafact->actionListado_Albaranes_Proveedor->setEnabled(FALSE);
     m_bulmafact->actionNuevo_Albaran_Proveedor->setEnabled(FALSE);
     if (cur) {
-	if (cur->valor("pins") == "t") {
-		m_albaranesproveedor = new AlbaranesProveedor(this);
-		m_pWorkspace->addWindow(m_albaranesproveedor);
-		m_albaranesproveedor->hide();
-		m_bulmafact->actionListado_Albaranes_Proveedor->setEnabled(TRUE);
-		m_bulmafact->actionNuevo_Albaran_Proveedor->setEnabled(TRUE);
-	} // end if
-	delete cur;
+        if (cur->valor("pins") == "t") {
+            m_albaranesproveedor = new AlbaranesProveedor(this);
+            m_pWorkspace->addWindow(m_albaranesproveedor);
+            m_albaranesproveedor->hide();
+            m_bulmafact->actionListado_Albaranes_Proveedor->setEnabled(TRUE);
+            m_bulmafact->actionNuevo_Albaran_Proveedor->setEnabled(TRUE);
+        } // end if
+        delete cur;
     } // end if
 
 
@@ -355,19 +361,19 @@ void company::createMainWindows(Splash *splash) {
     m_bulmafact->actionListado_Facturas_Proveedor->setEnabled(FALSE);
     m_bulmafact->actionNueva_Factura_Proveedor->setEnabled(FALSE);
     if (cur) {
-	if (cur->valor("pins") == "t") {
-		m_facturasproveedorlist = new FacturasProveedorList(this);
-		m_pWorkspace->addWindow(m_facturasproveedorlist);
-		m_facturasproveedorlist->hide();
-		m_bulmafact->actionListado_Facturas_Proveedor->setEnabled(TRUE);
-		m_bulmafact->actionNueva_Factura_Proveedor->setEnabled(TRUE);
-	} // end if
-	delete cur;
+        if (cur->valor("pins") == "t") {
+            m_facturasproveedorlist = new FacturasProveedorList(this);
+            m_pWorkspace->addWindow(m_facturasproveedorlist);
+            m_facturasproveedorlist->hide();
+            m_bulmafact->actionListado_Facturas_Proveedor->setEnabled(TRUE);
+            m_bulmafact->actionNueva_Factura_Proveedor->setEnabled(TRUE);
+        } // end if
+        delete cur;
     } // end if
 
 
     /// pb = 96%
-    _depura("company::createMainWindows inicializamos m_pagosList\n", 1);
+    _depura("company::createMainWindows inicializamos m_pagosList", 1);
     splash->mensaje(QApplication::translate("company","Inicializando listado de Pagos"));
     splash->setBarraProgreso(96);
     m_progressbar->setValue(96);
@@ -376,14 +382,88 @@ void company::createMainWindows(Splash *splash) {
     m_bulmafact->actionListado_de_Pagos->setEnabled(FALSE);
     m_bulmafact->actionNuevo_Pago->setEnabled(FALSE);
     if (cur) {
-	if (cur->valor("pins") == "t") {
-		m_pagosList = new PagosList(this);
-		m_pWorkspace->addWindow(m_pagosList);
-		m_pagosList->hide();
-		m_bulmafact->actionListado_de_Pagos->setEnabled(TRUE);
-		m_bulmafact->actionNuevo_Pago->setEnabled(TRUE);
-	} // end if
-	delete cur;
+        if (cur->valor("pins") == "t") {
+            m_pagosList = new PagosList(this);
+            m_pWorkspace->addWindow(m_pagosList);
+            m_pagosList->hide();
+            m_bulmafact->actionListado_de_Pagos->setEnabled(TRUE);
+            m_bulmafact->actionNuevo_Pago->setEnabled(TRUE);
+        } // end if
+        delete cur;
+    } // end if
+
+
+    /// Comprobamos que tengamos permisos para trabajar con Tipos de IVA.
+    cur = cargacursor("SELECT has_table_privilege('tipo_iva', 'SELECT') AS pins");
+    m_bulmafact->actionTasaIVA->setEnabled(FALSE);
+    m_bulmafact->actionTipoIVA->setEnabled(FALSE);
+    if (cur) {
+        if (cur->valor("pins") == "t") {
+            m_bulmafact->actionTasaIVA->setEnabled(TRUE);
+            m_bulmafact->actionTipoIVA->setEnabled(TRUE);
+        } // end if
+        delete cur;
+    } // end if
+
+    /// Comprobamos que tengamos permisos para trabajar con Provincias.
+    cur = cargacursor("SELECT has_table_privilege('provincia', 'SELECT') AS pins");
+    m_bulmafact->actionProvincias->setEnabled(FALSE);
+    if (cur) {
+        if (cur->valor("pins") == "t") {
+            m_bulmafact->actionProvincias->setEnabled(TRUE);
+        } // end if
+        delete cur;
+    } // end if
+
+    /// Comprobamos que tengamos permisos para trabajar con Provincias.
+    cur = cargacursor("SELECT has_table_privilege('trabajador', 'SELECT') AS pins");
+    m_bulmafact->actionTrabajadores->setEnabled(FALSE);
+    if (cur) {
+        if (cur->valor("pins") == "t") {
+            m_bulmafact->actionTrabajadores->setEnabled(TRUE);
+        } // end if
+        delete cur;
+    } // end if
+
+    /// Comprobamos que tengamos permisos para trabajar con Provincias.
+    cur = cargacursor("SELECT has_table_privilege('forma_pago', 'SELECT') AS pins");
+    m_bulmafact->actionFormas_de_Pago->setEnabled(FALSE);
+    if (cur) {
+        if (cur->valor("pins") == "t") {
+            m_bulmafact->actionFormas_de_Pago->setEnabled(TRUE);
+        } // end if
+        delete cur;
+    } // end if
+
+    /// Comprobamos que tengamos permisos para trabajar con Provincias.
+    cur = cargacursor("SELECT has_table_privilege('serie_factura', 'SELECT') AS pins");
+    m_bulmafact->actionSeries_de_Factura->setEnabled(FALSE);
+    if (cur) {
+        if (cur->valor("pins") == "t") {
+            m_bulmafact->actionSeries_de_Factura->setEnabled(TRUE);
+        } // end if
+        delete cur;
+    } // end if
+
+    /// Comprobamos que tengamos permisos para trabajar con Provincias.
+    cur = cargacursor("SELECT has_table_privilege('banco', 'SELECT') AS pins");
+    m_bulmafact->actionBancos->setEnabled(FALSE);
+    if (cur) {
+        if (cur->valor("pins") == "t") {
+            m_bulmafact->actionBancos->setEnabled(TRUE);
+        } // end if
+        delete cur;
+    } // end if
+
+
+    /// Comprobamos que tengamos permisos para trabajar con Provincias.
+    cur = cargacursor("SELECT has_table_privilege('almacen', 'SELECT') AS pins");
+    m_bulmafact->actionAlmacenes->setEnabled(FALSE);
+    if (cur) {
+        if (cur->valor("pins") == "t") {
+            m_bulmafact->actionAlmacenes->setEnabled(TRUE);
+        } // end if
+        delete cur;
     } // end if
 
 
@@ -394,7 +474,10 @@ void company::createMainWindows(Splash *splash) {
     int res = g_plugins->lanza("company_createMainWindows_Post", this);
     if (res != 0)
         return;
-    _depura("END company::createMainWindows\n", 0);
+
+    cargaConf();
+
+    _depura("END company::createMainWindows", 0);
 }
 
 
@@ -772,7 +855,7 @@ void company::s_newFacturaCli() {
 
 
 /** Metodo para refrescar los presupuestos.
-    De esta forma es posible actualizar el listado de presupuestos sin tener que 
+    De esta forma es posible actualizar el listado de presupuestos sin tener que
     buscar un puntero a dicha clase.
 */
 void company::refreshPresupuestos() {
@@ -783,7 +866,7 @@ void company::refreshPresupuestos() {
 
 
 /** Metodo para refrescar las Facturas.
-    De esta forma es posible actualizar el listado de facturas sin tener que 
+    De esta forma es posible actualizar el listado de facturas sin tener que
     buscar un puntero a dicha clase.
 */
 void company::refreshFacturas() {
@@ -795,7 +878,7 @@ void company::refreshFacturas() {
 
 
 /** Metodo para refrescar las Facturas de proveedor
-    De esta forma es posible actualizar el listado de facturas de proveedor sin tener que 
+    De esta forma es posible actualizar el listado de facturas de proveedor sin tener que
     buscar un puntero a dicha clase.
 */
 void company::refreshFacturasProveedor() {
@@ -1258,4 +1341,81 @@ PresupuestoList * company::presupuestoList() {
     _depura("company::presupuestoList", 0);
     _depura("END company::presupuestoList", 0);
     return m_presupuestosList;
+}
+
+/// Guarda la configuracion de programa para poder recuperar algunas cosas de presentacion.
+void company::guardaConf() {
+    QFile file(confpr->valor(CONF_DIR_USER) + "bulmafact_" + nameDB() + ".cfn");
+    /// Guardado del orden y de configuraciones varias.
+    if (file.open(QIODevice::WriteOnly)) {
+        QTextStream stream(&file);
+        stream << "<CONFIG>\n";
+        stream << "\t<PRINCIPAL>\n";
+        stream << "\t\t\t<X>" + QString::number(m_bulmafact->x()) + "</X>\n";
+        stream << "\t\t\t<Y>" + QString::number(m_bulmafact->y()) + "</Y>\n";
+        stream << "\t\t\t<WIDTH>" + QString::number(m_bulmafact->width()) + "</WIDTH>\n";
+        stream << "\t\t\t<HEIGHT>" + QString::number(m_bulmafact->height()) + "</HEIGHT>\n";
+        stream << "\t\t\t<INDEXADOR>" + (m_bulmafact->actionIndexador->isChecked() ? QString("TRUE") : QString("FALSE")) + "</INDEXADOR>\n";
+        stream << "</PRINCIPAL>\n";
+        stream << "</CONFIG>\n";
+
+        for (int i = 0; i < m_listventanas->numVentanas(); i++) {
+		QObject *obj = m_listventanas->ventana(i);
+                QWidget *wid = (QWidget *) obj;
+		stream << "\t<VENTANA>\n";
+		stream << "\t\t<VNAME>" + obj->objectName() + "</VNAME>\n";
+		stream << "\t\t<VX>" + QString::number(wid->x()) + "</VX>\n";
+		stream << "\t\t<VY>" + QString::number(wid->y()) + "</VY>\n";
+		stream << "\t\t<VWIDTH>" + QString::number(wid->width()) + "</VWIDTH>\n";
+		stream << "\t\t<VHEIGHT>" + QString::number(wid->height()) + "</VHEIGHT>\n";
+		stream << "\t\t<VVISIBLE>" + (wid->isVisible() ? QString("TRUE") : QString("FALSE")) + "</VVISIBLE>\n";
+		stream << "\t</VENTANA>\n";
+	} // end for
+
+        file.close();
+    } // end if
+}
+
+/// Guarda la configuracion de programa para poder recuperar algunas cosas de presentacion.
+void company::cargaConf() {
+    QFile file(confpr->valor(CONF_DIR_USER) + "bulmafact_" + nameDB() + ".cfn");
+    QDomDocument doc("mydocument");
+    if (!file.open(QIODevice::ReadOnly))
+        return;
+    if (!doc.setContent(&file)) {
+        file.close();
+        return;
+    }
+    file.close();
+
+    // print out the element names of all elements that are direct children
+    // of the outermost element.
+    QDomElement docElem = doc.documentElement();
+    QDomElement principal = docElem.firstChildElement("PRINCIPAL");
+    /// Cogemos la coordenada X
+    QString nx = principal.firstChildElement("X").toElement().text();
+
+    /// Cogemos la coordenada Y
+    QString ny = principal.firstChildElement("Y").toElement().text();
+
+    /// Cogemos el ancho
+    QString nwidth = principal.firstChildElement("WIDTH").toElement().text();
+
+    /// Cogemos el alto
+    QString nheight = principal.firstChildElement("HEIGHT").toElement().text();
+
+    /// Establecemos la geometria de la ventana principal.
+    m_bulmafact->setGeometry(nx.toInt(), ny.toInt(), nwidth.toInt(), nheight.toInt());
+
+    /// Cogemos el indexador
+    QString indexador = principal.firstChildElement("INDEXADOR").toElement().text();
+    if (indexador == "TRUE") {
+	s_indexadorCambiaEstado(TRUE);
+	m_bulmafact->actionIndexador->setChecked(TRUE);
+    } else {
+	s_indexadorCambiaEstado(FALSE);
+	m_bulmafact->actionIndexador->setChecked(FALSE);
+    } // end if
+
+
 }

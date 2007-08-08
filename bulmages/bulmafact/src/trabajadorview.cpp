@@ -35,6 +35,7 @@
 TrabajadorView::TrabajadorView(company *emp, QWidget *parent)
         : FichaBf(emp, parent) {
     _depura("TrabajadorView::TrabajadorView", 0);
+    setDBTableName("trabajador");
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     m_archivoimagen = "";

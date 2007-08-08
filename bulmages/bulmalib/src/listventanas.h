@@ -76,6 +76,8 @@ public:
     void cambiaVisible(bool);
     void vaciar();
     void vaciarCompleto();
+    int numVentanas();
+    QObject *ventana(int index);
 
 protected:
     void closeEvent(QCloseEvent *event);
