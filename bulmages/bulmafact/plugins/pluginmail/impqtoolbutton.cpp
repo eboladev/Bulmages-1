@@ -1,0 +1,179 @@
+/***************************************************************************
+ *   Copyright (C) 2006 by Arturo Martin Llado                             *
+ *   amartin@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
+#include <QWidget>
+#include "impqtoolbutton.h"
+#include "funcaux.h"
+
+/// Necesarios para importacion de efactura
+#include <QtXml/QDomDocument>
+#include <QtXml/QDomNodeList>
+#include <QtXml/QDomNode>
+#include <QString>
+#include <QFileDialog>
+#include <QMap>
+#include <QList>
+#include "facturapview.h"
+#include "presupuestoview.h"
+#include "fixed.h"
+
+
+#include "facturaview.h"
+#include "company.h"
+#include "dbrecord.h"
+
+
+EmailQToolButton::EmailQToolButton(PresupuestoView *pres, PedidoClienteView *ped, AlbaranClienteView *alb, FacturaView *fac , QWidget *parent) : QToolButton(parent) {
+    _depura("EmailQToolButton::EmailQToolButton", 0);
+    m_presupuestoView = pres;
+    m_pedidoClienteView = ped;
+    m_albaranClienteView = alb;
+    m_facturaView = fac;
+    setBoton();
+    _depura("END EmailQToolButton::EmailQToolButton", 0);
+}
+
+EmailQToolButton::~EmailQToolButton() {}
+
+void EmailQToolButton::setBoton() {
+    _depura("EmailQToolButton::setBoton", 0);
+    connect(this, SIGNAL(clicked()), this, SLOT(click()));
+    setObjectName(QString::fromUtf8("exporta"));
+    setStatusTip("Enviar por e-mail al cliente");
+    setToolTip("Enviar por e-mail al cliente");
+    setMinimumSize(QSize(32, 32));
+    setIcon(QIcon(QString::fromUtf8(":/Genericos32x32/images/png/i_mail.png")));
+    setIconSize(QSize(22, 22));
+    _depura("END EmailQToolButton::setBoton", 0);
+}
+
+
+void EmailQToolButton::click() {
+    _depura("ImpQToolButton::click", 0);
+
+
+ 
+    if (m_presupuestoView != NULL) {
+        m_companyact = m_presupuestoView->empresaBase();
+ 
+
+                QString id = m_presupuestoView->DBvalue("idpresupuesto");
+		QString num = m_presupuestoView->DBvalue("numpresupuesto");
+		QString ref = m_presupuestoView->DBvalue("refpresupuesto");
+                QString idcliente = m_presupuestoView->DBvalue("idcliente");
+                QString query = "SELECT mailcliente from cliente WHERE idcliente="+idcliente;
+                cursor2 *curs = m_companyact->cargacursor( query);
+                QString email = curs->valor("mailcliente");
+
+
+                m_presupuestoView->generaRML();
+                generaPDF("presupuesto");
+
+                QString cad = "mv "+confpr->valor(CONF_DIR_USER)+"presupuesto.pdf "+confpr->valor(CONF_DIR_USER)+"presupuesto"+num+".pdf";
+                system(cad.toAscii().data());
+
+                cad = "kmail -s \"Presupuesto "+num+"\" --body \" Adjunto remito presupuesto numero "+num+". Con referencia "+ref+"\n Atentamente\n\" --attach "+confpr->valor(CONF_DIR_USER)+"presupuesto"+num+".pdf "+ email;
+                system(cad.toAscii().data()); 
+    } // end if
+
+    if (m_pedidoClienteView != NULL) {
+        m_companyact = m_pedidoClienteView->empresaBase();
+ 
+
+                QString id = m_pedidoClienteView->DBvalue("idpedidocliente");
+                QString num = m_pedidoClienteView->DBvalue("numpedidocliente");
+                QString ref = m_pedidoClienteView->DBvalue("refpedidocliente");
+
+                QString idcliente = m_pedidoClienteView->DBvalue("idcliente");
+                QString query = "SELECT mailcliente from cliente WHERE idcliente="+idcliente;
+                cursor2 *curs = m_companyact->cargacursor( query);
+                QString email = curs->valor("mailcliente");
+
+
+                m_pedidoClienteView->generaRML();
+                generaPDF("pedidocliente");
+
+                QString cad = "mv "+confpr->valor(CONF_DIR_USER)+"pedidocliente.pdf "+confpr->valor(CONF_DIR_USER)+"pedidocliente"+num+".pdf";
+                system(cad.toAscii().data());
+
+                cad = "kmail -s \"Pedido "+num+"\" --body \" Adjunto remito pedido numero "+num+" con referencia   "+ref+"\n Atentamente\n\" --attach "+confpr->valor(CONF_DIR_USER)+"pedidocliente"+num+".pdf "+ email;
+                system(cad.toAscii().data()); 
+    } // end if
+
+
+    if (m_albaranClienteView != NULL) {
+        m_companyact = m_albaranClienteView->empresaBase();
+ 
+
+                QString id = m_albaranClienteView->DBvalue("idalbaran");
+                QString num = m_albaranClienteView->DBvalue("numalbaran");
+                QString ref = m_albaranClienteView->DBvalue("refalbaran");
+
+                QString idcliente = m_albaranClienteView->DBvalue("idcliente");
+                QString query = "SELECT mailcliente from cliente WHERE idcliente="+idcliente;
+                cursor2 *curs = m_companyact->cargacursor( query);
+                QString email = curs->valor("mailcliente");
+
+
+                m_albaranClienteView->generaRML();
+                generaPDF("albaran");
+
+                QString cad = "mv "+confpr->valor(CONF_DIR_USER)+"albaran.pdf "+confpr->valor(CONF_DIR_USER)+"albaran"+num+".pdf";
+                system(cad.toAscii().data());
+
+                cad = "kmail -s \"Pedido "+num+"\" --body \" Adjunto remito albaran numero "+num+" con referencia   "+ref+"\n Atentamente\n\" --attach "+confpr->valor(CONF_DIR_USER)+"albaran"+num+".pdf "+ email;
+                system(cad.toAscii().data()); 
+    } // end if
+
+
+    if (m_facturaView != NULL) {
+        m_companyact = m_facturaView->empresaBase();
+ 
+
+                QString id = m_facturaView->DBvalue("idfactura");
+		QString num = m_facturaView->DBvalue("numfactura");
+		QString serie = m_facturaView->DBvalue("codigoserie_factura");
+		QString ref = m_facturaView->DBvalue("reffactura");
+		QString fecha = m_facturaView->DBvalue("ffactura");
+
+                QString idcliente = m_facturaView->DBvalue("idcliente");
+                QString query = "SELECT mailcliente from cliente WHERE idcliente="+idcliente;
+                cursor2 *curs = m_companyact->cargacursor( query);
+                QString email = curs->valor("mailcliente");
+
+
+                m_facturaView->generaRML();
+                generaPDF("factura");
+
+                QString cad = "mv "+confpr->valor(CONF_DIR_USER)+"factura.pdf "+confpr->valor(CONF_DIR_USER)+"factura"+serie+num+".pdf";
+                system(cad.toAscii().data());
+
+
+                cad = "kmail -s \"Factura "+num+"\" --body \"Estimado cliente,\n\n";
+		cad += "Adjunto le enviamos la factura número "+serie+num+" con fecha "+fecha+"\n";
+		cad += "Sin otro particular, reciba un cordial saludo:\n\n\n";
+		cad += " --attach "+confpr->valor(CONF_DIR_USER)+"factura"+serie+num+".pdf "+ email;
+                system(cad.toAscii().data()); 
+    } // end if
+
+    _depura("END ImpQToolButton::click", 0);
+}
+
+
