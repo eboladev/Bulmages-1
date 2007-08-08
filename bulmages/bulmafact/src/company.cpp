@@ -1364,22 +1364,24 @@ void company::guardaConf() {
         stream << "\t\t\t<WIDTH>" + QString::number(m_bulmafact->width()) + "</WIDTH>\n";
         stream << "\t\t\t<HEIGHT>" + QString::number(m_bulmafact->height()) + "</HEIGHT>\n";
         stream << "\t\t\t<INDEXADOR>" + (m_bulmafact->actionIndexador->isChecked() ? QString("TRUE") : QString("FALSE")) + "</INDEXADOR>\n";
-        stream << "</PRINCIPAL>\n";
-        stream << "</CONFIG>\n";
+        stream << "\t</PRINCIPAL>\n";
+
 
         for (int i = 0; i < m_listventanas->numVentanas(); i++) {
 		QObject *obj = m_listventanas->ventana(i);
                 QWidget *wid = (QWidget *) obj;
 		stream << "\t<VENTANA>\n";
 		stream << "\t\t<VNAME>" + obj->objectName() + "</VNAME>\n";
-		stream << "\t\t<VX>" + QString::number(wid->x()) + "</VX>\n";
-		stream << "\t\t<VY>" + QString::number(wid->y()) + "</VY>\n";
+		stream << "\t\t<VX>" + QString::number(wid->parentWidget()->x()) + "</VX>\n";
+		stream << "\t\t<VY>" + QString::number(wid->parentWidget()->y()) + "</VY>\n";
 		stream << "\t\t<VWIDTH>" + QString::number(wid->width()) + "</VWIDTH>\n";
 		stream << "\t\t<VHEIGHT>" + QString::number(wid->height()) + "</VHEIGHT>\n";
 		stream << "\t\t<VVISIBLE>" + (wid->isVisible() ? QString("TRUE") : QString("FALSE")) + "</VVISIBLE>\n";
+		stream << "\t\t<VMAXIMIZED>" + (wid->isMaximized() ? QString("TRUE") : QString("FALSE")) + "</VMAXIMIZED>\n";
 		stream << "\t</VENTANA>\n";
 	} // end for
 
+        stream << "</CONFIG>\n";
         file.close();
     } // end if
 }
@@ -1425,5 +1427,35 @@ void company::cargaConf() {
 	m_bulmafact->actionIndexador->setChecked(FALSE);
     } // end if
 
+    /// Tratamos cada ventana
+   QDomNodeList nodos = docElem.elementsByTagName("VENTANA");
+        for (int i = 0; i < nodos.count(); i++) {
+            QDomNode ventana = nodos.item(i);
+            QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
+            if( !e1.isNull() ) { /// the node was really an element.
+		     QString vname = e1.firstChildElement("VNAME").toElement().text();
+			for (int j = 0; j < m_listventanas->numVentanas(); j++) {
+				QObject *obj = m_listventanas->ventana(j);
+				QWidget *wid = (QWidget *) obj;
+				if (obj->objectName() == vname) {
+					QString vx = e1.firstChildElement("VX").toElement().text();
+					QString vy = e1.firstChildElement("VY").toElement().text();
+					QString vwidth = e1.firstChildElement("VWIDTH").toElement().text();
+					QString vheight = e1.firstChildElement("VHEIGHT").toElement().text();
+					QString vvisible = e1.firstChildElement("VVISIBLE").toElement().text();
+					QString vmaximized = e1.firstChildElement("VMAXIMIZED").toElement().text();
+					/// Establecemos la geometria de la ventana principal.
+					wid->resize(vwidth.toInt(), vheight.toInt());
+					wid->parentWidget()->move(vx.toInt(), vy.toInt());
+					if ( vvisible == "TRUE") {
+						wid->showNormal();
+					} // end if
+					if ( vmaximized == "TRUE") {
+						wid->showMaximized();
+					}
+				} // end if
+			} // end for
+            } // end if
+        } // end for
 
 }
