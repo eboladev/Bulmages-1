@@ -29,7 +29,7 @@
 
 /// El constructor de la clase inicializa algunas estructuras y configura la visi&oacute;n
 /// de la pantalla.
-AsientosView::AsientosView(empresa *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo)
+AsientosView::AsientosView(empresa *comp, QWidget *parent, Qt::WFlags flag, edmode )
     : Listado(comp, parent, flag) {
     _depura("AsientosView::AsientosView", 0);
     setupUi(this);

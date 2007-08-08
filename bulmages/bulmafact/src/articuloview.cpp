@@ -290,6 +290,7 @@ int ArticuloView::borrar() {
         m_componentes->borrar();
         Articulo::borrar();
         empresaBase()->commit();
+        empresaBase()->refreshArticles();
         close();
         _depura("END ArticuloView::borrar", 0);
         return 0;
@@ -318,10 +319,4 @@ void ArticuloView::on_mui_cambiarimagen_clicked() {
 }
 
 
-void ArticuloView::on_mui_guardar_clicked() {
-    _depura("ArticuloView::on_mui_guardar_clicked", 0);
-    try {
-        guardar();
-    } catch (...) {}
-    _depura("END ArticuloView::on_mui_guardar_clicked", 0);
-}
+

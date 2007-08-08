@@ -126,7 +126,7 @@ int ClienteView::cargar(QString idcliente) {
         m_listcobros->presentar();
 
         /// Pintamos
-        pintaCliente();
+        pintar();
         /// Reseteamos el control de cambios.
         dialogChanges_cargaInicial();
     } catch (...) {
@@ -194,49 +194,6 @@ int ClienteView::guardar() {
 }
 
 
-/**
-* For now this function cleans the form and sets it so that we can add
-* a new client
-*
-* In the future it should really delete the client, or better yet
-* mark it as deleted on an appropiate field in the DB
-**/
-/// \TODO: Investigar la necesidad de este metodo.
-void ClienteView::deleteClient() {
-    _depura("ClienteView::deleteClient", 0);
-    borraCliente();
-    emptyForm();
-    _depura("END ClienteView::deleteClient", 0);
-}
-
-/** SLOT que responde a la pulsacion del boton guardar.
-    Invoca al metodo guardar().
-*/
-/// \TODO: Este metodo debe estar implementado en la clase Ficha.
-void ClienteView::on_mui_guardar_clicked() {
-    _depura("ClienteView::on_mui_guardar_clicked", 0);
-    guardar();
-    _depura("END ClienteView::on_mui_guardar_clicked", 0);
-}
-
-
-/** SLOT que responde a la pulsacion del boton borrar.
-    Invoca al metodo deleteClient().
-*/
-/// \TODO: deleteClient deberia ser borrar(). y este metodo deberia estar en Ficha.
-void ClienteView::on_mui_borrar_clicked() {
-    _depura("ClienteView::on_mui_borrar_clicked", 0);
-    int ret = QMessageBox::warning(this,
-                                   tr("Edicion de clientes"),
-                                   tr("Esta a punto de borrar un cliente.\n"
-                                      "Esta seguro que desea borrarlo?"),
-                                   QMessageBox::Yes | QMessageBox::Default,
-                                   QMessageBox::No,
-                                   QMessageBox::Cancel | QMessageBox::Escape);
-    if (ret == QMessageBox::Yes)
-        deleteClient();
-    _depura("END ClienteView::on_mui_borrar_clicked", 0);
-}
 
 
 /** SLOT que responde a la pulsacion del boton informe de cliente.
@@ -355,11 +312,6 @@ void ClienteView::pintaidforma_pago(QString val) {
     mui_forma_pago->setidforma_pago(val);
 }
 
-void ClienteView::on_mui_aceptar_clicked() {
-    if (!guardar()) {
-        close();
-    } // end if
-}
 
 
 void ClienteView::pintaidcliente(QString) {

@@ -33,7 +33,7 @@
 #include "funcaux.h"
 
 
-int entryPoint(QApplication *bges) {
+int entryPoint(QApplication *) {
     _depura("Punto de Entrada del plugin de Subformods\n", 0);
         /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
         QTranslator *traductor = new QTranslator(0);
@@ -59,7 +59,7 @@ myplugsubformods::~myplugsubformods(){
 
 void myplugsubformods::s_pintaMenu(QMenu *menu) {
     menu->addSeparator();
-    QAction *ajustac = menu->addAction(tr("Exportar a hoja de calculo"));
+    menu->addAction(tr("Exportar a hoja de calculo"));
 }
 
 void myplugsubformods::s_trataMenu(QAction *action) {

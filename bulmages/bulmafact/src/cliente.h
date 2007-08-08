@@ -40,10 +40,9 @@ class Cliente : public FichaBf {
 public:
     Cliente(company *, QWidget *);
     virtual ~Cliente();
-    virtual void pintaCliente();
+    virtual void pintar();
     virtual int guardar();
-    virtual void borraCliente();
-    virtual void vaciaCliente();
+    virtual int borrar();
     virtual int cargar(QString);
     virtual void pintaidcliente(QString);
     virtual void pintanomcliente(QString);

@@ -98,7 +98,7 @@ int ListLinFacturaProveedorView_ListLinFacturaProveedorView(ListLinFacturaProvee
     return 0;
 }
 
-int SubForm2Bf_on_mui_list_editFinished(SubForm2Bf *subform) {
+int SubForm2Bf_on_mui_list_editFinished(SubForm2Bf *) {
     _depura("SubForm2Bf_on_mui_list_editFinished", 0);
 
 /*

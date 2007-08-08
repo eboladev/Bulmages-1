@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>598</width>
-    <height>563</height>
+    <width>682</width>
+    <height>589</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -56,45 +56,6 @@
         <property name="spacing" >
          <number>5</number>
         </property>
-        <item>
-         <widget class="QToolButton" name="mui_crear" >
-          <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>0</hsizetype>
-            <vsizetype>0</vsizetype>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize" >
-           <size>
-            <width>0</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Nuevo proveedor</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Nuevo proveedor</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_fileNew.xpm</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>22</width>
-            <height>22</height>
-           </size>
-          </property>
-          <property name="shortcut" >
-           <string>Ctrl+N</string>
-          </property>
-         </widget>
-        </item>
         <item>
          <widget class="QToolButton" name="mui_guardar" >
           <property name="enabled" >
@@ -1144,11 +1105,6 @@
  <layoutdefault spacing="2" margin="2" />
  <customwidgets>
   <customwidget>
-   <class>PedidosProveedorList</class>
-   <extends>QWidget</extends>
-   <header>pedidosproveedorlist.h</header>
-  </customwidget>
-  <customwidget>
    <class>AlbaranesProveedor</class>
    <extends>QWidget</extends>
    <header>albaranesproveedor.h</header>
@@ -1178,9 +1134,13 @@
    <extends>QWidget</extends>
    <header>busquedaprovincia.h</header>
   </customwidget>
+  <customwidget>
+   <class>PedidosProveedorList</class>
+   <extends>QWidget</extends>
+   <header>pedidosproveedorlist.h</header>
+  </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>mui_crear</tabstop>
   <tabstop>mui_guardar</tabstop>
   <tabstop>mui_borrar</tabstop>
   <tabstop>mui_imprimir</tabstop>

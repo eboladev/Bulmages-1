@@ -705,7 +705,7 @@ void SubForm3::cargar(cursor2 *cur) {
             /// Si es una fecha lo truncamos a 10 caracteres para presentar solo la fecha.
             if (patronFecha.exactMatch(camp->valorcampo())) {
                 camp->set
-                        (camp->valorcampo().left(10));
+                (camp->valorcampo().left(10));
             } // end if
             /// Rellena la tabla con los datos.
             mui_list->setItem(i, j, camp);
@@ -787,7 +787,7 @@ void SubForm3::cargar(cursor2 *cur) {
     /// Si est&aacute; definido no aplicamos ninguna ordenaci&oacute;n.
     if (!m_ordenporquery) {
         if (m_orden) {
-        /// Si estamos con campos de ordenacion ordenamos tras la carga el listado
+            /// Si estamos con campos de ordenacion ordenamos tras la carga el listado
             for (int i = 0; i < m_lcabecera.size(); ++i) {
                 if (m_lcabecera.at(i)->nomcampo() == "orden" + m_tablename)
                     mui_list->sortItems(i);
@@ -824,11 +824,11 @@ void SubForm3::setOrdenPorQuery(bool ordenactivado) {
 void SubForm3::cargar(QString query) {
     _depura("SubForm3::cargar", 0);
     try {
-       cursor2 *cur = empresaBase()->cargacursor(query);
-       cargar(cur);
-       delete cur;
+        cursor2 *cur = empresaBase()->cargacursor(query);
+        cargar(cur);
+        delete cur;
     } catch (...) {
-       _depura("SubForm3::cargar", 2, "Error en la carga de datos");
+        _depura("SubForm3::cargar", 2, "Error en la carga de datos");
     } // end try
     _depura("END SubForm3::cargar", 0);
 }
@@ -838,7 +838,7 @@ void SubForm3::cargar(QString query) {
 SDBRecord *SubForm3::lineaact() {
     _depura("SubForm3::lineaact", 0);
     return lineaat(mui_list->currentRow());
-   _depura("END SubForm3::lineaact", 0);
+    _depura("END SubForm3::lineaact", 0);
 }
 
 
@@ -846,28 +846,27 @@ SDBRecord *SubForm3::lineaact() {
 SDBRecord *SubForm3::lineaat(int row) {
     _depura("SubForm3::lineaat()", 0, QString::number(row));
     try {
-//  m_procesacambios = FALSE;
 
-    /// Si la lista no tiene suficientes elementos devolvemos NULL
-    if (mui_list->rowCount() < row || row < 0) {
-        throw -1;
-    } // end if
+        /// Si la lista no tiene suficientes elementos devolvemos NULL
+        if (mui_list->rowCount() < row || row < 0) {
+            throw -1;
+        } // end if
 
-    /// Seleccionamos el campo especificado y lo devolvemos.
-    SDBCampo *camp = (SDBCampo*) mui_list->item(row, 0);
-    if (!camp) {
-        throw -1;
-    } // end if
-    SDBRecord *rec = (SDBRecord *) camp->pare();
+        /// Seleccionamos el campo especificado y lo devolvemos.
+        SDBCampo *camp = (SDBCampo*) mui_list->item(row, 0);
+        if (!camp) {
+            throw -1;
+        } // end if
+        SDBRecord *rec = (SDBRecord *) camp->pare();
 
-    m_procesacambios = TRUE;
+        m_procesacambios = TRUE;
 
-    _depura("END SubForm3::lineaat()", 0);
-    return rec;
+        _depura("END SubForm3::lineaat()", 0);
+        return rec;
     } catch (...) {
         _depura ("SubForm3::lineaat linea inexistente", 2, QString::number(row));
-    m_procesacambios = TRUE;
-    return NULL;
+        m_procesacambios = TRUE;
+        return NULL;
     }
 }
 
@@ -881,7 +880,7 @@ bool SubForm3::campoCompleto(int row) {
     for (int i = 0; i < mui_list->columnCount(); i++) {
         camp = (SDBCampo *) mui_list->item(row,i);
 
-    /// Si el dato no es valido se sale
+        /// Si el dato no es valido se sale
         if (!camp) return FALSE;
 
         header = m_lcabecera.at(i);
@@ -923,7 +922,7 @@ void SubForm3::on_mui_list_cellChanged(int row, int col) {
         creado = TRUE;
     } // end if
 
-    switch(key) {
+    switch (key) {
 
     case Qt::Key_Return:
     case Qt::Key_Enter:
@@ -1562,7 +1561,7 @@ void SubForm3::setinsercion(bool b) {
 */
 void SubForm3::setProcesarCambios(bool proc) {
     _depura("SubForm3::setProcesarCambios", 0);
-   m_procesacambios = proc;
+    m_procesacambios = proc;
     _depura("END SubForm3::setProcesarCambios", 0);
 }
 

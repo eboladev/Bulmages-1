@@ -98,7 +98,7 @@ void PedidoProveedor::pintar() {
     // listalineas->pintaListLinPedidoProveedor();
     /// Pinta el subformulario de descuentos del pedidoproveedor
     calculaypintatotales();
-    _depura("FIN PedidoProveedor::pintaPedidoProveedor()\n", 0);
+    _depura("FIN PedidoProveedor::pintaPedidoProveedor()", 0);
 }
 
 

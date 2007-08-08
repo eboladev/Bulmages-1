@@ -21,6 +21,10 @@ exists( /usr/local/bin/distcc ) {
    QMAKE_CXX = distcc g++
 }
 
+QMAKE_CFLAGS_WARN_OFF += strict_aliasing
+QMAKE_CXXFLAGS_WARN_OFF += strict_aliasing
+
+
 # RESOURCES += ../../bulmages-recursos-graficos.qrc
 
 FORMS += aboutbase.ui \

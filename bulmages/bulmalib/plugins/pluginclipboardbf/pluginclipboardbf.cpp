@@ -79,7 +79,7 @@ myplugclipboard::~myplugclipboard(){
 
 void myplugclipboard::s_pintaMenu(QMenu *menu) {
     menu->addSeparator();
-    QAction *ajustac = menu->addAction(tr("Pegar desde Hoja de Calculo"));
+    menu->addAction(tr("Pegar desde Hoja de Calculo"));
 }
 
 void myplugclipboard::s_trataMenu(QAction *action) {

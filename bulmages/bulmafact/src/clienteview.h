@@ -71,9 +71,6 @@ public:
 
 public slots:
     /// \TODO: Muchos metodos aqui implementados deberian estar en Ficha.
-    virtual void on_mui_guardar_clicked();
-    virtual void on_mui_borrar_clicked();
-    virtual void on_mui_aceptar_clicked();
     virtual void on_mui_informe_clicked();
 };
 

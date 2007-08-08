@@ -29,7 +29,7 @@
 #include <QTextCodec>
 #include <QLocale>
 
-int entryPoint(QApplication *bges) {
+int entryPoint(QApplication *) {
     _depura("Punto de Entrada del plugin de SubformSXC\n", 0);
         /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
         QTranslator *traductor = new QTranslator(0);
@@ -55,7 +55,7 @@ myplugsubformsxc::~myplugsubformsxc(){
 
 void myplugsubformsxc::s_pintaMenu(QMenu *menu) {
     menu->addSeparator();
-    QAction *ajustac = menu->addAction(tr("Exportar a Hoja de Calculo"));
+    menu->addAction(tr("Exportar a Hoja de Calculo"));
 }
 
 void myplugsubformsxc::s_trataMenu(QAction *action) {

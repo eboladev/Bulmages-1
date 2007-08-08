@@ -34,18 +34,15 @@
 class ListLinPedidoProveedorView : public SubForm2Bf {
     Q_OBJECT
 
-public:
+private:
     QString mdb_idpedidoproveedor;
+
+public:
     ListLinPedidoProveedorView(QWidget *parent = 0);
-    ~ListLinPedidoProveedorView() {}
-    ;
+    virtual ~ListLinPedidoProveedorView() {};
 
 public slots:
     virtual void cargar(QString idpedidoproveedor);
-    Fixed calculabase();
-    Fixed calculaiva();
-    virtual void on_mui_list_cellChanged(int, int);
-
 };
 
 #endif

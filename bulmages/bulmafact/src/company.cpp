@@ -577,7 +577,7 @@ void company::s_newClienteView() {
     _depura("company::s_newClienteView", 0);
     ClienteView *bud = newClienteView();
     m_pWorkspace->addWindow(bud);
-    bud->pintaCliente();
+    bud->pintar();
     bud->show();
     _depura("END company::s_newClienteView", 0);
 }
@@ -952,14 +952,22 @@ void company::refreshAlbaranesProveedor() {
 
 
 /** Refresca el listado de Clientes.
-    Mediante este metodo es sencill actualizar el listado de albaranes de proveedor sin disponer
-    de un puntero a dicha ventana.
 */
 void company::refreshClientes() {
     _depura("company::refreshClientes", 0);
     if (m_clientsList != NULL)
         m_clientsList->presentar();
     _depura("END company::refreshClientes", 0);
+}
+
+
+/** Refresca el listado de Proveedores.
+*/
+void company::refreshProveedores() {
+    _depura("company::refreshProveedores", 0);
+    if (m_providerslist != NULL)
+        m_providerslist->presentar();
+    _depura("END company::refreshProveedores", 0);
 }
 
 

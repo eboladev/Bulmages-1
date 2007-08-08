@@ -51,10 +51,10 @@ ProveedorView::ProveedorView(company *comp, QWidget *parent)
         addDBCampo("urlproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("URL"));
         addDBCampo("comentproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Comentarios"));
         addDBCampo("codproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Codigo"));
-    addDBCampo("regimenfiscalproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Proveedor", "Regimen Fiscal"));
-    addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Proveedor", "Forma_Pago"));
-    addDBCampo("recargoeqproveedor", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("Proveedor", "Recargo de Equivalencia"));
-    addDBCampo("irpfproveedor", DBCampo::DBnumeric, DBCampo::DBNothing, QApplication::translate("Proveedor", "IRPF"));
+        addDBCampo("regimenfiscalproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Proveedor", "Regimen Fiscal"));
+        addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Proveedor", "Forma_Pago"));
+        addDBCampo("recargoeqproveedor", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("Proveedor", "Recargo de Equivalencia"));
+        addDBCampo("irpfproveedor", DBCampo::DBnumeric, DBCampo::DBNothing, QApplication::translate("Proveedor", "IRPF"));
 
 
         setupUi(this);
@@ -86,7 +86,7 @@ ProveedorView::ProveedorView(company *comp, QWidget *parent)
 
         meteWindow(windowTitle(), this, FALSE);
         dialogChanges_cargaInicial();
-    } catch(...) {
+    } catch (...) {
         mensajeInfo(tr("Error al crear el proveedor"));
     } // end try
 
@@ -99,10 +99,6 @@ ProveedorView::~ProveedorView() {
     _depura("END ProveedorView::~ProveedorView", 0);
 }
 
-
-void ProveedorView::on_mui_guardar_clicked() {
-    guardar();
-}
 
 
 /// Esta funcion carga un proveedor de la base de datos y lo presenta.
@@ -133,15 +129,15 @@ int ProveedorView::cargar(QString idprov) {
         m_provproveedor->setProvincia(DBvalue("provproveedor"));
         mui_codproveedor->setText(DBvalue("codproveedor"));
         mui_forma_pago->setidforma_pago(DBvalue("idforma_pago"));
-    mui_regimenfiscalproveedor->setRegimenFiscal(DBvalue("regimenfiscalproveedor"));
-    mui_irpfproveedor->setText(DBvalue("irpfproveedor"));
+        mui_regimenfiscalproveedor->setRegimenFiscal(DBvalue("regimenfiscalproveedor"));
+        mui_irpfproveedor->setText(DBvalue("irpfproveedor"));
 
-    /// Pintamos el recargo de equivalencia
-    if (DBvalue("recargoeqproveedor") == "t") {
-        mui_recargoeqproveedor->setChecked(TRUE);
-    } else {
-        mui_recargoeqproveedor->setChecked(FALSE);
-    } // end if
+        /// Pintamos el recargo de equivalencia
+        if (DBvalue("recargoeqproveedor") == "t") {
+            mui_recargoeqproveedor->setChecked(TRUE);
+        } else {
+            mui_recargoeqproveedor->setChecked(FALSE);
+        } // end if
 
 
         /// Cargamos las ventanas auxiliares.
@@ -155,13 +151,13 @@ int ProveedorView::cargar(QString idprov) {
         m_listpagosprov->presentar();
 
 
-	/// Reseteamos el control de cambios.
+        /// Reseteamos el control de cambios.
         dialogChanges_cargaInicial();
 
         /// Cambiamos el titulo de la ventana para que salga reflejado donde toca.
         setWindowTitle(tr("Proveedor") + " " + DBvalue("nomproveedor"));
         meteWindow(windowTitle(), this);
-    } catch(...) {
+    } catch (...) {
         return -1;
     } // end try
 
@@ -169,43 +165,6 @@ int ProveedorView::cargar(QString idprov) {
     return 0;
 }
 
-
-/// Esta funcion se ejecuta cuando se ha pulsado sobre el boton de nuevo.
-void ProveedorView::on_mui_crear_clicked() {
-    _depura("ProveedorView::on_mui_crear_clicked", 0);
-    if (dialogChanges_hayCambios()) {
-        int val = QMessageBox::warning(this,
-                                       tr("Guardar proveedor"),
-                                       tr("Desea guardar los cambios?"),
-                                       tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
-        if (val == 0)
-            if (guardar())
-                return;
-        if (val == 2)
-            return;
-    } // end if
-
-    DBRecord::DBclear();
-    m_nomproveedor->setText("");
-    m_nomaltproveedor->setText("");
-    m_cifproveedor->setText("");
-    m_codicliproveedor->setText("");
-    m_cbancproveedor->setText("");
-    m_dirproveedor->setText("");
-    m_poblproveedor->setText("");
-    m_cpproveedor->setText("");
-    m_telproveedor->setText("");
-    m_faxproveedor->setText("");
-    m_emailproveedor->setText("");
-    m_urlproveedor->setText("");
-    m_comentproveedor->setPlainText("");
-    mui_codproveedor->setText("");
-    mui_irpfproveedor->setText("");
-
-    /// Reseteamos el control de cambios
-    dialogChanges_cargaInicial();
-    _depura("END ProveedorView::on_mui_crear_clicked", 0);
-}
 
 
 /// Esta funcion es la respuesta a la pulsacion del boton de guardar
@@ -252,18 +211,16 @@ int ProveedorView::guardar() {
 }
 
 
-/// Esta funcion se ejecuta cuando se ha pulsado sobre el boton de borrar.
-void ProveedorView::on_mui_borrar_clicked() {
-    _depura("ProveedorView::on_mui_borrar_clicked", 0);
-    if (DBvalue("idproveedor") != "")
-        if (QMessageBox::Yes == QMessageBox::question(this,
-                tr("Borrar proveedor"),
-                tr("Esta a punto de borrar un proveedor. Estos datos pueden dar problemas."),
-                QMessageBox::Yes, QMessageBox::No))
-            if (!DBRecord::borrar()) {
-                dialogChanges_cargaInicial();
-                close();
-            } // end if
-    _depura("END ProveedorView::on_mui_borrar_clicked", 0);
+/** Metodo que permite borrar un cliente.
+    Hace un delete sobre la base de datos del cliente que esta viendose.
+*/
+/// \TODO: Deberia meterse dentro de un bloque de depuracion try{} catch{}.
+int ProveedorView::borrar() {
+    _depura("ProveedorView::borrar", 0);
+    DBRecord::borrar();
+    empresaBase()->refreshProveedores();
+    return 0;
+    _depura("END ProveedorView::borrar", 0);
 }
+
 

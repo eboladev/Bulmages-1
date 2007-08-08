@@ -29,6 +29,7 @@
 
 
 ListLinPedidoProveedorView::ListLinPedidoProveedorView(QWidget *parent) : SubForm2Bf(parent) {
+    _depura("ListLinPedidoProveedorView::ListLinPedidoProveedorView", 0);
     setDBTableName("lpedidoproveedor");
     setDBCampoId("numlpedidoproveedor");
     addSHeader("puntlpedidoproveedor", DBCampo::DBboolean, DBCampo::DBNotNull, SHeader::DBNone, tr("puntlpedidoproveedor"));
@@ -46,70 +47,18 @@ ListLinPedidoProveedorView::ListLinPedidoProveedorView(QWidget *parent) : SubFor
     addSHeader("ordenlpedidoproveedor", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Orden"));
     setinsercion(TRUE);
     setOrdenEnabled(TRUE);
+    setOrdenPorQuery(FALSE);
+    _depura("END ListLinPedidoProveedorView::ListLinPedidoProveedorView", 0);
 }
 
-
-void ListLinPedidoProveedorView::on_mui_list_cellChanged(int row, int col) {
-    _depura("ListLinPedidoProveedorView::editFinished", 0);
-    SubForm3::on_mui_list_cellChanged(row, col);
-    SDBRecord *rec = lineaat(row);
-    SDBCampo *camp = (SDBCampo *) item(row, col);
-    camp->refresh();
-
-    /// Si el campo no ha sido cambiado se termina sin cambiar nada.
-    if ( ! camp->cambiado() ) {
-    	SubForm3::on_mui_list_cellChanged(row, col);
-	return;
-    } // end if
-
-    if (camp->nomcampo() == "codigocompletoarticulo") {
-        cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM articulo WHERE codigocompletoarticulo='" + camp->text() + "'");
-        if (!cur->eof() ) {
-            rec->setDBvalue("idarticulo", cur->valor("idarticulo"));
-            rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
-            rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
-            rec->setDBvalue("desclpedidoproveedor", cur->valor("nomarticulo"));
-            rec->setDBvalue("cantlpedidoproveedor", "1.00");
-            rec->setDBvalue("descuentolpedidoproveedor", "0.00");
-            rec->setDBvalue("pvplpedidoproveedor", cur->valor("pvparticulo"));
-        } // end if
-
-        cursor2 *cur1 = empresaBase()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva=" + cur->valor("idtipo_iva") + "ORDER BY fechatasa_iva LIMIT 1");
-        if (!cur->eof()) {
-	    rec->setDBvalue("ivalpedidoproveedor", cur1->valor("porcentasa_iva"));
-        } // end if
-	delete cur1;
-	delete cur;
-
-    } // end if
-}
 
 
 void ListLinPedidoProveedorView::cargar(QString idpedidoproveedor) {
-        _depura("ListLinPedidoProveedorView::cargar\n", 0);
+        _depura("ListLinPedidoProveedorView::cargar", 0);
         mdb_idpedidoproveedor = idpedidoproveedor;
         cursor2 * cur= empresaBase()->cargacursor("SELECT * FROM lpedidoproveedor LEFT JOIN articulo ON lpedidoproveedor.idarticulo = articulo.idarticulo WHERE idpedidoproveedor=" + mdb_idpedidoproveedor + " ORDER BY ordenlpedidoproveedor");
         SubForm3::cargar(cur);
         delete cur;
-}
-
-
-Fixed ListLinPedidoProveedorView::calculabase() {
-	Fixed base("0.0");
-        for (int i = 0; i < rowCount() - 1; i++) {
-		Fixed totpar = Fixed(DBvalue("pvplpedidoproveedor", i)) * Fixed(DBvalue("cantlpedidoproveedor", i));
-		base = base + totpar;
-        } // end for
-	return base;
-}
-
-
-Fixed ListLinPedidoProveedorView::calculaiva() {
-	Fixed base("0.0");
-        for (int i = 0; i < rowCount() - 1; i++) {
-		Fixed totpar = Fixed(DBvalue("pvplpedidoproveedor", i)) * Fixed(DBvalue("ivalpedidoproveedor", i)) / 100;
-		base = base + totpar;
-        } // end for
-	return base;
+        _depura("END ListLinPedidoProveedorView::cargar", 0);
 }
 

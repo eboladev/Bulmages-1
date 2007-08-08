@@ -409,7 +409,6 @@ void RegistroIva::buscafecha(int idborrador) {
 void RegistroIva::buscaNumFactura(int idborrador) {
     QString query;
     cursor2 *recordset;
-    int numfact;
     QString cadena;
     int numord;
     query.sprintf("SELECT factura, numorden FROM registroiva WHERE idborrador IN (SELECT idborrador FROM borrador WHERE idasiento=(SELECT idasiento FROM borrador WHERE idborrador = '%i'))", idborrador);

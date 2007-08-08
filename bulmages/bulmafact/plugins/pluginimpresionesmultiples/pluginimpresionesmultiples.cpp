@@ -28,7 +28,7 @@
 #include "impqtoolbutton.h"
 
 
-int entryPoint(bulmafact *bges) {
+int entryPoint(bulmafact *) {
     _depura("Estoy dentro del plugin de impresiones multiples", 0);
     return 0;
 }

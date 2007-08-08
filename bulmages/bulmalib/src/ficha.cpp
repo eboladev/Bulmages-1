@@ -183,14 +183,14 @@ void Ficha::meteWindow(QString nom, QObject *obj, bool compdup) {
     _depura("END Ficha::meteWindow", 0);
 }
 
-void Ficha::on_customContextMenuRequested(const QPoint &pos) {
+void Ficha::on_customContextMenuRequested(const QPoint &) {
     _depura("Ficha::on_customContextMenuRequested", 0);
     QMenu *popup = new QMenu(this);
     QAction *avconfig = popup->addAction(tr("Opciones Avanzadas de Ficha"));
     QAction *avprint = popup->addAction(tr("Imprimir Ficha"));
     QAction *opcion = popup->exec(QCursor::pos());
     if (opcion == avconfig) {
-	FichaCfg *fich = new FichaCfg(empresaBase(), this, 0);
+	new FichaCfg(empresaBase(), this, 0);
     } else if (opcion == avprint) {
         Ficha::imprimir();
     } // end if

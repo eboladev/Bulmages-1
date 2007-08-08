@@ -125,6 +125,7 @@ public:
     void refreshFacturas();
     void refreshFacturasProveedor();
     void refreshClientes();
+    void refreshProveedores();
     void s_FPago();
     void s_Familias();
     void s_trabajadores();

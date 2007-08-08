@@ -216,35 +216,29 @@ void Cliente::pintaregimenfiscalcliente(QString) {
     Hace un delete sobre la base de datos del cliente que esta viendose.
 */
 /// \TODO: Deberia meterse dentro de un bloque de depuracion try{} catch{}.
-void Cliente::borraCliente() {
-    _depura("Cliente::borraCliente", 0);
+int Cliente::borrar() {
+    _depura("Cliente::borrar", 0);
     if (DBvalue("idcliente") != "") {
         empresaBase()->begin();
         int error = empresaBase()->ejecuta("DELETE FROM cliente WHERE idcliente = " + DBvalue("idcliente"));
         if (error) {
             empresaBase()->rollback();
-            return;
+            return -1;
         } // end if
         empresaBase()->commit();
-        vaciaCliente();
+	empresaBase()->refreshClientes();
     } // end if
-    _depura("END Cliente::borraCliente", 0);
+    return 0;
+    _depura("END Cliente::borrar", 0);
 }
 
 
-/** Vacia los valores que pueda contener DBRecord para asegurarnos que no hay
-    Basura en las variables. */
-void Cliente::vaciaCliente() {
-    _depura("Cliente::vaciaCliente", 0);
-    DBclear();
-    _depura("END Cliente::vaciaCliente", 0);
-}
 
 
 /** Se encarga de pintar un cliente.
     PAra ello coge todos los valores del DBRecord y llama a los metodos pintar que deben
     estar reimplementados en la clase de visualizacion. */
-void Cliente::pintaCliente() {
+void Cliente::pintar() {
     _depura("Cliente::pintaCliente", 0);
 
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto.

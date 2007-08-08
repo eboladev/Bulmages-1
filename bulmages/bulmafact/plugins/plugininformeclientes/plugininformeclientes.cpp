@@ -29,7 +29,7 @@
 #include "company.h"
 #include "funcaux.h"
 
-void entryPoint(bulmafact *bges) {
+void entryPoint(bulmafact *) {
     _depura("Estoy dentro del plugin de informe Clientes", 0);
 }
 
