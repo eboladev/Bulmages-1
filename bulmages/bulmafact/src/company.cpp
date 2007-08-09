@@ -1378,6 +1378,7 @@ void company::guardaConf() {
 		stream << "\t\t<VHEIGHT>" + QString::number(wid->height()) + "</VHEIGHT>\n";
 		stream << "\t\t<VVISIBLE>" + (wid->isVisible() ? QString("TRUE") : QString("FALSE")) + "</VVISIBLE>\n";
 		stream << "\t\t<VMAXIMIZED>" + (wid->isMaximized() ? QString("TRUE") : QString("FALSE")) + "</VMAXIMIZED>\n";
+		stream << "\t\t<VACTIVEWINDOW>" + (m_bulmafact->workspace()->activeWindow() == wid ? QString("TRUE") : QString("FALSE")) + "</VACTIVEWINDOW>";
 		stream << "\t</VENTANA>\n";
 	} // end for
 
@@ -1428,6 +1429,7 @@ void company::cargaConf() {
     } // end if
 
     /// Tratamos cada ventana
+   QWidget *activewindow = NULL;
    QDomNodeList nodos = docElem.elementsByTagName("VENTANA");
         for (int i = 0; i < nodos.count(); i++) {
             QDomNode ventana = nodos.item(i);
@@ -1444,6 +1446,7 @@ void company::cargaConf() {
 					QString vheight = e1.firstChildElement("VHEIGHT").toElement().text();
 					QString vvisible = e1.firstChildElement("VVISIBLE").toElement().text();
 					QString vmaximized = e1.firstChildElement("VMAXIMIZED").toElement().text();
+					QString vactivewindow = e1.firstChildElement("VACTIVEWINDOW").toElement().text();
 					/// Establecemos la geometria de la ventana principal.
 					wid->resize(vwidth.toInt(), vheight.toInt());
 					wid->parentWidget()->move(vx.toInt(), vy.toInt());
@@ -1453,9 +1456,14 @@ void company::cargaConf() {
 					if ( vmaximized == "TRUE") {
 						wid->showMaximized();
 					}
+					if ( vactivewindow == "TRUE") {
+						activewindow = wid;
+					}
 				} // end if
 			} // end for
             } // end if
         } // end for
-
+	/// Si hay una ventana activa se pone como activa.
+	if (activewindow) 
+		m_bulmafact->workspace()->setActiveWindow(activewindow);
 }

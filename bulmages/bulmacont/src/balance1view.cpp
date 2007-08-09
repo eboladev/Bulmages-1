@@ -31,11 +31,13 @@
 #include "asiento1view.h"
 
 /// Incluimos las imagenes que catalogan los tipos de cuentas.
+/*
 #include "images/cactivo.xpm"
 #include "images/cpasivo.xpm"
 #include "images/cneto.xpm"
 #include "images/cingresos.xpm"
 #include "images/cgastos.xpm"
+*/
 
 #define CUENTA         m_ccuenta
 #define DENOMINACION   m_cdenominacion

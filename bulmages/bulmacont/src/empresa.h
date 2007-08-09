@@ -49,7 +49,7 @@ class CuentaView;
 class PaisView;
 class extractoview1;
 class listcuentasview1;
-
+class Bulmacont;
 
 /// Soporte principal para cada empresa contable.
 /** Clase que soporta todas las funciones de la empresa contable. Supuestamente el programa
@@ -64,6 +64,7 @@ class listcuentasview1;
     \todo Proporcionar la funcionalidad de comunicaci&oacute;n entre las otras clases. */
 class empresa : public EmpresaBase {
 private:
+    Bulmacont *m_bulmacont;
     QString nombre;
     int ano;
     QString contrasenya;
@@ -84,8 +85,7 @@ public:
     QString nombreDB;
 
 public:
-//    empresa * empresaBase();
-    empresa();
+    empresa(Bulmacont *bcont);
     virtual ~empresa();
     /// Devuelve un puntero a la clase de la base de datos.
     postgresiface2 *bdempresa();
@@ -145,6 +145,8 @@ public:
     virtual void s_asiento1();
     CuentaView *newcuentaview();
     void muestrapaises();
+    void guardaConf();
+    void cargaConf();
 };
 
 #endif

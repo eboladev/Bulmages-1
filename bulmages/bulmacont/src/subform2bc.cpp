@@ -36,12 +36,13 @@
 #include "balanceview.h"
 
 /// Incluimos las imagenes que catalogan los tipos de cuentas.
+/*
 #include "images/cactivo.xpm"
 #include "images/cpasivo.xpm"
 #include "images/cneto.xpm"
 #include "images/cingresos.xpm"
 #include "images/cgastos.xpm"
-
+*/
 
 SubForm2Bc::SubForm2Bc(QWidget *parent) : SubForm3(parent) {
     _depura("SubForm2Bc::SubForm2Bc", 0);
@@ -416,7 +417,7 @@ QSubForm2BcDelegate::~QSubForm2BcDelegate() {
 }
 
 
-QWidget *QSubForm2BcDelegate::createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const {
+QWidget *QSubForm2BcDelegate::createEditor(QWidget *parent, const QStyleOptionViewItem &, const QModelIndex &index) const {
     _depura("QSubForm2BcDelegate::createEditor", 0);
     SHeader *linea;
     linea = m_subform->cabecera()->at(index.column());

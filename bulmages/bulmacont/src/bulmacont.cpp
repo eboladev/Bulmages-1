@@ -56,7 +56,7 @@ Bulmacont::Bulmacont(QWidget *parent, Qt::WFlags f, QString DB)
     vboxlayout->addWidget(m_pb);
 
 
-    m_empresaactual = new empresa();
+    m_empresaactual = new empresa(this);
     m_empresaactual->setProgressBar(m_pb);
     m_empresaactual->init(DB, "BulmaCont");
     m_empresaactual->setWorkspace(m_pWorkspace);
@@ -531,4 +531,10 @@ void Bulmacont::informaindexador(QWidget *w) {
 
     _depura("END Bulmacont::informaindexador", 0);
 }
+
+QWorkspace2 *Bulmacont::workspace() {
+	return m_pWorkspace;
+}
+
+
 

@@ -47,7 +47,7 @@
 /// window and providing a menubar, toolbar
 /// and statusbar. For the main view, an instance of class Bulmages01View is
 /// created which creates your view.
-class Bulmacont : public QMainWindow, Ui_BulmaContBase {
+class Bulmacont : public QMainWindow, public Ui_BulmaContBase {
     Q_OBJECT
 
 private:
@@ -63,7 +63,7 @@ public:
     /// Exporta menues.
     QMenu *mui_MenuHerramientas();
     QMenu *mui_MenuVer();
-
+    QWorkspace2 *workspace();
 protected:
     /// Event filter to catch close events for MDI child windows and is installed in
     /// createClient() on every child window.
