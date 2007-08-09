@@ -171,6 +171,8 @@ public:
     QString searchParent(QString);
     /// Returns the name of the database opened, if none as open then returns "".
     QString nameDB();
+    /// Returns table privileges of current user
+    bool has_table_privilege(QString tabla, QString permiso);
 };
 
 #endif

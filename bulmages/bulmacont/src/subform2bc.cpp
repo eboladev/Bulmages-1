@@ -425,8 +425,6 @@ QWidget *QSubForm2BcDelegate::createEditor(QWidget *parent, const QStyleOptionVi
     _depura("QSubForm2BcDelegate::createEditor", 0, "CurrentRow: " + QString::number(index.row()));
 
     if (linea->nomcampo().startsWith("desc")) {
-
-//    if (linea->nomcampo() == "desc" + m_subform->tableName()) {
         QTextEditDelegate *editor = new QTextEditDelegate(parent);
         editor->setObjectName("QTextEditDelegate");
         return editor;

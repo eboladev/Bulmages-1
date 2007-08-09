@@ -202,22 +202,14 @@ void Ficha::setDBTableName(QString nom) {
     _depura("Ficha::setDBTableName", 0);
     DBRecord::setDBTableName(nom);
 
-    cursor2 *cur = empresaBase()->cargacursor("SELECT has_table_privilege('"+nom+"', 'INSERT') AS pins");
-    if(cur) {
-	if (cur->valor("pins") == "f") {
+
+	if (!empresaBase()->has_table_privilege(nom, "INSERT")) {
 		/// Buscamos los permisos que tiene el usuario y desactivamos botones.
 		QToolButton *b = findChild<QToolButton *>("mui_guardar");
 		if (b) b->setDisabled(TRUE);
 		b = findChild<QToolButton *>("mui_borrar");
 		if (b) b->setDisabled(TRUE);
 	} // end if
-	delete cur;
-    } else {
-		/// Buscamos los permisos que tiene el usuario y desactivamos botones.
-		QToolButton *b = findChild<QToolButton *>("mui_guardar");
-		if (b) b->setDisabled(TRUE);
-		b = findChild<QToolButton *>("mui_borrar");
-		if (b) b->setDisabled(TRUE);
-    } // end if
+
     _depura("END Ficha::setDBTableName", 0);
 }

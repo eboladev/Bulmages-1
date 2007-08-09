@@ -85,8 +85,9 @@ company::~company() {
     guardaConf();
 
     /// Borramos las ventanas flotantes antes de eliminar esta clase ya que se produciria un segfault
-    m_listventanas->vaciar();
+    m_listventanas->vaciarCompleto();
 
+/*
     /// Borramos el resto de ventanas.
     delete m_facturasproveedorlist;
     m_facturasproveedorlist = NULL;
@@ -112,6 +113,7 @@ company::~company() {
     m_pedidosclienteList = NULL;
     delete m_clientDelivNotesList;
     m_clientDelivNotesList = NULL;
+*/
     _depura("END company::~company", 0);
 }
 
@@ -132,13 +134,11 @@ void company::createMainWindows(Splash *splash) {
     splash->setBarraProgreso(7);
     m_progressbar->setValue(0);
     /// Comprobamos que tengamos permisos para trabajar con articulos.
-    cursor2 *cur = cargacursor("SELECT has_table_privilege('articulo', 'SELECT') AS pins");
     m_bulmafact->actionListado_de_Articulos->setEnabled(FALSE);
     m_bulmafact->actionNuevo_Articulo->setEnabled(FALSE);
     m_bulmafact->actionGestion_Familias->setEnabled(FALSE);
     m_bulmafact->actionGestion_Tipos_Articulo->setEnabled(FALSE);
-    if (cur) {
-        if (cur->valor("pins") == "t") {
+        if (has_table_privilege("articulo", "SELECT")) {
             m_articleslist = new ArticuloList(this);
             m_pWorkspace->addWindow(m_articleslist);
             m_articleslist->hide();
@@ -147,8 +147,6 @@ void company::createMainWindows(Splash *splash) {
             m_bulmafact->actionGestion_Familias->setEnabled(TRUE);
             m_bulmafact->actionGestion_Tipos_Articulo->setEnabled(TRUE);
         } // end if
-        delete cur;
-    } // end if
 
 
 
@@ -158,19 +156,15 @@ void company::createMainWindows(Splash *splash) {
     splash->setBarraProgreso(10);
     m_progressbar->setValue(8);
     /// Comprobamos que tengamos permisos para trabajar con clientes.
-    cur = cargacursor("SELECT has_table_privilege('cliente', 'SELECT') AS pins");
     m_bulmafact->actionListado_Clientes->setEnabled(FALSE);
     m_bulmafact->actionNuevo_Cliente->setEnabled(FALSE);
-    if (cur) {
-        if (cur->valor("pins") == "t") {
+        if (has_table_privilege("cliente", "SELECT")) {
             m_clientsList = new ClientsList(this);
             m_pWorkspace->addWindow(m_clientsList);
             m_clientsList->hide();
             m_bulmafact->actionListado_Clientes->setEnabled(TRUE);
             m_bulmafact->actionNuevo_Cliente->setEnabled(TRUE);
         } // end if
-        delete cur;
-    } // end if
 
 
 
@@ -180,19 +174,15 @@ void company::createMainWindows(Splash *splash) {
     splash->setBarraProgreso(16);
     m_progressbar->setValue(16);
     /// Comprobamos que tengamos permisos para trabajar con clientes.
-    cur = cargacursor("SELECT has_table_privilege('proveedor', 'SELECT') AS pins");
     m_bulmafact->actionListado_Proveedores->setEnabled(FALSE);
     m_bulmafact->actionNuevo_Proveedor->setEnabled(FALSE);
-    if (cur) {
-        if (cur->valor("pins") == "t") {
+        if (has_table_privilege("proveedor", "SELECT")) {
             m_providerslist = new ProveedorList(this);
             m_pWorkspace->addWindow(m_providerslist);
             m_providerslist->hide();
             m_bulmafact->actionListado_Proveedores->setEnabled(TRUE);
             m_bulmafact->actionNuevo_Proveedor->setEnabled(TRUE);
         } // end if
-        delete cur;
-    } // end if
 
 
 
@@ -203,19 +193,15 @@ void company::createMainWindows(Splash *splash) {
     splash->setBarraProgreso(32);
     m_progressbar->setValue(32);
     /// Comprobamos que tengamos permisos para trabajar con presupuestos.
-    cur = cargacursor("SELECT has_table_privilege('presupuesto', 'SELECT') AS pins");
     m_bulmafact->actionListado_Presupuestos->setEnabled(FALSE);
     m_bulmafact->actionNuevo_Presupuesto->setEnabled(FALSE);
-    if (cur) {
-        if (cur->valor("pins") == "t") {
+        if (has_table_privilege("presupuesto", "SELECT")) {
             m_presupuestosList = new PresupuestoList(this);
             m_pWorkspace->addWindow(m_presupuestosList);
             m_presupuestosList->hide();
             m_bulmafact->actionListado_Presupuestos->setEnabled(TRUE);
             m_bulmafact->actionNuevo_Presupuesto->setEnabled(TRUE);
         } // end if
-        delete cur;
-    } // end if
 
 
     /// pb = 40%
@@ -224,19 +210,15 @@ void company::createMainWindows(Splash *splash) {
     splash->setBarraProgreso(40);
     m_progressbar->setValue(40);
     /// Comprobamos que tengamos permisos para trabajar con pedidos de cliente.
-    cur = cargacursor("SELECT has_table_privilege('pedidocliente', 'SELECT') AS pins");
     m_bulmafact->actionListado_Pedidos_Cliente->setEnabled(FALSE);
     m_bulmafact->actionNuevo_Pedido_Cliente->setEnabled(FALSE);
-    if (cur) {
-        if (cur->valor("pins") == "t") {
+        if (has_table_privilege("pedidocliente", "SELECT")) {
             m_pedidosclienteList = new PedidosClienteList(this);
             m_pWorkspace->addWindow(m_pedidosclienteList);
             m_pedidosclienteList->hide();
             m_bulmafact->actionListado_Pedidos_Cliente->setEnabled(TRUE);
             m_bulmafact->actionNuevo_Pedido_Cliente->setEnabled(TRUE);
         } // end if
-        delete cur;
-    } // end if
 
 
 
@@ -246,21 +228,16 @@ void company::createMainWindows(Splash *splash) {
     splash->mensaje(QApplication::translate("company","Inicializando listado de Albaranes Cliente"));
     splash->setBarraProgreso(48);
     m_progressbar->setValue(48);
-
     /// Comprobamos que tengamos permisos para trabajar con albaranes.
-    cur = cargacursor("SELECT has_table_privilege('albaran', 'SELECT') AS pins");
     m_bulmafact->actionListado_Albaranes_Cliente->setEnabled(FALSE);
     m_bulmafact->actionNuevo_Albaran_Cliente->setEnabled(FALSE);
-    if (cur) {
-        if (cur->valor("pins") == "t") {
+        if (has_table_privilege("albaran", "SELECT")) {
             m_clientDelivNotesList = new AlbaranClienteList(this);
             m_pWorkspace->addWindow(m_clientDelivNotesList);
             m_clientDelivNotesList->hide();
             m_bulmafact->actionListado_Albaranes_Cliente->setEnabled(TRUE);
             m_bulmafact->actionNuevo_Albaran_Cliente->setEnabled(TRUE);
         } // end if
-        delete cur;
-    } // end if
 
 
     /// pb = 56%
@@ -269,19 +246,15 @@ void company::createMainWindows(Splash *splash) {
     splash->setBarraProgreso(56);
     m_progressbar->setValue(56);
     /// Comprobamos que tengamos permisos para trabajar con Facturas.
-    cur = cargacursor("SELECT has_table_privilege('albaran', 'SELECT') AS pins");
     m_bulmafact->actionListado_Facturas_Cliente->setEnabled(FALSE);
     m_bulmafact->actionNueva_Factura_Cliente->setEnabled(FALSE);
-    if (cur) {
-        if (cur->valor("pins") == "t") {
+        if (has_table_privilege("factura", "SELECT")) {
             m_facturasList = new FacturasList(this);
             m_pWorkspace->addWindow(m_facturasList);
             m_facturasList->hide();
             m_bulmafact->actionListado_Facturas_Cliente->setEnabled(TRUE);
             m_bulmafact->actionNueva_Factura_Cliente->setEnabled(TRUE);
         } // end if
-        delete cur;
-    } // end if
 
 
 
@@ -292,19 +265,15 @@ void company::createMainWindows(Splash *splash) {
     splash->setBarraProgreso(64);
     m_progressbar->setValue(64);
     /// Comprobamos que tengamos permisos para trabajar con Facturas.
-    cur = cargacursor("SELECT has_table_privilege('cobro', 'SELECT') AS pins");
     m_bulmafact->actionListado_de_Cobros->setEnabled(FALSE);
     m_bulmafact->actionNuevo_Cobro->setEnabled(FALSE);
-    if (cur) {
-        if (cur->valor("pins") == "t") {
+        if (has_table_privilege("cobro", "SELECT")) {
             m_cobrosList = new CobrosList(this);
             m_pWorkspace->addWindow(m_cobrosList);
             m_cobrosList->hide();
             m_bulmafact->actionListado_de_Cobros->setEnabled(TRUE);
             m_bulmafact->actionNuevo_Cobro->setEnabled(TRUE);
         } // end if
-        delete cur;
-    } // end if
 
 
     /// pb = 72%
@@ -313,19 +282,15 @@ void company::createMainWindows(Splash *splash) {
     splash->setBarraProgreso(72);
     m_progressbar->setValue(72);
     /// Comprobamos que tengamos permisos para trabajar con Pedidos de Proveedor.
-    cur = cargacursor("SELECT has_table_privilege('pedidoproveedor', 'SELECT') AS pins");
     m_bulmafact->actionListado_Pedidos_Proveedor->setEnabled(FALSE);
     m_bulmafact->actionNuevo_Pedido_Proveedor->setEnabled(FALSE);
-    if (cur) {
-        if (cur->valor("pins") == "t") {
+        if (has_table_privilege("pedidoproveedor", "SELECT")) {
             m_pedidosproveedorList = new PedidosProveedorList(this);
             m_pWorkspace->addWindow(m_pedidosproveedorList);
             m_pedidosproveedorList->hide();
             m_bulmafact->actionListado_Pedidos_Proveedor->setEnabled(TRUE);
             m_bulmafact->actionNuevo_Pedido_Proveedor->setEnabled(TRUE);
         } // end if
-        delete cur;
-    } // end if
 
 
 
@@ -335,19 +300,15 @@ void company::createMainWindows(Splash *splash) {
     splash->setBarraProgreso(80);
     m_progressbar->setValue(80);
     /// Comprobamos que tengamos permisos para trabajar con Albaranes de Proveedor.
-    cur = cargacursor("SELECT has_table_privilege('albaranp', 'SELECT') AS pins");
     m_bulmafact->actionListado_Albaranes_Proveedor->setEnabled(FALSE);
     m_bulmafact->actionNuevo_Albaran_Proveedor->setEnabled(FALSE);
-    if (cur) {
-        if (cur->valor("pins") == "t") {
+        if (has_table_privilege("albaranp", "SELECT")) {
             m_albaranesproveedor = new AlbaranesProveedor(this);
             m_pWorkspace->addWindow(m_albaranesproveedor);
             m_albaranesproveedor->hide();
             m_bulmafact->actionListado_Albaranes_Proveedor->setEnabled(TRUE);
             m_bulmafact->actionNuevo_Albaran_Proveedor->setEnabled(TRUE);
         } // end if
-        delete cur;
-    } // end if
 
 
 
@@ -357,19 +318,15 @@ void company::createMainWindows(Splash *splash) {
     splash->setBarraProgreso(88);
     m_progressbar->setValue(88);
     /// Comprobamos que tengamos permisos para trabajar con Facturas de Proveedor.
-    cur = cargacursor("SELECT has_table_privilege('facturap', 'SELECT') AS pins");
     m_bulmafact->actionListado_Facturas_Proveedor->setEnabled(FALSE);
     m_bulmafact->actionNueva_Factura_Proveedor->setEnabled(FALSE);
-    if (cur) {
-        if (cur->valor("pins") == "t") {
+        if (has_table_privilege("facturap", "SELECT")) {
             m_facturasproveedorlist = new FacturasProveedorList(this);
             m_pWorkspace->addWindow(m_facturasproveedorlist);
             m_facturasproveedorlist->hide();
             m_bulmafact->actionListado_Facturas_Proveedor->setEnabled(TRUE);
             m_bulmafact->actionNueva_Factura_Proveedor->setEnabled(TRUE);
         } // end if
-        delete cur;
-    } // end if
 
 
     /// pb = 96%
@@ -378,93 +335,61 @@ void company::createMainWindows(Splash *splash) {
     splash->setBarraProgreso(96);
     m_progressbar->setValue(96);
     /// Comprobamos que tengamos permisos para trabajar con Facturas de Proveedor.
-    cur = cargacursor("SELECT has_table_privilege('pago', 'SELECT') AS pins");
     m_bulmafact->actionListado_de_Pagos->setEnabled(FALSE);
     m_bulmafact->actionNuevo_Pago->setEnabled(FALSE);
-    if (cur) {
-        if (cur->valor("pins") == "t") {
+        if (has_table_privilege("pago", "SELECT")) {
             m_pagosList = new PagosList(this);
             m_pWorkspace->addWindow(m_pagosList);
             m_pagosList->hide();
             m_bulmafact->actionListado_de_Pagos->setEnabled(TRUE);
             m_bulmafact->actionNuevo_Pago->setEnabled(TRUE);
         } // end if
-        delete cur;
-    } // end if
 
 
     /// Comprobamos que tengamos permisos para trabajar con Tipos de IVA.
-    cur = cargacursor("SELECT has_table_privilege('tipo_iva', 'SELECT') AS pins");
     m_bulmafact->actionTasaIVA->setEnabled(FALSE);
     m_bulmafact->actionTipoIVA->setEnabled(FALSE);
-    if (cur) {
-        if (cur->valor("pins") == "t") {
+        if (has_table_privilege("tipo_iva", "SELECT")) {
             m_bulmafact->actionTasaIVA->setEnabled(TRUE);
             m_bulmafact->actionTipoIVA->setEnabled(TRUE);
         } // end if
-        delete cur;
-    } // end if
 
     /// Comprobamos que tengamos permisos para trabajar con Provincias.
-    cur = cargacursor("SELECT has_table_privilege('provincia', 'SELECT') AS pins");
     m_bulmafact->actionProvincias->setEnabled(FALSE);
-    if (cur) {
-        if (cur->valor("pins") == "t") {
+        if (has_table_privilege("provincia", "SELECT")) {
             m_bulmafact->actionProvincias->setEnabled(TRUE);
         } // end if
-        delete cur;
-    } // end if
 
     /// Comprobamos que tengamos permisos para trabajar con Provincias.
-    cur = cargacursor("SELECT has_table_privilege('trabajador', 'SELECT') AS pins");
     m_bulmafact->actionTrabajadores->setEnabled(FALSE);
-    if (cur) {
-        if (cur->valor("pins") == "t") {
+        if (has_table_privilege("trabajador", "SELECT")) {
             m_bulmafact->actionTrabajadores->setEnabled(TRUE);
         } // end if
-        delete cur;
-    } // end if
 
     /// Comprobamos que tengamos permisos para trabajar con Provincias.
-    cur = cargacursor("SELECT has_table_privilege('forma_pago', 'SELECT') AS pins");
     m_bulmafact->actionFormas_de_Pago->setEnabled(FALSE);
-    if (cur) {
-        if (cur->valor("pins") == "t") {
+        if (has_table_privilege("forma_pago", "SELECT")) {
             m_bulmafact->actionFormas_de_Pago->setEnabled(TRUE);
         } // end if
-        delete cur;
-    } // end if
 
     /// Comprobamos que tengamos permisos para trabajar con Provincias.
-    cur = cargacursor("SELECT has_table_privilege('serie_factura', 'SELECT') AS pins");
     m_bulmafact->actionSeries_de_Factura->setEnabled(FALSE);
-    if (cur) {
-        if (cur->valor("pins") == "t") {
+        if (has_table_privilege("serie_factura", "SELECT")) {
             m_bulmafact->actionSeries_de_Factura->setEnabled(TRUE);
         } // end if
-        delete cur;
-    } // end if
 
     /// Comprobamos que tengamos permisos para trabajar con Provincias.
-    cur = cargacursor("SELECT has_table_privilege('banco', 'SELECT') AS pins");
     m_bulmafact->actionBancos->setEnabled(FALSE);
-    if (cur) {
-        if (cur->valor("pins") == "t") {
+        if (has_table_privilege("banco", "SELECT")) {
             m_bulmafact->actionBancos->setEnabled(TRUE);
         } // end if
-        delete cur;
-    } // end if
 
 
-    /// Comprobamos que tengamos permisos para trabajar con Provincias.
-    cur = cargacursor("SELECT has_table_privilege('almacen', 'SELECT') AS pins");
+    /// Comprobamos que tengamos permisos para trabajar con Almacenes.
     m_bulmafact->actionAlmacenes->setEnabled(FALSE);
-    if (cur) {
-        if (cur->valor("pins") == "t") {
+        if (has_table_privilege("almacen", "SELECT")) {
             m_bulmafact->actionAlmacenes->setEnabled(TRUE);
         } // end if
-        delete cur;
-    } // end if
 
 
     /// pb = 100%

@@ -858,3 +858,19 @@ QString postgresiface2::propiedadempresa(QString nombre) {
     return value;
 }
 
+
+/// Comprueba si el usuario actual tiene permisos para actuar sobre una tabla y devuelve TRUE o FALSE
+/// \param tabla La tabla que se quiere consultar
+/// \param permiso El tipo de permiso "SELECT", "INSERT" "UPDATE"
+/// \return True si se tiene permiso, False si no se lo tiene
+bool postgresiface2::has_table_privilege(QString tabla, QString permiso) {
+    /// Comprobamos que tengamos permisos para trabajar con articulos.
+    cursor2 *cur = cargacursor("SELECT has_table_privilege('" + tabla + "', '" + permiso + "') AS pins");
+    bool privileges = FALSE;
+    if (cur) {
+        if (cur->valor("pins") == "t")
+            privileges = TRUE;
+        delete cur;
+    } // end if
+    return privileges;
+}
