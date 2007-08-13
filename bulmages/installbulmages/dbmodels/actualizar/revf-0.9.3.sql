@@ -91,21 +91,84 @@ DROP FUNCTION aux() CASCADE;
 
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
+DECLARE
+	as RECORD;
 BEGIN
-    ALTER TABLE	lpresupuesto ALTER COLUMN desclpresupuesto TYPE character varying;
-    ALTER TABLE lpedidocliente ALTER COLUMN desclpedidocliente TYPE character varying;
-    ALTER TABLE lpedidoproveedor ALTER COLUMN desclpedidoproveedor TYPE character varying;
-    ALTER TABLE	lalbaranp ALTER COLUMN desclalbaranp TYPE character varying;
-    ALTER TABLE	lalbaran ALTER COLUMN desclalbaran TYPE character varying;
-    ALTER TABLE	lfactura ALTER COLUMN desclfactura TYPE character varying;
-    ALTER TABLE	lfacturap ALTER COLUMN desclfacturap TYPE character varying;
-    RETURN 0;
+	SELECT INTO as * FROM pg_attribute WHERE attname=''fechavenccobro'';
+	IF NOT FOUND THEN
+
+		ALTER TABLE cobro ADD COLUMN fechavenccobro date;
+		ALTER TABLE cobro ALTER COLUMN fechavenccobro SET DEFAULT NOW();
+
+	END IF;
+	RETURN 0;
 END;
 ' LANGUAGE plpgsql;
 SELECT aux();
 DROP FUNCTION aux() CASCADE;
+
 \echo "Agregado el campo de Fecha Vencimiento de cobro"
 
+
+
+
+
+SELECT drop_if_exists_proc('restriccionescobro', '');
+\echo -n ':: Funcion que crea restricciones en cobro ... '
+CREATE FUNCTION restriccionescobro() RETURNS "trigger"
+AS '
+DECLARE
+    asd RECORD;
+
+BEGIN
+    IF NEW.fechacobro IS NULL THEN
+	NEW.fechacobro := now();
+    END IF;
+    IF NEW.refcobro IS NULL OR NEW.refcobro = '''' THEN
+	SELECT INTO asd crearef() AS m;
+	IF FOUND THEN
+	    NEW.refcobro := asd.m;
+	END IF;
+    END IF;
+    RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+
+\echo -n ':: Disparador de restricciones en cobro ... '
+CREATE TRIGGER restriccionescobrotrigger
+    BEFORE INSERT OR UPDATE ON cobro
+    FOR EACH ROW
+    EXECUTE PROCEDURE restriccionescobro();
+
+
+SELECT drop_if_exists_proc('restriccionespago', '');
+\echo -n ':: Funcion que crea restricciones en pago ... '
+CREATE FUNCTION restriccionespago() RETURNS "trigger"
+AS '
+DECLARE
+    asd RECORD;
+
+BEGIN
+    IF NEW.fechapago IS NULL THEN
+	NEW.fechapago := now();
+    END IF;
+    IF NEW.refpago IS NULL OR NEW.refpago = '''' THEN
+	SELECT INTO asd crearef() AS m;
+	IF FOUND THEN
+	    NEW.refpago := asd.m;
+	END IF;
+    END IF;
+    RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+
+\echo -n ':: Disparador de restricciones en pago ... '
+CREATE TRIGGER restriccionespagotrigger
+    BEFORE INSERT OR UPDATE ON pago
+    FOR EACH ROW
+    EXECUTE PROCEDURE restriccionespago();
 
 
 -- ================================== ACTUALIZACION  ===================================
@@ -117,12 +180,11 @@ CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
 	as RECORD;
 BEGIN
-	SELECT INTO as * FROM pg_attribute WHERE attname=''fechavenccobro'';
-	IF NOT FOUND THEN
-
-		ALTER TABLE cobro ADD COLUMN fechavenccobro date;
-		ALTER TABLE cobro ALTER COLUMN fechavenccobro SET DEFAULT NOW();
-
+	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
+	IF FOUND THEN
+		UPDATE CONFIGURACION SET valor = ''0.9.3-0002'' WHERE nombre = ''DatabaseRevision'';
+	ELSE
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.3-0002'');
 	END IF;
 	RETURN 0;
 END;

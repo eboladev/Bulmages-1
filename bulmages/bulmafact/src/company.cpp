@@ -86,34 +86,6 @@ company::~company() {
 
     /// Borramos las ventanas flotantes antes de eliminar esta clase ya que se produciria un segfault
     m_listventanas->vaciarCompleto();
-
-/*
-    /// Borramos el resto de ventanas.
-    delete m_facturasproveedorlist;
-    m_facturasproveedorlist = NULL;
-    delete m_albaranesproveedor;
-    m_albaranesproveedor = NULL;
-    delete m_pedidosproveedorList;
-    m_pedidosproveedorList = NULL;
-    delete m_facturasList;
-    m_facturasList = NULL;
-    delete m_articleslist;
-    m_articleslist = NULL;
-    delete m_providerslist;
-    m_providerslist = NULL;
-    delete m_clientsList;
-    m_clientsList = NULL;
-    delete m_cobrosList;
-    m_cobrosList = NULL;
-    delete m_pagosList;
-    m_pagosList = NULL;
-    delete m_presupuestosList;
-    m_presupuestosList = NULL;
-    delete m_pedidosclienteList;
-    m_pedidosclienteList = NULL;
-    delete m_clientDelivNotesList;
-    m_clientDelivNotesList = NULL;
-*/
     _depura("END company::~company", 0);
 }
 
