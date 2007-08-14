@@ -333,7 +333,7 @@ CREATE TABLE articulo (
     idtipo_iva integer REFERENCES tipo_iva (idtipo_iva),
     codigocompletoarticulo character varying(100) UNIQUE,
     idfamilia integer REFERENCES familia(idfamilia) NOT NULL,
-    stockarticulo numeric(12,2) DEFAULT 0,    
+    stockarticulo numeric(12,2) DEFAULT 0,
     inactivoarticulo character(1),
     -- ATENCION, este campo no da el PVP real del articulo, solo es una de las multiples formas
     -- de acceder al precio del articulo.
@@ -1856,7 +1856,7 @@ BEGIN
     result = '''';
     IF ($1 > 0) AND ($1 < 255) THEN
 	FOR iLoop in 1 .. $1 LOOP
-	    result = result || chr(int4(random()*26)+65);
+	    result = result || chr(int4(random()*25)+65);
 	END LOOP;
 	RETURN result;
     ELSE
@@ -1864,7 +1864,7 @@ BEGIN
     END IF;
 END;
 '  LANGUAGE 'plpgsql';
-
+\q
 
 \echo -n ':: Funcion crearef para crear codigos de referencia ... '
 CREATE FUNCTION crearef() RETURNS character varying(15)
@@ -1894,7 +1894,27 @@ BEGIN
 	SELECT INTO asd idfactura FROM factura WHERE reffactura = result;
 	IF FOUND THEN
 		efound := FALSE;
-	END IF;	
+	END IF;
+	SELECT INTO asd idcobro FROM cobro WHERE refcobro = result;
+	IF FOUND THEN
+		efound := FALSE;
+	END IF;
+	SELECT INTO asd idpedidoproveedor FROM pedidoproveedor WHERE refpedidoproveedor = result;
+	IF FOUND THEN
+		efound := FALSE;
+	END IF;
+	SELECT INTO asd idalbaranp FROM albaranp WHERE refalbaranp = result;
+	IF FOUND THEN
+		efound := FALSE;
+	END IF;
+	SELECT INTO asd idfacturap FROM facturap WHERE reffacturap = result;
+	IF FOUND THEN
+		efound := FALSE;
+	END IF;
+	SELECT INTO asd idpago FROM pago WHERE refpago = result;
+	IF FOUND THEN
+		efound := FALSE;
+	END IF;
     END LOOP;
     RETURN result;
 END;
@@ -2694,9 +2714,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.9.3-0002'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.9.3-0003'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.3-0002'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.3-0003'');
 	END IF;
 	RETURN 0;
 END;

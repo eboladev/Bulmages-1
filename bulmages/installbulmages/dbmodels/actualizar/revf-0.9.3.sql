@@ -171,6 +171,82 @@ CREATE TRIGGER restriccionespagotrigger
     EXECUTE PROCEDURE restriccionespago();
 
 
+SELECT drop_if_exists_proc('random_string', 'int4');
+\echo -n ':: Funcion random_string que genera una cadena aleatoria ... '
+CREATE FUNCTION random_string(int4) RETURNS "varchar" AS '
+DECLARE
+    iLoop int4;
+    result varchar;
+
+BEGIN
+    result = '''';
+    IF ($1 > 0) AND ($1 < 255) THEN
+	FOR iLoop in 1 .. $1 LOOP
+	    result = result || chr(int4(random()*25)+65);
+	END LOOP;
+	RETURN result;
+    ELSE
+	RETURN ''f'';
+    END IF;
+END;
+'  LANGUAGE 'plpgsql';
+
+
+SELECT drop_if_exists_proc('crearef', '');
+\echo -n ':: Funcion crearef para crear codigos de referencia ... '
+CREATE FUNCTION crearef() RETURNS character varying(15)
+AS '
+DECLARE
+    asd RECORD;
+    result character varying(15);
+    efound boolean;
+
+BEGIN
+    efound := FALSE;
+    WHILE efound = FALSE LOOP
+	result := random_string(6);
+	efound := TRUE;
+	SELECT INTO asd idpresupuesto FROM presupuesto WHERE refpresupuesto = result;
+	IF FOUND THEN
+	    efound := FALSE;
+	END IF;
+	SELECT INTO asd idpedidocliente FROM pedidocliente WHERE refpedidocliente = result;
+	IF FOUND THEN
+	    efound := FALSE;
+	END IF;
+	SELECT INTO asd idalbaran FROM albaran WHERE refalbaran = result;
+	IF FOUND THEN
+	    efound := FALSE;
+	END IF;	
+	SELECT INTO asd idfactura FROM factura WHERE reffactura = result;
+	IF FOUND THEN
+		efound := FALSE;
+	END IF;
+	SELECT INTO asd idcobro FROM cobro WHERE refcobro = result;
+	IF FOUND THEN
+		efound := FALSE;
+	END IF;
+	SELECT INTO asd idpedidoproveedor FROM pedidoproveedor WHERE refpedidoproveedor = result;
+	IF FOUND THEN
+		efound := FALSE;
+	END IF;
+	SELECT INTO asd idalbaranp FROM albaranp WHERE refalbaranp = result;
+	IF FOUND THEN
+		efound := FALSE;
+	END IF;
+	SELECT INTO asd idfacturap FROM facturap WHERE reffacturap = result;
+	IF FOUND THEN
+		efound := FALSE;
+	END IF;
+	SELECT INTO asd idpago FROM pago WHERE refpago = result;
+	IF FOUND THEN
+		efound := FALSE;
+	END IF;
+    END LOOP;
+    RETURN result;
+END;
+' LANGUAGE plpgsql;
+
 -- ================================== ACTUALIZACION  ===================================
 -- =====================================================================================
 
@@ -182,9 +258,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.9.3-0002'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.9.3-0003'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.3-0002'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.3-0003'');
 	END IF;
 	RETURN 0;
 END;
