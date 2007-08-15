@@ -28,7 +28,7 @@
 #include "funcaux.h"
 
 
-InformeReferencia::InformeReferencia(company *comp) {
+InformeReferencia::InformeReferencia(Company *comp) {
     companyact = comp;
 }
 
@@ -266,7 +266,7 @@ void InformeReferencia::generarinforme() {
 /// ================================================================
 /// =================== INFORME CLIENTE ============================
 /// ================================================================
-InformeCliente::InformeCliente (company *comp) {
+InformeCliente::InformeCliente (Company *comp) {
     companyact = comp;
 }
 

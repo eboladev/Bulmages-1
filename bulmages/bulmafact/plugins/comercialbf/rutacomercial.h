@@ -30,7 +30,7 @@
 class RutaComercial : public FichaBf {
 
 public:
-    RutaComercial(company *, QWidget *);
+    RutaComercial(Company *, QWidget *);
     virtual ~RutaComercial();
     virtual void pintar();
     virtual int cargar(QString id);

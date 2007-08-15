@@ -36,7 +36,7 @@
 #include "fichabf.h"
 
 
-class company;
+class Company;
 
 
 /// Administra el detalle del listado de series de factura.
@@ -67,7 +67,7 @@ class ListSerieFacturaView : public FichaBf, public Ui_ListSerieFacturaBase {
     Q_OBJECT
 
 public:
-    ListSerieFacturaView(company *, QWidget *);
+    ListSerieFacturaView(Company *, QWidget *);
     virtual ~ListSerieFacturaView();
 
 public slots:

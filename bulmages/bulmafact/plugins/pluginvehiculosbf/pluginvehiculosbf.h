@@ -34,7 +34,7 @@
 #include "bulmafact.h"
 
 
-extern "C" MY_EXPORT int entryPoint(bulmafact *);
+extern "C" MY_EXPORT int entryPoint(Bulmafact *);
 
 
 extern QApplication2 *theApp;
@@ -45,12 +45,12 @@ class myplugin : public QObject {
 
 public:
     postgresiface2 *m_conexionbase;
-    bulmafact *m_bulmafact;
+    Bulmafact *m_bulmafact;
 
 public:
     myplugin();
     ~myplugin();
-    void inicializa(bulmafact *);
+    void inicializa(Bulmafact *);
 
 public slots:
     void elslot();

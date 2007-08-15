@@ -38,7 +38,7 @@ class InventarioView : public Inventario, public Ui_InventarioBase {
     Q_OBJECT
 
 public:
-    InventarioView(company *, QWidget *parent = 0);
+    InventarioView(Company *, QWidget *parent = 0);
     ~InventarioView();
     void pintaidinventario(QString);
     void pintafechainventario(QString id);

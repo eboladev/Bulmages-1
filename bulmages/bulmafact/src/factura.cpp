@@ -29,7 +29,7 @@
 
 /** PReparamos la clase DBRecord para funcionar con la tabla factura.
 */
-Factura::Factura(company *comp, QWidget *parent) : FichaBf(comp, parent) {
+Factura::Factura(Company *comp, QWidget *parent) : FichaBf(comp, parent) {
     _depura("Factura::Factura", 0);
     setDBTableName("factura");
     setDBCampoId("idfactura");
@@ -191,7 +191,7 @@ int Factura::guardar() {
 
 /** Devuelve el puntero a la clase company con la que esta trabajando la factura
 **/
-    company * Factura::_company() {
+    Company * Factura::_company() {
     _depura("Factura::_company", 0);
     _depura("END Factura::_company", 0);
         return empresaBase();

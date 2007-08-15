@@ -37,7 +37,7 @@
 #include "funcaux.h"
 
 
-ListZonaComercialView::ListZonaComercialView(company *comp, QWidget *parent)
+ListZonaComercialView::ListZonaComercialView(Company *comp, QWidget *parent)
         : FichaBf (comp, parent) {
     _depura("INIT_ListZonaComercialView::ListZonaComercialView", 0);
     setAttribute(Qt::WA_DeleteOnClose);

@@ -54,7 +54,7 @@ void myplugin::elslot() {
     if (ok && !text.isEmpty()) {
         QStringList listaelem = text.split(" ");
         if (listaelem.at(0) == QString("FAC")) {
-            FacturaView *prov = ((company *)empresaBase())->newFacturaView();
+            FacturaView *prov = ((Company *)empresaBase())->newFacturaView();
             if (prov->cargar(listaelem.at(1))) {
                 delete prov;
                 return;
@@ -62,7 +62,7 @@ void myplugin::elslot() {
             empresaBase()->m_pWorkspace->addWindow(prov);
             prov->show();
         } else if (listaelem.at(0) == QString("PRE")) {
-            PresupuestoView *prov = ((company *)empresaBase())->nuevoPresupuestoView();
+            PresupuestoView *prov = ((Company *)empresaBase())->nuevoPresupuestoView();
             if (prov->cargar(listaelem.at(1))) {
                 delete prov;
                 return;
@@ -70,7 +70,7 @@ void myplugin::elslot() {
             empresaBase()->m_pWorkspace->addWindow(prov);
             prov->show();
         } else if (listaelem.at(0) == QString("PED")) {
-            PedidoClienteView *prov = new PedidoClienteView((company *)empresaBase(), 0);
+            PedidoClienteView *prov = new PedidoClienteView((Company *)empresaBase(), 0);
             if (prov->cargar(listaelem.at(1))) {
                 delete prov;
                 return;
@@ -78,7 +78,7 @@ void myplugin::elslot() {
             empresaBase()->m_pWorkspace->addWindow(prov);
             prov->show();
         } else if (listaelem.at(0) == QString("ALB")) {
-            AlbaranClienteView *prov = ((company *)empresaBase())->newAlbaranClienteView();
+            AlbaranClienteView *prov = ((Company *)empresaBase())->newAlbaranClienteView();
             if (prov->cargar(listaelem.at(1))) {
                 delete prov;
                 return;
@@ -86,7 +86,7 @@ void myplugin::elslot() {
             empresaBase()->m_pWorkspace->addWindow(prov);
             prov->show();
         } else if (listaelem.at(0) == QString("PEDP")) {
-            PedidoProveedorView *prov = new PedidoProveedorView((company *)empresaBase(), 0);
+            PedidoProveedorView *prov = new PedidoProveedorView((Company *)empresaBase(), 0);
             if (prov->cargar(listaelem.at(1))) {
                 delete prov;
                 return;
@@ -98,7 +98,7 @@ void myplugin::elslot() {
 }
 
 
-void myplugin::inicializa(bulmafact *bges) {
+void myplugin::inicializa(Bulmafact *bges) {
     /// Creamos el men&uacute;.
     setEmpresaBase(bges->getcompany());
     m_bulmafact = bges;
@@ -122,7 +122,7 @@ void myplugin::inicializa(bulmafact *bges) {
 }
 
 
-void entryPoint(bulmafact *bges) {
+void entryPoint(Bulmafact *bges) {
         /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
         QTranslator *traductor = new QTranslator(0);
         if (confpr->valor(CONF_TRADUCCION) == "locales") {

@@ -28,7 +28,7 @@
 class Fixed;
 
 
-FichaBf::FichaBf(company *comp, QWidget *parent, Qt::WFlags f, edmode modo)
+FichaBf::FichaBf(Company *comp, QWidget *parent, Qt::WFlags f, edmode modo)
         : Ficha(comp, parent, f, modo) {
     _depura("FichaBf::FichaBf", 0);
     m_listalineas = NULL;
@@ -44,10 +44,10 @@ FichaBf::~FichaBf() {
 }
 
 
-company * FichaBf::empresaBase() {
+Company * FichaBf::empresaBase() {
     _depura("FichaBf::getcompany", 0);
     _depura("END FichaBf::getcompany", 0);
-    return (company *) Ficha::empresaBase();
+    return (Company *) Ficha::empresaBase();
 }
 
 /** Calcula los totales de factura, descuentos e impuestos y invoca al metodo de pintaTotales para

@@ -72,11 +72,11 @@ class myplugin1 : public QObject, public PEmpresaBase {
     Q_OBJECT
 
 public:
-    bulmafact *m_bges;
+    Bulmafact *m_bges;
 public:
     myplugin1();
     ~myplugin1();
-    void inicializa(bulmafact *);
+    void inicializa(Bulmafact *);
 
 public slots:
     void elslot();

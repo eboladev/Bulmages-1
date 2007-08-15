@@ -46,7 +46,7 @@
 /** Inicializa todos los componentes de la ventana.
     Mete la ventana en el workSpace.
 */
-AlbaranProveedorView::AlbaranProveedorView(company *comp, QWidget *parent)
+AlbaranProveedorView::AlbaranProveedorView(Company *comp, QWidget *parent)
         : AlbaranProveedor(comp, parent) {
     _depura("AlbaranProveedorView::AlbaranProveedorView", 0);
     setAttribute(Qt::WA_DeleteOnClose);

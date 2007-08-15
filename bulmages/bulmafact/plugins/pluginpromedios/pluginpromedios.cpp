@@ -59,7 +59,7 @@ void myplugin1::inicializa(bulmafact *bges) {
 
 */
 
-int entryPoint(bulmafact *) {
+int entryPoint(Bulmafact *) {
     _depura("Punto de Entrada del plugin de Promedios", 0);
 //    myplugin1 *plug = new myplugin1();
 //    plug->inicializa(bges);

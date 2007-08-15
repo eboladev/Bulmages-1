@@ -28,7 +28,7 @@
 #include "provedit.h"
 
 
-ProveedorView::ProveedorView(company *comp, QWidget *parent)
+ProveedorView::ProveedorView(Company *comp, QWidget *parent)
         : FichaBf(comp, parent) {
     _depura("ProveedorView::ProveedorView", 0);
     setAttribute(Qt::WA_DeleteOnClose);

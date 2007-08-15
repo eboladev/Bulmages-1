@@ -26,7 +26,7 @@
 #include "fichabf.h"
 
 
-class company;
+class Company;
 
 
 /// Muestra y administra la ventana de familias de art&iacute;culos.
@@ -44,7 +44,7 @@ private:
     bool m_semaforoPintar;   // Este semaforo indica si se esta en el proceso de pintado
 
 public:
-    FamiliasView(company *, QWidget *parent = 0, bool modoConsulta = FALSE);
+    FamiliasView(Company *, QWidget *parent = 0, bool modoConsulta = FALSE);
     ~FamiliasView();
     bool trataModificado();
     void mostrarplantilla();

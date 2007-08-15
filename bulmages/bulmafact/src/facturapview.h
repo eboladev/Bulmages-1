@@ -42,7 +42,7 @@ class FacturaProveedorView : public FacturaProveedor, public Ui_FacturaProveedor
     Q_OBJECT
 
 public:
-    FacturaProveedorView(company *, QWidget *parent = 0);
+    FacturaProveedorView(Company *, QWidget *parent = 0);
     virtual ~FacturaProveedorView();
     void inicializar();
     void pintaidproveedor(QString id);

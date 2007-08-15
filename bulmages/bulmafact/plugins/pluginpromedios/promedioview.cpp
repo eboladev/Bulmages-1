@@ -26,7 +26,7 @@
 #include "plugins.h"
 
 
-PromedioView::PromedioView(company *comp, QWidget *parent)
+PromedioView::PromedioView(Company *comp, QWidget *parent)
         : QWidget(parent) ,dialogChanges(this), DBRecord(comp) {
     _depura("PromedioView::INIT_constructor()", 0);
     setAttribute(Qt::WA_DeleteOnClose);

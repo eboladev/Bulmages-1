@@ -36,7 +36,7 @@ ComercialClienteView::~ComercialClienteView() {
     _depura("ENd ~ComercialClienteView::ComercialClienteView", 0);
 }
 
-void ComercialClienteView::setEmpresaBase(company *comp) {
+void ComercialClienteView::setEmpresaBase(Company *comp) {
         _depura("ComercialClienteView::setcompany", 0);
 	PEmpresaBase::setEmpresaBase( comp);
         mui_zonacomercial->setEmpresaBase(comp);

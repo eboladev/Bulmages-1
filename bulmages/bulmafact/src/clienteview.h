@@ -36,7 +36,7 @@ class ClienteView : public Cliente, public Ui_ClienteBase  {
     Q_OBJECT
 
 public:
-    ClienteView(company *emp, QWidget *parent = 0);
+    ClienteView(Company *emp, QWidget *parent = 0);
     ~ClienteView();
 
 public:

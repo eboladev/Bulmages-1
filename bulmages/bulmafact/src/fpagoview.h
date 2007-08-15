@@ -27,7 +27,7 @@
 #include "postgresiface2.h"
 
 
-class company;
+class Company;
 
 
 /// Muestra y administra la ventana de formas de pago.
@@ -50,7 +50,7 @@ private:
     void pintar();
 
 public:
-    FPagoView(company * emp, QWidget *parent = 0);
+    FPagoView(Company * emp, QWidget *parent = 0);
     ~FPagoView();
     void setModoConsulta();
     void setModoEdicion();

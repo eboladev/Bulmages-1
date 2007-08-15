@@ -36,10 +36,10 @@
 class Inventario : public FichaBf {
 protected:
     ListControlStockView *listalineas;
-    company *companyact;
+    Company *companyact;
 
 public:
-    Inventario(company *comp, QWidget *parent);
+    Inventario(Company *comp, QWidget *parent);
     virtual ~Inventario();
     void setListControlStock(ListControlStockView *a);
     ListControlStockView *getlistalineas();

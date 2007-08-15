@@ -56,11 +56,11 @@ private:
 
 public:
     PedidosProveedorList(QWidget *parent = 0, Qt::WFlags flag = 0);
-    PedidosProveedorList(company *, QWidget *parent = 0, Qt::WFlags flag = 0);
+    PedidosProveedorList(Company *, QWidget *parent = 0, Qt::WFlags flag = 0);
     ~PedidosProveedorList();
     void presentar();
     void imprimir();
-    void setEmpresaBase(company *comp);
+    void setEmpresaBase(Company *comp);
     QString idpedidoproveedor();
     void setidproveedor(QString val);
     QString generarFiltro();

@@ -39,7 +39,7 @@
 #include "funcaux.h"
 
 
-PagoView::PagoView(company *comp, QWidget *parent)
+PagoView::PagoView(Company *comp, QWidget *parent)
         :  Pago(comp, parent) {
     try {
         setAttribute(Qt::WA_DeleteOnClose);

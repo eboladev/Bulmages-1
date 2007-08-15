@@ -28,7 +28,7 @@
 #include "ficha.h"
 
 
-class company;
+class Company;
 
 
 /// Muestra y administra la ventana con la lista de provincias.
@@ -37,10 +37,10 @@ class ListProvinciasView : public Ficha, public Ui_ListProvinciasBase {
     Q_OBJECT
 
 public:
-    company *companyact;
+    Company *companyact;
 
 public:
-    ListProvinciasView(company *, QWidget *parent = 0);
+    ListProvinciasView(Company *, QWidget *parent = 0);
     ~ListProvinciasView();
     void inicializa();
     int guardalinea(int);

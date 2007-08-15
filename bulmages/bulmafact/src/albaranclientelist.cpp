@@ -55,7 +55,7 @@ QString AlbaranClienteList::idCliDelivNote() {
 
 
 void AlbaranClienteList::crear() {
-    ((company *)empresaBase())->s_newAlbaranClienteView();
+    ((Company *)empresaBase())->s_newAlbaranClienteView();
 }
 
 
@@ -88,7 +88,7 @@ AlbaranClienteList::AlbaranClienteList(QWidget *parent, Qt::WFlags flag, edmode 
     Pone la pantalla en modo de edicion por defecto  a no ser que se especifique lo contrario.
     Mete la ventana en el workspace.
 */
-AlbaranClienteList::AlbaranClienteList(company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo)
+AlbaranClienteList::AlbaranClienteList(Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo)
         : Listado(comp, parent, flag, editmodo) {
     _depura("AlbaranClienteList::AlbaranClienteList", 0);
     setupUi(this);
@@ -124,7 +124,7 @@ void AlbaranClienteList::iniciaForm() {
 }
 
 
-void AlbaranClienteList::setEmpresaBase(company *comp) {
+void AlbaranClienteList::setEmpresaBase(Company *comp) {
     _depura("AlbaranClienteList::setEmpresaBase", 0);
     PEmpresaBase::setEmpresaBase(comp);
     m_cliente->setEmpresaBase(comp);
@@ -175,7 +175,7 @@ void AlbaranClienteList::editar(int row) {
     _depura("AlbaranClienteList::editar", 0);
     mdb_idalbaran = mui_list->DBvalue(QString("idalbaran"), row);
     if (modoEdicion()) {
-        AlbaranClienteView *prov = ((company *)empresaBase())->newAlbaranClienteView();
+        AlbaranClienteView *prov = ((Company *)empresaBase())->newAlbaranClienteView();
         if (prov->cargar(mdb_idalbaran)) {
             delete prov;
             return;
@@ -205,7 +205,7 @@ void AlbaranClienteList::borrar() {
     try {
         mdb_idalbaran = mui_list->DBvalue(QString("idalbaran"));
         if (modoEdicion()) {
-            AlbaranClienteView *acv = ((company *)empresaBase())->newAlbaranClienteView();
+            AlbaranClienteView *acv = ((Company *)empresaBase())->newAlbaranClienteView();
             if (acv->cargar(mdb_idalbaran))
                 throw -1;
             acv->on_mui_borrar_clicked();

@@ -36,7 +36,7 @@
 #define COL_PRODUCTOFISICOFAMILIA 5
 
 
-FamiliasView::FamiliasView(company *comp, QWidget *parent, bool modoConsulta)
+FamiliasView::FamiliasView(Company *comp, QWidget *parent, bool modoConsulta)
         : FichaBf(comp, parent) {
     _depura("FamiliasView::FamiliasView", 0);
     setupUi(this);

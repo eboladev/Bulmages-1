@@ -42,7 +42,7 @@
 #include "plugins.h"
 
 
-PedidoClienteView::PedidoClienteView(company *comp, QWidget *parent)
+PedidoClienteView::PedidoClienteView(Company *comp, QWidget *parent)
         : PedidoCliente(comp, parent) {
     _depura("PedidoClienteView::PedidoClienteView", 0);
     setAttribute(Qt::WA_DeleteOnClose);

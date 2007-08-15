@@ -39,7 +39,7 @@ private:
     edmode m_modo;
 
 public:
-    TarifaListView(company *, QWidget *parent = 0, edmode editmodo = EditMode);
+    TarifaListView(Company *, QWidget *parent = 0, edmode editmodo = EditMode);
     ~TarifaListView();
     void editar(int);
 public slots:

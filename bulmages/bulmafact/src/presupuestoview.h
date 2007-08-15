@@ -40,7 +40,7 @@
 #include "ficha.h"
 
 
-class company;
+class Company;
 
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un presupuesto.
@@ -52,7 +52,7 @@ private:
     cursor2 *m_cursorcombo;
 
 public:
-    PresupuestoView(company *, QWidget *);
+    PresupuestoView(Company *, QWidget *);
     ~PresupuestoView();
     void pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq);
     void inicializar();

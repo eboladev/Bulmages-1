@@ -42,7 +42,7 @@
     MEte la ventana en el workSpace.
     Resetea el control de cambios.
 */
-ClienteView::ClienteView(company *comp, QWidget *parent)
+ClienteView::ClienteView(Company *comp, QWidget *parent)
         : Cliente(comp, parent) {
     _depura("ClienteView::ClienteView", 0);
     setupUi(this);

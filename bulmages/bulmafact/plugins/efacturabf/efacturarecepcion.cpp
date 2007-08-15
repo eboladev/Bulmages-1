@@ -29,7 +29,7 @@
 #define EMAIL "efactura@conetxia.com"
 #define DIREMAIL "/home/arturo/efacturamail"
 
-EFacturaRecepcion::EFacturaRecepcion(company *emp, QWidget *parent) : FichaBf(emp, parent) {
+EFacturaRecepcion::EFacturaRecepcion(Company *emp, QWidget *parent) : FichaBf(emp, parent) {
 	QString query;
 	
 	setupUi(this);  // Para que el form se inicialice bien

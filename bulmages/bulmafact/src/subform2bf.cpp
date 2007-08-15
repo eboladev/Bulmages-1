@@ -71,7 +71,7 @@ void SubForm2Bf::on_mui_list_pressedAsterisk(int row, int col) {
 
     m_procesacambios = FALSE;
 
-    ArticuloList *artlist = new ArticuloList((company *) empresaBase(), NULL, 0, ArticuloList::SelectMode);
+    ArticuloList *artlist = new ArticuloList((Company *) empresaBase(), NULL, 0, ArticuloList::SelectMode);
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
     this->setEnabled(false);
     artlist->show();
@@ -447,15 +447,15 @@ QWidget *QSubForm2BfDelegate::createEditor(QWidget *parent, const QStyleOptionVi
 
     } else if (linea->nomcampo() == "codigocompletoarticulo") {
         BusquedaArticuloDelegate *editor = new BusquedaArticuloDelegate(parent);
-        editor->setEmpresaBase((company *)m_subform->empresaBase());
+        editor->setEmpresaBase((Company *)m_subform->empresaBase());
         return editor;
     } else if (linea->nomcampo() == "desctipo_iva") {
         BusquedaTipoIVADelegate *editor = new BusquedaTipoIVADelegate(parent);
-        editor->setEmpresaBase((company *)m_subform->empresaBase());
+        editor->setEmpresaBase((Company *)m_subform->empresaBase());
         return editor;
     } else if (linea->nomcampo() == "nomtrabajador") {
         BusquedaTrabajadorDelegate *editor = new BusquedaTrabajadorDelegate(parent);
-        editor->setEmpresaBase((company *)m_subform->empresaBase());
+        editor->setEmpresaBase((Company *)m_subform->empresaBase());
         return editor;
     } else  {
 //        QWidget *it = QItemDelegate::createEditor(parent, option, index);

@@ -32,7 +32,7 @@
 
 
 /// Constructor de la clase inicializa la clase y llama a la clase de pintar para que pinte.
-BancoView::BancoView(company *emp, QWidget *parent)
+BancoView::BancoView(Company *emp, QWidget *parent)
         : FichaBf(emp, parent) {
     _depura("BancoView::BancoView", 0);
     /// Indicamos que vamos a operar con la tabla banco para que los permisos se traten adecuadamente.

@@ -29,7 +29,7 @@
 
 /** Inicializa todos los componentes.
     Prepara el DBRecord para trabajar con la tabla cliente. */
-Cliente::Cliente(company *comp, QWidget *parent) : FichaBf(comp, parent) {
+Cliente::Cliente(Company *comp, QWidget *parent) : FichaBf(comp, parent) {
     _depura("Cliente::Cliente", 0);
     setDBTableName("cliente");
     setDBCampoId("idcliente");

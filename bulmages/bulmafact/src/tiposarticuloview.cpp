@@ -31,7 +31,7 @@
 #define COL_DESCTIPOARTICULO  2
 
 
-TipoArticuloList::TipoArticuloList(company *comp, QWidget *parent, bool modoConsulta)
+TipoArticuloList::TipoArticuloList(Company *comp, QWidget *parent, bool modoConsulta)
         : Ficha(parent) {
     _depura("TipoArticuloList::TipoArticuloList", 0);
     setupUi(this);

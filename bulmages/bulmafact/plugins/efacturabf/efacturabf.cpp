@@ -45,7 +45,7 @@ efacturabf::~efacturabf() {}
 
 /// Esto es lo que se activa al hacer click sobre el menu
 void efacturabf::elslot() {
-	EFactura *ef = new EFactura((company *)empresaBase());
+	EFactura *ef = new EFactura((Company *)empresaBase());
 	ef->show();
 	
 // 	EFacturaEnvio *efv = new EFacturaEnvio(empresaBase());
@@ -63,11 +63,11 @@ void efacturabf::elslot() {
 }
 
 void efacturabf::elslot1() {
-	EFacturaRecepcion *efr = new EFacturaRecepcion((company *)empresaBase());
+	EFacturaRecepcion *efr = new EFacturaRecepcion((Company *)empresaBase());
 	efr->show();
 }
 
-void efacturabf::inicializa(bulmafact *bges) {
+void efacturabf::inicializa(Bulmafact *bges) {
 	/// Creamos la conexion de la base de datos
 	setEmpresaBase(bges->getcompany());
 	
@@ -94,7 +94,7 @@ void efacturabf::inicializa(bulmafact *bges) {
 }
 
 
-void entryPoint(bulmafact *bges) {
+void entryPoint(Bulmafact *bges) {
 	_depura("Estoy dentro del plugin de e-factura", 0);
 	
 	efacturabf *efact = new efacturabf();

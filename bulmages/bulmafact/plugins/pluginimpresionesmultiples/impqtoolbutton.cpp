@@ -79,7 +79,7 @@ void ImpQToolButton::click() {
     QString res = "";
 
     if (m_presupuestoList != NULL) {
-        m_companyact = (company *)m_presupuestoList->empresaBase();
+        m_companyact = (Company *)m_presupuestoList->empresaBase();
         SubForm3 *sub = m_presupuestoList->mui_list;
 
         /// Reseteamos los valores
@@ -106,7 +106,7 @@ void ImpQToolButton::click() {
     }
 
     if (m_facturasList != NULL) {
-        m_companyact = (company *)m_facturasList->empresaBase();
+        m_companyact = (Company *)m_facturasList->empresaBase();
         SubForm3 *sub = m_facturasList->mui_list;
 
         /// Reseteamos los valores
@@ -133,7 +133,7 @@ void ImpQToolButton::click() {
     } // end if
 
     if (m_pedidosClienteList != NULL) {
-        m_companyact = (company *)m_pedidosClienteList->empresaBase();
+        m_companyact = (Company *)m_pedidosClienteList->empresaBase();
         SubForm3 *sub = m_pedidosClienteList->mui_list;
 
         /// Reseteamos los valores
@@ -161,7 +161,7 @@ void ImpQToolButton::click() {
 
 
     if (m_albaranClienteList != NULL) {
-        m_companyact = (company *)m_albaranClienteList->empresaBase();
+        m_companyact = (Company *)m_albaranClienteList->empresaBase();
         SubForm3 *sub = m_albaranClienteList->mui_list;
 
         /// Reseteamos los valores
@@ -189,7 +189,7 @@ void ImpQToolButton::click() {
 
     /// TRATAMOS LOS COBROS CUYO LISTADO ES ESPECIAL.
     if (m_cobrosList != NULL) {
-        m_companyact = (company *)m_cobrosList->empresaBase();
+        m_companyact = (Company *)m_cobrosList->empresaBase();
         SubForm3 *sub = m_cobrosList->mui_list;
         QString txt = "";
 
@@ -365,7 +365,7 @@ void SelQToolButton::click() {
     QString res = "";
 
     if (m_presupuestoList != NULL) {
-        m_companyact = (company *)m_presupuestoList->empresaBase();
+        m_companyact = (Company *)m_presupuestoList->empresaBase();
         SubForm3 *sub = m_presupuestoList->mui_list;
 
         /// Reseteamos los valores
@@ -381,7 +381,7 @@ void SelQToolButton::click() {
     }
 
     if (m_pedidosClienteList != NULL) {
-        m_companyact = (company *)m_pedidosClienteList->empresaBase();
+        m_companyact = (Company *)m_pedidosClienteList->empresaBase();
         SubForm3 *sub = m_pedidosClienteList->mui_list;
 
         /// Reseteamos los valores
@@ -398,7 +398,7 @@ void SelQToolButton::click() {
 
 
     if (m_albaranClienteList != NULL) {
-        m_companyact = (company *)m_albaranClienteList->empresaBase();
+        m_companyact = (Company *)m_albaranClienteList->empresaBase();
         SubForm3 *sub = m_albaranClienteList->mui_list;
 
         /// Reseteamos los valores
@@ -415,7 +415,7 @@ void SelQToolButton::click() {
 
 
     if (m_facturasList != NULL) {
-        m_companyact = (company *)m_facturasList->empresaBase();
+        m_companyact = (Company *)m_facturasList->empresaBase();
         SubForm3 *sub = m_facturasList->mui_list;
         /// Reseteamos los valores
         for (int i = 0; i < sub->rowCount(); i++) {
@@ -430,7 +430,7 @@ void SelQToolButton::click() {
     }
 
     if (m_cobrosList != NULL) {
-        m_companyact = (company *)m_cobrosList->empresaBase();
+        m_companyact = (Company *)m_cobrosList->empresaBase();
         SubForm3 *sub = m_cobrosList->mui_list;
         /// Reseteamos los valores
         for (int i = 0; i < sub->rowCount(); i++) {
@@ -486,7 +486,7 @@ void EmailQToolButton::click() {
 
 
     if (m_presupuestoList != NULL) {
-        m_companyact = (company *)m_presupuestoList->empresaBase();
+        m_companyact = (Company *)m_presupuestoList->empresaBase();
         SubForm3 *sub = m_presupuestoList->mui_list;
 
         /// Reseteamos los valores
@@ -522,7 +522,7 @@ void EmailQToolButton::click() {
 
 
     if (m_pedidosClienteList != NULL) {
-        m_companyact = (company *)m_pedidosClienteList->empresaBase();
+        m_companyact = (Company *)m_pedidosClienteList->empresaBase();
         SubForm3 *sub = m_pedidosClienteList->mui_list;
 
         /// Reseteamos los valores
@@ -559,7 +559,7 @@ void EmailQToolButton::click() {
 
 
     if (m_albaranClienteList != NULL) {
-        m_companyact = (company *)m_albaranClienteList->empresaBase();
+        m_companyact = (Company *)m_albaranClienteList->empresaBase();
         SubForm3 *sub = m_albaranClienteList->mui_list;
 
         /// Reseteamos los valores
@@ -596,7 +596,7 @@ void EmailQToolButton::click() {
 
 
     if (m_facturasList != NULL) {
-        m_companyact = (company *)m_facturasList->empresaBase();
+        m_companyact = (Company *)m_facturasList->empresaBase();
         SubForm3 *sub = m_facturasList->mui_list;
 
         /// Reseteamos los valores
@@ -643,7 +643,7 @@ void EmailQToolButton::click() {
     } // end if
 
     if (m_cobrosList != NULL) {
-        m_companyact = (company *)m_cobrosList->empresaBase();
+        m_companyact = (Company *)m_cobrosList->empresaBase();
         SubForm3 *sub = m_cobrosList->mui_list;
 
         /// Reseteamos los valores

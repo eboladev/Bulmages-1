@@ -28,7 +28,7 @@
 #include "ui_busquedafamiliabase.h"
 
 
-class company;
+class Company;
 
 
 /// Permite buscar y seleccionar una familia de art&iacute;culos.
@@ -39,7 +39,7 @@ class BusquedaFamilia : public QWidget, public Ui_BusquedaFamiliaBase {
 
 private:
     /// Mediante este puntero podemos trabajar con la base de datos y pasar mensajes.
-    company *companyact;
+    Company *companyact;
     /// Almacena el idfamilia que se haya seleccionado.
     QString mdb_idfamilia;
     /// Almacena el nombrefamilia que se haya seleccionado.
@@ -50,7 +50,7 @@ private:
 public:
     BusquedaFamilia(QWidget *parent = 0);
     ~BusquedaFamilia();
-    void setEmpresaBase(company *comp);
+    void setEmpresaBase(Company *comp);
     virtual QString codigocompletofamilia();
     virtual QString idfamilia();
     virtual QString nombrefamilia();

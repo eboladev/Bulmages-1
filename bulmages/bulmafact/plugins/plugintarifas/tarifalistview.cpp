@@ -25,7 +25,7 @@
 #include "funcaux.h"
 
 
-TarifaListView::TarifaListView(company *comp, QWidget *parent, edmode editmodo)
+TarifaListView::TarifaListView(Company *comp, QWidget *parent, edmode editmodo)
         : FichaBf(comp, parent), pgimportfiles(comp) {
     _depura("TarifaListView::INIT_TarifaListView()\n", 0);
     setAttribute(Qt::WA_DeleteOnClose);

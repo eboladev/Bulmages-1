@@ -42,7 +42,7 @@ PagosList::PagosList(QWidget *parent, Qt::WFlags flag)
 }
 
 
-PagosList::PagosList(company *comp, QWidget *parent, Qt::WFlags flag)
+PagosList::PagosList(Company *comp, QWidget *parent, Qt::WFlags flag)
         : Listado(comp, parent, flag) {
     setupUi(this);
     m_proveedor->setEmpresaBase(comp);
@@ -117,7 +117,7 @@ QString PagosList::generaFiltro() {
 void PagosList::editar(int) {
     mdb_idpago = mui_list->DBvalue("idpago");
     if (modoEdicion() && mdb_idpago != "") {
-        PagoView *bud = ((company *)empresaBase())->newPagoView();
+        PagoView *bud = ((Company *)empresaBase())->newPagoView();
         if (bud->cargar(mdb_idpago)) {
             delete bud;
             return;
@@ -132,7 +132,7 @@ void PagosList::editar(int) {
 
 void PagosList::crear() {
     _depura("PagosList::crear", 0);
-    PagoView *bud = ((company *)empresaBase())->newPagoView();
+    PagoView *bud = ((Company *)empresaBase())->newPagoView();
     empresaBase()->m_pWorkspace->addWindow(bud);
     bud->show();
     bud->setidproveedor(m_proveedor->idproveedor());
@@ -157,7 +157,7 @@ void PagosList::borrar() {
     try {
         mdb_idpago = mui_list->DBvalue("idpago");
         if (modoEdicion() && mdb_idpago != "") {
-            PagoView *bud = new PagoView((company *)empresaBase(), NULL);
+            PagoView *bud = new PagoView((Company *)empresaBase(), NULL);
             bud->cargar(mdb_idpago);
             bud->borrar();
         } // end if
@@ -168,7 +168,7 @@ void PagosList::borrar() {
     _depura("END PagosList::borrar", 0);
 }
 
-void PagosList::setEmpresaBase (company *comp)	{
+void PagosList::setEmpresaBase (Company *comp)	{
     _depura("PagosList::setEmpresaBase", 0);
     PEmpresaBase::setEmpresaBase(comp);
     m_proveedor->setEmpresaBase(comp);

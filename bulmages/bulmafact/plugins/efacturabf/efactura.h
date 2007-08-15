@@ -32,7 +32,7 @@ class EFactura : public FichaBf, public Ui_EFacturaBase {
 	Q_OBJECT
 
 public:
-	EFactura(company *emp, QWidget *parent = 0);
+	EFactura(Company *emp, QWidget *parent = 0);
 	~EFactura();
 
 public slots:

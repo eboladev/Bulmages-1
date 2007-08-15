@@ -51,7 +51,7 @@ AlbaranesProveedor::AlbaranesProveedor(QWidget *parent, Qt::WFlags flag)
 }
 
 
-void AlbaranesProveedor::setEmpresaBase(company *comp) {
+void AlbaranesProveedor::setEmpresaBase(Company *comp) {
     PEmpresaBase::setEmpresaBase(comp);
     m_proveedor->setEmpresaBase(comp);
     m_articulo->setEmpresaBase(comp);
@@ -63,7 +63,7 @@ void AlbaranesProveedor::setEmpresaBase(company *comp) {
 
 void AlbaranesProveedor::crear()  {
     if (empresaBase() != NULL)
-        ((company *)empresaBase())->s_newAlbaranPro();
+        ((Company *)empresaBase())->s_newAlbaranPro();
 }
 
 
@@ -90,7 +90,7 @@ QString AlbaranesProveedor::idalbaranp() {
     Mete la ventana en el workSpace.
     Oculta la parte de Busqueda.
 */
-AlbaranesProveedor::AlbaranesProveedor(company *comp, QWidget *parent, Qt::WFlags flag)
+AlbaranesProveedor::AlbaranesProveedor(Company *comp, QWidget *parent, Qt::WFlags flag)
         : Listado(comp, parent, flag) {
     _depura("AlbaranesProveedor::AlbaranesProveedor", 0);
     setupUi(this);
@@ -206,7 +206,7 @@ void AlbaranesProveedor::editar(int row) {
     _depura("AlbaranesProveedor::editar", 0);
     mdb_idalbaranp = mui_list->DBvalue(QString("idalbaranp"), row);
     if (modoEdicion()) {
-        AlbaranProveedorView *prov = new AlbaranProveedorView((company *)empresaBase(), 0);
+        AlbaranProveedorView *prov = new AlbaranProveedorView((Company *)empresaBase(), 0);
         if (prov->cargar(mdb_idalbaranp)) {
             delete prov;
             return;
@@ -246,7 +246,7 @@ void AlbaranesProveedor::borrar() {
     try {
         mdb_idalbaranp = mui_list->DBvalue(QString("idalbaranp"));
         if (modoEdicion()) {
-            AlbaranProveedorView *apv = ((company *)empresaBase())->newAlbaranProveedorView();
+            AlbaranProveedorView *apv = ((Company *)empresaBase())->newAlbaranProveedorView();
             if (apv->cargar(mdb_idalbaranp)) {
                 throw -1;
             } // end if

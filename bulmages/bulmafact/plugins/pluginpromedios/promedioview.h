@@ -27,18 +27,18 @@
 #include "dbrecord.h"
 
 
-class company;
+class Company;
 
 class PromedioView : public QWidget, public Ui_PromedioBase, public dialogChanges, public DBRecord {
     Q_OBJECT
 
 private:
-    company *m_companyact;
+    Company *m_companyact;
 
 public:
-    PromedioView(company *emp, QWidget *parent = 0);
+    PromedioView(Company *emp, QWidget *parent = 0);
     ~PromedioView();
-    company *companyact() {
+    Company *companyact() {
         return m_companyact;
     };
 

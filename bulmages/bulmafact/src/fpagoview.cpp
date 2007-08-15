@@ -28,7 +28,7 @@
 
 
 /// Constructor de la clase inicializa la clase y llama a la clase de pintar para que pinte.
-FPagoView::FPagoView(company *emp,QWidget *parent)
+FPagoView::FPagoView(Company *emp,QWidget *parent)
         : FichaBf(emp, parent) {
     _depura("FPagoView::FPagoView", 0);
     setAttribute(Qt::WA_DeleteOnClose);

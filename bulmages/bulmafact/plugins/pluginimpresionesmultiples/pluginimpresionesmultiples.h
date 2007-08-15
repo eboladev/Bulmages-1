@@ -47,7 +47,7 @@ extern "C" MY_EXPORT int CobrosList_CobrosList(CobrosList *);
 extern "C" MY_EXPORT int CobrosListSubForm_CobrosListSubForm(CobrosListSubForm *);
 
 
-extern "C" MY_EXPORT int entryPoint(bulmafact *);
+extern "C" MY_EXPORT int entryPoint(Bulmafact *);
 
 
 // extern QApplication2 *theApp;

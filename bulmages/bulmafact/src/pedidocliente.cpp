@@ -27,7 +27,7 @@
 #include "funcaux.h"
 
 
-PedidoCliente::PedidoCliente(company *comp, QWidget *parent) : FichaBf(comp, parent) {
+PedidoCliente::PedidoCliente(Company *comp, QWidget *parent) : FichaBf(comp, parent) {
     _depura("PedidoCliente::PedidoCliente", 0);
     setDBTableName("pedidocliente");
     setDBCampoId("idpedidocliente");

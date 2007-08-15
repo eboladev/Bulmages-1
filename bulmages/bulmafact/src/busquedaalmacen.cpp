@@ -92,7 +92,7 @@ QString BusquedaAlmacen::idalmacen() {
 }
 
 
-void BusquedaAlmacen::setEmpresaBase(company *comp) {
+void BusquedaAlmacen::setEmpresaBase(Company *comp) {
     _depura("BusquedaAlmacen::setEmpresaBase", 0);
     PEmpresaBase::setEmpresaBase(comp);
     cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM configuracion WHERE nombre ='AlmacenDefecto'");

@@ -26,7 +26,7 @@
 #include "configuracion.h"
 
 
-Pago::Pago(company *comp, QWidget *parent) : FichaBf(comp, parent) {
+Pago::Pago(Company *comp, QWidget *parent) : FichaBf(comp, parent) {
     setDBTableName("pago");
     setDBCampoId("idpago");
     addDBCampo("idpago", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Pago", "Id pago"));

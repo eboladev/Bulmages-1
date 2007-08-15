@@ -103,7 +103,7 @@ void BusquedaArticulo::on_mui_buscar_clicked() {
     _depura("BusquedaArticulo::on_mui_buscar_clicked", 0);
     QDialog *diag = new QDialog(0);
     diag->setModal(true);
-    ArticuloList *articulos = new ArticuloList( (company *) empresaBase(), diag, 0, ArticuloList::SelectMode);
+    ArticuloList *articulos = new ArticuloList( (Company *) empresaBase(), diag, 0, ArticuloList::SelectMode);
     connect(articulos, SIGNAL(selected(QString)), diag, SLOT(accept()));
 
     /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog

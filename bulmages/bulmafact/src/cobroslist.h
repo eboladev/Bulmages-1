@@ -57,10 +57,10 @@ private:
 
 public:
     CobrosList(QWidget *parent = 0, Qt::WFlags flag = 0);
-    CobrosList(company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0);
+    CobrosList(Company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0);
     ~CobrosList();
     void presentar();
-    void setEmpresaBase(company *comp);
+    void setEmpresaBase(Company *comp);
     QString idcobro();
     void imprimir();
     void setidcliente(QString val);

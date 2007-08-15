@@ -25,7 +25,7 @@
 #include <QString>
 
 
-class company;
+class Company;
 
 
 /// Genera un informe utilizando una referencia.
@@ -33,10 +33,10 @@ class company;
 class InformeReferencia {
 private:
     QString m_referencia;
-    company* companyact;
+    Company* companyact;
 
 public:
-    InformeReferencia(company *);
+    InformeReferencia(Company *);
     ~InformeReferencia();
     void setreferencia(QString val) {
         m_referencia = val;
@@ -50,10 +50,10 @@ public:
 class InformeCliente {
 private:
     QString m_idcliente;
-    company* companyact;
+    Company* companyact;
 
 public:
-    InformeCliente(company *);
+    InformeCliente(Company *);
     ~InformeCliente();
     void setCliente(QString val) {
         m_idcliente = val;

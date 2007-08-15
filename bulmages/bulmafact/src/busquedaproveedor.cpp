@@ -130,7 +130,7 @@ void BusquedaProveedor::on_mui_buscar_clicked() {
     QDialog *diag = new QDialog(0);
     diag->setModal(true);
 
-    ProveedorList *providers = new ProveedorList((company *) empresaBase(), diag, 0, ProveedorList::SelectMode);
+    ProveedorList *providers = new ProveedorList((Company *) empresaBase(), diag, 0, ProveedorList::SelectMode);
     connect(providers, SIGNAL(selected(QString)), diag, SLOT(accept()));
 
     /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog

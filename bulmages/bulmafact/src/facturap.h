@@ -38,7 +38,7 @@ class FacturaProveedor : public FichaBf {
     Q_OBJECT
 
 public:
-    FacturaProveedor(company *, QWidget *);
+    FacturaProveedor(Company *, QWidget *);
     void setidproveedor(QString val);
     void setreffacturap(QString val);
     void setnumfacturap(QString val);

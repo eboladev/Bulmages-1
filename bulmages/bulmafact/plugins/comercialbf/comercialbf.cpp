@@ -35,7 +35,7 @@
 #include "comercialclienteview.h"
 
 
-int entryPoint(bulmafact *bges) {
+int entryPoint(Bulmafact *bges) {
     _depura("Punto de Entrada del plugin ComercialBF", 0);
         /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
         QTranslator *traductor = new QTranslator(0);

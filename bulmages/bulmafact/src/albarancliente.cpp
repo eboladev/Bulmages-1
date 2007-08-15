@@ -263,7 +263,7 @@ void AlbaranCliente::pintaprocesadoalbaran(QString) {
     para que trabaje en la base de datos con la tabla albaran y procese adecuadamente
     todos los campos de dicha tabla.
 */
-AlbaranCliente::AlbaranCliente(company *comp, QWidget *parent) : FichaBf (comp, parent)  {
+AlbaranCliente::AlbaranCliente(Company *comp, QWidget *parent) : FichaBf (comp, parent)  {
     _depura("AlbaranCliente::AlbaranCliente", 0);
     setDBTableName("albaran");
     setDBCampoId("idalbaran");

@@ -29,7 +29,7 @@
 #define COL_ORIGINALPROVINCIA 1
 
 
-ListProvinciasView::ListProvinciasView(company *comp, QWidget *parent) : Ficha (parent) {
+ListProvinciasView::ListProvinciasView(Company *comp, QWidget *parent) : Ficha (parent) {
     _depura("INIT_ListProvinciasView::ListProvinciasView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);

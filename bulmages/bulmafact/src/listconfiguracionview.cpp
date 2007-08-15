@@ -40,7 +40,7 @@
 
 /** La ventana se construye como derivada de Ficha, inicializa el subformulario  y mete la ventana en el visor de ventanas
 */
-ListConfiguracionView::ListConfiguracionView(company *comp, QWidget *parent) : FichaBf(comp, parent) {
+ListConfiguracionView::ListConfiguracionView(Company *comp, QWidget *parent) : FichaBf(comp, parent) {
     _depura("ListConfiguracionView::ListConfiguracionView", 1);
     setupUi(this);
     this->setAttribute(Qt::WA_DeleteOnClose);

@@ -39,7 +39,7 @@
 #include "funcaux.h"
 
 
-PedidoProveedorView::PedidoProveedorView(company *comp, QWidget *parent)
+PedidoProveedorView::PedidoProveedorView(Company *comp, QWidget *parent)
         : PedidoProveedor(comp, parent) {
     _depura("PedidoProveedorView::PedidoProveedorView", 0);
     setAttribute(Qt::WA_DeleteOnClose);

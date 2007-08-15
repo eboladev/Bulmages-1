@@ -25,7 +25,7 @@
 #include <QFileDialog>
 #include <QLineEdit>
 
-EFacturaEnvio::EFacturaEnvio(company *emp, QWidget *parent) : QWidget(parent) {
+EFacturaEnvio::EFacturaEnvio(Company *emp, QWidget *parent) : QWidget(parent) {
 	QString query;
 	
 	setupUi(this);  // Para que el form se inicialice bien

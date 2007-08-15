@@ -40,14 +40,14 @@ myplugin::~myplugin() {}
 
 void myplugin::elslot() {
     _depura("myplugin::elslot", 0);
-	MovimientosView *mov = new MovimientosView((company *)empresaBase());
+	MovimientosView *mov = new MovimientosView((Company *)empresaBase());
         empresaBase()->pWorkspace()->addWindow(mov);
 	mov->show();
     _depura("END myplugin::elslot", 0);
 }
 
 
-void myplugin::inicializa(bulmafact *bges) {
+void myplugin::inicializa(Bulmafact *bges) {
     /// Creamos el men&uacute;.
     setEmpresaBase(bges->getcompany());
     m_bulmafact = bges;
@@ -62,7 +62,7 @@ void myplugin::inicializa(bulmafact *bges) {
 }
 
 
-int entryPoint(bulmafact *bges) {
+int entryPoint(Bulmafact *bges) {
     _depura("Punto de Entrada del plugin PluginTrazabilidad", 0);
     myplugin *plug = new myplugin();
     plug->inicializa(bges);

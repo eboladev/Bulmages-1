@@ -25,7 +25,7 @@
 
 
 /// Constructor de Clase
-VehiculoView::VehiculoView(company *emp, QWidget *parent)
+VehiculoView::VehiculoView(Company *emp, QWidget *parent)
         : FichaBf(emp, parent) {
     _depura("VehiculoView::VehiculoView", 0);
     this->setAttribute(Qt::WA_DeleteOnClose);

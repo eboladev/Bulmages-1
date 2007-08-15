@@ -39,22 +39,22 @@
     Hace todo el traspaso de mensajes de los menus a company y captura algunos que no son
     propiamente de la facturacion como pueda ser el FullScreen o el About.
 */
-class bulmafact: public QMainWindow, public Ui_bulmafactbase {
+class Bulmafact: public QMainWindow, public Ui_bulmafactbase {
     Q_OBJECT
 
 private:
     /// El workSpace que se va a usar con la aplicacion.
     QWorkspace2 *pWorkspace;
     /// La clase corazon de la aplicacion y centralizadora de mensajes y componentes.
-    company *m_company;
+    Company *m_company;
     /// El listado de ventanas abiertas que esta en forma de dock en la parte izquierda.
     listventanas *m_list;
 
 public:
-    bulmafact(QString bd);
-    ~bulmafact();
+    Bulmafact(QString bd);
+    ~Bulmafact();
     QWorkspace2 *workspace();
-    company *getcompany();
+    Company *getcompany();
     void createMainWindows(Splash *);
 
 public slots:

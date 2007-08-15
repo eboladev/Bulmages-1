@@ -34,7 +34,7 @@
 #include "funcaux.h"
 
 
-InventarioView::InventarioView(company *comp, QWidget *parent)
+InventarioView::InventarioView(Company *comp, QWidget *parent)
         :  Inventario(comp, parent) {
     _depura("InventarioView::InventarioView", 0);
     setAttribute(Qt::WA_DeleteOnClose);

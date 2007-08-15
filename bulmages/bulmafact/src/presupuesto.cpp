@@ -29,7 +29,7 @@
 #include "plugins.h"
 
 
-Presupuesto::Presupuesto(company *comp, QWidget *parent) : FichaBf(comp, parent) {
+Presupuesto::Presupuesto(Company *comp, QWidget *parent) : FichaBf(comp, parent) {
     _depura("Presupuesto::Presupuesto", 0);
     setDBTableName("presupuesto");
     setDBCampoId("idpresupuesto");

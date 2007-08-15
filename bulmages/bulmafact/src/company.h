@@ -61,16 +61,16 @@ class ProveedorView;
 class FamiliasView;
 class ListTipoIVAView;
 
-class bulmafact;
+class Bulmafact;
 
 /// Clase company (empresa).
 /** Clase principal del programa donde se almacenan y gestionan
     todos los datos de la empresa con la que se est&aacute; trabajando.
     Deriva de postgresiface ya que tiene el tratamiento de la base de datos. */
-class company : public EmpresaBase {
+class Company : public EmpresaBase {
 private:
     /// Puntero al mainWindow
-    bulmafact *m_bulmafact;
+    Bulmafact *m_bulmafact;
     /// Puntero a la ventana de lista de proveedores. Esta ventana se abre una vez al principio.
     ProveedorList *m_providerslist;
     /// Puntero a la ventan ade lista de clientes. Esta ventana se abre una vez al inicio del programa.
@@ -97,8 +97,8 @@ private:
     PagosList *m_pagosList;
 
 public:
-    company(bulmafact *bges);
-    virtual ~company();
+    Company(Bulmafact *bges);
+    virtual ~Company();
     FacturasProveedorList *facturasProveedorList();
     PresupuestoList *presupuestoList();
     void listproviders();

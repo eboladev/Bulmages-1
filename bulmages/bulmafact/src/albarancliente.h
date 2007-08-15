@@ -37,7 +37,7 @@ class AlbaranCliente : public FichaBf {
     Q_OBJECT
 
 public:
-    AlbaranCliente(company *, QWidget *);
+    AlbaranCliente(Company *, QWidget *);
     virtual ~AlbaranCliente();
     QString idalbaran();
     QString numalbaran();

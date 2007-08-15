@@ -61,7 +61,7 @@ private:
     QString mdb_codigocompletoarticulo;
 
 public:
-    ArticuloList(company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
+    ArticuloList(Company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
     virtual ~ArticuloList();
     QString formaQuery();
     QString idarticulo();

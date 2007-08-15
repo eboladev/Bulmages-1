@@ -39,7 +39,7 @@ class RutaComercialIncView : public FichaBf, public Ui_RutaComercialIncBase {
     Q_OBJECT
 
 public:
-    RutaComercialIncView(company *, QWidget *);
+    RutaComercialIncView(Company *, QWidget *);
     ~RutaComercialIncView();
     void closeEvent(QCloseEvent *);
     virtual void pintar();

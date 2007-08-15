@@ -38,7 +38,7 @@
 #include "listlinfacturapview.h"
 #include "blwidget.h"
 
-extern "C" MY_EXPORT int entryPoint(bulmafact *);
+extern "C" MY_EXPORT int entryPoint(Bulmafact *);
 extern "C" MY_EXPORT int ListLinAlbaranProveedorView_ListLinAlbaranProveedorView(ListLinAlbaranProveedorView *);
 extern "C" MY_EXPORT int ListLinAlbaranClienteView_ListLinAlbaranClienteView(ListLinAlbaranClienteView *);
 extern "C" MY_EXPORT int ListLinFacturaView_ListLinFacturaView(ListLinFacturaView *);
@@ -52,12 +52,12 @@ class myplugin : public QObject, PEmpresaBase {
     Q_OBJECT
 
 public:
-    bulmafact *m_bulmafact;
+    Bulmafact *m_bulmafact;
 
 public:
     myplugin();
     ~myplugin();
-    void inicializa(bulmafact *);
+    void inicializa(Bulmafact *);
 
 public slots:
     void elslot();

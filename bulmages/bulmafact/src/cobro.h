@@ -35,7 +35,7 @@
     Incorpora los metodos de guardado de datos y abstraye metodos de visualizacion. */
 class Cobro : public FichaBf {
 public:
-    Cobro(company *, QWidget *);
+    Cobro(Company *, QWidget *);
     virtual ~Cobro();
     virtual int guardar();
     virtual void pintar();

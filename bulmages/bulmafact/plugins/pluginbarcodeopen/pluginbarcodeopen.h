@@ -34,7 +34,7 @@
 #include "postgresiface2.h"
 #include "blwidget.h"
 
-extern "C" MY_EXPORT void entryPoint(bulmafact *);
+extern "C" MY_EXPORT void entryPoint(Bulmafact *);
 
 extern QApplication2 *theApp;
 
@@ -43,12 +43,12 @@ class myplugin : public QObject, PEmpresaBase {
     Q_OBJECT
 
 public:
-    bulmafact *m_bulmafact;
+    Bulmafact *m_bulmafact;
 
 public:
     myplugin();
     ~myplugin();
-    void inicializa(bulmafact *);
+    void inicializa(Bulmafact *);
 
 public slots:
     void elslot();

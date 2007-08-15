@@ -38,7 +38,7 @@ class AlbaranProveedor : public FichaBf {
     Q_OBJECT
 
 public:
-    AlbaranProveedor(company *, QWidget *);
+    AlbaranProveedor(Company *, QWidget *);
     virtual ~AlbaranProveedor();
     virtual void pintar();
     virtual int guardar();

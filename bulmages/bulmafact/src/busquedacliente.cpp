@@ -132,7 +132,7 @@ void BusquedaCliente::on_mui_buscar_clicked() {
     QDialog *diag = new QDialog(0);
     diag->setModal(true);
 
-    ClientsList *clients = new ClientsList((company *)empresaBase(), diag, 0, ClientsList::SelectMode);
+    ClientsList *clients = new ClientsList((Company *)empresaBase(), diag, 0, ClientsList::SelectMode);
     connect(clients, SIGNAL(selected(QString)), diag, SLOT(accept()));
 
     /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog

@@ -64,13 +64,13 @@ private:
 
 public:
     RutaComercialList(QWidget *parent = 0);
-    RutaComercialList(company *comp = NULL, QWidget *parent = 0);
+    RutaComercialList(Company *comp = NULL, QWidget *parent = 0);
     ~RutaComercialList();
     void presenta();
 
     QString idpresupuesto();
 
-    void setEmpresaBase(company *comp);
+    void setEmpresaBase(Company *comp);
     void imprimir();
     void setidcliente(QString val);
     QString generaFiltro();

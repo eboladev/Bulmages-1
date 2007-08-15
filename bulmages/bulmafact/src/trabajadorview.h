@@ -50,7 +50,7 @@ private:
     virtual void imprimir();
 
 public:
-    TrabajadorView(company * emp, QWidget *parent = 0);
+    TrabajadorView(Company * emp, QWidget *parent = 0);
     ~TrabajadorView();
     bool trataModificado();
 

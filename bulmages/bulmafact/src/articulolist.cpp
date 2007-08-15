@@ -44,7 +44,7 @@
     la presenta como un 'popup'.
     Hace la presentacion inicial.
 */
-ArticuloList::ArticuloList(company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo)
+ArticuloList::ArticuloList(Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo)
         : Listado(comp, parent, flag, editmodo), pgimportfiles(comp) {
     _depura("ArticuloList::ArticuloList", 0);
     setupUi(this);
@@ -99,7 +99,7 @@ void ArticuloList::editar(int row) {
     mdb_nomarticulo = mui_list->DBvalue("nomarticulo", row);
     mdb_codigocompletoarticulo = mui_list->DBvalue("codigocompletoarticulo", row);
     if (modoEdicion()) {
-        ArticuloView *art = ((company *)empresaBase())->newArticuloView();
+        ArticuloView *art = ((Company *)empresaBase())->newArticuloView();
         empresaBase()->m_pWorkspace->addWindow(art);
         /// Si la carga no va bien entonces terminamos.
         if (art->cargar(mdb_idarticulo)) {
@@ -265,7 +265,7 @@ void ArticuloList::submenu(const QPoint &) {
 }
 
 void ArticuloList::crear() {
-    ((company *)empresaBase())->s_newArticulo();
+    ((Company *)empresaBase())->s_newArticulo();
 }
 
 QString ArticuloList::idarticulo() {

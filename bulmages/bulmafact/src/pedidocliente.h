@@ -37,7 +37,7 @@ class PedidoCliente : public FichaBf {
 
 public:
 
-    PedidoCliente(company *, QWidget *);
+    PedidoCliente(Company *, QWidget *);
     virtual ~PedidoCliente();
     virtual int cargar(QString);
     virtual void pintar();

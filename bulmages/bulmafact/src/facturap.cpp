@@ -31,7 +31,7 @@
 /** Inicializa todos los componentes.
     Prepara el DBRecord para trabajar con la tabla facturap.
 */
-FacturaProveedor::FacturaProveedor(company *comp, QWidget *parent) : FichaBf(comp, parent) {
+FacturaProveedor::FacturaProveedor(Company *comp, QWidget *parent) : FichaBf(comp, parent) {
     _depura("FacturaProveedor::FacturaProveedor", 0);
     setDBTableName("facturap");
     setDBCampoId("idfacturap");

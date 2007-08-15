@@ -39,7 +39,7 @@
 #include "funcaux.h"
 
 
-ListTipoIVAView::ListTipoIVAView(company *comp, QWidget *parent)
+ListTipoIVAView::ListTipoIVAView(Company *comp, QWidget *parent)
         : FichaBf(comp, parent) {
     _depura("ListTipoIVAView::ListTipoIVAView", 1);
     setDBTableName("tipo_iva");

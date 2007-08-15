@@ -39,7 +39,7 @@
 #include "funcaux.h"
 
 
-ListAlmacenView::ListAlmacenView(company *comp, QWidget *parent)
+ListAlmacenView::ListAlmacenView(Company *comp, QWidget *parent)
         : FichaBf(comp, parent) {
     _depura("ListAlmacenView::ListAlmacenView", 1);
     setDBTableName("almacen");

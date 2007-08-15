@@ -49,14 +49,14 @@ class InventariosView : public Ficha, public Ui_InventariosBase {
     Q_OBJECT
 
 private:
-    company *companyact;
+    Company *companyact;
 
 public:
     InventariosView(QWidget *parent = 0, Qt::WFlags flag = 0);
-    InventariosView(company *,QWidget *parent = 0);
+    InventariosView(Company *,QWidget *parent = 0);
     ~InventariosView();
     void inicializa();
-    void setcompany(company *comp);
+    void setcompany(Company *comp);
 
 public slots:
     virtual void on_mui_listado_itemDoubleClicked(QTableWidgetItem *);

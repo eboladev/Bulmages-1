@@ -63,10 +63,10 @@ private:
 
 public:
     AlbaranesProveedor(QWidget *parent = 0, Qt::WFlags flag = 0);
-    AlbaranesProveedor(company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0);
+    AlbaranesProveedor(Company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0);
     ~AlbaranesProveedor();
     void presentar();
-    void setEmpresaBase(company *comp);
+    void setEmpresaBase(Company *comp);
     QString idalbaranp();
     void imprimir();
     void setidproveedor(QString val);

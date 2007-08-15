@@ -32,7 +32,7 @@
 
 
 /// Constructor de la clase inicializa la clase y llama a la clase de pintar para que pinte.
-TrabajadorView::TrabajadorView(company *emp, QWidget *parent)
+TrabajadorView::TrabajadorView(Company *emp, QWidget *parent)
         : FichaBf(emp, parent) {
     _depura("TrabajadorView::TrabajadorView", 0);
     setDBTableName("trabajador");

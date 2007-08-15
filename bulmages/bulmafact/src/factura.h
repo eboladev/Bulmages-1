@@ -37,11 +37,11 @@ class Factura : public FichaBf {
     Q_OBJECT
 
 public:
-    Factura(company *, QWidget *parent);
+    Factura(Company *, QWidget *parent);
     virtual ~Factura();
     /// Establece cu&aacute;l es la lista subformulario del presupuesto. Normalmente para
     /// apuntar listlinpresupuestoview.
-    company *_company();
+    Company *_company();
     QString codigoserie_factura();
     QString idcliente();
     QString idalmacen();

@@ -56,7 +56,7 @@ FacturasProveedorList::FacturasProveedorList(QWidget *parent, Qt::WFlags flag)
 
 /** Inicializa todos los componentes, hace la carga inicial con \ref presenta()
     mete la ventana en el workSpace(). */
-FacturasProveedorList::FacturasProveedorList(company *comp, QWidget *parent)
+FacturasProveedorList::FacturasProveedorList(Company *comp, QWidget *parent)
         : Listado(comp, parent) {
     _depura("FacturasProveedorList::FacturasProveedorList", 0);
     setupUi(this);
@@ -166,7 +166,7 @@ void FacturasProveedorList::editar(int row) {
     try {
         mdb_idfacturap = mui_list->DBvalue(QString("idfacturap"), row);
         if (modoEdicion()) {
-            FacturaProveedorView *prov = ((company *)empresaBase())->newFacturaProveedorView();
+            FacturaProveedorView *prov = ((Company *)empresaBase())->newFacturaProveedorView();
             if (prov->cargar(mdb_idfacturap)) {
                 delete prov;
                 return;
@@ -196,7 +196,7 @@ void FacturasProveedorList::borrar() {
     } // end if
     try {
         mdb_idfacturap = mui_list->DBvalue("idfacturap");
-        FacturaProveedorView *bud = ((company *)empresaBase())->newFacturaProveedorView();
+        FacturaProveedorView *bud = ((Company *)empresaBase())->newFacturaProveedorView();
         bud->cargar(mdb_idfacturap);
         bud->on_mui_borrar_clicked();
         delete bud;
@@ -217,7 +217,7 @@ void FacturasProveedorList::imprimir() {
 }
 
 
-void FacturasProveedorList::setEmpresaBase (company *comp) {
+void FacturasProveedorList::setEmpresaBase (Company *comp) {
     PEmpresaBase::setEmpresaBase(comp);
     m_proveedor->setEmpresaBase(comp);
     m_articulo->setEmpresaBase(comp);
@@ -241,7 +241,7 @@ void FacturasProveedorList::setidarticulo(QString val) {
 
 
 void FacturasProveedorList::crear() {
-    ((company *)empresaBase())->s_newFacturaPro();
+    ((Company *)empresaBase())->s_newFacturaPro();
 }
 
 

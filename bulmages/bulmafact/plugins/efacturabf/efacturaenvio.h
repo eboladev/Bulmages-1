@@ -31,10 +31,10 @@ class EFacturaEnvio : public QWidget, public Ui_EFacturaEnvioBase {
 	Q_OBJECT
 
 private:
-	company *empresaBase();
+	Company *empresaBase();
 
 public:
-	EFacturaEnvio(company *emp, QWidget *parent = 0);
+	EFacturaEnvio(Company *emp, QWidget *parent = 0);
 	~EFacturaEnvio();
 
 // public slots:

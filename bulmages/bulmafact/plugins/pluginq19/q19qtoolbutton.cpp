@@ -73,7 +73,7 @@ void Q19QToolButton::click() {
 
     QTextStream out(&file);
 
-    m_companyact = (company *)m_cobrosList->empresaBase();
+    m_companyact = (Company *)m_cobrosList->empresaBase();
     SubForm3 *sub = m_cobrosList->mui_list;
 
     Fixed total("0.00");

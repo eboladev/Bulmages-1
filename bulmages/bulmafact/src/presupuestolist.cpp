@@ -48,7 +48,7 @@ PresupuestoList::PresupuestoList(QWidget *parent, Qt::WFlags flag)
 }
 
 
-PresupuestoList::PresupuestoList(company *comp, QWidget *parent, Qt::WFlags flag)
+PresupuestoList::PresupuestoList(Company *comp, QWidget *parent, Qt::WFlags flag)
         : Listado(comp, parent, flag) {
     _depura("PresupuestoList::PresupuestoList(2)", 0);
     setupUi(this);
@@ -99,7 +99,7 @@ QString PresupuestoList::idpresupuesto() {
 
 
 
-void PresupuestoList::setEmpresaBase(company *comp) {
+void PresupuestoList::setEmpresaBase(Company *comp) {
     PEmpresaBase::setEmpresaBase(comp);
     m_cliente->setEmpresaBase(comp);
     m_articulo->setEmpresaBase(comp);
@@ -119,7 +119,7 @@ void PresupuestoList::setidarticulo(QString val) {
 
 
 void PresupuestoList::crear() {
-    ((company *)empresaBase())->s_newPresupuestoCli();
+    ((Company *)empresaBase())->s_newPresupuestoCli();
 }
 
 
@@ -184,7 +184,7 @@ void PresupuestoList::editar(int row) {
     try {
         m_idpresupuesto = mui_list->DBvalue(QString("idpresupuesto"), row);
         if (modoEdicion()) {
-            PresupuestoView *prov = ((company *)empresaBase())->nuevoPresupuestoView();
+            PresupuestoView *prov = ((Company *)empresaBase())->nuevoPresupuestoView();
             if (prov->cargar(m_idpresupuesto)) {
                 delete prov;
                 return;
@@ -219,7 +219,7 @@ void PresupuestoList::borrar() {
     try {
         m_idpresupuesto = mui_list->DBvalue(QString("idpresupuesto"));
         if (modoEdicion()) {
-            PresupuestoView *pv = ((company *)empresaBase())->nuevoPresupuestoView();
+            PresupuestoView *pv = ((Company *)empresaBase())->nuevoPresupuestoView();
             if (pv->cargar(m_idpresupuesto))
                 throw -1;
             pv->on_mui_borrar_clicked();

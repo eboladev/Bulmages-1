@@ -38,14 +38,14 @@ class BusquedaProvincia : public QComboBox {
 
 private:
     /// Puntero a la clase company para poder trabajar con la base de datos. Debe inicializarse con setcompany().
-    company *companyact;
+    Company *companyact;
     /// Cursor que almacena en memoria la lista de provincias.
     cursor2 *m_cursorcombo;
 
 public:
     BusquedaProvincia(QWidget *parent = 0);
     ~BusquedaProvincia();
-    void setcompany(company *comp);
+    void setcompany(Company *comp);
     virtual void setProvincia(QString provincia);
 
 public slots:

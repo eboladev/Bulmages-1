@@ -35,13 +35,13 @@ myplugin1::~myplugin1() {}
 
 
 void myplugin1::elslot() {
-    TarifaListView *tar = new TarifaListView(((company *)empresaBase()), NULL);
+    TarifaListView *tar = new TarifaListView(((Company *)empresaBase()), NULL);
     empresaBase()->m_pWorkspace->addWindow(tar);
     tar->show();
 }
 
 
-void myplugin1::inicializa(bulmafact *bges) {
+void myplugin1::inicializa(Bulmafact *bges) {
     /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
     m_bges = bges;
     setEmpresaBase(bges->getcompany());
@@ -55,7 +55,7 @@ void myplugin1::inicializa(bulmafact *bges) {
 }
 
 
-int entryPoint(bulmafact *bges) {
+int entryPoint(Bulmafact *bges) {
     _depura("Punto de Entrada del plugin de Tarifas\n", 0);
     myplugin1 *plug = new myplugin1();
     plug->inicializa(bges);

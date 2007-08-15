@@ -30,11 +30,11 @@ class mypluginbf : public QObject, PEmpresaBase {
     Q_OBJECT
 
 private:
-    bulmafact *m_bges;
+    Bulmafact *m_bges;
 public:
     mypluginbf();
     virtual ~mypluginbf();
-    virtual void inicializa(bulmafact *);
+    virtual void inicializa(Bulmafact *);
 
 public slots:
     void elslot();

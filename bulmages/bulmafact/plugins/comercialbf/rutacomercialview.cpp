@@ -40,7 +40,7 @@
 #include "funcaux.h"
 #define coma "'"
 
-RutaComercialView::RutaComercialView(company *comp, QWidget *parent)
+RutaComercialView::RutaComercialView(Company *comp, QWidget *parent)
         :  RutaComercial(comp, parent) {
     _depura("RutaComercialView::RutaComercialView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
@@ -66,7 +66,7 @@ RutaComercialView::~RutaComercialView() {
 
 
 
-void RutaComercialView::setEmpresaBase(company *comp) {
+void RutaComercialView::setEmpresaBase(Company *comp) {
     _depura("RutaComercialView::setEmpresaBase", 0);
     PEmpresaBase::setEmpresaBase(comp);
     mui_idcliente->setEmpresaBase(comp);

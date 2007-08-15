@@ -29,7 +29,7 @@
 #include "blwidget.h"
 
 
-class company;
+class Company;
 
 
 /// Permite buscar y seleccionar un proveedor.

@@ -29,7 +29,7 @@
 
 // typedef QMap<QString, Fixed> base;
 
-PedidoProveedor::PedidoProveedor(company *comp, QWidget *parent) : FichaBf(comp, parent) {
+PedidoProveedor::PedidoProveedor(Company *comp, QWidget *parent) : FichaBf(comp, parent) {
     setDBTableName("pedidoproveedor");
     setDBCampoId("idpedidoproveedor");
     addDBCampo("idpedidoproveedor", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("PedidoProveedor", "Id pedido proveedor"));

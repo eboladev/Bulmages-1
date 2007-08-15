@@ -80,7 +80,7 @@ void BusquedaProvincia::setProvincia(QString provincia) {
 
 /** Inicializa la clase con el puntero a la empresa
 **/
-void BusquedaProvincia::setcompany(company *comp) {
+void BusquedaProvincia::setcompany(Company *comp) {
     _depura("BusquedaProvincia::setcompany", 0);
     companyact = comp;
     _depura("END BusquedaProvincia::setcompany", 0);

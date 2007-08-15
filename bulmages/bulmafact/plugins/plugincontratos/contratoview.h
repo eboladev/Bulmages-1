@@ -60,7 +60,7 @@ class ContratoView : public Contrato, public Ui_ContratoBase {
     Q_OBJECT
 
 public:
-    ContratoView(company *, QWidget *parent = 0);
+    ContratoView(Company *, QWidget *parent = 0);
     ~ContratoView();
     void inicializar();
     void pintaidcliente(QString id);

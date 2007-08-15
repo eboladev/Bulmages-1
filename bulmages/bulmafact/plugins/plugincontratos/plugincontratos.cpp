@@ -40,13 +40,13 @@ myplugincont::~myplugincont() {}
 
 
 void myplugincont::elslot() {
-    ContratosList *vehiculoview = new ContratosList((company *) m_conexionbase);
+    ContratosList *vehiculoview = new ContratosList((Company *) m_conexionbase);
     m_bulmafact->workspace()->addWindow(vehiculoview);
     vehiculoview->show();
 }
 
 
-void myplugincont::inicializa(bulmafact *bges) {
+void myplugincont::inicializa(Bulmafact *bges) {
     /// Creamos el men&uacute;.
     m_conexionbase = bges->getcompany();
     m_bulmafact = bges;
@@ -60,7 +60,7 @@ void myplugincont::inicializa(bulmafact *bges) {
 }
 
 
-int entryPoint(bulmafact *bges) {
+int entryPoint(Bulmafact *bges) {
     _depura("Punto de Entrada del plugin PluginContratos", 0);
     myplugincont *plug = new myplugincont();
     plug->inicializa(bges);
@@ -72,7 +72,7 @@ int entryPoint(bulmafact *bges) {
 int ClienteView_ClienteView(ClienteView *art) {
     _depura("ClienteView_ClienteView", 0);
     /// Para que funcione bien debemos iniciar con SelectMode y luego pasar a EditMode ya que si no se hace un meteWindow y no es deseable.
-    ContratosList *l = new ContratosList(((company *)art->empresaBase()), art, 0, ContratosList::SelectMode);
+    ContratosList *l = new ContratosList(((Company *)art->empresaBase()), art, 0, ContratosList::SelectMode);
     l->setObjectName(QString::fromUtf8("ccontratoslist"));
     art->mui_tab->addTab(l, "Contratos");
     l->editMode();

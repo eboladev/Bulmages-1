@@ -65,7 +65,7 @@ public slots:
 class ListConfiguracionView : public FichaBf, public Ui_ListConfiguracionBase {
     Q_OBJECT
 public:
-    ListConfiguracionView(company *comp, QWidget *parent = 0);
+    ListConfiguracionView(Company *comp, QWidget *parent = 0);
     ~ListConfiguracionView();
 
 public slots:

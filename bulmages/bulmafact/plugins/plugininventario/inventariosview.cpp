@@ -37,7 +37,7 @@
 //             InventariosView
 // ==============================================
 
-void InventariosView::setcompany(company *comp) {
+void InventariosView::setcompany(Company *comp) {
     companyact = comp;
     mui_listado->setEmpresaBase(comp);
 }
@@ -68,7 +68,7 @@ InventariosView::InventariosView(QWidget *parent, Qt::WFlags flag)
 }
 
 
-InventariosView::InventariosView(company *comp, QWidget *parent)
+InventariosView::InventariosView(Company *comp, QWidget *parent)
         : Ficha(parent) {
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);

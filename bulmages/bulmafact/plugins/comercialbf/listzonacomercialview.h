@@ -59,7 +59,7 @@ class ListZonaComercialView : public FichaBf, public Ui_ListZonaComercialBase {
     Q_OBJECT
 
 public:
-    ListZonaComercialView(company *, QWidget *);
+    ListZonaComercialView(Company *, QWidget *);
     ~ListZonaComercialView();
 
 public slots:

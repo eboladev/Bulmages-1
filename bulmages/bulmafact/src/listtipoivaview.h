@@ -58,7 +58,7 @@ public slots:
 class ListTipoIVAView : public FichaBf, public Ui_ListTipoIVABase {
     Q_OBJECT
 public:
-    ListTipoIVAView(company *comp, QWidget *parent);
+    ListTipoIVAView(Company *comp, QWidget *parent);
     ~ListTipoIVAView();
 public slots:
     virtual void on_mui_aceptar_clicked();

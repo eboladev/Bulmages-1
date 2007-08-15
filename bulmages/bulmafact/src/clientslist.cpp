@@ -38,7 +38,7 @@
     Hace una presentacion inicial.
     Mete la ventana en el workSpace si estamos en modo edicion.
 */
-ClientsList::ClientsList(company *comp, QWidget *parent, Qt::WFlags flag, edmode editmode)
+ClientsList::ClientsList(Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmode)
         : Listado(comp, parent, flag, editmode), pgimportfiles(comp) {
     _depura("ClientsList::ClientsList", 0);
     setupUi(this);
@@ -103,7 +103,7 @@ void ClientsList::editar(int row) {
     mdb_cifcliente = mui_list->DBvalue("cifcliente", row);
     mdb_nomcliente = mui_list->DBvalue("nomcliente", row);
     if (modoEdicion()) {
-        ClienteView *prov = ((company *)empresaBase())->newClienteView();
+        ClienteView *prov = ((Company *)empresaBase())->newClienteView();
         if (prov->cargar(mdb_idcliente)) {
             delete prov;
             return;
@@ -136,7 +136,7 @@ void ClientsList::borrar() {
     _depura("ClientsList::on_mui_borrar_clicked", 0);
     try {
         QString idcliente = mui_list->DBvalue("idcliente");
-        ClienteView *cli = ((company *)empresaBase())->newClienteView();
+        ClienteView *cli = ((Company *)empresaBase())->newClienteView();
         if (cli->cargar(idcliente)) {
             delete cli;
             throw -1;
@@ -217,7 +217,7 @@ QString ClientsList::cifclient() {
 /** SLOT automatico que se ejecuta al pulsar sobre el boton de crear en la botonera
 **/
 void ClientsList::crear() {
-    ((company *)empresaBase())->s_newClienteView();
+    ((Company *)empresaBase())->s_newClienteView();
 }
 
 

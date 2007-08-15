@@ -46,7 +46,7 @@ public:
     ~BusquedaAlmacen();
     virtual void setidalmacen(QString idalmacen);
     QString idalmacen();
-    void setEmpresaBase(company *);
+    void setEmpresaBase(Company *);
 
 public slots:
     void m_activated(int index);

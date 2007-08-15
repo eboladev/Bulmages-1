@@ -57,7 +57,7 @@ CobrosList::CobrosList(QWidget *parent, Qt::WFlags flag)
     Hace una presentacion inicial.
     Mete la ventana en el workSpace.
 */
-CobrosList::CobrosList(company *comp, QWidget *parent, Qt::WFlags flag)
+CobrosList::CobrosList(Company *comp, QWidget *parent, Qt::WFlags flag)
         : Listado(comp, parent, flag) {
     _depura("CobrosList::CobrosList",0);
     setupUi(this);
@@ -151,7 +151,7 @@ QString CobrosList::generaFiltro() {
 */
 void CobrosList::crear() {
     _depura("CobrosList::crear", 0);
-    CobroView *bud = ((company *)empresaBase())->newCobroView();
+    CobroView *bud = ((Company *)empresaBase())->newCobroView();
     empresaBase()->m_pWorkspace->addWindow(bud);
     bud->show();
     bud->setidcliente(m_cliente->idcliente());
@@ -185,7 +185,7 @@ void CobrosList::borrar() {
     try {
         mdb_idcobro = mui_list->DBvalue("idcobro");
         if (modoEdicion()) {
-            CobroView *cv = ((company *)empresaBase())->newCobroView();
+            CobroView *cv = ((Company *)empresaBase())->newCobroView();
             if (cv->cargar(mdb_idcobro))
                 throw -1;
             cv->on_mui_borrar_clicked();
@@ -208,7 +208,7 @@ void CobrosList::editar(int) {
     try {
         mdb_idcobro = mui_list->DBvalue("idcobro");
         if (modoEdicion()) {
-            CobroView *bud = ((company *)empresaBase())->newCobroView();
+            CobroView *bud = ((Company *)empresaBase())->newCobroView();
             if (bud->cargar(mdb_idcobro)) {
                 delete bud;
                 return;
@@ -247,7 +247,7 @@ void CobrosList::submenu(const QPoint &) {
 
 /** Inicializa la clase con el puntero a la company que se esta utilizando
 **/
-void CobrosList::setEmpresaBase(company *comp) {
+void CobrosList::setEmpresaBase(Company *comp) {
     PEmpresaBase::setEmpresaBase(comp);
     m_cliente->setEmpresaBase(comp);
     mui_list->setEmpresaBase(comp);

@@ -38,7 +38,7 @@
 #include "fichabf.h"
 
 
-class company;
+class Company;
 
 
 /// Muestra y administra la ventana de una factura a cliente.
@@ -47,7 +47,7 @@ class FacturaView : public Factura, public Ui_FacturaBase {
     Q_OBJECT
 
 public:
-    FacturaView(company *, QWidget *parent = 0);
+    FacturaView(Company *, QWidget *parent = 0);
     ~FacturaView();
     void inicializar();
     void pintaidcliente(QString id) {

@@ -32,7 +32,7 @@
 /** */
 class Pago : public FichaBf {
 public:
-    Pago(company *, QWidget *);
+    Pago(Company *, QWidget *);
     virtual ~Pago();
     virtual int cargar(QString);
     virtual void pintar();

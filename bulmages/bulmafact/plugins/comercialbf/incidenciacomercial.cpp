@@ -27,7 +27,7 @@
 #include "plugins.h"
 
 
-IncidenciaComercial::IncidenciaComercial(company *comp, QWidget *parent) : FichaBf(comp, parent) {
+IncidenciaComercial::IncidenciaComercial(Company *comp, QWidget *parent) : FichaBf(comp, parent) {
     _depura("IncidenciaComercial::IncidenciaComercial", 0);
     setDBTableName("incidenciacomercial");
     setDBCampoId("idincidenciacomercial");

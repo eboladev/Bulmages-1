@@ -51,7 +51,7 @@
     Inicializa la ventana y todos sus componentes.
     Mete la ventana en el WorkSpace.
 */
-AlbaranClienteView::AlbaranClienteView(company *comp, QWidget *parent)
+AlbaranClienteView::AlbaranClienteView(Company *comp, QWidget *parent)
         : AlbaranCliente(comp, parent) {
     _depura("AlbaranClienteView::AlbaranClienteView", 0);
     setAttribute(Qt::WA_DeleteOnClose);

@@ -30,7 +30,7 @@
 class EFacturaRecepcion : public FichaBf, public Ui_EFacturaRecepcionBase {
 	Q_OBJECT
 public:
-	EFacturaRecepcion(company *emp, QWidget *parent = 0);
+	EFacturaRecepcion(Company *emp, QWidget *parent = 0);
 	~EFacturaRecepcion();
 
 public slots:

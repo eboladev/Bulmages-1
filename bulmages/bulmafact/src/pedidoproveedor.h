@@ -39,7 +39,7 @@ class PedidoProveedor : public FichaBf {
 Q_OBJECT
 protected:
 public:
-    PedidoProveedor(company *, QWidget *);
+    PedidoProveedor(Company *, QWidget *);
     virtual ~PedidoProveedor();
 
     virtual int cargar(QString);

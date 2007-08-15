@@ -73,10 +73,10 @@ private:
 
 public:
 //    MovimientosView(QWidget *parent = 0, edmode editmodo = EditMode);
-    MovimientosView(company *,QWidget *parent = 0, edmode editmodo = EditMode);
+    MovimientosView(Company *,QWidget *parent = 0, edmode editmodo = EditMode);
     virtual ~MovimientosView();
     void iniciaForm();
-    void setEmpresaBase (company *comp) {
+    void setEmpresaBase (Company *comp) {
         PEmpresaBase::setEmpresaBase(comp);
         m_cliente->setEmpresaBase(comp);
         m_articulo->setEmpresaBase(comp);

@@ -27,7 +27,7 @@
 #include "plugins.h"
 
 
-RutaComercial::RutaComercial(company *comp, QWidget *parent) : FichaBf(comp, parent) {
+RutaComercial::RutaComercial(Company *comp, QWidget *parent) : FichaBf(comp, parent) {
     _depura("RutaComercial::RutaComercial", 0);
     setDBTableName("rutacomercial");
     setDBCampoId("idrutacomercial");

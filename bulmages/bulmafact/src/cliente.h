@@ -38,7 +38,7 @@
     pintaXXX son utilizados para invocar a al repintado de determinado elemento. */
 class Cliente : public FichaBf {
 public:
-    Cliente(company *, QWidget *);
+    Cliente(Company *, QWidget *);
     virtual ~Cliente();
     virtual void pintar();
     virtual int guardar();

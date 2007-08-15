@@ -35,12 +35,12 @@ class Contrato : public FichaBf {
 Q_OBJECT
 
 public:
-    Contrato(company *, QWidget *parent);
+    Contrato(Company *, QWidget *parent);
     virtual ~Contrato();
     /// Establece cu&aacute;l es la lista subformulario del presupuesto. Normalmente para
     /// apuntar listlinpresupuestoview.
 
-    company *_company();
+    Company *_company();
     virtual int cargar(QString);
     void pintar();
     virtual int guardar();

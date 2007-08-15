@@ -58,14 +58,14 @@ private:
 
 public:
     PedidosClienteList(QWidget *parent = 0, Qt::WFlags flag = 0);
-    PedidosClienteList(company *, QWidget *parent = 0, Qt::WFlags flag = 0);
+    PedidosClienteList(Company *, QWidget *parent = 0, Qt::WFlags flag = 0);
     ~PedidosClienteList();
     void presentar();
     void imprimir();
     void editar(int);
     void borrar();
     void crear();
-    void setEmpresaBase(company *comp);
+    void setEmpresaBase(Company *comp);
     void setidcliente(QString val);
     QString idpedidocliente();
     QString generarFiltro();

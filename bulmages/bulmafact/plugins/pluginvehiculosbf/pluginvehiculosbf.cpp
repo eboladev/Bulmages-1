@@ -40,13 +40,13 @@ myplugin::~myplugin() {}
 
 
 void myplugin::elslot() {
-    VehiculoView *vehiculoview = new VehiculoView((company *) m_conexionbase);
+    VehiculoView *vehiculoview = new VehiculoView((Company *) m_conexionbase);
     m_bulmafact->workspace()->addWindow(vehiculoview);
     vehiculoview->show();
 }
 
 
-void myplugin::inicializa(bulmafact *bges) {
+void myplugin::inicializa(Bulmafact *bges) {
     /// Creamos el men&uacute;.
     m_conexionbase = bges->getcompany();
     m_bulmafact = bges;
@@ -61,7 +61,7 @@ void myplugin::inicializa(bulmafact *bges) {
 }
 
 
-int entryPoint(bulmafact *bges) {
+int entryPoint(Bulmafact *bges) {
     _depura("Punto de Entrada del plugin PluginVehiculosBF", 0);
     myplugin *plug = new myplugin();
     plug->inicializa(bges);

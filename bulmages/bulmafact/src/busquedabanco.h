@@ -40,14 +40,14 @@ class BusquedaBanco : public QComboBox {
 
 private:
     /// Puntero a la clase company para poder trabajar con la Base de datos y poder hacer paso de mensajes.
-    company *companyact;
+    Company *companyact;
     /// Cursor que almacena el listado de trabajadores y sobre el que se construye el comboBox.
     cursor2 *m_cursorcombo;
 
 public:
     BusquedaBanco(QWidget *parent = 0);
     ~BusquedaBanco();
-    void setEmpresaBase(company *comp);
+    void setEmpresaBase(Company *comp);
     virtual void setidbanco(QString idbanco);
     QString idbanco();
 

@@ -38,7 +38,7 @@
 class Presupuesto : public FichaBf {
 
 public:
-    Presupuesto(company *, QWidget *);
+    Presupuesto(Company *, QWidget *);
 
     QString idcliente() {
         return DBvalue("idcliente");

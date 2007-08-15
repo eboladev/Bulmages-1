@@ -26,7 +26,7 @@
 #include "ficha.h"
 
 
-class company;
+class Company;
 
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un tipo de art&iacute;culo.
@@ -35,7 +35,7 @@ class TipoArticuloList : public Ficha, public Ui_tiposarticulobase {
     Q_OBJECT
 
 private:
-    company *companyact;
+    Company *companyact;
     /// Indica cual es el registro que se esta modificando. Sirve para saber los
     /// cambios que hay que guardar cuando se ha modificado.
     QString m_idtipo;
@@ -44,7 +44,7 @@ private:
     bool m_modoConsulta;
 
 public:
-    TipoArticuloList(company *, QWidget *parent = 0, bool modoConsulta = FALSE);
+    TipoArticuloList(Company *, QWidget *parent = 0, bool modoConsulta = FALSE);
     ~TipoArticuloList();
     bool trataModificado();
     void mostrarplantilla();

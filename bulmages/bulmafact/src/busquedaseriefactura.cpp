@@ -101,7 +101,7 @@ QString BusquedaSerieFactura::codigoserie_factura() {
 }
 
 
-void BusquedaSerieFactura::setEmpresaBase(company *comp) {
+void BusquedaSerieFactura::setEmpresaBase(Company *comp) {
         PEmpresaBase::setEmpresaBase(comp);
 	cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM configuracion WHERE nombre ='SerieFacturaDefecto'");
         if (!cur) return;

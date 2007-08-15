@@ -37,7 +37,7 @@
     Hace una presentacion inicial.
     Mete la ventana en el workSpace si estamos en modo edicion.
 */
-ContratosList::ContratosList(company *comp, QWidget *parent, Qt::WFlags flag, edmode editmode)
+ContratosList::ContratosList(Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmode)
         : Listado(comp, parent, flag), pgimportfiles(comp) {
     _depura("ContratosList::ContratosList", 0);
     setAttribute(Qt::WA_DeleteOnClose);
@@ -107,7 +107,7 @@ void ContratosList::editar(int row) {
     mdb_refcontrato = mui_list->DBvalue("refcontrato", row);
     mdb_nomcontrato = mui_list->DBvalue("nomcontrato", row);
     if (m_modo == 0) {
-        ContratoView *prov = new ContratoView((company *)empresaBase());
+        ContratoView *prov = new ContratoView((Company *)empresaBase());
         if (prov->cargar(mdb_idcontrato)) {
             delete prov;
             return;
@@ -244,7 +244,7 @@ void ContratosList::on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
 **/
 void ContratosList::on_mui_crear_clicked() {
 	_depura("ContratosList::on_mui_crear_clicked", 0);
-        ContratoView *prov = new ContratoView((company *) empresaBase());
+        ContratoView *prov = new ContratoView((Company *) empresaBase());
 	prov->cargar("0");
         empresaBase()->m_pWorkspace->addWindow(prov);
         prov->show();

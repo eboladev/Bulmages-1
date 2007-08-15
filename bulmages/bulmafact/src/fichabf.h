@@ -37,8 +37,8 @@ public:
     SubForm2Bf *m_listadescuentos;
 
 public:
-    company *empresaBase();
-    FichaBf(company *comp, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode);
+    Company *empresaBase();
+    FichaBf(Company *comp, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode);
     virtual ~FichaBf();
     void setListaLineas(SubForm2Bf *form);
     void setListaDescuentos(SubForm2Bf *form);

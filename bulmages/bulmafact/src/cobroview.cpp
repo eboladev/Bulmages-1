@@ -38,7 +38,7 @@
     Resetea el sistema de control de cambios para que considere que no hay cambios por parte del usuario.
     Mete la ventana en el workSpace.
 */
-CobroView::CobroView(company *comp, QWidget *parent)
+CobroView::CobroView(Company *comp, QWidget *parent)
         : Cobro(comp, parent) {
     _depura("CobroView::CobroView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
@@ -61,7 +61,7 @@ CobroView::CobroView(company *comp, QWidget *parent)
 */
 CobroView::~CobroView() {
     _depura("CobroView::~CobroView", 0);
-    ((company *)empresaBase())->refreshCobrosCliente();
+    ((Company *)empresaBase())->refreshCobrosCliente();
     _depura("END CobroView::~CobroView", 0);
 }
 

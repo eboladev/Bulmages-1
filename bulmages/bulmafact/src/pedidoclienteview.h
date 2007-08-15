@@ -47,7 +47,7 @@ class PedidoClienteView : public PedidoCliente, public Ui_PedidoClienteBase {
     Q_OBJECT
 
 public:
-    PedidoClienteView(company *, QWidget *parent = 0);
+    PedidoClienteView(Company *, QWidget *parent = 0);
     ~PedidoClienteView();
     void generarAlbaran();
     void inicializar();

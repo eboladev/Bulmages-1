@@ -57,7 +57,7 @@ private:
     QString m_nomprovider;
 
 public:
-    ProveedorList(company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode);
+    ProveedorList(Company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode);
     virtual ~ProveedorList();
     void presentar();
     void editar(int);

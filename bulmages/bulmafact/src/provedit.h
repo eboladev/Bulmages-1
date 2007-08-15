@@ -34,7 +34,7 @@ class ProveedorView : public FichaBf, public Ui_ProveedorBase {
     Q_OBJECT
 
 public:
-    ProveedorView(company *comp, QWidget *parent = 0);
+    ProveedorView(Company *comp, QWidget *parent = 0);
     ~ProveedorView();
 
 public:

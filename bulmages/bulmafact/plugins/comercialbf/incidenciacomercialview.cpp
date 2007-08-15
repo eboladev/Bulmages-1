@@ -40,7 +40,7 @@
 #define coma "'"
 
 
-IncidenciaComercialView::IncidenciaComercialView(company *comp, QWidget *parent)
+IncidenciaComercialView::IncidenciaComercialView(Company *comp, QWidget *parent)
         : IncidenciaComercial(comp, parent) {
     _depura("IncidenciaComercialView::IncidenciaComercialView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
@@ -79,7 +79,7 @@ void IncidenciaComercialView::closeEvent(QCloseEvent *e) {
     } // end if
 }
 
-void IncidenciaComercialView::setEmpresaBase(company *comp) {
+void IncidenciaComercialView::setEmpresaBase(Company *comp) {
     _depura("IncidenciaComercialView::setcompany", 0);
     PEmpresaBase::setEmpresaBase(comp);
     mui_idcliente->setEmpresaBase(comp);

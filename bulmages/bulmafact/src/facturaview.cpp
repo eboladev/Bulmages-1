@@ -46,7 +46,7 @@
 /** Inicializa la pantalla.
     Inicializa todos los componentes y mete la pantalla en el workSpace.
 */
-FacturaView::FacturaView(company *comp, QWidget *parent)
+FacturaView::FacturaView(Company *comp, QWidget *parent)
         : Factura(comp, parent) {
     _depura("FacturaView::FacturaView", 0);
     setAttribute(Qt::WA_DeleteOnClose);

@@ -39,7 +39,7 @@
 
 /** Inicializa todos los componentes de la clase.
     mete la ventana en el workSpace. */
-FacturaProveedorView::FacturaProveedorView(company *comp, QWidget *parent)
+FacturaProveedorView::FacturaProveedorView(Company *comp, QWidget *parent)
         : FacturaProveedor(comp, parent) {
     _depura("FacturaProveedorView::FacturaProveedorView", 0);
     setAttribute(Qt::WA_DeleteOnClose);

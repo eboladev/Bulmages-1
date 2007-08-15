@@ -38,7 +38,7 @@
 /** Inicializa la pantalla.
     Inicializa todos los componentes y mete la pantalla en el workSpace.
 */
-ContratoView::ContratoView(company *comp, QWidget *parent)
+ContratoView::ContratoView(Company *comp, QWidget *parent)
         : Contrato(comp, parent) {
     _depura("ContratoView::ContratoView", 0);
     setAttribute(Qt::WA_DeleteOnClose);

@@ -43,7 +43,7 @@ PedidosProveedorList::PedidosProveedorList(QWidget *parent, Qt::WFlags flag)
 }
 
 
-PedidosProveedorList::PedidosProveedorList(company *comp, QWidget *parent, Qt::WFlags flag)
+PedidosProveedorList::PedidosProveedorList(Company *comp, QWidget *parent, Qt::WFlags flag)
         : Listado(comp, parent, flag) {
     _depura("PedidosProveedorList::PedidosProveedorList", 0);
     setupUi(this);
@@ -146,7 +146,7 @@ void PedidosProveedorList::borrar() {
     try {
         mdb_idpedidoproveedor = mui_list->DBvalue(QString("idpedidoproveedor"));
         if (modoEdicion()) {
-            PedidoProveedorView *ppv = ((company *)empresaBase())->nuevoPedidoProveedorView();
+            PedidoProveedorView *ppv = ((Company *)empresaBase())->nuevoPedidoProveedorView();
             if (ppv->cargar(mdb_idpedidoproveedor)) {
                 throw -1;
             } // end if
@@ -166,7 +166,7 @@ void PedidosProveedorList::editar(int row) {
     try {
         mdb_idpedidoproveedor = mui_list->DBvalue(QString("idpedidoproveedor"), row);
         if (modoEdicion()) {
-            PedidoProveedorView *prov = new PedidoProveedorView((company *)empresaBase(), 0);
+            PedidoProveedorView *prov = new PedidoProveedorView((Company *)empresaBase(), 0);
             if (prov->cargar(mdb_idpedidoproveedor)) {
                 delete prov;
                 return;
@@ -185,14 +185,14 @@ void PedidosProveedorList::editar(int row) {
 
 void PedidosProveedorList::crear() {
     _depura("PedidosProveedorList::crear", 0);
-    PedidoProveedorView *prov = new PedidoProveedorView((company *)empresaBase(), 0);
+    PedidoProveedorView *prov = new PedidoProveedorView((Company *)empresaBase(), 0);
     empresaBase()->m_pWorkspace->addWindow(prov);
     prov->show();
     _depura("END PedidosProveedorList::crear", 0);
 }
 
 
-void PedidosProveedorList::setEmpresaBase(company *comp) {
+void PedidosProveedorList::setEmpresaBase(Company *comp) {
     PEmpresaBase::setEmpresaBase(comp);
     m_proveedor->setEmpresaBase(comp);
     mui_list->setEmpresaBase(comp);

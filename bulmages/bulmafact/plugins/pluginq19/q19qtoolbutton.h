@@ -36,7 +36,7 @@ class Q19QToolButton : public QToolButton {
 	Q_OBJECT
 
 private:
-	company *m_companyact;
+	Company *m_companyact;
 	CobrosList     *m_cobrosList;
 	
 public:

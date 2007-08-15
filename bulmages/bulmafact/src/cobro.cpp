@@ -28,7 +28,7 @@
 
 /** Inicializa el DBRecord para que trabaje con la tabla cobro.
 */
-Cobro::Cobro(company *comp, QWidget *parent) : FichaBf(comp, parent) {
+Cobro::Cobro(Company *comp, QWidget *parent) : FichaBf(comp, parent) {
     _depura("Cobro::Cobro", 0);
     setDBTableName("cobro");
     setDBCampoId("idcobro");

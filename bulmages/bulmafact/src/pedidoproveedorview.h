@@ -50,7 +50,7 @@ class PedidoProveedorView : public PedidoProveedor, public Ui_PedidoProveedorBas
     Q_OBJECT
 
 public:
-    PedidoProveedorView(company *, QWidget *parent = 0);
+    PedidoProveedorView(Company *, QWidget *parent = 0);
     ~PedidoProveedorView();
     void generarAlbaran();
     void inicialize();

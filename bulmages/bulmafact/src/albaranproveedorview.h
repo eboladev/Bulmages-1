@@ -36,7 +36,7 @@
 #include "ficha.h"
 
 
-class company;
+class Company;
 
 
 /** Se encarga de la ventana de albar&aacute;n de proveedor.
@@ -47,7 +47,7 @@ class AlbaranProveedorView : public AlbaranProveedor, public Ui_AlbaranProveedor
     Q_OBJECT
 
 public:
-    AlbaranProveedorView(company *, QWidget *);
+    AlbaranProveedorView(Company *, QWidget *);
     ~AlbaranProveedorView();
     void inicializar();
     void pintaidalbaranp(QString);

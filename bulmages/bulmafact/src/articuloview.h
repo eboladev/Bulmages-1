@@ -27,7 +27,7 @@
 #include "articulo.h"
 
 
-class company;
+class Company;
 
 
 /** Esta clase controla la ventana de un articulo.
@@ -44,7 +44,7 @@ private:
     cursor2 *m_cursorcombo;
 
 public:
-    ArticuloView(company *emp, QWidget *parent = 0);
+    ArticuloView(Company *emp, QWidget *parent = 0);
     ~ArticuloView();
 
 public:

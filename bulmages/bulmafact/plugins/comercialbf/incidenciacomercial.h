@@ -30,7 +30,7 @@
 class IncidenciaComercial : public FichaBf {
 
 public:
-    IncidenciaComercial(company *, QWidget *);
+    IncidenciaComercial(Company *, QWidget *);
     virtual ~IncidenciaComercial();
     virtual void pintar();
     virtual int cargar(QString);

@@ -33,7 +33,7 @@
 #include "bulmafact.h"
 #include "clienteview.h"
 
-extern "C" MY_EXPORT int entryPoint(bulmafact *);
+extern "C" MY_EXPORT int entryPoint(Bulmafact *);
 extern "C" MY_EXPORT int ClienteView_ClienteView(ClienteView *);
 extern "C" MY_EXPORT int ClienteView_cargar(ClienteView *);
 

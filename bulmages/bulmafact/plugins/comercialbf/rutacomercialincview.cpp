@@ -40,7 +40,7 @@
 #define coma "'"
 
 
-RutaComercialIncView::RutaComercialIncView ( company *comp, QWidget *parent )
+RutaComercialIncView::RutaComercialIncView ( Company *comp, QWidget *parent )
 		: FichaBf ( comp, parent )
 {
 	_depura ( "RutaComercialIncView::RutaComercialIncView", 0 );

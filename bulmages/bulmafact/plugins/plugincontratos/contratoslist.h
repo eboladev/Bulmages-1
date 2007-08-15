@@ -32,12 +32,12 @@ class myplugincont : public QObject {
 
 public:
     postgresiface2 *m_conexionbase;
-    bulmafact *m_bulmafact;
+    Bulmafact *m_bulmafact;
 
 public:
     myplugincont();
     ~myplugincont();
-    void inicializa(bulmafact *);
+    void inicializa(Bulmafact *);
 
 public slots:
     void elslot();
@@ -87,7 +87,7 @@ private:
 
 
 public:
-    ContratosList(company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode);
+    ContratosList(Company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode);
     ~ContratosList();
     void selectMode();
     void editMode();

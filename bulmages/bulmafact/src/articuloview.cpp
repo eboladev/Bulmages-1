@@ -42,7 +42,7 @@
     Inicializa la gestion de cambios para que se considere que no hay camibos realizados en la ventana.
     Mete la ventana en el worSpace.
 */
-ArticuloView::ArticuloView(company *comp, QWidget *parent)
+ArticuloView::ArticuloView(Company *comp, QWidget *parent)
         : Articulo(comp, parent) {
     _depura("ArticuloView::ArticuloView", 0);
     setAttribute(Qt::WA_DeleteOnClose);

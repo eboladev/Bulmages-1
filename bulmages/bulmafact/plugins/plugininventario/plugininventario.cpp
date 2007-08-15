@@ -33,13 +33,13 @@ myplugininv::~myplugininv() {}
 
 
 void myplugininv::elslot() {
-    InventariosView *tar = new InventariosView((company *)empresaBase(), NULL);
+    InventariosView *tar = new InventariosView((Company *)empresaBase(), NULL);
     empresaBase()->m_pWorkspace->addWindow(tar);
     tar->show();
 }
 
 
-void myplugininv::inicializa(bulmafact *bges) {
+void myplugininv::inicializa(Bulmafact *bges) {
     /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
     m_bges = bges;
     setEmpresaBase(bges->getcompany());
@@ -52,7 +52,7 @@ void myplugininv::inicializa(bulmafact *bges) {
 }
 
 
-int entryPoint(bulmafact *bges) {
+int entryPoint(Bulmafact *bges) {
     _depura("Punto de Entrada del plugin de Tarifas\n", 0);
     myplugininv *plug = new myplugininv();
     plug->inicializa(bges);

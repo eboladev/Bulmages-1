@@ -38,7 +38,7 @@ class ImpQToolButton : public QToolButton {
 	Q_OBJECT
 
 private:
-	company *m_companyact;
+	Company *m_companyact;
 	PresupuestoList *m_presupuestoList;
 	PedidosClienteList *m_pedidosClienteList;
 	AlbaranClienteList *m_albaranClienteList;
@@ -59,7 +59,7 @@ class SelQToolButton : public QToolButton {
 	Q_OBJECT
 
 private:
-	company *m_companyact;
+	Company *m_companyact;
 	PresupuestoList *m_presupuestoList;
 	PedidosClienteList *m_pedidosClienteList;
 	AlbaranClienteList *m_albaranClienteList;
@@ -78,7 +78,7 @@ class EmailQToolButton : public QToolButton {
 	Q_OBJECT
 
 private:
-	company *m_companyact;
+	Company *m_companyact;
 	PresupuestoList *m_presupuestoList;
 	PedidosClienteList *m_pedidosClienteList;
 	AlbaranClienteList *m_albaranClienteList;

@@ -28,7 +28,7 @@
 #include "q19qtoolbutton.h"
 #include "bulmafact.h"
 
-int entryPoint(bulmafact *) {
+int entryPoint(Bulmafact *) {
     _depura("Estoy dentro del plugin de Q19", 0);
     return 0;
 }

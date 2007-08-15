@@ -28,7 +28,7 @@
 /// Pasamos como parametro la empresa para poder usar metodos de BD para
 /// guardar los datos de configuracion
 
-EFactura::EFactura(company *emp, QWidget *parent) : FichaBf(emp, parent) {
+EFactura::EFactura(Company *emp, QWidget *parent) : FichaBf(emp, parent) {
 	
 	_depura("EFactura::EFactura", 2);
 	

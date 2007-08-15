@@ -29,7 +29,7 @@
 
 /** PReparamos la clase DBRecord para funcionar con la tabla contrato.
 */
-Contrato::Contrato(company *comp, QWidget *parent) : FichaBf(comp, parent) {
+Contrato::Contrato(Company *comp, QWidget *parent) : FichaBf(comp, parent) {
     _depura("Contrato::Contrato", 0);
     setDBTableName("contrato");
     setDBCampoId("idcontrato");
@@ -170,11 +170,11 @@ int Contrato::guardar() {
 
 /** Devuelve el puntero a la clase company con la que esta trabajando la contrato
 **/
-    company * Contrato::_company() {
+Company * Contrato::_company() {
 	_depura("Contrato::_company", 0);
 	_depura("END Contrato::_company", 0);
         return empresaBase();
-    }
+}
 
 
 

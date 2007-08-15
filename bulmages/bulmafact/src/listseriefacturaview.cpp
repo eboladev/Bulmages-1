@@ -38,7 +38,7 @@
 #include "funcaux.h"
 
 
-ListSerieFacturaView::ListSerieFacturaView(company *comp, QWidget *parent)
+ListSerieFacturaView::ListSerieFacturaView(Company *comp, QWidget *parent)
         : FichaBf(comp, parent) {
     _depura("INIT_ListSerieFacturaView::ListSerieFacturaView", 1);
     setDBTableName("serie_factura");

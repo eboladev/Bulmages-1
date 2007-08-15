@@ -59,7 +59,7 @@ public slots:
 class ListTasaIVAView : public FichaBf, public Ui_ListTasaIVABase {
     Q_OBJECT
 public:
-    ListTasaIVAView(company *comp, QWidget *parent);
+    ListTasaIVAView(Company *comp, QWidget *parent);
     ~ListTasaIVAView();
 public slots:
     virtual void on_mui_aceptar_clicked();

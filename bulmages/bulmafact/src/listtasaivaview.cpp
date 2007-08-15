@@ -39,7 +39,7 @@
 #include "funcaux.h"
 
 
-ListTasaIVAView::ListTasaIVAView(company *comp, QWidget *parent)
+ListTasaIVAView::ListTasaIVAView(Company *comp, QWidget *parent)
         : FichaBf(comp, parent) {
     _depura("ListTasaIVAView::ListTasaIVAView", 1);
     setDBTableName("tasa_iva");

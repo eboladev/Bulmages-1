@@ -59,14 +59,14 @@ private:
 
 public:
     PresupuestoList(QWidget *parent = 0, Qt::WFlags flag = 0);
-    PresupuestoList(company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0);
+    PresupuestoList(Company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0);
     ~PresupuestoList();
     void presentar();
     void editar(int);
     void borrar();
     void crear();
     QString idpresupuesto();
-    void setEmpresaBase (company *comp);
+    void setEmpresaBase (Company *comp);
     void imprimir();
     void setidcliente(QString val);
     void setidarticulo(QString val);

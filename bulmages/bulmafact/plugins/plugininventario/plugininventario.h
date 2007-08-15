@@ -28,18 +28,18 @@
 #include "bulmafact.h"
 #include "blwidget.h"
 
-extern "C" MY_EXPORT int entryPoint(bulmafact *);
+extern "C" MY_EXPORT int entryPoint(Bulmafact *);
 
 class myplugininv : public QObject, PEmpresaBase {
     Q_OBJECT
 
 public:
-    bulmafact *m_bges;
+    Bulmafact *m_bges;
 
 public:
     myplugininv();
     ~myplugininv();
-    void inicializa(bulmafact *);
+    void inicializa(Bulmafact *);
 
 public slots:
     void elslot();

@@ -32,7 +32,7 @@
 #include "pgimportfiles.h"
 
 
-ProveedorList::ProveedorList(company *comp, QWidget *parent, Qt::WFlags flag, edmode editmode)
+ProveedorList::ProveedorList(Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmode)
         : Listado(comp, parent, flag, editmode), pgimportfiles(comp) {
     _depura("ProveedorList::ProveedorList", 0);
     setupUi(this);
@@ -98,7 +98,7 @@ void ProveedorList::presentar() {
 /// \TODO: Esta creacion debe pasar por la clase company.
 void ProveedorList::crear() {
     _depura("ProveedorList::crear", 0);
-        ProveedorView *prov = ((company *)empresaBase())->newProveedorView();
+        ProveedorView *prov = ((Company *)empresaBase())->newProveedorView();
     empresaBase()->m_pWorkspace->addWindow(prov);
     prov->show();
     _depura("END ProveedorList::crear", 0);
@@ -112,7 +112,7 @@ void ProveedorList::editar(int row) {
     m_cifprovider = mui_list->DBvalue(QString("cifproveedor"), row);
     m_nomprovider = mui_list->DBvalue(QString("nomproveedor"), row);
     if (modoEdicion()) {
-        ProveedorView *prov = ((company *)empresaBase())->newProveedorView();
+        ProveedorView *prov = ((Company *)empresaBase())->newProveedorView();
         if (prov->cargar(mui_list->DBvalue(QString("idproveedor"), row))) {
             delete prov;
             return;
@@ -135,7 +135,7 @@ void ProveedorList::borrar() {
     _depura("ProveedorList::borrar", 0);
     try {
         QString idprov = mui_list->DBvalue(QString("idproveedor"));
-        ProveedorView *prov = ((company *)empresaBase())->newProveedorView();
+        ProveedorView *prov = ((Company *)empresaBase())->newProveedorView();
         prov->cargar(idprov);
         prov->on_mui_borrar_clicked();
         delete prov;

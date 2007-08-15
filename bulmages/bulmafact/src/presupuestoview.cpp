@@ -44,7 +44,7 @@
 #include "plugins.h"
 
 
-PresupuestoView::PresupuestoView(company *comp, QWidget *parent)
+PresupuestoView::PresupuestoView(Company *comp, QWidget *parent)
         : Presupuesto(comp, parent) {
     _depura("Inicializacion de PresupuestoView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
@@ -100,7 +100,7 @@ void PresupuestoView::inicializar() {
 
 PresupuestoView::~PresupuestoView() {
     _depura("PresupuestoView::~PresupuestoView", 0);
-    ((company *)empresaBase())->refreshPresupuestos();
+    ((Company *)empresaBase())->refreshPresupuestos();
 
     /// Disparamos los plugins.
     g_plugins->lanza("PresupuestoView_DesPresupuestoView", this);

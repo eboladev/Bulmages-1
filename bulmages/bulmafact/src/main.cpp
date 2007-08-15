@@ -41,7 +41,7 @@
 
 
 QApplication2 *theApp;
-bulmafact *bges;
+Bulmafact *bges;
 QTranslator *traductor;
 
 /// Inicio de ejecucion del programa.
@@ -112,10 +112,10 @@ int main(int argc, char **argv) {
         if (argc == 5) {
             confpr->setValor(CONF_LOGIN_USER, us);
             confpr->setValor(CONF_PASSWORD_USER, pass);
-            bges = new bulmafact(db);
+            bges = new Bulmafact(db);
 	    bges->hide();
         } else if (argc == 3) {
-            bges = new bulmafact(db);
+            bges = new Bulmafact(db);
 	    bges->hide();
         } else {
             logpass *login1 = new logpass(0, "");
@@ -127,7 +127,7 @@ int main(int argc, char **argv) {
                 exit(1);
             }
             delete login1;
-            bges = new bulmafact("");
+            bges = new Bulmafact("");
 	    bges->hide();
         } // end if
 

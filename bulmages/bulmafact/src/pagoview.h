@@ -35,7 +35,7 @@
 #include "ficha.h"
 
 
-class company;
+class Company;
 
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un pago.
@@ -44,7 +44,7 @@ class PagoView : public Pago, public Ui_PagoBase  {
     Q_OBJECT
 
 public:
-    PagoView(company *, QWidget *);
+    PagoView(Company *, QWidget *);
     ~PagoView();
     void manageArticle(int);
     void pintafechapago(QString id);

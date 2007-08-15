@@ -34,7 +34,7 @@
 class Articulo : public FichaBf {
 
 public:
-    Articulo(company *, QWidget *parent = 0, Qt::WFlags f = 0 );
+    Articulo(Company *, QWidget *parent = 0, Qt::WFlags f = 0 );
     virtual ~Articulo();
 };
 

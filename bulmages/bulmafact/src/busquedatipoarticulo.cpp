@@ -111,7 +111,7 @@ void BusquedaTipoArticulo::on_mui_buscar_clicked() {
     QDialog *diag = new QDialog(0);
     diag->setModal(true);
 
-    TipoArticuloList *tip = ((company *)empresaBase())->newTipoArticuloList(diag, TRUE);
+    TipoArticuloList *tip = ((Company *)empresaBase())->newTipoArticuloList(diag, TRUE);
     connect(tip, SIGNAL(selected(QString)), diag, SLOT(accept()));
 
     /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog

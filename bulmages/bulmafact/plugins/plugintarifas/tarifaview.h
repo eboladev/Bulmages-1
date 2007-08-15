@@ -36,9 +36,9 @@ private:
     QString m_nomtarifa;
     cursor2 *m_cursorcombo;
 public:
-    TarifaView(company *emp, QWidget *parent = 0);
+    TarifaView(Company *emp, QWidget *parent = 0);
     ~TarifaView();
-    company *companyact() {
+    Company *companyact() {
         return empresaBase();
     };
 

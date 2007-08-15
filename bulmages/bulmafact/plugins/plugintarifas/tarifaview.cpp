@@ -31,7 +31,7 @@
 #include "plugins.h"
 
 
-TarifaView::TarifaView(company *comp, QWidget *parent)
+TarifaView::TarifaView(Company *comp, QWidget *parent)
         : FichaBf(comp, parent) {
     _depura("TarifaView::INIT_constructor()\n", 0);
     setAttribute(Qt::WA_DeleteOnClose);
