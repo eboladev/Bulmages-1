@@ -44,7 +44,7 @@ private:
     postgresiface2 *conexionbase;
     /// La empresa con la que se inicializa. Esta variable se introduce en el constructor
     /// de la clase y queda definida.
-    empresa *empresaactual;
+    Empresa *empresaactual;
     /// Esta variable global indica siempre el tag que está procesando el parser
     QString m_tag;
     /// Esta variable global indica la información que se acaba de recolectar en el parser.
@@ -65,7 +65,7 @@ private:
 
 public:
     /// Constructor de la clase que inicializa determinadas variables de clase.
-    importbalance(empresa *);
+    importbalance(Empresa *);
     /// Implementaci&oacute;n del analizador (parser) que procesa un tag de inicio.
     bool startElement(const QString&, const QString&, const QString&, const QXmlAttributes&);
     /// Implementaci&oacute;n del analizador (parser) que procesa un tag de cierre

@@ -28,7 +28,7 @@
 /** La base de datos establece que de momento no se ha visitado ning&uacute;n tag .
     Establece que no hay ning&uacute;n dato recogido del XML.
     Inidca que el paso que vamos a procesar es el 0. */
-importbalance::importbalance(empresa *emp) : QXmlDefaultHandler() {
+importbalance::importbalance(Empresa *emp) : QXmlDefaultHandler() {
     _depura("importbalance::importbalance", 0);
     empresaactual = emp;
     conexionbase = emp->bdempresa();

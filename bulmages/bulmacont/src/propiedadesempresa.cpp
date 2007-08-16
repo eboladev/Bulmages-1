@@ -25,8 +25,8 @@
 #include "empresa.h"
 
 
-propiedadesempresa::propiedadesempresa(empresa *emp, QWidget *parent)
-        : Ficha(parent) {
+propiedadesempresa::propiedadesempresa(Empresa *emp, QWidget *parent)
+        : FichaBc(emp, parent) {
     _depura("propiedadesempresa::propiedadesempresa", 0);
     this->setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);

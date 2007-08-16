@@ -32,7 +32,7 @@
 
 extern "C" MY_EXPORT int entryPoint(Bulmacont *);
 extern "C" MY_EXPORT int Asiento1_guardaAsiento1_post(Asiento1 *);
-extern "C" MY_EXPORT int empresa_cobPag(empresa *);
-extern "C" MY_EXPORT int empresa_registroiva(empresa *);
+extern "C" MY_EXPORT int empresa_cobPag(Empresa *);
+extern "C" MY_EXPORT int empresa_registroiva(Empresa *);
 extern "C" MY_EXPORT int ListLinAsiento1View_boton_iva(ListLinAsiento1View *);
 

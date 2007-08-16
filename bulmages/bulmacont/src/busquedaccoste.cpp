@@ -18,11 +18,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QComboBox>
+#include  <QComboBox>
 
-#include "busquedaccoste.h"
-#include "funcaux.h"
-#include "empresa.h"
+#include  "busquedaccoste.h"
+#include  "funcaux.h"
+#include  "empresa.h"
 
 
 BusquedaCCoste::BusquedaCCoste(QWidget *parent, const char *)
@@ -40,7 +40,7 @@ BusquedaCCoste::~BusquedaCCoste() {
 }
 
 
-void BusquedaCCoste::setcompany(empresa *comp) {
+void BusquedaCCoste::setcompany(Empresa *comp) {
     companyact = comp;
 }
 
@@ -104,7 +104,7 @@ BusquedaCCosteDelegate::BusquedaCCosteDelegate(QWidget *parent)
 }
 
 
-void BusquedaCCosteDelegate::setcompany(empresa *comp) {
+void BusquedaCCosteDelegate::setcompany(Empresa *comp) {
     m_companyact = comp;
 }
 

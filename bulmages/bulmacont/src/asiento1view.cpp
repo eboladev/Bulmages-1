@@ -43,7 +43,7 @@
 /** \param emp Empresa que llama al objeto.
     \param parent Widget padre de este.
 */
-Asiento1View::Asiento1View(empresa *emp, QWidget *parent, int)
+Asiento1View::Asiento1View(Empresa *emp, QWidget *parent, int)
         : ListAsientos(emp, parent) {
     setupUi(this);
     _depura("Asiento1View::Asiento1View", 0);
@@ -324,7 +324,7 @@ void Asiento1View::on_mui_borrar_clicked(bool atendido) {
 ///                       LISTASIENTOS
 /// =========================================================================================
 
-ListAsientos::ListAsientos(empresa *emp, QWidget *parent) : Asiento1(emp, parent) {
+ListAsientos::ListAsientos(Empresa *emp, QWidget *parent) : Asiento1(emp, parent) {
     _depura("ListAsientos::ListAsientos", 0);
     cursorasientos = NULL;
     _depura("END ListAsientos::ListAsientos", 0);

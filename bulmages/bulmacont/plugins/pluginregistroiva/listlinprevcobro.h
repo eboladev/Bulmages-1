@@ -33,7 +33,7 @@
 
 class ListLinPrevCobro {
 public:
-    empresa *m_companyact;
+    Empresa *m_companyact;
     /// Opciones para filtrado y otros.
 
 protected:
@@ -51,10 +51,10 @@ protected:
 public:
     Fixed totalCobro();
     Fixed totalPago();
-    ListLinPrevCobro(empresa *comp);
+    ListLinPrevCobro(Empresa *comp);
     ListLinPrevCobro();
     void inicializaVariables();
-    void setcompany(empresa *c) {
+    void setcompany(Empresa *c) {
         m_companyact = c;
     };
     virtual ~ListLinPrevCobro();

@@ -31,14 +31,14 @@
 #include "postgresiface2.h"
 
 
-class empresa;
+class Empresa;
 
 
 class BusquedaCuentaDelegate : public QComboBox {
     Q_OBJECT
 
 private:
-    empresa *m_companyact;
+    Empresa *m_companyact;
     /// Este cursor almacena el listado de series de factura para poder trabajar con ellas.
     cursor2 *m_cursorcombo;
     QCompleter *completar;
@@ -46,7 +46,7 @@ private:
 public:
     BusquedaCuentaDelegate(QWidget *parent = 0);
     ~BusquedaCuentaDelegate();
-    void setcompany(empresa *comp);
+    void setcompany(Empresa *comp);
 
 public slots:
     virtual void s_editTextChanged(const QString &);
@@ -57,7 +57,7 @@ class BusquedaCuenta : public QWidget, public Ui_BusquedaCuentaBase {
     Q_OBJECT
 
 private:
-    empresa *m_companyact;
+    Empresa *m_companyact;
     QString mdb_idcuenta;
     QString mdb_nomcuenta;
     QString mdb_codigocuenta;
@@ -67,8 +67,8 @@ private:
 public:
     BusquedaCuenta(QWidget *parent = 0);
     ~BusquedaCuenta();
-    void setempresa(empresa *comp);
-    empresa *_empresa();
+    void setEmpresa(Empresa *comp);
+    Empresa *_empresa();
     QString text();
     virtual void setText(QString val);
     virtual QString codigocuenta();

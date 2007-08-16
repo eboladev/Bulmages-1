@@ -30,10 +30,10 @@
 #include "postgresiface2.h"
 #include "configuracion.h"
 #include "listcuentasview1.h"
-#include "ficha.h"
+#include "fichabc.h"
 
 
-class empresa;
+class Empresa;
 
 
 /// Balance de Sumas y Saldos plano.
@@ -42,12 +42,12 @@ class empresa;
     Esta clase genera el balance de sumas y saldos y lo muestra por pantalla en una
     ventana dise&ntilde;ada espec&iacute;ficamente para ello.
 */
-class BalanceView : public Ficha, public Ui_BalanceBase {
+class BalanceView : public FichaBc, public Ui_BalanceBase {
     Q_OBJECT
 
 private:
     /// Empresa con la que se ha inicializado la clase.
-    empresa *m_companyact;
+    Empresa *m_companyact;
     /// Cursor para recorrer las cuentas.
     cursor2 *m_cursorcta;
     /// El n&uacute;mero de d&iacute;gitos que tienen las cuentas de la empresa.
@@ -55,7 +55,7 @@ private:
     /// Array que almacena los identificadores de los centros de coste.
 
 public:
-    BalanceView(empresa *, QWidget *parent = 0, int flags = 0);
+    BalanceView(Empresa *, QWidget *parent = 0, int flags = 0);
     void inicializa1(QString, QString, QString, QString, QString);
     ~BalanceView();
 

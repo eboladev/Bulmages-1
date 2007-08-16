@@ -23,7 +23,7 @@
 #include "funcaux.h"
 
 
-selectccosteview::selectccosteview(empresa *emp, QWidget *parent)
+selectccosteview::selectccosteview(Empresa *emp, QWidget *parent)
         : QDialog(parent) {
     _depura("selectccosteview::selectccosteview", 0);
     setupUi(this);

@@ -28,7 +28,7 @@
 
 
 /// Inicia los encabezados de la tabla y llama a la presentación del listado.
-cobropagoview::cobropagoview(empresa *emp, QWidget *parent)
+cobropagoview::cobropagoview(Empresa *emp, QWidget *parent)
         : Ficha(parent) {
     _depura("cobropagoview::cobropagoview", 0);
     setAttribute(Qt::WA_DeleteOnClose);
@@ -52,7 +52,7 @@ cobropagoview::cobropagoview(empresa *emp, QWidget *parent)
     mui_listado->addSHeader("docprevcobro", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone , tr("docprevcobro"));
     mui_listado->setinsercion(FALSE);
     /// Dejamos de inicializar el listado.
-    m_cuenta->setempresa(emp);
+    m_cuenta->setEmpresa(emp);
     on_mui_actualizar_clicked();
     m_companyact->meteWindow(windowTitle(), this);
     _depura("END cobropagoview::cobropagoview", 0);

@@ -39,8 +39,8 @@
 #include "images/cgastos.xpm"
 
 
-listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, Qt::WFlags flag, edmode editmode)
-        : Ficha(parent, flag), pgimportfiles(emp->bdempresa()) {
+listcuentasview1::listcuentasview1(Empresa *emp, QWidget *parent, Qt::WFlags flag, edmode editmode)
+        : FichaBc(emp, parent, flag), pgimportfiles(emp->bdempresa()) {
     _depura("listcuentasview1::listcuentasview1", 0);
     setupUi(this);
 

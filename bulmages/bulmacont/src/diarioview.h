@@ -26,17 +26,17 @@
 #include "fichabc.h"
 
 
-class empresa;
+class Empresa;
 
 
 /// Libro diario.
 /** Clase que muestra el libro diario de la empresa entre dos fechas. */
-class DiarioView : public Ficha, public Ui::DiarioBase {
+class DiarioView : public FichaBc, public Ui::DiarioBase {
     Q_OBJECT
 
 public:
-    empresa *m_companyact;
-    DiarioView(empresa *, QWidget *parent = 0, int flags = 0);
+    Empresa *m_companyact;
+    DiarioView(Empresa *, QWidget *parent = 0, int flags = 0);
     virtual ~DiarioView();
     void accept();
     /// Inicializa la clase con las fechas inicial y final. El &uacute;ltimo par&aacute;metro

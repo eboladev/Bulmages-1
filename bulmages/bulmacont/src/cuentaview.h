@@ -38,7 +38,7 @@
 #include "fichabc.h"
 
 
-class empresa;
+class Empresa;
 
 
 /// Visualiza una cuenta.
@@ -58,7 +58,7 @@ public:
     unsigned int numdigitos;
 
 public:
-    CuentaView(empresa *emp, QWidget *, Qt::WFlags fl = 0);
+    CuentaView(Empresa *emp, QWidget *, Qt::WFlags fl = 0);
     ~CuentaView();
     int inicializa();
     int nuevacuenta(QString, int);

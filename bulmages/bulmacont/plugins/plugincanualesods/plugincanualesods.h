@@ -51,7 +51,7 @@ private:
     QString ejercicioAnterior_fechaBalance;
 
 public:
-    empresa *empresaact;
+    Empresa *empresaact;
     postgresiface2 *conexionbase;
 
 public:

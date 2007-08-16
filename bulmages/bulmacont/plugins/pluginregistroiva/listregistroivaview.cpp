@@ -26,7 +26,7 @@
 
 #include <QMenu>
 
-ListRegistroIvaView::ListRegistroIvaView(empresa * emp, QString, QWidget *parent)
+ListRegistroIvaView::ListRegistroIvaView(Empresa * emp, QString, QWidget *parent)
         : QWidget(parent) {
     _depura("ListRegistroIvaView::ListRegistroIvaView", 0);
     setAttribute(Qt::WA_DeleteOnClose);

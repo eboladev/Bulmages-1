@@ -1,27 +1,27 @@
-#include "bulmges.h"
+Empresa  "bulmges.h"
 
-#include <qimage.h>
-#include <qpixmap.h>
-#include <qtoolbar.h>
-#include <qtoolbutton.h>
-#include <qpopupmenu.h>
-#include <qmenubar.h>
-#include <qtextedit.h>
-#include <qfile.h>
-#include <qfiledialog.h>
-#include <qstatusbar.h>
-#include <qmessagebox.h>
-#include <qprinter.h>
-#include <qapplication.h>
-#include <qaccel.h>
-#include <qtextstream.h>
-#include <qpainter.h>
-#include <qpaintdevicemetrics.h>
-#include <qwhatsthis.h>
+Empresa  <qimage.h>
+Empresa  <qpixmap.h>
+Empresa  <qtoolbar.h>
+Empresa  <qtoolbutton.h>
+Empresa  <qpopupmenu.h>
+Empresa  <qmenubar.h>
+Empresa  <qtextedit.h>
+Empresa  <qfile.h>
+Empresa  <qfiledialog.h>
+Empresa  <qstatusbar.h>
+Empresa  <qmessagebox.h>
+Empresa  <qprinter.h>
+Empresa  <qapplication.h>
+Empresa  <qaccel.h>
+Empresa  <qtextstream.h>
+Empresa  <qpainter.h>
+Empresa  <qpaintdevicemetrics.h>
+Empresa  <qwhatsthis.h>
 
-#include "filesave.xpm"
-#include "fileopen.xpm"
-#include "fileprint.xpm"
+Empresa  "filesave.xpm"
+Empresa  "fileopen.xpm"
+Empresa  "fileprint.xpm"
 
 bulmges::bulmges()
   :QMainWindow(0,"bulmges",WDestructiveClose)

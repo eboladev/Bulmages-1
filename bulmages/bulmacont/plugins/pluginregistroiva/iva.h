@@ -24,18 +24,18 @@
 #include "dbrecord.h"
 
 
-class empresa;
+class Empresa;
 
 
 class Iva : public DBRecord {
 private:
-    empresa *m_companyact;
+    Empresa *m_companyact;
     void definetabla();
 
 public:
-    Iva(empresa *);
-    Iva(empresa *, QString);
-    Iva(empresa *, cursor2 *);
+    Iva(Empresa *);
+    Iva(Empresa *, QString);
+    Iva(Empresa *, cursor2 *);
     virtual ~Iva();
     virtual void pintaIva() {}
     ;

@@ -26,17 +26,17 @@
 #include "postgresiface2.h"
 
 
-class empresa;
+class Empresa;
 
 
 class cambiactaview : public QDialog, public Ui_CambiaCuentaBase {
     Q_OBJECT
 
 private:
-    empresa *empresaactual;
+    Empresa *empresaactual;
 
 public:
-    cambiactaview(empresa *, QWidget *, Qt::WFlags flag = 0);
+    cambiactaview(Empresa *, QWidget *, Qt::WFlags flag = 0);
     ~cambiactaview();
 
 public slots:

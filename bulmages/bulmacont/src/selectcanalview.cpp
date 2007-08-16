@@ -27,7 +27,7 @@
 /** Luego crea las columnas para el objeto m_listCanales que es la lista en que se basa
     el programa. Luego llama al m&eacute;todo cargacanales que hace la carga de los canales
     a partir de la base de datos. */
-selectcanalview::selectcanalview(empresa *emp,QWidget *parent)
+selectcanalview::selectcanalview(Empresa *emp,QWidget *parent)
         : QDialog(parent) {
     _depura("selectcanalview::selectcanalview", 0);
     setupUi(this);

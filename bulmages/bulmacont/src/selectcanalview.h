@@ -25,7 +25,7 @@
 #include "ui_selectcanalbase.h"
 
 
-class empresa;
+class Empresa;
 
 
 ///
@@ -34,11 +34,11 @@ class selectcanalview : public QDialog, public Ui_SelectCanalBase {
     Q_OBJECT
 
 public:
-    selectcanalview(empresa *emp, QWidget *parent = 0);
+    selectcanalview(Empresa *emp, QWidget *parent = 0);
     ~selectcanalview();
 
 private:
-    empresa *empresaactual;
+    Empresa *empresaactual;
     int m_colNomCoste;
     int m_colDescCoste;
     int m_colIdCoste;

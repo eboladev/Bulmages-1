@@ -29,11 +29,11 @@
 
 #include "postgresiface2.h"
 #include "dialogchanges.h"
-#include "ficha.h"
+#include "fichabc.h"
 #include "subform2bc.h"
 
 
-class empresa;
+class Empresa;
 
 
 /// Muestra y administra las l&iacute;neas de detalle del listado de configuraci&oacute;nes.
@@ -57,14 +57,14 @@ public slots:
 sobre la tabla configuracion en dicha empresa
  @TODO: Como estan duplicadas estas tablas tanto en bulmafact conmo en bulmacont se podria hacer una abstraccion en bulmalib.
 */
-class propiedadesempresa : public Ficha, public Ui_PropiedadesEmpresaBase {
+class propiedadesempresa : public FichaBc, public Ui_PropiedadesEmpresaBase {
     Q_OBJECT
 
 public:
-    empresa *m_companyact;
+    Empresa *m_companyact;
 
 public:
-    propiedadesempresa(empresa *emp, QWidget *parent = 0);
+    propiedadesempresa(Empresa *emp, QWidget *parent = 0);
     ~propiedadesempresa();
     int inicializa();
     virtual void on_mui_guardar_clicked();

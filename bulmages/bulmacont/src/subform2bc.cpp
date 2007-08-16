@@ -68,10 +68,10 @@ void SubForm2Bc::setEmpresaBase(EmpresaBase *c) {
 
 
 
-empresa *SubForm2Bc::empresaBase() {
+Empresa *SubForm2Bc::empresaBase() {
     _depura("SubForm2Bc::empresaBase", 0);
     _depura("END SubForm2Bc::empresaBase", 0);
-    return ((empresa *) PEmpresaBase::empresaBase());
+    return ((Empresa *) PEmpresaBase::empresaBase());
 }
 
 
@@ -95,7 +95,7 @@ void SubForm2Bc::on_mui_list_pressedAsterisk(int row, int col) {
     ///TODO: De esta manera se recarga de la base de datos toda la info de las cuentas cada
     /// vez que se necesita la lista de cuentas. Hay que buscar la manera de que este siempre
     /// disponible para no cargar el trabajo a la red ni al gestor de base de datos.
-    listcuentasview1 *listcuentas = new listcuentasview1((empresa *)empresaBase(), diag, 0, listcuentasview1::SelectMode);
+    listcuentasview1 *listcuentas = new listcuentasview1((Empresa *)empresaBase(), diag, 0, listcuentasview1::SelectMode);
     listcuentas->inicializa();
     connect(listcuentas, SIGNAL(selected(QString)), diag, SLOT(accept()));
 
@@ -193,7 +193,7 @@ void SubForm2Bc::on_mui_list_cellChanged(int row, int col) {
 
 
     if (camp->nomcampo() == "codigo" && camp->text() != "*") {
-        QString codigoext = extiendecodigo(camp->text(), ((empresa *) empresaBase())->numdigitosempresa());
+        QString codigoext = extiendecodigo(camp->text(), ((Empresa *) empresaBase())->numdigitosempresa());
         QString query = "SELECT * FROM cuenta WHERE codigo = '" + codigoext + "'";
         cursor2 *cur = empresaBase()->cargacursor(query);
         if (!cur->eof() ) {
@@ -241,7 +241,7 @@ void SubForm2Bc::on_mui_list_cellChanged(int row, int col) {
 /// Muestra la ventana de asiento.
 void SubForm2Bc::boton_asiento() {
     _depura("SubForm2Bc::boton_asiento", 0);
-    empresa *companyact = (empresa *) empresaBase();
+    Empresa *companyact = (Empresa *) empresaBase();
     QString numasiento = DBvalue("idasiento");
     if (numasiento != "") {
         companyact->intapuntsempresa()->muestraasiento(numasiento.toInt());
@@ -257,7 +257,7 @@ void SubForm2Bc::boton_asiento() {
 /// 2 -> del a&ntilde;o actual
 void SubForm2Bc::boton_extracto1(int tipo) {
     _depura("SubForm2Bc::boton_extracto1", 0);
-    empresa *companyact = (empresa *) empresaBase();
+    Empresa *companyact = (Empresa *) empresaBase();
     QDate fecha1, fecha2, fechaact;
     QString fecha = DBvalue("fecha").left(10);
     QString codigo = DBvalue("codigo");
@@ -291,7 +291,7 @@ void SubForm2Bc::boton_extracto1(int tipo) {
 /// 2 -> del a&ntilde;o actual
 void SubForm2Bc::boton_diario1(int tipo) {
     _depura("SubForm2Bc::boton_diario1", 0);
-    empresa *companyact = (empresa *) empresaBase();
+    Empresa *companyact = (Empresa *) empresaBase();
     QDate fecha1, fecha2, fechaact, fechaact1;
     fechaact = normalizafecha(DBvalue("fecha").left(10));
     fechaact1 = normalizafecha(DBvalue("fecha").left(10));
@@ -324,7 +324,7 @@ void SubForm2Bc::boton_diario1(int tipo) {
 /// 2 -> del a&ntilde;o actual mirado a partir de la fecha de inicio.
 void SubForm2Bc::boton_balance1(int tipo) {
     _depura("SubForm2Bc::boton_balance1", 0);
-    empresa *companyact = (empresa *) empresaBase();
+    Empresa *companyact = (Empresa *) empresaBase();
     QString fecha = DBvalue("fecha").left(10);
     QString codigo = DBvalue("codigo");
     QDate fecha1, fecha2, fechaact, fechaact1;
@@ -358,7 +358,7 @@ void SubForm2Bc::boton_balance1(int tipo) {
 /// 2 -> del a&ntilde;o actual mirado a partir de la fecha de inicio.
 void SubForm2Bc::boton_balancetree(int tipo) {
     _depura("SubForm2Bc::boton_balance2",0);
-    empresa *companyact = (empresa *) empresaBase();
+    Empresa *companyact = (Empresa *) empresaBase();
     QString fecha = DBvalue("fecha").left(10);
     QString codigo = DBvalue("codigo");
     QDate fecha1, fecha2, fechaact, fechaact1;
@@ -435,15 +435,15 @@ QWidget *QSubForm2BcDelegate::createEditor(QWidget *parent, const QStyleOptionVi
         return editor;
     } else if (linea->nomcampo() == "codigo") {
         BusquedaCuentaDelegate *editor = new BusquedaCuentaDelegate(parent);
-        editor->setcompany((empresa *)m_subform->empresaBase());
+        editor->setcompany((Empresa *)m_subform->empresaBase());
         return editor;
     } else if (linea->nomcampo() == "nomcanal") {
         BusquedaCanalDelegate *editor = new BusquedaCanalDelegate(parent);
-        editor->setcompany((empresa *)m_subform->empresaBase());
+        editor->setcompany((Empresa *)m_subform->empresaBase());
         return editor;
     } else if (linea->nomcampo() == "nomc_coste") {
         BusquedaCCosteDelegate *editor = new BusquedaCCosteDelegate(parent);
-        editor->setcompany((empresa *)m_subform->empresaBase());
+        editor->setcompany((Empresa *)m_subform->empresaBase());
         return editor;
     } else if (linea->nomcampo().startsWith("fecha")) {
         BusquedaFecha2 *editor = new BusquedaFecha2(parent);

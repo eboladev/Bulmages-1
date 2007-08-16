@@ -26,7 +26,7 @@
 #include "listado.h"
 
 
-class empresa;
+class Empresa;
 
 
 /// Muestra un listado de todos los asientos existentes e informa de si est&aacute;n
@@ -39,7 +39,7 @@ private:
     void rellenaListaEjercicio();
 
 public:
-    AsientosView(empresa *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
+    AsientosView(Empresa *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
     ~AsientosView();
     void presentar();
     void imprimir();

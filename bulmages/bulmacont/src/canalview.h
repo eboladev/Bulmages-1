@@ -31,13 +31,13 @@
 #include "ui_canalbase.h"
 #include "postgresiface2.h"
 #include "dialogchanges.h"
-#include "ficha.h"
+#include "fichabc.h"
 
 
-class empresa;
+class Empresa;
 
 
-class canalview : public Ficha, public Ui_canaldlg {
+class canalview : public FichaBc, public Ui_canaldlg {
     Q_OBJECT
 
 private:
@@ -50,10 +50,10 @@ public:
     /// Indica cual es el canal que se esta visualizando.
     int idcanal;
     /// Si su valor es 0 entonces es que no se esta visualizando ningun centro de coste.
-    empresa *empresaactual;
+    Empresa *empresaactual;
 
 public:
-    canalview(empresa *, QWidget *parent = 0);
+    canalview(Empresa *, QWidget *parent = 0);
     ~canalview();
     void mostrarplantilla();
     void pintar();

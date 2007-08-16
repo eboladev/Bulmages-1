@@ -41,13 +41,13 @@
 #include "busquedafecha.h"
 
 
-DiarioView::DiarioView(empresa *emp, QWidget *parent, int)
-        : Ficha(parent) {
+DiarioView::DiarioView(Empresa  *emp, QWidget *parent, int)
+        : FichaBc(emp, parent) {
     _depura("DiarioView::DiarioView", 0);
     setupUi(this);
     m_companyact = emp;
     mui_list->setEmpresaBase(emp);
-    mui_contrapartida->setempresa(emp);
+    mui_contrapartida->setEmpresa(emp);
     /// Iniciamos los componentes de la fecha para que al principio aparezcan
     /// como el a&ntilde;o inicial.
     char cadena[10];
@@ -198,54 +198,3 @@ void DiarioView::on_mui_imprimir_clicked() {
     _depura("END DiarioView::on_mui_imprimir_clicked", 0);
 }
 
-/*
-/// Boton de impresion del diario.
-void DiarioView::on_mui_imprimir_clicked() {
-    _depura("DiarioView::on_mui_imprimir_clicked", 0);
-    QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "diario.rml";
-    QString archivod = confpr->valor(CONF_DIR_USER) + "diario.rml";
-    QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
-    /// Copiamos el archivo.
-#ifdef WINDOWS
-
-    archivo = "copy " + archivo + " " + archivod;
-#else
-
-    archivo = "cp " + archivo + " " + archivod;
-#endif
-
-    system(archivo.toAscii().constData());
-    /// Copiamos el logo.
-#ifdef WINDOWS
-
-    archivologo = "copy " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
-#else
-
-    archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
-#endif
-
-    system(archivologo.toAscii().constData());
-    QFile file;
-    file.setFileName(archivod);
-    file.open(QIODevice::ReadOnly);
-    QTextStream stream(&file);
-    QString buff = stream.readAll();
-    file.close();
-    QString fitxersortidatxt;
-    /// L&iacute;nea de totales del presupuesto.
-    fitxersortidatxt = "<blockTable style=\"tabla\" repeatRows=\"1\">";
-    fitxersortidatxt += mui_list->imprimir();
-    fitxersortidatxt += "</blockTable>";
-
-    buff.replace("[story]", fitxersortidatxt);
-
-    if (file.open(QIODevice::WriteOnly)) {
-        QTextStream stream(&file);
-        stream << buff;
-        file.close();
-    } // end if
-    /// Crea el pdf y lo muestra.
-    invocaPDF("diario");
-    _depura("END DiarioView::on_mui_imprimir_clicked", 0);
-}
-*/

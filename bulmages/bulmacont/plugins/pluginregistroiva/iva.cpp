@@ -38,7 +38,7 @@ void Iva::definetabla() {
 }
 
 
-Iva::Iva(empresa *comp) : DBRecord(comp) {
+Iva::Iva(Empresa *comp) : DBRecord(comp) {
     _depura("Iva::Iva", 0);
     m_companyact = comp;
     definetabla();
@@ -46,7 +46,7 @@ Iva::Iva(empresa *comp) : DBRecord(comp) {
 }
 
 
-Iva::Iva(empresa *comp, QString idiva) : DBRecord(comp) {
+Iva::Iva(Empresa *comp, QString idiva) : DBRecord(comp) {
     m_companyact = comp;
     definetabla();
     QString SQLQuery = "SELECT * FROM iva LEFT JOIN tipoiva ON iva.idtipoiva = tipoiva.idtipoiva LEFT JOIN cuenta ON cuenta.idcuenta = tipoiva.idtipoiva WHERE idiva = " + idiva;
@@ -59,7 +59,7 @@ Iva::Iva(empresa *comp, QString idiva) : DBRecord(comp) {
 }
 
 
-Iva::Iva(empresa *comp, cursor2 *cur) : DBRecord(comp) {
+Iva::Iva(Empresa *comp, cursor2 *cur) : DBRecord(comp) {
     m_companyact = comp;
     definetabla();
     DBload(cur);

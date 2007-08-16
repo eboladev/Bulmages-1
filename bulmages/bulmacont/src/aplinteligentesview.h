@@ -44,7 +44,7 @@
 #include "busquedafecha.h"
 #include "busquedacuenta.h"
 #include "ui_aplinteligentesbase.h"
-#include "ficha.h"
+#include "fichabc.h"
 
 
 /// Formulario para la introducci&oacute;n de asientos mediante las plantillas.
@@ -62,11 +62,10 @@
     al asiento abierto.
     En el segundo caso se genera un asiento nuevo por cada introducci&oacute;n de plantilla.
 */
-class aplinteligentesview : public Ficha, public Ui_AplInteligentesBase {
+class aplinteligentesview : public FichaBc, public Ui_AplInteligentesBase {
     Q_OBJECT
 
 private:
-    empresa *companyact; /// La empresa del programa.
     QDomDocument m_doc;
     QString variablescta[100][3];
     QString variablesfecha[100][3];
@@ -108,7 +107,7 @@ private:
     unsigned int numdigitos;
 
 public:
-    aplinteligentesview(empresa *, QWidget *parent = 0);
+    aplinteligentesview(Empresa *, QWidget *parent = 0);
     ~aplinteligentesview();
     void inicializa(int);
     void mostrarplantilla();

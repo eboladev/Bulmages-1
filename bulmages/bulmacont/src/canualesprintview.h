@@ -38,7 +38,7 @@
 #endif
 
 
-class empresa;
+class Empresa;
 
 
 class CAnualesPrintView : public QDialog, public Ui_CAnualesPrintBase {
@@ -47,11 +47,11 @@ class CAnualesPrintView : public QDialog, public Ui_CAnualesPrintBase {
 private:
     char *fichero;
     QString idbalance;
-    empresa *empresaactual;
+    Empresa *empresaactual;
     QDomDocument m_doc;
 
 public:
-    CAnualesPrintView(empresa *emp,QWidget *parent = 0);
+    CAnualesPrintView(Empresa *emp,QWidget *parent = 0);
     ~CAnualesPrintView();
     void setidbalance(QString); /// Establece cual ser&aacute; el balance a imprimir.
     bool procesaFormula(const QDomNode &);

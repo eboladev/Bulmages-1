@@ -56,7 +56,7 @@ public:
     QSubForm2BcDelegate *m_delegate;
 
 public:
-    empresa *empresaBase();
+    Empresa *empresaBase();
     SubForm2Bc(QWidget *parent = 0);
     virtual ~SubForm2Bc();
     virtual void boton_asiento();

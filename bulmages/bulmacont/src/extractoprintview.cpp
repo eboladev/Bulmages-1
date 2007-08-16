@@ -41,7 +41,7 @@ using namespace std;
     @param parent Ventana que llama a esta ventana.
     @param name Nombre de la ventana.
     Aqu&iacute; tambi&eacute;n se inicializa la variable global conexionbase. */
-ExtractoPrintView::ExtractoPrintView(empresa *emp, QWidget *parent = 0)
+ExtractoPrintView::ExtractoPrintView(Empresa *emp, QWidget *parent = 0)
         : QDialog(parent) {
     _depura("ExtractoPrintView::ExtractoPrintView", 0);
     setupUi(this);

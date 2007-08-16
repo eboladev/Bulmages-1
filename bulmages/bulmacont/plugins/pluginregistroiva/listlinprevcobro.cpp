@@ -34,7 +34,7 @@ void ListLinPrevCobro::inicializaVariables() {
 }
 
 
-ListLinPrevCobro::ListLinPrevCobro(empresa *comp) {
+ListLinPrevCobro::ListLinPrevCobro(Empresa *comp) {
     inicializaVariables();
     m_companyact = comp;
 }

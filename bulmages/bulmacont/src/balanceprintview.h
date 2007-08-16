@@ -44,10 +44,10 @@ private:
     /// La base de datos con la que la clase est&aacute; trabajando.
     postgresiface2 *conexionbase;
     /// La empresa con la que la clase est&aacute; trabajando.
-    empresa *empresaactual;
+    Empresa *empresaactual;
 
 public:
-    BalancePrintView(empresa *emp);
+    BalancePrintView(Empresa *emp);
     ~BalancePrintView();
     void inicializa1(QString, QString, QString, QString, bool);
 

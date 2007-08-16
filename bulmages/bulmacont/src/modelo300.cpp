@@ -319,7 +319,7 @@ void Mod300ps::escribe_cuenta_bancaria(int x, int y) {
 }
 
 
-/// Solucionar problema cuando el nombre de la empresa (u otro campo) lleva acentos.
+/// Solucionar problema cuando el nombre de la Empresa (u otro campo) lleva acentos.
 /** \todo El tel&eacute;ono no cabe (pero no es culpa m&aacute;!!) */
 void Mod300ps::rellena_identificacion() {
     _depura("Mod300ps::rellena_identificacion", 0);

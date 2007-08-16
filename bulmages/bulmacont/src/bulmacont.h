@@ -51,7 +51,7 @@ class Bulmacont : public QMainWindow, public Ui_BulmaContBase {
     Q_OBJECT
 
 private:
-    empresa *m_empresaactual;
+    Empresa *m_empresaactual;
     /// m_pWorkspace is the MDI frame widget that handles MDI child widgets.
     QWorkspace2 *m_pWorkspace;
     listventanas *m_list;
@@ -59,7 +59,7 @@ private:
 public:
     Bulmacont(QWidget *parent = 0, Qt::WFlags f = Qt::Window, QString DB = "");
     ~Bulmacont();
-    empresa *empresaactual();
+    Empresa *empresaactual();
     /// Exporta menues.
     QMenu *mui_MenuHerramientas();
     QMenu *mui_MenuVer();

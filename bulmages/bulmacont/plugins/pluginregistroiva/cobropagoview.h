@@ -33,10 +33,10 @@ class cobropagoview : public Ficha, public Ui_CobroPagoBase {
     Q_OBJECT
 
 private:
-    empresa *m_companyact;
+    Empresa *m_companyact;
 
 public:
-    cobropagoview(empresa *, QWidget *parent = 0);
+    cobropagoview(Empresa *, QWidget *parent = 0);
     ~cobropagoview();
 
 public slots:

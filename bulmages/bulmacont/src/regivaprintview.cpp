@@ -33,7 +33,7 @@ using namespace std;
 extern Mod300ps *modelo;
 
 
-regivaprintview::regivaprintview(empresa *emp, QWidget *parent)
+regivaprintview::regivaprintview(Empresa *emp, QWidget *parent)
         : QDialog(parent) {
     _depura("regivaprintview::regivaprintview", 0);
     setupUi(this);

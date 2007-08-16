@@ -28,7 +28,7 @@
  *  Inicializa las variables y elementos del listado.
  */
 /// TODO: Esta derivando de Ficha y deberia derivar de FichaBc
-AmortizacionesView::AmortizacionesView(empresa *emp, QWidget *parent)
+AmortizacionesView::AmortizacionesView(Empresa *emp, QWidget *parent)
         : FichaBc(emp, parent) {
     _depura("AmortizacionesView::AmortizacionesView", 0);
     this->setAttribute(Qt::WA_DeleteOnClose);

@@ -45,7 +45,7 @@ void entryPoint(Bulmacont *bcont) {
     QPixmap *img = new QPixmap(napuntedoc);
     QPixmap *img1 = new QPixmap(ndoc);
 
-    empresa *emp = bcont->empresaactual();
+    Empresa *emp = bcont->empresaactual();
     Asiento1View *intapunts = emp->intapuntsempresa();
 
     myplugin1 *pub = new myplugin1(emp);

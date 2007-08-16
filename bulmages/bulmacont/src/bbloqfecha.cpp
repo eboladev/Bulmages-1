@@ -143,7 +143,7 @@ void BbloqFecha::inicializa() {
 }
 
 
-BbloqFecha::BbloqFecha(empresa *emp, QWidget *parent)
+BbloqFecha::BbloqFecha(Empresa *emp, QWidget *parent)
         : QWidget(parent) {
     _depura("BbloqFecha::BbloqFecha", 0);
     qsbloqueado = tr("Bloqueado");

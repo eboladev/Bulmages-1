@@ -28,7 +28,7 @@
 #include "ficha.h"
 
 
-class empresa;
+class Empresa;
 
 
 /// Listado de balances disponibles.
@@ -40,7 +40,7 @@ class CAnualesView : public Ficha, public Ui_CAnualesBase {
 
 private:
     /// Empresa con la que se trabaja (inicializada con el constructor de clase)
-    empresa *m_companyact;
+    Empresa *m_companyact;
     /// Esta variable indica si se abre para b&uacute;squeda o para edici&oacute;n.
     /// (edicion = 0; seleccion = 1)
     int m_modo;
@@ -50,7 +50,7 @@ private:
     QString m_idBalance;
 
 public:
-    CAnualesView(empresa *, QWidget *parent = 0);
+    CAnualesView(Empresa *, QWidget *parent = 0);
     ~CAnualesView();
     void inicializatabla();
     /// Establece el funcionamiento de la ventana como selector (afecta sobre

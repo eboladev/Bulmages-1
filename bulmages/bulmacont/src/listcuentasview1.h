@@ -27,15 +27,15 @@
 #include "postgresiface2.h"
 #include "ui_listcuentasbase.h"
 #include "pgimportfiles.h"
-#include "ficha.h"
+#include "fichabc.h"
 
 
-class empresa;
+class Empresa;
 
 /// Presenta un listado del plan contable.
 /** Esta pantalla tiene dos modos de funcionamiento, en uno act&uacute;a como selector de
     cuentas y en el otro act&uacute;a como soporte para la edici&oacute;n del plan contable. */
-class listcuentasview1 : public Ficha, public Ui_ListCuentasBase, public pgimportfiles {
+class listcuentasview1 : public FichaBc, public Ui_ListCuentasBase, public pgimportfiles {
     Q_OBJECT
 
 public:
@@ -49,7 +49,7 @@ private:
     /// La base de datos con la que se trabaja.
     postgresiface2 *conexionbase;
     /// La empresa que ha construido todo el tema.
-    empresa *empresaactual;
+    Empresa *empresaactual;
     int ccuenta, cdesccuenta;
     int cidcuenta, cbloqueada, cnodebe, cnohaber, cregularizacion, cimputacion, ctipocuenta;
     /// Indice para la QListView de la columna que indica el debe actual de la cuenta.
@@ -75,7 +75,7 @@ public:
     QString desccuenta();
 
 public:
-    listcuentasview1(empresa *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode);
+    listcuentasview1(Empresa *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode);
     ~listcuentasview1();
     int inicializa();
     virtual void on_mui_borrar_clicked();

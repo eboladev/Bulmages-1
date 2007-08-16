@@ -35,13 +35,13 @@
 #include "postgresiface2.h"
 #include "configuracion.h"
 #include "ui_balancetreebase.h"
-#include "ficha.h"
+#include "fichabc.h"
 
 
 class intapunts3view;
 class diarioview1;
 class extractoview1;
-class empresa;
+class Empresa;
 
 
 /// Pantalla de presentación del balnace de sumas y saldos (jerarquica)
@@ -51,12 +51,12 @@ class empresa;
     Esta clase sirve para presentar en balance de sumas y saldos en forma de tabla. Permite
     presentar el balance entre unos rangos definidos, incluyendo las cuentas de un nivel
     determinado. */
-class BalanceTreeView : public Ficha, public Ui_BalanceTreeBase {
+class BalanceTreeView : public FichaBc, public Ui_BalanceTreeBase {
     Q_OBJECT
 
 private:
     /// Empresa con la que trabaja la clase.
-    empresa *m_companyact;
+    Empresa *m_companyact;
     /// Indica el n&uacute;mero de d&iacute;gitos que tienen por defecto las cuentas.
     int numdigitos;
     int m_ccuenta;
@@ -73,7 +73,7 @@ private:
     int m_cpadre;
 
 public:
-    BalanceTreeView(empresa *, QWidget *parent = 0, int flags = 0);
+    BalanceTreeView(Empresa *, QWidget *parent = 0, int flags = 0);
     void inicializa1(QString, QString, QString, QString, int);
     ~BalanceTreeView();
 

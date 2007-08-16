@@ -47,15 +47,15 @@ private:
     /// pinta en muchas partes.
     QString mdb_nomcuenta;
     QString mdb_nomctacliente;
-    empresa *empresaactual;
+    Empresa *empresaactual;
     postgresiface2 *conexionbase;
 
 public:
-    linprevcobro(empresa *);
-    linprevcobro(empresa *, QString);
+    linprevcobro(Empresa *);
+    linprevcobro(Empresa *, QString);
     /// La carga r&aacute;pida tiene un comportamiento poco restrictivo para aumentar la
     /// eficiencia.
-    linprevcobro(empresa *, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString);
+    linprevcobro(Empresa *, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString);
     virtual ~linprevcobro();
     virtual void pintalinprevcobro() {};
     void guardalinprevcobro();

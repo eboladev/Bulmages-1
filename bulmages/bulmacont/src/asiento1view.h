@@ -33,7 +33,7 @@
 #include "ui_asientobase.h"
 
 
-class empresa;
+class Empresa;
 
 
 /// Clase ListAsientos. Se encarga de controlar la ventana de introducci&oacute;n de apuntes.
@@ -49,7 +49,7 @@ private:
     cursor2 *cursorasientos;
 
 public:
-    ListAsientos(empresa *, QWidget *parent);
+    ListAsientos(Empresa *, QWidget *parent);
     virtual ~ListAsientos();
     void cargaasientos();
     void boton_inicio();
@@ -78,7 +78,7 @@ private:
     void prepguardar();
 
 public:
-    Asiento1View(empresa *, QWidget *parent = 0, int flags = 0);
+    Asiento1View(Empresa *, QWidget *parent = 0, int flags = 0);
     ~Asiento1View();
     void muestraasiento(QString v);
     void muestraasiento(int v);

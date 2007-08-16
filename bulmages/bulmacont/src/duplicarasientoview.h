@@ -25,7 +25,7 @@
 #include "ui_duplicarasientobase.h"
 
 
-class empresa;
+class Empresa;
 
 
 ///
@@ -34,11 +34,11 @@ class DuplicarAsientoView : public QDialog, public Ui_DuplicarAsientoBase {
     Q_OBJECT
 
 public:
-    empresa *empresaactual;
+    Empresa *empresaactual;
     int idasiento;
 
 public:
-    DuplicarAsientoView(empresa *, QWidget *, Qt::WFlags flag = 0);
+    DuplicarAsientoView(Empresa *, QWidget *, Qt::WFlags flag = 0);
     ~DuplicarAsientoView();
     void inicializa(QString, QString);
 

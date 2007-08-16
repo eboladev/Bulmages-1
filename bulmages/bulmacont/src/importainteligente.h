@@ -49,11 +49,11 @@ private:
     /// Base de datos que se est&aacute; utilizando.
     postgresiface2 *conexionbase;
     /// Empresa que sirve de base a todos estos elementos.
-    empresa *empresaactual;
+    Empresa *empresaactual;
 
 public:
     /// Constructor de la clase que inicializa las variables empresaactual y conexionbase.
-    importainteligente(empresa *);
+    importainteligente(Empresa *);
     /// Elemento del analizador (parser) de SAX que se dispara al encontrar un tag de inicio.
     bool startElement(const QString&, const QString&, const QString&, const QXmlAttributes&);
     /// Elemento del analizador (parser) de SAX que se dispara al encontrar un tag de fin

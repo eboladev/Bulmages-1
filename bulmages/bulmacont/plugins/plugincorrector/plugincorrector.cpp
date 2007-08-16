@@ -35,7 +35,7 @@
 
 void entryPoint(Bulmacont *bcont) {
     _depura("Entrada del plugin Corrector", 10);
-    empresa *emp = bcont->empresaactual();
+    Empresa *emp = bcont->empresaactual();
     /// Vamos a probar con un docwindow.
     QDockWidget *doc1 = new QDockWidget("Corrector", bcont);
     doc1->setFeatures(QDockWidget::AllDockWidgetFeatures);

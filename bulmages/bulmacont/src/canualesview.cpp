@@ -29,7 +29,7 @@
 #define COL_NOMBRE 1
 
 
-CAnualesView::CAnualesView(empresa *emp, QWidget *parent)
+CAnualesView::CAnualesView(Empresa  *emp, QWidget *parent)
         : Ficha(parent) {
     _depura("CAnualesView::CAnualesView", 0);
     this->setAttribute(Qt::WA_DeleteOnClose);

@@ -26,7 +26,7 @@
 #include "fichabc.h"
 
 
-class empresa;
+class Empresa;
 
 
 /** Trata la ventana de Listado de Amortizaciones.
@@ -41,7 +41,7 @@ private:
     QString mdb_nomamortizacion;
 
 public:
-   AmortizacionesView(empresa *, QWidget *);
+   AmortizacionesView(Empresa *, QWidget *);
     ~AmortizacionesView();
     void inicializatabla();
     void editAmortizacion(int);

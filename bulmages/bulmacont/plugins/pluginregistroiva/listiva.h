@@ -33,14 +33,14 @@
 
 class ListIva {
 public:
-    empresa *companyact;
+    Empresa *companyact;
     QString mdb_idregistroiva;
     QList<Iva*> m_lista;
 
 public:
-    ListIva(empresa *comp);
+    ListIva(Empresa *comp);
     ListIva();
-    void setcompany(empresa *c) {
+    void setcompany(Empresa *c) {
         companyact = c;
     };
     virtual ~ListIva();

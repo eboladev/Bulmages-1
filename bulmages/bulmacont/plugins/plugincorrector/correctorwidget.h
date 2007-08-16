@@ -48,7 +48,7 @@ public:
     /// Base de datos con la que se esta operando.
     postgresiface2 *conexionbase;
     /// Empresa que ha hecho la instancia del corrector.
-    empresa *empresaactual;
+    Empresa *empresaactual;
     /// El informe generado se forma en HTML y se presenta mediante este QString.
     QString textBrowser;
     /// El corrector es una ventana del tipo dock, que se puede anexar a las esquinas
@@ -64,7 +64,7 @@ public:
     /// funcion setEmpresa para inicializar el objeto. Esto es debido a que la construccion
     /// del corrector es anterior a la construccion de la clase empresa.
 
-    void setEmpresa(empresa *empres) {
+    void setEmpresa(Empresa *empres) {
         empresaactual = empres;
         conexionbase = empres->bdempresa();
     }

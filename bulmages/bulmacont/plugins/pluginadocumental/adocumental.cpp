@@ -31,7 +31,7 @@
 #define COL_ORDENASIENTO            6
 
 
-myplugin1::myplugin1(empresa *emp) {
+myplugin1::myplugin1(Empresa *emp) {
     empresaactual = emp;
     conexionbase = emp->bdempresa();
 }
@@ -83,7 +83,7 @@ void myplugin1::archDoc() {
 }
 
 
-adocumental::adocumental(empresa *emp, QWidget *parent)
+adocumental::adocumental(Empresa *emp, QWidget *parent)
         : QDialog(parent) {
     _depura("adocumental::adocumental", 10);
 

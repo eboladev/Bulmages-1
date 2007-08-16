@@ -28,7 +28,7 @@
 #include "funcaux.h"
 
 
-class empresa;
+class Empresa;
 
 
 class miQTreeWidgetItem : public QTreeWidgetItem {
@@ -45,13 +45,13 @@ class BbloqFecha : public QWidget, public Ui_BBloqFechaBase {
     Q_OBJECT
 
 private:
-    empresa *m_companyact;
+    Empresa *m_companyact;
     void inicializa();
     QString qsbloqueado;
     QString qsabierto;
 
 public:
-    BbloqFecha(empresa *emp, QWidget * parent = 0);
+    BbloqFecha(Empresa *emp, QWidget * parent = 0);
     ~BbloqFecha();
 
 public slots:

@@ -18,11 +18,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QComboBox>
+#include  <QComboBox>
 
-#include "busquedacanal.h"
-#include "empresa.h"
-#include "funcaux.h"
+#include  "busquedacanal.h"
+#include  "empresa.h"
+#include  "funcaux.h"
 
 
 BusquedaCanal::BusquedaCanal(QWidget *parent)
@@ -40,7 +40,7 @@ BusquedaCanal::~BusquedaCanal() {
 }
 
 
-void BusquedaCanal::setcompany(empresa *comp) {
+void BusquedaCanal::setcompany(Empresa *comp) {
     companyact = comp;
 }
 
@@ -107,7 +107,7 @@ BusquedaCanalDelegate::BusquedaCanalDelegate(QWidget *parent)
 }
 
 
-void BusquedaCanalDelegate::setcompany(empresa *comp) {
+void BusquedaCanalDelegate::setcompany(Empresa *comp) {
     m_companyact = comp;
 }
 

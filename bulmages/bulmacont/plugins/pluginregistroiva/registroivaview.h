@@ -45,7 +45,7 @@ private:
     cursor2 *m_cursorFPago;
 
 public:
-    RegistroIvaView(empresa *, QWidget *);
+    RegistroIvaView(Empresa *, QWidget *);
     virtual ~RegistroIvaView();
     void manageArticle(int);
     virtual void pintaidregistroiva(const QString &) {}

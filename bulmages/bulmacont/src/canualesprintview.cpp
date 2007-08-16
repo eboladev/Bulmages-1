@@ -37,7 +37,7 @@
 #endif
 
 
-CAnualesPrintView::CAnualesPrintView ( empresa *emp, QWidget *parent )
+CAnualesPrintView::CAnualesPrintView ( Empresa  *emp, QWidget *parent )
         : QDialog ( parent )
 {
     _depura ( "CAnualesPrintView::CAnualesPrintView", 0 );

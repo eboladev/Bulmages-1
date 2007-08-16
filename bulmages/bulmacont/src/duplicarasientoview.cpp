@@ -25,7 +25,7 @@
 #define NUMDIGITOS   empresaactual->numdigitosempresa()
 
 
-DuplicarAsientoView::DuplicarAsientoView(empresa *emp, QWidget *parent, Qt::WFlags flag)
+DuplicarAsientoView::DuplicarAsientoView(Empresa *emp, QWidget *parent, Qt::WFlags flag)
         : QDialog(parent, flag) {
     _depura("DuplicarAsientoView::DuplicarAsientoView", 0);
     setupUi(this);

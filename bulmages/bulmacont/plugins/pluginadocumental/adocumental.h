@@ -32,18 +32,18 @@
 #include "postgresiface2.h"
 
 
-class empresa;
+class Empresa;
 
 
 class myplugin1 : public QObject {
     Q_OBJECT
 
 public:
-    empresa *empresaactual;
+    Empresa *empresaactual;
     postgresiface2 *conexionbase;
 
 public:
-    myplugin1(empresa *);
+    myplugin1(Empresa *);
     ~myplugin1();
 
 public slots:
@@ -57,7 +57,7 @@ class adocumental : public QDialog, public Ui_adocumentalbase {
     Q_OBJECT
 
 private:
-    empresa *empresaactual;
+    Empresa *empresaactual;
     postgresiface2 *conexionbase;
     QString RutaADocumental;
 
@@ -73,7 +73,7 @@ private:
     QString idadocumental;
 
 public:
-    adocumental(empresa *, QWidget *parent = 0);
+    adocumental(Empresa *, QWidget *parent = 0);
     ~adocumental();
     void setmodoedicion() {
         modo = 0;

@@ -47,7 +47,7 @@ int entryPoint(Bulmacont *) {
 /// Buscamos en el asiento si hay indicios de una factura y actuamos en consecuencia.
 int Asiento1_guardaAsiento1_post(Asiento1 *as) {
     _depura("Asiento1_guardaAsiento1_post", 0);
-    empresa *companyact = as->companyact();
+    Empresa *companyact = as->companyact();
     QString cuentas = "";
     QString query = "SELECT valor FROM configuracion WHERE nombre = 'RegistroEmitida' OR nombre = 'RegistroSoportada'";
     cursor2 *curvalor = companyact->cargacursor(query);
@@ -79,7 +79,7 @@ int Asiento1_guardaAsiento1_post(Asiento1 *as) {
 }
 
 
-int empresa_cobPag(empresa *emp) {
+int empresa_cobPag(Empresa *emp) {
     _depura("empresa_cobPag", 0);
     cobropagoview *adoc = new cobropagoview(emp, 0);
     emp->pWorkspace()->addWindow(adoc);
@@ -89,7 +89,7 @@ int empresa_cobPag(empresa *emp) {
 }
 
 
-int empresa_registroiva(empresa *emp) {
+int empresa_registroiva(Empresa *emp) {
     _depura("empresa_registroiva", 0);
     ListRegistroIvaView *perd = new ListRegistroIvaView(emp, "0");
     perd->inicializa();
@@ -105,9 +105,9 @@ int ListLinAsiento1View_boton_iva(ListLinAsiento1View *as) {
     as->guardar();
     try {
         int idborrador = as->DBvalue("idborrador").toInt();
-        RegistroIvaView *nuevae = new RegistroIvaView((empresa *) as->empresaBase(), 0);
+        RegistroIvaView *nuevae = new RegistroIvaView((Empresa *) as->empresaBase(), 0);
         nuevae->inicializa1(idborrador);
-        ((empresa *)as->empresaBase())->pWorkspace()->addWindow(nuevae);
+        ((Empresa *)as->empresaBase())->pWorkspace()->addWindow(nuevae);
         nuevae->show();
     } catch (...) {
         mensajeInfo("Debe seleccionar un apunte");

@@ -18,13 +18,13 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "canalview.h"
-#include "empresa.h"
-#include "selectcanalview.h"
+#include  "canalview.h"
+#include  "empresa.h"
+#include  "selectcanalview.h"
 
 
-canalview::canalview(empresa *emp, QWidget *parent)
-        : Ficha(parent) {
+canalview::canalview(Empresa  *emp, QWidget *parent)
+        : FichaBc(emp, parent) {
     _depura("canalview::canalview", 0);
     this->setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);

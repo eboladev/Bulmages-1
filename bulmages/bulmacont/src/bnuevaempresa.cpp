@@ -41,7 +41,7 @@ void BNuevaEmpresa::accept() {
    QString query;
    cursor2 *cursoraux;
    conexionbase->begin();
-   query.sprintf("INSERT INTO  empresa (nombre, ano, nombredb) VALUES('%s','%d','%s')",
+   query.sprintf("INSERT INTO  Empresa (nombre, ano, nombredb) VALUES('%s','%d','%s')",
 	conexionbase->sanearCadena(nombreEmp).ascii(),
 	ejercicio,
 	conexionbase->sanearCadena(nombredb).ascii());
@@ -60,7 +60,7 @@ void BNuevaEmpresa::accept() {
    conexionbase->ejecuta(query);
    conexionbase->commit();
    
-   //Creamos el primer ejercicio de la empresa (con sus 12 periodos bloqueables) en la tabla ejercicios.
+   //Creamos el primer ejercicio de la Empresa (con sus 12 periodos bloqueables) en la tabla ejercicios.
    conexionbase->inicializa(nombredb);
    conexionbase->begin();
    for (int periodo=0; periodo<=12; periodo++) {

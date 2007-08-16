@@ -22,7 +22,7 @@
 #include "empresa.h"
 
 
-CuentaView::CuentaView(empresa *emp, QWidget *parent, Qt::WFlags fl)
+CuentaView::CuentaView(Empresa  *emp, QWidget *parent, Qt::WFlags fl)
         : FichaBc(emp, parent, fl) {
     _depura("CuentaView::CuentaView", 0);
     setAttribute(Qt::WA_DeleteOnClose);

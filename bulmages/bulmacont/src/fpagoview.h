@@ -28,7 +28,7 @@
 #include "ficha.h"
 
 
-class empresa;
+class Empresa;
 
 
 /// La clase fpagoview se encarga de la gesti&oacute;n de formas de pago.
@@ -38,7 +38,7 @@ class fpagoview : public Ficha, Ui_FPagoBase {
     Q_OBJECT
 
 private:
-    empresa *empresaactual;
+    Empresa *empresaactual;
     cursor2 *m_curfpago;
     /// Indica la posici&oacute;n en el combobox que est&aacute; seleccionada.
     /// Se usa para guardar en caso de modificaciones.
@@ -50,7 +50,7 @@ private:
     void cambiacombo(int);
 
 public:
-    fpagoview(empresa *, QWidget *parent = 0);
+    fpagoview(Empresa *, QWidget *parent = 0);
     ~fpagoview();
 
 private slots:

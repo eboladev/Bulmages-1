@@ -27,7 +27,7 @@
 #include <ui_selectccostebase.h>
 
 
-class empresa;
+class Empresa;
 
 
 /// Maneja la ventana de selector de centros de coste.
@@ -42,7 +42,7 @@ class selectccosteview : public QDialog, public Ui_SelectCCosteBase {
 
 private:
     /// Empresa con la que se inicializa la clase.
-    empresa *empresaactual;
+    Empresa *empresaactual;
     ///Indice de la columna que pone el nombre del centro de coste en la lista del formulario.
     int m_colNomCoste;
     /// Indice de la columna que indica la descripcion del centro de coste en la lista
@@ -63,7 +63,7 @@ private:
 public:
     /// Constructor de la clase que recibe el parametro de empresa y que inicializa la
     /// base de datos a utilizar.
-    selectccosteview(empresa *emp, QWidget *parent = 0);
+    selectccosteview(Empresa *emp, QWidget *parent = 0);
     /// Destructor de la clase.
     ~selectccosteview();
     void cargacostes();

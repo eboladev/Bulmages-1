@@ -18,10 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "busquedacuenta.h"
-#include "listcuentasview1.h"
-#include "empresa.h"
-#include "plugins.h"
+#include  "busquedacuenta.h"
+#include  "listcuentasview1.h"
+#include  "empresa.h"
+#include  "plugins.h"
 
 BusquedaCuenta::BusquedaCuenta(QWidget *parent)
         : QWidget(parent) {
@@ -48,7 +48,7 @@ QString BusquedaCuenta::text() {
 }
 
 
-empresa *BusquedaCuenta::_empresa() {
+Empresa *BusquedaCuenta::_empresa() {
     return m_companyact;
 }
 
@@ -118,7 +118,7 @@ void BusquedaCuenta::setFocus() {
 }
 
 
-void BusquedaCuenta::setempresa(empresa *comp) {
+void BusquedaCuenta::setEmpresa(Empresa *comp) {
     _depura("BusquedaCuenta::setempresa", 10);
     m_companyact = comp;
     m_numdigitos = m_companyact->numdigitosempresa();
@@ -266,7 +266,7 @@ BusquedaCuentaDelegate::BusquedaCuentaDelegate(QWidget *parent)
 }
 
 
-void BusquedaCuentaDelegate::setcompany(empresa *comp) {
+void BusquedaCuentaDelegate::setcompany(Empresa *comp) {
     m_companyact = comp;
 }
 

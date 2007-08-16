@@ -36,14 +36,14 @@ class tipoivaview : public Ficha, public Ui_TipoIvaBase {
     Q_OBJECT
 
 private:
-    empresa *empresaactual;
+    Empresa *empresaactual;
     cursor2 *m_curtipoiva;
     /// Indica la posici&oacute;n en el combobox que est&aacute; seleccionada.
     /// Se usa para guardar en caso de modificaciones.
     int m_posactual;
 
 public:
-    tipoivaview(empresa *, QWidget *parent = 0);
+    tipoivaview(Empresa *, QWidget *parent = 0);
     ~tipoivaview();
 
 private:

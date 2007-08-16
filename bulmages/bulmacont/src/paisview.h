@@ -33,22 +33,22 @@
 #include "fichabc.h"
 
 
-class empresa;
+class Empresa;
 
 
 /// Visualiza un centro de coste.
 /** */
-class PaisView : public Ficha, public Ui_paisbase {
+class PaisView : public FichaBc, public Ui_paisbase {
     Q_OBJECT
 
 public:
     postgresiface2 *conexionbase;
     int idpais; /// Indica cual es el centro de coste que se esta visualizando.
     /// Si su valor es 0 entonces es que no se esta visualizando ning&uacute;n centro de coste.
-    empresa *empresaactual;
+    Empresa *empresaactual;
 
 public:
-    PaisView(empresa *, QWidget *parent = 0);
+    PaisView(Empresa *, QWidget *parent = 0);
     ~PaisView();
     void pintar();
     void mostrarplantilla();

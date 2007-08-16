@@ -47,7 +47,7 @@ public:
     /// La base de datos con la que trabaja esta clase.
     postgresiface2 *conexionbase;
     /// La empresa con la que trabaja esta clase.
-    empresa *empresaactual;
+    Empresa *empresaactual;
     int numdigitos;
     /// Puntero al filtrado de datos.
 
@@ -55,7 +55,7 @@ public:
     /// Establece cual es la ventana de filtro de diario. Es imprescindible
     /// inicializar el filtro antes de mostrar la ventana o el bot&oacute;n de filtro
     /// no funcionar&aacute;.
-    DiarioPrintView(empresa *emp, QWidget *parent);
+    DiarioPrintView(Empresa *emp, QWidget *parent);
     ~DiarioPrintView();
     void presentar(char *tipus = "html");
 

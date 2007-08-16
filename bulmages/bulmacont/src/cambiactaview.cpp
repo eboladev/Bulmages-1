@@ -18,21 +18,21 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "cambiactaview.h"
-#include "listcuentasview1.h"
-#include "empresa.h"
+#include  "cambiactaview.h"
+#include  "listcuentasview1.h"
+#include  "empresa.h"
 
 #define CONEXIONBASE empresaactual->bdempresa()
 #define NUMDIGITOS   empresaactual->numdigitosempresa()
 
 
-cambiactaview::cambiactaview(empresa *emp, QWidget *parent, Qt::WFlags flag)
+cambiactaview::cambiactaview(Empresa *emp, QWidget *parent, Qt::WFlags flag)
         : QDialog(parent, flag) {
     _depura("cambiactaview::cambiactaview", 0);
     setupUi(this);
     empresaactual = emp;
-    mui_codigoorigen->setempresa(emp);
-    mui_codigodestino->setempresa(emp);
+    mui_codigoorigen->setEmpresa(emp);
+    mui_codigodestino->setEmpresa(emp);
     _depura("END cambiactaview::cambiactaview", 0);
 }
 

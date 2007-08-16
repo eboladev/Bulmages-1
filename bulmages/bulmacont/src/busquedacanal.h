@@ -32,7 +32,7 @@ class BusquedaCanalDelegate : public QComboBox {
     Q_OBJECT
 
 private:
-    empresa *m_companyact;
+    Empresa *m_companyact;
     /// Este cursor almacena el listado de series de factura para poder trabajar con ellas.
     cursor2 *m_cursorcombo;
     QCompleter *completar;
@@ -40,7 +40,7 @@ private:
 public:
     BusquedaCanalDelegate(QWidget *parent = 0);
     ~BusquedaCanalDelegate();
-    void setcompany(empresa *comp);
+    void setcompany(Empresa *comp);
 
 public slots:
     virtual void s_editTextChanged(const QString &);
@@ -52,13 +52,13 @@ class BusquedaCanal : public QComboBox {
     Q_OBJECT
 
 private:
-    empresa *companyact;
+    Empresa *companyact;
     cursor2 *m_cursorcombo;
 
 public:
     BusquedaCanal(QWidget *parent = 0);
     ~BusquedaCanal();
-    void setcompany(empresa *comp);
+    void setcompany(Empresa *comp);
     virtual void setidcanal(QString idcanal);
     QString idcanal();
 

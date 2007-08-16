@@ -38,7 +38,7 @@
 #include "funcaux.h"
 
 
-RegistroIvaView::RegistroIvaView(empresa *comp, QWidget *parent)
+RegistroIvaView::RegistroIvaView(Empresa *comp, QWidget *parent)
         :  RegistroIva(comp, parent) {
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
@@ -49,7 +49,7 @@ RegistroIvaView::RegistroIvaView(empresa *comp, QWidget *parent)
         return;
 
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
-    m_contrapartida->setempresa(comp);
+    m_contrapartida->setEmpresa(comp);
     setLineas( mui_listIva);
     mui_listIva->setEmpresaBase(comp);
     mui_listPrevCobro->setEmpresaBase(comp);

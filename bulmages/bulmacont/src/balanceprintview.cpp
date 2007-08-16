@@ -44,14 +44,14 @@
 using namespace std;
 
 
-BalancePrintView::BalancePrintView(empresa *emp)
+BalancePrintView::BalancePrintView(Empresa *emp)
         : QDialog(0) {
     _depura("BalancePrintView::BalancePrintView", 0);
     setupUi(this);
     empresaactual = emp;
     conexionbase = emp->bdempresa();
-    m_codigoinicial->setempresa(emp);
-    m_codigofinal->setempresa(emp);
+    m_codigoinicial->setEmpresa(emp);
+    m_codigofinal->setEmpresa(emp);
     /// Buscamos los diferentes niveles que existen seg&uacute;n existan en la tabla
     /// de cuentas.
     conexionbase->begin();

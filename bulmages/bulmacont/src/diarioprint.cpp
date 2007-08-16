@@ -25,7 +25,7 @@
 #include "empresa.h"
 
 
-diarioprint::diarioprint(empresa *emp) {
+diarioprint::diarioprint(Empresa  *emp) {
     _depura("diarioprint::diarioprint", 0);
     fichero = NULL;
     empresaactual = emp;

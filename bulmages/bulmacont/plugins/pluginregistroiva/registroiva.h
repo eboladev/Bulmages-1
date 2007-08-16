@@ -41,7 +41,7 @@ public:
     void setLineas(SubForm2Bc *l) {
         m_lineas = l;
     };
-    RegistroIva(empresa *, QWidget *);
+    RegistroIva(Empresa *, QWidget *);
     QString idregistroiva() {
         return DBvalue("idregistroiva");
     };

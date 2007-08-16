@@ -35,7 +35,7 @@
 #include "postgresiface2.h"
 
 
-class empresa;
+class Empresa;
 
 
 /// Clase que corresponde con la ventana de impresi&oacute;n de extractos.
@@ -46,8 +46,8 @@ class ExtractoPrintView : public QDialog, public Ui_ExtractoPrintBase {
 
 public:
     char *fichero;
-    empresa *m_companyact;
-    ExtractoPrintView(empresa *, QWidget *);
+    Empresa *m_companyact;
+    ExtractoPrintView(Empresa *, QWidget *);
     void presentar(char *tipus);
     ~ExtractoPrintView();
 

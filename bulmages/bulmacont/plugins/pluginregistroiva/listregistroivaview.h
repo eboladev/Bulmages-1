@@ -47,10 +47,10 @@ private:
     QAction *m_verasiento;
 
 public:
-    empresa *m_companyact;
+    Empresa *m_companyact;
 
 public:
-    ListRegistroIvaView(empresa *, QString ejerActual = "", QWidget *parent = 0);
+    ListRegistroIvaView(Empresa *, QString ejerActual = "", QWidget *parent = 0);
     ~ListRegistroIvaView();
     void inicializa();
 

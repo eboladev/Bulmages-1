@@ -40,8 +40,8 @@ public:
 public:
     /// Puntero a la clase company para poder trabajar con la base de datos y hacer
     /// traspaso de mensajes.
-    empresa *empresaBase();
-    FichaBc(empresa *comp, QWidget *parent = 0, Qt::WFlags f = 0);
+    Empresa *empresaBase();
+    FichaBc(Empresa *comp, QWidget *parent = 0, Qt::WFlags f = 0);
     virtual ~FichaBc();
     void setListaLineas(SubForm2Bc * form);
     SubForm2Bc* listalineas();

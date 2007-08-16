@@ -62,7 +62,7 @@ class Bulmacont;
     objetos de modo que estos s&oacute;lo tengan referencias a esta clase y haciendo el
     flujo del c&oacute;digo m&aacute;s f&aacute;cil de entender.
     \todo Proporcionar la funcionalidad de comunicaci&oacute;n entre las otras clases. */
-class empresa : public EmpresaBase {
+class Empresa : public EmpresaBase {
 private:
     Bulmacont *m_bulmacont;
     QString nombre;
@@ -85,8 +85,8 @@ public:
     QString nombreDB;
 
 public:
-    empresa(Bulmacont *bcont);
-    virtual ~empresa();
+    Empresa(Bulmacont *bcont);
+    virtual ~Empresa();
     /// Devuelve un puntero a la clase de la base de datos.
     postgresiface2 *bdempresa();
     BalanceView *balanceempresa();

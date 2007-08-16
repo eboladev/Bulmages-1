@@ -29,7 +29,7 @@
 
 /// El constructor de la clase inicializa algunas estructuras y configura la visi&oacute;n
 /// de la pantalla.
-AsientosView::AsientosView(empresa *comp, QWidget *parent, Qt::WFlags flag, edmode )
+AsientosView::AsientosView(Empresa *comp, QWidget *parent, Qt::WFlags flag, edmode )
     : Listado(comp, parent, flag) {
     _depura("AsientosView::AsientosView", 0);
     setupUi(this);
@@ -74,10 +74,10 @@ AsientosView::~AsientosView() {
 void AsientosView::on_mui_list_cellDoubleClicked(int, int) {
     _depura("AsientosView::on_mui_list_cellDoubleClicked", 0);
     QString idasiento = mui_list->DBvalue("idasiento");
-    ((empresa *)empresaBase())->intapuntsempresa()->muestraasiento(idasiento);
-    ((empresa *)empresaBase())->intapuntsempresa()->show();
-    ((empresa *)empresaBase())->intapuntsempresa()->setFocus();
-    ((empresa *)empresaBase())->muestraapuntes1();
+    ((Empresa *)empresaBase())->intapuntsempresa()->muestraasiento(idasiento);
+    ((Empresa *)empresaBase())->intapuntsempresa()->show();
+    ((Empresa *)empresaBase())->intapuntsempresa()->setFocus();
+    ((Empresa *)empresaBase())->muestraapuntes1();
     _depura("END AsientosView::on_mui_list_cellDoubleClicked", 0);
 }
 

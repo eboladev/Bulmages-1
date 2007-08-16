@@ -53,15 +53,15 @@
 #define PADRE          m_cpadre
 
 
-BalanceTreeView::BalanceTreeView(empresa *emp, QWidget *parent, int)
-        : Ficha(parent) {
+BalanceTreeView::BalanceTreeView(Empresa *emp, QWidget *parent, int)
+        : FichaBc(emp, parent) {
     setupUi(this);
     _depura("BalanceTreeView::BalanceTreeView", 0);
     m_companyact = emp;
     numdigitos = m_companyact->numdigitosempresa();
 
-    m_codigoinicial->setempresa(emp);
-    m_codigofinal->setempresa(emp);
+    m_codigoinicial->setEmpresa(emp);
+    m_codigofinal->setEmpresa(emp);
 
     m_codigoinicial->hideNombre();
     m_codigofinal->hideNombre();

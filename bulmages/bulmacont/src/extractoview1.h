@@ -24,10 +24,10 @@
 
 #include "ui_extractobase.h"
 #include "postgresiface2.h"
-#include "ficha.h"
+#include "fichabc.h"
 
 
-class empresa;
+class Empresa;
 
 
 /// Esta clase mantiene la generaci&oacute;n de extractos contables.
@@ -35,17 +35,17 @@ class empresa;
     casaci&oacute;n.
     Y acceso a filtrado. Tambi&eacute;n desde esta pantalla se puede pedir m&aacute;s
     informaci&oacute;n de una cuenta determinada. */
-class extractoview1 : public Ficha, public Ui_ExtractoBase {
+class extractoview1 : public FichaBc, public Ui_ExtractoBase {
     Q_OBJECT
 
 public:
     /// El extracto se realiza sobre un cursor que siempre est&aacute; en memoria.
     cursor2 *m_cursorcta;
     /// Siempre se propaga la empresa a estos objetos.
-    empresa *m_companyact;
+    Empresa *m_companyact;
 
 public:
-    extractoview1(empresa *, QWidget *parent = 0, int flags = 0);
+    extractoview1(Empresa *, QWidget *parent = 0, int flags = 0);
     ~extractoview1();
     void inicializa1(QString, QString, QString, QString, int);
     void vaciar();

@@ -40,11 +40,10 @@
 #include "busquedacuenta.h"
 #include "extractosubform.h"
 
-
 /// Este archivo contiene la implementaci&oacute;n de la clase extractoview1 que saca el
 /// extracto por pantalla de una o varias cuentas determinadas. Esta clase es una de las
 /// tres principales junto a \ref introapuntes1 y \ref diarioview1.
-extractoview1::extractoview1(empresa *emp, QWidget *parent, int) : Ficha(parent)
+extractoview1::extractoview1(Empresa *emp, QWidget *parent, int) : FichaBc(emp, parent)
 {
     _depura("extractoview1::extractoview1", 0);
     setupUi(this);
@@ -52,9 +51,9 @@ extractoview1::extractoview1(empresa *emp, QWidget *parent, int) : Ficha(parent)
     m_companyact = emp;
 
     /// Iniciamos los componentes
-    m_codigoinicial->setempresa ( emp );
-    m_codigofinal->setempresa ( emp );
-    mui_codigocontrapartida->setempresa ( emp );
+    m_codigoinicial->setEmpresa ( emp );
+    m_codigofinal->setEmpresa ( emp );
+    mui_codigocontrapartida->setEmpresa ( emp );
     m_codigoinicial->hideNombre();
     m_codigofinal->hideNombre();
 

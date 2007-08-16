@@ -33,7 +33,7 @@
 using namespace std;
 
 
-DiarioPrintView::DiarioPrintView(empresa *emp, QWidget *parent)
+DiarioPrintView::DiarioPrintView(Empresa  *emp, QWidget *parent)
         : QDialog(parent) {
     _depura("DiarioPrintView::DiarioPrintView", 0);
     setupUi(this);

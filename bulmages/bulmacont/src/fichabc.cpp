@@ -28,7 +28,7 @@
 class Fixed;
 
 
-FichaBc::FichaBc(empresa *comp, QWidget *parent, Qt::WFlags f)
+FichaBc::FichaBc(Empresa *comp, QWidget *parent, Qt::WFlags f)
         : Ficha(comp, parent, f) {
     _depura("FichaBc::FichaBc", 0);
     m_listalineas = NULL;
@@ -57,10 +57,10 @@ SubForm2Bc* FichaBc::listalineas() {
 }
 
 
-empresa * FichaBc::empresaBase() {
+Empresa * FichaBc::empresaBase() {
     _depura("FichaBc::empresaBase", 0);
     _depura("END FichaBc::empresaBase", 0);
-    return (empresa *)Ficha::empresaBase();
+    return (Empresa *)Ficha::empresaBase();
 }
 
 

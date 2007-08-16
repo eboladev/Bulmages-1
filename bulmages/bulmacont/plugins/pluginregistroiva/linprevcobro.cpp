@@ -23,14 +23,14 @@
 #include "asiento1view.h"
 
 
-linprevcobro::linprevcobro(empresa *comp) {
+linprevcobro::linprevcobro(Empresa *comp) {
     empresaactual = comp;
     conexionbase = comp->bdempresa();
     vacialinprevcobro();
 }
 
 
-linprevcobro::linprevcobro(empresa *comp, QString idprevcobro) {
+linprevcobro::linprevcobro(Empresa *comp, QString idprevcobro) {
     empresaactual = comp;
     conexionbase = comp->bdempresa();
     QString SQLQuery = "SELECT * FROM prevcobro "
@@ -61,7 +61,7 @@ linprevcobro::linprevcobro(empresa *comp, QString idprevcobro) {
 }
 
 
-linprevcobro::linprevcobro(empresa *comp, QString a, QString b, QString c, QString d, QString e, QString f, QString g, QString h, QString i, QString j, QString k, QString l, QString m, QString idctacliente, QString codigoctacliente, QString nomctacliente) {
+linprevcobro::linprevcobro(Empresa *comp, QString a, QString b, QString c, QString d, QString e, QString f, QString g, QString h, QString i, QString j, QString k, QString l, QString m, QString idctacliente, QString codigoctacliente, QString nomctacliente) {
     empresaactual = comp;
     conexionbase = comp->bdempresa();
     mdb_idprevcobro = a;

@@ -46,14 +46,14 @@
 
 /// Se prepara el combobox de niveles a mostrar y se ponen las fechas de balance.
 /** \bug No es necesario borrar la tabla de designer para que esto funcione. */
-BalanceView::BalanceView(empresa *emp, QWidget *parent, int)
-        : Ficha(parent) {
+BalanceView::BalanceView(Empresa *emp, QWidget *parent, int)
+        : FichaBc(emp, parent) {
     _depura("BalanceView::BalanceView", 0);
     setupUi(this);
     m_companyact = emp;
     numdigitos = m_companyact->numdigitosempresa();
-    m_codigoinicial->setempresa(emp);
-    m_codigofinal->setempresa(emp);
+    m_codigoinicial->setEmpresa(emp);
+    m_codigofinal->setEmpresa(emp);
     /// Inicializamos la tabla de nivel.
     combonivel->insertItem(0, "2");
     combonivel->insertItem(1, "3");

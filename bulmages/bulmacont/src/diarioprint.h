@@ -46,10 +46,10 @@ public:
     char *ffinal;
     char *fichero;
     postgresiface2 *conexionbase;
-    empresa *empresaactual;
+    Empresa *empresaactual;
 
 public:
-    diarioprint(empresa *);
+    diarioprint(Empresa *);
     ~diarioprint();
     int inicializa(postgresiface2 *);
     void inicializa1(char *, char *);

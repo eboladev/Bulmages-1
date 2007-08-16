@@ -23,7 +23,7 @@
 #include "funcaux.h"
 
 
-ListIva::ListIva(empresa *comp) {
+ListIva::ListIva(Empresa *comp) {
     companyact = comp;
     mdb_idregistroiva = "";
 }

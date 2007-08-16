@@ -32,7 +32,7 @@
 #include "fixed.h"
 
 
-Asiento1::Asiento1(empresa *comp, QWidget *parent) : FichaBc (comp, parent) {
+Asiento1::Asiento1(Empresa *comp, QWidget *parent) : FichaBc (comp, parent) {
     _depura("Asiento1::Asiento1", 0);
     setDBTableName("asiento");
     setDBCampoId("idasiento");
@@ -435,7 +435,7 @@ int Asiento1::guardar() {
 }
 
 
-empresa *Asiento1::companyact() {
+Empresa *Asiento1::companyact() {
     _depura("Asiento1::companyact", 0);
     _depura("END Asiento1::companyact", 0);
     return empresaBase();
