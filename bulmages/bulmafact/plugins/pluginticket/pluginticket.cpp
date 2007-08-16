@@ -28,7 +28,7 @@
 #include "ticketqtoolbutton.h"
 
 
-int entryPoint(bulmafact *) {
+int entryPoint(Bulmafact *) {
     _depura("Estoy dentro del plugin de envio de e-mail", 0);
     return 0;
 }

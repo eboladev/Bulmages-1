@@ -58,7 +58,7 @@ void plugin_tc_articulos::colores() {
 }
 
 
-void plugin_tc_articulos::inicializa(bulmafact *bges) {
+void plugin_tc_articulos::inicializa(Bulmafact *bges) {
     QMenu *pPluginMenuTallasColores;
     /// Miramos si existe un menu Herramientas
     pPluginMenuTallasColores = bges->menuBar()->findChild<QMenu *>("Tallas y colores");
@@ -87,7 +87,7 @@ void plugin_tc_articulos::inicializa(bulmafact *bges) {
 }
 
 
-void entryPoint(bulmafact *bges) {
+void entryPoint(Bulmafact *bges) {
     _depura("Estoy dentro del plugin de tallas y colores", 0);
     plugin_tc_articulos *plug = new plugin_tc_articulos();
     plug->inicializa(bges);

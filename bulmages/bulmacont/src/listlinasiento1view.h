@@ -40,8 +40,9 @@ public:
     Fixed totalhaber(QString);
 
 public slots:
-    virtual void contextMenuEvent(QContextMenuEvent *);
     virtual void boton_iva();
+    virtual void s_pintaMenu(QMenu *menu);
+    virtual void s_trataMenu(QAction *action);
 };
 
 #endif

@@ -51,10 +51,11 @@ ListLinAsiento1View::ListLinAsiento1View(QWidget *parent, const char *)
     addSHeader("orden", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr("Orden"));
     addSHeader("idborrador", DBCampo::DBint,  DBCampo::DBPrimaryKey, SHeader::DBNoWrite | SHeader::DBNoView, tr("Id borrador"));
     addSHeader("idasiento", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite | SHeader::DBNoView, tr("Id asiento"));
-//    addSHeader("idcuenta", DBCampo::DBvarchar, DBCampo::DBNotNull | DBCampo::DBRequired, SHeader::DBNoWrite | SHeader::DBNoView, tr("Id cuenta"));
     addSHeader("idcuenta", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoWrite | SHeader::DBNoView, tr("Id cuenta"));
     addSHeader("tipocuenta", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr("Tipo de cuenta"));
     setinsercion(TRUE);
+    connect(this, SIGNAL(pintaMenu(QMenu *)), this, SLOT(s_pintaMenu(QMenu *)));
+    connect(this, SIGNAL(trataMenu(QAction *)), this, SLOT(s_trataMenu(QAction *)));
     _depura("END ListLinAsiento1View::ListLinAsiento1View", 0);
 }
 
@@ -64,81 +65,53 @@ ListLinAsiento1View::~ListLinAsiento1View() {
 }
 
 
-/// Fabrica el men&uacute; contextual.
-void ListLinAsiento1View::contextMenuEvent(QContextMenuEvent *) {
-    _depura("SubForm2Bc::contextMenuEvent", 0);
-    QAction *del = NULL;
-    int row = currentRow();
-    if (row < 0)
-        return;
-
-    int col = currentColumn();
-    if (row < 0)
-        return;
-
-    QMenu *popup = new QMenu(this);
-
-    QAction *mostapunte = popup->addAction(tr("Mostrar asiento"));
-    popup->addSeparator();
-    QAction *mostextractodia = popup->addAction(tr("Mostrar extracto (dia)"));
-    QAction *mostextractomes = popup->addAction(tr("Mostrar extracto (mes)"));
-    QAction *mostextractoano = popup->addAction(tr("Mostrar extracto (ano)"));
-    popup->addSeparator();
-    QAction *mostbalancedia = popup->addAction(tr("Mostrar balance (dia)"));
-    QAction *mostbalancemes = popup->addAction(tr("Mostrar balance (mes)"));
-    QAction *mostbalanceano = popup->addAction(tr("Mostrar balance (ano)"));
-    popup->addSeparator();
-    QAction *mostbalancejdia = popup->addAction(tr("Mostrar balance jerarquico (dia)"));
-    QAction *mostbalancejmes = popup->addAction(tr("Mostrar balance jerarquico (mes)"));
-    QAction *mostbalancejano = popup->addAction(tr("Mostrar balance jerarquico (ano)"));
-
-    if (m_delete)
-        del = popup->addAction(tr("Borrar registro"));
-    popup->addSeparator();
-    QAction *ajustc = popup->addAction(tr("Ajustar columa"));
-    QAction *ajustac = popup->addAction(tr("Ajustar altura"));
-    QAction *ajust = popup->addAction(tr("Ajustar columnas"));
-    QAction *ajusta = popup->addAction(tr("Ajustar alturas"));
-    popup->addSeparator();
-    QAction *verconfig = popup->addAction(tr("Ver configurador de subformulario"));
-    QAction *opcion = popup->exec(QCursor::pos());
-
-    if (opcion == mostapunte)
-        boton_asiento();
-    if (opcion == del)
-        borrar(row);
-    if (opcion == ajust)
-        resizeColumnsToContents();
-    if (opcion == ajusta)
-        resizeRowsToContents();
-    if (opcion == ajustc)
-        resizeColumnToContents(col);
-    if (opcion == ajustac)
-        resizeRowToContents(row);
-    if (opcion == verconfig)
-        showConfig();
-    if (opcion == mostextractodia)
-        boton_extracto1(0);
-    if (opcion == mostextractomes)
-        boton_extracto1(1);
-    if (opcion == mostextractoano)
-        boton_extracto1(2);
-    if (opcion == mostbalancedia)
-        boton_balance1(0);
-    if (opcion == mostbalancemes)
-        boton_balance1(1);
-    if (opcion == mostbalanceano)
-        boton_balance1(2);
-    if (opcion == mostbalancejdia)
-        boton_balancetree(0);
-    if (opcion == mostbalancejmes)
-        boton_balancetree(1);
-    if (opcion == mostbalancejano)
-        boton_balancetree(2);
-
-    delete popup;
-    _depura("END SubForm2Bc::contextMenuEvent", 0);
+void ListLinAsiento1View::s_pintaMenu(QMenu *menu) {
+    _depura("ListLinAsiento1View::s_pintaMenu", 0);
+    menu->addSeparator();
+    menu->addAction(tr("Mostrar asiento"));
+    menu->addSeparator();
+    menu->addAction(tr("Mostrar extracto (dia)"));
+    menu->addAction(tr("Mostrar extracto (mes)"));
+    menu->addAction(tr("Mostrar extracto (ano)"));
+    menu->addSeparator();
+    menu->addAction(tr("Mostrar balance (dia)"));
+    menu->addAction(tr("Mostrar balance (mes)"));
+    menu->addAction(tr("Mostrar balance (ano)"));
+    menu->addSeparator();
+    menu->addAction(tr("Mostrar balance jerarquico (dia)"));
+    menu->addAction(tr("Mostrar balance jerarquico (mes)"));
+    menu->addAction(tr("Mostrar balance jerarquico (ano)"));
+    _depura("ListLinAsiento1View::s_pintaMenu", 0);
 }
+
+void ListLinAsiento1View::s_trataMenu(QAction *action) {
+    _depura("ListLinAsiento1View::s_trataMenu", 0);
+    if (!action) return;
+    if (action->text() == tr("Mostrar asiento"))
+        boton_asiento();
+    if (action->text() == tr("Mostrar extracto (dia)"))
+        boton_extracto1(0);
+    if (action->text() == tr("Mostrar extracto (mes)"))
+        boton_extracto1(1);
+    if (action->text() == tr("Mostrar extracto (ano)"))
+        boton_extracto1(2);
+    if (action->text() == tr("Mostrar balance (dia)"))
+        boton_balance1(0);
+    if (action->text() == tr("Mostrar balance (mes)"))
+        boton_balance1(1);
+    if (action->text() == tr("Mostrar balance (ano)"))
+        boton_balance1(2);
+    if (action->text() == tr("Mostrar balance jerarquico (dia)"))
+        boton_balancetree(0);
+    if (action->text() == tr("Mostrar balance jerarquico (mes)"))
+        boton_balancetree(1);
+    if (action->text() == tr("Mostrar balance jerarquico (ano)"))
+        boton_balancetree(2);
+    _depura("END ListLinAsiento1View::s_trataMenu", 0);
+}
+
+
+
 
 
 /// Carga lineas de asiento (apuntes).

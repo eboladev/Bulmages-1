@@ -48,7 +48,7 @@ void myplugin::elslot() {
 }
 
 
-void myplugin::inicializa(bulmafact *bges) {
+void myplugin::inicializa(Bulmafact *bges) {
     QMenu *pPluginMenu;
     /// Miramos si existe un menu Herramientas
     pPluginMenu = bges->menuBar()->findChild<QMenu *>("Herramientas");
@@ -70,7 +70,7 @@ void myplugin::inicializa(bulmafact *bges) {
 }
 
 
-void entryPoint(bulmafact *bges) {
+void entryPoint(Bulmafact *bges) {
     _depura("Estoy dentro del plugin de demo", 0);
     myplugin *plug = new myplugin();
     plug->inicializa(bges);

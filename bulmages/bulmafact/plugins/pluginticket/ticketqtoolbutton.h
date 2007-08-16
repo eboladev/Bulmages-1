@@ -41,7 +41,7 @@ class TicketQToolButton : public QToolButton {
 	Q_OBJECT
 
 private:
-	company *m_companyact;
+	Company *m_companyact;
 	PresupuestoView *m_presupuestoView;
 	PedidoClienteView *m_pedidoClienteView;
 	AlbaranClienteView *m_albaranClienteView;

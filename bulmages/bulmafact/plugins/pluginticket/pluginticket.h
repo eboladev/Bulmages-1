@@ -38,7 +38,7 @@ extern "C" MY_EXPORT int PresupuestoView_PresupuestoView(PresupuestoView *);
 */
 extern "C" MY_EXPORT int FacturaView_FacturaView(FacturaView *);
 
-extern "C" MY_EXPORT int entryPoint(bulmafact *);
+extern "C" MY_EXPORT int entryPoint(Bulmafact *);
 
 
 // extern QApplication2 *theApp;

@@ -29,7 +29,7 @@
 #include "company.h"
 #include "funcaux.h"
 
-void entryPoint(bulmafact *) {
+void entryPoint(Bulmafact *) {
     _depura("Estoy dentro del plugin de catalogo", 0);
 }
 
