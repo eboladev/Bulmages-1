@@ -296,7 +296,10 @@ int Asiento1::borrar(bool atendido) {
 void Asiento1::vaciar() {
     _depura("Asiento1::vaciar", 0);
     DBclear();
-    listalineas->inicializar();
+
+    /// Vaciamos compeltamente el subformulario para que no quede ningun tipo de restos
+    listalineas->setColumnCount(0);
+    listalineas->setRowCount(0);
     _depura("END Asiento1::vaciar", 0);
 }
 
@@ -304,7 +307,7 @@ void Asiento1::vaciar() {
 /** Se encarga del pintado del asiento.
 */
 void Asiento1::pintar() {
-    _depura("Asiento1::pintar", 0);
+    _depura("Asiento1::pintar", 0, idasiento());
     pintaidasiento(idasiento());
     pintadescripcion(DBvalue("descripcion"));
     pintafecha(DBvalue("fecha"));

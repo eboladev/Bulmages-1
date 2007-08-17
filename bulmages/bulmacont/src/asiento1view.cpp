@@ -170,22 +170,28 @@ void Asiento1View::iniciar_asiento_nuevo(QString nuevoordenasiento) {
             ordenasiento = nuevoordenasiento;
         } // end if
 
+
+        //empresaBase()->commit();
+        query = "INSERT INTO asiento (fecha, ordenasiento) VALUES ('" + empresaBase()->sanearCadena(fecha) + "', " + ordenasiento + ")";
+        empresaBase()->ejecuta(query);
+
         /// Creamos el asiento en la base de datos.
-        query = "SELECT COALESCE(MAX(idasiento) + 1, 1) AS id FROM asiento";
+        query = "SELECT MAX(idasiento) AS id FROM asiento";
         cur = empresaBase()->cargacursor(query);
         if (!cur->eof())
             idasiento = cur->valor("id");
         delete cur;
-        //empresaBase()->commit();
-        query = "INSERT INTO asiento (idasiento, fecha, ordenasiento) VALUES (" + idasiento + ", '" + empresaBase()->sanearCadena(fecha) + "', " + ordenasiento + ")";
-        empresaBase()->ejecuta(query);
+
         empresaBase()->commit();
         /// FIN TRATAMIENTO DE BASE DE DATOS.
+
         cargaasientos();
+
         muestraasiento(idasiento.toInt());
+
         abrir();
 
-        _depura("END Asiento1View::iniciar_asiento_nuevo", 0);
+        _depura("END Asiento1View::iniciar_asiento_nuevo", 0, idasiento);
         return;
     } catch (...) {
         mensajeInfo("Asiento no pudo crearse");
@@ -198,16 +204,21 @@ void Asiento1View::iniciar_asiento_nuevo(QString nuevoordenasiento) {
     Si el asiento esta abierto cambia la fecha del asiento.
     Si el asiento esta cerrado crea un asiento nuevo llamando a \ref iniciar_asiento_nuevo()
 */
-void Asiento1View::on_mui_fecha_editingFinished() {
-    _depura("Asiento1View::on_mui_fecha_editingFinished", 0);
+void Asiento1View::on_mui_fecha_returnPressed() {
+    _depura("Asiento1View::on_mui_fecha_returnPressed", 0);
+    /// Usamos un semaforo para prevenir de entradas concurrentes.
+    static bool semaforo = FALSE;
+    if (semaforo) return;
+    semaforo = TRUE;
     /// Cambiar la fecha del asiento.
-    if (estadoAsiento1() != Asiento1::ASCerrado) {
+    if (estadoAsiento1() != Asiento1::ASCerrado && estadoAsiento1() != Asiento1::ASVacio) {
         setDBvalue("fecha", mui_fecha->text());
         Asiento1::guardar();
     } else {
         iniciar_asiento_nuevo();
     } // end if
-    _depura("END Asiento1View::on_mui_fecha_editingFinished", 0);
+    semaforo = FALSE;
+    _depura("END Asiento1View::on_mui_fecha_returnPressed", 0);
 }
 
 
@@ -614,11 +625,6 @@ void Asiento1View::on_mui_guardarasiento_clicked() {
 }
 
 
-void Asiento1View::on_mui_iva_clicked() {
-    _depura("on_mui_iva_clicked", 0);
-    mui_list->boton_iva();
-    _depura("END on_mui_iva_clicked", 0);
-}
 
 
 void Asiento1View::s_lineaValueChanged() {

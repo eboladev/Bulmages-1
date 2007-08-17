@@ -664,11 +664,6 @@ void EmailQToolButton::click() {
                 Cobro *pres = new Cobro(m_companyact, 0);
                 pres->cargar(id);
 
-                /*
-                                pres->generaRML();
-                                pres->close();
-                */
-
                 generaPDF("recibo");
 
                 QString cad = "mv "+confpr->valor(CONF_DIR_USER)+"recibo.pdf "+confpr->valor(CONF_DIR_USER)+"recibo"+fecha+ref+".pdf";
