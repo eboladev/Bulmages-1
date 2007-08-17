@@ -37,6 +37,37 @@
     <addaction name="actionBalance_de_Cuentas" />
     <addaction name="actionBalance_Jer_rquico_de_Sumas_y_Saldos" />
    </widget>
+   <widget class="QMenu" name="menuEmpresa" >
+    <property name="title" >
+     <string>&amp;Empresa</string>
+    </property>
+    <addaction name="actionConfiguracion" />
+    <addaction name="actionSalir" />
+   </widget>
+   <widget class="QMenu" name="menuAsiento" >
+    <property name="title" >
+     <string>&amp;Asientos</string>
+    </property>
+    <addaction name="actionAbrir_Asientos" />
+    <addaction name="actionOrdenar_Asientos" />
+    <addaction name="separator" />
+    <addaction name="actionAsiento_de_Apertura" />
+    <addaction name="actionAsiento_de_Regularizacion" />
+    <addaction name="actionAsiento_de_Cierre" />
+   </widget>
+   <widget class="QMenu" name="menuListados" >
+    <property name="title" >
+     <string>&amp;Listados</string>
+    </property>
+    <addaction name="actionCuentas_Anuales" />
+    <addaction name="separator" />
+    <addaction name="actionRegistro_de_IVA" />
+    <addaction name="separator" />
+    <addaction name="actionListado_347" />
+    <addaction name="separator" />
+    <addaction name="actionCobros_y_Pagos" />
+    <addaction name="actionAmortizaciones" />
+   </widget>
    <widget class="QMenu" name="menuMaestro" >
     <property name="title" >
      <string>&amp;Maestro</string>
@@ -77,37 +108,6 @@
     <addaction name="actionAyuda" />
     <addaction name="actionAcerca_de" />
    </widget>
-   <widget class="QMenu" name="menuEmpresa" >
-    <property name="title" >
-     <string>&amp;Empresa</string>
-    </property>
-    <addaction name="actionConfiguracion" />
-    <addaction name="actionSalir" />
-   </widget>
-   <widget class="QMenu" name="menuAsiento" >
-    <property name="title" >
-     <string>&amp;Asientos</string>
-    </property>
-    <addaction name="actionAbrir_Asientos" />
-    <addaction name="actionOrdenar_Asientos" />
-    <addaction name="separator" />
-    <addaction name="actionAsiento_de_Apertura" />
-    <addaction name="actionAsiento_de_Regularizacion" />
-    <addaction name="actionAsiento_de_Cierre" />
-   </widget>
-   <widget class="QMenu" name="menuListados" >
-    <property name="title" >
-     <string>&amp;Listados</string>
-    </property>
-    <addaction name="actionCuentas_Anuales" />
-    <addaction name="separator" />
-    <addaction name="actionRegistro_de_IVA" />
-    <addaction name="separator" />
-    <addaction name="actionListado_347" />
-    <addaction name="separator" />
-    <addaction name="actionCobros_y_Pagos" />
-    <addaction name="actionAmortizaciones" />
-   </widget>
    <addaction name="menuEmpresa" />
    <addaction name="menuAsiento" />
    <addaction name="menuListados" />
@@ -129,10 +129,7 @@
     </size>
    </property>
    <attribute name="toolBarArea" >
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak" >
-    <bool>false</bool>
+    <number>4</number>
    </attribute>
    <addaction name="actionConfiguracion" />
    <addaction name="actionPlan_Contable" />

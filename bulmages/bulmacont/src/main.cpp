@@ -145,10 +145,6 @@ int main(int argc, char **argv) {
             confpr->leeconfig(confEsp);
         } // end if
 
-        /// Cargamos las librerias de g_plugins.
-        g_plugins->cargaLibs(confpr->valor(CONF_PLUGINS_BULMACONT));
-        g_plugins->lanza("entryPoint", bges);
-
         splashScr->mensaje(QApplication::translate("main","Cargando Traducciones"));
         splashScr->setBarraProgreso(3);
 

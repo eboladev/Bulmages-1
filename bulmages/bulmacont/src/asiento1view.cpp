@@ -48,6 +48,12 @@ Asiento1View::Asiento1View(Empresa *emp, QWidget *parent, int)
     setupUi(this);
     _depura("Asiento1View::Asiento1View", 0);
 
+        /// Disparamos los plugins.
+        int res = g_plugins->lanza("Asiento1View_Asiento1View", this);
+        if (res != 0)
+            return;
+
+
     eventos_mui_ordenasiento *eventosOrdenAsiento = new eventos_mui_ordenasiento(this);
     mui_ordenasiento->installEventFilter(eventosOrdenAsiento);
 
@@ -101,7 +107,6 @@ void Asiento1View::asientoabiertop() {
     m_descuadre->setEnabled(TRUE);
     mui_abrirasiento->setEnabled(FALSE);
     mui_cerrarasiento->setEnabled(TRUE);
-    mui_iva->setEnabled(TRUE);
     mui_inteligente->setEnabled(TRUE);
     mui_list->setinsercion(TRUE);
 
@@ -122,7 +127,6 @@ void Asiento1View::asientocerradop() {
     _depura("Asiento1View::asientocerradop", 0);
     mui_abrirasiento->setEnabled(TRUE);
     mui_cerrarasiento->setEnabled(FALSE);
-    mui_iva->setEnabled(FALSE);
     mui_inteligente->setEnabled(TRUE);
     mui_list->setinsercion(FALSE);
 

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>690</width>
-    <height>490</height>
+    <width>818</width>
+    <height>807</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -29,7 +29,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>5</number>
+      <number>6</number>
      </property>
      <item>
       <widget class="QLabel" name="pixmapLabel1" >
@@ -91,7 +91,7 @@
        </property>
        <layout class="QHBoxLayout" >
         <property name="margin" >
-         <number>5</number>
+         <number>0</number>
         </property>
         <property name="spacing" >
          <number>5</number>
@@ -508,51 +508,6 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_iva" >
-          <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>0</hsizetype>
-            <vsizetype>0</vsizetype>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Registro de IVA</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Registro de IVA</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_iva.xpm</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="shortcut" >
-           <string>Ctrl+I</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QToolButton" name="mui_inteligente" >
           <property name="sizePolicy" >
            <sizepolicy>
@@ -598,6 +553,33 @@
          </widget>
         </item>
         <item>
+         <widget class="QFrame" name="mui_plugbotones" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="frameShape" >
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="frameShadow" >
+           <enum>QFrame::Plain</enum>
+          </property>
+          <property name="lineWidth" >
+           <number>0</number>
+          </property>
+         </widget>
+        </item>
+        <item>
          <spacer>
           <property name="orientation" >
            <enum>Qt::Horizontal</enum>
@@ -607,8 +589,8 @@
           </property>
           <property name="sizeHint" >
            <size>
-            <width>241</width>
-            <height>28</height>
+            <width>311</width>
+            <height>34</height>
            </size>
           </property>
          </spacer>
@@ -1091,14 +1073,14 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>ListLinAsiento1View</class>
-   <extends>QTableWidget</extends>
-   <header>listlinasiento1view.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaFecha</class>
    <extends>QLineEdit</extends>
    <header>../../bulmalib/src/busquedafecha.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ListLinAsiento1View</class>
+   <extends>QTableWidget</extends>
+   <header>listlinasiento1view.h</header>
   </customwidget>
  </customwidgets>
  <resources>

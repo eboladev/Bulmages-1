@@ -52,7 +52,8 @@ HEADERS += registroiva.h \
 	   listlinprevcobro.h \
 	   listlinprevcobroview.h \
 	   cobropagoview.h \
-	   listregistroivaview.h
+	   listregistroivaview.h \
+	   regivaqtoolbutton.h
 	   
 SOURCES += registroiva.cpp \
 	   iva.cpp \
@@ -64,7 +65,8 @@ SOURCES += registroiva.cpp \
 	   listlinprevcobro.cpp \
 	   listlinprevcobroview.cpp \
 	   cobropagoview.cpp \
-	   listregistroivaview.cpp
+	   listregistroivaview.cpp \
+	   regivaqtoolbutton.cpp
 
 unix{
     UI_DIR = .ui

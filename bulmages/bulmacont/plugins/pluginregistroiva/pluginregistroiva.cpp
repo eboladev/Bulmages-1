@@ -36,13 +36,30 @@
 #include "listlinasiento1view.h"
 #include "listregistroivaview.h"
 #include "registroivaview.h"
-
+#include "regivaqtoolbutton.h"
 
 int entryPoint(Bulmacont *) {
     _depura("Punto de entrada del plugin registroIVA", 0);
     return 0;
 }
 
+int Asiento1View_Asiento1View(Asiento1View *l) {
+       _depura("Asiento1View_Asiento1View", 0);
+//================================
+       RegIVAQToolButton *mui_exporta_efactura2 = new RegIVAQToolButton(l,  l->mui_plugbotones);
+
+       QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *>("hboxLayout1");
+       if (!m_hboxLayout1) {
+                m_hboxLayout1 = new QHBoxLayout(l->mui_plugbotones);
+                m_hboxLayout1->setSpacing(5);
+                m_hboxLayout1->setMargin(5);
+                m_hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));
+       } // end if
+       m_hboxLayout1->addWidget(mui_exporta_efactura2);
+//================================
+       _depura("END Asiento1View_Asiento1View", 0);
+       return 0;
+}
 
 /// Buscamos en el asiento si hay indicios de una factura y actuamos en consecuencia.
 int Asiento1_guardaAsiento1_post(Asiento1 *as) {
