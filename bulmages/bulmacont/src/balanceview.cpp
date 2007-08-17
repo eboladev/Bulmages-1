@@ -33,6 +33,7 @@
 #include "busquedacuenta.h"
 #include "busquedaccoste.h"
 
+
 #define CUENTA          0
 #define DENOMINACION    1
 #define SALDO_ANT       2
@@ -50,10 +51,13 @@ BalanceView::BalanceView(Empresa *emp, QWidget *parent, int)
         : FichaBc(emp, parent) {
     _depura("BalanceView::BalanceView", 0);
     setupUi(this);
-    m_companyact = emp;
-    numdigitos = m_companyact->numdigitosempresa();
-    m_codigoinicial->setEmpresa(emp);
-    m_codigofinal->setEmpresa(emp);
+
+    /// EStablezco cual es la tabla en la que basarse para el sistema de permisos.
+    setDBTableName("asiento");
+
+    numdigitos = empresaBase()->numdigitosempresa();
+    m_codigoinicial->setEmpresaBase(emp);
+    m_codigofinal->setEmpresaBase(emp);
     /// Inicializamos la tabla de nivel.
     combonivel->insertItem(0, "2");
     combonivel->insertItem(1, "3");
@@ -71,17 +75,17 @@ BalanceView::BalanceView(Empresa *emp, QWidget *parent, int)
 
 
     /// Hacemos la carga de los centros de coste. Rellenamos el combobox correspondiente.
-    mui_combocoste->setcompany(emp);
+    mui_combocoste->setEmpresaBase(emp);
     mui_combocoste->setidc_coste("0");
 
-    m_companyact->meteWindow(windowTitle(), this);
+    empresaBase()->meteWindow(windowTitle(), this);
     _depura("END BalanceView::BalanceView", 0);
 }
 
 
 BalanceView::~BalanceView() {
     _depura("BalanceView::~BalanceView", 0);
-    m_companyact->sacaWindow(this);
+    empresaBase()->sacaWindow(this);
     _depura("END BalanceView::~BalanceView", 0);
 }
 
@@ -141,10 +145,10 @@ void BalanceView::presentarSyS(QString finicial, QString ffinal, QString cinicia
 
     /// Primero, averiguaremos la cantidad de ramas iniciales que nacen de la ra&iacute;z
     /// (tantas como n&uacute;mero de cuentas de nivel 2) y las vamos creando.
-    m_companyact->begin();
+    empresaBase()->begin();
     QString query = "SELECT *, nivel(codigo) AS nivel FROM cuenta ORDER BY codigo";
     cursor2 *ramas;
-    ramas = m_companyact->cargacursor(query);
+    ramas = empresaBase()->cargacursor(query);
     Arbol *arbol;
     arbol = new Arbol;
     while (!ramas->eof()) {
@@ -176,7 +180,7 @@ void BalanceView::presentarSyS(QString finicial, QString ffinal, QString cinicia
     /// \bug OJO!! falta usar el querycoste.
     /// Poblamos el &aacute;rbol de hojas (cuentas).
     cursor2 *hojas;
-    hojas = m_companyact->cargacursor(query, "Recopilacion por periodo");
+    hojas = empresaBase()->cargacursor(query, "Recopilacion por periodo");
     while (!hojas->eof()) {
         /// Para cada cuenta con apuntes introducidos hay que actualizar hojas del &aacute;rbol.
         arbol->actualizahojas(hojas);
@@ -303,7 +307,7 @@ void BalanceView::presentarSyS(QString finicial, QString ffinal, QString cinicia
     /// Eliminamos el &aacute;rbol de la mem&oacute;ria y cerramos la conexi&oacute;n
     /// con la BD.
     delete arbol;
-    m_companyact->commit();
+    empresaBase()->commit();
     _depura("END BalanceView::presentarSyS", 0);
 }
 
@@ -327,7 +331,7 @@ void BalanceView::nivelactivated(int) {
     balance y lo ejecuta en modo Modal. */
 void BalanceView::on_mui_imprimir_clicked() {
     _depura("BalanceView::on_mui_imprimir_clicked", 0);
-    BalancePrintView *balan = new BalancePrintView(m_companyact);
+    BalancePrintView *balan = new BalancePrintView(empresaBase());
     balan->inicializa1(m_codigoinicial->text(), m_codigofinal->text(), m_fechainicial1->text(), m_fechafinal1->text(), FALSE);
     balan->exec();
     _depura("END BalanceView::on_mui_imprimir_clicked", 0);

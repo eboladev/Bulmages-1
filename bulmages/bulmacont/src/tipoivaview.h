@@ -25,18 +25,17 @@
 #include "postgresiface2.h"
 #include "dialogchanges.h"
 #include "ui_tipoivabase.h"
-#include "ficha.h"
+#include "fichabc.h"
 
 
 class empresa;
 
 /// Esta clase hace el mantenimiento de la tabla de Tipos de IVA.
 /** Su funcionamiento se basa un poco en el funcionamiento de la pantalla de canales. */
-class tipoivaview : public Ficha, public Ui_TipoIvaBase {
+class tipoivaview : public FichaBc, public Ui_TipoIvaBase {
     Q_OBJECT
 
 private:
-    Empresa *empresaactual;
     cursor2 *m_curtipoiva;
     /// Indica la posici&oacute;n en el combobox que est&aacute; seleccionada.
     /// Se usa para guardar en caso de modificaciones.

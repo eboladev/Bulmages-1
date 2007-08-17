@@ -42,10 +42,9 @@ class PaisView : public FichaBc, public Ui_paisbase {
     Q_OBJECT
 
 public:
-    postgresiface2 *conexionbase;
     int idpais; /// Indica cual es el centro de coste que se esta visualizando.
     /// Si su valor es 0 entonces es que no se esta visualizando ning&uacute;n centro de coste.
-    Empresa *empresaactual;
+
 
 public:
     PaisView(Empresa *, QWidget *parent = 0);

@@ -60,6 +60,7 @@ public:
     virtual void presentar();
     virtual ~Listado();
     virtual int sacaWindow();
+    virtual int meteWindow(QString title);
     virtual void submenu(const QPoint &);
     virtual void crear();
     virtual void borrar();

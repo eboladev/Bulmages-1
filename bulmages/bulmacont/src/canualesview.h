@@ -25,7 +25,7 @@
 #include <QWidget>
 
 #include "ui_canualesbase.h"
-#include "ficha.h"
+#include "fichabc.h"
 
 
 class Empresa;
@@ -35,12 +35,11 @@ class Empresa;
 /** Clase que muestra un listado de todos los balances introducidos en el sistema.
     Sirve como punto de entrada a la generaci&oacute;n de los balances permitiendo la
     importaci&oacute;n/exportaci&oacute;n de los mismos, su modificaci&oacute;n y su impresi&oacute;n. */
-class CAnualesView : public Ficha, public Ui_CAnualesBase {
+class CAnualesView : public FichaBc, public Ui_CAnualesBase {
     Q_OBJECT
 
 private:
-    /// Empresa con la que se trabaja (inicializada con el constructor de clase)
-    Empresa *m_companyact;
+
     /// Esta variable indica si se abre para b&uacute;squeda o para edici&oacute;n.
     /// (edicion = 0; seleccion = 1)
     int m_modo;

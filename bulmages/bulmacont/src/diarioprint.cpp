@@ -25,44 +25,37 @@
 #include "empresa.h"
 
 
-diarioprint::diarioprint(Empresa  *emp) {
-    _depura("diarioprint::diarioprint", 0);
+DiarioPrint::DiarioPrint(Empresa  *emp) : PEmpresaBase(emp) {
+    _depura("DiarioPrint::DiarioPrint", 0);
     fichero = NULL;
-    empresaactual = emp;
-    conexionbase = empresaactual->bdempresa();
-    _depura("END diarioprint::diarioprint", 0);
+    _depura("END DiarioPrint::DiarioPrint", 0);
 }
 
 
-diarioprint::~diarioprint() {}
+DiarioPrint::~DiarioPrint() {}
 
 
-int diarioprint::inicializa(postgresiface2 *conn) {
-    _depura("diarioprint::inicializa", 0);
-    conexionbase = conn;
-    _depura("diarioprint::inicializa", 0);
-    return 0;
-}
 
 
-void diarioprint::inicializa1(char *finicial1, char *ffinal1) {
-    _depura("diarioprint::inicializa1", 0);
+
+void DiarioPrint::inicializa1(char *finicial1, char *ffinal1) {
+    _depura("DiarioPrint::inicializa1", 0);
     finicial = finicial1;
     ffinal = ffinal1;
-    _depura("diarioprint::inicializa1", 0);
+    _depura("DiarioPrint::inicializa1", 0);
 }
 
 
-void diarioprint::inicializa2(char *fich) {
-    _depura("diarioprint::inicializa2", 0);
+void DiarioPrint::inicializa2(char *fich) {
+    _depura("DiarioPrint::inicializa2", 0);
     fichero = fich;
-    _depura("diarioprint::inicializa2", 0);
+    _depura("DiarioPrint::inicializa2", 0);
 }
 
 
 /// Se ha pulsado sobre el bot&oacute;n aceptar del formulario.
-void diarioprint::accept() {
-    _depura("diarioprint::accept", 0);
+void DiarioPrint::accept() {
+    _depura("DiarioPrint::accept", 0);
     float debe, haber;
     int idcuenta;
     int idasiento;
@@ -80,13 +73,13 @@ void diarioprint::accept() {
         fprintf(mifile, "Fecha Inicial: %s, Fecha Final: %s\n", finicial, ffinal);
         fprintf(mifile, "%5.5s %10.10s %10s %30.30s %9.2s %9.2s\n", "ASIENTO", "FECHA", "SUBCUENTA", "DESCRIPCION", "DEBE", "HABER");
         fprintf(mifile, "----------------------------------------------------------------------------------------------------------\n");
-        conexionbase->begin();
-        cursoraux = conexionbase->cargaasientosfecha(finicial, ffinal);
+        empresaBase()->begin();
+        cursoraux = empresaBase()->cargaasientosfecha(finicial, ffinal);
         for (; !cursoraux->eof(); cursoraux->siguienteregistro()) {
             fprintf(stderr, "bucle\n");
             fechaasiento = cursoraux->valor(2).toAscii().constData();
             idasiento = atoi(cursoraux->valor(0).toAscii());
-            cursoraux1 = conexionbase->cargaapuntes(idasiento);
+            cursoraux1 = empresaBase()->cargaapuntes(idasiento);
             for (; !cursoraux1->eof(); cursoraux1->siguienteregistro()) {
                 fecha = cursoraux1->valor(4).toAscii().constData();
                 descripcion = cursoraux1->valor(5).toAscii().constData();
@@ -95,7 +88,7 @@ void diarioprint::accept() {
                 haber = atof(cursoraux1->valor(9).toAscii());
                 idcuenta = atoi(cursoraux1->valor(6).toAscii());
 
-                cursoraux2 = conexionbase->cargacuenta(idcuenta, NULL);
+                cursoraux2 = empresaBase()->cargacuenta(idcuenta, NULL);
                 if (!cursoraux2->eof()) {
                     codigocuenta = cursoraux2->valor(1).toAscii().constData();
                 } // end if
@@ -108,13 +101,13 @@ void diarioprint::accept() {
             fprintf(mifile, "\n");
         } // end for
         delete cursoraux;
-        conexionbase->commit();
+        empresaBase()->commit();
         fclose(mifile);
     } // end if
 
     /// Hacemos la llamada de sistema para imprimir.
     QString cadaux = confpr->valor(CONF_EDITOR) + " diario.txt";
     system(cadaux.toAscii().constData());
-    _depura("END diarioprint::accept", 0);
+    _depura("END DiarioPrint::accept", 0);
 }
 

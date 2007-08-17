@@ -29,7 +29,6 @@
 #include <QTextStream>
 
 #include "ui_canalbase.h"
-#include "postgresiface2.h"
 #include "dialogchanges.h"
 #include "fichabc.h"
 
@@ -45,12 +44,11 @@ private:
     QTextEdit *m_desccanal;
 
 public:
-    postgresiface2 *conexionbase;
     int canales[100];
     /// Indica cual es el canal que se esta visualizando.
     int idcanal;
     /// Si su valor es 0 entonces es que no se esta visualizando ningun centro de coste.
-    Empresa *empresaactual;
+
 
 public:
     canalview(Empresa *, QWidget *parent = 0);

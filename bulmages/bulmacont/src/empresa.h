@@ -38,7 +38,7 @@
 #include "splashscreen.h"
 
 
-class selectccosteview;
+class SelectCCosteView;
 class selectcanalview;
 class BalanceTreeView;
 class Asiento1View;
@@ -78,7 +78,7 @@ private:
     unsigned int numdigitos; /// El n&uacute;mero de d&iacute;gitos que tienen las cuentas.
     /// Hay unos selectores generales, que van a ser estos y que indican con que se trabaja,
     /// luego estos selectores generales se podr&aacute;n invocar desde distintas partes.
-    selectccosteview *selccostes;
+    SelectCCosteView *selccostes;
     selectcanalview *selcanales;
 
 public:
@@ -137,7 +137,7 @@ public:
     void centrocostedefecto();
     void canaldefecto();
     void bloqueoFechas();
-    selectccosteview *getselccostes();
+    SelectCCosteView *getselccostes();
     selectcanalview *getselcanales();
     void recalculasaldos();
     /// Gesti&oacute;n de cobros y pagos.

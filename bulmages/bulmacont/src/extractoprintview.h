@@ -32,7 +32,7 @@
 #include <QRadioButton>
 
 #include "ui_extractoprintbase.h"
-#include "postgresiface2.h"
+#include "blwidget.h"
 
 
 class Empresa;
@@ -41,12 +41,11 @@ class Empresa;
 /// Clase que corresponde con la ventana de impresi&oacute;n de extractos.
 /** \todo Falta hacer que en los campos se haga el autocompletado.
     \todo Falta incluir el filtrado en el extracto. */
-class ExtractoPrintView : public QDialog, public Ui_ExtractoPrintBase {
+class ExtractoPrintView : public QDialog, public Ui_ExtractoPrintBase, PEmpresaBase {
     Q_OBJECT
 
 public:
     char *fichero;
-    Empresa *m_companyact;
     ExtractoPrintView(Empresa *, QWidget *);
     void presentar(char *tipus);
     ~ExtractoPrintView();

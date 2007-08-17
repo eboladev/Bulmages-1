@@ -28,7 +28,6 @@
 BusquedaCanal::BusquedaCanal(QWidget *parent)
         : QComboBox(parent) {
     _depura("BusquedaCanal::BusquedaCanal", 0);
-    companyact = NULL;
     m_cursorcombo = NULL;
     connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
     _depura("END BusquedaCanal::BusquedaCanal", 0);
@@ -40,9 +39,6 @@ BusquedaCanal::~BusquedaCanal() {
 }
 
 
-void BusquedaCanal::setcompany(Empresa *comp) {
-    companyact = comp;
-}
 
 
 void BusquedaCanal::setidcanal(QString idcanal) {
@@ -50,7 +46,7 @@ void BusquedaCanal::setidcanal(QString idcanal) {
     if (m_cursorcombo != NULL) {
         delete m_cursorcombo;
     } // end if
-    m_cursorcombo = companyact->cargacursor("SELECT * FROM canal");
+    m_cursorcombo = empresaBase()->cargacursor("SELECT * FROM canal");
     int i = 0;
     int i1 = 0;
     clear();
@@ -100,16 +96,11 @@ QString BusquedaCanal::idcanal() {
 BusquedaCanalDelegate::BusquedaCanalDelegate(QWidget *parent)
         : QComboBox(parent) {
     _depura("BusquedaCanalDelegate::BusquedaCanalDelegate", 10);
-    m_companyact = NULL;
     setEditable(true);
     connect(this, SIGNAL(editTextChanged(const QString &)), this, SLOT(s_editTextChanged(const QString &)));
     _depura("END BusquedaCanalDelegate::BusquedaCanalDelegate", 0);
 }
 
-
-void BusquedaCanalDelegate::setcompany(Empresa *comp) {
-    m_companyact = comp;
-}
 
 
 /** Libera la memoria reservada.
@@ -135,7 +126,7 @@ void BusquedaCanalDelegate::s_editTextChanged(const QString &cod) {
         semaforo = TRUE;
     } // end if
 
-    m_cursorcombo = m_companyact->cargacursor("SELECT nombre FROM canal WHERE nombre LIKE '" + codigo + "%' ORDER BY nombre LIMIT 25");
+    m_cursorcombo = empresaBase()->cargacursor("SELECT nombre FROM canal WHERE nombre LIKE '" + codigo + "%' ORDER BY nombre LIMIT 25");
     clear();
 
     ///TODO: La idea es que salga en el desplegable del combobox el listado de cuentas que

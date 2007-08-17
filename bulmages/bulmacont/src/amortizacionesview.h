@@ -23,7 +23,7 @@
 #define AMORTIZACIONESVIEW_H
 
 #include "ui_amortizacionesbase.h"
-#include "fichabc.h"
+#include "listado.h"
 
 
 class Empresa;
@@ -31,7 +31,7 @@ class Empresa;
 
 /** Trata la ventana de Listado de Amortizaciones.
 */
-class AmortizacionesView : public FichaBc, public Ui_AmortizacionesBase {
+class AmortizacionesView : public Listado, public Ui_AmortizacionesBase {
     Q_OBJECT
 private:
 
@@ -44,12 +44,9 @@ public:
    AmortizacionesView(Empresa *, QWidget *);
     ~AmortizacionesView();
     void inicializatabla();
-    void editAmortizacion(int);
-public slots:
-    virtual void on_mui_listado_cellDoubleClicked(int, int);
-    virtual void on_mui_crear_clicked();
-    virtual void on_mui_borrar_clicked();
-    virtual void on_mui_actualizar_clicked();
+    void editar(int);
+    virtual void crear();
+    virtual void borrar();
 
 signals:
     void selected(QString);

@@ -435,15 +435,15 @@ QWidget *QSubForm2BcDelegate::createEditor(QWidget *parent, const QStyleOptionVi
         return editor;
     } else if (linea->nomcampo() == "codigo") {
         BusquedaCuentaDelegate *editor = new BusquedaCuentaDelegate(parent);
-        editor->setcompany((Empresa *)m_subform->empresaBase());
+        editor->setEmpresaBase((Empresa *)m_subform->empresaBase());
         return editor;
     } else if (linea->nomcampo() == "nomcanal") {
         BusquedaCanalDelegate *editor = new BusquedaCanalDelegate(parent);
-        editor->setcompany((Empresa *)m_subform->empresaBase());
+        editor->setEmpresaBase(m_subform->empresaBase());
         return editor;
     } else if (linea->nomcampo() == "nomc_coste") {
         BusquedaCCosteDelegate *editor = new BusquedaCCosteDelegate(parent);
-        editor->setcompany((Empresa *)m_subform->empresaBase());
+        editor->setEmpresaBase(m_subform->empresaBase());
         return editor;
     } else if (linea->nomcampo().startsWith("fecha")) {
         BusquedaFecha2 *editor = new BusquedaFecha2(parent);

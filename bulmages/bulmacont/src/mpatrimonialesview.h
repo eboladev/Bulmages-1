@@ -26,17 +26,16 @@
 #include <QStringList>
 
 #include "ui_mpatrimonialesbase.h"
-#include "postgresiface2.h"
+#include "blwidget.h"
 
+class Empresa;
 
 ///
 /** */
-class mpatrimonialesview : public QDialog, public Ui_MPatrimonialesBase {
+class mpatrimonialesview : public QDialog, public Ui_MPatrimonialesBase, public PEmpresaBase {
     Q_OBJECT
 
 public:
-    /// Esta variable indica cual es la base de datos con la que se trabaja.
-    postgresiface2 *conexionbase;
     /// Esta variable indica el n&uacute;mero de d&iacute;gitos que tienen las cuentas
     /// de nivel m&aacute;s bajo.
     int numdigitos;
@@ -48,9 +47,9 @@ public:
     QString idmasa;
 
 public:
-    mpatrimonialesview(QWidget *parent = 0, Qt::WFlags fl = 0);
+    mpatrimonialesview(Empresa *emp, QWidget *parent = 0);
     ~mpatrimonialesview();
-    int inicializa(postgresiface2 *);
+    int inicializa();
     void inicializatabla();
     void setmodoselector();
     void setmodoeditor();

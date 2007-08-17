@@ -31,7 +31,7 @@
 #include <QRadioButton>
 
 #include "ui_regivaprintbase.h"
-#include "postgresiface2.h"
+#include "blwidget.h"
 
 
 class Empresa;
@@ -40,13 +40,11 @@ class Empresa;
 /// Trata el formulario de impresi&oacute;n del registro de IVA y genera los
 /// listados pertinentes.
 /** */
-class regivaprintview : public QDialog, public Ui_RegIvaPrintBase {
+class regivaprintview : public QDialog, public Ui_RegIvaPrintBase, public PEmpresaBase {
     Q_OBJECT
 
 public:
     char *fichero;
-    postgresiface2 *conexionbase;
-    Empresa *empresaactual;
 
 public:
     regivaprintview(Empresa *, QWidget *parent = 0);

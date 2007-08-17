@@ -34,24 +34,21 @@
 
 using std::string;
 
-#include "postgresiface2.h"
+#include "blwidget.h"
 #include "empresa.h"
 
 
 /// Imprime el libro diario.
 /** */
-class diarioprint {
+class DiarioPrint : public PEmpresaBase {
 public:
     char *finicial;
     char *ffinal;
     char *fichero;
-    postgresiface2 *conexionbase;
-    Empresa *empresaactual;
 
 public:
-    diarioprint(Empresa *);
-    ~diarioprint();
-    int inicializa(postgresiface2 *);
+    DiarioPrint(Empresa *);
+    ~DiarioPrint();
     void inicializa1(char *, char *);
     void inicializa2(char *);
     void accept();

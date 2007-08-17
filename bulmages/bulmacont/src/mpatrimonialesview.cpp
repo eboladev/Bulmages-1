@@ -20,10 +20,10 @@
 
 #include "mpatrimonialesview.h"
 #include "mpatrimonialview.h"
+#include "empresa.h"
 
-
-mpatrimonialesview::mpatrimonialesview(QWidget *parent, Qt::WFlags fl)
-        : QDialog(parent, fl) {
+mpatrimonialesview::mpatrimonialesview(Empresa *emp, QWidget *parent)
+        : QDialog(parent), PEmpresaBase(emp) {
     _depura("mpatrimonialesview::mpatrimonialesview", 0);
     setupUi(this);
     modo = 0;
@@ -59,18 +59,16 @@ QString mpatrimonialesview::getidmasa() {
 /// Esta funci&oacute;n se encarga de hacer las inicializaciones de todo el formulario.
 /** Se llama as&iacute; y no desde el constructor porque as&iacute; la podemos llamar
     desde dentro de la misma clase, etc, etc, etc. */
-int mpatrimonialesview::inicializa(postgresiface2 *conn) {
+int mpatrimonialesview::inicializa() {
     _depura("mpatrimonialesview::inicializa", 0);
     cursor2 *cursoraux1;
 
-    conexionbase = conn;
-    conexionbase->begin();
     /// Vamos a cargar el n&uacute;mero de d&iacute;gitos de cuenta para poder hacer
     /// una introducci&oacute;n de numeros de cuenta m&aacute;s pr&aacute;ctica.
-    conexionbase->begin();
+    empresaBase()->begin();
     QString query = "SELECT valor FROM configuracion WHERE nombre = 'CodCuenta'";
-    cursoraux1 = conexionbase->cargacursor(query, "codcuenta");
-    conexionbase->commit();
+    cursoraux1 = empresaBase()->cargacursor(query, "codcuenta");
+    empresaBase()->commit();
     numdigitos = cursoraux1->valor("valor").length();
     delete cursoraux1;
     fprintf(stderr, "las cuentas tienen %d digitos\n", numdigitos);
@@ -93,9 +91,9 @@ void mpatrimonialesview::inicializatabla() {
     mui_tabla->setColumnWidth(1, 400);
 
     QString query = "SELECT * FROM mpatrimonial WHERE idbalance ISNULL";
-    conexionbase->begin();
-    cursor2 *cursoraux1 = conexionbase->cargacursor(query, "elquery");
-    conexionbase->commit();
+    empresaBase()->begin();
+    cursor2 *cursoraux1 = empresaBase()->cargacursor(query, "elquery");
+    empresaBase()->commit();
 
     mui_tabla->setRowCount(cursoraux1->numregistros());
     int i = 0;
@@ -119,8 +117,7 @@ void mpatrimonialesview::dbtabla(int row, int colummn, int button, const QPoint 
     if (modo == 0) {
         QString idmpatrimonial = mui_tabla->item(row, 0)->text();
         /// Creamos el objeto mpatrimonialview, y lo lanzamos.
-        mpatrimonialview *masa = new mpatrimonialview(this);
-        masa->inicializa(conexionbase);
+        mpatrimonialview *masa = new mpatrimonialview((Empresa*)empresaBase(), this);
         masa->inicializa1(idmpatrimonial);
         masa->exec();
         delete masa;
@@ -157,11 +154,11 @@ void mpatrimonialesview::on_mui_borrar_clicked() {
     idmasa = mui_tabla->item(mui_tabla->currentRow(), 0)->text();
     QString query;
     query.sprintf("DELETE FROM compmasap WHERE idmpatrimonial=%s", idmasa.toAscii().constData());
-    conexionbase->begin();
-    conexionbase->ejecuta(query);
+    empresaBase()->begin();
+    empresaBase()->ejecuta(query);
     query.sprintf("DELETE FROM mpatrimonial WHERE idmpatrimonial=%s", idmasa.toAscii().constData());
-    conexionbase->ejecuta(query);
-    conexionbase->commit();
+    empresaBase()->ejecuta(query);
+    empresaBase()->commit();
     inicializatabla();
     _depura("END mpatrimonialesview::on_mui_borrar_clicked", 0);
 }
@@ -169,8 +166,7 @@ void mpatrimonialesview::on_mui_borrar_clicked() {
 
 void mpatrimonialesview::on_mui_nuevo_clicked() {
     _depura("mpatrimonialesview::on_mui_nuevo_clicked", 0);
-    mpatrimonialview *masa = new mpatrimonialview(this);
-    masa->inicializa(conexionbase);
+    mpatrimonialview *masa = new mpatrimonialview((Empresa *)empresaBase(), this);
     masa->exec();
     delete masa;
     /// Como existe la posibilidad de que hayan cambiado las cosas forzamos un repintado.

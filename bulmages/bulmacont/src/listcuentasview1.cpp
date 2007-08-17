@@ -40,13 +40,14 @@
 
 
 listcuentasview1::listcuentasview1(Empresa *emp, QWidget *parent, Qt::WFlags flag, edmode editmode)
-        : FichaBc(emp, parent, flag), pgimportfiles(emp->bdempresa()) {
+        : FichaBc(emp, parent, flag), pgimportfiles(emp) {
     _depura("listcuentasview1::listcuentasview1", 0);
     setupUi(this);
 
-    empresaactual = emp;
+    /// Establezco cual es la tabla en la que basarse para el sistema de permisos
+    setDBTableName("cuenta");
+
     m_modo = editmode;
-    conexionbase= emp->bdempresa();
     /// Para el listado de columnas hacemos una inicializaci&oacute;n.
     QStringList headers;
     headers << tr("Codigo cuenta") << tr("Nombre cuenta") << tr("Debe") << tr("Haber") << tr("ID cuenta") << tr("Bloqueada") << tr("Nodebe") << tr("Nohaber") << tr("Regularizacion") << tr("Imputacion") << tr("Grupo") << tr("Tipo cuenta");
@@ -84,7 +85,7 @@ listcuentasview1::listcuentasview1(Empresa *emp, QWidget *parent, Qt::WFlags fla
 
     installEventFilter(this);
     if (m_modo == EditMode)
-        empresaactual->meteWindow(windowTitle(), this);
+        empresaBase()->meteWindow(windowTitle(), this);
     _depura("END listcuentasview1::listcuentasview1", 0);
 }
 
@@ -92,7 +93,7 @@ listcuentasview1::listcuentasview1(Empresa *emp, QWidget *parent, Qt::WFlags fla
 listcuentasview1::~listcuentasview1() {
     _depura("listcuentasview1::~listcuentasview1", 10);
     if (m_modo == EditMode) {
-        empresaactual->sacaWindow(this);
+        empresaBase()->sacaWindow(this);
     }// end if
     _depura("END listcuentasview1::~listcuentasview1", 10);
 }
@@ -116,7 +117,7 @@ int listcuentasview1::inicializa() {
     ListView1->clear();
 
     /// Cargamos y pintamos las cuentas hijas.
-    cursor2 *ctas = conexionbase->cargacursor("SELECT * FROM cuenta ORDER BY codigo");
+    cursor2 *ctas = empresaBase()->cargacursor("SELECT * FROM cuenta ORDER BY codigo");
     if (ctas->eof()) {
         _depura("El query esta vacio\n", 0);
     } else {
@@ -162,7 +163,7 @@ int listcuentasview1::inicializa() {
 
     /// Cargamos el n&uacute;mero de d&iacute;gitos de cuenta para poder hacer una
     /// introducci&oacute;n de n&uacute;meros de cuenta m&aacute;s pr&aacute;ctica.
-    numdigitos = empresaactual->numdigitosempresa();
+    numdigitos = empresaBase()->numdigitosempresa();
 
     inicializatabla();
     _depura("END listcuentasview1::inicializa", 0);
@@ -177,7 +178,7 @@ void listcuentasview1::inicializatabla()  {
     _depura("listcuentasview1::inicializatabla", 0);
     QString query;
     query = "SELECT * FROM cuenta ORDER BY codigo";
-    cursor2 *cursoraux1 = conexionbase->cargacursor(query);
+    cursor2 *cursoraux1 = empresaBase()->cargacursor(query);
     tablacuentas->setRowCount(cursoraux1->numregistros());
     int i = 0;
     QTableWidgetItem *dato;
@@ -271,10 +272,10 @@ void listcuentasview1::on_ListView1_itemDoubleClicked(QTreeWidgetItem *it, int) 
     mdb_idcuenta = it->text(cidcuenta);
     mdb_desccuenta = it->text(cdesccuenta);
     if (m_modo == EditMode) {
-        CuentaView *nuevae = new CuentaView(empresaactual, 0);
+        CuentaView *nuevae = new CuentaView(empresaBase(), 0);
         nuevae->cargacuenta(atoi(idcuenta().toAscii()));
         inicializa();
-        empresaactual->pWorkspace()->addWindow(nuevae);
+        empresaBase()->pWorkspace()->addWindow(nuevae);
         nuevae->show();
     } else {
         emit(selected(mdb_idcuenta));
@@ -300,7 +301,7 @@ void listcuentasview1::on_mui_crear_clicked()  {
     } // end if
 
     QTreeWidgetItem *it;
-    CuentaView *nuevae = new CuentaView(empresaactual, 0);
+    CuentaView *nuevae = new CuentaView(empresaBase(), 0);
 
     it = ListView1->currentItem();
     if (it) {
@@ -309,7 +310,7 @@ void listcuentasview1::on_mui_crear_clicked()  {
         idgrupo = cadena.toInt();
         nuevae->nuevacuenta(codigo, idgrupo);
     } // end if
-    empresaactual->pWorkspace()->addWindow(nuevae);
+    empresaBase()->pWorkspace()->addWindow(nuevae);
     nuevae->show();
     _depura("END listcuentasview1::on_mui_crear_clicked", 0);
 }
@@ -333,9 +334,9 @@ void listcuentasview1::on_mui_editar_clicked()  {
     mdb_codcuenta = it->text(ccuenta);
     mdb_idcuenta = it->text(cidcuenta);
     mdb_desccuenta = it->text(cdesccuenta);
-    CuentaView *nuevae = new CuentaView(empresaactual, 0);
+    CuentaView *nuevae = new CuentaView(empresaBase(), 0);
     nuevae->cargacuenta(atoi(idcuenta().toAscii()));
-    empresaactual->pWorkspace()->addWindow(nuevae);
+    empresaBase()->pWorkspace()->addWindow(nuevae);
     nuevae->show();
     _depura("END listcuentasview1::on_mui_editar_clicked", 0);
 }
@@ -356,13 +357,13 @@ void listcuentasview1::on_mui_borrar_clicked() {
                                      QMessageBox::Yes, QMessageBox::No);
     if (valor ==  QMessageBox::Yes) {
         int idcuenta = atoi((char *) it->text(cidcuenta).toAscii().constData());
-        conexionbase->begin();
-        if (conexionbase->borrarcuenta(idcuenta) == 0) {
+        empresaBase()->begin();
+        if (empresaBase()->borrarcuenta(idcuenta) == 0) {
             delete it;
         } else {
             mensajeInfo("No se ha podido borrar la cuenta." );
         } // end if
-        conexionbase->commit();
+        empresaBase()->commit();
     } // end if
     _depura("END listcuentasview1::on_mui_borrar_clicked", 0);
 }
@@ -436,7 +437,7 @@ void listcuentasview1::on_mui_imprimir_clicked() {
     QString fitxersortidatxt;
 
     QString query = "SELECT * FROM cuenta ORDER BY codigo";
-    cursor2 *cur = conexionbase->cargacursor(query);
+    cursor2 *cur = empresaBase()->cargacursor(query);
 
     /// L&iacute;nea de totales del presupuesto.
     fitxersortidatxt = "<blockTable style=\"tabla\" repeatRows=\"1\">";

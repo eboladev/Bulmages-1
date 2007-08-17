@@ -22,26 +22,24 @@
 #include  "listcuentasview1.h"
 #include  "empresa.h"
 
-#define CONEXIONBASE empresaactual->bdempresa()
-#define NUMDIGITOS   empresaactual->numdigitosempresa()
+#define NUMDIGITOS   (Empresa *)empresaBase())->numdigitosempresa()
 
 
-cambiactaview::cambiactaview(Empresa *emp, QWidget *parent, Qt::WFlags flag)
-        : QDialog(parent, flag) {
-    _depura("cambiactaview::cambiactaview", 0);
+CambiaCtaView::CambiaCtaView(Empresa *emp, QWidget *parent, Qt::WFlags flag)
+        : QDialog(parent, flag), PEmpresaBase(emp) {
+    _depura("CambiaCtaView::CambiaCtaView", 0);
     setupUi(this);
-    empresaactual = emp;
-    mui_codigoorigen->setEmpresa(emp);
-    mui_codigodestino->setEmpresa(emp);
-    _depura("END cambiactaview::cambiactaview", 0);
+    mui_codigoorigen->setEmpresaBase(emp);
+    mui_codigodestino->setEmpresaBase(emp);
+    _depura("END CambiaCtaView::CambiaCtaView", 0);
 }
 
 
-cambiactaview::~cambiactaview() {}
+CambiaCtaView::~CambiaCtaView() {}
 
 
-void cambiactaview::accept() {
-    _depura("cambiactaview::accept", 0);
+void CambiaCtaView::accept() {
+    _depura("CambiaCtaView::accept", 0);
     QString origen = mui_codigoorigen->text();
     QString destino = mui_codigodestino->text();
     QString ainicial = asientoinicial->text();
@@ -122,14 +120,14 @@ void cambiactaview::accept() {
     if (ffinal != "") {
         query4 = query4 + " AND ffactura <= '" + ffinal + "'";
     } // end if
-    CONEXIONBASE->begin();
-    CONEXIONBASE->ejecuta(query);
-    CONEXIONBASE->ejecuta(query1);
-    CONEXIONBASE->ejecuta(query2);
-    CONEXIONBASE->ejecuta(query3);
-    CONEXIONBASE->ejecuta(query4);
-    CONEXIONBASE->commit();
+    empresaBase()->begin();
+    empresaBase()->ejecuta(query);
+    empresaBase()->ejecuta(query1);
+    empresaBase()->ejecuta(query2);
+    empresaBase()->ejecuta(query3);
+    empresaBase()->ejecuta(query4);
+    empresaBase()->commit();
     done(1);
-    _depura("END cambiactaview::accept", 0);
+    _depura("END CambiaCtaView::accept", 0);
 }
 

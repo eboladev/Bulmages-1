@@ -23,20 +23,18 @@
 #define importainteligente_H
 
 #include <QMap>
+#include <QString>
 #include <qxml.h>
 
+#include "blwidget.h"
 #include "empresa.h"
-
-
-class QString;
-class postgresiface2;
 
 
 /// Sirve para importar asientos inteligentes (plantillas) dentro de la empresa en uso.
 /** Esta clase es un analizador (parser) XML cuya funci&oacute;n es importar a la base
     de datos abierta una plantilla de asiento inteligente. Para ello utiliza las clases
     SAX de Qt. */
-class importainteligente: public QXmlDefaultHandler {
+class importainteligente: public QXmlDefaultHandler, public PEmpresaBase {
 private:
     /// Indica el tag que el parser está procesando en este preciso momento.
     QString tag;
@@ -46,10 +44,7 @@ private:
     /// ido recogiendo y para poder ser recogidos en el momento de escritura en la base
     /// de datos.
     QMap<QString, QString> tvalores;
-    /// Base de datos que se est&aacute; utilizando.
-    postgresiface2 *conexionbase;
-    /// Empresa que sirve de base a todos estos elementos.
-    Empresa *empresaactual;
+
 
 public:
     /// Constructor de la clase que inicializa las variables empresaactual y conexionbase.

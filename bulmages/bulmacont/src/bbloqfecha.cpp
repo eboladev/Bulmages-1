@@ -44,6 +44,30 @@ miQTreeWidgetItem::~miQTreeWidgetItem() {
     return;
 }
 
+BbloqFecha::BbloqFecha(Empresa *emp, QWidget *parent)
+        : FichaBc(emp, parent) {
+    _depura("BbloqFecha::BbloqFecha", 0);
+
+    /// Establecemos cual es la tabla en la que basarse para obtener permisos
+    setDBTableName("asiento");
+
+    qsbloqueado = tr("Bloqueado");
+    qsabierto = tr ("Abierto");
+    setAttribute(Qt::WA_DeleteOnClose);
+    setupUi(this);
+    QString query;
+    inicializa();
+    empresaBase()->meteWindow(windowTitle(), this);
+    _depura("ENd BbloqFecha::BbloqFecha", 0);
+}
+
+
+BbloqFecha::~BbloqFecha() {
+    _depura("BbloqFecha::~BbloqFecha", 0);
+    empresaBase()->sacaWindow(this);
+    _depura("ENd BbloqFecha::~BbloqFecha", 0);
+}
+
 
 void BbloqFecha::inicializa() {
     _depura("BbloqFecha::inicializa", 0);
@@ -62,7 +86,7 @@ void BbloqFecha::inicializa() {
 
     /// Consultamos a la base de datos.
     consultabd.sprintf("SELECT * FROM ejercicios WHERE periodo = 0 ORDER BY ejercicio DESC");
-    cursor2 *curPeri, *curEjer = m_companyact->cargacursor(consultabd);
+    cursor2 *curPeri, *curEjer = empresaBase()->cargacursor(consultabd);
 
     while (!curEjer->eof()) {
 
@@ -80,7 +104,7 @@ void BbloqFecha::inicializa() {
 
 
         consultabd.sprintf("SELECT * FROM ejercicios WHERE ejercicio = '%s' ORDER BY periodo DESC", curEjer->valor("ejercicio").toAscii().constData());
-        curPeri = m_companyact->cargacursor(consultabd);
+        curPeri = empresaBase()->cargacursor(consultabd);
         while (!curPeri->eof()) {
             switch (curPeri->valor("periodo").toInt()) {
             case 12:
@@ -143,28 +167,6 @@ void BbloqFecha::inicializa() {
 }
 
 
-BbloqFecha::BbloqFecha(Empresa *emp, QWidget *parent)
-        : QWidget(parent) {
-    _depura("BbloqFecha::BbloqFecha", 0);
-    qsbloqueado = tr("Bloqueado");
-    qsabierto = tr ("Abierto");
-    setAttribute(Qt::WA_DeleteOnClose);
-    setupUi(this);
-    QString query;
-    m_companyact = emp;
-    inicializa();
-    m_companyact->meteWindow(windowTitle(), this);
-    _depura("ENd BbloqFecha::BbloqFecha", 0);
-}
-
-
-BbloqFecha::~BbloqFecha() {
-    _depura("BbloqFecha::~BbloqFecha", 0);
-    m_companyact->sacaWindow(this);
-    _depura("ENd BbloqFecha::~BbloqFecha", 0);
-}
-
-
 void BbloqFecha::on_mui_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int columna) {
     _depura("BbloqFecha::on_mui_treeWidget_doubleClicked", 0);
     int error;
@@ -173,11 +175,11 @@ void BbloqFecha::on_mui_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int 
         if (item->text(1) == qsbloqueado) {
             item->setText(1, qsabierto);
             QString consultabd = "UPDATE ejercicios SET bloqueado = FALSE WHERE ejercicio = '" + it->ej + "' AND periodo = '" + it->per + "'";
-            error = m_companyact->ejecuta(consultabd);
+            error = empresaBase()->ejecuta(consultabd);
         } else {
             item->setText(1, qsbloqueado);
             QString consultabd = "UPDATE ejercicios SET bloqueado = TRUE WHERE ejercicio = '" + it->ej + "' AND periodo = '" + it->per + "'";
-            error = m_companyact->ejecuta(consultabd);
+            error = empresaBase()->ejecuta(consultabd);
         } // end if
     } // end if
     _depura("END BbloqFecha::on_mui_treeWidget_doubleClicked", 0);
@@ -189,7 +191,7 @@ void BbloqFecha::on_mui_crear_clicked() {
     int ejer = 2006;
 
     QString consultabd = "SELECT max(ejercicio) AS ej FROM ejercicios";
-    cursor2 *cur = m_companyact->cargacursor(consultabd);
+    cursor2 *cur = empresaBase()->cargacursor(consultabd);
     if (!cur->eof()) {
         ejer = cur->valor("ej").toInt();
     } // end if
@@ -198,7 +200,7 @@ void BbloqFecha::on_mui_crear_clicked() {
 
     for (int x = 0; x <= 12; x++) {
         QString consultabd = "INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES('" + QString::number(ejer) + "', '" + QString::number(x) + "', 'f')";
-        m_companyact->ejecuta(consultabd);
+        empresaBase()->ejecuta(consultabd);
     } // end for
 
     inicializa();

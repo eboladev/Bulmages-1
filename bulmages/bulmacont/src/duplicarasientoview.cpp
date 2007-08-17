@@ -22,14 +22,13 @@
 #include "empresa.h"
 #include "funcaux.h"
 
-#define NUMDIGITOS   empresaactual->numdigitosempresa()
+#define NUMDIGITOS   empresaBase()->numdigitosempresa()
 
 
 DuplicarAsientoView::DuplicarAsientoView(Empresa *emp, QWidget *parent, Qt::WFlags flag)
-        : QDialog(parent, flag) {
+        : QDialog(parent, flag), PEmpresaBase(emp) {
     _depura("DuplicarAsientoView::DuplicarAsientoView", 0);
     setupUi(this);
-    empresaactual = emp;
     fdinicial->setText(QDate::currentDate().toString("dd/MM/yyyy"));
     _depura("END DuplicarAsientoView::DuplicarAsientoView", 0);
 }
@@ -46,9 +45,9 @@ void DuplicarAsientoView::inicializa(QString ainicial, QString afinal) {
     aoinicial->setText(ainicial);
     aofinal->setText(afinal);
     QString query = "SELECT * FROM asiento WHERE ordenasiento = " + ainicial;
-    empresaactual->begin();
-    cursor2 *cur = empresaactual->cargacursor(query, "hola");
-    empresaactual->commit();
+    empresaBase()->begin();
+    cursor2 *cur = empresaBase()->cargacursor(query, "hola");
+    empresaBase()->commit();
     if (!cur->eof()) {
         foinicial->setText(cur->valor("fecha").left(10));
     } // end if
@@ -63,9 +62,9 @@ void DuplicarAsientoView::lostFocus() {
     _depura("DuplicarAsientoView::lostFocus", 0);
     QString ainicial = aoinicial->text();
     QString query = "SELECT * FROM asiento WHERE ordenasiento = " + ainicial;
-    empresaactual->begin();
-    cursor2 *cur = empresaactual->cargacursor(query, "hola");
-    empresaactual->commit();
+    empresaBase()->begin();
+    cursor2 *cur = empresaBase()->cargacursor(query, "hola");
+    empresaBase()->commit();
     if (!cur->eof()) {
         foinicial->setText(cur->valor("fecha").left(10));
     } // end if
@@ -93,15 +92,15 @@ void DuplicarAsientoView::on_mui_aceptar_clicked() {
 /*
     /// Buscamos el orden asiento para la duplicaci&oacute;n.
     QString query = "SELECT max(ordenasiento) AS orden FROM asiento ";
-    empresaactual->begin();
-    cursor2 *cur = empresaactual->cargacursor(query);
+    empresaBase()->begin();
+    cursor2 *cur = empresaBase()->cargacursor(query);
     if (!cur->eof()) {
         ordeninicial = atoi(cur->valor("orden").toAscii()) + 1;
     } // end if
     delete cur;
 
     query1 = "SELECT max(idasiento) AS maxim FROM asiento";
-    cursor2 *cursaux = empresaactual->cargacursor(query1);
+    cursor2 *cursaux = empresaBase()->cargacursor(query1);
     if (!cursaux->eof()) {
         idasiento = atoi(cursaux->valor("maxim").toAscii());
         idasientoinicial = atoi(cursaux->valor("maxim").toAscii()) + 1;
@@ -110,15 +109,15 @@ void DuplicarAsientoView::on_mui_aceptar_clicked() {
 */
 
     query1 = "SELECT * FROM asiento WHERE ordenasiento >= " + asientoi + " AND ordenasiento <= " + asientof +" AND EXTRACT (YEAR FROM fecha) = EXTRACT (YEAR FROM '" + fedinicial.toString("dd/MM/yyyy") + "'::date)";
-    cursor2 *curasiento = empresaactual->cargacursor(query1);
+    cursor2 *curasiento = empresaBase()->cargacursor(query1);
     while (!curasiento->eof()) {
 
         query1 = "INSERT INTO asiento (descripcion, fecha, comentariosasiento) VALUES('" + curasiento->valor("descripcion") + "','" + fedinicial.toString("dd/MM/yyyy") + "','" + curasiento->valor("comentariosasiento") + "')";
-        empresaactual->ejecuta(query1);
+        empresaBase()->ejecuta(query1);
 
 
     query1 = "SELECT * FROM asiento  ORDER BY idasiento DESC LIMIT 1";
-    cursor2 *cursaux = empresaactual->cargacursor(query1);
+    cursor2 *cursaux = empresaBase()->cargacursor(query1);
     if (!cursaux->eof()) {
         idasiento = cursaux->valor("idasiento");
         ordenasiento = cursaux->valor("ordenasiento");
@@ -128,7 +127,7 @@ void DuplicarAsientoView::on_mui_aceptar_clicked() {
 
 
         query2 = "SELECT * FROM borrador WHERE idasiento = " + curasiento->valor("idasiento");
-        cursor2 *curborrador = empresaactual->cargacursor(query2);
+        cursor2 *curborrador = empresaBase()->cargacursor(query2);
 
         while (!curborrador->eof()) {
             QString textiddiario = curborrador->valor("iddiario");
@@ -154,17 +153,17 @@ void DuplicarAsientoView::on_mui_aceptar_clicked() {
                 textorden = "0";
             } // end if
             query2 = "INSERT INTO borrador (orden, idasiento, iddiario, fecha, conceptocontable, idcuenta, descripcion, debe, haber, contrapartida) VALUES (" + textorden + ","+idasiento + "," + textiddiario + ",'" + textfecha + "','" + textconceptocontable + "'," + textidcuenta + ",'" + textdescripcion + "'," + textdebe + "," + texthaber + "," + textcontrapartida + ")";
-            empresaactual->ejecuta(query2);
+            empresaBase()->ejecuta(query2);
             curborrador->siguienteregistro();
         } // end while
         delete curborrador;
     query2 = "SELECT cierraasiento("+idasiento+")";
-    cursor2 *cur = empresaactual->cargacursor(query2);
+    cursor2 *cur = empresaBase()->cargacursor(query2);
     delete cur;
         curasiento->siguienteregistro();
     } // end while
     delete curasiento;
-    empresaactual->commit();
+    empresaBase()->commit();
     done(1);
     _depura("END DuplicarAsientoView::on_mui_aceptar_clicked", 0);
 }

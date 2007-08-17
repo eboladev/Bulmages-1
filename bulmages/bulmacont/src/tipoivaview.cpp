@@ -27,16 +27,19 @@
 
 /// El constructor de la clase prepara las variables globales y llama a la función pintar.ç
 tipoivaview::tipoivaview(Empresa *emp, QWidget *parent)
-        : Ficha(parent) {
+        : FichaBc(emp, parent) {
     _depura("tipoivaview::tipoivaview", 0);
+
+    /// Establecemos cual es la tabla en la que basarse para los permisos
+    setDBTableName("tipo_iva");
+
     this->setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
-    empresaactual = emp;
-    m_codigoCtaTipoIVA->setEmpresa(emp);
+    m_codigoCtaTipoIVA->setEmpresaBase(emp);
     m_curtipoiva = NULL;
     dialogChanges_cargaInicial();
     pintar();
-    empresaactual->meteWindow(windowTitle(), this);
+    meteWindow(windowTitle(), this);
     _depura("END tipoivaview::tipoivaview", 0);
 }
 
@@ -48,7 +51,7 @@ tipoivaview::~tipoivaview() {
     on_mui_guardar2_clicked();
     if (m_curtipoiva != NULL)
         delete m_curtipoiva;
-    empresaactual->sacaWindow(this);
+    empresaBase()->sacaWindow(this);
     _depura("END tipoivaview::~tipoivaview", 0);
 }
 
@@ -62,7 +65,7 @@ void tipoivaview::pintar(QString idtipoiva) {
     if (m_curtipoiva != NULL)
         delete m_curtipoiva;
     QString query = "SELECT * from tipoiva left join cuenta ON tipoiva.idcuenta = cuenta.idcuenta ORDER BY nombretipoiva";
-    m_curtipoiva = empresaactual->cargacursor(query);
+    m_curtipoiva = empresaBase()->cargacursor(query);
     mui_comboTipoIVA->clear();
     int i = 0;
     while (!m_curtipoiva->eof()) {
@@ -119,7 +122,7 @@ void tipoivaview::on_mui_guardar2_clicked() {
     _depura("tipoivaview::on_mui_guardar2_clicked", 0);
     QString idtipoiva = m_curtipoiva->valor("idtipoiva", m_posactual);
     QString query = "UPDATE tipoiva SET nombretipoiva = '" + m_nombreTipoIVA->text() + "', porcentajetipoiva = " + m_porcentTipoIVA->text() + " , idcuenta = id_cuenta('" + m_codigoCtaTipoIVA->text() + "') WHERE idtipoiva = " + m_curtipoiva->valor("idtipoiva", m_posactual);
-    empresaactual->ejecuta(query);
+    empresaBase()->ejecuta(query);
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
     pintar(m_curtipoiva->valor("idtipoiva", m_posactual));
@@ -141,10 +144,10 @@ void tipoivaview::on_mui_nuevo2_clicked() {
             on_mui_guardar2_clicked();
     } // end if
     QString query = "INSERT INTO tipoiva (nombretipoiva, porcentajetipoiva, idcuenta) VALUES ('NUEVO TIPO IVA', 0, id_cuenta('47'))";
-    empresaactual->begin();
-    empresaactual->ejecuta(query);
-    cursor2 *cur = empresaactual->cargacursor("SELECT max(idtipoiva) AS idtipoiva FROM tipoiva");
-    empresaactual->commit();
+    empresaBase()->begin();
+    empresaBase()->ejecuta(query);
+    cursor2 *cur = empresaBase()->cargacursor("SELECT max(idtipoiva) AS idtipoiva FROM tipoiva");
+    empresaBase()->commit();
     pintar(cur->valor("idtipoiva"));
     delete cur;
     _depura("END tipoivaview::on_mui_nuevo2_clicked()", 0);
@@ -161,7 +164,7 @@ void tipoivaview::on_mui_borrar2_clicked() {
                                  QMessageBox::Ok,
                                  QMessageBox::Cancel)) {
     case QMessageBox::Ok: /// Retry clicked or Enter pressed.
-        empresaactual->ejecuta("DELETE FROM tipoiva WHERE idtipoiva = " + m_curtipoiva->valor("idtipoiva", mui_comboTipoIVA->currentIndex()));
+        empresaBase()->ejecuta("DELETE FROM tipoiva WHERE idtipoiva = " + m_curtipoiva->valor("idtipoiva", mui_comboTipoIVA->currentIndex()));
         pintar();
         break;
     case QMessageBox::Cancel: /// Abort clicked or Escape pressed.

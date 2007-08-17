@@ -29,7 +29,7 @@
 #include "ui_balanceprintbase.h"
 #include "postgresiface2.h"
 #include "empresa.h"
-
+#include "blwidget.h"
 
 /// Formulario introducción de datos para la impresión del balance de sumas y saldos.
 /** \todo Hay que cambiar el array de ccostes por un cursor.
@@ -37,14 +37,9 @@
     (Fechas y rangos) y que se encarga de generar el balance en los formatos de
     impresi&oacute;n indicados.
 */
-class BalancePrintView : public QDialog, public Ui_BalancePrintBase {
+class BalancePrintView : public QDialog, public Ui_BalancePrintBase, public PEmpresaBase {
     Q_OBJECT
 
-private:
-    /// La base de datos con la que la clase est&aacute; trabajando.
-    postgresiface2 *conexionbase;
-    /// La empresa con la que la clase est&aacute; trabajando.
-    Empresa *empresaactual;
 
 public:
     BalancePrintView(Empresa *emp);

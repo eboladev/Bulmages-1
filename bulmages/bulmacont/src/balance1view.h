@@ -55,8 +55,6 @@ class BalanceTreeView : public FichaBc, public Ui_BalanceTreeBase {
     Q_OBJECT
 
 private:
-    /// Empresa con la que trabaja la clase.
-    Empresa *m_companyact;
     /// Indica el n&uacute;mero de d&iacute;gitos que tienen por defecto las cuentas.
     int numdigitos;
     int m_ccuenta;

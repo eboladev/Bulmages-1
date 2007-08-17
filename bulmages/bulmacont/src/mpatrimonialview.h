@@ -25,24 +25,22 @@
 #include <QWidget>
 
 #include "ui_mpatrimonialbase.h"
-#include "postgresiface2.h"
+#include "blwidget.h"
 #include "funcaux.h"
 
+class Empresa;
 
-class mpatrimonialview : public QDialog, public Ui_MPatrimonialBase {
+class mpatrimonialview : public QDialog, public Ui_MPatrimonialBase, public PEmpresaBase {
     Q_OBJECT
 
 public:
-    /// La base de la empresa con la que trabajamos.
-    postgresiface2 *conexionbase;
     /// El identificador de masa patrimonial. (Lo guardamos en forma de string porque es una
     /// prueba en la que no hay que hacer convesiones de tipos).
     QString idmpatrimonial;
 
 public:
-    mpatrimonialview(QWidget *parent = 0);
+    mpatrimonialview(Empresa *, QWidget *parent = 0, Qt::WFlags fl = 0);
     ~mpatrimonialview();
-    int inicializa(postgresiface2 *);
     void inicializa1(QString);
     QString getidmasa();
     QString getnommasa();

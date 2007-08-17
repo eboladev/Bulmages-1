@@ -26,6 +26,7 @@
 
 #include <ui_selectccostebase.h>
 
+#include "blwidget.h"
 
 class Empresa;
 
@@ -37,12 +38,10 @@ class Empresa;
     Tambi&eacute;n se utiliza para establecer el centro de coste por defecto, utlidad
     que permite introducir asientos directamente en un centro de coste sin tener que
     teclearlo en cada apunte. */
-class selectccosteview : public QDialog, public Ui_SelectCCosteBase {
+class SelectCCosteView : public QDialog, public Ui_SelectCCosteBase, public PEmpresaBase {
     Q_OBJECT
 
 private:
-    /// Empresa con la que se inicializa la clase.
-    Empresa *empresaactual;
     ///Indice de la columna que pone el nombre del centro de coste en la lista del formulario.
     int m_colNomCoste;
     /// Indice de la columna que indica la descripcion del centro de coste en la lista
@@ -63,9 +62,9 @@ private:
 public:
     /// Constructor de la clase que recibe el parametro de empresa y que inicializa la
     /// base de datos a utilizar.
-    selectccosteview(Empresa *emp, QWidget *parent = 0);
+    SelectCCosteView(Empresa *emp, QWidget *parent = 0);
     /// Destructor de la clase.
-    ~selectccosteview();
+    ~SelectCCosteView();
     void cargacostes();
     int firstccoste();
     int nextccoste();

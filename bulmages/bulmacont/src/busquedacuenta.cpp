@@ -24,10 +24,9 @@
 #include  "plugins.h"
 
 BusquedaCuenta::BusquedaCuenta(QWidget *parent)
-        : QWidget(parent) {
+        : BLWidget(parent) {
     _depura("BusquedaCuenta::BusquedaCuenta", 0);
     setupUi(this);
-    m_companyact = NULL;
     mdb_idcuenta = "";
     mdb_nomcuenta = "";
     mdb_codigocuenta = "";
@@ -47,10 +46,6 @@ QString BusquedaCuenta::text() {
     return mdb_codigocuenta;
 }
 
-
-Empresa *BusquedaCuenta::_empresa() {
-    return m_companyact;
-}
 
 
 void BusquedaCuenta::setText(QString val) {
@@ -118,10 +113,10 @@ void BusquedaCuenta::setFocus() {
 }
 
 
-void BusquedaCuenta::setEmpresa(Empresa *comp) {
+void BusquedaCuenta::setEmpresaBase(Empresa *emp) {
     _depura("BusquedaCuenta::setempresa", 10);
-    m_companyact = comp;
-    m_numdigitos = m_companyact->numdigitosempresa();
+    BLWidget::setEmpresaBase(emp);
+    m_numdigitos = ((Empresa *)empresaBase())->numdigitosempresa();
     _depura("END BusquedaCuenta::setempresa", 0);
 }
 
@@ -130,7 +125,7 @@ void BusquedaCuenta::setidcuenta(QString val) {
     _depura("BusquedaCuenta::setidcuenta", 10);
     mdb_idcuenta=val;
     QString SQLQuery = "SELECT * FROM cuenta WHERE idcuenta = '" + mdb_idcuenta + "'";
-    cursor2 *cur = m_companyact->cargacursor(SQLQuery);
+    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
     if (!cur->eof()) {
         mdb_codigocuenta = cur->valor("codigo");
         mdb_nomcuenta = cur->valor("descripcion");
@@ -152,7 +147,7 @@ void BusquedaCuenta::setcodigocuenta(QString val) {
     _depura("BusquedaCuenta::setcodigocuenta", 10);
     mdb_codigocuenta = val;
     QString SQLQuery = "SELECT * FROM cuenta WHERE codigo = '" + mdb_codigocuenta + "'";
-    cursor2 *cur = m_companyact->cargacursor(SQLQuery);
+    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
     if (!cur->eof()) {
         mdb_idcuenta = cur->valor("idcuenta");
         mdb_nomcuenta = cur->valor("descripcion");
@@ -177,7 +172,7 @@ void BusquedaCuenta::s_searchCuenta() {
     diag->setModal(true);
 
     /// Creamos una instancia del selector de cuentas.
-    listcuentasview1 *listcuentas = new listcuentasview1(m_companyact, diag, 0, listcuentasview1::SelectMode);
+    listcuentasview1 *listcuentas = new listcuentasview1((Empresa *)empresaBase(), diag, 0, listcuentasview1::SelectMode);
 
     /// Hacemos la conexi&oacute;n del cerrar de las cuentas con el cerrar di&aacute;logo.
     connect(listcuentas, SIGNAL(selected(QString)), diag, SLOT(accept()));
@@ -215,7 +210,7 @@ void BusquedaCuenta::s_lostFocus() {
     QString cad = mdb_codigocuenta;
     if (cad != "") {
         cad = extiendecodigo(cad,m_numdigitos);
-        cursor2 *cursorcta = m_companyact->cargacuenta(0, cad);
+        cursor2 *cursorcta = empresaBase()->cargacuenta(0, cad);
         int num = cursorcta->numregistros();
         if (num == 1) {
             mdb_codigocuenta = cursorcta->valor("codigo");
@@ -257,7 +252,6 @@ void BusquedaCuenta::s_returnPressed() {
 BusquedaCuentaDelegate::BusquedaCuentaDelegate(QWidget *parent)
         : QComboBox(parent) {
     _depura("BusquedaCuentaDelegate::BusquedaCuentaDelegate", 10);
-    m_companyact = NULL;
     m_cursorcombo = NULL;
     setEditable(true);
     connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
@@ -266,9 +260,6 @@ BusquedaCuentaDelegate::BusquedaCuentaDelegate(QWidget *parent)
 }
 
 
-void BusquedaCuentaDelegate::setcompany(Empresa *comp) {
-    m_companyact = comp;
-}
 
 
 /** Libera la memoria reservada.
@@ -303,7 +294,7 @@ void BusquedaCuentaDelegate::s_editTextChanged(const QString &cod) {
     } // end if
 
     codigo = codigo.left(codigo.indexOf(".-"));
-    m_cursorcombo = m_companyact->cargacursor("SELECT codigo, descripcion FROM cuenta WHERE codigo LIKE '" + codigo + "%' ORDER BY codigo LIMIT 25");
+    m_cursorcombo = empresaBase()->cargacursor("SELECT codigo, descripcion FROM cuenta WHERE codigo LIKE '" + codigo + "%' ORDER BY codigo LIMIT 25");
     clear();
 
     ///TODO: La idea es que salga en el desplegable del combobox el listado de cuentas que

@@ -23,6 +23,19 @@
 #include "funcaux.h"
 
 
+/**  Inicializa el objeto y hace todas las conexiones necesarias.
+*/
+BusquedaFecha2::BusquedaFecha2(QWidget *parent) : QLineEdit(parent) {
+    installEventFilter(this);
+    QObject::connect(this, SIGNAL(editingFinished()), this, SLOT(on_mui_editingFinished()));
+}
+
+
+/** No requiere de acciones especiales en el destructor.
+*/
+BusquedaFecha2::~BusquedaFecha2() {
+}
+
 void BusquedaFecha2::setText(QString val) {
     QLineEdit::setText(val);
 }
@@ -37,18 +50,6 @@ QString BusquedaFecha2::text() {
 }
 
 
-/**  Inicializa el objeto y hace todas las conexiones necesarias.
-*/
-BusquedaFecha2::BusquedaFecha2(QWidget *parent) : QLineEdit(parent) {
-    installEventFilter(this);
-    QObject::connect(this, SIGNAL(editingFinished()), this, SLOT(on_mui_editingFinished()));
-}
-
-
-/** No requiere de acciones especiales en el destructor.
-*/
-BusquedaFecha2::~BusquedaFecha2() {
-}
 
 
 void BusquedaFecha2::on_mui_editingFinished() {

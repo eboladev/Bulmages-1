@@ -24,15 +24,15 @@
 
 #include <QComboBox>
 
+#include "blwidget.h"
 #include "empresa.h"
 #include "postgresiface2.h"
 
 
-class BusquedaCanalDelegate : public QComboBox {
+class BusquedaCanalDelegate : public QComboBox, public PEmpresaBase {
     Q_OBJECT
 
 private:
-    Empresa *m_companyact;
     /// Este cursor almacena el listado de series de factura para poder trabajar con ellas.
     cursor2 *m_cursorcombo;
     QCompleter *completar;
@@ -40,7 +40,6 @@ private:
 public:
     BusquedaCanalDelegate(QWidget *parent = 0);
     ~BusquedaCanalDelegate();
-    void setcompany(Empresa *comp);
 
 public slots:
     virtual void s_editTextChanged(const QString &);
@@ -48,17 +47,15 @@ public slots:
 
 
 
-class BusquedaCanal : public QComboBox {
+class BusquedaCanal : public QComboBox, public PEmpresaBase {
     Q_OBJECT
 
 private:
-    Empresa *companyact;
     cursor2 *m_cursorcombo;
 
 public:
     BusquedaCanal(QWidget *parent = 0);
     ~BusquedaCanal();
-    void setcompany(Empresa *comp);
     virtual void setidcanal(QString idcanal);
     QString idcanal();
 

@@ -30,21 +30,23 @@
 
 
 CAnualesView::CAnualesView(Empresa  *emp, QWidget *parent)
-        : Ficha(parent) {
+        : FichaBc(emp, parent) {
     _depura("CAnualesView::CAnualesView", 0);
+    /// Establecemos cual va a ser la tabla en la que basarse para los permisos
+    setDBTableName("asiento");
+
     this->setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
-    m_companyact = emp;
     m_modo = 0;
     inicializatabla();
-    m_companyact->meteWindow(windowTitle(), this);
+    empresaBase()->meteWindow(windowTitle(), this);
     _depura("END CAnualesView::CAnualesView", 0);
 }
 
 
 CAnualesView::~CAnualesView() {
     _depura("CAnualesView::~CAnualesView\n", 0);
-    m_companyact->sacaWindow(this);
+    empresaBase()->sacaWindow(this);
     _depura("END CAnualesView::~CAnualesView\n", 0);
 }
 
@@ -125,7 +127,7 @@ void CAnualesView::on_mui_listado_itemDoubleClicked(QTableWidgetItem *) {
 void CAnualesView::imprimir() {
     _depura("CAnualesView::imprimir", 0);
     QString idbalance = mui_listado->item(mui_listado->currentRow(), COL_ARCHIVO)->text();
-    CAnualesPrintView *b = new CAnualesPrintView(m_companyact, 0);
+    CAnualesPrintView *b = new CAnualesPrintView(empresaBase(), 0);
     b->setidbalance(idbalance);
     b->exec();
     delete b;

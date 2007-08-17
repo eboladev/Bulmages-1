@@ -46,8 +46,6 @@ class BalanceView : public FichaBc, public Ui_BalanceBase {
     Q_OBJECT
 
 private:
-    /// Empresa con la que se ha inicializado la clase.
-    Empresa *m_companyact;
     /// Cursor para recorrer las cuentas.
     cursor2 *m_cursorcta;
     /// El n&uacute;mero de d&iacute;gitos que tienen las cuentas de la empresa.

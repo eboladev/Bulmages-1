@@ -28,42 +28,40 @@
 /** La base de datos establece que de momento no se ha visitado ning&uacute;n tag .
     Establece que no hay ning&uacute;n dato recogido del XML.
     Inidca que el paso que vamos a procesar es el 0. */
-importbalance::importbalance(Empresa *emp) : QXmlDefaultHandler() {
-    _depura("importbalance::importbalance", 0);
-    empresaactual = emp;
-    conexionbase = emp->bdempresa();
+ImportBalance::ImportBalance(Empresa *emp) : QXmlDefaultHandler(), PEmpresaBase(emp) {
+    _depura("ImportBalance::ImportBalance", 0);
     m_tag = "";
     m_data = "";
     m_paso = 0;
-    _depura("END importbalance::importbalance", 0);
+    _depura("END ImportBalance::ImportBalance", 0);
 }
 
 
-void importbalance::cambiapaso() {
+void ImportBalance::cambiapaso() {
     m_paso = 1;
 }
 
 
 /** Dependiendo del paso en que nos encontremos hace la llamada a una funcio u a otra. */
-bool importbalance::startElement(const QString &a, const QString &b, const QString &c, const QXmlAttributes &d) {
-    _depura("importbalance::startElement", 0);
+bool ImportBalance::startElement(const QString &a, const QString &b, const QString &c, const QXmlAttributes &d) {
+    _depura("ImportBalance::startElement", 0);
     if (m_paso == 0) {
         return startElement1(a, b, c, d);
     } else {
         return startElement2(a, b, c, d);
     } // end if
-    _depura("END importbalance::startElement", 0);
+    _depura("END ImportBalance::startElement", 0);
 }
 
 /// Dependiendo del paso en que nos encontremos hace la llamada a una función u a otra.
-bool importbalance::endElement(const QString &a, const QString &b, const QString &c) {
-    _depura("importbalance::endlement", 0);
+bool ImportBalance::endElement(const QString &a, const QString &b, const QString &c) {
+    _depura("ImportBalance::endlement", 0);
     if (m_paso == 0) {
         return endElement1 (a, b, c);
     } else {
         return endElement2 (a, b, c);
     } // end if
-    _depura("END importbalance::startElement", 0);
+    _depura("END ImportBalance::startElement", 0);
 }
 
 
@@ -75,35 +73,35 @@ bool importbalance::endElement(const QString &a, const QString &b, const QString
     hacer el almacenamiento de datos en el caso de que sea un tag secundario.
     \param qName el nombre del tag que se ha encontrado.
     \return TRUE para no detener la ejecución del parser en caso de error. */
-bool importbalance::startElement1(const QString&, const QString&, const QString& qName, const QXmlAttributes&) {
-    _depura("importbalance::startElement1", 0);
+bool ImportBalance::startElement1(const QString&, const QString&, const QString& qName, const QXmlAttributes&) {
+    _depura("ImportBalance::startElement1", 0);
     m_tag = qName;
     QString SQLQuery;
     if (m_tag == "balance") {
         SQLQuery.sprintf("INSERT INTO balance (nombrebalance) VALUES ('Elemento importado')\n");
-        conexionbase->begin();
-        conexionbase->ejecuta(SQLQuery);
+        empresaBase()->begin();
+        empresaBase()->ejecuta(SQLQuery);
         SQLQuery = "SELECT max(idbalance) AS idbalance FROM balance";
-        cursor2 *cur = conexionbase->cargacursor(SQLQuery, "unquerymas");
-        conexionbase->commit();
+        cursor2 *cur = empresaBase()->cargacursor(SQLQuery, "unquerymas");
+        empresaBase()->commit();
         if (!cur->eof()) {
             m_tvalores["idbalance"] = cur->valor("idbalance");
         } // end if
         delete cur;
     } // end if
     if (m_tag == "mpatrimonial") {
-        SQLQuery.sprintf("INSERT INTO mpatrimonial (idbalance) VALUES (%s)\n", conexionbase->sanearCadena(m_tvalores["idbalance"]).toAscii().constData());
-        conexionbase->begin();
-        conexionbase->ejecuta(SQLQuery);
+        SQLQuery.sprintf("INSERT INTO mpatrimonial (idbalance) VALUES (%s)\n", empresaBase()->sanearCadena(m_tvalores["idbalance"]).toAscii().constData());
+        empresaBase()->begin();
+        empresaBase()->ejecuta(SQLQuery);
         SQLQuery = "SELECT max(idmpatrimonial) AS idmpatrimonial FROM mpatrimonial";
-        cursor2 *cur = conexionbase->cargacursor(SQLQuery, "unquerymas");
-        conexionbase->commit();
+        cursor2 *cur = empresaBase()->cargacursor(SQLQuery, "unquerymas");
+        empresaBase()->commit();
         if (!cur->eof()) {
             m_tvalores["idmpatrimonial_nueva"] = cur->valor("idmpatrimonial");
         } // end if
         delete cur;
     } // end if
-    _depura("END importbalance::startElement1", 0);
+    _depura("END ImportBalance::startElement1", 0);
     return TRUE;
 }
 
@@ -119,15 +117,15 @@ bool importbalance::startElement1(const QString&, const QString&, const QString&
     autonum&eacute;ricos).
     \param qName El nombre del tag cerrado.
     \return TRUE para no detener la ejecución del parser SAX. */
-bool importbalance::endElement1(const QString&, const QString&, const QString& qName) {
-    _depura("importbalance::endElement1", 0);
+bool ImportBalance::endElement1(const QString&, const QString&, const QString& qName) {
+    _depura("ImportBalance::endElement1", 0);
     m_tag = qName;
     QString SQLQuery;
     if (qName == "balance") {
         SQLQuery.sprintf("UPDATE balance SET nombrebalance = '%s' WHERE idbalance = %s\n", m_tvalores["nombrebalance"].toAscii().constData(), m_tvalores["idbalance"].toAscii().constData());
-        conexionbase->begin();
-        conexionbase->ejecuta(SQLQuery);
-        conexionbase->commit();
+        empresaBase()->begin();
+        empresaBase()->ejecuta(SQLQuery);
+        empresaBase()->commit();
     }
     if (qName == "mpatrimonial") {
         /// En la inserci&oacute;n de masas patrimoniales hay que hacer una
@@ -136,41 +134,41 @@ bool importbalance::endElement1(const QString&, const QString&, const QString& q
         /// compmasap para que la cosa funcione.
         m_identmasasp[m_tvalores["idmasa"]] = m_tvalores["idmpatrimonial_nueva"];
         SQLQuery.sprintf("UPDATE mpatrimonial SET descmpatrimonial = '%s' WHERE idmpatrimonial = %s\n", m_tvalores["descmpatrimonial"].toAscii().constData(), m_tvalores["idmpatrimonial_nueva"].toAscii().constData());
-        conexionbase->begin();
-        conexionbase->ejecuta(SQLQuery);
-        conexionbase->commit();
+        empresaBase()->begin();
+        empresaBase()->ejecuta(SQLQuery);
+        empresaBase()->commit();
         if (m_tvalores["orden"] != "") {
             SQLQuery.sprintf("UPDATE mpatrimonial SET orden = %s WHERE idmpatrimonial = %s\n", m_tvalores["orden"].toAscii().constData(), m_tvalores["idmpatrimonial_nueva"].toAscii().constData());
-            conexionbase->begin();
-            conexionbase->ejecuta(SQLQuery);
-            conexionbase->commit();
+            empresaBase()->begin();
+            empresaBase()->ejecuta(SQLQuery);
+            empresaBase()->commit();
             m_tvalores["orden"] = "";
         } // end if
         if (m_tvalores["tabulacion"] != "") {
             SQLQuery.sprintf("UPDATE mpatrimonial SET tabulacion = %s WHERE idmpatrimonial = %s\n", m_tvalores["tabulacion"].toAscii().constData(), m_tvalores["idmpatrimonial_nueva"].toAscii().constData());
-            conexionbase->begin();
-            conexionbase->ejecuta(SQLQuery);
-            conexionbase->commit();
+            empresaBase()->begin();
+            empresaBase()->ejecuta(SQLQuery);
+            empresaBase()->commit();
             m_tvalores["tabulacion"] = "";
         } // end if
         if (m_tvalores["opdesc"] != "") {
             SQLQuery.sprintf("UPDATE mpatrimonial SET opdesc = %s WHERE idmpatrimonial = %s\n", m_tvalores["opdesc"].toAscii().constData(), m_tvalores["idmpatrimonial_nueva"].toAscii().constData());
-            conexionbase->begin();
-            conexionbase->ejecuta(SQLQuery);
-            conexionbase->commit();
+            empresaBase()->begin();
+            empresaBase()->ejecuta(SQLQuery);
+            empresaBase()->commit();
             m_tvalores["opdesc"] = "";
         } // end if
         if (m_tvalores["tipompatrimonial"] != "") {
             SQLQuery.sprintf("UPDATE mpatrimonial SET tipompatrimonial = %s WHERE idmpatrimonial=%s\n", m_tvalores["tipompatrimonial"].toAscii().constData(), m_tvalores["idmpatrimonial_nueva"].toAscii().constData());
-            conexionbase->begin();
-            conexionbase->ejecuta(SQLQuery);
-            conexionbase->commit();
+            empresaBase()->begin();
+            empresaBase()->ejecuta(SQLQuery);
+            empresaBase()->commit();
             m_tvalores["tipompatrimonial"] = "";
         } // end if
     } // end if
     m_tag = "";
     m_data = "";
-    _depura("END importbalance::endElement1", 0);
+    _depura("END ImportBalance::endElement1", 0);
     return TRUE;
 }
 
@@ -180,10 +178,10 @@ bool importbalance::endElement1(const QString&, const QString&, const QString& q
     actualizaci&oacute;n.
     \param qName el nombre del tag abierto.
     \return TRUE para no detener la ejecuci&oacute;n del algoritmo. */
-bool importbalance::startElement2(const QString&, const QString&, const QString &qName, const QXmlAttributes&) {
-    _depura("importbalance::startElement2", 0);
+bool ImportBalance::startElement2(const QString&, const QString&, const QString &qName, const QXmlAttributes&) {
+    _depura("ImportBalance::startElement2", 0);
     m_tag = qName;
-    _depura("END importbalance::startElement2", 0);
+    _depura("END ImportBalance::startElement2", 0);
     return TRUE;
 }
 
@@ -194,8 +192,8 @@ bool importbalance::startElement2(const QString&, const QString&, const QString 
     han usado en el paso 0.
     \param qName contiene el valor del tag que se acaba de cerrar.
     \return TRUE para no detener nunca la ejecución del algoritmo.  */
-bool importbalance::endElement2(const QString&, const QString&, const QString &qName) {
-    _depura("importbalance::endElement2", 0);
+bool ImportBalance::endElement2(const QString&, const QString&, const QString &qName) {
+    _depura("ImportBalance::endElement2", 0);
     m_tag = qName;
     QString SQLQuery;
     /// En el segundo paso se hacen las inserciones por el flanco de final en lugar de por
@@ -203,24 +201,24 @@ bool importbalance::endElement2(const QString&, const QString&, const QString &q
     /// As&iacute; nos aseguramos que ya existen los valores de idmpatrimonial y
     /// masaperteneciente.
     if (m_tag == "compmasap") {
-        SQLQuery.sprintf("INSERT INTO compmasap (masaperteneciente) VALUES (%s)\n", conexionbase->sanearCadena(m_identmasasp[m_tvalores["masaperteneciente"]]).toAscii().constData());
-        conexionbase->begin();
-        conexionbase->ejecuta(SQLQuery);
+        SQLQuery.sprintf("INSERT INTO compmasap (masaperteneciente) VALUES (%s)\n", empresaBase()->sanearCadena(m_identmasasp[m_tvalores["masaperteneciente"]]).toAscii().constData());
+        empresaBase()->begin();
+        empresaBase()->ejecuta(SQLQuery);
         SQLQuery = "SELECT max(idcompmasap) AS idcompmasap FROM compmasap";
-        cursor2 *cur = conexionbase->cargacursor(SQLQuery, "unquerymas");
-        conexionbase->commit();
+        cursor2 *cur = empresaBase()->cargacursor(SQLQuery, "unquerymas");
+        empresaBase()->commit();
         if (!cur->eof()) {
             m_tvalores["idcompmasap"] = cur->valor("idcompmasap");
         } // end if
         delete cur;
     } // end if
     if (m_tag == "compbalance") {
-        SQLQuery.sprintf("INSERT INTO compbalance (idbalance) VALUES (%s)\n", conexionbase->sanearCadena(m_tvalores["idbalance"]).toAscii().constData());
-        conexionbase->begin();
-        conexionbase->ejecuta(SQLQuery);
+        SQLQuery.sprintf("INSERT INTO compbalance (idbalance) VALUES (%s)\n", empresaBase()->sanearCadena(m_tvalores["idbalance"]).toAscii().constData());
+        empresaBase()->begin();
+        empresaBase()->ejecuta(SQLQuery);
         SQLQuery = "SELECT max(idcompbalance) AS idcompbalance FROM compbalance";
-        cursor2 *cur = conexionbase->cargacursor(SQLQuery, "unquerymas");
-        conexionbase->commit();
+        cursor2 *cur = empresaBase()->cargacursor(SQLQuery, "unquerymas");
+        empresaBase()->commit();
         if (!cur->eof()) {
             m_tvalores["idcompbalance"] = cur->valor("idcompbalance");
         } // end if
@@ -232,66 +230,66 @@ bool importbalance::endElement2(const QString&, const QString&, const QString &q
         /// Actualizamos el idmasapatrimonial del compmasap, que es el que m&aacute;s
         /// dolores de cabeza causa.
         if (m_tvalores["idmpatrimonial"] != "" && m_tvalores["codigo"] == "") {
-            SQLQuery.sprintf("UPDATE compmasap SET idmpatrimonial = %s WHERE idcompmasap = %s\n", conexionbase->sanearCadena(m_identmasasp[m_tvalores["idmpatrimonial"]]).toAscii().constData(), conexionbase->sanearCadena(m_tvalores["idcompmasap"]).toAscii().constData());
-            conexionbase->begin();
-            conexionbase->ejecuta(SQLQuery);
-            conexionbase->commit();
+            SQLQuery.sprintf("UPDATE compmasap SET idmpatrimonial = %s WHERE idcompmasap = %s\n", empresaBase()->sanearCadena(m_identmasasp[m_tvalores["idmpatrimonial"]]).toAscii().constData(), empresaBase()->sanearCadena(m_tvalores["idcompmasap"]).toAscii().constData());
+            empresaBase()->begin();
+            empresaBase()->ejecuta(SQLQuery);
+            empresaBase()->commit();
         } // end if
         if (m_tvalores["codigo"] != "") {
             SQLQuery.sprintf("UPDATE compmasap SET idcuenta = id_cuenta('%s') WHERE idcompmasap = %s\n",
-                             conexionbase->sanearCadena(m_tvalores["codigo"]).toAscii().constData(),
-                             conexionbase->sanearCadena(m_tvalores["idcompmasap"]).toAscii().constData());
-            conexionbase->begin();
-            conexionbase->ejecuta(SQLQuery);
-            conexionbase->commit();
+                             empresaBase()->sanearCadena(m_tvalores["codigo"]).toAscii().constData(),
+                             empresaBase()->sanearCadena(m_tvalores["idcompmasap"]).toAscii().constData());
+            empresaBase()->begin();
+            empresaBase()->ejecuta(SQLQuery);
+            empresaBase()->commit();
         } // end if
         SQLQuery.sprintf("UPDATE compmasap SET signo = '%s' WHERE idcompmasap = %s\n",
-                         conexionbase->sanearCadena(m_tvalores["signo"]).toAscii().constData(),
-                         conexionbase->sanearCadena(m_tvalores["idcompmasap"]).toAscii().constData());
-        conexionbase->begin();
-        conexionbase->ejecuta(SQLQuery);
-        conexionbase->commit();
+                         empresaBase()->sanearCadena(m_tvalores["signo"]).toAscii().constData(),
+                         empresaBase()->sanearCadena(m_tvalores["idcompmasap"]).toAscii().constData());
+        empresaBase()->begin();
+        empresaBase()->ejecuta(SQLQuery);
+        empresaBase()->commit();
         SQLQuery.sprintf("UPDATE compmasap SET nombre = '%s' WHERE idcompmasap = %s\n",
-                         conexionbase->sanearCadena(m_tvalores["nombre"]).toAscii().constData(),
-                         conexionbase->sanearCadena(m_tvalores["idcompmasap"]).toAscii().constData());
-        conexionbase->begin();
-        conexionbase->ejecuta(SQLQuery);
-        conexionbase->commit();
+                         empresaBase()->sanearCadena(m_tvalores["nombre"]).toAscii().constData(),
+                         empresaBase()->sanearCadena(m_tvalores["idcompmasap"]).toAscii().constData());
+        empresaBase()->begin();
+        empresaBase()->ejecuta(SQLQuery);
+        empresaBase()->commit();
         m_tvalores["codigo"] = "";
         m_tvalores["idmpatrimonial"] = "";
     } // end if
     if (m_tag == "compbalance") {
         /// Con los componentes del balance tambi&eacute;n intervienen las masas patrimoniales.
         SQLQuery.sprintf("UPDATE compbalance SET idmpatrimonial = %s WHERE idcompbalance = %s\n",
-                         conexionbase->sanearCadena(m_identmasasp[m_tvalores["idmpatrimonial"]]).toAscii().constData(),
-                         conexionbase->sanearCadena(m_tvalores["idcompbalance"]).toAscii().constData());
-        conexionbase->begin();
-        conexionbase->ejecuta(SQLQuery);
-        conexionbase->commit();
+                         empresaBase()->sanearCadena(m_identmasasp[m_tvalores["idmpatrimonial"]]).toAscii().constData(),
+                         empresaBase()->sanearCadena(m_tvalores["idcompbalance"]).toAscii().constData());
+        empresaBase()->begin();
+        empresaBase()->ejecuta(SQLQuery);
+        empresaBase()->commit();
         SQLQuery.sprintf("UPDATE compbalance SET orden = %s WHERE idcompbalance = %s\n",
-                         conexionbase->sanearCadena(m_tvalores["orden"]).toAscii().constData(),
-                         conexionbase->sanearCadena(m_tvalores["idcompbalance"]).toAscii().constData());
-        conexionbase->begin();
-        conexionbase->ejecuta(SQLQuery);
-        conexionbase->commit();
+                         empresaBase()->sanearCadena(m_tvalores["orden"]).toAscii().constData(),
+                         empresaBase()->sanearCadena(m_tvalores["idcompbalance"]).toAscii().constData());
+        empresaBase()->begin();
+        empresaBase()->ejecuta(SQLQuery);
+        empresaBase()->commit();
         SQLQuery.sprintf("UPDATE compbalance SET concepto = '%s' WHERE idcompbalance = %s\n",
-                         conexionbase->sanearCadena(m_tvalores["concepto"]).toAscii().constData(),
-                         conexionbase->sanearCadena(m_tvalores["idcompbalance"]).toAscii().constData());
-        conexionbase->begin();
-        conexionbase->ejecuta(SQLQuery);
-        conexionbase->commit();
+                         empresaBase()->sanearCadena(m_tvalores["concepto"]).toAscii().constData(),
+                         empresaBase()->sanearCadena(m_tvalores["idcompbalance"]).toAscii().constData());
+        empresaBase()->begin();
+        empresaBase()->ejecuta(SQLQuery);
+        empresaBase()->commit();
         SQLQuery.sprintf("UPDATE compbalance SET tabulacion = %s WHERE idcompbalance = %s\n",
-                         conexionbase->sanearCadena(m_tvalores["tabulacion"]).toAscii().constData(),
-                         conexionbase->sanearCadena(m_tvalores["idcompbalance"]).toAscii().constData());
-        conexionbase->begin();
-        conexionbase->ejecuta(SQLQuery);
-        conexionbase->commit();
+                         empresaBase()->sanearCadena(m_tvalores["tabulacion"]).toAscii().constData(),
+                         empresaBase()->sanearCadena(m_tvalores["idcompbalance"]).toAscii().constData());
+        empresaBase()->begin();
+        empresaBase()->ejecuta(SQLQuery);
+        empresaBase()->commit();
         m_tvalores["codigo"] = "";
         m_tvalores["idmpatrimonial"] = "";
     } // end if
     m_tag="";
     m_data="";
-    _depura("END importbalance::endElement2", 0);
+    _depura("END ImportBalance::endElement2", 0);
     return TRUE;
 }
 
@@ -301,13 +299,13 @@ bool importbalance::endElement2(const QString&, const QString&, const QString &q
 /** Para que pueda ser utilizado posteriormente
     \param ch El valor del tag abierto.
     \return TRUE porque no nos interesa abortar la ejecución del algoritmo. */
-bool importbalance::characters(const QString& ch) {
-    _depura("importbalance::characters", 0);
+bool ImportBalance::characters(const QString& ch) {
+    _depura("ImportBalance::characters", 0);
     if (m_tag != "") {
         m_data =ch;
         m_tvalores[m_tag] = m_data;
     } // end if
-    _depura("END importbalance::characters", 0);
+    _depura("END ImportBalance::characters", 0);
     return TRUE;
 }
 

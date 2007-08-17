@@ -28,7 +28,6 @@
 BusquedaCCoste::BusquedaCCoste(QWidget *parent, const char *)
         : QComboBox(parent) {
     _depura("BusquedaCCoste::BusquedaCCoste", 0);
-    companyact = NULL;
     m_cursorcombo = NULL;
     connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
     _depura("END BusquedaCCoste::BusquedaCCoste", 0);
@@ -39,10 +38,6 @@ BusquedaCCoste::~BusquedaCCoste() {
     _depura("BusquedaCCoste::~BusquedaCCoste", 0);
 }
 
-
-void BusquedaCCoste::setcompany(Empresa *comp) {
-    companyact = comp;
-}
 
 
 QString BusquedaCCoste::idc_coste() {
@@ -69,7 +64,7 @@ void BusquedaCCoste::setidc_coste(QString idc_coste) {
     if (m_cursorcombo != NULL) {
         delete m_cursorcombo;
     } // end if
-    m_cursorcombo = companyact->cargacursor("SELECT * FROM c_coste");
+    m_cursorcombo = empresaBase()->cargacursor("SELECT * FROM c_coste");
     int i = 0;
     int i1 = 0;
     clear();
@@ -97,16 +92,11 @@ void BusquedaCCoste::setidc_coste(QString idc_coste) {
 BusquedaCCosteDelegate::BusquedaCCosteDelegate(QWidget *parent)
         : QComboBox(parent) {
     _depura("BusquedaCCosteDelegate::BusquedaCCosteDelegate", 10);
-    m_companyact = NULL;
     setEditable(true);
     connect(this, SIGNAL(editTextChanged(const QString &)), this, SLOT(s_editTextChanged(const QString &)));
     _depura("END BusquedaCCosteDelegate::BusquedaCCosteDelegate", 0);
 }
 
-
-void BusquedaCCosteDelegate::setcompany(Empresa *comp) {
-    m_companyact = comp;
-}
 
 
 /** Libera la memoria reservada.
@@ -132,7 +122,7 @@ void BusquedaCCosteDelegate::s_editTextChanged(const QString &cod) {
         semaforo = TRUE;
     } // end if
 
-    m_cursorcombo = m_companyact->cargacursor("SELECT nombre FROM c_coste WHERE nombre LIKE '" + codigo + "%' ORDER BY nombre LIMIT 25");
+    m_cursorcombo = empresaBase()->cargacursor("SELECT nombre FROM c_coste WHERE nombre LIKE '" + codigo + "%' ORDER BY nombre LIMIT 25");
     clear();
 
     ///TODO: La idea es que salga en el desplegable del combobox el listado de cuentas que

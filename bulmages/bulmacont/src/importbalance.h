@@ -19,17 +19,16 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef importbalance_H
-#define importbalance_H
+#ifndef ImportBalance_H
+#define ImportBalance_H
 
 #include <QMap>
 #include <qxml.h>
 
 #include "empresa.h"
-
+#include "blwidget.h"
 
 class QString;
-class postgresiface2;
 
 
 /** Es una implementación de un parser XML hecho en SAX de Qt que utiliza del sistema de diversas pasadas
@@ -37,14 +36,9 @@ class postgresiface2;
   * En una primera pasada introduce en el sistema las masas patrimoniales y en una segunda pasada introduce los componentes del balance
   * Es preciso mantener en memoria algunos identificadores y esto se hace mediante el uso de un mapa
   */
-class importbalance: public QXmlDefaultHandler {
+class ImportBalance: public QXmlDefaultHandler, public PEmpresaBase {
 private:
-    /// La base de datos que se va a utilizar. Esta variable se inicializa en el constructor
-    /// de la clase y queda definida.
-    postgresiface2 *conexionbase;
-    /// La empresa con la que se inicializa. Esta variable se introduce en el constructor
-    /// de la clase y queda definida.
-    Empresa *empresaactual;
+
     /// Esta variable global indica siempre el tag que está procesando el parser
     QString m_tag;
     /// Esta variable global indica la información que se acaba de recolectar en el parser.
@@ -65,7 +59,7 @@ private:
 
 public:
     /// Constructor de la clase que inicializa determinadas variables de clase.
-    importbalance(Empresa *);
+    ImportBalance(Empresa *);
     /// Implementaci&oacute;n del analizador (parser) que procesa un tag de inicio.
     bool startElement(const QString&, const QString&, const QString&, const QXmlAttributes&);
     /// Implementaci&oacute;n del analizador (parser) que procesa un tag de cierre

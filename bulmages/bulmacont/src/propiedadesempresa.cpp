@@ -28,23 +28,26 @@
 propiedadesempresa::propiedadesempresa(Empresa *emp, QWidget *parent)
         : FichaBc(emp, parent) {
     _depura("propiedadesempresa::propiedadesempresa", 0);
+
+    /// Establecemos cual es la tabla en la que basarse para los permisos
+    setDBTableName("configuracion");
+
     this->setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
-    m_companyact = emp;
     inicializa();
 
-    mui_subform->setEmpresaBase(m_companyact);
+    mui_subform->setEmpresaBase(empresaBase());
     mui_subform->cargar();
     //mui_subform->setResizeMode(QHeaderView::Stretch);
 
-    m_companyact->meteWindow(windowTitle(), this);
+    empresaBase()->meteWindow(windowTitle(), this);
     _depura("END propiedadesempresa::propiedadesempresa", 0);
 }
 
 
 propiedadesempresa::~propiedadesempresa() {
     _depura("propiedadesempresa::~propiedadesempresa", 0);
-    m_companyact->sacaWindow(this);
+    empresaBase()->sacaWindow(this);
     _depura("END propiedadesempresa::~propiedadesempresa", 0);
 
 }
@@ -55,7 +58,7 @@ int propiedadesempresa::inicializa() {
     int num;
 
     QString query = "SELECT * FROM configuracion WHERE nombre = 'CodCuenta'";
-    cursor2 *curs = m_companyact->cargacursor(query);
+    cursor2 *curs = empresaBase()->cargacursor(query);
     num = curs->numregistros();
     if (num > 0) {
         modcodigo->setText(curs->valor("valor"));
@@ -70,11 +73,11 @@ int propiedadesempresa::inicializa() {
 void propiedadesempresa::on_mui_guardar_clicked() {
     _depura("propiedadesempresa::on_mui_guardar_clicked", 0);
     /// Iniciamos transaccion.
-    m_companyact->begin();
+    empresaBase()->begin();
     mui_subform->guardar();
 
     /// Procesamos la transaccion.
-    m_companyact->commit();
+    empresaBase()->commit();
     dialogChanges_cargaInicial();
     _depura("END propiedadesempresa::on_mui_guardar_clicked", 0);
 }
@@ -108,21 +111,21 @@ void propiedadesempresa::on_mui_modificarplan_clicked() {
     unsigned int nlong = modcodigo->text().length();
     QString codigo;
     QString query = "SELECT * FROM cuenta";
-    cursor2 *cur = m_companyact->cargacursor(query);
+    cursor2 *cur = empresaBase()->cargacursor(query);
     while (!cur->eof()) {
         codigo = cur->valor("codigo");
         codigo = ajustacodigo(codigo, nlong);
-        m_companyact->begin();
+        empresaBase()->begin();
         query = "UPDATE cuenta SET codigo = '" + codigo + "' WHERE idcuenta = " + cur->valor("idcuenta");
-        m_companyact->ejecuta(query);
-        m_companyact->commit();
+        empresaBase()->ejecuta(query);
+        empresaBase()->commit();
         cur->siguienteregistro();
     } // end while
     delete cur;
     query = "UPDATE configuracion SET valor = '" + modcodigo->text() + "' WHERE nombre = 'CodCuenta'";
-    m_companyact->begin();
-    m_companyact->ejecuta(query);
-    m_companyact->commit();
+    empresaBase()->begin();
+    empresaBase()->ejecuta(query);
+    empresaBase()->commit();
     if (QMessageBox::warning(this,
                              tr("Salir del programa"),
                              tr("Para que los cambios tengan efecto\ndebe salir del programa y volver a entrar.\n\nSalir ahora?"),

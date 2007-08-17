@@ -32,10 +32,12 @@
 ccosteview::ccosteview(Empresa  *emp, QWidget *parent)
         : FichaBc(emp, parent) {
     _depura("ccosteview::ccosteview", 0);
+
+    /// Etablecemos cual va a ser la tabla para obtener los permisos
+    setDBTableName("c_coste");
+
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
-    empresaactual = emp;
-    conexionbase = empresaactual->bdempresa();
     idc_coste = 0;
     mui_list->setColumnCount(3);
     QStringList headers;
@@ -44,7 +46,7 @@ ccosteview::ccosteview(Empresa  *emp, QWidget *parent)
     mui_list->setHeaderLabels(headers);
     mui_list->setColumnHidden(COL_IDC_COSTE, TRUE);
     dialogChanges_cargaInicial();
-    empresaactual->meteWindow(windowTitle(), this);
+    meteWindow(windowTitle(), this);
     pintar();
     _depura("END ccosteview::ccosteview", 0);
 }
@@ -52,7 +54,7 @@ ccosteview::ccosteview(Empresa  *emp, QWidget *parent)
 
 ccosteview::~ccosteview() {
     _depura("ccosteview::~ccosteview", 0);
-    empresaactual->sacaWindow(this);
+    empresaBase()->sacaWindow(this);
     _depura("END ccosteview::~ccosteview", 0);
 }
 
@@ -71,7 +73,7 @@ void ccosteview::pintar() {
         delete it;
     } // end while
 
-    cursoraux1 = conexionbase->cargacursor("SELECT * FROM c_coste WHERE padre ISNULL ORDER BY idc_coste");
+    cursoraux1 = empresaBase()->cargacursor("SELECT * FROM c_coste WHERE padre ISNULL ORDER BY idc_coste");
     while (!cursoraux1->eof()) {
         padre = atoi( cursoraux1->valor("padre").toAscii());
         idc_coste1 = atoi( cursoraux1->valor("idc_coste").toAscii());
@@ -85,7 +87,7 @@ void ccosteview::pintar() {
     } // end while
     delete cursoraux1;
 
-    cursoraux2= conexionbase->cargacursor("SELECT * FROM c_coste WHERE padre IS NOT NULL ORDER BY idc_coste");
+    cursoraux2= empresaBase()->cargacursor("SELECT * FROM c_coste WHERE padre IS NOT NULL ORDER BY idc_coste");
     while (!cursoraux2->eof()) {
         padre = atoi(cursoraux2->valor("padre").toAscii());
         idc_coste1 = atoi(cursoraux2->valor("idc_coste").toAscii());
@@ -106,7 +108,7 @@ void ccosteview::pintar() {
 
     /// Ya que se han producido cambios en los centros de coste
     /// Se inicializa el selector de centros de coste.
-    selectccosteview *scoste = empresaactual->getselccostes();
+    SelectCCosteView *scoste = empresaBase()->getselccostes();
     scoste->cargacostes();
     _depura("END ccosteview::pintar", 0);
 }
@@ -133,7 +135,7 @@ void ccosteview::mostrarplantilla() {
     _depura("ccosteview::mostrarplantilla", 0);
     QString query;
     query.sprintf("SELECT * from c_coste WHERE idc_coste = %d",idc_coste);
-    cursor2 *cursorcoste = conexionbase->cargacursor(query);
+    cursor2 *cursorcoste = empresaBase()->cargacursor(query);
     if (!cursorcoste->eof()) {
         nomcentro->setText(cursorcoste->valor("nombre"));
         desccoste->setPlainText(cursorcoste->valor("descripcion"));
@@ -150,9 +152,9 @@ void ccosteview::on_mui_guardar_clicked() {
     QString desc = desccoste->toPlainText();
     QString query;
     query.sprintf("UPDATE c_coste SET nombre = '%s', descripcion = '%s' WHERE idc_coste = %d", nom.toAscii().constData(), desc.toAscii().constData(), idc_coste);
-    conexionbase->begin();
-    conexionbase->ejecuta(query);
-    conexionbase->commit();
+    empresaBase()->begin();
+    empresaBase()->ejecuta(query);
+    empresaBase()->commit();
     fprintf(stderr,"Se ha guardado el centro de coste\n");
     dialogChanges_cargaInicial();
     pintar();
@@ -179,18 +181,18 @@ void ccosteview::on_mui_crear_clicked() {
     if (it) {
         idc_coste = atoi(it->text(COL_IDC_COSTE).toAscii());
         query.sprintf("INSERT INTO c_coste (padre, nombre, descripcion) VALUES (%d, 'Nuevo centro de coste', 'Escriba su descripcion')", idc_coste);
-        conexionbase->begin();
-        conexionbase->ejecuta(query);
+        empresaBase()->begin();
+        empresaBase()->ejecuta(query);
     } else {
         query.sprintf("INSERT INTO c_coste (nombre, descripcion) VALUES ('Nuevo centro de coste', 'Escriba su descripcion')");
-        conexionbase->begin();
-        conexionbase->ejecuta(query);
+        empresaBase()->begin();
+        empresaBase()->ejecuta(query);
     } // end if
     query.sprintf("SELECT MAX(idc_coste) AS id_coste FROM c_coste");
-    cursor2 *cur = conexionbase->cargacursor(query, "queryy");
+    cursor2 *cur = empresaBase()->cargacursor(query, "queryy");
     idc_coste = atoi(cur->valor("id_coste").toAscii());
     delete cur;
-    conexionbase->commit();
+    empresaBase()->commit();
     pintar();
     _depura("END ccosteview::on_mui_crear_clicked", 0);
 }
@@ -205,9 +207,9 @@ void ccosteview::on_mui_borrar_clicked() {
     case 0: /// Retry clicked or Enter pressed.
         QString query;
         query.sprintf("DELETE FROM c_coste WHERE idc_coste = %d", idc_coste);
-        conexionbase->begin();
-        conexionbase->ejecuta(query);
-        conexionbase->commit();
+        empresaBase()->begin();
+        empresaBase()->ejecuta(query);
+        empresaBase()->commit();
         idc_coste = 0;
         pintar();
     } // end switch

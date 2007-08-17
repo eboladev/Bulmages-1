@@ -49,7 +49,7 @@ RegistroIvaView::RegistroIvaView(Empresa *comp, QWidget *parent)
         return;
 
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
-    m_contrapartida->setEmpresa(comp);
+    m_contrapartida->setEmpresaBase(comp);
     setLineas( mui_listIva);
     mui_listIva->setEmpresaBase(comp);
     mui_listPrevCobro->setEmpresaBase(comp);

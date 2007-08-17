@@ -45,9 +45,12 @@ DiarioView::DiarioView(Empresa  *emp, QWidget *parent, int)
         : FichaBc(emp, parent) {
     _depura("DiarioView::DiarioView", 0);
     setupUi(this);
-    m_companyact = emp;
+
+    /// Establecemos cual es la tabla en la que basarse para los permisos
+    setDBTableName("apunte");
+
     mui_list->setEmpresaBase(emp);
-    mui_contrapartida->setEmpresa(emp);
+    mui_contrapartida->setEmpresaBase(emp);
     /// Iniciamos los componentes de la fecha para que al principio aparezcan
     /// como el a&ntilde;o inicial.
     char cadena[10];
@@ -55,14 +58,14 @@ DiarioView::DiarioView(Empresa  *emp, QWidget *parent, int)
     mui_fechainicial->setText(cadena);
     sprintf(cadena, "%2.2d/%2.2d/%4.4d", 31, 12, QDate::currentDate().year());
     mui_fechafinal->setText(cadena);
-    m_companyact->meteWindow(windowTitle(), this);
+    meteWindow(windowTitle(), this);
     _depura("END DiarioView::DiarioView", 0);
 }
 
 
 DiarioView::~DiarioView() {
     _depura("DiarioView::~DiarioView", 0);
-    m_companyact->sacaWindow(this);
+    empresaBase()->sacaWindow(this);
     _depura("END DiarioView::~DiarioView", 0);
 }
 
@@ -113,7 +116,7 @@ void DiarioView::inicializa1(QString finicial, QString ffinal, int) {
 /** Muestra el formulario de impresi&oacute;n de diario y lo ejecuta \ref DiarioPrintView */
 void DiarioView::boton_imprimir() {
     _depura("DiarioView::boton_imprimir", 0);
-    DiarioPrintView *print = new DiarioPrintView(m_companyact, 0);
+    DiarioPrintView *print = new DiarioPrintView(empresaBase(), 0);
     print->exec();
     _depura("END DiarioView::boton_imprimir", 0);
 }
@@ -130,10 +133,10 @@ void DiarioView::boton_guardar() {
     if (!fn.isEmpty()) {
         /// Si se ha proporcionado un nombre de archivo v&aacute;lido
         /// invocamos la clase diarioprint y hacemos que guarde el archivo.
-        diarioprint diariop(m_companyact);
+        DiarioPrint diariop(empresaBase());
         QString finicial = mui_fechainicial->text();
         QString ffinal = mui_fechafinal->text();
-        diariop.inicializa(m_companyact);
+        diariop.setEmpresaBase(empresaBase());
         diariop.inicializa1((char *) finicial.toAscii().constData(), (char *)ffinal.toAscii().constData());
         diariop.inicializa2((char *) fn.toAscii().constData());
         diariop.accept();
@@ -177,11 +180,11 @@ void DiarioView::presentar() {
 
     totalcadena = query + cad + " ORDER BY t5.fecha, t5.ordenasiento ";
 
-    cursor2 *cur = m_companyact->cargacursor(totalcadena);
+    cursor2 *cur = empresaBase()->cargacursor(totalcadena);
     mui_list->cargar(cur);
     delete cur;
 
-    cur = m_companyact->cargacursor("SELECT sum(debe) as totaldebe, sum(haber) as totalhaber from borrador " + cad);
+    cur = empresaBase()->cargacursor("SELECT sum(debe) as totaldebe, sum(haber) as totalhaber from borrador " + cad);
     if (!cur->eof()) {
         totaldebe->setText(cur->valor("totaldebe"));
         totalhaber->setText(cur->valor("totalhaber"));

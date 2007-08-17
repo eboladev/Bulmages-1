@@ -32,10 +32,12 @@
 PaisView::PaisView(Empresa *emp, QWidget *parent)
         : FichaBc(emp, parent) {
     _depura("PaisView::PaisView", 0);
+
+    /// Establecemos cual es la tabla en la que basarse para los permisos
+    setDBTableName("pais");
+
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
-    empresaactual = emp;
-    conexionbase = empresaactual->bdempresa();
     idpais = 0;
     mui_list->setColumnCount(4);
     //QStringList headers;
@@ -44,7 +46,7 @@ PaisView::PaisView(Empresa *emp, QWidget *parent)
     //mui_list->setHeaderLabels(headers);
     mui_list->setColumnHidden(COL_IDPAIS, TRUE);
     dialogChanges_cargaInicial();
-    empresaactual->meteWindow(windowTitle(), this);
+    meteWindow(windowTitle(), this);
     pintar();
     _depura("END PaisView::PaisView", 0);
 }
@@ -52,7 +54,7 @@ PaisView::PaisView(Empresa *emp, QWidget *parent)
 
 PaisView::~PaisView() {
     _depura("PaisView::~PaisView", 0);
-    empresaactual->sacaWindow(this);
+    empresaBase()->sacaWindow(this);
     _depura("END PaisView::~PaisView", 0);
 }
 
@@ -68,7 +70,7 @@ void PaisView::pintar() {
     mui_list->setRowCount(0);
     _depura("PaisView::pintar", 10);
 
-    cursoraux1 = conexionbase->cargacursor("SELECT * FROM pais ORDER BY descpais");
+    cursoraux1 = empresaBase()->cargacursor("SELECT * FROM pais ORDER BY descpais");
     while (!cursoraux1->eof()) {
 //        idpais1 = atoi(cursoraux1->valor("idpais").toAscii());
 //        it = new QTableWidgetItem(cursoraux1->valor("idpais"));
@@ -128,7 +130,7 @@ void PaisView::mostrarplantilla() {
     QString query;
 
     query.sprintf("SELECT * FROM pais WHERE idpais = %d", idpais);
-    cursor2 *cursorpais = conexionbase->cargacursor(query);
+    cursor2 *cursorpais = empresaBase()->cargacursor(query);
 
     if (!cursorpais->eof()) {
         mui_cod2pais->setText(cursorpais->valor("cod2pais"));
@@ -148,9 +150,9 @@ void PaisView::on_mui_guardar_clicked() {
     QString cod3pais = mui_cod3pais->text();
     QString query;
     query.sprintf("UPDATE pais SET cod2pais = '%s', cod3pais = '%s', descpais ='%s' WHERE idpais = %d", cod2pais.toAscii().constData(), cod3pais.toAscii().constData(), descpais.toAscii().constData(), idpais);
-    conexionbase->begin();
-    conexionbase->ejecuta(query);
-    conexionbase->commit();
+    empresaBase()->begin();
+    empresaBase()->ejecuta(query);
+    empresaBase()->commit();
     fprintf(stderr,"Se ha guardado el pais\n");
     dialogChanges_cargaInicial();
     pintar();
@@ -173,14 +175,14 @@ void PaisView::on_mui_crear_clicked() {
 
     QString query;
     query.sprintf("INSERT INTO pais (cod2pais, cod3pais, descpais) VALUES ('--', '---', 'Nuevo pais')");
-    conexionbase->begin();
-    conexionbase->ejecuta(query);
+    empresaBase()->begin();
+    empresaBase()->ejecuta(query);
 
     query.sprintf("SELECT COALESCE(MAX(idpais), 1) AS idultimopais FROM pais");
-    cursor2 *cur = conexionbase->cargacursor(query, "queryy");
+    cursor2 *cur = empresaBase()->cargacursor(query, "queryy");
     idpais = atoi(cur->valor("idultimopais").toAscii());
     delete cur;
-    conexionbase->commit();
+    empresaBase()->commit();
     pintar();
     _depura("END PaisView::on_mui_crear_clicked", 0);
 }
@@ -195,9 +197,9 @@ void PaisView::on_mui_borrar_clicked() {
     case 0: /// Retry clicked or Enter pressed.
         QString query;
         query.sprintf("DELETE FROM pais WHERE idpais = %d", idpais);
-        conexionbase->begin();
-        conexionbase->ejecuta(query);
-        conexionbase->commit();
+        empresaBase()->begin();
+        empresaBase()->ejecuta(query);
+        empresaBase()->commit();
         idpais = 0;
         pintar();
     } // end switch

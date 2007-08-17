@@ -23,14 +23,14 @@
 #define SELECTCANALVIEW_H
 
 #include "ui_selectcanalbase.h"
-
+#include "blwidget.h"
 
 class Empresa;
 
 
 ///
 /** */
-class selectcanalview : public QDialog, public Ui_SelectCanalBase {
+class selectcanalview : public QDialog, public Ui_SelectCanalBase, public PEmpresaBase {
     Q_OBJECT
 
 public:
@@ -38,7 +38,6 @@ public:
     ~selectcanalview();
 
 private:
-    Empresa *empresaactual;
     int m_colNomCoste;
     int m_colDescCoste;
     int m_colIdCoste;

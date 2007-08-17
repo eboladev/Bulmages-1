@@ -34,12 +34,10 @@ extern Mod300ps *modelo;
 
 
 regivaprintview::regivaprintview(Empresa *emp, QWidget *parent)
-        : QDialog(parent) {
+        : QDialog(parent), PEmpresaBase(emp) {
     _depura("regivaprintview::regivaprintview", 0);
     setupUi(this);
     fichero = NULL;
-    empresaactual = emp;
-    conexionbase = emp->bdempresa();
     _depura("END regivaprintview::regivaprintview", 0);
 }
 
@@ -108,11 +106,11 @@ void regivaprintview::presentar(char *tipus) {
         if (txt | html) { /// S&oacute;lo continuamos si hemos podido crear alg&uacute;n archivo.
             int num1;
             cursor2 *cursorapt;
-            conexionbase->begin();
+            empresaBase()->begin();
             query.sprintf("SELECT * FROM registroiva, cuenta, borrador, asiento  where cuenta.idcuenta = borrador.idcuenta AND borrador.idborrador = registroiva.idborrador AND asiento.idasiento = borrador.idasiento AND (cuenta.codigo LIKE '43%%' OR cuenta.codigo LIKE '600%%') AND borrador.fecha >= '%s' AND borrador.fecha <= '%s' ORDER BY asiento.ordenasiento", fechainicial1->text().toAscii().constData(), fechafinal1->text().toAscii().constData());
             fprintf(stderr, "%s\n", query.toAscii().constData());
-            cursorapt = conexionbase->cargacursor(query, "mycursor");
-            conexionbase->commit();
+            cursorapt = empresaBase()->cargacursor(query, "mycursor");
+            empresaBase()->commit();
             /// Calculamos cuantos registros van a crearse y dimensionamos la tabla.
             num1 = cursorapt->numregistros();
             int hoja = 0;
@@ -175,9 +173,9 @@ void regivaprintview::presentar(char *tipus) {
 
             /// AHORA PONEMOS EL RESUMEN DEL IVA REPERCUTIDO.
             QString SQLQuery = "SELECT * FROM cuenta, tipoiva LEFT JOIN (SELECT idtipoiva, SUM(baseiva) AS tbaseiva FROM iva iva.idregistroiva IN (SELECT idregistroiva FROM registroiva WHERE ffactura >='"+fechainicial1->text()+"' AND ffactura <='"+fechafinal1->text()+"' ) GROUP BY idtipoiva) AS dd ON dd.idtipoiva=tipoiva.idtipoiva WHERE tipoiva.idcuenta = cuenta.idcuenta AND cuenta.codigo LIKE '477%'";
-            conexionbase->begin();
-            cursor2* cur = conexionbase->cargacursor(SQLQuery, "elcursor");
-            conexionbase->commit();
+            empresaBase()->begin();
+            cursor2* cur = empresaBase()->cargacursor(SQLQuery, "elcursor");
+            empresaBase()->commit();
             int j = 0;
             Fixed tivar("0");
             Fixed tbaseimpr("0");
@@ -203,11 +201,11 @@ void regivaprintview::presentar(char *tipus) {
             } // end while
             delete cur;
 
-            conexionbase->begin();
+            empresaBase()->begin();
             query.sprintf("SELECT *, (baseimp + iva) AS total, (iva / baseimp * 100)::INTEGER AS cuota FROM registroiva, cuenta, borrador, asiento  WHERE cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND (cuenta.codigo NOT LIKE '43%%' AND cuenta.codigo NOT LIKE '600%%') AND borrador.fecha >= '%s' AND borrador.fecha <= '%s' ORDER BY cuota, borrador.fecha", fechainicial1->text().toAscii().constData(), fechafinal1->text().toAscii().constData());
             fprintf(stderr, "%s\n", query.toAscii().constData());
-            cursorapt = conexionbase->cargacursor(query, "mycursor");
-            conexionbase->commit();
+            cursorapt = empresaBase()->cargacursor(query, "mycursor");
+            empresaBase()->commit();
             /// Calculamos cuantos registros van a crearse y dimensionamos la tabla.
             num1 = cursorapt->numregistros();
             hoja = 0;
@@ -265,9 +263,9 @@ void regivaprintview::presentar(char *tipus) {
 
             /// Ahora ponemos el resumen del IVA soportado.
             SQLQuery = "SELECT * FROM cuenta, tipoiva LEFT JOIN (SELECT idtipoiva, SUM(baseiva) AS tbaseiva FROM iva  WHERE iva.idregistroiva IN (SELECT idregistroiva FROM registroiva WHERE ffactura >='"+fechainicial1->text()+"' AND ffactura <='"+fechafinal1->text()+"' ) GROUP BY idtipoiva) AS dd ON dd.idtipoiva=tipoiva.idtipoiva WHERE tipoiva.idcuenta = cuenta.idcuenta AND cuenta.codigo LIKE '472%'";
-            conexionbase->begin();
-            cur = conexionbase->cargacursor(SQLQuery, "elcursor");
-            conexionbase->commit();
+            empresaBase()->begin();
+            cur = empresaBase()->cargacursor(SQLQuery, "elcursor");
+            empresaBase()->commit();
             j = 0;
             Fixed tivas("0");
             Fixed tbaseimps("0");

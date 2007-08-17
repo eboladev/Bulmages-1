@@ -26,11 +26,13 @@
 canalview::canalview(Empresa  *emp, QWidget *parent)
         : FichaBc(emp, parent) {
     _depura("canalview::canalview", 0);
+
+    /// EStablezco cual es la tabla en la que basarse para los permisos
+    setDBTableName("canal");
+
     this->setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
-    empresaactual = emp;
-    conexionbase = empresaactual->bdempresa();
-    mui_idcanal->setcompany(emp);
+    mui_idcanal->setEmpresaBase(emp);
     mui_idcanal->setidcanal("0");
 
     m_nomcanal = new QLineEdit();
@@ -42,14 +44,14 @@ canalview::canalview(Empresa  *emp, QWidget *parent)
     dialogChanges_setQObjectExcluido(mui_idcanal);
     dialogChanges_cargaInicial();
     on_mui_idcanal_valueChanged(0);
-    empresaactual->meteWindow(windowTitle(), this);
+    empresaBase()->meteWindow(windowTitle(), this);
     _depura("END canalview::canalview", 0);
 }
 
 
 canalview::~canalview() {
     _depura("canalview::~canalview", 0);
-    empresaactual->sacaWindow(this);
+    empresaBase()->sacaWindow(this);
     _depura("END canalview::~canalview", 0);
 }
 
@@ -68,7 +70,7 @@ void canalview::pintar() {
     } // end if
 
     /// Si se han cambiado los canales, se rehace el selector de canales.
-    selectcanalview *scanal = empresaactual->getselcanales();
+    selectcanalview *scanal = empresaBase()->getselcanales();
     scanal->cargacanales();
     _depura("END canalview::pintar", 0);
 }
@@ -115,7 +117,7 @@ void canalview::mostrarplantilla() {
     _depura("canalview::mostrarplantilla", 0);
     QString query;
     QTextStream(&query) << "SELECT * from canal WHERE idcanal = '" << idcanal << "'";
-    cursor2 *cursorcanal = conexionbase->cargacursor(query);
+    cursor2 *cursorcanal = empresaBase()->cargacursor(query);
     if (!cursorcanal->eof()) {
         mui_nomcanal->setText(cursorcanal->valor("nombre"));
         mui_desccanal->setPlainText(cursorcanal->valor("descripcion"));
@@ -133,11 +135,11 @@ void canalview::on_mui_guardar_clicked() {
     QString desc = mui_desccanal->toPlainText();
     QString query;
     QTextStream(&query) << "UPDATE canal SET nombre = '"
-                        << conexionbase->sanearCadena(nom).toAscii().constData()
+                        << empresaBase()->sanearCadena(nom).toAscii().constData()
                         << "', descripcion = '"
-                        << conexionbase->sanearCadena(desc).toAscii().constData()
+                        << empresaBase()->sanearCadena(desc).toAscii().constData()
                         << "' WHERE idcanal = '" << idcanal << "'";
-    conexionbase->ejecuta(query);
+    empresaBase()->ejecuta(query);
     dialogChanges_cargaInicial();
     pintar();
     _depura("END canalview::on_mui_guardar_clicked", 0);
@@ -156,14 +158,14 @@ void canalview::on_mui_crear_clicked() {
     } // end if
     QString query = "";
     QTextStream(&query) << "INSERT INTO canal (nombre, descripcion) VALUES ('" << tr("Nuevo canal") << "', '" << tr("Escriba su descripcion") << "')";
-    conexionbase->begin();
-    conexionbase->ejecuta(query);
+    empresaBase()->begin();
+    empresaBase()->ejecuta(query);
     query = "";
     QTextStream(&query) << "SELECT MAX(idcanal) AS id FROM canal";
-    cursor2 *cur = conexionbase->cargacursor(query, "queryy");
+    cursor2 *cur = empresaBase()->cargacursor(query, "queryy");
     idcanal = atoi(cur->valor("id").toAscii());
     delete cur;
-    conexionbase->commit();
+    empresaBase()->commit();
     pintar();
     _depura("END canalview::on_mui_crear_clicked", 0);
 }
@@ -178,9 +180,9 @@ void canalview::on_mui_borrar_clicked() {
     case 0: /// Retry clicked or Enter pressed.
         QString query;
         query.sprintf("DELETE FROM canal WHERE idcanal = %d", idcanal);
-        conexionbase->begin();
-        conexionbase->ejecuta(query);
-        conexionbase->commit();
+        empresaBase()->begin();
+        empresaBase()->ejecuta(query);
+        empresaBase()->commit();
         idcanal = 0;
         pintar();
     } // end switch

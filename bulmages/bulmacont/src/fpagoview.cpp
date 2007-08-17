@@ -25,11 +25,14 @@
 /// El constructor de la clase prepara las variables globales y llama a la funci&oacute;n
 /// pintar.
 fpagoview::fpagoview(Empresa *emp, QWidget *parent)
-        : Ficha(parent) {
+        : FichaBc(emp, parent) {
     _depura("fpagoview::fpagoview", 0);
+
+    /// Establecemos cual es la tabla en la que basarse para los permisos
+    setDBTableName("fpago");
+
     this->setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
-    empresaactual = emp;
     m_curfpago = NULL;
     dialogChanges_cargaInicial();
     pintar();
@@ -46,7 +49,7 @@ fpagoview::~fpagoview() {
     if (m_curfpago != NULL) {
         delete m_curfpago;
     } /// end if
-    empresaactual->sacaWindow(this);
+    sacaWindow();
     _depura("END fpagoview::~fpagoview", 0);
 }
 
@@ -65,7 +68,7 @@ void fpagoview::pintar(QString idfpago) {
     if (m_curfpago != NULL)
         delete m_curfpago;
     QString query = "SELECT * from fpago ORDER BY nomfpago";
-    m_curfpago = empresaactual->cargacursor(query);
+    m_curfpago = empresaBase()->cargacursor(query);
     mui_comboFPago->clear();
     int i = 0;
     while (!m_curfpago->eof()) {
@@ -150,7 +153,7 @@ void fpagoview::on_mui_guardarFPago_clicked() {
     _depura("fpagoview::on_mui_guardarFPago_clicked", 0);
     QString idfpago = m_curfpago->valor("idfpago", m_posactual);
     QString query = "UPDATE fpago SET nomfpago = '" + mui_nombreFPago->text() + "', nplazosfpago = " + mui_numeroPlazos->text() + " , plazoprimerpagofpago = " + mui_plazoPrimerPago->text() + ", plazoentrerecibofpago = " + mui_plazoEntreRecibos->text() + " WHERE idfpago = " + m_curfpago->valor("idfpago", m_posactual);
-    empresaactual->ejecuta(query);
+    empresaBase()->ejecuta(query);
     dialogChanges_cargaInicial();
     pintar(m_curfpago->valor("idfpago", m_posactual));
     _depura("END fpagoview::on_mui_guardarFPago_clicked", 0);
@@ -171,10 +174,10 @@ void fpagoview::on_mui_crearFPago_clicked() {
             on_mui_guardar_clicked();
     } // end if
     QString query = "INSERT INTO fpago (nomfpago, nplazosfpago, plazoprimerpagofpago, plazoentrerecibofpago) VALUES ('" + tr("Nueva forma de pago") + "', 0, 0, 0)";
-    empresaactual->begin();
-    empresaactual->ejecuta(query);
-    cursor2 *cur = empresaactual->cargacursor("SELECT max(idfpago) AS idfpago FROM fpago");
-    empresaactual->commit();
+    empresaBase()->begin();
+    empresaBase()->ejecuta(query);
+    cursor2 *cur = empresaBase()->cargacursor("SELECT max(idfpago) AS idfpago FROM fpago");
+    empresaBase()->commit();
     pintar(cur->valor("idfpago"));
     delete cur;
     _depura("END fpagoview::on_mui_crearFPago_clicked", 0);
@@ -194,7 +197,7 @@ void fpagoview::on_mui_borrarFPago_clicked() {
                                      tr("Se va a borrar la forma de pago.\nEsto puede ocasionar perdida de datos.\nTal vez deberia pensarselo mejor antes\nporque igual su trabajo se pierde."),
                                      QMessageBox::Ok, QMessageBox::Cancel)) {
         case QMessageBox::Ok: /// Retry clicked or Enter pressed.
-            empresaactual->ejecuta("DELETE FROM fpago WHERE idfpago = " + m_curfpago->valor("idfpago", mui_comboFPago->currentIndex()));
+            empresaBase()->ejecuta("DELETE FROM fpago WHERE idfpago = " + m_curfpago->valor("idfpago", mui_comboFPago->currentIndex()));
             pintar();
             break;
         case QMessageBox::Cancel: /// Abort clicked or Escape pressed.

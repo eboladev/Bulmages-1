@@ -140,12 +140,12 @@ QString Empresa::nombreempresa() {
 
 /// Inicializa la clase con el nombre de la base de datos y con el workspace.
 int Empresa::createMainWindows(Splash *splash) {
-    _depura("Empresa::inicializa1", 0);
+    _depura("Empresa::createMainWindows", 0);
     try {
     /// Calculamos el n&uacute;mero de d&iacute;gitos que tiene el nivel &uacute;ltimo
     /// de la Empresa.
     QString query = "SELECT length(valor) AS numdigitos FROM configuracion WHERE nombre = 'CodCuenta'";
-    cursor2 *cursoraux1 = cargacursor(query, "codcuenta");
+    cursor2 *cursoraux1 = cargacursor(query);
     numdigitos = cursoraux1->valor("numdigitos").toInt();
     delete cursoraux1;
     if (extracto != NULL) {
@@ -159,7 +159,7 @@ int Empresa::createMainWindows(Splash *splash) {
     } // end if
 
     /// Inicializamos los selectores de centros de coste y canales.
-    selccostes = new selectccosteview(this, 0);
+    selccostes = new SelectCCosteView(this, 0);
     selcanales = new selectcanalview(this, 0);
 
     /// Inicializamos las ventanas de uso generalizado.
@@ -228,7 +228,7 @@ int Empresa::createMainWindows(Splash *splash) {
         _depura("Error al iniciar la clase company", 2);
     } // end try
 
-    _depura("END Empresa::inicializa1", 0);
+    _depura("END Empresa::createMainWindows", 0);
     return(0);
 }
 
@@ -382,8 +382,8 @@ int Empresa::amortizaciones() {
 /// de masas patrimoniales.
 int Empresa::mpatrimoniales() {
     _depura("Empresa::mpatrimoniales", 0);
-    mpatrimonialesview *nuevae = new mpatrimonialesview(0);
-    nuevae->inicializa(this);
+    mpatrimonialesview *nuevae = new mpatrimonialesview(this, 0);
+    nuevae->inicializa();
     nuevae->exec();
     delete nuevae;
     _depura("END Empresa::mpatrimoniales", 0);
@@ -641,7 +641,7 @@ void Empresa::Filtro() {
 /// determinada cuenta por otra cuenta.
 void Empresa::reemplazacuentaenasientos() {
     _depura("Empresa::reemplazacuentaenasientos", 0);
-    cambiactaview *ctac = new cambiactaview(this, 0, false);
+    CambiaCtaView *ctac = new CambiaCtaView(this, 0, false);
     ctac->exec();
     _depura("END Empresa::reemplazacuentaenasientos", 0);
 }
@@ -665,7 +665,7 @@ int Empresa::cobPag() {
 }
 
 
-selectccosteview *Empresa::getselccostes() {
+SelectCCosteView *Empresa::getselccostes() {
     _depura("Empresa::getselccostes", 0);
     _depura("END Empresa::getselccostes", 0);
     return selccostes;

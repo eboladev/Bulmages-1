@@ -33,27 +33,23 @@
 #include <sys/types.h>
 #include <string>
 
-using std::string;
-
-#include "postgresiface2.h"
+#include "empresa.h"
 #include "funcaux.h"
-
+#include "blwidget.h"
 
 ///
 /** */
-class libromayorprint {
+class libromayorprint : public PEmpresaBase {
 public:
     QString codinicial;
     QString codfinal;
     QString finicial;
     QString ffinal;
     char *fichero;
-    postgresiface2 *conexionbase;
 
 public:
-    libromayorprint();
+    libromayorprint(Empresa *emp);
     ~libromayorprint();
-    int inicializa(postgresiface2 *);
     void inicializa1(QString, QString, QString, QString);
     void inicializa2(char *);
     void accept();

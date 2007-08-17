@@ -49,6 +49,9 @@ aplinteligentesview::aplinteligentesview(Empresa *emp, QWidget *parent)
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
 
+    /// Establezco cual es la tabla en la que basarse para los permisos
+    setDBTableName("asiento");
+
     /// iniciamos los contadores de variables para que no haya problemas.
     indvariablescta = 0;
     indvariablesfecha = 0;
@@ -345,7 +348,7 @@ void aplinteligentesview::mostrarplantilla() {
             labelcta[i]->show();
             varcta[i] = new BusquedaCuenta(mui_datosAsiento);
             varcta[i]->setGeometry(QRect(150, inc + 32 * (j++), 300, 25));
-            varcta[i]->setEmpresa(empresaBase());
+            varcta[i]->setEmpresaBase(empresaBase());
             connect(varcta[i], SIGNAL(returnPressed()), this, SLOT(return_cta()));
             connect(varcta[i], SIGNAL(textChanged(const QString &)), this, SLOT(codigo_textChanged(const QString &)));
             varcta[i]->show();

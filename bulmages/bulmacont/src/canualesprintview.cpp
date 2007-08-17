@@ -38,11 +38,10 @@
 
 
 CAnualesPrintView::CAnualesPrintView ( Empresa  *emp, QWidget *parent )
-        : QDialog ( parent )
+        : QDialog ( parent ), PEmpresaBase(emp)
 {
     _depura ( "CAnualesPrintView::CAnualesPrintView", 0 );
     setupUi ( this );
-    empresaactual = emp;
     fichero = NULL;
     _depura ( "END CAnualesPrintView::CAnualesPrintView", 0 );
 
@@ -99,7 +98,7 @@ void CAnualesPrintView::on_mui_aceptar_clicked()
             if( !e1.isNull() ) { /// the node was really an element.
                 /// Este es el c&aacute;lculo de los saldos para la cuenta.
                 QString query = "SELECT saldototal('" + e1.text() + "','" + finicial + "','" + ffinal + "') AS valoract, saldototal('" + e1.text() + "','" + finicial1 + "','" + ffinal1 + "') AS valorant";
-                cursor2 *cur = empresaactual->cargacursor(query);
+                cursor2 *cur = empresaBase()->cargacursor(query);
                 if (!cur->eof()) {
                     QString valoract = cur->valor("valoract");
                     QString valorant = cur->valor("valorant");
@@ -119,10 +118,10 @@ void CAnualesPrintView::on_mui_aceptar_clicked()
 
     /// Primero, averiguaremos la cantidad de ramas iniciales (tantos como
     /// numero de cuentas de nivel 2) y las vamos creando.
-    empresaactual->begin();
+    empresaBase()->begin();
     QString query = "SELECT *, nivel(codigo) AS nivel FROM cuenta ORDER BY codigo";
     cursor2 *ramas;
-    ramas = empresaactual->cargacursor ( query, "Ramas" );
+    ramas = empresaBase()->cargacursor ( query, "Ramas" );
     Arbol *arbolP1, *arbolP2; /// un arbol por cada periodo
     arbolP1 = new Arbol;
     arbolP2 = new Arbol;
@@ -138,7 +137,7 @@ void CAnualesPrintView::on_mui_aceptar_clicked()
     arbolP1->inicializa ( ramas );
     arbolP2->inicializa ( ramas );
     delete ramas;
-    empresaactual->commit();
+    empresaBase()->commit();
 
     QRegExp rx("^.*perdidas y ganancias.*$"); /// filtro para saber si es el de perdidas y ganancias
     rx.setCaseSensitivity(Qt::CaseInsensitive);
@@ -152,33 +151,33 @@ void CAnualesPrintView::on_mui_aceptar_clicked()
 
     /// OJO!! Antes de nada, hay que calcular el asiento de REGULARIZACION que nos guarda el resultado en la 129
     Asiento1View *asientoReg;
-    empresaactual->regularizaempresa(finicial, ffinal);
-    asientoReg = empresaactual->intapuntsempresa2();
+    ((Empresa *)empresaBase())->regularizaempresa(finicial, ffinal);
+    asientoReg = ((Empresa *)empresaBase())->intapuntsempresa2();
 
     /// Ahora, recopilamos todos los apuntes agrupados por cuenta para poder
     /// establecer as&iacute; los valores de cada cuenta para el periodo 1.
-    empresaactual->begin();
+    empresaBase()->begin();
     query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = EXTRACT(year FROM timestamp '"+finicial+"') GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '"+finicial+"' AND fecha <= '"+ffinal+"' AND conceptocontable NOT SIMILAR TO '"+asiento+"' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '"+finicial+"' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo";
     cursor2 *hojas;
-    hojas = empresaactual->cargacursor ( query, "Periodo1" );
+    hojas = empresaBase()->cargacursor ( query, "Periodo1" );
     /// Para cada cuenta con sus saldos calculados hay que actualizar hojas del &aacute;rbol.
     while ( !hojas->eof() )
     {
         arbolP1->actualizahojas ( hojas );
         hojas->siguienteregistro();
     } // end while
-    empresaactual->commit();
+    empresaBase()->commit();
     asientoReg->on_mui_borrar_clicked(FALSE); /// borramos el asiento temporal creado indicando que no queremos confirmacion
 
     /// Para el segundo periodo, calculamos el asiento de REGULARIZACION que nos guarda el resultado en la 129
-    empresaactual->regularizaempresa(finicial1, ffinal1);
-    asientoReg = empresaactual->intapuntsempresa2();
+    ((Empresa *)empresaBase())->regularizaempresa(finicial1, ffinal1);
+    asientoReg = ((Empresa *)empresaBase())->intapuntsempresa2();
 
     /// Ahora, recopilamos todos los apuntes agrupados por cuenta para poder
     /// establecer as&iacute; los valores de cada cuenta para el periodo 2.
-    empresaactual->begin();
+    empresaBase()->begin();
     query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = EXTRACT(year FROM timestamp '"+finicial1+"') GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '"+finicial1+"' AND fecha <= '"+ffinal1+"' AND conceptocontable NOT SIMILAR TO '"+asiento+"' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '"+finicial1+"' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo";
-    hojas = empresaactual->cargacursor ( query, "Periodo2" );
+    hojas = empresaBase()->cargacursor ( query, "Periodo2" );
     /// Para cada cuenta con sus saldos calculados hay que actualizar hojas del &aacute;rbol.
     while ( !hojas->eof() )
     {
@@ -186,7 +185,7 @@ void CAnualesPrintView::on_mui_aceptar_clicked()
         hojas->siguienteregistro();
     } // end while
     delete hojas;
-    empresaactual->commit();
+    empresaBase()->commit();
     asientoReg->on_mui_borrar_clicked(FALSE); /// borramos indicando que no queremos confirmacion
 
     QDomNodeList lcuentas = m_doc.elementsByTagName ( "CUENTA" );

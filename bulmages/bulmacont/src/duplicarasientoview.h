@@ -23,18 +23,17 @@
 #define DUPLICARASIENTOVIEW_H
 
 #include "ui_duplicarasientobase.h"
-
+#include "blwidget.h"
 
 class Empresa;
 
 
 ///
 /** */
-class DuplicarAsientoView : public QDialog, public Ui_DuplicarAsientoBase {
+class DuplicarAsientoView : public QDialog, public Ui_DuplicarAsientoBase, PEmpresaBase {
     Q_OBJECT
 
 public:
-    Empresa *empresaactual;
     int idasiento;
 
 public:

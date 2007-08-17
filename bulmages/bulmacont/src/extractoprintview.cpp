@@ -42,11 +42,10 @@ using namespace std;
     @param name Nombre de la ventana.
     Aqu&iacute; tambi&eacute;n se inicializa la variable global conexionbase. */
 ExtractoPrintView::ExtractoPrintView(Empresa *emp, QWidget *parent = 0)
-        : QDialog(parent) {
+        : QDialog(parent), PEmpresaBase(emp) {
     _depura("ExtractoPrintView::ExtractoPrintView", 0);
     setupUi(this);
     fichero = NULL;
-    m_companyact = emp;
     _depura("END ExtractoPrintView::ExtractoPrintView", 0);
 }
 
@@ -72,7 +71,7 @@ void ExtractoPrintView::accept() {
     a realizarla. Adem&aacute;s dicha consulta puede ser invocada desde distintos sitios. */
 QString ExtractoPrintView::montaQuery() {
     _depura("ExtractoPrintView::montaQuery", 0);
-    extractoview1 *extracto = m_companyact->extractoempresa();
+    extractoview1 *extracto = ((Empresa *)empresaBase())->extractoempresa();
     /// Cogemos los valores del formulario para poder hacer un filtraje adecuado.
     QString finicial = extracto->m_fechainicial1->text();
     QString ffinal = extracto->m_fechafinal1->text();
@@ -94,8 +93,8 @@ QString ExtractoPrintView::montaQuery() {
         tipopunteo += " AND apunte.contrapartida = id_cuenta('" + contra + "') ";
     } // end if
 
-    selectcanalview *scanal = m_companyact->getselcanales();
-    selectccosteview *scoste = m_companyact->getselccostes();
+    selectcanalview *scanal = ((Empresa *)empresaBase())->getselcanales();
+    SelectCCosteView *scoste = ((Empresa *)empresaBase())->getselccostes();
     QString ccostes = scoste->cadcoste();
     if (ccostes != "") {
         ccostes.sprintf(" AND idc_coste IN (%s) ", ccostes.toAscii().constData());
@@ -139,7 +138,7 @@ void ExtractoPrintView::presentar(char *tipus) {
     int activo;
     string cad;
     cursor2 *cursoraux, *cursoraux1, *cursoraux2, *cursoraux3;
-    extractoview1 *extracto = m_companyact->extractoempresa();
+    extractoview1 *extracto = ((Empresa *)empresaBase())->extractoempresa();
     QString finicial = extracto->m_fechainicial1->text();
     QString ffinal = extracto->m_fechafinal1->text();
     QString cinicial = extracto->m_codigoinicial->text();
@@ -185,14 +184,14 @@ void ExtractoPrintView::presentar(char *tipus) {
             fitxersortidahtml << "<table><tr><td colspan=\"6\" class=titolmajor> Mayor <hr></td></tr>\n\n";
             fitxersortidahtml << "<tr><td colspan=\"6\" class=periodemajor> Fecha Inicial: " << finicial.toAscii().constData() << " -  Fecha Final: " << ffinal.toAscii().constData() << "<hr></td></tr>\n\n";
         } // end if
-        m_companyact->begin();
-        cursoraux = m_companyact->cargacuentascodigo(-1,cinicial, cfinal);
-        m_companyact->commit();
+        empresaBase()->begin();
+        cursoraux = empresaBase()->cargacuentascodigo(-1,cinicial, cfinal);
+        empresaBase()->commit();
         while (!cursoraux->eof()) {
             idcuenta = atoi(cursoraux->valor("idcuenta").toAscii());
-            m_companyact->begin();
-            cursoraux1 = m_companyact->cargaapuntesctafecha(idcuenta, finicial.toAscii(), ffinal.toAscii());
-            m_companyact->commit();
+            empresaBase()->begin();
+            cursoraux1 = empresaBase()->cargaapuntesctafecha(idcuenta, finicial.toAscii(), ffinal.toAscii());
+            empresaBase()->commit();
             if (!cursoraux1->eof()) {
                 activo = strcmp((char *) cursoraux->valor("activo").toAscii().constData(), "f");
                 if (txt) {
@@ -211,9 +210,9 @@ void ExtractoPrintView::presentar(char *tipus) {
                         fitxersortidahtml << "<tr><td colspan=\"6\" class=tipuscomptemajor> Cuenta de pasivo </td></tr>\n";
                     } // end if
                 } // end if
-                m_companyact->begin();
-                cursoraux2 = m_companyact->cargasaldoscuentafecha(idcuenta, (char *)finicial.toAscii().constData());
-                m_companyact->commit();
+                empresaBase()->begin();
+                cursoraux2 = empresaBase()->cargasaldoscuentafecha(idcuenta, (char *)finicial.toAscii().constData());
+                empresaBase()->commit();
                 if (!cursoraux2->eof()) {
                     debeinicial = atof(cursoraux2->valor("tdebe").toAscii());
                     haberinicial = atof(cursoraux2->valor("thaber").toAscii());
@@ -243,10 +242,10 @@ void ExtractoPrintView::presentar(char *tipus) {
                     for (; !cursoraux1->eof(); cursoraux1->siguienteregistro()) {
                         idasiento = atoi(cursoraux1->valor("idasiento").toAscii());
                         contrapartida = atoi(cursoraux1->valor("contrapartida").toAscii());
-                        m_companyact->begin();
-                        cursoraux3 = m_companyact->cargacuenta(contrapartida);
+                        empresaBase()->begin();
+                        cursoraux3 = empresaBase()->cargacuenta(contrapartida);
                         codcontrapartida = cursoraux3->valor("codigo").toAscii().constData();
-                        m_companyact->commit();
+                        empresaBase()->commit();
                         debe = atof(cursoraux1->valor("debe").toAscii());
                         haber = atof(cursoraux1->valor("haber").toAscii());
                         if (activo) {
@@ -292,7 +291,7 @@ void ExtractoPrintView::presentar(char *tipus) {
             /// Presentaci&oacute;n html.
             fitxersortidahtml << "\n</table></body></html>\n";
         } // end if
-        m_companyact->commit();
+        empresaBase()->commit();
         delete cursoraux;
     }
     if (txt) {

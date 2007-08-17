@@ -66,9 +66,15 @@ Listado::~Listado() {
 
 int Listado::sacaWindow() {
     _depura("Listado::sacaWindow", 0);
-    _depura("Listado::sacaWindow existe solo para ser derivado", 0);
     empresaBase()->sacaWindow(this);
     _depura("END Listado::sacaWindow", 0);
+    return 0;
+}
+
+int Listado::meteWindow(QString title) {
+    _depura("Listado::meteWindow", 0);
+    empresaBase()->meteWindow(title, this);
+    _depura("END Listado::meteWindow", 0);
     return 0;
 }
 
@@ -102,9 +108,13 @@ void Listado::imprimir() {
     m_listado->imprimirPDF("");
 }
 
-
+/// Este metodo carga el subformulario con un SELECT generico. Si no quiere usarse este select
+/// Debe reimplementar el metodo en las clases derivadas.
 void Listado::presentar() {
-    _depura("metodo para ser reimplementado en clases hijas", 2);
+    _depura("Listado::presentar", 0);
+    QString query = "SELECT * FROM " + m_listado->tableName();
+    m_listado->cargar(query);
+    _depura("END Listado::presentar", 0);
 }
 
 

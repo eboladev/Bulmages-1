@@ -31,7 +31,7 @@
 #include <QRadioButton>
 
 #include "ui_diarioprintbase.h"
-#include "postgresiface2.h"
+#include "blwidget.h"
 
 /// Declaramos la clase empresa como amiga para que la compilaci&oacute; no sea complicada.
 #include "empresa.h"
@@ -40,14 +40,10 @@
 /// Ventana de impresi&oacute; de diarios.
 /// @class DiarioPrintView diarioprintview.h
 /** Es la ventana de impresi&oacute; de diarios. */
-class DiarioPrintView : public QDialog, public Ui_DiarioPrintBase {
+class DiarioPrintView : public QDialog, public Ui_DiarioPrintBase, PEmpresaBase {
     Q_OBJECT
 
 public:
-    /// La base de datos con la que trabaja esta clase.
-    postgresiface2 *conexionbase;
-    /// La empresa con la que trabaja esta clase.
-    Empresa *empresaactual;
     int numdigitos;
     /// Puntero al filtrado de datos.
 

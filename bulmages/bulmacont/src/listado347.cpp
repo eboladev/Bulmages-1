@@ -27,14 +27,13 @@
 #include "funcaux.h"
 
 
-Listado347::Listado347(postgresiface2 *DBconnect, QString ejerActual, QWidget *parent, Qt::WFlags f)
-        : QDialog(parent, f) {
+Listado347::Listado347(Empresa *emp, QString ejerActual, QWidget *parent, Qt::WFlags f)
+        : QDialog(parent, f), PEmpresaBase(emp) {
    _depura("Listado347::Listado347", 0);
    setupUi(this);
    importe->setText("3005.06");
    finicial->setText(normalizafecha("01/01/" + ejerActual).toString("dd/MM/yyyy"));
    ffinal->setText(normalizafecha("31/12/" + ejerActual).toString("dd/MM/yyyy"));
-   DBConn = DBconnect;
    /// Carga las tablas en pantalla.
    on_m_boton_recalcular_clicked();
    centrarEnPantalla(this);
@@ -65,9 +64,9 @@ void Listado347::on_m_boton_recalcular_clicked() {
             query += "WHERE codigo LIKE '4300%') GROUP BY idcuenta) AS facturado USING(idcuenta) ";
             query += "WHERE importe > " + importe->text() + " ORDER BY descripcion";
 
-    DBConn->begin();
-    cursor2 *recordSet = DBConn->cargacursor(query, "recordSet");
-    DBConn->commit();
+    empresaBase()->begin();
+    cursor2 *recordSet = empresaBase()->cargacursor(query, "recordSet");
+    empresaBase()->commit();
 
     tablaventas->setColumnCount(5);
     tablaventas->setRowCount(recordSet->numregistros());
@@ -104,9 +103,9 @@ void Listado347::on_m_boton_recalcular_clicked() {
     query += "WHERE codigo SIMILAR TO '4(0|1)00%') GROUP BY idcuenta) AS facturado USING(idcuenta) ";
     query += "WHERE importe > " + importe->text() + " ORDER BY descripcion";
 
-    DBConn->begin();
-    recordSet = DBConn->cargacursor(query, "recordSet");
-    DBConn->commit();
+    empresaBase()->begin();
+    recordSet = empresaBase()->cargacursor(query, "recordSet");
+    empresaBase()->commit();
 
     tablacompras->setColumnCount(5);
     tablacompras->setRowCount(recordSet->numregistros());

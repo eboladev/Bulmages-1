@@ -45,18 +45,16 @@ using namespace std;
 
 
 BalancePrintView::BalancePrintView(Empresa *emp)
-        : QDialog(0) {
+        : QDialog(0), PEmpresaBase(emp) {
     _depura("BalancePrintView::BalancePrintView", 0);
     setupUi(this);
-    empresaactual = emp;
-    conexionbase = emp->bdempresa();
-    m_codigoinicial->setEmpresa(emp);
-    m_codigofinal->setEmpresa(emp);
+    m_codigoinicial->setEmpresaBase(emp);
+    m_codigofinal->setEmpresaBase(emp);
     /// Buscamos los diferentes niveles que existen seg&uacute;n existan en la tabla
     /// de cuentas.
-    conexionbase->begin();
+    empresaBase()->begin();
     QString query = "SELECT nivel(codigo) FROM cuenta GROUP BY nivel ORDER BY nivel";
-    cursor2 *niveles = conexionbase->cargacursor(query, "Niveles");
+    cursor2 *niveles = empresaBase()->cargacursor(query, "Niveles");
     int i = 0;
     while (!niveles->eof()) {
         /// Inicializamos la tabla de nivel.
@@ -64,7 +62,7 @@ BalancePrintView::BalancePrintView(Empresa *emp)
         niveles->siguienteregistro();
         i++;
     } // end while
-    conexionbase->commit();
+    empresaBase()->commit();
     delete niveles;
     _depura("END BalancePrintView::BalancePrintView", 0);
 }
@@ -155,10 +153,10 @@ void BalancePrintView::presentar(char *tipus) {
             /// los distintos niveles de cuentas.
             /// Primero, averiguaremos la cantidad de ramas iniciales (tantos como
             /// n&uacute;mero de cuentas de nivel 2) y las vamos creando.
-            conexionbase->begin();
+            empresaBase()->begin();
             query.sprintf("SELECT *, nivel(codigo) AS nivel FROM cuenta ORDER BY codigo");
             cursor2 *ramas;
-            ramas = conexionbase->cargacursor(query, "Ramas");
+            ramas = empresaBase()->cargacursor(query, "Ramas");
             Arbol *arbol;
             arbol = new Arbol;
             while (!ramas->eof()) {
@@ -237,7 +235,7 @@ void BalancePrintView::presentar(char *tipus) {
             /// establecer as&iacute; los valores de cada cuenta.
             query.sprintf("SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = EXTRACT(year FROM timestamp '%s') GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '%s' AND fecha <= '%s' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '%s' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo", finicial.toAscii().constData(), finicial.toAscii().constData(), ffinal.toAscii().constData(), finicial.toAscii().constData());
             cursor2 *cuentas;
-            cuentas = conexionbase->cargacursor(query, "Periodo");
+            cuentas = empresaBase()->cargacursor(query, "Periodo");
             /// Para cada cuenta con sus apuntes hechos hay que actualizar hojas
             /// del &aacute;rbol.
             while (!cuentas->eof()) {
@@ -364,7 +362,7 @@ void BalancePrintView::presentar(char *tipus) {
 
             /// Eliminamos el &aacute;rbol y cerramos la conexi&oacute;n con la BD.
             delete arbol;
-            conexionbase->commit();
+            empresaBase()->commit();
 
             fitxersortidatxt.close();
             /// Dependiendo del formato de salida ejecutaremos el programa correspondiente.
@@ -396,7 +394,7 @@ void BalancePrintView::presentar(char *tipus) {
 /** Presenta la ventana de selecci&oacute;n de canales \ref selectcanalview. */
 void BalancePrintView::on_mui_canales_clicked() {
     _depura("BalancePrintView::on_mui_canales_clicked", 0);
-    selectcanalview *selcanales = empresaactual->getselcanales();
+    selectcanalview *selcanales = ((Empresa *)empresaBase())->getselcanales();
     selcanales->exec();
     selcanales->firstcanal();
     _depura("END BalancePrintView::on_mui_canales_clicked", 0);
@@ -405,10 +403,10 @@ void BalancePrintView::on_mui_canales_clicked() {
 
 /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n de selecci&oacute;n de
 /// centros de coste.
-/** Presenta la ventana de selecci&oacute;n de centros de coste \ref selectccosteview. */
+/** Presenta la ventana de selecci&oacute;n de centros de coste \ref SelectCCosteView. */
 void BalancePrintView::on_mui_ccostes_clicked() {
     _depura("BalancePrintView::on_mui_ccostes_clicked", 0);
-    selectccosteview *selccostes = empresaactual->getselccostes();
+    SelectCCosteView *selccostes = ((Empresa *)empresaBase())->getselccostes();
     selccostes->exec();
     selccostes->firstccoste();
     _depura("END BalancePrintView::on_mui_ccostes_clicked", 0);

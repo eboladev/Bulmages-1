@@ -23,17 +23,16 @@
 #define LISTADO347_H
 
 #include "ui_listado347base.h"
-#include "postgresiface2.h"
+#include "empresa.h"
+#include "blwidget.h"
 
 
-class Listado347 : public QDialog, public Ui_Listado347Base {
+class Listado347 : public QDialog, public Ui_Listado347Base, PEmpresaBase {
    Q_OBJECT
 
-private:
-    postgresiface2 * DBConn;
 
 public:
-    Listado347(postgresiface2 *DBConn = 0, QString ejerActual = "", QWidget *parent = 0, Qt::WFlags f = Qt::Window);
+    Listado347(Empresa *emp = 0, QString ejerActual = "", QWidget *parent = 0, Qt::WFlags f = Qt::Window);
     ~Listado347();
 
 private slots:

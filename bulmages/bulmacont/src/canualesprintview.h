@@ -37,17 +37,17 @@
 #include <sys/wait.h>
 #endif
 
+#include "blwidget.h"
 
 class Empresa;
 
 
-class CAnualesPrintView : public QDialog, public Ui_CAnualesPrintBase {
+class CAnualesPrintView : public QDialog, public Ui_CAnualesPrintBase, public PEmpresaBase {
     Q_OBJECT
 
 private:
     char *fichero;
     QString idbalance;
-    Empresa *empresaactual;
     QDomDocument m_doc;
 
 public:

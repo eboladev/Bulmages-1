@@ -25,7 +25,7 @@
 #include "ui_fpagobase.h"
 #include "postgresiface2.h"
 #include "dialogchanges.h"
-#include "ficha.h"
+#include "fichabc.h"
 
 
 class Empresa;
@@ -34,11 +34,10 @@ class Empresa;
 /// La clase fpagoview se encarga de la gesti&oacute;n de formas de pago.
 /** Las formas de pago son unas plantillas que se usan para determinar las formas en
     que se pagan o se cobran las facturas emitidas o recibidas. */
-class fpagoview : public Ficha, Ui_FPagoBase {
+class fpagoview : public FichaBc, public Ui_FPagoBase {
     Q_OBJECT
 
 private:
-    Empresa *empresaactual;
     cursor2 *m_curfpago;
     /// Indica la posici&oacute;n en el combobox que est&aacute; seleccionada.
     /// Se usa para guardar en caso de modificaciones.

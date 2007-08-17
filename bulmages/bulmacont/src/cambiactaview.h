@@ -23,21 +23,16 @@
 #define CAMBIACTAVIEW_H
 
 #include "ui_cambiactabase.h"
-#include "postgresiface2.h"
-
+#include "blwidget.h"
 
 class Empresa;
 
 
-class cambiactaview : public QDialog, public Ui_CambiaCuentaBase {
+class CambiaCtaView : public QDialog, public Ui_CambiaCuentaBase, public PEmpresaBase {
     Q_OBJECT
-
-private:
-    Empresa *empresaactual;
-
 public:
-    cambiactaview(Empresa *, QWidget *, Qt::WFlags flag = 0);
-    ~cambiactaview();
+    CambiaCtaView(Empresa *, QWidget *, Qt::WFlags flag = 0);
+    ~CambiaCtaView();
 
 public slots:
     virtual void accept();

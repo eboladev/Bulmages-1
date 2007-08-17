@@ -28,11 +28,10 @@
     el programa. Luego llama al m&eacute;todo cargacanales que hace la carga de los canales
     a partir de la base de datos. */
 selectcanalview::selectcanalview(Empresa *emp,QWidget *parent)
-        : QDialog(parent) {
+        : QDialog(parent), PEmpresaBase(emp) {
     _depura("selectcanalview::selectcanalview", 0);
     setupUi(this);
-    empresaactual = emp;
-    numdigitos = empresaactual->numdigitosempresa();
+    numdigitos = ((Empresa *)empresaBase())->numdigitosempresa();
     m_iterador = new QTreeWidgetItemIterator(m_listCanales);
 
     m_listCanales->setColumnCount(5);
@@ -62,9 +61,9 @@ void selectcanalview::cargacanales() {
     cursor2 *cursoraux1;
     /// Cogemos los canales y los ponemos donde toca.
     m_listCanales->clear();
-    empresaactual->begin();
-    cursoraux1 = empresaactual->cargacursor("SELECT * FROM canal", "canalillos");
-    empresaactual->commit();
+    empresaBase()->begin();
+    cursoraux1 = empresaBase()->cargacursor("SELECT * FROM canal", "canalillos");
+    empresaBase()->commit();
     while (!cursoraux1->eof()) {
         idcanal = atoi(cursoraux1->valor("idcanal").toAscii());
         it = new QTreeWidgetItem(m_listCanales);

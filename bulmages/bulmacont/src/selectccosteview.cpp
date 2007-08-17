@@ -23,34 +23,33 @@
 #include "funcaux.h"
 
 
-selectccosteview::selectccosteview(Empresa *emp, QWidget *parent)
-        : QDialog(parent) {
-    _depura("selectccosteview::selectccosteview", 0);
+SelectCCosteView::SelectCCosteView(Empresa *emp, QWidget *parent)
+        : QDialog(parent), PEmpresaBase(emp) {
+    _depura("SelectCCosteView::SelectCCosteView", 0);
     setupUi(this);
-    empresaactual = emp;
-    numdigitos = empresaactual->numdigitosempresa();
-    m_iterador = new QTreeWidgetItemIterator(m_listCostes);
 
-    m_listCostes->setColumnCount(5);
+    numdigitos = ((Empresa *)empresaBase())->numdigitosempresa();
+
+    m_iterador = new QTreeWidgetItemIterator(mui_listCostes);
+    mui_listCostes->setColumnCount(5);
 
     QStringList etiquetas;
     etiquetas << tr("nom_coste") << tr("desc_coste") << tr("Status") << tr("idc_coste") << tr("Seleccion");
-    m_listCostes->setHeaderLabels(etiquetas);
-
+    mui_listCostes->setHeaderLabels(etiquetas);
     cargacostes();
-    _depura("END selectccosteview::selectccosteview", 0);
+    _depura("END SelectCCosteView::SelectCCosteView", 0);
 }
 
 
-selectccosteview::~selectccosteview() {
-    _depura("selectccosteview::~selectccosteview", 0);
+SelectCCosteView::~SelectCCosteView() {
+    _depura("SelectCCosteView::~SelectCCosteView", 0);
     delete m_iterador;
-    _depura("END selectccosteview::~selectccosteview", 0);
+    _depura("END SelectCCosteView::~SelectCCosteView", 0);
 }
 
 
-void selectccosteview::cargacostes() {
-    _depura("selectccosteview::cargacostes", 0);
+void SelectCCosteView::cargacostes() {
+    _depura("SelectCCosteView::cargacostes", 0);
     /// Rellenamnos la listbox que va a sustituir al combobox correspondiente.
     /// Para que en los listados puedan salir m&aacute;s cosas de las que se dicen.
     fprintf(stderr, "Ahora nos toca rellenar las listas.\n");
@@ -61,12 +60,12 @@ void selectccosteview::cargacostes() {
     cursor2 *cursoraux1, *cursoraux2;
 
     /// Cogemos los centros de coste principales y los ponemos donde toca.
-    m_listCostes->clear();
-    cursoraux1 = empresaactual->cargacursor("SELECT * FROM c_coste WHERE padre ISNULL ORDER BY idc_coste");
+    mui_listCostes->clear();
+    cursoraux1 = empresaBase()->cargacursor("SELECT * FROM c_coste WHERE padre ISNULL ORDER BY idc_coste");
     while (!cursoraux1->eof()) {
         idc_coste = cursoraux1->valor("idc_coste").toInt();
 
-        item = new QTreeWidgetItem(m_listCostes);
+        item = new QTreeWidgetItem(mui_listCostes);
         item->setText(3, cursoraux1->valor("idc_coste"));
         item->setText(1, cursoraux1->valor("descripcion"));
         item->setText(0, cursoraux1->valor("nombre"));
@@ -80,7 +79,7 @@ void selectccosteview::cargacostes() {
     /// Una vez que hemos puesto los centros de coste padre, todo lo dem&aacute;s es una
     /// Tarea de ir colocando centros de coste a sus respectivos
     /// deja de ser recursivo y pasa a ser lineal.
-    cursoraux2 = empresaactual->cargacursor("SELECT * FROM c_coste WHERE padre IS NOT NULL ORDER BY idc_coste");
+    cursoraux2 = empresaBase()->cargacursor("SELECT * FROM c_coste WHERE padre IS NOT NULL ORDER BY idc_coste");
     while (!cursoraux2->eof()) {
         padre = cursoraux2->valor("padre").toInt();
         idc_coste = cursoraux2->valor("idc_coste").toInt();
@@ -97,16 +96,16 @@ void selectccosteview::cargacostes() {
         cursoraux2->siguienteregistro();
     } // end while
     delete cursoraux2;
-    _depura("END selectccosteview::cargacostes", 0);
+    _depura("END SelectCCosteView::cargacostes", 0);
 }
 
 /// Esta funci&oaqcute;n devuelve el primer centro de coste seleccionado de la vista.
 /// Devuelve el idc_coste. Si no hay ning&uacute;n centro de coste seleccionado devuelve
 /// cero
-int selectccosteview::firstccoste() {
-    _depura("selectccosteview::firstccoste", 0);
+int SelectCCosteView::firstccoste() {
+    _depura("SelectCCosteView::firstccoste", 0);
     delete m_iterador;
-    m_iterador = new QTreeWidgetItemIterator(m_listCostes);
+    m_iterador = new QTreeWidgetItemIterator(mui_listCostes);
     fprintf(stderr, "firstccoste\n");
     int idccoste = 0;
 
@@ -119,14 +118,14 @@ int selectccosteview::firstccoste() {
         ++(*m_iterador);
     } // end while
 
-    _depura("END selectccosteview::firstccoste", 0);
+    _depura("END SelectCCosteView::firstccoste", 0);
     return idccoste;
 }
 
 
 /// Esta funci&oacute;n devuelve el siguiente centro de coste seleccionado de la vista.
-int selectccosteview::nextccoste() {
-    _depura("selectccosteview::nextccoste", 0);
+int SelectCCosteView::nextccoste() {
+    _depura("SelectCCosteView::nextccoste", 0);
     int idccoste = 0;
     fprintf(stderr, "nextccoste\n");
 
@@ -138,15 +137,15 @@ int selectccosteview::nextccoste() {
         } // end if
         ++(*m_iterador);
     } // end while
-    _depura("END selectccosteview::nextccoste", 0);
+    _depura("END SelectCCosteView::nextccoste", 0);
     return idccoste;
 }
 
 
 /// Esta funci&oacute;n prepara una lista separada por comas de los costes seleccionados.
 /// Sirve para generar sentencias SQL.
-QString selectccosteview::cadcoste() {
-    _depura("selectccosteview::cadcoste", 0);
+QString SelectCCosteView::cadcoste() {
+    _depura("SelectCCosteView::cadcoste", 0);
     int idc_coste;
     QString ccostes = "";
     idc_coste = firstccoste();
@@ -158,16 +157,16 @@ QString selectccosteview::cadcoste() {
         idc_coste = nextccoste();
     } /// end while
     fprintf(stderr, " cadcoste: %s\n", ccostes.toAscii().constData());
-    _depura("END selectccosteview::cadcoste", 0);
+    _depura("END SelectCCosteView::cadcoste", 0);
     return ccostes;
 }
 
 
 /// Esta funci&oacute;n devuelve el nombre del centro de coste actual
 /// Si no existe devuelve ""
-QString selectccosteview::nomcoste() {
-    _depura("selectccosteview::nomcoste", 0);
-    QTreeWidgetItemIterator m_iterador(m_listCostes);
+QString SelectCCosteView::nomcoste() {
+    _depura("SelectCCosteView::nomcoste", 0);
+    QTreeWidgetItemIterator m_iterador(mui_listCostes);
 
     fprintf(stderr, "nomcoste()\n");
 
@@ -179,14 +178,14 @@ QString selectccosteview::nomcoste() {
     } // end if
 
     delete *m_iterador;
-    _depura("END selectccosteview::nomcoste", 0);
+    _depura("END SelectCCosteView::nomcoste", 0);
     return "";
 }
 
 
-void selectccosteview::on_mui_todo_clicked() {
-    _depura("selectccosteview::on_mui_todo_clicked", 0);
-    QTreeWidgetItemIterator m_iterador(m_listCostes);
+void SelectCCosteView::on_mui_todo_clicked() {
+    _depura("SelectCCosteView::on_mui_todo_clicked", 0);
+    QTreeWidgetItemIterator m_iterador(mui_listCostes);
 
     while (*m_iterador) {
         (*m_iterador)->setCheckState(0, Qt::Checked);
@@ -194,13 +193,13 @@ void selectccosteview::on_mui_todo_clicked() {
     } // end while
 
     delete *m_iterador;
-    _depura("END selectccosteview::on_mui_todo_clicked", 0);
+    _depura("END SelectCCosteView::on_mui_todo_clicked", 0);
 }
 
 
-void selectccosteview::on_mui_nada_clicked() {
-    _depura("selectccosteview::on_mui_nada_clicked", 0);
-    QTreeWidgetItemIterator m_iterador(m_listCostes);
+void SelectCCosteView::on_mui_nada_clicked() {
+    _depura("SelectCCosteView::on_mui_nada_clicked", 0);
+    QTreeWidgetItemIterator m_iterador(mui_listCostes);
 
     while (*m_iterador) {
         (*m_iterador)->setCheckState(0, Qt::Unchecked);
@@ -208,13 +207,13 @@ void selectccosteview::on_mui_nada_clicked() {
     } // end while
 
     delete *m_iterador;
-    _depura("END selectccosteview::on_mui_nada_clicked", 0);
+    _depura("END SelectCCosteView::on_mui_nada_clicked", 0);
 }
 
 
-void selectccosteview::on_mui_invertir_clicked() {
-    _depura("selectccosteview::on_mui_invertir_clicked", 0);
-    QTreeWidgetItemIterator m_iterador(m_listCostes);
+void SelectCCosteView::on_mui_invertir_clicked() {
+    _depura("SelectCCosteView::on_mui_invertir_clicked", 0);
+    QTreeWidgetItemIterator m_iterador(mui_listCostes);
 
     while (*m_iterador) {
         if ((*m_iterador)->checkState(0) == Qt::Unchecked) {
@@ -226,6 +225,6 @@ void selectccosteview::on_mui_invertir_clicked() {
     } // end while
 
     delete *m_iterador;
-    _depura("END selectccosteview::on_mui_invertir_clicked", 0);
+    _depura("END SelectCCosteView::on_mui_invertir_clicked", 0);
 }
 

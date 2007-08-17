@@ -61,9 +61,6 @@ class propiedadesempresa : public FichaBc, public Ui_PropiedadesEmpresaBase {
     Q_OBJECT
 
 public:
-    Empresa *m_companyact;
-
-public:
     propiedadesempresa(Empresa *emp, QWidget *parent = 0);
     ~propiedadesempresa();
     int inicializa();

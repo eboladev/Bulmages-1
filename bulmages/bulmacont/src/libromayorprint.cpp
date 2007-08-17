@@ -24,7 +24,7 @@
 #include "fixed.h"
 
 
-libromayorprint::libromayorprint() {
+libromayorprint::libromayorprint( Empresa *emp) : PEmpresaBase (emp) {
     fichero = NULL;
 }
 
@@ -32,12 +32,6 @@ libromayorprint::libromayorprint() {
 libromayorprint::~libromayorprint() {}
 
 
-int libromayorprint::inicializa(postgresiface2 *conn ) {
-    _depura("libromayorprint::inicializa", 0);
-    conexionbase = conn;
-    _depura("END libromayorprint::inicializa", 0);
-    return(0);
-}
 
 
 void libromayorprint::inicializa1(QString codinicial1, QString codfinal1, QString finicial1, QString ffinal1) {
@@ -75,11 +69,11 @@ void libromayorprint::accept() {
     FILE *mifile;
     mifile = fopen("mayor.txt", "wt");
     if (mifile != NULL) {
-        conexionbase->begin();
-        cursoraux = conexionbase->cargacuentascodigo(-1, codinicial, codfinal);
+        empresaBase()->begin();
+        cursoraux = empresaBase()->cargacuentascodigo(-1, codinicial, codfinal);
         while(!cursoraux->eof()) {
             idcuenta = atoi(cursoraux->valor(0).toAscii());
-            cursoraux1 = conexionbase->cargaapuntesctafecha(idcuenta, finicial, ffinal);
+            cursoraux1 = empresaBase()->cargaapuntesctafecha(idcuenta, finicial, ffinal);
             if (!cursoraux1->eof()) {
                 activo = strcmp((char *) cursoraux->valor(13).toAscii().constData() , "f");
                 fprintf(mifile, "\n\n%12s %50s", cursoraux->valor(1).toAscii().constData(), cursoraux->valor(2).toAscii().constData());
@@ -88,7 +82,7 @@ void libromayorprint::accept() {
                 } else {
                     fprintf(mifile, " Cuenta de Pasivo\n");
                 } // end if
-                cursoraux2 = conexionbase->cargasaldoscuentafecha(idcuenta, finicial);
+                cursoraux2 = empresaBase()->cargasaldoscuentafecha(idcuenta, finicial);
                 if (!cursoraux2->eof()) {
                     debeinicial = Fixed(cursoraux2->valor(0).toAscii().constData());
                     haberinicial = Fixed(cursoraux2->valor(1).toAscii().constData());
@@ -134,7 +128,7 @@ void libromayorprint::accept() {
             cursoraux->siguienteregistro();
         } // end while
         fclose(mifile);
-        conexionbase->commit();
+        empresaBase()->commit();
         delete cursoraux;
     } // end if
     QString cadaux = confpr->valor(CONF_EDITOR) + " mayor.txt";

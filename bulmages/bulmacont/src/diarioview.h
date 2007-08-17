@@ -35,7 +35,6 @@ class DiarioView : public FichaBc, public Ui::DiarioBase {
     Q_OBJECT
 
 public:
-    Empresa *m_companyact;
     DiarioView(Empresa *, QWidget *parent = 0, int flags = 0);
     virtual ~DiarioView();
     void accept();

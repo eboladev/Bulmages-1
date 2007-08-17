@@ -26,7 +26,7 @@
 
 #include "ui_bbloqfechabase.h"
 #include "funcaux.h"
-
+#include "fichabc.h"
 
 class Empresa;
 
@@ -41,11 +41,10 @@ public:
 };
 
 
-class BbloqFecha : public QWidget, public Ui_BBloqFechaBase {
+class BbloqFecha : public FichaBc, public Ui_BBloqFechaBase {
     Q_OBJECT
 
 private:
-    Empresa *m_companyact;
     void inicializa();
     QString qsbloqueado;
     QString qsabierto;
