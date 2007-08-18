@@ -147,19 +147,10 @@ void SubForm2Bc::on_mui_list_pressedSlash(int row, int col) {
 void SubForm2Bc::on_mui_list_cellChanged(int row, int col) {
     _depura("SubForm2Bc::on_mui_list_cellChanged", 0);
 
-    static bool semaforo = FALSE;
-
-    /// Evita que el metodo se ejecute 2 veces despues de procesar la celda.
-    if (semaforo == FALSE) {
-        semaforo = TRUE;
-    } else {
-        semaforo = FALSE;
-        return;
-    } // end if
 
 
     if (!m_procesacambios) {
-        _depura("SubForm2Bf::on_mui_list_cellChanged", 0, QString::number(row) + " " + QString::number(col)+" m_procesacambios es FALSE");
+        _depura("SubForm2Bc::on_mui_list_cellChanged", 0, QString::number(row) + " " + QString::number(col)+" m_procesacambios es FALSE");
         return;
     } // end if
 
@@ -180,6 +171,7 @@ void SubForm2Bc::on_mui_list_cellChanged(int row, int col) {
     }
 
 
+    /// Refrescamos el campo actual para que tenga los valores correctos.
     SDBCampo *camp = (SDBCampo *) item(row, col);
     camp->refresh();
 
