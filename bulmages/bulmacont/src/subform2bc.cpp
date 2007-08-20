@@ -145,10 +145,9 @@ void SubForm2Bc::on_mui_list_pressedSlash(int row, int col) {
 
 
 void SubForm2Bc::on_mui_list_cellChanged(int row, int col) {
-    _depura("SubForm2Bc::on_mui_list_cellChanged", 0);
+    _depura("SubForm2Bc::on_mui_list_cellChanged", 0, "Row: "+ QString::number(row) + " Col: "+QString::number(col));
 
-
-
+    /// Miramos el estado del semaforo para saber si es una entrada concurrente.
     if (!m_procesacambios) {
         _depura("SubForm2Bc::on_mui_list_cellChanged", 0, QString::number(row) + " " + QString::number(col)+" m_procesacambios es FALSE");
         return;
@@ -157,7 +156,7 @@ void SubForm2Bc::on_mui_list_cellChanged(int row, int col) {
     m_procesacambios = FALSE;
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza("SubForm2Bc_on_mui_list_editFinished", this);
+    int res = g_plugins->lanza("SubForm2Bc_on_mui_list_cellChanged", this);
     if (res != 0) {
         m_procesacambios = TRUE;
         return;
@@ -165,7 +164,7 @@ void SubForm2Bc::on_mui_list_cellChanged(int row, int col) {
 
     SDBRecord *rec = lineaat(row);
     if (rec == NULL) {
-        _depura ("SubForm2Bc::on_mui_list_cellChanged", 0, QString::number(row) + " " + QString::number(col)+ "la linea no existe");
+        _depura ("END SubForm2Bc::on_mui_list_cellChanged", 0, QString::number(row) + " " + QString::number(col)+ "la linea no existe");
         m_procesacambios = TRUE;
         return;
     }
@@ -178,11 +177,11 @@ void SubForm2Bc::on_mui_list_cellChanged(int row, int col) {
 
     /// Si el campo no ha sido cambiado se sale.
     if (!camp->cambiado()) {
-        m_procesacambios = TRUE;
+        _depura ("END SubForm2Bc::on_mui_list_cellChanged", 0, QString::number(row) + " " + QString::number(col)+ "Sin cambios");
         SubForm3::on_mui_list_cellChanged(row, col);
+        m_procesacambios = TRUE;
         return;
     } // end if
-
 
     if (camp->nomcampo() == "codigo" && camp->text() != "*") {
         QString codigoext = extiendecodigo(camp->text(), ((Empresa *) empresaBase())->numdigitosempresa());
@@ -221,12 +220,11 @@ void SubForm2Bc::on_mui_list_cellChanged(int row, int col) {
         rec->setDBvalue("fecha", nfecha);
     } // end if
 
-    g_plugins->lanza("SubForm2Bc_editFinished_post", this);
+    g_plugins->lanza("SubForm2Bc_on_mui_list_cellChanged_post", this);
 
-    m_procesacambios = TRUE;
     SubForm3::on_mui_list_cellChanged(row, col);
-
-    _depura("END SubForm2Bc::editFinished", 0);
+    m_procesacambios = TRUE;
+    _depura("END SubForm2Bc::on_mui_list_cellChanged", 0);
 }
 
 
@@ -378,6 +376,8 @@ void SubForm2Bc::boton_balancetree(int tipo) {
 }
 
 
+/// Se ha dado la orden de crear el menu contextual. Y esta funcion funciona con
+/// Un sistema en cascada en lugar del tipico signal-slot
 void SubForm2Bc::creaMenu(QMenu *menu) {
     _depura("SubForm2Bc::pintaMenu", 0);
     menu->addAction(tr("Submenu de contabilidad"));
@@ -575,32 +575,48 @@ void QSubForm2BcDelegate::setEditorData(QWidget *editor, const QModelIndex &inde
 
 
 bool QSubForm2BcDelegate::eventFilter(QObject *obj, QEvent *event) {
-    _depura("QSubForm2BcDelegate::eventFilter", 0, obj->objectName() + " --> " + QString::number(event->type()));
-    if (obj->isWidgetType()) {
-        _depura("QSubForm2BcDelegate:: de tipo toolTip", 0, ((QWidget *)obj)->toolTip());
-        _depura("QSubForm2BcDelegate:: de tipo windowRole", 0, ((QWidget *)obj)->windowRole());
-    } // end if
-
     /// Si es un release de tecla se hace la funcionalidad especificada.
-
-    if (event->type() == QEvent::KeyPress || event->type() == QEvent::KeyRelease) {
+    if (event->type() == QEvent::KeyPress) {
+       _depura("QSubForm2BcDelegate::eventFilter", 0, obj->objectName() + " --> " + QString::number(event->type()));
         QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
         int key = keyEvent->key();
         _depura("QSubForm2BcDelegate::key = : ", 0, QString::number(key));
         Qt::KeyboardModifiers mod = keyEvent->modifiers();
-        /// ------------------ EL CAMBIO ------------------------------
+        /// Anulamos el caso de una pulsacion de tabulador o de enter
         switch (key) {
         case Qt::Key_Return:
         case Qt::Key_Enter:
-            if (event->type() == QEvent::KeyPress)
-                return TRUE;
             if (obj->objectName() == "QTextEditDelegate") {
                 obj->event(event);
                 return TRUE;
             } // end if
+        case Qt::Key_Tab:
+                return TRUE;
         } // end switch
+        return QItemDelegate::eventFilter(obj, event);
     } // end if
-    _depura("END QSubForm2BcDelegate::eventFilter()", 0);
+
+    if (event->type() == QEvent::KeyRelease) {
+        _depura("QSubForm2BcDelegate::eventFilter", 0, obj->objectName() + " --> " + QString::number(event->type()));
+        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+        int key = keyEvent->key();
+        _depura("QSubForm2BcDelegate::key = : ", 0, QString::number(key));
+        Qt::KeyboardModifiers mod = keyEvent->modifiers();
+        /// En caso de pulsacion de un retorno de carro o similar procesamos por nuestra cuenta.
+        switch (key) {
+        case Qt::Key_Return:
+        case Qt::Key_Enter:
+            if (obj->objectName() == "QTextEditDelegate") {
+                obj->event(event);
+                return TRUE;
+            } // end if
+        case Qt::Key_Tab:
+ 	    QApplication::sendEvent(m_subform->mui_list, event);
+            return TRUE;
+        } // end switch
+        return QItemDelegate::eventFilter(obj, event);
+    } // end if
+
     return QItemDelegate::eventFilter(obj, event);
 }
 

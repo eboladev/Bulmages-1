@@ -32,6 +32,7 @@ ListLinAsiento1View::ListLinAsiento1View(QWidget *parent, const char *)
     setDBTableName("borrador");
     setFileConfig("asientotabla");
     setDBCampoId("idborrador");
+    addSHeader("idapunte", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr("Id apunte"));
     addSHeader("fecha", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Fecha"));
     addSHeader("codigo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Codigo"));
     addSHeader("descripcioncuenta", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("Nombre de la cuenta"));
@@ -41,12 +42,11 @@ ListLinAsiento1View::ListLinAsiento1View(QWidget *parent, const char *)
     addSHeader("haber", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Haber"));
     addSHeader("contrapartida", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr("Contrapartida"));
     addSHeader("comentario", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr("Comentario"));
-    addSHeader("idcanal", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone, tr("ID Canal"));
+    addSHeader("idcanal", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoWrite | SHeader::DBNoView, tr("ID Canal"));
     addSHeader("nomcanal", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Canal"));
     addSHeader("marcaconciliacion", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr("Conciliacion"));
     addSHeader("idc_coste", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoWrite | SHeader::DBNoView, tr("Id centro de coste"));
     addSHeader("nomc_coste", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr("Centro de coste"));
-    addSHeader("idapunte", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr("Id apunte"));
     addSHeader("idtipoiva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr("Id tipo de IVA"));
     addSHeader("orden", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr("Orden"));
     addSHeader("idborrador", DBCampo::DBint,  DBCampo::DBPrimaryKey, SHeader::DBNoWrite | SHeader::DBNoView, tr("Id borrador"));
@@ -62,11 +62,14 @@ ListLinAsiento1View::ListLinAsiento1View(QWidget *parent, const char *)
 }
 
 
+/// Destructor de la clase. No hace nada especial.
 ListLinAsiento1View::~ListLinAsiento1View() {
     _depura("ListLinAsiento1View::~ListLinAsiento1View", 0);
+    _depura("END ListLinAsiento1View::~ListLinAsiento1View", 0);
 }
 
 
+/// Slot que trata la solicitud de pintar el menu contextual sobre el subformulario.
 void ListLinAsiento1View::s_pintaMenu(QMenu *menu) {
     _depura("ListLinAsiento1View::s_pintaMenu", 0);
     menu->addSeparator();
@@ -86,6 +89,7 @@ void ListLinAsiento1View::s_pintaMenu(QMenu *menu) {
     _depura("ListLinAsiento1View::s_pintaMenu", 0);
 }
 
+/// Slot que trata la activacion de un elemento en el menu contextual.
 void ListLinAsiento1View::s_trataMenu(QAction *action) {
     _depura("ListLinAsiento1View::s_trataMenu", 0);
     if (!action) return;
@@ -112,10 +116,6 @@ void ListLinAsiento1View::s_trataMenu(QAction *action) {
     _depura("END ListLinAsiento1View::s_trataMenu", 0);
 }
 
-
-
-
-
 /// Carga lineas de asiento (apuntes).
 void ListLinAsiento1View::cargar(QString idasiento) {
     _depura("AsientoSubForm::cargar", 0);
@@ -130,8 +130,6 @@ void ListLinAsiento1View::cargar(QString idasiento) {
     delete cur;
     _depura("END AsientoSubForm::cargar", 0);
 }
-
-
 
 
 /// Devuelve el DEBE de un asiento.

@@ -160,8 +160,8 @@ void SubForm2Bf::on_mui_list_cellChanged(int row, int col) {
     /// Si el campo no ha sido cambiado se sale.
     if ( ! camp->cambiado() ) {
         _depura("SubForm2Bf::on_mui_list_cellChanged", 0, QString::number(row) + " " + QString::number(col)+ camp->valorcampo() + "Sin cambios");
-        m_procesacambios = TRUE;
         SubForm3::on_mui_list_cellChanged(row, col);
+        m_procesacambios = TRUE;
         return;
     } // end if
 
@@ -251,55 +251,12 @@ void SubForm2Bf::on_mui_list_cellChanged(int row, int col) {
             delete cur;
     } // end if
 
-    m_procesacambios = TRUE;
     SubForm3::on_mui_list_cellChanged(row, col);
+    m_procesacambios = TRUE;
 
     _depura("END SubForm2Bf::on_mui_list_editFinished", 0);
 }
 
-/*
-void SubForm2Bf::contextMenuEvent(QContextMenuEvent *) {
-    _depura("SubForm2Bf::contextMenuEvent", 0);
-    QAction *del = NULL;
-    int row = currentRow();
-    if (row < 0)
-        return;
-
-    int col = currentColumn();
-    if (row < 0)
-        return;
-
-    QMenu *popup = new QMenu(this);
-    if (m_delete)
-        del = popup->addAction(tr("Borrar registro"));
-    popup->addSeparator();
-    QAction *ajustc = popup->addAction(tr("Ajustar columna"));
-    QAction *ajustac = popup->addAction(tr("Ajustar altura"));
-
-    QAction *ajust = popup->addAction(tr("Ajustar columnas"));
-    QAction *ajusta = popup->addAction(tr("Ajustar alturas"));
-
-    popup->addSeparator();
-    QAction *verconfig = popup->addAction(tr("Ver/Ocultar configurador de subformulario"));
-
-    QAction *opcion = popup->exec(QCursor::pos());
-    if (opcion == del && m_delete)
-        borrar(row);
-    if (opcion == ajust)
-        resizeColumnsToContents();
-    if (opcion == ajusta)
-        resizeRowsToContents();
-    if (opcion == ajustc)
-        resizeColumnToContents(col);
-    if (opcion == ajustac)
-        resizeRowToContents(row);
-    if (opcion == verconfig)
-        toogleConfig();
-
-    delete popup;
-    _depura("END SubForm2Bf::contextMenuEvent", 0);
-}
-*/
 
 void SubForm2Bf::setIdCliente(QString id) {
     _depura("SubForm2Bf::setIdCliente", 0, id);
@@ -563,21 +520,14 @@ void QSubForm2BfDelegate::setEditorData(QWidget* editor, const QModelIndex& inde
 
 
 bool QSubForm2BfDelegate::eventFilter(QObject *obj, QEvent *event) {
-    _depura("QSubForm2BfDelegate::eventFilter", 0, obj->objectName() + " --> " + QString::number(event->type()));
-    if (obj->isWidgetType()) {
-        _depura("QSubForm2BfDelegate:: de tipo toolTip", 0, ((QWidget *)obj)->toolTip());
-        _depura("QSubForm2BfDelegate:: de tipo windowRole", 0, ((QWidget *)obj)->windowRole());
-        _depura("QSubForm2BfDelegate:: de tipo accesibleDescription", 0, ((QWidget *)obj)->accessibleDescription());
-        _depura("QSubForm2BfDelegate:: de tipo accesibleName", 0, ((QWidget *)obj)->accessibleName());
-    } // end if
-
     /// Si es un release de tecla se hace la funcionalidad especificada.
-    if (event->type() == QEvent::KeyPress || event->type() == QEvent::KeyRelease) {
+    if (event->type() == QEvent::KeyPress) {
+       _depura("QSubForm2BfDelegate::eventFilter", 0, obj->objectName() + " --> " + QString::number(event->type()));
         QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
         int key = keyEvent->key();
-        _depura("QSubForm2BfDelegate::key = :", 0, QString::number(key));
+        _depura("QSubForm2BfDelegate::key = : ", 0, QString::number(key));
         Qt::KeyboardModifiers mod = keyEvent->modifiers();
-        /// ------------------ EL CAMBIO ------------------------------
+        /// Anulamos el caso de una pulsacion de tabulador o de enter
         switch (key) {
         case Qt::Key_Return:
         case Qt::Key_Enter:
@@ -585,10 +535,33 @@ bool QSubForm2BfDelegate::eventFilter(QObject *obj, QEvent *event) {
                 obj->event(event);
                 return TRUE;
             } // end if
+        case Qt::Key_Tab:
+                return TRUE;
         } // end switch
-
+        return QItemDelegate::eventFilter(obj, event);
     } // end if
-    _depura("END QSubForm2BfDelegate::eventFilter", 0);
+
+    if (event->type() == QEvent::KeyRelease) {
+        _depura("QSubForm2BfDelegate::eventFilter", 0, obj->objectName() + " --> " + QString::number(event->type()));
+        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+        int key = keyEvent->key();
+        _depura("QSubForm2BfDelegate::key = : ", 0, QString::number(key));
+        Qt::KeyboardModifiers mod = keyEvent->modifiers();
+        /// En caso de pulsacion de un retorno de carro o similar procesamos por nuestra cuenta.
+        switch (key) {
+        case Qt::Key_Return:
+        case Qt::Key_Enter:
+            if (obj->objectName() == "QTextEditDelegate") {
+                obj->event(event);
+                return TRUE;
+            } // end if
+        case Qt::Key_Tab:
+ 	    QApplication::sendEvent(m_subform->mui_list, event);
+            return TRUE;
+        } // end switch
+        return QItemDelegate::eventFilter(obj, event);
+    } // end if
+
     return QItemDelegate::eventFilter(obj, event);
 }
 

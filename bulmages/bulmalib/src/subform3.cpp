@@ -470,7 +470,7 @@ void SubForm3::situarse(unsigned int row, unsigned int col) {
             invalido = TRUE;
     } // end while
     mui_list->setCurrentCell(nrow, ncol);
-    _depura("END SubForm3::situarse", 0);
+    _depura("END SubForm3::situarse", 0, QString::number(nrow) + " " + QString::number(ncol));
 }
 
 
@@ -904,15 +904,11 @@ bool SubForm3::campoCompleto(int row) {
 }
 
 
-/// M&eacute;todo que se dispara cuando se termina de editar un campo del Subformulario.
+/// M&eacute;todo que se dispara cuando se va a reposicionar en el formulario.
 /// Se encarga de resituar el cursor al lugar que se haya indicado.
-void SubForm3::on_mui_list_cellChanged(int row, int col) {
-    _depura("SubForm3::on_mui_list_cellChanged", 0);
+void SubForm3::on_mui_list_cellRePosition(int row, int col) {
+    _depura("SubForm3::on_mui_list_cellReposition", 0, "Row: "+QString::number(row) + " col: "+QString::number(col));
 
-    if (!m_procesacambios) return;
-    m_procesacambios = FALSE;
-
-    emit editFinish(row, col);
     bool creado = FALSE;
 
     int key = mui_list->m_teclasalida;
@@ -926,6 +922,7 @@ void SubForm3::on_mui_list_cellChanged(int row, int col) {
 
     case Qt::Key_Return:
     case Qt::Key_Enter:
+    case Qt::Key_Tab:
         if (!m_insercion) {
             /// Se ha hecho un enter sobre una tabla sin insercion con lo que lanzamos un doble click para que sea
             /// La accion simulada.
@@ -946,8 +943,13 @@ void SubForm3::on_mui_list_cellChanged(int row, int col) {
         break;
     } // end switch
 
-    m_procesacambios = TRUE;
+    _depura("END SubForm3::on_mui_list_cellRePosition", 0);
+}
 
+/// M&eacute;todo que se dispara cuando se termina de editar un campo del Subformulario.
+void SubForm3::on_mui_list_cellChanged(int row, int col) {
+    _depura("SubForm3::on_mui_list_cellChanged", 0, "Row: "+QString::number(row) + " col: "+QString::number(col));
+    emit editFinish(row, col);
     _depura("END SubForm3::on_mui_list_cellChanged", 0);
 }
 

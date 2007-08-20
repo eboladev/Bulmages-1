@@ -165,8 +165,8 @@ void QTableWidget2::setSortingEnabled(bool sorting) {
 tabla y emite signals si lo considera adecuado.
 */
 bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
-    _depura("QTableWidget2::eventFilter() :" + QString::number(event->type()), 1);
     if (event->type() == QEvent::KeyPress) {
+        _depura("QTableWidget2::eventFilter() :" + QString::number(event->type()), 1);
         QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
         int key = keyEvent->key();
         int row = currentRow();
@@ -180,6 +180,7 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
         switch (key) {
         case Qt::Key_Return:
         case Qt::Key_Enter:
+        case Qt::Key_Tab:
             m_teclasalida = key;
             return TRUE;
             break;
@@ -188,6 +189,8 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
 
     /// Si es un release de tecla se hace la funcionalidad especificada.
     if (event->type() == QEvent::KeyRelease) {
+        _depura("QTableWidget2::eventFilter() :" + QString::number(event->type()), 1);
+
         QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
         int key = keyEvent->key();
         int col = currentColumn();
@@ -203,7 +206,9 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
         switch (key) {
         case Qt::Key_Return:
         case Qt::Key_Enter:
+	case Qt::Key_Tab:
             m_teclasalida = key;
+	    emit cellRePosition(row, col);
             return TRUE;
             break;
 
@@ -253,8 +258,9 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
             } // end if
         } // end switch
     } // end if
-    _depura("END QTableWidget2::eventFilter()", 0);
-    return QTableWidget::eventFilter(obj, event);
+//    _depura("END QTableWidget2::eventFilter()", 0);
+        return QTableWidget::eventFilter(obj, event);
+//      return TRUE;
 }
 
 

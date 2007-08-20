@@ -84,6 +84,7 @@ public slots:
     virtual void sitemChanged(QTableWidgetItem *it);
 
 signals:
+    void cellRePosition(int, int);
     void pulsadomas(int, int, int);
     void pressedAsterisk(int, int);
     void pressedPlus(int, int);
