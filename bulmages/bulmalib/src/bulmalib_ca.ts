@@ -861,7 +861,7 @@ Document malament formatat.</translation>
     <message>
         <location filename="pgimportfiles.cpp" line="524"/>
         <source>&lt;LI&gt;Insercion de asiento</source>
-        <translation>&lt;LI&gt;Inserció de seient</translation>
+        <translation>&lt;LI&gt;Inserció d&apos;assentament</translation>
     </message>
     <message>
         <location filename="pgimportfiles.cpp" line="552"/>
