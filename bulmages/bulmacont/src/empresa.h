@@ -40,7 +40,6 @@
 
 class SelectCCosteView;
 class selectcanalview;
-class BalanceTreeView;
 class Asiento1View;
 class DiarioView;
 class BalanceView;
@@ -68,7 +67,6 @@ private:
     QString nombre;
     int ano;
     QString contrasenya;
-    BalanceTreeView *balance1;
     DiarioView *diario;
     extractoview1 *extracto;
     BalanceView *balance;
@@ -92,7 +90,6 @@ public:
     BalanceView *balanceempresa();
     extractoview1 *extractoempresa();
     DiarioView *diarioempresa();
-    BalanceTreeView *balance1empresa();
     Asiento1View *intapuntsempresa();
     Asiento1View *intapuntsempresa2();
     int numdigitosempresa();
@@ -106,7 +103,6 @@ public:
     int libromayor();
     int librodiario();
     int librobalance();
-    int librobalancetree();
     int registroiva();
     int listado347();
     int createMainWindows(Splash *);

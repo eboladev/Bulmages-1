@@ -66,7 +66,7 @@ public:
     virtual void pintacomentariosasiento(QString);
     virtual void pintaordenasiento(QString);
     virtual void pintaclase(QString);
-    virtual void calculaypintatotales(QString);
+    virtual void calculaypintatotales();
     virtual void pintar();
     virtual void trataestadoAsiento1();
     virtual void asiento_cierre();

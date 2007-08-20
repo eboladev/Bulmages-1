@@ -342,39 +342,6 @@ void SubForm2Bc::boton_balance1(int tipo) {
 }
 
 
-/// Si el parametro pasado es un:
-/// 0 -> del per&iacute;odo actual.
-/// 1 -> del mes actual mirado a partir de la fecha de inicio.
-/// 2 -> del a&ntilde;o actual mirado a partir de la fecha de inicio.
-void SubForm2Bc::boton_balancetree(int tipo) {
-    _depura("SubForm2Bc::boton_balance2",0);
-    Empresa *companyact = (Empresa *) empresaBase();
-    QString fecha = DBvalue("fecha").left(10);
-    QString codigo = DBvalue("codigo");
-    QDate fecha1, fecha2, fechaact, fechaact1;
-    if (fecha != "" && codigo != "") {
-        fechaact = normalizafecha(fecha);
-        switch (tipo) {
-        case 0:
-            fecha1.setYMD(fechaact.year(), fechaact.month(), fechaact.day());
-            fecha2.setYMD(fechaact1.year(), fechaact.month(), fechaact.day());
-            break;
-        case 1:
-            fecha1.setYMD(fechaact.year(), fechaact.month(), 1);
-            fecha2.setYMD(fechaact.year(), fechaact.month(), fechaact.daysInMonth());
-            break;
-        case 2:
-            fecha1.setYMD(fechaact.year(), 1, 1);
-            fecha2.setYMD(fechaact.year(), 12, 31);
-            break;
-        } // end switch
-        companyact->balance1empresa()->inicializa1(codigo, codigo, fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
-        companyact->balance1empresa()->on_mui_actualizar_clicked();
-        companyact->librobalancetree();
-    } // end if
-    _depura("END SubForm2Bc::boton_balance2", 0);
-}
-
 
 /// Se ha dado la orden de crear el menu contextual. Y esta funcion funciona con
 /// Un sistema en cascada en lugar del tipico signal-slot

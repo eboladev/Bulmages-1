@@ -156,24 +156,37 @@ void DiarioView::accept() {
 /// Pinta el listado en el subformulario
 void DiarioView::presentar() {
     _depura("DiarioView::presentar", 0);
-    QString query = "SELECT *, cuenta.descripcion AS descripcioncuenta FROM borrador LEFT JOIN cuenta ON cuenta.idcuenta = borrador.idcuenta ";
-    query += " LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste FROM c_coste) AS t1 ON t1.idc_coste = borrador.idc_coste ";
-    query += " LEFT JOIN (SELECT (ordenasiento || ' - ' || fecha) AS ordenasientoconfecha, ordenasiento, idasiento, fecha FROM asiento) AS t5 ON t5.idasiento = borrador.idasiento";
-    query += " LEFT JOIN (SELECT idcanal, nombre as nombrecanal FROM canal) AS t2 ON t2.idcanal = borrador.idcanal";
-    query += " LEFT JOIN (SELECT idregistroiva, factura, idborrador FROM registroiva) AS t3 ON t3.idborrador = borrador.idborrador ";
+    QString tabla = "apunte";
+    mui_list->setDBTableName("apunte");
+    mui_list->setDBCampoId("idapunte");
+    if (mui_asAbiertos->isChecked()) {
+	tabla = "borrador";
+        mui_list->setDBTableName("borrador");
+        mui_list->setDBCampoId("idborrador");
+    } // end if
+
+    QString query = "SELECT *, cuenta.descripcion AS descripcioncuenta FROM "+tabla+" LEFT JOIN cuenta ON cuenta.idcuenta = "+tabla+".idcuenta ";
+    query += " LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste FROM c_coste) AS t1 ON t1.idc_coste = "+tabla+".idc_coste ";
+    query += " LEFT JOIN (SELECT (ordenasiento || ' - ' || fecha) AS ordenasientoconfecha, ordenasiento, idasiento, fecha FROM asiento) AS t5 ON t5.idasiento = "+tabla+".idasiento";
+    query += " LEFT JOIN (SELECT idcanal, nombre as nombrecanal FROM canal) AS t2 ON t2.idcanal = "+tabla+".idcanal";
+    if (mui_asAbiertos->isChecked()) {
+    	query += " LEFT JOIN (SELECT idregistroiva, factura, idborrador FROM registroiva) AS t3 ON t3.idborrador = "+tabla+".idborrador ";
+    } else {
+    	query += " LEFT JOIN (SELECT idregistroiva, factura, idborrador FROM registroiva) AS t3 ON t3.idborrador IN (SELECT idborrador FROM borrador WHERE idapunte = "+tabla+".idapunte)";
+    } // end if
     QString cad = "";
     QString cadwhere=" WHERE ";
     QString cadand = "";
     QString totalcadena = "";
 
     if (mui_fechainicial->text() != "") {
-        cad += cadwhere + cadand + "borrador.fecha >= '" + mui_fechainicial->text() + "'";
+        cad += cadwhere + cadand + tabla + ".fecha >= '" + mui_fechainicial->text() + "'";
         cadwhere = "";
         cadand = " AND ";
     } // end if
 
     if (mui_fechafinal->text() != "") {
-        cad += cadwhere + cadand + "borrador.fecha <= '" + mui_fechafinal->text() + "'";
+        cad += cadwhere + cadand + tabla + ".fecha <= '" + mui_fechafinal->text() + "'";
         cadwhere = "";
         cadand = " AND ";
     } // end if
@@ -184,7 +197,7 @@ void DiarioView::presentar() {
     mui_list->cargar(cur);
     delete cur;
 
-    cur = empresaBase()->cargacursor("SELECT sum(debe) as totaldebe, sum(haber) as totalhaber from borrador " + cad);
+    cur = empresaBase()->cargacursor("SELECT sum(debe) as totaldebe, sum(haber) as totalhaber from " + tabla + cad);
     if (!cur->eof()) {
         totaldebe->setText(cur->valor("totaldebe"));
         totalhaber->setText(cur->valor("totalhaber"));

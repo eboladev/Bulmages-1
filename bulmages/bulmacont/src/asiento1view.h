@@ -74,7 +74,7 @@ private:
     void pintaordenasiento(QString val);
     void pintaclase(QString val);
     void pintacomentariosasiento(QString text);
-    virtual void calculaypintatotales(QString);
+    virtual void calculaypintatotales();
     void prepguardar();
 
 public:
@@ -95,6 +95,7 @@ public:
     virtual void on_mui_borrar_clicked(bool);
 
 public slots:
+    virtual void on_mui_list_editFinish(int, int);
     virtual void on_mui_abrirasiento_clicked();
     virtual void on_mui_cerrarasiento_clicked();
     virtual void on_mui_guardarasiento_clicked();
@@ -102,7 +103,6 @@ public slots:
     virtual void on_mui_duplicar_clicked();
     virtual void on_mui_inteligente_clicked();
     virtual void on_mui_fecha_returnPressed();
-    virtual void s_lineaValueChanged();
     /// Al pulsar return sobre el n&uacute;mero de asiento se procede como si fuese una
     /// carga de dicho asiento.
     void mui_ordenasiento_pulsadoIntro();

@@ -166,10 +166,6 @@ void Bulmacont::on_actionBalance_de_Cuentas_triggered() {
 }
 
 
-void Bulmacont::on_actionBalance_Jer_rquico_de_Sumas_y_Saldos_triggered() {
-    m_empresaactual->librobalancetree();
-}
-
 
 void Bulmacont::on_actionImprimir_triggered() {
     m_empresaactual->boton_imprimir();

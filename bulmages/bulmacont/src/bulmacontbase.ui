@@ -35,7 +35,6 @@
     <addaction name="actionLibro_Mayor" />
     <addaction name="actionLibro_Diario" />
     <addaction name="actionBalance_de_Cuentas" />
-    <addaction name="actionBalance_Jer_rquico_de_Sumas_y_Saldos" />
    </widget>
    <widget class="QMenu" name="menuEmpresa" >
     <property name="title" >
@@ -138,7 +137,6 @@
    <addaction name="actionLibro_Mayor" />
    <addaction name="actionLibro_Diario" />
    <addaction name="actionBalance_de_Cuentas" />
-   <addaction name="actionBalance_Jer_rquico_de_Sumas_y_Saldos" />
    <addaction name="actionInicio" />
    <addaction name="actionAnterior" />
    <addaction name="actionSiguiente" />
@@ -268,20 +266,6 @@
    </property>
    <property name="text" >
     <string>&amp;Balance de Cuentas</string>
-   </property>
-  </action>
-  <action name="actionBalance_Jer_rquico_de_Sumas_y_Saldos" >
-   <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_arbolBalance.xpm</iconset>
-   </property>
-   <property name="text" >
-    <string>Balance &amp;jerarquico de Sumas y Saldos</string>
-   </property>
-   <property name="iconText" >
-    <string>Balance jerarquico de Sumas y Saldos</string>
-   </property>
-   <property name="toolTip" >
-    <string>Balance jerarquico de Sumas y Saldos</string>
    </property>
   </action>
   <action name="actionFormas_de_Pago" >

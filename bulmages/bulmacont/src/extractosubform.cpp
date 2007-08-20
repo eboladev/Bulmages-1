@@ -84,10 +84,6 @@ void ExtractoSubForm::contextMenuEvent(QContextMenuEvent *) {
     QAction *mostbalancedia = popup->addAction("Mostrar balance (dia)");
     QAction *mostbalancemes = popup->addAction("Mostrar balance (mes)");
     QAction *mostbalanceano = popup->addAction("Mostrar balance (ano)");
-    popup->addSeparator();
-    QAction *mostbalancejdia = popup->addAction("Mostrar balance jerarquico (dia)");
-    QAction *mostbalancejmes = popup->addAction("Mostrar balance jerarquico (mes)");
-    QAction *mostbalancejano = popup->addAction("Mostrar balance jerarquico (ano)");
 
     if (m_delete) {
         del = popup->addAction(tr("Borrar registro"));
@@ -139,15 +135,6 @@ void ExtractoSubForm::contextMenuEvent(QContextMenuEvent *) {
     } // end if
     if (opcion == mostbalanceano) {
         boton_balance1(2);
-    } // end if
-    if (opcion == mostbalancejdia) {
-        boton_balancetree(0);
-    } // end if
-    if (opcion == mostbalancejmes) {
-        boton_balancetree(1);
-    } // end if
-    if (opcion == mostbalancejano) {
-        boton_balancetree(2);
     } // end if
     delete popup;
     _depura("END ExtractoSubForm::contextMenuEvent", 0);

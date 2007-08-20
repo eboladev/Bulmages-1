@@ -82,10 +82,6 @@ void ListLinAsiento1View::s_pintaMenu(QMenu *menu) {
     menu->addAction(tr("Mostrar balance (dia)"));
     menu->addAction(tr("Mostrar balance (mes)"));
     menu->addAction(tr("Mostrar balance (ano)"));
-    menu->addSeparator();
-    menu->addAction(tr("Mostrar balance jerarquico (dia)"));
-    menu->addAction(tr("Mostrar balance jerarquico (mes)"));
-    menu->addAction(tr("Mostrar balance jerarquico (ano)"));
     _depura("ListLinAsiento1View::s_pintaMenu", 0);
 }
 
@@ -107,12 +103,6 @@ void ListLinAsiento1View::s_trataMenu(QAction *action) {
         boton_balance1(1);
     if (action->text() == tr("Mostrar balance (ano)"))
         boton_balance1(2);
-    if (action->text() == tr("Mostrar balance jerarquico (dia)"))
-        boton_balancetree(0);
-    if (action->text() == tr("Mostrar balance jerarquico (mes)"))
-        boton_balancetree(1);
-    if (action->text() == tr("Mostrar balance jerarquico (ano)"))
-        boton_balancetree(2);
     _depura("END ListLinAsiento1View::s_trataMenu", 0);
 }
 

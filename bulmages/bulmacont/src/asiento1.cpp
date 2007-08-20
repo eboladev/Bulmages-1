@@ -83,7 +83,7 @@ void Asiento1::pintaclase(QString) {
 }
 
 
-void Asiento1::calculaypintatotales(QString) {
+void Asiento1::calculaypintatotales() {
     _depura("funcion no implementada calculaypintatotales", 2);
 }
 
@@ -315,7 +315,7 @@ void Asiento1::pintar() {
     pintaordenasiento(DBvalue("ordenasiento"));
     pintaclase(DBvalue("clase"));
     /// Pintamos los totales.
-    calculaypintatotales(idasiento());
+    calculaypintatotales();
     trataestadoAsiento1();
     _depura("END Asiento1::pintar", 0);
 }

@@ -62,7 +62,6 @@ public:
     virtual void boton_asiento();
     virtual void boton_extracto1(int);
     virtual void boton_balance1(int);
-    virtual void boton_balancetree(int);
     virtual void boton_diario1(int);
     virtual void creaMenu(QMenu *);
     virtual void procesaMenu(QAction *);

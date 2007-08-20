@@ -79,12 +79,21 @@ Asiento1View::~Asiento1View() {
 }
 
 
-void Asiento1View::calculaypintatotales(QString idasiento) {
+void Asiento1View::calculaypintatotales() {
     _depura("Asiento1View::calculaypintatotales", 0);
-    m_totaldebe->setText(totaldebe(idasiento).toQString());
-    m_totalhaber->setText(totalhaber(idasiento).toQString());
-    Fixed desc = totaldebe(idasiento) - totalhaber(idasiento);
+    Fixed tdebe = mui_list->sumarCampo("debe");
+    Fixed thaber = mui_list->sumarCampo("haber");
+    m_totaldebe->setText(tdebe.toQString());
+    m_totalhaber->setText(thaber.toQString());
+    Fixed desc = tdebe - thaber;
     m_descuadre->setText(desc.toQString());
+
+    /// Si hay descuadre no se permite cerrar el asiento. Y si el asiento esta abierto y cuadrado se permite el cierre del asiento.
+    if (desc != 0) {
+       mui_cerrarasiento->setEnabled(FALSE);
+    } else if (!mui_abrirasiento->isEnabled()) {
+       mui_cerrarasiento->setEnabled(TRUE);
+    } // end ir
     _depura("END Asiento1View::calculaypintatotales", 0);
 }
 
@@ -332,6 +341,12 @@ void Asiento1View::on_mui_borrar_clicked(bool atendido) {
         } // end if
     } // end if
     _depura("END Asiento1View::on_mui_borrar_clicked", 0);
+}
+
+void Asiento1View::on_mui_list_editFinish(int, int) {
+	_depura("Asiento1View::on_mui_list_editFinish", 0);
+	calculaypintatotales();
+	_depura("END Asiento1View::on_mui_list_editFinish", 0);
 }
 
 
@@ -614,6 +629,10 @@ void Asiento1View::on_mui_abrirasiento_clicked() {
 
 
 void Asiento1View::on_mui_cerrarasiento_clicked() {
+    if (Fixed(m_descuadre->text()) != 0)  {
+	_depura("Asiento descuadrado, no se puede cerrar", 2);
+	return;
+    } // end if
     prepguardar();
     cerrar();
 }
@@ -627,9 +646,6 @@ void Asiento1View::on_mui_guardarasiento_clicked() {
 
 
 
-void Asiento1View::s_lineaValueChanged() {
-    calculaypintatotales(idasiento());
-}
 
 
 /// Al pulsar return sobre el n&uacute;mero de asiento se procede como si fuese una

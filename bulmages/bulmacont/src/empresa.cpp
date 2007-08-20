@@ -29,7 +29,7 @@
 #include "asientosview.h"
 #include "amortizacionesview.h"
 #include "canualesview.h"
-#include "balance1view.h"
+//#include "balance1view.h"
 #include "cuentaview.h"
 #include "canalview.h"
 #include "ccosteview.h"
@@ -68,7 +68,6 @@ Empresa::Empresa(Bulmacont *bcont) : EmpresaBase() {
     m_bulmacont = bcont;
     diario = NULL;
     extracto = NULL;
-    balance1 = NULL;
     balance = NULL;
     selccostes  = NULL;
     selcanales = NULL;
@@ -108,9 +107,6 @@ DiarioView *Empresa::diarioempresa() {
 }
 
 
-BalanceTreeView *Empresa::balance1empresa() {
-    return balance1;
-}
 
 
 Asiento1View *Empresa::intapuntsempresa() {
@@ -152,7 +148,6 @@ int Empresa::createMainWindows(Splash *splash) {
         delete extracto;
         delete diario;
         delete balance;
-        delete balance1;
         delete selccostes;
         delete selcanales;
         delete m_listasientos;
@@ -187,11 +182,13 @@ int Empresa::createMainWindows(Splash *splash) {
     m_pWorkspace->addWindow(balance);
 
     /// pb = 50%
+/*
     splash->mensaje(QApplication::translate("company", "Inicializando Balance Jerarquico"));
     splash->setBarraProgreso(50);
     m_progressbar->setValue(50);
     balance1 = new BalanceTreeView(this, 0);
     m_pWorkspace->addWindow(balance1);
+*/
 
     /// pb = 60%
     splash->mensaje(QApplication::translate("company", "Inicializando Asientos"));
@@ -239,7 +236,6 @@ void Empresa::maximiza() {
     _depura("Empresa::maximiza", 0);
     diario->showMaximized();
     extracto->showMaximized();
-    balance1->showMaximized();
     balance->showMaximized();
     _depura("END Empresa::maximiza", 0);
 }
@@ -458,8 +454,6 @@ int Empresa::boton_imprimir() {
     QWidget *widget = m_pWorkspace->activeWindow();
     if (widget == diario) {
         diario->boton_imprimir();
-    } else if (widget == balance1) {
-        balance1->on_mui_imprimir_clicked();
     } else if (widget == balance) {
         balance->on_mui_imprimir_clicked();
     } else if (widget == extracto) {
@@ -480,8 +474,6 @@ int Empresa::boton_reload() {
         extracto->accept();
     } else if (widget == balance) {
         balance->accept();
-    } else if (widget == balance1) {
-        balance1->on_mui_actualizar_clicked();
     } // end if
     _depura("END Empresa::boton_reload", 0);
     return 0;
@@ -530,14 +522,6 @@ int Empresa::librobalance() {
     _depura("Empresa::librobalance", 0);
     balance->setWindowState(balance->windowState() & ~Qt::WindowMinimized | Qt::WindowActive);
     _depura("END Empresa::librobalance", 0);
-    return 0;
-}
-
-
-int Empresa::librobalancetree() {
-    _depura("Empresa::librobalancetree", 0);
-    balance1->setWindowState(balance1->windowState() & ~Qt::WindowMinimized | Qt::WindowActive);
-    _depura("END Empresa::librobalancetree", 0);
     return 0;
 }
 
