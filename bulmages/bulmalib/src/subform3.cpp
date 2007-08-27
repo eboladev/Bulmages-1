@@ -62,6 +62,15 @@ void SubForm3::setCurrentItem(int row, int col) {
     mui_list->setCurrentItem( item(row, col));
 }
 
+/*
+void SubForm3::setCurrentRow(int row) {
+    mui_list->setCurrentRow( row);
+}
+
+void SubForm3::setCurrentColumn( int col) {
+    mui_list->setCurrentColumn( col);
+}
+*/
 
 int SubForm3::columnCount() {
     return mui_list->columnCount();
@@ -329,6 +338,12 @@ void SubForm3::on_mui_list_itemDoubleClicked(QTableWidgetItem *item) {
     _depura("SubForm3::on_mui_list_itemDoubleClicked", 0);
     emit itemDoubleClicked(item);
     _depura("END SubForm3::on_mui_list_itemDoubleClicked", 0);
+}
+
+void SubForm3::on_mui_list_itemClicked(QTableWidgetItem *item) {
+    _depura("SubForm3::on_mui_list_itemClicked", 0);
+    emit itemClicked(item);
+    _depura("END SubForm3::on_mui_list_itemClicked", 0);
 }
 
 

@@ -20,12 +20,7 @@
 
 #include "paisview.h"
 #include "empresabase.h"
-
-#define COL_IDPAIS    0
-#define COL_COD2PAIS  1
-#define COL_COD3PAIS  2
-#define COL_DESCPAIS  3
-
+#include "subform3.h"
 
 /// Esta clase se encarga de presentar los centros de coste, la ventana, y
 /// de controlar la inserci&oacute;n de nuevos centros de coste, borrarlos, etc.
@@ -33,18 +28,45 @@ PaisView::PaisView(EmpresaBase *emp, QWidget *parent)
         : Ficha(emp, parent) {
     _depura("PaisView::PaisView", 0);
 
-    /// Establecemos cual es la tabla en la que basarse para los permisos
-    setDBTableName("pais");
-
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
+
+    mui_list->setEmpresaBase(emp);
+    mui_listprovincias->setEmpresaBase(emp);
+
+    /// Preparamos la lista de paises.
+    mui_list->setDBTableName("pais");
+    mui_list->setDBCampoId("idpais");
+    mui_list->addSHeader("idpais", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("Id. Pais"));
+    mui_list->addSHeader("cod2pais", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Codigo 2 Digitos"));
+    mui_list->addSHeader("cod3pais", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Codigo 3 Digitos"));
+    mui_list->addSHeader("descpais", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre Pais"));
+    mui_list->setinsercion(FALSE);
+    mui_list->setDelete(FALSE);
+    mui_list->setSortingEnabled(TRUE);
+
+    /// Preparamos la lista de provincias.
+    mui_listprovincias->setDBTableName("provincia");
+    mui_listprovincias->setDBCampoId("idprovincia");
+    mui_listprovincias->addSHeader("idprovincia", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("Id. Provincia"));
+    mui_listprovincias->addSHeader("idpais", DBCampo::DBint, DBCampo::DBNotNull , SHeader::DBNoView | SHeader::DBNoWrite, tr("Id. Pais"));
+    mui_listprovincias->addSHeader("provincia", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, tr("Provincia"));
+    mui_listprovincias->setinsercion(TRUE);
+    mui_listprovincias->setDelete(TRUE);
+    mui_listprovincias->setSortingEnabled(TRUE);
+
+    /// Establecemos cual es la tabla en la que basarse para los permisos
+    setDBTableName("pais");
+    setDBCampoId("idpais");
+    addDBCampo("idpais", DBCampo::DBint, DBCampo::DBPrimaryKey, tr("idpais"));
+    addDBCampo("descpais", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Pais"));
+    addDBCampo("cod2pais", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Codigo 2 digitos"));
+    addDBCampo("cod3pais", DBCampo::DBvarchar, DBCampo::DBNothing,tr("Codigo 3 digitos"));
+
+
     idpais = 0;
-    mui_list->setColumnCount(4);
-    //QStringList headers;
-    //headers << tr("ID pais") << tr("Codigo 2 letras") << tr("Codigo 3 letras") << tr("Pais");
-    mui_list->setColumnWidth(0, 200);
-    //mui_list->setHeaderLabels(headers);
-    mui_list->setColumnHidden(COL_IDPAIS, TRUE);
+
+
     dialogChanges_cargaInicial();
     meteWindow(windowTitle(), this);
     pintar();
@@ -61,56 +83,19 @@ PaisView::~PaisView() {
 
 void PaisView::pintar() {
     _depura("PaisView::pintar", 10);
-//    QMap <int, QTableWidgetItem*> Lista;
-//    int idpais1 = 0;
-    cursor2 *cursoraux1;
-
     /// Vaciamos el contenido de la tabla.
-    mui_list->clear();
-    mui_list->setRowCount(0);
     _depura("PaisView::pintar", 10);
-
-    cursoraux1 = empresaBase()->cargacursor("SELECT * FROM pais ORDER BY descpais");
-    while (!cursoraux1->eof()) {
-//        idpais1 = atoi(cursoraux1->valor("idpais").toAscii());
-//        it = new QTableWidgetItem(cursoraux1->valor("idpais"));
-//        Lista[idpais1] = it;
-//        it->setText(COL_IDPAIS, cursoraux1->valor("idpais"));
-//        it->setText(COL_COD2PAIS, cursoraux1->valor("cod2pais"));
-//        it->setText(COL_COD3PAIS, cursoraux1->valor("cod3pais"));
-//        it->setText(COL_DESCPAIS, cursoraux1->valor("descpais"));
-
-        mui_list->insertRow ( mui_list->rowCount() );
-
-        QTableWidgetItem *it1 = new QTableWidgetItem(cursoraux1->valor("idpais"));
-        mui_list->setItem(mui_list->rowCount() - 1, COL_IDPAIS, it1);
-        QTableWidgetItem *it2 = new QTableWidgetItem(cursoraux1->valor("cod2pais"));
-        mui_list->setItem(mui_list->rowCount() - 1, COL_COD2PAIS, it2);
-        QTableWidgetItem *it3 = new QTableWidgetItem(cursoraux1->valor("cod3pais"));
-        mui_list->setItem(mui_list->rowCount() - 1, COL_COD3PAIS, it3);
-        QTableWidgetItem *it4 = new QTableWidgetItem(cursoraux1->valor("descpais"));
-        mui_list->setItem(mui_list->rowCount() - 1, COL_DESCPAIS, it4);
-
-
-        cursoraux1->siguienteregistro();
-    } // end while
-    _depura("PaisView::pintar", 10);
-    delete cursoraux1;
-
-    if (idpais != 0) {
-        mostrarplantilla();
-    } // end if
-
+    mui_list->cargar("SELECT * FROM pais ORDER BY descpais");
     _depura("END PaisView::pintar", 0);
 }
 
 
-void PaisView::on_mui_list_itemSelectionChanged() {
+void PaisView::on_mui_list_itemClicked(QTableWidgetItem *) {
     _depura("PaisView::on_mui_list_itemSelectionChanged", 0);
     /// Busca el item correcto.
-    QTableWidgetItem *it2 = mui_list->item(mui_list->selectedItems().first()->row(), COL_IDPAIS);
-    int previdpais = it2->text().toInt();
-
+    QString previdpais = mui_list->DBvalue("idpais");
+//    previdpais = (QTableWidgetItem2 *) item->
+//    _depura(previdpais, 2);
     if (dialogChanges_hayCambios()) {
         if (QMessageBox::warning(this,
                                  tr("Guardar pais"),
@@ -119,7 +104,7 @@ void PaisView::on_mui_list_itemSelectionChanged() {
             on_mui_guardar_clicked();
         } // end if
     } // end if
-    idpais = previdpais;
+    idpais = previdpais.toInt();
     mostrarplantilla();
     _depura("END PaisView::on_mui_list_itemSelectionChanged", 0);
 }
@@ -127,33 +112,32 @@ void PaisView::on_mui_list_itemSelectionChanged() {
 
 void PaisView::mostrarplantilla() {
     _depura("PaisView::mostrarplantilla", 0);
-    QString query;
 
-    query.sprintf("SELECT * FROM pais WHERE idpais = %d", idpais);
-    cursor2 *cursorpais = empresaBase()->cargacursor(query);
+    if (idpais != 0) {
+        cargar(QString::number(idpais));
+	mui_descpais->setText(DBvalue("descpais"));
+	mui_cod2pais->setText(DBvalue("cod2pais"));
+	mui_cod3pais->setText(DBvalue("cod3pais"));
 
-    if (!cursorpais->eof()) {
-        mui_cod2pais->setText(cursorpais->valor("cod2pais"));
-        mui_cod3pais->setText(cursorpais->valor("cod3pais"));
-        mui_descpais->setText(cursorpais->valor("descpais"));
+	mui_listprovincias->cargar("SELECT * FROM provincia WHERE idpais="+QString::number(idpais));
+
+	dialogChanges_cargaInicial();
     } // end if
-    delete cursorpais;
-    dialogChanges_cargaInicial();
     _depura("END PaisView::mostrarplantilla", 0);
 }
 
 
 void PaisView::on_mui_guardar_clicked() {
     _depura("PaisView::on_mui_guardar_clicked", 0);
-    QString descpais = mui_descpais->text();
-    QString cod2pais = mui_cod2pais->text();
-    QString cod3pais = mui_cod3pais->text();
-    QString query;
-    query.sprintf("UPDATE pais SET cod2pais = '%s', cod3pais = '%s', descpais ='%s' WHERE idpais = %d", cod2pais.toAscii().constData(), cod3pais.toAscii().constData(), descpais.toAscii().constData(), idpais);
+    QString id;
+    setDBvalue("descpais", mui_descpais->text());
+    setDBvalue("cod2pais", mui_cod2pais->text());
+    setDBvalue("cod3pais", mui_cod3pais->text());
     empresaBase()->begin();
-    empresaBase()->ejecuta(query);
+    DBsave(id);
+    mui_listprovincias->setColumnValue("idpais", id);
+    mui_listprovincias->guardar();
     empresaBase()->commit();
-    fprintf(stderr,"Se ha guardado el pais\n");
     dialogChanges_cargaInicial();
     pintar();
     _depura("END PaisView::on_mui_guardar_clicked", 0);
@@ -177,13 +161,10 @@ void PaisView::on_mui_crear_clicked() {
     query.sprintf("INSERT INTO pais (cod2pais, cod3pais, descpais) VALUES ('--', '---', 'Nuevo pais')");
     empresaBase()->begin();
     empresaBase()->ejecuta(query);
-
-    query.sprintf("SELECT COALESCE(MAX(idpais), 1) AS idultimopais FROM pais");
-    cursor2 *cur = empresaBase()->cargacursor(query, "queryy");
-    idpais = atoi(cur->valor("idultimopais").toAscii());
-    delete cur;
     empresaBase()->commit();
     pintar();
+    mui_list->setCurrentItem(mui_list->rowCount(),1);
+    mostrarplantilla();
     _depura("END PaisView::on_mui_crear_clicked", 0);
 }
 
@@ -206,7 +187,7 @@ void PaisView::on_mui_borrar_clicked() {
     _depura("END PaisView::on_mui_borrar_clicked", 0);
 }
 
-
+/*
 void PaisView::closeEvent(QCloseEvent *e) {
     _depura("PaisView::closeEvent", 0);
     if (dialogChanges_hayCambios()) {
@@ -223,4 +204,4 @@ void PaisView::closeEvent(QCloseEvent *e) {
     } // end if
     _depura("END PaisView::closeEvent", 0);
 }
-
+*/

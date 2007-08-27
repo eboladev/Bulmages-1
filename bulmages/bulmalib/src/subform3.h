@@ -150,6 +150,12 @@ public:
     SDBCampo *item(int row, int col);
     /// Pone el foco en una celda determinada.
     void setCurrentItem(int row, int col);
+/*
+    /// Pone el foco en una fila determinada.
+    void setCurrentRow(int row);
+    /// Pone el foco en una columna determinada.
+    void setCurrentColumn(int column);
+*/
     /// Devuelve el n&uacute;mero total de columnas del subformulario.
     int columnCount();
     /// Muestra la columna indicada en el subformulario.
@@ -233,16 +239,16 @@ public slots:
     virtual void on_mui_pagsiguiente_clicked();
     virtual void on_mui_paganterior_clicked();
     virtual void on_mui_list_itemDoubleClicked(QTableWidgetItem *item);
+    virtual void on_mui_list_itemClicked(QTableWidgetItem *item);
     virtual void on_mui_list_cellDoubleClicked(int row, int col);
     virtual void toogleConfig();
     virtual void on_mui_botonCerrar_clicked();
     virtual void on_mui_list_itemChanged(QTableWidgetItem *it);
-//    virtual void on_mui_list_currentCellChanged(int, int, int, int);
-
 signals:
     void toogledConfig(bool);
     void editFinish(int, int);
     void itemDoubleClicked(QTableWidgetItem *);
+    void itemClicked(QTableWidgetItem *);
     void cellDoubleClicked(int row, int col);
     void pintaMenu(QMenu *);
     void trataMenu(QAction *);

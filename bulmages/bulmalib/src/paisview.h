@@ -56,9 +56,7 @@ public:
 public slots:
     virtual void on_mui_guardar_clicked();
     virtual void on_mui_crear_clicked();
-    virtual void on_mui_list_itemSelectionChanged();
-    //virtual void on_mui_list_itemChanged(QTableWidgetItem *);
-    virtual void closeEvent(QCloseEvent *);
+    virtual void on_mui_list_itemClicked(QTableWidgetItem *item);
 };
 
 #endif
