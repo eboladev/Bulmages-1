@@ -107,8 +107,6 @@ DiarioView *Empresa::diarioempresa() {
 }
 
 
-
-
 Asiento1View *Empresa::intapuntsempresa() {
     return introapunts2;
 }
