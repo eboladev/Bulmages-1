@@ -140,7 +140,6 @@ public:
     int cobPag();
     virtual void s_asiento1();
     CuentaView *newcuentaview();
-    void muestrapaises();
     void guardaConf();
     void cargaConf();
 };

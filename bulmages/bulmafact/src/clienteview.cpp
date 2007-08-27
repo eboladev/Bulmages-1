@@ -53,8 +53,8 @@ ClienteView::ClienteView(Company *comp, QWidget *parent)
         if (res != 0) {
             return;
         } // end if
-        m_provcliente->setcompany(empresaBase());
-        m_provcliente->setProvincia("");
+        m_provcliente->setEmpresaBase(empresaBase());
+        m_provcliente->setIdProvincia("");
 
         /// Inicializamos las pantallas auxiliares a esta.
         m_listpresupuestos->setEmpresaBase(empresaBase());
@@ -179,7 +179,7 @@ int ClienteView::guardar() {
     setDBvalue("mailcliente", m_mailcliente->text());
     setDBvalue("urlcliente", m_urlcliente->text());
     setDBvalue("comentcliente", m_comentcliente->toPlainText());
-    setDBvalue("provcliente", m_provcliente->currentText());
+    setDBvalue("idprovincia", m_provcliente->idProvincia());
     setDBvalue("codcliente", mui_codcliente->text());
     setDBvalue("corpcliente", mui_corpcliente->text());
     setDBvalue("idforma_pago", mui_forma_pago->idforma_pago());
@@ -288,8 +288,8 @@ void ClienteView::pintacomentcliente(QString val) {
 }
 
 
-void ClienteView::pintaprovcliente(QString val) {
-    m_provcliente->setProvincia(val);
+void ClienteView::pintaIdProvincia(QString val) {
+    m_provcliente->setIdProvincia(val);
 }
 
 

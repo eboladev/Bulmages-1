@@ -92,10 +92,10 @@ BEGIN
 		);
 		CREATE TABLE provincia (
 			idprovincia SERIAL PRIMARY KEY,
+			idpais INTEGER REFERENCES pais(idpais),
 			provincia CHARACTER VARYING(500)
 		);
-		ALTER TABLE cuenta ADD COLUMN pais INTEGER REFERENCES pais (idpais);
-		ALTER TABLE cuenta ADD COLUMN provincia INTEGER REFERENCES provincia (idprovincia);
+		ALTER TABLE cuenta ADD COLUMN idprovincia INTEGER REFERENCES provincia (idprovincia);
 		ALTER TABLE cuenta ADD COLUMN poblacion CHARACTER VARYING(150);
 	END IF;
 	RETURN 0;

@@ -62,7 +62,7 @@ public:
     virtual void pintafbajacliente(QString);
     virtual void pintacomentcliente(QString);
     virtual void pintainactivocliente(QString);
-    virtual void pintaprovcliente(QString);
+    virtual void pintaIdProvincia(QString);
     virtual void pintacodcliente(QString);
     virtual void pintacorpcliente(QString);
     virtual void pintaidforma_pago(QString);

@@ -24,29 +24,25 @@
 
 #include <QComboBox>
 
-#include "company.h"
+#include "blwidget.h"
 #include "postgresiface2.h"
-
 
 /// Permite buscar y seleccionar una provincia.
 /** Este Widget  permite buscar y seleccionar una  provincia. 
     Antes de usar el Widget debe ser inicializa con setcompany()
 */
 /// \TODO: Comprobar que libere correctamente la memoria.
-class BusquedaProvincia : public QComboBox {
+class BusquedaProvincia : public QComboBox, public PEmpresaBase {
     Q_OBJECT
 
 private:
-    /// Puntero a la clase company para poder trabajar con la base de datos. Debe inicializarse con setcompany().
-    Company *companyact;
     /// Cursor que almacena en memoria la lista de provincias.
     cursor2 *m_cursorcombo;
-
 public:
     BusquedaProvincia(QWidget *parent = 0);
     ~BusquedaProvincia();
-    void setcompany(Company *comp);
-    virtual void setProvincia(QString provincia);
+    virtual void setIdProvincia(QString idprovincia);
+    QString idProvincia();
 
 public slots:
     void m_activated(int index);

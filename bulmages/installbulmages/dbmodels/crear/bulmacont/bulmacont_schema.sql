@@ -85,6 +85,7 @@ CREATE TABLE pais (
 \echo -n ':: Provincia ... '
 CREATE TABLE provincia (
     idprovincia SERIAL PRIMARY KEY,
+    idpais integer REFERENCES pais(idpais),
     provincia character varying(500)
 );
 

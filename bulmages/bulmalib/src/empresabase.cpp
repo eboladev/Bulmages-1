@@ -22,7 +22,7 @@
 #include "funcaux.h"
 
 #include "abreempresaview.h"
-
+#include "paisview.h"
 
 void EmpresaBase::setListVentanas(listventanas *doc) {
     m_listventanas = doc;
@@ -131,5 +131,13 @@ void EmpresaBase::s_indexadorCambiaEstado(bool visible) {
     _depura("company::s_indexadorCambiaEstado", 0);
     m_listventanas->cambiaVisible(visible);
     _depura("END company::s_indexadorCambiaEstado", 0);
+}
+
+void EmpresaBase::muestraPaises() {
+    _depura("EmpresaBase::muestrapaises", 0);
+    PaisView *pais = new PaisView(this, 0);
+    m_pWorkspace->addWindow(pais);
+    pais->show();
+    _depura("END EmpresaBase::muestrapaises", 0);
 }
 

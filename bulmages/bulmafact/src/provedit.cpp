@@ -43,7 +43,7 @@ ProveedorView::ProveedorView(Company *comp, QWidget *parent)
         addDBCampo("cbancproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Banco proveedor"));
         addDBCampo("dirproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Direccion"));
         addDBCampo("poblproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Poblacion"));
-        addDBCampo("provproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Provincia"));
+        addDBCampo("idprovincia", DBCampo::DBint, DBCampo::DBNothing, tr("Provincia"));
         addDBCampo("cpproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Codigo postal"));
         addDBCampo("telproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Numero de telefono"));
         addDBCampo("faxproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Numero de fax"));
@@ -59,8 +59,8 @@ ProveedorView::ProveedorView(Company *comp, QWidget *parent)
 
         setupUi(this);
 
-        m_provproveedor->setcompany(empresaBase());
-        m_provproveedor->setProvincia("");
+        m_provproveedor->setEmpresaBase(empresaBase());
+        m_provproveedor->setIdProvincia("");
 
         /// Desabilitamos los tabs que aun no se usan
         masdf->setTabEnabled(5, FALSE);
@@ -126,7 +126,7 @@ int ProveedorView::cargar(QString idprov) {
         m_emailproveedor->setText(DBvalue("emailproveedor"));
         m_urlproveedor->setText(DBvalue("urlproveedor"));
         m_comentproveedor->setPlainText(DBvalue("comentproveedor" ));
-        m_provproveedor->setProvincia(DBvalue("provproveedor"));
+        m_provproveedor->setIdProvincia(DBvalue("idprovincia"));
         mui_codproveedor->setText(DBvalue("codproveedor"));
         mui_forma_pago->setidforma_pago(DBvalue("idforma_pago"));
         mui_regimenfiscalproveedor->setRegimenFiscal(DBvalue("regimenfiscalproveedor"));
@@ -189,7 +189,7 @@ int ProveedorView::guardar() {
     setDBvalue("emailproveedor", m_emailproveedor->text());
     setDBvalue("urlproveedor", m_urlproveedor->text());
     setDBvalue("comentproveedor", m_comentproveedor->toPlainText());
-    setDBvalue("provproveedor", m_provproveedor->currentText());
+    setDBvalue("idprovincia", m_provproveedor->idProvincia());
     setDBvalue("codproveedor", mui_codproveedor->text());
     setDBvalue("idforma_pago", mui_forma_pago->idforma_pago());
     setDBvalue("recargoeqproveedor",  mui_recargoeqproveedor->isChecked() ? "TRUE" : "FALSE");

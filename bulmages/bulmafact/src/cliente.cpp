@@ -40,7 +40,7 @@ Cliente::Cliente(Company *comp, QWidget *parent) : FichaBf(comp, parent) {
     addDBCampo("bancocliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Numero cuenta corriente"));
     addDBCampo("dircliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Direccion"));
     addDBCampo("poblcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Poblacion"));
-    addDBCampo("provcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Provincia"));
+    addDBCampo("idprovincia", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Cliente", "Provincia"));
     addDBCampo("cpcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Codigo postal"));
     addDBCampo("telcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Numero de telefono"));
     addDBCampo("teltrabcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Numero de telefono en el trabajo"));
@@ -176,9 +176,9 @@ void Cliente::pintainactivocliente(QString) {
 }
 
 
-void Cliente::pintaprovcliente(QString) {
-    _depura("Cliente::pintaprovcliente", 0);
-    _depura("END Cliente::pintaprovcliente", 0);
+void Cliente::pintaIdProvincia(QString) {
+    _depura("Cliente::pintaIdProvincia", 0);
+    _depura("END Cliente::pintaIdProvincia", 0);
 }
 
 
@@ -264,7 +264,7 @@ void Cliente::pintar() {
     pintafbajacliente(DBvalue("fbajacliente"));
     pintacomentcliente(DBvalue("comentcliente"));
     pintainactivocliente(DBvalue("inactivocliente"));
-    pintaprovcliente(DBvalue("provcliente"));
+    pintaIdProvincia(DBvalue("idprovincia"));
     pintacodcliente(DBvalue("codcliente"));
     pintacorpcliente(DBvalue("corpcliente"));
     pintaidforma_pago(DBvalue("idforma_pago"));

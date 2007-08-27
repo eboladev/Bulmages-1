@@ -440,6 +440,12 @@ void Bulmafact::on_actionProvincias_triggered() {
     _depura("END Bulmafact::on_actionProvincias_triggered", 0);
 }
 
+void Bulmafact::on_actionPaises_triggered() {
+    _depura("Bulmafact::on_actionPaises_triggered", 0);
+    m_company->muestraPaises();
+    _depura("END Bulmafact::on_actionPaises_triggered", 0);
+}
+
 
 void Bulmafact::on_actionSeries_de_Factura_triggered() {
     _depura("Bulmafact::on_actionSeries_de_Factura_triggered", 0);

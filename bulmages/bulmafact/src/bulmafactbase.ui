@@ -71,38 +71,6 @@
     <addaction name="separator" />
     <addaction name="actionAcerta_de" />
    </widget>
-   <widget class="QMenu" name="menuEmpresa" >
-    <property name="title" >
-     <string>E&amp;mpresa</string>
-    </property>
-    <addaction name="actionParametros" />
-    <addaction name="actionSalir" />
-   </widget>
-   <widget class="QMenu" name="menuMaestro" >
-    <property name="title" >
-     <string>Maest&amp;ro</string>
-    </property>
-    <addaction name="actionNuevo_Proveedor" />
-    <addaction name="actionListado_Proveedores" />
-    <addaction name="separator" />
-    <addaction name="actionNuevo_Cliente" />
-    <addaction name="actionListado_Clientes" />
-    <addaction name="separator" />
-    <addaction name="actionProvincias" />
-    <addaction name="separator" />
-    <addaction name="actionSeries_de_Factura" />
-    <addaction name="separator" />
-    <addaction name="actionTrabajadores" />
-    <addaction name="separator" />
-    <addaction name="actionBancos" />
-    <addaction name="separator" />
-    <addaction name="actionFormas_de_Pago" />
-    <addaction name="separator" />
-    <addaction name="actionAlmacenes" />
-    <addaction name="separator" />
-    <addaction name="actionTipoIVA" />
-    <addaction name="actionTasaIVA" />
-   </widget>
    <widget class="QMenu" name="menuArticulos" >
     <property name="title" >
      <string>Articulo&amp;s</string>
@@ -121,6 +89,39 @@
     <addaction name="actionOrganizaci_n_en_Cascada" />
     <addaction name="actionOrdenar_Ventanas" />
     <addaction name="actionIndexador" />
+   </widget>
+   <widget class="QMenu" name="menuMaestro" >
+    <property name="title" >
+     <string>Maest&amp;ro</string>
+    </property>
+    <addaction name="actionNuevo_Proveedor" />
+    <addaction name="actionListado_Proveedores" />
+    <addaction name="separator" />
+    <addaction name="actionNuevo_Cliente" />
+    <addaction name="actionListado_Clientes" />
+    <addaction name="separator" />
+    <addaction name="actionPaises" />
+    <addaction name="actionProvincias" />
+    <addaction name="separator" />
+    <addaction name="actionSeries_de_Factura" />
+    <addaction name="separator" />
+    <addaction name="actionTrabajadores" />
+    <addaction name="separator" />
+    <addaction name="actionBancos" />
+    <addaction name="separator" />
+    <addaction name="actionFormas_de_Pago" />
+    <addaction name="separator" />
+    <addaction name="actionAlmacenes" />
+    <addaction name="separator" />
+    <addaction name="actionTipoIVA" />
+    <addaction name="actionTasaIVA" />
+   </widget>
+   <widget class="QMenu" name="menuEmpresa" >
+    <property name="title" >
+     <string>E&amp;mpresa</string>
+    </property>
+    <addaction name="actionParametros" />
+    <addaction name="actionSalir" />
    </widget>
    <addaction name="menuEmpresa" />
    <addaction name="menuCompras" />
@@ -600,6 +601,11 @@
   <action name="actionOrdenar_Ventanas" >
    <property name="text" >
     <string>Ordenar Ventanas</string>
+   </property>
+  </action>
+  <action name="actionPaises" >
+   <property name="text" >
+    <string>Paises</string>
    </property>
   </action>
  </widget>

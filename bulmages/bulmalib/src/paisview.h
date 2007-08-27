@@ -30,15 +30,15 @@
 #include "ui_paisbase.h"
 #include "postgresiface2.h"
 #include "dialogchanges.h"
-#include "fichabc.h"
+#include "ficha.h"
 
 
-class Empresa;
+class EmpresaBase;
 
 
 /// Visualiza un centro de coste.
 /** */
-class PaisView : public FichaBc, public Ui_paisbase {
+class PaisView : public Ficha, public Ui_paisbase {
     Q_OBJECT
 
 public:
@@ -47,7 +47,7 @@ public:
 
 
 public:
-    PaisView(Empresa *, QWidget *parent = 0);
+    PaisView(EmpresaBase *, QWidget *parent = 0);
     ~PaisView();
     void pintar();
     void mostrarplantilla();

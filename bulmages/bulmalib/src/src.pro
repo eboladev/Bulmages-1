@@ -15,7 +15,8 @@ FORMS += logpassbase.ui \
          busquedafechabase.ui \
          subform3base.ui \
 	 porcentajecargabase.ui \
-	 fichacfgbase.ui
+	 fichacfgbase.ui \
+	 paisbase.ui
 
 TRANSLATIONS += bulmalib_es.ts \
                 bulmalib_ca.ts \
@@ -53,7 +54,9 @@ HEADERS += postgresiface2.h \
            porcentajecarga.h \
 	   busquedafecha2.h \
 	   splashscreen.h \
-	   fichacfg.h
+	   fichacfg.h \
+	   paisview.h \
+	   busquedaprovincia.h
 	   
 	   
 SOURCES += postgresiface2.cpp \
@@ -85,7 +88,9 @@ SOURCES += postgresiface2.cpp \
            porcentajecarga.cpp \
 	   busquedafecha2.cpp \
 	   splashscreen.cpp \
-	   fichacfg.cpp
+	   fichacfg.cpp \
+	   paisview.cpp \
+	   busquedaprovincia.cpp
 	   
 	   
 RESOURCES = ../../bulmages.qrc

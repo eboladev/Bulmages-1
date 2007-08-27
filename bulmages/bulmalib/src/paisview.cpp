@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include "paisview.h"
-#include "empresa.h"
+#include "empresabase.h"
 
 #define COL_IDPAIS    0
 #define COL_COD2PAIS  1
@@ -29,8 +29,8 @@
 
 /// Esta clase se encarga de presentar los centros de coste, la ventana, y
 /// de controlar la inserci&oacute;n de nuevos centros de coste, borrarlos, etc.
-PaisView::PaisView(Empresa *emp, QWidget *parent)
-        : FichaBc(emp, parent) {
+PaisView::PaisView(EmpresaBase *emp, QWidget *parent)
+        : Ficha(emp, parent) {
     _depura("PaisView::PaisView", 0);
 
     /// Establecemos cual es la tabla en la que basarse para los permisos

@@ -1248,6 +1248,10 @@ PresupuestoList * Company::presupuestoList() {
     return m_presupuestosList;
 }
 
+
+
+
+
 /// Guarda la configuracion de programa para poder recuperar algunas cosas de presentacion.
 void Company::guardaConf() {
     QFile file(confpr->valor(CONF_DIR_USER) + "bulmafact_" + nameDB() + ".cfn");

@@ -247,6 +247,37 @@ BEGIN
 END;
 ' LANGUAGE plpgsql;
 
+
+CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
+DECLARE
+	bs RECORD;
+BEGIN
+	SELECT INTO bs * FROM pg_tables WHERE tablename=''pais'';
+	IF NOT FOUND THEN
+		DROP TABLE provincia;
+                ALTER TABLE cliente DROP COLUMN provcliente;
+                ALTER TABLE proveedor DROP COLUMN provproveedor;
+		CREATE TABLE pais (
+			idpais SERIAL PRIMARY KEY,
+			cod2pais CHARACTER varying(2),
+			cod3pais CHARACTER varying(3),
+			descpais CHARACTER varying(50)
+		);
+		CREATE TABLE provincia (
+			idprovincia SERIAL PRIMARY KEY,
+			idpais integer REFERENCES pais(idpais),
+			provincia CHARACTER VARYING(500)
+		);
+		ALTER TABLE cliente ADD COLUMN idprovincia INTEGER REFERENCES provincia (idprovincia);
+		ALTER TABLE proveedor ADD COLUMN idprovincia INTEGER REFERENCES provincia (idprovincia);
+	END IF;
+	RETURN 0;
+END;
+'   LANGUAGE plpgsql;
+SELECT aux();
+DROP FUNCTION aux() CASCADE;
+\echo "Creamos tablas 'pais' y 'provincia'. Se modifica 'cuenta'."
+
 -- ================================== ACTUALIZACION  ===================================
 -- =====================================================================================
 
@@ -258,9 +289,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.9.3-0003'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.9.3-0004'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.3-0003'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.3-0004'');
 	END IF;
 	RETURN 0;
 END;

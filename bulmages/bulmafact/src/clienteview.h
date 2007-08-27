@@ -64,7 +64,7 @@ public:
     void pintafbajacliente(QString);
     void pintacomentcliente(QString val);
     void pintainactivocliente(QString);
-    void pintaprovcliente(QString val);
+    void pintaIdProvincia(QString val);
     void pintaregimenfiscalcliente(QString val);
     void pintarecargoeqcliente(QString val);
     void pintaidforma_pago(QString val);

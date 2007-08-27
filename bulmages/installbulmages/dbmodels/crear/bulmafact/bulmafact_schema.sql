@@ -72,6 +72,21 @@ CREATE TABLE configuracion (
 );
 
 
+
+CREATE TABLE pais (
+	idpais serial PRIMARY KEY,
+	cod2pais character varying(2),
+	cod3pais character varying(3),
+	descpais character varying(50)
+);
+
+CREATE TABLE provincia (
+	idprovincia serial PRIMARY KEY,
+	idpais integer REFERENCES pais(idpais),
+	provincia character varying(500)
+);
+
+
 -- ** forma_pago **
 -- descforma_pago: Nombre identificativo o descripcion breve.
 -- dias1tforma_pago: Dias antes del primer vencimiento calculando los bloque de 30 como
@@ -514,7 +529,7 @@ CREATE TABLE proveedor (
     irpfproveedor NUMERIC(12,2) DEFAULT 0,
     idforma_pago integer REFERENCES forma_pago(idforma_pago),
     regimenfiscalproveedor character varying(50) DEFAULT 'Normal' NOT NULL,
-    provproveedor character varying
+    idprovincia integer REFERENCES provincia(idprovincia)
 );
 
 
@@ -586,11 +601,11 @@ CREATE TABLE cliente (
     regimenfiscalcliente character varying(50) DEFAULT 'Normal' NOT NULL,
     comentcliente character varying(2000),
     inactivocliente character(1),
-    provcliente character varying,
     idtarifa integer references tarifa(idtarifa),
     recargoeqcliente boolean DEFAULT FALSE,
     idforma_pago integer REFERENCES forma_pago(idforma_pago),
-    departamento character varying(32)
+    departamento character varying(32),
+    idprovincia integer REFERENCES provincia(idprovincia)
 );
 
 
@@ -2113,12 +2128,6 @@ CREATE TABLE suministra (
 );
 
 
--- ** provincia **
-\echo -n ':: Provincia ... '
-CREATE TABLE provincia (
-    provincia character varying(500)
-);
-
 
 -- ** precio_compra **
 \echo -n ':: Precio de compra ... '
@@ -2714,9 +2723,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.9.3-0003'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.9.3-0004'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.3-0003'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.3-0004'');
 	END IF;
 	RETURN 0;
 END;

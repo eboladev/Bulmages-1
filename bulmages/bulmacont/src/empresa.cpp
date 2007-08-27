@@ -677,13 +677,7 @@ void Empresa::canaldefecto() {
 }
 
 
-void Empresa::muestrapaises() {
-    _depura("Empresa::muestrapaises", 0);
-    PaisView *pais = new PaisView(this, 0);
-    m_pWorkspace->addWindow(pais);
-    pais->show();
-    _depura("END Empresa::muestrapaises", 0);
-}
+
 
 /*
 Empresa* Empresa::empresaBase() {

@@ -58,6 +58,7 @@ public:
     int deSeleccionaWindow();
     void sacaWindow(QObject *nom);
     void s_indexadorCambiaEstado(bool);
+    void muestraPaises();
 };
 
 #endif

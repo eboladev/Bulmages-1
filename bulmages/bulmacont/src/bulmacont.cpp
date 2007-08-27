@@ -494,7 +494,9 @@ void Bulmacont::on_actionAcerca_de_triggered() {
 
 
 void Bulmacont::on_actionPaises_triggered() {
-    m_empresaactual->muestrapaises();
+    _depura("Bulmacont::on_actionPaises_triggered", 0);
+    m_empresaactual->muestraPaises();
+    _depura("Bulmacont::on_actionPaises_triggered", 0);
 }
 
 

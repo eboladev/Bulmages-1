@@ -143,7 +143,6 @@ HEADERS += bulmafact.h \
            listdescalbaranprovview.h \
            listdescfacturaprovview.h \
            aboutview.h \
-           busquedaprovincia.h \
            listprovinciasview.h \
            cliente.h \
            clienteview.h \
@@ -226,7 +225,6 @@ SOURCES += bulmafact.cpp \
            listdescalbaranprovview.cpp \
            listdescfacturaprovview.cpp \
            aboutview.cpp \
-           busquedaprovincia.cpp \
            listprovinciasview.cpp \
            cliente.cpp \
            clienteview.cpp \
