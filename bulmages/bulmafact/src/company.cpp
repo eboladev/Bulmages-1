@@ -48,7 +48,6 @@
 #include "funcaux.h"
 #include "listalmacenview.h"
 #include "listconfiguracionview.h"
-#include "listprovinciasview.h"
 #include "listseriefacturaview.h"
 #include "pagoslist.h"
 #include "pagoview.h"
@@ -326,31 +325,31 @@ void Company::createMainWindows(Splash *splash) {
             m_bulmafact->actionTipoIVA->setEnabled(TRUE);
         } // end if
 
-    /// Comprobamos que tengamos permisos para trabajar con Provincias.
-    m_bulmafact->actionProvincias->setEnabled(FALSE);
-        if (has_table_privilege("provincia", "SELECT")) {
-            m_bulmafact->actionProvincias->setEnabled(TRUE);
+    /// Comprobamos que tengamos permisos para trabajar con Paises.
+    m_bulmafact->actionPaises->setEnabled(FALSE);
+        if (has_table_privilege("pais", "SELECT")) {
+            m_bulmafact->actionPaises->setEnabled(TRUE);
         } // end if
 
-    /// Comprobamos que tengamos permisos para trabajar con Provincias.
+    /// Comprobamos que tengamos permisos para trabajar con Trabajadores.
     m_bulmafact->actionTrabajadores->setEnabled(FALSE);
         if (has_table_privilege("trabajador", "SELECT")) {
             m_bulmafact->actionTrabajadores->setEnabled(TRUE);
         } // end if
 
-    /// Comprobamos que tengamos permisos para trabajar con Provincias.
+    /// Comprobamos que tengamos permisos para trabajar con Formas de Pago.
     m_bulmafact->actionFormas_de_Pago->setEnabled(FALSE);
         if (has_table_privilege("forma_pago", "SELECT")) {
             m_bulmafact->actionFormas_de_Pago->setEnabled(TRUE);
         } // end if
 
-    /// Comprobamos que tengamos permisos para trabajar con Provincias.
+    /// Comprobamos que tengamos permisos para trabajar con Series de Factura.
     m_bulmafact->actionSeries_de_Factura->setEnabled(FALSE);
         if (has_table_privilege("serie_factura", "SELECT")) {
             m_bulmafact->actionSeries_de_Factura->setEnabled(TRUE);
         } // end if
 
-    /// Comprobamos que tengamos permisos para trabajar con Provincias.
+    /// Comprobamos que tengamos permisos para trabajar con Bancos.
     m_bulmafact->actionBancos->setEnabled(FALSE);
         if (has_table_privilege("banco", "SELECT")) {
             m_bulmafact->actionBancos->setEnabled(TRUE);
@@ -963,16 +962,6 @@ void Company::s_seriesFactura() {
 }
 
 
-/** Crea y Presenta la ventana de provincias.
-*/
-/// \TODO: Deberia dividirse en dos y deberia pasar por sistema de plugins.
-void Company::s_provincias() {
-    _depura("INIT_Company::s_provincias", 1);
-    ListProvinciasView *lser =  new ListProvinciasView(this, 0);
-    m_pWorkspace->addWindow(lser);
-    lser->show();
-    _depura("END_Company::s_provincias", 1);
-}
 
 
 /** Crea una instancia de la clase ArticuloView

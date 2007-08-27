@@ -500,13 +500,6 @@ void Bulmacont::on_actionPaises_triggered() {
 }
 
 
-void Bulmacont::on_actionProvincias_triggered() {
-    //_depura("Bulmacont::on_actionProvincias_triggered", 0);
-    //provinciaview *provincia = new provinciaview(0);
-    //provincia->exec();
-    //_depura("END Bulmacont::on_actionProvincias_triggered", 0);
-}
-
 
 /** Captura el evento de cambio de ventana en el workSpace y actua sobre el
     listado de ventanas para que seleccione la ventana adecuada.

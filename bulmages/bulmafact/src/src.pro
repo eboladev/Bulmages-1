@@ -43,7 +43,6 @@ FORMS += aboutbase.ui \
          albaranclientelistbase.ui \
          facturaslistbase.ui \
          pedidosproveedorlistbase.ui \
-         listprovinciasbase.ui \
          facturasplistbase.ui \
          albaranesproveedorlistbase.ui \
          pedidoproveedorbase.ui \
@@ -143,7 +142,6 @@ HEADERS += bulmafact.h \
            listdescalbaranprovview.h \
            listdescfacturaprovview.h \
            aboutview.h \
-           listprovinciasview.h \
            cliente.h \
            clienteview.h \
            articulo.h \
@@ -225,7 +223,6 @@ SOURCES += bulmafact.cpp \
            listdescalbaranprovview.cpp \
            listdescfacturaprovview.cpp \
            aboutview.cpp \
-           listprovinciasview.cpp \
            cliente.cpp \
            clienteview.cpp \
            articulo.cpp \

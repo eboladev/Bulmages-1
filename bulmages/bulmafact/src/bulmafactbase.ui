@@ -25,7 +25,7 @@
      <x>0</x>
      <y>0</y>
      <width>1016</width>
-     <height>29</height>
+     <height>28</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuCompras" >
@@ -90,6 +90,13 @@
     <addaction name="actionOrdenar_Ventanas" />
     <addaction name="actionIndexador" />
    </widget>
+   <widget class="QMenu" name="menuEmpresa" >
+    <property name="title" >
+     <string>E&amp;mpresa</string>
+    </property>
+    <addaction name="actionParametros" />
+    <addaction name="actionSalir" />
+   </widget>
    <widget class="QMenu" name="menuMaestro" >
     <property name="title" >
      <string>Maest&amp;ro</string>
@@ -101,7 +108,6 @@
     <addaction name="actionListado_Clientes" />
     <addaction name="separator" />
     <addaction name="actionPaises" />
-    <addaction name="actionProvincias" />
     <addaction name="separator" />
     <addaction name="actionSeries_de_Factura" />
     <addaction name="separator" />
@@ -115,13 +121,6 @@
     <addaction name="separator" />
     <addaction name="actionTipoIVA" />
     <addaction name="actionTasaIVA" />
-   </widget>
-   <widget class="QMenu" name="menuEmpresa" >
-    <property name="title" >
-     <string>E&amp;mpresa</string>
-    </property>
-    <addaction name="actionParametros" />
-    <addaction name="actionSalir" />
    </widget>
    <addaction name="menuEmpresa" />
    <addaction name="menuCompras" />
@@ -451,11 +450,6 @@
     <string>&amp;Clientes</string>
    </property>
   </action>
-  <action name="actionProvincias" >
-   <property name="text" >
-    <string>Pro&amp;vincias</string>
-   </property>
-  </action>
   <action name="actionSeries_de_Factura" >
    <property name="text" >
     <string>Se&amp;ries de factura</string>
@@ -605,7 +599,13 @@
   </action>
   <action name="actionPaises" >
    <property name="text" >
-    <string>Paises</string>
+    <string>Paises / Provincias</string>
+   </property>
+   <property name="iconText" >
+    <string>Paises / Provincias</string>
+   </property>
+   <property name="toolTip" >
+    <string>Paises y Provincias</string>
    </property>
   </action>
  </widget>

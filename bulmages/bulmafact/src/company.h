@@ -152,7 +152,6 @@ public:
     void s_newListConfiguracionView();
     void s_newTipoArticuloList();
     void s_newfamiliasview();
-    void s_provincias();
     void s_almacenes();
     void viewPagosList();
     void viewCobrosList();

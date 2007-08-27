@@ -434,12 +434,6 @@ void Bulmafact::on_actionListado_Clientes_triggered() {
 }
 
 
-void Bulmafact::on_actionProvincias_triggered() {
-    _depura("Bulmafact::on_actionProvincias_triggered", 0);
-    m_company->s_provincias();
-    _depura("END Bulmafact::on_actionProvincias_triggered", 0);
-}
-
 void Bulmafact::on_actionPaises_triggered() {
     _depura("Bulmafact::on_actionPaises_triggered", 0);
     m_company->muestraPaises();

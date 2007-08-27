@@ -87,7 +87,6 @@ public slots:
     virtual void on_actionListado_Proveedores_triggered();
     virtual void on_actionNuevo_Cliente_triggered();
     virtual void on_actionListado_Clientes_triggered();
-    virtual void on_actionProvincias_triggered();
     virtual void on_actionPaises_triggered();
     virtual void on_actionSeries_de_Factura_triggered();
     virtual void on_actionTrabajadores_triggered();

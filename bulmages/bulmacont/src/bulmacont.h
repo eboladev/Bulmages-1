@@ -154,7 +154,6 @@ public slots:
     virtual void on_actionInicio_triggered();
     virtual void on_actionFin_triggered();
     virtual void on_actionPaises_triggered();
-    virtual void on_actionProvincias_triggered();
     virtual void informaindexador(QWidget *w);
     virtual void on_actionIndexador_triggered();
 };
