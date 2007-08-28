@@ -931,22 +931,5 @@
  <resources>
   <include location="../../bulmages.qrc" />
  </resources>
- <connections>
-  <connection>
-   <sender>mui_cancelar</sender>
-   <signal>clicked()</signal>
-   <receiver>ClienteBase</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>564</x>
-     <y>520</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>826</x>
-     <y>524</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

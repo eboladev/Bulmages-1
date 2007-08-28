@@ -1526,6 +1526,11 @@ void SubForm3::contextMenuEvent(QContextMenuEvent *) {
     QAction *verconfig = popup->addAction(tr("Ver/Ocultar configurador de subformulario"));
 
     QAction *opcion = popup->exec(QCursor::pos());
+
+    /// Si no hay ninguna opcion pulsada se sale sin hacer nada
+    if (!opcion) return;
+
+
     if (opcion == del)
         borrar(row);
     if (opcion == ajust)

@@ -51,6 +51,7 @@ public:
     void dialogChanges_cargaInicial();
     bool dialogChanges_hayCambios();
     void dialogChanges_setQObjectExcluido(QObject *objetoexcluido);
+    bool objExcluido(QObject *item);
 
 private:
     QString calculateValues();

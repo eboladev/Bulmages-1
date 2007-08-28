@@ -1,7 +1,6 @@
 /***************************************************************************
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,49 +18,19 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef TRABAJADORVIEW_H
-#define TRABAJADORVIEW_H
-
-#include <ui_trabajadorbase.h>
-
-#include "fichabf.h"
-#include "postgresiface2.h"
-
-
-/// Muestra y administra la ventana con la informaci&oacute;n de un trabajador.
-/** */
-class TrabajadorView : public FichaBf, public Ui_TrabajadorBase {
-    Q_OBJECT
-
-private:
-    cursor2 *m_cursortrabajadores;
-    /// Indica cual es el objeto que se esta mostrando.
-    QString mdb_idtrabajador;
-    /// Indica el archivo de imagen que se esta mostrando. Y si se ha cambiado la imagen
-    /// tambien lo indica.
-    QString m_archivoimagen;
-    /// Indica en la lista de trabajadores cual es el item seleccionado.
-    QListWidgetItem *m_item;
-
-private:
-    /// Se encarga de hacer la carga del query inicial y de mostrar la lista bien
-    /// y presentar el elemento que se especifique.
-    void pintar();
-    virtual void imprimir();
-
-public:
-    TrabajadorView(Company * emp, QWidget *parent = 0);
-    ~TrabajadorView();
-    bool trataModificado();
-    QString idtrabajador();
-
-private slots:
-    virtual void on_mui_lista_currentItemChanged(QListWidgetItem *cur, QListWidgetItem *prev);
-    virtual void on_mui_guardar_clicked();
-    virtual void on_mui_nuevo_clicked();
-    virtual void on_mui_borrar_clicked();
-    virtual void on_mui_imagen_clicked();
-};
-
+#ifdef Q_WS_WIN
+# define MY_EXPORT __declspec(dllexport)
+#else
+# define MY_EXPORT
 #endif
+
+#include <QObject>
+#include "bulmafact.h"
+#include "trabajadorview.h"
+
+extern "C" MY_EXPORT int entryPoint(Bulmafact *);
+extern "C" MY_EXPORT int TrabajadorView_TrabajadorView_Post (TrabajadorView *);
+extern "C" MY_EXPORT int TrabajadorView_on_mui_lista_currentItemChanged_Post(TrabajadorView *);
+extern "C" MY_EXPORT int TrabajadorView_on_mui_guardar_clicked(TrabajadorView *);
+
 

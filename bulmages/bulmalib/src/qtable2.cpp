@@ -123,6 +123,36 @@ QTableWidgetItem2::~QTableWidgetItem2() {
 }
 
 
+bool QTableWidgetItem2::operator< (const QTableWidgetItem & other) const {
+    _depura("QTableWidgetItem2::operator <", 0, text());
+    bool oknumero;
+    bool oknumero1;
+    QString cad = text();
+    QString cad1 = other.text();
+
+    if (cad != "") {
+        /// Comprobamos si es un n&uacute;mero.
+        double ncad = cad.toDouble(&oknumero);
+        double ncad1 = cad1.toDouble(&oknumero1);
+        if (oknumero && oknumero1) {
+            return ncad < ncad1;
+        } // end if
+        QDate fcad = normalizafecha(cad);
+        QString acad = fcad.toString(Qt::ISODate);
+        QDate fcad1 = normalizafecha(cad1);
+        QString acad1 = fcad1.toString(Qt::ISODate);
+
+        if (acad[2] == '/' && acad1[2]== '/') {
+            return fcad < fcad1;
+        } // end if
+        return cad < cad1;
+    } // end if
+    _depura("END QTableWidgetItem2::operator <", 0, text());
+    return TRUE;
+}
+
+
+
 int QTableWidget2::tipoorden() {
     return m_tipoorden;
 }
@@ -206,9 +236,9 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
         switch (key) {
         case Qt::Key_Return:
         case Qt::Key_Enter:
-	case Qt::Key_Tab:
+        case Qt::Key_Tab:
             m_teclasalida = key;
-	    emit cellRePosition(row, col);
+            emit cellRePosition(row, col);
             return TRUE;
             break;
 
@@ -259,7 +289,7 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
         } // end switch
     } // end if
 //    _depura("END QTableWidget2::eventFilter()", 0);
-        return QTableWidget::eventFilter(obj, event);
+    return QTableWidget::eventFilter(obj, event);
 //      return TRUE;
 }
 

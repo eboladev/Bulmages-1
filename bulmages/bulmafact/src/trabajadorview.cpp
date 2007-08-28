@@ -35,6 +35,11 @@
 TrabajadorView::TrabajadorView(Company *emp, QWidget *parent)
         : FichaBf(emp, parent) {
     _depura("TrabajadorView::TrabajadorView", 0);
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("TrabajadorView_TrabajadorView", this);
+    if (res != 0) {
+        return;
+    } // end if
     setDBTableName("trabajador");
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
@@ -42,6 +47,10 @@ TrabajadorView::TrabajadorView(Company *emp, QWidget *parent)
     setModoEdicion();
     m_cursortrabajadores = NULL;
     m_item = NULL;
+    res = g_plugins->lanza("TrabajadorView_TrabajadorView_Post", this);
+    if (res != 0) {
+        return;
+    } // end if
     pintar();
     meteWindow(windowTitle(), this);
     _depura("END TrabajadorView::TrabajadorView", 0);
@@ -97,6 +106,11 @@ void TrabajadorView::on_mui_lista_currentItemChanged(QListWidgetItem *cur, QList
     } // end if
     m_item = cur;
     /// Comprobamos cual es la cadena inicial.
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("TrabajadorView_on_mui_lista_currentItemChanged_Post", this);
+    if (res != 0) {
+        return;
+    } // end if
     dialogChanges_cargaInicial();
     m_imagen->setPixmap(QPixmap(confpr->valor(CONF_DIR_IMG_PERSONAL) + mdb_idtrabajador + ".jpg"));
     _depura( "END on_mui_lista_currentItemChanged", 0);
@@ -105,6 +119,11 @@ void TrabajadorView::on_mui_lista_currentItemChanged(QListWidgetItem *cur, QList
 
 void TrabajadorView::on_mui_guardar_clicked() {
     _depura("TrabajadorView::on_mui_guardar_clicked", 0);
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("TrabajadorView_on_mui_guardar_clicked", this);
+    if (res != 0) {
+        return;
+    } // end if
     QString m_textactivotrabajador = "FALSE";
     if (m_activotrabajador->isChecked()) {
         m_textactivotrabajador = "TRUE";
@@ -209,4 +228,10 @@ void TrabajadorView::on_mui_imagen_clicked() {
     m_imagen->setPixmap(QPixmap(m_archivoimagen));
     _depura("END TrabajadorView::on_mui_imagen_clicked", 0);
 }
+
+QString TrabajadorView::idtrabajador() {
+	return mdb_idtrabajador;
+}
+
+
 

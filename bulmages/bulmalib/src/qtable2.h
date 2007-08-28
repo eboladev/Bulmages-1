@@ -48,7 +48,7 @@ public:
     QTableWidgetItem2(int type = Type, int mode = 0);
     QTableWidgetItem2(const QString &text, int type = Type, int mode = 0);
     ~QTableWidgetItem2();
-//    virtual bool operator< (const QTableWidgetItem &other) const;
+    virtual bool operator< (const QTableWidgetItem &other) const;
 };
 
 
