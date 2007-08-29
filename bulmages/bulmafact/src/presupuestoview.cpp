@@ -57,11 +57,11 @@ PresupuestoView::PresupuestoView(Company *comp, QWidget *parent)
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
         subform2->setEmpresaBase(comp);
         m_descuentos->setEmpresaBase(comp);
-        m_cliente->setEmpresaBase(comp);
-        m_forma_pago->setEmpresaBase(comp);
-        m_almacen->setEmpresaBase(comp);
-        m_trabajador->setEmpresaBase(comp);
-        m_refpresupuesto->setEmpresaBase(comp);
+        mui_idcliente->setEmpresaBase(comp);
+        mui_idforma_pago->setEmpresaBase(comp);
+        mui_idalmacen->setEmpresaBase(comp);
+        mui_idtrabajador->setEmpresaBase(comp);
+        mui_refpresupuesto->setEmpresaBase(comp);
 
         setListaLineas(subform2);
         setListaDescuentos(m_descuentos);
@@ -75,9 +75,11 @@ PresupuestoView::PresupuestoView(Company *comp, QWidget *parent)
         m_totalPresupuestoCliente->setReadOnly(TRUE);
         m_totalPresupuestoCliente->setAlignment(Qt::AlignRight);
         /// Inicializamos la forma de pago para que no se quede sin ser pintada.
-        pintaidforma_pago("0");
-        pintaidalmacen("0");
-        pintaidtrabajador("0");
+	
+	mui_idforma_pago->setValorCampo("0");
+	mui_idalmacen->setValorCampo("0");
+	mui_idtrabajador->setValorCampo("0");
+
         meteWindow(windowTitle(), this, FALSE);
         /// Disparamos los plugins por flanco descendente.
         g_plugins->lanza("PresupuestoView_PresupuestoView_Post", this);
@@ -108,69 +110,6 @@ PresupuestoView::~PresupuestoView() {
 }
 
 
-void PresupuestoView::pintaNumPresupuesto(QString id) {
-    m_numpresupuesto->setText(id);
-}
-
-
-void PresupuestoView::pintaFPresupuesto(QString id) {
-    m_fpresupuesto->setText(id);
-}
-
-
-void PresupuestoView::pintaVencPresupuesto(QString id) {
-    m_vencpresupuesto->setText(id);
-}
-
-
-void PresupuestoView::pintaContractPresupuesto(QString id) {
-    m_contactpresupuesto->setText(id);
-}
-
-
-void PresupuestoView::pintaTelPresupuesto(QString id) {
-    m_telpresupuesto->setText(id);
-}
-
-
-void PresupuestoView::pintaComentPresupuesto(QString id) {
-    m_comentpresupuesto->setPlainText(id);
-}
-
-
-void PresupuestoView::pintaidcliente(QString id) {
-    m_cliente->setidcliente(id);
-}
-
-
-void PresupuestoView::pintarefPresupuesto(QString id) {
-    m_refpresupuesto->setText(id);
-}
-
-
-void PresupuestoView::pintaidforma_pago(QString id) {
-    m_forma_pago->setidforma_pago(id);
-}
-
-
-void PresupuestoView::pintaidalmacen(QString id) {
-    m_almacen->setidalmacen(id);
-}
-
-
-void PresupuestoView::pintaidtrabajador(QString id) {
-    m_trabajador->setidtrabajador(id);
-}
-
-
-void PresupuestoView::pintaprocesadoPresupuesto(QString id) {
-    if (id == "t" || id == "TRUE") {
-        m_procesadopresupuesto->setChecked(TRUE);
-    } else {
-        m_procesadopresupuesto->setChecked(FALSE);
-    } // end if
-}
-
 
 void PresupuestoView::on_mui_guardar_clicked() {
     guardar();
@@ -196,14 +135,6 @@ void PresupuestoView::on_subform2_editFinish(int, int) {
     calculaypintatotales();
 }
 
-
-void PresupuestoView::pintadescPresupuesto(QString id) {
-    /// Disparamos los plugins.
-    int res = g_plugins->lanza("PresupuestoView_pintadescPresupuesto", this);
-    if (res != 0)
-        return;
-    m_descpresupuesto->setText(id);
-}
 
 
 void PresupuestoView::on_mui_imprimir_clicked() {
@@ -266,6 +197,7 @@ void PresupuestoView::generarPedidoCliente() {
     empresaBase()->m_pWorkspace->addWindow(bud);
 
     /// Traspasamos toda la informacion del presupuesto al pedido.
+    recogeValores();
     bud->setidcliente(DBvalue("idcliente"));
     bud->setcomentpedidocliente(DBvalue("comentpresupuesto"));
     bud->setdescpedidocliente(DBvalue("descpresupuesto"));
@@ -325,25 +257,6 @@ void PresupuestoView::generarPedidoCliente() {
 }
 
 
-int PresupuestoView::cargar(QString id) {
-    _depura("PresupuestoView::cargar", 0);
-    try {
-        if (Presupuesto::cargar(id))
-            throw -1;
-        /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
-        int res = g_plugins->lanza("PresupuestoView_cargar", this);
-        if (res != 0)
-            return 0;
-        setWindowTitle(tr("Presupuesto") + " " + DBvalue("refpresupuesto") + " " + DBvalue("idpresupuesto"));
-        meteWindow(windowTitle(), this);
-        dialogChanges_cargaInicial();
-        _depura("END PresupuestoView::cargar", 0);
-    } catch(...) {
-        return -1;
-    } // end try
-    return 0;
-}
-
 
 int PresupuestoView::guardar() {
     _depura("PresupuestoView::guardar", 0);
@@ -352,19 +265,7 @@ int PresupuestoView::guardar() {
         int res = g_plugins->lanza("PresupuestoView_guardar", this);
         if (res != 0)
             return 0;
-        setcomentPresupuesto(m_comentpresupuesto->toPlainText());
-        setnumPresupuesto(m_numpresupuesto->text());
-        setidcliente(m_cliente->idcliente());
-        setfPresupuesto(m_fpresupuesto->text());
-        setvencPresupuesto(m_vencpresupuesto->text());
-        setidalmacen(m_almacen->idalmacen());
-        setidtrabajador(m_trabajador->idtrabajador());
-        setidforma_pago(m_forma_pago->idforma_pago());
-        setrefPresupuesto(m_refpresupuesto->text());
-        setdescPresupuesto(m_descpresupuesto->text());
-        setcontactPresupuesto(m_contactpresupuesto->text());
-        settelPresupuesto(m_telpresupuesto->text());
-        setprocesadoPresupuesto(m_procesadopresupuesto->isChecked() ? "TRUE" : "FALSE");
+        recogeValores();
         Presupuesto::guardar();
         /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
         g_plugins->lanza("PresupuestoView_guardar_Post", this);
@@ -381,7 +282,7 @@ int PresupuestoView::guardar() {
 void PresupuestoView::on_m_cliente_valueChanged(QString id) {
     _depura("PresupuestoView::on_m_cliente_valueChanged", 0);
     subform2->setIdCliente(id);
-    m_forma_pago->setIdCliente(id);
+    mui_idforma_pago->setIdCliente(id);
     _depura("END PresupuestoView::on_m_cliente_valueChanged", 0);
 }
 

@@ -87,20 +87,7 @@ void Presupuesto::vaciaPresupuesto() {
 
 void Presupuesto::pintaPresupuesto() {
     _depura("Presupuesto::pintaPresupuesto", 0);
-    pintaidcliente(DBvalue("idcliente"));
-    pintaIdAlmacen(DBvalue("idalmacen"));
-    pintaNumPresupuesto(DBvalue("numpresupuesto"));
-    pintaFPresupuesto(DBvalue("fpresupuesto"));
-    pintaVencPresupuesto(DBvalue("vencpresupuesto"));
-    pintaContractPresupuesto(DBvalue("contactpresupuesto"));
-    pintaTelPresupuesto(DBvalue("telpresupuesto"));
-    pintaComentPresupuesto(DBvalue("comentpresupuesto"));
-    pintaprocesadoPresupuesto(DBvalue("procesadopresupuesto"));
-    pintadescPresupuesto(DBvalue("descpresupuesto"));
-    pintarefPresupuesto(DBvalue("refpresupuesto"));
-    pintaidforma_pago(DBvalue("idforma_pago"));
-    pintaidalmacen(DBvalue("idalmacen"));
-    pintaidtrabajador(DBvalue("idtrabajador"));
+    Ficha::pintar();
     calculaypintatotales();
     _depura("END Presupuesto::pintaPresupuesto", 0);
 }
@@ -109,29 +96,13 @@ void Presupuesto::pintaPresupuesto() {
 /// Esta funcion carga un Presupuesto.
 int Presupuesto::cargar(QString idbudget) {
     _depura("Presupuesto::cargar", 0);
-    int error = 0;
-    QString query = "SELECT * FROM presupuesto WHERE idpresupuesto = " + idbudget;
-    cursor2 * cur= empresaBase()->cargacursor(query);
-    if (cur->error())
-        error = 1;
-    if (!cur->eof()) {
-        DBload(cur);
-    } // end if
-    delete cur;
-
-
-    /// Tratamiento de excepciones.
-    if (error) {
-        _depura("Error en la carga del Presupuesto\n", 2);
-        return 1;
-    } // end if
-
-    pintaPresupuesto();
+    Ficha::cargar(idbudget);
 
     m_listalineas->cargar(idbudget);
     m_listadescuentos->cargar(idbudget);
 
     calculaypintatotales();
+    dialogChanges_cargaInicial();
 
     _depura("END Presupuesto::cargar", 0);
     return 0;
@@ -144,7 +115,9 @@ int Presupuesto::guardar() {
     empresaBase()->begin();
     try {
         DBsave(id);
-        setidPresupuesto(id);
+	setDBvalue("idpresupuesto", id);
+        m_listalineas->setColumnValue("idpresupuesto", id);
+        m_listadescuentos->setColumnValue("idpresupuesto", id);
         m_listalineas->guardar();
         m_listadescuentos->guardar();
         /// Disparamos los plugins con presupuesto_imprimirPresupuesto.

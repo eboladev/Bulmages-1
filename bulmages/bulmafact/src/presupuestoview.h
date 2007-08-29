@@ -57,27 +57,13 @@ public:
     void pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq);
     void inicializar();
     void manageArticle(int);
-    void pintaNumPresupuesto(QString id);
-    void pintaFPresupuesto(QString id);
-    void pintaVencPresupuesto(QString id);
-    void pintaContractPresupuesto(QString id);
-    void pintaTelPresupuesto(QString id);
-    void pintaComentPresupuesto(QString id);
-    void pintaidcliente(QString id);
-    void pintarefPresupuesto(QString id);
-    void pintaidforma_pago(QString id);
-    void pintaidalmacen(QString id);
-    void pintaidtrabajador(QString id);
-    void pintaprocesadoPresupuesto(QString id);
-    void pintadescPresupuesto(QString id);
 
 private:
     void generarPedidoCliente();
 
 public:
-    /// Estos m&eacute;todos deben existir para poder trabajar con la clase Ficha.
     virtual int guardar();
-    virtual int cargar(QString id);
+//    virtual int cargar(QString id);
 
 public slots:
     virtual void on_mui_guardar_clicked();

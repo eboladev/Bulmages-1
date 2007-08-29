@@ -28,7 +28,6 @@
 
 #include "ui_almacenbase.h"
 #include "postgresiface2.h"
-#include "cobro.h"
 #include "busquedacliente.h"
 #include "busquedafecha.h"
 #include "dialogchanges.h"

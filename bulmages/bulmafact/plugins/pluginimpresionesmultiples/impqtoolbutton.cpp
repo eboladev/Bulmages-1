@@ -237,7 +237,7 @@ void ImpQToolButton::click() {
             if (val == "TRUE") {
                 QString id = rec->DBvalue("idcobro");
 
-                Cobro *pres = new Cobro(m_companyact, 0);
+                CobroView *pres = new CobroView(m_companyact, 0);
                 pres->cargar(id);
 
 		int col1 = j % 3;
@@ -661,7 +661,7 @@ void EmailQToolButton::click() {
                 cursor2 *curs = m_companyact->cargacursor( query);
                 QString email = curs->valor("mailcliente");
 
-                Cobro *pres = new Cobro(m_companyact, 0);
+                CobroView *pres = new CobroView(m_companyact, 0);
                 pres->cargar(id);
 
                 generaPDF("recibo");
@@ -673,9 +673,6 @@ void EmailQToolButton::click() {
                 cad = "kmail -s \"Recibo "+fecha+ref+"\" --body \"Estimado cliente,\n\n";
                 cad += "Adjunto le enviamos el recibo número "+fecha+ref+" con fecha "+fecha+"\n";
                 cad += "Sin otro particular, reciba un cordial saludo:\n\n\n";
-                cad += "Departamento de Administración.\n\n";
-                cad += "Conetxia Soluciones Informáticas S.L.\n";
-                cad += "Tel. 971.29.06.29\n\"";
                 cad += " --attach "+confpr->valor(CONF_DIR_USER)+"recibo"+fecha+ref+".pdf "+ email;
                 system(cad.toAscii().data());
 
