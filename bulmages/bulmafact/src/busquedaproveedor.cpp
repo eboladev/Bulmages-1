@@ -92,6 +92,10 @@ void BusquedaProveedor::setidproveedor(QString val) {
 }
 
 
+void BusquedaProveedor::setValorCampo(QString val) {
+	setidproveedor(val);
+}
+
 /** Mediante este metodo indicamos al Widget que proveedor debe ser puesto como el Seleccionado.
     Busca en la tabla proveedor de la Base de Datos un registro con CIF coincidente.
     Cuando lo tiene establece las variables que lo contendran y llama al metodo pintar().
@@ -238,6 +242,15 @@ QString BusquedaProveedor::idproveedor() {
     _depura("END BusquedaProveedor::idproveedor", 0);
     return mdb_idproveedor;
 }
+
+/** Devuelve el id del proveedor seleccionado, si ni hay ningun proveedor seleccionado devuelve un string vacio
+**/
+QString BusquedaProveedor::valorCampo() {
+    _depura("BusquedaProveedor::idproveedor", 0);
+    _depura("END BusquedaProveedor::idproveedor", 0);
+    return mdb_idproveedor;
+}
+
 
 /** Devuelve el nombre del proveedor seleccionado, si no hay ningun proveedor seleccionado devuelve un string vacio **/
 QString BusquedaProveedor::nomproveedor() {

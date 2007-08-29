@@ -50,8 +50,10 @@ public:
     ~BusquedaTipoArticulo();
     virtual QString codtipo_articulo();
     virtual QString idtipo_articulo();
+    virtual QString valorCampo();
     virtual QString desctipo_articulo();
     virtual void setidtipo_articulo(QString val);
+    virtual void setValorCampo(QString val);
     virtual void setcodtipo_articulo(QString val);
 
 public slots:

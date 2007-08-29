@@ -19,32 +19,43 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef PAGOVIEW_H
-#define PAGOVIEW_H
+#ifndef ALMACENESLISTVIEW_H
+#define ALMACENESLISTVIEW_H
 
 #include <QLineEdit>
-#include <QLabel>
-#include <QCheckBox>
 
-#include "ui_pagobase.h"
-#include "postgresiface2.h"
-#include "busquedaproveedor.h"
-#include "busquedafecha.h"
-#include "dialogchanges.h"
-#include "fichabf.h"
+#include "company.h"
+#include "listado.h"
 
 
-class Company;
+#include "ui_almaceneslistbase.h"
 
 
-/// Muestra y administra la ventana con la informaci&oacute;n de un pago.
+/// Muestra y administra la ventana con el listado de presupuestos.
 /** */
-class PagoView : public FichaBf, public Ui_PagoBase  {
+class AlmacenesListView : public Listado, public Ui_AlmacenesListBase {
     Q_OBJECT
 
+private:
+    QString m_idalmacen;
+
 public:
-    PagoView(Company *, QWidget *);
-    ~PagoView();
+    AlmacenesListView(QWidget *parent = 0, Qt::WFlags flag = 0);
+    AlmacenesListView(Company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0);
+    ~AlmacenesListView();
+    void presentar();
+    void editar(int);
+    void borrar();
+    void crear();
+    QString idalmacen();
+    void setEmpresaBase (Company *comp);
+    void imprimir();
+    QString generaFiltro();
+    void iniciaForm();
+
+
+signals:
+    void selected(QString);
 };
 
 #endif

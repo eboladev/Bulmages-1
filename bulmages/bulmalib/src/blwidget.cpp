@@ -39,6 +39,20 @@ EmpresaBase *PEmpresaBase::empresaBase() {
   return m_empresaBase;
 }
 
+QString PEmpresaBase::valorCampo() {
+	_depura("PEmpresaBase::valorCampo", 2, "debe ser derivado");
+	return "";
+}
+
+void PEmpresaBase::setValorCampo(QString) {
+	_depura("PEmpresaBase::setValorCampo", 2, "debe ser derivado");
+}
+
+
+/// ===========================================================
+/// ================== BLWidget ===============================
+/// ===========================================================
+
 BLWidget::BLWidget(QWidget *parent, Qt::WFlags f) 
   :QWidget(parent, f), PEmpresaBase() {
   _depura("BLWidget::BLWidget", 0);
@@ -55,3 +69,4 @@ BLWidget::~BLWidget() {
   _depura("BLWidget::~BLWidget", 0);
   _depura("END BLWidget::~BLWidget", 0);
 }
+

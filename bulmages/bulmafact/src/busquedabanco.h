@@ -22,10 +22,8 @@
 #ifndef BUSQUEDABANCO_H
 #define BUSQUEDABANCO_H
 
-#include <QComboBox>
+#include "qcombobox2.h"
 
-#include "company.h"
-#include "postgresiface2.h"
 #include "funcaux.h"
 
 
@@ -35,21 +33,20 @@
     Antes de utilizarlo debe ser inicializado con setcompany().
     Cuando se cambia el valor del Widget se emite un SIGNAL valueChanged().
 */
-class BusquedaBanco : public QComboBox {
+class BusquedaBanco : public QComboBox2 {
     Q_OBJECT
 
 private:
-    /// Puntero a la clase company para poder trabajar con la Base de datos y poder hacer paso de mensajes.
-    Company *companyact;
     /// Cursor que almacena el listado de trabajadores y sobre el que se construye el comboBox.
     cursor2 *m_cursorcombo;
 
 public:
     BusquedaBanco(QWidget *parent = 0);
     ~BusquedaBanco();
-    void setEmpresaBase(Company *comp);
     virtual void setidbanco(QString idbanco);
+    virtual void setValorCampo(QString idbanco);
     QString idbanco();
+    virtual QString valorCampo();
 
 public slots:
     void m_activated(int index);

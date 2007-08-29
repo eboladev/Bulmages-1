@@ -28,7 +28,6 @@
 
 #include "ui_cobrobase.h"
 #include "postgresiface2.h"
-#include "cobro.h"
 #include "busquedacliente.h"
 #include "busquedafecha.h"
 #include "dialogchanges.h"
@@ -43,35 +42,15 @@ class Company;
     en dicha ventana.
     Deriva de Ficha para metodos comunes a todas las ventanas.
     Deriva de Cobro para el manejo de la Base de datos. */
-class CobroView : public Cobro, public Ui_CobroBase {
+class CobroView : public FichaBf, public Ui_CobroBase {
     Q_OBJECT
 
 public:
     CobroView(Company *, QWidget *);
     ~CobroView();
-    void manageArticle(int);
-    void pintafechacobro(QString id);
-    void pintafechavenccobro(QString id);
-    void pintacomentcobro(QString id);
-    void pintaidcliente(QString id);
-    void pintarefcobro(QString id);
-    void pintacantcobro(QString id);
-    void pintaprevisioncobro(QString id);
-    void pintaidbanco(QString id);
-    virtual int guardar();
-    virtual int borrar();
-    virtual int sacaWindow();
+
 
 public slots:
-    virtual int cargar(QString id);
-    virtual void on_mui_comentcobro_textChanged(const QString &str);
-    virtual void on_mui_refcobro_valueChanged(const QString &str);
-    virtual void on_mui_cantcobro_textChanged(const QString &str);
-    virtual void on_mui_previsioncobro_stateChanged(int i);
-    virtual void on_mui_cliente_valueChanged(QString id);
-    virtual void on_mui_fechacobro_valueChanged(QString id);
-    virtual void on_mui_fechavenccobro_valueChanged(QString id);
-    virtual void on_mui_idbanco_valueChanged(QString id);
     virtual void on_mui_imprimir_clicked();
 };
 

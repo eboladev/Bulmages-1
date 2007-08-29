@@ -28,7 +28,7 @@
     Conecta el SIGNAL activated() con m_activated() para tratarlo.
 */
 BusquedaTipoIVADelegate::BusquedaTipoIVADelegate(QWidget *parent)
-        : QComboBox(parent), PEmpresaBase() {
+        : QComboBox2(parent) {
     _depura("BusquedaTipoIVADelegate::BusquedaTipoIVADelegate", 0);
     m_cursorcombo = NULL;
     setSizeAdjustPolicy(QComboBox::AdjustToContents);

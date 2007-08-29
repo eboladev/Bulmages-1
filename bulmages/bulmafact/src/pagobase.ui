@@ -202,7 +202,7 @@
        <number>5</number>
       </property>
       <item row="1" column="0" colspan="4" >
-       <widget class="BusquedaProveedor" native="1" name="mui_proveedor" >
+       <widget class="BusquedaProveedor" native="1" name="mui_idproveedor" >
         <property name="minimumSize" >
          <size>
           <width>250</width>

@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QComboBox>
+#include "qcombobox2.h"
 
 #include "busquedaregimenfiscal.h"
 
@@ -28,7 +28,7 @@
 */
 /// \TODO: No deberia usarse m_activated como signal ya que confunde con una variable de clase.
 BusquedaRegimenFiscal::BusquedaRegimenFiscal(QWidget *parent)
-        : QComboBox(parent) {
+        : QComboBox2(parent) {
     _depura("BusquedaRegimenFiscal::BusquedaRegimenFiscal", 0);
     connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
     addItem("Normal");
@@ -54,31 +54,44 @@ BusquedaRegimenFiscal::~BusquedaRegimenFiscal() {
 void BusquedaRegimenFiscal::setRegimenFiscal(QString regimen) {
     _depura("BusquedaRegimenFiscal::setRegimenFiscal", 0, regimen);
     if (regimen == "Normal") {
- 	   setCurrentIndex(0);
+        setCurrentIndex(0);
     } else if (regimen == "Intracomunitario") {
-  	  setCurrentIndex(1);
-    } else if (regimen == "Extracomunitario"){
-	  setCurrentIndex(2);
+        setCurrentIndex(1);
+    } else if (regimen == "Extracomunitario") {
+        setCurrentIndex(2);
     } // end if
     _depura("END BusquedaRegimenFiscal::setRegimenFiscal", 0);
 }
 
+void BusquedaRegimenFiscal::setValorCampo(QString regimen) {
+	setRegimenFiscal(regimen);
+}
+
 
 void BusquedaRegimenFiscal::m_activated(int index) {
-        _depura("BusquedaRegimenFiscal::m_activated", 0);
-        if (index > 0) {
-            emit(valueChanged(currentText()));
-        } else {
-            emit(valueChanged(""));
-        } // end if
-        _depura("END BusquedaRegimenFiscal::m_activated", 0);
+    _depura("BusquedaRegimenFiscal::m_activated", 0);
+    if (index > 0) {
+        emit(valueChanged(currentText()));
+    } else {
+        emit(valueChanged(""));
+    } // end if
+    _depura("END BusquedaRegimenFiscal::m_activated", 0);
 }
 
 /** Devuelve el regimen fiscal seleccionado
 **/
-    QString BusquedaRegimenFiscal::regimenFiscal() {
-	_depura("BusquedaRegimenFiscal::regimenFiscal", 0);
-	_depura("END BusquedaRegimenFiscal::regimenFiscal", 0);
-        return (currentText());
-    }
+QString BusquedaRegimenFiscal::regimenFiscal() {
+    _depura("BusquedaRegimenFiscal::regimenFiscal", 0);
+    _depura("END BusquedaRegimenFiscal::regimenFiscal", 0);
+    return (currentText());
+}
+
+
+/** Devuelve el regimen fiscal seleccionado
+**/
+QString BusquedaRegimenFiscal::valorCampo() {
+    _depura("BusquedaRegimenFiscal::regimenFiscal", 0);
+    _depura("END BusquedaRegimenFiscal::regimenFiscal", 0);
+    return (currentText());
+}
 

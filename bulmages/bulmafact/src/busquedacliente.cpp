@@ -94,6 +94,11 @@ void BusquedaCliente::setidcliente(QString val) {
     _depura("END BusquedaCliente::setidcliente", 0);
 }
 
+void BusquedaCliente::setValorCampo(QString val) {
+	setidcliente(val);
+}
+
+
 
 /** Mediante este metodo le decimos al Widget cual es el CIF del cliente seleccionado.
     Busca en la base de datos cual el cliente cuyo CIF coincida con el que hemos seleccionado
@@ -239,6 +244,9 @@ QString BusquedaCliente::idcliente() {
     return mdb_idcliente;
 }
 
+QString BusquedaCliente::valorCampo() {
+    return mdb_idcliente;
+}
 
 QString BusquedaCliente::nomcliente() {
     return mdb_nomcliente;

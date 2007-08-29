@@ -22,7 +22,7 @@
 #ifndef BUSQUEDAALMACEN_H
 #define BUSQUEDAALMACEN_H
 
-#include <QComboBox>
+#include "qcombobox2.h"
 
 #include "blwidget.h"
 #include "company.h"
@@ -32,7 +32,7 @@
 /// Clase que sirve para seleccionar un almac&eacute;n.
 /** Creamos un QComboBox que sirve para presentar la lista de almacenes
     disponibles para poder seleccionar uno de ellos.*/
-class BusquedaAlmacen : public QComboBox, public PEmpresaBase {
+class BusquedaAlmacen : public QComboBox2 {
     Q_OBJECT
 
 private:
@@ -45,8 +45,10 @@ public:
     BusquedaAlmacen(QWidget *parent = 0, const char *name = 0);
     ~BusquedaAlmacen();
     virtual void setidalmacen(QString idalmacen);
+    virtual void setValorCampo(QString idalmacen);
     QString idalmacen();
     void setEmpresaBase(Company *);
+    virtual QString valorCampo();
 
 public slots:
     void m_activated(int index);

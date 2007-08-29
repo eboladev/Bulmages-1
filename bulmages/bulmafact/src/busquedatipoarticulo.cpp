@@ -74,6 +74,10 @@ void BusquedaTipoArticulo::setidtipo_articulo(QString val) {
 }
 
 
+void BusquedaTipoArticulo::setValorCampo(QString val) {
+	setidtipo_articulo(val);
+}
+
 /** Mediante este metodo se puede indicar cual es el tipo de articulo seleccionado.
     Busca en la base de datos el tipo que coincide con el codigo pasado.
     Coge todos los datos necesarios para la presentacion y los muestra.
@@ -184,6 +188,17 @@ QString BusquedaTipoArticulo::idtipo_articulo() {
     _depura("END BusquedaTipoArticulo::idtipo_articulo", 0);
     return mdb_idtipo_articulo;
 }
+
+/** Devuelve el identificador del tipo de articulo seleccionado, si no hay ningun elemento seleccionado
+    devuelve un string vacio
+**/
+QString BusquedaTipoArticulo::valorCampo() {
+    _depura("BusquedaTipoArticulo::valorCampo", 0);
+    _depura("END BusquedaTipoArticulo::valorCampo", 0);
+    return mdb_idtipo_articulo;
+}
+
+
 
 /** Devuelve la descripcion del tipo de articulo seleccionado, si no hay ningun elemento seleccionado
     devuelve un string vacio

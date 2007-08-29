@@ -196,9 +196,26 @@ void BusquedaReferencia::setText(QString val) {
     _depura("END BusquedaReferencia::setText", 0);
 }
 
+
+/** Establece la referencia que va a mostrar el control
+**/
+void BusquedaReferencia::setValorCampo(QString val) {
+    _depura("BusquedaReferencia::setText", 0);
+    mui_referencia->setText(val);
+    _depura("END BusquedaReferencia::setText", 0);
+}
+
 /** Devuelve el texto que esta escrito en el control
 **/
 QString BusquedaReferencia::text() {
+    _depura("BusquedaReferencia::text", 0);
+    _depura("END BusquedaReferencia::text", 0);
+    return mui_referencia->text();
+}
+
+/** Devuelve el texto que esta escrito en el control
+**/
+QString BusquedaReferencia::valorCampo() {
     _depura("BusquedaReferencia::text", 0);
     _depura("END BusquedaReferencia::text", 0);
     return mui_referencia->text();

@@ -22,8 +22,7 @@
 #ifndef BUSQUEDASERIEFACTURA_H
 #define BUSQUEDASERIEFACTURA_H
 
-#include <QComboBox>
-
+#include "qcombobox2.h"
 #include "company.h"
 #include "postgresiface2.h"
 #include "blwidget.h"
@@ -34,7 +33,7 @@
     Antes de utilizarlo debe ser inicializa con setcompany.
     Cuando se cambia el elemento seleccionado emite un SIGNAL valueChanged().
 */
-class BusquedaSerieFactura : public QComboBox, PEmpresaBase {
+class BusquedaSerieFactura : public QComboBox2 {
     Q_OBJECT
 
 private:
@@ -48,7 +47,9 @@ public:
     ~BusquedaSerieFactura();
     void setEmpresaBase(Company *comp);
     QString codigoserie_factura();
+    virtual QString valorCampo();
     virtual void setcodigoserie_factura(QString);
+    virtual void setValorCampo(QString);
 
 public slots:
     void m_activated(int index);

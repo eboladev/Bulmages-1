@@ -137,10 +137,10 @@ void FacturaView::on_mui_cobrar_clicked() {
     _depura("FacturaView::on_mui_cobrar_clicked", 0);
     CobroView *bud = empresaBase()->newCobroView();
     empresaBase()->m_pWorkspace->addWindow(bud);
-    bud->setidcliente(DBvalue("idcliente"));
-    bud->setcantcobro(m_totalfactura->text());
-    bud->setrefcobro(DBvalue("reffactura"));
-    bud->setcomentcobro(DBvalue("descfactura"));
+    bud->setDBvalue("idcliente", DBvalue("idcliente"));
+    bud->setDBvalue("cantcobro", m_totalfactura->text());
+    bud->setDBvalue("refcobro", DBvalue("reffactura"));
+    bud->setDBvalue("comentcobro", DBvalue("descfactura"));
     bud->pintar();
     bud->show();
     _depura("END FacturaView::on_mui_cobrar_clicked", 0);

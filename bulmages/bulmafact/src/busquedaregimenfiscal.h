@@ -22,22 +22,23 @@
 #ifndef BUSQUEDAREGIMENFISCAL_H
 #define BUSQUEDAREGIMENFISCAL_H
 
-#include <QComboBox>
-
+#include "qcombobox2.h"
 #include "funcaux.h"
 
 
 /// Permite buscar y seleccionar una forma de pago.
 /** Widget que permite buscar y seleccionar una
     forma de pago. Aparece en forma de comboBox. */
-class BusquedaRegimenFiscal : public QComboBox {
+class BusquedaRegimenFiscal : public QComboBox2 {
     Q_OBJECT
 
 public:
     BusquedaRegimenFiscal(QWidget *parent = 0);
     ~BusquedaRegimenFiscal();
     QString regimenFiscal();
+    virtual QString valorCampo();
     virtual void setRegimenFiscal(QString regimen);
+    virtual void setValorCampo(QString regimen);
 
 public slots:
     virtual void m_activated(int index);

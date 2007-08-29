@@ -22,14 +22,13 @@
 #ifndef BUSQUEDACANAL_H
 #define BUSQUEDACANAL_H
 
-#include <QComboBox>
-
+#include "qcombobox2.h"
 #include "blwidget.h"
 #include "empresa.h"
 #include "postgresiface2.h"
 
 
-class BusquedaCanalDelegate : public QComboBox, public PEmpresaBase {
+class BusquedaCanalDelegate : public QComboBox2 {
     Q_OBJECT
 
 private:
@@ -47,7 +46,7 @@ public slots:
 
 
 
-class BusquedaCanal : public QComboBox, public PEmpresaBase {
+class BusquedaCanal : public QComboBox2 {
     Q_OBJECT
 
 private:
@@ -57,7 +56,9 @@ public:
     BusquedaCanal(QWidget *parent = 0);
     ~BusquedaCanal();
     virtual void setidcanal(QString idcanal);
+    virtual void setValorCampo(QString idcanal);
     QString idcanal();
+    virtual QString valorCampo();
 
 public slots:
     void m_activated(int index);

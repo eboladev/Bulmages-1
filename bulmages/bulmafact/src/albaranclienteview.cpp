@@ -427,10 +427,10 @@ int AlbaranClienteView::guardar() {
 void AlbaranClienteView::on_mui_cobrar_clicked() {
     _depura("AlbaranClienteView::on_mui_cobrar_clicked", 0);
     CobroView *bud = empresaBase()->newCobroView();
-    bud->setidcliente(DBvalue("idcliente"));
-    bud->setcantcobro(m_totalalbaran->text());
-    bud->setrefcobro(DBvalue("refalbaran"));
-    bud->setcomentcobro(DBvalue("descalbaran"));
+    bud->setDBvalue("idcliente", DBvalue("idcliente"));
+    bud->setDBvalue("cantcobro", m_totalalbaran->text());
+    bud->setDBvalue("refcobro", DBvalue("refalbaran"));
+    bud->setDBvalue("comentcobro", DBvalue("descalbaran"));
     bud->pintar();
     bud->show();
     _depura("END AlbaranClienteView::on_mui_cobrar_clicked", 0);

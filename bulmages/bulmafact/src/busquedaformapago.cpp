@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QComboBox>
+#include "qcombobox2.h"
 
 #include "busquedaformapago.h"
 
@@ -29,7 +29,7 @@
 */
 /// \TODO: No deberia usarse m_activated como signal ya que confunde con una variable de clase.
 BusquedaFormaPago::BusquedaFormaPago(QWidget *parent)
-        : QComboBox(parent), PEmpresaBase() {
+        : QComboBox2(parent) {
     _depura("BusquedaFormaPago::BusquedaFormaPago", 0);
     m_cursorcombo = NULL;
     connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
@@ -71,6 +71,11 @@ void BusquedaFormaPago::setidforma_pago(QString idforma_pago) {
     } // end while
     setCurrentIndex(i1);
     _depura("END BusquedaFormaPago::setidforma_pago", 0);
+}
+
+
+void BusquedaFormaPago::setValorCampo(QString idforma_pago) {
+	setidforma_pago(idforma_pago);
 }
 
 
@@ -130,4 +135,12 @@ QString BusquedaFormaPago::idforma_pago() {
     if (!m_cursorcombo) return "0";
     return (m_cursorcombo->valor("idforma_pago", currentIndex() - 1));
 }
+
+
+/** Devuelve el identificador de forma de pago indicado
+**/
+QString BusquedaFormaPago::valorCampo() {
+    return idforma_pago();
+}
+
 

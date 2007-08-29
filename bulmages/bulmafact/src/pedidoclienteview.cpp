@@ -208,10 +208,10 @@ void PedidoClienteView::generarAlbaran() {
 void PedidoClienteView::on_mui_cobrar_clicked() {
     _depura("PedidoClienteView::on_mui_cobrar_clicked", 0);
     CobroView *bud = empresaBase()->newCobroView();
-    bud->setidcliente(DBvalue("idcliente"));
-    bud->setcantcobro(m_totalpedidocliente->text());
-    bud->setrefcobro(DBvalue("refpedidocliente"));
-    bud->setcomentcobro(DBvalue("descpedidocliente"));
+    bud->setDBvalue("idcliente", DBvalue("idcliente"));
+    bud->setDBvalue("cantcobro", m_totalpedidocliente->text());
+    bud->setDBvalue("refcobro", DBvalue("refpedidocliente"));
+    bud->setDBvalue("comentcobro", DBvalue("descpedidocliente"));
     bud->pintar();
     bud->show();
     _depura("END PedidoClienteView::on_mui_cobrar_clicked", 0);

@@ -22,12 +22,11 @@
 #ifndef BUSQUEDAPERIODO_H
 #define BUSQUEDAPERIODO_H
 
-#include <QComboBox>
-
+#include "qcombobox2.h"
 #include "funcaux.h"
 
 
-class BusquedaPeriodo : public QComboBox {
+class BusquedaPeriodo : public QComboBox2 {
     Q_OBJECT
 
 private:
@@ -38,7 +37,9 @@ public:
     BusquedaPeriodo(QWidget *parent = 0);
     ~BusquedaPeriodo();
     virtual void setperiodo(QString periodo);
+    virtual void setValorCampo(QString periodo);
     QString periodo();
+    virtual QString valorCampo();
 
 public slots:
     void s_activated(int index);

@@ -39,15 +39,29 @@
     Mete la ventana en el workSpace.
 */
 CobroView::CobroView(Company *comp, QWidget *parent)
-        : Cobro(comp, parent) {
+        : FichaBf(comp, parent) {
     _depura("CobroView::CobroView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     try {
         setupUi(this);
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
-        mui_cliente->setEmpresaBase(comp);
+        mui_idcliente->setEmpresaBase(comp);
         mui_refcobro->setEmpresaBase(comp);
-	mui_idbanco->setEmpresaBase(comp);
+        mui_idbanco->setEmpresaBase(comp);
+
+    setDBTableName("cobro");
+    setDBCampoId("idcobro");
+    addDBCampo("idcobro", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Cobro", "ID cobro"));
+    addDBCampo("idcliente", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("Cobro", "ID cliente"));
+    addDBCampo("previsioncobro", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("Cobro", "Prevision de cobro"));
+    addDBCampo("fechacobro", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Cobro", "Fecha de cobro"));
+    addDBCampo("fechavenccobro", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Cobro", "Fecha de vencimiento"));
+    addDBCampo("refcobro", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cobro", "Referencia del cobro"));
+    addDBCampo("cantcobro", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate("Cobro", "Cantidad"));
+    addDBCampo("comentcobro", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cobro", "Comentarios"));
+    addDBCampo("idbanco", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Banco", "Comentarios"));
+
+
         dialogChanges_cargaInicial();
         meteWindow(windowTitle(), this, FALSE);
     } catch (...) {
@@ -66,199 +80,8 @@ CobroView::~CobroView() {
 }
 
 
-/** Saca la ventana del workSpace.
-    Este metodo es invocado desde la clase Ficha.
-*/
-int CobroView::sacaWindow() {
-    _depura("CobroView::sacaWindow", 0);
-    empresaBase()->sacaWindow(this);
-    _depura("END CobroView::sacaWindow", 0);
-    return 0;
-}
-
-/** Metodo de carga de un cobro.
-    Delega el meanejo con la base de datos a la clase Cobro.
-    Sin embargo se encarga de cambiar el titulo de la ventana y de refrescar.
-    
-    Si todo va bien devuelve 0.
-    Si se producen errores devuelve -1.
-*/
-int CobroView::cargar(QString id) {
-    _depura("CobroView::cargar", 0);
-    try {
-        if (Cobro::cargar(id))
-            throw -1;
-        setWindowTitle(tr("Cobro") + " " + DBvalue("refcobro") + " " + DBvalue("idcobro"));
-        pintar();
-        dialogChanges_cargaInicial();
-        meteWindow(windowTitle(), this);
-    } catch (...) {
-        return -1;
-    } // end try
-    _depura("END CobroView::cargar", 0);
-    return 0;
-}
-
-/** Escribe en el QLineEdit de fecha la fecha indicada
-**/
-void CobroView::pintafechacobro(QString id) {
-    _depura("CobroView::pintafechacobro", 0);
-    mui_fechacobro->setText(id);
-    _depura("END CobroView::pintafechacobro", 0);
-}
-
-/** Escribe en el QLineEdit de fecha la fecha indicada
-**/
-void CobroView::pintafechavenccobro(QString id) {
-    _depura("CobroView::pintafechavenccobro", 0);
-    mui_fechavenccobro->setText(id);
-    _depura("END CobroView::pintafechavenccobro", 0);
-}
-
-/** Escribe en los comentarios del cobro los comentarios indicados
-**/
-void CobroView::pintacomentcobro(QString id) {
-    _depura("CobroView::pintacomentcobro", 0);
-    mui_comentcobro->setText(id);
-    _depura("END CobroView::pintacomentcobro", 0);
-}
-
-/** Indica a la clase cual es el identificador del cliente del cobro
-**/
-void CobroView::pintaidcliente(QString id) {
-    _depura("CobroView::pintaidcliente", 0);
-    mui_cliente->setidcliente(id);
-    _depura("END CobroView::pintaidcliente", 0);
-}
-
-/** Escribe en la referencia del cobro el parametro indicado
-**/
-void CobroView::pintarefcobro(QString id) {
-    _depura("CobroView::pintarefcobro", 0);
-    mui_refcobro->setText(id);
-    _depura("END CobroView::pintarefcobro", 0);
-}
-
-/** EScribe en la cantidad del cobro el parametro indicado
-**/
-void CobroView::pintacantcobro(QString id) {
-    _depura("CobroView::pintacantcobro", 0);
-    mui_cantcobro->setText(id);
-    _depura("END CobroView::pintacantcobro", 0);
-}
-
-
-/** EScribe el banco del cobro el parametro indicado
-**/
-void CobroView::pintaidbanco(QString id) {
-    _depura("CobroView::pintaidbanco", 0);
-    mui_idbanco->setidbanco(id);
-    _depura("END CobroView::pintaidbanco", 0);
-}
-
-/** Escribe en el QCheckBox de prevision si el parametro indicado
-**/
-void CobroView::pintaprevisioncobro(QString id) {
-    _depura("CobroView::pintaprevisioncobro", 0);
-    if (id == "t" || id == "TRUE") {
-        mui_previsioncobro->setChecked(TRUE);
-    } else {
-        mui_previsioncobro->setChecked(FALSE);
-    } // end if
-    _depura("END CobroView::pintaprevisioncobro", 0);
-}
-
-/** Guarda en la base de datos el cobro especificado en la clase
-**/
-int CobroView::guardar() {
-    _depura("CobroView::guardar", 0);
-    _depura("END CobroView::guardar", 0);
-    return Cobro::guardar();
-}
-
-/** Elimina el cobro que se esta viendo de la base de datos
-**/
-int CobroView::borrar()  {
-    _depura("CobroView::borrar", 0);
-    _depura("END CobroView::borrar", 0);
-    return Cobro::borrar();
-}
-
-/** SLOT automatico que se ejecuta al cambiar algun texto en el campo de comentarios
-    Actualiza los valores del cobro con los valores introducidos en el campo
-**/
-void CobroView::on_mui_comentcobro_textChanged(const QString &str) {
-    _depura("CobroView::on_mui_comentcobro_textChanged", 0);
-    setcomentcobro(str);
-    _depura("END CobroView::on_mui_comentcobro_textChanged", 0);
-}
-
-/** SLOT automatico que se ejecuta al cambiar el texto del campo de referencia
-    Actualiza los valores de la referencia con los valores introducidos en el campo
-**/
-void CobroView::on_mui_refcobro_valueChanged(const QString &str) {
-    _depura("CobroView::on_mui_refcobro_valueChanged", 0);
-    setrefcobro(str);
-    _depura("END CobroView::on_mui_refcobro_valueChanged", 0);
-}
-
-/** SLOT automatico que se ejecuta al cambiar el texto del campo de cantidad
-	Actualiza los valores de la cantidad en el cobro con los valores introducidos en el campo
-**/
-void CobroView::on_mui_cantcobro_textChanged(const QString &str) {
-    _depura("CobroView::on_mui_cantcobro_textChanged", 0);
-    setcantcobro(str);
-    _depura("END CobroView::on_mui_cantcobro_textChanged", 0);
-}
-
-/** SLOT automatico que se ejecuta al cambiar el estado del QCheckBox de prevision
-	Actualiza los valores de la prevision en el cobro con el valor que tiene el QComboBox
-**/
-void CobroView::on_mui_previsioncobro_stateChanged(int i) {
-    _depura("CobroView::on_mui_previsioncobro_stateChanged", 0);
-    if (i) {
-        setprevisioncobro("TRUE");
-    } else {
-        setprevisioncobro("FALSE");
-    } // end if
-    _depura("END CobroView::on_mui_previsioncobro_stateChanged", 0);
-}
-
-/** SLOT automatico que se ejecuta al cambiar el selector de cliente
-	Actualiza los valores de idcliente del cobro con el valor que se pasa
-**/
-void CobroView::on_mui_cliente_valueChanged(QString id) {
-    _depura("CobroView::on_mui_cliente_valueChanged", 0);
-    setidcliente(id);
-    _depura("END CobroView::on_mui_cliente_valueChanged", 0);
-}
-
-/** SLOT automatico que se ejecuta al cambiar la fecha
-	Actualiza los valores del cobro con la fecha indicada
-**/
-void CobroView::on_mui_fechacobro_valueChanged(QString id) {
-    _depura("CobroView::on_mui_fechacobro_valueChanged", 0);
-    setfechacobro(id);
-    _depura("END CobroView::on_mui_fechacobro_valueChanged", 0);
-}
-
-/** SLOT automatico que se ejecuta al cambiar la fecha
-	Actualiza los valores del cobro con la fecha indicada
-**/
-void CobroView::on_mui_fechavenccobro_valueChanged(QString id) {
-    _depura("CobroView::on_mui_fechavenccobro_valueChanged", 0);
-    setfechavenccobro(id);
-    _depura("END CobroView::on_mui_fechavenccobro_valueChanged", 0);
-}
-
-void CobroView::on_mui_idbanco_valueChanged(QString id) {
-	_depura("CobroView::on_mui_idbanco_valueChanged", 0);
-	setidbanco(id);
-	_depura("END CobroView::on_mui_idbanco_valueChanged", 0);
-}
-
 void CobroView::on_mui_imprimir_clicked() {
-	_depura("CobroView::on_mui_imprimir_clicked", 0);
+    _depura("CobroView::on_mui_imprimir_clicked", 0);
 
     /// Disparamos los plugins
     int res = g_plugins->lanza("CoboView_on_mui_imprimir_clicked", this);
@@ -315,10 +138,10 @@ void CobroView::on_mui_imprimir_clicked() {
     } // end if
     delete cur;
 
-        buff.replace("[referencia]" , DBvalue("refcobro" ));
-        buff.replace("[cantidad]" , DBvalue("cantcobro" ));
-        buff.replace("[comentario]" , DBvalue("comentcobro" ));
-        buff.replace("[fecha]" , DBvalue("fechacobro" ));
+    buff.replace("[referencia]" , DBvalue("refcobro" ));
+    buff.replace("[cantidad]" , DBvalue("cantcobro" ));
+    buff.replace("[comentario]" , DBvalue("comentcobro" ));
+    buff.replace("[fecha]" , DBvalue("fechacobro" ));
 
 
 
@@ -343,12 +166,9 @@ void CobroView::on_mui_imprimir_clicked() {
 
 
     _depura("FichaBf::imprimir", 0);
- 
     invocaPDF("recibo");
 
-
-
-	_depura("END CobroView::on_mui_imprimir_clicked", 0);
+    _depura("END CobroView::on_mui_imprimir_clicked", 0);
 }
 
 

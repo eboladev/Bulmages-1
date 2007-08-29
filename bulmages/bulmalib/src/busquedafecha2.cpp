@@ -40,6 +40,9 @@ void BusquedaFecha2::setText(QString val) {
     QLineEdit::setText(val);
 }
 
+void BusquedaFecha2::setValorCampo(QString val) {
+    QLineEdit::setText(val);
+}
 
 void BusquedaFecha2::selectAll() {
 }
@@ -49,7 +52,9 @@ QString BusquedaFecha2::text() {
     return QLineEdit::text();
 }
 
-
+QString BusquedaFecha2::valorCampo() {
+    return QLineEdit::text();
+}
 
 
 void BusquedaFecha2::on_mui_editingFinished() {

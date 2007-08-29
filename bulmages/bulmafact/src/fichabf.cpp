@@ -383,27 +383,6 @@ void FichaBf::imprimir() {
 
 
 
-
-/** Guarda la ficha en la base de datos
-    Este metodo puede ser invocado desde la clase ficha o desde la pantalla previa
-*/
-int FichaBf::guardar() {
-    _depura("FichaBf::guardar", 0);
-    _depura("END FichaBf::guardar", 0);
-    return DBRecord::guardar();
-}
-
-
-/** Borra la ficha en la base de datos
-    Este metodo puede ser invocado desde la clase ficha o desde la pantalla previa
-*/
-int FichaBf::borrar() {
-    _depura("FichaBf::borrar", 0);
-    _depura("END FichaBf::borrar", 0);
-    return DBRecord::borrar();
-}
-
-
 void FichaBf::setListaLineas(SubForm2Bf *form) {
     _depura("FichaBf::setListaLineas", 0);
     m_listalineas = form;

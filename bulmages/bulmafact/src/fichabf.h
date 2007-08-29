@@ -48,8 +48,6 @@ public:
     virtual void generaRML();
     virtual void calculaypintatotales();
     virtual void pintatotales(Fixed, Fixed, Fixed, Fixed, Fixed, Fixed) {};
-    virtual int guardar();
-    virtual int borrar();
 };
 
 #endif

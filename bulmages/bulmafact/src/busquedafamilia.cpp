@@ -27,10 +27,9 @@
     en si los componentes han sido inicializados o no.
 */
 BusquedaFamilia::BusquedaFamilia(QWidget *parent)
-        : QWidget(parent) {
+        : BLWidget(parent) {
     _depura("BusquedaFamilia::BusquedaFamilia", 0);
     setupUi(this);
-    companyact = NULL;
     mdb_idfamilia = "";
     mdb_nombrefamilia = "";
     mdb_codigocompletofamilia = "";
@@ -50,7 +49,7 @@ void BusquedaFamilia::setidfamilia(QString val) {
     _depura("BusquedaFamilia::setidfamilia", 0);
     mdb_idfamilia = val;
     QString SQLQuery = "SELECT * FROM familia WHERE idfamilia='" + mdb_idfamilia + "'";
-    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
 
     if(!cur->eof()) {
         mdb_codigocompletofamilia = cur->valor("codigocompletofamilia");
@@ -67,12 +66,16 @@ void BusquedaFamilia::setidfamilia(QString val) {
     _depura("END BusquedaFamilia::setidfamilia", 0);
 }
 
+void BusquedaFamilia::setValorCampo(QString val) {
+	setidfamilia(val);
+}
+
 
 void BusquedaFamilia::setcodigocompletofamilia(QString val) {
     _depura("BusquedaFamilia::setcodigocompletofamilia", 0);
     mdb_codigocompletofamilia = val;
     QString SQLQuery = "SELECT * FROM familia WHERE codigocompletofamilia='" + mdb_codigocompletofamilia + "'";
-    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
 
     if(!cur->eof()) {
         mdb_idfamilia = cur->valor("idfamilia");
@@ -95,7 +98,7 @@ void BusquedaFamilia::on_mui_buscar_clicked() {
     QDialog *diag = new QDialog(0);
     diag->setModal(true);
 
-    FamiliasView *fam = companyact->newfamiliasview(diag, TRUE);
+    FamiliasView *fam = ((Company *)empresaBase())->newfamiliasview(diag, TRUE);
     connect(fam, SIGNAL(selected(QString)), diag, SLOT(accept()));
 
     /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
@@ -125,7 +128,7 @@ void BusquedaFamilia::on_m_codigocompletofamilia_textChanged(const QString &val)
     _depura("BusquedaFamilia::on_m_codigocompletofamilia_textChanged", 0);
     mdb_codigocompletofamilia = val;
     QString SQLQuery = "SELECT * FROM familia WHERE codigocompletofamilia='" + mdb_codigocompletofamilia + "'";
-    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
 
     if(!cur->eof()) {
         mdb_idfamilia = cur->valor("idfamilia");
@@ -142,11 +145,6 @@ void BusquedaFamilia::on_m_codigocompletofamilia_textChanged(const QString &val)
     _depura("END BusquedaFamilia::on_m_codigocompletofamilia_textChanged", 0);
 }
 
-void BusquedaFamilia::setEmpresaBase(Company *comp) {
-    _depura("BusquedaFamilia::setcompany", 0);
-    companyact = comp;
-    _depura("END BusquedaFamilia::setcompany", 0);
-}
 
 
 QString BusquedaFamilia::codigocompletofamilia() {
@@ -162,6 +160,11 @@ QString BusquedaFamilia::idfamilia() {
     return mdb_idfamilia;
 }
 
+QString BusquedaFamilia::valorCampo() {
+    _depura("BusquedaFamilia::valorCampo", 0);
+    _depura("END BusquedaFamilia::valorCampo", 0);
+    return mdb_idfamilia;
+}
 
 QString BusquedaFamilia::nombrefamilia() {
     _depura("BusquedaFamilia::nombrefamilia", 0);

@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QComboBox>
+#include "qcombobox2.h"
 
 #include "busquedatrabajador.h"
 #include "company.h"
@@ -29,7 +29,7 @@
     Hace la conexion del SIGNAL activated con m_activated para tratar el evento.
 */
 BusquedaTrabajador::BusquedaTrabajador(QWidget *parent)
-        : QComboBox(parent), PEmpresaBase() {
+        : QComboBox2(parent) {
     _depura("BusquedaTrabajador::BusquedaTrabajador", 0);
     m_cursorcombo = NULL;
     connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
@@ -72,8 +72,9 @@ void BusquedaTrabajador::setidtrabajador(QString idtrabajador) {
     _depura("END BusquedaTrabajador::setidtrabajador", 0);
 }
 
-
-
+void BusquedaTrabajador::setValorCampo(QString idtrabajador) {
+	setidtrabajador(idtrabajador);
+}
 
 /** Devuelve el identificador del trabajador seleccionado
 **/
@@ -83,6 +84,11 @@ QString BusquedaTrabajador::idtrabajador() {
     if (!m_cursorcombo) return "0";
     return m_cursorcombo->valor("idtrabajador", currentIndex() - 1);
 }
+
+QString BusquedaTrabajador::valorCampo() {
+	return idtrabajador();
+}
+
 
 /** SLOT que responde a la activacion de un elemento en el QComboBox y que hace que se emita el SIGNAL valueChanged
 **/
@@ -103,7 +109,7 @@ void BusquedaTrabajador::m_activated(int index) {
     Conecta el SIGNAL activated() con m_activated() para tratarlo.
 */
 BusquedaTrabajadorDelegate::BusquedaTrabajadorDelegate(QWidget *parent)
-        : QComboBox(parent), PEmpresaBase() {
+        : QComboBox2(parent) {
     _depura("BusquedaTrabajadorDelegate::BusquedaTrabajadorDelegate", 0);
     m_cursorcombo = NULL;
     setSizeAdjustPolicy(QComboBox::AdjustToContents);

@@ -55,9 +55,11 @@ public:
     void pinta();
     virtual ~BusquedaProveedor();
     virtual void setidproveedor(QString val);
+    virtual void setValorCampo(QString val);
     virtual void setcifproveedor(QString val);
     virtual QString cifproveedor();
     virtual QString idproveedor();
+    virtual QString valorCampo();
     virtual QString nomproveedor();
 
 public slots:

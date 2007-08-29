@@ -1,20 +1,20 @@
 <ui version="4.0" >
- <author>Alvaro de Miguel</author>
- <class>CobroBase</class>
- <widget class="QWidget" name="CobroBase" >
+ <author>Tomeu Borras Riera</author>
+ <class>AlmacenBase</class>
+ <widget class="QWidget" name="AlmacenBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>486</width>
-    <height>398</height>
+    <width>648</width>
+    <height>415</height>
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Nuevo cobro a cliente</string>
+   <string>Nuevo almacen</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_cobros.48x48.png</iconset>
+   <iconset resource="../../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_cobros.48x48.png</iconset>
   </property>
   <layout class="QGridLayout" >
    <property name="margin" >
@@ -23,6 +23,60 @@
    <property name="spacing" >
     <number>6</number>
    </property>
+   <item row="8" column="2" colspan="2" >
+    <widget class="BusquedaFecha" name="mui_fechaalmacen" />
+   </item>
+   <item row="9" column="0" colspan="4" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>589</width>
+       <height>31</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="3" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>161</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="2" >
+    <widget class="QLineEdit" name="mui_codigoalmacen" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>5</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="2" >
+    <widget class="QLabel" name="textLabel1_2_2_3_2" >
+     <property name="text" >
+      <string>Código Almacén</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+     <property name="buddy" >
+      <cstring>mui_codigoalmacen</cstring>
+     </property>
+    </widget>
+   </item>
    <item row="0" column="1" colspan="3" >
     <widget class="QFrame" name="frame" >
      <property name="frameShape" >
@@ -53,16 +107,16 @@
          </size>
         </property>
         <property name="toolTip" >
-         <string>Guardar cobro</string>
+         <string>Guardar almacen</string>
         </property>
         <property name="whatsThis" >
-         <string>Guardar cobro</string>
+         <string>Guardar almacen</string>
         </property>
         <property name="text" >
          <string/>
         </property>
         <property name="icon" >
-         <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_save.xpm</iconset>
+         <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_save.xpm</iconset>
         </property>
         <property name="iconSize" >
          <size>
@@ -90,16 +144,16 @@
          </size>
         </property>
         <property name="toolTip" >
-         <string>Borrar cobro</string>
+         <string>Borrar almacen</string>
         </property>
         <property name="whatsThis" >
-         <string>Borrar cobro</string>
+         <string>Borrar almacen</string>
         </property>
         <property name="text" >
          <string/>
         </property>
         <property name="icon" >
-         <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_editDelete.png</iconset>
+         <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_editDelete.png</iconset>
         </property>
         <property name="iconSize" >
          <size>
@@ -109,43 +163,6 @@
         </property>
         <property name="shortcut" >
          <string>Ctrl+D</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QToolButton" name="mui_imprimir" >
-        <property name="minimumSize" >
-         <size>
-          <width>32</width>
-          <height>32</height>
-         </size>
-        </property>
-        <property name="maximumSize" >
-         <size>
-          <width>32</width>
-          <height>32</height>
-         </size>
-        </property>
-        <property name="toolTip" >
-         <string>Borrar cobro</string>
-        </property>
-        <property name="whatsThis" >
-         <string>Borrar cobro</string>
-        </property>
-        <property name="text" >
-         <string/>
-        </property>
-        <property name="icon" >
-         <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_filePrint.xpm</iconset>
-        </property>
-        <property name="iconSize" >
-         <size>
-          <width>32</width>
-          <height>32</height>
-         </size>
-        </property>
-        <property name="shortcut" >
-         <string>Ctrl+I</string>
         </property>
        </widget>
       </item>
@@ -164,31 +181,6 @@
          </size>
         </property>
        </spacer>
-      </item>
-      <item>
-       <widget class="QLabel" name="textLabel1_2_2_3_2_2" >
-        <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>1</hsizetype>
-          <vsizetype>5</vsizetype>
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text" >
-         <string>Referencia:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="BusquedaReferencia" name="mui_refcobro" >
-        <property name="minimumSize" >
-         <size>
-          <width>150</width>
-          <height>0</height>
-         </size>
-        </property>
-       </widget>
       </item>
      </layout>
     </widget>
@@ -211,39 +203,11 @@
       <string/>
      </property>
      <property name="pixmap" >
-      <pixmap resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_cobros.48x48.png</pixmap>
+      <pixmap resource="../../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_almacen.48x48.png</pixmap>
      </property>
     </widget>
    </item>
-   <item row="1" column="0" colspan="4" >
-    <widget class="QCheckBox" name="mui_previsioncobro" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>13</hsizetype>
-       <vsizetype>0</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text" >
-      <string>Prevision</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="0" colspan="2" >
-    <widget class="QLabel" name="textLabel1_2_2_3_2" >
-     <property name="text" >
-      <string>Descripcion del cobro:</string>
-     </property>
-     <property name="alignment" >
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-     </property>
-     <property name="buddy" >
-      <cstring>mui_comentcobro</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="9" column="0" colspan="4" >
+   <item row="10" column="0" colspan="4" >
     <layout class="QHBoxLayout" >
      <property name="margin" >
       <number>0</number>
@@ -283,8 +247,21 @@
      </item>
     </layout>
    </item>
-   <item row="6" column="2" >
-    <widget class="QLineEdit" name="mui_cantcobro" >
+   <item row="2" column="0" colspan="2" >
+    <widget class="QLabel" name="textLabel1_4_4" >
+     <property name="text" >
+      <string>Nombre Almacén</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+     <property name="buddy" >
+      <cstring>mui_nomalmacen</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2" colspan="2" >
+    <widget class="QLineEdit" name="mui_nomalmacen" >
      <property name="enabled" >
       <bool>true</bool>
      </property>
@@ -302,12 +279,85 @@
        <height>0</height>
       </size>
      </property>
-     <property name="font" >
-      <font>
-       <pointsize>12</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
+     <property name="alignment" >
+      <set>Qt::AlignLeading</set>
+     </property>
+     <property name="readOnly" >
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="2" >
+    <widget class="QLabel" name="textLabel1_4_5" >
+     <property name="text" >
+      <string>Dirección Almacén</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+     <property name="buddy" >
+      <cstring>mui_nomalmacen</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2" colspan="2" >
+    <widget class="QLineEdit" name="mui_diralmacen" >
+     <property name="enabled" >
+      <bool>true</bool>
+     </property>
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>5</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize" >
+      <size>
+       <width>150</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignLeading</set>
+     </property>
+     <property name="readOnly" >
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="2" >
+    <widget class="QLabel" name="textLabel1_4_6" >
+     <property name="text" >
+      <string>Teléfono Almacén</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+     <property name="buddy" >
+      <cstring>mui_nomalmacen</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="2" colspan="2" >
+    <widget class="QLineEdit" name="mui_telalmacen" >
+     <property name="enabled" >
+      <bool>true</bool>
+     </property>
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>5</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize" >
+      <size>
+       <width>150</width>
+       <height>0</height>
+      </size>
      </property>
      <property name="alignment" >
       <set>Qt::AlignRight</set>
@@ -317,66 +367,24 @@
      </property>
     </widget>
    </item>
-   <item row="6" column="3" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeType" >
-      <enum>QSizePolicy::Preferred</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>20</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="7" column="2" >
-    <widget class="BusquedaBanco" name="mui_idbanco" />
-   </item>
-   <item row="6" column="0" colspan="2" >
-    <widget class="QLabel" name="textLabel1_4_4" >
+   <item row="5" column="0" colspan="2" >
+    <widget class="QLabel" name="textLabel1_4_7" >
      <property name="text" >
-      <string>Total cobro:</string>
+      <string>Fax Almacén</string>
      </property>
      <property name="alignment" >
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
      </property>
      <property name="buddy" >
-      <cstring>mui_cantcobro</cstring>
+      <cstring>mui_nomalmacen</cstring>
      </property>
     </widget>
-   </item>
-   <item row="7" column="0" colspan="2" >
-    <widget class="QLabel" name="textLabel1_4_5" >
-     <property name="text" >
-      <string>Banco:</string>
-     </property>
-     <property name="alignment" >
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-     </property>
-     <property name="buddy" >
-      <cstring>mui_idbanco</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="8" column="0" colspan="4" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>457</width>
-       <height>81</height>
-      </size>
-     </property>
-    </spacer>
    </item>
    <item row="5" column="2" colspan="2" >
-    <widget class="QLineEdit" name="mui_comentcobro" >
+    <widget class="QLineEdit" name="mui_faxalmacen" >
+     <property name="enabled" >
+      <bool>true</bool>
+     </property>
      <property name="sizePolicy" >
       <sizepolicy>
        <hsizetype>5</hsizetype>
@@ -385,24 +393,52 @@
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+     <property name="minimumSize" >
+      <size>
+       <width>150</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignRight</set>
+     </property>
+     <property name="readOnly" >
+      <bool>false</bool>
+     </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="2" >
-    <widget class="QLabel" name="textLabel1_2_3" >
+   <item row="7" column="0" colspan="4" >
+    <widget class="QFrame" name="m_frameplugin" >
+     <property name="frameShape" >
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow" >
+      <enum>QFrame::Raised</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0" colspan="2" >
+    <widget class="QLabel" name="textLabel1_4_8" >
      <property name="text" >
-      <string>Fecha cobro:</string>
+      <string>Email Almacén</string>
      </property>
      <property name="alignment" >
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
      </property>
+     <property name="buddy" >
+      <cstring>mui_nomalmacen</cstring>
+     </property>
     </widget>
    </item>
-   <item row="2" column="2" >
-    <widget class="BusquedaFecha" native="1" name="mui_fechacobro" >
+   <item row="6" column="2" colspan="2" >
+    <widget class="QLineEdit" name="mui_emailalmacen" >
+     <property name="enabled" >
+      <bool>true</bool>
+     </property>
      <property name="sizePolicy" >
       <sizepolicy>
        <hsizetype>5</hsizetype>
-       <vsizetype>5</vsizetype>
+       <vsizetype>0</vsizetype>
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -413,83 +449,11 @@
        <height>0</height>
       </size>
      </property>
-    </widget>
-   </item>
-   <item row="2" column="3" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeType" >
-      <enum>QSizePolicy::Preferred</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>20</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="3" column="3" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeType" >
-      <enum>QSizePolicy::Preferred</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>20</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="4" column="0" colspan="4" >
-    <widget class="BusquedaCliente" native="1" name="mui_idcliente" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>7</hsizetype>
-       <vsizetype>5</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="minimumSize" >
-      <size>
-       <width>0</width>
-       <height>60</height>
-      </size>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0" colspan="2" >
-    <widget class="QLabel" name="textLabel1_2_4" >
-     <property name="text" >
-      <string>Fecha vencimiento:</string>
-     </property>
      <property name="alignment" >
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      <set>Qt::AlignLeading</set>
      </property>
-    </widget>
-   </item>
-   <item row="3" column="2" >
-    <widget class="BusquedaFecha" native="1" name="mui_fechavenccobro" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>5</hsizetype>
-       <vsizetype>5</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="minimumSize" >
-      <size>
-       <width>150</width>
-       <height>0</height>
-      </size>
+     <property name="readOnly" >
+      <bool>false</bool>
      </property>
     </widget>
    </item>
@@ -498,28 +462,13 @@
  <layoutdefault spacing="4" margin="3" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaReferencia</class>
-   <extends>QLineEdit</extends>
-   <header>busquedareferencia.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaFecha</class>
-   <extends>QWidget</extends>
-   <header>../../../bulmalib/src/busquedafecha.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaCliente</class>
-   <extends>QWidget</extends>
-   <header>busquedacliente.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaBanco</class>
-   <extends>QComboBox</extends>
-   <header>busquedabanco.h</header>
+   <extends>QLineEdit</extends>
+   <header>busquedafecha.h</header>
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../../bulmages.qrc" />
+  <include location="../../../bulmages.qrc" />
  </resources>
  <connections/>
 </ui>

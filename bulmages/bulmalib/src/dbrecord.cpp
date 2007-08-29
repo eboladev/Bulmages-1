@@ -198,6 +198,7 @@ DBRecord::~DBRecord() {
 int DBRecord::DBload(cursor2 *cur) {
     _depura("DBRecord::DBload", 0);
     m_nuevoCampo = FALSE;
+
     DBCampo *campo;
     int error = 0;
     for (int i = 0; i < m_lista.size(); ++i) {
@@ -209,8 +210,7 @@ int DBRecord::DBload(cursor2 *cur) {
                 m_nuevoCampo = TRUE;
             if ((campo->restrictcampo() & DBCampo::DBDupPrimaryKey) && (val == ""))
                 m_nuevoCampo = TRUE;
-            error += campo->set
-                     (val);
+            error += campo->set(val);
             /// Al ser una carga consideramos que los cambios estan inicializados.
             campo->resetCambio();
         } // end if

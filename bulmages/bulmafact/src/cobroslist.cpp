@@ -154,7 +154,7 @@ void CobrosList::crear() {
     CobroView *bud = ((Company *)empresaBase())->newCobroView();
     empresaBase()->m_pWorkspace->addWindow(bud);
     bud->show();
-    bud->setidcliente(m_cliente->idcliente());
+    bud->setDBvalue("idcliente", m_cliente->idcliente());
     bud->pintar();
     _depura("CobrosList::crear", 0);
 }

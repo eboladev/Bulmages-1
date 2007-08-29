@@ -1,7 +1,8 @@
 /***************************************************************************
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org                                                 *
+ *   Copyright (C) 2006 by Fco. Javier M. C.                               *
+ *   fcojavmc@todo-redes.com                                               *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -18,51 +19,27 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#include <QToolButton>
 
-#ifndef PAGO_H
-#define PAGO_H
-
-#include <QString>
-
+#include "pluginalmacen.h"
 #include "company.h"
-#include "dbrecord.h"
-#include "fichabf.h"
+#include "almaceneslistview.h"
 
-/// Almacena la informaci&oacute;n de un pago.
-/** */
-class Pago : public FichaBf {
-public:
-    Pago(Company *, QWidget *);
-    virtual ~Pago();
-    virtual int cargar(QString);
-    virtual void pintar();
-    virtual int guardar();
-    virtual int borrar();
-    void vaciar();
-    virtual void pintaidpago(QString) {}
-    ;
-    virtual void pintaidproveedor(QString) {}
-    ;
-    virtual void pintafechapago(QString) {}
-    ;
-    virtual void pintacantpago(QString) {}
-    ;
-    virtual void pintarefpago(QString) {}
-    ;
-    virtual void pintaprevisionpago(QString) {}
-    ;
-    virtual void pintacomentpago(QString) {}
-    ;
-    virtual void pintaidbanco(QString) {};
-    void setidpago(QString val);
-    void setidproveedor(QString val);
-    void setfechapago(QString val);
-    void setcantpago(QString val);
-    void setrefpago(QString val);
-    void setprevisionpago(QString val);
-    void setcomentpago(QString val);
-    void setidbanco(QString val);
-};
 
-#endif
+
+int entryPoint(Bulmafact *bges) {
+    _depura("Estoy dentro del plugin de tipos de almacenes", 0);
+    return 0;
+}
+
+
+int Company_s_almacenes(Company *bges) {
+    _depura("Company_s_almacenes", 0);
+    AlmacenesListView *lser = new AlmacenesListView(bges, 0);
+    bges->pWorkspace()->addWindow(lser);
+    lser->show();
+    _depura("END Company_s_almacenes", 0);
+    /// Este plugin reemplaza completamente la funcion llamante y por eso devuelve un valor distinto de 0
+    return 1;
+}
 

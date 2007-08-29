@@ -24,7 +24,7 @@
 
 #include <QLineEdit>
 #include <QLabel>
-#include <QComboBox>
+#include "qcombobox2.h"
 
 #include "postgresiface2.h"
 #include "blwidget.h"
@@ -36,7 +36,7 @@ class company;
     de esta forma la introduccion de tipos de IVA es sencilla.
     Esta clase se usa conjuntamente con SubForm2Bf para el cambio del editor
     estandar por un ComboBox */
-class BusquedaTipoIVADelegate : public QComboBox, public PEmpresaBase {
+class BusquedaTipoIVADelegate : public QComboBox2 {
     Q_OBJECT
 
 private:

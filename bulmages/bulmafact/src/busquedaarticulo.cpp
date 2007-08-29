@@ -27,7 +27,7 @@
 /** Inicializa todos los componentes a null para que no haya posibles
     errores al introducir el puntero a company. */
 BusquedaArticulo::BusquedaArticulo(QWidget *parent)
-        : QWidget(parent), PEmpresaBase() {
+        : BLWidget(parent) {
     _depura("BusquedaArticulo::BusquedaArticulo", 0);
     setupUi(this);
     mdb_idarticulo = "";
@@ -68,6 +68,12 @@ void BusquedaArticulo::setidarticulo(QString val) {
     m_nomarticulo->setText(mdb_nomarticulo);
     _depura("END BusquedaArticulo::setidarticulo", 0);
 }
+
+
+void BusquedaArticulo::setValorCampo(QString val) {
+	setidarticulo(val);
+}
+
 
 
 /** Con este metodo indicamos cual es el articulo que debe presentar el Widget
@@ -164,6 +170,11 @@ QString BusquedaArticulo::idarticulo() {
     return mdb_idarticulo;
 }
 
+QString BusquedaArticulo::valorCampo() {
+    _depura("BusquedaArticulo::valorCampo", 0);
+    _depura("END BusquedaArticulo::valorCampo", 0);
+    return mdb_idarticulo;
+}
 
 QString BusquedaArticulo::nomarticulo() {
     _depura("BusquedaArticulo::nomarticulo", 0);
@@ -180,7 +191,7 @@ QString BusquedaArticulo::nomarticulo() {
     Conecta el SIGNAL activated() con m_activated() para tratarlo.
 */
 BusquedaArticuloDelegate::BusquedaArticuloDelegate(QWidget *parent)
-        : QComboBox(parent), PEmpresaBase() {
+        : QComboBox2(parent) {
     _depura("BusquedaArticuloDelegate::BusquedaArticuloDelegate", 0);
     m_cursorcombo = NULL;
     setEditable(true);

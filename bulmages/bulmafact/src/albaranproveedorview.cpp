@@ -414,10 +414,10 @@ void AlbaranProveedorView::on_mui_pagar_clicked() {
     _depura("AlbaranProveedorView::on_mui_pagar_clicked", 0);
     PagoView *bud = empresaBase()->newPagoView();
     empresaBase()->m_pWorkspace->addWindow(bud);
-    bud->setidproveedor(DBvalue("idproveedor"));
-    bud->setcantpago(m_totalalbaranp->text());
-    bud->setrefpago(DBvalue("refalbaranp"));
-    bud->setcomentpago(DBvalue("descalbaranp"));
+    bud->setDBvalue("idproveedor", DBvalue("idproveedor"));
+    bud->setDBvalue("cantpago", m_totalalbaranp->text());
+    bud->setDBvalue("refpago", DBvalue("refalbaranp"));
+    bud->setDBvalue("comentpago", DBvalue("descalbaranp"));
     bud->pintar();
     bud->show();
     _depura("END AlbaranProveedorView::on_mui_pagar_clicked", 0);

@@ -135,7 +135,7 @@ void PagosList::crear() {
     PagoView *bud = ((Company *)empresaBase())->newPagoView();
     empresaBase()->m_pWorkspace->addWindow(bud);
     bud->show();
-    bud->setidproveedor(m_proveedor->idproveedor());
+    bud->setDBvalue("idproveedor", m_proveedor->idproveedor());
     bud->pintar();
 }
 

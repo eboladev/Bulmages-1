@@ -46,12 +46,17 @@ QString BusquedaCuenta::text() {
     return mdb_codigocuenta;
 }
 
-
+QString BusquedaCuenta::valorCampo() {
+    return mdb_idcuenta;
+}
 
 void BusquedaCuenta::setText(QString val) {
     setcodigocuenta(val);
 }
 
+void BusquedaCuenta::setValorCampo(QString val) {
+    setcodigocuenta(val);
+}
 
 QString BusquedaCuenta::codigocuenta() {
     return mui_codigocuenta->text();
@@ -250,7 +255,7 @@ void BusquedaCuenta::s_returnPressed() {
     Conecta el SIGNAL activated() con m_activated() para tratarlo.
 */
 BusquedaCuentaDelegate::BusquedaCuentaDelegate(QWidget *parent)
-        : QComboBox(parent) {
+        : QComboBox2(parent) {
     _depura("BusquedaCuentaDelegate::BusquedaCuentaDelegate", 10);
     m_cursorcombo = NULL;
     setEditable(true);

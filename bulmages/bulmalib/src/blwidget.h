@@ -42,7 +42,10 @@ public:
   virtual ~PEmpresaBase();
   virtual void setEmpresaBase(EmpresaBase *);
   virtual EmpresaBase *empresaBase();
+  virtual QString valorCampo();
+  virtual void setValorCampo(QString );
 };
+
 
 class BLWidget : public QWidget, public PEmpresaBase {
   Q_OBJECT

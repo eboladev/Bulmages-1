@@ -23,12 +23,12 @@
 #define BUSQUEDAFECHA_H
 
 #include <QLineEdit>
-#include <QWidget>
+#include "blwidget.h"
 
 #include "ui_busquedafechabase.h"
 
 
-class BusquedaFecha : public QWidget, public Ui_BusquedaFechaBase {
+class BusquedaFecha : public BLWidget, public Ui_BusquedaFechaBase {
     Q_OBJECT
 
 public:
@@ -36,8 +36,10 @@ public:
     ~BusquedaFecha();
     virtual void setfecha(QString val);
     virtual void setText(QString val);
+    virtual void setValorCampo(QString val);
     virtual QString fecha();
     virtual QString text();
+    virtual QString valorCampo();
 
 public slots:
     virtual void s_searchFecha();

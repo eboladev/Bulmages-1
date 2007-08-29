@@ -22,7 +22,7 @@
 #ifndef BUSQUEDAPROVINCIA_H
 #define BUSQUEDAPROVINCIA_H
 
-#include <QComboBox>
+#include "qcombobox2.h"
 
 #include "blwidget.h"
 #include "postgresiface2.h"
@@ -32,7 +32,7 @@
     Antes de usar el Widget debe ser inicializa con setcompany()
 */
 /// \TODO: Comprobar que libere correctamente la memoria.
-class BusquedaProvincia : public QComboBox, public PEmpresaBase {
+class BusquedaProvincia : public QComboBox2 {
     Q_OBJECT
 
 private:
@@ -42,7 +42,9 @@ public:
     BusquedaProvincia(QWidget *parent = 0);
     ~BusquedaProvincia();
     virtual void setIdProvincia(QString idprovincia);
+    virtual void setValorCampo(QString idprovincia);
     QString idProvincia();
+    virtual QString valorCampo();
 
 public slots:
     void m_activated(int index);

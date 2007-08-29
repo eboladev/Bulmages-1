@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QComboBox>
+#include "qcombobox2.h"
 
 #include "busquedabanco.h"
 #include "company.h"
@@ -29,9 +29,8 @@
     Hace la conexion del SIGNAL activated con m_activated para tratar el evento.
 */
 BusquedaBanco::BusquedaBanco(QWidget *parent)
-        : QComboBox(parent) {
+        : QComboBox2(parent) {
     _depura("BusquedaBanco::BusquedaBanco", 0);
-    companyact = NULL;
     m_cursorcombo = NULL;
     connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
     _depura("END BusquedaBanco::BusquedaBanco", 0);
@@ -56,7 +55,7 @@ void BusquedaBanco::setidbanco(QString idbanco) {
     _depura("BusquedaBanco::setidbanco", 0);
     if (m_cursorcombo != NULL)
         delete m_cursorcombo;
-    m_cursorcombo = companyact->cargacursor("SELECT * FROM banco");
+    m_cursorcombo = empresaBase()->cargacursor("SELECT * FROM banco");
     /// Tratamos el caso en que no se haya devuelto nada.
     if (m_cursorcombo == NULL) return;
     int i = 0;
@@ -74,13 +73,8 @@ void BusquedaBanco::setidbanco(QString idbanco) {
     _depura("END BusquedaBanco::setidbanco", 0);
 }
 
-
-/** Inicializa la clase con el puntero a la empresa que se esta utilizando.
-**/
-void BusquedaBanco::setEmpresaBase(Company *comp) {
-    _depura("BusquedaBanco::setcompany", 0);
-    companyact = comp;
-    _depura("END BusquedaBanco::setcompany", 0);
+void BusquedaBanco::setValorCampo(QString idbanco) {
+	setidbanco(idbanco);
 }
 
 /** Devuelve el identificador del banco seleccionado
@@ -92,6 +86,13 @@ QString BusquedaBanco::idbanco() {
     if (!m_cursorcombo) return "0";
     return m_cursorcombo->valor("idbanco", currentIndex() - 1);
 }
+
+/** Devuelve el identificador del banco seleccionado
+**/
+QString BusquedaBanco::valorCampo() {
+    return idbanco();
+}
+
 
 /** SLOT que responde a la activacion de un elemento en el QComboBox y que hace que se emita el SIGNAL valueChanged
 **/

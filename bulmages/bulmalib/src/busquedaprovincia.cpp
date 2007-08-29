@@ -30,7 +30,7 @@
     ha sido creado o no.
 */
 BusquedaProvincia::BusquedaProvincia(QWidget *parent)
-        : QComboBox(parent), PEmpresaBase() {
+        : QComboBox2(parent) {
     _depura("BusquedaProvincia::BusquedaProvincia", 0);
     m_cursorcombo = NULL;
     connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
@@ -77,6 +77,9 @@ void BusquedaProvincia::setIdProvincia(QString idprovincia) {
     _depura("END BusquedaProvincia::setIdProvincia", 0);
 }
 
+void BusquedaProvincia::setValorCampo(QString idprovincia) {
+	setIdProvincia(idprovincia);
+}
 
 /** SLOT que se activa al activar un elemento del desplegable
 **/
@@ -90,6 +93,7 @@ void BusquedaProvincia::m_activated(int index) {
     _depura("END BusquedaProvincia::m_activated", 0);
 }
 
+
 QString BusquedaProvincia::idProvincia() {
     _depura("BusquedaProvincia::idProvincia", 0);
     if (currentIndex() > 0) {
@@ -98,5 +102,9 @@ QString BusquedaProvincia::idProvincia() {
 	return "";
     } // end if
     _depura("END BusquedaProvincia::idProvincia", 0);
+}
+
+QString BusquedaProvincia::valorCampo() {
+	return idProvincia();
 }
 

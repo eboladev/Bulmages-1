@@ -19,7 +19,8 @@ SUBDIRS += plugin \
 	   pluginimpresionesmultiples \
 	   pluginq19 \
 	   pluginmail \
-	   plugintipostrabajo
+	   plugintipostrabajo \
+	   pluginalmacen
 
 
 #Nota: Para implementar plugins que no van a ser liberados dentro del ambito de la asociacion IGLUES

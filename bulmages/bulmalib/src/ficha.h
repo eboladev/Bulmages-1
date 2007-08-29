@@ -61,6 +61,9 @@ public:
     virtual int sacaWindow();
     virtual void meteWindow(QString , QObject *, bool compdup = TRUE);
     void setDBTableName(QString nom);
+    virtual void pintar();
+    virtual int cargar(QString id);
+    virtual void recogeValores();
 
 public slots:
     virtual void on_mui_aceptar_clicked();

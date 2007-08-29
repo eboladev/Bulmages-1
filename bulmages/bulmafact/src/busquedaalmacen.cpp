@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QComboBox>
+#include "qcombobox2.h"
 
 #include "busquedaalmacen.h"
 #include "company.h"
@@ -28,7 +28,7 @@
 /** Constructor del Widget conecta las se&ntilde;ales y prepara los componentes.
 */
 BusquedaAlmacen::BusquedaAlmacen(QWidget *parent, const char *)
-        : QComboBox(parent), PEmpresaBase() {
+        : QComboBox2(parent) {
     _depura("BusquedaAlmacen::BusquedaAlmacen", 0);
     m_cursorcombo = NULL;
     connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
@@ -78,6 +78,9 @@ void BusquedaAlmacen::setidalmacen(QString idalmacen) {
     _depura("END BusquedaAlmacen::setidalmacen", 0, idalmacen);
 }
 
+void BusquedaAlmacen::setValorCampo(QString idalmacen) {
+	setidalmacen(idalmacen);
+}
 
 QString BusquedaAlmacen::idalmacen() {
     _depura("BusquedaAlmacen::idalmacen", 0);
@@ -89,6 +92,11 @@ QString BusquedaAlmacen::idalmacen() {
             _depura("END BusquedaAlmacen::idalmacen", 0);
             return "";
         } // end if
+}
+
+
+QString BusquedaAlmacen::valorCampo() {
+    return idalmacen();
 }
 
 

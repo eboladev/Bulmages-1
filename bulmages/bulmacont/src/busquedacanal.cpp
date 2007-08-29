@@ -18,7 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include  <QComboBox>
 
 #include  "busquedacanal.h"
 #include  "empresa.h"
@@ -26,7 +25,7 @@
 
 
 BusquedaCanal::BusquedaCanal(QWidget *parent)
-        : QComboBox(parent) {
+        : QComboBox2(parent) {
     _depura("BusquedaCanal::BusquedaCanal", 0);
     m_cursorcombo = NULL;
     connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
@@ -63,6 +62,10 @@ void BusquedaCanal::setidcanal(QString idcanal) {
     _depura("END BusquedaCanal::setidcanal", 0, idcanal);
 }
 
+void BusquedaCanal::setValorCampo(QString idcanal) {
+	setidcanal(idcanal);
+}
+
 
 void BusquedaCanal::m_activated(int index) {
     _depura("BusquedaCanal::m_activated", 0);
@@ -86,6 +89,9 @@ QString BusquedaCanal::idcanal() {
     _depura("END BusquedaCanal::idcanal", 0);
 }
 
+QString BusquedaCanal::valorCampo() {
+	return idcanal();
+}
 
 /// ===================================================================
 /// Busqueda Cuenta Delegate para usar con los subforms
@@ -94,7 +100,7 @@ QString BusquedaCanal::idcanal() {
     sobre si un elemento ha sido creado o no.
     Conecta el SIGNAL activated() con m_activated() para tratarlo. */
 BusquedaCanalDelegate::BusquedaCanalDelegate(QWidget *parent)
-        : QComboBox(parent) {
+        : QComboBox2(parent) {
     _depura("BusquedaCanalDelegate::BusquedaCanalDelegate", 10);
     setEditable(true);
     connect(this, SIGNAL(editTextChanged(const QString &)), this, SLOT(s_editTextChanged(const QString &)));

@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include  <QComboBox>
+
 
 #include  "busquedaccoste.h"
 #include  "funcaux.h"
@@ -26,7 +26,7 @@
 
 
 BusquedaCCoste::BusquedaCCoste(QWidget *parent, const char *)
-        : QComboBox(parent) {
+        : QComboBox2(parent) {
     _depura("BusquedaCCoste::BusquedaCCoste", 0);
     m_cursorcombo = NULL;
     connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
@@ -48,6 +48,11 @@ QString BusquedaCCoste::idc_coste() {
         return "";
     } // end if
 }
+
+QString BusquedaCCoste::valorCampo() {
+	return idc_coste();
+}
+
 
 
 void BusquedaCCoste::m_activated(int index) {
@@ -82,6 +87,10 @@ void BusquedaCCoste::setidc_coste(QString idc_coste) {
 }
 
 
+void BusquedaCCoste::setValorCampo(QString idc_coste) {
+	setidc_coste(idc_coste);
+}
+
 /// ===================================================================
 /// Busqueda Cuenta Delegate para usar con los subforms
 /// ===================================================================
@@ -90,7 +99,7 @@ void BusquedaCCoste::setidc_coste(QString idc_coste) {
     Conecta el SIGNAL activated() con m_activated() para tratarlo.
 */
 BusquedaCCosteDelegate::BusquedaCCosteDelegate(QWidget *parent)
-        : QComboBox(parent) {
+        : QComboBox2(parent) {
     _depura("BusquedaCCosteDelegate::BusquedaCCosteDelegate", 10);
     setEditable(true);
     connect(this, SIGNAL(editTextChanged(const QString &)), this, SLOT(s_editTextChanged(const QString &)));

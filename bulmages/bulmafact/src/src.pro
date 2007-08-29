@@ -114,7 +114,6 @@ HEADERS += bulmafact.h \
            albaranesproveedor.h \
            busquedafamilia.h \
            busquedatipoarticulo.h \
-           cobro.h \
            cobroview.h \
            cobroslist.h \
            facturasplist.h \
@@ -129,7 +128,6 @@ HEADERS += bulmafact.h \
            trabajadorview.h \
            busquedatrabajador.h \
            comparticulolistview.h \
-           pago.h \
            pagoview.h \
            pagoslist.h \
            pedidosproveedorlist.h \
@@ -195,7 +193,6 @@ SOURCES += bulmafact.cpp \
            albaranesproveedor.cpp \
            busquedafamilia.cpp \
            busquedatipoarticulo.cpp \
-           cobro.cpp \
            cobroview.cpp \
            cobroslist.cpp \
            facturasplist.cpp \
@@ -210,7 +207,6 @@ SOURCES += bulmafact.cpp \
            trabajadorview.cpp \
            busquedatrabajador.cpp \
            comparticulolistview.cpp \
-           pago.cpp \
            pagoview.cpp \
            pagoslist.cpp \
            pedidosproveedorlist.cpp \

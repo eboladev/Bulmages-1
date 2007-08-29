@@ -24,45 +24,9 @@
 #include "funcaux.h"
 
 
-void BusquedaFecha::setfecha(QString val) {
-    mui_textoFecha->setText(val);
-}
-
-
-void BusquedaFecha::setText(QString val) {
-    mui_textoFecha->setText(val);
-}
-
-
-QString BusquedaFecha::fecha() {
-    return mui_textoFecha->text();
-}
-
-
-QString BusquedaFecha::text() {
-    return mui_textoFecha->text();
-}
-
-
-void BusquedaFecha::s_returnPressed() {
-    s_fechalostFocus();
-    emit returnPressed();
-}
-
-
-void BusquedaFecha::selectAll() {
-    mui_textoFecha->selectAll();
-}
-
-
-void BusquedaFecha::setFocus() {
-    mui_textoFecha->setFocus(Qt::OtherFocusReason);
-}
-
-
 /**  Inicializa el objeto y hace todas las conexiones necesarias.
 */
-BusquedaFecha::BusquedaFecha(QWidget *parent) : QWidget(parent) {
+BusquedaFecha::BusquedaFecha(QWidget *parent) : BLWidget(parent) {
     _depura("BusquedaFecha::BusquedaFecha", 0);
     setupUi(this);
     QObject::connect(mui_busquedaFecha, SIGNAL(clicked(bool)), this, SLOT(s_searchFecha()));
@@ -78,6 +42,49 @@ BusquedaFecha::BusquedaFecha(QWidget *parent) : QWidget(parent) {
 BusquedaFecha::~BusquedaFecha() {
     _depura("BusquedaFecha::~BusquedaFecha", 0);
     _depura("END BusquedaFecha::~BusquedaFecha", 0);
+}
+
+
+
+void BusquedaFecha::setfecha(QString val) {
+    mui_textoFecha->setText(val);
+}
+
+
+void BusquedaFecha::setText(QString val) {
+    mui_textoFecha->setText(val);
+}
+
+void BusquedaFecha::setValorCampo(QString val) {
+    mui_textoFecha->setText(val);
+}
+
+QString BusquedaFecha::fecha() {
+    return mui_textoFecha->text();
+}
+
+
+QString BusquedaFecha::text() {
+    return mui_textoFecha->text();
+}
+
+QString BusquedaFecha::valorCampo() {
+    return mui_textoFecha->text();
+}
+
+void BusquedaFecha::s_returnPressed() {
+    s_fechalostFocus();
+    emit returnPressed();
+}
+
+
+void BusquedaFecha::selectAll() {
+    mui_textoFecha->selectAll();
+}
+
+
+void BusquedaFecha::setFocus() {
+    mui_textoFecha->setFocus(Qt::OtherFocusReason);
 }
 
 

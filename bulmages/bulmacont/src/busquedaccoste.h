@@ -22,7 +22,7 @@
 #ifndef BUSQUEDACCOSTE_H
 #define BUSQUEDACCOSTE_H
 
-#include <QComboBox>
+#include "qcombobox2.h"
 #include "postgresiface2.h"
 #include "blwidget.h"
 
@@ -30,7 +30,7 @@ class Empresa;
 
 
 
-class BusquedaCCosteDelegate : public QComboBox, public PEmpresaBase {
+class BusquedaCCosteDelegate : public QComboBox2 {
     Q_OBJECT
 
 private:
@@ -48,7 +48,7 @@ public slots:
 
 
 
-class BusquedaCCoste : public QComboBox, public PEmpresaBase {
+class BusquedaCCoste : public QComboBox2 {
     Q_OBJECT
 
 private:
@@ -58,7 +58,9 @@ public:
     BusquedaCCoste(QWidget *parent = 0, const char *name = 0);
     ~BusquedaCCoste();
     virtual void setidc_coste(QString idc_coste);
+    virtual void setValorCampo(QString idc_coste);
     QString idc_coste();
+    virtual QString valorCampo();
 
 public slots:
     void m_activated(int index);

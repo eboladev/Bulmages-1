@@ -52,8 +52,10 @@ public:
     void pinta();
     virtual QString cifcliente();
     virtual QString idcliente();
+    virtual QString valorCampo();
     virtual QString nomcliente();
     virtual void setidcliente(QString val);
+    virtual void setValorCampo(QString val);
     virtual void setcifcliente(QString val);
 
 public slots:

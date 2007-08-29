@@ -24,7 +24,7 @@
 
 #include <QLineEdit>
 #include <QLabel>
-#include <QComboBox>
+#include "qcombobox2.h"
 #include <QCompleter>
 
 #include "blwidget.h"
@@ -35,7 +35,7 @@
 class Empresa;
 
 
-class BusquedaCuentaDelegate : public QComboBox, public PEmpresaBase {
+class BusquedaCuentaDelegate : public QComboBox2 {
     Q_OBJECT
 
 private:
@@ -66,7 +66,9 @@ public:
     BusquedaCuenta(QWidget *parent = 0);
     ~BusquedaCuenta();
     QString text();
+    virtual QString valorCampo();
     virtual void setText(QString val);
+    virtual void setValorCampo(QString val);
     virtual QString codigocuenta();
     virtual QString idcuenta();
     virtual QString nomcuenta();

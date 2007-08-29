@@ -18,12 +18,14 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QComboBox>
-
 #include "busquedaperiodo.h"
 
 
 QString BusquedaPeriodo::periodo() {
+    return m_valores[currentIndex()];
+}
+
+QString BusquedaPeriodo::valorCampo() {
     return m_valores[currentIndex()];
 }
 
@@ -38,7 +40,7 @@ void BusquedaPeriodo::s_activated(int index) {
 }
 
 
-BusquedaPeriodo::BusquedaPeriodo(QWidget *parent) : QComboBox(parent) {
+BusquedaPeriodo::BusquedaPeriodo(QWidget *parent) : QComboBox2(parent) {
     _depura("BusquedaPeriodo::BusquedaPeriodo", 0);
     m_textos[0] = tr("Semanal");
     m_textos[1] = tr("Quincenal");
@@ -86,4 +88,12 @@ void BusquedaPeriodo::setperiodo(QString periodo) {
         setCurrentIndex(0);
     _depura("END BusquedaPeriodo::setperiodo", 0);
 }
+
+
+void BusquedaPeriodo::setValorCampo(QString periodo) {
+	setperiodo(periodo);
+}
+
+
+
 

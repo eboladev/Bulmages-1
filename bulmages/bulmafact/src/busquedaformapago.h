@@ -22,8 +22,7 @@
 #ifndef BUSQUEDAFORMA_PAGO_H
 #define BUSQUEDAFORMA_PAGO_H
 
-#include <QComboBox>
-
+#include "qcombobox2.h"
 #include "company.h"
 #include "postgresiface2.h"
 #include "funcaux.h"
@@ -32,7 +31,7 @@
 /// Permite buscar y seleccionar una forma de pago.
 /** Widget que permite buscar y seleccionar una
     forma de pago. Aparece en forma de comboBox. */
-class BusquedaFormaPago : public QComboBox, public PEmpresaBase {
+class BusquedaFormaPago : public QComboBox2 {
     Q_OBJECT
 
 private:
@@ -43,7 +42,9 @@ public:
     BusquedaFormaPago(QWidget *parent = 0);
     ~BusquedaFormaPago();
     QString idforma_pago();
+    virtual QString  valorCampo();
     virtual void setidforma_pago(QString idforma_pago);
+    virtual void setValorCampo(QString idforma_pago);
     virtual void setIdCliente(QString);
     virtual void setIdProveedor(QString);
 

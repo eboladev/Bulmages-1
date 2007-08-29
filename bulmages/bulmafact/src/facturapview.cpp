@@ -200,10 +200,10 @@ void FacturaProveedorView::s_nuevoPago() {
     _depura("FacturaProveedorView::s_nuevoPago", 0);
     PagoView *bud = empresaBase()->newPagoView();
     empresaBase()->m_pWorkspace->addWindow(bud);
-    bud->setidproveedor(DBvalue("idproveedor"));
-    bud->setcantpago(m_totalfacturap->text());
-    bud->setrefpago(DBvalue("reffacturap"));
-    bud->setcomentpago(DBvalue("descfacturap"));
+    bud->setDBvalue("idproveedor", DBvalue("idproveedor"));
+    bud->setDBvalue("cantpago", m_totalfacturap->text());
+    bud->setDBvalue("refpago", DBvalue("reffacturap"));
+    bud->setDBvalue("comentpago", DBvalue("descfacturap"));
     bud->pintar();
     bud->show();
     _depura("END FacturaProveedorView::s_nuevoPago", 0);

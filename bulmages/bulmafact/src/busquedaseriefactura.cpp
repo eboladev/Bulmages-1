@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QComboBox>
+#include "qcombobox2.h"
 
 #include "busquedaseriefactura.h"
 #include "company.h"
@@ -30,7 +30,7 @@
     Conecta el SIGNAL activated() con m_activated() para tratarlo.
 */
 BusquedaSerieFactura::BusquedaSerieFactura(QWidget *parent)
-        : QComboBox(parent), PEmpresaBase() {
+        : QComboBox2(parent) {
     _depura("BusquedaSerieFactura::BusquedaSerieFactura", 0);
     m_cursorcombo = NULL;
     m_codigoserie_factura = "";
@@ -82,6 +82,11 @@ void BusquedaSerieFactura::setcodigoserie_factura(QString codigo) {
 }
 
 
+void BusquedaSerieFactura::setValorCampo(QString codigo) {
+	setcodigoserie_factura(codigo);
+}
+
+
 void BusquedaSerieFactura::m_activated(int index) {
         if (index > 0) {
             emit(valueChanged(m_cursorcombo->valor("codigoserie_factura", index - 1)));
@@ -98,6 +103,11 @@ QString BusquedaSerieFactura::codigoserie_factura() {
         } else {
             return "";
         } // end if
+}
+
+
+QString BusquedaSerieFactura::valorCampo() {
+        return codigoserie_factura();
 }
 
 

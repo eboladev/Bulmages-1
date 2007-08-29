@@ -24,7 +24,7 @@
 
 #include <QLineEdit>
 #include <QLabel>
-#include <QComboBox>
+#include "qcombobox2.h"
 #include "postgresiface2.h"
 
 #include "ui_busquedaarticulobase.h"
@@ -34,7 +34,7 @@
 class company;
 
 
-class BusquedaArticuloDelegate : public QComboBox, public PEmpresaBase {
+class BusquedaArticuloDelegate : public QComboBox2 {
     Q_OBJECT
 
 private:
@@ -53,7 +53,7 @@ public slots:
 /// Permite buscar y seleccionar un art&iacute;culo.
 /** Muestra la parte del formulario que permite buscar y seleccionar un
     art&iacute;culo. */
-class BusquedaArticulo : public QWidget, public Ui_BusquedaArticuloBase, public PEmpresaBase {
+class BusquedaArticulo : public BLWidget, public Ui_BusquedaArticuloBase {
     Q_OBJECT
 
 private:
@@ -70,7 +70,9 @@ public:
     virtual QString codigocompletoarticulo();
     virtual QString idarticulo();
     virtual QString nomarticulo();
+    virtual QString valorCampo();
     virtual void setidarticulo(QString val);
+    virtual void setValorCampo(QString val);
     virtual void setcodigocompletoarticulo(QString val);
 
 public slots:

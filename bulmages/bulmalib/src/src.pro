@@ -56,7 +56,8 @@ HEADERS += postgresiface2.h \
 	   splashscreen.h \
 	   fichacfg.h \
 	   paisview.h \
-	   busquedaprovincia.h
+	   busquedaprovincia.h \
+	   qcombobox2.h
 	   
 	   
 SOURCES += postgresiface2.cpp \
@@ -90,7 +91,8 @@ SOURCES += postgresiface2.cpp \
 	   splashscreen.cpp \
 	   fichacfg.cpp \
 	   paisview.cpp \
-	   busquedaprovincia.cpp
+	   busquedaprovincia.cpp \
+	   qcombobox2.cpp
 	   
 	   
 RESOURCES = ../../bulmages.qrc

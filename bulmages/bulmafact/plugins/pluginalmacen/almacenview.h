@@ -19,16 +19,17 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef PAGOVIEW_H
-#define PAGOVIEW_H
+#ifndef ALMACENVIEW_H
+#define ALMACENVIEW_H
 
 #include <QLineEdit>
 #include <QLabel>
 #include <QCheckBox>
 
-#include "ui_pagobase.h"
+#include "ui_almacenbase.h"
 #include "postgresiface2.h"
-#include "busquedaproveedor.h"
+#include "cobro.h"
+#include "busquedacliente.h"
 #include "busquedafecha.h"
 #include "dialogchanges.h"
 #include "fichabf.h"
@@ -37,14 +38,17 @@
 class Company;
 
 
-/// Muestra y administra la ventana con la informaci&oacute;n de un pago.
-/** */
-class PagoView : public FichaBf, public Ui_PagoBase  {
+/** Ventana de ficha de cobro.
+    Se encarga de la presentacion de la ficha de cobro y del tratamiento de eventos producidos
+    en dicha ventana.
+    Deriva de Ficha para metodos comunes a todas las ventanas.
+    Deriva de Cobro para el manejo de la Base de datos. */
+class AlmacenView : public FichaBf, public Ui_AlmacenBase {
     Q_OBJECT
 
 public:
-    PagoView(Company *, QWidget *);
-    ~PagoView();
+    AlmacenView(Company *, QWidget *);
+    ~AlmacenView();
 };
 
 #endif
