@@ -21,6 +21,7 @@
 #include "ficha.h"
 #include "fichacfg.h"
 #include "qcombobox2.h"
+#include "plugins.h"
 
 #include <QMenu>
 #include <QToolButton>
@@ -293,6 +294,10 @@ int Ficha::cargar(QString id) {
     try {
         if (DBRecord::cargar(id))
             throw -1;
+
+	/// Lanzamos los plugins.
+	if (g_plugins->lanza("Ficha_cargar", this)) return 0;
+
         setWindowTitle(m_tablename + " " + DBvalue(m_campoid));
         pintar();
         dialogChanges_cargaInicial();
@@ -316,6 +321,9 @@ int Ficha::guardar() {
         DBsave(id);
 	setDBvalue(m_campoid, id);
         empresaBase()->commit();
+
+	/// Lanzamos los plugins.
+	if (g_plugins->lanza("Ficha_guardar_Post", this)) return 0;
 
         /// Hacemos una carga para que se actualizen datos como la referencia.
         cargar(id);

@@ -24,10 +24,29 @@
 
 #include <QComboBox>
 
+#include "qcombobox2.h"
 #include "blwidget.h"
 #include "company.h"
 #include "postgresiface2.h"
 
+
+/** Convierte en los SubForms los datos del tipo desctipo_iva en selectores del tipo QComboBox
+    de esta forma la introduccion de tipos de IVA es sencilla.
+    Esta clase se usa conjuntamente con SubForm2Bf para el cambio del editor
+    estandar por un ComboBox */
+class BusquedaTipoTrabajoDelegate : public QComboBox2 {
+    Q_OBJECT
+
+private:
+    /// Este cursor almacena el listado de series de factura para poder trabajar con ellas.
+    cursor2 *m_cursorcombo;
+
+public:
+    BusquedaTipoTrabajoDelegate(QWidget *parent = 0);
+    ~BusquedaTipoTrabajoDelegate();
+    virtual void set(const QString &);
+    QString id();
+};
 
 /// Clase que sirve para seleccionar un almac&eacute;n.
 /** Creamos un QComboBox que sirve para presentar la lista de almacenes

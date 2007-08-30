@@ -150,12 +150,7 @@ public:
     SDBCampo *item(int row, int col);
     /// Pone el foco en una celda determinada.
     void setCurrentItem(int row, int col);
-/*
-    /// Pone el foco en una fila determinada.
-    void setCurrentRow(int row);
-    /// Pone el foco en una columna determinada.
-    void setCurrentColumn(int column);
-*/
+
     /// Devuelve el n&uacute;mero total de columnas del subformulario.
     int columnCount();
     /// Muestra la columna indicada en el subformulario.

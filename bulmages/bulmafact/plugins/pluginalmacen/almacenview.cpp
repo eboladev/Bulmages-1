@@ -28,6 +28,7 @@
 #include "almacenview.h"
 #include "company.h"
 #include "configuracion.h"
+#include "plugins.h"
 
 #include "funcaux.h"
 
@@ -42,6 +43,11 @@ AlmacenView::AlmacenView(Company *comp, QWidget *parent)
     setAttribute(Qt::WA_DeleteOnClose);
     try {
         setupUi(this);
+
+	/// Lanzamos los plugins.
+	if (g_plugins->lanza("AlmacenView_AlmacenView", this)) return;
+
+
         setDBTableName("almacen");
         setDBCampoId("idalmacen");
         addDBCampo("idalmacen", DBCampo::DBint, DBCampo::DBPrimaryKey, tr( "ID almacen"));

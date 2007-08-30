@@ -97,3 +97,66 @@ void BusquedaTipoTrabajo::m_activated(int index) {
     _depura("END BusquedaTipoTrabajo::m_activated", 0);
 }
 
+
+
+/// Busqueda Tipo Trabajo Delegate
+/// ==============================
+/** Inicializa todos los componentes del Widget a NULL para que no haya posibles confusiones
+    sobre si un elemento ha sido creado o no. 
+    Conecta el SIGNAL activated() con m_activated() para tratarlo.
+*/
+BusquedaTipoTrabajoDelegate::BusquedaTipoTrabajoDelegate(QWidget *parent)
+        : QComboBox2(parent) {
+    _depura("BusquedaTipoTrabajoDelegate::BusquedaTipoTrabajoDelegate", 0);
+    m_cursorcombo = NULL;
+    setSizeAdjustPolicy(QComboBox::AdjustToContents);
+    connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
+    _depura("END BusquedaTipoTrabajoDelegate::BusquedaTipoTrabajoDelegate", 0);
+}
+
+
+/** Libera la memoria reservada.
+*/
+BusquedaTipoTrabajoDelegate::~BusquedaTipoTrabajoDelegate() {
+    _depura("BusquedaTipoTrabajoDelegate::~BusquedaTipoTrabajoDelegate", 0);
+    if (m_cursorcombo != NULL)
+        delete m_cursorcombo;
+    _depura("END BusquedaTipoTrabajoDelegate::~BusquedaTipoTrabajoDelegate", 0);
+}
+
+
+/** Permite indicar al Widget cual es la serie de factura seleccionada por defecto.
+    Recarga cursor de serie_factura y cuando encuentra un registro cuyo codigoserie_factura coincide con el pasado
+    como parametro lo establece como el registro activo por el comboBox.
+*/
+void BusquedaTipoTrabajoDelegate::set(const QString &cod) {
+    _depura("BusquedaTipoTrabajoDelegate::set", 0);
+    int index = 0;
+    QString codigo = cod;
+
+    if (m_cursorcombo != NULL)
+        delete m_cursorcombo;
+
+    m_cursorcombo = empresaBase()->cargacursor("SELECT idtipotrabajo, nomtipotrabajo FROM tipotrabajo ");
+    clear();
+    while (!m_cursorcombo->eof()) {
+        addItem(m_cursorcombo->valor("nomtipotrabajo"));
+        m_cursorcombo->siguienteregistro();
+        if(m_cursorcombo->valor("nomtipotrabajo") == cod)
+		index = m_cursorcombo->regactual();
+    }// end while
+    setEditText(cod);
+    setCurrentIndex(index);
+
+    _depura("END BusquedaTipoTrabajoDelegate::set", 0);
+}
+
+
+QString BusquedaTipoTrabajoDelegate::id()  {
+    return m_cursorcombo->valor("idtipotrabajo", currentIndex());
+}
+
+
+
+
+

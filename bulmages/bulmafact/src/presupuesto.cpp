@@ -101,8 +101,14 @@ int Presupuesto::cargar(QString idbudget) {
     m_listalineas->cargar(idbudget);
     m_listadescuentos->cargar(idbudget);
 
+    /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
+    g_plugins->lanza("Presupuesto_cargar_Post", this);
+
     calculaypintatotales();
     dialogChanges_cargaInicial();
+
+    setWindowTitle(tr("Presupuesto ") + DBvalue("numpresupuesto") + " " + DBvalue("refpresupuesto"));
+    meteWindow(windowTitle(), this);
 
     _depura("END Presupuesto::cargar", 0);
     return 0;
@@ -112,10 +118,11 @@ int Presupuesto::cargar(QString idbudget) {
 int Presupuesto::guardar() {
     _depura("Presupuesto::guardar", 0);
     QString id;
+
     empresaBase()->begin();
     try {
         DBsave(id);
-	setDBvalue("idpresupuesto", id);
+        setDBvalue("idpresupuesto", id);
         m_listalineas->setColumnValue("idpresupuesto", id);
         m_listadescuentos->setColumnValue("idpresupuesto", id);
         m_listalineas->guardar();

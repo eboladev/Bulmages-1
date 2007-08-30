@@ -37,15 +37,15 @@ class SubForm2Bf;
 /// Clase SubForm2BfDelegate
 /** Se encarga del control de los Widgets de Edicion del sistema.*/
 class QSubForm2BfDelegate : public QItemDelegate, public PEmpresaBase {
-private:
+protected:
     SubForm2Bf *m_subform;
 
 public:
     QSubForm2BfDelegate(QObject *);
-    ~QSubForm2BfDelegate();
-    void setEditorData(QWidget *, const QModelIndex &index) const;
-    void setModelData(QWidget *editor,  QAbstractItemModel *model, const QModelIndex &index) const;
-    QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const;
+    virtual ~QSubForm2BfDelegate();
+    virtual void setEditorData(QWidget *, const QModelIndex &index) const;
+    virtual void setModelData(QWidget *editor,  QAbstractItemModel *model, const QModelIndex &index) const;
+    virtual QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const;
     virtual bool eventFilter(QObject *obj, QEvent *event);
 };
 
@@ -55,10 +55,11 @@ public:
 */
 class SubForm2Bf : public SubForm3 {
     Q_OBJECT
-
-private:
-    bool m_delete;
+public:
     QSubForm2BfDelegate *m_delegate;
+
+protected:
+    bool m_delete;
     QString mdb_idcliente;
     QString mdb_idproveedor;
 

@@ -63,7 +63,6 @@ private:
 
 public:
     virtual int guardar();
-//    virtual int cargar(QString id);
 
 public slots:
     virtual void on_mui_guardar_clicked();
