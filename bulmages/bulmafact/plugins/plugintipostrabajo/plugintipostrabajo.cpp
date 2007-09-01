@@ -117,11 +117,13 @@ int AlmacenView_AlmacenView(AlmacenView *alm) {
     form->setObjectName("mui_tipostrabajo");
     form->setEmpresaBase(alm->empresaBase());
     form->setDBTableName("almacentipotrabajo");
-    form->setDBCampoId("idtipotrabajo");
+    form->setDBCampoId("idalmacen");
     form->addSHeader("nomtipotrabajo", DBCampo::DBvarchar, DBCampo::DBNoSave , SHeader::DBNone, QApplication::translate("AlmacenView", "ID nom tipo Trabajo"));
     form->addSHeader("numpers", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone , QApplication::translate("AlmacenView", "Numero de Cargos Necesarios"));
     form->addSHeader("idalmacen", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate("AlmacenView", "ID almacen"));
-    form->addSHeader("idtipotrabajo", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate("AlmacenView", "ID tipo Trabajo"));
+    form->addSHeader("idtipotrabajo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate("AlmacenView", "ID tipo Trabajo"));
+    form->addSHeader("origidtipotrabajo", DBCampo::DBint, DBCampo::DBDupPrimaryKey | DBCampo::DBNoSave, SHeader::DBNoView, "idtipotrabajo");
+
     form->setinsercion(TRUE);
     form->setDelete(TRUE);
     form->setSortingEnabled(FALSE);
@@ -141,7 +143,7 @@ int AlmacenView_AlmacenView(AlmacenView *alm) {
 int Ficha_cargar(Ficha *fich) {
 	SubForm3 *form = fich->findChild<SubForm3 *>("mui_tipostrabajo");
 	if (form) 
-		form->cargar("SELECT * FROM almacentipotrabajo LEFT JOIN tipotrabajo ON almacentipotrabajo.idtipotrabajo = tipotrabajo.idtipotrabajo WHERE idalmacen = " + fich->DBvalue("idalmacen"));
+		form->cargar("SELECT *, tipotrabajo.idtipotrabajo AS origidtipotrabajo FROM almacentipotrabajo LEFT JOIN tipotrabajo ON almacentipotrabajo.idtipotrabajo = tipotrabajo.idtipotrabajo WHERE idalmacen = " + fich->DBvalue("idalmacen"));
 	return 0;
 }
 
@@ -174,8 +176,6 @@ QWidget *QSubForm3BfDelegate::createEditor(QWidget *parent, const QStyleOptionVi
     _depura("QSubForm3BfDelegate::createEditor", 0);
     SHeader *linea;
     linea = m_subform->cabecera()->at(index.column());
-    _depura("QSubForm3BfDelegate::createEditor", 0, "CurrentColumn: " + QString::number(index.column()));
-    _depura("QSubForm3BfDelegate::createEditor", 0, "CurrentRow" + QString::number(index.row()));
 
     if (linea->nomcampo() == "nomtipotrabajo") {
         BusquedaTipoTrabajoDelegate *editor = new BusquedaTipoTrabajoDelegate(parent);

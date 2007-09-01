@@ -20,7 +20,8 @@ SUBDIRS += plugin \
 	   pluginq19 \
 	   pluginmail \
 	   plugintipostrabajo \
-	   pluginalmacen
+	   pluginalmacen \
+	   plugincuadrante
 
 
 #Nota: Para implementar plugins que no van a ser liberados dentro del ambito de la asociacion IGLUES

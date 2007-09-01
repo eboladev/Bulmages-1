@@ -247,6 +247,8 @@ int DBRecord::DBsave(QString &id) {
         int err = 0;
         for (int i = 0; i < m_lista.size(); ++i) {
             campo = m_lista.at(i);
+
+            /// Si el campo esta en DupPrimaryKey lo ponemos en query.
             if (campo->restrictcampo() & DBCampo::DBDupPrimaryKey) {
                 QString lin = campo->valorcampoprep(err);
                 if (err)
@@ -254,9 +256,10 @@ int DBRecord::DBsave(QString &id) {
                 querywhere += separadorwhere + campo->nompresentacion() + " = " + lin;
                 separadorwhere = " AND ";
             } // end if
-            if (!(campo->restrictcampo() & DBCampo::DBNoSave)) {
+
                 /// Si el campo es requerido y no esta entonces salimos sin dar error.
                 /// No es lo mismo que los not null ya que estos si dan error
+            if (!(campo->restrictcampo() & DBCampo::DBNoSave)) {
                 if (campo->restrictcampo() & DBCampo::DBRequired) {
                     if (campo->valorcampo() == "")
                         return 0;
