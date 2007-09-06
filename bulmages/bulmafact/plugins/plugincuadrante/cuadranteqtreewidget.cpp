@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2003 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,40 +18,49 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
+#include <QKeyEvent>
+#include <QEvent>
+#include <QLineEdit>
+#include <QTextEdit>
 
-#include <QStringList>
-#include <QWidget>
-#include <QIcon>
-#include <QObject>
+#include "cuadranteqtreewidget.h"
+#include "configuracion.h"
+#include "funcaux.h"
 
-#include "qapplication2.h"
-#include "bulmafact.h"
-#include "postgresiface2.h"
-#include "blwidget.h"
-#include "almacenview.h"
 
-extern "C" MY_EXPORT void entryPoint(Bulmafact *);
-extern "C" MY_EXPORT int AlmacenView_AlmacenView(AlmacenView *);
 
-extern QApplication2 *theApp;
+/** Constructor de CuadranteQTreeWidget clase derivada de QTableWidget con
+un eventHandler especifico
+*/
+CuadranteQTreeWidget::CuadranteQTreeWidget(QWidget *parent) : QTreeWidget(parent) {
+    _depura("CuadranteQTreeWidget::CuadranteQTreeWidget", 0);
+    _depura("END CuadranteQTreeWidget::CuadranteQTreeWidget", 0);
+}
 
-class myplugin4 : public QObject, PEmpresaBase {
-    Q_OBJECT
 
-public:
-    Bulmafact *m_bulmafact;
+CuadranteQTreeWidget::~CuadranteQTreeWidget() {
+    _depura("END ~CuadranteQTreeWidget", 0);
+}
 
-public:
-    myplugin4();
-    ~myplugin4();
-    void inicializa(Bulmafact *);
 
-public slots:
-    void elslot();
-};
+void CuadranteQTreeWidget::startDrag( Qt::DropActions supportedActions ) {
+	_depura("CuadranteQTreeWidget::startDrag", 0);
+
+         QDrag *drag = new QDrag(this);
+         QMimeData *mimeData = new QMimeData;
+
+         mimeData->setText(currentItem()->text(1));
+//         mimeData->setText("macagonsaputa");
+         drag->setMimeData(mimeData);
+//         drag->setPixmap(iconPixmap);
+
+         Qt::DropAction dropAction = drag->start(Qt::ActionMask);
+	 
+	 _depura("finalizado",0 , QString::number(dropAction));
+
+}
+
+
+
+
 

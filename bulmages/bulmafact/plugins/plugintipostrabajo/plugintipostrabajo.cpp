@@ -129,9 +129,9 @@ int AlmacenView_AlmacenView(AlmacenView *alm) {
     form->setSortingEnabled(FALSE);
 
     /// Comprobamos que exista el layout.
-       QHBoxLayout *m_hboxLayout1 = alm->mui_frameplugin->findChild<QHBoxLayout *>("hboxLayout1");
+       QVBoxLayout *m_hboxLayout1 = alm->mui_frameplugin->findChild<QVBoxLayout *>("hboxLayout1");
        if (!m_hboxLayout1) {
-                m_hboxLayout1 = new QHBoxLayout(alm->mui_frameplugin);
+                m_hboxLayout1 = new QVBoxLayout(alm->mui_frameplugin);
                 m_hboxLayout1->setSpacing(0);
                 m_hboxLayout1->setMargin(0);
                 m_hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));

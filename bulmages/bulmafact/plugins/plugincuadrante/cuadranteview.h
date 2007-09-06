@@ -1,6 +1,7 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2004 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -18,40 +19,39 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
+#ifndef CUADRANTEVIEW_H
+#define CUADRANTEVIEW_H
 
-#include <QStringList>
-#include <QWidget>
-#include <QIcon>
-#include <QObject>
+#include "ui_cuadrantebase.h"
+#include "dialogchanges.h"
+#include "fichabf.h"
 
-#include "qapplication2.h"
-#include "bulmafact.h"
-#include "postgresiface2.h"
-#include "blwidget.h"
-#include "almacenview.h"
 
-extern "C" MY_EXPORT void entryPoint(Bulmafact *);
-extern "C" MY_EXPORT int AlmacenView_AlmacenView(AlmacenView *);
+class Company;
 
-extern QApplication2 *theApp;
 
-class myplugin4 : public QObject, PEmpresaBase {
+/** Ventana de cuadrantes
+    Se encarga de la creación de cuadrantes en la empresa, para ubicar empleados, etc etc etc
+    Deriva de Ficha para metodos comunes a todas las fichas. */
+class CuadranteView : public FichaBf, public Ui_CuadranteBase {
     Q_OBJECT
 
 public:
-    Bulmafact *m_bulmafact;
+	CuadranteQTextDocument *m_actualcell;
 
 public:
-    myplugin4();
-    ~myplugin4();
-    void inicializa(Bulmafact *);
-
+    CuadranteView(Company *, QWidget *);
+    ~CuadranteView();
+    void inicializaTrabajadores();
+    void inicializaCuadrante(const QDate &dateorig);
 public slots:
-    void elslot();
+    virtual void on_mui_calendario_clicked(const QDate &date);
+    virtual void on_mui_listtrabajadores_itemDoubleClicked(QTreeWidgetItem *item, int column);
+    virtual void on_mui_editar_clicked();
+    virtual void on_mui_calendario_customContextMenuRequested ( const QPoint & pos );
 };
+
+
+
+#endif
 

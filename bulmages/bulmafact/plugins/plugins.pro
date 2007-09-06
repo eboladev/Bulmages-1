@@ -19,8 +19,8 @@ SUBDIRS += plugin \
 	   pluginimpresionesmultiples \
 	   pluginq19 \
 	   pluginmail \
-	   plugintipostrabajo \
 	   pluginalmacen \
+	   plugintipostrabajo \
 	   plugincuadrante
 
 

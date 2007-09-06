@@ -56,6 +56,7 @@ public:
     Ficha(EmpresaBase *emp = NULL, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode);
     virtual ~Ficha();
     virtual int guardar();
+    virtual int guardarPost();
     virtual int borrar();
     virtual void closeEvent(QCloseEvent *);
     virtual int sacaWindow();
@@ -63,6 +64,7 @@ public:
     void setDBTableName(QString nom);
     virtual void pintar();
     virtual int cargar(QString id);
+    virtual int cargarPost(QString id);
     virtual void recogeValores();
 
 public slots:

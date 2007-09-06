@@ -33,6 +33,8 @@ unix{
 		  /usr/lib/qt4/include/Qt \
 		  /usr/lib/qt4/include/QtXml \
 		  /usr/include/qt4/QtAssistant \
+		  ../../plugins/pluginalmacen \
+		  ../../plugins/pluginalmacen/.ui \
 		  .
 
     UI_DIR = .ui
@@ -90,8 +92,18 @@ TRANSLATIONS += plugincuadrante_es.ts \
                 plugincuadrante_de.ts \
                 plugincuadrante_zz.ts 
 
+FORMS += cuadrantebase.ui \
+	 cuadrante1base.ui
 
-SOURCES = plugincuadrante.cpp
+SOURCES = plugincuadrante.cpp \
+	  cuadranteview.cpp \
+	  cuadranteqtablewidget.cpp \
+	  cuadranteqtreewidget.cpp \
+	  cuadrante1view.cpp
 
-HEADERS = plugincuadrante.h
+HEADERS = plugincuadrante.h \
+          cuadranteview.h \
+	  cuadranteqtablewidget.h \
+	  cuadranteqtreewidget.h \
+	  cuadrante1view.h
 

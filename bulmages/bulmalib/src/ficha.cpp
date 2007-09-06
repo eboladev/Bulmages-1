@@ -297,6 +297,7 @@ int Ficha::cargar(QString id) {
 
 	/// Lanzamos los plugins.
 	if (g_plugins->lanza("Ficha_cargar", this)) return 0;
+	cargarPost(id);
 
         setWindowTitle(m_tablename + " " + DBvalue(m_campoid));
         pintar();
@@ -321,9 +322,10 @@ int Ficha::guardar() {
         DBsave(id);
 	setDBvalue(m_campoid, id);
         empresaBase()->commit();
-
+	
 	/// Lanzamos los plugins.
 	if (g_plugins->lanza("Ficha_guardar_Post", this)) return 0;
+	guardarPost();
 
         /// Hacemos una carga para que se actualizen datos como la referencia.
         cargar(id);
@@ -344,3 +346,7 @@ int Ficha::borrar() {
     _depura("Ficha::borrar existe solo para ser derivado", 0);
     return DBRecord::borrar();
 }
+
+int Ficha::guardarPost() {return 0;}
+int Ficha::cargarPost(QString id) {return 0;}
+

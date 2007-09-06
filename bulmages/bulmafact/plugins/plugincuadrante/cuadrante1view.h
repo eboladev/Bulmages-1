@@ -1,6 +1,7 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2004 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -18,40 +19,38 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
+#ifndef CUADRANTE1VIEW_H
+#define CUADRANTE1VIEW_H
 
-#include <QStringList>
-#include <QWidget>
-#include <QIcon>
-#include <QObject>
+#include <QLineEdit>
+#include <QLabel>
+#include <QCheckBox>
 
-#include "qapplication2.h"
-#include "bulmafact.h"
+#include "ui_cuadrante1base.h"
 #include "postgresiface2.h"
-#include "blwidget.h"
-#include "almacenview.h"
+#include "dialogchanges.h"
+#include "fichabf.h"
 
-extern "C" MY_EXPORT void entryPoint(Bulmafact *);
-extern "C" MY_EXPORT int AlmacenView_AlmacenView(AlmacenView *);
 
-extern QApplication2 *theApp;
+class Company;
 
-class myplugin4 : public QObject, PEmpresaBase {
+
+/** Ventana de ficha de cobro.
+    Se encarga de la presentacion de la ficha de cobro y del tratamiento de eventos producidos
+    en dicha ventana.
+    Deriva de Ficha para metodos comunes a todas las ventanas.
+    Deriva de Cobro para el manejo de la Base de datos. */
+class Cuadrante1View : public FichaBf, public Ui_Cuadrante1Base {
     Q_OBJECT
 
 public:
-    Bulmafact *m_bulmafact;
-
-public:
-    myplugin4();
-    ~myplugin4();
-    void inicializa(Bulmafact *);
-
-public slots:
-    void elslot();
+    Cuadrante1View(Company *, QWidget *);
+    ~Cuadrante1View();
+    int cargarPost(QString);
+    int guardarPost();
+signals:
+     void save();
 };
+
+#endif
 

@@ -34,8 +34,8 @@ unix{
 		  /usr/lib/qt4/include/Qt \
 		  /usr/lib/qt4/include/QtXml \
 		  /usr/include/qt4/QtAssistant \
-		  ../pluginalmacen \
-		  ../pluginalmacen/.ui \
+		  ../../plugins/pluginalmacen \
+		  ../../plugins/pluginalmacen/.ui \
 		  .
 		  
 
