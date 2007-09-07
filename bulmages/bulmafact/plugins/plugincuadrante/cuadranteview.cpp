@@ -141,7 +141,6 @@ void CuadranteView::inicializaCuadrante(const QDate &dateorig) {
 
                 CuadranteQTextDocument *newItem = new CuadranteQTextDocument(empresaBase(), mui_cuadrante);
 
-//		  QLabel *newItem = new QLabel(mui_cuadrante);
                 newItem->setAlmFecha(cur->valor("idalmacen"), date);
 
                 mui_cuadrante->setCellWidget(row, column, newItem);
@@ -180,13 +179,13 @@ void CuadranteView::on_mui_listtrabajadores_itemDoubleClicked(QTreeWidgetItem *i
 }
 
 void CuadranteView::on_mui_editar_clicked() {
-	_depura ("editar cuadrante", 0);
-	Cuadrante1View *cuad = new Cuadrante1View(empresaBase(), 0);
-        empresaBase()->pWorkspace()->addWindow(cuad);
-	cuad->show();
-        CuadranteQTextDocument *newItem = (CuadranteQTextDocument *) mui_cuadrante->cellWidget(mui_cuadrante->currentRow(), mui_cuadrante->currentColumn());
-        newItem->connect (cuad, SIGNAL(save()), newItem, SLOT(refresh()));
-	cuad->cargar(newItem->idcuadrante());
+    _depura ("editar cuadrante", 0);
+    Cuadrante1View *cuad = new Cuadrante1View(empresaBase(), 0);
+    empresaBase()->pWorkspace()->addWindow(cuad);
+    cuad->show();
+    CuadranteQTextDocument *newItem = (CuadranteQTextDocument *) mui_cuadrante->cellWidget(mui_cuadrante->currentRow(), mui_cuadrante->currentColumn());
+    newItem->connect (cuad, SIGNAL(save()), newItem, SLOT(refresh()));
+    cuad->cargar(newItem->idcuadrante());
 }
 
 void CuadranteView::on_mui_calendario_customContextMenuRequested ( const QPoint & pos ) {
@@ -198,17 +197,112 @@ void CuadranteView::on_mui_calendario_customContextMenuRequested ( const QPoint 
 
     QAction *opcion = popup->exec(pos);
     if (opcion == norm) {
-	empresaBase()->begin();
-	empresaBase()->ejecuta("UPDATE CUADRANTE SET fiestacuadrante = FALSE WHERE fechacuadrante = '"+mui_calendario->selectedDate().toString("dd/MM/yyyy")+"'");
-	empresaBase()->commit();
+        empresaBase()->begin();
+        empresaBase()->ejecuta("UPDATE CUADRANTE SET fiestacuadrante = FALSE WHERE fechacuadrante = '"+mui_calendario->selectedDate().toString("dd/MM/yyyy")+"'");
+        empresaBase()->commit();
     } // end if
 
     if (opcion == fiesta) {
-	empresaBase()->begin();
-	empresaBase()->ejecuta("UPDATE CUADRANTE SET fiestacuadrante = TRUE WHERE fechacuadrante = '"+mui_calendario->selectedDate().toString("dd/MM/yyyy")+"'");
-	empresaBase()->commit();
+        empresaBase()->begin();
+        empresaBase()->ejecuta("UPDATE CUADRANTE SET fiestacuadrante = TRUE WHERE fechacuadrante = '"+mui_calendario->selectedDate().toString("dd/MM/yyyy")+"'");
+        empresaBase()->commit();
     } // end if
 
     inicializaCuadrante(mui_calendario->selectedDate());
 }
+
+void CuadranteView::on_mui_imprimir_clicked() {
+
+    QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "cuadrante.rml";
+    QString archivod = confpr->valor(CONF_DIR_USER) + "cuadrante.rml";
+    QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
+
+    /// Copiamos el archivo.
+#ifdef WINDOWS
+
+    archivo = "copy " + archivo + " " + archivod;
+#else
+
+    archivo = "cp " + archivo + " " + archivod;
+#endif
+
+    system (archivo.toAscii().constData());
+
+    /// Copiamos el logo.
+#ifdef WINDOWS
+
+    archivologo = "copy " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
+#else
+
+    archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
+#endif
+
+    QFile file;
+    file.setFileName(archivod);
+    file.open(QIODevice::ReadOnly);
+    QTextStream stream(&file);
+    QString buff = stream.readAll();
+    file.close();
+    QString fitxersortidatxt = "";
+
+
+    ///Ponemos la tabla
+    fitxersortidatxt += "<para>Cuadrante</para>\n";
+    fitxersortidatxt += "<blockTable style=\"tablacontenido\" colWidths=\"4cm, 4cm, 4cm, 4cm, 4cm, 4cm, 4cm\" repeatRows=\"1\">\n";
+    fitxersortidatxt += "<tr>\n";
+    fitxersortidatxt += "    <td>Lunes</td>\n";
+    fitxersortidatxt += "    <td>Martes</td>\n";
+    fitxersortidatxt += "    <td>Miercoles</td>\n";
+    fitxersortidatxt += "    <td>Jueves</td>\n";
+    fitxersortidatxt += "    <td>Viernes</td>\n";
+    fitxersortidatxt += "    <td>Sabado</td>\n";
+    fitxersortidatxt += "    <td>Domingo</td>\n";
+    fitxersortidatxt += "</tr>\n";
+
+
+// ================================================================
+
+    /// Buscamos el Lunes de la Semana
+//    QDate date = mui_calendario->selectedDate().addDays(-mui_calendario->selectedDate().dayOfWeek() + 1);
+
+
+    cursor2 *cur = empresaBase()->cargacursor("SELECT idalmacen FROM almacen");
+    if (!cur) throw -1;
+
+    mui_cuadrante->setRowCount(cur->numregistros());
+    mui_cuadrante->setColumnCount(7);
+
+
+    int row = 0;
+    while (!cur->eof()) {
+	fitxersortidatxt += "<tr>\n";
+        for (int column = 0; column < 7; column ++) {
+
+            CuadranteQTextDocument *newItem = (CuadranteQTextDocument *) mui_cuadrante->cellWidget(row, column);
+	    fitxersortidatxt += newItem->impresion();
+
+        } // end for
+        cur->siguienteregistro();
+        row++;
+	fitxersortidatxt += "</tr>\n";
+    } // end while
+
+
+
+    fitxersortidatxt += "</blockTable>\n";
+
+
+
+
+    buff.replace("[story]", fitxersortidatxt);
+
+    if (file.open(QIODevice::WriteOnly)) {
+        QTextStream stream(&file);
+        stream << buff;
+        file.close();
+    } // end if
+    invocaPDF("cuadrante");
+
+}
+
 

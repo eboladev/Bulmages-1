@@ -121,6 +121,28 @@ CREATE TRIGGER cuadrante_trigger
 
 
 
+CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
+DECLARE
+	as RECORD;
+BEGIN
+	SELECT INTO as * FROM pg_attribute  WHERE attname=''idausencia'';
+	IF NOT FOUND THEN
+		CREATE TABLE ausencia (
+			idausencia serial PRIMARY KEY,
+			idtrabajador integer NOT NULL REFERENCES trabajador(idtrabajador),
+			fechainausencia date NOT NULL,
+			fechafinausencia date NOT NULL,
+			motivoausencia varchar,
+			CHECK (fechainausencia <= fechafinausencia)
+		);
+	END IF;
+
+	RETURN 0;
+END;
+'   LANGUAGE plpgsql;
+SELECT aux();
+DROP FUNCTION aux() CASCADE;
+\echo "Agregamos las tablas necesarias para control de ausencias"
 
 -- ==============================================================================
 
@@ -133,9 +155,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre=''DBRev-Cuadrante'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.9.3-0001'' WHERE nombre=''DBRev-Cuadrante'';
+		UPDATE CONFIGURACION SET valor=''0.9.3-0002'' WHERE nombre=''DBRev-Cuadrante'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DBRev-Cuadrante'', ''0.9.3-0001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DBRev-Cuadrante'', ''0.9.3-0002'');
 	END IF;
 	RETURN 0;
 END;

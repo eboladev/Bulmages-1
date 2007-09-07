@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2007 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -34,10 +34,13 @@
 #include "postgresiface2.h"
 #include "blwidget.h"
 #include "almacenview.h"
+#include "trabajadorview.h"
 
 extern "C" MY_EXPORT void entryPoint(Bulmafact *);
 extern "C" MY_EXPORT int AlmacenView_AlmacenView(AlmacenView *);
-
+extern "C" MY_EXPORT int TrabajadorView_TrabajadorView(TrabajadorView *);
+extern "C" MY_EXPORT int TrabajadorView_on_mui_lista_currentItemChanged_Post(TrabajadorView *trab);
+extern "C" MY_EXPORT int TrabajadorView_on_mui_guardar_clicked(TrabajadorView *trab);
 extern QApplication2 *theApp;
 
 class myplugin4 : public QObject, PEmpresaBase {

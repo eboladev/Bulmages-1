@@ -46,6 +46,7 @@ public:
     void addTrabajador(QString);
     void pintaCuadrante(QString idalmacen, const QDate &date);
     QString idcuadrante();
+    const QString impresion();
 public slots:
     virtual void refresh();
 };

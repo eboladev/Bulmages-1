@@ -194,4 +194,43 @@ void CuadranteQTextDocument::refresh() {
     pintaCuadrante(mdb_idalmacen, mdb_fechacuadrante);
 }
 
+const QString CuadranteQTextDocument::impresion() {
 
+    QString html = "";
+    html += "<td>\n";
+    QString style="";
+    cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM cuadrante, almacen WHERE cuadrante.idalmacen = almacen.idalmacen AND almacen.idalmacen="+mdb_idalmacen+" AND cuadrante.fechacuadrante ='" +mdb_fechacuadrante.toString("dd/MM/yyyy")+ "'");
+    if (!cur) throw -1;
+    if (!cur->eof()) {
+        if (cur->valor("fiestacuadrante") == "t") {
+            style = " style=\"festivo\"";
+        }
+        html += "<para "+style+"> <b>" + cur->valor("nomalmacen") + "</b>: " + mdb_fechacuadrante.toString("dd/MM/yyyy")+"</para><spacer length=\"0.1cm\"/>\n";
+    } // end if
+
+
+    QString oldnomtipotrabajo = "";
+
+    cursor2 *cur1 = empresaBase()->cargacursor("SELECT * FROM horario, trabajador, tipotrabajo WHERE horario.idtrabajador = trabajador.idtrabajador AND trabajador.idtipotrabajo = tipotrabajo.idtipotrabajo AND idcuadrante = "+mdb_idcuadrante +" ORDER BY nomtipotrabajo, horainhorario, nomtrabajador");
+    if (!cur1) throw -1;
+    while (!cur1->eof()) {
+        if (oldnomtipotrabajo != cur1->valor("nomtipotrabajo") ) {
+            html +=  "<para "+style+"><font color=\"red\">" + cur1->valor("nomtipotrabajo") + ":</font></para><spacer length=\"0.1cm\"/>\n";
+            oldnomtipotrabajo = cur1->valor("nomtipotrabajo");
+        } // end if
+        html += "<para "+style+"><font face=\"Helvetica\" size=\"6\">" + cur1->valor("nomtrabajador") + " " + cur1->valor("apellidostrabajador");
+        html += "<sup>(" + cur1->valor("horainhorario").left(5) + "--" + cur1->valor("horafinhorario").left(5) + ")</sup></font></para><spacer length=\"0.1cm\"/>\n";
+
+        cur1->siguienteregistro();
+    } // end while
+    delete cur1;
+
+    if (cur->valor("comentcuadrante") != "") {
+        html += "<para "+style+"><font face=\"Helvetica\" size=\"5\" color=\"blue\">" + cur->valor("comentcuadrante").replace("\n", "<spacer length=\"0.1cm\"/>\n") + "</font></para>";
+    } // end if
+
+    delete cur;
+
+    html += "</td>\n";
+    return html;
+}

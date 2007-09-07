@@ -1,8 +1,6 @@
 /***************************************************************************
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   Copyright (C) 2006 by Fco. Javier M. C.                               *
- *   fcojavmc@todo-redes.com                                               *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -32,7 +30,7 @@
 
 #include <stdio.h>
 
- #include "plugincuadrante.h"
+#include "plugincuadrante.h"
 #include "company.h"
 #include "funcaux.h"
 #include "facturaview.h"
@@ -49,11 +47,11 @@ myplugin4::~myplugin4() {}
 
 
 void myplugin4::elslot() {
-   _depura("myplugin4::elslot", 0);
-	CuadranteView *cuad = new CuadranteView((Company *)empresaBase(), 0);
-	empresaBase()->pWorkspace()->addWindow(cuad);
-        cuad->show();
-   _depura("END myplugin4::elslot", 0);
+    _depura("myplugin4::elslot", 0);
+    CuadranteView *cuad = new CuadranteView((Company *)empresaBase(), 0);
+    empresaBase()->pWorkspace()->addWindow(cuad);
+    cuad->show();
+    _depura("END myplugin4::elslot", 0);
 }
 
 void myplugin4::inicializa(Bulmafact *bges) {
@@ -81,16 +79,16 @@ void myplugin4::inicializa(Bulmafact *bges) {
 
 
 void entryPoint(Bulmafact *bges) {
-        /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
-        QTranslator *traductor = new QTranslator(0);
-        if (confpr->valor(CONF_TRADUCCION) == "locales") {
-            traductor->load(QString("plugincuadrante_") + QLocale::system().name(),
-                            confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
-        } else {
-            QString archivo = "plugincuadrante_" + confpr->valor(CONF_TRADUCCION);
-           traductor->load(archivo, confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
-        } // end if
-        theApp->installTranslator(traductor);
+    /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
+    QTranslator *traductor = new QTranslator(0);
+    if (confpr->valor(CONF_TRADUCCION) == "locales") {
+        traductor->load(QString("plugincuadrante_") + QLocale::system().name(),
+                        confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    } else {
+        QString archivo = "plugincuadrante_" + confpr->valor(CONF_TRADUCCION);
+        traductor->load(archivo, confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    } // end if
+    theApp->installTranslator(traductor);
 
     myplugin4 *plug = new myplugin4();
     plug->inicializa(bges);
@@ -98,12 +96,12 @@ void entryPoint(Bulmafact *bges) {
 
 
 int AlmacenView_AlmacenView(AlmacenView *alm) {
-   _depura("esxtoy en la clase almacen", 0);
+    _depura("esxtoy en la clase almacen", 0);
 
-        alm->addDBCampo("aperturaalmacen", DBCampo::DBvarchar, DBCampo::DBNothing,  "Apertura Mañana");
-        alm->addDBCampo("cierrealmacen", DBCampo::DBvarchar, DBCampo::DBNothing, "Cierre Mañana");
-        alm->addDBCampo("apertura1almacen", DBCampo::DBvarchar, DBCampo::DBNothing,  "Apertura Tarde");
-        alm->addDBCampo("cierre1almacen", DBCampo::DBvarchar, DBCampo::DBNothing, "Cierre Tarde");
+    alm->addDBCampo("aperturaalmacen", DBCampo::DBvarchar, DBCampo::DBNothing,  "Apertura Mañana");
+    alm->addDBCampo("cierrealmacen", DBCampo::DBvarchar, DBCampo::DBNothing, "Cierre Mañana");
+    alm->addDBCampo("apertura1almacen", DBCampo::DBvarchar, DBCampo::DBNothing,  "Apertura Tarde");
+    alm->addDBCampo("cierre1almacen", DBCampo::DBvarchar, DBCampo::DBNothing, "Cierre Tarde");
 
 
 // ---------------
@@ -167,17 +165,53 @@ int AlmacenView_AlmacenView(AlmacenView *alm) {
 
 
     /// Comprobamos que exista el layout.
-       QVBoxLayout *m_hboxLayout1 = alm->mui_frameplugin->findChild<QVBoxLayout *>("hboxLayout1");
-       if (!m_hboxLayout1) {
-                m_hboxLayout1 = new QVBoxLayout(alm->mui_frameplugin);
-                m_hboxLayout1->setSpacing(0);
-                m_hboxLayout1->setMargin(0);
-                m_hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));
-       } // end if
+    QVBoxLayout *m_hboxLayout1 = alm->mui_frameplugin->findChild<QVBoxLayout *>("hboxLayout1");
+    if (!m_hboxLayout1) {
+        m_hboxLayout1 = new QVBoxLayout(alm->mui_frameplugin);
+        m_hboxLayout1->setSpacing(0);
+        m_hboxLayout1->setMargin(0);
+        m_hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));
+    } // end if
 //       m_hboxLayout1->addWidget(horain);
-       m_hboxLayout1->addLayout(hboxLayout160);
-       m_hboxLayout1->addLayout(hboxLayout170);
+    m_hboxLayout1->addLayout(hboxLayout160);
+    m_hboxLayout1->addLayout(hboxLayout170);
     return 0;
 }
+
+int TrabajadorView_TrabajadorView(TrabajadorView *trab) {
+    _depura("TrabajadorView_TrabajadorView", 0);
+    SubForm2Bf *l = new SubForm2Bf(trab);
+    l->setObjectName(QString::fromUtf8("mui_ausencias"));
+    l->setEmpresaBase( trab->empresaBase());
+    l->setDBTableName("ausencia");
+    l->setDBCampoId("idausencia");
+    l->addSHeader("fechainausencia", DBCampo::DBvarchar, DBCampo::DBNothing , SHeader::DBNone, QApplication::translate("AlmacenView", "ID nom tipo Trabajo"));
+    l->addSHeader("fechafinausencia", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone , QApplication::translate("AlmacenView", "Numero de Cargos Necesarios"));
+    l->addSHeader("motivoausencia", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone , QApplication::translate("AlmacenView", "Numero de Cargos Necesarios"));
+    l->addSHeader("idausencia", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate("AlmacenView", "ID almacen"));
+    l->addSHeader("idtrabajador", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate("AlmacenView", "ID tipo Trabajo"));
+    l->setinsercion(TRUE);
+    l->setDelete(TRUE);
+    l->setSortingEnabled(FALSE);
+    trab->mui_tab->addTab(l, "Ausencias");
+
+    _depura("END TrabajadorView_TrabajadorView", 0);
+    return 0;
+}
+
+
+int TrabajadorView_on_mui_lista_currentItemChanged_Post(TrabajadorView *trab)  {
+    SubForm2Bf *l = trab->findChild<SubForm2Bf *>("mui_ausencias");
+    l->cargar("SELECT * FROM ausencia WHERE idtrabajador = " + trab->idtrabajador());
+    return 0;
+}
+
+int TrabajadorView_on_mui_guardar_clicked(TrabajadorView *trab) {
+    SubForm2Bf *l = trab->findChild<SubForm2Bf *>("mui_ausencias");
+    l->setColumnValue("idtrabajador", trab->idtrabajador());
+    l->guardar();
+    return 0;
+}
+
 
 

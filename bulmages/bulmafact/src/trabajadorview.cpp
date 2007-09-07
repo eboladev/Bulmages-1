@@ -35,14 +35,15 @@
 TrabajadorView::TrabajadorView(Company *emp, QWidget *parent)
         : FichaBf(emp, parent) {
     _depura("TrabajadorView::TrabajadorView", 0);
+
+    setDBTableName("trabajador");
+    setAttribute(Qt::WA_DeleteOnClose);
+    setupUi(this);
     /// Disparamos los plugins.
     int res = g_plugins->lanza("TrabajadorView_TrabajadorView", this);
     if (res != 0) {
         return;
     } // end if
-    setDBTableName("trabajador");
-    setAttribute(Qt::WA_DeleteOnClose);
-    setupUi(this);
     m_archivoimagen = "";
     setModoEdicion();
     m_cursortrabajadores = NULL;
