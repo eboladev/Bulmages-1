@@ -128,15 +128,7 @@ int AlmacenView_AlmacenView(AlmacenView *alm) {
     form->setDelete(TRUE);
     form->setSortingEnabled(FALSE);
 
-    /// Comprobamos que exista el layout.
-       QVBoxLayout *m_hboxLayout1 = alm->mui_frameplugin->findChild<QVBoxLayout *>("hboxLayout1");
-       if (!m_hboxLayout1) {
-                m_hboxLayout1 = new QVBoxLayout(alm->mui_frameplugin);
-                m_hboxLayout1->setSpacing(0);
-                m_hboxLayout1->setMargin(0);
-                m_hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));
-       } // end if
-       m_hboxLayout1->addWidget(form);
+    alm->mui_tab->addTab(form, "Trabajadores Requeridos");
     return 0;
 }
 
