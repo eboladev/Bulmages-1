@@ -179,17 +179,6 @@ CREATE TABLE trabajador (
 );
 
 
--- ** pais **
--- cod2pais: Codigo internacional de dos digitos.
--- cod3pais: Codigo internacional de tres digitos.
--- descpais: Cescripcion del pais.
-\echo -n ':: Pais ... '
-CREATE TABLE pais (
-    idpais serial PRIMARY KEY,
-    cod2pais character varying(2),
-    cod3pais character varying(3),
-    descpais character varying(50)
-);
 
 
 -- ** moneda **
@@ -1879,7 +1868,7 @@ BEGIN
     END IF;
 END;
 '  LANGUAGE 'plpgsql';
-\q
+
 
 \echo -n ':: Funcion crearef para crear codigos de referencia ... '
 CREATE FUNCTION crearef() RETURNS character varying(15)
