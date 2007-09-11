@@ -55,23 +55,14 @@ public:
     virtual int borrarPre();
 
 public slots:
-    virtual void on_mui_imprimir_clicked() {
-        imprimir();
-    };
     virtual void on_mui_agregaralbaran_clicked();
     /// Este slot se activa cuando hay cambios en los subformularios.
-    virtual void s_pintaTotales() {
-        calculaypintatotales();
-    };
-    virtual void on_m_descuentos_editFinish(int, int) {
-        calculaypintatotales();
-    };
-    virtual void on_subform2_editFinish(int, int) {
-        calculaypintatotales();
-    };
+    virtual void s_pintaTotales();
+    virtual void on_m_descuentos_editFinish(int, int);
+    virtual void on_subform2_editFinish(int, int);
     virtual void on_mui_cobrar_clicked();
     virtual void on_mui_veralbaranes_clicked();
-    virtual void on_m_cliente_valueChanged(QString id);
+    virtual void on_mui_idcliente_valueChanged(QString id);
 };
 
 #endif

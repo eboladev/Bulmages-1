@@ -28,6 +28,7 @@
 #include <QTextEdit>
 #include <QCheckBox>
 
+
 Ficha::Ficha(QWidget *parent, Qt::WFlags f, edmode modo) : BLWidget(parent, f), DBRecord(NULL), dialogChanges(this) {
     _depura("Ficha::Ficha", 0);
     setContextMenuPolicy(Qt::CustomContextMenu);
@@ -101,6 +102,11 @@ void Ficha::on_mui_aceptar_clicked() {
         _depura("Error al guardar la ficha", 2);
     } // end try
     _depura("Ficha::on_mui_aceptar_clicked", 0);
+}
+
+
+void Ficha::on_mui_imprimir_clicked() {
+    imprimir();
 }
 
 

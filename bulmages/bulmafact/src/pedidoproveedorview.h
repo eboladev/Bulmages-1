@@ -27,7 +27,6 @@
 #include <QCheckBox>
 
 #include "ui_pedidoproveedorbase.h"
-#include "factura.h"
 #include "listlinpedidoproveedorview.h"
 #include "listdescpedidoproveedorview.h"
 #include "busquedaproveedor.h"

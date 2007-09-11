@@ -250,11 +250,27 @@ void FacturaView::on_mui_veralbaranes_clicked() {
 }
 
 
-void FacturaView::on_m_cliente_valueChanged(QString id) {
+void FacturaView::on_mui_idcliente_valueChanged(QString id) {
     _depura("FacturaView::on_m_cliente_valueChanged", 0);
     subform2->setIdCliente(id);
     mui_idforma_pago->setIdCliente(id);
     _depura("END FacturaView::on_m_cliente_valueChanged", 0);
+}
+
+
+/// Este slot se activa cuando hay cambios en los subformularios.
+void FacturaView::s_pintaTotales() {
+    calculaypintatotales();
+}
+
+
+void FacturaView::on_m_descuentos_editFinish(int, int) {
+    calculaypintatotales();
+}
+
+
+void FacturaView::on_subform2_editFinish(int, int) {
+    calculaypintatotales();
 }
 
 
