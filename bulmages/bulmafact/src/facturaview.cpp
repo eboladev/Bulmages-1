@@ -1,7 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org                         *
+ *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -34,7 +34,6 @@
 #include "clientslist.h"
 #include "cobroview.h"
 #include "company.h"
-#include "factura.h"
 #include "facturaview.h"
 #include "funcaux.h"
 #include "informereferencia.h"
@@ -47,14 +46,30 @@
     Inicializa todos los componentes y mete la pantalla en el workSpace.
 */
 FacturaView::FacturaView(Company *comp, QWidget *parent)
-        : Factura(comp, parent) {
+        : FichaBf ( comp, parent ) {
     _depura("FacturaView::FacturaView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     try {
         setupUi(this);
+
+        setDBTableName ( "factura" );
+        setDBCampoId ( "idfactura" );
+        addDBCampo ( "idfactura", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "Factura", "Id factura" ) );
+        addDBCampo ( "idcliente", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "Factura", "Id cliente" ) );
+        addDBCampo ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "Factura", "Id almacen" ) );
+        addDBCampo ( "numfactura", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Factura", "Numero factura" ) );
+        addDBCampo ( "ffactura", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate ( "Factura", "Ffactura" ) );
+        addDBCampo ( "procesadafactura", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate ( "Factura", "Procesada factura" ) );
+        addDBCampo ( "codigoserie_factura", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Factura", "Codigo serie factura" ) );
+        addDBCampo ( "comentfactura", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Factura", "Comentario factura" ) );
+        addDBCampo ( "reffactura", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Factura", "Referencia factura" ) );
+        addDBCampo ( "descfactura", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Factura", "Descripcion factura" ) );
+        addDBCampo ( "idtrabajador", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Factura", "Id trabajador" ) );
+        addDBCampo ( "idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Factura", "Id formad de pago" ) );
+
         /// Establecemos algunos Buddies.
         mui_labelAlmacen->setText(tr("Al&macen"));
-        mui_labelAlmacen->setBuddy(m_almacen);
+        mui_labelAlmacen->setBuddy(mui_idalmacen);
 
         /// Disparamos los plugins.
         int res = g_plugins->lanza("FacturaView_FacturaView", this);
@@ -62,15 +77,15 @@ FacturaView::FacturaView(Company *comp, QWidget *parent)
             return;
         } // end if
         subform2->setEmpresaBase(comp);
-        m_almacen->setEmpresaBase(comp);
-        m_almacen->setidalmacen("");
-        m_forma_pago->setEmpresaBase(comp);
-        m_forma_pago->setidforma_pago("");
-        m_cliente->setEmpresaBase(comp);
+        mui_idalmacen->setEmpresaBase(comp);
+        mui_idalmacen->setidalmacen("");
+        mui_idforma_pago->setEmpresaBase(comp);
+        mui_idforma_pago->setidforma_pago("");
+        mui_idcliente->setEmpresaBase(comp);
         m_descuentos->setEmpresaBase(comp);
-        m_codigoserie_factura->setEmpresaBase(comp);
-        m_codigoserie_factura->setcodigoserie_factura("");
-        m_reffactura->setEmpresaBase(comp);
+        mui_codigoserie_factura->setEmpresaBase(comp);
+        mui_codigoserie_factura->setcodigoserie_factura("");
+        mui_reffactura->setEmpresaBase(comp);
 
         /// Inicializamos FichaBf
         setListaLineas(subform2);
@@ -108,7 +123,7 @@ void FacturaView::inicializar() {
     _depura("FacturaView::inicializar", 0);
     subform2->inicializar();
     m_descuentos->inicializar();
-    pintaFactura();
+    pintar();
     dialogChanges_cargaInicial();
     _depura("END FacturaView::inicializar", 0);
 }
@@ -147,26 +162,6 @@ void FacturaView::on_mui_cobrar_clicked() {
 }
 
 
-/** Carga una factura de la base de datos.
-    Deleta toda la carga a la clase \ref Factura
-    Cambia el titulo de la ventana y reseta el control de cambios.
-*/
-int FacturaView::cargar(QString id) {
-    _depura("FacturaView::cargar", 0);
-    try {
-        Factura::cargar(id);
-        if (DBvalue("idfactura") != "") {
-            setWindowTitle(tr("Factura") + " " + DBvalue("reffactura") + " " + DBvalue("idfactura"));
-            meteWindow(windowTitle(), this);
-        } // end if
-        dialogChanges_cargaInicial();
-    } catch (...) {
-        return -1;
-    } // end try
-    _depura("END FacturaView::cargar", 0);
-    return 0;
-}
-
 
 /** SLOT que responde a la pulsacion del boton mui_agregaralbaran.
     Muestra un selector de albaranes y una vez seleccionado un albaran hace el agregado
@@ -200,7 +195,7 @@ void FacturaView::on_mui_agregaralbaran_clicked() {
     QString comm = DBvalue("comentfactura") + "(" + tr("ALBARAN: Num ") + bud->numalbaran() + tr("Ref:") + " " + bud->refalbaran() + tr("Fecha:") + " " + bud->fechaalbaran() + ")\n";
 
     setDBvalue("comentfactura", comm);
-    pintaComentFactura(comm);
+    pintar();
 
     /// EN TEORIA SE DEBERIA COMPROBAR QUE LA FACTURA Y EL ALBARAN SON DEL MISMO CLIENTE, pero por ahora no lo hacemos.
     SDBRecord *linea, *linea1;
@@ -232,36 +227,6 @@ void FacturaView::on_mui_agregaralbaran_clicked() {
 }
 
 
-/** Guardado de la ficha en la base de datos.
-    Utiliza los metodos setXXX para establecer los valores de la Ficha en el DBRecord
-    y luego llama a \ref Factura::guardar() para el guardado en la base de datos.
-*/
-/// \TODO: Una vez hecho el guardado deberia hacer una carga y dejar de resetear el
-/// control de cambios que deberia estar en el metodo de carga.
-int FacturaView::guardar() {
-    _depura("FacturaView::guardar", 0);
-    try {
-        setcomentfactura(m_comentfactura->toPlainText());
-        setidalmacen(m_almacen->idalmacen());
-        setNumFactura(m_numfactura->text());
-        setreffactura(m_reffactura->text());
-        setidcliente(m_cliente->idcliente());
-        setfechafactura(m_fechafactura->text());
-        setdescfactura(m_descfactura->text());
-        setidforma_pago(m_forma_pago->idforma_pago());
-        setcodigoserie_factura(m_codigoserie_factura->codigoserie_factura());
-        setprocesadafactura( m_procesadafactura->isChecked() ? "TRUE" : "FALSE");
-        Factura::guardar();
-        dialogChanges_cargaInicial();
-    } catch (...) {
-        _depura("FacturaView::guardar error al guardar", 0);
-        throw -1;
-    } // end try
-    _depura("END FacturaView::guardar", 0);
-    return 0;
-}
-
-
 /** SLOT que responde a la pulsacion del boton mui_veralbaranes.
     Busca todos los albaranes con la misma referencia y para cada uno de ellos instancia la clase \ref AlbaranClienteView
 */
@@ -288,7 +253,54 @@ void FacturaView::on_mui_veralbaranes_clicked() {
 void FacturaView::on_m_cliente_valueChanged(QString id) {
     _depura("FacturaView::on_m_cliente_valueChanged", 0);
     subform2->setIdCliente(id);
-    m_forma_pago->setIdCliente(id);
+    mui_idforma_pago->setIdCliente(id);
     _depura("END FacturaView::on_m_cliente_valueChanged", 0);
 }
+
+
+/** Se encarga del borrado de una factura.
+*/
+int FacturaView::borrarPre()
+{
+    _depura ( "FacturaView::borrarPre", 0 );
+    int error = m_listalineas->borrar();
+    error = m_listadescuentos->borrar();
+    _depura ( "END FacturaView::borrarPre", 0 );
+    return 0;
+}
+
+
+/** Carga una factura.
+*/
+int FacturaView::cargarPost ( QString idbudget )
+{
+    _depura ( "FacturaView::cargarPost", 0 );
+
+    m_listalineas->cargar ( idbudget );
+    m_listadescuentos->cargar ( idbudget );
+
+    /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
+    g_plugins->lanza ( "Factura_cargar_Post", this );
+
+    calculaypintatotales();
+
+    _depura ( "END FacturaView::cargarPost", 0 );
+    return 0;
+}
+
+
+/** Se encarga del guardado de una factura.
+*/
+int FacturaView::guardarPost()
+{
+    _depura ( "FacturaView::guardarPost", 0 );
+    m_listadescuentos->setColumnValue ( "idfactura", DBvalue ( "idfactura" ) );
+    m_listalineas->setColumnValue ( "idfactura", DBvalue ( "idfactura" ) );
+    m_listalineas->guardar();
+    m_listadescuentos->guardar();
+    _depura ( "END FacturaView::guardarPost", 0 );
+    return 0;
+}
+
+
 

@@ -27,7 +27,6 @@
 #include <QCheckBox>
 
 #include "ui_facturabase.h"
-#include "factura.h"
 #include "listlinpresupuestoview.h"
 #include "busquedacliente.h"
 #include "busquedafecha.h"
@@ -43,60 +42,19 @@ class Company;
 
 /// Muestra y administra la ventana de una factura a cliente.
 /** */
-class FacturaView : public Factura, public Ui_FacturaBase {
+class FacturaView : public FichaBf, public Ui_FacturaBase {
     Q_OBJECT
 
 public:
     FacturaView(Company *, QWidget *parent = 0);
     ~FacturaView();
     void inicializar();
-    void pintaidcliente(QString id) {
-        m_cliente->setidcliente(id);
-    };
-    void pintaidalmacen(QString id) {
-        m_almacen->setidalmacen(id);
-    };
-    void pintaNumFactura(QString id) {
-        m_numfactura->setText(id);
-    };
-    void pintacodigoserie_factura(QString id) {
-        m_codigoserie_factura->setcodigoserie_factura(id);
-    };
-    void pintafechafactura(QString id) {
-        m_fechafactura->setText(id);
-    };
-    void pintadescfactura(QString id) {
-        m_descfactura->setText(id);
-    };
-    void pintaComentFactura(QString id) {
-        m_comentfactura->setPlainText(id);
-    };
-    void pintareffactura(QString id) {
-        m_reffactura->setText(id);
-    };
-    void pintaidforma_pago(QString id) {
-        m_forma_pago->setidforma_pago(id);
-    };
-    void pintaprocesadafactura(QString id) {
-        if (id == "t" || id == "TRUE") {
-            m_procesadafactura->setChecked(TRUE);
-        } else {
-            m_procesadafactura->setChecked(FALSE);
-        } // end if
-    };
     void pintatotales(Fixed, Fixed, Fixed, Fixed, Fixed, Fixed);
-
-    /// Estos metodos deben existir para poder trabajar con la clase Ficha
-    virtual int guardar();
-    virtual int cargar(QString id);
-    virtual int borrar() {
-        return Factura::borrar();
-    };
+    virtual int cargarPost(QString);
+    virtual int guardarPost();
+    virtual int borrarPre();
 
 public slots:
-    virtual void on_mui_guardar_clicked() {
-        guardar();
-    };
     virtual void on_mui_imprimir_clicked() {
         imprimir();
     };

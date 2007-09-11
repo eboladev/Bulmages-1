@@ -95,7 +95,6 @@ HEADERS += bulmafact.h \
            listlinpresupuestoview.h \
            facturaslist.h \
            facturaview.h \
-           factura.h \
            listlinfacturaview.h \
            albarancliente.h \
            listlinalbaranclienteview.h \
@@ -174,7 +173,6 @@ SOURCES += bulmafact.cpp \
            listlinpresupuestoview.cpp \
            facturaslist.cpp \
            facturaview.cpp \
-           factura.cpp \
            listlinfacturaview.cpp \
            albarancliente.cpp \
            listlinalbaranclienteview.cpp \

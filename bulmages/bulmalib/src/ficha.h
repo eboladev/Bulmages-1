@@ -57,6 +57,7 @@ public:
     virtual ~Ficha();
     virtual int guardar();
     virtual int guardarPost();
+    virtual int borrarPre();
     virtual int borrar();
     virtual void closeEvent(QCloseEvent *);
     virtual int sacaWindow();

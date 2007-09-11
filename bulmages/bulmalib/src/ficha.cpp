@@ -215,32 +215,32 @@ void Ficha::pintar() {
         campo = m_lista.at(i);
         /// Buscamos un QLineEdit con nombre coincidente.
         QLineEdit *l = findChild<QLineEdit *>("mui_" + campo->nomcampo());
-        if (l) 
+        if (l)
             l->setText(campo->valorcampo());
 
         /// Buscamos un QLineEdit con nombre coincidente.
         QTextEdit *l3 = findChild<QTextEdit *>("mui_" + campo->nomcampo());
-        if (l3) 
-	    l3->setText(campo->valorcampo());
+        if (l3)
+        l3->setText(campo->valorcampo());
 
-	/// Buscamos BLWidgets que coincidan con el campo supuestamente sirve para los campos personales
+    /// Buscamos BLWidgets que coincidan con el campo supuestamente sirve para los campos personales
         BLWidget *l1 = findChild<BLWidget *>("mui_" + campo->nomcampo());
-	if (l1)
-		l1->setValorCampo(campo->valorcampo());
+    if (l1)
+        l1->setValorCampo(campo->valorcampo());
 
-	/// Buscamos QComboBox2 que coincidan con el campo supuestamente sirve para los campos personales
+    /// Buscamos QComboBox2 que coincidan con el campo supuestamente sirve para los campos personales
         QComboBox2 *l2 = findChild<QComboBox2 *>("mui_" + campo->nomcampo());
-	if (l2)
-		l2->setValorCampo(campo->valorcampo());
+    if (l2)
+        l2->setValorCampo(campo->valorcampo());
 
-	QCheckBox *l5 = findChild<QCheckBox *>("mui_" + campo->nomcampo());
-	if (l5) {
-		if (campo->valorcampo() == "t") {
-			l5->setChecked(TRUE);
-		} else {
-			l5->setChecked(FALSE);
-		} // end if
-	} // end if
+    QCheckBox *l5 = findChild<QCheckBox *>("mui_" + campo->nomcampo());
+    if (l5) {
+        if (campo->valorcampo() == "t") {
+            l5->setChecked(TRUE);
+        } else {
+            l5->setChecked(FALSE);
+        } // end if
+    } // end if
 
     } // end for
 }
@@ -257,32 +257,32 @@ void Ficha::recogeValores() {
         campo = m_lista.at(i);
         /// Buscamos un QLineEdit con nombre coincidente.
         QLineEdit *l = findChild<QLineEdit *>("mui_" + campo->nomcampo());
-        if (l) 
-	    campo->set(l->text());
+        if (l)
+        campo->set(l->text());
 
         /// Buscamos un QLineEdit con nombre coincidente.
         QTextEdit *l3 = findChild<QTextEdit *>("mui_" + campo->nomcampo());
-        if (l3) 
-	    campo->set(l3->toPlainText());
+        if (l3)
+        campo->set(l3->toPlainText());
 
-	/// Buscamos BLWidgets que coincidan con el campo supuestamente sirve para los campos personales
+    /// Buscamos BLWidgets que coincidan con el campo supuestamente sirve para los campos personales
         BLWidget *l1 = findChild<BLWidget *>("mui_" + campo->nomcampo());
-	if (l1)
-		campo->set(l1->valorCampo());
+    if (l1)
+        campo->set(l1->valorCampo());
 
-	/// Buscamos QComboBox2 que coincidan con el campo supuestamente sirve para los campos personales
+    /// Buscamos QComboBox2 que coincidan con el campo supuestamente sirve para los campos personales
         QComboBox2 *l2 = findChild<QComboBox2 *>("mui_" + campo->nomcampo());
-	if (l2)
-		campo->set(l2->valorCampo());
+    if (l2)
+        campo->set(l2->valorCampo());
 
-	QCheckBox *l5 = findChild<QCheckBox *>("mui_" + campo->nomcampo());
-	if (l5) {
-		if (l5->isChecked()) {
-			campo->set("TRUE");
-		} else {
-			campo->set("FALSE");
-		} // end if
-	} // end if
+    QCheckBox *l5 = findChild<QCheckBox *>("mui_" + campo->nomcampo());
+    if (l5) {
+        if (l5->isChecked()) {
+            campo->set("TRUE");
+        } else {
+            campo->set("FALSE");
+        } // end if
+    } // end if
 
     } // end for
     _depura("END Ficha::recogeValores", 0);
@@ -295,9 +295,9 @@ int Ficha::cargar(QString id) {
         if (DBRecord::cargar(id))
             throw -1;
 
-	/// Lanzamos los plugins.
-	if (g_plugins->lanza("Ficha_cargar", this)) return 0;
-	cargarPost(id);
+    /// Lanzamos los plugins.
+    if (g_plugins->lanza("Ficha_cargar", this)) return 0;
+    cargarPost(id);
 
         setWindowTitle(m_tablename + " " + DBvalue(m_campoid));
         pintar();
@@ -317,15 +317,15 @@ int Ficha::guardar() {
 
     try {
         QString id;
-	recogeValores();
+        recogeValores();
         empresaBase()->begin();
         DBsave(id);
-	setDBvalue(m_campoid, id);
+        setDBvalue(m_campoid, id);
         empresaBase()->commit();
-	
-	/// Lanzamos los plugins.
-	if (g_plugins->lanza("Ficha_guardar_Post", this)) return 0;
-	guardarPost();
+
+    /// Lanzamos los plugins.
+    if (g_plugins->lanza("Ficha_guardar_Post", this)) return 0;
+        guardarPost();
 
         /// Hacemos una carga para que se actualizen datos como la referencia.
         cargar(id);
@@ -339,14 +339,28 @@ int Ficha::guardar() {
     } // end try
 }
 
+
+int Ficha::borrarPre() {
+    return 0;
+}
+
+
 /** Borra la ficha en la base de datos
     Este metodo puede ser invocado desde la clase ficha o desde la pantalla previa
 */
 int Ficha::borrar() {
     _depura("Ficha::borrar existe solo para ser derivado", 0);
+    borrarPre();
     return DBRecord::borrar();
 }
 
-int Ficha::guardarPost() {return 0;}
-int Ficha::cargarPost(QString id) {return 0;}
+
+int Ficha::guardarPost() {
+    return 0;
+}
+
+
+int Ficha::cargarPost(QString id) {
+    return 0;
+}
 

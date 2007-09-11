@@ -744,7 +744,7 @@ void Company::s_newFacturaCli() {
     FacturaView *bud = newFacturaView();
     m_pWorkspace->addWindow(bud);
     bud->inicializar();
-    bud->pintaFactura();
+    bud->pintar();
     bud->show();
     _depura("END Company::s_newFacturaCli", 0);
 }
@@ -1261,19 +1261,19 @@ void Company::guardaConf() {
 
 
         for (int i = 0; i < m_listventanas->numVentanas(); i++) {
-		QObject *obj = m_listventanas->ventana(i);
+        QObject *obj = m_listventanas->ventana(i);
                 QWidget *wid = (QWidget *) obj;
-		stream << "\t<VENTANA>\n";
-		stream << "\t\t<VNAME>" + obj->objectName() + "</VNAME>\n";
-		stream << "\t\t<VX>" + QString::number(wid->parentWidget()->x()) + "</VX>\n";
-		stream << "\t\t<VY>" + QString::number(wid->parentWidget()->y()) + "</VY>\n";
-		stream << "\t\t<VWIDTH>" + QString::number(wid->width()) + "</VWIDTH>\n";
-		stream << "\t\t<VHEIGHT>" + QString::number(wid->height()) + "</VHEIGHT>\n";
-		stream << "\t\t<VVISIBLE>" + (wid->isVisible() ? QString("TRUE") : QString("FALSE")) + "</VVISIBLE>\n";
-		stream << "\t\t<VMAXIMIZED>" + (wid->isMaximized() ? QString("TRUE") : QString("FALSE")) + "</VMAXIMIZED>\n";
-		stream << "\t\t<VACTIVEWINDOW>" + (m_bulmafact->workspace()->activeWindow() == wid ? QString("TRUE") : QString("FALSE")) + "</VACTIVEWINDOW>";
-		stream << "\t</VENTANA>\n";
-	} // end for
+        stream << "\t<VENTANA>\n";
+        stream << "\t\t<VNAME>" + obj->objectName() + "</VNAME>\n";
+        stream << "\t\t<VX>" + QString::number(wid->parentWidget()->x()) + "</VX>\n";
+        stream << "\t\t<VY>" + QString::number(wid->parentWidget()->y()) + "</VY>\n";
+        stream << "\t\t<VWIDTH>" + QString::number(wid->width()) + "</VWIDTH>\n";
+        stream << "\t\t<VHEIGHT>" + QString::number(wid->height()) + "</VHEIGHT>\n";
+        stream << "\t\t<VVISIBLE>" + (wid->isVisible() ? QString("TRUE") : QString("FALSE")) + "</VVISIBLE>\n";
+        stream << "\t\t<VMAXIMIZED>" + (wid->isMaximized() ? QString("TRUE") : QString("FALSE")) + "</VMAXIMIZED>\n";
+        stream << "\t\t<VACTIVEWINDOW>" + (m_bulmafact->workspace()->activeWindow() == wid ? QString("TRUE") : QString("FALSE")) + "</VACTIVEWINDOW>";
+        stream << "\t</VENTANA>\n";
+    } // end for
 
         stream << "</CONFIG>\n";
         file.close();
@@ -1314,11 +1314,11 @@ void Company::cargaConf() {
     /// Cogemos el indexador
     QString indexador = principal.firstChildElement("INDEXADOR").toElement().text();
     if (indexador == "TRUE") {
-	s_indexadorCambiaEstado(TRUE);
-	m_bulmafact->actionIndexador->setChecked(TRUE);
+    s_indexadorCambiaEstado(TRUE);
+    m_bulmafact->actionIndexador->setChecked(TRUE);
     } else {
-	s_indexadorCambiaEstado(FALSE);
-	m_bulmafact->actionIndexador->setChecked(FALSE);
+    s_indexadorCambiaEstado(FALSE);
+    m_bulmafact->actionIndexador->setChecked(FALSE);
     } // end if
 
     /// Tratamos cada ventana
@@ -1328,35 +1328,35 @@ void Company::cargaConf() {
             QDomNode ventana = nodos.item(i);
             QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
             if( !e1.isNull() ) { /// the node was really an element.
-		     QString vname = e1.firstChildElement("VNAME").toElement().text();
-			for (int j = 0; j < m_listventanas->numVentanas(); j++) {
-				QObject *obj = m_listventanas->ventana(j);
-				QWidget *wid = (QWidget *) obj;
-				if (obj->objectName() == vname) {
-					QString vx = e1.firstChildElement("VX").toElement().text();
-					QString vy = e1.firstChildElement("VY").toElement().text();
-					QString vwidth = e1.firstChildElement("VWIDTH").toElement().text();
-					QString vheight = e1.firstChildElement("VHEIGHT").toElement().text();
-					QString vvisible = e1.firstChildElement("VVISIBLE").toElement().text();
-					QString vmaximized = e1.firstChildElement("VMAXIMIZED").toElement().text();
-					QString vactivewindow = e1.firstChildElement("VACTIVEWINDOW").toElement().text();
-					/// Establecemos la geometria de la ventana principal.
-					wid->resize(vwidth.toInt(), vheight.toInt());
-					wid->parentWidget()->move(vx.toInt(), vy.toInt());
-					if ( vvisible == "TRUE") {
-						wid->showNormal();
-					} // end if
-					if ( vmaximized == "TRUE") {
-						wid->showMaximized();
-					}
-					if ( vactivewindow == "TRUE") {
-						activewindow = wid;
-					}
-				} // end if
-			} // end for
+             QString vname = e1.firstChildElement("VNAME").toElement().text();
+            for (int j = 0; j < m_listventanas->numVentanas(); j++) {
+                QObject *obj = m_listventanas->ventana(j);
+                QWidget *wid = (QWidget *) obj;
+                if (obj->objectName() == vname) {
+                    QString vx = e1.firstChildElement("VX").toElement().text();
+                    QString vy = e1.firstChildElement("VY").toElement().text();
+                    QString vwidth = e1.firstChildElement("VWIDTH").toElement().text();
+                    QString vheight = e1.firstChildElement("VHEIGHT").toElement().text();
+                    QString vvisible = e1.firstChildElement("VVISIBLE").toElement().text();
+                    QString vmaximized = e1.firstChildElement("VMAXIMIZED").toElement().text();
+                    QString vactivewindow = e1.firstChildElement("VACTIVEWINDOW").toElement().text();
+                    /// Establecemos la geometria de la ventana principal.
+                    wid->resize(vwidth.toInt(), vheight.toInt());
+                    wid->parentWidget()->move(vx.toInt(), vy.toInt());
+                    if ( vvisible == "TRUE") {
+                        wid->showNormal();
+                    } // end if
+                    if ( vmaximized == "TRUE") {
+                        wid->showMaximized();
+                    }
+                    if ( vactivewindow == "TRUE") {
+                        activewindow = wid;
+                    }
+                } // end if
+            } // end for
             } // end if
         } // end for
-	/// Si hay una ventana activa se pone como activa.
-	if (activewindow) 
-		m_bulmafact->workspace()->setActiveWindow(activewindow);
+    /// Si hay una ventana activa se pone como activa.
+    if (activewindow)
+        m_bulmafact->workspace()->setActiveWindow(activewindow);
 }
