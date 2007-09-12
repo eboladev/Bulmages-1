@@ -248,7 +248,7 @@ void ContratoView::on_mui_facturar_clicked() {
                 } // end if
             } // end for
             fac->calculaypintatotales();
-            fac->pintaFactura();
+            fac->pintar();
         } // end if
         delete cur;
 

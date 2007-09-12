@@ -220,15 +220,10 @@ void TicketQToolButton::click() {
         file.write( sfecha.toAscii());
         file.write ( "\n", 1);
 
-        /*
-        	file.write( QString("Trabajador: ").toAscii());
-                file.write( m_facturaView->m_trabajador->currentText().toAscii());
-                file.write ( "\n", 1);
-        */
         file.write( QString("Cliente: ").toAscii());
-        file.write( m_facturaView->m_cliente->cifcliente().toAscii());
+        file.write( m_facturaView->mui_idcliente->cifcliente().toAscii());
         file.write ( " ", 1);
-        file.write( m_facturaView->m_cliente->nomcliente().toAscii());
+        file.write( m_facturaView->mui_idcliente->nomcliente().toAscii());
         file.write ( "\n", 1);
 
 
