@@ -798,8 +798,8 @@
         <widget class="ListLinFacturaView" native="1" name="subform2" >
          <property name="sizePolicy" >
           <sizepolicy>
-           <hsizetype>0</hsizetype>
-           <vsizetype>0</vsizetype>
+           <hsizetype>7</hsizetype>
+           <vsizetype>7</vsizetype>
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -823,8 +823,8 @@
         <widget class="ListDescuentoFacturaView" native="1" name="m_descuentos" >
          <property name="sizePolicy" >
           <sizepolicy>
-           <hsizetype>0</hsizetype>
-           <vsizetype>0</vsizetype>
+           <hsizetype>7</hsizetype>
+           <vsizetype>7</vsizetype>
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -1573,11 +1573,6 @@
  <layoutdefault spacing="2" margin="2" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaAlmacen</class>
-   <extends>QWidget</extends>
-   <header>busquedaalmacen.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaFormaPago</class>
    <extends>QComboBox</extends>
    <header>busquedaformapago.h</header>
@@ -1611,6 +1606,11 @@
    <class>ListDescuentoFacturaView</class>
    <extends>QWidget</extends>
    <header>listdescfacturaview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaAlmacen</class>
+   <extends>QWidget</extends>
+   <header>busquedaalmacen.h</header>
   </customwidget>
  </customwidgets>
  <resources>

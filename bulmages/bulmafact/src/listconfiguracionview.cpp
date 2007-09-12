@@ -43,6 +43,10 @@
 ListConfiguracionView::ListConfiguracionView(Company *comp, QWidget *parent) : FichaBf(comp, parent) {
     _depura("ListConfiguracionView::ListConfiguracionView", 1);
     setupUi(this);
+
+    setDBTableName("configuracion");
+    setDBCampoId("nombre");
+
     this->setAttribute(Qt::WA_DeleteOnClose);
     mui_listado->setEmpresaBase(empresaBase());
     mui_listado->cargar();
