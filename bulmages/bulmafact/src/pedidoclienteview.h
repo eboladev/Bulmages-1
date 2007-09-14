@@ -36,93 +36,34 @@
 #include "busquedatrabajador.h"
 #include "dialogchanges.h"
 #include "fixed.h"
-#include "pedidocliente.h"
-#include "ficha.h"
+#include "fichabf.h"
 
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un pedido de cliente.
 /** */
-class PedidoClienteView : public PedidoCliente, public Ui_PedidoClienteBase {
+class PedidoClienteView : public FichaBf, public Ui_PedidoClienteBase {
     Q_OBJECT
 
 public:
     PedidoClienteView(Company *, QWidget *parent = 0);
     ~PedidoClienteView();
+    virtual int cargarPost(QString);
+    virtual int guardarPost();
+    virtual int borrarPre();
     void generarAlbaran();
     void inicializar();
-    void pintaidcliente(QString id) {
-        m_cliente->setidcliente(id);
-    }
-    void pintaidalmacen(QString id) {
-        m_almacen->setidalmacen(id);
-    }
-    void pintaidpedidocliente(QString) {}
-    void pintanumpedidocliente(QString id) {
-        m_numpedidocliente->setText(id);
-    }
-    void pintafechapedidocliente(QString id) {
-        m_fechapedidocliente->setText(id);
-    }
-    void pintadescpedidocliente(QString id) {
-        m_descpedidocliente->setText(id);
-    }
-    void pintaidforma_pago(QString id) {
-        m_forma_pago->setidforma_pago(id);
-    }
-    void pintaidtrabajador(QString id) {
-        m_trabajador->setidtrabajador(id);
-    }
-    void pintacomentpedidocliente(QString id) {
-        m_comentpedidocliente->setPlainText(id);
-    }
-    void pintarefpedidocliente(QString id) {
-        m_refpedidocliente->setText(id);
-    }
-    void pintacontactpedidocliente(QString id) {
-        m_contactpedidocliente->setText(id);
-    }
-    void pintatelpedidocliente(QString id) {
-        m_telpedidocliente->setText(id);
-    }
     void pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed, Fixed);
-    void pintaprocesadopedidocliente(QString id) {
-        if (id == "t" || id == "TRUE") {
-            m_procesadopedidocliente->setChecked(TRUE);
-        } else {
-            m_procesadopedidocliente->setChecked(FALSE);
-        } // end if
-    }
-    /// Estos m&eacute;todos deben existir para poder trabajar con la clase Ficha
-    virtual int guardar();
-    virtual int cargar(QString id);
-    virtual int borrar() {
-        return PedidoCliente::borrar();
-    }
+
 
 public slots:
-    virtual void on_mui_guardar_clicked() {
-        guardar();
-    }
-    virtual void on_mui_imprimir_clicked() {
-        imprimir();
-    }
-    virtual void s_pintaTotales() {
-        calculaypintatotales();
-    }
+
+    virtual void s_pintaTotales();
     virtual void on_mui_verpresupuesto_clicked();
-    virtual void on_mui_pasaraalbaran_clicked() {
-       _depura("on_mui_pasaraalbaran_clicked", 0);
-       generarAlbaran();
-       _depura("END on_mui_pasaraalbaran_clicked", 0);
-    };
+    virtual void on_mui_pasaraalbaran_clicked();
     virtual void on_mui_cobrar_clicked();
-    virtual void on_m_descuentos_editFinish(int, int) {
-        calculaypintatotales();
-    };
-    virtual void on_subform3_editFinish(int, int) {
-        calculaypintatotales();
-    };
-    virtual void on_m_cliente_valueChanged(QString id);
+    virtual void on_m_descuentos_editFinish(int, int);
+    virtual void on_subform3_editFinish(int, int);
+    virtual void on_mui_idcliente_valueChanged(QString id);
 };
 
 #endif

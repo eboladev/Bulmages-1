@@ -57,7 +57,7 @@
        </widget>
       </item>
       <item row="2" column="3" >
-       <widget class="BusquedaTrabajador" native="1" name="m_trabajador" >
+       <widget class="BusquedaTrabajador" native="1" name="mui_idtrabajador" >
         <property name="minimumSize" >
          <size>
           <width>150</width>
@@ -97,7 +97,7 @@
        </widget>
       </item>
       <item row="5" column="3" >
-       <widget class="BusquedaAlmacen" native="1" name="m_almacen" >
+       <widget class="BusquedaAlmacen" native="1" name="mui_idalmacen" >
         <property name="minimumSize" >
          <size>
           <width>150</width>
@@ -107,7 +107,7 @@
        </widget>
       </item>
       <item row="3" column="3" >
-       <widget class="BusquedaFecha" native="1" name="m_fechapedidocliente" >
+       <widget class="BusquedaFecha" native="1" name="mui_fechapedidocliente" >
         <property name="minimumSize" >
          <size>
           <width>150</width>
@@ -117,7 +117,7 @@
        </widget>
       </item>
       <item row="4" column="3" >
-       <widget class="BusquedaFormaPago" native="1" name="m_forma_pago" >
+       <widget class="BusquedaFormaPago" native="1" name="mui_idforma_pago" >
         <property name="minimumSize" >
          <size>
           <width>150</width>
@@ -127,7 +127,7 @@
        </widget>
       </item>
       <item row="4" column="1" >
-       <widget class="QLineEdit" name="m_contactpedidocliente" >
+       <widget class="QLineEdit" name="mui_contactpedidocliente" >
         <property name="sizePolicy" >
          <sizepolicy>
           <hsizetype>7</hsizetype>
@@ -149,7 +149,7 @@
        </widget>
       </item>
       <item row="5" column="1" >
-       <widget class="QLineEdit" name="m_telpedidocliente" >
+       <widget class="QLineEdit" name="mui_telpedidocliente" >
         <property name="sizePolicy" >
          <sizepolicy>
           <hsizetype>7</hsizetype>
@@ -171,7 +171,7 @@
        </widget>
       </item>
       <item rowspan="3" row="1" column="0" colspan="2" >
-       <widget class="BusquedaCliente" native="1" name="m_cliente" >
+       <widget class="BusquedaCliente" native="1" name="mui_idcliente" >
         <property name="sizePolicy" >
          <sizepolicy>
           <hsizetype>7</hsizetype>
@@ -183,7 +183,7 @@
        </widget>
       </item>
       <item row="0" column="0" colspan="2" >
-       <widget class="QCheckBox" name="m_procesadopedidocliente" >
+       <widget class="QCheckBox" name="mui_procesadopedidocliente" >
         <property name="sizePolicy" >
          <sizepolicy>
           <hsizetype>7</hsizetype>
@@ -271,7 +271,7 @@
         <number>5</number>
        </property>
        <item>
-        <widget class="QTextEdit" name="m_comentpedidocliente" />
+        <widget class="QTextEdit" name="mui_comentpedidocliente" />
        </item>
       </layout>
      </widget>
@@ -620,7 +620,7 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaReferencia" name="m_refpedidocliente" >
+         <widget class="BusquedaReferencia" name="mui_refpedidocliente" >
           <property name="minimumSize" >
            <size>
             <width>150</width>
@@ -717,7 +717,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="m_descpedidocliente" />
+        <widget class="QLineEdit" name="mui_descpedidocliente" />
        </item>
       </layout>
      </item>
@@ -756,7 +756,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="m_numpedidocliente" >
+        <widget class="QLineEdit" name="mui_numpedidocliente" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>0</hsizetype>
@@ -1493,6 +1493,11 @@
  <layoutdefault spacing="2" margin="2" />
  <customwidgets>
   <customwidget>
+   <class>BusquedaTrabajador</class>
+   <extends>QWidget</extends>
+   <header>busquedatrabajador.h</header>
+  </customwidget>
+  <customwidget>
    <class>BusquedaReferencia</class>
    <extends>QLineEdit</extends>
    <header>busquedareferencia.h</header>
@@ -1526,11 +1531,6 @@
    <class>ListLinPedidoClienteView</class>
    <extends>QWidget</extends>
    <header>listlinpedidoclienteview.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaTrabajador</class>
-   <extends>QWidget</extends>
-   <header>busquedatrabajador.h</header>
   </customwidget>
  </customwidgets>
  <resources>

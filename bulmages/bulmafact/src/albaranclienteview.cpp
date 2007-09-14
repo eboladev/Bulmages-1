@@ -52,22 +52,43 @@
     Mete la ventana en el WorkSpace.
 */
 AlbaranClienteView::AlbaranClienteView(Company *comp, QWidget *parent)
-        : AlbaranCliente(comp, parent) {
+        : FichaBf(comp, parent) {
     _depura("AlbaranClienteView::AlbaranClienteView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     try {
         setupUi(this);
+
+        setTitleName(tr("Albaran"));
+        setDBTableName("albaran");
+        setDBCampoId("idalbaran");
+        addDBCampo("idalbaran", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("AlbaranCliente", "Id albaran"));
+        addDBCampo("idcliente", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("AlbaranCliente", "Id cliente"));
+        addDBCampo("idalmacen", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("AlbaranCliente", "Id almacen"));
+        addDBCampo("numalbaran", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("AlbaranCliente", "Numero de albaran"));
+        addDBCampo("fechaalbaran", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("AlbaranCliente", "Fecha albaran"));
+        addDBCampo("contactalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("AlbaranCliente", "Contacto albaran"));
+        addDBCampo("telalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("AlbaranCliente", "Telefono"));
+        addDBCampo("comentalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("AlbaranCliente", "Comentario"));
+        addDBCampo("comentprivalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("AlbaranCliente", "Comentario priv albaran"));
+        addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("AlbaranCliente", "Id forma de pago"));
+        addDBCampo("idtrabajador", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("AlbaranCliente", "Id trabajador"));
+        addDBCampo("procesadoalbaran", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("AlbaranCliente", "Procesado albaran"));
+        addDBCampo("descalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("AlbaranCliente", "Descripcion albaran"));
+        addDBCampo("refalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("AlbaranCliente", "Referencia albaran"));
+
+
         /// Disparamos los plugins.
         int res = g_plugins->lanza("AlbaranClienteView_AlbaranClienteView", this);
         if (res != 0)
             return;
+
         subform2->setEmpresaBase(comp);
         m_descuentos->setEmpresaBase(comp);
-        m_almacen->setEmpresaBase(comp);
-        m_forma_pago->setEmpresaBase(comp);
-        m_cliente->setEmpresaBase(comp);
-        m_trabajador->setEmpresaBase(comp);
-        m_refalbaran->setEmpresaBase(comp);
+        mui_idalmacen->setEmpresaBase(comp);
+        mui_idforma_pago->setEmpresaBase(comp);
+        mui_idcliente->setEmpresaBase(comp);
+        mui_idtrabajador->setEmpresaBase(comp);
+        mui_refalbaran->setEmpresaBase(comp);
         setListaLineas(subform2);
         setListaDescuentos(m_descuentos);
         meteWindow(windowTitle(), this, FALSE);
@@ -101,29 +122,6 @@ void AlbaranClienteView::inicializar() {
     _depura("END AlbaranClienteView::inicializar", 0);
 }
 
-
-void AlbaranClienteView::pintaNumFactura(QString) {
-    _depura("AlbaranClienteView::pintaNumFactura", 0);
-    _depura("END AlbaranClienteView::pintaNumFactura", 0);
-}
-
-
-void AlbaranClienteView::pintaIdUsuario(QString) {
-    _depura("AlbaranClienteView::pintaIdUsuario", 0);
-    _depura("END AlbaranClienteView::pintaIdUsuario", 0);
-}
-
-
-void AlbaranClienteView::pintaIdAlbaran(QString) {
-    _depura("AlbaranClienteView::pintaIdAlbaran", 0);
-    _depura("END AlbaranClienteView::pintaIdAlbaran", 0);
-}
-
-
-void AlbaranClienteView::pintaIdFactura(QString) {
-    _depura("AlbaranClienteView::pintaIdFactura", 0);
-    _depura("END AlbaranClienteView::pintaIdFactura", 0);
-}
 
 
 /** Pinta los totales en las casillas correspondientes
@@ -265,7 +263,7 @@ void AlbaranClienteView::generarFactura() {
             linea1 = bud->getlistalineas()->lineaat(bud->getlistalineas()->rowCount() - 1);
             /// Haciendo el nuevo registro antes nos evitamos problemas de foco.
             bud->getlistalineas()->nuevoRegistro();
-        bud->getlistalineas()->setProcesarCambios(FALSE);
+            bud->getlistalineas()->setProcesarCambios(FALSE);
             linea1->setDBvalue("codigocompletoarticulo", linea->DBvalue("codigocompletoarticulo"));
             linea1->setDBvalue("desclfactura", linea->DBvalue("desclalbaran"));
             linea1->setDBvalue("cantlfactura", linea->DBvalue("cantlalbaran"));
@@ -274,7 +272,7 @@ void AlbaranClienteView::generarFactura() {
             linea1->setDBvalue("descuentolfactura", linea->DBvalue("descuentolalbaran"));
             linea1->setDBvalue("idarticulo", linea->DBvalue("idarticulo"));
             linea1->setDBvalue("nomarticulo", linea->DBvalue("nomarticulo"));
-        bud->getlistalineas()->setProcesarCambios(TRUE);
+            bud->getlistalineas()->setProcesarCambios(TRUE);
             linea1->refresh();
         } // end if
     } // end for
@@ -284,16 +282,16 @@ void AlbaranClienteView::generarFactura() {
         linea1 = m_listadescuentos->lineaat(i);
         if (linea1->DBvalue("proporciondalbaran") != "") {
             linea = bud->getlistadescuentos()->lineaat(bud->getlistadescuentos()->rowCount() - 1);
-        bud->getlistadescuentos()->setProcesarCambios(FALSE);
+            bud->getlistadescuentos()->setProcesarCambios(FALSE);
             linea->setDBvalue("conceptdfactura", linea1->DBvalue("conceptdalbaran"));
             linea->setDBvalue("proporciondfactura", linea1->DBvalue("proporciondalbaran"));
-        bud->getlistadescuentos()->setProcesarCambios(TRUE);
+            bud->getlistadescuentos()->setProcesarCambios(TRUE);
             bud->getlistadescuentos()->nuevoRegistro();
         } // end if
     } // end for
 
     bud->calculaypintatotales();
-    m_procesadoalbaran->setChecked(TRUE);
+    mui_procesadoalbaran->setChecked(TRUE);
 
 
 
@@ -344,7 +342,7 @@ void AlbaranClienteView::agregarFactura() {
         linea = m_listalineas->lineaat(i);
         if (linea->DBvalue("idarticulo") != "") {
             linea1 = bud->getlistalineas()->lineaat(bud->getlistalineas()->rowCount() - 1);
-        bud->getlistalineas()->setProcesarCambios(FALSE);
+            bud->getlistalineas()->setProcesarCambios(FALSE);
             linea1->setDBvalue("desclfactura", linea->DBvalue("desclalbaran"));
             linea1->setDBvalue("cantlfactura", linea->DBvalue("cantlalbaran"));
             linea1->setDBvalue("pvplfactura", linea->DBvalue("pvplalbaran"));
@@ -353,72 +351,18 @@ void AlbaranClienteView::agregarFactura() {
             linea1->setDBvalue("codigocompletoarticulo", linea->DBvalue("codigocompletoarticulo"));
             linea1->setDBvalue("nomarticulo", linea->DBvalue("nomarticulo"));
             linea1->setDBvalue("ivalfactura", linea->DBvalue("ivalalbaran"));
-        bud->getlistalineas()->setProcesarCambios(TRUE);
+            bud->getlistalineas()->setProcesarCambios(TRUE);
             bud->getlistalineas()->nuevoRegistro();
         } // end if
     } // end for
     bud->calculaypintatotales();
     bud->show();
-    m_procesadoalbaran->setChecked(TRUE);
+    mui_procesadoalbaran->setChecked(TRUE);
     _depura("END AlbaranClienteView::agregarFactura", 0);
 }
 
 
-/// Se encarga de hacer la carga de un albaran. Para ello delega la responsabilidad
-/// De base de datos a la clase \class AlbaranCliente y se encarga unicamente
-/// De volver a meter la ventana en el workSpace para que esta coja adecuadamente
-/// El titulo. Tambien inicializa el sistema de control de cambios.
-/// Si algo falla se genera una excepcion.
-int AlbaranClienteView::cargar(QString id) {
-    _depura("AlbaranClienteView::cargar", 0);
-    try {
-        if (AlbaranCliente::cargar(id))
-            throw -1;
-        setWindowTitle(tr("Albaran a cliente") + " " + DBvalue("refalbaran") + " " + DBvalue("idalbaran"));
-        meteWindow(windowTitle(), this);
-        dialogChanges_cargaInicial();
-    } catch(...) {
-        return -1;
-    } // end try
-    _depura("AlbaranClienteView::cargar", 0);
-    return 0;
-}
 
-
-/** Cuando guardamos un albaran se cogen los valores de todos los campos y
-    se meten en el sistema de la base de datos.
-    Luego se deja el guardado a la clase AlbaranCliente que tambien guarda
-    las lineas y los descuentos.
-
-    Si algo falla se genera una excepcion.
-*/
-int AlbaranClienteView::guardar() {
-    _depura("AlbaranClienteView::guardar", 0);
-    try {
-        /// Cogemos todos los valores del formulario y actualizamos la clase.
-        setcomentalbaran(m_comentalbaran->toPlainText());
-        setcomentprivalbaran(m_comentprivalbaran->toPlainText());
-        setidalmacen(m_almacen->idalmacen());
-        setNumAlbaran(m_numalbaran->text());
-        setidcliente(m_cliente->idcliente());
-        setprocesadoalbaran(m_procesadoalbaran->isChecked() ? "TRUE" : "FALSE");
-        setcontactalbaran(m_contactalbaran->text());
-        settelalbaran(m_telalbaran->text());
-        setfechaalbaran(m_fechaalbaran->text());
-        setidforma_pago(m_forma_pago->idforma_pago());
-        setidtrabajador(m_trabajador->idtrabajador());
-        setrefalbaran(m_refalbaran->text());
-        setdescalbaran(m_descalbaran->text());
-        /// Hacemos el guardado.
-        AlbaranCliente::guardar();
-        dialogChanges_cargaInicial();
-    } catch(...) {
-        _depura("AlbaranClienteView::guardar Error al guardar ", 0);
-        throw -1;
-    } // end try
-    _depura("END AlbaranClienteView::guardar", 0);
-    return 0;
-}
 
 
 /// Crea un nuevo cobro para el albar&aacute;n seleccionado.
@@ -441,98 +385,18 @@ void AlbaranClienteView::on_mui_cobrar_clicked() {
 void AlbaranClienteView::on_m_cliente_valueChanged(QString id) {
     _depura("AlbaranClienteView::on_m_cliente_valueChanged", 0);
     subform2->setIdCliente(id);
-    m_forma_pago->setIdCliente(id);
+    mui_idforma_pago->setIdCliente(id);
     _depura("END AlbaranClienteView::on_m_cliente_valueChanged", 0);
 }
 
 
-void AlbaranClienteView::pintaNumAlbaran(QString val) {
-    m_numalbaran->setText(val);
-}
 
 
-void AlbaranClienteView::pintafechaalbaran(QString val) {
-    m_fechaalbaran->setText(val);
-}
-
-
-void AlbaranClienteView::pintaComentAlbaran(QString val) {
-    m_comentalbaran->setPlainText(val);
-}
-
-
-void AlbaranClienteView::pintaComentPrivAlbaran(QString val) {
-    m_comentprivalbaran->setPlainText(val);
-}
-
-
-void AlbaranClienteView::pintaidcliente(QString val) {
-    m_cliente->setidcliente(val);
-}
-
-
-void AlbaranClienteView::pintaidforma_pago(QString val) {
-    m_forma_pago->setidforma_pago(val);
-}
-
-
-void AlbaranClienteView::pintaidalmacen(QString id) {
-    m_almacen->setidalmacen(id);
-}
-
-
-void AlbaranClienteView::pintaidtrabajador(QString id) {
-    m_trabajador->setidtrabajador(id);
-}
-
-
-void AlbaranClienteView::pintadescalbaran(QString val) {
-    m_descalbaran->setText(val);
-}
-
-
-void AlbaranClienteView::pintarefalbaran(QString val) {
-    m_refalbaran->setText(val);
-}
-
-
-void AlbaranClienteView::pintacontactalbaran(QString val) {
-    m_contactalbaran->setText(val);
-}
-
-
-void AlbaranClienteView::pintatelalbaran(QString val) {
-    m_telalbaran->setText(val);
-}
-
-
-void AlbaranClienteView::pintaprocesadoalbaran(QString id) {
-    if (id == "t" || id == "TRUE") {
-        m_procesadoalbaran->setChecked(TRUE);
-    } else {
-        m_procesadoalbaran->setChecked(FALSE);
-    } // end if
-}
-
-
-int AlbaranClienteView::borrar() {
-    return AlbaranCliente::borrar();
-}
-
-
-void AlbaranClienteView::on_mui_guardar_clicked() {
-    guardar();
-}
 
 
 /// Este slot se activa cuando hay cambios en los subformularios.
 void AlbaranClienteView::s_pintaTotales() {
     calculaypintatotales();
-}
-
-
-void AlbaranClienteView::on_mui_imprimir_clicked() {
-    imprimir();
 }
 
 
@@ -553,5 +417,66 @@ void AlbaranClienteView::on_m_descuentos_editFinish(int, int) {
 
 void AlbaranClienteView::on_subform2_editFinish(int, int) {
     calculaypintatotales();
+}
+
+
+
+/** Metodo de borrar un albaran. Se encarga de mandar a la base de datos
+    la instruccion necesaria para el borrado de un albaran y controlar
+    los posibles errores que se produzcan.
+    Tambi&eacute;n borra todas las lineas y las lineas de descuento que se refieren
+    a el albaran que se pretende borrar.
+*/
+/// \todo: Este metodo deberia poderse delegar en DBRecord, o por lo menos la parte del borrado del registro.
+/// \todo: Hace falta meter el metodo dentro del sistema de excepciones try catch.
+int AlbaranClienteView::borrarPre() {
+    _depura("AlbaranClienteView::borrar", 0);
+        m_listalineas->borrar();
+        m_listadescuentos->borrar();
+    _depura("END AlbaranClienteView::borrar", 0);
+    return 0;
+}
+
+
+
+/** Este m&eacute;todo carga un AlbaranCliente. Tambi&eacute;n carga las lineas
+    de albar&aacute;n y los descuentos de albar&aacute;n.
+    Tras la carga tambi&eacute;n invoca un repintado del albaran para que se vea
+    correctamente la pantalla.
+*/
+int AlbaranClienteView::cargarPost(QString idalbaran)  {
+    _depura("AlbaranClienteView::cargar", 0);
+
+    m_listalineas->cargar(idalbaran);
+    m_listadescuentos->cargar(idalbaran);
+
+    /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
+    g_plugins->lanza ( "AlbaranCliente_cargarPost_Post", this );
+
+    calculaypintatotales();
+    _depura("Fin AlbaranClienteView::cargar", 0);
+    return 0;
+}
+
+
+/** Este m&eacute;todo se encarga de hacer el guardado del albar&aacute; en la
+    base de datos. Una vez guardado se guardan las lineas de albar&aacute;n y los
+    descuentos de albar&aacute;n. Tras hacer el guardado se hace una carga del albaran
+    para recuperar los datos que haya podido escribir la base de datos automaticamente.
+    Dichos datos son la referencia y el n&uacute;mero de albar&aacute;n.
+
+    Si todo funciona bien este m&eacute;todo devuelve 0. Si se produce algun error
+    se genera una excepcion -1.
+*/
+int AlbaranClienteView::guardarPost() {
+    _depura("AlbaranClienteView::guardarPost", 0);
+
+	m_listalineas->setColumnValue("idalbaran", DBvalue("idalbaran"));
+        m_listalineas->guardar();
+	m_listadescuentos->setColumnValue("idalbaran", DBvalue("idalbaran"));
+        m_listadescuentos->guardar();
+
+    _depura("END AlbaranClienteView::guardarPost", 0);
+	return 0;
 }
 

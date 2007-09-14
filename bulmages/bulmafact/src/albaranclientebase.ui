@@ -104,7 +104,7 @@
         </widget>
        </item>
        <item row="1" column="1" >
-        <widget class="QTextEdit" name="m_comentprivalbaran" >
+        <widget class="QTextEdit" name="mui_comentprivalbaran" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>7</hsizetype>
@@ -116,7 +116,7 @@
         </widget>
        </item>
        <item row="1" column="0" >
-        <widget class="QTextEdit" name="m_comentalbaran" >
+        <widget class="QTextEdit" name="mui_comentalbaran" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>7</hsizetype>
@@ -510,7 +510,7 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaReferencia" name="m_refalbaran" >
+         <widget class="BusquedaReferencia" name="mui_refalbaran" >
           <property name="minimumSize" >
            <size>
             <width>150</width>
@@ -599,7 +599,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="m_descalbaran" >
+      <widget class="QLineEdit" name="mui_descalbaran" >
        <property name="minimumSize" >
         <size>
          <width>190</width>
@@ -635,7 +635,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="m_numalbaran" >
+      <widget class="QLineEdit" name="mui_numalbaran" >
        <property name="sizePolicy" >
         <sizepolicy>
          <hsizetype>0</hsizetype>
@@ -1401,7 +1401,7 @@
        <number>5</number>
       </property>
       <item rowspan="3" row="2" column="0" colspan="2" >
-       <widget class="BusquedaCliente" native="1" name="m_cliente" >
+       <widget class="BusquedaCliente" native="1" name="mui_idcliente" >
         <property name="sizePolicy" >
          <sizepolicy>
           <hsizetype>7</hsizetype>
@@ -1419,7 +1419,7 @@
        </widget>
       </item>
       <item row="3" column="3" >
-       <widget class="BusquedaTrabajador" native="1" name="m_trabajador" >
+       <widget class="BusquedaTrabajador" native="1" name="mui_idtrabajador" >
         <property name="minimumSize" >
          <size>
           <width>150</width>
@@ -1487,7 +1487,7 @@
        </widget>
       </item>
       <item row="4" column="3" >
-       <widget class="BusquedaFecha" native="1" name="m_fechaalbaran" >
+       <widget class="BusquedaFecha" native="1" name="mui_fechaalbaran" >
         <property name="minimumSize" >
          <size>
           <width>150</width>
@@ -1526,7 +1526,7 @@
        </widget>
       </item>
       <item row="5" column="3" >
-       <widget class="BusquedaFormaPago" native="1" name="m_forma_pago" >
+       <widget class="BusquedaFormaPago" native="1" name="mui_idforma_pago" >
         <property name="minimumSize" >
          <size>
           <width>150</width>
@@ -1568,7 +1568,7 @@
        </widget>
       </item>
       <item row="6" column="3" >
-       <widget class="BusquedaAlmacen" native="1" name="m_almacen" >
+       <widget class="BusquedaAlmacen" native="1" name="mui_idalmacen" >
         <property name="minimumSize" >
          <size>
           <width>150</width>
@@ -1607,10 +1607,10 @@
        </widget>
       </item>
       <item row="6" column="1" >
-       <widget class="QLineEdit" name="m_telalbaran" />
+       <widget class="QLineEdit" name="mui_telalbaran" />
       </item>
       <item row="5" column="1" >
-       <widget class="QLineEdit" name="m_contactalbaran" />
+       <widget class="QLineEdit" name="mui_contactalbaran" />
       </item>
       <item row="5" column="0" >
        <widget class="QLabel" name="label14" >
@@ -1642,7 +1642,7 @@
        </widget>
       </item>
       <item rowspan="2" row="0" column="0" colspan="2" >
-       <widget class="QCheckBox" name="m_procesadoalbaran" >
+       <widget class="QCheckBox" name="mui_procesadoalbaran" >
         <property name="sizePolicy" >
          <sizepolicy>
           <hsizetype>5</hsizetype>
@@ -1691,6 +1691,16 @@
  <layoutdefault spacing="2" margin="2" />
  <customwidgets>
   <customwidget>
+   <class>BusquedaTrabajador</class>
+   <extends>QWidget</extends>
+   <header>busquedatrabajador.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ListLinAlbaranClienteView</class>
+   <extends>QWidget</extends>
+   <header>listlinalbaranclienteview.h</header>
+  </customwidget>
+  <customwidget>
    <class>BusquedaReferencia</class>
    <extends>QLineEdit</extends>
    <header>busquedareferencia.h</header>
@@ -1719,16 +1729,6 @@
    <class>BusquedaFecha</class>
    <extends>QWidget</extends>
    <header>../../../bulmalib/src/busquedafecha.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaTrabajador</class>
-   <extends>QWidget</extends>
-   <header>busquedatrabajador.h</header>
-  </customwidget>
-  <customwidget>
-   <class>ListLinAlbaranClienteView</class>
-   <extends>QWidget</extends>
-   <header>listlinalbaranclienteview.h</header>
   </customwidget>
  </customwidgets>
  <resources>

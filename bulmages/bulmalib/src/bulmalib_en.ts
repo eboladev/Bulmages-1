@@ -94,7 +94,7 @@
     <message>
         <location filename="ficha.cpp" line="107"/>
         <source>Desea eliminar &apos;</source>
-        <translation>Desea eliminar &apos;</translation>
+        <translation>Wishes to eliminate &apos;</translation>
     </message>
     <message>
         <location filename="ficha.cpp" line="117"/>
@@ -136,7 +136,7 @@
     <message>
         <location filename="pgimportfiles.cpp" line="1768"/>
         <source>&lt;LI&gt;Datos insuficientes para tratar la forma de pago.</source>
-        <translation>&lt;LI&gt;Datos insuficientes para tratar la forma de pago.</translation>
+        <translation>&lt;LI&gt;Insufficient data to treat the mode of payment.</translation>
     </message>
     <message>
         <location filename="pgimportfiles.cpp" line="1777"/>
@@ -191,7 +191,7 @@
     <message>
         <location filename="pgimportfiles.cpp" line="2005"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando DPedidoCliente </source>
-        <translation>&lt;HR&gt;&lt;B&gt;Treating D Requested Client </translation>
+        <translation>&lt;HR&gt;&lt;B&gt;Treating DRequested Client </translation>
     </message>
     <message>
         <location filename="pgimportfiles.cpp" line="2019"/>
@@ -330,7 +330,7 @@
     <message>
         <location filename="pgimportfiles.cpp" line="1945"/>
         <source>&lt;P&gt;Datos insuficientes para tratar el articulo.&lt;/P&gt;</source>
-        <translation>&lt;P&gt;Insufficient data to treat I articulate.&lt;/P&gt;</translation>
+        <translation>&lt;P&gt;Insufficient data to treat Article.&lt;/P&gt;</translation>
     </message>
     <message>
         <location filename="pgimportfiles.cpp" line="1954"/>
@@ -624,7 +624,7 @@ Consulta SQL</translation>
     <message>
         <location filename="funcaux.cpp" line="316"/>
         <source>&amp;Omitir</source>
-        <translation>&amp;omit</translation>
+        <translation>&amp;Omit</translation>
     </message>
     <message>
         <location filename="funcaux.cpp" line="317"/>

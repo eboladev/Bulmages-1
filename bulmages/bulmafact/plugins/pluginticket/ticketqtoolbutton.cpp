@@ -100,13 +100,13 @@ void TicketQToolButton::click() {
         file.write ( "\n", 1);
 
         file.write( QString("Trabajador: ").toAscii());
-        file.write( m_albaranClienteView->m_trabajador->currentText().toAscii());
+        file.write( m_albaranClienteView->mui_idtrabajador->currentText().toAscii());
         file.write ( "\n", 1);
 
         file.write( QString("Cliente: ").toAscii());
-        file.write( m_albaranClienteView->m_cliente->cifcliente().toAscii());
+        file.write( m_albaranClienteView->mui_idcliente->cifcliente().toAscii());
         file.write ( " ", 1);
-        file.write( m_albaranClienteView->m_cliente->nomcliente().toAscii());
+        file.write( m_albaranClienteView->mui_idcliente->nomcliente().toAscii());
         file.write ( "\n", 1);
 
 

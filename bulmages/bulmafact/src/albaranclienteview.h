@@ -36,8 +36,7 @@
 #include "busquedaalmacen.h"
 #include "busquedatrabajador.h"
 #include "ui_albaranclientebase.h"
-#include "albarancliente.h"
-#include "ficha.h"
+#include "fichabf.h"
 
 
 class company;
@@ -48,45 +47,27 @@ class company;
     Se encarga del control de la pantalla de albaranes a clientes, el paso de mensajes y la visualizacion.
     Contiene todos los metodos de pintado que son llamados desde AlbaranCliente.
 */
-class AlbaranClienteView : public AlbaranCliente, public Ui_AlbaranClienteBase {
+class AlbaranClienteView : public FichaBf, public Ui_AlbaranClienteBase {
     Q_OBJECT
 
 public:
+    virtual int guardarPost();
+    virtual int borrarPre();
+    virtual int cargarPost(QString);
     AlbaranClienteView(Company *, QWidget *);
     ~AlbaranClienteView();
     void inicializar();
-    void pintaIdAlbaran(QString);
-    void pintaNumAlbaran(QString val);
-    void pintafechaalbaran(QString val);
-    void pintaIdUsuario(QString);
-    void pintaComentAlbaran(QString val);
-    void pintaComentPrivAlbaran(QString val);
-    void pintaidcliente(QString val);
-    void pintaidforma_pago(QString val);
-    void pintaIdFactura(QString);
-    void pintaidalmacen(QString id);
-    void pintaidtrabajador(QString id);
-    void pintadescalbaran(QString val);
-    void pintarefalbaran(QString val);
-    void pintacontactalbaran(QString val);
-    void pintatelalbaran(QString val);
-    void pintaprocesadoalbaran(QString id);
-    void pintaNumFactura(QString);
+
     void pintatotales(Fixed, Fixed, Fixed, Fixed, Fixed, Fixed);
     void generarFactura();
     void agregarFactura();
-    /// Estos m&eacute;todos deben existir para poder trabajar con la clase Ficha.
-    virtual int guardar();
-    virtual int cargar(QString id);
-    virtual int borrar();
+
 
 public slots:
-    virtual void on_mui_guardar_clicked();
     /// Este slot se activa cuando hay cambios en los subformularios.
     virtual void s_pintaTotales();
     virtual void s_verpresupuesto();
     virtual void on_mui_verpedidocliente_clicked();
-    virtual void on_mui_imprimir_clicked();
     virtual void on_mui_facturar_clicked();
     virtual void on_mui_agregarafactura_clicked();
     virtual void on_m_descuentos_editFinish(int, int);

@@ -193,7 +193,7 @@ void FacturaView::on_mui_agregaralbaran_clicked() {
     bud->cargar(idalbaran);
 
     /// Agregamos a comentarios que albaran se corresponde.
-    QString comm = DBvalue("comentfactura") + "(" + tr("ALBARAN: Num ") + bud->numalbaran() + tr("Ref:") + " " + bud->refalbaran() + tr("Fecha:") + " " + bud->fechaalbaran() + ")\n";
+    QString comm = DBvalue("comentfactura") + "(" + tr("ALBARAN: Num ") + bud->DBvalue("numalbaran") + tr("Ref:") + " " + bud->DBvalue("refalbaran") + tr("Fecha:") + " " + bud->DBvalue("fechaalbaran") + ")\n";
 
     setDBvalue("comentfactura", comm);
     pintar();
@@ -218,7 +218,7 @@ void FacturaView::on_mui_agregaralbaran_clicked() {
     } // end for
 
     /// Procesamos el albaran.
-    bud->m_procesadoalbaran->setChecked(TRUE);
+    bud->mui_procesadoalbaran->setChecked(TRUE);
     bud->guardar();
     delete bud;
 
@@ -297,7 +297,7 @@ int FacturaView::cargarPost ( QString idbudget )
     m_listadescuentos->cargar ( idbudget );
 
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
-    g_plugins->lanza ( "Factura_cargar_Post", this );
+    g_plugins->lanza ( "FacturaView_cargarPost_Post", this );
 
     calculaypintatotales();
 

@@ -198,16 +198,16 @@ void PresupuestoView::generarPedidoCliente() {
 
     /// Traspasamos toda la informacion del presupuesto al pedido.
     recogeValores();
-    bud->setidcliente(DBvalue("idcliente"));
-    bud->setcomentpedidocliente(DBvalue("comentpresupuesto"));
-    bud->setdescpedidocliente(DBvalue("descpresupuesto"));
-    bud->setfechapedidocliente(DBvalue("fpresupuesto"));
-    bud->setidforma_pago(DBvalue("idforma_pago"));
-    bud->setrefpedidocliente(DBvalue("refpresupuesto"));
-    bud->setprocesadopedidocliente(DBvalue("procesadopresupuesto"));
-    bud->setidalmacen(DBvalue("idalmacen"));
-    bud->setcontactpedidocliente(DBvalue("contactpresupuesto"));
-    bud->settelpedidocliente(DBvalue("telpresupuesto"));
+    bud->setDBvalue("idcliente", DBvalue("idcliente"));
+    bud->setDBvalue("comentpedidocliente", DBvalue("comentpresupuesto"));
+    bud->setDBvalue("descpedidocliente", DBvalue("descpresupuesto"));
+    bud->setDBvalue("fechapedidocliente", DBvalue("fpresupuesto"));
+    bud->setDBvalue("idforma_pago", DBvalue("idforma_pago"));
+    bud->setDBvalue("refpedidocliente", DBvalue("refpresupuesto"));
+    bud->setDBvalue("procesadopedidocliente", DBvalue("procesadopresupuesto"));
+    bud->setDBvalue("idalmacen", DBvalue("idalmacen"));
+    bud->setDBvalue("contactpedidocliente", DBvalue("contactpresupuesto"));
+    bud->setDBvalue("telpedidocliente", DBvalue("telpresupuesto"));
 
     /// Traspasamos las lineas del presupuesto a lineas del pedido.
     SDBRecord *linea;
