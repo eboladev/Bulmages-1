@@ -27,6 +27,7 @@ canalview::canalview(Empresa  *emp, QWidget *parent)
         : FichaBc(emp, parent) {
     _depura("canalview::canalview", 0);
 
+    setTitleName(tr("Canal"));
     /// EStablezco cual es la tabla en la que basarse para los permisos
     setDBTableName("canal");
 

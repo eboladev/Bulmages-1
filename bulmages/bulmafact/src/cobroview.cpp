@@ -49,6 +49,7 @@ CobroView::CobroView(Company *comp, QWidget *parent)
         mui_refcobro->setEmpresaBase(comp);
         mui_idbanco->setEmpresaBase(comp);
 
+    setTitleName(tr("Cobro"));
     setDBTableName("cobro");
     setDBCampoId("idcobro");
     addDBCampo("idcobro", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Cobro", "ID cobro"));

@@ -31,6 +31,7 @@
 
 Presupuesto::Presupuesto(Company *comp, QWidget *parent) : FichaBf(comp, parent) {
     _depura("Presupuesto::Presupuesto", 0);
+    setTitleName(tr("Presupuesto"));
     setDBTableName("presupuesto");
     setDBCampoId("idpresupuesto");
     addDBCampo("idpresupuesto", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Presupuesto", "ID Presupuesto"));

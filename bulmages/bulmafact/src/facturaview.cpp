@@ -48,10 +48,11 @@
 FacturaView::FacturaView(Company *comp, QWidget *parent)
         : FichaBf ( comp, parent ) {
     _depura("FacturaView::FacturaView", 0);
+    setupUi(this);
     setAttribute(Qt::WA_DeleteOnClose);
     try {
-        setupUi(this);
 
+        setTitleName(tr("Factura"));
         setDBTableName ( "factura" );
         setDBCampoId ( "idfactura" );
         addDBCampo ( "idfactura", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "Factura", "Id factura" ) );

@@ -44,6 +44,7 @@ ListConfiguracionView::ListConfiguracionView(Company *comp, QWidget *parent) : F
     _depura("ListConfiguracionView::ListConfiguracionView", 1);
     setupUi(this);
 
+    setTitleName(tr("Configuracion"));
     setDBTableName("configuracion");
     setDBCampoId("nombre");
 

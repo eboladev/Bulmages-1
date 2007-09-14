@@ -31,6 +31,8 @@
 
 Ficha::Ficha(QWidget *parent, Qt::WFlags f, edmode modo) : BLWidget(parent, f), DBRecord(NULL), dialogChanges(this) {
     _depura("Ficha::Ficha", 0);
+
+    m_title = windowTitle();
     setContextMenuPolicy(Qt::CustomContextMenu);
     connect (this, SIGNAL(customContextMenuRequested(const QPoint &)), this, SLOT(on_customContextMenuRequested(const QPoint &)));
     m_modo = modo;
@@ -200,7 +202,6 @@ void Ficha::setDBTableName(QString nom) {
     _depura("Ficha::setDBTableName", 0);
     DBRecord::setDBTableName(nom);
 
-
     if (!empresaBase()->has_table_privilege(nom, "INSERT")) {
         /// Buscamos los permisos que tiene el usuario y desactivamos botones.
         QToolButton *b = findChild<QToolButton *>("mui_guardar");
@@ -212,6 +213,11 @@ void Ficha::setDBTableName(QString nom) {
     _depura("END Ficha::setDBTableName", 0);
 }
 
+void Ficha::setTitleName(QString nom) {
+    _depura("Ficha::setTitleName");
+    m_title = nom;
+    _depura("END Ficha::setTitleName");
+}
 
 void Ficha::pintar() {
     _depura("Ficha::pintar", 0);
@@ -305,7 +311,7 @@ int Ficha::cargar(QString id) {
     if (g_plugins->lanza("Ficha_cargar", this)) return 0;
     cargarPost(id);
 
-        setWindowTitle(m_tablename + " " + DBvalue(m_campoid));
+        setWindowTitle(m_title + " " + DBvalue(m_campoid));
         pintar();
         dialogChanges_cargaInicial();
         meteWindow(windowTitle(), this);

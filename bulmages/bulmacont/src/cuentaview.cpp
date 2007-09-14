@@ -26,6 +26,7 @@ CuentaView::CuentaView(Empresa  *emp, QWidget *parent, Qt::WFlags fl)
         : FichaBc(emp, parent, fl) {
     _depura("CuentaView::CuentaView", 0);
 
+    setTitleName(tr("Cuenta"));
     /// Establecemos cual es la tabla en la que basarse para el tema de los permisos
     setDBTableName("cuenta");
 

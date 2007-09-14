@@ -265,6 +265,7 @@ void AlbaranCliente::pintaprocesadoalbaran(QString) {
 */
 AlbaranCliente::AlbaranCliente(Company *comp, QWidget *parent) : FichaBf (comp, parent)  {
     _depura("AlbaranCliente::AlbaranCliente", 0);
+    setTitleName(tr("Albaran"));
     setDBTableName("albaran");
     setDBCampoId("idalbaran");
     addDBCampo("idalbaran", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("AlbaranCliente", "Id albaran"));

@@ -40,7 +40,7 @@
 ListTiposTrabajoView::ListTiposTrabajoView(Company *comp, QWidget *parent)
         : FichaBf(comp, parent) {
     _depura("ListTiposTrabajoView::ListTiposTrabajoView", 1);
-    setDBTableName("almacen");
+    setDBTableName(tr("almacen"));
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     mui_listado->setEmpresaBase(comp);

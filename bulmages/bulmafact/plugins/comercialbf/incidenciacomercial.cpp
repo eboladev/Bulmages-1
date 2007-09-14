@@ -29,6 +29,7 @@
 
 IncidenciaComercial::IncidenciaComercial(Company *comp, QWidget *parent) : FichaBf(comp, parent) {
     _depura("IncidenciaComercial::IncidenciaComercial", 0);
+    setTitleName(tr("Incidencia Comercial"));
     setDBTableName("incidenciacomercial");
     setDBCampoId("idincidenciacomercial");
     addDBCampo("idincidenciacomercial", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("IncidenciaComercial", "Identificador"));

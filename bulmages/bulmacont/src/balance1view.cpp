@@ -58,6 +58,7 @@ BalanceTreeView::BalanceTreeView(Empresa *emp, QWidget *parent, int)
     setupUi(this);
     _depura("BalanceTreeView::BalanceTreeView", 0);
 
+    setTitleName(tr("Asiento Contable"));
     /// Establecemos cual es la tabla en la que basarse para los permisos
     setDBTableName("asiento");
 

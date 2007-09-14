@@ -33,6 +33,7 @@ typedef QMap<QString, Fixed> base;
 
 RegistroIva::RegistroIva(Empresa *comp, QWidget *parent) : FichaBc(comp, parent) {
     _depura("RegistroIva::RegistroIva", 0);
+    setTitleName(tr("Registro IVA"));
     setDBTableName("registroiva");
     setDBCampoId("idregistroiva");
     addDBCampo("idregistroiva", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador");

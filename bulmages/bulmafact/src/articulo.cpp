@@ -32,6 +32,7 @@
 */
 Articulo::Articulo(Company *comp, QWidget *parent, Qt::WFlags f ) : FichaBf(comp, parent, f) {
   _depura("Articulo::Articulo", 0);
+  setTitleName(tr("Articulo"));
   setDBTableName("articulo");
   setDBCampoId("idarticulo");
   addDBCampo("idarticulo", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Articulo", "Identificador"));

@@ -30,6 +30,7 @@ tipoivaview::tipoivaview(Empresa *emp, QWidget *parent)
         : FichaBc(emp, parent) {
     _depura("tipoivaview::tipoivaview", 0);
 
+    setTitleName(tr("Tipo IVA"));
     /// Establecemos cual es la tabla en la que basarse para los permisos
     setDBTableName("tipo_iva");
 

@@ -35,6 +35,7 @@
 BancoView::BancoView(Company *emp, QWidget *parent)
         : FichaBf(emp, parent) {
     _depura("BancoView::BancoView", 0);
+    setTitleName(tr("Banco"));
     /// Indicamos que vamos a operar con la tabla banco para que los permisos se traten adecuadamente.
     setDBTableName("banco");
     setAttribute(Qt::WA_DeleteOnClose);

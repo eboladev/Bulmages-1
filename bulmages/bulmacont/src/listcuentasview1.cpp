@@ -44,6 +44,7 @@ listcuentasview1::listcuentasview1(Empresa *emp, QWidget *parent, Qt::WFlags fla
     _depura("listcuentasview1::listcuentasview1", 0);
     setupUi(this);
 
+    setTitleName(tr("Cuenta"));
     /// Establezco cual es la tabla en la que basarse para el sistema de permisos
     setDBTableName("cuenta");
 

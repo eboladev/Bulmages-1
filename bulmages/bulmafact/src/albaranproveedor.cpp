@@ -29,6 +29,7 @@
 AlbaranProveedor::AlbaranProveedor(Company *comp, QWidget *parent)
         : FichaBf(comp, parent) {
     _depura("AlbaranProveedor::AlbaranProveedor", 0);
+    setTitleName(tr("Albaran Proveedor"));
     setDBTableName("albaranp");
     setDBCampoId("idalbaranp");
     addDBCampo("idalbaranp", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("AlbaranProveedor", "Id albaran proveedor"));

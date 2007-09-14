@@ -33,6 +33,7 @@ VehiculoView::VehiculoView(Company *emp, QWidget *parent)
     mui_listadomantvehiculo->setEmpresaBase(emp);
 
     /// Inicializamos la clase para la base de datos.
+    setTitleName(tr("Vehiculo"));
     setDBTableName("vehiculo");
     setDBCampoId("idvehiculo");
     addDBCampo("idvehiculo", DBCampo::DBint, DBCampo::DBPrimaryKey, tr("idvehiculo"));

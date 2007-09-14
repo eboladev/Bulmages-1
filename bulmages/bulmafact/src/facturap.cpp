@@ -33,6 +33,7 @@
 */
 FacturaProveedor::FacturaProveedor(Company *comp, QWidget *parent) : FichaBf(comp, parent) {
     _depura("FacturaProveedor::FacturaProveedor", 0);
+    setTitleName(tr("Factura Proveedor"));
     setDBTableName("facturap");
     setDBCampoId("idfacturap");
     addDBCampo("idfacturap", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("FacturaProveedor", "Id facturap"));

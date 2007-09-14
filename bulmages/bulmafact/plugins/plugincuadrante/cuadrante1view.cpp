@@ -47,6 +47,7 @@ Cuadrante1View::Cuadrante1View(Company *comp, QWidget *parent)
         /// Lanzamos los plugins.
         if (g_plugins->lanza("Cuadrante1View_Cuadrante1View", this)) return;
 
+        setTitleName(tr("Cuadrante"));
         setDBTableName("cuadrante");
         setDBCampoId("idcuadrante");
         addDBCampo("idcuadrante", DBCampo::DBint, DBCampo::DBPrimaryKey, tr( "ID cuadrante"));

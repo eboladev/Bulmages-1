@@ -42,6 +42,7 @@
 ListTipoIVAView::ListTipoIVAView(Company *comp, QWidget *parent)
         : FichaBf(comp, parent) {
     _depura("ListTipoIVAView::ListTipoIVAView", 1);
+    setTitleName(tr("Tipo IVA"));
     setDBTableName("tipo_iva");
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);

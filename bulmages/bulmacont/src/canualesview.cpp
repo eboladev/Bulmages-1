@@ -32,6 +32,7 @@
 CAnualesView::CAnualesView(Empresa  *emp, QWidget *parent)
         : FichaBc(emp, parent) {
     _depura("CAnualesView::CAnualesView", 0);
+    setTitleName(tr("Cuentas Anuales"));
     /// Establecemos cual va a ser la tabla en la que basarse para los permisos
     setDBTableName("asiento");
 

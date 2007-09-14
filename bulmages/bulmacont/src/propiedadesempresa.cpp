@@ -29,6 +29,7 @@ propiedadesempresa::propiedadesempresa(Empresa *emp, QWidget *parent)
         : FichaBc(emp, parent) {
     _depura("propiedadesempresa::propiedadesempresa", 0);
 
+    setTitleName(tr("Configuracion"));
     /// Establecemos cual es la tabla en la que basarse para los permisos
     setDBTableName("configuracion");
 

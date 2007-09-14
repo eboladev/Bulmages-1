@@ -31,6 +31,7 @@
     Prepara el DBRecord para trabajar con la tabla cliente. */
 Cliente::Cliente(Company *comp, QWidget *parent) : FichaBf(comp, parent) {
     _depura("Cliente::Cliente", 0);
+    setTitleName(tr("Cliente"));
     setDBTableName("cliente");
     setDBCampoId("idcliente");
     addDBCampo("idcliente", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Cliente", "ID cliente"));

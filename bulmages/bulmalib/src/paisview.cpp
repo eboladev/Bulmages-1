@@ -56,6 +56,7 @@ PaisView::PaisView(EmpresaBase *emp, QWidget *parent)
     mui_listprovincias->setSortingEnabled(TRUE);
 
     /// Establecemos cual es la tabla en la que basarse para los permisos
+    setTitleName(tr("Pais"));
     setDBTableName("pais");
     setDBCampoId("idpais");
     addDBCampo("idpais", DBCampo::DBint, DBCampo::DBPrimaryKey, tr("idpais"));

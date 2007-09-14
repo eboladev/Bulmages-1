@@ -33,6 +33,7 @@ FPagoView::FPagoView(Company *emp,QWidget *parent)
     _depura("FPagoView::FPagoView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
+    setTitleName(tr("Forma de Pago"));
     setDBTableName("forma_pago");
     setModoEdicion();
     m_cursorFPagoView = NULL;

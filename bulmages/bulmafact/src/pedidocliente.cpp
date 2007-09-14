@@ -29,6 +29,7 @@
 
 PedidoCliente::PedidoCliente(Company *comp, QWidget *parent) : FichaBf(comp, parent) {
     _depura("PedidoCliente::PedidoCliente", 0);
+    setTitleName(tr("Pedido Cliente"));
     setDBTableName("pedidocliente");
     setDBCampoId("idpedidocliente");
     addDBCampo("idpedidocliente", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("PedidoCliente", "Identificador"));

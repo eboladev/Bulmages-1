@@ -42,6 +42,7 @@
 ListTasaIVAView::ListTasaIVAView(Company *comp, QWidget *parent)
         : FichaBf(comp, parent) {
     _depura("ListTasaIVAView::ListTasaIVAView", 1);
+    setTitleName(tr("Tasa IVA"));
     setDBTableName("tasa_iva");
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);

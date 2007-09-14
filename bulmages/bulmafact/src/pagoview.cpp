@@ -49,6 +49,7 @@ PagoView::PagoView(Company *comp, QWidget *parent)
         mui_refpago->setEmpresaBase(comp);
         mui_idbanco->setEmpresaBase(comp);
 
+        setTitleName(tr("Pago"));
         setDBTableName("pago");
         setDBCampoId("idpago");
         addDBCampo("idpago", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Pago", "Id pago"));

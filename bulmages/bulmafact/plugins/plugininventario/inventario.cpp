@@ -29,6 +29,7 @@
 Inventario::Inventario(Company *comp, QWidget *parent) : FichaBf(comp, parent) {
     _depura("Inventario::Inventario", 0);
     companyact = comp;
+    setTitleName(tr("Inventario"));
     setDBTableName("inventario");
     setDBCampoId("idinventario");
     addDBCampo("idinventario", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Inventario", "Identificador inventario"));

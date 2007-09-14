@@ -50,6 +50,7 @@ CuadranteView::CuadranteView(Company *comp, QWidget *parent)
         /// Lanzamos los plugins.
         if (g_plugins->lanza("CuadranteView_CuadranteView", this)) return;
 
+        setTitleName(tr("Almacen"));
         setDBTableName("almacen");
 
         mui_listtrabajadores->setDragEnabled(TRUE);

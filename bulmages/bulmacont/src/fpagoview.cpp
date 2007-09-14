@@ -28,6 +28,7 @@ fpagoview::fpagoview(Empresa *emp, QWidget *parent)
         : FichaBc(emp, parent) {
     _depura("fpagoview::fpagoview", 0);
 
+    setTitleName(tr("Forma de Pago"));
     /// Establecemos cual es la tabla en la que basarse para los permisos
     setDBTableName("fpago");
 

@@ -36,6 +36,7 @@ TarifaView::TarifaView(Company *comp, QWidget *parent)
     _depura("TarifaView::INIT_constructor()\n", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
+    setTitleName(tr("Tarifa"));
     setDBTableName("tarifa");
     setDBCampoId("idtarifa");
     addDBCampo("idtarifa", DBCampo::DBint, DBCampo::DBPrimaryKey, tr("ID tarifa"));

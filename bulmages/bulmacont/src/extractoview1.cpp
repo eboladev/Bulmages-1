@@ -48,6 +48,7 @@ extractoview1::extractoview1(Empresa *emp, QWidget *parent, int) : FichaBc(emp, 
     _depura("extractoview1::extractoview1", 0);
     setupUi(this);
 
+    setTitleName(tr("Extracto de Cuentas"));
     setDBTableName("apunte");
 
     mui_list->setEmpresaBase( emp );

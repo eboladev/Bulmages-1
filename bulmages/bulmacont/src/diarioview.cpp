@@ -46,6 +46,7 @@ DiarioView::DiarioView(Empresa  *emp, QWidget *parent, int)
     _depura("DiarioView::DiarioView", 0);
     setupUi(this);
 
+    setTitleName(tr("Diario"));
     /// Establecemos cual es la tabla en la que basarse para los permisos
     setDBTableName("apunte");
 

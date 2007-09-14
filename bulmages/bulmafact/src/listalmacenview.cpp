@@ -42,6 +42,7 @@
 ListAlmacenView::ListAlmacenView(Company *comp, QWidget *parent)
         : FichaBf(comp, parent) {
     _depura("ListAlmacenView::ListAlmacenView", 1);
+    setTitleName(tr("Almacen"));
     setDBTableName("almacen");
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);

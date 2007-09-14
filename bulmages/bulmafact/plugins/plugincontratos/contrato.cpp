@@ -31,6 +31,7 @@
 */
 Contrato::Contrato(Company *comp, QWidget *parent) : FichaBf(comp, parent) {
     _depura("Contrato::Contrato", 0);
+    setTitleName(tr("Contrato"));
     setDBTableName("contrato");
     setDBCampoId("idcontrato");
     addDBCampo("idcontrato",  DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Contrato", "Id contrato"));

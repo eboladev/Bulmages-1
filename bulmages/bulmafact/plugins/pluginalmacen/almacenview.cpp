@@ -47,7 +47,7 @@ AlmacenView::AlmacenView(Company *comp, QWidget *parent)
 	/// Lanzamos los plugins.
 	if (g_plugins->lanza("AlmacenView_AlmacenView", this)) return;
 
-
+        setTitleName(tr("Almacen"));
         setDBTableName("almacen");
         setDBCampoId("idalmacen");
         addDBCampo("idalmacen", DBCampo::DBint, DBCampo::DBPrimaryKey, tr( "ID almacen"));

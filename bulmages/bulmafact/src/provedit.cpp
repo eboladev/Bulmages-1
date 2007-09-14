@@ -33,6 +33,7 @@ ProveedorView::ProveedorView(Company *comp, QWidget *parent)
     _depura("ProveedorView::ProveedorView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     try {
+        setTitleName(tr("Proveedor"));
         setDBTableName("proveedor");
         setDBCampoId("idproveedor");
         addDBCampo("idproveedor", DBCampo::DBint, DBCampo::DBPrimaryKey, tr("ID proveedor"));

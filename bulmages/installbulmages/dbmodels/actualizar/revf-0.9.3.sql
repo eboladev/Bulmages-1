@@ -278,6 +278,44 @@ SELECT aux();
 DROP FUNCTION aux() CASCADE;
 \echo "Creamos tablas 'pais' y 'provincia'. Se modifica 'cuenta'."
 
+
+
+\echo -n ':: Funcion con restricciones en factura ... '
+SELECT drop_if_exists_proc('restriccionesfactura', '');
+CREATE FUNCTION restriccionesfactura() RETURNS "trigger"
+AS '
+DECLARE
+    asd RECORD;
+
+BEGIN
+    IF NEW.ffactura IS NULL THEN
+	NEW.ffactura := now();
+    END IF;
+    IF NEW.numfactura IS NULL THEN
+	SELECT INTO asd max(numfactura) AS m FROM factura WHERE codigoserie_factura = NEW.codigoserie_factura AND idalmacen = NEW.idalmacen;
+	IF asd.m IS NOT NULL THEN
+	    NEW.numfactura := asd.m + 1;
+	ELSE
+	    NEW.numfactura := 1;
+	END IF;
+    END IF;
+    IF NEW.reffactura IS NULL OR NEW.reffactura = '''' THEN
+	SELECT INTO asd crearef() AS m;
+	IF FOUND THEN
+	    NEW.reffactura := asd.m;
+	END IF;
+    END IF;
+    RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+
+\echo -n ':: Disparador antes de insertar o actualizar una factura ... '
+CREATE TRIGGER restriccionesfacturatrigger
+    BEFORE INSERT OR UPDATE ON factura
+    FOR EACH ROW
+    EXECUTE PROCEDURE restriccionesfactura();
+
 -- ================================== ACTUALIZACION  ===================================
 -- =====================================================================================
 
@@ -289,9 +327,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.9.3-0004'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.9.3-0005'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.3-0004'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.3-0005'');
 	END IF;
 	RETURN 0;
 END;

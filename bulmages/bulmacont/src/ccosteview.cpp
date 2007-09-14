@@ -33,6 +33,7 @@ ccosteview::ccosteview(Empresa  *emp, QWidget *parent)
         : FichaBc(emp, parent) {
     _depura("ccosteview::ccosteview", 0);
 
+    setTitleName(tr("Centro de Coste"));
     /// Etablecemos cual va a ser la tabla para obtener los permisos
     setDBTableName("c_coste");
 

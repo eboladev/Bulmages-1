@@ -47,6 +47,7 @@ AmortizacionView::AmortizacionView(Empresa *emp, QWidget *parent)
     ctaamortizacion->setEmpresaBase(emp);
 
     /// Inicializamos la clase para la base de datos.
+    setTitleName(tr("Amortizacion"));
     setDBTableName("amortizacion");
     setDBCampoId("idamortizacion");
     addDBCampo("nomamortizacion", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Nombre de la amortizacion"));

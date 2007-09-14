@@ -44,6 +44,7 @@ private:
     /// Indica si es modo consulta o modo edicion. (altera el comportamiento del
     /// doble click sobre la lista)
     edmode m_modo;
+    QString m_title;
 
 protected:
     void setModoConsulta();
@@ -63,6 +64,7 @@ public:
     virtual int sacaWindow();
     virtual void meteWindow(QString , QObject *, bool compdup = TRUE);
     void setDBTableName(QString nom);
+    void setTitleName(QString nom);
     virtual void pintar();
     virtual int cargar(QString id);
     virtual int cargarPost(QString id);

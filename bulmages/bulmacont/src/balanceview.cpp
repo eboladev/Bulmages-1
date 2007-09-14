@@ -52,6 +52,7 @@ BalanceView::BalanceView(Empresa *emp, QWidget *parent, int)
     _depura("BalanceView::BalanceView", 0);
     setupUi(this);
 
+    setTitleName(tr("Balance"));
     /// EStablezco cual es la tabla en la que basarse para el sistema de permisos.
     setDBTableName("asiento");
 

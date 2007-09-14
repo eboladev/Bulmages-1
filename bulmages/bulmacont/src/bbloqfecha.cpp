@@ -48,6 +48,7 @@ BbloqFecha::BbloqFecha(Empresa *emp, QWidget *parent)
         : FichaBc(emp, parent) {
     _depura("BbloqFecha::BbloqFecha", 0);
 
+    setTitleName(tr("Bloquear Fechas"));
     /// Establecemos cual es la tabla en la que basarse para obtener permisos
     setDBTableName("asiento");
 

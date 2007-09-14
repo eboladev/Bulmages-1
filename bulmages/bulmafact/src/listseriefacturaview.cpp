@@ -41,6 +41,7 @@
 ListSerieFacturaView::ListSerieFacturaView(Company *comp, QWidget *parent)
         : FichaBf(comp, parent) {
     _depura("INIT_ListSerieFacturaView::ListSerieFacturaView", 1);
+    setTitleName(tr("Serie de Factura"));
     setDBTableName("serie_factura");
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);

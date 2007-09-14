@@ -34,6 +34,7 @@
 
 Asiento1::Asiento1(Empresa *comp, QWidget *parent) : FichaBc (comp, parent) {
     _depura("Asiento1::Asiento1", 0);
+    setTitleName(tr("Asiento Contable"));
     setDBTableName("asiento");
     setDBCampoId("idasiento");
     addDBCampo("idasiento", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Asiento1", "Id asiento"));

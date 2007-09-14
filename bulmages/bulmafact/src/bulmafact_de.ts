@@ -1215,6 +1215,25 @@ Desea crearla?</source>
     </message>
 </context>
 <context>
+    <name>Bulmafact</name>
+    <message>
+        <source>Listo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>BulmaFact</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pulse aceptar para emitir un monton de facturas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pulse aceptar para recibir(destruir) un monton de facturas</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>BusquedaArticuloBase</name>
     <message>
         <source>Form1</source>
@@ -1521,14 +1540,6 @@ Desea crearla?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Regimen fiscal</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Forma de pago</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Aplicar Recargo de Equivalencia</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1537,19 +1548,19 @@ Desea crearla?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Imprimir</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Ctrl+D</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Ctrl+P</source>
+        <source>Cobros</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cobros</source>
+        <source>Regimen fiscal:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Forma de pago:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1636,15 +1647,6 @@ Desea crearla?</source>
     </message>
     <message>
         <source>Error al cargar el cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edicion de clientes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Esta a punto de borrar un cliente.
-Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1842,10 +1844,6 @@ Esta seguro que desea borrarlo?</source>
         <source>Error al crear el cobro</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Cobro</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>CobrosList</name>
@@ -2029,6 +2027,57 @@ Esta seguro que desea borrarlo?</source>
     </message>
     <message>
         <source>Fecha de vencimiento</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Company</name>
+    <message>
+        <source>Inicializando listado de Articulos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Inicializando listado de Proveedores</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Inicializando listado de Clientes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Inicializando listado de Presupuestos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Inicializando listado de Pedidos Cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Inicializando listado de Albaranes Cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Inicializando listado de Facturas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Inicializando listado de Cobros</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Inicializando listado de Pedidos Proveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Inicializando listado de Albaranes Proveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Inicializando listado de Facturas Proveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Inicializando listado de Pagos</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2487,10 +2536,6 @@ Esta seguro que desea borrarlo?</source>
 </context>
 <context>
     <name>FacturaView</name>
-    <message>
-        <source>Factura</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>ALBARAN: Num </source>
         <translation type="unfinished"></translation>
@@ -3566,33 +3611,9 @@ Esta seguro que desea borrarlo?</source>
 </context>
 <context>
     <name>ListProvinciasBase</name>
-    <message>
-        <source>Provincias</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Cerrar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Nuevo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Borrar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Guardar</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>ListProvinciasView</name>
-    <message>
-        <source>Provincia</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>ListSerieFacturaBase</name>
@@ -3778,10 +3799,6 @@ Esta seguro que desea borrarlo?</source>
     <name>PagoView</name>
     <message>
         <source>Error al crear el pago</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pago</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4825,6 +4842,10 @@ Desea crearlo?</source>
         <source>Total Desc.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Presupuesto </source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PresupuestoClienteBase</name>
@@ -5074,10 +5095,6 @@ Desea crearlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Presupuesto</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Pedido existente</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5203,10 +5220,6 @@ Desea crearlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Nuevo proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Guardar proveedor</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5232,10 +5245,6 @@ Desea crearlo?</source>
     </message>
     <message>
         <source>Resumen por articulos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ctrl+N</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5511,34 +5520,6 @@ Desea crearlo?</source>
 <context>
     <name>ProveedorView</name>
     <message>
-        <source>Guardar proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Desea guardar los cambios?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Esta a punto de borrar un proveedor. Estos datos pueden dar problemas.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Si</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;No</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Cancelar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Direccion</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5613,37 +5594,9 @@ Desea crearlo?</source>
 </context>
 <context>
     <name>Splash</name>
-    <message>
-        <source>&lt;center&gt;&lt;font size=+1 color=&quot;#a3ffa3&quot;&gt;BulmaFact&lt;/font&gt;&amp;nbsp;&lt;font color=&quot;#0000ff&quot;&gt;0.9.3&lt;/font&gt;&lt;/center&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>SubForm2Bf</name>
-    <message>
-        <source>Borrar registro</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ajustar columna</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ajustar altura</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ajustar columnas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ajustar alturas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ver/Ocultar configurador de subformulario</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Articulo inexistente</source>
         <translation type="unfinished"></translation>
@@ -5695,10 +5648,6 @@ Desea crearlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Informacion del trabajador:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Nombre:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5732,6 +5681,10 @@ Desea crearlo?</source>
     </message>
     <message>
         <source>Lista de trabajadores:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>General</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -5802,22 +5755,6 @@ p, li { white-space: pre-wrap; }
 </context>
 <context>
     <name>bulmafact</name>
-    <message>
-        <source>Listo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>BulmaFact</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pulse aceptar para emitir un monton de facturas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pulse aceptar para recibir(destruir) un monton de facturas</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>bulmafactbase</name>
@@ -5859,10 +5796,6 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>F2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pro&amp;vincias</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6061,57 +5994,25 @@ p, li { white-space: pre-wrap; }
         <source>Bancos</source>
         <translation type="unfinished"></translation>
     </message>
+    <message encoding="UTF-8">
+        <source>Organización en Cascada</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ordenar Ventanas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Paises / Provincias</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Paises y Provincias</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>company</name>
-    <message>
-        <source>Inicializando listado de Articulos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Inicializando listado de Proveedores</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Inicializando listado de Clientes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Inicializando listado de Presupuestos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Inicializando listado de Pedidos Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Inicializando listado de Albaranes Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Inicializando listado de Facturas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Inicializando listado de Cobros</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Inicializando listado de Pedidos Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Inicializando listado de Albaranes Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Inicializando listado de Facturas Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Inicializando listado de Pagos</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>familiasbase</name>
