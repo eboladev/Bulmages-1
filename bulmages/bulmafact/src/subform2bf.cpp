@@ -24,6 +24,7 @@
 #include <QKeyEvent>
 #include <QEvent>
 #include <QComboBox>
+#include <QAbstractItemView>
 
 #include "subform2bf.h"
 #include "funcaux.h"
@@ -361,6 +362,15 @@ void SubForm2Bf::setDelete(bool f) {
 }
 
 
+int SubForm2Bf::cerrarEditor() {
+    _depura("SubForm2Bf::cerrarEditor", 0);
+    QWidget *editor = mui_list->QAbstractItemView::indexWidget(mui_list->currentIndex());
+    m_delegate->cerrarEditor(editor);
+    _depura("END SubForm2Bf::cerrarEditor", 0);
+    return 0;
+}
+
+
 /// ===============================================================
 ///  Tratamientos del Item Delegate
 /// ===============================================================
@@ -522,7 +532,7 @@ void QSubForm2BfDelegate::setEditorData(QWidget* editor, const QModelIndex& inde
 bool QSubForm2BfDelegate::eventFilter(QObject *obj, QEvent *event) {
     /// Si es un release de tecla se hace la funcionalidad especificada.
     if (event->type() == QEvent::KeyPress) {
-       _depura("QSubForm2BfDelegate::eventFilter", 0, obj->objectName() + " --> " + QString::number(event->type()));
+        _depura("QSubForm2BfDelegate::eventFilter", 0, obj->objectName() + " --> " + QString::number(event->type()));
         QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
         int key = keyEvent->key();
         _depura("QSubForm2BfDelegate::key = : ", 0, QString::number(key));
@@ -536,7 +546,7 @@ bool QSubForm2BfDelegate::eventFilter(QObject *obj, QEvent *event) {
                 return TRUE;
             } // end if
         case Qt::Key_Tab:
-                return TRUE;
+            return TRUE;
         } // end switch
         return QItemDelegate::eventFilter(obj, event);
     } // end if
@@ -556,7 +566,7 @@ bool QSubForm2BfDelegate::eventFilter(QObject *obj, QEvent *event) {
                 return TRUE;
             } // end if
         case Qt::Key_Tab:
- 	    QApplication::sendEvent(m_subform->mui_list, event);
+            QApplication::sendEvent(m_subform->mui_list, event);
             return TRUE;
         } // end switch
         return QItemDelegate::eventFilter(obj, event);
@@ -565,4 +575,11 @@ bool QSubForm2BfDelegate::eventFilter(QObject *obj, QEvent *event) {
     return QItemDelegate::eventFilter(obj, event);
 }
 
+
+int QSubForm2BfDelegate::cerrarEditor(QWidget *editor) {
+    _depura("QSubForm2BfDelegate::cerrarEditor", 0);
+    emit closeEditor(editor, QAbstractItemDelegate::NoHint);
+    _depura("END QSubForm2BfDelegate::cerrarEditor", 0);
+    return 0;
+}
 

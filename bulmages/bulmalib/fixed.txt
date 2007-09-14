@@ -1,0 +1,148 @@
+A Fixed-Point Arithmetic Package
+
+Title:
+    A Fixed-Point Arithmetic Package 
+Language:
+    C++ 
+Author:
+    Philip J. Erdelsky
+
+        * pje@efgh.com
+        * http://www.alumni.caltech.edu/~pje/ 
+
+Date:
+    December 2, 1998 
+Usage:
+    Public domain; no restrictions on use 
+Portability:
+    Any C++ compiler 
+Keywords:
+    Matrix 
+Abstract:
+    A C++ package to perform fixed-point arithmetic operations. 
+Source:
+    fixed.txt 
+
+1. Introduction
+
+Fixed-point numbers, which have a specified number of digits to the right of the decimal point, are common in many kinds of applications, but they seem to have been omitted from most computer programming libraries.
+
+This package implements fixed-point numbers as instances of a class called fixed. It consists of the library file FIXED.LIB which must be linked to every application that uses it, and the header file FIXED.H, which must be included in every source file that contains any calls on it. The library itself is made by compiling a number of source files and combining the resulting object files into a library. A makefile to do this Borland C++ is included with the source code.
+
+Included with the source code is a test program to perform various operations on fixed-point command-line arguments and display the results.
+
+The precision of a fixed-point number is the number of digits to the right of the decimal point, and it normally stays the same when computations are performed on the number. The maximum value MAX_FIXED_PRECISION is defined in the header file FIXED.H as 15, but you can change this value and recompile the package. Catastrophic failure will occur if the precision is larger than 255, so don't go overboard!
+
+The package stores a fixed-point number internally as an extra-long signed integer of a type called fixed_numerator, which represents the value of the number without its decimal point, together with the precision as an unsigned character. For example, -123.4500 is stored internally as:
+
+    value = 1234500
+    precision = 4 
+
+Notice that trailing zeros, as in this example, have no effect on the mathematical value of a fixed-point number, but they do affect its precision.
+
+You must supply the fixed_numerator type from some other source. The current version of Borland C++ has a 64-bit signed integer type called __int64, which the package uses. You may supply a different type.
+
+The fixed_numerator type must implement the following operators:
+
+    + - * / == != > >= < <= 
+
+Both negation (unary -) and subtraction (binary -) must be supported. It must also implement assignment from a standard integer (int), and a conversion function integer() that will convert a fixed_numerator value to a standard integer (int).
+
+The fixed_numerator type is also responsible for detecting and handling arithmetic overflow, if this is deemed necessary. Notice that overflow may occur in some kinds of operations even though the operands and results are within range. For this reason, the fixed_numerator type should have a capacity considerably larger than the range of expected operand and result values.
+
+The package includes an editing function that needs a buffer to hold the result. The number MAX_FIXED_LENGTH is the size of a buffer just large enough to hold the largest possible number, with a prefixed minus sign, commas, a decimal point, and a terminating nul.
+
+If fixed_numerator is 64-bit signed twos-complement arithmetic, as in the unaltered package, then the largest and smallest possible numbers are -9,223,372,036,854,775,808. and 9,223,372,036,854,775,807., respectively. Hence MAX_FIXED_LENGTH is 28.
+2. Constructors and Assignment
+
+Every fixed-point number must have a precision, which is determined when the number is constructed and is normally not changed dynamically. There are two constructors:
+
+     fixed(x, p);
+
+     int x;            initial value without decimal point
+     int p;            initial precision (default value is zero)
+
+     fixed(s);
+
+     const char *s;    string to be scanned for initial value
+
+
+For example, the following two fixed-point numbers have the same initial value and precision:
+
+     fixed x(1234500, 4);
+
+     fixed y("123.4500");
+
+The package defines two kinds of assignment operators:
+
+     x = n;
+     x = y;
+
+     fixed x, y;
+     int n;
+
+The precision of x is unchanged by assignment. The value to be assigned is truncated (toward zero) or padded with trailing zeros. Here are some examples:
+
+     fixed x(0, 4);
+
+     x = 12345678;             // x becomes 12345678.0000
+
+     x = fixed("-1.2345678");   // x becomes -1.2345
+
+3. Retrieval and Display
+
+The following function edits a fixed-point value to a displayable string form:
+
+     s = x.edit(options);
+
+     fixed x;                a fixed-point variable or expression
+
+     const char *s;          pointer to static buffer containing result
+
+     int options;            any combination of the following:
+
+                               fixed::COMMAS    include commas
+                               fixed::DECIMAL   include decimal point
+                                                even if precision is
+                                                zero
+                               fixed::ALIGN     align decimal points
+
+                             the default value is fixed::COMMAS
+
+
+If the fixed::ALIGN option is included, then the result will be padded with enough leading blanks so the decimal point will appear in the same position, no matter what the value and precision of the fixed-point number.
+
+CAUTION: The function uses the same static buffer for every call. If the result is not to be used immediately, it must be copied elsewhere before the next call on edit(). You may not use more than one call on edit() in the same statement:
+
+     printf("x=%s and y=%s", x.edit(), y.edit());
+     // This will NOT produce the desired result!
+
+The following member function returns, as an integer, the integral part of a fixed-point number:
+
+     n = x.whole();
+
+     fixed x;                a fixed-point variable or expression
+
+     int n;                  value of integral part
+
+For example,
+
+    fixed("1234.567").whole()  produces 1234
+
+4. Operations
+
+The package implements the usual arithmetic operations: addition, subtraction, multiplication, division and negation (unary minus) and the usual comparison operations: ==, !=, >, >=, < and <=. It is permissible to mix precisions, and to mix fixed-point and integer operands. An integer operand is treated as a fixed-point operand with precision 0.
+
+A sum or difference has a precision equal to the higher operand precision.
+
+Comparisons are performed by subtracting the operands and comparing the result to zero. WARNING: Comparison of operands of opposite sign may produce an overflow and invalid results even if the operands themselves are in range!
+
+A product normally has a precision equal to the sum of the precisions of the operands. If this is greater than MAX_FIXED_PRECISION, the result is truncated to MAX_FIXED_PRECISION.
+
+A quotient has the same precision as the dividend.
+
+The precision of a fixed-point number may be changed with the [] operator. If x is a fixed-point variable or expression, then x[p] is the same value with precision p, truncated or padded with zeros. For example:
+
+     fixed x("123.456");
+     x[1]   is  123.4
+     x[4]   is  123.4560

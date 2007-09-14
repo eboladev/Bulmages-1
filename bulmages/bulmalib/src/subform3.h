@@ -73,7 +73,6 @@ protected:
     bool m_ordenporquery;
     /// Indica si procesar cambios en las celdas o no
     bool m_procesacambios;
-
     /// Texto de la celda que se coge para saber si se tienen que unir con RowSpan.
     QString m_textoceldaParaRowSpan;
     /// Define que columna se va a coger para unir las filas que sean iguales.
@@ -110,6 +109,8 @@ public:
     QList<SHeader *> *cabecera();
 
 public:
+    SubForm3(QWidget *parent);
+    virtual ~SubForm3();
     void setProcesarCambios(bool);
     bool procesaCambios();
     /// Define si el listado presentar&aacute; las filas con colores alternativos.
@@ -143,14 +144,11 @@ public:
     /// Establece el modo de borrado de registros que permite al subformulario
     /// borrar filas con su correspondiente borrado en la base de datos.
     void setDelete(bool f);
-    SubForm3(QWidget *parent);
-    virtual ~SubForm3();
     /// Devuelve el elemento del subformulario ubicado en la posici&oacute;n
     /// indicada
     SDBCampo *item(int row, int col);
     /// Pone el foco en una celda determinada.
     void setCurrentItem(int row, int col);
-
     /// Devuelve el n&uacute;mero total de columnas del subformulario.
     int columnCount();
     /// Muestra la columna indicada en el subformulario.
@@ -218,6 +216,7 @@ public:
     virtual void procesaMenu(QAction *);
     virtual Fixed sumarCampo(QString);
     bool existsHeader(const QString &);
+    virtual int cerrarEditor();
 
 public slots:
     virtual void on_mui_list_cellRePosition(int, int);
@@ -239,6 +238,7 @@ public slots:
     virtual void toogleConfig();
     virtual void on_mui_botonCerrar_clicked();
     virtual void on_mui_list_itemChanged(QTableWidgetItem *it);
+
 signals:
     void toogledConfig(bool);
     void editFinish(int, int);

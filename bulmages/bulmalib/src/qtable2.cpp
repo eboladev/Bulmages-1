@@ -30,7 +30,7 @@
 
 /** Constructor de la clase estandar de delegacion para la edicion de elementos
 en el QTable2 */
-QTableItemTextDelegate::QTableItemTextDelegate(QObject *parent=0) : QItemDelegate(parent) {
+QTableItemTextDelegate::QTableItemTextDelegate(QObject *parent = 0) : QItemDelegate(parent) {
     _depura("QTableItemTextDelegate::QTableItemTextDelegate", 0);
     _depura("END QTableItemTextDelegate::QTableItemTextDelegate", 0);
 }
@@ -152,7 +152,6 @@ bool QTableWidgetItem2::operator< (const QTableWidgetItem & other) const {
 }
 
 
-
 int QTableWidget2::tipoorden() {
     return m_tipoorden;
 }
@@ -188,7 +187,6 @@ void QTableWidget2::setSortingEnabled(bool sorting) {
     QTableWidget::setSortingEnabled(sorting);
     _depura("END QTableWidget2::setSortingEnabled", 0);
 }
-
 
 
 /** EventFilter para QTableWidget2, procesa los eventos recibidos por la
@@ -317,11 +315,13 @@ void QTableWidget2::setText(int x, int y, const QString & val) {
     _depura("END QTableWidget::setText", 0);
 }
 
+
 void QTableWidget2::sortByColumn(int column, Qt::SortOrder order) {
     _depura("QTableWidget2::sortByColumn", 0);
     QTableWidget::sortByColumn(column, order);
     _depura("END QTableWidget2::sortByColumn", 0);
 }
+
 
 void QTableWidget2::sortItems(int column, Qt::SortOrder order) {
     _depura("QTableWidget2::sortItems", 0);

@@ -31,6 +31,7 @@
 
 #include "qdoublespinbox2.h"
 
+
 class SubForm2Bf;
 
 
@@ -47,14 +48,17 @@ public:
     virtual void setModelData(QWidget *editor,  QAbstractItemModel *model, const QModelIndex &index) const;
     virtual QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const;
     virtual bool eventFilter(QObject *obj, QEvent *event);
+    virtual int cerrarEditor(QWidget *editor);
 };
 
 
 /// Clase SubForm2Bf
-/** Es la primera abstraccion de los subformularios que incluye todas las caracteristicas comunes de la facturacion
+/** Es la primera abstraccion de los subformularios que incluye todas las caracteristicas
+    comunes de la facturacion.
 */
 class SubForm2Bf : public SubForm3 {
     Q_OBJECT
+
 public:
     QSubForm2BfDelegate *m_delegate;
 
@@ -72,7 +76,7 @@ public:
     virtual void cargar(QString query);
     virtual void setEmpresaBase(EmpresaBase *);
     virtual void on_mui_list_cellChanged(int row, int col);
-
+    virtual int cerrarEditor();
 
 public slots:
     virtual void on_mui_list_pressedSlash(int row, int col);

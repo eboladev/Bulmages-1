@@ -559,8 +559,9 @@ int SubForm3::inicializar() {
     /// Inicializamos las columnas y pintamos las cabeceras.
     mui_list->setColumnCount(m_lcabecera.count());
     pintaCabeceras();
-    if (m_primero)
+    if (m_primero) {
         cargaconfig();
+    } // end if
 
     nuevoRegistro();
     /// Ordenamos la tabla.
@@ -630,7 +631,6 @@ void SubForm3::cargar(cursor2 *cur) {
     /// Desactivamos el sorting debido a un error en las Qt4
     mui_list->setSortingEnabled(FALSE);
 
-
     /// Reseteamos el "rowSpan" de la tabla antes de borrar las filas.
     for (int i = 0; i < m_lista.size(); ++i) {
         reg = m_lista.at(i);
@@ -657,27 +657,26 @@ void SubForm3::cargar(cursor2 *cur) {
     /// Inicializamos las columnas y pintamos las cabeceras.
     mui_list->setColumnCount(m_lcabecera.count());
     pintaCabeceras();
-    if (m_primero)
+    if (m_primero) {
         cargaconfig();
+    } // end if
 
     /// Si hay un problema con el cursor, se sale antes de generar Segmentation Fault.
     if (cur == NULL) return;
 
-
     /// Ponemos la consulta a la vista para que pueda ser editada.
     mui_query->setPlainText(cur->query());
 
-
     /// Tratramos con la paginacion.
     int filpag = mui_filaspagina->text().toInt();
-    if (filpag <= 0)
+    if (filpag <= 0) {
         filpag = 500;
+    } // end if
 
     int pagact = mui_paginaact->text().toInt();
-    if (pagact <= 0)
+    if (pagact <= 0) {
         pagact = 1;
-
-
+    } // end if
 
     /// Ponemos los datos sobre la consulta.
     mui_numfilas->setText(QString::number(cur->numregistros()));
@@ -771,7 +770,6 @@ void SubForm3::cargar(cursor2 *cur) {
                                 colorfondo = m_colorfondo1;
                                 coloraponerfondo = FALSE;
                             } // end if
-
                         } else {
                             /// El registro s&oacute;lo tiene una fila.
                             ponItemColorFondo(mui_list, i - 1, 1, colorfondo);
@@ -852,7 +850,6 @@ SDBRecord *SubForm3::lineaact() {
 SDBRecord *SubForm3::lineaat(int row) {
     _depura("SubForm3::lineaat()", 0, QString::number(row));
     try {
-
         /// Si la lista no tiene suficientes elementos devolvemos NULL
         if (mui_list->rowCount() < row || row < 0) {
             throw -1;
@@ -903,7 +900,6 @@ bool SubForm3::campoCompleto(int row) {
             return FALSE;
         } // end if
 
-
     } // end for
     return TRUE;
     _depura("END SubForm3::campoCompleto", 0);
@@ -925,32 +921,32 @@ void SubForm3::on_mui_list_cellRePosition(int row, int col) {
     } // end if
 
     switch (key) {
+        case Qt::Key_Return:
+        case Qt::Key_Enter:
+        case Qt::Key_Tab:
+            if (!m_insercion) {
+                /// Se ha hecho un enter sobre una tabla sin insercion con lo que lanzamos un doble click para que sea
+                /// La accion simulada.
+                QTableWidgetItem *item = mui_list->currentItem();
+                emit itemDoubleClicked(item);
+                emit cellDoubleClicked(row, col);
+            } else {
+                situarse(row, col);
+            } // end if
+            break;
 
-    case Qt::Key_Return:
-    case Qt::Key_Enter:
-    case Qt::Key_Tab:
-        if (!m_insercion) {
-            /// Se ha hecho un enter sobre una tabla sin insercion con lo que lanzamos un doble click para que sea
-            /// La accion simulada.
-            QTableWidgetItem *item = mui_list->currentItem();
-            emit itemDoubleClicked(item);
-            emit cellDoubleClicked(row, col);
-        } else {
+        case Qt::Key_Down:
             situarse(row, col);
-        } // end if
-        break;
-
-    case Qt::Key_Down:
-        situarse(row, col);
-        situarse1(row, col);
-        if (creado) {
-            mui_list->setCurrentCell(row + 1, col);
-        } // end if
-        break;
+            situarse1(row, col);
+            if (creado) {
+                mui_list->setCurrentCell(row + 1, col);
+            } // end if
+            break;
     } // end switch
 
     _depura("END SubForm3::on_mui_list_cellRePosition", 0);
 }
+
 
 /// M&eacute;todo que se dispara cuando se termina de editar un campo del Subformulario.
 void SubForm3::on_mui_list_cellChanged(int row, int col) {
@@ -1169,10 +1165,17 @@ int SubForm3::borrar(int row) {
             it->set(camp->valorcampo());
         } // end for
 
-        _depura("quitamos la columna del listado", 10);
-        mui_list->removeRow(row);
+        /// Nos aseguramos que ningun campo de la fila a borrar este en modo edicion.
+        /// Evitamos que falle el programa.
+        cerrarEditor();
 
+        mui_list->removeRow(row);
         delete rec;
+
+        /// Comprueba que no haya ninguna linea en el subformulario y crea una en blanco.
+        if (m_insercion == TRUE && rowCount() == 0) {
+            nuevoRegistro();
+        } // end if
 
         /// Terminamos
         _depura("END SubForm3::borrar", 0);
@@ -1183,6 +1186,13 @@ int SubForm3::borrar(int row) {
         _depura("SubForm3::borrar error al borrar", 3);
         throw -1;
     } // end try
+}
+
+
+/// Metodo para ser derivado.
+int SubForm3::cerrarEditor() {
+    _depura("END SubForm3::cerrarEditor", 0);
+    return 0;
 }
 
 

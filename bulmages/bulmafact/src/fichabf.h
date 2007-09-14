@@ -27,11 +27,13 @@
 #include "company.h"
 
 
-/// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base como un QMap.
+/// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
+/// como un QMap.
 typedef QMap<QString, Fixed> base;
 
 class FichaBf : public Ficha {
     Q_OBJECT
+
 public:
     SubForm2Bf *m_listalineas;
     SubForm2Bf *m_listadescuentos;
