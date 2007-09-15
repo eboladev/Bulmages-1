@@ -45,11 +45,31 @@
 
 
 PresupuestoView::PresupuestoView(Company *comp, QWidget *parent)
-        : Presupuesto(comp, parent) {
+        : FichaBf(comp, parent) {
     _depura("Inicializacion de PresupuestoView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     try {
         setupUi(this);
+
+        setTitleName(tr("Presupuesto"));
+        setDBTableName("presupuesto");
+        setDBCampoId("idpresupuesto");
+        addDBCampo("idpresupuesto", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Presupuesto", "ID Presupuesto"));
+        addDBCampo("idcliente", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("Presupuesto", "ID cliente"));
+        addDBCampo("idalmacen", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("Presupuesto", "ID almacen"));
+        addDBCampo("numpresupuesto", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Presupuesto", "Numero de Presupuesto"));
+        addDBCampo("fpresupuesto", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Presupuesto", "Fecha de creacion"));
+        addDBCampo("vencpresupuesto", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Presupuesto", "Fecha de vencimiento"));
+        addDBCampo("contactpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Presupuesto", "Persona de contacto"));
+        addDBCampo("telpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Presupuesto", "Numero de telefono"));
+        addDBCampo("comentpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Presupuesto", "Comentarios"));
+        addDBCampo("procesadopresupuesto", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("Presupuesto", "Presupuesto procesado"));
+        addDBCampo("descpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Presupuesto", "Descuento"));
+        addDBCampo("refpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Presupuesto", "Referencia"));
+        addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Presupuesto", "ID forma de pago"));
+        addDBCampo("idtrabajador", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Presupuesto", "ID trabajador"));
+
+
         /// Disparamos los plugins.
         int res = g_plugins->lanza("PresupuestoView_PresupuestoView", this);
         if (res != 0)
@@ -75,10 +95,10 @@ PresupuestoView::PresupuestoView(Company *comp, QWidget *parent)
         m_totalPresupuestoCliente->setReadOnly(TRUE);
         m_totalPresupuestoCliente->setAlignment(Qt::AlignRight);
         /// Inicializamos la forma de pago para que no se quede sin ser pintada.
-	
-	mui_idforma_pago->setValorCampo("0");
-	mui_idalmacen->setValorCampo("0");
-	mui_idtrabajador->setValorCampo("0");
+
+        mui_idforma_pago->setValorCampo("0");
+        mui_idalmacen->setValorCampo("0");
+        mui_idtrabajador->setValorCampo("0");
 
         meteWindow(windowTitle(), this, FALSE);
         /// Disparamos los plugins por flanco descendente.
@@ -111,10 +131,6 @@ PresupuestoView::~PresupuestoView() {
 
 
 
-void PresupuestoView::on_mui_guardar_clicked() {
-    guardar();
-}
-
 
 void PresupuestoView::s_pintaTotales() {
     calculaypintatotales();
@@ -137,12 +153,6 @@ void PresupuestoView::on_subform2_editFinish(int, int) {
 
 
 
-void PresupuestoView::on_mui_imprimir_clicked() {
-    _depura("PresupuestoView::on_mui_imprimir_clicked", 0);
-    imprimir();
-    _depura("END PresupuestoView::on_mui_imprimir_clicked", 0);
-}
-
 
 void PresupuestoView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq) {
     _depura("PresupuestoView::pintatotales", 0);
@@ -162,7 +172,7 @@ void PresupuestoView::generarPedidoCliente() {
     /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos.
     QString SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + DBvalue("refpresupuesto") + "' AND idcliente = "+DBvalue("idcliente");
     cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
-    if(!cur->eof()) {
+    if (!cur->eof()) {
 
 
         /// Informamos que ya hay una factura y que la abriremos.
@@ -228,7 +238,7 @@ void PresupuestoView::generarPedidoCliente() {
             linea2->setDBvalue("idarticulo", linea->DBvalue("idarticulo"));
             linea2->setDBvalue("codigocompletoarticulo", linea->DBvalue("codigocompletoarticulo"));
             linea2->setDBvalue("nomarticulo", linea->DBvalue("nomarticulo"));
-	    bud->getlistalineas()->setProcesarCambios(TRUE);
+            bud->getlistalineas()->setProcesarCambios(TRUE);
         } // end if
     } // end for
 
@@ -241,10 +251,10 @@ void PresupuestoView::generarPedidoCliente() {
         linea1 = m_listadescuentos->lineaat(i);
         if (linea1->DBvalue("proporciondpresupuesto") != "") {
             linea3 = bud->getlistadescuentos()->lineaat(bud->getlistadescuentos()->rowCount() - 1);
-	    bud->getlistadescuentos()->setProcesarCambios(FALSE);
+            bud->getlistadescuentos()->setProcesarCambios(FALSE);
             linea3->setDBvalue("conceptdpedidocliente", linea1->DBvalue("conceptdpresupuesto"));
             linea3->setDBvalue("proporciondpedidocliente", linea1->DBvalue("proporciondpresupuesto"));
-	    bud->getlistadescuentos()->setProcesarCambios(TRUE);
+            bud->getlistadescuentos()->setProcesarCambios(TRUE);
             bud->getlistadescuentos()->nuevoRegistro();
         } // end if
     } // end for
@@ -258,31 +268,99 @@ void PresupuestoView::generarPedidoCliente() {
 
 
 
-int PresupuestoView::guardar() {
-    _depura("PresupuestoView::guardar", 0);
-    try {
-        /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
-        int res = g_plugins->lanza("PresupuestoView_guardar", this);
-        if (res != 0)
-            return 0;
-        recogeValores();
-        Presupuesto::guardar();
-        /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
-        g_plugins->lanza("PresupuestoView_guardar_Post", this);
-        dialogChanges_cargaInicial();
-    } catch (...) {
-        _depura("PresupuestoView::guardar error al guardar el presupuesto", 0);
-        throw -1;
-    } // end try
-    _depura("END PresupuestoView::guardar", 0);
-    return 0;
-}
 
 
-void PresupuestoView::on_m_cliente_valueChanged(QString id) {
+
+void PresupuestoView::on_mui_idcliente_valueChanged(QString id) {
     _depura("PresupuestoView::on_m_cliente_valueChanged", 0);
     subform2->setIdCliente(id);
     mui_idforma_pago->setIdCliente(id);
     _depura("END PresupuestoView::on_m_cliente_valueChanged", 0);
 }
+
+
+int PresupuestoView::borrarPre() {
+    _depura("PresupuestoView::borrar", 0);
+    /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
+    g_plugins->lanza("Presupuesto_borrarPre", this);
+    m_listalineas->borrar();
+    m_listadescuentos->borrar();
+
+    _depura("END PresupuestoView::borrar", 0);
+    return 0;
+}
+
+
+
+/// Esta funcion carga un Presupuesto.
+int PresupuestoView::cargarPost(QString idbudget) {
+    _depura("PresupuestoView::cargarPost", 0);
+
+    m_listalineas->cargar(idbudget);
+    m_listadescuentos->cargar(idbudget);
+
+    _depura("END PresupuestoView::cargar", 0);
+    return 0;
+}
+
+
+int PresupuestoView::guardarPost() {
+    _depura("PresupuestoView::guardarPost", 0);
+
+    m_listalineas->setColumnValue("idpresupuesto", DBvalue("idpresupuesto"));
+    m_listadescuentos->setColumnValue("idpresupuesto", DBvalue("idpresupuesto"));
+    m_listalineas->guardar();
+    m_listadescuentos->guardar();
+    /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
+    g_plugins->lanza("Presupuesto_guardarPost_Post", this);
+
+    _depura("END PresupuestoView::guardar", 0);
+    return 0;
+}
+
+
+QString PresupuestoView::detalleArticulos() {
+    _depura("PresupuestoView::detalleArticulos", 0);
+    QString texto = "";
+    cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE presentablearticulo AND idpresupuesto=" + DBvalue("idpresupuesto"));
+    int i = 0;
+    while (!cur->eof()) {
+        i = !i;
+        if (i) {
+            texto += "<blockTable style=\"tabladetalle1\" colWidths=\"5cm, 8cm\" rowHeights=\"5.5cm\">\n";
+        } else {
+            texto += "<blockTable style=\"tabladetalle2\" colWidths=\"8cm, 5cm\" rowHeights=\"5.5cm\">\n";
+        } // end if
+        texto += "<tr>\n";
+        if (i) {
+            texto += "<td><h1>" + cur->valor("nomarticulo") + "</h1>";
+            texto += "<para><pre>" + cur->valor("obserarticulo") + "</pre></para></td>\n";
+        } // end if
+        QString file = confpr->valor(CONF_DIR_IMG_ARTICLES) + cur->valor("codigocompletoarticulo") + ".jpg";
+        QFile f(file);
+        if (f.exists()) {
+            texto += "    <td><illustration x=\"0\" y=\"0\" height=\"5cm\">\n"
+                     "        <image file=\"" + confpr->valor(CONF_DIR_IMG_ARTICLES) + cur->valor("codigocompletoarticulo") + ".jpg\" x=\"0\" y=\"0\" height=\"5cm\"/>\n"
+                     "        </illustration></td>\n";
+        } else {
+            texto += "<td></td>\n";
+        } // end if
+        if (!i) {
+            texto += "<td><h1>" + cur->valor("nomarticulo") + "</h1>";
+            texto += "<para><pre>" + cur->valor("obserarticulo") + "</pre></para></td>\n";
+        } // end if
+        texto += "</tr>\n";
+        texto += "</blockTable>";
+        cur->siguienteregistro();
+    } // end while
+    delete cur;
+    _depura("END PresupuestoView::detalleArticulos", 0);
+    return texto;
+}
+
+
+
+
+
+
 

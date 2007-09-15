@@ -362,6 +362,8 @@ int Ficha::borrarPre() {
 */
 int Ficha::borrar() {
     _depura("Ficha::borrar existe solo para ser derivado", 0);
+    /// Lanzamos los plugins.
+    if (g_plugins->lanza("Ficha_borrar", this)) return 0;
     borrarPre();
     return DBRecord::borrar();
 }
@@ -372,7 +374,7 @@ int Ficha::guardarPost() {
 }
 
 
-int Ficha::cargarPost(QString id) {
+int Ficha::cargarPost(QString ) {
     return 0;
 }
 

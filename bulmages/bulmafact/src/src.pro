@@ -91,7 +91,6 @@ HEADERS += bulmafact.h \
            fpagoview.h \
            familiasview.h \
            tiposarticuloview.h \
-           presupuesto.h \
            listlinpresupuestoview.h \
            facturaslist.h \
            facturaview.h \
@@ -167,7 +166,6 @@ SOURCES += bulmafact.cpp \
            fpagoview.cpp \
            familiasview.cpp \
            tiposarticuloview.cpp \
-           presupuesto.cpp \
            listlinpresupuestoview.cpp \
            facturaslist.cpp \
            facturaview.cpp \

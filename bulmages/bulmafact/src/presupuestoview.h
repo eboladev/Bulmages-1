@@ -28,7 +28,6 @@
 
 #include "ui_presupuestoclientebase.h"
 #include "postgresiface2.h"
-#include "presupuesto.h"
 #include "listlinpresupuestoview.h"
 #include "listdescpresupuestoview.h"
 #include "busquedacliente.h"
@@ -37,7 +36,7 @@
 #include "busquedaalmacen.h"
 #include "busquedatrabajador.h"
 #include "fixed.h"
-#include "ficha.h"
+#include "fichabf.h"
 
 
 class Company;
@@ -45,7 +44,7 @@ class Company;
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un presupuesto.
 /** */
-class PresupuestoView : public Presupuesto, public Ui_PresupuestoClienteBase {
+class PresupuestoView : public FichaBf, public Ui_PresupuestoClienteBase {
     Q_OBJECT
 
 private:
@@ -54,6 +53,9 @@ private:
 public:
     PresupuestoView(Company *, QWidget *);
     ~PresupuestoView();
+    virtual int cargarPost(QString);
+    virtual int guardarPost();
+    virtual int borrarPre();
     void pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq);
     void inicializar();
     void manageArticle(int);
@@ -62,17 +64,15 @@ private:
     void generarPedidoCliente();
 
 public:
-    virtual int guardar();
+    QString detalleArticulos();
 
 public slots:
-    virtual void on_mui_guardar_clicked();
-    virtual void on_mui_imprimir_clicked();
     /// Este slot se activa cuando hay cambios en los subformularios.
     virtual void s_pintaTotales();
     virtual void on_mui_pasarapedido_clicked();
     virtual void on_m_descuentos_editFinish(int, int);
     virtual void on_subform2_editFinish(int, int);
-    virtual void on_m_cliente_valueChanged(QString id);
+    virtual void on_mui_idcliente_valueChanged(QString id);
 };
 
 #endif
