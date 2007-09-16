@@ -104,7 +104,6 @@ HEADERS += bulmafact.h \
            busquedaalmacen.h \
            busquedaarticulo.h \
            busquedaproveedor.h \
-           albaranproveedor.h \
            albaranproveedorview.h \
            listlinalbaranproveedorview.h \
            albaranesproveedor.h \
@@ -114,7 +113,6 @@ HEADERS += bulmafact.h \
            cobroslist.h \
            facturasplist.h \
            listlinfacturapview.h \
-           facturap.h \
            facturapview.h \
            listdescpresupuestoview.h \
            listdescpedidoclienteview.h \
@@ -127,7 +125,6 @@ HEADERS += bulmafact.h \
            pagoview.h \
            pagoslist.h \
            pedidosproveedorlist.h \
-           pedidoproveedor.h \
            pedidoproveedorview.h \
            listlinpedidoproveedorview.h \
            listdescpedidoproveedorview.h \
@@ -179,7 +176,6 @@ SOURCES += bulmafact.cpp \
            busquedaalmacen.cpp \
            busquedaarticulo.cpp \
            busquedaproveedor.cpp \
-           albaranproveedor.cpp \
            albaranproveedorview.cpp \
            listlinalbaranproveedorview.cpp \
            albaranesproveedor.cpp \
@@ -189,7 +185,6 @@ SOURCES += bulmafact.cpp \
            cobroslist.cpp \
            facturasplist.cpp \
            listlinfacturapview.cpp \
-           facturap.cpp \
            facturapview.cpp \
            listdescpresupuestoview.cpp \
            listdescpedidoclienteview.cpp \
@@ -202,7 +197,6 @@ SOURCES += bulmafact.cpp \
            pagoview.cpp \
            pagoslist.cpp \
            pedidosproveedorlist.cpp \
-           pedidoproveedor.cpp \
            pedidoproveedorview.cpp \
            listlinpedidoproveedorview.cpp \
            listdescpedidoproveedorview.cpp \

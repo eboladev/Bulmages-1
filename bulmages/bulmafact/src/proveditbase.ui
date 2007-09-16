@@ -200,12 +200,12 @@
               <string>&amp;Comentarios:</string>
              </property>
              <property name="buddy" >
-              <cstring>m_comentproveedor</cstring>
+              <cstring>mui_comentproveedor</cstring>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QTextEdit" name="m_comentproveedor" >
+            <widget class="QTextEdit" name="mui_comentproveedor" >
              <property name="tabChangesFocus" >
               <bool>true</bool>
              </property>
@@ -244,12 +244,12 @@
               <string>Datos de comercio &amp;electrónico:</string>
              </property>
              <property name="buddy" >
-              <cstring>m_clavewebproveedor</cstring>
+              <cstring>mui_clavewebproveedor</cstring>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QTextEdit" name="m_clavewebproveedor" >
+            <widget class="QTextEdit" name="mui_clavewebproveedor" >
              <property name="tabChangesFocus" >
               <bool>true</bool>
              </property>
@@ -320,12 +320,12 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring>m_emailproveedor</cstring>
+          <cstring>mui_emailproveedor</cstring>
          </property>
         </widget>
        </item>
        <item row="6" column="3" colspan="3" >
-        <widget class="QLineEdit" name="m_emailproveedor" />
+        <widget class="QLineEdit" name="mui_emailproveedor" />
        </item>
        <item row="5" column="2" >
         <widget class="QLabel" name="textLabel2_8_4" >
@@ -336,15 +336,15 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring>m_urlproveedor</cstring>
+          <cstring>mui_urlproveedor</cstring>
          </property>
         </widget>
        </item>
        <item row="5" column="3" colspan="3" >
-        <widget class="QLineEdit" name="m_urlproveedor" />
+        <widget class="QLineEdit" name="mui_urlproveedor" />
        </item>
        <item row="4" column="3" colspan="3" >
-        <widget class="BusquedaProvincia" native="1" name="m_provproveedor" >
+        <widget class="BusquedaProvincia" native="1" name="mui_idprovincia" >
          <property name="minimumSize" >
           <size>
            <width>150</width>
@@ -354,7 +354,7 @@
         </widget>
        </item>
        <item row="6" column="1" >
-        <widget class="QLineEdit" name="m_faxproveedor" />
+        <widget class="QLineEdit" name="mui_faxproveedor" />
        </item>
        <item row="6" column="0" >
         <widget class="QLabel" name="textLabel2_8_2" >
@@ -365,12 +365,12 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring>m_faxproveedor</cstring>
+          <cstring>mui_faxproveedor</cstring>
          </property>
         </widget>
        </item>
        <item row="5" column="1" >
-        <widget class="QLineEdit" name="m_telproveedor" />
+        <widget class="QLineEdit" name="mui_telproveedor" />
        </item>
        <item row="5" column="0" >
         <widget class="QLabel" name="textLabel2_8" >
@@ -381,7 +381,7 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring>m_telproveedor</cstring>
+          <cstring>mui_telproveedor</cstring>
          </property>
         </widget>
        </item>
@@ -396,7 +396,7 @@
         </widget>
        </item>
        <item row="4" column="1" >
-        <widget class="QLineEdit" name="m_poblproveedor" />
+        <widget class="QLineEdit" name="mui_poblproveedor" />
        </item>
        <item row="4" column="0" >
         <widget class="QLabel" name="textLabel2_9" >
@@ -407,7 +407,7 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring>m_poblproveedor</cstring>
+          <cstring>mui_poblproveedor</cstring>
          </property>
         </widget>
        </item>
@@ -420,12 +420,12 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring>m_dirproveedor</cstring>
+          <cstring>mui_dirproveedor</cstring>
          </property>
         </widget>
        </item>
        <item row="3" column="1" >
-        <widget class="QLineEdit" name="m_dirproveedor" />
+        <widget class="QLineEdit" name="mui_dirproveedor" />
        </item>
        <item row="3" column="2" >
         <widget class="QLabel" name="textLabel2_7" >
@@ -444,7 +444,7 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring>m_cpproveedor</cstring>
+          <cstring>mui_cpproveedor</cstring>
          </property>
         </widget>
        </item>
@@ -462,7 +462,7 @@
         </spacer>
        </item>
        <item row="3" column="3" >
-        <widget class="QLineEdit" name="m_cpproveedor" >
+        <widget class="QLineEdit" name="mui_cpproveedor" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>0</hsizetype>
@@ -482,15 +482,15 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring>m_iddivision</cstring>
+          <cstring>mui_iddivision</cstring>
          </property>
         </widget>
        </item>
        <item row="2" column="3" colspan="3" >
-        <widget class="QLineEdit" name="m_iddivision" />
+        <widget class="QLineEdit" name="mui_iddivision" />
        </item>
        <item row="2" column="1" >
-        <widget class="QLineEdit" name="m_nomaltproveedor" >
+        <widget class="QLineEdit" name="mui_nomaltproveedor" >
          <property name="minimumSize" >
           <size>
            <width>150</width>
@@ -508,7 +508,7 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring>m_nomaltproveedor</cstring>
+          <cstring>mui_nomaltproveedor</cstring>
          </property>
         </widget>
        </item>
@@ -521,15 +521,15 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring>m_nomproveedor</cstring>
+          <cstring>mui_nomproveedor</cstring>
          </property>
         </widget>
        </item>
        <item row="1" column="1" colspan="2" >
-        <widget class="QLineEdit" name="m_nomproveedor" />
+        <widget class="QLineEdit" name="mui_nomproveedor" />
        </item>
        <item row="1" column="4" colspan="2" >
-        <widget class="QLineEdit" name="m_cifproveedor" >
+        <widget class="QLineEdit" name="mui_cifproveedor" >
          <property name="minimumSize" >
           <size>
            <width>100</width>
@@ -547,7 +547,7 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring>m_cifproveedor</cstring>
+          <cstring>mui_cifproveedor</cstring>
          </property>
         </widget>
        </item>
@@ -568,7 +568,7 @@
         <widget class="QLineEdit" name="mui_codproveedor" />
        </item>
        <item row="0" column="4" colspan="2" >
-        <widget class="QLineEdit" name="m_codicliproveedor" />
+        <widget class="QLineEdit" name="mui_codicliproveedor" />
        </item>
        <item row="0" column="2" colspan="2" >
         <widget class="QLabel" name="textLabel2_3" >
@@ -579,12 +579,12 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring>m_codicliproveedor</cstring>
+          <cstring>mui_codicliproveedor</cstring>
          </property>
         </widget>
        </item>
        <item row="8" column="1" colspan="5" >
-        <widget class="QLineEdit" name="m_cbancproveedor" />
+        <widget class="QLineEdit" name="mui_cbancproveedor" />
        </item>
        <item row="8" column="0" >
         <widget class="QLabel" name="textLabel2_4_3" >
@@ -595,7 +595,7 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring>m_cbancproveedor</cstring>
+          <cstring>mui_cbancproveedor</cstring>
          </property>
         </widget>
        </item>
@@ -1105,6 +1105,16 @@
  <layoutdefault spacing="2" margin="2" />
  <customwidgets>
   <customwidget>
+   <class>BusquedaProvincia</class>
+   <extends>QWidget</extends>
+   <header>busquedaprovincia.h</header>
+  </customwidget>
+  <customwidget>
+   <class>PedidosProveedorList</class>
+   <extends>QWidget</extends>
+   <header>pedidosproveedorlist.h</header>
+  </customwidget>
+  <customwidget>
    <class>AlbaranesProveedor</class>
    <extends>QWidget</extends>
    <header>albaranesproveedor.h</header>
@@ -1129,16 +1139,6 @@
    <extends>QComboBox</extends>
    <header>busquedaformapago.h</header>
   </customwidget>
-  <customwidget>
-   <class>BusquedaProvincia</class>
-   <extends>QWidget</extends>
-   <header>busquedaprovincia.h</header>
-  </customwidget>
-  <customwidget>
-   <class>PedidosProveedorList</class>
-   <extends>QWidget</extends>
-   <header>pedidosproveedorlist.h</header>
-  </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>mui_guardar</tabstop>
@@ -1146,25 +1146,25 @@
   <tabstop>mui_imprimir</tabstop>
   <tabstop>masdf</tabstop>
   <tabstop>mui_codproveedor</tabstop>
-  <tabstop>m_codicliproveedor</tabstop>
-  <tabstop>m_nomproveedor</tabstop>
-  <tabstop>m_cifproveedor</tabstop>
-  <tabstop>m_nomaltproveedor</tabstop>
-  <tabstop>m_iddivision</tabstop>
-  <tabstop>m_dirproveedor</tabstop>
-  <tabstop>m_cpproveedor</tabstop>
-  <tabstop>m_poblproveedor</tabstop>
-  <tabstop>m_telproveedor</tabstop>
-  <tabstop>m_urlproveedor</tabstop>
-  <tabstop>m_faxproveedor</tabstop>
-  <tabstop>m_emailproveedor</tabstop>
+  <tabstop>mui_codicliproveedor</tabstop>
+  <tabstop>mui_nomproveedor</tabstop>
+  <tabstop>mui_cifproveedor</tabstop>
+  <tabstop>mui_nomaltproveedor</tabstop>
+  <tabstop>mui_iddivision</tabstop>
+  <tabstop>mui_dirproveedor</tabstop>
+  <tabstop>mui_cpproveedor</tabstop>
+  <tabstop>mui_poblproveedor</tabstop>
+  <tabstop>mui_telproveedor</tabstop>
+  <tabstop>mui_urlproveedor</tabstop>
+  <tabstop>mui_faxproveedor</tabstop>
+  <tabstop>mui_emailproveedor</tabstop>
   <tabstop>mui_irpfproveedor</tabstop>
-  <tabstop>m_cbancproveedor</tabstop>
+  <tabstop>mui_cbancproveedor</tabstop>
   <tabstop>mui_forma_pago</tabstop>
   <tabstop>mui_regimenfiscalproveedor</tabstop>
   <tabstop>mui_recargoeqproveedor</tabstop>
-  <tabstop>m_comentproveedor</tabstop>
-  <tabstop>m_clavewebproveedor</tabstop>
+  <tabstop>mui_comentproveedor</tabstop>
+  <tabstop>mui_clavewebproveedor</tabstop>
   <tabstop>mui_aceptar</tabstop>
   <tabstop>mui_cancelar</tabstop>
   <tabstop>toolButton1_3_2_2_2</tabstop>

@@ -385,11 +385,13 @@ void EFQToolButtonImportar::importa_factura_ubl() {
 /// FIN lineas de factura ------------------------------------------------------------------------------
 
 /// Empezamos a pintar datos ---------------------------------------------------------------------------
-
+/*
 	fp->pintanumfacturap(numeroFactura);
 	fp->pintafechafacturap(fechaFactura);
 	fp->pintadescfacturap(descFactura);
 	fp->pintaidproveedor(proveedor->valor("idproveedor"));
+*/
+	fp->pintar();
 	
 	delete proveedor;
 	
@@ -404,20 +406,20 @@ void EFQToolButtonImportar::importa_factura_ubl() {
 	lineas->setEmpresaBase(empresaBase());
 	descuentos->setEmpresaBase(empresaBase());
 
-	fp->setidproveedor(idProveedor);
-	fp->setreffacturap(""); /// El valor lo pone el usuario que importa la factura
-	fp->setnumfacturap(numeroFactura);
-	fp->setfechafacturap(fechaFactura);
-	fp->setdescfacturap(descFactura);
-	fp->setcomentfacturap("");
+	fp->setDBvalue("idproveedor", idProveedor);
+	fp->setDBvalue("reffacturap", ""); /// El valor lo pone el usuario que importa la factura
+	fp->setDBvalue("numfacturap", numeroFactura);
+	fp->setDBvalue("ffacturap", fechaFactura);
+	fp->setDBvalue("descfacturap", descFactura);
+	fp->setDBvalue("comentfacturap", "");
 	
 	/// Que seleccione la forma de pago el que esta importanto la factura.
 	/// Esto lo hacemos asi porque guardamos este campo como una cadena
 	/// de texto dentro de la efactura, al ser algo tan variable mejor que
 	/// lo haga de nuevo el propio usuario.
-	fp->pintaidforma_pago("");
+	fp->setDBvalue("idforma_pago", "");
 	
-	fp->setprocesadafacturap("");
+	fp->setDBvalue("procesadafacturap", "");
 	
 	_depura("END EFQToolButtonImportar::importa_factura_ubl", 0);
 }

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>712</width>
-    <height>799</height>
+    <width>467</width>
+    <height>628</height>
    </rect>
   </property>
   <property name="focusPolicy" >
@@ -255,7 +255,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QTextEdit" name="m_comentcliente" >
+            <widget class="QTextEdit" name="mui_comentcliente" >
              <property name="sizePolicy" >
               <sizepolicy>
                <hsizetype>7</hsizetype>
@@ -301,7 +301,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QTextEdit" name="m_clientEcomerceData" >
+            <widget class="QTextEdit" name="mui_clientEcomerceData" >
              <property name="sizePolicy" >
               <sizepolicy>
                <hsizetype>7</hsizetype>
@@ -343,7 +343,7 @@
         </widget>
        </item>
        <item row="9" column="1" >
-        <widget class="BusquedaFormaPago" name="mui_forma_pago" />
+        <widget class="BusquedaFormaPago" name="mui_idforma_pago" />
        </item>
        <item row="9" column="0" >
         <widget class="QLabel" name="textLabel2_8_6" >
@@ -359,14 +359,14 @@
         </widget>
        </item>
        <item row="4" column="1" colspan="2" >
-        <widget class="QLineEdit" name="m_dircliente" >
+        <widget class="QLineEdit" name="mui_dircliente" >
          <property name="maxLength" >
           <number>100</number>
          </property>
         </widget>
        </item>
        <item row="1" column="1" colspan="3" >
-        <widget class="QLineEdit" name="m_nomcliente" >
+        <widget class="QLineEdit" name="mui_nomcliente" >
          <property name="maxLength" >
           <number>100</number>
          </property>
@@ -386,7 +386,7 @@
         </widget>
        </item>
        <item row="5" column="3" >
-        <widget class="BusquedaProvincia" native="1" name="m_provcliente" >
+        <widget class="BusquedaProvincia" native="1" name="mui_idprovincia" >
          <property name="minimumSize" >
           <size>
            <width>150</width>
@@ -468,7 +468,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="m_cpcliente" >
+          <widget class="QLineEdit" name="mui_cpcliente" >
            <property name="sizePolicy" >
             <sizepolicy>
              <hsizetype>0</hsizetype>
@@ -485,7 +485,7 @@
         </layout>
        </item>
        <item row="6" column="3" >
-        <widget class="QLineEdit" name="m_faxcliente" >
+        <widget class="QLineEdit" name="mui_faxcliente" >
          <property name="maxLength" >
           <number>20</number>
          </property>
@@ -505,7 +505,7 @@
         </widget>
        </item>
        <item row="5" column="1" >
-        <widget class="QLineEdit" name="m_poblcliente" >
+        <widget class="QLineEdit" name="mui_poblcliente" >
          <property name="maxLength" >
           <number>40</number>
          </property>
@@ -533,7 +533,7 @@
           <number>5</number>
          </property>
          <item>
-          <widget class="QLineEdit" name="m_cifcliente" >
+          <widget class="QLineEdit" name="mui_cifcliente" >
            <property name="maxLength" >
             <number>200</number>
            </property>
@@ -555,7 +555,7 @@
         </layout>
        </item>
        <item row="6" column="1" >
-        <widget class="QLineEdit" name="m_telcliente" >
+        <widget class="QLineEdit" name="mui_telcliente" >
          <property name="maxLength" >
           <number>20</number>
          </property>
@@ -595,7 +595,7 @@
         </widget>
        </item>
        <item row="8" column="3" >
-        <widget class="QLineEdit" name="m_mailcliente" >
+        <widget class="QLineEdit" name="mui_mailcliente" >
          <property name="maxLength" >
           <number>100</number>
          </property>
@@ -615,7 +615,7 @@
         </widget>
        </item>
        <item row="8" column="1" >
-        <widget class="QLineEdit" name="m_urlcliente" >
+        <widget class="QLineEdit" name="mui_urlcliente" >
          <property name="maxLength" >
           <number>150</number>
          </property>
@@ -681,7 +681,7 @@
         </widget>
        </item>
        <item row="3" column="1" colspan="3" >
-        <widget class="QLineEdit" name="m_nomaltcliente" >
+        <widget class="QLineEdit" name="mui_nomaltcliente" >
          <property name="maxLength" >
           <number>300</number>
          </property>
@@ -713,7 +713,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="m_bancocliente" />
+          <widget class="QLineEdit" name="mui_bancocliente" />
          </item>
         </layout>
        </item>
@@ -863,11 +863,6 @@
  <layoutdefault spacing="2" margin="5" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaProvincia</class>
-   <extends>QWidget</extends>
-   <header>busquedaprovincia.h</header>
-  </customwidget>
-  <customwidget>
    <class>CobrosList</class>
    <extends>QTableWidget</extends>
    <header>cobroslist.h</header>
@@ -878,9 +873,19 @@
    <header>busquedaregimenfiscal.h</header>
   </customwidget>
   <customwidget>
+   <class>BusquedaFormaPago</class>
+   <extends>QComboBox</extends>
+   <header>busquedaformapago.h</header>
+  </customwidget>
+  <customwidget>
    <class>PedidosClienteList</class>
    <extends>QWidget</extends>
    <header>pedidosclientelist.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaProvincia</class>
+   <extends>QWidget</extends>
+   <header>busquedaprovincia.h</header>
   </customwidget>
   <customwidget>
    <class>PresupuestoList</class>
@@ -893,11 +898,6 @@
    <header>albaranclientelist.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaFormaPago</class>
-   <extends>QComboBox</extends>
-   <header>busquedaformapago.h</header>
-  </customwidget>
-  <customwidget>
    <class>FacturasList</class>
    <extends>QWidget</extends>
    <header>facturaslist.h</header>
@@ -905,23 +905,23 @@
  </customwidgets>
  <tabstops>
   <tabstop>mui_tab</tabstop>
-  <tabstop>m_cifcliente</tabstop>
+  <tabstop>mui_cifcliente</tabstop>
   <tabstop>mui_codcliente</tabstop>
-  <tabstop>m_nomcliente</tabstop>
+  <tabstop>mui_nomcliente</tabstop>
   <tabstop>mui_corpcliente</tabstop>
-  <tabstop>m_nomaltcliente</tabstop>
-  <tabstop>m_dircliente</tabstop>
-  <tabstop>m_cpcliente</tabstop>
-  <tabstop>m_poblcliente</tabstop>
-  <tabstop>m_telcliente</tabstop>
-  <tabstop>m_faxcliente</tabstop>
+  <tabstop>mui_nomaltcliente</tabstop>
+  <tabstop>mui_dircliente</tabstop>
+  <tabstop>mui_cpcliente</tabstop>
+  <tabstop>mui_poblcliente</tabstop>
+  <tabstop>mui_telcliente</tabstop>
+  <tabstop>mui_faxcliente</tabstop>
   <tabstop>mui_teltrabcliente</tabstop>
   <tabstop>mui_movilcliente</tabstop>
-  <tabstop>m_urlcliente</tabstop>
-  <tabstop>m_mailcliente</tabstop>
-  <tabstop>m_comentcliente</tabstop>
-  <tabstop>m_clientEcomerceData</tabstop>
-  <tabstop>m_bancocliente</tabstop>
+  <tabstop>mui_urlcliente</tabstop>
+  <tabstop>mui_mailcliente</tabstop>
+  <tabstop>mui_comentcliente</tabstop>
+  <tabstop>mui_clientEcomerceData</tabstop>
+  <tabstop>mui_bancocliente</tabstop>
   <tabstop>mui_guardar</tabstop>
   <tabstop>mui_borrar</tabstop>
   <tabstop>mui_informe</tabstop>

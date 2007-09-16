@@ -32,8 +32,7 @@
 #include "busquedaformapago.h"
 #include "busquedaalmacen.h"
 #include "ui_albaranproveedorbase.h"
-#include "albaranproveedor.h"
-#include "ficha.h"
+#include "fichabf.h"
 
 
 class Company;
@@ -43,50 +42,31 @@ class Company;
     Deriva de Ficha para temas de visualizacion y de AlbaranProveedor para cuestiones
     de manejo de la base de datos.
  */
-class AlbaranProveedorView : public AlbaranProveedor, public Ui_AlbaranProveedorBase {
+class AlbaranProveedorView : public FichaBf, public Ui_AlbaranProveedorBase {
     Q_OBJECT
 
 public:
     AlbaranProveedorView(Company *, QWidget *);
     ~AlbaranProveedorView();
     void inicializar();
-    void pintaidalbaranp(QString);
-    void pintanumalbaranp(QString val);
-    void pintafechaalbaranp(QString val);
-    void pintaIdUsuario(QString);
-    void pintaComentAlbaran(QString val);
-    void pintaidproveedor(QString val);
-    void pintaidforma_pago(QString val);
-    void pintaidalmacen(QString id);
-    void pintadescalbaranp(QString val);
-    void pintarefalbaranp(QString val);
+
     void pintatotales(Fixed, Fixed, Fixed, Fixed, Fixed, Fixed);
     void generarFactura();
     /// Estos metodos deben existir para poder trabajar con la clase Ficha
-    virtual int guardar();
-    virtual int cargar(QString id);
-    virtual int borrar();
+    virtual int guardarPost();
+    virtual int cargarPost(QString id);
+    virtual int borrarPre();
     void generarFacturaProveedor();
 
 public slots:
     virtual void on_mui_facturar_clicked();
-    virtual void s_comentalbaranptextChanged();
-    virtual void s_almacenvalueChanged(QString val);
-    virtual void s_numalbaranptextChanged(const QString &val);
-    virtual void s_proveedorvalueChanged(QString val);
-    virtual void s_fechaalbaranpvalueChanged(QString val);
-    virtual void s_forma_pagovalueChanged(QString val);
-    virtual void s_refalbaranptextChanged(const QString &val);
-    virtual void s_descalbaranptextChanged(const QString &val);
-    virtual void on_mui_guardar_clicked();
-    virtual void s_printAlbaranProveedor();
     virtual void s_verpedidoproveedor();
     virtual void s_generarFactura();
     virtual void on_m_descuentos_editFinish(int, int);
     virtual void on_subform2_editFinish(int, int);
     virtual void on_mui_pagar_clicked();
     virtual void on_mui_verpedidosproveedor_clicked();
-    virtual void on_m_proveedor_valueChanged(QString);
+    virtual void on_mui_idproveedor_valueChanged(QString);
 };
 
 #endif

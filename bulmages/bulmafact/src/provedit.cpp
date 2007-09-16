@@ -60,8 +60,8 @@ ProveedorView::ProveedorView(Company *comp, QWidget *parent)
 
         setupUi(this);
 
-        m_provproveedor->setEmpresaBase(empresaBase());
-        m_provproveedor->setIdProvincia("");
+        mui_idprovincia->setEmpresaBase(empresaBase());
+        mui_idprovincia->setIdProvincia("");
 
         /// Desabilitamos los tabs que aun no se usan
         masdf->setTabEnabled(5, FALSE);
@@ -105,123 +105,22 @@ ProveedorView::~ProveedorView() {
 /// Esta funcion carga un proveedor de la base de datos y lo presenta.
 /// Si el parametro pasado no es un identificador valido entonces se pone
 /// la ventana de edicion en modo de insercion.
-int ProveedorView::cargar(QString idprov) {
+int ProveedorView::cargarPost(QString idprov) {
     _depura("ProveedorView::cargar", 0, idprov);
-    try {
-        QString query = "SELECT * FROM proveedor WHERE idproveedor = " + idprov;
-        cursor2 * cur = empresaBase()->cargacursor(query);
-        if (!cur->eof()) {
-            DBload(cur);
-        } // end if
-        delete cur;
-        m_nomproveedor->setText(DBvalue("nomproveedor"));
-        m_nomaltproveedor->setText(DBvalue("nomaltproveedor"));
-        m_cifproveedor->setText(DBvalue("cifproveedor" ));
-        m_codicliproveedor->setText(DBvalue("codicliproveedor" ));
-        m_cbancproveedor->setText(DBvalue("cbancproveedor" ));
-        m_dirproveedor->setText(DBvalue("dirproveedor"));
-        m_poblproveedor->setText( DBvalue("poblproveedor" ));
-        m_cpproveedor->setText(DBvalue("cpproveedor"));
-        m_telproveedor->setText(DBvalue("telproveedor"));
-        m_faxproveedor->setText(DBvalue("faxproveedor"));
-        m_emailproveedor->setText(DBvalue("emailproveedor"));
-        m_urlproveedor->setText(DBvalue("urlproveedor"));
-        m_comentproveedor->setPlainText(DBvalue("comentproveedor" ));
-        m_provproveedor->setIdProvincia(DBvalue("idprovincia"));
-        mui_codproveedor->setText(DBvalue("codproveedor"));
-        mui_forma_pago->setidforma_pago(DBvalue("idforma_pago"));
-        mui_regimenfiscalproveedor->setRegimenFiscal(DBvalue("regimenfiscalproveedor"));
-        mui_irpfproveedor->setText(DBvalue("irpfproveedor"));
 
-        /// Pintamos el recargo de equivalencia
-        if (DBvalue("recargoeqproveedor") == "t") {
-            mui_recargoeqproveedor->setChecked(TRUE);
-        } else {
-            mui_recargoeqproveedor->setChecked(FALSE);
-        } // end if
-
-
-        /// Cargamos las ventanas auxiliares.
-        m_listpedidosprov->setidproveedor(DBvalue("idproveedor"));
-        m_listpedidosprov->presentar();
-        m_albaranesprov->setidproveedor(DBvalue("idproveedor"));
-        m_albaranesprov->presentar();
-        m_listfacturasprov->setidproveedor(DBvalue("idproveedor"));
-        m_listfacturasprov->presentar();
-        m_listpagosprov->setidproveedor(DBvalue("idproveedor"));
-        m_listpagosprov->presentar();
-
-
-        /// Reseteamos el control de cambios.
-        dialogChanges_cargaInicial();
-
-        /// Cambiamos el titulo de la ventana para que salga reflejado donde toca.
-        setWindowTitle(tr("Proveedor") + " " + DBvalue("nomproveedor"));
-        meteWindow(windowTitle(), this);
-    } catch (...) {
-        return -1;
-    } // end try
+    /// Cargamos las ventanas auxiliares.
+    m_listpedidosprov->setidproveedor(DBvalue("idproveedor"));
+    m_listpedidosprov->presentar();
+    m_albaranesprov->setidproveedor(DBvalue("idproveedor"));
+    m_albaranesprov->presentar();
+    m_listfacturasprov->setidproveedor(DBvalue("idproveedor"));
+    m_listfacturasprov->presentar();
+    m_listpagosprov->setidproveedor(DBvalue("idproveedor"));
+    m_listpagosprov->presentar();
 
     _depura("END ProveedorView::cargar", 0);
     return 0;
 }
 
-
-
-/// Esta funcion es la respuesta a la pulsacion del boton de guardar
-/// Comprueba si es una insercion o una modificacion y hace los pasos
-/// pertinentes.
-int ProveedorView::guardar() {
-    _depura("ProveedorView::guardar", 0);
-    /// Disparamos los plugins con presupuesto_imprimirPresupuesto
-    int res = g_plugins->lanza("ProveedorView_guardar", this);
-    if (res != 0)
-        return 0;
-    setDBvalue("nomproveedor", m_nomproveedor->text());
-    setDBvalue("nomaltproveedor", m_nomaltproveedor->text());
-    setDBvalue("cifproveedor", m_cifproveedor->text());
-    setDBvalue("codicliproveedor", m_codicliproveedor->text());
-    setDBvalue("cbancproveedor", m_cbancproveedor->text());
-    setDBvalue("dirproveedor", m_dirproveedor->text());
-    setDBvalue("poblproveedor", m_poblproveedor->text());
-    setDBvalue("cpproveedor", m_cpproveedor->text());
-    setDBvalue("telproveedor", m_telproveedor->text());
-    setDBvalue("faxproveedor", m_faxproveedor->text());
-    setDBvalue("emailproveedor", m_emailproveedor->text());
-    setDBvalue("urlproveedor", m_urlproveedor->text());
-    setDBvalue("comentproveedor", m_comentproveedor->toPlainText());
-    setDBvalue("idprovincia", m_provproveedor->idProvincia());
-    setDBvalue("codproveedor", mui_codproveedor->text());
-    setDBvalue("idforma_pago", mui_forma_pago->idforma_pago());
-    setDBvalue("recargoeqproveedor",  mui_recargoeqproveedor->isChecked() ? "TRUE" : "FALSE");
-    setDBvalue("regimenfiscalproveedor", mui_regimenfiscalproveedor->currentText());
-    setDBvalue("irpfproveedor", mui_irpfproveedor->text());
-    QString id;
-    empresaBase()->begin();
-    try {
-        DBRecord::guardar();
-        empresaBase()->commit();
-        dialogChanges_cargaInicial();
-        _depura("END ProveedorView::guardar", 0);
-        return 0;
-    } catch (...) {
-        _depura("error al guardar el proveedor", 1);
-        empresaBase()->rollback();
-        return -1;
-    }
-}
-
-
-/** Metodo que permite borrar un cliente.
-    Hace un delete sobre la base de datos del cliente que esta viendose.
-*/
-/// \TODO: Deberia meterse dentro de un bloque de depuracion try{} catch{}.
-int ProveedorView::borrar() {
-    _depura("ProveedorView::borrar", 0);
-    DBRecord::borrar();
-    empresaBase()->refreshProveedores();
-    return 0;
-    _depura("END ProveedorView::borrar", 0);
-}
 
 

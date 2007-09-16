@@ -22,8 +22,7 @@
 #ifndef CLIENTEVIEW_H
 #define CLIENTEVIEW_H
 
-#include "cliente.h"
-#include "ficha.h"
+#include "fichabf.h"
 #include "ui_clientebase.h"
 
 
@@ -32,7 +31,7 @@
     de la clase Cliente para el manejo con la base de datos.
     Se encarga de recibir y lanzar eventos.
 */
-class ClienteView : public Cliente, public Ui_ClienteBase  {
+class ClienteView : public FichaBf, public Ui_ClienteBase  {
     Q_OBJECT
 
 public:
@@ -40,34 +39,10 @@ public:
     ~ClienteView();
 
 public:
-    int cargar(QString client);
-    virtual int guardar();
-    void deleteClient();
-    void emptyForm();
-    void pintaidcliente(QString);
-    void pintanomcliente(QString val);
-    void pintanomaltcliente(QString val);
-    void pintacifcliente(QString val);
-    void pintacodcliente(QString val);
-    void pintacorpcliente(QString val);
-    void pintabancocliente(QString val);
-    void pintadircliente(QString val);
-    void pintapoblcliente(QString val);
-    void pintacpcliente(QString val);
-    void pintatelcliente(QString val);
-    void pintateltrabcliente(QString val);
-    void pintamovilcliente(QString val);
-    void pintafaxcliente(QString val);
-    void pintamailcliente(QString val);
-    void pintaurlcliente(QString val);
-    void pintafaltacliente(QString);
-    void pintafbajacliente(QString);
-    void pintacomentcliente(QString val);
-    void pintainactivocliente(QString);
-    void pintaIdProvincia(QString val);
-    void pintaregimenfiscalcliente(QString val);
-    void pintarecargoeqcliente(QString val);
-    void pintaidforma_pago(QString val);
+    int cargarPost(QString client);
+
+
+
 
 public slots:
     /// \TODO: Muchos metodos aqui implementados deberian estar en Ficha.

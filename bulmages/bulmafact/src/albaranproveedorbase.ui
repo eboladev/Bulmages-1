@@ -371,7 +371,7 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaReferencia" name="m_refalbaranp" >
+         <widget class="BusquedaReferencia" name="mui_refalbaranp" >
           <property name="sizePolicy" >
            <sizepolicy>
             <hsizetype>5</hsizetype>
@@ -471,7 +471,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="m_descalbaranp" />
+      <widget class="QLineEdit" name="mui_descalbaranp" />
      </item>
      <item>
       <widget class="QLabel" name="label7" >
@@ -500,7 +500,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="m_numalbaranp" >
+      <widget class="QLineEdit" name="mui_numalbaranp" >
        <property name="sizePolicy" >
         <sizepolicy>
          <hsizetype>1</hsizetype>
@@ -537,7 +537,7 @@
        <number>5</number>
       </property>
       <item rowspan="3" row="0" column="0" >
-       <widget class="BusquedaProveedor" native="1" name="m_proveedor" >
+       <widget class="BusquedaProveedor" native="1" name="mui_idproveedor" >
         <property name="sizePolicy" >
          <sizepolicy>
           <hsizetype>7</hsizetype>
@@ -642,7 +642,7 @@
        </widget>
       </item>
       <item row="1" column="2" >
-       <widget class="BusquedaAlmacen" native="1" name="m_almacen" >
+       <widget class="BusquedaAlmacen" native="1" name="mui_idalmacen" >
         <property name="sizePolicy" >
          <sizepolicy>
           <hsizetype>5</hsizetype>
@@ -654,7 +654,7 @@
        </widget>
       </item>
       <item row="0" column="2" >
-       <widget class="BusquedaFecha" native="1" name="m_fechaalbaranp" >
+       <widget class="BusquedaFecha" native="1" name="mui_fechaalbaranp" >
         <property name="sizePolicy" >
          <sizepolicy>
           <hsizetype>5</hsizetype>
@@ -666,7 +666,7 @@
        </widget>
       </item>
       <item row="2" column="2" >
-       <widget class="BusquedaFormaPago" native="1" name="m_forma_pago" >
+       <widget class="BusquedaFormaPago" native="1" name="mui_idforma_pago" >
         <property name="sizePolicy" >
          <sizepolicy>
           <hsizetype>5</hsizetype>
@@ -737,7 +737,7 @@
         <number>5</number>
        </property>
        <item>
-        <widget class="QTextEdit" name="m_comentalbaranp" />
+        <widget class="QTextEdit" name="mui_comentalbaranp" />
        </item>
       </layout>
      </widget>
@@ -1471,16 +1471,6 @@
  <layoutdefault spacing="2" margin="2" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaFormaPago</class>
-   <extends>QWidget</extends>
-   <header>busquedaformapago.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaAlmacen</class>
-   <extends>QWidget</extends>
-   <header>busquedaalmacen.h</header>
-  </customwidget>
-  <customwidget>
    <class>ListLinAlbaranProveedorView</class>
    <extends>QWidget</extends>
    <header>listlinalbaranproveedorview.h</header>
@@ -1504,6 +1494,16 @@
    <class>BusquedaReferencia</class>
    <extends>QLineEdit</extends>
    <header>busquedareferencia.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaFormaPago</class>
+   <extends>QWidget</extends>
+   <header>busquedaformapago.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaAlmacen</class>
+   <extends>QWidget</extends>
+   <header>busquedaalmacen.h</header>
   </customwidget>
  </customwidgets>
  <resources>

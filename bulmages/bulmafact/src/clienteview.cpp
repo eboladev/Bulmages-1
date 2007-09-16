@@ -43,18 +43,48 @@
     Resetea el control de cambios.
 */
 ClienteView::ClienteView(Company *comp, QWidget *parent)
-        : Cliente(comp, parent) {
+        : FichaBf(comp, parent) {
     _depura("ClienteView::ClienteView", 0);
     setupUi(this);
     setAttribute(Qt::WA_DeleteOnClose);
     try {
+
+        setTitleName(tr("Cliente"));
+        setDBTableName("cliente");
+        setDBCampoId("idcliente");
+        addDBCampo("idcliente", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Cliente", "ID cliente"));
+        addDBCampo("nomcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Nombre del cliente"));
+        addDBCampo("nomaltcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Nombre alternativo del cliente"));
+        addDBCampo("cifcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "C.I.F. del cliente"));
+        addDBCampo("bancocliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Numero cuenta corriente"));
+        addDBCampo("dircliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Direccion"));
+        addDBCampo("poblcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Poblacion"));
+        addDBCampo("idprovincia", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Cliente", "Provincia"));
+        addDBCampo("cpcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Codigo postal"));
+        addDBCampo("telcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Numero de telefono"));
+        addDBCampo("teltrabcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Numero de telefono en el trabajo"));
+        addDBCampo("movilcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Numero de telefono movil"));
+        addDBCampo("faxcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Numero de fax"));
+        addDBCampo("mailcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Direccion electronica"));
+        addDBCampo("urlcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Identificador de presupuesto"));
+        addDBCampo("faltacliente", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Cliente", "Fecha de alta del cliente"));
+        addDBCampo("fbajacliente", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Cliente", "Fecha de baja del cliente"));
+        addDBCampo("comentcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Comentarios"));
+        addDBCampo("inactivocliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Cliente inactivo"));
+        addDBCampo("regimenfiscalcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Regimen fiscal"));
+        addDBCampo("codcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Codigo"));
+        addDBCampo("corpcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Empresa"));
+        addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Cliente", "Forma de pago"));
+        addDBCampo("recargoeqcliente", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("Cliente", "Recargo de Equivalencia"));
+
+
         /// Disparamos los plugins.
         int res = g_plugins->lanza("ClienteView_ClienteView", this);
         if (res != 0) {
             return;
         } // end if
-        m_provcliente->setEmpresaBase(empresaBase());
-        m_provcliente->setIdProvincia("");
+        mui_idprovincia->setEmpresaBase(empresaBase());
+        mui_idprovincia->setIdProvincia("");
 
         /// Inicializamos las pantallas auxiliares a esta.
         m_listpresupuestos->setEmpresaBase(empresaBase());
@@ -62,8 +92,8 @@ ClienteView::ClienteView(Company *comp, QWidget *parent)
         m_listalbaranes->setEmpresaBase(empresaBase());
         m_listfacturas->setEmpresaBase(empresaBase());
         m_listcobros->setEmpresaBase(empresaBase());
-        mui_forma_pago->setEmpresaBase(empresaBase());
-        mui_forma_pago->setidforma_pago("");
+        mui_idforma_pago->setEmpresaBase(empresaBase());
+        mui_idforma_pago->setidforma_pago("");
 
         /// Metemos la ventana en el workSpace.
         meteWindow(windowTitle(), this, FALSE);
@@ -100,18 +130,9 @@ ClienteView::~ClienteView() {
 * Si la funcion falla imprime un mensaje de error y devuelve -1
 * Si todo va bien devuelve 0
 **/
-int ClienteView::cargar(QString idcliente) {
+int ClienteView::cargarPost(QString idcliente) {
     _depura("ClienteView::cargar", 0);
-    try {
-        Cliente::cargar(idcliente);
-        setWindowTitle(tr("Cliente") + " " + DBvalue("nomcliente"));
-        meteWindow(windowTitle(), this);
 
-        /// Disparamos los plugins.
-        int res = g_plugins->lanza("ClienteView_cargar", this);
-        if (res != 0) {
-            return res;
-        } // end if
 
         /// Hacemos que el listado de presupuestos de un cliente se inicialize.
         m_listpresupuestos->setidcliente(idcliente);
@@ -125,76 +146,10 @@ int ClienteView::cargar(QString idcliente) {
         m_listcobros->setidcliente(idcliente);
         m_listcobros->presentar();
 
-        /// Pintamos
-        pintar();
-        /// Reseteamos el control de cambios.
-        dialogChanges_cargaInicial();
-    } catch (...) {
-        mensajeInfo(tr("Error al cargar el cliente"));
-        return -1;
-    } // end try
-    g_plugins->lanza("ClienteView_cargar_post", this);
+
     _depura("ClienteView::cargar", 0);
     return 0;
 }
-
-
-/// Empties the form.
-/** Vacia el formulario */
-/// \TODO: Investigar la necesidad de este metodo.
-void ClienteView::emptyForm() {
-    _depura("ClienteView::emptyForm", 0);
-    m_provcliente->setCurrentIndex(0);
-    dialogChanges_cargaInicial();
-    _depura("END ClienteView::emptyForm", 0);
-}
-
-
-/**
-* guardar
-*
-* This function saves the current client. It checks
-* if it is a new client that needs to be added or if
-* it is an existing one that has to be modified
-**/
-/// \TODO: Deberia incorporar un bloque de excepciones try{} catch{}
-int ClienteView::guardar() {
-    _depura("ClienteView::guardar", 0);
-    /// Disparamos los plugins
-    int res = g_plugins->lanza("ClienteView_saveClient", this);
-    if (res != 0) {
-        return 0;
-    } // end if
-    setDBvalue("nomcliente", m_nomcliente->text());
-    setDBvalue("nomaltcliente", m_nomaltcliente->text());
-    setDBvalue("cifcliente", m_cifcliente->text());
-    setDBvalue("bancocliente", m_bancocliente->text());
-    setDBvalue("dircliente", m_dircliente->text());
-    setDBvalue("poblcliente", m_poblcliente->text());
-    setDBvalue("cpcliente", m_cpcliente->text());
-    setDBvalue("telcliente", m_telcliente->text());
-    setDBvalue("teltrabcliente", mui_teltrabcliente->text());
-    setDBvalue("movilcliente", mui_movilcliente->text());
-    setDBvalue("faxcliente", m_faxcliente->text());
-    setDBvalue("mailcliente", m_mailcliente->text());
-    setDBvalue("urlcliente", m_urlcliente->text());
-    setDBvalue("comentcliente", m_comentcliente->toPlainText());
-    setDBvalue("idprovincia", m_provcliente->idProvincia());
-    setDBvalue("codcliente", mui_codcliente->text());
-    setDBvalue("corpcliente", mui_corpcliente->text());
-    setDBvalue("idforma_pago", mui_forma_pago->idforma_pago());
-    setDBvalue("recargoeqcliente",  mui_recargoeqcliente->isChecked() ? "TRUE" : "FALSE");
-    setDBvalue("regimenfiscalcliente", mui_regimenfiscalcliente->currentText());
-    int err = Cliente::guardar();
-    if (!err) {
-        dialogChanges_cargaInicial();
-    } // end if
-    _depura("ClienteView::guardar", 0);
-    return err;
-}
-
-
-
 
 /** SLOT que responde a la pulsacion del boton informe de cliente.
     Crea una instancia de InformeCliente, la inicializa y la lanza.
@@ -205,130 +160,5 @@ void ClienteView::on_mui_informe_clicked() {
     inf.setCliente(DBvalue("idcliente"));
     inf.generarInforme();
     _depura("END ClienteView::on_mui_informe_clicked", 0);
-}
-
-
-void ClienteView::pintanomcliente(QString val) {
-    m_nomcliente->setText(val);
-}
-
-
-void ClienteView::pintanomaltcliente(QString val) {
-    m_nomaltcliente->setText(val);
-}
-
-
-void ClienteView::pintacifcliente(QString val) {
-    m_cifcliente->setText(val);
-}
-
-
-void ClienteView::pintacodcliente(QString val) {
-    mui_codcliente->setText(val);
-}
-
-
-void ClienteView::pintacorpcliente(QString val) {
-    mui_corpcliente->setText(val);
-}
-
-
-void ClienteView::pintabancocliente(QString val) {
-    m_bancocliente->setText(val);
-}
-
-
-void ClienteView::pintadircliente(QString val) {
-    m_dircliente->setText(val);
-}
-
-
-void ClienteView::pintapoblcliente(QString val) {
-    m_poblcliente->setText(val);
-}
-
-
-void ClienteView::pintacpcliente(QString val) {
-    m_cpcliente->setText(val);
-}
-
-
-void ClienteView::pintatelcliente(QString val) {
-    m_telcliente->setText(val);
-}
-
-
-void ClienteView::pintateltrabcliente(QString val) {
-    mui_teltrabcliente->setText(val);
-}
-
-
-void ClienteView::pintamovilcliente(QString val) {
-    mui_movilcliente->setText(val);
-}
-
-
-void ClienteView::pintafaxcliente(QString val) {
-    m_faxcliente->setText(val);
-}
-
-
-void ClienteView::pintamailcliente(QString val) {
-    m_mailcliente->setText(val);
-}
-
-
-void ClienteView::pintaurlcliente(QString val) {
-    m_urlcliente->setText(val);
-}
-
-
-void ClienteView::pintacomentcliente(QString val) {
-    m_comentcliente->setPlainText(val);
-}
-
-
-void ClienteView::pintaIdProvincia(QString val) {
-    m_provcliente->setIdProvincia(val);
-}
-
-
-void ClienteView::pintaregimenfiscalcliente(QString val) {
-    mui_regimenfiscalcliente->setRegimenFiscal(val);
-}
-
-
-void ClienteView::pintarecargoeqcliente(QString val) {
-    /// Pintamos el recargo de equivalencia
-    if (val == "t") {
-        mui_recargoeqcliente->setChecked(TRUE);
-    } else {
-        mui_recargoeqcliente->setChecked(FALSE);
-    } // end if
-}
-
-
-void ClienteView::pintaidforma_pago(QString val) {
-    mui_forma_pago->setidforma_pago(val);
-}
-
-
-
-void ClienteView::pintaidcliente(QString) {
-    _depura("ClienteView::pintaidcliente", 0);
-}
-
-
-void ClienteView::pintafaltacliente(QString) {
-    _depura("ClienteView::pintafaltacliente", 0);
-}
-
-
-void ClienteView::pintafbajacliente(QString) {
-    _depura("ClienteView::pintafbajacliente", 0);
-}
-
-
-void ClienteView::pintainactivocliente(QString) {
 }
 

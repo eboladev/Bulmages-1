@@ -32,8 +32,6 @@
 
 extern "C" MY_EXPORT int entryPoint(Bulmafact *);
 extern "C" MY_EXPORT int ClienteView_ClienteView(ClienteView *);
-extern "C" MY_EXPORT int ClienteView_saveClient(ClienteView *);
-extern "C" MY_EXPORT int Cliente_pintaCliente(Cliente *);
 extern "C" MY_EXPORT int ArticuloView_ArticuloView(ArticuloView *);
 extern "C" MY_EXPORT int ArticuloView_cargar(ArticuloView *);
 extern "C" MY_EXPORT int ArticuloView_guardar_post(ArticuloView *);

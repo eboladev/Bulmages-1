@@ -81,7 +81,7 @@ int ClienteView_Des_ClienteView_Post(ClienteView *cli) {
     return 0;
 }
 
-
+/*
 int ClienteView_saveClient(ClienteView *cli) {
     _depura("ClienteView_saveClient", 0);
     ComercialClienteView *bus = cli->findChild<ComercialClienteView *>("lcomercial");
@@ -106,4 +106,4 @@ int Cliente_pintaCliente(Cliente *cli) {
     _depura("END Cliente_pintaCliente", 0);
     return 0;
 }
-
+*/

@@ -27,7 +27,7 @@
 #include <QCheckBox>
 
 #include "ui_facturapbase.h"
-#include "facturap.h"
+#include "fichabf.h"
 #include "busquedaproveedor.h"
 #include "busquedafecha.h"
 #include "busquedaformapago.h"
@@ -38,33 +38,27 @@
 /** Implementa la pantalla de Facturas de Proveedores.
     Deriva de la clase ficha para heredar metodos comunes a las fichas.
     Tambien deriva de la clase \ref FacturaProveedor para trabajar con la tabla facturap. */
-class FacturaProveedorView : public FacturaProveedor, public Ui_FacturaProveedorBase {
+class FacturaProveedorView : public FichaBf, public Ui_FacturaProveedorBase {
     Q_OBJECT
 
 public:
     FacturaProveedorView(Company *, QWidget *parent = 0);
     virtual ~FacturaProveedorView();
     void inicializar();
-    void pintaidproveedor(QString id);
-    void pintanumfacturap(QString id);
-    void pintafechafacturap(QString id);
-    void pintadescfacturap(QString id);
-    void pintaComentFacturaProveedor(QString id);
-    void pintareffacturap(QString id);
-    void pintaidforma_pago(QString id);
-    void pintaprocesadafacturap(QString id);
+
     virtual void pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq);
     /// Estos m&eacute;todos deben existir para poder trabajar con la clase Ficha.
-    virtual int guardar();
-    virtual int cargar(QString id);
-
+    virtual int guardarPost();
+    virtual int cargarPost(QString id);
+    virtual int borrarPre();
+    virtual void imprimirFacturaProveedor();
 public slots:
     virtual void on_mui_pagar_clicked();
     virtual void s_nuevoPago();
     virtual void on_m_descuentos_editFinish(int, int);
     virtual void on_subform2_editFinish(int, int);
     virtual void on_mui_veralbaranes_clicked();
-    virtual void on_m_proveedor_valueChanged(QString);
+    virtual void on_mui_idproveedor_valueChanged(QString);
 };
 
 #endif

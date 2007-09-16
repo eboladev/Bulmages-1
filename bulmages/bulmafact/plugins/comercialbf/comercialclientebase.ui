@@ -1,7 +1,4 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>ComercialClienteBase</class>
  <widget class="QWidget" name="ComercialClienteBase" >
   <property name="geometry" >
@@ -9,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>520</width>
-    <height>412</height>
+    <height>363</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -69,7 +66,7 @@
          </widget>
         </item>
         <item row="0" column="1" >
-         <widget class="BusquedaZonaComercial" name="mui_zonacomercial" />
+         <widget class="BusquedaZonaComercial" name="mui_idzonacomercial" />
         </item>
         <item row="0" column="0" >
          <widget class="QLabel" name="label_K4_2" >
@@ -108,28 +105,21 @@
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
    <class>BusquedaPeriodo</class>
    <extends>QComboBox</extends>
    <header>busquedaperiodo.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
   <customwidget>
    <class>BusquedaZonaComercial</class>
    <extends>QComboBox</extends>
    <header>busquedazonacomercial.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
   <customwidget>
    <class>BusquedaFecha</class>
    <extends>QLineEdit</extends>
    <header>../../../bulmalib/src/busquedafecha.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
  </customwidgets>
  <resources/>

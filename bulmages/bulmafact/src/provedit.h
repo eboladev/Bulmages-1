@@ -38,9 +38,7 @@ public:
     ~ProveedorView();
 
 public:
-    virtual int cargar(QString);
-    virtual int guardar();
-    virtual int borrar();
+    virtual int cargarPost(QString);
 };
 
 #endif

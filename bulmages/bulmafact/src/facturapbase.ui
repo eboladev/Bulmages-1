@@ -206,7 +206,7 @@
          </widget>
         </item>
         <item row="0" column="7" >
-         <widget class="BusquedaReferencia" name="m_reffacturap" >
+         <widget class="BusquedaReferencia" name="mui_reffacturap" >
           <property name="sizePolicy" >
            <sizepolicy>
             <hsizetype>5</hsizetype>
@@ -372,7 +372,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="m_numfacturap" >
+      <widget class="QLineEdit" name="mui_numfacturap" >
        <property name="sizePolicy" >
         <sizepolicy>
          <hsizetype>7</hsizetype>
@@ -414,7 +414,7 @@
        <number>5</number>
       </property>
       <item row="0" column="0" >
-       <widget class="QCheckBox" name="m_procesadafacturap" >
+       <widget class="QCheckBox" name="mui_procesadafacturap" >
         <property name="text" >
          <string>Procesada</string>
         </property>
@@ -495,7 +495,7 @@
        </widget>
       </item>
       <item rowspan="3" row="0" column="2" >
-       <widget class="BusquedaProveedor" native="1" name="m_proveedor" >
+       <widget class="BusquedaProveedor" native="1" name="mui_idproveedor" >
         <property name="sizePolicy" >
          <sizepolicy>
           <hsizetype>7</hsizetype>
@@ -513,7 +513,7 @@
        </widget>
       </item>
       <item row="3" column="1" colspan="2" >
-       <widget class="QLineEdit" name="m_descfacturap" />
+       <widget class="QLineEdit" name="mui_descfacturap" />
       </item>
       <item row="3" column="0" >
        <widget class="QLabel" name="label8" >
@@ -537,7 +537,7 @@
        </widget>
       </item>
       <item row="2" column="1" >
-       <widget class="BusquedaFormaPago" native="1" name="m_forma_pago" >
+       <widget class="BusquedaFormaPago" native="1" name="mui_idforma_pago" >
         <property name="sizePolicy" >
          <sizepolicy>
           <hsizetype>5</hsizetype>
@@ -549,7 +549,7 @@
        </widget>
       </item>
       <item row="1" column="1" >
-       <widget class="BusquedaFecha" native="1" name="m_fechafacturap" >
+       <widget class="BusquedaFecha" native="1" name="mui_fechafacturap" >
         <property name="sizePolicy" >
          <sizepolicy>
           <hsizetype>5</hsizetype>
@@ -623,7 +623,7 @@
         <number>5</number>
        </property>
        <item>
-        <widget class="QTextEdit" name="m_comentfacturap" />
+        <widget class="QTextEdit" name="mui_comentfacturap" />
        </item>
       </layout>
      </widget>
@@ -1340,14 +1340,19 @@
  <layoutdefault spacing="2" margin="2" />
  <customwidgets>
   <customwidget>
-   <class>ListLinFacturaProveedorView</class>
+   <class>BusquedaFormaPago</class>
    <extends>QWidget</extends>
-   <header>listlinfacturapview.h</header>
+   <header>busquedaformapago.h</header>
   </customwidget>
   <customwidget>
    <class>BusquedaFecha</class>
    <extends>QWidget</extends>
    <header>../../../bulmalib/src/busquedafecha.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ListLinFacturaProveedorView</class>
+   <extends>QWidget</extends>
+   <header>listlinfacturapview.h</header>
   </customwidget>
   <customwidget>
    <class>BusquedaProveedor</class>
@@ -1363,11 +1368,6 @@
    <class>ListDescuentoFacturaProvView</class>
    <extends>QWidget</extends>
    <header>listdescfacturaprovview.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaFormaPago</class>
-   <extends>QWidget</extends>
-   <header>busquedaformapago.h</header>
   </customwidget>
  </customwidgets>
  <resources>

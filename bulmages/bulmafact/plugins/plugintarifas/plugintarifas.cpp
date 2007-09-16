@@ -79,7 +79,7 @@ int ClienteView_ClienteView(ClienteView *cli) {
     textLabel2_9_26->setText("Tarifa");
 
     BusquedaTarifa *bus = new BusquedaTarifa(cli->m_frameplugin);
-    bus->setObjectName(QString::fromUtf8("bus"));
+    bus->setObjectName(QString::fromUtf8("mui_idtarifa"));
     bus->setEmpresaBase(cli->empresaBase());
     bus->setidtarifa("");
     hboxLayout160->addWidget(bus);
@@ -88,20 +88,6 @@ int ClienteView_ClienteView(ClienteView *cli) {
     return 0;
 }
 
-
-int ClienteView_saveClient(ClienteView *cli) {
-    BusquedaTarifa *bus = cli->findChild<BusquedaTarifa *>("bus");
-    cli->setDBvalue("idtarifa", bus->idtarifa());
-    return 0;
-}
-
-
-int Cliente_pintaCliente(Cliente *cli) {
-    ClienteView *clo = (ClienteView *) cli;
-    BusquedaTarifa *bus = clo->findChild<BusquedaTarifa *>("bus");
-    bus->setidtarifa(clo->DBvalue("idtarifa"));
-    return 0;
-}
 
 
 int ArticuloView_ArticuloView(ArticuloView *art) {

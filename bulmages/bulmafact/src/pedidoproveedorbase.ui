@@ -318,12 +318,12 @@
            <string>Referencia del pedido:</string>
           </property>
           <property name="buddy" >
-           <cstring>mui_referenciaPedido</cstring>
+           <cstring>mui_refpedidoproveedor</cstring>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="BusquedaReferencia" name="mui_referenciaPedido" >
+         <widget class="BusquedaReferencia" name="mui_refpedidoproveedor" >
           <property name="sizePolicy" >
            <sizepolicy>
             <hsizetype>5</hsizetype>
@@ -410,12 +410,12 @@
         <string>Descripcion:</string>
        </property>
        <property name="buddy" >
-        <cstring>mui_descripcionPedido</cstring>
+        <cstring>mui_descpedidoproveedor</cstring>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="mui_descripcionPedido" />
+      <widget class="QLineEdit" name="mui_descpedidoproveedor" />
      </item>
      <item>
       <widget class="QLabel" name="label6" >
@@ -552,7 +552,7 @@
        </widget>
       </item>
       <item row="2" column="3" >
-       <widget class="BusquedaTrabajador" native="1" name="mui_trabajador" >
+       <widget class="BusquedaTrabajador" native="1" name="mui_idtrabajador" >
         <property name="sizePolicy" >
          <sizepolicy>
           <hsizetype>5</hsizetype>
@@ -567,7 +567,7 @@
        </widget>
       </item>
       <item row="3" column="3" >
-       <widget class="BusquedaAlmacen" native="1" name="mui_almacenDestino" >
+       <widget class="BusquedaAlmacen" native="1" name="mui_idalmacen" >
         <property name="sizePolicy" >
          <sizepolicy>
           <hsizetype>13</hsizetype>
@@ -582,7 +582,7 @@
        </widget>
       </item>
       <item row="4" column="3" >
-       <widget class="BusquedaFormaPago" native="1" name="mui_formaPago" >
+       <widget class="BusquedaFormaPago" native="1" name="mui_idforma_pago" >
         <property name="sizePolicy" >
          <sizepolicy>
           <hsizetype>5</hsizetype>
@@ -610,7 +610,7 @@
        </widget>
       </item>
       <item row="3" column="1" >
-       <widget class="QLineEdit" name="mui_personaContacto" />
+       <widget class="QLineEdit" name="mui_contactpedidoproveedor" />
       </item>
       <item row="4" column="0" >
        <widget class="QLabel" name="label8" >
@@ -623,10 +623,10 @@
        </widget>
       </item>
       <item row="4" column="1" >
-       <widget class="QLineEdit" name="mui_telefonoContacto" />
+       <widget class="QLineEdit" name="mui_telpedidoproveedor" />
       </item>
       <item rowspan="3" row="0" column="0" colspan="2" >
-       <widget class="BusquedaProveedor" native="1" name="mui_proveedor" >
+       <widget class="BusquedaProveedor" native="1" name="mui_idproveedor" >
         <property name="sizePolicy" >
          <sizepolicy>
           <hsizetype>7</hsizetype>
@@ -1461,16 +1461,6 @@
  <layoutdefault spacing="2" margin="2" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaAlmacen</class>
-   <extends>QWidget</extends>
-   <header>busquedaalmacen.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaTrabajador</class>
-   <extends>QWidget</extends>
-   <header>busquedatrabajador.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaProveedor</class>
    <extends>QWidget</extends>
    <header>busquedaproveedor.h</header>
@@ -1500,20 +1490,30 @@
    <extends>QWidget</extends>
    <header>listdescpedidoproveedorview.h</header>
   </customwidget>
+  <customwidget>
+   <class>BusquedaAlmacen</class>
+   <extends>QWidget</extends>
+   <header>busquedaalmacen.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaTrabajador</class>
+   <extends>QWidget</extends>
+   <header>busquedatrabajador.h</header>
+  </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>mui_referenciaPedido</tabstop>
+  <tabstop>mui_refpedidoproveedor</tabstop>
   <tabstop>mui_detalles</tabstop>
-  <tabstop>mui_descripcionPedido</tabstop>
+  <tabstop>mui_descpedidoproveedor</tabstop>
   <tabstop>mui_numeroPedido</tabstop>
-  <tabstop>mui_proveedor</tabstop>
+  <tabstop>mui_idproveedor</tabstop>
   <tabstop>mui_tramitadoPedido</tabstop>
   <tabstop>mui_fechaPedido</tabstop>
-  <tabstop>mui_trabajador</tabstop>
-  <tabstop>mui_personaContacto</tabstop>
-  <tabstop>mui_almacenDestino</tabstop>
-  <tabstop>mui_telefonoContacto</tabstop>
-  <tabstop>mui_formaPago</tabstop>
+  <tabstop>mui_idtrabajador</tabstop>
+  <tabstop>mui_contactpedidoproveedor</tabstop>
+  <tabstop>mui_idalmacen</tabstop>
+  <tabstop>mui_telpedidoproveedor</tabstop>
+  <tabstop>mui_idforma_pago</tabstop>
   <tabstop>discounts</tabstop>
   <tabstop>mui_lineasDetalle</tabstop>
   <tabstop>mui_descuentos</tabstop>
