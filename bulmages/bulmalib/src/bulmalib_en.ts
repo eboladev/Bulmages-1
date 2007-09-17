@@ -26,7 +26,7 @@
     <message>
         <location filename="busquedaperiodo.cpp" line="44"/>
         <source>Quincenal</source>
-        <translation>Quincenal</translation>
+        <translation>Biweekly</translation>
     </message>
     <message>
         <location filename="busquedaperiodo.cpp" line="45"/>
@@ -234,7 +234,7 @@
     <message>
         <location filename="pgimportfiles.cpp" line="2211"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando DAlbaran </source>
-        <translation>&lt;HR&gt;&lt;B&gt;Treating DLetters patent</translation>
+        <translation>&lt;HR&gt;&lt;B&gt;Treating DLetters patent </translation>
     </message>
     <message>
         <location filename="pgimportfiles.cpp" line="2225"/>
@@ -269,7 +269,7 @@
     <message>
         <location filename="pgimportfiles.cpp" line="2633"/>
         <source>&lt;HR&gt;&lt;B&gt;Tratando DPresupuesto </source>
-        <translation>&lt;HR&gt;&lt;B&gt;Treating DEstimated</translation>
+        <translation>&lt;HR&gt;&lt;B&gt;Treating DEstimated </translation>
     </message>
     <message>
         <location filename="pgimportfiles.cpp" line="2647"/>
@@ -324,18 +324,18 @@
         <location filename="pgimportfiles.cpp" line="1920"/>
         <source>La familia del articulo no existe&lt;BR&gt;
 </source>
-        <translation>The family of I articulate does not exist&lt;BR&gt;
+        <translation>The family of article does not exist&lt;BR&gt;
 </translation>
     </message>
     <message>
         <location filename="pgimportfiles.cpp" line="1945"/>
         <source>&lt;P&gt;Datos insuficientes para tratar el articulo.&lt;/P&gt;</source>
-        <translation>&lt;P&gt;Insufficient data to treat Article.&lt;/P&gt;</translation>
+        <translation>&lt;P&gt;Insufficient data to treat article.&lt;/P&gt;</translation>
     </message>
     <message>
         <location filename="pgimportfiles.cpp" line="1954"/>
         <source>&lt;P&gt; Ya existe este articulo.&lt;/P&gt;</source>
-        <translation>&lt;P&gt; Already exists this Article.&lt;/P&gt;</translation>
+        <translation>&lt;P&gt; Already exists this article.&lt;/P&gt;</translation>
     </message>
     <message>
         <location filename="pgimportfiles.cpp" line="1976"/>
@@ -458,7 +458,7 @@
     <message>
         <location filename="subform3base.ui" line="13"/>
         <source>Configuracion Subformularios</source>
-        <translation>Subformularios Configuration</translation>
+        <translation>Subforms Configuration</translation>
     </message>
     <message>
         <location filename="subform3base.ui" line="1762"/>
@@ -766,7 +766,7 @@ Document badly formed.</translation>
     <message>
         <location filename="pgimportfiles.cpp" line="415"/>
         <source>&lt;LI&gt;Ya hay una cuenta con el codigo </source>
-        <translation>&lt;LI&gt;Already there is an account with I cosay </translation>
+        <translation>&lt;LI&gt;Already there is an account with the code </translation>
     </message>
     <message>
         <location filename="pgimportfiles.cpp" line="524"/>

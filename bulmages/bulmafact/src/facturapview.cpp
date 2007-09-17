@@ -47,19 +47,19 @@ FacturaProveedorView::FacturaProveedorView(Company *comp, QWidget *parent)
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
         setupUi(this);
 
-    setTitleName(tr("Factura Proveedor"));
-    setDBTableName("facturap");
-    setDBCampoId("idfacturap");
-    addDBCampo("idfacturap", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("FacturaProveedor", "Id facturap"));
-    addDBCampo("idproveedor", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("FacturaProveedor", "Id proveedor"));
-    addDBCampo("numfacturap", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("FacturaProveedor", "Numero"));
-    addDBCampo("ffacturap", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("FacturaProveedor", "Fecha"));
-    addDBCampo("procesadafacturap", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("FacturaProveedor", "Procesada facturap"));
-    addDBCampo("comentfacturap", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("FacturaProveedor", "Comentario facturap"));
-    addDBCampo("reffacturap", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("FacturaProveedor", "Referencia facturap"));
-    addDBCampo("descfacturap", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("FacturaProveedor", "Descripcion facturap"));
-    addDBCampo("idtrabajador", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("FacturaProveedor", "Id trabajador"));
-    addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("FacturaProveedor", "Id forma de pago"));
+        setTitleName(tr("Factura Proveedor"));
+        setDBTableName("facturap");
+        setDBCampoId("idfacturap");
+        addDBCampo("idfacturap", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("FacturaProveedor", "Id facturap"));
+        addDBCampo("idproveedor", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("FacturaProveedor", "Id proveedor"));
+        addDBCampo("numfacturap", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("FacturaProveedor", "Numero"));
+        addDBCampo("ffacturap", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("FacturaProveedor", "Fecha"));
+        addDBCampo("procesadafacturap", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("FacturaProveedor", "Procesada facturap"));
+        addDBCampo("comentfacturap", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("FacturaProveedor", "Comentario facturap"));
+        addDBCampo("reffacturap", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("FacturaProveedor", "Referencia facturap"));
+        addDBCampo("descfacturap", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("FacturaProveedor", "Descripcion facturap"));
+        addDBCampo("idtrabajador", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("FacturaProveedor", "Id trabajador"));
+        addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("FacturaProveedor", "Id forma de pago"));
 
 
         subform2->setEmpresaBase(comp);
@@ -204,8 +204,8 @@ void FacturaProveedorView::on_mui_idproveedor_valueChanged(QString id) {
 */
 int FacturaProveedorView::borrarPre() {
     _depura("FacturaProveedorView::borrar", 0);
-        m_listalineas->borrar();
-        m_listadescuentos->borrar();
+    m_listalineas->borrar();
+    m_listadescuentos->borrar();
     _depura("END FacturaProveedorView::borrar", 0);
     return 0;
 }
@@ -220,8 +220,8 @@ int FacturaProveedorView::borrarPre() {
 */
 int FacturaProveedorView::cargarPost(QString idfacturap) {
     _depura("FacturaProveedorView::cargar", 0);
-        m_listalineas->cargar(idfacturap);
-        m_listadescuentos->cargar(idfacturap);
+    m_listalineas->cargar(idfacturap);
+    m_listadescuentos->cargar(idfacturap);
     _depura("END FacturaProveedorView::cargar", 0);
     return 0;
 }
@@ -234,11 +234,12 @@ int FacturaProveedorView::cargarPost(QString idfacturap) {
 */
 int FacturaProveedorView::guardarPost() {
     _depura("FacturaProveedorView::guardar()", 0);
-        m_listalineas->setColumnValue("idfactura", DBvalue("idfactura"));
-        m_listalineas->guardar();
-        m_listadescuentos->guardar();
-        _depura("END FacturaProveedorView::guardar()", 0);
-        return 0;
+    m_listalineas->setColumnValue("idfacturap", DBvalue("idfacturap"));
+    m_listadescuentos->setColumnValue("idfacturap", DBvalue("idfacturap"));
+    m_listalineas->guardar();
+    m_listadescuentos->guardar();
+    _depura("END FacturaProveedorView::guardar()", 0);
+    return 0;
 }
 
 
@@ -290,7 +291,7 @@ void FacturaProveedorView::imprimirFacturaProveedor() {
     /// Linea de totales del presupuesto
     QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor = " + DBvalue("idproveedor");
     cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
-    if(!cur->eof()) {
+    if (!cur->eof()) {
         buff.replace("[dirproveedor]", cur->valor("dirproveedor"));
         buff.replace("[poblproveedor]", cur->valor("poblproveedor"));
         buff.replace("[telproveedor]", cur->valor("telproveedor"));

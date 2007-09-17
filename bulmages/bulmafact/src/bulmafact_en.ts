@@ -196,7 +196,7 @@
     <message>
         <location filename="" line="136813724"/>
         <source>Mostrar/ocultar cabecera</source>
-        <translation>To show/to hide head</translation>
+        <translation>Show/hide head</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -231,12 +231,12 @@
     <message>
         <location filename="" line="136813724"/>
         <source>Generar factura a partir de este albaran</source>
-        <translation>To generate invoice from this letters patent</translation>
+        <translation>Generate invoice from this letters patent</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Ver pedidos con la misma referencia</source>
-        <translation>To see orders with the same reference</translation>
+        <translation>See orders with the same reference</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -292,22 +292,22 @@
     <message>
         <location filename="" line="136813724"/>
         <source>Editar albaran</source>
-        <translation>To publish letters patent</translation>
+        <translation>Publish letters patent</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Borrar albaran</source>
-        <translation>To erase letters patent</translation>
+        <translation>Erase letters patent</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Imprimir listado</source>
-        <translation>To print listing</translation>
+        <translation>Print listing</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Filtrar albaranes</source>
-        <translation>To filter letters patents</translation>
+        <translation>Filter letters patents</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -322,7 +322,7 @@
     <message>
         <location filename="" line="136813724"/>
         <source>Buscar:</source>
-        <translation>To look for:</translation>
+        <translation>Look for:</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -395,7 +395,7 @@
     <message>
         <location filename="" line="136813724"/>
         <source>Codigo de almacen</source>
-        <translation>Codigo of warehouse</translation>
+        <translation>Code of warehouse</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -689,7 +689,7 @@
     <message>
         <location filename="" line="136813724"/>
         <source>Mostrar/ocultar cabecera</source>
-        <translation> Show/to hide head</translation>
+        <translation> Show/hide head</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -728,7 +728,8 @@
         <location filename="" line="136813724"/>
         <source>No existe una factura asociada a este albaran.
 Desea crearla?</source>
-        <translation>An invoice associated to this letters patent does not exist. It wishes to create it?</translation>
+        <translation>An invoice associated to this letters patent does not exist.
+It wishes to create it?</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -829,7 +830,7 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Total: </source>
-        <translation>Total:</translation>
+        <translation>Total: </translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -970,12 +971,12 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Codigo</source>
-        <translation>Codigo</translation>
+        <translation>Code</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Nombre del articulo</source>
-        <translation>Name of I articulate</translation>
+        <translation>Name of I article</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -990,17 +991,17 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Incluir en presentaciones</source>
-        <translation>To include in presentations</translation>
+        <translation>Include in presentations</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Incluir en control de stock</source>
-        <translation>To include in stock control</translation>
+        <translation>Include in stock control</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Tipo de articulo</source>
-        <translation>Type of I articulate</translation>
+        <translation>Type of article</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -1103,22 +1104,22 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Nuevo articulo</source>
-        <translation>New I articulate</translation>
+        <translation>New article</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Codigo del articulo:</source>
-        <translation>Code of I articulate:</translation>
+        <translation>Code of article:</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Informacion del articulo:</source>
-        <translation>Information of I articulate:</translation>
+        <translation>Information of article:</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Nombre del articulo:</source>
-        <translation>Name of I articulate:</translation>
+        <translation>Name of article:</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -1133,12 +1134,12 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Imagen del articulo:</source>
-        <translation>Image of I articulate:</translation>
+        <translation>Image of article:</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="" line="136813724"/>
         <source>Incluir este artículo en el catálogo.</source>
-        <translation>To include this article in the catalogue.</translation>
+        <translation>Include this article in the catalogue.</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="" line="136813724"/>
@@ -1176,17 +1177,17 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Editar articulo</source>
-        <translation>To publish I articulate</translation>
+        <translation>To publish article</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Borrar articulo</source>
-        <translation>To erase I articulate</translation>
+        <translation>To erase article</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Esta a punto de borrar un articulo. Estos datos pueden dar problemas.</source>
-        <translation>This on the verge of erasing I articulate. These data can give problems.</translation>
+        <translation>This on the verge of erasing article. These data can give problems.</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -1201,17 +1202,17 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Selector de articulos</source>
-        <translation>Selector of articulos</translation>
+        <translation>Selector of article</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Error al borrar el articulo</source>
-        <translation>Error when erasing I articulate</translation>
+        <translation>Error when erasing article</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Tiene que seleccionar un articulo</source>
-        <translation>It must select I articulate</translation>
+        <translation>It must select article</translation>
     </message>
 </context>
 <context>
@@ -1224,12 +1225,12 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Nuevo articulo</source>
-        <translation>New articulate</translation>
+        <translation>New article</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Borrar articulo</source>
-        <translation>Erase articulate</translation>
+        <translation>Erase article</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -1254,12 +1255,12 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Exportar articulos</source>
-        <translation>Export articulos</translation>
+        <translation>Export articules</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Importar articulos</source>
-        <translation>Concern articulos</translation>
+        <translation>Concern articles</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -1355,7 +1356,7 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Error al crear el articulo</source>
-        <translation>Error when creating I article</translation>
+        <translation>Error when creating article</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -1386,12 +1387,12 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Borrar trabajador</source>
-        <translation>To erase worker</translation>
+        <translation>Erase worker</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Guardar trabajador</source>
-        <translation>To keep worker</translation>
+        <translation>Keep worker</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -1484,7 +1485,7 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Guardar datos del trabajador</source>
-        <translation>To keep data from the worker</translation>
+        <translation>Keep data from the worker</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -1686,12 +1687,12 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Numero de telefono en el trabajo</source>
-        <translation>I number of telephone in the work</translation>
+        <translation>Number of telephone in the work</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Numero de telefono movil</source>
-        <translation>I number of telephone mobil</translation>
+        <translation>Number of telephone mobil</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -1701,7 +1702,7 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Direccion electronica</source>
-        <translation>Electronica direction</translation>
+        <translation>Electronics direction</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -1829,7 +1830,7 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Pagina web:</source>
-        <translation> Web page:</translation>
+        <translation>Web page:</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -1869,7 +1870,7 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Correo electronico:</source>
-        <translation>Electronico mail:</translation>
+        <translation>Electronic mail:</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -1987,7 +1988,7 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Direccion de correo electronica</source>
-        <translation>Electronica direction of mail</translation>
+        <translation>Direction of electronic mail</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -2444,12 +2445,12 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Numero de telefono</source>
-        <translation>number of I telephone</translation>
+        <translation>Number of telephone</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Direccion de correo electronico</source>
-        <translation>Direction of electronico mail</translation>
+        <translation>Direction of electronic mail</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -2469,7 +2470,7 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Prevision de cobro</source>
-        <translation>Reference of the collection</translation>
+        <translation>Forecast of collection</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -2686,7 +2687,7 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Ffactura</source>
-        <translation>Ffactura</translation>
+        <translation>Finvoices</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -2809,12 +2810,12 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Agregar albaran a la factura</source>
-        <translation>To add letters patent to the invoice</translation>
+        <translation>Add letters patent to the invoice</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Mostrar/ocultar cabecera</source>
-        <translation>To show/to hide head</translation>
+        <translation>Show/hide head</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -2859,7 +2860,7 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Registrar cobro a cliente</source>
-        <translation>To register collection to client</translation>
+        <translation>Register collection to client</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -2962,17 +2963,17 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Base </source>
-        <translation>Base(sp)</translation>
+        <translation>Base </translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>IVA </source>
-        <translation>IVA(sp)</translation>
+        <translation>IVA </translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Total </source>
-        <translation>Total(sp)</translation>
+        <translation>Total </translation>
     </message>
 </context>
 <context>
@@ -3095,7 +3096,7 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Mostrar/ocultar cabecera</source>
-        <translation>Show / to hide head</translation>
+        <translation>Show /hide head</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -3136,7 +3137,7 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>ALBARAN: Num </source>
-        <translation>ALBARAN: Num(sp)</translation>
+        <translation>ALBARAN: Num </translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -3184,7 +3185,7 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Facturas procesadas</source>
-        <translation></translation>
+        <translation>Processed invoices</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -3315,7 +3316,7 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Id factura</source>
-        <translation>It invoices</translation>
+        <translation>Id invoices</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -3787,17 +3788,17 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Codigo completo del articulo</source>
-        <translation>Complete code of I articulate</translation>
+        <translation>Complete code of article</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Nombre del articulo</source>
-        <translation>Name of articulate</translation>
+        <translation>Name of article</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Cantidad de componente de articulo</source>
-        <translation>Amount of component of articulate</translation>
+        <translation>Amount of component of article</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -3874,17 +3875,17 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Conceptd albaranp</source>
-        <translation>Conceptd albaranp</translation>
+        <translation>Conceptd letters patentp</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Proporciond albaranp</source>
-        <translation>Proporciond letters patent</translation>
+        <translation>Proporciond letters patentp</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Id albaranp</source>
-        <translation>Id letters patent</translation>
+        <translation>Id letters patentp</translation>
     </message>
 </context>
 <context>
@@ -3892,22 +3893,22 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Idd facturap</source>
-        <translation>Idd invoices</translation>
+        <translation>Idd invoicesp</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Conceptd facturap</source>
-        <translation>Conceptd facturap</translation>
+        <translation>Conceptd invoicesp</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Proporciond facturap</source>
-        <translation>Proporciond invoices</translation>
+        <translation>Proportiond invoicesp</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Id facturap</source>
-        <translation>Id invoices</translation>
+        <translation>Id invoicesp</translation>
     </message>
 </context>
 <context>
@@ -3920,12 +3921,12 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>conceptdfactura</source>
-        <translation>conceptd invoices</translation>
+        <translation>concept of invoice</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>proporciondfactura</source>
-        <translation>proporciondfactura</translation>
+        <translation>proportion of invoice</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -3948,12 +3949,12 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Proporciond pedido cliente</source>
-        <translation>Requested Proporciond client</translation>
+        <translation>Requested Proportiond client</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Id pedido cliente</source>
-        <translation>order client</translation>
+        <translation>id order client</translation>
     </message>
 </context>
 <context>
@@ -3971,7 +3972,7 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Proporciond pedido proveedor</source>
-        <translation>Requested Proporciond supplier</translation>
+        <translation>Requested Proportiond supplier</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -3994,7 +3995,7 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Proporciond presupuesto</source>
-        <translation>Estimated Proporciond</translation>
+        <translation>Estimated Proportiond</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -4090,7 +4091,7 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Descripcionl albaranp</source>
-        <translation>Descriptionl albaranp</translation>
+        <translation>Descriptionl letters patentp</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -4105,17 +4106,17 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>IVAl albaranp</source>
-        <translation>IVAl albaranp</translation>
+        <translation>IVAl letters patentp</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Descontl albaranp</source>
-        <translation>Descont letters patent</translation>
+        <translation>Descont letters patentp</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Id albaranp</source>
-        <translation>Id  letters patent</translation>
+        <translation>Id  letters patentp</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -4125,7 +4126,7 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Recargo albaranp</source>
-        <translation>Surcharge letters patent</translation>
+        <translation>Surcharge letters patentp</translation>
     </message>
 </context>
 <context>
@@ -4221,7 +4222,7 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Cantidadl factura</source>
-        <translation>Amount invoices</translation>
+        <translation>Amountl invoices</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -4236,7 +4237,7 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Descuentol factura</source>
-        <translation>Description invoices</translation>
+        <translation>Descriptionl invoices</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -4558,7 +4559,7 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Id Tipo IVA</source>
-        <translation>id Type IVA</translation>
+        <translation>Id Type IVA</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -4677,7 +4678,7 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Error al crear el pago</source>
-        <translation>Error al crear el pago</translation>
+        <translation>Error when creating the payment</translation>
     </message>
 </context>
 <context>
@@ -4939,17 +4940,17 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Base </source>
-        <translation>Base(sp)</translation>
+        <translation>Base </translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Iva </source>
-        <translation>Iva(sp)</translation>
+        <translation>Iva </translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Total </source>
-        <translation>Total(sp)</translation>
+        <translation>Total </translation>
     </message>
 </context>
 <context>
@@ -4997,7 +4998,7 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Referencia:</source>
-        <translation>Print order:</translation>
+        <translation>Reference:</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -5007,7 +5008,7 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Numero de pedido cliente:</source>
-        <translation>I number of order client:</translation>
+        <translation>Number of order client:</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -5022,7 +5023,7 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Telefono de contacto:</source>
-        <translation>I telephone of contact:</translation>
+        <translation>Telephone of contact:</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -5042,7 +5043,7 @@ Desea crearla?</source>
     <message>
         <location filename="" line="136813724"/>
         <source>Mostrar/ocultar cabecera</source>
-        <translation>Show/ hide head</translation>
+        <translation>Show/hide head</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -5444,7 +5445,7 @@ It wishes to create it?</translation>
     <message>
         <location filename="" line="136813724"/>
         <source>Pedidos no procesados</source>
-        <translation>Pedidos no procesados</translation>
+        <translation>Orders not process</translation>
     </message>
 </context>
 <context>
@@ -5560,7 +5561,7 @@ It wishes to create it?</translation>
     <message>
         <location filename="" line="136813724"/>
         <source>Codigo de almacen</source>
-        <translation>Codigo of warehouse</translation>
+        <translation>Code of warehouse</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -5784,7 +5785,7 @@ It wishes to create it?</translation>
     <message>
         <location filename="" line="136813724"/>
         <source>Codigo de almacen</source>
-        <translation>Codigo of warehouse</translation>
+        <translation>Code of warehouse</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -5809,7 +5810,7 @@ It wishes to create it?</translation>
     <message>
         <location filename="" line="136813724"/>
         <source>Telefono proveedor</source>
-        <translation>I telephone supplier</translation>
+        <translation>Telephone supplier</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -5819,17 +5820,17 @@ It wishes to create it?</translation>
     <message>
         <location filename="" line="136813724"/>
         <source>Id trabajador</source>
-        <translation>worker</translation>
+        <translation>Id worker</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Id proveedor</source>
-        <translation>supplier</translation>
+        <translation>Id supplier</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Id almacen</source>
-        <translation>warehouse</translation>
+        <translation>id warehouse</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -5902,7 +5903,7 @@ It wishes to create it?</translation>
     <message>
         <location filename="" line="136813724"/>
         <source>ID Presupuesto</source>
-        <translation>Budget</translation>
+        <translation>ID Budget</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -5972,7 +5973,7 @@ It wishes to create it?</translation>
     <message>
         <location filename="" line="136813724"/>
         <source>Presupuesto </source>
-        <translation>Budget(sp)</translation>
+        <translation>Budget </translation>
     </message>
 </context>
 <context>
@@ -6289,7 +6290,7 @@ It wishes to create it?</translation>
     <message>
         <location filename="" line="136813724"/>
         <source>Existe un pedido a este cliente con la misma referencia que este presupuesto. Desea abrirla para verificar?</source>
-        <translation>A ask this client with the same reference exists that this budget. It wishes to open it to verify?</translation>
+        <translation>Ask this client with the same reference exists that this budget. It wishes to open it to verify?</translation>
     </message>
 </context>
 <context>
@@ -6468,7 +6469,7 @@ It wishes to create it?</translation>
     <message>
         <location filename="" line="136813724"/>
         <source>Resumen por articulos</source>
-        <translation>Summary by articulos</translation>
+        <translation>Summary by articles</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -6752,7 +6753,7 @@ It wishes to create it?</translation>
     <message>
         <location filename="" line="136813724"/>
         <source>Codigo</source>
-        <translation>Codigo</translation>
+        <translation>Code</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -6777,12 +6778,12 @@ It wishes to create it?</translation>
     <message>
         <location filename="" line="136813724"/>
         <source>Codigo postal</source>
-        <translation>Postal Codigo</translation>
+        <translation>Postal Code</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Numero de telefono</source>
-        <translation>Number of I telephone</translation>
+        <translation>Number of telephone</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -6792,7 +6793,7 @@ It wishes to create it?</translation>
     <message>
         <location filename="" line="136813724"/>
         <source>Direccion de correo electronico</source>
-        <translation>Direction of electronico mail</translation>
+        <translation>Direction of electronic mail</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -6825,12 +6826,12 @@ It wishes to create it?</translation>
     <message>
         <location filename="" line="136813724"/>
         <source>Codigo postal</source>
-        <translation>Postal Codigo</translation>
+        <translation>Postal Code</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Numero de telefono</source>
-        <translation>Number of I telephone</translation>
+        <translation>Number of telephone</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -6840,7 +6841,7 @@ It wishes to create it?</translation>
     <message>
         <location filename="" line="136813724"/>
         <source>Direccion electronica</source>
-        <translation>Electronica direction</translation>
+        <translation>Electronic direction</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -6903,7 +6904,7 @@ It wishes to create it?</translation>
     <message>
         <location filename="" line="136813724"/>
         <source>Articulo inexistente</source>
-        <translation>Articulate nonexistent</translation>
+        <translation>Article nonexistent</translation>
     </message>
 </context>
 <context>
@@ -7088,7 +7089,10 @@ It wishes to create it?</translation>
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;p, li { white-space: pre-wrap; }&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -7256,7 +7260,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="" line="136813724"/>
         <source>Nuevo &amp;articulo...</source>
-        <translation>New &amp;articulate...</translation>
+        <translation>New &amp;article...</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -7540,12 +7544,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="" line="136813724"/>
         <source>Tipos de articulo</source>
-        <translation>Types of articulate</translation>
+        <translation>Types of article</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
         <source>Guardar Tipo de articulo</source>
-        <translation>Keep Type from articulate</translation>
+        <translation>Keep Type from article</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -7555,7 +7559,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="" line="136813724"/>
         <source>Borrar Tipo de articulo</source>
-        <translation>Erase Type of articulate</translation>
+        <translation>Erase Type of article</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>
@@ -7565,7 +7569,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="" line="136813724"/>
         <source>Nuevo Tipo de articulo</source>
-        <translation>New Type of articulate</translation>
+        <translation>New Type of article</translation>
     </message>
     <message>
         <location filename="" line="136813724"/>

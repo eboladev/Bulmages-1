@@ -85,7 +85,7 @@
     <message>
         <location filename="amortizacionbase.ui" line="458"/>
         <source>Metodo:</source>
-        <translation>Metodo:</translation>
+        <translation>Method:</translation>
     </message>
     <message>
         <location filename="amortizacionbase.ui" line="507"/>
@@ -266,7 +266,7 @@
     <message>
         <location filename="amortizacionview.cpp" line="194"/>
         <source>Metodo</source>
-        <translation>Metodo</translation>
+        <translation>Method</translation>
     </message>
     <message>
         <location filename="amortizacionview.cpp" line="195"/>
@@ -667,7 +667,7 @@
     <message>
         <location filename="asientolistbase.ui" line="66"/>
         <source>y   ( &gt;=</source>
-        <translation>y(sp)(sp)(sp)( &gt;=</translation>
+        <translation>y   ( &gt;=</translation>
     </message>
     <message>
         <location filename="asientolistbase.ui" line="94"/>
@@ -730,7 +730,7 @@
     <message>
         <location filename="asientolistsubform.cpp" line="36"/>
         <source>Apuntes</source>
-        <translation>Accounts</translation>
+        <translation>Notes</translation>
     </message>
     <message>
         <location filename="asientolistsubform.cpp" line="37"/>
@@ -765,7 +765,7 @@
     <message>
         <location filename="asientolistsubform.cpp" line="85"/>
         <source>Ajustar columa</source>
-        <translation>Fit columa</translation>
+        <translation>Fit column</translation>
     </message>
     <message>
         <location filename="asientolistsubform.cpp" line="86"/>
@@ -954,7 +954,7 @@
     <message>
         <location filename="balancebase.ui" line="844"/>
         <source>Haber:</source>
-        <translation>Have:</translation>
+        <translation>Creditor:</translation>
     </message>
     <message>
         <location filename="balancebase.ui" line="919"/>
@@ -964,7 +964,7 @@
     <message>
         <location filename="balancebase.ui" line="926"/>
         <source>Debe:</source>
-        <translation>It must:</translation>
+        <translation>Debtor:</translation>
     </message>
 </context>
 <context>
@@ -1052,7 +1052,7 @@
     <message>
         <location filename="balancesubform.cpp" line="32"/>
         <source>tipocuenta</source>
-        <translation>type counts</translation>
+        <translation>type accounts</translation>
     </message>
     <message>
         <location filename="balancesubform.cpp" line="33"/>
@@ -1067,37 +1067,37 @@
     <message>
         <location filename="balancesubform.cpp" line="35"/>
         <source>asaldo</source>
-        <translation>asaldo</translation>
+        <translation>abalance</translation>
     </message>
     <message>
         <location filename="balancesubform.cpp" line="36"/>
         <source>tdebe</source>
-        <translation>tdebe</translation>
+        <translation>tdebtor</translation>
     </message>
     <message>
         <location filename="balancesubform.cpp" line="37"/>
         <source>thaber</source>
-        <translation>thaber</translation>
+        <translation>tcreditor</translation>
     </message>
     <message>
         <location filename="balancesubform.cpp" line="38"/>
         <source>tsaldo</source>
-        <translation>tsaldo</translation>
+        <translation>tbalance</translation>
     </message>
     <message>
         <location filename="balancesubform.cpp" line="39"/>
         <source>ejdebe</source>
-        <translation>ejdebe</translation>
+        <translation>ejdebtor</translation>
     </message>
     <message>
         <location filename="balancesubform.cpp" line="40"/>
         <source>ejhaber</source>
-        <translation>ejhaber</translation>
+        <translation>ejcreditor</translation>
     </message>
     <message>
         <location filename="balancesubform.cpp" line="41"/>
         <source>ejsaldo</source>
-        <translation>ejsaldo</translation>
+        <translation>ejbalance</translation>
     </message>
     <message>
         <location filename="balancesubform.cpp" line="74"/>
@@ -1107,7 +1107,7 @@
     <message>
         <location filename="balancesubform.cpp" line="76"/>
         <source>Ajustar columa</source>
-        <translation>Fit columa</translation>
+        <translation>Fit column</translation>
     </message>
     <message>
         <location filename="balancesubform.cpp" line="77"/>
@@ -1145,7 +1145,7 @@
     <message>
         <location filename="balancetreebase.ui" line="14"/>
         <source>Balance jerarquico de Cuentas</source>
-        <translation>Jerarquico balance of Accounts</translation>
+        <translation>hierarchic balance of Accounts</translation>
     </message>
     <message>
         <location filename="balancetreebase.ui" line="290"/>
@@ -1175,7 +1175,7 @@
     <message>
         <location filename="balancetreebase.ui" line="389"/>
         <source>Centro de coste:</source>
-        <translation>Centro de coste:</translation>
+        <translation>Center of cost:</translation>
     </message>
     <message>
         <location filename="balancetreebase.ui" line="455"/>
@@ -1203,7 +1203,7 @@
     <message>
         <location filename="balance1view.cpp" line="76"/>
         <source>Codigo cuenta</source>
-        <translation>Code counts</translation>
+        <translation>Code accounts</translation>
     </message>
     <message>
         <location filename="balance1view.cpp" line="77"/>
@@ -1228,17 +1228,17 @@
     <message>
         <location filename="balance1view.cpp" line="81"/>
         <source>Saldo periodo</source>
-        <translation>Saldo periodo</translation>
+        <translation>Balance period</translation>
     </message>
     <message>
         <location filename="balance1view.cpp" line="82"/>
         <source>Debe ejercicio</source>
-        <translation>Must exercise</translation>
+        <translation>Debtor exercise</translation>
     </message>
     <message>
         <location filename="balance1view.cpp" line="83"/>
         <source>Haber ejercicio</source>
-        <translation>Have exercise</translation>
+        <translation>Creditor exercise</translation>
     </message>
     <message>
         <location filename="balance1view.cpp" line="84"/>
@@ -1253,7 +1253,7 @@
     <message>
         <location filename="balance1view.cpp" line="86"/>
         <source>ID cuenta</source>
-        <translation>ID counts</translation>
+        <translation>ID accounts</translation>
     </message>
     <message>
         <location filename="balance1view.cpp" line="86"/>
@@ -1263,32 +1263,32 @@
     <message>
         <location filename="balance1view.cpp" line="430"/>
         <source>Ver Diario (este dia)</source>
-        <translation>To see Newspaper (this day)</translation>
+        <translation>See Newspaper (this day)</translation>
     </message>
     <message>
         <location filename="balance1view.cpp" line="431"/>
         <source>Ver Diario (este mes)</source>
-        <translation>To see Newspaper (this month)</translation>
+        <translation>See Newspaper (this month)</translation>
     </message>
     <message>
         <location filename="balance1view.cpp" line="432"/>
         <source>Ver Diario (este anyo)</source>
-        <translation>To see Newspaper (this anyo)</translation>
+        <translation>See Newspaper (this anyo)</translation>
     </message>
     <message>
         <location filename="balance1view.cpp" line="434"/>
         <source>Ver extracto (este dia)</source>
-        <translation>To see extract (this day)</translation>
+        <translation>See extract (this day)</translation>
     </message>
     <message>
         <location filename="balance1view.cpp" line="435"/>
         <source>Ver extracto (este mes)</source>
-        <translation>To see extract (this month)</translation>
+        <translation>See extract (this month)</translation>
     </message>
     <message>
         <location filename="balance1view.cpp" line="436"/>
         <source>Ver extracto (este anyo)</source>
-        <translation>To see extract (this anyo)</translation>
+        <translation>See extract (this anyo)</translation>
     </message>
 </context>
 <context>
@@ -1326,12 +1326,12 @@
     <message>
         <location filename="balanceview.cpp" line="191"/>
         <source>Debe ejercicio</source>
-        <translation>Must exercise</translation>
+        <translation>Debtor exercise</translation>
     </message>
     <message>
         <location filename="balanceview.cpp" line="191"/>
         <source>Haber ejercicio</source>
-        <translation>Have exercise</translation>
+        <translation>Creditor exercise</translation>
     </message>
     <message>
         <location filename="balanceview.cpp" line="191"/>
@@ -1682,12 +1682,12 @@
     <message>
         <location filename="bulmacontbase.ui" line="276"/>
         <source>Balance &amp;jerarquico de Sumas y Saldos</source>
-        <translation>Jerarquico &amp;balance of Sum and Balances</translation>
+        <translation>Hierarchic &amp;balance of Sum and Balances</translation>
     </message>
     <message>
         <location filename="bulmacontbase.ui" line="282"/>
         <source>Balance jerarquico de Sumas y Saldos</source>
-        <translation>Jerarquico balance of Sum and Balances</translation>
+        <translation>Hierarchic balance of Sum and Balances</translation>
     </message>
     <message>
         <location filename="bulmacontbase.ui" line="381"/>
@@ -1760,7 +1760,7 @@
     <message>
         <location filename="bulmacont.cpp" line="351"/>
         <source>Deshaciendo la ultima accion...</source>
-        <translation>Undoing it completes action...</translation>
+        <translation>Download completes action...</translation>
     </message>
     <message>
         <location filename="bulmacont.cpp" line="359"/>
@@ -1900,12 +1900,12 @@
     <message>
         <location filename="cambiactabase.ui" line="192"/>
         <source>Cuenta Destino</source>
-        <translation>Counts Destiny</translation>
+        <translation>Account Destiny</translation>
     </message>
     <message>
         <location filename="cambiactabase.ui" line="229"/>
         <source>Cuenta Origen</source>
-        <translation>Counts Origin</translation>
+        <translation>Account Origin</translation>
     </message>
     <message>
         <location filename="cambiactabase.ui" line="277"/>
@@ -2123,12 +2123,12 @@
     <message>
         <location filename="cuentabase.ui" line="1133"/>
         <source>Debe:</source>
-        <translation>Must:</translation>
+        <translation>Debtor:</translation>
     </message>
     <message>
         <location filename="cuentabase.ui" line="1143"/>
         <source>Haber:</source>
-        <translation>To Have:</translation>
+        <translation>Creditor:</translation>
     </message>
     <message>
         <location filename="cuentabase.ui" line="1661"/>
@@ -2138,17 +2138,17 @@
     <message>
         <location filename="cuentabase.ui" line="1676"/>
         <source>URL de la pagina web:</source>
-        <translation>URL of the pagina Web:</translation>
+        <translation>URL of the web page:</translation>
     </message>
     <message>
         <location filename="cuentabase.ui" line="1689"/>
         <source>Correo electronico:</source>
-        <translation>Electronico mail:</translation>
+        <translation>Electronic mail:</translation>
     </message>
     <message>
         <location filename="cuentabase.ui" line="1702"/>
         <source>Codigo cuenta corriente.:</source>
-        <translation>Codigo counts current:</translation>
+        <translation>Code accounts current:</translation>
     </message>
     <message>
         <location filename="cuentabase.ui" line="1741"/>
@@ -2346,12 +2346,12 @@ because equal its work is lost.</translation>
     <message>
         <location filename="diariosubform.cpp" line="54"/>
         <source>idcuenta</source>
-        <translation>Id counts</translation>
+        <translation>Id accounts</translation>
     </message>
     <message>
         <location filename="diariosubform.cpp" line="41"/>
         <source>tipocuenta</source>
-        <translation>type counts</translation>
+        <translation>type accounts</translation>
     </message>
     <message>
         <location filename="diariosubform.cpp" line="101"/>
@@ -2456,7 +2456,7 @@ because equal its work is lost.</translation>
     <message>
         <location filename="diariosubform.cpp" line="49"/>
         <source>idtipoiva</source>
-        <translation>Id tipoiva</translation>
+        <translation>Id type iva</translation>
     </message>
     <message>
         <location filename="diariosubform.cpp" line="50"/>
@@ -2476,7 +2476,7 @@ because equal its work is lost.</translation>
     <message>
         <location filename="diariosubform.cpp" line="52"/>
         <source>idc_coste</source>
-        <translation>id cost</translation>
+        <translation>id_cost</translation>
     </message>
     <message>
         <location filename="diariosubform.cpp" line="53"/>
@@ -2710,12 +2710,12 @@ because equal its work is lost.</translation>
     <message>
         <location filename="extractobase.ui" line="69"/>
         <source>Haber inicial:</source>
-        <translation>Have initial:</translation>
+        <translation>Creditor initial:</translation>
     </message>
     <message>
         <location filename="extractobase.ui" line="76"/>
         <source>Debe inicial:</source>
-        <translation>Must initial:</translation>
+        <translation>Debtor initial:</translation>
     </message>
     <message>
         <location filename="extractobase.ui" line="144"/>
@@ -2725,12 +2725,12 @@ because equal its work is lost.</translation>
     <message>
         <location filename="extractobase.ui" line="1088"/>
         <source>Debe:</source>
-        <translation>Must:</translation>
+        <translation>Debtor:</translation>
     </message>
     <message>
         <location filename="extractobase.ui" line="1101"/>
         <source>Haber:</source>
-        <translation>Have:</translation>
+        <translation>Creditor:</translation>
     </message>
     <message>
         <location filename="extractobase.ui" line="1171"/>
@@ -2886,7 +2886,7 @@ because equal its work is lost.</translation>
     <message>
         <location filename="extractosubform.cpp" line="57"/>
         <source>idc_coste</source>
-        <translation>Id cost</translation>
+        <translation>Id_cost</translation>
     </message>
     <message>
         <location filename="extractosubform.cpp" line="58"/>
@@ -3020,7 +3020,7 @@ because equal its work is lost.</translation>
     <message>
         <location filename="listcuentasbase.ui" line="460"/>
         <source>S&amp;ubcuentas</source>
-        <translation>S&amp;ubcuentas</translation>
+        <translation>S&amp;ubaccounts</translation>
     </message>
     <message>
         <location filename="listcuentasbase.ui" line="15"/>
@@ -3522,8 +3522,8 @@ because equal its work is lost.</translation>
         <location filename="propiedadesempresabase.ui" line="185"/>
         <source>xxxx --&gt; Dígitos de plan contable.
 yyyy --&gt; Dígitos de cuenta.</source>
-        <translation>xxxx --&gt;chart accounting digits.
- yyyy --&gt;accounts digits.</translation>
+        <translation>xxxx --&gt;Chart accounting digits.
+yyyy --&gt;Accounts digits.</translation>
     </message>
     <message>
         <location filename="propiedadesempresabase.ui" line="216"/>
@@ -3571,7 +3571,7 @@ yyyy --&gt; Dígitos de cuenta.</source>
     <message>
         <location filename="modelo300.cpp" line="108"/>
         <source>Generar de todas formas</source>
-        <translation>To generate in any case</translation>
+        <translation>Generate in any case</translation>
     </message>
     <message>
         <location filename="modelo300.cpp" line="108"/>
@@ -3810,12 +3810,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="splashscreen.cpp" line="120"/>
         <source>Comprobando la disquetera y la memoria fisica</source>
-        <translation>Verifying the disquetera and the fisica memory</translation>
+        <translation>Verifying the disquetera and the physics memory</translation>
     </message>
     <message>
         <location filename="splashscreen.cpp" line="121"/>
         <source>Induciendo energia quantica, entre su RAM y su ROM</source>
-        <translation>Inducing energia quantica, between its ram and its ROM</translation>
+        <translation>Inducing energy quantica, between its RAM and its ROM</translation>
     </message>
     <message>
         <location filename="splashscreen.cpp" line="123"/>
@@ -3968,7 +3968,8 @@ p, li { white-space: pre-wrap; }
                                      Esto puede ocasionar perdida de datos
 </source>
         <translation>One is going away to erase the mode of payment,
-(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)Esto it can cause lost of data(new line)</translation>
+                                     This can cause lost of data
+                                                                                              </translation>
     </message>
     <message>
         <location filename="canalview.cpp" line="147"/>
@@ -4149,7 +4150,7 @@ This operation it can cause lost of data.</translation>
     <message>
         <location filename="extractoview1.cpp" line="470"/>
         <source>Se dispone a borrar el punteo. Este cambio                                             es irrecuperable si no ha guardado su el punte.                                             Desea continuar?</source>
-        <translation>It is arranged to erase the punteo. This change(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)it is non-recoverable if punte has not kept his.(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)It wishes to continue?</translation>
+        <translation>It is arranged to erase the punteo. This change                                             it is non-recoverable if punte has not kept his.                                             It wishes to continue?                                                                                                                                                                                                                                                 </translation>
     </message>
 </context>
 <context>
@@ -4206,12 +4207,12 @@ because equal its work is lost.</translation>
     <message>
         <location filename="listcuentasview1.cpp" line="52"/>
         <source>Codigo cuenta</source>
-        <translation>Code Acount</translation>
+        <translation>Code Account</translation>
     </message>
     <message>
         <location filename="listcuentasview1.cpp" line="52"/>
         <source>Nombre cuenta</source>
-        <translation>Name acount</translation>
+        <translation>Name account</translation>
     </message>
     <message>
         <location filename="listcuentasview1.cpp" line="52"/>
@@ -4226,7 +4227,7 @@ because equal its work is lost.</translation>
     <message>
         <location filename="listcuentasview1.cpp" line="52"/>
         <source>ID cuenta</source>
-        <translation>ID acount</translation>
+        <translation>ID account</translation>
     </message>
     <message>
         <location filename="listcuentasview1.cpp" line="52"/>
@@ -4236,12 +4237,12 @@ because equal its work is lost.</translation>
     <message>
         <location filename="listcuentasview1.cpp" line="52"/>
         <source>Nodebe</source>
-        <translation>It does not have</translation>
+        <translation>Nondebtor</translation>
     </message>
     <message>
         <location filename="listcuentasview1.cpp" line="52"/>
         <source>Nohaber</source>
-        <translation>Not to have</translation>
+        <translation>Noncreditor</translation>
     </message>
     <message>
         <location filename="listcuentasview1.cpp" line="52"/>
@@ -4261,17 +4262,17 @@ because equal its work is lost.</translation>
     <message>
         <location filename="listcuentasview1.cpp" line="52"/>
         <source>Tipo cuenta</source>
-        <translation>Type acount</translation>
+        <translation>Type account</translation>
     </message>
     <message>
         <location filename="listcuentasview1.cpp" line="349"/>
         <source>Debe seleccionar una cuenta</source>
-        <translation>It must select an account</translation>
+        <translation>Debtor to select an account</translation>
     </message>
     <message>
         <location filename="listcuentasview1.cpp" line="353"/>
         <source>Borrar cuenta</source>
-        <translation>Erase acount</translation>
+        <translation>Erase account</translation>
     </message>
     <message>
         <location filename="listcuentasview1.cpp" line="354"/>
@@ -4307,7 +4308,7 @@ because equal its work is lost.</translation>
     <message>
         <location filename="mpatrimonialview.cpp" line="38"/>
         <source>identificador</source>
-        <translation>entificador</translation>
+        <translation>identificador</translation>
     </message>
     <message>
         <location filename="mpatrimonialview.cpp" line="38"/>
@@ -4395,7 +4396,7 @@ To leave now?</translation>
     <message>
         <location filename="selectcanalview.cpp" line="40"/>
         <source>idcanal</source>
-        <translation>idcanal</translation>
+        <translation>idchannel</translation>
     </message>
     <message>
         <location filename="selectcanalview.cpp" line="40"/>
@@ -4460,7 +4461,7 @@ To leave now?</translation>
         <location filename="tipoivaview.cpp" line="160"/>
         <source>Se va a borrar el tipo de IVA. 
 Esto puede ocasionar perdida de datos.</source>
-        <translation>One is going away to erase the type of IVA.(sp)
+        <translation>One is going away to erase the type of IVA. 
 This can cause lost of data.</translation>
     </message>
 </context>

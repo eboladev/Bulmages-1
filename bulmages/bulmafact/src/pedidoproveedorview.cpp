@@ -100,37 +100,6 @@ PedidoProveedorView::~PedidoProveedorView() {
     _depura("END PedidoProveedorView::~PedidoProveedorView", 0);
 }
 
-/*
-void PedidoProveedorView::inicialize() {
-    _depura("PedidoProveedorView::inicialize", 0);
-    mui_totalBaseImponible->setReadOnly(TRUE);
-    mui_totalBaseImponible->setAlignment(Qt::AlignRight);
-    QPalette p1 = mui_totalBaseImponible->palette();
-    p1.setBrush(QPalette::Base, this->palette().color(QPalette::Window));
-    mui_totalBaseImponible->setPalette(p1);
-
-    mui_totalImpuestos->setReadOnly(TRUE);
-    mui_totalImpuestos->setAlignment(Qt::AlignRight);
-    QPalette p2 = mui_totalImpuestos->palette();
-    p2.setBrush(QPalette::Base, this->palette().color(QPalette::Window));
-    mui_totalImpuestos->setPalette(p2);
-
-    mui_totalDescuentos->setReadOnly(TRUE);
-    mui_totalDescuentos->setAlignment(Qt::AlignRight);
-    QPalette p3 = mui_totalDescuentos->palette();
-    p3.setBrush(QPalette::Base, this->palette().color(QPalette::Window));
-    mui_totalDescuentos->setPalette(p3);
-
-    mui_totalPedido->setReadOnly(TRUE);
-    mui_totalPedido->setAlignment(Qt::AlignRight);
-    QPalette p4 = mui_totalPedido->palette();
-    p4.setBrush(QPalette::Base, this->palette().color(QPalette::Window));
-    mui_totalPedido->setPalette(p4);
-
-    _depura("END PedidoProveedorView::inicialize", 0);
-}
-*/
-
 
 
 
@@ -256,8 +225,6 @@ void PedidoProveedorView::on_mui_lineasDetalle_editFinish(int, int) {
 }
 
 
-
-
 int PedidoProveedorView::borrarPre() {
     _depura("PedidoProveedor::borrarPre", 0);
     m_listalineas->borrar();
@@ -265,7 +232,6 @@ int PedidoProveedorView::borrarPre() {
     _depura("END PedidoProveedor::borrarPre", 0);
     return 0;
 }
-
 
 
 /// Esta funcion carga un PedidoProveedor.

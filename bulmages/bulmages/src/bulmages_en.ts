@@ -13,7 +13,7 @@
  Desea continuar?
 </source>
         <translation>To erase a company can suppose lost of data
-(sp)It wishes to continue?
+ It wishes to continue?
 </translation>
     </message>
     <message>
@@ -21,14 +21,14 @@
         <source>Esta base de datos no puede ser eliminada.
 <byte value="xd"/> Es la plantilla para generar nuevas empresas.</source>
         <translation>This data base cannot be eliminated.
-(carriage return)(sp)It is the group to generate new companies.</translation>
+ It is the group to generate new companies.</translation>
     </message>
     <message>
         <location filename="comun/bconfiguracion.cpp" line="218"/>
         <source>No esta permitido eliminar la base 
 <byte value="xd"/> de datos actualmente abierta.</source>
-        <translation>Not this allowed to eliminate the base(sp)
-(carriage return)(sp)of data at the moment opened.</translation>
+        <translation>Not this allowed to eliminate the base 
+ of data at the moment opened.</translation>
     </message>
     <message>
         <location filename="comun/bconfiguracion.cpp" line="248"/>
@@ -52,7 +52,8 @@
         <location filename="comun/bnuevaempresa.cpp" line="51"/>
         <source>No puede dejar campos en blanco para crear una nueva empresa.
 </source>
-        <translation>It cannot let fields in target to create a new company.</translation>
+        <translation>It cannot let fields in target to create a new company.
+</translation>
     </message>
     <message>
         <location filename="comun/bnuevaempresa.cpp" line="50"/>
@@ -158,7 +159,7 @@
         <source>Hacer copia &amp;de Seguridad
  (BACKUP)</source>
         <translation>To make &amp;backup
-(sp)(BACKUP)</translation>
+ (BACKUP)</translation>
     </message>
     <message>
         <location filename="comun/configuracion.ui" line="243"/>
@@ -170,7 +171,7 @@
         <source>Res&amp;taurar copia
  (RESTORE)</source>
         <translation>Rec&amp;over copy
-(sp)(RESTORE)</translation>
+ (RESTORE)</translation>
     </message>
     <message>
         <location filename="comun/configuracion.ui" line="254"/>
@@ -217,7 +218,7 @@
         <source>Copia &amp;de Seguridad
  (BACKUP)</source>
         <translation>Backup&amp;
-(sp)(BACKUP)</translation>
+ (BACKUP)</translation>
     </message>
     <message>
         <location filename="comun/configuracion.ui" line="278"/>
