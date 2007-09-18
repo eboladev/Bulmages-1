@@ -199,7 +199,7 @@ public:
     void situarse1(unsigned int, unsigned int);
     int addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp);
     SDBRecord *newSDBRecord();
-    void setColumnValue(QString, QString);
+    virtual void setColumnValue(QString, QString);
     QString DBvalue(QString campo, int row = -1);
     SDBRecord *lineaact();
     SDBRecord *lineaat(int row);

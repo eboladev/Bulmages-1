@@ -20,30 +20,60 @@
 
 #include "blwidget.h"
 
+
+///
+/**
+**/
 PEmpresaBase::PEmpresaBase(EmpresaBase *emp) {
   m_empresaBase = emp;
 }
 
+
+///
+/**
+**/
 PEmpresaBase::PEmpresaBase() {
   m_empresaBase = NULL;
 }
 
+
+///
+/**
+**/
 PEmpresaBase::~PEmpresaBase() {
 }
 
+
+///
+/**
+**/
 void PEmpresaBase::setEmpresaBase(EmpresaBase *emp) {
   m_empresaBase = emp;
 }
 
+
+///
+/**
+\return 
+**/
 EmpresaBase *PEmpresaBase::empresaBase() {
   return m_empresaBase;
 }
 
+
+///
+/**
+\return 
+**/
 QString PEmpresaBase::valorCampo() {
 	_depura("PEmpresaBase::valorCampo", 2, "debe ser derivado");
 	return "";
 }
 
+
+///
+/**
+**/
 void PEmpresaBase::setValorCampo(QString) {
 	_depura("PEmpresaBase::setValorCampo", 2, "debe ser derivado");
 }
@@ -53,18 +83,35 @@ void PEmpresaBase::setValorCampo(QString) {
 /// ================== BLWidget ===============================
 /// ===========================================================
 
+
+///
+/**
+\param parent
+\param f
+**/
 BLWidget::BLWidget(QWidget *parent, Qt::WFlags f) 
   :QWidget(parent, f), PEmpresaBase() {
   _depura("BLWidget::BLWidget", 0);
   _depura("END BLWidget::BLWidget", 0);
 }
 
+
+///
+/**
+\param emp
+\param parent
+\param f
+**/
 BLWidget::BLWidget(EmpresaBase *emp, QWidget *parent, Qt::WFlags f) 
   :QWidget(parent, f), PEmpresaBase(emp) {
   _depura("BLWidget::BLWidget", 0);
   _depura("END BLWidget::BLWidget", 0);
 }
 
+
+///
+/**
+**/
 BLWidget::~BLWidget() {
   _depura("BLWidget::~BLWidget", 0);
   _depura("END BLWidget::~BLWidget", 0);

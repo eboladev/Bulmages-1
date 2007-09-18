@@ -24,8 +24,10 @@
 #include "funcaux.h"
 
 
-/**  Inicializa el objeto y hace todas las conexiones necesarias.
-*/
+///  Inicializa el objeto y hace todas las conexiones necesarias.
+/**
+\param parent
+**/
 BusquedaFecha::BusquedaFecha(QWidget *parent) : BLWidget(parent) {
     _depura("BusquedaFecha::BusquedaFecha", 0);
     setupUi(this);
@@ -37,57 +39,96 @@ BusquedaFecha::BusquedaFecha(QWidget *parent) : BLWidget(parent) {
 }
 
 
-/** No requiere de acciones especiales en el destructor.
-*/
+/// No requiere de acciones especiales en el destructor.
+/**
+**/
 BusquedaFecha::~BusquedaFecha() {
     _depura("BusquedaFecha::~BusquedaFecha", 0);
     _depura("END BusquedaFecha::~BusquedaFecha", 0);
 }
 
 
-
+///
+/**
+\param val
+**/
 void BusquedaFecha::setfecha(QString val) {
     mui_textoFecha->setText(val);
 }
 
-
+///
+/**
+\param val
+**/
 void BusquedaFecha::setText(QString val) {
     mui_textoFecha->setText(val);
 }
 
+
+///
+/**
+\param val
+**/
 void BusquedaFecha::setValorCampo(QString val) {
     mui_textoFecha->setText(val);
 }
 
+
+///
+/**
+\return
+**/
 QString BusquedaFecha::fecha() {
     return mui_textoFecha->text();
 }
 
 
+///
+/**
+\return
+**/
 QString BusquedaFecha::text() {
     return mui_textoFecha->text();
 }
 
+
+///
+/**
+\return
+**/
 QString BusquedaFecha::valorCampo() {
     return mui_textoFecha->text();
 }
 
+
+///
+/**
+**/
 void BusquedaFecha::s_returnPressed() {
     s_fechalostFocus();
     emit returnPressed();
 }
 
 
+///
+/**
+**/
 void BusquedaFecha::selectAll() {
     mui_textoFecha->selectAll();
 }
 
 
+///
+/**
+**/
 void BusquedaFecha::setFocus() {
     mui_textoFecha->setFocus(Qt::OtherFocusReason);
 }
 
 
+///
+/**
+**/
 void BusquedaFecha::s_searchFecha() {
     _depura("BusquedaFecha::s_searchFecha", 0);
 
@@ -118,6 +159,9 @@ void BusquedaFecha::s_searchFecha() {
 }
 
 
+///
+/**
+**/
 void BusquedaFecha::s_fechatextChanged(const QString &texto) {
     _depura("BusquedaFecha::s_fechatextChanged", 0);
     if (texto == "+")
@@ -134,6 +178,9 @@ void BusquedaFecha::s_fechatextChanged(const QString &texto) {
 }
 
 
+///
+/**
+**/
 void BusquedaFecha::s_fechalostFocus() {
     _depura("BusquedaFecha::s_fechalostFocus", 0);
     QString fech = mui_textoFecha->text();

@@ -73,7 +73,7 @@ public slots:
     virtual void on_m_descuentos_editFinish(int, int);
     virtual void on_subform2_editFinish(int, int);
     virtual void on_mui_cobrar_clicked();
-    virtual void on_m_cliente_valueChanged(QString id);
+    virtual void on_mui_idcliente_valueChanged(QString id);
 };
 
 #endif

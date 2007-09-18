@@ -27,6 +27,10 @@
 #include "funcaux.h"
 
 
+///
+/**
+\param ob
+**/
 dialogChanges::dialogChanges(QObject *ob) {
     _depura("dialogChanges::dialogChanges", 0);
     m_obje = ob;
@@ -34,9 +38,17 @@ dialogChanges::dialogChanges(QObject *ob) {
 }
 
 
+///
+/**
+**/
 dialogChanges::~dialogChanges() {}
 
 
+///
+/**
+\param item
+\return
+**/
 bool dialogChanges::objExcluido(QObject *item) {
     QListIterator<QObject *> it_excluidos (m_listaExcluidos);
     /// Itera por los QObjects que estan excluidos de comprobacion de cambios.
@@ -50,6 +62,9 @@ bool dialogChanges::objExcluido(QObject *item) {
 }
 
 
+///
+/**
+**/
 void dialogChanges::dialogChanges_cargaInicial() {
     _depura("dialogChanges::dialogChanges_cargaInicial", 0);
     m_maxQText = 0;
@@ -101,6 +116,10 @@ void dialogChanges::dialogChanges_cargaInicial() {
 }
 
 
+///
+/**
+\return
+**/
 bool dialogChanges::dialogChanges_hayCambios() {
     _depura("dialogChanges::dialogChanges_hayCambios", 0);
     QString valorfinal = calculateValues();
@@ -109,6 +128,10 @@ bool dialogChanges::dialogChanges_hayCambios() {
 }
 
 
+///
+/**
+\return
+**/
 QString dialogChanges::calculateValues() {
     _depura("dialogChanges::calculateValues", 0);
     QString values = retrieveValues("QTableWidget");
@@ -120,6 +143,10 @@ QString dialogChanges::calculateValues() {
 }
 
 
+///
+/**
+\param objetoexcluido
+**/
 void dialogChanges::dialogChanges_setQObjectExcluido(QObject *objetoexcluido) {
     _depura("dialogChanges::dialogChanges_setQObjectExcluido", 0);
     m_listaExcluidos.append(objetoexcluido);
@@ -127,6 +154,11 @@ void dialogChanges::dialogChanges_setQObjectExcluido(QObject *objetoexcluido) {
 }
 
 
+///
+/**
+\param qsWidget
+\return
+**/
 QString dialogChanges::retrieveValues(QString qsWidget) {
     _depura("dialogChanges::retrieveValues", 0);
     QString values = "";

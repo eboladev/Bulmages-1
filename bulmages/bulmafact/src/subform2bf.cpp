@@ -259,8 +259,22 @@ void SubForm2Bf::on_mui_list_cellChanged(int row, int col) {
 }
 
 
+
+
 void SubForm2Bf::setIdCliente(QString id) {
     _depura("SubForm2Bf::setIdCliente", 0, id);
+
+    /// En la primera carga no hay reajustes, pero si actualización del cliente.
+    if (mdb_idcliente  == "" ) {
+	mdb_idcliente = id;
+	return;
+    } // end if
+
+    /// En las cargas sucesivas si el idcliente no ha cambiado no se hace nada
+    if (mdb_idcliente == id) {
+	return;
+    }
+
 
     /// Reseteamos los valores.
     for (int i = 0; i < rowCount() - 1; i++) {
@@ -309,10 +323,19 @@ void SubForm2Bf::setIdCliente(QString id) {
 
 void SubForm2Bf::setIdProveedor(QString id) {
     _depura("SubForm2Bf::setIdProveedor", 0, id);
+
+    /// En la primera carga no hay reajustes, pero si actualización del proveedor.
+    if (mdb_idproveedor  == "" ) {
+	mdb_idproveedor = id;
+	return;
+    } // end if
+
+    /// En las cargas sucesivas si el idproveedor no ha cambiado no se hace nada
+    if (mdb_idproveedor == id) 
+	return;
+
     mdb_idproveedor = id;
 
-    if (mdb_idproveedor == "")
-        return;
 
     /// Reseteamos los valores
     for (int i = 0; i < rowCount() - 1; i++) {

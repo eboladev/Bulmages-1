@@ -26,62 +26,111 @@
 #include <QLocale>
 
 
+///
+/**
+**/
 bool DBCampo::cambiado() {
     return m_valorcampo != m_valorcampoorig;
 }
 
 
+///
+/**
+**/
 void DBCampo::resetCambio() {
     m_valorcampoorig = m_valorcampo;
 }
 
 
+///
+/**
+**/
 DBCampo::~DBCampo() {
     _depura("DBCampo::~DBCampo", 1);
 }
 
 
+///
+/**
+\return
+**/
 postgresiface2 *DBCampo::conexionbase() {
     return m_conexionbase;
 }
 
 
+///
+/**
+\param comp
+**/
 void DBCampo::setconexionbase(postgresiface2 *comp) {
     m_conexionbase = comp;
 }
 
 
+///
+/**
+\return
+**/
 DBCampo::dbtype DBCampo::tipo() {
     return m_tipo;
 }
 
 
+///
+/**
+\return
+**/
 int DBCampo::set(QString val) {
     m_valorcampo = val;
     return 0;
 }
 
 
+///
+/**
+\return
+**/
 int DBCampo::restrictcampo() {
     return m_restrict;
 }
 
 
+///
+/**
+\return
+**/
 QString DBCampo::nomcampo() {
     return m_nomcampo;
 }
 
 
+///
+/**
+\return
+**/
 QString DBCampo::nompresentacion() {
     return m_nompresentacion;
 }
 
 
+///
+/**
+\return
+**/
 QString DBCampo::valorcampo() {
     return m_valorcampo;
 }
 
 
+///
+/**
+\param com
+\param nom
+\param typ
+\param res
+\param nomp
+**/
 DBCampo::DBCampo(postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp) {
     m_conexionbase = com;
     m_nomcampo = nom;
@@ -93,6 +142,11 @@ DBCampo::DBCampo(postgresiface2 *com, QString nom, dbtype typ, int res, QString 
 }
 
 
+///
+/**
+\param error
+\return
+**/
 QString DBCampo::valorcampoprep(int &error) {
     _depura("DBCampo::valorcampoprep", 0);
     error = 0;
@@ -135,51 +189,90 @@ QString DBCampo::valorcampoprep(int &error) {
 }
 
 
+///
+/**
+\param comp
+**/
 void DBRecord::setconexionbase(postgresiface2 *comp) {
     m_conexionbase = comp;
 }
 
 
+///
+/**
+\return
+**/
 postgresiface2 *DBRecord::conexionbase() {
     return m_conexionbase;
 }
 
 
+///
+/**
+\param nom
+**/
 void DBRecord::setDBTableName(QString nom) {
     m_tablename = nom;
 }
 
 
+///
+/**
+\param n
+**/
 void DBRecord::setNuevo(bool n) {
     m_nuevoCampo = n;
 }
 
 
+///
+/**
+\return
+**/
 QString DBRecord::tableName() {
     return m_tablename;
 }
 
 
+///
+/**
+\return
+**/
 QString DBRecord::campoId() {
     return m_campoid;
 }
 
 
+///
+/**
+\param nom
+**/
 void DBRecord::setDBCampoId(QString nom) {
     m_campoid = nom;
 }
 
 
+///
+/**
+\return
+**/
 QList<DBCampo *> *DBRecord::lista() {
     return &m_lista;
 }
 
 
+///
+/**
+**/
 void DBRecord::vaciar() {
     DBclear();
 }
 
 
+///
+/**
+\param con
+**/
 DBRecord::DBRecord(postgresiface2 *con) {
     _depura("DBRecord::DBRecord", 0);
     m_conexionbase = con;
@@ -188,13 +281,20 @@ DBRecord::DBRecord(postgresiface2 *con) {
 }
 
 
+///
+/**
+**/
 DBRecord::~DBRecord() {
     _depura("DBRecord::~DBRecord", 0);
     m_lista.clear();
     _depura("END DBRecord::~DBRecord", 0);
 }
 
-
+///
+/**
+\param cur
+\return
+**/
 int DBRecord::DBload(cursor2 *cur) {
     _depura("DBRecord::DBload", 0);
     m_nuevoCampo = FALSE;
@@ -220,6 +320,9 @@ int DBRecord::DBload(cursor2 *cur) {
 }
 
 
+///
+/**
+**/
 void DBRecord::DBclear() {
     _depura("DBRecord::DBclear", 0);
     m_nuevoCampo = TRUE;
@@ -233,6 +336,10 @@ void DBRecord::DBclear() {
 }
 
 
+///
+/**
+\param id
+**/
 int DBRecord::DBsave(QString &id) {
     _depura("DBRecord::DBsave - " + id, 0);
     try {
@@ -312,6 +419,12 @@ int DBRecord::DBsave(QString &id) {
 }
 
 
+///
+/**
+\param nomb
+\param valor
+\return
+**/
 int DBRecord::setDBvalue(QString nomb, QString valor) {
     _depura("DBRecord::setDBvalue", 0);
     DBCampo *campo;
@@ -331,6 +444,11 @@ int DBRecord::setDBvalue(QString nomb, QString valor) {
 }
 
 
+///
+/**
+\param nomb
+\return
+**/
 QString DBRecord::DBvalue(QString nomb) {
     _depura("DBRecord::value", 0, nomb);
     DBCampo *campo;
@@ -349,6 +467,11 @@ QString DBRecord::DBvalue(QString nomb) {
 }
 
 
+///
+/**
+\param nomb
+\return
+**/
 bool DBRecord::exists(QString nomb) {
     _depura("DBRecord::exists", 0, nomb);
     DBCampo *campo;
@@ -366,6 +489,11 @@ bool DBRecord::exists(QString nomb) {
 }
 
 
+///
+/**
+\param nomb
+\return
+**/
 QString DBRecord::DBvalueprep(QString nomb) {
     _depura("DBRecord::DBvalueprep", 0);
     DBCampo *campo;
@@ -385,6 +513,14 @@ QString DBRecord::DBvalueprep(QString nomb) {
 }
 
 
+///
+/**
+\param nom
+\param typ
+\param res
+\param nomp
+\return
+**/
 int DBRecord::addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp = "") {
     _depura("DBRecord::addDBCampo", 0);
     DBCampo *camp = new DBCampo(m_conexionbase, nom, typ, res, nomp);
@@ -396,6 +532,10 @@ int DBRecord::addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp
 }
 
 
+///
+/**
+\return
+**/
 int DBRecord::borrar() {
     _depura("DBRecord::borrar", 0);
     try {
@@ -440,6 +580,10 @@ int DBRecord::borrar() {
 }
 
 
+///
+/**
+\return
+**/
 int DBRecord::guardar() {
     _depura("DBRecord::guardar", 0);
     QString id;
@@ -455,7 +599,12 @@ int DBRecord::guardar() {
 }
 
 
+
 /// Esta funcion carga un articulo.
+/**
+\param id 
+\return
+**/
 int DBRecord::cargar(QString id) {
     _depura("DBRecord::cargar", 0);
     QString query = "SELECT * FROM " + m_tablename + " WHERE " + m_campoid + " = " + id;
@@ -469,6 +618,9 @@ int DBRecord::cargar(QString id) {
 }
 
 
+///
+/**
+**/
 void DBRecord::imprimir() {
     /// Impresion de un Pedido de Proveedor
     /** Usa la plantilla pedidoproveedor.rml */

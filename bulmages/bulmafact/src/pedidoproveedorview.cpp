@@ -38,7 +38,11 @@
 #include "albaranproveedorview.h"
 #include "funcaux.h"
 
-
+/// 
+/**
+\param comp
+\param parent
+**/
 PedidoProveedorView::PedidoProveedorView(Company *comp, QWidget *parent)
         : FichaBf(comp, parent) {
     _depura("PedidoProveedorView::PedidoProveedorView", 0);
@@ -94,6 +98,9 @@ PedidoProveedorView::PedidoProveedorView(Company *comp, QWidget *parent)
 }
 
 
+///
+/**
+**/
 PedidoProveedorView::~PedidoProveedorView() {
     _depura("PedidoProveedorView::~PedidoProveedorView", 0);
     empresaBase()->refreshPedidosProveedor();
@@ -101,8 +108,15 @@ PedidoProveedorView::~PedidoProveedorView() {
 }
 
 
-
-
+///
+/**
+\param iva
+\param base
+\param total 
+\param desc
+\param irpf
+\param reqeq
+**/
 void PedidoProveedorView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq) {
     _depura("PedidoProveedorView::pintatotales", 0);
     mui_totalBaseImponible->setText(base.toQString());
@@ -115,6 +129,9 @@ void PedidoProveedorView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed
 }
 
 
+///
+/**
+**/
 void PedidoProveedorView::on_mui_pagar_clicked() {
     _depura("PedidoProveedorView::on_mui_pagar_clicked", 0);
     PagoView *bud = empresaBase()->newPagoView();
@@ -130,6 +147,8 @@ void PedidoProveedorView::on_mui_pagar_clicked() {
 
 
 /// Se encarga de generar un albaran a partir del pedido.
+/**
+**/
 void PedidoProveedorView::generarAlbaran() {
     _depura("PedidoProveedorView::generarAlbaran", 0);
     /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la funcion.
@@ -202,29 +221,55 @@ void PedidoProveedorView::generarAlbaran() {
     _depura("END PedidoProveedorView::generarAlbaran", 0);
 }
 
+
+///
+/**
+\param id
+**/
 void PedidoProveedorView::on_mui_proveedor_valueChanged(QString id) {
     _depura("PedidoProveedorView::on_m_proveedor_valueChanged", 0);
-    mui_lineasDetalle->setIdProveedor(id);
+    mui_lineasDetalle->setColumnValue("idproveedor", id);
     mui_idforma_pago->setIdProveedor(id);
     _depura("END PedidoProveedorView::on_m_proveedor_valueChanged", 0);
 }
 
 
+///
+/**
+**/
 void PedidoProveedorView::s_pintaTotales() {
     calculaypintatotales();
 }
 
+
+///
+/**
+**/
 void PedidoProveedorView::on_mui_facturar_clicked() {
     generarAlbaran();
 }
+
+
+///
+/**
+**/
 void PedidoProveedorView::on_mui_descuentos_editFinish(int, int) {
     calculaypintatotales();
 }
+
+
+///
+/**
+**/
 void PedidoProveedorView::on_mui_lineasDetalle_editFinish(int, int) {
     calculaypintatotales();
 }
 
 
+///
+/**
+\return
+**/
 int PedidoProveedorView::borrarPre() {
     _depura("PedidoProveedor::borrarPre", 0);
     m_listalineas->borrar();
@@ -234,7 +279,11 @@ int PedidoProveedorView::borrarPre() {
 }
 
 
-/// Esta funcion carga un PedidoProveedor.
+/// Esta funcion termina la carga de de un Pedido de Proveedor.
+/**
+\param idbudget
+\return 
+**/
 int PedidoProveedorView::cargarPost(QString idbudget) {
     _depura("PedidoProveedor::cargarPost", 0);
 
@@ -246,6 +295,10 @@ int PedidoProveedorView::cargarPost(QString idbudget) {
 }
 
 
+///
+/**
+\return
+**/
 int PedidoProveedorView::guardarPost() {
     _depura("PedidoProveedor::guardar", 0);
 
@@ -259,6 +312,8 @@ int PedidoProveedorView::guardarPost() {
 
 /// Impresion de un Pedido de Proveedor
 /** Usa la plantilla pedidoproveedor.rml */
+/**
+**/
 void PedidoProveedorView::imprimir() {
     _depura("PedidoProveedor::imprimirPedidoProveedor", 0);
 

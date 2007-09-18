@@ -67,9 +67,10 @@ protected:
     QString mdb_idcliente;
     QString mdb_idproveedor;
 
+private:
+
+
 public:
-    void setIdCliente(QString id);
-    void setIdProveedor(QString id);
     SubForm2Bf(QWidget *parent = 0);
     virtual ~SubForm2Bf();
     void setDelete(bool);
@@ -77,6 +78,9 @@ public:
     virtual void setEmpresaBase(EmpresaBase *);
     virtual void on_mui_list_cellChanged(int row, int col);
     virtual int cerrarEditor();
+    void setIdCliente(QString id);
+    void setIdProveedor(QString id);
+
 
 public slots:
     virtual void on_mui_list_pressedSlash(int row, int col);

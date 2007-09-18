@@ -21,15 +21,28 @@
 #include "busquedaperiodo.h"
 
 
+///
+/**
+\return
+**/
 QString BusquedaPeriodo::periodo() {
     return m_valores[currentIndex()];
 }
 
+
+///
+/**
+\return
+**/
 QString BusquedaPeriodo::valorCampo() {
     return m_valores[currentIndex()];
 }
 
 
+///
+/**
+\param index
+**/
 void BusquedaPeriodo::s_activated(int index) {
     _depura("Activado el combo box.", 0);
     if (index > 0) {
@@ -40,6 +53,10 @@ void BusquedaPeriodo::s_activated(int index) {
 }
 
 
+///
+/**
+\param parent
+**/
 BusquedaPeriodo::BusquedaPeriodo(QWidget *parent) : QComboBox2(parent) {
     _depura("BusquedaPeriodo::BusquedaPeriodo", 0);
     m_textos[0] = tr("Semanal");
@@ -72,9 +89,16 @@ BusquedaPeriodo::BusquedaPeriodo(QWidget *parent) : QComboBox2(parent) {
 }
 
 
+///
+/**
+**/
 BusquedaPeriodo::~BusquedaPeriodo() {}
 
 
+///
+/**
+\param periodo
+**/
 void BusquedaPeriodo::setperiodo(QString periodo) {
     _depura("BusquedaPeriodo::setperiodo", 0);
     int i = 0;
@@ -90,6 +114,10 @@ void BusquedaPeriodo::setperiodo(QString periodo) {
 }
 
 
+///
+/**
+\param periodo
+**/
 void BusquedaPeriodo::setValorCampo(QString periodo) {
 	setperiodo(periodo);
 }

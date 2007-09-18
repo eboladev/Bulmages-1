@@ -24,26 +24,50 @@
 #include "abreempresaview.h"
 #include "paisview.h"
 
+
+///
+/**
+\param doc
+**/
 void EmpresaBase::setListVentanas(listventanas *doc) {
     m_listventanas = doc;
 }
 
 
+///
+/**
+\return
+**/
 QWorkspace2 *EmpresaBase::pWorkspace() {
     return m_pWorkspace;
 }
 
 
+///
+/**
+\param qw
+**/
 void EmpresaBase::setWorkspace(QWorkspace2 *qw) {
     m_pWorkspace = qw;
 }
 
 
+///
+/**
+\param pb
+**/
 void EmpresaBase::setProgressBar(QProgressBar *pb) {
     m_progressbar = pb;
 }
 
 
+///
+/**
+\param nom
+\param obj
+\param compdup
+\return
+**/
 int EmpresaBase::meteWindow(QString nom, QObject *obj, bool compdup) {
     _depura("EmpresaBase::meteWindow", 0);
     _depura("END EmpresaBase::meteWindow", 0);
@@ -51,6 +75,12 @@ int EmpresaBase::meteWindow(QString nom, QObject *obj, bool compdup) {
 }
 
 
+///
+/**
+\param nom
+\param obj
+\return
+**/
 int EmpresaBase::seleccionaWindow(QString nom, QObject *obj) {
     _depura("EmpresaBase::seleccionaWindow", 0);
     _depura("END EmpresaBase::seleccionaWindow", 0);
@@ -58,6 +88,10 @@ int EmpresaBase::seleccionaWindow(QString nom, QObject *obj) {
 }
 
 
+///
+/**
+\return
+**/
 int EmpresaBase::deSeleccionaWindow() {
     _depura("EmpresaBase::deSeleccionaWindow", 0);
     _depura("END EmpresaBase::deSeleccionaWindow", 0);
@@ -65,6 +99,10 @@ int EmpresaBase::deSeleccionaWindow() {
 }
 
 
+///
+/**
+\param nom
+**/
 void EmpresaBase::sacaWindow(QObject *nom) {
     _depura("EmpresaBase::sacaWindow", 0);
     m_listventanas->sacaWindow(nom);
@@ -73,6 +111,8 @@ void EmpresaBase::sacaWindow(QObject *nom) {
 
 
 /// No precisa de operaciones en su construccion.
+/**
+**/
 EmpresaBase::EmpresaBase() {
     _depura("EmpresaBase::EmpresaBase", 0);
     _depura("END EmpresaBase::EmpresaBase", 0);
@@ -80,6 +120,8 @@ EmpresaBase::EmpresaBase() {
 
 
 /// El destructor de la clase EmpresaBase borra toda la memoria almacenada.
+/**
+**/
 EmpresaBase::~EmpresaBase() {
     _depura("EmpresaBase::~EmpresaBase", 0);
     /// cerramos todas las ventanas y las DestructiveClose se borran.
@@ -91,6 +133,10 @@ EmpresaBase::~EmpresaBase() {
 
 /// Inicializa la base de datos que se pasa, si se pasa una cadena vacia
 /// entonces invoca el selector de empresa.
+/**
+\param bd
+\param tipo
+**/
 void EmpresaBase::init(QString bd, QString tipo) {
     _depura("EmpresaBase::init", 0);
     if (bd == "") {
@@ -108,6 +154,10 @@ void EmpresaBase::init(QString bd, QString tipo) {
 /// Se utiliza para mostrar un selector de empresas abreempresaview
 /// Al usuario debe seleccionar una empresa y el sistema empieza la inicializacion de
 /// clases a partir de dicha inicializacion.
+/**
+\param tipo
+\return
+**/
 QString EmpresaBase::searchCompany(QString tipo) {
     /// El cambio de empresa se realiza desde el selector.
     _depura("EmpresaBase::searchCompany", 0);
@@ -127,12 +177,19 @@ QString EmpresaBase::searchCompany(QString tipo) {
 
 
 /// Cambia el estado de la ventana de Indexador. Visible o no visible.
+/**
+\param visible
+**/
 void EmpresaBase::s_indexadorCambiaEstado(bool visible) {
     _depura("company::s_indexadorCambiaEstado", 0);
     m_listventanas->cambiaVisible(visible);
     _depura("END company::s_indexadorCambiaEstado", 0);
 }
 
+
+///
+/**
+**/
 void EmpresaBase::muestraPaises() {
     _depura("EmpresaBase::muestrapaises", 0);
     PaisView *pais = new PaisView(this, 0);

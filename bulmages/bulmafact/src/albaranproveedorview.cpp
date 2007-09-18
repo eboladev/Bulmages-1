@@ -117,14 +117,6 @@ void AlbaranProveedorView::on_mui_facturar_clicked() {
 
 
 
-
-
-
-
-
-
-
-
 void AlbaranProveedorView::s_generarFactura() {
     _depura("AlbaranProveedorView::s_generarFactura", 0);
     generarFactura();

@@ -28,6 +28,7 @@
 #include "bconfiguracion.h"
 #include "bnuevaempresa.h"
 #include "nuevafact.h"
+#include "funcaux.h"
 
 #ifdef WIN32
 #include <process.h>
@@ -38,9 +39,15 @@
 #include <set>
 #endif
 
-
+/// 
+/**
+\param ref
+\param parent
+\param f
+**/
 BConfiguracion::BConfiguracion(BSelector *ref, QWidget *parent, Qt::WFlags f = 0)
         : QDialog(parent, f) {
+   _depura("BConfiguracion::BConfiguracion", 0);
     setupUi(this);
 
     QObject::connect(pushButtonF_X, SIGNAL(clicked()), this, SLOT(cerrar()));
@@ -65,12 +72,19 @@ BConfiguracion::BConfiguracion(BSelector *ref, QWidget *parent, Qt::WFlags f = 0
     } // end if
     cargarFichaUsuarios();
     tablaconfiguracion();
+   _depura("END BConfiguracion::BConfiguracion", 0);
 }
 
 
+///
+/**
+**/
 BConfiguracion::~BConfiguracion() {}
 
 
+/// 
+/**
+**/
 void BConfiguracion::cerrar() {
     /// Guardamos la configuracion.
     for (int i = 0; i < 1000; i++) {
@@ -88,6 +102,8 @@ void BConfiguracion::cerrar() {
 
 /// Esta funcion rellena la tabla de configuracion del programa.
 /// Para luego poder guardar los parametros que haga falta.
+/**
+**/
 void BConfiguracion::tablaconfiguracion() {
     QTableWidgetItem *item0;
     QTableWidgetItem *item1;
@@ -112,17 +128,29 @@ void BConfiguracion::tablaconfiguracion() {
 }
 
 
+///
+/**
+**/
 void BConfiguracion::cargarFichaBulmages() {
     lineEditA_1->setText(PunteroAlSelector->nombreempresa->text());
 }
 
 
+///
+/**
+**/
 void BConfiguracion::FontChanged(const QString &) {}
 
 
+///
+/**
+**/
 void BConfiguracion::FontSizeChanged(int) {}
 
 
+///
+/**
+**/
 void BConfiguracion::BotonA_10aceptar() {}
 
 
@@ -130,6 +158,8 @@ void BConfiguracion::BotonA_10aceptar() {}
 
 
 /// Responde a la pusacion de importar datos de Contaplus a BulmaGes.
+/**
+**/
 void BConfiguracion::BotonContaplus() {
     postgresiface2 *DBconn = new postgresiface2();
     DBconn->inicializa(PunteroAlSelector->empresaDB());
@@ -144,6 +174,8 @@ void BConfiguracion::BotonContaplus() {
 
 
 /// Responde a la pusacion de importar datos de Contaplus a BulmaGes.
+/**
+**/
 void BConfiguracion::s_importexportbulmafact() {
     postgresiface2 *DBconn = new postgresiface2();
     DBconn->inicializa(PunteroAlSelector->empresaDB());
@@ -154,6 +186,9 @@ void BConfiguracion::s_importexportbulmafact() {
 }
 
 
+///
+/**
+**/
 void BConfiguracion::BotonA_11rechazar() {
     /// Poner el comboBoxFuente y el comboBoxIdioma a sus valores anteriores.
     if (PunteroAlSelector->tipoEmpresa() == "BulmaCont") {
@@ -163,6 +198,8 @@ void BConfiguracion::BotonA_11rechazar() {
 
 
 /// Esta funcion se ejecuta cuando se lanza el cambio de nombre de la empresa.
+/**
+**/
 void BConfiguracion::BotonA_6nombreEmpresa() {
     /// Activa el line edit para que pueda ser editado.
     if (lineEditA_1->isReadOnly() ) {
@@ -176,6 +213,8 @@ void BConfiguracion::BotonA_6nombreEmpresa() {
 
 /// Aqui abrimos el cuador de dialogo que nos permite crear una empresa nueva basada en la
 /// BASE DE DATOS bgplangcont.
+/**
+**/
 void BConfiguracion::nuevaEmpresa() {
     BNuevaEmpresa *n = new BNuevaEmpresa(this);
     n->exec();
@@ -185,6 +224,8 @@ void BConfiguracion::nuevaEmpresa() {
 
 /// Aqui abrimos el cuadro de dialogo que nos permite crear una empresa nueva basada en la
 /// BASE DE DATOS bgplangcont.º
+/**
+**/
 void BConfiguracion::nuevaFacturacion() {
     nuevafact *n = new nuevafact(this);
     n->exec();
@@ -193,6 +234,8 @@ void BConfiguracion::nuevaFacturacion() {
 
 
 /// Aqui creamos una nueva empresa que es una copia exacta de otra empresa que ya existe.
+/**
+**/
 void BConfiguracion::BotonA_61clonarEmpresa() {
     QString dbEmpresa;
     if (dbEmpresa != "") {
@@ -204,6 +247,8 @@ void BConfiguracion::BotonA_61clonarEmpresa() {
 /// Aqui borramos una empresa entera. No nos permite borrar la base de datos bgplangcont
 /// ni la base de datos de la empresa que tengamos abierta en este momento.
 /// \todo Solo borra bases de datos en local, con bases de datos remotas no funciona.
+/**
+**/
 void BConfiguracion::borrarEmpresa() {
     QString dbEmpresa;
     QString nombreEmpresa;
@@ -235,6 +280,8 @@ void BConfiguracion::borrarEmpresa() {
 
 
 /// Creamos una copia de seguridad de una base de datos.
+/**
+**/
 void BConfiguracion::salvarEmpresa() {
     QString dbEmpresa;
     QString PGserver;
@@ -264,6 +311,8 @@ void BConfiguracion::salvarEmpresa() {
 
 /// Restauramos una copia de seguridad de una base de datos.
 /// Para cargar la empresa debe estar sin ningun usuario dentro de ella.
+/**
+**/
 void BConfiguracion::restaurarEmpresa() {
     _depura( "BConfiguracion::restaurarEmpresa", 0);
     QString dbEmpresa;
@@ -291,9 +340,15 @@ void BConfiguracion::restaurarEmpresa() {
 }
 
 
+///
+/**
+**/
 void BConfiguracion::cargarFichaUsuarios() {}
 
 
+///
+/**
+**/
 void BConfiguracion::listView1_currentChanged(QListWidgetItem *) {
 #ifndef WIN32
 #endif
@@ -301,31 +356,58 @@ void BConfiguracion::listView1_currentChanged(QListWidgetItem *) {
 
 
 /// Salvamos los usuarios en la base de datos.
+/**
+**/
 void BConfiguracion::BotonB_1Aplicar() {}
 
 
 /// Desacemos los cambios que hemos hecho (UNDO).
+/**
+**/
 void BConfiguracion::BotonB_2Desacer() {
     cargarFichaUsuarios();
 }
 
 
+///
+/**
+**/
 void BConfiguracion::listView2_clickBotonDerecho(QListWidgetItem *, const QPoint&, int) {}
 
 
 /// Por conveniencia (Bug QT??).
+/**
+**/
 void BConfiguracion::listiView2_clickMouse(int, QListWidgetItem *, const QPoint&, int) {}
 
+
+///
+/**
+**/
 void BConfiguracion::on_mui_restaurarc_clicked() {
     restaurarEmpresa();
 }
+
+
+///
+/**
+**/
 void BConfiguracion::on_mui_restaurarf_clicked() {
     restaurarEmpresa();
 }
 
+
+///
+/**
+**/
 void BConfiguracion::on_mui_borrarempresabc_clicked() {
     borrarEmpresa();
 }
+
+
+///
+/**
+**/
 void BConfiguracion::on_mui_borrarempresabf_clicked() {
     borrarEmpresa();
 }

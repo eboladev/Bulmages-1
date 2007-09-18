@@ -63,6 +63,12 @@ configuracion *confpr;
 ///
 /// NOTA: No se puede utilizar _depura dentro de esta clase porque necesita
 /// valores que no se disponen antes de leer el archivo de configuraci&oacute;n.
+
+
+///
+/**
+\param nombreprograma
+**/
 configuracion::configuracion(QString nombreprograma) {
     /// Definimos los directorios donde buscar primero.
 #ifdef WIN32
@@ -154,6 +160,8 @@ configuracion::configuracion(QString nombreprograma) {
 
 
 /// El destructor de la clase no hace nada porque no hay que liberar memoria.
+/**
+**/
 configuracion::~configuracion() {}
 
 
@@ -161,6 +169,10 @@ configuracion::~configuracion() {}
 /// esta funcion dado un define devuelve el nombre utilizado.
 /// Esta funcion es util para hacer la insercion inicial de elementos
 /// Tambien es util para hacer nosotros el guardado de los parametros.
+/**
+\param i
+\return
+**/
 QString configuracion::nombre(int i) {
     if (i == CONF_BG_APUNTES)
         return "CONF_BG_APUNTES";
@@ -315,6 +327,8 @@ QString configuracion::nombre(int i) {
 /// This method writes the configuration of the system to the home bulmages.conf file
 /// Este metodo escribe la configuracion del sistema en el fichero bulmages.conf del
 /// 'home' del usuario.
+/**
+**/
 void configuracion::saveconfig() {
     QString dir1 = getenv("HOME");
     dir1 = dir1 + "/.bulmages/" + m_dirLocalConf;
@@ -339,6 +353,10 @@ void configuracion::saveconfig() {
 /// This method reads the configuration params from a file 'fich' that
 /// contains the configuration.
 /// Lee la configuracion del fichero de configuracion pasado y rellena la estructura.
+/**
+\param fich
+\return
+**/
 bool configuracion::leeconfig(QString fich) {
     _depura("configuracion::leeconfig", 0);
     QFile arch(fich);
@@ -371,8 +389,10 @@ bool configuracion::leeconfig(QString fich) {
 
 
 /// Devuelve el valor de un campo determinado.
-/// \param i Par&aacute;metro del que se quiere el valor.
-/// \return El valor que tiene dicho par&aacute;metro.
+/**
+\param i Par&aacute;metro del que se quiere el valor.
+\return El valor que tiene dicho par&aacute;metro.
+**/
 QString configuracion::valor(int i) {
     if (m_valores.contains(i)) {
         return (m_valores[i]);
@@ -382,8 +402,10 @@ QString configuracion::valor(int i) {
 
 
 /// Establece el valor de un campo determinado con la tupla que se pasa como par&aacute;metro.
-/// \param i El &iacute;ndice del par&aacute;metro a cambiar.
-/// \param valor El valor que tomar&iacute;a dicho par&aacute;metro.
+/**
+\param i El &iacute;ndice del par&aacute;metro a cambiar.
+\param valor El valor que tomar&iacute;a dicho par&aacute;metro.
+**/
 void configuracion::setValor(int i, QString valor) {
     m_valores[i] = valor;
 }

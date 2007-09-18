@@ -29,6 +29,9 @@
     De esta forma nos aseguramos que no haya problemas para determinar si un objeto
     ha sido creado o no.
 */
+/**
+\param parent
+**/
 BusquedaProvincia::BusquedaProvincia(QWidget *parent)
         : QComboBox2(parent) {
     _depura("BusquedaProvincia::BusquedaProvincia", 0);
@@ -38,8 +41,9 @@ BusquedaProvincia::BusquedaProvincia(QWidget *parent)
 }
 
 
-/** El destructor libera memoria utilizada por el programa.
-*/
+/// El destructor libera memoria utilizada por el programa.
+/**
+**/
 BusquedaProvincia::~BusquedaProvincia() {
     _depura("BusquedaProvincia::~BusquedaProvincia", 0);
     if (m_cursorcombo != NULL)
@@ -52,6 +56,9 @@ BusquedaProvincia::~BusquedaProvincia() {
     Recarga todo el query de provincias y compone de nuevo el comboBox estableciendo como provincia
     por defecto aquella cuyo identificador coincide con el que se ha pasado por parametro.
 */
+/**
+\param idprovincia
+**/
 void BusquedaProvincia::setIdProvincia(QString idprovincia) {
     _depura("BusquedaProvincia::setIdProvincia", 0, idprovincia);
     if (m_cursorcombo != NULL)
@@ -77,11 +84,19 @@ void BusquedaProvincia::setIdProvincia(QString idprovincia) {
     _depura("END BusquedaProvincia::setIdProvincia", 0);
 }
 
+
+///
+/**
+\param idprovincia
+**/
 void BusquedaProvincia::setValorCampo(QString idprovincia) {
 	setIdProvincia(idprovincia);
 }
 
-/** SLOT que se activa al activar un elemento del desplegable
+
+/// SLOT que se activa al activar un elemento del desplegable
+/**
+\param index
 **/
 void BusquedaProvincia::m_activated(int index) {
     _depura("BusquedaProvincia::m_activated", 0);
@@ -94,6 +109,10 @@ void BusquedaProvincia::m_activated(int index) {
 }
 
 
+///
+/**
+\return
+**/
 QString BusquedaProvincia::idProvincia() {
     _depura("BusquedaProvincia::idProvincia", 0);
     if (currentIndex() > 0) {
@@ -104,6 +123,11 @@ QString BusquedaProvincia::idProvincia() {
     _depura("END BusquedaProvincia::idProvincia", 0);
 }
 
+
+///
+/**
+\return
+**/
 QString BusquedaProvincia::valorCampo() {
 	return idProvincia();
 }

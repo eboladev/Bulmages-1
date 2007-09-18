@@ -58,46 +58,85 @@
 #define ABRE_TIPO    3
 
 
+///
+/**
+**/
 void abreempresaview::setNomDB(QString pNomDB)
 {
   m_empresabd = pNomDB;
 }
 
+
+///
+/**
+**/
 void abreempresaview::setNomEmpresa(QString pNomEmpresa)
 {
   m_nombreempresa = pNomEmpresa;
 }
 
+
+///
+/**
+**/
 void abreempresaview::setTipoEmpresa(QString pTipoEmpresa)
 {
   m_tipoempresa = pTipoEmpresa;
 }
 
+
+///
+/**
+\return
+**/
 bool abreempresaview::modoDestructivo()
 {
   return m_modo;
 }
 
+
+///
+/**
+**/
 void abreempresaview::setModoDestructivo(bool pModo)
 {
   m_modo = pModo;
 }
 
+
+///
+/**
+\return
+**/
 QString abreempresaview::nomDB()
 {
   return m_empresabd;
 }
 
+
+///
+/**
+\return
+**/
 QString abreempresaview::nomEmpresa()
 {
   return m_nombreempresa;
 }
 
+
+///
+/**
+\return
+**/
 QString abreempresaview::tipoEmpresa()
 {
   return m_tipoempresa;
 }
 
+
+///
+/**
+**/
 void abreempresaview::s_botonCancelar()
 {
   if (!modoDestructivo())
@@ -107,11 +146,17 @@ void abreempresaview::s_botonCancelar()
   // end if
 }
 
+
+///
+/**
+\return
+**/
 bool abreempresaview::close(bool)
 {
   s_botonCancelar();
   return TRUE;
 }
+
 
 /// Inicia las variables m_tipo y m_tipoempresa y carga el archivo para
 /// hacer la presentaci&oacute;n.
@@ -146,10 +191,15 @@ abreempresaview::abreempresaview(QWidget *parent, QString tipo, const char *name
   _depura("END abreempresaview::abreempresaview", 0);
 }
 
+
+/// 
+/**
+**/
 abreempresaview::~abreempresaview()
 {
   _depura("abreempresaview::~abreempresaview", 0);
 }
+
 
 /// Inserta una compa&ntilde;ia en el 'QList' mui_empresas definido en el di&aacute;logo.
 /// Crea un objeto QListViewItem para la QListView 'mui_empresas' y rellena sus
@@ -177,6 +227,8 @@ void abreempresaview::insertCompany(QString nombre, QString ano, QString archivo
 
 /// Se ha pulsado sobre el bot&oacute;n de aceptar con lo que iniciamos la variables y
 /// cerramos esta ventana ya que ha cumplido con su cometido.
+/**
+**/
 void abreempresaview::accept()
 {
   _depura("abreempresaview::accept", 0);
@@ -206,6 +258,8 @@ void abreempresaview::accept()
 
 
 /// Evento que se dispara al hacer doble click sobre el listado de mui_empresas.
+/**
+**/
 void abreempresaview::mui_empresasdobleclick()
 {
   _depura("abreempresaview::mui_empresasdobleclick", 0);
@@ -215,6 +269,8 @@ void abreempresaview::mui_empresasdobleclick()
 
 
 /// Carga del archivo de mui_empresas las mui_empresas disponibles.
+/**
+**/
 void abreempresaview::cargaArchivo()
 {
   _depura("abreempresaview::cargaArchivo", 0);
@@ -258,8 +314,11 @@ void abreempresaview::cargaArchivo()
   _depura ("abreempresaview::cargaArchivo", 0);
 }
 
+
 /// Guarda en el archivo de mui_empresas las mui_empresas disponibles
 /// Tambi&eacute;n actualiza el listado de mui_empresas visibles.
+/**
+**/
 void abreempresaview::guardaArchivo()
 {
   _depura("abreempresaview::guardaArchivo", 0);
@@ -304,6 +363,12 @@ void abreempresaview::guardaArchivo()
   _depura("END abreempresaview::guardaArchivo", 0);
 }
 
+
+///
+/**
+\param empresa
+\param file
+**/
 void abreempresaview::trataEmpresa (QString empresa, QFile *file) {
   _depura("abreempresaview::trataEmpresa", 0, empresa);
   QTextStream filestr(file);
@@ -368,9 +433,12 @@ void abreempresaview::trataEmpresa (QString empresa, QFile *file) {
   _depura("END abreempresaview::trataEmpresa", 0, empresa);
 }
 
+
 /// Recarga la lista de mui_empresas haciendo las gestiones necesarias con el motor de
 /// base de datos. Al mismo tiempo guarda el archivo de bases de datos en el
 /// archivo 'LISTEMPRESAS'.
+/**
+**/
 void abreempresaview::on_mui_actualizar_clicked() {
   _depura("abreempresaview::on_mui_actualizar_clicked", 0);
   guardaArchivo();
@@ -378,6 +446,9 @@ void abreempresaview::on_mui_actualizar_clicked() {
 }
 
 
+///
+/**
+**/
 void abreempresaview::preparamui_empresas()
 {
   _depura("abreempresaview::preparamui_empresas", 0);
@@ -398,6 +469,12 @@ void abreempresaview::preparamui_empresas()
   _depura("END abreempresaview::preparamui_empresas", 0);
 }
 
+
+///
+/**
+\param  obj
+\param ev
+**/
 bool abreempresaview::eventFilter(QObject *obj, QEvent *ev)
 {
   if(obj == mui_empresas) {

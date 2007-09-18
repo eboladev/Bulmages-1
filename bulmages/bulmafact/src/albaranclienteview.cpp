@@ -382,7 +382,7 @@ void AlbaranClienteView::on_mui_cobrar_clicked() {
 }
 
 
-void AlbaranClienteView::on_m_cliente_valueChanged(QString id) {
+void AlbaranClienteView::on_mui_idcliente_valueChanged(QString id) {
     _depura("AlbaranClienteView::on_m_cliente_valueChanged", 0);
     subform2->setIdCliente(id);
     mui_idforma_pago->setIdCliente(id);
