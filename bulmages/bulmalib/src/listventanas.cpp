@@ -30,53 +30,101 @@
 #include "funcaux.h"
 
 
+///
+/**
+\param parent
+**/
 QListWidget1::QListWidget1(QWidget * parent) : QListWidget(parent) {
     _depura("QListWidget1::QListWidget1", 0);
 }
 
 
+///
+/**
+**/
 QListWidget1::~QListWidget1() {
     _depura("QListWidget1::~QListWidget1", 0);
 }
 
 
+///
+/**
+\param l
+\param p
+**/
 QListWidgetItem1::QListWidgetItem1(QListWidget1 *l, QPixmap &p) : QListWidgetItem(l) {
+    _depura("QListWidgetItem1::QListWidgetItem1", 0);
     setIcon(QIcon(p));
     m_list = l;
+    _depura("END QListWidgetItem1::QListWidgetItem1", 0);
 }
 
 
+///
+/**
+**/
 QListWidgetItem1::~QListWidgetItem1() {
     _depura("QListWidget1::~QListWidgetItem1", 0);
 }
 
 
+///
+/**
+\param m
+**/
 void QListWidgetItem1::setObject(QObject *m) {
+    _depura("QListWidgetItem1::setObject", 0);
     m_obj = m;
+    _depura("END QListWidgetItem1::setObject", 0);
 }
 
 
+///
+/**
+\param m
+**/
 void QListWidgetItem1::setNombre(QString m) {
+    _depura("QListWidgetItem1::setNombre", 0);
     m_nombre = m;
     setText(m);
+    _depura("END QListWidgetItem1::setNombre", 0);
 }
 
 
+///
+/**
+\return
+**/
 QObject *QListWidgetItem1::object() {
+    _depura("QListWidgetItem1::object", 0);
     return m_obj;
+    _depura("END QListWidgetItem1::object", 0);
 }
 
 
+///
+/**
+\return
+**/
 QString QListWidgetItem1::nombre() {
+    _depura("QListWidgetItem1::nombre", 0);
     return m_nombre;
 }
 
 
+///
+/**
+\param w
+**/
 void listventanas::setWorkspace(QWorkspace2 *w) {
     m_pWorkspace = w;
 }
 
 
+///
+/**
+\param a
+**/
 listventanas::listventanas(QWidget *a) : QDockWidget(a) {
     _depura("listventanas::listventanas", 0);
     m_listBox = new QListWidget1(this);
@@ -93,6 +141,9 @@ listventanas::listventanas(QWidget *a) : QDockWidget(a) {
 }
 
 
+///
+/**
+**/
 void listventanas::dclicked() {
     _depura("listventanas::dclicked", 0);
     QWidget *widget = (QWidget *)((QListWidgetItem1 *) m_listBox->currentItem())->object();
@@ -107,6 +158,9 @@ void listventanas::dclicked() {
 }
 
 
+///
+/**
+**/
 void listventanas::clicked() {
     _depura("listventanas::clicked", 0);
     QWidget *widget = (QWidget *)((QListWidgetItem1 *) m_listBox->currentItem())->object();
@@ -119,6 +173,9 @@ void listventanas::clicked() {
 }
 
 
+///
+/**
+**/
 listventanas::~listventanas() {
     _depura("listventanas::~listventanas", 0);
     delete m_listBox;
@@ -126,6 +183,9 @@ listventanas::~listventanas() {
 }
 
 
+///
+/**
+**/
 void listventanas::vaciar() {
     _depura("listventanas::vaciar", 0);
     /// Buscamos la ventana correspondiente y la borramos.
@@ -141,12 +201,23 @@ void listventanas::vaciar() {
     _depura("END listventanas::vaciar", 0);
 }
 
+
+///
+/**
+\return
+**/
 int listventanas::numVentanas() {
     _depura("listventanas::numVentanas", 0);
     _depura("END listventanas::numVentanas", 0);
     return m_listBox->count();
 }
 
+
+///
+/**
+\param index
+\return
+**/
 QObject *listventanas::ventana(int index) {
     _depura("listventanas::ventana", 0);
     QListWidgetItem1 *m = (QListWidgetItem1 *)m_listBox->item(index);
@@ -154,6 +225,10 @@ QObject *listventanas::ventana(int index) {
     return m->object();
 }
 
+
+///
+/**
+**/
 void listventanas::vaciarCompleto() {
     _depura("listventanas::vaciarCompleto", 0);
     /// Buscamos la ventana correspondiente y la borramos.
@@ -169,6 +244,12 @@ void listventanas::vaciarCompleto() {
 /// This function provides the ability of push a window in the dock window
 /// nombre This QString is the name of the window that was shown in the listbox
 /// obj This QObject * contains the pointer of the window for furtner reference.
+/**
+\param nombre
+\param obj
+\param compdup
+\return
+**/
 int listventanas::meteWindow(QString nombre, QObject *obj, bool compdup) {
     _depura("listventanas::meteWindow", 0, nombre);
     try {
@@ -211,6 +292,11 @@ int listventanas::meteWindow(QString nombre, QObject *obj, bool compdup) {
 
 
 /// Sirve para seleccionar una ventana listada en el Indexador.
+/**
+\param nombre
+\param obj
+\return
+**/
 int listventanas::seleccionaWindow(QString nombre, QObject *obj) {
     _depura("listventanas::seleccionaWindow", 0);
     try {
@@ -234,6 +320,9 @@ int listventanas::seleccionaWindow(QString nombre, QObject *obj) {
 
 
 /// Deselecciona todas las entradas del Indexador.
+/**
+\return
+**/
 int listventanas::deSeleccionaWindow() {
     _depura("listventanas::deSeleccionaWindow", 0);
     try {
@@ -247,6 +336,10 @@ int listventanas::deSeleccionaWindow() {
 }
 
 
+///
+/**
+\param obj
+**/
 void listventanas::sacaWindow(QObject *obj) {
     _depura("listventanas::sacaWindow", 0);
     /// Buscamos la entrada correspondiente dentro del Indexador y la borramos.
@@ -265,6 +358,10 @@ void listventanas::sacaWindow(QObject *obj) {
 }
 
 
+///
+/**
+\param visible
+**/
 void listventanas::cambiaVisible(bool visible) {
     _depura("listventanas::cambiaVisible", 0);
     if (visible == TRUE) {
@@ -276,6 +373,9 @@ void listventanas::cambiaVisible(bool visible) {
 }
 
 
+///
+/**
+**/
 void listventanas::closeEvent(QCloseEvent *) {
     emit(cambiaEstadoVisible(FALSE));
     _depura("listventanas::closeEvent", 0);

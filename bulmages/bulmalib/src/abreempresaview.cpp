@@ -60,28 +60,38 @@
 
 ///
 /**
+\param pNomDB
 **/
 void abreempresaview::setNomDB(QString pNomDB)
 {
+  _depura("abreempresaview::setNomDB", 0);
   m_empresabd = pNomDB;
+  _depura("END abreempresaview::setNomDB", 0);
 }
 
 
 ///
 /**
+\param pNomEmpresa
 **/
 void abreempresaview::setNomEmpresa(QString pNomEmpresa)
 {
+  _depura("abreempresaview::setNomEmpresa", 0);
   m_nombreempresa = pNomEmpresa;
+  _depura("END abreempresaview::setNomEmpresa", 0);
 }
 
 
 ///
 /**
+\param pTipoEmpresa
 **/
 void abreempresaview::setTipoEmpresa(QString pTipoEmpresa)
 {
+  _depura("abreempresaview::setTipoEmpresa", 0);
   m_tipoempresa = pTipoEmpresa;
+  _depura("END abreempresaview::setTipoEmpresa", 0);
+
 }
 
 
@@ -90,17 +100,23 @@ void abreempresaview::setTipoEmpresa(QString pTipoEmpresa)
 \return
 **/
 bool abreempresaview::modoDestructivo()
-{
+{ 
+  _depura("abreempresaview::modoDestructivo", 0);
   return m_modo;
+  _depura("END abreempresaview::modoDestructivo", 0);
+
 }
 
 
 ///
 /**
+\param pModo
 **/
 void abreempresaview::setModoDestructivo(bool pModo)
 {
+  _depura("abreempresaview::setModoDestructivo", 0);
   m_modo = pModo;
+  _depura("END abreempresaview::setModoDestructivo", 0);
 }
 
 
@@ -110,7 +126,10 @@ void abreempresaview::setModoDestructivo(bool pModo)
 **/
 QString abreempresaview::nomDB()
 {
+  _depura("abreempresaview::nomDB", 0);
   return m_empresabd;
+  _depura("END abreempresaview::nomDB", 0);
+
 }
 
 
@@ -120,7 +139,9 @@ QString abreempresaview::nomDB()
 **/
 QString abreempresaview::nomEmpresa()
 {
+  _depura("abreempresaview::nomEmpresa", 0);
   return m_nombreempresa;
+  _depura("END abreempresaview::nomEmpresa", 0);
 }
 
 
@@ -130,7 +151,9 @@ QString abreempresaview::nomEmpresa()
 **/
 QString abreempresaview::tipoEmpresa()
 {
+  _depura("abreempresaview::tipoEmpresa", 0);
   return m_tipoempresa;
+  _depura("END abreempresaview::tipoEmpresa", 0);
 }
 
 
@@ -139,11 +162,13 @@ QString abreempresaview::tipoEmpresa()
 **/
 void abreempresaview::s_botonCancelar()
 {
+  _depura("abreempresaview::s_botonCancelar", 0);
   if (!modoDestructivo())
     exit(1);
   else
     done(1);
   // end if
+  _depura("END abreempresaview::s_botonCancelar", 0);
 }
 
 
@@ -153,8 +178,10 @@ void abreempresaview::s_botonCancelar()
 **/
 bool abreempresaview::close(bool)
 {
+  _depura("abreempresaview::close", 0);
   s_botonCancelar();
   return TRUE;
+  _depura("END abreempresaview::close", 0);
 }
 
 
@@ -253,7 +280,7 @@ void abreempresaview::accept()
     done (0);
   } else
     mensajeInfo(tr("Para entrar, antes tiene que seleccionar una empresa."));
-  _depura("abreempresaview::accept", 0);
+  _depura("END abreempresaview::accept", 0);
 }
 
 
@@ -270,6 +297,7 @@ void abreempresaview::mui_empresasdobleclick()
 
 /// Carga del archivo de mui_empresas las mui_empresas disponibles.
 /**
+\return
 **/
 void abreempresaview::cargaArchivo()
 {
@@ -311,13 +339,14 @@ void abreempresaview::cargaArchivo()
     } // end if
   } // end while
   file.close();
-  _depura ("abreempresaview::cargaArchivo", 0);
+  _depura ("END abreempresaview::cargaArchivo", 0);
 }
 
 
 /// Guarda en el archivo de mui_empresas las mui_empresas disponibles
 /// Tambi&eacute;n actualiza el listado de mui_empresas visibles.
 /**
+\return
 **/
 void abreempresaview::guardaArchivo()
 {
@@ -368,6 +397,7 @@ void abreempresaview::guardaArchivo()
 /**
 \param empresa
 \param file
+\return
 **/
 void abreempresaview::trataEmpresa (QString empresa, QFile *file) {
   _depura("abreempresaview::trataEmpresa", 0, empresa);
@@ -474,9 +504,11 @@ void abreempresaview::preparamui_empresas()
 /**
 \param  obj
 \param ev
+\return
 **/
 bool abreempresaview::eventFilter(QObject *obj, QEvent *ev)
 {
+  _depura("abreempresaview::eventFilter", 0);
   if(obj == mui_empresas) {
     if (ev->type() == QEvent::KeyPress) {
       QKeyEvent *keyEvent = static_cast<QKeyEvent*>(ev);
@@ -495,4 +527,5 @@ bool abreempresaview::eventFilter(QObject *obj, QEvent *ev)
   } else /// Si no se ha tratado el evento, se deja pasar.
     return QDialog::eventFilter (obj, ev);
   // end if
+  _depura("END abreempresaview::eventFilter", 0);
 }

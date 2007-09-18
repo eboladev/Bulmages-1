@@ -70,6 +70,8 @@ configuracion *confpr;
 \param nombreprograma
 **/
 configuracion::configuracion(QString nombreprograma) {
+//    _depura("configuracion::configuracion", 0);
+
     /// Definimos los directorios donde buscar primero.
 #ifdef WIN32
     m_dirGlobalConf = "C:/bulmages/";
@@ -156,13 +158,17 @@ configuracion::configuracion(QString nombreprograma) {
     setValor(CONF_PRIVILEGIOS_USUARIO, "1");
     setValor(CONF_LOGIN_USER, "");
     setValor(CONF_PASSWORD_USER, "");
+//    _depura("END configuracion::configuracion", 0);
 }
 
 
 /// El destructor de la clase no hace nada porque no hay que liberar memoria.
 /**
 **/
-configuracion::~configuracion() {}
+configuracion::~configuracion() {
+//    _depura("configuracion::~configuracion", 0);
+//    _depura("END configuracion::~configuracion", 0);
+}
 
 
 /// Puesto que la configuracion funciona sobre un array y sobre defines en dicho array
@@ -174,6 +180,7 @@ configuracion::~configuracion() {}
 \return
 **/
 QString configuracion::nombre(int i) {
+//    _depura("configuracion::nombre", 0);
     if (i == CONF_BG_APUNTES)
         return "CONF_BG_APUNTES";
     if (i == CONF_FG_APUNTES)
@@ -321,6 +328,7 @@ QString configuracion::nombre(int i) {
     if (i == CONF_ALERTAS_DB)
         return "CONF_ALERTAS_DB";
     return "";
+//    _depura("END configuracion::nombre", 0);
 }
 
 
@@ -330,6 +338,7 @@ QString configuracion::nombre(int i) {
 /**
 **/
 void configuracion::saveconfig() {
+//    _depura("configuracion::saveconfig", 0);
     QString dir1 = getenv("HOME");
     dir1 = dir1 + "/.bulmages/" + m_dirLocalConf;
 
@@ -347,6 +356,7 @@ void configuracion::saveconfig() {
         } // end if
     } // end for
     file.close();
+//    _depura("END configuracion::saveconfig", 0);
 }
 
 
@@ -358,7 +368,7 @@ void configuracion::saveconfig() {
 \return
 **/
 bool configuracion::leeconfig(QString fich) {
-    _depura("configuracion::leeconfig", 0);
+//    _depura("configuracion::leeconfig", 0);
     QFile arch(fich);
     if (arch.open(QIODevice::ReadOnly)) {
         fprintf(stderr, "Leyendo configuracion\n");
@@ -383,7 +393,7 @@ bool configuracion::leeconfig(QString fich) {
         fprintf(stderr, "FIN Leyendo configuracion\n");
         return TRUE;
     } // end if
-    _depura("END configuracion::leeconfig", 0);
+//    _depura("END configuracion::leeconfig", 0);
     return FALSE;
 }
 
@@ -394,10 +404,12 @@ bool configuracion::leeconfig(QString fich) {
 \return El valor que tiene dicho par&aacute;metro.
 **/
 QString configuracion::valor(int i) {
+//    _depura("configuracion::valor", 0);
     if (m_valores.contains(i)) {
         return (m_valores[i]);
     } // end if
     return "";
+//    _depura("END configuracion::valor", 0);
 }
 
 
@@ -407,6 +419,8 @@ QString configuracion::valor(int i) {
 \param valor El valor que tomar&iacute;a dicho par&aacute;metro.
 **/
 void configuracion::setValor(int i, QString valor) {
+//    _depura("configuracion::setValor", 0);
     m_valores[i] = valor;
+//    _depura("END configuracion::setValor", 0);
 }
 

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras                                    *
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,64 +18,24 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "msgerror.h"
+#ifdef Q_WS_WIN
+# define MY_EXPORT __declspec(dllexport)
+#else
+# define MY_EXPORT
+#endif
+
+#include <QObject>
+#include "bulmafact.h"
+#include "trabajadorview.h"
+#include "almacenview.h"
+#include "ficha.h"
+#include "subform2bf.h"
+
+extern "C" MY_EXPORT int entryPoint(Bulmafact *);
+extern "C" MY_EXPORT int TrabajadorView_TrabajadorView_Post (TrabajadorView *);
+extern "C" MY_EXPORT int TrabajadorView_on_mui_lista_currentItemChanged_Post(TrabajadorView *);
+extern "C" MY_EXPORT int TrabajadorView_on_mui_guardar_clicked(TrabajadorView *);
+extern "C" MY_EXPORT int AlmacenView_AlmacenView(AlmacenView *);
 
 
-///
-/**
-**/
-void msgError::hideFrame() {
-    m_framedetalles->hide();
-}
-
-
-///
-/**
-**/
-void msgError::showFrame() {
-    m_framedetalles->show();
-}
-
-
-///
-/**
-**/
-void msgError::s_mostrarDetalles() {
-    if (m_framedetalles->isVisible()) {
-        hideFrame();
-    } else {
-        showFrame();
-    } // end if
-}
-
-
-///
-/**
-\param parent
-**/
-msgError::msgError(QWidget *parent) : QDialog(parent) {
-    setupUi(this);
-    QObject::connect(pushButton1, SIGNAL(clicked(bool)), this, SLOT(close()));
-    QObject::connect(pushButton2, SIGNAL(clicked(bool)), this, SLOT(s_mostarDetalles()));
-}
-
-
-///
-/**
-\param mensaje
-\param descripcion
-**/
-msgError::msgError(QString mensaje, QString descripcion) {
-    setupUi(this);
-    hideFrame();
-    m_mensaje->setText(mensaje);
-    m_detalles->setPlainText(descripcion);
-    exec();
-}
-
-
-///
-/**
-**/
-msgError::~msgError() {}
 

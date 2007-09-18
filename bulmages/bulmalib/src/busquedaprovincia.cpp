@@ -90,7 +90,9 @@ void BusquedaProvincia::setIdProvincia(QString idprovincia) {
 \param idprovincia
 **/
 void BusquedaProvincia::setValorCampo(QString idprovincia) {
+    _depura("BusquedaProvincia::setValorCampo", 0);
 	setIdProvincia(idprovincia);
+    _depura("END BusquedaProvincia::setValorCampo", 0);
 }
 
 
@@ -129,6 +131,8 @@ QString BusquedaProvincia::idProvincia() {
 \return
 **/
 QString BusquedaProvincia::valorCampo() {
+    _depura("BusquedaProvincia::valorCampo", 0);
 	return idProvincia();
+    _depura("END BusquedaProvincia::valorCampo", 0);
 }
 

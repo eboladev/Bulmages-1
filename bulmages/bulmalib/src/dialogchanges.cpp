@@ -41,7 +41,10 @@ dialogChanges::dialogChanges(QObject *ob) {
 ///
 /**
 **/
-dialogChanges::~dialogChanges() {}
+dialogChanges::~dialogChanges() {
+    _depura("dialogChanges::~dialogChanges", 0);
+    _depura("END dialogChanges::~dialogChanges", 0);
+}
 
 
 ///
@@ -50,6 +53,7 @@ dialogChanges::~dialogChanges() {}
 \return
 **/
 bool dialogChanges::objExcluido(QObject *item) {
+    _depura("dialogChanges::objExcluido", 0);
     QListIterator<QObject *> it_excluidos (m_listaExcluidos);
     /// Itera por los QObjects que estan excluidos de comprobacion de cambios.
     it_excluidos.toFront();
@@ -59,6 +63,7 @@ bool dialogChanges::objExcluido(QObject *item) {
             return TRUE;
     } // end while
     return FALSE;
+    _depura("END dialogChanges::objExcluido", 0);
 }
 
 

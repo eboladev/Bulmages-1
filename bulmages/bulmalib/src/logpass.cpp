@@ -28,11 +28,20 @@
 #include "postgresiface2.h"
 
 
+///
+/**
+\return
+**/
 bool logpass::authOK() {
     return m_authOK;
 }
 
 
+///
+/**
+\param parent
+\param name
+**/
 logpass::logpass(QWidget *parent, const char *name) : QDialog(parent) {
     setWindowTitle(name);
     setupUi(this);
@@ -43,10 +52,15 @@ logpass::logpass(QWidget *parent, const char *name) : QDialog(parent) {
 }
 
 
+///
+/**
+**/
 logpass::~logpass() {}
 
 
 /// Valida si postgres puede abrir bases de datos y si no es asi pide login y password.
+/**
+**/
 void logpass::validar() {
     _depura("logpass::validar");
     m_login->setText(postgresiface2::sanearCadena(m_login->text()));

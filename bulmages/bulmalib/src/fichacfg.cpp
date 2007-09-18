@@ -24,8 +24,12 @@
 #include "funcaux.h"
 
 
-/**  Inicializa el objeto y hace todas las conexiones necesarias.
-*/
+///  Inicializa el objeto y hace todas las conexiones necesarias.
+/**
+\param emp
+\param parent
+\param f
+**/
 FichaCfg::FichaCfg(EmpresaBase *emp, Ficha *parent, Qt::WFlags f) : BLWidget(emp, parent, f) {
     _depura("FichaCfg::FichaCfg", 0);
     setupUi(this);
@@ -101,12 +105,13 @@ FichaCfg::FichaCfg(EmpresaBase *emp, Ficha *parent, Qt::WFlags f) : BLWidget(emp
     mui_currentuser->setText(cur->valor("current_user"));
     delete cur;
 
-    _depura("FichaCfg::FichaCfg", 0);
+    _depura("END FichaCfg::FichaCfg", 0);
 }
 
 
-/** No requiere de acciones especiales en el destructor.
-*/
+/// No requiere de acciones especiales en el destructor.
+/**
+**/
 FichaCfg::~FichaCfg() {
     _depura("FichaCfg::~FichaCfg", 0);
     _depura("END FichaCfg::~FichaCfg", 0);

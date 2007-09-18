@@ -30,7 +30,9 @@
 \param doc
 **/
 void EmpresaBase::setListVentanas(listventanas *doc) {
+    _depura("EmpresaBase::setListVentanas", 0);
     m_listventanas = doc;
+    _depura("END EmpresaBase::setListVentanas", 0);
 }
 
 
@@ -39,7 +41,9 @@ void EmpresaBase::setListVentanas(listventanas *doc) {
 \return
 **/
 QWorkspace2 *EmpresaBase::pWorkspace() {
+    _depura("EmpresaBase::pWorkspace", 0);
     return m_pWorkspace;
+    _depura("END EmpresaBase::pWorkspace", 0);
 }
 
 
@@ -48,7 +52,9 @@ QWorkspace2 *EmpresaBase::pWorkspace() {
 \param qw
 **/
 void EmpresaBase::setWorkspace(QWorkspace2 *qw) {
+    _depura("EmpresaBase::setWorkspace", 0);
     m_pWorkspace = qw;
+    _depura("END EmpresaBase::setWorkspace", 0);
 }
 
 
@@ -57,7 +63,9 @@ void EmpresaBase::setWorkspace(QWorkspace2 *qw) {
 \param pb
 **/
 void EmpresaBase::setProgressBar(QProgressBar *pb) {
+    _depura("EmpresaBase::setProgressBar", 0);
     m_progressbar = pb;
+    _depura("END EmpresaBase::setProgressBar", 0);
 }
 
 
@@ -70,8 +78,8 @@ void EmpresaBase::setProgressBar(QProgressBar *pb) {
 **/
 int EmpresaBase::meteWindow(QString nom, QObject *obj, bool compdup) {
     _depura("EmpresaBase::meteWindow", 0);
-    _depura("END EmpresaBase::meteWindow", 0);
     return m_listventanas->meteWindow(nom, obj, compdup);
+    _depura("END EmpresaBase::meteWindow", 0);
 }
 
 
@@ -83,8 +91,8 @@ int EmpresaBase::meteWindow(QString nom, QObject *obj, bool compdup) {
 **/
 int EmpresaBase::seleccionaWindow(QString nom, QObject *obj) {
     _depura("EmpresaBase::seleccionaWindow", 0);
-    _depura("END EmpresaBase::seleccionaWindow", 0);
     return m_listventanas->seleccionaWindow(nom, obj);
+    _depura("END EmpresaBase::seleccionaWindow", 0);
 }
 
 
@@ -94,8 +102,8 @@ int EmpresaBase::seleccionaWindow(QString nom, QObject *obj) {
 **/
 int EmpresaBase::deSeleccionaWindow() {
     _depura("EmpresaBase::deSeleccionaWindow", 0);
-    _depura("END EmpresaBase::deSeleccionaWindow", 0);
     return m_listventanas->deSeleccionaWindow();
+    _depura("END EmpresaBase::deSeleccionaWindow", 0);
 }
 
 

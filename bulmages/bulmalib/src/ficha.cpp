@@ -29,6 +29,12 @@
 #include <QCheckBox>
 
 
+///
+/**
+\param parent
+\param f
+\param modo
+**/
 Ficha::Ficha(QWidget *parent, Qt::WFlags f, edmode modo) : BLWidget(parent, f), DBRecord(NULL), dialogChanges(this) {
     _depura("Ficha::Ficha", 0);
 
@@ -41,6 +47,13 @@ Ficha::Ficha(QWidget *parent, Qt::WFlags f, edmode modo) : BLWidget(parent, f), 
 }
 
 
+///
+/**
+\param emp
+\param parent
+\param f
+\param modo
+**/
 Ficha::Ficha(EmpresaBase *emp, QWidget *parent, Qt::WFlags f, edmode modo) : BLWidget(emp, parent, f), DBRecord(emp), dialogChanges(this) {
     _depura("Ficha::Ficha", 0);
 
@@ -52,6 +65,9 @@ Ficha::Ficha(EmpresaBase *emp, QWidget *parent, Qt::WFlags f, edmode modo) : BLW
 }
 
 
+///
+/**
+**/
 Ficha::~Ficha() {
     _depura("Ficha::~Ficha", 0, this->windowTitle());
     sacaWindow();
@@ -59,26 +75,51 @@ Ficha::~Ficha() {
 }
 
 
+///
+/**
+**/
 void Ficha::setModoConsulta() {
+    _depura("Ficha::setModoConsulta", 0);
     m_modo = SelectMode;
+    _depura("END Ficha::setModoConsulta", 0);
 }
 
 
+///
+/**
+**/
 void Ficha::setModoEdicion() {
+    _depura("Ficha::setModoEdicion", 0);
     m_modo = EditMode;
+    _depura("END Ficha::setModoEdicion", 0);
 }
 
 
+///
+/**
+\return
+**/
 bool Ficha::modoEdicion() {
+    _depura("Ficha::modoEdicion", 0);
     return m_modo == EditMode;
+    _depura("END Ficha::modoEdicion", 0);
 }
 
 
+///
+/**
+\return
+**/
 bool Ficha::modoConsulta() {
+    _depura("Ficha::modoConsulta", 0);
     return m_modo == SelectMode;
+    _depura("END Ficha::modoConsulta", 0);
 }
 
 
+///
+/**
+**/
 void Ficha::on_mui_cancelar_clicked() {
     _depura("Ficha::on_mui_cancelar_clicked", 0);
     close();
@@ -86,6 +127,9 @@ void Ficha::on_mui_cancelar_clicked() {
 }
 
 
+///
+/**
+**/
 void Ficha::on_mui_guardar_clicked() {
     _depura("Ficha::on_mui_guardar_clicked", 0);
     guardar();
@@ -93,6 +137,9 @@ void Ficha::on_mui_guardar_clicked() {
 }
 
 
+///
+/**
+**/
 void Ficha::on_mui_aceptar_clicked() {
     _depura("Ficha::on_mui_aceptar_clicked", 0);
     try {
@@ -107,11 +154,19 @@ void Ficha::on_mui_aceptar_clicked() {
 }
 
 
+///
+/**
+**/
 void Ficha::on_mui_imprimir_clicked() {
+    _depura("Ficha::on_mui_imprimir_clicked", 0);
     imprimir();
+    _depura("END Ficha::on_mui_imprimir_clicked", 0);
 }
 
 
+///
+/**
+**/
 void Ficha::on_mui_borrar_clicked() {
     _depura("Ficha::on_mui_borrar_clicked", 0);
 
@@ -134,6 +189,11 @@ void Ficha::on_mui_borrar_clicked() {
 }
 
 
+///
+/**
+\param e
+\return
+**/
 void Ficha::closeEvent(QCloseEvent *e) {
     _depura("Ficha::closeEvent", 0, windowTitle());
     try {
@@ -161,6 +221,10 @@ void Ficha::closeEvent(QCloseEvent *e) {
 }
 
 
+///
+/**
+\return
+**/
 int Ficha::sacaWindow() {
     _depura("Ficha::sacaWindow", 0);
     if (empresaBase() != NULL) {
@@ -171,6 +235,12 @@ int Ficha::sacaWindow() {
 }
 
 
+///
+/**
+\param nom
+\param obj
+\param compdup
+**/
 void Ficha::meteWindow(QString nom, QObject *obj, bool compdup) {
     _depura("Ficha::meteWindow", 0);
     if (empresaBase() != NULL) {
@@ -183,6 +253,10 @@ void Ficha::meteWindow(QString nom, QObject *obj, bool compdup) {
     _depura("END Ficha::meteWindow", 0);
 }
 
+
+///
+/**
+**/
 void Ficha::on_customContextMenuRequested(const QPoint &) {
     _depura("Ficha::on_customContextMenuRequested", 0);
     QMenu *popup = new QMenu(this);
@@ -198,6 +272,11 @@ void Ficha::on_customContextMenuRequested(const QPoint &) {
     _depura("END Ficha::on_customContextMenuRequested", 0);
 }
 
+
+///
+/**
+\param nom
+**/
 void Ficha::setDBTableName(QString nom) {
     _depura("Ficha::setDBTableName", 0);
     DBRecord::setDBTableName(nom);
@@ -213,12 +292,21 @@ void Ficha::setDBTableName(QString nom) {
     _depura("END Ficha::setDBTableName", 0);
 }
 
+
+///
+/**
+\param nom
+**/
 void Ficha::setTitleName(QString nom) {
     _depura("Ficha::setTitleName");
     m_title = nom;
     _depura("END Ficha::setTitleName");
 }
 
+
+///
+/**
+**/
 void Ficha::pintar() {
     _depura("Ficha::pintar", 0);
     DBCampo *campo;
@@ -257,10 +345,13 @@ void Ficha::pintar() {
     } // end for
 }
 
+
 /** Recoge de forma automatica los valores que tienen los QLineEdit y los pone en la estructura de DBRecord.
     para que funcione bien los QLineEdit deben tener como nombre el mismo campo que el correspondiente con la
     base de datos precedidos de mui_
 */
+/**
+**/
 void Ficha::recogeValores() {
     _depura("Ficha::recogeValores", 0);
     DBCampo *campo;
@@ -301,6 +392,11 @@ void Ficha::recogeValores() {
 }
 
 
+///
+/**
+\param id
+\return
+**/
 int Ficha::cargar(QString id) {
     _depura("Ficha::cargar", 0);
     try {
@@ -322,8 +418,11 @@ int Ficha::cargar(QString id) {
     return 0;
 }
 
-/** Guarda los datos de la ficha en la base de datos.
-*/
+
+/// Guarda los datos de la ficha en la base de datos.
+/**
+\return
+**/
 int Ficha::guardar() {
     _depura("Ficha::guardar", 0);
 
@@ -353,6 +452,8 @@ int Ficha::guardar() {
 
 
 int Ficha::borrarPre() {
+        _depura("Ficha::borrarPre", 0);
+        _depura("END Ficha::borrarPre", 0);
     return 0;
 }
 
@@ -360,6 +461,9 @@ int Ficha::borrarPre() {
 /** Borra la ficha en la base de datos
     Este metodo puede ser invocado desde la clase ficha o desde la pantalla previa
 */
+/**
+\return
+**/
 int Ficha::borrar() {
     _depura("Ficha::borrar existe solo para ser derivado", 0);
     /// Lanzamos los plugins.
@@ -369,12 +473,24 @@ int Ficha::borrar() {
 }
 
 
+///
+/**
+\return
+**/
 int Ficha::guardarPost() {
+    _depura("Ficha::guardarPost", 0);
+    _depura("END Ficha::guardarPost", 0);
     return 0;
 }
 
 
+///
+/**
+\return
+**/
 int Ficha::cargarPost(QString ) {
+    _depura("Ficha::cargarPost", 0);
+    _depura("END Ficha::cargarPost", 0);
     return 0;
 }
 

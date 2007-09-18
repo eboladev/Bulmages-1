@@ -25,7 +25,9 @@
 /**
 **/
 PEmpresaBase::PEmpresaBase(EmpresaBase *emp) {
+  _depura("PEmpresaBase::PEmpresaBase", 0);
   m_empresaBase = emp;
+  _depura("END PEmpresaBase::PEmpresaBase", 0);
 }
 
 
@@ -33,7 +35,9 @@ PEmpresaBase::PEmpresaBase(EmpresaBase *emp) {
 /**
 **/
 PEmpresaBase::PEmpresaBase() {
+  _depura("PEmpresaBase::PEmpresaBases", 0);
   m_empresaBase = NULL;
+  _depura("END PEmpresaBase::PEmpresaBases", 0);
 }
 
 
@@ -41,6 +45,8 @@ PEmpresaBase::PEmpresaBase() {
 /**
 **/
 PEmpresaBase::~PEmpresaBase() {
+  _depura("PEmpresaBase::~PEmpresaBase", 0);
+  _depura("END PEmpresaBase::~PEmpresaBase", 0);
 }
 
 
@@ -48,7 +54,9 @@ PEmpresaBase::~PEmpresaBase() {
 /**
 **/
 void PEmpresaBase::setEmpresaBase(EmpresaBase *emp) {
+  _depura("PEmpresaBase::setEmpresaBase", 0);
   m_empresaBase = emp;
+  _depura("END PEmpresaBase::setEmpresaBase", 0);
 }
 
 
@@ -57,7 +65,9 @@ void PEmpresaBase::setEmpresaBase(EmpresaBase *emp) {
 \return 
 **/
 EmpresaBase *PEmpresaBase::empresaBase() {
+  _depura("PEmpresaBase::empresaBase", 0);
   return m_empresaBase;
+  _depura("END PEmpresaBase::empresaBase", 0);
 }
 
 

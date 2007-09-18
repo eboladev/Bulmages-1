@@ -15,25 +15,50 @@
 #include "funcaux.h"
 
 
+///
+/**
+\param x
+\param p
+**/
 Fixed::Fixed(int x, int p) {
+    _depura("Fixed::Fixed", 0);
     value = x;
     precision = p;
+    _depura("END Fixed::Fixed", 0);
 }
 
 
+///
+/**
+\param a
+**/
 Fixed::Fixed(QString a) {
+    _depura("Fixed::Fixed", 0);
     fromFixed(a.toAscii());
+    _depura("END Fixed::Fixed", 0);
 }
 
 
+///
+/**
+\param a
+**/
 Fixed::Fixed(const char *a) {
+    _depura("Fixed::Fixed", 0);
     fromFixed(a);
+    _depura("END Fixed::Fixed", 0);
 }
 
 
+///
+/**
+**/
 Fixed::Fixed() {
+    _depura("Fixed::Fixed", 0);
     value = 0;
     precision = 1;
+    _depura("END Fixed::Fixed", 0);
+
 }
 
 
@@ -44,9 +69,11 @@ Fixed operator + (Fixed x, Fixed y) {
 }
 
 
+
 Fixed operator + (Fixed x, int y) {
     return x + Fixed(y, 0);
 }
+
 
 
 Fixed Fixed::operator = (Fixed x) {
@@ -80,7 +107,13 @@ Fixed operator / (int x, Fixed y) {
 }
 
 
+///
+/**
+\param separadorDecimal
+\return
+**/
 QString Fixed::toQString(QChar separadorDecimal) {
+    _depura("Fixed::toQString", 0);
     setprecision(2);
     int options = COMMAS;
     Fixed_numerator x = value;
@@ -121,6 +154,7 @@ QString Fixed::toQString(QChar separadorDecimal) {
             buffer[sizeof(buffer) - ++n] = ' ';
     }
     QString a((const char *) buffer + sizeof(buffer) - n);
+    _depura("END Fixed::toQString", 0);
     return a;
 }
 
@@ -136,13 +170,18 @@ bool operator == (Fixed x, int y) {
 }
 
 
+
 bool operator == (int x, Fixed y) {
     return Fixed(x, 0) == y;
 }
 
 
+///
+/**
+\param x
+**/
 void Fixed::equalize_precision(Fixed &x) {
-    _depura("equalize_precision");
+    _depura("Fixed::equalize_precision", 0);
     while (precision < x.precision)   {
         value *= 10;
         precision ++;
@@ -151,11 +190,16 @@ void Fixed::equalize_precision(Fixed &x) {
         x.value *= 10 ;
         x.precision ++;
     } // end while
-    _depura("Fin equalize_precision");
+    _depura("END Fixed::equalize_precision", 0);
 }
 
 
+///
+/**
+\param prec
+**/
 void Fixed::setprecision(int prec) {
+    _depura("Fixed::setprecision", 0);
     while (precision < prec) {
         value *= 10;
         precision ++;
@@ -169,10 +213,16 @@ void Fixed::setprecision(int prec) {
         } // end if
         precision--;
     } // end while
+    _depura("END Fixed::setprecision", 0);
 }
 
 
+///
+/**
+\param s
+**/
 void Fixed::fromFixed(const char *s) {
+    _depura("Fixed::fromFixed", 0);
     value = 0;
     precision = 0;
     int c;
@@ -203,6 +253,7 @@ void Fixed::fromFixed(const char *s) {
         value = - value;
     if (value == 0)
         precision = 1;
+    _depura("END Fixed::fromFixed", 0);
 }
 
 

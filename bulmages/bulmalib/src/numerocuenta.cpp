@@ -22,41 +22,74 @@
 #include "numerocuenta.h"
 
 
+///
+/**
+\return
+**/
 bool numerocuenta::cuentaesvalida() {
     return (getdc() == dc);
 }
 
 
+///
+/**
+\param sep
+\return
+**/
 QString numerocuenta::getcodigo(QString sep) {
     return (banco + sep + entidad + sep + dc + sep + numcuenta);
 }
 
 
+///
+/**
+\return
+**/
 QString numerocuenta::getnumcuenta() {
     return numcuenta;
 }
 
 
+///
+/**
+\return
+**/
 QString numerocuenta::getbanco() {
     return banco;
 }
 
 
+///
+/**
+\return
+**/
 QString numerocuenta::getentidad() {
     return entidad;
 }
 
 
+///
+/**
+\param cad
+**/
 void numerocuenta::setnumcuenta(QString cad) {
     numcuenta = cad.rightJustified(10, '0');
 }
 
 
+///
+/**
+\param cad
+**/
 void numerocuenta::setbanco(QString cad) {
     banco = cad.rightJustified(4, '0');
 }
 
 
+///
+/**
+\param cad
+**/
 void numerocuenta::setentidad(QString cad) {
     entidad = cad.rightJustified(4, '0');
 }
@@ -76,6 +109,11 @@ numerocuenta::numerocuenta(QString bancopar, QString entidadpar, QString dcpar, 
 
 
 /// Overload. En este caso los digitos de control se calculan automaticamente.
+/**
+\param bancopar
+\param entidadpar
+\param numcuentapar
+**/
 numerocuenta::numerocuenta(QString bancopar, QString entidadpar, QString numcuentapar) {
     setbanco(bancopar);
     setentidad(entidadpar);
@@ -85,6 +123,9 @@ numerocuenta::numerocuenta(QString bancopar, QString entidadpar, QString numcuen
 
 
 /// Overload. Si la cuenta se presenta como una unica cadena, extrae los 4 elementos de ella.
+/**
+\param cuenpar
+**/
 numerocuenta::numerocuenta(QString cuenpar) {
     QString tem = cuenpar;
     tem.remove("-"); /// TODO: Que elimine tambien otro tipo de caracteres como espacios, etc.
@@ -95,10 +136,16 @@ numerocuenta::numerocuenta(QString cuenpar) {
 }
 
 
+///
+/**
+**/
 numerocuenta::~numerocuenta() {}
 
 
 /// Devuelve los digitos de control del numero de cuenta.
+/**
+\return
+**/
 QString numerocuenta::getdc() {
     QString resul;
     int i;

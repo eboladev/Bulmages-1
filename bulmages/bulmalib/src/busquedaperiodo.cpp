@@ -26,7 +26,9 @@
 \return
 **/
 QString BusquedaPeriodo::periodo() {
+  _depura("BusquedaPeriodo::periodo", 0);
     return m_valores[currentIndex()];
+  _depura("END BusquedaPeriodo::periodo", 0);
 }
 
 
@@ -35,7 +37,9 @@ QString BusquedaPeriodo::periodo() {
 \return
 **/
 QString BusquedaPeriodo::valorCampo() {
+  _depura("BusquedaPeriodo::valorCampo", 0);
     return m_valores[currentIndex()];
+  _depura("END BusquedaPeriodo::valorCampo", 0);
 }
 
 
@@ -92,7 +96,10 @@ BusquedaPeriodo::BusquedaPeriodo(QWidget *parent) : QComboBox2(parent) {
 ///
 /**
 **/
-BusquedaPeriodo::~BusquedaPeriodo() {}
+BusquedaPeriodo::~BusquedaPeriodo() {
+  _depura("BusquedaPeriodo::~BusquedaPeriodo", 0);
+  _depura("END BusquedaPeriodo::~BusquedaPeriodo", 0);
+}
 
 
 ///
@@ -119,7 +126,9 @@ void BusquedaPeriodo::setperiodo(QString periodo) {
 \param periodo
 **/
 void BusquedaPeriodo::setValorCampo(QString periodo) {
+  _depura("BusquedaPeriodo::setValorCampo", 0);
 	setperiodo(periodo);
+  _depura("END BusquedaPeriodo::setValorCampo", 0);
 }
 
 

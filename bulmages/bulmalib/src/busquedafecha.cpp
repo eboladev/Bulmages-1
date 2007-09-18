@@ -53,7 +53,9 @@ BusquedaFecha::~BusquedaFecha() {
 \param val
 **/
 void BusquedaFecha::setfecha(QString val) {
+    _depura("BusquedaFecha::setfecha", 0);
     mui_textoFecha->setText(val);
+    _depura("END BusquedaFecha::setfecha", 0);
 }
 
 ///
@@ -61,7 +63,9 @@ void BusquedaFecha::setfecha(QString val) {
 \param val
 **/
 void BusquedaFecha::setText(QString val) {
+    _depura("BusquedaFecha::setText", 0);
     mui_textoFecha->setText(val);
+    _depura("END BusquedaFecha::setText", 0);
 }
 
 
@@ -70,7 +74,9 @@ void BusquedaFecha::setText(QString val) {
 \param val
 **/
 void BusquedaFecha::setValorCampo(QString val) {
+    _depura("BusquedaFecha::setValorCampo", 0);
     mui_textoFecha->setText(val);
+    _depura("END BusquedaFecha::setValorCampo", 0);
 }
 
 
@@ -79,7 +85,9 @@ void BusquedaFecha::setValorCampo(QString val) {
 \return
 **/
 QString BusquedaFecha::fecha() {
+    _depura("BusquedaFecha::fecha", 0);
     return mui_textoFecha->text();
+    _depura("END BusquedaFecha::fecha", 0);
 }
 
 
@@ -88,7 +96,9 @@ QString BusquedaFecha::fecha() {
 \return
 **/
 QString BusquedaFecha::text() {
+    _depura("BusquedaFecha::text", 0);
     return mui_textoFecha->text();
+    _depura("END BusquedaFecha::text", 0);
 }
 
 
@@ -97,7 +107,9 @@ QString BusquedaFecha::text() {
 \return
 **/
 QString BusquedaFecha::valorCampo() {
+    _depura("BusquedaFecha::valorCampo", 0);
     return mui_textoFecha->text();
+    _depura("END BusquedaFecha::valorCampo", 0);
 }
 
 
@@ -105,8 +117,10 @@ QString BusquedaFecha::valorCampo() {
 /**
 **/
 void BusquedaFecha::s_returnPressed() {
+    _depura("BusquedaFecha::s_returnPressed", 0);
     s_fechalostFocus();
     emit returnPressed();
+    _depura("END BusquedaFecha::s_returnPressed", 0);
 }
 
 
@@ -114,7 +128,9 @@ void BusquedaFecha::s_returnPressed() {
 /**
 **/
 void BusquedaFecha::selectAll() {
+    _depura("BusquedaFecha::selectAll", 0);
     mui_textoFecha->selectAll();
+    _depura("END BusquedaFecha::selectAll", 0);
 }
 
 
@@ -122,7 +138,9 @@ void BusquedaFecha::selectAll() {
 /**
 **/
 void BusquedaFecha::setFocus() {
+    _depura("BusquedaFecha::setFocus", 0);
     mui_textoFecha->setFocus(Qt::OtherFocusReason);
+    _depura("END BusquedaFecha::setFocus", 0);
 }
 
 
@@ -161,6 +179,7 @@ void BusquedaFecha::s_searchFecha() {
 
 ///
 /**
+\param texto
 **/
 void BusquedaFecha::s_fechatextChanged(const QString &texto) {
     _depura("BusquedaFecha::s_fechatextChanged", 0);

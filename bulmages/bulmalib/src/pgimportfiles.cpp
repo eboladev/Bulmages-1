@@ -200,45 +200,73 @@ private:
 /// ---------------------------------------------
 
 
+///
+/**
+**/
 void pgimportfiles::alerta(int, int) {
 }
 
 
+///
+/**
+**/
 void pgimportfiles::mensajeria(QString) {
     _depura("Funcion no implementada en esta clase\n", 2);
 }
 
 
+///
+/**
+\param f
+**/
 void pgimportfiles::setFInicial(QString f) {
     m_fInicial = f;
 }
 
 
+///
+/**
+\param f
+**/
 void pgimportfiles::setFFinal(QString f) {
     m_fFinal = f;
 }
 
 
+///
+/**
+**/
 void pgimportfiles::setModoTest() {
     m_modoTest = TRUE;
 }
 
 
+///
+/**
+**/
 void pgimportfiles::setModoNormal() {
     m_modoTest = FALSE;
 }
 
 
+///
+/**
+\return
+**/
 bool pgimportfiles::modoTest() {
     return (m_modoTest == TRUE);
 }
 
-
+///
+/**
+**/
 pgimportfiles::~pgimportfiles() {
     _depura("pgimportfiles::~pgimportfiles", 0);
 }
 
-
+///
+/**
+**/
 pgimportfiles::pgimportfiles(postgresiface2 *con) {
     conexionbase = con;
     m_fInicial = "";
@@ -247,6 +275,11 @@ pgimportfiles::pgimportfiles(postgresiface2 *con) {
 }
 
 /// Esta funcion se encarga de pasar los datos de BulmaGes a Contaplus.
+/**
+\param subcuentas
+\param asientos
+\return
+**/
 int pgimportfiles::bulmages2Contaplus(QFile &subcuentas, QFile &asientos) {
     QString codigo, descripcion;
     QString strblancomax;
@@ -347,6 +380,11 @@ int pgimportfiles::bulmages2Contaplus(QFile &subcuentas, QFile &asientos) {
 
 
 /// Pasa archivos de Contaplus a BulmaGes
+/**
+\param subcuentas
+\param asientos
+\return 
+**/
 int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
     QString idasiento;
     QString lopd_str, cuenta_str;
@@ -570,6 +608,11 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
 
 /// Esta funcion busca en la base de datos la cuenta padre de la cuenta seleccionada.
 /// Si no existe la cuenta padre devuelve NULL.
+
+/**
+\param cod
+\return
+**/
 QString pgimportfiles::searchParent(QString cod) {
     QString padre = "NULL"; /// Almacena el padre de la cuenta.
     QString query;
@@ -593,6 +636,11 @@ QString pgimportfiles::searchParent(QString cod) {
 
 
 /// Esta funcion pasa de bulmafact a XML.
+/**
+\param xmlfile
+\param tipo
+\return
+**/
 int pgimportfiles::bulmafact2XML(QFile &xmlfile, unsigned long long int tipo) {
     QTextStream stream(&xmlfile);
     stream << "<?xml version=\"1.0\" encoding = \"iso-8859-1\"?>\n"
@@ -1155,6 +1203,11 @@ int pgimportfiles::bulmafact2XML(QFile &xmlfile, unsigned long long int tipo) {
 
 /// Esta funcion se encarga de pasar los datos de BulmaGes a XML.
 /// Los datos pasados de esta forma son mucho mas sencillos de pasar.
+/**
+\param xmlfile
+\param tipo
+\return
+**/
 int pgimportfiles::bulmages2XML(QFile &xmlfile, unsigned long long int tipo) {
     QString codigo, descripcion;
     QString strblancomax;
@@ -1346,6 +1399,11 @@ int pgimportfiles::bulmages2XML(QFile &xmlfile, unsigned long long int tipo) {
 /// Funcion para pasar de un archivo XML a Bulmages.
 /** Crea un objeto del tipo \ref StructureParser (sistema de proceso de XML mediante SAX)
     y lo ejecuta para que haga la imporacion del archivo XML. */
+/**
+\param fichero
+\param tip
+\return
+**/
 int pgimportfiles::XML2Bulmages(QFile &fichero, unsigned long long int tip) {
     StructureParser handler(conexionbase, tip);
     QXmlInputSource source(&fichero);
@@ -1360,6 +1418,11 @@ int pgimportfiles::XML2Bulmages(QFile &fichero, unsigned long long int tip) {
 /// Funcion para pasar de un archivo XML a BulmaFact.
 /** Crea un objeto del tipo \ref StructureParser (sistema de proceso de XML mediante SAX) y lo ejecuta para
     que haga la imporacion del archivo XML. */
+/**
+\param fichero
+\param tip
+\return
+**/
 int pgimportfiles::XML2BulmaFact(QFile &fichero, unsigned long long int tip) {
     bool noerror = TRUE;
     fprintf(stderr, "pgimportfiles::XML2BulmaFact()\n");
@@ -1376,6 +1439,11 @@ int pgimportfiles::XML2BulmaFact(QFile &fichero, unsigned long long int tip) {
 }
 
 
+///
+/**
+\param con
+\param tip
+**/
 StructureParser::StructureParser(postgresiface2 *con, unsigned int tip) {
     conexionbase = con;
     m_tipo = tip;
@@ -1390,18 +1458,30 @@ StructureParser::StructureParser(postgresiface2 *con, unsigned int tip) {
 }
 
 
+///
+/**
+**/
 StructureParser::~StructureParser() {
     QString query = "DELETE FROM cuenta WHERE codigo = 'AUX'";
     conexionbase->ejecuta(query);
 }
 
-
+///
+/**
+\return
+**/
 bool StructureParser::startDocument() {
     indent = "";
     return TRUE;
 }
 
 
+///
+/**
+\param qName
+\param QXmlAttributes
+\return
+**/
 bool StructureParser::startElement(const QString&, const QString&, const QString& qName, const QXmlAttributes&) {
     fprintf(stderr, "%s<%s>\n", indent.toAscii().data(), qName.toAscii().data());
     indent += "..";
@@ -1465,6 +1545,11 @@ bool StructureParser::startElement(const QString&, const QString&, const QString
 }
 
 
+///
+/**
+\param qName
+\return
+**/
 bool StructureParser::endElement(const QString&, const QString&, const QString& qName) {
     indent.remove((uint)0, 2);
     /// Vamos a ir distinguiendo casos y actuando segun cada caso.
@@ -1606,7 +1691,11 @@ bool StructureParser::endElement(const QString&, const QString&, const QString& 
     return TRUE;
 }
 
-
+///
+/**
+\param nl
+\return
+**/
 bool StructureParser::characters(const QString& n1) {
     cadintermedia += n1;
     return TRUE;
@@ -1614,6 +1703,12 @@ bool StructureParser::characters(const QString& n1) {
 
 
 /// ==================================================================================
+///
+/**
+\param imp
+\param con
+\param tip
+**/
 ImportBulmaFact::ImportBulmaFact(pgimportfiles *imp, postgresiface2 *con, unsigned long long int tip) {
     conexionbase = con;
     pgimport = imp;
@@ -1621,21 +1716,37 @@ ImportBulmaFact::ImportBulmaFact(pgimportfiles *imp, postgresiface2 *con, unsign
 }
 
 
+///
+/**
+**/
 ImportBulmaFact::~ImportBulmaFact() {}
 
 
+///
+/**
+\return
+**/
 bool ImportBulmaFact::startDocument() {
     indent = "";
     return TRUE;
 }
 
 
+///
+/**
+\return
+**/
 bool ImportBulmaFact::startElement(const QString&, const QString&, const QString&, const QXmlAttributes&) {
     cadintermedia = "";
     return TRUE;
 }
 
 
+///
+/**
+\param qName
+\return
+**/
 bool ImportBulmaFact::endElement(const QString&, const QString&, const QString& qName) {
     valores[qName] = cadintermedia;
     cadintermedia = "";
@@ -1680,6 +1791,11 @@ bool ImportBulmaFact::endElement(const QString&, const QString&, const QString& 
 }
 
 
+///
+/**
+\param nl
+\return
+**/
 bool ImportBulmaFact::characters(const QString& n1) {
     QString val = n1;
     if (val == "\n")
@@ -1689,6 +1805,9 @@ bool ImportBulmaFact::characters(const QString& n1) {
 }
 
 
+///
+/**
+**/
 void ImportBulmaFact::printcontents() {
     fprintf(stderr, "Impresion de contenidos\n");
     tvalores::Iterator it;
@@ -1701,6 +1820,10 @@ void ImportBulmaFact::printcontents() {
 }
 
 
+///
+/**
+\return
+**/
 int ImportBulmaFact::trataCliente() {
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
     pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<HR><B>Tratando el cliente ") + valores["CIFCLIENTE"] + " " + valores["NOMCLIENTE"] + "</B><BR>");
@@ -1728,6 +1851,10 @@ int ImportBulmaFact::trataCliente() {
 }
 
 
+///
+/**
+\return
+**/
 int ImportBulmaFact::trataProveedor() {
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
     pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<HR><B>Tratando el proveedor ") + valores["CIFPROVEEDOR"] + "</b><BR>");
@@ -1755,6 +1882,10 @@ int ImportBulmaFact::trataProveedor() {
 }
 
 
+///
+/**
+\return
+**/
 int ImportBulmaFact::trataFormaPago() {
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
     pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<HR><B>Tratando la froma de pago ") + valores["DESCFORMA_PAGO"] + "</B><BR>");
@@ -1791,6 +1922,10 @@ int ImportBulmaFact::trataFormaPago() {
 }
 
 
+///
+/**
+\return
+**/
 int ImportBulmaFact::trataAlmacen() {
     /// En el XML se ha encontrado un tag de almacen que esta almacenado en la estructura valores.
     pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<HR><B>Tratando almacen ") + valores["CODIGOALMACEN"] + " " + valores["NOMALMACEN"] + "</B><BR>");
@@ -1832,6 +1967,10 @@ int ImportBulmaFact::trataAlmacen() {
 }
 
 
+///
+/**
+\return
+**/
 int ImportBulmaFact::trataFamilia() {
     QString query;
     cursor2 *cur;
@@ -1886,6 +2025,10 @@ int ImportBulmaFact::trataFamilia() {
 }
 
 
+///
+/**
+\return
+**/
 int ImportBulmaFact::trataArticulo() {
     QString query;
     cursor2 *cur;
@@ -1979,6 +2122,10 @@ int ImportBulmaFact::trataArticulo() {
 }
 
 
+///
+/**
+\return
+**/
 int ImportBulmaFact::trataLPedidoCliente() {
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
     pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<HR><B>Tratando LPedidoCliente ") + valores["IDLPEDIDOCLIENTE"] + "</B><BR>");
@@ -2000,6 +2147,10 @@ int ImportBulmaFact::trataLPedidoCliente() {
 }
 
 
+///
+/**
+\return
+**/
 int ImportBulmaFact::trataDPedidoCliente() {
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
     pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<HR><B>Tratando DPedidoCliente ") + valores["IDDPEDIDOCLIENTE"] + "</B><BR>");
@@ -2012,6 +2163,10 @@ int ImportBulmaFact::trataDPedidoCliente() {
 }
 
 
+///
+/**
+\return
+**/
 int ImportBulmaFact::trataPedidoCliente() {
     QString query;
     cursor2 *cur;
@@ -2185,6 +2340,10 @@ int ImportBulmaFact::trataPedidoCliente() {
 }
 
 
+///
+/**
+\return
+**/
 int ImportBulmaFact::trataLAlbaran() {
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores
     pgimport->mensajeria(theApp->translate("ImportBulmaFact","<HR><B>Tratando LAlbaran ")+valores["IDLALBARAN"]+"</B><BR>");
@@ -2206,6 +2365,10 @@ int ImportBulmaFact::trataLAlbaran() {
 }
 
 
+///
+/**
+\return
+**/
 int ImportBulmaFact::trataDAlbaran() {
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores
     pgimport->mensajeria(theApp->translate("ImportBulmaFact","<HR><B>Tratando DAlbaran ")+valores["IDDALBARAN"]+"</B><BR>");
@@ -2390,6 +2553,10 @@ int ImportBulmaFact::trataAlbaran() {
 }
 
 
+///
+/**
+\return
+**/
 int ImportBulmaFact::trataLFactura() {
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
     pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<HR><B>Tratando LFactura ") + valores["IDLFACTURA"] + "</B><BR>");
@@ -2411,6 +2578,10 @@ int ImportBulmaFact::trataLFactura() {
 }
 
 
+///
+/**
+\return
+**/
 int ImportBulmaFact::trataDFactura() {
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
     pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<HR><B>Tratando DFactura ") + valores["IDDFACTURA"] + "</B><BR>");
@@ -2423,6 +2594,10 @@ int ImportBulmaFact::trataDFactura() {
 }
 
 
+///
+/**
+\return
+**/
 int ImportBulmaFact::trataFactura() {
     QString query;
     cursor2 *cur;
@@ -2607,6 +2782,10 @@ int ImportBulmaFact::trataFactura() {
 }
 
 
+///
+/**
+\return
+**/
 int ImportBulmaFact::trataLPresupuesto() {
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
     pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<HR><B>Tratando LPresupuesto ") + valores["IDLPRESUPUESTO"] + "</B><BR>");
@@ -2628,6 +2807,10 @@ int ImportBulmaFact::trataLPresupuesto() {
 }
 
 
+///
+/**
+\return
+**/
 int ImportBulmaFact::trataDPresupuesto() {
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
     pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<HR><B>Tratando DPresupuesto ") + valores["IDDPRESUPUESTO"] + "</B><BR>");
@@ -2640,6 +2823,10 @@ int ImportBulmaFact::trataDPresupuesto() {
 }
 
 
+///
+/**
+\return
+**/
 int ImportBulmaFact::trataPresupuesto() {
     QString query;
     cursor2 *cur;

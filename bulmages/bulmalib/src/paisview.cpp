@@ -24,6 +24,10 @@
 
 /// Esta clase se encarga de presentar los centros de coste, la ventana, y
 /// de controlar la inserci&oacute;n de nuevos centros de coste, borrarlos, etc.
+/**
+\param emp
+\param parent
+**/
 PaisView::PaisView(EmpresaBase *emp, QWidget *parent)
         : Ficha(emp, parent) {
     _depura("PaisView::PaisView", 0);
@@ -75,6 +79,9 @@ PaisView::PaisView(EmpresaBase *emp, QWidget *parent)
 }
 
 
+///
+/**
+**/
 PaisView::~PaisView() {
     _depura("PaisView::~PaisView", 0);
     empresaBase()->sacaWindow(this);
@@ -82,6 +89,9 @@ PaisView::~PaisView() {
 }
 
 
+///
+/**
+**/
 void PaisView::pintar() {
     _depura("PaisView::pintar", 10);
     /// Vaciamos el contenido de la tabla.
@@ -91,6 +101,9 @@ void PaisView::pintar() {
 }
 
 
+///
+/**
+**/
 void PaisView::on_mui_list_itemClicked(QTableWidgetItem *) {
     _depura("PaisView::on_mui_list_itemSelectionChanged", 0);
     /// Busca el item correcto.
@@ -111,6 +124,9 @@ void PaisView::on_mui_list_itemClicked(QTableWidgetItem *) {
 }
 
 
+///
+/**
+**/
 void PaisView::mostrarplantilla() {
     _depura("PaisView::mostrarplantilla", 0);
 
@@ -128,6 +144,9 @@ void PaisView::mostrarplantilla() {
 }
 
 
+///
+/**
+**/
 void PaisView::on_mui_guardar_clicked() {
     _depura("PaisView::on_mui_guardar_clicked", 0);
     QString id;
@@ -145,6 +164,9 @@ void PaisView::on_mui_guardar_clicked() {
 }
 
 
+///
+/**
+**/
 void PaisView::on_mui_crear_clicked() {
     _depura("PaisView::on_mui_crear_clicked", 0);
     /// Si se ha modificado el contenido advertimos y guardamos.
@@ -170,6 +192,9 @@ void PaisView::on_mui_crear_clicked() {
 }
 
 
+///
+/**
+**/
 void PaisView::on_mui_borrar_clicked() {
     _depura("PaisView::on_mui_borrar_clicked", 0);
     switch (QMessageBox::warning(this,
@@ -189,6 +214,7 @@ void PaisView::on_mui_borrar_clicked() {
 }
 
 /*
+
 void PaisView::closeEvent(QCloseEvent *e) {
     _depura("PaisView::closeEvent", 0);
     if (dialogChanges_hayCambios()) {

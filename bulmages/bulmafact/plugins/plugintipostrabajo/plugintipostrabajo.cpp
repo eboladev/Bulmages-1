@@ -79,7 +79,19 @@ int TrabajadorView_TrabajadorView_Post (TrabajadorView *trab) {
     tipotraba->setObjectName(QString::fromUtf8("tipotraba"));
     hboxLayout160->addWidget(tipotraba);
 
-   trab->m_frameplugin->setLayout(hboxLayout160);
+
+    /// Comprobamos que exista el layout.
+    QVBoxLayout *m_hboxLayout1 = trab->m_frameplugin->findChild<QVBoxLayout *>("hboxLayout1");
+    if (!m_hboxLayout1) {
+        m_hboxLayout1 = new QVBoxLayout(trab->m_frameplugin);
+        m_hboxLayout1->setSpacing(0);
+        m_hboxLayout1->setMargin(0);
+        m_hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));
+    } // end if
+
+    m_hboxLayout1->addLayout(hboxLayout160);
+
+//   trab->m_frameplugin->setLayout(hboxLayout160);
    return 0;
 }
 
