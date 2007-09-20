@@ -50,8 +50,8 @@ void Listado::setModoEdicion() {
 **/
 bool Listado::modoEdicion() {
     _depura("Listado::modoEdicion", 0);
-    return m_modo == EditMode;
     _depura("END Listado::modoEdicion", 0);
+    return m_modo == EditMode;
 }
 
 
@@ -61,8 +61,8 @@ bool Listado::modoEdicion() {
 **/
 bool Listado::modoConsulta() {
     _depura("Listado::modoConsulta", 0);
-    return m_modo == SelectMode;
     _depura("END Listado::modoConsulta", 0);
+    return m_modo == SelectMode;
 }
 
 

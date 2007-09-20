@@ -42,8 +42,8 @@ void EmpresaBase::setListVentanas(listventanas *doc) {
 **/
 QWorkspace2 *EmpresaBase::pWorkspace() {
     _depura("EmpresaBase::pWorkspace", 0);
-    return m_pWorkspace;
     _depura("END EmpresaBase::pWorkspace", 0);
+    return m_pWorkspace;
 }
 
 
@@ -78,8 +78,8 @@ void EmpresaBase::setProgressBar(QProgressBar *pb) {
 **/
 int EmpresaBase::meteWindow(QString nom, QObject *obj, bool compdup) {
     _depura("EmpresaBase::meteWindow", 0);
-    return m_listventanas->meteWindow(nom, obj, compdup);
     _depura("END EmpresaBase::meteWindow", 0);
+    return m_listventanas->meteWindow(nom, obj, compdup);
 }
 
 
@@ -91,8 +91,8 @@ int EmpresaBase::meteWindow(QString nom, QObject *obj, bool compdup) {
 **/
 int EmpresaBase::seleccionaWindow(QString nom, QObject *obj) {
     _depura("EmpresaBase::seleccionaWindow", 0);
-    return m_listventanas->seleccionaWindow(nom, obj);
     _depura("END EmpresaBase::seleccionaWindow", 0);
+    return m_listventanas->seleccionaWindow(nom, obj);
 }
 
 
@@ -102,8 +102,8 @@ int EmpresaBase::seleccionaWindow(QString nom, QObject *obj) {
 **/
 int EmpresaBase::deSeleccionaWindow() {
     _depura("EmpresaBase::deSeleccionaWindow", 0);
-    return m_listventanas->deSeleccionaWindow();
     _depura("END EmpresaBase::deSeleccionaWindow", 0);
+    return m_listventanas->deSeleccionaWindow();
 }
 
 

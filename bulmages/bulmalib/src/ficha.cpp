@@ -101,8 +101,8 @@ void Ficha::setModoEdicion() {
 **/
 bool Ficha::modoEdicion() {
     _depura("Ficha::modoEdicion", 0);
-    return m_modo == EditMode;
     _depura("END Ficha::modoEdicion", 0);
+    return m_modo == EditMode;
 }
 
 
@@ -112,8 +112,8 @@ bool Ficha::modoEdicion() {
 **/
 bool Ficha::modoConsulta() {
     _depura("Ficha::modoConsulta", 0);
-    return m_modo == SelectMode;
     _depura("END Ficha::modoConsulta", 0);
+    return m_modo == SelectMode;
 }
 
 

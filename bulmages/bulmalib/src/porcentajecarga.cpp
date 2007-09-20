@@ -21,10 +21,18 @@
 #include "porcentajecarga.h"
 
 
+///
+/**
+\param parent
+**/
 porcentajeCarga::porcentajeCarga(QWidget *parent) : QDialog(parent) {
+    
 }
 
 
+///
+/**
+**/
 void porcentajeCarga::mostrar(){
     fprintf(stderr, "\n\n\nestoooo\n");
     setupUi(this);
@@ -32,11 +40,16 @@ void porcentajeCarga::mostrar(){
 }
 
 
+///
+/**
+**/
 void porcentajeCarga::cerrar() {
     close();
 }
 
 
-porcentajeCarga::~porcentajeCarga() {
-}
+///
+/**
+**/
+porcentajeCarga::~porcentajeCarga() {}
 

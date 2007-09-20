@@ -25,14 +25,32 @@
 #include "funcaux.h"
 
 
+///
+/**
+\param parent
+**/
 QTextEditDelegate::QTextEditDelegate(QWidget *parent) : QTextEdit(parent) {
+    _depura("QTextEditDelegate::QTextEditDelegate", 0);
     installEventFilter(this);
+    _depura("END QTextEditDelegate::QTextEditDelegate", 0);
 }
 
 
-QTextEditDelegate::~QTextEditDelegate() {}
+///
+/**
+**/
+QTextEditDelegate::~QTextEditDelegate() {
+    _depura("QTextEditDelegate::~QTextEditDelegate", 0);
+    _depura("END QTextEditDelegate::~QTextEditDelegate", 0);
+}
 
 
+///
+/**
+\param obj
+\param event
+\return
+**/
 bool QTextEditDelegate::eventFilter(QObject *obj, QEvent *event) {
     _depura("QTextEditDelegate::eventFilter", 0, QString::number(event->type()));
 

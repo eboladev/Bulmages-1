@@ -25,17 +25,30 @@
 #include "funcaux.h"
 
 
+///
+/**
+**/
 QWorkspace2::QWorkspace2(QWidget *) {
     _depura("QWorkspace2::QWorkspace2", 0);
+    _depura("END QWorkspace2::QWorkspace2", 0);
 }
 
 
+///
+/**
+**/
 QWorkspace2::~QWorkspace2() {
     _depura("QWorkspace2::~QWorkspace2", 0);
+    _depura("END QWorkspace2::~QWorkspace2", 0);
 }
 
 
+///
+/**
+\param w
+**/
 void QWorkspace2::addWindow(QWidget * w) {
+    _depura("QWorkspace2::addWindow", 0);
     int tamdispW;
     int tamdispH;
     int tamventanadecoW;
@@ -75,5 +88,6 @@ void QWorkspace2::addWindow(QWidget * w) {
     accionEsc->setShortcut(tr("Esc"));
     connect(accionEsc, SIGNAL(triggered()), w, SLOT(close()));
     w->addAction(accionEsc);
+    _depura("END QWorkspace2::addWindow", 0);
 }
 

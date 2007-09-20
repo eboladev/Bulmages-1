@@ -36,6 +36,7 @@
 **/
 QListWidget1::QListWidget1(QWidget * parent) : QListWidget(parent) {
     _depura("QListWidget1::QListWidget1", 0);
+    _depura("END QListWidget1::QListWidget1", 0);
 }
 
 
@@ -44,6 +45,7 @@ QListWidget1::QListWidget1(QWidget * parent) : QListWidget(parent) {
 **/
 QListWidget1::~QListWidget1() {
     _depura("QListWidget1::~QListWidget1", 0);
+    _depura("END QListWidget1::~QListWidget1", 0);
 }
 
 
@@ -65,6 +67,7 @@ QListWidgetItem1::QListWidgetItem1(QListWidget1 *l, QPixmap &p) : QListWidgetIte
 **/
 QListWidgetItem1::~QListWidgetItem1() {
     _depura("QListWidget1::~QListWidgetItem1", 0);
+    _depura("END QListWidget1::~QListWidgetItem1", 0);
 }
 
 
@@ -97,8 +100,8 @@ void QListWidgetItem1::setNombre(QString m) {
 **/
 QObject *QListWidgetItem1::object() {
     _depura("QListWidgetItem1::object", 0);
-    return m_obj;
     _depura("END QListWidgetItem1::object", 0);
+    return m_obj;
 }
 
 
@@ -108,6 +111,7 @@ QObject *QListWidgetItem1::object() {
 **/
 QString QListWidgetItem1::nombre() {
     _depura("QListWidgetItem1::nombre", 0);
+    _depura("END QListWidgetItem1::nombre", 0);
     return m_nombre;
 }
 
@@ -117,7 +121,9 @@ QString QListWidgetItem1::nombre() {
 \param w
 **/
 void listventanas::setWorkspace(QWorkspace2 *w) {
+    _depura("listventanas::setWorkspace", 0);
     m_pWorkspace = w;
+    _depura("END listventanas::setWorkspace", 0);
 }
 
 
@@ -377,7 +383,8 @@ void listventanas::cambiaVisible(bool visible) {
 /**
 **/
 void listventanas::closeEvent(QCloseEvent *) {
-    emit(cambiaEstadoVisible(FALSE));
     _depura("listventanas::closeEvent", 0);
+    emit(cambiaEstadoVisible(FALSE));
+    _depura("END listventanas::closeEvent", 0);
 }
 

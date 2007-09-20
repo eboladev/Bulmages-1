@@ -158,6 +158,7 @@ configuracion::configuracion(QString nombreprograma) {
     setValor(CONF_PRIVILEGIOS_USUARIO, "1");
     setValor(CONF_LOGIN_USER, "");
     setValor(CONF_PASSWORD_USER, "");
+
 //    _depura("END configuracion::configuracion", 0);
 }
 
@@ -327,6 +328,7 @@ QString configuracion::nombre(int i) {
         return "CONF_DEBUG";
     if (i == CONF_ALERTAS_DB)
         return "CONF_ALERTAS_DB";
+
     return "";
 //    _depura("END configuracion::nombre", 0);
 }

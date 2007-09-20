@@ -27,8 +27,8 @@
 **/
 QString BusquedaPeriodo::periodo() {
   _depura("BusquedaPeriodo::periodo", 0);
-    return m_valores[currentIndex()];
   _depura("END BusquedaPeriodo::periodo", 0);
+    return m_valores[currentIndex()];
 }
 
 
@@ -38,8 +38,8 @@ QString BusquedaPeriodo::periodo() {
 **/
 QString BusquedaPeriodo::valorCampo() {
   _depura("BusquedaPeriodo::valorCampo", 0);
-    return m_valores[currentIndex()];
   _depura("END BusquedaPeriodo::valorCampo", 0);
+    return m_valores[currentIndex()];
 }
 
 

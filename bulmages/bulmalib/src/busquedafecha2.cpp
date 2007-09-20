@@ -81,8 +81,8 @@ void BusquedaFecha2::selectAll() {
 **/
 QString BusquedaFecha2::text() {
     _depura("BusquedaFecha2::text", 0);
-    return QLineEdit::text();
     _depura("END BusquedaFecha2::text", 0);
+    return QLineEdit::text();
 }
 
 
@@ -92,8 +92,8 @@ QString BusquedaFecha2::text() {
 **/
 QString BusquedaFecha2::valorCampo() {
     _depura("BusquedaFecha2::valorCampo", 0);
-    return QLineEdit::text();
     _depura("END BusquedaFecha2::valorCampo", 0);
+    return QLineEdit::text();
 }
 
 
@@ -133,7 +133,7 @@ bool BusquedaFecha2::eventFilter(QObject *obj, QEvent *event) {
         return TRUE;
     } // end if
 */
-    return QLineEdit::eventFilter(obj, event);
     _depura("END BusquedaFecha2::eventFilter", 0);
+    return QLineEdit::eventFilter(obj, event);
 }
 

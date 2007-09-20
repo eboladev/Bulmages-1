@@ -62,13 +62,37 @@ int TrabajadorView_TrabajadorView_Post (TrabajadorView *trab) {
 
     m_hboxLayout1->addLayout(hboxLayout160);
 
+
+    /// Agregamos el subformulario de validaciones.
+    SubForm2Bf *l = new SubForm2Bf(trab);
+    l->setObjectName(QString::fromUtf8("mui_validaciones"));
+    l->setEmpresaBase( trab->empresaBase());
+    l->setDBTableName("valasterisk");
+    l->setDBCampoId("idvalasterisk");
+    l->addSHeader("fechavalasterisk", DBCampo::DBvarchar, DBCampo::DBNothing , SHeader::DBNoWrite, QApplication::translate("TrabajadorView", "Fecha"));
+    l->addSHeader("horavalasterisk", DBCampo::DBvarchar, DBCampo::DBNothing , SHeader::DBNoWrite, QApplication::translate("TrabajadorView", "Hora"));
+    l->addSHeader("nomalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , QApplication::translate("TrabajadorView", "Almacén"));
+    l->addSHeader("aperturaalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , QApplication::translate("TrabajadorView", "Apertura Mañanas"));
+    l->addSHeader("cierrealmacen", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , QApplication::translate("TrabajadorView", "Cierre Mañanas"));
+    l->addSHeader("apertura1almacen", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , QApplication::translate("TrabajadorView", "Apertura Tardes"));
+    l->addSHeader("cierre1almacen", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , QApplication::translate("TrabajadorView", "Cierre Tardes"));
+    l->addSHeader("archvalasterisk", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , QApplication::translate("TrabajadorView", "Audicion"));
+    l->addSHeader("idalmacen", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite , QApplication::translate("TrabajadorView", "Id Almacen"));
+    l->addSHeader("idvalasterisk", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate("TrabajadorView", "ID Validacion"));
+    l->addSHeader("idtrabajador", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate("TrabajadorView", "ID Trabajador"));
+    l->setinsercion(FALSE);
+    l->setDelete(FALSE);
+    l->setSortingEnabled(TRUE);
+    trab->mui_tab->addTab(l, "Validaciones Asterisk");
+
+
     return 0;
 }
 
 
 
 int AlmacenView_AlmacenView(AlmacenView *alm) {
-    _depura("esxtoy en la clase almacen", 0);
+    _depura("AlmacenView_AlmacenView", 0);
 
     alm->addDBCampo("extasteriskalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Almacen", "Extension."));
 
@@ -97,6 +121,28 @@ int AlmacenView_AlmacenView(AlmacenView *alm) {
 
     m_hboxLayout1->addLayout(hboxLayout160);
 
+
+    /// Añadimos el subformulario de validaciones
+    SubForm2Bf *l = new SubForm2Bf(alm);
+    l->setObjectName(QString::fromUtf8("mui_validacionesalm"));
+    l->setEmpresaBase( alm->empresaBase());
+    l->setDBTableName("valasterisk");
+    l->setDBCampoId("idvalasterisk");
+    l->addSHeader("fechavalasterisk", DBCampo::DBvarchar, DBCampo::DBNothing , SHeader::DBNoWrite, QApplication::translate("TrabajadorView", "Fecha"));
+    l->addSHeader("horavalasterisk", DBCampo::DBvarchar, DBCampo::DBNothing , SHeader::DBNoWrite, QApplication::translate("TrabajadorView", "Hora"));
+    l->addSHeader("nomtrabajador", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , QApplication::translate("TrabajadorView", "Trabajador"));
+    l->addSHeader("apellidostrabajador", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , QApplication::translate("TrabajadorView", "Apellidos"));
+    l->addSHeader("archvalasterisk", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , QApplication::translate("TrabajadorView", "Audicion"));
+    l->addSHeader("idalmacen", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite , QApplication::translate("TrabajadorView", "Id Almacen"));
+    l->addSHeader("idvalasterisk", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate("TrabajadorView", "ID Validacion"));
+    l->addSHeader("idtrabajador", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate("TrabajadorView", "ID Trabajador"));
+    l->setinsercion(FALSE);
+    l->setDelete(FALSE);
+    l->setSortingEnabled(TRUE);
+
+    alm->mui_tab->addTab(l, "Validaciones Asterisk");
+
+
     return 0;
 }
 
@@ -121,9 +167,23 @@ int TrabajadorView_on_mui_lista_currentItemChanged_Post(TrabajadorView *trab) {
 	l->setText(cur->valor("passasterisktrabajador")); 
     }
     delete cur;
+
+
+    /// Cargamos las validaciones de asterisk.
+    SubForm2Bf *l1 = trab->findChild<SubForm2Bf *>("mui_validaciones");
+    l1->cargar("SELECT * FROM valasterisk NATURAL LEFT JOIN almacen WHERE idtrabajador = " + trab->idtrabajador());
+
     return 0;
 }
 
+
+
+int Ficha_cargar(Ficha *fich) {
+	SubForm3 *form = fich->findChild<SubForm3 *>("mui_validacionesalm");
+	if (form) 
+             form->cargar("SELECT * FROM valasterisk NATURAL LEFT JOIN trabajador WHERE idalmacen = " + fich->DBvalue("idalmacen"));
+	return 0;
+}
 
 /*
 int Ficha_cargar(Ficha *fich) {

@@ -44,6 +44,12 @@
     la presenta como un 'popup'.
     Hace la presentacion inicial.
 */
+/**
+\param comp
+\param paren
+\param flag
+\param editmodo
+**/
 ArticuloList::ArticuloList(Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo)
         : Listado(comp, parent, flag, editmodo), pgimportfiles(comp) {
     _depura("ArticuloList::ArticuloList", 0);
@@ -77,13 +83,15 @@ ArticuloList::ArticuloList(Company *comp, QWidget *parent, Qt::WFlags flag, edmo
 }
 
 
-/** Hace la carga del subformulario para presentar el listado.
-*/
+/// Hace la carga del subformulario para presentar el listado.
+/**
+**/
 void ArticuloList::presentar() {
     _depura("ArticuloList::INIT_presenta", 0);
     mui_list->cargar(formaQuery());
     _depura("ArticuloList::END_presenta", 0);
 }
+
 
 /** Se encarga de la accion preseleccionada al hacer doble click o al darle
     al boton de editar. 
@@ -93,6 +101,10 @@ void ArticuloList::presentar() {
     valor seleccionado.
 */
 /// \TODO: este metodo deberia ser editar
+/**
+\param row
+\return
+**/
 void ArticuloList::editar(int row) {
     _depura("ArticuloList::editar", 0);
     mdb_idarticulo = mui_list->DBvalue("idarticulo", row);
@@ -116,10 +128,9 @@ void ArticuloList::editar(int row) {
 }
 
 
-
-
-
-/** No requiere de ninguna accion adicional */
+/// No requiere de ninguna accion adicional 
+/**
+**/
 ArticuloList::~ArticuloList() {
     _depura("ArticuloList::~ArticuloList", 0);
     _depura("END ArticuloList::~ArticuloList", 0);
@@ -161,6 +172,8 @@ void ArticuloList::borrar() {
     de filtrado.
     Es usado por presentar
 */
+/**
+**/
 QString ArticuloList::formaQuery() {
     _depura("ArticuloList::formaQuery", 0);
     QString query = "";
@@ -190,10 +203,9 @@ QString ArticuloList::formaQuery() {
 }
 
 
-
-
-/** La impresion del listado esta completamente delegada en SubForm3.
-*/
+/// La impresion del listado esta completamente delegada en SubForm3.
+/**
+**/
 void ArticuloList::imprimir() {
     _depura("ArticuloList::s_imprimir1", 0);
     mui_list->imprimirPDF("Listado de artículos");
@@ -201,8 +213,9 @@ void ArticuloList::imprimir() {
 }
 
 
-/** SLOT que exporta el listado de articulos a formato XML.
-*/
+/// SLOT que exporta el listado de articulos a formato XML.
+/**
+**/
 void ArticuloList::on_mui_exportar_clicked() {
     _depura("ArticuloList::on_mui_exportar_clicked", 0);
     QFile filexml(QFileDialog::getSaveFileName(this,
@@ -225,6 +238,8 @@ void ArticuloList::on_mui_exportar_clicked() {
     Pide al usuario que indique cual es el fichero
     Hace la importacion a traves de XML2BulmaFact.
 */
+/**
+**/
 void ArticuloList::on_mui_importar_clicked() {
     _depura("ArticuloList::INIT_s_importar", 0);
     QFile filexml(QFileDialog::getOpenFileName(this,
@@ -243,11 +258,11 @@ void ArticuloList::on_mui_importar_clicked() {
 }
 
 
-
-
 /** \TODO: REVISAR ESTE METODO YA QUE NO PARECE SER EL ADECUADO
     EN LA LLAMADA DE SUBMENUS
 */
+/**
+**/
 void ArticuloList::submenu(const QPoint &) {
     _depura("ArticuloList::on_mui_list_customContextMenuRequested", 0);
     int a = mui_list->currentRow();
@@ -264,20 +279,47 @@ void ArticuloList::submenu(const QPoint &) {
     delete popup;
 }
 
+
+///
+/**
+**/
 void ArticuloList::crear() {
+    _depura("ArticuloList::crear", 0);
     ((Company *)empresaBase())->s_newArticulo();
+    _depura("END ArticuloList::crear", 0);
 }
 
+
+///
+/**
+\return
+**/
 QString ArticuloList::idarticulo() {
+    _depura("ArticuloList::idarticulo", 0);
+    _depura("END ArticuloList::idarticulo", 0);
     return mdb_idarticulo;
 }
 
+
+///
+/**
+\return
+**/
 QString ArticuloList::nomarticulo() {
+    _depura("ArticuloList::nomarticulo", 0);
+    _depura("END ArticuloList::nomarticulo", 0);
     return mdb_nomarticulo;
 }
 
+
+///
+/**
+\return
+**/
 QString ArticuloList::codigocompletoarticulo() {
+    _depura("ArticuloList::codigocompletoarticulo", 0);
     return mdb_codigocompletoarticulo;
+    _depura("END ArticuloList::codigocompletoarticulo", 0);
 }
 
 
@@ -286,6 +328,10 @@ QString ArticuloList::codigocompletoarticulo() {
 /// =============================================================================
 /** Prepara el subformulario para que trabaje con la tabla articulo
 */
+///
+/**
+\param parent
+**/
 ArticuloListSubForm::ArticuloListSubForm(QWidget *parent, const char *)
         : SubForm2Bf(parent) {
     _depura("ArticuloListSubForm::ArticuloListSubForm", 0);
@@ -306,4 +352,12 @@ ArticuloListSubForm::ArticuloListSubForm(QWidget *parent, const char *)
     _depura("END ArticuloListSubForm::ArticuloListSubForm", 0);
 }
 
-ArticuloListSubForm::~ArticuloListSubForm() {}
+
+///
+/**
+**/
+ArticuloListSubForm::~ArticuloListSubForm() {
+    _depura("ArticuloListSubForm::~ArticuloListSubForm", 0);
+    _depura("END ArticuloListSubForm::~ArticuloListSubForm", 0);
+
+}

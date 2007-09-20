@@ -29,17 +29,35 @@
 #include "funcaux.h"
 
 
+///
+/**
+\return
+**/
 bool cursor2::error() {
+    _depura("cursor2::error", 0);
+    _depura("END cursor2::error", 0);
     return m_error;
 }
 
 
+///
+/**
+\return
+**/
 QString cursor2::query() {
+    _depura("cursor2::query", 0);
+    _depura("END cursor2::query", 0);
     return m_query;
 }
 
 
+///
+/**
+\return
+**/
 int cursor2::regactual() {
+    _depura("cursor2::regactual", 0);
+    _depura("END cursor2::regactual", 0);
     return registroactual;
 }
 
@@ -106,32 +124,56 @@ cursor2::cursor2(QString nombre, PGconn *conn1, QString SQLQuery) {
 
 
 /// Destructor de clase, antes de destruirse limpia los posibles buffers intermedios.
+/**
+**/
 cursor2::~cursor2() {
+    _depura("cursor2::~cursor2", 0);
     cerrar();
+    _depura("END cursor2::~cursor2", 0);
 }
 
 
 /// Limpia los buffers intermedios que puedan estar chupando memoria.
+/**
+**/
 void cursor2::cerrar() {
+    _depura("cursor2::cerrar", 0);
     PQclear(result);
+    _depura("END cursor2::cerrar", 0);
 }
 
 
 /// Devuelve el nmero de registros de la consulta.
+/**
+\return
+**/
 int cursor2::numregistros() {
+    _depura("cursor2::numregistros", 0);
+    _depura("END cursor2::numregistros", 0);
     return nregistros;
 }
 
 
 /// Devuelve el nmero de campos de la consulta.
+///
+/**
+\return
+**/
 int cursor2::numcampos() {
+    _depura("cursor2::numcampos", 0);
+    _depura("END cursor2::numcampos", 0);
     return ncampos;
 }
 
 
 /// Devuelve el nombre del campo de una posicion determinada.
 /// \param campo Posicion de la que se quiere que devuelva el nombre.
+/**
+\return
+**/
 QString cursor2::nomcampo(int campo) {
+    _depura("cursor2::nomcampo", 0);
+    _depura("END cursor2::nomcampo", 0);
     return ((QString)PQfname(result, campo));
 }
 
@@ -195,6 +237,9 @@ QString cursor2::valor(QString campo, int registro) {
 
 
 /// Devuelve la posici&oacute;n siguiente al registro que se est&aacute; recorriendo.
+/**
+\return
+**/
 int cursor2::siguienteregistro() {
     _depura("cursor2::siguienteregistro", 0, "Registro actual: " + QString::number(registroactual) + " Numero de registros: " + QString::number(nregistros));
     _depura("END cursor2::siguienteregistro", 0);
@@ -203,6 +248,9 @@ int cursor2::siguienteregistro() {
 
 
 /// Devuelve la posici&oacute;n anterior al registro que se est&aacute; recorriendo.
+/**
+\return
+**/
 int cursor2::registroanterior() {
     _depura("cursor2::registroanterior", 0, "Registro actual: " + QString::number(registroactual) + " Numero de registros: " + QString::number(nregistros));
     return --registroactual;
@@ -210,6 +258,9 @@ int cursor2::registroanterior() {
 
 
 /// Devuelve la posici&oacute;n del primer registro de la tabla de registros.
+/**
+\return
+**/
 int cursor2::primerregistro() {
     _depura("cursor2::primerregistro", 0, "Registro actual: " + QString::number(registroactual) + " Numero de registros: " + QString::number(nregistros));
     registroactual = 0;
@@ -219,6 +270,9 @@ int cursor2::primerregistro() {
 
 
 /// Devuelve el &uacute;ltimo registro de la tabla de registros.
+/**
+\return
+**/
 int cursor2::ultimoregistro() {
     _depura("cursor2::ultimoregistro", 0, "Registro actual: " + QString::number(registroactual)+" Numero de registros: " + QString::number(nregistros));
     registroactual = nregistros - 1;
@@ -227,6 +281,9 @@ int cursor2::ultimoregistro() {
 
 
 /// Devuelve TRUE si el registro est&aacute; en la posici&oacute;n final, o si est&aacute; vacio.
+/**
+\return
+**/
 bool cursor2::eof() {
     _depura("cursor2::eof", 0);
     if (nregistros == 0) {
@@ -238,23 +295,37 @@ bool cursor2::eof() {
 
 
 /// Devuelve TRUE si el registro est&aacute; en la posici&oacute;n inicial, o si est&aacute; vacio.
+/**
+\return
+**/
 bool cursor2::bof() {
+    _depura("cursor2::bof", 0);
     if (nregistros == 0) {
         return(true);
     } // end if
+    _depura("END cursor2::bof", 0);
     return (registroactual < 0);
 }
 
 
 /// Devuelve TRUE si es el &uacute;ltimo registro a considerar.
+/**
+\return
+**/
 bool cursor2::esultimoregistro() {
     _depura("cursor2::esultimoregistro", 0);
+    _depura("END cursor2::esultimoregistro", 0);
     return (registroactual == nregistros - 1);
 }
 
 
 /// devuelve TRUE si es el primer registro a consear e el query.
+/**
+\return
+**/
 bool cursor2::esprimerregistro() {
+    _depura("cursor2::esprimerregistro", 0);
+    _depura("END cursor2::esprimerregistro", 0);
     return (registroactual == 0);
 }
 
@@ -262,25 +333,41 @@ bool cursor2::esprimerregistro() {
 /// ----------------------------------------------------------------- ///
 
 
+///
+/**
+\return
+**/
 QString postgresiface2::nameDB() {
+    _depura("postgresiface2::nameDB", 0);
+    _depura("END postgresiface2::nameDB", 0);
     return dbName;
 }
 
 
 /// Constructor de la clase, no hace nada de nada de nada.
+/**
+**/
 postgresiface2::postgresiface2() {
+    _depura("postgresiface2::postgresiface2", 0);
     m_transaccion = FALSE;
+    _depura("END postgresiface2::postgresiface2", 0);
 }
 
 
 /// Finaliza la conexi&oacute;n con la base de datos.
+/**
+**/
 void postgresiface2::terminar() {
+    _depura("postgresiface2::terminar", 0);
     PQfinish(conn);
+    _depura("END postgresiface2::terminar", 0);
 }
 
 
 /// Destructor de la clase que al igual que \ref terminar termina la conexi&oacute;n
 /// con la base de datos.
+/**
+**/
 postgresiface2::~postgresiface2() {
     _depura("postgresiface2::~postgresiface2", 0);
     /// close the connection to the database and cleanup.
@@ -339,6 +426,8 @@ int postgresiface2::inicializa(QString nomdb) {
 /// Cambia el formato de fecha de la base de datos para que usemos la
 /// fecha espayola dd/mm/yyyy
 /// \return Devuelve 0 si no ha habido problemas, en caso contrario devuelve 1.
+/**
+**/
 int postgresiface2::formatofecha() {
     _depura("postgresiface2::formatofecha", 0);
     QString query = "";
@@ -392,6 +481,9 @@ int postgresiface2::begin() {
 /// Con esta sentencia se termina un bloque de transaccion dando por buenos todos los
 /// resultados que se han almacenado dentro. Y quedando almacenados en la base
 /// de datos de forma definitiva.
+/**
+\return
+**/
 void postgresiface2::commit() {
     _depura("postgresiface2::commit", 0);
     if (!m_transaccion) {
@@ -410,6 +502,9 @@ void postgresiface2::commit() {
 /// Con esta sentencia se termina un bloque de transaccion dando por malos los resultados
 /// de la operacion y dejandose la base de datos en el mismo estado que cuando se
 /// inicio la transaccion.
+/**
+\return
+**/
 void postgresiface2::rollback() {
     _depura("postgresiface2::rollback", 0);
     if (!m_transaccion) {
@@ -428,6 +523,10 @@ void postgresiface2::rollback() {
 /// NOTA: Este metodo crea memoria, con lo que esta debe ser liberada posteriormente.
 /// \return Devuelve un apuntador al objeto \ref cursor2 generado e inicializado con la
 /// respuesta al query.
+/**
+\param Query
+\param nomcursor
+**/
 cursor2 *postgresiface2::cargacursor(QString Query, QString nomcursor) {
     _depura ("postgresiface2::cargacursor", 0, Query);
     cursor2 *cur = NULL;
@@ -452,7 +551,10 @@ cursor2 *postgresiface2::cargacursor(QString Query, QString nomcursor) {
 
 #include <qtextcodec.h>
 
-
+///
+/**
+\param Query
+**/
 int postgresiface2::ejecuta(QString Query) {
     _depura("postgresiface2::ejecuta", 0, Query);
     PGresult *result = NULL;
@@ -493,7 +595,12 @@ int postgresiface2::ejecuta(QString Query) {
 /// This function search in the database the account parent of the account selected
 /// if there are not parent returns NULL
 /// else returns the code of the parent account.
+/**
+\param cod
+\return
+**/
 QString postgresiface2::searchParent(QString cod) {
+    _depura("postgresiface2::searchParent", 0);
     QString padre = "NULL"; /// Almacena el padre de la cuenta.
     QString query;
     int i = 2;
@@ -511,11 +618,28 @@ QString postgresiface2::searchParent(QString cod) {
         delete cur;
         i++;
     } // end while
+    _depura("END postgresiface2::searchParent", 0);
     return padre;
 }
 
 
+///
+/**
+\param idcuenta
+\param idasiento
+\param concepto
+\param descripcion
+\param debe
+\param haber
+\param fecha
+\param idcontrapartida
+\param idtipoiva
+\param idccoste
+\param idcanal
+\return
+**/
 int postgresiface2::nuevoborrador(int idcuenta, int idasiento, QString concepto, QString descripcion, float debe, float haber, QString fecha, int idcontrapartida, int idtipoiva, int idccoste, int idcanal) {
+    _depura("postgresiface2::nuevoborrador", 0);
     QString query = "";
     QString textcuenta;
     QString textcontrapartida;
@@ -553,13 +677,28 @@ int postgresiface2::nuevoborrador(int idcuenta, int idasiento, QString concepto,
                   idtipoiva,
                   sanearCadena(textidccoste).toAscii().data(),
                   sanearCadena(textidcanal).toAscii().data());
+    _depura("END postgresiface2::nuevoborrador", 0);
     return (ejecuta(query));
 }
 
 
 /// Esta funcion se encarga de modificar el apunte con el identificador
 /// correspondiente.
+/**
+\param idborrador
+\param idcuenta
+\param idebe
+\param ihaber
+\param concepto
+\param fecha
+\param contrapartida
+\param idtipoiva
+\param idccoste
+\param idcanal
+\return
+**/
 int postgresiface2::modificaborrador(int idborrador, int idcuenta, float idebe, float ihaber, QString concepto, QString fecha, int contrapartida, int idtipoiva, int idccoste, int idcanal) {
+    _depura("postgresiface2::modificaborrador", 0);
     QString query = "";
     QString textidccoste;
     QString textcontrapartida;
@@ -582,14 +721,21 @@ int postgresiface2::modificaborrador(int idborrador, int idcuenta, float idebe, 
 
     query.sprintf("UPDATE borrador SET idcuenta = %d, debe = %2.2f, haber = %2.2f, conceptocontable = '%s', fecha = '%s', contrapartida = %s, idtipoiva = %d, idc_coste = %s, idcanal = %s WHERE idborrador = %d", idcuenta, idebe, ihaber, concepto.toAscii().data(), fecha.toAscii().data(), textcontrapartida.toAscii().data(), idtipoiva, textidccoste.toAscii().data(), textocanal.toAscii().data(), idborrador);
     _depura(query);
+    _depura("END postgresiface2::modificaborrador", 0);
     return(ejecuta(query));
 }
 
 
 /// Esta funcion carga de la base de datos la cuenta especificada
 /// si idcuenta != 0 se intenta cargar la cuenta con idcuenta especificada
-/// si idcuenta == 0 se intenta cargar la cuenta con codigo especificado
+/// si idcuenta == 0 se intenta cargar la cuenta con codigo especificad
+/**
+\param idcuenta
+\param ccuenta
+\return
+**/
 cursor2 *postgresiface2::cargacuenta(int idcuenta, QString ccuenta) {
+    _depura("postgresiface2::cargacuenta", 0);
     QString query = "";
     if ( idcuenta != 0) {
         query.sprintf("SELECT * FROM cuenta WHERE idcuenta = %d", idcuenta);
@@ -597,35 +743,54 @@ cursor2 *postgresiface2::cargacuenta(int idcuenta, QString ccuenta) {
         query.sprintf("SELECT * FROM cuenta WHERE codigo LIKE '%s' ORDER BY codigo", ccuenta.toAscii().data());
     } // end if
     cursor2 *cur = cargacursor(query, "cargacuenta");
+    _depura("END postgresiface2::cargacuenta", 0);
     return cur;
 }
 
 
 /// Esta funcion carga de la base de datos el asiento con idasiento especificado.
+/**
+\param idasiento
+\return
+**/
 cursor2 *postgresiface2::cargaasiento(int idasiento) {
+    _depura("postgresiface2::cargaasiento", 0);
     QString query = "";
     query.sprintf("SELECT * FROM asiento WHERE idasiento = %d", idasiento);
     cursor2 *cur = cargacursor(query, "cargaasiento");
+    _depura("END postgresiface2::cargaasiento", 0);
     return cur;
 }
 
 
 /// Esta funcion carga de la base de datos los apuntes
 /// tidasiento --> El asiento del que se deben cargar los apuntes.
+/**
+\param tidasiento
+\return
+**/
 cursor2 *postgresiface2::cargaapuntes(int tidasiento) {
+    _depura("postgresiface2::cargaapuntes", 0);
     QString query = "";
     query.sprintf("SELECT * FROM apunte where idasiento = %d ORDER BY idapunte", tidasiento);
     cursor2 *cur = cargacursor(query, "cargaapuntes");
+    _depura("END postgresiface2::cargaapuntes", 0);
     return cur;
 }
 
 
 /// Esta funcion carga de la base de datos los apuntes
 /// tidasiento --> El asiento del que se deben cargar los apuntes.
+/**
+\param tidasiento
+\return
+**/
 cursor2 *postgresiface2::cargaborradores(int tidasiento) {
+    _depura("postgresiface2::cargaborradores", 0);
     QString query = "";
     query.sprintf("SELECT * FROM borrador where idasiento = %d ORDER BY idborrador", tidasiento);
     cursor2 *cur = cargacursor(query, "cargaborradores");
+    _depura("END postgresiface2::cargaborradores", 0);
     return cur;
 }
 
@@ -634,7 +799,12 @@ cursor2 *postgresiface2::cargaborradores(int tidasiento) {
 /// padre : = 0 carga las cuentas de nivel 0
 /// padre : = -1 carga todas las cuentas sin excepcion
 /// padre : else carga las cuentas cuyo padre es el valor especificado.
+/**
+\param padre
+\return
+**/
 cursor2 *postgresiface2::cargacuentas(int padre) {
+    _depura("postgresiface2::cargacuentas", 0);
     QString query = "";
     if (padre != 0 && padre != -1 && padre != -2) {
         query.sprintf("SELECT * FROM cuenta WHERE padre=%d ORDER BY padre", padre);
@@ -646,43 +816,71 @@ cursor2 *postgresiface2::cargacuentas(int padre) {
         query.sprintf("SELECT * FROM cuenta WHERE NOT padre isnull ORDER BY padre ");
     }// end if
     cursor2 *cur = cargacursor(query, "cargaborradores");
+    _depura("END postgresiface2::cargacuentas", 0);
     return cur;
 }
 
 
 /// Esta funcion carga de la base de datos los grupos.
+/**
+\return
+**/
 cursor2 *postgresiface2::cargagrupos() {
+    _depura("postgresiface2::cargagrupos", 0);
     QString query = "SELECT * FROM grupo";
     cursor2 *cur = cargacursor(query, "cargagrupos");
+    _depura("END postgresiface2::cargagrupos", 0);
     return cur;
 }
 
 
 /// Esta funcion carga de la base de datos los apuntes
 /// entre las fechas indicadas. Ambas fechas inclusive.
+/**
+\param tidcuenta
+\param fechainicial
+\param fechafinal
+\return
+**/
 cursor2 *postgresiface2::cargaapuntesctafecha(int tidcuenta, QString fechainicial, QString fechafinal) {
+    _depura("ostgresiface2::cargaapuntesctafecha", 0);
     QString query = "";
     query.sprintf("SELECT * FROM apunte where idcuenta = %d AND fecha >= '%s' AND fecha <= '%s' ORDER BY fecha",tidcuenta, fechainicial.toAscii().data(), fechafinal.toAscii().data());
     cursor2 *cur = cargacursor(query, "cargasaldoscuentafecha");
+    _depura("END ostgresiface2::cargaapuntesctafecha", 0);
     return cur;
 }
 
 
 /// Esta funcion carga los saldos de una cuenta dada antes de la fecha
 /// limite especificada. Los apuntes de la fecha no estan incluidos.
+/**
+\param idcuenta
+\param fecha
+\return
+**/
 cursor2 *postgresiface2::cargasaldoscuentafecha(int idcuenta, QString fecha) {
+    _depura("postgresiface2::cargasaldoscuentafecha", 0);
     QString query = "";
     query.sprintf("SELECT sum(debe) as tdebe, sum(haber)as thaber FROM apunte WHERE idcuenta = %d AND fecha <'%s'",idcuenta, fecha.toAscii().data());
     cursor2 *cur = cargacursor(query, "cargasaldoscuentafecha");
+    _depura("END postgresiface2::cargasaldoscuentafecha", 0);
     return(cur);
 }
 
 
 /// Esta funcion carga de la base de datos los asientos.
+/**
+\param fechini
+\param fechfin
+\return
+**/
 cursor2 *postgresiface2::cargaasientosfecha(QString fechini, QString fechfin) {
+    _depura("postgresiface2::cargaasientosfecha", 0);
     QString query = "";
     query.sprintf("SELECT * FROM asiento WHERE fecha >= '%s' AND fecha <= '%s' ORDER BY fecha", fechini.toAscii().data(),fechfin.toAscii().data());
     cursor2 *cur=cargacursor(query, "cargaasientosfecha");
+    _depura("END postgresiface2::cargaasientosfecha", 0);
     return cur;
 }
 
@@ -693,7 +891,14 @@ cursor2 *postgresiface2::cargaasientosfecha(QString fechini, QString fechfin) {
 /// padre : else carga las cuentas cuyo padre es el valor especificado.
 /// codigoinicial: el codigo inicial a partir del cual cargar cuentas
 /// codigofinal: el codigo hasta donde saldran cuentas.
+/**
+\param padre
+\param codigoinicial
+\param codigofinal
+\return
+**/
 cursor2 *postgresiface2::cargacuentascodigo(int padre, QString codigoinicial, QString codigofinal) {
+    _depura("postgresiface2::cargacuentascodigo", 0);
     QString query = "";
     if (padre != 0 && padre != -1) {
         query.sprintf("SELECT * FROM cuenta WHERE padre = %d AND codigo >= '%s' AND codigo <= '%s' ORDER BY codigo", padre, codigoinicial.toAscii().data(), codigofinal.toAscii().data());
@@ -703,15 +908,23 @@ cursor2 *postgresiface2::cargacuentascodigo(int padre, QString codigoinicial, QS
         query.sprintf("SELECT * FROM cuenta WHERE codigo >= '%s' AND codigo <= '%s' ORDER BY codigo", codigoinicial.toAscii().data(), codigofinal.toAscii().data());
     } // end if
     cursor2 *cur = cargacursor(query, "cargasaldoscuentafecha");
+    _depura("END postgresiface2::cargacuentascodigo", 0);
     return cur;
 }
 
 
+///
+/**
+\param idasiento
+\return
+**/
 int postgresiface2::cierraasiento(int idasiento) {
+    _depura("postgresiface2::cierraasiento", 0);
     QString query;
     query.sprintf("SELECT cierraasiento(%d)", idasiento);
     cursor2 *cur = cargacursor(query, "abreasientos");
     delete cur;
+    _depura("END postgresiface2::cierraasiento", 0);
     return 1;
 }
 
@@ -719,44 +932,91 @@ int postgresiface2::cierraasiento(int idasiento) {
 /// Esta funcion se encarga de borrar el apunte con el identificador
 /// correspondiente.
 /// Si el asiento no esta vacio entonces no se borra.
+/**
+\param idasiento
+\return
+**/
 int postgresiface2::borrarasiento(int idasiento) {
+    _depura("postgresiface2::borrarasiento", 0);
     QString query = "";
     query.sprintf("DELETE FROM asiento WHERE idasiento = %d", idasiento);
+    _depura("END postgresiface2::borrarasiento", 0);
     return (ejecuta(query));
 }
 
 
 /// Esta funcion se encarga de borrar el apunte con el identificador
 /// correspondiente.
+/**
+\param idborrador
+\return
+**/
 int postgresiface2::borrarborrador(int idborrador) {
+    _depura("postgresiface2::borrarborrador", 0);
     QString query = "";
     query.sprintf("DELETE FROM borrador WHERE idborrador = %d", idborrador);
+    _depura("END postgresiface2::borrarborrador", 0);
     return (ejecuta(query));
 }
 
 
 /// Esta funcion se encarga de borrar el apunte con el identificador
 /// correspondiente.
+/**
+\param idcuenta
+\return
+**/
 int postgresiface2::borrarcuenta(int idcuenta) {
+    _depura("postgresiface2::borrarcuenta", 0);
     QString query = "";
     query.sprintf("DELETE FROM cuenta WHERE idcuenta = %d", idcuenta);
+    _depura("END postgresiface2::borrarcuenta", 0);
     return (ejecuta(query));
 }
 
 
 /// Esta funcion se encarga de abrir el asiento pasado como parametro
 /// correspondiente.
+/**
+\param idasiento
+\return
+**/
 int postgresiface2::abreasiento(int idasiento) {
+    _depura("postgresiface2::abreasiento", 0);
     _depura("Funcion abreasiento\n");
     QString query = "";
     query.sprintf("SELECT abreasiento(%d)", idasiento);
     cursor2 *cur = cargacursor(query, "abreasientos");
     delete cur;
+    _depura("END postgresiface2::abreasiento", 0);
     return 1;
 }
 
-
+///
+/**
+\param idcuenta
+\param desccuenta
+\param codigo
+\param cimputacion
+\param cbloqueada
+\param idgrupo
+\param cactivo
+\param nombreent
+\param cifent
+\param dir
+\param cp
+\param tel
+\param comm
+\param banco
+\param email
+\param web
+\param tipocuenta
+\param cnodebe
+\param cnohaber
+\return 
+**/
 int postgresiface2::modificacuenta(int idcuenta, QString desccuenta, QString codigo, bool cimputacion, bool cbloqueada, int idgrupo, bool cactivo, QString nombreent, QString cifent, QString dir, QString cp, QString tel, QString comm, QString banco, QString email, QString web, int tipocuenta, bool cnodebe, bool cnohaber) {
+    _depura("postgresiface2::modificacuenta", 0);
     QString cadena;
     cadena.sprintf("%d", idcuenta);
     QString query = "";
@@ -767,11 +1027,33 @@ int postgresiface2::modificacuenta(int idcuenta, QString desccuenta, QString cod
     QString nohaber = cnohaber ? "TRUE" : "FALSE";
     query.sprintf("UPDATE cuenta SET descripcion = '%s', codigo = '%s', imputacion = %s, bloqueada = %s, idgrupo = %d, activo = %s, nombreent_cuenta = '%s', cifent_cuenta = '%s', dirent_cuenta = '%s', cpent_cuenta = '%s', telent_cuenta = '%s', coment_cuenta = '%s', bancoent_cuenta = '%s', emailent_cuenta = '%s', webent_cuenta = '%s', tipocuenta = %d, nodebe = %s, nohaber = %s WHERE idcuenta = %d\n", desccuenta.toAscii().data(), codigo.toAscii().data(), imputacion.toAscii().data(), bloqueada.toAscii().data(),idgrupo, activo.toAscii().data(), nombreent.toAscii().data(), cifent.toAscii().data(), dir.toAscii().data(), cp.toAscii().data(), tel.toAscii().data(), comm.toAscii().data(), banco.toAscii().data(), email.toAscii().data(), web.toAscii().data(), tipocuenta,nodebe.toAscii().data(), nohaber.toAscii().data(), idcuenta);
     _depura(query);
+    _depura("END postgresiface2::modificacuenta", 0);
     return (ejecuta(query));
 }
 
 
+///
+/**
+\param desccuenta
+\param codigo
+\param padre
+\param idgrupo
+\param nombreent
+\param cifent
+\param dir
+\param cp
+\param tel
+\param comm
+\param banco
+\param email
+\param web
+\param tipocuenta
+\param cnodebe
+\param cnohaber
+\return
+**/
 int postgresiface2::nuevacuenta(QString desccuenta, QString codigo, int padre, int idgrupo, QString nombreent, QString cifent, QString dir, QString cp, QString tel, QString comm, QString banco, QString email, QString web, int tipocuenta, bool cnodebe, bool cnohaber) {
+    _depura("postgresiface2::nuevacuenta", 0);
     QString query = "";
     QString tpadre;
     if (padre == 0) {
@@ -799,14 +1081,21 @@ int postgresiface2::nuevacuenta(QString desccuenta, QString codigo, int padre, i
                   tipocuenta,
                   sanearCadena(nodebe).toAscii().data(),
                   sanearCadena(nohaber).toAscii().data());
+    _depura("END postgresiface2::nuevacuenta", 0);
     return (ejecuta(query));
 }
 
 
+///
+/**
+\return
+**/
 cursor2 *postgresiface2::cargaempresas() {
+    _depura("postgresiface2::cargaempresas", 0);
     QString query;
     query = "SELECT * FROM empresa";
     cursor2 *cur = cargacursor(query, "cargaempresas");
+    _depura("END postgresiface2::cargaempresas", 0);
     return cur;
 }
 
@@ -814,7 +1103,13 @@ cursor2 *postgresiface2::cargaempresas() {
 /// Esta funci&oacute;n est&eacute;tica devuelve una cadena "saneada" para pasarsela
 /// a Postgresql. Neutraliza (escapes) los car&aacute;cteres problem&aacute;ticos por
 /// ser car&aacute;cteres especiales de Postgresql. Ejemplo, comillas, barras invertidas, ...
+/**
+\param cadena
+\return
+**/
 QString postgresiface2::sanearCadena(QString cadena) {
+    _depura("postgresiface2::sanearCadena", 0);
+
     int longitud = 0;
     char *buffer = "";
     QString cadenaLimpia = "";
@@ -825,6 +1120,7 @@ QString postgresiface2::sanearCadena(QString cadena) {
     PQescapeString(buffer, cadena.toAscii().constData(), cadena.toAscii().size());
     cadenaLimpia = QString::fromAscii(buffer);
     free(buffer);
+    _depura("END postgresiface2::sanearCadena", 0);
     return cadenaLimpia;
 }
 
@@ -835,6 +1131,7 @@ QString postgresiface2::sanearCadena(QString cadena) {
 /// \param nombre Nombre de la propiedad.
 /// \return Valor de la propiedad.
 QString postgresiface2::propiedadempresa(QString nombre) {
+    _depura("postgresiface2::propiedadempresa", 0);
     PGresult *result;
     QString value;
     int num;
@@ -855,6 +1152,7 @@ QString postgresiface2::propiedadempresa(QString nombre) {
     else
         value = PQgetvalue(result, 0, 2);
     PQclear(result);
+    _depura("END postgresiface2::propiedadempresa", 0);
     return value;
 }
 
@@ -864,6 +1162,7 @@ QString postgresiface2::propiedadempresa(QString nombre) {
 /// \param permiso El tipo de permiso "SELECT", "INSERT" "UPDATE"
 /// \return True si se tiene permiso, False si no se lo tiene
 bool postgresiface2::has_table_privilege(QString tabla, QString permiso) {
+    _depura("postgresiface2::has_table_privilege", 0);
     /// Comprobamos que tengamos permisos para trabajar con articulos.
     cursor2 *cur = cargacursor("SELECT has_table_privilege('" + tabla + "', '" + permiso + "') AS pins");
     bool privileges = FALSE;
@@ -872,5 +1171,6 @@ bool postgresiface2::has_table_privilege(QString tabla, QString permiso) {
             privileges = TRUE;
         delete cur;
     } // end if
+    _depura("END postgresiface2::has_table_privilege", 0);
     return privileges;
 }

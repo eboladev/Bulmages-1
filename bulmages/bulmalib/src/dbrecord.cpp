@@ -31,8 +31,8 @@
 **/
 bool DBCampo::cambiado() {
     _depura("DBCampo::cambiado", 0);
-    return m_valorcampo != m_valorcampoorig;
     _depura("END DBCampo::cambiado", 0);
+    return m_valorcampo != m_valorcampoorig;
 }
 
 
@@ -61,9 +61,8 @@ DBCampo::~DBCampo() {
 **/
 postgresiface2 *DBCampo::conexionbase() {
     _depura("DBCampo::conexionbase", 0);
-    return m_conexionbase;
     _depura("END DBCampo::conexionbase", 0);
-
+    return m_conexionbase;
 }
 
 
@@ -84,20 +83,21 @@ void DBCampo::setconexionbase(postgresiface2 *comp) {
 **/
 DBCampo::dbtype DBCampo::tipo() {
     _depura("DBCampo::dbtype DBCampo::tipo", 0);
-    return m_tipo;
     _depura("END DBCampo::dbtype DBCampo::tipo", 0);
+    return m_tipo;
 }
 
 
 ///
 /**
+\param val
 \return
 **/
 int DBCampo::set(QString val) {
     _depura("DBCampo::set", 0);
     m_valorcampo = val;
-    return 0;
     _depura("END DBCampo::set", 0);
+    return 0;
 }
 
 
@@ -107,8 +107,8 @@ int DBCampo::set(QString val) {
 **/
 int DBCampo::restrictcampo() {
     _depura("DBCampo::restrictcampo", 0);
-    return m_restrict;
     _depura("END DBCampo::restrictcampo", 0);
+    return m_restrict;
 }
 
 
@@ -118,8 +118,8 @@ int DBCampo::restrictcampo() {
 **/
 QString DBCampo::nomcampo() {
     _depura("DBCampo::nomcampo", 0);
-    return m_nomcampo;
     _depura("END DBCampo::nomcampo", 0);
+    return m_nomcampo;
 }
 
 
@@ -129,8 +129,8 @@ QString DBCampo::nomcampo() {
 **/
 QString DBCampo::nompresentacion() {
     _depura("DBCampo::nompresentacion", 0);
-    return m_nompresentacion;
     _depura("END DBCampo::nompresentacion", 0);
+    return m_nompresentacion;
 }
 
 
@@ -140,8 +140,8 @@ QString DBCampo::nompresentacion() {
 **/
 QString DBCampo::valorcampo() {
     _depura("DBCampo::valorcampo", 0);
-    return m_valorcampo;
     _depura("END DBCampo::valorcampo", 0);
+    return m_valorcampo;
 }
 
 
@@ -230,8 +230,8 @@ void DBRecord::setconexionbase(postgresiface2 *comp) {
 **/
 postgresiface2 *DBRecord::conexionbase() {
     _depura("DBRecord::conexionbase", 0);
-    return m_conexionbase;
     _depura("END DBRecord::conexionbase", 0);
+    return m_conexionbase;
 }
 
 
@@ -263,8 +263,8 @@ void DBRecord::setNuevo(bool n) {
 **/
 QString DBRecord::tableName() {
     _depura("DBRecord::tableName", 0);
-    return m_tablename;
     _depura("END DBRecord::tableName", 0);
+    return m_tablename;
 }
 
 
@@ -274,8 +274,8 @@ QString DBRecord::tableName() {
 **/
 QString DBRecord::campoId() {
     _depura("DBRecord::campoId", 0);
-    return m_campoid;
     _depura("END DBRecord::campoId", 0);
+    return m_campoid;
 }
 
 
@@ -296,8 +296,8 @@ void DBRecord::setDBCampoId(QString nom) {
 **/
 QList<DBCampo *> *DBRecord::lista() {
     _depura("DBRecord::lista", 0);
-    return &m_lista;
     _depura("END DBRecord::lista", 0);
+    return &m_lista;
 }
 
 
@@ -505,6 +505,7 @@ QString DBRecord::DBvalue(QString nomb) {
     if (campo->nomcampo() == nomb) {
         return campo->valorcampo();
     } // end if
+    _depura("END DBRecord::value", 0, nomb);
     return "";
 }
 
@@ -527,6 +528,7 @@ bool DBRecord::exists(QString nomb) {
     if (campo->nomcampo() == nomb) {
         return TRUE;
     } // end if
+    _depura("END DBRecord::exists", 0, nomb);
     return FALSE;
 }
 
@@ -551,6 +553,7 @@ QString DBRecord::DBvalueprep(QString nomb) {
         int err;
         return campo->valorcampoprep(err);
     } // end if
+    _depura("END DBRecord::DBvalueprep", 0);
     return "";
 }
 

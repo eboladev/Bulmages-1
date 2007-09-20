@@ -25,7 +25,14 @@
 #include "funcaux.h"
 
 
+///
+/**
+\param appSplash
+\param appName
+\param appVersion
+**/
 Splash::Splash(QString appSplash, QString appName, QString appVersion) : QDialog(0, Qt::FramelessWindowHint) {
+    _depura("Splash::Splash", 0);
     image0 = new QPixmap();
     image0->load(appSplash);
 
@@ -71,21 +78,30 @@ Splash::Splash(QString appSplash, QString appName, QString appVersion) : QDialog
     colorfondobarra.setAlpha(100);
     pbarra.setBrush(QPalette::Base, colorfondobarra);
     barra->setPalette(pbarra);
-
+    _depura("END Splash::Splash", 0);
 }
 
 
+///
+/**
+**/
 Splash::~Splash() {
+    _depura("Splash::~Splash", 0);
     delete l0;
     delete m_label;
     delete m_label1;
     delete image0;
+    _depura("END Splash::~Splash", 0);
 }
 
 
 
-
+///
+/**
+\param mens
+**/
 void Splash::mensaje(QString mens) {
+    _depura("Splash::mensaje", 0);
     _depura(mens, 0);
     static int a = 0;
     static QString cadant="";
@@ -101,17 +117,31 @@ void Splash::mensaje(QString mens) {
     m_label->repaint();
     repaint();
     cadant = cad;
+    _depura("END Splash::mensaje", 0);
 }
 
+
+///
+/**
+\param progreso
+**/
 void Splash::setBarraProgreso(int progreso) {
-        barra->setValue(progreso);
+    _depura("Splash::setBarraProgreso", 0);
+    barra->setValue(progreso);
+    _depura("END Splash::setBarraProgreso", 0);
 }
 
+
+///
+/**
+**/
 void Splash::barraprogreso() {
+    _depura("Splash::barraprogreso", 0);
     if (barra->value() < 10) {
         barra->setValue(barra->value() + 1);
     } else {
         barra->setValue(0);
     } // end if
+    _depura("END Splash::barraprogreso", 0);
 }
 

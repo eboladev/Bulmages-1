@@ -27,6 +27,10 @@
 #include "subform.h"
 
 
+///
+/**
+\param con
+**/
 SDBRecord::SDBRecord(postgresiface2 *con) : DBRecord(con) {
   _depura("SDBRecord::SDBRecord", 0);
   static int creaciones = 0;
@@ -36,6 +40,9 @@ SDBRecord::SDBRecord(postgresiface2 *con) : DBRecord(con) {
 }
 
 
+///
+/**
+**/
 SDBRecord::~SDBRecord() {
   static int destrucciones = 0;
   _depura("SDBRecord::~SDBRecord", 0);
@@ -45,12 +52,22 @@ SDBRecord::~SDBRecord() {
 }
 
 
+///
+/**
+\param id
+\return
+**/
 int SDBRecord::DBsave(QString &id) {
+  _depura("SDBRecord::DBsave", 0);
   refresh();
+  _depura("END SDBRecord::DBsave", 0);
   return DBRecord::DBsave(id);
 }
 
 
+///
+/**
+**/
 void SDBRecord::refresh() {
   _depura("SDBRecord::refresh", 0);
   SDBCampo *camp;
@@ -62,6 +79,14 @@ void SDBRecord::refresh() {
 }
 
 
+///
+/**
+\param nom
+\param typ
+\param res
+\param nomp
+\return
+**/
 int SDBRecord::addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp) {
   _depura("SDBRecord::addDBCampo", 0);
   SDBCampo *camp = new SDBCampo(this, m_conexionbase, nom, typ, res, nomp);
@@ -72,6 +97,15 @@ int SDBRecord::addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nom
 }
 
 
+///
+/**
+\param par
+\param com
+\param nom
+\param typ
+\param res
+\param nomp
+**/
 SDBCampo::SDBCampo(SDBRecord *par, postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp)
   :QTableWidgetItem2(), DBCampo(com, nom, typ, res, nomp) {
   _depura("SDBCampo::SDBCampo", 0);
@@ -80,12 +114,18 @@ SDBCampo::SDBCampo(SDBRecord *par, postgresiface2 *com, QString nom, dbtype typ,
 }
 
 
+///
+/**
+**/
 SDBCampo::~SDBCampo() {
   _depura("SDBCampo::~SDBCampo()", 0);
   _depura("END SDBCampo::~SDBCampo()", 0);
 }
 
 
+///
+/**
+**/
 void SDBCampo::refresh() {
   _depura("SDBCampo::refresh", 0);
   if (this->tipo() == DBCampo::DBboolean)
@@ -97,6 +137,11 @@ void SDBCampo::refresh() {
 }
 
 
+///
+/**
+\param val
+\return
+**/
 int SDBCampo::set(QString val) {
   _depura("SDBCampo::set", 0, nomcampo() + " = " + val);
   QRegExp importe("^\\d*\\.\\d{2}$"); /// Para emparejar los valores numericos con decimales
@@ -122,6 +167,11 @@ int SDBCampo::set(QString val) {
 }
 
 
+///
+/**
+\param other
+\return
+**/
 bool SDBCampo::operator< (const QTableWidgetItem &other) {
   _depura("SDBCampo::operator <", 0, text());
   SDBCampo *ot = (SDBCampo *) &other;
@@ -156,58 +206,122 @@ bool SDBCampo::operator< (const QTableWidgetItem &other) {
 }
 
 
+///
+/**
+\return
+**/
 SDBRecord *SDBCampo::pare() {
+  _depura("SDBCampo::pare", 0);
+  _depura("END SDBCampo::pare", 0);
   return m_pare;
 }
 
 
+///
+/**
+\param nom
+\param typ
+\param res
+\param opt
+\param nomp
+**/
 SHeader::SHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp) {
+  _depura("SHeader::SHeader", 0);
   m_nomcampo = nom;
   m_tipo = typ;
   m_restricciones = res;
   m_options = opt;
   m_nompresentacion = nomp;
   m_valorcampo = "";
+  _depura("END SHeader::SHeader", 0);
 }
 
 
+///
+/**
+**/
 SHeader::~SHeader() {
   _depura("SHeader::~SHeader", 0);
+  _depura("END SHeader::~SHeader", 0);
 }
 
 
+///
+/**
+\param val
+\return
+**/
 int SHeader::set(QString val) {
+  _depura("SHeader::set", 0); 
   m_valorcampo = val;
+  _depura("END SHeader::set", 0); 
   return 0;
 }
 
 
+///
+/**
+\return
+**/
 unsigned int SHeader::options() {
+  _depura("SHeader::options", 0);
+  _depura("END SHeader::options", 0);
   return m_options;
 }
 
 
+///
+/**
+\return
+**/
 unsigned int SHeader::restricciones() {
+  _depura("SHeader::restricciones", 0);
+  _depura("END SHeader::restricciones", 0);
   return m_restricciones;
 }
 
 
+///
+/**
+\return
+**/
 DBCampo::dbtype SHeader::tipo() {
+  _depura("DBCampo::dbtype SHeader::tipo", 0);
+  _depura("END DBCampo::dbtype SHeader::tipo", 0);
   return m_tipo;
+
 }
 
 
+///
+/**
+\return
+**/
 QString SHeader::nompresentacion() {
+  _depura("SHeader::nompresentacion", 0);
+  _depura("EDN SHeader::nompresentacion", 0);
   return m_nompresentacion;
 }
 
 
+///
+/**
+\return
+**/
 int SHeader::restrictcampo() {
+  _depura("SHeader::restrictcampo", 0);
+  _depura("END SHeader::restrictcampo", 0);
   return m_restricciones;
 }
 
 
+///
+/**
+\return
+**/
 QString SHeader::nomcampo() {
+  _depura("SHeader::nomcampo", 0); 
+  _depura("END SHeader::nomcampo", 0); 
   return m_nomcampo;
 }
 

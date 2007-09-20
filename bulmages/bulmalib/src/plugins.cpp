@@ -35,12 +35,28 @@ MyPrototype1 myFunction1;
 Plugins *g_plugins;
 
 
-Plugins::Plugins() {}
+///
+/**
+**/
+Plugins::Plugins() {
+    _depura("Plugins::Plugins", 0);
+    _depura("END Plugins::Plugins", 0);
+}
 
 
-Plugins::~Plugins() {}
+///
+/**
+**/
+Plugins::~Plugins() {
+    _depura("Plugins::~Plugins", 0);
+    _depura("END Plugins::~Plugins", 0);
+}
 
 
+///
+/**
+\param libs
+**/
 void Plugins::cargaLibs(const QString libs) {
     /// Hacemos la carga de los plugins.
     QString cad = libs;
@@ -62,7 +78,12 @@ void Plugins::cargaLibs(const QString libs) {
     _depura("END Plugins::cargaLibs", 0);
 }
 
-
+///
+/**
+\param func
+\param clase
+\return
+**/
 int Plugins::lanza(const char *func, void *clase) {
     _depura("Plugins::lanza", 0, func);
     int a = 0;
@@ -80,6 +101,10 @@ int Plugins::lanza(const char *func, void *clase) {
 }
 
 
+///
+/**
+\return
+**/
 int Plugins::lanza(const char *func, void *clase, void **ret) {
     _depura("Plugins::lanza", 0, func);
     int a = 0;

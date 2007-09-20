@@ -33,6 +33,8 @@
 \return
 **/
 bool logpass::authOK() {
+    _depura("logpass::authOK", 0);
+    _depura("END logpass::authOK", 0);
     return m_authOK;
 }
 
@@ -43,19 +45,24 @@ bool logpass::authOK() {
 \param name
 **/
 logpass::logpass(QWidget *parent, const char *name) : QDialog(parent) {
+    _depura("logpass::logpass", 0);
     setWindowTitle(name);
     setupUi(this);
     grpAuthError->setVisible(TRUE);
     QObject::connect(pbValidar, SIGNAL(clicked()), this, SLOT(validar()));
     QObject::connect(pbCerrar, SIGNAL(clicked()), this, SLOT(close()));
     validar();
+    _depura("END logpass::logpass", 0);
 }
 
 
 ///
 /**
 **/
-logpass::~logpass() {}
+logpass::~logpass() {
+    _depura("logpass::~logpass", 0);
+    _depura("END logpass::~logpass", 0);
+}
 
 
 /// Valida si postgres puede abrir bases de datos y si no es asi pide login y password.

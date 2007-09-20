@@ -86,8 +86,8 @@ void BusquedaFecha::setValorCampo(QString val) {
 **/
 QString BusquedaFecha::fecha() {
     _depura("BusquedaFecha::fecha", 0);
-    return mui_textoFecha->text();
     _depura("END BusquedaFecha::fecha", 0);
+    return mui_textoFecha->text();
 }
 
 
@@ -97,8 +97,8 @@ QString BusquedaFecha::fecha() {
 **/
 QString BusquedaFecha::text() {
     _depura("BusquedaFecha::text", 0);
-    return mui_textoFecha->text();
     _depura("END BusquedaFecha::text", 0);
+    return mui_textoFecha->text();
 }
 
 
@@ -108,8 +108,8 @@ QString BusquedaFecha::text() {
 **/
 QString BusquedaFecha::valorCampo() {
     _depura("BusquedaFecha::valorCampo", 0);
-    return mui_textoFecha->text();
     _depura("END BusquedaFecha::valorCampo", 0);
+    return mui_textoFecha->text();
 }
 
 
@@ -180,6 +180,7 @@ void BusquedaFecha::s_searchFecha() {
 ///
 /**
 \param texto
+\return
 **/
 void BusquedaFecha::s_fechatextChanged(const QString &texto) {
     _depura("BusquedaFecha::s_fechatextChanged", 0);

@@ -132,7 +132,7 @@ QString BusquedaProvincia::idProvincia() {
 **/
 QString BusquedaProvincia::valorCampo() {
     _depura("BusquedaProvincia::valorCampo", 0);
-	return idProvincia();
     _depura("END BusquedaProvincia::valorCampo", 0);
+	return idProvincia();
 }
 

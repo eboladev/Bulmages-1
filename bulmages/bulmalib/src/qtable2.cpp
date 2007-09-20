@@ -30,6 +30,9 @@
 
 /** Constructor de la clase estandar de delegacion para la edicion de elementos
 en el QTable2 */
+/**
+\param parent
+**/
 QTableItemTextDelegate::QTableItemTextDelegate(QObject *parent = 0) : QItemDelegate(parent) {
     _depura("QTableItemTextDelegate::QTableItemTextDelegate", 0);
     _depura("END QTableItemTextDelegate::QTableItemTextDelegate", 0);
@@ -38,6 +41,8 @@ QTableItemTextDelegate::QTableItemTextDelegate(QObject *parent = 0) : QItemDeleg
 
 /** Destructor de la clase estandar de delegacion para la edicion de elementos en el Qtable2
 */
+/**
+**/
 QTableItemTextDelegate::~QTableItemTextDelegate() {
     _depura("QTableItemTextDelegate::~QTableItemTextDelegate", 0);
     _depura("END QTableItemTextDelegate::~QTableItemTextDelegate", 0);
@@ -47,6 +52,10 @@ QTableItemTextDelegate::~QTableItemTextDelegate() {
 /** Creacion del editor basado en un QTextEdit para el caso de edicion de elementos
 de Qtable2
 */
+/**
+\param parent
+\return
+**/
 QWidget *QTableItemTextDelegate::createEditor(QWidget *parent, const QStyleOptionViewItem &, const QModelIndex &) const {
     _depura("QTableItemTextDelegate::createEditor", 0);
     QTextEdit *textedit = new QTextEdit(parent);
@@ -58,6 +67,11 @@ QWidget *QTableItemTextDelegate::createEditor(QWidget *parent, const QStyleOptio
 /** Establecimiento de los datos que pasa entre el modelo de vista y el modelo
 de edicion
 */
+/**
+\param editor
+\param model
+\param index
+**/
 void QTableItemTextDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const {
     _depura("QTableItemTextDelegate::setModelData", 0);
     QTextEdit *textedit = qobject_cast<QTextEdit *>(editor);
@@ -70,6 +84,10 @@ void QTableItemTextDelegate::setModelData(QWidget *editor, QAbstractItemModel *m
 /** Establecimiento de los datos que pasa entre el modelo de vista y el modelo
 de edicion
 */
+/**
+\param editor
+\param index
+**/
 void QTableItemTextDelegate::setEditorData(QWidget* editor, const QModelIndex& index) const {
     _depura("QTableItemTextDelegate::setEditorData", 0);
     QString data = index.data(Qt::DisplayRole).toString();
@@ -86,6 +104,9 @@ void QTableItemTextDelegate::setEditorData(QWidget* editor, const QModelIndex& i
 /** Constructor de QTableWidget2 clase derivada de QTableWidget con
 un eventHandler especifico
 */
+/**
+\param parent
+**/
 QTableWidget2::QTableWidget2(QWidget *parent) : QTableWidget(parent) {
     _depura("QTableWidget2::QTableWidget2", 0);
     installEventFilter(this);
@@ -96,33 +117,60 @@ QTableWidget2::QTableWidget2(QWidget *parent) : QTableWidget(parent) {
 
 /** Este m&eacute;todo no hace nada.
 */
+/**
+**/
 void QTableWidget2::editItem(QTableWidgetItem *) {
     _depura("QTableWidget2::editItem", 0);
     _depura("END QTableWidget2::editItem", 0);
 }
 
 
+///
+/**
+**/
 void QTableWidget2::sitemChanged(QTableWidgetItem *) {
     _depura("QTableWidget2::sitemChanged", 0);
     _depura("END QTableWidget2::sitemChanged", 0);
 }
 
 
+///
+/**
+\param type
+\param mode
+**/
 QTableWidgetItem2::QTableWidgetItem2(int type, int mode) : QTableWidgetItem(type) {
+    _depura("QTableWidgetItem2::QTableWidgetItem2", 0);
     modo = mode;
+    _depura("END QTableWidgetItem2::QTableWidgetItem2", 0);
 }
 
-
+///
+/**
+\param text
+\param type
+\param mode
+**/
 QTableWidgetItem2::QTableWidgetItem2(const QString &text, int type, int mode) : QTableWidgetItem(text, type) {
+    _depura("QTableWidgetItem2::QTableWidgetItem2", 0);
     modo = mode;
+    _depura("END QTableWidgetItem2::QTableWidgetItem2", 0);
 }
 
 
+///
+/**
+**/
 QTableWidgetItem2::~QTableWidgetItem2() {
     _depura("~QTableWidgetItem2", 1);
 }
 
 
+///
+/**
+\param other
+\return
+**/
 bool QTableWidgetItem2::operator< (const QTableWidgetItem & other) const {
     _depura("QTableWidgetItem2::operator <", 0, text());
     bool oknumero;
@@ -152,36 +200,73 @@ bool QTableWidgetItem2::operator< (const QTableWidgetItem & other) const {
 }
 
 
+///
+/**
+\return
+**/
 int QTableWidget2::tipoorden() {
+    _depura("QTableWidget2::tipoorden", 0);
+    _depura("END QTableWidget2::tipoorden", 0);
     return m_tipoorden;
 }
 
 
+///
+/**
+\return
+**/
 int QTableWidget2::colorden() {
+    _depura("QTableWidget2::colorden", 0);
+    _depura("END QTableWidget2::colorden", 0);
     return m_colorden;
 }
 
 
+///
+/**
+\param t
+**/
 void QTableWidget2::settipoorden(int t) {
+    _depura("QTableWidget2::settipoorden", 0);
     m_tipoorden = t;
+    _depura("END QTableWidget2::settipoorden", 0);
 }
 
 
+///
+/**
+\param t
+**/
 void QTableWidget2::setcolorden(int t) {
+    _depura("QTableWidget2::setcolorden", 0);
     m_colorden = t;
+    _depura("END QTableWidget2::setcolorden", 0);
 }
 
-
+///
+/**
+\param column
+\param oldIndex
+\param newIndex
+**/
 void QTableWidget2::columnMoved(int column, int oldIndex, int newIndex) {
+    _depura("QTableWidget2::columnMoved", 0);
     QTableWidget::columnMoved(column, oldIndex, newIndex);
+    _depura("END QTableWidget2::columnMoved", 0);
 }
 
 
+///
+/**
+**/
 QTableWidget2::~QTableWidget2() {
     _depura("END ~QTableWidget2", 0);
 }
 
 /// Habilita o inhabilita el ordenado de columnas mediante el pulsar sobre ellas.
+/**
+\param sorting
+**/
 void QTableWidget2::setSortingEnabled(bool sorting) {
     _depura("QTableWidget2::setSortingEnabled", 0);
     QTableWidget::setSortingEnabled(sorting);
@@ -192,6 +277,11 @@ void QTableWidget2::setSortingEnabled(bool sorting) {
 /** EventFilter para QTableWidget2, procesa los eventos recibidos por la
 tabla y emite signals si lo considera adecuado.
 */
+/**
+\param obj
+\param event
+\return
+**/
 bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
     if (event->type() == QEvent::KeyPress) {
         _depura("QTableWidget2::eventFilter() :" + QString::number(event->type()), 1);
@@ -295,6 +385,8 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
 /** Se ha pulsado sobre las cabeceras en la tabla lo que invoca el
 metodo de ordenacion.
 */
+/**
+**/
 void QTableWidget2::ordenar() {
     _depura("QTableWidget2::ordenar ", 0, QString::number(m_colorden));
     /// Puede ocurrir que el parametro de ordenacion sea invalido por cualquier extranyo motivo.
@@ -308,6 +400,11 @@ void QTableWidget2::ordenar() {
 /** Hace una asignacion de un elemento.
     @BUG: Parece que esta creando elementos de memoria sin intentar eliminar los antiguos.
 */
+/**
+\param x
+\param y
+\param val
+**/
 void QTableWidget2::setText(int x, int y, const QString & val) {
     _depura("QTableWidget::setText", 0);
     QTableWidgetItem2 *newitem = new QTableWidgetItem2(val);
@@ -316,6 +413,11 @@ void QTableWidget2::setText(int x, int y, const QString & val) {
 }
 
 
+///
+/**
+\param column
+\param order
+**/
 void QTableWidget2::sortByColumn(int column, Qt::SortOrder order) {
     _depura("QTableWidget2::sortByColumn", 0);
     QTableWidget::sortByColumn(column, order);
@@ -323,6 +425,11 @@ void QTableWidget2::sortByColumn(int column, Qt::SortOrder order) {
 }
 
 
+///
+/**
+\param column
+\param order
+**/
 void QTableWidget2::sortItems(int column, Qt::SortOrder order) {
     _depura("QTableWidget2::sortItems", 0);
     QTableWidget::sortItems(column, order);

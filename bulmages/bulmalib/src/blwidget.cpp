@@ -23,6 +23,7 @@
 
 ///
 /**
+\param emp
 **/
 PEmpresaBase::PEmpresaBase(EmpresaBase *emp) {
   _depura("PEmpresaBase::PEmpresaBase", 0);
@@ -52,6 +53,7 @@ PEmpresaBase::~PEmpresaBase() {
 
 ///
 /**
+\param emp
 **/
 void PEmpresaBase::setEmpresaBase(EmpresaBase *emp) {
   _depura("PEmpresaBase::setEmpresaBase", 0);

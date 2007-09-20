@@ -31,26 +31,56 @@
 #include "subform3.h"
 
 
+///
+/**
+\return
+**/
 QList<SDBRecord *> *SubForm3::lista() {
+  _depura("SubForm3::lista", 0);
     return &m_lista;
+  _depura("END SubForm3::lista", 0);
 }
 
 
+///
+/**
+\return
+**/
 QList<SHeader *> *SubForm3::cabecera() {
+  _depura("SubForm3::cabecera", 0);
     return &m_lcabecera;
+  _depura("END SubForm3::cabecera", 0);
 }
 
 
+///
+/**
+\param mode
+**/
 void SubForm3::setHorizontalScrollMode(QAbstractItemView::ScrollMode mode) {
+  _depura("SubForm3::setHorizontalScrollMode", 0);
     mui_list->setHorizontalScrollMode(mode);
+  _depura("END SubForm3::setHorizontalScrollMode", 0);
 }
 
 
+///
+/**
+\param f
+**/
 void SubForm3::setDelete(bool f) {
+    _depura("SubForm3::setDelete", 0);
     m_delete = f;
+    _depura("END SubForm3::setDelete", 0);
 }
 
 
+///
+/**
+\param row
+\param col
+\return
+**/
 SDBCampo *SubForm3::item(int row, int col) {
     _depura("SubForm3::item", 0);
     _depura("END SubForm3::item", 0);
@@ -58,132 +88,278 @@ SDBCampo *SubForm3::item(int row, int col) {
 }
 
 
+///
+/**
+\param row
+\param col
+**/
 void SubForm3::setCurrentItem(int row, int col) {
+    _depura("SubForm3::setCurrentItem", 0);
     mui_list->setCurrentItem( item(row, col));
+    _depura("END SubForm3::setCurrentItem", 0);
 }
 
 
+///
+/**
+\return
+**/
 int SubForm3::columnCount() {
+    _depura("SubForm3::columnCount", 0);
     return mui_list->columnCount();
+    _depura("END SubForm3::columnCount", 0);
 }
 
 
+///
+/**
+\param i
+**/
 void SubForm3::showColumn(int i) {
+    _depura("SubForm3::showColumn", 0);
     mui_list->showColumn(i);
+    _depura("END SubForm3::showColumn", 0);
 }
 
 
+///
+/**
+\param i
+\return
+**/
 int SubForm3::columnWidth(int i) {
+    _depura("SubForm3::columnWidth", 0);
+    _depura("END SubForm3::columnWidth", 0);
     return mui_list->columnWidth(i);
 }
 
 
+///
+/**
+\param i
+\param j
+**/
 void SubForm3::setColumnWidth(int i, int j) {
+    _depura("SubForm3::setColumnWidth", 0);
     mui_list->setColumnWidth(i, j);
+    _depura("END SubForm3::setColumnWidth", 0);
 }
 
 
+///
+/**
+\param i
+**/
 void SubForm3::hideColumn(int i) {
+    _depura("SubForm3::hideColumn", 0);
     mui_list->hideColumn(i);
+    _depura("END SubForm3::hideColumn", 0);
 }
 
 
+///
+/**
+\return
+**/
 int SubForm3::currentRow() {
+    _depura("SubForm3::currentRow", 0);
+    _depura("END SubForm3::currentRow", 0);
     return mui_list->currentRow();
 }
 
 
+///
+/**
+\return
+**/
 int SubForm3::rowCount() {
+    _depura("SubForm3::rowCount", 0);
+    _depura("END SubForm3::rowCount", 0);
     return mui_list->rowCount();
 }
 
 
+///
+/**
+\return
+**/
 int SubForm3::currentColumn() {
+    _depura("SubForm3::currentColumn", 0);
     return mui_list->currentColumn();
+    _depura("END SubForm3::currentColumn", 0);
 }
 
 
+///
+/**
+\param modo
+**/
 void SubForm3::setResizeMode(QHeaderView::ResizeMode modo) {
+    _depura("SubForm3::setResizeMode", 0);
     mui_list->horizontalHeader()->setResizeMode(modo);
+    _depura("END SubForm3::setResizeMode", 0);
 }
 
 
+///
+/**
+**/
 void SubForm3::resizeColumnsToContents() {
+    _depura("SubForm3::resizeColumnsToContents", 0);
     mui_list->resizeColumnsToContents();
+    _depura("END SubForm3::resizeColumnsToContents", 0);
 }
 
 
+///
+/**
+**/
 void SubForm3::resizeRowsToContents() {
+    _depura("SubForm3::resizeRowsToContents", 0);
     mui_list->resizeRowsToContents();
+    _depura("END SubForm3::resizeRowsToContents", 0);
 }
 
 
+///
+/**
+\param i
+**/
 void SubForm3::resizeColumnToContents(int i) {
+    _depura("SubForm3::resizeColumnToContents", 0);
     mui_list->resizeColumnToContents(i);
+    _depura("END SubForm3::resizeColumnToContents", 0);
 }
 
 
+///
+/**
+\param i
+**/
 void SubForm3::resizeRowToContents(int i) {
+    _depura("SubForm3::resizeRowToContents", 0);
     mui_list->resizeRowToContents(i);
+    _depura("END SubForm3::resizeRowToContents", 0);
 }
 
 
+///
+/**
+**/
 void SubForm3::hideConfig() {
+    _depura("SubForm3::hideConfig", 0);
     mui_configurador->hide();
+    _depura("END SubForm3::hideConfig", 0);
 }
 
 
+///
+/**
+**/
 void SubForm3::showConfig() {
+    _depura("SubForm3::showConfig", 0);
     mui_configurador->show();
+    _depura("END SubForm3::showConfig", 0);
 }
 
 
+///
+/**
+\param nom
+**/
 void SubForm3::setDBTableName(QString nom) {
+    _depura("SubForm3::setDBTableName", 0);
     m_tablename = nom;
     m_fileconfig = nom;
+    _depura("END SubForm3::setDBTableName", 0);
 }
 
 
+///
+/**
+\return
+**/
 QString SubForm3::tableName() {
+    _depura("SubForm3::tableName", 0);
+    _depura("END SubForm3::tableName", 0);
     return m_tablename;
 }
 
 
+///
+/**
+\param nom
+**/
 void SubForm3::setFileConfig(QString nom) {
+    _depura("SubForm3::setFileConfig", 0);
     m_fileconfig = nom;
+    _depura("END SubForm3::setFileConfig", 0);
 }
 
 
+///
+/**
+\param nom
+**/
 void SubForm3::setDBCampoId(QString nom) {
+    _depura("SubForm3::setDBCampoId", 0);
     m_campoid = nom;
+    _depura("END SubForm3::setDBCampoId", 0);
 }
 
 
+///
+/**
+**/
 void SubForm3::clear() {
+    _depura("SubForm3::clear", 0);
     mui_list->clear();
+    _depura("END SubForm3::clear", 0);
 }
 
 
+///
+/**
+\param i
+**/
 void SubForm3::setRowCount(int i) {
+    _depura("SubForm3::setRowCount", 0);
     mui_list->setRowCount(i);
+    _depura("END SubForm3::setRowCount", 0);
 }
 
 
+///
+/**
+\param i
+**/
 void SubForm3::setColumnCount(int i) {
+    _depura("SubForm3::setColumnCount", 0);
     mui_list->setColumnCount(i);
+    _depura("END SubForm3::setColumnCount", 0);
 }
 
 
+///
+/**
+**/
 void SubForm3::creaMenu(QMenu *) {
     _depura("SubForm3:: CreaMenu", 0, "funcion para ser sobreescrita");
 }
 
 
+///
+/**
+**/
 void SubForm3::procesaMenu(QAction *) {
     _depura("SubForm3:: procesaMenu", 0, "funcion para ser sobreescrita");
 }
 
 
+///
+/**
+\param pijama
+**/
 void SubForm3::setListadoPijama(bool pijama) {
     _depura("SubForm3::setListadoPijama", 0);
     if (pijama) {
@@ -195,6 +371,10 @@ void SubForm3::setListadoPijama(bool pijama) {
 }
 
 
+///
+/**
+\return
+**/
 bool SubForm3::listadoPijama() {
     _depura("SubForm3::listadoPijama", 0);
     return mui_list->alternatingRowColors();
@@ -203,6 +383,9 @@ bool SubForm3::listadoPijama() {
 
 
 /// SubForm3, constructor de la clase base para subformularios.
+/**
+\param parent
+**/
 SubForm3::SubForm3(QWidget *parent) : BLWidget(parent) {
     _depura("SubForm3::SubForm3", 0);
     setupUi(this);
@@ -286,6 +469,8 @@ SubForm3::SubForm3(QWidget *parent) : BLWidget(parent) {
 
 
 /// Destructor de Clase que guarda la configuracion.
+/**
+**/
 SubForm3::~SubForm3() {
     _depura("SubForm3::~SubForm3", 0);
     /// PAra destruir desactivamos el control de cambios.
@@ -296,6 +481,9 @@ SubForm3::~SubForm3() {
 
 
 /// Habilita o inhabilita el ordenado de columnas mediante el pulsar sobre ellas.
+/**
+\param sorting
+**/
 void SubForm3::setSortingEnabled(bool sorting) {
     _depura("SubForm3::setSortingEnabled", 0);
     mui_list->setSortingEnabled(sorting);
@@ -304,13 +492,21 @@ void SubForm3::setSortingEnabled(bool sorting) {
 }
 
 
+///
+/**
+\return
+**/
 bool SubForm3::sortingEnabled() {
     _depura("SubForm3::sortingEnabled", 0);
+    _depura("END SubForm3::sortingEnabled", 0);
     return m_sorting;
 }
 
 
 /// Establece si el subformulario se ordena mediante un campo orden en la base de datos.
+/**
+\param sorting
+**/
 void SubForm3::setOrdenEnabled(bool sorting) {
     _depura("SubForm3::setOrdenEnabled", 0);
     m_orden = sorting;
@@ -318,6 +514,10 @@ void SubForm3::setOrdenEnabled(bool sorting) {
 }
 
 
+///
+/**
+\return
+**/
 bool SubForm3::ordenEnabled() {
     _depura("SubForm3::ordenEnabled", 0);
     return m_orden;
@@ -325,12 +525,20 @@ bool SubForm3::ordenEnabled() {
 }
 
 
+///
+/**
+\param item
+**/
 void SubForm3::on_mui_list_itemDoubleClicked(QTableWidgetItem *item) {
     _depura("SubForm3::on_mui_list_itemDoubleClicked", 0);
     emit itemDoubleClicked(item);
     _depura("END SubForm3::on_mui_list_itemDoubleClicked", 0);
 }
 
+///
+/**
+\param item
+**/
 void SubForm3::on_mui_list_itemClicked(QTableWidgetItem *item) {
     _depura("SubForm3::on_mui_list_itemClicked", 0);
     emit itemClicked(item);
@@ -338,6 +546,11 @@ void SubForm3::on_mui_list_itemClicked(QTableWidgetItem *item) {
 }
 
 
+///
+/**
+\param row
+\param col
+**/
 void SubForm3::on_mui_list_cellDoubleClicked(int row, int col) {
     _depura("SubForm3::on_mui_list_cellDoubleClicked", 0);
     emit cellDoubleClicked(row, col);
@@ -345,6 +558,11 @@ void SubForm3::on_mui_list_cellDoubleClicked(int row, int col) {
 }
 
 
+///
+/**
+\param head
+\return
+**/
 bool SubForm3::existsHeader(const QString &head) {
     _depura("SubForm3::existsHeader", 0);
     SHeader *linea;
@@ -363,6 +581,9 @@ bool SubForm3::existsHeader(const QString &head) {
 /// Se encarga de crear un nuevo registro (una fila entera) y de inicializarla para que
 /// tenga todos los elementos necesarios (columnas).
 /// Nota: Esta funcion es de uso interno, no debe ser usada.
+/**
+\return
+**/
 SDBRecord *SubForm3::newSDBRecord() {
     _depura("SubForm3::newSDBRecord", 0);
     SDBRecord *rec = new SDBRecord(empresaBase());
@@ -404,6 +625,9 @@ SDBRecord *SubForm3::newSDBRecord() {
 
 /// Este metodo crea el registro final cuando se trata de subformularios con la opcion
 /// de insertar nuevos registros en el subformulario.
+/**
+\return
+**/
 void SubForm3::nuevoRegistro() {
     _depura("SubForm3::nuevoRegistro", 0);
     if (!m_insercion)
@@ -433,6 +657,8 @@ void SubForm3::nuevoRegistro() {
 
 
 /// Pinta los plantillaes en la tabla.
+/**
+**/
 void SubForm3::pintaCabeceras() {
     _depura("SubForm3::pintaCabeceras", 0);
     QStringList headers;
@@ -452,6 +678,10 @@ void SubForm3::pintaCabeceras() {
 
 
 /// Se situa en una celda especifica del subformulario.
+/**
+\param row
+\param col
+**/
 void SubForm3::situarse(unsigned int row, unsigned int col) {
     _depura("SubForm3::situarse", 0, QString::number(row) + " " + QString::number(col));
     unsigned int nrow = row;
@@ -482,6 +712,11 @@ void SubForm3::situarse(unsigned int row, unsigned int col) {
 
 /// Se situa en una celda especifica del subformulario.
 /** Se incluye la celda incluye la actual */
+/**
+\param row
+\param col
+\return
+**/
 void SubForm3::situarse1(unsigned int row, unsigned int col) {
     _depura("SubForm3::situarse1", 0, QString::number(row) + " " + QString::number(col));
     unsigned int nrow = row;
@@ -513,6 +748,8 @@ void SubForm3::situarse1(unsigned int row, unsigned int col) {
 /// Cuando tenemos un registro que no se tiene que cargar (pq es nuevo o algo
 /// asi) de la base de datos, con la funcion pintar lo dejamos en un estado que
 /// se podria considerar presentable para poder operar con el subformulario.
+/**
+**/
 void SubForm3::pintar() {
     _depura("SubForm3::pintar", 0);
     m_procesacambios = FALSE;
@@ -527,6 +764,9 @@ void SubForm3::pintar() {
 
 
 /// Carga una tabla a partir del recordset que se le ha pasado.
+/**
+\return
+**/
 int SubForm3::inicializar() {
     _depura("SubForm3::inicializar", 0);
     m_procesacambios = FALSE;
@@ -574,6 +814,10 @@ int SubForm3::inicializar() {
 }
 
 
+///
+/**
+\param campo
+**/
 void SubForm3::setColumnToRowSpan(QString campo) {
     _depura("SubForm3::setColumnToRowSpan", 0);
     m_columnaParaRowSpan = campo;
@@ -581,6 +825,10 @@ void SubForm3::setColumnToRowSpan(QString campo) {
 }
 
 
+///
+/**
+\param color
+**/
 void SubForm3::setColorFondo1(QString color) {
     _depura("SubForm3::setColorFondo1", 0);
     m_colorfondo1 = QColor(color);
@@ -588,6 +836,10 @@ void SubForm3::setColorFondo1(QString color) {
 }
 
 
+///
+/**
+\param color
+**/
 void SubForm3::setColorFondo2(QString color) {
     _depura("SubForm3::setColorFondo2", 0);
     m_colorfondo2 = QColor(color);
@@ -595,6 +847,13 @@ void SubForm3::setColorFondo2(QString color) {
 }
 
 
+///
+/**
+\param twidget
+\param filainicial
+\param totalfilas
+\param colorfondo
+**/
 void SubForm3::ponItemColorFondo(QTableWidget *twidget, int filainicial, int totalfilas, QColor colorfondo) {
     SDBRecord *reg3;
     /// Si hay que poner color al fondo de las filas se pone el que toque.
@@ -614,9 +873,8 @@ void SubForm3::ponItemColorFondo(QTableWidget *twidget, int filainicial, int tot
 /// Carga una tabla a partir del recordset que se le ha pasado.
 /** Este m&eacute;todo genera, a partir del recordset pasado como par&aacute;metro el listado y lo muestra. */
 /**
- *
- * @param cur
- */
+\param cur
+**/
 void SubForm3::cargar(cursor2 *cur) {
     _depura("SubForm3::cargar", 0, objectName());
     m_procesacambios = FALSE;
@@ -818,6 +1076,10 @@ void SubForm3::cargar(cursor2 *cur) {
 }
 
 
+///
+/**
+\param ordenactivado
+**/
 void SubForm3::setOrdenPorQuery(bool ordenactivado) {
     _depura("SubForm3::setOrdenPorQuery", 0);
     m_ordenporquery = ordenactivado;
@@ -825,6 +1087,10 @@ void SubForm3::setOrdenPorQuery(bool ordenactivado) {
 }
 
 
+///
+/**
+\param query
+**/
 void SubForm3::cargar(QString query) {
     _depura("SubForm3::cargar", 0);
     try {
@@ -839,14 +1105,21 @@ void SubForm3::cargar(QString query) {
 
 
 /// Devuelve la linea que se esta tratando actualmente.
+/**
+\return
+**/
 SDBRecord *SubForm3::lineaact() {
     _depura("SubForm3::lineaact", 0);
-    return lineaat(mui_list->currentRow());
     _depura("END SubForm3::lineaact", 0);
+    return lineaat(mui_list->currentRow());
 }
 
 
 /// Devuelve la linea especificada o NULL si ésta no existe.
+/**
+\param row
+\return
+**/
 SDBRecord *SubForm3::lineaat(int row) {
     _depura("SubForm3::lineaat()", 0, QString::number(row));
     try {
@@ -875,6 +1148,10 @@ SDBRecord *SubForm3::lineaat(int row) {
 
 
 /// Devuelve TRUE si el registro ha sido completamente rellenado.
+/**
+\param row
+\return
+**/
 bool SubForm3::campoCompleto(int row) {
     _depura("SubForm3::campoCompleto", 0);
     SDBCampo *camp;
@@ -901,13 +1178,17 @@ bool SubForm3::campoCompleto(int row) {
         } // end if
 
     } // end for
-    return TRUE;
     _depura("END SubForm3::campoCompleto", 0);
+    return TRUE;
 }
 
 
 /// M&eacute;todo que se dispara cuando se va a reposicionar en el formulario.
 /// Se encarga de resituar el cursor al lugar que se haya indicado.
+/**
+\param row
+\param col
+**/
 void SubForm3::on_mui_list_cellRePosition(int row, int col) {
     _depura("SubForm3::on_mui_list_cellReposition", 0, "Row: "+QString::number(row) + " col: "+QString::number(col));
 
@@ -949,6 +1230,10 @@ void SubForm3::on_mui_list_cellRePosition(int row, int col) {
 
 
 /// M&eacute;todo que se dispara cuando se termina de editar un campo del Subformulario.
+/**
+\param row
+\param col
+**/
 void SubForm3::on_mui_list_cellChanged(int row, int col) {
     _depura("SubForm3::on_mui_list_cellChanged", 0, "Row: "+QString::number(row) + " col: "+QString::number(col));
     emit editFinish(row, col);
@@ -959,6 +1244,14 @@ void SubForm3::on_mui_list_cellChanged(int row, int col) {
 /// M&eacute;todo para agregar cabeceras al listado
 /** Cada columna de un subformulario tiene una instancia de la clase SHeader. Este m&eacute;todo
     se encarga de crear e inicializar cada una de dichas clases. */
+/**
+\param nom
+\param typ
+\param res
+\param opt
+\param nomp
+\return
+**/
 int SubForm3::addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp) {
     _depura("SubForm3::addSHeader (" + nom + ")", 0);
     SHeader *camp = new SHeader(nom, typ, res, opt, nomp);
@@ -997,6 +1290,10 @@ int SubForm3::addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QSt
 
 /** Establece el valor de toda la columna.
 */
+/**
+\param campo
+\param valor
+**/
 void SubForm3::setColumnValue(QString campo, QString valor) {
     _depura("SubForm3::setColumnValue", 0, campo +" -- "+valor);
     SDBRecord *rec;
@@ -1017,6 +1314,11 @@ void SubForm3::setColumnValue(QString campo, QString valor) {
 }
 
 
+///
+/**
+\param campo
+\return
+**/
 Fixed SubForm3::sumarCampo(QString campo) {
     _depura("SubForm3::sumarCampo", 0);
     Fixed total;
@@ -1033,6 +1335,11 @@ Fixed SubForm3::sumarCampo(QString campo) {
 }
 
 
+///
+/**
+\param campo
+\param row
+**/
 QString SubForm3::DBvalue(QString campo, int row) {
     _depura("SubForm3::DBvalue", 0);
     try {
@@ -1052,6 +1359,10 @@ QString SubForm3::DBvalue(QString campo, int row) {
 }
 
 
+///
+/**
+\return
+**/
 int SubForm3::guardar() {
     _depura("SubForm3::guardar", 0);
     try {
@@ -1112,6 +1423,10 @@ int SubForm3::guardar() {
 }
 
 
+///
+/**
+\return
+**/
 int SubForm3::borrar() {
     _depura("SubForm3::borrar", 0);
     SDBRecord *rec;
@@ -1136,6 +1451,11 @@ int SubForm3::borrar() {
 }
 
 
+///
+/**
+\param row
+\return
+**/
 int SubForm3::borrar(int row) {
     _depura("SubForm3::borrar", 0);
     try {
@@ -1190,6 +1510,9 @@ int SubForm3::borrar(int row) {
 
 
 /// Metodo para ser derivado.
+/**
+\return
+**/
 int SubForm3::cerrarEditor() {
     _depura("END SubForm3::cerrarEditor", 0);
     return 0;
@@ -1197,6 +1520,8 @@ int SubForm3::cerrarEditor() {
 
 
 /// Guardamos el archivo de configuracion.
+/**
+**/
 void SubForm3::guardaconfig() {
     _depura("SubForm3::guardaconfig", 0);
     QString aux = "";
@@ -1227,6 +1552,9 @@ void SubForm3::guardaconfig() {
 }
 
 
+///
+/**
+**/
 void SubForm3::cargaconfig() {
     _depura("SubForm3::cargaconfig", 0);
     QFile file(confpr->valor(CONF_DIR_USER) + m_fileconfig + "tablecfn.cfn");
@@ -1284,6 +1612,9 @@ void SubForm3::cargaconfig() {
 }
 
 
+///
+/**
+**/
 void SubForm3::on_mui_confcol_clicked() {
     _depura("SubForm3::on_mui_confcol_clicked", 0);
     for (int i = 0; i < mui_listcolumnas->rowCount(); ++i) {
@@ -1296,26 +1627,42 @@ void SubForm3::on_mui_confcol_clicked() {
 }
 
 
+///
+/**
+**/
 void SubForm3::on_mui_list_pressedSlash(int, int) {
     _depura ("SubForm3::on_mui_list_pressedSlash", 1, "pulsadoSlash aun no implementado");
 }
 
 
+///
+/**
+**/
 void SubForm3::on_mui_list_pressedAsterisk(int, int) {
     _depura ("SubForm3::on_mui_list_pressedAsterisk", 1, "pressedAsterisk aun no implementado");
 }
 
 
+///
+/**
+**/
 void SubForm3::on_mui_list_pressedPlus(int, int) {
     _depura ("SubForm3::on_mui_list_pressedPlus", 1, "pulsadoPlus aun no implementado");
 }
 
 
+///
+/**
+**/
 void SubForm3::on_mui_list_pressedMinus(int, int) {
     _depura ("SubForm3::on_mui_list_pressedMinus", 1, "pressedMinus aun no implementado");
 }
 
 
+///
+/**
+\return
+**/
 QString SubForm3::imprimir() {
     _depura("SubForm3::imprimir", 0);
     QString fitxersortidarml = "<tr>\n";
@@ -1340,6 +1687,10 @@ QString SubForm3::imprimir() {
 }
 
 
+///
+/**
+\return
+**/
 void SubForm3::on_mui_confquery_clicked() {
     _depura("SubForm3::on_mui_confquery_clicked ", 0);
     if (empresaBase() == NULL) {
@@ -1355,6 +1706,11 @@ void SubForm3::on_mui_confquery_clicked() {
 
 /// Disparador que se activa al haber pulsado ctrl+Arriba en la tabla
 /// Hace el intercambio con la fila inmediatamente superior.
+/**
+\param row
+\param col
+\return
+**/
 void SubForm3::on_mui_list_ctrlSubir(int row, int col) {
     _depura("SubForm3::on_mui_list_ctrlSubir", 0," (" + QString::number(row) + "," + QString::number(col) + ")");
     if ( ! m_orden)
@@ -1386,6 +1742,11 @@ void SubForm3::on_mui_list_ctrlSubir(int row, int col) {
 
 /// Disparador que se activa al haber pulsado ctrl+Abajo en la tabla
 /// Hace el intercambio con la fila inmediatamente inferior.
+/**
+\param row
+\param col
+\return
+**/
 void SubForm3::on_mui_list_ctrlBajar(int row, int col) {
     _depura("SubForm3::on_mui_list_ctrlBajar", 0);
     if (! m_orden)
@@ -1415,6 +1776,9 @@ void SubForm3::on_mui_list_ctrlBajar(int row, int col) {
 }
 
 
+///
+/**
+**/
 void SubForm3::on_mui_pagsiguiente_clicked() {
     _depura("SubForm3::on_mui_pagsiguiente_clicked", 0);
     int pag = mui_paginaact->text().toInt();
@@ -1424,7 +1788,9 @@ void SubForm3::on_mui_pagsiguiente_clicked() {
     _depura("END SubForm3::on_mui_pagsiguiente_clicked", 0);
 }
 
-
+///
+/**
+**/
 void SubForm3::on_mui_paganterior_clicked() {
     _depura("SubForm3::on_mui_paganterior_clicked", 0);
     int pag = mui_paginaact->text().toInt();
@@ -1436,6 +1802,10 @@ void SubForm3::on_mui_paganterior_clicked() {
 }
 
 
+///
+/**
+\param titular
+**/
 void SubForm3::imprimirPDF(const QString &titular) {
     _depura("SubForm3::imprimir", 0);
 
@@ -1495,7 +1865,10 @@ void SubForm3::imprimirPDF(const QString &titular) {
     _depura("END SubForm3::imprimir", 0);
 }
 
-
+///
+/**
+\return
+**/
 void SubForm3::contextMenuEvent(QContextMenuEvent *) {
     _depura("SubForm3::contextMenuEvent", 0);
     QAction *del = NULL;
@@ -1554,7 +1927,9 @@ void SubForm3::contextMenuEvent(QContextMenuEvent *) {
     _depura("END SubForm3::contextMenuEvent", 0);
 }
 
-
+///
+/**
+**/
 void SubForm3::toogleConfig() {
     _depura("SubForm3::toogleConfig", 0);
     mui_configurador->setVisible(mui_configurador->isHidden());
@@ -1563,6 +1938,9 @@ void SubForm3::toogleConfig() {
 }
 
 
+///
+/**
+**/
 void SubForm3::on_mui_botonCerrar_clicked() {
     _depura("SubForm3::on_mui_botonCerrar_clicked", 0);
     toogleConfig();
@@ -1570,12 +1948,19 @@ void SubForm3::on_mui_botonCerrar_clicked() {
 }
 
 
+///
+/**
+**/
 void SubForm3::on_mui_list_itemChanged(QTableWidgetItem *) {
     _depura("SubForm3::on_mui_list_itemChanged", 0);
     _depura("END SubForm3::on_mui_list_itemChanged", 0);
 }
 
 
+///
+/**
+\param b
+**/
 void SubForm3::setinsercion(bool b) {
     _depura("SubForm3::setinsercion", 0);
     m_insercion = b;
@@ -1583,8 +1968,10 @@ void SubForm3::setinsercion(bool b) {
 }
 
 
-/** Establece si el subformulario debe considerar y tratar los cambios de celdas
-*/
+/// Establece si el subformulario debe considerar y tratar los cambios de celdas
+/**
+\param proc
+**/
 void SubForm3::setProcesarCambios(bool proc) {
     _depura("SubForm3::setProcesarCambios", 0);
     m_procesacambios = proc;
@@ -1592,11 +1979,13 @@ void SubForm3::setProcesarCambios(bool proc) {
 }
 
 
-/** Indica si el subformulario esta considerando el tratamiento de celdas modificadas
-*/
+/// Indica si el subformulario esta considerando el tratamiento de celdas modificadas
+/**
+\return
+**/
 bool SubForm3::procesaCambios() {
     _depura("SubForm3::procesaCambios", 0);
-    return m_procesacambios;
     _depura("END SubForm3::procesaCambios", 0);
+    return m_procesacambios;
 }
 

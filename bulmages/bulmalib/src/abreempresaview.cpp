@@ -102,9 +102,8 @@ void abreempresaview::setTipoEmpresa(QString pTipoEmpresa)
 bool abreempresaview::modoDestructivo()
 { 
   _depura("abreempresaview::modoDestructivo", 0);
-  return m_modo;
   _depura("END abreempresaview::modoDestructivo", 0);
-
+  return m_modo;
 }
 
 
@@ -127,9 +126,8 @@ void abreempresaview::setModoDestructivo(bool pModo)
 QString abreempresaview::nomDB()
 {
   _depura("abreempresaview::nomDB", 0);
-  return m_empresabd;
   _depura("END abreempresaview::nomDB", 0);
-
+  return m_empresabd;
 }
 
 
@@ -140,8 +138,8 @@ QString abreempresaview::nomDB()
 QString abreempresaview::nomEmpresa()
 {
   _depura("abreempresaview::nomEmpresa", 0);
-  return m_nombreempresa;
   _depura("END abreempresaview::nomEmpresa", 0);
+  return m_nombreempresa;
 }
 
 
@@ -152,8 +150,8 @@ QString abreempresaview::nomEmpresa()
 QString abreempresaview::tipoEmpresa()
 {
   _depura("abreempresaview::tipoEmpresa", 0);
-  return m_tipoempresa;
   _depura("END abreempresaview::tipoEmpresa", 0);
+  return m_tipoempresa;
 }
 
 
@@ -180,8 +178,8 @@ bool abreempresaview::close(bool)
 {
   _depura("abreempresaview::close", 0);
   s_botonCancelar();
-  return TRUE;
   _depura("END abreempresaview::close", 0);
+  return TRUE;
 }
 
 
@@ -225,6 +223,8 @@ abreempresaview::abreempresaview(QWidget *parent, QString tipo, const char *name
 abreempresaview::~abreempresaview()
 {
   _depura("abreempresaview::~abreempresaview", 0);
+  _depura("END abreempresaview::~abreempresaview", 0);
+
 }
 
 
@@ -525,7 +525,7 @@ bool abreempresaview::eventFilter(QObject *obj, QEvent *ev)
     } else
       return false;
   } else /// Si no se ha tratado el evento, se deja pasar.
+    _depura("END abreempresaview::eventFilter", 0);
     return QDialog::eventFilter (obj, ev);
   // end if
-  _depura("END abreempresaview::eventFilter", 0);
 }
