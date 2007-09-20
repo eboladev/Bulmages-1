@@ -128,7 +128,7 @@ bool SDBCampo::operator< (const QTableWidgetItem &other) {
   dbtype tip = ot->tipo();
   if (tip == this->tipo()) {
     QString val = ot->valorcampo();
-    
+
     if (this->tipo() == DBCampo::DBnumeric || this->tipo() == DBCampo::DBint) {
       _depura("SDBCampo::operator < es del tipo numerico:", 0, this->nomcampo() + QString::number(this->tipo()));
       double db1 = this->valorcampo().toDouble();

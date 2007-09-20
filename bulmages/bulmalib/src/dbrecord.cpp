@@ -406,8 +406,8 @@ int DBRecord::DBsave(QString &id) {
                 separadorwhere = " AND ";
             } // end if
 
-                /// Si el campo es requerido y no esta entonces salimos sin dar error.
-                /// No es lo mismo que los not null ya que estos si dan error
+            /// Si el campo es requerido y no esta entonces salimos sin dar error.
+            /// No es lo mismo que los not null ya que estos si dan error
             if (!(campo->restrictcampo() & DBCampo::DBNoSave)) {
                 if (campo->restrictcampo() & DBCampo::DBRequired) {
                     if (campo->valorcampo() == "")

@@ -315,40 +315,42 @@ void Ficha::pintar() {
         campo = m_lista.at(i);
         /// Buscamos un QLineEdit con nombre coincidente.
         QLineEdit *l = findChild<QLineEdit *>("mui_" + campo->nomcampo());
-        if (l)
+        if (l) {
             l->setText(campo->valorcampo());
-
-        /// Buscamos un QLineEdit con nombre coincidente.
-        QTextEdit *l3 = findChild<QTextEdit *>("mui_" + campo->nomcampo());
-        if (l3)
-        l3->setText(campo->valorcampo());
-
-    /// Buscamos BLWidgets que coincidan con el campo supuestamente sirve para los campos personales
-        BLWidget *l1 = findChild<BLWidget *>("mui_" + campo->nomcampo());
-    if (l1)
-        l1->setValorCampo(campo->valorcampo());
-
-    /// Buscamos QComboBox2 que coincidan con el campo supuestamente sirve para los campos personales
-        QComboBox2 *l2 = findChild<QComboBox2 *>("mui_" + campo->nomcampo());
-    if (l2)
-        l2->setValorCampo(campo->valorcampo());
-
-    QCheckBox *l5 = findChild<QCheckBox *>("mui_" + campo->nomcampo());
-    if (l5) {
-        if (campo->valorcampo() == "t") {
-            l5->setChecked(TRUE);
-        } else {
-            l5->setChecked(FALSE);
         } // end if
-    } // end if
-
+        /// Buscamos un QTextEdit con nombre coincidente.
+        QTextEdit *l3 = findChild<QTextEdit *>("mui_" + campo->nomcampo());
+        if (l3) {
+            l3->setText(campo->valorcampo());
+        } // end if
+        /// Buscamos BLWidgets que coincidan con el campo supuestamente
+        /// sirve para los campos personales.
+        BLWidget *l1 = findChild<BLWidget *>("mui_" + campo->nomcampo());
+        if (l1) {
+            l1->setValorCampo(campo->valorcampo());
+        } // end if
+        /// Buscamos QComboBox2 que coincidan con el campo supuestamente
+        /// sirve para los campos personales.
+        QComboBox2 *l2 = findChild<QComboBox2 *>("mui_" + campo->nomcampo());
+        if (l2) {
+            l2->setValorCampo(campo->valorcampo());
+        } // end if
+        QCheckBox *l5 = findChild<QCheckBox *>("mui_" + campo->nomcampo());
+        if (l5) {
+            if (campo->valorcampo() == "t") {
+                l5->setChecked(TRUE);
+            } else {
+                l5->setChecked(FALSE);
+            } // end if
+        } // end if
     } // end for
 }
 
 
-/** Recoge de forma automatica los valores que tienen los QLineEdit y los pone en la estructura de DBRecord.
-    para que funcione bien los QLineEdit deben tener como nombre el mismo campo que el correspondiente con la
-    base de datos precedidos de mui_
+/** Recoge de forma automatica los valores que tienen los QLineEdit y los pone en la
+    estructura de DBRecord.
+    Para que funcionen bien los QLineEdit deben tener como nombre el mismo campo que
+    el correspondiente en la base de datos precedidos de mui_
 */
 /**
 **/
@@ -400,12 +402,13 @@ void Ficha::recogeValores() {
 int Ficha::cargar(QString id) {
     _depura("Ficha::cargar", 0);
     try {
-        if (DBRecord::cargar(id))
+        if (DBRecord::cargar(id)) {
             throw -1;
+        } // end if
+        /// Lanzamos los plugins.
+        if (g_plugins->lanza("Ficha_cargar", this)) return 0;
 
-    /// Lanzamos los plugins.
-    if (g_plugins->lanza("Ficha_cargar", this)) return 0;
-    cargarPost(id);
+        cargarPost(id);
 
         setWindowTitle(m_title + " " + DBvalue(m_campoid));
         pintar();
@@ -434,8 +437,9 @@ int Ficha::guardar() {
         setDBvalue(m_campoid, id);
         empresaBase()->commit();
 
-    /// Lanzamos los plugins.
-    if (g_plugins->lanza("Ficha_guardar_Post", this)) return 0;
+        /// Lanzamos los plugins.
+        if (g_plugins->lanza("Ficha_guardar_Post", this)) return 0;
+
         guardarPost();
 
         /// Hacemos una carga para que se actualizen datos como la referencia.

@@ -1562,6 +1562,7 @@ void SubForm3::toogleConfig() {
     _depura("END SubForm3::toogleConfig", 0);
 }
 
+
 void SubForm3::on_mui_botonCerrar_clicked() {
     _depura("SubForm3::on_mui_botonCerrar_clicked", 0);
     toogleConfig();
@@ -1574,11 +1575,13 @@ void SubForm3::on_mui_list_itemChanged(QTableWidgetItem *) {
     _depura("END SubForm3::on_mui_list_itemChanged", 0);
 }
 
+
 void SubForm3::setinsercion(bool b) {
     _depura("SubForm3::setinsercion", 0);
     m_insercion = b;
     _depura("END SubForm3::setinsercion", 0);
 }
+
 
 /** Establece si el subformulario debe considerar y tratar los cambios de celdas
 */
@@ -1587,6 +1590,7 @@ void SubForm3::setProcesarCambios(bool proc) {
     m_procesacambios = proc;
     _depura("END SubForm3::setProcesarCambios", 0);
 }
+
 
 /** Indica si el subformulario esta considerando el tratamiento de celdas modificadas
 */

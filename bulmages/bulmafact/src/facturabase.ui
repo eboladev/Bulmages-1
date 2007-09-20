@@ -21,15 +21,102 @@
   </property>
   <layout class="QGridLayout" >
    <property name="margin" >
-    <number>2</number>
+    <number>5</number>
    </property>
    <property name="spacing" >
-    <number>2</number>
+    <number>5</number>
    </property>
+   <item row="3" column="0" colspan="6" >
+    <widget class="QTabWidget" name="m_desdfgs" >
+     <property name="enabled" >
+      <bool>true</bool>
+     </property>
+     <property name="font" >
+      <font>
+       <family>Sans Serif</family>
+       <pointsize>9</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+       <underline>false</underline>
+       <strikeout>false</strikeout>
+      </font>
+     </property>
+     <property name="currentIndex" >
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab1" >
+      <attribute name="title" >
+       <string>&amp;Detalle</string>
+      </attribute>
+      <layout class="QGridLayout" >
+       <property name="margin" >
+        <number>5</number>
+       </property>
+       <property name="spacing" >
+        <number>5</number>
+       </property>
+       <item row="0" column="0" >
+        <widget class="ListLinFacturaView" native="1" name="subform2" >
+         <property name="sizePolicy" >
+          <sizepolicy>
+           <hsizetype>7</hsizetype>
+           <vsizetype>5</vsizetype>
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="Tab2" >
+      <attribute name="title" >
+       <string>Desc&amp;uentos</string>
+      </attribute>
+      <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>5</number>
+       </property>
+       <property name="spacing" >
+        <number>5</number>
+       </property>
+       <item>
+        <widget class="ListDescuentoFacturaView" native="1" name="m_descuentos" >
+         <property name="sizePolicy" >
+          <sizepolicy>
+           <hsizetype>7</hsizetype>
+           <vsizetype>5</vsizetype>
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab3" >
+      <attribute name="title" >
+       <string>&amp;Comentarios</string>
+      </attribute>
+      <layout class="QHBoxLayout" >
+       <property name="margin" >
+        <number>5</number>
+       </property>
+       <property name="spacing" >
+        <number>5</number>
+       </property>
+       <item>
+        <widget class="QTextEdit" name="mui_comentfactura" />
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
    <item row="0" column="0" colspan="6" >
     <layout class="QHBoxLayout" >
      <property name="margin" >
-      <number>2</number>
+      <number>0</number>
      </property>
      <property name="spacing" >
       <number>5</number>
@@ -82,7 +169,7 @@
        </property>
        <layout class="QHBoxLayout" >
         <property name="margin" >
-         <number>2</number>
+         <number>5</number>
         </property>
         <property name="spacing" >
          <number>5</number>
@@ -375,7 +462,7 @@
           <property name="sizePolicy" >
            <sizepolicy>
             <hsizetype>0</hsizetype>
-            <vsizetype>0</vsizetype>
+            <vsizetype>5</vsizetype>
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -396,7 +483,7 @@
    <item row="1" column="0" colspan="6" >
     <layout class="QHBoxLayout" >
      <property name="margin" >
-      <number>2</number>
+      <number>0</number>
      </property>
      <property name="spacing" >
       <number>5</number>
@@ -463,8 +550,8 @@
       <widget class="QLineEdit" name="mui_descfactura" >
        <property name="sizePolicy" >
         <sizepolicy>
-         <hsizetype>0</hsizetype>
-         <vsizetype>0</vsizetype>
+         <hsizetype>7</hsizetype>
+         <vsizetype>5</vsizetype>
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -482,22 +569,6 @@
         </size>
        </property>
       </widget>
-     </item>
-     <item>
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType" >
-        <enum>QSizePolicy::MinimumExpanding</enum>
-       </property>
-       <property name="sizeHint" >
-        <size>
-         <width>50</width>
-         <height>21</height>
-        </size>
-       </property>
-      </spacer>
      </item>
      <item>
       <widget class="QLabel" name="label6" >
@@ -532,8 +603,8 @@
       <widget class="QLineEdit" name="mui_numfactura" >
        <property name="sizePolicy" >
         <sizepolicy>
-         <hsizetype>0</hsizetype>
-         <vsizetype>0</vsizetype>
+         <hsizetype>5</hsizetype>
+         <vsizetype>5</vsizetype>
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -549,6 +620,9 @@
          <width>100</width>
          <height>16777215</height>
         </size>
+       </property>
+       <property name="alignment" >
+        <set>Qt::AlignRight</set>
        </property>
       </widget>
      </item>
@@ -597,14 +671,23 @@
        </widget>
       </item>
       <item row="1" column="3" >
-       <widget class="BusquedaSerieFactura" native="1" name="mui_codigoserie_factura" />
+       <widget class="BusquedaSerieFactura" native="1" name="mui_codigoserie_factura" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>5</hsizetype>
+          <vsizetype>5</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
       </item>
       <item row="1" column="2" >
        <widget class="QLabel" name="label10" >
         <property name="sizePolicy" >
          <sizepolicy>
-          <hsizetype>0</hsizetype>
-          <vsizetype>0</vsizetype>
+          <hsizetype>5</hsizetype>
+          <vsizetype>5</vsizetype>
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -629,7 +712,16 @@
        </widget>
       </item>
       <item row="0" column="3" >
-       <widget class="BusquedaFecha" native="1" name="mui_ffactura" />
+       <widget class="BusquedaFecha" native="1" name="mui_ffactura" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>5</hsizetype>
+          <vsizetype>5</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
       </item>
       <item row="0" column="2" >
        <widget class="QLabel" name="label8" >
@@ -654,9 +746,17 @@
       </item>
       <item row="2" column="3" >
        <widget class="BusquedaFormaPago" name="mui_idforma_pago" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>5</hsizetype>
+          <vsizetype>5</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize" >
          <size>
-          <width>150</width>
+          <width>200</width>
           <height>0</height>
          </size>
         </property>
@@ -666,8 +766,8 @@
        <widget class="QCheckBox" name="mui_procesadafactura" >
         <property name="sizePolicy" >
          <sizepolicy>
-          <hsizetype>0</hsizetype>
-          <vsizetype>0</vsizetype>
+          <hsizetype>5</hsizetype>
+          <vsizetype>5</vsizetype>
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -706,6 +806,14 @@
       </item>
       <item row="3" column="1" >
        <widget class="BusquedaAlmacen" native="1" name="mui_idalmacen" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>7</hsizetype>
+          <vsizetype>5</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize" >
          <size>
           <width>150</width>
@@ -718,8 +826,8 @@
        <widget class="BusquedaCliente" native="1" name="mui_idcliente" >
         <property name="sizePolicy" >
          <sizepolicy>
-          <hsizetype>0</hsizetype>
-          <vsizetype>0</vsizetype>
+          <hsizetype>7</hsizetype>
+          <vsizetype>5</vsizetype>
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -736,8 +844,8 @@
        <widget class="QLabel" name="mui_labelAlmacen" >
         <property name="sizePolicy" >
          <sizepolicy>
-          <hsizetype>0</hsizetype>
-          <vsizetype>0</vsizetype>
+          <hsizetype>5</hsizetype>
+          <vsizetype>5</vsizetype>
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -762,93 +870,6 @@
        </widget>
       </item>
      </layout>
-    </widget>
-   </item>
-   <item row="3" column="0" colspan="6" >
-    <widget class="QTabWidget" name="m_desdfgs" >
-     <property name="enabled" >
-      <bool>true</bool>
-     </property>
-     <property name="font" >
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>9</pointsize>
-       <weight>50</weight>
-       <italic>false</italic>
-       <bold>false</bold>
-       <underline>false</underline>
-       <strikeout>false</strikeout>
-      </font>
-     </property>
-     <property name="currentIndex" >
-      <number>0</number>
-     </property>
-     <widget class="QWidget" name="tab1" >
-      <attribute name="title" >
-       <string>&amp;Detalle</string>
-      </attribute>
-      <layout class="QGridLayout" >
-       <property name="margin" >
-        <number>2</number>
-       </property>
-       <property name="spacing" >
-        <number>2</number>
-       </property>
-       <item row="0" column="0" >
-        <widget class="ListLinFacturaView" native="1" name="subform2" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>0</hsizetype>
-           <vsizetype>0</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="Tab2" >
-      <attribute name="title" >
-       <string>Desc&amp;uentos</string>
-      </attribute>
-      <layout class="QVBoxLayout" >
-       <property name="margin" >
-        <number>2</number>
-       </property>
-       <property name="spacing" >
-        <number>5</number>
-       </property>
-       <item>
-        <widget class="ListDescuentoFacturaView" native="1" name="m_descuentos" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>0</hsizetype>
-           <vsizetype>0</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="tab3" >
-      <attribute name="title" >
-       <string>&amp;Comentarios</string>
-      </attribute>
-      <layout class="QHBoxLayout" >
-       <property name="margin" >
-        <number>2</number>
-       </property>
-       <property name="spacing" >
-        <number>6</number>
-       </property>
-       <item>
-        <widget class="QTextEdit" name="mui_comentfactura" />
-       </item>
-      </layout>
-     </widget>
     </widget>
    </item>
    <item row="4" column="0" >
@@ -1503,16 +1524,6 @@
  <layoutdefault spacing="2" margin="2" />
  <customwidgets>
   <customwidget>
-   <class>ListDescuentoFacturaView</class>
-   <extends>QWidget</extends>
-   <header>listdescfacturaview.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaAlmacen</class>
-   <extends>QWidget</extends>
-   <header>busquedaalmacen.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaFormaPago</class>
    <extends>QComboBox</extends>
    <header>busquedaformapago.h</header>
@@ -1541,6 +1552,16 @@
    <class>BusquedaCliente</class>
    <extends>QWidget</extends>
    <header>busquedacliente.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ListDescuentoFacturaView</class>
+   <extends>QWidget</extends>
+   <header>listdescfacturaview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaAlmacen</class>
+   <extends>QWidget</extends>
+   <header>busquedaalmacen.h</header>
   </customwidget>
  </customwidgets>
  <resources>

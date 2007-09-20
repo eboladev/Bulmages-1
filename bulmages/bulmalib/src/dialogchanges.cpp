@@ -62,8 +62,8 @@ bool dialogChanges::objExcluido(QObject *item) {
         if (it_excluidos.next() == (QObject *) item)
             return TRUE;
     } // end while
-    return FALSE;
     _depura("END dialogChanges::objExcluido", 0);
+    return FALSE;
 }
 
 

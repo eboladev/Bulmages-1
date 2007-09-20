@@ -80,6 +80,7 @@ void FichaBf::calculaypintatotales() {
         } // end if
     } // end if
 
+    Fixed descuentolinea("0.00");
     for (int i = 0; i < m_listalineas->rowCount(); ++i) {
         linea = m_listalineas->lineaat(i);
         Fixed cant(linea->DBvalue("cant" + m_listalineas->tableName()).toAscii().constData());
@@ -87,6 +88,7 @@ void FichaBf::calculaypintatotales() {
         Fixed desc1(linea->DBvalue("descuento" + m_listalineas->tableName()).toAscii().constData());
         Fixed cantpvp = cant * pvpund;
         Fixed base = cantpvp - cantpvp * desc1 / 100;
+        descuentolinea = descuentolinea + (cantpvp * desc1 / 100);
         basesimp[linea->DBvalue("iva" + m_listalineas->tableName())] = basesimp[linea->DBvalue("iva" + m_listalineas->tableName())] + base;
         basesimpreqeq[linea->DBvalue("reqeq" + m_listalineas->tableName())] = basesimpreqeq[linea->DBvalue("reqeq" + m_listalineas->tableName())] + base;
     } // end for
@@ -147,7 +149,7 @@ void FichaBf::calculaypintatotales() {
     } // end for
 
     Fixed totirpf = totbaseimp * irpf / 100;
-    pintatotales(totiva, totbaseimp, totiva + totbaseimp + totreqeq - totirpf, basei * porcentt / 100, totirpf, totreqeq);
+    pintatotales(totiva, totbaseimp, totiva + totbaseimp + totreqeq - totirpf, (basei * porcentt / 100) + descuentolinea, totirpf, totreqeq);
     _depura("FichaBf::calculaypintatotales", 0);
 }
 
