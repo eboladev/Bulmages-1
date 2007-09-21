@@ -185,6 +185,7 @@ QString DBCampo::valorcampoprep(int &error) {
     case DBint:
         if (m_valorcampo == "")
             return "NULL";
+        m_valorcampo.replace(",", ".");
         return "'" + m_conexionbase->sanearCadena(m_valorcampo) + "'";
     case DBvarchar:
         if (m_valorcampo == "")
@@ -647,7 +648,7 @@ int DBRecord::guardar() {
 
 /// Esta funcion carga un articulo.
 /**
-\param id 
+\param id
 \return
 **/
 int DBRecord::cargar(QString id) {
