@@ -212,9 +212,7 @@ void InventariosView::on_mui_imprimir_clicked() {
 void InventariosSubForm::cargar() {
     _depura("InventariosSubForm::cargar", 0);
     QString SQLQuery = "SELECT * FROM inventario";
-    cursor2 * cur= empresaBase()->cargacursor(SQLQuery);
-    SubForm3::cargar(cur);
-    delete cur;
+    SubForm3::cargar(SQLQuery);
     _depura("END InventariosSubForm::cargar", 0);
 }
 

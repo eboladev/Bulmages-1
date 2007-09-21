@@ -104,9 +104,7 @@ ListTasaIVASubForm::ListTasaIVASubForm(QWidget *parent) : SubForm2Bf(parent) {
 **/
 void ListTasaIVASubForm::cargar() {
         _depura("ListTasaIVASubForm::cargar", 0);
-        cursor2 * cur= empresaBase()->cargacursor("SELECT * FROM tasa_iva LEFT JOIN tipo_iva on tasa_iva.idtipo_iva = tipo_iva.idtipo_iva");
-        SubForm3::cargar(cur);
-        delete cur;
+        SubForm3::cargar("SELECT * FROM tasa_iva LEFT JOIN tipo_iva on tasa_iva.idtipo_iva = tipo_iva.idtipo_iva");
         _depura("END ListTasaIVASubForm::cargar", 0);
 }
 

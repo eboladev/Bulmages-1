@@ -43,8 +43,7 @@
 /// Este archivo contiene la implementaci&oacute;n de la clase extractoview1 que saca el
 /// extracto por pantalla de una o varias cuentas determinadas. Esta clase es una de las
 /// tres principales junto a \ref introapuntes1 y \ref diarioview1.
-extractoview1::extractoview1(Empresa *emp, QWidget *parent, int) : FichaBc(emp, parent)
-{
+extractoview1::extractoview1(Empresa *emp, QWidget *parent, int) : FichaBc(emp, parent) {
     _depura("extractoview1::extractoview1", 0);
     setupUi(this);
 
@@ -73,8 +72,7 @@ extractoview1::extractoview1(Empresa *emp, QWidget *parent, int) : FichaBc(emp, 
 }
 
 /// Destructor de la clase.
-extractoview1::~extractoview1()
-{
+extractoview1::~extractoview1() {
     _depura ( "extractoview1::~extractoview1", 0 );
     delete m_cursorcta;
     empresaBase()->sacaWindow ( this );
@@ -110,26 +108,22 @@ void extractoview1::on_mui_configurar_clicked() {
 /// Esta funci&oacute;n carga el cursor de cuentas que forman el todo por el todo.
 /** Tambi&eacute;n ser&aacute; la encargada de recoger la informaci&oacute;n de
     filtraci&oacute;n para que todo sea correcto. */
-void extractoview1::accept()
-{
+void extractoview1::accept() {
     _depura ( "extractoview1::accept", 0 );
     QString codinicial = m_codigoinicial->codigocuenta();
     QString codfinal = m_codigofinal->codigocuenta();
     QString query;
     /// Si los datos de c&oacute;digo inicial y final est&aacute;n vacios los ponemos
     /// nosotros.
-    if ( codinicial == "" )
-    {
+    if ( codinicial == "" ) {
         codinicial = "0";
     } // end if
-    if ( codfinal == "" )
-    {
+    if ( codfinal == "" ) {
         codfinal = "9999999";
     } // end if
     query = "SELECT * FROM cuenta WHERE idcuenta IN (SELECT idcuenta FROM apunte) AND codigo >= '" + codinicial + "' AND codigo <= '" + codfinal + "' ORDER BY codigo";
 
-    if ( m_cursorcta != NULL )
-    {
+    if ( m_cursorcta != NULL ) {
         delete m_cursorcta;
     } // end if
     m_cursorcta = empresaBase()->cargacursor ( query );
@@ -139,13 +133,10 @@ void extractoview1::accept()
 
 
 /// Esta es la funci&oacute;n que avanza un registro entre las cuentas.
-void extractoview1::boton_siguiente()
-{
+void extractoview1::boton_siguiente() {
     _depura ( "extractoview1::boton_siguiente", 0 );
-    if ( m_cursorcta != NULL )
-    {
-        if ( !m_cursorcta->esultimoregistro() )
-        {
+    if ( m_cursorcta != NULL ) {
+        if ( !m_cursorcta->esultimoregistro() ) {
             m_cursorcta->siguienteregistro();
             presentar();
         } // end if
@@ -155,13 +146,10 @@ void extractoview1::boton_siguiente()
 
 
 /// Esta es la funci&oacute;n que retrocede un registro entre las cuentas.
-void extractoview1::boton_anterior()
-{
+void extractoview1::boton_anterior() {
     _depura ( "extractoview1::boton_anterior", 0 );
-    if ( m_cursorcta != NULL )
-    {
-        if ( !m_cursorcta->esprimerregistro() )
-        {
+    if ( m_cursorcta != NULL ) {
+        if ( !m_cursorcta->esprimerregistro() ) {
             m_cursorcta->registroanterior();
             presentar();
         } // end if
@@ -170,11 +158,9 @@ void extractoview1::boton_anterior()
 }
 
 /// Retrocede al principio de las cuentas.
-void extractoview1::boton_inicio()
-{
+void extractoview1::boton_inicio() {
     _depura ( "extractoview1::boton_inicio", 0 );
-    if ( m_cursorcta != NULL )
-    {
+    if ( m_cursorcta != NULL ) {
         m_cursorcta->primerregistro();
         presentar();
     } // end if
@@ -182,11 +168,9 @@ void extractoview1::boton_inicio()
 }
 
 /// Avanza al final de las cuentas.
-void extractoview1::boton_fin()
-{
+void extractoview1::boton_fin() {
     _depura ( "extractoview1::boton_fin", 0 );
-    if ( m_cursorcta != NULL )
-    {
+    if ( m_cursorcta != NULL ) {
         m_cursorcta->ultimoregistro();
         presentar();
     } // end if
@@ -195,8 +179,7 @@ void extractoview1::boton_fin()
 
 
 /// Imprime el extracto
-void extractoview1::boton_imprimir()
-{
+void extractoview1::boton_imprimir() {
     _depura ( "extractoview1::boton_imprimir", 0 );
     ExtractoPrintView *print = new ExtractoPrintView ( empresaBase(), 0 );
     print->exec();
@@ -204,16 +187,14 @@ void extractoview1::boton_imprimir()
 }
 
 
-void extractoview1::boton_guardar()
-{
+void extractoview1::boton_guardar() {
     _depura ( "extractoview1::boton_guardar", 0 );
     QString fn = QFileDialog::getSaveFileName ( this,
                  tr ( "Guardar libro diario" ),
                  confpr->valor ( CONF_DIR_USER ),
                  tr ( "Diarios (*.txt)" ) );
 
-    if ( !fn.isEmpty() )
-    {
+    if ( !fn.isEmpty() ) {
         libromayorprint libromayor(empresaBase());
         QString finicial = m_fechainicial1->text().toAscii().constData();
         QString ffinal = m_fechafinal1->text().toAscii().constData();
@@ -226,8 +207,7 @@ void extractoview1::boton_guardar()
 
 
 /// Limpia los totales
-void extractoview1::vaciar()
-{
+void extractoview1::vaciar() {
     _depura ( "extractoview1::vaciar", 0 );
     inicialdebe->setText ( "0" );
     inicialhaber->setText ( "0" );
@@ -242,8 +222,7 @@ void extractoview1::vaciar()
 void extractoview1::ajustes() {}
 
 
-void extractoview1::on_mui_guardar_clicked()
-{
+void extractoview1::on_mui_guardar_clicked() {
     _depura ( "extractoview1::on_mui_guardar_clicked", 0 );
     mui_list->guardar();
     _depura ( "END extractoview1::on_mui_guardar_clicked", 0 );
@@ -252,8 +231,7 @@ void extractoview1::on_mui_guardar_clicked()
 
 
 /// Esta funci&oacute;n se encarga de montar la consulta que va a hacer a la base de datos.
-void extractoview1::presentar()
-{
+void extractoview1::presentar() {
     _depura ( "extractoview1::presentar", 0 );
     float debe, haber, saldo;
     float debeinicial = 0, haberinicial = 0, saldoinicial = 0;
@@ -266,21 +244,15 @@ void extractoview1::presentar()
     /// Preparamos el string para que aparezca una u otra cosa seg&uacute;n el punteo.
     QString tipopunteo;
     tipopunteo = "";
-    if ( mui_punteotodos->isChecked() )
-    {
+    if ( mui_punteotodos->isChecked() ) {
         tipopunteo = "";
-    }
-    else if ( mui_punteopunteado->isChecked() )
-    {
+    } else if ( mui_punteopunteado->isChecked() ) {
         tipopunteo = " AND punteo = TRUE ";
-    }
-    else
-    {
+    } else {
         tipopunteo = " AND punteo = FALSE ";
     } // end if
 
-    if ( contra != "" )
-    {
+    if ( contra != "" ) {
         tipopunteo += " AND apunte.contrapartida = id_cuenta('" + contra + "') ";
     } // end if
 
@@ -302,24 +274,19 @@ void extractoview1::presentar()
     selectcanalview *scanal = empresaBase()->getselcanales();
     SelectCCosteView *scoste = empresaBase()->getselccostes();
     QString ccostes = scoste->cadcoste();
-    if ( ccostes != "" )
-    {
+    if ( ccostes != "" ) {
         ccostes.sprintf ( " AND idc_coste IN (%s) ", ccostes.toAscii().constData() );
     } // end if
     QString ccanales = scanal->cadcanal();
-    if ( ccanales != "" )
-    {
+    if ( ccanales != "" ) {
         ccanales.sprintf ( " AND idcanal IN (%s) ", ccanales.toAscii().constData() );
     } // end if
     QString tabla;
     QString cont;
-    if ( mui_asAbiertos->isChecked() )
-    {
+    if ( mui_asAbiertos->isChecked() ) {
         tabla = "borrador";
         cont = " FALSE AS punteo, * ";
-    }
-    else
-    {
+    } else {
         tabla = "apunte";
         cont = " * ";
     } // end if
@@ -329,18 +296,16 @@ void extractoview1::presentar()
     query += " LEFT JOIN (SELECT idcanal, nombre AS nombrecanal FROM canal) AS t6 ON t6.idcanal = t1.idcanal ";
     query += " ORDER BY t1.fecha, ordenasiento, t1.orden";
 
-    cursorapt=empresaBase()->cargacursor ( query );
-    mui_list->cargar ( cursorapt );
 
+    mui_list->cargar ( query );
+    cursorapt=empresaBase()->cargacursor ( query );
     cursorapt->primerregistro();
-    if ( !cursorapt->eof() )
-    {
+    if ( !cursorapt->eof() ) {
         /// Cargamos los saldos iniciales.
         cursor2 *cursoraux;
         query = "SELECT sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE idcuenta =" + idcuenta + " AND fecha < '" + finicial + "'";
         cursoraux = empresaBase()->cargacursor ( query );
-        if ( !cursoraux->eof() )
-        {
+        if ( !cursoraux->eof() ) {
             debeinicial = atof ( cursoraux->valor ( "tdebe" ).toAscii() );
             haberinicial = atof ( cursoraux->valor ( "thaber" ).toAscii() );
             saldoinicial = debeinicial - haberinicial;
@@ -357,8 +322,7 @@ void extractoview1::presentar()
         debefinal = debeinicial;
         haberfinal = haberinicial;
 
-        while ( !cursorapt->eof() )
-        {
+        while ( !cursorapt->eof() ) {
             debe = atof ( cursorapt->valor ( "debe" ).toAscii() );
             haber = atof ( cursorapt->valor ( "haber" ).toAscii() );
             saldo += debe - haber;
@@ -381,8 +345,7 @@ void extractoview1::presentar()
 }
 
 
-void extractoview1::inicializa1 ( QString codinicial, QString codfinal, QString fecha1, QString fecha2, int )
-{
+void extractoview1::inicializa1 ( QString codinicial, QString codfinal, QString fecha1, QString fecha2, int ) {
     _depura ( "extractoview1::inicializa1", 0 );
     m_codigoinicial->setText ( codinicial );
     m_codigofinal->setText ( codfinal );
@@ -393,22 +356,19 @@ void extractoview1::inicializa1 ( QString codinicial, QString codfinal, QString 
 
 
 /// Realiza la casacion de los apuntes.
-void extractoview1::on_mui_casacion_clicked()
-{
+void extractoview1::on_mui_casacion_clicked() {
     _depura ( "extractoview1::on_mui_casacion_clicked", 0 );
     QString query;
     query.sprintf ( "SELECT * FROM apunte WHERE punteo = FALSE AND haber <> 0 AND idcuenta = %s ORDER BY fecha", m_cursorcta->valor ( "idcuenta" ).toAscii().constData() );
     empresaBase()->begin();
     cursor2 *curshaber = empresaBase()->cargacursor ( query, "curshaber" );
     empresaBase()->commit();
-    while ( !curshaber->eof() )
-    {
+    while ( !curshaber->eof() ) {
         query.sprintf ( "SELECT * FROM apunte WHERE punteo = FALSE AND debe = %s AND idcuenta = %s ORDER BY fecha", curshaber->valor ( "haber" ).toAscii().constData(), m_cursorcta->valor ( "idcuenta" ).toAscii().constData() );
         empresaBase()->begin();
         cursor2 *cursdebe = empresaBase()->cargacursor ( query.toAscii(), "cursdebe" );
         empresaBase()->commit();
-        if ( !cursdebe->eof() )
-        {
+        if ( !cursdebe->eof() ) {
             query.sprintf ( "UPDATE apunte set punteo = TRUE WHERE idapunte = %s", curshaber->valor ( "idapunte" ).toAscii().constData() );
             empresaBase()->begin();
             empresaBase()->ejecuta ( query );
@@ -426,25 +386,21 @@ void extractoview1::on_mui_casacion_clicked()
 
 
 /// Guarda el punteo en disco para poder recuperarlo despues
-void extractoview1::on_mui_guardarpunteo_clicked()
-{
+void extractoview1::on_mui_guardarpunteo_clicked() {
     _depura ( "extractoview1::on_mui_guardarpunteo_clicked", 0 );
     QString fn = QFileDialog::getSaveFileName ( this,
                  tr ( "Guardar punteo" ),
                  confpr->valor ( CONF_DIR_USER ),
                  tr ( "Punteos (*.pto)" ) );
 
-    if ( !fn.isEmpty() )
-    {
+    if ( !fn.isEmpty() ) {
         FILE *mifile;
         mifile = fopen ( ( char * ) fn.toAscii().constData(), "wt" );
-        if ( mifile != NULL )
-        {
+        if ( mifile != NULL ) {
             QString query;
             query = "SELECT * FROM apunte WHERE punteo = TRUE";
             cursor2 *cursp = empresaBase()->cargacursor ( query, "punteos" );
-            while ( !cursp->eof() )
-            {
+            while ( !cursp->eof() ) {
                 fprintf ( mifile,"%s\n", cursp->valor ( "idapunte" ).toAscii().constData() );
                 cursp->siguienteregistro();
             } // end while
@@ -460,8 +416,7 @@ void extractoview1::on_mui_guardarpunteo_clicked()
 /** Esta funci&oacute;n se activa justo cuando se pulsa sobre el bot&oacute;n de
     resetear el punteo.
     Por supuesto cuando se pulsa dicho bot&oacute;n se borra el punteo. */
-void extractoview1::on_mui_borrapunteo_clicked()
-{
+void extractoview1::on_mui_borrapunteo_clicked() {
     _depura ( "extractoview1::on_mui_borrapunteo_clicked", 0 );
     int valor = QMessageBox::warning ( 0,
                                        tr ( "Borrar punteo" ),
@@ -469,8 +424,7 @@ void extractoview1::on_mui_borrapunteo_clicked()
                                             es irrecuperable si no ha guardado su el punte. \
                                             Desea continuar?" ),
                                        QMessageBox::Yes, QMessageBox::No );
-    if ( valor == QMessageBox::Yes )
-    {
+    if ( valor == QMessageBox::Yes ) {
         empresaBase()->begin()
         ;
         empresaBase()->ejecuta ( "UPDATE apunte SET punteo = FALSE" );
@@ -486,26 +440,22 @@ void extractoview1::on_mui_borrapunteo_clicked()
     borrador.
     Para ello es preciso que no se hayan abierto y cerrado los asientos correspondientes
     ya que en dicho caso la carga del punteo no funciona correctamente. */
-void extractoview1::on_mui_cargarpunteos_clicked()
-{
+void extractoview1::on_mui_cargarpunteos_clicked() {
     _depura ( "extractoview1::on_mui_cargarpunteos_clicked", 0 );
     QString fn = QFileDialog::getOpenFileName ( this,
                  tr ( "Cargar punteo" ),
                  confpr->valor ( CONF_DIR_USER ),
                  tr ( "Punteo (*.pto)" ) );
 
-    if ( !fn.isEmpty() )
-    {
+    if ( !fn.isEmpty() ) {
         QFile file ( fn );
-        if ( !file.open ( QIODevice::ReadOnly | QIODevice::Text ) )
-        {
+        if ( !file.open ( QIODevice::ReadOnly | QIODevice::Text ) ) {
             return;
         } // end if
         QTextStream filestr ( &file );
         QString a;
         empresaBase()->ejecuta ( "UPDATE apunte SET punteo = FALSE" );
-        while ( !filestr.atEnd() )
-        {
+        while ( !filestr.atEnd() ) {
             filestr >> a;
             QString query;
             query = "UPDATE apunte SET punteo = TRUE WHERE idapunte = "+ a;
@@ -518,8 +468,7 @@ void extractoview1::on_mui_cargarpunteos_clicked()
 }
 
 
-QString extractoview1::imprimeExtractoCuenta ( QString idcuenta )
-{
+QString extractoview1::imprimeExtractoCuenta ( QString idcuenta ) {
     _depura ( "extractoview1::imprimeExtractoCuenta", 0, idcuenta );
     QString salida = "";
     Fixed debeinicial ( "0" ), haberinicial ( "0" ), saldoinicial ( "0" );
@@ -531,21 +480,15 @@ QString extractoview1::imprimeExtractoCuenta ( QString idcuenta )
     /// Preparamos el string para que aparezca una u otra cosa seg&uacute;n el punteo.
     QString tipopunteo;
     tipopunteo = "";
-    if ( mui_punteotodos->isChecked() )
-    {
+    if ( mui_punteotodos->isChecked() ) {
         tipopunteo = "";
-    }
-    else if ( mui_punteopunteado->isChecked() )
-    {
+    } else if ( mui_punteopunteado->isChecked() ) {
         tipopunteo = " AND punteo = TRUE ";
-    }
-    else
-    {
+    } else {
         tipopunteo = " AND punteo = FALSE ";
     } // end if
 
-    if ( contra != "" )
-    {
+    if ( contra != "" ) {
         tipopunteo += " AND apunte.contrapartida = id_cuenta('" + contra + "') ";
     } // end if
 
@@ -566,24 +509,19 @@ QString extractoview1::imprimeExtractoCuenta ( QString idcuenta )
     selectcanalview *scanal = empresaBase()->getselcanales();
     SelectCCosteView *scoste = empresaBase()->getselccostes();
     QString ccostes = scoste->cadcoste();
-    if ( ccostes != "" )
-    {
+    if ( ccostes != "" ) {
         ccostes.sprintf ( " AND idc_coste IN (%s) ", ccostes.toAscii().constData() );
     } // end if
     QString ccanales = scanal->cadcanal();
-    if ( ccanales != "" )
-    {
+    if ( ccanales != "" ) {
         ccanales.sprintf ( " AND idcanal IN (%s) ", ccanales.toAscii().constData() );
     } // end if
     QString tabla;
     QString cont;
-    if ( mui_asAbiertos->isChecked() )
-    {
+    if ( mui_asAbiertos->isChecked() ) {
         tabla = "borrador";
         cont = " FALSE AS punteo, * ";
-    }
-    else
-    {
+    } else {
         tabla = "apunte";
         cont = " * ";
     } // end if
@@ -599,8 +537,7 @@ QString extractoview1::imprimeExtractoCuenta ( QString idcuenta )
     cursor2 *cursoraux;
     query = "SELECT sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE idcuenta =" + idcuenta + " AND fecha < '" + finicial + "'";
     cursoraux = empresaBase()->cargacursor ( query );
-    if ( !cursoraux->eof() )
-    {
+    if ( !cursoraux->eof() ) {
         debeinicial = Fixed ( cursoraux->valor ( "tdebe" ) );
         haberinicial = Fixed ( cursoraux->valor ( "thaber" ) );
         saldoinicial = debeinicial - haberinicial;
@@ -642,8 +579,7 @@ QString extractoview1::imprimeExtractoCuenta ( QString idcuenta )
     salida += "<td> Saldo </td>";
     salida += "</tr>\n";
 
-    while ( ! cursorapt->eof() )
-    {
+    while ( ! cursorapt->eof() ) {
         saldofinal = saldofinal + Fixed ( cursorapt->valor ( "debe" ) ) - Fixed ( cursorapt->valor ( "haber" ) );
         debefinal = debefinal + Fixed ( cursorapt->valor ( "debe" ) );
         haberfinal = haberfinal + Fixed ( cursorapt->valor ( "haber" ) );
@@ -680,8 +616,7 @@ QString extractoview1::imprimeExtractoCuenta ( QString idcuenta )
 
 
 /// Slot que responde a la Impresion del extracto
-void extractoview1::on_mui_imprimir_clicked()
-{
+void extractoview1::on_mui_imprimir_clicked() {
     _depura ( "extractoview1::on_mui_imprimir_clicked", 0 );
     QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "extracto.rml";
     QString archivod = confpr->valor ( CONF_DIR_USER ) + "extracto.rml";
@@ -721,19 +656,16 @@ void extractoview1::on_mui_imprimir_clicked()
     QString query;
     /// Si los datos de c&oacute;digo inicial y final est&aacute;n vacios los ponemos
     /// nosotros.
-    if ( codinicial == "" )
-    {
+    if ( codinicial == "" ) {
         codinicial = "0";
     } // end if
-    if ( codfinal == "" )
-    {
+    if ( codfinal == "" ) {
         codfinal = "9999999";
     } // end if
     query = "SELECT * FROM cuenta WHERE idcuenta IN (SELECT idcuenta FROM apunte) AND codigo >= '" + codinicial + "' AND codigo <= '" + codfinal + "' ORDER BY codigo";
 
     cursor2 *curcta = empresaBase()->cargacursor ( query );
-    while ( ! curcta->eof() )
-    {
+    while ( ! curcta->eof() ) {
         fitxersortidatxt += imprimeExtractoCuenta ( curcta->valor ( "idcuenta" ) );
         curcta->siguienteregistro();
         if ( ! curcta->eof() )
@@ -744,8 +676,7 @@ void extractoview1::on_mui_imprimir_clicked()
     /// ========================================================================
 
     buff.replace ( "[story]",fitxersortidatxt );
-    if ( file.open ( QIODevice::WriteOnly ) )
-    {
+    if ( file.open ( QIODevice::WriteOnly ) ) {
         QTextStream stream ( &file );
         stream << buff;
         file.close();

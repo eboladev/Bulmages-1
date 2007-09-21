@@ -312,9 +312,7 @@ PedidosProveedorListSubform::PedidosProveedorListSubform(QWidget *parent) : SubF
 void PedidosProveedorListSubform::cargar() {
     _depura("PedidosProveedorListSubform::cargar", 0);
     QString SQLQuery = "SELECT * FROM pedidoproveedor";
-    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
-    SubForm3::cargar(cur);
-    delete cur;
+    SubForm3::cargar(SQLQuery);
     _depura("END PedidosProveedorListSubform::cargar", 0);
 }
 

@@ -112,9 +112,7 @@ ListTipoIVASubForm::ListTipoIVASubForm(QWidget *parent) : SubForm2Bf(parent) {
 **/
 void ListTipoIVASubForm::cargar() {
         _depura("ListTipoIVASubForm::cargar", 0);
-        cursor2 * cur= empresaBase()->cargacursor("SELECT * FROM tipo_iva");
-        SubForm3::cargar(cur);
-        delete cur;
+        SubForm3::cargar("SELECT * FROM tipo_iva");
         _depura("END ListTipoIVASubForm::cargar", 0);
 }
 

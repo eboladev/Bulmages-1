@@ -27,7 +27,7 @@
 
 
 
-int entryPoint(Bulmafact *bges) {
+int entryPoint(Bulmafact *) {
     _depura("Estoy dentro del plugin de tipos de almacenes", 0);
     return 0;
 }

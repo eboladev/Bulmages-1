@@ -352,9 +352,7 @@ FacturasProveedorListSubform::~FacturasProveedorListSubform() {
 void FacturasProveedorListSubform::cargar() {
     _depura("AlbaranesProveedorListSubform::cargar()\n", 0);
     QString SQLQuery = "SELECT * FROM facturap";
-    cursor2 *cur= empresaBase()->cargacursor(SQLQuery);
-    SubForm3::cargar(cur);
-    delete cur;
+    SubForm3::cargar(SQLQuery);
     _depura("END AlbaranesProveedorListSubform::cargar()\n", 0);
 }
 

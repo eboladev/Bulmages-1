@@ -153,13 +153,11 @@ int AmortizacionView::cargar(QString idamortizacion) {
         agrupacion->setText(DBvalue("agrupacion"));
 
         QString query = "SELECT *, fechaprevista <= now() AS ant FROM linamortizacion LEFT JOIN asiento ON linamortizacion.idasiento = asiento.idasiento WHERE idamortizacion = " + m_idamortizacion + " ORDER BY fechaprevista";
-        cursor2 *curs = empresaBase()->cargacursor(query);
-        mui_listcuotas->cargar(curs);
-        delete curs;
+        mui_listcuotas->cargar(query);
 
         /// Calculamos lo que ya llevamos amortizado y lo presentamos en la pantalla.
         query = "SELECT sum(cantidad) AS amortizado FROM linamortizacion WHERE idasiento IS NOT NULL AND idamortizacion = " + m_idamortizacion;
-        curs = empresaBase()->cargacursor(query, "amortizado");
+        cursor2 *curs = empresaBase()->cargacursor(query);
         if (!curs->eof()) {
             amortizado->setText(curs->valor("amortizado"));
         } // end if

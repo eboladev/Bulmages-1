@@ -49,9 +49,7 @@ public:
 public slots:
     virtual void cargar() {
         _depura("ListConfiguracionSubForm::cargar\n", 0);
-        cursor2 *cur = empresaBase()->cargacursor("SELECT *, nombre AS nombreorig FROM configuracion");
-        SubForm3::cargar(cur);
-        delete cur;
+        SubForm3::cargar("SELECT *, nombre AS nombreorig FROM configuracion");
     };
 };
 

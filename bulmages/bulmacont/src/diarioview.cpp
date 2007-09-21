@@ -194,11 +194,10 @@ void DiarioView::presentar() {
 
     totalcadena = query + cad + " ORDER BY t5.fecha, t5.ordenasiento ";
 
-    cursor2 *cur = empresaBase()->cargacursor(totalcadena);
-    mui_list->cargar(cur);
-    delete cur;
+    mui_list->cargar(totalcadena);
 
-    cur = empresaBase()->cargacursor("SELECT sum(debe) as totaldebe, sum(haber) as totalhaber from " + tabla + cad);
+
+    cursor2 *cur = empresaBase()->cargacursor("SELECT sum(debe) as totaldebe, sum(haber) as totalhaber from " + tabla + cad);
     if (!cur->eof()) {
         totaldebe->setText(cur->valor("totaldebe"));
         totalhaber->setText(cur->valor("totalhaber"));

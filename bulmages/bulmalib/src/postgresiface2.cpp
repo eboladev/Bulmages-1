@@ -465,7 +465,6 @@ int postgresiface2::begin() {
     } // end if
     PGresult *res;
     res = PQexec(conn, "BEGIN");
-    _depura("-- BEGIN TRANSACTION --");
     if (!res || PQresultStatus(res) != PGRES_COMMAND_OK) {
         _depura("BEGIN command failed");
         PQclear(res);
@@ -491,7 +490,6 @@ void postgresiface2::commit() {
         return;
     } // end if
     PGresult *res;
-    _depura("-- COMMIT TRANSACTION --");
     res = PQexec(conn, "COMMIT");
     PQclear(res);
     m_transaccion = FALSE;
@@ -524,14 +522,20 @@ void postgresiface2::rollback() {
 /// \return Devuelve un apuntador al objeto \ref cursor2 generado e inicializado con la
 /// respuesta al query.
 /**
-\param Query
-\param nomcursor
+\param Query La sentencia SELECT en formato SQL.
+\param nomcursor Nombre que desea asignar a la consulta. Puede estar vacia.
 **/
-cursor2 *postgresiface2::cargacursor(QString Query, QString nomcursor) {
-    _depura ("postgresiface2::cargacursor", 0, Query);
+cursor2 *postgresiface2::cargacursor(QString query, QString nomcursor, int limit, int offset) {
+    _depura ("postgresiface2::cargacursor", 0, query);
     cursor2 *cur = NULL;
     try {
-        cur = new cursor2(nomcursor, conn, Query);
+	/// Si hay establecidas clausulas limit o offset modificamos el query
+	if (limit != 0) 
+		query += " LIMIT " + QString::number(limit);
+	if (offset != 0)
+		query += " OFFSET " + QString::number(offset);
+	
+        cur = new cursor2(nomcursor, conn, query);
     } catch (...) {
         _depura("postgresiface2::cargacursor La base de datos genero un error: ", 0);
         delete cur;

@@ -115,9 +115,7 @@ void ListLinAsiento1View::cargar(QString idasiento) {
     SQLQuery += " LEFT JOIN (SELECT idc_coste, nombre AS nomc_coste, descripcion AS descc_coste FROM c_coste) AS t3 ON borrador.idc_coste = t3.idc_coste ";
     SQLQuery += " LEFT JOIN (SELECT idregistroiva, factura, ffactura, idborrador FROM registroiva) AS t4 ON borrador.idborrador = t4.idborrador ";
     SQLQuery += "WHERE idasiento = " + idasiento + " ORDER BY orden";
-    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
-    SubForm2Bc::cargar(cur);
-    delete cur;
+    SubForm2Bc::cargar(SQLQuery);
     _depura("END AsientoSubForm::cargar", 0);
 }
 

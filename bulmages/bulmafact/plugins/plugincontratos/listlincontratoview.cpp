@@ -51,9 +51,7 @@ ListLinContratoView::ListLinContratoView(QWidget *parent) : SubForm2Bf(parent) {
 void ListLinContratoView::cargar(QString idcontrato) {
     _depura("ListLinContratoView::cargar", 0);
     mdb_idcontrato = idcontrato;
-    cursor2 * cur= empresaBase()->cargacursor("SELECT * FROM lcontrato LEFT JOIN articulo ON lcontrato.idarticulo = articulo.idarticulo WHERE idcontrato=" + mdb_idcontrato + " ORDER BY ordenlcontrato");
-    SubForm3::cargar(cur);
-    delete cur;
+    SubForm3::cargar("SELECT * FROM lcontrato LEFT JOIN articulo ON lcontrato.idarticulo = articulo.idarticulo WHERE idcontrato=" + mdb_idcontrato + " ORDER BY ordenlcontrato");
     _depura("END ListLinContratoView::cargar", 0);
 }
 

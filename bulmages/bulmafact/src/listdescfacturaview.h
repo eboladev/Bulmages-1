@@ -41,9 +41,7 @@ public slots:
     virtual void cargar(QString idfactura) {
         _depura("ListCompArticulo::cargaListCompArticulo\n", 0);
         mdb_idfactura = idfactura;
-        cursor2 * cur= empresaBase()->cargacursor("SELECT * FROM dfactura WHERE idfactura = " + mdb_idfactura);
-        SubForm3::cargar(cur);
-        delete cur;
+        SubForm3::cargar("SELECT * FROM dfactura WHERE idfactura = " + mdb_idfactura);
     };
 };
 

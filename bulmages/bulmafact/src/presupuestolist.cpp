@@ -340,9 +340,7 @@ PresupuestoListSubForm::PresupuestoListSubForm(QWidget *parent, const char *) : 
 void PresupuestoListSubForm::cargar() {
         _depura("PresupuestoListSubForm::cargar", 0);
         QString SQLQuery = "SELECT * FROM presupuesto";
-        cursor2 *cur= empresaBase()->cargacursor(SQLQuery);
-        SubForm3::cargar(cur);
-        delete cur;
+        SubForm3::cargar(SQLQuery);
         _depura("END PresupuestoListSubForm::cargar", 0);
 }
 

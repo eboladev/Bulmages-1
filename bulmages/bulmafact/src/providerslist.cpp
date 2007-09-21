@@ -241,9 +241,7 @@ void ProveedorList::on_mui_importar_clicked() {
 void ProveedorListSubform::cargar() {
     _depura("ProveedorListSubform::cargar", 0);
     QString SQLQuery = "SELECT * FROM proveedor";
-    cursor2 * cur= empresaBase()->cargacursor(SQLQuery);
-    SubForm3::cargar(cur);
-    delete cur;
+    SubForm3::cargar(SQLQuery);
     _depura("END ProveedorListSubform::cargar", 0);
 }
 

@@ -44,9 +44,7 @@ public:
 public slots:
     virtual void cargar() {
         _depura("ListZonaComercialSubForm::cargar\n",0);
-        cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM zonacomercial");
-        SubForm3::cargar(cur);
-        delete cur;
+        SubForm3::cargar("SELECT * FROM zonacomercial");
     };
 };
 

@@ -36,9 +36,9 @@
 \return
 **/
 QList<SDBRecord *> *SubForm3::lista() {
-  _depura("SubForm3::lista", 0);
+    _depura("SubForm3::lista", 0);
     return &m_lista;
-  _depura("END SubForm3::lista", 0);
+    _depura("END SubForm3::lista", 0);
 }
 
 
@@ -47,9 +47,9 @@ QList<SDBRecord *> *SubForm3::lista() {
 \return
 **/
 QList<SHeader *> *SubForm3::cabecera() {
-  _depura("SubForm3::cabecera", 0);
+    _depura("SubForm3::cabecera", 0);
     return &m_lcabecera;
-  _depura("END SubForm3::cabecera", 0);
+    _depura("END SubForm3::cabecera", 0);
 }
 
 
@@ -58,9 +58,9 @@ QList<SHeader *> *SubForm3::cabecera() {
 \param mode
 **/
 void SubForm3::setHorizontalScrollMode(QAbstractItemView::ScrollMode mode) {
-  _depura("SubForm3::setHorizontalScrollMode", 0);
+    _depura("SubForm3::setHorizontalScrollMode", 0);
     mui_list->setHorizontalScrollMode(mode);
-  _depura("END SubForm3::setHorizontalScrollMode", 0);
+    _depura("END SubForm3::setHorizontalScrollMode", 0);
 }
 
 
@@ -941,12 +941,22 @@ void SubForm3::cargar(cursor2 *cur) {
     int numpag = cur->numregistros() / filpag + 1;
     mui_numpaginas->setText(QString::number(numpag));
 
-    /// Desplazamos hasta encontrar la p&aacute;gina adecuada.
-    int nr = filpag * (pagact - 1);
-    while (nr > 0  && !cur->eof()) {
-        cur->siguienteregistro();
-        nr--;
-    } // end while
+    /// Si el numero de elementos es igual al numero de filas por pagina abilitamos la pagina siguiente
+    if (filpag == cur->numregistros()) {
+        mui_pagsiguiente->setEnabled(TRUE);
+    } else {
+        mui_pagsiguiente->setDisabled(TRUE);
+    } // end if
+
+    /// Si la pagina actual es 1 desabilitamos la pagina anterior
+    if (pagact ==  1) {
+        mui_paganterior->setDisabled(TRUE);
+    } else {
+        mui_paganterior->setEnabled(TRUE);
+    } // end if
+
+
+
 
     /// Recorremos el recordset y ponemos los registros en un orden determinado.
     int porcentajecarga = 0;
@@ -1089,12 +1099,29 @@ void SubForm3::setOrdenPorQuery(bool ordenactivado) {
 
 ///
 /**
-\param query
+\param query La consulta SQL a cargar en el subformulario.
 **/
 void SubForm3::cargar(QString query) {
     _depura("SubForm3::cargar", 0);
+    /// Si el query no existe no hacemos nada.
+    if (query == "") 
+	return;
     try {
-        cursor2 *cur = empresaBase()->cargacursor(query);
+        m_query =  query;
+
+        /// Tratramos con la paginacion.
+        int limit = mui_filaspagina->text().toInt();
+        if (limit <= 0) {
+            limit = 500;
+        } // end if
+
+        int pagact = mui_paginaact->text().toInt();
+        if (pagact <= 0) {
+            pagact = 1;
+        } // end if
+        int offset = limit * (pagact -1);
+
+        cursor2 *cur = empresaBase()->cargacursor(query, "", limit, offset);
         cargar(cur);
         delete cur;
     } catch (...) {
@@ -1202,27 +1229,27 @@ void SubForm3::on_mui_list_cellRePosition(int row, int col) {
     } // end if
 
     switch (key) {
-        case Qt::Key_Return:
-        case Qt::Key_Enter:
-        case Qt::Key_Tab:
-            if (!m_insercion) {
-                /// Se ha hecho un enter sobre una tabla sin insercion con lo que lanzamos un doble click para que sea
-                /// La accion simulada.
-                QTableWidgetItem *item = mui_list->currentItem();
-                emit itemDoubleClicked(item);
-                emit cellDoubleClicked(row, col);
-            } else {
-                situarse(row, col);
-            } // end if
-            break;
-
-        case Qt::Key_Down:
+    case Qt::Key_Return:
+    case Qt::Key_Enter:
+    case Qt::Key_Tab:
+        if (!m_insercion) {
+            /// Se ha hecho un enter sobre una tabla sin insercion con lo que lanzamos un doble click para que sea
+            /// La accion simulada.
+            QTableWidgetItem *item = mui_list->currentItem();
+            emit itemDoubleClicked(item);
+            emit cellDoubleClicked(row, col);
+        } else {
             situarse(row, col);
-            situarse1(row, col);
-            if (creado) {
-                mui_list->setCurrentCell(row + 1, col);
-            } // end if
-            break;
+        } // end if
+        break;
+
+    case Qt::Key_Down:
+        situarse(row, col);
+        situarse1(row, col);
+        if (creado) {
+            mui_list->setCurrentCell(row + 1, col);
+        } // end if
+        break;
     } // end switch
 
     _depura("END SubForm3::on_mui_list_cellRePosition", 0);
@@ -1697,10 +1724,27 @@ void SubForm3::on_mui_confquery_clicked() {
         mensajeInfo("no se ha inicializado bien la clase");
         return;
     } // end if
-    cursor2 *cur = empresaBase()->cargacursor(mui_query->toPlainText());
-    cargar(cur);
-    delete cur;
+    mui_paginaact->setValue(1);
+    cargar(mui_query->toPlainText());
+//	cargar(m_query);
     _depura("END SubForm3::on_mui_confquery_clicked ", 0);
+}
+
+
+///
+/**
+\return
+**/
+void SubForm3::confquery() {
+    _depura("SubForm3::confquery", 0);
+    if (empresaBase() == NULL) {
+        mensajeInfo("no se ha inicializado bien la clase");
+        return;
+    } // end if
+
+    cargar(m_query);
+
+    _depura("END SubForm3::confquery ", 0);
 }
 
 
@@ -1784,7 +1828,7 @@ void SubForm3::on_mui_pagsiguiente_clicked() {
     int pag = mui_paginaact->text().toInt();
     pag++;
     mui_paginaact->setValue(pag);
-    on_mui_confquery_clicked();
+    confquery();
     _depura("END SubForm3::on_mui_pagsiguiente_clicked", 0);
 }
 
@@ -1797,7 +1841,7 @@ void SubForm3::on_mui_paganterior_clicked() {
     if (pag > 1)
         pag--;
     mui_paginaact->setValue(pag);
-    on_mui_confquery_clicked();
+    confquery();
     _depura("END SubForm3::on_mui_paganterior_clicked", 0);
 }
 

@@ -63,9 +63,7 @@ ListLinPedidoProveedorView::ListLinPedidoProveedorView(QWidget *parent) : SubFor
 void ListLinPedidoProveedorView::cargar(QString idpedidoproveedor) {
         _depura("ListLinPedidoProveedorView::cargar", 0);
         mdb_idpedidoproveedor = idpedidoproveedor;
-        cursor2 * cur= empresaBase()->cargacursor("SELECT * FROM lpedidoproveedor LEFT JOIN articulo ON lpedidoproveedor.idarticulo = articulo.idarticulo WHERE idpedidoproveedor=" + mdb_idpedidoproveedor + " ORDER BY ordenlpedidoproveedor");
-        SubForm3::cargar(cur);
-        delete cur;
+        SubForm3::cargar("SELECT * FROM lpedidoproveedor LEFT JOIN articulo ON lpedidoproveedor.idarticulo = articulo.idarticulo WHERE idpedidoproveedor=" + mdb_idpedidoproveedor + " ORDER BY ordenlpedidoproveedor");
         _depura("END ListLinPedidoProveedorView::cargar", 0);
 }
 

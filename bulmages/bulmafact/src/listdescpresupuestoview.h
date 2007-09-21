@@ -41,9 +41,7 @@ public slots:
     virtual void cargar(QString idpresupuesto) {
         _depura("ListDescuentoPresupuestoView::cargar\n", 0);
         mdb_idpresupuesto = idpresupuesto;
-        cursor2 * cur= empresaBase()->cargacursor("SELECT * FROM dpresupuesto WHERE idpresupuesto = " + mdb_idpresupuesto);
-        SubForm3::cargar(cur);
-        delete cur;
+        SubForm3::cargar("SELECT * FROM dpresupuesto WHERE idpresupuesto = " + mdb_idpresupuesto);
     };
 };
 

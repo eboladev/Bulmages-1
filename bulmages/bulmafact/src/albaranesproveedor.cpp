@@ -371,9 +371,7 @@ AlbaranesProveedorListSubform::AlbaranesProveedorListSubform(QWidget *parent) : 
 void AlbaranesProveedorListSubform::cargar() {
     _depura("AlbaranesProveedorListSubform::cargar", 0);
     QString SQLQuery = "SELECT * FROM albaranp";
-    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
-    SubForm3::cargar(cur);
-    delete cur;
+    SubForm3::cargar(SQLQuery);
     _depura("END AlbaranesProveedorListSubform::cargar", 0);
 }
 

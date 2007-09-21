@@ -36,9 +36,7 @@
 void AlbaranClienteListSubform::cargar() {
     _depura("AlbaranClienteListSubform::cargar", 0);
     QString SQLQuery = "SELECT * FROM albaran";
-    cursor2 * cur= empresaBase()->cargacursor(SQLQuery);
-    SubForm3::cargar(cur);
-    delete cur;
+    SubForm3::cargar(SQLQuery);
     _depura("END AlbaranClienteListSubform::cargar", 0);
 }
 

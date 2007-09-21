@@ -33,11 +33,11 @@ TarifaListSubform::TarifaListSubform(QWidget *parent)
     setinsercion(FALSE);
     _depura("END TarifaListSubform::TarifaListSubform", 0);
 }
+
+
 void TarifaListSubform::cargar() {
-        _depura("TarifaListSubform::cargar\n", 0);
-        QString SQLQuery = "SELECT * FROM tarifa";
-        cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
-        SubForm3::cargar(cur);
-        delete cur;
-    }
+    _depura("TarifaListSubform::cargar\n", 0);
+    QString SQLQuery = "SELECT * FROM tarifa";
+    SubForm3::cargar(SQLQuery);
+}
 

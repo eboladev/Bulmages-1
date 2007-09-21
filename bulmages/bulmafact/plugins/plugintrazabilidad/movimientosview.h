@@ -42,9 +42,7 @@ public slots:
     virtual void cargar() {
         _depura("MovimientosSubform::cargar\n", 0);
         QString SQLQuery = "SELECT * FROM factura";
-        cursor2 *cur= empresaBase()->cargacursor(SQLQuery);
-        SubForm3::cargar(cur);
-        delete cur;
+        SubForm3::cargar(SQLQuery);
     }
     virtual void cargar(QString query) {
 	SubForm3::cargar(query);

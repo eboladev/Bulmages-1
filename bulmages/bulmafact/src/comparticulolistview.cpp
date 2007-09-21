@@ -124,9 +124,7 @@ ListCompArticuloView::~ListCompArticuloView() {
 void ListCompArticuloView::cargar(QString idarticulo) {
         _depura("ListCompActiculo::cargar", 0);
         mdb_idarticulo = idarticulo;
-        cursor2 * cur= empresaBase()->cargacursor("SELECT * FROM comparticulo, articulo WHERE comparticulo.idarticulo=" + mdb_idarticulo + " AND articulo.idarticulo = comparticulo.idcomponente");
-        SubForm3::cargar(cur);
-        delete cur;
+        SubForm3::cargar("SELECT * FROM comparticulo, articulo WHERE comparticulo.idarticulo=" + mdb_idarticulo + " AND articulo.idarticulo = comparticulo.idcomponente");
         _depura("END ListCompActiculo::cargar", 0);
 }
 

@@ -160,8 +160,6 @@ ListConfiguracionSubForm::ListConfiguracionSubForm(QWidget *parent) : SubForm2Bc
 
 void ListConfiguracionSubForm::cargar() {
     _depura("ListConfiguracionSubForm::cargar", 0);
-    cursor2 *cur = empresaBase()->cargacursor("SELECT *, nombre AS nombreorig FROM configuracion");
-    SubForm3::cargar(cur);
-    delete cur;
+    SubForm3::cargar("SELECT *, nombre AS nombreorig FROM configuracion");
 }
 

@@ -23,7 +23,6 @@
 #define CPAISVIEW_H
 
 #include <QWidget>
-//#include <QComboBox>
 #include <QLineEdit>
 #include <QCloseEvent>
 

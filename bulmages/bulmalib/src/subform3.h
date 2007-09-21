@@ -45,6 +45,12 @@ tabular de datos que puede generar desde listados hasta subformularios
 */
 class SubForm3: public BLWidget, public Ui_SubForm3Base {
     Q_OBJECT
+private:
+    virtual void cargar(cursor2 *cur);
+
+
+private:
+    QString m_query;
 
 protected:
     /// Nombre de la tabla en la BD.
@@ -208,7 +214,6 @@ public:
     virtual int borrar();
     virtual int borrar(int);
     virtual int guardar();
-    virtual void cargar(cursor2 *cur);
     virtual void cargar(QString query);
     virtual int inicializar();
     virtual void pintar();
@@ -217,6 +222,7 @@ public:
     virtual Fixed sumarCampo(QString);
     bool existsHeader(const QString &);
     virtual int cerrarEditor();
+    virtual void confquery();
 
 public slots:
     virtual void on_mui_list_cellRePosition(int, int);

@@ -139,7 +139,7 @@ public:
     /// Termina una transacci&oacute;n de forma abrupta.
     void rollback();
     /// Carga el cursor con una consulta.
-    cursor2 *cargacursor(QString Query, QString nomcursor = "");
+    cursor2 *cargacursor(QString query, QString nomcursor = "", int limit = 0, int offset = 0);
     /// Ejecuta una sentencia de c&oacute;digo SQL en la base de datos.
     int ejecuta(QString);
     int nuevoborrador(int idcuenta, int idasiento, QString concepto, QString descripcion, float debe, float haber, QString fecha, int idcontrapartida, int idtipoiva, int idccoste, int idcanal);

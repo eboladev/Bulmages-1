@@ -41,9 +41,7 @@ public slots:
     virtual void cargar(QString idalbaranp) {
         _depura("ListDescuentoAlbaranProvView::cargar\n", 0);
         mdb_idalbaranp = idalbaranp;
-        cursor2 * cur= empresaBase()->cargacursor("SELECT * FROM dalbaranp WHERE idalbaranp = " + mdb_idalbaranp);
-        SubForm3::cargar(cur);
-        delete cur;
+        SubForm3::cargar("SELECT * FROM dalbaranp WHERE idalbaranp = " + mdb_idalbaranp);
     };
 };
 

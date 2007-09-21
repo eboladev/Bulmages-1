@@ -65,9 +65,7 @@ void RutaComercialList::setEmpresaBase(Company *comp) {
 void RutaComercialList::presenta() {
     _depura("RutaComercialList::presenta()\n", 0);
     QString SQLQuery = "SELECT * FROM (SELECT * FROM rutacomercial NATURAL LEFT JOIN incidenciacomercial UNION SELECT * FROM rutacomercial NATURAL RIGHT JOIN incidenciacomercial WHERE incidenciacomercial.idrutacomercial IS NULL) AS t1 NATURAL LEFT JOIN trabajador LEFT JOIN (SELECT * FROM cliente NATURAL LEFT JOIN zonacomercial) AS t2 ON t1.idcliente = t2.idcliente WHERE 1 = 1 " + generaFiltro();
-    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
-    mui_list->cargar(cur);
-    delete cur;
+    mui_list->cargar(SQLQuery);
     _depura("end RutaComercialList::presenta()\n", 0);
 }
 
