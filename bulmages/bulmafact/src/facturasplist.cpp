@@ -36,6 +36,11 @@
     si un elemento ha sido inicializado o no.
     Al construir la clase con este constructor debe ser inicializada con setcompany().
     Mete la ventana en el workSpace. */
+/**
+\param parent
+\param flag
+\return
+**/
 FacturasProveedorList::FacturasProveedorList(QWidget *parent, Qt::WFlags flag)
         : Listado(NULL, parent, flag) {
     _depura("FacturasProveedorList::FacturasProveedorList", 0);
@@ -56,6 +61,11 @@ FacturasProveedorList::FacturasProveedorList(QWidget *parent, Qt::WFlags flag)
 
 /** Inicializa todos los componentes, hace la carga inicial con \ref presenta()
     mete la ventana en el workSpace(). */
+/**
+\param comp
+\param parent
+\return
+**/
 FacturasProveedorList::FacturasProveedorList(Company *comp, QWidget *parent)
         : Listado(comp, parent) {
     _depura("FacturasProveedorList::FacturasProveedorList", 0);
@@ -83,6 +93,11 @@ FacturasProveedorList::FacturasProveedorList(Company *comp, QWidget *parent)
     _depura("END FacturasProveedorList::FacturasProveedorList", 0);
 }
 
+
+///
+/**
+\return
+**/
 void FacturasProveedorList::iniciaForm() {
     _depura("FacturasProveedorList::iniciaForm");
     /// Disparamos los plugins.
@@ -97,6 +112,8 @@ void FacturasProveedorList::iniciaForm() {
 
 
 /** No precisa de acciones especiales en el destructor. */
+/**
+**/
 FacturasProveedorList::~FacturasProveedorList() {
     _depura("FacturasProveedorList::~FacturasProveedorList", 0);
     _depura("END FacturasProveedorList::~FacturasProveedorList", 0);
@@ -105,6 +122,9 @@ FacturasProveedorList::~FacturasProveedorList() {
 
 /** Hace la carga inicial del listado.
     Tambien hace el calculo de totales y lo presenta. */
+/**
+\return
+**/
 void FacturasProveedorList::presentar() {
     _depura("FacturasProveedorList::presentar", 0);
     mui_list->cargar("SELECT *, totalfacturap AS total, bimpfacturap AS base, impfacturap AS impuestos  FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  " + generaFiltro());
@@ -121,6 +141,9 @@ void FacturasProveedorList::presentar() {
 
 /** Metodo auxiliar que crea la clausula WHERE del query de carga  \ref presenta()
     La clausula WHERE utiliza todas las opciones de filtrado para crearse. */
+/**
+\return
+**/
 QString FacturasProveedorList::generaFiltro() {
     _depura("FacturasProveedorList::generaFiltro", 0);
     /// Tratamiento de los filtros.
@@ -161,6 +184,9 @@ QString FacturasProveedorList::generaFiltro() {
 /// Este metodo responmde a la accion predeterminada sobre el listado
 /// Normalmente consiste en abrir la ficha del elemento seleccionado,
 /// en este caso, una factura de proveedor
+/**
+\return
+**/
 void FacturasProveedorList::editar(int row) {
     _depura("FacturasProveedorList::editar", 0);
     try {
@@ -187,6 +213,10 @@ void FacturasProveedorList::editar(int row) {
     Crea una instancia de \ref FacturaProveedorView carga el elemento seleccionado
     y lanza el metodo \ref FacturaProveedorView::on_mui_borrar_clicked()
     Una vez borrado recarga el listado para que se actualicen los cambios. */
+///
+/**
+\return
+**/
 void FacturasProveedorList::borrar() {
     _depura("FacturasProveedorList::borrar", 0);
     int a = mui_list->currentRow();
@@ -210,6 +240,8 @@ void FacturasProveedorList::borrar() {
 
 /** SLOT que responde a la pulsacion del boton mui_imprimir.
     La impresion de listados esta completamente delegada en SubForm3. */
+/**
+**/
 void FacturasProveedorList::imprimir() {
     _depura("FacturasProveedorList::on_mui_imprimir_clicked", 0);
     mui_list->imprimirPDF(tr("Facturas de proveedores"));
@@ -217,31 +249,60 @@ void FacturasProveedorList::imprimir() {
 }
 
 
+///
+/**
+\param comp
+**/
 void FacturasProveedorList::setEmpresaBase (Company *comp) {
+    _depura("FacturasProveedorList::setEmpresaBase", 0);
     PEmpresaBase::setEmpresaBase(comp);
     m_proveedor->setEmpresaBase(comp);
     m_articulo->setEmpresaBase(comp);
     mui_list->setEmpresaBase(comp);
+    _depura("END FacturasProveedorList::setEmpresaBase", 0);
 }
 
 
+///
+/**
+\return
+**/
 QString FacturasProveedorList::idfacturap() {
+    _depura("FacturasProveedorList::idfacturap", 0);
     return mdb_idfacturap;
+    _depura("END FacturasProveedorList::idfacturap", 0);
 }
 
 
+///
+/**
+\param val
+**/
 void FacturasProveedorList::setidproveedor(QString val) {
+    _depura("FacturasProveedorList::setidproveedor", 0);
     m_proveedor->setidproveedor(val);
+    _depura("END FacturasProveedorList::setidproveedor", 0);
 }
 
 
+///
+/**
+\param val
+**/
 void FacturasProveedorList::setidarticulo(QString val) {
+    _depura("FacturasProveedorList::setidarticulo", 0);
     m_articulo->setidarticulo(val);
+    _depura("END FacturasProveedorList::setidarticulo", 0);
 }
 
 
+///
+/**
+**/
 void FacturasProveedorList::crear() {
+    _depura("FacturasProveedorList::crear", 0);
     ((Company *)empresaBase())->s_newFacturaPro();
+    _depura("END FacturasProveedorList::crear", 0);
 }
 
 
@@ -249,6 +310,9 @@ void FacturasProveedorList::crear() {
 ///                    SUBFORMULARIO
 /// =============================================================================
 /** Prepara el subformulario para que trabaje con la tabla facturap. */
+/**
+\param parent
+**/
 FacturasProveedorListSubform::FacturasProveedorListSubform(QWidget *parent) : SubForm2Bf(parent) {
     _depura("FacturasProveedorListSubform::FacturasProveedorListSubform", 0);
     setDBTableName("facturap");
@@ -273,12 +337,18 @@ FacturasProveedorListSubform::FacturasProveedorListSubform(QWidget *parent) : Su
 }
 
 
+///
+/**
+**/
 FacturasProveedorListSubform::~FacturasProveedorListSubform() {
     _depura("FacturasProveedorListSubform::~FacturasProveedorListSubform", 0);
     _depura("END FacturasProveedorListSubform::~FacturasProveedorListSubform", 0);
 }
 
 
+///
+/**
+**/
 void FacturasProveedorListSubform::cargar() {
     _depura("AlbaranesProveedorListSubform::cargar()\n", 0);
     QString SQLQuery = "SELECT * FROM facturap";
@@ -289,6 +359,10 @@ void FacturasProveedorListSubform::cargar() {
 }
 
 
+///
+/**
+\param query
+**/
 void FacturasProveedorListSubform::cargar(QString query) {
     _depura("AlbaranesProveedorListSubform::cargar(QString query)\n", 0);
     SubForm3::cargar(query);

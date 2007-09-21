@@ -135,7 +135,6 @@ HEADERS += bulmafact.h \
            aboutview.h \
            cliente.h \
            clienteview.h \
-           articulo.h \
            listalmacenview.h \
            listconfiguracionview.h \
            subform2bf.h \
@@ -207,7 +206,6 @@ SOURCES += bulmafact.cpp \
            aboutview.cpp \
            cliente.cpp \
            clienteview.cpp \
-           articulo.cpp \
            listalmacenview.cpp \
            listconfiguracionview.cpp \
            subform2bf.cpp \

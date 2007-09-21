@@ -42,6 +42,11 @@
     MEte la ventana en el workSpace.
     Resetea el control de cambios.
 */
+/**
+\param comp
+\param parent
+\return
+**/
 ClienteView::ClienteView(Company *comp, QWidget *parent)
         : FichaBf(comp, parent) {
     _depura("ClienteView::ClienteView", 0);
@@ -109,6 +114,8 @@ ClienteView::ClienteView(Company *comp, QWidget *parent)
 
 /** No precisa de acciones adicionales.
 */
+/**
+**/
 ClienteView::~ClienteView() {
     _depura("ClienteView::~ClienteView", 0);
     /// Disparamos los plugins.
@@ -129,6 +136,10 @@ ClienteView::~ClienteView() {
 *
 * Si la funcion falla imprime un mensaje de error y devuelve -1
 * Si todo va bien devuelve 0
+**/
+/**
+\param idcliente
+\return
 **/
 int ClienteView::cargarPost(QString idcliente) {
     _depura("ClienteView::cargar", 0);
@@ -151,9 +162,12 @@ int ClienteView::cargarPost(QString idcliente) {
     return 0;
 }
 
+
 /** SLOT que responde a la pulsacion del boton informe de cliente.
     Crea una instancia de InformeCliente, la inicializa y la lanza.
 */
+/**
+**/
 void ClienteView::on_mui_informe_clicked() {
     _depura("ClienteView::on_mui_informe_clicked", 0);
     InformeCliente inf(empresaBase());

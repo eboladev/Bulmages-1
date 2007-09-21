@@ -39,6 +39,11 @@
 #include "funcaux.h"
 
 
+///
+/**
+\param comp
+\param parent
+**/
 ListTasaIVAView::ListTasaIVAView(Company *comp, QWidget *parent)
         : FichaBf(comp, parent) {
     _depura("ListTasaIVAView::ListTasaIVAView", 1);
@@ -53,13 +58,18 @@ ListTasaIVAView::ListTasaIVAView(Company *comp, QWidget *parent)
 }
 
 
+///
+/**
+**/
 void ListTasaIVAView::on_mui_aceptar_clicked() {
+    _depura("ListTasaIVAView::on_mui_aceptar_clicked", 0);
     try {
         mui_listado->guardar();
         close();
     } catch (...) {
         mensajeInfo("Error al guardar los almacenes");
     } // end try
+    _depura("END ListTasaIVAView::on_mui_aceptar_clicked", 0);
 }
 
 
@@ -70,6 +80,10 @@ ListTasaIVAView::~ListTasaIVAView() {
 
 
 /// ===================================== SUBFORMULARIO ===============================================
+///
+/**
+\param parent
+**/
 ListTasaIVASubForm::ListTasaIVASubForm(QWidget *parent) : SubForm2Bf(parent) {
     _depura("ListTasaIVASubForm::ListTasaIVASubForm", 0);
     setDBTableName("tasa_iva");
@@ -85,6 +99,9 @@ ListTasaIVASubForm::ListTasaIVASubForm(QWidget *parent) : SubForm2Bf(parent) {
 }
 
 
+///
+/**
+**/
 void ListTasaIVASubForm::cargar() {
         _depura("ListTasaIVASubForm::cargar", 0);
         cursor2 * cur= empresaBase()->cargacursor("SELECT * FROM tasa_iva LEFT JOIN tipo_iva on tasa_iva.idtipo_iva = tipo_iva.idtipo_iva");

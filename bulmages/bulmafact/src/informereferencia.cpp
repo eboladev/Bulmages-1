@@ -28,15 +28,30 @@
 #include "funcaux.h"
 
 
+///
+/**
+\param comp
+**/
 InformeReferencia::InformeReferencia(Company *comp) {
+    _depura("InformeReferencia::InformeReferencia", 0);
     companyact = comp;
+    _depura("END InformeReferencia::InformeReferencia", 0);
 }
 
 
-InformeReferencia::~InformeReferencia() {}
+///
+/**
+**/
+InformeReferencia::~InformeReferencia() {
+    _depura("InformeReferencia::~InformeReferencia", 0);
+    _depura("END InformeReferencia::~InformeReferencia", 0);
+}
 
-
+///
+/**
+**/
 void InformeReferencia::generarinforme() {
+    _depura("InformeReferencia::generarinforme", 0);
     QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "informereferencia.rml";
     QString archivod = confpr->valor(CONF_DIR_USER) + "informereferencia.rml";
     QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
@@ -260,21 +275,37 @@ void InformeReferencia::generarinforme() {
         file.close();
     } // end if
     invocaPDF("informereferencia");
+    _depura("END InformeReferencia::generarinforme", 0);
 }
 
 
 /// ================================================================
 /// =================== INFORME CLIENTE ============================
 /// ================================================================
-InformeCliente::InformeCliente (Company *comp) {
+/**
+\param comp
+**/
+InformeCliente::InformeCliente(Company *comp) {
+    _depura("InformeCliente::InformeCliente", 0);
     companyact = comp;
+    _depura("END InformeCliente::InformeCliente", 0);
 }
 
 
-InformeCliente::~InformeCliente() {}
+///
+/**
+**/
+InformeCliente::~InformeCliente() {
+    _depura("InformeCliente::~InformeCliente", 0);
+    _depura("END InformeCliente::~InformeCliente", 0);
+}
 
 
+///
+/**
+**/
 void InformeCliente::generarInforme() {
+    _depura("InformeCliente::generarInforme", 0);
     QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "informecliente.rml";
     QString archivod = confpr->valor(CONF_DIR_USER) + "informecliente.rml";
     QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
@@ -508,6 +539,7 @@ void InformeCliente::generarInforme() {
         file.close();
     } // end if
     invocaPDF("informecliente");
+    _depura("END InformeCliente::generarInforme", 0);
 }
 
 

@@ -29,6 +29,11 @@
 #include "plugins.h"
 
 
+///
+/**
+\param parent
+\returns
+**/
 ListLinFacturaView::ListLinFacturaView(QWidget *parent) : SubForm2Bf(parent) {
     _depura("ListLinFacturaView::ListLinFacturaView", 0);
     setDBTableName("lfactura");
@@ -60,6 +65,10 @@ ListLinFacturaView::ListLinFacturaView(QWidget *parent) : SubForm2Bf(parent) {
 }
 
 
+///
+/**
+\param idfactura
+**/
 void ListLinFacturaView::cargar(QString idfactura) {
     _depura("ListLinFacturaView::cargar", 0);
     mdb_idfactura = idfactura;

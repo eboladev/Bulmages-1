@@ -28,6 +28,12 @@
 #include "fixed.h"
 #include "plugins.h"
 
+
+///
+/**
+\param parent
+\return
+**/
 ListLinAlbaranProveedorView::ListLinAlbaranProveedorView(QWidget *parent) : SubForm2Bf(parent) {
     _depura("ListLinAlbaranProveedorView::ListLinAlbaranProveedorView", 0);
     setDBTableName("lalbaranp");
@@ -59,8 +65,10 @@ ListLinAlbaranProveedorView::ListLinAlbaranProveedorView(QWidget *parent) : SubF
 }
 
 
-
-
+///
+/**
+\param isalbaranp
+**/
 void ListLinAlbaranProveedorView::cargar(QString idalbaranp) {
     _depura("ListLinPedidoProveedorView::cargar", 0);
     mdb_idalbaranp = idalbaranp;

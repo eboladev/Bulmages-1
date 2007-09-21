@@ -33,17 +33,31 @@
 #include "configuracion.h"
 
 
+///
+/**
+\param parent
+\param flag
+**/
 PagosList::PagosList(QWidget *parent, Qt::WFlags flag)
         : Listado(NULL, parent, flag) {
+    _depura("PagosList::PagosList", 0);
     setupUi(this);
     mdb_idpago = "";
     setSubForm(mui_list);
     hideBusqueda();
+    _depura("END PagosList::PagosList", 0);
 }
 
 
+///
+/**
+\param comp
+\param parent
+\param flag
+**/
 PagosList::PagosList(Company *comp, QWidget *parent, Qt::WFlags flag)
         : Listado(comp, parent, flag) {
+    _depura("PagosList::PagosList", 0);
     setupUi(this);
     m_proveedor->setEmpresaBase(comp);
     mui_list->setEmpresaBase(comp);
@@ -56,10 +70,13 @@ PagosList::PagosList(Company *comp, QWidget *parent, Qt::WFlags flag)
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos("pago");
+    _depura("END PagosList::PagosList", 0);
 }
 
 
 PagosList::~PagosList() {
+    _depura("PagosList::~PagosList", 0);
+    _depura("END PagosList::~PagosList", 0);
 }
 
 

@@ -27,6 +27,9 @@
     Conecta el activar un tipo con m_activated.
 */
 /// \TODO: No deberia usarse m_activated como signal ya que confunde con una variable de clase.
+/**
+\param parent
+**/
 BusquedaRegimenFiscal::BusquedaRegimenFiscal(QWidget *parent)
         : QComboBox2(parent) {
     _depura("BusquedaRegimenFiscal::BusquedaRegimenFiscal", 0);
@@ -40,6 +43,8 @@ BusquedaRegimenFiscal::BusquedaRegimenFiscal(QWidget *parent)
 
 /** Se libera memoria destruyendo el cursor que almacena los tipos de IVA si es que esta creado.
 */
+/**
+**/
 BusquedaRegimenFiscal::~BusquedaRegimenFiscal() {
     _depura("BusquedaRegimenFiscal::~BusquedaRegimenFiscal", 0);
     _depura("END BusquedaRegimenFiscal::~BusquedaRegimenFiscal", 0);
@@ -51,6 +56,9 @@ BusquedaRegimenFiscal::~BusquedaRegimenFiscal() {
     Busca en la tabla forma_pago de la base de datos aquel registro cuyo idforma_pago coincide con el pasado.
     Rellena el comboBox haciendo que el seleccionado sea el visible.
 */
+/**
+\param regimen
+**/
 void BusquedaRegimenFiscal::setRegimenFiscal(QString regimen) {
     _depura("BusquedaRegimenFiscal::setRegimenFiscal", 0, regimen);
     if (regimen == "Normal") {
@@ -63,11 +71,22 @@ void BusquedaRegimenFiscal::setRegimenFiscal(QString regimen) {
     _depura("END BusquedaRegimenFiscal::setRegimenFiscal", 0);
 }
 
+
+///
+/**
+\param regimen
+**/
 void BusquedaRegimenFiscal::setValorCampo(QString regimen) {
+    _depura("BusquedaRegimenFiscal::setValorCampo", 0);
 	setRegimenFiscal(regimen);
+    _depura("END BusquedaRegimenFiscal::setValorCampo", 0);
 }
 
 
+///
+/**
+\param index
+**/
 void BusquedaRegimenFiscal::m_activated(int index) {
     _depura("BusquedaRegimenFiscal::m_activated", 0);
     if (index > 0) {
@@ -78,7 +97,11 @@ void BusquedaRegimenFiscal::m_activated(int index) {
     _depura("END BusquedaRegimenFiscal::m_activated", 0);
 }
 
+
 /** Devuelve el regimen fiscal seleccionado
+**/
+/**
+\return
 **/
 QString BusquedaRegimenFiscal::regimenFiscal() {
     _depura("BusquedaRegimenFiscal::regimenFiscal", 0);
@@ -88,6 +111,9 @@ QString BusquedaRegimenFiscal::regimenFiscal() {
 
 
 /** Devuelve el regimen fiscal seleccionado
+**/
+/**
+\return
 **/
 QString BusquedaRegimenFiscal::valorCampo() {
     _depura("BusquedaRegimenFiscal::regimenFiscal", 0);

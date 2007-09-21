@@ -30,6 +30,12 @@
 #include "pedidosclientelist.h"
 
 
+///
+/**
+\param parent
+\param flag
+\return
+**/
 PedidosClienteList::PedidosClienteList(QWidget *parent, Qt::WFlags flag)
         : Listado(NULL, parent, flag) {
     _depura("PedidosClienteList::PedidosClienteList", 0);
@@ -46,6 +52,13 @@ PedidosClienteList::PedidosClienteList(QWidget *parent, Qt::WFlags flag)
 }
 
 
+///
+/**
+\param comp
+\param parent
+\param flags
+\return
+**/
 PedidosClienteList::PedidosClienteList(Company *comp, QWidget *parent, Qt::WFlags flag): Listado(comp, parent, flag) {
     _depura("PedidosClienteList::PedidosClienteList", 0);
     setupUi(this);
@@ -67,6 +80,11 @@ PedidosClienteList::PedidosClienteList(Company *comp, QWidget *parent, Qt::WFlag
     _depura("END PedidosClienteList::PedidosClienteList", 0);
 }
 
+
+///
+/**
+\return
+**/
 void PedidosClienteList::iniciaForm() {
     _depura("PedidosClienteList::iniciaForm");
     /// Disparamos los plugins.
@@ -79,12 +97,19 @@ void PedidosClienteList::iniciaForm() {
     _depura("END PedidosClienteList::iniciaForm");
 }
 
+
+///
+/**
+**/
 PedidosClienteList::~PedidosClienteList() {
     _depura("PedidosClienteList::~PedidosClienteList", 0);
     _depura("END PedidosClienteList::~PedidosClienteList", 0);
 }
 
 
+///
+/**
+**/
 void PedidosClienteList::presentar() {
     _depura("PedidosClienteList::presenta", 0);
     /// Hacemos el listado y lo presentamos.
@@ -101,10 +126,13 @@ void PedidosClienteList::presentar() {
 }
 
 
+///
+/**
+\return
+**/
 QString PedidosClienteList::generarFiltro() {
     /// Tratamiento de los filtros.
     _depura("PedidosClienteList::generarFiltro", 0);
-
     QString filtro = "";
     if (m_filtro->text() != "") {
         filtro = " AND ( lower(descpedidocliente) LIKE lower('%" + m_filtro->text() + "%') ";
@@ -141,6 +169,9 @@ QString PedidosClienteList::generarFiltro() {
 }
 
 
+///
+/**
+**/
 void PedidosClienteList::crear() {
     _depura("PedidosClienteList:crear", 0);
     PedidoClienteView *prov = new PedidoClienteView((Company *)empresaBase(), 0);
@@ -152,6 +183,10 @@ void PedidosClienteList::crear() {
 
 
 /// \TODO: Company debe instanciar la clase y no hacerse asi como esta ahora.
+/**
+\param row
+\return
+**/
 void PedidosClienteList::editar(int row) {
     _depura("ProveedorList::editar", 0);
     try {
@@ -174,8 +209,9 @@ void PedidosClienteList::editar(int row) {
 }
 
 
-
-
+///
+/**
+**/
 void PedidosClienteList::imprimir() {
     _depura("PedidosClienteList::imprimir", 0);
     mui_list->imprimirPDF(tr("Pedidos de clientes"));
@@ -183,6 +219,10 @@ void PedidosClienteList::imprimir() {
 }
 
 
+///
+/**
+\return
+**/
 void PedidosClienteList::borrar() {
     _depura("PedidosClienteList::borrar", 0);
     int a = mui_list->currentRow();
@@ -208,24 +248,46 @@ void PedidosClienteList::borrar() {
 }
 
 
-
+///
+/**
+\param comp
+**/
 void PedidosClienteList::setEmpresaBase(Company *comp) {
+    _depura("PedidosClienteList::setEmpresaBase", 0);
     PEmpresaBase::setEmpresaBase( comp);
     m_cliente->setEmpresaBase(comp);
     mui_list->setEmpresaBase(comp);
+    _depura("END PedidosClienteList::setEmpresaBase", 0);
 }
 
+
+///
+/**
+**/
 QString PedidosClienteList::idpedidocliente() {
+    _depura("PedidosClienteList::idpedidocliente", 0);
+    _depura("END PedidosClienteList::idpedidocliente", 0);
     return m_idpedidocliente;
 }
 
+
+///
+/**
+\param val
+**/
 void PedidosClienteList::setidcliente(QString val) {
+    _depura("PedidosClienteList::setidcliente", 0);
     m_cliente->setidcliente(val);
+    _depura("END PedidosClienteList::setidcliente", 0);
 }
 
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
+///
+/**
+\param parent
+**/
 PedidosClienteListSubform::PedidosClienteListSubform(QWidget *parent, const char *) : SubForm2Bf(parent) {
     _depura("PedidosClienteListSubform::PedidosClienteListSubform", 0);
     /// Disparamos los plugins.
@@ -256,17 +318,28 @@ PedidosClienteListSubform::PedidosClienteListSubform(QWidget *parent, const char
     _depura("END PedidosClienteListSubform::PedidosClienteListSubform", 0);
 }
 
+
+///
+/**
+**/
 void PedidosClienteListSubform::cargar() {
     _depura("PedidosClienteListSubform::cargar", 0);
     QString SQLQuery = "SELECT * FROM pedidocliente";
     cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
     SubForm3::cargar(cur);
     delete cur;
+    _depura("END PedidosClienteListSubform::cargar", 0);
 }
 
 
+///
+/**
+\param query
+**/
 void PedidosClienteListSubform::cargar(QString query) {
+    _depura("PedidosClienteListSubform::cargar", 0);
     SubForm3::cargar(query);
+    _depura("END PedidosClienteListSubform::cargar", 0);
 }
 
 

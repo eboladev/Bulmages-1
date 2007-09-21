@@ -28,6 +28,11 @@
 #include "provedit.h"
 
 
+///
+/**
+\param comp
+\param parent
+**/
 ProveedorView::ProveedorView(Company *comp, QWidget *parent)
         : FichaBf(comp, parent) {
     _depura("ProveedorView::ProveedorView", 0);
@@ -94,7 +99,9 @@ ProveedorView::ProveedorView(Company *comp, QWidget *parent)
     _depura("END ProveedorView::ProveedorView", 0);
 }
 
-
+///
+/**
+**/
 ProveedorView::~ProveedorView() {
     _depura("ProveedorView::~ProveedorView", 0);
     _depura("END ProveedorView::~ProveedorView", 0);
@@ -105,6 +112,10 @@ ProveedorView::~ProveedorView() {
 /// Esta funcion carga un proveedor de la base de datos y lo presenta.
 /// Si el parametro pasado no es un identificador valido entonces se pone
 /// la ventana de edicion en modo de insercion.
+/**
+\param idprov
+\return
+**/
 int ProveedorView::cargarPost(QString idprov) {
     _depura("ProveedorView::cargar", 0, idprov);
 

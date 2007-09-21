@@ -26,6 +26,9 @@
 /** Inicializa todos los componentes a NULL para que no haya confusiones sobre
     si un elemento ha sido inicializado o no.
 */
+/**
+\param parent
+**/
 BusquedaTipoArticulo::BusquedaTipoArticulo(QWidget *parent)
         : BLWidget(parent) {
     _depura("BusquedaTipoArticulo::BusquedaTipoArticulo", 0);
@@ -39,6 +42,8 @@ BusquedaTipoArticulo::BusquedaTipoArticulo(QWidget *parent)
 
 /** El destructor de la clase no requiere de acciones adicionales.
 */
+/**
+**/
 BusquedaTipoArticulo::~BusquedaTipoArticulo() {
     _depura("BusquedaTipoArticulo::~BusquedaTipoArticulo", 0);
     _depura("END BusquedaTipoArticulo::~BusquedaTipoArticulo", 0);
@@ -49,6 +54,9 @@ BusquedaTipoArticulo::~BusquedaTipoArticulo() {
     Busca en la base de datos el tipo que concuerde con el identificador pasado.
     Coge todos los datos necesarios para la presentacion y los muestra.
 */
+/**
+\param val
+**/
 void BusquedaTipoArticulo::setidtipo_articulo(QString val) {
     _depura("BusquedaTipoArticulo::setidtipo_articulo", 0);
     mdb_idtipo_articulo = val;
@@ -74,14 +82,24 @@ void BusquedaTipoArticulo::setidtipo_articulo(QString val) {
 }
 
 
+///
+/**
+\param val
+**/
 void BusquedaTipoArticulo::setValorCampo(QString val) {
+    _depura("BusquedaTipoArticulo::setValorCampo", 0);
 	setidtipo_articulo(val);
+    _depura("END BusquedaTipoArticulo::setValorCampo", 0);
 }
+
 
 /** Mediante este metodo se puede indicar cual es el tipo de articulo seleccionado.
     Busca en la base de datos el tipo que coincide con el codigo pasado.
     Coge todos los datos necesarios para la presentacion y los muestra.
 */
+/**
+\param val
+**/
 void BusquedaTipoArticulo::setcodtipo_articulo(QString val) {
     _depura("BusquedaTipoArticulo::setcodtipo_articulo", 0);
     mdb_codtipo_articulo = val;
@@ -110,6 +128,8 @@ void BusquedaTipoArticulo::setcodtipo_articulo(QString val) {
     Una vez seleccionado el tipo muestra todos los datos del tipo y lo pone como
     elemento seleccionado.
 */
+/**
+**/
 void BusquedaTipoArticulo::on_mui_buscar_clicked() {
     _depura("BusquedaTipoArticulo::on_mui_buscar_clicked", 0);
     QDialog *diag = new QDialog(0);
@@ -148,6 +168,9 @@ void BusquedaTipoArticulo::on_mui_buscar_clicked() {
     lo establece como predeterminado y lo presenta.
     Emite un signal de valueChanged().
 */
+/**
+\param val
+**/
 void BusquedaTipoArticulo::on_m_codtipo_articulo_textChanged(const QString &val) {
     _depura("BusquedaTipoArticulo::on_m_codtipo_articulo_textChanged", 0);
     mdb_codtipo_articulo = val;
@@ -174,14 +197,21 @@ void BusquedaTipoArticulo::on_m_codtipo_articulo_textChanged(const QString &val)
 /** Devuelve el codigo de tipo de articulo seleccionado, si no hay ningun elemento seleccionado devuelve
     un string vacio
 **/
+/**
+\return
+**/
 QString BusquedaTipoArticulo::codtipo_articulo() {
     _depura("BusquedaTipoArticulo::codtipo_articulo", 0);
     _depura("END BusquedaTipoArticulo::codtipo_articulo", 0);
     return m_codtipo_articulo->text();
 }
 
+
 /** Devuelve el identificador del tipo de articulo seleccionado, si no hay ningun elemento seleccionado
     devuelve un string vacio
+**/
+/**
+\return
 **/
 QString BusquedaTipoArticulo::idtipo_articulo() {
     _depura("BusquedaTipoArticulo::idtipo_articulo", 0);
@@ -192,6 +222,9 @@ QString BusquedaTipoArticulo::idtipo_articulo() {
 /** Devuelve el identificador del tipo de articulo seleccionado, si no hay ningun elemento seleccionado
     devuelve un string vacio
 **/
+/**
+\return
+**/
 QString BusquedaTipoArticulo::valorCampo() {
     _depura("BusquedaTipoArticulo::valorCampo", 0);
     _depura("END BusquedaTipoArticulo::valorCampo", 0);
@@ -199,9 +232,11 @@ QString BusquedaTipoArticulo::valorCampo() {
 }
 
 
-
 /** Devuelve la descripcion del tipo de articulo seleccionado, si no hay ningun elemento seleccionado
     devuelve un string vacio
+**/
+/**
+\return
 **/
 QString BusquedaTipoArticulo::desctipo_articulo() {
     _depura("BusquedaTipoArticulo::desctipo_articulo", 0);

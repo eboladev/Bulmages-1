@@ -27,6 +27,9 @@
 /** Inicializa la clase poniendo a NULL todos los valores para que no haya confusion
     en el hecho de que la clase aun no ha sido completamente inicializada.
 */
+/**
+\param parent
+**/
 BusquedaCliente::BusquedaCliente(QWidget *parent)
         : BLWidget(parent) {
     _depura("BusquedaCliente::BusquedaCliente", 0);
@@ -46,6 +49,8 @@ BusquedaCliente::BusquedaCliente(QWidget *parent)
 
 /** No requiere de acciones especiales en el destructor de clase.
 */
+/**
+**/
 BusquedaCliente::~BusquedaCliente() {
     _depura("BusquedaCliente::~BusquedaCliente", 0);
     _depura("END BusquedaCliente::~BusquedaCliente", 0);
@@ -54,6 +59,8 @@ BusquedaCliente::~BusquedaCliente() {
 
 /** Se encarga de presentar en el Widget los valores seleccionados.
 */
+/**
+**/
 void BusquedaCliente::pinta() {
     _depura ("BusquedaCliente::pinta", 0);
     m_semaforo = TRUE;
@@ -62,8 +69,8 @@ void BusquedaCliente::pinta() {
     m_semaforo = FALSE;
     emit(valueChanged(mdb_idcliente));
     _depura ("END BusquedaCliente::pinta", 0);
-
 }
+
 
 /** Mediante este metodo indicamos al Widget que cargue un cliente determinado.
     Busca en la base de datos un cliente que coincida con el identificador pasado
@@ -71,6 +78,9 @@ void BusquedaCliente::pinta() {
     Dicho elemento se considera el elemento seleccionado.
     Al finalizar llama al metodo pinta() para que se refelejen visualmente los cambios.
 */
+/**
+\param val
+**/
 void BusquedaCliente::setidcliente(QString val) {
     _depura("BusquedaCliente::setidcliente", 0, val);
     mdb_idcliente = val;
@@ -94,8 +104,15 @@ void BusquedaCliente::setidcliente(QString val) {
     _depura("END BusquedaCliente::setidcliente", 0);
 }
 
+
+///
+/**
+\param val
+**/
 void BusquedaCliente::setValorCampo(QString val) {
+    _depura("BusquedaCliente::setValorCampo", 0);
 	setidcliente(val);
+    _depura("END BusquedaCliente::setValorCampo", 0);
 }
 
 
@@ -105,6 +122,9 @@ void BusquedaCliente::setValorCampo(QString val) {
     y si lo encuentra lo pinta y lo considera el elemento seleccionado.
     Al final llama al metodo pintar() para garantizar la correcta visualizacion del elemento en pantalla.
 */
+/**
+\param val
+**/
 void BusquedaCliente::setcifcliente(QString val) {
     _depura("BusquedaCliente::setcifcliente", 0, val);
     mdb_cifcliente = val;
@@ -132,6 +152,8 @@ void BusquedaCliente::setcifcliente(QString val) {
     Una vez determinado el elemento lo considera como el elemento seleccionado
     y lo muestra.
 */
+/**
+**/
 void BusquedaCliente::on_mui_buscar_clicked() {
     _depura("BusquedaCliente::on_mui_buscar_clicked", 0);
     QDialog *diag = new QDialog(0);
@@ -163,6 +185,8 @@ void BusquedaCliente::on_mui_buscar_clicked() {
     Se supone que hemos introducido un cliente identificable por codigo, por nombre o por CIF
     Asi que se encarga de buscarlo y encontrarlo.
 */
+/**
+**/
 void BusquedaCliente::on_m_cifcliente_editingFinished() {
     _depura("BusquedaCliente::on_m_cifcliente_editingFinished", 0);
     pinta();
@@ -174,6 +198,10 @@ void BusquedaCliente::on_m_cifcliente_editingFinished() {
     posibles clientes que cumplan las caracteristicas. Si encuentra solo uno lo
     considera como el cliente seleccionado.
 */
+/**
+\param val
+\return
+**/
 void BusquedaCliente::on_m_cifcliente_textChanged(const QString &val) {
     _depura("BusquedaCliente::on_m_cifcliente_textChanged", 0);
     if (m_semaforo)
@@ -235,20 +263,43 @@ void BusquedaCliente::on_m_cifcliente_textChanged(const QString &val) {
 }
 
 
+///
+/**
+\return
+**/
 QString BusquedaCliente::cifcliente() {
+    _depura("BusquedaCliente::cifcliente", 0);
+    _depura("END BusquedaCliente::cifcliente", 0);
     return m_cifcliente->text();
 }
 
-
+///
+/**
+**/
 QString BusquedaCliente::idcliente() {
+    _depura("BusquedaCliente::idcliente", 0);
+    _depura("END BusquedaCliente::idcliente", 0);
     return mdb_idcliente;
 }
 
+
+///
+/**
+\return
+**/
 QString BusquedaCliente::valorCampo() {
+    _depura("BusquedaCliente::valorCampo", 0);
+    _depura("END BusquedaCliente::valorCampo", 0);
     return mdb_idcliente;
 }
 
+
+///
+/**
+\return
+**/
 QString BusquedaCliente::nomcliente() {
+    _depura("BusquedaCliente::nomcliente", 0);
+    _depura("END BusquedaCliente::nomcliente", 0);
     return mdb_nomcliente;
 }
-

@@ -32,6 +32,14 @@
 #include "pgimportfiles.h"
 
 
+///
+/**
+\param comp
+\param parent
+\param flag
+\param editmode
+\return
+**/
 ProveedorList::ProveedorList(Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmode)
         : Listado(comp, parent, flag, editmode), pgimportfiles(comp) {
     _depura("ProveedorList::ProveedorList", 0);
@@ -66,28 +74,51 @@ ProveedorList::ProveedorList(Company *comp, QWidget *parent, Qt::WFlags flag, ed
 }
 
 
+///
+/**
+**/
 ProveedorList::~ProveedorList() {
+    _depura("ProveedorList::~ProveedorList", 0);
+    _depura("END ProveedorList::~ProveedorList", 0);
+
 }
 
 
-
-
+///
+/**
+\return
+**/
 QString ProveedorList::idprovider() {
+    _depura("ProveedorList::idprovider", 0);
+    _depura("END ProveedorList::idprovider", 0);
     return m_idprovider;
 }
 
-
+///
+/**
+\return
+**/
 QString ProveedorList::cifprovider() {
+    _depura("ProveedorList::cifprovider", 0);
+    _depura("END ProveedorList::cifprovider", 0);
     return m_cifprovider;
 }
 
 
+///
+/**
+\return
+**/
 QString ProveedorList::nomprovider() {
+    _depura("ProveedorList::nomprovider", 0);
+    _depura("END ProveedorList::nomprovider", 0);
     return m_nomprovider;
 }
 
 
-
+///
+/**
+**/
 void ProveedorList::presentar() {
     _depura("ProveedorList::presentar", 0);
     mui_list->cargar("SELECT * FROM proveedor WHERE lower(nomproveedor) LIKE lower('%" + m_filtro->text() + "%')");
@@ -96,6 +127,8 @@ void ProveedorList::presentar() {
 
 
 /// \TODO: Esta creacion debe pasar por la clase company.
+/**
+**/
 void ProveedorList::crear() {
     _depura("ProveedorList::crear", 0);
         ProveedorView *prov = ((Company *)empresaBase())->newProveedorView();
@@ -105,7 +138,11 @@ void ProveedorList::crear() {
 }
 
 
-
+///
+/**
+\param row
+\return
+**/
 void ProveedorList::editar(int row) {
     _depura("ProveedorList::editar", 0);
     m_idprovider = mui_list->DBvalue(QString("idproveedor"), row);
@@ -131,6 +168,8 @@ void ProveedorList::editar(int row) {
 /// SLOT que responde a la pulsacion de borrar un determinado proveedor
 /// Dicha funcion avisa de la perdida de datos y si se decide continuar
 /// Se procede a borrar el proveedor.
+/**
+**/
 void ProveedorList::borrar() {
     _depura("ProveedorList::borrar", 0);
     try {
@@ -148,6 +187,8 @@ void ProveedorList::borrar() {
 
 
 /// SLOT que se ejecuta al pulsar sobre el boton de imprimir en la ventana de proveedores
+/**
+**/
 void ProveedorList::imprimir() {
     _depura("ProveedorList::on_mui_imprimir_clicked", 0);
     mui_list->imprimirPDF(tr("Listado de Proveedores"));
@@ -155,6 +196,9 @@ void ProveedorList::imprimir() {
 }
 
 
+///
+/**
+**/
 void ProveedorList::on_mui_exportar_clicked() {
     QFile filexml(QFileDialog::getSaveFileName(this,
                   tr("Seleccione el archivo"),
@@ -169,7 +213,9 @@ void ProveedorList::on_mui_exportar_clicked() {
     } // end if
 }
 
-
+///
+/**
+**/
 void ProveedorList::on_mui_importar_clicked() {
     QFile filexml(QFileDialog::getOpenFileName(this,
                   tr("Elija el archivo"),
@@ -189,7 +235,9 @@ void ProveedorList::on_mui_importar_clicked() {
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
-
+///
+/**
+**/
 void ProveedorListSubform::cargar() {
     _depura("ProveedorListSubform::cargar", 0);
     QString SQLQuery = "SELECT * FROM proveedor";
@@ -200,6 +248,10 @@ void ProveedorListSubform::cargar() {
 }
 
 
+///
+/**
+\param a
+**/
 void ProveedorListSubform::cargar(QString a) {
     _depura("ProveedorListSubform::cargar", 0);
     SubForm3::cargar(a);
@@ -207,6 +259,10 @@ void ProveedorListSubform::cargar(QString a) {
 }
 
 
+///
+/**
+\param parent
+**/
 ProveedorListSubform::ProveedorListSubform(QWidget *parent) : SubForm2Bf(parent) {
     _depura("ProveedorListSubform::ProveedorListSubform", 0);
     setDBTableName("proveedor");

@@ -26,6 +26,9 @@
 
 
 /// Rellena con datos los QTextEdit y muestra el formulario.
+/**
+\param parent
+**/
 AboutView::AboutView(QDialog *parent) : QDialog(parent) {
     QString str_sobre;
     QString str_autores;
@@ -409,5 +412,7 @@ AboutView::AboutView(QDialog *parent) : QDialog(parent) {
 
 
 /// Destructor de la clase
+/**
+**/
 AboutView::~AboutView() {}
 

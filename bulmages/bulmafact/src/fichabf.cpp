@@ -28,6 +28,13 @@
 class Fixed;
 
 
+///
+/**
+\param comp
+\param parent
+\param f
+\param modo
+**/
 FichaBf::FichaBf(Company *comp, QWidget *parent, Qt::WFlags f, edmode modo)
         : Ficha(comp, parent, f, modo) {
     _depura("FichaBf::FichaBf", 0);
@@ -37,6 +44,10 @@ FichaBf::FichaBf(Company *comp, QWidget *parent, Qt::WFlags f, edmode modo)
 }
 
 
+///
+/**
+\return
+**/
 FichaBf::~FichaBf() {
     _depura("FichaBf::~FichaBf", 0, this->windowTitle());
     empresaBase()->sacaWindow(this);
@@ -44,15 +55,23 @@ FichaBf::~FichaBf() {
 }
 
 
+///
+/**
+\return
+**/
 Company * FichaBf::empresaBase() {
     _depura("FichaBf::getcompany", 0);
     _depura("END FichaBf::getcompany", 0);
     return (Company *) Ficha::empresaBase();
 }
 
+
 /** Calcula los totales de factura, descuentos e impuestos y invoca al metodo de pintaTotales para
     que se pinten dichos valores en la pantalla.
 */
+/**
+\return
+**/
 void FichaBf::calculaypintatotales() {
     _depura("FichaBf::calculaypintatotales", 0);
     base basesimp;
@@ -154,6 +173,10 @@ void FichaBf::calculaypintatotales() {
 }
 
 
+///
+/**
+\return
+**/
 void FichaBf::generaRML() {
     _depura("FichaBf::generaRML", 0);
     /// Disparamos los plugins
@@ -369,6 +392,11 @@ void FichaBf::generaRML() {
     _depura("END FichaBf::generaRML", 0);
 }
 
+
+///
+/**
+\return
+**/
 void FichaBf::imprimir() {
     _depura("FichaBf::imprimir", 0);
     /// Disparamos los plugins
@@ -382,25 +410,42 @@ void FichaBf::imprimir() {
 }
 
 
-
+///
+/**
+\param form
+**/
 void FichaBf::setListaLineas(SubForm2Bf *form) {
     _depura("FichaBf::setListaLineas", 0);
     m_listalineas = form;
     _depura("END FichaBf::setListaLineas", 0);
 }
 
+///
+/**
+\param form
+**/
 void FichaBf::setListaDescuentos(SubForm2Bf *form) {
     _depura("FichaBf::setListaDescuentos", 0);
     m_listadescuentos = form;
     _depura("END FichaBf::setListaDescuentos", 0);
 }
 
+
+///
+/**
+\return
+**/
 SubForm2Bf* FichaBf::getlistalineas() {
     _depura("FichaBf::getlistalineas", 0);
     _depura("END FichaBf::getlistalineas", 0);
     return m_listalineas;
 }
 
+
+///
+/**
+\return
+**/
 SubForm2Bf* FichaBf::getlistadescuentos() {
     _depura("FichaBf::getlistadescuentos", 0);
     _depura("END FichaBf::getlistadescuentos", 0);

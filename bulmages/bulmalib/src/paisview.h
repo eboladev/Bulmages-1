@@ -42,7 +42,7 @@ class PaisView : public Ficha, public Ui_paisbase {
     Q_OBJECT
 
 public:
-    int idpais; /// Indica cual es el centro de coste que se esta visualizando.
+    QString m_idpais; /// Indica cual es el pais que se esta visualizando.
     /// Si su valor es 0 entonces es que no se esta visualizando ning&uacute;n centro de coste.
 
 

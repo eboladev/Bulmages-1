@@ -28,6 +28,11 @@
 #include "fixed.h"
 
 
+///
+/**
+\param parent
+\return
+**/
 ListLinPedidoClienteView::ListLinPedidoClienteView(QWidget *parent) : SubForm2Bf(parent) {
     _depura("ListLinPedidoClienteView::ListLinPedidoClienteView", 0);
     setDBTableName("lpedidocliente");
@@ -62,6 +67,10 @@ ListLinPedidoClienteView::ListLinPedidoClienteView(QWidget *parent) : SubForm2Bf
 }
 
 
+///
+/**
+\param idpedidocliente
+**/
 void ListLinPedidoClienteView::cargar(QString idpedidocliente) {
     _depura("ListLinPedidoClienteView::cargar", 0);
     mdb_idpedidocliente = idpedidocliente;

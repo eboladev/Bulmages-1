@@ -36,6 +36,9 @@
 /** Inicializa todos los componentes del Widget a NULL para que no haya
     confusion en determinar si un objeto ha sido creado o no.
 */
+/**
+\param parent
+**/
 BusquedaReferencia::BusquedaReferencia(QWidget *parent)
         : BLWidget(parent) {
     _depura("BusquedaReferencia::BusquedaReferencia", 0);
@@ -46,6 +49,8 @@ BusquedaReferencia::BusquedaReferencia(QWidget *parent)
 
 /** No requiere de acciones adicionales en la destruccion de la clase.
 */
+/**
+**/
 BusquedaReferencia::~BusquedaReferencia() {
     _depura("BusquedaReferencia::~BusquedaReferencia", 0);
     _depura("END BusquedaReferencia::~BusquedaReferencia", 0);
@@ -55,6 +60,8 @@ BusquedaReferencia::~BusquedaReferencia() {
 /** SLOT que responde a la peticion del informe por referencia.
     Crea una instancia de InformeReferencia, la inicializa y la lanza.
 */
+/**
+**/
 void BusquedaReferencia::on_mui_informe_clicked() {
     _depura("BusquedaReferencia::on_mui_buscar_clicked\n", 0);
     InformeReferencia *inf = new InformeReferencia((Company *)empresaBase());
@@ -69,17 +76,22 @@ void BusquedaReferencia::on_mui_informe_clicked() {
 /** SLOT que responde al fin de edicion de la casilla de referencia.
     Emite la se&ntilde;al valueChanged() para notificaciones.
 */
+/**
+**/
 void BusquedaReferencia::on_mui_referencia_editingFinished() {
     _depura("BusquedaReferencia::on_m_cifcliente_editingFinished", 0);
     emit(valueChanged(mui_referencia->text()));
     _depura("END BusquedaReferencia::on_m_cifcliente_editingFinished", 0);
 }
 
+
 /** SLOT que responde a la pulsacion del boton abrirtodo.
     Busca en todos los documentos de la base de datos (presupuestos, pedidos, albaranes, facturas, cobros y pagos)
     Todos aquellos elementos que tengan la misma referencia que el objeto abierto.
     Instancia los objetos correspondientes y los lanza.
 */
+/**
+**/
 void BusquedaReferencia::on_mui_abrirtodo_clicked() {
     _depura("BusquedddaReferencia::on_mui_abrirtodo_clicked", 0);
     /// Empezamos con los presupuestos.
@@ -187,8 +199,10 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked() {
 }
 
 
-
 /** Establece la referencia que va a mostrar el control
+**/
+/**
+\param val
 **/
 void BusquedaReferencia::setText(QString val) {
     _depura("BusquedaReferencia::setText", 0);
@@ -199,13 +213,20 @@ void BusquedaReferencia::setText(QString val) {
 
 /** Establece la referencia que va a mostrar el control
 **/
+/**
+\param val
+**/
 void BusquedaReferencia::setValorCampo(QString val) {
     _depura("BusquedaReferencia::setText", 0);
     mui_referencia->setText(val);
     _depura("END BusquedaReferencia::setText", 0);
 }
 
+
 /** Devuelve el texto que esta escrito en el control
+**/
+/**
+\return
 **/
 QString BusquedaReferencia::text() {
     _depura("BusquedaReferencia::text", 0);
@@ -213,7 +234,11 @@ QString BusquedaReferencia::text() {
     return mui_referencia->text();
 }
 
+
 /** Devuelve el texto que esta escrito en el control
+**/
+/**
+\return
 **/
 QString BusquedaReferencia::valorCampo() {
     _depura("BusquedaReferencia::text", 0);

@@ -49,6 +49,7 @@
 \param paren
 \param flag
 \param editmodo
+\return
 **/
 ArticuloList::ArticuloList(Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo)
         : Listado(comp, parent, flag, editmodo), pgimportfiles(comp) {
@@ -142,6 +143,9 @@ ArticuloList::~ArticuloList() {
 */
 /// \TODO: Deberia crear una instancia del articulo e invocar a su metodo de borrado
 /// ya que si hay algun plugin puede que no se vea afectado por este metodo.
+/**
+\return
+**/
 void ArticuloList::borrar() {
     _depura("ArticuloList::on_mui_borrar_clicked", 0);
     int a = mui_list->currentRow();
@@ -262,6 +266,7 @@ void ArticuloList::on_mui_importar_clicked() {
     EN LA LLAMADA DE SUBMENUS
 */
 /**
+\return
 **/
 void ArticuloList::submenu(const QPoint &) {
     _depura("ArticuloList::on_mui_list_customContextMenuRequested", 0);
@@ -318,8 +323,8 @@ QString ArticuloList::nomarticulo() {
 **/
 QString ArticuloList::codigocompletoarticulo() {
     _depura("ArticuloList::codigocompletoarticulo", 0);
-    return mdb_codigocompletoarticulo;
     _depura("END ArticuloList::codigocompletoarticulo", 0);
+    return mdb_codigocompletoarticulo;
 }
 
 

@@ -51,6 +51,11 @@
     Inicializa la ventana y todos sus componentes.
     Mete la ventana en el WorkSpace.
 */
+/**
+\param comp
+\param parent
+\return
+**/
 AlbaranClienteView::AlbaranClienteView(Company *comp, QWidget *parent)
         : FichaBf(comp, parent) {
     _depura("AlbaranClienteView::AlbaranClienteView", 0);
@@ -105,6 +110,8 @@ AlbaranClienteView::AlbaranClienteView(Company *comp, QWidget *parent)
 */
 /// \TODO: Este metodo deberia mejorarse para que indicase al listado que
 /// solo debe eliminar una fila del mismo.
+/**
+**/
 AlbaranClienteView::~AlbaranClienteView() {
     _depura("AlbaranClienteView::~AlbaranClienteView(", 0);
     empresaBase()->refreshAlbaranesCliente();
@@ -112,8 +119,9 @@ AlbaranClienteView::~AlbaranClienteView() {
 }
 
 
-/** Inicializa todos los elementos del formulario
-*/
+/// Inicializa todos los elementos del formulario
+/**
+**/
 void AlbaranClienteView::inicializar() {
     _depura("AlbaranClienteView::inicializar", 0);
     subform2->inicializar();
@@ -124,8 +132,15 @@ void AlbaranClienteView::inicializar() {
 
 
 
-/** Pinta los totales en las casillas correspondientes
-*/
+/// Pinta los totales en las casillas correspondientes
+/**
+\param iva
+\param base
+\param total
+\param desc
+\param irpf
+\param reqeq
+**/
 void AlbaranClienteView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq) {
     _depura("AlbaranClienteView::pintatotales", 0);
     m_totalBases->setText(base.toQString());
@@ -143,6 +158,8 @@ void AlbaranClienteView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed 
 
     Busca los presupuestos por referencia y abre los que tienen la misma referencia.
 */
+/**
+**/
 void AlbaranClienteView::s_verpresupuesto() {
     _depura("AlbaranClienteView::s_verpresupuesto", 0);
     QString SQLQuery = "SELECT * FROM presupuesto WHERE refpresupuesto = '" +
@@ -180,6 +197,8 @@ void AlbaranClienteView::s_verpresupuesto() {
     Busca los pedidos a cliente que tienen la misma referencia que el albaran
     y los abre.
 */
+/**
+**/
 void AlbaranClienteView::on_mui_verpedidocliente_clicked() {
     _depura("AlbaranClienteView::on_mui_verpedidocliente_clicked", 0);
     QString SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + DBvalue("refalbaran") + "'";
@@ -206,6 +225,9 @@ void AlbaranClienteView::on_mui_verpedidocliente_clicked() {
     Si no existe dicha factura el sistema avisa y permite crear una poniendo
     Todos los datos del albaran automaticamente en ella.
 */
+/**
+\return
+**/
 void AlbaranClienteView::generarFactura() {
     _depura("AlbaranClienteView::generarFactura", 0);
     /// Comprobamos que existe una factura para este cliente, y en caso afirmativo lo mostramos
@@ -302,6 +324,8 @@ void AlbaranClienteView::generarFactura() {
 /// Se encarga de agregar un albaran a una factura ya existente.
 /// Para ello presenta un selector de factura y permite escoger a que factura
 /// Agregar el albaran.
+/**
+**/
 void AlbaranClienteView::agregarFactura() {
     /// Pedimos la factura a la que agregar.
     _depura("AlbaranClienteView::agregarFactura", 0);
@@ -369,6 +393,8 @@ void AlbaranClienteView::agregarFactura() {
 /// Util con cobros anticipados a la factura. El cobro tendra
 /// la misma cantidad, referencia y cliente que el albaran.
 /// Este metodo crea una pantalla de cobro y le pone los datos necesarios.
+/**
+**/
 void AlbaranClienteView::on_mui_cobrar_clicked() {
     _depura("AlbaranClienteView::on_mui_cobrar_clicked", 0);
     CobroView *bud = empresaBase()->newCobroView();
@@ -382,6 +408,10 @@ void AlbaranClienteView::on_mui_cobrar_clicked() {
 }
 
 
+///
+/**
+\param id
+**/
 void AlbaranClienteView::on_mui_idcliente_valueChanged(QString id) {
     _depura("AlbaranClienteView::on_m_cliente_valueChanged", 0);
     subform2->setIdCliente(id);
@@ -395,28 +425,52 @@ void AlbaranClienteView::on_mui_idcliente_valueChanged(QString id) {
 
 
 /// Este slot se activa cuando hay cambios en los subformularios.
+/**
+**/
 void AlbaranClienteView::s_pintaTotales() {
+    _depura("AlbaranClienteView::s_pintaTotales", 0);
     calculaypintatotales();
+    _depura("END AlbaranClienteView::s_pintaTotales", 0);
 }
 
 
+///
+/**
+**/
 void AlbaranClienteView::on_mui_facturar_clicked() {
+    _depura("AlbaranClienteView::on_mui_facturar_clicked", 0);
     generarFactura();
+    _depura("END AlbaranClienteView::on_mui_facturar_clicked", 0);
 }
 
 
+///
+/**
+**/
 void AlbaranClienteView::on_mui_agregarafactura_clicked() {
+    _depura("AlbaranClienteView::on_mui_agregarafactura_clicked", 0);
     agregarFactura();
+    _depura("END AlbaranClienteView::on_mui_agregarafactura_clicked", 0);
 }
 
 
+///
+/**
+**/
 void AlbaranClienteView::on_m_descuentos_editFinish(int, int) {
+    _depura("AlbaranClienteView::on_m_descuentos_editFinish", 0);
     calculaypintatotales();
+    _depura("END AlbaranClienteView::on_m_descuentos_editFinish", 0);
 }
 
 
+///
+/**
+**/
 void AlbaranClienteView::on_subform2_editFinish(int, int) {
+    _depura("AlbaranClienteView::on_subform2_editFinish", 0);
     calculaypintatotales();
+    _depura("END AlbaranClienteView::on_subform2_editFinish", 0);
 }
 
 
@@ -429,6 +483,9 @@ void AlbaranClienteView::on_subform2_editFinish(int, int) {
 */
 /// \todo: Este metodo deberia poderse delegar en DBRecord, o por lo menos la parte del borrado del registro.
 /// \todo: Hace falta meter el metodo dentro del sistema de excepciones try catch.
+/**
+\return
+**/
 int AlbaranClienteView::borrarPre() {
     _depura("AlbaranClienteView::borrar", 0);
         m_listalineas->borrar();
@@ -444,6 +501,10 @@ int AlbaranClienteView::borrarPre() {
     Tras la carga tambi&eacute;n invoca un repintado del albaran para que se vea
     correctamente la pantalla.
 */
+/**
+\param idalbaran
+\return
+**/
 int AlbaranClienteView::cargarPost(QString idalbaran)  {
     _depura("AlbaranClienteView::cargar", 0);
 
@@ -468,6 +529,9 @@ int AlbaranClienteView::cargarPost(QString idalbaran)  {
     Si todo funciona bien este m&eacute;todo devuelve 0. Si se produce algun error
     se genera una excepcion -1.
 */
+/**
+\return
+**/
 int AlbaranClienteView::guardarPost() {
     _depura("AlbaranClienteView::guardarPost", 0);
 

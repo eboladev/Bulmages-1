@@ -28,6 +28,9 @@
     si un elemento ha sido inicializado o no.
     Hace la conexion del SIGNAL activated con m_activated para tratar el evento.
 */
+/**
+\param parent
+**/
 BusquedaTrabajador::BusquedaTrabajador(QWidget *parent)
         : QComboBox2(parent) {
     _depura("BusquedaTrabajador::BusquedaTrabajador", 0);
@@ -39,6 +42,8 @@ BusquedaTrabajador::BusquedaTrabajador(QWidget *parent)
 
 /** Libera la memoria dinamica que se estaba utilizando.
 */
+/**
+**/
 BusquedaTrabajador::~BusquedaTrabajador() {
     _depura("BusquedaTrabajador::~BusquedaTrabajador", 0);
     if (m_cursorcombo != NULL)
@@ -51,6 +56,10 @@ BusquedaTrabajador::~BusquedaTrabajador() {
     Recarga el cursor de trabajadores y cuando encuentra uno con el mismo identificador
     que el que se ha pasado por parametro lo establece como elemento seleccionado.
 */
+/**
+\param idtrabajador
+\return
+**/
 void BusquedaTrabajador::setidtrabajador(QString idtrabajador) {
     _depura("BusquedaTrabajador::setidtrabajador", 0);
     if (m_cursorcombo != NULL)
@@ -72,11 +81,22 @@ void BusquedaTrabajador::setidtrabajador(QString idtrabajador) {
     _depura("END BusquedaTrabajador::setidtrabajador", 0);
 }
 
+
+///
+/**
+\param idtrabajador
+**/
 void BusquedaTrabajador::setValorCampo(QString idtrabajador) {
+    _depura("BusquedaTrabajador::setValorCampo", 0);
 	setidtrabajador(idtrabajador);
+    _depura("END BusquedaTrabajador::setValorCampo", 0);
 }
 
+
 /** Devuelve el identificador del trabajador seleccionado
+**/
+/**
+\return
 **/
 QString BusquedaTrabajador::idtrabajador() {
     _depura("BusquedaTrabajador::idtrabajador", 0);
@@ -85,12 +105,22 @@ QString BusquedaTrabajador::idtrabajador() {
     return m_cursorcombo->valor("idtrabajador", currentIndex() - 1);
 }
 
+
+///
+/**
+\return
+**/
 QString BusquedaTrabajador::valorCampo() {
+    _depura("BusquedaTrabajador::valorCampo", 0);
+    _depura("END BusquedaTrabajador::valorCampo", 0);
 	return idtrabajador();
 }
 
 
 /** SLOT que responde a la activacion de un elemento en el QComboBox y que hace que se emita el SIGNAL valueChanged
+**/
+/**
+\param index
 **/
 void BusquedaTrabajador::m_activated(int index) {
     _depura("BusquedaTrabajador::m_activated", 0);
@@ -108,6 +138,9 @@ void BusquedaTrabajador::m_activated(int index) {
     sobre si un elemento ha sido creado o no. 
     Conecta el SIGNAL activated() con m_activated() para tratarlo.
 */
+/**
+\param parent
+**/
 BusquedaTrabajadorDelegate::BusquedaTrabajadorDelegate(QWidget *parent)
         : QComboBox2(parent) {
     _depura("BusquedaTrabajadorDelegate::BusquedaTrabajadorDelegate", 0);
@@ -120,6 +153,8 @@ BusquedaTrabajadorDelegate::BusquedaTrabajadorDelegate(QWidget *parent)
 
 /** Libera la memoria reservada.
 */
+/**
+**/
 BusquedaTrabajadorDelegate::~BusquedaTrabajadorDelegate() {
     _depura("BusquedaTrabajadorDelegate::~BusquedaTrabajadorDelegate", 0);
     if (m_cursorcombo != NULL)
@@ -132,6 +167,9 @@ BusquedaTrabajadorDelegate::~BusquedaTrabajadorDelegate() {
     Recarga cursor de serie_factura y cuando encuentra un registro cuyo codigoserie_factura coincide con el pasado
     como parametro lo establece como el registro activo por el comboBox.
 */
+/**
+\param cod
+**/
 void BusquedaTrabajadorDelegate::set(const QString &cod) {
     _depura("BusquedaTrabajadorDelegate::set", 0);
     int index = 0;

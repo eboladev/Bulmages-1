@@ -44,6 +44,12 @@
 #include "plugins.h"
 
 
+///
+/**
+\param comp
+\param parent
+\return
+**/
 PresupuestoView::PresupuestoView(Company *comp, QWidget *parent)
         : FichaBf(comp, parent) {
     _depura("Inicializacion de PresupuestoView", 0);
@@ -111,6 +117,8 @@ PresupuestoView::PresupuestoView(Company *comp, QWidget *parent)
 
 
 /// Este metodo es llamado cuando hacemos un nuevo registro, pero no hay carga desde la base de datos.
+/**
+**/
 void PresupuestoView::inicializar() {
     _depura("PresupuestoView::inicializar", 0);
     subform2->inicializar();
@@ -120,6 +128,9 @@ void PresupuestoView::inicializar() {
 }
 
 
+///
+/**
+**/
 PresupuestoView::~PresupuestoView() {
     _depura("PresupuestoView::~PresupuestoView", 0);
     ((Company *)empresaBase())->refreshPresupuestos();
@@ -130,30 +141,55 @@ PresupuestoView::~PresupuestoView() {
 }
 
 
-
-
+///
+/**
+**/
 void PresupuestoView::s_pintaTotales() {
+    _depura("PresupuestoView::s_pintaTotales", 0);
     calculaypintatotales();
+    _depura("END PresupuestoView::s_pintaTotales", 0);
 }
 
 
+///
+/**
+**/
 void PresupuestoView::on_mui_pasarapedido_clicked() {
+    _depura("PresupuestoView::on_mui_pasarapedido_clicked", 0);
     generarPedidoCliente();
+    _depura("END PresupuestoView::on_mui_pasarapedido_clicked", 0);
 }
 
 
+///
+/**
+**/
 void PresupuestoView::on_m_descuentos_editFinish(int, int) {
+    _depura("PresupuestoView::on_m_descuentos_editFinish", 0);
     calculaypintatotales();
+    _depura("END PresupuestoView::on_m_descuentos_editFinish", 0);
 }
 
-
+///
+/**
+**/
 void PresupuestoView::on_subform2_editFinish(int, int) {
+    _depura("PresupuestoView::on_subform2_editFinish", 0);
     calculaypintatotales();
+    _depura("END PresupuestoView::on_subform2_editFinish", 0);
 }
 
 
 
-
+///
+/**
+\param iva
+\param base
+\param total
+\param desc
+\param irpf
+\param reqeq
+**/
 void PresupuestoView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq) {
     _depura("PresupuestoView::pintatotales", 0);
     m_totalBases->setText(QString(base.toQString()));
@@ -167,6 +203,9 @@ void PresupuestoView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed des
 
 
 /// Se encarga de generar un pedido a partir del presupuesto.
+/**
+\return
+**/
 void PresupuestoView::generarPedidoCliente() {
     _depura("PresupuestoView::generarPedidoCliente", 0);
     /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos.
@@ -267,10 +306,10 @@ void PresupuestoView::generarPedidoCliente() {
 }
 
 
-
-
-
-
+///
+/**
+\param id
+**/
 void PresupuestoView::on_mui_idcliente_valueChanged(QString id) {
     _depura("PresupuestoView::on_m_cliente_valueChanged", 0);
     subform2->setIdCliente(id);
@@ -279,6 +318,10 @@ void PresupuestoView::on_mui_idcliente_valueChanged(QString id) {
 }
 
 
+///
+/**
+\return
+**/
 int PresupuestoView::borrarPre() {
     _depura("PresupuestoView::borrar", 0);
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
@@ -291,19 +334,28 @@ int PresupuestoView::borrarPre() {
 }
 
 
-
 /// Esta funcion carga un Presupuesto.
+/**
+\param idbudget
+\return
+**/
 int PresupuestoView::cargarPost(QString idbudget) {
     _depura("PresupuestoView::cargarPost", 0);
 
     m_listalineas->cargar(idbudget);
     m_listadescuentos->cargar(idbudget);
 
+    calculaypintatotales();
+
     _depura("END PresupuestoView::cargar", 0);
     return 0;
 }
 
 
+///
+/**
+\return
+**/
 int PresupuestoView::guardarPost() {
     _depura("PresupuestoView::guardarPost", 0);
 
@@ -319,6 +371,10 @@ int PresupuestoView::guardarPost() {
 }
 
 
+///
+/**
+\return
+**/
 QString PresupuestoView::detalleArticulos() {
     _depura("PresupuestoView::detalleArticulos", 0);
     QString texto = "";

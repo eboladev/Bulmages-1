@@ -29,6 +29,10 @@
 #include "plugins.h"
 
 
+///
+/**
+\param parent
+**/
 ListLinAlbaranClienteView::ListLinAlbaranClienteView(QWidget *parent)
         : SubForm2Bf(parent) {
     _depura("ListLinAlbaranClienteView::ListLinAlbaranClienteView", 0);
@@ -58,6 +62,11 @@ ListLinAlbaranClienteView::ListLinAlbaranClienteView(QWidget *parent)
 
 }
 
+
+///
+/**
+\param idalbaran
+**/
 void ListLinAlbaranClienteView::cargar(QString idalbaran) {
     _depura("ListLinAlbaranClienteView::cargar", 0);
     mdb_idalbaran = idalbaran;

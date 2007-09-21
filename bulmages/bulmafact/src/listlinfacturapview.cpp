@@ -29,6 +29,11 @@
 #include "plugins.h"
 
 
+///
+/**
+\param parent
+\return
+**/
 ListLinFacturaProveedorView::ListLinFacturaProveedorView(QWidget *parent)
         : SubForm2Bf(parent) {
     _depura("ListLinFacturaProveedorView::ListLinFacturaProveedorView", 0);
@@ -61,7 +66,10 @@ ListLinFacturaProveedorView::ListLinFacturaProveedorView(QWidget *parent)
     _depura("END ListLinFacturaProveedorView::ListLinFacturaProveedorView", 0);
 }
 
-
+///
+/**
+\param idfacturap
+**/
 void ListLinFacturaProveedorView::cargar(QString idfacturap) {
     _depura("ListLinFacturaProveedorView::cargar", 0);
     mdb_idfacturap = idfacturap;

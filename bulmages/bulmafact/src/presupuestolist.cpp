@@ -32,6 +32,12 @@
 #include "configuracion.h"
 
 
+///
+/**
+\param parent
+\param flag
+\return
+**/
 PresupuestoList::PresupuestoList(QWidget *parent, Qt::WFlags flag)
         : Listado(NULL, parent, flag) {
     _depura("PresupuestoList::PresupuestoList(1)", 0);
@@ -48,6 +54,13 @@ PresupuestoList::PresupuestoList(QWidget *parent, Qt::WFlags flag)
 }
 
 
+///
+/**
+\param comp
+\param parent
+\param flag
+\return
+**/
 PresupuestoList::PresupuestoList(Company *comp, QWidget *parent, Qt::WFlags flag)
         : Listado(comp, parent, flag) {
     _depura("PresupuestoList::PresupuestoList(2)", 0);
@@ -71,6 +84,10 @@ PresupuestoList::PresupuestoList(Company *comp, QWidget *parent, Qt::WFlags flag
 }
 
 
+///
+/**
+\return
+**/
 void PresupuestoList::iniciaForm() {
     _depura("PresupuestoList::iniciaForm");
     /// Disparamos los plugins.
@@ -84,46 +101,75 @@ void PresupuestoList::iniciaForm() {
 }
 
 
+///
+/**
+**/
 PresupuestoList::~PresupuestoList() {
     _depura("PresupuestoList::~PresupuestoList", 0);
     _depura("END PresupuestoList::~PresupuestoList", 0);
 }
 
 
-
-
-
+///
+/**
+\return
+**/
 QString PresupuestoList::idpresupuesto() {
+    _depura("PresupuestoList::idpresupuesto", 0);
+    _depura("END PresupuestoList::idpresupuesto", 0);
     return m_idpresupuesto;
 }
 
 
-
+///
+/**
+\param comp
+**/
 void PresupuestoList::setEmpresaBase(Company *comp) {
+    _depura("PresupuestoList::setEmpresaBase", 0);
     PEmpresaBase::setEmpresaBase(comp);
     m_cliente->setEmpresaBase(comp);
     m_articulo->setEmpresaBase(comp);
     mui_list->setEmpresaBase(comp);
+    _depura("END PresupuestoList::setEmpresaBase", 0);
 }
 
 
-
+///
+/**
+\param val
+**/
 void PresupuestoList::setidcliente(QString val) {
+    _depura("PresupuestoList::setidcliente", 0);
     m_cliente->setidcliente(val);
+    _depura("END PresupuestoList::setidcliente", 0);
 }
 
 
+///
+/**
+\param val
+**/
 void PresupuestoList::setidarticulo(QString val) {
+    _depura("PresupuestoList::setidarticulo", 0);
     m_articulo->setidarticulo(val);
+    _depura("END PresupuestoList::setidarticulo", 0);
 }
 
 
+///
+/**
+**/
 void PresupuestoList::crear() {
+    _depura("PresupuestoList::crear", 0);
     ((Company *)empresaBase())->s_newPresupuestoCli();
+    _depura("END PresupuestoList::crear", 0);
 }
 
 
-
+///
+/**
+**/
 void PresupuestoList::presentar() {
     _depura("PresupuestoList::presentar", 0);
 
@@ -142,6 +188,10 @@ void PresupuestoList::presentar() {
 }
 
 
+///
+/**
+\return
+**/
 QString PresupuestoList::generaFiltro() {
     _depura("PresupuestoList::generaFiltro", 0);
     /// Tratamiento de los filtros.
@@ -179,6 +229,11 @@ QString PresupuestoList::generaFiltro() {
 }
 
 
+///
+/**
+\param row
+\return
+**/
 void PresupuestoList::editar(int row) {
     _depura("PresupuestoList::editar", 0);
     try {
@@ -201,7 +256,10 @@ void PresupuestoList::editar(int row) {
 }
 
 
-
+///
+/**
+\return
+**/
 void PresupuestoList::imprimir() {
     _depura("PresupuestoList::imprimir", 0);
     mui_list->imprimirPDF(tr("Presupuestos a clientes"));
@@ -236,6 +294,11 @@ void PresupuestoList::borrar() {
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
+///
+/**
+\param parent
+\return
+**/
 PresupuestoListSubForm::PresupuestoListSubForm(QWidget *parent, const char *) : SubForm2Bf(parent) {
     _depura("PresupuestoListSubForm::PresupuestoListSubForm", 0);
     /// Disparamos los plugins.
@@ -271,6 +334,9 @@ PresupuestoListSubForm::PresupuestoListSubForm(QWidget *parent, const char *) : 
 }
 
 
+///
+/**
+**/
 void PresupuestoListSubForm::cargar() {
         _depura("PresupuestoListSubForm::cargar", 0);
         QString SQLQuery = "SELECT * FROM presupuesto";
@@ -280,6 +346,11 @@ void PresupuestoListSubForm::cargar() {
         _depura("END PresupuestoListSubForm::cargar", 0);
 }
 
+
+///
+/**
+\param query
+**/
 void PresupuestoListSubForm::cargar(QString query) {
         _depura("PresupuestoListSubForm::cargar", 0, query);
         SubForm3::cargar(query);

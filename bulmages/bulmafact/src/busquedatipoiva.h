@@ -32,6 +32,37 @@
 
 class company;
 
+
+/// Permite buscar y seleccionar un trabajador.
+/** Este comboBox permite buscar y seleccionar un
+    trabajador. Aparece en forma de desplegable.
+    Antes de utilizarlo debe ser inicializado con setcompany().
+    Cuando se cambia el valor del Widget se emite un SIGNAL valueChanged().
+*/
+class BusquedaTipoIva : public QComboBox2 {
+    Q_OBJECT
+
+private:
+    /// Cursor que almacena el listado de trabajadores y sobre el que se construye el comboBox.
+    cursor2 *m_cursorcombo;
+
+public:
+    BusquedaTipoIva(QWidget *parent = 0);
+    ~BusquedaTipoIva();
+    virtual void setidtipo_iva(QString idtipo_iva);
+    virtual void setValorCampo(QString idtipo_iva);
+    QString idtipo_iva();
+    virtual QString valorCampo();
+
+public slots:
+    void m_activated(int index);
+
+signals:
+    void valueChanged(QString);
+};
+
+
+
 /** Convierte en los SubForms los datos del tipo desctipo_iva en selectores del tipo QComboBox
     de esta forma la introduccion de tipos de IVA es sencilla.
     Esta clase se usa conjuntamente con SubForm2Bf para el cambio del editor

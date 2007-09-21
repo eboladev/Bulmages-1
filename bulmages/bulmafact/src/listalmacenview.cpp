@@ -39,6 +39,11 @@
 #include "funcaux.h"
 
 
+///
+/**
+\param comp
+\param parent
+**/
 ListAlmacenView::ListAlmacenView(Company *comp, QWidget *parent)
         : FichaBf(comp, parent) {
     _depura("ListAlmacenView::ListAlmacenView", 1);
@@ -53,16 +58,24 @@ ListAlmacenView::ListAlmacenView(Company *comp, QWidget *parent)
 }
 
 
+///
+/**
+**/
 void ListAlmacenView::on_mui_aceptar_clicked() {
+    _depura("ListAlmacenView::on_mui_aceptar_clicked", 0);
     try {
         mui_listado->guardar();
         close();
     } catch (...) {
         mensajeInfo("Error al guardar los almacenes");
     } // end try
+    _depura("END ListAlmacenView::on_mui_aceptar_clicked", 0);
 }
 
 
+///
+/**
+**/
 ListAlmacenView::~ListAlmacenView() {
     _depura("ListAlmacenView::~ListAlmacenView", 0);
     _depura("END ListAlmacenView::~ListAlmacenView", 0);
@@ -70,16 +83,25 @@ ListAlmacenView::~ListAlmacenView() {
 
 
 /// ===================================== SUBFORMULARIO ===============================================
+///
+/**
+\param parent
+**/
 ListAlmacenSubForm::ListAlmacenSubForm(QWidget *parent) : SubForm2Bf(parent) {
+    _depura("ListAlmacenSubForm::ListAlmacenSubForm", 0);
     setDBTableName("almacen");
     setDBCampoId("idalmacen");
     addSHeader("idalmacen", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr("Id almacen"));
     addSHeader("codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Codigo almacen"));
     addSHeader("nomalmacen", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Nombre almacen"));
     setinsercion(TRUE);
+    _depura("END ListAlmacenSubForm::ListAlmacenSubForm", 0);
 }
 
 
+///
+/**
+**/
 void ListAlmacenSubForm::cargar() {
         _depura("ListAlmacenSubForm::cargar", 0);
         cursor2 * cur= empresaBase()->cargacursor("SELECT * FROM almacen");

@@ -27,6 +27,9 @@
 
 /** Constructor del Widget conecta las se&ntilde;ales y prepara los componentes.
 */
+/**
+\param parent
+**/
 BusquedaAlmacen::BusquedaAlmacen(QWidget *parent, const char *)
         : QComboBox2(parent) {
     _depura("BusquedaAlmacen::BusquedaAlmacen", 0);
@@ -39,6 +42,8 @@ BusquedaAlmacen::BusquedaAlmacen(QWidget *parent, const char *)
 
 /** El destructor no precisa de operaciones especiales
 */
+/**
+**/
 BusquedaAlmacen::~BusquedaAlmacen() {
     _depura("BusquedaAlmacen::~BusquedaAlmacen", 0);
     _depura("END BusquedaAlmacen::~BusquedaAlmacen", 0);
@@ -49,6 +54,10 @@ BusquedaAlmacen::~BusquedaAlmacen() {
     como seleccionado.
     Recarga el cursor y presenta en el combo aquel que se ajusta al id pasado.
 */
+/**
+\param idalmacen
+\return
+**/
 void BusquedaAlmacen::setidalmacen(QString idalmacen) {
     _depura("BusquedaAlmacen::setidalmacen", 0, idalmacen);
     if (m_cursorcombo != NULL) {
@@ -78,10 +87,22 @@ void BusquedaAlmacen::setidalmacen(QString idalmacen) {
     _depura("END BusquedaAlmacen::setidalmacen", 0, idalmacen);
 }
 
+
+///
+/**
+\param idalmacen
+**/
 void BusquedaAlmacen::setValorCampo(QString idalmacen) {
-	setidalmacen(idalmacen);
+    _depura("BusquedaAlmacen::setValorCampo", 0);
+    setidalmacen(idalmacen);
+    _depura("END BusquedaAlmacen::setValorCampo", 0);
 }
 
+
+///
+/**
+\return
+**/
 QString BusquedaAlmacen::idalmacen() {
     _depura("BusquedaAlmacen::idalmacen", 0);
         int index= currentIndex();
@@ -95,11 +116,21 @@ QString BusquedaAlmacen::idalmacen() {
 }
 
 
+///
+/**
+\return
+**/
 QString BusquedaAlmacen::valorCampo() {
+    _depura("BusquedaAlmacen::valorCampo", 0);
+    _depura("END BusquedaAlmacen::valorCampo", 0);
     return idalmacen();
 }
 
 
+///
+/**
+\param comp
+**/
 void BusquedaAlmacen::setEmpresaBase(Company *comp) {
     _depura("BusquedaAlmacen::setEmpresaBase", 0);
     PEmpresaBase::setEmpresaBase(comp);
@@ -114,6 +145,10 @@ void BusquedaAlmacen::setEmpresaBase(Company *comp) {
 }
 
 
+///
+/**
+\param index
+**/
 void BusquedaAlmacen::m_activated(int index) {
     _depura("BusquedaAlmacen::m_activated", 0);
         if (index > 0) {

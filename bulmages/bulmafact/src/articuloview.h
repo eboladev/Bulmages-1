@@ -24,7 +24,7 @@
 
 #include "ui_articleeditbase.h"
 #include "postgresiface2.h"
-#include "articulo.h"
+#include "fichabf.h"
 
 
 class Company;
@@ -34,7 +34,7 @@ class Company;
     Deriva de la clase Ficha para el control de la ventana y de la clase Articulo
     para el control con la base de datos.
 */
-class ArticuloView : public Articulo, public Ui_ArticuloBase {
+class ArticuloView : public FichaBf, public Ui_ArticuloBase {
     Q_OBJECT
 
 private:
@@ -48,14 +48,14 @@ public:
     ~ArticuloView();
 
 public:
-    void pintar();
-    int cargar(QString);
-    virtual int guardar();
-    virtual int borrar();
-    int cargarcomboiva(QString);
+    virtual void pintarPost();
+    virtual int cargarPost(QString);
+    virtual int guardarPost();
+    virtual int borrarPre();
+
 
 public slots:
-    virtual void on_m_codigocompletoarticulo_editingFinished();
+    virtual void on_mui_codigocompletoarticulo_editingFinished();
     virtual void on_mui_cambiarimagen_clicked();
 };
 

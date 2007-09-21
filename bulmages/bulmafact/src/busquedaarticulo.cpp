@@ -26,6 +26,9 @@
 
 /** Inicializa todos los componentes a null para que no haya posibles
     errores al introducir el puntero a company. */
+/**
+\param parent
+**/
 BusquedaArticulo::BusquedaArticulo(QWidget *parent)
         : BLWidget(parent) {
     _depura("BusquedaArticulo::BusquedaArticulo", 0);
@@ -39,6 +42,8 @@ BusquedaArticulo::BusquedaArticulo(QWidget *parent)
 
 /** El destructor no requiere de acciones especiales.
 */
+/**
+**/
 BusquedaArticulo::~BusquedaArticulo() {
     _depura("BusquedaArticulo::~BusquedaArticulo", 0);
     _depura("END BusquedaArticulo::~BusquedaArticulo", 0);
@@ -48,6 +53,9 @@ BusquedaArticulo::~BusquedaArticulo() {
 /** Con este metodo indicamos al Widget que articulo presentar como cargado.
     Lo busca en la base de datos y muestra el codigocompleto y el nombre.
 */
+/**
+\param val
+**/
 void BusquedaArticulo::setidarticulo(QString val) {
     _depura("BusquedaArticulo::setidarticulo", 0);
     mdb_idarticulo = val;
@@ -70,8 +78,14 @@ void BusquedaArticulo::setidarticulo(QString val) {
 }
 
 
+///
+/**
+\param val
+**/
 void BusquedaArticulo::setValorCampo(QString val) {
-	setidarticulo(val);
+    _depura("BusquedaArticulo::setValorCampo", 0);
+    setidarticulo(val);
+    _depura("END BusquedaArticulo::setValorCampo", 0);
 }
 
 
@@ -80,6 +94,9 @@ void BusquedaArticulo::setValorCampo(QString val) {
     como seleccionado, indicando cual es su codigocompleto ya que es un indice
     muy utilizado con los articulos.
 */
+/**
+\param val
+**/
 void BusquedaArticulo::setcodigocompletoarticulo(QString val) {
     _depura("BusquedaArticulo::setcodigocompletoarticulo", 0);
     mdb_codigocompletoarticulo = val;
@@ -105,6 +122,8 @@ void BusquedaArticulo::setcodigocompletoarticulo(QString val) {
     Una vez seleccionado un articulo lo considera como el articulo seleccionado por
     el Widget.
 */
+/**
+**/
 void BusquedaArticulo::on_mui_buscar_clicked() {
     _depura("BusquedaArticulo::on_mui_buscar_clicked", 0);
     QDialog *diag = new QDialog(0);
@@ -137,6 +156,9 @@ void BusquedaArticulo::on_mui_buscar_clicked() {
     Busca en la tabla de articulos un elemento con el codigocompletoarticulo coincidente
     y si lo encuentra lo muestra y lo considera como el elemento seleccionado por este Widget.
 */
+/**
+\param val
+**/
 void BusquedaArticulo::on_m_codigocompletoarticulo_textChanged(const QString &val) {
     _depura("BusquedaArticulo::on_m_codigocompletoarticulo_textChanged", 0);
     mdb_codigocompletoarticulo = val;
@@ -157,6 +179,10 @@ void BusquedaArticulo::on_m_codigocompletoarticulo_textChanged(const QString &va
 }
 
 
+///
+/**
+\return
+**/
 QString BusquedaArticulo::codigocompletoarticulo() {
     _depura("BusquedaArticulo::codigocompletoarticulo", 0);
     _depura("END BusquedaArticulo::codigocompletoarticulo", 0);
@@ -164,18 +190,32 @@ QString BusquedaArticulo::codigocompletoarticulo() {
 }
 
 
+///
+/**
+\return
+**/
 QString BusquedaArticulo::idarticulo() {
     _depura("BusquedaArticulo::idarticulo", 0);
     _depura("END BusquedaArticulo::idarticulo", 0);
     return mdb_idarticulo;
 }
 
+
+///
+/**
+\return
+**/
 QString BusquedaArticulo::valorCampo() {
     _depura("BusquedaArticulo::valorCampo", 0);
     _depura("END BusquedaArticulo::valorCampo", 0);
     return mdb_idarticulo;
 }
 
+
+///
+/**
+\return
+**/
 QString BusquedaArticulo::nomarticulo() {
     _depura("BusquedaArticulo::nomarticulo", 0);
     _depura("END BusquedaArticulo::nomarticulo", 0);
@@ -190,6 +230,9 @@ QString BusquedaArticulo::nomarticulo() {
     sobre si un elemento ha sido creado o no.
     Conecta el SIGNAL activated() con m_activated() para tratarlo.
 */
+/**
+\param parent
+**/
 BusquedaArticuloDelegate::BusquedaArticuloDelegate(QWidget *parent)
         : QComboBox2(parent) {
     _depura("BusquedaArticuloDelegate::BusquedaArticuloDelegate", 0);
@@ -202,6 +245,8 @@ BusquedaArticuloDelegate::BusquedaArticuloDelegate(QWidget *parent)
 
 
 /** Libera la memoria reservada. */
+/**
+**/
 BusquedaArticuloDelegate::~BusquedaArticuloDelegate() {
     _depura("BusquedaArticuloDelegate::~BusquedaArticuloDelegate", 0);
     _depura("END BusquedaArticuloDelegate::~BusquedaArticuloDelegate", 0);
@@ -212,6 +257,10 @@ BusquedaArticuloDelegate::~BusquedaArticuloDelegate() {
     Recarga cursor de serie_factura y cuando encuentra un registro cuyo codigoserie_factura coincide con el pasado
     como parametro lo establece como el registro activo por el comboBox.
 */
+/**
+\param cod
+\return
+**/
 void BusquedaArticuloDelegate::s_editTextChanged(const QString &cod) {
     _depura("BusquedaArticuloDelegate::s_editTextChanged", 0);
     static bool semaforo = FALSE;

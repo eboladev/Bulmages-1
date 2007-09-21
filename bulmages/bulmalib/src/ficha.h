@@ -66,6 +66,7 @@ public:
     void setDBTableName(QString nom);
     void setTitleName(QString nom);
     virtual void pintar();
+    virtual void pintarPost();
     virtual int cargar(QString id);
     virtual int cargarPost(QString id);
     virtual void recogeValores();

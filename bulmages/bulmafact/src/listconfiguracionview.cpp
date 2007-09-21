@@ -38,8 +38,13 @@
 
 #include "funcaux.h"
 
+
 /** La ventana se construye como derivada de Ficha, inicializa el subformulario  y mete la ventana en el visor de ventanas
 */
+/**
+\param comp
+\param parent
+**/
 ListConfiguracionView::ListConfiguracionView(Company *comp, QWidget *parent) : FichaBf(comp, parent) {
     _depura("ListConfiguracionView::ListConfiguracionView", 1);
     setupUi(this);
@@ -59,6 +64,8 @@ ListConfiguracionView::ListConfiguracionView(Company *comp, QWidget *parent) : F
 
 /** La destruccion de la clase no requiere de acciones especificas
 */
+/**
+**/
 ListConfiguracionView::~ListConfiguracionView() {
     _depura("ListConfiguracionView::~ListConfiguracionView", 0);
     _depura("END ListConfiguracionView::~ListConfiguracionView", 0);
@@ -69,6 +76,10 @@ ListConfiguracionView::~ListConfiguracionView() {
 /// ===================================== SUBFORMULARIO ===============================================
 /** Inicializacion del subformulario donde se indican todos los campos que deben aparecer
 */
+///
+/**
+\param parent
+**/
 ListConfiguracionSubForm::ListConfiguracionSubForm(QWidget *parent) : SubForm2Bf(parent) {
     _depura("ListConfiguracionSubForm::ListConfiguracionSubForm", 0);
     setDBTableName("configuracion");

@@ -37,6 +37,11 @@
     ya han sido inicializados o no.
     Inicializando la clase con este constructor precisa que sea establecido el company con setcompany.
 */
+/**
+\param parent
+\param flag
+\param editmodo
+**/
 FacturasList::FacturasList(QWidget *parent, Qt::WFlags flag, edmode editmodo)
         : Listado(NULL, parent, flag, editmodo) {
     _depura("FacturasList::FacturasList", 0);
@@ -51,6 +56,12 @@ FacturasList::FacturasList(QWidget *parent, Qt::WFlags flag, edmode editmodo)
 
 /** Inicializa todos los componentes y prepara la ventana para funcionar.
 */
+/**
+\param comp
+\param parent
+\param flag
+\param editmodo
+**/
 FacturasList::FacturasList(Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo)
         : Listado(comp, parent, flag, editmodo) {
     _depura("FacturasList::FacturasList", 0);
@@ -72,6 +83,10 @@ FacturasList::FacturasList(Company *comp, QWidget *parent, Qt::WFlags flag, edmo
 }
 
 
+///
+/**
+\return
+**/
 void FacturasList::iniciaForm() {
     _depura("FacturasList::iniciaForm");
     /// Disparamos los plugins.
@@ -87,6 +102,8 @@ void FacturasList::iniciaForm() {
 
 /** No precisa de acciones especiales en el destructor de la clase.
 */
+/**
+**/
 FacturasList::~FacturasList() {
     _depura("FacturasList::~FacturasList", 0);
     _depura("END FacturasList::~FacturasList", 0);
@@ -95,6 +112,8 @@ FacturasList::~FacturasList() {
 
 /** Hace la carga del subformulario y el calculo de los totales.
 */
+/**
+**/
 void FacturasList::presentar() {
     _depura("FacturasList::presenta", 0);
 
@@ -116,6 +135,9 @@ void FacturasList::presentar() {
 
 /** Funcion auxiliar que genera la clausula WHERE de la consulta del listado a partir de las opciones de filtrado que el usuario haya especificado.
 */
+/**
+\return
+**/
 QString FacturasList::generaFiltro() {
     _depura("FacturasList::generaFiltro", 0);
     /// Tratamiento de los filtros.
@@ -158,6 +180,10 @@ QString FacturasList::generaFiltro() {
     Si estamos en modo edicion abre la ficha de Factura y carga el elemento seleccionado.
     Si estamos en modo seleccion cierra la ventana y emite el SIGNAL de que se ha seleccionado una factura.
 */
+/**
+\param row
+\return
+**/
 void FacturasList::editar(int row) {
     _depura("FacturasList::editar", 0);
     mdb_idfactura = mui_list->DBvalue(QString("idfactura"), row);
@@ -180,6 +206,8 @@ void FacturasList::editar(int row) {
 /** SLOT que responde a la pulsacion del boton de imprimir.
     La impresion de listados esta completamente delegada en SubForm2Bf
 */
+/**
+**/
 void FacturasList::imprimir() {
     _depura("FacturasList::on_mui_imprimir_clicked", 0);
     mui_list->imprimirPDF(tr("Facturas a clientes"));
@@ -192,6 +220,10 @@ void FacturasList::imprimir() {
     metodo de borrar.
     La ventaja de hacerlo de esta forma es que si hay plugins en la factura, estos tambien se ejecutaran.
 */
+///
+/**
+\return
+**/
 void FacturasList::borrar() {
     _depura("FacturasList::borrar", 0);
     int a = mui_list->currentRow();
@@ -215,26 +247,57 @@ void FacturasList::borrar() {
     _depura("END FacturasList::borrar", 0);
 }
 
+
+///
+/**
+\param comp
+**/
 void FacturasList::setEmpresaBase (Company *comp) {
+    _depura("FacturasList::setEmpresaBase", 0);
     PEmpresaBase::setEmpresaBase(comp);
     m_cliente->setEmpresaBase(comp);
     m_articulo->setEmpresaBase(comp);
     mui_list->setEmpresaBase(comp);
+    _depura("END FacturasList::setEmpresaBase", 0);
 }
 
+
+///
+/**
+\return
+**/
 QString FacturasList::idfactura() {
+    _depura("FacturasList::idfacturae", 0);
+    _depura("END FacturasList::idfactura", 0);
     return mdb_idfactura;
 }
 
+
+///
+/**
+\param val
+**/
 void FacturasList::setidcliente(QString val) {
+    _depura("FacturasList::setidcliente", 0);
     m_cliente->setidcliente(val);
+    _depura("END FacturasList::setidcliente", 0);
 }
 
 
+///
+/**
+\param val
+**/
 void FacturasList::setidarticulo(QString val) {
+    _depura("FacturasList::setidarticulo", 0);
     m_articulo->setidarticulo(val);
+    _depura("END FacturasList::setidarticulo", 0);
 }
 
+
+///
+/**
+**/
 void FacturasList::crear() {
     _depura("FacturasList::crear", 0);
         ((Company *)empresaBase())->s_newFacturaCli();
@@ -246,6 +309,10 @@ void FacturasList::crear() {
 /// =============================================================================
 /** Prepara el subformulario para trabajar con la tabla factura.
 */
+/**
+\param parent
+\return
+**/
 FacturasListSubform::FacturasListSubform(QWidget *parent, const char *) : SubForm2Bf(parent) {
     _depura("FacturasListSubform::FacturasListSubform", 0);
     /// Disparamos los plugins.
@@ -280,8 +347,18 @@ FacturasListSubform::FacturasListSubform(QWidget *parent, const char *) : SubFor
 }
 
 
-FacturasListSubform::~FacturasListSubform() {}
+///
+/**
+**/
+FacturasListSubform::~FacturasListSubform() {
+    _depura("FacturasListSubform::~FacturasListSubform", 0);
+    _depura("END FacturasListSubform::~FacturasListSubform", 0);
+}
 
+
+///
+/**
+**/
 void FacturasListSubform::cargar() {
     _depura("FacturasListSubform::cargar\n", 0);
     QString SQLQuery = "SELECT * FROM factura";
@@ -290,7 +367,14 @@ void FacturasListSubform::cargar() {
     delete cur;
 }
 
+
+///
+/**
+\param query
+**/
 void FacturasListSubform::cargar(QString query) {
+    _depura("FacturasListSubform::cargar", 0);
     SubForm3::cargar(query);
+    _depura("END FacturasListSubform::cargar", 0);
 }
 

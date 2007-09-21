@@ -46,6 +46,9 @@
     Crea la instancia de company y la inicializa y almacena esta en el puntero m_company.
     Crea la lista de ventanas.
 */
+/**
+\param bd
+**/
 Bulmafact::Bulmafact(QString bd) : QMainWindow() {
     _depura("Bulmafact::Bulmafact", 0);
     setupUi(this);
@@ -94,6 +97,9 @@ Bulmafact::Bulmafact(QString bd) : QMainWindow() {
 
 /** Hacemos la creacion de las ventanas principales para que enten en plugins
 */
+/**
+\param splashScr
+**/
 void Bulmafact::createMainWindows(Splash *splashScr) {
     _depura("Bulmafact::createMainWindows", 0);
     m_company->createMainWindows(splashScr);
@@ -103,6 +109,8 @@ void Bulmafact::createMainWindows(Splash *splashScr) {
 
 /** Libera memoria destruyendo todos los objetos creados.
 */
+/**
+**/
 Bulmafact::~Bulmafact() {
     _depura("Bulmafact::~Bulmafact", 0);
     delete pWorkspace;
@@ -119,6 +127,8 @@ Bulmafact::~Bulmafact() {
 
 /** La facturacion automatica es un proceso que no se ha implementado todavia.
 */
+/**
+**/
 void Bulmafact::emitirfactura() {
     _depura("Bulmafact::emitirfactura", 0);
     QMessageBox::information(this,
@@ -132,6 +142,8 @@ void Bulmafact::emitirfactura() {
     factura electronica.
 */
 /// \TODO: Destruir este metodo.
+/**
+**/
 void Bulmafact::recibirfactura() {
     _depura("Bulmafact::recibirfactura", 0);
     QMessageBox::critical(this,
@@ -142,25 +154,35 @@ void Bulmafact::recibirfactura() {
 
 
 /// \TODO: Revisar este metodo.
+/**
+**/
 void Bulmafact::s_FPago() {
+    _depura("Bulmafact::s_FPago", 0);
     m_company->s_FPago();
+    _depura("END Bulmafact::s_FPago", 0);
 }
 
 
 /** Intercambia entre el modo ventana completa y el modo ventana normal
 */
+/**
+**/
 void Bulmafact::s_ventanaCompleta() {
+    _depura("Bulmafact::s_ventanaCompleta", 0);
     if (isFullScreen()) {
         showNormal();
     } else {
         showFullScreen();
     } // end if
+    _depura("END Bulmafact::s_ventanaCompleta", 0);
 }
 
 
 /** Metodo que responde a la pulsacion de About en el menu.
     Inicializa la ventana de About y la muestra.
 */
+/**
+**/
 void Bulmafact::s_About() {
     _depura("Bulmafact::s_About", 0);
     AboutView about;
@@ -172,6 +194,8 @@ void Bulmafact::s_About() {
 /** Evento de cerrar la ventana principal.
     Libera parte de la memoria reservada. Ya que sabemos que se va a cerrar el programa.
 */
+/**
+**/
 void Bulmafact::closeEvent(QCloseEvent *) {
     _depura("Bulmafact::closeEvent", 0);
     delete m_company;
@@ -190,6 +214,10 @@ void Bulmafact::closeEvent(QCloseEvent *) {
 /** Captura el evento de cambio de ventana en el workSpace y actua sobre el
     listado de ventanas para que seleccione la ventana adecuada.
 */
+/**
+\param w
+\return
+**/
 void Bulmafact::informaindexador(QWidget *w) {
     _depura("Bulmafact::informaindexador", 0);
 
@@ -213,6 +241,8 @@ void Bulmafact::informaindexador(QWidget *w) {
 
 /** Muestra la ayuda del programa.
 */
+/**
+**/
 void Bulmafact::on_actionDocumentacion_triggered() {
     _depura("Bulmafact::on_actionDocumentacion_triggered", 0);
     QAssistantClient *asistenteAyuda = new QAssistantClient(QLibraryInfo::location(QLibraryInfo::BinariesPath), 0);
@@ -225,11 +255,19 @@ void Bulmafact::on_actionDocumentacion_triggered() {
 }
 
 
+///
+/**
+\param docError
+**/
 void Bulmafact::documentacionError(const QString docError) {
     _depura("Error en la ayuda: " + docError, 10);
 }
 
 
+///
+/**
+\param visible
+**/
 void Bulmafact::setActionIndexador(bool visible) {
     _depura("Bulmafact::setActionIndexador", 0);
     if (visible == TRUE) {
@@ -241,6 +279,9 @@ void Bulmafact::setActionIndexador(bool visible) {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionIndexador_triggered() {
     _depura("Bulmafact::on_actionIndexador_triggered", 0);
     if (actionIndexador->isChecked() == TRUE) {
@@ -252,6 +293,9 @@ void Bulmafact::on_actionIndexador_triggered() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionTipoIVA_triggered() {
     _depura("Bulmafact::on_actionTipoIVA_triggered", 0);
     m_company->s_TipoIVAView();
@@ -259,6 +303,9 @@ void Bulmafact::on_actionTipoIVA_triggered() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionTasaIVA_triggered() {
     _depura("Bulmafact::on_actionTasaIVA_triggered", 0);
     m_company->s_TasaIVAView();
@@ -266,6 +313,10 @@ void Bulmafact::on_actionTasaIVA_triggered() {
 }
 
 
+///
+/**
+\return
+**/
 QWorkspace2 * Bulmafact::workspace() {
     _depura("Bulmafact::workspace", 0);
     _depura("END Bulmafact::workspace", 0);
@@ -273,6 +324,10 @@ QWorkspace2 * Bulmafact::workspace() {
 }
 
 
+///
+/**
+\return
+**/
 Company * Bulmafact::getcompany() {
     _depura("Bulmafact::getcompany", 0);
     _depura("END Bulmafact::getcompany", 0);
@@ -280,6 +335,9 @@ Company * Bulmafact::getcompany() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionNuevo_Pedido_Proveedor_triggered() {
     _depura("Bulmafact::on_actionNuevo_Pedido_Proveedor_triggered", 0);
     m_company->s_newPedidoPro();
@@ -287,13 +345,18 @@ void Bulmafact::on_actionNuevo_Pedido_Proveedor_triggered() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionListado_Pedidos_Proveedor_triggered() {
     _depura("Bulmafact::on_actionListado_Pedidos_Proveedor_triggered", 0);
     m_company->s_listPedidosPro();
     _depura("END Bulmafact::on_actionListado_Pedidos_Proveedor_triggered", 0);
 }
 
-
+///
+/**
+**/
 void Bulmafact::on_actionNuevo_Albaran_Proveedor_triggered() {
     _depura("Bulmafact::on_actionNuevo_Albaran_Proveedor_triggered", 0);
     m_company->s_newAlbaranPro();
@@ -301,6 +364,9 @@ void Bulmafact::on_actionNuevo_Albaran_Proveedor_triggered() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionListado_Albaranes_Proveedor_triggered() {
     _depura("Bulmafact::on_actionListado_Albaranes_Proveedor_triggered", 0);
     m_company->lAlbaranesProveedor();
@@ -308,6 +374,9 @@ void Bulmafact::on_actionListado_Albaranes_Proveedor_triggered() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionNueva_Factura_Proveedor_triggered() {
     _depura("Bulmafact::on_actionNueva_Factura_Proveedor_triggered", 0);
     m_company->s_newFacturaPro();
@@ -315,6 +384,9 @@ void Bulmafact::on_actionNueva_Factura_Proveedor_triggered() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionListado_Facturas_Proveedor_triggered() {
     _depura("Bulmafact::on_actionListado_Facturas_Proveedor_triggered", 0);
     m_company->s_listFacturasPro();
@@ -322,6 +394,9 @@ void Bulmafact::on_actionListado_Facturas_Proveedor_triggered() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionNuevo_Presupuesto_triggered() {
     _depura("Bulmafact::on_actionNuevo_Presupuesto_triggered", 0);
     m_company->s_newPresupuestoCli();
@@ -329,6 +404,9 @@ void Bulmafact::on_actionNuevo_Presupuesto_triggered() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionListado_Presupuestos_triggered() {
     _depura("Bulmafact::on_actionListado_Presupuestos_triggered", 0);
     m_company->listBudgets();
@@ -336,6 +414,9 @@ void Bulmafact::on_actionListado_Presupuestos_triggered() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionNuevo_Pedido_Cliente_triggered() {
     _depura("Bulmafact::on_actionNuevo_Pedido_Cliente_triggered", 0);
     m_company->s_newPedidoClienteView();
@@ -343,6 +424,9 @@ void Bulmafact::on_actionNuevo_Pedido_Cliente_triggered() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionListado_Pedidos_Cliente_triggered() {
     _depura("Bulmafact::on_actionListado_Pedidos_Cliente_triggered", 0);
     m_company->s_listPedidosCli();
@@ -350,6 +434,9 @@ void Bulmafact::on_actionListado_Pedidos_Cliente_triggered() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionNuevo_Albaran_Cliente_triggered() {
     _depura("Bulmafact::on_actionNuevo_Albaran_Cliente_triggered", 0);
     m_company->s_newAlbaranClienteView();
@@ -357,6 +444,9 @@ void Bulmafact::on_actionNuevo_Albaran_Cliente_triggered() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionListado_Albaranes_Cliente_triggered() {
     _depura("Bulmafact::on_actionListado_Albaranes_Cliente_triggered", 0);
     m_company->listClientDelivNotes();
@@ -364,6 +454,9 @@ void Bulmafact::on_actionListado_Albaranes_Cliente_triggered() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionNueva_Factura_Cliente_triggered() {
     _depura("Bulmafact::on_actionNueva_Factura_Cliente_triggered", 0);
     m_company->s_newFacturaCli();
@@ -371,6 +464,9 @@ void Bulmafact::on_actionNueva_Factura_Cliente_triggered() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionListado_Facturas_Cliente_triggered() {
     _depura("Bulmafact::on_actionListado_Facturas_Cliente_triggered", 0);
     m_company->s_listFacturasCli();
@@ -378,6 +474,9 @@ void Bulmafact::on_actionListado_Facturas_Cliente_triggered() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionGestion_Familias_triggered() {
     _depura("Bulmafact::on_actionGestion_Familias_triggered", 0);
     m_company->s_newfamiliasview();
@@ -385,6 +484,9 @@ void Bulmafact::on_actionGestion_Familias_triggered() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionGestion_Tipos_Articulo_triggered() {
     _depura("Bulmafact::on_actionGestion_Tipos_Articulo_triggered", 0);
     m_company->s_newTipoArticuloList();
@@ -392,6 +494,9 @@ void Bulmafact::on_actionGestion_Tipos_Articulo_triggered() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionNuevo_Articulo_triggered() {
     _depura("Bulmafact::on_actionNuevo_Articulo_triggered", 0);
     m_company->s_newArticulo();
@@ -399,6 +504,9 @@ void Bulmafact::on_actionNuevo_Articulo_triggered() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionListado_de_Articulos_triggered() {
     _depura("Bulmafact::on_actionListado_de_Articulos_triggered", 0);
     m_company->listarticles();
@@ -406,6 +514,9 @@ void Bulmafact::on_actionListado_de_Articulos_triggered() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionNuevo_Proveedor_triggered() {
     _depura("Bulmafact::on_actionNuevo_Proveedor_triggered", 0);
     m_company->s_newProveedorView();
@@ -413,6 +524,9 @@ void Bulmafact::on_actionNuevo_Proveedor_triggered() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionListado_Proveedores_triggered() {
     _depura("Bulmafact::on_actionListado_Proveedores_triggered", 0);
     m_company->listproviders();
@@ -420,6 +534,9 @@ void Bulmafact::on_actionListado_Proveedores_triggered() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionNuevo_Cliente_triggered() {
     _depura("Bulmafact::on_actionNuevo_Cliente_triggered", 0);
     m_company->s_newClienteView();
@@ -427,6 +544,9 @@ void Bulmafact::on_actionNuevo_Cliente_triggered() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionListado_Clientes_triggered() {
     _depura("Bulmafact::on_actionListado_Clientes_triggered", 0);
     m_company->listClients();
@@ -434,6 +554,9 @@ void Bulmafact::on_actionListado_Clientes_triggered() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionPaises_triggered() {
     _depura("Bulmafact::on_actionPaises_triggered", 0);
     m_company->muestraPaises();
@@ -441,6 +564,9 @@ void Bulmafact::on_actionPaises_triggered() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionSeries_de_Factura_triggered() {
     _depura("Bulmafact::on_actionSeries_de_Factura_triggered", 0);
     m_company->s_seriesFactura();
@@ -448,6 +574,9 @@ void Bulmafact::on_actionSeries_de_Factura_triggered() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionTrabajadores_triggered() {
     _depura("Bulmafact::on_actionTrabajadores_triggered", 0);
     m_company->s_trabajadores();
@@ -455,6 +584,9 @@ void Bulmafact::on_actionTrabajadores_triggered() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionBancos_triggered() {
     _depura("Bulmafact::on_actionBancos_triggered", 0);
     m_company->s_bancos();
@@ -462,6 +594,9 @@ void Bulmafact::on_actionBancos_triggered() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionVentana_Completa_triggered() {
     _depura("Bulmafact::on_actionVentana_Completa_triggered", 0);
     s_ventanaCompleta();
@@ -469,6 +604,9 @@ void Bulmafact::on_actionVentana_Completa_triggered() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionAcerta_de_triggered() {
     _depura("Bulmafact::on_actionAcerta_de_triggered", 0);
     s_About();
@@ -476,6 +614,9 @@ void Bulmafact::on_actionAcerta_de_triggered() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionAlmacenes_triggered() {
     _depura("Bulmafact::on_actionAlmacenes_triggered", 0);
     m_company->s_almacenes();
@@ -483,6 +624,9 @@ void Bulmafact::on_actionAlmacenes_triggered() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionListado_de_Pagos_triggered() {
     _depura("Bulmafact::on_actionListado_de_Pagos_triggered", 0);
     m_company->viewPagosList();
@@ -490,6 +634,9 @@ void Bulmafact::on_actionListado_de_Pagos_triggered() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionNuevo_Pago_triggered() {
     _depura("Bulmafact::on_actionNuevo_Pago_triggered", 0);
     m_company->s_newPagoView();
@@ -497,6 +644,9 @@ void Bulmafact::on_actionNuevo_Pago_triggered() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionNuevo_Cobro_triggered() {
     _depura("Bulmafact::on_actionNuevo_Cobro_triggered", 0);
     m_company->s_newCobroView();
@@ -504,6 +654,9 @@ void Bulmafact::on_actionNuevo_Cobro_triggered() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionListado_de_Cobros_triggered() {
     _depura("Bulmafact::on_actionListado_de_Cobros_triggered", 0);
     m_company->viewCobrosList();
@@ -511,6 +664,9 @@ void Bulmafact::on_actionListado_de_Cobros_triggered() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionParametros_triggered() {
     _depura("Bulmafact::on_actionParametros_triggered", 0);
     m_company->s_newListConfiguracionView();
@@ -518,12 +674,19 @@ void Bulmafact::on_actionParametros_triggered() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionFormas_de_Pago_triggered() {
     _depura("Bulmafact::on_actionFormas_de_Pago_triggered", 0);
     s_FPago();
     _depura("END Bulmafact::on_actionFormas_de_Pago_triggered", 0);
 }
 
+
+///
+/**
+**/
 void Bulmafact::on_actionOrdenar_Ventanas_triggered() {
     _depura("Bulmafact::on_actionOrdenar_Ventanas_triggered", 0);
     pWorkspace->tile();
@@ -531,6 +694,9 @@ void Bulmafact::on_actionOrdenar_Ventanas_triggered() {
 }
 
 
+///
+/**
+**/
 void Bulmafact::on_actionOrganizaci_n_en_Cascada_triggered() {
     _depura("Bulmafact::on_actionOrganizacion_en_Cascada_triggered", 0);
     pWorkspace->cascade();

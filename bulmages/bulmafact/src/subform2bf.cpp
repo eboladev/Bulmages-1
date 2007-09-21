@@ -36,6 +36,10 @@
 #include "plugins.h"
 
 
+///
+/**
+\param parent
+**/
 SubForm2Bf::SubForm2Bf(QWidget *parent) : SubForm3(parent) {
     _depura("SubForm2Bf::SubForm2Bf", 0);
     setDelete(TRUE);
@@ -46,6 +50,9 @@ SubForm2Bf::SubForm2Bf(QWidget *parent) : SubForm3(parent) {
 }
 
 
+///
+/**
+**/
 SubForm2Bf::~SubForm2Bf() {
     _depura("SubForm2Bf::~SubForm2Bf", 0);
     delete m_delegate;
@@ -53,6 +60,10 @@ SubForm2Bf::~SubForm2Bf() {
 }
 
 
+///
+/**
+\param query
+**/
 void SubForm2Bf::cargar(QString query) {
     _depura("SubForm2Bf::cargar", 0);
     SubForm3::cargar(query);
@@ -60,6 +71,12 @@ void SubForm2Bf::cargar(QString query) {
 }
 
 
+///
+/**
+\param row
+\param col
+\return
+**/
 void SubForm2Bf::on_mui_list_pressedAsterisk(int row, int col) {
     _depura("SubForm2Bf::pressedAsterisk", 0);
 
@@ -102,6 +119,11 @@ void SubForm2Bf::on_mui_list_pressedAsterisk(int row, int col) {
 }
 
 
+///
+/**
+\param row
+\param col
+**/
 void SubForm2Bf::on_mui_list_pressedSlash(int row, int col) {
     _depura("SubForm2Bf::pressedSlash", 0);
     SDBCampo *camp = (SDBCampo *) item(row, col);
@@ -111,6 +133,11 @@ void SubForm2Bf::on_mui_list_pressedSlash(int row, int col) {
 }
 
 
+///
+/**
+\param row
+\param col
+**/
 void SubForm2Bf::on_mui_list_pressedMinus(int row, int col) {
     _depura("SubForm2Bf::pressedMinus", 0);
 
@@ -128,6 +155,12 @@ void SubForm2Bf::on_mui_list_pressedMinus(int row, int col) {
 
 
 //void SubForm2Bf::on_mui_list_editFinished(int row, int col, int key) {
+///
+/**
+\param row
+\param col
+\return
+**/
 void SubForm2Bf::on_mui_list_cellChanged(int row, int col) {
     _depura("SubForm2Bf::on_mui_list_cellChanged", 0, QString::number(row) + " " + QString::number(col));
 
@@ -258,8 +291,11 @@ void SubForm2Bf::on_mui_list_cellChanged(int row, int col) {
 }
 
 
-
-
+///
+/**
+\param id
+\return
+**/
 void SubForm2Bf::setIdCliente(QString id) {
     _depura("SubForm2Bf::setIdCliente", 0, id);
 
@@ -320,6 +356,11 @@ void SubForm2Bf::setIdCliente(QString id) {
 }
 
 
+///
+/**
+\param id
+\return
+**/
 void SubForm2Bf::setIdProveedor(QString id) {
     _depura("SubForm2Bf::setIdProveedor", 0, id);
 
@@ -369,6 +410,10 @@ void SubForm2Bf::setIdProveedor(QString id) {
 }
 
 
+///
+/**
+\param c
+**/
 void SubForm2Bf::setEmpresaBase(EmpresaBase *c) {
     _depura("SubForm2Bf::setcompany", 0);
     SubForm3::setEmpresaBase(c);
@@ -377,6 +422,10 @@ void SubForm2Bf::setEmpresaBase(EmpresaBase *c) {
 }
 
 
+///
+/**
+\param f
+**/
 void SubForm2Bf::setDelete(bool f) {
     _depura("SubForm2Bf::setDelete", 0);
     m_delete = f;
@@ -384,6 +433,10 @@ void SubForm2Bf::setDelete(bool f) {
 }
 
 
+///
+/**
+\return
+**/
 int SubForm2Bf::cerrarEditor() {
     _depura("SubForm2Bf::cerrarEditor", 0);
     QWidget *editor = mui_list->QAbstractItemView::indexWidget(mui_list->currentIndex());
@@ -396,6 +449,10 @@ int SubForm2Bf::cerrarEditor() {
 /// ===============================================================
 ///  Tratamientos del Item Delegate
 /// ===============================================================
+///
+/**
+\param parent
+**/
 QSubForm2BfDelegate::QSubForm2BfDelegate(QObject *parent = 0) : QItemDelegate(parent), PEmpresaBase() {
     _depura("QSubForm2BfDelegate::QSubForm2BfDelegate", 0);
     m_subform = (SubForm2Bf *) parent;
@@ -405,12 +462,22 @@ QSubForm2BfDelegate::QSubForm2BfDelegate(QObject *parent = 0) : QItemDelegate(pa
 }
 
 
+///
+/**
+**/
 QSubForm2BfDelegate::~QSubForm2BfDelegate() {
     _depura("QSubForm2BfDelegate::~QSubForm2BfDelegate", 0);
     _depura("END QSubForm2BfDelegate::~QSubForm2BfDelegate", 0);
 }
 
 
+///
+/**
+\param parent
+\param option
+\param index
+\param index
+**/
 QWidget *QSubForm2BfDelegate::createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const {
     _depura("QSubForm2BfDelegate::createEditor", 0);
     SHeader *linea;
@@ -459,6 +526,13 @@ QWidget *QSubForm2BfDelegate::createEditor(QWidget *parent, const QStyleOptionVi
 }
 
 
+///
+/**
+\param editor
+\param model
+\param index.
+\return
+**/
 void QSubForm2BfDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const {
     _depura("QSubForm2BfDelegate::setModelData", 0);
     _depura("QSubForm2BfDelegate::setModelData", 0, "CurrentColumn: " + QString::number(index.column()));
@@ -506,6 +580,11 @@ void QSubForm2BfDelegate::setModelData(QWidget *editor, QAbstractItemModel *mode
 }
 
 
+///
+/**
+\param editor
+\param index
+**/
 void QSubForm2BfDelegate::setEditorData(QWidget* editor, const QModelIndex& index) const {
     _depura("QSubForm2BfDelegate::setEditorData", 0);
     _depura("QSubForm2BfDelegate::setEditorData", 0, "CurrentColumn: " + QString::number(index.column()));
@@ -547,6 +626,12 @@ void QSubForm2BfDelegate::setEditorData(QWidget* editor, const QModelIndex& inde
 }
 
 
+///
+/**
+\param obj
+\param event
+\return
+**/
 bool QSubForm2BfDelegate::eventFilter(QObject *obj, QEvent *event) {
     /// Si es un release de tecla se hace la funcionalidad especificada.
     if (event->type() == QEvent::KeyPress) {
@@ -594,6 +679,11 @@ bool QSubForm2BfDelegate::eventFilter(QObject *obj, QEvent *event) {
 }
 
 
+///
+/**
+\param editor.
+\return
+**/
 int QSubForm2BfDelegate::cerrarEditor(QWidget *editor) {
     _depura("QSubForm2BfDelegate::cerrarEditor", 0);
     emit closeEditor(editor, QAbstractItemDelegate::NoHint);

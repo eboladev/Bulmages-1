@@ -30,6 +30,9 @@
 
 /** Prepara el subformulario para trabajar con la tabla comparticulo de la base de datos.
 */
+/**
+\param parent
+**/
 ListCompArticuloView::ListCompArticuloView(QWidget *parent, const char *)
         : SubForm2Bf(parent) {
     _depura("ListCompArticuloView::ListCompArticuloView", 0);
@@ -44,9 +47,15 @@ ListCompArticuloView::ListCompArticuloView(QWidget *parent, const char *)
     _depura("END ListCompArticuloView::ListCompArticuloView", 0);
 }
 
+
 /** SLOT que responde a la pulsacion de Ctrl + * en el subformulario.
     Dependiendo de la columna que este seleccionada saca el buscador de articulos.
 */
+/**
+\param row
+\param col
+\return
+**/
 void ListCompArticuloView::pressedAsterisk(int row, int col) {
     _depura("ListCompArticuloView::pressedAsterisk", 0);
     SDBRecord *rec = lineaat(row);
@@ -76,6 +85,10 @@ void ListCompArticuloView::pressedAsterisk(int row, int col) {
 /** SLOT que responde a la finalizacion de edicion de una celda en el subformulario.
     Comprueba que sea la celda de codigo de articulo y si es asi pone el resto de componentes.
 */
+/**
+\param row
+\param col
+**/
 void ListCompArticuloView::editFinished(int row, int col) {
     _depura("ListCompArticuloView::editFinished", 0);
     SDBRecord *rec = lineaat(row);
@@ -92,14 +105,21 @@ void ListCompArticuloView::editFinished(int row, int col) {
     _depura("END ListCompArticuloView::editFinished", 0);
 }
 
+
 /** Destructor de la clase
+**/
+/**
 **/
 ListCompArticuloView::~ListCompArticuloView() {
 	_depura("ListCompArticuloView::~ListCompArticuloView", 0);
 	_depura("END ListCompArticuloView::~ListCompArticuloView", 0);
 }
 
+
 /** Realiza la carga del listado creando el query necesario para dicha carga
+**/
+/**
+\param idarticulo
 **/
 void ListCompArticuloView::cargar(QString idarticulo) {
         _depura("ListCompActiculo::cargar", 0);

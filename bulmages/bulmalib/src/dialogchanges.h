@@ -37,7 +37,7 @@ private:
     int m_maxQText;
     int m_maxQTable;
     int m_maxQComboBox;
-    QString valorinicial;
+    QString m_valorinicial;
     QObject *m_obje;
     QObject *m_listaQLine[999];
     QObject *m_listaQText[999];

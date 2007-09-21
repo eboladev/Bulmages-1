@@ -26,6 +26,9 @@
 /** Se encarga de poner todos los componentes a NULL para que no exista confusion
     en si los componentes han sido inicializados o no.
 */
+/**
+\param parent
+**/
 BusquedaFamilia::BusquedaFamilia(QWidget *parent)
         : BLWidget(parent) {
     _depura("BusquedaFamilia::BusquedaFamilia", 0);
@@ -39,12 +42,18 @@ BusquedaFamilia::BusquedaFamilia(QWidget *parent)
 
 /** No requiere de acciones especiales en la destruccion del Widget
 */
+/**
+**/
 BusquedaFamilia::~BusquedaFamilia() {
     _depura("BusquedaFamilia::~BusquedaFamilia", 0);
     _depura("END BusquedaFamilia::~BusquedaFamilia", 0);
 }
 
 
+///
+/**
+\param val
+**/
 void BusquedaFamilia::setidfamilia(QString val) {
     _depura("BusquedaFamilia::setidfamilia", 0);
     mdb_idfamilia = val;
@@ -66,11 +75,22 @@ void BusquedaFamilia::setidfamilia(QString val) {
     _depura("END BusquedaFamilia::setidfamilia", 0);
 }
 
+
+///
+/**
+\param val
+**/
 void BusquedaFamilia::setValorCampo(QString val) {
+    _depura("BusquedaFamilia::setValorCampo", 0);
 	setidfamilia(val);
+    _depura("END BusquedaFamilia::setValorCampo", 0);
 }
 
 
+///
+/**
+\param val
+**/
 void BusquedaFamilia::setcodigocompletofamilia(QString val) {
     _depura("BusquedaFamilia::setcodigocompletofamilia", 0);
     mdb_codigocompletofamilia = val;
@@ -93,6 +113,8 @@ void BusquedaFamilia::setcodigocompletofamilia(QString val) {
 
 
 /// Busqueda de familias.
+/**
+**/
 void BusquedaFamilia::on_mui_buscar_clicked() {
     _depura("BusquedaFamilia::on_mui_buscar_clicked", 0);
     QDialog *diag = new QDialog(0);
@@ -123,7 +145,10 @@ void BusquedaFamilia::on_mui_buscar_clicked() {
     _depura("END BusquedaFamilia::on_mui_buscar_clicked", 0);
 }
 
-
+///
+/**
+\param val
+**/
 void BusquedaFamilia::on_m_codigocompletofamilia_textChanged(const QString &val) {
     _depura("BusquedaFamilia::on_m_codigocompletofamilia_textChanged", 0);
     mdb_codigocompletofamilia = val;
@@ -146,7 +171,10 @@ void BusquedaFamilia::on_m_codigocompletofamilia_textChanged(const QString &val)
 }
 
 
-
+///
+/**
+\return
+**/
 QString BusquedaFamilia::codigocompletofamilia() {
     _depura("BusquedaFamilia::codigocompletofamilia", 0);
     _depura("END BusquedaFamilia::codigocompletofamilia", 0);
@@ -154,18 +182,32 @@ QString BusquedaFamilia::codigocompletofamilia() {
 }
 
 
+///
+/**
+\return
+**/
 QString BusquedaFamilia::idfamilia() {
     _depura("BusquedaFamilia::idfamilia", 0);
     _depura("END BusquedaFamilia::idfamilia", 0);
     return mdb_idfamilia;
 }
 
+
+///
+/**
+\return
+**/
 QString BusquedaFamilia::valorCampo() {
     _depura("BusquedaFamilia::valorCampo", 0);
     _depura("END BusquedaFamilia::valorCampo", 0);
     return mdb_idfamilia;
 }
 
+
+///
+/**
+\returns
+**/
 QString BusquedaFamilia::nombrefamilia() {
     _depura("BusquedaFamilia::nombrefamilia", 0);
     _depura("END BusquedaFamilia::nombrefamilia", 0);

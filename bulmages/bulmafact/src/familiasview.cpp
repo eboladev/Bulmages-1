@@ -36,6 +36,12 @@
 #define COL_PRODUCTOFISICOFAMILIA 5
 
 
+///
+/**
+\param comp
+\param parent
+\param modoConsulta
+**/
 FamiliasView::FamiliasView(Company *comp, QWidget *parent, bool modoConsulta)
         : FichaBf(comp, parent) {
     _depura("FamiliasView::FamiliasView", 0);
@@ -76,10 +82,18 @@ FamiliasView::FamiliasView(Company *comp, QWidget *parent, bool modoConsulta)
 }
 
 
-FamiliasView::~FamiliasView() {}
+///
+/**
+**/
+FamiliasView::~FamiliasView() {
+    _depura("FamiliasView::~FamiliasView", 0);
+    _depura("END FamiliasView::~FamiliasView", 0);
+}
 
 
-
+///
+/**
+**/
 void FamiliasView::pintar() {
     _depura("FamiliasView::pintar", 0);
     m_semaforoPintar = TRUE; /// Activamos el semaforo de pintado para que no haya slots concurrentes.
@@ -136,38 +150,57 @@ void FamiliasView::pintar() {
 }
 
 
+///
+/**
+\return
+**/
 QString FamiliasView::codigoCompletoFamilia() {
     _depura("FamiliasView::codigoCompletoFamilia", 0);
     QTreeWidgetItem *it = m_listFamilias->currentItem();
     if (it)
         return it->text(COL_CODCOMPLETOFAMILIA);
     else
+    _depura("END FamiliasView::codigoCompletoFamilia", 0);
         return "";
 }
 
 
+///
+/**
+\return
+**/
 QString FamiliasView::idFamilia() {
     _depura("FamiliasView::idFamilia", 0);
     QTreeWidgetItem *it = m_listFamilias->currentItem();
     if (it)
         return it->text(COL_IDFAMILIA);
     else
+    _depura("END FamiliasView::idFamilia", 0);
         return "";
 }
 
 
+///
+/**
+\return
+**/
 QString FamiliasView::nombreFamilia() {
+    _depura("FamiliasView::nombreFamilia", 0);
     QTreeWidgetItem *it = m_listFamilias->currentItem();
     if (it)
         return it->text(COL_NOMFAMILIA);
     else
         return "";
+    _depura("END FamiliasView::nombreFamilia", 0);
 }
 
 
 /// Se ha seleccionado un item en la lista.
 /// Lo que hacemos es mostar el elemento.
 /// Si el anterior ha sido modificado pedimos para actuar en consecuencia.
+/**
+\param it
+**/
 void FamiliasView::on_m_listFamilias_itemDoubleClicked(QTreeWidgetItem *it) {
     _depura("FamiliasView::on_m_listFamilias_itemDoubleClicked", 0);
     if (m_modoConsulta) {
@@ -181,6 +214,11 @@ void FamiliasView::on_m_listFamilias_itemDoubleClicked(QTreeWidgetItem *it) {
 /// Se ha seleccionado un item en la lista.
 /// Lo que hacemos es mostar el elemento.
 /// Si el anterior ha sido modificado pedimos para actuar en consecuencia.
+/**
+\param current
+\param previos
+\return
+**/
 void FamiliasView::on_m_listFamilias_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous) {
    _depura("FamiliasView::on_m_listFamilias_currentItemChanged", 0);
 
@@ -200,6 +238,9 @@ void FamiliasView::on_m_listFamilias_currentItemChanged(QTreeWidgetItem *current
 }
 
 
+///
+/**
+**/
 void FamiliasView::mostrarplantilla() {
     _depura("FamiliasView::mostrarplantilla", 0);
     QString query;
@@ -224,6 +265,10 @@ void FamiliasView::mostrarplantilla() {
 
 
 
+///
+/**
+\return
+**/
 bool FamiliasView::trataModificado() {
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
@@ -241,6 +286,9 @@ bool FamiliasView::trataModificado() {
 
 /// SLOT que responde a la pulsacion del boton de guardar el tipo de IVA que se esta editando.
 /// Lo que hace es que se hace un update de todos los campos.
+/**
+\return
+**/
 void FamiliasView::on_mui_guardar_clicked() {
     _depura("FamiliasView::on_mui_guardar_clicked", 0);
     QString prodfam;
@@ -275,6 +323,10 @@ void FamiliasView::on_mui_guardar_clicked() {
 }
 
 
+///
+/**
+\param it
+**/
 void FamiliasView::pintar(QTreeWidgetItem *it) {
     QString idfamilia = it->text(COL_IDFAMILIA);
     if (it) {
@@ -294,6 +346,8 @@ void FamiliasView::pintar(QTreeWidgetItem *it) {
 
 /// SLOT que responde a la pulsacion del boton de nuevo tipo de IVA
 /// Inserta en la tabla de IVAs.
+/**
+**/
 void FamiliasView::on_mui_crear_clicked() {
     _depura("FamiliasView::on_mui_crear_clicked", 0);
     try {
@@ -325,7 +379,9 @@ void FamiliasView::on_mui_crear_clicked() {
 }
 
 
-
+///
+/**
+**/
 void FamiliasView::on_mui_borrar_clicked() {
     _depura("FamiliasView::on_mui_borrar_clicked", 0);
 
@@ -348,6 +404,9 @@ void FamiliasView::on_mui_borrar_clicked() {
 
 /// SLOT que responde a la pulsacion del botón de borrar la familia que se está editando.
 /// Lo que hace es que se hace un update de todos los campos.
+/**
+\return
+**/
 int FamiliasView::borrar() {
     _depura("FamiliasView::borrar", 0);
 	if (m_idfamilia == "") {
@@ -371,6 +430,9 @@ int FamiliasView::borrar() {
 }
 
 
+///
+/**
+**/
 void FamiliasView::on_mui_imprimir_clicked() {
     _depura("FamiliasView::on_mui_imprimir_clicked", 0);
 

@@ -23,10 +23,129 @@
 #include "company.h"
 #include "funcaux.h"
 
+
+
+/** Inicializa todos los componentes a NULL para que no haya confusiones sobre
+    si un elemento ha sido inicializado o no.
+    Hace la conexion del SIGNAL activated con m_activated para tratar el evento.
+*/
+/**
+\param parent
+**/
+BusquedaTipoIva::BusquedaTipoIva(QWidget *parent)
+        : QComboBox2(parent) {
+    _depura("BusquedaTipoIva::BusquedaTipoIva", 0);
+    m_cursorcombo = NULL;
+    connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
+    _depura("END BusquedaTipoIva::BusquedaTipoIva", 0);
+}
+
+
+/** Libera la memoria dinamica que se estaba utilizando.
+*/
+/**
+**/
+BusquedaTipoIva::~BusquedaTipoIva() {
+    _depura("BusquedaTipoIva::~BusquedaTipoIva", 0);
+    if (m_cursorcombo != NULL)
+        delete m_cursorcombo;
+    _depura("END BusquedaTipoIva::~BusquedaTipoIva", 0);
+}
+
+
+/** Con este metodo se puede indicar al Widget cual es el tipo_iva seleccionado.
+    Recarga el cursor de tipo_ivaes y cuando encuentra uno con el mismo identificador
+    que el que se ha pasado por parametro lo establece como elemento seleccionado.
+*/
+/**
+\param idtipo_iva
+\returns
+**/
+void BusquedaTipoIva::setidtipo_iva(QString idtipo_iva) {
+    _depura("BusquedaTipoIva::setidtipo_iva", 0);
+    if (m_cursorcombo != NULL)
+        delete m_cursorcombo;
+    m_cursorcombo = empresaBase()->cargacursor("SELECT * FROM tipo_iva");
+    /// Tratamos el caso en que no se haya devuelto nada.
+    if (m_cursorcombo == NULL) return;
+    int i = 0;
+    int i1 = 0;
+    clear();
+    addItem("--");
+    while (!m_cursorcombo->eof()) {
+        i ++;
+        if (m_cursorcombo->valor("idtipo_iva") == idtipo_iva)
+            i1 = i;
+        addItem(m_cursorcombo->valor("desctipo_iva") );
+        m_cursorcombo->siguienteregistro();
+    } // end while
+    setCurrentIndex(i1);
+    _depura("END BusquedaTipoIva::setidtipo_iva", 0);
+}
+
+
+///
+/**
+\param idtipo_iva
+**/
+void BusquedaTipoIva::setValorCampo(QString idtipo_iva) {
+    _depura("BusquedaTipoIva::setValorCampo", 0);
+	setidtipo_iva(idtipo_iva);
+    _depura("END BusquedaTipoIva::setValorCampo", 0);
+}
+
+
+/** Devuelve el identificador del tipo_iva seleccionado
+**/
+/**
+\return
+**/
+QString BusquedaTipoIva::idtipo_iva() {
+    _depura("BusquedaTipoIva::idtipo_iva", 0);
+    _depura("END BusquedaTipoIva::idtipo_iva", 0);
+    /// Como puede haber habido un error con la base de datos debemos tratar dicho caso.
+    if (!m_cursorcombo) return "0";
+    return m_cursorcombo->valor("idtipo_iva", currentIndex() - 1);
+}
+
+/** Devuelve el identificador del tipo_iva seleccionado
+**/
+/**
+\return
+**/
+QString BusquedaTipoIva::valorCampo() {
+    _depura("BusquedaTipoIva::valorCampo", 0);
+    return idtipo_iva();
+    _depura("END BusquedaTipoIva::valorCampo", 0);
+}
+
+
+/** SLOT que responde a la activacion de un elemento en el QComboBox y que hace que se emita el SIGNAL valueChanged
+**/
+/**
+\param index
+**/
+void BusquedaTipoIva::m_activated(int index) {
+    _depura("BusquedaTipoIva::m_activated", 0);
+    if (index > 0) {
+        emit(valueChanged(m_cursorcombo->valor("idtipo_iva", index - 1)));
+    } else {
+        emit(valueChanged(""));
+    }
+    _depura("END BusquedaTipoIva::m_activated", 0);
+}
+
+
+
+/// ==================================================================
+
 /** Inicializa todos los componentes del Widget a NULL para que no haya posibles confusiones
     sobre si un elemento ha sido creado o no. 
     Conecta el SIGNAL activated() con m_activated() para tratarlo.
 */
+/**
+\param parent
+**/
 BusquedaTipoIVADelegate::BusquedaTipoIVADelegate(QWidget *parent)
         : QComboBox2(parent) {
     _depura("BusquedaTipoIVADelegate::BusquedaTipoIVADelegate", 0);
@@ -39,6 +158,8 @@ BusquedaTipoIVADelegate::BusquedaTipoIVADelegate(QWidget *parent)
 
 /** Libera la memoria reservada.
 */
+/**
+**/
 BusquedaTipoIVADelegate::~BusquedaTipoIVADelegate() {
     _depura("BusquedaTipoIVADelegate::~BusquedaTipoIVADelegate", 0);
     if (m_cursorcombo != NULL)
@@ -51,6 +172,9 @@ BusquedaTipoIVADelegate::~BusquedaTipoIVADelegate() {
     Recarga cursor de serie_factura y cuando encuentra un registro cuyo codigoserie_factura coincide con el pasado
     como parametro lo establece como el registro activo por el comboBox.
 */
+/**
+\param code
+**/
 void BusquedaTipoIVADelegate::set(const QString &cod) {
     _depura("BusquedaTipoIVADelegate::set", 0);
     int index = 0;

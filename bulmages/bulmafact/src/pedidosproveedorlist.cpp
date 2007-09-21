@@ -31,6 +31,11 @@
 #include "pedidoproveedorview.h"
 
 
+///
+/**
+\param parent
+\param flag
+**/
 PedidosProveedorList::PedidosProveedorList(QWidget *parent, Qt::WFlags flag)
         : Listado (NULL, parent, flag) {
     _depura("PedidosProveedorList::PedidosProveedorList", 0);
@@ -43,6 +48,12 @@ PedidosProveedorList::PedidosProveedorList(QWidget *parent, Qt::WFlags flag)
 }
 
 
+///
+/**
+\param comp
+\param parent
+\param flag
+**/
 PedidosProveedorList::PedidosProveedorList(Company *comp, QWidget *parent, Qt::WFlags flag)
         : Listado(comp, parent, flag) {
     _depura("PedidosProveedorList::PedidosProveedorList", 0);
@@ -59,14 +70,22 @@ PedidosProveedorList::PedidosProveedorList(Company *comp, QWidget *parent, Qt::W
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
     trataPermisos("pedidoproveedor");
     _depura("END PedidosProveedorList::PedidosProveedorList", 0);
-
 }
 
+
+///
+/**
+**/
 PedidosProveedorList::~PedidosProveedorList() {
     _depura("PedidosProveedorList::~PedidosProveedorList", 0);
     _depura("END PedidosProveedorList::~PedidosProveedorList", 0);
 }
 
+
+///
+/**
+\return
+**/
 void PedidosProveedorList::iniciaForm() {
     _depura("PedidosProveedorList::iniciaForm");
     /// Disparamos los plugins.
@@ -80,7 +99,12 @@ void PedidosProveedorList::iniciaForm() {
 }
 
 
+///
+/**
+\returns
+**/
 void PedidosProveedorList::presentar() {
+    _depura("PedidosProveedorList::presentar", 0);
     mui_list->cargar("SELECT *, totalpedidoproveedor AS total, bimppedidoproveedor AS base, imppedidoproveedor AS impuestos FROM pedidoproveedor LEFT JOIN proveedor ON pedidoproveedor.idproveedor=proveedor.idproveedor LEFT JOIN almacen ON pedidoproveedor.idalmacen=almacen.idalmacen WHERE 1=1 " + generarFiltro());
     /// Hacemos el calculo del total.
     cursor2 *cur = empresaBase()->cargacursor("SELECT SUM(totalpedidoproveedor) AS total FROM pedidoproveedor LEFT JOIN proveedor ON pedidoproveedor.idproveedor=proveedor.idproveedor LEFT JOIN almacen ON pedidoproveedor.idalmacen=almacen.idalmacen WHERE 1=1 " + generarFiltro());
@@ -88,10 +112,16 @@ void PedidosProveedorList::presentar() {
     if(!cur) return;
     m_total->setText(cur->valor("total"));
     delete cur;
+    _depura("END PedidosProveedorList::presentar", 0);
 }
 
 
+///
+/**
+\return
+**/
 QString PedidosProveedorList::generarFiltro() {
+    _depura("PedidosProveedorList::generarFiltro", 0);
     /// Tratamiento de los filtros.
     QString filtro = "";
 
@@ -125,10 +155,14 @@ QString PedidosProveedorList::generarFiltro() {
         filtro += " AND fechapedidoproveedor <= '" + m_fechafin->text() + "' ";
         //filtro += " ORDER BY "+orden[m_orden->currentItem()];
     } // end if
+    _depura("END PedidosProveedorList::generarFiltro", 0);
     return (filtro);
 }
 
 
+///
+/**
+**/
 void PedidosProveedorList::imprimir() {
     _depura("PedidosProveedorList::imprimir", 0);
     mui_list->imprimirPDF(tr("Pedidos a proveedores"));
@@ -136,6 +170,10 @@ void PedidosProveedorList::imprimir() {
 }
 
 
+///
+/**
+\return
+**/
 void PedidosProveedorList::borrar() {
     _depura("PedidosProveedorList::borrar", 0);
     int a = mui_list->currentRow();
@@ -161,6 +199,10 @@ void PedidosProveedorList::borrar() {
 }
 
 
+///
+/**
+\param row
+**/
 void PedidosProveedorList::editar(int row) {
     _depura("PedidosProveedorList::editar", 0);
     try {
@@ -183,6 +225,9 @@ void PedidosProveedorList::editar(int row) {
 }
 
 
+///
+/**
+**/
 void PedidosProveedorList::crear() {
     _depura("PedidosProveedorList::crear", 0);
     PedidoProveedorView *prov = new PedidoProveedorView((Company *)empresaBase(), 0);
@@ -192,25 +237,50 @@ void PedidosProveedorList::crear() {
 }
 
 
+///
+/**
+\param comp
+**/
 void PedidosProveedorList::setEmpresaBase(Company *comp) {
+    _depura("PedidosProveedorList::setEmpresaBase", 0);
     PEmpresaBase::setEmpresaBase(comp);
     m_proveedor->setEmpresaBase(comp);
     mui_list->setEmpresaBase(comp);
+    _depura("END PedidosProveedorList::setEmpresaBase", 0);
 }
 
+
+///
+/**
+\return
+**/
 QString PedidosProveedorList::idpedidoproveedor() {
+    _depura("PedidosProveedorList::idpedidoproveedor", 0);
     return mdb_idpedidoproveedor;
+    _depura("END PedidosProveedorList::idpedidoproveedor", 0);
 }
 
+
+///
+/**
+\param val
+**/
 void PedidosProveedorList::setidproveedor(QString val) {
+    _depura("PedidosProveedorList::setidproveedor", 0);
     m_proveedor->setidproveedor(val);
+    _depura("END PedidosProveedorList::setidproveedor", 0);
 }
 
 
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
+///
+/**
+\param parent
+**/
 PedidosProveedorListSubform::PedidosProveedorListSubform(QWidget *parent) : SubForm2Bf(parent) {
+    _depura("PedidosProveedorListSubform::PedidosProveedorListSubform", 0);
     setDBTableName("pedidoproveedor");
     setDBCampoId("idpedidoproveedor");
     addSHeader("numpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Numero de pedido"));
@@ -232,19 +302,38 @@ PedidosProveedorListSubform::PedidosProveedorListSubform(QWidget *parent) : SubF
     setinsercion(FALSE);
     setDelete(FALSE);
     setSortingEnabled(TRUE);
+    _depura("END PedidosProveedorListSubform::PedidosProveedorListSubform", 0);
 }
 
+
+///
+/**
+**/
 void PedidosProveedorListSubform::cargar() {
     _depura("PedidosProveedorListSubform::cargar", 0);
     QString SQLQuery = "SELECT * FROM pedidoproveedor";
     cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
     SubForm3::cargar(cur);
     delete cur;
+    _depura("END PedidosProveedorListSubform::cargar", 0);
 }
 
 
+///
+/**
+\param query
+**/
 void PedidosProveedorListSubform::cargar(QString query) {
+    _depura("PedidosProveedorListSubform::cargar", 0);
     SubForm3::cargar(query);
+    _depura("END PedidosProveedorListSubform::cargar", 0);
 }
 
-PedidosProveedorListSubform::~PedidosProveedorListSubform() {}
+
+///
+/**
+**/
+PedidosProveedorListSubform::~PedidosProveedorListSubform() {
+    _depura("PedidosProveedorListSubform::~PedidosProveedorListSubform", 0);
+    _depura("END PedidosProveedorListSubform::~PedidosProveedorListSubform", 0);
+}

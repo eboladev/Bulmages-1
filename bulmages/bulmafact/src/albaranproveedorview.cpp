@@ -46,6 +46,11 @@
 /** Inicializa todos los componentes de la ventana.
     Mete la ventana en el workSpace.
 */
+/**
+\param comp
+\param parent
+\return
+**/
 AlbaranProveedorView::AlbaranProveedorView(Company *comp, QWidget *parent)
         : FichaBf(comp, parent) {
     _depura("AlbaranProveedorView::AlbaranProveedorView", 0);
@@ -100,6 +105,8 @@ AlbaranProveedorView::AlbaranProveedorView(Company *comp, QWidget *parent)
 
 /** Hace que el listado de Albaranes se refresque
 */
+/**
+**/
 AlbaranProveedorView::~AlbaranProveedorView() {
     _depura("AlbaranProveedorView::~AlbaranProveedorView", 0);
     empresaBase()->refreshAlbaranesProveedor();
@@ -107,8 +114,9 @@ AlbaranProveedorView::~AlbaranProveedorView() {
 }
 
 
-
-
+///
+/**
+**/
 void AlbaranProveedorView::on_mui_facturar_clicked() {
     _depura("AlbaranProveedorView::on_mui_facturar_clicked", 0);
     generarFacturaProveedor();
@@ -116,7 +124,9 @@ void AlbaranProveedorView::on_mui_facturar_clicked() {
 }
 
 
-
+///
+/**
+**/
 void AlbaranProveedorView::s_generarFactura() {
     _depura("AlbaranProveedorView::s_generarFactura", 0);
     generarFactura();
@@ -124,6 +134,9 @@ void AlbaranProveedorView::s_generarFactura() {
 }
 
 
+///
+/**
+**/
 void AlbaranProveedorView::on_m_descuentos_editFinish(int, int) {
     _depura("AlbaranProveedorView::on_m_descuentos_editFinish", 0);
     calculaypintatotales();
@@ -131,6 +144,9 @@ void AlbaranProveedorView::on_m_descuentos_editFinish(int, int) {
 }
 
 
+///
+/**
+**/
 void AlbaranProveedorView::on_subform2_editFinish(int, int) {
     _depura("AlbaranProveedorView::on_subform2_editFinish", 0);
     calculaypintatotales();
@@ -142,6 +158,8 @@ void AlbaranProveedorView::on_subform2_editFinish(int, int) {
     Este metodo es invocado al crear un nuevo Albaran de Proveedor sin
     tener que hacer una carga del mismo.
 */
+/**
+**/
 void AlbaranProveedorView::inicializar() {
     _depura("AlbaranProveedorView::inicializar", 0);
     subform2->inicializar();
@@ -151,8 +169,14 @@ void AlbaranProveedorView::inicializar() {
 }
 
 
-/** Pinta los totales indicados en sus correspondientes textEdit.
-*/
+/// Pinta los totales indicados en sus correspondientes textEdit.
+/**
+\param iva
+\param base
+\param desc
+\param irpf
+\param reqeq
+**/
 void AlbaranProveedorView::pintatotales(Fixed iva, Fixed base, Fixed, Fixed desc, Fixed irpf, Fixed reqeq) {
     _depura("AlbaranProveedorView::pintatotales", 0);
     m_totalalbaranp->setText((iva + base).toQString());
@@ -166,6 +190,8 @@ void AlbaranProveedorView::pintatotales(Fixed iva, Fixed base, Fixed, Fixed desc
 
 
 /** FUNCION AUN NO IMPLEMENTADA. */
+/**
+**/
 void AlbaranProveedorView::s_verpedidoproveedor()  {
     _depura("Funcion aun no implementada", 2);
 }
@@ -177,6 +203,9 @@ void AlbaranProveedorView::s_verpedidoproveedor()  {
     En caso contrario crea una instancia de facturap y rellena todos los campos de esta con
     los datos del albaran y la muestra.
 */
+/**
+\return
+**/
 void AlbaranProveedorView::generarFactura()  {
     _depura("AlbaranProveedorView::generarFactura", 0);
     /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos
@@ -230,15 +259,13 @@ void AlbaranProveedorView::generarFactura()  {
 }
 
 
-
-
-
-
 /** SLOT que responde a la creacion de un pago.
     Crea una instancia de la ventana de pagos y la rellena con los datos
     del AlbaranProveedor y lo muestra.
 */
 ///  \TODO: Actualmente no esta comprobando que el pago ya exista.
+/**
+**/
 void AlbaranProveedorView::on_mui_pagar_clicked() {
     _depura("AlbaranProveedorView::on_mui_pagar_clicked", 0);
     PagoView *bud = empresaBase()->newPagoView();
@@ -257,6 +284,8 @@ void AlbaranProveedorView::on_mui_pagar_clicked() {
     Realiza una consulta sobre los pedidos de proveedor que tienen la misma
     referencia que este pedido de proveedor y los instancia y muestra.
 */
+/**
+**/
 void AlbaranProveedorView::on_mui_verpedidosproveedor_clicked() {
     _depura("AlbaranProveedorView::on_mui_verpedidos_clicked", 0);
     QString query = "SELECT * FROM pedidoproveedor WHERE refpedidoproveedor = '" + DBvalue("refalbaranp") + "'";
@@ -279,6 +308,9 @@ void AlbaranProveedorView::on_mui_verpedidosproveedor_clicked() {
     Si no existe dicha factura el sistema avisa y permite crear una poniendo
     Todos los datos del albaran automaticamente en ella.
 */
+/**
+\return
+**/
 void AlbaranProveedorView::generarFacturaProveedor() {
     _depura("AlbaranProveedorView::generarFacturaProveedor", 0);
     /// Comprobamos que existe una factura para este cliente, y en caso afirmativo lo mostramos
@@ -349,6 +381,10 @@ void AlbaranProveedorView::generarFacturaProveedor() {
 }
 
 
+///
+/**
+\param id
+**/
 void AlbaranProveedorView::on_mui_idproveedor_valueChanged(QString id) {
     _depura("AlbaranProveedorView::on_m_proveedor_valueChanged", 0);
     subform2->setIdProveedor(id);
@@ -361,6 +397,9 @@ void AlbaranProveedorView::on_mui_idproveedor_valueChanged(QString id) {
     Primero llama al borrado de las lineas y luego a los descuentos.
     Por ultimo llama al borrado del registro correspondiente en albaranp.
 */
+/**
+\return
+**/
 int AlbaranProveedorView::borrarPre() {
     _depura("AlbaranProveedorView::borrar", 0);
             m_listalineas->borrar();
@@ -374,6 +413,10 @@ int AlbaranProveedorView::borrarPre() {
 /// Hace el query adecuado, carga el registro a traves de DBRecord.
 /// Hace la carga de las lineas y de los descuentos.
 /// Invoca al pintado.
+/**
+\param idbudget
+\return
+**/
 int AlbaranProveedorView::cargarPost(QString idbudget) {
     _depura("AlbaranProveedorView::cargar", 0);
 
@@ -391,6 +434,9 @@ int AlbaranProveedorView::cargarPost(QString idbudget) {
 
     Si algo falla devuelve una excepcion -1.
 */
+/**
+\return
+**/
 int AlbaranProveedorView::guardarPost() {
     _depura("AlbaranProveedorView::guardar", 0);
 

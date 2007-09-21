@@ -38,6 +38,11 @@
 #include "funcaux.h"
 
 
+///
+/**
+\param comp
+\param parent
+**/
 ListSerieFacturaView::ListSerieFacturaView(Company *comp, QWidget *parent)
         : FichaBf(comp, parent) {
     _depura("INIT_ListSerieFacturaView::ListSerieFacturaView", 1);
@@ -52,6 +57,9 @@ ListSerieFacturaView::ListSerieFacturaView(Company *comp, QWidget *parent)
 }
 
 
+///
+/**
+**/
 ListSerieFacturaView::~ListSerieFacturaView() {
     _depura("ListSerieFacturaView::~ListSerieFacturaView", 0);
     _depura("END ListSerieFacturaView::~ListSerieFacturaView", 0);
@@ -59,12 +67,18 @@ ListSerieFacturaView::~ListSerieFacturaView() {
 
 
 /// ===================================== SUBFORMULARIO ===============================================
+///
+/**
+\param parent
+**/
 ListSerieFacturaSubForm::ListSerieFacturaSubForm(QWidget *parent) : SubForm2Bf(parent) {
+    _depura("ListSerieFacturaSubForm::ListSerieFacturaSubForm", 0);
     setDBTableName("serie_factura");
     setDBCampoId("codigoserie_factura");
     addSHeader("codigoserie_facturaorig", DBCampo::DBvarchar, DBCampo::DBDupPrimaryKey | DBCampo::DBNoSave, SHeader::DBNoView | SHeader::DBBlockView, "codigoserie_factura");
     addSHeader("codigoserie_factura", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Codigo serie factura"));
     addSHeader("descserie_factura", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Descripcion serie factura"));
     setinsercion(TRUE);
+    _depura("END ListSerieFacturaSubForm::ListSerieFacturaSubForm", 0);
 }
 

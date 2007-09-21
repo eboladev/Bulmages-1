@@ -45,6 +45,10 @@
 /** Inicializa la pantalla.
     Inicializa todos los componentes y mete la pantalla en el workSpace.
 */
+/**
+\param comp
+\param parent
+**/
 FacturaView::FacturaView(Company *comp, QWidget *parent)
         : FichaBf ( comp, parent ) {
     _depura("FacturaView::FacturaView", 0);
@@ -111,6 +115,8 @@ FacturaView::FacturaView(Company *comp, QWidget *parent)
 /** Al destruir la clase provocamos que se refresque el listado de facturas.
     Para que salga actualizado.
 */
+/**
+**/
 FacturaView::~FacturaView() {
     _depura("FacturaView::~FacturaView", 0);
     empresaBase()->refreshFacturas();
@@ -120,6 +126,8 @@ FacturaView::~FacturaView() {
 
 /** Inicializa los subformularios y resetea el control de cambios.
 */
+/**
+**/
 void FacturaView::inicializar() {
     _depura("FacturaView::inicializar", 0);
     subform2->inicializar();
@@ -133,6 +141,14 @@ void FacturaView::inicializar() {
 /** Pinta los campos de totales, que al no estar en la base de datos son tratados
     de forma distinta.
 */
+/**
+\param iva
+\param base
+\param total
+\param desc
+\param irpf
+\param reqeq
+**/
 void FacturaView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq) {
     _depura("FacturaView::pintatotales", 0);
     m_totalBases->setText(base.toQString());
@@ -149,6 +165,8 @@ void FacturaView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, F
     Crea una instancia de la clase \ref CobroView y lo inicializa con los datos
     de la factura.
 */
+/**
+**/
 void FacturaView::on_mui_cobrar_clicked() {
     _depura("FacturaView::on_mui_cobrar_clicked", 0);
     CobroView *bud = empresaBase()->newCobroView();
@@ -163,11 +181,12 @@ void FacturaView::on_mui_cobrar_clicked() {
 }
 
 
-
 /** SLOT que responde a la pulsacion del boton mui_agregaralbaran.
     Muestra un selector de albaranes y una vez seleccionado un albaran hace el agregado
     de todas las lineas de este.
 */
+/**
+**/
 void FacturaView::on_mui_agregaralbaran_clicked() {
     _depura("FacturaView::on_mui_agregaralbaran_clicked", 0);
     QDialog *diag = new QDialog(0);
@@ -231,6 +250,8 @@ void FacturaView::on_mui_agregaralbaran_clicked() {
 /** SLOT que responde a la pulsacion del boton mui_veralbaranes.
     Busca todos los albaranes con la misma referencia y para cada uno de ellos instancia la clase \ref AlbaranClienteView
 */
+/**
+**/
 void FacturaView::on_mui_veralbaranes_clicked() {
     _depura("FacturaView::on_mui_veralbaranes_clicked", 0);
     QString SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + DBvalue("reffactura") + "'";
@@ -251,6 +272,10 @@ void FacturaView::on_mui_veralbaranes_clicked() {
 }
 
 
+///
+/**
+\param id
+**/
 void FacturaView::on_mui_idcliente_valueChanged(QString id) {
     _depura("FacturaView::on_m_cliente_valueChanged", 0);
     subform2->setIdCliente(id);
@@ -261,22 +286,37 @@ void FacturaView::on_mui_idcliente_valueChanged(QString id) {
 
 /// Este slot se activa cuando hay cambios en los subformularios.
 void FacturaView::s_pintaTotales() {
+    _depura("FacturaView::s_pintaTotales", 0);
     calculaypintatotales();
+    _depura("END FacturaView::s_pintaTotales", 0);
 }
 
 
+///
+/**
+**/
 void FacturaView::on_m_descuentos_editFinish(int, int) {
+    _depura("FacturaView::on_m_descuentos_editFinish", 0);
     calculaypintatotales();
+    _depura("END FacturaView::on_m_descuentos_editFinish", 0);
 }
 
 
+///
+/**
+**/
 void FacturaView::on_subform2_editFinish(int, int) {
+    _depura("FacturaView::on_subform2_editFinish", 0);
     calculaypintatotales();
+    _depura("END FacturaView::on_subform2_editFinish", 0);
 }
 
 
 /** Se encarga del borrado de una factura.
 */
+/**
+\return
+**/
 int FacturaView::borrarPre()
 {
     _depura ( "FacturaView::borrarPre", 0 );
@@ -289,6 +329,10 @@ int FacturaView::borrarPre()
 
 /** Carga una factura.
 */
+/**
+\param idbudget
+\return
+**/
 int FacturaView::cargarPost ( QString idbudget )
 {
     _depura ( "FacturaView::cargarPost", 0 );
@@ -308,6 +352,9 @@ int FacturaView::cargarPost ( QString idbudget )
 
 /** Se encarga del guardado de una factura.
 */
+/**
+\return
+**/
 int FacturaView::guardarPost()
 {
     _depura ( "FacturaView::guardarPost", 0 );

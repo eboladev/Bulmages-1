@@ -28,6 +28,9 @@
     Conecta el activar un tipo con m_activated.
 */
 /// \TODO: No deberia usarse m_activated como signal ya que confunde con una variable de clase.
+/**
+\param parent
+**/
 BusquedaFormaPago::BusquedaFormaPago(QWidget *parent)
         : QComboBox2(parent) {
     _depura("BusquedaFormaPago::BusquedaFormaPago", 0);
@@ -39,6 +42,8 @@ BusquedaFormaPago::BusquedaFormaPago(QWidget *parent)
 
 /** Se libera memoria destruyendo el cursor que almacena los tipos de IVA si es que esta creado.
 */
+/**
+**/
 BusquedaFormaPago::~BusquedaFormaPago() {
     _depura("BusquedaFormaPago::~BusquedaFormaPago", 0);
     if (m_cursorcombo != NULL)
@@ -52,6 +57,11 @@ BusquedaFormaPago::~BusquedaFormaPago() {
     Busca en la tabla forma_pago de la base de datos aquel registro cuyo idforma_pago coincide con el pasado.
     Rellena el comboBox haciendo que el seleccionado sea el visible.
 */
+///
+/**
+\param idforma_pago
+\return
+**/
 void BusquedaFormaPago::setidforma_pago(QString idforma_pago) {
     _depura("BusquedaFormaPago::setidforma_pago", 0);
     if (m_cursorcombo != NULL)
@@ -74,11 +84,22 @@ void BusquedaFormaPago::setidforma_pago(QString idforma_pago) {
 }
 
 
+///
+/**
+\param idforma_pago
+**/
 void BusquedaFormaPago::setValorCampo(QString idforma_pago) {
+    _depura("BusquedaFormaPago::setValorCampo", 0);
 	setidforma_pago(idforma_pago);
+    _depura("END BusquedaFormaPago::setValorCampo", 0);
 }
 
 
+///
+/**
+\param idcliente
+\return
+**/
 void BusquedaFormaPago::setIdCliente(QString idcliente) {
     _depura("BusquedaFormaPago::setIdCliente", 0, idcliente);
 
@@ -99,6 +120,11 @@ void BusquedaFormaPago::setIdCliente(QString idcliente) {
 }
 
 
+///
+/**
+\param idproveedor
+\return
+**/
 void BusquedaFormaPago::setIdProveedor(QString idproveedor) {
     _depura("BusquedaFormaPago::setIdProveedor", 0, idproveedor);
 
@@ -116,6 +142,10 @@ void BusquedaFormaPago::setIdProveedor(QString idproveedor) {
 }
 
 
+///
+/**
+\param index
+**/
 void BusquedaFormaPago::m_activated(int index) {
     _depura("BusquedaFormaPago::m_activated", 0);
     if (index > 0) {
@@ -129,6 +159,9 @@ void BusquedaFormaPago::m_activated(int index) {
 
 /** Devuelve el identificador de forma de pago indicado
 **/
+/**
+\return
+**/
 QString BusquedaFormaPago::idforma_pago() {
     _depura("BusquedaFormaPago::idforma_pago", 0);
     _depura("END BusquedaFormaPago::idforma_pago", 0);
@@ -138,6 +171,9 @@ QString BusquedaFormaPago::idforma_pago() {
 
 
 /** Devuelve el identificador de forma de pago indicado
+**/
+/**
+\return
 **/
 QString BusquedaFormaPago::valorCampo() {
     return idforma_pago();

@@ -32,6 +32,10 @@
 
 
 /// Constructor de la clase inicializa la clase y llama a la clase de pintar para que pinte.
+/**
+\param emp
+\param parent
+**/
 BancoView::BancoView(Company *emp, QWidget *parent)
         : FichaBf(emp, parent) {
     _depura("BancoView::BancoView", 0);
@@ -50,7 +54,10 @@ BancoView::BancoView(Company *emp, QWidget *parent)
 
 
 /// Carga el query de la base de datos y carga el qlistview.
+/**
+**/
 void BancoView::pintar() {
+    _depura("BancoView::pintar", 0);
     mui_lista->clear();
     if (m_cursorbancos != NULL) {
         delete m_cursorbancos;
@@ -63,9 +70,13 @@ void BancoView::pintar() {
 
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
+    _depura("END BancoView::pintar", 0);
 }
 
 
+///
+/**
+**/
 BancoView::~BancoView() {
     _depura("BancoView::~BancoView", 0);
     if (m_cursorbancos != NULL) {
@@ -75,6 +86,9 @@ BancoView::~BancoView() {
 }
 
 
+///
+/**
+**/
 void BancoView::on_mui_lista_currentItemChanged(QListWidgetItem *cur, QListWidgetItem *) {
     _depura( "on_mui_lista_currentItemChanged", 0);
     int row = mui_lista->row(cur);
@@ -101,6 +115,10 @@ void BancoView::on_mui_lista_currentItemChanged(QListWidgetItem *cur, QListWidge
 }
 
 
+///
+/**
+\return
+**/
 void BancoView::on_mui_guardar_clicked() {
     _depura("BancoView::on_mui_guardar_clicked", 0);
 
@@ -141,6 +159,10 @@ void BancoView::on_mui_guardar_clicked() {
 }
 
 
+///
+/**
+\return
+**/
 bool BancoView::trataModificado() {
     _depura( "BancoView::trataModificado", 0);
     /// Si se ha modificado el contenido advertimos y guardamos.
@@ -159,6 +181,9 @@ bool BancoView::trataModificado() {
 
 /// SLOT que responde a la pulsacion del boton de nuevo tipo de iva.
 /// Inserta en la tabla de ivas
+/**
+\return
+**/
 void BancoView::on_mui_nuevo_clicked() {
     _depura("BancoView::on_mui_nuevo_clicked", 0);
     /// Si se ha modificado el contenido advertimos y guardamos.
@@ -181,6 +206,9 @@ void BancoView::on_mui_nuevo_clicked() {
 
 /// SLOT que responde a la pulsacion del boton de borrar la familia que se esta editando.
 /// Lo que hace es que se hace un update de todos los campos.
+/**
+\return
+**/
 void BancoView::on_mui_borrar_clicked() {
     _depura("BancoView::on_mui_borrar_clicked", 0);
     if (mdb_idbanco == "") return;
@@ -197,8 +225,13 @@ void BancoView::on_mui_borrar_clicked() {
     _depura("END BancoView::on_mui_borrar_clicked", 0);
 }
 
+
+///
+/**
+**/
 void BancoView::imprimir() {
         _depura("BancoView::imprimir", 0);
+        _depura("END BancoView::imprimir", 0);
 }
 
 

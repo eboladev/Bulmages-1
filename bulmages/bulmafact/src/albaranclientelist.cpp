@@ -30,32 +30,59 @@
 #include "funcaux.h"
 
 
+///
+/**
+**/
 void AlbaranClienteListSubform::cargar() {
     _depura("AlbaranClienteListSubform::cargar", 0);
     QString SQLQuery = "SELECT * FROM albaran";
     cursor2 * cur= empresaBase()->cargacursor(SQLQuery);
     SubForm3::cargar(cur);
     delete cur;
+    _depura("END AlbaranClienteListSubform::cargar", 0);
 }
 
 
+///
+/**
+\param query
+**/
 void AlbaranClienteListSubform::cargar(QString query) {
+    _depura("AlbaranClienteListSubform::cargar", 0);
     SubForm3::cargar(query);
+    _depura("END AlbaranClienteListSubform::cargar", 0);
 }
 
 
+///
+/**
+\param val
+**/
 void AlbaranClienteList::setidcliente(QString val) {
+    _depura("AlbaranClienteList::setidcliente", 0);
     m_cliente->setidcliente(val);
+    _depura("END AlbaranClienteList::setidcliente", 0);
 }
 
 
+///
+/**
+\return
+**/
 QString AlbaranClienteList::idCliDelivNote() {
+    _depura("AlbaranClienteList::idCliDelivNote", 0);
+    _depura("END AlbaranClienteList::idCliDelivNote", 0);
     return mdb_idalbaran;
 }
 
 
+///
+/**
+**/
 void AlbaranClienteList::crear() {
+    _depura("AlbaranClienteList::crear", 0);
     ((Company *)empresaBase())->s_newAlbaranClienteView();
+    _depura("END AlbaranClienteList::crear", 0);
 }
 
 
@@ -66,6 +93,12 @@ void AlbaranClienteList::crear() {
     en el listado de ventanas.
     Usando esta clase tampoco se inicializan bien los widgets que contiene.
 */
+/**
+\param parent
+\param flag
+\param editmodo
+\return
+**/
 AlbaranClienteList::AlbaranClienteList(QWidget *parent, Qt::WFlags flag, edmode editmodo)
         : Listado(NULL, parent, flag, editmodo) {
     _depura("AlbaranClienteList::AlbaranClienteList", 0);
@@ -88,6 +121,13 @@ AlbaranClienteList::AlbaranClienteList(QWidget *parent, Qt::WFlags flag, edmode 
     Pone la pantalla en modo de edicion por defecto  a no ser que se especifique lo contrario.
     Mete la ventana en el workspace.
 */
+/**
+\param comp
+\param parent
+\param flag
+\param editmodo
+\return
+**/
 AlbaranClienteList::AlbaranClienteList(Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo)
         : Listado(comp, parent, flag, editmodo) {
     _depura("AlbaranClienteList::AlbaranClienteList", 0);
@@ -111,6 +151,11 @@ AlbaranClienteList::AlbaranClienteList(Company *comp, QWidget *parent, Qt::WFlag
     _depura("END AlbaranClienteList::AlbaranClienteList", 0);
 }
 
+
+///
+/**
+\return
+**/
 void AlbaranClienteList::iniciaForm() {
     _depura("AlbaranClienteList::iniciaForm");
     /// Disparamos los plugins.
@@ -124,6 +169,10 @@ void AlbaranClienteList::iniciaForm() {
 }
 
 
+///
+/**
+\param comp
+**/
 void AlbaranClienteList::setEmpresaBase(Company *comp) {
     _depura("AlbaranClienteList::setEmpresaBase", 0);
     PEmpresaBase::setEmpresaBase(comp);
@@ -135,6 +184,8 @@ void AlbaranClienteList::setEmpresaBase(Company *comp) {
 
 
 /** Destructor de la clase */
+/**
+**/
 AlbaranClienteList::~AlbaranClienteList() {
     _depura("AlbaranClienteList::~AlbaranClienteList", 0);
     _depura("END AlbaranClienteList::~AlbaranClienteList", 0);
@@ -144,6 +195,8 @@ AlbaranClienteList::~AlbaranClienteList() {
 /** Carga el listado de la base de datos y lo presenta.
     Tambien carga el total y lo presenta.
 */
+/**
+**/
 void AlbaranClienteList::presentar() {
     _depura("AlbaranClienteList::presentar");
 
@@ -171,6 +224,10 @@ void AlbaranClienteList::presentar() {
      Por ultimo hace que dicha ventana carge de la base de datos el idalbaran
      seleccionado.
 */
+/**
+\param row
+\return
+**/
 void AlbaranClienteList::editar(int row) {
     _depura("AlbaranClienteList::editar", 0);
     mdb_idalbaran = mui_list->DBvalue(QString("idalbaran"), row);
@@ -195,6 +252,9 @@ void AlbaranClienteList::editar(int row) {
 */
 /// \todo: Comprobar que se libera bien la memoria.
 /// \todo: Intentar que no se tenga que recargar todo el listado y que simplemente se borre la fila seleccionada.
+/**
+\return
+**/
 void AlbaranClienteList::borrar() {
     _depura("AlbaranClienteList::borrar", 0);
     int a = mui_list->currentRow();
@@ -222,6 +282,8 @@ void AlbaranClienteList::borrar() {
 /** La impresion de listados es estandarizada por la clase DBRecord
 */
 /// \TODO: Se podria hacer una clase derivada de Ficha que fuese Listado y que directamente implementase el metodo on_mui_imprimir.
+/**
+**/
 void AlbaranClienteList::imprimir() {
     _depura("AlbaranClienteList::imprimir", 0);
     mui_list->imprimirPDF(tr("Albaranes a clientes"));
@@ -232,6 +294,9 @@ void AlbaranClienteList::imprimir() {
 /** Este metodo ayuda a construir el query de filtrado construyendo la clausula
     WHERE a partir de las opciones de filtrado.
 */
+/**
+\return
+**/
 QString AlbaranClienteList::generarFiltro() {
     /// Tratamiento de los filtros.
     _depura("AlbaranClienteList::generarFiltro", 0);
@@ -277,6 +342,10 @@ QString AlbaranClienteList::generarFiltro() {
 /** Constructor del subformulario de albaranes a cliente.
     Configura el subformulario para que use la tabla albaran.
 */
+/**
+\param parent
+\return
+**/
 AlbaranClienteListSubform::AlbaranClienteListSubform(QWidget *parent) : SubForm2Bf(parent) {
     _depura("AlbaranClienteListSubform::AlbaranClienteListSubform", 0);
 
@@ -308,4 +377,11 @@ AlbaranClienteListSubform::AlbaranClienteListSubform(QWidget *parent) : SubForm2
     _depura("END AlbaranClienteListSubform::AlbaranClienteListSubform", 0);
 }
 
-AlbaranClienteListSubform::~AlbaranClienteListSubform() {}
+
+///
+/**
+**/
+AlbaranClienteListSubform::~AlbaranClienteListSubform() {
+    _depura("AlbaranClienteListSubform::~AlbaranClienteListSubform", 0);
+    _depura("END AlbaranClienteListSubform::~AlbaranClienteListSubform", 0);
+}

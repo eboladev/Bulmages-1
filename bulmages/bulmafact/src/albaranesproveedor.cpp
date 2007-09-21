@@ -39,6 +39,10 @@
 
     Inicializa todos los componentes, se pone en modo edicion y mete la ventana en el workSpace.
 */
+/**
+\param parent
+\param flag
+**/
 AlbaranesProveedor::AlbaranesProveedor(QWidget *parent, Qt::WFlags flag)
         : Listado(NULL, parent, flag) {
     _depura("AlbaranesProveedor::AlbaranesProveedor", 0);
@@ -51,37 +55,62 @@ AlbaranesProveedor::AlbaranesProveedor(QWidget *parent, Qt::WFlags flag)
 }
 
 
+///
+/**
+\param comp
+**/
 void AlbaranesProveedor::setEmpresaBase(Company *comp) {
+    _depura("AlbaranesProveedor::setEmpresaBase", 0);
     PEmpresaBase::setEmpresaBase(comp);
     m_proveedor->setEmpresaBase(comp);
     m_articulo->setEmpresaBase(comp);
     mui_list->setEmpresaBase(comp);
+    _depura("END AlbaranesProveedor::setEmpresaBase", 0);
 }
 
 
-
-
+///
+/**
+**/
 void AlbaranesProveedor::crear()  {
+    _depura("AlbaranesProveedor::crear", 0);
     if (empresaBase() != NULL)
         ((Company *)empresaBase())->s_newAlbaranPro();
+    _depura("END AlbaranesProveedor::crear", 0);
 }
 
 
-
+///
+/**
+\param val
+**/
 void AlbaranesProveedor::setidproveedor(QString val) {
+    _depura("AlbaranesProveedor::setidproveedor", 0);
     m_proveedor->setidproveedor(val);
+    _depura("END AlbaranesProveedor::setidproveedor", 0);
 }
 
 
+///
+/**
+\param val
+**/
 void AlbaranesProveedor::setidarticulo(QString val) {
+    _depura("AlbaranesProveedor::setidarticulo", 0);
     m_articulo->setidarticulo(val);
+    _depura("AlbaranesProveedor::setidarticulo", 0);
 }
 
 
+///
+/**
+\return
+**/
 QString AlbaranesProveedor::idalbaranp() {
+    _depura("AlbaranesProveedor::idalbaranp", 0);
+    _depura("END AlbaranesProveedor::idalbaranp", 0);
     return mdb_idalbaranp;
 }
-
 
 
 /** Constructor completo de la clase con el puntero a Company adecuado.
@@ -90,6 +119,11 @@ QString AlbaranesProveedor::idalbaranp() {
     Mete la ventana en el workSpace.
     Oculta la parte de Busqueda.
 */
+/**
+\param comp
+\param parent
+\param flag
+**/
 AlbaranesProveedor::AlbaranesProveedor(Company *comp, QWidget *parent, Qt::WFlags flag)
         : Listado(comp, parent, flag) {
     _depura("AlbaranesProveedor::AlbaranesProveedor", 0);
@@ -108,6 +142,11 @@ AlbaranesProveedor::AlbaranesProveedor(Company *comp, QWidget *parent, Qt::WFlag
     _depura("END AlbaranesProveedor::AlbaranesProveedor", 0);
 }
 
+
+///
+/**
+\return
+**/
 void AlbaranesProveedor::iniciaForm() {
     _depura("FacturasProveedorList::iniciaForm");
     /// Disparamos los plugins.
@@ -124,6 +163,8 @@ void AlbaranesProveedor::iniciaForm() {
 
 /** Refresca la ventana de listados de albaranes.
 */
+/**
+**/
 AlbaranesProveedor::~AlbaranesProveedor() {
     _depura("AlbaranesProveedor::~AlbaranesProveedor", 0);
     _depura("END AlbaranesProveedor::~AlbaranesProveedor", 0);
@@ -134,6 +175,9 @@ AlbaranesProveedor::~AlbaranesProveedor() {
     Calcula el total de albaranes con las opciones de filtrado descritas y
     lo presenta.
 */
+/**
+\return
+**/
 void AlbaranesProveedor::presentar() {
     _depura("AlbaranesProveedor::presentar", 0);
     if (empresaBase() != NULL ) {
@@ -164,6 +208,9 @@ void AlbaranesProveedor::presentar() {
 /** Este es un metodo auxiliar para presenta() que se encarga de generar
     la clausula WHERE de la consulta.
 */
+/**
+\return
+**/
 QString AlbaranesProveedor::generaFiltro() {
     _depura("AlbaranesProveedor::generaFiltro", 0);
     QString filtro = "";
@@ -202,6 +249,10 @@ QString AlbaranesProveedor::generaFiltro() {
     Si el modo seleccionado es edicion abre la ficha de albaran proveedor y carga en ella el elemento seleccionado.
     Si el modo es seleccion lanza el signal adecuado.
 */
+/**
+\param row
+\return
+**/
 void AlbaranesProveedor::editar(int row) {
     _depura("AlbaranesProveedor::editar", 0);
     mdb_idalbaranp = mui_list->DBvalue(QString("idalbaranp"), row);
@@ -223,6 +274,8 @@ void AlbaranesProveedor::editar(int row) {
 
 /** La impresion de listados esta completamente delegada a la clase SubForm3
 */
+/**
+**/
 void AlbaranesProveedor::imprimir() {
     _depura("AlbaranesProveedor::imprimir", 0);
     mui_list->imprimirPDF(tr("Albaranes de proveedor"));
@@ -236,6 +289,9 @@ void AlbaranesProveedor::imprimir() {
     producir.
     Tras el borrado repinta la pantalla.
 */
+/**
+\return
+**/
 void AlbaranesProveedor::borrar() {
     _depura("AlbaranesProveedor::borrar", 0);
     int a = mui_list->currentRow();
@@ -268,11 +324,20 @@ void AlbaranesProveedor::borrar() {
     Prepara el subformulario para trabajar con la tabla albaranp.
 */
 
+
+///
+/**
+**/
 AlbaranesProveedorListSubform::~AlbaranesProveedorListSubform() {
     _depura("AlbaranesProveedorListSubform::~AlbaranesProveedorListSubform", 0);
+    _depura("END AlbaranesProveedorListSubform::~AlbaranesProveedorListSubform", 0);
 }
 
 
+///
+/**
+\param parent
+**/
 AlbaranesProveedorListSubform::AlbaranesProveedorListSubform(QWidget *parent) : SubForm2Bf(parent) {
     _depura("AlbaranesProveedorListSubform::AlbaranesProveedorListSubform", 0);
     setDBTableName("albaranp");
@@ -300,16 +365,26 @@ AlbaranesProveedorListSubform::AlbaranesProveedorListSubform(QWidget *parent) : 
 }
 
 
+///
+/**
+**/
 void AlbaranesProveedorListSubform::cargar() {
     _depura("AlbaranesProveedorListSubform::cargar", 0);
     QString SQLQuery = "SELECT * FROM albaranp";
     cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
     SubForm3::cargar(cur);
     delete cur;
+    _depura("END AlbaranesProveedorListSubform::cargar", 0);
 }
 
 
+///
+/**
+\param query
+**/
 void AlbaranesProveedorListSubform::cargar(QString query) {
+    _depura("AlbaranesProveedorListSubform::cargar", 0);
     SubForm3::cargar(query);
+    _depura("END AlbaranesProveedorListSubform::cargar", 0);
 }
 

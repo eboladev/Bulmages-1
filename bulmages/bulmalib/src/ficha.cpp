@@ -344,6 +344,7 @@ void Ficha::pintar() {
             } // end if
         } // end if
     } // end for
+    pintarPost();
 }
 
 
@@ -497,4 +498,14 @@ int Ficha::cargarPost(QString ) {
     _depura("END Ficha::cargarPost", 0);
     return 0;
 }
+
+///
+/**
+\return
+**/
+void Ficha::pintarPost() {
+    _depura("Ficha::pintarPost", 0);
+    _depura("END Ficha::pintarPost", 0);
+}
+
 

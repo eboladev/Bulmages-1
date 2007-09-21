@@ -29,8 +29,13 @@
 #include "funcaux.h"
 
 
+///
+/**
+\param parent
+**/
 ListDescuentoAlbaranProvView::ListDescuentoAlbaranProvView(QWidget *parent)
         : SubForm2Bf(parent) {
+    _depura("ListDescuentoAlbaranProvView::ListDescuentoAlbaranProvView", 0);
     setDBTableName("dalbaranp");
     setDBCampoId("iddalbaranp");
     addSHeader("iddalbaranp", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr("Idd albaranp"));
@@ -38,5 +43,6 @@ ListDescuentoAlbaranProvView::ListDescuentoAlbaranProvView(QWidget *parent)
     addSHeader("proporciondalbaranp", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Proporciond albaranp"));
     addSHeader("idalbaranp", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id albaranp"));
     setinsercion(TRUE);
+    _depura("END ListDescuentoAlbaranProvView::ListDescuentoAlbaranProvView", 0);
 }
 

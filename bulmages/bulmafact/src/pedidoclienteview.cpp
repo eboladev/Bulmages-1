@@ -41,6 +41,12 @@
 #include "plugins.h"
 
 
+///
+/**
+\param comp
+\param parent
+\return
+**/
 PedidoClienteView::PedidoClienteView(Company *comp, QWidget *parent)
         : FichaBf(comp, parent) {
     _depura("PedidoClienteView::PedidoClienteView", 0);
@@ -91,6 +97,9 @@ PedidoClienteView::PedidoClienteView(Company *comp, QWidget *parent)
 }
 
 
+///
+/**
+**/
 PedidoClienteView::~PedidoClienteView() {
     _depura("PedidoClienteView::~PedidoClienteView", 0);
     empresaBase()->refreshPedidosCliente();
@@ -98,6 +107,9 @@ PedidoClienteView::~PedidoClienteView() {
 }
 
 
+///
+/**
+**/
 void PedidoClienteView::inicializar() {
     _depura("PedidoClienteView::inicializar", 0);
     subform3->inicializar();
@@ -107,6 +119,16 @@ void PedidoClienteView::inicializar() {
     _depura("END PedidoClienteView::inicializar", 0);
 }
 
+
+///
+/**
+\param iva
+\param base
+\param total
+\param desc
+\param irpf
+\param reqeq
+**/
 void PedidoClienteView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq) {
     _depura("PedidoClienteView::pintatotales", 0);
     m_totalBases->setText(QString(base.toQString()));
@@ -119,6 +141,9 @@ void PedidoClienteView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed d
 }
 
 
+///
+/**
+**/
 void PedidoClienteView::on_mui_verpresupuesto_clicked() {
     _depura("PedidoClienteView::on_mui_verpresupuesto_clicked", 0);
     QString SQLQuery = "SELECT * FROM presupuesto WHERE refpresupuesto = '" + DBvalue("refpedidocliente") + "' AND idcliente = " + DBvalue("idcliente");
@@ -145,6 +170,9 @@ void PedidoClienteView::on_mui_verpresupuesto_clicked() {
 /** Genera un Albaran a Cliente a partir de los datos
     que tiene el pedido.
 */
+/**
+\return
+**/
 void PedidoClienteView::generarAlbaran() {
     _depura("PedidoClienteView::generarAlbaran", 0);
     /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la funcion.
@@ -223,6 +251,9 @@ void PedidoClienteView::generarAlbaran() {
 }
 
 
+///
+/**
+**/
 void PedidoClienteView::on_mui_cobrar_clicked() {
     _depura("PedidoClienteView::on_mui_cobrar_clicked", 0);
     CobroView *bud = empresaBase()->newCobroView();
@@ -236,7 +267,10 @@ void PedidoClienteView::on_mui_cobrar_clicked() {
 }
 
 
-
+///
+/**
+\param id
+**/
 void PedidoClienteView::on_mui_idcliente_valueChanged(QString id) {
     _depura("PedidoClienteView::on_m_cliente_valueChanged", 0);
     subform3->setIdCliente(id);
@@ -245,7 +279,10 @@ void PedidoClienteView::on_mui_idcliente_valueChanged(QString id) {
 }
 
 
-
+///
+/**
+\return
+**/
 int PedidoClienteView::borrarPre() {
     _depura("PedidoClienteView::borrar", 0);
     m_listalineas->borrar();
@@ -255,8 +292,11 @@ int PedidoClienteView::borrarPre() {
 }
 
 
-
 /// Esta funcion carga un PedidoCliente.
+/**
+\param idbudget
+\return
+**/
 int PedidoClienteView::cargarPost(QString idbudget) {
     _depura("PedidoClienteView::cargarPost", 0);
 
@@ -267,7 +307,11 @@ int PedidoClienteView::cargarPost(QString idbudget) {
     return 0;
 }
 
+
 /// Guardamos el pedido cliente.
+/**
+\return
+**/
 int PedidoClienteView::guardarPost() {
     _depura("PedidoClienteView::guardar", 0);
     m_listalineas->setColumnValue("idpedidocliente", DBvalue("idpedidocliente"));
@@ -277,21 +321,43 @@ int PedidoClienteView::guardarPost() {
     return 0;
 }
 
+
+///
+/**
+**/
 void PedidoClienteView::s_pintaTotales() {
+    _depura("PedidoClienteView::s_pintaTotales", 0);
     calculaypintatotales();
+    _depura("END PedidoClienteView::s_pintaTotales", 0);
 }
 
+
+///
+/**
+**/
 void PedidoClienteView::on_mui_pasaraalbaran_clicked() {
     _depura("PedidoClienteView::on_mui_pasaraalbaran_clicked", 0);
     generarAlbaran();
     _depura("END PedidoClienteView::on_mui_pasaraalbaran_clicked", 0);
 }
 
+
+///
+/**
+**/
 void PedidoClienteView::on_m_descuentos_editFinish(int, int) {
+    _depura("PedidoClienteView::on_m_descuentos_editFinish", 0);
     calculaypintatotales();
+    _depura("END PedidoClienteView::on_m_descuentos_editFinish", 0);
 }
 
+
+///
+/**
+**/
 void PedidoClienteView::on_subform3_editFinish(int, int) {
+    _depura("PedidoClienteView::on_subform3_editFinish", 0);
     calculaypintatotales();
+    _depura("END sPedidoClienteView::on_subform3_editFinish", 0);
 }
 

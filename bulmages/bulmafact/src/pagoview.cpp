@@ -39,8 +39,14 @@
 #include "funcaux.h"
 
 
+///
+/**
+\param comp
+\param parent
+**/
 PagoView::PagoView(Company *comp, QWidget *parent)
         :  FichaBf(comp, parent) {
+    _depura("PagoView::PagoView", 0);
     try {
         setAttribute(Qt::WA_DeleteOnClose);
         setupUi(this);
@@ -69,9 +75,13 @@ PagoView::PagoView(Company *comp, QWidget *parent)
         mensajeInfo(tr("Error al crear el pago"));
     } // end try
     _depura("Fin de la inicializacion de PagoView\n", 0);
+    _depura("END PagoView::PagoView", 0);
 }
 
 
+///
+/**
+**/
 PagoView::~PagoView() {
     _depura("PagoView::~PagoView", 0);
     _depura("END PagoView::~PagoView", 0);

@@ -31,6 +31,12 @@
 #define COL_DESCTIPOARTICULO  2
 
 
+///
+/**
+\param comp
+\param parent
+\param modoConsultas
+**/
 TipoArticuloList::TipoArticuloList(Company *comp, QWidget *parent, bool modoConsulta)
         : Ficha(parent) {
     _depura("TipoArticuloList::TipoArticuloList", 0);
@@ -60,33 +66,61 @@ TipoArticuloList::TipoArticuloList(Company *comp, QWidget *parent, bool modoCons
 }
 
 
+///
+/**
+**/
 TipoArticuloList::~TipoArticuloList() {
     _depura("TipoArticuloList::~TipoArticuloList", 0);
     _depura("END TipoArticuloList::~TipoArticuloList", 0);
 }
 
 
+///
+/**
+**/
 void TipoArticuloList::setModoConsulta() {
+    _depura("TipoArticuloList::setModoConsulta", 0);
     m_modoConsulta = TRUE;
+    _depura("TipoArticuloList::setModoConsulta", 0);
 }
 
 
+///
+/**
+**/
 void TipoArticuloList::setModoEdicion() {
+    _depura("TipoArticuloList::setModoEdicion", 0);
     m_modoConsulta = FALSE;
+    _depura("END TipoArticuloList::setModoEdicion", 0);
 }
 
 
+///
+/**
+**/
 void TipoArticuloList::on_mui_aceptar_clicked() {
+    _depura("TipoArticuloList::on_mui_aceptar_clicked", 0);
     close();
+    _depura("END TipoArticuloList::on_mui_aceptar_clicked", 0);
 }
 
 
+///
+/**
+\return
+**/
 int TipoArticuloList::sacaWindow() {
+    _depura("TipoArticuloList::sacaWindow", 0);
     companyact->sacaWindow(this);
+    _depura("END TipoArticuloList::sacaWindow", 0);
     return 0;
 }
 
 
+///
+/**
+\param it
+**/
 void TipoArticuloList::pintar() {
     QTreeWidgetItem * it;
 

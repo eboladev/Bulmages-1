@@ -39,6 +39,10 @@
 
 /** Inicializa todos los componentes de la clase.
     mete la ventana en el workSpace. */
+/**
+\param comp
+\param parent
+**/
 FacturaProveedorView::FacturaProveedorView(Company *comp, QWidget *parent)
         : FichaBf(comp, parent) {
     _depura("FacturaProveedorView::FacturaProveedorView", 0);
@@ -91,6 +95,8 @@ FacturaProveedorView::FacturaProveedorView(Company *comp, QWidget *parent)
 
 /** Al destruir una factura de proveedor se hace un refresco del listado
     de facturas de proveedor. */
+/**
+**/
 FacturaProveedorView::~FacturaProveedorView() {
     _depura("FacturaProveedorView::~FacturaProveedorView", 0);
     empresaBase()->refreshFacturasProveedor();
@@ -99,6 +105,9 @@ FacturaProveedorView::~FacturaProveedorView() {
 }
 
 
+///
+/**
+**/
 void FacturaProveedorView::on_mui_pagar_clicked() {
     _depura("FacturaProveedorView::on_mui_pagar_clicked", 0);
     s_nuevoPago();
@@ -106,6 +115,9 @@ void FacturaProveedorView::on_mui_pagar_clicked() {
 }
 
 
+///
+/**
+**/
 void FacturaProveedorView::on_m_descuentos_editFinish(int, int) {
     _depura("FacturaProveedorView::on_m_descuentos_editFinish", 0);
     calculaypintatotales();
@@ -113,6 +125,9 @@ void FacturaProveedorView::on_m_descuentos_editFinish(int, int) {
 }
 
 
+///
+/**
+**/
 void FacturaProveedorView::on_subform2_editFinish(int, int) {
     _depura("FacturaProveedorView::on_subform2_editFinish", 0);
     calculaypintatotales();
@@ -123,6 +138,8 @@ void FacturaProveedorView::on_subform2_editFinish(int, int) {
 /** inicializar debe ser invocado cuando se crea una nueva ficha sin cargar ningun
     date de la base de datos (por ejemplo una nueva ficha).
     Sirve para inicializar los componenetes sin necesidad de query alguno */
+/**
+**/
 void FacturaProveedorView::inicializar() {
     _depura("FacturaProveedorView::inicializar", 0);
     subform2->inicializar();
@@ -135,6 +152,14 @@ void FacturaProveedorView::inicializar() {
 
 /** Pinta los totales de la Factura de proveedor.
     Este metodo se llama desde FacturaProveedor. */
+/**
+\param iva
+\param base
+\param total
+\param desc
+\param irpf
+\param reqeq
+**/
 void FacturaProveedorView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq) {
     _depura("PresupuestoView::pintatotales", 0);
     m_totalBases->setText(QString(base.toQString()));
@@ -152,6 +177,8 @@ void FacturaProveedorView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixe
     del pago iguales a los de la factura de Proveedor.
 */
 /// \TODO: Deberia ser directamente on_mui_pagar_clicked()
+/**
+**/
 void FacturaProveedorView::s_nuevoPago() {
     _depura("FacturaProveedorView::s_nuevoPago", 0);
     PagoView *bud = empresaBase()->newPagoView();
@@ -166,11 +193,11 @@ void FacturaProveedorView::s_nuevoPago() {
 }
 
 
-
-
 /** SLOT que responde  a la pulsacion del boton ver albaranes.
     Consulta todos los albaranes con la misma referencia.
     Los instancia y los carga. */
+/**
+**/
 void FacturaProveedorView::on_mui_veralbaranes_clicked() {
     _depura("FacturaProveedorView::on_mui_veralbaranes_clicked", 0);
     QString query = "SELECT * FROM albaranp WHERE refalbaranp='"+DBvalue("reffacturap")+"'";
@@ -187,6 +214,10 @@ void FacturaProveedorView::on_mui_veralbaranes_clicked() {
 }
 
 
+///
+/**
+\param id
+**/
 void FacturaProveedorView::on_mui_idproveedor_valueChanged(QString id) {
     _depura("FacturaProveedorView::on_m_proveedor_valueChanged", 0);
     subform2->setIdProveedor(id);
@@ -202,6 +233,9 @@ void FacturaProveedorView::on_mui_idproveedor_valueChanged(QString id) {
     Si algo falla devuelve -1.
     Si todo va bien devuelve 0.
 */
+/**
+\return
+**/
 int FacturaProveedorView::borrarPre() {
     _depura("FacturaProveedorView::borrar", 0);
     m_listalineas->borrar();
@@ -218,6 +252,10 @@ int FacturaProveedorView::borrarPre() {
 	Si algo falla genera una excepcion -1.
 	Si todo va bien devuelve 0.
 */
+/**
+\param idfacturap
+\return
+**/
 int FacturaProveedorView::cargarPost(QString idfacturap) {
     _depura("FacturaProveedorView::cargar", 0);
     m_listalineas->cargar(idfacturap);
@@ -232,6 +270,9 @@ int FacturaProveedorView::cargarPost(QString idfacturap) {
 	Si algo falla genera una excepcion -1.
 	Si todo va bien devuelve 0.
 */
+/**
+\return
+**/
 int FacturaProveedorView::guardarPost() {
     _depura("FacturaProveedorView::guardar()", 0);
     m_listalineas->setColumnValue("idfacturap", DBvalue("idfacturap"));
@@ -246,6 +287,9 @@ int FacturaProveedorView::guardarPost() {
 /** Imprime una factura de proveedor
 */
 /// \DEPRECATED: No se prevee que se tengan que imprimir facturas de proveedor.
+/**
+\return
+**/
 void FacturaProveedorView::imprimirFacturaProveedor() {
     /// Hacemos el lanzamiento de plugins para este caso.
     int res = g_plugins->lanza("imprimirFacturaProveedor", this);

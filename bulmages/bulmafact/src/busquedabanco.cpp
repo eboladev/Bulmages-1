@@ -28,6 +28,9 @@
     si un elemento ha sido inicializado o no.
     Hace la conexion del SIGNAL activated con m_activated para tratar el evento.
 */
+/**
+\param parent
+**/
 BusquedaBanco::BusquedaBanco(QWidget *parent)
         : QComboBox2(parent) {
     _depura("BusquedaBanco::BusquedaBanco", 0);
@@ -39,6 +42,8 @@ BusquedaBanco::BusquedaBanco(QWidget *parent)
 
 /** Libera la memoria dinamica que se estaba utilizando.
 */
+/**
+**/
 BusquedaBanco::~BusquedaBanco() {
     _depura("BusquedaBanco::~BusquedaBanco", 0);
     if (m_cursorcombo != NULL)
@@ -51,6 +56,10 @@ BusquedaBanco::~BusquedaBanco() {
     Recarga el cursor de bancoes y cuando encuentra uno con el mismo identificador
     que el que se ha pasado por parametro lo establece como elemento seleccionado.
 */
+/**
+\param idbanco
+\return
+**/
 void BusquedaBanco::setidbanco(QString idbanco) {
     _depura("BusquedaBanco::setidbanco", 0);
     if (m_cursorcombo != NULL)
@@ -73,11 +82,21 @@ void BusquedaBanco::setidbanco(QString idbanco) {
     _depura("END BusquedaBanco::setidbanco", 0);
 }
 
+
+///
+/**
+\param idbanco
+**/
 void BusquedaBanco::setValorCampo(QString idbanco) {
-	setidbanco(idbanco);
+    _depura("BusquedaBanco::setValorCampo", 0);
+    setidbanco(idbanco);
+    _depura("END BusquedaBanco::setValorCampo", 0);
 }
 
 /** Devuelve el identificador del banco seleccionado
+**/
+/**
+\return
 **/
 QString BusquedaBanco::idbanco() {
     _depura("BusquedaBanco::idbanco", 0);
@@ -89,12 +108,18 @@ QString BusquedaBanco::idbanco() {
 
 /** Devuelve el identificador del banco seleccionado
 **/
+/**
+\return
+**/
 QString BusquedaBanco::valorCampo() {
     return idbanco();
 }
 
 
 /** SLOT que responde a la activacion de un elemento en el QComboBox y que hace que se emita el SIGNAL valueChanged
+**/
+/**
+\param index
 **/
 void BusquedaBanco::m_activated(int index) {
     _depura("BusquedaBanco::m_activated", 0);

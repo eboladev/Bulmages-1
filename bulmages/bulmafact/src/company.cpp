@@ -69,6 +69,9 @@
 
 /** No precisa de operaciones en su construccion.
 */
+/**
+\param bges
+**/
 Company::Company(Bulmafact *bges) : EmpresaBase() {
     _depura("Company::Company", 0);
     m_bulmafact = bges;
@@ -77,6 +80,8 @@ Company::Company(Bulmafact *bges) : EmpresaBase() {
 
 
 /// El destructor de la clase Company borra toda la memoria almacenada.
+/**
+**/
 Company::~Company() {
     _depura("Company::~Company", 0);
 
@@ -93,6 +98,10 @@ Company::~Company() {
     Todas estas ventanas son principalmente los listados mas utilizados a partir de los
     cuales se pueden crear nuevas fichas y manejar todo.
 */
+/**
+\param splash
+\return
+**/
 void Company::createMainWindows(Splash *splash) {
     _depura("Company::createMainWindows", 0);
     /// Establecemos el porcentaje del carga de informaci&oacute;n en las diferentes ventanas.
@@ -380,6 +389,8 @@ void Company::createMainWindows(Splash *splash) {
 /** Metodo para ver la ventana de Cobros.
     Es invocado desde el menu de la aplicacion.
 */
+/**
+**/
 void Company::viewCobrosList() {
     _depura("Company::viewCobrosList", 0);
     m_cobrosList->show();
@@ -392,6 +403,8 @@ void Company::viewCobrosList() {
 /** Metodo para ver la ventana de PAgos.
     Es invocado desde el menu de la aplicacion a traves de la clase BulmaFact.
 */
+/**
+**/
 void Company::viewPagosList() {
     _depura("Company::viewPagosList", 0);
     m_pagosList->show();
@@ -404,6 +417,8 @@ void Company::viewPagosList() {
 /** Muestra la ventana de proveedores.
     Es invocado desde el menu de la aplicacion a traves de la clase BulmaFact.
 */
+/**
+**/
 void Company::listproviders() {
     _depura("Company::listproviders", 0);
     m_providerslist->show();
@@ -416,6 +431,8 @@ void Company::listproviders() {
 /** Muestra la ventana de listado de Clientes.
     Es invocada desde el menu de la aplicacion a traves de la clase BulmaFact.
 */
+/**
+**/
 void Company::listClients() {
     _depura("Company::listClients", 0);
     m_clientsList->show();
@@ -428,6 +445,8 @@ void Company::listClients() {
 /** Muestra la ventana del listado de Articulos.
     Es invocada desde el menu de la aplicacion a traves de la clase BulmaFact.
 */
+/**
+**/
 void Company::listarticles() {
     _depura("Company::listarticles", 0);
     m_articleslist->show();
@@ -441,6 +460,8 @@ void Company::listarticles() {
     Este metodo de paso de mensajes permite, desde cualquier otra clase refrescar los articulos sin
     tener una instancia de dicha clase.
 */
+/**
+**/
 void Company::refreshArticles() {
     _depura("Company::refreshArticles", 0);
     if (m_articleslist != NULL)
@@ -453,6 +474,9 @@ void Company::refreshArticles() {
     Tiene la ventaja de que no debe implementarse en cada sitio que se quiera instanciar la ficha de lciente.
     Y ademas hace el tratamiento adecuado de plugins.
 */
+/**
+\return
+**/
 ClienteView *Company::newClienteView() {
     _depura("Company::newClienteView", 0);
     /// Lanzamos los plugins necesarios.
@@ -469,6 +493,8 @@ ClienteView *Company::newClienteView() {
     Tiene la ventaja de que el tratamiento esta centralizado y es facil de invocar desde cualquier parte.
     Si no se desea que la ventana aparezca en pantalla puede usarse newClienteView()
 */
+/**
+**/
 void Company::s_newClienteView() {
     _depura("Company::s_newClienteView", 0);
     ClienteView *bud = newClienteView();
@@ -483,6 +509,9 @@ void Company::s_newClienteView() {
     Tiene la ventaja de que no debe implementarse en cada sitio que se quiera instanciar la ficha de proveedor.
     Y ademas hace el tratamiento adecuado de plugins.
 */
+/**
+\return
+**/
 ProveedorView *Company::newProveedorView() {
     _depura("Company::newProveedorView",0);
     /// Lanzamos los plugins necesarios.
@@ -499,6 +528,8 @@ ProveedorView *Company::newProveedorView() {
     Tiene la ventaja de que el tratamiento esta centralizado y es facil de invocar desde cualquier parte.
     Si no se desea que la ventana aparezca en pantalla puede usarse newClienteView()
 */
+/**
+**/
 void Company::s_newProveedorView() {
     _depura("Company::s_newProveedorView", 0);
     ProveedorView *bud = newProveedorView();
@@ -514,6 +545,9 @@ void Company::s_newProveedorView() {
     aseguramos de que si existe un plugin que sustituye esta ventana,
     nuestra llamada devolvera el objeto adecuado
 */
+/**
+\return
+**/
 FacturaProveedorView *Company::newFacturaProveedorView() {
     _depura("Company::newFacturaProveedorView", 0);
     /// Lanzamos los plugins necesarios.
@@ -530,6 +564,8 @@ FacturaProveedorView *Company::newFacturaProveedorView() {
     Tiene la ventaja de que el tratamiento esta centralizado y es facil de invocar desde cualquier parte.
     Si no se desea que la ventana aparezca en pantalla puede usarse newFacturaProveedor()
 */
+/**
+**/
 void Company::s_newFacturaPro() {
     FacturaProveedorView *bud = newFacturaProveedorView();
     m_pWorkspace->addWindow(bud);
@@ -545,6 +581,9 @@ void Company::s_newFacturaPro() {
     aseguramos de que si existe un plugin que sustituye esta ventana,
     nuestra llamada devolvera el objeto adecuado
 */
+/**
+\return
+**/
 CobroView *Company::newCobroView() {
     _depura("Company::newCobroView", 0);
     CobroView *bud;
@@ -560,6 +599,8 @@ CobroView *Company::newCobroView() {
     Tiene la ventaja de que el tratamiento esta centralizado y es facil de invocar desde cualquier parte.
     Si no se desea que la ventana aparezca en pantalla puede usarse newCobroView()
 */
+/**
+**/
 void Company::s_newCobroView() {
     _depura("Company::s_newCobroView", 0);
     CobroView *bud = newCobroView();
@@ -573,6 +614,8 @@ void Company::s_newCobroView() {
     Tiene la ventaja de que el tratamiento esta centralizado y es facil de invocar desde cualquier parte.
 */
 /// \TODO: No pasa por el proceso de plugins. Debe cambiarse.
+/**
+**/
 void Company::s_newAlbaranPro() {
     _depura ("Company::s_newAlbaranPro", 0);
     AlbaranProveedorView *bud = new AlbaranProveedorView(this, 0);
@@ -587,6 +630,8 @@ void Company::s_newAlbaranPro() {
     Tiene la ventaja de que el tratamiento esta centralizado y es facil de invocar desde cualquier parte.
 */
 /// \TODO: No pasa por el proceso de plugins. Debe cambiarse.
+/**
+**/
 void Company::s_newPedidoPro() {
     _depura ("Company::s_newPedidoPro", 0);
     PedidoProveedorView *ppv = new PedidoProveedorView(this, 0);
@@ -600,6 +645,8 @@ void Company::s_newPedidoPro() {
 /** Muestra como ventana activa la ventana de los albaranes de Proveedor.
     Este metodo es invocado desde el menu de la aplicacion a traves de la clase BulmaFact.
 */
+/**
+**/
 void Company::lAlbaranesProveedor() {
     _depura("Company::lAlbaranesProveedor", 0);
     m_albaranesproveedor->show();
@@ -612,6 +659,8 @@ void Company::lAlbaranesProveedor() {
 /** Muestra como ventana activa la ventana de listado de pedidos de cliente.
     Este metodo es invocado desde el menu de la aplicacion a traves de la clase BulmaFact.
 */
+/**
+**/
 void Company::s_listPedidosCli() {
     _depura("Company::s_listPedidosCli", 0);
     m_pedidosclienteList->show();
@@ -624,6 +673,8 @@ void Company::s_listPedidosCli() {
 /** Muestra como ventana activa la ventana de listado de pedidos a proveedor.
     Este metodo es invocado desde el menu de la aplicacion a traves de la clase BulmaFact.
 */
+/**
+**/
 void Company::s_listPedidosPro() {
     _depura("Company::s_listPedidosPro", 0);
     m_pedidosproveedorList->show();
@@ -636,6 +687,8 @@ void Company::s_listPedidosPro() {
 /** Muestra como ventana activa la ventana de listado de facturas a Cliente.
     Este metodo es invocado desde el menu de la aplicacion a traves de la clase BulmaFact.
 */
+/**
+**/
 void Company::s_listFacturasCli() {
     _depura("Company::s_listFacturasCli", 0);
     m_facturasList->show();
@@ -648,6 +701,8 @@ void Company::s_listFacturasCli() {
 /** Muestra como ventana activa la ventana de listado de facturas a Proveedor.
     Este metodo es invocado desde el menu de la aplicacion a traves de la clase BulmaFact.
 */
+/**
+**/
 void Company::s_listFacturasPro() {
     _depura("Company::s_listFacturasPro", 0);
     m_facturasproveedorlist->show();
@@ -660,6 +715,8 @@ void Company::s_listFacturasPro() {
 /** Muestra como ventana activa la ventana de listado de Presupuestos
     Este metodo es invocado desde el menu de la aplicacion a traves de la clase BulmaFact.
 */
+/**
+**/
 void Company::listBudgets() {
     _depura("Company::listBudgets", 0);
     m_presupuestosList->show();
@@ -673,6 +730,9 @@ void Company::listBudgets() {
     Es importante tener la creacion de instancias centralizada en esta clase para asegurar
     Que se lanzan los plugins necesarios.
 */
+/**
+\return
+**/
 PresupuestoView *Company::nuevoPresupuestoView() {
     _depura("Company::nuevoPresupuesto", 0);
     /// Lanzamos los plugins necesarios.
@@ -689,6 +749,9 @@ PresupuestoView *Company::nuevoPresupuestoView() {
     Es importante tener la creacion de instancias centralizada en esta clase para asegurar
     Que se lanzan los plugins necesarios.
 */
+/**
+\return
+**/
 PedidoProveedorView *Company::nuevoPedidoProveedorView() {
     _depura("Company::nuevoPedidoProveedor", 0);
     /// Lanzamos los plugins necesarios.
@@ -704,6 +767,9 @@ PedidoProveedorView *Company::nuevoPedidoProveedorView() {
 /** Crea y muestra la Ficha de presupuesto.
     Si solo se desea crear la ficha sin mostrarla debe usar el metodo nuevoPresupuesto().
 */
+/**
+\return
+**/
 void Company::s_newPresupuestoCli() {
     _depura("Company::s_newPresupuestoCli", 0);
     /// Lanzamos los plugins necesarios.
@@ -721,6 +787,9 @@ void Company::s_newPresupuestoCli() {
     Es importante tener la creacion de instancias centralizada en esta clase para asegurar
     Que se lanzan los plugins necesarios.
 */
+/**
+\return
+**/
 FacturaView *Company::newFacturaView() {
     _depura("Company::newFacturaView", 0);
     /// Lanzamos los plugins necesarios.
@@ -736,6 +805,9 @@ FacturaView *Company::newFacturaView() {
 /** Crea y muestra la Ficha de Factura a Cliente
     Si solo se desea crear la ficha sin mostrarla debe usar el metodo newFacturaView().
 */
+/**
+\return
+**/
 void Company::s_newFacturaCli() {
     _depura("Company::s_newFacturaCli", 0);
     /// Lanzamos los plugins necesarios.
@@ -754,6 +826,8 @@ void Company::s_newFacturaCli() {
     De esta forma es posible actualizar el listado de presupuestos sin tener que
     buscar un puntero a dicha clase.
 */
+/**
+**/
 void Company::refreshPresupuestos() {
     _depura("Company::refreshPresupuestos", 0);
     m_presupuestosList->presentar();
@@ -765,6 +839,8 @@ void Company::refreshPresupuestos() {
     De esta forma es posible actualizar el listado de facturas sin tener que
     buscar un puntero a dicha clase.
 */
+/**
+**/
 void Company::refreshFacturas() {
     _depura("Company::refreshFacturas", 0);
     if (m_facturasList != NULL)
@@ -777,6 +853,8 @@ void Company::refreshFacturas() {
     De esta forma es posible actualizar el listado de facturas de proveedor sin tener que
     buscar un puntero a dicha clase.
 */
+/**
+**/
 void Company::refreshFacturasProveedor() {
     _depura("Company::refreshFacturasProveedor", 0);
     if (m_facturasproveedorlist != NULL)
@@ -789,6 +867,8 @@ void Company::refreshFacturasProveedor() {
 /** Pone en primer plano los albaranes de cliente.
 */
 /// \TODO: Renombrar este metodo por algo un poco mejor.
+/**
+**/
 void Company::listClientDelivNotes() {
     _depura("Company::listClientDelivNotes", 0);
     m_clientDelivNotesList->show();
@@ -801,6 +881,8 @@ void Company::listClientDelivNotes() {
 /** Creacion de un albaran de cliente.
 */
 /// \TODO: No pasa por el sistema de plugins. Deberia dividirse en dos.
+/**
+**/
 void Company::newClientDelivNote() {
     _depura("Company::newClientDelivNote", 0);
     AlbaranClienteView *cDelivNote = new AlbaranClienteView(this, 0);
@@ -815,6 +897,8 @@ void Company::newClientDelivNote() {
     de un puntero a dicha ventana.
 */
 /// \TODO: ESte metodo esta duplicado junto con refreshAlbaranesCliente.
+/**
+**/
 void Company::refreshClientDelivNotes() {
     _depura("Company::refreshClientDelivNotes", 0);
     if (m_clientDelivNotesList != NULL)
@@ -827,6 +911,8 @@ void Company::refreshClientDelivNotes() {
     Mediante este metodo es sencill actualizar el listado de albaranes de proveedor sin disponer
     de un puntero a dicha ventana.
 */
+/**
+**/
 void Company::refreshAlbaranesCliente() {
     _depura("Company::refreshAlbaranesCliente", 0);
     if (m_clientDelivNotesList != NULL)
@@ -839,6 +925,8 @@ void Company::refreshAlbaranesCliente() {
     Mediante este metodo es sencill actualizar el listado de albaranes de proveedor sin disponer
     de un puntero a dicha ventana.
 */
+/**
+**/
 void Company::refreshAlbaranesProveedor() {
     _depura("Company::refreshAlbaranesProveedor", 0);
     if (m_albaranesproveedor != NULL)
@@ -849,6 +937,8 @@ void Company::refreshAlbaranesProveedor() {
 
 /** Refresca el listado de Clientes.
 */
+/**
+**/
 void Company::refreshClientes() {
     _depura("Company::refreshClientes", 0);
     if (m_clientsList != NULL)
@@ -859,6 +949,8 @@ void Company::refreshClientes() {
 
 /** Refresca el listado de Proveedores.
 */
+/**
+**/
 void Company::refreshProveedores() {
     _depura("Company::refreshProveedores", 0);
     if (m_providerslist != NULL)
@@ -871,6 +963,8 @@ void Company::refreshProveedores() {
     Mediante este metodo podemos crear un nuevo pedido de cliente.
 */
 /// \TODO: No implementa el soporte de plugins y deberia estar dividido en dos.
+/**
+**/
 void Company::newPedidoCliente() {
     _depura("Company::newPedidoCliente", 0);
     PedidoClienteView *bud = new PedidoClienteView(this, 0);
@@ -884,6 +978,8 @@ void Company::newPedidoCliente() {
     Mediante este metodo es sencillo actualizar el listado de cobros a cliente sin disponer
     de un puntero a dicha ventana.
 */
+/**
+**/
 void Company::refreshCobrosCliente() {
     _depura("Company::refreshCobrosCliente", 0);
     if (m_cobrosList != NULL)
@@ -896,6 +992,8 @@ void Company::refreshCobrosCliente() {
     Mediante este metodo es sencillo actualizar el listado de pedidos de clientes sin disponer
     de un puntero a dicha ventana.
 */
+/**
+**/
 void Company::refreshPedidosCliente() {
     _depura("Company::refreshPedidosCliente", 0);
     if (m_pedidosclienteList != NULL)
@@ -908,6 +1006,8 @@ void Company::refreshPedidosCliente() {
     Mediante este metodo es sencillo actualizar el listado de pedidos a proveedor sin disponer
     de un puntero a dicha ventana.
 */
+/**
+**/
 void Company::refreshPedidosProveedor() {
     _depura("Company::refreshPedidosProveedor", 0);
     if (m_pedidosproveedorList != NULL)
@@ -919,6 +1019,8 @@ void Company::refreshPedidosProveedor() {
 /** Crea y Presenta la ventana de formas de pago.
 */
 /// \TODO: Deberia dividirse en dos y deberia pasar por sistema de plugins.
+/**
+**/
 void Company::s_FPago() {
     _depura("Company::s_FPago", 0);
     FPagoView *f = new FPagoView(this, NULL);
@@ -931,6 +1033,8 @@ void Company::s_FPago() {
 /** Crea y Presenta la ventana de trabajadores
 */
 /// \TODO: Deberia dividirse en dos y deberia pasar por sistema de plugins.
+/**
+**/
 void Company::s_trabajadores() {
     _depura("Company::s_trabajadores", 0);
     TrabajadorView *t = new TrabajadorView(this, NULL);
@@ -939,9 +1043,12 @@ void Company::s_trabajadores() {
     _depura("END Company::s_trabajadores", 0);
 }
 
+
 /** Crea y Presenta la ventana de bancos
 */
 /// \TODO: Deberia dividirse en dos y deberia pasar por sistema de plugins.
+/**
+**/
 void Company::s_bancos() {
     _depura("Company::s_bancos", 0);
     BancoView *t = new BancoView(this, NULL);
@@ -950,9 +1057,12 @@ void Company::s_bancos() {
     _depura("END Company::s_bancos", 0);
 }
 
+
 /** Crea y Presenta la ventana de Series de Factura
 */
 /// \TODO: Deberia dividirse en dos y deberia pasar por sistema de plugins.
+/**
+**/
 void Company::s_seriesFactura() {
     _depura("Company::s_seriesFactura", 0);
     ListSerieFacturaView *lser = new ListSerieFacturaView(this, 0);
@@ -962,12 +1072,13 @@ void Company::s_seriesFactura() {
 }
 
 
-
-
 /** Crea una instancia de la clase ArticuloView
     Es importante tener la creacion de instancias centralizada en esta clase para asegurar
     Que se lanzan los plugins necesarios.
 */
+/**
+\return
+**/
 ArticuloView *Company::newArticuloView() {
     _depura("Company::newArticuloView", 0);
     /// Lanzamos los plugins necesarios.
@@ -983,6 +1094,8 @@ ArticuloView *Company::newArticuloView() {
 /** Crea y muestra la Ficha de Articulos
     Si solo se desea crear la ficha sin mostrarla debe usar el metodo newFacturaView().
 */
+/**
+**/
 void Company::s_newArticulo() {
     _depura("Company::s_newArticulo", 0);
     ArticuloView *art = newArticuloView();
@@ -993,12 +1106,13 @@ void Company::s_newArticulo() {
 }
 
 
-
-
 /** Crea una instancia de la clase AlbaranClienteView
     Es importante tener la creacion de instancias centralizada en esta clase para asegurar
     Que se lanzan los plugins necesarios.
 */
+/**
+\return
+**/
 AlbaranClienteView *Company::newAlbaranClienteView() {
     _depura("Company::newAlbaranClienteView", 0);
     /// Lanzamos los plugins necesarios.
@@ -1014,6 +1128,8 @@ AlbaranClienteView *Company::newAlbaranClienteView() {
 /** Crea y muestra la ficha de Albaran a Cliente
     Si solo se desea crear la ficha sin mostrarla debe usar el metodo newFacturaView().
 */
+/**
+**/
 void Company::s_newAlbaranClienteView() {
     _depura("Company::s_newAlbaranClienteView", 0);
     AlbaranClienteView *bud = newAlbaranClienteView();
@@ -1030,6 +1146,9 @@ void Company::s_newAlbaranClienteView() {
     Es importante tener la creacion de instancias centralizada en esta clase para asegurar
     Que se lanzan los plugins necesarios.
 */
+/**
+\return
+**/
 AlbaranProveedorView *Company::newAlbaranProveedorView() {
     _depura("Company::newAlbaranProveedorView", 0);
     /// Lanzamos los plugins necesarios.
@@ -1045,6 +1164,8 @@ AlbaranProveedorView *Company::newAlbaranProveedorView() {
 /** Crea y muestra la ficha de Albaran de Proveedor
     Si solo se desea crear la ficha sin mostrarla debe usar el metodo newAlbaranProveedorView().
 */
+/**
+**/
 void Company::s_newAlbaranProveedorView() {
     _depura("Company::s_newAlbaranProveedorView", 0);
     AlbaranProveedorView *bud = newAlbaranProveedorView();
@@ -1059,6 +1180,9 @@ void Company::s_newAlbaranProveedorView() {
     Es importante tener la creacion de instancias centralizada en esta clase para asegurar
     Que se lanzan los plugins necesarios.
 */
+/**
+\return
+**/
 PedidoClienteView *Company::newPedidoClienteView() {
     _depura("Company::newPedidoClienteView", 0);
     /// Lanzamos los plugins necesarios.
@@ -1074,6 +1198,8 @@ PedidoClienteView *Company::newPedidoClienteView() {
 /** Crea y muestra la ficha de Pedido a Cliente.
     Si solo se desea crear la ficha sin mostrarla debe usar el metodo newPedidoClienteView().
 */
+/**
+**/
 void Company::s_newPedidoClienteView() {
     _depura("Company::s_newPedidoClienteView", 0);
     PedidoClienteView *bud = newPedidoClienteView();
@@ -1088,6 +1214,8 @@ void Company::s_newPedidoClienteView() {
 /** Crea y muestra la ficha de Pedido de Proveedor.
     Si solo se desea crear la ficha sin mostrarla debe usar el metodo newPedidoProveedorView().
 */
+/**
+**/
 void Company::s_newPedidoProveedorView() {
     _depura("Company::s_newPedidoProveedorView", 0);
     PedidoProveedorView *bud = nuevoPedidoProveedorView();
@@ -1100,6 +1228,9 @@ void Company::s_newPedidoProveedorView() {
 
 /** Crea una instancia de ListAlmacenView y la presenta.
 */
+/**
+\return
+**/
 void Company::s_almacenes() {
     _depura("Company::s_almacenes", 0);
     /// Lanzamos los plugins necesarios.
@@ -1114,6 +1245,8 @@ void Company::s_almacenes() {
 
 /** Crea una instancia de ListConfiguracionView y la presenta.
 */
+/**
+**/
 void Company::s_newListConfiguracionView() {
     _depura("Company::s_newListConfiguracionView", 0);
     ListConfiguracionView *lser = new ListConfiguracionView(this, 0);
@@ -1127,6 +1260,9 @@ void Company::s_newListConfiguracionView() {
     Es importante tener la creacion de instancias centralizada en esta clase para asegurar
     Que se lanzan los plugins necesarios.
 */
+/**
+\return
+**/
 PagoView *Company::newPagoView() {
     _depura("Company::newPagoView", 0);
     /// Lanzamos los plugins necesarios.
@@ -1142,6 +1278,8 @@ PagoView *Company::newPagoView() {
 /** Crea y muestra la ficha de PagoView.
     Si solo se desea crear la ficha sin mostrarla debe usar el metodo newPedidoClienteView().
 */
+/**
+**/
 void Company::s_newPagoView() {
     _depura("Company::s_newPagoView", 0);
     PagoView *pag = newPagoView();
@@ -1155,6 +1293,11 @@ void Company::s_newPagoView() {
     Es importante tener la creacion de instancias centralizada en esta clase para asegurar
     Que se lanzan los plugins necesarios.
 */
+/**
+\param parent
+\param modoConsulta
+\return
+**/
 TipoArticuloList *Company::newTipoArticuloList(QWidget *parent, bool modoConsulta) {
     _depura("Company::newTipoArticuloList", 0);
     /// Lanzamos los plugins necesarios.
@@ -1170,6 +1313,8 @@ TipoArticuloList *Company::newTipoArticuloList(QWidget *parent, bool modoConsult
 /** Crea y muestra la ficha de Tipos de Articulo
     Si solo se desea crear la ficha sin mostrarla debe usar el metodo newTipoArticuloList().
 */
+/**
+**/
 void Company::s_newTipoArticuloList() {
     _depura("Company::s_newTipoArticuloList", 0);
     TipoArticuloList *pag = newTipoArticuloList();
@@ -1183,6 +1328,11 @@ void Company::s_newTipoArticuloList() {
     Es importante tener la creacion de instancias centralizada en esta clase para asegurar
     Que se lanzan los plugins necesarios.
 */
+/**
+\param parent
+\param modoConsulta
+\return
+**/
 FamiliasView *Company::newfamiliasview(QWidget *parent, bool modoConsulta) {
     _depura("Company::newfamiliasview", 0);
     /// Lanzamos los plugins necesarios.
@@ -1198,6 +1348,8 @@ FamiliasView *Company::newfamiliasview(QWidget *parent, bool modoConsulta) {
 /** Crea y muestra la ficha de Familias
     Si solo se desea crear la ficha sin mostrarla debe usar el metodo newfamiliasview().
 */
+/**
+**/
 void Company::s_newfamiliasview() {
     _depura("Company::s_newfamiliasview", 0);
     FamiliasView *pag = newfamiliasview();
@@ -1209,6 +1361,8 @@ void Company::s_newfamiliasview() {
 
 /** Crea y muestra el listado de Tipos de IVA
 */
+/**
+**/
 void Company::s_TipoIVAView() {
     _depura("Company::s_TipoIVAView", 0);
     ListTipoIVAView *pag = new ListTipoIVAView(this, 0);
@@ -1217,8 +1371,11 @@ void Company::s_TipoIVAView() {
     _depura("END Company::s_TipoIVAView", 0);
 }
 
+
 /** Crea y muestra el listado de Tasas de IVA
 */
+/**
+**/
 void Company::s_TasaIVAView() {
     _depura("Company::s_TasaIVAView", 0);
     ListTasaIVAView *pag = new ListTasaIVAView(this, 0);
@@ -1228,12 +1385,21 @@ void Company::s_TasaIVAView() {
 }
 
 
+///
+/**
+\return
+**/
 FacturasProveedorList * Company::facturasProveedorList() {
     _depura("Company::facturasProveedorList", 0);
     _depura("END Company::facturasProveedorList", 0);
     return m_facturasproveedorlist;
 }
 
+
+///
+/**
+\return
+**/
 PresupuestoList * Company::presupuestoList() {
     _depura("Company::presupuestoList", 0);
     _depura("END Company::presupuestoList", 0);
@@ -1245,7 +1411,10 @@ PresupuestoList * Company::presupuestoList() {
 
 
 /// Guarda la configuracion de programa para poder recuperar algunas cosas de presentacion.
+/**
+**/
 void Company::guardaConf() {
+    _depura("Company::guardaConf", 0);
     QFile file(confpr->valor(CONF_DIR_USER) + "bulmafact_" + nameDB() + ".cfn");
     /// Guardado del orden y de configuraciones varias.
     if (file.open(QIODevice::WriteOnly)) {
@@ -1278,10 +1447,16 @@ void Company::guardaConf() {
         stream << "</CONFIG>\n";
         file.close();
     } // end if
+    _depura("END Company::guardaConf", 0);
 }
 
+
 /// Guarda la configuracion de programa para poder recuperar algunas cosas de presentacion.
+/**
+\return
+**/
 void Company::cargaConf() {
+    _depura("Company::cargaConf", 0);
     QFile file(confpr->valor(CONF_DIR_USER) + "bulmafact_" + nameDB() + ".cfn");
     QDomDocument doc("mydocument");
     if (!file.open(QIODevice::ReadOnly))
@@ -1359,4 +1534,5 @@ void Company::cargaConf() {
     /// Si hay una ventana activa se pone como activa.
     if (activewindow)
         m_bulmafact->workspace()->setActiveWindow(activewindow);
+    _depura("END Company::cargaConf", 0);
 }

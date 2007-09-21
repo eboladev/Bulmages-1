@@ -28,9 +28,13 @@
 #include "comparticulolistview.h"
 #include "funcaux.h"
 
-
+///
+/**
+\param parent
+**/
 ListDescuentoPedidoProveedorView::ListDescuentoPedidoProveedorView(QWidget *parent)
         : SubForm2Bf(parent) {
+    _depura("ListDescuentoPedidoProveedorView::ListDescuentoPedidoProveedorView", 0);
     setDBTableName("dpedidoproveedor");
     setDBCampoId("iddpedidoproveedor");
     addSHeader("iddpedidoproveedor", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr("Idd pedido proveedor"));
@@ -38,5 +42,6 @@ ListDescuentoPedidoProveedorView::ListDescuentoPedidoProveedorView(QWidget *pare
     addSHeader("proporciondpedidoproveedor", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Proporciond pedido proveedor"));
     addSHeader("idpedidoproveedor", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id pedido proveedor"));
     setinsercion(TRUE);
+    _depura("ListDescuentoPedidoProveedorView::ListDescuentoPedidoProveedorView", 0);
 }
 

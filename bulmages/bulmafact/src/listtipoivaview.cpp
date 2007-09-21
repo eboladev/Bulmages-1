@@ -39,6 +39,11 @@
 #include "funcaux.h"
 
 
+///
+/**
+\param comp
+\param parent
+**/
 ListTipoIVAView::ListTipoIVAView(Company *comp, QWidget *parent)
         : FichaBf(comp, parent) {
     _depura("ListTipoIVAView::ListTipoIVAView", 1);
@@ -53,16 +58,24 @@ ListTipoIVAView::ListTipoIVAView(Company *comp, QWidget *parent)
 }
 
 
+///
+/**
+**/
 void ListTipoIVAView::on_mui_aceptar_clicked() {
+    _depura("ListTipoIVAView::on_mui_aceptar_clicked", 0);
     try {
         mui_listado->guardar();
         close();
     } catch (...) {
         mensajeInfo("Error al guardar los almacenes");
     } // end try
+    _depura("END ListTipoIVAView::on_mui_aceptar_clicked", 0);
 }
 
 
+///
+/**
+**/
 ListTipoIVAView::~ListTipoIVAView() {
     _depura("ListTipoIVAView::~ListTipoIVAView", 0);
     _depura("END ListTipoIVAView::~ListTipoIVAView", 0);
@@ -77,7 +90,12 @@ int ListTipoIVAView::sacaWindow() {
 }
 */
 
+
 /// ===================================== SUBFORMULARIO ===============================================
+///
+/**
+\param parent
+**/
 ListTipoIVASubForm::ListTipoIVASubForm(QWidget *parent) : SubForm2Bf(parent) {
     _depura("ListTipoIVASubForm::ListTipoIVASubForm", 0);
     setDBTableName("tipo_iva");
@@ -88,6 +106,10 @@ ListTipoIVASubForm::ListTipoIVASubForm(QWidget *parent) : SubForm2Bf(parent) {
     _depura("END ListTipoIVASubForm::ListTipoIVASubForm", 0);
 }
 
+
+///
+/**
+**/
 void ListTipoIVASubForm::cargar() {
         _depura("ListTipoIVASubForm::cargar", 0);
         cursor2 * cur= empresaBase()->cargacursor("SELECT * FROM tipo_iva");

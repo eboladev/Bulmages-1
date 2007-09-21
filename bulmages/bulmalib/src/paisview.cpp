@@ -57,7 +57,7 @@ PaisView::PaisView(EmpresaBase *emp, QWidget *parent)
     mui_listprovincias->addSHeader("provincia", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, tr("Provincia"));
     mui_listprovincias->setinsercion(TRUE);
     mui_listprovincias->setDelete(TRUE);
-    mui_listprovincias->setSortingEnabled(TRUE);
+    mui_listprovincias->setSortingEnabled(FALSE);
 
     /// Establecemos cual es la tabla en la que basarse para los permisos
     setTitleName(tr("Pais"));
@@ -69,7 +69,7 @@ PaisView::PaisView(EmpresaBase *emp, QWidget *parent)
     addDBCampo("cod3pais", DBCampo::DBvarchar, DBCampo::DBNothing,tr("Codigo 3 digitos"));
 
 
-    idpais = 0;
+    m_idpais = "0";
 
 
     dialogChanges_cargaInicial();
@@ -108,9 +108,8 @@ void PaisView::on_mui_list_itemClicked(QTableWidgetItem *) {
     _depura("PaisView::on_mui_list_itemSelectionChanged", 0);
     /// Busca el item correcto.
     QString previdpais = mui_list->DBvalue("idpais");
-//    previdpais = (QTableWidgetItem2 *) item->
-//    _depura(previdpais, 2);
-    if (dialogChanges_hayCambios()) {
+
+    if (m_idpais != "0" && dialogChanges_hayCambios()) {
         if (QMessageBox::warning(this,
                                  tr("Guardar pais"),
                                  tr("Desea guardar los cambios?"),
@@ -118,7 +117,7 @@ void PaisView::on_mui_list_itemClicked(QTableWidgetItem *) {
             on_mui_guardar_clicked();
         } // end if
     } // end if
-    idpais = previdpais.toInt();
+    m_idpais = previdpais;
     mostrarplantilla();
     _depura("END PaisView::on_mui_list_itemSelectionChanged", 0);
 }
@@ -130,13 +129,13 @@ void PaisView::on_mui_list_itemClicked(QTableWidgetItem *) {
 void PaisView::mostrarplantilla() {
     _depura("PaisView::mostrarplantilla", 0);
 
-    if (idpais != 0) {
-        cargar(QString::number(idpais));
+    if (m_idpais != "0") {
+        cargar(m_idpais);
 	mui_descpais->setText(DBvalue("descpais"));
 	mui_cod2pais->setText(DBvalue("cod2pais"));
 	mui_cod3pais->setText(DBvalue("cod3pais"));
 
-	mui_listprovincias->cargar("SELECT * FROM provincia WHERE idpais="+QString::number(idpais));
+	mui_listprovincias->cargar("SELECT * FROM provincia WHERE idpais=" + m_idpais);
 
 	dialogChanges_cargaInicial();
     } // end if
@@ -203,32 +202,14 @@ void PaisView::on_mui_borrar_clicked() {
                                  tr("&Borrar"), tr("&Cancelar"), 0, 0, 1)) {
     case 0: /// Retry clicked or Enter pressed.
         QString query;
-        query.sprintf("DELETE FROM pais WHERE idpais = %d", idpais);
+        query = "DELETE FROM pais WHERE idpais = " + m_idpais;
         empresaBase()->begin();
         empresaBase()->ejecuta(query);
         empresaBase()->commit();
-        idpais = 0;
+        m_idpais = "0";
         pintar();
     } // end switch
     _depura("END PaisView::on_mui_borrar_clicked", 0);
 }
 
-/*
 
-void PaisView::closeEvent(QCloseEvent *e) {
-    _depura("PaisView::closeEvent", 0);
-    if (dialogChanges_hayCambios()) {
-        int val = QMessageBox::warning(this,
-                                       tr("Guardar pais"),
-                                       tr("Desea guardar los cambios?"),
-                                       tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
-        if (val == 0) {
-            on_mui_guardar_clicked();
-        } // end if
-        if (val == 2) {
-            e->ignore();
-        } // end if
-    } // end if
-    _depura("END PaisView::closeEvent", 0);
-}
-*/

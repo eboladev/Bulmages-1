@@ -29,8 +29,13 @@
 #include "funcaux.h"
 
 
+///
+/**
+\param parent
+**/
 ListDescuentoPedidoClienteView::ListDescuentoPedidoClienteView(QWidget *parent)
         : SubForm2Bf(parent) {
+    _depura("ListDescuentoPedidoClienteView::ListDescuentoPedidoClienteView", 0);
     setDBTableName("dpedidocliente");
     setDBCampoId("iddpedidocliente");
     addSHeader("iddpedidocliente", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr("Idd pedido cliente"));
@@ -38,5 +43,6 @@ ListDescuentoPedidoClienteView::ListDescuentoPedidoClienteView(QWidget *parent)
     addSHeader("proporciondpedidocliente", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Proporciond pedido cliente"));
     addSHeader("idpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id pedido cliente"));
     setinsercion(TRUE);
+    _depura("END ListDescuentoPedidoClienteView::ListDescuentoPedidoClienteView", 0);
 }
 
