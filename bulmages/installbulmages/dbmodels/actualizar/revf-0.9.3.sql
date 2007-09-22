@@ -110,9 +110,6 @@ DROP FUNCTION aux() CASCADE;
 \echo "Agregado el campo de Fecha Vencimiento de cobro"
 
 
-
-
-
 SELECT drop_if_exists_proc('restriccionescobro', '');
 \echo -n ':: Funcion que crea restricciones en cobro ... '
 CREATE FUNCTION restriccionescobro() RETURNS "trigger"
@@ -316,6 +313,59 @@ CREATE TRIGGER restriccionesfacturatrigger
     FOR EACH ROW
     EXECUTE PROCEDURE restriccionesfactura();
 
+
+\echo -n ':: Funcion que calcula el total de una factura ... '
+SELECT drop_if_exists_proc('calctotalfactura', 'integer');
+\echo -n ':: Funcion que calcula el total de una factura ... '
+CREATE OR REPLACE FUNCTION calctotalfactura(integer) RETURNS numeric(12, 2)
+AS '
+DECLARE
+    idp ALIAS FOR $1;
+    totalBImponibleLineas numeric(12, 4);
+    totalIRPF numeric(12, 4);
+    totalIVA numeric(12, 4);
+    totalRE numeric(12, 4);
+    totalTotal numeric(12, 2);
+    res RECORD;
+
+BEGIN
+    totalBImponibleLineas := 0;
+    totalIRPF := 0;
+    totalIVA := 0;
+    totalRE := 0;
+    totalTotal := 0;
+
+    FOR res IN SELECT cantlfactura * pvplfactura * (1 - descuentolfactura / 100) AS subtotal1 FROM lfactura WHERE idfactura = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas + res.subtotal1;
+    END LOOP;
+
+    SELECT INTO res valor::numeric FROM configuracion WHERE LOWER(nombre) = ''irpf'';
+    IF FOUND THEN
+        totalIRPF := totalBImponibleLineas * (res.valor / 100);
+    END IF;
+
+    FOR res IN SELECT cantlfactura * pvplfactura * (1 - descuentolfactura / 100) * (ivalfactura / 100) AS subtotal1 FROM lfactura WHERE idfactura = idp LOOP
+	totalIVA := totalIVA + res.subtotal1;
+    END LOOP;
+
+    FOR res IN SELECT cantlfactura * pvplfactura * (1 - descuentolfactura / 100) * (reqeqlfactura / 100) AS subtotal1 FROM lfactura WHERE idfactura = idp LOOP
+	totalRE := totalRE + res.subtotal1;
+    END LOOP;
+
+    FOR res IN SELECT proporciondfactura FROM dfactura WHERE idfactura = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas * (1 - res.proporciondfactura / 100);
+	totalIRPF := totalIRPF * (1 - res.proporciondfactura / 100);
+	totalIVA := totalIVA * (1 - res.proporciondfactura / 100);
+	totalRE := totalRE * (1 - res.proporciondfactura / 100);
+    END LOOP;
+
+    totalTotal = totalBImponibleLineas - totalIRPF + totalIVA + totalRE;
+
+    RETURN totalTotal;
+END;
+' LANGUAGE plpgsql;
+
+
 -- ================================== ACTUALIZACION  ===================================
 -- =====================================================================================
 
@@ -327,9 +377,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.9.3-0005'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.9.3-0006'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.3-0005'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.3-0006'');
 	END IF;
 	RETURN 0;
 END;
