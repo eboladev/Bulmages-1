@@ -82,10 +82,10 @@ CuadranteQTextDocument::CuadranteQTextDocument(Company *emp, QWidget *parent) : 
 }
 
 
-
 CuadranteQTextDocument::~CuadranteQTextDocument() {
     _depura("~CuadranteQTextDocument", 0);
 }
+
 
 void CuadranteQTextDocument::addTrabajador(QString idtrabajador) {
     try {
@@ -112,6 +112,7 @@ void CuadranteQTextDocument::addTrabajador(QString idtrabajador) {
         _depura("error", 2);
     } // end try
 }
+
 
 void CuadranteQTextDocument::setAlmFecha(QString idalmacen, const QDate &date) {
     _depura("CuadranteQTextDocument::setAlmFecha", 0);
@@ -157,20 +158,25 @@ void CuadranteQTextDocument::pintaCuadrante(QString idalmacen, const QDate &date
         mdb_fechacuadrante = date;
     } // end if
 
-
-
     QString oldnomtipotrabajo = "";
 
     cursor2 *cur1 = empresaBase()->cargacursor("SELECT * FROM horario, trabajador, tipotrabajo WHERE horario.idtrabajador = trabajador.idtrabajador AND trabajador.idtipotrabajo = tipotrabajo.idtipotrabajo AND idcuadrante = "+mdb_idcuadrante +" ORDER BY nomtipotrabajo, horainhorario, nomtrabajador");
     if (!cur1) throw -1;
     while (!cur1->eof()) {
+
+
         if (oldnomtipotrabajo != cur1->valor("nomtipotrabajo") ) {
             html += "<font size=\"-3\" color=\"#00FF00\" >" + cur1->valor("nomtipotrabajo") + ":</font><BR>";
             oldnomtipotrabajo = cur1->valor("nomtipotrabajo");
         } // end if
+
+	/// Si hay conflictos con el trabajador.
+	if (buscaConflictos(cur1->valor("idtrabajador"), date, cur1->valor("horainhorario").left(5), cur1->valor("horafinhorario").left(5))) {
+		html += "<font size=\"-3\" color=\"#FF0000\">ERROR</FONT> ";
+	}
+
         html += "<font size=\"-3\" color=\"#0000FF\">" + cur1->valor("nomtrabajador") + " " + cur1->valor("apellidostrabajador");
         html += " (" + cur1->valor("horainhorario").left(5) + "--" + cur1->valor("horafinhorario").left(5) + ") </font><BR>";
-
 
         cur1->siguienteregistro();
     } // end while
@@ -234,3 +240,30 @@ const QString CuadranteQTextDocument::impresion() {
     html += "</td>\n";
     return html;
 }
+
+bool CuadranteQTextDocument::buscaConflictos(QString idtrabajador, const QDate &date, QString horain, QString horafin) {
+	_depura ("CuadranteQTextDocument::buscaConflictos", 0);
+	bool conflicto = FALSE;
+	QString query = "SELECT * FROM horario NATURAL LEFT JOIN cuadrante  WHERE idtrabajador = " + idtrabajador + " AND NOT (( horafinhorario < '" + horain + "') OR (horainhorario > '" + horafin +"')) AND fechacuadrante = '" + date.toString("dd/MM/yyyy") + "'";
+	cursor2 *cur = empresaBase()->cargacursor(query);
+	if (cur) {
+		if (cur->numregistros() > 1) {
+			conflicto = TRUE;
+		} // end if
+		delete cur;
+	}
+
+	query = "SELECT * FROM ausencia WHERE idtrabajador = " + idtrabajador + " AND fechainausencia <= '" + date.toString("dd/MM/yyyy") + "' AND fechafinausencia >= '" + date.toString("dd/MM/yyyy") + "'";
+	cur = empresaBase()->cargacursor(query);
+	if (cur) {
+		if (!cur->eof()) {
+			conflicto = TRUE;
+		} // end if
+		delete cur;
+	} // end if
+
+	_depura ("END CuadranteQTextDocument::buscaConflictos", 0);
+	return conflicto;
+}
+
+

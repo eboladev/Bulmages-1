@@ -47,6 +47,8 @@ public:
     void pintaCuadrante(QString idalmacen, const QDate &date);
     QString idcuadrante();
     const QString impresion();
+    bool buscaConflictos(QString idtrabajador, const QDate &date, QString horain, QString horafin);
+
 public slots:
     virtual void refresh();
 };

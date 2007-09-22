@@ -179,6 +179,7 @@ void CuadranteView::on_mui_listtrabajadores_itemDoubleClicked(QTreeWidgetItem *i
     }
 }
 
+
 void CuadranteView::on_mui_editar_clicked() {
     _depura ("editar cuadrante", 0);
     Cuadrante1View *cuad = new Cuadrante1View(empresaBase(), 0);
@@ -188,6 +189,7 @@ void CuadranteView::on_mui_editar_clicked() {
     newItem->connect (cuad, SIGNAL(save()), newItem, SLOT(refresh()));
     cuad->cargar(newItem->idcuadrante());
 }
+
 
 void CuadranteView::on_mui_calendario_customContextMenuRequested ( const QPoint & pos ) {
     QMenu *popup = new QMenu(mui_calendario);
@@ -211,6 +213,7 @@ void CuadranteView::on_mui_calendario_customContextMenuRequested ( const QPoint 
 
     inicializaCuadrante(mui_calendario->selectedDate());
 }
+
 
 void CuadranteView::on_mui_imprimir_clicked() {
 
