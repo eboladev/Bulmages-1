@@ -1531,18 +1531,50 @@ CREATE OR REPLACE FUNCTION calctotalfacpro(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
     idp ALIAS FOR $1;
-    total numeric(12, 2);
+    totalBImponibleLineas numeric(12, 4);
+    totalIRPF numeric(12, 4);
+    totalIVA numeric(12, 4);
+    totalRE numeric(12, 4);
+    totalTotal numeric(12, 2);
     res RECORD;
+    res2 RECORD;
 
 BEGIN
-    total := 0;
-    FOR res IN SELECT cantlfacturap * pvplfacturap * (1 - descuentolfacturap / 100) * (1 + ivalfacturap / 100) AS subtotal1 FROM lfacturap WHERE idfacturap = idp LOOP
-	total := total + res.subtotal1;
+    totalBImponibleLineas := 0;
+    totalIRPF := 0;
+    totalIVA := 0;
+    totalRE := 0;
+    totalTotal := 0;
+
+    FOR res IN SELECT cantlfacturap * pvplfacturap * (1 - descuentolfacturap / 100) AS subtotal1 FROM lfacturap WHERE idfacturap = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas + res.subtotal1;
     END LOOP;
+
+    SELECT INTO res2 idproveedor FROM facturap WHERE idfacturap = idp;
+
+    SELECT INTO res irpfproveedor FROM proveedor WHERE idproveedor = res2.idproveedor;
+    IF FOUND THEN
+        totalIRPF := totalBImponibleLineas * (res.irpfproveedor / 100);
+    END IF;
+
+    FOR res IN SELECT cantlfacturap * pvplfacturap * (1 - descuentolfacturap / 100) * (ivalfacturap / 100) AS subtotal1 FROM lfacturap WHERE idfacturap = idp LOOP
+	totalIVA := totalIVA + res.subtotal1;
+    END LOOP;
+
+    FOR res IN SELECT cantlfacturap * pvplfacturap * (1 - descuentolfacturap / 100) * (reqeqlfacturap / 100) AS subtotal1 FROM lfacturap WHERE idfacturap = idp LOOP
+	totalRE := totalRE + res.subtotal1;
+    END LOOP;
+
     FOR res IN SELECT proporciondfacturap FROM dfacturap WHERE idfacturap = idp LOOP
-	total := total * (1 - res.proporciondfacturap/100);
+	totalBImponibleLineas := totalBImponibleLineas * (1 - res.proporciondfacturap / 100);
+	totalIRPF := totalIRPF * (1 - res.proporciondfacturap / 100);
+	totalIVA := totalIVA * (1 - res.proporciondfacturap / 100);
+	totalRE := totalRE * (1 - res.proporciondfacturap / 100);
     END LOOP;
-    RETURN total;
+
+    totalTotal = totalBImponibleLineas - totalIRPF + totalIVA + totalRE;
+
+    RETURN totalTotal;
 END;
 ' LANGUAGE plpgsql;
 
@@ -2742,9 +2774,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.9.3-0006'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.9.3-0007'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.3-0006'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.3-0007'');
 	END IF;
 	RETURN 0;
 END;
