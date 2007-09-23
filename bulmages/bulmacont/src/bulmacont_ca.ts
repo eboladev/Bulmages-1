@@ -1,4447 +1,4532 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1">
-<context>
+<!DOCTYPE TS>
+<TS>
+  <context>
     <name>AmortizacionBase</name>
     <message>
-        <location filename="amortizacionbase.ui" line="13"/>
-        <source>Amortizacion</source>
-        <translation type="unfinished">Amortització</translation>
+      <source>Amortizacion</source>
+      <translation>Amortització</translation>
     </message>
     <message>
-        <location filename="amortizacionbase.ui" line="110"/>
-        <source>Guardar amortizacion</source>
-        <translation type="unfinished"></translation>
+      <source>Guardar amortizacion</source>
+      <translation>Desa amortització</translation>
     </message>
     <message>
-        <location filename="amortizacionbase.ui" line="212"/>
-        <source>Nombre:</source>
-        <translation type="unfinished"></translation>
+      <source>Nombre:</source>
+      <translation>Nom:</translation>
     </message>
     <message>
-        <location filename="amortizacionbase.ui" line="232"/>
-        <source>Agrupacion:</source>
-        <translation type="unfinished"></translation>
+      <source>Agrupacion:</source>
+      <translation>Agrupació:</translation>
     </message>
     <message>
-        <location filename="amortizacionbase.ui" line="247"/>
-        <source>Amor&amp;tizacion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <location filename="amortizacionbase.ui" line="283"/>
-        <source>Nº de cuotas:</source>
-        <translation type="unfinished"></translation>
+      <source>Amor&amp;tizacion</source>
+      <translation>Amor&amp;tització</translation>
     </message>
     <message>
-        <location filename="amortizacionbase.ui" line="293"/>
-        <source>Fecha de compra:</source>
-        <translation type="unfinished"></translation>
+      <source>Nº de cuotas:</source>
+      <translation>Num de quotes:</translation>
     </message>
     <message>
-        <location filename="amortizacionbase.ui" line="330"/>
-        <source>Anual</source>
-        <translation type="unfinished">Anual</translation>
+      <source>Fecha de compra:</source>
+      <translation>Data de compra:</translation>
     </message>
     <message>
-        <location filename="amortizacionbase.ui" line="335"/>
-        <source>Semestral</source>
-        <translation type="unfinished">Semestral</translation>
+      <source>Anual</source>
+      <translation type="unfinished" >Anual</translation>
     </message>
     <message>
-        <location filename="amortizacionbase.ui" line="340"/>
-        <source>Trimestral</source>
-        <translation type="unfinished">Trimestral</translation>
+      <source>Semestral</source>
+      <translation type="unfinished" >Semestral</translation>
     </message>
     <message>
-        <location filename="amortizacionbase.ui" line="345"/>
-        <source>Mensual</source>
-        <translation type="unfinished">Mensual</translation>
-    </message>
-    <message encoding="UTF-8">
-        <location filename="amortizacionbase.ui" line="353"/>
-        <source>Fecha 1ª cuota:</source>
-        <translation type="unfinished"></translation>
+      <source>Trimestral</source>
+      <translation type="unfinished" >Trimestral</translation>
     </message>
     <message>
-        <location filename="amortizacionbase.ui" line="378"/>
-        <source>Cuenta de activo:</source>
-        <translation type="unfinished"></translation>
+      <source>Mensual</source>
+      <translation type="unfinished" >Mensual</translation>
     </message>
     <message>
-        <location filename="amortizacionbase.ui" line="388"/>
-        <source>Periodicidad:</source>
-        <translation type="unfinished"></translation>
+      <source>Fecha 1ª cuota:</source>
+      <translation>Data 1a quota</translation>
     </message>
     <message>
-        <location filename="amortizacionbase.ui" line="398"/>
-        <source>Valor de compra:</source>
-        <translation type="unfinished"></translation>
+      <source>Cuenta de activo:</source>
+      <translation>Compte d'actiu:</translation>
     </message>
     <message>
-        <location filename="amortizacionbase.ui" line="408"/>
-        <source>Cuenta de amortizacion:</source>
-        <translation type="unfinished"></translation>
+      <source>Periodicidad:</source>
+      <translation>Periodicitat:</translation>
     </message>
     <message>
-        <location filename="amortizacionbase.ui" line="458"/>
-        <source>Metodo:</source>
-        <translation type="unfinished"></translation>
+      <source>Valor de compra:</source>
+      <translation>Valor de compra:</translation>
     </message>
     <message>
-        <location filename="amortizacionbase.ui" line="507"/>
-        <source>Li&amp;neal</source>
-        <translation type="unfinished"></translation>
+      <source>Cuenta de amortizacion:</source>
+      <translation>Compte d'amortització</translation>
     </message>
     <message>
-        <location filename="amortizacionbase.ui" line="484"/>
-        <source>&amp;Incremental</source>
-        <translation type="unfinished"></translation>
+      <source>Metodo:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="amortizacionbase.ui" line="487"/>
-        <source>Alt+I</source>
-        <translation type="unfinished"></translation>
+      <source>Li&amp;neal</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="amortizacionbase.ui" line="477"/>
-        <source>&amp;Decremental</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Incremental</source>
+      <translation>&amp;incremental</translation>
     </message>
     <message>
-        <location filename="amortizacionbase.ui" line="470"/>
-        <source>Porcent&amp;ual</source>
-        <translation type="unfinished"></translation>
+      <source>Alt+I</source>
+      <translation>Alt+I</translation>
     </message>
     <message>
-        <location filename="amortizacionbase.ui" line="530"/>
-        <source>&amp;Calcular</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Decremental</source>
+      <translation>&amp;Decremental</translation>
     </message>
     <message>
-        <location filename="amortizacionbase.ui" line="533"/>
-        <source>Alt+C</source>
-        <translation type="unfinished"></translation>
+      <source>Porcent&amp;ual</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="amortizacionbase.ui" line="550"/>
-        <source>Cuotas:</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Calcular</source>
+      <translation>&amp;Calcular</translation>
     </message>
     <message>
-        <location filename="amortizacionbase.ui" line="586"/>
-        <source>Amortizado:</source>
-        <translation type="unfinished"></translation>
+      <source>Alt+C</source>
+      <translation>Alt+C</translation>
     </message>
     <message>
-        <location filename="amortizacionbase.ui" line="1069"/>
-        <source>Pendiente:</source>
-        <translation type="unfinished"></translation>
+      <source>Cuotas:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="amortizacionbase.ui" line="1590"/>
-        <source>&amp;Aceptar</source>
-        <translation type="unfinished"></translation>
+      <source>Amortizado:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="amortizacionbase.ui" line="1608"/>
-        <source>&amp;Cancelar</source>
-        <translation type="unfinished"></translation>
+      <source>Pendiente:</source>
+      <translation>Pendent:</translation>
     </message>
     <message>
-        <location filename="amortizacionbase.ui" line="125"/>
-        <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Aceptar</source>
+      <translation>&amp;Accepta</translation>
     </message>
     <message>
-        <location filename="amortizacionbase.ui" line="168"/>
-        <source>Ctrl+D</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Cancelar</source>
+      <translation>&amp;Cancel·la</translation>
     </message>
     <message>
-        <location filename="amortizacionbase.ui" line="153"/>
-        <source>Borrar amortizacion</source>
-        <translation type="unfinished"></translation>
+      <source>Ctrl+S</source>
+      <translation>Ctrl+S</translation>
     </message>
-</context>
-<context>
+    <message>
+      <source>Ctrl+D</source>
+      <translation>Ctrl+D</translation>
+    </message>
+    <message>
+      <source>Borrar amortizacion</source>
+      <translation type="unfinished" />
+    </message>
+  </context>
+  <context>
     <name>AmortizacionSubForm</name>
     <message>
-        <location filename="amortizacionview.cpp" line="104"/>
-        <source>Generar asiento</source>
-        <translation type="unfinished"></translation>
+      <source>Generar asiento</source>
+      <translation>Generar assentament</translation>
     </message>
     <message>
-        <location filename="amortizacionview.cpp" line="87"/>
-        <source>Ver asiento</source>
-        <translation type="unfinished"></translation>
+      <source>Ver asiento</source>
+      <translation>Veure assentament</translation>
     </message>
     <message>
-        <location filename="amortizacionview.cpp" line="92"/>
-        <source>Desvincular asiento</source>
-        <translation type="unfinished"></translation>
+      <source>Desvincular asiento</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="amortizacionview.cpp" line="99"/>
-        <source>Borrar asiento</source>
-        <translation type="unfinished"></translation>
+      <source>Borrar asiento</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="amortizacionview.cpp" line="77"/>
-        <source>Borrar cuota</source>
-        <translation type="unfinished"></translation>
+      <source>Borrar cuota</source>
+      <translation type="unfinished" />
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>AmortizacionView</name>
     <message>
-        <location filename="amortizacionview.cpp" line="211"/>
-        <source>Id lineas de amortizacion</source>
-        <translation type="unfinished"></translation>
+      <source>Id lineas de amortizacion</source>
+      <translation>Id línies d'amortització</translation>
     </message>
     <message>
-        <location filename="amortizacionview.cpp" line="201"/>
-        <source>Identificador</source>
-        <translation type="unfinished"></translation>
+      <source>Identificador</source>
+      <translation>Identificador</translation>
     </message>
     <message>
-        <location filename="amortizacionview.cpp" line="320"/>
-        <source>Error en la carga de la amortizacion</source>
-        <translation type="unfinished"></translation>
+      <source>Error en la carga de la amortizacion</source>
+      <translation>Error en la càrrega de l'amortizació</translation>
     </message>
     <message>
-        <location filename="amortizacionview.cpp" line="437"/>
-        <source>Anual</source>
-        <translation type="unfinished">Anual</translation>
+      <source>Anual</source>
+      <translation>Anual</translation>
     </message>
     <message>
-        <location filename="amortizacionview.cpp" line="439"/>
-        <source>Mensual</source>
-        <translation type="unfinished">Mensual</translation>
+      <source>Mensual</source>
+      <translation type="unfinished" >Mensual</translation>
     </message>
     <message>
-        <location filename="amortizacionview.cpp" line="441"/>
-        <source>Semestral</source>
-        <translation type="unfinished">Semestral</translation>
+      <source>Semestral</source>
+      <translation type="unfinished" >Semestral</translation>
     </message>
     <message>
-        <location filename="amortizacionview.cpp" line="443"/>
-        <source>Trimestral</source>
-        <translation type="unfinished">Trimestral</translation>
+      <source>Trimestral</source>
+      <translation type="unfinished" >Trimestral</translation>
     </message>
     <message>
-        <location filename="amortizacionview.cpp" line="187"/>
-        <source>Nombre de la amortizacion</source>
-        <translation type="unfinished"></translation>
+      <source>Nombre de la amortizacion</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="amortizacionview.cpp" line="188"/>
-        <source>Descripcion de la amortizacion</source>
-        <translation type="unfinished"></translation>
+      <source>Descripcion de la amortizacion</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="amortizacionview.cpp" line="189"/>
-        <source>Fecha de la compra</source>
-        <translation type="unfinished"></translation>
+      <source>Fecha de la compra</source>
+      <translation>Data de la compra</translation>
     </message>
     <message>
-        <location filename="amortizacionview.cpp" line="190"/>
-        <source>Fecha 1a cuota</source>
-        <translation type="unfinished"></translation>
+      <source>Fecha 1a cuota</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="amortizacionview.cpp" line="191"/>
-        <source>Valor de la compra</source>
-        <translation type="unfinished"></translation>
+      <source>Valor de la compra</source>
+      <translation>Valor de la compra</translation>
     </message>
     <message>
-        <location filename="amortizacionview.cpp" line="192"/>
-        <source>Periodicidad</source>
-        <translation type="unfinished"></translation>
+      <source>Periodicidad</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="amortizacionview.cpp" line="193"/>
-        <source>Numero de cuotas</source>
-        <translation type="unfinished"></translation>
+      <source>Numero de cuotas</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="amortizacionview.cpp" line="194"/>
-        <source>Metodo</source>
-        <translation type="unfinished"></translation>
+      <source>Metodo</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="amortizacionview.cpp" line="195"/>
-        <source>NIF del proveedor</source>
-        <translation type="unfinished"></translation>
+      <source>NIF del proveedor</source>
+      <translation>NIF del proveïdor</translation>
     </message>
     <message>
-        <location filename="amortizacionview.cpp" line="196"/>
-        <source>Nombre del proveedor</source>
-        <translation type="unfinished"></translation>
+      <source>Nombre del proveedor</source>
+      <translation>Nom del proveïdor</translation>
     </message>
     <message>
-        <location filename="amortizacionview.cpp" line="197"/>
-        <source>Direccion del proveedor</source>
-        <translation type="unfinished"></translation>
+      <source>Direccion del proveedor</source>
+      <translation>Direcció del proveïdor</translation>
     </message>
     <message>
-        <location filename="amortizacionview.cpp" line="198"/>
-        <source>Telefono del proveedor</source>
-        <translation type="unfinished"></translation>
+      <source>Telefono del proveedor</source>
+      <translation>Telèfon del proveïdor</translation>
     </message>
     <message>
-        <location filename="amortizacionview.cpp" line="199"/>
-        <source>Agrupacion</source>
-        <translation type="unfinished"></translation>
+      <source>Agrupacion</source>
+      <translation>Agrupació</translation>
     </message>
     <message>
-        <location filename="amortizacionview.cpp" line="212"/>
-        <source>Id amortizacion</source>
-        <translation type="unfinished"></translation>
+      <source>Id amortizacion</source>
+      <translation>Id amortizació</translation>
     </message>
     <message>
-        <location filename="amortizacionview.cpp" line="202"/>
-        <source>Id cuenta amortizacion</source>
-        <translation type="unfinished"></translation>
+      <source>Id cuenta amortizacion</source>
+      <translation>Id compte d'amortizació</translation>
     </message>
     <message>
-        <location filename="amortizacionview.cpp" line="207"/>
-        <source>Ejercicio</source>
-        <translation type="unfinished">Exercici</translation>
+      <source>Ejercicio</source>
+      <translation>Exercici</translation>
     </message>
     <message>
-        <location filename="amortizacionview.cpp" line="208"/>
-        <source>Fecha prevista</source>
-        <translation type="unfinished"></translation>
+      <source>Fecha prevista</source>
+      <translation>Data prevista</translation>
     </message>
     <message>
-        <location filename="amortizacionview.cpp" line="209"/>
-        <source>Cantidad</source>
-        <translation type="unfinished"></translation>
+      <source>Cantidad</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="amortizacionview.cpp" line="210"/>
-        <source>Id asiento</source>
-        <translation type="unfinished"></translation>
+      <source>Id asiento</source>
+      <translation>Id assentament</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>AmortizacionesBase</name>
     <message>
-        <location filename="amortizacionesbase.ui" line="13"/>
-        <source>Listado de amortizaciones</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <location filename="amortizacionesbase.ui" line="85"/>
-        <source>Nueva amortización</source>
-        <translation type="unfinished"></translation>
+      <source>Listado de amortizaciones</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="amortizacionesbase.ui" line="100"/>
-        <source>Ctrl+N</source>
-        <translation type="unfinished"></translation>
+      <source>Nueva amortización</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="amortizacionesbase.ui" line="156"/>
-        <source>Borrar amortizacion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <location filename="amortizacionesbase.ui" line="159"/>
-        <source>Borrar amortización</source>
-        <translation type="unfinished"></translation>
+      <source>Ctrl+N</source>
+      <translation>Ctrl+N</translation>
     </message>
     <message>
-        <location filename="amortizacionesbase.ui" line="137"/>
-        <source>Ctrl+D</source>
-        <translation type="unfinished"></translation>
+      <source>Borrar amortizacion</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="amortizacionesbase.ui" line="174"/>
-        <source>F5</source>
-        <translation type="unfinished"></translation>
+      <source>Borrar amortización</source>
+      <translation type="unfinished" />
     </message>
-</context>
-<context>
+    <message>
+      <source>Ctrl+D</source>
+      <translation>Ctrl+D</translation>
+    </message>
+    <message>
+      <source>F5</source>
+      <translation>F5</translation>
+    </message>
+  </context>
+  <context>
     <name>AmortizacionesView</name>
     <message>
-        <location filename="amortizacionesview.cpp" line="41"/>
-        <source>Id amortizacion</source>
-        <translation type="unfinished"></translation>
+      <source>Id amortizacion</source>
+      <translation>Id amortizació</translation>
     </message>
     <message>
-        <location filename="amortizacionesview.cpp" line="42"/>
-        <source>Nombre</source>
-        <translation type="unfinished"></translation>
+      <source>Nombre</source>
+      <translation type="unfinished" />
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>AplInteligentesBase</name>
     <message>
-        <location filename="aplinteligentesbase.ui" line="13"/>
-        <source>Aplicar Asiento Inteligente</source>
-        <translation type="unfinished">Aplicar Assentament Inteligent</translation>
+      <source>Aplicar Asiento Inteligente</source>
+      <translation>Aplicar Assentament Intel·ligent</translation>
     </message>
     <message>
-        <location filename="aplinteligentesbase.ui" line="107"/>
-        <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
+      <source>Ctrl+S</source>
+      <translation>Ctrl+S</translation>
     </message>
     <message>
-        <location filename="aplinteligentesbase.ui" line="170"/>
-        <source>&amp;Fecha del asiento:</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Fecha del asiento:</source>
+      <translation>&amp;Data de l'assentament</translation>
     </message>
     <message>
-        <location filename="aplinteligentesbase.ui" line="183"/>
-        <source>&amp;Plantilla:</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Plantilla:</source>
+      <translation>&amp;Plantilla:</translation>
     </message>
     <message>
-        <location filename="aplinteligentesbase.ui" line="233"/>
-        <source>Datos del asiento:</source>
-        <translation type="unfinished"></translation>
+      <source>Datos del asiento:</source>
+      <translation>Dades de l'assentament:</translation>
     </message>
     <message>
-        <location filename="aplinteligentesbase.ui" line="264"/>
-        <source>&amp;Aceptar</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Aceptar</source>
+      <translation>D'&amp;acord</translation>
     </message>
     <message>
-        <location filename="aplinteligentesbase.ui" line="274"/>
-        <source>&amp;Cancelar</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Cancelar</source>
+      <translation>&amp;Cancelar</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>Asiento1</name>
     <message>
-        <location filename="asiento1.cpp" line="39"/>
-        <source>Id asiento</source>
-        <translation type="unfinished"></translation>
+      <source>Id asiento</source>
+      <translation>Id assentament</translation>
     </message>
     <message>
-        <location filename="asiento1.cpp" line="40"/>
-        <source>Descripcion del asiento</source>
-        <translation type="unfinished"></translation>
+      <source>Descripcion del asiento</source>
+      <translation>Descripció de l'assentament</translation>
     </message>
     <message>
-        <location filename="asiento1.cpp" line="41"/>
-        <source>Fecha del asiento</source>
-        <translation type="unfinished"></translation>
+      <source>Fecha del asiento</source>
+      <translation>Data de l'assentament</translation>
     </message>
     <message>
-        <location filename="asiento1.cpp" line="42"/>
-        <source>Comentarios del asiento</source>
-        <translation type="unfinished"></translation>
+      <source>Comentarios del asiento</source>
+      <translation>Comentaris de l'assentament</translation>
     </message>
     <message>
-        <location filename="asiento1.cpp" line="43"/>
-        <source>Orden de asiento</source>
-        <translation type="unfinished"></translation>
+      <source>Orden de asiento</source>
+      <translation>Ordre de l'assentament</translation>
     </message>
     <message>
-        <location filename="asiento1.cpp" line="44"/>
-        <source>Tipo de asiento</source>
-        <translation type="unfinished"></translation>
+      <source>Tipo de asiento</source>
+      <translation>Tipus d'assentament</translation>
     </message>
     <message>
-        <location filename="asiento1.cpp" line="258"/>
-        <source>Borrar asiento</source>
-        <translation type="unfinished"></translation>
+      <source>Borrar asiento</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="asiento1.cpp" line="259"/>
-        <source>Se va a borrar el asiento. Esta seguro?</source>
-        <translation type="unfinished"></translation>
+      <source>Se va a borrar el asiento. Esta seguro?</source>
+      <translation>S'esborrarà l'assentament. Està segur?</translation>
     </message>
     <message>
-        <location filename="asiento1.cpp" line="428"/>
-        <source>El asiento se ha guardado correctamente.</source>
-        <translation type="unfinished"></translation>
+      <source>El asiento se ha guardado correctamente.</source>
+      <translation>L'assentament s'ha desat correctament.</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>Asiento1View</name>
     <message>
-        <location filename="asiento1view.cpp" line="263"/>
-        <source>Asiento inexistente.</source>
-        <translation type="unfinished"></translation>
+      <source>Asiento inexistente.</source>
+      <translation>Assentament inexistent.</translation>
     </message>
     <message>
-        <location filename="asiento1view.cpp" line="264"/>
-        <source>Desea crear un nuevo asiento en esa posicion?</source>
-        <translation type="unfinished"></translation>
+      <source>Desea crear un nuevo asiento en esa posicion?</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="asiento1view.cpp" line="265"/>
-        <source>&amp;Si</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Si</source>
+      <translation>&amp;Sí</translation>
     </message>
     <message>
-        <location filename="asiento1view.cpp" line="265"/>
-        <source>&amp;No</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;No</source>
+      <translation>&amp;No</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>AsientoBase</name>
     <message>
-        <location filename="asientobase.ui" line="140"/>
-        <source>Ctrl+A</source>
-        <translation type="unfinished">Ctrl+A</translation>
+      <source>Ctrl+A</source>
+      <translation>Ctrl+A</translation>
     </message>
     <message>
-        <location filename="asientobase.ui" line="185"/>
-        <source>Ctrl+C</source>
-        <translation type="unfinished">Ctrl+C</translation>
+      <source>Ctrl+C</source>
+      <translation>Ctrl+C</translation>
     </message>
     <message>
-        <location filename="asientobase.ui" line="275"/>
-        <source>Ctrl+N</source>
-        <translation type="unfinished"></translation>
+      <source>Ctrl+N</source>
+      <translation>Ctrl+N</translation>
     </message>
     <message>
-        <location filename="asientobase.ui" line="260"/>
-        <source>Nuevo asiento</source>
-        <translation type="unfinished">Borrar Assentament</translation>
+      <source>Nuevo asiento</source>
+      <translation>Nou assentament</translation>
     </message>
     <message>
-        <location filename="asientobase.ui" line="416"/>
-        <source>Ctrl+D</source>
-        <translation type="unfinished"></translation>
+      <source>Ctrl+D</source>
+      <translation>Ctrl+D</translation>
     </message>
     <message>
-        <location filename="asientobase.ui" line="536"/>
-        <source>Registro de IVA</source>
-        <translation type="unfinished">Registre d&apos;IVA</translation>
+      <source>Registro de IVA</source>
+      <translation>Registre d'IVA</translation>
     </message>
     <message>
-        <location filename="asientobase.ui" line="551"/>
-        <source>Ctrl+I</source>
-        <translation type="unfinished"></translation>
+      <source>Ctrl+I</source>
+      <translation>Ctrl+I</translation>
     </message>
     <message>
-        <location filename="asientobase.ui" line="581"/>
-        <source>Asientos Inteligentes</source>
-        <translation type="unfinished">Assentaments Inteligents</translation>
+      <source>Asientos Inteligentes</source>
+      <translation>Assentaments Intel·ligents</translation>
     </message>
     <message>
-        <location filename="asientobase.ui" line="596"/>
-        <source>Ctrl+M</source>
-        <translation type="unfinished"></translation>
+      <source>Ctrl+M</source>
+      <translation>Ctrl+M</translation>
     </message>
     <message>
-        <location filename="asientobase.ui" line="773"/>
-        <source>Apertura</source>
-        <translation type="unfinished"></translation>
+      <source>Apertura</source>
+      <translation>Obertura</translation>
     </message>
     <message>
-        <location filename="asientobase.ui" line="778"/>
-        <source>Normal</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <location filename="asientobase.ui" line="783"/>
-        <source>Regularización</source>
-        <translation type="unfinished">Regularització</translation>
+      <source>Normal</source>
+      <translation>Normal</translation>
     </message>
     <message>
-        <location filename="asientobase.ui" line="788"/>
-        <source>Cierre</source>
-        <translation type="unfinished"></translation>
+      <source>Regularización</source>
+      <translation type="unfinished" >Regularització</translation>
     </message>
     <message>
-        <location filename="asientobase.ui" line="14"/>
-        <source>Asiento</source>
-        <translation type="unfinished">Assentament</translation>
+      <source>Cierre</source>
+      <translation>Tancament</translation>
     </message>
     <message>
-        <location filename="asientobase.ui" line="125"/>
-        <source>Abrir asiento</source>
-        <translation type="unfinished"></translation>
+      <source>Asiento</source>
+      <translation>Assentament</translation>
     </message>
     <message>
-        <location filename="asientobase.ui" line="170"/>
-        <source>Cerrar asiento</source>
-        <translation type="unfinished"></translation>
+      <source>Abrir asiento</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="asientobase.ui" line="215"/>
-        <source>Guardar asiento</source>
-        <translation type="unfinished"></translation>
+      <source>Cerrar asiento</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="asientobase.ui" line="230"/>
-        <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
+      <source>Guardar asiento</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="asientobase.ui" line="305"/>
-        <source>Extender asiento</source>
-        <translation type="unfinished"></translation>
+      <source>Ctrl+S</source>
+      <translation>Ctrl+S</translation>
     </message>
     <message>
-        <location filename="asientobase.ui" line="320"/>
-        <source>Ctrl+E</source>
-        <translation type="unfinished"></translation>
+      <source>Extender asiento</source>
+      <translation>Estendre l'assentament</translation>
     </message>
     <message>
-        <location filename="asientobase.ui" line="356"/>
-        <source>Borrar asiento</source>
-        <translation type="unfinished"></translation>
+      <source>Ctrl+E</source>
+      <translation>Ctrl+E</translation>
     </message>
     <message>
-        <location filename="asientobase.ui" line="401"/>
-        <source>Duplicar asiento</source>
-        <translation type="unfinished"></translation>
+      <source>Borrar asiento</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="asientobase.ui" line="449"/>
-        <source>Exportar asiento</source>
-        <translation type="unfinished"></translation>
+      <source>Duplicar asiento</source>
+      <translation>Duplicar assentament</translation>
     </message>
     <message>
-        <location filename="asientobase.ui" line="494"/>
-        <source>Importar asiento</source>
-        <translation type="unfinished"></translation>
+      <source>Exportar asiento</source>
+      <translation>Exportar assentament</translation>
     </message>
     <message>
-        <location filename="asientobase.ui" line="632"/>
-        <source>Fecha:</source>
-        <translation type="unfinished"></translation>
+      <source>Importar asiento</source>
+      <translation>Importar assentament</translation>
     </message>
     <message>
-        <location filename="asientobase.ui" line="649"/>
-        <source>Orden del asiento:</source>
-        <translation type="unfinished"></translation>
+      <source>Fecha:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="asientobase.ui" line="675"/>
-        <source>Descuadre:</source>
-        <translation type="unfinished"></translation>
+      <source>Orden del asiento:</source>
+      <translation>Ordre de l'assentament:</translation>
     </message>
     <message>
-        <location filename="asientobase.ui" line="841"/>
-        <source>Saldo:</source>
-        <translation type="unfinished"></translation>
+      <source>Descuadre:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="asientobase.ui" line="934"/>
-        <source>Total Debe:</source>
-        <translation type="unfinished"></translation>
+      <source>Saldo:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="asientobase.ui" line="1013"/>
-        <source>Total Haber:</source>
-        <translation type="unfinished"></translation>
+      <source>Total Debe:</source>
+      <translation>Total Deure:</translation>
     </message>
-</context>
-<context>
+    <message>
+      <source>Total Haber:</source>
+      <translation>Total Haver:</translation>
+    </message>
+  </context>
+  <context>
     <name>AsientoListBase</name>
     <message>
-        <location filename="asientolistbase.ui" line="13"/>
-        <source>Listado de asientos</source>
-        <translation type="unfinished"></translation>
+      <source>Listado de asientos</source>
+      <translation>Llistat d'assentaments</translation>
     </message>
     <message>
-        <location filename="asientolistbase.ui" line="335"/>
-        <source>Imprimir</source>
-        <translation type="unfinished">Imprimir</translation>
+      <source>Imprimir</source>
+      <translation>Imprimir</translation>
     </message>
     <message>
-        <location filename="asientolistbase.ui" line="369"/>
-        <source>Filtrar</source>
-        <translation type="unfinished"></translation>
+      <source>Filtrar</source>
+      <translation>Filtrar</translation>
     </message>
     <message>
-        <location filename="asientolistbase.ui" line="409"/>
-        <source>Configurar</source>
-        <translation type="unfinished"></translation>
+      <source>Configurar</source>
+      <translation>Arranjament</translation>
     </message>
     <message>
-        <location filename="asientolistbase.ui" line="449"/>
-        <source>Actualizar</source>
-        <translation type="unfinished"></translation>
+      <source>Actualizar</source>
+      <translation>Actualitzar</translation>
     </message>
     <message>
-        <location filename="asientolistbase.ui" line="66"/>
-        <source>y   ( &gt;=</source>
-        <translation type="unfinished"></translation>
+      <source>y   ( >=</source>
+      <translation type="unfinished" >Predeterminat ( %1 )</translation>
     </message>
     <message>
-        <location filename="asientolistbase.ui" line="94"/>
-        <source>y &lt;=</source>
-        <translation type="unfinished"></translation>
+      <source>y &lt;=</source>
+      <translation type="unfinished" >&lt;p>Seleccioneu aquí l'amplada en píxels del bisell. Aquest valor hauria de 
+ser &lt;= Amplada de la vora / 2</translation>
     </message>
     <message>
-        <location filename="asientolistbase.ui" line="122"/>
-        <source>)</source>
-        <translation type="unfinished"></translation>
+      <source>)</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="asientolistbase.ui" line="140"/>
-        <source>Fecha &amp;inicial:</source>
-        <translation type="unfinished"></translation>
+      <source>Fecha &amp;inicial:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="asientolistbase.ui" line="174"/>
-        <source>&amp;Concepto contable:</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Concepto contable:</source>
+      <translation type="unfinished" >&lt;p>&lt;b>Esteu segur de que voleu executar l'script iptables que s'ha generat?&lt;/
+b>&lt;p>&lt;b>Un script iptables incorrectament configurat podria malmetre el 
+vostre ordinador.&lt;/b>&lt;p>Si el vostre sistema es bloqueja després d'aixecar 
+el tallafocs passeu a una consola de text (Ctrl+Alt+F1) i executeu els 
+següents comandaments per a reiniciar la configuració de iptables:
+&lt;p>&lt;ul>&lt;li>iptables -F &lt;/li>&lt;li>iptables -X &lt;/li>&lt;li>iptables -P INPUT 
+ACCEPT &lt;/li>&lt;li>iptables -P OUTPUT ACCEPT &lt;/li>&lt;li>iptables -P FORWARD 
+ACCEPT &lt;/li>&lt;li>iptables -t nat -F &lt;/li>&lt;li>iptables -t nat -X &lt;/
+li>&lt;li>iptables -t nat -P OUTPUT ACCEPT &lt;/li>&lt;li>iptables -t nat -P 
+PREROUTING ACCEPT &lt;/li>&lt;li>iptables -t nat -P POSTROUTING ACCEPT &lt;/
+li>&lt;li>iptables -t mangle -F &lt;/li>&lt;li>iptables -t mangle -X &lt;/
+li>&lt;li>iptables -t mangle -P INPUT ACCEPT &lt;/li>&lt;li>iptables -t mangle -P 
+OUTPUT ACCEPT &lt;/li>&lt;li>iptables -t mangle -P FORWARD ACCEPT &lt;/
+li>&lt;li>iptables -t mangle -P PREROUTING ACCEPT &lt;/li>&lt;li>iptables -t mangle -
+P POSTROUTING ACCEPT &lt;/li>&lt;/ul></translation>
     </message>
     <message>
-        <location filename="asientolistbase.ui" line="207"/>
-        <source>&amp;Partida igual a:</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Partida igual a:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="asientolistbase.ui" line="220"/>
-        <source>&amp;Ejercicio:</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Ejercicio:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="asientolistbase.ui" line="241"/>
-        <source>Fecha &amp;final:</source>
-        <translation type="unfinished"></translation>
+      <source>Fecha &amp;final:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="asientolistbase.ui" line="516"/>
-        <source>Total Debe:</source>
-        <translation type="unfinished"></translation>
+      <source>Total Debe:</source>
+      <translation type="unfinished" >Pàgines totals</translation>
     </message>
     <message>
-        <location filename="asientolistbase.ui" line="530"/>
-        <source>Total Haber:</source>
-        <translation type="unfinished"></translation>
+      <source>Total Haber:</source>
+      <translation type="unfinished" >Alçada total:</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>AsientoListSubform</name>
     <message>
-        <location filename="asientolistsubform.cpp" line="35"/>
-        <source>Fecha</source>
-        <translation type="unfinished">Data</translation>
+      <source>Fecha</source>
+      <translation type="unfinished" >Data</translation>
     </message>
     <message>
-        <location filename="asientolistsubform.cpp" line="34"/>
-        <source>Orden</source>
-        <translation type="unfinished">Ordre</translation>
+      <source>Orden</source>
+      <translation type="unfinished" >Ordre</translation>
     </message>
     <message>
-        <location filename="asientolistsubform.cpp" line="36"/>
-        <source>Apuntes</source>
-        <translation type="unfinished">Apunts</translation>
+      <source>Apuntes</source>
+      <translation type="unfinished" >Apunts</translation>
     </message>
     <message>
-        <location filename="asientolistsubform.cpp" line="37"/>
-        <source>Borrador</source>
-        <translation type="unfinished"></translation>
+      <source>Borrador</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="asientolistsubform.cpp" line="38"/>
-        <source>Debe</source>
-        <translation type="unfinished"></translation>
+      <source>Debe</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="asientolistsubform.cpp" line="39"/>
-        <source>Haber</source>
-        <translation type="unfinished">Haber</translation>
+      <source>Haber</source>
+      <translation type="unfinished" >Haber</translation>
     </message>
     <message>
-        <location filename="asientolistsubform.cpp" line="40"/>
-        <source>Comentarios</source>
-        <translation type="unfinished">Comentaris</translation>
+      <source>Comentarios</source>
+      <translation type="unfinished" >Comentaris</translation>
     </message>
     <message>
-        <location filename="asientolistsubform.cpp" line="41"/>
-        <source>Clase</source>
-        <translation type="unfinished"></translation>
+      <source>Clase</source>
+      <translation type="unfinished" >Sense classe</translation>
     </message>
     <message>
-        <location filename="asientolistsubform.cpp" line="82"/>
-        <source>Borrar registro</source>
-        <translation type="unfinished"></translation>
+      <source>Borrar registro</source>
+      <translation type="unfinished" >&lt;h2>AVÍS&lt;/h2>\n
+&lt;p>Les xarxes punt-a-punt, particularment les que són accessibles mitjançant 
+KMLDonkey, poden contenir material el qual estigui legalment prohibit 
+descarregar o redistribuir. És responsabilitat vostra el verificar que 
+qualsevol material que descarregueu de qualsevol xarxa punt-a-punt s'està 
+posant a la vostra disposició legalment. És també la vostra responsabilitat 
+el verificar que disposeu dels drets legals de redistribuir qualsevol 
+material que poseu a disposició d'altres mitjançant qualsevol xarxa punt-a-
+punt. En resum, és responsabilitat personal el verificar que useu aquest 
+programari en conformitat amb el copyright i demés lleis de propietat 
+intel·lectual aplicables.&lt;/p>\n
+&lt;h3>RESTRICCIONS&lt;/h3>\n
+&lt;p>Els autors d'aquest programari pensen que s'usarà per a l'intercanvi 
+legal de dades, art, programari i d'altres documents o treballs que sí es 
+poden distribuir legalment a tercers. Els autors no recolzaran i 
+descoratjaran qualsevol ús d'aquest programari que pugui violar el copyright 
+o d'altres lleis de propietat intel·lectual. En particular, els autors 
+descoratgen qualsevol transmissió de qualsevol material en violació de 
+qualsevol llei i regulació aplicable sobre la propietat intel·lectual. 
+Assumeixen que cada usuari es comportarà d'acord amb les regles i les 
+restriccions aplicables, així com amb les regles i les restriccions 
+aplicables a les xarxes o als serveis de P2P connectats directament o 
+indirectament amb aquest programari.&lt;/p>\n
+&lt;h3>RENÚNCIA DE RESPONSABILITAT&lt;/h3>\n
+&lt;p>Els autors d'aquest programari no fan i no poden exercitar cap control 
+sobre el contingut de la informació intercanviada usant aquest programari. 
+Els autors no donen garanties de cap classe, tant si està expressat o 
+implicat, pel servei que aquest programari estigui proporcionant o per les 
+dades intercanviades amb l'ajuda d'aquest. Els autors no poden ser jutjats 
+responsables de cap demanda resultat de la conducta i/o de l'ús del 
+programari per part de l'usuari que sigui d'alguna forma il·legal o que 
+perjudiqui a tal usuari o a qualsevol altra part.&lt;/p></translation>
     </message>
     <message>
-        <location filename="asientolistsubform.cpp" line="85"/>
-        <source>Ajustar columa</source>
-        <translation type="unfinished"></translation>
+      <source>Ajustar columa</source>
+      <translation type="unfinished" >&lt;p>Seleccioneu aquí el tipus de millora de color per les imatges:
+&lt;p>&lt;b>Redueix el contrast&lt;/b>: redueix el contras de la imatge. L'algorisme 
+redueix la diferència d'intensitat entre els elements més clars i més foscos 
+de la imatge.&lt;p>&lt;b>Profunditat&lt;/b>: canvia la profunditat de color de la 
+imatge.&lt;p>&lt;b>Equalitza&lt;/b>: executa l'equalització de l'histograma de la 
+imatge.&lt;p>&lt;b>Desdibuixa&lt;/b>: barreja els colors a una distància, considerant 
+que són iguals.&lt;p>&lt;b>Escala de grisos&lt;/b>: converteix les imatges en color a 
+imatges en escala de grisos.&lt;p>&lt;b>Augmenta el contrast&lt;/b>: millora el 
+contrast de la imatge. L'algorisme augmenta les diferències d'intensitat 
+entre els elements més clars i més foscos de la imatge.&lt;p>&lt;b>Monocrom&lt;/b>: 
+transforma la imatge a blanc i negre.&lt;p>&lt;b>Negatiu&lt;/b>: substitueix cada 
+píxel pel seu color complementari. Les tonalitats vermella, verda i blava 
+d'una imatge es negativen. El blanc esdevé negre, el groc esdevé blau, etc.
+&lt;p>&lt;b>Normalitza&lt;/b>: transforma la imatge per expandir l'interval sencer 
+dels valors de color. És una tècnica per augmentar l contrast. L'algorisme 
+augmenta el contrast d'una imatge de color ajustant el color dels píxels per 
+abraçar tot l'interval de colors disponible.&lt;p>&lt;b>Segmenta&lt;/b>: segmenta una 
+imatge analitzant l'histograma dels components de color i identificant les 
+unitats homogènies amb la tècnica de desdibuixat de mitjanes \&quot;c\&quot;.
+&lt;p>&lt;b>Retalla&lt;/b>: retallat una imatge (tècnica inversa al desdibuixat). 
+L'algorisme elimina els límits que són el color de fons de la imatge.&lt;p></translation>
     </message>
     <message>
-        <location filename="asientolistsubform.cpp" line="86"/>
-        <source>Ajustar altura</source>
-        <translation type="unfinished"></translation>
+      <source>Ajustar altura</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="asientolistsubform.cpp" line="87"/>
-        <source>Ajustar columnas</source>
-        <translation type="unfinished"></translation>
+      <source>Ajustar columnas</source>
+      <translation type="unfinished" >L'entorn de tabulació proporciona una manera d'alinear text en columnes.\n
+\\begin{tabbing}\n
+text \\= més text \\= encara més text \\= últim text \\\\\n
+segona fila \\>  \\> més \\\\\n
+\\end{tabbing}\n
+Comandes :\n
+\\=  Situa una tabulació a la posició actual.\n
+\\>  Avança a la següent tabulació.\n
+\\&lt;  Us permet posar alguna cosa a l'esquerra del marge local sense canviar 
+el marge. Només es pot fer servir a l'inici de la línia.\n
+\\+  Mou el marge esquerre de la següent i de totes les comandes següents 
+una tabulació cap a la dreta\n
+\\-  Mou el marge esquerre de la següent i de totes les comandes següents 
+una tabulació cap a l'esquerra\n
+\\'  Mou qualsevol cosa que hàgiu escrit a la columna actual cap a la dreta 
+de la columna anterior, alineat al tabulador de la columna actual. \n
+\\`  Us permet posar text alineat a la dreta de qualsevol tabulació, inclosa 
+la tabulació 0\n
+\\kill  Situa tabulacions sense produir text.\n
+\\a  En un entorn de tabulació, les comandes \\=, \\' i \\` no produeixen 
+accents de manera normal. En comptes d'aquestes, es fan servir les comandes 
+\\a=, \\a' i \\a`.</translation>
     </message>
     <message>
-        <location filename="asientolistsubform.cpp" line="88"/>
-        <source>Ajustar alturas</source>
-        <translation type="unfinished"></translation>
+      <source>Ajustar alturas</source>
+      <translation type="unfinished" >&lt;p>&lt;b>Límit&lt;/b>: aquest valor defineix la distància en pixels en la que el 
+filtre cerca límits. Quan aquest valor s'incrementa, el soroll de pics se 
+suprimeix. Eventualment, podeu reajustar el filtre &lt;b>Límit&lt;/b> quan canvieu 
+aquest paràmetre. Quan aquest valor és massa alt, el filtre adaptatiu no pot 
+seguir els detalls de la imatge amb cura, i pot reaparèixer soroll o es pot 
+produir un desenfocament.</translation>
     </message>
     <message>
-        <location filename="asientolistsubform.cpp" line="90"/>
-        <source>Ver configurador de subformulario</source>
-        <translation type="unfinished"></translation>
+      <source>Ver configurador de subformulario</source>
+      <translation type="unfinished" >&lt;p>...el K3b té dos tipus d'arranjament. D'una banda el K3b té l'arranjament 
+com la majoria\n
+d'aplicacions del KDE tenen accessible mitjançant d'un diàleg de 
+configuració a través del menú d'arranjament;\n
+d'altra banda, cada diàleg d'acció del K3b té tres botons per carregar i 
+desar arranjaments per omissió\n
+per a l'acció. D'aquesta manera un pot, per exemple, establir la 
+configuració per omissió a l'hora de copiar CD: aquestes opcions per 
+omissió\n
+Seran carregades cada vegada que s'obri el diàleg de còpia de CD. El botó 
+&lt;em>Arranjament per omissió del K3b&lt;/em>\n
+restablirà la configuració &lt;em>de fàbrica&lt;/em> en cas de que no sapigueu si 
+la configuració que heu triat\n
+és apropiada.&lt;/p>\n</translation>
     </message>
     <message>
-        <location filename="asientolistsubform.cpp" line="33"/>
-        <source>Id asiento</source>
-        <translation type="unfinished"></translation>
+      <source>Id asiento</source>
+      <translation type="unfinished" >ID de l'aplicació ISO per a VideoCD</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>AsientosView</name>
     <message>
-        <location filename="asientosview.cpp" line="50"/>
-        <source>(todos)</source>
-        <translation type="unfinished"></translation>
+      <source>(todos)</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="asientosview.cpp" line="197"/>
-        <source>La fecha inicial es posterior a la fecha final.</source>
-        <translation type="unfinished"></translation>
+      <source>La fecha inicial es posterior a la fecha final.</source>
+      <translation type="unfinished" >Engega un diàleg de fitxer per triar un fitxer d'ajuda local.</translation>
     </message>
     <message>
-        <location filename="asientosview.cpp" line="244"/>
-        <source>Asientos</source>
-        <translation type="unfinished">Assentaments</translation>
+      <source>Asientos</source>
+      <translation type="unfinished" >Assentaments</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>BBloqFechaBase</name>
     <message>
-        <location filename="bbloqfechabase.ui" line="13"/>
-        <source>Bloquear fechas</source>
-        <translation type="unfinished"></translation>
+      <source>Bloquear fechas</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="bbloqfechabase.ui" line="93"/>
-        <source>Agregar Ejercicio</source>
-        <translation type="unfinished"></translation>
+      <source>Agregar Ejercicio</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="bbloqfechabase.ui" line="108"/>
-        <source>Ctrl+N</source>
-        <translation type="unfinished"></translation>
+      <source>Ctrl+N</source>
+      <translation type="unfinished" >Ctrl+N</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>BalanceBase</name>
     <message>
-        <location filename="balancebase.ui" line="28"/>
-        <source>Balance de cuentas</source>
-        <translation type="unfinished">Balanç de Contes</translation>
+      <source>Balance de cuentas</source>
+      <translation type="unfinished" >Balanç de Contes</translation>
     </message>
     <message>
-        <location filename="balancebase.ui" line="463"/>
-        <source>Tipo de balance</source>
-        <translation type="unfinished"></translation>
+      <source>Tipo de balance</source>
+      <translation type="unfinished" >Balanç de blancs:</translation>
     </message>
     <message>
-        <location filename="balancebase.ui" line="504"/>
-        <source>Abreviado</source>
-        <translation type="unfinished"></translation>
+      <source>Abreviado</source>
+      <translation type="unfinished" >Abreviatura</translation>
     </message>
     <message>
-        <location filename="balancebase.ui" line="519"/>
-        <source>Sumas y Saldos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <location filename="balancebase.ui" line="486"/>
-        <source>Pérdidas y Ganancias</source>
-        <translation type="unfinished"></translation>
+      <source>Sumas y Saldos</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="balancebase.ui" line="178"/>
-        <source>Actualizar balance</source>
-        <translation type="unfinished"></translation>
+      <source>Pérdidas y Ganancias</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="balancebase.ui" line="304"/>
-        <source>Configurar</source>
-        <translation type="unfinished"></translation>
+      <source>Actualizar balance</source>
+      <translation type="unfinished" >Equilibri del color</translation>
     </message>
     <message>
-        <location filename="balancebase.ui" line="119"/>
-        <source>Filtrar balance</source>
-        <translation type="unfinished"></translation>
+      <source>Configurar</source>
+      <translation type="unfinished" > Configuració</translation>
     </message>
     <message>
-        <location filename="balancebase.ui" line="224"/>
-        <source>Guardar balance</source>
-        <translation type="unfinished"></translation>
+      <source>Filtrar balance</source>
+      <translation type="unfinished" >Equilibri del color</translation>
     </message>
     <message>
-        <location filename="balancebase.ui" line="267"/>
-        <source>Imprimir balance</source>
-        <translation type="unfinished"></translation>
+      <source>Guardar balance</source>
+      <translation type="unfinished" >Equilibri del color</translation>
     </message>
     <message>
-        <location filename="balancebase.ui" line="134"/>
-        <source>Ctrl+F</source>
-        <translation type="unfinished"></translation>
+      <source>Imprimir balance</source>
+      <translation type="unfinished" >Equilibri del color</translation>
     </message>
     <message>
-        <location filename="balancebase.ui" line="193"/>
-        <source>F5</source>
-        <translation type="unfinished"></translation>
+      <source>Ctrl+F</source>
+      <translation type="unfinished" >Ctrl+F</translation>
     </message>
     <message>
-        <location filename="balancebase.ui" line="239"/>
-        <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
+      <source>F5</source>
+      <translation type="unfinished" >F5</translation>
     </message>
     <message>
-        <location filename="balancebase.ui" line="282"/>
-        <source>Ctrl+P</source>
-        <translation type="unfinished"></translation>
+      <source>Ctrl+S</source>
+      <translation type="unfinished" >Ctrl+S</translation>
     </message>
     <message>
-        <location filename="balancebase.ui" line="319"/>
-        <source>Ctrl+B</source>
-        <translation type="unfinished"></translation>
+      <source>Ctrl+P</source>
+      <translation type="unfinished" >Ctrl+P</translation>
     </message>
     <message>
-        <location filename="balancebase.ui" line="388"/>
-        <source>Centro de coste:</source>
-        <translation type="unfinished"></translation>
+      <source>Ctrl+B</source>
+      <translation type="unfinished" >Ctrl+C</translation>
     </message>
     <message>
-        <location filename="balancebase.ui" line="411"/>
-        <source>Nivel:</source>
-        <translation type="unfinished"></translation>
+      <source>Centro de coste:</source>
+      <translation>Centre de cost:</translation>
     </message>
     <message>
-        <location filename="balancebase.ui" line="431"/>
-        <source>Fecha final:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <location filename="balancebase.ui" line="456"/>
-        <source>Balance jerárquico</source>
-        <translation type="unfinished"></translation>
+      <source>Nivel:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="balancebase.ui" line="558"/>
-        <source>Fecha inicial:</source>
-        <translation type="unfinished"></translation>
+      <source>Fecha final:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="balancebase.ui" line="565"/>
-        <source>Cuenta inicial:</source>
-        <translation type="unfinished"></translation>
+      <source>Balance jerárquico</source>
+      <translation type="unfinished" >Equilibri del color</translation>
     </message>
     <message>
-        <location filename="balancebase.ui" line="595"/>
-        <source>Cuenta final:</source>
-        <translation type="unfinished"></translation>
+      <source>Fecha inicial:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="balancebase.ui" line="626"/>
-        <source>GroupBox</source>
-        <translation type="unfinished"></translation>
+      <source>Cuenta inicial:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="balancebase.ui" line="775"/>
-        <source>Saldo:</source>
-        <translation type="unfinished"></translation>
+      <source>Cuenta final:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="balancebase.ui" line="844"/>
-        <source>Haber:</source>
-        <translation type="unfinished"></translation>
+      <source>GroupBox</source>
+      <translation type="unfinished" >groupBox1</translation>
     </message>
     <message>
-        <location filename="balancebase.ui" line="919"/>
-        <source>Saldo anterior:</source>
-        <translation type="unfinished"></translation>
+      <source>Saldo:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="balancebase.ui" line="926"/>
-        <source>Debe:</source>
-        <translation type="unfinished"></translation>
+      <source>Haber:</source>
+      <translation type="unfinished" />
     </message>
-</context>
-<context>
+    <message>
+      <source>Saldo anterior:</source>
+      <translation>Saldo anterior:</translation>
+    </message>
+    <message>
+      <source>Debe:</source>
+      <translation type="unfinished" />
+    </message>
+  </context>
+  <context>
     <name>BalancePrintBase</name>
-    <message encoding="UTF-8">
-        <location filename="balanceprintbase.ui" line="13"/>
-        <source>Impresión del Balance de Sumas y Saldos</source>
-        <translation type="unfinished"></translation>
+    <message>
+      <source>Impresión del Balance de Sumas y Saldos</source>
+      <translation type="unfinished" >Mostra el paràmetres de balanç de blancs de la càmera</translation>
     </message>
     <message>
-        <location filename="balanceprintbase.ui" line="105"/>
-        <source>Datos del listado:</source>
-        <translation type="unfinished"></translation>
+      <source>Datos del listado:</source>
+      <translation type="unfinished" > Esborra </translation>
     </message>
-    <message encoding="UTF-8">
-        <location filename="balanceprintbase.ui" line="133"/>
-        <source>Código Inicial
+    <message>
+      <source>Código Inicial
 </source>
-        <translation type="unfinished">Codi Inicial
+      <translation type="unfinished" >Codi Inicial
 </translation>
     </message>
     <message>
-        <location filename="balanceprintbase.ui" line="154"/>
-        <source>Fecha Inicial</source>
-        <translation type="unfinished">Data Inicial</translation>
-    </message>
-    <message encoding="UTF-8">
-        <location filename="balanceprintbase.ui" line="184"/>
-        <source>Código Final</source>
-        <translation type="unfinished">Codi Final</translation>
+      <source>Fecha Inicial</source>
+      <translation type="unfinished" >Data Inicial</translation>
     </message>
     <message>
-        <location filename="balanceprintbase.ui" line="204"/>
-        <source>Fecha Final</source>
-        <translation type="unfinished">Data Final</translation>
+      <source>Código Final</source>
+      <translation type="unfinished" >Codi Final</translation>
     </message>
     <message>
-        <location filename="balanceprintbase.ui" line="234"/>
-        <source>Nivel de Cuentas</source>
-        <translation type="unfinished">Nivell de Contes</translation>
+      <source>Fecha Final</source>
+      <translation type="unfinished" >Data Final</translation>
     </message>
     <message>
-        <location filename="balanceprintbase.ui" line="254"/>
-        <source>Incluir &amp;niveles superiores.</source>
-        <translation type="unfinished"></translation>
+      <source>Nivel de Cuentas</source>
+      <translation type="unfinished" >Nivell de Contes</translation>
     </message>
     <message>
-        <location filename="balanceprintbase.ui" line="261"/>
-        <source>Incl&amp;uir resultados parciales</source>
-        <translation type="unfinished"></translation>
+      <source>Incluir &amp;niveles superiores.</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="balanceprintbase.ui" line="283"/>
-        <source>Formato:</source>
-        <translation type="unfinished"></translation>
+      <source>Incl&amp;uir resultados parciales</source>
+      <translation>Incl&amp;oure resultats parcials</translation>
     </message>
     <message>
-        <location filename="balanceprintbase.ui" line="295"/>
-        <source>&amp;Texto Plano</source>
-        <translation type="unfinished"></translation>
+      <source>Formato:</source>
+      <translation type="unfinished" >&amp;Format:</translation>
     </message>
     <message>
-        <location filename="balanceprintbase.ui" line="305"/>
-        <source>Propietario</source>
-        <translation type="unfinished">Propietari</translation>
+      <source>&amp;Texto Plano</source>
+      <translation>&amp;Text pla</translation>
     </message>
     <message>
-        <location filename="balanceprintbase.ui" line="312"/>
-        <source>HT&amp;ML</source>
-        <translation type="unfinished"></translation>
+      <source>Propietario</source>
+      <translation type="unfinished" >Propietari</translation>
     </message>
     <message>
-        <location filename="balanceprintbase.ui" line="319"/>
-        <source>&amp;Kugar</source>
-        <translation type="unfinished"></translation>
+      <source>HT&amp;ML</source>
+      <translation type="unfinished" />
     </message>
-</context>
-<context>
+    <message>
+      <source>&amp;Kugar</source>
+      <translation type="unfinished" />
+    </message>
+  </context>
+  <context>
     <name>BalanceSubForm</name>
     <message>
-        <location filename="balancesubform.cpp" line="31"/>
-        <source>idcuenta</source>
-        <translation type="unfinished"></translation>
+      <source>idcuenta</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="balancesubform.cpp" line="32"/>
-        <source>tipocuenta</source>
-        <translation type="unfinished"></translation>
+      <source>tipocuenta</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="balancesubform.cpp" line="33"/>
-        <source>codigo</source>
-        <translation type="unfinished">codi</translation>
+      <source>codigo</source>
+      <translation type="unfinished" >codi</translation>
     </message>
     <message>
-        <location filename="balancesubform.cpp" line="34"/>
-        <source>descripcion</source>
-        <translation type="unfinished">descripció</translation>
+      <source>descripcion</source>
+      <translation type="unfinished" >descripció</translation>
     </message>
     <message>
-        <location filename="balancesubform.cpp" line="35"/>
-        <source>asaldo</source>
-        <translation type="unfinished"></translation>
+      <source>asaldo</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="balancesubform.cpp" line="36"/>
-        <source>tdebe</source>
-        <translation type="unfinished"></translation>
+      <source>tdebe</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="balancesubform.cpp" line="37"/>
-        <source>thaber</source>
-        <translation type="unfinished"></translation>
+      <source>thaber</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="balancesubform.cpp" line="38"/>
-        <source>tsaldo</source>
-        <translation type="unfinished"></translation>
+      <source>tsaldo</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="balancesubform.cpp" line="39"/>
-        <source>ejdebe</source>
-        <translation type="unfinished"></translation>
+      <source>ejdebe</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="balancesubform.cpp" line="40"/>
-        <source>ejhaber</source>
-        <translation type="unfinished"></translation>
+      <source>ejhaber</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="balancesubform.cpp" line="41"/>
-        <source>ejsaldo</source>
-        <translation type="unfinished"></translation>
+      <source>ejsaldo</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="balancesubform.cpp" line="74"/>
-        <source>Borrar registro</source>
-        <translation type="unfinished"></translation>
+      <source>Borrar registro</source>
+      <translation>Esborra registre</translation>
     </message>
     <message>
-        <location filename="balancesubform.cpp" line="76"/>
-        <source>Ajustar columa</source>
-        <translation type="unfinished"></translation>
+      <source>Ajustar columa</source>
+      <translation>Ajusta columna</translation>
     </message>
     <message>
-        <location filename="balancesubform.cpp" line="77"/>
-        <source>Ajustar altura</source>
-        <translation type="unfinished"></translation>
+      <source>Ajustar altura</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="balancesubform.cpp" line="78"/>
-        <source>Ajustar columnas</source>
-        <translation type="unfinished"></translation>
+      <source>Ajustar columnas</source>
+      <translation>Ajusta columnes</translation>
     </message>
     <message>
-        <location filename="balancesubform.cpp" line="79"/>
-        <source>Ajustar alturas</source>
-        <translation type="unfinished"></translation>
+      <source>Ajustar alturas</source>
+      <translation>Ajusta alçades</translation>
     </message>
     <message>
-        <location filename="balancesubform.cpp" line="81"/>
-        <source>Ver configurador de subformulario</source>
-        <translation type="unfinished"></translation>
+      <source>Ver configurador de subformulario</source>
+      <translation>Veure el configurador de subformulari</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>BalanceTreeBase</name>
     <message>
-        <location filename="balancetreebase.ui" line="185"/>
-        <source>Imprimir albaran</source>
-        <translation type="unfinished"></translation>
+      <source>Imprimir albaran</source>
+      <translation type="unfinished" >Imprimir albarà</translation>
     </message>
     <message>
-        <location filename="balancetreebase.ui" line="111"/>
-        <source>Borrar albaran</source>
-        <translation type="unfinished"></translation>
+      <source>Borrar albaran</source>
+      <translation type="unfinished" >Esborrar albarà</translation>
     </message>
     <message>
-        <location filename="balancetreebase.ui" line="14"/>
-        <source>Balance jerarquico de Cuentas</source>
-        <translation type="unfinished"></translation>
+      <source>Balance jerarquico de Cuentas</source>
+      <translation type="unfinished" >Usa el balanç de blancs de la càmera</translation>
     </message>
     <message>
-        <location filename="balancetreebase.ui" line="290"/>
-        <source>Cuenta final:</source>
-        <translation type="unfinished"></translation>
+      <source>Cuenta final:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="balancetreebase.ui" line="300"/>
-        <source>Fecha final:</source>
-        <translation type="unfinished"></translation>
+      <source>Fecha final:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="balancetreebase.ui" line="310"/>
-        <source>Fecha inicial:</source>
-        <translation type="unfinished"></translation>
+      <source>Fecha inicial:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="balancetreebase.ui" line="340"/>
-        <source>Cuenta inicial:</source>
-        <translation type="unfinished"></translation>
+      <source>Cuenta inicial:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="balancetreebase.ui" line="379"/>
-        <source>Nivel:</source>
-        <translation type="unfinished"></translation>
+      <source>Nivel:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="balancetreebase.ui" line="389"/>
-        <source>Centro de coste:</source>
-        <translation type="unfinished"></translation>
+      <source>Centro de coste:</source>
+      <translation>Centre de cost:</translation>
     </message>
     <message>
-        <location filename="balancetreebase.ui" line="455"/>
-        <source>Saldo anterior:</source>
-        <translation type="unfinished"></translation>
+      <source>Saldo anterior:</source>
+      <translation>Saldo anterior:</translation>
     </message>
     <message>
-        <location filename="balancetreebase.ui" line="522"/>
-        <source>Total Debe:</source>
-        <translation type="unfinished"></translation>
+      <source>Total Debe:</source>
+      <translation type="unfinished" >Pàgines totals</translation>
     </message>
     <message>
-        <location filename="balancetreebase.ui" line="589"/>
-        <source>Total Haber:</source>
-        <translation type="unfinished"></translation>
+      <source>Total Haber:</source>
+      <translation type="unfinished" >Alçada total:</translation>
     </message>
     <message>
-        <location filename="balancetreebase.ui" line="656"/>
-        <source>Saldo:</source>
-        <translation type="unfinished"></translation>
+      <source>Saldo:</source>
+      <translation type="unfinished" />
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>BalanceTreeView</name>
     <message>
-        <location filename="balance1view.cpp" line="76"/>
-        <source>Codigo cuenta</source>
-        <translation type="unfinished"></translation>
+      <source>Codigo cuenta</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="balance1view.cpp" line="77"/>
-        <source>Nombre de la cuenta</source>
-        <translation type="unfinished"></translation>
+      <source>Nombre de la cuenta</source>
+      <translation>Nom del compte</translation>
     </message>
     <message>
-        <location filename="balance1view.cpp" line="78"/>
-        <source>Saldo anterior</source>
-        <translation type="unfinished"></translation>
+      <source>Saldo anterior</source>
+      <translation>Saldo anterior</translation>
     </message>
     <message>
-        <location filename="balance1view.cpp" line="79"/>
-        <source>Debe</source>
-        <translation type="unfinished"></translation>
+      <source>Debe</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="balance1view.cpp" line="80"/>
-        <source>Haber</source>
-        <translation type="unfinished">Haber</translation>
+      <source>Haber</source>
+      <translation type="unfinished" >Haber</translation>
     </message>
     <message>
-        <location filename="balance1view.cpp" line="81"/>
-        <source>Saldo periodo</source>
-        <translation type="unfinished"></translation>
+      <source>Saldo periodo</source>
+      <translation type="unfinished" >Comment=Torna la fase d'un conjunt de dades donat entre el període indicat i 
+la fase zero.</translation>
     </message>
     <message>
-        <location filename="balance1view.cpp" line="82"/>
-        <source>Debe ejercicio</source>
-        <translation type="unfinished"></translation>
+      <source>Debe ejercicio</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="balance1view.cpp" line="83"/>
-        <source>Haber ejercicio</source>
-        <translation type="unfinished"></translation>
+      <source>Haber ejercicio</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="balance1view.cpp" line="84"/>
-        <source>Saldo ejercicio</source>
-        <translation type="unfinished"></translation>
+      <source>Saldo ejercicio</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="balance1view.cpp" line="85"/>
-        <source>Nivel</source>
-        <translation type="unfinished">Nivell</translation>
+      <source>Nivel</source>
+      <translation type="unfinished" >Nivell</translation>
     </message>
     <message>
-        <location filename="balance1view.cpp" line="86"/>
-        <source>ID cuenta</source>
-        <translation type="unfinished"></translation>
+      <source>ID cuenta</source>
+      <translation type="unfinished" >programador principal i mantenidor actual</translation>
     </message>
     <message>
-        <location filename="balance1view.cpp" line="86"/>
-        <source>Padre</source>
-        <translation type="unfinished"></translation>
+      <source>Padre</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="balance1view.cpp" line="430"/>
-        <source>Ver Diario (este dia)</source>
-        <translation type="unfinished"></translation>
+      <source>Ver Diario (este dia)</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="balance1view.cpp" line="431"/>
-        <source>Ver Diario (este mes)</source>
-        <translation type="unfinished"></translation>
+      <source>Ver Diario (este mes)</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="balance1view.cpp" line="432"/>
-        <source>Ver Diario (este anyo)</source>
-        <translation type="unfinished"></translation>
+      <source>Ver Diario (este anyo)</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="balance1view.cpp" line="434"/>
-        <source>Ver extracto (este dia)</source>
-        <translation type="unfinished"></translation>
+      <source>Ver extracto (este dia)</source>
+      <translation>Veure extracte (aquest dia)</translation>
     </message>
     <message>
-        <location filename="balance1view.cpp" line="435"/>
-        <source>Ver extracto (este mes)</source>
-        <translation type="unfinished"></translation>
+      <source>Ver extracto (este mes)</source>
+      <translation>Veure extracte (aquest mes)</translation>
     </message>
     <message>
-        <location filename="balance1view.cpp" line="436"/>
-        <source>Ver extracto (este anyo)</source>
-        <translation type="unfinished"></translation>
+      <source>Ver extracto (este anyo)</source>
+      <translation>Ver extracte (est any)</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>BalanceView</name>
     <message>
-        <location filename="balanceview.cpp" line="191"/>
-        <source>Codigo</source>
-        <translation type="unfinished"></translation>
+      <source>Codigo</source>
+      <translation>Codi</translation>
     </message>
     <message>
-        <location filename="balanceview.cpp" line="191"/>
-        <source>Denominacion</source>
-        <translation type="unfinished">Denominació</translation>
+      <source>Denominacion</source>
+      <translation type="unfinished" >Denominació</translation>
     </message>
     <message>
-        <location filename="balanceview.cpp" line="191"/>
-        <source>Saldo anterior</source>
-        <translation type="unfinished"></translation>
+      <source>Saldo anterior</source>
+      <translation>Saldo anterior</translation>
     </message>
     <message>
-        <location filename="balanceview.cpp" line="191"/>
-        <source>Debe</source>
-        <translation type="unfinished"></translation>
+      <source>Debe</source>
+      <translation>Deure</translation>
     </message>
     <message>
-        <location filename="balanceview.cpp" line="191"/>
-        <source>Haber</source>
-        <translation type="unfinished">Haber</translation>
+      <source>Haber</source>
+      <translation>Haver</translation>
     </message>
     <message>
-        <location filename="balanceview.cpp" line="191"/>
-        <source>Saldo</source>
-        <translation type="unfinished">Saldo</translation>
+      <source>Saldo</source>
+      <translation type="unfinished" >Saldo</translation>
     </message>
     <message>
-        <location filename="balanceview.cpp" line="191"/>
-        <source>Debe ejercicio</source>
-        <translation type="unfinished"></translation>
+      <source>Debe ejercicio</source>
+      <translation>Deure exercici</translation>
     </message>
     <message>
-        <location filename="balanceview.cpp" line="191"/>
-        <source>Haber ejercicio</source>
-        <translation type="unfinished"></translation>
+      <source>Haber ejercicio</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="balanceview.cpp" line="191"/>
-        <source>Saldo ejercicio</source>
-        <translation type="unfinished"></translation>
+      <source>Saldo ejercicio</source>
+      <translation type="unfinished" />
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>BbloqFecha</name>
     <message>
-        <location filename="bbloqfecha.cpp" line="96"/>
-        <source>Octubre</source>
-        <translation type="unfinished"></translation>
+      <source>Octubre</source>
+      <translation>Octubre</translation>
     </message>
     <message>
-        <location filename="bbloqfecha.cpp" line="100"/>
-        <source>Septiembre</source>
-        <translation type="unfinished"></translation>
+      <source>Septiembre</source>
+      <translation>Setembre</translation>
     </message>
     <message>
-        <location filename="bbloqfecha.cpp" line="56"/>
-        <source>Ejercicio</source>
-        <translation type="unfinished">Exercici</translation>
+      <source>Ejercicio</source>
+      <translation type="unfinished" >Exercici</translation>
     </message>
     <message>
-        <location filename="bbloqfecha.cpp" line="56"/>
-        <source>Estado</source>
-        <translation type="unfinished"></translation>
+      <source>Estado</source>
+      <translation type="unfinished" >Socket Destaddrreq</translation>
     </message>
     <message>
-        <location filename="bbloqfecha.cpp" line="88"/>
-        <source>Diciembre</source>
-        <translation type="unfinished"></translation>
+      <source>Diciembre</source>
+      <translation>Desembre</translation>
     </message>
     <message>
-        <location filename="bbloqfecha.cpp" line="92"/>
-        <source>Noviembre</source>
-        <translation type="unfinished"></translation>
+      <source>Noviembre</source>
+      <translation>Novembre</translation>
     </message>
     <message>
-        <location filename="bbloqfecha.cpp" line="104"/>
-        <source>Agosto</source>
-        <translation type="unfinished"></translation>
+      <source>Agosto</source>
+      <translation>Agost</translation>
     </message>
     <message>
-        <location filename="bbloqfecha.cpp" line="108"/>
-        <source>Julio</source>
-        <translation type="unfinished"></translation>
+      <source>Julio</source>
+      <translation>Juliol</translation>
     </message>
     <message>
-        <location filename="bbloqfecha.cpp" line="112"/>
-        <source>Junio</source>
-        <translation type="unfinished"></translation>
+      <source>Junio</source>
+      <translation>Juny</translation>
     </message>
     <message>
-        <location filename="bbloqfecha.cpp" line="116"/>
-        <source>Mayo</source>
-        <translation type="unfinished"></translation>
+      <source>Mayo</source>
+      <translation>Maig</translation>
     </message>
     <message>
-        <location filename="bbloqfecha.cpp" line="120"/>
-        <source>Abril</source>
-        <translation type="unfinished"></translation>
+      <source>Abril</source>
+      <translation>Abril</translation>
     </message>
     <message>
-        <location filename="bbloqfecha.cpp" line="124"/>
-        <source>Marzo</source>
-        <translation type="unfinished"></translation>
+      <source>Marzo</source>
+      <translation>Març</translation>
     </message>
     <message>
-        <location filename="bbloqfecha.cpp" line="128"/>
-        <source>Febrero</source>
-        <translation type="unfinished"></translation>
+      <source>Febrero</source>
+      <translation>Febrer</translation>
     </message>
     <message>
-        <location filename="bbloqfecha.cpp" line="132"/>
-        <source>Enero</source>
-        <translation type="unfinished"></translation>
+      <source>Enero</source>
+      <translation>Gener</translation>
     </message>
     <message>
-        <location filename="bbloqfecha.cpp" line="149"/>
-        <source>Bloqueado</source>
-        <translation type="unfinished"></translation>
+      <source>Bloqueado</source>
+      <translation>Bloquejat</translation>
     </message>
     <message>
-        <location filename="bbloqfecha.cpp" line="150"/>
-        <source>Abierto</source>
-        <translation type="unfinished"></translation>
+      <source>Abierto</source>
+      <translation>Obert</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>BulmaContBase</name>
     <message>
-        <location filename="bulmacontbase.ui" line="423"/>
-        <source>Anterior</source>
-        <translation type="unfinished">Anterior</translation>
+      <source>Anterior</source>
+      <translation>Anterior</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="412"/>
-        <source>Siguiente</source>
-        <translation type="unfinished">Següent</translation>
+      <source>Siguiente</source>
+      <translation type="unfinished" >Següent</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="316"/>
-        <source>Asientos Inteligentes</source>
-        <translation type="unfinished">Assentaments Inteligents</translation>
+      <source>Asientos Inteligentes</source>
+      <translation type="unfinished" >Assentaments Inteligents</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="434"/>
-        <source>Inicio</source>
-        <translation type="unfinished"></translation>
+      <source>Inicio</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="445"/>
-        <source>Fin</source>
-        <translation type="unfinished"></translation>
+      <source>Fin</source>
+      <translation type="unfinished" >&amp;Cerca</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="396"/>
-        <source>A&amp;yuda</source>
-        <translation type="unfinished">A&amp;juda</translation>
+      <source>A&amp;yuda</source>
+      <translation type="unfinished" >A&amp;juda</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="53"/>
-        <source>&amp;Herramientas</source>
-        <translation type="unfinished">&amp;Estris de fer feina</translation>
+      <source>&amp;Herramientas</source>
+      <translation type="unfinished" >&amp;Estris de fer feina</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="42"/>
-        <source>&amp;Maestro</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Maestro</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="98"/>
-        <source>&amp;Listados</source>
-        <translation type="unfinished">&amp;Llistats</translation>
+      <source>&amp;Listados</source>
+      <translation type="unfinished" >&amp;Llistats</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="80"/>
-        <source>&amp;Empresa</source>
-        <translation type="unfinished">&amp;Empresa</translation>
+      <source>&amp;Empresa</source>
+      <translation type="unfinished" >&amp;Empresa</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="174"/>
-        <source>&amp;Ordenar asientos</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Ordenar asientos</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="179"/>
-        <source>Asiento de a&amp;pertura</source>
-        <translation type="unfinished"></translation>
+      <source>Asiento de a&amp;pertura</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="184"/>
-        <source>Asiento de &amp;regularizacion</source>
-        <translation type="unfinished"></translation>
+      <source>Asiento de &amp;regularizacion</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="189"/>
-        <source>Asiento de &amp;cierre</source>
-        <translation type="unfinished"></translation>
+      <source>Asiento de &amp;cierre</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="194"/>
-        <source>Cuentas a&amp;nuales</source>
-        <translation type="unfinished"></translation>
+      <source>Cuentas a&amp;nuales</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="199"/>
-        <source>Masas &amp;patrimoniales</source>
-        <translation type="unfinished"></translation>
+      <source>Masas &amp;patrimoniales</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="204"/>
-        <source>Registro de &amp;IVA</source>
-        <translation type="unfinished"></translation>
+      <source>Registro de &amp;IVA</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="209"/>
-        <source>&amp;Cobros y pagos</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Cobros y pagos</source>
+      <translation type="unfinished" >Desplaçament de la coordenada Y</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="214"/>
-        <source>&amp;Amortizaciones</source>
-        <translation type="unfinished">&amp;Amortitzacions</translation>
+      <source>&amp;Amortizaciones</source>
+      <translation type="unfinished" >&amp;Amortitzacions</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="222"/>
-        <source>&amp;Plan Contable</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Plan Contable</source>
+      <translation type="unfinished" >No s'ha trobat la taula que conté el camp \&quot;%1\&quot;</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="230"/>
-        <source>&amp;Asientos</source>
-        <translation type="unfinished">&amp;Assentaments</translation>
+      <source>&amp;Asientos</source>
+      <translation type="unfinished" >&amp;Assentaments</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="241"/>
-        <source>Apuntes &amp;contables</source>
-        <translation type="unfinished"></translation>
+      <source>Apuntes &amp;contables</source>
+      <translation>Apunts &amp;comptables</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="252"/>
-        <source>Libro &amp;Mayor</source>
-        <translation type="unfinished"></translation>
+      <source>Libro &amp;Mayor</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="260"/>
-        <source>Libro &amp;Diario</source>
-        <translation type="unfinished"></translation>
+      <source>Libro &amp;Diario</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="287"/>
-        <source>Formas de &amp;pago</source>
-        <translation type="unfinished"></translation>
+      <source>Formas de &amp;pago</source>
+      <translation>Formes de &amp;pagament</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="292"/>
-        <source>Tipos de &amp;IVA</source>
-        <translation type="unfinished"></translation>
+      <source>Tipos de &amp;IVA</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="300"/>
-        <source>Centros de cos&amp;te</source>
-        <translation type="unfinished"></translation>
+      <source>Centros de cos&amp;te</source>
+      <translation>Centres de cos&amp;t</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="308"/>
-        <source>&amp;Canales</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Canales</source>
+      <translation>&amp;Canals</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="324"/>
-        <source>&amp;Imprimir</source>
-        <translation type="unfinished">&amp;Imprimir</translation>
+      <source>&amp;Imprimir</source>
+      <translation type="unfinished" >&amp;Imprimir</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="332"/>
-        <source>&amp;Guardar</source>
-        <translation type="unfinished">&amp;Desar</translation>
+      <source>&amp;Guardar</source>
+      <translation type="unfinished" >&amp;Desar</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="340"/>
-        <source>&amp;Actualizar</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Actualizar</source>
+      <translation>&amp;Actualitzar</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="348"/>
-        <source>&amp;Filtrar</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Filtrar</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="353"/>
-        <source>&amp;Recalcular saldos iniciales</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Recalcular saldos iniciales</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="358"/>
-        <source>&amp;Sustituir cuentas</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Sustituir cuentas</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="363"/>
-        <source>&amp;Bloquear fechas</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Bloquear fechas</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="368"/>
-        <source>&amp;Canal por defecto</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Canal por defecto</source>
+      <translation>&amp;Canal por defecte</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="373"/>
-        <source>Centro de cos&amp;te por defecto</source>
-        <translation type="unfinished"></translation>
+      <source>Centro de cos&amp;te por defecto</source>
+      <translation>Centre de cos&amp;t por defecte</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="378"/>
-        <source>&amp;Pantalla completa</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Pantalla completa</source>
+      <translation type="unfinished" >Instal·lació completa.</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="386"/>
-        <source>Ordenar &amp;ventanas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <location filename="bulmacontbase.ui" line="391"/>
-        <source>Organización en &amp;cascada</source>
-        <translation type="unfinished"></translation>
+      <source>Ordenar &amp;ventanas</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="404"/>
-        <source>&amp;Acerca de BulmaCont</source>
-        <translation type="unfinished"></translation>
+      <source>Organización en &amp;cascada</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="13"/>
-        <source>BulmaCont - Contabilidad GPL</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Acerca de BulmaCont</source>
+      <translation type="unfinished" >Bulm&amp;aCont</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="64"/>
-        <source>Ventana</source>
-        <translation type="unfinished"></translation>
+      <source>BulmaCont - Contabilidad GPL</source>
+      <translation>BulmaCont - Comptabilitat GPL</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="30"/>
-        <source>&amp;Ver</source>
-        <translation type="unfinished"></translation>
+      <source>Ventana</source>
+      <translation>Finestre</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="156"/>
-        <source>Configuracion</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Ver</source>
+      <translation>&amp;Veure</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="161"/>
-        <source>&amp;Salir del programa</source>
-        <translation type="unfinished"></translation>
+      <source>Configuracion</source>
+      <translation>Arranjament</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="164"/>
-        <source>Ctrl+Q</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Salir del programa</source>
+      <translation>De&amp;sa el programa</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="169"/>
-        <source>&amp;Espaciar asientos</source>
-        <translation type="unfinished"></translation>
+      <source>Ctrl+Q</source>
+      <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="233"/>
-        <source>Ctrl+L</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Espaciar asientos</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="244"/>
-        <source>Ctrl+A</source>
-        <translation type="unfinished"></translation>
+      <source>Ctrl+L</source>
+      <translation type="unfinished" >Ctrl+C</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="268"/>
-        <source>&amp;Balance de Cuentas</source>
-        <translation type="unfinished"></translation>
+      <source>Ctrl+A</source>
+      <translation type="unfinished" >Ctrl+C</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="276"/>
-        <source>Balance &amp;jerarquico de Sumas y Saldos</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Balance de Cuentas</source>
+      <translation>&amp;Balanç de comptes</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="282"/>
-        <source>Balance jerarquico de Sumas y Saldos</source>
-        <translation type="unfinished"></translation>
+      <source>Balance &amp;jerarquico de Sumas y Saldos</source>
+      <translation type="unfinished" >Mostra el paràmetres de balanç de blancs de la càmera</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="381"/>
-        <source>F11</source>
-        <translation type="unfinished"></translation>
+      <source>Balance jerarquico de Sumas y Saldos</source>
+      <translation type="unfinished" >Mostra el paràmetres de balanç de blancs de la càmera</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="399"/>
-        <source>F1</source>
-        <translation type="unfinished"></translation>
+      <source>F11</source>
+      <translation type="unfinished" >F11</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="415"/>
-        <source>Ctrl+PgDown</source>
-        <translation type="unfinished"></translation>
+      <source>F1</source>
+      <translation type="unfinished" >F1</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="426"/>
-        <source>Ctrl+PgUp</source>
-        <translation type="unfinished"></translation>
+      <source>Ctrl+PgDown</source>
+      <translation>Ctrl+PgDown</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="437"/>
-        <source>Ctrl+Home</source>
-        <translation type="unfinished"></translation>
+      <source>Ctrl+PgUp</source>
+      <translation type="unfinished" >Ctrl+P</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="448"/>
-        <source>Ctrl+End</source>
-        <translation type="unfinished"></translation>
+      <source>Ctrl+Home</source>
+      <translation>Ctrl+Home</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="459"/>
-        <source>Indexador</source>
-        <translation type="unfinished"></translation>
+      <source>Ctrl+End</source>
+      <translation>Ctrl+End</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="462"/>
-        <source>Ctrl+I</source>
-        <translation type="unfinished"></translation>
+      <source>Indexador</source>
+      <translation type="unfinished" >No indexable</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="150"/>
-        <source>&amp;Propiedades de la empresa...</source>
-        <translation type="unfinished"></translation>
+      <source>Ctrl+I</source>
+      <translation type="unfinished" >Ctrl+C</translation>
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="467"/>
-        <source>Listado &amp;347</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Propiedades de la empresa...</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="472"/>
-        <source>&quot;</source>
-        <translation type="unfinished"></translation>
+      <source>Listado &amp;347</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="bulmacontbase.ui" line="477"/>
-        <source>&apos;&apos;</source>
-        <translation type="unfinished"></translation>
+      <source>&quot;</source>
+      <translation type="unfinished" />
     </message>
-</context>
-<context>
+    <message>
+      <source>''</source>
+      <translation type="unfinished" />
+    </message>
+  </context>
+  <context>
     <name>Bulmacont</name>
     <message>
-        <location filename="bulmacont.cpp" line="402"/>
-        <source>Listo.</source>
-        <translation type="unfinished">Enllestit.</translation>
+      <source>Listo.</source>
+      <translation type="unfinished" >Enllestit.</translation>
     </message>
     <message>
-        <location filename="bulmacont.cpp" line="351"/>
-        <source>Deshaciendo la ultima accion...</source>
-        <translation type="unfinished"></translation>
+      <source>Deshaciendo la ultima accion...</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="bulmacont.cpp" line="359"/>
-        <source>Cortando seleccion...</source>
-        <translation type="unfinished"></translation>
+      <source>Cortando seleccion...</source>
+      <translation>Tallant la sel·lecció</translation>
     </message>
     <message>
-        <location filename="bulmacont.cpp" line="367"/>
-        <source>Copiando la seleccion al portapapeles...</source>
-        <translation type="unfinished"></translation>
+      <source>Copiando la seleccion al portapapeles...</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="bulmacont.cpp" line="375"/>
-        <source>Insertando el contenido del portapapeles...</source>
-        <translation type="unfinished"></translation>
+      <source>Insertando el contenido del portapapeles...</source>
+      <translation type="unfinished" > Esborra </translation>
     </message>
     <message>
-        <location filename="bulmacont.cpp" line="383"/>
-        <source>Cambinado barra de estado...</source>
-        <translation type="unfinished"></translation>
+      <source>Cambinado barra de estado...</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="bulmacont.cpp" line="396"/>
-        <source>Cambiando a modo de pantalla completa...</source>
-        <translation type="unfinished"></translation>
+      <source>Cambiando a modo de pantalla completa...</source>
+      <translation type="unfinished" >El color que indica una part completada</translation>
     </message>
     <message>
-        <location filename="bulmacont.cpp" line="417"/>
-        <source>Listado de cuentas</source>
-        <translation type="unfinished"></translation>
+      <source>Listado de cuentas</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="bulmacont.cpp" line="85"/>
-        <source>Listo</source>
-        <translation type="unfinished"></translation>
+      <source>Listo</source>
+      <translation type="unfinished" >Llista</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>BusquedaCuentaBase</name>
     <message>
-        <location filename="busquedacuentabase.ui" line="67"/>
-        <source>Cuenta</source>
-        <translation type="unfinished">Conta</translation>
+      <source>Cuenta</source>
+      <translation type="unfinished" >Conta</translation>
     </message>
     <message>
-        <location filename="busquedacuentabase.ui" line="13"/>
-        <source>Form1</source>
-        <translation type="unfinished"></translation>
+      <source>Form1</source>
+      <translation type="unfinished" >Uniforme</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>CAnualesBase</name>
     <message>
-        <location filename="canualesbase.ui" line="16"/>
-        <source>Cuentas Anuales</source>
-        <translation type="unfinished"></translation>
+      <source>Cuentas Anuales</source>
+      <translation type="unfinished" >Si hi especifiqueu un fitxer, aquest s'usarà com a fitxer shadow alternatiu 
+(desar contrasenyes) per a autenticar als usuaris en aquest servidor 
+virtual.\n
+Si el deixeu en blanc, s'usarà el fitxer shadow del sistema, almenys que hi 
+especifiqueu un fitxer passwd que contingui les entrades de les contrasenyes.</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>CAnualesPrintBase</name>
-    <message encoding="UTF-8">
-        <location filename="canualesprintbase.ui" line="15"/>
-        <source>Impresión de Balances</source>
-        <translation type="unfinished">Impressió de Balanços</translation>
+    <message>
+      <source>Impresión de Balances</source>
+      <translation type="unfinished" >Impressió de Balanços</translation>
     </message>
     <message>
-        <location filename="canualesprintbase.ui" line="38"/>
-        <source>Balance</source>
-        <translation type="unfinished">Balanç</translation>
+      <source>Balance</source>
+      <translation type="unfinished" >Balanç</translation>
     </message>
     <message>
-        <location filename="canualesprintbase.ui" line="54"/>
-        <source>Primer Periodo</source>
-        <translation type="unfinished"></translation>
+      <source>Primer Periodo</source>
+      <translation type="unfinished" >Comment=Construeix el períodograma d'un conjunt de dades donat. No 
+s'assumeix que les dades s'hagin mostrejat en intervals de temps iguals.</translation>
     </message>
     <message>
-        <location filename="canualesprintbase.ui" line="106"/>
-        <source>Fecha Inicial</source>
-        <translation type="unfinished">Data Inicial</translation>
+      <source>Fecha Inicial</source>
+      <translation type="unfinished" >Data Inicial</translation>
     </message>
     <message>
-        <location filename="canualesprintbase.ui" line="116"/>
-        <source>Fecha Final</source>
-        <translation type="unfinished">Data Final</translation>
+      <source>Fecha Final</source>
+      <translation type="unfinished" >Data Final</translation>
     </message>
     <message>
-        <location filename="canualesprintbase.ui" line="91"/>
-        <source>Segundo Periodo</source>
-        <translation type="unfinished"></translation>
+      <source>Segundo Periodo</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="canualesprintbase.ui" line="162"/>
-        <source>Acep&amp;tar</source>
-        <translation type="unfinished"></translation>
+      <source>Acep&amp;tar</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="canualesprintbase.ui" line="172"/>
-        <source>&amp;Cancelar</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Cancelar</source>
+      <translation type="unfinished" >cancel·lat</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>CAnualesView</name>
     <message>
-        <location filename="canualesview.cpp" line="78"/>
-        <source>Archivo</source>
-        <translation type="unfinished">Fitxer</translation>
+      <source>Archivo</source>
+      <translation type="unfinished" >Fitxer</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>CambiaCuentaBase</name>
     <message>
-        <location filename="cambiactabase.ui" line="16"/>
-        <source>Cambiar Cuenta</source>
-        <translation type="unfinished">Canviar conta</translation>
+      <source>Cambiar Cuenta</source>
+      <translation type="unfinished" >Canviar conta</translation>
     </message>
     <message>
-        <location filename="cambiactabase.ui" line="44"/>
-        <source>Asiento Final</source>
-        <translation type="unfinished">Assentament Final</translation>
+      <source>Asiento Final</source>
+      <translation type="unfinished" >Assentament Final</translation>
     </message>
     <message>
-        <location filename="cambiactabase.ui" line="81"/>
-        <source>Asiento Inicial</source>
-        <translation type="unfinished">Assentament Inicial</translation>
+      <source>Asiento Inicial</source>
+      <translation type="unfinished" >Assentament Inicial</translation>
     </message>
     <message>
-        <location filename="cambiactabase.ui" line="118"/>
-        <source>Fecha Final</source>
-        <translation type="unfinished">Data Final</translation>
+      <source>Fecha Final</source>
+      <translation type="unfinished" >Data Final</translation>
     </message>
     <message>
-        <location filename="cambiactabase.ui" line="155"/>
-        <source>Fecha Inicial</source>
-        <translation type="unfinished">Data Inicial</translation>
+      <source>Fecha Inicial</source>
+      <translation type="unfinished" >Data Inicial</translation>
     </message>
     <message>
-        <location filename="cambiactabase.ui" line="192"/>
-        <source>Cuenta Destino</source>
-        <translation type="unfinished">Conta Destí</translation>
+      <source>Cuenta Destino</source>
+      <translation type="unfinished" >Conta Destí</translation>
     </message>
     <message>
-        <location filename="cambiactabase.ui" line="229"/>
-        <source>Cuenta Origen</source>
-        <translation type="unfinished">Conta Origen</translation>
+      <source>Cuenta Origen</source>
+      <translation type="unfinished" >Conta Origen</translation>
     </message>
     <message>
-        <location filename="cambiactabase.ui" line="277"/>
-        <source>Aceptar</source>
-        <translation type="unfinished">Acceptar</translation>
+      <source>Aceptar</source>
+      <translation type="unfinished" >Acceptar</translation>
     </message>
     <message>
-        <location filename="cambiactabase.ui" line="287"/>
-        <source>Cerrar</source>
-        <translation type="unfinished">Tancar</translation>
+      <source>Cerrar</source>
+      <translation type="unfinished" >Tancar</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>CuentaBase</name>
     <message>
-        <location filename="cuentabase.ui" line="13"/>
-        <source>Cuenta</source>
-        <translation type="unfinished">Conta</translation>
+      <source>Cuenta</source>
+      <translation type="unfinished" >Conta</translation>
     </message>
     <message>
-        <location filename="cuentabase.ui" line="178"/>
-        <source>Ctrl+N</source>
-        <translation type="unfinished"></translation>
+      <source>Ctrl+N</source>
+      <translation type="unfinished" >Ctrl+N</translation>
     </message>
     <message>
-        <location filename="cuentabase.ui" line="208"/>
-        <source>Duplicar Asiento</source>
-        <translation type="unfinished"></translation>
+      <source>Duplicar Asiento</source>
+      <translation type="unfinished" >&lt;p>Seleccioneu aquí el valor del llindar aproximat, en percentatge, pel 
+mètode 'Gairebé' de cerca de duplicats. L'algorisme usa aquest valor per 
+distingir dues imatges similars. El valor per defecte és 88.</translation>
     </message>
     <message>
-        <location filename="cuentabase.ui" line="250"/>
-        <source>Cargar Asiento</source>
-        <translation type="unfinished"></translation>
+      <source>Cargar Asiento</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="cuentabase.ui" line="304"/>
-        <source>Ctrl+D</source>
-        <translation type="unfinished"></translation>
+      <source>Ctrl+D</source>
+      <translation type="unfinished" >Ctrl+C</translation>
     </message>
     <message>
-        <location filename="cuentabase.ui" line="344"/>
-        <source>&amp;Datos contables</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Datos contables</source>
+      <translation type="unfinished" >Aquesta taula és la taula principal per al filtrat\n
+de paquets. Aquí podreu definir les vostres\n
+regles de control d'accés</translation>
     </message>
     <message>
-        <location filename="cuentabase.ui" line="359"/>
-        <source>Datos de la cuenta:</source>
-        <translation type="unfinished"></translation>
+      <source>Datos de la cuenta:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="cuentabase.ui" line="403"/>
-        <source>Cuenta padre:</source>
-        <translation type="unfinished"></translation>
+      <source>Cuenta padre:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="cuentabase.ui" line="451"/>
-        <source>Nombre:</source>
-        <translation type="unfinished"></translation>
+      <source>Nombre:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="cuentabase.ui" line="461"/>
-        <source>Grupo:</source>
-        <translation type="unfinished"></translation>
+      <source>Grupo:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="cuentabase.ui" line="484"/>
-        <source>Opciones de cuenta:</source>
-        <translation type="unfinished"></translation>
+      <source>Opciones de cuenta:</source>
+      <translation type="unfinished" >&lt;p>Un Sector de Punt d'Accés, APS, és un sector de vídeo MPEG en el VCD/SVCD 
+que és adequat per a ser-hi saltat directament.&lt;p>Els APS són necessaris 
+pels punts d'entrada i les taules d'exploració. APS ha de satisfer els 
+requisits per precedir tots els I-frames per una capçalera GOP, la qual al 
+seu torn ha de ser precedida per una capçalera de seqüència.&lt;p>Els codis 
+d'inici d'aquests 3 elements han d'estar tots en el mateix sector/paquet 
+MPEG, per així formar el que s'anomena un sector de punt d'accés.&lt;p>Aquest 
+requeriment es pot relaxar habilitant l'opció d'APS relaxat, p.ex. tots els 
+sectors que continguin un I-frame seran considerats com un APS.&lt;p>&lt;b>Atenció:
+&lt;/b> la capçalera de seqüència és necessària per tal de que un dispositiu de 
+reproducció sàpiga els paràmetres de visualització, com ara la resolució i 
+la taxa de fotogrames; relaxar el requeriment d'APS pot provocar punts 
+d'entrada no vàlids.</translation>
     </message>
     <message>
-        <location filename="cuentabase.ui" line="504"/>
-        <source>node&amp;be</source>
-        <translation type="unfinished"></translation>
+      <source>node&amp;be</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="cuentabase.ui" line="507"/>
-        <source>Alt+B</source>
-        <translation type="unfinished"></translation>
+      <source>Alt+B</source>
+      <translation type="unfinished" >Alt+B</translation>
     </message>
     <message>
-        <location filename="cuentabase.ui" line="514"/>
-        <source>&amp;bloqueada</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <location filename="cuentabase.ui" line="521"/>
-        <source>Reg&amp;ularización</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;bloqueada</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="cuentabase.ui" line="528"/>
-        <source>nohaber</source>
-        <translation type="unfinished">nohaber</translation>
+      <source>Reg&amp;ularización</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="cuentabase.ui" line="535"/>
-        <source>&amp;Imputacion</source>
-        <translation type="unfinished"></translation>
+      <source>nohaber</source>
+      <translation type="unfinished" >nohaber</translation>
     </message>
     <message>
-        <location filename="cuentabase.ui" line="538"/>
-        <source>Alt+I</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Imputacion</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="cuentabase.ui" line="550"/>
-        <source>Tipo de cuenta:</source>
-        <translation type="unfinished"></translation>
+      <source>Alt+I</source>
+      <translation type="unfinished" >Alt+I</translation>
     </message>
     <message>
-        <location filename="cuentabase.ui" line="570"/>
-        <source>&amp;Neto</source>
-        <translation type="unfinished"></translation>
+      <source>Tipo de cuenta:</source>
+      <translation type="unfinished" >&lt;p>Un Sector de Punt d'Accés, APS, és un sector de vídeo MPEG en el VCD/SVCD 
+que és adequat per a ser-hi saltat directament.&lt;p>Els APS són necessaris 
+pels punts d'entrada i les taules d'exploració. APS ha de satisfer els 
+requisits per precedir tots els I-frames per una capçalera GOP, la qual al 
+seu torn ha de ser precedida per una capçalera de seqüència.&lt;p>Els codis 
+d'inici d'aquests 3 elements han d'estar tots en el mateix sector/paquet 
+MPEG, per així formar el que s'anomena un sector de punt d'accés.&lt;p>Aquest 
+requeriment es pot relaxar habilitant l'opció d'APS relaxat, p.ex. tots els 
+sectors que continguin un I-frame seran considerats com un APS.&lt;p>&lt;b>Atenció:
+&lt;/b> la capçalera de seqüència és necessària per tal de que un dispositiu de 
+reproducció sàpiga els paràmetres de visualització, com ara la resolució i 
+la taxa de fotogrames; relaxar el requeriment d'APS pot provocar punts 
+d'entrada no vàlids.</translation>
     </message>
     <message>
-        <location filename="cuentabase.ui" line="577"/>
-        <source>Sin &amp;Tipo</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Neto</source>
+      <translation type="unfinished" >Nom de la &amp;xarxa:</translation>
     </message>
     <message>
-        <location filename="cuentabase.ui" line="584"/>
-        <source>A&amp;ctivo</source>
-        <translation type="unfinished"></translation>
+      <source>Sin &amp;Tipo</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="cuentabase.ui" line="587"/>
-        <source>Alt+C</source>
-        <translation type="unfinished"></translation>
+      <source>A&amp;ctivo</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="cuentabase.ui" line="594"/>
-        <source>&amp;Ingreso</source>
-        <translation type="unfinished"></translation>
+      <source>Alt+C</source>
+      <translation type="unfinished" >Alt+C</translation>
     </message>
     <message>
-        <location filename="cuentabase.ui" line="601"/>
-        <source>&amp;Gasto</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Ingreso</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="cuentabase.ui" line="604"/>
-        <source>Alt+G</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Gasto</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="cuentabase.ui" line="611"/>
-        <source>&amp;Pasivo</source>
-        <translation type="unfinished"></translation>
+      <source>Alt+G</source>
+      <translation type="unfinished" >Alt+G</translation>
     </message>
     <message>
-        <location filename="cuentabase.ui" line="614"/>
-        <source>Alt+P</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Pasivo</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="cuentabase.ui" line="626"/>
-        <source>Saldos:</source>
-        <translation type="unfinished"></translation>
+      <source>Alt+P</source>
+      <translation type="unfinished" >Alt+3</translation>
     </message>
     <message>
-        <location filename="cuentabase.ui" line="1731"/>
-        <source>C.P.:</source>
-        <translation type="unfinished"></translation>
+      <source>Saldos:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="cuentabase.ui" line="1761"/>
-        <source>C.I.F.:</source>
-        <translation type="unfinished"></translation>
+      <source>C.P.:</source>
+      <translation type="unfinished" >C:</translation>
     </message>
     <message>
-        <location filename="cuentabase.ui" line="1771"/>
-        <source>Nombre de la entidad:</source>
-        <translation type="unfinished"></translation>
+      <source>C.I.F.:</source>
+      <translation type="unfinished" >C:</translation>
     </message>
     <message>
-        <location filename="cuentabase.ui" line="1828"/>
-        <source>Comentarios:</source>
-        <translation type="unfinished"></translation>
+      <source>Nombre de la entidad:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="cuentabase.ui" line="1871"/>
-        <source>&amp;Aceptar</source>
-        <translation type="unfinished"></translation>
+      <source>Comentarios:</source>
+      <translation type="unfinished" >&lt;p>Seleccioneu aquí el tipus de millora de color per les imatges:
+&lt;p>&lt;b>Redueix el contrast&lt;/b>: redueix el contras de la imatge. L'algorisme 
+redueix la diferència d'intensitat entre els elements més clars i més foscos 
+de la imatge.&lt;p>&lt;b>Profunditat&lt;/b>: canvia la profunditat de color de la 
+imatge.&lt;p>&lt;b>Equalitza&lt;/b>: executa l'equalització de l'histograma de la 
+imatge.&lt;p>&lt;b>Desdibuixa&lt;/b>: barreja els colors a una distància, considerant 
+que són iguals.&lt;p>&lt;b>Escala de grisos&lt;/b>: converteix les imatges en color a 
+imatges en escala de grisos.&lt;p>&lt;b>Augmenta el contrast&lt;/b>: millora el 
+contrast de la imatge. L'algorisme augmenta les diferències d'intensitat 
+entre els elements més clars i més foscos de la imatge.&lt;p>&lt;b>Monocrom&lt;/b>: 
+transforma la imatge a blanc i negre.&lt;p>&lt;b>Negatiu&lt;/b>: substitueix cada 
+píxel pel seu color complementari. Les tonalitats vermella, verda i blava 
+d'una imatge es negativen. El blanc esdevé negre, el groc esdevé blau, etc.
+&lt;p>&lt;b>Normalitza&lt;/b>: transforma la imatge per expandir l'interval sencer 
+dels valors de color. És una tècnica per augmentar l contrast. L'algorisme 
+augmenta el contrast d'una imatge de color ajustant el color dels píxels per 
+abraçar tot l'interval de colors disponible.&lt;p>&lt;b>Segmenta&lt;/b>: segmenta una 
+imatge analitzant l'histograma dels components de color i identificant les 
+unitats homogènies amb la tècnica de desdibuixat de mitjanes \&quot;c\&quot;.
+&lt;p>&lt;b>Retalla&lt;/b>: retallat una imatge (tècnica inversa al desdibuixat). 
+L'algorisme elimina els límits que són el color de fons de la imatge.&lt;p></translation>
     </message>
     <message>
-        <location filename="cuentabase.ui" line="1889"/>
-        <source>&amp;Cancelar</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Aceptar</source>
+      <translation type="unfinished" >&lt;p>&lt;b>Esteu segur de que voleu executar l'script iptables que s'ha generat?&lt;/
+b>&lt;p>&lt;b>Un script iptables incorrectament configurat podria malmetre el 
+vostre ordinador.&lt;/b>&lt;p>Si el vostre sistema es bloqueja després d'aixecar 
+el tallafocs passeu a una consola de text (Ctrl+Alt+F1) i executeu els 
+següents comandaments per a reiniciar la configuració de iptables:
+&lt;p>&lt;ul>&lt;li>iptables -F &lt;/li>&lt;li>iptables -X &lt;/li>&lt;li>iptables -P INPUT 
+ACCEPT &lt;/li>&lt;li>iptables -P OUTPUT ACCEPT &lt;/li>&lt;li>iptables -P FORWARD 
+ACCEPT &lt;/li>&lt;li>iptables -t nat -F &lt;/li>&lt;li>iptables -t nat -X &lt;/
+li>&lt;li>iptables -t nat -P OUTPUT ACCEPT &lt;/li>&lt;li>iptables -t nat -P 
+PREROUTING ACCEPT &lt;/li>&lt;li>iptables -t nat -P POSTROUTING ACCEPT &lt;/
+li>&lt;li>iptables -t mangle -F &lt;/li>&lt;li>iptables -t mangle -X &lt;/
+li>&lt;li>iptables -t mangle -P INPUT ACCEPT &lt;/li>&lt;li>iptables -t mangle -P 
+OUTPUT ACCEPT &lt;/li>&lt;li>iptables -t mangle -P FORWARD ACCEPT &lt;/
+li>&lt;li>iptables -t mangle -P PREROUTING ACCEPT &lt;/li>&lt;li>iptables -t mangle -
+P POSTROUTING ACCEPT &lt;/li>&lt;/ul></translation>
     </message>
     <message>
-        <location filename="cuentabase.ui" line="121"/>
-        <source>Guardar cuenta</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Cancelar</source>
+      <translation type="unfinished" >cancel·lat</translation>
     </message>
     <message>
-        <location filename="cuentabase.ui" line="136"/>
-        <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
+      <source>Guardar cuenta</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="cuentabase.ui" line="163"/>
-        <source>Nueva cuenta</source>
-        <translation type="unfinished"></translation>
+      <source>Ctrl+S</source>
+      <translation type="unfinished" >Ctrl+S</translation>
     </message>
     <message>
-        <location filename="cuentabase.ui" line="289"/>
-        <source>Borrar cuenta</source>
-        <translation type="unfinished"></translation>
+      <source>Nueva cuenta</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="cuentabase.ui" line="429"/>
-        <source>Codigo:</source>
-        <translation type="unfinished"></translation>
+      <source>Borrar cuenta</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="cuentabase.ui" line="1133"/>
-        <source>Debe:</source>
-        <translation type="unfinished"></translation>
+      <source>Codigo:</source>
+      <translation type="unfinished" >Extreu les pistes d'àudio digitalment (i codifica)</translation>
     </message>
     <message>
-        <location filename="cuentabase.ui" line="1143"/>
-        <source>Haber:</source>
-        <translation type="unfinished"></translation>
+      <source>Debe:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="cuentabase.ui" line="1661"/>
-        <source>&amp;Otros datos</source>
-        <translation type="unfinished"></translation>
+      <source>Haber:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="cuentabase.ui" line="1676"/>
-        <source>URL de la pagina web:</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Otros datos</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="cuentabase.ui" line="1689"/>
-        <source>Correo electronico:</source>
-        <translation type="unfinished"></translation>
+      <source>URL de la pagina web:</source>
+      <translation type="unfinished" >URL del destí final:</translation>
     </message>
     <message>
-        <location filename="cuentabase.ui" line="1702"/>
-        <source>Codigo cuenta corriente.:</source>
-        <translation type="unfinished"></translation>
+      <source>Correo electronico:</source>
+      <translation type="unfinished" >Guia electrònica de programació</translation>
     </message>
     <message>
-        <location filename="cuentabase.ui" line="1741"/>
-        <source>Direccion:</source>
-        <translation type="unfinished"></translation>
+      <source>Codigo cuenta corriente.:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="cuentabase.ui" line="1751"/>
-        <source>Telefono:</source>
-        <translation type="unfinished"></translation>
+      <source>Direccion:</source>
+      <translation type="unfinished" >&lt;p>Si aquesta opció està marcada, el K3b no crearà primer una imatge sinó 
+que escriurà els fitxers directament al CD/DVD. &lt;p>&lt;b>Precaució:&lt;/b> encara 
+que això hauria de funcionar en la majoria de sistemes, assegureu-vos que 
+les dades s'envien a la gravadora prou ràpid.</translation>
     </message>
-</context>
-<context>
+    <message>
+      <source>Telefono:</source>
+      <translation type="unfinished" />
+    </message>
+  </context>
+  <context>
     <name>CuentaView</name>
     <message>
-        <location filename="cuentaview.cpp" line="169"/>
-        <source>Guardar cuenta</source>
-        <translation type="unfinished"></translation>
+      <source>Guardar cuenta</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="cuentaview.cpp" line="170"/>
-        <source>Desea guardar los cambios?</source>
-        <translation type="unfinished"></translation>
+      <source>Desea guardar los cambios?</source>
+      <translation type="unfinished" >Desitja desar els canvis?</translation>
     </message>
     <message>
-        <location filename="cuentaview.cpp" line="171"/>
-        <source>&amp;Si</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Si</source>
+      <translation type="unfinished" >&amp;Fitxa</translation>
     </message>
     <message>
-        <location filename="cuentaview.cpp" line="171"/>
-        <source>&amp;No</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;No</source>
+      <translation type="unfinished" >&amp;Cap</translation>
     </message>
     <message>
-        <location filename="cuentaview.cpp" line="171"/>
-        <source>&amp;Cancelar</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Cancelar</source>
+      <translation type="unfinished" >cancel·lat</translation>
     </message>
     <message>
-        <location filename="cuentaview.cpp" line="217"/>
-        <source>Cuenta</source>
-        <translation type="unfinished">Conta</translation>
+      <source>Cuenta</source>
+      <translation type="unfinished" >Conta</translation>
     </message>
     <message>
-        <location filename="cuentaview.cpp" line="464"/>
-        <source>Borrar cuenta</source>
-        <translation type="unfinished"></translation>
+      <source>Borrar cuenta</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="cuentaview.cpp" line="465"/>
-        <source>Se va a borrar la cuenta,
+      <source>Se va a borrar la cuenta,
 Esto puede ocasionar perdida de datos
 Tal vez deberia pensarselo mejor antes
 porque igual su trabajo se pierde.</source>
-        <translation type="unfinished"></translation>
+      <translation type="unfinished" >&lt;qt>Feu clic aquí per obrir el diàleg de selecció de bases de dades. Aquest 
+diàleg permet seleccionar les bases de dades que voleu excloure de 
+l'operació de restauració d'una llista.&lt;/qt></translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>DiarioBase</name>
     <message>
-        <location filename="diariobase.ui" line="13"/>
-        <source>Diario</source>
-        <translation type="unfinished">Diari</translation>
+      <source>Diario</source>
+      <translation type="unfinished" >Diari</translation>
     </message>
     <message>
-        <location filename="diariobase.ui" line="321"/>
-        <source>&amp;Incluir asientos abiertos</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Incluir asientos abiertos</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="diariobase.ui" line="288"/>
-        <source>Apuntes con contrapartida:</source>
-        <translation type="unfinished">Apunts amb contrapartida:</translation>
+      <source>Apuntes con contrapartida:</source>
+      <translation type="unfinished" >Apunts amb contrapartida:</translation>
     </message>
     <message>
-        <location filename="diariobase.ui" line="110"/>
-        <source>Imprimir</source>
-        <translation type="unfinished">Imprimir</translation>
+      <source>Imprimir</source>
+      <translation type="unfinished" >Imprimir</translation>
     </message>
     <message>
-        <location filename="diariobase.ui" line="144"/>
-        <source>Mostrar/ocultar filtro</source>
-        <translation type="unfinished"></translation>
+      <source>Mostrar/ocultar filtro</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="diariobase.ui" line="184"/>
-        <source>Configurar listado</source>
-        <translation type="unfinished"></translation>
+      <source>Configurar listado</source>
+      <translation type="unfinished" >Configuració de la llista</translation>
     </message>
     <message>
-        <location filename="diariobase.ui" line="224"/>
-        <source>Actualizar</source>
-        <translation type="unfinished"></translation>
+      <source>Actualizar</source>
+      <translation type="unfinished" >&lt;p>&lt;b>De debò reordeno les miniatures?&lt;/b>&lt;/p> &lt;p>Ara les podeu reordenar 
+arrossegant-les pel visor de miniatures. És molt útil quan no coneixeu la 
+data exacte de les imatges. Per altra banda, si les pròpies imatges tenen 
+marques horàries vàlides, hauríeu d'emprar &lt;b>Imatges -&amp;gt; Ordena les 
+seleccionades per data i hora&lt;/b>&lt;/p></translation>
     </message>
     <message>
-        <location filename="diariobase.ui" line="301"/>
-        <source>Apuntes con saldo inferior a:</source>
-        <translation type="unfinished"></translation>
+      <source>Apuntes con saldo inferior a:</source>
+      <translation type="unfinished" >&lt;h2>AVÍS&lt;/h2>\n
+&lt;p>Les xarxes punt-a-punt, particularment les que són accessibles mitjançant 
+KMLDonkey, poden contenir material el qual estigui legalment prohibit 
+descarregar o redistribuir. És responsabilitat vostra el verificar que 
+qualsevol material que descarregueu de qualsevol xarxa punt-a-punt s'està 
+posant a la vostra disposició legalment. És també la vostra responsabilitat 
+el verificar que disposeu dels drets legals de redistribuir qualsevol 
+material que poseu a disposició d'altres mitjançant qualsevol xarxa punt-a-
+punt. En resum, és responsabilitat personal el verificar que useu aquest 
+programari en conformitat amb el copyright i demés lleis de propietat 
+intel·lectual aplicables.&lt;/p>\n
+&lt;h3>RESTRICCIONS&lt;/h3>\n
+&lt;p>Els autors d'aquest programari pensen que s'usarà per a l'intercanvi 
+legal de dades, art, programari i d'altres documents o treballs que sí es 
+poden distribuir legalment a tercers. Els autors no recolzaran i 
+descoratjaran qualsevol ús d'aquest programari que pugui violar el copyright 
+o d'altres lleis de propietat intel·lectual. En particular, els autors 
+descoratgen qualsevol transmissió de qualsevol material en violació de 
+qualsevol llei i regulació aplicable sobre la propietat intel·lectual. 
+Assumeixen que cada usuari es comportarà d'acord amb les regles i les 
+restriccions aplicables, així com amb les regles i les restriccions 
+aplicables a les xarxes o als serveis de P2P connectats directament o 
+indirectament amb aquest programari.&lt;/p>\n
+&lt;h3>RENÚNCIA DE RESPONSABILITAT&lt;/h3>\n
+&lt;p>Els autors d'aquest programari no fan i no poden exercitar cap control 
+sobre el contingut de la informació intercanviada usant aquest programari. 
+Els autors no donen garanties de cap classe, tant si està expressat o 
+implicat, pel servei que aquest programari estigui proporcionant o per les 
+dades intercanviades amb l'ajuda d'aquest. Els autors no poden ser jutjats 
+responsables de cap demanda resultat de la conducta i/o de l'ús del 
+programari per part de l'usuari que sigui d'alguna forma il·legal o que 
+perjudiqui a tal usuari o a qualsevol altra part.&lt;/p></translation>
     </message>
     <message>
-        <location filename="diariobase.ui" line="311"/>
-        <source>Apuntes con saldo superior a:</source>
-        <translation type="unfinished"></translation>
+      <source>Apuntes con saldo superior a:</source>
+      <translation type="unfinished" >&lt;p>&lt;center>&lt;b>Donació de diners&lt;/b>&lt;/center>&lt;/p>&lt;p>El KPhotoAlbum és de 
+l'ordre de magnitud de 2 anys/home de treball del meu temps lliure. Aquesta 
+feina és estricatment no retribuïda, i només ho faig pel goig de fer-ho. Dit 
+això, jo seria més que feliç per qualsevol donació petita o gran que em 
+poguéssiu fer.&lt;/p>&lt;p>Els diners s'usaran per alguna d'aquestes coses:
+&lt;ul>&lt;li>Comprar quelcom interessant per la meva càmera que em faci adaptar 
+el KPhotoAlbum per usar la nova funcionalitat (la compatibilitat amb EXIF i 
+amb el vídeo són dos bons exemples d'això).&lt;li>El projecte KPhotoAlbum (el 
+concurs de pantalles de benvinguda és un bon exemple d'això).&lt;/ul>&lt;/p></translation>
     </message>
     <message>
-        <location filename="diariobase.ui" line="372"/>
-        <source>Fecha final:</source>
-        <translation type="unfinished"></translation>
+      <source>Fecha final:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="diariobase.ui" line="352"/>
-        <source>Fecha inicial:</source>
-        <translation type="unfinished"></translation>
+      <source>Fecha inicial:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="diariobase.ui" line="421"/>
-        <source>Total Debe:</source>
-        <translation type="unfinished"></translation>
+      <source>Total Debe:</source>
+      <translation type="unfinished" >Pàgines totals</translation>
     </message>
     <message>
-        <location filename="diariobase.ui" line="500"/>
-        <source>Total Haber:</source>
-        <translation type="unfinished"></translation>
+      <source>Total Haber:</source>
+      <translation type="unfinished" >Alçada total:</translation>
     </message>
     <message>
-        <location filename="diariobase.ui" line="239"/>
-        <source>F5</source>
-        <translation type="unfinished"></translation>
+      <source>F5</source>
+      <translation type="unfinished" >F5</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>DiarioPrintBase</name>
-    <message encoding="UTF-8">
-        <location filename="diarioprintbase.ui" line="16"/>
-        <source>Impresión del Diario</source>
-        <translation type="unfinished">Impresió del Diari</translation>
+    <message>
+      <source>Impresión del Diario</source>
+      <translation type="unfinished" >Impresió del Diari</translation>
     </message>
     <message>
-        <location filename="diarioprintbase.ui" line="40"/>
-        <source>&amp;Texto Plano</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Texto Plano</source>
+      <translation type="unfinished" >\\begin{figure}[emplaçament]\n
+cos de la figura\n
+\\caption{títol de la figura}\n
+\\end{figure}\n
+Les figures són objectes que no formen part del text normal, i normalment es 
+situen en un lloc adient\n
+L'argument opcional [emplaçament] determina on intentarà LaTeX situar la 
+vostra figura\n
+h : Aquí - a la posició del text on apareix l'entorn de la figura\n
+t : A dalt - a dalt d'una pàgina de text\n
+b : A baix - a baix d'una pàgina de text\n
+p : Pàgina d'elements flotants - en una pàgina separada que no contindrà 
+text, només elements flotants\n
+El cos de la figura pot estar composat del text, les comandes LaTeX, etc, 
+que vulgueu.\n
+La comanda \\caption us permet posar un títol a la vostra figura.</translation>
     </message>
     <message>
-        <location filename="diarioprintbase.ui" line="53"/>
-        <source>HT&amp;ML</source>
-        <translation type="unfinished"></translation>
+      <source>HT&amp;ML</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="diarioprintbase.ui" line="66"/>
-        <source>&amp;Kugar</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Kugar</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="diarioprintbase.ui" line="79"/>
-        <source>Propietario</source>
-        <translation type="unfinished">Propietari</translation>
+      <source>Propietario</source>
+      <translation type="unfinished" >Propietari</translation>
     </message>
     <message>
-        <location filename="diarioprintbase.ui" line="174"/>
-        <source>&amp;Cancelar</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Cancelar</source>
+      <translation type="unfinished" >cancel·lat</translation>
     </message>
     <message>
-        <location filename="diarioprintbase.ui" line="164"/>
-        <source>&amp;Imprimir</source>
-        <translation type="unfinished">&amp;Imprimir</translation>
+      <source>&amp;Imprimir</source>
+      <translation type="unfinished" >&amp;Imprimir</translation>
     </message>
     <message>
-        <location filename="diarioprintbase.ui" line="28"/>
-        <source>Documento:</source>
-        <translation type="unfinished"></translation>
+      <source>Documento:</source>
+      <translation type="unfinished" >Subdocument</translation>
     </message>
     <message>
-        <location filename="diarioprintbase.ui" line="92"/>
-        <source>Formato del listado:</source>
-        <translation type="unfinished"></translation>
+      <source>Formato del listado:</source>
+      <translation type="unfinished" > Esborra </translation>
     </message>
     <message>
-        <location filename="diarioprintbase.ui" line="104"/>
-        <source>Formato &amp;normal</source>
-        <translation type="unfinished"></translation>
+      <source>Formato &amp;normal</source>
+      <translation type="unfinished" >Prioritat &amp;normal</translation>
     </message>
     <message>
-        <location filename="diarioprintbase.ui" line="114"/>
-        <source>&amp;Formato de aprendizaje</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Formato de aprendizaje</source>
+      <translation type="unfinished" >&lt;p>Seleccioneu aquí el format de data que preferiu per a crear nous àlbums. 
+Les opcions disponibles són:&lt;p>&lt;b>ISO&lt;/b>: el format de data està d'acord 
+amb l'ISO 8601 (YYYY-MM-DD). P.ex.: &lt;i>2006-08-24&lt;/i>&lt;p>&lt;b>Text complet&lt;/b>: 
+el format de data és una cadena llegible per l'usuari. P.ex.: &lt;i>Dij Aug 24 
+2006&lt;/i>&lt;p>&lt;b>Paràmetres locals&lt;/b>: el format de la data depèn dels 
+paràmetres del centre de control del KDE.&lt;p></translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>DiarioSubForm</name>
     <message>
-        <location filename="diariosubform.cpp" line="54"/>
-        <source>idcuenta</source>
-        <translation type="unfinished"></translation>
+      <source>idcuenta</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="41"/>
-        <source>tipocuenta</source>
-        <translation type="unfinished"></translation>
+      <source>tipocuenta</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="101"/>
-        <source>Borrar registro</source>
-        <translation type="unfinished"></translation>
+      <source>Borrar registro</source>
+      <translation type="unfinished" >&lt;h2>AVÍS&lt;/h2>\n
+&lt;p>Les xarxes punt-a-punt, particularment les que són accessibles mitjançant 
+KMLDonkey, poden contenir material el qual estigui legalment prohibit 
+descarregar o redistribuir. És responsabilitat vostra el verificar que 
+qualsevol material que descarregueu de qualsevol xarxa punt-a-punt s'està 
+posant a la vostra disposició legalment. És també la vostra responsabilitat 
+el verificar que disposeu dels drets legals de redistribuir qualsevol 
+material que poseu a disposició d'altres mitjançant qualsevol xarxa punt-a-
+punt. En resum, és responsabilitat personal el verificar que useu aquest 
+programari en conformitat amb el copyright i demés lleis de propietat 
+intel·lectual aplicables.&lt;/p>\n
+&lt;h3>RESTRICCIONS&lt;/h3>\n
+&lt;p>Els autors d'aquest programari pensen que s'usarà per a l'intercanvi 
+legal de dades, art, programari i d'altres documents o treballs que sí es 
+poden distribuir legalment a tercers. Els autors no recolzaran i 
+descoratjaran qualsevol ús d'aquest programari que pugui violar el copyright 
+o d'altres lleis de propietat intel·lectual. En particular, els autors 
+descoratgen qualsevol transmissió de qualsevol material en violació de 
+qualsevol llei i regulació aplicable sobre la propietat intel·lectual. 
+Assumeixen que cada usuari es comportarà d'acord amb les regles i les 
+restriccions aplicables, així com amb les regles i les restriccions 
+aplicables a les xarxes o als serveis de P2P connectats directament o 
+indirectament amb aquest programari.&lt;/p>\n
+&lt;h3>RENÚNCIA DE RESPONSABILITAT&lt;/h3>\n
+&lt;p>Els autors d'aquest programari no fan i no poden exercitar cap control 
+sobre el contingut de la informació intercanviada usant aquest programari. 
+Els autors no donen garanties de cap classe, tant si està expressat o 
+implicat, pel servei que aquest programari estigui proporcionant o per les 
+dades intercanviades amb l'ajuda d'aquest. Els autors no poden ser jutjats 
+responsables de cap demanda resultat de la conducta i/o de l'ús del 
+programari per part de l'usuari que sigui d'alguna forma il·legal o que 
+perjudiqui a tal usuari o a qualsevol altra part.&lt;/p></translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="104"/>
-        <source>Ajustar columa</source>
-        <translation type="unfinished"></translation>
+      <source>Ajustar columa</source>
+      <translation type="unfinished" >&lt;p>Seleccioneu aquí el tipus de millora de color per les imatges:
+&lt;p>&lt;b>Redueix el contrast&lt;/b>: redueix el contras de la imatge. L'algorisme 
+redueix la diferència d'intensitat entre els elements més clars i més foscos 
+de la imatge.&lt;p>&lt;b>Profunditat&lt;/b>: canvia la profunditat de color de la 
+imatge.&lt;p>&lt;b>Equalitza&lt;/b>: executa l'equalització de l'histograma de la 
+imatge.&lt;p>&lt;b>Desdibuixa&lt;/b>: barreja els colors a una distància, considerant 
+que són iguals.&lt;p>&lt;b>Escala de grisos&lt;/b>: converteix les imatges en color a 
+imatges en escala de grisos.&lt;p>&lt;b>Augmenta el contrast&lt;/b>: millora el 
+contrast de la imatge. L'algorisme augmenta les diferències d'intensitat 
+entre els elements més clars i més foscos de la imatge.&lt;p>&lt;b>Monocrom&lt;/b>: 
+transforma la imatge a blanc i negre.&lt;p>&lt;b>Negatiu&lt;/b>: substitueix cada 
+píxel pel seu color complementari. Les tonalitats vermella, verda i blava 
+d'una imatge es negativen. El blanc esdevé negre, el groc esdevé blau, etc.
+&lt;p>&lt;b>Normalitza&lt;/b>: transforma la imatge per expandir l'interval sencer 
+dels valors de color. És una tècnica per augmentar l contrast. L'algorisme 
+augmenta el contrast d'una imatge de color ajustant el color dels píxels per 
+abraçar tot l'interval de colors disponible.&lt;p>&lt;b>Segmenta&lt;/b>: segmenta una 
+imatge analitzant l'histograma dels components de color i identificant les 
+unitats homogènies amb la tècnica de desdibuixat de mitjanes \&quot;c\&quot;.
+&lt;p>&lt;b>Retalla&lt;/b>: retallat una imatge (tècnica inversa al desdibuixat). 
+L'algorisme elimina els límits que són el color de fons de la imatge.&lt;p></translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="105"/>
-        <source>Ajustar altura</source>
-        <translation type="unfinished"></translation>
+      <source>Ajustar altura</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="106"/>
-        <source>Ajustar columnas</source>
-        <translation type="unfinished"></translation>
+      <source>Ajustar columnas</source>
+      <translation type="unfinished" >L'entorn de tabulació proporciona una manera d'alinear text en columnes.\n
+\\begin{tabbing}\n
+text \\= més text \\= encara més text \\= últim text \\\\\n
+segona fila \\>  \\> més \\\\\n
+\\end{tabbing}\n
+Comandes :\n
+\\=  Situa una tabulació a la posició actual.\n
+\\>  Avança a la següent tabulació.\n
+\\&lt;  Us permet posar alguna cosa a l'esquerra del marge local sense canviar 
+el marge. Només es pot fer servir a l'inici de la línia.\n
+\\+  Mou el marge esquerre de la següent i de totes les comandes següents 
+una tabulació cap a la dreta\n
+\\-  Mou el marge esquerre de la següent i de totes les comandes següents 
+una tabulació cap a l'esquerra\n
+\\'  Mou qualsevol cosa que hàgiu escrit a la columna actual cap a la dreta 
+de la columna anterior, alineat al tabulador de la columna actual. \n
+\\`  Us permet posar text alineat a la dreta de qualsevol tabulació, inclosa 
+la tabulació 0\n
+\\kill  Situa tabulacions sense produir text.\n
+\\a  En un entorn de tabulació, les comandes \\=, \\' i \\` no produeixen 
+accents de manera normal. En comptes d'aquestes, es fan servir les comandes 
+\\a=, \\a' i \\a`.</translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="107"/>
-        <source>Ajustar alturas</source>
-        <translation type="unfinished"></translation>
+      <source>Ajustar alturas</source>
+      <translation type="unfinished" >&lt;p>&lt;b>Límit&lt;/b>: aquest valor defineix la distància en pixels en la que el 
+filtre cerca límits. Quan aquest valor s'incrementa, el soroll de pics se 
+suprimeix. Eventualment, podeu reajustar el filtre &lt;b>Límit&lt;/b> quan canvieu 
+aquest paràmetre. Quan aquest valor és massa alt, el filtre adaptatiu no pot 
+seguir els detalls de la imatge amb cura, i pot reaparèixer soroll o es pot 
+produir un desenfocament.</translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="109"/>
-        <source>Ver configurador de subformulario</source>
-        <translation type="unfinished"></translation>
+      <source>Ver configurador de subformulario</source>
+      <translation type="unfinished" >&lt;p>...el K3b té dos tipus d'arranjament. D'una banda el K3b té l'arranjament 
+com la majoria\n
+d'aplicacions del KDE tenen accessible mitjançant d'un diàleg de 
+configuració a través del menú d'arranjament;\n
+d'altra banda, cada diàleg d'acció del K3b té tres botons per carregar i 
+desar arranjaments per omissió\n
+per a l'acció. D'aquesta manera un pot, per exemple, establir la 
+configuració per omissió a l'hora de copiar CD: aquestes opcions per 
+omissió\n
+Seran carregades cada vegada que s'obri el diàleg de còpia de CD. El botó 
+&lt;em>Arranjament per omissió del K3b&lt;/em>\n
+restablirà la configuració &lt;em>de fàbrica&lt;/em> en cas de que no sapigueu si 
+la configuració que heu triat\n
+és apropiada.&lt;/p>\n</translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="39"/>
-        <source>idborrador</source>
-        <translation type="unfinished"></translation>
+      <source>idborrador</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="40"/>
-        <source>codigoborrador</source>
-        <translation type="unfinished"></translation>
+      <source>codigoborrador</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="55"/>
-        <source>orden</source>
-        <translation type="unfinished">ordre</translation>
+      <source>orden</source>
+      <translation type="unfinished" >ordre</translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="32"/>
-        <source>Fecha</source>
-        <translation type="unfinished">Data</translation>
+      <source>Fecha</source>
+      <translation type="unfinished" >Data</translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="35"/>
-        <source>Concepto</source>
-        <translation type="unfinished">Concepte</translation>
+      <source>Concepto</source>
+      <translation type="unfinished" >Concepte</translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="36"/>
-        <source>Debe</source>
-        <translation type="unfinished"></translation>
+      <source>Debe</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="37"/>
-        <source>Haber</source>
-        <translation type="unfinished">Haber</translation>
+      <source>Haber</source>
+      <translation type="unfinished" >Haber</translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="43"/>
-        <source>Contrapartida</source>
-        <translation type="unfinished">Contrapartida</translation>
+      <source>Contrapartida</source>
+      <translation type="unfinished" >Contrapartida</translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="38"/>
-        <source>Comentario</source>
-        <translation type="unfinished"></translation>
+      <source>Comentario</source>
+      <translation type="unfinished" >Comment=Algú ha iniciat un xat DCC amb vostè</translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="44"/>
-        <source>Canal</source>
-        <translation type="unfinished">Canal</translation>
+      <source>Canal</source>
+      <translation type="unfinished" >Canal</translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="45"/>
-        <source>MarcaConciliacion</source>
-        <translation type="unfinished"></translation>
+      <source>MarcaConciliacion</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="46"/>
-        <source>Centro Coste</source>
-        <translation type="unfinished"></translation>
+      <source>Centro Coste</source>
+      <translation type="unfinished" >Especifica a quina màquina enviar les URL. &lt;hostid> és el nom de la màquina 
+tal i com està definida al Centre de control del KDE.</translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="47"/>
-        <source>Factura</source>
-        <translation type="unfinished">Factura</translation>
+      <source>Factura</source>
+      <translation type="unfinished" >Factura</translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="48"/>
-        <source>idapunte</source>
-        <translation type="unfinished"></translation>
+      <source>idapunte</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="49"/>
-        <source>idtipoiva</source>
-        <translation type="unfinished"></translation>
+      <source>idtipoiva</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="50"/>
-        <source>idregistroiva</source>
-        <translation type="unfinished"></translation>
+      <source>idregistroiva</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="30"/>
-        <source>idasiento</source>
-        <translation type="unfinished"></translation>
+      <source>idasiento</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="51"/>
-        <source>idcanal</source>
-        <translation type="unfinished"></translation>
+      <source>idcanal</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="52"/>
-        <source>idc_coste</source>
-        <translation type="unfinished"></translation>
+      <source>idc_coste</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="53"/>
-        <source>iddiario</source>
-        <translation type="unfinished"></translation>
+      <source>iddiario</source>
+      <translation type="unfinished" >&lt;qt>Aquest és el menú de configuració pel fitxer de diàleg. Des d'aquest 
+menú es pot accedir a diverses opcions, incloent:&lt;ul>&lt;li>com s'ordenen els 
+fitxers a la llista&lt;/li>&lt;li>tipus de vista, incloent icona i llista&lt;/
+li>&lt;li>presentació de fitxers ocults&lt;/li>&lt;li>el plafó de navegació d'accés 
+ràpid&lt;/li>&lt;li>vistes prèvies de fitxers &lt;/li>&lt;li>separació de directoris 
+dels fitxers&lt;/li>&lt;/ul>&lt;/qt></translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="31"/>
-        <source>Asiento</source>
-        <translation type="unfinished"></translation>
+      <source>Asiento</source>
+      <translation type="unfinished" >&lt;p>...el Kile ara conté moltes eines d'edició per ajudar-vos a escriure en 
+LaTeX més fàcilment? Feu una ullada  als menús &lt;b>Autocompletat, Selecciona, 
+Esborra., Entorn, i Grup TeX&lt;/b> del menú Edita.&lt;/p>\n</translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="33"/>
-        <source>Cuenta</source>
-        <translation type="unfinished">Conta</translation>
+      <source>Cuenta</source>
+      <translation type="unfinished" >Conta</translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="34"/>
-        <source>Descripcion</source>
-        <translation type="unfinished"></translation>
+      <source>Descripcion</source>
+      <translation type="unfinished" >descripció,</translation>
     </message>
     <message>
-        <location filename="diariosubform.cpp" line="42"/>
-        <source>Descripcion de Cuenta</source>
-        <translation type="unfinished"></translation>
+      <source>Descripcion de Cuenta</source>
+      <translation type="unfinished" >&lt;p>La descripció de l'àlbum actual a la llista de selecció.</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>DiarioView</name>
     <message>
-        <location filename="diarioview.cpp" line="127"/>
-        <source>Guardar Libro Diario</source>
-        <translation type="unfinished">Desar el Llibre diari</translation>
+      <source>Guardar Libro Diario</source>
+      <translation type="unfinished" >Desar el Llibre diari</translation>
     </message>
     <message>
-        <location filename="diarioview.cpp" line="129"/>
-        <source>Diarios (*.txt)</source>
-        <translation type="unfinished">Diaris (*.txt)</translation>
+      <source>Diarios (*.txt)</source>
+      <translation type="unfinished" >Diaris (*.txt)</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>DuplicarAsientoBase</name>
     <message>
-        <location filename="duplicarasientobase.ui" line="13"/>
-        <source>Duplicar Asientos</source>
-        <translation type="unfinished">Duplicar Assentaments</translation>
+      <source>Duplicar Asientos</source>
+      <translation type="unfinished" >Duplicar Assentaments</translation>
     </message>
     <message>
-        <location filename="duplicarasientobase.ui" line="28"/>
-        <source>Origen:</source>
-        <translation type="unfinished"></translation>
+      <source>Origen:</source>
+      <translation type="unfinished" >Implementació original del generador HTML</translation>
     </message>
     <message>
-        <location filename="duplicarasientobase.ui" line="48"/>
-        <source>Fecha inicial:</source>
-        <translation type="unfinished"></translation>
+      <source>Fecha inicial:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="duplicarasientobase.ui" line="58"/>
-        <source>Asiento inicial:</source>
-        <translation type="unfinished"></translation>
+      <source>Asiento inicial:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="duplicarasientobase.ui" line="65"/>
-        <source>Asiento final:</source>
-        <translation type="unfinished"></translation>
+      <source>Asiento final:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="duplicarasientobase.ui" line="92"/>
-        <source>Destino:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <location filename="duplicarasientobase.ui" line="115"/>
-        <source>Fecha con la que quedará el asiento:</source>
-        <translation type="unfinished"></translation>
+      <source>Destino:</source>
+      <translation type="unfinished" >URL de destí</translation>
     </message>
     <message>
-        <location filename="duplicarasientobase.ui" line="139"/>
-        <source>Tratamiento de la fecha:</source>
-        <translation type="unfinished"></translation>
+      <source>Fecha con la que quedará el asiento:</source>
+      <translation type="unfinished" >El Salvador</translation>
     </message>
     <message>
-        <location filename="duplicarasientobase.ui" line="172"/>
-        <source>Todos con la misma fecha</source>
-        <translation type="unfinished"></translation>
+      <source>Tratamiento de la fecha:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="duplicarasientobase.ui" line="179"/>
-        <source>Mantener distacia entre fechas</source>
-        <translation type="unfinished"></translation>
+      <source>Todos con la misma fecha</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="duplicarasientobase.ui" line="250"/>
-        <source>&amp;Aceptar</source>
-        <translation type="unfinished"></translation>
+      <source>Mantener distacia entre fechas</source>
+      <translation type="unfinished" >&lt;p>Seleccioneu aquí el tipus de millora de color per les imatges:
+&lt;p>&lt;b>Redueix el contrast&lt;/b>: redueix el contras de la imatge. L'algorisme 
+redueix la diferència d'intensitat entre els elements més clars i més foscos 
+de la imatge.&lt;p>&lt;b>Profunditat&lt;/b>: canvia la profunditat de color de la 
+imatge.&lt;p>&lt;b>Equalitza&lt;/b>: executa l'equalització de l'histograma de la 
+imatge.&lt;p>&lt;b>Desdibuixa&lt;/b>: barreja els colors a una distància, considerant 
+que són iguals.&lt;p>&lt;b>Escala de grisos&lt;/b>: converteix les imatges en color a 
+imatges en escala de grisos.&lt;p>&lt;b>Augmenta el contrast&lt;/b>: millora el 
+contrast de la imatge. L'algorisme augmenta les diferències d'intensitat 
+entre els elements més clars i més foscos de la imatge.&lt;p>&lt;b>Monocrom&lt;/b>: 
+transforma la imatge a blanc i negre.&lt;p>&lt;b>Negatiu&lt;/b>: substitueix cada 
+píxel pel seu color complementari. Les tonalitats vermella, verda i blava 
+d'una imatge es negativen. El blanc esdevé negre, el groc esdevé blau, etc.
+&lt;p>&lt;b>Normalitza&lt;/b>: transforma la imatge per expandir l'interval sencer 
+dels valors de color. És una tècnica per augmentar l contrast. L'algorisme 
+augmenta el contrast d'una imatge de color ajustant el color dels píxels per 
+abraçar tot l'interval de colors disponible.&lt;p>&lt;b>Segmenta&lt;/b>: segmenta una 
+imatge analitzant l'histograma dels components de color i identificant les 
+unitats homogènies amb la tècnica de desdibuixat de mitjanes \&quot;c\&quot;.
+&lt;p>&lt;b>Retalla&lt;/b>: retallat una imatge (tècnica inversa al desdibuixat). 
+L'algorisme elimina els límits que són el color de fons de la imatge.&lt;p></translation>
     </message>
     <message>
-        <location filename="duplicarasientobase.ui" line="260"/>
-        <source>&amp;Cerrar</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Aceptar</source>
+      <translation type="unfinished" >&lt;p>&lt;b>Esteu segur de que voleu executar l'script iptables que s'ha generat?&lt;/
+b>&lt;p>&lt;b>Un script iptables incorrectament configurat podria malmetre el 
+vostre ordinador.&lt;/b>&lt;p>Si el vostre sistema es bloqueja després d'aixecar 
+el tallafocs passeu a una consola de text (Ctrl+Alt+F1) i executeu els 
+següents comandaments per a reiniciar la configuració de iptables:
+&lt;p>&lt;ul>&lt;li>iptables -F &lt;/li>&lt;li>iptables -X &lt;/li>&lt;li>iptables -P INPUT 
+ACCEPT &lt;/li>&lt;li>iptables -P OUTPUT ACCEPT &lt;/li>&lt;li>iptables -P FORWARD 
+ACCEPT &lt;/li>&lt;li>iptables -t nat -F &lt;/li>&lt;li>iptables -t nat -X &lt;/
+li>&lt;li>iptables -t nat -P OUTPUT ACCEPT &lt;/li>&lt;li>iptables -t nat -P 
+PREROUTING ACCEPT &lt;/li>&lt;li>iptables -t nat -P POSTROUTING ACCEPT &lt;/
+li>&lt;li>iptables -t mangle -F &lt;/li>&lt;li>iptables -t mangle -X &lt;/
+li>&lt;li>iptables -t mangle -P INPUT ACCEPT &lt;/li>&lt;li>iptables -t mangle -P 
+OUTPUT ACCEPT &lt;/li>&lt;li>iptables -t mangle -P FORWARD ACCEPT &lt;/
+li>&lt;li>iptables -t mangle -P PREROUTING ACCEPT &lt;/li>&lt;li>iptables -t mangle -
+P POSTROUTING ACCEPT &lt;/li>&lt;/ul></translation>
     </message>
-</context>
-<context>
+    <message>
+      <source>&amp;Cerrar</source>
+      <translation type="unfinished" >Tan&amp;car</translation>
+    </message>
+  </context>
+  <context>
     <name>ExtractoBase</name>
     <message>
-        <location filename="extractobase.ui" line="13"/>
-        <source>Extracto de Cuentas</source>
-        <translation type="unfinished">Extracte de contes</translation>
+      <source>Extracto de Cuentas</source>
+      <translation type="unfinished" >Extracte de contes</translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="875"/>
-        <source>Actualizar</source>
-        <translation type="unfinished"></translation>
+      <source>Actualizar</source>
+      <translation type="unfinished" >&lt;p>&lt;b>De debò reordeno les miniatures?&lt;/b>&lt;/p> &lt;p>Ara les podeu reordenar 
+arrossegant-les pel visor de miniatures. És molt útil quan no coneixeu la 
+data exacte de les imatges. Per altra banda, si les pròpies imatges tenen 
+marques horàries vàlides, hauríeu d'emprar &lt;b>Imatges -&amp;gt; Ordena les 
+seleccionades per data i hora&lt;/b>&lt;/p></translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="449"/>
-        <source>&amp;Incluir asientos abiertos</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Incluir asientos abiertos</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractobase.ui" line="637"/>
-        <source>&amp;Todos</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Todos</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractobase.ui" line="456"/>
-        <source>Apuntes con contrapartida:</source>
-        <translation type="unfinished">Apunts amb contrapartida:</translation>
+      <source>Apuntes con contrapartida:</source>
+      <translation type="unfinished" >Apunts amb contrapartida:</translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="1070"/>
-        <source>Totales:</source>
-        <translation type="unfinished">Totals:</translation>
+      <source>Totales:</source>
+      <translation type="unfinished" >Totals:</translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="555"/>
-        <source>Punteo:</source>
-        <translation type="unfinished"></translation>
+      <source>Punteo:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractobase.ui" line="417"/>
-        <source>Apuntes con saldo superior a:</source>
-        <translation type="unfinished"></translation>
+      <source>Apuntes con saldo superior a:</source>
+      <translation type="unfinished" >&lt;p>&lt;center>&lt;b>Donació de diners&lt;/b>&lt;/center>&lt;/p>&lt;p>El KPhotoAlbum és de 
+l'ordre de magnitud de 2 anys/home de treball del meu temps lliure. Aquesta 
+feina és estricatment no retribuïda, i només ho faig pel goig de fer-ho. Dit 
+això, jo seria més que feliç per qualsevol donació petita o gran que em 
+poguéssiu fer.&lt;/p>&lt;p>Els diners s'usaran per alguna d'aquestes coses:
+&lt;ul>&lt;li>Comprar quelcom interessant per la meva càmera que em faci adaptar 
+el KPhotoAlbum per usar la nova funcionalitat (la compatibilitat amb EXIF i 
+amb el vídeo són dos bons exemples d'això).&lt;li>El projecte KPhotoAlbum (el 
+concurs de pantalles de benvinguda és un bon exemple d'això).&lt;/ul>&lt;/p></translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="439"/>
-        <source>Apuntes con saldo inferior a:</source>
-        <translation type="unfinished"></translation>
+      <source>Apuntes con saldo inferior a:</source>
+      <translation type="unfinished" >&lt;h2>AVÍS&lt;/h2>\n
+&lt;p>Les xarxes punt-a-punt, particularment les que són accessibles mitjançant 
+KMLDonkey, poden contenir material el qual estigui legalment prohibit 
+descarregar o redistribuir. És responsabilitat vostra el verificar que 
+qualsevol material que descarregueu de qualsevol xarxa punt-a-punt s'està 
+posant a la vostra disposició legalment. És també la vostra responsabilitat 
+el verificar que disposeu dels drets legals de redistribuir qualsevol 
+material que poseu a disposició d'altres mitjançant qualsevol xarxa punt-a-
+punt. En resum, és responsabilitat personal el verificar que useu aquest 
+programari en conformitat amb el copyright i demés lleis de propietat 
+intel·lectual aplicables.&lt;/p>\n
+&lt;h3>RESTRICCIONS&lt;/h3>\n
+&lt;p>Els autors d'aquest programari pensen que s'usarà per a l'intercanvi 
+legal de dades, art, programari i d'altres documents o treballs que sí es 
+poden distribuir legalment a tercers. Els autors no recolzaran i 
+descoratjaran qualsevol ús d'aquest programari que pugui violar el copyright 
+o d'altres lleis de propietat intel·lectual. En particular, els autors 
+descoratgen qualsevol transmissió de qualsevol material en violació de 
+qualsevol llei i regulació aplicable sobre la propietat intel·lectual. 
+Assumeixen que cada usuari es comportarà d'acord amb les regles i les 
+restriccions aplicables, així com amb les regles i les restriccions 
+aplicables a les xarxes o als serveis de P2P connectats directament o 
+indirectament amb aquest programari.&lt;/p>\n
+&lt;h3>RENÚNCIA DE RESPONSABILITAT&lt;/h3>\n
+&lt;p>Els autors d'aquest programari no fan i no poden exercitar cap control 
+sobre el contingut de la informació intercanviada usant aquest programari. 
+Els autors no donen garanties de cap classe, tant si està expressat o 
+implicat, pel servei que aquest programari estigui proporcionant o per les 
+dades intercanviades amb l'ajuda d'aquest. Els autors no poden ser jutjats 
+responsables de cap demanda resultat de la conducta i/o de l'ús del 
+programari per part de l'usuari que sigui d'alguna forma il·legal o que 
+perjudiqui a tal usuari o a qualsevol altra part.&lt;/p></translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="469"/>
-        <source>Fecha inicial:</source>
-        <translation type="unfinished"></translation>
+      <source>Fecha inicial:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractobase.ui" line="499"/>
-        <source>Fecha final:</source>
-        <translation type="unfinished"></translation>
+      <source>Fecha final:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractobase.ui" line="519"/>
-        <source>Cuenta inicial:</source>
-        <translation type="unfinished"></translation>
+      <source>Cuenta inicial:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractobase.ui" line="529"/>
-        <source>Cuenta final:</source>
-        <translation type="unfinished"></translation>
+      <source>Cuenta final:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractobase.ui" line="607"/>
-        <source>Apuntes &amp;no punteados</source>
-        <translation type="unfinished"></translation>
+      <source>Apuntes &amp;no punteados</source>
+      <translation type="unfinished" >Se&amp;nse intermediari</translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="622"/>
-        <source>Ap&amp;untes punteados</source>
-        <translation type="unfinished"></translation>
+      <source>Ap&amp;untes punteados</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractobase.ui" line="721"/>
-        <source>Guardar</source>
-        <translation type="unfinished"></translation>
+      <source>Guardar</source>
+      <translation type="unfinished" >Interval de vigilància:</translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="761"/>
-        <source>Imprimir</source>
-        <translation type="unfinished">Imprimir</translation>
+      <source>Imprimir</source>
+      <translation type="unfinished" >Imprimir</translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="795"/>
-        <source>Mostrar/Oculatar filtro</source>
-        <translation type="unfinished"></translation>
+      <source>Mostrar/Oculatar filtro</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractobase.ui" line="835"/>
-        <source>Configurar</source>
-        <translation type="unfinished"></translation>
+      <source>Configurar</source>
+      <translation type="unfinished" > Configuració</translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="931"/>
-        <source>Casacion</source>
-        <translation type="unfinished"></translation>
+      <source>Casacion</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractobase.ui" line="965"/>
-        <source>Guardar punteo</source>
-        <translation type="unfinished"></translation>
+      <source>Guardar punteo</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractobase.ui" line="999"/>
-        <source>Cargar punteo</source>
-        <translation type="unfinished"></translation>
+      <source>Cargar punteo</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractobase.ui" line="1033"/>
-        <source>Borrar punteo</source>
-        <translation type="unfinished"></translation>
+      <source>Borrar punteo</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractobase.ui" line="55"/>
-        <source>Saldo inicial:</source>
-        <translation type="unfinished"></translation>
+      <source>Saldo inicial:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractobase.ui" line="62"/>
-        <source>Cuenta:</source>
-        <translation type="unfinished"></translation>
+      <source>Cuenta:</source>
+      <translation type="unfinished" >Incremental seqüencial</translation>
     </message>
     <message>
-        <location filename="extractobase.ui" line="69"/>
-        <source>Haber inicial:</source>
-        <translation type="unfinished"></translation>
+      <source>Haber inicial:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractobase.ui" line="76"/>
-        <source>Debe inicial:</source>
-        <translation type="unfinished"></translation>
+      <source>Debe inicial:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractobase.ui" line="144"/>
-        <source>Nombre de la cuenta:</source>
-        <translation type="unfinished"></translation>
+      <source>Nombre de la cuenta:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractobase.ui" line="1088"/>
-        <source>Debe:</source>
-        <translation type="unfinished"></translation>
+      <source>Debe:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractobase.ui" line="1101"/>
-        <source>Haber:</source>
-        <translation type="unfinished"></translation>
+      <source>Haber:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractobase.ui" line="1171"/>
-        <source>Saldo:</source>
-        <translation type="unfinished"></translation>
+      <source>Saldo:</source>
+      <translation type="unfinished" />
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>ExtractoPrintBase</name>
-    <message encoding="UTF-8">
-        <location filename="extractoprintbase.ui" line="16"/>
-        <source>Impresión del Extracto</source>
-        <translation type="unfinished">Impresió de l&apos;Extracte</translation>
+    <message>
+      <source>Impresión del Extracto</source>
+      <translation type="unfinished" >Impresió de l'Extracte</translation>
     </message>
     <message>
-        <location filename="extractoprintbase.ui" line="64"/>
-        <source>&amp;Texto Plano</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Texto Plano</source>
+      <translation type="unfinished" >\\begin{figure}[emplaçament]\n
+cos de la figura\n
+\\caption{títol de la figura}\n
+\\end{figure}\n
+Les figures són objectes que no formen part del text normal, i normalment es 
+situen en un lloc adient\n
+L'argument opcional [emplaçament] determina on intentarà LaTeX situar la 
+vostra figura\n
+h : Aquí - a la posició del text on apareix l'entorn de la figura\n
+t : A dalt - a dalt d'una pàgina de text\n
+b : A baix - a baix d'una pàgina de text\n
+p : Pàgina d'elements flotants - en una pàgina separada que no contindrà 
+text, només elements flotants\n
+El cos de la figura pot estar composat del text, les comandes LaTeX, etc, 
+que vulgueu.\n
+La comanda \\caption us permet posar un títol a la vostra figura.</translation>
     </message>
     <message>
-        <location filename="extractoprintbase.ui" line="82"/>
-        <source>HT&amp;ML</source>
-        <translation type="unfinished"></translation>
+      <source>HT&amp;ML</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractoprintbase.ui" line="97"/>
-        <source>Propietario</source>
-        <translation type="unfinished">Propietari</translation>
+      <source>Propietario</source>
+      <translation type="unfinished" >Propietari</translation>
     </message>
     <message>
-        <location filename="extractoprintbase.ui" line="159"/>
-        <source>&amp;Cancelar</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Cancelar</source>
+      <translation type="unfinished" >cancel·lat</translation>
     </message>
     <message>
-        <location filename="extractoprintbase.ui" line="149"/>
-        <source>&amp;Imprimir</source>
-        <translation type="unfinished">&amp;Imprimir</translation>
+      <source>&amp;Imprimir</source>
+      <translation type="unfinished" >&amp;Imprimir</translation>
     </message>
     <message>
-        <location filename="extractoprintbase.ui" line="36"/>
-        <source>Formato:</source>
-        <translation type="unfinished"></translation>
+      <source>Formato:</source>
+      <translation type="unfinished" >&amp;Format:</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>ExtractoSubForm</name>
     <message>
-        <location filename="extractosubform.cpp" line="50"/>
-        <source>idcuenta</source>
-        <translation type="unfinished"></translation>
+      <source>idcuenta</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="51"/>
-        <source>tipocuenta</source>
-        <translation type="unfinished"></translation>
+      <source>tipocuenta</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="93"/>
-        <source>Borrar registro</source>
-        <translation type="unfinished"></translation>
+      <source>Borrar registro</source>
+      <translation type="unfinished" >&lt;h2>AVÍS&lt;/h2>\n
+&lt;p>Les xarxes punt-a-punt, particularment les que són accessibles mitjançant 
+KMLDonkey, poden contenir material el qual estigui legalment prohibit 
+descarregar o redistribuir. És responsabilitat vostra el verificar que 
+qualsevol material que descarregueu de qualsevol xarxa punt-a-punt s'està 
+posant a la vostra disposició legalment. És també la vostra responsabilitat 
+el verificar que disposeu dels drets legals de redistribuir qualsevol 
+material que poseu a disposició d'altres mitjançant qualsevol xarxa punt-a-
+punt. En resum, és responsabilitat personal el verificar que useu aquest 
+programari en conformitat amb el copyright i demés lleis de propietat 
+intel·lectual aplicables.&lt;/p>\n
+&lt;h3>RESTRICCIONS&lt;/h3>\n
+&lt;p>Els autors d'aquest programari pensen que s'usarà per a l'intercanvi 
+legal de dades, art, programari i d'altres documents o treballs que sí es 
+poden distribuir legalment a tercers. Els autors no recolzaran i 
+descoratjaran qualsevol ús d'aquest programari que pugui violar el copyright 
+o d'altres lleis de propietat intel·lectual. En particular, els autors 
+descoratgen qualsevol transmissió de qualsevol material en violació de 
+qualsevol llei i regulació aplicable sobre la propietat intel·lectual. 
+Assumeixen que cada usuari es comportarà d'acord amb les regles i les 
+restriccions aplicables, així com amb les regles i les restriccions 
+aplicables a les xarxes o als serveis de P2P connectats directament o 
+indirectament amb aquest programari.&lt;/p>\n
+&lt;h3>RENÚNCIA DE RESPONSABILITAT&lt;/h3>\n
+&lt;p>Els autors d'aquest programari no fan i no poden exercitar cap control 
+sobre el contingut de la informació intercanviada usant aquest programari. 
+Els autors no donen garanties de cap classe, tant si està expressat o 
+implicat, pel servei que aquest programari estigui proporcionant o per les 
+dades intercanviades amb l'ajuda d'aquest. Els autors no poden ser jutjats 
+responsables de cap demanda resultat de la conducta i/o de l'ús del 
+programari per part de l'usuari que sigui d'alguna forma il·legal o que 
+perjudiqui a tal usuari o a qualsevol altra part.&lt;/p></translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="96"/>
-        <source>Ajustar columa</source>
-        <translation type="unfinished"></translation>
+      <source>Ajustar columa</source>
+      <translation type="unfinished" >&lt;p>Seleccioneu aquí el tipus de millora de color per les imatges:
+&lt;p>&lt;b>Redueix el contrast&lt;/b>: redueix el contras de la imatge. L'algorisme 
+redueix la diferència d'intensitat entre els elements més clars i més foscos 
+de la imatge.&lt;p>&lt;b>Profunditat&lt;/b>: canvia la profunditat de color de la 
+imatge.&lt;p>&lt;b>Equalitza&lt;/b>: executa l'equalització de l'histograma de la 
+imatge.&lt;p>&lt;b>Desdibuixa&lt;/b>: barreja els colors a una distància, considerant 
+que són iguals.&lt;p>&lt;b>Escala de grisos&lt;/b>: converteix les imatges en color a 
+imatges en escala de grisos.&lt;p>&lt;b>Augmenta el contrast&lt;/b>: millora el 
+contrast de la imatge. L'algorisme augmenta les diferències d'intensitat 
+entre els elements més clars i més foscos de la imatge.&lt;p>&lt;b>Monocrom&lt;/b>: 
+transforma la imatge a blanc i negre.&lt;p>&lt;b>Negatiu&lt;/b>: substitueix cada 
+píxel pel seu color complementari. Les tonalitats vermella, verda i blava 
+d'una imatge es negativen. El blanc esdevé negre, el groc esdevé blau, etc.
+&lt;p>&lt;b>Normalitza&lt;/b>: transforma la imatge per expandir l'interval sencer 
+dels valors de color. És una tècnica per augmentar l contrast. L'algorisme 
+augmenta el contrast d'una imatge de color ajustant el color dels píxels per 
+abraçar tot l'interval de colors disponible.&lt;p>&lt;b>Segmenta&lt;/b>: segmenta una 
+imatge analitzant l'histograma dels components de color i identificant les 
+unitats homogènies amb la tècnica de desdibuixat de mitjanes \&quot;c\&quot;.
+&lt;p>&lt;b>Retalla&lt;/b>: retallat una imatge (tècnica inversa al desdibuixat). 
+L'algorisme elimina els límits que són el color de fons de la imatge.&lt;p></translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="97"/>
-        <source>Ajustar altura</source>
-        <translation type="unfinished"></translation>
+      <source>Ajustar altura</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="98"/>
-        <source>Ajustar columnas</source>
-        <translation type="unfinished"></translation>
+      <source>Ajustar columnas</source>
+      <translation type="unfinished" >L'entorn de tabulació proporciona una manera d'alinear text en columnes.\n
+\\begin{tabbing}\n
+text \\= més text \\= encara més text \\= últim text \\\\\n
+segona fila \\>  \\> més \\\\\n
+\\end{tabbing}\n
+Comandes :\n
+\\=  Situa una tabulació a la posició actual.\n
+\\>  Avança a la següent tabulació.\n
+\\&lt;  Us permet posar alguna cosa a l'esquerra del marge local sense canviar 
+el marge. Només es pot fer servir a l'inici de la línia.\n
+\\+  Mou el marge esquerre de la següent i de totes les comandes següents 
+una tabulació cap a la dreta\n
+\\-  Mou el marge esquerre de la següent i de totes les comandes següents 
+una tabulació cap a l'esquerra\n
+\\'  Mou qualsevol cosa que hàgiu escrit a la columna actual cap a la dreta 
+de la columna anterior, alineat al tabulador de la columna actual. \n
+\\`  Us permet posar text alineat a la dreta de qualsevol tabulació, inclosa 
+la tabulació 0\n
+\\kill  Situa tabulacions sense produir text.\n
+\\a  En un entorn de tabulació, les comandes \\=, \\' i \\` no produeixen 
+accents de manera normal. En comptes d'aquestes, es fan servir les comandes 
+\\a=, \\a' i \\a`.</translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="99"/>
-        <source>Ajustar alturas</source>
-        <translation type="unfinished"></translation>
+      <source>Ajustar alturas</source>
+      <translation type="unfinished" >&lt;p>&lt;b>Límit&lt;/b>: aquest valor defineix la distància en pixels en la que el 
+filtre cerca límits. Quan aquest valor s'incrementa, el soroll de pics se 
+suprimeix. Eventualment, podeu reajustar el filtre &lt;b>Límit&lt;/b> quan canvieu 
+aquest paràmetre. Quan aquest valor és massa alt, el filtre adaptatiu no pot 
+seguir els detalls de la imatge amb cura, i pot reaparèixer soroll o es pot 
+produir un desenfocament.</translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="101"/>
-        <source>Ver configurador de subformulario</source>
-        <translation type="unfinished"></translation>
+      <source>Ver configurador de subformulario</source>
+      <translation type="unfinished" >&lt;p>...el K3b té dos tipus d'arranjament. D'una banda el K3b té l'arranjament 
+com la majoria\n
+d'aplicacions del KDE tenen accessible mitjançant d'un diàleg de 
+configuració a través del menú d'arranjament;\n
+d'altra banda, cada diàleg d'acció del K3b té tres botons per carregar i 
+desar arranjaments per omissió\n
+per a l'acció. D'aquesta manera un pot, per exemple, establir la 
+configuració per omissió a l'hora de copiar CD: aquestes opcions per 
+omissió\n
+Seran carregades cada vegada que s'obri el diàleg de còpia de CD. El botó 
+&lt;em>Arranjament per omissió del K3b&lt;/em>\n
+restablirà la configuració &lt;em>de fàbrica&lt;/em> en cas de que no sapigueu si 
+la configuració que heu triat\n
+és apropiada.&lt;/p>\n</translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="46"/>
-        <source>idapunte</source>
-        <translation type="unfinished"></translation>
+      <source>idapunte</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="47"/>
-        <source>codigoborrador</source>
-        <translation type="unfinished"></translation>
+      <source>codigoborrador</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="48"/>
-        <source>idasiento</source>
-        <translation type="unfinished"></translation>
+      <source>idasiento</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="49"/>
-        <source>iddiario</source>
-        <translation type="unfinished"></translation>
+      <source>iddiario</source>
+      <translation type="unfinished" >&lt;qt>Aquest és el menú de configuració pel fitxer de diàleg. Des d'aquest 
+menú es pot accedir a diverses opcions, incloent:&lt;ul>&lt;li>com s'ordenen els 
+fitxers a la llista&lt;/li>&lt;li>tipus de vista, incloent icona i llista&lt;/
+li>&lt;li>presentació de fitxers ocults&lt;/li>&lt;li>el plafó de navegació d'accés 
+ràpid&lt;/li>&lt;li>vistes prèvies de fitxers &lt;/li>&lt;li>separació de directoris 
+dels fitxers&lt;/li>&lt;/ul>&lt;/qt></translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="37"/>
-        <source>Fecha</source>
-        <translation type="unfinished">Data</translation>
+      <source>Fecha</source>
+      <translation type="unfinished" >Data</translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="41"/>
-        <source>Concepto</source>
-        <translation type="unfinished">Concepte</translation>
+      <source>Concepto</source>
+      <translation type="unfinished" >Concepte</translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="38"/>
-        <source>Cuenta</source>
-        <translation type="unfinished">Conta</translation>
+      <source>Cuenta</source>
+      <translation type="unfinished" >Conta</translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="42"/>
-        <source>Debe</source>
-        <translation type="unfinished"></translation>
+      <source>Debe</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="43"/>
-        <source>Haber</source>
-        <translation type="unfinished">Haber</translation>
+      <source>Haber</source>
+      <translation type="unfinished" >Haber</translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="52"/>
-        <source>contrapartida</source>
-        <translation type="unfinished"></translation>
+      <source>contrapartida</source>
+      <translation type="unfinished" >&lt;h2>AVÍS&lt;/h2>\n
+&lt;p>Les xarxes punt-a-punt, particularment les que són accessibles mitjançant 
+KMLDonkey, poden contenir material el qual estigui legalment prohibit 
+descarregar o redistribuir. És responsabilitat vostra el verificar que 
+qualsevol material que descarregueu de qualsevol xarxa punt-a-punt s'està 
+posant a la vostra disposició legalment. És també la vostra responsabilitat 
+el verificar que disposeu dels drets legals de redistribuir qualsevol 
+material que poseu a disposició d'altres mitjançant qualsevol xarxa punt-a-
+punt. En resum, és responsabilitat personal el verificar que useu aquest 
+programari en conformitat amb el copyright i demés lleis de propietat 
+intel·lectual aplicables.&lt;/p>\n
+&lt;h3>RESTRICCIONS&lt;/h3>\n
+&lt;p>Els autors d'aquest programari pensen que s'usarà per a l'intercanvi 
+legal de dades, art, programari i d'altres documents o treballs que sí es 
+poden distribuir legalment a tercers. Els autors no recolzaran i 
+descoratjaran qualsevol ús d'aquest programari que pugui violar el copyright 
+o d'altres lleis de propietat intel·lectual. En particular, els autors 
+descoratgen qualsevol transmissió de qualsevol material en violació de 
+qualsevol llei i regulació aplicable sobre la propietat intel·lectual. 
+Assumeixen que cada usuari es comportarà d'acord amb les regles i les 
+restriccions aplicables, així com amb les regles i les restriccions 
+aplicables a les xarxes o als serveis de P2P connectats directament o 
+indirectament amb aquest programari.&lt;/p>\n
+&lt;h3>RENÚNCIA DE RESPONSABILITAT&lt;/h3>\n
+&lt;p>Els autors d'aquest programari no fan i no poden exercitar cap control 
+sobre el contingut de la informació intercanviada usant aquest programari. 
+Els autors no donen garanties de cap classe, tant si està expressat o 
+implicat, pel servei que aquest programari estigui proporcionant o per les 
+dades intercanviades amb l'ajuda d'aquest. Els autors no poden ser jutjats 
+responsables de cap demanda resultat de la conducta i/o de l'ús del 
+programari per part de l'usuari que sigui d'alguna forma il·legal o que 
+perjudiqui a tal usuari o a qualsevol altra part.&lt;/p></translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="54"/>
-        <source>idcanal</source>
-        <translation type="unfinished"></translation>
+      <source>idcanal</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="55"/>
-        <source>Canal</source>
-        <translation type="unfinished">Canal</translation>
+      <source>Canal</source>
+      <translation type="unfinished" >Canal</translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="56"/>
-        <source>marcaconciliacion</source>
-        <translation type="unfinished"></translation>
+      <source>marcaconciliacion</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="57"/>
-        <source>idc_coste</source>
-        <translation type="unfinished"></translation>
+      <source>idc_coste</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="58"/>
-        <source>idtipoiva</source>
-        <translation type="unfinished"></translation>
+      <source>idtipoiva</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="36"/>
-        <source>Punteo</source>
-        <translation type="unfinished"></translation>
+      <source>Punteo</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="39"/>
-        <source>Asiento</source>
-        <translation type="unfinished"></translation>
+      <source>Asiento</source>
+      <translation type="unfinished" >&lt;p>...el Kile ara conté moltes eines d'edició per ajudar-vos a escriure en 
+LaTeX més fàcilment? Feu una ullada  als menús &lt;b>Autocompletat, Selecciona, 
+Esborra., Entorn, i Grup TeX&lt;/b> del menú Edita.&lt;/p>\n</translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="44"/>
-        <source>Saldo</source>
-        <translation type="unfinished"></translation>
+      <source>Saldo</source>
+      <translation type="unfinished" >Especifiqueu aquí les adreces per a aquesta classe d'usuari;\n
+es poden englobar:\n
+* = qualsevol adreça\n
+*.dominilocal.com = qualsevol adreça al dominilocal.com\n
+127.0.0.* = IP 127.0.0.1-127.0.0.255\n
+...</translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="53"/>
-        <source>Comentario</source>
-        <translation type="unfinished"></translation>
+      <source>Comentario</source>
+      <translation type="unfinished" >Comment=Algú ha iniciat un xat DCC amb vostè</translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="59"/>
-        <source>Orden</source>
-        <translation type="unfinished"></translation>
+      <source>Orden</source>
+      <translation type="unfinished" >Marc:</translation>
     </message>
     <message>
-        <location filename="extractosubform.cpp" line="40"/>
-        <source>Descripcion</source>
-        <translation type="unfinished"></translation>
+      <source>Descripcion</source>
+      <translation type="unfinished" >descripció,</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>FPagoBase</name>
     <message>
-        <location filename="fpagobase.ui" line="246"/>
-        <source>Plazo del primer recibo (dias):</source>
-        <translation type="unfinished"></translation>
+      <source>Plazo del primer recibo (dias):</source>
+      <translation type="unfinished" > Esborra </translation>
     </message>
     <message>
-        <location filename="fpagobase.ui" line="13"/>
-        <source>Formas de pago</source>
-        <translation type="unfinished"></translation>
+      <source>Formas de pago</source>
+      <translation type="unfinished" >&lt;p>&lt;b>EPS&lt;/b>: el format de fitxer d'imatge \&quot;Adobe Encapsulated PostScript
+\&quot; és un programa de llenguatge PostScript que descriu l'aparença d'una 
+pàgina normal. Habitualment, el propòsit del fitxer EPS és encastar-se dins 
+una altra descripció de pàgina en llenguatge PostScript.</translation>
     </message>
     <message>
-        <location filename="fpagobase.ui" line="73"/>
-        <source>Nueva forma de pago</source>
-        <translation type="unfinished"></translation>
+      <source>Nueva forma de pago</source>
+      <translation type="unfinished" >&lt;p>&lt;b>EPS&lt;/b>: el format de fitxer d'imatge \&quot;Adobe Encapsulated PostScript
+\&quot; és un programa de llenguatge PostScript que descriu l'aparença d'una 
+pàgina normal. Habitualment, el propòsit del fitxer EPS és encastar-se dins 
+una altra descripció de pàgina en llenguatge PostScript.</translation>
     </message>
     <message>
-        <location filename="fpagobase.ui" line="104"/>
-        <source>Borrar forma de pago</source>
-        <translation type="unfinished"></translation>
+      <source>Borrar forma de pago</source>
+      <translation type="unfinished" >&lt;p>La codificació de les mostres és lineal amb signe (en complement a 2), 
+lineal sense signe, u-law (logarítmica), A-law (logarítmica), ADPCM, 
+IMA_ADPCM, GSM, o punt flotant.&lt;/p>\n
+&lt;p>&lt;b>U-law&lt;/b> (abreviatura de mu-law) i &lt;b>A-law&lt;/b> són els estàndards 
+nordamericà i internacional per a la compressió logarítmica del so 
+telefònic. Quan es descomprimeix, u-law té aproximadament la precisió de 
+l'àudio PCM de 14 bits i el A-law té una precisió aproximada a la de l'àudio 
+PCM de 13 bits. Les dades A-law i u-law a vegades es codifiquen fent servir 
+un ordre de bits invertir (p.ex. MSB es converteix en LSB).&lt;br> &lt;b>ADPCM &lt;/
+b> és una forma de compressió de so  que té una bona relació entre bona 
+qualitat de so i una codificació i decodificació ràpides. Es fa servir per a 
+la compressió de so telefònic i en llocs on la plena fidelitat no és 
+important. Quan es descomprimeix té aproximadament la precisió de l'àudio 
+PCM de 16 bits. Algunes versions populars de l'ADPCM són G.726, MS ADPCM, i 
+IMA ADPCM. Té diferents significats en diferents formats de fitxer. En 
+fitxers .wav representa fitxers MS ADPCM, en tots els altres significa G.726 
+ADPCM.&lt;br> &lt;b>IMA ADPCM&lt;/b> és una forma específica de compressió ADPCM, 
+lleugerament simple i amb una mica menys de fidelitat que la versió ADPCM de 
+Microsoft. IMA ADPCM també s'anomena DVI ADPCM.&lt;br> &lt;b>GSM&lt;/b> és un 
+estàndard emprat per a la compressió de so telefònic en països europeus i 
+està guanyant popularitat degut a la seva bona qualitat. Treballar amb dades 
+d'àudio GSM acostuma a consumir molta CPU.&lt;/p> &lt;p>&lt;em>Descripció basada en 
+la pàgina del manual de SoX&lt;/em>&lt;/p></translation>
     </message>
     <message>
-        <location filename="fpagobase.ui" line="135"/>
-        <source>Guardar forma de pago</source>
-        <translation type="unfinished"></translation>
+      <source>Guardar forma de pago</source>
+      <translation type="unfinished" >&lt;p>&lt;b>EPS&lt;/b>: el format de fitxer d'imatge \&quot;Adobe Encapsulated PostScript
+\&quot; és un programa de llenguatge PostScript que descriu l'aparença d'una 
+pàgina normal. Habitualment, el propòsit del fitxer EPS és encastar-se dins 
+una altra descripció de pàgina en llenguatge PostScript.</translation>
     </message>
     <message>
-        <location filename="fpagobase.ui" line="183"/>
-        <source>Forma de pago:</source>
-        <translation type="unfinished"></translation>
+      <source>Forma de pago:</source>
+      <translation type="unfinished" >&lt;p>&lt;b>EPS&lt;/b>: el format de fitxer d'imatge \&quot;Adobe Encapsulated PostScript
+\&quot; és un programa de llenguatge PostScript que descriu l'aparença d'una 
+pàgina normal. Habitualment, el propòsit del fitxer EPS és encastar-se dins 
+una altra descripció de pàgina en llenguatge PostScript.</translation>
     </message>
     <message>
-        <location filename="fpagobase.ui" line="204"/>
-        <source>Datos:</source>
-        <translation type="unfinished"></translation>
+      <source>Datos:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="fpagobase.ui" line="225"/>
-        <source>Nombre de la forma de pago:</source>
-        <translation type="unfinished"></translation>
+      <source>Nombre de la forma de pago:</source>
+      <translation type="unfinished" >&lt;p>&lt;b>EPS&lt;/b>: el format de fitxer d'imatge \&quot;Adobe Encapsulated PostScript
+\&quot; és un programa de llenguatge PostScript que descriu l'aparença d'una 
+pàgina normal. Habitualment, el propòsit del fitxer EPS és encastar-se dins 
+una altra descripció de pàgina en llenguatge PostScript.</translation>
     </message>
     <message>
-        <location filename="fpagobase.ui" line="264"/>
-        <source>Numero de plazos:</source>
-        <translation type="unfinished"></translation>
+      <source>Numero de plazos:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="fpagobase.ui" line="285"/>
-        <source>Tipo plazo primer pago:</source>
-        <translation type="unfinished"></translation>
+      <source>Tipo plazo primer pago:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="fpagobase.ui" line="303"/>
-        <source>Plazo entre recibos (dias):</source>
-        <translation type="unfinished"></translation>
+      <source>Plazo entre recibos (dias):</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="fpagobase.ui" line="321"/>
-        <source>Tipo plazo entre recibos:</source>
-        <translation type="unfinished"></translation>
+      <source>Tipo plazo entre recibos:</source>
+      <translation type="unfinished" />
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>ListConfiguracionSubForm</name>
     <message>
-        <location filename="propiedadesempresa.cpp" line="149"/>
-        <source>Nombre</source>
-        <translation type="unfinished">Nom</translation>
+      <source>Nombre</source>
+      <translation type="unfinished" >Nom</translation>
     </message>
     <message>
-        <location filename="propiedadesempresa.cpp" line="150"/>
-        <source>Valor</source>
-        <translation type="unfinished"></translation>
+      <source>Valor</source>
+      <translation type="unfinished" >Configurador de colors, diàleg de ressaltat</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>ListCuentasBase</name>
     <message>
-        <location filename="listcuentasbase.ui" line="136"/>
-        <source>Ctrl+N</source>
-        <translation type="unfinished"></translation>
+      <source>Ctrl+N</source>
+      <translation type="unfinished" >Ctrl+N</translation>
     </message>
     <message>
-        <location filename="listcuentasbase.ui" line="166"/>
-        <source>Editar cuenta</source>
-        <translation type="unfinished"></translation>
+      <source>Editar cuenta</source>
+      <translation type="unfinished" >&lt;p>Un Sector de Punt d'Accés, APS, és un sector de vídeo MPEG en el VCD/SVCD 
+que és adequat per a ser-hi saltat directament.&lt;p>Els APS són necessaris 
+pels punts d'entrada i les taules d'exploració. APS ha de satisfer els 
+requisits per precedir tots els I-frames per una capçalera GOP, la qual al 
+seu torn ha de ser precedida per una capçalera de seqüència.&lt;p>Els codis 
+d'inici d'aquests 3 elements han d'estar tots en el mateix sector/paquet 
+MPEG, per així formar el que s'anomena un sector de punt d'accés.&lt;p>Aquest 
+requeriment es pot relaxar habilitant l'opció d'APS relaxat, p.ex. tots els 
+sectors que continguin un I-frame seran considerats com un APS.&lt;p>&lt;b>Atenció:
+&lt;/b> la capçalera de seqüència és necessària per tal de que un dispositiu de 
+reproducció sàpiga els paràmetres de visualització, com ara la resolució i 
+la taxa de fotogrames; relaxar el requeriment d'APS pot provocar punts 
+d'entrada no vàlids.</translation>
     </message>
     <message>
-        <location filename="listcuentasbase.ui" line="226"/>
-        <source>Ctrl+D</source>
-        <translation type="unfinished"></translation>
+      <source>Ctrl+D</source>
+      <translation type="unfinished" >Ctrl+C</translation>
     </message>
     <message>
-        <location filename="listcuentasbase.ui" line="460"/>
-        <source>S&amp;ubcuentas</source>
-        <translation type="unfinished"></translation>
+      <source>S&amp;ubcuentas</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="listcuentasbase.ui" line="15"/>
-        <source>Plan de cuentas</source>
-        <translation type="unfinished"></translation>
+      <source>Plan de cuentas</source>
+      <translation type="unfinished" >NOTA: Alguns bons nodes DHT coneguts ja s'han inserit. Però probablement 
+també voldreu inserir les vostres adreces IP i ports si preveieu sembrar 
+aquest torrent.</translation>
     </message>
     <message>
-        <location filename="listcuentasbase.ui" line="121"/>
-        <source>Nueva cuenta</source>
-        <translation type="unfinished"></translation>
+      <source>Nueva cuenta</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="listcuentasbase.ui" line="181"/>
-        <source>Ctrl+E</source>
-        <translation type="unfinished"></translation>
+      <source>Ctrl+E</source>
+      <translation type="unfinished" >Ctrl+C</translation>
     </message>
     <message>
-        <location filename="listcuentasbase.ui" line="211"/>
-        <source>Borrar cuenta</source>
-        <translation type="unfinished"></translation>
+      <source>Borrar cuenta</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="listcuentasbase.ui" line="248"/>
-        <source>Imprimir cuentas</source>
-        <translation type="unfinished"></translation>
+      <source>Imprimir cuentas</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="listcuentasbase.ui" line="263"/>
-        <source>Ctrl+P</source>
-        <translation type="unfinished"></translation>
+      <source>Ctrl+P</source>
+      <translation type="unfinished" >Ctrl+P</translation>
     </message>
     <message>
-        <location filename="listcuentasbase.ui" line="293"/>
-        <source>Exportar cuentas</source>
-        <translation type="unfinished"></translation>
+      <source>Exportar cuentas</source>
+      <translation type="unfinished" >&lt;h2>K3bSetup 2&lt;/h2>&lt;p>Aquest senzill assistent de configuració es capaç 
+d'establir els permisos necessaris per tal de poder gravar CDs i DVDs amb el 
+K3b.&lt;p>No té en compte coses com «devfs» o «resmgr». En la majoria de casos 
+això no suposa cap problema, però en alguns sistemes els permisos podrien 
+ser alterats la propera vegada que entreu al vostre compte o reinicieu 
+l'ordinador. En aquests casos el millor és consultar la documentació de la 
+distribució. &lt;p>La important tasca que realitza el K3bSetup 2 és concedir 
+permís d'escriptura als dispositius de CD i DVD.&lt;p>&lt;b>Precaució:&lt;/b> encara 
+que el K3bSetup 2 no hauria de ser capaç d'espatllar el vostre sistema, no 
+es pot garantir res.</translation>
     </message>
     <message>
-        <location filename="listcuentasbase.ui" line="335"/>
-        <source>Importar cuentas</source>
-        <translation type="unfinished"></translation>
+      <source>Importar cuentas</source>
+      <translation type="unfinished" >&lt;h2>K3bSetup 2&lt;/h2>&lt;p>Aquest senzill assistent de configuració es capaç 
+d'establir els permisos necessaris per tal de poder gravar CDs i DVDs amb el 
+K3b.&lt;p>No té en compte coses com «devfs» o «resmgr». En la majoria de casos 
+això no suposa cap problema, però en alguns sistemes els permisos podrien 
+ser alterats la propera vegada que entreu al vostre compte o reinicieu 
+l'ordinador. En aquests casos el millor és consultar la documentació de la 
+distribució. &lt;p>La important tasca que realitza el K3bSetup 2 és concedir 
+permís d'escriptura als dispositius de CD i DVD.&lt;p>&lt;b>Precaució:&lt;/b> encara 
+que el K3bSetup 2 no hauria de ser capaç d'espatllar el vostre sistema, no 
+es pot garantir res.</translation>
     </message>
     <message>
-        <location filename="listcuentasbase.ui" line="377"/>
-        <source>Actualizar listado</source>
-        <translation type="unfinished"></translation>
+      <source>Actualizar listado</source>
+      <translation type="unfinished" >&lt;h1>Descarrega MLDonkey&lt;/h1>&lt;p>El primer que s'ha de fer és obtenir una base 
+de MLDonkey. Aquesta és l'eina que s'encarrega de compartir fitxers per a la 
+qual KMLDonkey actua com a interfície.&lt;/p>&lt;p>Visiteu un dels llocs web 
+llistats a sota (feu clic a sobre dels enllaços), i descarregueu un paquet 
+binari que sigui apropiat per al vostre sistema; alternativament, si el 
+vostre sistema de gestió de paquets subministra un paquet per a MLDonkey, el 
+podeu instal·lar, i verifiqueu que el binari  \&quot;mlnet\&quot; està instal·lat 
+(normalment en &lt;em>/usr/bin&lt;/em>).&lt;/p>&lt;ul>%1&lt;/ul>&lt;p>Extraieu el paquet en 
+algun lloc convenient, i premeu \&quot;Següent\&quot;. No us preocupeu de configurar o 
+iniciar la base quan l'hageu descarregat; ho farem més endavant.&lt;/p></translation>
     </message>
     <message>
-        <location filename="listcuentasbase.ui" line="392"/>
-        <source>F5</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <location filename="listcuentasbase.ui" line="428"/>
-        <source>Búsqueda:</source>
-        <translation type="unfinished"></translation>
+      <source>F5</source>
+      <translation type="unfinished" >F5</translation>
     </message>
     <message>
-        <location filename="listcuentasbase.ui" line="444"/>
-        <source>Plan &amp;contable</source>
-        <translation type="unfinished"></translation>
+      <source>Búsqueda:</source>
+      <translation type="unfinished" />
     </message>
-</context>
-<context>
+    <message>
+      <source>Plan &amp;contable</source>
+      <translation type="unfinished" >Més d'una taula o àlies \&quot;%1\&quot; definits contenen el camp \&quot;%2\&quot;</translation>
+    </message>
+  </context>
+  <context>
     <name>ListLinAsiento1View</name>
     <message>
-        <location filename="listlinasiento1view.cpp" line="35"/>
-        <source>Fecha</source>
-        <translation type="unfinished">Data</translation>
+      <source>Fecha</source>
+      <translation type="unfinished" >Data</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="39"/>
-        <source>Concepto contable</source>
-        <translation type="unfinished"></translation>
+      <source>Concepto contable</source>
+      <translation type="unfinished" >No s'ha trobat la taula que conté el camp \&quot;%1\&quot;</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="53"/>
-        <source>Id cuenta</source>
-        <translation type="unfinished"></translation>
+      <source>Id cuenta</source>
+      <translation type="unfinished" >programador principal i mantenidor actual</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="36"/>
-        <source>Codigo</source>
-        <translation type="unfinished">codi</translation>
+      <source>Codigo</source>
+      <translation type="unfinished" >codi</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="54"/>
-        <source>Tipo de cuenta</source>
-        <translation type="unfinished"></translation>
+      <source>Tipo de cuenta</source>
+      <translation type="unfinished" >&lt;p>Un Sector de Punt d'Accés, APS, és un sector de vídeo MPEG en el VCD/SVCD 
+que és adequat per a ser-hi saltat directament.&lt;p>Els APS són necessaris 
+pels punts d'entrada i les taules d'exploració. APS ha de satisfer els 
+requisits per precedir tots els I-frames per una capçalera GOP, la qual al 
+seu torn ha de ser precedida per una capçalera de seqüència.&lt;p>Els codis 
+d'inici d'aquests 3 elements han d'estar tots en el mateix sector/paquet 
+MPEG, per així formar el que s'anomena un sector de punt d'accés.&lt;p>Aquest 
+requeriment es pot relaxar habilitant l'opció d'APS relaxat, p.ex. tots els 
+sectors que continguin un I-frame seran considerats com un APS.&lt;p>&lt;b>Atenció:
+&lt;/b> la capçalera de seqüència és necessària per tal de que un dispositiu de 
+reproducció sàpiga els paràmetres de visualització, com ara la resolució i 
+la taxa de fotogrames; relaxar el requeriment d'APS pot provocar punts 
+d'entrada no vàlids.</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="37"/>
-        <source>Descripcion de la cuenta</source>
-        <translation type="unfinished"></translation>
+      <source>Descripcion de la cuenta</source>
+      <translation type="unfinished" >&lt;p>La codificació de les mostres és lineal amb signe (en complement a 2), 
+lineal sense signe, u-law (logarítmica), A-law (logarítmica), ADPCM, 
+IMA_ADPCM, GSM, o punt flotant.&lt;/p>\n
+&lt;p>&lt;b>U-law&lt;/b> (abreviatura de mu-law) i &lt;b>A-law&lt;/b> són els estàndards 
+nordamericà i internacional per a la compressió logarítmica del so 
+telefònic. Quan es descomprimeix, u-law té aproximadament la precisió de 
+l'àudio PCM de 14 bits i el A-law té una precisió aproximada a la de l'àudio 
+PCM de 13 bits. Les dades A-law i u-law a vegades es codifiquen fent servir 
+un ordre de bits invertir (p.ex. MSB es converteix en LSB).&lt;br> &lt;b>ADPCM &lt;/
+b> és una forma de compressió de so  que té una bona relació entre bona 
+qualitat de so i una codificació i decodificació ràpides. Es fa servir per a 
+la compressió de so telefònic i en llocs on la plena fidelitat no és 
+important. Quan es descomprimeix té aproximadament la precisió de l'àudio 
+PCM de 16 bits. Algunes versions populars de l'ADPCM són G.726, MS ADPCM, i 
+IMA ADPCM. Té diferents significats en diferents formats de fitxer. En 
+fitxers .wav representa fitxers MS ADPCM, en tots els altres significa G.726 
+ADPCM.&lt;br> &lt;b>IMA ADPCM&lt;/b> és una forma específica de compressió ADPCM, 
+lleugerament simple i amb una mica menys de fidelitat que la versió ADPCM de 
+Microsoft. IMA ADPCM també s'anomena DVI ADPCM.&lt;br> &lt;b>GSM&lt;/b> és un 
+estàndard emprat per a la compressió de so telefònic en països europeus i 
+està guanyant popularitat degut a la seva bona qualitat. Treballar amb dades 
+d'àudio GSM acostuma a consumir molta CPU.&lt;/p> &lt;p>&lt;em>Descripció basada en 
+la pàgina del manual de SoX&lt;/em>&lt;/p></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="38"/>
-        <source>Descripcion</source>
-        <translation type="unfinished">descripció</translation>
+      <source>Descripcion</source>
+      <translation type="unfinished" >descripció</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="40"/>
-        <source>Debe</source>
-        <translation type="unfinished"></translation>
+      <source>Debe</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="41"/>
-        <source>Haber</source>
-        <translation type="unfinished">Haber</translation>
+      <source>Haber</source>
+      <translation type="unfinished" >Haber</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="42"/>
-        <source>Contrapartida</source>
-        <translation type="unfinished">Contrapartida</translation>
+      <source>Contrapartida</source>
+      <translation type="unfinished" >Contrapartida</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="43"/>
-        <source>Comentario</source>
-        <translation type="unfinished"></translation>
+      <source>Comentario</source>
+      <translation type="unfinished" >Comment=Algú ha iniciat un xat DCC amb vostè</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="44"/>
-        <source>ID Canal</source>
-        <translation type="unfinished"></translation>
+      <source>ID Canal</source>
+      <translation type="unfinished" >Identificador de l'analitzador visual a mostrar.</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="45"/>
-        <source>Conciliacion</source>
-        <translation type="unfinished"></translation>
+      <source>Conciliacion</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="46"/>
-        <source>Id centro de coste</source>
-        <translation type="unfinished"></translation>
+      <source>Id centro de coste</source>
+      <translation type="unfinished" >Especifica a quina màquina enviar les URL. &lt;hostid> és el nom de la màquina 
+tal i com està definida al Centre de control del KDE.</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="47"/>
-        <source>Id apunte</source>
-        <translation type="unfinished"></translation>
+      <source>Id apunte</source>
+      <translation type="unfinished" >ID de l'aplicació ISO per a VideoCD</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="48"/>
-        <source>Id tipo de IVA</source>
-        <translation type="unfinished"></translation>
+      <source>Id tipo de IVA</source>
+      <translation type="unfinished" >No s'ha especificat cap identificador de volum. Es farà servir 
+l'identificador per omissió.</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="49"/>
-        <source>Orden</source>
-        <translation type="unfinished">ordre</translation>
+      <source>Orden</source>
+      <translation type="unfinished" >ordre</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="50"/>
-        <source>Id borrador</source>
-        <translation type="unfinished"></translation>
+      <source>Id borrador</source>
+      <translation type="unfinished" >ID de l'aplicació ISO per a VideoCD</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="51"/>
-        <source>Id asiento</source>
-        <translation type="unfinished"></translation>
+      <source>Id asiento</source>
+      <translation type="unfinished" >ID de l'aplicació ISO per a VideoCD</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="94"/>
-        <source>Borrar registro</source>
-        <translation type="unfinished"></translation>
+      <source>Borrar registro</source>
+      <translation type="unfinished" >&lt;h2>AVÍS&lt;/h2>\n
+&lt;p>Les xarxes punt-a-punt, particularment les que són accessibles mitjançant 
+KMLDonkey, poden contenir material el qual estigui legalment prohibit 
+descarregar o redistribuir. És responsabilitat vostra el verificar que 
+qualsevol material que descarregueu de qualsevol xarxa punt-a-punt s'està 
+posant a la vostra disposició legalment. És també la vostra responsabilitat 
+el verificar que disposeu dels drets legals de redistribuir qualsevol 
+material que poseu a disposició d'altres mitjançant qualsevol xarxa punt-a-
+punt. En resum, és responsabilitat personal el verificar que useu aquest 
+programari en conformitat amb el copyright i demés lleis de propietat 
+intel·lectual aplicables.&lt;/p>\n
+&lt;h3>RESTRICCIONS&lt;/h3>\n
+&lt;p>Els autors d'aquest programari pensen que s'usarà per a l'intercanvi 
+legal de dades, art, programari i d'altres documents o treballs que sí es 
+poden distribuir legalment a tercers. Els autors no recolzaran i 
+descoratjaran qualsevol ús d'aquest programari que pugui violar el copyright 
+o d'altres lleis de propietat intel·lectual. En particular, els autors 
+descoratgen qualsevol transmissió de qualsevol material en violació de 
+qualsevol llei i regulació aplicable sobre la propietat intel·lectual. 
+Assumeixen que cada usuari es comportarà d'acord amb les regles i les 
+restriccions aplicables, així com amb les regles i les restriccions 
+aplicables a les xarxes o als serveis de P2P connectats directament o 
+indirectament amb aquest programari.&lt;/p>\n
+&lt;h3>RENÚNCIA DE RESPONSABILITAT&lt;/h3>\n
+&lt;p>Els autors d'aquest programari no fan i no poden exercitar cap control 
+sobre el contingut de la informació intercanviada usant aquest programari. 
+Els autors no donen garanties de cap classe, tant si està expressat o 
+implicat, pel servei que aquest programari estigui proporcionant o per les 
+dades intercanviades amb l'ajuda d'aquest. Els autors no poden ser jutjats 
+responsables de cap demanda resultat de la conducta i/o de l'ús del 
+programari per part de l'usuari que sigui d'alguna forma il·legal o que 
+perjudiqui a tal usuari o a qualsevol altra part.&lt;/p></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="96"/>
-        <source>Ajustar columa</source>
-        <translation type="unfinished"></translation>
+      <source>Ajustar columa</source>
+      <translation type="unfinished" >&lt;p>Seleccioneu aquí el tipus de millora de color per les imatges:
+&lt;p>&lt;b>Redueix el contrast&lt;/b>: redueix el contras de la imatge. L'algorisme 
+redueix la diferència d'intensitat entre els elements més clars i més foscos 
+de la imatge.&lt;p>&lt;b>Profunditat&lt;/b>: canvia la profunditat de color de la 
+imatge.&lt;p>&lt;b>Equalitza&lt;/b>: executa l'equalització de l'histograma de la 
+imatge.&lt;p>&lt;b>Desdibuixa&lt;/b>: barreja els colors a una distància, considerant 
+que són iguals.&lt;p>&lt;b>Escala de grisos&lt;/b>: converteix les imatges en color a 
+imatges en escala de grisos.&lt;p>&lt;b>Augmenta el contrast&lt;/b>: millora el 
+contrast de la imatge. L'algorisme augmenta les diferències d'intensitat 
+entre els elements més clars i més foscos de la imatge.&lt;p>&lt;b>Monocrom&lt;/b>: 
+transforma la imatge a blanc i negre.&lt;p>&lt;b>Negatiu&lt;/b>: substitueix cada 
+píxel pel seu color complementari. Les tonalitats vermella, verda i blava 
+d'una imatge es negativen. El blanc esdevé negre, el groc esdevé blau, etc.
+&lt;p>&lt;b>Normalitza&lt;/b>: transforma la imatge per expandir l'interval sencer 
+dels valors de color. És una tècnica per augmentar l contrast. L'algorisme 
+augmenta el contrast d'una imatge de color ajustant el color dels píxels per 
+abraçar tot l'interval de colors disponible.&lt;p>&lt;b>Segmenta&lt;/b>: segmenta una 
+imatge analitzant l'histograma dels components de color i identificant les 
+unitats homogènies amb la tècnica de desdibuixat de mitjanes \&quot;c\&quot;.
+&lt;p>&lt;b>Retalla&lt;/b>: retallat una imatge (tècnica inversa al desdibuixat). 
+L'algorisme elimina els límits que són el color de fons de la imatge.&lt;p></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="97"/>
-        <source>Ajustar altura</source>
-        <translation type="unfinished"></translation>
+      <source>Ajustar altura</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="98"/>
-        <source>Ajustar columnas</source>
-        <translation type="unfinished"></translation>
+      <source>Ajustar columnas</source>
+      <translation type="unfinished" >L'entorn de tabulació proporciona una manera d'alinear text en columnes.\n
+\\begin{tabbing}\n
+text \\= més text \\= encara més text \\= últim text \\\\\n
+segona fila \\>  \\> més \\\\\n
+\\end{tabbing}\n
+Comandes :\n
+\\=  Situa una tabulació a la posició actual.\n
+\\>  Avança a la següent tabulació.\n
+\\&lt;  Us permet posar alguna cosa a l'esquerra del marge local sense canviar 
+el marge. Només es pot fer servir a l'inici de la línia.\n
+\\+  Mou el marge esquerre de la següent i de totes les comandes següents 
+una tabulació cap a la dreta\n
+\\-  Mou el marge esquerre de la següent i de totes les comandes següents 
+una tabulació cap a l'esquerra\n
+\\'  Mou qualsevol cosa que hàgiu escrit a la columna actual cap a la dreta 
+de la columna anterior, alineat al tabulador de la columna actual. \n
+\\`  Us permet posar text alineat a la dreta de qualsevol tabulació, inclosa 
+la tabulació 0\n
+\\kill  Situa tabulacions sense produir text.\n
+\\a  En un entorn de tabulació, les comandes \\=, \\' i \\` no produeixen 
+accents de manera normal. En comptes d'aquestes, es fan servir les comandes 
+\\a=, \\a' i \\a`.</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="99"/>
-        <source>Ajustar alturas</source>
-        <translation type="unfinished"></translation>
+      <source>Ajustar alturas</source>
+      <translation type="unfinished" >&lt;p>&lt;b>Límit&lt;/b>: aquest valor defineix la distància en pixels en la que el 
+filtre cerca límits. Quan aquest valor s'incrementa, el soroll de pics se 
+suprimeix. Eventualment, podeu reajustar el filtre &lt;b>Límit&lt;/b> quan canvieu 
+aquest paràmetre. Quan aquest valor és massa alt, el filtre adaptatiu no pot 
+seguir els detalls de la imatge amb cura, i pot reaparèixer soroll o es pot 
+produir un desenfocament.</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="101"/>
-        <source>Ver configurador de subformulario</source>
-        <translation type="unfinished"></translation>
+      <source>Ver configurador de subformulario</source>
+      <translation type="unfinished" >&lt;p>...el K3b té dos tipus d'arranjament. D'una banda el K3b té l'arranjament 
+com la majoria\n
+d'aplicacions del KDE tenen accessible mitjançant d'un diàleg de 
+configuració a través del menú d'arranjament;\n
+d'altra banda, cada diàleg d'acció del K3b té tres botons per carregar i 
+desar arranjaments per omissió\n
+per a l'acció. D'aquesta manera un pot, per exemple, establir la 
+configuració per omissió a l'hora de copiar CD: aquestes opcions per 
+omissió\n
+Seran carregades cada vegada que s'obri el diàleg de còpia de CD. El botó 
+&lt;em>Arranjament per omissió del K3b&lt;/em>\n
+restablirà la configuració &lt;em>de fàbrica&lt;/em> en cas de que no sapigueu si 
+la configuració que heu triat\n
+és apropiada.&lt;/p>\n</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="79"/>
-        <source>Mostrar asiento</source>
-        <translation type="unfinished"></translation>
+      <source>Mostrar asiento</source>
+      <translation type="unfinished" >&lt;p>Aquesta és l'especificació &lt;b>Video CD&lt;/b> més bàsica que data de l'any 
+1993, la qual té les següents característiques:&lt;ul>&lt;li>Un forma de mode 2 
+mixt d'una pista ISO-9660 que conté punters de fitxers a les àrees 
+d'informació.&lt;/li>&lt;li>Més de 98 seqüències multiplexades d'àudio/vídeo MPEG-
+1 o de pistes CD-DA d'àudio.&lt;/li>&lt;li>Més de 500 punts inicials de seqüències 
+MPEG emprats com a divisions de capítol.&lt;/li>&lt;/ul>&lt;p>L'especificació Video 
+CD requereix que una seqüència MPEG-1 multiplexada tingui un CBR inferior a 
+174300 bytes (1394400 bits) per segon per a poder acomodar les unitats de CD-
+ROM de velocitat simple. &lt;br>L'especificació permet les dues següents 
+resolucions:&lt;ul>&lt;li>352 x 240 @ 29.97 Hz (NTSC SIF).&lt;/li>&lt;li>352 x 240 @ 
+23.976 Hz (FILM SIF).&lt;/li>&lt;/ul>&lt;p>La seqüència d'àudio MPEG-1 en CBR a 
+nivell II està fixada a 224 kbps amb 1 canal estèreo o 2 mono.&lt;p>&lt;b>Es 
+recomana mantenir la taxa de bits del vídeo per sota dels 1151929.1 bps.&lt;/b></translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="81"/>
-        <source>Mostrar extracto (dia)</source>
-        <translation type="unfinished"></translation>
+      <source>Mostrar extracto (dia)</source>
+      <translation type="unfinished" >&lt;p>El fitxer que heu seleccionat no és una imatge de disquet (les imatges de 
+disquet tenen una mida de 1200 KB, 1440 KB, o 2880 KB). De totes maneres, 
+podeu fer servir imatges d'arrencada d'altres mides emulant un disc dur o 
+deshabilitant l'emulació completament. &lt;p>Si no esteu familiaritzat amb 
+termes com 'emulació de disc dur' segurament que aquí voldreu fer servir una 
+imatge de disquet. Les imatges de disquet es poden crear extraient-les 
+directament des d'un disquet de veritat: &lt;pre>dd if=/dev/floppy of=/tmp/
+floppy.img&lt;/pre> o bé fent servir un dels molts generadors de disquets 
+d'arrencada que es poden trobar a &lt;a href=\&quot;http://www.google.com/search?
+q=linux+boot+floppy&amp;ie=UTF-8&amp;oe=UTF-8\&quot;>Internet&lt;/a>.</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="82"/>
-        <source>Mostrar extracto (mes)</source>
-        <translation type="unfinished"></translation>
+      <source>Mostrar extracto (mes)</source>
+      <translation type="unfinished" >&lt;html>&lt;head>&lt;meta name=\&quot;qrichtext\&quot; content=\&quot;1\&quot; />&lt;/head>&lt;body style=
+\&quot;font-size:12pt;font-family:helvetica\&quot;>\n
+&lt;p> &lt;span style=\&quot;font-weight:600\&quot;>Aquest assistent mirarà de facilitar-vos 
+en la mesura del possible la configuració d'un tallafocs iptables força 
+segur per al seu ús a casa i l'oficina.&lt;/span>&lt;/p>\n
+0&lt;p> KMyFirewall configurarà un tallafocs iptables que tindrà com a regla 
+principal el \&quot;No deixar passar a ningú que no tingui res a veure amb el que 
+faig\&quot;. Actualment quan arriba un nou paquet al vostre sistema, el nucli 
+tindrà que comprovar les seves capçaleres per a determinar si dit paquet és 
+una resposta a un paquet enviat prèviament, o si es tracta d'una altra 
+màquina que està intentant connectar amb la vostra.&lt;/p>\n
+&lt;p>A més podreu establir un conjunt de regles que restringeixin l'accés a 
+Internet. Això pot ser útil si a la vostra oficina no voleu que la gent 
+empri determinats serveis sense autorització (p.ex. els Xats). La majori­a 
+dels serveis comuns d'Internet es poden activar amb un sol clic. Alguns 
+altres haureu d'especificar-los mitjançant el número de porto que usen per a 
+permetren l'accés.&lt;/p>\n
+&lt;p> Per a les màquines que també proveeixen serveis, p.ex. un servidor web 
+(Apache), també haureu d'activar dits serveis a la pestanya \&quot;Connexions 
+entrants\&quot;, atès que per omissió no es permet l'accés a ningú.&lt;/p>\n
+&lt;p>&lt;span style=\&quot;font-weight:600\&quot;>El joc de regles generat per aquest 
+assistent només està basat en les cadenes INPUT i OUTPUT de la taula \&quot;filter
+\&quot;, de manera que el reenviament restarà desactivat (per a més detalls 
+consulteu: man iptables). La part principal del filtrat es realitza a través 
+del mòdul de seguiment de la connexió, de manera que necessitareu tenir 
+carregats els mòduls \&quot;ip_conntrack\&quot; i \&quot;ipt_state\&quot; o bé compilats a dins 
+del nucli.&lt;/span>&lt;/p>\n
+&lt;p>Si esteu pensant en muntar un encaminador (router), haureu d'emprar la 
+interfície avançada per a configurar un tallafocs que també empri la 
+funcionalitat d'encaminament del nucli. Per a configurar un encaminador, feu 
+clic a \&quot;Cancel·la\&quot; i seleccioneu \&quot;Arranjament -&amp;gt; Configura KMyFirewall
+\&quot; per iniciar la configuració del joc de regles.&lt;/p>\n
+&lt;p>Per a configurar un tallafocs simple que protegeixi acuradament a una 
+estació de treball normaleta, sobra amb que feu clic a \&quot;Següent &amp;gt;\&quot; cinc 
+vegades i després a \&quot;Finalitza\&quot;. Això instal·larà la configuració 
+predeterminada, la qual hauria de funcionar prou bé en una estació de 
+treball simple en la que no funcioni cap tipus de servei cap a l'exterior.&lt;/
+p>\n
+&lt;/body>&lt;/html>\n</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="83"/>
-        <source>Mostrar extracto (ano)</source>
-        <translation type="unfinished"></translation>
+      <source>Mostrar extracto (ano)</source>
+      <translation type="unfinished" >&lt;html>&lt;head>&lt;meta name=\&quot;qrichtext\&quot; content=\&quot;1\&quot; />&lt;/head>&lt;body style=
+\&quot;font-size:12pt;font-family:helvetica\&quot;>\n
+&lt;p> &lt;span style=\&quot;font-weight:600\&quot;>Aquest assistent mirarà de facilitar-vos 
+en la mesura del possible la configuració d'un tallafocs iptables força 
+segur per al seu ús a casa i l'oficina.&lt;/span>&lt;/p>\n
+0&lt;p> KMyFirewall configurarà un tallafocs iptables que tindrà com a regla 
+principal el \&quot;No deixar passar a ningú que no tingui res a veure amb el que 
+faig\&quot;. Actualment quan arriba un nou paquet al vostre sistema, el nucli 
+tindrà que comprovar les seves capçaleres per a determinar si dit paquet és 
+una resposta a un paquet enviat prèviament, o si es tracta d'una altra 
+màquina que està intentant connectar amb la vostra.&lt;/p>\n
+&lt;p>A més podreu establir un conjunt de regles que restringeixin l'accés a 
+Internet. Això pot ser útil si a la vostra oficina no voleu que la gent 
+empri determinats serveis sense autorització (p.ex. els Xats). La majori­a 
+dels serveis comuns d'Internet es poden activar amb un sol clic. Alguns 
+altres haureu d'especificar-los mitjançant el número de porto que usen per a 
+permetren l'accés.&lt;/p>\n
+&lt;p> Per a les màquines que també proveeixen serveis, p.ex. un servidor web 
+(Apache), també haureu d'activar dits serveis a la pestanya \&quot;Connexions 
+entrants\&quot;, atès que per omissió no es permet l'accés a ningú.&lt;/p>\n
+&lt;p>&lt;span style=\&quot;font-weight:600\&quot;>El joc de regles generat per aquest 
+assistent només està basat en les cadenes INPUT i OUTPUT de la taula \&quot;filter
+\&quot;, de manera que el reenviament restarà desactivat (per a més detalls 
+consulteu: man iptables). La part principal del filtrat es realitza a través 
+del mòdul de seguiment de la connexió, de manera que necessitareu tenir 
+carregats els mòduls \&quot;ip_conntrack\&quot; i \&quot;ipt_state\&quot; o bé compilats a dins 
+del nucli.&lt;/span>&lt;/p>\n
+&lt;p>Si esteu pensant en muntar un encaminador (router), haureu d'emprar la 
+interfície avançada per a configurar un tallafocs que també empri la 
+funcionalitat d'encaminament del nucli. Per a configurar un encaminador, feu 
+clic a \&quot;Cancel·la\&quot; i seleccioneu \&quot;Arranjament -&amp;gt; Configura KMyFirewall
+\&quot; per iniciar la configuració del joc de regles.&lt;/p>\n
+&lt;p>Per a configurar un tallafocs simple que protegeixi acuradament a una 
+estació de treball normaleta, sobra amb que feu clic a \&quot;Següent &amp;gt;\&quot; cinc 
+vegades i després a \&quot;Finalitza\&quot;. Això instal·larà la configuració 
+predeterminada, la qual hauria de funcionar prou bé en una estació de 
+treball simple en la que no funcioni cap tipus de servei cap a l'exterior.&lt;/
+p>\n
+&lt;/body>&lt;/html>\n</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="85"/>
-        <source>Mostrar balance (dia)</source>
-        <translation type="unfinished"></translation>
+      <source>Mostrar balance (dia)</source>
+      <translation type="unfinished" >Multiplicadors de balanç de color</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="86"/>
-        <source>Mostrar balance (mes)</source>
-        <translation type="unfinished"></translation>
+      <source>Mostrar balance (mes)</source>
+      <translation type="unfinished" >Multiplicadors de balanç de color</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="87"/>
-        <source>Mostrar balance (ano)</source>
-        <translation type="unfinished"></translation>
+      <source>Mostrar balance (ano)</source>
+      <translation type="unfinished" >Multiplicadors de balanç de color</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="89"/>
-        <source>Mostrar balance jerarquico (dia)</source>
-        <translation type="unfinished"></translation>
+      <source>Mostrar balance jerarquico (dia)</source>
+      <translation type="unfinished" >Multiplicadors de balanç de color</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="90"/>
-        <source>Mostrar balance jerarquico (mes)</source>
-        <translation type="unfinished"></translation>
+      <source>Mostrar balance jerarquico (mes)</source>
+      <translation type="unfinished" >Multiplicadors de balanç de color</translation>
     </message>
     <message>
-        <location filename="listlinasiento1view.cpp" line="91"/>
-        <source>Mostrar balance jerarquico (ano)</source>
-        <translation type="unfinished"></translation>
+      <source>Mostrar balance jerarquico (ano)</source>
+      <translation type="unfinished" >Multiplicadors de balanç de color</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>Listado347Base</name>
     <message>
-        <location filename="listado347base.ui" line="14"/>
-        <source>Listado para el modelo 347</source>
-        <translation type="unfinished"></translation>
+      <source>Listado para el modelo 347</source>
+      <translation type="unfinished" >El Salvador</translation>
     </message>
     <message>
-        <location filename="listado347base.ui" line="89"/>
-        <source>Imprimir</source>
-        <translation type="unfinished">Imprimir</translation>
+      <source>Imprimir</source>
+      <translation type="unfinished" >Imprimir</translation>
     </message>
     <message>
-        <location filename="listado347base.ui" line="104"/>
-        <source>Ctrl+P</source>
-        <translation type="unfinished"></translation>
+      <source>Ctrl+P</source>
+      <translation type="unfinished" >Ctrl+P</translation>
     </message>
     <message>
-        <location filename="listado347base.ui" line="129"/>
-        <source>Recalcular</source>
-        <translation type="unfinished"></translation>
+      <source>Recalcular</source>
+      <translation type="unfinished" >S'està calculant...</translation>
     </message>
     <message>
-        <location filename="listado347base.ui" line="141"/>
-        <source>F5</source>
-        <translation type="unfinished"></translation>
+      <source>F5</source>
+      <translation type="unfinished" >F5</translation>
     </message>
     <message>
-        <location filename="listado347base.ui" line="179"/>
-        <source>Ver filtro</source>
-        <translation type="unfinished"></translation>
+      <source>Ver filtro</source>
+      <translation type="unfinished" >Fitxer de filtres d'IP:</translation>
     </message>
     <message>
-        <location filename="listado347base.ui" line="194"/>
-        <source>Ctrl+F</source>
-        <translation type="unfinished"></translation>
+      <source>Ctrl+F</source>
+      <translation type="unfinished" >Ctrl+F</translation>
     </message>
     <message>
-        <location filename="listado347base.ui" line="246"/>
-        <source>Importe:</source>
-        <translation type="unfinished"></translation>
+      <source>Importe:</source>
+      <translation type="unfinished" >Importat</translation>
     </message>
     <message>
-        <location filename="listado347base.ui" line="259"/>
-        <source>Fecha final:</source>
-        <translation type="unfinished"></translation>
+      <source>Fecha final:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="listado347base.ui" line="269"/>
-        <source>Fecha inicial:</source>
-        <translation type="unfinished"></translation>
+      <source>Fecha inicial:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="listado347base.ui" line="305"/>
-        <source>Ventas</source>
-        <translation type="unfinished"></translation>
+      <source>Ventas</source>
+      <translation type="unfinished" >Comment=Encaixa les dades en caixes de mida determinada. Cada caixa conté la 
+mitjana del elements de cada caixa.</translation>
     </message>
     <message>
-        <location filename="listado347base.ui" line="321"/>
-        <source>Compras</source>
-        <translation type="unfinished">Compres</translation>
+      <source>Compras</source>
+      <translation type="unfinished" >Compres</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>MPatrimonialBase</name>
     <message>
-        <location filename="mpatrimonialbase.ui" line="186"/>
-        <source>Masa Patrimonial</source>
-        <translation type="unfinished">Massa Patrimonial</translation>
+      <source>Masa Patrimonial</source>
+      <translation type="unfinished" >Massa Patrimonial</translation>
     </message>
     <message>
-        <location filename="mpatrimonialbase.ui" line="49"/>
-        <source>Aceptar</source>
-        <translation type="unfinished">Acceptar</translation>
+      <source>Aceptar</source>
+      <translation type="unfinished" >Acceptar</translation>
     </message>
     <message>
-        <location filename="mpatrimonialbase.ui" line="56"/>
-        <source>Cancelar</source>
-        <translation type="unfinished"></translation>
+      <source>Cancelar</source>
+      <translation type="unfinished" >cancel·lat</translation>
     </message>
     <message>
-        <location filename="mpatrimonialbase.ui" line="69"/>
-        <source>General</source>
-        <translation type="unfinished">General</translation>
+      <source>General</source>
+      <translation type="unfinished" >General</translation>
     </message>
     <message>
-        <location filename="mpatrimonialbase.ui" line="89"/>
-        <source>Nombre</source>
-        <translation type="unfinished">Nom</translation>
+      <source>Nombre</source>
+      <translation type="unfinished" >Nom</translation>
     </message>
     <message>
-        <location filename="mpatrimonialbase.ui" line="133"/>
-        <source>Cuenta</source>
-        <translation type="unfinished">Conta</translation>
+      <source>Cuenta</source>
+      <translation type="unfinished" >Conta</translation>
     </message>
     <message>
-        <location filename="mpatrimonialbase.ui" line="377"/>
-        <source>Agregar</source>
-        <translation type="unfinished">Afegir</translation>
+      <source>Agregar</source>
+      <translation type="unfinished" >Afegir</translation>
     </message>
     <message>
-        <location filename="mpatrimonialbase.ui" line="384"/>
-        <source>Quitar</source>
-        <translation type="unfinished">Llevar</translation>
+      <source>Quitar</source>
+      <translation type="unfinished" >Llevar</translation>
     </message>
     <message>
-        <location filename="mpatrimonialbase.ui" line="321"/>
-        <source>Suman</source>
-        <translation type="unfinished">Sumen</translation>
+      <source>Suman</source>
+      <translation type="unfinished" >Sumen</translation>
     </message>
     <message>
-        <location filename="mpatrimonialbase.ui" line="401"/>
-        <source>Restan</source>
-        <translation type="unfinished">Resten</translation>
+      <source>Restan</source>
+      <translation type="unfinished" >Resten</translation>
     </message>
     <message>
-        <location filename="mpatrimonialbase.ui" line="430"/>
-        <source>Comentarios</source>
-        <translation type="unfinished">Comentaris</translation>
+      <source>Comentarios</source>
+      <translation type="unfinished" >Comentaris</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>MPatrimonialesBase</name>
     <message>
-        <location filename="mpatrimonialesbase.ui" line="13"/>
-        <source>Masas Patrimoniales</source>
-        <translation type="unfinished">Masses Patrimonials</translation>
+      <source>Masas Patrimoniales</source>
+      <translation type="unfinished" >Masses Patrimonials</translation>
     </message>
     <message>
-        <location filename="mpatrimonialesbase.ui" line="49"/>
-        <source>&amp;Cancelar</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Cancelar</source>
+      <translation type="unfinished" >cancel·lat</translation>
     </message>
     <message>
-        <location filename="mpatrimonialesbase.ui" line="66"/>
-        <source>Nuevo</source>
-        <translation type="unfinished">Nou</translation>
+      <source>Nuevo</source>
+      <translation type="unfinished" >Nou</translation>
     </message>
     <message>
-        <location filename="mpatrimonialesbase.ui" line="73"/>
-        <source>Borrar</source>
-        <translation type="unfinished">Borrar</translation>
+      <source>Borrar</source>
+      <translation type="unfinished" >Borrar</translation>
     </message>
     <message>
-        <location filename="mpatrimonialesbase.ui" line="80"/>
-        <source>Editar</source>
-        <translation type="unfinished">Editar</translation>
+      <source>Editar</source>
+      <translation type="unfinished" >Editar</translation>
     </message>
     <message>
-        <location filename="mpatrimonialesbase.ui" line="87"/>
-        <source>Balance</source>
-        <translation type="unfinished">Balanç</translation>
+      <source>Balance</source>
+      <translation type="unfinished" >Balanç</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>Mod300ps</name>
     <message>
-        <location filename="modelo300.cpp" line="156"/>
-        <source>Creando formulario</source>
-        <translation type="unfinished"></translation>
+      <source>Creando formulario</source>
+      <translation type="unfinished" >&lt;p>&lt;b>Radi&lt;/b>: aquest control selecciona la mida de la finestra lliscant 
+usada pel filtre. Els valors grans no incrementen el temps necessari per 
+filtrar cada píxel de la imatge però pot causar un desenfocament. Aquesta 
+finestra es mou per sobre de la imatge, i el seu color se suavitza per 
+suprimir les imperfeccions. En qualsevol cas, ha de ser de la mateixa mida 
+que la granuralitat del soroll o una mica més gran. Si és més gran del que 
+sigui necessari, pot causar un desenfocament no desitjat.</translation>
     </message>
     <message>
-        <location filename="modelo300.cpp" line="156"/>
-        <source>&amp;Cancelar</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Cancelar</source>
+      <translation type="unfinished" >cancel·lat</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>Modelo300Base</name>
     <message>
-        <location filename="modelo300base.ui" line="16"/>
-        <source>Modelo 300</source>
-        <translation type="unfinished"></translation>
+      <source>Modelo 300</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="modelo300base.ui" line="42"/>
-        <source>Periodo a declarar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <location filename="modelo300base.ui" line="49"/>
-        <source>Seleccione periodo de declaración</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <location filename="modelo300base.ui" line="53"/>
-        <source>1º trimestre</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <location filename="modelo300base.ui" line="58"/>
-        <source>2º trimestre</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <location filename="modelo300base.ui" line="63"/>
-        <source>3º trimestre</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <location filename="modelo300base.ui" line="68"/>
-        <source>4º trimestre</source>
-        <translation type="unfinished"></translation>
+      <source>Periodo a declarar</source>
+      <translation type="unfinished" >Si us plau, seleccioneu un dispositiu:</translation>
     </message>
     <message>
-        <location filename="modelo300base.ui" line="78"/>
-        <source>Cuenta a devolver:</source>
-        <translation type="unfinished"></translation>
+      <source>Seleccione periodo de declaración</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="modelo300base.ui" line="96"/>
-        <source>0123456789</source>
-        <translation type="unfinished">0123456789</translation>
+      <source>1º trimestre</source>
+      <translation type="unfinished" >A més de la configuració per a Linux/Unix, el sistema de fitxers conté un 
+arbre Joliet que permet noms de fitxer llargs en aquells sistemes Windows 
+que no admetin les extensions Rock Ridge. Tingueu present que la longitud 
+del nom de fitxer està restringida a 103 caràcters.</translation>
     </message>
     <message>
-        <location filename="modelo300base.ui" line="134"/>
-        <source>1234</source>
-        <translation type="unfinished">1234</translation>
+      <source>2º trimestre</source>
+      <translation type="unfinished" >A més de la configuració per a Linux/Unix, el sistema de fitxers conté un 
+arbre Joliet que permet noms de fitxer llargs en aquells sistemes Windows 
+que no admetin les extensions Rock Ridge. Tingueu present que la longitud 
+del nom de fitxer està restringida a 103 caràcters.</translation>
     </message>
     <message>
-        <location filename="modelo300base.ui" line="153"/>
-        <source>12</source>
-        <translation type="unfinished">12</translation>
+      <source>3º trimestre</source>
+      <translation type="unfinished" >A més de la configuració per a Linux/Unix, el sistema de fitxers conté un 
+arbre Joliet que permet noms de fitxer llargs en aquells sistemes Windows 
+que no admetin les extensions Rock Ridge. Tingueu present que la longitud 
+del nom de fitxer està restringida a 103 caràcters.</translation>
     </message>
     <message>
-        <location filename="modelo300base.ui" line="169"/>
-        <source>Personalizada</source>
-        <translation type="unfinished"></translation>
+      <source>4º trimestre</source>
+      <translation type="unfinished" >A més de la configuració per a Linux/Unix, el sistema de fitxers conté un 
+arbre Joliet que permet noms de fitxer llargs en aquells sistemes Windows 
+que no admetin les extensions Rock Ridge. Tingueu present que la longitud 
+del nom de fitxer està restringida a 103 caràcters.</translation>
     </message>
     <message>
-        <location filename="modelo300base.ui" line="176"/>
-        <source>En el banco</source>
-        <translation type="unfinished"></translation>
+      <source>Cuenta a devolver:</source>
+      <translation type="unfinished" >Si us plau, seleccioneu un dispositiu:</translation>
     </message>
     <message>
-        <location filename="modelo300base.ui" line="197"/>
-        <source>Generar borrador</source>
-        <translation type="unfinished"></translation>
+      <source>0123456789</source>
+      <translation type="unfinished" >0123456789</translation>
     </message>
     <message>
-        <location filename="modelo300base.ui" line="204"/>
-        <source>Vista Previa</source>
-        <translation type="unfinished"></translation>
+      <source>1234</source>
+      <translation type="unfinished" >1234</translation>
     </message>
     <message>
-        <location filename="modelo300base.ui" line="211"/>
-        <source>Cancelar</source>
-        <translation type="unfinished"></translation>
+      <source>12</source>
+      <translation type="unfinished" >12</translation>
     </message>
-</context>
-<context>
+    <message>
+      <source>Personalizada</source>
+      <translation type="unfinished" >Personal</translation>
+    </message>
+    <message>
+      <source>En el banco</source>
+      <translation type="unfinished" >El Salvador</translation>
+    </message>
+    <message>
+      <source>Generar borrador</source>
+      <translation type="unfinished" />
+    </message>
+    <message>
+      <source>Vista Previa</source>
+      <translation type="unfinished" >&lt;p>Aquest botó construeix una vista prèvia del procés de la imatge 
+actualment seleccionada de la llista.</translation>
+    </message>
+    <message>
+      <source>Cancelar</source>
+      <translation type="unfinished" >cancel·lat</translation>
+    </message>
+  </context>
+  <context>
     <name>PropiedadesEmpresaBase</name>
     <message>
-        <location filename="propiedadesempresabase.ui" line="16"/>
-        <source>Propiedades de la empresa</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <location filename="propiedadesempresabase.ui" line="185"/>
-        <source>xxxx --&gt; Dígitos de plan contable.
-yyyy --&gt; Dígitos de cuenta.</source>
-        <translation type="unfinished">xxxx --&gt; Dígits del pla contable.
-yyyy --&gt; Dígits de la conta.</translation>
-    </message>
-    <message>
-        <location filename="propiedadesempresabase.ui" line="216"/>
-        <source>Modi&amp;ficar plan contable</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="propiedadesempresabase.ui" line="67"/>
-        <source>Guardar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="propiedadesempresabase.ui" line="82"/>
-        <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <location filename="propiedadesempresabase.ui" line="117"/>
-        <source>Dí&amp;gitos de cuentas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <location filename="propiedadesempresabase.ui" line="142"/>
-        <source>Modelo del código de cuenta:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <location filename="propiedadesempresabase.ui" line="162"/>
-        <source>Dígitos estanda&amp;r</source>
-        <translation type="unfinished"></translation>
+      <source>Propiedades de la empresa</source>
+      <translation type="unfinished" >&lt;p>La codificació de les mostres és lineal amb signe (en complement a 2), 
+lineal sense signe, u-law (logarítmica), A-law (logarítmica), ADPCM, 
+IMA_ADPCM, GSM, o punt flotant.&lt;/p>\n
+&lt;p>&lt;b>U-law&lt;/b> (abreviatura de mu-law) i &lt;b>A-law&lt;/b> són els estàndards 
+nordamericà i internacional per a la compressió logarítmica del so 
+telefònic. Quan es descomprimeix, u-law té aproximadament la precisió de 
+l'àudio PCM de 14 bits i el A-law té una precisió aproximada a la de l'àudio 
+PCM de 13 bits. Les dades A-law i u-law a vegades es codifiquen fent servir 
+un ordre de bits invertir (p.ex. MSB es converteix en LSB).&lt;br> &lt;b>ADPCM &lt;/
+b> és una forma de compressió de so  que té una bona relació entre bona 
+qualitat de so i una codificació i decodificació ràpides. Es fa servir per a 
+la compressió de so telefònic i en llocs on la plena fidelitat no és 
+important. Quan es descomprimeix té aproximadament la precisió de l'àudio 
+PCM de 16 bits. Algunes versions populars de l'ADPCM són G.726, MS ADPCM, i 
+IMA ADPCM. Té diferents significats en diferents formats de fitxer. En 
+fitxers .wav representa fitxers MS ADPCM, en tots els altres significa G.726 
+ADPCM.&lt;br> &lt;b>IMA ADPCM&lt;/b> és una forma específica de compressió ADPCM, 
+lleugerament simple i amb una mica menys de fidelitat que la versió ADPCM de 
+Microsoft. IMA ADPCM també s'anomena DVI ADPCM.&lt;br> &lt;b>GSM&lt;/b> és un 
+estàndard emprat per a la compressió de so telefònic en països europeus i 
+està guanyant popularitat degut a la seva bona qualitat. Treballar amb dades 
+d'àudio GSM acostuma a consumir molta CPU.&lt;/p> &lt;p>&lt;em>Descripció basada en 
+la pàgina del manual de SoX&lt;/em>&lt;/p></translation>
     </message>
     <message>
-        <location filename="propiedadesempresabase.ui" line="284"/>
-        <source>Propiedades generales</source>
-        <translation type="unfinished"></translation>
+      <source>xxxx --> Dígitos de plan contable.
+yyyy --> Dígitos de cuenta.</source>
+      <translation type="unfinished" >xxxx --> Dígits del pla contable.
+yyyy --> Dígits de la conta.</translation>
     </message>
-</context>
-<context>
+    <message>
+      <source>Modi&amp;ficar plan contable</source>
+      <translation type="unfinished" >NOTA: Alguns bons nodes DHT coneguts ja s'han inserit. Però probablement 
+també voldreu inserir les vostres adreces IP i ports si preveieu sembrar 
+aquest torrent.</translation>
+    </message>
+    <message>
+      <source>Guardar</source>
+      <translation type="unfinished" >Interval de vigilància:</translation>
+    </message>
+    <message>
+      <source>Ctrl+S</source>
+      <translation type="unfinished" >Ctrl+S</translation>
+    </message>
+    <message>
+      <source>Dí&amp;gitos de cuentas</source>
+      <translation type="unfinished" />
+    </message>
+    <message>
+      <source>Modelo del código de cuenta:</source>
+      <translation type="unfinished" > Esborra </translation>
+    </message>
+    <message>
+      <source>Dígitos estanda&amp;r</source>
+      <translation type="unfinished" >&lt;p>Per tal de permetre la reproducció dels VideoCD en un reproductor de CD-
+i, l'estàndard de VideoCD requereix que estigui present un programa 
+d'aplicació de CD-i.&lt;p>Aquest programa està dissenyat per:
+&lt;ul>&lt;li>proporcionar un complet control de la reproducció tal i com està 
+definit en el PSD de l'estàndard&lt;/li>&lt;li>ser extremadament simple de fer 
+servir i fàcil d'aprendre per a l'usuari final&lt;/li>&lt;/ul>&lt;p>El programa 
+s'executa en reproductors de CD-i equipats amb el sistema operatiu CDRTOS 1.1
+(.1) i un cartutx d'extensió de vídeo digital.</translation>
+    </message>
+    <message>
+      <source>Propiedades generales</source>
+      <translation type="unfinished" >&lt;qt>&lt;p>La interfície IPTable es dirigeix a usuaris avançats que volen tenir 
+un complet control sobre les regles generades; així, la interfície IPTables 
+permet una visió gairebé 1-1 sobre la vostra configuració de iptables.&lt;/p>&lt;/
+qt></translation>
+    </message>
+  </context>
+  <context>
     <name>QObject</name>
     <message>
-        <location filename="modelo300.cpp" line="141"/>
-        <source>Formulario 300</source>
-        <translation type="unfinished"></translation>
+      <source>Formulario 300</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="modelo300.cpp" line="108"/>
-        <source>Generar de todas formas</source>
-        <translation type="unfinished"></translation>
+      <source>Generar de todas formas</source>
+      <translation type="unfinished" >&lt;p>&lt;b>PPM&lt;/b>: el format de fitxer \&quot;Portable Pixel Map\&quot; s'empra com un 
+format intermedi per emmagatzemar informació del mapa de bits de colors. Els 
+fitxers PPM poden ser binaris o ASCII i emmagatzemen els valors dels píxels 
+amb una mida de fins a 24 bits. Aquest format genera els fitxers de text més 
+grans per codificar les imatges sense perdre qualitat.</translation>
     </message>
     <message>
-        <location filename="modelo300.cpp" line="108"/>
-        <source>Volver</source>
-        <translation type="unfinished"></translation>
+      <source>Volver</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="modelo300.cpp" line="107"/>
-        <source>Aviso: El numero de cuenta bancario introducido
+      <source>Aviso: El numero de cuenta bancario introducido
 no se corresponde con un CCC correcto.</source>
-        <translation type="unfinished"></translation>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="modelo300.cpp" line="145"/>
-        <source>Lo siento, no encuentro el formulario original en pdf.
+      <source>Lo siento, no encuentro el formulario original en pdf.
 Pruebe a descargarlo desde www.aeat.es y guaedelo en
 /usr/share/bulmages/formularios/ o en
 ~/.bulmages/formularios/.</source>
-        <translation type="unfinished"></translation>
+      <translation type="unfinished" >&lt;p>Si habiliteu aquesta opció, veureu la imatge original quan el ratolí 
+passi sobre l'àrea de la imatge; en cas contrari, veureu la imatge final.</translation>
     </message>
     <message>
-        <location filename="modelo300.cpp" line="146"/>
-        <source>&amp;Aceptar</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Aceptar</source>
+      <translation type="unfinished" >&amp;Accepta</translation>
     </message>
     <message>
-        <location filename="empresa.cpp" line="543"/>
-        <source>Se han espaciado los asientos</source>
-        <translation type="unfinished"></translation>
+      <source>Se han espaciado los asientos</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="empresa.cpp" line="561"/>
-        <source>Se han ordenado los asientos</source>
-        <translation type="unfinished"></translation>
+      <source>Se han ordenado los asientos</source>
+      <translation type="unfinished" />
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>RegIvaPrintBase</name>
-    <message encoding="UTF-8">
-        <location filename="regivaprintbase.ui" line="16"/>
-        <source>Impresión del Registro de IVA</source>
-        <translation type="unfinished">Impresió del Registre d&apos;IVA</translation>
+    <message>
+      <source>Impresión del Registro de IVA</source>
+      <translation type="unfinished" >Impresió del Registre d'IVA</translation>
     </message>
     <message>
-        <location filename="regivaprintbase.ui" line="28"/>
-        <source>Datos del listado:</source>
-        <translation type="unfinished"></translation>
+      <source>Datos del listado:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="regivaprintbase.ui" line="56"/>
-        <source>Fecha Inicial</source>
-        <translation type="unfinished">Data Inicial</translation>
+      <source>Fecha Inicial</source>
+      <translation type="unfinished" >Data Inicial</translation>
     </message>
     <message>
-        <location filename="regivaprintbase.ui" line="86"/>
-        <source>Fecha Final</source>
-        <translation type="unfinished">Data Final</translation>
+      <source>Fecha Final</source>
+      <translation type="unfinished" >Data Final</translation>
     </message>
     <message>
-        <location filename="regivaprintbase.ui" line="126"/>
-        <source>Incluir resultados parciales</source>
-        <translation type="unfinished">Incloure resultats parcials</translation>
+      <source>Incluir resultados parciales</source>
+      <translation type="unfinished" >Incloure resultats parcials</translation>
     </message>
     <message>
-        <location filename="regivaprintbase.ui" line="148"/>
-        <source>Formato:</source>
-        <translation type="unfinished"></translation>
+      <source>Formato:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="regivaprintbase.ui" line="168"/>
-        <source>Texto Plano</source>
-        <translation type="unfinished">Text Pla</translation>
+      <source>Texto Plano</source>
+      <translation type="unfinished" >Text Pla</translation>
     </message>
     <message>
-        <location filename="regivaprintbase.ui" line="178"/>
-        <source>HTML</source>
-        <translation type="unfinished">HTML</translation>
+      <source>HTML</source>
+      <translation type="unfinished" >HTML</translation>
     </message>
     <message>
-        <location filename="regivaprintbase.ui" line="185"/>
-        <source>Postscript</source>
-        <translation type="unfinished"></translation>
+      <source>Postscript</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="regivaprintbase.ui" line="213"/>
-        <source>Imprimir</source>
-        <translation type="unfinished">Imprimir</translation>
+      <source>Imprimir</source>
+      <translation type="unfinished" >Imprimir</translation>
     </message>
     <message>
-        <location filename="regivaprintbase.ui" line="223"/>
-        <source>Cancelar</source>
-        <translation type="unfinished"></translation>
+      <source>Cancelar</source>
+      <translation type="unfinished" />
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>SelectCCosteBase</name>
     <message>
-        <location filename="selectccostebase.ui" line="13"/>
-        <source>Selector de Centros de Coste</source>
-        <translation type="unfinished"></translation>
+      <source>Selector de Centros de Coste</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="selectccostebase.ui" line="55"/>
-        <source>Invertir</source>
-        <translation type="unfinished"></translation>
+      <source>Invertir</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="selectccostebase.ui" line="62"/>
-        <source>S. Nada</source>
-        <translation type="unfinished"></translation>
+      <source>S. Nada</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="selectccostebase.ui" line="69"/>
-        <source>S. Todo</source>
-        <translation type="unfinished"></translation>
+      <source>S. Todo</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="selectccostebase.ui" line="76"/>
-        <source>Cerrar</source>
-        <translation type="unfinished">Tancar</translation>
+      <source>Cerrar</source>
+      <translation type="unfinished" >Tancar</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>SelectCanalBase</name>
     <message>
-        <location filename="selectcanalbase.ui" line="13"/>
-        <source>Selector de Canales</source>
-        <translation type="unfinished"></translation>
+      <source>Selector de Canales</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="selectcanalbase.ui" line="36"/>
-        <source>S. Nada</source>
-        <translation type="unfinished"></translation>
+      <source>S. Nada</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="selectcanalbase.ui" line="43"/>
-        <source>Invertir</source>
-        <translation type="unfinished"></translation>
+      <source>Invertir</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="selectcanalbase.ui" line="50"/>
-        <source>S. Todo</source>
-        <translation type="unfinished"></translation>
+      <source>S. Todo</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="selectcanalbase.ui" line="57"/>
-        <source>Cerrar</source>
-        <translation type="unfinished">Tancar</translation>
+      <source>Cerrar</source>
+      <translation type="unfinished" >Tancar</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>SobreBase</name>
     <message>
-        <location filename="sobrebase.ui" line="502"/>
-        <source>Acerca de BulmaCont</source>
-        <translation type="unfinished"></translation>
+      <source>Acerca de BulmaCont</source>
+      <translation type="unfinished" >BulmaCont</translation>
     </message>
     <message>
-        <location filename="sobrebase.ui" line="573"/>
-        <source>Contabilidad GPL - Version 0.9.3 -</source>
-        <translation type="unfinished"></translation>
+      <source>Contabilidad GPL - Version 0.9.3 -</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="sobrebase.ui" line="605"/>
-        <source>&amp;Acerca de</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Acerca de</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="sobrebase.ui" line="628"/>
-        <source>A&amp;utores</source>
-        <translation type="unfinished"></translation>
+      <source>A&amp;utores</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="sobrebase.ui" line="649"/>
-        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+      <source>&lt;html>&lt;head>&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; />&lt;style type=&quot;text/css&quot;>
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+&lt;/style>&lt;/head>&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;&quot;>
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;>&lt;/p>&lt;/body>&lt;/html></source>
+      <translation type="unfinished" >&lt;html>&lt;head>&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; />&lt;style type=&quot;text/css&quot;>
+p, li { white-space: pre-wrap; }
+&lt;/style>&lt;/head>&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;&quot;>
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;>&lt;/p>&lt;/body>&lt;/html></translation>
     </message>
     <message>
-        <location filename="sobrebase.ui" line="660"/>
-        <source>Sopor&amp;te</source>
-        <translation type="unfinished"></translation>
+      <source>Sopor&amp;te</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="sobrebase.ui" line="683"/>
-        <source>Acuerdo de &amp;licencia</source>
-        <translation type="unfinished"></translation>
+      <source>Acuerdo de &amp;licencia</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="sobrebase.ui" line="730"/>
-        <source>&amp;Aceptar</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Aceptar</source>
+      <translation type="unfinished" >&amp;Accepta</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>Splash</name>
     <message>
-        <location filename="splashscreen.cpp" line="118"/>
-        <source>Comprobando nivel de combustible</source>
-        <translation>Carregant el Solitari en segon pla</translation>
+      <source>Comprobando nivel de combustible</source>
+      <translation>Carregant el Solitari en segon pla</translation>
     </message>
     <message>
-        <location filename="splashscreen.cpp" line="119"/>
-        <source>Calibrando los lasers del lector de CD</source>
-        <translation>Calibrant els lasers del lector de CD</translation>
+      <source>Calibrando los lasers del lector de CD</source>
+      <translation>Calibrant els lasers del lector de CD</translation>
     </message>
     <message>
-        <location filename="splashscreen.cpp" line="124"/>
-        <source>Haciendo PING contra el servidor de la MetaBase</source>
-        <translation>Entrant al Jabber, per veure als amics</translation>
+      <source>Haciendo PING contra el servidor de la MetaBase</source>
+      <translation>Entrant al Jabber, per veure als amics</translation>
     </message>
     <message>
-        <location filename="splashscreen.cpp" line="125"/>
-        <source>Dejando tiempo libre al sistema</source>
-        <translation>Eliminant altres programes de Contabilitat</translation>
+      <source>Dejando tiempo libre al sistema</source>
+      <translation>Eliminant altres programes de Contabilitat</translation>
     </message>
     <message>
-        <location filename="splashscreen.cpp" line="126"/>
-        <source>Sincronizando fases Alfa Beta</source>
-        <translation>Enjegant la WebCam</translation>
+      <source>Sincronizando fases Alfa Beta</source>
+      <translation>Enjegant la WebCam</translation>
     </message>
     <message>
-        <location filename="splashscreen.cpp" line="122"/>
-        <source>Golpecitos de reajuste del HD</source>
-        <translation type="unfinished"></translation>
+      <source>Golpecitos de reajuste del HD</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="splashscreen.cpp" line="120"/>
-        <source>Comprobando la disquetera y la memoria fisica</source>
-        <translation type="unfinished"></translation>
+      <source>Comprobando la disquetera y la memoria fisica</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="splashscreen.cpp" line="121"/>
-        <source>Induciendo energia quantica, entre su RAM y su ROM</source>
-        <translation type="unfinished"></translation>
+      <source>Induciendo energia quantica, entre su RAM y su ROM</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="splashscreen.cpp" line="123"/>
-        <source>Probando la velocidad del ventilador de la CPU y su frecuencia</source>
-        <translation type="unfinished"></translation>
+      <source>Probando la velocidad del ventilador de la CPU y su frecuencia</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="splashscreen.cpp" line="127"/>
-        <source>Flusheando datos con vidas inteligentes superiores</source>
-        <translation type="unfinished"></translation>
+      <source>Flusheando datos con vidas inteligentes superiores</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="splashscreen.cpp" line="128"/>
-        <source>Permutando las tablas de particion del Sistema Operativo</source>
-        <translation type="unfinished"></translation>
+      <source>Permutando las tablas de particion del Sistema Operativo</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="splashscreen.cpp" line="129"/>
-        <source>Crackeando BulmaCont</source>
-        <translation type="unfinished"></translation>
+      <source>Crackeando BulmaCont</source>
+      <translation type="unfinished" >BulmaCont</translation>
     </message>
     <message>
-        <location filename="splashscreen.cpp" line="41"/>
-        <source>&lt;center&gt;&lt;font size=+1 color=&quot;#fff8a1&quot;&gt;BulmaCont&lt;/font&gt;&amp;nbsp;&lt;font color=&quot;#ff5e00&quot;&gt;0.9.3&lt;/font&gt;&lt;/center&gt;</source>
-        <translation type="unfinished"></translation>
+      <source>&lt;center>&lt;font size=+1 color=&quot;#fff8a1&quot;>BulmaCont&lt;/font>&amp;nbsp;&lt;font color=&quot;#ff5e00&quot;>0.9.3&lt;/font>&lt;/center></source>
+      <translation type="unfinished" >&lt;center>&lt;font size=+1 color=&quot;#fff8a1&quot;> BulmaCont&lt;/font>&amp;nbsp;&lt;font color=&quot;#ff5e00&quot;>&lt;/font>&lt;/center></translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>SubForm2Bc</name>
     <message>
-        <location filename="subform2bc.cpp" line="301"/>
-        <source>Submenu de contabilidad</source>
-        <translation type="unfinished"></translation>
+      <source>Submenu de contabilidad</source>
+      <translation type="unfinished" />
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>TipoIvaBase</name>
     <message>
-        <location filename="tipoivabase.ui" line="13"/>
-        <source>Tipos de IVA</source>
-        <translation type="unfinished"></translation>
+      <source>Tipos de IVA</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="tipoivabase.ui" line="174"/>
-        <source>Tipo de IVA:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <location filename="tipoivabase.ui" line="195"/>
-        <source>Información del tipo de IVA:</source>
-        <translation type="unfinished"></translation>
+      <source>Tipo de IVA:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="tipoivabase.ui" line="239"/>
-        <source>Nombre:</source>
-        <translation type="unfinished"></translation>
+      <source>Información del tipo de IVA:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="tipoivabase.ui" line="257"/>
-        <source>Porcentaje:</source>
-        <translation type="unfinished"></translation>
+      <source>Nombre:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="tipoivabase.ui" line="275"/>
-        <source>Cuenta:</source>
-        <translation type="unfinished"></translation>
+      <source>Porcentaje:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="tipoivabase.ui" line="315"/>
-        <source>&amp;Aceptar</source>
-        <translation type="unfinished"></translation>
+      <source>Cuenta:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="tipoivabase.ui" line="322"/>
-        <source>&amp;Cancelar</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Aceptar</source>
+      <translation type="unfinished" >&amp;Accepta</translation>
     </message>
-</context>
-<context>
+    <message>
+      <source>&amp;Cancelar</source>
+      <translation type="unfinished" >&amp;Cancel·la</translation>
+    </message>
+  </context>
+  <context>
     <name>aplinteligentesview</name>
     <message>
-        <location filename="aplinteligentesview.cpp" line="499"/>
-        <source>Error al crear el asiento</source>
-        <translation type="unfinished"></translation>
+      <source>Error al crear el asiento</source>
+      <translation type="unfinished" />
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>canaldlg</name>
     <message>
-        <location filename="canalbase.ui" line="16"/>
-        <source>Canales</source>
-        <translation type="unfinished">Canals</translation>
+      <source>Canales</source>
+      <translation type="unfinished" >Canals</translation>
     </message>
     <message>
-        <location filename="canalbase.ui" line="190"/>
-        <source>Canal:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <location filename="canalbase.ui" line="227"/>
-        <source>Información del canal:</source>
-        <translation type="unfinished"></translation>
+      <source>Canal:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="canalbase.ui" line="247"/>
-        <source>Nombre:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <location filename="canalbase.ui" line="267"/>
-        <source>Descripción:</source>
-        <translation type="unfinished"></translation>
+      <source>Información del canal:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="canalbase.ui" line="306"/>
-        <source>&amp;Cerrar</source>
-        <translation type="unfinished"></translation>
+      <source>Nombre:</source>
+      <translation type="unfinished" />
     </message>
-</context>
-<context>
+    <message>
+      <source>Descripción:</source>
+      <translation type="unfinished" />
+    </message>
+    <message>
+      <source>&amp;Cerrar</source>
+      <translation type="unfinished" >Tan&amp;car</translation>
+    </message>
+  </context>
+  <context>
     <name>canalview</name>
     <message>
-        <location filename="canalview.cpp" line="123"/>
-        <source>Desea guardar los cambios.</source>
-        <translation type="unfinished"></translation>
+      <source>Desea guardar los cambios.</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="canalview.cpp" line="165"/>
-        <source>Guardar canal</source>
-        <translation type="unfinished"></translation>
+      <source>Guardar canal</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="canalview.cpp" line="124"/>
-        <source>&amp;Guardar</source>
-        <translation type="unfinished">&amp;Desar</translation>
+      <source>&amp;Guardar</source>
+      <translation type="unfinished" >&amp;Desar</translation>
     </message>
     <message>
-        <location filename="canalview.cpp" line="167"/>
-        <source>&amp;Cancelar</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Cancelar</source>
+      <translation type="unfinished" >&amp;Cancel·la</translation>
     </message>
     <message>
-        <location filename="canalview.cpp" line="144"/>
-        <source>Borrar canal</source>
-        <translation type="unfinished"></translation>
+      <source>Borrar canal</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="canalview.cpp" line="146"/>
-        <source>Se va a borrar la forma de pago,
+      <source>Se va a borrar la forma de pago,
                                      Esto puede ocasionar perdida de datos
 </source>
-        <translation type="unfinished"></translation>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="canalview.cpp" line="147"/>
-        <source>&amp;Borrar</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Borrar</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="canalview.cpp" line="166"/>
-        <source>Desea guardar los cambios?</source>
-        <translation type="unfinished"></translation>
+      <source>Desea guardar los cambios?</source>
+      <translation type="unfinished" >Desitja desar els canvis?</translation>
     </message>
     <message>
-        <location filename="canalview.cpp" line="167"/>
-        <source>&amp;Si</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Si</source>
+      <translation type="unfinished" >&amp;Sí</translation>
     </message>
     <message>
-        <location filename="canalview.cpp" line="167"/>
-        <source>&amp;No</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;No</source>
+      <translation type="unfinished" />
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>ccostedlg</name>
     <message>
-        <location filename="ccostebase.ui" line="13"/>
-        <source>Centros de Coste</source>
-        <translation type="unfinished">Centres de Cost</translation>
+      <source>Centros de Coste</source>
+      <translation type="unfinished" >Centres de Cost</translation>
     </message>
     <message>
-        <location filename="ccostebase.ui" line="197"/>
-        <source>Imprimir pedido</source>
-        <translation type="unfinished"></translation>
+      <source>Imprimir pedido</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="ccostebase.ui" line="249"/>
-        <source>Contenido del centro de coste:</source>
-        <translation type="unfinished"></translation>
+      <source>Contenido del centro de coste:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="ccostebase.ui" line="269"/>
-        <source>Nombre:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <location filename="ccostebase.ui" line="297"/>
-        <source>Descripción:</source>
-        <translation type="unfinished"></translation>
+      <source>Nombre:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="ccostebase.ui" line="336"/>
-        <source>Cerrar</source>
-        <translation type="unfinished">Tancar</translation>
+      <source>Descripción:</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="ccostebase.ui" line="97"/>
-        <source>Ctrl+N</source>
-        <translation type="unfinished"></translation>
+      <source>Cerrar</source>
+      <translation type="unfinished" >Tancar</translation>
     </message>
     <message>
-        <location filename="ccostebase.ui" line="128"/>
-        <source>Ctrl+D</source>
-        <translation type="unfinished"></translation>
+      <source>Ctrl+N</source>
+      <translation type="unfinished" >Ctrl+N</translation>
     </message>
     <message>
-        <location filename="ccostebase.ui" line="159"/>
-        <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
+      <source>Ctrl+D</source>
+      <translation type="unfinished" >Ctrl+D</translation>
     </message>
     <message>
-        <location filename="ccostebase.ui" line="212"/>
-        <source>Ctrl+B</source>
-        <translation type="unfinished"></translation>
+      <source>Ctrl+S</source>
+      <translation type="unfinished" >Ctrl+S</translation>
     </message>
-</context>
-<context>
+    <message>
+      <source>Ctrl+B</source>
+      <translation type="unfinished" >Ctrl+B</translation>
+    </message>
+  </context>
+  <context>
     <name>ccosteview</name>
     <message>
-        <location filename="ccosteview.cpp" line="42"/>
-        <source>Nombre</source>
-        <translation type="unfinished">Nom</translation>
+      <source>Nombre</source>
+      <translation type="unfinished" >Nom</translation>
     </message>
     <message>
-        <location filename="ccosteview.cpp" line="222"/>
-        <source>Guardar centro de coste</source>
-        <translation type="unfinished"></translation>
+      <source>Guardar centro de coste</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="ccosteview.cpp" line="223"/>
-        <source>Desea guardar los cambios?</source>
-        <translation type="unfinished"></translation>
+      <source>Desea guardar los cambios?</source>
+      <translation type="unfinished" >Desitja desar els canvis?</translation>
     </message>
     <message>
-        <location filename="ccosteview.cpp" line="122"/>
-        <source>&amp;Guardar</source>
-        <translation type="unfinished">&amp;Desar</translation>
+      <source>&amp;Guardar</source>
+      <translation type="unfinished" >&amp;Desar</translation>
     </message>
     <message>
-        <location filename="ccosteview.cpp" line="224"/>
-        <source>&amp;Cancelar</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Cancelar</source>
+      <translation type="unfinished" >&amp;Cancel·la</translation>
     </message>
     <message>
-        <location filename="ccosteview.cpp" line="202"/>
-        <source>Borrar centro de coste</source>
-        <translation type="unfinished"></translation>
+      <source>Borrar centro de coste</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="ccosteview.cpp" line="203"/>
-        <source>Se va a borrar el centro de coste.
+      <source>Se va a borrar el centro de coste.
 Esta operacion puede ocasionar perdida de datos.</source>
-        <translation type="unfinished"></translation>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="ccosteview.cpp" line="204"/>
-        <source>&amp;Borrar</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Borrar</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="ccosteview.cpp" line="224"/>
-        <source>&amp;Si</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Si</source>
+      <translation type="unfinished" >&amp;Sí</translation>
     </message>
     <message>
-        <location filename="ccosteview.cpp" line="224"/>
-        <source>&amp;No</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;No</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="ccosteview.cpp" line="42"/>
-        <source>Descripcion</source>
-        <translation type="unfinished"></translation>
+      <source>Descripcion</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="ccosteview.cpp" line="42"/>
-        <source>Id centro de coste</source>
-        <translation type="unfinished"></translation>
+      <source>Id centro de coste</source>
+      <translation type="unfinished" >Id</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>extractoview1</name>
     <message>
-        <location filename="extractoview1.cpp" line="212"/>
-        <source>Diarios (*.txt)</source>
-        <translation>Diaris (*.txt)</translation>
+      <source>Diarios (*.txt)</source>
+      <translation>Diaris (*.txt)</translation>
     </message>
     <message>
-        <location filename="extractoview1.cpp" line="435"/>
-        <source>Punteos (*.pto)</source>
-        <translation>Puntejos (*.pto)</translation>
+      <source>Punteos (*.pto)</source>
+      <translation>Puntejos (*.pto)</translation>
     </message>
     <message>
-        <location filename="extractoview1.cpp" line="210"/>
-        <source>Guardar libro diario</source>
-        <translation type="unfinished"></translation>
+      <source>Guardar libro diario</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractoview1.cpp" line="433"/>
-        <source>Guardar punteo</source>
-        <translation type="unfinished"></translation>
+      <source>Guardar punteo</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractoview1.cpp" line="467"/>
-        <source>Borrar punteo</source>
-        <translation type="unfinished"></translation>
+      <source>Borrar punteo</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractoview1.cpp" line="493"/>
-        <source>Cargar punteo</source>
-        <translation type="unfinished"></translation>
+      <source>Cargar punteo</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractoview1.cpp" line="495"/>
-        <source>Punteo (*.pto)</source>
-        <translation type="unfinished"></translation>
+      <source>Punteo (*.pto)</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="extractoview1.cpp" line="470"/>
-        <source>Se dispone a borrar el punteo. Este cambio                                             es irrecuperable si no ha guardado su el punte.                                             Desea continuar?</source>
-        <translation type="unfinished"></translation>
+      <source>Se dispone a borrar el punteo. Este cambio                                             es irrecuperable si no ha guardado su el punte.                                             Desea continuar?</source>
+      <translation type="unfinished" />
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>fpagoview</name>
     <message>
-        <location filename="fpagoview.cpp" line="215"/>
-        <source>Guardar forma de pago</source>
-        <translation type="unfinished"></translation>
+      <source>Guardar forma de pago</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="fpagoview.cpp" line="216"/>
-        <source>Desea guardar los cambios?</source>
-        <translation type="unfinished"></translation>
+      <source>Desea guardar los cambios?</source>
+      <translation type="unfinished" >Desitja desar els canvis?</translation>
     </message>
     <message>
-        <location filename="fpagoview.cpp" line="193"/>
-        <source>Borrar forma de pago</source>
-        <translation type="unfinished"></translation>
+      <source>Borrar forma de pago</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="fpagoview.cpp" line="173"/>
-        <source>Nueva forma de pago</source>
-        <translation type="unfinished"></translation>
+      <source>Nueva forma de pago</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="fpagoview.cpp" line="189"/>
-        <source>Tiene que seleccionar una forma de pago antes de borrarla</source>
-        <translation type="unfinished"></translation>
+      <source>Tiene que seleccionar una forma de pago antes de borrarla</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="fpagoview.cpp" line="194"/>
-        <source>Se va a borrar la forma de pago.
+      <source>Se va a borrar la forma de pago.
 Esto puede ocasionar perdida de datos.
 Tal vez deberia pensarselo mejor antes
 porque igual su trabajo se pierde.</source>
-        <translation type="unfinished"></translation>
+      <translation type="unfinished" />
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>listcuentasview1</name>
     <message>
-        <location filename="listcuentasview1.cpp" line="78"/>
-        <source>CODIGO</source>
-        <translation>CODI</translation>
+      <source>CODIGO</source>
+      <translation>CODI</translation>
     </message>
     <message>
-        <location filename="listcuentasview1.cpp" line="78"/>
-        <source>NOMBRE</source>
-        <translation>NOM</translation>
+      <source>NOMBRE</source>
+      <translation>NOM</translation>
     </message>
     <message>
-        <location filename="listcuentasview1.cpp" line="52"/>
-        <source>Codigo cuenta</source>
-        <translation type="unfinished"></translation>
+      <source>Codigo cuenta</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="listcuentasview1.cpp" line="52"/>
-        <source>Nombre cuenta</source>
-        <translation type="unfinished"></translation>
+      <source>Nombre cuenta</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="listcuentasview1.cpp" line="52"/>
-        <source>Debe</source>
-        <translation type="unfinished"></translation>
+      <source>Debe</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="listcuentasview1.cpp" line="52"/>
-        <source>Haber</source>
-        <translation type="unfinished">Haber</translation>
+      <source>Haber</source>
+      <translation type="unfinished" >Haber</translation>
     </message>
     <message>
-        <location filename="listcuentasview1.cpp" line="52"/>
-        <source>ID cuenta</source>
-        <translation type="unfinished"></translation>
+      <source>ID cuenta</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="listcuentasview1.cpp" line="52"/>
-        <source>Bloqueada</source>
-        <translation type="unfinished"></translation>
+      <source>Bloqueada</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="listcuentasview1.cpp" line="52"/>
-        <source>Nodebe</source>
-        <translation type="unfinished"></translation>
+      <source>Nodebe</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="listcuentasview1.cpp" line="52"/>
-        <source>Nohaber</source>
-        <translation type="unfinished"></translation>
+      <source>Nohaber</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="listcuentasview1.cpp" line="52"/>
-        <source>Regularizacion</source>
-        <translation type="unfinished">Regularització</translation>
+      <source>Regularizacion</source>
+      <translation type="unfinished" >Regularització</translation>
     </message>
     <message>
-        <location filename="listcuentasview1.cpp" line="52"/>
-        <source>Imputacion</source>
-        <translation type="unfinished">Imputació</translation>
+      <source>Imputacion</source>
+      <translation type="unfinished" >Imputació</translation>
     </message>
     <message>
-        <location filename="listcuentasview1.cpp" line="52"/>
-        <source>Grupo</source>
-        <translation type="unfinished">Grup</translation>
+      <source>Grupo</source>
+      <translation type="unfinished" >Grup</translation>
     </message>
     <message>
-        <location filename="listcuentasview1.cpp" line="52"/>
-        <source>Tipo cuenta</source>
-        <translation type="unfinished"></translation>
+      <source>Tipo cuenta</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="listcuentasview1.cpp" line="349"/>
-        <source>Debe seleccionar una cuenta</source>
-        <translation type="unfinished"></translation>
+      <source>Debe seleccionar una cuenta</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="listcuentasview1.cpp" line="353"/>
-        <source>Borrar cuenta</source>
-        <translation type="unfinished"></translation>
+      <source>Borrar cuenta</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="listcuentasview1.cpp" line="354"/>
-        <source>Se procedera a borrar la cuenta.</source>
-        <translation type="unfinished"></translation>
+      <source>Se procedera a borrar la cuenta.</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="listcuentasview1.cpp" line="492"/>
-        <source>Elija el archivo</source>
-        <translation type="unfinished"></translation>
+      <source>Elija el archivo</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="listcuentasview1.cpp" line="494"/>
-        <source>Plan contable (*.xml)</source>
-        <translation type="unfinished"></translation>
+      <source>Plan contable (*.xml)</source>
+      <translation type="unfinished" />
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>mpatrimonialesview</name>
     <message>
-        <location filename="mpatrimonialesview.cpp" line="89"/>
-        <source>CODIGO</source>
-        <translation>CODI</translation>
+      <source>CODIGO</source>
+      <translation>CODI</translation>
     </message>
     <message>
-        <location filename="mpatrimonialesview.cpp" line="89"/>
-        <source>Masa patrimonial</source>
-        <translation>Massa Patrimonial</translation>
+      <source>Masa patrimonial</source>
+      <translation>Massa Patrimonial</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>mpatrimonialview</name>
     <message>
-        <location filename="mpatrimonialview.cpp" line="38"/>
-        <source>identificador</source>
-        <translation>identificador</translation>
+      <source>identificador</source>
+      <translation>identificador</translation>
     </message>
     <message>
-        <location filename="mpatrimonialview.cpp" line="38"/>
-        <source>codigo</source>
-        <translation>codi</translation>
+      <source>codigo</source>
+      <translation>codi</translation>
     </message>
     <message>
-        <location filename="mpatrimonialview.cpp" line="38"/>
-        <source>descripcion</source>
-        <translation>descripció</translation>
+      <source>descripcion</source>
+      <translation>descripció</translation>
     </message>
     <message>
-        <location filename="mpatrimonialview.cpp" line="38"/>
-        <source>tipo</source>
-        <translation>tipus</translation>
+      <source>tipo</source>
+      <translation>tipus</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>propiedadesempresa</name>
     <message>
-        <location filename="propiedadesempresa.cpp" line="88"/>
-        <source>Guardar cambios</source>
-        <translation type="unfinished"></translation>
+      <source>Guardar cambios</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="propiedadesempresa.cpp" line="89"/>
-        <source>Desea guardar los cambios?</source>
-        <translation type="unfinished"></translation>
+      <source>Desea guardar los cambios?</source>
+      <translation type="unfinished" >Desitja desar els canvis?</translation>
     </message>
     <message>
-        <location filename="propiedadesempresa.cpp" line="90"/>
-        <source>&amp;Guardar</source>
-        <translation type="unfinished">&amp;Desar</translation>
+      <source>&amp;Guardar</source>
+      <translation type="unfinished" >&amp;Desar</translation>
     </message>
     <message>
-        <location filename="propiedadesempresa.cpp" line="90"/>
-        <source>&amp;No guardar</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;No guardar</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="propiedadesempresa.cpp" line="127"/>
-        <source>Salir del programa</source>
-        <translation type="unfinished"></translation>
+      <source>Salir del programa</source>
+      <translation type="unfinished" >Abandona</translation>
     </message>
     <message>
-        <location filename="propiedadesempresa.cpp" line="128"/>
-        <source>Para que los cambios tengan efecto
+      <source>Para que los cambios tengan efecto
 debe salir del programa y volver a entrar.
 
 Salir ahora?</source>
-        <translation type="unfinished"></translation>
+      <translation type="unfinished" >Abandona?</translation>
     </message>
     <message>
-        <location filename="propiedadesempresa.cpp" line="129"/>
-        <source>&amp;Salir</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Salir</source>
+      <translation type="unfinished" >Abandona</translation>
     </message>
     <message>
-        <location filename="propiedadesempresa.cpp" line="129"/>
-        <source>&amp;No salir</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;No salir</source>
+      <translation type="unfinished" />
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>selectcanalview</name>
     <message>
-        <location filename="selectcanalview.cpp" line="40"/>
-        <source>nom_canal</source>
-        <translation type="unfinished"></translation>
+      <source>nom_canal</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="selectcanalview.cpp" line="40"/>
-        <source>desc_canal</source>
-        <translation type="unfinished"></translation>
+      <source>desc_canal</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="selectcanalview.cpp" line="40"/>
-        <source>Status</source>
-        <translation type="unfinished"></translation>
+      <source>Status</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="selectcanalview.cpp" line="40"/>
-        <source>idcanal</source>
-        <translation type="unfinished"></translation>
+      <source>idcanal</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="selectcanalview.cpp" line="40"/>
-        <source>Seleccion</source>
-        <translation type="unfinished"></translation>
+      <source>Seleccion</source>
+      <translation type="unfinished" />
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>selectccosteview</name>
     <message>
-        <location filename="selectccosteview.cpp" line="37"/>
-        <source>nom_coste</source>
-        <translation type="unfinished"></translation>
+      <source>nom_coste</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="selectccosteview.cpp" line="37"/>
-        <source>desc_coste</source>
-        <translation type="unfinished"></translation>
+      <source>desc_coste</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="selectccosteview.cpp" line="37"/>
-        <source>Status</source>
-        <translation type="unfinished"></translation>
+      <source>Status</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="selectccosteview.cpp" line="37"/>
-        <source>idc_coste</source>
-        <translation type="unfinished"></translation>
+      <source>idc_coste</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="selectccosteview.cpp" line="37"/>
-        <source>Seleccion</source>
-        <translation type="unfinished"></translation>
+      <source>Seleccion</source>
+      <translation type="unfinished" />
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>sobreview</name>
     <message>
-        <location filename="sobreview.cpp" line="38"/>
-        <source>Compilado usando la version de QT:</source>
-        <translation type="unfinished"></translation>
+      <source>Compilado usando la version de QT:</source>
+      <translation type="unfinished" >Compilat fent servir la versió de QT:</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>tipoivaview</name>
     <message>
-        <location filename="tipoivaview.cpp" line="182"/>
-        <source>Guardar tipo de IVA</source>
-        <translation type="unfinished"></translation>
+      <source>Guardar tipo de IVA</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="tipoivaview.cpp" line="183"/>
-        <source>Desea guardar los cambios?</source>
-        <translation type="unfinished"></translation>
+      <source>Desea guardar los cambios?</source>
+      <translation type="unfinished" >Desitja desar els canvis?</translation>
     </message>
     <message>
-        <location filename="tipoivaview.cpp" line="159"/>
-        <source>Borrar tipo de IVA</source>
-        <translation type="unfinished"></translation>
+      <source>Borrar tipo de IVA</source>
+      <translation type="unfinished" />
     </message>
     <message>
-        <location filename="tipoivaview.cpp" line="160"/>
-        <source>Se va a borrar el tipo de IVA. 
+      <source>Se va a borrar el tipo de IVA. 
 Esto puede ocasionar perdida de datos.</source>
-        <translation type="unfinished"></translation>
+      <translation type="unfinished" />
     </message>
-</context>
+  </context>
 </TS>

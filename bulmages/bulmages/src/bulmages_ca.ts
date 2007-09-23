@@ -1,529 +1,436 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1">
-<context>
+<!DOCTYPE TS>
+<TS>
+  <context>
     <name>BConfiguracion</name>
     <message>
-        <location filename="comun/bconfiguracion.cpp" line="220"/>
-        <source>Atencion</source>
-        <translation type="unfinished"></translation>
+      <source>Atencion</source>
+      <translation>Atenció </translation>
     </message>
     <message>
-        <location filename="comun/bconfiguracion.cpp" line="220"/>
-        <source>Borrar una empresa puede suponer perdida de datos
+      <source>Borrar una empresa puede suponer perdida de datos
  Desea continuar?
 </source>
-        <translation type="unfinished"></translation>
+      <translation>Esborrar una empresa pot suposar la pèrdua de dades 
+Desitja continuar? </translation>
     </message>
     <message>
-        <location filename="comun/bconfiguracion.cpp" line="216"/>
-        <source>Esta base de datos no puede ser eliminada.
-<byte value="xd"/> Es la plantilla para generar nuevas empresas.</source>
-        <translation type="unfinished"></translation>
+      <source>Esta base de datos no puede ser eliminada.
+ Es la plantilla para generar nuevas empresas.</source>
+      <translation>Aquesta base de dades no pot ser eliminada. 
+És la plantilla per a generar noves empreses.</translation>
     </message>
     <message>
-        <location filename="comun/bconfiguracion.cpp" line="218"/>
-        <source>No esta permitido eliminar la base 
-<byte value="xd"/> de datos actualmente abierta.</source>
-        <translation type="unfinished"></translation>
+      <source>No esta permitido eliminar la base 
+ de datos actualmente abierta.</source>
+      <translation>No es permés eliminar la base de dades actualment oberta.</translation>
     </message>
     <message>
-        <location filename="comun/bconfiguracion.cpp" line="248"/>
-        <source>Guardar empresa</source>
-        <translation type="unfinished"></translation>
+      <source>Guardar empresa</source>
+      <translation>Desa empresa</translation>
     </message>
     <message>
-        <location filename="comun/bconfiguracion.cpp" line="278"/>
-        <source>Empresas (*.pgdump)</source>
-        <translation type="unfinished"></translation>
+      <source>Empresas (*.pgdump)</source>
+      <translation>Empreses (*.pgdump)</translation>
     </message>
     <message>
-        <location filename="comun/bconfiguracion.cpp" line="276"/>
-        <source>Cargar empresa</source>
-        <translation type="unfinished"></translation>
+      <source>Cargar empresa</source>
+      <comment>Potser carregar és mllor</comment>
+      <translation>Llegir empresa</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>BNuevaEmpresa</name>
     <message>
-        <location filename="comun/bnuevaempresa.cpp" line="51"/>
-        <source>No puede dejar campos en blanco para crear una nueva empresa.
+      <source>No puede dejar campos en blanco para crear una nueva empresa.
 </source>
-        <translation type="unfinished"></translation>
+      <translation>No es pot deixar camps buits per a crear una nova empresa</translation>
     </message>
     <message>
-        <location filename="comun/bnuevaempresa.cpp" line="50"/>
-        <source>Datos incompletos</source>
-        <translation type="unfinished"></translation>
+      <source>Datos incompletos</source>
+      <translation>Dades incompletes</translation>
     </message>
     <message>
-        <location filename="comun/bnuevaempresa.cpp" line="51"/>
-        <source>&amp;Aceptar</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Aceptar</source>
+      <translation>D'&amp;acord</translation>
     </message>
     <message>
-        <location filename="comun/bnuevaempresa.cpp" line="51"/>
-        <source>&amp;Cancelar</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Cancelar</source>
+      <translation>&amp;Cancel·la</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>ImportExportBulmafactBase</name>
     <message>
-        <location filename="comun/importexportbulmafactbase.ui" line="13"/>
-        <source>Importar y Exportar Datos</source>
-        <translation type="unfinished"></translation>
+      <source>Importar y Exportar Datos</source>
+      <translation>Importa i exporta dades</translation>
     </message>
     <message>
-        <location filename="comun/importexportbulmafactbase.ui" line="70"/>
-        <source>...</source>
-        <translation type="unfinished"></translation>
+      <source>...</source>
+      <translation>...</translation>
     </message>
     <message>
-        <location filename="comun/importexportbulmafactbase.ui" line="87"/>
-        <source>Fecha Inicial</source>
-        <translation type="unfinished"></translation>
+      <source>Fecha Inicial</source>
+      <translation>Data inicial</translation>
     </message>
     <message>
-        <location filename="comun/importexportbulmafactbase.ui" line="97"/>
-        <source>Fecha Final</source>
-        <translation type="unfinished"></translation>
+      <source>Fecha Final</source>
+      <translation>Data final</translation>
     </message>
     <message>
-        <location filename="comun/importexportbulmafactbase.ui" line="186"/>
-        <source>Ca&amp;ncelar</source>
-        <translation type="unfinished"></translation>
+      <source>Ca&amp;ncelar</source>
+      <translation>Ca&amp;ncel·la</translation>
     </message>
     <message>
-        <location filename="comun/importexportbulmafactbase.ui" line="193"/>
-        <source>Expor&amp;tar</source>
-        <translation type="unfinished"></translation>
+      <source>Expor&amp;tar</source>
+      <translation>Expor&amp;ta</translation>
     </message>
     <message>
-        <location filename="comun/importexportbulmafactbase.ui" line="200"/>
-        <source>&amp;Importar</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Importar</source>
+      <translation>&amp;Importa</translation>
     </message>
     <message>
-        <location filename="comun/importexportbulmafactbase.ui" line="44"/>
-        <source>Archivo XML:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <location filename="comun/importexportbulmafactbase.ui" line="125"/>
-        <source>Realizar sólo &amp;una comprobación.</source>
-        <translation type="unfinished"></translation>
+      <source>Archivo XML:</source>
+      <translation>Arxiu XML:</translation>
     </message>
     <message>
-        <location filename="comun/importexportbulmafactbase.ui" line="140"/>
-        <source>Resultado:</source>
-        <translation type="unfinished"></translation>
+      <source>Realizar sólo &amp;una comprobación.</source>
+      <translation>Realitza només &amp;una comprovació.</translation>
     </message>
-</context>
-<context>
+    <message>
+      <source>Resultado:</source>
+      <translation>Resultat:</translation>
+    </message>
+  </context>
+  <context>
     <name>ImportExportBulmafactView</name>
     <message>
-        <location filename="comun/importexportbulmafactview.cpp" line="64"/>
-        <source>Guardar archivo</source>
-        <translation type="unfinished"></translation>
+      <source>Guardar archivo</source>
+      <translation>Desa arxiu</translation>
     </message>
     <message>
-        <location filename="comun/importexportbulmafactview.cpp" line="64"/>
-        <source>Contaplus (*.xml)</source>
-        <translation type="unfinished"></translation>
+      <source>Contaplus (*.xml)</source>
+      <translation>Contaplus (*.xml)</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>UIconfiguracion</name>
-    <message encoding="UTF-8">
-        <location filename="comun/configuracion.ui" line="13"/>
-        <source>Configuración</source>
-        <translation type="unfinished"></translation>
+    <message>
+      <source>Configuración</source>
+      <translation>Configuració</translation>
     </message>
     <message>
-        <location filename="comun/configuracion.ui" line="207"/>
-        <source>Nom Empresa</source>
-        <translation type="unfinished"></translation>
+      <source>Nom Empresa</source>
+      <translation>Nom empresa</translation>
     </message>
     <message>
-        <location filename="comun/configuracion.ui" line="204"/>
-        <source>Nombre de la empresa</source>
-        <translation type="unfinished"></translation>
+      <source>Nombre de la empresa</source>
+      <translation>Nom de l'empresa</translation>
     </message>
     <message>
-        <location filename="comun/configuracion.ui" line="100"/>
-        <source>Hacer copia &amp;de Seguridad
+      <source>Hacer copia &amp;de Seguridad
  (BACKUP)</source>
-        <translation type="unfinished"></translation>
+      <translation>Fes còpia &amp;de seguretat (BACKUP)</translation>
     </message>
     <message>
-        <location filename="comun/configuracion.ui" line="243"/>
-        <source>Guarda una copia de seguridad de una empresa</source>
-        <translation type="unfinished"></translation>
+      <source>Guarda una copia de seguridad de una empresa</source>
+      <translation>Desa una còpia de seguretat d'una empresa</translation>
     </message>
     <message>
-        <location filename="comun/configuracion.ui" line="257"/>
-        <source>Res&amp;taurar copia
+      <source>Res&amp;taurar copia
  (RESTORE)</source>
-        <translation type="unfinished"></translation>
+      <translation>Res&amp;tarua còpia (RESTORE)</translation>
     </message>
     <message>
-        <location filename="comun/configuracion.ui" line="254"/>
-        <source>Restaura la copia de seguridad de una empresa</source>
-        <translation type="unfinished"></translation>
+      <source>Restaura la copia de seguridad de una empresa</source>
+      <translation>Restaura la còpia de seguretat d'una empresa</translation>
     </message>
     <message>
-        <location filename="comun/configuracion.ui" line="132"/>
-        <source>&amp;Crear Nueva Empresa</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Crear Nueva Empresa</source>
+      <translation>&amp;Crea nova empresa</translation>
     </message>
     <message>
-        <location filename="comun/configuracion.ui" line="275"/>
-        <source>Crea una empresa nueva sin datos</source>
-        <translation type="unfinished"></translation>
+      <source>Crea una empresa nueva sin datos</source>
+      <translation>Crea una nova empresa sense dades</translation>
     </message>
     <message>
-        <location filename="comun/configuracion.ui" line="288"/>
-        <source>&amp;Borrar Empresa</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Borrar Empresa</source>
+      <translation>Es&amp;borra empresa</translation>
     </message>
     <message>
-        <location filename="comun/configuracion.ui" line="285"/>
-        <source>Borra por completo una empresa</source>
-        <translation type="unfinished"></translation>
+      <source>Borra por completo una empresa</source>
+      <translation>Esborra completament empresa</translation>
     </message>
     <message>
-        <location filename="comun/configuracion.ui" line="300"/>
-        <source>&amp;Importar / Exportar Datos</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Importar / Exportar Datos</source>
+      <translation>&amp;Importa/Exporta dades</translation>
     </message>
     <message>
-        <location filename="comun/configuracion.ui" line="303"/>
-        <source>Alt+I</source>
-        <translation type="unfinished"></translation>
+      <source>Alt+I</source>
+      <translation>Alt+I</translation>
     </message>
     <message>
-        <location filename="comun/configuracion.ui" line="181"/>
-        <source>Bulma&amp;Fact</source>
-        <translation type="unfinished"></translation>
+      <source>Bulma&amp;Fact</source>
+      <translation>Bulma&amp;Fact</translation>
     </message>
     <message>
-        <location filename="comun/configuracion.ui" line="246"/>
-        <source>Copia &amp;de Seguridad
+      <source>Copia &amp;de Seguridad
  (BACKUP)</source>
-        <translation type="unfinished"></translation>
+      <translation>Còpia &amp;de Seguretat
+ (BACKUP)</translation>
     </message>
     <message>
-        <location filename="comun/configuracion.ui" line="278"/>
-        <source>Crear &amp;Nueva Empresa</source>
-        <translation type="unfinished"></translation>
+      <source>Crear &amp;Nueva Empresa</source>
+      <translation>Crea &amp;Nova empresa</translation>
     </message>
     <message>
-        <location filename="comun/configuracion.ui" line="330"/>
-        <source>Parametros</source>
-        <translation type="unfinished"></translation>
+      <source>Parametros</source>
+      <translation>Paràmetres</translation>
     </message>
     <message>
-        <location filename="comun/configuracion.ui" line="725"/>
-        <source>Sal&amp;ir</source>
-        <translation type="unfinished"></translation>
+      <source>Sal&amp;ir</source>
+      <translation>Sort&amp;ir</translation>
     </message>
     <message>
-        <location filename="comun/configuracion.ui" line="35"/>
-        <source>B&amp;ulmaCont</source>
-        <translation type="unfinished"></translation>
+      <source>B&amp;ulmaCont</source>
+      <translation>B&amp;ulmaCont</translation>
     </message>
     <message>
-        <location filename="comun/configuracion.ui" line="362"/>
-        <source>Page</source>
-        <translation type="unfinished"></translation>
+      <source>Page</source>
+      <translation>Pàgina</translation>
     </message>
     <message>
-        <location filename="comun/configuracion.ui" line="389"/>
-        <source>Crea empresa</source>
-        <translation type="unfinished"></translation>
+      <source>Crea empresa</source>
+      <translation>Crea empresa</translation>
     </message>
     <message>
-        <location filename="comun/configuracion.ui" line="408"/>
-        <source>Borra empresa</source>
-        <translation type="unfinished"></translation>
+      <source>Borra empresa</source>
+      <translation>Esborra empresa</translation>
     </message>
     <message>
-        <location filename="comun/configuracion.ui" line="427"/>
-        <source>Crea ejercicio</source>
-        <translation type="unfinished"></translation>
+      <source>Crea ejercicio</source>
+      <translation>Crea exercici</translation>
     </message>
     <message>
-        <location filename="comun/configuracion.ui" line="446"/>
-        <source>Borra ejercicio</source>
-        <translation type="unfinished"></translation>
+      <source>Borra ejercicio</source>
+      <translation>Esborra exercici</translation>
     </message>
     <message>
-        <location filename="comun/configuracion.ui" line="578"/>
-        <source>Genera copia de seguridad</source>
-        <translation type="unfinished"></translation>
+      <source>Genera copia de seguridad</source>
+      <translation>Genera una còpia de seguretat</translation>
     </message>
     <message>
-        <location filename="comun/configuracion.ui" line="524"/>
-        <source>Restaura copia de seguridad</source>
-        <translation type="unfinished"></translation>
+      <source>Restaura copia de seguridad</source>
+      <translation>Restaura una còpia de seguretat</translation>
     </message>
     <message>
-        <location filename="comun/configuracion.ui" line="551"/>
-        <source>Importa datos</source>
-        <translation type="unfinished"></translation>
+      <source>Importa datos</source>
+      <translation>Importa dades</translation>
     </message>
     <message>
-        <location filename="comun/configuracion.ui" line="605"/>
-        <source>Exporta datos</source>
-        <translation type="unfinished"></translation>
+      <source>Exporta datos</source>
+      <translation>Exporta dades</translation>
     </message>
     <message>
-        <location filename="comun/configuracion.ui" line="656"/>
-        <source>Lista de empresas:</source>
-        <translation type="unfinished"></translation>
+      <source>Lista de empresas:</source>
+      <translation>Llista d'empreses:</translation>
     </message>
     <message>
-        <location filename="comun/configuracion.ui" line="680"/>
-        <source>Ejercicios de la empresa:</source>
-        <translation type="unfinished"></translation>
+      <source>Ejercicios de la empresa:</source>
+      <translation>Exercicis de l'empresa:</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>importContaplus</name>
     <message>
-        <location filename="comun/importContaplus.cpp" line="89"/>
-        <source>Guardar archivo</source>
-        <translation type="unfinished"></translation>
+      <source>Guardar archivo</source>
+      <translation>Desa arxiu</translation>
     </message>
     <message>
-        <location filename="comun/importContaplus.cpp" line="75"/>
-        <source>Contaplus (*.xml)</source>
-        <translation type="unfinished"></translation>
+      <source>Contaplus (*.xml)</source>
+      <translation>Contaplus (*.xml)</translation>
     </message>
     <message>
-        <location filename="comun/importContaplus.cpp" line="89"/>
-        <source>Contaplus (*.txt)</source>
-        <translation type="unfinished"></translation>
+      <source>Contaplus (*.txt)</source>
+      <translation>Contaplus (*.txt)</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>importContaplusBase</name>
     <message>
-        <location filename="comun/importContaplusBase.ui" line="13"/>
-        <source>Importar y Exportar Datos</source>
-        <translation type="unfinished"></translation>
+      <source>Importar y Exportar Datos</source>
+      <translation>Importa i exporta dades</translation>
     </message>
     <message>
-        <location filename="comun/importContaplusBase.ui" line="29"/>
-        <source>&amp;Contalus</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Contalus</source>
+      <translation>&amp;Contaplus</translation>
     </message>
     <message>
-        <location filename="comun/importContaplusBase.ui" line="57"/>
-        <source>Archivo de SubCta</source>
-        <translation type="unfinished"></translation>
+      <source>Archivo de SubCta</source>
+      <translation>Arxiu de subcompta </translation>
     </message>
     <message>
-        <location filename="comun/importContaplusBase.ui" line="198"/>
-        <source>...</source>
-        <translation type="unfinished"></translation>
+      <source>...</source>
+      <translation>...</translation>
     </message>
     <message>
-        <location filename="comun/importContaplusBase.ui" line="108"/>
-        <source>Archivo de Diario</source>
-        <translation type="unfinished"></translation>
+      <source>Archivo de Diario</source>
+      <translation>Arxiu de diari</translation>
     </message>
     <message>
-        <location filename="comun/importContaplusBase.ui" line="144"/>
-        <source>&amp;XML</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;XML</source>
+      <translation>&amp;XML</translation>
     </message>
     <message>
-        <location filename="comun/importContaplusBase.ui" line="172"/>
-        <source>Archivo XML</source>
-        <translation type="unfinished"></translation>
+      <source>Archivo XML</source>
+      <translation>Arxiu XML</translation>
     </message>
     <message>
-        <location filename="comun/importContaplusBase.ui" line="235"/>
-        <source>Fecha Inicial</source>
-        <translation type="unfinished"></translation>
+      <source>Fecha Inicial</source>
+      <translation>Data inicial</translation>
     </message>
     <message>
-        <location filename="comun/importContaplusBase.ui" line="245"/>
-        <source>Fecha Final</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <location filename="comun/importContaplusBase.ui" line="273"/>
-        <source>Realizar sólo &amp;un Testeo</source>
-        <translation type="unfinished"></translation>
+      <source>Fecha Final</source>
+      <translation>Data final</translation>
     </message>
     <message>
-        <location filename="comun/importContaplusBase.ui" line="288"/>
-        <source>Resultado</source>
-        <translation type="unfinished"></translation>
+      <source>Realizar sólo &amp;un Testeo</source>
+      <translation>Realitza sols &amp;un test</translation>
     </message>
     <message>
-        <location filename="comun/importContaplusBase.ui" line="334"/>
-        <source>Ca&amp;ncelar</source>
-        <translation type="unfinished"></translation>
+      <source>Resultado</source>
+      <translation>Resultat</translation>
     </message>
     <message>
-        <location filename="comun/importContaplusBase.ui" line="341"/>
-        <source>Expor&amp;tar</source>
-        <translation type="unfinished"></translation>
+      <source>Ca&amp;ncelar</source>
+      <translation>Ca&amp;ncel·la</translation>
     </message>
     <message>
-        <location filename="comun/importContaplusBase.ui" line="348"/>
-        <source>&amp;Importar</source>
-        <translation type="unfinished"></translation>
+      <source>Expor&amp;tar</source>
+      <translation>Expor&amp;ta</translation>
     </message>
-</context>
-<context>
+    <message>
+      <source>&amp;Importar</source>
+      <translation>&amp;Importa</translation>
+    </message>
+  </context>
+  <context>
     <name>main</name>
     <message>
-        <location filename="main.cpp" line="77"/>
-        <source>Selector de BulmaGes</source>
-        <translation type="unfinished"></translation>
+      <source>Selector de BulmaGes</source>
+      <translation>Sel·lector de BulmaGés</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>nuevaempresadlg</name>
     <message>
-        <location filename="comun/nuevaempresadlg.ui" line="19"/>
-        <source>Nueva empresa</source>
-        <translation type="unfinished"></translation>
+      <source>Nueva empresa</source>
+      <translation>Nova empresa</translation>
     </message>
     <message>
-        <location filename="comun/nuevaempresadlg.ui" line="34"/>
-        <source>Datos de la contabilidad:</source>
-        <translation type="unfinished"></translation>
+      <source>Datos de la contabilidad:</source>
+      <translation>Dades de la comptabilitat:</translation>
     </message>
     <message>
-        <location filename="comun/nuevaempresadlg.ui" line="54"/>
-        <source>Nombre de la empresa:</source>
-        <translation type="unfinished"></translation>
+      <source>Nombre de la empresa:</source>
+      <translation>Nom de l'empresa:</translation>
     </message>
     <message>
-        <location filename="comun/nuevaempresadlg.ui" line="74"/>
-        <source>Base de datos:</source>
-        <translation type="unfinished"></translation>
+      <source>Base de datos:</source>
+      <translation>Base de dades:</translation>
     </message>
     <message>
-        <location filename="comun/nuevaempresadlg.ui" line="84"/>
-        <source>Ejercicio:</source>
-        <translation type="unfinished"></translation>
+      <source>Ejercicio:</source>
+      <translation>Exercici:</translation>
     </message>
     <message>
-        <location filename="comun/nuevaempresadlg.ui" line="123"/>
-        <source>&amp;Aceptar</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Aceptar</source>
+      <translation>&amp;Accepta</translation>
     </message>
     <message>
-        <location filename="comun/nuevaempresadlg.ui" line="130"/>
-        <source>&amp;Cancelar</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Cancelar</source>
+      <translation>&amp;Cancel·la</translation>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>nuevafactbase</name>
-    <message encoding="UTF-8">
-        <location filename="comun/nuevafactbase.ui" line="19"/>
-        <source>Nueva facturación</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <location filename="comun/nuevafactbase.ui" line="31"/>
-        <source>Datos de facturación:</source>
-        <translation type="unfinished"></translation>
+    <message>
+      <source>Nueva facturación</source>
+      <translation>Nova facturació</translation>
     </message>
     <message>
-        <location filename="comun/nuevafactbase.ui" line="51"/>
-        <source>Nombre de la empresa:</source>
-        <translation type="unfinished"></translation>
+      <source>Datos de facturación:</source>
+      <translation>Dades de la facturació:</translation>
     </message>
     <message>
-        <location filename="comun/nuevafactbase.ui" line="71"/>
-        <source>Base de datos:</source>
-        <translation type="unfinished"></translation>
+      <source>Nombre de la empresa:</source>
+      <translation>Nom de l'empresa:</translation>
     </message>
     <message>
-        <location filename="comun/nuevafactbase.ui" line="81"/>
-        <source>Ejercicio:</source>
-        <translation type="unfinished"></translation>
+      <source>Base de datos:</source>
+      <translation>Base de dades:</translation>
     </message>
     <message>
-        <location filename="comun/nuevafactbase.ui" line="120"/>
-        <source>&amp;Aceptar</source>
-        <translation type="unfinished"></translation>
+      <source>Ejercicio:</source>
+      <translation>Exercici:</translation>
     </message>
     <message>
-        <location filename="comun/nuevafactbase.ui" line="127"/>
-        <source>&amp;Cancelar</source>
-        <translation type="unfinished"></translation>
+      <source>&amp;Aceptar</source>
+      <translation>&amp;Accepta</translation>
     </message>
-</context>
-<context>
+    <message>
+      <source>&amp;Cancelar</source>
+      <translation>&amp;Cancel·la</translation>
+    </message>
+  </context>
+  <context>
     <name>selectorbase</name>
     <message>
-        <location filename="comun/selectorbase.ui" line="34"/>
-        <source>BulmaGes</source>
-        <translation type="unfinished"></translation>
+      <source>BulmaGes</source>
+      <translation>BulmaGés</translation>
     </message>
     <message>
-        <location filename="comun/selectorbase.ui" line="72"/>
-        <source>BulmaFact</source>
-        <translation type="unfinished"></translation>
+      <source>BulmaFact</source>
+      <translation>BulmaFact</translation>
     </message>
     <message>
-        <location filename="comun/selectorbase.ui" line="87"/>
-        <source>Alt+F</source>
-        <translation type="unfinished"></translation>
+      <source>Alt+F</source>
+      <translation>Alt+F</translation>
     </message>
     <message>
-        <location filename="comun/selectorbase.ui" line="117"/>
-        <source>BulmaTPV</source>
-        <translation type="unfinished"></translation>
+      <source>BulmaTPV</source>
+      <translation>BulmaTPV</translation>
     </message>
     <message>
-        <location filename="comun/selectorbase.ui" line="147"/>
-        <source>BulmaCont</source>
-        <translation type="unfinished"></translation>
+      <source>BulmaCont</source>
+      <translation>BulmaCont</translation>
     </message>
     <message>
-        <location filename="comun/selectorbase.ui" line="193"/>
-        <source>Galopin</source>
-        <translation type="unfinished"></translation>
+      <source>Galopin</source>
+      <translation>Galopin</translation>
     </message>
     <message>
-        <location filename="comun/selectorbase.ui" line="220"/>
-        <source>Iglues</source>
-        <translation type="unfinished"></translation>
+      <source>Iglues</source>
+      <translation>Iglues</translation>
     </message>
     <message>
-        <location filename="comun/selectorbase.ui" line="250"/>
-        <source>Acerca de ..</source>
-        <translation type="unfinished"></translation>
+      <source>Acerca de ..</source>
+      <translation>Quant a ..</translation>
     </message>
     <message>
-        <location filename="comun/selectorbase.ui" line="292"/>
-        <source>Empresa:</source>
-        <translation type="unfinished"></translation>
+      <source>Empresa:</source>
+      <translation>Empresa:</translation>
     </message>
     <message>
-        <location filename="comun/selectorbase.ui" line="791"/>
-        <source>Seleccionar Empresa</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <location filename="comun/selectorbase.ui" line="810"/>
-        <source>Configuración</source>
-        <translation type="unfinished"></translation>
+      <source>Seleccionar Empresa</source>
+      <translation>Sel·lecciona Empresa</translation>
     </message>
     <message>
-        <location filename="comun/selectorbase.ui" line="851"/>
-        <source>Salir</source>
-        <translation type="unfinished"></translation>
+      <source>Configuración</source>
+      <translation>Arranjament</translation>
     </message>
-</context>
+    <message>
+      <source>Salir</source>
+      <translation>Abandona</translation>
+    </message>
+  </context>
 </TS>
