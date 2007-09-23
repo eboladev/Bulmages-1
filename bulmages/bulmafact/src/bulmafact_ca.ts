@@ -1317,7 +1317,7 @@ Desitja crear-la?</translation>
     </message>
     <message>
       <source>Tipo de articulo</source>
-      <translation>Tipus de client</translation>
+      <translation>Tipus d'article</translation>
     </message>
     <message>
       <source>Tipo de articulo:</source>
@@ -1439,7 +1439,7 @@ Desitja crear-la?</translation>
     </message>
     <message>
       <source>Pedidos</source>
-      <translation>Comanes</translation>
+      <translation>Comandes</translation>
     </message>
     <message>
       <source>Albaranes</source>
@@ -4200,7 +4200,7 @@ Desitja crear-la?</translation>
     </message>
     <message>
       <source>Albaran ya existe</source>
-      <translation>Albarà ja existent</translation>
+      <translation>L'albarà ja existent</translation>
     </message>
     <message>
       <source>Existe un albaran a este cliente con la misma referencia que este pedido. Desea abrirlo para verificar?</source>
