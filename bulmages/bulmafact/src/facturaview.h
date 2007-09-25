@@ -56,8 +56,6 @@ public:
 
 public slots:
     virtual void on_mui_agregaralbaran_clicked();
-    /// Este slot se activa cuando hay cambios en los subformularios.
-    virtual void s_pintaTotales();
     virtual void on_m_descuentos_editFinish(int, int);
     virtual void on_subform2_editFinish(int, int);
     virtual void on_mui_cobrar_clicked();

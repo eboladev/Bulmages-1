@@ -65,7 +65,6 @@ FacturaProveedorView::FacturaProveedorView(Company *comp, QWidget *parent)
         addDBCampo("idtrabajador", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("FacturaProveedor", "Id trabajador"));
         addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("FacturaProveedor", "Id forma de pago"));
 
-
         subform2->setEmpresaBase(comp);
         m_descuentos->setEmpresaBase(comp);
         mui_idforma_pago->setEmpresaBase(comp);
@@ -247,10 +246,10 @@ int FacturaProveedorView::borrarPre() {
 
 
 /** Carga un FacturaProveedor.
-	Carga el DBRecord con DBload y luego llama a la carga de las lineas y los descuentos.
-	Al finalizar hace un pintado para que la informacion se vea actualizada.
-	Si algo falla genera una excepcion -1.
-	Si todo va bien devuelve 0.
+    Carga el DBRecord con DBload y luego llama a la carga de las lineas y los descuentos.
+    Al finalizar hace un pintado para que la informacion se vea actualizada.
+    Si algo falla genera una excepcion -1.
+    Si todo va bien devuelve 0.
 */
 /**
 \param idfacturap
@@ -260,15 +259,20 @@ int FacturaProveedorView::cargarPost(QString idfacturap) {
     _depura("FacturaProveedorView::cargar", 0);
     m_listalineas->cargar(idfacturap);
     m_listadescuentos->cargar(idfacturap);
+
+    /// Disparamos los plugins.
+    g_plugins->lanza("FacturaProveedorView_cargarPost_Post", this);
+
+    calculaypintatotales();
     _depura("END FacturaProveedorView::cargar", 0);
     return 0;
 }
 
 /** Hace el guardado de una Factura de Proveedor.
-	guarda el registro a traves de DBRecord y luego actualiza el identificador de facturap en
-	las lineas y en los descuentos para guardarlos.
-	Si algo falla genera una excepcion -1.
-	Si todo va bien devuelve 0.
+    guarda el registro a traves de DBRecord y luego actualiza el identificador de facturap en
+    las lineas y en los descuentos para guardarlos.
+    Si algo falla genera una excepcion -1.
+    Si todo va bien devuelve 0.
 */
 /**
 \return
@@ -420,8 +424,8 @@ void FacturaProveedorView::imprimirFacturaProveedor() {
 
     /// Impresion de los totales.
     fitxersortidatxt= "";
-    QString tr1 = "";	/// Rellena el primer tr de titulares.
-    QString tr2 = "";	/// Rellena el segundo tr de cantidades.
+    QString tr1 = "";   /// Rellena el primer tr de titulares.
+    QString tr2 = "";   /// Rellena el segundo tr de cantidades.
     fitxersortidatxt += "<blockTable style=\"tablatotales\">\n";
 
     Fixed totbaseimp("0.00");

@@ -60,9 +60,6 @@ public:
 
 public slots:
     virtual void on_mui_proveedor_valueChanged(QString);
-
-    /// Este SLOT se activa cuando hay cambios en los subformularios.
-    virtual void s_pintaTotales();
     virtual void on_mui_pagar_clicked();
     virtual void on_mui_facturar_clicked();
     virtual void on_mui_descuentos_editFinish(int, int);

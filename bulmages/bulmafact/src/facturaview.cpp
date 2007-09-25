@@ -92,7 +92,7 @@ FacturaView::FacturaView(Company *comp, QWidget *parent)
         mui_codigoserie_factura->setcodigoserie_factura("");
         mui_reffactura->setEmpresaBase(comp);
 
-        /// Inicializamos FichaBf
+        /// Inicializamos FichaBf.
         setListaLineas(subform2);
         setListaDescuentos(m_descuentos);
 
@@ -284,14 +284,6 @@ void FacturaView::on_mui_idcliente_valueChanged(QString id) {
 }
 
 
-/// Este slot se activa cuando hay cambios en los subformularios.
-void FacturaView::s_pintaTotales() {
-    _depura("FacturaView::s_pintaTotales", 0);
-    calculaypintatotales();
-    _depura("END FacturaView::s_pintaTotales", 0);
-}
-
-
 ///
 /**
 **/
@@ -340,7 +332,7 @@ int FacturaView::cargarPost ( QString idbudget )
     m_listalineas->cargar ( idbudget );
     m_listadescuentos->cargar ( idbudget );
 
-    /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
+    /// Disparamos los plugins.
     g_plugins->lanza ( "FacturaView_cargarPost_Post", this );
 
     calculaypintatotales();

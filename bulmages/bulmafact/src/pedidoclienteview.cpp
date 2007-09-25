@@ -303,6 +303,11 @@ int PedidoClienteView::cargarPost(QString idbudget) {
     m_listalineas->cargar(idbudget);
     m_listadescuentos->cargar(idbudget);
 
+    /// Disparamos los plugins.
+    g_plugins->lanza("PedidoClienteView_cargarPost_Post", this);
+
+    calculaypintatotales();
+
     _depura("END PedidoClienteView::cargar", 0);
     return 0;
 }

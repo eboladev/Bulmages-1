@@ -54,7 +54,7 @@ ListLinFacturaView::ListLinFacturaView(QWidget *parent) : SubForm2Bf(parent) {
     addSHeader("ivalfactura", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("I.V.A."));
     addSHeader("reqeqlfactura", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, tr("% Recargo E.Q."));
     addSHeader("descuentolfactura", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("% Descuento"));
-    addSHeader("idfactura", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id factura"));
+    addSHeader("idfactura", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, tr("Id factura"));
     addSHeader("ordenlfactura", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Orden"));
     setinsercion(TRUE);
     setOrdenEnabled(TRUE);

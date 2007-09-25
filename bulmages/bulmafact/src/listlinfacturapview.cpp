@@ -55,7 +55,7 @@ ListLinFacturaProveedorView::ListLinFacturaProveedorView(QWidget *parent)
     addSHeader("ivalfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("% I.V.A."));
     addSHeader("reqeqlfacturap", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, tr("% Recargo"));
     addSHeader("descuentolfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Descuento"));
-    addSHeader("idfacturap", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Factura"));
+    addSHeader("idfacturap", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, tr("Factura"));
     addSHeader("ordenlfacturap", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Orden"));
     setinsercion(TRUE);
     setOrdenEnabled(TRUE);

@@ -53,7 +53,7 @@ ListLinPedidoClienteView::ListLinPedidoClienteView(QWidget *parent) : SubForm2Bf
     addSHeader("ivalpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr("IVAl pedido cliente"));
     addSHeader("reqeqlpedidocliente", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, tr("% Recargo E.Q."));
     addSHeader("descuentolpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr("Descuentol pedido cliente"));
-    addSHeader("idpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id pedido cliente"));
+    addSHeader("idpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, tr("Id pedido cliente"));
     addSHeader("ordenlpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Orden"));
 
     /// Establecemos los modos de comportamiento del subformulario

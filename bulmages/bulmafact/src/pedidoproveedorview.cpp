@@ -38,7 +38,7 @@
 #include "albaranproveedorview.h"
 #include "funcaux.h"
 
-/// 
+///
 /**
 \param comp
 \param parent
@@ -67,7 +67,6 @@ PedidoProveedorView::PedidoProveedorView(Company *comp, QWidget *parent)
         addDBCampo("contactpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("PedidoProveedor", "Persona de contacto proveedor"));
         addDBCampo("telpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("PedidoProveedor", "Telefono proveedor"));
 
-
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
         mui_lineasDetalle->setEmpresaBase(comp);
         mui_lineasDetalle->inicializar();
@@ -75,20 +74,16 @@ PedidoProveedorView::PedidoProveedorView(Company *comp, QWidget *parent)
         mui_idforma_pago->setEmpresaBase(comp);
         mui_idforma_pago->setidforma_pago("0");
         mui_descuentos->setEmpresaBase(comp);
-	mui_descuentos->inicializar();
+        mui_descuentos->inicializar();
         mui_idalmacen->setEmpresaBase(comp);
-	mui_idalmacen->setidalmacen("0");
+        mui_idalmacen->setidalmacen("0");
         mui_idtrabajador->setEmpresaBase(comp);
         mui_idtrabajador->setidtrabajador("0");
         mui_refpedidoproveedor->setEmpresaBase(comp);
 
-
-
-
         setListaLineas(mui_lineasDetalle);
         setListaDescuentos(mui_descuentos);
 
-//        inicialize();
         dialogChanges_cargaInicial();
         meteWindow(windowTitle(), this, FALSE);
     } catch (...) {
@@ -112,7 +107,7 @@ PedidoProveedorView::~PedidoProveedorView() {
 /**
 \param iva
 \param base
-\param total 
+\param total
 \param desc
 \param irpf
 \param reqeq
@@ -237,14 +232,6 @@ void PedidoProveedorView::on_mui_proveedor_valueChanged(QString id) {
 ///
 /**
 **/
-void PedidoProveedorView::s_pintaTotales() {
-    calculaypintatotales();
-}
-
-
-///
-/**
-**/
 void PedidoProveedorView::on_mui_facturar_clicked() {
     generarAlbaran();
 }
@@ -279,16 +266,21 @@ int PedidoProveedorView::borrarPre() {
 }
 
 
-/// Esta funcion termina la carga de de un Pedido de Proveedor.
+/// Esta funcion termina la carga de de un pedido a proveedor.
 /**
 \param idbudget
-\return 
+\return
 **/
 int PedidoProveedorView::cargarPost(QString idbudget) {
     _depura("PedidoProveedor::cargarPost", 0);
 
     m_listalineas->cargar(idbudget);
     m_listadescuentos->cargar(idbudget);
+
+    /// Disparamos los plugins.
+    g_plugins->lanza("PedidoProveedorView_cargarPost_Post", this);
+
+    calculaypintatotales();
 
     _depura("END PedidoProveedor::cargar", 0);
     return 0;
@@ -302,15 +294,16 @@ int PedidoProveedorView::cargarPost(QString idbudget) {
 int PedidoProveedorView::guardarPost() {
     _depura("PedidoProveedor::guardar", 0);
 
-    m_listalineas->setColumnValue("idproveedor", DBvalue("idproveedor"));
-    m_listadescuentos->setColumnValue("idproveedor", DBvalue("idproveedor"));
+    m_listalineas->setColumnValue("idpedidoproveedor", DBvalue("idpedidoproveedor"));
+    m_listadescuentos->setColumnValue("idpedidoproveedor", DBvalue("idpedidoproveedor"));
+
     m_listalineas->guardar();
     m_listadescuentos->guardar();
     return 0;
 }
 
 
-/// Impresion de un Pedido de Proveedor
+/// Impresion de un pedido a proveedor
 /** Usa la plantilla pedidoproveedor.rml */
 /**
 **/
@@ -353,7 +346,7 @@ void PedidoProveedorView::imprimir() {
     file.close();
     QString fitxersortidatxt = "";
 
-    /// Linea de totales del presupuesto.
+    /// Linea de totales del pedido.
     QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor = " + DBvalue("idproveedor");
     cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
     if (!cur->eof()) {
@@ -384,12 +377,12 @@ void PedidoProveedorView::imprimir() {
         Fixed base = Fixed(linea->DBvalue("cantlpedidoproveedor").toAscii().constData()) * Fixed(linea->DBvalue("pvplpedidoproveedor").toAscii().constData());
         basesimp[linea->DBvalue("ivalpedidoproveedor")] = basesimp[linea->DBvalue("ivalpedidoproveedor")] + base - base * Fixed(linea->DBvalue("descuentolpedidoproveedor").toAscii().constData()) / 100;
         fitxersortidatxt += "<tr>\n";
-        fitxersortidatxt += "	<td>" + linea->DBvalue("codigocompletoarticulo") + "</td>\n";
-        fitxersortidatxt += "	<td>" + linea->DBvalue("desclpedidoproveedor") + "</td>\n";
-        fitxersortidatxt += "	<td>" + l.sprintf("%s", linea->DBvalue("cantlpedidoproveedor").toAscii().constData())+"</td>\n";
-        fitxersortidatxt += "	<td>" + l.sprintf("%s", linea->DBvalue("pvplpedidoproveedor").toAscii().constData())+"</td>\n";
-        fitxersortidatxt += "	<td>" + l.sprintf("%s", linea->DBvalue("descuentolpedidoproveedor").toAscii().constData()) + " %</td>\n";
-        fitxersortidatxt += "	<td>" + l.sprintf("%s", (base - base * Fixed (linea->DBvalue("descuentolpedidoproveedor")) / 100).toQString().toAscii().constData()) + "</td>\n";
+        fitxersortidatxt += "   <td>" + linea->DBvalue("codigocompletoarticulo") + "</td>\n";
+        fitxersortidatxt += "   <td>" + linea->DBvalue("desclpedidoproveedor") + "</td>\n";
+        fitxersortidatxt += "   <td>" + l.sprintf("%s", linea->DBvalue("cantlpedidoproveedor").toAscii().constData())+"</td>\n";
+        fitxersortidatxt += "   <td>" + l.sprintf("%s", linea->DBvalue("pvplpedidoproveedor").toAscii().constData())+"</td>\n";
+        fitxersortidatxt += "   <td>" + l.sprintf("%s", linea->DBvalue("descuentolpedidoproveedor").toAscii().constData()) + " %</td>\n";
+        fitxersortidatxt += "   <td>" + l.sprintf("%s", (base - base * Fixed (linea->DBvalue("descuentolpedidoproveedor")) / 100).toQString().toAscii().constData()) + "</td>\n";
         fitxersortidatxt += "</tr>";
     } // end for
 

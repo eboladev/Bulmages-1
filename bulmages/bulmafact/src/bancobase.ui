@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>670</width>
-    <height>635</height>
+    <width>690</width>
+    <height>480</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -16,14 +16,298 @@
   <property name="windowIcon" >
    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_bancos.48x48.png</iconset>
   </property>
-  <layout class="QVBoxLayout" >
+  <layout class="QGridLayout" >
    <property name="margin" >
-    <number>9</number>
+    <number>5</number>
    </property>
    <property name="spacing" >
-    <number>6</number>
+    <number>5</number>
    </property>
-   <item>
+   <item row="1" column="1" >
+    <widget class="QGroupBox" name="groupBox1" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>7</hsizetype>
+       <vsizetype>7</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="title" >
+      <string>Informacion del banco:</string>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>5</number>
+      </property>
+      <property name="spacing" >
+       <number>5</number>
+      </property>
+      <item row="7" column="2" >
+       <widget class="QLabel" name="label_7" >
+        <property name="text" >
+         <string>D.C.:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>mui_dcbanco</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="3" colspan="3" >
+       <widget class="QLabel" name="label_8" >
+        <property name="text" >
+         <string>Numero de cuenta:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>mui_numcuentabanco</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" colspan="5" >
+       <widget class="QLineEdit" name="mui_nombanco" />
+      </item>
+      <item row="1" column="5" >
+       <widget class="QLineEdit" name="mui_cpbanco" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>5</hsizetype>
+          <vsizetype>0</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize" >
+         <size>
+          <width>80</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="3" >
+       <widget class="QLabel" name="label_3" >
+        <property name="text" >
+         <string>Fax:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="buddy" >
+         <cstring>mui_faxbanco</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="4" colspan="2" >
+       <widget class="QLineEdit" name="mui_faxbanco" >
+        <property name="enabled" >
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="3" colspan="3" >
+       <widget class="QLineEdit" name="mui_numcuentabanco" />
+      </item>
+      <item row="8" column="2" >
+       <widget class="QLineEdit" name="mui_dcbanco" >
+        <property name="maximumSize" >
+         <size>
+          <width>35</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="1" >
+       <widget class="QLineEdit" name="mui_codagenciabanco" >
+        <property name="maximumSize" >
+         <size>
+          <width>80</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0" >
+       <widget class="QLineEdit" name="mui_codentidadbanco" >
+        <property name="maximumSize" >
+         <size>
+          <width>80</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="0" colspan="6" >
+       <widget class="QTextEdit" name="mui_comentbanco" />
+      </item>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="label" >
+        <property name="text" >
+         <string>Razon Social:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="buddy" >
+         <cstring>mui_nombanco</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" colspan="3" >
+       <widget class="QLineEdit" name="mui_dirbanco" />
+      </item>
+      <item row="2" column="1" colspan="5" >
+       <widget class="QLineEdit" name="mui_poblbanco" >
+        <property name="enabled" >
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1" colspan="2" >
+       <widget class="QLineEdit" name="mui_telbanco" >
+        <property name="enabled" >
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1" colspan="5" >
+       <widget class="QLineEdit" name="mui_emailbanco" >
+        <property name="enabled" >
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1" colspan="5" >
+       <widget class="QLineEdit" name="mui_webbanco" />
+      </item>
+      <item row="6" column="1" colspan="5" >
+       <widget class="QLineEdit" name="mui_contactobanco" />
+      </item>
+      <item row="6" column="0" >
+       <widget class="QLabel" name="label_4" >
+        <property name="text" >
+         <string>Contacto:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="buddy" >
+         <cstring>mui_contactobanco</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0" >
+       <widget class="QLabel" name="label" >
+        <property name="text" >
+         <string>URL:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="buddy" >
+         <cstring>mui_webbanco</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0" >
+       <widget class="QLabel" name="label" >
+        <property name="text" >
+         <string>E-mail:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="buddy" >
+         <cstring>mui_emailbanco</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" >
+       <widget class="QLabel" name="label" >
+        <property name="text" >
+         <string>Telefono:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="buddy" >
+         <cstring>mui_telbanco</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" >
+       <widget class="QLabel" name="label" >
+        <property name="text" >
+         <string>Poblacion:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="buddy" >
+         <cstring>mui_poblbanco</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QLabel" name="label" >
+        <property name="text" >
+         <string>Direccion</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="buddy" >
+         <cstring>mui_dirbanco</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="0" colspan="6" >
+       <widget class="QLabel" name="label_9" >
+        <property name="text" >
+         <string>Comentarios:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>mui_codentidadbanco</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0" >
+       <widget class="QLabel" name="label_5" >
+        <property name="text" >
+         <string>Entidad:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>mui_codentidadbanco</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1" >
+       <widget class="QLabel" name="label_6" >
+        <property name="text" >
+         <string>Sucursal:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>mui_codagenciabanco</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="4" >
+       <widget class="QLabel" name="label_10" >
+        <property name="text" >
+         <string>C.P.:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="buddy" >
+         <cstring>mui_cpbanco</cstring>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="2" >
     <layout class="QHBoxLayout" >
      <property name="margin" >
       <number>0</number>
@@ -188,532 +472,38 @@
      </item>
     </layout>
    </item>
-   <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
+   <item row="1" column="0" >
+    <widget class="QGroupBox" name="groupBox" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>7</hsizetype>
+       <vsizetype>7</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
-     <property name="spacing" >
-      <number>6</number>
+     <property name="title" >
+      <string>Lista de bancos:</string>
      </property>
-     <item>
-      <widget class="QGroupBox" name="groupBox" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>7</hsizetype>
-         <vsizetype>7</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="maximumSize" >
-        <size>
-         <width>200</width>
-         <height>16777215</height>
-        </size>
-       </property>
-       <property name="title" >
-        <string>Lista de bancos:</string>
-       </property>
-       <layout class="QGridLayout" >
-        <property name="margin" >
-         <number>5</number>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>5</number>
+      </property>
+      <property name="spacing" >
+       <number>5</number>
+      </property>
+      <item row="0" column="0" >
+       <widget class="QListWidget" name="mui_lista" >
+        <property name="frameShape" >
+         <enum>QFrame::Box</enum>
         </property>
-        <property name="spacing" >
-         <number>5</number>
+        <property name="lineWidth" >
+         <number>1</number>
         </property>
-        <item row="0" column="0" >
-         <widget class="QListWidget" name="mui_lista" >
-          <property name="maximumSize" >
-           <size>
-            <width>200</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="frameShape" >
-           <enum>QFrame::Box</enum>
-          </property>
-          <property name="lineWidth" >
-           <number>1</number>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </item>
-     <item>
-      <widget class="QGroupBox" name="groupBox1" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>7</hsizetype>
-         <vsizetype>7</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="title" >
-        <string>Informacion del banco:</string>
-       </property>
-       <layout class="QVBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>0</number>
-        </property>
-        <item>
-         <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
-          </property>
-          <property name="spacing" >
-           <number>0</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="label" >
-            <property name="text" >
-             <string>Razón Social:</string>
-            </property>
-            <property name="alignment" >
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-            <property name="buddy" >
-             <cstring>mui_nombanco</cstring>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="mui_nombanco" />
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
-          </property>
-          <property name="spacing" >
-           <number>0</number>
-          </property>
-          <item>
-           <layout class="QHBoxLayout" >
-            <property name="margin" >
-             <number>0</number>
-            </property>
-            <property name="spacing" >
-             <number>0</number>
-            </property>
-            <item>
-             <widget class="QLabel" name="label" >
-              <property name="text" >
-               <string>Dirección</string>
-              </property>
-              <property name="alignment" >
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="buddy" >
-               <cstring>mui_dirbanco</cstring>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="mui_dirbanco" />
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" >
-            <property name="margin" >
-             <number>0</number>
-            </property>
-            <property name="spacing" >
-             <number>0</number>
-            </property>
-            <item>
-             <widget class="QLabel" name="label_10" >
-              <property name="text" >
-               <string>CP:</string>
-              </property>
-              <property name="alignment" >
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="buddy" >
-               <cstring>mui_cpbanco</cstring>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="mui_cpbanco" >
-              <property name="sizePolicy" >
-               <sizepolicy>
-                <hsizetype>5</hsizetype>
-                <vsizetype>0</vsizetype>
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="maximumSize" >
-               <size>
-                <width>80</width>
-                <height>16777215</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
-          </property>
-          <property name="spacing" >
-           <number>0</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="label" >
-            <property name="text" >
-             <string>Población:</string>
-            </property>
-            <property name="alignment" >
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-            <property name="buddy" >
-             <cstring>mui_poblbanco</cstring>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="mui_poblbanco" >
-            <property name="enabled" >
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
-          </property>
-          <property name="spacing" >
-           <number>0</number>
-          </property>
-          <item>
-           <layout class="QHBoxLayout" >
-            <property name="margin" >
-             <number>0</number>
-            </property>
-            <property name="spacing" >
-             <number>0</number>
-            </property>
-            <item>
-             <widget class="QLabel" name="label" >
-              <property name="text" >
-               <string>Teléfono:</string>
-              </property>
-              <property name="alignment" >
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="buddy" >
-               <cstring>mui_telbanco</cstring>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="mui_telbanco" >
-              <property name="enabled" >
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" >
-            <property name="margin" >
-             <number>0</number>
-            </property>
-            <property name="spacing" >
-             <number>0</number>
-            </property>
-            <item>
-             <widget class="QLabel" name="label_3" >
-              <property name="text" >
-               <string>Fax:</string>
-              </property>
-              <property name="alignment" >
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="buddy" >
-               <cstring>mui_faxbanco</cstring>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="mui_faxbanco" >
-              <property name="enabled" >
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
-          </property>
-          <property name="spacing" >
-           <number>0</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="label" >
-            <property name="text" >
-             <string>E-mail:</string>
-            </property>
-            <property name="alignment" >
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-            <property name="buddy" >
-             <cstring>mui_emailbanco</cstring>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="mui_emailbanco" >
-            <property name="enabled" >
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
-          </property>
-          <property name="spacing" >
-           <number>0</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="label" >
-            <property name="text" >
-             <string>URL:</string>
-            </property>
-            <property name="alignment" >
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-            <property name="buddy" >
-             <cstring>mui_webbanco</cstring>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="mui_webbanco" />
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
-          </property>
-          <property name="spacing" >
-           <number>0</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="label_4" >
-            <property name="text" >
-             <string>Contacto:</string>
-            </property>
-            <property name="alignment" >
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-            <property name="buddy" >
-             <cstring>mui_contactobanco</cstring>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="mui_contactobanco" />
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
-          </property>
-          <property name="spacing" >
-           <number>0</number>
-          </property>
-          <item>
-           <layout class="QVBoxLayout" >
-            <property name="margin" >
-             <number>0</number>
-            </property>
-            <property name="spacing" >
-             <number>0</number>
-            </property>
-            <item>
-             <widget class="QLabel" name="label_5" >
-              <property name="maximumSize" >
-               <size>
-                <width>80</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="text" >
-               <string>Entidad</string>
-              </property>
-              <property name="buddy" >
-               <cstring>mui_codentidadbanco</cstring>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="mui_codentidadbanco" >
-              <property name="maximumSize" >
-               <size>
-                <width>80</width>
-                <height>16777215</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QVBoxLayout" >
-            <property name="margin" >
-             <number>0</number>
-            </property>
-            <property name="spacing" >
-             <number>0</number>
-            </property>
-            <item>
-             <widget class="QLabel" name="label_6" >
-              <property name="maximumSize" >
-               <size>
-                <width>80</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="text" >
-               <string>Sucursal</string>
-              </property>
-              <property name="buddy" >
-               <cstring>mui_codagenciabanco</cstring>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="mui_codagenciabanco" >
-              <property name="maximumSize" >
-               <size>
-                <width>80</width>
-                <height>16777215</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QVBoxLayout" >
-            <property name="margin" >
-             <number>0</number>
-            </property>
-            <property name="spacing" >
-             <number>0</number>
-            </property>
-            <item>
-             <widget class="QLabel" name="label_7" >
-              <property name="maximumSize" >
-               <size>
-                <width>20</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="text" >
-               <string>DC</string>
-              </property>
-              <property name="buddy" >
-               <cstring>mui_dcbanco</cstring>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="mui_dcbanco" >
-              <property name="maximumSize" >
-               <size>
-                <width>35</width>
-                <height>16777215</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QVBoxLayout" >
-            <property name="margin" >
-             <number>0</number>
-            </property>
-            <property name="spacing" >
-             <number>0</number>
-            </property>
-            <item>
-             <widget class="QLabel" name="label_8" >
-              <property name="text" >
-               <string>Cuenta</string>
-              </property>
-              <property name="buddy" >
-               <cstring>mui_numcuentabanco</cstring>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="mui_numcuentabanco" />
-            </item>
-           </layout>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QVBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
-          </property>
-          <property name="spacing" >
-           <number>0</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="label_9" >
-            <property name="text" >
-             <string>Comentarios</string>
-            </property>
-            <property name="buddy" >
-             <cstring>mui_codentidadbanco</cstring>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QTextEdit" name="mui_comentbanco" />
-          </item>
-         </layout>
-        </item>
-       </layout>
-      </widget>
-     </item>
-    </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
    </item>
   </layout>
  </widget>

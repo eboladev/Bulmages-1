@@ -52,7 +52,7 @@ ListLinAlbaranClienteView::ListLinAlbaranClienteView(QWidget *parent)
     addSHeader("ivalalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("I.V.A."));
     addSHeader("reqeqlalbaran", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, tr("% Recargo E.Q."));
     addSHeader("descuentolalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("% Descuento"));
-    addSHeader("idalbaran", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id albaran"));
+    addSHeader("idalbaran", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, tr("Id albaran"));
     addSHeader("ordenlalbaran", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Orden"));
     setinsercion(TRUE);
     setOrdenEnabled(TRUE);

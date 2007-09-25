@@ -57,19 +57,18 @@ AlbaranProveedorView::AlbaranProveedorView(Company *comp, QWidget *parent)
     setAttribute(Qt::WA_DeleteOnClose);
     try {
         setupUi(this);
-    setTitleName(tr("Albaran Proveedor"));
-    setDBTableName("albaranp");
-    setDBCampoId("idalbaranp");
-    addDBCampo("idalbaranp", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("AlbaranProveedor", "Id albaran proveedor"));
-    addDBCampo("numalbaranp", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("AlbaranProveedor", "Numero albaran proveedor"));
-    addDBCampo("fechaalbaranp", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("AlbaranProveedor", "Fecha albaran proveedor"));
-    addDBCampo("comentalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("AlbaranProveedor", "Comentario albaran proveedor"));
-    addDBCampo("idproveedor", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("AlbaranProveedor", "Id proveedor"));
-    addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("AlbaranProveedor", "Id forma de pago"));
-    addDBCampo("idalmacen", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("AlbaranProveedor", "Id almacen"));
-    addDBCampo("refalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("AlbaranProveedor", "Referencia albaran proveedor"));
-    addDBCampo("descalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("AlbaranProveedor", "Descripcion albaran proveedor"));
-
+        setTitleName(tr("Albaran de proveedor"));
+        setDBTableName("albaranp");
+        setDBCampoId("idalbaranp");
+        addDBCampo("idalbaranp", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("AlbaranProveedor", "Id albaran proveedor"));
+        addDBCampo("numalbaranp", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("AlbaranProveedor", "Numero albaran proveedor"));
+        addDBCampo("fechaalbaranp", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("AlbaranProveedor", "Fecha albaran proveedor"));
+        addDBCampo("comentalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("AlbaranProveedor", "Comentario albaran proveedor"));
+        addDBCampo("idproveedor", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("AlbaranProveedor", "Id proveedor"));
+        addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("AlbaranProveedor", "Id forma de pago"));
+        addDBCampo("idalmacen", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("AlbaranProveedor", "Id almacen"));
+        addDBCampo("refalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("AlbaranProveedor", "Referencia albaran proveedor"));
+        addDBCampo("descalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("AlbaranProveedor", "Descripcion albaran proveedor"));
 
         /// Disparamos los plugins.
         int res = g_plugins->lanza("AlbaranProveedorView_AlbaranProveedorView", this);
@@ -82,6 +81,7 @@ AlbaranProveedorView::AlbaranProveedorView(Company *comp, QWidget *parent)
         m_descuentos->setEmpresaBase(comp);
         mui_refalbaranp->setEmpresaBase(comp);
 
+        /// Inicializamos FichaBf.
         setListaLineas(subform2);
         setListaDescuentos(m_descuentos);
 
@@ -93,8 +93,8 @@ AlbaranProveedorView::AlbaranProveedorView(Company *comp, QWidget *parent)
         m_totalDiscounts->setAlignment(Qt::AlignRight);
         m_totalalbaranp->setReadOnly(TRUE);
         m_totalalbaranp->setAlignment(Qt::AlignRight);
-	mui_idforma_pago->setidforma_pago("0");
-	mui_idalmacen->setidalmacen("0");
+        mui_idforma_pago->setidforma_pago("0");
+        mui_idalmacen->setidalmacen("0");
         meteWindow(windowTitle(), this, FALSE);
     } catch (...) {
         mensajeInfo(tr("Error al crear el albaran proveedor"));
@@ -164,6 +164,7 @@ void AlbaranProveedorView::inicializar() {
     _depura("AlbaranProveedorView::inicializar", 0);
     subform2->inicializar();
     m_descuentos->inicializar();
+    pintar();
     dialogChanges_cargaInicial();
     _depura("END AlbaranProveedorView::inicializar", 0);
 }
@@ -177,14 +178,14 @@ void AlbaranProveedorView::inicializar() {
 \param irpf
 \param reqeq
 **/
-void AlbaranProveedorView::pintatotales(Fixed iva, Fixed base, Fixed, Fixed desc, Fixed irpf, Fixed reqeq) {
+void AlbaranProveedorView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq) {
     _depura("AlbaranProveedorView::pintatotales", 0);
-    m_totalalbaranp->setText((iva + base).toQString());
-    m_totalBases->setText(base.toQString());
-    m_totalTaxes->setText(iva.toQString());
-    m_totalDiscounts->setText(desc.toQString());
+    m_totalBases->setText(QString(base.toQString()));
+    m_totalTaxes->setText(QString(iva.toQString()));
+    m_totalDiscounts->setText(QString(desc.toQString()));
     m_totalIRPF->setText(QString(irpf.toQString()));
     m_totalReqEq->setText(QString(reqeq.toQString()));
+    m_totalalbaranp->setText(QString(total.toQString()));
     _depura("END AlbaranProveedorView::pintatotales", 0);
 }
 
@@ -392,6 +393,7 @@ void AlbaranProveedorView::on_mui_idproveedor_valueChanged(QString id) {
     _depura("END AlbaranProveedorView::on_m_proveedor_valueChanged", 0);
 }
 
+
 /** Se encarga del borrado en la base de datos de una albaran de proveedor.
     Si se produce algun error devuelve una excepcion.
     Primero llama al borrado de las lineas y luego a los descuentos.
@@ -422,6 +424,11 @@ int AlbaranProveedorView::cargarPost(QString idbudget) {
 
     m_listalineas->cargar(idbudget);
     m_listadescuentos->cargar(idbudget);
+
+    /// Disparamos los plugins.
+    g_plugins->lanza("AlbaranProveedorView_cargarPost_Post", this);
+
+    calculaypintatotales();
     _depura("END AlbaranProveedorView::cargar", 0);
     return 0;
 }
@@ -440,13 +447,13 @@ int AlbaranProveedorView::cargarPost(QString idbudget) {
 int AlbaranProveedorView::guardarPost() {
     _depura("AlbaranProveedorView::guardar", 0);
 
-        m_listalineas->guardar();
-        m_listadescuentos->guardar();
+    m_listalineas->setColumnValue("idalbaranp", DBvalue("idalbaranp"));
+    m_listadescuentos->setColumnValue("idalbaranp", DBvalue("idalbaranp"));
 
-        _depura("END AlbaranProveedorView::guardar", 0);
-        return 0;
+    m_listalineas->guardar();
+    m_listadescuentos->guardar();
 
+    _depura("END AlbaranProveedorView::guardar", 0);
+    return 0;
 }
-
-
 
