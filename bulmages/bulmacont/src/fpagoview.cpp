@@ -24,6 +24,10 @@
 
 /// El constructor de la clase prepara las variables globales y llama a la funci&oacute;n
 /// pintar.
+/**
+\param emp
+\param parent
+**/
 fpagoview::fpagoview(Empresa *emp, QWidget *parent)
         : FichaBc(emp, parent) {
     _depura("fpagoview::fpagoview", 0);
@@ -44,6 +48,8 @@ fpagoview::fpagoview(Empresa *emp, QWidget *parent)
 
 /// El destructor de la clase guarda los datos (por si ha habido cambios) y libera
 /// la memoria que se haya ocupado. */
+/**
+**/
 fpagoview::~fpagoview() {
     _depura("fpagoview::~fpagoview", 0);
     on_mui_guardar_clicked();
@@ -55,13 +61,22 @@ fpagoview::~fpagoview() {
 }
 
 
+///
+/**
+\param i
+**/
 void fpagoview::on_mui_comboFPago_currentIndexChanged(int i) {
+    _depura("fpagoview::on_mui_comboFPago_currentIndexChanged", 0);
     cambiacombo(i);
+    _depura("END fpagoview::on_mui_comboFPago_currentIndexChanged", 0);
 }
 
 
 /// Pinta la ventana, recarga el combo y si se pasa el par&aacute;metro muestra
 /// el identificador indicado. */
+/**
+\param idfpago
+**/
 void fpagoview::pintar(QString idfpago) {
     _depura("fpagoview::pintar", 0);
     int posicion = 0;
@@ -111,6 +126,9 @@ void fpagoview::pintar(QString idfpago) {
 /// Esta funci&oacute;n muestra la forma de pago en la ventana.
 /** \param pos si es distinto de cero se busca en el combo la posici&oacute;n
     indicada sino se usa la posici&oacute;n actual del combo. */
+/**
+\param pos
+**/
 void fpagoview::mostrarplantilla(int pos) {
     _depura("fpagoview::mostrarplantilla", 0);
     /// Si se ha modificado el contenido advertimos y guardamos.
@@ -140,6 +158,8 @@ void fpagoview::mostrarplantilla(int pos) {
 
 
 /// Esta funci&oacute;n sirve para hacer el cambio sobre un centro de coste.
+/**
+**/
 void fpagoview::cambiacombo(int) {
     _depura("fpagoview::cambiacombo", 0);
     mostrarplantilla();
@@ -150,6 +170,8 @@ void fpagoview::cambiacombo(int) {
 /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n de guardar el tipo de
 /// IVA que se est&aacute; editando.
 /** Lo que hace es que se hace un update de todos los campos. */
+/**
+**/
 void fpagoview::on_mui_guardarFPago_clicked() {
     _depura("fpagoview::on_mui_guardarFPago_clicked", 0);
     QString idfpago = m_curfpago->valor("idfpago", m_posactual);
@@ -163,6 +185,8 @@ void fpagoview::on_mui_guardarFPago_clicked() {
 
 /// SLOT que responde a la pulsación del botón de nuevo tipo de IVA. Inserta en la tabla
 /// de IVAs.
+/**
+**/
 void fpagoview::on_mui_crearFPago_clicked() {
     _depura("fpagoview::on_mui_crearFPago_clicked", 0);
     /// Si se ha modificado el contenido advertimos y guardamos.
@@ -187,6 +211,9 @@ void fpagoview::on_mui_crearFPago_clicked() {
 
 /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n de borrar un tipo de IVA.
 /** Borra en la tabla de tiposiva el TIPO de IVA concreto. */
+/**
+\returns
+**/
 void fpagoview::on_mui_borrarFPago_clicked() {
     _depura("fpagoview::on_mui_borrarFPago_clicked", 0);
     if (mui_comboFPago->currentIndex() == -1) {
@@ -211,6 +238,9 @@ void fpagoview::on_mui_borrarFPago_clicked() {
 
 /// Antes de salir de la ventana debemos hacer la comprobaci&oacute;n de si se ha
 /// modificado algo.
+/**
+\return
+**/
 bool fpagoview::close() {
     _depura("fpagoview::close", 0);
     /// Si se ha modificado el contenido advertimos y guardamos.

@@ -25,6 +25,10 @@
 #include "empresa.h"
 
 
+///
+/**
+\param emp
+**/
 DiarioPrint::DiarioPrint(Empresa  *emp) : PEmpresaBase(emp) {
     _depura("DiarioPrint::DiarioPrint", 0);
     fichero = NULL;
@@ -32,12 +36,20 @@ DiarioPrint::DiarioPrint(Empresa  *emp) : PEmpresaBase(emp) {
 }
 
 
-DiarioPrint::~DiarioPrint() {}
+///
+/**
+**/
+DiarioPrint::~DiarioPrint() {
+    _depura("DiarioPrint::~DiarioPrint", 0);
+    _depura("END DiarioPrint::~DiarioPrint", 0);
+}
 
 
-
-
-
+///
+/**
+\param finicial1
+\param ffinal1
+**/
 void DiarioPrint::inicializa1(char *finicial1, char *ffinal1) {
     _depura("DiarioPrint::inicializa1", 0);
     finicial = finicial1;
@@ -46,6 +58,10 @@ void DiarioPrint::inicializa1(char *finicial1, char *ffinal1) {
 }
 
 
+///
+/**
+\param fich
+**/
 void DiarioPrint::inicializa2(char *fich) {
     _depura("DiarioPrint::inicializa2", 0);
     fichero = fich;
@@ -54,6 +70,8 @@ void DiarioPrint::inicializa2(char *fich) {
 
 
 /// Se ha pulsado sobre el bot&oacute;n aceptar del formulario.
+/**
+**/
 void DiarioPrint::accept() {
     _depura("DiarioPrint::accept", 0);
     float debe, haber;

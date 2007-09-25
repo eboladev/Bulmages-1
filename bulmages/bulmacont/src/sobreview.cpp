@@ -26,6 +26,9 @@
 /// Constructor de la clase.
 /** En realidad no hace nada porque el di&aacute;logo s&oacute;lo requiere
     visualizaci&oacute;n y no realiza acciones. */
+/**
+\param parent
+**/
 sobreview::sobreview(QWidget *parent) : QDialog(parent) {
     _depura("sobreview::sobreview", 0);
 
@@ -425,9 +428,17 @@ sobreview::sobreview(QWidget *parent) : QDialog(parent) {
 /// Destructor de la clase
 /** En realidad no hace nada porque el di&aacute;logo s&oacute;lo requiere
     visualizaci&oacute;n y no realiza acciones. */
-sobreview::~sobreview() {}
+/**
+**/
+sobreview::~sobreview() {
+    _depura("sobreview::~sobreview", 0);
+    _depura("END sobreview::~sobreview", 0);
+}
 
 
+///
+/**
+**/
 void sobreview::on_mui_aceptar_clicked() {
     _depura("sobreview::on_mui_aceptar_clicked", 0);
     close();

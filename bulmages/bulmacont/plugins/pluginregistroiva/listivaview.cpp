@@ -37,6 +37,9 @@
 #include "funcaux.h"
 
 
+///
+/**
+**/
 void ListIvaView::guardaconfig() {
     _depura("ListIvaView::guardaconfig", 0);
     QString aux = "";
@@ -49,9 +52,13 @@ void ListIvaView::guardaconfig() {
         } // end for
         file.close();
     } // end if
+    _depura("END ListIvaView::guardaconfig", 0);
 }
 
 
+///
+/**
+**/
 void ListIvaView::cargaconfig() {
     _depura("ListIvaView::cargaconfig", 0);
     QFile file( confpr->valor(CONF_DIR_USER) + "confListIvaView.cfn" );
@@ -64,9 +71,14 @@ void ListIvaView::cargaconfig() {
         } // end for
         file.close();
     } // end if
+    _depura("END ListIvaView::cargaconfig", 0);
 }
 
 
+///
+/**
+\param parent
+**/
 ListIvaView::ListIvaView(QWidget * parent) : QTableWidget(parent), ListIva() {
     _depura("ListIvaView::ListIvaView", 0);
     /// Inicializamos la tabla de lineas de presupuesto
@@ -101,15 +113,23 @@ ListIvaView::ListIvaView(QWidget * parent) : QTableWidget(parent), ListIva() {
     connect(this, SIGNAL(contextMenuRequested(int, int, const QPoint &)), this, SLOT(contextMenu(int, int, const QPoint &)));
     installEventFilter(this);
     cargaconfig();
+    _depura("END ListIvaView::ListIvaView", 0);
 }
 
 
+///
+/**
+**/
 ListIvaView::~ListIvaView() {
     _depura("ListIvaView::~ListIvaView()", 0);
     guardaconfig();
+    _depura("END ListIvaView::~ListIvaView()", 0);
 }
 
 
+///
+/**
+**/
 void ListIvaView::pintaListIva() {
     _depura("ListIvaView::pintaListIva\n", 0);
     setRowCount(0);
@@ -134,7 +154,13 @@ void ListIvaView::pintaListIva() {
 }
 
 
+///
+/**
+\param row
+\param pos 
+**/
 void ListIvaView::contextMenu(int row, int, const QPoint & pos) {
+    _depura("ListIvaView::contextMenu", 0);
     QMenu *popup = new QMenu();
     QAction *borrarlinea = popup->addAction(tr("Borrar linea"));
     QAction *opcion = popup->exec(pos);
@@ -142,14 +168,24 @@ void ListIvaView::contextMenu(int row, int, const QPoint & pos) {
     if (opcion == borrarlinea) {
         borraIva(row);
     } // end if
+    _depura("END ListIvaView::contextMenu", 0);
 }
 
 
+///
+/**
+**/
 void ListIvaView::borraIvaAct() {
+    _depura("ListIvaView::borraIvaAct", 0);
     borraIva(currentRow());
+    _depura("END ListIvaView::borraIvaAct", 0);
 }
 
 
+///
+/**
+\param pos
+**/
 void ListIvaView::pintaIva(int pos) {
     _depura("ListIvaView::pintaIva\n", 0);
     Iva *linea;
@@ -169,6 +205,12 @@ void ListIvaView::pintaIva(int pos) {
 }
 
 
+///
+/**
+\param obj
+\param ev
+\return
+**/
 bool ListIvaView::eventFilter(QObject *obj, QEvent *ev) {
     _depura("ListIvaView::eventFilter()\n", 1);
     /*
@@ -214,6 +256,11 @@ bool ListIvaView::eventFilter(QObject *obj, QEvent *ev) {
 }
 
 
+///
+/**
+\param row
+\param col
+**/
 void ListIvaView::valueBudgetLineChanged(int row, int col) {
     _depura("valueBudgetLineChanged \n", 0);
     Iva *linea;
@@ -238,6 +285,9 @@ void ListIvaView::valueBudgetLineChanged(int row, int col) {
 
 
 /// Devuelve la l&iacute;nea que se esta tratando actualmente.
+/**
+\return
+**/
 Iva *ListIvaView::lineaact() {
     _depura("ListIvaView::lineaact()\n", 0);
     return lineaat(currentRow());
@@ -246,6 +296,10 @@ Iva *ListIvaView::lineaact() {
 
 /// Devuelve la l&iacute;nea especificada, y si no existe se van creando
 /// l&iacute;neas hasta que exista.
+/**
+\param row
+\return
+**/
 Iva *ListIvaView::lineaat(int row) {
     _depura("ListIvaView::lineaat\n", 0);
     Iva *linea;

@@ -24,6 +24,9 @@
 #include  "funcaux.h"
 
 
+///
+/**
+**/
 BusquedaCanal::BusquedaCanal(QWidget *parent)
         : QComboBox2(parent) {
     _depura("BusquedaCanal::BusquedaCanal", 0);
@@ -33,13 +36,19 @@ BusquedaCanal::BusquedaCanal(QWidget *parent)
 }
 
 
+///
+/**
+**/
 BusquedaCanal::~BusquedaCanal() {
     _depura("BusquedaCanal::~BusquedaCanal", 0);
+    _depura("END BusquedaCanal::~BusquedaCanal", 0);
 }
 
 
-
-
+///
+/**
+\param idcanal
+**/
 void BusquedaCanal::setidcanal(QString idcanal) {
     _depura("BusquedaCanal::setidcanal", 0, idcanal);
     if (m_cursorcombo != NULL) {
@@ -62,11 +71,22 @@ void BusquedaCanal::setidcanal(QString idcanal) {
     _depura("END BusquedaCanal::setidcanal", 0, idcanal);
 }
 
+
+///
+/**
+\param idcanal
+**/
 void BusquedaCanal::setValorCampo(QString idcanal) {
+        _depura("BusquedaCanal::setValorCampo", 0);
 	setidcanal(idcanal);
+        _depura("END BusquedaCanal::setValorCampo", 0);
 }
 
 
+///
+/**
+\param index
+**/
 void BusquedaCanal::m_activated(int index) {
     _depura("BusquedaCanal::m_activated", 0);
     if (index > 0) {
@@ -78,6 +98,10 @@ void BusquedaCanal::m_activated(int index) {
 }
 
 
+///
+/**
+\return
+**/
 QString BusquedaCanal::idcanal() {
     _depura("BusquedaCanal::idcanal", 0);
     int index= currentIndex();
@@ -89,6 +113,11 @@ QString BusquedaCanal::idcanal() {
     _depura("END BusquedaCanal::idcanal", 0);
 }
 
+
+///
+/**
+\return
+**/
 QString BusquedaCanal::valorCampo() {
 	return idcanal();
 }
@@ -99,6 +128,9 @@ QString BusquedaCanal::valorCampo() {
 /** Inicializa todos los componentes del Widget a NULL para que no haya posibles confusiones
     sobre si un elemento ha sido creado o no.
     Conecta el SIGNAL activated() con m_activated() para tratarlo. */
+/**
+\param parent
+**/
 BusquedaCanalDelegate::BusquedaCanalDelegate(QWidget *parent)
         : QComboBox2(parent) {
     _depura("BusquedaCanalDelegate::BusquedaCanalDelegate", 10);
@@ -109,8 +141,9 @@ BusquedaCanalDelegate::BusquedaCanalDelegate(QWidget *parent)
 
 
 
-/** Libera la memoria reservada.
-*/
+/// Libera la memoria reservada.
+/**
+**/
 BusquedaCanalDelegate::~BusquedaCanalDelegate() {
     _depura("BusquedaCanalDelegate::~BusquedaCanalDelegate", 10);
     _depura("END BusquedaCanalDelegate::~BusquedaCanalDelegate", 0);
@@ -121,6 +154,10 @@ BusquedaCanalDelegate::~BusquedaCanalDelegate() {
     Recarga cursor de serie_factura y cuando encuentra un registro cuyo codigoserie_factura coincide con el pasado
     como parametro lo establece como el registro activo por el comboBox.
 */
+/**
+\param cod
+\return
+**/
 void BusquedaCanalDelegate::s_editTextChanged(const QString &cod) {
     _depura("BusquedaCanalDelegate::s_editTextChanged", 0);
     static bool semaforo = FALSE;

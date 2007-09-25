@@ -21,6 +21,11 @@
 #include "nuevafact.h"
 
 
+///
+/**
+\param parent
+\param f
+**/
 nuevafact::nuevafact(QWidget *parent, Qt::WFlags f) 
   : QDialog(parent, f) {
   setupUi(this);
@@ -31,10 +36,15 @@ nuevafact::nuevafact(QWidget *parent, Qt::WFlags f)
 }
 
 
-nuevafact::~nuevafact() {
-}
+///
+/**
+**/
+nuevafact::~nuevafact() {}
 
 
+///
+/**
+**/
 void nuevafact::accept() {
   /// Falta comprobar que tengas permisos para crear nuevas empresas.
   QString nombredb;

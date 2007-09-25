@@ -27,6 +27,13 @@
 #include "funcaux.h"
 
 
+///
+/**
+\param emp
+\param ejerActual
+\param parent
+\param f
+**/
 Listado347::Listado347(Empresa *emp, QString ejerActual, QWidget *parent, Qt::WFlags f)
         : QDialog(parent, f), PEmpresaBase(emp) {
    _depura("Listado347::Listado347", 0);
@@ -41,12 +48,19 @@ Listado347::Listado347(Empresa *emp, QString ejerActual, QWidget *parent, Qt::WF
 }
 
 
+///
+/**
+**/
 Listado347::~Listado347() {
     _depura("Listado347::~Listado347", 0);
     centrarEnPantalla(this);
+    _depura("END Listado347::~Listado347", 0);
 }
 
 
+///
+/**
+**/
 void Listado347::on_m_boton_recalcular_clicked() {
     _depura("Listado347::click_recargar", 0);
 
@@ -136,6 +150,9 @@ void Listado347::on_m_boton_recalcular_clicked() {
 }
 
 
+///
+/**
+**/
 void Listado347::on_m_boton_imprimir_clicked() {
     _depura("Listado347::click_imprimir", 0);
     int i, numventas, numcompras;
@@ -176,6 +193,9 @@ void Listado347::on_m_boton_imprimir_clicked() {
 }
 
 
+///
+/**
+**/
 void Listado347::on_finicial_editingFinished() {
     _depura("Listado347::finicial_exit", 0);
     finicial->setText(normalizafecha(finicial->text()).toString("dd/MM/yyyy"));
@@ -183,6 +203,9 @@ void Listado347::on_finicial_editingFinished() {
 }
 
 
+///
+/**
+**/
 void Listado347::on_ffinal_editingFinished(){
     _depura("Listado347::ffinal_exit", 0);
     ffinal->setText(normalizafecha(ffinal->text()).toString("dd/MM/yyyy"));

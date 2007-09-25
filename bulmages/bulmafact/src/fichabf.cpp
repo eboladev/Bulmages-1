@@ -95,7 +95,7 @@ void FichaBf::calculaypintatotales() {
             if (!cur->eof()) {
                 irpf = Fixed(cur->valor("irpfproveedor"));
             } // end if
-        delete cur;
+            delete cur;
         } // end if
     } // end if
 
@@ -173,9 +173,436 @@ void FichaBf::calculaypintatotales() {
 }
 
 
-///
+/// Busca strings del tipo [xxxx] entro del texto pasado y los sustituye
+/// Por valores existentes en la base de datos.
+/**
+\param buff El texto entero sobre el que se hace el reemplazo de sentencias.
+**/
+void FichaBf::trataTags(QString &buff) {
+    _depura("FichaBf::trataTags", 0);
+    int pos =  0;
+
+    /// Buscamos algo de lineas de detalle
+    QRegExp rx("<!--\\s*LINEAS\\s*DETALLE\\s*-->(.*)<!--\\s*END\\s*LINEAS\\s*DETALLE\\s*-->");
+    rx.setMinimal(TRUE);
+    while ((pos = rx.indexIn(buff, pos)) != -1) {
+        QString ldetalle = trataLineasDetalle(rx.cap(1));
+        buff.replace(pos, rx.matchedLength(), ldetalle);
+        pos = 0;
+    } // end while
+
+    /// Buscamos Query's en condicional
+    pos = 0;
+    QRegExp rx4("<!--\\s*IF\\s*QUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*IF\\s*QUERY\\s*-->");
+    rx4.setMinimal(TRUE);
+    while ((pos = rx4.indexIn(buff, pos)) != -1) {
+        QString ldetalle = trataIfQuery(rx4.cap(1), rx4.cap(2));
+        buff.replace(pos, rx4.matchedLength(), ldetalle);
+        pos = 0;
+    } // end while
+
+    /// Buscamos Query's por tratar
+    pos = 0;
+    QRegExp rx1("<!--\\s*QUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*QUERY\\s*-->");
+    rx1.setMinimal(TRUE);
+    while ((pos = rx1.indexIn(buff, pos)) != -1) {
+        QString ldetalle = trataQuery(rx1.cap(1), rx1.cap(2));
+        buff.replace(pos, rx1.matchedLength(), ldetalle);
+        pos = 0;
+    } // end while
+
+
+    /// Buscamos Query's por tratar
+    pos = 0;
+    QRegExp rx7("<!--\\s*SUBQUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*SUBQUERY\\s*-->");
+    rx7.setMinimal(TRUE);
+    while ((pos = rx7.indexIn(buff, pos)) != -1) {
+        QString ldetalle = trataQuery(rx7.cap(1), rx7.cap(2));
+        buff.replace(pos, rx7.matchedLength(), ldetalle);
+        pos = 0;
+    } // end while
+
+    /// Buscamos Si hay descuentos en condicional
+    pos = 0;
+    QRegExp rx3("<!--\\s*IF\\s*DESCUENTOS\\s*-->(.*)<!--\\s*END\\s*IF\\s*DESCUENTOS\\s*-->");
+    rx3.setMinimal(TRUE);
+    while ((pos = rx3.indexIn(buff, pos)) != -1) {
+        if (m_listadescuentos->rowCount() -1 <= 0) {
+            buff.replace(pos, rx3.matchedLength(), "");
+            pos = 0;
+        } else {
+            pos += rx3.matchedLength();
+        } // end if
+    } // end while
+
+    /// Buscamos lineas de descuento
+    pos = 0;
+    QRegExp rx2("<!--\\s*LINEAS\\s*DESCUENTO\\s*-->(.*)<!--\\s*END\\s*LINEAS\\s*DESCUENTO\\s*-->");
+    rx2.setMinimal(TRUE);
+    while ((pos = rx2.indexIn(buff, pos)) != -1) {
+        QString ldetalle = trataLineasDescuento(rx2.cap(1));
+        buff.replace(pos, rx2.matchedLength(), ldetalle);
+        pos = 0;
+    } // end while
+
+    /// Buscamos lineas de totales
+    pos = 0;
+    QRegExp rx5("<!--\\s*TOTALES\\s*-->(.*)<!--\\s*END\\s*TOTALES\\s*-->");
+    rx5.setMinimal(TRUE);
+    while ((pos = rx5.indexIn(buff, pos)) != -1) {
+        QString ldetalle = trataTotales(rx5.cap(1));
+        buff.replace(pos, rx5.matchedLength(), ldetalle);
+        pos = 0;
+    } // end while
+
+
+    _depura("END FichaBf::trataTags", 0);
+}
+
+
+/// Trata las lineas de detalle encontradas dentro de los tags <!--LINEAS DETALLE-->
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return Si el query tiene elementos lo devuelve el parametro. En caso contrario no devuelve nada.
+**/
+QString FichaBf::trataIfQuery(const QString &query, const QString &datos) {
+    _depura("FichaBf::trataIfQuery", 0);
+    QString result="";
+    QString query1 = query;
+
+    /// Buscamos parametros en el query y los ponemos.
+    QRegExp rx("\\[(\\w*)\\]");
+    int pos =  0;
+    while ((pos = rx.indexIn(query1, pos)) != -1) {
+        if (exists(rx.cap(1))) {
+            query1.replace(pos, rx.matchedLength(), DBvalue(rx.cap(1)));
+            pos = 0;
+        } else {
+            pos += rx.matchedLength();
+        }
+    } // end while
+    /// Cargamos el query y lo recorremos
+    cursor2 *cur = empresaBase()->cargacursor(query1);
+    if (!cur) return "";
+    if (!cur->eof()) {
+        result = datos;
+    } // end while
+    delete cur;
+    _depura("END FichaBf::trataIfQuery", 0);
+    return result;
+}
+
+
+/// Trata las lineas de detalle encontradas dentro de los tags <!--LINEAS DETALLE-->
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QString FichaBf::trataQuery(const QString &query, const QString &datos) {
+    _depura("FichaBf::trataQuery", 0);
+    QString result="";
+    QString query1 = query;
+
+    /// Buscamos parametros en el query y los ponemos.
+    QRegExp rx("\\[(\\w*)\\]");
+    int pos =  0;
+    while ((pos = rx.indexIn(query1, pos)) != -1) {
+        if (exists(rx.cap(1))) {
+            query1.replace(pos, rx.matchedLength(), DBvalue(rx.cap(1)));
+            pos = 0;
+        } else {
+            pos += rx.matchedLength();
+        }
+    } // end while
+
+    /// Cargamos el query y lo recorremos
+    cursor2 *cur = empresaBase()->cargacursor(query1);
+    if (!cur) return "";
+    while (!cur->eof()) {
+        QString salidatemp = datos;
+
+        /// Buscamos cadenas perdidas adicionales que puedan quedar por poner.
+        QRegExp rx("\\[(\\w*)\\]");
+        int pos =  0;
+        while ((pos = rx.indexIn(salidatemp, pos)) != -1) {
+            if (cur->numcampo(rx.cap(1)) != -1) {
+                salidatemp.replace(pos, rx.matchedLength(), cur->valor(rx.cap(1)));
+                pos = 0;
+            } else {
+                pos += rx.matchedLength();
+            }
+        } // end while
+
+        result += salidatemp;
+        cur->siguienteregistro();
+    } // end while
+    delete cur;
+    _depura("END FichaBf::trataQuery", 0);
+    return result;
+}
+
+
+/// Trata las lineas de detalle encontradas dentro de los tags <!--LINEAS DETALLE-->
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QString FichaBf::trataLineasDetalle(const QString &det) {
+    _depura("FichaBf::trataLineasDetalle", 0);
+    QString result = "";
+
+    /// Contador que sirve para poner lineas de mas en caso de que sea preciso.
+    SDBRecord *linea;
+    /// Impresion de las lineas
+    for (int i = 0; i < (m_listalineas->rowCount() - 1); ++i) {
+        QString salidatemp = det;
+        linea = m_listalineas->lineaat(i);
+        Fixed base = Fixed(linea->DBvalue("cant" + m_listalineas->tableName()).toAscii().constData()) * Fixed(linea->DBvalue("pvp"+m_listalineas->tableName()).toAscii().constData());
+        QString l;
+        salidatemp.replace("[desc"+m_listalineas->tableName()+"]", "<para>" + XMLProtect(linea->DBvalue("desc" + m_listalineas->tableName())).replace(QChar('\n'), "</para><para>")+"</para>");
+        salidatemp.replace("[cant" + m_listalineas->tableName()+"]", l.sprintf("%s", linea->DBvalue("cant" + m_listalineas->tableName()).toAscii().constData()));
+        salidatemp.replace("[pvp" + m_listalineas->tableName()+"]", l.sprintf("%s", XMLProtect(linea->DBvalue("pvp" + m_listalineas->tableName())).toAscii().constData()));
+        salidatemp.replace("[descuento" + m_listalineas->tableName()+"]" , l.sprintf("%s", XMLProtect(linea->DBvalue("descuento" + m_listalineas->tableName())).toAscii().constData()));
+        salidatemp.replace("[total" + m_listalineas->tableName()+"]" , l.sprintf("%s", (base - base * Fixed(linea->DBvalue("descuento" + m_listalineas->tableName())) / 100).toQString().toAscii().constData()));
+
+        /// Buscamos cadenas perdidas adicionales que puedan quedar por poner.
+        QRegExp rx("\\[(\\w*)\\]");
+        int pos =  0;
+        while ((pos = rx.indexIn(salidatemp, pos)) != -1) {
+            if (linea->exists(rx.cap(1))) {
+                salidatemp.replace(pos, rx.matchedLength(), linea->DBvalue(rx.cap(1)));
+                pos = 0;
+            } else {
+                pos += rx.matchedLength();
+            }
+        } // end while
+
+        result += salidatemp;
+    } // end for
+    _depura("END FichaBf::trataLineasDetalle", 0);
+    return result;
+}
+
+
+/// Trata las lineas de descuento encontradas dentro de los tags <!--LINEAS DESCUENTO-->
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QString FichaBf::trataLineasDescuento(const QString &det) {
+    _depura("FichaBf::trataLineasDescuento", 0);
+    QString result = "";
+
+    base basesimp;
+    base basesimpreqeq;
+
+    /// Calculamos la base imponible
+    SDBRecord *linea;
+    /// Impresion de las lineas
+    for (int i = 0; i < (m_listalineas->rowCount() - 1); ++i) {
+        linea = m_listalineas->lineaat(i);
+        Fixed base = Fixed(linea->DBvalue("cant" + m_listalineas->tableName()).toAscii().constData()) * Fixed(linea->DBvalue("pvp"+m_listalineas->tableName()).toAscii().constData());
+        basesimp[linea->DBvalue("iva"+m_listalineas->tableName())] = basesimp[linea->DBvalue("iva"+m_listalineas->tableName())] + base - base * Fixed(linea->DBvalue("descuento" + m_listalineas->tableName()).toAscii().constData()) / 100;
+        basesimpreqeq[linea->DBvalue("reqeq" + m_listalineas->tableName())] = basesimpreqeq[linea->DBvalue("reqeq"+m_listalineas->tableName())] + base - base * Fixed(linea->DBvalue("descuento" + m_listalineas->tableName()).toAscii().constData()) / 100;
+
+    } // end for
+
+    Fixed basei("0.00");
+    base::Iterator it;
+    for (it = basesimp.begin(); it != basesimp.end(); ++it) {
+        basei = basei + it.value();
+    } // end for
+
+    /// Contador que sirve para poner lineas de mas en caso de que sea preciso.
+    SDBRecord *linea1;
+    /// Impresion de las lineas
+    for (int i = 0; i < (m_listadescuentos->rowCount() - 1); ++i) {
+        QString salidatemp = det;
+        linea1 = m_listadescuentos->lineaat(i);
+        QString l;
+        salidatemp.replace("[concept"+ m_listadescuentos->tableName()+"]", XMLProtect(linea1->DBvalue("concept" + m_listadescuentos->tableName())));
+        salidatemp.replace("[proporciondesc" + m_listadescuentos->tableName()+"]", l.sprintf("%s", linea1->DBvalue("proporcion" + m_listadescuentos->tableName()).toAscii().constData()));
+        salidatemp.replace("[totaldesc" + m_listadescuentos->tableName()+"]", l.sprintf("-%s", (Fixed(linea1->DBvalue("proporcion" + m_listadescuentos->tableName())) * basei / 100).toQString().toAscii().constData()));
+
+        /// Buscamos cadenas perdidas adicionales que puedan quedar por poner.
+        QRegExp rx("\\[(\\w*)\\]");
+        int pos =  0;
+        while ((pos = rx.indexIn(salidatemp, pos)) != -1) {
+            if (linea1->exists(rx.cap(1))) {
+                salidatemp.replace(pos, rx.matchedLength(), linea1->DBvalue(rx.cap(1)));
+                pos = 0;
+            } else {
+                pos += rx.matchedLength();
+            }
+        } // end while
+
+        result += salidatemp;
+    } // end for
+    _depura("END FichaBf::trataLineasDescuento", 0);
+    return result;
+}
+
+
+/** Calcula los totales de factura, descuentos e impuestos y invoca al metodo de pintaTotales para
+    que se pinten dichos valores en la impresion.
+*/
 /**
 \return
+**/
+QString FichaBf::trataTotales(const QString &det) {
+    _depura("FichaBf::trataTotales", 0);
+    QString result = "";
+    QString salidatemp = "";
+    base basesimp;
+    base basesimpreqeq;
+    SDBRecord *linea;
+    /// Impresion de los contenidos.
+    QString l;
+    Fixed irpf("0");
+
+    cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM configuracion WHERE nombre = 'IRPF'");
+    if (cur) {
+        if (!cur->eof()) {
+            irpf = Fixed(cur->valor("valor"));
+        } // end if
+        delete cur;
+    } // end if
+
+    if (exists("idproveedor") && DBvalue("idproveedor") != "") {
+        cur = empresaBase()->cargacursor("SELECT irpfproveedor FROM proveedor WHERE idproveedor = " + DBvalue("idproveedor"));
+        if (cur) {
+            if (!cur->eof()) {
+                irpf = Fixed(cur->valor("irpfproveedor"));
+            } // end if
+            delete cur;
+        } // end if
+    } // end if
+
+    Fixed descuentolinea("0.00");
+    for (int i = 0; i < m_listalineas->rowCount() -1; ++i) {
+        linea = m_listalineas->lineaat(i);
+        Fixed cant(linea->DBvalue("cant" + m_listalineas->tableName()).toAscii().constData());
+        Fixed pvpund(linea->DBvalue("pvp" + m_listalineas->tableName()).toAscii().constData());
+        Fixed desc1(linea->DBvalue("descuento" + m_listalineas->tableName()).toAscii().constData());
+        Fixed cantpvp = cant * pvpund;
+        Fixed base = cantpvp - cantpvp * desc1 / 100;
+        descuentolinea = descuentolinea + (cantpvp * desc1 / 100);
+        basesimp[linea->DBvalue("iva" + m_listalineas->tableName())] = basesimp[linea->DBvalue("iva" + m_listalineas->tableName())] + base;
+        basesimpreqeq[linea->DBvalue("reqeq" + m_listalineas->tableName())] = basesimpreqeq[linea->DBvalue("reqeq" + m_listalineas->tableName())] + base;
+    } // end for
+
+    Fixed basei("0.00");
+    base::Iterator it;
+    for (it = basesimp.begin(); it != basesimp.end(); ++it) {
+        basei = basei + it.value();
+    } // end for
+
+    /// Calculamos el total de los descuentos.
+    Fixed porcentt("0.00");
+    SDBRecord *linea1;
+    if (m_listadescuentos->rowCount()) {
+        for (int i = 0; i < m_listadescuentos->rowCount(); ++i) {
+            linea1 = m_listadescuentos->lineaat(i);
+            Fixed propor(linea1->DBvalue("proporcion" + m_listadescuentos->tableName()).toAscii().constData());
+            porcentt = porcentt + propor;
+        } // end for
+    } // end if
+
+    /// Calculamos el total de base imponible.
+    Fixed totbaseimp("0.00");
+    Fixed parbaseimp("0.00");
+    Fixed totdesc("0.00");
+    for (it = basesimp.begin(); it != basesimp.end(); ++it) {
+        if (porcentt > Fixed("0.00")) {
+            parbaseimp = it.value() - it.value() * porcentt / 100;
+            totdesc = totdesc + it.value() * porcentt / 100;
+        } else {
+            parbaseimp = it.value();
+        } // end if
+        totbaseimp = totbaseimp + parbaseimp;
+    } // end for
+
+    /// Calculamos el total de IVA.
+    Fixed totiva("0.00");
+    Fixed pariva("0.00");
+    for (it = basesimp.begin(); it != basesimp.end(); ++it) {
+        Fixed piva(it.key().toAscii().constData());
+        if (porcentt > Fixed("0.00")) {
+            pariva = (it.value() - it.value() * porcentt / 100) * piva / 100;
+        } else {
+            pariva = it.value() * piva / 100;
+        } // end if
+        totiva = totiva + pariva;
+    } // end for
+
+    /// Calculamos el total de recargo de equivalencia.
+    Fixed totreqeq("0.00");
+    Fixed parreqeq("0.00");
+    for (it = basesimpreqeq.begin(); it != basesimpreqeq.end(); ++it) {
+        Fixed preqeq(it.key().toAscii().constData());
+        if (porcentt > Fixed("0.00")) {
+            parreqeq = (it.value() - it.value() * porcentt / 100) * preqeq / 100;
+        } else {
+            parreqeq = it.value() * preqeq / 100;
+        } // end if
+        totreqeq = totreqeq + parreqeq;
+    } // end for
+
+    Fixed totirpf = totbaseimp * irpf / 100;
+
+    base::Iterator ot;
+    base::Iterator at;
+    at = basesimpreqeq.begin();
+    for (ot = basesimp.begin(); ot != basesimp.end(); ++ot) {
+        salidatemp = det;
+        if (porcentt > Fixed("0.00")) {
+            parbaseimp = ot.value() - ot.value() * porcentt / 100;
+        } else {
+            parbaseimp = ot.value();
+        } // end if
+        salidatemp.replace("[bimp]", parbaseimp.toQString());
+        salidatemp.replace("[tbimp]", ot.key());
+
+        Fixed piva(ot.key().toAscii().constData());
+        if (porcentt > Fixed("0.00")) {
+            pariva = (ot.value() - ot.value() * porcentt / 100) * piva / 100;
+        } else {
+            pariva = ot.value() * piva / 100;
+        } // end if
+        salidatemp.replace("[iva]", pariva.toQString());
+        salidatemp.replace("[tiva]", ot.key());
+
+        // Recargos de equivalencia
+        Fixed preqeq(at.key().toAscii().constData());
+        if (porcentt > Fixed("0.00")) {
+            parreqeq = (at.value() - at.value() * porcentt / 100) * preqeq / 100;
+        } else {
+            parreqeq = at.value() * preqeq / 100;
+        } // end if
+        salidatemp.replace("[re]", parreqeq.toQString());
+        salidatemp.replace("[tre]", at.key());
+
+        salidatemp.replace("[irpf]", totirpf.toQString());
+        salidatemp.replace("[tirpf]", irpf.toQString());
+
+        salidatemp.replace("[totalre]", totreqeq.toQString());
+        salidatemp.replace("[teoricbimp]", basei.toQString());
+        salidatemp.replace("[totalbimp]", totbaseimp.toQString());
+        salidatemp.replace("[totaldesc]", totdesc.toQString());
+        salidatemp.replace("[totaliva]", totiva.toQString());
+        salidatemp.replace("[total]", (totiva + totbaseimp + totreqeq - totirpf).toQString().toAscii().constData());
+
+        result += salidatemp;
+        ++at;
+    } // end for
+
+    _depura("END FichaBf::trataTotales", 0);
+    return result;
+}
+
+
+///
+/**
 **/
 void FichaBf::generaRML() {
     _depura("FichaBf::generaRML", 0);
@@ -194,10 +621,10 @@ void FichaBf::generaRML() {
 
     cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM configuracion WHERE nombre = 'IRPF'");
     if (cur) {
-    if (!cur->eof()) {
-        irpf = Fixed(cur->valor("valor"));
-    } // end if
-    delete cur;
+        if (!cur->eof()) {
+            irpf = Fixed(cur->valor("valor"));
+        } // end if
+        delete cur;
     } // end if
 
     /// Copiamos el archivo.
@@ -226,7 +653,13 @@ void FichaBf::generaRML() {
     QTextStream stream(&file);
     QString buff = stream.readAll();
     file.close();
+
+    /// Hacemos el tratamiento avanzado de TAGS
+    trataTags(buff);
+
     QString fitxersortidatxt = "";
+
+
 
     /// Linea de totales del Presupuesto.
     QString SQLQuery = "SELECT * FROM cliente WHERE idcliente = " + DBvalue("idcliente");
@@ -270,6 +703,7 @@ void FichaBf::generaRML() {
 
     /// Contador que sirve para poner lineas de mas en caso de que sea preciso.
     SDBRecord *linea;
+    /// Impresion de las lineas
     for (int i = 0; i < (m_listalineas->rowCount() - 1); ++i) {
         linea = m_listalineas->lineaat(i);
         Fixed base = Fixed(linea->DBvalue("cant" + m_listalineas->tableName()).toAscii().constData()) * Fixed(linea->DBvalue("pvp"+m_listalineas->tableName()).toAscii().constData());
@@ -279,7 +713,7 @@ void FichaBf::generaRML() {
         fitxersortidatxt += "<tr>\n";
         fitxersortidatxt += "    <td>" + XMLProtect(linea->DBvalue("codigocompletoarticulo")) + "</td>\n";
         fitxersortidatxt += "    <td><para>" + XMLProtect(linea->DBvalue("desc" + m_listalineas->tableName())).replace(QChar('\n'), "</para><para>") + "</para></td>\n";
-        fitxersortidatxt += "    <td>" + l.sprintf("%s", XMLProtect(linea->DBvalue("cant" + m_listalineas->tableName())).toAscii().constData()) + "</td>\n";
+        fitxersortidatxt += "    <td>" + l.sprintf("%d", (int)linea->DBvalue("cant" + m_listalineas->tableName()).toFloat()) + "</td>\n";
         fitxersortidatxt += "    <td>" + l.sprintf("%s", XMLProtect(linea->DBvalue("pvp" + m_listalineas->tableName())).toAscii().constData()) + "</td>\n";
         fitxersortidatxt += "    <td>" + l.sprintf("%s", XMLProtect(linea->DBvalue("descuento" + m_listalineas->tableName())).toAscii().constData()) + " %</td>\n";
         fitxersortidatxt += "    <td>" + l.sprintf("%s", (base - base * Fixed(linea->DBvalue("descuento" + m_listalineas->tableName())) / 100).toQString().toAscii().constData()) + "</td>\n";
@@ -318,16 +752,18 @@ void FichaBf::generaRML() {
     } // end if
     buff.replace("[descuentos]", fitxersortidatxt);
 
-    /// Impresion de los totales.
+    /// Impresion de las bases imponibles.
     fitxersortidatxt = "";
     QString tr1 = ""; /// Rellena el primer tr de titulares.
     QString tr2 = ""; /// Rellena el segundo tr de cantidades.
     fitxersortidatxt += "<blockTable style=\"tabladescuento\" >\n";
     Fixed totbaseimp("0.00");
     Fixed parbaseimp("0.00");
+    Fixed totdesc("0.00");
     for (it = basesimp.begin(); it != basesimp.end(); ++it) {
         if (porcentt > 0) {
             parbaseimp = it.value() - it.value() * porcentt / 100;
+	    totdesc = totdesc + it.value() * porcentt / 100;
         } else {
             parbaseimp = it.value();
         } // end if
@@ -376,6 +812,18 @@ void FichaBf::generaRML() {
     tr2 += "    <td>" + l.sprintf(" %s ", (totiva + totbaseimp + totreqeq - totirpf).toQString().toAscii().constData()) + "</td>\n";
     fitxersortidatxt += "<tr>" + tr1 + "</tr><tr>" + tr2 + "</tr></blockTable>\n";
     buff.replace("[totales]", fitxersortidatxt);
+
+
+
+    buff.replace("[irpf]", totirpf.toQString());
+    buff.replace("[tirpf]", irpf.toQString());
+    buff.replace("[totalre]", totreqeq.toQString());
+    buff.replace("[teoricbimp]", basei.toQString());
+    buff.replace("[totalbimp]", totbaseimp.toQString());
+    buff.replace("[totaldesc]", totdesc.toQString());
+    buff.replace("[totaliva]", totiva.toQString());
+    buff.replace("[total]", (totiva + totbaseimp + totreqeq - totirpf).toQString().toAscii().constData());
+
 
     /// En la version para windows hay problemas con las imagenes,
     /// por eso de momento lo dejamos asi.

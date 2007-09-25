@@ -23,7 +23,11 @@
 #include "linprevcobro.h"
 
 
+///
+/**
+**/
 void ListLinPrevCobro::inicializaVariables() {
+    _depura("ListLinPrevCobro::inicializaVariables", 0);
     m_companyact = NULL;
     mdb_idregistroiva = "";
     mfilt_idregistroiva = "";
@@ -31,23 +35,57 @@ void ListLinPrevCobro::inicializaVariables() {
     mfilt_codigocuentaprevcobro = "";
     mfilt_finprevcobro = "";
     mfilt_ffiprevcobro = "";
+    _depura("END ListLinPrevCobro::inicializaVariables", 0);
 }
 
 
+///
+/**
+\param comp
+**/
 ListLinPrevCobro::ListLinPrevCobro(Empresa *comp) {
+    _depura("ListLinPrevCobro::ListLinPrevCobro", 0);
     inicializaVariables();
     m_companyact = comp;
+    _depura("END ListLinPrevCobro::ListLinPrevCobro", 0);
 }
 
-
+///
+/**
+**/
 ListLinPrevCobro::ListLinPrevCobro() {
+    _depura("ListLinPrevCobro::ListLinPrevCobro", 0);
     inicializaVariables();
+    _depura("END ListLinPrevCobro::ListLinPrevCobro", 0);
 }
 
 
-ListLinPrevCobro::~ListLinPrevCobro() {}
+///
+/**
+**/
+ListLinPrevCobro::~ListLinPrevCobro() {
+    _depura("ListLinPrevCobro::~ListLinPrevCobro", 0);
+    _depura("END ListLinPrevCobro::~ListLinPrevCobro", 0);
+}
 
 
+///
+/**
+\param desc
+\param cantl
+\param pvpl
+\param descl
+\param idart
+\param codart
+\param nomart
+\param ivapres
+\param k
+\param l
+\param m
+\param idctacliente
+\param codigoctacliente
+\param nomctacliente
+**/
 void ListLinPrevCobro::nuevalinea(QString desc, QString cantl, QString pvpl, QString descl,QString idart, QString codart, QString nomart, QString ivapres, QString k, QString l, QString m, QString idctacliente, QString codigoctacliente, QString nomctacliente) {
     linprevcobro *lin = new linprevcobro(m_companyact, "", desc,  cantl, pvpl,
                                          descl, idart, codart, nomart,

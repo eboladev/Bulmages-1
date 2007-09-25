@@ -32,12 +32,27 @@
 #include "movimientosview.h"
 
 
-myplugin::myplugin() {}
+///
+/**
+**/
+myplugin::myplugin() {
+    _depura("myplugin::myplugin", 0);
+    _depura("END myplugin::myplugin", 0);
+}
 
 
-myplugin::~myplugin() {}
+///
+/**
+**/
+myplugin::~myplugin() {
+    _depura("myplugin::~myplugin", 0);
+    _depura("END myplugin::~myplugin", 0);
+}
 
 
+///
+/**
+**/
 void myplugin::elslot() {
     _depura("myplugin::elslot", 0);
 	MovimientosView *mov = new MovimientosView((Company *)empresaBase());
@@ -47,7 +62,12 @@ void myplugin::elslot() {
 }
 
 
+///
+/**
+\param bges
+**/
 void myplugin::inicializa(Bulmafact *bges) {
+    _depura("myplugin::inicializa", 0);
     /// Creamos el men&uacute;.
     setEmpresaBase(bges->getcompany());
     m_bulmafact = bges;
@@ -59,9 +79,15 @@ void myplugin::inicializa(Bulmafact *bges) {
     bges->menuMaestro->addAction(accion);
 
     connect(accion, SIGNAL(activated()), this, SLOT(elslot()));
+    _depura("END myplugin::inicializa", 0);
 }
 
 
+///
+/**
+\param bges
+\return
+**/
 int entryPoint(Bulmafact *bges) {
     _depura("Punto de Entrada del plugin PluginTrazabilidad", 0);
     myplugin *plug = new myplugin();
@@ -70,6 +96,12 @@ int entryPoint(Bulmafact *bges) {
     return 0;
 }
 
+
+///
+/**
+\param subform
+\return
+**/
 int ListLinAlbaranProveedorView_ListLinAlbaranProveedorView(ListLinAlbaranProveedorView *subform) {
     _depura("ListLinAlbaranProveedorView_ListLinAlbaranProveedorView", 0);
     subform->addSHeader("lotelalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, "Lote");
@@ -77,6 +109,11 @@ int ListLinAlbaranProveedorView_ListLinAlbaranProveedorView(ListLinAlbaranProvee
     return 0;
 }
 
+///
+/**
+\param subform
+\return
+**/
 int ListLinAlbaranClienteView_ListLinAlbaranClienteView(ListLinAlbaranClienteView *subform) {
     _depura("ListLinAlbaranClienteView_ListLinAlbaranClienteView", 0);
     subform->addSHeader("lotelalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, "Lote");
@@ -84,6 +121,12 @@ int ListLinAlbaranClienteView_ListLinAlbaranClienteView(ListLinAlbaranClienteVie
     return 0;
 }
 
+
+///
+/**
+\param subform
+\return
+**/
 int ListLinFacturaView_ListLinFacturaView(ListLinFacturaView *subform) {
     _depura("ListLinFacturaView_ListLinFacturaView", 0);
     subform->addSHeader("lotelfactura", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, "Lote");
@@ -91,6 +134,12 @@ int ListLinFacturaView_ListLinFacturaView(ListLinFacturaView *subform) {
     return 0;
 }
 
+
+///
+/**
+\param subform
+\return
+**/
 int ListLinFacturaProveedorView_ListLinFacturaProveedorView(ListLinFacturaProveedorView *subform) {
     _depura("ListLinFacturaProveedorView_ListLinFacturaProveedorView", 0);
     subform->addSHeader("lotelfacturap", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, "Lote");
@@ -98,6 +147,11 @@ int ListLinFacturaProveedorView_ListLinFacturaProveedorView(ListLinFacturaProvee
     return 0;
 }
 
+
+///
+/**
+\return
+**/
 int SubForm2Bf_on_mui_list_editFinished(SubForm2Bf *) {
     _depura("SubForm2Bf_on_mui_list_editFinished", 0);
 

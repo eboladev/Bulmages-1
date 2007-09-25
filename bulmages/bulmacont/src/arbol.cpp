@@ -21,6 +21,9 @@
 #include "arbol.h"
 
 
+///
+/**
+**/
 Arbol::Arbol() {
     _depura("Arbol::Arbol", 0);
     unsigned int i;
@@ -34,6 +37,9 @@ Arbol::Arbol() {
 }
 
 
+///
+/**
+**/
 Arbol::~Arbol() {
     _depura("Arbol::~Arbol", 0);
     unsigned int i;
@@ -48,6 +54,10 @@ Arbol::~Arbol() {
 }
 
 
+///
+/**
+\param ramas
+**/
 void Arbol::nuevarama(cursor2 *ramas) {
     _depura("Arbol::nuevarama", 0);
     unsigned int i;
@@ -66,6 +76,10 @@ void Arbol::nuevarama(cursor2 *ramas) {
 }
 
 
+///
+/**
+\param ramas
+**/
 void Arbol::inicializa(cursor2 *ramas) {
     _depura("Arbol::inicializa", 0);
     unsigned int i;
@@ -109,6 +123,11 @@ void Arbol::inicializa(cursor2 *ramas) {
 }
 
 
+///
+/**
+\param cuentas
+\param ramas
+**/
 void Arbol::SintetizarRamas(cursor2 **cuentas, tiporama **ramas) {
     _depura("Arbol::SintetizarRamas", 0);
     tiporama *guia, *rama;
@@ -144,6 +163,10 @@ void Arbol::SintetizarRamas(cursor2 **cuentas, tiporama **ramas) {
 }
 
 
+///
+/**
+\param cuenta
+**/
 void Arbol::actualizahojas(cursor2 *cuenta) {
     _depura("Arbol::actualizahojas", 0);
     unsigned int i = 0;
@@ -173,6 +196,12 @@ void Arbol::actualizahojas(cursor2 *cuenta) {
 }
 
 
+///
+/**
+\param ramaraiz
+\param cuenta
+\param actualizado
+**/
 void Arbol::ActualizarHoja(tiporama** ramaraiz, cursor2* cuenta, bool* actualizado) {
     _depura("Arbol::ActualizarHoja", 0);
     tiporama* rama = *ramaraiz;
@@ -212,6 +241,9 @@ void Arbol::ActualizarHoja(tiporama** ramaraiz, cursor2* cuenta, bool* actualiza
 }
 
 
+///
+/**
+**/
 void Arbol::inicia() {
     _depura("Arbol::inicia", 0);
     /// Siempre ser&aacute; la primera del arbol.
@@ -220,6 +252,12 @@ void Arbol::inicia() {
 }
 
 
+///
+/**
+\param nivel
+\param superiores
+\return
+**/
 bool Arbol::deshoja(unsigned int nivel, bool superiores) {
     _depura("Arbol::deshoja", 0);
     unsigned int i;
@@ -282,6 +320,13 @@ bool Arbol::deshoja(unsigned int nivel, bool superiores) {
 }
 
 
+///
+/**
+\param rama
+\param nivel
+\param superiores
+\param deshojada
+**/
 void Arbol::Deshojar(tiporama *rama, unsigned int nivel, bool superiores, bool *deshojada) {
     _depura("Arbol::Deshojar", 0);
     unsigned int nivelhoja = rama->hoja->codigo.length();
@@ -329,6 +374,11 @@ void Arbol::Deshojar(tiporama *rama, unsigned int nivel, bool superiores, bool *
 }
 
 
+///
+/**
+\param valor
+\return
+**/
 QString Arbol::hojaactual(QString valor) {
     _depura("Arbol::hojaactual", 0);
     QString resultado;
@@ -358,6 +408,13 @@ QString Arbol::hojaactual(QString valor) {
     _depura("END Arbol::hojaactual", 0);
 }
 
+
+///
+/**
+\param codigo
+\param nivel
+\return
+**/
 bool Arbol::irHoja(QString codigo, unsigned int nivel) {
     _depura("Arbol::irHoja", 0);
     hojaactiva = QString("00");

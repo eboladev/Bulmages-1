@@ -57,6 +57,14 @@ MovimientosView::MovimientosView(QWidget *parent, edmode editmodo)
 
 /** Inicializa todos los componentes y prepara la ventana para funcionar.
 */
+
+
+///
+/**
+\param comp
+\param parent
+\param editmodo
+**/
 MovimientosView::MovimientosView(Company *comp, QWidget *parent, edmode editmodo)
         : FichaBf(comp, parent, 0) {
     _depura("MovimientosView::MovimientosView", 0);
@@ -77,6 +85,10 @@ MovimientosView::MovimientosView(Company *comp, QWidget *parent, edmode editmodo
 }
 
 
+///
+/**
+\return
+**/
 void MovimientosView::iniciaForm() {
     _depura("MovimientosView::iniciaForm");
     /// Disparamos los plugins.
@@ -92,6 +104,9 @@ void MovimientosView::iniciaForm() {
 
 /** No precisa de acciones especiales en el destructor de la clase.
 */
+///
+/**
+**/
 MovimientosView::~MovimientosView() {
     _depura("MovimientosView::~MovimientosView", 0);
     empresaBase()->sacaWindow(this);
@@ -101,6 +116,8 @@ MovimientosView::~MovimientosView() {
 
 /** Hace la carga del subformulario y el calculo de los totales.
 */
+/**
+**/
 void MovimientosView::presenta() {
     _depura("MovimientosView::presenta", 0);
 
@@ -112,6 +129,9 @@ void MovimientosView::presenta() {
 
 /** Funcion auxiliar que genera la clausula WHERE de la consulta del listado a partir de las opciones de filtrado que el usuario haya especificado.
 */
+/**
+\return
+**/
 QString MovimientosView::generaFiltro() {
     _depura("MovimientosView::generaFiltro", 0);
     /// Tratamiento de los filtros.
@@ -127,6 +147,9 @@ QString MovimientosView::generaFiltro() {
 /** SLOT que responde a la pulsacion del boton de imprimir.
     La impresion de listados esta completamente delegada en SubForm2Bf
 */
+///
+/**
+**/
 void MovimientosView::on_mui_imprimir_clicked() {
     _depura("MovimientosView::on_mui_imprimir_clicked", 0);
     mui_list->imprimirPDF(tr("Facturas a clientes"));
@@ -142,6 +165,10 @@ void MovimientosView::on_mui_imprimir_clicked() {
 /// =============================================================================
 /** Prepara el subformulario para trabajar con la tabla factura.
 */
+/**
+\param parent
+\return
+**/
 MovimientosSubform::MovimientosSubform(QWidget *parent, const char *) : SubForm2Bf(parent) {
     _depura("MovimientosSubform::MovimientosSubform", 0);
     /// Disparamos los plugins.

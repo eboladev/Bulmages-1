@@ -28,14 +28,22 @@
 #include "q19qtoolbutton.h"
 #include "bulmafact.h"
 
+
+///
+/**
+\return
+**/
 int entryPoint(Bulmafact *) {
     _depura("Estoy dentro del plugin de Q19", 0);
     return 0;
 }
 
 
-
-
+///
+/**
+\param l
+\return
+**/
 int CobrosList_CobrosList(CobrosList *l) {
     _depura("CobrosList_CobrosList", 0);
 

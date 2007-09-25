@@ -22,6 +22,12 @@
 #include "empresa.h"
 
 
+///
+/**
+\param emp
+\param parent
+\param fl
+**/
 CuentaView::CuentaView(Empresa  *emp, QWidget *parent, Qt::WFlags fl)
         : FichaBc(emp, parent, fl) {
     _depura("CuentaView::CuentaView", 0);
@@ -42,6 +48,9 @@ CuentaView::CuentaView(Empresa  *emp, QWidget *parent, Qt::WFlags fl)
 
 
 /// Saca el formulario, crea una cuenta y devuelve su identificador.
+/**
+\param cod
+**/
 void CuentaView::cuentanueva(QString cod) {
     _depura("CuentaView::cuentanueva", 0);
     codigo->setText(cod);
@@ -117,29 +126,50 @@ void CuentaView::cuentanueva(QString cod) {
 }
 
 
+///
+/**
+**/
 CuentaView::~CuentaView() {
     _depura("CuentaView::~CuentaView", 0);
-    _depura("CuentaView::~CuentaView", 0);
+    _depura("END CuentaView::~CuentaView", 0);
 }
 
 
+///
+/**
+**/
 void CuentaView::on_mui_borrar_clicked() {
+    _depura("CuentaView::on_mui_borrar_clicked", 0);
     borrarCuenta();
+    _depura("END CuentaView::on_mui_borrar_clicked", 0);
 }
 
 
+///
+/**
+**/
 void CuentaView::on_mui_guardar_clicked() {
+    _depura("CuentaView::on_mui_guardar_clicked", 0);
     guardarCuenta();
+    _depura("END CuentaView::on_mui_guardar_clicked", 0);
 }
 
 
+///
+/**
+**/
 void CuentaView::on_mui_aceptar_clicked() {
+    _depura("CuentaView::on_mui_aceptar_clicked", 0);
     guardarCuenta();
     close();
+    _depura("END CuentaView::on_mui_aceptar_clicked", 0);
 }
 
 
 /// Esta funci&oacute;n se activa cada vez que se pulsa una tecla sobre la cuenta.
+/**
+\param cadena
+**/
 void CuentaView::cambiapadre(const QString &cadena) {
     _depura("CuentaView::cambiapadre", 0);
     QString cad;
@@ -167,6 +197,9 @@ void CuentaView::cambiapadre(const QString &cadena) {
 /// Este es el SLOT que se activa al pulsar el bot&oacute;n ok del formulario.
 /** Lo que hace es recoger los datos del formulario y hacer una inserci&oacute;n
     o una modificaci&oacute;n de la tabla de cuentas. */
+/**
+\param e
+**/
 void CuentaView::closeEvent(QCloseEvent *e) {
     _depura("CuentaView::closeEvent", 0);
     if (dialogChanges_hayCambios()) {
@@ -187,6 +220,10 @@ void CuentaView::closeEvent(QCloseEvent *e) {
 }
 
 
+///
+/**
+\return
+**/
 int CuentaView::inicializa() {
     _depura("CuentaView::inicializa", 0);
     cursor2 *cursorgrupos;
@@ -207,6 +244,11 @@ int CuentaView::inicializa() {
 }
 
 
+///
+/**
+\param idcuenta1
+\return
+**/
 int CuentaView::cargacuenta(int idcuenta1) {
     _depura("CuentaView::cargacuenta", 0);
     QString cadena;
@@ -310,6 +352,12 @@ int CuentaView::cargacuenta(int idcuenta1) {
 }
 
 
+///
+/**
+\param codpadre
+\param idgrupo
+\return
+**/
 int CuentaView::nuevacuenta(QString codpadre, int idgrupo) {
     _depura("CuentaView::nuevacuenta", 0);
     /// Suponiendo que las cuentas son num&eacute;ricas, al crear una nueva cuenta
@@ -368,8 +416,11 @@ int CuentaView::nuevacuenta(QString codpadre, int idgrupo) {
     return 0;
 }
 
+
 /// Esta funci&oacute;n se dispara cuando se ha pulsado
 /// return sobre el bot&oacute;n del c&oacute;digo.
+/**
+**/
 void CuentaView::codigo_ret() {
     _depura("CuentaView::codigo_ret", 0);
     QString cod = codigo->text();
@@ -379,6 +430,9 @@ void CuentaView::codigo_ret() {
 }
 
 
+///
+/**
+**/
 void CuentaView::guardarCuenta() {
     _depura("CuentaView::guardarCuenta", 0);
     QString codigocuenta;
@@ -463,6 +517,9 @@ void CuentaView::guardarCuenta() {
 }
 
 
+///
+/**
+**/
 void CuentaView::borrarCuenta() {
     _depura("CuentaView::borrarCuenta", 0);
     switch (QMessageBox::warning(this,

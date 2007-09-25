@@ -31,16 +31,28 @@
 #include "configuracion.h"
 
 
+///
+/**
+\param parent
+**/
 RutaComercialList::RutaComercialList(QWidget *parent)
         : Listado(NULL, parent) {
+    _depura("RutaComercialList::RutaComercialList", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     m_idpresupuesto = "";
+    _depura("END RutaComercialList::RutaComercialList", 0);
 }
 
 
+///
+/**
+\param comp
+\param parent
+**/
 RutaComercialList::RutaComercialList(Company *comp, QWidget *parent)
         : Listado(comp, parent) {
+    _depura("RutaComercialList::RutaComercialList", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     setSubForm(mui_list);
@@ -50,18 +62,34 @@ RutaComercialList::RutaComercialList(Company *comp, QWidget *parent)
     m_idpresupuesto = "";
     hideBusqueda();
     empresaBase()->meteWindow(windowTitle(), this);
+    _depura("END RutaComercialList::RutaComercialList", 0);
 }
 
 
+///
+/**
+**/
 RutaComercialList::~RutaComercialList() {
     _depura("RutaComercialList::~RutaComercialList", 0);
+    _depura("END RutaComercialList::~RutaComercialList", 0);
 }
 
+
+///
+/**
+\param comp
+**/
 void RutaComercialList::setEmpresaBase(Company *comp) {
+    _depura("RutaComercialList::setEmpresaBase", 0);
     PEmpresaBase::setEmpresaBase(comp);
     m_cliente->setEmpresaBase(comp);
+    _depura("RutaComercialList::setEmpresaBase", 0);
 }
 
+
+///
+/**
+**/
 void RutaComercialList::presenta() {
     _depura("RutaComercialList::presenta()\n", 0);
     QString SQLQuery = "SELECT * FROM (SELECT * FROM rutacomercial NATURAL LEFT JOIN incidenciacomercial UNION SELECT * FROM rutacomercial NATURAL RIGHT JOIN incidenciacomercial WHERE incidenciacomercial.idrutacomercial IS NULL) AS t1 NATURAL LEFT JOIN trabajador LEFT JOIN (SELECT * FROM cliente NATURAL LEFT JOIN zonacomercial) AS t2 ON t1.idcliente = t2.idcliente WHERE 1 = 1 " + generaFiltro();
@@ -70,7 +98,12 @@ void RutaComercialList::presenta() {
 }
 
 
+///
+/**
+\return
+**/
 QString RutaComercialList::generaFiltro() {
+    _depura("RutaComercialList::generaFiltro", 0);
     /// Tratamiento de los filtros.
     QString filtro = "";
     if (m_cliente->idcliente() != "") {
@@ -80,10 +113,16 @@ QString RutaComercialList::generaFiltro() {
         filtro += " AND t1.fechaincidenciacomercial >= '" + m_fechain->text() + "' ";
     if (m_fechafin->text() != "")
         filtro += " AND t1.fechaincidenciacomercial <= '" + m_fechafin->text() + "' ";
+    _depura("END RutaComercialList::generaFiltro", 0);
     return (filtro);
 }
 
 
+///
+/**
+\param row
+\return
+**/
 void RutaComercialList::editar(int row) {
     _depura("RutaComercialList::editar", 0);
     QString idrutacomercial = mui_list->DBvalue("idrutacomercial", row);
@@ -98,8 +137,9 @@ void RutaComercialList::editar(int row) {
 }
 
 
-
-
+///
+/**
+**/
 void RutaComercialList::on_mui_crear_clicked() {
     _depura("RutaComercialList::on_mui_crear_clicked", 0);
     RutaComercialIncView *rut = new RutaComercialIncView((Company *)empresaBase(), NULL);
@@ -110,7 +150,11 @@ void RutaComercialList::on_mui_crear_clicked() {
 }
 
 
+///
+/**
+**/
 void RutaComercialList::imprimir() {
+    _depura("RutaComercialList::imprimir", 0);
     QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "rutascomerciales.rml";
     QString archivod = confpr->valor(CONF_DIR_USER) + "rutascomerciales.rml";
     QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
@@ -155,9 +199,14 @@ void RutaComercialList::imprimir() {
     } // end if
     /// Crea el pdf y lo muestra.
     invocaPDF("rutascomerciales");
+    _depura("END RutaComercialList::imprimir", 0);
 }
 
 
+///
+/**
+\return
+**/
 void RutaComercialList::on_mui_borrar_clicked() {
     _depura("RutaComercialList::on_mui_borrar_clicked", 0);
     QString idrutacomercial = mui_list->DBvalue("idrutacomercial");
@@ -170,13 +219,25 @@ void RutaComercialList::on_mui_borrar_clicked() {
 }
 
 
+///
+/**
+\return
+**/
     QString RutaComercialList::idpresupuesto() {
+    _depura("RutaComercialList::idpresupuesto", 0);
+    _depura("END RutaComercialList::idpresupuesto", 0);
         return m_idpresupuesto;
     }
 
 
+///
+/**
+\param val
+**/
     void RutaComercialList::setidcliente(QString val) {
+        _depura("RutaComercialList::setidcliente", 0);
         m_cliente->setidcliente(val);
+        _depura("END RutaComercialList::setidcliente", 0);
     }
 
 
@@ -185,7 +246,12 @@ void RutaComercialList::on_mui_borrar_clicked() {
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
+///
+/**
+\param parent
+**/
 RutaComercialListSubForm::RutaComercialListSubForm(QWidget *parent) : SubForm2Bf(parent) {
+    _depura("RutaComercialListSubForm::RutaComercialListSubForm", 0);
     setDBTableName("rutacomercial");
     setDBCampoId("idrutacomercial");
     addSHeader("cifcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("CIF del cliente"));
@@ -210,5 +276,6 @@ RutaComercialListSubForm::RutaComercialListSubForm(QWidget *parent) : SubForm2Bf
     addSHeader("refincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Referencia de la incidencia"));
     addSHeader("horaincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Hora de la incidencia"));
     setinsercion(FALSE);
+    _depura("END RutaComercialListSubForm::RutaComercialListSubForm", 0);
 };
 

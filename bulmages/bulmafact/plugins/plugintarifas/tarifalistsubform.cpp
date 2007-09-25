@@ -23,6 +23,10 @@
 #include "funcaux.h"
 
 
+///
+/**
+\param parent
+**/
 TarifaListSubform::TarifaListSubform(QWidget *parent)
         : SubForm2Bf(parent) {
     _depura("TarifaListSubform::TarifaListSubform", 0);
@@ -35,6 +39,9 @@ TarifaListSubform::TarifaListSubform(QWidget *parent)
 }
 
 
+///
+/**
+**/
 void TarifaListSubform::cargar() {
     _depura("TarifaListSubform::cargar\n", 0);
     QString SQLQuery = "SELECT * FROM tarifa";

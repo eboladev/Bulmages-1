@@ -40,6 +40,11 @@
 #include "dbrecord.h"
 
 
+///
+/**
+\param cob
+\param parent
+**/
 Q19QToolButton::Q19QToolButton( CobrosList *cob , QWidget *parent) : QToolButton(parent) {
     _depura("Q19QToolButton::Q19QToolButton", 0);
     m_cobrosList = cob;
@@ -47,8 +52,19 @@ Q19QToolButton::Q19QToolButton( CobrosList *cob , QWidget *parent) : QToolButton
     _depura("END Q19QToolButton::Q19QToolButton", 0);
 }
 
-Q19QToolButton::~Q19QToolButton() {}
 
+///
+/**
+**/
+Q19QToolButton::~Q19QToolButton() {
+    _depura("Q19QToolButton::~Q19QToolButton", 0);
+    _depura("Q19QToolButton::~Q19QToolButton", 0);
+}
+
+
+///
+/**
+**/
 void Q19QToolButton::setBoton() {
     _depura("Q19QToolButton::setBoton", 0);
     connect(this, SIGNAL(clicked()), this, SLOT(click()));
@@ -61,6 +77,11 @@ void Q19QToolButton::setBoton() {
     _depura("END Q19QToolButton::setBoton", 0);
 }
 
+
+///
+/**
+\return
+**/
 void Q19QToolButton::click() {
     _depura("Q19QToolButton::click", 0);
 
@@ -102,7 +123,14 @@ void Q19QToolButton::click() {
 }
 
 
+///
+/**
+\param out
+\param idcobro
+\return
+**/
 QByteArray Q19QToolButton::cabeceraPresentador(QTextStream &out, QString idcobro) {
+    _depura("Q19QToolButton::cabeceraPresentador", 0);
     cursor2 *curcobro = m_companyact->cargacursor("SELECT * FROM cobro NATURAL LEFT JOIN banco WHERE idcobro = "+idcobro);
 
     /// CABECERA PRESENTADOR
@@ -161,10 +189,19 @@ QByteArray Q19QToolButton::cabeceraPresentador(QTextStream &out, QString idcobro
     cab_present.append(QString(14, ' ').toAscii());
     out << cab_present.toAscii()  << "\n";
     delete curcobro;
+    _depura("END Q19QToolButton::cabeceraPresentador", 0);
     return cab_present.toAscii();
 }
 
+
+///
+/**
+\param out
+\param idcobro
+\return
+**/
 QByteArray Q19QToolButton::cabeceraOrdenante(QTextStream &out, QString idcobro) {
+    _depura("Q19QToolButton::cabeceraOrdenante", 0);
     cursor2 *curcobro = m_companyact->cargacursor("SELECT * FROM cobro NATURAL LEFT JOIN banco WHERE idcobro = "+idcobro);
 
     /// GENERAMOS LA CABECERA ORDENANTE
@@ -237,10 +274,19 @@ QByteArray Q19QToolButton::cabeceraOrdenante(QTextStream &out, QString idcobro) 
     cab_orden.append(QString(14, ' '));
     out << cab_orden.toAscii()  << "\n";
     delete curcobro;
+    _depura("END Q19QToolButton::cabeceraOrdenante", 0);
     return cab_orden.toAscii();
 }
 
+
+///
+/**
+\param out
+\param idcobro
+\return
+**/
 QByteArray Q19QToolButton::cobroQ19(QTextStream &out, QString idcobro) {
+    _depura("Q19QToolButton::cobroQ19", 0);
     cursor2 *curcobro = m_companyact->cargacursor("SELECT * FROM cobro NATURAL LEFT JOIN banco WHERE idcobro = "+idcobro);
 
     /// CABECERA INDIVIDUAL OBLIGATORIO
@@ -325,11 +371,21 @@ QByteArray Q19QToolButton::cobroQ19(QTextStream &out, QString idcobro) {
     cab_indob.append(QString(8, ' ').toAscii());
     out << cab_indob.toAscii() << "\n";
     delete curcobro;
+    _depura("END Q19QToolButton::cobroQ19", 0);
     return cab_indob.toAscii();
 }
 
-QByteArray Q19QToolButton::totalOrdenante(QTextStream &out, QString importes, QString ordenantes, QString registros) {
 
+///
+/**
+\param out
+\param importes
+\param ordenantes
+\param registros
+\return
+**/
+QByteArray Q19QToolButton::totalOrdenante(QTextStream &out, QString importes, QString ordenantes, QString registros) {
+    _depura("Q19QToolButton::totalOrdenante", 0);
     /// CABECERA TOTAL ORDENANTE
     QString cab_indob="";
     /// Registro en Euros. Longitud: 2
@@ -390,11 +446,21 @@ QByteArray Q19QToolButton::totalOrdenante(QTextStream &out, QString importes, QS
 
     /// Imprimimos los resultados
     out << cab_indob.toAscii() << "\n";
+    _depura("END Q19QToolButton::totalOrdenante", 0);
     return cab_indob.toAscii();
 }
 
 
+///
+/**
+\param out
+\param importes
+\param domiciliaciones
+\param registros
+\return
+**/
 QByteArray Q19QToolButton::totalGeneral(QTextStream &out, QString importes, QString domiciliaciones, QString registros) {
+    _depura("Q19QToolButton::totalGeneral", 0);
     /// CABECERA INDIVIDUAL OBLIGATORIO
     QString cab_indob="";
     /// Registro en Euros. Longitud: 2
@@ -456,6 +522,7 @@ QByteArray Q19QToolButton::totalGeneral(QTextStream &out, QString importes, QStr
 
     /// Imprimimos los resultados
     out << cab_indob.toAscii() << "\n";
+    _depura("END Q19QToolButton::totalGeneral", 0);
     return cab_indob.toAscii();
 }
 

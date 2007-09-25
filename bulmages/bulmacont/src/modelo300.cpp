@@ -40,6 +40,9 @@
 /// El constructor llama al cuadro de di&aacute;logo para seleccionar par&aacute;metros
 /// adecuados para rellenar el modelo.
 /** Realiza una consulta para obtener las cuentas bancarias. */
+/**
+\param parent
+**/
 Mod300ps::Mod300ps(QWidget *parent) : QDialog(parent) {
     _depura("Mod300ps::Mod300ps", 0);
     setupUi(this);
@@ -82,12 +85,18 @@ Mod300ps::Mod300ps(QWidget *parent) : QDialog(parent) {
 }
 
 
+///
+/**
+**/
 Mod300ps::~Mod300ps() {
     _depura("Mod300ps::~Mod300ps", 0);
+    _depura("END Mod300ps::~Mod300ps", 0);
 }
 
 
 /// When pressed, it calls to the \ref generaps method.
+/**
+**/
 void Mod300ps::accept() {
     _depura("Mod300ps::accept", 0);
     m_es_borrador = borradorcheckbox->isChecked();
@@ -121,6 +130,8 @@ void Mod300ps::accept() {
 
 /// Generate the postscript of the 300-model with the given parameters.
 /** The hardest part is converting the official pdf to postscript. */
+/**
+**/
 void Mod300ps::generaps() {
     _depura("Mod300ps::generaps", 0);
     QString pdfname, tempname, psname, command;
@@ -257,6 +268,9 @@ void Mod300ps::generaps() {
 }
 
 
+///
+/**
+**/
 void Mod300ps::personalButtonPressed() {
     _depura("Mod300ps::personalButtonPressed", 0);
     bool dis = cuentaButton->isChecked();
@@ -273,6 +287,8 @@ void Mod300ps::personalButtonPressed() {
     left-aligned text and right-aligned text.
     Escribe un clipping path para evitar que aparezcan las casillas de "rellenar formulario"
     que aparecen si no se usa Acrobat para convertir el pdf a ps. */
+/**
+**/
 void Mod300ps::escribe_postscriptdefs() {
     _depura("Mod300ps::escribe_postscriptdefs", 0);
 
@@ -300,6 +316,10 @@ void Mod300ps::escribe_postscriptdefs() {
 
 
 /// Write the CCC-number in the 300-model.
+/**
+\param x
+\param y
+**/
 void Mod300ps::escribe_cuenta_bancaria(int x, int y) {
     _depura("Mod300ps::escribe_cuenta_bancaria", 0);
 
@@ -321,6 +341,8 @@ void Mod300ps::escribe_cuenta_bancaria(int x, int y) {
 
 /// Solucionar problema cuando el nombre de la Empresa (u otro campo) lleva acentos.
 /** \todo El tel&eacute;ono no cabe (pero no es culpa m&aacute;!!) */
+/**
+**/
 void Mod300ps::rellena_identificacion() {
     _depura("Mod300ps::rellena_identificacion", 0);
     QString cad1;
@@ -357,6 +379,8 @@ void Mod300ps::rellena_identificacion() {
 
 
 /// Write the data in the second part of the 300-model.
+/**
+**/
 void Mod300ps::rellena_liquidacion() {
     _depura("Mod300ps::rellena_liquidacion", 0);
     escrizqder(baser16, 328, 516); /// Casilla 01.
@@ -377,6 +401,9 @@ void Mod300ps::rellena_liquidacion() {
 }
 
 
+///
+/**
+**/
 void Mod300ps::rellena_compensacion() {
     _depura("Mod300ps::rellena_compensacion", 0);
     if (cas34 < 0) {
@@ -397,6 +424,9 @@ void Mod300ps::rellena_compensacion() {
 
 /// Escribe el c&oacute;digo postal en las min&uacute;sculas casillas
 /// destinadas a tal fin.
+/**
+\param cod
+**/
 void Mod300ps::escribe_codigo_postal(QString cod) {
     _depura("Mod300ps::escribe_codigo_postal", 0);
     int offset = 3;

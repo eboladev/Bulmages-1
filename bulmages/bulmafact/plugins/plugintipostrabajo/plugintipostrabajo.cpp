@@ -27,19 +27,41 @@
 #include "busquedatipotrabajo.h"
 #include "busquedaarticulo.h"
 
-mytiptrab::mytiptrab() {}
 
-
-mytiptrab::~mytiptrab() {}
-
-
-void mytiptrab::elslot() {
-    ListTiposTrabajoView *l = new ListTiposTrabajoView((Company *)m_bulmafact->getcompany(), 0);
-    m_bulmafact->workspace()->addWindow(l);
-    l->show();
+///
+/**
+**/
+mytiptrab::mytiptrab() {
+    _depura("mytiptrab::mytiptrab", 0);
+    _depura("END mytiptrab::mytiptrab", 0);
 }
 
 
+///
+/**
+**/
+mytiptrab::~mytiptrab() {
+    _depura("mytiptrab::~mytiptrab", 0);
+    _depura("END mytiptrab::~mytiptrab", 0);
+}
+
+
+///
+/**
+**/
+void mytiptrab::elslot() {
+    _depura("mytiptrab::elslot", 0);
+   ListTiposTrabajoView *l = new ListTiposTrabajoView((Company *)m_bulmafact->getcompany(), 0);
+    m_bulmafact->workspace()->addWindow(l);
+    l->show();
+    _depura("END mytiptrab::elslot", 0);
+}
+
+
+///
+/**
+\param bges
+**/
 void mytiptrab::inicializa(Bulmafact *bges) {
     /// Creamos el men&uacute;.
     m_bulmafact = bges;
@@ -52,6 +74,11 @@ void mytiptrab::inicializa(Bulmafact *bges) {
 }
 
 
+///
+/**
+\param bges
+\return
+**/
 int entryPoint(Bulmafact *bges) {
     _depura("Estoy dentro del plugin de tipos de trabajo", 0);
     mytiptrab *plug = new mytiptrab();
@@ -59,7 +86,12 @@ int entryPoint(Bulmafact *bges) {
     return 0;
 }
 
+
 /// Al crear la ventana de trabajadores tambien creamos un combo box para el tipo de trabajador.
+/**
+\param trab
+\return
+**/
 int TrabajadorView_TrabajadorView_Post (TrabajadorView *trab) {
     _depura("TrabajadorView_TrabajadorView_Post", 0);
 
@@ -96,6 +128,11 @@ int TrabajadorView_TrabajadorView_Post (TrabajadorView *trab) {
 }
 
 
+///
+/**
+\param trab
+\return
+**/
 int TrabajadorView_on_mui_guardar_clicked(TrabajadorView *trab) {
 
     BusquedaTipoTrabajo *l = trab->findChild<BusquedaTipoTrabajo *>("tipotraba");
@@ -108,6 +145,12 @@ int TrabajadorView_on_mui_guardar_clicked(TrabajadorView *trab) {
     return 0;
 }
 
+
+///
+/**
+\param trab
+\return
+**/
 int TrabajadorView_on_mui_lista_currentItemChanged_Post(TrabajadorView *trab) {
     BusquedaTipoTrabajo *l = trab->findChild<BusquedaTipoTrabajo *>("tipotraba");
 
@@ -119,6 +162,12 @@ int TrabajadorView_on_mui_lista_currentItemChanged_Post(TrabajadorView *trab) {
     return 0;
 }
 
+
+///
+/**
+\param alm
+\return
+**/
 int AlmacenView_AlmacenView(AlmacenView *alm) {
    _depura("esxtoy en la clase almacen", 0);
 
@@ -144,6 +193,12 @@ int AlmacenView_AlmacenView(AlmacenView *alm) {
     return 0;
 }
 
+
+///
+/**
+\param fich
+\return
+**/
 int Ficha_cargar(Ficha *fich) {
 	SubForm3 *form = fich->findChild<SubForm3 *>("mui_tipostrabajo");
 	if (form) 
@@ -151,6 +206,11 @@ int Ficha_cargar(Ficha *fich) {
 	return 0;
 }
 
+
+///
+/**
+\return
+**/
 int Ficha_guardar_Post(Ficha *fich) {
 	SubForm3 *form = fich->findChild<SubForm3 *>("mui_tipostrabajo");
 	if (form) {
@@ -164,18 +224,34 @@ int Ficha_guardar_Post(Ficha *fich) {
 /// ===============================================================
 ///  Tratamientos del Item Delegate
 /// ===============================================================
+
+
+///
+/**
+\param parent
+**/
 QSubForm3BfDelegate::QSubForm3BfDelegate(QObject *parent = 0) : QSubForm2BfDelegate(parent) {
     _depura("QSubForm3BfDelegate::QSubForm3BfDelegate", 0);
     _depura("END QSubForm3BfDelegate::QSubForm3BfDelegate", 0);
 }
 
 
+///
+/**
+**/
 QSubForm3BfDelegate::~QSubForm3BfDelegate() {
     _depura("QSubForm3BfDelegate::~QSubForm3BfDelegate", 0);
     _depura("END QSubForm3BfDelegate::~QSubForm3BfDelegate", 0);
 }
 
 
+///
+/**
+\param parent
+\param option
+\param index
+\return
+**/
 QWidget *QSubForm3BfDelegate::createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const {
     _depura("QSubForm3BfDelegate::createEditor", 0);
     SHeader *linea;
@@ -192,6 +268,13 @@ QWidget *QSubForm3BfDelegate::createEditor(QWidget *parent, const QStyleOptionVi
 }
 
 
+///
+/**
+\param editor
+\param model
+\param index
+\return
+**/
 void QSubForm3BfDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const {
     _depura("QSubForm3BfDelegate::setModelData", 0);
 
@@ -213,6 +296,11 @@ void QSubForm3BfDelegate::setModelData(QWidget *editor, QAbstractItemModel *mode
 }
 
 
+///
+/**
+\param editor
+\param index
+**/
 void QSubForm3BfDelegate::setEditorData(QWidget* editor, const QModelIndex& index) const {
     _depura("QSubForm3BfDelegate::setEditorData", 0);
     SHeader *linea;

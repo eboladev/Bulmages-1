@@ -29,6 +29,12 @@
 
 /// El constructor de la clase inicializa algunas estructuras y configura la visi&oacute;n
 /// de la pantalla.
+/**
+\param comp
+\param parent
+\param flag
+\param edmode
+**/
 AsientosView::AsientosView(Empresa *comp, QWidget *parent, Qt::WFlags flag, edmode )
     : Listado(comp, parent, flag) {
     _depura("AsientosView::AsientosView", 0);
@@ -48,6 +54,9 @@ AsientosView::AsientosView(Empresa *comp, QWidget *parent, Qt::WFlags flag, edmo
 }
 
 
+///
+/**
+**/
 void AsientosView::rellenaListaEjercicio() {
     _depura("AsientosView::rellenaListaEjercicio", 0);
     /// Actualiza el contenido del combobox.
@@ -64,6 +73,9 @@ void AsientosView::rellenaListaEjercicio() {
 }
 
 
+///
+/**
+**/
 AsientosView::~AsientosView() {
     _depura("AsientosView::~AsientosView\n", 0);
     empresaBase()->sacaWindow(this);
@@ -71,6 +83,9 @@ AsientosView::~AsientosView() {
 }
 
 
+///
+/**
+**/
 void AsientosView::on_mui_list_cellDoubleClicked(int, int) {
     _depura("AsientosView::on_mui_list_cellDoubleClicked", 0);
     QString idasiento = mui_list->DBvalue("idasiento");
@@ -84,6 +99,8 @@ void AsientosView::on_mui_list_cellDoubleClicked(int, int) {
 
 /// Inicializa la ventana, haciendo la consulta pertinente a la base de datos
 /// y presentando los resultados en pantalla.
+/**
+**/
 void AsientosView::presentar() {
     _depura("AsientosView::presentar", 0);
     QString saldototal = mui_saldoasiento->text();
@@ -265,6 +282,9 @@ void AsientosView::presentar() {
 }
 
 
+///
+/**
+**/
 void AsientosView::imprimir() {
     _depura("AsientosView::on_mui_imprimir_clicked", 0);
     mui_list->imprimirPDF(tr("Asientos"));

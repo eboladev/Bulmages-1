@@ -44,6 +44,14 @@
 #include "dbrecord.h"
 
 
+///
+/**
+\param pres
+\param ped
+\param alb
+\param fac
+\param parent
+**/
 TicketQToolButton::TicketQToolButton(PresupuestoView *pres, PedidoClienteView *ped, AlbaranClienteView *alb, FacturaView *fac , QWidget *parent) : QToolButton(parent) {
     _depura("TicketQToolButton::TicketQToolButton", 0);
     m_presupuestoView = pres;
@@ -54,8 +62,19 @@ TicketQToolButton::TicketQToolButton(PresupuestoView *pres, PedidoClienteView *p
     _depura("END TicketQToolButton::TicketQToolButton", 0);
 }
 
-TicketQToolButton::~TicketQToolButton() {}
 
+///
+/**
+**/
+TicketQToolButton::~TicketQToolButton() {
+    _depura("TicketQToolButton::~TicketQToolButton", 0);
+    _depura("END TicketQToolButton::~TicketQToolButton", 0);
+}
+
+
+///
+/**
+**/
 void TicketQToolButton::setBoton() {
     _depura("TicketQToolButton::setBoton", 0);
     connect(this, SIGNAL(clicked()), this, SLOT(click()));
@@ -69,6 +88,9 @@ void TicketQToolButton::setBoton() {
 }
 
 
+///
+/**
+**/
 void TicketQToolButton::click() {
     _depura("ImpQToolButton::click", 0);
 

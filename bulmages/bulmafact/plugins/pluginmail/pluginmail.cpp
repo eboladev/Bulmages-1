@@ -28,15 +28,21 @@
 #include "impqtoolbutton.h"
 
 
+///
+/**
+\return
+**/
 int entryPoint(Bulmafact *) {
     _depura("Estoy dentro del plugin de envio de e-mail", 0);
     return 0;
 }
 
 
-
-
-
+///
+/**
+\param l
+\return
+**/
 int PresupuestoView_PresupuestoView(PresupuestoView *l) {
        _depura("PresupuestoView_PresupuestoView", 0);
        EmailQToolButton *mui_exporta_efactura2 = new EmailQToolButton(l, NULL, NULL,  NULL, l->mui_plugbotones);
@@ -49,6 +55,12 @@ int PresupuestoView_PresupuestoView(PresupuestoView *l) {
        return 0;
 }
 
+
+///
+/**
+\param l
+\return
+**/
 int PedidoClienteView_PedidoClienteView(PedidoClienteView *l) {
        _depura("PedidoClienteView_PedidoClienteView", 0);
        EmailQToolButton *mui_exporta_efactura2 = new EmailQToolButton(NULL, l, NULL, NULL, l->mui_plugbotones);
@@ -61,6 +73,12 @@ int PedidoClienteView_PedidoClienteView(PedidoClienteView *l) {
        return 0;
 }
 
+
+///
+/**
+\param l
+\return
+**/
 int AlbaranClienteView_AlbaranClienteView(AlbaranClienteView *l) {
        _depura("FacturaView_FacturaView", 0);
        EmailQToolButton *mui_exporta_efactura2 = new EmailQToolButton(NULL, NULL, l, NULL, l->mui_plugbotones);
@@ -73,6 +91,12 @@ int AlbaranClienteView_AlbaranClienteView(AlbaranClienteView *l) {
        return 0;
 }
 
+
+///
+/**
+\param l
+\return
+**/
 int FacturaView_FacturaView(FacturaView *l) {
        _depura("FacturaView_FacturaView", 0);
        EmailQToolButton *mui_exporta_efactura2 = new EmailQToolButton(NULL, NULL, NULL, l, l->mui_plugbotones);

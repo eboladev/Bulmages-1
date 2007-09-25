@@ -29,6 +29,11 @@
 #include <QTextCodec>
 #include <QLocale>
 
+
+///
+/**
+\return
+**/
 int entryPoint(QApplication *) {
     _depura("Punto de Entrada del plugin de SubformSXC\n", 0);
         /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
@@ -46,25 +51,53 @@ int entryPoint(QApplication *) {
 }
 
 
+///
+/**
+\param parent
+**/
 myplugsubformsxc::myplugsubformsxc(SubForm3 *parent) : QObject(parent) {
+  _depura("myplugsubformsxc::myplugsubformsxc", 0);
+  _depura("END myplugsubformsxc::myplugsubformsxc", 0);
 }
 
 
+///
+/**
+**/
 myplugsubformsxc::~myplugsubformsxc(){
+  _depura("myplugsubformsxc::~myplugsubformsxc", 0);
+  _depura("END myplugsubformsxc::~myplugsubformsxc", 0);
 }
 
+
+///
+/**
+\param menu
+**/
 void myplugsubformsxc::s_pintaMenu(QMenu *menu) {
+    _depura("myplugsubformsxc::s_pintaMenu", 0);
     menu->addSeparator();
     menu->addAction(tr("Exportar a Hoja de Calculo"));
+    _depura("END myplugsubformsxc::s_pintaMenu", 0);
 }
 
+
+///
+/**
+\param action
+**/
 void myplugsubformsxc::s_trataMenu(QAction *action) {
     _depura("myplugsubformsxc::s_trataMenu", 0);
     if (action->text() == tr("Exportar a Hoja de Calculo")) {
 	sacaSXC();
     } // end if
+    _depura("END myplugsubformsxc::s_trataMenu", 0);
 }
 
+
+///
+/**
+**/
 void myplugsubformsxc::sacaSXC() {
     _depura("myplugsubformsxc::sacaSXC", 0);
 
@@ -170,10 +203,17 @@ void myplugsubformsxc::sacaSXC() {
 }
 
 
+///
+/**
+\param sub
+\return
+**/
 int SubForm3_SubForm3_Post(SubForm3 *sub) {
+    _depura("SubForm3_SubForm3_Post", 0);
    myplugsubformsxc *subformsxc = new myplugsubformsxc(sub);
    sub->QObject::connect(sub, SIGNAL(pintaMenu(QMenu *)), subformsxc, SLOT(s_pintaMenu(QMenu *)));
    sub->QObject::connect(sub, SIGNAL(trataMenu(QAction *)), subformsxc, SLOT(s_trataMenu(QAction *)));
+    _depura("END SubForm3_SubForm3_Post", 0);
    return 0;
 }
 

@@ -24,16 +24,33 @@
 #include "fixed.h"
 
 
+///
+/**
+\param emp
+**/
 libromayorprint::libromayorprint( Empresa *emp) : PEmpresaBase (emp) {
+    _depura("libromayorprint::libromayorprint", 0);
     fichero = NULL;
+    _depura("END libromayorprint::libromayorprint", 0);
 }
 
 
-libromayorprint::~libromayorprint() {}
+///
+/**
+**/
+libromayorprint::~libromayorprint() {
+    _depura("libromayorprint::~libromayorprint", 0);
+    _depura("END libromayorprint::~libromayorprint", 0);
+}
 
 
-
-
+///
+/**
+\param codinicial1
+\param codfinal1
+\param finicial1
+\param ffinal1
+**/
 void libromayorprint::inicializa1(QString codinicial1, QString codfinal1, QString finicial1, QString ffinal1) {
     _depura("libromayorprint::inicializa1", 0);
     codinicial= codinicial1;
@@ -44,6 +61,10 @@ void libromayorprint::inicializa1(QString codinicial1, QString codfinal1, QStrin
 }
 
 
+///
+/**
+\param fich
+**/
 void libromayorprint::inicializa2(char *fich) {
     _depura("libromayorprint::inicializa2", 0);
     fichero = fich;
@@ -53,6 +74,8 @@ void libromayorprint::inicializa2(char *fich) {
 
 
 /// Se ha pulsado sobre el bot&oacute;n aceptar del formulario.
+/**
+**/
 void libromayorprint::accept() {
     _depura("libromayorprint::accept", 0);
     Fixed debe("0"), haber("0"), saldo("0");

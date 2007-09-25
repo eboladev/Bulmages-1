@@ -29,6 +29,10 @@
 
 /// Esta clase se encarga de presentar los centros de coste, la ventana, y
 /// de controlar la inserci&oacute;n de nuevos centros de coste, borrarlos, etc.
+/**
+\param emp
+\param parent
+**/
 ccosteview::ccosteview(Empresa  *emp, QWidget *parent)
         : FichaBc(emp, parent) {
     _depura("ccosteview::ccosteview", 0);
@@ -53,6 +57,9 @@ ccosteview::ccosteview(Empresa  *emp, QWidget *parent)
 }
 
 
+///
+/**
+**/
 ccosteview::~ccosteview() {
     _depura("ccosteview::~ccosteview", 0);
     empresaBase()->sacaWindow(this);
@@ -60,6 +67,9 @@ ccosteview::~ccosteview() {
 }
 
 
+///
+/**
+**/
 void ccosteview::pintar() {
   _depura("ccosteview::pintar", 0);
     QTreeWidgetItem *it;
@@ -115,6 +125,10 @@ void ccosteview::pintar() {
 }
 
 
+///
+/**
+\param it
+**/
 void ccosteview::on_mui_list_itemClicked(QTreeWidgetItem *it, int) {
   _depura("ccosteview::on_mui_list_itemClicked", 0);
   int previdccoste = it->text(COL_IDC_COSTE).toInt();
@@ -132,6 +146,9 @@ void ccosteview::on_mui_list_itemClicked(QTreeWidgetItem *it, int) {
 }
 
 
+///
+/**
+**/
 void ccosteview::mostrarplantilla() {
     _depura("ccosteview::mostrarplantilla", 0);
     QString query;
@@ -147,6 +164,9 @@ void ccosteview::mostrarplantilla() {
 }
 
 
+///
+/**
+**/
 void ccosteview::on_mui_guardar_clicked() {
     _depura("ccosteview::on_mui_guardar_clicked", 0);
     QString nom = nomcentro->text();
@@ -163,6 +183,9 @@ void ccosteview::on_mui_guardar_clicked() {
 }
 
 
+///
+/**
+**/
 void ccosteview::on_mui_crear_clicked() {
     _depura("ccosteview::on_mui_crear_clicked", 0);
     /// Si se ha modificado el contenido advertimos y guardamos.
@@ -199,6 +222,9 @@ void ccosteview::on_mui_crear_clicked() {
 }
 
 
+///
+/**
+**/
 void ccosteview::on_mui_borrar_clicked() {
     _depura("ccosteview::on_mui_borrar_clicked", 0);
     switch (QMessageBox::warning(this,
@@ -218,6 +244,10 @@ void ccosteview::on_mui_borrar_clicked() {
 }
 
 
+///
+/**
+\param e
+**/
 void ccosteview::closeEvent(QCloseEvent *e) {
     _depura("ccosteview::closeEvent", 0);
     if (dialogChanges_hayCambios()) {

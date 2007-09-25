@@ -34,6 +34,12 @@
 #define _PLANTILLA_ "/usr/share/bulmages/efactura/plantilla_efactura.xml"
 #define _RESULTADO_ "/tmp/efactura"
 
+
+///
+/**
+\param fac
+\param parent
+**/
 EFQToolButton::EFQToolButton(FacturaView *fac, QWidget *parent) : QToolButton(parent), PEmpresaBase() {
 	_depura("EFQToolButton::EFQToolButton", 0);
 	setEmpresaBase(fac->empresaBase());
@@ -42,8 +48,22 @@ EFQToolButton::EFQToolButton(FacturaView *fac, QWidget *parent) : QToolButton(pa
 	_depura("END EFQToolButton::EFQToolButton", 0);
 }
 
-EFQToolButton::~EFQToolButton() {}
 
+///
+/**
+**/
+EFQToolButton::~EFQToolButton() {
+        _depura("EFQToolButton::~EFQToolButton", 0);
+        _depura("END EFQToolButton::~EFQToolButton", 0);
+}
+
+
+///
+/**
+\param string
+\param descuentos_factura
+\param bimpfactura
+**/
 void EFQToolButton::escribe_descuento_factura(QString &string, cursor2 *descuentos_factura, Fixed bimpfactura) {
 	_depura("EFQToolButton::escribe_descuento_factura", 0);
 	
@@ -62,8 +82,13 @@ void EFQToolButton::escribe_descuento_factura(QString &string, cursor2 *descuent
 	_depura("END EFQToolButton::escribe_descuento_factura", 0);
 }
 
-/// Funcion que escribe lineas de factura en un QString
 
+/// Funcion que escribe lineas de factura en un QString
+/**
+\param string
+\param lfactura
+\param numerolineq
+**/
 void EFQToolButton::escribe_linea_factura(QString &string, cursor2 *lfactura, int numerolinea) {
 
 	_depura("EFQToolButton::escribe_linea_factura", 0);
@@ -138,6 +163,10 @@ void EFQToolButton::escribe_linea_factura(QString &string, cursor2 *lfactura, in
 
 /// ---------------- Generacion de factura a partir de una plantilla en formato UBL 1.0 ------------------ ///
 
+
+///
+/**
+**/
 void EFQToolButton::exporta_factura_ubl() {
 
 	_depura("EFQToolButton::exporta_factura_ubl", 0);
@@ -411,6 +440,10 @@ void EFQToolButton::exporta_factura_ubl() {
 	_depura("END EFQToolButton::exporta_factura_ubl", 0);
 }
 
+
+///
+/**
+**/
 void EFQToolButton::click() {
 
 	_depura("EFQToolButton::click", 0);

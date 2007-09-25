@@ -24,10 +24,14 @@
 #include <QLineEdit>
 #include <QString>
 
+
 /// Constructor de la clase EFactura (el form)
 /// Pasamos como parametro la empresa para poder usar metodos de BD para
 /// guardar los datos de configuracion
-
+/**
+\param emp
+\param parent
+**/
 EFactura::EFactura(Company *emp, QWidget *parent) : FichaBf(emp, parent) {
 	
 	_depura("EFactura::EFactura", 2);
@@ -54,12 +58,19 @@ EFactura::EFactura(Company *emp, QWidget *parent) : FichaBf(emp, parent) {
 	_depura("END EFactura::EFactura", 2);
 }
 
-/// Destructor
 
-EFactura::~EFactura() {}
+/// Destructor
+/**
+**/
+EFactura::~EFactura() {
+        _depura("EFactura::~EFactura", 0);
+        _depura("EFactura::~EFactura", 0);
+}
+
 
 /// Funcionalidad del boton guardar
-
+/**
+**/
 void EFactura::on_mui_guardar_clicked() {
 	
 	_depura("EFactura::on_mui_guardar_clicked", 0);
@@ -91,8 +102,10 @@ void EFactura::on_mui_guardar_clicked() {
 	_depura("END EFactura::on_mui_guardar_clicked", 0);
 }
 
-/// Funcionalidad del boton Examinar en el apartado del certificado
 
+/// Funcionalidad del boton Examinar en el apartado del certificado
+/**
+*/
 void EFactura::on_mui_examinaECertificado_clicked() {
 	_depura("EFactura::on_mui_examinar_clicked", 0);
 	
@@ -111,8 +124,10 @@ void EFactura::on_mui_examinaECertificado_clicked() {
 	_depura("END EFactura::on_mui_examinar_clicked", 0);
 }
 
-/// Funcionalidad del boton cancelar
 
+/// Funcionalidad del boton cancelar
+/**
+**/
 void EFactura::on_mui_cancelar_clicked() {
 	_depura("EFactura::on_mui_cancelar_clicked", 0);
 	

@@ -22,6 +22,12 @@
 #include "mpatrimonialview.h"
 #include "empresa.h"
 
+
+///
+/**
+\param emp
+\param parent
+**/
 mpatrimonialesview::mpatrimonialesview(Empresa *emp, QWidget *parent)
         : QDialog(parent), PEmpresaBase(emp) {
     _depura("mpatrimonialesview::mpatrimonialesview", 0);
@@ -31,27 +37,53 @@ mpatrimonialesview::mpatrimonialesview(Empresa *emp, QWidget *parent)
 }
 
 
+///
+/**
+**/
 mpatrimonialesview::~mpatrimonialesview() {
     _depura("mpatrimonialesview::~mpatrimonialesview", 0);
+    _depura("END mpatrimonialesview::~mpatrimonialesview", 0);
 }
 
 
+///
+/**
+**/
 void mpatrimonialesview::setmodoselector() {
+    _depura("mpatrimonialesview::setmodoselector", 0);
     modo = 1;
+    _depura("END mpatrimonialesview::setmodoselector", 0);
 }
 
 
+///
+/**
+**/
 void mpatrimonialesview::setmodoeditor() {
+    _depura("mpatrimonialesview::setmodoeditor", 0);
     modo = 0;
+    _depura("END mpatrimonialesview::setmodoeditor", 0);
 }
 
 
+///
+/**
+\return
+**/
 QString mpatrimonialesview::getnommasa() {
+    _depura("mpatrimonialesview::getnommasa", 0);
+    _depura("END mpatrimonialesview::getnommasa", 0);
     return nommasa;
 }
 
 
+///
+/**
+\return
+**/
 QString mpatrimonialesview::getidmasa() {
+    _depura("mpatrimonialesview::getidmasa", 0);
+    _depura("END mpatrimonialesview::getidmasa", 0);
     return idmasa;
 }
 
@@ -59,6 +91,9 @@ QString mpatrimonialesview::getidmasa() {
 /// Esta funci&oacute;n se encarga de hacer las inicializaciones de todo el formulario.
 /** Se llama as&iacute; y no desde el constructor porque as&iacute; la podemos llamar
     desde dentro de la misma clase, etc, etc, etc. */
+/**
+\return
+**/
 int mpatrimonialesview::inicializa() {
     _depura("mpatrimonialesview::inicializa", 0);
     cursor2 *cursoraux1;
@@ -78,6 +113,9 @@ int mpatrimonialesview::inicializa() {
 }
 
 
+///
+/**
+**/
 void mpatrimonialesview::inicializatabla() {
     _depura("mpatrimonialesview::inicializatabla", 0);
     QTableWidgetItem *item0, *item1;
@@ -110,6 +148,13 @@ void mpatrimonialesview::inicializatabla() {
 }
 
 
+///
+/**
+\param row
+\param colummn
+\param button
+\param mouse
+**/
 void mpatrimonialesview::dbtabla(int row, int colummn, int button, const QPoint &mouse) {
     _depura("mpatrimonialesview::dbtabla", 0);
     fprintf(stderr, "Se ha hecho doble click sobre la tabla\n");
@@ -136,6 +181,9 @@ void mpatrimonialesview::dbtabla(int row, int colummn, int button, const QPoint 
 }
 
 
+///
+/**
+**/
 void mpatrimonialesview::on_mui_editar_clicked() {
     _depura("mpatrimonialesview::on_mui_editar_clicked", 0);
     int row = mui_tabla->currentRow();
@@ -147,6 +195,9 @@ void mpatrimonialesview::on_mui_editar_clicked() {
 }
 
 
+///
+/**
+**/
 void mpatrimonialesview::on_mui_borrar_clicked() {
     _depura("mpatrimonialesview::on_mui_borrar_clicked", 0);
     int row;
@@ -164,6 +215,9 @@ void mpatrimonialesview::on_mui_borrar_clicked() {
 }
 
 
+///
+/**
+**/
 void mpatrimonialesview::on_mui_nuevo_clicked() {
     _depura("mpatrimonialesview::on_mui_nuevo_clicked", 0);
     mpatrimonialview *masa = new mpatrimonialview((Empresa *)empresaBase(), this);
@@ -175,6 +229,9 @@ void mpatrimonialesview::on_mui_nuevo_clicked() {
 }
 
 
+///
+/**
+**/
 void mpatrimonialesview::on_mui_cancelar_clicked() {
     _depura("mpatrimonialesview::on_mui_cancelar_clicked", 0);
     close();

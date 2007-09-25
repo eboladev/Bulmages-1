@@ -25,6 +25,10 @@
 #include  "empresa.h"
 
 
+///
+/**
+\param parent
+**/
 BusquedaCCoste::BusquedaCCoste(QWidget *parent, const char *)
         : QComboBox2(parent) {
     _depura("BusquedaCCoste::BusquedaCCoste", 0);
@@ -34,36 +38,61 @@ BusquedaCCoste::BusquedaCCoste(QWidget *parent, const char *)
 }
 
 
+///
+/**
+**/
 BusquedaCCoste::~BusquedaCCoste() {
     _depura("BusquedaCCoste::~BusquedaCCoste", 0);
+    _depura("END BusquedaCCoste::~BusquedaCCoste", 0);
 }
 
 
-
+///
+/**
+\return
+**/
 QString BusquedaCCoste::idc_coste() {
+    _depura("BusquedaCCoste::idc_coste", 0);
     int index= currentIndex();
     if (index > 0) {
         return(m_cursorcombo->valor("idc_coste", index - 1));
     } else {
+    _depura("END BusquedaCCoste::idc_coste", 0);
         return "";
     } // end if
 }
 
+
+///
+/**
+\return
+**/
 QString BusquedaCCoste::valorCampo() {
+    _depura("BusquedaCCoste::valorCampo", 0);
+    _depura("END BusquedaCCoste::valorCampo", 0);
 	return idc_coste();
 }
 
 
-
+///
+/**
+\param index
+**/
 void BusquedaCCoste::m_activated(int index) {
+    _depura("BusquedaCCoste::m_activated", 0);
     if (index > 0) {
         emit(valueChanged(m_cursorcombo->valor("idc_coste", index - 1)));
     } else {
         emit(valueChanged(""));
+    _depura("END BusquedaCCoste::m_activated", 0);
     } // end if
 }
 
 
+///
+/**
+\param idc_coste
+**/
 void BusquedaCCoste::setidc_coste(QString idc_coste) {
     _depura("BusquedaCCoste::setidc_coste", 0, idc_coste);
     if (m_cursorcombo != NULL) {
@@ -87,8 +116,14 @@ void BusquedaCCoste::setidc_coste(QString idc_coste) {
 }
 
 
+///
+/**
+\param idc_coste
+**/
 void BusquedaCCoste::setValorCampo(QString idc_coste) {
+    _depura("BusquedaCCoste::setValorCampo", 0);
 	setidc_coste(idc_coste);
+    _depura("END BusquedaCCoste::setValorCampo", 0);
 }
 
 /// ===================================================================
@@ -98,6 +133,9 @@ void BusquedaCCoste::setValorCampo(QString idc_coste) {
     sobre si un elemento ha sido creado o no.
     Conecta el SIGNAL activated() con m_activated() para tratarlo.
 */
+/**
+\param parent
+**/
 BusquedaCCosteDelegate::BusquedaCCosteDelegate(QWidget *parent)
         : QComboBox2(parent) {
     _depura("BusquedaCCosteDelegate::BusquedaCCosteDelegate", 10);
@@ -107,9 +145,9 @@ BusquedaCCosteDelegate::BusquedaCCosteDelegate(QWidget *parent)
 }
 
 
-
-/** Libera la memoria reservada.
-*/
+/// Libera la memoria reservada.
+/**
+**/
 BusquedaCCosteDelegate::~BusquedaCCosteDelegate() {
     _depura("BusquedaCCosteDelegate::~BusquedaCCosteDelegate", 10);
     _depura("END BusquedaCCosteDelegate::~BusquedaCCosteDelegate", 0);
@@ -120,6 +158,10 @@ BusquedaCCosteDelegate::~BusquedaCCosteDelegate() {
     Recarga cursor de serie_factura y cuando encuentra un registro cuyo codigoserie_factura coincide con el pasado
     como parametro lo establece como el registro activo por el comboBox.
 */
+/**
+\param cod
+\return
+**/
 void BusquedaCCosteDelegate::s_editTextChanged(const QString &cod) {
     _depura("BusquedaCCosteDelegate::s_editTextChanged", 0);
     static bool semaforo = FALSE;

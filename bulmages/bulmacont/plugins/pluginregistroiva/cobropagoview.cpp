@@ -28,6 +28,10 @@
 
 
 /// Inicia los encabezados de la tabla y llama a la presentación del listado.
+/**
+\param emp
+\param parent
+**/
 cobropagoview::cobropagoview(Empresa *emp, QWidget *parent)
         : Ficha(parent) {
     _depura("cobropagoview::cobropagoview", 0);
@@ -59,6 +63,9 @@ cobropagoview::cobropagoview(Empresa *emp, QWidget *parent)
 }
 
 
+///
+/**
+**/
 cobropagoview::~cobropagoview() {
     _depura("cobropagoview::~cobropagoview", 0);
     m_companyact->sacaWindow(this);
@@ -67,6 +74,8 @@ cobropagoview::~cobropagoview() {
 
 
 /// SLOT que responde a la pulsacion del botón de actualizar.
+/**
+**/
 void cobropagoview::on_mui_actualizar_clicked() {
     _depura("cobropagoview::s_actualizar", 0);
 
@@ -81,11 +90,19 @@ void cobropagoview::on_mui_actualizar_clicked() {
 }
 
 
+///
+/**
+**/
 void cobropagoview::s_guardar() {
+    _depura("cobropagoview::s_guardar", 0);
     mui_listado->guardar();
+    _depura("END cobropagoview::s_guardar", 0);
 }
 
 
+///
+/**
+**/
 void cobropagoview::s_recalculaSaldo() {
     _depura("s_recalculaSaldo()", 0);
     Fixed totalcobro("0");

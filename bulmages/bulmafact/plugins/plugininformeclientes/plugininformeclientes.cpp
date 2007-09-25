@@ -29,12 +29,20 @@
 #include "company.h"
 #include "funcaux.h"
 
+
+///
+/**
+**/
 void entryPoint(Bulmafact *) {
     _depura("Estoy dentro del plugin de informe Clientes", 0);
 }
 
 
-
+///
+/**
+\param l
+\return
+**/
 int ClientsList_ClientsList(ClientsList *l) {
        _depura("ClientsList_ClientsList", 0);
 //================================

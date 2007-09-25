@@ -24,6 +24,11 @@
 #include "empresa.h"
 
 
+///
+/**
+\param parent
+\return
+**/
 miQTreeWidgetItem::miQTreeWidgetItem(QTreeWidget *parent)
         : QTreeWidgetItem(parent) {
     _depura("miQTreeWidgetItem::miQTreeWidgetItem", 0);
@@ -32,6 +37,11 @@ miQTreeWidgetItem::miQTreeWidgetItem(QTreeWidget *parent)
 }
 
 
+///
+/**
+\param parent
+\return
+**/
 miQTreeWidgetItem::miQTreeWidgetItem(QTreeWidgetItem *parent)
         : QTreeWidgetItem(parent) {
     _depura("miQTreeWidgetItem::miQTreeWidgetItem", 0);
@@ -40,10 +50,20 @@ miQTreeWidgetItem::miQTreeWidgetItem(QTreeWidgetItem *parent)
 }
 
 
+///
+/**
+\return
+**/
 miQTreeWidgetItem::~miQTreeWidgetItem() {
     return;
 }
 
+
+///
+/**
+\param emp
+\param parent
+**/
 BbloqFecha::BbloqFecha(Empresa *emp, QWidget *parent)
         : FichaBc(emp, parent) {
     _depura("BbloqFecha::BbloqFecha", 0);
@@ -63,6 +83,9 @@ BbloqFecha::BbloqFecha(Empresa *emp, QWidget *parent)
 }
 
 
+///
+/**
+**/
 BbloqFecha::~BbloqFecha() {
     _depura("BbloqFecha::~BbloqFecha", 0);
     empresaBase()->sacaWindow(this);
@@ -70,6 +93,9 @@ BbloqFecha::~BbloqFecha() {
 }
 
 
+///
+/**
+**/
 void BbloqFecha::inicializa() {
     _depura("BbloqFecha::inicializa", 0);
     miQTreeWidgetItem *itemlevel0;
@@ -168,6 +194,11 @@ void BbloqFecha::inicializa() {
 }
 
 
+///
+/**
+\param item
+\param columna
+**/
 void BbloqFecha::on_mui_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int columna) {
     _depura("BbloqFecha::on_mui_treeWidget_doubleClicked", 0);
     int error;
@@ -187,6 +218,9 @@ void BbloqFecha::on_mui_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int 
 }
 
 
+///
+/**
+**/
 void BbloqFecha::on_mui_crear_clicked() {
     _depura("BbloqFecha::on_mui_crear_clicked", 0);
     int ejer = 2006;

@@ -32,21 +32,42 @@
 #include "vehiculoview.h"
 
 
-
-myplugin::myplugin() {}
-
-
-myplugin::~myplugin() {}
-
-
-void myplugin::elslot() {
-    VehiculoView *vehiculoview = new VehiculoView((Company *) m_conexionbase);
-    m_bulmafact->workspace()->addWindow(vehiculoview);
-    vehiculoview->show();
+///
+/**
+**/
+myplugin::myplugin() {
+    _depura("myplugin::myplugin", 0);
+    _depura("END myplugin::myplugin", 0);
 }
 
 
+///
+/**
+**/
+myplugin::~myplugin() {
+    _depura("myplugin::~myplugin", 0);
+    _depura("END myplugin::~myplugin", 0);
+}
+
+
+///
+/**
+**/
+void myplugin::elslot() {
+    _depura("myplugin::elslot", 0);
+    VehiculoView *vehiculoview = new VehiculoView((Company *) m_conexionbase);
+    m_bulmafact->workspace()->addWindow(vehiculoview);
+    vehiculoview->show();
+    _depura("END myplugin::elslot", 0);
+}
+
+
+///
+/**
+\param bges
+**/
 void myplugin::inicializa(Bulmafact *bges) {
+    _depura("myplugin::inicializa", 0);
     /// Creamos el men&uacute;.
     m_conexionbase = bges->getcompany();
     m_bulmafact = bges;
@@ -58,9 +79,15 @@ void myplugin::inicializa(Bulmafact *bges) {
     pPluginMenu->addAction(accion);
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->menuBar()->addMenu(pPluginMenu);
+    _depura("END myplugin::inicializa", 0);
 }
 
 
+///
+/**
+\param bges
+\return
+**/
 int entryPoint(Bulmafact *bges) {
     _depura("Punto de Entrada del plugin PluginVehiculosBF", 0);
     myplugin *plug = new myplugin();

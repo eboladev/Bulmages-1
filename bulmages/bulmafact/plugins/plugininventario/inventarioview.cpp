@@ -34,6 +34,11 @@
 #include "funcaux.h"
 
 
+///
+/**
+\param comp
+\param parent
+**/
 InventarioView::InventarioView(Company *comp, QWidget *parent)
         :  Inventario(comp, parent) {
     _depura("InventarioView::InventarioView", 0);
@@ -47,9 +52,19 @@ InventarioView::InventarioView(Company *comp, QWidget *parent)
 }
 
 
-InventarioView::~InventarioView() {}
+///
+/**
+**/
+InventarioView::~InventarioView() {
+    _depura("InventarioView::~InventarioView", 0);
+    _depura("END InventarioView::~InventarioView", 0);
+}
 
 
+///
+/**
+\return
+**/
 void InventarioView::on_mui_guardar2_clicked() {
     _depura("InventarioView::on_mui_guardar2_clicked", 0);
     if (mui_nominventario->text() == "") {
@@ -63,6 +78,10 @@ void InventarioView::on_mui_guardar2_clicked() {
 }
 
 
+///
+/**
+\return
+**/
 int InventarioView::sacaWindow() {
     _depura("InventarioView::sacaWindow", 0);
     companyact->sacaWindow(this);
@@ -72,6 +91,8 @@ int InventarioView::sacaWindow() {
 
 
 /// Esta funci&oacute;n se ejecuta cuando se ha pulsado sobre el bot&oacute;n de borrar.
+/**
+**/
 void InventarioView::on_mui_borrar2_clicked() {
     _depura("InventarioView::on_mui_borrar2_clicked", 0);
     if (DBvalue("idinventario") != "") {
@@ -86,17 +107,40 @@ void InventarioView::on_mui_borrar2_clicked() {
 }
 
 
+///
+/**
+**/
+void InventarioView::pintaidinventario(QString) {
+    _depura("InventarioView::pintaidinventario", 0);
+    _depura("END InventarioView::pintaidinventario", 0);
+}
 
-void InventarioView::pintaidinventario(QString) {}
 
+///
+/**
+\param id
+**/
 void InventarioView::pintafechainventario(QString id) {
+    _depura("InventarioView::pintaidinventario", 0);
     mui_fechainventario->setText(id);
+    _depura("InventarioView::pintaidinventario", 0);
 }
 
+
+///
+/**
+\param id
+**/
 void InventarioView::pintanominventario(QString id) {
+    _depura("InventarioView::pintaidinventario", 0);
     mui_nominventario->setText(id);
+    _depura("InventarioView::pintaidinventario", 0);
 }
 
+
+///
+/**
+**/
 void InventarioView::on_mui_aceptar_clicked() {
 	_depura("InventarioView::on_mui_aceptar_clicked", 0);
     setfechainventario(mui_fechainventario->text());
@@ -107,6 +151,12 @@ void InventarioView::on_mui_aceptar_clicked() {
 	_depura("END InventarioView::on_mui_aceptar_clicked", 0);
 }
 
+
+///
+/**
+**/
 void InventarioView::on_mui_pregenerar_clicked() {
+    _depura("InventarioView::on_mui_pregenerar_clicked", 0);
     pregenerar();
+    _depura("END InventarioView::on_mui_pregenerar_clicked", 0);
 }

@@ -21,6 +21,10 @@
 #include "qlineedit1.h"
 
 
+///
+/**
+\param parent
+**/
 QLineEdit1::QLineEdit1(QWidget * parent) : QLineEdit(parent) {}
 
 

@@ -31,6 +31,10 @@
 
 
 /// Constructor de la clase
+/**
+\param emp
+\param parent
+**/
 AmortizacionView::AmortizacionView(Empresa *emp, QWidget *parent)
         : FichaBc(emp, parent) {
     _depura("AmortizacionView::AmortizacionView", 0);
@@ -84,11 +88,20 @@ AmortizacionView::AmortizacionView(Empresa *emp, QWidget *parent)
     _depura("END AmortizacionView::AmortizacionView", 0);
 }
 
+
+///
+/**
+**/
 AmortizacionView::~AmortizacionView() {
     _depura("AmortizacionView::~AmortizacionView", 0);
     _depura("END AmortizacionView::~AmortizacionView", 0);
 }
 
+
+///
+/**
+\return
+**/
 int AmortizacionView::borrar() {
     _depura("AmortizacionView::borrar", 0);
     if (m_idamortizacion != "") {
@@ -103,6 +116,10 @@ int AmortizacionView::borrar() {
 }
 
 
+///
+/**
+\return
+**/
 int AmortizacionView::guardar() {
     _depura("AmortizacionView::guardar", 0);
     try {
@@ -134,6 +151,10 @@ int AmortizacionView::guardar() {
 
 /// Esta funci&oacute;n inicializa la clase, y adem&aacute;s hace la presentaci&oacuet;n
 /// de una determinada amortizaci&oacute;n.
+/**
+\param idamortizacion
+\param
+**/
 int AmortizacionView::cargar(QString idamortizacion) {
     _depura("AmortizacionView::cargar", 0, idamortizacion);
     try {
@@ -185,6 +206,9 @@ int AmortizacionView::cargar(QString idamortizacion) {
 }
 
 
+///
+/**
+**/
 void AmortizacionView::on_mui_btcalcular_clicked() {
     _depura("AmortizacionView::calculaamortizacion", 0);
     /// Para hacer el c&iacute;rculo de los plazos de cada amortizaci&oacute;n
@@ -314,18 +338,31 @@ void AmortizacionView::on_mui_btcalcular_clicked() {
 /****************************************************************
                AMORTIZACIONSUBFORM
 *****************************************************************/
+
+
+///
+/**
+\param parent
+**/
 AmortizacionSubForm::AmortizacionSubForm(QWidget *parent) : SubForm2Bc(parent) {
     _depura("AmortizacionSubForm::AmortizacionSubForm", 0);
     _depura("END AmortizacionSubForm::AmortizacionSubForm", 0);
 }
 
 
+///
+/**
+**/
 AmortizacionSubForm::~AmortizacionSubForm() {
     _depura("AmortizacionSubForm::~AmortizacionSubForm", 0);
     _depura("END AmortizacionSubForm::~AmortizacionSubForm", 0);
 }
 
 
+///
+/**
+\param menu
+**/
 void AmortizacionSubForm::creaMenu(QMenu *menu) {
     _depura("AmortizacionSubForm::creaMenu", 0);
     QAction *opt1 = menu->addAction(tr("Generar asiento"));
@@ -350,6 +387,11 @@ void AmortizacionSubForm::creaMenu(QMenu *menu) {
 }
 
 
+///
+/**
+\param opcion
+\return
+**/
 void AmortizacionSubForm::procesaMenu(QAction *opcion) {
     _depura("AmortizacionSubForm:: procesaMenu, funcion para ser sobreescrita", 0);
 

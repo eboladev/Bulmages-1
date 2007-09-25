@@ -23,11 +23,19 @@
 #include "extractosubform.h"
 
 
+///
+/**
+**/
 ExtractoSubForm::~ExtractoSubForm() {
     _depura("ExtractoSubForm::~ExtractoSubForm", 0);
+    _depura("END ExtractoSubForm::~ExtractoSubForm", 0);
 }
 
 
+///
+/**
+\param parent
+**/
 ExtractoSubForm::ExtractoSubForm(QWidget *parent, const char *) : SubForm2Bc(parent) {
     _depura("ExtractoSubForm::ExtractoSubForm", 0);
     setDBTableName("apunte");
@@ -62,6 +70,10 @@ ExtractoSubForm::ExtractoSubForm(QWidget *parent, const char *) : SubForm2Bc(par
 }
 
 
+///
+/**
+\return
+**/
 void ExtractoSubForm::contextMenuEvent(QContextMenuEvent *) {
     _depura("ExtractoSubForm::contextMenuEvent", 0);
     QAction *del = NULL;

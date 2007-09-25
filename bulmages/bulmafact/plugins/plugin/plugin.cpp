@@ -32,23 +32,45 @@
 #include "funcaux.h"
 
 
-myplugin::myplugin() {}
+///
+/**
+**/
+myplugin::myplugin() {
+    _depura("myplugin::myplugin", 0);
+    _depura("END myplugin::myplugin", 0);
+}
 
 
-myplugin::~myplugin() {}
+///
+/**
+**/
+myplugin::~myplugin() {
+    _depura("myplugin::~myplugin", 0);
+    _depura("END myplugin::~myplugin", 0);
+}
 
 
+///
+/**
+**/
 void myplugin::elslot() {
+    _depura("myplugin::elslot", 0);
     fprintf(stderr, "Sa ha activado el slot\n");
     QMessageBox::warning(0,
                          "Titulo de la ventana",
                          "Mensaje.",
                          QMessageBox::Ok,
                          QMessageBox::Cancel);
+    _depura("END myplugin::elslot", 0);
 }
 
 
+///
+/**
+\param bges
+**/
 void myplugin::inicializa(Bulmafact *bges) {
+    _depura("myplugin::inicializa", 0);
     QMenu *pPluginMenu;
     /// Miramos si existe un menu Herramientas
     pPluginMenu = bges->menuBar()->findChild<QMenu *>("Herramientas");
@@ -67,9 +89,14 @@ void myplugin::inicializa(Bulmafact *bges) {
     pPluginMenu->addAction(accion);
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->menuBar()->insertMenu(bges->menuVentana->menuAction(), pPluginMenu);
+    _depura("END myplugin::inicializa", 0);
 }
 
 
+///
+/**
+\param bges
+**/
 void entryPoint(Bulmafact *bges) {
     _depura("Estoy dentro del plugin de demo", 0);
     myplugin *plug = new myplugin();

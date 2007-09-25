@@ -24,12 +24,27 @@
 #include "funcaux.h"
 
 
-mypluginbf::mypluginbf() : QObject() {}
+///
+/**
+**/
+mypluginbf::mypluginbf() : QObject() {
+    _depura("mypluginbf::mypluginbf", 0);
+    _depura("END mypluginbf::mypluginbf", 0);
+}
 
 
-mypluginbf::~mypluginbf() {}
+///
+/**
+**/
+mypluginbf::~mypluginbf() {
+    _depura("mypluginbf::~mypluginbf", 0);
+    _depura("END mypluginbf::~mypluginbf", 0);
+}
 
 
+///
+/**
+**/
 void mypluginbf::elslot() {
     _depura("mypluginbf::elslot", 0);
     RutaComercialList *list  = new RutaComercialList((Company *)empresaBase(), NULL);
@@ -39,6 +54,9 @@ void mypluginbf::elslot() {
 }
 
 
+///
+/**
+**/
 void mypluginbf::elslot1() {
     _depura("mypluginbf::elslot1", 0);
     ListZonaComercialView *list = new ListZonaComercialView((Company *)empresaBase(), NULL);
@@ -48,6 +66,10 @@ void mypluginbf::elslot1() {
 }
 
 
+///
+/**
+\param bges
+**/
 void mypluginbf::inicializa(Bulmafact *bges) {
     /// El men&uacute; de empresa.
     m_bges = bges;

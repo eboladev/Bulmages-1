@@ -33,8 +33,13 @@
 #endif
 
 
+///
+/**
+\param parent
+**/
 BSelector::BSelector(QWidget *parent)
         : QMainWindow(parent) {
+    _depura("BSelector::BSelector", 0);
     setupUi(this);
 
     g_plugins->lanza("BSelector_BSelector", this);
@@ -64,31 +69,49 @@ BSelector::BSelector(QWidget *parent)
         m_galopin->setEnabled(FALSE);
     QFile f4("/var/www/bcontaweb");
     g_plugins->lanza("BSelector_BSelector_Post", this);
+    _depura("END BSelector::BSelector", 0);
 }
 
 
-BSelector::~BSelector() {}
+///
+/**
+**/
+BSelector::~BSelector() {
+    _depura("BSelector::~BSelector", 0);
+    _depura("BSelector::~BSelector", 0);
+}
 
 
 
 /// Boton para abrir el dialogo de configuraciones personalizadas.
+/**
+**/
 void BSelector::configura_clicked() {
+    _depura("BSelector::configura_clicked", 0);
     BConfiguracion *VentanaConfiguracion = new BConfiguracion(this, 0, 0);
     VentanaConfiguracion->exec();
     delete VentanaConfiguracion;
+    _depura("END BSelector::configura_clicked", 0);
 }
 
 
 /// Boton para entrar en la ventana de Iglues.
+/**
+**/
 void BSelector::on_m_iglues_clicked() {
+    _depura("BSelector::on_m_iglues_clicked", 0);
     QString cadena;
     cadena = confpr->valor(CONF_NAVEGADOR) + " http://www.iglues.org &";
     system(cadena.toAscii().constData());
+    _depura("END BSelector::on_m_iglues_clicked", 0);
 }
 
 
 /// Boton para entrar en el modulo de TPV.
+/**
+**/
 void BSelector::m_bulmatpv_clicked() {
+    _depura("BSelector::m_bulmatpv_clicked", 0);
     if (m_tipoempresa != "BulmaFact") {
         abreempresaview *empcont = new abreempresaview(0, "BulmaFact", "abreempresa", true);
         empcont->setModoDestructivo(FALSE);
@@ -100,11 +123,15 @@ void BSelector::m_bulmatpv_clicked() {
         sprintf(cadena, "bulmatpv bulmatpv %s %s %s &", m_empresabd.toAscii().constData(), confpr->valor(CONF_LOGIN_USER).toAscii().constData(), confpr->valor(CONF_PASSWORD_USER).toAscii().constData());
         system(cadena);
     } // end if
+    _depura("END BSelector::m_bulmatpv_clicked", 0);
 }
 
 
 /// Boton cambio de empresa y/o usuario.
+/**
+**/
 void BSelector::seleccionaempresa_clicked() {
+    _depura("BSelector::seleccionaempresa_clicked", 0);
     abreempresaview *empcont = new abreempresaview(0, "", "abreempresa", true);
     empcont->setModoDestructivo(FALSE);
     empcont->exec();
@@ -113,11 +140,15 @@ void BSelector::seleccionaempresa_clicked() {
     nombreempresa->setText(empcont->nomEmpresa());
     m_tipoempresa = empcont->tipoEmpresa();
     delete empcont;
+    _depura("END BSelector::seleccionaempresa_clicked", 0);
 }
 
 
 /// Boton para entrar en el modulo de CONTABILIDAD.
+/**
+**/
 void BSelector::contabilidad_clicked() {
+    _depura("BSelector::contabilidad_clicked", 0);
     if (m_tipoempresa != "BulmaCont") {
         abreempresaview *empcont = new abreempresaview(0, "BulmaCont", "abreempresa", true);
         empcont->setModoDestructivo(FALSE);
@@ -129,11 +160,16 @@ void BSelector::contabilidad_clicked() {
         sprintf(cadena, "bulmacont bulmacont %s %s %s &", m_empresabd.toAscii().constData(), confpr->valor(CONF_LOGIN_USER).toAscii().constData(), confpr->valor(CONF_PASSWORD_USER).toAscii().constData());
         system (cadena);
     } // end if
+    _depura("END BSelector::contabilidad_clicked", 0);
 }
 
 
 /// Boton para entrar en el modulo de PRODUCCION.
+/**
+\return
+**/
 void BSelector::produccion_clicked() {
+    _depura("Selector::produccion_clicked", 0);
     int res = g_plugins->lanza("BSelector_produccion_clicked", this);
     if (res) return;
     /// Al crear un nuevo modulo, le paso como primer parametro un puntero al selector.
@@ -141,20 +177,28 @@ void BSelector::produccion_clicked() {
     QString cadena;
     cadena = confpr->valor(CONF_NAVEGADOR) + " http://localhost/galopin/ &";
     system(cadena.toAscii().constData());
+    _depura("END Selector::produccion_clicked", 0);
 }
 
 
 /// Boton para entrar en el modulo de STOCKS Y ALMACENES.º
+/**
+\return
+**/
 void BSelector::on_mui_info_clicked() {
+    _depura("BSelector::on_mui_info_clicked", 0);
     int res = g_plugins->lanza("BSelector_on_mui_info_clicked", this);
     if (res) return;
     QString cadena;
     cadena = confpr->valor(CONF_NAVEGADOR) + " http://www.iglues.org/wiki &";
     system(cadena.toAscii().constData());
+    _depura("END BSelector::on_mui_info_clicked", 0);
 }
 
 
 /// Boton para entrar en el modulo de Facturacion.
+/**
+**/
 void BSelector::m_bulmafact_clicked() {
     _depura("BSelector::m_bulmafact_clicked", 0);
     if (m_tipoempresa != "BulmaFact" ) {
@@ -171,18 +215,42 @@ void BSelector::m_bulmafact_clicked() {
     _depura("END BSelector::m_bulmafact_clicked", 0);
 }
 
+
+///
+/**
+\return
+**/
 QString BSelector::empresaDB() {
+    _depura("BSelector::empresaDB", 0);
+    _depura("END BSelector::empresaDB", 0);
     return m_empresabd;
 }
 
+
+///
+/**
+\param emp
+**/
 void BSelector::setEmpresaBD(QString emp) {
+    _depura("BSelector::setEmpresaBD", 0);
     m_empresabd = emp;
+    _depura("END BSelector::setEmpresaBD", 0);
 }
 
+///
+/**
+\return
+**/
 QString BSelector::tipoEmpresa() {
+    _depura("BSelector::tipoEmpresa", 0);
+    _depura("END BSelector::tipoEmpresa", 0);
     return m_tipoempresa;
 }
 
+
+///
+/**
+**/
 void BSelector::setTipoEmpresa(QString tip) {
     _depura("BSelector::setTipoEmpresa", 0);
     m_tipoempresa = tip;

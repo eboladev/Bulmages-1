@@ -42,6 +42,11 @@
 #include "dbrecord.h"
 
 
+///
+/**
+\param art
+\param parent
+**/
 InformeQToolButton::InformeQToolButton(ClientsList *art , QWidget *parent) : QToolButton(parent), PEmpresaBase() {
     _depura("InformeQToolButton::InformeQToolButton", 0);
     m_clientsList = art;
@@ -49,8 +54,19 @@ InformeQToolButton::InformeQToolButton(ClientsList *art , QWidget *parent) : QTo
     _depura("END InformeQToolButton::InformeQToolButton", 0);
 }
 
-InformeQToolButton::~InformeQToolButton() {}
 
+///
+/**
+**/
+InformeQToolButton::~InformeQToolButton() {
+    _depura("InformeQToolButton::~InformeQToolButton", 0);
+    _depura("END InformeQToolButton::~InformeQToolButton", 0);
+}
+
+
+///
+/**
+**/
 void InformeQToolButton::setBoton() {
     _depura("InformeQToolButton::setBoton", 0);
     connect(this, SIGNAL(clicked()), this, SLOT(click()));
@@ -64,6 +80,9 @@ void InformeQToolButton::setBoton() {
 }
 
 
+///
+/**
+**/
 void InformeQToolButton::click() {
     _depura("InformeQToolButton::click", 0);
     // Puede que no se haya actualizado bien el company
@@ -130,9 +149,13 @@ void InformeQToolButton::click() {
 }
 
 
-
-
+///
+/**
+\param idcliente
+\return
+**/
 QString InformeQToolButton::generarCliente(QString idcliente) {
+    _depura("InformeQToolButton::generarCliente", 0);
     QString fitxersortidatxt;
     /// Sacamos todas las referencias de este cliente y las guardamos en el string referencias
     QString referencias = "(";
@@ -309,7 +332,7 @@ QString InformeQToolButton::generarCliente(QString idcliente) {
 
     fitxersortidatxt += "</tr>\n";
     fitxersortidatxt += "</blockTable>\n";
-
+    _depura("END InformeQToolButton::generarCliente", 0);
     return fitxersortidatxt;
 }
 

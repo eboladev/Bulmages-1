@@ -27,6 +27,10 @@
 /** Luego crea las columnas para el objeto m_listCanales que es la lista en que se basa
     el programa. Luego llama al m&eacute;todo cargacanales que hace la carga de los canales
     a partir de la base de datos. */
+/**
+\param emp
+\param parent
+**/
 selectcanalview::selectcanalview(Empresa *emp,QWidget *parent)
         : QDialog(parent), PEmpresaBase(emp) {
     _depura("selectcanalview::selectcanalview", 0);
@@ -45,6 +49,9 @@ selectcanalview::selectcanalview(Empresa *emp,QWidget *parent)
 }
 
 
+///
+/**
+**/
 selectcanalview::~selectcanalview() {
     _depura("selectcanalview::~selectcanalview", 0);
     delete m_iterador;
@@ -52,6 +59,9 @@ selectcanalview::~selectcanalview() {
 }
 
 
+///
+/**
+**/
 void selectcanalview::cargacanales() {
     _depura("selectcanalview::cargacanales", 0);
     QMap <int, QTreeWidgetItem *> Lista;
@@ -84,6 +94,9 @@ void selectcanalview::cargacanales() {
 /// Esta funci&oacute;n devuelve el primer canal seleccionado de la vista.
 /// Devuelve el idcanal. Si no hay ning&uacute;n canal seleccionado devuelve
 /// cero.
+/**
+\return
+**/
 int selectcanalview::firstcanal() {
     _depura("selectcanalview::firstcanal", 0);
     delete m_iterador;
@@ -94,6 +107,9 @@ int selectcanalview::firstcanal() {
 
 
 /// Esta funci&oacute;n devuelve el siguiente canal seleccionado de la vista.
+/**
+\return
+**/
 int selectcanalview::nextcanal() {
     _depura("selectcanalview::nextcanal", 0);
     int idcanal = 0;
@@ -112,6 +128,10 @@ int selectcanalview::nextcanal() {
 }
 
 
+///
+/**
+\return
+**/
 QString selectcanalview::cadcanal() {
     _depura("selectcanalview::cadcanal", 0);
 
@@ -133,6 +153,9 @@ QString selectcanalview::cadcanal() {
 
 
 /// Esta funci&oacute;n devuelve el nombre de un canal determinado.
+/**
+\return
+**/
 QString selectcanalview::nomcanal() {
     _depura("selectcanalview::nomcanal", 0);
     QTreeWidgetItemIterator m_iterador(m_listCanales);
@@ -148,6 +171,9 @@ QString selectcanalview::nomcanal() {
 }
 
 
+///
+/**
+**/
 void selectcanalview::on_mui_todo_clicked() {
     _depura("selectcanalview::on_mui_todo_clicked", 0);
     QTreeWidgetItemIterator m_iterador(m_listCanales);
@@ -162,6 +188,9 @@ void selectcanalview::on_mui_todo_clicked() {
 }
 
 
+///
+/**
+**/
 void selectcanalview::on_mui_nada_clicked() {
     _depura("selectcanalview::on_mui_nada_clicked", 0);
 
@@ -177,6 +206,9 @@ void selectcanalview::on_mui_nada_clicked() {
 }
 
 
+///
+/**
+**/
 void selectcanalview::on_mui_invertir_clicked() {
     _depura("selectcanalview::on_mui_invertir_clicked", 0);
     QTreeWidgetItemIterator m_iterador(m_listCanales);

@@ -163,6 +163,10 @@ bool importainteligente::endElement(const QString&, const QString&, const QStrin
 /// Se ha encontrado informaci&oacute;n de contenido en el XML.
 /** La funci&oacute;n almacena en el mapa de clase \ref tvalores la informaci&oacute;n
     contenida asignandolo al ltimo tag que se ha abierto. */
+/**
+\param ch
+\return
+**/
 bool importainteligente::characters(const QString& ch) {
     _depura("importainteligente::characters", 0);
     if (tag != "") {

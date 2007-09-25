@@ -267,6 +267,10 @@ void PresupuestoList::imprimir() {
 }
 
 
+///
+/**
+\return
+**/
 void PresupuestoList::borrar() {
     _depura("PresupuestoList::borrar", 0);
     int a = mui_list->currentRow();
@@ -329,8 +333,8 @@ PresupuestoListSubForm::PresupuestoListSubForm(QWidget *parent, const char *) : 
     /// Disparamos los plugins.
     res = g_plugins->lanza("PresupuestoListSubForm_PresupuestoListSubForm_Post", this);
     if (res != 0)
-        return;
     _depura("PresupuestoListSubForm::PresupuestoListSubForm", 0);
+        return;
 }
 
 
@@ -352,5 +356,5 @@ void PresupuestoListSubForm::cargar() {
 void PresupuestoListSubForm::cargar(QString query) {
         _depura("PresupuestoListSubForm::cargar", 0, query);
         SubForm3::cargar(query);
-    _depura("PresupuestoListSubForm::cargar", 0);
+        _depura("PresupuestoListSubForm::cargar", 0);
 }

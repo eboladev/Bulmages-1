@@ -25,6 +25,12 @@
 #include "empresa.h"
 
 
+///
+/**
+\param emp
+\param parent
+\param fl
+**/
 mpatrimonialview::mpatrimonialview(Empresa *emp, QWidget *parent, Qt::WFlags fl)
         : QDialog(parent, fl), PEmpresaBase(emp) {
     _depura("mpatrimonialview::mpatrimonialview", 0);
@@ -42,16 +48,30 @@ mpatrimonialview::mpatrimonialview(Empresa *emp, QWidget *parent, Qt::WFlags fl)
 }
 
 
-mpatrimonialview::~mpatrimonialview() {}
+///
+/**
+**/
+mpatrimonialview::~mpatrimonialview() {
+    _depura("mpatrimonialview::~mpatrimonialview", 0);
+    _depura("END mpatrimonialview::~mpatrimonialview", 0);
+}
 
 
+///
+/**
+\return
+**/
 QString mpatrimonialview::getidmasa() {
+    _depura("mpatrimonialview::getidmasa", 0);
+    _depura("END mpatrimonialview::getidmasa", 0);
     return idmpatrimonial;
 }
 
 
-
-
+///
+/**
+\param idmpatrimonial1
+**/
 void mpatrimonialview::inicializa1(QString idmpatrimonial1) {
     _depura("mpatrimonialview::inicializa1", 0);
     QTableWidgetItem *it0, *it1, *it2, *it3;
@@ -156,6 +176,8 @@ void mpatrimonialview::inicializa1(QString idmpatrimonial1) {
 
 /// Se ha pulsado sobre el bot&oacute; de agregar donde est&aacute; la suma.
 /// Tenemos que a&ntilde;dir la masa patrimonial o la cuenta a la suma.
+/**
+**/
 void mpatrimonialview::on_mui_nuevasuma_clicked() {
     _depura("mpatrimonialview::on_mui_nuevasuma_clicked", 0);
     QTableWidgetItem *it0, *it1, *it2, *it3;
@@ -209,6 +231,9 @@ void mpatrimonialview::on_mui_nuevasuma_clicked() {
 }
 
 
+///
+/**
+**/
 void mpatrimonialview::on_mui_borrasuma_clicked() {
     _depura("mpatrimonialview::on_mui_nuevasuma_clicked", 0);
     componentessuma->removeRow(componentessuma->currentRow());
@@ -218,6 +243,8 @@ void mpatrimonialview::on_mui_borrasuma_clicked() {
 
 /// Se ha pulsado sobre el bot&oacute; de agregar donde est&aacute; la suma.
 /// Tenemos que a&ntilde;dir la masa patrimonial o la cuenta a la suma.
+/**
+**/
 void mpatrimonialview::on_mui_nuevaresta_clicked() {
     _depura("mpatrimonialview::on_mui_nuevaresta_clicked", 0);
     QTableWidgetItem *it0, *it1, *it2, *it3;
@@ -271,6 +298,9 @@ void mpatrimonialview::on_mui_nuevaresta_clicked() {
 }
 
 
+///
+/**
+**/
 void mpatrimonialview::on_mui_borraresta_clicked() {
     _depura("mpatrimonialview::on_mui_borraresta_clicked", 0);
     componentesresta->removeRow(componentesresta->currentRow());
@@ -278,6 +308,9 @@ void mpatrimonialview::on_mui_borraresta_clicked() {
 }
 
 
+///
+/**
+**/
 void mpatrimonialview::on_mui_buscampatrimonial_clicked() {
     _depura("mpatrimonialview::on_mui_buscampatrimonial_clicked", 0);
     mpatrimonialesview *nuevae = new mpatrimonialesview((Empresa *)empresaBase(), 0);
@@ -290,6 +323,9 @@ void mpatrimonialview::on_mui_buscampatrimonial_clicked() {
 }
 
 
+///
+/**
+**/
 void mpatrimonialview::on_mui_cancelar_clicked() {
     _depura("mpatrimonialview::on_mui_cancelar_clicked", 0);
     close();
@@ -297,6 +333,9 @@ void mpatrimonialview::on_mui_cancelar_clicked() {
 }
 
 
+///
+/**
+**/
 void mpatrimonialview::on_mui_aceptar_clicked() {
     _depura("mpatrimonialview::on_mui_aceptar_clicked", 0);
     int i;
@@ -357,8 +396,13 @@ void mpatrimonialview::on_mui_aceptar_clicked() {
 }
 
 
+///
+/**
+\return
+**/
 QString mpatrimonialview::getnommasa() {
     _depura("mpatrimonialview::getnommasa", 0);
+    _depura("END mpatrimonialview::getnommasa", 0);
     return descmpatrimonial->text().toAscii();
 }
 

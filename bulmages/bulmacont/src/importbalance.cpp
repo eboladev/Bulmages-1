@@ -28,6 +28,9 @@
 /** La base de datos establece que de momento no se ha visitado ning&uacute;n tag .
     Establece que no hay ning&uacute;n dato recogido del XML.
     Inidca que el paso que vamos a procesar es el 0. */
+/**
+\param emp
+**/
 ImportBalance::ImportBalance(Empresa *emp) : QXmlDefaultHandler(), PEmpresaBase(emp) {
     _depura("ImportBalance::ImportBalance", 0);
     m_tag = "";
@@ -43,6 +46,13 @@ void ImportBalance::cambiapaso() {
 
 
 /** Dependiendo del paso en que nos encontremos hace la llamada a una funcio u a otra. */
+/**
+\param a
+\param b
+\param c
+\param d
+\return
+**/
 bool ImportBalance::startElement(const QString &a, const QString &b, const QString &c, const QXmlAttributes &d) {
     _depura("ImportBalance::startElement", 0);
     if (m_paso == 0) {
@@ -54,6 +64,12 @@ bool ImportBalance::startElement(const QString &a, const QString &b, const QStri
 }
 
 /// Dependiendo del paso en que nos encontremos hace la llamada a una función u a otra.
+/**
+\param a
+\param b 
+\param c
+\return
+**/
 bool ImportBalance::endElement(const QString &a, const QString &b, const QString &c) {
     _depura("ImportBalance::endlement", 0);
     if (m_paso == 0) {

@@ -50,10 +50,18 @@ ExtractoPrintView::ExtractoPrintView(Empresa *emp, QWidget *parent = 0)
 }
 
 
-ExtractoPrintView::~ExtractoPrintView() {}
+///
+/**
+**/
+ExtractoPrintView::~ExtractoPrintView() {
+    _depura("ExtractoPrintView::~ExtractoPrintView", 0);
+    _depura("END ExtractoPrintView::~ExtractoPrintView", 0);
+}
 
 
 /// Se ha pulsado sobre el bot&oacute;n aceptar del formulario.
+/**
+**/
 void ExtractoPrintView::accept() {
     _depura("ExtractoPrintView::accept", 0);
     /// Versi&oacute;n por si s&oacute;lo permitimos elegir una opci&oacute;n.
@@ -69,6 +77,9 @@ void ExtractoPrintView::accept() {
 /// Esta funci&oacute;n monta la consulta que se va a realizar contra la base de datos.
 /** La consulta es de bastante detalle y por eso es conveniente dedicar una funci&oacute;n
     a realizarla. Adem&aacute;s dicha consulta puede ser invocada desde distintos sitios. */
+/**
+\return
+**/
 QString ExtractoPrintView::montaQuery() {
     _depura("ExtractoPrintView::montaQuery", 0);
     extractoview1 *extracto = ((Empresa *)empresaBase())->extractoempresa();
@@ -125,6 +136,10 @@ QString ExtractoPrintView::montaQuery() {
 }
 
 
+///
+/**
+\param tipus
+**/
 void ExtractoPrintView::presentar(char *tipus) {
     _depura("ExtractoPrintView::presentar", 0);
     int txt, html;

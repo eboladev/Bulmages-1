@@ -26,6 +26,10 @@
 
 
 /// El constructor de la clase prepara las variables globales y llama a la función pintar.ç
+/**
+\param emp
+\param parent
+**/
 tipoivaview::tipoivaview(Empresa *emp, QWidget *parent)
         : FichaBc(emp, parent) {
     _depura("tipoivaview::tipoivaview", 0);
@@ -47,6 +51,8 @@ tipoivaview::tipoivaview(Empresa *emp, QWidget *parent)
 
 /// El destructor de la clase guarda los datos (por si ha habido cambios)
 /// y libera la memoria que se haya ocupado.
+/**
+**/
 tipoivaview::~tipoivaview() {
     _depura("tipoivaview::~tipoivaview", 0);
     on_mui_guardar2_clicked();
@@ -59,6 +65,8 @@ tipoivaview::~tipoivaview() {
 
 /// Pinta la ventana, recarga el combo y si se pasa el parametro muestra el identificador
 /// indicado.
+/**
+**/
 void tipoivaview::pintar(QString idtipoiva) {
     _depura("tipoivaview::pintar", 0);
     int posicion = 0;
@@ -109,6 +117,8 @@ void tipoivaview::mostrarplantilla(int pos) {
 
 
 /// Esta funci&oacute;n sirve para hacer el cambio sobre un centro de coste .
+/**
+**/
 void tipoivaview::on_mui_comboTipoIVA_currentIndexChanged(int) {
     _depura("tipoivaview::on_mui_comboTipoIVA_currentIndexChanged", 0);
     mostrarplantilla();
@@ -119,6 +129,8 @@ void tipoivaview::on_mui_comboTipoIVA_currentIndexChanged(int) {
 /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n de guardar el tipo de IVA
 /// que se est&aacute; editando.
 /** Lo que hace es que se hace una actualizaci&oacute;n de todos los campos. */
+/**
+**/
 void tipoivaview::on_mui_guardar2_clicked() {
     _depura("tipoivaview::on_mui_guardar2_clicked", 0);
     QString idtipoiva = m_curtipoiva->valor("idtipoiva", m_posactual);
@@ -133,6 +145,8 @@ void tipoivaview::on_mui_guardar2_clicked() {
 
 /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n de nuevo tipo de IVA.
 /** Inserta en la tabla de IVAs. */
+/**
+**/
 void tipoivaview::on_mui_nuevo2_clicked() {
     _depura("tipoivaview::on_mui_nuevo2_clicked()", 0);
     /// Si se ha modificado el contenido advertimos y guardamos.
@@ -157,6 +171,8 @@ void tipoivaview::on_mui_nuevo2_clicked() {
 
 /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n de borrar un tipo de IVA.
 /** Borra en la tabla de tiposiva el TIPO de IVA concreto. */
+/**
+**/
 void tipoivaview::on_mui_borrar2_clicked() {
     _depura("tipoivaview::on_mui_borrar2_clicked", 0);
     switch (QMessageBox::warning(this,
@@ -178,6 +194,9 @@ void tipoivaview::on_mui_borrar2_clicked() {
 /// Antes de salir de la ventana debemos hacer la comprobaci&oacute;n de si se ha
 /// modificado algo.
 /** Esta función está dedicada a Francina, Bienvenida al mundo. :) */
+/**
+\return
+**/
 bool tipoivaview::close() {
     _depura("tipoivaview::close", 0);
     /// Si se ha modificado el contenido advertimos y guardamos.

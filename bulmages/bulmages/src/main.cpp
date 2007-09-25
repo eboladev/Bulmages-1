@@ -40,6 +40,11 @@ QTranslator *traductor;
 
 /// Crea el objeto base y lo lanza, tambien comprueba si se ha lanzado la
 /// aplicacion con parametros o sin ellos.
+/**
+\param argc
+\param argv
+\return
+**/
 int main(int argc, char **argv) {
     confpr = new configuracion("bulmages");
     QApplication2 a(argc, argv);

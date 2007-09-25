@@ -35,6 +35,11 @@
 #include "comercialclienteview.h"
 
 
+///
+/**
+\param bges
+\return
+**/
 int entryPoint(Bulmafact *bges) {
     _depura("Punto de Entrada del plugin ComercialBF", 0);
         /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
@@ -55,6 +60,11 @@ int entryPoint(Bulmafact *bges) {
 }
 
 
+///
+/**
+\param cli
+\return
+**/
 int ClienteView_ClienteView_Post(ClienteView *cli) {
     _depura("ClienteView_ClienteView_Post",0);
     /// Agregamos los campos de registro que hacen falta.
@@ -72,6 +82,11 @@ int ClienteView_ClienteView_Post(ClienteView *cli) {
 }
 
 
+///
+/**
+\param cli
+\return
+**/
 int ClienteView_Des_ClienteView_Post(ClienteView *cli) {
     _depura("ClienteView_Des_ClienteView", 0);
     /// Creamos la pesta&ntilde;a de comercial y la tratamos.

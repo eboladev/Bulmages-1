@@ -24,7 +24,12 @@
 #include "company.h"
 #include "funcaux.h"
 
-
+///
+/**
+\param comp
+\param parent
+\param editomodo
+**/
 TarifaListView::TarifaListView(Company *comp, QWidget *parent, edmode editmodo)
         : FichaBf(comp, parent), pgimportfiles(comp) {
     _depura("TarifaListView::INIT_TarifaListView()\n", 0);
@@ -38,6 +43,9 @@ TarifaListView::TarifaListView(Company *comp, QWidget *parent, edmode editmodo)
 }
 
 
+///
+/**
+**/
 TarifaListView::~TarifaListView() {
     _depura("TarifaListView::INIT_destructor()\n", 0);
     empresaBase()->sacaWindow(this);
@@ -45,6 +53,10 @@ TarifaListView::~TarifaListView() {
 }
 
 
+///
+/**
+\return
+**/
 void TarifaListView::on_mui_editar_clicked() {
     _depura("TarifaListView::INIT_s_editArticle()\n", 0);
     int a = mui_list->currentRow();
@@ -57,15 +69,23 @@ void TarifaListView::on_mui_editar_clicked() {
 }
 
 
+///
+/**
+\param row
+**/
 void TarifaListView::editar(int row) {
     _depura("TarifaListView::editar", 0);
     TarifaView *tar = new TarifaView(empresaBase(), 0);
     empresaBase()->m_pWorkspace->addWindow(tar);
     tar->cargar(mui_list->DBvalue(QString("idtarifa"), row));
     tar->show();
+    _depura("END TarifaListView::editar", 0);
 }
 
 
+///
+/**
+**/
 void TarifaListView::on_mui_crear_clicked() {
     _depura("TarifaListView::editar", 0);
     TarifaView *tar = new TarifaView(empresaBase(), parentWidget());
@@ -73,9 +93,13 @@ void TarifaListView::on_mui_crear_clicked() {
     tar->cargar("0");
     empresaBase()->m_pWorkspace->addWindow(tar);
     tar->show();
+    _depura("END  TarifaListView::editar", 0);
 }
 
 
+///
+/**
+**/
 void TarifaListView::on_mui_borrar_clicked() {
     _depura("TarifaListView::on_mui_borrar_clicked\n", 0);
     int a = mui_list->currentRow();

@@ -29,6 +29,11 @@
 #define COL_NOMBRE 1
 
 
+///
+/**
+\param emp
+\param parent
+**/
 CAnualesView::CAnualesView(Empresa  *emp, QWidget *parent)
         : FichaBc(emp, parent) {
     _depura("CAnualesView::CAnualesView", 0);
@@ -45,6 +50,9 @@ CAnualesView::CAnualesView(Empresa  *emp, QWidget *parent)
 }
 
 
+///
+/**
+**/
 CAnualesView::~CAnualesView() {
     _depura("CAnualesView::~CAnualesView\n", 0);
     empresaBase()->sacaWindow(this);
@@ -52,26 +60,52 @@ CAnualesView::~CAnualesView() {
 }
 
 
+///
+/**
+**/
 void CAnualesView::setmodoselector() {
+    _depura("CAnualesView::setmodoselector", 0);
     m_modo = 1;
+    _depura("END CAnualesView::setmodoselector", 0);
 }
 
 
+///
+/**
+**/
 void CAnualesView::setmodoeditor() {
+    _depura("CAnualesView::setmodoeditor", 0);
     m_modo = 0;
+    _depura("END CAnualesView::setmodoeditor", 0);
 }
 
 
+///
+/**
+\return
+**/
 QString CAnualesView::nomBalance() {
+    _depura("CAnualesView::nomBalance", 0);
+    _depura("END CAnualesView::nomBalance", 0);
     return m_nomBalance;
 }
 
 
+///
+/**
+\return
+**/
 QString CAnualesView::idBalance() {
+    _depura("CAnualesView::idBalance", 0);
+    _depura("END CAnualesView::idBalance", 0);
     return m_idBalance;
 }
 
 
+///
+/**
+\return
+**/
 void CAnualesView::inicializatabla() {
     _depura("CAnualesView::inicializatabla", 0);
 
@@ -118,6 +152,9 @@ void CAnualesView::inicializatabla() {
 }
 
 
+///
+/**
+**/
 void CAnualesView::on_mui_listado_itemDoubleClicked(QTableWidgetItem *) {
     _depura("CAnualesView::on_listado_itemDoubleclicked", 0);
     imprimir();
@@ -125,6 +162,9 @@ void CAnualesView::on_mui_listado_itemDoubleClicked(QTableWidgetItem *) {
 }
 
 
+///
+/**
+**/
 void CAnualesView::imprimir() {
     _depura("CAnualesView::imprimir", 0);
     QString idbalance = mui_listado->item(mui_listado->currentRow(), COL_ARCHIVO)->text();

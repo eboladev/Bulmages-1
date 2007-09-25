@@ -119,9 +119,9 @@ int TipoArticuloList::sacaWindow() {
 
 ///
 /**
-\param it
 **/
 void TipoArticuloList::pintar() {
+    _depura("TipoArticuloList::pintar", 0);
     QTreeWidgetItem * it;
 
     /// vaciamos el arbol.
@@ -143,9 +143,14 @@ void TipoArticuloList::pintar() {
     m_idtipo = "";
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
+    _depura("END TipoArticuloList::pintar", 0);
 }
 
 
+///
+/**
+\return
+**/
 QString TipoArticuloList::codtipo_articulo() {
     _depura("TipoArticuloList::codtipo_articulo", 0);
     QTreeWidgetItem *it = m_listTipos->currentItem();
@@ -157,6 +162,11 @@ QString TipoArticuloList::codtipo_articulo() {
     _depura("END TipoArticuloList::codtipo_articulo", 0);
 }
 
+
+///
+/**
+\return
+**/
 QString TipoArticuloList::idtipo_articulo() {
     _depura("TipoArticuloList::idtipo_articulo", 0);
     QTreeWidgetItem *it = m_listTipos->currentItem();
@@ -168,6 +178,11 @@ QString TipoArticuloList::idtipo_articulo() {
     _depura("TipoArticuloList::idtipo_articulo", 0);
 }
 
+
+///
+/**
+\return
+**/
 QString TipoArticuloList::desctipo_articulo() {
     _depura("TipoArticuloList::desctipo_articulo", 0);
     QTreeWidgetItem *it = m_listTipos->currentItem();
@@ -183,19 +198,27 @@ QString TipoArticuloList::desctipo_articulo() {
 /// Se ha seleccionado un item en la lista
 /// Lo que hacemos es mostar el elemento
 /// Si el anterior ha sido modificado pedimos para actuar en consecuencia.
+/**
+\param item
+**/
 void TipoArticuloList::on_m_listTipos_itemDoubleClicked(QTreeWidgetItem *item, int) {
     if (m_modoConsulta) {
+    _depura("TipoArticuloList::on_m_listTipos_itemDoubleClicked", 0);
         m_idtipo = item->text(COL_IDTIPOARTICULO);
         emit selected(m_idtipo);
     } // end if
+    _depura("END TipoArticuloList::on_m_listTipos_itemDoubleClicked", 0);
 }
 
 
 /// Se ha seleccionado un item en la lista
 /// Lo que hacemos es mostar el elemento
 /// Si el anterior ha sido modificado pedimos para actuar en consecuencia.
+/**
+\param current
+**/
 void TipoArticuloList::on_m_listTipos_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *) {
-    _depura("TipoArticuloList::on_m_listTipos_itemChanged", 0);
+    _depura("TipoArticuloList::on_m_listTipos_currentItemChanged", 0);
     QString idtipoold = current->text(COL_IDTIPOARTICULO);
     if (idtipoold != "") {
         /// Si usamos el trataModificado peta porque si se guarda se sobreescribe el puntero it.
@@ -203,9 +226,13 @@ void TipoArticuloList::on_m_listTipos_currentItemChanged(QTreeWidgetItem *curren
         m_idtipo = idtipoold;
         mostrarplantilla();
     } // end if
+    _depura("END TipoArticuloList::on_m_listTipos_currentItemChanged", 0);
 }
 
 
+///
+/**
+**/
 void TipoArticuloList::mostrarplantilla() {
     _depura("TipoArticuloList::mostrarplantilla", 0);
     QString query;
@@ -224,13 +251,22 @@ void TipoArticuloList::mostrarplantilla() {
 
 /// Antes de salir de la ventana debemos hacer la comprobacion de si se ha modificado algo
 /// Esta funcion esta dedicada a Francina, Bienvenida al mundo
+/**
+**/
 void TipoArticuloList::close() {
+    _depura("TipoArticuloList::close", 0);
     trataModificado();
     QWidget::close();
+    _depura("END TipoArticuloList::close", 0);
 }
 
 
+///
+/**
+\return
+**/
 bool TipoArticuloList::trataModificado() {
+    _depura("TipoArticuloList::trataModificado", 0);
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
         if (QMessageBox::warning(this,
@@ -239,6 +275,7 @@ bool TipoArticuloList::trataModificado() {
                                  QMessageBox::Ok,
                                  QMessageBox::Cancel) == QMessageBox::Ok)
             on_mui_guardar_clicked();
+    _depura("END TipoArticuloList::trataModificado", 0);
         return TRUE;
     } // end if
     return FALSE;
@@ -247,6 +284,9 @@ bool TipoArticuloList::trataModificado() {
 
 /// SLOT que responde a la pulsacion del boton de guardar el tipo de iva que se esta editando.
 /// Lo que hace es que se hace un update de todos los campos
+/**
+\return
+**/
 void TipoArticuloList::on_mui_guardar_clicked() {
     QString query = "UPDATE tipo_articulo SET codtipo_articulo = '" +
                     companyact->sanearCadena(m_codTipo->text()) + "', desctipo_articulo = '" +
@@ -275,6 +315,9 @@ void TipoArticuloList::on_mui_guardar_clicked() {
 
 /// SLOT que responde a la pulsacion del boton de nuevo tipo de iva
 /// Inserta en la tabla de ivas
+/**
+\return
+**/
 void TipoArticuloList::on_mui_crear_clicked() {
     _depura("TipoArticuloList::on_mui_crear_clicked", 0);
     /// Si se ha modificado el contenido advertimos y guardamos.
@@ -292,10 +335,15 @@ void TipoArticuloList::on_mui_crear_clicked() {
     m_idtipo = cur->valor("idtipo");
     delete cur;
     pintar();
+    _depura("END TipoArticuloList::on_mui_crear_clicked", 0);
 }
+
 
 /// SLOT que responde a la pulsacion del boton de borrar la familia que se esta editando.
 /// Lo que hace es que se hace un update de todos los campos.
+/**
+\return
+**/
 void TipoArticuloList::on_mui_borrar_clicked() {
     _depura("TipoArticuloList::on_mui_borrar_clicked", 0);
     QTreeWidgetItem *it = m_listTipos->currentItem();

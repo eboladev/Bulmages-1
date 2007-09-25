@@ -27,6 +27,11 @@
 #include "plugins.h"
 
 
+///
+/**
+\param comp
+\param parent
+**/
 RutaComercial::RutaComercial(Company *comp, QWidget *parent) : FichaBf(comp, parent) {
     _depura("RutaComercial::RutaComercial", 0);
     setTitleName(tr("Ruta Comercial"));
@@ -42,9 +47,19 @@ RutaComercial::RutaComercial(Company *comp, QWidget *parent) : FichaBf(comp, par
 }
 
 
-RutaComercial::~RutaComercial() {}
+///
+/**
+**/
+RutaComercial::~RutaComercial() {
+    _depura("RutaComercial::~RutaComercial", 0);
+    _depura("END RutaComercial::~RutaComercial", 0);
+}
 
 
+///
+/**
+\return
+**/
 void RutaComercial::pintar() {
     _depura("RutaComercial::pintar", 0);
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
@@ -55,6 +70,12 @@ void RutaComercial::pintar() {
     _depura("END RutaComercial::pintar", 0);
 }
 
+
+///
+/**
+\param id
+\return
+**/
 int RutaComercial::cargar(QString id) {
     _depura("RutaComercial::cargar", 0);
     QString query = "SELECT * FROM rutacomercial WHERE idrutacomercial = " + id;

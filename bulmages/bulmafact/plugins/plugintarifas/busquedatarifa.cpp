@@ -25,6 +25,10 @@
 #include "funcaux.h"
 
 
+///
+/**
+\param parent
+**/
 BusquedaTarifa::BusquedaTarifa(QWidget *parent)
         : QComboBox(parent), PEmpresaBase() {
     m_cursorcombo = NULL;
@@ -32,9 +36,19 @@ BusquedaTarifa::BusquedaTarifa(QWidget *parent)
 }
 
 
-BusquedaTarifa::~BusquedaTarifa() {}
+///
+/**
+**/
+BusquedaTarifa::~BusquedaTarifa() {
+    _depura("BusquedaTarifa::~BusquedaTarifa", 0);
+    _depura("END BusquedaTarifa::~BusquedaTarifa", 0);
+}
 
 
+///
+/**
+\param idtarifa
+**/
 void BusquedaTarifa::setidtarifa(QString idtarifa) {
     _depura("BusquedaTarifa::setidtarifa", 0);
     mdb_idtarifa = idtarifa;
@@ -53,5 +67,6 @@ void BusquedaTarifa::setidtarifa(QString idtarifa) {
         m_cursorcombo->siguienteregistro();
     }
     setCurrentIndex(i1);
+    _depura("END BusquedaTarifa::setidtarifa", 0);
 }
 

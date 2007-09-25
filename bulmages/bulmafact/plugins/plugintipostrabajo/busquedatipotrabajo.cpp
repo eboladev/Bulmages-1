@@ -25,8 +25,10 @@
 #include "funcaux.h"
 
 
-/** Constructor del Widget conecta las se&ntilde;ales y prepara los componentes.
-*/
+/// Constructor del Widget conecta las se&ntilde;ales y prepara los componentes.
+/**
+\param parent
+**/
 BusquedaTipoTrabajo::BusquedaTipoTrabajo(QWidget *parent, const char *)
         : QComboBox(parent), PEmpresaBase() {
     _depura("BusquedaTipoTrabajo::BusquedaTipoTrabajo", 0);
@@ -37,8 +39,9 @@ BusquedaTipoTrabajo::BusquedaTipoTrabajo(QWidget *parent, const char *)
 }
 
 
-/** El destructor no precisa de operaciones especiales
-*/
+/// El destructor no precisa de operaciones especiales
+/**
+**/
 BusquedaTipoTrabajo::~BusquedaTipoTrabajo() {
     _depura("BusquedaTipoTrabajo::~BusquedaTipoTrabajo", 0);
     _depura("END BusquedaTipoTrabajo::~BusquedaTipoTrabajo", 0);
@@ -49,6 +52,9 @@ BusquedaTipoTrabajo::~BusquedaTipoTrabajo() {
     como seleccionado.
     Recarga el cursor y presenta en el combo aquel que se ajusta al id pasado.
 */
+/**
+\param idtipotrabajo
+**/
 void BusquedaTipoTrabajo::setidtipotrabajo(QString idtipotrabajo) {
     _depura("BusquedaTipoTrabajo::setidtipotrabajo", 0, idtipotrabajo);
     if (m_cursorcombo != NULL) {
@@ -74,6 +80,10 @@ void BusquedaTipoTrabajo::setidtipotrabajo(QString idtipotrabajo) {
 }
 
 
+///
+/**
+\return
+**/
 QString BusquedaTipoTrabajo::idtipotrabajo() {
     _depura("BusquedaTipoTrabajo::idtipotrabajo", 0);
     int index= currentIndex();
@@ -87,6 +97,9 @@ QString BusquedaTipoTrabajo::idtipotrabajo() {
 }
 
 
+///
+/**
+**/
 void BusquedaTipoTrabajo::m_activated(int index) {
     _depura("BusquedaTipoTrabajo::m_activated", 0);
     if (index > 0) {
@@ -105,6 +118,9 @@ void BusquedaTipoTrabajo::m_activated(int index) {
     sobre si un elemento ha sido creado o no. 
     Conecta el SIGNAL activated() con m_activated() para tratarlo.
 */
+/**
+\param parent
+**/
 BusquedaTipoTrabajoDelegate::BusquedaTipoTrabajoDelegate(QWidget *parent)
         : QComboBox2(parent) {
     _depura("BusquedaTipoTrabajoDelegate::BusquedaTipoTrabajoDelegate", 0);
@@ -117,6 +133,8 @@ BusquedaTipoTrabajoDelegate::BusquedaTipoTrabajoDelegate(QWidget *parent)
 
 /** Libera la memoria reservada.
 */
+/**
+**/
 BusquedaTipoTrabajoDelegate::~BusquedaTipoTrabajoDelegate() {
     _depura("BusquedaTipoTrabajoDelegate::~BusquedaTipoTrabajoDelegate", 0);
     if (m_cursorcombo != NULL)
@@ -129,6 +147,9 @@ BusquedaTipoTrabajoDelegate::~BusquedaTipoTrabajoDelegate() {
     Recarga cursor de serie_factura y cuando encuentra un registro cuyo codigoserie_factura coincide con el pasado
     como parametro lo establece como el registro activo por el comboBox.
 */
+/**
+\param cod
+**/
 void BusquedaTipoTrabajoDelegate::set(const QString &cod) {
     _depura("BusquedaTipoTrabajoDelegate::set", 0);
     int index = 0;
@@ -152,7 +173,13 @@ void BusquedaTipoTrabajoDelegate::set(const QString &cod) {
 }
 
 
+///
+/**
+\return
+**/
 QString BusquedaTipoTrabajoDelegate::id()  {
+    _depura("BusquedaTipoTrabajoDelegate::id", 0);
+    _depura("END BusquedaTipoTrabajoDelegate::id", 0);
     return m_cursorcombo->valor("idtipotrabajo", currentIndex());
 }
 

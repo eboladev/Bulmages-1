@@ -59,6 +59,11 @@ void myplugin1::inicializa(bulmafact *bges) {
 
 */
 
+
+///
+/**
+\return
+**/
 int entryPoint(Bulmafact *) {
     _depura("Punto de Entrada del plugin de Promedios", 0);
 //    myplugin1 *plug = new myplugin1();
@@ -67,7 +72,11 @@ int entryPoint(Bulmafact *) {
 }
 
 
-
+///
+/**
+\param art
+\return
+**/
 int ArticuloView_ArticuloView(ArticuloView *art) {
     _depura("ArticuloView_ArticuloView", 0);
     PromedioView *l = new PromedioView(art->empresaBase(), art);
@@ -78,6 +87,11 @@ int ArticuloView_ArticuloView(ArticuloView *art) {
 }
 
 
+///
+/**
+\param art
+\return
+**/
 int ArticuloView_cargar(ArticuloView *art) {
     _depura("ArticuloView_cargar", 0);
     PromedioView *l = art->findChild<PromedioView *>("lpromedios");

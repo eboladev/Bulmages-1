@@ -32,33 +32,60 @@
 #include "funcaux.h"
 
 
-plugin_tc_articulos::plugin_tc_articulos() {}
+///
+/**
+**/
+plugin_tc_articulos::plugin_tc_articulos() {
+    _depura("plugin_tc_articulos::plugin_tc_articulos", 0);
+    _depura("END plugin_tc_articulos::plugin_tc_articulos", 0);
+}
 
 
-plugin_tc_articulos::~plugin_tc_articulos() {}
+///
+/**
+**/
+plugin_tc_articulos::~plugin_tc_articulos() {
+    _depura("plugin_tc_articulos::~plugin_tc_articulos", 0);
+    _depura("END plugin_tc_articulos::~plugin_tc_articulos", 0);
+}
 
 
+///
+/**
+**/
 void plugin_tc_articulos::tallas() {
+    _depura("plugin_tc_articulos::tallas", 0);
     fprintf(stderr, "Sa ha activado tallas\n");
     QMessageBox::warning(0,
                          "Titulo de la ventana",
                          "Mensaje.",
                          QMessageBox::Ok,
                          QMessageBox::Cancel);
+    _depura("END plugin_tc_articulos::tallas", 0);
 }
 
 
+///
+/**
+**/
 void plugin_tc_articulos::colores() {
+    _depura("plugin_tc_articulos::colores", 0);
     fprintf(stderr, "Sa ha activado colores\n");
     QMessageBox::warning(0,
                          "Titulo de la ventana",
                          "Mensaje.",
                          QMessageBox::Ok,
                          QMessageBox::Cancel);
+    _depura("END plugin_tc_articulos::colores", 0);
 }
 
 
+///
+/**
+\param bges
+**/
 void plugin_tc_articulos::inicializa(Bulmafact *bges) {
+    _depura("plugin_tc_articulos::inicializa", 0);
     QMenu *pPluginMenuTallasColores;
     /// Miramos si existe un menu Herramientas
     pPluginMenuTallasColores = bges->menuBar()->findChild<QMenu *>("Tallas y colores");
@@ -84,9 +111,14 @@ void plugin_tc_articulos::inicializa(Bulmafact *bges) {
 
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->menuBar()->insertMenu(bges->menuVentana->menuAction(), pPluginMenuTallasColores);
+    _depura("END plugin_tc_articulos::inicializa", 0);
 }
 
 
+///
+/**
+\param bges
+**/
 void entryPoint(Bulmafact *bges) {
     _depura("Estoy dentro del plugin de tallas y colores", 0);
     plugin_tc_articulos *plug = new plugin_tc_articulos();

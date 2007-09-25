@@ -24,6 +24,11 @@
 #include "abreempresaview.h"
 
 
+///
+/**
+\param parent
+\param f
+**/
 BNuevaEmpresa::BNuevaEmpresa(QWidget *parent, Qt::WFlags f)
         : QDialog(parent, f) {
     setupUi(this);
@@ -33,9 +38,16 @@ BNuevaEmpresa::BNuevaEmpresa(QWidget *parent, Qt::WFlags f)
 }
 
 
+///
+/**
+**/
 BNuevaEmpresa::~BNuevaEmpresa() {}
 
 
+///
+/**
+\return
+**/
 void BNuevaEmpresa::accept() {
     /// Falta comprobar que tengas permisos para crear nuevas empresas.
     QString nombredb;

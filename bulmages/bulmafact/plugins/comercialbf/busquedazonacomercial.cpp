@@ -24,6 +24,10 @@
 #include "company.h"
 
 
+///
+/**
+\param parent
+**/
 BusquedaZonaComercial::BusquedaZonaComercial(QWidget *parent)
         : QComboBox(parent), PEmpresaBase() {
     _depura("BusquedaZonaComercial::BusquedaZonaComercial", 0);
@@ -33,13 +37,23 @@ BusquedaZonaComercial::BusquedaZonaComercial(QWidget *parent)
 }
 
 
+///
+/**
+**/
 BusquedaZonaComercial::~BusquedaZonaComercial() {
+    _depura("BusquedaZonaComercial::~BusquedaZonaComercial", 0);
     if (m_cursorcombo != NULL)
         delete m_cursorcombo;
+    _depura("END BusquedaZonaComercial::~BusquedaZonaComercial", 0);
 }
 
 
+///
+/**
+\param idzonacomercial
+**/
 void BusquedaZonaComercial::setidzonacomercial(QString idzonacomercial) {
+    _depura("BusquedaZonaComercial::~BusquedaZonaComercial", 0);
     if (m_cursorcombo != NULL)
         delete m_cursorcombo;
     m_cursorcombo = empresaBase()->cargacursor("SELECT * FROM zonacomercial");
@@ -55,5 +69,6 @@ void BusquedaZonaComercial::setidzonacomercial(QString idzonacomercial) {
         m_cursorcombo->siguienteregistro();
     } // end while
     setCurrentIndex(i1);
+    _depura("END BusquedaZonaComercial::~BusquedaZonaComercial", 0);
 }
 

@@ -25,6 +25,10 @@
 
 
 /// Constructor de Clase
+/**
+\param emp
+\param parent
+**/
 VehiculoView::VehiculoView(Company *emp, QWidget *parent)
         : FichaBf(emp, parent) {
     _depura("VehiculoView::VehiculoView", 0);
@@ -61,6 +65,9 @@ VehiculoView::VehiculoView(Company *emp, QWidget *parent)
 }
 
 
+///
+/**
+**/
 VehiculoView::~VehiculoView() {
     _depura("VehiculoView::~VehiculoView", 0);
     empresaBase()->sacaWindow(this);
@@ -68,6 +75,10 @@ VehiculoView::~VehiculoView() {
 }
 
 
+///
+/**
+\return
+**/
 int VehiculoView::guardar() {
     _depura("VehiculoView::guardar", 0);
     try {
@@ -91,6 +102,11 @@ int VehiculoView::guardar() {
 }
 
 
+///
+/**
+\param idvehiculo
+\return
+**/
 int VehiculoView::cargar(QString idvehiculo) {
     _depura("VehiculoView::cargar", 0);
     try {

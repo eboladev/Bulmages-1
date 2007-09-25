@@ -31,6 +31,11 @@
 #include "plugins.h"
 
 
+///
+/**
+\param comp
+\param parent
+**/
 TarifaView::TarifaView(Company *comp, QWidget *parent)
         : FichaBf(comp, parent) {
     _depura("TarifaView::INIT_constructor()\n", 0);
@@ -53,6 +58,9 @@ TarifaView::TarifaView(Company *comp, QWidget *parent)
 }
 
 
+///
+/**
+**/
 TarifaView::~TarifaView() {
     _depura("TarifaView::INIT_destructor()\n", 0);
     empresaBase()->sacaWindow(this);
@@ -60,6 +68,9 @@ TarifaView::~TarifaView() {
 }
 
 
+///
+/**
+**/
 void TarifaView::pintar() {
     _depura("TarifaView::pintar", 0);
     mui_nomtarifa->setText(DBvalue("nomtarifa"));
@@ -68,6 +79,11 @@ void TarifaView::pintar() {
 }
 
 
+///
+/**
+\param idtarifa
+\return
+**/
 QString TarifaView::formaQuery(QString idtarifa) {
     _depura("TarifaView::formaQuery", 0);
     QString wherearticulo = "";
@@ -90,6 +106,7 @@ QString TarifaView::formaQuery(QString idtarifa) {
 
     QString SQLQuery = "SELECT * FROM (SELECT * FROM (SELECT * FROM almacen " + wherealmacen + ") AS t6, (SELECT * FROM articulo " + wherearticulo + ") AS t5, (SELECT * FROM tarifa WHERE idtarifa = " + idtarifa + ") AS t2 ) AS t3 ";
     SQLQuery += " LEFT JOIN (SELECT * FROM ltarifa WHERE idtarifa = " + idtarifa + ") as t1 ON t1.idtarifa = t3.idtarifa AND t1.idalmacen = t3.idalmacen AND t1.idarticulo = t3.idarticulo";
+    _depura("END TarifaView::formaQuery", 0);
     return SQLQuery;
 }
 
@@ -97,6 +114,10 @@ QString TarifaView::formaQuery(QString idtarifa) {
 /// Esta funci&oacute;n carga un art&iacute;culo de la base de datos y lo presenta.
 /// Si el par&aacute;metro pasado no es un identificador v&aacute;lido entonces se pone
 /// la ventana de edici&oacute;n en modo de inserci&oacute;n.
+/**
+\param idtarifa
+\return
+**/
 int TarifaView::cargar(QString idtarifa) {
     _depura("TarifaView::cargar(" + idtarifa + ")\n", 0);
     int error = 0;
@@ -119,6 +140,9 @@ int TarifaView::cargar(QString idtarifa) {
 }
 
 
+///
+/**
+**/
 int TarifaView::guardar() {
     _depura("TarifaView::INIT_s_grabarClicked()\n", 0);
     setDBvalue("nomtarifa", mui_nomtarifa->text());
@@ -133,6 +157,8 @@ int TarifaView::guardar() {
 
 
 /// Esta funci&oacute;n se ejecuta cuando se ha pulsado sobre el bot&oacute;n de nuevo.
+/**
+**/
 void TarifaView::on_mui_crear_clicked() {
     _depura("TarifaView::INIT_boton_nuevo()\n", 0);
     vaciar();
@@ -141,6 +167,9 @@ void TarifaView::on_mui_crear_clicked() {
 }
 
 
+///
+/**
+**/
 void TarifaView::on_mui_actualizar_clicked() {
     _depura("TarifaView::INIT_boton_nuevo()\n", 0);
     guardar();
@@ -151,6 +180,8 @@ void TarifaView::on_mui_actualizar_clicked() {
 
 
 /// Esta funci&oacute;n se ejecuta cuando se ha pulsado sobre el bot&oacute;n de borrar.
+/**
+**/
 void TarifaView::on_mui_borrar_clicked() {
     _depura("TarifaView::INIT_boton_borrar()\n", 0);
     if (DBvalue("idtarifa") != "") {
@@ -173,6 +204,10 @@ void TarifaView::on_mui_borrar_clicked() {
 }
 
 
+///
+/**
+\param e
+**/
 void TarifaView::closeEvent(QCloseEvent *e) {
     _depura("closeEvent", 0);
     if (dialogChanges_hayCambios())  {
@@ -188,6 +223,9 @@ void TarifaView::closeEvent(QCloseEvent *e) {
 }
 
 
+///
+/**
+**/
 void TarifaView::on_mui_aceptar_clicked() {
     on_mui_guardar_clicked();
     close();

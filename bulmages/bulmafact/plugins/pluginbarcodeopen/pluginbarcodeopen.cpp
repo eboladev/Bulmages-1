@@ -41,13 +41,31 @@
 #include "albaranclienteview.h"
 #include "pedidoproveedorview.h"
 
-myplugin::myplugin() {}
+
+///
+/**
+**/
+myplugin::myplugin() {
+    _depura("myplugin::myplugin", 0);
+    _depura("END myplugin::myplugin", 0);
+}
 
 
-myplugin::~myplugin() {}
+///
+/**
+**/
+myplugin::~myplugin() {
+    _depura("myplugin::~myplugin", 0);
+    _depura("END myplugin::~myplugin", 0);
+}
 
 
+///
+/**
+\return
+**/
 void myplugin::elslot() {
+    _depura("myplugin::elslot", 0);
     bool ok;
     QString text = QInputDialog::getText(0, tr("QInputDialog::getText()"),
                                          tr("Introduzca codigo"), QLineEdit::Normal, "", &ok);
@@ -95,10 +113,16 @@ void myplugin::elslot() {
             prov->show();
         } // end if
     } // end if
+    _depura("END myplugin::elslot", 0);
 }
 
 
+///
+/**
+\param bges
+**/
 void myplugin::inicializa(Bulmafact *bges) {
+    _depura("myplugin::inicializa", 0);
     /// Creamos el men&uacute;.
     setEmpresaBase(bges->getcompany());
     m_bulmafact = bges;
@@ -119,10 +143,16 @@ void myplugin::inicializa(Bulmafact *bges) {
     pPluginMenu->addAction(accion);
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->menuBar()->insertMenu(bges->menuVentana->menuAction(), pPluginMenu);
+    _depura("END myplugin::inicializa", 0);
 }
 
 
+///
+/**
+\param bges
+**/
 void entryPoint(Bulmafact *bges) {
+        _depura("entryPoint", 0);
         /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
         QTranslator *traductor = new QTranslator(0);
         if (confpr->valor(CONF_TRADUCCION) == "locales") {
@@ -136,5 +166,6 @@ void entryPoint(Bulmafact *bges) {
 
     myplugin *plug = new myplugin();
     plug->inicializa(bges);
+        _depura("END entryPoint", 0);
 }
 

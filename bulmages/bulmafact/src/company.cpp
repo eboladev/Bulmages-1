@@ -382,6 +382,10 @@ void Company::createMainWindows(Splash *splash) {
 
     cargaConf();
 
+   /// Ponemos el titulo de la ventana
+    m_bulmafact->statusBar()->showMessage(nameDB(), 2000);
+    m_bulmafact->setWindowTitle(nameDB());
+
     _depura("END Company::createMainWindows", 0);
 }
 

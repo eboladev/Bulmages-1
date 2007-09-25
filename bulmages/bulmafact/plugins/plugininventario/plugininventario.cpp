@@ -26,19 +26,40 @@
 #include "inventariosview.h"
 
 
-myplugininv::myplugininv() {}
-
-
-myplugininv::~myplugininv() {}
-
-
-void myplugininv::elslot() {
-    InventariosView *tar = new InventariosView((Company *)empresaBase(), NULL);
-    empresaBase()->m_pWorkspace->addWindow(tar);
-    tar->show();
+///
+/**
+**/
+myplugininv::myplugininv() {
+    _depura("myplugininv::myplugininv", 0);
+    _depura("END myplugininv::myplugininv", 0);
 }
 
 
+///
+/**
+**/
+myplugininv::~myplugininv() {
+    _depura("myplugininv::~myplugininv", 0);
+    _depura("END myplugininv::~myplugininv", 0);
+}
+
+
+///
+/**
+**/
+void myplugininv::elslot() {
+    _depura("myplugininv::elslot", 0);
+    InventariosView *tar = new InventariosView((Company *)empresaBase(), NULL);
+    empresaBase()->m_pWorkspace->addWindow(tar);
+    tar->show();
+    _depura("END myplugininv::elslot", 0);
+}
+
+
+///
+/**
+\param bges
+**/
 void myplugininv::inicializa(Bulmafact *bges) {
     /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
     m_bges = bges;
@@ -52,6 +73,11 @@ void myplugininv::inicializa(Bulmafact *bges) {
 }
 
 
+///
+/**
+\param bges
+\return
+**/
 int entryPoint(Bulmafact *bges) {
     _depura("Punto de Entrada del plugin de Tarifas\n", 0);
     myplugininv *plug = new myplugininv();

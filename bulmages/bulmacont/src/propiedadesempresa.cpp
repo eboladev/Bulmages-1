@@ -25,6 +25,11 @@
 #include "empresa.h"
 
 
+///
+/**
+\param emp
+\param parent
+**/
 propiedadesempresa::propiedadesempresa(Empresa *emp, QWidget *parent)
         : FichaBc(emp, parent) {
     _depura("propiedadesempresa::propiedadesempresa", 0);
@@ -46,6 +51,9 @@ propiedadesempresa::propiedadesempresa(Empresa *emp, QWidget *parent)
 }
 
 
+///
+/**
+**/
 propiedadesempresa::~propiedadesempresa() {
     _depura("propiedadesempresa::~propiedadesempresa", 0);
     empresaBase()->sacaWindow(this);
@@ -54,6 +62,10 @@ propiedadesempresa::~propiedadesempresa() {
 }
 
 
+///
+/**
+\return
+**/
 int propiedadesempresa::inicializa() {
     _depura("propiedadesempresa::inicializa", 0);
     int num;
@@ -71,6 +83,9 @@ int propiedadesempresa::inicializa() {
 }
 
 
+///
+/**
+**/
 void propiedadesempresa::on_mui_guardar_clicked() {
     _depura("propiedadesempresa::on_mui_guardar_clicked", 0);
     /// Iniciamos transaccion.
@@ -84,6 +99,10 @@ void propiedadesempresa::on_mui_guardar_clicked() {
 }
 
 
+///
+/**
+\return
+**/
 bool propiedadesempresa::close() {
     _depura("propiedadesempresa::close", 0);
     /// Si se ha modificado el contenido advertimos y guardamos.
@@ -107,6 +126,8 @@ bool propiedadesempresa::close() {
     De momento esta funci&oacute;n est&aacute; incompleta y hace varias consideraciones
     que deber&iacute;an ir solucion&aacute;ndose (no trata los d&iacute;gitos de cuenta
     y subcuenta) por lo que siempre considera que las cuentas son 4 d&iacute;gitos. */
+/**
+**/
 void propiedadesempresa::on_mui_modificarplan_clicked() {
     _depura("propiedadesempresa::on_mui_modificarplan_clicked", 0);
     unsigned int nlong = modcodigo->text().length();
@@ -140,11 +161,20 @@ void propiedadesempresa::on_mui_modificarplan_clicked() {
 
 /// ===================================== SUBFORMULARIO ===============================================
 
+
+///
+/**
+**/
 ListConfiguracionSubForm::~ListConfiguracionSubForm() {
     _depura("ListConfiguracionSubForm::~ListConfiguracionSubForm", 0);
+    _depura("END ListConfiguracionSubForm::~ListConfiguracionSubForm", 0);
 }
 
 
+///
+/**
+\param parent
+**/
 ListConfiguracionSubForm::ListConfiguracionSubForm(QWidget *parent) : SubForm2Bc(parent) {
     _depura("ListConfiguracionSubForm::ListConfiguracionSubForm", 0);
     setDBTableName("configuracion");
@@ -158,6 +188,9 @@ ListConfiguracionSubForm::ListConfiguracionSubForm(QWidget *parent) : SubForm2Bc
 }
 
 
+///
+/**
+**/
 void ListConfiguracionSubForm::cargar() {
     _depura("ListConfiguracionSubForm::cargar", 0);
     SubForm3::cargar("SELECT *, nombre AS nombreorig FROM configuracion");

@@ -28,20 +28,42 @@
 #include "tarifalistview.h"
 
 
-myplugin1::myplugin1() : PEmpresaBase() {}
-
-
-myplugin1::~myplugin1() {}
-
-
-void myplugin1::elslot() {
-    TarifaListView *tar = new TarifaListView(((Company *)empresaBase()), NULL);
-    empresaBase()->m_pWorkspace->addWindow(tar);
-    tar->show();
+///
+/**
+**/
+myplugin1::myplugin1() : PEmpresaBase() {
+    _depura("myplugin1::myplugin1", 0);
+    _depura("END myplugin1::myplugin1", 0);
 }
 
 
+///
+/**
+**/
+myplugin1::~myplugin1() {
+    _depura("myplugin1::~myplugin1", 0);
+    _depura("END myplugin1::~myplugin1", 0);
+}
+
+
+///
+/**
+**/
+void myplugin1::elslot() {
+    _depura("myplugin1::elslot", 0);
+    TarifaListView *tar = new TarifaListView(((Company *)empresaBase()), NULL);
+    empresaBase()->m_pWorkspace->addWindow(tar);
+    tar->show();
+    _depura("END myplugin1::elslot", 0);
+}
+
+
+///
+/**
+\param bges
+**/
 void myplugin1::inicializa(Bulmafact *bges) {
+    _depura("myplugin1::inicializa", 0);
     /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
     m_bges = bges;
     setEmpresaBase(bges->getcompany());
@@ -52,9 +74,14 @@ void myplugin1::inicializa(Bulmafact *bges) {
     bges->menuArticulos->addSeparator();
     bges->menuArticulos->addAction(planCuentas);
     connect(planCuentas, SIGNAL(activated()), this, SLOT(elslot()));
+    _depura("END myplugin1::inicializa", 0);
 }
 
 
+///
+/**
+\return
+**/
 int entryPoint(Bulmafact *bges) {
     _depura("Punto de Entrada del plugin de Tarifas\n", 0);
     myplugin1 *plug = new myplugin1();
@@ -63,6 +90,11 @@ int entryPoint(Bulmafact *bges) {
 }
 
 
+///
+/**
+\param cli
+\return
+**/
 int ClienteView_ClienteView(ClienteView *cli) {
     _depura("dentro del plugin", 0);
 
@@ -90,6 +122,11 @@ int ClienteView_ClienteView(ClienteView *cli) {
 
 
 
+///
+/**
+\param art
+\return
+**/
 int ArticuloView_ArticuloView(ArticuloView *art) {
     _depura("ArticuloView_ArticuloView", 0);
     ListLTarifaView *l = new ListLTarifaView(art);
@@ -102,6 +139,11 @@ int ArticuloView_ArticuloView(ArticuloView *art) {
 }
 
 
+///
+/**
+\param art
+\return
+**/
 int ArticuloView_cargar(ArticuloView *art) {
     _depura("ArticuloView_cargar", 0);
     ListLTarifaView *l = art->findChild<ListLTarifaView *>("ltarifas");
@@ -111,6 +153,11 @@ int ArticuloView_cargar(ArticuloView *art) {
 }
 
 
+///
+/**
+\param art
+\return
+**/
 int ArticuloView_guardar_post(ArticuloView *art) {
     _depura("ArticuloView_guardar_post", 0);
     try {
@@ -125,6 +172,11 @@ int ArticuloView_guardar_post(ArticuloView *art) {
 }
 
 
+///
+/**
+\param art
+\return
+**/
 int ArticuloView_borrar(ArticuloView *art) {
     _depura("ArticuloView_borrar", 0);
     try {

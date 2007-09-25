@@ -40,6 +40,10 @@
     Resetea el sistema de control de cambios para que considere que no hay cambios por parte del usuario.
     Mete la ventana en el workSpace.
 */
+/**
+\param comp
+\param parent
+**/
 CuadranteView::CuadranteView(Company *comp, QWidget *parent)
         : FichaBf(comp, parent) {
     _depura("CuadranteView::CuadranteView", 0);
@@ -70,6 +74,9 @@ CuadranteView::CuadranteView(Company *comp, QWidget *parent)
 
 /** No precisa acciones adicionales en el destructor.
 */
+///
+/**
+**/
 CuadranteView::~CuadranteView() {
     _depura("CuadranteView::~CuadranteView", 0);
     _depura("END CuadranteView::~CuadranteView", 0);
@@ -78,6 +85,8 @@ CuadranteView::~CuadranteView() {
 
 /** Inicializa la selección de trabajadores
 */
+/**
+**/
 void CuadranteView::inicializaTrabajadores() {
 
     mui_listtrabajadores->setColumnCount(2);
@@ -110,6 +119,10 @@ void CuadranteView::inicializaTrabajadores() {
 
 /** Inicializa la selección de trabajadores
 */
+/**
+\param dateorig
+\return
+**/
 void CuadranteView::inicializaCuadrante(const QDate &dateorig) {
     _depura("CuadranteView::inicializaCuadrante", 0);
     try {
@@ -158,12 +171,20 @@ void CuadranteView::inicializaCuadrante(const QDate &dateorig) {
 }
 
 
+///
+/**
+\param date
+**/
 void CuadranteView::on_mui_calendario_clicked(const QDate &date) {
     _depura("CuadranteView::on_mui_calendario_clicked", 0, date.toString("dd/MM/yyyy"));
     inicializaCuadrante(date);
 }
 
 
+///
+/**
+\param item
+**/
 void CuadranteView::on_mui_listtrabajadores_itemDoubleClicked(QTreeWidgetItem *item, int ) {
     _depura("elementos dobleclickados", 0);
     QString item1 = item->text(1);
@@ -180,6 +201,9 @@ void CuadranteView::on_mui_listtrabajadores_itemDoubleClicked(QTreeWidgetItem *i
 }
 
 
+///
+/**
+**/
 void CuadranteView::on_mui_editar_clicked() {
     _depura ("editar cuadrante", 0);
     Cuadrante1View *cuad = new Cuadrante1View(empresaBase(), 0);
@@ -191,7 +215,12 @@ void CuadranteView::on_mui_editar_clicked() {
 }
 
 
+///
+/**
+\param pos
+**/
 void CuadranteView::on_mui_calendario_customContextMenuRequested ( const QPoint & pos ) {
+    _depura("CuadranteView::on_mui_calendario_customContextMenuRequested", 0);
     QMenu *popup = new QMenu(mui_calendario);
 
     popup->addSeparator();
@@ -212,10 +241,15 @@ void CuadranteView::on_mui_calendario_customContextMenuRequested ( const QPoint 
     } // end if
 
     inicializaCuadrante(mui_calendario->selectedDate());
+    _depura("END CuadranteView::on_mui_calendario_customContextMenuRequested", 0);
 }
 
 
+///
+/**
+**/
 void CuadranteView::on_mui_imprimir_clicked() {
+    _depura("CuadranteView::on_mui_imprimir_clicked", 0);
 
     QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "cuadrante.rml";
     QString archivod = confpr->valor(CONF_DIR_USER) + "cuadrante.rml";
@@ -306,6 +340,7 @@ void CuadranteView::on_mui_imprimir_clicked() {
         file.close();
     } // end if
     invocaPDF("cuadrante");
+    _depura("END CuadranteView::on_mui_imprimir_clicked", 0);
 
 }
 

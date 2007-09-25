@@ -25,6 +25,12 @@
 #define NUMDIGITOS   (Empresa *)empresaBase())->numdigitosempresa()
 
 
+///
+/**
+\param emp
+\param parent
+\param flag
+**/
 CambiaCtaView::CambiaCtaView(Empresa *emp, QWidget *parent, Qt::WFlags flag)
         : QDialog(parent, flag), PEmpresaBase(emp) {
     _depura("CambiaCtaView::CambiaCtaView", 0);
@@ -35,9 +41,18 @@ CambiaCtaView::CambiaCtaView(Empresa *emp, QWidget *parent, Qt::WFlags flag)
 }
 
 
-CambiaCtaView::~CambiaCtaView() {}
+///
+/**
+**/
+CambiaCtaView::~CambiaCtaView() {
+    _depura("CambiaCtaView::~CambiaCtaView", 0);
+    _depura("END CambiaCtaView::~CambiaCtaView", 0);
+}
 
 
+///
+/**
+**/
 void CambiaCtaView::accept() {
     _depura("CambiaCtaView::accept", 0);
     QString origen = mui_codigoorigen->text();

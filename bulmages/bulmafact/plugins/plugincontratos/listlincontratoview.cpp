@@ -29,6 +29,10 @@
 #include "plugins.h"
 
 
+///
+/**
+\param parent
+**/
 ListLinContratoView::ListLinContratoView(QWidget *parent) : SubForm2Bf(parent) {
     _depura("ListLinContratoView::ListLinContratoView", 0);
     setDBTableName("lcontrato");
@@ -48,6 +52,10 @@ ListLinContratoView::ListLinContratoView(QWidget *parent) : SubForm2Bf(parent) {
 }
 
 
+///
+/**
+\param idcontrato
+**/
 void ListLinContratoView::cargar(QString idcontrato) {
     _depura("ListLinContratoView::cargar", 0);
     mdb_idcontrato = idcontrato;

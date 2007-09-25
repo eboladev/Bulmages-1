@@ -32,6 +32,11 @@
 
 
 /// Constructor de la clase inicializa la clase y llama a la clase de pintar para que pinte.
+/**
+\param emp
+\param parent
+\return
+**/
 TrabajadorView::TrabajadorView(Company *emp, QWidget *parent)
         : FichaBf(emp, parent) {
     _depura("TrabajadorView::TrabajadorView", 0);
@@ -59,12 +64,19 @@ TrabajadorView::TrabajadorView(Company *emp, QWidget *parent)
 }
 
 
+///
+/**
+**/
 void TrabajadorView::imprimir() {
     _depura("TrabajadorView::imprimir", 0);
+    _depura("END TrabajadorView::imprimir", 0);
 }
 
 /// Carga el query de la base de datos y carga el qlistview.
+/**
+**/
 void TrabajadorView::pintar() {
+    _depura("TrabajadorView::pintar", 0);
     mui_lista->clear();
     if (m_cursortrabajadores != NULL) {
         delete m_cursortrabajadores;
@@ -77,9 +89,13 @@ void TrabajadorView::pintar() {
 
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
+    _depura("END TrabajadorView::pintar", 0);
 }
 
 
+///
+/**
+**/
 TrabajadorView::~TrabajadorView() {
     _depura("TrabajadorView::~TrabajadorView", 0);
     if (m_cursortrabajadores != NULL) {
@@ -89,6 +105,11 @@ TrabajadorView::~TrabajadorView() {
 }
 
 
+///
+/**
+\param cur
+\return
+**/
 void TrabajadorView::on_mui_lista_currentItemChanged(QListWidgetItem *cur, QListWidgetItem *) {
     _depura( "on_mui_lista_currentItemChanged", 0);
     int row = mui_lista->row(cur);
@@ -119,6 +140,10 @@ void TrabajadorView::on_mui_lista_currentItemChanged(QListWidgetItem *cur, QList
 }
 
 
+///
+/**
+\return
+**/
 void TrabajadorView::on_mui_guardar_clicked() {
     _depura("TrabajadorView::on_mui_guardar_clicked", 0);
     /// Disparamos los plugins.
@@ -165,6 +190,10 @@ void TrabajadorView::on_mui_guardar_clicked() {
 }
 
 
+///
+/**
+\return
+**/
 bool TrabajadorView::trataModificado() {
     _depura( "TrabajadorView::trataModificado", 0);
     /// Si se ha modificado el contenido advertimos y guardamos.
@@ -183,6 +212,9 @@ bool TrabajadorView::trataModificado() {
 
 /// SLOT que responde a la pulsacion del boton de nuevo tipo de iva.
 /// Inserta en la tabla de ivas
+/**
+\return
+**/
 void TrabajadorView::on_mui_nuevo_clicked() {
     _depura("TrabajadorView::on_mui_nuevo_clicked", 0);
     /// Si se ha modificado el contenido advertimos y guardamos.
@@ -205,6 +237,9 @@ void TrabajadorView::on_mui_nuevo_clicked() {
 
 /// SLOT que responde a la pulsacion del boton de borrar la familia que se esta editando.
 /// Lo que hace es que se hace un update de todos los campos.
+/**
+\return
+**/
 void TrabajadorView::on_mui_borrar_clicked() {
     _depura("TrabajadorView::on_mui_borrar_clicked", 0);
     trataModificado();
@@ -221,6 +256,10 @@ void TrabajadorView::on_mui_borrar_clicked() {
 }
 
 
+///
+/**
+\return
+**/
 void TrabajadorView::on_mui_imagen_clicked() {
     _depura("TrabajadorView::on_mui_imagen_clicked", 0);
     m_archivoimagen = QFileDialog::getOpenFileName(this,
@@ -231,8 +270,15 @@ void TrabajadorView::on_mui_imagen_clicked() {
     _depura("END TrabajadorView::on_mui_imagen_clicked", 0);
 }
 
+
+///
+/**
+\return
+**/
 QString TrabajadorView::idtrabajador() {
+    _depura("TrabajadorView::idtrabajador", 0);
 	return mdb_idtrabajador;
+    _depura("END TrabajadorView::idtrabajador", 0);
 }
 
 

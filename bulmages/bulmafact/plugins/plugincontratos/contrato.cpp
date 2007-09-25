@@ -29,6 +29,10 @@
 
 /** PReparamos la clase DBRecord para funcionar con la tabla contrato.
 */
+/**
+\param comp
+\param parent
+**/
 Contrato::Contrato(Company *comp, QWidget *parent) : FichaBf(comp, parent) {
     _depura("Contrato::Contrato", 0);
     setTitleName(tr("Contrato"));
@@ -49,6 +53,8 @@ Contrato::Contrato(Company *comp, QWidget *parent) : FichaBf(comp, parent) {
 
 /** No requiere de acciones especiales en el destructor.
 */
+/**
+**/
 Contrato::~Contrato() {
     _depura("Contrato::~Contrato", 0);
     _depura("END Contrato::~Contrato", 0);
@@ -61,6 +67,9 @@ Contrato::~Contrato() {
     Sit odo va bien devuelve 0, sino devuelve -1.
 */
 /// \TODO: Deberia contener un bloque try{} catch{}
+/**
+\return
+**/
 int Contrato::borrar() {
     _depura("Contrato::borrar", 0);
     if (DBvalue("idcontrato") != "") {
@@ -84,6 +93,8 @@ int Contrato::borrar() {
 
 /** Vacia la memoria que pudiera tener DBRecord
 */
+/**
+**/
 void Contrato::vaciaContrato() {
     _depura("Contrato::vaciaContrato", 0);
     DBclear();
@@ -95,6 +106,8 @@ void Contrato::vaciaContrato() {
     Para ello utiliza los metodos sobrecargables pintaXXX de esta forma se podria generar una segunda interficie reutilizando esta clase.
 */
 /// \TODO: Deberia llamarse pintar.
+/**
+**/
 void Contrato::pintar() {
     _depura("pintaContrato", 0);
     pintaidcliente(DBvalue("idcliente"));
@@ -119,6 +132,10 @@ void Contrato::pintar() {
     Si todo va bien devuelve 0.
 */
 /// \TODO: Deberia utilizar un bloque try{} catch{}
+/**
+\param idbudget
+\return
+**/
 int Contrato::cargar(QString idbudget) {
     _depura("Contrato::cargar", 0);
     inicialize();
@@ -143,6 +160,9 @@ int Contrato::cargar(QString idbudget) {
     Si todo va bien devuelve 0
     Si se produce un error genera una excepcion -1
 */
+/**
+\return
+**/
 int Contrato::guardar() {
     _depura("Contrato::guardar", 0);
     QString fecha;
@@ -171,6 +191,9 @@ int Contrato::guardar() {
 
 /** Devuelve el puntero a la clase company con la que esta trabajando la contrato
 **/
+/**
+\return
+**/
 Company * Contrato::_company() {
 	_depura("Contrato::_company", 0);
 	_depura("END Contrato::_company", 0);
@@ -178,24 +201,98 @@ Company * Contrato::_company() {
 }
 
 
-
-
-
-
 /** Funciones para ser derivadas en las clases de pintado
 **/
-    void Contrato::pintaidcliente(QString) {}
-    void Contrato::pintarefcontrato(QString) {}
-    void Contrato::pintafincontrato(QString ) {}
-    void Contrato::pintadescontrato(QString) {}
-    void Contrato::pintanomcontrato(QString) {}
-    void Contrato::pintaffincontrato(QString) {}
-    void Contrato::pintaloccontrato(QString) {}
-    void Contrato::pintaperiodicidadcontrato(QString) {}
-    
-    void Contrato::inicialize() {}
-    
+
+
+///
+/**
+**/
+    void Contrato::pintaidcliente(QString) {
+    _depura("Contrato::pintaidcliente", 0);
+    _depura("END Contrato::pintaidcliente", 0);
+}
+
+
+///
+/**
+**/
+    void Contrato::pintarefcontrato(QString) {
+    _depura("Contrato::pintarefcontrato", 0);
+    _depura("Contrato::pintarefcontrato", 0);
+}
+
+
+///
+/**
+**/
+    void Contrato::pintafincontrato(QString ) {
+    _depura("Contrato::pintafincontrato", 0);
+    _depura("END Contrato::pintafincontrato", 0);
+}
+
+
+///
+/**
+**/
+    void Contrato::pintadescontrato(QString) {
+    _depura("Contrato::pintadescontrato", 0);
+    _depura("END Contrato::pintadescontrato", 0);
+}
+
+
+///
+/**
+**/
+    void Contrato::pintanomcontrato(QString) {
+    _depura("Contrato::pintanomcontrato", 0);
+    _depura("END Contrato::pintanomcontrato", 0);
+}
+
+
+///
+/**
+**/
+    void Contrato::pintaffincontrato(QString) {
+    _depura("Contrato::pintaffincontrato", 0);
+    _depura("END Contrato::pintaffincontrato", 0);
+}
+
+
+///
+/**
+**/
+    void Contrato::pintaloccontrato(QString) {
+    _depura("Contrato::pintaloccontrato", 0);
+    _depura("END Contrato::pintaloccontrato", 0);
+}
+
+
+///
+/**
+**/
+    void Contrato::pintaperiodicidadcontrato(QString) {
+    _depura("Contrato::pintaperiodicidadcontrato", 0);
+    _depura("END Contrato::pintaperiodicidadcontrato", 0);
+}
+
+
+///
+/**
+**/
+    void Contrato::inicialize() {
+    _depura("Contrato::inicialize", 0);
+    _depura("END Contrato::inicialize", 0);
+}
+
+
+///
+/**
+\return
+**/
     QString Contrato::calculateValues() {
+    _depura("Contrato::calculateValues", 0);
+    _depura("END Contrato::calculateValues", 0);
         return "";
     }
 

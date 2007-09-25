@@ -37,54 +37,103 @@
 //             InventariosView
 // ==============================================
 
+
+///
+/**
+\param comp
+**/
 void InventariosView::setcompany(Company *comp) {
+    _depura("InventariosView::setcompany", 0);
     companyact = comp;
     mui_listado->setEmpresaBase(comp);
+    _depura("END InventariosView::setcompany", 0);
 }
 
 
+///
+/**
+**/
 void InventariosView::on_mui_listado_itemDoubleClicked(QTableWidgetItem *) {
+    _depura("InventariosView::on_mui_listado_itemDoubleClicked", 0);
     on_mui_editar_clicked();
+    _depura("END InventariosView::on_mui_listado_itemDoubleClicked", 0);
 }
 
+
+///
+/**
+\return
+**/
 void InventariosView::on_mui_crear_clicked() {
+            _depura("InventariosView::on_mui_crear_clicked", 0);
             InventarioView *bud = new InventarioView(companyact, 0);
             if (bud->cargar("0"))
                 return;
             companyact->m_pWorkspace->addWindow(bud);
             bud->show();
             bud->mui_nominventario->setFocus();
+            _depura("END InventariosView::on_mui_crear_clicked", 0);
 }
 
+
+///
+/**
+**/
 void InventariosView::on_mui_listado_itemDoubleClicked() {
+    _depura("InventariosView::on_mui_listado_itemDoubleClicked", 0);
     on_mui_editar_clicked();
+    _depura("END InventariosView::on_mui_listado_itemDoubleClicked", 0);
 }
 
+
+///
+/**
+\param parent
+\param flag
+**/
 InventariosView::InventariosView(QWidget *parent, Qt::WFlags flag)
         : Ficha(parent, flag) {
+    _depura("InventariosView::InventariosView", 0);
     setupUi(this);
     companyact = NULL;
     meteWindow(windowTitle(), this);
+    _depura("END InventariosView::InventariosView", 0);
 }
 
 
+///
+/**
+\param comp
+\param parent
+**/
 InventariosView::InventariosView(Company *comp, QWidget *parent)
         : Ficha(parent) {
+    _depura("InventariosView::InventariosView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     companyact = comp;
     mui_listado->setEmpresaBase(comp);
     mui_listado->cargar();
     meteWindow(windowTitle(), this);
+    _depura("END InventariosView::InventariosView", 0);
 }
 
 
-InventariosView::~InventariosView() {}
+///
+/**
+**/
+InventariosView::~InventariosView() {
+    _depura("InventariosView::~InventariosView", 0);
+    _depura("END InventariosView::~InventariosView", 0);
+}
 
 
-
-
+///
+/**
+\return
+**/
 void InventariosView::on_mui_editar_clicked() {
+    _depura("InventariosView::on_mui_editar_clicked", 0);
     int a = mui_listado->currentRow();
     if (a < 0) {
         mensajeInfo(tr("Tiene que seleccionar un inventario"));
@@ -100,10 +149,16 @@ void InventariosView::on_mui_editar_clicked() {
             bud->mui_nominventario->setFocus();
         } // end if
     } // end if
+    _depura("END InventariosView::on_mui_editar_clicked", 0);
 }
 
 
+///
+/**
+\return
+**/
 void InventariosView::on_mui_borrar2_clicked() {
+    _depura("InventariosView::on_mui_borrar2_clicked", 0);
     int a = mui_listado->currentRow();
     if (a < 0) {
         mensajeInfo(tr("Tiene que seleccionar un inventario"));
@@ -119,8 +174,13 @@ void InventariosView::on_mui_borrar2_clicked() {
             mui_listado->cargar();
         } // end if
     } // end if
+    _depura("END InventariosView::on_mui_borrar2_clicked", 0);
 }
 
+
+///
+/**
+**/
 void InventariosView::on_mui_imprimir_clicked() {
 	_depura("InventariosView::on_mui_imprimir_clicked", 0);
 
@@ -209,6 +269,10 @@ void InventariosView::on_mui_imprimir_clicked() {
 ///                    SUBFORMULARIO
 /// =============================================================================
 
+
+///
+/**
+**/
 void InventariosSubForm::cargar() {
     _depura("InventariosSubForm::cargar", 0);
     QString SQLQuery = "SELECT * FROM inventario";
@@ -216,12 +280,19 @@ void InventariosSubForm::cargar() {
     _depura("END InventariosSubForm::cargar", 0);
 }
 
+
+///
+/**
+\param parent
+**/
 InventariosSubForm::InventariosSubForm(QWidget *parent) : SubForm2Bf(parent) {
+    _depura("InventariosSubForm::InventariosSubForm", 0);
     setDBTableName("inventario");
     setDBCampoId("idinventario");
     addSHeader("idinventario", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoView, tr("Id inventario"));
     addSHeader("nominventario", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre del inventario"));
     addSHeader("fechainventario", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Fecha del inventario"));
     setinsercion(FALSE);
+    _depura("END InventariosSubForm::InventariosSubForm", 0);
 }
 

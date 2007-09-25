@@ -39,12 +39,30 @@
 #include "facturasplist.h"
 #include "efqtoolbutton_importar.h"
 
-efacturabf::efacturabf() {}
 
-efacturabf::~efacturabf() {}
+///
+/**
+**/
+efacturabf::efacturabf() {
+    _depura("efacturabf::efacturabf", 0);
+    _depura("END efacturabf::efacturabf", 0);
+}
+
+
+///
+/**
+**/
+efacturabf::~efacturabf() {
+    _depura("efacturabf::~efacturabf", 0);
+    _depura("efacturabf::~efacturabf", 0);
+}
+
 
 /// Esto es lo que se activa al hacer click sobre el menu
+/**
+**/
 void efacturabf::elslot() {
+        _depura("efacturabf::elslot", 0);
 	EFactura *ef = new EFactura((Company *)empresaBase());
 	ef->show();
 	
@@ -60,14 +78,27 @@ void efacturabf::elslot() {
 //                          "Mensaje.",
 //                          QMessageBox::Ok,
 //                          QMessageBox::Cancel);
+        _depura("END efacturabf::elslot", 0);
 }
 
+
+///
+/**
+**/
 void efacturabf::elslot1() {
+        _depura("efacturabf::elslot1", 0);
 	EFacturaRecepcion *efr = new EFacturaRecepcion((Company *)empresaBase());
 	efr->show();
+        _depura("END efacturabf::elslot1", 0);
 }
 
+
+///
+/**
+\param bges
+**/
 void efacturabf::inicializa(Bulmafact *bges) {
+        _depura("efacturabf::inicializa", 0);
 	/// Creamos la conexion de la base de datos
 	setEmpresaBase(bges->getcompany());
 	
@@ -91,9 +122,14 @@ void efacturabf::inicializa(Bulmafact *bges) {
 // 
 // 	/// Anyadimos la nueva opcion al menu principal del programa.
 // 	bges->menuBar()->addMenu(pPluginMenu);
+        _depura("END efacturabf::inicializa", 0);
 }
 
 
+///
+/**
+\param bges
+**/
 void entryPoint(Bulmafact *bges) {
 	_depura("Estoy dentro del plugin de e-factura", 0);
 	
@@ -106,8 +142,12 @@ void entryPoint(Bulmafact *bges) {
 	_depura("Acaba el entry point de e-factura", 0);
 }
 
-/// Dibuja el boton de exportar en el formulario de factura a cliente
 
+/// Dibuja el boton de exportar en el formulario de factura a cliente
+/**
+\param fac
+\return
+**/
 int FacturaView_FacturaView(FacturaView *fac) {
 	_depura("FacturaView_FacturaView", 0);
 	
@@ -134,8 +174,12 @@ int FacturaView_FacturaView(FacturaView *fac) {
 	return 0;
 }
 
-/// Dibuja el boton de importar en el listado de facturas de proveedor
 
+/// Dibuja el boton de importar en el listado de facturas de proveedor
+/**
+\param listfac
+\return
+**/
 int FacturasProveedorList_FacturasProveedorList_Post(FacturasProveedorList *listfac) {
 	_depura("FacturasProveedorList_FacturasProveedorList_Post", 0);
 	

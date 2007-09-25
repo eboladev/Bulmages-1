@@ -28,39 +28,86 @@
 #include "impqtoolbutton.h"
 
 
+///
+/**
+\return
+**/
 int entryPoint(Bulmafact *) {
     _depura("Estoy dentro del plugin de impresiones multiples", 0);
     return 0;
 }
 
+
+///
+/**
+\return
+**/
 int PedidosClienteListSubform_PedidosClienteListSubform(PedidosClienteListSubform *l) {
+    _depura("PedidosClienteListSubform_PedidosClienteListSubform", 0);
     l->addSHeader("selector", DBCampo::DBboolean, DBCampo::DBNoSave | DBCampo::DBNoLoad, SHeader::DBNone |SHeader::DBNoWrite, "selector");
+    _depura("END PedidosClienteListSubform_PedidosClienteListSubform", 0);
     return 0;
 }
 
+
+///
+/**
+\return
+**/
 int AlbaranClienteListSubform_AlbaranClienteListSubform(AlbaranClienteListSubform *l) {
+    _depura("AlbaranClienteListSubform_AlbaranClienteListSubform", 0);
     if (!l->existsHeader( "selector")) {
         l->addSHeader("selector", DBCampo::DBboolean, DBCampo::DBNoSave | DBCampo::DBNoLoad, SHeader::DBNone |SHeader::DBNoWrite, "selector");
     } // end if
+    _depura("END AlbaranClienteListSubform_AlbaranClienteListSubform", 0);
     return 0;
 }
 
+
+///
+/**
+\param l
+\return
+**/
 int FacturasListSubform_FacturasListSubform(FacturasListSubform *l) {
+    _depura("FacturasListSubform_FacturasListSubform", 0);
     l->addSHeader("selector", DBCampo::DBboolean, DBCampo::DBNoSave | DBCampo::DBNoLoad, SHeader::DBNone | SHeader::DBNoWrite, "selector");
+    _depura("END FacturasListSubform_FacturasListSubform", 0);
     return 0;
 }
 
+
+///
+/**
+\param l
+\return
+**/
 int PresupuestoListSubForm_PresupuestoListSubForm(PresupuestoListSubForm *l) {
+    _depura("PresupuestoListSubForm_PresupuestoListSubForm", 0);
     l->addSHeader("selector", DBCampo::DBboolean, DBCampo::DBNoSave | DBCampo::DBNoLoad, SHeader::DBNone | SHeader::DBNoWrite, "selector");
+    _depura("END PresupuestoListSubForm_PresupuestoListSubForm", 0);
     return 0;
 }
 
+
+///
+/**
+\param l
+\return
+**/
 int CobrosListSubForm_CobrosListSubForm(CobrosListSubForm *l) {
+    _depura("CobrosListSubForm_CobrosListSubForm", 0);
     l->addSHeader("selector", DBCampo::DBboolean, DBCampo::DBNoSave | DBCampo::DBNoLoad, SHeader::DBNone | SHeader::DBNoWrite, "selector");
+    _depura("CobrosListSubForm_CobrosListSubForm", 0);
     return 0;
 }
 
 
+///
+/**
+\param l
+\return
+**/
 int CobrosList_CobrosList(CobrosList *l) {
     _depura("CobrosList_CobrosList", 0);
 
@@ -83,6 +130,12 @@ int CobrosList_CobrosList(CobrosList *l) {
     return 0;
 }
 
+
+///
+/**
+\param l
+\return
+**/
 int PresupuestoList_PresupuestoList(PresupuestoList *l) {
     _depura("PresupuestoList_PresupuestoList", 0);
 
@@ -105,6 +158,12 @@ int PresupuestoList_PresupuestoList(PresupuestoList *l) {
     return 0;
 }
 
+
+///
+/**
+\param l
+\return
+**/
 int PedidosClienteList_PedidosClienteList(PedidosClienteList *l) {
     _depura("PedidosClienteList_PedidosClienteList", 0);
 
@@ -128,6 +187,12 @@ int PedidosClienteList_PedidosClienteList(PedidosClienteList *l) {
     return 0;
 }
 
+
+///
+/**
+\param l
+\return
+**/
 int AlbaranClienteList_AlbaranClienteList(AlbaranClienteList *l) {
     _depura("PedidosClienteList_PedidosClienteList", 0);
 
@@ -151,6 +216,11 @@ int AlbaranClienteList_AlbaranClienteList(AlbaranClienteList *l) {
 }
 
 
+///
+/**
+\param l
+\return
+**/
 int FacturasList_FacturasList(FacturasList *l) {
     _depura("FacturasList_FacturasList", 0);
 

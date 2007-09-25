@@ -26,6 +26,9 @@
 
 
 /// Construye la cabecera del asiento (nombra cada columna de la tabla)
+/**
+\param parent
+**/
 ListLinAsiento1View::ListLinAsiento1View(QWidget *parent, const char *)
         : SubForm2Bc(parent) {
     _depura("ListLinAsiento1View::ListLinAsiento1View", 0);
@@ -63,6 +66,8 @@ ListLinAsiento1View::ListLinAsiento1View(QWidget *parent, const char *)
 
 
 /// Destructor de la clase. No hace nada especial.
+/**
+**/
 ListLinAsiento1View::~ListLinAsiento1View() {
     _depura("ListLinAsiento1View::~ListLinAsiento1View", 0);
     _depura("END ListLinAsiento1View::~ListLinAsiento1View", 0);
@@ -70,6 +75,9 @@ ListLinAsiento1View::~ListLinAsiento1View() {
 
 
 /// Slot que trata la solicitud de pintar el menu contextual sobre el subformulario.
+/**
+\param menu
+**/
 void ListLinAsiento1View::s_pintaMenu(QMenu *menu) {
     _depura("ListLinAsiento1View::s_pintaMenu", 0);
     menu->addSeparator();
@@ -86,6 +94,10 @@ void ListLinAsiento1View::s_pintaMenu(QMenu *menu) {
 }
 
 /// Slot que trata la activacion de un elemento en el menu contextual.
+/**
+\param action
+/return
+**/
 void ListLinAsiento1View::s_trataMenu(QAction *action) {
     _depura("ListLinAsiento1View::s_trataMenu", 0);
     if (!action) return;
@@ -107,6 +119,9 @@ void ListLinAsiento1View::s_trataMenu(QAction *action) {
 }
 
 /// Carga lineas de asiento (apuntes).
+/**
+\param idasiento
+**/
 void ListLinAsiento1View::cargar(QString idasiento) {
     _depura("AsientoSubForm::cargar", 0);
     QString SQLQuery = "SELECT * FROM borrador ";
@@ -122,6 +137,10 @@ void ListLinAsiento1View::cargar(QString idasiento) {
 
 /// Devuelve el DEBE de un asiento.
 /// Si el asiento no existe devuelve 0
+/**
+\param idasiento
+\return
+**/
 Fixed ListLinAsiento1View::totaldebe(QString idasiento) {
     _depura("ListLinAsiento1View::totaldebe", 0, idasiento);
     if (idasiento == "") return Fixed("0");
@@ -136,6 +155,10 @@ Fixed ListLinAsiento1View::totaldebe(QString idasiento) {
 
 
 /// Devuelve el HABER de un asiento.
+/**
+\param idasiento
+\return
+**/
 Fixed ListLinAsiento1View::totalhaber(QString idasiento) {
     _depura("ListLinAsiento1View::totalhaber", 0, idasiento);
     if (idasiento == "") return Fixed("0");

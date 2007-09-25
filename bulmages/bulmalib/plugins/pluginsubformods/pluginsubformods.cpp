@@ -33,6 +33,10 @@
 #include "funcaux.h"
 
 
+///
+/**
+\return
+**/
 int entryPoint(QApplication *) {
     _depura("Punto de Entrada del plugin de Subformods\n", 0);
         /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
@@ -50,25 +54,51 @@ int entryPoint(QApplication *) {
 }
 
 
+///
+/**
+\param parent
+**/
 myplugsubformods::myplugsubformods(SubForm3 *parent) : QObject(parent) {
+    _depura("myplugsubformods::myplugsubformods", 0);
+    _depura("END myplugsubformods::myplugsubformods", 0);
 }
 
-
+///
+/**
+**/
 myplugsubformods::~myplugsubformods(){
+    _depura("myplugsubformods::~myplugsubformods", 0);
+    _depura("END myplugsubformods::~myplugsubformods", 0);
 }
 
+
+///
+/**
+\param menu
+**/
 void myplugsubformods::s_pintaMenu(QMenu *menu) {
+    _depura("myplugsubformods::s_pintaMenu", 0);
     menu->addSeparator();
-    menu->addAction(tr("Exportar a hoja de calculo"));
+    _depura("END myplugsubformods::s_pintaMenu", 0);
 }
 
+
+///
+/**
+\param action
+**/
 void myplugsubformods::s_trataMenu(QAction *action) {
     _depura("myplugsubformods::s_trataMenu", 0);
     if (action->text() == tr("Exportar a hoja de calculo")) {
 	sacaods();
     } // end if
+    _depura("END myplugsubformods::s_trataMenu", 0);
 }
 
+
+///
+/**
+**/
 void myplugsubformods::sacaods() {
     _depura("myplugsubformods::sacaods", 0);
 
@@ -189,10 +219,17 @@ void myplugsubformods::sacaods() {
 }
 
 
+///
+/**
+\param sub
+\return
+**/
 int SubForm3_SubForm3_Post(SubForm3 *sub) {
+    _depura("SubForm3_SubForm3_Post", 0);
    myplugsubformods *subformods = new myplugsubformods(sub);
    sub->QObject::connect(sub, SIGNAL(pintaMenu(QMenu *)), subformods, SLOT(s_pintaMenu(QMenu *)));
    sub->QObject::connect(sub, SIGNAL(trataMenu(QAction *)), subformods, SLOT(s_trataMenu(QAction *)));
+    _depura("END SubForm3_SubForm3_Post", 0);
    return 0;
 }
 

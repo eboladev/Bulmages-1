@@ -40,6 +40,14 @@
 #include "dbrecord.h"
 
 
+///
+/**
+\param pres
+\param ped
+\param alb
+\param fac
+\param parent
+**/
 EmailQToolButton::EmailQToolButton(PresupuestoView *pres, PedidoClienteView *ped, AlbaranClienteView *alb, FacturaView *fac , QWidget *parent) : QToolButton(parent) {
     _depura("EmailQToolButton::EmailQToolButton", 0);
     m_presupuestoView = pres;
@@ -50,8 +58,19 @@ EmailQToolButton::EmailQToolButton(PresupuestoView *pres, PedidoClienteView *ped
     _depura("END EmailQToolButton::EmailQToolButton", 0);
 }
 
-EmailQToolButton::~EmailQToolButton() {}
 
+///
+/**
+**/
+EmailQToolButton::~EmailQToolButton() {
+    _depura("EmailQToolButton::~EmailQToolButton", 0);
+    _depura("END EmailQToolButton::~EmailQToolButton", 0);
+}
+
+
+///
+/**
+**/
 void EmailQToolButton::setBoton() {
     _depura("EmailQToolButton::setBoton", 0);
     connect(this, SIGNAL(clicked()), this, SLOT(click()));
@@ -65,6 +84,9 @@ void EmailQToolButton::setBoton() {
 }
 
 
+///
+/**
+**/
 void EmailQToolButton::click() {
     _depura("ImpQToolButton::click", 0);
 

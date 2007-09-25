@@ -44,6 +44,11 @@
 #include "images/cgastos.xpm"
 */
 
+
+///
+/**
+\param parent
+**/
 SubForm2Bc::SubForm2Bc(QWidget *parent) : SubForm3(parent) {
     _depura("SubForm2Bc::SubForm2Bc", 0);
     m_delegate = new QSubForm2BcDelegate(this);
@@ -52,6 +57,9 @@ SubForm2Bc::SubForm2Bc(QWidget *parent) : SubForm3(parent) {
 }
 
 
+///
+/**
+**/
 SubForm2Bc::~SubForm2Bc() {
     _depura("SubForm2Bc::~SubForm2Bc", 0);
     delete m_delegate;
@@ -59,6 +67,10 @@ SubForm2Bc::~SubForm2Bc() {
 }
 
 
+///
+/**
+\param c
+**/
 void SubForm2Bc::setEmpresaBase(EmpresaBase *c) {
     _depura("SubForm2Bc::setEmpresaBase", 0);
     PEmpresaBase::setEmpresaBase(c);
@@ -67,7 +79,10 @@ void SubForm2Bc::setEmpresaBase(EmpresaBase *c) {
 }
 
 
-
+///
+/**
+\return
+**/
 Empresa *SubForm2Bc::empresaBase() {
     _depura("SubForm2Bc::empresaBase", 0);
     _depura("END SubForm2Bc::empresaBase", 0);
@@ -75,7 +90,12 @@ Empresa *SubForm2Bc::empresaBase() {
 }
 
 
-
+///
+/**
+\param row
+\param col
+\return
+**/
 void SubForm2Bc::on_mui_list_pressedAsterisk(int row, int col) {
     _depura ("SubForm2Bc::on_mui_list_pressedAsterisk", 0);
 
@@ -132,6 +152,12 @@ void SubForm2Bc::on_mui_list_pressedAsterisk(int row, int col) {
 }
 
 
+///
+/**
+\param row
+\param col1
+\return
+**/
 void SubForm2Bc::on_mui_list_pressedSlash(int row, int col) {
     _depura("SubForm2Bc::on_mui_list_pressedSlash", 0);
     SDBCampo *camp = (SDBCampo *) item(row, col);
@@ -144,6 +170,12 @@ void SubForm2Bc::on_mui_list_pressedSlash(int row, int col) {
 }
 
 
+///
+/**
+\param row
+\param col
+\return
+**/
 void SubForm2Bc::on_mui_list_cellChanged(int row, int col) {
     _depura("SubForm2Bc::on_mui_list_cellChanged", 0, "Row: "+ QString::number(row) + " Col: "+QString::number(col));
 
@@ -229,6 +261,8 @@ void SubForm2Bc::on_mui_list_cellChanged(int row, int col) {
 
 
 /// Muestra la ventana de asiento.
+/**
+**/
 void SubForm2Bc::boton_asiento() {
     _depura("SubForm2Bc::boton_asiento", 0);
     Empresa *companyact = (Empresa *) empresaBase();
@@ -245,6 +279,9 @@ void SubForm2Bc::boton_asiento() {
 /// 0 -> del d&iacute;a actual
 /// 1 -> del mes actual
 /// 2 -> del a&ntilde;o actual
+/**
+\param tipo
+**/
 void SubForm2Bc::boton_extracto1(int tipo) {
     _depura("SubForm2Bc::boton_extracto1", 0);
     Empresa *companyact = (Empresa *) empresaBase();
@@ -279,6 +316,9 @@ void SubForm2Bc::boton_extracto1(int tipo) {
 /// 0 -> del d&iacute;a actual
 /// 1 -> del mes actual
 /// 2 -> del a&ntilde;o actual
+/**
+\param tipo
+**/
 void SubForm2Bc::boton_diario1(int tipo) {
     _depura("SubForm2Bc::boton_diario1", 0);
     Empresa *companyact = (Empresa *) empresaBase();
@@ -312,6 +352,9 @@ void SubForm2Bc::boton_diario1(int tipo) {
 /// 0 -> del per&iacute;odo actual.
 /// 1 -> del mes actual mirado a partir de la fecha de inicio.
 /// 2 -> del a&ntilde;o actual mirado a partir de la fecha de inicio.
+/**
+\param tipo
+**/
 void SubForm2Bc::boton_balance1(int tipo) {
     _depura("SubForm2Bc::boton_balance1", 0);
     Empresa *companyact = (Empresa *) empresaBase();
@@ -345,6 +388,9 @@ void SubForm2Bc::boton_balance1(int tipo) {
 
 /// Se ha dado la orden de crear el menu contextual. Y esta funcion funciona con
 /// Un sistema en cascada en lugar del tipico signal-slot
+/**
+\param menu
+**/
 void SubForm2Bc::creaMenu(QMenu *menu) {
     _depura("SubForm2Bc::pintaMenu", 0);
     menu->addAction(tr("Submenu de contabilidad"));
@@ -353,6 +399,9 @@ void SubForm2Bc::creaMenu(QMenu *menu) {
 }
 
 
+///
+/**
+**/
 void SubForm2Bc::procesaMenu(QAction *) {
     _depura("SubForm2Bc::procesaMenu", 0);
     _depura("END SubForm2Bc::procesaMenu", 0);
@@ -362,6 +411,10 @@ void SubForm2Bc::procesaMenu(QAction *) {
 /// ===============================================================
 ///  Tratamientos del Item Delegate
 /// ===============================================================
+///
+/**
+\param parent
+**/
 QSubForm2BcDelegate::QSubForm2BcDelegate(QObject *parent = 0) : QItemDelegate(parent), PEmpresaBase() {
     _depura("QSubForm2BcDelegate::QSubForm2BcDelegate", 0);
     m_subform = (SubForm2Bc *) parent;
@@ -370,12 +423,20 @@ QSubForm2BcDelegate::QSubForm2BcDelegate(QObject *parent = 0) : QItemDelegate(pa
 }
 
 
+///
+/**
+**/
 QSubForm2BcDelegate::~QSubForm2BcDelegate() {
     _depura("QSubForm2BcDelegate::~QSubForm2BcDelegate", 0);
     _depura("END QSubForm2BcDelegate::~QSubForm2BcDelegate", 0);
 }
 
 
+///
+/**
+\param parent
+\param index
+**/
 QWidget *QSubForm2BcDelegate::createEditor(QWidget *parent, const QStyleOptionViewItem &, const QModelIndex &index) const {
     _depura("QSubForm2BcDelegate::createEditor", 0);
     SHeader *linea;
@@ -421,6 +482,13 @@ QWidget *QSubForm2BcDelegate::createEditor(QWidget *parent, const QStyleOptionVi
 }
 
 
+///
+/**
+\param editor
+\param model
+\param index
+\return
+**/
 void QSubForm2BcDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const {
     _depura("QSubForm2BcDelegate::setModelData", 0);
     _depura("QSubForm2BcDelegate::setModelData", 0, "CurrentColumn: " + QString::number(index.column()));
@@ -486,6 +554,11 @@ void QSubForm2BcDelegate::setModelData(QWidget *editor, QAbstractItemModel *mode
 }
 
 
+///
+/**
+\param editor
+\param index
+**/
 void QSubForm2BcDelegate::setEditorData(QWidget *editor, const QModelIndex &index) const {
     _depura("QSubForm2BcDelegate::setEditorData", 0);
     _depura("QSubForm2BcDelegate::setEditorData", 0, "CurrentColumn: " + QString::number(index.column()));
@@ -541,6 +614,12 @@ void QSubForm2BcDelegate::setEditorData(QWidget *editor, const QModelIndex &inde
 }
 
 
+///
+/**
+\param obj
+\param event
+\return
+**/
 bool QSubForm2BcDelegate::eventFilter(QObject *obj, QEvent *event) {
     /// Si es un release de tecla se hace la funcionalidad especificada.
     if (event->type() == QEvent::KeyPress) {

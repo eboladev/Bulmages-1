@@ -23,12 +23,21 @@
 #include "funcaux.h"
 
 
+///
+/**
+\param comp
+**/
 ListIva::ListIva(Empresa *comp) {
+    _depura("ListIva::ListIva", 0);
     companyact = comp;
     mdb_idregistroiva = "";
+    _depura("END ListIva::ListIva", 0);
 }
 
 
+///
+/**
+**/
 ListIva::ListIva() {
     _depura("Constructor de ListIva\n", 0);
     companyact = NULL;
@@ -36,15 +45,32 @@ ListIva::ListIva() {
 }
 
 
-ListIva::~ListIva() {}
+///
+/**
+**/
+ListIva::~ListIva() {
+    _depura("ListIva::~ListIva", 0);
+    _depura("ListIva::~ListIva", 0);
+}
 
 
+///
+/**
+\param pos
+\return
+**/
 Iva *ListIva::linpos(int pos) {
+    _depura("ListIva::linpos", 0);
+    _depura("END ListIva::linpos", 0);
     return m_lista.at(pos);
 }
 
 
 /// Carga l&iacute;neas de presupuesto.
+/**
+\param idregistroiva
+\return
+**/
 int ListIva::cargaListIva(QString idregistroiva) {
     _depura("ListIva::cargaListIva\n", 0);
     int error = 0;
@@ -74,6 +100,9 @@ int ListIva::cargaListIva(QString idregistroiva) {
 }
 
 
+///
+/**
+**/
 void ListIva::guardaListIva() {
     _depura("ListIva::guardaListIva", 0);
     Iva *linea;
@@ -94,7 +123,12 @@ void ListIva::guardaListIva() {
 }
 
 
+///
+/**
+\return
+**/
 Fixed ListIva::calculabase() {
+    _depura("ListIva::calculabase", 0);
     Fixed base("0.00");
     Iva *linea;
 
@@ -107,12 +141,17 @@ Fixed ListIva::calculabase() {
         linea = m_ilista.next();
         base = base + Fixed(linea->baseiva());
     } // end while
-
+    _depura("END ListIva::calculabase", 0);
     return base;
 }
 
 
+///
+/**
+\return
+**/
 Fixed ListIva::calculaiva() {
+    _depura("ListIva::calculaiva", 0);
     Fixed iva("0.00");
     Iva *linea;
 
@@ -125,18 +164,28 @@ Fixed ListIva::calculaiva() {
         linea = m_ilista.next();
         iva = iva + Fixed(linea->ivaiva());
     } // end while
-
+    _depura("END ListIva::calculaiva", 0);
     return iva;
 }
 
 
+///
+/**
+**/
 void ListIva::vaciar() {
+    _depura("ListIva::vaciar", 0);
     mdb_idregistroiva = "";
     m_lista.clear();
+    _depura("END ListIva::vaciar", 0);
 }
 
 
+///
+/**
+\return
+**/
 void ListIva::borrar() {
+    _depura("ListIva::borrar", 0);
     if (mdb_idregistroiva != "")  {
         companyact->begin();
         int error = companyact->ejecuta("DELETE FROM iva WHERE idregistroiva = " + mdb_idregistroiva);
@@ -146,14 +195,21 @@ void ListIva::borrar() {
         } // end if
         companyact->commit();
     } // end if
+    _depura("END ListIva::borrar", 0);
 }
 
 
+///
+/**
+\param pos
+**/
 void ListIva::borraIva(int pos) {
+    _depura("ListIva::borraIva", 0);
     Iva *linea;
     linea = m_lista.at(pos);
     linea->borrar();
     m_lista.removeAt(pos);
     pintaListIva();
+    _depura("ListIva::borraIva", 0);
 }
 

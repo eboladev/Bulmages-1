@@ -39,6 +39,13 @@
 #include "images/cgastos.xpm"
 
 
+///
+/**
+\param emp
+\param parent
+\param flag
+\param editmode
+**/
 listcuentasview1::listcuentasview1(Empresa *emp, QWidget *parent, Qt::WFlags flag, edmode editmode)
         : FichaBc(emp, parent, flag), pgimportfiles(emp) {
     _depura("listcuentasview1::listcuentasview1", 0);
@@ -91,6 +98,9 @@ listcuentasview1::listcuentasview1(Empresa *emp, QWidget *parent, Qt::WFlags fla
 }
 
 
+///
+/**
+**/
 listcuentasview1::~listcuentasview1() {
     _depura("listcuentasview1::~listcuentasview1", 10);
     if (m_modo == EditMode) {
@@ -100,6 +110,10 @@ listcuentasview1::~listcuentasview1() {
 }
 
 
+///
+/**
+\return
+**/
 bool listcuentasview1::eventFilter(QObject *obj, QEvent *event) {
     _depura("listcuentasview1::eventFilter", 0);
     return QWidget::eventFilter(obj, event);
@@ -109,6 +123,9 @@ bool listcuentasview1::eventFilter(QObject *obj, QEvent *event) {
 /// Se encarga de hacer las inicializaciones de todo el formulario.
 /** Se llama as&iacute; y no desde el constructor porque as&iacute; la podemos llamar
     desde dentro de la misma clase, etc, etc, etc. */
+/**
+\return
+**/
 int listcuentasview1::inicializa() {
     _depura("listcuentasview1::inicializa", 0);
     QTreeWidgetItem *it;
@@ -175,6 +192,8 @@ int listcuentasview1::inicializa() {
 /// Inicializa la tabla de cuentas, que es la segunda pesta&ntilde;a de la pantalla.
 /** Dicha tabla s&oacute;lo muestra las cuentas hoja del plan contable, y deja los
     dem&aacute;s elementos ocultos. */
+/**
+**/
 void listcuentasview1::inicializatabla()  {
     _depura("listcuentasview1::inicializatabla", 0);
     QString query;
@@ -221,6 +240,9 @@ void listcuentasview1::inicializatabla()  {
 /** ListView del formulario. Lo que hace es actualizar los valores
     de la derecha del formulario con los valores almacenados en el
     item que se acaba de pulsar. */
+/**
+\param it
+**/
 void listcuentasview1::on_ListView1_itemClicked(QTreeWidgetItem *it, int) {
     _depura("listcuentasview1::on_ListView1_itemClicked", 0);
     QString idcuenta = it->text(cidcuenta);
@@ -240,6 +262,9 @@ void listcuentasview1::on_ListView1_itemClicked(QTreeWidgetItem *it, int) {
 /// La pantalla lleva implicito un buscador de cuentas, cuando cambia el contenido
 /** del QLineEdit del buscador se lanza esta funci&oacute;n que hace una b&uacute;squeda
     sobre el &aacute;rbol de cuentas. */
+/**
+\param string1
+**/
 void listcuentasview1::on_mui_busqueda_textChanged(const QString &string1) {
     _depura("listcuentasview1::on_mui_busqueda_textChanged", 0);
     QList<QTreeWidgetItem *> it;
@@ -266,6 +291,9 @@ void listcuentasview1::on_mui_busqueda_textChanged(const QString &string1) {
     detalle de cuenta para que se puedan modificar los par&aacute;metros
     y una vez terminado refresca el formulario para que aparezcan
     los datos actualizados. */
+/**
+\param it
+**/
 void listcuentasview1::on_ListView1_itemDoubleClicked(QTreeWidgetItem *it, int) {
     _depura("listcuentasview1::on_ListView1_doubleClicked", 0);
     on_ListView1_itemClicked(it, 0);
@@ -291,6 +319,9 @@ void listcuentasview1::on_ListView1_itemDoubleClicked(QTreeWidgetItem *it, int) 
     La inserci&oacute;n de la nueva se hace como cuenta hija de la cuenta actualmente
     seleccionada por lo que se hace que la ventana que se habre tenga el campo
     del padre de la cuenta rellenado. */
+/**
+\return
+**/
 void listcuentasview1::on_mui_crear_clicked()  {
     _depura("listcuentasview1::on_mui_crear_clicked", 0);
     QString cadena, codigo;
@@ -323,6 +354,9 @@ void listcuentasview1::on_mui_crear_clicked()  {
     La inserci&oacute;n de la nueva se hace como cuenta hija de la cuenta actualmente
     seleccionada por lo que se hace que la ventana que se habre tenga el campo
     del padre de la cuenta rellenado. */
+/**
+\return
+**/
 void listcuentasview1::on_mui_editar_clicked()  {
     _depura("listcuentasview1::on_mui_editar_clicked", 0);
     QTreeWidgetItem *it;
@@ -344,6 +378,9 @@ void listcuentasview1::on_mui_editar_clicked()  {
 
 
 /// Esta funci&oacute;n es el SLOT que se activa al pulsar sobre el boton borrar cuenta.
+/**
+\return
+**/
 void listcuentasview1::on_mui_borrar_clicked() {
     _depura("listcuentasview1::on_mui_borrar_clicked", 0);
     QTreeWidgetItem *it;
@@ -373,6 +410,9 @@ void listcuentasview1::on_mui_borrar_clicked() {
 /// Se ha hecho una doble click sobre la tabla de cuentas.
 /** Al hacer doble click sobre la tabla de cuentas, se encuentra el elemento an&aacute;logo
     en el &aacute;rbol contable y se simula una doble pulsaci&oacute;n sobre ese elemento. */
+/**
+\param row
+**/
 void listcuentasview1::on_tablacuentas_doubleClicked(int row, int, int, const QPoint &) {
     _depura("listcuentasview1::on_tablacuentas_doubleClicked", 0);
     QString idcuenta = tablacuentas->item(row, 2)->text();
@@ -403,6 +443,8 @@ void listcuentasview1::on_mui_busqueda_editFinished() {
     marcas sustituibles por un egrep, o un sedit que aun no est&aacute;n realizados.
     \todo Esta funci&oacute;n deber&iacute;a implementarse con una clase nueva de Qt
     que solicitase el rango de cuentas entre el que se quiere el listado. */
+/**
+**/
 void listcuentasview1::on_mui_imprimir_clicked() {
     _depura("listcuentasview1::on_mui_imprimir_clicked", 0);
     QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "listado.rml";
@@ -473,6 +515,8 @@ void listcuentasview1::on_mui_imprimir_clicked() {
 }
 
 
+/**
+**/
 void listcuentasview1::on_mui_exportar_clicked() {
     _depura("listcuentasview1::on_mui_exportar_clicked", 0);
     QFile filexml(QFileDialog::getSaveFileName(this,
@@ -489,6 +533,8 @@ void listcuentasview1::on_mui_exportar_clicked() {
 }
 
 
+/**
+**/
 void listcuentasview1::on_mui_importar_clicked() {
     _depura("listcuentasview1::on_mui_importar_clicked", 0);
     QFile filexml(QFileDialog::getOpenFileName(this,
@@ -506,32 +552,60 @@ void listcuentasview1::on_mui_importar_clicked() {
 }
 
 
+///
+/**
+**/
 void listcuentasview1::selectMode() {
+    _depura("listcuentasview1::selectMode", 0);
     m_modo = SelectMode;
+    _depura("listcuentasview1::selectMode", 0);
 }
 
 
+///
+/**
+**/
 void listcuentasview1::editMode() {
+    _depura("listcuentasview1::editMode", 0);
     m_modo = EditMode;
+    _depura("END listcuentasview1::editMode", 0);
 }
 
 
+///
+/**
+**/
 QString listcuentasview1::codcuenta() {
+    _depura("listcuentasview1::codcuenta", 0);
     return mdb_codcuenta;
+    _depura("listcuentasview1::codcuenta", 0);
 }
 
 
+///
+/**
+\return
+**/
 QString listcuentasview1::idcuenta() {
+    _depura("listcuentasview1::idcuenta", 0);
+    _depura("listcuentasview1::idcuenta", 0);
     return mdb_idcuenta;
 }
 
-
+///
+/**
+\return
+**/
 QString listcuentasview1::desccuenta() {
+    _depura("listcuentasview1::desccuenta", 0);
+    _depura("listcuentasview1::desccuenta", 0);
     return mdb_desccuenta;
 }
 
 
 void listcuentasview1::on_mui_actualizar_clicked() {
+    _depura("listcuentasview1::on_mui_actualizar_clicked", 0);
+    _depura("END listcuentasview1::on_mui_actualizar_clicked", 0);
     inicializa();
 }
 

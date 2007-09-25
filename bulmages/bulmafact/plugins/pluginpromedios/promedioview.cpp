@@ -26,6 +26,11 @@
 #include "plugins.h"
 
 
+///
+/**
+\param comp
+\param parent
+**/
 PromedioView::PromedioView(Company *comp, QWidget *parent)
         : QWidget(parent) ,dialogChanges(this), DBRecord(comp) {
     _depura("PromedioView::INIT_constructor()", 0);
@@ -36,6 +41,9 @@ PromedioView::PromedioView(Company *comp, QWidget *parent)
 }
 
 
+///
+/**
+**/
 PromedioView::~PromedioView() {
     _depura("PromedioView::INIT_destructor()\n", 0);
     m_companyact->sacaWindow(this);
@@ -48,6 +56,10 @@ PromedioView::~PromedioView() {
 /// Esta funci&oacute;n carga un art&iacute;culo de la base de datos y lo presenta.
 /// Si el par&aacute;metro pasado no es un identificador v&aacute;lido entonces se pone
 /// la ventana de edici&oacute;n en modo de inserci&oacute;n.
+/**
+\param idarticulo
+\return
+**/
 int PromedioView::cargar(QString idarticulo) {
     _depura("PromedioView::cargar(" + idarticulo + ")", 0);
 

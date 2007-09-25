@@ -41,6 +41,11 @@
 #include "busquedafecha.h"
 
 
+///
+/**
+\param emp
+\param parent
+**/
 DiarioView::DiarioView(Empresa  *emp, QWidget *parent, int)
         : FichaBc(emp, parent) {
     _depura("DiarioView::DiarioView", 0);
@@ -64,6 +69,9 @@ DiarioView::DiarioView(Empresa  *emp, QWidget *parent, int)
 }
 
 
+///
+/**
+**/
 DiarioView::~DiarioView() {
     _depura("DiarioView::~DiarioView", 0);
     empresaBase()->sacaWindow(this);
@@ -71,16 +79,30 @@ DiarioView::~DiarioView() {
 }
 
 
+/**
+**/
 void DiarioView::on_mui_actualizar_clicked() {
+    _depura("DiarioView::on_mui_actualizar_clicked", 0);
     accept();
+    _depura("END DiarioView::on_mui_actualizar_clicked", 0);
 }
 
 
+///
+/**
+**/
 void DiarioView::on_mui_configurar_clicked() {
+    _depura("DiarioView::on_mui_configurar_clicked", 0);
     mui_list->showConfig();
+    _depura("END DiarioView::on_mui_configurar_clicked", 0);
 }
 
 
+///
+/**
+\param finicial
+\param ffinal
+**/
 void DiarioView::inicializa1(QString finicial, QString ffinal, int) {
     _depura("DiarioView::inicializa1", 0);
     QString s1, s2, s3;
@@ -115,6 +137,8 @@ void DiarioView::inicializa1(QString finicial, QString ffinal, int) {
 
 /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n de imprimir.
 /** Muestra el formulario de impresi&oacute;n de diario y lo ejecuta \ref DiarioPrintView */
+/**
+**/
 void DiarioView::boton_imprimir() {
     _depura("DiarioView::boton_imprimir", 0);
     DiarioPrintView *print = new DiarioPrintView(empresaBase(), 0);
@@ -124,6 +148,8 @@ void DiarioView::boton_imprimir() {
 
 
 /// Se ha pulsado sobre el bot&oacute;n guardar del formulario.
+/**
+**/
 void DiarioView::boton_guardar() {
     _depura("DiarioView::boton_guardar", 0);
     QString fn = QFileDialog::getSaveFileName(this,
@@ -147,6 +173,8 @@ void DiarioView::boton_guardar() {
 
 
 /// Se ha pulsado sobre el bot&oacute;n aceptar del formulario.
+/**
+**/
 void DiarioView::accept() {
     _depura("DiarioView::accept", 0);
     presentar();
@@ -155,6 +183,8 @@ void DiarioView::accept() {
 
 
 /// Pinta el listado en el subformulario
+/**
+**/
 void DiarioView::presentar() {
     _depura("DiarioView::presentar", 0);
     QString tabla = "apunte";
@@ -208,6 +238,8 @@ void DiarioView::presentar() {
 
 
 /// Boton de impresion del diario.
+/**
+**/
 void DiarioView::on_mui_imprimir_clicked() {
     _depura("DiarioView::on_mui_imprimir_clicked", 0);
     mui_list->imprimirPDF("diario");

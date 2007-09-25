@@ -29,12 +29,20 @@
 #include "company.h"
 #include "funcaux.h"
 
+
+///
+/**
+**/
 void entryPoint(Bulmafact *) {
     _depura("Estoy dentro del plugin de catalogo", 0);
 }
 
 
-
+///
+/**
+\param l
+\return
+**/
 int ArticuloList_ArticuloList(ArticuloList *l) {
        _depura("ArticuloList_ArticuloList", 0);
 //================================

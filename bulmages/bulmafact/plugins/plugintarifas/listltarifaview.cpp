@@ -22,6 +22,10 @@
 #include "funcaux.h"
 
 
+///
+/**
+\param parent
+**/
 ListLTarifaView::ListLTarifaView(QWidget *parent) : SubForm2Bf(parent) {
     _depura("ListLTarifaView::ListLTarifaView", 0);
     setDBTableName("ltarifa");
@@ -40,6 +44,10 @@ ListLTarifaView::ListLTarifaView(QWidget *parent) : SubForm2Bf(parent) {
 }
 
 
+///
+/**
+\param parent
+**/
 ListLTarifaView1::ListLTarifaView1(QWidget *parent) : SubForm2Bf(parent) {
     _depura("ListLTarifaView1::ListLTarifaView1", 0);
     setDBTableName("ltarifa");

@@ -24,12 +24,21 @@
 #include "pluginasterisk.h"
 
 
+///
+/**
+\return
+**/
 int entryPoint(Bulmafact *) {
     _depura("Estoy dentro del plugin de validacion con Asterisk", 0);
     return 0;
 }
 
+
 /// Al crear la ventana de trabajadores tambien creamos un combo box para el tipo de trabajador.
+/**
+\param trab
+\return
+**/
 int TrabajadorView_TrabajadorView_Post (TrabajadorView *trab) {
     _depura("TrabajadorView_TrabajadorView_Post", 0);
 
@@ -90,7 +99,11 @@ int TrabajadorView_TrabajadorView_Post (TrabajadorView *trab) {
 }
 
 
-
+///
+/**
+\param alm
+\return
+**/
 int AlmacenView_AlmacenView(AlmacenView *alm) {
     _depura("AlmacenView_AlmacenView", 0);
 
@@ -147,6 +160,11 @@ int AlmacenView_AlmacenView(AlmacenView *alm) {
 }
 
 
+///
+/**
+\param trab
+\return
+**/
 int TrabajadorView_on_mui_guardar_clicked(TrabajadorView *trab) {
 
     QLineEdit *l = trab->findChild<QLineEdit *>("mui_passasterisktrabajador");
@@ -159,6 +177,12 @@ int TrabajadorView_on_mui_guardar_clicked(TrabajadorView *trab) {
     return 0;
 }
 
+
+///
+/**
+\param trab
+\return
+**/
 int TrabajadorView_on_mui_lista_currentItemChanged_Post(TrabajadorView *trab) {
     QLineEdit *l = trab->findChild<QLineEdit *>("mui_passasterisktrabajador");
 
@@ -177,7 +201,11 @@ int TrabajadorView_on_mui_lista_currentItemChanged_Post(TrabajadorView *trab) {
 }
 
 
-
+///
+/**
+\param fich
+\return
+**/
 int Ficha_cargar(Ficha *fich) {
 	SubForm3 *form = fich->findChild<SubForm3 *>("mui_validacionesalm");
 	if (form) 

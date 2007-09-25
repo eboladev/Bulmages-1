@@ -38,6 +38,11 @@
 /** Inicializa la pantalla.
     Inicializa todos los componentes y mete la pantalla en el workSpace.
 */
+/**
+\param comp
+\param parent
+\return
+**/
 ContratoView::ContratoView(Company *comp, QWidget *parent)
         : Contrato(comp, parent) {
     _depura("ContratoView::ContratoView", 0);
@@ -68,6 +73,8 @@ ContratoView::ContratoView(Company *comp, QWidget *parent)
 /** Al destruir la clase provocamos que se refresque el listado de contratos.
     Para que salga actualizado.
 */
+/**
+**/
 ContratoView::~ContratoView() {
     _depura("ContratoView::~ContratoView", 0);
     _depura("END ContratoView::~ContratoView", 0);
@@ -76,6 +83,8 @@ ContratoView::~ContratoView() {
 
 /** Inicializa los subformularios y resetea el control de cambios.
 */
+/**
+**/
 void ContratoView::inicializar() {
     _depura("ContratoView::inicializar", 0);
     subform2->inicializar();
@@ -84,15 +93,14 @@ void ContratoView::inicializar() {
 }
 
 
-
-
-
-
-
 /** Carga una contrato de la base de datos.
     Deleta toda la carga a la clase \ref Contrato 
     Cambia el titulo de la ventana y reseta el control de cambios.
 */
+/**
+\param id
+\return
+**/
 int ContratoView::cargar(QString id) {
     _depura("ContratoView::cargar", 0);
     try {
@@ -118,6 +126,9 @@ int ContratoView::cargar(QString id) {
 */
 /// \TODO: Una vez hecho el guardado deberia hacer una carga y dejar de resetear el
 /// control de cambios que deberia estar en el metodo de carga.
+/**
+\return
+**/
 int ContratoView::guardar() {
     _depura("ContratoView::guardar", 0);
     try {
@@ -140,6 +151,10 @@ int ContratoView::guardar() {
 }
 
 
+///
+/**
+\param id
+**/
 void ContratoView::on_m_cliente_valueChanged(QString id) {
     _depura("ContratoView::on_m_cliente_valueChanged", 0);
     subform2->setIdCliente(id);
@@ -147,46 +162,97 @@ void ContratoView::on_m_cliente_valueChanged(QString id) {
 }
 
 
+///
+/**
+\param id
+**/
 void ContratoView::pintaidcliente(QString id) {
+    _depura("ContratoView::pintaidcliente", 0);
     mui_idcliente->setidcliente(id);
+    _depura("END ContratoView::pintaidcliente", 0);
 }
 
 
+///
+/**
+\param id
+**/
 void ContratoView::pintafincontrato(QString id) {
+    _depura("ContratoView::pintafincontrato", 0);
     mui_fincontrato->setText(id);
+    _depura("ContratoView::pintafincontrato", 0);
 }
 
 
+///
+/**
+\param id
+**/
 void ContratoView::pintaffincontrato(QString id) {
+    _depura("ContratoView::pintaffincontrato", 0);
     mui_ffincontrato->setText(id);
+    _depura("END ContratoView::pintaffincontrato", 0);
 }
 
 
+///
+/**
+\param id
+**/
 void ContratoView::pintadescontrato(QString id) {
+    _depura("ContratoView::pintadescontrato", 0);
     mui_descontrato->setText(id);
+    _depura("END ContratoView::pintadescontrato", 0);
 }
 
 
+///
+/**
+\param id
+**/
 void ContratoView::pintarefcontrato(QString id) {
+    _depura("ContratoView::pintarefcontrato", 0);
     mui_refcontrato->setText(id);
+    _depura("END ContratoView::pintarefcontrato", 0);
 }
 
 
+///
+/**
+\param id
+**/
 void ContratoView::pintanomcontrato(QString id) {
+    _depura("ContratoView::pintanomcontrato", 0);
     mui_nomcontrato->setText(id);
+    _depura("ContratoView::pintanomcontrato", 0);
 }
 
 
+///
+/**
+\param id
+**/
 void ContratoView::pintaperiodicidadcontrato(QString id) {
     _depura("ContratoView::pintaperiodicidadcontrato", 0, id);
     mui_periodicidadcontrato->setperiodo(id);
 }
 
+
+///
+/**
+\param id
+**/
 void ContratoView::pintaloccontrato(QString id) {
+    _depura("ContratoView::pintaloccontrato", 0);
     mui_loccontrato->setText(id);
+    _depura("END ContratoView::pintaloccontrato", 0);
 }
 
 
+///
+/**
+\return
+**/
 void ContratoView::on_subform2_itemDoubleClicked(QTableWidgetItem *) {
     _depura("ContratoView::on_subform2_itemDoubleClicked", 0);
     QString idfactura = subform2->DBvalue(QString("idfactura"), subform2->currentRow());
@@ -201,6 +267,9 @@ void ContratoView::on_subform2_itemDoubleClicked(QTableWidgetItem *) {
 }
 
 
+///
+/**
+**/
 void ContratoView::on_mui_facturar_clicked() {
     _depura("ContratoView::on_mui_facturar_clicked", 0);
     int periodo = 1;
@@ -268,6 +337,9 @@ void ContratoView::on_mui_facturar_clicked() {
 /// =============================================================================
 /** Prepara el subformulario para trabajar con la tabla factura.
 */
+/**
+\param parent
+**/
 FacturasContratoListSubForm::FacturasContratoListSubForm(QWidget *parent, const char *) : SubForm2Bf(parent) {
     _depura("FacturasContratoListSubForm::FacturasContratoListSubForm", 0);
     setDBTableName("factura");

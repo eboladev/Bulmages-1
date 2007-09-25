@@ -40,6 +40,11 @@
 #define coma "'"
 
 
+///
+/**
+\param comp
+\param parent
+**/
 IncidenciaComercialView::IncidenciaComercialView(Company *comp, QWidget *parent)
         : IncidenciaComercial(comp, parent) {
     _depura("IncidenciaComercialView::IncidenciaComercialView", 0);
@@ -50,6 +55,10 @@ IncidenciaComercialView::IncidenciaComercialView(Company *comp, QWidget *parent)
 }
 
 
+///
+/**
+\param parent
+**/
 IncidenciaComercialView::IncidenciaComercialView(QWidget *parent)
         :  IncidenciaComercial(NULL, parent) {
     _depura("IncidenciaComercialView::IncidenciaComercialView", 0);
@@ -61,11 +70,18 @@ IncidenciaComercialView::IncidenciaComercialView(QWidget *parent)
 }
 
 
+///
+/**
+**/
 IncidenciaComercialView::~IncidenciaComercialView() {
     _depura("END IncidenciaComercialView::IncidenciaComercialView", 0);
 }
 
 
+///
+/**
+\param es
+**/
 void IncidenciaComercialView::closeEvent(QCloseEvent *e) {
     _depura("closeEvent", 0);
     if (dialogChanges_hayCambios()) {
@@ -79,6 +95,11 @@ void IncidenciaComercialView::closeEvent(QCloseEvent *e) {
     } // end if
 }
 
+
+///
+/**
+\param comp
+**/
 void IncidenciaComercialView::setEmpresaBase(Company *comp) {
     _depura("IncidenciaComercialView::setcompany", 0);
     PEmpresaBase::setEmpresaBase(comp);
@@ -89,6 +110,11 @@ void IncidenciaComercialView::setEmpresaBase(Company *comp) {
 
 }
 
+
+///
+/**
+\return
+**/
 int IncidenciaComercialView::guardar() {
     _depura("IncidenciaComercialView::guardar", 0);
     if (mui_fechaincidenciacomercial->text() == "")
@@ -106,6 +132,11 @@ int IncidenciaComercialView::guardar() {
 }
 
 
+///
+/**
+\param id
+\return
+**/
 int IncidenciaComercialView::cargar(QString id) {
     _depura("IncidenciaComercialView::cargar", 0);
     int err = IncidenciaComercial::cargar(id);
@@ -118,7 +149,7 @@ int IncidenciaComercialView::cargar(QString id) {
     mui_horaincidenciacomercial->setText(DBvalue("horaincidenciacomercial"));
     mui_refincidenciacomercial->setText(DBvalue("refincidenciacomercial"));
     dialogChanges_cargaInicial();
-    _depura("IncidenciaComercialView::cargar", 0);
+    _depura("END IncidenciaComercialView::cargar", 0);
     return err;
 }
 

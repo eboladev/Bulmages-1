@@ -42,6 +42,7 @@
 /// Constructor de la clase, inicializa los componentes
 /** \param emp Empresa que llama al objeto.
     \param parent Widget padre de este.
+    \return
 */
 Asiento1View::Asiento1View(Empresa *emp, QWidget *parent, int)
         : ListAsientos(emp, parent) {
@@ -71,14 +72,18 @@ Asiento1View::Asiento1View(Empresa *emp, QWidget *parent, int)
 }
 
 
-/** Saca la ventana del workSpace.
-*/
+/// Saca la ventana del workSpace.
+/**
+**/
 Asiento1View::~Asiento1View() {
     _depura("Asiento1View::~Asiento1View", 0);
     _depura("END Asiento1View::~Asiento1View", 0);
 }
 
 
+///
+/**
+**/
 void Asiento1View::calculaypintatotales() {
     _depura("Asiento1View::calculaypintatotales", 0);
     Fixed tdebe = mui_list->sumarCampo("debe");
@@ -98,6 +103,9 @@ void Asiento1View::calculaypintatotales() {
 }
 
 
+///
+/**
+**/
 void Asiento1View::trataestadoAsiento1() {
     _depura("Asiento1View::trataestadoAsiento1", 0);
     if (estadoAsiento1() == ASCerrado) {
@@ -111,6 +119,8 @@ void Asiento1View::trataestadoAsiento1() {
 
 /// Pone la pantalla en el modo de asiento abierto.
 /** Activa los botones de cierre y pone los elementos como est&aacute;n configurados. */
+/**
+**/
 void Asiento1View::asientoabiertop() {
     _depura("Asiento1View::asientoabiertop", 0);
     m_descuadre->setEnabled(TRUE);
@@ -132,6 +142,8 @@ void Asiento1View::asientoabiertop() {
 
 /// Pone la pantalla en el modo de asiento cerrado.
 /** Activa los botones de apertura y pone los elementos como est&aacute;n configurados. */
+/**
+**/
 void Asiento1View::asientocerradop() {
     _depura("Asiento1View::asientocerradop", 0);
     mui_abrirasiento->setEnabled(TRUE);
@@ -153,6 +165,8 @@ void Asiento1View::asientocerradop() {
 
 /// Esta funci&oacute;n se activa cuando se pulsa sobre el bot&oacute;n nuevo asiento del
 /// formulario.
+/**
+**/
 void Asiento1View::on_mui_nuevoasiento_clicked() {
     _depura("Asiento1View::on_mui_nuevoasiento_clicked", 0);
     mui_fecha->setText(QDate::currentDate().toString("dd/MM/yyyy"));
@@ -162,6 +176,10 @@ void Asiento1View::on_mui_nuevoasiento_clicked() {
 
 
 /// Esta funci&oacute;n se encarga de hacer las inicializaciones en un asiento nuevo.
+/**
+\param nuevoordenasiento
+\return
+**/
 void Asiento1View::iniciar_asiento_nuevo(QString nuevoordenasiento) {
     _depura("Asiento1View::iniciar_asiento_nuevo", 0);
     try {
@@ -213,6 +231,9 @@ void Asiento1View::iniciar_asiento_nuevo(QString nuevoordenasiento) {
     Si el asiento esta abierto cambia la fecha del asiento.
     Si el asiento esta cerrado crea un asiento nuevo llamando a \ref iniciar_asiento_nuevo()
 */
+/**
+\return
+**/
 void Asiento1View::on_mui_fecha_returnPressed() {
     _depura("Asiento1View::on_mui_fecha_returnPressed", 0);
     /// Usamos un semaforo para prevenir de entradas concurrentes.
@@ -235,6 +256,8 @@ void Asiento1View::on_mui_fecha_returnPressed() {
 /** Inicializa el di&aacute;logo de duplicaci&oacute;n de asientos y lo presenta.
     Cuando se ha terminado carga el cursor de presentaci&oacute;n y repinta el asiento
     para que actualize los cambios. */
+/**
+**/
 void Asiento1View::on_mui_duplicar_clicked() {
     _depura("Asiento1View::on_mui_duplicar_clicked", 0);
     DuplicarAsientoView *dupli = new DuplicarAsientoView(empresaBase(), 0);
@@ -251,6 +274,8 @@ void Asiento1View::on_mui_duplicar_clicked() {
 /// Se ha pulsado sobre el bot&oacute;n de generar asientos inteligentes.
 /** Se inicializa la clase \ref aplinteligentesview y se muestra ese di&aacute;logo
     para que se opere con los asientos plantilla. */
+/**
+**/
 void Asiento1View::on_mui_inteligente_clicked() {
     _depura("Asiento1View::on_mui_inteligente_clicked", 0);
     int numasiento;
@@ -273,6 +298,8 @@ void Asiento1View::on_mui_inteligente_clicked() {
 /// que debemos comprobar que el numero introducido es correcto
 /// y hacer las gestiones oportunas para mostrar el asiento en
 /// pantalla o crearlo si hace falta.
+/**
+**/
 void Asiento1View::boton_cargarasiento() {
     _depura("Asiento1View::boton_cargarasiento", 0);
     QString idas = "";
@@ -296,6 +323,10 @@ void Asiento1View::boton_cargarasiento() {
 }
 
 
+///
+/**
+\param v
+**/
 void Asiento1View::muestraasiento(QString v) {
     _depura("Asiento1View::muestraasiento ", 0);
     situarasiento(v);
@@ -305,6 +336,8 @@ void Asiento1View::muestraasiento(QString v) {
 
 
 /// Prepara para guardar.
+/**
+**/
 void Asiento1View::prepguardar() {
     _depura("Asiento1View::prepguardar", 0);
     setDBvalue("fecha", mui_fecha->text());
@@ -314,11 +347,20 @@ void Asiento1View::prepguardar() {
     _depura("END Asiento1View::prepguardar", 0);
 }
 
+
+///
+/**
+**/
 void Asiento1View::on_mui_borrar_clicked() {
     bool atendido = TRUE; // asumimos que habra que atender al dialogo de confirmacion de borrado
     on_mui_borrar_clicked(atendido);
 }
 
+
+///
+/**
+\param atendido
+**/
 void Asiento1View::on_mui_borrar_clicked(bool atendido) {
     _depura("Asiento1View::on_mui_borrar_clicked", 0);
     QString idasientosig = idasientosiguiente();
@@ -343,6 +385,10 @@ void Asiento1View::on_mui_borrar_clicked(bool atendido) {
     _depura("END Asiento1View::on_mui_borrar_clicked", 0);
 }
 
+
+///
+/**
+**/
 void Asiento1View::on_mui_list_editFinish(int, int) {
 	_depura("Asiento1View::on_mui_list_editFinish", 0);
 	calculaypintatotales();
@@ -354,6 +400,12 @@ void Asiento1View::on_mui_list_editFinish(int, int) {
 ///                       LISTASIENTOS
 /// =========================================================================================
 
+
+///
+/**
+\param emp
+\param parent
+**/
 ListAsientos::ListAsientos(Empresa *emp, QWidget *parent) : Asiento1(emp, parent) {
     _depura("ListAsientos::ListAsientos", 0);
     cursorasientos = NULL;
@@ -362,6 +414,9 @@ ListAsientos::ListAsientos(Empresa *emp, QWidget *parent) : Asiento1(emp, parent
 }
 
 
+///
+/**
+**/
 ListAsientos::~ListAsientos() {
     _depura("ListAsientos::~ListAsientos", 0);
     if (cursorasientos != NULL ) {
@@ -379,6 +434,8 @@ ListAsientos::~ListAsientos() {
     otros indica el asiento o el inmediatamente m&aacute;s bajo.
     Esta funci&oacute;n no hace cambios en la presentaci&oacute;n,
     s&oacute;lo realiza una carga del cursor que sirve para recorrer los asientos. */
+/**
+**/
 void ListAsientos::cargaasientos() {
     _depura("ListAsientos::cargaasientos", 0);
     QString cantapunt = "";
@@ -439,6 +496,8 @@ void ListAsientos::cargaasientos() {
     existen se desplaza al primer registro y lo muestra.
     En el caso de que no haya asiento a mostrar vacia la pantalla para que
     no salga basura. */
+/**
+**/
 void ListAsientos::boton_inicio() {
     _depura("ListAsientos::boton_inicio", 0);
     if (cursorasientos->numregistros() != 0) {
@@ -453,6 +512,8 @@ void ListAsientos::boton_inicio() {
 /** Comprueba que existen registros en el cursor de asientos a mostrar y si existen
     se desplaza al &uacute;ltimo registro y lo muestra.
     En el caso de que no haya asiento a mostrar vacia la pantalla para que no salga basura. */
+/**
+**/
 void ListAsientos::boton_fin() {
     _depura("ListAsientos::boton_fin", 0);
     if (cursorasientos->numregistros() != 0) {
@@ -467,6 +528,9 @@ void ListAsientos::boton_fin() {
     se desplaza al siguiente registro y lo muestra.
     En el caso de que no haya asiento a mostrar vacia la pantalla para que no
     salga basura. */
+/**
+\return
+**/
 void ListAsientos::boton_siguiente() {
     _depura("ListAsientos::boton_siguiente", 0);
     ///  Si no hay nada que mostrar vacia la pantalla para que no queden resto.
@@ -486,6 +550,9 @@ void ListAsientos::boton_siguiente() {
     existen se desplaza al registro anterior y lo muestra.
     En el caso de que no haya asiento a mostrar vacia la pantalla para que
     no salga basura. */
+/**
+\return
+**/
 void ListAsientos::boton_anterior() {
     _depura("ListAsientos::boton_anterior", 0);
     ///  Si no hay nada que mostrar vacia la pantalla para que no queden resto.
@@ -504,6 +571,9 @@ void ListAsientos::boton_anterior() {
     \param idasiento El identificador del asiento en el que debe situarse.
     Si no se encuentra el asiento buscado devuelve una excepcion -1
 */
+/**
+\param idasiento
+**/
 void ListAsientos::situarasiento(QString idasiento) {
     _depura("ListAsientos::situarasiento ", 0, idasiento);
     try {
@@ -521,6 +591,10 @@ void ListAsientos::situarasiento(QString idasiento) {
 }
 
 
+///
+/**
+\return
+**/
 QString ListAsientos::idasientoanterior() {
     _depura("ListAsientos::idasientoanterior", 0);
     if (!cursorasientos->esprimerregistro()) {
@@ -536,6 +610,10 @@ QString ListAsientos::idasientoanterior() {
 }
 
 
+///
+/**
+\return
+**/
 QString ListAsientos::idasientosiguiente() {
     _depura("ListAsientos::idasientosiguiente", 0);
     if (!cursorasientos->esultimoregistro()) {
@@ -551,6 +629,12 @@ QString ListAsientos::idasientosiguiente() {
 }
 
 
+///
+/**
+\param obj
+\param event
+\return
+**/
 bool eventos_mui_ordenasiento::eventFilter(QObject *obj, QEvent *event) {
     _depura("eventos_mui_ordenasiento::eventFilter", 0);
 
@@ -569,17 +653,26 @@ bool eventos_mui_ordenasiento::eventFilter(QObject *obj, QEvent *event) {
 /// =================================================================
 
 
+///
+/**
+**/
 void ListAsientos::boton_filtrar() {
     _depura("Funcion no implementada", 2);
 }
 
 
-
+///
+/**
+**/
 void ListAsientos::muestraasiento(QString) {
     mensajeInfo("Funcion no implementada.");
 }
 
 
+///
+/**
+\return
+**/
 bool ListAsientos::esprimerasiento() {
     _depura("ListAsientos::esprimerasiento", 0);
     _depura("END ListAsientos::esprimerasiento", 0);
@@ -587,6 +680,10 @@ bool ListAsientos::esprimerasiento() {
 }
 
 
+///
+/**
+\return
+**/
 bool ListAsientos::esultimoasiento() {
     _depura("ListAsientos::esultimoasiento", 0);
     _depura("END ListAsientos::esultimoasiento", 0);
@@ -594,6 +691,10 @@ bool ListAsientos::esultimoasiento() {
 }
 
 
+///
+/**
+\param val
+**/
 void Asiento1View::pintafecha(QString val) {
     _depura("Asiento1View::pintafecha", 0);
     mui_fecha->setText(val);
@@ -601,6 +702,10 @@ void Asiento1View::pintafecha(QString val) {
 }
 
 
+///
+/**
+\param val
+**/
 void Asiento1View::pintaordenasiento(QString val) {
     _depura("Asiento1View::pintaordenasiento", 0);
     mui_ordenasiento->setValue(val.toInt());
@@ -608,6 +713,10 @@ void Asiento1View::pintaordenasiento(QString val) {
 }
 
 
+///
+/**
+\param val
+**/
 void Asiento1View::pintaclase(QString val) {
     _depura("Asiento1View::pintaclase", 0);
     mui_claseAsiento->setCurrentIndex(val.toInt());
@@ -615,6 +724,10 @@ void Asiento1View::pintaclase(QString val) {
 }
 
 
+///
+/**
+\param text
+**/
 void Asiento1View::pintacomentariosasiento(QString text) {
     _depura("Asiento1View::pintacomentariosasiento", 0);
     mui_comentariosAsiento->setPlainText(text);
@@ -622,6 +735,10 @@ void Asiento1View::pintacomentariosasiento(QString text) {
 }
 
 
+///
+/**
+\param v
+**/
 void Asiento1View::muestraasiento(int v) {
     _depura("Asiento1View::muestraasiento", 0);
     muestraasiento(QString::number(v));
@@ -630,6 +747,9 @@ void Asiento1View::muestraasiento(int v) {
 
 
 /// Desabilitamos el sacaWindow ya que esta ventana no debe ser sacada ante un close.
+/**
+\return
+**/
 int Asiento1View::sacaWindow() {
     _depura("Asiento1View::sacaWindow", 0);
     _depura("END Asiento1View::sacaWindow", 0);
@@ -637,6 +757,10 @@ int Asiento1View::sacaWindow() {
 }
 
 
+///
+/**
+\param val
+**/
 void Asiento1View::setFecha(QString val) {
     _depura("Asiento1View::setFecha", 0);
     mui_fecha->setText(val);
@@ -644,6 +768,9 @@ void Asiento1View::setFecha(QString val) {
 }
 
 
+///
+/**
+**/
 void Asiento1View::on_mui_abrirasiento_clicked() {
     _depura("Asiento1View::on_mui_abrirasiento_clicked", 0);
     abrir();
@@ -651,6 +778,10 @@ void Asiento1View::on_mui_abrirasiento_clicked() {
 }
 
 
+///
+/**
+\return
+**/
 void Asiento1View::on_mui_cerrarasiento_clicked() {
     if (Fixed(m_descuadre->text()) != 0)  {
 	_depura("Asiento descuadrado, no se puede cerrar", 2);
@@ -662,6 +793,9 @@ void Asiento1View::on_mui_cerrarasiento_clicked() {
 }
 
 
+///
+/**
+**/
 void Asiento1View::on_mui_guardarasiento_clicked() {
     _depura("Asiento1View::on_mui_guardarasiento_clicked", 0);
     prepguardar();
@@ -670,12 +804,10 @@ void Asiento1View::on_mui_guardarasiento_clicked() {
 }
 
 
-
-
-
-
 /// Al pulsar return sobre el n&uacute;mero de asiento se procede como si fuese una
 /// carga de dicho asiento.
+/**
+**/
 void Asiento1View::mui_ordenasiento_pulsadoIntro() {
     _depura("Asiento1View::mui_ordenasiento_pulsadoIntro", 0);
     boton_cargarasiento();
@@ -683,6 +815,10 @@ void Asiento1View::mui_ordenasiento_pulsadoIntro() {
 }
 
 
+///
+/**
+\param ob
+**/
 eventos_mui_ordenasiento::eventos_mui_ordenasiento(Asiento1View *ob) {
     _depura("eventos_mui_ordenasiento::eventos_mui_ordenasiento", 0);
     objeto = ob;

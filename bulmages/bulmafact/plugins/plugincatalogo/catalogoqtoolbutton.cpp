@@ -42,6 +42,11 @@
 #include "dbrecord.h"
 
 
+///
+/**
+\param art
+\param parent
+**/
 CatalogoQToolButton::CatalogoQToolButton(ArticuloList *art , QWidget *parent) : QToolButton(parent), PEmpresaBase() {
     _depura("CatalogoQToolButton::CatalogoQToolButton", 0);
     m_articuloList = art;
@@ -49,8 +54,19 @@ CatalogoQToolButton::CatalogoQToolButton(ArticuloList *art , QWidget *parent) : 
     _depura("END CatalogoQToolButton::CatalogoQToolButton", 0);
 }
 
-CatalogoQToolButton::~CatalogoQToolButton() {}
 
+///
+/**
+**/
+CatalogoQToolButton::~CatalogoQToolButton() {
+    _depura("CatalogoQToolButton::~CatalogoQToolButton", 0);
+    _depura("END CatalogoQToolButton::~CatalogoQToolButton", 0);
+}
+
+
+///
+/**
+**/
 void CatalogoQToolButton::setBoton() {
     _depura("CatalogoQToolButton::setBoton", 0);
     connect(this, SIGNAL(clicked()), this, SLOT(click()));
@@ -64,6 +80,9 @@ void CatalogoQToolButton::setBoton() {
 }
 
 
+///
+/**
+**/
 void CatalogoQToolButton::click() {
     _depura("CatalogoQToolButton::click", 0);
 
@@ -115,6 +134,9 @@ void CatalogoQToolButton::click() {
 
 /** Metodo auxiliar para la creacion del catalogo de articulos
 */
+/**
+\return
+**/
 QString CatalogoQToolButton::detalleArticulos() {
     _depura("CatalogoQToolButton::detalleArticulos", 0);
     QString texto = "";

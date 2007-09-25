@@ -39,6 +39,12 @@
 #include "listdescfacturaprovview.h"
 #include "dbrecord.h"
 
+
+///
+/**
+\param faclistado
+\param parent
+**/
 EFQToolButtonImportar::EFQToolButtonImportar(FacturasProveedorList *faclistado, QWidget *parent) : QToolButton(parent), PEmpresaBase() {
 	_depura("EFQToolButtonImportar::EFQToolButtonImportar", 0);
 	m_faclistado = faclistado;
@@ -47,9 +53,22 @@ EFQToolButtonImportar::EFQToolButtonImportar(FacturasProveedorList *faclistado, 
 	_depura("END EFQToolButtonImportar::EFQToolButtonImportar", 0);
 }
 
-EFQToolButtonImportar::~EFQToolButtonImportar() {}
+
+///
+/**
+**/
+EFQToolButtonImportar::~EFQToolButtonImportar() {
+	_depura("EFQToolButtonImportar::~EFQToolButtonImportar", 0);
+	_depura("END EFQToolButtonImportar::~EFQToolButtonImportar", 0);
+}
+
 
 /// Dado un nombre de etiqueta se retorna el texto/valor que contiene (<etiqueta>valor</etiqueta>).
+/**
+\param nombre
+\param doc
+\return
+**/
 QString EFQToolButtonImportar::obten_valor_nodo(QString nombre, QDomDocument *doc) {
 	_depura("EFQToolButtonImportar_EFQToolButtonImportar::obten_valor_nodo", 0);
 	QDomNodeList lista_nodos = doc->elementsByTagName(nombre);
@@ -63,8 +82,14 @@ QString EFQToolButtonImportar::obten_valor_nodo(QString nombre, QDomDocument *do
 	return nodo.toElement().text();
 }
 
+
 /// Esta funcion obtiene los descuentos y los mete dentro de una QList, la cual se
 /// recibe como parametro y devuelve un QString con el valor total de los descuentos.
+/**
+\param doc
+\param lista_descuentos
+\return
+**/
 QString EFQToolButtonImportar::obten_descuento_factura(QDomDocument *doc, QList< QMap<QString, QString> > &lista_descuentos) {
 	_depura("EFQToolButtonImportar_EFQToolButtonImportar::obten_descuento_factura", 0);
 	// Obtenemos el nodo padre
@@ -109,9 +134,15 @@ QString EFQToolButtonImportar::obten_descuento_factura(QDomDocument *doc, QList<
 	return total_descuento.toQString();
 }
 
+
 /// Esta funcion recibe como parametro un QMap por referencia, al cual se le insertara
 /// la informacion sobre la linea de factura situada en la posicion indicada por el parametro i,
 /// contando desde 0 hasta numlineas-1 y de arriba a abajo del documento.
+/**
+\param doc
+\param mapa_lfactura
+\param i
+**/
 void EFQToolButtonImportar::obten_linea_factura(QDomDocument *doc, QMap<QString, QString> &mapa_lfactura, int i) {
 	_depura("EFQToolButtonImportar_EFQToolButtonImportar::obten_linea_factura", 0);
 	QDomNodeList lista_lineas = doc->elementsByTagName("cac:InvoiceLine");
@@ -162,11 +193,16 @@ void EFQToolButtonImportar::obten_linea_factura(QDomDocument *doc, QMap<QString,
 	_depura("END EFQToolButtonImportar_EFQToolButtonImportar::obten_linea_factura", 0);
 }
 
+
 /// Esta funcion obtiene el CIF de la empresa que emitio la factura (el campo
 /// cac:ID dentro de la seccion cac:PartyIdentification del elemento cac:SellerParty).
 /// Una vez obtenido este valor, nos sirve para saber si este proveedor existe o no
 /// en nuestra base de datos. Si no existe se aborta el proceso de importacion y se
 /// le pide al usuario que primero anyada a este nuevo proveedor en la base de datos.
+/**
+\param doc
+\return
+**/
 QString EFQToolButtonImportar::obten_id_proveedor(QDomDocument *doc) {
 	_depura("EFQToolButtonImportar_EFQToolButtonImportar::obten_id_proveedor", 0);
 	// Nos situamos sobre la parte que identifica al vendedor
@@ -185,8 +221,11 @@ QString EFQToolButtonImportar::obten_id_proveedor(QDomDocument *doc) {
 	return nodo.toElement().text();
 }
 
-/// ------------------ Importa una factura desde un fichero en formato UBL 1.0 ------------------- ///
 
+/// ------------------ Importa una factura desde un fichero en formato UBL 1.0 ------------------- ///
+/**
+\return
+**/
 void EFQToolButtonImportar::importa_factura_ubl() {
 	_depura("EFQToolButtonImportar::importa_factura_ubl", 0);
 
@@ -424,6 +463,10 @@ void EFQToolButtonImportar::importa_factura_ubl() {
 	_depura("END EFQToolButtonImportar::importa_factura_ubl", 0);
 }
 
+
+///
+/**
+**/
 void EFQToolButtonImportar::click() {
 	_depura("EFQToolButtonImportar::click", 0);
 	importa_factura_ubl();

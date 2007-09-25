@@ -40,6 +40,12 @@
 #include "funcaux.h"
 #define coma "'"
 
+
+///
+/**
+\param comp
+\param parent
+**/
 RutaComercialView::RutaComercialView(Company *comp, QWidget *parent)
         :  RutaComercial(comp, parent) {
     _depura("RutaComercialView::RutaComercialView", 0);
@@ -50,6 +56,10 @@ RutaComercialView::RutaComercialView(Company *comp, QWidget *parent)
 }
 
 
+///
+/**
+\param parent
+**/
 RutaComercialView::RutaComercialView(QWidget *parent)
         : RutaComercial(NULL, parent) {
     _depura("RutaComercialView::RutaComercialView", 0);
@@ -60,12 +70,18 @@ RutaComercialView::RutaComercialView(QWidget *parent)
 }
 
 
+///
+/**
+**/
 RutaComercialView::~RutaComercialView() {
     _depura("END RutaComercialView::RutaComercialView", 0);
 }
 
 
-
+///
+/**
+\param comp
+**/
 void RutaComercialView::setEmpresaBase(Company *comp) {
     _depura("RutaComercialView::setEmpresaBase", 0);
     PEmpresaBase::setEmpresaBase(comp);
@@ -73,6 +89,11 @@ void RutaComercialView::setEmpresaBase(Company *comp) {
     _depura("END RutaComercialView::setEmpresaBase", 0);
 }
 
+
+///
+/**
+\return
+**/
 int RutaComercialView::guardar() {
     _depura("RutaComercialView::guardar", 0);
     if (mui_fecharutacomercial->text() == "")
@@ -87,6 +108,12 @@ int RutaComercialView::guardar() {
     return err;
 }
 
+
+///
+/**
+\param id
+\return
+**/
 int RutaComercialView::cargar(QString id) {
     _depura("RutaComercialView::cargar", 0);
     int err = RutaComercial::cargar(id);

@@ -32,17 +32,26 @@
 /** Constructor de CuadranteQTreeWidget clase derivada de QTableWidget con
 un eventHandler especifico
 */
+/**
+\param parent
+**/
 CuadranteQTreeWidget::CuadranteQTreeWidget(QWidget *parent) : QTreeWidget(parent) {
     _depura("CuadranteQTreeWidget::CuadranteQTreeWidget", 0);
     _depura("END CuadranteQTreeWidget::CuadranteQTreeWidget", 0);
 }
 
 
+///
+/**
+**/
 CuadranteQTreeWidget::~CuadranteQTreeWidget() {
     _depura("END ~CuadranteQTreeWidget", 0);
 }
 
 
+///
+/**
+**/
 void CuadranteQTreeWidget::startDrag( Qt::DropActions supportedActions ) {
 	_depura("CuadranteQTreeWidget::startDrag", 0);
 

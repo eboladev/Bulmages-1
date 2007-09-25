@@ -32,21 +32,41 @@
 #include "contratoslist.h"
 
 
+///
+/**
+**/
+myplugincont::myplugincont() {
+    _depura("myplugincont::myplugincont", 0);
+    _depura("END myplugincont::myplugincont", 0);
+}
 
-myplugincont::myplugincont() {}
-
-
-myplugincont::~myplugincont() {}
-
-
-void myplugincont::elslot() {
-    ContratosList *vehiculoview = new ContratosList((Company *) m_conexionbase);
-    m_bulmafact->workspace()->addWindow(vehiculoview);
-    vehiculoview->show();
+///
+/**
+**/
+myplugincont::~myplugincont() {
+    _depura("myplugincont::~myplugincont", 0);
+    _depura("END myplugincont::~myplugincont", 0);
 }
 
 
+///
+/**
+**/
+void myplugincont::elslot() {
+    _depura("myplugincont::elslot", 0);
+    ContratosList *vehiculoview = new ContratosList((Company *) m_conexionbase);
+    m_bulmafact->workspace()->addWindow(vehiculoview);
+    vehiculoview->show();
+    _depura("END myplugincont::elslot", 0);
+}
+
+
+///
+/**
+\param bges
+**/
 void myplugincont::inicializa(Bulmafact *bges) {
+    _depura("myplugincont::inicializa", 0);
     /// Creamos el men&uacute;.
     m_conexionbase = bges->getcompany();
     m_bulmafact = bges;
@@ -57,9 +77,15 @@ void myplugincont::inicializa(Bulmafact *bges) {
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->menuVentas->addSeparator();
     bges->menuVentas->addAction(accion);
+    _depura("END myplugincont::inicializa", 0);
 }
 
 
+///
+/**
+\param bges
+\return
+**/
 int entryPoint(Bulmafact *bges) {
     _depura("Punto de Entrada del plugin PluginContratos", 0);
     myplugincont *plug = new myplugincont();
@@ -69,6 +95,11 @@ int entryPoint(Bulmafact *bges) {
 }
 
 
+///
+/**
+\param art
+\return
+**/
 int ClienteView_ClienteView(ClienteView *art) {
     _depura("ClienteView_ClienteView", 0);
     /// Para que funcione bien debemos iniciar con SelectMode y luego pasar a EditMode ya que si no se hace un meteWindow y no es deseable.
@@ -80,6 +111,12 @@ int ClienteView_ClienteView(ClienteView *art) {
     return 0;
 }
 
+
+///
+/**
+\param art
+\return
+**/
 int ClienteView_cargar(ClienteView *art) {
     _depura("ClienteView_cargar", 0);
     ContratosList *l = art->findChild<ContratosList *>("ccontratoslist");

@@ -476,7 +476,6 @@ QSubForm2BfDelegate::~QSubForm2BfDelegate() {
 \param parent
 \param option
 \param index
-\param index
 **/
 QWidget *QSubForm2BfDelegate::createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const {
     _depura("QSubForm2BfDelegate::createEditor", 0);
@@ -530,7 +529,7 @@ QWidget *QSubForm2BfDelegate::createEditor(QWidget *parent, const QStyleOptionVi
 /**
 \param editor
 \param model
-\param index.
+\param index
 \return
 **/
 void QSubForm2BfDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const {
@@ -681,7 +680,7 @@ bool QSubForm2BfDelegate::eventFilter(QObject *obj, QEvent *event) {
 
 ///
 /**
-\param editor.
+\param editor
 \return
 **/
 int QSubForm2BfDelegate::cerrarEditor(QWidget *editor) {

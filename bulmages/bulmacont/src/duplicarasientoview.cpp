@@ -25,6 +25,12 @@
 #define NUMDIGITOS   empresaBase()->numdigitosempresa()
 
 
+///
+/**
+\param emp
+\param parent
+\param flag
+**/
 DuplicarAsientoView::DuplicarAsientoView(Empresa *emp, QWidget *parent, Qt::WFlags flag)
         : QDialog(parent, flag), PEmpresaBase(emp) {
     _depura("DuplicarAsientoView::DuplicarAsientoView", 0);
@@ -34,12 +40,20 @@ DuplicarAsientoView::DuplicarAsientoView(Empresa *emp, QWidget *parent, Qt::WFla
 }
 
 
+///
+/**
+**/
 DuplicarAsientoView::~DuplicarAsientoView() {
     _depura("DuplicarAsientoView::~DuplicarAsientoView", 0);
     _depura("END DuplicarAsientoView::~DuplicarAsientoView", 0);
 }
 
 
+///
+/**
+\param ainicial
+\param afinal
+**/
 void DuplicarAsientoView::inicializa(QString ainicial, QString afinal) {
     _depura("DuplicarAsientoView::inicializa", 0);
     aoinicial->setText(ainicial);
@@ -57,7 +71,9 @@ void DuplicarAsientoView::inicializa(QString ainicial, QString afinal) {
     _depura("END DuplicarAsientoView::inicializa", 0);
 }
 
-
+///
+/**
+**/
 void DuplicarAsientoView::lostFocus() {
     _depura("DuplicarAsientoView::lostFocus", 0);
     QString ainicial = aoinicial->text();
@@ -73,7 +89,9 @@ void DuplicarAsientoView::lostFocus() {
 }
 
 
-
+///
+/**
+**/
 void DuplicarAsientoView::on_mui_aceptar_clicked() {
     _depura("DuplicarAsientoView::on_mui_aceptar_clicked", 0);
     QString asientoi = aoinicial->text();

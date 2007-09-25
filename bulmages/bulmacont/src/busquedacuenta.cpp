@@ -23,6 +23,11 @@
 #include  "empresa.h"
 #include  "plugins.h"
 
+
+///
+/**
+\param parent
+**/
 BusquedaCuenta::BusquedaCuenta(QWidget *parent)
         : BLWidget(parent) {
     _depura("BusquedaCuenta::BusquedaCuenta", 0);
@@ -36,88 +41,155 @@ BusquedaCuenta::BusquedaCuenta(QWidget *parent)
 }
 
 
+///
+/**
+**/
 BusquedaCuenta::~BusquedaCuenta() {
     _depura("BusquedaCuenta::~BusquedaCuenta", 0);
     _depura("END BusquedaCuenta::~BusquedaCuenta", 0);
 }
 
 
+///
+/**
+\return
+**/
 QString BusquedaCuenta::text() {
     return mdb_codigocuenta;
 }
 
+
+///
+/**
+\return
+**/
 QString BusquedaCuenta::valorCampo() {
     return mdb_idcuenta;
 }
 
+
+///
+/**
+\param val
+**/
 void BusquedaCuenta::setText(QString val) {
     setcodigocuenta(val);
 }
 
+///
+/**
+\param val
+**/
 void BusquedaCuenta::setValorCampo(QString val) {
     setcodigocuenta(val);
 }
 
+
+///
+/**
+\return
+**/
 QString BusquedaCuenta::codigocuenta() {
     return mui_codigocuenta->text();
 }
 
 
+///
+/**
+\return
+**/
 QString BusquedaCuenta::idcuenta() {
     return mdb_idcuenta;
 }
 
 
+///
+/**
+\return
+**/
 QString BusquedaCuenta::nomcuenta() {
     return mdb_nomcuenta;
 }
 
 
+///
+/**
+\return
+**/
 QString BusquedaCuenta::tipocuenta() {
     return mdb_tipocuenta;
 }
 
 
+///
+/**
+**/
 void BusquedaCuenta::hideNombre() {
     mui_nomcuenta->hide();
 }
 
 
+///
+/**
+**/
 void BusquedaCuenta::showNombre() {
     mui_nomcuenta->show();
 }
 
 
+///
+/**
+**/
 void BusquedaCuenta::on_mui_buscar_clicked() {
     s_searchCuenta();
 }
 
 
+///
+/**
+\param q
+**/
 void BusquedaCuenta::on_mui_codigocuenta_textChanged(const QString &q) {
     s_codigocuentatextChanged(q);
 }
 
 
+///
+/**
+**/
 void BusquedaCuenta::on_lostFocus() {
     s_lostFocus();
 }
 
 
+///
+/**
+**/
 void BusquedaCuenta::on_returnPressed() {
     s_returnPressed();
 }
 
 
+///
+/**
+**/
 void BusquedaCuenta::selectAll() {
     mui_codigocuenta->selectAll();
 }
 
 
+///
+/**
+**/
 void BusquedaCuenta::setFocus() {
     mui_codigocuenta->setFocus();
 }
 
 
+///
+/**
+\param emp
+**/
 void BusquedaCuenta::setEmpresaBase(Empresa *emp) {
     _depura("BusquedaCuenta::setempresa", 10);
     BLWidget::setEmpresaBase(emp);
@@ -126,6 +198,10 @@ void BusquedaCuenta::setEmpresaBase(Empresa *emp) {
 }
 
 
+///
+/**
+\param val
+**/
 void BusquedaCuenta::setidcuenta(QString val) {
     _depura("BusquedaCuenta::setidcuenta", 10);
     mdb_idcuenta=val;
@@ -148,6 +224,10 @@ void BusquedaCuenta::setidcuenta(QString val) {
 }
 
 
+///
+/**
+\param val
+**/
 void BusquedaCuenta::setcodigocuenta(QString val) {
     _depura("BusquedaCuenta::setcodigocuenta", 10);
     mdb_codigocuenta = val;
@@ -170,6 +250,8 @@ void BusquedaCuenta::setcodigocuenta(QString val) {
 
 
 /// B&uacute;squeda de cuentas.
+/**
+**/
 void BusquedaCuenta::s_searchCuenta() {
     _depura("BusquedaCuenta::s_searchCuenta", 10);
     /// Generamos un di&aacute;logo.
@@ -199,6 +281,10 @@ void BusquedaCuenta::s_searchCuenta() {
 }
 
 
+///
+/**
+\param val
+**/
 void BusquedaCuenta::s_codigocuentatextChanged(const QString &val) {
     _depura("BusquedaCuenta::s_codigocuentatextChanged", 10, val);
     if (val == "+") {
@@ -209,6 +295,9 @@ void BusquedaCuenta::s_codigocuentatextChanged(const QString &val) {
 }
 
 
+///
+/**
+**/
 void BusquedaCuenta::s_lostFocus() {
     _depura("BusquedaCuenta::s_lostFocus", 10);
     mdb_codigocuenta=mui_codigocuenta->text();
@@ -239,6 +328,9 @@ void BusquedaCuenta::s_lostFocus() {
 }
 
 
+///
+/**
+**/
 void BusquedaCuenta::s_returnPressed() {
     _depura("BusquedaCuenta::s_returnPressed", 10);
     s_lostFocus();
@@ -254,6 +346,9 @@ void BusquedaCuenta::s_returnPressed() {
     sobre si un elemento ha sido creado o no.
     Conecta el SIGNAL activated() con m_activated() para tratarlo.
 */
+/**
+\param parent
+**/
 BusquedaCuentaDelegate::BusquedaCuentaDelegate(QWidget *parent)
         : QComboBox2(parent) {
     _depura("BusquedaCuentaDelegate::BusquedaCuentaDelegate", 10);
@@ -265,10 +360,9 @@ BusquedaCuentaDelegate::BusquedaCuentaDelegate(QWidget *parent)
 }
 
 
-
-
-/** Libera la memoria reservada.
-*/
+/// Libera la memoria reservada.
+/**
+**/
 BusquedaCuentaDelegate::~BusquedaCuentaDelegate() {
     _depura("BusquedaCuentaDelegate::~BusquedaCuentaDelegate", 10);
     _depura("END BusquedaCuentaDelegate::~BusquedaCuentaDelegate", 0);
@@ -279,6 +373,10 @@ BusquedaCuentaDelegate::~BusquedaCuentaDelegate() {
     Recarga cursor de serie_factura y cuando encuentra un registro cuyo codigoserie_factura coincide con el pasado
     como parametro lo establece como el registro activo por el comboBox.
 */
+/**
+\param cod
+\return
+**/
 void BusquedaCuentaDelegate::s_editTextChanged(const QString &cod) {
     _depura("BusquedaCuentaDelegate::s_editTextChanged", 10);
     static bool semaforo = FALSE;

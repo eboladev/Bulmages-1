@@ -40,6 +40,11 @@
 #define coma "'"
 
 
+///
+/**
+\param comp
+\param parent
+**/
 RutaComercialIncView::RutaComercialIncView ( Company *comp, QWidget *parent )
 		: FichaBf ( comp, parent )
 {
@@ -53,6 +58,9 @@ RutaComercialIncView::RutaComercialIncView ( Company *comp, QWidget *parent )
 }
 
 
+///
+/**
+**/
 RutaComercialIncView::~RutaComercialIncView()
 {
 	_depura ( "RutaComercialIncView::~RutaComercialIncView", 0 );
@@ -61,6 +69,9 @@ RutaComercialIncView::~RutaComercialIncView()
 }
 
 
+///
+/**
+**/
 void RutaComercialIncView::on_mui_borrar_clicked()
 {
 	_depura ( "RutaComercialIncView::on_mui_borrar_clicked\n", 0 );
@@ -76,13 +87,27 @@ void RutaComercialIncView::on_mui_borrar_clicked()
 }
 
 
+///
+/**
+**/
 void RutaComercialIncView::closeEvent ( QCloseEvent * )
 {
 	_depura ( "closeEvent", 0 );
 }
 
-void RutaComercialIncView::pintar() {};
 
+///
+/**
+**/
+void RutaComercialIncView::pintar() {
+    _depura("RutaComercialIncView::pintar", 0);
+    _depura("END RutaComercialIncView::pintar", 0);
+};
+
+
+///
+/**
+**/
 void RutaComercialIncView::on_mui_guardar_clicked()
 {
 	_depura ( "RutaComercialIncView::on_mui_guardar_clicked", 0 );
@@ -91,6 +116,13 @@ void RutaComercialIncView::on_mui_guardar_clicked()
 	_depura ( "END RutaComercialIncView::on_mui_guardar_clicked", 0 );
 }
 
+
+///
+/**
+\param id
+\param id1
+\return
+**/
 int RutaComercialIncView::cargar ( QString id, QString id1 )
 {
 	_depura ( "RutaComercialIncView::cargar", 0 );
@@ -102,9 +134,15 @@ int RutaComercialIncView::cargar ( QString id, QString id1 )
 	return err;
 }
 
+
+///
+/**
+**/
 void RutaComercialIncView::on_mui_aceptar_clicked()
 {
+        _depura("RutaComercialIncView::on_mui_aceptar_clicked", 0);
 	on_mui_guardar_clicked();
 	close();
+        _depura("END RutaComercialIncView::on_mui_aceptar_clicked", 0);
 }
 

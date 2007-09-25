@@ -24,6 +24,9 @@
 
 
 /// Subformulario.
+/**
+\param parent
+**/
 AsientoListSubform::AsientoListSubform(QWidget *parent, const char *)
         : SubForm2Bc(parent) {
     _depura("AsientoListSubform::AsientoListSubform", 0);
@@ -46,12 +49,19 @@ AsientoListSubform::AsientoListSubform(QWidget *parent, const char *)
 }
 
 
+///
+/**
+**/
 AsientoListSubform::~AsientoListSubform() {
     _depura("AsientoListSubform::~AsientoListSubform", 0);
     _depura("END AsientoListSubform::~AsientoListSubform", 0);
 }
 
 
+///
+/**
+\return
+**/
 void AsientoListSubform::contextMenuEvent(QContextMenuEvent *) {
     _depura("AsientoListSubform::contextMenuEvent", 0);
     QAction *del = NULL;

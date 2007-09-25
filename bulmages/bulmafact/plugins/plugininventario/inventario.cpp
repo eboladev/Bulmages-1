@@ -26,6 +26,11 @@
 #include "funcaux.h"
 
 
+///
+/**
+\param comp
+\param parent
+**/
 Inventario::Inventario(Company *comp, QWidget *parent) : FichaBf(comp, parent) {
     _depura("Inventario::Inventario", 0);
     companyact = comp;
@@ -35,12 +40,23 @@ Inventario::Inventario(Company *comp, QWidget *parent) : FichaBf(comp, parent) {
     addDBCampo("idinventario", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Inventario", "Identificador inventario"));
     addDBCampo("fechainventario", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Inventario", "Fecha inventario"));
     addDBCampo("nominventario", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Inventario", "Nombre inventario"));
+    _depura("END Inventario::Inventario", 0);
 }
 
 
-Inventario::~Inventario() {}
+///
+/**
+**/
+Inventario::~Inventario() {
+    _depura("Inventario::~Inventario", 0);
+    _depura("END Inventario::~Inventario", 0);
+}
 
 
+///
+/**
+\return
+**/
 int Inventario::borrar() {
     if (DBvalue("idinventario") != "") {
         _depura("vamos a borrar las lineas del inventario", 0);
@@ -59,11 +75,19 @@ int Inventario::borrar() {
 }
 
 
+///
+/**
+**/
 void Inventario::vaciaInventario() {
+    _depura("Inventario::vaciaInventario", 0);
     DBclear();
+    _depura("END Inventario::vaciaInventario", 0);
 }
 
 
+///
+/**
+**/
 void Inventario::pintaInventario() {
     _depura("pintaInventario\n", 0);
     pintaidinventario(DBvalue("idinventario"));
@@ -75,6 +99,10 @@ void Inventario::pintaInventario() {
 
 
 /// Esta funcion carga un Inventario.
+/**
+\param idbudget
+\return
+**/
 int Inventario::cargar(QString idbudget) {
     QString query = "SELECT * FROM inventario WHERE idinventario = " + idbudget;
     cursor2 * cur= companyact->cargacursor(query);
@@ -88,6 +116,10 @@ int Inventario::cargar(QString idbudget) {
 }
 
 
+///
+/**
+\return
+**/
 int Inventario::guardar() {
     _depura("Inventario::guardar()", 0);
     companyact->begin();
@@ -103,43 +135,109 @@ int Inventario::guardar() {
     } catch (...) {
         _depura("Error guardando el inventario", 2);
         companyact->rollback();
+    _depura("END Inventario::guardar()", 0);
         return -1;
     } // end try
 }
 
 
+///
+/**
+**/
 void Inventario::pregenerar() {
     _depura("Inventario::pregenerar", 0);
     listalineas->pregenerar();
     _depura("END Inventario::pregenerar", 0);
 }
 
+
+///
+/**
+\param a
+**/
 void Inventario::setListControlStock(ListControlStockView *a) {
     _depura("Inventario::setListControlStock", 0);
     listalineas = a;
     listalineas->setEmpresaBase(companyact);
+    _depura("END Inventario::setListControlStock", 0);
 }
 
+
+///
+/**
+\return
+**/
 ListControlStockView *Inventario::getlistalineas() {
+    _depura("Inventario::getlistalineas", 0);
+    _depura("Inventario::getlistalineas", 0);
     return listalineas;
 }
 
-void Inventario::pintaidinventario(QString) {}
-void Inventario::pintafechainventario(QString) {}
-void Inventario::pintanominventario(QString) {}
+
+///
+/**
+**/
+void Inventario::pintaidinventario(QString) {
+    _depura("Inventario::pintaidinventario", 0);
+    _depura("END Inventario::pintaidinventario", 0);
+}
+
+
+///
+/**
+**/
+void Inventario::pintafechainventario(QString) {
+    _depura("Inventario::pintafechainventario", 0);
+    _depura("END Inventario::pintafechainventario", 0);
+}
+
+
+///
+/**
+**/
+void Inventario::pintanominventario(QString) {
+    _depura("Inventario::pintanominventario", 0);
+    _depura("END Inventario::pintanominventario", 0);
+}
+
+
+///
+/**
+\param val
+**/
 void Inventario::setidinventario(QString val) {
+    _depura("Inventario::setidinventario", 0);
     setDBvalue("idinventario", val);
     listalineas->setColumnValue("idinventario", val);
+    _depura("END Inventario::setidinventario", 0);
 }
+
+
+///
+/**
+\param val
+**/
 void Inventario::setfechainventario(QString val) {
+    _depura("Inventario::setfechainventario", 0);
     setDBvalue("fechainventario", val);
+    _depura("END Inventario::setfechainventario", 0);
 }
+
+
+///
+/**
+\param val
+**/
 void Inventario::setnominventario(QString val) {
+    _depura("Inventario::setnominventario", 0);
     setDBvalue("nominventario", val);
+    _depura("END Inventario::setnominventario", 0);
 }
 
 
-
+///
+/**
+**/
 void Inventario::imprimirInventario() {
 	_depura("Inventario::imprimirInventario", 0);
 	QString txt = "<blockTable>\n";

@@ -32,41 +32,68 @@
 /** Constructor de CuadranteQTableWidget clase derivada de QTableWidget con
 un eventHandler especifico
 */
+/**
+\param parent
+**/
 CuadranteQTableWidget::CuadranteQTableWidget(QWidget *parent) : QTableWidget(parent) {
     _depura("CuadranteQTableWidget::CuadranteQTableWidget", 0);
     _depura("END CuadranteQTableWidget::CuadranteQTableWidget", 0);
 }
 
 
+///
+/**
+**/
 CuadranteQTableWidget::~CuadranteQTableWidget() {
     _depura("END ~CuadranteQTableWidget", 0);
 }
 
 
-
-
+///
+/**
+\param event
+**/
 void CuadranteQTableWidget::dragEnterEvent(QDragEnterEvent *event) {
     _depura("CuadranteQTableWidget::dropMimeData", 0);
     event->acceptProposedAction();
 }
 
 
+///
+/**
+\param event
+**/
 void CuadranteQTableWidget::dragMoveEvent(QDragMoveEvent *event) {
+    _depura("CuadranteQTableWidget::dragMoveEvent", 0);
     event->acceptProposedAction();
+    _depura("END CuadranteQTableWidget::dragMoveEvent", 0);
 }
 
+///
+/**
+\param event
+**/
 void CuadranteQTableWidget::dropEvent(QDropEvent *event) {
     _depura("CuadranteQTableWidget::dropEvent", 0);
     QTableWidget::dropEvent(event);
+    _depura("END CuadranteQTableWidget::dropEvent", 0);
 }
 
 
+///
+/**
+\param row
+\param column
+\param data
+\return
+**/
 bool CuadranteQTableWidget::dropMimeData (int row, int column,const QMimeData *data, Qt::DropAction ) {
     _depura("CuadranteQTableWidget::dropMimeData", 0  );
 
     if (data->hasText()) {
         ((CuadranteQTextDocument *)cellWidget(row, column))->addTrabajador(data->text());
     }
+    _depura("END CuadranteQTableWidget::dropMimeData", 0  );
     return (TRUE);
 }
 
@@ -76,17 +103,30 @@ bool CuadranteQTableWidget::dropMimeData (int row, int column,const QMimeData *d
 /// ======================================================================
 
 
+///
+/**
+\param emp
+\param parent
+**/
 CuadranteQTextDocument::CuadranteQTextDocument(Company *emp, QWidget *parent) : QLabel(parent), PEmpresaBase(emp) {
+    _depura("CuadranteQTextDocument::CuadranteQTextDocument", 0);
     setScaledContents(TRUE);
-
+    _depura("END CuadranteQTextDocument::CuadranteQTextDocument", 0);
 }
 
 
+///
+/**
+**/
 CuadranteQTextDocument::~CuadranteQTextDocument() {
     _depura("~CuadranteQTextDocument", 0);
 }
 
 
+///
+/**
+\param idtrabajador
+**/
 void CuadranteQTextDocument::addTrabajador(QString idtrabajador) {
     try {
         QString horain = "08:00";
@@ -114,6 +154,12 @@ void CuadranteQTextDocument::addTrabajador(QString idtrabajador) {
 }
 
 
+///
+/**
+\param idalmacen
+\param date
+\return
+**/
 void CuadranteQTextDocument::setAlmFecha(QString idalmacen, const QDate &date) {
     _depura("CuadranteQTextDocument::setAlmFecha", 0);
     try {
@@ -139,10 +185,13 @@ void CuadranteQTextDocument::setAlmFecha(QString idalmacen, const QDate &date) {
 }
 
 
-
-
+///
+/**
+\param idalmacen
+\param data
+**/
 void CuadranteQTextDocument::pintaCuadrante(QString idalmacen, const QDate &date) {
-
+    _depura("CuadranteQTextDocument::pintaCuadrante", 0);
     QString html = "";
     cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM cuadrante, almacen WHERE cuadrante.idalmacen = almacen.idalmacen AND almacen.idalmacen="+idalmacen+" AND cuadrante.fechacuadrante ='" +date.toString("dd/MM/yyyy")+ "'");
     if (!cur) throw -1;
@@ -190,17 +239,37 @@ void CuadranteQTextDocument::pintaCuadrante(QString idalmacen, const QDate &date
     html += "</td></tr></table>";
 
     setText(html);
+    _depura("END CuadranteQTextDocument::pintaCuadrante", 0);
 }
 
+
+///
+/**
+\return
+**/
 QString CuadranteQTextDocument::idcuadrante() {
+    _depura("CuadranteQTextDocument::idcuadrante", 0);
+    _depura("END CuadranteQTextDocument::idcuadrante", 0);
     return mdb_idcuadrante;
 }
 
+
+///
+/**
+**/
 void CuadranteQTextDocument::refresh() {
+    _depura("CuadranteQTextDocument::refresh", 0);
     pintaCuadrante(mdb_idalmacen, mdb_fechacuadrante);
+    _depura("END CuadranteQTextDocument::refresh", 0);
 }
 
+
+///
+/**
+\return
+**/
 const QString CuadranteQTextDocument::impresion() {
+    _depura("CuadranteQTextDocument::impresion", 0);
 
     QString html = "";
     html += "<td>\n";
@@ -238,9 +307,19 @@ const QString CuadranteQTextDocument::impresion() {
     delete cur;
 
     html += "</td>\n";
+    _depura("END CuadranteQTextDocument::impresion", 0);
     return html;
 }
 
+
+///
+/**
+\param idtrabajador
+\param date
+\param horain
+\param horafin
+\return
+**/
 bool CuadranteQTextDocument::buscaConflictos(QString idtrabajador, const QDate &date, QString horain, QString horafin) {
 	_depura ("CuadranteQTextDocument::buscaConflictos", 0);
 	bool conflicto = FALSE;

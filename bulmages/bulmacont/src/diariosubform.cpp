@@ -22,6 +22,10 @@
 #include "diariosubform.h"
 
 
+///
+/**
+\param parent
+**/
 DiarioSubForm::DiarioSubForm(QWidget *parent, const char *) : SubForm2Bc(parent) {
     _depura("DiarioSubForm::DiarioSubForm", 0);
     setDBTableName("borrador");
@@ -67,12 +71,19 @@ DiarioSubForm::DiarioSubForm(QWidget *parent, const char *) : SubForm2Bc(parent)
 }
 
 
+///
+/**
+**/
 DiarioSubForm::~DiarioSubForm() {
     _depura("DiarioSubForm::~DiarioSubForm", 0);
     _depura("END DiarioSubForm::~DiarioSubForm", 0);
 }
 
 
+///
+/**
+\return
+**/
 void DiarioSubForm::contextMenuEvent(QContextMenuEvent *) {
     _depura("DiarioSubForm::contextMenuEvent", 0);
     QAction *del = NULL;

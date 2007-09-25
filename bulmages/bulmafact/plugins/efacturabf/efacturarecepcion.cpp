@@ -29,14 +29,34 @@
 #define EMAIL "efactura@conetxia.com"
 #define DIREMAIL "/home/arturo/efacturamail"
 
+
+///
+/**
+\param emp
+\param parent
+**/
 EFacturaRecepcion::EFacturaRecepcion(Company *emp, QWidget *parent) : FichaBf(emp, parent) {
+        _depura("EFacturaRecepcion::EFacturaRecepcion", 0);
 	QString query;
 	
 	setupUi(this);  // Para que el form se inicialice bien
+        _depura("END EFacturaRecepcion::EFacturaRecepcion", 0);
 }
 
-EFacturaRecepcion::~EFacturaRecepcion() {}
 
+///
+/**
+**/
+EFacturaRecepcion::~EFacturaRecepcion() {
+        _depura("EFacturaRecepcion::~EFacturaRecepcion", 0);
+        _depura("EFacturaRecepcion::~EFacturaRecepcion", 0);
+}
+
+
+///
+/**
+\return
+**/
 void EFacturaRecepcion::on_mui_recibir_clicked() {
 	_depura("EFacturaRecepcion::on_mui_salir_clicked", 0);
 	
@@ -165,12 +185,20 @@ void EFacturaRecepcion::on_mui_recibir_clicked() {
 	_depura("END EFacturaRecepcion::on_mui_salir_clicked", 0);
 }
 
+
+///
+/**
+**/
 void EFacturaRecepcion::on_mui_abrir_clicked() {
 	_depura("EFacturaRecepcion::on_mui_salir_clicked", 0);
 
 	_depura("END EFacturaRecepcion::on_mui_salir_clicked", 0);
 }
 
+
+///
+/**
+**/
 void EFacturaRecepcion::on_mui_salir_clicked() {
 	_depura("EFacturaRecepcion::on_mui_salir_clicked", 0);
 	

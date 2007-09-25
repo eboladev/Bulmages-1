@@ -28,6 +28,10 @@
 #include "ticketqtoolbutton.h"
 
 
+///
+/**
+\return
+**/
 int entryPoint(Bulmafact *) {
     _depura("Estoy dentro del plugin de envio de e-mail", 0);
     return 0;
@@ -61,6 +65,13 @@ int PedidoClienteView_PedidoClienteView(PedidoClienteView *l) {
        return 0;
 }
 */
+
+
+///
+/**
+\param l
+\return
+**/
 int AlbaranClienteView_AlbaranClienteView(AlbaranClienteView *l) {
        _depura("AlbaranClienteView_AlbaranClienteView", 0);
 //================================
@@ -79,6 +90,12 @@ int AlbaranClienteView_AlbaranClienteView(AlbaranClienteView *l) {
        return 0;
 }
 
+
+///
+/**
+\param l
+\return
+**/
 int FacturaView_FacturaView(FacturaView *l) {
        _depura("FacturaView_FacturaView", 0);
 //================================

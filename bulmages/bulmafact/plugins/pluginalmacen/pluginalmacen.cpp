@@ -26,13 +26,21 @@
 #include "almaceneslistview.h"
 
 
-
+///
+/**
+\return
+**/
 int entryPoint(Bulmafact *) {
     _depura("Estoy dentro del plugin de tipos de almacenes", 0);
     return 0;
 }
 
 
+///
+/**
+\param bges
+\return
+**/
 int Company_s_almacenes(Company *bges) {
     _depura("Company_s_almacenes", 0);
     AlmacenesListView *lser = new AlmacenesListView(bges, 0);

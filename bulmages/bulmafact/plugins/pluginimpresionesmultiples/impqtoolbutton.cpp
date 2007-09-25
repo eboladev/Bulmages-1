@@ -47,6 +47,16 @@
 #include "dbrecord.h"
 
 
+///
+/**
+\param pres
+\param ped
+\param alb
+\param fac
+\param cob
+\param parent
+\param 
+**/
 ImpQToolButton::ImpQToolButton(PresupuestoList *pres, PedidosClienteList *ped, AlbaranClienteList *alb,  FacturasList *fac, CobrosList *cob , QWidget *parent) : QToolButton(parent) {
     _depura("ImpQToolButton::ImpQToolButton", 0);
     m_presupuestoList = pres;
@@ -59,8 +69,19 @@ ImpQToolButton::ImpQToolButton(PresupuestoList *pres, PedidosClienteList *ped, A
     _depura("END ImpQToolButton::ImpQToolButton", 0);
 }
 
-ImpQToolButton::~ImpQToolButton() {}
 
+///
+/**
+**/
+ImpQToolButton::~ImpQToolButton() {
+    _depura("ImpQToolButton::~ImpQToolButton", 0);
+    _depura("END ImpQToolButton::~ImpQToolButton", 0);
+}
+
+
+///
+/**
+**/
 void ImpQToolButton::setBoton() {
     _depura("ImpQToolButton::setBoton", 0);
     connect(this, SIGNAL(clicked()), this, SLOT(click()));
@@ -73,6 +94,11 @@ void ImpQToolButton::setBoton() {
     _depura("END ImpQToolButton::setBoton", 0);
 }
 
+
+///
+/**
+\return
+**/
 void ImpQToolButton::click() {
     _depura("ImpQToolButton::click", 0);
 
@@ -330,6 +356,16 @@ void ImpQToolButton::click() {
 
 // ==================================================================================
 
+
+///
+/**
+\param pres
+\param ped
+\param alb
+\param fac
+\param cob
+\param parent
+**/
 SelQToolButton::SelQToolButton(PresupuestoList *pres, PedidosClienteList *ped, AlbaranClienteList *alb,  FacturasList *fac , CobrosList *cob, QWidget *parent) : QToolButton(parent) {
     _depura("SelQToolButton::SelQToolButton", 0);
     m_presupuestoList = pres;
@@ -342,8 +378,18 @@ SelQToolButton::SelQToolButton(PresupuestoList *pres, PedidosClienteList *ped, A
 }
 
 
-SelQToolButton::~SelQToolButton() {}
+///
+/**
+**/
+SelQToolButton::~SelQToolButton() {
+    _depura("SelQToolButton::~SelQToolButton", 0);
+    _depura("END SelQToolButton::~SelQToolButton", 0);
+}
 
+
+///
+/**
+**/
 void SelQToolButton::setBoton() {
     _depura("SelQToolButton::setBoton", 0);
     setObjectName(QString::fromUtf8("exporta"));
@@ -449,6 +495,16 @@ void SelQToolButton::click() {
 
 // ==================================================================================
 
+
+///
+/**
+\param pres
+\param ped
+\param alb
+\param fac
+\param cob
+\param parent
+**/
 EmailQToolButton::EmailQToolButton(PresupuestoList *pres, PedidosClienteList *ped, AlbaranClienteList *alb,  FacturasList *fac, CobrosList *cob , QWidget *parent) : QToolButton(parent) {
     _depura("EmailQToolButton::EmailQToolButton", 0);
     m_presupuestoList = pres;
@@ -460,8 +516,19 @@ EmailQToolButton::EmailQToolButton(PresupuestoList *pres, PedidosClienteList *pe
     _depura("END EmailQToolButton::EmailQToolButton", 0);
 }
 
-EmailQToolButton::~EmailQToolButton() {}
 
+///
+/**
+**/
+EmailQToolButton::~EmailQToolButton() {
+    _depura("EmailQToolButton::~EmailQToolButton", 0);
+    _depura("END EmailQToolButton::~EmailQToolButton", 0);
+}
+
+
+///
+/**
+**/
 void EmailQToolButton::setBoton() {
     _depura("EmailQToolButton::setBoton", 0);
     connect(this, SIGNAL(clicked()), this, SLOT(click()));
@@ -475,6 +542,9 @@ void EmailQToolButton::setBoton() {
 }
 
 
+///
+/**
+**/
 void EmailQToolButton::click() {
     _depura("ImpQToolButton::click", 0);
 

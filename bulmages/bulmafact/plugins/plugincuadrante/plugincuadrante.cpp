@@ -40,12 +40,28 @@
 #include "pedidoproveedorview.h"
 #include "cuadranteview.h"
 
-myplugin4::myplugin4() {}
+
+///
+/**
+**/
+myplugin4::myplugin4() {
+    _depura("myplugin4::myplugin4", 0);
+    _depura("END myplugin4::myplugin4", 0);
+}
 
 
-myplugin4::~myplugin4() {}
+///
+/**
+**/
+myplugin4::~myplugin4() {
+    _depura("myplugin4::~myplugin4", 0);
+    _depura("END myplugin4::~myplugin4", 0);
+}
 
 
+///
+/**
+**/
 void myplugin4::elslot() {
     _depura("myplugin4::elslot", 0);
     CuadranteView *cuad = new CuadranteView((Company *)empresaBase(), 0);
@@ -54,7 +70,13 @@ void myplugin4::elslot() {
     _depura("END myplugin4::elslot", 0);
 }
 
+
+///
+/**
+\param bges
+**/
 void myplugin4::inicializa(Bulmafact *bges) {
+    _depura("myplugin4::inicializa", 0);
     /// Creamos el men&uacute;.
     setEmpresaBase(bges->getcompany());
     m_bulmafact = bges;
@@ -75,10 +97,16 @@ void myplugin4::inicializa(Bulmafact *bges) {
     pPluginMenu->addAction(accion);
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->menuBar()->insertMenu(bges->menuVentana->menuAction(), pPluginMenu);
+    _depura("END myplugin4::inicializa", 0);
 }
 
 
+///
+/**
+\param bges
+**/
 void entryPoint(Bulmafact *bges) {
+    _depura("entryPoint", 0);
     /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
     QTranslator *traductor = new QTranslator(0);
     if (confpr->valor(CONF_TRADUCCION) == "locales") {
@@ -92,9 +120,15 @@ void entryPoint(Bulmafact *bges) {
 
     myplugin4 *plug = new myplugin4();
     plug->inicializa(bges);
+    _depura("END entryPoint", 0);
 }
 
 
+///
+/**
+\param alm
+\return
+**/
 int AlmacenView_AlmacenView(AlmacenView *alm) {
     _depura("esxtoy en la clase almacen", 0);
 
@@ -178,6 +212,12 @@ int AlmacenView_AlmacenView(AlmacenView *alm) {
     return 0;
 }
 
+
+///
+/**
+\param trab
+\return
+**/
 int TrabajadorView_TrabajadorView(TrabajadorView *trab) {
     _depura("TrabajadorView_TrabajadorView", 0);
     SubForm2Bf *l = new SubForm2Bf(trab);
@@ -200,12 +240,25 @@ int TrabajadorView_TrabajadorView(TrabajadorView *trab) {
 }
 
 
+///
+/**
+\param trab
+\return
+**/
 int TrabajadorView_on_mui_lista_currentItemChanged_Post(TrabajadorView *trab)  {
+    _depura("TrabajadorView_on_mui_lista_currentItemChanged_Post", 0);
     SubForm2Bf *l = trab->findChild<SubForm2Bf *>("mui_ausencias");
     l->cargar("SELECT * FROM ausencia WHERE idtrabajador = " + trab->idtrabajador());
+    _depura("END TrabajadorView_on_mui_lista_currentItemChanged_Post", 0);
     return 0;
 }
 
+
+///
+/**
+\param trab
+\return
+**/
 int TrabajadorView_on_mui_guardar_clicked(TrabajadorView *trab) {
     SubForm2Bf *l = trab->findChild<SubForm2Bf *>("mui_ausencias");
     l->setColumnValue("idtrabajador", trab->idtrabajador());

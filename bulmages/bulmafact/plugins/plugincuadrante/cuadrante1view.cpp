@@ -37,6 +37,10 @@
     Resetea el sistema de control de cambios para que considere que no hay cambios por parte del usuario.
     Mete la ventana en el workSpace.
 */
+/**
+\param comp
+\param parent
+**/
 Cuadrante1View::Cuadrante1View(Company *comp, QWidget *parent)
         : FichaBf(comp, parent) {
     _depura("Cuadrante1View::Cuadrante1View", 0);
@@ -86,16 +90,28 @@ Cuadrante1View::Cuadrante1View(Company *comp, QWidget *parent)
 
 /** No precisa acciones adicionales en el destructor.
 */
+/**
+**/
 Cuadrante1View::~Cuadrante1View() {
     _depura("Cuadrante1View::~Cuadrante1View", 0);
     _depura("END Cuadrante1View::~Cuadrante1View", 0);
 }
 
+
+///
+/**
+\return
+**/
 int Cuadrante1View::cargarPost(QString idcuadrante) {
     mui_list->cargar("SELECT * FROM horario LEFT JOIN trabajador ON horario.idtrabajador = trabajador.idtrabajador WHERE idcuadrante=" + idcuadrante);
     return 0;
 }
 
+
+///
+/**
+\return
+**/
 int Cuadrante1View::guardarPost() {
 	mui_list->setColumnValue("idcuadrante", DBvalue("idcuadrante"));
 	mui_list->guardar();

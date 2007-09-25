@@ -28,6 +28,10 @@
  *  Inicializa las variables y elementos del listado.
  */
 /// TODO: Esta derivando de Ficha y deberia derivar de FichaBc
+/**
+\param emp
+\param parent
+**/
 AmortizacionesView::AmortizacionesView(Empresa *emp, QWidget *parent)
         : Listado(emp, parent) {
     _depura("AmortizacionesView::AmortizacionesView", 0);
@@ -49,9 +53,12 @@ AmortizacionesView::AmortizacionesView(Empresa *emp, QWidget *parent)
     _depura("END AmortizacionesView::AmortizacionesView", 0);
 }
 
+
 /** Destructor de la clase que libera mermoria y saca la ventana de la lista
  * de ventanas.
  */
+/**
+**/
 AmortizacionesView::~AmortizacionesView() {
     _depura("AmortizacionesView::~AmortizacionesView", 0);
     sacaWindow();
@@ -59,12 +66,11 @@ AmortizacionesView::~AmortizacionesView() {
 }
 
 
-
-
-
 /** SLOT que responde a la pulsacion del boton crear una nueva amortizacion.
  * Crea una instancia de la clase AmortizacionView y la llama.
  */
+/**
+**/
 void AmortizacionesView::crear() {
     _depura("AmortizacionesView::on_mui_crear_clicked", 0);
     AmortizacionView *amor = new AmortizacionView((Empresa *)empresaBase(), 0);
@@ -76,6 +82,8 @@ void AmortizacionesView::crear() {
 
 /// Esta funci&oacute;n se encarga de borrar una amortizaci&oacute;n.
 /// La que esta seleccionada en el listado.
+/**
+**/
 void AmortizacionesView::borrar() {
     _depura("AmortizacionesView::on_mui_borrar_clicked", 0);
     try {
@@ -105,6 +113,9 @@ void AmortizacionesView::borrar() {
     valor seleccionado.
 */
 /// \TODO: este metodo deberia ser editar
+/**
+\param row
+**/
 void AmortizacionesView::editar(int row) {
     _depura("AmortizacionesView::editAmortizacion " + row, 0);
     mdb_idamortizacion = mui_listado->DBvalue("idamortizacion");

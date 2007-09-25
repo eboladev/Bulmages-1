@@ -33,6 +33,11 @@
 using namespace std;
 
 
+///
+/**
+\param emp
+\param parent
+**/
 DiarioPrintView::DiarioPrintView(Empresa  *emp, QWidget *parent)
         : QDialog(parent), PEmpresaBase(emp) {
     _depura("DiarioPrintView::DiarioPrintView", 0);
@@ -42,12 +47,21 @@ DiarioPrintView::DiarioPrintView(Empresa  *emp, QWidget *parent)
 }
 
 
-DiarioPrintView::~DiarioPrintView() {}
+///
+/**
+**/
+DiarioPrintView::~DiarioPrintView() {
+    _depura("DiarioPrintView::~DiarioPrintView", 0);
+    _depura("END DiarioPrintView::~DiarioPrintView", 0);
+}
 
 
 /// Esta funci&oacute;n monta la consulta que se va a realizar contra la base de datos.
 /// La consulta es de bastante detalle y por eso es conveniente dedicar una funci&oacute;n
 /// a realizarla. Adem&aacute;s dicha consulta puede ser invocada desde distintos sitios.
+/**
+\return
+**/
 QString DiarioPrintView::montaQuery() {
     _depura("DiarioPrintView::montaQuery", 0);
     DiarioView *diario = ((Empresa *)empresaBase())->diarioempresa();
@@ -87,6 +101,9 @@ QString DiarioPrintView::montaQuery() {
 
 
 /// Se ha pulsado sobre el bot&oacute;n aceptar del formulario.
+/**
+\parent
+**/
 void DiarioPrintView::accept() {
     _depura("DiarioPrintView::accept", 0);
     /// Versi&oacute;n por si s&oacute;lo permitimos elegir una opci&oacute;n.
@@ -107,6 +124,10 @@ void DiarioPrintView::accept() {
 }
 
 
+///
+/**
+\param tipus
+**/
 void DiarioPrintView::presentar(char *tipus) {
     _depura("DiarioPrintView::presentar", 0);
     DiarioView *diario = ((Empresa *)empresaBase())->diarioempresa();

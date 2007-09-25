@@ -28,6 +28,12 @@
 class Fixed;
 
 
+///
+/**
+\param comp
+\param parent
+\param f
+**/
 FichaBc::FichaBc(Empresa *comp, QWidget *parent, Qt::WFlags f)
         : Ficha(comp, parent, f) {
     _depura("FichaBc::FichaBc", 0);
@@ -36,6 +42,9 @@ FichaBc::FichaBc(Empresa *comp, QWidget *parent, Qt::WFlags f)
 }
 
 
+///
+/**
+**/
 FichaBc::~FichaBc() {
     _depura("FichaBc::~FichaBc", 0);
     empresaBase()->sacaWindow(this);
@@ -43,6 +52,10 @@ FichaBc::~FichaBc() {
 }
 
 
+///
+/**
+\param form
+**/
 void FichaBc::setListaLineas(SubForm2Bc * form) {
     _depura("FichaBc::setListaLineas", 0);
     m_listalineas = form;
@@ -50,6 +63,10 @@ void FichaBc::setListaLineas(SubForm2Bc * form) {
 }
 
 
+///
+/**
+\return
+**/
 SubForm2Bc* FichaBc::listalineas() {
     _depura("FichaBc::listalineas", 0);
     _depura("END FichaBc::listalineas", 0);
@@ -57,6 +74,10 @@ SubForm2Bc* FichaBc::listalineas() {
 }
 
 
+///
+/**
+\return
+**/
 Empresa * FichaBc::empresaBase() {
     _depura("FichaBc::empresaBase", 0);
     _depura("END FichaBc::empresaBase", 0);

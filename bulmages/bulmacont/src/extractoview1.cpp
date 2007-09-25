@@ -43,6 +43,10 @@
 /// Este archivo contiene la implementaci&oacute;n de la clase extractoview1 que saca el
 /// extracto por pantalla de una o varias cuentas determinadas. Esta clase es una de las
 /// tres principales junto a \ref introapuntes1 y \ref diarioview1.
+/**
+\param emp
+\param parent
+**/
 extractoview1::extractoview1(Empresa *emp, QWidget *parent, int) : FichaBc(emp, parent) {
     _depura("extractoview1::extractoview1", 0);
     setupUi(this);
@@ -71,7 +75,10 @@ extractoview1::extractoview1(Empresa *emp, QWidget *parent, int) : FichaBc(emp, 
     _depura ( "END extractoview1::extractoview1", 0 );
 }
 
+
 /// Destructor de la clase.
+/**
+**/
 extractoview1::~extractoview1() {
     _depura ( "extractoview1::~extractoview1", 0 );
     delete m_cursorcta;
@@ -80,6 +87,10 @@ extractoview1::~extractoview1() {
 }
 
 
+///
+/**
+\param columna
+**/
 void extractoview1::on_mui_list_cellDoubleClicked(int, int columna) {
     _depura("asientosview::on_mui_list_cellDoubleClicked", 0);
     QString textoHeader;
@@ -95,19 +106,29 @@ void extractoview1::on_mui_list_cellDoubleClicked(int, int columna) {
 }
 
 
+///
+/**
+**/
 void extractoview1::on_mui_actualizar_clicked() {
+    _depura("extractoview1::on_mui_actualizar_clicked", 0);
     accept();
+    _depura("END extractoview1::on_mui_actualizar_clicked", 0);
 }
 
 
+///
 void extractoview1::on_mui_configurar_clicked() {
+    _depura("extractoview1::on_mui_configurar_clicked", 0);
     mui_list->showConfig();
+    _depura("END extractoview1::on_mui_configurar_clicked", 0);
 }
 
 
 /// Esta funci&oacute;n carga el cursor de cuentas que forman el todo por el todo.
 /** Tambi&eacute;n ser&aacute; la encargada de recoger la informaci&oacute;n de
     filtraci&oacute;n para que todo sea correcto. */
+/**
+**/
 void extractoview1::accept() {
     _depura ( "extractoview1::accept", 0 );
     QString codinicial = m_codigoinicial->codigocuenta();
@@ -133,6 +154,8 @@ void extractoview1::accept() {
 
 
 /// Esta es la funci&oacute;n que avanza un registro entre las cuentas.
+/**
+**/
 void extractoview1::boton_siguiente() {
     _depura ( "extractoview1::boton_siguiente", 0 );
     if ( m_cursorcta != NULL ) {
@@ -146,6 +169,8 @@ void extractoview1::boton_siguiente() {
 
 
 /// Esta es la funci&oacute;n que retrocede un registro entre las cuentas.
+/**
+**/
 void extractoview1::boton_anterior() {
     _depura ( "extractoview1::boton_anterior", 0 );
     if ( m_cursorcta != NULL ) {
@@ -158,6 +183,8 @@ void extractoview1::boton_anterior() {
 }
 
 /// Retrocede al principio de las cuentas.
+/**
+**/
 void extractoview1::boton_inicio() {
     _depura ( "extractoview1::boton_inicio", 0 );
     if ( m_cursorcta != NULL ) {
@@ -168,6 +195,8 @@ void extractoview1::boton_inicio() {
 }
 
 /// Avanza al final de las cuentas.
+/**
+**/
 void extractoview1::boton_fin() {
     _depura ( "extractoview1::boton_fin", 0 );
     if ( m_cursorcta != NULL ) {
@@ -179,6 +208,8 @@ void extractoview1::boton_fin() {
 
 
 /// Imprime el extracto
+/**
+**/
 void extractoview1::boton_imprimir() {
     _depura ( "extractoview1::boton_imprimir", 0 );
     ExtractoPrintView *print = new ExtractoPrintView ( empresaBase(), 0 );
@@ -187,6 +218,9 @@ void extractoview1::boton_imprimir() {
 }
 
 
+///
+/**
+**/
 void extractoview1::boton_guardar() {
     _depura ( "extractoview1::boton_guardar", 0 );
     QString fn = QFileDialog::getSaveFileName ( this,
@@ -207,6 +241,8 @@ void extractoview1::boton_guardar() {
 
 
 /// Limpia los totales
+/**
+**/
 void extractoview1::vaciar() {
     _depura ( "extractoview1::vaciar", 0 );
     inicialdebe->setText ( "0" );
@@ -219,9 +255,18 @@ void extractoview1::vaciar() {
 }
 
 
-void extractoview1::ajustes() {}
+///
+/**
+**/
+void extractoview1::ajustes() {
+    _depura("extractoview1::ajustes", 0);
+    _depura("END extractoview1::ajustes", 0);
+}
 
 
+///
+/**
+**/
 void extractoview1::on_mui_guardar_clicked() {
     _depura ( "extractoview1::on_mui_guardar_clicked", 0 );
     mui_list->guardar();
@@ -231,6 +276,9 @@ void extractoview1::on_mui_guardar_clicked() {
 
 
 /// Esta funci&oacute;n se encarga de montar la consulta que va a hacer a la base de datos.
+/**
+\return
+**/
 void extractoview1::presentar() {
     _depura ( "extractoview1::presentar", 0 );
     float debe, haber, saldo;
@@ -345,6 +393,13 @@ void extractoview1::presentar() {
 }
 
 
+///
+/**
+\param codinicial
+\param codfinal
+\param fecha1
+\param fecha2
+**/
 void extractoview1::inicializa1 ( QString codinicial, QString codfinal, QString fecha1, QString fecha2, int ) {
     _depura ( "extractoview1::inicializa1", 0 );
     m_codigoinicial->setText ( codinicial );
@@ -356,6 +411,8 @@ void extractoview1::inicializa1 ( QString codinicial, QString codfinal, QString 
 
 
 /// Realiza la casacion de los apuntes.
+/**
+**/
 void extractoview1::on_mui_casacion_clicked() {
     _depura ( "extractoview1::on_mui_casacion_clicked", 0 );
     QString query;
@@ -386,6 +443,8 @@ void extractoview1::on_mui_casacion_clicked() {
 
 
 /// Guarda el punteo en disco para poder recuperarlo despues
+/**
+**/
 void extractoview1::on_mui_guardarpunteo_clicked() {
     _depura ( "extractoview1::on_mui_guardarpunteo_clicked", 0 );
     QString fn = QFileDialog::getSaveFileName ( this,
@@ -416,6 +475,8 @@ void extractoview1::on_mui_guardarpunteo_clicked() {
 /** Esta funci&oacute;n se activa justo cuando se pulsa sobre el bot&oacute;n de
     resetear el punteo.
     Por supuesto cuando se pulsa dicho bot&oacute;n se borra el punteo. */
+/**
+**/
 void extractoview1::on_mui_borrapunteo_clicked() {
     _depura ( "extractoview1::on_mui_borrapunteo_clicked", 0 );
     int valor = QMessageBox::warning ( 0,
@@ -468,6 +529,11 @@ void extractoview1::on_mui_cargarpunteos_clicked() {
 }
 
 
+///
+/**
+\param idcuenta
+\return
+**/
 QString extractoview1::imprimeExtractoCuenta ( QString idcuenta ) {
     _depura ( "extractoview1::imprimeExtractoCuenta", 0, idcuenta );
     QString salida = "";
@@ -616,6 +682,8 @@ QString extractoview1::imprimeExtractoCuenta ( QString idcuenta ) {
 
 
 /// Slot que responde a la Impresion del extracto
+/**
+**/
 void extractoview1::on_mui_imprimir_clicked() {
     _depura ( "extractoview1::on_mui_imprimir_clicked", 0 );
     QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "extracto.rml";

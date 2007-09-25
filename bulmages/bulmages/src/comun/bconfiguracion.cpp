@@ -79,13 +79,17 @@ BConfiguracion::BConfiguracion(BSelector *ref, QWidget *parent, Qt::WFlags f = 0
 ///
 /**
 **/
-BConfiguracion::~BConfiguracion() {}
+BConfiguracion::~BConfiguracion() {
+    _depura("BConfiguracion::~BConfiguracion", 0);
+    _depura("END BConfiguracion::~BConfiguracion", 0);
+}
 
 
 /// 
 /**
 **/
 void BConfiguracion::cerrar() {
+    _depura("BConfiguracion::cerrar", 0);
     /// Guardamos la configuracion.
     for (int i = 0; i < 1000; i++) {
         if (confpr->nombre(i) != "") {
@@ -97,6 +101,7 @@ void BConfiguracion::cerrar() {
     //traductor->load(archivo.c_str(), confpr->valor(CONF_DIR_TRADUCCION).c_str());
     //Cargo la nueva fuente
     close();
+    _depura("END BConfiguracion::cerrar", 0);
 }
 
 
@@ -105,6 +110,7 @@ void BConfiguracion::cerrar() {
 /**
 **/
 void BConfiguracion::tablaconfiguracion() {
+    _depura("BConfiguracion::tablaconfiguracion", 0);
     QTableWidgetItem *item0;
     QTableWidgetItem *item1;
     QTableWidgetItem *item2;
@@ -125,6 +131,7 @@ void BConfiguracion::tablaconfiguracion() {
     } // end for
     m_tconfiguracion->resizeColumnToContents(0);
     m_tconfiguracion->resizeColumnToContents(1);
+    _depura("END BConfiguracion::tablaconfiguracion", 0);
 }
 
 
@@ -132,26 +139,37 @@ void BConfiguracion::tablaconfiguracion() {
 /**
 **/
 void BConfiguracion::cargarFichaBulmages() {
+    _depura("BConfiguracion::cargarFichaBulmages", 0);
     lineEditA_1->setText(PunteroAlSelector->nombreempresa->text());
+    _depura("END BConfiguracion::cargarFichaBulmages", 0);
 }
 
 
 ///
 /**
 **/
-void BConfiguracion::FontChanged(const QString &) {}
+void BConfiguracion::FontChanged(const QString &) {
+    _depura("BConfiguracion::FontChanged", 0);
+    _depura("END BConfiguracion::FontChanged", 0);
+}
 
 
 ///
 /**
 **/
-void BConfiguracion::FontSizeChanged(int) {}
+void BConfiguracion::FontSizeChanged(int) {
+    _depura("BConfiguracion::FontSizeChanged", 0);
+    _depura("END BConfiguracion::FontSizeChanged", 0);
+}
 
 
 ///
 /**
 **/
-void BConfiguracion::BotonA_10aceptar() {}
+void BConfiguracion::BotonA_10aceptar() {
+    _depura("BConfiguracion::BotonA_10aceptar", 0);
+    _depura("END BConfiguracion::BotonA_10aceptar", 0);
+}
 
 
 #include "importContaplus.h"
@@ -161,12 +179,14 @@ void BConfiguracion::BotonA_10aceptar() {}
 /**
 **/
 void BConfiguracion::BotonContaplus() {
+    _depura("BConfiguracion::BotonContaplus", 0);
     postgresiface2 *DBconn = new postgresiface2();
     DBconn->inicializa(PunteroAlSelector->empresaDB());
     importContaplus *import = new importContaplus(DBconn, 0, 0);
     import->exec();
     delete import;
     delete DBconn;
+    _depura("END BConfiguracion::BotonContaplus", 0);
 }
 
 
@@ -177,12 +197,14 @@ void BConfiguracion::BotonContaplus() {
 /**
 **/
 void BConfiguracion::s_importexportbulmafact() {
+    _depura("BConfiguracion::s_importexportbulmafact", 0);
     postgresiface2 *DBconn = new postgresiface2();
     DBconn->inicializa(PunteroAlSelector->empresaDB());
     ImportExportBulmafactView *import= new ImportExportBulmafactView(DBconn, 0, 0);
     import->exec();
     delete import;
     delete DBconn;
+    _depura("END BConfiguracion::s_importexportbulmafact", 0);
 }
 
 
@@ -190,10 +212,12 @@ void BConfiguracion::s_importexportbulmafact() {
 /**
 **/
 void BConfiguracion::BotonA_11rechazar() {
+    _depura("BConfiguracion::BotonA_11rechazar", 0);
     /// Poner el comboBoxFuente y el comboBoxIdioma a sus valores anteriores.
     if (PunteroAlSelector->tipoEmpresa() == "BulmaCont") {
         cargarFichaBulmages();
     } // end if
+    _depura("END BConfiguracion::BotonA_11rechazar", 0);
 }
 
 
@@ -201,6 +225,7 @@ void BConfiguracion::BotonA_11rechazar() {
 /**
 **/
 void BConfiguracion::BotonA_6nombreEmpresa() {
+    _depura("BConfiguracion::BotonA_6nombreEmpresa", 0);
     /// Activa el line edit para que pueda ser editado.
     if (lineEditA_1->isReadOnly() ) {
         lineEditA_1->setReadOnly(false);
@@ -208,6 +233,7 @@ void BConfiguracion::BotonA_6nombreEmpresa() {
         lineEditA_1->setReadOnly(true);
         PunteroAlSelector->nombreempresa->setText(lineEditA_1->text());
     } // end if
+    _depura("BConfiguracion::BotonA_6nombreEmpresa", 0);
 }
 
 
@@ -216,9 +242,11 @@ void BConfiguracion::BotonA_6nombreEmpresa() {
 /**
 **/
 void BConfiguracion::nuevaEmpresa() {
+    _depura("BConfiguracion::nuevaEmpresa", 0);
     BNuevaEmpresa *n = new BNuevaEmpresa(this);
     n->exec();
     delete n;
+    _depura("END BConfiguracion::nuevaEmpresa", 0);
 }
 
 
@@ -227,9 +255,11 @@ void BConfiguracion::nuevaEmpresa() {
 /**
 **/
 void BConfiguracion::nuevaFacturacion() {
+    _depura("BConfiguracion::nuevaFacturacion", 0);
     nuevafact *n = new nuevafact(this);
     n->exec();
     delete n;
+    _depura("END BConfiguracion::nuevaFacturacion", 0);
 }
 
 
@@ -237,10 +267,12 @@ void BConfiguracion::nuevaFacturacion() {
 /**
 **/
 void BConfiguracion::BotonA_61clonarEmpresa() {
+    _depura("BConfiguracion::BotonA_61clonarEmpresa", 0);
     QString dbEmpresa;
     if (dbEmpresa != "") {
         QMessageBox::information(this, "Debug", "Clonando la base de datos: " + dbEmpresa + "\n\nProceso no disponible...\n", QMessageBox::Ok);
     } // end if
+    _depura("END BConfiguracion::BotonA_61clonarEmpresa", 0);
 }
 
 
@@ -250,6 +282,7 @@ void BConfiguracion::BotonA_61clonarEmpresa() {
 /**
 **/
 void BConfiguracion::borrarEmpresa() {
+    _depura("BConfiguracion::borrarEmpresa", 0);
     QString dbEmpresa;
     QString nombreEmpresa;
     QString idEmpresa;
@@ -276,6 +309,7 @@ void BConfiguracion::borrarEmpresa() {
         } // end if
     } // end if
     close();
+    _depura("END BConfiguracion::borrarEmpresa", 0);
 }
 
 
@@ -283,6 +317,7 @@ void BConfiguracion::borrarEmpresa() {
 /**
 **/
 void BConfiguracion::salvarEmpresa() {
+    _depura("BConfiguracion::salvarEmpresa", 0);
     QString dbEmpresa;
     QString PGserver;
     //  PGserver = "-h ";
@@ -306,6 +341,7 @@ void BConfiguracion::salvarEmpresa() {
             system(cadena.toAscii().constData());
         } // end if
     } // end if
+    _depura("END BConfiguracion::salvarEmpresa", 0);
 }
 
 
@@ -343,49 +379,67 @@ void BConfiguracion::restaurarEmpresa() {
 ///
 /**
 **/
-void BConfiguracion::cargarFichaUsuarios() {}
+void BConfiguracion::cargarFichaUsuarios() {
+    _depura("BConfiguracion::cargarFichaUsuarios", 0);
+    _depura("END BConfiguracion::cargarFichaUsuarios", 0);
+}
 
 
 ///
 /**
 **/
 void BConfiguracion::listView1_currentChanged(QListWidgetItem *) {
+    _depura("BConfiguracion::listView1_currentChanged", 0);
 #ifndef WIN32
 #endif
+    _depura("END BConfiguracion::listView1_currentChanged", 0);
 }
 
 
 /// Salvamos los usuarios en la base de datos.
 /**
 **/
-void BConfiguracion::BotonB_1Aplicar() {}
+void BConfiguracion::BotonB_1Aplicar() {
+    _depura("BConfiguracion::BotonB_1Aplicar", 0);
+    _depura("END BConfiguracion::BotonB_1Aplicar", 0);
+}
 
 
 /// Desacemos los cambios que hemos hecho (UNDO).
 /**
 **/
 void BConfiguracion::BotonB_2Desacer() {
+    _depura("BConfiguracion::BotonB_2Desacer", 0);
     cargarFichaUsuarios();
+    _depura("END BConfiguracion::BotonB_2Desacer", 0);
 }
 
 
 ///
 /**
 **/
-void BConfiguracion::listView2_clickBotonDerecho(QListWidgetItem *, const QPoint&, int) {}
+void BConfiguracion::listView2_clickBotonDerecho(QListWidgetItem *, const QPoint&, int) {
+    _depura("BConfiguracion::listView2_clickBotonDerecho", 0);
+    _depura("END BConfiguracion::listView2_clickBotonDerecho", 0);
+}
 
 
 /// Por conveniencia (Bug QT??).
 /**
 **/
-void BConfiguracion::listiView2_clickMouse(int, QListWidgetItem *, const QPoint&, int) {}
+void BConfiguracion::listiView2_clickMouse(int, QListWidgetItem *, const QPoint&, int) {
+    _depura("BConfiguracion::listiView2_clickMouse", 0);
+    _depura("END BConfiguracion::listiView2_clickMouse", 0);
+}
 
 
 ///
 /**
 **/
 void BConfiguracion::on_mui_restaurarc_clicked() {
+    _depura("BConfiguracion::on_mui_restaurarc_clicked", 0);
     restaurarEmpresa();
+    _depura("END BConfiguracion::on_mui_restaurarc_clicked", 0);
 }
 
 
@@ -393,7 +447,9 @@ void BConfiguracion::on_mui_restaurarc_clicked() {
 /**
 **/
 void BConfiguracion::on_mui_restaurarf_clicked() {
+    _depura("BConfiguracion::on_mui_restaurarf_clicked", 0);
     restaurarEmpresa();
+    _depura("END BConfiguracion::on_mui_restaurarf_clicked", 0);
 }
 
 
@@ -401,7 +457,9 @@ void BConfiguracion::on_mui_restaurarf_clicked() {
 /**
 **/
 void BConfiguracion::on_mui_borrarempresabc_clicked() {
+    _depura("BConfiguracion::on_mui_borrarempresabc_clicked", 0);
     borrarEmpresa();
+    _depura("END BConfiguracion::on_mui_borrarempresabc_clicked", 0);
 }
 
 
@@ -409,5 +467,7 @@ void BConfiguracion::on_mui_borrarempresabc_clicked() {
 /**
 **/
 void BConfiguracion::on_mui_borrarempresabf_clicked() {
+    _depura("BConfiguracion::on_mui_borrarempresabf_clicked", 0);
     borrarEmpresa();
+    _depura("END BConfiguracion::on_mui_borrarempresabf_clicked", 0);
 }

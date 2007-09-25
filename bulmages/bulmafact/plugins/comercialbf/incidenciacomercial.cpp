@@ -27,6 +27,11 @@
 #include "plugins.h"
 
 
+///
+/**
+\param comp
+\param parent
+**/
 IncidenciaComercial::IncidenciaComercial(Company *comp, QWidget *parent) : FichaBf(comp, parent) {
     _depura("IncidenciaComercial::IncidenciaComercial", 0);
     setTitleName(tr("Incidencia Comercial"));
@@ -44,9 +49,19 @@ IncidenciaComercial::IncidenciaComercial(Company *comp, QWidget *parent) : Ficha
 }
 
 
-IncidenciaComercial::~IncidenciaComercial() {}
+///
+/**
+**/
+IncidenciaComercial::~IncidenciaComercial() {
+        _depura("IncidenciaComercial::~IncidenciaComercial", 0);
+        _depura("END IncidenciaComercial::~IncidenciaComercial", 0);
+}
 
 
+///
+/**
+\return
+**/
 void IncidenciaComercial::pintar() {
     _depura("IncidenciaComercial::pintar", 0);
     /// Disparamos los plugins con IncidenciaComercial_pintar
@@ -56,6 +71,12 @@ void IncidenciaComercial::pintar() {
     _depura("END IncidenciaComercial::pintar", 0);
 }
 
+
+///
+/**
+\param id
+\return
+**/
 int IncidenciaComercial::cargar(QString id) {
     _depura("IncidenciaComercial::cargar", 0);
     QString query = "SELECT * FROM incidenciacomercial WHERE idincidenciacomercial = " + id;

@@ -53,6 +53,11 @@
 #define PADRE          m_cpadre
 
 
+///
+/**
+\param emp
+\param parent
+**/
 BalanceTreeView::BalanceTreeView(Empresa *emp, QWidget *parent, int)
         : FichaBc(emp, parent) {
     setupUi(this);
@@ -128,6 +133,9 @@ BalanceTreeView::BalanceTreeView(Empresa *emp, QWidget *parent, int)
 }
 
 
+///
+/**
+**/
 BalanceTreeView::~BalanceTreeView() {
     _depura("BalanceTreeView::~BalanceTreeView", 0);
     sacaWindow();
@@ -144,6 +152,9 @@ BalanceTreeView::~BalanceTreeView() {
 /// 0 -> del d&iacute;a actual.
 /// 1 -> del mes actual.
 /// 2 -> del a&ntilde;o actual.
+/**
+\param tipo
+**/
 void BalanceTreeView::boton_extracto1(int tipo) {
     _depura("BalanceTreeView::boton_extracto1", 0);
     QDate fecha1, fecha2, fechaact, fechaact1;
@@ -177,6 +188,9 @@ void BalanceTreeView::boton_extracto1(int tipo) {
 /// 0 -> del d&iacute;a actual.
 /// 1 -> del mes actual.
 /// 2 -> del a&ntilde;o actual.
+/**
+\param tipo
+**/
 void BalanceTreeView::boton_diario1(int tipo) {
     _depura("BalanceTreeView::boton_diario1", 0);
     QDate fecha1, fecha2, fechaact, fechaact1;
@@ -206,6 +220,9 @@ void BalanceTreeView::boton_diario1(int tipo) {
 }
 
 
+///
+/**
+**/
 void BalanceTreeView::boton_asiento() {
     _depura("BalanceTreeView::boton_asiento", 0);
     empresaBase()->intapuntsempresa()->show();
@@ -214,6 +231,14 @@ void BalanceTreeView::boton_asiento() {
 }
 
 
+///
+/**
+\param codinicial
+\param codfinal
+\param fecha1
+\param fecha2
+\param idc_coste
+**/
 void BalanceTreeView::inicializa1(QString codinicial, QString codfinal, QString fecha1, QString fecha2, int idc_coste) {
     _depura("BalanceTreeView::inicializa1", 0);
     m_codigoinicial->setText(codinicial);
@@ -226,6 +251,9 @@ void BalanceTreeView::inicializa1(QString codinicial, QString codfinal, QString 
 }
 
 
+///
+/**
+**/
 void BalanceTreeView::presentar() {
     _depura("BalanceTreeView::presentar", 0);
     //QListViewItem1 * it;
@@ -389,6 +417,10 @@ void BalanceTreeView::presentar() {
 }
 
 
+///
+/**
+\param nivel
+**/
 void BalanceTreeView::nivelactivated(int nivel) {
     _depura("BalanceTreeView::nivelactivated", 0);
     combonivel->setCurrentIndex(nivel);
@@ -404,6 +436,10 @@ void BalanceTreeView::nivelactivated(int nivel) {
 
 
 //void BalanceTreeView::nivelactivated1(int nivel, Q3ListViewItem *ot) {
+///
+/**
+\param ot
+**/
 void BalanceTreeView::nivelactivated1(int nivel, QTreeWidgetItem *ot) {
     _depura("BalanceTreeView::nivelactivated1", 0);
     if (ot) {
@@ -468,6 +504,8 @@ void BalanceTreeView::contextmenu(const QPoint &point) {
 /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n de imprimir.
 /** Crea el objeto \ref BalancePrintView lo inicializa con los mismos valores del balance
     y lo ejecuta en modo Modal. */
+/**
+**/
 void BalanceTreeView::on_mui_imprimir_clicked() {
     _depura("BalanceTreeView::on_mui_imprimir_clicked", 0);
     BalancePrintView *balan = new BalancePrintView(empresaBase());
@@ -476,6 +514,10 @@ void BalanceTreeView::on_mui_imprimir_clicked() {
     _depura("END BalanceTreeView::on_mui_imprimir_clicked", 0);
 }
 
+
+///
+/**
+**/
 void BalanceTreeView::on_mui_actualizar_clicked() {
     _depura("BalanceTreeView::on_mui_actualizar_clicked", 0);
         presentar();

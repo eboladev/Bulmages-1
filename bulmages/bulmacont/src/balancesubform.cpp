@@ -23,6 +23,10 @@
 #include "balancesubform.h"
 
 
+///
+/**
+\param parent
+**/
 BalanceSubForm::BalanceSubForm(QWidget *parent, const char *) : SubForm2Bc(parent) {
     _depura("BalanceSubForm::BalanceSubForm", 0);
     setDBTableName("borrador");
@@ -44,6 +48,10 @@ BalanceSubForm::BalanceSubForm(QWidget *parent, const char *) : SubForm2Bc(paren
 }
 
 
+///
+/**
+\return
+**/
 void BalanceSubForm::contextMenuEvent(QContextMenuEvent *) {
     _depura("SubForm2Bc::contextMenuEvent", 0);
     QAction *del = NULL;

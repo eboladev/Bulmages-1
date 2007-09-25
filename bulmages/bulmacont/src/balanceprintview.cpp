@@ -44,6 +44,10 @@
 using namespace std;
 
 
+///
+/**
+\param emp
+**/
 BalancePrintView::BalancePrintView(Empresa *emp)
         : QDialog(0), PEmpresaBase(emp) {
     _depura("BalancePrintView::BalancePrintView", 0);
@@ -68,6 +72,9 @@ BalancePrintView::BalancePrintView(Empresa *emp)
 }
 
 
+///
+/**
+**/
 BalancePrintView::~BalancePrintView() {
    _depura("BalancePrintView::~BalancePrintView", 0);
    _depura("END BalancePrintView::~BalancePrintView", 0);
@@ -80,6 +87,8 @@ BalancePrintView::~BalancePrintView() {
     finicial = Indica la fecha a partir de la cual comenzar los saldos.
     ffinal = Indica la fecha para terminar de contar los saldos.
     arbol = Indica si hay que representar el balance en forma de árbol o no. */
+/**
+**/
 void BalancePrintView::inicializa1(QString codinicial1, QString codfinal1, QString finicial1, QString ffinal1, bool arbol) {
     _depura("BalancePrintView::inicializa1", 0);
     m_fechainicial1->setText(finicial1);
@@ -92,6 +101,8 @@ void BalancePrintView::inicializa1(QString codinicial1, QString codfinal1, QStri
 
 
 /// Se ha pulsado sobre el bot&oacute;n aceptar del formulario.
+/**
+**/
 void BalancePrintView::on_mui_imprimir_clicked() {
     _depura("BalancePrintView::on_mui_imprimir_clicked", 0);
     if (radiotexto->isChecked())
@@ -107,6 +118,9 @@ void BalancePrintView::on_mui_imprimir_clicked() {
 
 
 /// Se ha pulsado sobre el bot&oacute;n aceptar del formulario.
+/**
+\param tipus
+**/
 void BalancePrintView::presentar(char *tipus) {
     _depura("BalancePrintView::presentar", 0);
 #ifndef WIN32
@@ -392,6 +406,8 @@ void BalancePrintView::presentar(char *tipus) {
 
 /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n de selecci&oacute;n de canal.
 /** Presenta la ventana de selecci&oacute;n de canales \ref selectcanalview. */
+/**
+**/
 void BalancePrintView::on_mui_canales_clicked() {
     _depura("BalancePrintView::on_mui_canales_clicked", 0);
     selectcanalview *selcanales = ((Empresa *)empresaBase())->getselcanales();
@@ -404,6 +420,8 @@ void BalancePrintView::on_mui_canales_clicked() {
 /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n de selecci&oacute;n de
 /// centros de coste.
 /** Presenta la ventana de selecci&oacute;n de centros de coste \ref SelectCCosteView. */
+/**
+**/
 void BalancePrintView::on_mui_ccostes_clicked() {
     _depura("BalancePrintView::on_mui_ccostes_clicked", 0);
     SelectCCosteView *selccostes = ((Empresa *)empresaBase())->getselccostes();

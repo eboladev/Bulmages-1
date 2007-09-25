@@ -37,6 +37,11 @@
 #endif
 
 
+///
+/**
+\param emp
+\param parent
+**/
 CAnualesPrintView::CAnualesPrintView ( Empresa  *emp, QWidget *parent )
         : QDialog ( parent ), PEmpresaBase(emp)
 {
@@ -48,6 +53,9 @@ CAnualesPrintView::CAnualesPrintView ( Empresa  *emp, QWidget *parent )
 }
 
 
+///
+/**
+**/
 CAnualesPrintView::~CAnualesPrintView()
 {
     _depura ( "CAnualesPrintView::~CAnualesPrintView", 0 );
@@ -67,6 +75,9 @@ CAnualesPrintView::~CAnualesPrintView()
             FSi
         FPara
     FMientras */
+/**
+\return
+**/
 void CAnualesPrintView::on_mui_aceptar_clicked()
 {
     _depura ( "CAnualesPrintView::on_mui_aceptar_clicked", 0 );
@@ -242,6 +253,12 @@ void CAnualesPrintView::on_mui_aceptar_clicked()
 }
 
 
+///
+/**
+\param formula
+\param return
+\return
+**/
 bool CAnualesPrintView::procesaFormula ( const QDomNode &formula )
 {
     _depura ( "CAnualesPrintView::procesaFormula", 0 );
@@ -287,6 +304,10 @@ bool CAnualesPrintView::procesaFormula ( const QDomNode &formula )
     Si el operador ya tiene valor (devuelve TRUE)
     Si la formula ya tiene valor le ponemos el valor y devuelve TRUE
     devuelve FALSe */
+/**
+\param operador
+\return
+**/
 bool CAnualesPrintView::procesaOperador ( const QDomNode &operador )
 {
     _depura ( "CAnualesPrintView::procesaOperador", 0, operador.toElement().text() );
@@ -328,6 +349,13 @@ bool CAnualesPrintView::procesaOperador ( const QDomNode &operador )
 }
 
 
+///
+/**
+\param formula
+\param valoract
+\param valorant
+\return
+**/
 bool CAnualesPrintView::valorItem ( const QDomNode &formula, QString &valoract, QString &valorant )
 {
     _depura ( "CAnualesPrintView::valorItem", 0, formula.toElement().tagName() );
@@ -343,6 +371,12 @@ bool CAnualesPrintView::valorItem ( const QDomNode &formula, QString &valoract, 
 }
 
 
+///
+/**
+\param nodo
+\param valoract
+\param valorant
+**/
 void CAnualesPrintView::agregaValores ( const QDomNode &nodo, const QString &valoract, const QString &valorant )
 {
     _depura ( "CAnualesPrintView::agregaValores", 0, nodo.toElement().tagName() + " " + valoract );
@@ -416,6 +450,13 @@ void CAnualesPrintView::agregaValores ( const QDomNode &nodo, const QString &val
 }
 
 
+///
+/**
+\param periodo1finicial
+\param periodo1ffinal
+\param periodo2finicial
+\param periodo2ffinal
+**/
 void CAnualesPrintView::imprimir ( QString periodo1finicial, QString periodo1ffinal, QString periodo2finicial, QString periodo2ffinal )
 {
     _depura ( "CAnualesPrintView::imprimir", 0 );
@@ -508,6 +549,11 @@ void CAnualesPrintView::imprimir ( QString periodo1finicial, QString periodo1ffi
 }
 
 
+///
+/**
+\param id
+\return
+**/
 void CAnualesPrintView::setidbalance ( QString id )
 {
     _depura ( "CAnualesPrintView::setidbalance", 0 );

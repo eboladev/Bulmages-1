@@ -21,6 +21,10 @@
 #include "listcontrolstockview.h"
 
 
+///
+/**
+\param parent
+**/
 ListControlStockView::ListControlStockView(QWidget *parent, const char *)
         : SubForm2Bf(parent) {
     _depura("ListControlStockView::ListControlStockView", 0);
@@ -44,6 +48,10 @@ ListControlStockView::ListControlStockView(QWidget *parent, const char *)
 }
 
 
+///
+/**
+\param idinventario
+**/
 void ListControlStockView::cargar(QString idinventario) {
     _depura("ListControlStockView::cargar", 0);
     mdb_idinventario = idinventario;
@@ -57,6 +65,10 @@ void ListControlStockView::cargar(QString idinventario) {
 }
 
 
+///
+/**
+\return
+**/
 int ListControlStockView::borrar() {
     _depura("ListControlStockView::borrar", 0);
     empresaBase()->ejecuta("DELETE FROM controlstock WHERE idinventario = " + mdb_idinventario);
@@ -65,6 +77,9 @@ int ListControlStockView::borrar() {
 }
 
 
+///
+/**
+**/
 void ListControlStockView::pregenerar() {
     _depura("ListControlStockView::pregenerar", 0);
     QString query;
@@ -74,9 +89,19 @@ void ListControlStockView::pregenerar() {
 }
 
 
-ListControlStockView::~ListControlStockView() {}
+///
+/**
+**/
+ListControlStockView::~ListControlStockView() {
+    _depura("ListControlStockView::~ListControlStockView", 0);
+    _depura("END ListControlStockView::~ListControlStockView", 0);
+}
 
 
+///
+/**
+\return
+**/
 int ListControlStockView::guardar() {
     _depura("ListControlStockView::guardar", 0);
     SubForm2Bf::guardar();

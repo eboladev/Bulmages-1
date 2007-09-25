@@ -37,6 +37,11 @@
 #include "funcaux.h"
 
 
+///
+/**
+\param comp
+\param parent
+**/
 ListTiposTrabajoView::ListTiposTrabajoView(Company *comp, QWidget *parent)
         : FichaBf(comp, parent) {
     _depura("ListTiposTrabajoView::ListTiposTrabajoView", 1);
@@ -58,6 +63,9 @@ ListTiposTrabajoView::ListTiposTrabajoView(Company *comp, QWidget *parent)
 }
 
 
+///
+/**
+**/
 void ListTiposTrabajoView::on_mui_aceptar_clicked() {
     try {
         mui_listado->guardar();
@@ -68,6 +76,9 @@ void ListTiposTrabajoView::on_mui_aceptar_clicked() {
 }
 
 
+///
+/**
+**/
 ListTiposTrabajoView::~ListTiposTrabajoView() {
     _depura("ListTiposTrabajoView::~ListTiposTrabajoView", 0);
     _depura("END ListTiposTrabajoView::~ListTiposTrabajoView", 0);

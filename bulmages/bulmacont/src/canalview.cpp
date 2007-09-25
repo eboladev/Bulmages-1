@@ -23,6 +23,11 @@
 #include  "selectcanalview.h"
 
 
+///
+/**
+\param emp
+\param parent
+**/
 canalview::canalview(Empresa  *emp, QWidget *parent)
         : FichaBc(emp, parent) {
     _depura("canalview::canalview", 0);
@@ -50,6 +55,9 @@ canalview::canalview(Empresa  *emp, QWidget *parent)
 }
 
 
+///
+/**
+**/
 canalview::~canalview() {
     _depura("canalview::~canalview", 0);
     empresaBase()->sacaWindow(this);
@@ -57,6 +65,9 @@ canalview::~canalview() {
 }
 
 
+///
+/**
+**/
 void canalview::pintar() {
     _depura("canalview::pintar", 0);
     /// Si el combocoste no esta vacio se muestra el registro que contiene.
@@ -78,6 +89,9 @@ void canalview::pintar() {
 
 
 /// Esta funci&oacute;n sirve para hacer el cambio sobre un centro de coste.
+/**
+\param numcombo
+**/
 void canalview::on_mui_idcanal_valueChanged(QString numcombo) {
     _depura("canalview::on_mui_idcanal_valueChanged", 0);
     int idcanal1 = numcombo.toInt();
@@ -114,6 +128,8 @@ void canalview::on_mui_idcanal_valueChanged(QString numcombo) {
 
 
 /// Esta funci&oacute;n muestra el canal en la ventana.
+/**
+**/
 void canalview::mostrarplantilla() {
     _depura("canalview::mostrarplantilla", 0);
     QString query;
@@ -130,6 +146,9 @@ void canalview::mostrarplantilla() {
 }
 
 
+///
+/**
+**/
 void canalview::on_mui_guardar_clicked() {
     _depura("canalview::on_mui_guardar_clicked", 0);
     QString nom = mui_nomcanal->text();
@@ -147,6 +166,9 @@ void canalview::on_mui_guardar_clicked() {
 }
 
 
+///
+/**
+**/
 void canalview::on_mui_crear_clicked() {
     _depura("canalview::on_mui_crear_clicked", 0);
     /// Si se ha modificado el contenido advertimos y guardamos.
@@ -172,6 +194,9 @@ void canalview::on_mui_crear_clicked() {
 }
 
 
+///
+/**
+**/
 void canalview::on_mui_borrar_clicked() {
     _depura("canalview::on_mui_borrar_clicked", 0);
     switch (QMessageBox::warning(this,
@@ -191,6 +216,10 @@ void canalview::on_mui_borrar_clicked() {
 }
 
 
+///
+/**
+\param e
+**/
 void canalview::closeEvent(QCloseEvent *e) {
     _depura("ccosteview::closeEvent", 0);
     if (dialogChanges_hayCambios()) {

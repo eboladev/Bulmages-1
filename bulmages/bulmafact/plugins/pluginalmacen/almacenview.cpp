@@ -37,6 +37,10 @@
     Resetea el sistema de control de cambios para que considere que no hay cambios por parte del usuario.
     Mete la ventana en el workSpace.
 */
+/**
+\param comp
+\param parent
+**/
 AlmacenView::AlmacenView(Company *comp, QWidget *parent)
         : FichaBf(comp, parent) {
     _depura("AlmacenView::AlmacenView", 0);
@@ -70,8 +74,10 @@ AlmacenView::AlmacenView(Company *comp, QWidget *parent)
 }
 
 
-/** No precisa acciones adicionales en el destructor.
-*/
+/// No precisa acciones adicionales en el destructor.
+
+/**
+**/
 AlmacenView::~AlmacenView() {
     _depura("AlmacenView::~AlmacenView", 0);
     _depura("END AlmacenView::~AlmacenView", 0);

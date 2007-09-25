@@ -47,6 +47,10 @@
 
 /// Se prepara el combobox de niveles a mostrar y se ponen las fechas de balance.
 /** \bug No es necesario borrar la tabla de designer para que esto funcione. */
+/**
+\param emp
+\param parent
+**/
 BalanceView::BalanceView(Empresa *emp, QWidget *parent, int)
         : FichaBc(emp, parent) {
     _depura("BalanceView::BalanceView", 0);
@@ -84,6 +88,9 @@ BalanceView::BalanceView(Empresa *emp, QWidget *parent, int)
 }
 
 
+///
+/**
+**/
 BalanceView::~BalanceView() {
     _depura("BalanceView::~BalanceView", 0);
     empresaBase()->sacaWindow(this);
@@ -91,6 +98,9 @@ BalanceView::~BalanceView() {
 }
 
 
+///
+/**
+**/
 void BalanceView::on_mui_actualizar_clicked() {
     _depura("BalanceView::on_mui_actualizar_clicked", 0);
     accept();
@@ -101,6 +111,13 @@ void BalanceView::on_mui_actualizar_clicked() {
 /// Se encarga de inicializar la clase con los par&aacute;metros que se le han pasado.
 /** Esta funci&ocute;n sirve para que desde fuera se pueda preparar a la clase para
     presentar un balance predeterminado. */
+/**
+\param codinicial
+\param codfinal
+\param fecha1
+\param fecha2
+\param idc_coste
+**/
 void BalanceView::inicializa1(QString codinicial, QString codfinal, QString fecha1, QString fecha2, QString idc_coste) {
     _depura("BalanceView::inicializa1", 0);
     m_codigoinicial->setText(codinicial);
@@ -117,6 +134,8 @@ void BalanceView::inicializa1(QString codinicial, QString codfinal, QString fech
 /** \bug Hay que eliminar el uso de double y usar un sistema de punto fijo.
     Crea una tabla auxiliar de balance y hace en ella todos los c&aacute;lculos necesarios
     para concretar los resultados. */
+/**
+**/
 void BalanceView::presentar() {
     _depura("BalanceView::presentar", 0);
     QString finicial = m_fechainicial1->text();
@@ -140,6 +159,15 @@ void BalanceView::presentar() {
 }
 
 
+///
+/**
+\param finicial
+\param ffinal
+\param cinicial
+\param cfinal
+\param nivel
+\param jerarquico
+**/
 void BalanceView::presentarSyS(QString finicial, QString ffinal, QString cinicial, QString cfinal, int nivel, int, bool jerarquico) {
     _depura("BalanceView::presentarSyS", 0);
     double tsaldoant = 0, tdebe = 0, thaber = 0, tsaldo = 0;
@@ -313,6 +341,9 @@ void BalanceView::presentarSyS(QString finicial, QString ffinal, QString cinicia
 }
 
 
+///
+/**
+**/
 void BalanceView::accept() {
     _depura("BalanceView::accept", 0);
     presentar();
@@ -320,6 +351,9 @@ void BalanceView::accept() {
 }
 
 
+///
+/**
+**/
 void BalanceView::nivelactivated(int) {
     _depura("BalanceView::nivelactivated", 0);
     presentar();
@@ -330,6 +364,8 @@ void BalanceView::nivelactivated(int) {
 /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n de imprimir.
 /** Crea el objeto \ref BalancePrintView lo inicializa con los mismos valores del
     balance y lo ejecuta en modo Modal. */
+/**
+**/
 void BalanceView::on_mui_imprimir_clicked() {
     _depura("BalanceView::on_mui_imprimir_clicked", 0);
     BalancePrintView *balan = new BalancePrintView(empresaBase());

@@ -32,6 +32,11 @@
 #include "fixed.h"
 
 
+///
+/**
+\param comp
+\param parent
+**/
 Asiento1::Asiento1(Empresa *comp, QWidget *parent) : FichaBc (comp, parent) {
     _depura("Asiento1::Asiento1", 0);
     setTitleName(tr("Asiento Contable"));
@@ -48,62 +53,100 @@ Asiento1::Asiento1(Empresa *comp, QWidget *parent) : FichaBc (comp, parent) {
 }
 
 
+///
+/**
+**/
 Asiento1::~Asiento1() {
     _depura("Asiento1::~Asiento1", 0);
     _depura("END Asiento1::~Asiento1", 0);
 }
 
 
+///
+/**
+**/
 void Asiento1::pintaidasiento(QString) {
     _depura("funcion no implementada pintaidasiento");
 }
 
 
+///
+/**
+**/
 void Asiento1::pintadescripcion(QString) {
     _depura("funcion no implementada pintadescripcion");
 }
 
 
+///
+/**
+**/
 void Asiento1::pintafecha(QString) {
     _depura("funcion no implementada pintafecha");
 }
 
 
+///
+/**
+**/
 void Asiento1::pintacomentariosasiento(QString) {
     _depura("funcion no implementada pintacomentariosasiento", 2);
 }
 
 
+///
+/**
+**/
 void Asiento1::pintaordenasiento(QString) {
     _depura("funcion no implementada pintaordenasiento", 2);
 }
 
 
+///
+/**
+**/
 void Asiento1::pintaclase(QString) {
     _depura("funcion no implementada pintaclase", 2);
 }
 
 
+///
+/**
+**/
 void Asiento1::calculaypintatotales() {
     _depura("funcion no implementada calculaypintatotales", 2);
 }
 
 
+///
+/**
+**/
 void Asiento1::trataestadoAsiento1() {
     _depura("funcion no implementada trataestadoAsiento1", 2);
 }
 
 
+///
+/**
+**/
 void Asiento1::asiento_cierre() {
     _depura("Funcion no implementada", 2);
 }
 
 
+///
+/**
+**/
 void Asiento1::asiento_apertura() {
     _depura("Funcion no implementada", 2);
 }
 
 
+///
+/**
+\param finicial
+\param ffinal
+**/
 void Asiento1::asiento_regularizacion(QString finicial, QString ffinal) {
     _depura("Asiento1::regularizacion", 0);
 	// Primero, cogemos los saldos de las cuentas usando la clase Arbol
@@ -250,6 +293,11 @@ void Asiento1::asiento_regularizacion(QString finicial, QString ffinal) {
                  3: Se ha borrado correctamente.
                 -1: Ha habido algun error.
 */
+///
+/**
+\param atendido
+\return
+**/
 int Asiento1::borrar(bool atendido) {
     _depura("Asiento1::borrar", 0);
     int error;
@@ -294,6 +342,9 @@ int Asiento1::borrar(bool atendido) {
 }
 
 
+///
+/**
+**/
 void Asiento1::vaciar() {
     _depura("Asiento1::vaciar", 0);
     DBclear();
@@ -305,8 +356,9 @@ void Asiento1::vaciar() {
 }
 
 
-/** Se encarga del pintado del asiento.
-*/
+/// Se encarga del pintado del asiento.
+/**
+**/
 void Asiento1::pintar() {
     _depura("Asiento1::pintar", 0, idasiento());
     pintaidasiento(idasiento());
@@ -323,6 +375,10 @@ void Asiento1::pintar() {
 
 
 /// Esta funci&oacute; carga un asiento.
+/**
+\param idasiento
+\return
+**/
 int Asiento1::cargar(QString idasiento) {
     _depura("Asiento1::cargar", 0, idasiento);
     QString query = "SELECT * FROM asiento WHERE idasiento = " + idasiento;
@@ -339,16 +395,28 @@ int Asiento1::cargar(QString idasiento) {
 }
 
 
+///
+/**
+\return
+**/
 Fixed Asiento1::totaldebe(QString idasiento) {
     return listalineas->totaldebe(idasiento);
 }
 
 
+///
+/**
+\return
+**/
 Fixed Asiento1::totalhaber(QString idbudget) {
     return listalineas->totalhaber(idbudget);
 }
 
 
+///
+/**
+\return
+**/
 void Asiento1::abrir() {
     _depura("Asiento1::abreAsiento1", 0);
     if (estadoAsiento1() != ASCerrado)
@@ -363,6 +431,10 @@ void Asiento1::abrir() {
 }
 
 
+///
+/**
+\return
+**/
 void Asiento1::cerrar() {
     _depura("Asiento1::cierraAsiento1", 0);
     if (estadoAsiento1() != ASAbierto) {
@@ -385,6 +457,10 @@ void Asiento1::cerrar() {
 }
 
 
+///
+/**
+\return
+**/
 Asiento1::estadoasiento Asiento1::estadoAsiento1() {
     _depura("Asiento1::estadoasiento", 0);
     if (DBvalue("idasiento") == "")
@@ -412,6 +488,10 @@ Asiento1::estadoasiento Asiento1::estadoAsiento1() {
 }
 
 
+///
+/**
+\return
+**/
 int Asiento1::guardar() {
     _depura("Asiento1::guardar", 0);
     QString id;
@@ -439,6 +519,10 @@ int Asiento1::guardar() {
 }
 
 
+///
+/**
+\return
+**/
 Empresa *Asiento1::companyact() {
     _depura("Asiento1::companyact", 0);
     _depura("END Asiento1::companyact", 0);
@@ -446,6 +530,10 @@ Empresa *Asiento1::companyact() {
 }
 
 
+///
+/**
+\param val
+**/
 void Asiento1::setidasiento(QString val) {
     _depura("Asiento1::setidasiento", 0);
     setDBvalue("idasiento", val);
@@ -454,6 +542,10 @@ void Asiento1::setidasiento(QString val) {
 }
 
 
+///
+/**
+\return
+**/
 QString Asiento1::idasiento() {
     _depura("Asiento1::idasiento", 0);
     _depura("END Asiento1::idasiento", 0);
@@ -462,6 +554,9 @@ QString Asiento1::idasiento() {
 
 
 /// Establece cual es la lista subformulario del presupuesto.
+/**
+\param a
+**/
 void Asiento1::setListLinAsiento1(ListLinAsiento1View *a) {
     _depura("Asiento1::setListLinAsiento1", 0);
     listalineas = a;

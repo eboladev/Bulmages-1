@@ -56,6 +56,8 @@
 
 
 /// SLOT que muestra la ventana de asientos.
+/**
+**/
 void Empresa::s_asiento1() {
     _depura("Empresa::s_asiento1", 0);
     introapunts2->setWindowState(introapunts2->windowState() & ~Qt::WindowMinimized | Qt::WindowActive);
@@ -63,6 +65,10 @@ void Empresa::s_asiento1() {
 }
 
 
+///
+/**
+\param bcont
+**/
 Empresa::Empresa(Bulmacont *bcont) : EmpresaBase() {
     _depura("Empresa::Empresa", 0);
     m_bulmacont = bcont;
@@ -78,6 +84,9 @@ Empresa::Empresa(Bulmacont *bcont) : EmpresaBase() {
 }
 
 
+///
+/**
+**/
 Empresa::~Empresa() {
     _depura("Empresa::~Empresa", 0);
     guardaConf();
@@ -87,52 +96,91 @@ Empresa::~Empresa() {
 }
 
 
+///
+/**
+\return
+**/
 postgresiface2 *Empresa::bdempresa() {
     return (this);
 }
 
 
+///
+/**
+\return
+**/
 BalanceView *Empresa::balanceempresa() {
     return balance;
 }
 
-
+///
+/**
+\return
+**/
 extractoview1 *Empresa::extractoempresa() {
     return extracto;
 }
 
 
+///
+/**
+\return
+**/
 DiarioView *Empresa::diarioempresa() {
     return diario;
 }
 
 
+///
+/**
+\return
+**/
 Asiento1View *Empresa::intapuntsempresa() {
     return introapunts2;
 }
 
 
+///
+/**
+\return
+**/
 Asiento1View *Empresa::intapuntsempresa2() {
     return introapunts2;
 }
 
 
+///
+/**
+\return
+**/
 int Empresa::numdigitosempresa() {
     return numdigitos;
 }
 
 
+///
+/**
+\return
+**/
 QString Empresa::nomuserempresa() {
     return nombre;
 }
 
 
+///
+/**
+\return
+**/
 QString Empresa::nombreempresa() {
     return nombre;
 }
 
 
 /// Inicializa la clase con el nombre de la base de datos y con el workspace.
+/**
+\param splash
+\return
+**/
 int Empresa::createMainWindows(Splash *splash) {
     _depura("Empresa::createMainWindows", 0);
     try {
@@ -230,6 +278,8 @@ int Empresa::createMainWindows(Splash *splash) {
 
 /// Maximiza todas las ventanas que est&aacute;n en el workspace de la aplicaci&oacute;n.
 /** Env&iacute;a un mensaje showMaximized a todos los objetos que deben ser maximizados. */
+/**
+**/
 void Empresa::maximiza() {
     _depura("Empresa::maximiza", 0);
     diario->showMaximized();
@@ -240,6 +290,9 @@ void Empresa::maximiza() {
 
 
 /// Esta funci&oacute;n abre la ventana que presenta las cuentas contables.
+/**
+\return
+**/
 int Empresa::muestracuentas() {
     _depura("Empresa::muestracuentas", 0);
     m_listcuentas->show();
@@ -250,6 +303,9 @@ int Empresa::muestracuentas() {
 
 /// Esta funci&oacute;n presenta los centros de coste.
 /** Luego recarga los comboboxes de todo el resto de pantallas para que se actualizen. */
+/**
+\return
+**/
 int Empresa::ccostes() {
     _depura("Empresa::ccostes", 0);
     ccosteview *ccoste = new ccosteview(this, 0);
@@ -262,6 +318,9 @@ int Empresa::ccostes() {
 
 /// Esta funci&oacute;n presenta la pantalla de edicion de canales.
 /** Luego recarga los comboboxes de todo el resto de pantallas para que se actualizen. */
+/**
+\return
+**/
 int Empresa::canales() {
     _depura("Empresa::canales", 0);
     canalview *canal = new canalview(this, 0);
@@ -274,6 +333,8 @@ int Empresa::canales() {
 
 /// Crea la ventana de tipos de IVA y la presenta en modo modal.
 /** Es invocada desde la clase principal. */
+/**
+**/
 void Empresa::bloqueoFechas() {
     _depura("Empresa::bloqueoFechas", 0);
     BbloqFecha *tip = new BbloqFecha(this, 0);
@@ -285,6 +346,9 @@ void Empresa::bloqueoFechas() {
 
 /// Crea la ventana de tipos de IVA y la presenta en modo modal.
 /** Es invocada desde la clase principal. */
+/**
+\return
+**/
 int Empresa::tiposIVA() {
     _depura("Empresa::tiposIVA", 0);
     tipoivaview *tip = new tipoivaview(this, 0);
@@ -297,6 +361,9 @@ int Empresa::tiposIVA() {
 
 /// Crea la ventana de Formas de Pago y la presenta en modo modal.
 /** Es invocada desde la clase principal. */
+/**
+\return
+**/
 int Empresa::fPago() {
     _depura("Empresa::fPago", 0);
     fpagoview *fp = new fpagoview(this, 0);
@@ -307,6 +374,10 @@ int Empresa::fPago() {
 }
 
 
+///
+/**
+\return
+**/
 int Empresa::cambioejercicio() {
     _depura("Empresa::cambioejercicio", 0);
     /// El ejercicio ha cambiado y recargamos el cursor de asientos del nuevo ejercicio.
@@ -318,6 +389,9 @@ int Empresa::cambioejercicio() {
 
 
 /// Crea la ventana de edici&oacute;n de cuentas y devuelve un puntero a esta.
+/**
+\return
+**/
 CuentaView* Empresa::newcuentaview() {
     _depura("Empresa::newcuentaview", 0);
     CuentaView *nuevae = new CuentaView(this, 0);
@@ -326,6 +400,10 @@ CuentaView* Empresa::newcuentaview() {
 }
 
 
+///
+/**
+\return
+**/
 int Empresa::nuevacuenta() {
     _depura("Empresa::nuevacuenta", 0);
     CuentaView *nuevae = newcuentaview();
@@ -336,6 +414,10 @@ int Empresa::nuevacuenta() {
 }
 
 
+///
+/**
+\return
+**/
 int Empresa::muestraapuntes1() {
     _depura("Empresa::muestraapuntes1", 0);
     introapunts2->setWindowState(introapunts2->windowState() & ~Qt::WindowMinimized | Qt::WindowActive);
@@ -344,6 +426,10 @@ int Empresa::muestraapuntes1() {
 }
 
 
+///
+/**
+\return
+**/
 int Empresa::muestraasientos() {
     _depura("Empresa::muestraasientos", 0);
     m_listasientos->setWindowState(m_listasientos->windowState() & ~Qt::WindowMinimized | Qt::WindowActive);
@@ -352,6 +438,10 @@ int Empresa::muestraasientos() {
 }
 
 
+///
+/**
+\return
+**/
 int Empresa::propiedadempresa() {
     _depura("Empresa::propiedadempresa", 0);
     propiedadesempresa *nuevae = new propiedadesempresa(this, 0);
@@ -362,6 +452,10 @@ int Empresa::propiedadempresa() {
 }
 
 
+///
+/**
+\return
+**/
 int Empresa::amortizaciones() {
     _depura("Empresa::amortizaciones", 0);
     AmortizacionesView *amors = new AmortizacionesView(this, 0);
@@ -374,6 +468,9 @@ int Empresa::amortizaciones() {
 
 /// Esta funci&oacute;n llama a la pantalla de creacion, modificaci&oacute;n
 /// de masas patrimoniales.
+/**
+\return
+**/
 int Empresa::mpatrimoniales() {
     _depura("Empresa::mpatrimoniales", 0);
     mpatrimonialesview *nuevae = new mpatrimonialesview(this, 0);
@@ -387,6 +484,9 @@ int Empresa::mpatrimoniales() {
 
 /// Esta funci&oacute;n llama a la pantalla de creacion, modificaci&oacute;n
 /// de masas patrimoniales.
+/**
+\return
+**/
 int Empresa::compbalance() {
     _depura("Empresa::compbalance", 0);
     CAnualesView *nueva = new CAnualesView(this, 0);
@@ -397,6 +497,10 @@ int Empresa::compbalance() {
 }
 
 
+///
+/**
+\return
+**/
 int Empresa::libromayor() {
     _depura("Empresa::libromayor", 0);
     extracto->setWindowState(extracto->windowState() &  ~Qt::WindowMinimized | Qt::WindowActive);
@@ -405,6 +509,10 @@ int Empresa::libromayor() {
 }
 
 
+///
+/**
+\return
+**/
 int Empresa::boton_siguiente() {
     _depura("Empresa::boton_siguiente", 0);
     QWidget *widget;
@@ -419,6 +527,10 @@ int Empresa::boton_siguiente() {
 }
 
 
+///
+/**
+\return
+**/
 int Empresa::boton_anterior() {
     _depura("Empresa::boton_anterior", 0);
     QWidget *widget;
@@ -433,6 +545,10 @@ int Empresa::boton_anterior() {
 }
 
 
+///
+/**
+\return
+**/
 int Empresa::boton_guardar() {
     _depura("Empresa::boton_guardar", 0);
     QWidget *widget;
@@ -447,6 +563,10 @@ int Empresa::boton_guardar() {
 }
 
 
+///
+/**
+\return
+**/
 int Empresa::boton_imprimir() {
     _depura("Empresa::boton_imprimir", 0);
     QWidget *widget = m_pWorkspace->activeWindow();
@@ -462,6 +582,10 @@ int Empresa::boton_imprimir() {
 }
 
 
+///
+/**
+\return
+**/
 int Empresa::boton_reload() {
     _depura("Empresa::boton_reload", 0);
     QWidget *widget;
@@ -478,6 +602,10 @@ int Empresa::boton_reload() {
 }
 
 
+///
+/**
+\return
+**/
 int Empresa::boton_primero() {
     _depura("Empresa::boton_primero", 0);
     QWidget *widget;
@@ -493,6 +621,10 @@ int Empresa::boton_primero() {
 }
 
 
+///
+/**
+\param
+**/
 int Empresa::boton_ultimo() {
     _depura("Empresa::boton_ultimo", 0);
     QWidget *widget;
@@ -508,6 +640,10 @@ int Empresa::boton_ultimo() {
 }
 
 
+///
+/**
+\return
+**/
 int Empresa::librodiario() {
     _depura("Empresa::librodiario", 0);
     diario->setWindowState(diario->windowState() & ~Qt::WindowMinimized | Qt::WindowActive);
@@ -516,6 +652,10 @@ int Empresa::librodiario() {
 }
 
 
+///
+/**
+\return
+**/
 int Empresa::librobalance() {
     _depura("Empresa::librobalance", 0);
     balance->setWindowState(balance->windowState() & ~Qt::WindowMinimized | Qt::WindowActive);
@@ -524,6 +664,9 @@ int Empresa::librobalance() {
 }
 
 
+///
+/**
+**/
 void Empresa::Abrirasientos() {
     _depura("Empresa::Abrirasientos", 0);
     cursor2 *cur = NULL;
@@ -541,6 +684,8 @@ void Empresa::Abrirasientos() {
 }
 
 
+/**
+**/
 void Empresa::Ordenarasientos() {
     _depura("Empresa::Ordenarasientos", 10);
     QString query= "SELECT reordenaasientosall()";
@@ -559,6 +704,10 @@ void Empresa::Ordenarasientos() {
 }
 
 
+///
+/**
+\return
+**/
 int Empresa::registroiva() {
     _depura("Empresa::registroiva", 0);
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
@@ -568,6 +717,10 @@ int Empresa::registroiva() {
 }
 
 
+///
+/**
+\return
+**/
 int Empresa::listado347() {
     _depura("Empresa::modelo347", 0);
     Listado347 *dlg347 = new Listado347(this, "0");
@@ -578,6 +731,9 @@ int Empresa::listado347() {
 }
 
 
+///
+/**
+**/
 void Empresa::cierraempresa() {
     _depura("Empresa::cierraempresa", 0);
     introapunts2->show();
@@ -586,6 +742,9 @@ void Empresa::cierraempresa() {
 }
 
 
+///
+/**
+**/
 void Empresa::abreempresa() {
     _depura("Empresa::abreempresa", 0);
     introapunts2->show();
@@ -594,6 +753,9 @@ void Empresa::abreempresa() {
 }
 
 
+///
+/**
+**/
 void Empresa::regularizaempresa() {
     _depura("Empresa::regularizaempresa", 0);
     QString hoy = QDate::currentDate().toString("dd/MM/yyyy");
@@ -602,6 +764,12 @@ void Empresa::regularizaempresa() {
     _depura("END Empresa::regularizaempresa", 0);
 }
 
+
+///
+/**
+\param finicial
+\param ffinal
+**/
 void Empresa::regularizaempresa(QString finicial, QString ffinal) {
     _depura("Empresa::regularizaempresa", 0);
     introapunts2->show();
@@ -609,6 +777,9 @@ void Empresa::regularizaempresa(QString finicial, QString ffinal) {
     _depura("END Empresa::regularizaempresa", 0);
 }
 
+///
+/**
+**/
 void Empresa::Filtro() {
     _depura("Empresa::Filtro", 0);
     QWidget *widget;
@@ -621,6 +792,8 @@ void Empresa::Filtro() {
 
 /// Esta funci&oacute;n reemplaza en los apuntes todas las ocurrencias de una
 /// determinada cuenta por otra cuenta.
+/**
+**/
 void Empresa::reemplazacuentaenasientos() {
     _depura("Empresa::reemplazacuentaenasientos", 0);
     CambiaCtaView *ctac = new CambiaCtaView(this, 0, false);
@@ -630,6 +803,8 @@ void Empresa::reemplazacuentaenasientos() {
 
 
 /// Esta funci&oacute;n recalcula los saldos parciales del plan contable.
+/**
+**/
 void Empresa::recalculasaldos() {
     _depura("Empresa::recalculasaldos", 0);
     ejecuta("SELECT recalculasaldos()");
@@ -638,6 +813,9 @@ void Empresa::recalculasaldos() {
 
 
 /// Esta funci&oacute;n se dispara para poner en marcha la gesti&oacute;n de cobros y pagos.
+/**
+\return
+**/
 int Empresa::cobPag() {
     _depura("Empresa::cobPag", 0);
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
@@ -647,6 +825,10 @@ int Empresa::cobPag() {
 }
 
 
+///
+/**
+\return
+**/
 SelectCCosteView *Empresa::getselccostes() {
     _depura("Empresa::getselccostes", 0);
     _depura("END Empresa::getselccostes", 0);
@@ -654,6 +836,10 @@ SelectCCosteView *Empresa::getselccostes() {
 }
 
 
+///
+/**
+\return
+**/
 selectcanalview *Empresa::getselcanales() {
     _depura("Empresa::getselcanales", 0);
     _depura("END Empresa::getselcanales", 0);
@@ -661,6 +847,9 @@ selectcanalview *Empresa::getselcanales() {
 }
 
 
+///
+/**
+**/
 void Empresa::centrocostedefecto() {
     _depura("Empresa::centrocostedefecto", 0);
     selccostes->exec();
@@ -668,6 +857,9 @@ void Empresa::centrocostedefecto() {
 }
 
 
+///
+/**
+**/
 void Empresa::canaldefecto() {
     _depura("Empresa::canaldefecto", 0);
     selcanales->exec();
@@ -686,7 +878,10 @@ Empresa* Empresa::empresaBase() {
 */
 
 /// Guarda la configuracion de programa para poder recuperar algunas cosas de presentacion.
+/**
+**/
 void Empresa::guardaConf() {
+    _depura("Empresa::guardaConf", 0);
     QFile file(confpr->valor(CONF_DIR_USER) + "bulmacont_" + nameDB() + ".cfn");
     /// Guardado del orden y de configuraciones varias.
     if (file.open(QIODevice::WriteOnly)) {
@@ -719,10 +914,15 @@ void Empresa::guardaConf() {
         stream << "</CONFIG>\n";
         file.close();
     } // end if
+    _depura("END Empresa::guardaConf", 0);
 }
 
 /// Guarda la configuracion de programa para poder recuperar algunas cosas de presentacion.
+/**
+\return
+**/
 void Empresa::cargaConf() {
+    _depura("Empresa::cargaConf", 0);
     QFile file(confpr->valor(CONF_DIR_USER) + "bulmacont_" + nameDB() + ".cfn");
     QDomDocument doc("mydocument");
     if (!file.open(QIODevice::ReadOnly))
@@ -802,6 +1002,7 @@ void Empresa::cargaConf() {
 	/// Si hay una ventana activa se pone como activa.
 	if (activewindow) 
 		m_bulmacont->workspace()->setActiveWindow(activewindow);
+    _depura("END Empresa::cargaConf", 0);
 }
 
 

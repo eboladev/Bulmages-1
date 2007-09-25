@@ -31,21 +31,41 @@
 #include "busquedafecha.h"
 
 
+///
+/**
+\param a
+\param b
+**/
 void ImportExportBulmafactView::alerta(int a, int b) {
+    _depura("ImportExportBulmafactView::alerta", 0);
     m_progressbar->setRange(a, b);
+    _depura("END ImportExportBulmafactView::alerta", 0);
 }
 
 
+///
+/**
+\param mensaje
+**/
 void ImportExportBulmafactView::mensajeria(QString mensaje) {
+    _depura("ImportExportBulmafactView::mensajeria", 0);
     fprintf(stderr, "MENSAJE:\n\n\n%s\n\n\n", mensaje.toAscii().constData());
     mensajein += mensaje + "<BR>";
     m_mensajes->setText("<HTML><BODY BGCOLOR='#CCCCCC'>" + QString(mensajein.toLatin1()) + "</BODY></HTML>");
     m_mensajes->ensureCursorVisible();
+    _depura("END ImportExportBulmafactView::mensajeria", 0);
 }
 
 
+///
+/**
+\param con
+\param parent
+\param f
+**/
 ImportExportBulmafactView::ImportExportBulmafactView(postgresiface2 *con, QWidget *parent, Qt::WFlags f = 0)
         : QDialog(parent, f), pgimportfiles(con) {
+    _depura("ImportExportBulmafactView::ImportExportBulmafactView", 0);
     setupUi(this);
 
     /// Signals and slots connections.
@@ -56,15 +76,23 @@ ImportExportBulmafactView::ImportExportBulmafactView(postgresiface2 *con, QWidge
 
     conexionbase = con;
     inicializaMensajeria();
+    _depura("END ImportExportBulmafactView::ImportExportBulmafactView", 0);
 }
 
 
 /// Se ha pulsado sobre el boton de bsqueda de una subcuenta.
+/**
+**/
 void ImportExportBulmafactView::botonBuscarXML() {
+    _depura("ImportExportBulmafactView::botonBuscarXML", 0);
     m_XML->setText(QFileDialog::getSaveFileName(this, tr("Guardar archivo"), confpr->valor(CONF_DIR_USER), tr("Contaplus (*.xml)")));
+    _depura("END ImportExportBulmafactView::botonBuscarXML", 0);
 }
 
 
+///
+/**
+**/
 void ImportExportBulmafactView::botonImportar() {
     _depura("ImportExportBulmafactView::botonImportar", 0);
     inicializaMensajeria();
@@ -87,7 +115,10 @@ void ImportExportBulmafactView::botonImportar() {
 /// con las funciones que se van a encargar de presentacion del estado de la importacion.
 /// \todo Los punteros a funcion deberian ser reemplazados por funciones virtuales y
 /// haciendo derivar esta clase de pgimportfiles.
+/**
+**/
 void ImportExportBulmafactView::botonExportar() {
+    _depura("ImportExportBulmafactView::botonExportar", 0);
     /// Leemos las fechas entre las que tiene que ser el listado.
     inicializaMensajeria();
     QString finicial = m_fechainicial->text();
@@ -105,5 +136,6 @@ void ImportExportBulmafactView::botonExportar() {
         filexml.close();
     } // end if
     m_mensajes->setText("");
+    _depura("END ImportExportBulmafactView::botonExportar", 0);
 }
 

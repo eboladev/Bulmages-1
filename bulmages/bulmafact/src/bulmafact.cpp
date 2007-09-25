@@ -90,7 +90,8 @@ Bulmafact::Bulmafact(QString bd) : QMainWindow() {
 
     m_list->setVisible(TRUE);
     m_pb->setVisible(FALSE);
-    statusBar()->showMessage(tr("Listo"), 2000);
+    statusBar()->showMessage(bd, 2000);
+    setWindowTitle(bd);
     _depura("END Bulmafact::Bulmafact", 0);
 }
 

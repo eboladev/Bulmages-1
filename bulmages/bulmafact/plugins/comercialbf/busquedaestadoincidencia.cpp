@@ -24,6 +24,10 @@
 #include "funcaux.h"
 
 
+///
+/**
+\param parent
+**/
 BusquedaEstadoIncidencia::BusquedaEstadoIncidencia(QWidget *parent)
         : QComboBox(parent) {
     _depura("BusquedaEstadoIncidencia::BusquedaEstadoIncidencia", 0);
@@ -52,9 +56,19 @@ BusquedaEstadoIncidencia::BusquedaEstadoIncidencia(QWidget *parent)
 }
 
 
-BusquedaEstadoIncidencia::~BusquedaEstadoIncidencia() {}
+///
+/**
+**/
+BusquedaEstadoIncidencia::~BusquedaEstadoIncidencia() {
+    _depura("BusquedaEstadoIncidencia::~BusquedaEstadoIncidencia", 0);
+    _depura("END BusquedaEstadoIncidencia::~BusquedaEstadoIncidencia", 0);
+}
 
 
+///
+/**
+\param estado
+**/
 void BusquedaEstadoIncidencia::setestado(QString estado) {
     _depura("BusquedaEstadoIncidencia::setestado", 0);
     int i = 0;

@@ -36,16 +36,30 @@
 #include "postgresiface2.h"
 
 
+///
+/**
+**/
 Modgenps::Modgenps() {
     _depura("Modgenps::Modgenps", 0);
+    _depura("END Modgenps::Modgenps", 0);
 }
 
 
+///
+/**
+**/
 Modgenps::~Modgenps() {
-    _depura("Modgenps::Modgenps", 0);
+    _depura("Modgenps::~Modgenps", 0);
+    _depura("Modgenps::~Modgenps", 0);
 }
 
 
+///
+/**
+\param cad1
+\param cad2
+\param x
+**/
 void Modgenps::formatdigits(QString *cad1, QString *cad2, float x) {
     _depura("Modgenps::formatdigits", 0);
     QString tempstr;
@@ -59,6 +73,12 @@ void Modgenps::formatdigits(QString *cad1, QString *cad2, float x) {
 }
 
 
+///
+/**
+\param cad
+\param x
+\param y
+**/
 void Modgenps::escrizq(QString cad, int x, int y) {
     _depura("Modgenps::escrizq", 0);
     /// Genera c&oacute;digo postscript para escribir 'cad' alineado a la derecha,
@@ -68,6 +88,12 @@ void Modgenps::escrizq(QString cad, int x, int y) {
 }
 
 
+///
+/**
+\param valor
+\param x
+\param y
+**/
 void Modgenps::escrizq(float valor, int x, int y) {
     _depura("Modgenps::escrizq", 0);
     QString tempstr;
@@ -91,6 +117,12 @@ void Modgenps::escrder(QString cad,int x,int y) {
 }
 
 
+///
+/**
+\param valor
+\param x
+\param y
+**/
 void Modgenps::escrder(float valor, int x, int y) {
     _depura("Modgenps::escrder", 0);
     QString tempstr;
@@ -131,6 +163,11 @@ void Modgenps::escrizqder(float valor, int x, int y) {
 
 
 /// Put a character in a square box.
+/**
+\param marca
+\param x
+\param y
+**/
 void Modgenps::marca_casilla(QString marca, int x, int y) {
     _depura("Modgenps::marca_casilla", 0);
     escrder(marca, x - 2, y);
@@ -138,6 +175,9 @@ void Modgenps::marca_casilla(QString marca, int x, int y) {
 }
 
 
+///
+/**
+**/
 void Modgenps::marcadeagua_borrador() {
     _depura("Modgenps::marcadeagua_borrador", 0);
     m_output << "gsave\n";
@@ -162,6 +202,12 @@ void Modgenps::marcadeagua_borrador() {
 }
 
 
+///
+/**
+\param pdfnamepar
+\param tempnamepar
+\param dialpar
+**/
 Genps_thread::Genps_thread(QString pdfnamepar, QString tempnamepar, QProgressDialog *dialpar) {
     _depura("Genps_thread::Genps_thread", 0);
     m_pdfname = pdfnamepar;
@@ -172,6 +218,8 @@ Genps_thread::Genps_thread(QString pdfnamepar, QString tempnamepar, QProgressDia
 
 
 /// Invoca al programa Acrobat Reader en un servidor virtual XVfb.
+/**
+**/
 void Genps_thread::run() {
     _depura("Genps_thread::run", 0);
     QTextStream m_output;
@@ -254,8 +302,20 @@ void Genps_thread::run() {
 }
 
 
+///
+/**
+\param etiqueta
+\param btcancelar
+\param minimo
+\param maximo
+\param widget
+\param bandera
+**/
 Psprogressdialog::Psprogressdialog(QString etiqueta, QString btcancelar, int minimo, int maximo, QWidget *widget, Qt::WFlags bandera)
-        : QProgressDialog(etiqueta, btcancelar, minimo, maximo, widget, bandera) {}
+        : QProgressDialog(etiqueta, btcancelar, minimo, maximo, widget, bandera) {
+    _depura("Psprogressdialog::Psprogressdialog", 0);
+    _depura("END Psprogressdialog::Psprogressdialog", 0);
+}
 
 /*
 void Psprogressdialog::customEvent(QCustomEvent *event) {

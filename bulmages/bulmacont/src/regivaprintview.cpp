@@ -33,6 +33,11 @@ using namespace std;
 extern Mod300ps *modelo;
 
 
+///
+/**
+\param emp
+\param parent
+**/
 regivaprintview::regivaprintview(Empresa *emp, QWidget *parent)
         : QDialog(parent), PEmpresaBase(emp) {
     _depura("regivaprintview::regivaprintview", 0);
@@ -42,10 +47,18 @@ regivaprintview::regivaprintview(Empresa *emp, QWidget *parent)
 }
 
 
-regivaprintview::~regivaprintview() {}
+///
+/**
+**/
+regivaprintview::~regivaprintview() {
+    _depura("regivaprintview::~regivaprintview", 0);
+    _depura("END regivaprintview::~regivaprintview", 0);
+}
 
 
 /// Se ha pulsado sobre el bot&oacute;n aceptar del formulario.
+/**
+**/
 void regivaprintview::accept() {
     _depura("regivaprintview::accept", 0);
     if (radiotexto->isChecked())
@@ -62,6 +75,11 @@ void regivaprintview::accept() {
 }
 
 
+///
+/**
+\param finicial1
+\param ffinal1
+**/
 void regivaprintview::inicializa1(QString finicial1, QString ffinal1) {
     _depura("regivaprintview::inicializa1", 0);
     fechainicial1->setText(finicial1);
@@ -71,6 +89,9 @@ void regivaprintview::inicializa1(QString finicial1, QString ffinal1) {
 
 
 /// Se ha pulsado sobre el bot&oacute;n aceptar del formulario.
+/**
+\param tipus
+**/
 void regivaprintview::presentar(char *tipus) {
     _depura("regivaprintview::presentar", 0);
 #ifndef WIN32

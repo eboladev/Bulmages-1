@@ -73,6 +73,13 @@
 #define LEN_NUMEROINV        10
 
 
+///
+/**
+\param fugitfile
+\param subcuentas
+\param asientos
+\return
+**/
 int Contaplus2Fugit(QFile &fugitfile, QFile &subcuentas, QFile &asientos) {
     QTextStream fugit(&fugitfile);
 

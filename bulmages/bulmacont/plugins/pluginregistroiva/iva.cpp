@@ -22,6 +22,9 @@
 #include "empresa.h"
 
 
+///
+/**
+**/
 void Iva::definetabla() {
     _depura("Iva::definetabla", 0);
     setDBTableName("iva");
@@ -38,6 +41,10 @@ void Iva::definetabla() {
 }
 
 
+///
+/**
+\param comp
+**/
 Iva::Iva(Empresa *comp) : DBRecord(comp) {
     _depura("Iva::Iva", 0);
     m_companyact = comp;
@@ -46,7 +53,12 @@ Iva::Iva(Empresa *comp) : DBRecord(comp) {
 }
 
 
+///
+/**
+\param comp
+**/
 Iva::Iva(Empresa *comp, QString idiva) : DBRecord(comp) {
+    _depura("Iva::Iva", 0);
     m_companyact = comp;
     definetabla();
     QString SQLQuery = "SELECT * FROM iva LEFT JOIN tipoiva ON iva.idtipoiva = tipoiva.idtipoiva LEFT JOIN cuenta ON cuenta.idcuenta = tipoiva.idtipoiva WHERE idiva = " + idiva;
@@ -56,25 +68,49 @@ Iva::Iva(Empresa *comp, QString idiva) : DBRecord(comp) {
     } else {
         vaciaIva();
     } // end if
+    _depura("END Iva::Iva", 0);
 }
 
 
+///
+/**
+\param comp
+\param cur
+**/
 Iva::Iva(Empresa *comp, cursor2 *cur) : DBRecord(comp) {
+    _depura("Iva::Iva", 0);
     m_companyact = comp;
     definetabla();
     DBload(cur);
+    _depura("END Iva::Iva", 0);
 }
 
 
-Iva::~Iva() {}
+///
+/**
+**/
+Iva::~Iva() {
+    _depura("Iva::~Iva", 0);
+    _depura("END Iva::~Iva", 0);
+}
 
 
+///
+/**
+**/
 void Iva::vaciaIva() {
+    _depura("Iva::vaciaIva", 0);
     DBclear();
+    _depura("END Iva::vaciaIva", 0);
 }
 
 
+///
+/**
+\return
+**/
 int Iva::borrar() {
+    _depura("Iva::borrar", 0);
     if (DBvalue("idiva") != "") {
         m_companyact->begin();
         int error = m_companyact->ejecuta("DELETE FROM iva WHERE idiva = " + DBvalue("idiva"));
@@ -85,11 +121,17 @@ int Iva::borrar() {
         m_companyact->commit();
         vaciaIva();
     } // end if
+    _depura("END Iva::borrar", 0);
     return 0;
 }
 
 
+///
+/**
+\return
+**/
 void Iva::guardaIva() {
+    _depura("Iva::guardaIva", 0);
     QString id;
     m_companyact->begin();
     int error = DBsave(id);
@@ -99,9 +141,14 @@ void Iva::guardaIva() {
     } // end if
     setDBvalue("idiva", id);
     m_companyact->commit();
+    _depura("END Iva::guardaIva", 0);
 }
 
 
+///
+/**
+\param val
+**/
 void Iva::setidtipoiva(const QString &val) {
     _depura("Iva::setidtipoiva", 0);
     QString SQLQuery = "SELECT * FROM tipoiva LEFT JOIN cuenta ON cuenta.idcuenta = tipoiva.idcuenta WHERE idtipoiva = " + val;

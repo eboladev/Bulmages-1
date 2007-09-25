@@ -41,7 +41,10 @@
 
 
 
-
+///
+/**
+\return
+**/
 int entryPoint(QApplication *) {
     _depura("Punto de Entrada del plugin de Clipboard", 0);
         /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
@@ -59,35 +62,67 @@ int entryPoint(QApplication *) {
 }
 
 
-
+///
+/**
+\return
+**/
 int SubForm3_SubForm3_Post(SubForm3 *sub) {
     _depura("SubForm3_SubForm3_Post", 0);
    myplugclipboard *subformclip = new myplugclipboard(sub);
    sub->connect(sub, SIGNAL(pintaMenu(QMenu *)), subformclip, SLOT(s_pintaMenu(QMenu *)));
    sub->connect(sub, SIGNAL(trataMenu(QAction *)), subformclip, SLOT(s_trataMenu(QAction *)));
+    _depura("END SubForm3_SubForm3_Post", 0);
    return 0;
 }
 
 
-
+///
+/**
+\param parent
+**/
 myplugclipboard::myplugclipboard(SubForm3 *parent) : QObject(parent) {
+    _depura("myplugclipboard::myplugclipboard", 0);
+    _depura("myplugclipboard::myplugclipboard", 0);
 }
 
 
+///
+/**
+**/
 myplugclipboard::~myplugclipboard(){
+    _depura("myplugclipboard::~myplugclipboard", 0);
+    _depura("myplugclipboard::~myplugclipboard", 0);
 }
 
+
+///
+/**
+\param menu
+**/
 void myplugclipboard::s_pintaMenu(QMenu *menu) {
+    _depura("myplugclipboard::s_pintaMenu", 0);
     menu->addSeparator();
     menu->addAction(tr("Pegar desde Hoja de Calculo"));
+    _depura("END myplugclipboard::s_pintaMenu", 0);
 }
 
+
+///
+/**
+\param action
+**/
 void myplugclipboard::s_trataMenu(QAction *action) {
+    _depura("myplugclipboard::s_trataMenu", 0);
     if (action->text() == tr("Pegar desde Hoja de Calculo")) {
 	pegaSXC();
     } // end if
+    _depura("myplugclipboard::s_trataMenu", 0);
 }
 
+
+///
+/**
+**/
 void myplugclipboard::pegaSXC() {
     _depura("myplugclipboard::pegaSXC", 0);
         SubForm3 *subform = (SubForm3 *) parent();

@@ -31,6 +31,13 @@
 #include "configuracion.h"
 #include "almacenview.h"
 
+
+///
+/**
+\param parent
+\param flag
+\return
+**/
 AlmacenesListView::AlmacenesListView(QWidget *parent, Qt::WFlags flag)
         : Listado(NULL, parent, flag) {
     _depura("AlmacenesListView::AlmacenesListView(1)", 0);
@@ -57,6 +64,13 @@ AlmacenesListView::AlmacenesListView(QWidget *parent, Qt::WFlags flag)
 }
 
 
+///
+/**
+\param comp
+\param parent
+\param flag
+\return
+**/
 AlmacenesListView::AlmacenesListView(Company *comp, QWidget *parent, Qt::WFlags flag)
         : Listado(comp, parent, flag) {
     _depura("AlmacenesListView::AlmacenesListView(2)", 0);
@@ -88,41 +102,53 @@ AlmacenesListView::AlmacenesListView(Company *comp, QWidget *parent, Qt::WFlags 
 }
 
 
-
-
-
+///
+/**
+**/
 AlmacenesListView::~AlmacenesListView() {
     _depura("AlmacenesListView::~AlmacenesListView", 0);
     _depura("END AlmacenesListView::~AlmacenesListView", 0);
 }
 
 
-
-
-
+///
+/**
+\return
+**/
 QString AlmacenesListView::idalmacen() {
+    _depura("AlmacenesListView::idalmacenk", 0);
+    _depura("END AlmacenesListView::idalmacenk", 0);
     return m_idalmacen;
 }
 
 
-
+///
+/**
+\param comp
+**/
 void AlmacenesListView::setEmpresaBase(Company *comp) {
+    _depura("AlmacenesListView::setEmpresaBase", 0);
     PEmpresaBase::setEmpresaBase(comp);
     mui_list->setEmpresaBase(comp);
+    _depura("END AlmacenesListView::setEmpresaBase", 0);
 }
 
 
-
-
-
+///
+/**
+**/
 void AlmacenesListView::crear() {
+    _depura("AlmacenesListView::crear", 0);
 /*
     ((Company *)empresaBase())->s_newAlmacen();
 */
+    _depura("END AlmacenesListView::crear", 0);
 }
 
 
-
+///
+/**
+**/
 void AlmacenesListView::presentar() {
     _depura("AlmacenesListView::presentar", 0);
 
@@ -133,6 +159,10 @@ void AlmacenesListView::presentar() {
 }
 
 
+///
+/**
+\return
+**/
 QString AlmacenesListView::generaFiltro() {
     _depura("AlmacenesListView::generaFiltro", 0);
     /// Tratamiento de los filtros.
@@ -143,6 +173,10 @@ QString AlmacenesListView::generaFiltro() {
 }
 
 
+///
+/**
+\param row
+**/
 void AlmacenesListView::editar(int row) {
     _depura("AlmacenesListView::editar", 0);
     try {
@@ -163,7 +197,9 @@ void AlmacenesListView::editar(int row) {
 }
 
 
-
+///
+/**
+**/
 void AlmacenesListView::imprimir() {
     _depura("AlmacenesListView::imprimir", 0);
     mui_list->imprimirPDF(tr("Almacenes"));
@@ -171,6 +207,10 @@ void AlmacenesListView::imprimir() {
 }
 
 
+///
+/**
+\return
+**/
 void AlmacenesListView::borrar() {
     _depura("AlmacenesListView::borrar", 0);
     int a = mui_list->currentRow();
