@@ -48,18 +48,18 @@ TipoArticuloList::TipoArticuloList(Company *comp, QWidget *parent, bool modoCons
     m_listTipos->setHeaderLabels(headers);
     m_idtipo = "";
     if (modoConsulta) {
-       setModoConsulta();
-       groupBox1->hide();
-       mui_detalles->hide();
-       mui_crear->hide();
-       mui_guardar->hide();
-       mui_borrar->hide();
-       mui_cancelar->hide();
-       mui_aceptar->hide();
+        setModoConsulta();
+        groupBox1->hide();
+        mui_detalles->hide();
+        mui_crear->hide();
+        mui_guardar->hide();
+        mui_borrar->hide();
+        mui_cancelar->hide();
+        mui_aceptar->hide();
     } else {
         setModoEdicion();
-       setAttribute(Qt::WA_DeleteOnClose);
-       companyact->meteWindow(windowTitle(), this);
+        setAttribute(Qt::WA_DeleteOnClose);
+        companyact->meteWindow(windowTitle(), this);
     } // end if
     pintar();
     _depura("END TipoArticuloList::TipoArticuloList", 0);

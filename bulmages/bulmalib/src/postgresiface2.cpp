@@ -96,9 +96,9 @@ cursor2::cursor2(QString nombre, PGconn *conn1, QString SQLQuery) {
                     msgError(QString(QObject::tr("Error al hacer la consulta con la base de datos.")) + "\n:: " + QString(PQresultErrorField(result, PG_DIAG_MESSAGE_PRIMARY)) + " ::", SQLQuery + QString("\n") + (QString) PQerrorMessage(conn));
                 } // end if
 
-//		if (g_main->statusBar() ) {
-//                	g_main->statusBar()->showMessage(QString(PQresultErrorField(result, PG_DIAG_MESSAGE_PRIMARY)), 4000);
-//		} // end if
+//      if (g_main->statusBar() ) {
+//                  g_main->statusBar()->showMessage(QString(PQresultErrorField(result, PG_DIAG_MESSAGE_PRIMARY)), 4000);
+//      } // end if
 
                 PQclear(result);
                 throw -1;
@@ -529,18 +529,18 @@ cursor2 *postgresiface2::cargacursor(QString query, QString nomcursor, int limit
     _depura ("postgresiface2::cargacursor", 0, query);
     cursor2 *cur = NULL;
     try {
-	/// Si hay establecidas clausulas limit o offset modificamos el query
-	if (limit != 0) 
-		query += " LIMIT " + QString::number(limit);
-	if (offset != 0)
-		query += " OFFSET " + QString::number(offset);
-	
+    /// Si hay establecidas clausulas limit o offset modificamos el query
+    if (limit != 0)
+        query += " LIMIT " + QString::number(limit);
+    if (offset != 0)
+        query += " OFFSET " + QString::number(offset);
+
         cur = new cursor2(nomcursor, conn, query);
     } catch (...) {
         _depura("postgresiface2::cargacursor La base de datos genero un error: ", 0);
         delete cur;
 //        throw -1;
-	return NULL;
+    return NULL;
     } // end try
     _depura ("END postgresiface2::cargacursor", 0, nomcursor);
     return cur;
@@ -1017,7 +1017,7 @@ int postgresiface2::abreasiento(int idasiento) {
 \param tipocuenta
 \param cnodebe
 \param cnohaber
-\return 
+\return
 **/
 int postgresiface2::modificacuenta(int idcuenta, QString desccuenta, QString codigo, bool cimputacion, bool cbloqueada, int idgrupo, bool cactivo, QString nombreent, QString cifent, QString dir, QString cp, QString tel, QString comm, QString banco, QString email, QString web, int tipocuenta, bool cnodebe, bool cnohaber) {
     _depura("postgresiface2::modificacuenta", 0);
@@ -1113,7 +1113,6 @@ cursor2 *postgresiface2::cargaempresas() {
 **/
 QString postgresiface2::sanearCadena(QString cadena) {
     _depura("postgresiface2::sanearCadena", 0);
-
     int longitud = 0;
     char *buffer = "";
     QString cadenaLimpia = "";
@@ -1149,32 +1148,37 @@ QString postgresiface2::propiedadempresa(QString nombre) {
         return "";
     } // end if
     num = PQntuples(result);
-    if (num > 1)
+    if (num > 1) {
         fprintf(stderr, "Aviso: Hay %d valores para el campo %s en la tabla configuracion\n", num, nombre.toAscii().data());
-    if (num == 0)
+    } // end if
+    if (num == 0) {
         value = "";
-    else
+    } else {
         value = PQgetvalue(result, 0, 2);
+    } // end if
     PQclear(result);
     _depura("END postgresiface2::propiedadempresa", 0);
     return value;
 }
 
 
-/// Comprueba si el usuario actual tiene permisos para actuar sobre una tabla y devuelve TRUE o FALSE
-/// \param tabla La tabla que se quiere consultar
-/// \param permiso El tipo de permiso "SELECT", "INSERT" "UPDATE"
-/// \return True si se tiene permiso, False si no se lo tiene
+/// Comprueba si el usuario actual tiene permisos para actuar sobre una tabla y
+/// devuelve TRUE o FALSE.
+/// \param tabla La tabla que se quiere consultar.
+/// \param permiso El tipo de permiso "SELECT", "INSERT" o "UPDATE".
+/// \return TRUE si se tiene permiso, FALSE si no se lo tiene.
 bool postgresiface2::has_table_privilege(QString tabla, QString permiso) {
     _depura("postgresiface2::has_table_privilege", 0);
     /// Comprobamos que tengamos permisos para trabajar con articulos.
     cursor2 *cur = cargacursor("SELECT has_table_privilege('" + tabla + "', '" + permiso + "') AS pins");
     bool privileges = FALSE;
     if (cur) {
-        if (cur->valor("pins") == "t")
+        if (cur->valor("pins") == "t") {
             privileges = TRUE;
+        } // end if
         delete cur;
     } // end if
     _depura("END postgresiface2::has_table_privilege", 0);
     return privileges;
 }
+

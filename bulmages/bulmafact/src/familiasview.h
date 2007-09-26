@@ -35,25 +35,23 @@ class FamiliasView : public FichaBf, public Ui_familiasbase {
     Q_OBJECT
 
 private:
+    Company *companyact;
     /// Indica cu&aacute;l es el registro que se est&aacute; modificando. Sirve para saber los
     /// cambios que hay que guardar despu&eacute;s de que se haya modificado.
     QString m_idfamilia;
     /// Indica si es modo consulta o modo edici&oacute;n. (modifica el comportamiento del
-    /// doble click sobre la lista)
+    /// doble click sobre la lista).
     bool m_modoConsulta;
-    bool m_semaforoPintar;   // Este semaforo indica si se esta en el proceso de pintado
+    /// Este semaforo indica si se esta en el proceso de pintado.
+    bool m_semaforoPintar;
 
 public:
     FamiliasView(Company *, QWidget *parent = 0, bool modoConsulta = FALSE);
     ~FamiliasView();
     bool trataModificado();
     void mostrarplantilla();
-    void setModoConsulta() {
-        m_modoConsulta = TRUE;
-    }
-    void setModoEdicion() {
-        m_modoConsulta = FALSE;
-    }
+    void setModoConsulta();
+    void setModoEdicion();
     QString codigoCompletoFamilia();
     QString idFamilia();
     QString nombreFamilia();
@@ -61,6 +59,7 @@ public:
     virtual int borrar();
     virtual void on_mui_aceptar_clicked();
     virtual void on_mui_borrar_clicked();
+    virtual int sacaWindow();
 
 public slots:
     virtual void pintar();

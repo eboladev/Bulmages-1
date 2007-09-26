@@ -38,9 +38,9 @@
 #include "plugins.h"
 
 
-/** Se encarga de la inicializacion de todos los componentes de la ventana de Articulo.
-    Inicializa la gestion de cambios para que se considere que no hay camibos realizados en la ventana.
-    Mete la ventana en el worSpace.
+/** Se encarga de la inicializacion de todos los componentes de la ventana de 'Articulo'.
+    Inicializa la gestion de cambios para que se considere que no hay cambios realizados
+    en la ventana. Mete la ventana en el 'workSpace'.
 */
 /**
 \param comp
@@ -74,22 +74,19 @@ ArticuloView::ArticuloView(Company *comp, QWidget *parent)
         addDBCampo("pesoundarticulo", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate("Articulo", "Peso Unidad"));
         addDBCampo("volumenundarticulo", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate("Articulo", "Volumen Unidad"));
 
-
         /// Disparamos los plugins.
         int res = g_plugins->lanza("ArticuloView_ArticuloView", this);
-        if (res != 0)
+        if (res != 0) {
             return;
+        } // end if
 
         mui_idfamilia->setEmpresaBase(comp);
         mui_idtipoarticulo->setEmpresaBase(comp);
         mui_idtipo_iva->setEmpresaBase(comp);
         m_componentes->setEmpresaBase(comp);
-	dialogChanges_setQObjectExcluido(m_componentes);
-	dialogChanges_setQObjectExcluido(m_componentes->mui_list);
-
+        dialogChanges_setQObjectExcluido(m_componentes);
+        dialogChanges_setQObjectExcluido(m_componentes->mui_list);
         m_archivoimagen = "";
-//        m_componentes->cargar("0");
-
         m_imagen->setPixmap(QPixmap("/usr/share/bulmages/logopeq.png"));
         meteWindow(windowTitle(), this, FALSE);
         dialogChanges_cargaInicial();
@@ -145,9 +142,6 @@ int ArticuloView::cargarPost(QString idarticulo) {
 }
 
 
-
-
-
 /** SLOT que responde a la finalizacion de edicion del codigocompleto del articulo.
     En cuyo caso lo que se hace es buscar un articulo que tenga dicho codigo y cargar su
     ficha.
@@ -158,9 +152,9 @@ int ArticuloView::cargarPost(QString idarticulo) {
 void ArticuloView::on_mui_codigocompletoarticulo_editingFinished() {
     _depura("ArticuloView::on_m_codigocompletoarticulo_editingFinished", 0);
 
-    if (mui_codigocompletoarticulo->text() == DBvalue("codigocompletoarticulo"))
+    if (mui_codigocompletoarticulo->text() == DBvalue("codigocompletoarticulo")) {
         return;
-
+    } // end if
     QString SQlQuery = "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + mui_codigocompletoarticulo->text() + "'";
     cursor2 *cur = empresaBase()->cargacursor(SQlQuery);
     if (!cur) return;
@@ -168,7 +162,6 @@ void ArticuloView::on_mui_codigocompletoarticulo_editingFinished() {
         cargar(cur->valor("idarticulo"));
     } // end if
     delete cur;
-
     _depura("END ArticuloView::on_m_codigocompletoarticulo_editingFinished", 0);
 }
 
@@ -183,9 +176,7 @@ void ArticuloView::on_mui_codigocompletoarticulo_editingFinished() {
 \return
 **/
 int ArticuloView::guardarPost() {
-
     _depura("ArticuloView::guardarPost", 0);
-
     /// Guardamos la imagen, si es que existe.
     if (m_archivoimagen != "") {
         cursor2 *cur1 = empresaBase()->cargacursor("SELECT codigocompletoarticulo FROM articulo WHERE idarticulo = " + DBvalue("idarticulo"));
@@ -197,12 +188,11 @@ int ArticuloView::guardarPost() {
 
     /// Guardamos la lista de componentes.
     m_componentes->setColumnValue("idarticulo", DBvalue("idarticulo"));
-    if (m_componentes->guardar() != 0)
+    if (m_componentes->guardar() != 0) {
         throw -1;
-
+    } // end if
     /// Disparamos los plugins
     g_plugins->lanza("ArticuloView_guardar_post", this);
-
 
     _depura("END ArticuloView::guardarPost", 0);
     return 0;
@@ -247,6 +237,4 @@ void ArticuloView::on_mui_cambiarimagen_clicked() {
     m_imagen->setPixmap(QPixmap(m_archivoimagen));
     _depura("ArticuloView::END_s_cambiarimagen()", 0);
 }
-
-
 
