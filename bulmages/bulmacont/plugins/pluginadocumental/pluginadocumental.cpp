@@ -39,6 +39,10 @@
 #include "ndoc.xpm"
 
 
+///
+/**
+\param bcont
+**/
 void entryPoint(Bulmacont *bcont) {
     _depura("Entrada del plugin ADocumental.", 10);
 

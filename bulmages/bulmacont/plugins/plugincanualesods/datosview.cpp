@@ -21,26 +21,46 @@
 #include "datosview.h"
 
 
+///
+/**
+\param parent
+**/
 datosView::datosView(QWidget *parent) : QDialog(parent){
+    _depura("datosView::datosView", 0);
 
     setupUi(this);
 
+    _depura("END datosView::datosView", 0);
 }
 
 
+///
+/**
+**/
 datosView::~datosView() {
-
+    _depura("END datosView::~datosView", 0);
+    _depura("datosView::~datosView", 0);
 }
 
 
+///
+/**
+**/
 void datosView::on_mui_cancelar_clicked() {
+    _depura("datosView::on_mui_cancelar_clicked", 0);
     close();
     setResult(Rejected);
+    _depura("END datosView::on_mui_cancelar_clicked", 0);
 }
 
 
+///
+/**
+**/
 void datosView::on_mui_aceptar_clicked() {
+    _depura("datosView::on_mui_aceptar_clicked", 0);
     close();
     setResult(Accepted);
+    _depura("END datosView::on_mui_aceptar_clicked", 0);
 }
 

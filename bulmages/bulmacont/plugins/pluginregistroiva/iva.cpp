@@ -56,6 +56,7 @@ Iva::Iva(Empresa *comp) : DBRecord(comp) {
 ///
 /**
 \param comp
+\param idiva
 **/
 Iva::Iva(Empresa *comp, QString idiva) : DBRecord(comp) {
     _depura("Iva::Iva", 0);

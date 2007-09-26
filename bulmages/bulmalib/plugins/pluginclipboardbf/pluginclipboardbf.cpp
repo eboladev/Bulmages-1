@@ -64,6 +64,7 @@ int entryPoint(QApplication *) {
 
 ///
 /**
+\param sub
 \return
 **/
 int SubForm3_SubForm3_Post(SubForm3 *sub) {

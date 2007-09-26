@@ -31,6 +31,11 @@
 typedef QMap<QString, Fixed> base;
 
 
+///
+/**
+\param comp
+\param parent
+**/
 RegistroIva::RegistroIva(Empresa *comp, QWidget *parent) : FichaBc(comp, parent) {
     _depura("RegistroIva::RegistroIva", 0);
     setTitleName(tr("Registro IVA"));
@@ -57,9 +62,19 @@ RegistroIva::RegistroIva(Empresa *comp, QWidget *parent) : FichaBc(comp, parent)
 }
 
 
-RegistroIva::~RegistroIva() {}
+///
+/**
+**/
+RegistroIva::~RegistroIva() {
+    _depura("RegistroIva::~RegistroIva", 0);
+    _depura("RegistroIva::~RegistroIva", 0);
+}
 
 
+///
+/**
+\return
+**/
 int RegistroIva::borrar() {
     _depura("RegistroIva::borraRegistroIva", 0);
     if (DBvalue("idregistroiva") != "") {
@@ -87,11 +102,19 @@ int RegistroIva::borrar() {
 }
 
 
+///
+/**
+**/
 void RegistroIva::vaciaRegistroIva() {
+    _depura("RegistroIva::vaciaRegistroIva", 0);
     DBclear();
+    _depura("END RegistroIva::vaciaRegistroIva", 0);
 }
 
 
+///
+/**
+**/
 void RegistroIva::pintaRegistroIva() {
     _depura("RegistroIva::pintaRegistroIva", 0);
     pintaidregistroiva(DBvalue("idregistroiva"));
@@ -117,6 +140,10 @@ void RegistroIva::pintaRegistroIva() {
 
 
 /// Esta funci&oacute;n carga un presupuesto.
+/**
+\param id
+\return
+**/
 int RegistroIva::cargar(QString id) {
     _depura("RegistroIva::cargaRegistroIva", 0);
     int error = 0;
@@ -143,6 +170,10 @@ int RegistroIva::cargar(QString id) {
 }
 
 
+///
+/**
+\param return
+**/
 int RegistroIva::guardar() {
     _depura("RegistroIva::guardaRegistroIva", 0);
     QString id;
@@ -167,6 +198,10 @@ int RegistroIva::guardar() {
     Si todo va bien devuelve el idregistro
     Si hay errores devuelve -1
     Si no ha encontrado el registro pero no hay errores devuelve 0 **/
+/**
+\param idborrador
+\return
+**/
 int RegistroIva::buscaborradorservicio(int idborrador) {
     _depura("RegistroIva::buscaborradorservicio", 0);
     QString SQLQuery;
@@ -262,6 +297,10 @@ int RegistroIva::buscaborradorservicio(int idborrador) {
 /// Busca la cuenta del cliente o del proveedor en el apunte que se ha seleccionado.
 /** Se basa en el supuesto de que si la cuenta no es el cliente entonces la contrapartida
     de la cuenta seguro que es el cliente. **/
+/**
+\param idborrador
+\return
+**/
 int RegistroIva::buscaborradorcliente(int idborrador) {
     _depura("RegistroIva::buscaborradorcliente", 0);
     QString SQLQuery;
@@ -331,6 +370,12 @@ int RegistroIva::buscaborradorcliente(int idborrador) {
   * 1.- Comprobamos que no haya ya un registro con la factura
   * 2.- Si hay factura la ponemos, si no la hay sacamos los datos que podemos y los presentamos
   */
+
+
+///
+/**
+\param idapunte1
+**/
 void RegistroIva::inicializa1(int idapunte1) {
     _depura("RegistroIva::inicializa1", 0);
     QString query, cadena;
@@ -371,6 +416,13 @@ void RegistroIva::inicializa1(int idapunte1) {
   * Devuelve 0 si todo va bien
   * Devuelve 1 si ha ocurrido algún error.
   */
+
+
+///
+/**
+\param idborrador
+\return
+**/
 int RegistroIva::buscaborradoriva(int idborrador) {
     _depura("RegistroIva::buscaborradoriva", 0);
     int error = 0;
@@ -413,6 +465,9 @@ int RegistroIva::buscaborradoriva(int idborrador) {
 
 
 /// SLOT que se dispara cuando se ha hecho el bot&oacute;n de b&uacute;squeda de una fecha.
+/**
+\param idborrador
+**/
 void RegistroIva::buscafecha(int idborrador) {
     _depura("RegistroIva::buscafecha", 0);
     QString SQLQuery;
@@ -431,7 +486,11 @@ void RegistroIva::buscafecha(int idborrador) {
 /// Realmente esto se tendria que implementar con contadores en la base de datos.
 /// Primero comprobamos si esta factura ya tiene un apunte de IVA distinto y cogemos
 /// el mismo n&uacute;mero de factura.
+/**
+\param idborrador
+**/
 void RegistroIva::buscaNumFactura(int idborrador) {
+    _depura("RegistroIva::buscaNumFactura", 0);
     QString query;
     cursor2 *recordset;
     QString cadena;
@@ -476,5 +535,6 @@ void RegistroIva::buscaNumFactura(int idborrador) {
         setnumorden(QString::number(numord));
     } // end if
     delete recordset; /// Fin proposici&oacute;n n&uacute;meros factura y orden.
+    _depura("END RegistroIva::buscaNumFactura", 0);
 }
 

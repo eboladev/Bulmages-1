@@ -100,6 +100,7 @@ Cuadrante1View::~Cuadrante1View() {
 
 ///
 /**
+\param idcuadrante
 \return
 **/
 int Cuadrante1View::cargarPost(QString idcuadrante) {

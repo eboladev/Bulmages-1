@@ -27,6 +27,11 @@
 #include <QMenu>
 
 
+///
+/**
+\param emp
+\param parent
+**/
 ListRegistroIvaView::ListRegistroIvaView(Empresa * emp, QString, QWidget *parent)
         : QWidget(parent) {
     _depura("ListRegistroIvaView::ListRegistroIvaView", 0);
@@ -100,7 +105,9 @@ ListRegistroIvaView::ListRegistroIvaView(Empresa * emp, QString, QWidget *parent
     _depura("END ListRegistroIvaView::ListRegistroIvaView", 0);
 }
 
-
+///
+/**
+**/
 ListRegistroIvaView::~ListRegistroIvaView() {
     _depura("ListRegistroIvaView::~ListRegistroIvaView", 0);
     m_companyact->sacaWindow(this);
@@ -110,6 +117,8 @@ ListRegistroIvaView::~ListRegistroIvaView() {
 
 /// Al hacer doble click sobre la tabla de ivas se accede al asiento
 /// que tiene dicha entrada.
+/**
+**/
 void ListRegistroIvaView::on_mui_tablasoportado_cellDoubleClicked(int, int) {
     _depura("ListRegistroIvaView::on_mui_tablasoportado_itemDoubleClicked", 0);
     int idasiento;
@@ -123,6 +132,8 @@ void ListRegistroIvaView::on_mui_tablasoportado_cellDoubleClicked(int, int) {
 
 /// Al hacer doble click sobre la tabla de ivas se accede al asiento
 /// que tiene dicha entrada.
+/**
+**/
 void ListRegistroIvaView::on_mui_tablarepercutido_cellDoubleClicked(int, int) {
     _depura("ListRegistroIvaView::on_mui_tablarepercutido_itemDoubleClicked", 0);
     int idasiento;
@@ -134,20 +145,34 @@ void ListRegistroIvaView::on_mui_tablarepercutido_cellDoubleClicked(int, int) {
 }
 
 
+///
+/**
+**/
 void ListRegistroIvaView::boton_print() {
+    _depura("ListRegistroIvaView::boton_print", 0);
     regivaprintview *print = new regivaprintview(m_companyact, 0);
     print->inicializa1(finicial->text(), ffinal->text());
     print->exec();
     delete print;
+    _depura("END ListRegistroIvaView::boton_print", 0);
 }
 
 
+///
+/**
+**/
 void ListRegistroIvaView::on_mui_actualizar_clicked() {
+    _depura("ListRegistroIvaView::on_mui_actualizar_clicked", 0);
     inicializa();
+    _depura("END ListRegistroIvaView::on_mui_actualizar_clicked", 0);
 }
 
 
+///
+/**
+**/
 void ListRegistroIvaView::inicializa() {
+    _depura("ListRegistroIvaView::inicializa", 0);
     QString query;
     QString sbaseimp, siva;
     QString cbaseimp, civa, ctotal;
@@ -194,9 +219,14 @@ void ListRegistroIvaView::inicializa() {
     //mui_tablarepercutido->cargar(cursorreg);
     mui_tablarepercutido->cargar(query);
     //delete cursorreg;
+    _depura("END ListRegistroIvaView::inicializa", 0);
 }
 
 
+///
+/**
+\param menu
+**/
 void ListRegistroIvaView::on_mui_tablarepercutido_pintaMenu(QMenu *menu) {
     _depura("ListRegistroIvaView::on_mui_tablarepercutido_pintaMenu", 0);
     m_verreg = menu->addAction("Editar registro");
@@ -206,6 +236,10 @@ void ListRegistroIvaView::on_mui_tablarepercutido_pintaMenu(QMenu *menu) {
 }
 
 
+///
+/**
+\param menu
+**/
 void ListRegistroIvaView::on_mui_tablasoportado_pintaMenu(QMenu *menu) {
     _depura("ListRegistroIvaView::on_mui_tablasoportado_pintaMenu", 0);
     m_verreg = menu->addAction("Editar registro");
@@ -215,6 +249,10 @@ void ListRegistroIvaView::on_mui_tablasoportado_pintaMenu(QMenu *menu) {
 }
 
 
+///
+/**
+\param ac
+**/
 void ListRegistroIvaView::on_mui_tablasoportado_trataMenu(QAction *ac) {
     _depura("ListRegistroIvaView::on_mui_tablasoportado_trataMenu", 0);
     if (m_verreg == ac) {
@@ -235,6 +273,10 @@ void ListRegistroIvaView::on_mui_tablasoportado_trataMenu(QAction *ac) {
 }
 
 
+///
+/**
+\param ac
+**/
 void ListRegistroIvaView::on_mui_tablarepercutido_trataMenu(QAction *ac) {
     _depura("ListRegistroIvaView::on_mui_tablarepercutido_trataMenu", 0);
     if (m_verreg == ac) {

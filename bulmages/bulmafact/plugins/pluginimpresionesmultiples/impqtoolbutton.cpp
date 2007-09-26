@@ -402,6 +402,10 @@ void SelQToolButton::setBoton() {
     connect(this, SIGNAL(clicked()), this, SLOT(click()));
     _depura("END SelQToolButton::setBoton", 0);
 }
+
+///
+/**
+**/
 void SelQToolButton::click() {
     _depura("ImpQToolButton::click", 0);
 

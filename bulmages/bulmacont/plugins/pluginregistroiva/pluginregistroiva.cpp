@@ -38,11 +38,23 @@
 #include "registroivaview.h"
 #include "regivaqtoolbutton.h"
 
+
+
+///
+/**
+\return
+**/
 int entryPoint(Bulmacont *) {
     _depura("Punto de entrada del plugin registroIVA", 0);
     return 0;
 }
 
+
+///
+/**
+\param l
+\return
+**/
 int Asiento1View_Asiento1View(Asiento1View *l) {
        _depura("Asiento1View_Asiento1View", 0);
 //================================
@@ -61,7 +73,12 @@ int Asiento1View_Asiento1View(Asiento1View *l) {
        return 0;
 }
 
+
 /// Buscamos en el asiento si hay indicios de una factura y actuamos en consecuencia.
+/**
+\param as
+\return
+**/
 int Asiento1_guardaAsiento1_post(Asiento1 *as) {
     _depura("Asiento1_guardaAsiento1_post", 0);
     Empresa *companyact = as->companyact();
@@ -96,6 +113,11 @@ int Asiento1_guardaAsiento1_post(Asiento1 *as) {
 }
 
 
+///
+/**
+\param emp
+\return
+**/
 int empresa_cobPag(Empresa *emp) {
     _depura("empresa_cobPag", 0);
     cobropagoview *adoc = new cobropagoview(emp, 0);
@@ -106,6 +128,11 @@ int empresa_cobPag(Empresa *emp) {
 }
 
 
+///
+/**
+\param emp
+\return
+**/
 int empresa_registroiva(Empresa *emp) {
     _depura("empresa_registroiva", 0);
     ListRegistroIvaView *perd = new ListRegistroIvaView(emp, "0");
@@ -117,6 +144,11 @@ int empresa_registroiva(Empresa *emp) {
 }
 
 
+///
+/**
+\param as
+\return
+**/
 int ListLinAsiento1View_boton_iva(ListLinAsiento1View *as) {
     _depura("ListLinAsiento1View_boton_iva", 0);
     as->guardar();

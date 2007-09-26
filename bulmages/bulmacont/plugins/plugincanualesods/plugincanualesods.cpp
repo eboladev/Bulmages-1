@@ -34,13 +34,31 @@
 #include "datosview.h"
 
 
-pluginCAnualesODS::pluginCAnualesODS() {}
+///
+/**
+**/
+pluginCAnualesODS::pluginCAnualesODS() {
+    _depura("pluginCAnualesODS::pluginCAnualesODS", 0);
+    _depura("END pluginCAnualesODS::pluginCAnualesODS", 0);
+}
 
 
-pluginCAnualesODS::~pluginCAnualesODS() {}
+///
+/**
+**/
+pluginCAnualesODS::~pluginCAnualesODS() {
+    _depura("pluginCAnualesODS::~pluginCAnualesODS", 0);
+    _depura("END pluginCAnualesODS::~pluginCAnualesODS", 0);
+}
 
 
+///
+/**
+\param cuenta
+\return
+**/
 Fixed pluginCAnualesODS::saldoCuenta(int cuenta) {
+    _depura("pluginCAnualesODS::saldoCuenta", 0);
     /// Ejercicio actual.
     QString query;
     cursor2 *cur;
@@ -51,11 +69,18 @@ Fixed pluginCAnualesODS::saldoCuenta(int cuenta) {
     cur = conexionbase->cargacursor(query);
     resultado = cur->valor("saldo");
     conexionbase->commit();
+    _depura("END pluginCAnualesODS::saldoCuenta", 0);
     return resultado;
 }
 
 
+///
+/**
+\param cuenta
+\return
+**/
 Fixed pluginCAnualesODS::saldoCuentaAnt(int cuenta) {
+    _depura("pluginCAnualesODS::saldoCuentaAnt", 0);
     /// Ejercicio anterior.
     QString query;
     cursor2 *cur;
@@ -66,11 +91,17 @@ Fixed pluginCAnualesODS::saldoCuentaAnt(int cuenta) {
     cur = conexionbase->cargacursor(query);
     resultado = cur->valor("saldo");
     conexionbase->commit();
+    _depura("END pluginCAnualesODS::saldoCuentaAnt", 0);
     return resultado;
 }
 
 
+///
+/**
+\return
+**/
 void pluginCAnualesODS::formDatosBalance() {
+    _depura("pluginCAnualesODS::formDatosBalance", 0);
     int resultado;
 
     datosView *dv = new datosView(0);
@@ -94,10 +125,15 @@ void pluginCAnualesODS::formDatosBalance() {
 
     /// Generamos el balance
     balanceSituacionODS();
+    _depura("END pluginCAnualesODS::formDatosBalance", 0);
 }
 
 
+///
+/**
+**/
 void pluginCAnualesODS::balanceSituacionODS() {
+    _depura("pluginCAnualesODS::balanceSituacionODS", 0);
     /// Se genera el Balance de Situacion en formato ODS (Hoja de calculo OpenOffice.org).
 
     /// BUG: Se necesita usar .toQString('.') porque sino los decimales no
@@ -1043,11 +1079,16 @@ doc.save(\"canualesods.ods\")\n";
     system(cadena.toAscii());
     cadena = "oocalc " + confpr->valor(CONF_DIR_USER) + "canualesods.ods &";
     system(cadena.toAscii());
-
+    _depura("END pluginCAnualesODS::balanceSituacionODS", 0);
 }
 
 
+///
+/**
+\param bcont
+**/
 void pluginCAnualesODS::inicializa(Bulmacont *bcont) {
+    _depura("pluginCAnualesODS::inicializa", 0);
     empresaact = bcont->empresaactual();
     conexionbase = empresaact->bdempresa();
     /// Creamos el men&uacute;.
@@ -1059,9 +1100,14 @@ void pluginCAnualesODS::inicializa(Bulmacont *bcont) {
     pPluginMenu->addAction(accion);
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bcont->menuBar()->addMenu(pPluginMenu);
+    _depura("END pluginCAnualesODS::inicializa", 0);
 }
 
 
+///
+/**
+\param bcont
+**/
 void entryPoint(Bulmacont *bcont) {
     _depura("Estoy dentro del plugin\n", 0);
     pluginCAnualesODS *plug = new pluginCAnualesODS();

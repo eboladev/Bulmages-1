@@ -57,7 +57,11 @@
 #include "listlinprevcobroview.h"
 
 
+///
+/**
+**/
 void ListLinPrevCobroView::presentacionFactura() {
+    _depura("ListLinPrevCobroView::presentacionFactura", 0);
     hideColumn(COL_SELECCION);
     hideColumn(COL_IDPREVCOBRO);
     hideColumn(COL_IDFPAGO);
@@ -67,10 +71,15 @@ void ListLinPrevCobroView::presentacionFactura() {
     hideColumn(COL_FPREVISTAPREVCOBRO);
     hideColumn(COL_CANTIDADPREVISTAPREVCOBRO);
     hideColumn(COL_IDCTACLIENTE);
+    _depura("END ListLinPrevCobroView::presentacionFactura", 0);
 }
 
 
+///
+/**
+**/
 void ListLinPrevCobroView::presentacionListado() {
+    _depura("ListLinPrevCobroView::presentacionListado", 0);
     showColumn(COL_SELECCION);
     hideColumn(COL_IDPREVCOBRO);
     hideColumn(COL_IDFPAGO);
@@ -80,11 +89,17 @@ void ListLinPrevCobroView::presentacionListado() {
     hideColumn(COL_FPREVISTAPREVCOBRO);
     hideColumn(COL_CANTIDADPREVISTAPREVCOBRO);
     hideColumn(COL_IDCTACLIENTE);
+    _depura("END ListLinPrevCobroView::presentacionListado", 0);
 }
 
 
+///
+/**
+\param parent
+**/
 ListLinPrevCobroView::ListLinPrevCobroView(QWidget * parent)
         : QTableWidget(parent), ListLinPrevCobro() {
+    _depura("ListLinPrevCobroView::ListLinPrevCobroView", 0);
     /// Inicializamos la tabla de lineas de presupuesto
     setColumnCount(17);
     setRowCount(10000);
@@ -125,14 +140,26 @@ ListLinPrevCobroView::ListLinPrevCobroView(QWidget * parent)
     connect(this, SIGNAL(valueChanged(int, int)), this, SLOT(valueLineChanged(int, int)));
     connect(this, SIGNAL(contextMenuRequested(int, int, const QPoint &)), this, SLOT(contextMenu(int, int, const QPoint &)));
     installEventFilter(this);
+    _depura("END ListLinPrevCobroView::ListLinPrevCobroView", 0);
 }
 
 
-ListLinPrevCobroView::~ListLinPrevCobroView() {}
+///
+/**
+**/
+ListLinPrevCobroView::~ListLinPrevCobroView() {
+    _depura("ListLinPrevCobroView::~ListLinPrevCobroView", 0);
+    _depura("END ListLinPrevCobroView::~ListLinPrevCobroView", 0);
+}
 
 
+///
+/**
+\param linea
+\param pos
+**/
 void ListLinPrevCobroView::pintalistlinprevcobro(linprevcobro *linea, int pos) {
-
+    _depura("ListLinPrevCobroView::pintalistlinprevcobro", 0);
     item(pos, COL_IDPREVCOBRO)->setText(linea->idprevcobro());
     item(pos, COL_FPREVISTAPREVCOBRO)->setText(linea->fprevistaprevcobro());
     item(pos, COL_FCOBROPREVCOBRO)->setText(linea->fcobroprevcobro());
@@ -194,9 +221,13 @@ void ListLinPrevCobroView::pintalistlinprevcobro(linprevcobro *linea, int pos) {
         } // end if
     } // end if
     delete cursoraux1;
+    _depura("END ListLinPrevCobroView::pintalistlinprevcobro", 0);
 }
 
 
+///
+/**
+**/
 void ListLinPrevCobroView::pintalistlinprevcobro() {
     _depura("INICIO de pintalistlinprevcobro", 10);
     setRowCount(0);
@@ -218,7 +249,15 @@ void ListLinPrevCobroView::pintalistlinprevcobro() {
 }
 
 
+///
+/**
+\param row
+\param col
+\param pos
+\return
+**/
 void ListLinPrevCobroView::contextMenu(int row, int col, const QPoint & pos) {
+    _depura("ListLinPrevCobroView::contextMenu", 0);
     QMenu *popup = new QMenu();
     QAction *menuborrarlinea = popup->addAction(tr("Borrar linea"));
     QAction *menugenerarasiento = popup->addAction(tr("Generar asiento de cobro/pago"));
@@ -306,14 +345,24 @@ void ListLinPrevCobroView::contextMenu(int row, int col, const QPoint & pos) {
         linea->settipoprevcobro("f");
         pintalistlinprevcobro(linea, row);
     } // end if
+    _depura("END ListLinPrevCobroView::contextMenu", 0);
 }
 
 
+///
+/**
+**/
 void ListLinPrevCobroView::borralinprevcobroact() {
+    _depura("ListLinPrevCobroView::borralinprevcobroact", 0);
     borralinprevcobro(currentRow());
+    _depura("END ListLinPrevCobroView::borralinprevcobroact", 0);
 }
 
 
+///
+/**
+\param pos
+**/
 void ListLinPrevCobroView::pintalinlistlinprevcobro(int pos) {
     _depura("pintalinlistlinprevcobro", 10);
     linprevcobro *linea;
@@ -324,7 +373,12 @@ void ListLinPrevCobroView::pintalinlistlinprevcobro(int pos) {
 
 /// Este m&eacute;todo se encarga de asegurar que la posición del foco es la correcta para
 /// la tabla.
+/**
+\param row
+\param col
+**/
 void ListLinPrevCobroView::arreglaPosicion(int row, int col) {
+    _depura("ListLinPrevCobroView::arreglaPosicion", 0);
     int newcol = col;
     int newrow = row;
     switch (col) {
@@ -343,9 +397,14 @@ void ListLinPrevCobroView::arreglaPosicion(int row, int col) {
         break;
     } // end switch
     setCurrentCell(newrow, newcol);
+    _depura("END ListLinPrevCobroView::arreglaPosicion", 0);
 }
 
-
+///
+/**
+\param row
+\param col
+**/
 void ListLinPrevCobroView::valueLineChanged(int row, int col) {
     _depura("valueLineChanged", 10);
     QString valor = item(row, col)->text();
@@ -404,6 +463,9 @@ void ListLinPrevCobroView::valueLineChanged(int row, int col) {
 
 
 /// Devuelve la l&iacute;nea que se est&aacute; tratando actualmente.
+/**
+\return
+**/
 linprevcobro *ListLinPrevCobroView::lineaact() {
     fprintf(stderr, "ListLinPrevCobroView::lineaact()\n");
     return lineaat(currentRow());
@@ -412,6 +474,10 @@ linprevcobro *ListLinPrevCobroView::lineaact() {
 
 /// Devuelve la l&iacute;nea especificada, y si no existe se van creando l&iacute;neas
 /// hasta que exista.
+/**
+\param row
+\return
+**/
 linprevcobro *ListLinPrevCobroView::lineaat(int row) {
     _depura("listlinprevcobro::lineaat", 2);
     linprevcobro *linea;
@@ -431,6 +497,10 @@ linprevcobro *ListLinPrevCobroView::lineaat(int row) {
 }
 
 
+///
+/**
+\return
+**/
 QString ListLinPrevCobroView::searchCuenta() {
     _depura("ListLinPrevCobroView::searchCuenta", 2, "Funcion no implementada");
 
@@ -458,7 +528,13 @@ QString ListLinPrevCobroView::searchCuenta() {
   * 3.- Cargamos la plantilla de cobro o pago y le metemos los valores necesarios
   * 4.- Generamos el asiento a partir del asiento inteligente.
   */
+
+
+///
+/**
+**/
 void ListLinPrevCobroView::s_creaPago() {
+    _depura("ListLinPrevCobroView::s_creaPago", 0);
     /// Calculamos los campos necesarios.
     /// El calculo de los campos requeridos es una iteracion por la tabla.
     /// Actualizamos los campos que haga falta.
@@ -478,5 +554,6 @@ void ListLinPrevCobroView::s_creaPago() {
     } // end for
     /// Inicializamos para que se muestren las cosas estas.
     pintalistlinprevcobro();
+    _depura("END ListLinPrevCobroView::s_creaPago", 0);
 }
 

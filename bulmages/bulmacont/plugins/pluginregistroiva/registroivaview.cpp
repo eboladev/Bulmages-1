@@ -38,6 +38,12 @@
 #include "funcaux.h"
 
 
+///
+/**
+\param comp
+\param parent
+\return
+**/
 RegistroIvaView::RegistroIvaView(Empresa *comp, QWidget *parent)
         :  RegistroIva(comp, parent) {
     setAttribute(Qt::WA_DeleteOnClose);
@@ -99,6 +105,9 @@ RegistroIvaView::RegistroIvaView(Empresa *comp, QWidget *parent)
 }
 
 
+///
+/**
+**/
 RegistroIvaView::~RegistroIvaView() {
     _depura("RegistroIvaView::~RegistroIvaView", 0);
     _depura("END RegistroIvaView::~RegistroIvaView", 0);
@@ -112,6 +121,9 @@ RegistroIvaView::~RegistroIvaView() {
 /// y destruido en el destructor de clase.
 /// Esta funci&oacute;n se llama con la inicializaci&oacute;n de clase y cuando se quieren
 /// cargar datos.
+/**
+\param idfpago
+**/
 void RegistroIvaView::cargarComboFPago(QString idfpago) {
     _depura("RegistroIvaView::cargarComboFPago", 0);
     if (m_cursorFPago != NULL)
@@ -148,6 +160,12 @@ void RegistroIvaView::on_mui_borrar_clicked() {
 }
 */
 
+
+///
+/**
+\param id
+\return
+**/
 int RegistroIvaView::cargar(QString id) {
     int error = 0;
     error = RegistroIva::cargar(id);
@@ -167,6 +185,10 @@ int RegistroIvaView::cargar(QString id) {
 }
 
 
+///
+/**
+\return
+**/
 int RegistroIvaView::guardar() {
     _depura("RegistroIvaView::guardar", 0);
     try {
@@ -204,6 +226,8 @@ int RegistroIvaView::guardar() {
     2.- Calcula la fecha inicial a partir de la fecha de factura y la forma de pago.
     3.- Itera para cada plazo en la forma de pago calculando el nuevo plazo.
     Falta usar las cuentas de servicio para saber si es cobro o pago. */
+/**
+**/
 void RegistroIvaView::on_mui_generarPrevisiones_clicked() {
     _depura("RegistroIvaView::on_mui_generarPrevisiones_clicked", 0);
     QString snumpagos = m_cursorFPago->valor("nplazosfpago", m_fPago->currentIndex());

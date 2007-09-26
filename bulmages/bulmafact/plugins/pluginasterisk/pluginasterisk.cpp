@@ -155,7 +155,7 @@ int AlmacenView_AlmacenView(AlmacenView *alm) {
 
     alm->mui_tab->addTab(l, "Validaciones Asterisk");
 
-
+    _depura("END AlmacenView_AlmacenView", 0);
     return 0;
 }
 

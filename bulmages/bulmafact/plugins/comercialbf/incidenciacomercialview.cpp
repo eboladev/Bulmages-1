@@ -80,7 +80,7 @@ IncidenciaComercialView::~IncidenciaComercialView() {
 
 ///
 /**
-\param es
+\param e
 **/
 void IncidenciaComercialView::closeEvent(QCloseEvent *e) {
     _depura("closeEvent", 0);

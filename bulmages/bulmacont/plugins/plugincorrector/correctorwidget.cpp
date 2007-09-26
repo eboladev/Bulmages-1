@@ -25,13 +25,22 @@
 
 /** Inicializacion de la clase.
     En el constructor del corrector no se hacen tareas especiales. */
+/**
+\param parent
+\param fl
+**/
 correctorwidget::correctorwidget(QWidget* parent, Qt::WFlags fl)
         : QWidget(parent, fl) {
+    _depura("correctorwidget::correctorwidget", 0);
     setupUi(this);
     QObject::connect(mui_browser, SIGNAL(anchorClicked(const QUrl)), this, SLOT(alink(const QUrl)));
+    _depura("END correctorwidget::correctorwidget", 0);
 }
 
 
+///
+/**
+**/
 correctorwidget::~correctorwidget() {
     _depura("Salida del plugin Corrector", 10);
 }
@@ -39,17 +48,24 @@ correctorwidget::~correctorwidget() {
 
 /** Se ha pulsado sobre el boton de configuracion de reglas.
     Activa la ventana de correcion de reglas \ref confreglasview */
+/**
+**/
 void correctorwidget::on_mui_configurar_clicked() {
+    _depura("correctorwidget::on_mui_configurar_clicked", 0);
     confreglasview *conf = new confreglasview();
     conf->exec();
     delete conf;
+    _depura("END correctorwidget::on_mui_configurar_clicked", 0);
 }
 
 
 /** Se encarga de llevar a cabo las diferentes pruebas y generar el informe.
     Esta funcion es el disparador del corrector, que se encarga de hacer los tests a la
     empresa y sacar la ventana de resultados. */
+/**
+**/
 void correctorwidget::on_mui_corregir_clicked() {
+    _depura("correctorwidget::on_mui_corregir_clicked", 0);
     textBrowser = "<HTML><BODY BGCOLOR='#FFFFFF'>";
     cursor2 *cur;
 
@@ -154,6 +170,7 @@ void correctorwidget::on_mui_corregir_clicked() {
 
     textBrowser += "</BODY></HTML>";
     mui_browser->setHtml(textBrowser);
+    _depura("END correctorwidget::on_mui_corregir_clicked", 0);
 }
 
 
@@ -161,7 +178,11 @@ void correctorwidget::on_mui_corregir_clicked() {
     Se activa esta funcion cuando se ha pulsado un link en el Widget de resultados
     QTextBrowser.
     De esta forma la aplicacion puede interactuar con la pagina web que se muestra. */
+/**
+\param url
+**/
 void correctorwidget::alink(const QUrl &url) {
+    _depura("correctorwidget::alink", 0);
     QString linker = url.fragment();
    _depura(linker, 10);
 
@@ -179,13 +200,21 @@ void correctorwidget::alink(const QUrl &url) {
         view->muestraasiento(linker.toInt(&ok));
         //QMessageBox::warning(0, tr("Opcion no implementada"), tr("No se puede acceder al error"), 0, 1, 2);
     } // endif
+    _depura("END correctorwidget::alink", 0);
 }
 
 
 /** Se encarga de agregar un error en el browser que los presenta.
     Sirve para para introducir los errores hayados en el corrector y que se vean por
     pantalla. */
+/**
+\param texto
+\param texto1
+\param texto2
+**/
 void correctorwidget::agregarError(QString texto, QString texto1, QString texto2) {
+    _depura("correctorwidget::agregarError", 0);
     textBrowser += "<HR><table><tr><td colspan=2>" + texto + "</td></tr><tr><td><a name='masinfo' href='#" + texto1 + "'>+ info</a></td><td><a name='" + texto1 + "' href='#" + texto2 + "'>ver error</a></td></tr></table>";
+    _depura("END correctorwidget::agregarError", 0);
 }
 

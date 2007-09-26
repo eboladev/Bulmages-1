@@ -99,6 +99,7 @@ QString BusquedaTipoTrabajo::idtipotrabajo() {
 
 ///
 /**
+\param index
 **/
 void BusquedaTipoTrabajo::m_activated(int index) {
     _depura("BusquedaTipoTrabajo::m_activated", 0);

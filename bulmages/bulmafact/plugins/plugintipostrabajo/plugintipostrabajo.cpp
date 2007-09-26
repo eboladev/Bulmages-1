@@ -209,6 +209,7 @@ int Ficha_cargar(Ficha *fich) {
 
 ///
 /**
+\param fich
 \return
 **/
 int Ficha_guardar_Post(Ficha *fich) {

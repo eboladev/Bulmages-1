@@ -80,6 +80,7 @@ void myplugin1::inicializa(Bulmafact *bges) {
 
 ///
 /**
+\param bges
 \return
 **/
 int entryPoint(Bulmafact *bges) {

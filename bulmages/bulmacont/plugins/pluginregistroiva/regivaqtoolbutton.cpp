@@ -43,6 +43,11 @@
 #include "registroivaview.h"
 
 
+///
+/**
+\param as
+\param parent
+**/
 RegIVAQToolButton::RegIVAQToolButton(Asiento1View *as , QWidget *parent) : QToolButton(parent) {
     _depura("RegIVAQToolButton::RegIVAQToolButton", 0);
     m_asiento1View = as;
@@ -50,8 +55,19 @@ RegIVAQToolButton::RegIVAQToolButton(Asiento1View *as , QWidget *parent) : QTool
     _depura("END RegIVAQToolButton::RegIVAQToolButton", 0);
 }
 
-RegIVAQToolButton::~RegIVAQToolButton() {}
 
+///
+/**
+**/
+RegIVAQToolButton::~RegIVAQToolButton() {
+    _depura("RegIVAQToolButton::~RegIVAQToolButton", 0);
+    _depura("END RegIVAQToolButton::~RegIVAQToolButton", 0);
+}
+
+
+///
+/**
+**/
 void RegIVAQToolButton::setBoton() {
     _depura("RegIVAQToolButton::setBoton", 0);
     connect(this, SIGNAL(clicked()), this, SLOT(click()));
@@ -65,6 +81,9 @@ void RegIVAQToolButton::setBoton() {
 }
 
 
+///
+/**
+**/
 void RegIVAQToolButton::click() {
     _depura("ImpQToolButton::click", 0);
     ListLinAsiento1View *las = m_asiento1View->mui_list;

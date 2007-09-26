@@ -31,17 +31,31 @@
 #define COL_ORDENASIENTO            6
 
 
+///
+/**
+\param emp
+**/
 myplugin1::myplugin1(Empresa *emp) {
+    _depura("myplugin1::myplugin1", 0);
     empresaactual = emp;
     conexionbase = emp->bdempresa();
+    _depura("END myplugin1::myplugin1", 0);
 }
 
 
-myplugin1::~myplugin1() {}
+///
+/**
+**/
+myplugin1::~myplugin1() {
+    _depura("myplugin1::~myplugin1", 0);
+    _depura("END myplugin1::~myplugin1", 0);
+}
 
 
 /// Esto debe coger un asiento y asociarle un archivo documental y abrirlo y ensenyar
 /// ambas cosas.
+/**
+**/
 void myplugin1::boton_nuevoasientodocumental() {
     _depura("myplugin1::boton_nuevoasientodocumental", 10);
     adocumental *adoc = new adocumental(empresaactual, 0);
@@ -54,6 +68,9 @@ void myplugin1::boton_nuevoasientodocumental() {
 }
 
 
+///
+/**
+**/
 void myplugin1::boton_adjuntar() {
     _depura("myplugin1::boton_adjuntar", 10);
     adocumental *adoc = new adocumental(empresaactual, 0);
@@ -74,6 +91,8 @@ void myplugin1::boton_adjuntar() {
 /// como pueden ser PDF's, GIFS, archivos de sonido, etc.
 /// La idea principal es que se pueda conectar un escaner y se puedan escanear
 /// las imagenes de facturas para despues pasarlas.
+/**
+**/
 void myplugin1::archDoc() {
     _depura("myplugin1::archDoc", 10);
     adocumental *adoc = new adocumental(empresaactual, 0);
@@ -83,6 +102,11 @@ void myplugin1::archDoc() {
 }
 
 
+///
+/**
+\param emp
+\param parent
+**/
 adocumental::adocumental(Empresa *emp, QWidget *parent)
         : QDialog(parent) {
     _depura("adocumental::adocumental", 10);
@@ -121,10 +145,20 @@ adocumental::adocumental(Empresa *emp, QWidget *parent)
 }
 
 
-adocumental::~adocumental() {}
+///
+/**
+**/
+adocumental::~adocumental() {
+    _depura("adocumental::~adocumental", 0);
+    _depura("END adocumental::~adocumental", 0);
+}
 
 
+///
+/**
+**/
 void adocumental::inicializa() {
+    _depura("adocumental::inicializa", 0);
     QString query = "SELECT * FROM adocumental LEFT JOIN asiento ON adocumental.idasiento = asiento.idasiento ORDER BY ordenasiento";
     conexionbase->begin();
     cursor2 *cursoraux1 = conexionbase->cargacursor(query, "elquery");
@@ -150,10 +184,16 @@ void adocumental::inicializa() {
         i++;
     } // end while
     delete cursoraux1;
+    _depura("END adocumental::inicializa", 0);
 }
 
 
+///
+/**
+\param row
+**/
 void adocumental::doubleclicked(int row, int, int, const QPoint &) {
+    _depura("adocumental::doubleclicked", 0);
     idadocumental = m_listado->item(row, COL_IDADOCUMENTAL)->text();
 
     _depura("Archivo Documental: " + idadocumental, 10);
@@ -164,18 +204,30 @@ void adocumental::doubleclicked(int row, int, int, const QPoint &) {
     } else { /// Es el modo consulta.
         done(1);
     } // end if
+    _depura("END adocumental::doubleclicked", 0);
 }
 
 
+///
+/**
+\param archivo
+**/
 void adocumental::newADocumental(QString archivo) {
+    _depura("adocumental::newADocumental", 0);
     QString SQLQuery = "INSERT INTO adocumental (archivoadocumental) VALUES ('" + conexionbase->sanearCadena(archivo) + "')";
     conexionbase->begin();
     conexionbase->ejecuta(SQLQuery);
     conexionbase->commit();
+    _depura("END adocumental::newADocumental", 0);
 }
 
 
+///
+/**
+\return
+**/
 void adocumental::boton_newadocumental() {
+    _depura("adocumental::boton_newadocumental", 0);
     QString fn = QFileDialog::getOpenFileName(this, tr("Elija el nombre del archivo"),
                  confpr->valor(CONF_DIR_USER),
                  tr("Todos (*.*)"));
@@ -184,13 +236,25 @@ void adocumental::boton_newadocumental() {
         newADocumental(fn);
     } // end if
     inicializa();
+    _depura("END adocumental::boton_newadocumental", 0);
 }
 
+
+///
+/**
+\return
+**/
 inline QString adocumental::getidadocumental() {
+    _depura("adocumental::getidadocumental", 0);
+    _depura("END adocumental::getidadocumental", 0);
     return (idadocumental);
 }
 
 
+///
+/**
+\param idasiento
+**/
 void adocumental::asociaasiento(QString idasiento) {
     _depura("AsociaAsiento:", 10);
     _depura("idasiento:" + idasiento  + ", idadocumental:" + idadocumental);
@@ -207,6 +271,9 @@ void adocumental::asociaasiento(QString idasiento) {
 
 /// Esta funcion coge el primer archivo documental que no esta asociado a ningun asiento
 /// y lo muestra asignando a idasiento su valor.
+///
+/**
+**/
 void adocumental::presentaprimervacio() {
     _depura("adocumental::presentaprimervacio", 10);
     int i = 0;
@@ -219,8 +286,11 @@ void adocumental::presentaprimervacio() {
     _depura("END adocumental::presentaprimervacio", 10);
 }
 
-
+///
+/**
+**/
 void adocumental::boton_desasociar() {
+    _depura("adocumental::boton_desasociar", 0);
     idadocumental = m_listado->item(m_listado->currentRow(), COL_IDADOCUMENTAL)->text();
     if (idadocumental != "") {
         QString SQLQuery = "UPDATE adocumental SET idasiento = NULL WHERE idadocumental = " + idadocumental;
@@ -229,10 +299,15 @@ void adocumental::boton_desasociar() {
         conexionbase->commit();
     } // end if
     inicializa();
+    _depura("END adocumental::boton_desasociar", 0);
 }
 
 
+///
+/**
+**/
 void adocumental::s_deleteADocumental() {
+    _depura("adocumental::s_deleteADocumental", 0);
     idadocumental = m_listado->item(m_listado->currentRow(), COL_IDADOCUMENTAL)->text();
     if (idadocumental != "") {
         QString SQLQuery = "DELETE FROM adocumental WHERE idadocumental = " + idadocumental;
@@ -241,10 +316,14 @@ void adocumental::s_deleteADocumental() {
         conexionbase->commit();
     } // end if
     inicializa();
+    _depura("END adocumental::s_deleteADocumental", 0);
 }
 
-
+///
+/**
+**/
 void adocumental::s_saveADocumental() {
+    _depura("adocumental::s_saveADocumental", 0);
     int row = m_listado->currentRow();
     idadocumental = m_listado->item(row, COL_IDADOCUMENTAL)->text();
     if (idadocumental != "") {
@@ -257,10 +336,15 @@ void adocumental::s_saveADocumental() {
         conexionbase->commit();
     } // end if
     inicializa();
+    _depura("END adocumental::s_saveADocumental", 0);
 }
 
 
+///
+/**
+**/
 void adocumental::s_agregarDirectorio() {
+    _depura("adocumental::s_agregarDirectorio", 0);
     QString fn = QFileDialog::getExistingDirectory(this, tr("Elija un directorio"),
                  confpr->valor(CONF_DIR_USER),
                  QFileDialog::ShowDirsOnly
@@ -274,5 +358,6 @@ void adocumental::s_agregarDirectorio() {
     } // end for
 
     inicializa();
+    _depura("END adocumental::s_agregarDirectorio", 0);
 }
 

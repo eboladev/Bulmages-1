@@ -61,6 +61,7 @@ void myplugininv::elslot() {
 \param bges
 **/
 void myplugininv::inicializa(Bulmafact *bges) {
+    _depura("myplugininv::inicializa", 0);
     /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
     m_bges = bges;
     setEmpresaBase(bges->getcompany());
@@ -70,6 +71,7 @@ void myplugininv::inicializa(Bulmafact *bges) {
     bges->menuArticulos->addSeparator();
     bges->menuArticulos->addAction(planCuentas);
     connect(planCuentas, SIGNAL(activated()), this, SLOT(elslot()));
+    _depura("END myplugininv::inicializa", 0);
 }
 
 

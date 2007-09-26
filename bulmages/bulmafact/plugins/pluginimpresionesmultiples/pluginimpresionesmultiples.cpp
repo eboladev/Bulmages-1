@@ -40,6 +40,7 @@ int entryPoint(Bulmafact *) {
 
 ///
 /**
+\param l
 \return
 **/
 int PedidosClienteListSubform_PedidosClienteListSubform(PedidosClienteListSubform *l) {
@@ -52,6 +53,7 @@ int PedidosClienteListSubform_PedidosClienteListSubform(PedidosClienteListSubfor
 
 ///
 /**
+\param l
 \return
 **/
 int AlbaranClienteListSubform_AlbaranClienteListSubform(AlbaranClienteListSubform *l) {

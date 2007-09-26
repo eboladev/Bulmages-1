@@ -88,6 +88,7 @@ CuadranteView::~CuadranteView() {
 /**
 **/
 void CuadranteView::inicializaTrabajadores() {
+    _depura("CuadranteView::inicializaTrabajadores", 0);
 
     mui_listtrabajadores->setColumnCount(2);
     cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM tipotrabajo");
@@ -114,6 +115,7 @@ void CuadranteView::inicializaTrabajadores() {
         } // end if
         delete cur;
     } // end if
+    _depura("END CuadranteView::inicializaTrabajadores", 0);
 }
 
 

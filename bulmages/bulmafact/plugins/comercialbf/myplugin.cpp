@@ -71,6 +71,7 @@ void mypluginbf::elslot1() {
 \param bges
 **/
 void mypluginbf::inicializa(Bulmafact *bges) {
+    _depura("mypluginbf::inicializa", 0);
     /// El men&uacute; de empresa.
     m_bges = bges;
     /// Cogemos la 'company' para tener acceso a todo y sobretodo a BD.
@@ -89,6 +90,6 @@ void mypluginbf::inicializa(Bulmafact *bges) {
     planCuentas->setWhatsThis(tr("Rutas comerciales"));
     bges->menuMaestro->addAction(planCuentas);
     connect(planCuentas, SIGNAL(activated()), this, SLOT(elslot()));
-
+    _depura("END mypluginbf::inicializa", 0);
 }
 

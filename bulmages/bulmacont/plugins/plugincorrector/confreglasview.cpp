@@ -23,11 +23,18 @@
 #include "confreglasview.h"
 
 
+///
+/**
+\param parent
+**/
 confreglasview::confreglasview(QWidget *parent)
         : QDialog(parent) {
     setupUi(this);
 }
 
 
+///
+/**
+**/
 confreglasview::~confreglasview() {}
 

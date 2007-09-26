@@ -32,7 +32,10 @@
 #include "correctorwidget.h"
 #include "empresa.h"
 
-
+///
+/**
+\param bcont
+**/
 void entryPoint(Bulmacont *bcont) {
     _depura("Entrada del plugin Corrector", 10);
     Empresa *emp = bcont->empresaactual();

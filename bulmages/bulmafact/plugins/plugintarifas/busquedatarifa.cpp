@@ -31,8 +31,10 @@
 **/
 BusquedaTarifa::BusquedaTarifa(QWidget *parent)
         : QComboBox(parent), PEmpresaBase() {
+        _depura("BusquedaTarifa::BusquedaTarifa", 0);
     m_cursorcombo = NULL;
     connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
+        _depura("END BusquedaTarifa::BusquedaTarifa", 0);
 }
 
 

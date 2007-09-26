@@ -142,6 +142,7 @@ int TarifaView::cargar(QString idtarifa) {
 
 ///
 /**
+\return
 **/
 int TarifaView::guardar() {
     _depura("TarifaView::INIT_s_grabarClicked()\n", 0);
@@ -227,7 +228,9 @@ void TarifaView::closeEvent(QCloseEvent *e) {
 /**
 **/
 void TarifaView::on_mui_aceptar_clicked() {
+    _depura("TarifaView::on_mui_aceptar_clicked", 0);
     on_mui_guardar_clicked();
     close();
+    _depura("END TarifaView::on_mui_aceptar_clicked", 0);
 }
 

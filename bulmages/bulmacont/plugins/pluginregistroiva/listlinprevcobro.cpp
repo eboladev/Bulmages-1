@@ -95,12 +95,22 @@ void ListLinPrevCobro::nuevalinea(QString desc, QString cantl, QString pvpl, QSt
 }
 
 
+///
+/**
+\param pos
+\return
+**/
 linprevcobro *ListLinPrevCobro::linpos(int pos) {
+    _depura("ListLinPrevCobro::linpos", 0);
+    _depura("END ListLinPrevCobro::linpos", 0);
     return m_lista.at(pos);
 }
 
 
 /// Carga l&iacute;neas de una factura.
+/**
+\return
+**/
 int ListLinPrevCobro::chargeBudgetLines() {
     QString cadwhere = "";
     vaciar();
@@ -154,6 +164,9 @@ int ListLinPrevCobro::chargeBudgetLines() {
 }
 
 
+///
+/**
+**/
 void ListLinPrevCobro::guardaListLinPrevCobro() {
     _depura("guardaListLinPrevCobro()");
     linprevcobro *linea;
@@ -170,30 +183,49 @@ void ListLinPrevCobro::guardaListLinPrevCobro() {
 }
 
 
+///
+/**
+**/
 void ListLinPrevCobro::vaciar() {
+    _depura("ListLinPrevCobro::vaciar", 0);
     m_lista.clear();
+    _depura("END ListLinPrevCobro::vaciar", 0);
 }
 
 
+///
+/**
+**/
 void ListLinPrevCobro::borrar() {
+    _depura("ListLinPrevCobro::borrar", 0);
     if (mdb_idregistroiva != "")  {
         m_companyact->begin();
         m_companyact->ejecuta("DELETE FROM prevcobro WHERE idregistroiva = " + mdb_idregistroiva);
         m_companyact->commit();
     } // end if
+    _depura("END ListLinPrevCobro::borrar", 0);
 }
 
-
+///
+/**
+**/
 void ListLinPrevCobro::borralinprevcobro(int pos) {
+    _depura("ListLinPrevCobro::borralinprevcobro", 0);
     linprevcobro *linea;
     linea = m_lista.at(pos);
     linea->borrar();
     m_lista.removeAt(pos);
     pintaListLinPrevCobro();
+    _depura("END ListLinPrevCobro::borralinprevcobro", 0);
 }
 
 
+///
+/**
+\return
+**/
 Fixed ListLinPrevCobro::totalCobro() {
+    _depura("ListLinPrevCobro::totalCobro", 0);
     linprevcobro *linea;
     Fixed tcobro("0");
 
@@ -208,12 +240,17 @@ Fixed ListLinPrevCobro::totalCobro() {
             tcobro = tcobro + Fixed(linea->cantidadprevcobro());
         } // end if
     } // end while
-
+    _depura("END ListLinPrevCobro::totalCobro", 0);
     return tcobro;
 }
 
 
+///
+/**
+\return
+**/
 Fixed ListLinPrevCobro::totalPago() {
+    _depura("ListLinPrevCobro::totalPago", 0);
     linprevcobro *linea;
     Fixed tpago("0");
 
@@ -228,7 +265,7 @@ Fixed ListLinPrevCobro::totalPago() {
             tpago = tpago + Fixed(linea->cantidadprevcobro());
         } // end if
     } // end while
-
+    _depura("END ListLinPrevCobro::totalPago", 0);
     return tpago;
 }
 

@@ -54,8 +54,9 @@ CuadranteQTableWidget::~CuadranteQTableWidget() {
 \param event
 **/
 void CuadranteQTableWidget::dragEnterEvent(QDragEnterEvent *event) {
-    _depura("CuadranteQTableWidget::dropMimeData", 0);
+    _depura("CuadranteQTableWidget::dragEnterEvent", 0);
     event->acceptProposedAction();
+    _depura("END CuadranteQTableWidget::dragEnterEvent", 0);
 }
 
 
