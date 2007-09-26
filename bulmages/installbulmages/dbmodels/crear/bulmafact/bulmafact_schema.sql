@@ -2650,7 +2650,7 @@ BEGIN
 	totalIVA := totalIVA + res.subtotal1;
     END LOOP;
 
-    FOR res IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente / 100) * (reqeqlpedidocliente / 100) AS subtotal1 FROM lpedidoproveedor WHERE idpedidocliente = idp LOOP
+    FOR res IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente / 100) * (reqeqlpedidocliente / 100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
 	totalRE := totalRE + res.subtotal1;
     END LOOP;
 
@@ -2715,18 +2715,48 @@ CREATE OR REPLACE FUNCTION calctotalalbaran(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
     idp ALIAS FOR $1;
-    total numeric(12, 2);
+    totalBImponibleLineas numeric(12, 4);
+    totalIRPF numeric(12, 4);
+    totalIVA numeric(12, 4);
+    totalRE numeric(12, 4);
+    totalTotal numeric(12, 2);
     res RECORD;
+    res2 RECORD;
 
 BEGIN
-    total := 0;
-    FOR res IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) * (1 + ivalalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
-	total := total + res.subtotal1;
+    totalBImponibleLineas := 0;
+    totalIRPF := 0;
+    totalIVA := 0;
+    totalRE := 0;
+    totalTotal := 0;
+
+    FOR res IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
+	totalBImponibleLineas := totalBImponibleLineas + res.subtotal1;
     END LOOP;
+
+    SELECT INTO res valor::numeric FROM configuracion WHERE LOWER(nombre) = ''irpf'';
+    IF FOUND THEN
+        totalIRPF := totalBImponibleLineas * (res.valor / 100);
+    END IF;
+
+    FOR res IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) * (ivalalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
+	totalIVA := totalIVA + res.subtotal1;
+    END LOOP;
+
+    FOR res IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) * (reqeqlalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
+	totalRE := totalRE + res.subtotal1;
+    END LOOP;
+
     FOR res IN SELECT proporciondalbaran FROM dalbaran WHERE idalbaran = idp LOOP
-    	total := total * (1 - res.proporciondalbaran / 100);
+	totalBImponibleLineas := totalBImponibleLineas * (1 - res.proporciondalbaran / 100);
+	totalIRPF := totalIRPF * (1 - res.proporciondalbaran / 100);
+	totalIVA := totalIVA * (1 - res.proporciondalbaran / 100);
+	totalRE := totalRE * (1 - res.proporciondalbaran / 100);
     END LOOP;
-    RETURN total;
+
+    totalTotal = totalBImponibleLineas - totalIRPF + totalIVA + totalRE;
+
+    RETURN totalTotal;
 END;
 ' LANGUAGE plpgsql;
 
@@ -2898,9 +2928,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.9.3-0008'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.9.3-0009'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.3-0008'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.3-0009'');
 	END IF;
 	RETURN 0;
 END;
