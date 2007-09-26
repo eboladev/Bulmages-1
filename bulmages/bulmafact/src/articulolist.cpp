@@ -95,7 +95,7 @@ void ArticuloList::presentar() {
 
 
 /** Se encarga de la accion preseleccionada al hacer doble click o al darle
-    al boton de editar. 
+    al boton de editar.
     Si estamos en modo seleccion actualiza el valor de los campos de seleccion y
     cierra la ventana.
     Si estamos en modo edicion abre una instancia de ArticuloView y lo carga con el
@@ -129,7 +129,7 @@ void ArticuloList::editar(int row) {
 }
 
 
-/// No requiere de ninguna accion adicional 
+/// No requiere de ninguna accion adicional
 /**
 **/
 ArticuloList::~ArticuloList() {

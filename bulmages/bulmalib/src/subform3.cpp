@@ -755,8 +755,9 @@ void SubForm3::pintar() {
     m_procesacambios = FALSE;
     mui_list->setColumnCount(m_lcabecera.count());
     pintaCabeceras();
-    if (m_primero)
+    if (m_primero) {
         cargaconfig();
+    } // end if
     nuevoRegistro();
     m_procesacambios = TRUE;
     _depura("END SubForm3::pintar", 0);
@@ -955,9 +956,6 @@ void SubForm3::cargar(cursor2 *cur) {
         mui_paganterior->setEnabled(TRUE);
     } // end if
 
-
-
-
     /// Recorremos el recordset y ponemos los registros en un orden determinado.
     int porcentajecarga = 0;
     while (!cur->eof() && m_lista.count() < filpag) {
@@ -1081,7 +1079,7 @@ void SubForm3::cargar(cursor2 *cur) {
     mui_list->setSortingEnabled(m_sorting);
 
     m_procesacambios = TRUE;
-    //pc->cerrar();
+
     _depura("END SubForm3::cargar", 0);
 }
 
@@ -1104,10 +1102,10 @@ void SubForm3::setOrdenPorQuery(bool ordenactivado) {
 void SubForm3::cargar(QString query) {
     _depura("SubForm3::cargar", 0);
     /// Si el query no existe no hacemos nada.
-    if (query == "") 
-	return;
+    if (query == "") return;
+
     try {
-        m_query =  query;
+        m_query = query;
 
         /// Tratramos con la paginacion.
         int limit = mui_filaspagina->text().toInt();
@@ -1185,7 +1183,7 @@ bool SubForm3::campoCompleto(int row) {
     SHeader *header;
     /// Sacamos celda a celda toda la fila
     for (int i = 0; i < mui_list->columnCount(); i++) {
-        camp = (SDBCampo *) mui_list->item(row,i);
+        camp = (SDBCampo *) mui_list->item(row, i);
 
         /// Si el dato no es valido se sale
         if (!camp) return FALSE;
@@ -1217,39 +1215,38 @@ bool SubForm3::campoCompleto(int row) {
 \param col
 **/
 void SubForm3::on_mui_list_cellRePosition(int row, int col) {
-    _depura("SubForm3::on_mui_list_cellReposition", 0, "Row: "+QString::number(row) + " col: "+QString::number(col));
+    _depura("SubForm3::on_mui_list_cellReposition", 0, "Row: " + QString::number(row) + " col: " + QString::number(col));
 
     bool creado = FALSE;
 
     int key = mui_list->m_teclasalida;
 
-    if (row == mui_list->rowCount() - 1 && campoCompleto( row)) {
+    if (row == mui_list->rowCount() - 1 && campoCompleto(row)) {
         nuevoRegistro();
         creado = TRUE;
     } // end if
 
     switch (key) {
-    case Qt::Key_Return:
-    case Qt::Key_Enter:
-    case Qt::Key_Tab:
-        if (!m_insercion) {
-            /// Se ha hecho un enter sobre una tabla sin insercion con lo que lanzamos un doble click para que sea
-            /// La accion simulada.
-            QTableWidgetItem *item = mui_list->currentItem();
-            emit itemDoubleClicked(item);
-            emit cellDoubleClicked(row, col);
-        } else {
+        case Qt::Key_Return:
+        case Qt::Key_Enter:
+        case Qt::Key_Tab:
+            if (!m_insercion) {
+                /// Se ha hecho un enter sobre una tabla sin insercion con lo que lanzamos un doble click para que sea
+                /// La accion simulada.
+                QTableWidgetItem *item = mui_list->currentItem();
+                emit itemDoubleClicked(item);
+                emit cellDoubleClicked(row, col);
+            } else {
+                situarse(row, col);
+            } // end if
+            break;
+        case Qt::Key_Down:
             situarse(row, col);
-        } // end if
-        break;
-
-    case Qt::Key_Down:
-        situarse(row, col);
-        situarse1(row, col);
-        if (creado) {
-            mui_list->setCurrentCell(row + 1, col);
-        } // end if
-        break;
+            situarse1(row, col);
+            if (creado) {
+                mui_list->setCurrentCell(row + 1, col);
+            } // end if
+            break;
     } // end switch
 
     _depura("END SubForm3::on_mui_list_cellRePosition", 0);
@@ -1324,18 +1321,12 @@ int SubForm3::addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QSt
 void SubForm3::setColumnValue(QString campo, QString valor) {
     _depura("SubForm3::setColumnValue", 0, campo +" -- "+valor);
     SDBRecord *rec;
-    int restaporinsercion;
 
-    if (!m_insercion) {
-        restaporinsercion=0;
-    } else {
-        restaporinsercion = 1;
-    } // end if
-
-    for (int i = 0; i < mui_list->rowCount() - restaporinsercion; ++i) {
-        rec =  lineaat(i);
-        if (rec)
+    for (int i = 0; i < mui_list->rowCount(); ++i) {
+        rec = lineaat(i);
+        if (rec) {
             rec->setDBvalue(campo, valor);
+        } // end if
     } // end for
     _depura("END SubForm3::setColumnValue", 0);
 }
@@ -1401,6 +1392,12 @@ int SubForm3::guardar() {
                 rec->borrar();
             } // end if
         } // end while
+
+        /// Asegura que siempre la ultima linea se valide antes de guardar.
+        /// Esto evita que se pueda perder informacion.
+        if (campoCompleto(mui_list->rowCount() - 1)) {
+            nuevoRegistro();
+        } // end if
 
         /// Si no hay elementos que guardar salimos.
         if (mui_list->rowCount() == 0 || ((mui_list->rowCount() == 1) && m_insercion)) {
@@ -1726,7 +1723,7 @@ void SubForm3::on_mui_confquery_clicked() {
     } // end if
     mui_paginaact->setValue(1);
     cargar(mui_query->toPlainText());
-//	cargar(m_query);
+//  cargar(m_query);
     _depura("END SubForm3::on_mui_confquery_clicked ", 0);
 }
 
@@ -1931,9 +1928,10 @@ void SubForm3::contextMenuEvent(QContextMenuEvent *) {
     /// Lanzamos la propagacion del menu a traves de las clases derivadas.
     creaMenu(popup);
 
-    if (m_delete)
+    if (m_delete) {
         del = popup->addAction(tr("Borrar registro"));
-    popup->addSeparator();
+        popup->addSeparator();
+    } // end if
     QAction *ajustc = popup->addAction(tr("Ajustar columa"));
     QAction *ajustac = popup->addAction(tr("Ajustar altura"));
 
@@ -1947,8 +1945,6 @@ void SubForm3::contextMenuEvent(QContextMenuEvent *) {
 
     /// Si no hay ninguna opcion pulsada se sale sin hacer nada
     if (!opcion) return;
-
-
     if (opcion == del)
         borrar(row);
     if (opcion == ajust)

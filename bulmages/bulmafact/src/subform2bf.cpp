@@ -426,11 +426,11 @@ void SubForm2Bf::setEmpresaBase(EmpresaBase *c) {
 /**
 \param f
 **/
-void SubForm2Bf::setDelete(bool f) {
-    _depura("SubForm2Bf::setDelete", 0);
-    m_delete = f;
-    _depura("END SubForm2Bf::setDelete", 0);
-}
+//void SubForm2Bf::setDelete(bool f) {
+//    _depura("SubForm2Bf::setDelete", 0);
+//    m_delete = f;
+//    _depura("END SubForm2Bf::setDelete", 0);
+//}
 
 
 ///

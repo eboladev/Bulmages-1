@@ -322,58 +322,58 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
         } // end if
         Qt::KeyboardModifiers mod = keyEvent->modifiers();
         switch (key) {
-        case Qt::Key_Return:
-        case Qt::Key_Enter:
-        case Qt::Key_Tab:
-            m_teclasalida = key;
-            emit cellRePosition(row, col);
-            return TRUE;
-            break;
+            case Qt::Key_Return:
+            case Qt::Key_Enter:
+            case Qt::Key_Tab:
+                m_teclasalida = key;
+                emit cellRePosition(row, col);
+                return TRUE;
+                break;
 
-        case Qt::Key_Slash:
-            if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) {
-                emit pressedSlash(row, col);
+            case Qt::Key_Slash:
+                if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) {
+                    emit pressedSlash(row, col);
+                    return TRUE;
+                } // end if
+                break;
+            case Qt::Key_Minus:
+                if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) {
+                    emit pressedMinus(row, col);
+                    return TRUE;
+                } // end if
+                break;
+            case Qt::Key_Plus:
+                emit pressedPlus(row, col);
                 return TRUE;
-            } // end if
-            break;
-        case Qt::Key_Minus:
-            if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) {
-                emit pressedMinus(row, col);
+            case Qt::Key_Asterisk:
+                if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) {
+                    emit pressedAsterisk(row, col);
+                    return TRUE;
+                } // end if
+                break;
+            case Qt::Key_Up:
+                if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) {
+                    emit ctrlSubir(row, col);
+                    return TRUE;
+                } // end if
+                /// Al pulsar la tecla 'arriba' se considera que es el fin de la edici&oacute;n de la celda.
+            case Qt::Key_Down:
+                if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) {
+                    emit ctrlBajar(row, col);
+                    return TRUE;
+                } // end if
+                /// Al pulsar la tecla 'abajo' se considera que es el fin de la edici&oacute; de la celda.
                 return TRUE;
-            } // end if
-            break;
-        case Qt::Key_Plus:
-            emit pressedPlus(row, col);
-            return TRUE;
-        case Qt::Key_Asterisk:
-            if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) {
-                emit pressedAsterisk(row, col);
-                return TRUE;
-            } // end if
-            break;
-        case Qt::Key_Up:
-            if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) {
-                emit ctrlSubir(row, col);
-                return TRUE;
-            } // end if
-            /// Al pulsar la tecla 'arriba' se considera que es el fin de la edici&oacute;n de la celda.
-        case Qt::Key_Down:
-            if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) {
-                emit ctrlBajar(row, col);
-                return TRUE;
-            } // end if
-            /// Al pulsar la tecla 'abajo' se considera que es el fin de la edici&oacute; de la celda.
-            return TRUE;
-        case Qt::Key_Left:
-            if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) {
-                emit ctrlIzquierda(row, col);
-                return TRUE;
-            } // end if
-        case Qt::Key_Right:
-            if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) {
-                emit ctrlDerecha(row, col);
-                return TRUE;
-            } // end if
+            case Qt::Key_Left:
+                if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) {
+                    emit ctrlIzquierda(row, col);
+                    return TRUE;
+                } // end if
+            case Qt::Key_Right:
+                if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) {
+                    emit ctrlDerecha(row, col);
+                    return TRUE;
+                } // end if
         } // end switch
     } // end if
 //    _depura("END QTableWidget2::eventFilter()", 0);

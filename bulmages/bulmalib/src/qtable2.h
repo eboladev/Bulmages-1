@@ -62,8 +62,10 @@ private:
     int modo; /// Indica el modo de dibujo.
     int m_tipoorden;
     int m_colorden;
+
 public:
-    int m_teclasalida; /// Indica con que tecla se ha salido de la edición.
+    int m_teclasalida; /// Indica con que tecla se ha salido de la edicion.
+
 public:
     int tipoorden();
     int colorden();

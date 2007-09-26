@@ -63,7 +63,7 @@ public:
     QSubForm2BfDelegate *m_delegate;
 
 protected:
-    bool m_delete;
+    //bool m_delete;
     QString mdb_idcliente;
     QString mdb_idproveedor;
 
@@ -73,7 +73,7 @@ private:
 public:
     SubForm2Bf(QWidget *parent = 0);
     virtual ~SubForm2Bf();
-    void setDelete(bool);
+    //void setDelete(bool);
     virtual void cargar(QString query);
     virtual void setEmpresaBase(EmpresaBase *);
     virtual void on_mui_list_cellChanged(int row, int col);

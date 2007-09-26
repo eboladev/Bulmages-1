@@ -361,6 +361,7 @@ int PresupuestoView::guardarPost() {
 
     m_listalineas->setColumnValue("idpresupuesto", DBvalue("idpresupuesto"));
     m_listadescuentos->setColumnValue("idpresupuesto", DBvalue("idpresupuesto"));
+
     m_listalineas->guardar();
     m_listadescuentos->guardar();
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
