@@ -62,8 +62,9 @@ CobroView::CobroView(Company *comp, QWidget *parent)
         addDBCampo("comentcobro", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cobro", "Comentarios"));
         addDBCampo("idbanco", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Banco", "Comentarios"));
 
-        dialogChanges_cargaInicial();
         meteWindow(windowTitle(), this, FALSE);
+        pintar();
+        dialogChanges_cargaInicial();
     } catch (...) {
         mensajeInfo(tr("Error al crear el cobro"));
     } // end try

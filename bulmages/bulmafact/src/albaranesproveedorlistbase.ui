@@ -19,529 +19,172 @@
   <property name="windowIcon" >
    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_albaran_listado.48x48.png</iconset>
   </property>
-  <layout class="QVBoxLayout" >
+  <layout class="QGridLayout" >
    <property name="margin" >
     <number>5</number>
    </property>
    <property name="spacing" >
     <number>5</number>
    </property>
-   <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>5</number>
-     </property>
-     <item>
-      <widget class="QLabel" name="label" >
-       <property name="minimumSize" >
-        <size>
-         <width>48</width>
-         <height>48</height>
-        </size>
-       </property>
-       <property name="maximumSize" >
-        <size>
-         <width>48</width>
-         <height>48</height>
-        </size>
-       </property>
-       <property name="text" >
-        <string/>
-       </property>
-       <property name="pixmap" >
-        <pixmap resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_albaran_listado.48x48.png</pixmap>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QFrame" name="m_botonera" >
-       <property name="frameShape" >
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow" >
-        <enum>QFrame::Raised</enum>
-       </property>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>5</number>
-        </property>
-        <property name="spacing" >
-         <number>5</number>
-        </property>
-        <item>
-         <widget class="QToolButton" name="mui_crear" >
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Nuevo albaran</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Nuevo albaran</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_fileNew.xpm</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="shortcut" >
-           <string>Ctrl+N</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="mui_editar" >
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Editar albaran</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Editar albaran</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_edit.png</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="shortcut" >
-           <string>Ctrl+E</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="mui_borrar" >
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Borrar albaran</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Borrar albaran</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_editDelete.png</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="shortcut" >
-           <string>Ctrl+D</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="mui_imprimir" >
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Imprimir listado</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Imprimir listado</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_filePrint.xpm</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="shortcut" >
-           <string>Ctrl+P</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="mui_filtrar" >
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Filtrar albaranes</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Filtrar albaranes</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_find.png</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="shortcut" >
-           <string>Ctrl+F</string>
-          </property>
-          <property name="checkable" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="mui_configurar" >
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Configurar listado</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Configurar listado</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_packageSettings.png</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="shortcut" >
-           <string>Ctrl+B</string>
-          </property>
-          <property name="checkable" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="mui_actualizar" >
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Actualizar listado</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Actualizar listado</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_reload.png</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="shortcut" >
-           <string>F5</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType" >
-           <enum>QSizePolicy::Expanding</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>100</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QLabel" name="label" >
-          <property name="text" >
-           <string>Buscar:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="m_filtro" >
-          <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>5</hsizetype>
-            <vsizetype>0</vsizetype>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize" >
-           <size>
-            <width>150</width>
-            <height>0</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item>
+   <item row="1" column="0" >
     <widget class="QFrame" name="m_busqueda" >
+     <property name="minimumSize" >
+      <size>
+       <width>16</width>
+       <height>185</height>
+      </size>
+     </property>
      <property name="frameShape" >
       <enum>QFrame::StyledPanel</enum>
      </property>
      <property name="frameShadow" >
       <enum>QFrame::Raised</enum>
      </property>
-     <layout class="QVBoxLayout" >
+     <layout class="QGridLayout" >
       <property name="margin" >
        <number>5</number>
       </property>
       <property name="spacing" >
        <number>5</number>
       </property>
-      <item>
-       <layout class="QHBoxLayout" >
+      <item row="6" column="0" >
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType" >
+         <enum>QSizePolicy::Preferred</enum>
+        </property>
+        <property name="sizeHint" >
+         <size>
+          <width>191</width>
+          <height>21</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item rowspan="7" row="0" column="1" >
+       <layout class="QVBoxLayout" >
         <property name="margin" >
          <number>0</number>
         </property>
         <property name="spacing" >
          <number>5</number>
         </property>
-        <item>
-         <widget class="BusquedaProveedor" native="1" name="m_proveedor" >
-          <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>7</hsizetype>
-            <vsizetype>1</vsizetype>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize" >
-           <size>
-            <width>0</width>
-            <height>80</height>
-           </size>
-          </property>
-         </widget>
-        </item>
         <item>
          <widget class="BusquedaArticulo" native="1" name="m_articulo" >
           <property name="sizePolicy" >
            <sizepolicy>
             <hsizetype>7</hsizetype>
-            <vsizetype>1</vsizetype>
+            <vsizetype>5</vsizetype>
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
-          <property name="minimumSize" >
-           <size>
-            <width>0</width>
-            <height>80</height>
-           </size>
+         </widget>
+        </item>
+        <item>
+         <widget class="BusquedaProveedor" native="1" name="m_proveedor" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>7</hsizetype>
+            <vsizetype>5</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
          </widget>
         </item>
        </layout>
       </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
+      <item row="4" column="0" >
+       <widget class="QLabel" name="label_2" >
+        <property name="text" >
+         <string>Mostrar:</string>
         </property>
-        <property name="spacing" >
-         <number>5</number>
+        <property name="alignment" >
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
         </property>
-        <item>
-         <widget class="QLabel" name="label_2" >
-          <property name="text" >
-           <string>Mostrar:</string>
-          </property>
-          <property name="alignment" >
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="mui_procesada" >
-          <property name="minimumSize" >
-           <size>
-            <width>100</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize" >
-           <size>
-            <width>200</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="focusPolicy" >
-           <enum>Qt::StrongFocus</enum>
-          </property>
-          <property name="frame" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label" >
-          <property name="text" >
-           <string>Fecha inicial:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="BusquedaFecha" native="1" name="m_fechain" >
-          <property name="minimumSize" >
-           <size>
-            <width>150</width>
-            <height>0</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType" >
-           <enum>QSizePolicy::Preferred</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>51</width>
-            <height>21</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QLabel" name="label" >
-          <property name="text" >
-           <string>Fecha final:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="BusquedaFecha" native="1" name="m_fechafin" >
-          <property name="minimumSize" >
-           <size>
-            <width>150</width>
-            <height>0</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-       </layout>
+       </widget>
+      </item>
+      <item row="5" column="0" >
+       <widget class="QComboBox" name="mui_procesada" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>0</hsizetype>
+          <vsizetype>5</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize" >
+         <size>
+          <width>200</width>
+          <height>21</height>
+         </size>
+        </property>
+        <property name="focusPolicy" >
+         <enum>Qt::StrongFocus</enum>
+        </property>
+        <property name="frame" >
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="label" >
+        <property name="text" >
+         <string>Fecha inicial:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="BusquedaFecha" native="1" name="m_fechain" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>0</hsizetype>
+          <vsizetype>5</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize" >
+         <size>
+          <width>200</width>
+          <height>21</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" >
+       <widget class="QLabel" name="label" >
+        <property name="text" >
+         <string>Fecha final:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" >
+       <widget class="BusquedaFecha" native="1" name="m_fechafin" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>0</hsizetype>
+          <vsizetype>5</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize" >
+         <size>
+          <width>200</width>
+          <height>21</height>
+         </size>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
    </item>
-   <item>
-    <widget class="AlbaranesProveedorListSubform" name="mui_list" />
-   </item>
-   <item>
+   <item row="3" column="0" >
     <layout class="QHBoxLayout" >
      <property name="margin" >
       <number>0</number>
@@ -1078,15 +721,369 @@
      </item>
     </layout>
    </item>
+   <item row="2" column="0" >
+    <widget class="AlbaranesProveedorListSubform" name="mui_list" />
+   </item>
+   <item row="0" column="0" >
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>5</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="label" >
+       <property name="minimumSize" >
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
+       <property name="maximumSize" >
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
+       <property name="text" >
+        <string/>
+       </property>
+       <property name="pixmap" >
+        <pixmap resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_albaran_listado.48x48.png</pixmap>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QFrame" name="m_botonera" >
+       <property name="frameShape" >
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow" >
+        <enum>QFrame::Raised</enum>
+       </property>
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>5</number>
+        </property>
+        <property name="spacing" >
+         <number>5</number>
+        </property>
+        <item>
+         <widget class="QToolButton" name="mui_crear" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="toolTip" >
+           <string>Nuevo albaran</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Nuevo albaran</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_fileNew.xpm</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+N</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="mui_editar" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="toolTip" >
+           <string>Editar albaran</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Editar albaran</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_edit.png</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+E</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="mui_borrar" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="toolTip" >
+           <string>Borrar albaran</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Borrar albaran</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_editDelete.png</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+D</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="mui_imprimir" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="toolTip" >
+           <string>Imprimir listado</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Imprimir listado</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_filePrint.xpm</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+P</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="mui_filtrar" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="toolTip" >
+           <string>Filtrar albaranes</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Filtrar albaranes</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_find.png</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+F</string>
+          </property>
+          <property name="checkable" >
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="mui_configurar" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="toolTip" >
+           <string>Configurar listado</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Configurar listado</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_packageSettings.png</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+B</string>
+          </property>
+          <property name="checkable" >
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="mui_actualizar" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="toolTip" >
+           <string>Actualizar listado</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Actualizar listado</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_reload.png</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="shortcut" >
+           <string>F5</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType" >
+           <enum>QSizePolicy::Expanding</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>100</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLabel" name="label" >
+          <property name="text" >
+           <string>Buscar:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="m_filtro" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>5</hsizetype>
+            <vsizetype>0</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize" >
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
   </layout>
  </widget>
  <layoutdefault spacing="3" margin="5" />
  <customwidgets>
-  <customwidget>
-   <class>BusquedaProveedor</class>
-   <extends>QWidget</extends>
-   <header>busquedaproveedor.h</header>
-  </customwidget>
   <customwidget>
    <class>BusquedaArticulo</class>
    <extends>QWidget</extends>
@@ -1101,6 +1098,11 @@
    <class>AlbaranesProveedorListSubform</class>
    <extends>QTableWidget</extends>
    <header>albaranesproveedor.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaProveedor</class>
+   <extends>QWidget</extends>
+   <header>busquedaproveedor.h</header>
   </customwidget>
  </customwidgets>
  <resources>
