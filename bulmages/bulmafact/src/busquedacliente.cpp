@@ -35,7 +35,7 @@ BusquedaCliente::BusquedaCliente(QWidget *parent)
     _depura("BusquedaCliente::BusquedaCliente", 0);
     setupUi(this);
     /// Establecemos los Buddies:
-    mui_labelCliente->setText(tr("Clien&te"));
+    mui_labelCliente->setText(tr("Clien&te:"));
     mui_labelCliente->setBuddy(mui_buscar);
 
     mdb_idcliente = "";
@@ -111,7 +111,7 @@ void BusquedaCliente::setidcliente(QString val) {
 **/
 void BusquedaCliente::setValorCampo(QString val) {
     _depura("BusquedaCliente::setValorCampo", 0);
-	setidcliente(val);
+    setidcliente(val);
     _depura("END BusquedaCliente::setValorCampo", 0);
 }
 
