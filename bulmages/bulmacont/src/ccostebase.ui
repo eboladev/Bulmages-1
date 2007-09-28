@@ -277,7 +277,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="nomcentro" />
+         <widget class="QLineEdit" name="mui_nomcentro" />
         </item>
        </layout>
       </item>
@@ -305,7 +305,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QTextEdit" name="desccoste" />
+         <widget class="QTextEdit" name="mui_desccoste" />
         </item>
        </layout>
       </item>

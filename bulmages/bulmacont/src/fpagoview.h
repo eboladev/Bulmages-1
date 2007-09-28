@@ -52,12 +52,12 @@ public:
     fpagoview(Empresa *, QWidget *parent = 0);
     ~fpagoview();
 
+    virtual int guardar();
+    virtual void on_mui_borrar_clicked();
+
 private slots:
-    virtual void on_mui_guardarFPago_clicked();
-    virtual void on_mui_crearFPago_clicked();
-    virtual void on_mui_borrarFPago_clicked();
+    virtual void on_mui_crear_clicked();
     virtual void on_mui_comboFPago_currentIndexChanged(int i);
-    virtual bool close();
 };
 
 #endif

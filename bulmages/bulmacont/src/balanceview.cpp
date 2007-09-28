@@ -70,6 +70,18 @@ BalanceView::BalanceView(Empresa *emp, QWidget *parent, int)
     combonivel->insertItem(3, "5");
     combonivel->insertItem(4, "6");
     combonivel->insertItem(5, "7");
+    combonivel->insertItem(6, "8");
+    combonivel->insertItem(7, "9");
+    combonivel->insertItem(8, "10");
+    combonivel->insertItem(9, "11");
+    combonivel->insertItem(10, "12");
+    combonivel->insertItem(11, "13");
+    combonivel->insertItem(12, "14");
+    combonivel->insertItem(13, "15");
+    combonivel->insertItem(14, "16");
+    combonivel->insertItem(15, "17");
+
+
     /// Iniciamos los componentes de la fecha para que al principio aparezcan
     /// como el a&ntilde;o inicial.
     QString cadena;

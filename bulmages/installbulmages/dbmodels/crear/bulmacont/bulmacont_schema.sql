@@ -132,7 +132,7 @@ CREATE TABLE cuenta (
     codigo character varying(12) NOT NULL,
     descripcion character varying(100) NOT NULL,
     imputacion boolean NOT NULL DEFAULT TRUE,
-    padre integer,
+    padre integer REFERENCES cuenta(idcuenta),
     bloqueada boolean NOT NULL DEFAULT FALSE,
     idgrupo integer NOT NULL REFERENCES grupo(idgrupo),
     msg character varying(500),
@@ -173,7 +173,7 @@ CREATE TABLE c_coste (
     descripcion character varying(100),
     nombre character varying(50) NOT NULL,
     codigo character(3),
-    padre integer,
+    padre integer REFERENCES c_coste(idc_coste),
     imputacion boolean,
     debe numeric(12, 2) DEFAULT 0,
     haber numeric(12, 2) DEFAULT 0

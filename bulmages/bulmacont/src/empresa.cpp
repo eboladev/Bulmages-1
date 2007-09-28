@@ -708,19 +708,6 @@ void Empresa::Ordenarasientos() {
 /**
 \return
 **/
-int Empresa::registroiva() {
-    _depura("Empresa::registroiva", 0);
-    /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
-    int res = g_plugins->lanza("empresa_registroiva", this);
-    _depura("END Empresa::registroiva", 0);
-    return res;
-}
-
-
-///
-/**
-\return
-**/
 int Empresa::listado347() {
     _depura("Empresa::modelo347", 0);
     Listado347 *dlg347 = new Listado347(this, "0");
@@ -809,19 +796,6 @@ void Empresa::recalculasaldos() {
     _depura("Empresa::recalculasaldos", 0);
     ejecuta("SELECT recalculasaldos()");
     _depura("END Empresa::recalculasaldos", 0);
-}
-
-
-/// Esta funci&oacute;n se dispara para poner en marcha la gesti&oacute;n de cobros y pagos.
-/**
-\return
-**/
-int Empresa::cobPag() {
-    _depura("Empresa::cobPag", 0);
-    /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
-    int res = g_plugins->lanza("empresa_cobPag", this);
-    _depura("END Empresa::cobPag", 0);
-    return res;
 }
 
 

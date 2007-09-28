@@ -36,14 +36,17 @@ tipoivaview::tipoivaview(Empresa *emp, QWidget *parent)
 
     setTitleName(tr("Tipo IVA"));
     /// Establecemos cual es la tabla en la que basarse para los permisos
-    setDBTableName("tipo_iva");
+    setDBTableName("tipoiva");
 
     this->setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
-    m_codigoCtaTipoIVA->setEmpresaBase(emp);
+    mui_codigoCtaTipoIVA->setEmpresaBase(emp);
     m_curtipoiva = NULL;
-    dialogChanges_cargaInicial();
+
+    dialogChanges_setQObjectExcluido(mui_comboTipoIVA);
+
     pintar();
+    dialogChanges_cargaInicial();
     meteWindow(windowTitle(), this);
     _depura("END tipoivaview::tipoivaview", 0);
 }
@@ -106,9 +109,9 @@ void tipoivaview::mostrarplantilla(int pos) {
         if (pos != 0)
             mui_comboTipoIVA->setCurrentIndex(pos);
         m_posactual = mui_comboTipoIVA->currentIndex();
-        m_nombreTipoIVA->setText(m_curtipoiva->valor("nombretipoiva", m_posactual));
-        m_codigoCtaTipoIVA->setText(m_curtipoiva->valor("codigo", m_posactual));
-        m_porcentTipoIVA->setText(m_curtipoiva->valor("porcentajetipoiva", m_posactual));
+        mui_nombreTipoIVA->setText(m_curtipoiva->valor("nombretipoiva", m_posactual));
+        mui_codigoCtaTipoIVA->setText(m_curtipoiva->valor("codigo", m_posactual));
+        mui_porcentTipoIVA->setText(m_curtipoiva->valor("porcentajetipoiva", m_posactual));
         /// Comprobamos cual es la cadena inicial.
         dialogChanges_cargaInicial();
     } // end if
@@ -134,7 +137,7 @@ void tipoivaview::on_mui_comboTipoIVA_currentIndexChanged(int) {
 void tipoivaview::on_mui_guardar2_clicked() {
     _depura("tipoivaview::on_mui_guardar2_clicked", 0);
     QString idtipoiva = m_curtipoiva->valor("idtipoiva", m_posactual);
-    QString query = "UPDATE tipoiva SET nombretipoiva = '" + m_nombreTipoIVA->text() + "', porcentajetipoiva = " + m_porcentTipoIVA->text() + " , idcuenta = id_cuenta('" + m_codigoCtaTipoIVA->text() + "') WHERE idtipoiva = " + m_curtipoiva->valor("idtipoiva", m_posactual);
+    QString query = "UPDATE tipoiva SET nombretipoiva = '" + mui_nombreTipoIVA->text() + "', porcentajetipoiva = " + mui_porcentTipoIVA->text() + " , idcuenta = id_cuenta('" + mui_codigoCtaTipoIVA->text() + "') WHERE idtipoiva = " + m_curtipoiva->valor("idtipoiva", m_posactual);
     empresaBase()->ejecuta(query);
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
@@ -149,22 +152,27 @@ void tipoivaview::on_mui_guardar2_clicked() {
 **/
 void tipoivaview::on_mui_nuevo2_clicked() {
     _depura("tipoivaview::on_mui_nuevo2_clicked()", 0);
-    /// Si se ha modificado el contenido advertimos y guardamos.
-    if (dialogChanges_hayCambios()) {
-        if (QMessageBox::warning(this,
-                                 tr("Guardar tipo de IVA"),
-                                 tr("Desea guardar los cambios?"),
-                                 QMessageBox::Ok,
-                                 QMessageBox::Cancel ) == QMessageBox::Ok)
-            on_mui_guardar2_clicked();
-    } // end if
-    QString query = "INSERT INTO tipoiva (nombretipoiva, porcentajetipoiva, idcuenta) VALUES ('NUEVO TIPO IVA', 0, id_cuenta('47'))";
-    empresaBase()->begin();
-    empresaBase()->ejecuta(query);
-    cursor2 *cur = empresaBase()->cargacursor("SELECT max(idtipoiva) AS idtipoiva FROM tipoiva");
-    empresaBase()->commit();
-    pintar(cur->valor("idtipoiva"));
-    delete cur;
+    try {
+        /// Si se ha modificado el contenido advertimos y guardamos.
+        if (dialogChanges_hayCambios()) {
+            if (QMessageBox::warning(this,
+                                     tr("Guardar tipo de IVA"),
+                                     tr("Desea guardar los cambios?"),
+                                     QMessageBox::Ok,
+                                     QMessageBox::Cancel ) == QMessageBox::Ok)
+                on_mui_guardar2_clicked();
+        } // end if
+        QString query = "INSERT INTO tipoiva (nombretipoiva, porcentajetipoiva, idcuenta) VALUES ('NUEVO TIPO IVA', 0, id_cuenta('47'))";
+        empresaBase()->begin();
+        empresaBase()->ejecuta(query);
+        cursor2 *cur = empresaBase()->cargacursor("SELECT max(idtipoiva) AS idtipoiva FROM tipoiva");
+        empresaBase()->commit();
+        pintar(cur->valor("idtipoiva"));
+        delete cur;
+    } catch (...) {
+	empresaBase()->rollback();
+        return;
+    } // end try
     _depura("END tipoivaview::on_mui_nuevo2_clicked()", 0);
 }
 

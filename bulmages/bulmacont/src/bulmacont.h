@@ -144,9 +144,7 @@ public slots:
     virtual void on_actionAsiento_de_Cierre_triggered();
     virtual void on_actionCuentas_Anuales_triggered();
     virtual void on_actionMasas_Patrimoniales_triggered();
-    virtual void on_actionRegistro_de_IVA_triggered();
     virtual void on_actionListado_347_triggered();
-    virtual void on_actionCobros_y_Pagos_triggered();
     virtual void on_actionAmortizaciones_triggered();
     virtual void on_actionPantalla_Completa_triggered();
     virtual void on_actionSiguiente_triggered();

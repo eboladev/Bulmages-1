@@ -215,7 +215,7 @@
        </spacer>
       </item>
       <item row="2" column="1" >
-       <widget class="QLineEdit" name="m_porcentTipoIVA" />
+       <widget class="QLineEdit" name="mui_porcentTipoIVA" />
       </item>
       <item row="3" column="0" colspan="3" >
        <spacer>
@@ -280,10 +280,10 @@
        </widget>
       </item>
       <item row="0" column="1" colspan="2" >
-       <widget class="QLineEdit" name="m_nombreTipoIVA" />
+       <widget class="QLineEdit" name="mui_nombreTipoIVA" />
       </item>
       <item row="1" column="1" colspan="2" >
-       <widget class="BusquedaCuenta" native="1" name="m_codigoCtaTipoIVA" />
+       <widget class="BusquedaCuenta" native="1" name="mui_codigoCtaTipoIVA" />
       </item>
      </layout>
     </widget>
@@ -340,8 +340,8 @@
   <tabstop>mui_borrar2</tabstop>
   <tabstop>mui_guardar2</tabstop>
   <tabstop>mui_comboTipoIVA</tabstop>
-  <tabstop>m_nombreTipoIVA</tabstop>
-  <tabstop>m_porcentTipoIVA</tabstop>
+  <tabstop>mui_nombreTipoIVA</tabstop>
+  <tabstop>mui_porcentTipoIVA</tabstop>
   <tabstop>mui_aceptar</tabstop>
   <tabstop>mui_cancelar</tabstop>
  </tabstops>

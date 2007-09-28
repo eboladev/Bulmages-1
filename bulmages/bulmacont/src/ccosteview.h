@@ -42,8 +42,6 @@ class ccosteview : public FichaBc, public Ui_ccostebase {
     Q_OBJECT
 
 public:
-
-    int ccostes[100];
     int idc_coste; /// Indica cual es el centro de coste que se esta visualizando.
     /// Si su valor es 0 entonces es que no se esta visualizando ning&uacute;n centro de coste.
 
@@ -53,12 +51,12 @@ public:
     void pintar();
     void mostrarplantilla();
     virtual void on_mui_borrar_clicked();
+    virtual int guardar();
 
 public slots:
-    virtual void on_mui_guardar_clicked();
     virtual void on_mui_crear_clicked();
     virtual void on_mui_list_itemClicked(QTreeWidgetItem *, int);
-    virtual void closeEvent(QCloseEvent *);
+//    virtual void closeEvent(QCloseEvent *);
 };
 
 #endif

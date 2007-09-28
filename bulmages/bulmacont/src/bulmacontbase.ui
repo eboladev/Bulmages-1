@@ -22,7 +22,7 @@
      <x>0</x>
      <y>0</y>
      <width>1015</width>
-     <height>28</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuVentana" >
@@ -46,19 +46,6 @@
     <addaction name="actionAsiento_de_Apertura" />
     <addaction name="actionAsiento_de_Regularizacion" />
     <addaction name="actionAsiento_de_Cierre" />
-   </widget>
-   <widget class="QMenu" name="menuListados" >
-    <property name="title" >
-     <string>&amp;Listados</string>
-    </property>
-    <addaction name="actionCuentas_Anuales" />
-    <addaction name="separator" />
-    <addaction name="actionRegistro_de_IVA" />
-    <addaction name="separator" />
-    <addaction name="actionListado_347" />
-    <addaction name="separator" />
-    <addaction name="actionCobros_y_Pagos" />
-    <addaction name="actionAmortizaciones" />
    </widget>
    <widget class="QMenu" name="menuHerramientas" >
     <property name="title" >
@@ -105,6 +92,17 @@
     </property>
     <addaction name="actionConfiguracion" />
     <addaction name="actionSalir" />
+   </widget>
+   <widget class="QMenu" name="menuListados" >
+    <property name="title" >
+     <string>&amp;Listados</string>
+    </property>
+    <addaction name="actionCuentas_Anuales" />
+    <addaction name="separator" />
+    <addaction name="separator" />
+    <addaction name="actionListado_347" />
+    <addaction name="separator" />
+    <addaction name="actionAmortizaciones" />
    </widget>
    <addaction name="menuEmpresa" />
    <addaction name="menuAsiento" />
@@ -196,16 +194,6 @@
   <action name="actionMasas_Patrimoniales" >
    <property name="text" >
     <string>Masas &amp;patrimoniales</string>
-   </property>
-  </action>
-  <action name="actionRegistro_de_IVA" >
-   <property name="text" >
-    <string>Registro de &amp;IVA</string>
-   </property>
-  </action>
-  <action name="actionCobros_y_Pagos" >
-   <property name="text" >
-    <string>&amp;Cobros y pagos</string>
    </property>
   </action>
   <action name="actionAmortizaciones" >

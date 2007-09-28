@@ -444,30 +444,10 @@ void Bulmacont::on_actionMasas_Patrimoniales_triggered() {
 ///
 /**
 **/
-void Bulmacont::on_actionRegistro_de_IVA_triggered() {
-    _depura("Bulmacont::on_actionRegistro_de_IVA_triggered", 0);
-    m_empresaactual->registroiva();
-    _depura("END Bulmacont::on_actionRegistro_de_IVA_triggered", 0);
-}
-
-
-///
-/**
-**/
 void Bulmacont::on_actionListado_347_triggered() {
     _depura("Bulmacont::on_actionListado_347_triggered", 0);
     m_empresaactual->listado347();
     _depura("END Bulmacont::on_actionListado_347_triggered", 0);
-}
-
-
-///
-/**
-**/
-void Bulmacont::on_actionCobros_y_Pagos_triggered() {
-    _depura("Bulmacont::on_actionCobros_y_Pagos_triggered", 0);
-    m_empresaactual->cobPag();
-    _depura("END Bulmacont::on_actionCobros_y_Pagos_triggered", 0);
 }
 
 

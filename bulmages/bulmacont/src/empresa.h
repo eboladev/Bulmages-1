@@ -103,7 +103,6 @@ public:
     int libromayor();
     int librodiario();
     int librobalance();
-    int registroiva();
     int listado347();
     int createMainWindows(Splash *);
     int boton_siguiente();
@@ -136,8 +135,6 @@ public:
     SelectCCosteView *getselccostes();
     selectcanalview *getselcanales();
     void recalculasaldos();
-    /// Gesti&oacute;n de cobros y pagos.
-    int cobPag();
     virtual void s_asiento1();
     CuentaView *newcuentaview();
     void guardaConf();

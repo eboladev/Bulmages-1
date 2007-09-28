@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <QWidget>
+#include <QInputDialog>
 
 #include "bbloqfecha.h"
 #include "empresa.h"
@@ -223,15 +224,32 @@ void BbloqFecha::on_mui_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int 
 **/
 void BbloqFecha::on_mui_crear_clicked() {
     _depura("BbloqFecha::on_mui_crear_clicked", 0);
-    int ejer = 2006;
+    int ejer = 0;
 
+/*
     QString consultabd = "SELECT max(ejercicio) AS ej FROM ejercicios";
     cursor2 *cur = empresaBase()->cargacursor(consultabd);
     if (!cur->eof()) {
         ejer = cur->valor("ej").toInt();
     } // end if
+    delete cur;
 
     ejer++;
+*/
+
+    bool ok = FALSE;
+    while (ejer < 1000) {
+
+        ejer = QInputDialog::getInteger(this, tr("Introduzca Ejercicio a Crear"),
+                                            tr("Ponga el año:"), 2000, 0, 10000, 1, &ok);
+        if (!ok) return;
+        if (ejer < 1000) {
+            mensajeInfo("Ejercicio invalido");
+        } // end if
+
+
+    } // end if
+
 
     for (int x = 0; x <= 12; x++) {
         QString consultabd = "INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES('" + QString::number(ejer) + "', '" + QString::number(x) + "', 'f')";

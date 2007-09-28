@@ -184,6 +184,7 @@ DECLARE
 	flecha DATE;
 	concepto TEXT;
 	concepto1 TEXT;
+	asientonuevo BOOLEAN;
 BEGIN
 	-- conectamos con contabilidad, etc
 	PERFORM conectabulmacont();
@@ -191,8 +192,20 @@ BEGIN
 	concepto := '[A. Automatico] Pago ' || NEW.refpago;
 	concepto1 := 'Pago ' || NEW.refpago;
 
-	-- Hacemos el update del stock del articulo
+
+	-- Puede darse el caso de que el contable haya borrado el asiento. Y por eso comprobamos que realmente exista en la contabilidad.
+	asientonuevo := TRUE;
 	IF NEW.idasientopago IS NOT NULL THEN
+		query := 'SELECT idasiento FROM asiento WHERE idasiento =' || NEW.idasientopago;
+		SELECT INTO cs * FROM dblink(query) AS t1 (idasiento integer);
+		IF FOUND THEN
+			asientonuevo := FALSE;
+		END IF;
+	END IF;
+
+
+	-- Hacemos el update del stock del articulo
+	IF asientonuevo IS FALSE THEN
 		query := 'DELETE FROM apunte WHERE idasiento= ' || NEW.idasientopago;
 		PERFORM dblink_exec(query);
 		query := 'DELETE FROM borrador WHERE idasiento= ' || NEW.idasientopago;
@@ -228,7 +241,7 @@ BEGIN
 		-- Buscamos la cuenta de servicio o de venta
 		SELECT INTO cs MAX(idcuenta) AS id FROM bc_cuenta WHERE codigo LIKE '5700%';
 		IF NOT FOUND THEN
-			RAISE EXCEPTION 'No existe ls cuenta de Caja 5700...';
+			RAISE EXCEPTION 'No existe la cuenta de Caja 5700...';
 		END IF;
 		idctapago := cs.id;
 	END IF;
@@ -306,6 +319,7 @@ DECLARE
 	flecha DATE;
 	concepto TEXT;
 	concepto1 TEXT;
+	asientonuevo BOOLEAN;
 BEGIN
 	-- conectamos con contabilidad, etc
 	PERFORM conectabulmacont();
@@ -313,8 +327,21 @@ BEGIN
 	concepto := '[A. Automatico] Cobro ' || NEW.refcobro;
 	concepto1 := 'Cobro ' || NEW.refcobro;
 
-	-- Hacemos el update del stock del articulo
+	
+	-- Puede darse el caso de que el contable haya borrado el asiento. Y por eso comprobamos que realmente exista en la contabilidad.
+	asientonuevo := TRUE;
 	IF NEW.idasientocobro IS NOT NULL THEN
+		query := 'SELECT idasiento FROM asiento WHERE idasiento =' || NEW.idasientocobro;
+		SELECT INTO cs * FROM dblink(query) AS t1 (idasiento integer);
+		IF FOUND THEN
+			asientonuevo := FALSE;
+		END IF;
+	END IF;
+
+
+
+	-- Hacemos el update del stock del articulo
+	IF asientonuevo IS FALSE THEN
 		query := 'DELETE FROM apunte WHERE idasiento= ' || NEW.idasientocobro;
 		PERFORM dblink_exec(query);
 		query := 'DELETE FROM borrador WHERE idasiento= ' || NEW.idasientocobro;
@@ -437,6 +464,7 @@ DECLARE
 	totaliva NUMERIC;
 	concepto TEXT;
 	concepto1 TEXT;
+	asientonuevo BOOLEAN;
 BEGIN
 	-- conectamos con contabilidad, etc
 	PERFORM conectabulmacont();
@@ -446,7 +474,18 @@ BEGIN
 	concepto1 := 'Factura Cliente Num. ' || NEW.numfactura;
 
 	-- Hacemos el update del stock del articulo
+	asientonuevo := TRUE;
+
+	-- Puede darse el caso de que el contable haya borrado el asiento. Y por eso comprobamos que realmente exista en la contabilidad.
 	IF NEW.idasientofactura IS NOT NULL THEN
+		query := 'SELECT idasiento FROM asiento WHERE idasiento =' || NEW.idasientofactura;
+		SELECT INTO bs * FROM dblink(query) AS t1 (idasiento integer);
+		IF FOUND THEN
+			asientonuevo := FALSE;
+		END IF;
+	END IF;
+
+	IF asientonuevo IS FALSE THEN
 		query := 'DELETE FROM registroiva WHERE idborrador IN (SELECT idborrador FROM borrador WHERE idasiento = ' || NEW.idasientofactura || ')';
 		PERFORM dblink_exec(query);
 		query := 'DELETE FROM apunte WHERE idasiento= ' || NEW.idasientofactura;
@@ -620,11 +659,11 @@ AS $$
 DECLARE
 	bs RECORD;
 	cs RECORD;
-	client RECORD;
+	provider RECORD;
 	ctaiva RECORD;
 	cta TEXT;
 	idcta TEXT;
-	idctacliente TEXT;
+	idctaproveedor TEXT;
 	query TEXT;
 	varaux TEXT;
 	idctaserv TEXT;
@@ -635,14 +674,27 @@ DECLARE
 	total NUMERIC := 0;
 	concepto TEXT;
 	concepto1 TEXT;
+	asientonuevo BOOLEAN;
 BEGIN
 	-- conectamos con contabilidad, etc
 	PERFORM conectabulmacont();
 	concepto := '[A.Automatico] Factura Proveedor Num:' || NEW.numfacturap;
 	concepto1 := 'Factura Proveedor Num. ' || NEW.numfacturap;
 
-	-- Hacemos el update del stock del articulo
+
+
+	-- Puede darse el caso de que el contable haya borrado el asiento. Y por eso comprobamos que realmente exista en la contabilidad.
+	asientonuevo := TRUE;
 	IF NEW.idasientofacturap IS NOT NULL THEN
+		query := 'SELECT idasiento FROM asiento WHERE idasiento =' || NEW.idasientofacturap;
+		SELECT INTO cs * FROM dblink(query) AS t1 (idasiento integer);
+		IF FOUND THEN
+			asientonuevo := FALSE;
+		END IF;
+	END IF;
+
+	-- Hacemos el update del stock del articulo
+	IF asientonuevo IS FALSE THEN
 		query := 'DELETE FROM registroiva WHERE idborrador IN (SELECT idborrador FROM borrador WHERE idasiento = ' || NEW.idasientofacturap || ')';
 		PERFORM dblink_exec(query);
 		query := 'DELETE FROM apunte WHERE idasiento= ' || NEW.idasientofacturap;
@@ -653,19 +705,19 @@ BEGIN
 		PERFORM dblink_exec(query);
 	ELSE
 		-- Hacemos el update del stock del articulo
-		query := 'INSERT INTO asiento (fecha, descripcion, comentariosasiento) VALUES ( ' || quote_literal(NEW.ffactura) || ', ''' || concepto ||  ''', ''' || concepto || ''')';
+		query := 'INSERT INTO asiento (fecha, descripcion, comentariosasiento) VALUES ( ' || quote_literal(NEW.ffacturap) || ', ''' || concepto ||  ''', ''' || concepto || ''')';
 		PERFORM dblink_exec(query);
 		SELECT INTO bs * FROM dblink('SELECT max(idasiento) AS id FROM asiento') AS t1 (id integer);
 		NEW.idasientofacturap = bs.id;
 	END IF;
 
 
-	-- Buscamos el cliente y su cuenta.
-	SELECT INTO client idcuentaproveedor FROM proveedor WHERE idproveedor=NEW.idproveedor;
+	-- Buscamos el proveedor y su cuenta.
+	SELECT INTO provider idcuentaproveedor FROM proveedor WHERE idproveedor=NEW.idproveedor;
 	IF NOT FOUND THEN
 		RAISE EXCEPTION 'El proveedor no tiene cuenta asociada en la contabilidad';
 	END IF;
-	idctacliente := client.idcuentaproveedor;
+	idctaproveedor := provider.idcuentaproveedor;
 
 	-- Buscamos la cuenta de servicio o de venta
 	SELECT INTO cs MAX(idcuenta) AS id FROM bc_cuenta WHERE codigo LIKE '6000%';
@@ -741,7 +793,7 @@ BEGIN
 
 	-- Hacemos la insercion del borrador del apunte al proveedor.
 	total := bs.base * totaldesc * (1 - porirpf) + totaliva;
-	query := 'INSERT INTO borrador (fecha, idcuenta, haber, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffacturap || ''', ' || idctacliente || ', ' || total || ', '|| NEW.idasientofacturap ||', ''' || concepto1 || ''' , ''Factura Proveedor'')';
+	query := 'INSERT INTO borrador (fecha, idcuenta, haber, idasiento, descripcion, conceptocontable) VALUES (''' || NEW.ffacturap || ''', ' || idctaproveedor || ', ' || total || ', '|| NEW.idasientofacturap ||', ''' || concepto1 || ''' , ''Factura Proveedor'')';
 	PERFORM dblink_exec(query);
 
 

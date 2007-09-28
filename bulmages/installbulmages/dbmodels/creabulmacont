@@ -40,6 +40,8 @@ if [ "$5" = "" ]; then
    echo " opcion 0: Base de datos Vacia"
    echo " opcion 1: Base de datos con plan contable estandar (si duda elija esta opcion)"
    echo " opcion 2: Juego de pruebas de bulmacont. Base de datos de ejemplo."
+
+   echo " ejercicio: Es el anyo en que se empieza a operar."
    exit
 fi
 

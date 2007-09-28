@@ -36,6 +36,24 @@
 class empresa;
 
 
+class myRegIVA : public QObject {
+Q_OBJECT
+
+public:
+    Bulmacont *m_bulmacont;
+
+public:
+    myRegIVA();
+    ~myRegIVA();
+    void inicializa(Bulmacont *);
+
+public slots:
+    void elslot();
+    void elslot1();
+};
+
+
+
 class RegistroIvaView : public RegistroIva, public Ui_RegistroIvaBase {
     Q_OBJECT
 

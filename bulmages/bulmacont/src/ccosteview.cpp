@@ -50,6 +50,7 @@ ccosteview::ccosteview(Empresa  *emp, QWidget *parent)
     mui_list->setColumnWidth(0, 200);
     mui_list->setHeaderLabels(headers);
     mui_list->setColumnHidden(COL_IDC_COSTE, TRUE);
+    dialogChanges_setQObjectExcluido(mui_list);
     dialogChanges_cargaInicial();
     meteWindow(windowTitle(), this);
     pintar();
@@ -71,19 +72,17 @@ ccosteview::~ccosteview() {
 /**
 **/
 void ccosteview::pintar() {
-  _depura("ccosteview::pintar", 0);
+    _depura("ccosteview::pintar", 0);
     QTreeWidgetItem *it;
-    QMap <int, QTreeWidgetItem*> Lista;
+    QMap <int, QTreeWidgetItem *> Lista;
     int padre;
     int idc_coste1 = 0;
     cursor2 *cursoraux1, *cursoraux2;
 
     /// Vaciamos el &aacute;rbol.
-    while (mui_list->topLevelItemCount() > 0) {
-        it = mui_list->takeTopLevelItem(0);
-        delete it;
-    } // end while
+    mui_list->clear();
 
+    /// Cargamos las cuentas de primer nivel.
     cursoraux1 = empresaBase()->cargacursor("SELECT * FROM c_coste WHERE padre ISNULL ORDER BY idc_coste");
     while (!cursoraux1->eof()) {
         padre = atoi( cursoraux1->valor("padre").toAscii());
@@ -98,17 +97,21 @@ void ccosteview::pintar() {
     } // end while
     delete cursoraux1;
 
+    /// Cargamos las cuentas hijas
     cursoraux2= empresaBase()->cargacursor("SELECT * FROM c_coste WHERE padre IS NOT NULL ORDER BY idc_coste");
     while (!cursoraux2->eof()) {
-        padre = atoi(cursoraux2->valor("padre").toAscii());
-        idc_coste1 = atoi(cursoraux2->valor("idc_coste").toAscii());
-        fprintf(stderr, "Cuentas de subnivel: %d", padre);
-        it = new QTreeWidgetItem(Lista[padre]);
-        Lista[idc_coste1] = it;
-        it->setText(COL_IDC_COSTE,cursoraux2->valor("idc_coste"));
-        it->setText(COL_DESC_COSTE,cursoraux1->valor("descripcion"));
-        it->setText(COL_NOM_COSTE,cursoraux1->valor("nombre"));
-        mui_list->expandItem(it);
+        padre = cursoraux2->valor("padre").toInt();
+        idc_coste1 = cursoraux2->valor("idc_coste").toInt();
+        if (Lista[padre]) {
+            it = new QTreeWidgetItem(Lista[padre]);
+            Lista[idc_coste1] = it;
+            it->setText(COL_IDC_COSTE, cursoraux2->valor("idc_coste"));
+            it->setText(COL_DESC_COSTE, cursoraux2->valor("descripcion"));
+            it->setText(COL_NOM_COSTE, cursoraux2->valor("nombre"));
+            mui_list->expandItem(it);
+        } else {
+            _depura(tr("Error en la carga de centros de coste"), 2);
+        } // end if
         cursoraux2->siguienteregistro();
     } // end while
     delete cursoraux2;
@@ -130,8 +133,8 @@ void ccosteview::pintar() {
 \param it
 **/
 void ccosteview::on_mui_list_itemClicked(QTreeWidgetItem *it, int) {
-  _depura("ccosteview::on_mui_list_itemClicked", 0);
-  int previdccoste = it->text(COL_IDC_COSTE).toInt();
+    _depura("ccosteview::on_mui_list_itemClicked", 0);
+    int previdccoste = it->text(COL_IDC_COSTE).toInt();
     if (dialogChanges_hayCambios()) {
         if (QMessageBox::warning(this,
                                  tr("Guardar centro de coste"),
@@ -155,8 +158,8 @@ void ccosteview::mostrarplantilla() {
     query.sprintf("SELECT * from c_coste WHERE idc_coste = %d",idc_coste);
     cursor2 *cursorcoste = empresaBase()->cargacursor(query);
     if (!cursorcoste->eof()) {
-        nomcentro->setText(cursorcoste->valor("nombre"));
-        desccoste->setPlainText(cursorcoste->valor("descripcion"));
+        mui_nomcentro->setText(cursorcoste->valor("nombre"));
+        mui_desccoste->setPlainText(cursorcoste->valor("descripcion"));
     } // end if
     delete cursorcoste;
     dialogChanges_cargaInicial();
@@ -167,10 +170,10 @@ void ccosteview::mostrarplantilla() {
 ///
 /**
 **/
-void ccosteview::on_mui_guardar_clicked() {
-    _depura("ccosteview::on_mui_guardar_clicked", 0);
-    QString nom = nomcentro->text();
-    QString desc = desccoste->toPlainText();
+int ccosteview::guardar() {
+    _depura("ccosteview::guardar", 0);
+    QString nom = mui_nomcentro->text();
+    QString desc = mui_desccoste->toPlainText();
     QString query;
     query.sprintf("UPDATE c_coste SET nombre = '%s', descripcion = '%s' WHERE idc_coste = %d", nom.toAscii().constData(), desc.toAscii().constData(), idc_coste);
     empresaBase()->begin();
@@ -179,8 +182,8 @@ void ccosteview::on_mui_guardar_clicked() {
     fprintf(stderr,"Se ha guardado el centro de coste\n");
     dialogChanges_cargaInicial();
     pintar();
-    _depura("END ccosteview::on_mui_guardar_clicked", 0);
-}
+    _depura("END ccosteview::guardar", 0);
+    return 0;}
 
 
 ///
@@ -227,19 +230,25 @@ void ccosteview::on_mui_crear_clicked() {
 **/
 void ccosteview::on_mui_borrar_clicked() {
     _depura("ccosteview::on_mui_borrar_clicked", 0);
-    switch (QMessageBox::warning(this,
-                                 tr("Borrar centro de coste"),
-                                 tr("Se va a borrar el centro de coste.\nEsta operacion puede ocasionar perdida de datos."),
-                                 tr("&Borrar"), tr("&Cancelar"), 0, 0, 1)) {
-    case 0: /// Retry clicked or Enter pressed.
-        QString query;
-        query.sprintf("DELETE FROM c_coste WHERE idc_coste = %d", idc_coste);
-        empresaBase()->begin();
-        empresaBase()->ejecuta(query);
-        empresaBase()->commit();
-        idc_coste = 0;
-        pintar();
-    } // end switch
+    try {
+        switch (QMessageBox::warning(this,
+                                     tr("Borrar centro de coste"),
+                                     tr("Se va a borrar el centro de coste.\nEsta operacion puede ocasionar perdida de datos."),
+                                     tr("&Borrar"), tr("&Cancelar"), 0, 0, 1)) {
+        case 0: /// Retry clicked or Enter pressed.
+            QString query;
+            query.sprintf("DELETE FROM c_coste WHERE idc_coste = %d", idc_coste);
+            empresaBase()->begin();
+            empresaBase()->ejecuta(query);
+            empresaBase()->commit();
+            idc_coste = 0;
+            pintar();
+        } // end switch
+    } catch (...) {
+        mensajeInfo(tr("No se pudo borrar el Centro de Coste"));
+        empresaBase()->rollback();
+        return;
+    } // end try
     _depura("END ccosteview::on_mui_borrar_clicked", 0);
 }
 
@@ -248,6 +257,7 @@ void ccosteview::on_mui_borrar_clicked() {
 /**
 \param e
 **/
+/*
 void ccosteview::closeEvent(QCloseEvent *e) {
     _depura("ccosteview::closeEvent", 0);
     if (dialogChanges_hayCambios()) {
@@ -264,4 +274,4 @@ void ccosteview::closeEvent(QCloseEvent *e) {
     } // end if
     _depura("END ccosteview::closeEvent", 0);
 }
-
+*/

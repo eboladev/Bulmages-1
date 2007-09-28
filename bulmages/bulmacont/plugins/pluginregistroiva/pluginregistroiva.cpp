@@ -42,10 +42,80 @@
 
 ///
 /**
+**/
+myRegIVA::myRegIVA() {
+    _depura("myRegIVA::myRegIVA", 0);
+    _depura("END myRegIVA::myRegIVA", 0);
+}
+
+
+///
+/**
+**/
+myRegIVA::~myRegIVA() {
+    _depura("myRegIVA::~myRegIVA", 0);
+    _depura("END myRegIVA::~myRegIVA", 0);
+}
+
+
+///
+/**
+**/
+void myRegIVA::elslot() {
+    _depura("myRegIVA::elslot", 0);
+    ListRegistroIvaView *perd = new ListRegistroIvaView(m_bulmacont->empresaactual(), "0");
+    perd->inicializa();
+    m_bulmacont->empresaactual()->pWorkspace()->addWindow(perd);
+    perd->show();
+    _depura("END empresa_registroiva", 0);
+    _depura("END myRegIVA::elslot", 0);
+}
+
+
+///
+/**
+**/
+void myRegIVA::elslot1() {
+    _depura("myRegIVA::elslot1", 0);
+    cobropagoview *adoc = new cobropagoview(m_bulmacont->empresaactual(), 0);
+    m_bulmacont->empresaactual()->pWorkspace()->addWindow(adoc);
+    adoc->show();
+    _depura("END myRegIVA::elslot1", 0);
+}
+
+
+///
+/**
+\param bges
+**/
+void myRegIVA::inicializa(Bulmacont *bges) {
+    /// Creamos el men&uacute;.
+    m_bulmacont = bges;
+    QAction *accion = new QAction("&Registro de IVA", 0);
+    accion->setStatusTip("Registro de IVA");
+    accion->setWhatsThis("Registro de IVA");
+
+    QAction *accion1 = new QAction("&Cobros y Pagos", 0);
+    accion1->setStatusTip("Cobros y Pagos");
+    accion1->setWhatsThis("Cobros y Pagos");
+
+    connect(accion, SIGNAL(activated()), this, SLOT(elslot()));
+    connect(accion1, SIGNAL(activated()), this, SLOT(elslot1()));
+    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
+    bges->menuListados->insertAction(bges->actionCuentas_Anuales, accion);
+    bges->menuListados->insertAction(bges->actionCuentas_Anuales, accion1);
+    bges->menuListados->insertSeparator(bges->actionCuentas_Anuales);
+}
+
+
+///
+/**
 \return
 **/
-int entryPoint(Bulmacont *) {
+int entryPoint(Bulmacont *bcont) {
     _depura("Punto de entrada del plugin registroIVA", 0);
+    myRegIVA *my = new myRegIVA();
+    my->inicializa(bcont);
     return 0;
 }
 
@@ -112,36 +182,6 @@ int Asiento1_guardaAsiento1_post(Asiento1 *as) {
     return 0;
 }
 
-
-///
-/**
-\param emp
-\return
-**/
-int empresa_cobPag(Empresa *emp) {
-    _depura("empresa_cobPag", 0);
-    cobropagoview *adoc = new cobropagoview(emp, 0);
-    emp->pWorkspace()->addWindow(adoc);
-    adoc->show();
-    _depura("END empresa_cobPag", 0);
-    return 0;
-}
-
-
-///
-/**
-\param emp
-\return
-**/
-int empresa_registroiva(Empresa *emp) {
-    _depura("empresa_registroiva", 0);
-    ListRegistroIvaView *perd = new ListRegistroIvaView(emp, "0");
-    perd->inicializa();
-    emp->pWorkspace()->addWindow(perd);
-    perd->show();
-    _depura("END empresa_registroiva", 0);
-    return 0;
-}
 
 
 ///
