@@ -32,23 +32,23 @@
     </message>
     <message>
       <source>Anual</source>
-      <translation type="unfinished" >Anual</translation>
+      <translation>Anual</translation>
     </message>
     <message>
       <source>Semestral</source>
-      <translation type="unfinished" >Semestral</translation>
+      <translation>Semestral</translation>
     </message>
     <message>
       <source>Trimestral</source>
-      <translation type="unfinished" >Trimestral</translation>
+      <translation>Trimestral</translation>
     </message>
     <message>
       <source>Mensual</source>
-      <translation type="unfinished" >Mensual</translation>
+      <translation>Mensual</translation>
     </message>
     <message>
       <source>Fecha 1ª cuota:</source>
-      <translation>Data 1a quota</translation>
+      <translation>Data de la 1a quota:</translation>
     </message>
     <message>
       <source>Cuenta de activo:</source>
@@ -64,15 +64,15 @@
     </message>
     <message>
       <source>Cuenta de amortizacion:</source>
-      <translation>Compte d'amortització</translation>
+      <translation>Compte d'amortització:</translation>
     </message>
     <message>
       <source>Metodo:</source>
-      <translation type="unfinished" />
+      <translation>Mètode:</translation>
     </message>
     <message>
       <source>Li&amp;neal</source>
-      <translation type="unfinished" />
+      <translation>Lí&amp;neal</translation>
     </message>
     <message>
       <source>&amp;Incremental</source>
@@ -88,7 +88,7 @@
     </message>
     <message>
       <source>Porcent&amp;ual</source>
-      <translation type="unfinished" />
+      <translation>Percent&amp;ual</translation>
     </message>
     <message>
       <source>&amp;Calcular</source>
@@ -100,11 +100,11 @@
     </message>
     <message>
       <source>Cuotas:</source>
-      <translation type="unfinished" />
+      <translation>Quotes:</translation>
     </message>
     <message>
       <source>Amortizado:</source>
-      <translation type="unfinished" />
+      <translation>Amortitzat:</translation>
     </message>
     <message>
       <source>Pendiente:</source>
@@ -128,7 +128,7 @@
     </message>
     <message>
       <source>Borrar amortizacion</source>
-      <translation type="unfinished" />
+      <translation>Esborra amortització</translation>
     </message>
   </context>
   <context>
@@ -143,15 +143,15 @@
     </message>
     <message>
       <source>Desvincular asiento</source>
-      <translation type="unfinished" />
+      <translation>Desvincula assentament</translation>
     </message>
     <message>
       <source>Borrar asiento</source>
-      <translation type="unfinished" />
+      <translation>Esborra assentament</translation>
     </message>
     <message>
       <source>Borrar cuota</source>
-      <translation type="unfinished" />
+      <translation>Esborra quota</translation>
     </message>
   </context>
   <context>
@@ -174,23 +174,23 @@
     </message>
     <message>
       <source>Mensual</source>
-      <translation type="unfinished" >Mensual</translation>
+      <translation>Mensual</translation>
     </message>
     <message>
       <source>Semestral</source>
-      <translation type="unfinished" >Semestral</translation>
+      <translation>Semestral</translation>
     </message>
     <message>
       <source>Trimestral</source>
-      <translation type="unfinished" >Trimestral</translation>
+      <translation>Trimestral</translation>
     </message>
     <message>
       <source>Nombre de la amortizacion</source>
-      <translation type="unfinished" />
+      <translation>Nom de l'amortització</translation>
     </message>
     <message>
       <source>Descripcion de la amortizacion</source>
-      <translation type="unfinished" />
+      <translation>Descripció de l'amortització</translation>
     </message>
     <message>
       <source>Fecha de la compra</source>
@@ -198,7 +198,7 @@
     </message>
     <message>
       <source>Fecha 1a cuota</source>
-      <translation type="unfinished" />
+      <translation>Data de la 1a quota</translation>
     </message>
     <message>
       <source>Valor de la compra</source>
@@ -206,15 +206,15 @@
     </message>
     <message>
       <source>Periodicidad</source>
-      <translation type="unfinished" />
+      <translation>Periodicitat</translation>
     </message>
     <message>
       <source>Numero de cuotas</source>
-      <translation type="unfinished" />
+      <translation>Nombre de quotes</translation>
     </message>
     <message>
       <source>Metodo</source>
-      <translation type="unfinished" />
+      <translation>Mètode</translation>
     </message>
     <message>
       <source>NIF del proveedor</source>
@@ -254,7 +254,7 @@
     </message>
     <message>
       <source>Cantidad</source>
-      <translation type="unfinished" />
+      <translation>Quantitat</translation>
     </message>
     <message>
       <source>Id asiento</source>
@@ -265,11 +265,11 @@
     <name>AmortizacionesBase</name>
     <message>
       <source>Listado de amortizaciones</source>
-      <translation type="unfinished" />
+      <translation>Llista d'amortitzacions</translation>
     </message>
     <message>
       <source>Nueva amortización</source>
-      <translation type="unfinished" />
+      <translation>Nova amortització</translation>
     </message>
     <message>
       <source>Ctrl+N</source>
@@ -277,11 +277,11 @@
     </message>
     <message>
       <source>Borrar amortizacion</source>
-      <translation type="unfinished" />
+      <translation>Esborra amortització</translation>
     </message>
     <message>
       <source>Borrar amortización</source>
-      <translation type="unfinished" />
+      <translation>Esborra amortització</translation>
     </message>
     <message>
       <source>Ctrl+D</source>
@@ -300,7 +300,7 @@
     </message>
     <message>
       <source>Nombre</source>
-      <translation type="unfinished" />
+      <translation>Nom</translation>
     </message>
   </context>
   <context>
@@ -315,7 +315,7 @@
     </message>
     <message>
       <source>&amp;Fecha del asiento:</source>
-      <translation>&amp;Data de l'assentament</translation>
+      <translation>&amp;Data de l'assentament:</translation>
     </message>
     <message>
       <source>&amp;Plantilla:</source>
@@ -362,7 +362,7 @@
     </message>
     <message>
       <source>Borrar asiento</source>
-      <translation type="unfinished" />
+      <translation>Esborra assentament</translation>
     </message>
     <message>
       <source>Se va a borrar el asiento. Esta seguro?</source>
@@ -381,7 +381,7 @@
     </message>
     <message>
       <source>Desea crear un nuevo asiento en esa posicion?</source>
-      <translation type="unfinished" />
+      <translation>Vol crear un nou assentament en aquella posició?</translation>
     </message>
     <message>
       <source>&amp;Si</source>
@@ -440,7 +440,7 @@
     </message>
     <message>
       <source>Regularización</source>
-      <translation type="unfinished" >Regularització</translation>
+      <translation>Regularització</translation>
     </message>
     <message>
       <source>Cierre</source>
@@ -452,15 +452,15 @@
     </message>
     <message>
       <source>Abrir asiento</source>
-      <translation type="unfinished" />
+      <translation>Obrir assentament</translation>
     </message>
     <message>
       <source>Cerrar asiento</source>
-      <translation type="unfinished" />
+      <translation>Tancar assentament</translation>
     </message>
     <message>
       <source>Guardar asiento</source>
-      <translation type="unfinished" />
+      <translation>Desa assentament</translation>
     </message>
     <message>
       <source>Ctrl+S</source>
@@ -476,7 +476,7 @@
     </message>
     <message>
       <source>Borrar asiento</source>
-      <translation type="unfinished" />
+      <translation>Esborra assentament</translation>
     </message>
     <message>
       <source>Duplicar asiento</source>
@@ -492,7 +492,7 @@
     </message>
     <message>
       <source>Fecha:</source>
-      <translation type="unfinished" />
+      <translation>Data:</translation>
     </message>
     <message>
       <source>Orden del asiento:</source>
@@ -500,11 +500,11 @@
     </message>
     <message>
       <source>Descuadre:</source>
-      <translation type="unfinished" />
+      <translation>Desquadrament:</translation>
     </message>
     <message>
       <source>Saldo:</source>
-      <translation type="unfinished" />
+      <translation>Saldo:</translation>
     </message>
     <message>
       <source>Total Debe:</source>
@@ -539,211 +539,106 @@
     </message>
     <message>
       <source>y   ( >=</source>
-      <translation type="unfinished" >Predeterminat ( %1 )</translation>
+      <translation>y   ( >=</translation>
     </message>
     <message>
       <source>y &lt;=</source>
-      <translation type="unfinished" >&lt;p>Seleccioneu aquí l'amplada en píxels del bisell. Aquest valor hauria de 
-ser &lt;= Amplada de la vora / 2</translation>
+      <translation>y &lt;=</translation>
     </message>
     <message>
       <source>)</source>
-      <translation type="unfinished" />
+      <translation>)</translation>
     </message>
     <message>
       <source>Fecha &amp;inicial:</source>
-      <translation type="unfinished" />
+      <translation>Data &amp;inicial:</translation>
     </message>
     <message>
       <source>&amp;Concepto contable:</source>
-      <translation type="unfinished" >&lt;p>&lt;b>Esteu segur de que voleu executar l'script iptables que s'ha generat?&lt;/
-b>&lt;p>&lt;b>Un script iptables incorrectament configurat podria malmetre el 
-vostre ordinador.&lt;/b>&lt;p>Si el vostre sistema es bloqueja després d'aixecar 
-el tallafocs passeu a una consola de text (Ctrl+Alt+F1) i executeu els 
-següents comandaments per a reiniciar la configuració de iptables:
-&lt;p>&lt;ul>&lt;li>iptables -F &lt;/li>&lt;li>iptables -X &lt;/li>&lt;li>iptables -P INPUT 
-ACCEPT &lt;/li>&lt;li>iptables -P OUTPUT ACCEPT &lt;/li>&lt;li>iptables -P FORWARD 
-ACCEPT &lt;/li>&lt;li>iptables -t nat -F &lt;/li>&lt;li>iptables -t nat -X &lt;/
-li>&lt;li>iptables -t nat -P OUTPUT ACCEPT &lt;/li>&lt;li>iptables -t nat -P 
-PREROUTING ACCEPT &lt;/li>&lt;li>iptables -t nat -P POSTROUTING ACCEPT &lt;/
-li>&lt;li>iptables -t mangle -F &lt;/li>&lt;li>iptables -t mangle -X &lt;/
-li>&lt;li>iptables -t mangle -P INPUT ACCEPT &lt;/li>&lt;li>iptables -t mangle -P 
-OUTPUT ACCEPT &lt;/li>&lt;li>iptables -t mangle -P FORWARD ACCEPT &lt;/
-li>&lt;li>iptables -t mangle -P PREROUTING ACCEPT &lt;/li>&lt;li>iptables -t mangle -
-P POSTROUTING ACCEPT &lt;/li>&lt;/ul></translation>
+      <translation>&amp;Concepte comptable:</translation>
     </message>
     <message>
       <source>&amp;Partida igual a:</source>
-      <translation type="unfinished" />
+      <translation>&amp;Partida igual a:</translation>
     </message>
     <message>
       <source>&amp;Ejercicio:</source>
-      <translation type="unfinished" />
+      <translation>&amp;Exercici:</translation>
     </message>
     <message>
       <source>Fecha &amp;final:</source>
-      <translation type="unfinished" />
+      <translation>Data &amp;final:</translation>
     </message>
     <message>
       <source>Total Debe:</source>
-      <translation type="unfinished" >Pàgines totals</translation>
+      <translation>Total Deure:</translation>
     </message>
     <message>
       <source>Total Haber:</source>
-      <translation type="unfinished" >Alçada total:</translation>
+      <translation>Total Haver:</translation>
     </message>
   </context>
   <context>
     <name>AsientoListSubform</name>
     <message>
       <source>Fecha</source>
-      <translation type="unfinished" >Data</translation>
+      <translation>Data</translation>
     </message>
     <message>
       <source>Orden</source>
-      <translation type="unfinished" >Ordre</translation>
+      <translation>Ordre</translation>
     </message>
     <message>
       <source>Apuntes</source>
-      <translation type="unfinished" >Apunts</translation>
+      <translation>Apunts</translation>
     </message>
     <message>
       <source>Borrador</source>
-      <translation type="unfinished" />
+      <translation>Esborrany</translation>
     </message>
     <message>
       <source>Debe</source>
-      <translation type="unfinished" />
+      <translation>Deure</translation>
     </message>
     <message>
       <source>Haber</source>
-      <translation type="unfinished" >Haber</translation>
+      <translation>Haver</translation>
     </message>
     <message>
       <source>Comentarios</source>
-      <translation type="unfinished" >Comentaris</translation>
+      <translation>Comentari</translation>
     </message>
     <message>
       <source>Clase</source>
-      <translation type="unfinished" >Sense classe</translation>
+      <translation>Classe</translation>
     </message>
     <message>
       <source>Borrar registro</source>
-      <translation type="unfinished" >&lt;h2>AVÍS&lt;/h2>\n
-&lt;p>Les xarxes punt-a-punt, particularment les que són accessibles mitjançant 
-KMLDonkey, poden contenir material el qual estigui legalment prohibit 
-descarregar o redistribuir. És responsabilitat vostra el verificar que 
-qualsevol material que descarregueu de qualsevol xarxa punt-a-punt s'està 
-posant a la vostra disposició legalment. És també la vostra responsabilitat 
-el verificar que disposeu dels drets legals de redistribuir qualsevol 
-material que poseu a disposició d'altres mitjançant qualsevol xarxa punt-a-
-punt. En resum, és responsabilitat personal el verificar que useu aquest 
-programari en conformitat amb el copyright i demés lleis de propietat 
-intel·lectual aplicables.&lt;/p>\n
-&lt;h3>RESTRICCIONS&lt;/h3>\n
-&lt;p>Els autors d'aquest programari pensen que s'usarà per a l'intercanvi 
-legal de dades, art, programari i d'altres documents o treballs que sí es 
-poden distribuir legalment a tercers. Els autors no recolzaran i 
-descoratjaran qualsevol ús d'aquest programari que pugui violar el copyright 
-o d'altres lleis de propietat intel·lectual. En particular, els autors 
-descoratgen qualsevol transmissió de qualsevol material en violació de 
-qualsevol llei i regulació aplicable sobre la propietat intel·lectual. 
-Assumeixen que cada usuari es comportarà d'acord amb les regles i les 
-restriccions aplicables, així com amb les regles i les restriccions 
-aplicables a les xarxes o als serveis de P2P connectats directament o 
-indirectament amb aquest programari.&lt;/p>\n
-&lt;h3>RENÚNCIA DE RESPONSABILITAT&lt;/h3>\n
-&lt;p>Els autors d'aquest programari no fan i no poden exercitar cap control 
-sobre el contingut de la informació intercanviada usant aquest programari. 
-Els autors no donen garanties de cap classe, tant si està expressat o 
-implicat, pel servei que aquest programari estigui proporcionant o per les 
-dades intercanviades amb l'ajuda d'aquest. Els autors no poden ser jutjats 
-responsables de cap demanda resultat de la conducta i/o de l'ús del 
-programari per part de l'usuari que sigui d'alguna forma il·legal o que 
-perjudiqui a tal usuari o a qualsevol altra part.&lt;/p></translation>
+      <translation>Esborra registre</translation>
     </message>
     <message>
       <source>Ajustar columa</source>
-      <translation type="unfinished" >&lt;p>Seleccioneu aquí el tipus de millora de color per les imatges:
-&lt;p>&lt;b>Redueix el contrast&lt;/b>: redueix el contras de la imatge. L'algorisme 
-redueix la diferència d'intensitat entre els elements més clars i més foscos 
-de la imatge.&lt;p>&lt;b>Profunditat&lt;/b>: canvia la profunditat de color de la 
-imatge.&lt;p>&lt;b>Equalitza&lt;/b>: executa l'equalització de l'histograma de la 
-imatge.&lt;p>&lt;b>Desdibuixa&lt;/b>: barreja els colors a una distància, considerant 
-que són iguals.&lt;p>&lt;b>Escala de grisos&lt;/b>: converteix les imatges en color a 
-imatges en escala de grisos.&lt;p>&lt;b>Augmenta el contrast&lt;/b>: millora el 
-contrast de la imatge. L'algorisme augmenta les diferències d'intensitat 
-entre els elements més clars i més foscos de la imatge.&lt;p>&lt;b>Monocrom&lt;/b>: 
-transforma la imatge a blanc i negre.&lt;p>&lt;b>Negatiu&lt;/b>: substitueix cada 
-píxel pel seu color complementari. Les tonalitats vermella, verda i blava 
-d'una imatge es negativen. El blanc esdevé negre, el groc esdevé blau, etc.
-&lt;p>&lt;b>Normalitza&lt;/b>: transforma la imatge per expandir l'interval sencer 
-dels valors de color. És una tècnica per augmentar l contrast. L'algorisme 
-augmenta el contrast d'una imatge de color ajustant el color dels píxels per 
-abraçar tot l'interval de colors disponible.&lt;p>&lt;b>Segmenta&lt;/b>: segmenta una 
-imatge analitzant l'histograma dels components de color i identificant les 
-unitats homogènies amb la tècnica de desdibuixat de mitjanes \&quot;c\&quot;.
-&lt;p>&lt;b>Retalla&lt;/b>: retallat una imatge (tècnica inversa al desdibuixat). 
-L'algorisme elimina els límits que són el color de fons de la imatge.&lt;p></translation>
+      <translation>Ajusta columna</translation>
     </message>
     <message>
       <source>Ajustar altura</source>
-      <translation type="unfinished" />
+      <translation>Ajusta alçada</translation>
     </message>
     <message>
       <source>Ajustar columnas</source>
-      <translation type="unfinished" >L'entorn de tabulació proporciona una manera d'alinear text en columnes.\n
-\\begin{tabbing}\n
-text \\= més text \\= encara més text \\= últim text \\\\\n
-segona fila \\>  \\> més \\\\\n
-\\end{tabbing}\n
-Comandes :\n
-\\=  Situa una tabulació a la posició actual.\n
-\\>  Avança a la següent tabulació.\n
-\\&lt;  Us permet posar alguna cosa a l'esquerra del marge local sense canviar 
-el marge. Només es pot fer servir a l'inici de la línia.\n
-\\+  Mou el marge esquerre de la següent i de totes les comandes següents 
-una tabulació cap a la dreta\n
-\\-  Mou el marge esquerre de la següent i de totes les comandes següents 
-una tabulació cap a l'esquerra\n
-\\'  Mou qualsevol cosa que hàgiu escrit a la columna actual cap a la dreta 
-de la columna anterior, alineat al tabulador de la columna actual. \n
-\\`  Us permet posar text alineat a la dreta de qualsevol tabulació, inclosa 
-la tabulació 0\n
-\\kill  Situa tabulacions sense produir text.\n
-\\a  En un entorn de tabulació, les comandes \\=, \\' i \\` no produeixen 
-accents de manera normal. En comptes d'aquestes, es fan servir les comandes 
-\\a=, \\a' i \\a`.</translation>
+      <translation>Ajusta columnes</translation>
     </message>
     <message>
       <source>Ajustar alturas</source>
-      <translation type="unfinished" >&lt;p>&lt;b>Límit&lt;/b>: aquest valor defineix la distància en pixels en la que el 
-filtre cerca límits. Quan aquest valor s'incrementa, el soroll de pics se 
-suprimeix. Eventualment, podeu reajustar el filtre &lt;b>Límit&lt;/b> quan canvieu 
-aquest paràmetre. Quan aquest valor és massa alt, el filtre adaptatiu no pot 
-seguir els detalls de la imatge amb cura, i pot reaparèixer soroll o es pot 
-produir un desenfocament.</translation>
+      <translation>Ajusta alçades</translation>
     </message>
     <message>
       <source>Ver configurador de subformulario</source>
-      <translation type="unfinished" >&lt;p>...el K3b té dos tipus d'arranjament. D'una banda el K3b té l'arranjament 
-com la majoria\n
-d'aplicacions del KDE tenen accessible mitjançant d'un diàleg de 
-configuració a través del menú d'arranjament;\n
-d'altra banda, cada diàleg d'acció del K3b té tres botons per carregar i 
-desar arranjaments per omissió\n
-per a l'acció. D'aquesta manera un pot, per exemple, establir la 
-configuració per omissió a l'hora de copiar CD: aquestes opcions per 
-omissió\n
-Seran carregades cada vegada que s'obri el diàleg de còpia de CD. El botó 
-&lt;em>Arranjament per omissió del K3b&lt;/em>\n
-restablirà la configuració &lt;em>de fàbrica&lt;/em> en cas de que no sapigueu si 
-la configuració que heu triat\n
-és apropiada.&lt;/p>\n</translation>
+      <translation>Veure el configurador de subformulari</translation>
     </message>
     <message>
       <source>Id asiento</source>
-      <translation type="unfinished" >ID de l'aplicació ISO per a VideoCD</translation>
+      <translation>Id assentament</translation>
     </message>
   </context>
   <context>
@@ -754,11 +649,11 @@ la configuració que heu triat\n
     </message>
     <message>
       <source>La fecha inicial es posterior a la fecha final.</source>
-      <translation type="unfinished" >Engega un diàleg de fitxer per triar un fitxer d'ajuda local.</translation>
+      <translation>La data inicial és posterior a la data final.</translation>
     </message>
     <message>
       <source>Asientos</source>
-      <translation type="unfinished" >Assentaments</translation>
+      <translation>Assentaments</translation>
     </message>
   </context>
   <context>
@@ -769,26 +664,26 @@ la configuració que heu triat\n
     </message>
     <message>
       <source>Agregar Ejercicio</source>
-      <translation type="unfinished" />
+      <translation>Afegeix exercici</translation>
     </message>
     <message>
       <source>Ctrl+N</source>
-      <translation type="unfinished" >Ctrl+N</translation>
+      <translation>Ctrl+N</translation>
     </message>
   </context>
   <context>
     <name>BalanceBase</name>
     <message>
       <source>Balance de cuentas</source>
-      <translation type="unfinished" >Balanç de Contes</translation>
+      <translation>Balanç de Comptes</translation>
     </message>
     <message>
       <source>Tipo de balance</source>
-      <translation type="unfinished" >Balanç de blancs:</translation>
+      <translation>Tipus de balanç</translation>
     </message>
     <message>
       <source>Abreviado</source>
-      <translation type="unfinished" >Abreviatura</translation>
+      <translation>Abreviat</translation>
     </message>
     <message>
       <source>Sumas y Saldos</source>
@@ -800,43 +695,43 @@ la configuració que heu triat\n
     </message>
     <message>
       <source>Actualizar balance</source>
-      <translation type="unfinished" >Equilibri del color</translation>
+      <translation>Actualitza balanç</translation>
     </message>
     <message>
       <source>Configurar</source>
-      <translation type="unfinished" > Configuració</translation>
+      <translation>Arranjament</translation>
     </message>
     <message>
       <source>Filtrar balance</source>
-      <translation type="unfinished" >Equilibri del color</translation>
+      <translation>Filtrar balanç</translation>
     </message>
     <message>
       <source>Guardar balance</source>
-      <translation type="unfinished" >Equilibri del color</translation>
+      <translation>Desa balanç</translation>
     </message>
     <message>
       <source>Imprimir balance</source>
-      <translation type="unfinished" >Equilibri del color</translation>
+      <translation>Imprimeix balanç</translation>
     </message>
     <message>
       <source>Ctrl+F</source>
-      <translation type="unfinished" >Ctrl+F</translation>
+      <translation>Ctrl+F</translation>
     </message>
     <message>
       <source>F5</source>
-      <translation type="unfinished" >F5</translation>
+      <translation>F5</translation>
     </message>
     <message>
       <source>Ctrl+S</source>
-      <translation type="unfinished" >Ctrl+S</translation>
+      <translation>Ctrl+S</translation>
     </message>
     <message>
       <source>Ctrl+P</source>
-      <translation type="unfinished" >Ctrl+P</translation>
+      <translation>Ctrl+P</translation>
     </message>
     <message>
       <source>Ctrl+B</source>
-      <translation type="unfinished" >Ctrl+C</translation>
+      <translation>Ctrl+B</translation>
     </message>
     <message>
       <source>Centro de coste:</source>
@@ -852,7 +747,7 @@ la configuració que heu triat\n
     </message>
     <message>
       <source>Balance jerárquico</source>
-      <translation type="unfinished" >Equilibri del color</translation>
+      <translation>Balanç jeràrquic</translation>
     </message>
     <message>
       <source>Fecha inicial:</source>
@@ -868,7 +763,7 @@ la configuració que heu triat\n
     </message>
     <message>
       <source>GroupBox</source>
-      <translation type="unfinished" >groupBox1</translation>
+      <translation>GroupBox</translation>
     </message>
     <message>
       <source>Saldo:</source>
@@ -876,7 +771,7 @@ la configuració que heu triat\n
     </message>
     <message>
       <source>Haber:</source>
-      <translation type="unfinished" />
+      <translation>Haver:</translation>
     </message>
     <message>
       <source>Saldo anterior:</source>
@@ -884,40 +779,40 @@ la configuració que heu triat\n
     </message>
     <message>
       <source>Debe:</source>
-      <translation type="unfinished" />
+      <translation>Deure:</translation>
     </message>
   </context>
   <context>
     <name>BalancePrintBase</name>
     <message>
       <source>Impresión del Balance de Sumas y Saldos</source>
-      <translation type="unfinished" >Mostra el paràmetres de balanç de blancs de la càmera</translation>
+      <translation>Imprimeix el balanç de Sumes i saldos</translation>
     </message>
     <message>
       <source>Datos del listado:</source>
-      <translation type="unfinished" > Esborra </translation>
+      <translation>Dades del llistat:</translation>
     </message>
     <message>
       <source>Código Inicial
 </source>
-      <translation type="unfinished" >Codi Inicial
+      <translation>Codi inicial
 </translation>
     </message>
     <message>
       <source>Fecha Inicial</source>
-      <translation type="unfinished" >Data Inicial</translation>
+      <translation>Data inicial</translation>
     </message>
     <message>
       <source>Código Final</source>
-      <translation type="unfinished" >Codi Final</translation>
+      <translation>Codi final</translation>
     </message>
     <message>
       <source>Fecha Final</source>
-      <translation type="unfinished" >Data Final</translation>
+      <translation>Data final</translation>
     </message>
     <message>
       <source>Nivel de Cuentas</source>
-      <translation type="unfinished" >Nivell de Contes</translation>
+      <translation>Nivell de comptes</translation>
     </message>
     <message>
       <source>Incluir &amp;niveles superiores.</source>
@@ -929,7 +824,7 @@ la configuració que heu triat\n
     </message>
     <message>
       <source>Formato:</source>
-      <translation type="unfinished" >&amp;Format:</translation>
+      <translation>&amp;Format:</translation>
     </message>
     <message>
       <source>&amp;Texto Plano</source>
@@ -937,7 +832,7 @@ la configuració que heu triat\n
     </message>
     <message>
       <source>Propietario</source>
-      <translation type="unfinished" >Propietari</translation>
+      <translation>Propietari</translation>
     </message>
     <message>
       <source>HT&amp;ML</source>
@@ -960,11 +855,11 @@ la configuració que heu triat\n
     </message>
     <message>
       <source>codigo</source>
-      <translation type="unfinished" >codi</translation>
+      <translation>codi</translation>
     </message>
     <message>
       <source>descripcion</source>
-      <translation type="unfinished" >descripció</translation>
+      <translation>descripció</translation>
     </message>
     <message>
       <source>asaldo</source>
@@ -1023,15 +918,15 @@ la configuració que heu triat\n
     <name>BalanceTreeBase</name>
     <message>
       <source>Imprimir albaran</source>
-      <translation type="unfinished" >Imprimir albarà</translation>
+      <translation>Imprimeix albarà</translation>
     </message>
     <message>
       <source>Borrar albaran</source>
-      <translation type="unfinished" >Esborrar albarà</translation>
+      <translation>Esborra albarà</translation>
     </message>
     <message>
       <source>Balance jerarquico de Cuentas</source>
-      <translation type="unfinished" >Usa el balanç de blancs de la càmera</translation>
+      <translation>Balanç jeràrquic de comptes</translation>
     </message>
     <message>
       <source>Cuenta final:</source>
@@ -1063,11 +958,11 @@ la configuració que heu triat\n
     </message>
     <message>
       <source>Total Debe:</source>
-      <translation type="unfinished" >Pàgines totals</translation>
+      <translation>Total Deure:</translation>
     </message>
     <message>
       <source>Total Haber:</source>
-      <translation type="unfinished" >Alçada total:</translation>
+      <translation>Total Haver:</translation>
     </message>
     <message>
       <source>Saldo:</source>
@@ -1078,7 +973,7 @@ la configuració que heu triat\n
     <name>BalanceTreeView</name>
     <message>
       <source>Codigo cuenta</source>
-      <translation type="unfinished" />
+      <translation>Codi compte</translation>
     </message>
     <message>
       <source>Nombre de la cuenta</source>
@@ -1090,24 +985,23 @@ la configuració que heu triat\n
     </message>
     <message>
       <source>Debe</source>
-      <translation type="unfinished" />
+      <translation>Deure</translation>
     </message>
     <message>
       <source>Haber</source>
-      <translation type="unfinished" >Haber</translation>
+      <translation>Haver</translation>
     </message>
     <message>
       <source>Saldo periodo</source>
-      <translation type="unfinished" >Comment=Torna la fase d'un conjunt de dades donat entre el període indicat i 
-la fase zero.</translation>
+      <translation>Saldo període</translation>
     </message>
     <message>
       <source>Debe ejercicio</source>
-      <translation type="unfinished" />
+      <translation>Deure exercici</translation>
     </message>
     <message>
       <source>Haber ejercicio</source>
-      <translation type="unfinished" />
+      <translation>Haver exercici</translation>
     </message>
     <message>
       <source>Saldo ejercicio</source>
@@ -1115,11 +1009,11 @@ la fase zero.</translation>
     </message>
     <message>
       <source>Nivel</source>
-      <translation type="unfinished" >Nivell</translation>
+      <translation>Nivell</translation>
     </message>
     <message>
       <source>ID cuenta</source>
-      <translation type="unfinished" >programador principal i mantenidor actual</translation>
+      <translation>ID compte</translation>
     </message>
     <message>
       <source>Padre</source>
@@ -1158,7 +1052,7 @@ la fase zero.</translation>
     </message>
     <message>
       <source>Denominacion</source>
-      <translation type="unfinished" >Denominació</translation>
+      <translation>Denominació</translation>
     </message>
     <message>
       <source>Saldo anterior</source>
@@ -1174,7 +1068,7 @@ la fase zero.</translation>
     </message>
     <message>
       <source>Saldo</source>
-      <translation type="unfinished" >Saldo</translation>
+      <translation>Saldo</translation>
     </message>
     <message>
       <source>Debe ejercicio</source>
@@ -1182,7 +1076,7 @@ la fase zero.</translation>
     </message>
     <message>
       <source>Haber ejercicio</source>
-      <translation type="unfinished" />
+      <translation>Haver exercici</translation>
     </message>
     <message>
       <source>Saldo ejercicio</source>
@@ -1201,11 +1095,11 @@ la fase zero.</translation>
     </message>
     <message>
       <source>Ejercicio</source>
-      <translation type="unfinished" >Exercici</translation>
+      <translation>Exercici</translation>
     </message>
     <message>
       <source>Estado</source>
-      <translation type="unfinished" >Socket Destaddrreq</translation>
+      <translation>Estat</translation>
     </message>
     <message>
       <source>Diciembre</source>
@@ -1264,11 +1158,11 @@ la fase zero.</translation>
     </message>
     <message>
       <source>Siguiente</source>
-      <translation type="unfinished" >Següent</translation>
+      <translation>Següent</translation>
     </message>
     <message>
       <source>Asientos Inteligentes</source>
-      <translation type="unfinished" >Assentaments Inteligents</translation>
+      <translation>Assentaments Intel·ligents</translation>
     </message>
     <message>
       <source>Inicio</source>
@@ -1276,15 +1170,15 @@ la fase zero.</translation>
     </message>
     <message>
       <source>Fin</source>
-      <translation type="unfinished" >&amp;Cerca</translation>
+      <translation>Fi</translation>
     </message>
     <message>
       <source>A&amp;yuda</source>
-      <translation type="unfinished" >A&amp;juda</translation>
+      <translation>A&amp;juda</translation>
     </message>
     <message>
       <source>&amp;Herramientas</source>
-      <translation type="unfinished" >&amp;Estris de fer feina</translation>
+      <translation>&amp;Eines</translation>
     </message>
     <message>
       <source>&amp;Maestro</source>
@@ -1292,11 +1186,11 @@ la fase zero.</translation>
     </message>
     <message>
       <source>&amp;Listados</source>
-      <translation type="unfinished" >&amp;Llistats</translation>
+      <translation>&amp;Llistats</translation>
     </message>
     <message>
       <source>&amp;Empresa</source>
-      <translation type="unfinished" >&amp;Empresa</translation>
+      <translation>&amp;Empresa</translation>
     </message>
     <message>
       <source>&amp;Ordenar asientos</source>
@@ -1304,15 +1198,15 @@ la fase zero.</translation>
     </message>
     <message>
       <source>Asiento de a&amp;pertura</source>
-      <translation type="unfinished" />
+      <translation>Assentament d'o&amp;bertura</translation>
     </message>
     <message>
       <source>Asiento de &amp;regularizacion</source>
-      <translation type="unfinished" />
+      <translation>Assentament de &amp;regularització</translation>
     </message>
     <message>
       <source>Asiento de &amp;cierre</source>
-      <translation type="unfinished" />
+      <translation>Assentament de tan&amp;cament</translation>
     </message>
     <message>
       <source>Cuentas a&amp;nuales</source>
@@ -1328,19 +1222,19 @@ la fase zero.</translation>
     </message>
     <message>
       <source>&amp;Cobros y pagos</source>
-      <translation type="unfinished" >Desplaçament de la coordenada Y</translation>
+      <translation>&amp;Cobraments i pagaments</translation>
     </message>
     <message>
       <source>&amp;Amortizaciones</source>
-      <translation type="unfinished" >&amp;Amortitzacions</translation>
+      <translation>&amp;Amortitzacions</translation>
     </message>
     <message>
       <source>&amp;Plan Contable</source>
-      <translation type="unfinished" >No s'ha trobat la taula que conté el camp \&quot;%1\&quot;</translation>
+      <translation>&amp;Pla comptable</translation>
     </message>
     <message>
       <source>&amp;Asientos</source>
-      <translation type="unfinished" >&amp;Assentaments</translation>
+      <translation>&amp;Assentaments</translation>
     </message>
     <message>
       <source>Apuntes &amp;contables</source>
@@ -1372,11 +1266,11 @@ la fase zero.</translation>
     </message>
     <message>
       <source>&amp;Imprimir</source>
-      <translation type="unfinished" >&amp;Imprimir</translation>
+      <translation>&amp;Imprimeix</translation>
     </message>
     <message>
       <source>&amp;Guardar</source>
-      <translation type="unfinished" >&amp;Desar</translation>
+      <translation>&amp;Desa</translation>
     </message>
     <message>
       <source>&amp;Actualizar</source>
@@ -1384,7 +1278,7 @@ la fase zero.</translation>
     </message>
     <message>
       <source>&amp;Filtrar</source>
-      <translation type="unfinished" />
+      <translation>&amp;Filtra</translation>
     </message>
     <message>
       <source>&amp;Recalcular saldos iniciales</source>
@@ -1408,7 +1302,7 @@ la fase zero.</translation>
     </message>
     <message>
       <source>&amp;Pantalla completa</source>
-      <translation type="unfinished" >Instal·lació completa.</translation>
+      <translation>&amp;Tota la pantalla</translation>
     </message>
     <message>
       <source>Ordenar &amp;ventanas</source>
@@ -1420,7 +1314,7 @@ la fase zero.</translation>
     </message>
     <message>
       <source>&amp;Acerca de BulmaCont</source>
-      <translation type="unfinished" >Bulm&amp;aCont</translation>
+      <translation>Quant a Bulm&amp;aCont</translation>
     </message>
     <message>
       <source>BulmaCont - Contabilidad GPL</source>
@@ -1452,11 +1346,11 @@ la fase zero.</translation>
     </message>
     <message>
       <source>Ctrl+L</source>
-      <translation type="unfinished" >Ctrl+C</translation>
+      <translation>Ctrl+L</translation>
     </message>
     <message>
       <source>Ctrl+A</source>
-      <translation type="unfinished" >Ctrl+C</translation>
+      <translation>Ctrl+A</translation>
     </message>
     <message>
       <source>&amp;Balance de Cuentas</source>
@@ -1464,19 +1358,19 @@ la fase zero.</translation>
     </message>
     <message>
       <source>Balance &amp;jerarquico de Sumas y Saldos</source>
-      <translation type="unfinished" >Mostra el paràmetres de balanç de blancs de la càmera</translation>
+      <translation>Balanç jeràrquic de sumes i saldos</translation>
     </message>
     <message>
       <source>Balance jerarquico de Sumas y Saldos</source>
-      <translation type="unfinished" >Mostra el paràmetres de balanç de blancs de la càmera</translation>
+      <translation>Balanç jeràrquic de sumes i saldos</translation>
     </message>
     <message>
       <source>F11</source>
-      <translation type="unfinished" >F11</translation>
+      <translation>F11</translation>
     </message>
     <message>
       <source>F1</source>
-      <translation type="unfinished" >F1</translation>
+      <translation>F1</translation>
     </message>
     <message>
       <source>Ctrl+PgDown</source>
@@ -1484,7 +1378,7 @@ la fase zero.</translation>
     </message>
     <message>
       <source>Ctrl+PgUp</source>
-      <translation type="unfinished" >Ctrl+P</translation>
+      <translation>Ctrl+PgUp</translation>
     </message>
     <message>
       <source>Ctrl+Home</source>
@@ -1496,11 +1390,11 @@ la fase zero.</translation>
     </message>
     <message>
       <source>Indexador</source>
-      <translation type="unfinished" >No indexable</translation>
+      <translation>Indexador</translation>
     </message>
     <message>
       <source>Ctrl+I</source>
-      <translation type="unfinished" >Ctrl+C</translation>
+      <translation>Ctrl+I</translation>
     </message>
     <message>
       <source>&amp;Propiedades de la empresa...</source>
@@ -1523,7 +1417,7 @@ la fase zero.</translation>
     <name>Bulmacont</name>
     <message>
       <source>Listo.</source>
-      <translation type="unfinished" >Enllestit.</translation>
+      <translation>Preparat.</translation>
     </message>
     <message>
       <source>Deshaciendo la ultima accion...</source>
@@ -1531,7 +1425,7 @@ la fase zero.</translation>
     </message>
     <message>
       <source>Cortando seleccion...</source>
-      <translation>Tallant la sel·lecció</translation>
+      <translation>Tallant la sel·lecció...</translation>
     </message>
     <message>
       <source>Copiando la seleccion al portapapeles...</source>
@@ -1539,7 +1433,7 @@ la fase zero.</translation>
     </message>
     <message>
       <source>Insertando el contenido del portapapeles...</source>
-      <translation type="unfinished" > Esborra </translation>
+      <translation>Inserint el contingut en el portapapers...</translation>
     </message>
     <message>
       <source>Cambinado barra de estado...</source>
@@ -1547,7 +1441,7 @@ la fase zero.</translation>
     </message>
     <message>
       <source>Cambiando a modo de pantalla completa...</source>
-      <translation type="unfinished" >El color que indica una part completada</translation>
+      <translation>Canviant a mode de pantalla completa ...</translation>
     </message>
     <message>
       <source>Listado de cuentas</source>
@@ -1555,53 +1449,48 @@ la fase zero.</translation>
     </message>
     <message>
       <source>Listo</source>
-      <translation type="unfinished" >Llista</translation>
+      <translation>Preparat</translation>
     </message>
   </context>
   <context>
     <name>BusquedaCuentaBase</name>
     <message>
       <source>Cuenta</source>
-      <translation type="unfinished" >Conta</translation>
+      <translation>compte</translation>
     </message>
     <message>
       <source>Form1</source>
-      <translation type="unfinished" >Uniforme</translation>
+      <translation>Form1</translation>
     </message>
   </context>
   <context>
     <name>CAnualesBase</name>
     <message>
       <source>Cuentas Anuales</source>
-      <translation type="unfinished" >Si hi especifiqueu un fitxer, aquest s'usarà com a fitxer shadow alternatiu 
-(desar contrasenyes) per a autenticar als usuaris en aquest servidor 
-virtual.\n
-Si el deixeu en blanc, s'usarà el fitxer shadow del sistema, almenys que hi 
-especifiqueu un fitxer passwd que contingui les entrades de les contrasenyes.</translation>
+      <translation>Comptes anuals</translation>
     </message>
   </context>
   <context>
     <name>CAnualesPrintBase</name>
     <message>
       <source>Impresión de Balances</source>
-      <translation type="unfinished" >Impressió de Balanços</translation>
+      <translation>Impressió de Balanços</translation>
     </message>
     <message>
       <source>Balance</source>
-      <translation type="unfinished" >Balanç</translation>
+      <translation>Balanç</translation>
     </message>
     <message>
       <source>Primer Periodo</source>
-      <translation type="unfinished" >Comment=Construeix el períodograma d'un conjunt de dades donat. No 
-s'assumeix que les dades s'hagin mostrejat en intervals de temps iguals.</translation>
+      <translation>Primer període</translation>
     </message>
     <message>
       <source>Fecha Inicial</source>
-      <translation type="unfinished" >Data Inicial</translation>
+      <translation>Data inicial</translation>
     </message>
     <message>
       <source>Fecha Final</source>
-      <translation type="unfinished" >Data Final</translation>
+      <translation>Data final</translation>
     </message>
     <message>
       <source>Segundo Periodo</source>
@@ -1613,84 +1502,80 @@ s'assumeix que les dades s'hagin mostrejat en intervals de temps iguals.</transl
     </message>
     <message>
       <source>&amp;Cancelar</source>
-      <translation type="unfinished" >cancel·lat</translation>
+      <translation>&amp;Cancel·la</translation>
     </message>
   </context>
   <context>
     <name>CAnualesView</name>
     <message>
       <source>Archivo</source>
-      <translation type="unfinished" >Fitxer</translation>
+      <translation>Fitxer</translation>
     </message>
   </context>
   <context>
     <name>CambiaCuentaBase</name>
     <message>
       <source>Cambiar Cuenta</source>
-      <translation type="unfinished" >Canviar conta</translation>
+      <translation>Canviar compte</translation>
     </message>
     <message>
       <source>Asiento Final</source>
-      <translation type="unfinished" >Assentament Final</translation>
+      <translation>Assentament final</translation>
     </message>
     <message>
       <source>Asiento Inicial</source>
-      <translation type="unfinished" >Assentament Inicial</translation>
+      <translation>Assentament inicial</translation>
     </message>
     <message>
       <source>Fecha Final</source>
-      <translation type="unfinished" >Data Final</translation>
+      <translation>Data final</translation>
     </message>
     <message>
       <source>Fecha Inicial</source>
-      <translation type="unfinished" >Data Inicial</translation>
+      <translation>Data inicial</translation>
     </message>
     <message>
       <source>Cuenta Destino</source>
-      <translation type="unfinished" >Conta Destí</translation>
+      <translation>Compte destí</translation>
     </message>
     <message>
       <source>Cuenta Origen</source>
-      <translation type="unfinished" >Conta Origen</translation>
+      <translation>Compte Origen</translation>
     </message>
     <message>
       <source>Aceptar</source>
-      <translation type="unfinished" >Acceptar</translation>
+      <translation>Accepta</translation>
     </message>
     <message>
       <source>Cerrar</source>
-      <translation type="unfinished" >Tancar</translation>
+      <translation>Tanca</translation>
     </message>
   </context>
   <context>
     <name>CuentaBase</name>
     <message>
       <source>Cuenta</source>
-      <translation type="unfinished" >Conta</translation>
+      <translation>Compte</translation>
     </message>
     <message>
       <source>Ctrl+N</source>
-      <translation type="unfinished" >Ctrl+N</translation>
+      <translation>Ctrl+N</translation>
     </message>
     <message>
       <source>Duplicar Asiento</source>
-      <translation type="unfinished" >&lt;p>Seleccioneu aquí el valor del llindar aproximat, en percentatge, pel 
-mètode 'Gairebé' de cerca de duplicats. L'algorisme usa aquest valor per 
-distingir dues imatges similars. El valor per defecte és 88.</translation>
+      <translation>Duplica assentament</translation>
     </message>
     <message>
       <source>Cargar Asiento</source>
-      <translation type="unfinished" />
+      <translation>Carrega assentament</translation>
     </message>
     <message>
       <source>Ctrl+D</source>
-      <translation type="unfinished" >Ctrl+C</translation>
+      <translation>Ctrl+D</translation>
     </message>
     <message>
       <source>&amp;Datos contables</source>
-      <translation type="unfinished" >Aquesta taula és la taula principal per al filtrat\n
-de paquets. Aquí podreu definir les vostres\n
-regles de control d'accés</translation>
+      <translation>&amp;Dades comptables</translation>
     </message>
     <message>
       <source>Datos de la cuenta:</source>
@@ -1702,7 +1587,7 @@ regles de control d'accés</translation>
     </message>
     <message>
       <source>Nombre:</source>
-      <translation type="unfinished" />
+      <translation>Nom:</translation>
     </message>
     <message>
       <source>Grupo:</source>
@@ -1710,19 +1595,7 @@ regles de control d'accés</translation>
     </message>
     <message>
       <source>Opciones de cuenta:</source>
-      <translation type="unfinished" >&lt;p>Un Sector de Punt d'Accés, APS, és un sector de vídeo MPEG en el VCD/SVCD 
-que és adequat per a ser-hi saltat directament.&lt;p>Els APS són necessaris 
-pels punts d'entrada i les taules d'exploració. APS ha de satisfer els 
-requisits per precedir tots els I-frames per una capçalera GOP, la qual al 
-seu torn ha de ser precedida per una capçalera de seqüència.&lt;p>Els codis 
-d'inici d'aquests 3 elements han d'estar tots en el mateix sector/paquet 
-MPEG, per així formar el que s'anomena un sector de punt d'accés.&lt;p>Aquest 
-requeriment es pot relaxar habilitant l'opció d'APS relaxat, p.ex. tots els 
-sectors que continguin un I-frame seran considerats com un APS.&lt;p>&lt;b>Atenció:
-&lt;/b> la capçalera de seqüència és necessària per tal de que un dispositiu de 
-reproducció sàpiga els paràmetres de visualització, com ara la resolució i 
-la taxa de fotogrames; relaxar el requeriment d'APS pot provocar punts 
-d'entrada no vàlids.</translation>
+      <translation>Opcions del compte:</translation>
     </message>
     <message>
       <source>node&amp;be</source>
@@ -1730,7 +1603,7 @@ d'entrada no vàlids.</translation>
     </message>
     <message>
       <source>Alt+B</source>
-      <translation type="unfinished" >Alt+B</translation>
+      <translation>Alt+B</translation>
     </message>
     <message>
       <source>&amp;bloqueada</source>
@@ -1742,7 +1615,7 @@ d'entrada no vàlids.</translation>
     </message>
     <message>
       <source>nohaber</source>
-      <translation type="unfinished" >nohaber</translation>
+      <translation>nohaber</translation>
     </message>
     <message>
       <source>&amp;Imputacion</source>
@@ -1750,27 +1623,15 @@ d'entrada no vàlids.</translation>
     </message>
     <message>
       <source>Alt+I</source>
-      <translation type="unfinished" >Alt+I</translation>
+      <translation>Alt+I</translation>
     </message>
     <message>
       <source>Tipo de cuenta:</source>
-      <translation type="unfinished" >&lt;p>Un Sector de Punt d'Accés, APS, és un sector de vídeo MPEG en el VCD/SVCD 
-que és adequat per a ser-hi saltat directament.&lt;p>Els APS són necessaris 
-pels punts d'entrada i les taules d'exploració. APS ha de satisfer els 
-requisits per precedir tots els I-frames per una capçalera GOP, la qual al 
-seu torn ha de ser precedida per una capçalera de seqüència.&lt;p>Els codis 
-d'inici d'aquests 3 elements han d'estar tots en el mateix sector/paquet 
-MPEG, per així formar el que s'anomena un sector de punt d'accés.&lt;p>Aquest 
-requeriment es pot relaxar habilitant l'opció d'APS relaxat, p.ex. tots els 
-sectors que continguin un I-frame seran considerats com un APS.&lt;p>&lt;b>Atenció:
-&lt;/b> la capçalera de seqüència és necessària per tal de que un dispositiu de 
-reproducció sàpiga els paràmetres de visualització, com ara la resolució i 
-la taxa de fotogrames; relaxar el requeriment d'APS pot provocar punts 
-d'entrada no vàlids.</translation>
+      <translation>Tipus de compte:</translation>
     </message>
     <message>
       <source>&amp;Neto</source>
-      <translation type="unfinished" >Nom de la &amp;xarxa:</translation>
+      <translation>&amp;Net</translation>
     </message>
     <message>
       <source>Sin &amp;Tipo</source>
@@ -1782,7 +1643,7 @@ d'entrada no vàlids.</translation>
     </message>
     <message>
       <source>Alt+C</source>
-      <translation type="unfinished" >Alt+C</translation>
+      <translation>Alt+C</translation>
     </message>
     <message>
       <source>&amp;Ingreso</source>
@@ -1794,7 +1655,7 @@ d'entrada no vàlids.</translation>
     </message>
     <message>
       <source>Alt+G</source>
-      <translation type="unfinished" >Alt+G</translation>
+      <translation>Alt+G</translation>
     </message>
     <message>
       <source>&amp;Pasivo</source>
@@ -1802,7 +1663,7 @@ d'entrada no vàlids.</translation>
     </message>
     <message>
       <source>Alt+P</source>
-      <translation type="unfinished" >Alt+3</translation>
+      <translation>Alt+P</translation>
     </message>
     <message>
       <source>Saldos:</source>
@@ -1810,61 +1671,27 @@ d'entrada no vàlids.</translation>
     </message>
     <message>
       <source>C.P.:</source>
-      <translation type="unfinished" >C:</translation>
+      <translation>C.P.:</translation>
     </message>
     <message>
       <source>C.I.F.:</source>
-      <translation type="unfinished" >C:</translation>
+      <translation>C.I.F.:</translation>
     </message>
     <message>
       <source>Nombre de la entidad:</source>
-      <translation type="unfinished" />
+      <translation>Nom de l'entitat:</translation>
     </message>
     <message>
       <source>Comentarios:</source>
-      <translation type="unfinished" >&lt;p>Seleccioneu aquí el tipus de millora de color per les imatges:
-&lt;p>&lt;b>Redueix el contrast&lt;/b>: redueix el contras de la imatge. L'algorisme 
-redueix la diferència d'intensitat entre els elements més clars i més foscos 
-de la imatge.&lt;p>&lt;b>Profunditat&lt;/b>: canvia la profunditat de color de la 
-imatge.&lt;p>&lt;b>Equalitza&lt;/b>: executa l'equalització de l'histograma de la 
-imatge.&lt;p>&lt;b>Desdibuixa&lt;/b>: barreja els colors a una distància, considerant 
-que són iguals.&lt;p>&lt;b>Escala de grisos&lt;/b>: converteix les imatges en color a 
-imatges en escala de grisos.&lt;p>&lt;b>Augmenta el contrast&lt;/b>: millora el 
-contrast de la imatge. L'algorisme augmenta les diferències d'intensitat 
-entre els elements més clars i més foscos de la imatge.&lt;p>&lt;b>Monocrom&lt;/b>: 
-transforma la imatge a blanc i negre.&lt;p>&lt;b>Negatiu&lt;/b>: substitueix cada 
-píxel pel seu color complementari. Les tonalitats vermella, verda i blava 
-d'una imatge es negativen. El blanc esdevé negre, el groc esdevé blau, etc.
-&lt;p>&lt;b>Normalitza&lt;/b>: transforma la imatge per expandir l'interval sencer 
-dels valors de color. És una tècnica per augmentar l contrast. L'algorisme 
-augmenta el contrast d'una imatge de color ajustant el color dels píxels per 
-abraçar tot l'interval de colors disponible.&lt;p>&lt;b>Segmenta&lt;/b>: segmenta una 
-imatge analitzant l'histograma dels components de color i identificant les 
-unitats homogènies amb la tècnica de desdibuixat de mitjanes \&quot;c\&quot;.
-&lt;p>&lt;b>Retalla&lt;/b>: retallat una imatge (tècnica inversa al desdibuixat). 
-L'algorisme elimina els límits que són el color de fons de la imatge.&lt;p></translation>
+      <translation>Comentaris:</translation>
     </message>
     <message>
       <source>&amp;Aceptar</source>
-      <translation type="unfinished" >&lt;p>&lt;b>Esteu segur de que voleu executar l'script iptables que s'ha generat?&lt;/
-b>&lt;p>&lt;b>Un script iptables incorrectament configurat podria malmetre el 
-vostre ordinador.&lt;/b>&lt;p>Si el vostre sistema es bloqueja després d'aixecar 
-el tallafocs passeu a una consola de text (Ctrl+Alt+F1) i executeu els 
-següents comandaments per a reiniciar la configuració de iptables:
-&lt;p>&lt;ul>&lt;li>iptables -F &lt;/li>&lt;li>iptables -X &lt;/li>&lt;li>iptables -P INPUT 
-ACCEPT &lt;/li>&lt;li>iptables -P OUTPUT ACCEPT &lt;/li>&lt;li>iptables -P FORWARD 
-ACCEPT &lt;/li>&lt;li>iptables -t nat -F &lt;/li>&lt;li>iptables -t nat -X &lt;/
-li>&lt;li>iptables -t nat -P OUTPUT ACCEPT &lt;/li>&lt;li>iptables -t nat -P 
-PREROUTING ACCEPT &lt;/li>&lt;li>iptables -t nat -P POSTROUTING ACCEPT &lt;/
-li>&lt;li>iptables -t mangle -F &lt;/li>&lt;li>iptables -t mangle -X &lt;/
-li>&lt;li>iptables -t mangle -P INPUT ACCEPT &lt;/li>&lt;li>iptables -t mangle -P 
-OUTPUT ACCEPT &lt;/li>&lt;li>iptables -t mangle -P FORWARD ACCEPT &lt;/
-li>&lt;li>iptables -t mangle -P PREROUTING ACCEPT &lt;/li>&lt;li>iptables -t mangle -
-P POSTROUTING ACCEPT &lt;/li>&lt;/ul></translation>
+      <translation>&amp;Accepta</translation>
     </message>
     <message>
       <source>&amp;Cancelar</source>
-      <translation type="unfinished" >cancel·lat</translation>
+      <translation>&amp;Cancel·la</translation>
     </message>
     <message>
       <source>Guardar cuenta</source>
@@ -1872,7 +1699,7 @@ P POSTROUTING ACCEPT &lt;/li>&lt;/ul></translation>
     </message>
     <message>
       <source>Ctrl+S</source>
-      <translation type="unfinished" >Ctrl+S</translation>
+      <translation>Ctrl+S</translation>
     </message>
     <message>
       <source>Nueva cuenta</source>
@@ -1884,15 +1711,15 @@ P POSTROUTING ACCEPT &lt;/li>&lt;/ul></translation>
     </message>
     <message>
       <source>Codigo:</source>
-      <translation type="unfinished" >Extreu les pistes d'àudio digitalment (i codifica)</translation>
+      <translation>Codi:</translation>
     </message>
     <message>
       <source>Debe:</source>
-      <translation type="unfinished" />
+      <translation>Deure:</translation>
     </message>
     <message>
       <source>Haber:</source>
-      <translation type="unfinished" />
+      <translation>Haver:</translation>
     </message>
     <message>
       <source>&amp;Otros datos</source>
@@ -1900,22 +1727,19 @@ P POSTROUTING ACCEPT &lt;/li>&lt;/ul></translation>
     </message>
     <message>
       <source>URL de la pagina web:</source>
-      <translation type="unfinished" >URL del destí final:</translation>
+      <translation>URL de la pàgina web:</translation>
     </message>
     <message>
       <source>Correo electronico:</source>
-      <translation type="unfinished" >Guia electrònica de programació</translation>
+      <translation>Correo electrònic:</translation>
     </message>
     <message>
       <source>Codigo cuenta corriente.:</source>
-      <translation type="unfinished" />
+      <translation>Codi de compte corrent.:</translation>
     </message>
     <message>
       <source>Direccion:</source>
-      <translation type="unfinished" >&lt;p>Si aquesta opció està marcada, el K3b no crearà primer una imatge sinó 
-que escriurà els fitxers directament al CD/DVD. &lt;p>&lt;b>Precaució:&lt;/b> encara 
-que això hauria de funcionar en la majoria de sistemes, assegureu-vos que 
-les dades s'envien a la gravadora prou ràpid.</translation>
+      <translation>Adreça:</translation>
     </message>
     <message>
       <source>Telefono:</source>
@@ -1930,23 +1754,23 @@ les dades s'envien a la gravadora prou ràpid.</translation>
     </message>
     <message>
       <source>Desea guardar los cambios?</source>
-      <translation type="unfinished" >Desitja desar els canvis?</translation>
+      <translation>Desitja desar els canvis?</translation>
     </message>
     <message>
       <source>&amp;Si</source>
-      <translation type="unfinished" >&amp;Fitxa</translation>
+      <translation>&amp;Sí</translation>
     </message>
     <message>
       <source>&amp;No</source>
-      <translation type="unfinished" >&amp;Cap</translation>
+      <translation>&amp;No</translation>
     </message>
     <message>
       <source>&amp;Cancelar</source>
-      <translation type="unfinished" >cancel·lat</translation>
+      <translation>&amp;Cancel·la</translation>
     </message>
     <message>
       <source>Cuenta</source>
-      <translation type="unfinished" >Conta</translation>
+      <translation>Compte</translation>
     </message>
     <message>
       <source>Borrar cuenta</source>
@@ -1957,16 +1781,17 @@ les dades s'envien a la gravadora prou ràpid.</translation>
 Esto puede ocasionar perdida de datos
 Tal vez deberia pensarselo mejor antes
 porque igual su trabajo se pierde.</source>
-      <translation type="unfinished" >&lt;qt>Feu clic aquí per obrir el diàleg de selecció de bases de dades. Aquest 
-diàleg permet seleccionar les bases de dades que voleu excloure de 
-l'operació de restauració d'una llista.&lt;/qt></translation>
+      <translation>Es va a esborrar el compte.
+Això pot ocasionar pèrdua de dades.
+Caldria pensar-s'ho millor abans perquè potser 
+la seva feina es perd.</translation>
     </message>
   </context>
   <context>
     <name>DiarioBase</name>
     <message>
       <source>Diario</source>
-      <translation type="unfinished" >Diari</translation>
+      <translation>Diari</translation>
     </message>
     <message>
       <source>&amp;Incluir asientos abiertos</source>
@@ -1974,11 +1799,11 @@ l'operació de restauració d'una llista.&lt;/qt></translation>
     </message>
     <message>
       <source>Apuntes con contrapartida:</source>
-      <translation type="unfinished" >Apunts amb contrapartida:</translation>
+      <translation>Apunts amb contrapartida:</translation>
     </message>
     <message>
       <source>Imprimir</source>
-      <translation type="unfinished" >Imprimir</translation>
+      <translation>Imprimeix</translation>
     </message>
     <message>
       <source>Mostrar/ocultar filtro</source>
@@ -1986,62 +1811,19 @@ l'operació de restauració d'una llista.&lt;/qt></translation>
     </message>
     <message>
       <source>Configurar listado</source>
-      <translation type="unfinished" >Configuració de la llista</translation>
+      <translation>Configura llistat</translation>
     </message>
     <message>
       <source>Actualizar</source>
-      <translation type="unfinished" >&lt;p>&lt;b>De debò reordeno les miniatures?&lt;/b>&lt;/p> &lt;p>Ara les podeu reordenar 
-arrossegant-les pel visor de miniatures. És molt útil quan no coneixeu la 
-data exacte de les imatges. Per altra banda, si les pròpies imatges tenen 
-marques horàries vàlides, hauríeu d'emprar &lt;b>Imatges -&amp;gt; Ordena les 
-seleccionades per data i hora&lt;/b>&lt;/p></translation>
+      <translation>Actualitza</translation>
     </message>
     <message>
       <source>Apuntes con saldo inferior a:</source>
-      <translation type="unfinished" >&lt;h2>AVÍS&lt;/h2>\n
-&lt;p>Les xarxes punt-a-punt, particularment les que són accessibles mitjançant 
-KMLDonkey, poden contenir material el qual estigui legalment prohibit 
-descarregar o redistribuir. És responsabilitat vostra el verificar que 
-qualsevol material que descarregueu de qualsevol xarxa punt-a-punt s'està 
-posant a la vostra disposició legalment. És també la vostra responsabilitat 
-el verificar que disposeu dels drets legals de redistribuir qualsevol 
-material que poseu a disposició d'altres mitjançant qualsevol xarxa punt-a-
-punt. En resum, és responsabilitat personal el verificar que useu aquest 
-programari en conformitat amb el copyright i demés lleis de propietat 
-intel·lectual aplicables.&lt;/p>\n
-&lt;h3>RESTRICCIONS&lt;/h3>\n
-&lt;p>Els autors d'aquest programari pensen que s'usarà per a l'intercanvi 
-legal de dades, art, programari i d'altres documents o treballs que sí es 
-poden distribuir legalment a tercers. Els autors no recolzaran i 
-descoratjaran qualsevol ús d'aquest programari que pugui violar el copyright 
-o d'altres lleis de propietat intel·lectual. En particular, els autors 
-descoratgen qualsevol transmissió de qualsevol material en violació de 
-qualsevol llei i regulació aplicable sobre la propietat intel·lectual. 
-Assumeixen que cada usuari es comportarà d'acord amb les regles i les 
-restriccions aplicables, així com amb les regles i les restriccions 
-aplicables a les xarxes o als serveis de P2P connectats directament o 
-indirectament amb aquest programari.&lt;/p>\n
-&lt;h3>RENÚNCIA DE RESPONSABILITAT&lt;/h3>\n
-&lt;p>Els autors d'aquest programari no fan i no poden exercitar cap control 
-sobre el contingut de la informació intercanviada usant aquest programari. 
-Els autors no donen garanties de cap classe, tant si està expressat o 
-implicat, pel servei que aquest programari estigui proporcionant o per les 
-dades intercanviades amb l'ajuda d'aquest. Els autors no poden ser jutjats 
-responsables de cap demanda resultat de la conducta i/o de l'ús del 
-programari per part de l'usuari que sigui d'alguna forma il·legal o que 
-perjudiqui a tal usuari o a qualsevol altra part.&lt;/p></translation>
+      <translation>Apunts amb saldo inferior a:</translation>
     </message>
     <message>
       <source>Apuntes con saldo superior a:</source>
-      <translation type="unfinished" >&lt;p>&lt;center>&lt;b>Donació de diners&lt;/b>&lt;/center>&lt;/p>&lt;p>El KPhotoAlbum és de 
-l'ordre de magnitud de 2 anys/home de treball del meu temps lliure. Aquesta 
-feina és estricatment no retribuïda, i només ho faig pel goig de fer-ho. Dit 
-això, jo seria més que feliç per qualsevol donació petita o gran que em 
-poguéssiu fer.&lt;/p>&lt;p>Els diners s'usaran per alguna d'aquestes coses:
-&lt;ul>&lt;li>Comprar quelcom interessant per la meva càmera que em faci adaptar 
-el KPhotoAlbum per usar la nova funcionalitat (la compatibilitat amb EXIF i 
-amb el vídeo són dos bons exemples d'això).&lt;li>El projecte KPhotoAlbum (el 
-concurs de pantalles de benvinguda és un bon exemple d'això).&lt;/ul>&lt;/p></translation>
+      <translation>Apunts amb saldo superior a:</translation>
     </message>
     <message>
       <source>Fecha final:</source>
@@ -2053,41 +1835,26 @@ concurs de pantalles de benvinguda és un bon exemple d'això).&lt;/ul>&lt;/p></
     </message>
     <message>
       <source>Total Debe:</source>
-      <translation type="unfinished" >Pàgines totals</translation>
+      <translation>Total Deure:</translation>
     </message>
     <message>
       <source>Total Haber:</source>
-      <translation type="unfinished" >Alçada total:</translation>
+      <translation>Total Haver:</translation>
     </message>
     <message>
       <source>F5</source>
-      <translation type="unfinished" >F5</translation>
+      <translation>F5</translation>
     </message>
   </context>
   <context>
     <name>DiarioPrintBase</name>
     <message>
       <source>Impresión del Diario</source>
-      <translation type="unfinished" >Impresió del Diari</translation>
+      <translation>Imprimeix el Diari</translation>
     </message>
     <message>
       <source>&amp;Texto Plano</source>
-      <translation type="unfinished" >\\begin{figure}[emplaçament]\n
-cos de la figura\n
-\\caption{títol de la figura}\n
-\\end{figure}\n
-Les figures són objectes que no formen part del text normal, i normalment es 
-situen en un lloc adient\n
-L'argument opcional [emplaçament] determina on intentarà LaTeX situar la 
-vostra figura\n
-h : Aquí - a la posició del text on apareix l'entorn de la figura\n
-t : A dalt - a dalt d'una pàgina de text\n
-b : A baix - a baix d'una pàgina de text\n
-p : Pàgina d'elements flotants - en una pàgina separada que no contindrà 
-text, només elements flotants\n
-El cos de la figura pot estar composat del text, les comandes LaTeX, etc, 
-que vulgueu.\n
-La comanda \\caption us permet posar un títol a la vostra figura.</translation>
+      <translation>&amp;Text pla</translation>
     </message>
     <message>
       <source>HT&amp;ML</source>
@@ -2099,36 +1866,31 @@ La comanda \\caption us permet posar un títol a la vostra figura.</translation>
     </message>
     <message>
       <source>Propietario</source>
-      <translation type="unfinished" >Propietari</translation>
+      <translation>Propietari</translation>
     </message>
     <message>
       <source>&amp;Cancelar</source>
-      <translation type="unfinished" >cancel·lat</translation>
+      <translation>&amp;Cancel·la</translation>
     </message>
     <message>
       <source>&amp;Imprimir</source>
-      <translation type="unfinished" >&amp;Imprimir</translation>
+      <translation>&amp;Imprimeix</translation>
     </message>
     <message>
       <source>Documento:</source>
-      <translation type="unfinished" >Subdocument</translation>
+      <translation>Document:</translation>
     </message>
     <message>
       <source>Formato del listado:</source>
-      <translation type="unfinished" > Esborra </translation>
+      <translation>Format de llistat:</translation>
     </message>
     <message>
       <source>Formato &amp;normal</source>
-      <translation type="unfinished" >Prioritat &amp;normal</translation>
+      <translation>Format &amp;normal</translation>
     </message>
     <message>
       <source>&amp;Formato de aprendizaje</source>
-      <translation type="unfinished" >&lt;p>Seleccioneu aquí el format de data que preferiu per a crear nous àlbums. 
-Les opcions disponibles són:&lt;p>&lt;b>ISO&lt;/b>: el format de data està d'acord 
-amb l'ISO 8601 (YYYY-MM-DD). P.ex.: &lt;i>2006-08-24&lt;/i>&lt;p>&lt;b>Text complet&lt;/b>: 
-el format de data és una cadena llegible per l'usuari. P.ex.: &lt;i>Dij Aug 24 
-2006&lt;/i>&lt;p>&lt;b>Paràmetres locals&lt;/b>: el format de la data depèn dels 
-paràmetres del centre de control del KDE.&lt;p></translation>
+      <translation>&amp;Format d'aprenentatge</translation>
     </message>
   </context>
   <context>
@@ -2143,62 +1905,11 @@ paràmetres del centre de control del KDE.&lt;p></translation>
     </message>
     <message>
       <source>Borrar registro</source>
-      <translation type="unfinished" >&lt;h2>AVÍS&lt;/h2>\n
-&lt;p>Les xarxes punt-a-punt, particularment les que són accessibles mitjançant 
-KMLDonkey, poden contenir material el qual estigui legalment prohibit 
-descarregar o redistribuir. És responsabilitat vostra el verificar que 
-qualsevol material que descarregueu de qualsevol xarxa punt-a-punt s'està 
-posant a la vostra disposició legalment. És també la vostra responsabilitat 
-el verificar que disposeu dels drets legals de redistribuir qualsevol 
-material que poseu a disposició d'altres mitjançant qualsevol xarxa punt-a-
-punt. En resum, és responsabilitat personal el verificar que useu aquest 
-programari en conformitat amb el copyright i demés lleis de propietat 
-intel·lectual aplicables.&lt;/p>\n
-&lt;h3>RESTRICCIONS&lt;/h3>\n
-&lt;p>Els autors d'aquest programari pensen que s'usarà per a l'intercanvi 
-legal de dades, art, programari i d'altres documents o treballs que sí es 
-poden distribuir legalment a tercers. Els autors no recolzaran i 
-descoratjaran qualsevol ús d'aquest programari que pugui violar el copyright 
-o d'altres lleis de propietat intel·lectual. En particular, els autors 
-descoratgen qualsevol transmissió de qualsevol material en violació de 
-qualsevol llei i regulació aplicable sobre la propietat intel·lectual. 
-Assumeixen que cada usuari es comportarà d'acord amb les regles i les 
-restriccions aplicables, així com amb les regles i les restriccions 
-aplicables a les xarxes o als serveis de P2P connectats directament o 
-indirectament amb aquest programari.&lt;/p>\n
-&lt;h3>RENÚNCIA DE RESPONSABILITAT&lt;/h3>\n
-&lt;p>Els autors d'aquest programari no fan i no poden exercitar cap control 
-sobre el contingut de la informació intercanviada usant aquest programari. 
-Els autors no donen garanties de cap classe, tant si està expressat o 
-implicat, pel servei que aquest programari estigui proporcionant o per les 
-dades intercanviades amb l'ajuda d'aquest. Els autors no poden ser jutjats 
-responsables de cap demanda resultat de la conducta i/o de l'ús del 
-programari per part de l'usuari que sigui d'alguna forma il·legal o que 
-perjudiqui a tal usuari o a qualsevol altra part.&lt;/p></translation>
+      <translation>Esborra registre</translation>
     </message>
     <message>
       <source>Ajustar columa</source>
-      <translation type="unfinished" >&lt;p>Seleccioneu aquí el tipus de millora de color per les imatges:
-&lt;p>&lt;b>Redueix el contrast&lt;/b>: redueix el contras de la imatge. L'algorisme 
-redueix la diferència d'intensitat entre els elements més clars i més foscos 
-de la imatge.&lt;p>&lt;b>Profunditat&lt;/b>: canvia la profunditat de color de la 
-imatge.&lt;p>&lt;b>Equalitza&lt;/b>: executa l'equalització de l'histograma de la 
-imatge.&lt;p>&lt;b>Desdibuixa&lt;/b>: barreja els colors a una distància, considerant 
-que són iguals.&lt;p>&lt;b>Escala de grisos&lt;/b>: converteix les imatges en color a 
-imatges en escala de grisos.&lt;p>&lt;b>Augmenta el contrast&lt;/b>: millora el 
-contrast de la imatge. L'algorisme augmenta les diferències d'intensitat 
-entre els elements més clars i més foscos de la imatge.&lt;p>&lt;b>Monocrom&lt;/b>: 
-transforma la imatge a blanc i negre.&lt;p>&lt;b>Negatiu&lt;/b>: substitueix cada 
-píxel pel seu color complementari. Les tonalitats vermella, verda i blava 
-d'una imatge es negativen. El blanc esdevé negre, el groc esdevé blau, etc.
-&lt;p>&lt;b>Normalitza&lt;/b>: transforma la imatge per expandir l'interval sencer 
-dels valors de color. És una tècnica per augmentar l contrast. L'algorisme 
-augmenta el contrast d'una imatge de color ajustant el color dels píxels per 
-abraçar tot l'interval de colors disponible.&lt;p>&lt;b>Segmenta&lt;/b>: segmenta una 
-imatge analitzant l'histograma dels components de color i identificant les 
-unitats homogènies amb la tècnica de desdibuixat de mitjanes \&quot;c\&quot;.
-&lt;p>&lt;b>Retalla&lt;/b>: retallat una imatge (tècnica inversa al desdibuixat). 
-L'algorisme elimina els límits que són el color de fons de la imatge.&lt;p></translation>
+      <translation>Ajusta columna</translation>
     </message>
     <message>
       <source>Ajustar altura</source>
@@ -2206,54 +1917,15 @@ L'algorisme elimina els límits que són el color de fons de la imatge.&lt;p></t
     </message>
     <message>
       <source>Ajustar columnas</source>
-      <translation type="unfinished" >L'entorn de tabulació proporciona una manera d'alinear text en columnes.\n
-\\begin{tabbing}\n
-text \\= més text \\= encara més text \\= últim text \\\\\n
-segona fila \\>  \\> més \\\\\n
-\\end{tabbing}\n
-Comandes :\n
-\\=  Situa una tabulació a la posició actual.\n
-\\>  Avança a la següent tabulació.\n
-\\&lt;  Us permet posar alguna cosa a l'esquerra del marge local sense canviar 
-el marge. Només es pot fer servir a l'inici de la línia.\n
-\\+  Mou el marge esquerre de la següent i de totes les comandes següents 
-una tabulació cap a la dreta\n
-\\-  Mou el marge esquerre de la següent i de totes les comandes següents 
-una tabulació cap a l'esquerra\n
-\\'  Mou qualsevol cosa que hàgiu escrit a la columna actual cap a la dreta 
-de la columna anterior, alineat al tabulador de la columna actual. \n
-\\`  Us permet posar text alineat a la dreta de qualsevol tabulació, inclosa 
-la tabulació 0\n
-\\kill  Situa tabulacions sense produir text.\n
-\\a  En un entorn de tabulació, les comandes \\=, \\' i \\` no produeixen 
-accents de manera normal. En comptes d'aquestes, es fan servir les comandes 
-\\a=, \\a' i \\a`.</translation>
+      <translation>Ajusta columnes</translation>
     </message>
     <message>
       <source>Ajustar alturas</source>
-      <translation type="unfinished" >&lt;p>&lt;b>Límit&lt;/b>: aquest valor defineix la distància en pixels en la que el 
-filtre cerca límits. Quan aquest valor s'incrementa, el soroll de pics se 
-suprimeix. Eventualment, podeu reajustar el filtre &lt;b>Límit&lt;/b> quan canvieu 
-aquest paràmetre. Quan aquest valor és massa alt, el filtre adaptatiu no pot 
-seguir els detalls de la imatge amb cura, i pot reaparèixer soroll o es pot 
-produir un desenfocament.</translation>
+      <translation>Ajusta alçades</translation>
     </message>
     <message>
       <source>Ver configurador de subformulario</source>
-      <translation type="unfinished" >&lt;p>...el K3b té dos tipus d'arranjament. D'una banda el K3b té l'arranjament 
-com la majoria\n
-d'aplicacions del KDE tenen accessible mitjançant d'un diàleg de 
-configuració a través del menú d'arranjament;\n
-d'altra banda, cada diàleg d'acció del K3b té tres botons per carregar i 
-desar arranjaments per omissió\n
-per a l'acció. D'aquesta manera un pot, per exemple, establir la 
-configuració per omissió a l'hora de copiar CD: aquestes opcions per 
-omissió\n
-Seran carregades cada vegada que s'obri el diàleg de còpia de CD. El botó 
-&lt;em>Arranjament per omissió del K3b&lt;/em>\n
-restablirà la configuració &lt;em>de fàbrica&lt;/em> en cas de que no sapigueu si 
-la configuració que heu triat\n
-és apropiada.&lt;/p>\n</translation>
+      <translation>Veure el configurador de subformulari</translation>
     </message>
     <message>
       <source>idborrador</source>
@@ -2265,35 +1937,35 @@ la configuració que heu triat\n
     </message>
     <message>
       <source>orden</source>
-      <translation type="unfinished" >ordre</translation>
+      <translation>ordre</translation>
     </message>
     <message>
       <source>Fecha</source>
-      <translation type="unfinished" >Data</translation>
+      <translation>Data</translation>
     </message>
     <message>
       <source>Concepto</source>
-      <translation type="unfinished" >Concepte</translation>
+      <translation>Concepte</translation>
     </message>
     <message>
       <source>Debe</source>
-      <translation type="unfinished" />
+      <translation>Deure</translation>
     </message>
     <message>
       <source>Haber</source>
-      <translation type="unfinished" >Haber</translation>
+      <translation>Haver</translation>
     </message>
     <message>
       <source>Contrapartida</source>
-      <translation type="unfinished" >Contrapartida</translation>
+      <translation>Contrapartida</translation>
     </message>
     <message>
       <source>Comentario</source>
-      <translation type="unfinished" >Comment=Algú ha iniciat un xat DCC amb vostè</translation>
+      <translation>Comentari</translation>
     </message>
     <message>
       <source>Canal</source>
-      <translation type="unfinished" >Canal</translation>
+      <translation>Canal</translation>
     </message>
     <message>
       <source>MarcaConciliacion</source>
@@ -2301,12 +1973,11 @@ la configuració que heu triat\n
     </message>
     <message>
       <source>Centro Coste</source>
-      <translation type="unfinished" >Especifica a quina màquina enviar les URL. &lt;hostid> és el nom de la màquina 
-tal i com està definida al Centre de control del KDE.</translation>
+      <translation>Centre de Cost</translation>
     </message>
     <message>
       <source>Factura</source>
-      <translation type="unfinished" >Factura</translation>
+      <translation>Factura</translation>
     </message>
     <message>
       <source>idapunte</source>
@@ -2334,52 +2005,45 @@ tal i com està definida al Centre de control del KDE.</translation>
     </message>
     <message>
       <source>iddiario</source>
-      <translation type="unfinished" >&lt;qt>Aquest és el menú de configuració pel fitxer de diàleg. Des d'aquest 
-menú es pot accedir a diverses opcions, incloent:&lt;ul>&lt;li>com s'ordenen els 
-fitxers a la llista&lt;/li>&lt;li>tipus de vista, incloent icona i llista&lt;/
-li>&lt;li>presentació de fitxers ocults&lt;/li>&lt;li>el plafó de navegació d'accés 
-ràpid&lt;/li>&lt;li>vistes prèvies de fitxers &lt;/li>&lt;li>separació de directoris 
-dels fitxers&lt;/li>&lt;/ul>&lt;/qt></translation>
+      <translation>iddiario</translation>
     </message>
     <message>
       <source>Asiento</source>
-      <translation type="unfinished" >&lt;p>...el Kile ara conté moltes eines d'edició per ajudar-vos a escriure en 
-LaTeX més fàcilment? Feu una ullada  als menús &lt;b>Autocompletat, Selecciona, 
-Esborra., Entorn, i Grup TeX&lt;/b> del menú Edita.&lt;/p>\n</translation>
+      <translation>Assentament</translation>
     </message>
     <message>
       <source>Cuenta</source>
-      <translation type="unfinished" >Conta</translation>
+      <translation>Compte</translation>
     </message>
     <message>
       <source>Descripcion</source>
-      <translation type="unfinished" >descripció,</translation>
+      <translation>Descripció</translation>
     </message>
     <message>
       <source>Descripcion de Cuenta</source>
-      <translation type="unfinished" >&lt;p>La descripció de l'àlbum actual a la llista de selecció.</translation>
+      <translation>Descripció del compte</translation>
     </message>
   </context>
   <context>
     <name>DiarioView</name>
     <message>
       <source>Guardar Libro Diario</source>
-      <translation type="unfinished" >Desar el Llibre diari</translation>
+      <translation>Desar el Llibre diari</translation>
     </message>
     <message>
       <source>Diarios (*.txt)</source>
-      <translation type="unfinished" >Diaris (*.txt)</translation>
+      <translation>Diaris (*.txt)</translation>
     </message>
   </context>
   <context>
     <name>DuplicarAsientoBase</name>
     <message>
       <source>Duplicar Asientos</source>
-      <translation type="unfinished" >Duplicar Assentaments</translation>
+      <translation>Duplicar Assentaments</translation>
     </message>
     <message>
       <source>Origen:</source>
-      <translation type="unfinished" >Implementació original del generador HTML</translation>
+      <translation>Origen:</translation>
     </message>
     <message>
       <source>Fecha inicial:</source>
@@ -2387,19 +2051,19 @@ Esborra., Entorn, i Grup TeX&lt;/b> del menú Edita.&lt;/p>\n</translation>
     </message>
     <message>
       <source>Asiento inicial:</source>
-      <translation type="unfinished" />
+      <translation>Assentament inicial:</translation>
     </message>
     <message>
       <source>Asiento final:</source>
-      <translation type="unfinished" />
+      <translation>Assentament final:</translation>
     </message>
     <message>
       <source>Destino:</source>
-      <translation type="unfinished" >URL de destí</translation>
+      <translation>Destinació:</translation>
     </message>
     <message>
       <source>Fecha con la que quedará el asiento:</source>
-      <translation type="unfinished" >El Salvador</translation>
+      <translation>Data amb la que quedarà l'assentament:</translation>
     </message>
     <message>
       <source>Tratamiento de la fecha:</source>
@@ -2411,64 +2075,26 @@ Esborra., Entorn, i Grup TeX&lt;/b> del menú Edita.&lt;/p>\n</translation>
     </message>
     <message>
       <source>Mantener distacia entre fechas</source>
-      <translation type="unfinished" >&lt;p>Seleccioneu aquí el tipus de millora de color per les imatges:
-&lt;p>&lt;b>Redueix el contrast&lt;/b>: redueix el contras de la imatge. L'algorisme 
-redueix la diferència d'intensitat entre els elements més clars i més foscos 
-de la imatge.&lt;p>&lt;b>Profunditat&lt;/b>: canvia la profunditat de color de la 
-imatge.&lt;p>&lt;b>Equalitza&lt;/b>: executa l'equalització de l'histograma de la 
-imatge.&lt;p>&lt;b>Desdibuixa&lt;/b>: barreja els colors a una distància, considerant 
-que són iguals.&lt;p>&lt;b>Escala de grisos&lt;/b>: converteix les imatges en color a 
-imatges en escala de grisos.&lt;p>&lt;b>Augmenta el contrast&lt;/b>: millora el 
-contrast de la imatge. L'algorisme augmenta les diferències d'intensitat 
-entre els elements més clars i més foscos de la imatge.&lt;p>&lt;b>Monocrom&lt;/b>: 
-transforma la imatge a blanc i negre.&lt;p>&lt;b>Negatiu&lt;/b>: substitueix cada 
-píxel pel seu color complementari. Les tonalitats vermella, verda i blava 
-d'una imatge es negativen. El blanc esdevé negre, el groc esdevé blau, etc.
-&lt;p>&lt;b>Normalitza&lt;/b>: transforma la imatge per expandir l'interval sencer 
-dels valors de color. És una tècnica per augmentar l contrast. L'algorisme 
-augmenta el contrast d'una imatge de color ajustant el color dels píxels per 
-abraçar tot l'interval de colors disponible.&lt;p>&lt;b>Segmenta&lt;/b>: segmenta una 
-imatge analitzant l'histograma dels components de color i identificant les 
-unitats homogènies amb la tècnica de desdibuixat de mitjanes \&quot;c\&quot;.
-&lt;p>&lt;b>Retalla&lt;/b>: retallat una imatge (tècnica inversa al desdibuixat). 
-L'algorisme elimina els límits que són el color de fons de la imatge.&lt;p></translation>
+      <translation>Mantenir distància entre datas</translation>
     </message>
     <message>
       <source>&amp;Aceptar</source>
-      <translation type="unfinished" >&lt;p>&lt;b>Esteu segur de que voleu executar l'script iptables que s'ha generat?&lt;/
-b>&lt;p>&lt;b>Un script iptables incorrectament configurat podria malmetre el 
-vostre ordinador.&lt;/b>&lt;p>Si el vostre sistema es bloqueja després d'aixecar 
-el tallafocs passeu a una consola de text (Ctrl+Alt+F1) i executeu els 
-següents comandaments per a reiniciar la configuració de iptables:
-&lt;p>&lt;ul>&lt;li>iptables -F &lt;/li>&lt;li>iptables -X &lt;/li>&lt;li>iptables -P INPUT 
-ACCEPT &lt;/li>&lt;li>iptables -P OUTPUT ACCEPT &lt;/li>&lt;li>iptables -P FORWARD 
-ACCEPT &lt;/li>&lt;li>iptables -t nat -F &lt;/li>&lt;li>iptables -t nat -X &lt;/
-li>&lt;li>iptables -t nat -P OUTPUT ACCEPT &lt;/li>&lt;li>iptables -t nat -P 
-PREROUTING ACCEPT &lt;/li>&lt;li>iptables -t nat -P POSTROUTING ACCEPT &lt;/
-li>&lt;li>iptables -t mangle -F &lt;/li>&lt;li>iptables -t mangle -X &lt;/
-li>&lt;li>iptables -t mangle -P INPUT ACCEPT &lt;/li>&lt;li>iptables -t mangle -P 
-OUTPUT ACCEPT &lt;/li>&lt;li>iptables -t mangle -P FORWARD ACCEPT &lt;/
-li>&lt;li>iptables -t mangle -P PREROUTING ACCEPT &lt;/li>&lt;li>iptables -t mangle -
-P POSTROUTING ACCEPT &lt;/li>&lt;/ul></translation>
+      <translation>&amp;Accepta</translation>
     </message>
     <message>
       <source>&amp;Cerrar</source>
-      <translation type="unfinished" >Tan&amp;car</translation>
+      <translation>Tan&amp;ca</translation>
     </message>
   </context>
   <context>
     <name>ExtractoBase</name>
     <message>
       <source>Extracto de Cuentas</source>
-      <translation type="unfinished" >Extracte de contes</translation>
+      <translation>Extracte de comptes</translation>
     </message>
     <message>
       <source>Actualizar</source>
-      <translation type="unfinished" >&lt;p>&lt;b>De debò reordeno les miniatures?&lt;/b>&lt;/p> &lt;p>Ara les podeu reordenar 
-arrossegant-les pel visor de miniatures. És molt útil quan no coneixeu la 
-data exacte de les imatges. Per altra banda, si les pròpies imatges tenen 
-marques horàries vàlides, hauríeu d'emprar &lt;b>Imatges -&amp;gt; Ordena les 
-seleccionades per data i hora&lt;/b>&lt;/p></translation>
+      <translation>Actualitza</translation>
     </message>
     <message>
       <source>&amp;Incluir asientos abiertos</source>
@@ -2480,11 +2106,11 @@ seleccionades per data i hora&lt;/b>&lt;/p></translation>
     </message>
     <message>
       <source>Apuntes con contrapartida:</source>
-      <translation type="unfinished" >Apunts amb contrapartida:</translation>
+      <translation>Apunts amb contrapartida:</translation>
     </message>
     <message>
       <source>Totales:</source>
-      <translation type="unfinished" >Totals:</translation>
+      <translation>Totals:</translation>
     </message>
     <message>
       <source>Punteo:</source>
@@ -2492,50 +2118,11 @@ seleccionades per data i hora&lt;/b>&lt;/p></translation>
     </message>
     <message>
       <source>Apuntes con saldo superior a:</source>
-      <translation type="unfinished" >&lt;p>&lt;center>&lt;b>Donació de diners&lt;/b>&lt;/center>&lt;/p>&lt;p>El KPhotoAlbum és de 
-l'ordre de magnitud de 2 anys/home de treball del meu temps lliure. Aquesta 
-feina és estricatment no retribuïda, i només ho faig pel goig de fer-ho. Dit 
-això, jo seria més que feliç per qualsevol donació petita o gran que em 
-poguéssiu fer.&lt;/p>&lt;p>Els diners s'usaran per alguna d'aquestes coses:
-&lt;ul>&lt;li>Comprar quelcom interessant per la meva càmera que em faci adaptar 
-el KPhotoAlbum per usar la nova funcionalitat (la compatibilitat amb EXIF i 
-amb el vídeo són dos bons exemples d'això).&lt;li>El projecte KPhotoAlbum (el 
-concurs de pantalles de benvinguda és un bon exemple d'això).&lt;/ul>&lt;/p></translation>
+      <translation>Apunts amb saldo superior a:</translation>
     </message>
     <message>
       <source>Apuntes con saldo inferior a:</source>
-      <translation type="unfinished" >&lt;h2>AVÍS&lt;/h2>\n
-&lt;p>Les xarxes punt-a-punt, particularment les que són accessibles mitjançant 
-KMLDonkey, poden contenir material el qual estigui legalment prohibit 
-descarregar o redistribuir. És responsabilitat vostra el verificar que 
-qualsevol material que descarregueu de qualsevol xarxa punt-a-punt s'està 
-posant a la vostra disposició legalment. És també la vostra responsabilitat 
-el verificar que disposeu dels drets legals de redistribuir qualsevol 
-material que poseu a disposició d'altres mitjançant qualsevol xarxa punt-a-
-punt. En resum, és responsabilitat personal el verificar que useu aquest 
-programari en conformitat amb el copyright i demés lleis de propietat 
-intel·lectual aplicables.&lt;/p>\n
-&lt;h3>RESTRICCIONS&lt;/h3>\n
-&lt;p>Els autors d'aquest programari pensen que s'usarà per a l'intercanvi 
-legal de dades, art, programari i d'altres documents o treballs que sí es 
-poden distribuir legalment a tercers. Els autors no recolzaran i 
-descoratjaran qualsevol ús d'aquest programari que pugui violar el copyright 
-o d'altres lleis de propietat intel·lectual. En particular, els autors 
-descoratgen qualsevol transmissió de qualsevol material en violació de 
-qualsevol llei i regulació aplicable sobre la propietat intel·lectual. 
-Assumeixen que cada usuari es comportarà d'acord amb les regles i les 
-restriccions aplicables, així com amb les regles i les restriccions 
-aplicables a les xarxes o als serveis de P2P connectats directament o 
-indirectament amb aquest programari.&lt;/p>\n
-&lt;h3>RENÚNCIA DE RESPONSABILITAT&lt;/h3>\n
-&lt;p>Els autors d'aquest programari no fan i no poden exercitar cap control 
-sobre el contingut de la informació intercanviada usant aquest programari. 
-Els autors no donen garanties de cap classe, tant si està expressat o 
-implicat, pel servei que aquest programari estigui proporcionant o per les 
-dades intercanviades amb l'ajuda d'aquest. Els autors no poden ser jutjats 
-responsables de cap demanda resultat de la conducta i/o de l'ús del 
-programari per part de l'usuari que sigui d'alguna forma il·legal o que 
-perjudiqui a tal usuari o a qualsevol altra part.&lt;/p></translation>
+      <translation>Apunts amb saldo inferior a:</translation>
     </message>
     <message>
       <source>Fecha inicial:</source>
@@ -2555,7 +2142,7 @@ perjudiqui a tal usuari o a qualsevol altra part.&lt;/p></translation>
     </message>
     <message>
       <source>Apuntes &amp;no punteados</source>
-      <translation type="unfinished" >Se&amp;nse intermediari</translation>
+      <translation>Apunts &amp;no puntejats</translation>
     </message>
     <message>
       <source>Ap&amp;untes punteados</source>
@@ -2563,11 +2150,11 @@ perjudiqui a tal usuari o a qualsevol altra part.&lt;/p></translation>
     </message>
     <message>
       <source>Guardar</source>
-      <translation type="unfinished" >Interval de vigilància:</translation>
+      <translation>Desa</translation>
     </message>
     <message>
       <source>Imprimir</source>
-      <translation type="unfinished" >Imprimir</translation>
+      <translation>Imprimeix</translation>
     </message>
     <message>
       <source>Mostrar/Oculatar filtro</source>
@@ -2575,7 +2162,7 @@ perjudiqui a tal usuari o a qualsevol altra part.&lt;/p></translation>
     </message>
     <message>
       <source>Configurar</source>
-      <translation type="unfinished" > Configuració</translation>
+      <translation>Arranjament</translation>
     </message>
     <message>
       <source>Casacion</source>
@@ -2599,27 +2186,27 @@ perjudiqui a tal usuari o a qualsevol altra part.&lt;/p></translation>
     </message>
     <message>
       <source>Cuenta:</source>
-      <translation type="unfinished" >Incremental seqüencial</translation>
+      <translation>Compte:</translation>
     </message>
     <message>
       <source>Haber inicial:</source>
-      <translation type="unfinished" />
+      <translation>Haver inical:</translation>
     </message>
     <message>
       <source>Debe inicial:</source>
-      <translation type="unfinished" />
+      <translation>Deure inicial:</translation>
     </message>
     <message>
       <source>Nombre de la cuenta:</source>
-      <translation type="unfinished" />
+      <translation>Nom del compte:</translation>
     </message>
     <message>
       <source>Debe:</source>
-      <translation type="unfinished" />
+      <translation>Deure:</translation>
     </message>
     <message>
       <source>Haber:</source>
-      <translation type="unfinished" />
+      <translation>Haver:</translation>
     </message>
     <message>
       <source>Saldo:</source>
@@ -2630,26 +2217,11 @@ perjudiqui a tal usuari o a qualsevol altra part.&lt;/p></translation>
     <name>ExtractoPrintBase</name>
     <message>
       <source>Impresión del Extracto</source>
-      <translation type="unfinished" >Impresió de l'Extracte</translation>
+      <translation>Imprimeix l'Extracte</translation>
     </message>
     <message>
       <source>&amp;Texto Plano</source>
-      <translation type="unfinished" >\\begin{figure}[emplaçament]\n
-cos de la figura\n
-\\caption{títol de la figura}\n
-\\end{figure}\n
-Les figures són objectes que no formen part del text normal, i normalment es 
-situen en un lloc adient\n
-L'argument opcional [emplaçament] determina on intentarà LaTeX situar la 
-vostra figura\n
-h : Aquí - a la posició del text on apareix l'entorn de la figura\n
-t : A dalt - a dalt d'una pàgina de text\n
-b : A baix - a baix d'una pàgina de text\n
-p : Pàgina d'elements flotants - en una pàgina separada que no contindrà 
-text, només elements flotants\n
-El cos de la figura pot estar composat del text, les comandes LaTeX, etc, 
-que vulgueu.\n
-La comanda \\caption us permet posar un títol a la vostra figura.</translation>
+      <translation>&amp;Text pla</translation>
     </message>
     <message>
       <source>HT&amp;ML</source>
@@ -2657,19 +2229,19 @@ La comanda \\caption us permet posar un títol a la vostra figura.</translation>
     </message>
     <message>
       <source>Propietario</source>
-      <translation type="unfinished" >Propietari</translation>
+      <translation>Propietari</translation>
     </message>
     <message>
       <source>&amp;Cancelar</source>
-      <translation type="unfinished" >cancel·lat</translation>
+      <translation>&amp;Cancel·la</translation>
     </message>
     <message>
       <source>&amp;Imprimir</source>
-      <translation type="unfinished" >&amp;Imprimir</translation>
+      <translation>&amp;Imprimeix</translation>
     </message>
     <message>
       <source>Formato:</source>
-      <translation type="unfinished" >&amp;Format:</translation>
+      <translation>&amp;Format:</translation>
     </message>
   </context>
   <context>
@@ -2684,62 +2256,11 @@ La comanda \\caption us permet posar un títol a la vostra figura.</translation>
     </message>
     <message>
       <source>Borrar registro</source>
-      <translation type="unfinished" >&lt;h2>AVÍS&lt;/h2>\n
-&lt;p>Les xarxes punt-a-punt, particularment les que són accessibles mitjançant 
-KMLDonkey, poden contenir material el qual estigui legalment prohibit 
-descarregar o redistribuir. És responsabilitat vostra el verificar que 
-qualsevol material que descarregueu de qualsevol xarxa punt-a-punt s'està 
-posant a la vostra disposició legalment. És també la vostra responsabilitat 
-el verificar que disposeu dels drets legals de redistribuir qualsevol 
-material que poseu a disposició d'altres mitjançant qualsevol xarxa punt-a-
-punt. En resum, és responsabilitat personal el verificar que useu aquest 
-programari en conformitat amb el copyright i demés lleis de propietat 
-intel·lectual aplicables.&lt;/p>\n
-&lt;h3>RESTRICCIONS&lt;/h3>\n
-&lt;p>Els autors d'aquest programari pensen que s'usarà per a l'intercanvi 
-legal de dades, art, programari i d'altres documents o treballs que sí es 
-poden distribuir legalment a tercers. Els autors no recolzaran i 
-descoratjaran qualsevol ús d'aquest programari que pugui violar el copyright 
-o d'altres lleis de propietat intel·lectual. En particular, els autors 
-descoratgen qualsevol transmissió de qualsevol material en violació de 
-qualsevol llei i regulació aplicable sobre la propietat intel·lectual. 
-Assumeixen que cada usuari es comportarà d'acord amb les regles i les 
-restriccions aplicables, així com amb les regles i les restriccions 
-aplicables a les xarxes o als serveis de P2P connectats directament o 
-indirectament amb aquest programari.&lt;/p>\n
-&lt;h3>RENÚNCIA DE RESPONSABILITAT&lt;/h3>\n
-&lt;p>Els autors d'aquest programari no fan i no poden exercitar cap control 
-sobre el contingut de la informació intercanviada usant aquest programari. 
-Els autors no donen garanties de cap classe, tant si està expressat o 
-implicat, pel servei que aquest programari estigui proporcionant o per les 
-dades intercanviades amb l'ajuda d'aquest. Els autors no poden ser jutjats 
-responsables de cap demanda resultat de la conducta i/o de l'ús del 
-programari per part de l'usuari que sigui d'alguna forma il·legal o que 
-perjudiqui a tal usuari o a qualsevol altra part.&lt;/p></translation>
+      <translation>Esborra registre</translation>
     </message>
     <message>
       <source>Ajustar columa</source>
-      <translation type="unfinished" >&lt;p>Seleccioneu aquí el tipus de millora de color per les imatges:
-&lt;p>&lt;b>Redueix el contrast&lt;/b>: redueix el contras de la imatge. L'algorisme 
-redueix la diferència d'intensitat entre els elements més clars i més foscos 
-de la imatge.&lt;p>&lt;b>Profunditat&lt;/b>: canvia la profunditat de color de la 
-imatge.&lt;p>&lt;b>Equalitza&lt;/b>: executa l'equalització de l'histograma de la 
-imatge.&lt;p>&lt;b>Desdibuixa&lt;/b>: barreja els colors a una distància, considerant 
-que són iguals.&lt;p>&lt;b>Escala de grisos&lt;/b>: converteix les imatges en color a 
-imatges en escala de grisos.&lt;p>&lt;b>Augmenta el contrast&lt;/b>: millora el 
-contrast de la imatge. L'algorisme augmenta les diferències d'intensitat 
-entre els elements més clars i més foscos de la imatge.&lt;p>&lt;b>Monocrom&lt;/b>: 
-transforma la imatge a blanc i negre.&lt;p>&lt;b>Negatiu&lt;/b>: substitueix cada 
-píxel pel seu color complementari. Les tonalitats vermella, verda i blava 
-d'una imatge es negativen. El blanc esdevé negre, el groc esdevé blau, etc.
-&lt;p>&lt;b>Normalitza&lt;/b>: transforma la imatge per expandir l'interval sencer 
-dels valors de color. És una tècnica per augmentar l contrast. L'algorisme 
-augmenta el contrast d'una imatge de color ajustant el color dels píxels per 
-abraçar tot l'interval de colors disponible.&lt;p>&lt;b>Segmenta&lt;/b>: segmenta una 
-imatge analitzant l'histograma dels components de color i identificant les 
-unitats homogènies amb la tècnica de desdibuixat de mitjanes \&quot;c\&quot;.
-&lt;p>&lt;b>Retalla&lt;/b>: retallat una imatge (tècnica inversa al desdibuixat). 
-L'algorisme elimina els límits que són el color de fons de la imatge.&lt;p></translation>
+      <translation>Ajusta columna</translation>
     </message>
     <message>
       <source>Ajustar altura</source>
@@ -2747,54 +2268,15 @@ L'algorisme elimina els límits que són el color de fons de la imatge.&lt;p></t
     </message>
     <message>
       <source>Ajustar columnas</source>
-      <translation type="unfinished" >L'entorn de tabulació proporciona una manera d'alinear text en columnes.\n
-\\begin{tabbing}\n
-text \\= més text \\= encara més text \\= últim text \\\\\n
-segona fila \\>  \\> més \\\\\n
-\\end{tabbing}\n
-Comandes :\n
-\\=  Situa una tabulació a la posició actual.\n
-\\>  Avança a la següent tabulació.\n
-\\&lt;  Us permet posar alguna cosa a l'esquerra del marge local sense canviar 
-el marge. Només es pot fer servir a l'inici de la línia.\n
-\\+  Mou el marge esquerre de la següent i de totes les comandes següents 
-una tabulació cap a la dreta\n
-\\-  Mou el marge esquerre de la següent i de totes les comandes següents 
-una tabulació cap a l'esquerra\n
-\\'  Mou qualsevol cosa que hàgiu escrit a la columna actual cap a la dreta 
-de la columna anterior, alineat al tabulador de la columna actual. \n
-\\`  Us permet posar text alineat a la dreta de qualsevol tabulació, inclosa 
-la tabulació 0\n
-\\kill  Situa tabulacions sense produir text.\n
-\\a  En un entorn de tabulació, les comandes \\=, \\' i \\` no produeixen 
-accents de manera normal. En comptes d'aquestes, es fan servir les comandes 
-\\a=, \\a' i \\a`.</translation>
+      <translation>Ajusta columnes</translation>
     </message>
     <message>
       <source>Ajustar alturas</source>
-      <translation type="unfinished" >&lt;p>&lt;b>Límit&lt;/b>: aquest valor defineix la distància en pixels en la que el 
-filtre cerca límits. Quan aquest valor s'incrementa, el soroll de pics se 
-suprimeix. Eventualment, podeu reajustar el filtre &lt;b>Límit&lt;/b> quan canvieu 
-aquest paràmetre. Quan aquest valor és massa alt, el filtre adaptatiu no pot 
-seguir els detalls de la imatge amb cura, i pot reaparèixer soroll o es pot 
-produir un desenfocament.</translation>
+      <translation>Ajusta alçades</translation>
     </message>
     <message>
       <source>Ver configurador de subformulario</source>
-      <translation type="unfinished" >&lt;p>...el K3b té dos tipus d'arranjament. D'una banda el K3b té l'arranjament 
-com la majoria\n
-d'aplicacions del KDE tenen accessible mitjançant d'un diàleg de 
-configuració a través del menú d'arranjament;\n
-d'altra banda, cada diàleg d'acció del K3b té tres botons per carregar i 
-desar arranjaments per omissió\n
-per a l'acció. D'aquesta manera un pot, per exemple, establir la 
-configuració per omissió a l'hora de copiar CD: aquestes opcions per 
-omissió\n
-Seran carregades cada vegada que s'obri el diàleg de còpia de CD. El botó 
-&lt;em>Arranjament per omissió del K3b&lt;/em>\n
-restablirà la configuració &lt;em>de fàbrica&lt;/em> en cas de que no sapigueu si 
-la configuració que heu triat\n
-és apropiada.&lt;/p>\n</translation>
+      <translation>Veure el configurador de subformulari</translation>
     </message>
     <message>
       <source>idapunte</source>
@@ -2810,67 +2292,31 @@ la configuració que heu triat\n
     </message>
     <message>
       <source>iddiario</source>
-      <translation type="unfinished" >&lt;qt>Aquest és el menú de configuració pel fitxer de diàleg. Des d'aquest 
-menú es pot accedir a diverses opcions, incloent:&lt;ul>&lt;li>com s'ordenen els 
-fitxers a la llista&lt;/li>&lt;li>tipus de vista, incloent icona i llista&lt;/
-li>&lt;li>presentació de fitxers ocults&lt;/li>&lt;li>el plafó de navegació d'accés 
-ràpid&lt;/li>&lt;li>vistes prèvies de fitxers &lt;/li>&lt;li>separació de directoris 
-dels fitxers&lt;/li>&lt;/ul>&lt;/qt></translation>
+      <translation>iddiario</translation>
     </message>
     <message>
       <source>Fecha</source>
-      <translation type="unfinished" >Data</translation>
+      <translation>Data</translation>
     </message>
     <message>
       <source>Concepto</source>
-      <translation type="unfinished" >Concepte</translation>
+      <translation>Concepte</translation>
     </message>
     <message>
       <source>Cuenta</source>
-      <translation type="unfinished" >Conta</translation>
+      <translation>Compte</translation>
     </message>
     <message>
       <source>Debe</source>
-      <translation type="unfinished" />
+      <translation>Deure</translation>
     </message>
     <message>
       <source>Haber</source>
-      <translation type="unfinished" >Haber</translation>
+      <translation>Haver</translation>
     </message>
     <message>
       <source>contrapartida</source>
-      <translation type="unfinished" >&lt;h2>AVÍS&lt;/h2>\n
-&lt;p>Les xarxes punt-a-punt, particularment les que són accessibles mitjançant 
-KMLDonkey, poden contenir material el qual estigui legalment prohibit 
-descarregar o redistribuir. És responsabilitat vostra el verificar que 
-qualsevol material que descarregueu de qualsevol xarxa punt-a-punt s'està 
-posant a la vostra disposició legalment. És també la vostra responsabilitat 
-el verificar que disposeu dels drets legals de redistribuir qualsevol 
-material que poseu a disposició d'altres mitjançant qualsevol xarxa punt-a-
-punt. En resum, és responsabilitat personal el verificar que useu aquest 
-programari en conformitat amb el copyright i demés lleis de propietat 
-intel·lectual aplicables.&lt;/p>\n
-&lt;h3>RESTRICCIONS&lt;/h3>\n
-&lt;p>Els autors d'aquest programari pensen que s'usarà per a l'intercanvi 
-legal de dades, art, programari i d'altres documents o treballs que sí es 
-poden distribuir legalment a tercers. Els autors no recolzaran i 
-descoratjaran qualsevol ús d'aquest programari que pugui violar el copyright 
-o d'altres lleis de propietat intel·lectual. En particular, els autors 
-descoratgen qualsevol transmissió de qualsevol material en violació de 
-qualsevol llei i regulació aplicable sobre la propietat intel·lectual. 
-Assumeixen que cada usuari es comportarà d'acord amb les regles i les 
-restriccions aplicables, així com amb les regles i les restriccions 
-aplicables a les xarxes o als serveis de P2P connectats directament o 
-indirectament amb aquest programari.&lt;/p>\n
-&lt;h3>RENÚNCIA DE RESPONSABILITAT&lt;/h3>\n
-&lt;p>Els autors d'aquest programari no fan i no poden exercitar cap control 
-sobre el contingut de la informació intercanviada usant aquest programari. 
-Els autors no donen garanties de cap classe, tant si està expressat o 
-implicat, pel servei que aquest programari estigui proporcionant o per les 
-dades intercanviades amb l'ajuda d'aquest. Els autors no poden ser jutjats 
-responsables de cap demanda resultat de la conducta i/o de l'ús del 
-programari per part de l'usuari que sigui d'alguna forma il·legal o que 
-perjudiqui a tal usuari o a qualsevol altra part.&lt;/p></translation>
+      <translation>contrapartida</translation>
     </message>
     <message>
       <source>idcanal</source>
@@ -2878,7 +2324,7 @@ perjudiqui a tal usuari o a qualsevol altra part.&lt;/p></translation>
     </message>
     <message>
       <source>Canal</source>
-      <translation type="unfinished" >Canal</translation>
+      <translation>Canal</translation>
     </message>
     <message>
       <source>marcaconciliacion</source>
@@ -2898,91 +2344,50 @@ perjudiqui a tal usuari o a qualsevol altra part.&lt;/p></translation>
     </message>
     <message>
       <source>Asiento</source>
-      <translation type="unfinished" >&lt;p>...el Kile ara conté moltes eines d'edició per ajudar-vos a escriure en 
-LaTeX més fàcilment? Feu una ullada  als menús &lt;b>Autocompletat, Selecciona, 
-Esborra., Entorn, i Grup TeX&lt;/b> del menú Edita.&lt;/p>\n</translation>
+      <translation>Assentament</translation>
     </message>
     <message>
       <source>Saldo</source>
-      <translation type="unfinished" >Especifiqueu aquí les adreces per a aquesta classe d'usuari;\n
-es poden englobar:\n
-* = qualsevol adreça\n
-*.dominilocal.com = qualsevol adreça al dominilocal.com\n
-127.0.0.* = IP 127.0.0.1-127.0.0.255\n
-...</translation>
+      <translation>Saldo</translation>
     </message>
     <message>
       <source>Comentario</source>
-      <translation type="unfinished" >Comment=Algú ha iniciat un xat DCC amb vostè</translation>
+      <translation>Comentari</translation>
     </message>
     <message>
       <source>Orden</source>
-      <translation type="unfinished" >Marc:</translation>
+      <translation>Ordre</translation>
     </message>
     <message>
       <source>Descripcion</source>
-      <translation type="unfinished" >descripció,</translation>
+      <translation>Descripció</translation>
     </message>
   </context>
   <context>
     <name>FPagoBase</name>
     <message>
       <source>Plazo del primer recibo (dias):</source>
-      <translation type="unfinished" > Esborra </translation>
+      <translation>Plaç del primer rebut (dies):</translation>
     </message>
     <message>
       <source>Formas de pago</source>
-      <translation type="unfinished" >&lt;p>&lt;b>EPS&lt;/b>: el format de fitxer d'imatge \&quot;Adobe Encapsulated PostScript
-\&quot; és un programa de llenguatge PostScript que descriu l'aparença d'una 
-pàgina normal. Habitualment, el propòsit del fitxer EPS és encastar-se dins 
-una altra descripció de pàgina en llenguatge PostScript.</translation>
+      <translation>Formes de pagament</translation>
     </message>
     <message>
       <source>Nueva forma de pago</source>
-      <translation type="unfinished" >&lt;p>&lt;b>EPS&lt;/b>: el format de fitxer d'imatge \&quot;Adobe Encapsulated PostScript
-\&quot; és un programa de llenguatge PostScript que descriu l'aparença d'una 
-pàgina normal. Habitualment, el propòsit del fitxer EPS és encastar-se dins 
-una altra descripció de pàgina en llenguatge PostScript.</translation>
+      <translation>Nova forma de pagament</translation>
     </message>
     <message>
       <source>Borrar forma de pago</source>
-      <translation type="unfinished" >&lt;p>La codificació de les mostres és lineal amb signe (en complement a 2), 
-lineal sense signe, u-law (logarítmica), A-law (logarítmica), ADPCM, 
-IMA_ADPCM, GSM, o punt flotant.&lt;/p>\n
-&lt;p>&lt;b>U-law&lt;/b> (abreviatura de mu-law) i &lt;b>A-law&lt;/b> són els estàndards 
-nordamericà i internacional per a la compressió logarítmica del so 
-telefònic. Quan es descomprimeix, u-law té aproximadament la precisió de 
-l'àudio PCM de 14 bits i el A-law té una precisió aproximada a la de l'àudio 
-PCM de 13 bits. Les dades A-law i u-law a vegades es codifiquen fent servir 
-un ordre de bits invertir (p.ex. MSB es converteix en LSB).&lt;br> &lt;b>ADPCM &lt;/
-b> és una forma de compressió de so  que té una bona relació entre bona 
-qualitat de so i una codificació i decodificació ràpides. Es fa servir per a 
-la compressió de so telefònic i en llocs on la plena fidelitat no és 
-important. Quan es descomprimeix té aproximadament la precisió de l'àudio 
-PCM de 16 bits. Algunes versions populars de l'ADPCM són G.726, MS ADPCM, i 
-IMA ADPCM. Té diferents significats en diferents formats de fitxer. En 
-fitxers .wav representa fitxers MS ADPCM, en tots els altres significa G.726 
-ADPCM.&lt;br> &lt;b>IMA ADPCM&lt;/b> és una forma específica de compressió ADPCM, 
-lleugerament simple i amb una mica menys de fidelitat que la versió ADPCM de 
-Microsoft. IMA ADPCM també s'anomena DVI ADPCM.&lt;br> &lt;b>GSM&lt;/b> és un 
-estàndard emprat per a la compressió de so telefònic en països europeus i 
-està guanyant popularitat degut a la seva bona qualitat. Treballar amb dades 
-d'àudio GSM acostuma a consumir molta CPU.&lt;/p> &lt;p>&lt;em>Descripció basada en 
-la pàgina del manual de SoX&lt;/em>&lt;/p></translation>
+      <translation>Esborra forma de pagament</translation>
     </message>
     <message>
       <source>Guardar forma de pago</source>
-      <translation type="unfinished" >&lt;p>&lt;b>EPS&lt;/b>: el format de fitxer d'imatge \&quot;Adobe Encapsulated PostScript
-\&quot; és un programa de llenguatge PostScript que descriu l'aparença d'una 
-pàgina normal. Habitualment, el propòsit del fitxer EPS és encastar-se dins 
-una altra descripció de pàgina en llenguatge PostScript.</translation>
+      <translation>Desa forma de pagament</translation>
     </message>
     <message>
       <source>Forma de pago:</source>
-      <translation type="unfinished" >&lt;p>&lt;b>EPS&lt;/b>: el format de fitxer d'imatge \&quot;Adobe Encapsulated PostScript
-\&quot; és un programa de llenguatge PostScript que descriu l'aparença d'una 
-pàgina normal. Habitualment, el propòsit del fitxer EPS és encastar-se dins 
-una altra descripció de pàgina en llenguatge PostScript.</translation>
+      <translation>Forma de pagament:</translation>
     </message>
     <message>
       <source>Datos:</source>
@@ -2990,10 +2395,7 @@ una altra descripció de pàgina en llenguatge PostScript.</translation>
     </message>
     <message>
       <source>Nombre de la forma de pago:</source>
-      <translation type="unfinished" >&lt;p>&lt;b>EPS&lt;/b>: el format de fitxer d'imatge \&quot;Adobe Encapsulated PostScript
-\&quot; és un programa de llenguatge PostScript que descriu l'aparença d'una 
-pàgina normal. Habitualment, el propòsit del fitxer EPS és encastar-se dins 
-una altra descripció de pàgina en llenguatge PostScript.</translation>
+      <translation>Nom de la forma de pagament:</translation>
     </message>
     <message>
       <source>Numero de plazos:</source>
@@ -3016,38 +2418,26 @@ una altra descripció de pàgina en llenguatge PostScript.</translation>
     <name>ListConfiguracionSubForm</name>
     <message>
       <source>Nombre</source>
-      <translation type="unfinished" >Nom</translation>
+      <translation>Nom</translation>
     </message>
     <message>
       <source>Valor</source>
-      <translation type="unfinished" >Configurador de colors, diàleg de ressaltat</translation>
+      <translation>Valor</translation>
     </message>
   </context>
   <context>
     <name>ListCuentasBase</name>
     <message>
       <source>Ctrl+N</source>
-      <translation type="unfinished" >Ctrl+N</translation>
+      <translation>Ctrl+N</translation>
     </message>
     <message>
       <source>Editar cuenta</source>
-      <translation type="unfinished" >&lt;p>Un Sector de Punt d'Accés, APS, és un sector de vídeo MPEG en el VCD/SVCD 
-que és adequat per a ser-hi saltat directament.&lt;p>Els APS són necessaris 
-pels punts d'entrada i les taules d'exploració. APS ha de satisfer els 
-requisits per precedir tots els I-frames per una capçalera GOP, la qual al 
-seu torn ha de ser precedida per una capçalera de seqüència.&lt;p>Els codis 
-d'inici d'aquests 3 elements han d'estar tots en el mateix sector/paquet 
-MPEG, per així formar el que s'anomena un sector de punt d'accés.&lt;p>Aquest 
-requeriment es pot relaxar habilitant l'opció d'APS relaxat, p.ex. tots els 
-sectors que continguin un I-frame seran considerats com un APS.&lt;p>&lt;b>Atenció:
-&lt;/b> la capçalera de seqüència és necessària per tal de que un dispositiu de 
-reproducció sàpiga els paràmetres de visualització, com ara la resolució i 
-la taxa de fotogrames; relaxar el requeriment d'APS pot provocar punts 
-d'entrada no vàlids.</translation>
+      <translation>Editar compte</translation>
     </message>
     <message>
       <source>Ctrl+D</source>
-      <translation type="unfinished" >Ctrl+C</translation>
+      <translation>Ctrl+D</translation>
     </message>
     <message>
       <source>S&amp;ubcuentas</source>
@@ -3055,9 +2445,7 @@ d'entrada no vàlids.</translation>
     </message>
     <message>
       <source>Plan de cuentas</source>
-      <translation type="unfinished" >NOTA: Alguns bons nodes DHT coneguts ja s'han inserit. Però probablement 
-també voldreu inserir les vostres adreces IP i ports si preveieu sembrar 
-aquest torrent.</translation>
+      <translation>Pla de comptes</translation>
     </message>
     <message>
       <source>Nueva cuenta</source>
@@ -3065,7 +2453,7 @@ aquest torrent.</translation>
     </message>
     <message>
       <source>Ctrl+E</source>
-      <translation type="unfinished" >Ctrl+C</translation>
+      <translation>Ctrl+E</translation>
     </message>
     <message>
       <source>Borrar cuenta</source>
@@ -3073,54 +2461,27 @@ aquest torrent.</translation>
     </message>
     <message>
       <source>Imprimir cuentas</source>
-      <translation type="unfinished" />
+      <translation>Imprimeix comptes</translation>
     </message>
     <message>
       <source>Ctrl+P</source>
-      <translation type="unfinished" >Ctrl+P</translation>
+      <translation>Ctrl+P</translation>
     </message>
     <message>
       <source>Exportar cuentas</source>
-      <translation type="unfinished" >&lt;h2>K3bSetup 2&lt;/h2>&lt;p>Aquest senzill assistent de configuració es capaç 
-d'establir els permisos necessaris per tal de poder gravar CDs i DVDs amb el 
-K3b.&lt;p>No té en compte coses com «devfs» o «resmgr». En la majoria de casos 
-això no suposa cap problema, però en alguns sistemes els permisos podrien 
-ser alterats la propera vegada que entreu al vostre compte o reinicieu 
-l'ordinador. En aquests casos el millor és consultar la documentació de la 
-distribució. &lt;p>La important tasca que realitza el K3bSetup 2 és concedir 
-permís d'escriptura als dispositius de CD i DVD.&lt;p>&lt;b>Precaució:&lt;/b> encara 
-que el K3bSetup 2 no hauria de ser capaç d'espatllar el vostre sistema, no 
-es pot garantir res.</translation>
+      <translation>Exporta comptes</translation>
     </message>
     <message>
       <source>Importar cuentas</source>
-      <translation type="unfinished" >&lt;h2>K3bSetup 2&lt;/h2>&lt;p>Aquest senzill assistent de configuració es capaç 
-d'establir els permisos necessaris per tal de poder gravar CDs i DVDs amb el 
-K3b.&lt;p>No té en compte coses com «devfs» o «resmgr». En la majoria de casos 
-això no suposa cap problema, però en alguns sistemes els permisos podrien 
-ser alterats la propera vegada que entreu al vostre compte o reinicieu 
-l'ordinador. En aquests casos el millor és consultar la documentació de la 
-distribució. &lt;p>La important tasca que realitza el K3bSetup 2 és concedir 
-permís d'escriptura als dispositius de CD i DVD.&lt;p>&lt;b>Precaució:&lt;/b> encara 
-que el K3bSetup 2 no hauria de ser capaç d'espatllar el vostre sistema, no 
-es pot garantir res.</translation>
+      <translation>Importa comptes</translation>
     </message>
     <message>
       <source>Actualizar listado</source>
-      <translation type="unfinished" >&lt;h1>Descarrega MLDonkey&lt;/h1>&lt;p>El primer que s'ha de fer és obtenir una base 
-de MLDonkey. Aquesta és l'eina que s'encarrega de compartir fitxers per a la 
-qual KMLDonkey actua com a interfície.&lt;/p>&lt;p>Visiteu un dels llocs web 
-llistats a sota (feu clic a sobre dels enllaços), i descarregueu un paquet 
-binari que sigui apropiat per al vostre sistema; alternativament, si el 
-vostre sistema de gestió de paquets subministra un paquet per a MLDonkey, el 
-podeu instal·lar, i verifiqueu que el binari  \&quot;mlnet\&quot; està instal·lat 
-(normalment en &lt;em>/usr/bin&lt;/em>).&lt;/p>&lt;ul>%1&lt;/ul>&lt;p>Extraieu el paquet en 
-algun lloc convenient, i premeu \&quot;Següent\&quot;. No us preocupeu de configurar o 
-iniciar la base quan l'hageu descarregat; ho farem més endavant.&lt;/p></translation>
+      <translation>Actual·litza llistat</translation>
     </message>
     <message>
       <source>F5</source>
-      <translation type="unfinished" >F5</translation>
+      <translation>F5</translation>
     </message>
     <message>
       <source>Búsqueda:</source>
@@ -3128,92 +2489,58 @@ iniciar la base quan l'hageu descarregat; ho farem més endavant.&lt;/p></transl
     </message>
     <message>
       <source>Plan &amp;contable</source>
-      <translation type="unfinished" >Més d'una taula o àlies \&quot;%1\&quot; definits contenen el camp \&quot;%2\&quot;</translation>
+      <translation>Pla &amp;comptable</translation>
     </message>
   </context>
   <context>
     <name>ListLinAsiento1View</name>
     <message>
       <source>Fecha</source>
-      <translation type="unfinished" >Data</translation>
+      <translation>Data</translation>
     </message>
     <message>
       <source>Concepto contable</source>
-      <translation type="unfinished" >No s'ha trobat la taula que conté el camp \&quot;%1\&quot;</translation>
+      <translation>Concepte comptable</translation>
     </message>
     <message>
       <source>Id cuenta</source>
-      <translation type="unfinished" >programador principal i mantenidor actual</translation>
+      <translation>Id compte</translation>
     </message>
     <message>
       <source>Codigo</source>
-      <translation type="unfinished" >codi</translation>
+      <translation>Codi</translation>
     </message>
     <message>
       <source>Tipo de cuenta</source>
-      <translation type="unfinished" >&lt;p>Un Sector de Punt d'Accés, APS, és un sector de vídeo MPEG en el VCD/SVCD 
-que és adequat per a ser-hi saltat directament.&lt;p>Els APS són necessaris 
-pels punts d'entrada i les taules d'exploració. APS ha de satisfer els 
-requisits per precedir tots els I-frames per una capçalera GOP, la qual al 
-seu torn ha de ser precedida per una capçalera de seqüència.&lt;p>Els codis 
-d'inici d'aquests 3 elements han d'estar tots en el mateix sector/paquet 
-MPEG, per així formar el que s'anomena un sector de punt d'accés.&lt;p>Aquest 
-requeriment es pot relaxar habilitant l'opció d'APS relaxat, p.ex. tots els 
-sectors que continguin un I-frame seran considerats com un APS.&lt;p>&lt;b>Atenció:
-&lt;/b> la capçalera de seqüència és necessària per tal de que un dispositiu de 
-reproducció sàpiga els paràmetres de visualització, com ara la resolució i 
-la taxa de fotogrames; relaxar el requeriment d'APS pot provocar punts 
-d'entrada no vàlids.</translation>
+      <translation>Tipus de compte</translation>
     </message>
     <message>
       <source>Descripcion de la cuenta</source>
-      <translation type="unfinished" >&lt;p>La codificació de les mostres és lineal amb signe (en complement a 2), 
-lineal sense signe, u-law (logarítmica), A-law (logarítmica), ADPCM, 
-IMA_ADPCM, GSM, o punt flotant.&lt;/p>\n
-&lt;p>&lt;b>U-law&lt;/b> (abreviatura de mu-law) i &lt;b>A-law&lt;/b> són els estàndards 
-nordamericà i internacional per a la compressió logarítmica del so 
-telefònic. Quan es descomprimeix, u-law té aproximadament la precisió de 
-l'àudio PCM de 14 bits i el A-law té una precisió aproximada a la de l'àudio 
-PCM de 13 bits. Les dades A-law i u-law a vegades es codifiquen fent servir 
-un ordre de bits invertir (p.ex. MSB es converteix en LSB).&lt;br> &lt;b>ADPCM &lt;/
-b> és una forma de compressió de so  que té una bona relació entre bona 
-qualitat de so i una codificació i decodificació ràpides. Es fa servir per a 
-la compressió de so telefònic i en llocs on la plena fidelitat no és 
-important. Quan es descomprimeix té aproximadament la precisió de l'àudio 
-PCM de 16 bits. Algunes versions populars de l'ADPCM són G.726, MS ADPCM, i 
-IMA ADPCM. Té diferents significats en diferents formats de fitxer. En 
-fitxers .wav representa fitxers MS ADPCM, en tots els altres significa G.726 
-ADPCM.&lt;br> &lt;b>IMA ADPCM&lt;/b> és una forma específica de compressió ADPCM, 
-lleugerament simple i amb una mica menys de fidelitat que la versió ADPCM de 
-Microsoft. IMA ADPCM també s'anomena DVI ADPCM.&lt;br> &lt;b>GSM&lt;/b> és un 
-estàndard emprat per a la compressió de so telefònic en països europeus i 
-està guanyant popularitat degut a la seva bona qualitat. Treballar amb dades 
-d'àudio GSM acostuma a consumir molta CPU.&lt;/p> &lt;p>&lt;em>Descripció basada en 
-la pàgina del manual de SoX&lt;/em>&lt;/p></translation>
+      <translation>Descripció del compte</translation>
     </message>
     <message>
       <source>Descripcion</source>
-      <translation type="unfinished" >descripció</translation>
+      <translation>Descripció</translation>
     </message>
     <message>
       <source>Debe</source>
-      <translation type="unfinished" />
+      <translation>Deure</translation>
     </message>
     <message>
       <source>Haber</source>
-      <translation type="unfinished" >Haber</translation>
+      <translation>Haver</translation>
     </message>
     <message>
       <source>Contrapartida</source>
-      <translation type="unfinished" >Contrapartida</translation>
+      <translation>Contrapartida</translation>
     </message>
     <message>
       <source>Comentario</source>
-      <translation type="unfinished" >Comment=Algú ha iniciat un xat DCC amb vostè</translation>
+      <translation>Comentari</translation>
     </message>
     <message>
       <source>ID Canal</source>
-      <translation type="unfinished" >Identificador de l'analitzador visual a mostrar.</translation>
+      <translation>ID Canal</translation>
     </message>
     <message>
       <source>Conciliacion</source>
@@ -3221,88 +2548,35 @@ la pàgina del manual de SoX&lt;/em>&lt;/p></translation>
     </message>
     <message>
       <source>Id centro de coste</source>
-      <translation type="unfinished" >Especifica a quina màquina enviar les URL. &lt;hostid> és el nom de la màquina 
-tal i com està definida al Centre de control del KDE.</translation>
+      <translation>Id centre de cost</translation>
     </message>
     <message>
       <source>Id apunte</source>
-      <translation type="unfinished" >ID de l'aplicació ISO per a VideoCD</translation>
+      <translation>Id apunt</translation>
     </message>
     <message>
       <source>Id tipo de IVA</source>
-      <translation type="unfinished" >No s'ha especificat cap identificador de volum. Es farà servir 
-l'identificador per omissió.</translation>
+      <translation>Id tipus d'IVA</translation>
     </message>
     <message>
       <source>Orden</source>
-      <translation type="unfinished" >ordre</translation>
+      <translation>Ordre</translation>
     </message>
     <message>
       <source>Id borrador</source>
-      <translation type="unfinished" >ID de l'aplicació ISO per a VideoCD</translation>
+      <translation>Id esborrany</translation>
     </message>
     <message>
       <source>Id asiento</source>
-      <translation type="unfinished" >ID de l'aplicació ISO per a VideoCD</translation>
+      <translation>Id assentament</translation>
     </message>
     <message>
       <source>Borrar registro</source>
-      <translation type="unfinished" >&lt;h2>AVÍS&lt;/h2>\n
-&lt;p>Les xarxes punt-a-punt, particularment les que són accessibles mitjançant 
-KMLDonkey, poden contenir material el qual estigui legalment prohibit 
-descarregar o redistribuir. És responsabilitat vostra el verificar que 
-qualsevol material que descarregueu de qualsevol xarxa punt-a-punt s'està 
-posant a la vostra disposició legalment. És també la vostra responsabilitat 
-el verificar que disposeu dels drets legals de redistribuir qualsevol 
-material que poseu a disposició d'altres mitjançant qualsevol xarxa punt-a-
-punt. En resum, és responsabilitat personal el verificar que useu aquest 
-programari en conformitat amb el copyright i demés lleis de propietat 
-intel·lectual aplicables.&lt;/p>\n
-&lt;h3>RESTRICCIONS&lt;/h3>\n
-&lt;p>Els autors d'aquest programari pensen que s'usarà per a l'intercanvi 
-legal de dades, art, programari i d'altres documents o treballs que sí es 
-poden distribuir legalment a tercers. Els autors no recolzaran i 
-descoratjaran qualsevol ús d'aquest programari que pugui violar el copyright 
-o d'altres lleis de propietat intel·lectual. En particular, els autors 
-descoratgen qualsevol transmissió de qualsevol material en violació de 
-qualsevol llei i regulació aplicable sobre la propietat intel·lectual. 
-Assumeixen que cada usuari es comportarà d'acord amb les regles i les 
-restriccions aplicables, així com amb les regles i les restriccions 
-aplicables a les xarxes o als serveis de P2P connectats directament o 
-indirectament amb aquest programari.&lt;/p>\n
-&lt;h3>RENÚNCIA DE RESPONSABILITAT&lt;/h3>\n
-&lt;p>Els autors d'aquest programari no fan i no poden exercitar cap control 
-sobre el contingut de la informació intercanviada usant aquest programari. 
-Els autors no donen garanties de cap classe, tant si està expressat o 
-implicat, pel servei que aquest programari estigui proporcionant o per les 
-dades intercanviades amb l'ajuda d'aquest. Els autors no poden ser jutjats 
-responsables de cap demanda resultat de la conducta i/o de l'ús del 
-programari per part de l'usuari que sigui d'alguna forma il·legal o que 
-perjudiqui a tal usuari o a qualsevol altra part.&lt;/p></translation>
+      <translation>Esborra registre</translation>
     </message>
     <message>
       <source>Ajustar columa</source>
-      <translation type="unfinished" >&lt;p>Seleccioneu aquí el tipus de millora de color per les imatges:
-&lt;p>&lt;b>Redueix el contrast&lt;/b>: redueix el contras de la imatge. L'algorisme 
-redueix la diferència d'intensitat entre els elements més clars i més foscos 
-de la imatge.&lt;p>&lt;b>Profunditat&lt;/b>: canvia la profunditat de color de la 
-imatge.&lt;p>&lt;b>Equalitza&lt;/b>: executa l'equalització de l'histograma de la 
-imatge.&lt;p>&lt;b>Desdibuixa&lt;/b>: barreja els colors a una distància, considerant 
-que són iguals.&lt;p>&lt;b>Escala de grisos&lt;/b>: converteix les imatges en color a 
-imatges en escala de grisos.&lt;p>&lt;b>Augmenta el contrast&lt;/b>: millora el 
-contrast de la imatge. L'algorisme augmenta les diferències d'intensitat 
-entre els elements més clars i més foscos de la imatge.&lt;p>&lt;b>Monocrom&lt;/b>: 
-transforma la imatge a blanc i negre.&lt;p>&lt;b>Negatiu&lt;/b>: substitueix cada 
-píxel pel seu color complementari. Les tonalitats vermella, verda i blava 
-d'una imatge es negativen. El blanc esdevé negre, el groc esdevé blau, etc.
-&lt;p>&lt;b>Normalitza&lt;/b>: transforma la imatge per expandir l'interval sencer 
-dels valors de color. És una tècnica per augmentar l contrast. L'algorisme 
-augmenta el contrast d'una imatge de color ajustant el color dels píxels per 
-abraçar tot l'interval de colors disponible.&lt;p>&lt;b>Segmenta&lt;/b>: segmenta una 
-imatge analitzant l'histograma dels components de color i identificant les 
-unitats homogènies amb la tècnica de desdibuixat de mitjanes \&quot;c\&quot;.
-&lt;p>&lt;b>Retalla&lt;/b>: retallat una imatge (tècnica inversa al desdibuixat). 
-L'algorisme elimina els límits que són el color de fons de la imatge.&lt;p></translation>
+      <translation>Ajusta columna</translation>
     </message>
     <message>
       <source>Ajustar altura</source>
@@ -3310,226 +2584,90 @@ L'algorisme elimina els límits que són el color de fons de la imatge.&lt;p></t
     </message>
     <message>
       <source>Ajustar columnas</source>
-      <translation type="unfinished" >L'entorn de tabulació proporciona una manera d'alinear text en columnes.\n
-\\begin{tabbing}\n
-text \\= més text \\= encara més text \\= últim text \\\\\n
-segona fila \\>  \\> més \\\\\n
-\\end{tabbing}\n
-Comandes :\n
-\\=  Situa una tabulació a la posició actual.\n
-\\>  Avança a la següent tabulació.\n
-\\&lt;  Us permet posar alguna cosa a l'esquerra del marge local sense canviar 
-el marge. Només es pot fer servir a l'inici de la línia.\n
-\\+  Mou el marge esquerre de la següent i de totes les comandes següents 
-una tabulació cap a la dreta\n
-\\-  Mou el marge esquerre de la següent i de totes les comandes següents 
-una tabulació cap a l'esquerra\n
-\\'  Mou qualsevol cosa que hàgiu escrit a la columna actual cap a la dreta 
-de la columna anterior, alineat al tabulador de la columna actual. \n
-\\`  Us permet posar text alineat a la dreta de qualsevol tabulació, inclosa 
-la tabulació 0\n
-\\kill  Situa tabulacions sense produir text.\n
-\\a  En un entorn de tabulació, les comandes \\=, \\' i \\` no produeixen 
-accents de manera normal. En comptes d'aquestes, es fan servir les comandes 
-\\a=, \\a' i \\a`.</translation>
+      <translation>Ajusta columnes</translation>
     </message>
     <message>
       <source>Ajustar alturas</source>
-      <translation type="unfinished" >&lt;p>&lt;b>Límit&lt;/b>: aquest valor defineix la distància en pixels en la que el 
-filtre cerca límits. Quan aquest valor s'incrementa, el soroll de pics se 
-suprimeix. Eventualment, podeu reajustar el filtre &lt;b>Límit&lt;/b> quan canvieu 
-aquest paràmetre. Quan aquest valor és massa alt, el filtre adaptatiu no pot 
-seguir els detalls de la imatge amb cura, i pot reaparèixer soroll o es pot 
-produir un desenfocament.</translation>
+      <translation>Ajusta alçades</translation>
     </message>
     <message>
       <source>Ver configurador de subformulario</source>
-      <translation type="unfinished" >&lt;p>...el K3b té dos tipus d'arranjament. D'una banda el K3b té l'arranjament 
-com la majoria\n
-d'aplicacions del KDE tenen accessible mitjançant d'un diàleg de 
-configuració a través del menú d'arranjament;\n
-d'altra banda, cada diàleg d'acció del K3b té tres botons per carregar i 
-desar arranjaments per omissió\n
-per a l'acció. D'aquesta manera un pot, per exemple, establir la 
-configuració per omissió a l'hora de copiar CD: aquestes opcions per 
-omissió\n
-Seran carregades cada vegada que s'obri el diàleg de còpia de CD. El botó 
-&lt;em>Arranjament per omissió del K3b&lt;/em>\n
-restablirà la configuració &lt;em>de fàbrica&lt;/em> en cas de que no sapigueu si 
-la configuració que heu triat\n
-és apropiada.&lt;/p>\n</translation>
+      <translation>Veure el configurador de subformulari</translation>
     </message>
     <message>
       <source>Mostrar asiento</source>
-      <translation type="unfinished" >&lt;p>Aquesta és l'especificació &lt;b>Video CD&lt;/b> més bàsica que data de l'any 
-1993, la qual té les següents característiques:&lt;ul>&lt;li>Un forma de mode 2 
-mixt d'una pista ISO-9660 que conté punters de fitxers a les àrees 
-d'informació.&lt;/li>&lt;li>Més de 98 seqüències multiplexades d'àudio/vídeo MPEG-
-1 o de pistes CD-DA d'àudio.&lt;/li>&lt;li>Més de 500 punts inicials de seqüències 
-MPEG emprats com a divisions de capítol.&lt;/li>&lt;/ul>&lt;p>L'especificació Video 
-CD requereix que una seqüència MPEG-1 multiplexada tingui un CBR inferior a 
-174300 bytes (1394400 bits) per segon per a poder acomodar les unitats de CD-
-ROM de velocitat simple. &lt;br>L'especificació permet les dues següents 
-resolucions:&lt;ul>&lt;li>352 x 240 @ 29.97 Hz (NTSC SIF).&lt;/li>&lt;li>352 x 240 @ 
-23.976 Hz (FILM SIF).&lt;/li>&lt;/ul>&lt;p>La seqüència d'àudio MPEG-1 en CBR a 
-nivell II està fixada a 224 kbps amb 1 canal estèreo o 2 mono.&lt;p>&lt;b>Es 
-recomana mantenir la taxa de bits del vídeo per sota dels 1151929.1 bps.&lt;/b></translation>
+      <translation>Mostrar assentament</translation>
     </message>
     <message>
       <source>Mostrar extracto (dia)</source>
-      <translation type="unfinished" >&lt;p>El fitxer que heu seleccionat no és una imatge de disquet (les imatges de 
-disquet tenen una mida de 1200 KB, 1440 KB, o 2880 KB). De totes maneres, 
-podeu fer servir imatges d'arrencada d'altres mides emulant un disc dur o 
-deshabilitant l'emulació completament. &lt;p>Si no esteu familiaritzat amb 
-termes com 'emulació de disc dur' segurament que aquí voldreu fer servir una 
-imatge de disquet. Les imatges de disquet es poden crear extraient-les 
-directament des d'un disquet de veritat: &lt;pre>dd if=/dev/floppy of=/tmp/
-floppy.img&lt;/pre> o bé fent servir un dels molts generadors de disquets 
-d'arrencada que es poden trobar a &lt;a href=\&quot;http://www.google.com/search?
-q=linux+boot+floppy&amp;ie=UTF-8&amp;oe=UTF-8\&quot;>Internet&lt;/a>.</translation>
+      <translation>Mostra l'extracte (dia)</translation>
     </message>
     <message>
       <source>Mostrar extracto (mes)</source>
-      <translation type="unfinished" >&lt;html>&lt;head>&lt;meta name=\&quot;qrichtext\&quot; content=\&quot;1\&quot; />&lt;/head>&lt;body style=
-\&quot;font-size:12pt;font-family:helvetica\&quot;>\n
-&lt;p> &lt;span style=\&quot;font-weight:600\&quot;>Aquest assistent mirarà de facilitar-vos 
-en la mesura del possible la configuració d'un tallafocs iptables força 
-segur per al seu ús a casa i l'oficina.&lt;/span>&lt;/p>\n
-0&lt;p> KMyFirewall configurarà un tallafocs iptables que tindrà com a regla 
-principal el \&quot;No deixar passar a ningú que no tingui res a veure amb el que 
-faig\&quot;. Actualment quan arriba un nou paquet al vostre sistema, el nucli 
-tindrà que comprovar les seves capçaleres per a determinar si dit paquet és 
-una resposta a un paquet enviat prèviament, o si es tracta d'una altra 
-màquina que està intentant connectar amb la vostra.&lt;/p>\n
-&lt;p>A més podreu establir un conjunt de regles que restringeixin l'accés a 
-Internet. Això pot ser útil si a la vostra oficina no voleu que la gent 
-empri determinats serveis sense autorització (p.ex. els Xats). La majori­a 
-dels serveis comuns d'Internet es poden activar amb un sol clic. Alguns 
-altres haureu d'especificar-los mitjançant el número de porto que usen per a 
-permetren l'accés.&lt;/p>\n
-&lt;p> Per a les màquines que també proveeixen serveis, p.ex. un servidor web 
-(Apache), també haureu d'activar dits serveis a la pestanya \&quot;Connexions 
-entrants\&quot;, atès que per omissió no es permet l'accés a ningú.&lt;/p>\n
-&lt;p>&lt;span style=\&quot;font-weight:600\&quot;>El joc de regles generat per aquest 
-assistent només està basat en les cadenes INPUT i OUTPUT de la taula \&quot;filter
-\&quot;, de manera que el reenviament restarà desactivat (per a més detalls 
-consulteu: man iptables). La part principal del filtrat es realitza a través 
-del mòdul de seguiment de la connexió, de manera que necessitareu tenir 
-carregats els mòduls \&quot;ip_conntrack\&quot; i \&quot;ipt_state\&quot; o bé compilats a dins 
-del nucli.&lt;/span>&lt;/p>\n
-&lt;p>Si esteu pensant en muntar un encaminador (router), haureu d'emprar la 
-interfície avançada per a configurar un tallafocs que també empri la 
-funcionalitat d'encaminament del nucli. Per a configurar un encaminador, feu 
-clic a \&quot;Cancel·la\&quot; i seleccioneu \&quot;Arranjament -&amp;gt; Configura KMyFirewall
-\&quot; per iniciar la configuració del joc de regles.&lt;/p>\n
-&lt;p>Per a configurar un tallafocs simple que protegeixi acuradament a una 
-estació de treball normaleta, sobra amb que feu clic a \&quot;Següent &amp;gt;\&quot; cinc 
-vegades i després a \&quot;Finalitza\&quot;. Això instal·larà la configuració 
-predeterminada, la qual hauria de funcionar prou bé en una estació de 
-treball simple en la que no funcioni cap tipus de servei cap a l'exterior.&lt;/
-p>\n
-&lt;/body>&lt;/html>\n</translation>
+      <translation>Mostra l'extracte (mes)</translation>
     </message>
     <message>
       <source>Mostrar extracto (ano)</source>
-      <translation type="unfinished" >&lt;html>&lt;head>&lt;meta name=\&quot;qrichtext\&quot; content=\&quot;1\&quot; />&lt;/head>&lt;body style=
-\&quot;font-size:12pt;font-family:helvetica\&quot;>\n
-&lt;p> &lt;span style=\&quot;font-weight:600\&quot;>Aquest assistent mirarà de facilitar-vos 
-en la mesura del possible la configuració d'un tallafocs iptables força 
-segur per al seu ús a casa i l'oficina.&lt;/span>&lt;/p>\n
-0&lt;p> KMyFirewall configurarà un tallafocs iptables que tindrà com a regla 
-principal el \&quot;No deixar passar a ningú que no tingui res a veure amb el que 
-faig\&quot;. Actualment quan arriba un nou paquet al vostre sistema, el nucli 
-tindrà que comprovar les seves capçaleres per a determinar si dit paquet és 
-una resposta a un paquet enviat prèviament, o si es tracta d'una altra 
-màquina que està intentant connectar amb la vostra.&lt;/p>\n
-&lt;p>A més podreu establir un conjunt de regles que restringeixin l'accés a 
-Internet. Això pot ser útil si a la vostra oficina no voleu que la gent 
-empri determinats serveis sense autorització (p.ex. els Xats). La majori­a 
-dels serveis comuns d'Internet es poden activar amb un sol clic. Alguns 
-altres haureu d'especificar-los mitjançant el número de porto que usen per a 
-permetren l'accés.&lt;/p>\n
-&lt;p> Per a les màquines que també proveeixen serveis, p.ex. un servidor web 
-(Apache), també haureu d'activar dits serveis a la pestanya \&quot;Connexions 
-entrants\&quot;, atès que per omissió no es permet l'accés a ningú.&lt;/p>\n
-&lt;p>&lt;span style=\&quot;font-weight:600\&quot;>El joc de regles generat per aquest 
-assistent només està basat en les cadenes INPUT i OUTPUT de la taula \&quot;filter
-\&quot;, de manera que el reenviament restarà desactivat (per a més detalls 
-consulteu: man iptables). La part principal del filtrat es realitza a través 
-del mòdul de seguiment de la connexió, de manera que necessitareu tenir 
-carregats els mòduls \&quot;ip_conntrack\&quot; i \&quot;ipt_state\&quot; o bé compilats a dins 
-del nucli.&lt;/span>&lt;/p>\n
-&lt;p>Si esteu pensant en muntar un encaminador (router), haureu d'emprar la 
-interfície avançada per a configurar un tallafocs que també empri la 
-funcionalitat d'encaminament del nucli. Per a configurar un encaminador, feu 
-clic a \&quot;Cancel·la\&quot; i seleccioneu \&quot;Arranjament -&amp;gt; Configura KMyFirewall
-\&quot; per iniciar la configuració del joc de regles.&lt;/p>\n
-&lt;p>Per a configurar un tallafocs simple que protegeixi acuradament a una 
-estació de treball normaleta, sobra amb que feu clic a \&quot;Següent &amp;gt;\&quot; cinc 
-vegades i després a \&quot;Finalitza\&quot;. Això instal·larà la configuració 
-predeterminada, la qual hauria de funcionar prou bé en una estació de 
-treball simple en la que no funcioni cap tipus de servei cap a l'exterior.&lt;/
-p>\n
-&lt;/body>&lt;/html>\n</translation>
+      <translation>Mostra l'extracte (any)</translation>
     </message>
     <message>
       <source>Mostrar balance (dia)</source>
-      <translation type="unfinished" >Multiplicadors de balanç de color</translation>
+      <translation>Mostra balanç (dia)</translation>
     </message>
     <message>
       <source>Mostrar balance (mes)</source>
-      <translation type="unfinished" >Multiplicadors de balanç de color</translation>
+      <translation>Mostra el balanç (mes)</translation>
     </message>
     <message>
       <source>Mostrar balance (ano)</source>
-      <translation type="unfinished" >Multiplicadors de balanç de color</translation>
+      <translation>Mostra el balanç (any)</translation>
     </message>
     <message>
       <source>Mostrar balance jerarquico (dia)</source>
-      <translation type="unfinished" >Multiplicadors de balanç de color</translation>
+      <translation>Mostr el balanç jeràrquic (dia)</translation>
     </message>
     <message>
       <source>Mostrar balance jerarquico (mes)</source>
-      <translation type="unfinished" >Multiplicadors de balanç de color</translation>
+      <translation>Mostra el balanç jeràrquic (mes)</translation>
     </message>
     <message>
       <source>Mostrar balance jerarquico (ano)</source>
-      <translation type="unfinished" >Multiplicadors de balanç de color</translation>
+      <translation>Mostra el balanç jeràrquic (any)</translation>
     </message>
   </context>
   <context>
     <name>Listado347Base</name>
     <message>
       <source>Listado para el modelo 347</source>
-      <translation type="unfinished" >El Salvador</translation>
+      <translation>Llistat pel model 347</translation>
     </message>
     <message>
       <source>Imprimir</source>
-      <translation type="unfinished" >Imprimir</translation>
+      <translation>Imprimeix</translation>
     </message>
     <message>
       <source>Ctrl+P</source>
-      <translation type="unfinished" >Ctrl+P</translation>
+      <translation>Ctrl+P</translation>
     </message>
     <message>
       <source>Recalcular</source>
-      <translation type="unfinished" >S'està calculant...</translation>
+      <translation>Recalcular</translation>
     </message>
     <message>
       <source>F5</source>
-      <translation type="unfinished" >F5</translation>
+      <translation>F5</translation>
     </message>
     <message>
       <source>Ver filtro</source>
-      <translation type="unfinished" >Fitxer de filtres d'IP:</translation>
+      <translation>Veure filtre</translation>
     </message>
     <message>
       <source>Ctrl+F</source>
-      <translation type="unfinished" >Ctrl+F</translation>
+      <translation>Ctrl+F</translation>
     </message>
     <message>
       <source>Importe:</source>
-      <translation type="unfinished" >Importat</translation>
+      <translation>Import:</translation>
     </message>
     <message>
       <source>Fecha final:</source>
@@ -3541,103 +2679,96 @@ p>\n
     </message>
     <message>
       <source>Ventas</source>
-      <translation type="unfinished" >Comment=Encaixa les dades en caixes de mida determinada. Cada caixa conté la 
-mitjana del elements de cada caixa.</translation>
+      <translation>Vendes</translation>
     </message>
     <message>
       <source>Compras</source>
-      <translation type="unfinished" >Compres</translation>
+      <translation>Compres</translation>
     </message>
   </context>
   <context>
     <name>MPatrimonialBase</name>
     <message>
       <source>Masa Patrimonial</source>
-      <translation type="unfinished" >Massa Patrimonial</translation>
+      <translation>Massa Patrimonial</translation>
     </message>
     <message>
       <source>Aceptar</source>
-      <translation type="unfinished" >Acceptar</translation>
+      <translation>Accepta</translation>
     </message>
     <message>
       <source>Cancelar</source>
-      <translation type="unfinished" >cancel·lat</translation>
+      <translation>Cancel·la</translation>
     </message>
     <message>
       <source>General</source>
-      <translation type="unfinished" >General</translation>
+      <translation>General</translation>
     </message>
     <message>
       <source>Nombre</source>
-      <translation type="unfinished" >Nom</translation>
+      <translation>Nom</translation>
     </message>
     <message>
       <source>Cuenta</source>
-      <translation type="unfinished" >Conta</translation>
+      <translation>Compte</translation>
     </message>
     <message>
       <source>Agregar</source>
-      <translation type="unfinished" >Afegir</translation>
+      <translation>Afegir</translation>
     </message>
     <message>
       <source>Quitar</source>
-      <translation type="unfinished" >Llevar</translation>
+      <translation>Llevar</translation>
     </message>
     <message>
       <source>Suman</source>
-      <translation type="unfinished" >Sumen</translation>
+      <translation>Sumen</translation>
     </message>
     <message>
       <source>Restan</source>
-      <translation type="unfinished" >Resten</translation>
+      <translation>Resten</translation>
     </message>
     <message>
       <source>Comentarios</source>
-      <translation type="unfinished" >Comentaris</translation>
+      <translation>Comentaris</translation>
     </message>
   </context>
   <context>
     <name>MPatrimonialesBase</name>
     <message>
       <source>Masas Patrimoniales</source>
-      <translation type="unfinished" >Masses Patrimonials</translation>
+      <translation>Masses Patrimonials</translation>
     </message>
     <message>
       <source>&amp;Cancelar</source>
-      <translation type="unfinished" >cancel·lat</translation>
+      <translation>&amp;Cancel·la</translation>
     </message>
     <message>
       <source>Nuevo</source>
-      <translation type="unfinished" >Nou</translation>
+      <translation>Nou</translation>
     </message>
     <message>
       <source>Borrar</source>
-      <translation type="unfinished" >Borrar</translation>
+      <translation>Esborra</translation>
     </message>
     <message>
       <source>Editar</source>
-      <translation type="unfinished" >Editar</translation>
+      <translation>Edita</translation>
     </message>
     <message>
       <source>Balance</source>
-      <translation type="unfinished" >Balanç</translation>
+      <translation>Balanç</translation>
     </message>
   </context>
   <context>
     <name>Mod300ps</name>
     <message>
       <source>Creando formulario</source>
-      <translation type="unfinished" >&lt;p>&lt;b>Radi&lt;/b>: aquest control selecciona la mida de la finestra lliscant 
-usada pel filtre. Els valors grans no incrementen el temps necessari per 
-filtrar cada píxel de la imatge però pot causar un desenfocament. Aquesta 
-finestra es mou per sobre de la imatge, i el seu color se suavitza per 
-suprimir les imperfeccions. En qualsevol cas, ha de ser de la mateixa mida 
-que la granuralitat del soroll o una mica més gran. Si és més gran del que 
-sigui necessari, pot causar un desenfocament no desitjat.</translation>
+      <translation>Creant formulari</translation>
     </message>
     <message>
       <source>&amp;Cancelar</source>
-      <translation type="unfinished" >cancel·lat</translation>
+      <translation>&amp;Cancel·la</translation>
     </message>
   </context>
   <context>
@@ -3648,7 +2779,7 @@ sigui necessari, pot causar un desenfocament no desitjat.</translation>
     </message>
     <message>
       <source>Periodo a declarar</source>
-      <translation type="unfinished" >Si us plau, seleccioneu un dispositiu:</translation>
+      <translation>Període a declarar</translation>
     </message>
     <message>
       <source>Seleccione periodo de declaración</source>
@@ -3656,55 +2787,43 @@ sigui necessari, pot causar un desenfocament no desitjat.</translation>
     </message>
     <message>
       <source>1º trimestre</source>
-      <translation type="unfinished" >A més de la configuració per a Linux/Unix, el sistema de fitxers conté un 
-arbre Joliet que permet noms de fitxer llargs en aquells sistemes Windows 
-que no admetin les extensions Rock Ridge. Tingueu present que la longitud 
-del nom de fitxer està restringida a 103 caràcters.</translation>
+      <translation>1r trimestre</translation>
     </message>
     <message>
       <source>2º trimestre</source>
-      <translation type="unfinished" >A més de la configuració per a Linux/Unix, el sistema de fitxers conté un 
-arbre Joliet que permet noms de fitxer llargs en aquells sistemes Windows 
-que no admetin les extensions Rock Ridge. Tingueu present que la longitud 
-del nom de fitxer està restringida a 103 caràcters.</translation>
+      <translation>2n trimestre</translation>
     </message>
     <message>
       <source>3º trimestre</source>
-      <translation type="unfinished" >A més de la configuració per a Linux/Unix, el sistema de fitxers conté un 
-arbre Joliet que permet noms de fitxer llargs en aquells sistemes Windows 
-que no admetin les extensions Rock Ridge. Tingueu present que la longitud 
-del nom de fitxer està restringida a 103 caràcters.</translation>
+      <translation>3r trimestre</translation>
     </message>
     <message>
       <source>4º trimestre</source>
-      <translation type="unfinished" >A més de la configuració per a Linux/Unix, el sistema de fitxers conté un 
-arbre Joliet que permet noms de fitxer llargs en aquells sistemes Windows 
-que no admetin les extensions Rock Ridge. Tingueu present que la longitud 
-del nom de fitxer està restringida a 103 caràcters.</translation>
+      <translation>4t trimestre</translation>
     </message>
     <message>
       <source>Cuenta a devolver:</source>
-      <translation type="unfinished" >Si us plau, seleccioneu un dispositiu:</translation>
+      <translation>Compte a retornar:</translation>
     </message>
     <message>
       <source>0123456789</source>
-      <translation type="unfinished" >0123456789</translation>
+      <translation>0123456789</translation>
     </message>
     <message>
       <source>1234</source>
-      <translation type="unfinished" >1234</translation>
+      <translation>1234</translation>
     </message>
     <message>
       <source>12</source>
-      <translation type="unfinished" >12</translation>
+      <translation>12</translation>
     </message>
     <message>
       <source>Personalizada</source>
-      <translation type="unfinished" >Personal</translation>
+      <translation>Personalitzada</translation>
     </message>
     <message>
       <source>En el banco</source>
-      <translation type="unfinished" >El Salvador</translation>
+      <translation>En el banc</translation>
     </message>
     <message>
       <source>Generar borrador</source>
@@ -3712,61 +2831,36 @@ del nom de fitxer està restringida a 103 caràcters.</translation>
     </message>
     <message>
       <source>Vista Previa</source>
-      <translation type="unfinished" >&lt;p>Aquest botó construeix una vista prèvia del procés de la imatge 
-actualment seleccionada de la llista.</translation>
+      <translation>Vista Prèvia</translation>
     </message>
     <message>
       <source>Cancelar</source>
-      <translation type="unfinished" >cancel·lat</translation>
+      <translation>Cancel·la</translation>
     </message>
   </context>
   <context>
     <name>PropiedadesEmpresaBase</name>
     <message>
       <source>Propiedades de la empresa</source>
-      <translation type="unfinished" >&lt;p>La codificació de les mostres és lineal amb signe (en complement a 2), 
-lineal sense signe, u-law (logarítmica), A-law (logarítmica), ADPCM, 
-IMA_ADPCM, GSM, o punt flotant.&lt;/p>\n
-&lt;p>&lt;b>U-law&lt;/b> (abreviatura de mu-law) i &lt;b>A-law&lt;/b> són els estàndards 
-nordamericà i internacional per a la compressió logarítmica del so 
-telefònic. Quan es descomprimeix, u-law té aproximadament la precisió de 
-l'àudio PCM de 14 bits i el A-law té una precisió aproximada a la de l'àudio 
-PCM de 13 bits. Les dades A-law i u-law a vegades es codifiquen fent servir 
-un ordre de bits invertir (p.ex. MSB es converteix en LSB).&lt;br> &lt;b>ADPCM &lt;/
-b> és una forma de compressió de so  que té una bona relació entre bona 
-qualitat de so i una codificació i decodificació ràpides. Es fa servir per a 
-la compressió de so telefònic i en llocs on la plena fidelitat no és 
-important. Quan es descomprimeix té aproximadament la precisió de l'àudio 
-PCM de 16 bits. Algunes versions populars de l'ADPCM són G.726, MS ADPCM, i 
-IMA ADPCM. Té diferents significats en diferents formats de fitxer. En 
-fitxers .wav representa fitxers MS ADPCM, en tots els altres significa G.726 
-ADPCM.&lt;br> &lt;b>IMA ADPCM&lt;/b> és una forma específica de compressió ADPCM, 
-lleugerament simple i amb una mica menys de fidelitat que la versió ADPCM de 
-Microsoft. IMA ADPCM també s'anomena DVI ADPCM.&lt;br> &lt;b>GSM&lt;/b> és un 
-estàndard emprat per a la compressió de so telefònic en països europeus i 
-està guanyant popularitat degut a la seva bona qualitat. Treballar amb dades 
-d'àudio GSM acostuma a consumir molta CPU.&lt;/p> &lt;p>&lt;em>Descripció basada en 
-la pàgina del manual de SoX&lt;/em>&lt;/p></translation>
+      <translation>Propietats de l'empresa</translation>
     </message>
     <message>
       <source>xxxx --> Dígitos de plan contable.
 yyyy --> Dígitos de cuenta.</source>
-      <translation type="unfinished" >xxxx --> Dígits del pla contable.
-yyyy --> Dígits de la conta.</translation>
+      <translation>xxxx --> Dígits del pla comptable.
+yyyy --> Dígits del compte.</translation>
     </message>
     <message>
       <source>Modi&amp;ficar plan contable</source>
-      <translation type="unfinished" >NOTA: Alguns bons nodes DHT coneguts ja s'han inserit. Però probablement 
-també voldreu inserir les vostres adreces IP i ports si preveieu sembrar 
-aquest torrent.</translation>
+      <translation>Modi&amp;ficar el pla comptable</translation>
     </message>
     <message>
       <source>Guardar</source>
-      <translation type="unfinished" >Interval de vigilància:</translation>
+      <translation>Desa</translation>
     </message>
     <message>
       <source>Ctrl+S</source>
-      <translation type="unfinished" >Ctrl+S</translation>
+      <translation>Ctrl+S</translation>
     </message>
     <message>
       <source>Dí&amp;gitos de cuentas</source>
@@ -3774,25 +2868,15 @@ aquest torrent.</translation>
     </message>
     <message>
       <source>Modelo del código de cuenta:</source>
-      <translation type="unfinished" > Esborra </translation>
+      <translation>Model del codi del compte:</translation>
     </message>
     <message>
       <source>Dígitos estanda&amp;r</source>
-      <translation type="unfinished" >&lt;p>Per tal de permetre la reproducció dels VideoCD en un reproductor de CD-
-i, l'estàndard de VideoCD requereix que estigui present un programa 
-d'aplicació de CD-i.&lt;p>Aquest programa està dissenyat per:
-&lt;ul>&lt;li>proporcionar un complet control de la reproducció tal i com està 
-definit en el PSD de l'estàndard&lt;/li>&lt;li>ser extremadament simple de fer 
-servir i fàcil d'aprendre per a l'usuari final&lt;/li>&lt;/ul>&lt;p>El programa 
-s'executa en reproductors de CD-i equipats amb el sistema operatiu CDRTOS 1.1
-(.1) i un cartutx d'extensió de vídeo digital.</translation>
+      <translation>Dígits estànda&amp;rd </translation>
     </message>
     <message>
       <source>Propiedades generales</source>
-      <translation type="unfinished" >&lt;qt>&lt;p>La interfície IPTable es dirigeix a usuaris avançats que volen tenir 
-un complet control sobre les regles generades; així, la interfície IPTables 
-permet una visió gairebé 1-1 sobre la vostra configuració de iptables.&lt;/p>&lt;/
-qt></translation>
+      <translation>Propietats generals</translation>
     </message>
   </context>
   <context>
@@ -3803,11 +2887,7 @@ qt></translation>
     </message>
     <message>
       <source>Generar de todas formas</source>
-      <translation type="unfinished" >&lt;p>&lt;b>PPM&lt;/b>: el format de fitxer \&quot;Portable Pixel Map\&quot; s'empra com un 
-format intermedi per emmagatzemar informació del mapa de bits de colors. Els 
-fitxers PPM poden ser binaris o ASCII i emmagatzemen els valors dels píxels 
-amb una mida de fins a 24 bits. Aquest format genera els fitxers de text més 
-grans per codificar les imatges sense perdre qualitat.</translation>
+      <translation>Generar de totes formes</translation>
     </message>
     <message>
       <source>Volver</source>
@@ -3823,12 +2903,15 @@ no se corresponde con un CCC correcto.</source>
 Pruebe a descargarlo desde www.aeat.es y guaedelo en
 /usr/share/bulmages/formularios/ o en
 ~/.bulmages/formularios/.</source>
-      <translation type="unfinished" >&lt;p>Si habiliteu aquesta opció, veureu la imatge original quan el ratolí 
-passi sobre l'àrea de la imatge; en cas contrari, veureu la imatge final.</translation>
+      <translation>Em sap greu, no trobo el formulari original en pdf.
+Provi a descarregar-lo des de www.aeat.es i guardi'l en
+/usr/share/bulmages/formularios o a
+~/.bulmages/formularios/.
+</translation>
     </message>
     <message>
       <source>&amp;Aceptar</source>
-      <translation type="unfinished" >&amp;Accepta</translation>
+      <translation>&amp;Accepta</translation>
     </message>
     <message>
       <source>Se han espaciado los asientos</source>
@@ -3843,7 +2926,7 @@ passi sobre l'àrea de la imatge; en cas contrari, veureu la imatge final.</tran
     <name>RegIvaPrintBase</name>
     <message>
       <source>Impresión del Registro de IVA</source>
-      <translation type="unfinished" >Impresió del Registre d'IVA</translation>
+      <translation>Imprimeix el Registre d'IVA</translation>
     </message>
     <message>
       <source>Datos del listado:</source>
@@ -3851,15 +2934,15 @@ passi sobre l'àrea de la imatge; en cas contrari, veureu la imatge final.</tran
     </message>
     <message>
       <source>Fecha Inicial</source>
-      <translation type="unfinished" >Data Inicial</translation>
+      <translation>Data inicial</translation>
     </message>
     <message>
       <source>Fecha Final</source>
-      <translation type="unfinished" >Data Final</translation>
+      <translation>Data final</translation>
     </message>
     <message>
       <source>Incluir resultados parciales</source>
-      <translation type="unfinished" >Incloure resultats parcials</translation>
+      <translation>Incloure resultats parcials</translation>
     </message>
     <message>
       <source>Formato:</source>
@@ -3867,11 +2950,11 @@ passi sobre l'àrea de la imatge; en cas contrari, veureu la imatge final.</tran
     </message>
     <message>
       <source>Texto Plano</source>
-      <translation type="unfinished" >Text Pla</translation>
+      <translation>Text Pla</translation>
     </message>
     <message>
       <source>HTML</source>
-      <translation type="unfinished" >HTML</translation>
+      <translation>HTML</translation>
     </message>
     <message>
       <source>Postscript</source>
@@ -3879,7 +2962,7 @@ passi sobre l'àrea de la imatge; en cas contrari, veureu la imatge final.</tran
     </message>
     <message>
       <source>Imprimir</source>
-      <translation type="unfinished" >Imprimir</translation>
+      <translation>Imprimeix</translation>
     </message>
     <message>
       <source>Cancelar</source>
@@ -3906,7 +2989,7 @@ passi sobre l'àrea de la imatge; en cas contrari, veureu la imatge final.</tran
     </message>
     <message>
       <source>Cerrar</source>
-      <translation type="unfinished" >Tancar</translation>
+      <translation>Tancar</translation>
     </message>
   </context>
   <context>
@@ -3929,14 +3012,14 @@ passi sobre l'àrea de la imatge; en cas contrari, veureu la imatge final.</tran
     </message>
     <message>
       <source>Cerrar</source>
-      <translation type="unfinished" >Tancar</translation>
+      <translation>Tancar</translation>
     </message>
   </context>
   <context>
     <name>SobreBase</name>
     <message>
       <source>Acerca de BulmaCont</source>
-      <translation type="unfinished" >BulmaCont</translation>
+      <translation>Quant a BulmaCont</translation>
     </message>
     <message>
       <source>Contabilidad GPL - Version 0.9.3 -</source>
@@ -3955,7 +3038,7 @@ passi sobre l'àrea de la imatge; en cas contrari, veureu la imatge final.</tran
 p, li { white-space: pre-wrap; }
 &lt;/style>&lt;/head>&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;&quot;>
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;>&lt;/p>&lt;/body>&lt;/html></source>
-      <translation type="unfinished" >&lt;html>&lt;head>&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; />&lt;style type=&quot;text/css&quot;>
+      <translation>&lt;html>&lt;head>&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; />&lt;style type=&quot;text/css&quot;>
 p, li { white-space: pre-wrap; }
 &lt;/style>&lt;/head>&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;&quot;>
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;>&lt;/p>&lt;/body>&lt;/html></translation>
@@ -3970,7 +3053,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
       <source>&amp;Aceptar</source>
-      <translation type="unfinished" >&amp;Accepta</translation>
+      <translation>&amp;Accepta</translation>
     </message>
   </context>
   <context>
@@ -3993,7 +3076,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
       <source>Sincronizando fases Alfa Beta</source>
-      <translation>Enjegant la WebCam</translation>
+      <translation>Sincronizant fases Alfa Beta</translation>
     </message>
     <message>
       <source>Golpecitos de reajuste del HD</source>
@@ -4021,11 +3104,11 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
       <source>Crackeando BulmaCont</source>
-      <translation type="unfinished" >BulmaCont</translation>
+      <translation>Crackejant BulmaCont</translation>
     </message>
     <message>
       <source>&lt;center>&lt;font size=+1 color=&quot;#fff8a1&quot;>BulmaCont&lt;/font>&amp;nbsp;&lt;font color=&quot;#ff5e00&quot;>0.9.3&lt;/font>&lt;/center></source>
-      <translation type="unfinished" >&lt;center>&lt;font size=+1 color=&quot;#fff8a1&quot;> BulmaCont&lt;/font>&amp;nbsp;&lt;font color=&quot;#ff5e00&quot;>&lt;/font>&lt;/center></translation>
+      <translation>&lt;center>&lt;font size=+1 color=&quot;#fff8a1&quot;>BulmaCont&lt;/font>&amp;nbsp;&lt;font color=&quot;#ff5e00&quot;>0.9.3&lt;/font>&lt;/center></translation>
     </message>
   </context>
   <context>
@@ -4039,7 +3122,7 @@ p, li { white-space: pre-wrap; }
     <name>TipoIvaBase</name>
     <message>
       <source>Tipos de IVA</source>
-      <translation type="unfinished" />
+      <translation>Tipus d'IVA</translation>
     </message>
     <message>
       <source>Tipo de IVA:</source>
@@ -4051,7 +3134,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
       <source>Nombre:</source>
-      <translation type="unfinished" />
+      <translation>Nom:</translation>
     </message>
     <message>
       <source>Porcentaje:</source>
@@ -4063,11 +3146,11 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
       <source>&amp;Aceptar</source>
-      <translation type="unfinished" >&amp;Accepta</translation>
+      <translation>&amp;Accepta</translation>
     </message>
     <message>
       <source>&amp;Cancelar</source>
-      <translation type="unfinished" >&amp;Cancel·la</translation>
+      <translation>&amp;Cancel·la</translation>
     </message>
   </context>
   <context>
@@ -4081,7 +3164,7 @@ p, li { white-space: pre-wrap; }
     <name>canaldlg</name>
     <message>
       <source>Canales</source>
-      <translation type="unfinished" >Canals</translation>
+      <translation>Canals</translation>
     </message>
     <message>
       <source>Canal:</source>
@@ -4093,7 +3176,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
       <source>Nombre:</source>
-      <translation type="unfinished" />
+      <translation>Nom:</translation>
     </message>
     <message>
       <source>Descripción:</source>
@@ -4101,7 +3184,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
       <source>&amp;Cerrar</source>
-      <translation type="unfinished" >Tan&amp;car</translation>
+      <translation>Tan&amp;ca</translation>
     </message>
   </context>
   <context>
@@ -4116,11 +3199,11 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
       <source>&amp;Guardar</source>
-      <translation type="unfinished" >&amp;Desar</translation>
+      <translation>&amp;Desa</translation>
     </message>
     <message>
       <source>&amp;Cancelar</source>
-      <translation type="unfinished" >&amp;Cancel·la</translation>
+      <translation>&amp;Cancel·la</translation>
     </message>
     <message>
       <source>Borrar canal</source>
@@ -4130,7 +3213,9 @@ p, li { white-space: pre-wrap; }
       <source>Se va a borrar la forma de pago,
                                      Esto puede ocasionar perdida de datos
 </source>
-      <translation type="unfinished" />
+      <translation>Es va a esborrar la forma de pagamanet,
+                                    Això pot ocasionar pèrdre de dades
+</translation>
     </message>
     <message>
       <source>&amp;Borrar</source>
@@ -4138,26 +3223,26 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
       <source>Desea guardar los cambios?</source>
-      <translation type="unfinished" >Desitja desar els canvis?</translation>
+      <translation>Desitja desar els canvis?</translation>
     </message>
     <message>
       <source>&amp;Si</source>
-      <translation type="unfinished" >&amp;Sí</translation>
+      <translation>&amp;Sí</translation>
     </message>
     <message>
       <source>&amp;No</source>
-      <translation type="unfinished" />
+      <translation>&amp;No</translation>
     </message>
   </context>
   <context>
     <name>ccostedlg</name>
     <message>
       <source>Centros de Coste</source>
-      <translation type="unfinished" >Centres de Cost</translation>
+      <translation>Centres de Cost</translation>
     </message>
     <message>
       <source>Imprimir pedido</source>
-      <translation type="unfinished" />
+      <translation>Imprimeix la comanda</translation>
     </message>
     <message>
       <source>Contenido del centro de coste:</source>
@@ -4165,7 +3250,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
       <source>Nombre:</source>
-      <translation type="unfinished" />
+      <translation>Nom:</translation>
     </message>
     <message>
       <source>Descripción:</source>
@@ -4173,30 +3258,30 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
       <source>Cerrar</source>
-      <translation type="unfinished" >Tancar</translation>
+      <translation>Tanca</translation>
     </message>
     <message>
       <source>Ctrl+N</source>
-      <translation type="unfinished" >Ctrl+N</translation>
+      <translation>Ctrl+N</translation>
     </message>
     <message>
       <source>Ctrl+D</source>
-      <translation type="unfinished" >Ctrl+D</translation>
+      <translation>Ctrl+D</translation>
     </message>
     <message>
       <source>Ctrl+S</source>
-      <translation type="unfinished" >Ctrl+S</translation>
+      <translation>Ctrl+S</translation>
     </message>
     <message>
       <source>Ctrl+B</source>
-      <translation type="unfinished" >Ctrl+B</translation>
+      <translation>Ctrl+B</translation>
     </message>
   </context>
   <context>
     <name>ccosteview</name>
     <message>
       <source>Nombre</source>
-      <translation type="unfinished" >Nom</translation>
+      <translation>Nom</translation>
     </message>
     <message>
       <source>Guardar centro de coste</source>
@@ -4204,15 +3289,15 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
       <source>Desea guardar los cambios?</source>
-      <translation type="unfinished" >Desitja desar els canvis?</translation>
+      <translation>Desitja desar els canvis?</translation>
     </message>
     <message>
       <source>&amp;Guardar</source>
-      <translation type="unfinished" >&amp;Desar</translation>
+      <translation>&amp;Desa</translation>
     </message>
     <message>
       <source>&amp;Cancelar</source>
-      <translation type="unfinished" >&amp;Cancel·la</translation>
+      <translation>&amp;Cancel·la</translation>
     </message>
     <message>
       <source>Borrar centro de coste</source>
@@ -4221,7 +3306,9 @@ p, li { white-space: pre-wrap; }
     <message>
       <source>Se va a borrar el centro de coste.
 Esta operacion puede ocasionar perdida de datos.</source>
-      <translation type="unfinished" />
+      <translation>Es va a esborrar el centre de cost.
+Això pot ocasionar pèrdua de dades.
+</translation>
     </message>
     <message>
       <source>&amp;Borrar</source>
@@ -4229,19 +3316,19 @@ Esta operacion puede ocasionar perdida de datos.</source>
     </message>
     <message>
       <source>&amp;Si</source>
-      <translation type="unfinished" >&amp;Sí</translation>
+      <translation>&amp;Sí</translation>
     </message>
     <message>
       <source>&amp;No</source>
-      <translation type="unfinished" />
+      <translation>&amp;No</translation>
     </message>
     <message>
       <source>Descripcion</source>
-      <translation type="unfinished" />
+      <translation>Descripció</translation>
     </message>
     <message>
       <source>Id centro de coste</source>
-      <translation type="unfinished" >Id</translation>
+      <translation>Id centre de cost</translation>
     </message>
   </context>
   <context>
@@ -4287,7 +3374,7 @@ Esta operacion puede ocasionar perdida de datos.</source>
     </message>
     <message>
       <source>Desea guardar los cambios?</source>
-      <translation type="unfinished" >Desitja desar els canvis?</translation>
+      <translation>Desitja desar els canvis?</translation>
     </message>
     <message>
       <source>Borrar forma de pago</source>
@@ -4306,7 +3393,10 @@ Esta operacion puede ocasionar perdida de datos.</source>
 Esto puede ocasionar perdida de datos.
 Tal vez deberia pensarselo mejor antes
 porque igual su trabajo se pierde.</source>
-      <translation type="unfinished" />
+      <translation>Es va a esborrar la forma de pagamanet.
+Això pot ocasionar pèrdua de dades.
+Caldria pensar-s'ho millor abans perquè potser 
+la seva feina es perd.</translation>
     </message>
   </context>
   <context>
@@ -4321,19 +3411,19 @@ porque igual su trabajo se pierde.</source>
     </message>
     <message>
       <source>Codigo cuenta</source>
-      <translation type="unfinished" />
+      <translation>Codi compte</translation>
     </message>
     <message>
       <source>Nombre cuenta</source>
-      <translation type="unfinished" />
+      <translation>Nom del compte</translation>
     </message>
     <message>
       <source>Debe</source>
-      <translation type="unfinished" />
+      <translation>Deure</translation>
     </message>
     <message>
       <source>Haber</source>
-      <translation type="unfinished" >Haber</translation>
+      <translation>Haver</translation>
     </message>
     <message>
       <source>ID cuenta</source>
@@ -4353,15 +3443,15 @@ porque igual su trabajo se pierde.</source>
     </message>
     <message>
       <source>Regularizacion</source>
-      <translation type="unfinished" >Regularització</translation>
+      <translation>Regularització</translation>
     </message>
     <message>
       <source>Imputacion</source>
-      <translation type="unfinished" >Imputació</translation>
+      <translation>Imputació</translation>
     </message>
     <message>
       <source>Grupo</source>
-      <translation type="unfinished" >Grup</translation>
+      <translation>Grup</translation>
     </message>
     <message>
       <source>Tipo cuenta</source>
@@ -4369,7 +3459,7 @@ porque igual su trabajo se pierde.</source>
     </message>
     <message>
       <source>Debe seleccionar una cuenta</source>
-      <translation type="unfinished" />
+      <translation>Cal triar un compte</translation>
     </message>
     <message>
       <source>Borrar cuenta</source>
@@ -4426,11 +3516,11 @@ porque igual su trabajo se pierde.</source>
     </message>
     <message>
       <source>Desea guardar los cambios?</source>
-      <translation type="unfinished" >Desitja desar els canvis?</translation>
+      <translation>Desitja desar els canvis?</translation>
     </message>
     <message>
       <source>&amp;Guardar</source>
-      <translation type="unfinished" >&amp;Desar</translation>
+      <translation>&amp;Desa</translation>
     </message>
     <message>
       <source>&amp;No guardar</source>
@@ -4438,18 +3528,21 @@ porque igual su trabajo se pierde.</source>
     </message>
     <message>
       <source>Salir del programa</source>
-      <translation type="unfinished" >Abandona</translation>
+      <translation>Abandona del programa</translation>
     </message>
     <message>
       <source>Para que los cambios tengan efecto
 debe salir del programa y volver a entrar.
 
 Salir ahora?</source>
-      <translation type="unfinished" >Abandona?</translation>
+      <translation>Per a que els canvis tinguin efecte 
+cal sortir del programa i tornar a entrar.
+
+Abandona ara?</translation>
     </message>
     <message>
       <source>&amp;Salir</source>
-      <translation type="unfinished" >Abandona</translation>
+      <translation>Abandona</translation>
     </message>
     <message>
       <source>&amp;No salir</source>
@@ -4506,7 +3599,7 @@ Salir ahora?</source>
     <name>sobreview</name>
     <message>
       <source>Compilado usando la version de QT:</source>
-      <translation type="unfinished" >Compilat fent servir la versió de QT:</translation>
+      <translation>Compilat fent servir la versió de QT:</translation>
     </message>
   </context>
   <context>
@@ -4517,7 +3610,7 @@ Salir ahora?</source>
     </message>
     <message>
       <source>Desea guardar los cambios?</source>
-      <translation type="unfinished" >Desitja desar els canvis?</translation>
+      <translation>Desitja desar els canvis?</translation>
     </message>
     <message>
       <source>Borrar tipo de IVA</source>
@@ -4526,7 +3619,9 @@ Salir ahora?</source>
     <message>
       <source>Se va a borrar el tipo de IVA. 
 Esto puede ocasionar perdida de datos.</source>
-      <translation type="unfinished" />
+      <translation>Es va a esborrar el tipus d'IVA.
+Això pot ocasionar pèrdua de dades.
+</translation>
     </message>
   </context>
 </TS>
