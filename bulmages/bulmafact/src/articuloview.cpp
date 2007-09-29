@@ -84,6 +84,10 @@ ArticuloView::ArticuloView(Company *comp, QWidget *parent)
         mui_idtipoarticulo->setEmpresaBase(comp);
         mui_idtipo_iva->setEmpresaBase(comp);
         m_componentes->setEmpresaBase(comp);
+
+        /// Inicializamos para que no se queden sin ser pintada.
+        mui_idtipo_iva->setValorCampo("0");
+
         dialogChanges_setQObjectExcluido(m_componentes);
         dialogChanges_setQObjectExcluido(m_componentes->mui_list);
         m_archivoimagen = "";

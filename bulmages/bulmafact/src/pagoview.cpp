@@ -67,7 +67,6 @@ PagoView::PagoView(Company *comp, QWidget *parent)
         addDBCampo("comentpago", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Pago", "Comentario del pago"));
         addDBCampo("idbanco", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Pago", "Banco"));
 
-
         meteWindow(windowTitle(), this, FALSE);
         pintar();
         dialogChanges_cargaInicial();

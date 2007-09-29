@@ -67,14 +67,15 @@ void BusquedaTipoArticulo::setidtipo_articulo(QString val) {
         mdb_desctipo_articulo = "";
         mdb_codtipo_articulo = "";
     } else {
-	QString SQLQuery = "SELECT * FROM tipo_articulo WHERE idtipo_articulo = '" + mdb_idtipo_articulo + "'";
-	cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
-	
-	if(!cur->eof()) {
-		mdb_codtipo_articulo = cur->valor("codtipo_articulo");
-		mdb_desctipo_articulo = cur->valor("desctipo_articulo");
-	} // end if
-    	delete cur;
+        QString SQLQuery = "SELECT * FROM tipo_articulo WHERE idtipo_articulo = '" + mdb_idtipo_articulo + "'";
+        cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
+
+        if (!cur->eof()) {
+            mdb_codtipo_articulo = cur->valor("codtipo_articulo");
+            mdb_desctipo_articulo = cur->valor("desctipo_articulo");
+        } // end if
+
+        delete cur;
     } // end if
     m_codtipo_articulo->setText(mdb_codtipo_articulo);
     m_desctipo_articulo->setText(mdb_desctipo_articulo);
@@ -88,7 +89,7 @@ void BusquedaTipoArticulo::setidtipo_articulo(QString val) {
 **/
 void BusquedaTipoArticulo::setValorCampo(QString val) {
     _depura("BusquedaTipoArticulo::setValorCampo", 0);
-	setidtipo_articulo(val);
+    setidtipo_articulo(val);
     _depura("END BusquedaTipoArticulo::setValorCampo", 0);
 }
 
@@ -177,7 +178,7 @@ void BusquedaTipoArticulo::on_m_codtipo_articulo_textChanged(const QString &val)
     QString SQLQuery = "SELECT * FROM tipo_articulo WHERE codtipo_articulo = '" + mdb_codtipo_articulo + "'";
     cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
 
-    if(!cur->eof()) {
+    if (!cur->eof()) {
         mdb_idtipo_articulo = cur->valor("idtipo_articulo");
         mdb_desctipo_articulo = cur->valor("desctipo_articulo");
     } else {

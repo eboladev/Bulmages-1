@@ -26,12 +26,12 @@
 #include "blwidget.h"
 
 class QComboBox2 : public QComboBox, public PEmpresaBase {
-Q_OBJECT
-public:
-   QComboBox2(QWidget *parent);
-   ~QComboBox2();
-};
+    Q_OBJECT
 
+public:
+    QComboBox2(QWidget *parent);
+    ~QComboBox2();
+};
 
 #endif
 

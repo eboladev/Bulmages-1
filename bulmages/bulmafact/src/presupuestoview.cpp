@@ -60,26 +60,27 @@ PresupuestoView::PresupuestoView(Company *comp, QWidget *parent)
         setTitleName(tr("Presupuesto"));
         setDBTableName("presupuesto");
         setDBCampoId("idpresupuesto");
-        addDBCampo("idpresupuesto", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Presupuesto", "ID Presupuesto"));
+        addDBCampo("idpresupuesto", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Presupuesto", "ID presupuesto"));
         addDBCampo("idcliente", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("Presupuesto", "ID cliente"));
         addDBCampo("idalmacen", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("Presupuesto", "ID almacen"));
-        addDBCampo("numpresupuesto", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Presupuesto", "Numero de Presupuesto"));
+        addDBCampo("numpresupuesto", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Presupuesto", "Numero de presupuesto"));
         addDBCampo("fpresupuesto", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Presupuesto", "Fecha de creacion"));
         addDBCampo("vencpresupuesto", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Presupuesto", "Fecha de vencimiento"));
         addDBCampo("contactpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Presupuesto", "Persona de contacto"));
         addDBCampo("telpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Presupuesto", "Numero de telefono"));
         addDBCampo("comentpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Presupuesto", "Comentarios"));
         addDBCampo("procesadopresupuesto", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("Presupuesto", "Presupuesto procesado"));
-        addDBCampo("descpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Presupuesto", "Descuento"));
+        addDBCampo("descpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Presupuesto", "% Descuento"));
         addDBCampo("refpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Presupuesto", "Referencia"));
         addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Presupuesto", "ID forma de pago"));
         addDBCampo("idtrabajador", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Presupuesto", "ID trabajador"));
 
-
         /// Disparamos los plugins.
         int res = g_plugins->lanza("PresupuestoView_PresupuestoView", this);
-        if (res != 0)
+        if (res != 0) {
             return;
+        } // end if
+
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
         subform2->setEmpresaBase(comp);
         m_descuentos->setEmpresaBase(comp);
@@ -100,8 +101,8 @@ PresupuestoView::PresupuestoView(Company *comp, QWidget *parent)
         m_totalDiscounts->setAlignment(Qt::AlignRight);
         m_totalPresupuestoCliente->setReadOnly(TRUE);
         m_totalPresupuestoCliente->setAlignment(Qt::AlignRight);
-        /// Inicializamos la forma de pago para que no se quede sin ser pintada.
 
+        /// Inicializamos para que no se queden sin ser pintada.
         mui_idforma_pago->setValorCampo("0");
         mui_idalmacen->setValorCampo("0");
         mui_idtrabajador->setValorCampo("0");

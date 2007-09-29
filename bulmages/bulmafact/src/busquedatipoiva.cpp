@@ -24,7 +24,6 @@
 #include "funcaux.h"
 
 
-
 /** Inicializa todos los componentes a NULL para que no haya confusiones sobre
     si un elemento ha sido inicializado o no.
     Hace la conexion del SIGNAL activated con m_activated para tratar el evento.
@@ -47,14 +46,15 @@ BusquedaTipoIva::BusquedaTipoIva(QWidget *parent)
 **/
 BusquedaTipoIva::~BusquedaTipoIva() {
     _depura("BusquedaTipoIva::~BusquedaTipoIva", 0);
-    if (m_cursorcombo != NULL)
+    if (m_cursorcombo != NULL) {
         delete m_cursorcombo;
+    } // end if
     _depura("END BusquedaTipoIva::~BusquedaTipoIva", 0);
 }
 
 
 /** Con este metodo se puede indicar al Widget cual es el tipo_iva seleccionado.
-    Recarga el cursor de tipo_ivaes y cuando encuentra uno con el mismo identificador
+    Recarga el cursor de tipo_iva y cuando encuentra uno con el mismo identificador
     que el que se ha pasado por parametro lo establece como elemento seleccionado.
 */
 /**
@@ -63,8 +63,9 @@ BusquedaTipoIva::~BusquedaTipoIva() {
 **/
 void BusquedaTipoIva::setidtipo_iva(QString idtipo_iva) {
     _depura("BusquedaTipoIva::setidtipo_iva", 0);
-    if (m_cursorcombo != NULL)
+    if (m_cursorcombo != NULL) {
         delete m_cursorcombo;
+    } // end if
     m_cursorcombo = empresaBase()->cargacursor("SELECT * FROM tipo_iva");
     /// Tratamos el caso en que no se haya devuelto nada.
     if (m_cursorcombo == NULL) return;
@@ -74,9 +75,10 @@ void BusquedaTipoIva::setidtipo_iva(QString idtipo_iva) {
     addItem("--");
     while (!m_cursorcombo->eof()) {
         i ++;
-        if (m_cursorcombo->valor("idtipo_iva") == idtipo_iva)
+        if (m_cursorcombo->valor("idtipo_iva") == idtipo_iva) {
             i1 = i;
-        addItem(m_cursorcombo->valor("desctipo_iva") );
+        } // end if
+        addItem(m_cursorcombo->valor("desctipo_iva"));
         m_cursorcombo->siguienteregistro();
     } // end while
     setCurrentIndex(i1);
@@ -90,7 +92,7 @@ void BusquedaTipoIva::setidtipo_iva(QString idtipo_iva) {
 **/
 void BusquedaTipoIva::setValorCampo(QString idtipo_iva) {
     _depura("BusquedaTipoIva::setValorCampo", 0);
-	setidtipo_iva(idtipo_iva);
+    setidtipo_iva(idtipo_iva);
     _depura("END BusquedaTipoIva::setValorCampo", 0);
 }
 
@@ -131,7 +133,7 @@ void BusquedaTipoIva::m_activated(int index) {
         emit(valueChanged(m_cursorcombo->valor("idtipo_iva", index - 1)));
     } else {
         emit(valueChanged(""));
-    }
+    } // end if
     _depura("END BusquedaTipoIva::m_activated", 0);
 }
 
@@ -140,7 +142,7 @@ void BusquedaTipoIva::m_activated(int index) {
 /// ==================================================================
 
 /** Inicializa todos los componentes del Widget a NULL para que no haya posibles confusiones
-    sobre si un elemento ha sido creado o no. 
+    sobre si un elemento ha sido creado o no.
     Conecta el SIGNAL activated() con m_activated() para tratarlo.
 */
 /**
@@ -162,8 +164,9 @@ BusquedaTipoIVADelegate::BusquedaTipoIVADelegate(QWidget *parent)
 **/
 BusquedaTipoIVADelegate::~BusquedaTipoIVADelegate() {
     _depura("BusquedaTipoIVADelegate::~BusquedaTipoIVADelegate", 0);
-    if (m_cursorcombo != NULL)
+    if (m_cursorcombo != NULL) {
         delete m_cursorcombo;
+    } // end if
     _depura("END BusquedaTipoIVADelegate::~BusquedaTipoIVADelegate", 0);
 }
 
@@ -180,24 +183,24 @@ void BusquedaTipoIVADelegate::set(const QString &cod) {
     int index = 0;
     QString codigo = cod;
 
-    if (m_cursorcombo != NULL)
+    if (m_cursorcombo != NULL) {
         delete m_cursorcombo;
+    } // end if
 
     m_cursorcombo = empresaBase()->cargacursor("SELECT desctipo_iva FROM tipo_iva ");
     /// Comprobamos que no haya habido errores
-    if(!m_cursorcombo) return;
+    if (!m_cursorcombo) return;
+
     clear();
     while (!m_cursorcombo->eof()) {
         addItem(m_cursorcombo->valor("desctipo_iva"));
         m_cursorcombo->siguienteregistro();
-        if(m_cursorcombo->valor("desctipo_iva") == cod)
-		index = m_cursorcombo->regactual();
-    }// end while
+        if (m_cursorcombo->valor("desctipo_iva") == cod)
+        index = m_cursorcombo->regactual();
+    } // end while
     setEditText(cod);
     setCurrentIndex(index);
 
     _depura("END BusquedaTipoIVADelegate::set", 0);
 }
-
-
 
