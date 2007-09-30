@@ -46,10 +46,6 @@ class Empresa;
 class CuentaView : public FichaBc, public Ui_CuentaBase {
     Q_OBJECT
 
-private:
-    void guardarCuenta();
-    void borrarCuenta();
-
 public:
     int idcuenta;
     int idgrupos[100];
@@ -63,15 +59,13 @@ public:
     int inicializa();
     int nuevacuenta(QString, int);
     void cuentanueva(QString);
-    int cargacuenta(int);
+    int cargar(QString);
     void cambiapadre(const QString &);
-    void closeEvent(QCloseEvent *);
-    virtual void on_mui_borrar_clicked();
+    virtual int guardar();
+    virtual int borrar();
 
 public slots:
     virtual void codigo_ret();
-    virtual void on_mui_guardar_clicked();
-    virtual void on_mui_aceptar_clicked();
 };
 
 #endif

@@ -45,7 +45,10 @@ AmortizacionesView::AmortizacionesView(Empresa *emp, QWidget *parent)
     mui_listado->setFileConfig("AmortizacionListSubform");
     mui_listado->setDBCampoId("idamortizacion");
     mui_listado->addSHeader("idamortizacion", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("Id amortizacion"));
-    mui_listado->addSHeader("nomamortizacion", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre"));
+    mui_listado->addSHeader("nomamortizacion", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre"));
+    mui_listado->addSHeader("fechacompra", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Fecha compra"));
+    mui_listado->addSHeader("fecha1cuota", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Fecha 1 cuota"));
+    mui_listado->addSHeader("numcuotas", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Num cuotas"));
     mui_listado->setinsercion(FALSE);
     presentar();
 

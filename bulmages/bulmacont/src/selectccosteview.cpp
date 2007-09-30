@@ -121,19 +121,17 @@ int SelectCCosteView::firstccoste() {
     _depura("SelectCCosteView::firstccoste", 0);
     delete m_iterador;
     m_iterador = new QTreeWidgetItemIterator(mui_listCostes);
-    fprintf(stderr, "firstccoste\n");
     int idccoste = 0;
 
     while ((**m_iterador) && idccoste == 0) {
         if ((**m_iterador)->checkState(0) == Qt::Checked) {
             idccoste = (**m_iterador)->text(3).toInt();
-            fprintf(stderr, "primer centro de coste:%d\n", idccoste);
-            return idccoste;
+//            return idccoste;
         } // end if
         ++(*m_iterador);
     } // end while
 
-    _depura("END SelectCCosteView::firstccoste", 0);
+    _depura("END SelectCCosteView::firstccoste", 0, QString::number(idccoste));
     return idccoste;
 }
 
@@ -145,13 +143,10 @@ int SelectCCosteView::firstccoste() {
 int SelectCCosteView::nextccoste() {
     _depura("SelectCCosteView::nextccoste", 0);
     int idccoste = 0;
-    fprintf(stderr, "nextccoste\n");
 
     while ((**m_iterador) && idccoste == 0) {
         if ((**m_iterador)->checkState(0) == Qt::Checked) {
             idccoste = (**m_iterador)->text(3).toInt();
-            fprintf(stderr, "siguiente centro de coste:%d\n", idccoste);
-            return idccoste;
         } // end if
         ++(*m_iterador);
     } // end while
@@ -177,7 +172,6 @@ QString SelectCCosteView::cadcoste() {
             ccostes.sprintf("%d", idc_coste);
         idc_coste = nextccoste();
     } /// end while
-    fprintf(stderr, " cadcoste: %s\n", ccostes.toAscii().constData());
     _depura("END SelectCCosteView::cadcoste", 0);
     return ccostes;
 }

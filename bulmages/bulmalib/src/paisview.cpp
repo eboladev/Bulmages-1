@@ -54,7 +54,7 @@ PaisView::PaisView(EmpresaBase *emp, QWidget *parent)
     mui_listprovincias->setDBCampoId("idprovincia");
     mui_listprovincias->addSHeader("idprovincia", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("Id. Provincia"));
     mui_listprovincias->addSHeader("idpais", DBCampo::DBint, DBCampo::DBNotNull , SHeader::DBNoView | SHeader::DBNoWrite, tr("Id. Pais"));
-    mui_listprovincias->addSHeader("provincia", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, tr("Provincia"));
+    mui_listprovincias->addSHeader("provincia", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Provincia"));
     mui_listprovincias->setinsercion(TRUE);
     mui_listprovincias->setDelete(TRUE);
     mui_listprovincias->setSortingEnabled(FALSE);
@@ -84,7 +84,6 @@ PaisView::PaisView(EmpresaBase *emp, QWidget *parent)
 **/
 PaisView::~PaisView() {
     _depura("PaisView::~PaisView", 0);
-    empresaBase()->sacaWindow(this);
     _depura("END PaisView::~PaisView", 0);
 }
 
@@ -93,8 +92,6 @@ PaisView::~PaisView() {
 /**
 **/
 void PaisView::pintar() {
-    _depura("PaisView::pintar", 10);
-    /// Vaciamos el contenido de la tabla.
     _depura("PaisView::pintar", 10);
     mui_list->cargar("SELECT * FROM pais ORDER BY descpais");
     _depura("END PaisView::pintar", 0);

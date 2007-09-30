@@ -93,6 +93,9 @@ public:
     void iniciar_asiento_nuevo(QString nuevoordenasiento = "");
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_borrar_clicked(bool);
+    virtual void asiento_regularizacion(QString, QString);
+    virtual void asiento_cierre(QString, QString);
+    virtual void asiento_apertura(QString);
 
 public slots:
     virtual void on_mui_list_editFinish(int, int);

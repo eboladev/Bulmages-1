@@ -1780,19 +1780,6 @@
        <item row="3" column="1" colspan="3" >
         <widget class="QLineEdit" name="banco" />
        </item>
-       <item row="3" column="4" >
-        <widget class="QLabel" name="label" >
-         <property name="text" >
-          <string>Pais:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="5" colspan="2" >
-        <widget class="QComboBox" name="mui_pais" />
-       </item>
        <item row="4" column="0" >
         <widget class="QLabel" name="TextLabel3_3_2" >
          <property name="text" >
@@ -1815,9 +1802,6 @@
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
-       </item>
-       <item row="4" column="5" colspan="2" >
-        <widget class="QComboBox" name="mui_provincia" />
        </item>
        <item row="5" column="0" >
         <widget class="QLabel" name="TextLabel4_2" >
@@ -1861,6 +1845,9 @@
           <bool>true</bool>
          </property>
         </widget>
+       </item>
+       <item row="4" column="5" colspan="2" >
+        <widget class="BusquedaProvincia" name="mui_idprovincia" />
        </item>
       </layout>
      </widget>
@@ -1928,6 +1915,13 @@
   </layout>
  </widget>
  <layoutdefault spacing="2" margin="2" />
+ <customwidgets>
+  <customwidget>
+   <class>BusquedaProvincia</class>
+   <extends>QComboBox</extends>
+   <header>busquedaprovincia.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>codigo</tabstop>
   <tabstop>codigopadre</tabstop>

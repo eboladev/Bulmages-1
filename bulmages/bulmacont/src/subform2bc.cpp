@@ -244,7 +244,9 @@ void SubForm2Bc::on_mui_list_cellChanged(int row, int col) {
         cursor2 *cur = empresaBase()->cargacursor(query);
         if (!cur->eof() ) {
             rec->setDBvalue("idc_coste", cur->valor("idc_coste"));
-        } // end if
+        } else {
+	    rec->setDBvalue("idc_coste", "");
+	} // end if
         delete cur;
     } // end if
     if (camp->nomcampo() == "fecha") {
@@ -585,13 +587,11 @@ void QSubForm2BcDelegate::setEditorData(QWidget *editor, const QModelIndex &inde
     } else if (linea->nomcampo() == "nomcanal") {
         QString value = index.model()->data(index, Qt::DisplayRole).toString();
         BusquedaCanalDelegate *comboBox = static_cast<BusquedaCanalDelegate*>(editor);
-        comboBox->addItem(value);
-        comboBox->lineEdit()->selectAll();
+        comboBox->set(value);
     } else if (linea->nomcampo() == "nomc_coste") {
         QString value = index.model()->data(index, Qt::DisplayRole).toString();
         BusquedaCCosteDelegate *comboBox = static_cast<BusquedaCCosteDelegate*>(editor);
-        comboBox->addItem(value);
-        comboBox->lineEdit()->selectAll();
+        comboBox->set(value);
     } else if (linea->nomcampo().startsWith("fecha")) {
         QString value = index.model()->data(index, Qt::DisplayRole).toString();
         BusquedaFecha2 *bf = static_cast<BusquedaFecha2*>(editor);

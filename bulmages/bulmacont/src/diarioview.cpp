@@ -222,10 +222,28 @@ void DiarioView::presentar() {
         cadand = " AND ";
     } // end if
 
+    // Consideraciones para centros de coste y canales
+    selectcanalview *scanal=empresaBase()->getselcanales();
+    SelectCCosteView *scoste=empresaBase()->getselccostes();
+    QString ccostes = scoste->cadcoste();
+    if (ccostes != "") {
+        ccostes = " " + tabla +".idc_coste IN (" + ccostes + ") ";
+	cad += cadwhere + cadand + ccostes;
+        cadwhere = "";
+        cadand = " AND ";
+    } // end if
+
+    QString ccanales = scanal->cadcanal();
+    if (ccanales != "") {
+        ccanales = " " + tabla + ".idcanal IN (" + ccanales + ") ";
+	cad += cadwhere + cadand + ccanales;
+        cadwhere = "";
+        cadand = " AND ";
+    } // end if
+
     totalcadena = query + cad + " ORDER BY t5.fecha, t5.ordenasiento ";
 
     mui_list->cargar(totalcadena);
-
 
     cursor2 *cur = empresaBase()->cargacursor("SELECT sum(debe) as totaldebe, sum(haber) as totalhaber from " + tabla + cad);
     if (!cur->eof()) {

@@ -35,11 +35,20 @@ CuentaView::CuentaView(Empresa  *emp, QWidget *parent, Qt::WFlags fl)
     setTitleName(tr("Cuenta"));
     /// Establecemos cual es la tabla en la que basarse para el tema de los permisos
     setDBTableName("cuenta");
+    setDBCampoId("idcuenta");
+    /*
+        // TODO -- Se podría implementar como una ficha.
+        addDBCampo("idcuenta", DBCampo::DBint, DBCampo::DBPrimaryKey, tr("ID cuenta"));
+        addDBCampo("codigo", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Codigo cuenta"));
+        addDBCampo("descripcion", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Descripcion"));
+        addDBCampo("padre", DBCampo::DBint, DBCampo::DBNothing, tr("Padre"));
+    */
 
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     idcuenta = 0;
     numdigitos = emp->numdigitosempresa();
+    mui_idprovincia->setEmpresaBase(empresaBase());
     inicializa();
     dialogChanges_cargaInicial();
     empresaBase()->meteWindow(windowTitle(), this);
@@ -135,36 +144,6 @@ CuentaView::~CuentaView() {
 }
 
 
-///
-/**
-**/
-void CuentaView::on_mui_borrar_clicked() {
-    _depura("CuentaView::on_mui_borrar_clicked", 0);
-    borrarCuenta();
-    _depura("END CuentaView::on_mui_borrar_clicked", 0);
-}
-
-
-///
-/**
-**/
-void CuentaView::on_mui_guardar_clicked() {
-    _depura("CuentaView::on_mui_guardar_clicked", 0);
-    guardarCuenta();
-    _depura("END CuentaView::on_mui_guardar_clicked", 0);
-}
-
-
-///
-/**
-**/
-void CuentaView::on_mui_aceptar_clicked() {
-    _depura("CuentaView::on_mui_aceptar_clicked", 0);
-    guardarCuenta();
-    close();
-    _depura("END CuentaView::on_mui_aceptar_clicked", 0);
-}
-
 
 /// Esta funci&oacute;n se activa cada vez que se pulsa una tecla sobre la cuenta.
 /**
@@ -191,32 +170,6 @@ void CuentaView::cambiapadre(const QString &cadena) {
     /// Para quitar el warning.
     cadena.isNull();
     _depura("END CuentaView::cambiapadre", 0);
-}
-
-
-/// Este es el SLOT que se activa al pulsar el bot&oacute;n ok del formulario.
-/** Lo que hace es recoger los datos del formulario y hacer una inserci&oacute;n
-    o una modificaci&oacute;n de la tabla de cuentas. */
-/**
-\param e
-**/
-void CuentaView::closeEvent(QCloseEvent *e) {
-    _depura("CuentaView::closeEvent", 0);
-    if (dialogChanges_hayCambios()) {
-        int val = QMessageBox::warning(this,
-                                       tr("Guardar cuenta"),
-                                       tr("Desea guardar los cambios?"),
-                                       tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
-        if (val == 0)
-            try {
-                guardarCuenta();
-            } catch (...) {
-                e->ignore();
-            } // end try
-        if (val == 2)
-            e->ignore();
-    } // end if
-    _depura("END CuentaView::closeEvent", 0);
 }
 
 
@@ -249,8 +202,10 @@ int CuentaView::inicializa() {
 \param idcuenta1
 \return
 **/
-int CuentaView::cargacuenta(int idcuenta1) {
+int CuentaView::cargar(QString idcta) {
+
     _depura("CuentaView::cargacuenta", 0);
+    int idcuenta1 = idcta.toInt();
     QString cadena;
     int cpadre;
     cursor2 *cursorcuenta, *cursorpadre;
@@ -342,6 +297,7 @@ int CuentaView::cargacuenta(int idcuenta1) {
     banco->setText(cursorcuenta->valor("bancoent_cuenta"));
     email->setText(cursorcuenta->valor("emailent_cuenta"));
     web->setText(cursorcuenta->valor("webent_cuenta"));
+    mui_idprovincia->setIdProvincia(cursorcuenta->valor("idprovincia"));
     delete cursorcuenta;
 
     /// Estamos probando la nueva forma de almacenar cambios.
@@ -433,7 +389,7 @@ void CuentaView::codigo_ret() {
 ///
 /**
 **/
-void CuentaView::guardarCuenta() {
+int CuentaView::guardar() {
     _depura("CuentaView::guardarCuenta", 0);
     QString codigocuenta;
     int idpadre = 0;
@@ -468,43 +424,43 @@ void CuentaView::guardarCuenta() {
     if (idcuenta != 0) {
         empresaBase()->begin();
         empresaBase()->modificacuenta(idcuenta,
-                                     empresaBase()->sanearCadena(descripcion->text()),
-                                     empresaBase()->sanearCadena(codigo->text()),
-                                     imputacion->isChecked(),
-                                     bloqueada->isChecked(),
-                                     idgrupos[combogrupos->currentIndex()],
-                                     TRUE,
-                                     empresaBase()->sanearCadena(nombreent->text()),
-                                     empresaBase()->sanearCadena(cif->text()),
-                                     empresaBase()->sanearCadena(direccion->text()),
-                                     empresaBase()->sanearCadena(cp->text()),
-                                     empresaBase()->sanearCadena(telf->text()),
-                                     empresaBase()->sanearCadena(coments->toPlainText()),
-                                     empresaBase()->sanearCadena(banco->text()),
-                                     empresaBase()->sanearCadena(email->text()),
-                                     empresaBase()->sanearCadena(web->text()),
-                                     tipocuenta,
-                                     nodebe->isChecked(),
-                                     nohaber->isChecked());
+                                      empresaBase()->sanearCadena(descripcion->text()),
+                                      empresaBase()->sanearCadena(codigo->text()),
+                                      imputacion->isChecked(),
+                                      bloqueada->isChecked(),
+                                      idgrupos[combogrupos->currentIndex()],
+                                      TRUE,
+                                      empresaBase()->sanearCadena(nombreent->text()),
+                                      empresaBase()->sanearCadena(cif->text()),
+                                      empresaBase()->sanearCadena(direccion->text()),
+                                      empresaBase()->sanearCadena(cp->text()),
+                                      empresaBase()->sanearCadena(telf->text()),
+                                      empresaBase()->sanearCadena(coments->toPlainText()),
+                                      empresaBase()->sanearCadena(banco->text()),
+                                      empresaBase()->sanearCadena(email->text()),
+                                      empresaBase()->sanearCadena(web->text()),
+                                      tipocuenta,
+                                      nodebe->isChecked(),
+                                      nohaber->isChecked());
         empresaBase()->commit();
     } else {
         empresaBase()->begin();
         ((postgresiface2 *) empresaBase())->nuevacuenta(empresaBase()->sanearCadena(descripcion->text()),
-                                  empresaBase()->sanearCadena(codigo->text()),
-                                  idpadre,
-                                  idgrupos[combogrupos->currentIndex()],
-                                  empresaBase()->sanearCadena(nombreent->text()),
-                                  empresaBase()->sanearCadena(cif->text()),
-                                  empresaBase()->sanearCadena(direccion->text()),
-                                  empresaBase()->sanearCadena(cp->text()),
-                                  empresaBase()->sanearCadena(telf->text()),
-                                  empresaBase()->sanearCadena(coments->toPlainText()),
-                                  empresaBase()->sanearCadena(banco->text()),
-                                  empresaBase()->sanearCadena(email->text()),
-                                  empresaBase()->sanearCadena(web->text()),
-                                  tipocuenta,
-                                  nodebe->isChecked(),
-                                  nohaber->isChecked());
+                empresaBase()->sanearCadena(codigo->text()),
+                idpadre,
+                idgrupos[combogrupos->currentIndex()],
+                empresaBase()->sanearCadena(nombreent->text()),
+                empresaBase()->sanearCadena(cif->text()),
+                empresaBase()->sanearCadena(direccion->text()),
+                empresaBase()->sanearCadena(cp->text()),
+                empresaBase()->sanearCadena(telf->text()),
+                empresaBase()->sanearCadena(coments->toPlainText()),
+                empresaBase()->sanearCadena(banco->text()),
+                empresaBase()->sanearCadena(email->text()),
+                empresaBase()->sanearCadena(web->text()),
+                tipocuenta,
+                nodebe->isChecked(),
+                nohaber->isChecked());
         QString query = "SELECT max(idcuenta) AS id from cuenta";
         cursoraux = empresaBase()->cargacursor(query, "maxidcuenta");
         idcuenta = atoi(cursoraux->valor("id").toAscii());
@@ -514,25 +470,18 @@ void CuentaView::guardarCuenta() {
     /// Estamos probando la nueva forma de almacenar cambios.
     dialogChanges_cargaInicial();
     _depura("END CuentaView::guardarCuenta", 0);
+    return 0;
 }
 
 
 ///
 /**
 **/
-void CuentaView::borrarCuenta() {
-    _depura("CuentaView::borrarCuenta", 0);
-    switch (QMessageBox::warning(this,
-                                 tr("Borrar cuenta"),
-                                 tr("Se va a borrar la cuenta,\nEsto puede ocasionar perdida de datos\nTal vez deberia pensarselo mejor antes\nporque igual su trabajo se pierde."),
-                                 QMessageBox::Ok, QMessageBox::Cancel)) {
-    case QMessageBox::Ok: /// Retry clicked or Enter pressed.
-        empresaBase()->ejecuta("DELETE FROM cuenta WHERE idcuenta = " + QString::number(idcuenta));
-        close();
-        break;
-    case QMessageBox::Cancel: /// Abort clicked or Escape pressed.
-        break;
-    } // end switch
-    _depura("CuentaView::borrarCuenta", 0);
+int CuentaView::borrar() {
+    _depura("CuentaView::borrar", 0);
+    empresaBase()->ejecuta("DELETE FROM cuenta WHERE idcuenta = " + QString::number(idcuenta));
+    close();
+    return 0;
+    _depura("CuentaView::borrar", 0);
 }
 

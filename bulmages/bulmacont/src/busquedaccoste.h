@@ -41,9 +41,7 @@ private:
 public:
     BusquedaCCosteDelegate(QWidget *parent = 0);
     ~BusquedaCCosteDelegate();
-
-public slots:
-    virtual void s_editTextChanged(const QString &);
+    virtual void set(const QString &);
 };
 
 

@@ -49,10 +49,10 @@ Asiento1View::Asiento1View(Empresa *emp, QWidget *parent, int)
     setupUi(this);
     _depura("Asiento1View::Asiento1View", 0);
 
-        /// Disparamos los plugins.
-        int res = g_plugins->lanza("Asiento1View_Asiento1View", this);
-        if (res != 0)
-            return;
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("Asiento1View_Asiento1View", this);
+    if (res != 0)
+        return;
 
 
     eventos_mui_ordenasiento *eventosOrdenAsiento = new eventos_mui_ordenasiento(this);
@@ -95,9 +95,9 @@ void Asiento1View::calculaypintatotales() {
 
     /// Si hay descuadre no se permite cerrar el asiento. Y si el asiento esta abierto y cuadrado se permite el cierre del asiento.
     if (desc != 0) {
-       mui_cerrarasiento->setEnabled(FALSE);
+        mui_cerrarasiento->setEnabled(FALSE);
     } else if (!mui_abrirasiento->isEnabled()) {
-       mui_cerrarasiento->setEnabled(TRUE);
+        mui_cerrarasiento->setEnabled(TRUE);
     } // end ir
     _depura("END Asiento1View::calculaypintatotales", 0);
 }
@@ -390,9 +390,9 @@ void Asiento1View::on_mui_borrar_clicked(bool atendido) {
 /**
 **/
 void Asiento1View::on_mui_list_editFinish(int, int) {
-	_depura("Asiento1View::on_mui_list_editFinish", 0);
-	calculaypintatotales();
-	_depura("END Asiento1View::on_mui_list_editFinish", 0);
+    _depura("Asiento1View::on_mui_list_editFinish", 0);
+    calculaypintatotales();
+    _depura("END Asiento1View::on_mui_list_editFinish", 0);
 }
 
 
@@ -784,8 +784,8 @@ void Asiento1View::on_mui_abrirasiento_clicked() {
 **/
 void Asiento1View::on_mui_cerrarasiento_clicked() {
     if (Fixed(m_descuadre->text()) != 0)  {
-	_depura("Asiento descuadrado, no se puede cerrar", 2);
-	return;
+        _depura("Asiento descuadrado, no se puede cerrar", 2);
+        return;
     } // end if
     prepguardar();
     cerrar();
@@ -824,4 +824,251 @@ eventos_mui_ordenasiento::eventos_mui_ordenasiento(Asiento1View *ob) {
     objeto = ob;
     _depura("END eventos_mui_ordenasiento::eventos_mui_ordenasiento", 0);
 }
+
+///
+/**
+\param finicial
+\param ffinal
+**/
+void Asiento1View::asiento_regularizacion(QString finicial, QString ffinal) {
+    _depura("Asiento1View::regularizacion", 0, finicial + "--" + ffinal);
+    try {
+
+        /// Para poder generar un asiento de regularización debemos tener un asiento abierto.
+        /// Sino, no merece la pena hacerlo.
+
+        int idcuenta;
+        int idcuenta1;
+        Fixed diferencia("0");
+        Fixed totaldebe("0"), totalhaber("0");
+        Fixed totaldebe1("0"), totalhaber1("0");
+        QString concepto="Asiento de Regularizacion";
+        QString fecha = ffinal;
+
+        empresaBase()->muestraapuntes1();
+
+        empresaBase()->begin();
+
+        /// Creamos un asiento nuevo con la fecha final indicada.
+        QString supquery = "INSERT INTO asiento (fecha, descripcion, comentariosasiento) VALUES ('"+ffinal+"', 'Asiento de Regularizacion "+finicial+"--"+ffinal+"', 'Asiento de Regularizacion "+finicial+"--"+ffinal+"')";
+        empresaBase()->ejecuta(supquery);
+        supquery = "SELECT max(idasiento) as id FROM asiento";
+        cursor2 *cur = empresaBase()->cargacursor(supquery);
+        int idasiento = cur->valor("id").toInt();
+        delete cur;
+
+
+        /// El parametro esta en la configuracion de empresa.
+        /// Buscamos la cuenta de regularizacion. Normalmente es la 129
+        QString query = "SELECT * FROM cuenta WHERE codigo in (SELECT valor FROM configuracion WHERE nombre='CuentaRegularizacion')";
+        cur = empresaBase()->cargacursor(query);
+        if (cur->eof()) throw -1;
+        idcuenta1 = cur->valor("idcuenta").toInt();
+        delete cur;
+
+        /// Hacemos el calculo de saldos hasta la fecha.
+        query = "SELECT idcuenta, sum(debe) AS sumdebe, sum(haber) AS sumhaber, sum(debe)-sum(haber) AS saldito from apunte WHERE idcuenta IN (SELECT idcuenta FROM cuenta where idgrupo=6 OR idgrupo=7) AND fecha >= '"+finicial+"' AND fecha <= '"+ffinal+"' GROUP BY idcuenta ORDER BY saldito";
+        cur = empresaBase()->cargacursor(query);
+        int orden=0;
+        while (!cur->eof()) {
+            orden++;
+            idcuenta = cur->valor("idcuenta").toInt();
+            diferencia = Fixed(cur->valor("sumdebe"))-Fixed(cur->valor("sumhaber"));
+            if (diferencia > 0) {
+                totalhaber = diferencia;
+                totaldebe= 0;
+            } else {
+                totaldebe = -diferencia;
+                totalhaber=0;
+            }// end if
+            totaldebe1 = totaldebe1 + totaldebe;
+            totalhaber1 = totalhaber1 + totalhaber;
+            /// Insercion de Borrador
+            /// El borrador no existe, por lo que hay que hacer un insert
+            query = "INSERT INTO borrador (orden, conceptocontable, descripcion, fecha, idcuenta, debe, haber, idasiento) VALUES (";
+            query +=  QString::number(orden);
+            query +=  ", '" + empresaBase()->sanearCadena(concepto) + "'",
+                      query +=  ", 'Asiento de Regularizacion "+finicial+"--"+ffinal+"'";
+            query +=  ", '" + empresaBase()->sanearCadena(fecha) + "'",
+                      query +=  "," +   QString::number(idcuenta);
+            query +=  "," +   totaldebe.toQString().replace(",",".");
+            query +=  "," +   totalhaber.toQString().replace(",",".");
+            query +=  "," +   QString::number(idasiento) + ")";
+
+            empresaBase()->ejecuta(query);
+
+            /// Fin de la insercion de Borrador
+            cur->siguienteregistro();
+        }// end while
+        delete cur;
+
+
+        if (totaldebe1 > 0) {
+            orden++;
+            query = "INSERT INTO borrador (orden, conceptocontable, descripcion, fecha, idcuenta, debe, haber, idasiento) VALUES (";
+            query += QString::number(orden);
+            query += ", '"+empresaBase()->sanearCadena(concepto)+ "'";
+            query +=  ", 'Asiento de Regularizacion "+finicial+"--"+ffinal+"'";
+            query += ", '"+empresaBase()->sanearCadena(fecha)+ "'";
+            query += ","+ QString::number(idcuenta1);
+            query += ", 0";
+            query += ","+ totaldebe1.toQString().replace(",",".");
+            query += ","+ QString::number(idasiento) +")";
+            empresaBase()->ejecuta(query);
+        } // end if
+
+
+        if (totalhaber1 > 0) {
+            orden++;
+            query = "INSERT INTO borrador (orden, conceptocontable, descripcion, fecha, idcuenta, debe, haber, idasiento) VALUES (";
+            query += QString::number(orden);
+            query += ", '"+empresaBase()->sanearCadena(concepto)+ "'";
+            query += ", 'Asiento de Regularizacion "+finicial+"--"+ffinal+"'";
+            query += ", '"+empresaBase()->sanearCadena(fecha)+ "'";
+            query += ","+ QString::number(idcuenta1);
+            query += ","+ totalhaber1.toQString().replace(",",".");
+            query += ", 0";
+            query += ","+ QString::number(idasiento) +")";
+            empresaBase()->ejecuta(query);
+        }// end if
+
+        empresaBase()->commit();
+        cargaasientos();
+        muestraasiento(idasiento);
+    } catch (...) {
+        mensajeInfo("Error en los calculos");
+        empresaBase()->rollback();
+    } // end try
+    _depura("END Asiento1View::regularizacion", 0);
+}
+
+
+
+///
+/**
+**/
+void Asiento1View::asiento_cierre(QString finicial, QString ffinal) {
+    _depura("Asiento1View::asiento_cierre", 0);
+    try {
+        empresaBase()->begin();
+
+        /// Creamos un asiento nuevo con la fecha final indicada.
+        QString supquery = "INSERT INTO asiento (fecha, descripcion, comentariosasiento) VALUES ('"+ffinal+"', 'Asiento de Cierre "+finicial+"--"+ffinal+"', 'Asiento de Cierre "+finicial+"--"+ffinal+"')";
+        empresaBase()->ejecuta(supquery);
+        supquery = "SELECT max(idasiento) as id FROM asiento";
+        cursor2 *cur = empresaBase()->cargacursor(supquery);
+        int idasiento = cur->valor("id").toInt();
+        delete cur;
+
+        int idcuenta;
+        QString snuevodebe, snuevohaber;
+        /// Si no hay asiento lo calculamos.
+
+        QString query ="SELECT idcuenta, sum(debe) AS sumdebe, sum(haber) AS sumhaber, sum(debe)-sum(haber) AS saldito FROM apunte WHERE idcuenta NOT IN (SELECT idcuenta FROM cuenta WHERE idgrupo=6 OR idgrupo=7)  AND fecha <= '"+ffinal+"' AND fecha >= '"+finicial+"' GROUP BY idcuenta ORDER BY saldito";
+        empresaBase()->begin();
+        cursor2 *cursor=empresaBase()->cargacursor(query, "cursor");
+        empresaBase()->commit();
+        int orden=0;
+        QString concepto="Asiento de Cierre";
+        QString fecha = ffinal;
+        while (! cursor->eof()) {
+            orden++;
+            idcuenta = cursor->valor("idcuenta").toInt();
+            if (cursor->valor("saldito").left(1) != "-") {
+                snuevohaber = cursor->valor("saldito");
+                snuevodebe = "0";
+            } else {
+                snuevodebe = "ABS("+cursor->valor("saldito")+")";
+                snuevohaber = "0";
+            }// end if
+            if (cursor->valor("saldito") != "0.00") {
+                /// Insercion de Borrador
+                /// El borrador no existe, por lo que hay que hacer un insert
+                query = "INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento) VALUES (",
+                        query += QString::number(orden);
+                query += ", '"+empresaBase()->sanearCadena(concepto)+"'";
+                query += ", '"+empresaBase()->sanearCadena(fecha)+"'";
+                query += "," + QString::number(idcuenta);
+                query += "," + snuevodebe;
+                query += "," + snuevohaber;
+                query += "," + QString::number(idasiento) + ")";
+
+                empresaBase()->ejecuta(query);
+
+            }// end if
+            cursor->siguienteregistro();
+        }// end while
+        delete cursor;
+
+        empresaBase()->commit();
+        cargaasientos();
+        muestraasiento(idasiento);
+    } catch (...) {
+        mensajeInfo("Error en los calculos");
+        empresaBase()->rollback();
+    } // end try
+}
+
+
+///
+/**
+**/
+void Asiento1View::asiento_apertura(QString ffinal) {
+    try {
+        empresaBase()->begin();
+
+        /// Creamos un asiento nuevo con la fecha final indicada.
+        QString supquery = "INSERT INTO asiento (fecha, descripcion, comentariosasiento) VALUES ('"+ffinal+"', 'Asiento de Apertura "+ffinal+"', 'Asiento de Apertura "+ffinal+"')";
+        empresaBase()->ejecuta(supquery);
+        supquery = "SELECT max(idasiento) as id FROM asiento";
+        cursor2 *cur = empresaBase()->cargacursor(supquery);
+        int idasiento = cur->valor("id").toInt();
+        delete cur;
+
+        /// Preparamos los datos.
+        QString concepto="Asiento de Apertura";
+        QString fecha = ffinal;
+        QString idasientocierre;
+
+        /// Buscamos el asiento anterior a este.
+        QString SQLQuery = "SELECT * FROM asiento WHERE fecha < '"+fecha+"' AND idasiento < "+QString::number(idasiento)+" ORDER BY ordenasiento DESC";
+        cur=empresaBase()->cargacursor(SQLQuery);
+        if (!cur->eof()) {
+            idasientocierre=cur->valor("idasiento");
+        }// end if
+        delete cur;
+
+	int orden = 1;
+        /// Seleccionamos todos sus registros de borrador.
+        QString SQLQuery1 = "SELECT * FROM borrador WHERE idasiento="+idasientocierre+" ORDER BY orden";
+        cur = empresaBase()->cargacursor(SQLQuery1);
+        while (!cur->eof()) {
+            QString idcuenta = cur->valor("idcuenta");
+            QString totaldebe = cur->valor("debe");
+            QString totalhaber = cur->valor("haber");
+            SQLQuery1  = "INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento) VALUES (",
+            SQLQuery1 += QString::number(orden++);
+            SQLQuery1 += ", '" + empresaBase()->sanearCadena(concepto) + "'";
+            SQLQuery1 += ", '" + empresaBase()->sanearCadena(fecha) + "'";
+            SQLQuery1 += ","   + idcuenta;
+            SQLQuery1 += ","   + totalhaber.replace(",",".");
+            SQLQuery1 += ","   + totaldebe.replace(",",".");
+            SQLQuery1 += ","   + QString::number(idasiento) + ")";
+
+            empresaBase()->ejecuta(SQLQuery1);
+            cur->siguienteregistro();
+        }// end while
+        delete cur;
+
+
+        empresaBase()->commit();
+        cargaasientos();
+        muestraasiento(idasiento);
+    } catch (...) {
+        mensajeInfo("Error en los calculos");
+        empresaBase()->rollback();
+    } // end try
+}
+
+
 

@@ -39,9 +39,7 @@ private:
 public:
     BusquedaCanalDelegate(QWidget *parent = 0);
     ~BusquedaCanalDelegate();
-
-public slots:
-    virtual void s_editTextChanged(const QString &);
+    virtual void set(const QString &);
 };
 
 

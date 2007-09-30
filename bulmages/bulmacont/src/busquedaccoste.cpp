@@ -138,9 +138,8 @@ void BusquedaCCoste::setValorCampo(QString idc_coste) {
 **/
 BusquedaCCosteDelegate::BusquedaCCosteDelegate(QWidget *parent)
         : QComboBox2(parent) {
-    _depura("BusquedaCCosteDelegate::BusquedaCCosteDelegate", 10);
-    setEditable(true);
-    connect(this, SIGNAL(editTextChanged(const QString &)), this, SLOT(s_editTextChanged(const QString &)));
+    _depura("BusquedaCCosteDelegate::BusquedaCCosteDelegate", 0);
+    setEditable(false);
     _depura("END BusquedaCCosteDelegate::BusquedaCCosteDelegate", 0);
 }
 
@@ -162,32 +161,28 @@ BusquedaCCosteDelegate::~BusquedaCCosteDelegate() {
 \param cod
 \return
 **/
-void BusquedaCCosteDelegate::s_editTextChanged(const QString &cod) {
-    _depura("BusquedaCCosteDelegate::s_editTextChanged", 0);
-    static bool semaforo = FALSE;
-    QString codigo = cod;
+void BusquedaCCosteDelegate::set(const QString &cod) {
+    _depura("BusquedaCCosteDelegate::set", 0);
 
-    if (semaforo) {
-        return;
-    } else {
-        semaforo = TRUE;
-    } // end if
+    int index = 0;
 
-    m_cursorcombo = empresaBase()->cargacursor("SELECT nombre FROM c_coste WHERE nombre LIKE '" + codigo + "%' ORDER BY nombre LIMIT 25");
+    m_cursorcombo = empresaBase()->cargacursor("SELECT nombre FROM c_coste ORDER BY nombre ");
     clear();
 
+    addItem("--");
     ///TODO: La idea es que salga en el desplegable del combobox el listado de cuentas que
     /// coincidan con el texto escrito para poder elegirlo.
     while (!m_cursorcombo->eof()) {
-        //addItem(m_cursorcombo->valor("codigo") + ".-" + m_cursorcombo->valor("descripcion"));
-    addItem(m_cursorcombo->valor("nombre"));
+        addItem(m_cursorcombo->valor("nombre"));
+        if(m_cursorcombo->valor("nombre") == cod)
+		index = m_cursorcombo->regactual();
         m_cursorcombo->siguienteregistro();
     }
     delete m_cursorcombo;
     setEditText(cod);
+    setCurrentIndex(index+1);
 
-    semaforo = FALSE;
-    _depura("END BusquedaCCosteDelegate::s_editTextChanged", 0);
+    _depura("END BusquedaCCosteDelegate::set", 0);
 }
 
 

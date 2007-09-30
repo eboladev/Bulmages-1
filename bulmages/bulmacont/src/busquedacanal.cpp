@@ -158,7 +158,7 @@ BusquedaCanalDelegate::~BusquedaCanalDelegate() {
 \param cod
 \return
 **/
-void BusquedaCanalDelegate::s_editTextChanged(const QString &cod) {
+void BusquedaCanalDelegate::set(const QString &cod) {
     _depura("BusquedaCanalDelegate::s_editTextChanged", 0);
     static bool semaforo = FALSE;
     QString codigo = cod;

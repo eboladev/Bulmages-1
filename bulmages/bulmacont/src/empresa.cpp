@@ -20,7 +20,7 @@
 
 #include <QObject>
 #include <QDomDocument>
-
+#include <QInputDialog>
 
 #include "empresa.h"
 #include "abreempresaview.h"
@@ -184,90 +184,90 @@ QString Empresa::nombreempresa() {
 int Empresa::createMainWindows(Splash *splash) {
     _depura("Empresa::createMainWindows", 0);
     try {
-    /// Calculamos el n&uacute;mero de d&iacute;gitos que tiene el nivel &uacute;ltimo
-    /// de la Empresa.
-    QString query = "SELECT length(valor) AS numdigitos FROM configuracion WHERE nombre = 'CodCuenta'";
-    cursor2 *cursoraux1 = cargacursor(query);
-    numdigitos = cursoraux1->valor("numdigitos").toInt();
-    delete cursoraux1;
-    if (extracto != NULL) {
-        delete extracto;
-        delete diario;
-        delete balance;
-        delete selccostes;
-        delete selcanales;
-        delete m_listasientos;
-    } // end if
+        /// Calculamos el n&uacute;mero de d&iacute;gitos que tiene el nivel &uacute;ltimo
+        /// de la Empresa.
+        QString query = "SELECT length(valor) AS numdigitos FROM configuracion WHERE nombre = 'CodCuenta'";
+        cursor2 *cursoraux1 = cargacursor(query);
+        numdigitos = cursoraux1->valor("numdigitos").toInt();
+        delete cursoraux1;
+        if (extracto != NULL) {
+            delete extracto;
+            delete diario;
+            delete balance;
+            delete selccostes;
+            delete selcanales;
+            delete m_listasientos;
+        } // end if
 
-    /// Inicializamos los selectores de centros de coste y canales.
-    selccostes = new SelectCCosteView(this, 0);
-    selcanales = new selectcanalview(this, 0);
+        /// Inicializamos los selectores de centros de coste y canales.
+        selccostes = new SelectCCosteView(this, 0);
+        selcanales = new selectcanalview(this, 0);
 
-    /// Inicializamos las ventanas de uso generalizado.
+        /// Inicializamos las ventanas de uso generalizado.
 
-    /// Establecemos el porcentaje del carga de informaci&oacute;n en las diferentes ventanas.
-    /// pb = 0%
-    splash->mensaje(QApplication::translate("Empresa", "Inicializando Extracto"));
-    splash->setBarraProgreso(7);
-    m_progressbar->setValue(0);
-    extracto = new extractoview1(this, 0);
-    m_pWorkspace->addWindow(extracto);
+        /// Establecemos el porcentaje del carga de informaci&oacute;n en las diferentes ventanas.
+        /// pb = 0%
+        splash->mensaje(QApplication::translate("Empresa", "Inicializando Extracto"));
+        splash->setBarraProgreso(7);
+        m_progressbar->setValue(0);
+        extracto = new extractoview1(this, 0);
+        m_pWorkspace->addWindow(extracto);
 
-    /// pb = 20%
-    splash->mensaje(QApplication::translate("Empresa", "Inicializando Diario"));
-    splash->setBarraProgreso(20);
-    m_progressbar->setValue(20);
-    diario = new DiarioView(this, 0);
-    m_pWorkspace->addWindow(diario);
+        /// pb = 20%
+        splash->mensaje(QApplication::translate("Empresa", "Inicializando Diario"));
+        splash->setBarraProgreso(20);
+        m_progressbar->setValue(20);
+        diario = new DiarioView(this, 0);
+        m_pWorkspace->addWindow(diario);
 
-    /// pb = 35%
-    splash->mensaje(QApplication::translate("Empresa", "Inicializando Balance"));
-    splash->setBarraProgreso(35);
-    m_progressbar->setValue(35);
-    balance = new BalanceView(this, 0);
-    m_pWorkspace->addWindow(balance);
+        /// pb = 35%
+        splash->mensaje(QApplication::translate("Empresa", "Inicializando Balance"));
+        splash->setBarraProgreso(35);
+        m_progressbar->setValue(35);
+        balance = new BalanceView(this, 0);
+        m_pWorkspace->addWindow(balance);
 
-    /// pb = 50%
-/*
-    splash->mensaje(QApplication::translate("company", "Inicializando Balance Jerarquico"));
-    splash->setBarraProgreso(50);
-    m_progressbar->setValue(50);
-    balance1 = new BalanceTreeView(this, 0);
-    m_pWorkspace->addWindow(balance1);
-*/
+        /// pb = 50%
+        /*
+            splash->mensaje(QApplication::translate("company", "Inicializando Balance Jerarquico"));
+            splash->setBarraProgreso(50);
+            m_progressbar->setValue(50);
+            balance1 = new BalanceTreeView(this, 0);
+            m_pWorkspace->addWindow(balance1);
+        */
 
-    /// pb = 60%
-    splash->mensaje(QApplication::translate("company", "Inicializando Asientos"));
-    splash->setBarraProgreso(60);
-    m_progressbar->setValue(60);
-    introapunts2 = new Asiento1View(this, 0);
-    m_pWorkspace->addWindow(introapunts2);
+        /// pb = 60%
+        splash->mensaje(QApplication::translate("company", "Inicializando Asientos"));
+        splash->setBarraProgreso(60);
+        m_progressbar->setValue(60);
+        introapunts2 = new Asiento1View(this, 0);
+        m_pWorkspace->addWindow(introapunts2);
 
-    /// pb = 75%
-    splash->mensaje(QApplication::translate("company", "Inicializando Asientos"));
-    splash->setBarraProgreso(75);
-    m_progressbar->setValue(75);
-    m_listasientos = new AsientosView(this);
-    m_listasientos->presentar();
-    m_pWorkspace->addWindow(m_listasientos);
+        /// pb = 75%
+        splash->mensaje(QApplication::translate("company", "Inicializando Asientos"));
+        splash->setBarraProgreso(75);
+        m_progressbar->setValue(75);
+        m_listasientos = new AsientosView(this);
+        m_listasientos->presentar();
+        m_pWorkspace->addWindow(m_listasientos);
 
-    /// pb = 90%
-    splash->mensaje(QApplication::translate("company", "Inicializando Cuentas"));
-    splash->setBarraProgreso(90);
-    m_progressbar->setValue(90);
-    m_listcuentas = new listcuentasview1(this, 0);
-    m_listcuentas->inicializa();
-    m_pWorkspace->addWindow(m_listcuentas);
+        /// pb = 90%
+        splash->mensaje(QApplication::translate("company", "Inicializando Cuentas"));
+        splash->setBarraProgreso(90);
+        m_progressbar->setValue(90);
+        m_listcuentas = new listcuentasview1(this, 0);
+        m_listcuentas->inicializa();
+        m_pWorkspace->addWindow(m_listcuentas);
 
-    /// pb = 100%
-    splash->mensaje(QApplication::translate("company", "Terminado"));
-    splash->setBarraProgreso(100);
-    m_progressbar->setValue(100);
+        /// pb = 100%
+        splash->mensaje(QApplication::translate("company", "Terminado"));
+        splash->setBarraProgreso(100);
+        m_progressbar->setValue(100);
 
 
-    cargaConf();
+        cargaConf();
 
-    } catch(...) {
+    } catch (...) {
         _depura("Error al iniciar la clase company", 2);
     } // end try
 
@@ -723,8 +723,30 @@ int Empresa::listado347() {
 **/
 void Empresa::cierraempresa() {
     _depura("Empresa::cierraempresa", 0);
+    QString hoy = QDate::currentDate().toString("dd/MM/yyyy");
+    QString finicial = "01/01/"+hoy.right(4);
+
+    bool ok;
+    QString text = QInputDialog::getText(0,
+                       QApplication::translate("empresa","Fecha Inicial"), QApplication::translate("empresa", "Fecha Inicial Regularizacion:"), QLineEdit::Normal,
+                       finicial, &ok );
+    if ( ok && !text.isEmpty() ) {
+        finicial = text;
+    } else {
+        return;
+    } // end if
+
+    QString text1 = QInputDialog::getText(0, 
+                        QApplication::translate("empresa", "Fecha Final"), QApplication::translate("empresa", "Fecha Final:"), QLineEdit::Normal,
+                        hoy, &ok );
+    if ( ok && !text1.isEmpty() ) {
+        hoy = text1;
+    } else {
+        return;
+    } // end if
+
     introapunts2->show();
-    introapunts2->asiento_cierre();
+    introapunts2->asiento_cierre(finicial, hoy);
     _depura("END Empresa::cierraempresa", 0);
 }
 
@@ -734,8 +756,21 @@ void Empresa::cierraempresa() {
 **/
 void Empresa::abreempresa() {
     _depura("Empresa::abreempresa", 0);
+    QString hoy = QDate::currentDate().toString("dd/MM/yyyy");
+    QString finicial = "01/01/"+hoy.right(4);
+
+    bool ok;
+    QString text1 = QInputDialog::getText(0, 
+                        QApplication::translate("empresa", "Fecha"), QApplication::translate("empresa", "Fecha:"), QLineEdit::Normal,
+                        hoy, &ok );
+    if ( ok && !text1.isEmpty() ) {
+        hoy = text1;
+    } else {
+        return;
+    } // end if
+
     introapunts2->show();
-    introapunts2->asiento_apertura();
+    introapunts2->asiento_apertura(hoy);
     _depura("END Empresa::abreempresa", 0);
 }
 
@@ -744,10 +779,30 @@ void Empresa::abreempresa() {
 /**
 **/
 void Empresa::regularizaempresa() {
-    _depura("Empresa::regularizaempresa", 0);
+    _depura("Empresa::regularizaempresa", 0,"Sin parametros");
     QString hoy = QDate::currentDate().toString("dd/MM/yyyy");
     QString finicial = "01/01/"+hoy.right(4);
-    regularizaempresa(finicial, hoy); // TODO: Habria que preguntar con que fecha realizar la regularizacion
+
+    bool ok;
+    QString text = QInputDialog::getText(0,
+                       QApplication::translate("empresa","Fecha Inicial"), QApplication::translate("empresa", "Fecha Inicial Regularizacion:"), QLineEdit::Normal,
+                       finicial, &ok );
+    if ( ok && !text.isEmpty() ) {
+        finicial = text;
+    } else {
+        return;
+    } // end if
+
+    QString text1 = QInputDialog::getText(0, 
+                        QApplication::translate("empresa", "Fecha Final"), QApplication::translate("empresa", "Fecha Final Regularizacion:"), QLineEdit::Normal,
+                        hoy, &ok );
+    if ( ok && !text1.isEmpty() ) {
+        hoy = text1;
+    } else {
+        return;
+    } // end if
+
+    regularizaempresa(finicial, hoy);
     _depura("END Empresa::regularizaempresa", 0);
 }
 
@@ -758,7 +813,7 @@ void Empresa::regularizaempresa() {
 \param ffinal
 **/
 void Empresa::regularizaempresa(QString finicial, QString ffinal) {
-    _depura("Empresa::regularizaempresa", 0);
+    _depura("Empresa::regularizaempresa", 0, finicial +"--"+ffinal);
     introapunts2->show();
     introapunts2->asiento_regularizacion(finicial, ffinal);
     _depura("END Empresa::regularizaempresa", 0);
@@ -841,16 +896,6 @@ void Empresa::canaldefecto() {
 }
 
 
-
-
-/*
-Empresa* Empresa::empresaBase() {
-        _depura("Empresa::empresaBase", 0);
-        _depura("END Empresa::empresaBase", 0);
-	return this;
-}
-*/
-
 /// Guarda la configuracion de programa para poder recuperar algunas cosas de presentacion.
 /**
 **/
@@ -871,19 +916,19 @@ void Empresa::guardaConf() {
 
 
         for (int i = 0; i < m_listventanas->numVentanas(); i++) {
-		QObject *obj = m_listventanas->ventana(i);
-                QWidget *wid = (QWidget *) obj;
-		stream << "\t<VENTANA>\n";
-		stream << "\t\t<VNAME>" + obj->objectName() + "</VNAME>\n";
-		stream << "\t\t<VX>" + QString::number(wid->parentWidget()->x()) + "</VX>\n";
-		stream << "\t\t<VY>" + QString::number(wid->parentWidget()->y()) + "</VY>\n";
-		stream << "\t\t<VWIDTH>" + QString::number(wid->width()) + "</VWIDTH>\n";
-		stream << "\t\t<VHEIGHT>" + QString::number(wid->height()) + "</VHEIGHT>\n";
-		stream << "\t\t<VVISIBLE>" + (wid->isVisible() ? QString("TRUE") : QString("FALSE")) + "</VVISIBLE>\n";
-		stream << "\t\t<VMAXIMIZED>" + (wid->isMaximized() ? QString("TRUE") : QString("FALSE")) + "</VMAXIMIZED>\n";
-		stream << "\t\t<VACTIVEWINDOW>" + (m_bulmacont->workspace()->activeWindow() == wid ? QString("TRUE") : QString("FALSE")) + "</VACTIVEWINDOW>";
-		stream << "\t</VENTANA>\n";
-	} // end for
+            QObject *obj = m_listventanas->ventana(i);
+            QWidget *wid = (QWidget *) obj;
+            stream << "\t<VENTANA>\n";
+            stream << "\t\t<VNAME>" + obj->objectName() + "</VNAME>\n";
+            stream << "\t\t<VX>" + QString::number(wid->parentWidget()->x()) + "</VX>\n";
+            stream << "\t\t<VY>" + QString::number(wid->parentWidget()->y()) + "</VY>\n";
+            stream << "\t\t<VWIDTH>" + QString::number(wid->width()) + "</VWIDTH>\n";
+            stream << "\t\t<VHEIGHT>" + QString::number(wid->height()) + "</VHEIGHT>\n";
+            stream << "\t\t<VVISIBLE>" + (wid->isVisible() ? QString("TRUE") : QString("FALSE")) + "</VVISIBLE>\n";
+            stream << "\t\t<VMAXIMIZED>" + (wid->isMaximized() ? QString("TRUE") : QString("FALSE")) + "</VMAXIMIZED>\n";
+            stream << "\t\t<VACTIVEWINDOW>" + (m_bulmacont->workspace()->activeWindow() == wid ? QString("TRUE") : QString("FALSE")) + "</VACTIVEWINDOW>";
+            stream << "\t</VENTANA>\n";
+        } // end for
 
         stream << "</CONFIG>\n";
         file.close();
@@ -929,53 +974,53 @@ void Empresa::cargaConf() {
     /// Cogemos el indexador
     QString indexador = principal.firstChildElement("INDEXADOR").toElement().text();
     if (indexador == "TRUE") {
-	s_indexadorCambiaEstado(TRUE);
-	m_bulmacont->actionIndexador->setChecked(TRUE);
+        s_indexadorCambiaEstado(TRUE);
+        m_bulmacont->actionIndexador->setChecked(TRUE);
     } else {
-	s_indexadorCambiaEstado(FALSE);
-	m_bulmacont->actionIndexador->setChecked(FALSE);
+        s_indexadorCambiaEstado(FALSE);
+        m_bulmacont->actionIndexador->setChecked(FALSE);
     } // end if
 
     /// Tratamos cada ventana
-   QWidget *activewindow = NULL;
-   QDomNodeList nodos = docElem.elementsByTagName("VENTANA");
-        for (int i = 0; i < nodos.count(); i++) {
-            QDomNode ventana = nodos.item(i);
-            QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
-            if( !e1.isNull() ) { /// the node was really an element.
-		     QString vname = e1.firstChildElement("VNAME").toElement().text();
-			for (int j = 0; j < m_listventanas->numVentanas(); j++) {
-				QObject *obj = m_listventanas->ventana(j);
-				QWidget *wid = (QWidget *) obj;
-				if (obj->objectName() == vname) {
-					QString vx = e1.firstChildElement("VX").toElement().text();
-					QString vy = e1.firstChildElement("VY").toElement().text();
-					QString vwidth = e1.firstChildElement("VWIDTH").toElement().text();
-					QString vheight = e1.firstChildElement("VHEIGHT").toElement().text();
-					QString vvisible = e1.firstChildElement("VVISIBLE").toElement().text();
-					QString vmaximized = e1.firstChildElement("VMAXIMIZED").toElement().text();
-					QString vactivewindow = e1.firstChildElement("VACTIVEWINDOW").toElement().text();
-					/// Establecemos la geometria de la ventana principal.
-					wid->resize(vwidth.toInt(), vheight.toInt());
-					wid->parentWidget()->move(vx.toInt(), vy.toInt());
-					if ( vvisible == "TRUE") {
-						wid->showNormal();
-					} else {
-						wid->hide();
-					} // end if
-					if ( vmaximized == "TRUE") {
-						wid->showMaximized();
-					}
-					if ( vactivewindow == "TRUE") {
-						activewindow = wid;
-					}
-				} // end if
-			} // end for
-            } // end if
-        } // end for
-	/// Si hay una ventana activa se pone como activa.
-	if (activewindow) 
-		m_bulmacont->workspace()->setActiveWindow(activewindow);
+    QWidget *activewindow = NULL;
+    QDomNodeList nodos = docElem.elementsByTagName("VENTANA");
+    for (int i = 0; i < nodos.count(); i++) {
+        QDomNode ventana = nodos.item(i);
+        QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
+        if ( !e1.isNull() ) { /// the node was really an element.
+            QString vname = e1.firstChildElement("VNAME").toElement().text();
+            for (int j = 0; j < m_listventanas->numVentanas(); j++) {
+                QObject *obj = m_listventanas->ventana(j);
+                QWidget *wid = (QWidget *) obj;
+                if (obj->objectName() == vname) {
+                    QString vx = e1.firstChildElement("VX").toElement().text();
+                    QString vy = e1.firstChildElement("VY").toElement().text();
+                    QString vwidth = e1.firstChildElement("VWIDTH").toElement().text();
+                    QString vheight = e1.firstChildElement("VHEIGHT").toElement().text();
+                    QString vvisible = e1.firstChildElement("VVISIBLE").toElement().text();
+                    QString vmaximized = e1.firstChildElement("VMAXIMIZED").toElement().text();
+                    QString vactivewindow = e1.firstChildElement("VACTIVEWINDOW").toElement().text();
+                    /// Establecemos la geometria de la ventana principal.
+                    wid->resize(vwidth.toInt(), vheight.toInt());
+                    wid->parentWidget()->move(vx.toInt(), vy.toInt());
+                    if ( vvisible == "TRUE") {
+                        wid->showNormal();
+                    } else {
+                        wid->hide();
+                    } // end if
+                    if ( vmaximized == "TRUE") {
+                        wid->showMaximized();
+                    }
+                    if ( vactivewindow == "TRUE") {
+                        activewindow = wid;
+                    }
+                } // end if
+            } // end for
+        } // end if
+    } // end for
+    /// Si hay una ventana activa se pone como activa.
+    if (activewindow)
+        m_bulmacont->workspace()->setActiveWindow(activewindow);
     _depura("END Empresa::cargaConf", 0);
 }
 

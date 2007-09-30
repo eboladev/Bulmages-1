@@ -69,9 +69,6 @@ public:
     virtual void calculaypintatotales();
     virtual void pintar();
     virtual void trataestadoAsiento1();
-    virtual void asiento_cierre();
-    virtual void asiento_apertura();
-    virtual void asiento_regularizacion(QString, QString);
 };
 
 #endif
