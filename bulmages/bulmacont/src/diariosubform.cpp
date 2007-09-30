@@ -67,6 +67,8 @@ DiarioSubForm::DiarioSubForm(QWidget *parent, const char *) : SubForm2Bc(parent)
     setinsercion(FALSE);
     setOrdenEnabled(FALSE);
     setOrdenPorQuery(TRUE);
+    connect(this, SIGNAL(pintaMenu(QMenu *)), this, SLOT(s_pintaMenu(QMenu *)));
+    connect(this, SIGNAL(trataMenu(QAction *)), this, SLOT(s_trataMenu(QAction *)));
     _depura("DiarioSubForm::DiarioSubForm", 0);
 }
 
@@ -80,10 +82,58 @@ DiarioSubForm::~DiarioSubForm() {
 }
 
 
+/// Slot que trata la solicitud de pintar el menu contextual sobre el subformulario.
+/**
+\param menu
+**/
+void DiarioSubForm::s_pintaMenu(QMenu *menu) {
+    _depura("ListLinAsiento1View::s_pintaMenu", 0);
+    menu->addSeparator();
+    menu->addAction(tr("Mostrar asiento"));
+    menu->addSeparator();
+    menu->addAction(tr("Mostrar extracto (dia)"));
+    menu->addAction(tr("Mostrar extracto (mes)"));
+    menu->addAction(tr("Mostrar extracto (ano)"));
+    menu->addSeparator();
+    menu->addAction(tr("Mostrar balance (dia)"));
+    menu->addAction(tr("Mostrar balance (mes)"));
+    menu->addAction(tr("Mostrar balance (ano)"));
+    _depura("ListLinAsiento1View::s_pintaMenu", 0);
+}
+
+/// Slot que trata la activacion de un elemento en el menu contextual.
+/**
+\param action
+/return
+**/
+void DiarioSubForm::s_trataMenu(QAction *action) {
+    _depura("ListLinAsiento1View::s_trataMenu", 0);
+    if (!action) return;
+    if (action->text() == tr("Mostrar asiento"))
+        boton_asiento();
+    if (action->text() == tr("Mostrar extracto (dia)"))
+        boton_extracto1(0);
+    if (action->text() == tr("Mostrar extracto (mes)"))
+        boton_extracto1(1);
+    if (action->text() == tr("Mostrar extracto (ano)"))
+        boton_extracto1(2);
+    if (action->text() == tr("Mostrar balance (dia)"))
+        boton_balance1(0);
+    if (action->text() == tr("Mostrar balance (mes)"))
+        boton_balance1(1);
+    if (action->text() == tr("Mostrar balance (ano)"))
+        boton_balance1(2);
+    _depura("END ListLinAsiento1View::s_trataMenu", 0);
+}
+
+
+
+
 ///
 /**
 \return
 **/
+/*
 void DiarioSubForm::contextMenuEvent(QContextMenuEvent *) {
     _depura("DiarioSubForm::contextMenuEvent", 0);
     QAction *del = NULL;
@@ -158,4 +208,4 @@ void DiarioSubForm::contextMenuEvent(QContextMenuEvent *) {
     delete popup;
     _depura("END DiarioSubForm::contextMenuEvent", 0);
 }
-
+*/

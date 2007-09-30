@@ -38,7 +38,8 @@ public:
     virtual ~DiarioSubForm();
 
 public slots:
-    virtual void contextMenuEvent (QContextMenuEvent *);
+    virtual void s_pintaMenu(QMenu *menu);
+    virtual void s_trataMenu(QAction *action);
 };
 
 #endif

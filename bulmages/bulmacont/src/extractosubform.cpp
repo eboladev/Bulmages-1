@@ -66,89 +66,58 @@ ExtractoSubForm::ExtractoSubForm(QWidget *parent, const char *) : SubForm2Bc(par
     addSHeader("idtipoiva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("idtipoiva"));
     addSHeader("orden", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Orden"));
     setinsercion(FALSE);
+    setOrdenEnabled(TRUE);
+    setOrdenPorQuery(FALSE);
+
+    connect(this, SIGNAL(pintaMenu(QMenu *)), this, SLOT(s_pintaMenu(QMenu *)));
+    connect(this, SIGNAL(trataMenu(QAction *)), this, SLOT(s_trataMenu(QAction *)));
+
     _depura("END ExtractoSubForm::ExtractoSubForm", 0);
 }
 
 
-///
+
+/// Slot que trata la solicitud de pintar el menu contextual sobre el subformulario.
 /**
-\return
+\param menu
 **/
-void ExtractoSubForm::contextMenuEvent(QContextMenuEvent *) {
-    _depura("ExtractoSubForm::contextMenuEvent", 0);
-    QAction *del = NULL;
-    int row = currentRow();
-    if (row < 0) {
-        return;
-    } // end if
-    int col = currentColumn();
-    if (row < 0) {
-        return;
-    } // end if
-    QMenu *popup = new QMenu(this);
+void ExtractoSubForm::s_pintaMenu(QMenu *menu) {
+    _depura("ListLinAsiento1View::s_pintaMenu", 0);
+    menu->addSeparator();
+    menu->addAction(tr("Mostrar asiento"));
+    menu->addSeparator();
+    menu->addAction(tr("Mostrar diario (dia)"));
+    menu->addAction(tr("Mostrar diario (mes)"));
+    menu->addAction(tr("Mostrar diario (ano)"));
+    menu->addSeparator();
+    menu->addAction(tr("Mostrar balance (dia)"));
+    menu->addAction(tr("Mostrar balance (mes)"));
+    menu->addAction(tr("Mostrar balance (ano)"));
+    _depura("ListLinAsiento1View::s_pintaMenu", 0);
+}
 
-    QAction *mostapunte = popup->addAction("Mostrar asiento");
-    popup->addSeparator();
-    QAction *mostdiariodia = popup->addAction("Mostrar diario (dia)");
-    QAction *mostdiariomes = popup->addAction("Mostrar diario (mes)");
-    QAction *mostdiarioano = popup->addAction("Mostrar diario (ano)");
-    popup->addSeparator();
-    QAction *mostbalancedia = popup->addAction("Mostrar balance (dia)");
-    QAction *mostbalancemes = popup->addAction("Mostrar balance (mes)");
-    QAction *mostbalanceano = popup->addAction("Mostrar balance (ano)");
-
-    if (m_delete) {
-        del = popup->addAction(tr("Borrar registro"));
-    } // end if
-    popup->addSeparator();
-    QAction *ajustc = popup->addAction(tr("Ajustar columa"));
-    QAction *ajustac = popup->addAction(tr("Ajustar altura"));
-    QAction *ajust = popup->addAction(tr("Ajustar columnas"));
-    QAction *ajusta = popup->addAction(tr("Ajustar alturas"));
-    popup->addSeparator();
-    QAction *verconfig = popup->addAction(tr("Ver configurador de subformulario"));
-    QAction *opcion = popup->exec(QCursor::pos());
-
-    if (opcion == mostapunte) {
+/// Slot que trata la activacion de un elemento en el menu contextual.
+/**
+\param action
+/return
+**/
+void ExtractoSubForm::s_trataMenu(QAction *action) {
+    _depura("ListLinAsiento1View::s_trataMenu", 0);
+    if (!action) return;
+    if (action->text() == tr("Mostrar asiento"))
         boton_asiento();
-    } // end if
-    if (opcion == del) {
-        borrar(row);
-    } // end if
-    if (opcion == ajust) {
-        resizeColumnsToContents();
-    } // end if
-    if (opcion == ajusta) {
-        resizeRowsToContents();
-    } // end if
-    if (opcion == ajustc) {
-        resizeColumnToContents(col);
-    } // end if
-    if (opcion == ajustac) {
-        resizeRowToContents(row);
-    } // end if
-    if (opcion == verconfig) {
-        showConfig();
-    } // end if
-    if (opcion == mostdiariodia) {
+    if (action->text() == tr("Mostrar diario (dia)"))
         boton_diario1(0);
-    } // end if
-    if (opcion == mostdiariomes) {
+    if (action->text() == tr("Mostrar diario (mes)"))
         boton_diario1(1);
-    } // end if
-    if (opcion == mostdiarioano) {
+    if (action->text() == tr("Mostrar diario (ano)"))
         boton_diario1(2);
-    } // end if
-    if (opcion == mostbalancedia) {
+    if (action->text() == tr("Mostrar balance (dia)"))
         boton_balance1(0);
-    } // end if
-    if (opcion == mostbalancemes) {
+    if (action->text() == tr("Mostrar balance (mes)"))
         boton_balance1(1);
-    } // end if
-    if (opcion == mostbalanceano) {
+    if (action->text() == tr("Mostrar balance (ano)"))
         boton_balance1(2);
-    } // end if
-    delete popup;
-    _depura("END ExtractoSubForm::contextMenuEvent", 0);
+    _depura("END ListLinAsiento1View::s_trataMenu", 0);
 }
 
