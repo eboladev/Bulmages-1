@@ -96,10 +96,10 @@ int main(int argc, char **argv) {
 
         traductor = new QTranslator(0);
         if (confpr->valor(CONF_TRADUCCION) == "locales") {
-            traductor->load(QString("bulmages_") + QLocale::system().name(),
+            traductor->load(QString("bulmacont_") + QLocale::system().name(),
                             confpr->valor(CONF_DIR_TRADUCCION).toAscii());
         } else {
-            QString archivo = "bulmages_" + confpr->valor(CONF_TRADUCCION);
+            QString archivo = "bulmacont_" + confpr->valor(CONF_TRADUCCION);
             traductor->load(archivo.toAscii(), confpr->valor(CONF_DIR_TRADUCCION).toAscii());
         } // end if
         theApp->installTranslator(traductor);
@@ -161,10 +161,10 @@ int main(int argc, char **argv) {
 
         traductor = new QTranslator(0);
         if (confpr->valor(CONF_TRADUCCION) == "locales") {
-            traductor->load(QString("bulmafact_") + QLocale::system().name(),
+            traductor->load(QString("bulmacont_") + QLocale::system().name(),
                             confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
         } else {
-            QString archivo = "bulmafact_" + confpr->valor(CONF_TRADUCCION);
+            QString archivo = "bulmacont_" + confpr->valor(CONF_TRADUCCION);
             traductor->load(archivo.toAscii().constData(), confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
         } // end if
         theApp->installTranslator(traductor);
