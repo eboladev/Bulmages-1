@@ -37,7 +37,7 @@ class Empresa;
 
 
 /// Balance de Sumas y Saldos plano.
-/** \todo Hay que eliminar el ccostes[200] y cambiarlo por un cursor.
+/** 
     Esta clase muestra un balance de sumas y saldos de la empresa abierta.
     Esta clase genera el balance de sumas y saldos y lo muestra por pantalla en una
     ventana dise&ntilde;ada espec&iacute;ficamente para ello.
@@ -56,6 +56,8 @@ public:
     BalanceView(Empresa *, QWidget *parent = 0, int flags = 0);
     void inicializa1(QString, QString, QString, QString, QString);
     ~BalanceView();
+    void imprimir();
+    virtual void accept();
 
 private:
     /// Presenta el Balance.
@@ -63,13 +65,10 @@ private:
     /// Presenta el Balance de Sumas y Saldos.
     void presentarSyS(QString, QString, QString, QString, int, int, bool);
 
-public slots:
-    virtual void accept();
-    virtual void on_mui_imprimir_clicked();
-    virtual void on_mui_actualizar_clicked();
 
-private slots:
-    virtual void nivelactivated(int);
+public slots:
+    void on_mui_actualizar_clicked();
+
 };
 
 #endif

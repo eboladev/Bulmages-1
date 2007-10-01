@@ -129,10 +129,12 @@ void Asiento1View::asientoabiertop() {
     mui_inteligente->setEnabled(TRUE);
     mui_list->setinsercion(TRUE);
 
+    //mui_list->mui_list->setBackgroundColor(Qt::lightGray);
     /// Los apuntes deben ser editables.
     for (int fila = 0; fila < mui_list->rowCount(); fila++) {
         for (int columna = 0; columna < mui_list->columnCount(); columna++) {
             mui_list->item(fila, columna)->setFlags(Qt::ItemIsEnabled | Qt::ItemIsEditable);
+	    mui_list->item(fila, columna)->setBackgroundColor(Qt::lightGray);
         } // end for
     } // end for
 
@@ -156,6 +158,7 @@ void Asiento1View::asientocerradop() {
     for (int fila = 0; fila < mui_list->rowCount(); fila++) {
         for (int columna = 0; columna < mui_list->columnCount(); columna++) {
             mui_list->item(fila, columna)->setFlags(Qt::ItemIsEnabled);
+	    mui_list->item(fila, columna)->setBackgroundColor(Qt::darkGray);
         } // end for
     } // end for
 

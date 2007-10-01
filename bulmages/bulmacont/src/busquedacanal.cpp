@@ -134,8 +134,7 @@ QString BusquedaCanal::valorCampo() {
 BusquedaCanalDelegate::BusquedaCanalDelegate(QWidget *parent)
         : QComboBox2(parent) {
     _depura("BusquedaCanalDelegate::BusquedaCanalDelegate", 10);
-    setEditable(true);
-    connect(this, SIGNAL(editTextChanged(const QString &)), this, SLOT(s_editTextChanged(const QString &)));
+    setEditable(false);
     _depura("END BusquedaCanalDelegate::BusquedaCanalDelegate", 0);
 }
 

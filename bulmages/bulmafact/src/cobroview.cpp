@@ -76,7 +76,8 @@ CobroView::CobroView(Company *comp, QWidget *parent)
 */
 CobroView::~CobroView() {
     _depura("CobroView::~CobroView", 0);
-    ((Company *)empresaBase())->refreshCobrosCliente();
+    /// ATENCION: Hacer esto es un error ya que puede machacar procesos dependientes del listado.
+    // ((Company *)empresaBase())->refreshCobrosCliente();
     _depura("END CobroView::~CobroView", 0);
 }
 

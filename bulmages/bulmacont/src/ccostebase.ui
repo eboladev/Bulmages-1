@@ -191,10 +191,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Imprimir pedido</string>
+           <string>Ocultar Detalle</string>
           </property>
           <property name="whatsThis" >
-           <string>Imprimir pedido</string>
+           <string>Ocultar Detalle</string>
           </property>
           <property name="text" >
            <string/>

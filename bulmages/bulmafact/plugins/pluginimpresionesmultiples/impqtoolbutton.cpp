@@ -102,6 +102,11 @@ void ImpQToolButton::setBoton() {
 void ImpQToolButton::click() {
     _depura("ImpQToolButton::click", 0);
 
+    cursor2 *cur1 = NULL;
+    cursor2 *cur = NULL;
+
+    try {
+
     QString res = "";
 
     if (m_presupuestoList != NULL) {
@@ -215,6 +220,7 @@ void ImpQToolButton::click() {
 
     /// TRATAMOS LOS COBROS CUYO LISTADO ES ESPECIAL.
     if (m_cobrosList != NULL) {
+
         m_companyact = (Company *)m_cobrosList->empresaBase();
         SubForm3 *sub = m_cobrosList->mui_list;
         QString txt = "";
@@ -283,7 +289,7 @@ void ImpQToolButton::click() {
 
 		if (pres->DBvalue("idbanco") != "") {
 			QString query = "SELECT * FROM banco WHERE idbanco ="+pres->DBvalue("idbanco");
-			cursor2 *cur1 = m_companyact->cargacursor(query);
+			cur1 = m_companyact->cargacursor(query);
 			if (!cur1->eof()){
 				txt += " <drawString x=\"9.4cm\" y=\""+ QString::number(col+4.4) +"cm\">"+cur1->valor("nombanco")+"</drawString>\n";
 				txt += " <drawString x=\"9.4cm\" y=\""+ QString::number(col+4) +"cm\">"+cur1->valor("pobbanco")+"</drawString>\n";
@@ -295,7 +301,7 @@ void ImpQToolButton::click() {
 
 		if (pres->DBvalue("idcliente") != "") {
 			QString query = "SELECT * FROM cliente WHERE idcliente ="+pres->DBvalue("idcliente");
-			cursor2 *cur = m_companyact->cargacursor(query);
+			cur = m_companyact->cargacursor(query);
 			if (!cur->eof()){
 				txt += " <drawString x=\"4.8cm\" y=\""+ QString::number(col+2.3) +"cm\">"+cur->valor("nomcliente")+"</drawString>\n";
 //				txt += " <drawString x=\"4.8cm\" y=\""+ QString::number(col+1.9) +"cm\">"+cur->valor("nomaltcliente")+"</drawString>\n";
@@ -352,6 +358,13 @@ void ImpQToolButton::click() {
     comando = "rm "+res;
     system(comando.toAscii().data());
     _depura("END ImpQToolButton::click", 0);
+
+   } catch(...) {
+	mensajeInfo("Error en los calculos");
+	/// Si ha quedado memoria reservada la liberamos.
+	if (cur1) delete cur1;
+	if (cur) delete cur;
+   } // end try
 }
 
 // ==================================================================================

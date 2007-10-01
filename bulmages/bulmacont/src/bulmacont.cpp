@@ -86,8 +86,8 @@ Bulmacont::Bulmacont(QWidget *parent, Qt::WFlags f, QString DB)
     m_pb->setVisible(FALSE);
 
     initStatusBar();
-    statusBar()->showMessage(tr("Listo"), 2000);
-
+    statusBar()->showMessage(DB, 2000);
+    setWindowTitle(DB);
     _depura("END Bulmacont::Bulmacont", 0);
 }
 

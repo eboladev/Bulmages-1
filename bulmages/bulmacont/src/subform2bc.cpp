@@ -255,6 +255,16 @@ void SubForm2Bc::on_mui_list_cellChanged(int row, int col) {
         QString nfecha = normalizafecha(camp->text()).toString("dd/MM/yyyy");
         rec->setDBvalue("fecha", nfecha);
     } // end if
+    if (camp->nomcampo() == "debe") {
+	if (Fixed(camp->text()) != Fixed("0.00")) {
+		rec->setDBvalue("haber", "0.00");
+	} // end if
+    } // end if
+    if (camp->nomcampo() == "haber") {
+	if (Fixed(camp->text()) != Fixed("0.00")) {
+		rec->setDBvalue("debe", "0.00");
+	} // end if
+    } // end if
 
     g_plugins->lanza("SubForm2Bc_on_mui_list_cellChanged_post", this);
 

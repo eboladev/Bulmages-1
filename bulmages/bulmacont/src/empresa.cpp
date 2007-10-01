@@ -295,7 +295,7 @@ void Empresa::maximiza() {
 **/
 int Empresa::muestracuentas() {
     _depura("Empresa::muestracuentas", 0);
-    m_listcuentas->show();
+    m_listcuentas->setWindowState(introapunts2->windowState() & ~Qt::WindowMinimized | Qt::WindowActive);
     _depura("END Empresa::muestracuentas", 0);
     return 0;
 }
@@ -672,15 +672,14 @@ void Empresa::Abrirasientos() {
     cursor2 *cur = NULL;
     try {
         cur = cargacursor("SELECT abreasientos()");
-        //introapunts2->cargaasientos();
-        //introapunts2->boton_fin();
-        //introapunts2->show();
         g_main->statusBar()->showMessage(QObject::tr("Se han espaciado los asientos"), 2000);
+        delete cur;
+        _depura("END Empresa::Abrirasientos", 0);
     } catch (...) {
         mensajeError("Ha habido un error al espaciar los asientos");
-    }
-    delete cur;
-    _depura("END Empresa::Abrirasientos", 0);
+	if (cur) delete cur;
+	return;
+    } // end try
 }
 
 
@@ -691,16 +690,15 @@ void Empresa::Ordenarasientos() {
     QString query= "SELECT reordenaasientosall()";
     cursor2 *cur = NULL;
     try {
-        cur = cargacursor(query, "hola");
-        //introapunts2->cargaasientos();
-        //introapunts2->boton_fin();
-        //introapunts2->show();
+        cur = cargacursor(query);
         g_main->statusBar()->showMessage(QObject::tr("Se han ordenado los asientos"), 2000);
+        delete cur;
+        _depura("END Empresa::Ordenarasientos", 10);
     } catch (...) {
         mensajeError("Ha habido un error al ordenar los asientos");
+	if (cur) delete cur;
+	return;
     }
-    delete cur;
-    _depura("END Empresa::Ordenarasientos", 10);
 }
 
 

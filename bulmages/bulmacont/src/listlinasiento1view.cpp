@@ -49,13 +49,17 @@ ListLinAsiento1View::ListLinAsiento1View(QWidget *parent, const char *)
     addSHeader("nomcanal", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Canal"));
     addSHeader("marcaconciliacion", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr("Conciliacion"));
     addSHeader("idc_coste", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoWrite | SHeader::DBNoView, tr("Id centro de coste"));
-    addSHeader("nomc_coste", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr("Centro de coste"));
+    addSHeader("nomc_coste", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Centro de coste"));
     addSHeader("idtipoiva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr("Id tipo de IVA"));
     addSHeader("orden", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr("Orden"));
     addSHeader("idborrador", DBCampo::DBint,  DBCampo::DBPrimaryKey, SHeader::DBNoWrite | SHeader::DBNoView, tr("Id borrador"));
     addSHeader("idasiento", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite | SHeader::DBNoView, tr("Id asiento"));
     addSHeader("idcuenta", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoWrite | SHeader::DBNoView, tr("Id cuenta"));
     addSHeader("tipocuenta", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr("Tipo de cuenta"));
+    addSHeader("idregistroiva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr("Id. Registro IVA"));
+    addSHeader("factura", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr("Fecha Factura"));
+    addSHeader("ffactura", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr("Num. Factura"));
+
     setinsercion(TRUE);
     setOrdenEnabled(FALSE);
 
