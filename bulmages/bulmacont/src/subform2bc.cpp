@@ -217,7 +217,7 @@ void SubForm2Bc::on_mui_list_cellChanged(int row, int col) {
 
     if (camp->nomcampo() == "codigo" && camp->text() != "*") {
         QString codigoext = extiendecodigo(camp->text(), ((Empresa *) empresaBase())->numdigitosempresa());
-        QString query = "SELECT * FROM cuenta WHERE codigo = '" + codigoext + "'";
+        QString query = "SELECT idcuenta, codigo, tipocuenta, descripcion FROM cuenta WHERE codigo = '" + codigoext + "'";
         cursor2 *cur = empresaBase()->cargacursor(query);
         if (!cur->eof() ) {
             rec->setDBvalue("idcuenta", cur->valor("idcuenta"));
@@ -232,15 +232,17 @@ void SubForm2Bc::on_mui_list_cellChanged(int row, int col) {
         } // end if
     } // end if
     if (camp->nomcampo() == "nomcanal") {
-        QString query = "SELECT * FROM canal WHERE nombre = '" + camp->text() + "'";
+        QString query = "SELECT idcanal FROM canal WHERE nombre = '" + camp->text() + "'";
         cursor2 *cur = empresaBase()->cargacursor(query);
         if (!cur->eof() ) {
             rec->setDBvalue("idcanal", cur->valor("idcanal"));
+	} else {
+	    rec->setDBvalue("idcanal", "");
         } // end if
         delete cur;
     } // end if
     if (camp->nomcampo() == "nomc_coste") {
-        QString query = "SELECT * FROM c_coste WHERE nombre = '" + camp->text() + "'";
+        QString query = "SELECT idc_coste FROM c_coste WHERE nombre = '" + camp->text() + "'";
         cursor2 *cur = empresaBase()->cargacursor(query);
         if (!cur->eof() ) {
             rec->setDBvalue("idc_coste", cur->valor("idc_coste"));

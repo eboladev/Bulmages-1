@@ -158,31 +158,26 @@ BusquedaCanalDelegate::~BusquedaCanalDelegate() {
 \param cod
 \return
 **/
-void BusquedaCanalDelegate::set(const QString &cod) {
-    _depura("BusquedaCanalDelegate::s_editTextChanged", 0);
-    static bool semaforo = FALSE;
-    QString codigo = cod;
+void BusquedaCanalDelegate::set(const QString &codigo) {
+    _depura("BusquedaCanalDelegate::set", 0);
+    int index = 0;
 
-    if (semaforo) {
-        return;
-    } else {
-        semaforo = TRUE;
-    } // end if
-
-    m_cursorcombo = empresaBase()->cargacursor("SELECT nombre FROM canal WHERE nombre LIKE '" + codigo + "%' ORDER BY nombre LIMIT 25");
+    m_cursorcombo = empresaBase()->cargacursor("SELECT nombre FROM canal ORDER BY nombre");
     clear();
 
+    addItem("--");
     ///TODO: La idea es que salga en el desplegable del combobox el listado de cuentas que
     /// coincidan con el texto escrito para poder elegirlo.
     while (!m_cursorcombo->eof()) {
-        //addItem(m_cursorcombo->valor("codigo") + ".-" + m_cursorcombo->valor("descripcion"));
         addItem(m_cursorcombo->valor("nombre"));
+        if(m_cursorcombo->valor("nombre") == codigo)
+		index = m_cursorcombo->regactual();
         m_cursorcombo->siguienteregistro();
     }
     delete m_cursorcombo;
-    setEditText(cod);
+    setEditText(codigo);
+    setCurrentIndex(index+1);
 
-    semaforo = FALSE;
-    _depura("END BusquedaCanalDelegate::s_editTextChanged", 0);
+    _depura("END BusquedaCanalDelegate::set", 0);
 }
 

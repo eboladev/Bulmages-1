@@ -221,7 +221,7 @@
         </property>
         <property name="maximumSize" >
          <size>
-          <width>75</width>
+          <width>100</width>
           <height>32767</height>
          </size>
         </property>
@@ -1275,11 +1275,6 @@
  <layoutdefault spacing="2" margin="5" />
  <customwidgets>
   <customwidget>
-   <class>ExtractoSubForm</class>
-   <extends>QTableWidget</extends>
-   <header>extractosubform.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaFecha</class>
    <extends>QWidget</extends>
    <header>../../bulmalib/src/busquedafecha.h</header>
@@ -1288,6 +1283,11 @@
    <class>BusquedaCuenta</class>
    <extends>QWidget</extends>
    <header>busquedacuenta.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ExtractoSubForm</class>
+   <extends>QTableWidget</extends>
+   <header>extractosubform.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

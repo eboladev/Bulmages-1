@@ -436,16 +436,6 @@
         </property>
        </widget>
       </item>
-      <item row="4" column="1" >
-       <widget class="QLabel" name="textLabel1" >
-        <property name="text" >
-         <string>Centro de coste:</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
       <item row="4" column="2" >
        <spacer>
         <property name="orientation" >
@@ -461,16 +451,6 @@
       </item>
       <item row="5" column="0" >
        <widget class="QComboBox" name="combonivel" >
-        <property name="minimumSize" >
-         <size>
-          <width>150</width>
-          <height>0</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="1" >
-       <widget class="BusquedaCCoste" name="mui_combocoste" >
         <property name="minimumSize" >
          <size>
           <width>150</width>
@@ -841,11 +821,6 @@
  </widget>
  <layoutdefault spacing="3" margin="3" />
  <customwidgets>
-  <customwidget>
-   <class>BusquedaCCoste</class>
-   <extends>QComboBox</extends>
-   <header>busquedaccoste.h</header>
-  </customwidget>
   <customwidget>
    <class>BusquedaFecha</class>
    <extends>QWidget</extends>

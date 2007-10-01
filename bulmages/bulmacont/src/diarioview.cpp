@@ -187,73 +187,81 @@ void DiarioView::accept() {
 **/
 void DiarioView::presentar() {
     _depura("DiarioView::presentar", 0);
-    QString tabla = "apunte";
-    mui_list->setDBTableName("apunte");
-    mui_list->setDBCampoId("idapunte");
-    if (mui_asAbiertos->isChecked()) {
-	tabla = "borrador";
-        mui_list->setDBTableName("borrador");
-        mui_list->setDBCampoId("idborrador");
-    } // end if
+    cursor2 *cur = NULL;
+    try {
+        QString tabla = "apunte";
+        mui_list->setDBTableName("apunte");
+        mui_list->setDBCampoId("idapunte");
+        if (mui_asAbiertos->isChecked()) {
+            tabla = "borrador";
+            mui_list->setDBTableName("borrador");
+            mui_list->setDBCampoId("idborrador");
+        } // end if
 
-    QString query = "SELECT *, cuenta.descripcion AS descripcioncuenta FROM "+tabla+" LEFT JOIN cuenta ON cuenta.idcuenta = "+tabla+".idcuenta ";
-    query += " LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste FROM c_coste) AS t1 ON t1.idc_coste = "+tabla+".idc_coste ";
-    query += " LEFT JOIN (SELECT (ordenasiento || ' - ' || fecha) AS ordenasientoconfecha, ordenasiento, idasiento, fecha FROM asiento) AS t5 ON t5.idasiento = "+tabla+".idasiento";
-    query += " LEFT JOIN (SELECT idcanal, nombre as nombrecanal FROM canal) AS t2 ON t2.idcanal = "+tabla+".idcanal";
-    if (mui_asAbiertos->isChecked()) {
-    	query += " LEFT JOIN (SELECT idregistroiva, factura, idborrador FROM registroiva) AS t3 ON t3.idborrador = "+tabla+".idborrador ";
-    } else {
-    	query += " LEFT JOIN (SELECT idregistroiva, factura, idborrador FROM registroiva) AS t3 ON t3.idborrador IN (SELECT idborrador FROM borrador WHERE idapunte = "+tabla+".idapunte)";
-    } // end if
-    QString cad = "";
-    QString cadwhere=" WHERE ";
-    QString cadand = "";
-    QString totalcadena = "";
+        QString query = "SELECT *, cuenta.descripcion AS descripcioncuenta FROM "+tabla+" LEFT JOIN cuenta ON cuenta.idcuenta = "+tabla+".idcuenta ";
+        query += " LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste FROM c_coste) AS t1 ON t1.idc_coste = "+tabla+".idc_coste ";
+        query += " LEFT JOIN (SELECT (ordenasiento || ' - ' || fecha) AS ordenasientoconfecha, ordenasiento, idasiento, fecha FROM asiento) AS t5 ON t5.idasiento = "+tabla+".idasiento";
+        query += " LEFT JOIN (SELECT idcanal, nombre as nombrecanal FROM canal) AS t2 ON t2.idcanal = "+tabla+".idcanal";
+        if (mui_asAbiertos->isChecked()) {
+            query += " LEFT JOIN (SELECT idregistroiva, factura, idborrador FROM registroiva) AS t3 ON t3.idborrador = "+tabla+".idborrador ";
+        } else {
+            query += " LEFT JOIN (SELECT idregistroiva, factura, idborrador FROM registroiva) AS t3 ON t3.idborrador IN (SELECT idborrador FROM borrador WHERE idapunte = "+tabla+".idapunte)";
+        } // end if
+        query += " LEFT JOIN (SELECT idcuenta AS idcontrapartida, codigo AS codcontrapartida FROM cuenta) as t8 ON t8.idcontrapartida = "+tabla+".contrapartida";
 
-    if (mui_fechainicial->text() != "") {
-        cad += cadwhere + cadand + tabla + ".fecha >= '" + mui_fechainicial->text() + "'";
-        cadwhere = "";
-        cadand = " AND ";
-    } // end if
+        QString cad = "";
+        QString cadwhere=" WHERE ";
+        QString cadand = "";
+        QString totalcadena = "";
 
-    if (mui_fechafinal->text() != "") {
-        cad += cadwhere + cadand + tabla + ".fecha <= '" + mui_fechafinal->text() + "'";
-        cadwhere = "";
-        cadand = " AND ";
-    } // end if
+        if (mui_fechainicial->text() != "") {
+            cad += cadwhere + cadand + tabla + ".fecha >= '" + mui_fechainicial->text() + "'";
+            cadwhere = "";
+            cadand = " AND ";
+        } // end if
 
-    // Consideraciones para centros de coste y canales
-    selectcanalview *scanal=empresaBase()->getselcanales();
-    SelectCCosteView *scoste=empresaBase()->getselccostes();
-    QString ccostes = scoste->cadcoste();
-    if (ccostes != "") {
-        ccostes = " " + tabla +".idc_coste IN (" + ccostes + ") ";
-	cad += cadwhere + cadand + ccostes;
-        cadwhere = "";
-        cadand = " AND ";
-    } // end if
+        if (mui_fechafinal->text() != "") {
+            cad += cadwhere + cadand + tabla + ".fecha <= '" + mui_fechafinal->text() + "'";
+            cadwhere = "";
+            cadand = " AND ";
+        } // end if
 
-    QString ccanales = scanal->cadcanal();
-    if (ccanales != "") {
-        ccanales = " " + tabla + ".idcanal IN (" + ccanales + ") ";
-	cad += cadwhere + cadand + ccanales;
-        cadwhere = "";
-        cadand = " AND ";
-    } // end if
+        // Consideraciones para centros de coste y canales
+        selectcanalview *scanal=empresaBase()->getselcanales();
+        SelectCCosteView *scoste=empresaBase()->getselccostes();
+        QString ccostes = scoste->cadcoste();
+        if (ccostes != "") {
+            ccostes = " " + tabla +".idc_coste IN (" + ccostes + ") ";
+            cad += cadwhere + cadand + ccostes;
+            cadwhere = "";
+            cadand = " AND ";
+        } // end if
 
-    totalcadena = query + cad + " ORDER BY t5.fecha, t5.ordenasiento ";
+        QString ccanales = scanal->cadcanal();
+        if (ccanales != "") {
+            ccanales = " " + tabla + ".idcanal IN (" + ccanales + ") ";
+            cad += cadwhere + cadand + ccanales;
+            cadwhere = "";
+            cadand = " AND ";
+        } // end if
 
-    mui_list->cargar(totalcadena);
+        totalcadena = query + cad + " ORDER BY t5.fecha, t5.ordenasiento ";
 
-    cursor2 *cur = empresaBase()->cargacursor("SELECT sum(debe) as totaldebe, sum(haber) as totalhaber from " + tabla + cad);
-    if (!cur->eof()) {
-        totaldebe->setText(cur->valor("totaldebe"));
-        totalhaber->setText(cur->valor("totalhaber"));
-    } // end if
-    delete cur;
-    _depura("END DiarioView::presentar", 0);
+        mui_list->cargar(totalcadena);
+
+        cur = empresaBase()->cargacursor("SELECT sum(debe) as totaldebe, sum(haber) as totalhaber from " + tabla + cad);
+        if (!cur->eof()) {
+            totaldebe->setText(cur->valor("totaldebe"));
+            totalhaber->setText(cur->valor("totalhaber"));
+        } // end if
+        delete cur;
+        _depura("END DiarioView::presentar", 0);
+    } catch (...) {
+        mensajeInfo("Error en los calculos");
+        /// Liberamos memoria que pueda haber quedado reservada.
+        if (cur) delete cur;
+    }// end try
 }
-
 
 /// Boton de impresion del diario.
 /**

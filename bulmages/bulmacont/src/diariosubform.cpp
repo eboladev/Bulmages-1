@@ -45,6 +45,7 @@ DiarioSubForm::DiarioSubForm(QWidget *parent, const char *) : SubForm2Bc(parent)
     addSHeader("tipocuenta", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("tipocuenta"));
     addSHeader("descripcioncuenta", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Descripcion de Cuenta"));
     addSHeader("contrapartida", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Contrapartida"));
+    addSHeader("codcontrapartida", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Contrapartida"));
     addSHeader("nombrecanal", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Canal"));
     addSHeader("marcaconciliacion", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("MarcaConciliacion"));
     addSHeader("nombrec_coste", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Centro Coste"));
@@ -60,13 +61,12 @@ DiarioSubForm::DiarioSubForm(QWidget *parent, const char *) : SubForm2Bc(parent)
     /// Van juntas. Desactivas un tipo de pijama y se activa otro personalizado al hacer 'rowspan'.
     setListadoPijama(FALSE);
     setColumnToRowSpan("ordenasientoconfecha");
-    /// ------------------ ///
     setColorFondo1(confpr->valor(CONF_BG_DIARIO));
     setColorFondo2(confpr->valor(CONF_BG_ALT_DIARIO));
-
     setinsercion(FALSE);
     setOrdenEnabled(FALSE);
     setOrdenPorQuery(TRUE);
+    /// Preparamos el sistema de menus contextuales
     connect(this, SIGNAL(pintaMenu(QMenu *)), this, SLOT(s_pintaMenu(QMenu *)));
     connect(this, SIGNAL(trataMenu(QAction *)), this, SLOT(s_trataMenu(QAction *)));
     _depura("DiarioSubForm::DiarioSubForm", 0);
@@ -127,85 +127,3 @@ void DiarioSubForm::s_trataMenu(QAction *action) {
 }
 
 
-
-
-///
-/**
-\return
-**/
-/*
-void DiarioSubForm::contextMenuEvent(QContextMenuEvent *) {
-    _depura("DiarioSubForm::contextMenuEvent", 0);
-    QAction *del = NULL;
-    int row = currentRow();
-    if (row < 0) {
-        return;
-    } // end if
-    int col = currentColumn();
-
-    QMenu *popup = new QMenu(this);
-    QAction *mostapunte = popup->addAction("Mostrar asiento");
-    popup->addSeparator();
-    QAction *mostextractodia = popup->addAction("Mostrar extracto (dia)");
-    QAction *mostextractomes = popup->addAction("Mostrar extracto (mes)");
-    QAction *mostextractoano = popup->addAction("Mostrar extracto (ano)");
-    popup->addSeparator();
-    QAction *mostbalancedia = popup->addAction("Mostrar balance (dia)");
-    QAction *mostbalancemes = popup->addAction("Mostrar balance (mes)");
-    QAction *mostbalanceano = popup->addAction("Mostrar balance (ano)");
-
-    if (m_delete) {
-        del = popup->addAction(tr("Borrar registro"));
-    } // end if
-    popup->addSeparator();
-    QAction *ajustc = popup->addAction(tr("Ajustar columa"));
-    QAction *ajustac = popup->addAction(tr("Ajustar altura"));
-    QAction *ajust = popup->addAction(tr("Ajustar columnas"));
-    QAction *ajusta = popup->addAction(tr("Ajustar alturas"));
-    popup->addSeparator();
-    QAction *verconfig = popup->addAction(tr("Ver configurador de subformulario"));
-    QAction *opcion = popup->exec(QCursor::pos());
-
-    if (opcion == mostapunte) {
-        boton_asiento();
-    } // end if
-    if (opcion == del) {
-        borrar(row);
-    } // end if
-    if (opcion == ajust) {
-        resizeColumnsToContents();
-    } // end if
-    if (opcion == ajusta) {
-        resizeRowsToContents();
-    } // end if
-    if (opcion == ajustc) {
-        resizeColumnToContents(col);
-    } // end if
-    if (opcion == ajustac) {
-        resizeRowToContents(row);
-    } // end if
-    if (opcion == verconfig) {
-        showConfig();
-    } // end if
-    if (opcion == mostextractodia) {
-        boton_extracto1(0);
-    } // end if
-    if (opcion == mostextractomes) {
-        boton_extracto1(1);
-    } // end if
-    if (opcion == mostextractoano) {
-        boton_extracto1(2);
-    } // end if
-    if (opcion == mostbalancedia) {
-        boton_balance1(0);
-    } // end if
-    if (opcion == mostbalancemes) {
-        boton_balance1(1);
-    } // end if
-    if (opcion == mostbalanceano) {
-        boton_balance1(2);
-    } // end if
-    delete popup;
-    _depura("END DiarioSubForm::contextMenuEvent", 0);
-}
-*/

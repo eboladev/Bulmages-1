@@ -281,114 +281,122 @@ void extractoview1::on_mui_guardar_clicked() {
 **/
 void extractoview1::presentar() {
     _depura ( "extractoview1::presentar", 0 );
-    float debe, haber, saldo;
-    float debeinicial = 0, haberinicial = 0, saldoinicial = 0;
-    float debefinal, haberfinal, saldofinal;
+    Fixed debe("0.00"), haber("0.00"), saldo("0.00");
+    Fixed debeinicial("0.00"), haberinicial("0.00"), saldoinicial("0.00");
+    Fixed debefinal("0.00"), haberfinal("0.00"), saldofinal("0.00");
     QString idcuenta;
     QString finicial = m_fechainicial1->text();
     QString ffinal = m_fechafinal1->text();
     QString contra = mui_codigocontrapartida->text();
-
-    /// Preparamos el string para que aparezca una u otra cosa seg&uacute;n el punteo.
-    QString tipopunteo;
-    tipopunteo = "";
-    if ( mui_punteotodos->isChecked() ) {
-        tipopunteo = "";
-    } else if ( mui_punteopunteado->isChecked() ) {
-        tipopunteo = " AND punteo = TRUE ";
-    } else {
-        tipopunteo = " AND punteo = FALSE ";
-    } // end if
-
-    if ( contra != "" ) {
-        tipopunteo += " AND apunte.contrapartida = id_cuenta('" + contra + "') ";
-    } // end if
-
     QString cad;
     QString cadaux;
-    cursor2 *cursorapt;
-
-    if ( m_cursorcta->eof() || m_cursorcta->bof() )
-        return;
-
-    idcuenta = m_cursorcta->valor ( "idcuenta" );
-    /// Escribimos el nombre de la cuenta y el c&oacute;digo de la misma.
-    codigocuenta->setText ( m_cursorcta->valor ( "codigo" ) );
-    nombrecuenta->setText ( m_cursorcta->valor ( "descripcion" ) );
-    /// Hacemos la consulta de los apuntes a listar en la base de datos.
-    QString query = "";
-    /// Al igual que en el caso anterior los centros de coste han cambiado y a&uacute;n
-    /// no se pueden implementar.
-    selectcanalview *scanal = empresaBase()->getselcanales();
-    SelectCCosteView *scoste = empresaBase()->getselccostes();
-    QString ccostes = scoste->cadcoste();
-    if ( ccostes != "" ) {
-        ccostes.sprintf ( " AND idc_coste IN (%s) ", ccostes.toAscii().constData() );
-    } // end if
-    QString ccanales = scanal->cadcanal();
-    if ( ccanales != "" ) {
-        ccanales.sprintf ( " AND idcanal IN (%s) ", ccanales.toAscii().constData() );
-    } // end if
-    QString tabla;
-    QString cont;
-    if ( mui_asAbiertos->isChecked() ) {
-        tabla = "borrador";
-        cont = " FALSE AS punteo, * ";
-    } else {
-        tabla = "apunte";
-        cont = " * ";
-    } // end if
-
-    query = "SELECT * FROM ((SELECT " + cont + " FROM " + tabla + " WHERE  idcuenta = " + idcuenta + " AND fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' " + ccostes + " " + ccanales + " " + tipopunteo + ") AS t2 LEFT JOIN cuenta ON t2.idcuenta = cuenta.idcuenta) AS t1 LEFT JOIN asiento ON asiento.idasiento = t1.idasiento ";
-    query += " LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste FROM c_coste) AS t5 ON t5.idc_coste = t1.idc_coste ";
-    query += " LEFT JOIN (SELECT idcanal, nombre AS nombrecanal FROM canal) AS t6 ON t6.idcanal = t1.idcanal ";
-    query += " ORDER BY t1.fecha, ordenasiento, t1.orden";
-
-
-    mui_list->cargar ( query );
-    cursorapt=empresaBase()->cargacursor ( query );
-    cursorapt->primerregistro();
-    if ( !cursorapt->eof() ) {
-        /// Cargamos los saldos iniciales.
-        cursor2 *cursoraux;
-        query = "SELECT sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE idcuenta =" + idcuenta + " AND fecha < '" + finicial + "'";
-        cursoraux = empresaBase()->cargacursor ( query );
-        if ( !cursoraux->eof() ) {
-            debeinicial = atof ( cursoraux->valor ( "tdebe" ).toAscii() );
-            haberinicial = atof ( cursoraux->valor ( "thaber" ).toAscii() );
-            saldoinicial = debeinicial - haberinicial;
+    cursor2 *cursorapt = NULL;
+    cursor2 *cursoraux = NULL;
+    try {
+        /// Preparamos el string para que aparezca una u otra cosa seg&uacute;n el punteo.
+        QString tipopunteo;
+        tipopunteo = "";
+        if ( mui_punteotodos->isChecked() ) {
+            tipopunteo = "";
+        } else if ( mui_punteopunteado->isChecked() ) {
+            tipopunteo = " AND punteo = TRUE ";
+        } else {
+            tipopunteo = " AND punteo = FALSE ";
         } // end if
-        delete cursoraux;
 
-        cadaux.sprintf ( "%5.2f", debeinicial );
-        inicialdebe->setText ( cadaux );
-        cadaux.sprintf ( "%5.2f", haberinicial );
-        inicialhaber->setText ( cadaux );
-        cadaux.sprintf ( "%5.2f", saldoinicial );
-        inicialsaldo->setText ( cadaux );
-        saldo = saldoinicial;
-        debefinal = debeinicial;
-        haberfinal = haberinicial;
+        if ( contra != "" ) {
+            tipopunteo += " AND apunte.contrapartida = id_cuenta('" + contra + "') ";
+        } // end if
 
-        while ( !cursorapt->eof() ) {
-            debe = atof ( cursorapt->valor ( "debe" ).toAscii() );
-            haber = atof ( cursorapt->valor ( "haber" ).toAscii() );
-            saldo += debe - haber;
-            debefinal += debe;
-            haberfinal += haber;
-            cursorapt->siguienteregistro();
-        } // end while
 
-        saldofinal = debefinal - haberfinal;
-        cadaux.sprintf ( "%5.2f", debefinal );
-        totaldebe->setText ( cadaux );
-        cadaux.sprintf ( "%5.2f", haberfinal );
-        totalhaber->setText ( cadaux );
-        cadaux.sprintf ( "%5.2f", saldofinal );
-        totalsaldo->setText ( cadaux );
-    } // end if
-    delete cursorapt;
-    ajustes();
+
+        if ( m_cursorcta->eof() || m_cursorcta->bof() )
+            return;
+
+        idcuenta = m_cursorcta->valor ( "idcuenta" );
+        /// Escribimos el nombre de la cuenta y el c&oacute;digo de la misma.
+        codigocuenta->setText ( m_cursorcta->valor ( "codigo" ) );
+        nombrecuenta->setText ( m_cursorcta->valor ( "descripcion" ) );
+        /// Hacemos la consulta de los apuntes a listar en la base de datos.
+        QString query = "";
+        /// Al igual que en el caso anterior los centros de coste han cambiado y a&uacute;n
+        /// no se pueden implementar.
+        selectcanalview *scanal = empresaBase()->getselcanales();
+        SelectCCosteView *scoste = empresaBase()->getselccostes();
+        QString ccostes = scoste->cadcoste();
+        if ( ccostes != "" ) {
+            ccostes.sprintf ( " AND idc_coste IN (%s) ", ccostes.toAscii().constData() );
+        } // end if
+        QString ccanales = scanal->cadcanal();
+        if ( ccanales != "" ) {
+            ccanales.sprintf ( " AND idcanal IN (%s) ", ccanales.toAscii().constData() );
+        } // end if
+        QString tabla;
+        QString cont;
+        if ( mui_asAbiertos->isChecked() ) {
+            tabla = "borrador";
+            cont = " FALSE AS punteo, * ";
+        } else {
+            tabla = "apunte";
+            cont = " * ";
+        } // end if
+
+        query = "SELECT * FROM ((SELECT " + cont + " FROM " + tabla + " WHERE  idcuenta = " + idcuenta + " AND fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' " + ccostes + " " + ccanales + " " + tipopunteo + ") AS t2 LEFT JOIN cuenta ON t2.idcuenta = cuenta.idcuenta) AS t1 LEFT JOIN asiento ON asiento.idasiento = t1.idasiento ";
+        query += " LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste FROM c_coste) AS t5 ON t5.idc_coste = t1.idc_coste ";
+        query += " LEFT JOIN (SELECT idcanal, nombre AS nombrecanal FROM canal) AS t6 ON t6.idcanal = t1.idcanal ";
+        query += " LEFT JOIN (SELECT idcuenta AS idcontrapartida, codigo AS codcontrapartida FROM cuenta) as t8 ON t8.idcontrapartida = t1.contrapartida";
+        query += " ORDER BY t1.fecha, ordenasiento, t1.orden";
+
+
+        mui_list->cargar ( query );
+
+
+        cursorapt = empresaBase()->cargacursor ( query );
+        cursorapt->primerregistro();
+        if ( !cursorapt->eof() ) {
+            /// Cargamos los saldos iniciales.
+            query = "SELECT sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE idcuenta =" + idcuenta + " AND fecha < '" + finicial + "'";
+            cursoraux = empresaBase()->cargacursor ( query );
+            if ( !cursoraux->eof() ) {
+                debeinicial = Fixed ( cursoraux->valor ( "tdebe" ) );
+                haberinicial = Fixed ( cursoraux->valor ( "thaber" ) );
+                saldoinicial = debeinicial - haberinicial;
+            } // end if
+            delete cursoraux;
+
+            /// Establecemos los saldos iniciales
+            inicialdebe->setText ( debeinicial.toQString() );
+            inicialhaber->setText ( haberinicial.toQString() );
+            inicialsaldo->setText ( saldoinicial.toQString() );
+            saldo = saldoinicial;
+            debefinal = debeinicial;
+            haberfinal = haberinicial;
+
+            /// Recorremos la lista agregando el campo de saldo.
+            int i = 0;
+            while ( !cursorapt->eof() ) {
+                debe = Fixed(cursorapt->valor ( "debe" ));
+                haber = Fixed ( cursorapt->valor ( "haber" ) );
+                saldo = saldo + debe - haber;
+                debefinal = debefinal + debe;
+                haberfinal = haberfinal + haber;
+                mui_list->setDBvalue("saldo", i++, saldo.toQString());
+                cursorapt->siguienteregistro();
+            } // end while
+
+            saldofinal = debefinal - haberfinal;
+            totaldebe->setText ( debefinal.toQString() );
+            totalhaber->setText ( haberfinal.toQString() );
+            totalsaldo->setText ( saldofinal.toQString() );
+        } // end if
+        delete cursorapt;
+        ajustes();
+    } catch (...) {
+        mensajeInfo("Error en los calculos");
+	/// Liberamos memoria que pueda haber quedado reservada.
+        if (cursorapt) delete cursorapt;
+	if (cursoraux) delete cursoraux;
+    } // end catch
     _depura ( "END extractoview1::presentar", 0 );
 }
 

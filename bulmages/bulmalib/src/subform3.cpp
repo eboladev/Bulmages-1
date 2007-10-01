@@ -1379,6 +1379,31 @@ QString SubForm3::DBvalue(QString campo, int row) {
 
 ///
 /**
+\param campo Nombre de la columna que debe cambiarse.
+\param row   Fila correspondiente a la casilla
+\param valor Valor que tomará la casilla
+**/
+void SubForm3::setDBvalue(QString campo, int row, QString valor) {
+    _depura("SubForm3::setDBvalue", 0);
+    try {
+        SDBRecord *rec;
+        if (row == -1)
+            rec = lineaact();
+        else
+            rec=lineaat(row);
+        if (rec == NULL)
+            throw -1;
+        rec->setDBvalue(campo, valor);
+        _depura("END SubForm3::setDBvalue", 0);
+    } catch (...) {
+        mensajeInfo("Fila inexistente");
+        throw -1;
+    }
+}
+
+
+///
+/**
 \return
 **/
 int SubForm3::guardar() {
