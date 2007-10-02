@@ -5,6 +5,14 @@
     // ------------
     // CONFIG Parms
     // ------------
+
+    /// Parametros con la base de datos.
+	$host = "192.168.0.36";
+	$dbname = "bulmafact";
+	$port   = "5432";
+	$user   = "tborras";
+	$password = "tborras";
+
     
     // If the application is having problems you can log to this file
     $parm_error_log = '/tmp/wakeup.log';
@@ -125,8 +133,6 @@
             $cidn = -1;		// I'm saying an error no caller id # found
     }
     
-    
-    
     // Check if we have an outstanding Wakeup Call file
     if ( $parm_chan_ext )
         $dir_check = "$chan.$sta.call";
@@ -136,23 +142,19 @@
     if ($parm_debug_on)
         fputs( $stdlog, "Checking Directory [$parm_call_dir] Check=[$dir_check]\n" );
     
-    
-    
     // I started to think we could have many outstanding wakup calls, but then
     // it got very confusing on how to delete just one of them.  I wasn't about
     // to prompt each and every one.  So I went back to JUST ONE wakeup call
     // But this will get a list of all of them incase of problems
     $outc=0;
     $dir_handle = opendir( $parm_call_dir );
-    while( $file = readdir($dir_handle ) )
-    {
+    while( $file = readdir($dir_handle ) )   {
         if ($parm_debug_on)
             fputs( $stdlog, "File=$file\n" );
         
         // Check if we have an outstanding wakup call
         if (strstr( $file, $dir_check ) )
             $out[$outc++] = $file;
-        
     }
     closedir( $dir_handle );
     
@@ -164,63 +166,52 @@
     
     $rc = execute_agi( "ANSWER ");
     
-    sleep(1);	// Wait for the channel to get created and RTP packets to be sent
-				// On my system the welcome you would only hear 'elcome'  So I paused for 1 second
-    if ( !$rc[result] )
-        $rc = execute_agi( "STREAM FILE welcome \"\" ");
-
-    $rc[result] = '49';
-    // Process which key they pressed
-    //  I check most of my Return Codes incase the call is hung up
-    //
-    //  Being a phone person, I want to be able to skip the prompts, so I allow for entry over
-    //  The prompts.  Makes for more code, but make for quicker entry after you know what to key
-    //
-    switch( $rc[result] )    {
-    case '49':	{
+    sleep(1);
+    
+            $rc = execute_agi( "STREAM FILE custom/bienvenido_control \"0123456789\" ");
             $rc[result] = 0;
             while ( !$rc[result] ) {
-                $rc = execute_agi( "STREAM FILE please-enter-the \"0123456789\" ");
-
-                // If we get here, they haven't pressed anything yet.
-                if ( !$rc[result] )
-                    $rc = execute_agi( "GET DATA wakeup-call 15000 4");
+	        $rc = execute_agi( "GET DATA custom/porfavorcontrasenya 15000 4 ");
                 
                 if ( $rc[result] != -1 )      {
-
                     // They entered 4 digits,  check if its a valid time or they hung up
                     if ( strlen( $rc[result]) < 4 || $rc[result] < 0)  {
                         $rc[result] = 0;
-                        $rc = execute_agi( "STREAM FILE please-try-again \"\" ");
+                        $rc = execute_agi( "STREAM FILE custom/contrasenyaincorrecta \"\" ");
                     } // end if
+		    
+		    /// Si la contrasenya tiene longitud correcta comprobamos con la base de datos.
+		    if ( strlen($rc[result])>= 4) {
+                        // Save the time entered
+                        $trabajador = $rc[result];
+			if (comprueba_validacion($trabajador, $almacen) == FALSE) {
+                           $rc = execute_agi( "STREAM FILE custom/contrasenyaincorrecta \"\" ");
+                           $rc[result] = 0;
+			} // end if
+		    } // end if
+		    
                 } // end if
             } // end while
             
-            // Save the time entered
-            $trabajador = $rc[result];
-            
             $rc[result] = 0;
-            
-        } // end case
-        break;
-    } // end switch
-    
 
     if ($param_debug_on)
        fputs ($stdlog, "---DATABASE ---\n");
     $err = genera_validacion($trabajador, $almacen);
 
 
-
     if ( !$rc[result]) 
 	$rc = execute_agi( "SAY DIGITS $trabajador \"\" ");
+    if ( !$src[result])
+        $rc = execute_agi( "STREAM FILE custom/diganombre \"\" ");
+
+    $cad = $trabajador."_".$almacen."_".date("m-d-y_H:i:s");
+
+    if ( !$rc[result])
+	$rc = execute_agi( "RECORD FILE /tmp/password$cad wav \"0123456789\" 5000 ");
     if ( !$rc[result] )
-        $rc = execute_agi( "STREAM FILE goodbye \"\" ");
-    if ( !$rc[result])
-	$rc = execute_agi( "RECORD FILE /tmp/password wav \"0123456789\" 5000 ");
-    sleep(5);
-    if ( !$rc[result])
-	$rc = execute_agi( "STREAM FILE /tmp/password.wav \"0123456789\" ");
+        $rc = execute_agi( "STREAM FILE custom/gracias \"\" ");
+
     if ( !$rc[result] )
         $rc = execute_agi( "HANGUP");
     if ($parm_debug_on)
@@ -230,20 +221,13 @@
 }
 
 
+
 function genera_validacion($trab, $alm) {
-    GLOBAL	$stdin, $stdout, $stdlog, $parm_debug_on;
-    
+    GLOBAL	$stdin, $stdout, $stdlog, $parm_debug_on, $host, $dbname, $port, $user, $password;
     fflush( $stdout );
     if ($parm_debug_on)
         fputs( $stdlog,"---- DATABASE ----". $trab ."--".$alm. "\n" );
     
-
-	$host = "192.168.0.36";
-	$dbname = "bulmafact";
-	$port   = "5432";
-	$user   = "tborras";
-	$password = "tborras";
-
 	$conn = pg_connect("host=".$host." dbname=".$dbname." port=".$port." user=".$user." password=".$password);
 	if (!$conn) {
 	echo "An error occured.\n";
@@ -259,13 +243,39 @@ function genera_validacion($trab, $alm) {
 
 
 
+function comprueba_validacion($trab, $alm) {
+
+    GLOBAL	$stdin, $stdout, $stdlog, $parm_debug_on, $host, $dbname, $port, $user, $password;
+    fflush( $stdout );
+    if ($parm_debug_on)
+        fputs( $stdlog,"---- DATABASE ----". $trab ."--".$alm. "\n" );
+    
+	$conn = pg_connect("host=".$host." dbname=".$dbname." port=".$port." user=".$user." password=".$password);
+	if (!$conn) {
+	echo "An error occured.\n";
+	exit;
+	} else {
+	pg_exec($conn, "SET datestyle TO 'European'");
+	pg_exec($conn, "SET datestyle TO 'SQL'");
+	pg_exec($conn, "SET client_encoding to 'UTF-8'");
+
+        $query = "SELECT * from cuadrante NATURAL LEFT JOIN horario NATURAL LEFT JOIN trabajador NATURAL LEFT JOIN ALMACEN where fechacuadrante  = now()::date AND passasterisktrabajador='".$trab."' AND extasteriskalmacen='".$alm."'  ";
+	fputs( $stdlog, $query."\n");
+        $result = pg_query($conn, $query );
+        if (pg_num_rows($result) == 0) {
+             return FALSE;
+        } // end if
+        } // end if
+        return TRUE;
+}
+
+
 
 //--------------------------------------------------
 // This function will send out the command and get 
 //	the response back
 //--------------------------------------------------
-function execute_agi( $command )
-{
+function execute_agi( $command )  {
     GLOBAL	$stdin, $stdout, $stdlog, $parm_debug_on;
     
     fputs( $stdout, $command . "\n" );
@@ -278,32 +288,26 @@ function execute_agi( $command )
     if ($parm_debug_on)
         fputs( $stdlog, $resp );
     
-    if ( preg_match("/^([0-9]{1,3}) (.*)/", $resp, $matches) ) 
-    {
-        if (preg_match('/result=([-0-9a-zA-Z]*)(.*)/', $matches[2], $match)) 
-        {
+    if ( preg_match("/^([0-9]{1,3}) (.*)/", $resp, $matches) )  {
+        if (preg_match('/result=([-0-9a-zA-Z]*)(.*)/', $matches[2], $match))  {
             $arr['code'] = $matches[1];
             $arr['result'] = $match[1];
             if (isset($match[3]) && $match[3])
                 $arr['data'] = $match[3];
             return $arr;
-        } 
-        else 
-        {
+        }  else  {
             if ($parm_debug_on)
                 fputs( $stdlog, "Couldn't figure out returned string, Returning code=$matches[1] result=0\n" );	
             $arr['code'] = $matches[1];
             $arr['result'] = 0;
             return $arr;
         }
-   	} 
-    else 
-    {
+   	}   else    {
         if ($parm_debug_on)
             fputs( $stdlog, "Could not process string, Returning -1\n" );
         $arr['code'] = -1;
         $arr['result'] = -1;
         return $arr;
-    }
+        }
 } 
 ?>
