@@ -89,8 +89,9 @@ CuadranteView::~CuadranteView() {
 **/
 void CuadranteView::inicializaTrabajadores() {
     _depura("CuadranteView::inicializaTrabajadores", 0);
-
+    mui_listtrabajadores->clear();
     mui_listtrabajadores->setColumnCount(2);
+    mui_listtrabajadores->hideColumn(1);
     cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM tipotrabajo");
     if (cur) {
         while (!cur->eof()) {
@@ -103,7 +104,7 @@ void CuadranteView::inicializaTrabajadores() {
             if (curtrab) {
                 while (!curtrab->eof()) {
                     QTreeWidgetItem *itt = new QTreeWidgetItem(it);
-                    itt->setText(0, curtrab->valor("nomtrabajador"));
+                    itt->setText(0, curtrab->valor("nomtrabajador") + " " + curtrab->valor("apellidostrabajador"));
                     itt->setText(1, curtrab->valor("idtrabajador"));
                     itt->setTextColor(0, QColor("#000000"));
                     curtrab->siguienteregistro();
@@ -244,6 +245,17 @@ void CuadranteView::on_mui_calendario_customContextMenuRequested ( const QPoint 
 
     inicializaCuadrante(mui_calendario->selectedDate());
     _depura("END CuadranteView::on_mui_calendario_customContextMenuRequested", 0);
+}
+
+
+///
+/**
+**/
+void CuadranteView::on_mui_actualizar_clicked() {
+    _depura("CuadranteView::on_mui_actualizar_clicked", 0);
+        inicializaTrabajadores();
+        inicializaCuadrante(QDate::currentDate());
+    _depura("CuadranteView::on_mui_actualizar_clicked", 0);
 }
 
 

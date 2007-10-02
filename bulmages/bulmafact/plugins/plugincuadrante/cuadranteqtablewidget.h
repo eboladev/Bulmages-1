@@ -24,6 +24,7 @@
 
 #include <QEvent>
 #include <QTableWidget>
+#include <QTableWidgetItem>
 #include <QItemDelegate>
 #include <QLabel>
 #include "funcaux.h"
@@ -33,7 +34,7 @@
 class Company;
 
 /// Reimplementa los items de QTableWidget2 para que podamos programar cosas en ellos.
-class CuadranteQTextDocument : public QLabel, public PEmpresaBase {
+class CuadranteQTextDocument : public QLabel, public QTableWidgetItem,  public PEmpresaBase {
 Q_OBJECT
 private:
 	QString mdb_idalmacen;
@@ -48,7 +49,8 @@ public:
     QString idcuadrante();
     const QString impresion();
     bool buscaConflictos(QString idtrabajador, const QDate &date, QString horain, QString horafin);
-
+    void contextMenuEvent ( QContextMenuEvent * e );
+    void mouseDoubleClickEvent ( QMouseEvent * event );
 public slots:
     virtual void refresh();
 };
@@ -68,6 +70,11 @@ protected:
     virtual void dragEnterEvent(QDragEnterEvent *event);
     virtual void dropEvent(QDropEvent *event);
     virtual void dragMoveEvent(QDragMoveEvent *event);
+
+public slots:
+    void on_contextMenuRequested ( int row, int col, const QPoint & pos );
+
+
 };
 
 #endif

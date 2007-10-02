@@ -7,14 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>819</width>
-    <height>908</height>
+    <height>691</height>
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Nuevo almacen</string>
+   <string>Cuadrante</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_cobros.48x48.png</iconset>
+   <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_clock.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
@@ -83,10 +83,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Borrar almacen</string>
+           <string>Editar</string>
           </property>
           <property name="whatsThis" >
-           <string>Borrar almacen</string>
+           <string>Editar</string>
           </property>
           <property name="text" >
            <string/>
@@ -120,16 +120,53 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Borrar almacen</string>
+           <string>Imprimir</string>
           </property>
           <property name="whatsThis" >
-           <string>Borrar almacen</string>
+           <string>Imprimir</string>
           </property>
           <property name="text" >
            <string/>
           </property>
           <property name="icon" >
            <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_filePrint.xpm</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+D</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="mui_actualizar" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="toolTip" >
+           <string>Actualizar</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Actualizar</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_reload.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -152,7 +189,7 @@
           </property>
           <property name="sizeHint" >
            <size>
-            <width>631</width>
+            <width>591</width>
             <height>34</height>
            </size>
           </property>

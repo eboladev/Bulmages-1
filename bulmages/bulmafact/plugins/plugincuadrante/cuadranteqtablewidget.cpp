@@ -27,7 +27,7 @@
 #include "configuracion.h"
 #include "funcaux.h"
 #include "company.h"
-
+#include "cuadrante1view.h"
 
 /** Constructor de CuadranteQTableWidget clase derivada de QTableWidget con
 un eventHandler especifico
@@ -37,6 +37,7 @@ un eventHandler especifico
 **/
 CuadranteQTableWidget::CuadranteQTableWidget(QWidget *parent) : QTableWidget(parent) {
     _depura("CuadranteQTableWidget::CuadranteQTableWidget", 0);
+     connect(this, SIGNAL(contextMenuRequested ( int, int, const QPoint &)), this, SLOT(on_contextMenuRequested ( int, int, const QPoint & )));
     _depura("END CuadranteQTableWidget::CuadranteQTableWidget", 0);
 }
 
@@ -99,6 +100,10 @@ bool CuadranteQTableWidget::dropMimeData (int row, int column,const QMimeData *d
 }
 
 
+void CuadranteQTableWidget::on_contextMenuRequested ( int row, int col, const QPoint & pos ) {
+	_depura("CuadranteQTableWidget::contextMenuRequested", 2);
+}
+
 
 /// ======================================================================
 /// ======================================================================
@@ -109,11 +114,38 @@ bool CuadranteQTableWidget::dropMimeData (int row, int column,const QMimeData *d
 \param emp
 \param parent
 **/
-CuadranteQTextDocument::CuadranteQTextDocument(Company *emp, QWidget *parent) : QLabel(parent), PEmpresaBase(emp) {
+CuadranteQTextDocument::CuadranteQTextDocument(Company *emp, QWidget *parent) :QLabel(parent), QTableWidgetItem(QTableWidgetItem::UserType),  PEmpresaBase(emp) {
     _depura("CuadranteQTextDocument::CuadranteQTextDocument", 0);
-    setScaledContents(TRUE);
+//    setScaledContents(TRUE);
     _depura("END CuadranteQTextDocument::CuadranteQTextDocument", 0);
 }
+
+
+///
+/**
+\param e
+**/
+void CuadranteQTextDocument::contextMenuEvent ( QContextMenuEvent * e ) {
+//        int currow = tableWidget()->row(this);
+//	int currcol = tableWidget()->column(this);
+	QTableWidgetItem::setSelected(TRUE);
+//	tableWidget()->setRangeSelected( QTableWidgetSelectionRange(currow, currcol, currow, currcol ), TRUE );
+}
+
+
+///
+/**
+\param event
+**/
+void CuadranteQTextDocument::mouseDoubleClickEvent ( QMouseEvent * event ) {
+    Cuadrante1View *cuad = new Cuadrante1View((Company *)empresaBase(), 0);
+    empresaBase()->pWorkspace()->addWindow(cuad);
+    cuad->show();
+//    CuadranteQTextDocument *newItem = (CuadranteQTextDocument *) mui_cuadrante->cellWidget(mui_cuadrante->currentRow(), mui_cuadrante->currentColumn());
+    connect (cuad, SIGNAL(save()), this, SLOT(refresh()));
+    cuad->cargar(idcuadrante());
+}
+
 
 
 ///
@@ -202,7 +234,7 @@ void CuadranteQTextDocument::pintaCuadrante(QString idalmacen, const QDate &date
         } else {
             html += "<table width=\"240\" height=\"300\" bgcolor=\"#FFFFFF\"><tr><td>";
         }
-        html += "<font size=\"-2\" color=\"#660000\"><B>" + cur->valor("nomalmacen") + "</B>: " + date.toString("dd/MM/yyyy")+"</font><BR>";
+        html += "<font size=\"2\" color=\"#660000\"><B>" + cur->valor("nomalmacen") + "</B>: " + date.toString("dd/MM/yyyy")+"</font><BR>";
         mdb_idcuadrante = cur->valor("idcuadrante");
         mdb_idalmacen = idalmacen;
         mdb_fechacuadrante = date;
@@ -216,16 +248,16 @@ void CuadranteQTextDocument::pintaCuadrante(QString idalmacen, const QDate &date
 
 
         if (oldnomtipotrabajo != cur1->valor("nomtipotrabajo") ) {
-            html += "<font size=\"-3\" color=\"#00FF00\" >" + cur1->valor("nomtipotrabajo") + ":</font><BR>";
+            html += "<font size=\"1\" color=\"#00FF00\" >" + cur1->valor("nomtipotrabajo") + ":</font><BR>";
             oldnomtipotrabajo = cur1->valor("nomtipotrabajo");
         } // end if
 
 	/// Si hay conflictos con el trabajador.
 	if (buscaConflictos(cur1->valor("idtrabajador"), date, cur1->valor("horainhorario").left(5), cur1->valor("horafinhorario").left(5))) {
-		html += "<font size=\"-3\" color=\"#FF0000\">ERROR</FONT> ";
+		html += "<font size=\"1\" color=\"#FF0000\">ERROR</FONT> ";
 	}
 
-        html += "<font size=\"-3\" color=\"#0000FF\">" + cur1->valor("nomtrabajador") + " " + cur1->valor("apellidostrabajador");
+        html += "<font size=\"1\" color=\"#0000FF\">" + cur1->valor("nomtrabajador") + " " + cur1->valor("apellidostrabajador");
         html += " (" + cur1->valor("horainhorario").left(5) + "--" + cur1->valor("horafinhorario").left(5) + ") </font><BR>";
 
         cur1->siguienteregistro();
@@ -233,13 +265,13 @@ void CuadranteQTextDocument::pintaCuadrante(QString idalmacen, const QDate &date
     delete cur1;
 
     if (cur->valor("comentcuadrante") != "") {
-        html += "<HR><font size=\"-4\" color=\"#000000\">" + cur->valor("comentcuadrante").replace("\n", "<BR>")+"</font>";
+        html += "<HR><font size=\"1\" color=\"#000000\">" + cur->valor("comentcuadrante").replace("\n", "<BR>")+"</font>";
     } // end if
     delete cur;
 
     html += "</td></tr></table>";
 
-    setText(html);
+    QLabel::setText(html);
     _depura("END CuadranteQTextDocument::pintaCuadrante", 0);
 }
 

@@ -70,11 +70,11 @@ Cuadrante1View::Cuadrante1View(Company *comp, QWidget *parent)
         mui_list->setDBTableName("horario");
         mui_list->setDBCampoId("idhorario");
         mui_list->addSHeader("nomtrabajador",  DBCampo::DBvarchar, DBCampo::DBNoSave,     SHeader::DBNone,                         tr("Nombre Trabajador"));
-        mui_list->addSHeader("horainhorario",  DBCampo::DBvarchar, DBCampo::DBNothing,    SHeader::DBNone,                         tr("Hora Inicio"));
-        mui_list->addSHeader("horafinhorario", DBCampo::DBvarchar, DBCampo::DBNothing,    SHeader::DBNone,                         tr("Hora Fin"));
-        mui_list->addSHeader("idcuadrante",    DBCampo::DBint,     DBCampo::DBNothing,    SHeader::DBNoView | SHeader::DBNoWrite,  tr("ID Cuadrante"));
+        mui_list->addSHeader("horainhorario",  DBCampo::DBvarchar, DBCampo::DBNotNull,    SHeader::DBNone,                         tr("Hora Inicio"));
+        mui_list->addSHeader("horafinhorario", DBCampo::DBvarchar, DBCampo::DBNotNull,    SHeader::DBNone,                         tr("Hora Fin"));
+        mui_list->addSHeader("idcuadrante",    DBCampo::DBint,     DBCampo::DBNotNull,    SHeader::DBNoView | SHeader::DBNoWrite,  tr("ID Cuadrante"));
+        mui_list->addSHeader("idtrabajador",   DBCampo::DBint,     DBCampo::DBNotNull,    SHeader::DBNone,  tr("ID trabajador"));
         mui_list->addSHeader("idhorario",      DBCampo::DBint,     DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite,  tr("ID horario"));
-        mui_list->addSHeader("idtrabajador",   DBCampo::DBint,     DBCampo::DBNotNull,    SHeader::DBNoView | SHeader::DBNoWrite,  tr("ID trabajador"));
         mui_list->setinsercion(TRUE);
         mui_list->setDelete(TRUE);
         mui_list->setSortingEnabled(FALSE);

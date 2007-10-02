@@ -44,16 +44,15 @@ public:
     ~CuadranteView();
     void inicializaTrabajadores();
     void inicializaCuadrante(const QDate &dateorig);
+    virtual void on_mui_imprimir_clicked();
+
 
 public slots:
     virtual void on_mui_calendario_clicked(const QDate &date);
     virtual void on_mui_listtrabajadores_itemDoubleClicked(QTreeWidgetItem *item, int column);
     virtual void on_mui_editar_clicked();
     virtual void on_mui_calendario_customContextMenuRequested ( const QPoint & pos );
-    virtual void on_mui_imprimir_clicked();
+    virtual void on_mui_actualizar_clicked();
 };
-
-
-
 #endif
 
