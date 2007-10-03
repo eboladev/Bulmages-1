@@ -190,7 +190,9 @@ bool QTableWidgetItem2::operator< (const QTableWidgetItem & other) const {
         QDate fcad1 = normalizafecha(cad1);
         QString acad1 = fcad1.toString(Qt::ISODate);
 
-        if (acad[2] == '/' && acad1[2]== '/') {
+
+        if (acad[4] == '-' && acad1[4]== '-' && acad[7] == '-' && acad1[7] == '-') {
+	    _depura ("es fecha" + acad +" ---- " + acad1, 0);
             return fcad < fcad1;
         } // end if
         return cad < cad1;
