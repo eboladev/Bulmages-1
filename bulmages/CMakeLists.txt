@@ -1,0 +1,15 @@
+project(Bulmages)
+
+cmake_minimum_required(VERSION 2.4.0)
+find_package(Qt4 REQUIRED)
+if(QT4_FOUND)
+	set(qt_use_qtxml true)
+	set(QT_QT3SUPPORT_LIBRARY true)
+endif (QT4_FOUND)
+INCLUDE (${Bulmages_SOURCE_DIR}/ModulesCMake/FindPostgreSQL.cmake)
+add_subdirectory(bulmalib)
+add_subdirectory(bulmacont)
+
+#add_subdirectory(bulmafact)
+#add_subdirectory(bulmages)
+#add_subdirectory(bulmatpv)
