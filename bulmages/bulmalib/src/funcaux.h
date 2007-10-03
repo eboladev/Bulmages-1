@@ -89,7 +89,7 @@ void mensajeError(QString cad);
 /// especificado por CONF_DIR_USER.
 void invocaPDF(const QString arch);
 void generaPDF(const QString arch);
-QString  num2texto(QString numero, QString moneda = "Euros", QString singular = "euro");
+QString num2texto(QString numero, QString moneda = "euros", QString singular = "euro");
 void centrarEnPantalla(QWidget *ventana);
 
 #endif

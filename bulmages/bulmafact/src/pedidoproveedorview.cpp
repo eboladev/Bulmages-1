@@ -38,6 +38,7 @@
 #include "albaranproveedorview.h"
 #include "funcaux.h"
 
+
 ///
 /**
 \param comp
@@ -378,7 +379,7 @@ void PedidoProveedorView::imprimir() {
         basesimp[linea->DBvalue("ivalpedidoproveedor")] = basesimp[linea->DBvalue("ivalpedidoproveedor")] + base - base * Fixed(linea->DBvalue("descuentolpedidoproveedor").toAscii().constData()) / 100;
         fitxersortidatxt += "<tr>\n";
         fitxersortidatxt += "   <td>" + linea->DBvalue("codigocompletoarticulo") + "</td>\n";
-        fitxersortidatxt += "   <td>" + linea->DBvalue("desclpedidoproveedor") + "</td>\n";
+        fitxersortidatxt += "   <td><para>" + XMLProtect(linea->DBvalue("desclpedidoproveedor")) + "</para></td>\n";
         fitxersortidatxt += "   <td>" + l.sprintf("%s", linea->DBvalue("cantlpedidoproveedor").toAscii().constData())+"</td>\n";
         fitxersortidatxt += "   <td>" + l.sprintf("%s", linea->DBvalue("pvplpedidoproveedor").toAscii().constData())+"</td>\n";
         fitxersortidatxt += "   <td>" + l.sprintf("%s", linea->DBvalue("descuentolpedidoproveedor").toAscii().constData()) + " %</td>\n";

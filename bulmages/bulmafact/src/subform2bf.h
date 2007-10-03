@@ -36,7 +36,7 @@ class SubForm2Bf;
 
 
 /// Clase SubForm2BfDelegate
-/** Se encarga del control de los Widgets de Edicion del sistema.*/
+/** Se encarga del control de los 'Widgets' de edici&oacute;n del sistema.*/
 class QSubForm2BfDelegate : public QItemDelegate, public PEmpresaBase {
 protected:
     SubForm2Bf *m_subform;
@@ -53,8 +53,8 @@ public:
 
 
 /// Clase SubForm2Bf
-/** Es la primera abstraccion de los subformularios que incluye todas las caracteristicas
-    comunes de la facturacion.
+/** Es la primera abstraccion de los subformularios que incluye todas las caracter&iacute;sticas
+    comunes de la facturaci&oacute;n.
 */
 class SubForm2Bf : public SubForm3 {
     Q_OBJECT
@@ -63,24 +63,18 @@ public:
     QSubForm2BfDelegate *m_delegate;
 
 protected:
-    //bool m_delete;
     QString mdb_idcliente;
     QString mdb_idproveedor;
-
-private:
-
 
 public:
     SubForm2Bf(QWidget *parent = 0);
     virtual ~SubForm2Bf();
-    //void setDelete(bool);
     virtual void cargar(QString query);
     virtual void setEmpresaBase(EmpresaBase *);
     virtual void on_mui_list_cellChanged(int row, int col);
     virtual int cerrarEditor();
     void setIdCliente(QString id);
     void setIdProveedor(QString id);
-
 
 public slots:
     virtual void on_mui_list_pressedSlash(int row, int col);

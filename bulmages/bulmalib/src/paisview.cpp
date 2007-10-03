@@ -42,9 +42,9 @@ PaisView::PaisView(EmpresaBase *emp, QWidget *parent)
     mui_list->setDBTableName("pais");
     mui_list->setDBCampoId("idpais");
     mui_list->addSHeader("idpais", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("Id. Pais"));
+    mui_list->addSHeader("descpais", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre Pais"));
     mui_list->addSHeader("cod2pais", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Codigo 2 Digitos"));
     mui_list->addSHeader("cod3pais", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Codigo 3 Digitos"));
-    mui_list->addSHeader("descpais", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre Pais"));
     mui_list->setinsercion(FALSE);
     mui_list->setDelete(FALSE);
     mui_list->setSortingEnabled(TRUE);
@@ -128,13 +128,13 @@ void PaisView::mostrarplantilla() {
 
     if (m_idpais != "0") {
         cargar(m_idpais);
-	mui_descpais->setText(DBvalue("descpais"));
-	mui_cod2pais->setText(DBvalue("cod2pais"));
-	mui_cod3pais->setText(DBvalue("cod3pais"));
+    mui_descpais->setText(DBvalue("descpais"));
+    mui_cod2pais->setText(DBvalue("cod2pais"));
+    mui_cod3pais->setText(DBvalue("cod3pais"));
 
-	mui_listprovincias->cargar("SELECT * FROM provincia WHERE idpais=" + m_idpais);
+    mui_listprovincias->cargar("SELECT * FROM provincia WHERE idpais=" + m_idpais);
 
-	dialogChanges_cargaInicial();
+    dialogChanges_cargaInicial();
     } // end if
     _depura("END PaisView::mostrarplantilla", 0);
 }

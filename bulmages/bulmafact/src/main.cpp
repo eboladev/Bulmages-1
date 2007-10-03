@@ -105,37 +105,33 @@ int main(int argc, char **argv) {
         QString us = argv[3];
         QString pass = argv[4];
 
-
-
         /// Dependiendo de los argumentos pasados se lanza con unas opciones u otras para la
         /// conexion con la base de datos.
         if (argc == 5) {
             confpr->setValor(CONF_LOGIN_USER, us);
             confpr->setValor(CONF_PASSWORD_USER, pass);
             bges = new Bulmafact(db);
-	    bges->hide();
+            bges->hide();
         } else if (argc == 3) {
             bges = new Bulmafact(db);
-	    bges->hide();
+            bges->hide();
         } else {
             logpass *login1 = new logpass(0, "");
             if (!login1->authOK()) {
                 login1->exec();
-            }
+            } // end if
             /// Si la autentificacion falla una segunda vez abortamos el programa.
             if (!login1->authOK()) {
                 exit(1);
-            }
+            } // end if
             delete login1;
             bges = new Bulmafact("");
-	    bges->hide();
+            bges->hide();
         } // end if
 
-	splashScr->show();
+        splashScr->show();
         splashScr->mensaje(QApplication::translate("main","Leyendo configuracion"));
         splashScr->setBarraProgreso(2);
-
-
 
         /// Leemos la configuracion especifica de la base de datos que se ha abierto.
         QString confEsp = CONFGLOBAL + bges->getcompany()->nameDB() + ".conf";
@@ -147,8 +143,7 @@ int main(int argc, char **argv) {
             confpr->leeconfig(confEsp);
         } // end if
 
-
-        splashScr->mensaje(QApplication::translate("main","Cargando Traducciones"));
+        splashScr->mensaje(QApplication::translate("main", "Cargando traducciones"));
         splashScr->setBarraProgreso(3);
 
         /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
@@ -172,19 +167,19 @@ int main(int argc, char **argv) {
         } // end if
         theApp->installTranslator(traductor);
 
-        splashScr->mensaje(QApplication::translate("main","Cargando Plugins"));
+        splashScr->mensaje(QApplication::translate("main", "Cargando plugins"));
         splashScr->setBarraProgreso(4);
 
         /// Hacemos la carga de las librerias que contienen los plugins.
         g_plugins->cargaLibs(confpr->valor(CONF_PLUGINS_BULMAFACT));
 
-        splashScr->mensaje(QApplication::translate("main","Lanzando Plugins"));
+        splashScr->mensaje(QApplication::translate("main", "Lanzando plugins"));
         splashScr->setBarraProgreso(5);
 
         /// Disparamos los plugins con entryPoint.
         g_plugins->lanza("entryPoint", bges);
 
-        splashScr->mensaje(QApplication::translate("main","Inicializando Componentes"));
+        splashScr->mensaje(QApplication::translate("main", "Inicializando componentes"));
         splashScr->setBarraProgreso(6);
 
         /// Lanzamos la creacion de las ventanas principales.
@@ -192,11 +187,11 @@ int main(int argc, char **argv) {
 
         g_main = bges;
 
-        splashScr->mensaje(QApplication::translate("main","Terminado"));
+        splashScr->mensaje(QApplication::translate("main", "Terminado"));
         splashScr->setBarraProgreso(100);
 
         delete splashScr;
-	bges->show();
+        bges->show();
 
         theApp->exec();
     } catch (...) {

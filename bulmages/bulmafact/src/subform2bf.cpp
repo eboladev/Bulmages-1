@@ -154,7 +154,6 @@ void SubForm2Bf::on_mui_list_pressedMinus(int row, int col) {
 }
 
 
-//void SubForm2Bf::on_mui_list_editFinished(int row, int col, int key) {
 ///
 /**
 \param row
@@ -206,7 +205,6 @@ void SubForm2Bf::on_mui_list_cellChanged(int row, int col) {
         } // end if
     } // end if
 
-
     if (camp->nomcampo() == "nomtrabajador") {
         cur = empresaBase()->cargacursor("SELECT * FROM trabajador WHERE apellidostrabajador ||', '||nomtrabajador = '" + camp->text() + "'");
         if (!cur->eof()) {
@@ -238,7 +236,6 @@ void SubForm2Bf::on_mui_list_cellChanged(int row, int col) {
             m_procesacambios = TRUE;
             return;
         } // end if
-
 
         cur1 = empresaBase()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor("idtipo_iva") + " ORDER BY fechatasa_iva LIMIT 1");
         if (!cur->eof() ) {
@@ -306,10 +303,7 @@ void SubForm2Bf::setIdCliente(QString id) {
     } // end if
 
     /// En las cargas sucesivas si el idcliente no ha cambiado no se hace nada
-    if (mdb_idcliente == id) {
-    return;
-    }
-
+    if (mdb_idcliente == id) return;
 
     /// Reseteamos los valores.
     for (int i = 0; i < rowCount() - 1; i++) {
@@ -320,7 +314,6 @@ void SubForm2Bf::setIdCliente(QString id) {
 
     mdb_idcliente = id;
 
-
     /// Si el idcliente no existe salimos.
     if (id == "") {
         _depura("END SubForm2Bf::setIdCliente", 0, "idcliente invalido");
@@ -330,7 +323,6 @@ void SubForm2Bf::setIdCliente(QString id) {
     cursor2 *curcliente = empresaBase()->cargacursor("SELECT recargoeqcliente, regimenfiscalcliente FROM cliente WHERE idcliente = " + mdb_idcliente);
 
     if (!curcliente->eof()) {
-
         /// Cuando se cambia el cliente se deben recalcular las lineas por si hay Recargo Equivalente
         for (int i = 0; i < rowCount() - 1; i++) {
             SDBRecord *rec = lineaat(i);
@@ -366,16 +358,14 @@ void SubForm2Bf::setIdProveedor(QString id) {
 
     /// En la primera carga no hay reajustes, pero si actualización del proveedor.
     if (mdb_idproveedor  == "" ) {
-    mdb_idproveedor = id;
-    return;
+        mdb_idproveedor = id;
+        return;
     } // end if
 
     /// En las cargas sucesivas si el idproveedor no ha cambiado no se hace nada
-    if (mdb_idproveedor == id)
-    return;
+    if (mdb_idproveedor == id) return;
 
     mdb_idproveedor = id;
-
 
     /// Reseteamos los valores
     for (int i = 0; i < rowCount() - 1; i++) {
@@ -385,8 +375,7 @@ void SubForm2Bf::setIdProveedor(QString id) {
     } // end for
 
     cursor2 *curproveedor = empresaBase()->cargacursor("SELECT recargoeqproveedor, regimenfiscalproveedor FROM proveedor WHERE idproveedor="+mdb_idproveedor);
-    if (! curproveedor->eof()) {
-
+    if (!curproveedor->eof()) {
         /// Cuando se cambia el cliente se deben recalcular las lineas por si hay Recargo Equivalente
         for (int i = 0; i < rowCount() - 1; i++) {
             SDBRecord *rec = lineaat(i);
@@ -420,17 +409,6 @@ void SubForm2Bf::setEmpresaBase(EmpresaBase *c) {
     m_delegate->setEmpresaBase(c);
     _depura("END SubForm2Bf::setcompany", 0);
 }
-
-
-///
-/**
-\param f
-**/
-//void SubForm2Bf::setDelete(bool f) {
-//    _depura("SubForm2Bf::setDelete", 0);
-//    m_delete = f;
-//    _depura("END SubForm2Bf::setDelete", 0);
-//}
 
 
 ///
@@ -537,7 +515,7 @@ void QSubForm2BfDelegate::setModelData(QWidget *editor, QAbstractItemModel *mode
     _depura("QSubForm2BfDelegate::setModelData", 0, "CurrentColumn: " + QString::number(index.column()));
     _depura("QSubForm2BfDelegate::setModelData", 0, "CurrentRow: " + QString::number(index.row()));
 
-    /// Si la fila o columna pasadas son invalidas salimos.
+    /// Si la fila o columna pasadas son inv&aacute;lidas salimos.
     if (index.column() < 0 || index.row() < 0)
         return;
 
