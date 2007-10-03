@@ -34,7 +34,7 @@
 
 #include <stdio.h>
 
-#include "company.h"
+#include "empresabase.h"
 #include "funcaux.h"
 #include "pluginclipboardbf.h"
 
