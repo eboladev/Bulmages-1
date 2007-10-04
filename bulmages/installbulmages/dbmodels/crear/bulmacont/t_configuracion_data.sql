@@ -28,6 +28,5 @@ INSERT INTO configuracion (nombre, valor) VALUES ('CuentasGastos', '70');
 INSERT INTO configuracion (nombre, valor) VALUES ('CuentasDerechos', '43;3');
 INSERT INTO configuracion (nombre, valor) VALUES ('CuentasObligaciones', '40;41');
 INSERT INTO configuracion (nombre, valor) VALUES ('Pago', 'Pago');
-INSERT INTO configuracion (nombre, valor) VALUES ('DatabaseRevision', '0.9.3-0001');
 
 COMMIT;

@@ -105,7 +105,7 @@ int main(int argc, char **argv) {
         theApp->installTranslator(traductor);
 
         /// Cargamos el splashScreen.
-        Splash *splashScr = new Splash(confpr->valor(CONF_SPLASH_BULMACONT), "BulmaCont", "0.9.3");
+        Splash *splashScr = new Splash(confpr->valor(CONF_SPLASH_BULMACONT), "BulmaCont", "0.10.1");
         splashScr->mensaje(QApplication::translate("main","Iniciando clases"));
         splashScr->setBarraProgreso(1);
 

@@ -2928,14 +2928,14 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.9.3-0009'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.10.1-0001'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.3-0009'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.10.1-0001'');
 	END IF;
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;
 SELECT actualizarevision();
 DROP FUNCTION actualizarevision() CASCADE;
-\echo "Actualizada la revision de la base de datos a la version 0.9.3"
+\echo "Actualizada la revision de la base de datos a la version 0.10.1"
 

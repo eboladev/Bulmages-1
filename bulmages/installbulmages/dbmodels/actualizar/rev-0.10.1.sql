@@ -59,7 +59,7 @@ CREATE OR REPLACE FUNCTION compruebarevision() RETURNS INTEGER AS '
 DECLARE
 	as RECORD;
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre=''DatabaseRevision'' AND ( valor LIKE ''0.9.3%'' OR valor = ''0.9.1-0003'');
+	SELECT INTO as * FROM configuracion WHERE nombre=''DatabaseRevision'' AND ( valor LIKE ''0.10.1%'' OR valor = ''0.9.3-0001'');
 	IF FOUND THEN
 		RETURN 0;
 	ELSE
@@ -78,35 +78,6 @@ DROP FUNCTION compruebarevision() CASCADE;
 -- =====================================================================================
 
 
-
-CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
-DECLARE
-	bs RECORD;
-BEGIN
-	SELECT INTO bs * FROM pg_tables WHERE tablename=''pais'';
-	IF NOT FOUND THEN
-		CREATE TABLE pais (
-			idpais SERIAL PRIMARY KEY,
-			cod2pais CHARACTER varying(2),
-			cod3pais CHARACTER varying(3),
-			descpais CHARACTER varying(50)
-		);
-		CREATE TABLE provincia (
-			idprovincia SERIAL PRIMARY KEY,
-			idpais INTEGER REFERENCES pais(idpais),
-			provincia CHARACTER VARYING(500)
-		);
-		ALTER TABLE cuenta ADD COLUMN idprovincia INTEGER REFERENCES provincia (idprovincia);
-		ALTER TABLE cuenta ADD COLUMN poblacion CHARACTER VARYING(150);
-	END IF;
-	RETURN 0;
-END;
-'   LANGUAGE plpgsql;
-SELECT aux();
-DROP FUNCTION aux() CASCADE;
-\echo "Creamos tablas 'pais' y 'provincia'. Se modifica 'cuenta'."
-
-
 -- ================================== FIN PARCHE. ACTUALIZACION  =======================
 -- =====================================================================================
 
@@ -118,16 +89,16 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.9.3-0001'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.10.1-0001'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.3-0001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.10.1-0001'');
 	END IF;
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;
 SELECT actualizarevision();
 DROP FUNCTION actualizarevision() CASCADE;
-\echo "Actualizada la revision de la base de datos a la version 0.9.3"
+\echo "Actualizada la revision de la base de datos a la version 0.10.1"
 
 DROP FUNCTION drop_if_exists_table(text) CASCADE;
 DROP FUNCTION drop_if_exists_proc(text, text) CASCADE;
