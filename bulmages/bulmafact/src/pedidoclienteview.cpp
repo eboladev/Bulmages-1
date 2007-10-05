@@ -186,7 +186,7 @@ void PedidoClienteView::generarAlbaran() {
                                   tr("Existe un albaran a este cliente con la misma referencia que este pedido. Desea abrirlo para verificar?"),
                                   tr("&Si"), tr("&No"), QString::null, 0, 1)) {
             return;
-        }
+        } // end if
         AlbaranClienteView *bud = new AlbaranClienteView(empresaBase(), NULL);
         empresaBase()->m_pWorkspace->addWindow(bud);
         bud->cargar(cur->valor("idalbaran"));

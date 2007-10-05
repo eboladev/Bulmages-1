@@ -108,7 +108,7 @@ void Company::createMainWindows(Splash *splash) {
     /// Establecemos el porcentaje del carga de informaci&oacute;n en las diferentes ventanas.
     /// pb = 0%
     _depura("Company::createMainWindows inicializamos m_articleslist", 1);
-    splash->mensaje(QApplication::translate("Company", "Inicializando listado de Articulos"));
+    splash->mensaje(QApplication::translate("Company", "Inicializando listado de articulos"));
     splash->setBarraProgreso(7);
     m_progressbar->setValue(0);
     /// Comprobamos que tengamos permisos para trabajar con 'Articulos'.
@@ -129,7 +129,7 @@ void Company::createMainWindows(Splash *splash) {
 
     /// pb = 8%
     _depura("Company::createMainWindows inicializamos m_providerslist", 1);
-    splash->mensaje(QApplication::translate("Company","Inicializando listado de Proveedores"));
+    splash->mensaje(QApplication::translate("Company","Inicializando listado de proveedores"));
     splash->setBarraProgreso(10);
     m_progressbar->setValue(8);
     /// Comprobamos que tengamos permisos para trabajar con 'Clientes'.
@@ -146,7 +146,7 @@ void Company::createMainWindows(Splash *splash) {
 
     /// pb = 16%
     _depura("Company::createMainWindows inicializamos m_clientesList", 1);
-    splash->mensaje(QApplication::translate("Company","Inicializando listado de Clientes"));
+    splash->mensaje(QApplication::translate("Company","Inicializando listado de clientes"));
     splash->setBarraProgreso(16);
     m_progressbar->setValue(16);
     /// Comprobamos que tengamos permisos para trabajar con 'Proveedores'.
@@ -163,7 +163,7 @@ void Company::createMainWindows(Splash *splash) {
 
     /// pb = 32%
     _depura("Company::createMainWindows inicializamos m_presupuestosList", 1);
-    splash->mensaje(QApplication::translate("Company","Inicializando listado de Presupuestos"));
+    splash->mensaje(QApplication::translate("Company","Inicializando listado de presupuestos a clientes"));
     splash->setBarraProgreso(32);
     m_progressbar->setValue(32);
     /// Comprobamos que tengamos permisos para trabajar con 'Presupuestos a clientes'.
@@ -180,7 +180,7 @@ void Company::createMainWindows(Splash *splash) {
 
     /// pb = 40%
     _depura("Company::createMainWindows inicializamos m_pedidosclienteList", 1);
-    splash->mensaje(QApplication::translate("Company","Inicializando listado de Pedidos Cliente"));
+    splash->mensaje(QApplication::translate("Company","Inicializando listado de pedidos de clientes"));
     splash->setBarraProgreso(40);
     m_progressbar->setValue(40);
     /// Comprobamos que tengamos permisos para trabajar con 'Pedidos de cliente'.
@@ -197,7 +197,7 @@ void Company::createMainWindows(Splash *splash) {
 
     /// pb = 48%
     _depura("Company::createMainWindows inicializamos m_clientDelivNotesList", 1);
-    splash->mensaje(QApplication::translate("Company","Inicializando listado de Albaranes Cliente"));
+    splash->mensaje(QApplication::translate("Company","Inicializando listado de albaranes a clientes"));
     splash->setBarraProgreso(48);
     m_progressbar->setValue(48);
     /// Comprobamos que tengamos permisos para trabajar con 'Albaranes a clientes'.
@@ -214,7 +214,7 @@ void Company::createMainWindows(Splash *splash) {
 
     /// pb = 56%
     _depura("Company::createMainWindows inicializamos m_facturasList", 0);
-    splash->mensaje(QApplication::translate("Company","Inicializando listado de Facturas"));
+    splash->mensaje(QApplication::translate("Company","Inicializando listado de facturas"));
     splash->setBarraProgreso(56);
     m_progressbar->setValue(56);
     /// Comprobamos que tengamos permisos para trabajar con 'Facturas a clientes'.
@@ -231,7 +231,7 @@ void Company::createMainWindows(Splash *splash) {
 
     /// pb = 64%
     _depura("Company::createMainWindows inicializamos m_cobrosList", 1);
-    splash->mensaje(QApplication::translate("Company","Inicializando listado de Cobros"));
+    splash->mensaje(QApplication::translate("Company","Inicializando listado de cobros"));
     splash->setBarraProgreso(64);
     m_progressbar->setValue(64);
     /// Comprobamos que tengamos permisos para trabajar con 'Listado de cobros'.
@@ -248,7 +248,7 @@ void Company::createMainWindows(Splash *splash) {
 
     /// pb = 72%
     _depura("Company::createMainWindows inicializamos m_pedidosproveedorlist", 1);
-    splash->mensaje(QApplication::translate("Company","Inicializando listado de Pedidos Proveedor"));
+    splash->mensaje(QApplication::translate("Company","Inicializando listado de pedidos a proveedores"));
     splash->setBarraProgreso(72);
     m_progressbar->setValue(72);
     /// Comprobamos que tengamos permisos para trabajar con 'Pedidos de proveedor'.
@@ -265,7 +265,7 @@ void Company::createMainWindows(Splash *splash) {
 
     /// pb = 80%
     _depura("Company::createMainWindows inicializamos m_albaranesproveedorlist", 1);
-    splash->mensaje(QApplication::translate("Company","Inicializando listado de Albaranes Proveedor"));
+    splash->mensaje(QApplication::translate("Company","Inicializando listado de albaranes de proveedores"));
     splash->setBarraProgreso(80);
     m_progressbar->setValue(80);
     /// Comprobamos que tengamos permisos para trabajar con 'Albaranes de proveedor'.
@@ -282,7 +282,7 @@ void Company::createMainWindows(Splash *splash) {
 
     /// pb = 88%
     _depura("Company::createMainWindows inicializamos m_facturasproveedorlist", 1);
-    splash->mensaje(QApplication::translate("Company","Inicializando listado de Facturas Proveedor"));
+    splash->mensaje(QApplication::translate("Company","Inicializando listado de facturas de proveedores"));
     splash->setBarraProgreso(88);
     m_progressbar->setValue(88);
     /// Comprobamos que tengamos permisos para trabajar con 'Facturas de proveedor'.
@@ -299,7 +299,7 @@ void Company::createMainWindows(Splash *splash) {
 
     /// pb = 96%
     _depura("Company::createMainWindows inicializamos m_pagosList", 1);
-    splash->mensaje(QApplication::translate("Company","Inicializando listado de Pagos"));
+    splash->mensaje(QApplication::translate("Company","Inicializando listado de pagos"));
     splash->setBarraProgreso(96);
     m_progressbar->setValue(96);
 
@@ -379,7 +379,7 @@ void Company::createMainWindows(Splash *splash) {
 
     /// Ponemos el titulo de la ventana
     m_bulmafact->statusBar()->showMessage(nameDB(), 2000);
-    m_bulmafact->setWindowTitle(nameDB());
+    m_bulmafact->setWindowTitle(QApplication::translate("Company", "Facturacion GPL") + " :: " + nameDB());
 
     _depura("END Company::createMainWindows", 0);
 }

@@ -81,15 +81,6 @@
     <addaction name="actionListado_de_Articulos" />
     <addaction name="separator" />
    </widget>
-   <widget class="QMenu" name="menuVentana" >
-    <property name="title" >
-     <string>Venta&amp;na</string>
-    </property>
-    <addaction name="actionVentana_Completa" />
-    <addaction name="actionOrganizaci_n_en_Cascada" />
-    <addaction name="actionOrdenar_Ventanas" />
-    <addaction name="actionIndexador" />
-   </widget>
    <widget class="QMenu" name="menuEmpresa" >
     <property name="title" >
      <string>E&amp;mpresa</string>
@@ -121,6 +112,15 @@
     <addaction name="separator" />
     <addaction name="actionTipoIVA" />
     <addaction name="actionTasaIVA" />
+   </widget>
+   <widget class="QMenu" name="menuVentana" >
+    <property name="title" >
+     <string>Venta&amp;na</string>
+    </property>
+    <addaction name="actionVentana_Completa" />
+    <addaction name="actionOrganizaci_n_en_Cascada" />
+    <addaction name="actionOrdenar_Ventanas" />
+    <addaction name="actionIndexador" />
    </widget>
    <addaction name="menuEmpresa" />
    <addaction name="menuCompras" />
@@ -589,12 +589,12 @@
   </action>
   <action name="actionOrganizaci_n_en_Cascada" >
    <property name="text" >
-    <string>Organización en Cascada</string>
+    <string>Organizacio&amp;n en cascada</string>
    </property>
   </action>
   <action name="actionOrdenar_Ventanas" >
    <property name="text" >
-    <string>Ordenar Ventanas</string>
+    <string>Ordenar &amp;ventanas</string>
    </property>
   </action>
   <action name="actionPaises" >

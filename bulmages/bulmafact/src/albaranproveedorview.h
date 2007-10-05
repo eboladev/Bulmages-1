@@ -49,9 +49,7 @@ public:
     AlbaranProveedorView(Company *, QWidget *);
     ~AlbaranProveedorView();
     void inicializar();
-
     void pintatotales(Fixed, Fixed, Fixed, Fixed, Fixed, Fixed);
-    void generarFactura();
     /// Estos metodos deben existir para poder trabajar con la clase Ficha
     virtual int guardarPost();
     virtual int cargarPost(QString id);
@@ -60,8 +58,6 @@ public:
 
 public slots:
     virtual void on_mui_facturar_clicked();
-    virtual void s_verpedidoproveedor();
-    virtual void s_generarFactura();
     virtual void on_m_descuentos_editFinish(int, int);
     virtual void on_subform2_editFinish(int, int);
     virtual void on_mui_pagar_clicked();

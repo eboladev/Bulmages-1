@@ -151,6 +151,14 @@ void PedidoProveedorView::generarAlbaran() {
     QString SQLQuery = "SELECT * FROM albaranp WHERE refalbaranp = '" + DBvalue("refpedidoproveedor") + "'";
     cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
     if (!cur->eof()) {
+        /// Informamos que ya hay un albaran y que la abriremos.
+        /// Si no salimos de la funci&oacute;n.
+        if (QMessageBox::question(this,
+                                  tr("Albaran ya existe"),
+                                  tr("Existe un albaran de proveedor con la misma referencia que este pedido. Desea abrirlo para verificar?"),
+                                  tr("&Si"), tr("&No"), QString::null, 0, 1)) {
+            return;
+        } // end if
         AlbaranProveedorView *bud = new AlbaranProveedorView(empresaBase(), NULL);
         empresaBase()->m_pWorkspace->addWindow(bud);
         bud->cargar(cur->valor("idalbaranp"));
@@ -159,16 +167,7 @@ void PedidoProveedorView::generarAlbaran() {
     } // end if
     delete cur;
 
-    /// Informamos de que no existe el pedido y a ver si lo queremos realizar.
-    /// Si no salimos de la funcion.
-    if (QMessageBox::question(this,
-                              tr("El albaran de proveedor no existe"),
-                              tr("No existe un albaran asociado a este pedido.\nDesea crearlo?"),
-                              tr("&Si"), tr("&No"),
-                              QString::null, 0, 1))
-        return;
-
-    /// Creamos el pedido.
+    /// Creamos el albaran.
     AlbaranProveedorView *bud = empresaBase()->newAlbaranProveedorView();
     empresaBase()->m_pWorkspace->addWindow(bud);
     bud->inicializar();
@@ -180,7 +179,7 @@ void PedidoProveedorView::generarAlbaran() {
     bud->setDBvalue("idproveedor", DBvalue("idproveedor"));
     bud->setDBvalue("idalmacen", DBvalue("idalmacen"));
 
-    /// Traspasamos las lineas del presupuesto a lineas del pedido.
+    /// Traspasamos las lineas del presupuesto a lineas del albaran.
     SDBRecord *linea;
     SDBRecord *linea2;
     for (int i = 0; i < m_listalineas->rowCount(); i++) {
@@ -188,6 +187,7 @@ void PedidoProveedorView::generarAlbaran() {
         if (linea->DBvalue("idarticulo") != "") {
             linea2 = bud->getlistalineas()->lineaat(bud->getlistalineas()->rowCount() - 1);
             bud->getlistalineas()->nuevoRegistro();
+            bud->getlistalineas()->setProcesarCambios(FALSE);
             linea2->setDBvalue("desclalbaranp", linea->DBvalue("desclpedidoproveedor"));
             linea2->setDBvalue("cantlalbaranp", linea->DBvalue("cantlpedidoproveedor"));
             linea2->setDBvalue("pvplalbaranp", linea->DBvalue("pvplpedidoproveedor"));
@@ -196,6 +196,7 @@ void PedidoProveedorView::generarAlbaran() {
             linea2->setDBvalue("codigocompletoarticulo", linea->DBvalue("codigocompletoarticulo"));
             linea2->setDBvalue("nomarticulo", linea->DBvalue("nomarticulo"));
             linea2->setDBvalue("ivalalbaranp", linea->DBvalue("ivalpedidoproveedor"));
+            bud->getlistalineas()->setProcesarCambios(TRUE);
         } // end if
     } // end for
 
