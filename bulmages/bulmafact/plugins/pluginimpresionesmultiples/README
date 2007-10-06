@@ -1,11 +1,11 @@
-Plugin de Imnpresiones Multiples
+Plugin de Impresiones Multiples
 ================================
 
 (C) 2007 Asociación Iglues
 Software Bajo Licencia G.P.L. (Vea el archivo COPYNG adjunto)
 
 
-Versión: 0.9.3
+Versión: 0.10.1
 
 
 Descripcion: Agrega un checkbox en cada uno de los miembros del listado de presupuestos, pedidos, albaranes y facturas.
@@ -19,13 +19,7 @@ Agrega tres botones de menu en cada uno de dichos listados con las siguientes fu
 
 Compilacion
 ===========
- Para compilar este plugin debe descomprimirse el directorio pluginimpresionesmultiples dentro de bulmages/bulmafact/src y debe agregarse en el archivo bulmages/bulmafact/privatecode.pro la linea:
-
-	SUBDIRS += src/pluginimpresionesmultiples
-
-
-Luego siguiendo el proceso de compilacion normal el plugin se compilará con el resto de bulmages y el plugin se ubicara en bulmages/installbulmages/plugins con el nombre libimpresionesmultiples.so
-
+Siguiendo el proceso de compilacion normal el plugin se compilará con el resto de bulmages y el plugin se ubicara en bulmages/installbulmages/plugins con el nombre libimpresionesmultiples.so
 
 
 Instalacion

@@ -5,19 +5,14 @@ Plugin de  envio de documentos por e-mail
 Software Bajo Licencia G.P.L. (Vea el archivo COPYNG adjunto)
 
 
-Versión: 0.9.1
+Versión: 0.10.1
 
 
 Descripcion: Permite el envio de documentos generados con BulmaGés via e-mai mediante un boton en el programa. 
 
 Compilacion
 ===========
- Para compilar este plugin debe descomprimirse el directorio pluginmail dentro de bulmages/bulmafact/src y debe agregarse en el archivo bulmages/bulmafact/privatecode.pro la linea:
-
-	SUBDIRS += src/pluginmail
-
-
-Luego siguiendo el proceso de compilacion normal el plugin se compilará con el resto de bulmages y el plugin se ubicara en bulmages/installbulmages/plugins con el nombre libmailbf.so
+Siguiendo el proceso de compilacion normal el plugin se compilará con el resto de bulmages y el plugin se ubicara en bulmages/installbulmages/plugins con el nombre libmailbf.so
 
 
 

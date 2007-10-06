@@ -1,32 +1,170 @@
-============================================
 Instalacion del software de gestion BulmaGes
-
+--------------------------------------------
 (C) 2007, Asociacion IGLUES
 http://www.iglues.org
-============================================
+--------------------------------------------
 
-Estos son los directorios principales del CVS y sus respectivas explicaciones.
+BulmaGés 0.10.1
 
+Introducción
+============
+
+BulmaGés es una aplicación modular que pretende cubrir las necesidades de
+gestión empresarial de cualquier pequeña y mediana empresa dentro del entorno
+del software libre. Se identifican claramente cuatro áreas que en las que el
+software debe actuar: 
+a) Contabilidad - BulmaCont
+b) Facturación - BulmaFact
+c) Terminal Punto de Venta - BTPV
+d) Gestión de Nóminas.
+
+En la actualidad, la aplicación de contabilidad (BulmaCont) ya es operativa. El
+programa de facturación (BulmaFact) se encuentra en sus últimas fases de
+desarrollo. También se han desarrollado herramientas para la sincronización y
+traspaso de datos con otros programas de gestión (Galopin, Contaplus, etc.). Una
+vez acabada la aplicación está tendrá un módulo más para poder denominarse ERP
+que será el módulo de nóminas y seguridad social. 
+
+Características
+===============
+
+Aunque todas estas aplicaciones están pensadas para funcionar como una sola, su
+modularidad permite que funcione cada una de forma independiente, facilitando
+así la migración progresiva desde otras aplicaciones o la adopción sólo de
+aquellas herramientas que sean necesarias para la empresa. BulmaGés es software
+libre y está liberado bajo licencia GPL, se puede obtener, tanto el software
+como el código fuente, de forma gratuita a través de Internet o de las
+diferentes distribuciones (CD) que facilita la asociación IGLUES. 
+
+Módulos
+=======
+
+Estos son los directorios principales del svn y sus respectivas explicaciones.
 
 bulmafact 
 ---------- 
 Este directorio contiene el codigo fuente de la facturacion. Es un programa en
-C++ y Qt. En las code partys trabajamos sobre ello, aunque josep Burcion tiene
+C++ y Qt. En las code partys trabajamos sobre ello, aunque Josep Burcion tiene
 un repositorio especial con el programa. Luego tendremos que adaptarlo. Todo
 depende del bulmalib. 
+
+Actualmente, (versión 0.10.1) bulmafact realiza las siguientes funciones:
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+y contiene los siguientes plugins:
+
+1) comercialbf (Plugin de Comerciales)
+
+Permite el control del trabajo de los comerciales y la combinación de éstos con 
+el aplicativo para PDA ConPython
+
+2) efacturabf (Plugin De Factura Electrónica)
+
+Permite la exportacion e importacion de facturas en formato UBL 1.0 desde BulmaFact.
+
+3) plugin (Plugin ejemplo)
+
+Ejemplo de código para desarrollar un plugin a medida.
+
+4) barcodeopen (Plugin de  Apertura Rapida a partir de códigos de barras)
+
+Permite abrir cualquier documento identificado con el codigo de barras. Basta con seleccionar la apertura rapida, pasar el documento por el lector y se abrira automaticamente el documento correspondiente.
+
+5) plugincatalogo ()
+
+Permite la impresion de catalogos de productos
+
+6) plugincontratos (Plugin de Informes de Clientes)
+
+Permite el control de contratos con clientes y generar una facturacion asociada a dichos contratos.
+
+7) impresionesmultiples (Plugin de Impresiones Multiples)
+
+Agrega un checkbox en cada uno de los miembros del listado de presupuestos, pedidos, albaranes y facturas.
+Agrega tres botones de menu en cada uno de dichos listados con las siguientes funcionalidades:
+	1.- Invertir Seleccion: Invierte el estado de los checkbox agregados.
+	2.- Imprimir multiples elementos: Imprime los elementos seleccionados de forma directa.
+	3.- Envio multiple de e-mail: Prepara el envio de e-mail con los documentos seleccionados como adjuntos.
+
+8) plugininformeclientes (Plugin de Informes de Clientes)
+
+Permite la impresion del informe de compras y ventas  por clientes.
+
+9) plugininventarios (Plugin de Inventarios)
+
+Permite el control de inventarios.
+
+10) pluginmail (Plugin de  envio de documentos por e-mail)
+
+Permite el envio de documentos generados con BulmaGés via e-mai mediante un boton en el programa. 
+
+11) pluginpromedios (Plugin promedios)
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+12) pluginq19 (Plugin q19)
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+13) pluginsyncbulmacont (Sincronizacion con Bulmacont)
+
+Todas las operaciones que se realicen con faturacion serán traspasadas a contabilidad.
+
+14) plugintarifas (XXXXXXXXXXXXXX)
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+15) pluginticket (Plugin de  impresion de tickets)
+
+Permite la impresion de tickets.
+
+16) plugintrazabilidad (Plugin de Trazabilidad)
+
+Permite el control de trazabilidad por lotes. Agrega una tabla de movimientos de material y un campo
+"lote" que permite identificar productos desde su compra hasta su venta.
+
+17) plugintipostrabajo (XXX)
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+18) pluginvehiculos (XXXXX)
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
 
 
 bulmacont
 ---------
-Contiene la parte de contabilidad y los correspondientes plugins.
+Contiene la parte de contabilidad y contiene los siguientes plugins:
+
+1) pluginregistroiva (XXXXXXXXXXX)
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+2) pluginadocumental (XXXXXXXXXXX)
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+3) plugincorrector (XXXXXXXXXXX)
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+4) plugin (XXXXXXXXXXX)
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+         
+5) plugincanualesods (XXXXXXXXXXX)
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
 
 bulmalib 
 -------- 
 Hay algunas librerias que son comunes a varios de los proyectos. postgresiface,
-configuracion, algunos widgets raros ...... 
-Hace poco se crei el bulmalib que contiene dichas libreias. 
-No lleva mucho desarrollo, ya que se han cogido librerias de bulmages y se han
-sacado a este directorio. 
+configuracion, algunos widgets raros ...... Son las librerias principales de la suite. A partir de la versión 0.10.x se intentará que todas las versiones x.y.z con numeración x.y igual sean compatibles en ABI de libraria y base de datos.
 
 bulmatpv 
 --------- 
@@ -49,10 +187,10 @@ hay que mantenerlos.
 - Los scripts de instalacion estan en dbmodels/crear
 - Los scripts de actualizacion estan en dbmodels/actualizar
  
-2.- Tambien esta el archivos bulmages.conf que se instalara en las proximas
+2.- Tambien esta el archivos bulmages.conf que se instalara en las próximas
 versiones. Por tanto todo lo que se agrega en la configuracion debe ir tambien
-reflejado en su correspondiente archivo aqui. Tambien hay unos archivos de
-revision entre versiones del archivo. Para que las actualizaciones no cambien
+reflejado en su correspondiente archivo aquí. Tambien hay unos archivos de
+revisión entre versiones del archivo. Para que las actualizaciones no cambien
 toda la configuracion del sistema. 
 
 3.- Tambien estan los scripts de instalacion.
@@ -74,7 +212,8 @@ bulmages.qrc como iconos de los programas.
 COMPILACION
 -----------
 
-Para compilar basta con hacer en el directorio que se desee (para compilar todo lo que haya dentro del directorio)
+Para compilar basta con hacer en el directorio que se desee (para compilar todo
+lo que haya dentro del directorio)
 
 $qmake-qt4
 $make
@@ -98,11 +237,12 @@ El programa depende de ciertos archivos en /etc para ejecutarse correctamente.
 Sin embargo cuando se esta desarrollando es engorroso reinstalar para
 comprobar el correcto funcionamiento del programa.
 En dicho caso es util cambiar en la instalacion los siguientes archivos
-por soft links a los ejecutables resultantes en el directorio installbulmages del
+por soft links a los ejecutables resultantes en el directorio installbulmages
+del
 directorio de desarrollo.
 
 Estos son los archivos que se deben enlazar:
-/usr/lib/libbulmages.0.9.1.so
+/usr/lib/libbulmages.0.10.1.so
 /usr/bin/bulmages
 /usr/bin/bulmafact
 /usr/bin/bulmacont

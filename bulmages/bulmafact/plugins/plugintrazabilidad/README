@@ -1,11 +1,11 @@
-Plugin de Informes de Clientes
+Plugin de Trazabilidad
 ==============================
 
 (C) 2007 Conetxia Soluciones Informaticas.
 Software Bajo Licencia G.P.L. (Vea el archivo COPYNG adjunto)
 
 
-Versión: 0.9.1
+Versión: 0.10.1
 
 
 Descripcion: Permite el control de trazabilidad por lotes. Agrega una tabla de movimientos de material y un campo
