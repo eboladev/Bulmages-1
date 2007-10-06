@@ -190,4 +190,4 @@ if [ -e /tmp/bulmages/errores.txt ]; then
 fi
       
 mensaje "INSTALACION FINALIZADA CON EXITO" "\033[32m" "\033[0m"
-mensaje "Puede que el programa arranque pero no le deje acceder a la informacion. En ese caso debe revisar la configuracion de postgres o rear un usuario para el acceso a las bases de datos."
+mensaje "Puede que el programa arranque pero no le deje acceder a la informacion. En ese caso debe revisar la configuracion de postgres o rear un usuario para el acceso a las bases de datos. Tenga presente que los backups estan en /tmp y se borrarán en el proximo reinicio del ordenador"

@@ -63,6 +63,7 @@ BEGIN
 	IF FOUND THEN
 		RETURN 0;
 	ELSE
+		RAISE EXCEPTION ''La base de datos no tiene la version adecuada para aplicar este parche'';
 		RETURN -1;		 
 	END IF;
 END;

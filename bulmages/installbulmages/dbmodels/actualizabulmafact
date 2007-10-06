@@ -11,8 +11,21 @@
 #     $2 : base de datos a ser 
 ###############################################################################
 
-version="0.9.3"
+version="0.10.1"
 
+# SOLO APLICAMOS PARCHES A VERSIONES POSTERIORES A LA 0.5.9 
+# Los otros parches son anticuados.
+#parches[1]="/usr/share/bulmages/dbmodels/actualizar/revf-0_3_7.sql"
+#parches[2]="/usr/share/bulmages/dbmodels/actualizar/revf-0_3_9.sql"
+#parches[3]="/usr/share/bulmages/dbmodels/actualizar/revf-0.4.1.sql"
+#parches[4]="/usr/share/bulmages/dbmodels/actualizar/revf-0.4.3.sql"
+#parches[5]="/usr/share/bulmages/dbmodels/actualizar/revf-0.4.9.sql"
+#parches[6]="/usr/share/bulmages/dbmodels/actualizar/revf-0.5.1.sql"
+#parches[7]="/usr/share/bulmages/dbmodels/actualizar/revf-0.5.3.sql"
+parches[8]="/usr/share/bulmages/dbmodels/actualizar/revf-0.5.9.sql"
+parches[9]="/usr/share/bulmages/dbmodels/actualizar/revf-0.9.1.sql"
+parches[10]="/usr/share/bulmages/dbmodels/actualizar/revf-0.9.3.sql"
+parches[11]="/usr/share/bulmages/dbmodels/actualizar/revf-0.10.sql"
 
 #Si el nmero de parametros no es el correcto salimos con un mensaje de error.
 if [ "$2" = "" ]; then
@@ -101,7 +114,7 @@ tiempo
 
 # info "Procesando base de datos $database"
 # Aplicando parches de BulmaCont
-for j in `ls /usr/share/bulmages/dbmodels/actualizar/*.sql | grep revf- | sort 2> /dev/null`
+for j in "${parches[@]}"
      do
          # info "Comprobando la existencia de /usr/share/bulmages/$j"
                info "Aplicamos parche $j a $2"

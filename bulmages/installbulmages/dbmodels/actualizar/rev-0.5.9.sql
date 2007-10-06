@@ -58,6 +58,7 @@ BEGIN
 	IF FOUND THEN
 		RETURN 0;
 	ELSE
+		RAISE EXCEPTION ''Version invalida'';
 		RETURN -1;		 
 	END IF;
 END;
