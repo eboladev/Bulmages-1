@@ -3,7 +3,7 @@
 <context>
     <name>myplugsubformods</name>
     <message>
-        <location filename="pluginsubformods.cpp" line="67"/>
+        <location filename="pluginsubformods.cpp" line="93"/>
         <source>Exportar a hoja de calculo</source>
         <translation type="unfinished"></translation>
     </message>
