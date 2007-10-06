@@ -45,9 +45,9 @@ tabular de datos que puede generar desde listados hasta subformularios
 */
 class SubForm3: public BLWidget, public Ui_SubForm3Base {
     Q_OBJECT
+
 private:
     virtual void cargar(cursor2 *cur);
-
 
 private:
     QString m_query;
@@ -224,6 +224,7 @@ public:
     bool existsHeader(const QString &);
     virtual int cerrarEditor();
     virtual void confquery();
+    QString columnDBfieldName(int columna);
 
 public slots:
     virtual void on_mui_list_cellRePosition(int, int);

@@ -32,51 +32,51 @@
 
 class SHeader {
 public:
-  enum dboptions {DBNone = 0, DBReadOnly = 1, DBNoView = 2, DBNoWrite = 4, DBBlockView = 8};
-  
+    enum dboptions {DBNone = 0, DBReadOnly = 1, DBNoView = 2, DBNoWrite = 4, DBBlockView = 8};
+
 protected:
-  QString m_nomcampo;
-  QString m_valorcampo;
-  QString m_nompresentacion;
-  unsigned int m_restricciones;
-  DBCampo::dbtype m_tipo;
-  unsigned int m_options;
+    QString m_nomcampo;
+    QString m_valorcampo;
+    QString m_nompresentacion;
+    unsigned int m_restricciones;
+    DBCampo::dbtype m_tipo;
+    unsigned int m_options;
 
 public:
-  SHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp = "");
-  ~SHeader();
-  int set(QString val);
-  unsigned int options();
-  unsigned int restricciones();
-  DBCampo::dbtype tipo();
-  QString nompresentacion();
-  int restrictcampo();
-  QString nomcampo();
+    SHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp = "");
+    ~SHeader();
+    int set(QString val);
+    unsigned int options();
+    unsigned int restricciones();
+    DBCampo::dbtype tipo();
+    QString nompresentacion();
+    int restrictcampo();
+    QString nomcampo();
 };
 
 
 class SDBRecord: public DBRecord {
 public:
-  SDBRecord(postgresiface2 *con);
-  ~SDBRecord();
-  int addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp = "");
-  void refresh();
-  virtual int DBsave(QString &);
+    SDBRecord(postgresiface2 *con);
+    ~SDBRecord();
+    int addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp = "");
+    void refresh();
+    virtual int DBsave(QString &);
 };
 
 
 class SDBCampo: public QTableWidgetItem2, public DBCampo {
 private:
-  SDBRecord *m_pare;
+    SDBRecord *m_pare;
 
 public:
-  SDBRecord *pare();
-  SDBCampo(SDBRecord *par, postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp = "");
-  virtual ~SDBCampo();
-  int addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp = "");
-  virtual int set(QString val);
-  void refresh();
-  virtual bool operator< (const QTableWidgetItem &other);
+    SDBRecord *pare();
+    SDBCampo(SDBRecord *par, postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp = "");
+    virtual ~SDBCampo();
+    int addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp = "");
+    virtual int set(QString val);
+    void refresh();
+    virtual bool operator< (const QTableWidgetItem &other);
 };
 
 #endif

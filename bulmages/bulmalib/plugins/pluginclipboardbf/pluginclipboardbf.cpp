@@ -115,13 +115,17 @@ void myplugclipboard::s_pintaMenu(QMenu *menu) {
 void myplugclipboard::s_trataMenu(QAction *action) {
     _depura("myplugclipboard::s_trataMenu", 0);
     if (action->text() == tr("Pegar desde Hoja de Calculo")) {
-	pegaSXC();
+	if (theApp->clipboard()->text().contains("\t")) {
+	    pegaODS();
+	} else {
+    	    pegaSXC();
+	} // end if
     } // end if
     _depura("myplugclipboard::s_trataMenu", 0);
 }
 
 
-///
+/// Funcion que pega desde KSpread, que copia al portapapeles la informacion con campos de tamanyo fijo.
 /**
 **/
 void myplugclipboard::pegaSXC() {
@@ -149,7 +153,7 @@ void myplugclipboard::pegaSXC() {
 		subform->nuevoRegistro();
 
 		/// Iteramos para cada columna.
-		for (int j = 0; j < campos.size(); ++j) {
+		for (int j = 0; j < numcampos; ++j) {
 			/// Cogemos un valor.
 			QString valorcampo = cadena_valores.left(numchars).simplified();
 			cadena_valores = cadena_valores.right(cadena_valores.size()- numchars);
@@ -158,3 +162,42 @@ void myplugclipboard::pegaSXC() {
 	} // end for
     _depura("END myplugclipboard::pegaSXC", 0);
 }
+
+
+/// Funcion que pega desde OpenOffice.org, que copia al portapapeles la informacion con separador de campos un tabulador.
+/**
+**/
+void myplugclipboard::pegaODS() {
+    _depura("myplugclipboard::pegaODS", 0);
+        SubForm3 *subform = (SubForm3 *) parent();
+	QString clipboard = theApp->clipboard()->text();
+
+	QStringList lineas = clipboard.split("\n");
+
+	/// La primera linea tiene los nombres de las columnas.
+//	QStringList campos = lineas.at(0).simplified().split(" ");
+	QStringList campos = lineas.at(0).split("\t");
+
+	/// Calculamos el tamanyo de cada campo.
+	int numcampos = campos.size();
+
+	/// Iteramos para cada linea
+        for (int i = 1; i < lineas.size() -1 ; ++i) {
+		QStringList campos_valores = lineas.at(i).split("\t");
+
+		/// Creamos un elemento en la factura
+		SDBRecord  *linea1;
+		linea1 = subform->lineaat(subform->rowCount() - 1);
+		/// Haciendo el nuevo registro antes nos evitamos problemas de foco.
+		subform->nuevoRegistro();
+
+		/// Iteramos para cada columna.
+		for (int j = 0; j < numcampos; ++j) {
+			/// Cogemos un valor.
+			linea1->setDBvalue(campos.at(j), campos_valores.at(j));
+		} // end for
+	} // end for
+    _depura("END myplugclipboard::pegaODS", 0);
+}
+
+

@@ -118,10 +118,10 @@ void myplugsubformods::sacaods() {
     fitxersortidatxt += "# Crea el documento\n";
     fitxersortidatxt += "doc = ooolib.Calc(\"Listado\")\n";
 
-    int y=1;
+    int y = 1;
     int x = 1;
 
-    /// Sacamos las cabeceras
+    /// Sacamos las cabeceras con los nombres de los campos descriptivos (largos).
     for (int h = 0; h < subf->mui_listcolumnas->rowCount(); ++h) {
         if (subf->mui_listcolumnas->item(h, 0)->checkState() == Qt::Checked) {
 
@@ -139,7 +139,25 @@ void myplugsubformods::sacaods() {
         } // end if
     } // end for
 
-    y += 2;
+    y += 1;
+    x = 1;
+    /// Sacamos las cabeceras con los nombres de los campos de la base de datos.
+    for (int h = 0; h < subf->mui_listcolumnas->rowCount(); ++h) {
+        if (subf->mui_listcolumnas->item(h, 0)->checkState() == Qt::Checked) {
+
+    	    fitxersortidatxt += "# Fila "+ QString::number ( y ) +"\n";
+
+	    QString textocabecera = (subf->mui_listcolumnas->item(h, 1)->text());
+	    //QString textocabecera = (subf->mui_listcolumnas->columnDBfieldName());
+	    textocabecera.replace(QString("\n"), QString("\\n\\\n"));
+
+	    fitxersortidatxt += "doc.set_cell_property('bold', True)\n";
+    	    fitxersortidatxt += "doc.set_cell_value(" + QString::number(x++) + "," + QString::number(y) + ", 'string', '" + textocabecera + "')\n";
+	    fitxersortidatxt += "doc.set_cell_property('bold', False)\n";			
+        } // end if
+    } // end for
+
+    y += 1;
 
     bool resultconvdouble, resultconvinteger;
     double resultadodouble, resultadointeger;

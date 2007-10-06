@@ -44,10 +44,13 @@ extern QApplication2 *theApp;
 
 class myplugclipboard : public QObject {
     Q_OBJECT
+
 public:
     myplugclipboard(SubForm3 *);
     ~myplugclipboard();
     void pegaSXC();
+    void pegaODS();
+
 public slots:
     virtual void s_pintaMenu(QMenu *);
     virtual void s_trataMenu(QAction *);

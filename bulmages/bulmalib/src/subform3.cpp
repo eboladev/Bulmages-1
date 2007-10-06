@@ -656,7 +656,7 @@ void SubForm3::nuevoRegistro() {
 }
 
 
-/// Pinta los plantillaes en la tabla.
+/// Pinta las cabeceras en la tabla.
 /**
 **/
 void SubForm3::pintaCabeceras() {
@@ -666,10 +666,11 @@ void SubForm3::pintaCabeceras() {
     for (int i = 0; i < m_lcabecera.size(); ++i) {
         linea = m_lcabecera.at(i);
         headers << linea->nompresentacion();
-        if (linea->options() & SHeader::DBNoView)
+        if (linea->options() & SHeader::DBNoView) {
             mui_list->hideColumn(i);
-        else
+        } else {
             mui_list->showColumn(i);
+        } // end if
     } // end for
     mui_list->setHorizontalHeaderLabels(headers);
     mui_list->horizontalHeader()->setResizeMode(0, QHeaderView::Interactive);
@@ -872,7 +873,8 @@ void SubForm3::ponItemColorFondo(QTableWidget *twidget, int filainicial, int tot
 
 
 /// Carga una tabla a partir del recordset que se le ha pasado.
-/** Este m&eacute;todo genera, a partir del recordset pasado como par&aacute;metro el listado y lo muestra. */
+/** Este m&eacute;todo genera, a partir del recordset pasado como par&aacute;metro
+    el listado y lo muestra. */
 /**
 \param cur
 **/
@@ -887,7 +889,7 @@ void SubForm3::cargar(cursor2 *cur) {
     QColor colorfondo = m_colorfondo1;
     bool coloraponerfondo = FALSE;
 
-    /// Desactivamos el sorting debido a un error en las Qt4
+    /// Desactivamos el sorting debido a un error en las Qt4.
     mui_list->setSortingEnabled(FALSE);
 
     /// Reseteamos el "rowSpan" de la tabla antes de borrar las filas.
@@ -2052,5 +2054,16 @@ bool SubForm3::procesaCambios() {
     _depura("SubForm3::procesaCambios", 0);
     _depura("END SubForm3::procesaCambios", 0);
     return m_procesacambios;
+}
+
+
+/// Devuelve el nombre del campo en la base de datos sabiendo que columna representa ese dato.
+/**
+\return
+**/
+QString SubForm3::columnDBfieldName(int columna) {
+    SHeader *linea;
+    linea = m_lcabecera.at(columna);
+    return linea->nomcampo();
 }
 
