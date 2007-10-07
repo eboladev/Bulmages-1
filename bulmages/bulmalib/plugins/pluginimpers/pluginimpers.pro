@@ -82,7 +82,15 @@ windows {
     LIBS += "C:\Archivos de programa\PostgreSQL\8.1\bin\libpq.dll"
 }
 
- SOURCES = pluginimpers.cpp \
+TRANSLATIONS += pluginimpers_es.ts \
+                pluginimpers_ca.ts \
+                pluginimpers_en.ts \
+                pluginimpers_fr.ts \
+                pluginimpers_de.ts \
+                pluginimpers_zz.ts 
+
+
+SOURCES = pluginimpers.cpp \
 	eqtoolbutton.cpp
 
 HEADERS = pluginimpers.h \

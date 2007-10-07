@@ -72,6 +72,12 @@ public:
     virtual void recogeValores();
     virtual void creaMenu(QMenu *);
     virtual void procesaMenu(QAction *);
+    virtual void generaRML(const QString &);
+    virtual void trataTags(QString &buff);
+    virtual QString trataQuery(const QString &query, const QString &datos);
+    virtual QString trataIfQuery(const QString &query, const QString &datos);
+
+
 
 public slots:
     virtual void on_mui_aceptar_clicked();

@@ -29,7 +29,10 @@
 \return
 **/
 int entryPoint(QApplication *) {
-    _depura("Estoy dentro del plugin de impresiones personalizadas", 2);
+    _depura("Punto de Entrada del plugin de PluginImPers\n", 0);
+        /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
+        cargaTraducciones("pluginimpers");
+    _depura("END Punto de Entrada del plugin de PluginImPers\n", 0);
     return 0;
 }
 

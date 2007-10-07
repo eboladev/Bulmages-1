@@ -40,7 +40,8 @@
 EQToolButton::EQToolButton(QWidget *parent) : QWidget(parent) {
     _depura("EQToolButton::EQToolButton", 0);
       connect (parent, SIGNAL(pintaMenu(QMenu *)), this, SLOT(pintaMenu(QMenu *)));
-
+      connect (parent, SIGNAL(trataMenu(QAction *)), this, SLOT(trataMenu(QAction *)));
+    m_ficha = (Ficha *) parent;
     _depura("END EQToolButton::EQToolButton", 0);
 }
 
@@ -60,7 +61,54 @@ EQToolButton::~EQToolButton() {
 **/
 void EQToolButton::pintaMenu(QMenu *menu) {
     _depura("EQToolButton::pintaMenu", 0);
-    QAction *ajust = menu->addAction(tr("Impresion Informes Personales"));
+    QMenu *ajust = menu->addMenu(tr("Informes Personales"));
+//    QAction *ac1 = ajust->addAction(m_ficha->tableName());
+
+     /// Buscamos ficheros que tengan el nombre de la tabla
+     QDir dir(confpr->valor(CONF_DIR_OPENREPORTS));
+     dir.setFilter(QDir::Files | QDir::NoSymLinks);
+     dir.setSorting(QDir::Size | QDir::Reversed);
+     /// Hacemos un filtrado de busqueda
+     QStringList filters;
+     filters << "*" + m_ficha->tableName() + "*.rml";
+     dir.setNameFilters(filters);
+
+
+     QFileInfoList list = dir.entryInfoList();
+     for (int i = 0; i < list.size(); ++i) {
+         QFileInfo fileInfo = list.at(i);
+	 QAction *acl1 = ajust->addAction(fileInfo.fileName());
+     }
 }
+
+
+///
+/**
+\param menu El menu sobre el que pintar la opcion
+**/
+void EQToolButton::trataMenu(QAction *action) {
+    _depura("EQToolButton::trataMenu", 0);
+
+
+     /// Buscamos ficheros que tengan el nombre de la tabla
+     QDir dir(confpr->valor(CONF_DIR_OPENREPORTS));
+     dir.setFilter(QDir::Files | QDir::NoSymLinks);
+     dir.setSorting(QDir::Size | QDir::Reversed);
+     /// Hacemos un filtrado de busqueda
+     QStringList filters;
+     filters << "*" + m_ficha->tableName() + "*.rml";
+     dir.setNameFilters(filters);
+
+
+     QFileInfoList list = dir.entryInfoList();
+     for (int i = 0; i < list.size(); ++i) {
+         QFileInfo fileInfo = list.at(i);
+	 if (action->text() == fileInfo.fileName()) {
+		m_ficha->generaRML(fileInfo.fileName());
+		invocaPDF(fileInfo.fileName().left(fileInfo.fileName().size()-4));
+	 } // end if
+     }
+}
+
 
 

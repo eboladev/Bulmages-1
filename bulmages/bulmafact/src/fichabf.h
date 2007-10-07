@@ -52,9 +52,7 @@ public:
     virtual void pintatotales(Fixed, Fixed, Fixed, Fixed, Fixed, Fixed) {};
     virtual void trataTags(QString &buff);
     virtual QString trataLineasDetalle(const QString &det);
-    virtual QString trataQuery(const QString &query, const QString &datos);
     virtual QString trataLineasDescuento(const QString &det);
-    virtual QString trataIfQuery(const QString &query, const QString &datos);
     virtual QString trataTotales(const QString &det);
 };
 

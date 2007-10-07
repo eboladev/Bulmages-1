@@ -36,16 +36,7 @@
 **/
 int entryPoint(QApplication *) {
     _depura("Punto de Entrada del plugin de SubformSXC\n", 0);
-        /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
-        QTranslator *traductor = new QTranslator(0);
-        if (confpr->valor(CONF_TRADUCCION) == "locales") {
-            traductor->load(QString("pluginsubformsxc_") + QLocale::system().name(),
-                            confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
-        } else {
-            QString archivo = "pluginsubformsxc_" + confpr->valor(CONF_TRADUCCION);
-           traductor->load(archivo, confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
-        } // end if
-        theApp->installTranslator(traductor);
+    cargaTraducciones("pluginsubformsxc");
     _depura("END Punto de Entrada del plugin de SubformSXC\n", 0);
     return 0;
 }

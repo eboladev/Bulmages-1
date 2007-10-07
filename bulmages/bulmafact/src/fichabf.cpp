@@ -182,6 +182,8 @@ void FichaBf::trataTags(QString &buff) {
     _depura("FichaBf::trataTags", 0);
     int pos =  0;
 
+    Ficha::trataTags(buff);
+
     /// Buscamos algo de lineas de detalle
     QRegExp rx("<!--\\s*LINEAS\\s*DETALLE\\s*-->(.*)<!--\\s*END\\s*LINEAS\\s*DETALLE\\s*-->");
     rx.setMinimal(TRUE);
@@ -191,6 +193,7 @@ void FichaBf::trataTags(QString &buff) {
         pos = 0;
     } // end while
 
+/*
     /// Buscamos Query's en condicional
     pos = 0;
     QRegExp rx4("<!--\\s*IF\\s*QUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*IF\\s*QUERY\\s*-->");
@@ -200,7 +203,9 @@ void FichaBf::trataTags(QString &buff) {
         buff.replace(pos, rx4.matchedLength(), ldetalle);
         pos = 0;
     } // end while
+*/
 
+/*
     /// Buscamos Query's por tratar
     pos = 0;
     QRegExp rx1("<!--\\s*QUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*QUERY\\s*-->");
@@ -210,8 +215,8 @@ void FichaBf::trataTags(QString &buff) {
         buff.replace(pos, rx1.matchedLength(), ldetalle);
         pos = 0;
     } // end while
-
-
+*/
+/*
     /// Buscamos Query's por tratar
     pos = 0;
     QRegExp rx7("<!--\\s*SUBQUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*SUBQUERY\\s*-->");
@@ -221,7 +226,7 @@ void FichaBf::trataTags(QString &buff) {
         buff.replace(pos, rx7.matchedLength(), ldetalle);
         pos = 0;
     } // end while
-
+*/
     /// Buscamos Si hay descuentos en condicional
     pos = 0;
     QRegExp rx3("<!--\\s*IF\\s*DESCUENTOS\\s*-->(.*)<!--\\s*END\\s*IF\\s*DESCUENTOS\\s*-->");
@@ -255,91 +260,11 @@ void FichaBf::trataTags(QString &buff) {
         pos = 0;
     } // end while
 
-
     _depura("END FichaBf::trataTags", 0);
 }
 
 
-/// Trata las lineas de detalle encontradas dentro de los tags <!--LINEAS DETALLE-->
-/**
-\param det Texto de entrada para ser tratado por iteracion.
-\return Si el query tiene elementos lo devuelve el parametro. En caso contrario no devuelve nada.
-**/
-QString FichaBf::trataIfQuery(const QString &query, const QString &datos) {
-    _depura("FichaBf::trataIfQuery", 0);
-    QString result="";
-    QString query1 = query;
 
-    /// Buscamos parametros en el query y los ponemos.
-    QRegExp rx("\\[(\\w*)\\]");
-    int pos =  0;
-    while ((pos = rx.indexIn(query1, pos)) != -1) {
-        if (exists(rx.cap(1))) {
-            query1.replace(pos, rx.matchedLength(), DBvalue(rx.cap(1)));
-            pos = 0;
-        } else {
-            pos += rx.matchedLength();
-        }
-    } // end while
-    /// Cargamos el query y lo recorremos
-    cursor2 *cur = empresaBase()->cargacursor(query1);
-    if (!cur) return "";
-    if (!cur->eof()) {
-        result = datos;
-    } // end while
-    delete cur;
-    _depura("END FichaBf::trataIfQuery", 0);
-    return result;
-}
-
-
-/// Trata las lineas de detalle encontradas dentro de los tags <!--LINEAS DETALLE-->
-/**
-\param det Texto de entrada para ser tratado por iteracion.
-\return
-**/
-QString FichaBf::trataQuery(const QString &query, const QString &datos) {
-    _depura("FichaBf::trataQuery", 0);
-    QString result="";
-    QString query1 = query;
-
-    /// Buscamos parametros en el query y los ponemos.
-    QRegExp rx("\\[(\\w*)\\]");
-    int pos =  0;
-    while ((pos = rx.indexIn(query1, pos)) != -1) {
-        if (exists(rx.cap(1))) {
-            query1.replace(pos, rx.matchedLength(), DBvalue(rx.cap(1)));
-            pos = 0;
-        } else {
-            pos += rx.matchedLength();
-        }
-    } // end while
-
-    /// Cargamos el query y lo recorremos
-    cursor2 *cur = empresaBase()->cargacursor(query1);
-    if (!cur) return "";
-    while (!cur->eof()) {
-        QString salidatemp = datos;
-
-        /// Buscamos cadenas perdidas adicionales que puedan quedar por poner.
-        QRegExp rx("\\[(\\w*)\\]");
-        int pos =  0;
-        while ((pos = rx.indexIn(salidatemp, pos)) != -1) {
-            if (cur->numcampo(rx.cap(1)) != -1) {
-                salidatemp.replace(pos, rx.matchedLength(), cur->valor(rx.cap(1)));
-                pos = 0;
-            } else {
-                pos += rx.matchedLength();
-            }
-        } // end while
-
-        result += salidatemp;
-        cur->siguienteregistro();
-    } // end while
-    delete cur;
-    _depura("END FichaBf::trataQuery", 0);
-    return result;
-}
 
 
 /// Trata las lineas de detalle encontradas dentro de los tags <!--LINEAS DETALLE-->

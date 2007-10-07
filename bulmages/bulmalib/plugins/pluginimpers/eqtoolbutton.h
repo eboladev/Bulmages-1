@@ -26,12 +26,14 @@
 
 #include "empresabase.h"
 #include "funcaux.h"
+#include "ficha.h"
 
 class EQToolButton : public QWidget {
 	Q_OBJECT
 
 private:
 	EmpresaBase *m_companyact;
+	Ficha *m_ficha;
 	
 public:
 	EQToolButton(QWidget *parent = NULL);
@@ -40,6 +42,7 @@ public:
 public slots:
 //	virtual void click();
 	virtual void pintaMenu(QMenu *);
+        virtual void trataMenu(QAction *action);
 
 };
 

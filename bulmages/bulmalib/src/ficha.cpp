@@ -27,6 +27,8 @@
 #include <QToolButton>
 #include <QTextEdit>
 #include <QCheckBox>
+#include <QFile>
+#include <QTextStream>
 
 
 ///
@@ -549,5 +551,202 @@ void Ficha::pintarPost() {
     _depura("Ficha::pintarPost", 0);
     _depura("END Ficha::pintarPost", 0);
 }
+
+
+
+
+/// Busca strings del tipo [xxxx] entro del texto pasado y los sustituye
+/// Por valores existentes en la base de datos.
+/**
+\param buff El texto entero sobre el que se hace el reemplazo de sentencias.
+**/
+void Ficha::trataTags(QString &buff) {
+    _depura("Ficha::trataTags", 0);
+    int pos =  0;
+
+    /// Buscamos parametros en el query y los ponemos.
+    QRegExp rx("\\[(\\w*)\\]");
+    while ((pos = rx.indexIn(buff, pos)) != -1) {
+        if (exists(rx.cap(1))) {
+            buff.replace(pos, rx.matchedLength(), DBvalue(rx.cap(1)));
+            pos = 0;
+        } else {
+            pos += rx.matchedLength();
+        }
+    } // end while
+
+    /// Buscamos Query's en condicional
+    pos = 0;
+    QRegExp rx4("<!--\\s*IF\\s*QUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*IF\\s*QUERY\\s*-->");
+    rx4.setMinimal(TRUE);
+    while ((pos = rx4.indexIn(buff, pos)) != -1) {
+        QString ldetalle = trataIfQuery(rx4.cap(1), rx4.cap(2));
+        buff.replace(pos, rx4.matchedLength(), ldetalle);
+        pos = 0;
+    } // end while
+
+    /// Buscamos Query's por tratar
+    pos = 0;
+    QRegExp rx1("<!--\\s*QUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*QUERY\\s*-->");
+    rx1.setMinimal(TRUE);
+    while ((pos = rx1.indexIn(buff, pos)) != -1) {
+        QString ldetalle = trataQuery(rx1.cap(1), rx1.cap(2));
+        buff.replace(pos, rx1.matchedLength(), ldetalle);
+        pos = 0;
+    } // end while
+
+
+    /// Buscamos Query's por tratar
+    pos = 0;
+    QRegExp rx7("<!--\\s*SUBQUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*SUBQUERY\\s*-->");
+    rx7.setMinimal(TRUE);
+    while ((pos = rx7.indexIn(buff, pos)) != -1) {
+        QString ldetalle = trataQuery(rx7.cap(1), rx7.cap(2));
+        buff.replace(pos, rx7.matchedLength(), ldetalle);
+        pos = 0;
+    } // end while
+
+    _depura("END Ficha::trataTags", 0);
+}
+
+
+/// Trata las lineas de detalle encontradas dentro de los tags <!--LINEAS DETALLE-->
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return Si el query tiene elementos lo devuelve el parametro. En caso contrario no devuelve nada.
+**/
+QString Ficha::trataIfQuery(const QString &query, const QString &datos) {
+    _depura("Ficha::trataIfQuery", 0);
+    QString result="";
+    QString query1 = query;
+
+    /// Buscamos parametros en el query y los ponemos.
+    QRegExp rx("\\[(\\w*)\\]");
+    int pos =  0;
+    while ((pos = rx.indexIn(query1, pos)) != -1) {
+        if (exists(rx.cap(1))) {
+            query1.replace(pos, rx.matchedLength(), DBvalue(rx.cap(1)));
+            pos = 0;
+        } else {
+            pos += rx.matchedLength();
+        }
+    } // end while
+    /// Cargamos el query y lo recorremos
+    cursor2 *cur = empresaBase()->cargacursor(query1);
+    if (!cur) return "";
+    if (!cur->eof()) {
+        result = datos;
+    } // end while
+    delete cur;
+    _depura("END Ficha::trataIfQuery", 0);
+    return result;
+}
+
+
+/// Trata las lineas de detalle encontradas dentro de los tags <!--LINEAS DETALLE-->
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return
+**/
+QString Ficha::trataQuery(const QString &query, const QString &datos) {
+    _depura("Ficha::trataQuery", 0);
+    QString result="";
+    QString query1 = query;
+
+    /// Buscamos parametros en el query y los ponemos.
+    QRegExp rx("\\[(\\w*)\\]");
+    int pos =  0;
+    while ((pos = rx.indexIn(query1, pos)) != -1) {
+        if (exists(rx.cap(1))) {
+            query1.replace(pos, rx.matchedLength(), DBvalue(rx.cap(1)));
+            pos = 0;
+        } else {
+            pos += rx.matchedLength();
+        }
+    } // end while
+
+    /// Cargamos el query y lo recorremos
+    cursor2 *cur = empresaBase()->cargacursor(query1);
+    if (!cur) return "";
+    while (!cur->eof()) {
+        QString salidatemp = datos;
+
+        /// Buscamos cadenas perdidas adicionales que puedan quedar por poner.
+        QRegExp rx("\\[(\\w*)\\]");
+        int pos =  0;
+        while ((pos = rx.indexIn(salidatemp, pos)) != -1) {
+            if (cur->numcampo(rx.cap(1)) != -1) {
+                salidatemp.replace(pos, rx.matchedLength(), cur->valor(rx.cap(1)));
+                pos = 0;
+            } else {
+                pos += rx.matchedLength();
+            }
+        } // end while
+
+        result += salidatemp;
+        cur->siguienteregistro();
+    } // end while
+    delete cur;
+    _depura("END Ficha::trataQuery", 0);
+    return result;
+}
+
+
+
+///
+/**
+**/
+void Ficha::generaRML(const QString &arch) {
+    _depura("Ficha::generaRML", 0);
+
+    /// Disparamos los plugins
+    int res = g_plugins->lanza("Ficha_generaRML", this);
+    if (res != 0) {
+        return;
+    } // end if
+    QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + arch;
+    QString archivod = confpr->valor(CONF_DIR_USER) + arch;
+    QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
+
+
+    /// Copiamos el archivo.
+#ifdef WINDOWS
+
+    archivo = "copy " + archivo + " " + archivod;
+#else
+
+    archivo = "cp " + archivo + " " + archivod;
+#endif
+
+    system (archivo.toAscii().constData());
+    /// Copiamos el logo
+#ifdef WINDOWS
+
+    archivologo = "copy " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
+#else
+
+    archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
+#endif
+
+    system(archivologo.toAscii().constData());
+    QFile file;
+    file.setFileName(archivod);
+    file.open(QIODevice::ReadOnly);
+    QTextStream stream(&file);
+    QString buff = stream.readAll();
+    file.close();
+
+    /// Hacemos el tratamiento avanzado de TAGS
+    trataTags(buff);
+
+    if (file.open(QIODevice::WriteOnly)) {
+        QTextStream stream(&file);
+        stream << buff;
+        file.close();
+    } // end if
+
+    _depura("END Ficha::generaRML", 0);
+}
+
 
 

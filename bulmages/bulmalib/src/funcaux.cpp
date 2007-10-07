@@ -27,6 +27,7 @@
 #include <QTextEdit>
 #include <QDir>
 #include <QTextStream>
+#include <QLocale>
 
 #include "funcaux.h"
 #include "configuracion.h"
@@ -602,4 +603,21 @@ void centrarEnPantalla(QWidget *ventana) {
     rect = escritorio->availableGeometry();
     ventana->move (rect.center() - ventana->rect().center());
 }
+
+/// Carga las traducciones de un archivo concreto.
+/// Distingue entre locales o un idioma configurado.
+/// Hace la carga y la pone en funcionamiento.
+void cargaTraducciones(const QString &traduccion) {
+        /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
+        QTranslator *traductor = new QTranslator(0);
+        if (confpr->valor(CONF_TRADUCCION) == "locales") {
+            traductor->load(traduccion + QString("_") + QLocale::system().name(),
+                            confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+        } else {
+            QString archivo = traduccion + "_" + confpr->valor(CONF_TRADUCCION);
+           traductor->load(archivo, confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+        } // end if
+        theApp->installTranslator(traductor);
+}
+
 
