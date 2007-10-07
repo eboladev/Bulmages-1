@@ -1,6 +1,8 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2006 by Fco. Javier M. C.                               *
+ *   fcojavmc@todo-redes.com                                               *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -17,48 +19,34 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-
-#include <QWidget>
-
-#include "qapplication2.h"
+#include "pluginimpers.h"
 #include "funcaux.h"
+#include "eqtoolbutton.h"
 
 
 ///
 /**
-\param argc
-\param argv
-**/
-QApplication2::QApplication2(int &argc, char **argv) : QApplication(argc, argv) {
-    _depura("QApplication2::QApplication2", 0);
-    _depura("END QApplication2::QApplication2", 0);
-}
-
-
-///
-/**
-**/
-QApplication2::~QApplication2() {
-    _depura("QApplication2::~QApplication2", 0);
-    _depura("END QApplication2::~QApplication2", 0);
-}
-
-
-///
-/**
-\param o
-\param e
 \return
 **/
-bool QApplication2::notify(QObject *o, QEvent *e) {
-//    _depura("QApplication2::notify", 0);
-    try {
-        return QApplication::notify(o, e);
-    } catch (...) {
-        _depura(tr("Error inesperado en BulmaFact"), 2);
-        return FALSE;
-    } // end try
-//    _depura("END QApplication2::notify", 0);
+int entryPoint(QApplication *) {
+    _depura("Estoy dentro del plugin de impresiones personalizadas", 2);
+    return 0;
 }
+
+
+///
+/**
+\param l
+\return
+**/
+int Ficha_Ficha(Ficha *l) {
+       _depura("Ficha_Ficha", 0);
+
+       EQToolButton *mui_imp = new EQToolButton(l);
+
+       _depura("END Ficha_Ficha", 0);
+       return 0;
+}
+
 
 

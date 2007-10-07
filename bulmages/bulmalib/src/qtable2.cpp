@@ -172,33 +172,32 @@ QTableWidgetItem2::~QTableWidgetItem2() {
 \return
 **/
 bool QTableWidgetItem2::operator< (const QTableWidgetItem & other) const {
-    _depura("QTableWidgetItem2::operator <", 0, text());
+    _depura("QTableWidgetItem2::operator <", 0, text() + " < " + other.text());
     bool oknumero;
     bool oknumero1;
     QString cad = text();
     QString cad1 = other.text();
 
-    if (cad != "") {
+    if (cad != "" && cad1 != "") {
         /// Comprobamos si es un n&uacute;mero.
         double ncad = cad.toDouble(&oknumero);
         double ncad1 = cad1.toDouble(&oknumero1);
         if (oknumero && oknumero1) {
             return ncad < ncad1;
         } // end if
-        QDate fcad = normalizafecha(cad);
-        QString acad = fcad.toString(Qt::ISODate);
-        QDate fcad1 = normalizafecha(cad1);
-        QString acad1 = fcad1.toString(Qt::ISODate);
-
-
-        if (acad[4] == '-' && acad1[4]== '-' && acad[7] == '-' && acad1[7] == '-') {
-	    _depura ("es fecha" + acad +" ---- " + acad1, 0);
-            return fcad < fcad1;
-        } // end if
-        return cad < cad1;
+	/// Comprobamos si es una fecha
+	if (cad[2] == '/' && cad[5] == '/') {
+		QDate fcad = normalizafecha(cad);
+		QString acad = fcad.toString(Qt::ISODate);
+		QDate fcad1 = normalizafecha(cad1);
+		QString acad1 = fcad1.toString(Qt::ISODate);
+		if (acad[4] == '-' && acad1[4]== '-' && acad[7] == '-' && acad1[7] == '-') {
+		return fcad < fcad1;
+		} // end if
+	} // end if
     } // end if
-    _depura("END QTableWidgetItem2::operator <", 0, text());
-    return TRUE;
+    _depura("END QTableWidgetItem2::operator <", 0);
+    return cad < cad1;
 }
 
 

@@ -38,6 +38,12 @@
 Ficha::Ficha(QWidget *parent, Qt::WFlags f, edmode modo) : BLWidget(parent, f), DBRecord(NULL), dialogChanges(this) {
     _depura("Ficha::Ficha", 0);
 
+    /// Disparamos los plugins
+    int res = g_plugins->lanza("Ficha_Ficha", this);
+    if (res != 0) {
+        return;
+    } // end if
+
     m_title = windowTitle();
     setContextMenuPolicy(Qt::CustomContextMenu);
     connect (this, SIGNAL(customContextMenuRequested(const QPoint &)), this, SLOT(on_customContextMenuRequested(const QPoint &)));
@@ -56,6 +62,12 @@ Ficha::Ficha(QWidget *parent, Qt::WFlags f, edmode modo) : BLWidget(parent, f), 
 **/
 Ficha::Ficha(EmpresaBase *emp, QWidget *parent, Qt::WFlags f, edmode modo) : BLWidget(emp, parent, f), DBRecord(emp), dialogChanges(this) {
     _depura("Ficha::Ficha", 0);
+
+    /// Disparamos los plugins
+    int res = g_plugins->lanza("Ficha_Ficha", this);
+    if (res != 0) {
+        return;
+    } // end if
 
     setContextMenuPolicy(Qt::CustomContextMenu);
     connect (this, SIGNAL(customContextMenuRequested(const QPoint &)), this, SLOT(on_customContextMenuRequested(const QPoint &)));
@@ -260,6 +272,14 @@ void Ficha::meteWindow(QString nom, QObject *obj, bool compdup) {
 void Ficha::on_customContextMenuRequested(const QPoint &) {
     _depura("Ficha::on_customContextMenuRequested", 0);
     QMenu *popup = new QMenu(this);
+
+    /// Lanzamos el evento para que pueda ser capturado por terceros.
+    emit pintaMenu(popup);
+
+    /// Lanzamos la propagacion del menu a traves de las clases derivadas.
+    creaMenu(popup);
+
+
     QAction *avconfig = popup->addAction(tr("Opciones Avanzadas de Ficha"));
     QAction *avprint = popup->addAction(tr("Imprimir Ficha"));
     QAction *opcion = popup->exec(QCursor::pos());
@@ -268,8 +288,30 @@ void Ficha::on_customContextMenuRequested(const QPoint &) {
     } else if (opcion == avprint) {
         Ficha::imprimir();
     } // end if
+
+    emit trataMenu(opcion);
+
+    /// Activamos las herederas.
+    procesaMenu(opcion);
+
     delete popup;
     _depura("END Ficha::on_customContextMenuRequested", 0);
+}
+
+
+///
+/**
+**/
+void Ficha::creaMenu(QMenu *) {
+    _depura("SubForm3:: CreaMenu", 0, "funcion para ser sobreescrita");
+}
+
+
+///
+/**
+**/
+void Ficha::procesaMenu(QAction *) {
+    _depura("SubForm3:: procesaMenu", 0, "funcion para ser sobreescrita");
 }
 
 

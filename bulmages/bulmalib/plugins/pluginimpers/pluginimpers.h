@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,47 +18,15 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
+#ifdef Q_WS_WIN
+# define MY_EXPORT __declspec(dllexport)
+#else
+# define MY_EXPORT
+#endif
 
-#include "qapplication2.h"
-#include "funcaux.h"
+#include "ficha.h"
+#include "empresabase.h"
 
-
-///
-/**
-\param argc
-\param argv
-**/
-QApplication2::QApplication2(int &argc, char **argv) : QApplication(argc, argv) {
-    _depura("QApplication2::QApplication2", 0);
-    _depura("END QApplication2::QApplication2", 0);
-}
-
-
-///
-/**
-**/
-QApplication2::~QApplication2() {
-    _depura("QApplication2::~QApplication2", 0);
-    _depura("END QApplication2::~QApplication2", 0);
-}
-
-
-///
-/**
-\param o
-\param e
-\return
-**/
-bool QApplication2::notify(QObject *o, QEvent *e) {
-//    _depura("QApplication2::notify", 0);
-    try {
-        return QApplication::notify(o, e);
-    } catch (...) {
-        _depura(tr("Error inesperado en BulmaFact"), 2);
-        return FALSE;
-    } // end try
-//    _depura("END QApplication2::notify", 0);
-}
-
+extern "C" MY_EXPORT int Ficha_Ficha(Ficha *);
+extern "C" MY_EXPORT int entryPoint(QApplication *);
 

@@ -1,0 +1,29 @@
+Plugin de  Impresion de Informes Personalizados
+===============================================
+
+(C) 2007 Asociación IGLUES.
+Software Bajo Licencia G.P.L. (Vea el archivo COPYNG adjunto)
+
+
+Versión: 0.10.1
+
+
+Descripcion: Permite la generacion de informes personalizados relacionados con una ficha generica. Sin necesidad de programar.
+Para ello utiliza directrices y marcas en el RML.
+
+Su funcionamiento se basa en que haya un documento RML cuyo nombre contenga el nombre de la tabla a la que representa la ficha. De este modo
+el informe aparecerá como opcion al pulsar sobre la opcion informes personalizados en el menu contextual de la ficha.
+
+Compilacion
+===========
+Siguiendo el proceso de compilacion normal el plugin se compilará con el resto de bulmages y el plugin se ubicara en bulmages/installbulmages/plugins con el nombre libpluginimpers.so
+
+
+
+Instalacion
+===========
+La instalacion no requiere de parches de base de datos ni pasos adicionales. Simplemente cambie el parametro CONF_PLUGINS_BULMAFACT o CONF_PLUGINS_BULMACONT para que llame al archivo de plugin y ya tendra
+la funcionalidad instalada.
+
+
+

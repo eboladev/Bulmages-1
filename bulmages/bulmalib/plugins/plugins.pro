@@ -9,4 +9,6 @@ TEMPLATE = subdirs
 
 SUBDIRS += pluginsubformsxc \
            pluginsubformods \
-	   pluginclipboardbf
+	   pluginclipboardbf \
+	   pluginimpers
+

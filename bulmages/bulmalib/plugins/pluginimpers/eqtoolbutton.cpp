@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Tomeu Borras Riera                              *
- *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2006 by Arturo Martin Llado                             *
+ *   amartin@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,46 +19,48 @@
  ***************************************************************************/
 
 #include <QWidget>
+#include <QString>
+#include <QFileDialog>
+#include <QMap>
+#include <QList>
+#include <QMenu>
+#include <QAction>
 
-#include "qapplication2.h"
+
+#include "fixed.h"
+#include "empresabase.h"
+#include "dbrecord.h"
+#include "eqtoolbutton.h"
 #include "funcaux.h"
 
-
 ///
 /**
-\param argc
-\param argv
+\param parent
 **/
-QApplication2::QApplication2(int &argc, char **argv) : QApplication(argc, argv) {
-    _depura("QApplication2::QApplication2", 0);
-    _depura("END QApplication2::QApplication2", 0);
+EQToolButton::EQToolButton(QWidget *parent) : QWidget(parent) {
+    _depura("EQToolButton::EQToolButton", 0);
+      connect (parent, SIGNAL(pintaMenu(QMenu *)), this, SLOT(pintaMenu(QMenu *)));
+
+    _depura("END EQToolButton::EQToolButton", 0);
 }
 
 
 ///
 /**
 **/
-QApplication2::~QApplication2() {
-    _depura("QApplication2::~QApplication2", 0);
-    _depura("END QApplication2::~QApplication2", 0);
+EQToolButton::~EQToolButton() {
+    _depura("EQToolButton::~EQToolButton", 0);
+    _depura("END EQToolButton::~EQToolButton", 0);
 }
 
 
 ///
 /**
-\param o
-\param e
-\return
+\param menu El menu sobre el que pintar la opcion
 **/
-bool QApplication2::notify(QObject *o, QEvent *e) {
-//    _depura("QApplication2::notify", 0);
-    try {
-        return QApplication::notify(o, e);
-    } catch (...) {
-        _depura(tr("Error inesperado en BulmaFact"), 2);
-        return FALSE;
-    } // end try
-//    _depura("END QApplication2::notify", 0);
+void EQToolButton::pintaMenu(QMenu *menu) {
+    _depura("EQToolButton::pintaMenu", 0);
+    QAction *ajust = menu->addAction(tr("Impresion Informes Personales"));
 }
 
 

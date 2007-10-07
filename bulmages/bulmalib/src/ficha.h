@@ -70,6 +70,8 @@ public:
     virtual int cargar(QString id);
     virtual int cargarPost(QString id);
     virtual void recogeValores();
+    virtual void creaMenu(QMenu *);
+    virtual void procesaMenu(QAction *);
 
 public slots:
     virtual void on_mui_aceptar_clicked();
@@ -83,6 +85,8 @@ public slots:
 
 signals:
     virtual void cerrar();
+    void pintaMenu(QMenu *);
+    void trataMenu(QAction *);
 };
 
 #endif

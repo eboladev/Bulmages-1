@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2007 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,48 +17,30 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifndef _EQTOOLBUTTON_
+#define _EQTOOLBUTTON_
 
 #include <QWidget>
+#include <QString>
+#include <QMap>
 
-#include "qapplication2.h"
+#include "empresabase.h"
 #include "funcaux.h"
 
+class EQToolButton : public QWidget {
+	Q_OBJECT
 
-///
-/**
-\param argc
-\param argv
-**/
-QApplication2::QApplication2(int &argc, char **argv) : QApplication(argc, argv) {
-    _depura("QApplication2::QApplication2", 0);
-    _depura("END QApplication2::QApplication2", 0);
-}
+private:
+	EmpresaBase *m_companyact;
+	
+public:
+	EQToolButton(QWidget *parent = NULL);
+	~EQToolButton();
 
+public slots:
+//	virtual void click();
+	virtual void pintaMenu(QMenu *);
 
-///
-/**
-**/
-QApplication2::~QApplication2() {
-    _depura("QApplication2::~QApplication2", 0);
-    _depura("END QApplication2::~QApplication2", 0);
-}
+};
 
-
-///
-/**
-\param o
-\param e
-\return
-**/
-bool QApplication2::notify(QObject *o, QEvent *e) {
-//    _depura("QApplication2::notify", 0);
-    try {
-        return QApplication::notify(o, e);
-    } catch (...) {
-        _depura(tr("Error inesperado en BulmaFact"), 2);
-        return FALSE;
-    } // end try
-//    _depura("END QApplication2::notify", 0);
-}
-
-
+#endif
