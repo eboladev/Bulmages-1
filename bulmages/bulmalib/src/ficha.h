@@ -76,6 +76,7 @@ public:
     virtual void trataTags(QString &buff);
     virtual QString trataQuery(const QString &query, const QString &datos);
     virtual QString trataIfQuery(const QString &query, const QString &datos);
+    virtual QString trataExists(const QString &query, const QString &datos);
 
 
 

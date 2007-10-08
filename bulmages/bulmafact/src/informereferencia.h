@@ -38,9 +38,7 @@ private:
 public:
     InformeReferencia(Company *);
     ~InformeReferencia();
-    void setreferencia(QString val) {
-        m_referencia = val;
-    };
+    void setreferencia(QString val);
     void generarinforme();
 };
 
@@ -55,9 +53,7 @@ private:
 public:
     InformeCliente(Company *);
     ~InformeCliente();
-    void setCliente(QString val) {
-        m_idcliente = val;
-    };
+    void setCliente(QString );
     void generarInforme();
 };
 

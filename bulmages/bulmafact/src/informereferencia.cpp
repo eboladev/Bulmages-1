@@ -47,6 +47,11 @@ InformeReferencia::~InformeReferencia() {
     _depura("END InformeReferencia::~InformeReferencia", 0);
 }
 
+
+void InformeReferencia::setreferencia(QString val) {
+        m_referencia = val;
+}
+
 ///
 /**
 **/
@@ -300,6 +305,11 @@ InformeCliente::~InformeCliente() {
     _depura("END InformeCliente::~InformeCliente", 0);
 }
 
+void InformeCliente::setCliente(QString val) {
+    _depura("InformeCliente::setCliente", 0);
+        m_idcliente = val;
+    _depura("END InformeCliente::setCliente", 0);
+}
 
 ///
 /**

@@ -285,16 +285,19 @@ void Ficha::on_customContextMenuRequested(const QPoint &) {
     QAction *avconfig = popup->addAction(tr("Opciones Avanzadas de Ficha"));
     QAction *avprint = popup->addAction(tr("Imprimir Ficha"));
     QAction *opcion = popup->exec(QCursor::pos());
-    if (opcion == avconfig) {
-        new FichaCfg(empresaBase(), this, 0);
-    } else if (opcion == avprint) {
-        Ficha::imprimir();
+
+    if (opcion) {
+	if (opcion == avconfig) {
+		new FichaCfg(empresaBase(), this, 0);
+	} else if (opcion == avprint) {
+		Ficha::imprimir();
+	} // end if
+	
+	emit trataMenu(opcion);
+
+	/// Activamos las herederas.
+	procesaMenu(opcion);
     } // end if
-
-    emit trataMenu(opcion);
-
-    /// Activamos las herederas.
-    procesaMenu(opcion);
 
     delete popup;
     _depura("END Ficha::on_customContextMenuRequested", 0);
@@ -577,6 +580,16 @@ void Ficha::trataTags(QString &buff) {
 
     /// Buscamos Query's en condicional
     pos = 0;
+    QRegExp rx9("<!--\\s*EXISTS\\s*FILE\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*EXISTS\\s*-->");
+    rx9.setMinimal(TRUE);
+    while ((pos = rx9.indexIn(buff, pos)) != -1) {
+        QString ldetalle = trataExists(rx9.cap(1), rx9.cap(2));
+        buff.replace(pos, rx9.matchedLength(), ldetalle);
+        pos = 0;
+    } // end while
+
+    /// Buscamos Query's en condicional
+    pos = 0;
     QRegExp rx4("<!--\\s*IF\\s*QUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*IF\\s*QUERY\\s*-->");
     rx4.setMinimal(TRUE);
     while ((pos = rx4.indexIn(buff, pos)) != -1) {
@@ -691,6 +704,37 @@ QString Ficha::trataQuery(const QString &query, const QString &datos) {
     return result;
 }
 
+
+/// Trata las lineas de detalle encontradas dentro de los tags <!--LINEAS DETALLE-->
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return Si el query tiene elementos lo devuelve el parametro. En caso contrario no devuelve nada.
+**/
+QString Ficha::trataExists(const QString &query, const QString &datos) {
+    _depura("Ficha::trataExists", 0);
+
+    QString result="";
+    QString query1 = query;
+
+    /// Buscamos parametros en el query y los ponemos.
+    QRegExp rx("\\[(\\w*)\\]");
+    int pos =  0;
+    while ((pos = rx.indexIn(query1, pos)) != -1) {
+        if (exists(rx.cap(1))) {
+            query1.replace(pos, rx.matchedLength(), DBvalue(rx.cap(1)));
+            pos = 0;
+        } else {
+            pos += rx.matchedLength();
+        }
+    } // end while
+
+     QFile file(query1);
+     if (file.exists())
+         result = datos;
+    _depura("END Ficha::trataExists", 0);
+
+    return result;
+}
 
 
 ///

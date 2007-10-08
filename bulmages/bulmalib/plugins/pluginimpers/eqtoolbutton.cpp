@@ -62,7 +62,6 @@ EQToolButton::~EQToolButton() {
 void EQToolButton::pintaMenu(QMenu *menu) {
     _depura("EQToolButton::pintaMenu", 0);
     QMenu *ajust = menu->addMenu(tr("Informes Personales"));
-//    QAction *ac1 = ajust->addAction(m_ficha->tableName());
 
      /// Buscamos ficheros que tengan el nombre de la tabla
      QDir dir(confpr->valor(CONF_DIR_OPENREPORTS));
@@ -77,8 +76,9 @@ void EQToolButton::pintaMenu(QMenu *menu) {
      QFileInfoList list = dir.entryInfoList();
      for (int i = 0; i < list.size(); ++i) {
          QFileInfo fileInfo = list.at(i);
-	 QAction *acl1 = ajust->addAction(fileInfo.fileName());
+	 ajust->addAction(fileInfo.fileName());
      }
+    _depura("END EQToolButton::pintaMenu", 0);
 }
 
 
@@ -88,7 +88,6 @@ void EQToolButton::pintaMenu(QMenu *menu) {
 **/
 void EQToolButton::trataMenu(QAction *action) {
     _depura("EQToolButton::trataMenu", 0);
-
 
      /// Buscamos ficheros que tengan el nombre de la tabla
      QDir dir(confpr->valor(CONF_DIR_OPENREPORTS));
@@ -108,6 +107,7 @@ void EQToolButton::trataMenu(QAction *action) {
 		invocaPDF(fileInfo.fileName().left(fileInfo.fileName().size()-4));
 	 } // end if
      }
+    _depura("END EQToolButton::trataMenu", 0);
 }
 
 

@@ -182,8 +182,6 @@ void FichaBf::trataTags(QString &buff) {
     _depura("FichaBf::trataTags", 0);
     int pos =  0;
 
-    Ficha::trataTags(buff);
-
     /// Buscamos algo de lineas de detalle
     QRegExp rx("<!--\\s*LINEAS\\s*DETALLE\\s*-->(.*)<!--\\s*END\\s*LINEAS\\s*DETALLE\\s*-->");
     rx.setMinimal(TRUE);
@@ -193,40 +191,6 @@ void FichaBf::trataTags(QString &buff) {
         pos = 0;
     } // end while
 
-/*
-    /// Buscamos Query's en condicional
-    pos = 0;
-    QRegExp rx4("<!--\\s*IF\\s*QUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*IF\\s*QUERY\\s*-->");
-    rx4.setMinimal(TRUE);
-    while ((pos = rx4.indexIn(buff, pos)) != -1) {
-        QString ldetalle = trataIfQuery(rx4.cap(1), rx4.cap(2));
-        buff.replace(pos, rx4.matchedLength(), ldetalle);
-        pos = 0;
-    } // end while
-*/
-
-/*
-    /// Buscamos Query's por tratar
-    pos = 0;
-    QRegExp rx1("<!--\\s*QUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*QUERY\\s*-->");
-    rx1.setMinimal(TRUE);
-    while ((pos = rx1.indexIn(buff, pos)) != -1) {
-        QString ldetalle = trataQuery(rx1.cap(1), rx1.cap(2));
-        buff.replace(pos, rx1.matchedLength(), ldetalle);
-        pos = 0;
-    } // end while
-*/
-/*
-    /// Buscamos Query's por tratar
-    pos = 0;
-    QRegExp rx7("<!--\\s*SUBQUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*SUBQUERY\\s*-->");
-    rx7.setMinimal(TRUE);
-    while ((pos = rx7.indexIn(buff, pos)) != -1) {
-        QString ldetalle = trataQuery(rx7.cap(1), rx7.cap(2));
-        buff.replace(pos, rx7.matchedLength(), ldetalle);
-        pos = 0;
-    } // end while
-*/
     /// Buscamos Si hay descuentos en condicional
     pos = 0;
     QRegExp rx3("<!--\\s*IF\\s*DESCUENTOS\\s*-->(.*)<!--\\s*END\\s*IF\\s*DESCUENTOS\\s*-->");
@@ -260,6 +224,8 @@ void FichaBf::trataTags(QString &buff) {
         pos = 0;
     } // end while
 
+    Ficha::trataTags(buff);
+
     _depura("END FichaBf::trataTags", 0);
 }
 
@@ -284,7 +250,15 @@ QString FichaBf::trataLineasDetalle(const QString &det) {
         linea = m_listalineas->lineaat(i);
         Fixed base = Fixed(linea->DBvalue("cant" + m_listalineas->tableName()).toAscii().constData()) * Fixed(linea->DBvalue("pvp"+m_listalineas->tableName()).toAscii().constData());
         QString l;
-        salidatemp.replace("[desc"+m_listalineas->tableName()+"]", "<para>" + XMLProtect(linea->DBvalue("desc" + m_listalineas->tableName())).replace(QChar('\n'), "</para><para>")+"</para>");
+
+	QString desc = linea->DBvalue("desc" + m_listalineas->tableName());
+        QStringList descp = desc.split("\n");
+	QString desc1 = "";
+        for (int i = 0; i < descp.size(); ++i)
+            desc1 += "<para>" + XMLProtect(descp[i]) + "</para>\n";
+
+        salidatemp.replace("[desc"+m_listalineas->tableName()+"]", desc1);
+
         salidatemp.replace("[cant" + m_listalineas->tableName()+"]", l.sprintf("%s", linea->DBvalue("cant" + m_listalineas->tableName()).toAscii().constData()));
         salidatemp.replace("[pvp" + m_listalineas->tableName()+"]", l.sprintf("%s", XMLProtect(linea->DBvalue("pvp" + m_listalineas->tableName())).toAscii().constData()));
         salidatemp.replace("[descuento" + m_listalineas->tableName()+"]" , l.sprintf("%s", XMLProtect(linea->DBvalue("descuento" + m_listalineas->tableName())).toAscii().constData()));
@@ -526,11 +500,23 @@ QString FichaBf::trataTotales(const QString &det) {
 }
 
 
+
 ///
 /**
 **/
 void FichaBf::generaRML() {
     _depura("FichaBf::generaRML", 0);
+	generaRML(m_tablename + ".rml");
+    _depura("END FichaBf::generaRML", 0);
+
+}
+
+///
+/**
+\param arch archivo a generar
+**/
+void FichaBf::generaRML(const QString &arch) {
+    _depura("FichaBf::generaRML", 0, arch);
     /// Disparamos los plugins
     int res = g_plugins->lanza("FichaBf_generaRML", this);
     if (res != 0) {
@@ -538,8 +524,8 @@ void FichaBf::generaRML() {
     } // end if
     base basesimp;
     base basesimpreqeq;
-    QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + m_tablename + ".rml";
-    QString archivod = confpr->valor(CONF_DIR_USER) + m_tablename + ".rml";
+    QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + arch;
+    QString archivod = confpr->valor(CONF_DIR_USER) + arch;
     QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
 
     Fixed irpf("0");

@@ -43,6 +43,7 @@
 <include src="/usr/share/bulmages/openreports/estilos.rml"/>
 
 <story>
+
 <blockTable style="tablacontenido" colWidths="1.75cm, 8.55cm, 1.2cm, 1.7cm, 1.8cm, 2.25cm" repeatRows="1">
 <tr>
 <td>Codigo</td>
@@ -52,7 +53,16 @@
 <td>Dto</td>
 <td>Total</td>
 </tr>
-[story]
+<!--LINEAS DETALLE-->
+<tr>
+<td>[codigocompletoarticulo]</td>
+<td><!-- EXISTS FILE="/var/bulmages/articles/[codigocompletoarticulo].jpg" --><image x="0.5cm" y="1.5cm" width="2cm" file="/var/bulmages/articles/[codigocompletoarticulo].jpg"/><!-- END EXISTS -->[desclpresupuesto]</td>
+<td>[cantlpresupuesto]</td>
+<td>[pvplpresupuesto]</td>
+<td>[descuentolpresupuesto]%</td>
+<td>[totallpresupuesto]</td>
+</tr>
+<!--END LINEAS DETALLE-->
 </blockTable>
 
 <storyPlace x="0cm" y="0cm" width="15cm" height="1cm">
