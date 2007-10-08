@@ -206,8 +206,8 @@ public:
     int addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp);
     SDBRecord *newSDBRecord();
     virtual void setColumnValue(QString, QString);
-    QString DBvalue(QString campo, int row = -1);
-    void setDBvalue(QString campo, int row, QString valor);
+    QString DBvalue(const QString &campo, int row = -1);
+    void setDBvalue(const QString &campo, int row, const QString &valor);
     SDBRecord *lineaact();
     SDBRecord *lineaat(int row);
     virtual void imprimirPDF(const QString &);

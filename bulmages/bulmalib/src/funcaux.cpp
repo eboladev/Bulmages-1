@@ -293,18 +293,20 @@ void mailsendPDF(const QString arch, const QString to, const QString subject, co
 /// nivel 4 = Comienza depuracion indiscriminada.
 /// nivel 5 = Termina depuracion indiscriminada.
 /// nivel 10 = Salida a terminal.
-void _depura(QString cad, int nivel, QString param) {
+#ifdef DEPURA_DEBUG
+void _depura(const QString &cad, int nivel, const QString &param) {
     /// Si el objeto confpr no esta creado puede dar segmentation fault.
     if (confpr == NULL) {
         return;
     } // end if
 
     static bool semaforo = 0;
-    static QFile file(confpr->valor(CONF_DIR_USER) + "bulmagesout.txt");
-    static QTextStream out(&file);
+
 
     if (confpr->valor(CONF_DEBUG) == "TRUE") {
-        if (!semaforo) {
+       static QFile file(confpr->valor(CONF_DIR_USER) + "bulmagesout.txt");
+       static QTextStream out(&file); 
+       if (!semaforo) {
             if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
                 return;
             semaforo = 1;
@@ -359,13 +361,12 @@ void _depura(QString cad, int nivel, QString param) {
         file.flush();
     } else {
         if (nivel == 2) {
-            out << cad << " " << param << "\n" << flush;
+//            out << cad << " " << param << "\n" << flush;
             QMessageBox::question(NULL,
                                   QApplication::translate("funcaux", "Informacion de depuracion"),
                                   cad, QApplication::translate("funcaux", "&Continuar"),
                                   QString::null, 0);
-        } // end if
-        if (nivel == 10) { /// Saca los mensajes por la consola de errores.
+        } else if (nivel == 10) { /// Saca los mensajes por la consola de errores.
             QString cadenasalida;
             cadenasalida = "--> " + cad + " <--\n";
             fprintf(stderr, cadenasalida.toAscii().constData());
@@ -373,6 +374,12 @@ void _depura(QString cad, int nivel, QString param) {
     } // end if
 }
 
+#else
+
+inline void _depura(const QString &, int , const QString &) {
+	return;
+}
+#endif
 
 void mensajeInfo(QString cad) {
     QMessageBox::information(NULL,

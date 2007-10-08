@@ -26,6 +26,7 @@
 #define POSTGRESIFACE2_H
 
 #include <QString>
+#include <QHash>
 
 #ifdef DISTRO_DEBIAN
     #include <postgresql/libpq-fe.h>
@@ -64,6 +65,7 @@ private:
     int ncampos;
     bool m_error;
     QString m_query;
+    QHash<QString, int> m_campos;
 
 public:
     /// Constructor, inicializa la estructura y realiza la consulta.
@@ -79,7 +81,7 @@ public:
 
 public:
     /// Devuelve el valor de una determinada posici&oacute;n del query.
-    QString valor(QString campo, int registro = -1);
+    QString valor(const QString &campo, int registro = -1);
     /// Avanza el puntero de recorrido en forma de cola una posici&oacute;n.
     int siguienteregistro();
     /// Retrocede el puntero de recorrido en forma de cola una posici&oacute;n.
@@ -95,7 +97,7 @@ public:
     /// Devuelve el nombre del campo de una columna determinada de la consulta.
     QString nomcampo(int);
     /// Devuelve el n&uacute;mero de columna que tiene una columna referenciada por el nombre.
-    int numcampo(QString);
+    int numcampo(const QString &);
     /// Devuelve el n&uacute;mero total de columnas que tiene la consulta.
     int numcampos();
     /// Indica que se ha alcanzado el primer registro de la consulta.

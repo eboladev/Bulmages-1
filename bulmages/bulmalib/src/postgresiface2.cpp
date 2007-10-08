@@ -84,32 +84,35 @@ cursor2::cursor2(QString nombre, PGconn *conn1, QString SQLQuery) {
 
 
         switch (PQresultStatus(result)) {
-            case PGRES_COMMAND_OK:
-                break;
-            case PGRES_NONFATAL_ERROR:
-            case PGRES_FATAL_ERROR:
-            case NULL:
-                m_error = TRUE;
-                _depura(PQerrorMessage(conn));
-                _depura("QUERY command failed [" + SQLQuery + "]", 10);
-                if (confpr->valor(CONF_ALERTAS_DB) == "Yes") {
-                    msgError(QString(QObject::tr("Error al hacer la consulta con la base de datos.")) + "\n:: " + QString(PQresultErrorField(result, PG_DIAG_MESSAGE_PRIMARY)) + " ::", SQLQuery + QString("\n") + (QString) PQerrorMessage(conn));
-                } // end if
-
-//      if (g_main->statusBar() ) {
-//                  g_main->statusBar()->showMessage(QString(PQresultErrorField(result, PG_DIAG_MESSAGE_PRIMARY)), 4000);
-//      } // end if
-
-                PQclear(result);
-                throw -1;
-                break;
-            default:
-                break;
+        case PGRES_COMMAND_OK:
+            break;
+        case PGRES_NONFATAL_ERROR:
+        case PGRES_FATAL_ERROR:
+        case NULL:
+            m_error = TRUE;
+            _depura(PQerrorMessage(conn));
+            _depura("QUERY command failed [" + SQLQuery + "]", 10);
+            if (confpr->valor(CONF_ALERTAS_DB) == "Yes") {
+                msgError(QString(QObject::tr("Error al hacer la consulta con la base de datos.")) + "\n:: " + QString(PQresultErrorField(result, PG_DIAG_MESSAGE_PRIMARY)) + " ::", SQLQuery + QString("\n") + (QString) PQerrorMessage(conn));
+            } // end if
+            PQclear(result);
+            throw -1;
+            break;
+        default:
+            break;
         } // end switch
 
         nregistros = PQntuples(result);
         ncampos = PQnfields(result);
         registroactual = 0;
+
+        /// Rellenamos el hash para acelerar cosas
+        m_campos.clear();
+        for (int i = 0; i < ncampos; i++) {
+            m_campos[nomcampo(i)] = i;
+        } // end for
+
+
         _depura("------------ RESULTADO DE LA CONSULTA -----------------");
         QString err;
         err.sprintf("Numero de registros: %d, Numero de campos: %d", nregistros, ncampos);
@@ -185,18 +188,24 @@ QString cursor2::nomcampo(int campo) {
 /// \todo Tal vez deberia crearse una estructura intermedia que indexe los nombres con
 /// las posiciones para hacer la busqueda mas rapida, pero al ser el numero de registros
 /// siempre muy reducido seguramente no arreglariamos nada de nada.
-int cursor2::numcampo(QString campo) {
+int cursor2::numcampo(const QString &campo) {
     _depura("cursor2::numcampo", 0);
-    int i = 0;
-    while (i < numcampos() && campo != nomcampo(i)) {
-        i++;
-    } // end while
-    if (i == numcampos()) {
-        //_depura("cursor2::numcampo", 2, "Campo: " + campo + " no existe en la consulta: " + m_query);
-        return -1;
-    } // end if
+    /*
+	/// OBSOLETO, lo reemplazo por un QHash para que sea más rápido.
+        int i = 0;
+        while (i < numcampos() && campo != nomcampo(i)) {
+            i++;
+        } // end while
+        if (i == numcampos()) {
+            return -1;
+        } // end if
+    */
+
+    if (m_campos.contains(campo))
+        return  m_campos.value(campo);
+
     _depura("END cursor2::numcampo", 0);
-    return i;
+    return -1;
 }
 
 
@@ -222,7 +231,7 @@ QString cursor2::valor(int posicion, int registro) {
 /// \param registro El registro del que se quiere devolver el campo.
 /// Si vale -1 entonces se usa el recorrido  en forma de lista de campos para hacerlo.
 /// \return El valor de la posici&oacute;n.
-QString cursor2::valor(QString campo, int registro) {
+QString cursor2::valor(const QString &campo, int registro) {
     _depura("cursor2::valor", 0, campo + " " + QString::number(registro));
     int i = 0;
     if (registro == -1) {
@@ -529,18 +538,18 @@ cursor2 *postgresiface2::cargacursor(QString query, QString nomcursor, int limit
     _depura ("postgresiface2::cargacursor", 0, query);
     cursor2 *cur = NULL;
     try {
-    /// Si hay establecidas clausulas limit o offset modificamos el query
-    if (limit != 0)
-        query += " LIMIT " + QString::number(limit);
-    if (offset != 0)
-        query += " OFFSET " + QString::number(offset);
+        /// Si hay establecidas clausulas limit o offset modificamos el query
+        if (limit != 0)
+            query += " LIMIT " + QString::number(limit);
+        if (offset != 0)
+            query += " OFFSET " + QString::number(offset);
 
         cur = new cursor2(nomcursor, conn, query);
     } catch (...) {
         _depura("postgresiface2::cargacursor La base de datos genero un error: ", 0);
         delete cur;
 //        throw -1;
-    return NULL;
+        return NULL;
     } // end try
     _depura ("END postgresiface2::cargacursor", 0, nomcursor);
     return cur;

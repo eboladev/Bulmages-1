@@ -79,7 +79,7 @@ QString ajustacodigo(QString, unsigned int);
 void reemplazaarchivo(QString, QString, QString, QString);
 /// Esta funcion permite editar un texto en un QTextEdit y devuelve el texto editado.
 QString editaTexto(QString texto);
-void _depura(QString cad, int nivel = 0, QString param = "");
+void _depura(const QString &cad, int nivel = 0, const QString &param = "");
 void mensajeInfo(QString cad);
 void mensajeAviso(QString cad);
 void mensajeError(QString cad);
