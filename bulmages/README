@@ -4,7 +4,8 @@ Instalacion del software de gestion BulmaGes
 http://www.iglues.org
 --------------------------------------------
 
-BulmaGés 0.10.1
+BulmaGés 0.10.1 (octubre 2007)
+
 
 Introducción
 ============
@@ -48,12 +49,7 @@ C++ y Qt. En las code partys trabajamos sobre ello, aunque Josep Burcion tiene
 un repositorio especial con el programa. Luego tendremos que adaptarlo. Todo
 depende del bulmalib. 
 
-Actualmente, (versión 0.10.1) bulmafact realiza las siguientes funciones:
-
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
+Actualmente, (versión 0.10.1) bulmafact realiza las tareas de facturación y de gestión habituales de una empresa
 y contiene los siguientes plugins:
 
 1) comercialbf (Plugin de Comerciales)
@@ -69,11 +65,11 @@ Permite la exportacion e importacion de facturas en formato UBL 1.0 desde BulmaF
 
 Ejemplo de código para desarrollar un plugin a medida.
 
-4) barcodeopen (Plugin de  Apertura Rapida a partir de códigos de barras)
+4) barcodeopen (Plugin de apertura Rapida a partir de códigos de barras)
 
 Permite abrir cualquier documento identificado con el codigo de barras. Basta con seleccionar la apertura rapida, pasar el documento por el lector y se abrira automaticamente el documento correspondiente.
 
-5) plugincatalogo ()
+5) plugincatalogo (Plugin de catálogos)
 
 Permite la impresion de catalogos de productos
 
@@ -103,19 +99,19 @@ Permite el envio de documentos generados con BulmaGés via e-mai mediante un bot
 
 11) pluginpromedios (Plugin promedios)
 
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+Muestra el promédio de compra y de venta por artículo.
 
 12) pluginq19 (Plugin q19)
 
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+Genera un fichero con formato q19 para los cobros en una entidad bancária.
 
 13) pluginsyncbulmacont (Sincronizacion con Bulmacont)
 
 Todas las operaciones que se realicen con faturacion serán traspasadas a contabilidad.
 
-14) plugintarifas (XXXXXXXXXXXXXX)
+14) plugintarifas (Plugin de tarifas)
 
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+Permite especificar diferentes tarifas donde el mismo artículo puede tener precios distintos.
 
 15) pluginticket (Plugin de  impresion de tickets)
 
@@ -126,13 +122,13 @@ Permite la impresion de tickets.
 Permite el control de trazabilidad por lotes. Agrega una tabla de movimientos de material y un campo
 "lote" que permite identificar productos desde su compra hasta su venta.
 
-17) plugintipostrabajo (XXX)
+17) plugintipostrabajo (Plugin de trabajadores)
 
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+Permite especificar diferentes tipos de trabajo de los diferentes trabajadores.
 
-18) pluginvehiculos (XXXXX)
+18) pluginvehiculos (Plugin de vehiculos)
 
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+Permite la gestión de una flota de vehículos.
 
 
 
@@ -140,31 +136,35 @@ bulmacont
 ---------
 Contiene la parte de contabilidad y contiene los siguientes plugins:
 
-1) pluginregistroiva (XXXXXXXXXXX)
+1) pluginregistroiva (Plugin registro de IVA)
 
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+Permite registras las facturas para hacer el listado modelo 377.
 
-2) pluginadocumental (XXXXXXXXXXX)
+2) pluginadocumental (Plugin de documentos)
 
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+Permite introducir documentos. Actualmente (0.10.1) no está operativo.
 
-3) plugincorrector (XXXXXXXXXXX)
+3) plugincorrector (Plugin corrector)
 
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+permite testear los errors contables de la base de datos.
 
-4) plugin (XXXXXXXXXXX)
+4) plugin (Plugin ejemplo)
 
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+Código ejemplo para desarrollar un plugin.
          
-5) plugincanualesods (XXXXXXXXXXX)
+5) plugincanualesods (Plugin de balances)
 
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+Permite generar balances en una hoja de cálculo.
 
 
 bulmalib 
 -------- 
 Hay algunas librerias que son comunes a varios de los proyectos. postgresiface,
-configuracion, algunos widgets raros ...... Son las librerias principales de la suite. A partir de la versión 0.10.x se intentará que todas las versiones x.y.z con numeración x.y igual sean compatibles en ABI de libraria y base de datos.
+configuracion, algunos widgets raros. Son las librerias principales de la suite. A partir de la versión 0.10.x se intentará que todas las versiones x.y.z con numeración x.y igual sean compatibles en ABI de libraria y base de datos. Bulmalib contiene los siguientes plugins: 
+- pluginclipboardbf. Permite el intercambio con hojas de cálculo kspread i oocalc utilizando el portapapeles.
+- pluginsubformods. Permite el intercambio utilizando ficheros OpenDocument. Necesita una libreria de python.
+- pluginsubformsxc. Permite el intercambio utilizando ficheros OpenOffice. Necesita una libreria de perl.
+
 
 bulmatpv 
 --------- 
