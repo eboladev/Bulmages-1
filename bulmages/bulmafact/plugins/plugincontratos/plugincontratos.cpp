@@ -30,7 +30,7 @@
 #include "plugincontratos.h"
 #include "funcaux.h"
 #include "contratoslist.h"
-
+#include "ficha.h"
 
 ///
 /**
@@ -114,16 +114,14 @@ int ClienteView_ClienteView(ClienteView *art) {
 
 ///
 /**
-\param art
+\param fich
 \return
 **/
-int ClienteView_cargar(ClienteView *art) {
-    _depura("ClienteView_cargar", 0);
-    ContratosList *l = art->findChild<ContratosList *>("ccontratoslist");
-    l->mui_idcliente->setidcliente(art->DBvalue("idcliente"));
-    l->on_mui_actualizar_clicked();
-    _depura("END ClienteView_cargar", 0);
-    return 0;
+int Ficha_cargar(Ficha *fich) {
+    ContratosList *l = fich->findChild<ContratosList *>("ccontratoslist");
+    if (l) {
+        l->mui_idcliente->setidcliente(fich->DBvalue("idcliente"));
+        l->on_mui_actualizar_clicked();
+        return 0;
+    } // end if
 }
-
-

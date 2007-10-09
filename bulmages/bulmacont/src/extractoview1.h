@@ -51,11 +51,12 @@ public:
     void ajustes();
     void boton_filtrar();
     QString imprimeExtractoCuenta(QString);
+    int guardar();
+    virtual void on_mui_imprimir_clicked();
+
 
 public slots:
-    virtual void on_mui_guardar_clicked();
     virtual void on_mui_actualizar_clicked();
-    virtual void on_mui_imprimir_clicked();
     virtual void accept();
     virtual void boton_siguiente();
     virtual void boton_anterior();

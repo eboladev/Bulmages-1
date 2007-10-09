@@ -71,12 +71,12 @@ void correctorwidget::on_mui_corregir_clicked() {
 
     /// Calculo de asientos abiertos.
     QString query;
-    query.sprintf("SELECT * FROM asiento LEFT JOIN (SELECT count(idborrador) AS numborr, idasiento FROM borrador GROUP BY idasiento) AS borr ON borr.idasiento = asiento.idasiento LEFT JOIN (SELECT count(idapunte) AS numap, idasiento FROM apunte GROUP BY idasiento) AS apunt ON apunt.idasiento = asiento.idasiento WHERE apunt.numap = 0 OR numap ISNULL");
+    query.sprintf("SELECT *, asiento.idasiento AS idas FROM asiento LEFT JOIN (SELECT count(idborrador) AS numborr, idasiento FROM borrador GROUP BY idasiento) AS borr ON borr.idasiento = asiento.idasiento LEFT JOIN (SELECT count(idapunte) AS numap, idasiento FROM apunte GROUP BY idasiento) AS apunt ON apunt.idasiento = asiento.idasiento WHERE apunt.numap = 0 OR numap ISNULL");
     cur = conexionbase->cargacursor(query);
     while (!cur->eof()) {
         QString cadena;
         cadena.sprintf("<img src='/usr/share/bulmages/icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>%s</B> con fecha <B>%s</B> esta abierto, esto causa que el asiento no modifique el estado de las cuentas.", cur->valor("ordenasiento").toAscii().constData(), cur->valor("fecha").toAscii().constData());
-        agregarError(cadena, "asiento", cur->valor("idasiento").toAscii().constData());
+        agregarError(cadena, "asiento", "idasiento=" + cur->valor("idas"));
         cur->siguienteregistro();
     } // end while
     delete cur;
@@ -88,7 +88,7 @@ void correctorwidget::on_mui_corregir_clicked() {
     while (!cur->eof()) {
         QString cadena;
         cadena.sprintf("<img src='/usr/share/bulmages/icons/messagebox_critical.png'>&nbsp;&nbsp;<B><I>Critial Error:</I></B><BR>El asiento num. <B>%s</B> tiene un apunte con la cuenta <B>%s</B> no hija..", cur->valor("ordenasiento").toAscii().constData(), cur->valor("codigo").toAscii().constData());
-        agregarError(cadena, "asiento", cur->valor("idasiento").toAscii().constData());
+        agregarError(cadena, "asiento", "idasiento=" + cur->valor("idasiento"));
         cur->siguienteregistro();
     } // end while
     delete cur;
@@ -102,7 +102,7 @@ void correctorwidget::on_mui_corregir_clicked() {
     query += " LEFT JOIN (SELECT idasiento, sum(apunte.debe) - sum(apunte.haber) AS pasivos FROM cuenta, apunte WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.tipocuenta = 2 GROUP BY idasiento) AS pas ON pas.idasiento = asiento.idasiento ";
     query += " LEFT JOIN (SELECT idasiento, sum(apunte.debe) - sum(apunte.haber) AS netos FROM cuenta, apunte WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.tipocuenta = 3 GROUP BY idasiento) AS net ON net.idasiento = asiento.idasiento ";
     query += " ORDER BY ordenasiento";
-    cur = conexionbase->cargacursor(query, "hol");
+    cur = conexionbase->cargacursor(query);
     while (!cur->eof()) {
         float ing, gas, act, pas, net;
         ing = cur->valor("ingresos").toFloat();
@@ -113,7 +113,7 @@ void correctorwidget::on_mui_corregir_clicked() {
         if ((-act - gas - pas - net + ing) > 0.01) {
             QString cadena;
             cadena.sprintf("<img src='/usr/share/bulmages/icons/messagebox_critical.png'>&nbsp;&nbsp;<B><I>Error critico:</I></B><BR>El asiento num. <B>%s</B> no cumple la ecuacion fundamental.%2.2f + %2.2f = %2.2f + %2.2f + %2.2f", cur->valor("ordenasiento").toAscii().constData(), act, gas, pas, net, ing);
-            agregarError(cadena, "asiento", cur->valor("idasiento").toAscii().constData());
+            agregarError(cadena, "asiento", "idasiento=" + cur->valor("idasiento"));
         } // end if
         cur->siguienteregistro();
     } // end while
@@ -127,7 +127,7 @@ void correctorwidget::on_mui_corregir_clicked() {
     while (!cur->eof()) {
         QString cadena;
         cadena.sprintf("<img src='/usr/share/bulmages/icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>%s</B> tiene una inserci� en el debe de la cuenta <B>%s</B> que no permite inserciones en el debe de dicha cuenta.", cur->valor("ordenasiento").toAscii().constData(), cur->valor("codigo").toAscii().constData());
-        agregarError(cadena, "asiento", cur->valor("idasiento").toAscii().constData());
+        agregarError(cadena, "asiento","idasiento=" + cur->valor("idasiento"));
         cur->siguienteregistro();
     } // end while
     delete cur;
@@ -139,7 +139,7 @@ void correctorwidget::on_mui_corregir_clicked() {
     while (!cur->eof()) {
         QString cadena;
         cadena.sprintf("<img src='/usr/share/bulmages/icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>%s</B> tiene una insercion en el haber de la cuenta <B>%s</B> que no permite inserciones en el haber de dicha cuenta.", cur->valor("ordenasiento").toAscii().constData(), cur->valor("codigo").toAscii().constData());
-        agregarError(cadena, "asiento", cur->valor("idasiento").toAscii().constData());
+        agregarError(cadena, "asiento", "idasiento=" + cur->valor("idasiento"));
         cur->siguienteregistro();
     } // end while
     delete cur;
@@ -151,7 +151,7 @@ void correctorwidget::on_mui_corregir_clicked() {
     while (!cur->eof()) {
         QString cadena;
         cadena.sprintf("<img src='/usr/share/bulmages/icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>La amortizacion num. <B>%s</B> tiene un plazo expirado <B>%s</B>.", cur->valor("idamortizacion").toAscii().constData(), cur->valor("fechaprevista").toAscii().constData());
-        agregarError(cadena, "amortizacion", cur->valor("idamortizacion").toAscii().constData());
+        agregarError(cadena, "amortizacion","idamortizacion=" + cur->valor("idamortizacion"));
         cur->siguienteregistro();
     } // end while
     delete cur;
@@ -163,7 +163,7 @@ void correctorwidget::on_mui_corregir_clicked() {
     while (!cur->eof()) {
         QString cadena;
         cadena.sprintf("<img src='/usr/share/bulmages/icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B><BR>El asiento num. <B>%s</B> tiene una insercion en cuentas de IVA (%s) sin que haya una factura asociada.", cur->valor("orden").toAscii().constData(), cur->valor("codigo").toAscii().constData());
-        agregarError(cadena, "asiento", cur->valor("idasiento").toAscii().constData());
+        agregarError(cadena, "asiento", "idasiento=" + cur->valor("idasiento"));
         cur->siguienteregistro();
     } // end while
     delete cur;
@@ -183,22 +183,25 @@ void correctorwidget::on_mui_corregir_clicked() {
 **/
 void correctorwidget::alink(const QUrl &url) {
     _depura("correctorwidget::alink", 0);
+
     QString linker = url.fragment();
-   _depura(linker, 10);
+    QStringList list = linker.split("=");
 
     ///TODO: REVISAR ESTA FUNCION QUE NO HACE BIEN SU TRABAJO.
-    if (linker == "ver") {
+    if (list[0] == "ver") {
         empresaactual->muestracuentas();
-    } else if (linker == "asiento") {
-        //QString ordenasiento = l.right(l.length() - 2);
+    } else if (list[0] == "idasiento") {
         Asiento1View *view = empresaactual->intapuntsempresa();
         bool ok;
-        //view->muestraasiento(ordenasiento.toInt(&ok));
+        view->muestraasiento(list[1].toInt(&ok));
+	view->hide();
+	view->show();
     } else {
-        Asiento1View *view = empresaactual->intapuntsempresa();
+/*        Asiento1View *view = empresaactual->intapuntsempresa();
         bool ok;
         view->muestraasiento(linker.toInt(&ok));
-        //QMessageBox::warning(0, tr("Opcion no implementada"), tr("No se puede acceder al error"), 0, 1, 2);
+*/
+        QMessageBox::warning(0, tr("Opcion no implementada"), tr("No se puede acceder al error"), 0, 1, 2);
     } // endif
     _depura("END correctorwidget::alink", 0);
 }
@@ -213,8 +216,7 @@ void correctorwidget::alink(const QUrl &url) {
 \param texto2
 **/
 void correctorwidget::agregarError(QString texto, QString texto1, QString texto2) {
-    _depura("correctorwidget::agregarError", 0);
-    textBrowser += "<HR><table><tr><td colspan=2>" + texto + "</td></tr><tr><td><a name='masinfo' href='#" + texto1 + "'>+ info</a></td><td><a name='" + texto1 + "' href='#" + texto2 + "'>ver error</a></td></tr></table>";
-    _depura("END correctorwidget::agregarError", 0);
+   _depura("correctorwidget::agregarError", 0);
+   textBrowser += "<HR><table><tr><td colspan=2>" + texto + "</td></tr><tr><td><!-- a name='masinfo' href='#" + texto1 + "'>+ info</a --></td><td><a name='" + texto1 + "' href='#" + texto2 + "'>ver error</a></td></tr></table>";
+   _depura("END correctorwidget::agregarError", 0);
 }
-

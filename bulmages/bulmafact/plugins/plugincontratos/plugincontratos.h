@@ -32,9 +32,9 @@
 
 #include "bulmafact.h"
 #include "clienteview.h"
+#include "ficha.h"
 
 extern "C" MY_EXPORT int entryPoint(Bulmafact *);
 extern "C" MY_EXPORT int ClienteView_ClienteView(ClienteView *);
-extern "C" MY_EXPORT int ClienteView_cargar(ClienteView *);
-
+extern "C" MY_EXPORT int Ficha_cargar(Ficha *);
 

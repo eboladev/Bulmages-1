@@ -160,6 +160,7 @@ void extractoview1::boton_siguiente() {
     _depura ( "extractoview1::boton_siguiente", 0 );
     if ( m_cursorcta != NULL ) {
         if ( !m_cursorcta->esultimoregistro() ) {
+	    guardar();
             m_cursorcta->siguienteregistro();
             presentar();
         } // end if
@@ -175,6 +176,7 @@ void extractoview1::boton_anterior() {
     _depura ( "extractoview1::boton_anterior", 0 );
     if ( m_cursorcta != NULL ) {
         if ( !m_cursorcta->esprimerregistro() ) {
+	    guardar();
             m_cursorcta->registroanterior();
             presentar();
         } // end if
@@ -188,6 +190,7 @@ void extractoview1::boton_anterior() {
 void extractoview1::boton_inicio() {
     _depura ( "extractoview1::boton_inicio", 0 );
     if ( m_cursorcta != NULL ) {
+	guardar();
         m_cursorcta->primerregistro();
         presentar();
     } // end if
@@ -200,6 +203,7 @@ void extractoview1::boton_inicio() {
 void extractoview1::boton_fin() {
     _depura ( "extractoview1::boton_fin", 0 );
     if ( m_cursorcta != NULL ) {
+	guardar();
         m_cursorcta->ultimoregistro();
         presentar();
     } // end if
@@ -267,9 +271,11 @@ void extractoview1::ajustes() {
 ///
 /**
 **/
-void extractoview1::on_mui_guardar_clicked() {
+int extractoview1::guardar() {
     _depura ( "extractoview1::on_mui_guardar_clicked", 0 );
+    if ( mui_asAbiertos->isChecked() ) return 0;
     mui_list->guardar();
+    return 0;
     _depura ( "END extractoview1::on_mui_guardar_clicked", 0 );
 
 }
@@ -304,11 +310,6 @@ void extractoview1::presentar() {
             tipopunteo = " AND punteo = FALSE ";
         } // end if
 
-        if ( contra != "" ) {
-            tipopunteo += " AND apunte.contrapartida = id_cuenta('" + contra + "') ";
-        } // end if
-
-
 
         if ( m_cursorcta->eof() || m_cursorcta->bof() )
             return;
@@ -341,6 +342,12 @@ void extractoview1::presentar() {
             cont = " * ";
         } // end if
 
+        if ( contra != "" ) {
+            tipopunteo += " AND " + tabla + ".contrapartida = id_cuenta('" + contra + "') ";
+        } // end if
+
+
+
         query = "SELECT * FROM ((SELECT " + cont + " FROM " + tabla + " WHERE  idcuenta = " + idcuenta + " AND fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' " + ccostes + " " + ccanales + " " + tipopunteo + ") AS t2 LEFT JOIN cuenta ON t2.idcuenta = cuenta.idcuenta) AS t1 LEFT JOIN asiento ON asiento.idasiento = t1.idasiento ";
         query += " LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste FROM c_coste) AS t5 ON t5.idc_coste = t1.idc_coste ";
         query += " LEFT JOIN (SELECT idcanal, nombre AS nombrecanal FROM canal) AS t6 ON t6.idcanal = t1.idcanal ";
@@ -363,6 +370,7 @@ void extractoview1::presentar() {
                 saldoinicial = debeinicial - haberinicial;
             } // end if
             delete cursoraux;
+	    cursoraux = NULL;
 
             /// Establecemos los saldos iniciales
             inicialdebe->setText ( debeinicial.toQString() );
@@ -380,7 +388,8 @@ void extractoview1::presentar() {
                 saldo = saldo + debe - haber;
                 debefinal = debefinal + debe;
                 haberfinal = haberfinal + haber;
-                mui_list->setDBvalue("saldo", i++, saldo.toQString());
+		if (mui_list->lineaat(i)) 
+                	mui_list->setDBvalue("saldo", i++, saldo.toQString());
                 cursorapt->siguienteregistro();
             } // end while
 
@@ -390,6 +399,7 @@ void extractoview1::presentar() {
             totalsaldo->setText ( saldofinal.toQString() );
         } // end if
         delete cursorapt;
+	cursorapt = NULL;
         ajustes();
     } catch (...) {
         mensajeInfo("Error en los calculos");
@@ -573,9 +583,6 @@ QString extractoview1::imprimeExtractoCuenta ( QString idcuenta ) {
     if ( idcuenta == "" )
         return "";
 
-    /// Escribimos el nombre de la cuenta y el c&oacute;digo de la misma.
-    codigocuenta->setText ( m_cursorcta->valor ( "codigo" ) );
-    nombrecuenta->setText ( m_cursorcta->valor ( "descripcion" ) );
     /// Hacemos la consulta de los apuntes a listar en la base de datos.
     QString query = "";
     /// Al igual que en el caso anterior los centros de coste han cambiado y a&uacute;n
@@ -694,6 +701,7 @@ QString extractoview1::imprimeExtractoCuenta ( QString idcuenta ) {
 **/
 void extractoview1::on_mui_imprimir_clicked() {
     _depura ( "extractoview1::on_mui_imprimir_clicked", 0 );
+
     QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "extracto.rml";
     QString archivod = confpr->valor ( CONF_DIR_USER ) + "extracto.rml";
     QString archivologo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
@@ -725,10 +733,9 @@ void extractoview1::on_mui_imprimir_clicked() {
     file.close();
     QString fitxersortidatxt = "";
 
-    /// ========================================================================
-
     QString codinicial = m_codigoinicial->codigocuenta();
     QString codfinal = m_codigofinal->codigocuenta();
+
     QString query;
     /// Si los datos de c&oacute;digo inicial y final est&aacute;n vacios los ponemos
     /// nosotros.
@@ -739,8 +746,8 @@ void extractoview1::on_mui_imprimir_clicked() {
         codfinal = "9999999";
     } // end if
     query = "SELECT * FROM cuenta WHERE idcuenta IN (SELECT idcuenta FROM apunte) AND codigo >= '" + codinicial + "' AND codigo <= '" + codfinal + "' ORDER BY codigo";
-
     cursor2 *curcta = empresaBase()->cargacursor ( query );
+    if (!curcta) return;
     while ( ! curcta->eof() ) {
         fitxersortidatxt += imprimeExtractoCuenta ( curcta->valor ( "idcuenta" ) );
         curcta->siguienteregistro();
@@ -749,7 +756,6 @@ void extractoview1::on_mui_imprimir_clicked() {
     }// end while
     delete curcta;
 
-    /// ========================================================================
 
     buff.replace ( "[story]",fitxersortidatxt );
     if ( file.open ( QIODevice::WriteOnly ) ) {

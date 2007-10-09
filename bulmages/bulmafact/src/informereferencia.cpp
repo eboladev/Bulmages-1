@@ -48,8 +48,14 @@ InformeReferencia::~InformeReferencia() {
 }
 
 
+/// Establece la referencia a partir de la cual generar el informe.
+/**
+\param val indica la referencia a ser establecida para realizar el informe
+**/
 void InformeReferencia::setreferencia(QString val) {
+	_depura("InformeReferencia::setreferencia", 0, val);
         m_referencia = val;
+	_depura("END InformeReferencia::setreferencia", 0, val);
 }
 
 ///
@@ -305,11 +311,17 @@ InformeCliente::~InformeCliente() {
     _depura("END InformeCliente::~InformeCliente", 0);
 }
 
+
+/// Establece el identificador del cliente a partir del cual generar el informe.
+/**
+\param val el valor del identificador de cliente.
+**/
 void InformeCliente::setCliente(QString val) {
     _depura("InformeCliente::setCliente", 0);
         m_idcliente = val;
     _depura("END InformeCliente::setCliente", 0);
 }
+
 
 ///
 /**
