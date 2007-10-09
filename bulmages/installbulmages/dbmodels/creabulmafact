@@ -1,9 +1,9 @@
 #!/bin/bash
-#  (C) Tomeu Borr� Riera, Octubre 2004
+#  (C) Tomeu Borras Riera, Octubre 2004
 # Lo ejecuta un usuario con privilegios para crear bases de datos. Si no no funciona.
 #
 # Este script se encarga de crear bases de datos de bulmages.
-# para ello precisa de dos parametros (el nombre de la base de datos a crear y el tipo de base de datos que ser�
+# Para ello precisa de dos parametros (el nombre de la base de datos a crear y el tipo de base de datos).
 # Este script no se encarga de hacer las inserciones oportunas en la metabd.
 # Aunque es una tarea muy sencilla que puede hacer posteriormente.
 # PARAMETROS:
@@ -30,7 +30,7 @@ else
 fi
 
 
-#Si el nmero de parametros no es el correcto salimos con un mensaje de error.
+#Si el numero de parametros no es el correcto salimos con un mensaje de error.
 if [ "$4" = "" ]; then
    echo "creabulmafact [--texto | --dialog] nombre [0 | 1 | 2] nomempresa"
    echo " opcion 0: Base de datos Vacia, (si duda elija esta opcion)"

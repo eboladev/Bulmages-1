@@ -359,7 +359,7 @@
           <item>
            <widget class="QCheckBox" name="mui_presentablearticulo" >
             <property name="toolTip" >
-             <string>Incluir este artículo en el catálogo.</string>
+             <string>Incluir este articulo en el catalogo.</string>
             </property>
             <property name="text" >
              <string>&amp;Incluir en el catálogo.</string>
@@ -369,7 +369,7 @@
           <item>
            <widget class="QCheckBox" name="mui_controlstockarticulo" >
             <property name="toolTip" >
-             <string>Activar el control de stock para este artículo.</string>
+             <string>Activar el control de stock para este articulo.</string>
             </property>
             <property name="text" >
              <string>Activar el &amp;control de stock.</string>

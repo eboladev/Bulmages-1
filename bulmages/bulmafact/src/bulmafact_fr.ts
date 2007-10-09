@@ -1124,20 +1124,20 @@
         <source>Imagen del articulo:</source>
         <translation>Image de l&apos;article:</translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="articleeditbase.ui" line="362"/>
-        <source>Incluir este artículo en el catálogo.</source>
-        <translation>Inclure cet article dans la catalogue.</translation>
+        <source>Incluir este articulo en el catalogo.</source>
+        <translation type="unfinished">Inclure cet article dans la catalogue.</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="articleeditbase.ui" line="365"/>
         <source>&amp;Incluir en el catálogo.</source>
         <translation>&amp;Inclure dans le catalogue.</translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="articleeditbase.ui" line="372"/>
-        <source>Activar el control de stock para este artículo.</source>
-        <translation>Activer le control de stock pour cet article.</translation>
+        <source>Activar el control de stock para este articulo.</source>
+        <translation type="unfinished">Activer le control de stock pour cet article.</translation>
     </message>
     <message>
         <location filename="articleeditbase.ui" line="375"/>
@@ -3675,37 +3675,37 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>InformeCliente</name>
     <message>
-        <location filename="informereferencia.cpp" line="410"/>
+        <location filename="informereferencia.cpp" line="420"/>
         <source>Articulo</source>
         <translation>Article</translation>
     </message>
     <message>
-        <location filename="informereferencia.cpp" line="448"/>
+        <location filename="informereferencia.cpp" line="458"/>
         <source>Pres.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="informereferencia.cpp" line="496"/>
+        <location filename="informereferencia.cpp" line="506"/>
         <source>Pedido</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="informereferencia.cpp" line="497"/>
+        <location filename="informereferencia.cpp" line="507"/>
         <source>Entregado</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="informereferencia.cpp" line="498"/>
+        <location filename="informereferencia.cpp" line="508"/>
         <source>Facturado</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="informereferencia.cpp" line="452"/>
+        <location filename="informereferencia.cpp" line="462"/>
         <source>Cobrado</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="informereferencia.cpp" line="499"/>
+        <location filename="informereferencia.cpp" line="509"/>
         <source>Pagado</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3713,37 +3713,37 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>InformeReferencia</name>
     <message>
-        <location filename="informereferencia.cpp" line="149"/>
+        <location filename="informereferencia.cpp" line="154"/>
         <source>Articulo</source>
         <translation>Article</translation>
     </message>
     <message>
-        <location filename="informereferencia.cpp" line="186"/>
+        <location filename="informereferencia.cpp" line="191"/>
         <source>Pres.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="informereferencia.cpp" line="234"/>
+        <location filename="informereferencia.cpp" line="239"/>
         <source>Pedido</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="informereferencia.cpp" line="235"/>
+        <location filename="informereferencia.cpp" line="240"/>
         <source>Entregado</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="informereferencia.cpp" line="236"/>
+        <location filename="informereferencia.cpp" line="241"/>
         <source>Facturado</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="informereferencia.cpp" line="190"/>
+        <location filename="informereferencia.cpp" line="195"/>
         <source>Cobrado</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="informereferencia.cpp" line="237"/>
+        <location filename="informereferencia.cpp" line="242"/>
         <source>Pagado</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5598,84 +5598,84 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>PedidosClienteListSubform</name>
     <message>
-        <location filename="pedidosclientelist.cpp" line="314"/>
-        <source>Id pedido cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="pedidosclientelist.cpp" line="301"/>
-        <source>Codigo de almacen</source>
-        <translation type="unfinished">Code de magasin</translation>
-    </message>
-    <message>
-        <location filename="pedidosclientelist.cpp" line="300"/>
-        <source>Referencia pedido cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="pedidosclientelist.cpp" line="299"/>
-        <source>Numero pedido cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="pedidosclientelist.cpp" line="302"/>
-        <source>Descripcion pedido cliente</source>
-        <translation type="unfinished"></translation>
+        <source>Cliente</source>
+        <translation type="unfinished">Client</translation>
     </message>
     <message>
-        <location filename="pedidosclientelist.cpp" line="303"/>
-        <source>Nombre cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="pedidosclientelist.cpp" line="304"/>
-        <source>Fecha pedido cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="pedidosclientelist.cpp" line="305"/>
+        <location filename="pedidosclientelist.cpp" line="308"/>
         <source>Persona de contacto</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pedidosclientelist.cpp" line="306"/>
-        <source>Telefono pedido cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="pedidosclientelist.cpp" line="307"/>
-        <source>Comentario pedido</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="pedidosclientelist.cpp" line="311"/>
-        <source>Id trabajador</source>
-        <translation type="unfinished">Id travailleur</translation>
-    </message>
-    <message>
-        <location filename="pedidosclientelist.cpp" line="312"/>
-        <source>Id cliente</source>
-        <translation>ID client</translation>
-    </message>
-    <message>
         <location filename="pedidosclientelist.cpp" line="313"/>
-        <source>Id almacen</source>
-        <translation>ID magasin</translation>
-    </message>
-    <message>
-        <location filename="pedidosclientelist.cpp" line="308"/>
-        <source>Total pedido</source>
-        <translation type="unfinished"></translation>
+        <source>ID cliente</source>
+        <translation type="unfinished">ID magasin</translation>
     </message>
     <message>
         <location filename="pedidosclientelist.cpp" line="309"/>
-        <source>Base imponible</source>
-        <translation>Assiette imposable</translation>
+        <source>Telefono</source>
+        <translation type="unfinished">Assiette imposable</translation>
+    </message>
+    <message>
+        <location filename="pedidosclientelist.cpp" line="305"/>
+        <source>Impuestos</source>
+        <translation>Impots</translation>
+    </message>
+    <message>
+        <location filename="pedidosclientelist.cpp" line="299"/>
+        <source>ID pedido</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="pedidosclientelist.cpp" line="300"/>
+        <source>Pedido</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="pedidosclientelist.cpp" line="301"/>
+        <source>Fecha</source>
+        <translation type="unfinished">Date</translation>
+    </message>
+    <message>
+        <location filename="pedidosclientelist.cpp" line="303"/>
+        <source>Referencia</source>
+        <translation type="unfinished">Référence</translation>
+    </message>
+    <message>
+        <location filename="pedidosclientelist.cpp" line="304"/>
+        <source>Base Imponible</source>
+        <translation type="unfinished">Assiette imposable</translation>
+    </message>
+    <message>
+        <location filename="pedidosclientelist.cpp" line="306"/>
+        <source>Total</source>
+        <translation type="unfinished">Total</translation>
+    </message>
+    <message>
+        <location filename="pedidosclientelist.cpp" line="307"/>
+        <source>Descripcion</source>
+        <translation type="unfinished">Description</translation>
     </message>
     <message>
         <location filename="pedidosclientelist.cpp" line="310"/>
-        <source>Impuestos</source>
-        <translation>Impots</translation>
+        <source>Comentario</source>
+        <translation type="unfinished">Comentaire</translation>
+    </message>
+    <message>
+        <location filename="pedidosclientelist.cpp" line="311"/>
+        <source>Almacen</source>
+        <translation type="unfinished">Magasin</translation>
+    </message>
+    <message>
+        <location filename="pedidosclientelist.cpp" line="312"/>
+        <source>ID trabajador</source>
+        <translation type="unfinished">ID ouvrier</translation>
+    </message>
+    <message>
+        <location filename="pedidosclientelist.cpp" line="314"/>
+        <source>ID almacen</source>
+        <translation type="unfinished">ID magasin</translation>
     </message>
 </context>
 <context>
@@ -5910,37 +5910,37 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>Presupuesto</name>
     <message>
-        <location filename="fichabf.cpp" line="738"/>
+        <location filename="fichabf.cpp" line="649"/>
         <source>Descuento</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="fichabf.cpp" line="739"/>
+        <location filename="fichabf.cpp" line="650"/>
         <source>Porcentaje</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="fichabf.cpp" line="811"/>
+        <location filename="fichabf.cpp" line="722"/>
         <source>Total</source>
         <translation type="unfinished">Total</translation>
     </message>
     <message>
-        <location filename="fichabf.cpp" line="771"/>
+        <location filename="fichabf.cpp" line="682"/>
         <source>Base Imponible</source>
         <translation>Assiette imposable</translation>
     </message>
     <message>
-        <location filename="fichabf.cpp" line="785"/>
+        <location filename="fichabf.cpp" line="696"/>
         <source>I.V.A.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="fichabf.cpp" line="800"/>
+        <location filename="fichabf.cpp" line="711"/>
         <source>R.E.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="fichabf.cpp" line="807"/>
+        <location filename="fichabf.cpp" line="718"/>
         <source>I.R.P.F (-</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6010,7 +6010,7 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished">ID ouvrier</translation>
     </message>
     <message>
-        <location filename="fichabf.cpp" line="740"/>
+        <location filename="fichabf.cpp" line="651"/>
         <source>Total Desc.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6229,64 +6229,39 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>PresupuestoListSubForm</name>
     <message>
-        <location filename="presupuestolist.cpp" line="315"/>
-        <source>Codigo de almacen</source>
-        <translation type="unfinished">Code de magasin</translation>
-    </message>
-    <message>
-        <location filename="presupuestolist.cpp" line="317"/>
+        <location filename="presupuestolist.cpp" line="318"/>
         <source>Referencia</source>
         <translation>Référence</translation>
     </message>
     <message>
-        <location filename="presupuestolist.cpp" line="318"/>
+        <location filename="presupuestolist.cpp" line="322"/>
         <source>Descripcion</source>
         <translation>Description</translation>
     </message>
     <message>
         <location filename="presupuestolist.cpp" line="319"/>
-        <source>Nombre del cliente</source>
-        <translation>Nom du client</translation>
-    </message>
-    <message>
-        <location filename="presupuestolist.cpp" line="321"/>
-        <source>Persona de contacto</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="presupuestolist.cpp" line="322"/>
-        <source>Numero de telefono</source>
-        <translation>Numéro de téléphone</translation>
+        <source>Base Imponible</source>
+        <translation type="unfinished">Nom du client</translation>
     </message>
     <message>
         <location filename="presupuestolist.cpp" line="323"/>
-        <source>Comentarios</source>
-        <translation>Commentaires</translation>
+        <source>Persona de contacto</source>
+        <translation type="unfinished">Commentaires</translation>
     </message>
     <message>
-        <location filename="presupuestolist.cpp" line="324"/>
+        <location filename="presupuestolist.cpp" line="327"/>
         <source>ID trabajador</source>
         <translation type="unfinished">ID ouvrier</translation>
     </message>
     <message>
-        <location filename="presupuestolist.cpp" line="325"/>
+        <location filename="presupuestolist.cpp" line="328"/>
         <source>ID cliente</source>
         <translation>ID client</translation>
     </message>
     <message>
-        <location filename="presupuestolist.cpp" line="326"/>
+        <location filename="presupuestolist.cpp" line="329"/>
         <source>ID almacen</source>
         <translation>ID magasin</translation>
-    </message>
-    <message>
-        <location filename="presupuestolist.cpp" line="327"/>
-        <source>Total Base imponible</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="presupuestolist.cpp" line="328"/>
-        <source>Total impuestos</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="presupuestolist.cpp" line="314"/>
@@ -6294,19 +6269,44 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="presupuestolist.cpp" line="316"/>
-        <source>Numero de presupuesto</source>
+        <location filename="presupuestolist.cpp" line="315"/>
+        <source>Presupuesto</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="presupuestolist.cpp" line="316"/>
+        <source>Fecha</source>
+        <translation type="unfinished">Date</translation>
+    </message>
+    <message>
+        <location filename="presupuestolist.cpp" line="317"/>
+        <source>Cliente</source>
+        <translation type="unfinished">Client</translation>
     </message>
     <message>
         <location filename="presupuestolist.cpp" line="320"/>
-        <source>Fecha del presupuesto</source>
-        <translation type="unfinished"></translation>
+        <source>Impuestos</source>
+        <translation type="unfinished">Impots</translation>
     </message>
     <message>
-        <location filename="presupuestolist.cpp" line="329"/>
-        <source>Total presupuesto</source>
-        <translation type="unfinished"></translation>
+        <location filename="presupuestolist.cpp" line="321"/>
+        <source>Total</source>
+        <translation type="unfinished">Total</translation>
+    </message>
+    <message>
+        <location filename="presupuestolist.cpp" line="324"/>
+        <source>Telefono</source>
+        <translation type="unfinished">Téléphone</translation>
+    </message>
+    <message>
+        <location filename="presupuestolist.cpp" line="325"/>
+        <source>Comentario</source>
+        <translation type="unfinished">Comentaire</translation>
+    </message>
+    <message>
+        <location filename="presupuestolist.cpp" line="326"/>
+        <source>Almacen</source>
+        <translation type="unfinished">Magasin</translation>
     </message>
 </context>
 <context>
