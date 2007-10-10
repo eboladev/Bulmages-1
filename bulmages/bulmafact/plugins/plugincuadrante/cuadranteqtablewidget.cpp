@@ -100,7 +100,7 @@ bool CuadranteQTableWidget::dropMimeData (int row, int column,const QMimeData *d
 }
 
 
-void CuadranteQTableWidget::on_contextMenuRequested ( int row, int col, const QPoint & pos ) {
+void CuadranteQTableWidget::on_contextMenuRequested ( int , int , const QPoint &  ) {
 	_depura("CuadranteQTableWidget::contextMenuRequested", 2);
 }
 
@@ -125,7 +125,7 @@ CuadranteQTextDocument::CuadranteQTextDocument(Company *emp, QWidget *parent) :Q
 /**
 \param e
 **/
-void CuadranteQTextDocument::contextMenuEvent ( QContextMenuEvent * e ) {
+void CuadranteQTextDocument::contextMenuEvent ( QContextMenuEvent *  ) {
 //        int currow = tableWidget()->row(this);
 //	int currcol = tableWidget()->column(this);
 	QTableWidgetItem::setSelected(TRUE);
@@ -137,7 +137,7 @@ void CuadranteQTextDocument::contextMenuEvent ( QContextMenuEvent * e ) {
 /**
 \param event
 **/
-void CuadranteQTextDocument::mouseDoubleClickEvent ( QMouseEvent * event ) {
+void CuadranteQTextDocument::mouseDoubleClickEvent ( QMouseEvent *  ) {
     Cuadrante1View *cuad = new Cuadrante1View((Company *)empresaBase(), 0);
     empresaBase()->pWorkspace()->addWindow(cuad);
     cuad->show();
@@ -248,16 +248,16 @@ void CuadranteQTextDocument::pintaCuadrante(QString idalmacen, const QDate &date
 
 
         if (oldnomtipotrabajo != cur1->valor("nomtipotrabajo") ) {
-            html += "<font size=\"1\" color=\"#00FF00\" >" + cur1->valor("nomtipotrabajo") + ":</font><BR>";
+            html += "<font size=\"2\" color=\"#00FF00\" >" + cur1->valor("nomtipotrabajo") + ":</font><BR>";
             oldnomtipotrabajo = cur1->valor("nomtipotrabajo");
         } // end if
 
 	/// Si hay conflictos con el trabajador.
 	if (buscaConflictos(cur1->valor("idtrabajador"), date, cur1->valor("horainhorario").left(5), cur1->valor("horafinhorario").left(5))) {
-		html += "<font size=\"1\" color=\"#FF0000\">ERROR</FONT> ";
+		html += "<font size=\"3\" color=\"#FF0000\">ERROR</FONT> ";
 	}
 
-        html += "<font size=\"1\" color=\"#0000FF\">" + cur1->valor("nomtrabajador") + " " + cur1->valor("apellidostrabajador");
+        html += "<font size=\"3\" color=\"" + cur1->valor("colortipotrabajo") + "\">" + cur1->valor("nomtrabajador") + " " + cur1->valor("apellidostrabajador");
         html += " (" + cur1->valor("horainhorario").left(5) + "--" + cur1->valor("horafinhorario").left(5) + ") </font><BR>";
 
         cur1->siguienteregistro();
@@ -265,7 +265,7 @@ void CuadranteQTextDocument::pintaCuadrante(QString idalmacen, const QDate &date
     delete cur1;
 
     if (cur->valor("comentcuadrante") != "") {
-        html += "<HR><font size=\"1\" color=\"#000000\">" + cur->valor("comentcuadrante").replace("\n", "<BR>")+"</font>";
+        html += "<HR><font size=\"2\" color=\"#000000\">" + cur->valor("comentcuadrante").replace("\n", "<BR>")+"</font>";
     } // end if
     delete cur;
 
@@ -323,10 +323,10 @@ const QString CuadranteQTextDocument::impresion() {
     if (!cur1) throw -1;
     while (!cur1->eof()) {
         if (oldnomtipotrabajo != cur1->valor("nomtipotrabajo") ) {
-            html +=  "<para "+style+"><font color=\"red\">" + cur1->valor("nomtipotrabajo") + ":</font></para><spacer length=\"0.1cm\"/>\n";
+            html +=  "<para "+style+"><font color=\"red\" size=\"5\">" + cur1->valor("nomtipotrabajo") + ":</font></para><spacer length=\"0.1cm\"/>\n";
             oldnomtipotrabajo = cur1->valor("nomtipotrabajo");
         } // end if
-        html += "<para "+style+"><font face=\"Helvetica\" size=\"6\">" + cur1->valor("nomtrabajador") + " " + cur1->valor("apellidostrabajador");
+        html += "<para "+style+"><font face=\"Helvetica\" size=\"6\" color=\"" + cur1->valor("colortipotrabajo") + "\">" + cur1->valor("nomtrabajador") + " " + cur1->valor("apellidostrabajador");
         html += "<sup>(" + cur1->valor("horainhorario").left(5) + "--" + cur1->valor("horafinhorario").left(5) + ")</sup></font></para><spacer length=\"0.1cm\"/>\n";
 
         cur1->siguienteregistro();
@@ -334,7 +334,7 @@ const QString CuadranteQTextDocument::impresion() {
     delete cur1;
 
     if (cur->valor("comentcuadrante") != "") {
-        html += "<para "+style+"><font face=\"Helvetica\" size=\"5\" color=\"blue\">" + cur->valor("comentcuadrante").replace("\n", "<spacer length=\"0.1cm\"/>\n") + "</font></para>";
+        html += "<para "+style+"><font face=\"Helvetica\" size=\"5\" color=\"black\">" + cur->valor("comentcuadrante").replace("\n", "<spacer length=\"0.1cm\"/>\n") + "</font></para>";
     } // end if
 
     delete cur;

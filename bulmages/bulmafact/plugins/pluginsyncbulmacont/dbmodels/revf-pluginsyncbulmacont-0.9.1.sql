@@ -1117,7 +1117,7 @@ DECLARE
 BEGIN
 	PERFORM conectabulmacont();
 	-- Hacemos el update del stock del articulo
-	IF OLD.idasientobanco IS NOT NULL THEN
+	IF OLD.idcuentaalmacen IS NOT NULL THEN
 		query := 'DELETE FROM cuenta WHERE idcuenta = ' || OLD.idcuentaalmacen;
 		PERFORM dblink_exec(query);
 	END IF;

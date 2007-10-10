@@ -54,7 +54,7 @@ ListTiposTrabajoView::ListTiposTrabajoView(Company *comp, QWidget *parent)
     mui_listado->setDBCampoId("idtipotrabajo");
     mui_listado->addSHeader("idtipotrabajo", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr("Id Tipo Trabajo"));
     mui_listado->addSHeader("nomtipotrabajo", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Nombre Tipo Trabajo"));
-
+    mui_listado->addSHeader("colortipotrabajo", DBCampo::DBvarchar, DBCampo::DBNothing , SHeader::DBNone, tr("Color Tipo Trabajo"));
     mui_listado->setinsercion(TRUE);
 
     mui_listado->cargar("SELECT * FROM tipotrabajo");
@@ -71,7 +71,7 @@ void ListTiposTrabajoView::on_mui_aceptar_clicked() {
         mui_listado->guardar();
         close();
     } catch (...) {
-        mensajeInfo("Error al guardar los almacenes");
+        mensajeInfo("Error al guardar los tipos de trabajo");
     } // end try
 }
 

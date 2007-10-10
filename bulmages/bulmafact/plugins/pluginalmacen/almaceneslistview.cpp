@@ -139,9 +139,12 @@ void AlmacenesListView::setEmpresaBase(Company *comp) {
 **/
 void AlmacenesListView::crear() {
     _depura("AlmacenesListView::crear", 0);
-/*
-    ((Company *)empresaBase())->s_newAlmacen();
-*/
+    /*
+        ((Company *)empresaBase())->s_newAlmacen();
+    */
+    AlmacenView *alm = new AlmacenView((Company *)empresaBase(), 0);
+    empresaBase()->pWorkspace()->addWindow(alm);
+    alm->show();
     _depura("END AlmacenesListView::crear", 0);
 }
 
@@ -183,15 +186,15 @@ void AlmacenesListView::editar(int row) {
         m_idalmacen = mui_list->DBvalue(QString("idalmacen"), row);
 
         if (modoEdicion()) {
-		AlmacenView *alm = new AlmacenView((Company *)empresaBase(), 0);
-		empresaBase()->pWorkspace()->addWindow(alm);
-		alm->show();
-		alm->cargar(m_idalmacen);
+            AlmacenView *alm = new AlmacenView((Company *)empresaBase(), 0);
+            empresaBase()->pWorkspace()->addWindow(alm);
+            alm->show();
+            alm->cargar(m_idalmacen);
         } else {
             emit(selected(m_idalmacen));
         } // end if
         _depura("END AlmacenesListView::editar", 0);
-    } catch(...) {
+    } catch (...) {
         mensajeInfo(tr("Error al editar el almacen"));
     } // end try
 }
@@ -219,15 +222,21 @@ void AlmacenesListView::borrar() {
         return;
     } // end if
     try {
-        m_idalmacen = mui_list->DBvalue(QString("idpresupuesto"));
+        m_idalmacen = mui_list->DBvalue(QString("idalmacen"));
         if (modoEdicion()) {
-/*
-            PresupuestoView *pv = ((Company *)empresaBase())->nuevoPresupuestoView();
-            if (pv->cargar(m_idalmacen))
-                throw -1;
-            pv->on_mui_borrar_clicked();
-            pv->close();
-*/
+            AlmacenView *alm = new AlmacenView((Company *)empresaBase(), 0);
+            empresaBase()->pWorkspace()->addWindow(alm);
+//            alm->show();
+            alm->cargar(m_idalmacen);
+	    alm->on_mui_borrar_clicked();
+	    alm->close();
+            /*
+                        PresupuestoView *pv = ((Company *)empresaBase())->nuevoPresupuestoView();
+                        if (pv->cargar(m_idalmacen))
+                            throw -1;
+                        pv->on_mui_borrar_clicked();
+                        pv->close();
+            */
         } // end if
         presentar();
     } catch (...) {

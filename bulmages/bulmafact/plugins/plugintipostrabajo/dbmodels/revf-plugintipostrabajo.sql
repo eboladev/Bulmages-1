@@ -67,7 +67,8 @@ BEGIN
 
 		CREATE TABLE tipotrabajo (
 		idtipotrabajo SERIAL PRIMARY KEY,
-		nomtipotrabajo varchar NOT NULL
+		nomtipotrabajo varchar NOT NULL,
+		colortipotrabajo VARCHAR
 		);
 
 		
@@ -81,6 +82,12 @@ BEGIN
 		ALTER TABLE trabajador ADD COLUMN idtipotrabajo integer REFERENCES tipotrabajo(idtipotrabajo);
 		
 	END IF;
+
+	SELECT INTO as * FROM pg_attribute WHERE attname=''colortipotrabajo'';
+	IF NOT FOUND THEN
+		ALTER TABLE tipotrabajo ADD COLUMN colortipotrabajo VARCHAR;
+	END IF;
+
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;
@@ -99,9 +106,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre=''DBRev-TiposTrabajo'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.9.3-0004'' WHERE nombre=''DBRev-TiposTrabajo'';
+		UPDATE CONFIGURACION SET valor=''0.10.1-0001'' WHERE nombre=''DBRev-TiposTrabajo'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DBRev-TiposTrabajo'', ''0.9.3-0004'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DBRev-TiposTrabajo'', ''0.10.1-0001'');
 	END IF;
 	RETURN 0;
 END;
