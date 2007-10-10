@@ -180,6 +180,27 @@
          </widget>
         </item>
         <item>
+         <widget class="QFrame" name="mui_plugbotones" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="frameShape" >
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="frameShadow" >
+           <enum>QFrame::Plain</enum>
+          </property>
+          <property name="lineWidth" >
+           <number>0</number>
+          </property>
+         </widget>
+        </item>
+        <item>
          <spacer>
           <property name="orientation" >
            <enum>Qt::Horizontal</enum>
@@ -189,7 +210,7 @@
           </property>
           <property name="sizeHint" >
            <size>
-            <width>591</width>
+            <width>551</width>
             <height>34</height>
            </size>
           </property>
