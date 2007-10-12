@@ -24,18 +24,18 @@
 # define MY_EXPORT
 #endif
 
-#include "bulmafact.h"
+#include "bulmacont.h"
 #include "postgresiface2.h"
-#include "company.h"
 
 
-extern "C" MY_EXPORT void entryPoint(Bulmafact *);
+extern "C" MY_EXPORT void entryPoint(Bulmacont *);
 
 extern QApplication2 *theApp;
 
 
 class myplugin : public QObject {
     Q_OBJECT
+
 public:
     myplugin();
     ~myplugin();

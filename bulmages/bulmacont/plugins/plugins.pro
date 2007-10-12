@@ -9,7 +9,8 @@ SUBDIRS += pluginregistroiva \
            pluginadocumental \
            plugincorrector \
            plugin \
-           plugincanualesods
+           plugincanualesods \
+	   plugindebugbc
 
 
 #Nota: Para implementar plugins que no van a ser liberados dentro del ambito de la asociacion IGLUES
