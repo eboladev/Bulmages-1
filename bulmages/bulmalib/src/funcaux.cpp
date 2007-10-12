@@ -359,19 +359,7 @@ void _depura(const QString &cad, int nivel, const QString &param) {
         } // end if
 
         file.flush();
-    } else {
-        if (nivel == 2) {
-//            out << cad << " " << param << "\n" << flush;
-            QMessageBox::question(NULL,
-                                  QApplication::translate("funcaux", "Informacion de depuracion"),
-                                  cad, QApplication::translate("funcaux", "&Continuar"),
-                                  QString::null, 0);
-        } else if (nivel == 10) { /// Saca los mensajes por la consola de errores.
-            QString cadenasalida;
-            cadenasalida = "--> " + cad + " <--\n";
-            fprintf(stderr, cadenasalida.toAscii().constData());
-        } // end if
-    } // end if
+    }
 }
 
 #else

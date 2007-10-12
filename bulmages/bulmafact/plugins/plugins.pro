@@ -22,7 +22,8 @@ SUBDIRS += plugin \
 	   pluginalmacen \
 	   plugintipostrabajo \
 	   plugincuadrante \
-	   pluginasterisk
+	   pluginasterisk \
+	   plugindebugbf
 
 
 #Nota: Para implementar plugins que no van a ser liberados dentro del ambito de la asociacion IGLUES

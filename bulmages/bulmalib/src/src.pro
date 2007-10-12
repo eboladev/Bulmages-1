@@ -115,7 +115,7 @@ QT += xml
 CONFIG += uic
 
 # Si se quiere depuracion por compilacion activar DEPURA_DEBUG, el programa es mas lento
-#DEFINES += DEPURA_DEBUG
+DEFINES += DEPURA_DEBUG
 
 unix{
     UI_DIR = .ui
