@@ -59,10 +59,8 @@ ListLinAsiento1View::ListLinAsiento1View(QWidget *parent, const char *)
     addSHeader("idregistroiva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr("Id. Registro IVA"));
     addSHeader("factura", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr("Fecha Factura"));
     addSHeader("ffactura", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr("Num. Factura"));
-
     setinsercion(TRUE);
     setOrdenEnabled(FALSE);
-
     connect(this, SIGNAL(pintaMenu(QMenu *)), this, SLOT(s_pintaMenu(QMenu *)));
     connect(this, SIGNAL(trataMenu(QAction *)), this, SLOT(s_trataMenu(QAction *)));
     _depura("END ListLinAsiento1View::ListLinAsiento1View", 0);
@@ -132,7 +130,7 @@ void ListLinAsiento1View::cargar(QString idasiento) {
     SQLQuery += " LEFT JOIN (SELECT codigo, descripcion AS descripcioncuenta, idcuenta, tipocuenta FROM cuenta) AS t1 ON t1.idcuenta = borrador.idcuenta ";
     SQLQuery += " LEFT JOIN (SELECT idcanal, nombre AS nomcanal, descripcion AS descanal FROM canal) AS t2 ON borrador.idcanal = t2.idcanal ";
     SQLQuery += " LEFT JOIN (SELECT idc_coste, nombre AS nomc_coste, descripcion AS descc_coste FROM c_coste) AS t3 ON borrador.idc_coste = t3.idc_coste ";
-    SQLQuery += " LEFT JOIN (SELECT idregistroiva, factura, ffactura, idborrador FROM registroiva) AS t4 ON borrador.idborrador = t4.idborrador ";
+    SQLQuery += " LEFT JOIN (SELECT idregistroiva, factura, ffactura, idborrador AS idborriva FROM registroiva) AS t4 ON borrador.idborrador = t4.idborriva ";
     SQLQuery += "WHERE idasiento = " + idasiento + " ORDER BY orden";
     SubForm2Bc::cargar(SQLQuery);
     _depura("END AsientoSubForm::cargar", 0);

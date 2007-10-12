@@ -280,9 +280,9 @@ void Asiento1::abrir() {
 void Asiento1::cerrar() {
     _depura("Asiento1::cierraAsiento1", 0);
     if (estadoAsiento1() != ASAbierto) {
-        _depura("asiento no abierto", 0);
+        _depura("Asiento1::cierraAsiento1" , 0, "asiento no abierto");
         return;
-    }
+    } // end if
     if (guardar())
         return;
     QString id = DBvalue("idasiento");
@@ -347,11 +347,12 @@ int Asiento1::guardar() {
         int res = g_plugins->lanza("Asiento1_guardaAsiento1_post", this);
         if (res != 0)
             return 0;
-        _depura("END Asiento1::guardar",0);
+
 
         if (estadoAsiento1() == ASCerrado)
             empresaBase()->cierraasiento(id.toInt());
         g_main->statusBar()->showMessage(tr("El asiento se ha guardado correctamente."), 2000);
+        _depura("END Asiento1::guardar",0);
         return 0;
     } catch (...) {
         _depura("Error guardando, se cancela la operacion", 1);

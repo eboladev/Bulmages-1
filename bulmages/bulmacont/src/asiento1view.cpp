@@ -787,7 +787,7 @@ void Asiento1View::on_mui_abrirasiento_clicked() {
 **/
 void Asiento1View::on_mui_cerrarasiento_clicked() {
     if (Fixed(m_descuadre->text()) != 0)  {
-        _depura("Asiento descuadrado, no se puede cerrar", 2);
+        mensajeInfo("Asiento descuadrado, no se puede cerrar");
         return;
     } // end if
     prepguardar();

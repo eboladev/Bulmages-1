@@ -1434,6 +1434,7 @@ int SubForm3::guardar() {
         for (int j = 0; j < mui_list->rowCount() - 1; ++j) {
             rec = lineaat(j);
             if (rec) {
+		/// Si hay ordenacion de campos ahora la establecemos
                 if (m_orden) {
                     rec->setDBvalue("orden" + m_tablename, QString::number(j));
                 } // end if
@@ -1469,7 +1470,7 @@ int SubForm3::guardar() {
         mensajeError("Error inesperado en el guardado. [SubForm3::guardar]");
         throw -1;
     } // end try
-    return -1;
+
 }
 
 

@@ -42,7 +42,8 @@ ListRegistroIvaView::ListRegistroIvaView(Empresa * emp, QString, QWidget *parent
     ffinal->setText(normalizafecha("31/12").toString("dd/MM/yyyy"));
     emp->meteWindow(windowTitle(), this);
 
-    /// DEFINICIONES PARA LA TABLA DE IVAAboutView.
+    /// DEFINICIONES PARA LA TABLA DE IVA Soportado.
+    mui_tablasoportado->setEmpresaBase(emp);
     mui_tablasoportado->setDBTableName("registroiva");
     mui_tablasoportado->setDBCampoId("idregistroiva");
     mui_tablasoportado->addSHeader("idregistroiva", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite, tr("Id"));
@@ -65,6 +66,8 @@ ListRegistroIvaView::ListRegistroIvaView(Empresa * emp, QString, QWidget *parent
     mui_tablasoportado->addSHeader("idasiento", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("idasiento"));
     mui_tablasoportado->setinsercion(FALSE);
 
+    /// DEFINICIONES PARA LA TABLA DE IVA Repercutido.
+    mui_tablarepercutido->setEmpresaBase(emp);
     mui_tablarepercutido->setDBTableName("registroiva");
     mui_tablarepercutido->setDBCampoId("idregistroiva");
     mui_tablarepercutido->addSHeader("idregistroiva", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite, tr("Id"));
@@ -87,6 +90,8 @@ ListRegistroIvaView::ListRegistroIvaView(Empresa * emp, QString, QWidget *parent
     mui_tablarepercutido->addSHeader("idasiento", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("idasiento"));
     mui_tablarepercutido->setinsercion(FALSE);
 
+    /// Definiciones para la tabla de repercutido
+    mui_totalRepercutido->setEmpresaBase(emp);
     mui_totalRepercutido->setDBTableName("");
     mui_totalRepercutido->setDBCampoId("");
     mui_totalRepercutido->addSHeader("nombretipoiva", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite, tr("nombretipoiva"));
@@ -94,6 +99,8 @@ ListRegistroIvaView::ListRegistroIvaView(Empresa * emp, QString, QWidget *parent
     mui_totalRepercutido->addSHeader("tbaseiva", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite, tr("tbaseiva"));
     mui_totalRepercutido->setinsercion(FALSE);
 
+    /// Definiciones para la tabla de soportado
+    mui_totalSoportado->setEmpresaBase(emp);
     mui_totalSoportado->setDBTableName("");
     mui_totalSoportado->setDBCampoId("");
     mui_totalSoportado->addSHeader("nombretipoiva", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite, tr("nombretipoiva"));
@@ -173,24 +180,19 @@ void ListRegistroIvaView::on_mui_actualizar_clicked() {
 **/
 void ListRegistroIvaView::inicializa() {
     _depura("ListRegistroIvaView::inicializa", 0);
+
     QString query;
     QString sbaseimp, siva;
     QString cbaseimp, civa, ctotal;
     cursor2 *cur;
 
     QString SQLQuery = "SELECT * FROM cuenta, tipoiva LEFT JOIN (SELECT idtipoiva, SUM(baseiva) AS tbaseiva, sum(ivaiva) AS tivaiva FROM iva  WHERE iva.idregistroiva IN (SELECT idregistroiva FROM registroiva WHERE ffactura >='"+finicial->text()+"' AND ffactura <='"+ffinal->text()+"' AND factemitida) GROUP BY idtipoiva) AS dd ON dd.idtipoiva=tipoiva.idtipoiva WHERE tipoiva.idcuenta = cuenta.idcuenta";
-    // 22/09/07 Ahora se pasa el QUERY
-    //cursor2 *cur = m_companyact->cargacursor(SQLQuery);
-    //mui_totalRepercutido->cargar(cur);
+
     mui_totalRepercutido->cargar(SQLQuery);
 
-    //delete cur;
 
     SQLQuery = "SELECT * FROM cuenta, tipoiva  LEFT JOIN (SELECT idtipoiva, SUM(baseiva) AS tbaseiva, SUM(ivaiva) AS tivaiva FROM iva WHERE iva.idregistroiva IN (SELECT idregistroiva FROM registroiva WHERE ffactura >='"+finicial->text()+"' AND ffactura <='"+ffinal->text()+"' AND NOT factemitida) GROUP BY idtipoiva) AS dd ON dd.idtipoiva=tipoiva.idtipoiva WHERE tipoiva.idcuenta = cuenta.idcuenta";
-    //cur = m_companyact->cargacursor(SQLQuery);
-    //mui_totalSoportado->cargar(cur);
     mui_totalSoportado->cargar(SQLQuery);
-    //delete cur;
 
     SQLQuery = "SELECT SUM(baseimp) AS tbaseimp, sum(iva) AS tbaseiva FROM registroiva WHERE factemitida AND ffactura >='"+finicial->text()+"' AND ffactura <='"+ffinal->text()+"'";
     cur = m_companyact->cargacursor(SQLQuery);
@@ -205,20 +207,12 @@ void ListRegistroIvaView::inicializa() {
     delete cur;
 
     query.sprintf("SELECT *, (registroiva.baseimp + registroiva.iva) AS totalfactura FROM registroiva LEFT JOIN (SELECT  * FROM cuenta, borrador, asiento  WHERE cuenta.idcuenta = borrador.idcuenta AND asiento.idasiento = borrador.idasiento ) AS t1 ON t1.idborrador = registroiva.idborrador WHERE factemitida AND ffactura >= '%s' AND ffactura <= '%s' ",finicial->text().toAscii().constData(), ffinal->text().toAscii().constData());
-    //cursor2 *cursorreg = m_companyact->cargacursor(query);
-    /// El nuevo proceso de carga es distinto.
-    //mui_tablasoportado->cargar(cursorreg);
     mui_tablasoportado->cargar(query);
-    //delete cursorreg;
 
     /// Hacemos el c&aacute;culo de los que no pertenecen a IVA soportado porque
     /// as&iacute; entran todos.
     query.sprintf("SELECT *, (registroiva.baseimp + registroiva.iva) AS totalfactura FROM registroiva LEFT JOIN (SELECT * FROM cuenta, borrador, asiento  WHERE cuenta.idcuenta = borrador.idcuenta AND asiento.idasiento = borrador.idasiento) AS t1 ON t1.idborrador = registroiva.idborrador WHERE NOT factemitida AND ffactura >= '%s' AND ffactura <= '%s'", finicial->text().toAscii().constData(), ffinal->text().toAscii().constData());
-    //cursorreg = m_companyact->cargacursor(query);
-    /// El nuevo proceso de carga es distinto.
-    //mui_tablarepercutido->cargar(cursorreg);
     mui_tablarepercutido->cargar(query);
-    //delete cursorreg;
     _depura("END ListRegistroIvaView::inicializa", 0);
 }
 
