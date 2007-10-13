@@ -107,7 +107,6 @@ END;
 ' LANGUAGE plpgsql;
 SELECT aux();
 DROP FUNCTION aux() CASCADE;
-
 \echo "Agregado el campo de Fecha Vencimiento de cobro"
 
 

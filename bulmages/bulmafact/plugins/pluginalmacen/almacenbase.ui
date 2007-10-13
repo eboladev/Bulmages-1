@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>731</width>
-    <height>415</height>
+    <width>862</width>
+    <height>542</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -176,6 +176,58 @@
        <property name="spacing" >
         <number>6</number>
        </property>
+       <item row="7" column="0" colspan="3" >
+        <widget class="QGroupBox" name="groupBox" >
+         <property name="title" >
+          <string>Tipo de Almacen</string>
+         </property>
+         <layout class="QHBoxLayout" >
+          <property name="margin" >
+           <number>9</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QRadioButton2" name="mui_tipoalmacen_t" >
+            <property name="text" >
+             <string>Tienda</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton2" name="mui_tipoalmacen_a" >
+            <property name="text" >
+             <string>Almacen</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="6" column="0" colspan="3" >
+        <widget class="QFrame" name="mui_frameplugin" >
+         <property name="frameShape" >
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow" >
+          <enum>QFrame::Raised</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0" >
+        <widget class="QLabel" name="textLabel1_4_8" >
+         <property name="text" >
+          <string>Email Almacén</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring>mui_nomalmacen</cstring>
+         </property>
+        </widget>
+       </item>
        <item row="5" column="1" colspan="2" >
         <widget class="QLineEdit" name="mui_emailalmacen" >
          <property name="enabled" >
@@ -203,51 +255,16 @@
          </property>
         </widget>
        </item>
-       <item row="6" column="0" colspan="3" >
-        <widget class="QFrame" name="mui_frameplugin" >
-         <property name="frameShape" >
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow" >
-          <enum>QFrame::Raised</enum>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1" >
-        <widget class="QLineEdit" name="mui_codigoalmacen" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>5</hsizetype>
-           <vsizetype>0</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="2" >
-        <spacer>
-         <property name="orientation" >
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" >
-          <size>
-           <width>161</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="0" column="0" >
-        <widget class="QLabel" name="textLabel1_2_2_3_2" >
+       <item row="4" column="0" >
+        <widget class="QLabel" name="textLabel1_4_7" >
          <property name="text" >
-          <string>Código Almacén</string>
+          <string>Fax Almacén</string>
          </property>
          <property name="alignment" >
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring>mui_codigoalmacen</cstring>
+          <cstring>mui_nomalmacen</cstring>
          </property>
         </widget>
        </item>
@@ -278,10 +295,10 @@
          </property>
         </widget>
        </item>
-       <item row="5" column="0" >
-        <widget class="QLabel" name="textLabel1_4_8" >
+       <item row="3" column="0" >
+        <widget class="QLabel" name="textLabel1_4_6" >
          <property name="text" >
-          <string>Email Almacén</string>
+          <string>Teléfono Almacén</string>
          </property>
          <property name="alignment" >
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -315,32 +332,6 @@
          </property>
          <property name="readOnly" >
           <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0" >
-        <widget class="QLabel" name="textLabel1_4_4" >
-         <property name="text" >
-          <string>Nombre Almacén</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy" >
-          <cstring>mui_nomalmacen</cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0" >
-        <widget class="QLabel" name="textLabel1_4_7" >
-         <property name="text" >
-          <string>Fax Almacén</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy" >
-          <cstring>mui_nomalmacen</cstring>
          </property>
         </widget>
        </item>
@@ -384,18 +375,18 @@
          </property>
         </widget>
        </item>
-       <item row="7" column="0" colspan="3" >
-        <spacer>
-         <property name="orientation" >
-          <enum>Qt::Vertical</enum>
+       <item row="1" column="0" >
+        <widget class="QLabel" name="textLabel1_4_4" >
+         <property name="text" >
+          <string>Nombre Almacén</string>
          </property>
-         <property name="sizeHint" >
-          <size>
-           <width>691</width>
-           <height>51</height>
-          </size>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
-        </spacer>
+         <property name="buddy" >
+          <cstring>mui_nomalmacen</cstring>
+         </property>
+        </widget>
        </item>
        <item row="1" column="1" colspan="2" >
         <widget class="QLineEdit" name="mui_nomalmacen" >
@@ -424,22 +415,60 @@
          </property>
         </widget>
        </item>
-       <item row="3" column="0" >
-        <widget class="QLabel" name="textLabel1_4_6" >
+       <item row="0" column="0" >
+        <widget class="QLabel" name="textLabel1_2_2_3_2" >
          <property name="text" >
-          <string>Teléfono Almacén</string>
+          <string>Código Almacén</string>
          </property>
          <property name="alignment" >
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
-          <cstring>mui_nomalmacen</cstring>
+          <cstring>mui_codigoalmacen</cstring>
          </property>
         </widget>
+       </item>
+       <item row="0" column="1" >
+        <widget class="QLineEdit" name="mui_codigoalmacen" >
+         <property name="sizePolicy" >
+          <sizepolicy>
+           <hsizetype>5</hsizetype>
+           <vsizetype>0</vsizetype>
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2" >
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>161</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </widget>
     </widget>
+   </item>
+   <item>
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>691</width>
+       <height>51</height>
+      </size>
+     </property>
+    </spacer>
    </item>
    <item>
     <layout class="QHBoxLayout" >
@@ -484,6 +513,13 @@
   </layout>
  </widget>
  <layoutdefault spacing="4" margin="3" />
+ <customwidgets>
+  <customwidget>
+   <class>QRadioButton2</class>
+   <extends>QRadioButton</extends>
+   <header>qradiobutton2.h</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="../../../bulmages.qrc" />
  </resources>

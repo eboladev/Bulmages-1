@@ -73,7 +73,20 @@ DROP FUNCTION compruebarevision() CASCADE;
 \echo "Comprobada la revision"
 
 -- ========================  FIN DE LA COMPROBACION ============================
-
+CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
+DECLARE
+	as RECORD;
+BEGIN
+	SELECT INTO as * FROM pg_attribute WHERE attname=''tipoalmacen'';
+	IF NOT FOUND THEN
+		ALTER TABLE almacen ADD COLUMN tipoalmacen varchar;
+	END IF;
+	RETURN 0;
+END;
+' LANGUAGE plpgsql;
+SELECT aux();
+DROP FUNCTION aux() CASCADE;
+\echo "Agregado el campo de Tipo de Almacen"
 
 -- ================================== ACTUALIZACION  ===================================
 -- =====================================================================================
@@ -86,9 +99,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.10.1-0001'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.10.1-0002'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.10.1-0001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.10.1-0002'');
 	END IF;
 	RETURN 0;
 END;

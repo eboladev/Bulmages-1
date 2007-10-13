@@ -22,6 +22,7 @@
 #include "fichacfg.h"
 #include "qcombobox2.h"
 #include "plugins.h"
+#include "qradiobutton2.h"
 
 #include <QMenu>
 #include <QToolButton>
@@ -287,16 +288,16 @@ void Ficha::on_customContextMenuRequested(const QPoint &) {
     QAction *opcion = popup->exec(QCursor::pos());
 
     if (opcion) {
-	if (opcion == avconfig) {
-		new FichaCfg(empresaBase(), this, 0);
-	} else if (opcion == avprint) {
-		Ficha::imprimir();
-	} // end if
-	
-	emit trataMenu(opcion);
+        if (opcion == avconfig) {
+            new FichaCfg(empresaBase(), this, 0);
+        } else if (opcion == avprint) {
+            Ficha::imprimir();
+        } // end if
 
-	/// Activamos las herederas.
-	procesaMenu(opcion);
+        emit trataMenu(opcion);
+
+        /// Activamos las herederas.
+        procesaMenu(opcion);
     } // end if
 
     delete popup;
@@ -390,6 +391,16 @@ void Ficha::pintar() {
                 l5->setChecked(FALSE);
             } // end if
         } // end if
+
+        /// Buscamos los radio buttons y los preparamos.
+        QList<QRadioButton2 *> l6 = findChildren<QRadioButton2 *>(QRegExp("mui_"+campo->nomcampo()+"_*"));
+        for (int i = 0; i < l6.size(); ++i) {
+            if (l6.at(i)->valorCampo() == campo->valorcampo()) {
+                l6.at(i)->setChecked(TRUE);
+            } else {
+                l6.at(i)->setChecked(FALSE);
+            } // end if
+        } // end for
     } // end for
     pintarPost();
 }
@@ -411,31 +422,46 @@ void Ficha::recogeValores() {
         /// Buscamos un QLineEdit con nombre coincidente.
         QLineEdit *l = findChild<QLineEdit *>("mui_" + campo->nomcampo());
         if (l)
-        campo->set(l->text());
+            campo->set(l->text());
 
         /// Buscamos un QLineEdit con nombre coincidente.
         QTextEdit *l3 = findChild<QTextEdit *>("mui_" + campo->nomcampo());
         if (l3)
-        campo->set(l3->toPlainText());
+            campo->set(l3->toPlainText());
 
-    /// Buscamos BLWidgets que coincidan con el campo supuestamente sirve para los campos personales
+        /// Buscamos BLWidgets que coincidan con el campo supuestamente sirve para los campos personales
         BLWidget *l1 = findChild<BLWidget *>("mui_" + campo->nomcampo());
-    if (l1)
-        campo->set(l1->valorCampo());
+        if (l1)
+            campo->set(l1->valorCampo());
 
-    /// Buscamos QComboBox2 que coincidan con el campo supuestamente sirve para los campos personales
+        /// Buscamos QComboBox2 que coincidan con el campo supuestamente sirve para los campos personales
         QComboBox2 *l2 = findChild<QComboBox2 *>("mui_" + campo->nomcampo());
-    if (l2)
-        campo->set(l2->valorCampo());
+        if (l2)
+            campo->set(l2->valorCampo());
 
-    QCheckBox *l5 = findChild<QCheckBox *>("mui_" + campo->nomcampo());
-    if (l5) {
-        if (l5->isChecked()) {
-            campo->set("TRUE");
-        } else {
-            campo->set("FALSE");
+        QCheckBox *l5 = findChild<QCheckBox *>("mui_" + campo->nomcampo());
+        if (l5) {
+            if (l5->isChecked()) {
+                campo->set("TRUE");
+            } else {
+                campo->set("FALSE");
+            } // end if
         } // end if
-    } // end if
+
+        /// Buscamos los radio buttons y los preparamos.
+        QList<QRadioButton2 *> l6 = findChildren<QRadioButton2 *>(QRegExp("mui_"+campo->nomcampo()+"_*"));
+	if (l6.size() > 0) {
+		int aux = 0;
+		for (int i = 0; i < l6.size(); ++i) {
+		if (l6.at(i)->isChecked()) {
+			campo->set(l6.at(i)->valorCampo());
+			aux = 1;
+		} // end if
+		} // end for
+		if (aux == 0) {
+			campo->set("");
+		} // end if
+	} // end if
 
     } // end for
     _depura("END Ficha::recogeValores", 0);
@@ -504,8 +530,8 @@ int Ficha::guardar() {
 
 
 int Ficha::borrarPre() {
-        _depura("Ficha::borrarPre", 0);
-        _depura("END Ficha::borrarPre", 0);
+    _depura("Ficha::borrarPre", 0);
+    _depura("END Ficha::borrarPre", 0);
     return 0;
 }
 
@@ -728,9 +754,9 @@ QString Ficha::trataExists(const QString &query, const QString &datos) {
         }
     } // end while
 
-     QFile file(query1);
-     if (file.exists())
-         result = datos;
+    QFile file(query1);
+    if (file.exists())
+        result = datos;
     _depura("END Ficha::trataExists", 0);
 
     return result;

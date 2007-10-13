@@ -65,6 +65,11 @@ AlmacenView::AlmacenView(Company *comp, QWidget *parent)
         addDBCampo("emailalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, tr( "email almacen"));
         addDBCampo("fechaalmacen", DBCampo::DBdate, DBCampo::DBNoSave, tr( "Fecha almacen"));
 
+
+	addDBCampo("tipoalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Tipo almacen"));
+	mui_tipoalmacen_t->setValorCampo("Tienda");
+	mui_tipoalmacen_a->setValorCampo("Almacen");
+
         dialogChanges_cargaInicial();
         meteWindow(windowTitle(), this, FALSE);
     } catch (...) {

@@ -109,6 +109,7 @@ CREATE TABLE forma_pago (
 -- cpalmacen: Codigo Postal del almacen.
 -- telalmacen: Telefono del almacen.
 -- faxalmacen: Fax del almacen.
+-- tipoalmacen: Tipo de almacen (Tienda, Almacen, Coche ...)
 -- emailalmacen: Direccion de correo electronico del almacen.
 \echo -n ':: Almacen ... '
 CREATE TABLE almacen (
@@ -121,6 +122,7 @@ CREATE TABLE almacen (
     telalmacen character varying(20),
     faxalmacen character varying(20),
     emailalmacen character varying(100),
+    tipoalmacen  character varying,
     inactivoalmacen character(1),
     UNIQUE(codigoalmacen)
 );
@@ -2928,9 +2930,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.10.1-0001'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.10.1-0002'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.10.1-0001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.10.1-0002'');
 	END IF;
 	RETURN 0;
 END;
