@@ -132,6 +132,13 @@ void SubForm2Bc::on_mui_list_pressedAsterisk(int row, int col) {
                 rec->setDBvalue("codigo", cur->valor("codigo"));
                 rec->setDBvalue("tipocuenta", cur->valor("tipocuenta"));
                 rec->setDBvalue("descripcion", cur->valor("descripcion"));
+                if (rec->exists("idc_coste") && cur->valor("idc_coste") != "") {
+                    rec->setDBvalue("idc_coste", cur->valor("idc_coste"));
+                    QString query1 = "SELECT * FROM c_coste WHERE idc_coste = " +cur->valor("idc_coste");
+                    cursor2 *curss = empresaBase()->cargacursor(query1);
+                    rec->setDBvalue("nomc_coste", curss->valor("nombre"));
+                    delete curss;
+                } // end if
 
             } // end if
             if (camp->nomcampo() == "codigoctacliente") {
@@ -146,7 +153,7 @@ void SubForm2Bc::on_mui_list_pressedAsterisk(int row, int col) {
     } // end if
 
     m_procesacambios = TRUE;
-     /// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
+    /// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
     on_mui_list_cellChanged(row, col);
     _depura ("END SubForm2Bc::on_mui_list_pressedAsterisk", 0);
 }
@@ -217,27 +224,33 @@ void SubForm2Bc::on_mui_list_cellChanged(int row, int col) {
 
     if (camp->nomcampo() == "codigo" && camp->text() != "*") {
         QString codigoext = extiendecodigo(camp->text(), ((Empresa *) empresaBase())->numdigitosempresa());
-        QString query = "SELECT idcuenta, codigo, tipocuenta, descripcion FROM cuenta WHERE codigo = '" + codigoext + "'";
+        QString query = "SELECT idcuenta, codigo, tipocuenta, descripcion, idc_coste FROM cuenta WHERE codigo = '" + codigoext + "'";
         cursor2 *cur = empresaBase()->cargacursor(query);
         if (!cur->eof() ) {
             rec->setDBvalue("idcuenta", cur->valor("idcuenta"));
             rec->setDBvalue("codigo", cur->valor("codigo"));
             rec->setDBvalue("tipocuenta", cur->valor("tipocuenta"));
             rec->setDBvalue("descripcioncuenta", cur->valor("descripcion"));
-            delete cur;
+            if (rec->exists("idc_coste") && cur->valor("idc_coste") != "") {
+                rec->setDBvalue("idc_coste", cur->valor("idc_coste"));
+                QString query1 = "SELECT * FROM c_coste WHERE idc_coste = " +cur->valor("idc_coste");
+                cursor2 *curss = empresaBase()->cargacursor(query1);
+                rec->setDBvalue("nomc_coste", curss->valor("nombre"));
+                delete curss;
+            } // end if
         } else {
             _depura("No existe cuenta", 2);
-            delete cur;
             return;
         } // end if
+        delete cur;
     } // end if
     if (camp->nomcampo() == "nomcanal") {
         QString query = "SELECT idcanal FROM canal WHERE nombre = '" + camp->text() + "'";
         cursor2 *cur = empresaBase()->cargacursor(query);
         if (!cur->eof() ) {
             rec->setDBvalue("idcanal", cur->valor("idcanal"));
-	} else {
-	    rec->setDBvalue("idcanal", "");
+        } else {
+            rec->setDBvalue("idcanal", "");
         } // end if
         delete cur;
     } // end if
@@ -247,8 +260,8 @@ void SubForm2Bc::on_mui_list_cellChanged(int row, int col) {
         if (!cur->eof() ) {
             rec->setDBvalue("idc_coste", cur->valor("idc_coste"));
         } else {
-	    rec->setDBvalue("idc_coste", "");
-	} // end if
+            rec->setDBvalue("idc_coste", "");
+        } // end if
         delete cur;
     } // end if
     if (camp->nomcampo() == "fecha") {
@@ -256,14 +269,14 @@ void SubForm2Bc::on_mui_list_cellChanged(int row, int col) {
         rec->setDBvalue("fecha", nfecha);
     } // end if
     if (camp->nomcampo() == "debe") {
-	if (Fixed(camp->text()) != Fixed("0.00")) {
-		rec->setDBvalue("haber", "0.00");
-	} // end if
+        if (Fixed(camp->text()) != Fixed("0.00")) {
+            rec->setDBvalue("haber", "0.00");
+        } // end if
     } // end if
     if (camp->nomcampo() == "haber") {
-	if (Fixed(camp->text()) != Fixed("0.00")) {
-		rec->setDBvalue("debe", "0.00");
-	} // end if
+        if (Fixed(camp->text()) != Fixed("0.00")) {
+            rec->setDBvalue("debe", "0.00");
+        } // end if
     } // end if
 
     g_plugins->lanza("SubForm2Bc_on_mui_list_cellChanged_post", this);
@@ -485,10 +498,10 @@ QWidget *QSubForm2BcDelegate::createEditor(QWidget *parent, const QStyleOptionVi
     } else {
         /// DBint = 1, DBvarchar = 2, DBdate = 3, DBnumeric = 4, DBboolean
         //if (linea->tipo() == DBCampo::DBint) {
-            //QSpinBox *editor = new QSpinBox(parent);
-            //return editor;
-            QLineEdit *editor = new QLineEdit(parent);
-            return editor;
+        //QSpinBox *editor = new QSpinBox(parent);
+        //return editor;
+        QLineEdit *editor = new QLineEdit(parent);
+        return editor;
         //} else {
         //    return QItemDelegate::createEditor(parent, option, index);
         //} // end if
@@ -635,7 +648,7 @@ void QSubForm2BcDelegate::setEditorData(QWidget *editor, const QModelIndex &inde
 bool QSubForm2BcDelegate::eventFilter(QObject *obj, QEvent *event) {
     /// Si es un release de tecla se hace la funcionalidad especificada.
     if (event->type() == QEvent::KeyPress) {
-       _depura("QSubForm2BcDelegate::eventFilter", 0, obj->objectName() + " --> " + QString::number(event->type()));
+        _depura("QSubForm2BcDelegate::eventFilter", 0, obj->objectName() + " --> " + QString::number(event->type()));
         QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
         int key = keyEvent->key();
         _depura("QSubForm2BcDelegate::key = : ", 0, QString::number(key));
@@ -649,7 +662,7 @@ bool QSubForm2BcDelegate::eventFilter(QObject *obj, QEvent *event) {
                 return TRUE;
             } // end if
         case Qt::Key_Tab:
-                return TRUE;
+            return TRUE;
         } // end switch
         return QItemDelegate::eventFilter(obj, event);
     } // end if
@@ -669,7 +682,7 @@ bool QSubForm2BcDelegate::eventFilter(QObject *obj, QEvent *event) {
                 return TRUE;
             } // end if
         case Qt::Key_Tab:
- 	    QApplication::sendEvent(m_subform->mui_list, event);
+            QApplication::sendEvent(m_subform->mui_list, event);
             return TRUE;
         } // end switch
         return QItemDelegate::eventFilter(obj, event);

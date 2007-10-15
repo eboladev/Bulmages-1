@@ -81,7 +81,7 @@ void BusquedaCuenta::setText(QString val) {
 \param val
 **/
 void BusquedaCuenta::setValorCampo(QString val) {
-    setcodigocuenta(val);
+    setidcuenta(val);
 }
 
 
@@ -205,6 +205,8 @@ void BusquedaCuenta::setEmpresaBase(Empresa *emp) {
 void BusquedaCuenta::setidcuenta(QString val) {
     _depura("BusquedaCuenta::setidcuenta", 10);
     mdb_idcuenta=val;
+    if (val == "") return;
+
     QString SQLQuery = "SELECT * FROM cuenta WHERE idcuenta = '" + mdb_idcuenta + "'";
     cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
     if (!cur->eof()) {
@@ -231,6 +233,7 @@ void BusquedaCuenta::setidcuenta(QString val) {
 void BusquedaCuenta::setcodigocuenta(QString val) {
     _depura("BusquedaCuenta::setcodigocuenta", 10);
     mdb_codigocuenta = val;
+    if (val == "") return;
     QString SQLQuery = "SELECT * FROM cuenta WHERE codigo = '" + mdb_codigocuenta + "'";
     cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
     if (!cur->eof()) {

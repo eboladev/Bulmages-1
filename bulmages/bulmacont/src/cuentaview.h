@@ -47,25 +47,9 @@ class CuentaView : public FichaBc, public Ui_CuentaBase {
     Q_OBJECT
 
 public:
-    int idcuenta;
-    int idgrupos[100];
-    /// Esta variable indica el n&uacute;mero de d&iacute;gitos que tiene la
-    /// contabilidad en sus cuentas.
-    unsigned int numdigitos;
-
-public:
     CuentaView(Empresa *emp, QWidget *, Qt::WFlags fl = 0);
     ~CuentaView();
-    int inicializa();
-    int nuevacuenta(QString, int);
-    void cuentanueva(QString);
-    int cargar(QString);
-    void cambiapadre(const QString &);
-    virtual int guardar();
-    virtual int borrar();
-
-public slots:
-    virtual void codigo_ret();
+    int nuevacuenta(QString);
 };
 
 #endif

@@ -76,7 +76,32 @@ DROP FUNCTION compruebarevision() CASCADE;
 
 -- ================================= A PARTIR DE AQUI EL PARCHE=========================
 -- =====================================================================================
+CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
+DECLARE
+	as RECORD;
+BEGIN
+	SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''idgrupo'' AND relname=''cuenta'';
+	IF FOUND THEN
+		ALTER TABLE cuenta DROP COLUMN idgrupo;
+	END IF;
 
+	SELECT INTO as * FROM pg_tables WHERE tablename=''grupo'';
+	IF FOUND THEN
+		DROP TABLE grupo;
+	END IF;
+
+	SELECT INTO as attname, relname FROM pg_attribute LEFT JOIN pg_class ON pg_attribute.attrelid=pg_class.oid WHERE attname=''idc_coste'' AND relname=''cuenta'';
+	IF NOT FOUND THEN
+		ALTER TABLE cuenta ADD COLUMN idc_coste integer;
+		ALTER TABLE cuenta ADD CONSTRAINT idc_costefk FOREIGN KEY (idc_coste) REFERENCES c_coste(idc_coste);
+	END IF;
+
+	RETURN 0;
+END;
+' LANGUAGE plpgsql;
+SELECT aux();
+DROP FUNCTION aux() CASCADE;
+\echo "Agregado el campo de Fecha Vencimiento de cobro"
 
 -- ================================== FIN PARCHE. ACTUALIZACION  =======================
 -- =====================================================================================
@@ -89,9 +114,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.10.1-0001'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.10.1-0002'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.10.1-0001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.10.1-0002'');
 	END IF;
 	RETURN 0;
 END;

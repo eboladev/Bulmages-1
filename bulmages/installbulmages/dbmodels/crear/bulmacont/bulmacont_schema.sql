@@ -89,13 +89,26 @@ CREATE TABLE provincia (
     provincia character varying(500)
 );
 
-
-\echo -n ':: Grupo ... '
-CREATE TABLE grupo (
-    idgrupo serial PRIMARY KEY,
-    descripcion character varying(50)
+-- La tabla canal refleja los canales a los que puede pertenecer un apunte determinado.
+\echo -n ':: Canal ... '
+CREATE TABLE canal (
+    idcanal serial PRIMARY KEY,
+    descripcion character varying(100),
+    nombre character varying(50)
 );
 
+
+\echo -n ':: Centro de coste ... '
+CREATE TABLE c_coste (
+    idc_coste serial PRIMARY KEY,
+    descripcion character varying(100),
+    nombre character varying(50) NOT NULL,
+    codigo character(3),
+    padre integer REFERENCES c_coste(idc_coste),
+    imputacion boolean,
+    debe numeric(12, 2) DEFAULT 0,
+    haber numeric(12, 2) DEFAULT 0
+);
 
 -- La tabla cuenta es la que presenta el plan contable.
 -- Principalmente define el arbol de cuentas, tiene varios campos de SOLO LECTURA que sirven para acumulados.
@@ -107,7 +120,6 @@ CREATE TABLE grupo (
 -- padre = Este campo indica el idcuenta padre de la cuenta que tratamos. Es un apuntador al indice de la tabla
 --         lo que la convierte en arbol.
 -- bloqueada = Este boleano indica si la cuenta esta bloqueada o no.
--- idgrupo = es el apuntador  a la tabla de grupos.
 -- msg = ?????
 -- debe = Este campo es de solo lectura e indica el acumulado en debe de la cuenta.
 -- haber = Este campo es de solo lectura e indica el acumulado en haber de la cuenta.
@@ -134,7 +146,6 @@ CREATE TABLE cuenta (
     imputacion boolean NOT NULL DEFAULT TRUE,
     padre integer REFERENCES cuenta(idcuenta),
     bloqueada boolean NOT NULL DEFAULT FALSE,
-    idgrupo integer NOT NULL REFERENCES grupo(idgrupo),
     msg character varying(500),
     debe numeric(12, 2) NOT NULL DEFAULT 0,
     haber numeric(12, 2) NOT NULL DEFAULT 0,
@@ -152,32 +163,14 @@ CREATE TABLE cuenta (
     emailent_cuenta character varying(50),
     webent_cuenta character varying(70),
     tipocuenta integer DEFAULT 1,
+    idc_coste integer REFERENCES c_coste (idc_coste),
     pais INTEGER REFERENCES pais (idpais),
     provincia INTEGER REFERENCES provincia (idprovincia),
     poblacion CHARACTER VARYING(150)
 );
 
 
--- La tabla canal refleja los canales a los que puede pertenecer un apunte determinado.
-\echo -n ':: Canal ... '
-CREATE TABLE canal (
-    idcanal serial PRIMARY KEY,
-    descripcion character varying(100),
-    nombre character varying(50)
-);
 
-
-\echo -n ':: Centro de coste ... '
-CREATE TABLE c_coste (
-    idc_coste serial PRIMARY KEY,
-    descripcion character varying(100),
-    nombre character varying(50) NOT NULL,
-    codigo character(3),
-    padre integer REFERENCES c_coste(idc_coste),
-    imputacion boolean,
-    debe numeric(12, 2) DEFAULT 0,
-    haber numeric(12, 2) DEFAULT 0
-);
 
 \echo -n ':: Acumulado centro de coste ... '
 CREATE TABLE acumulado_c_coste (
@@ -1932,9 +1925,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.10.1-0001'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.10.1-0002'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.10.1-0001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.10.1-0002'');
 	END IF;
 	RETURN 0;
 END;

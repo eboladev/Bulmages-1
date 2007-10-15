@@ -324,24 +324,19 @@ void listcuentasview1::on_ListView1_itemDoubleClicked(QTreeWidgetItem *it, int) 
 **/
 void listcuentasview1::on_mui_crear_clicked()  {
     _depura("listcuentasview1::on_mui_crear_clicked", 0);
-    QString cadena, codigo;
-    int idgrupo = 0;
+    QString codigo;
 
-    if (ListView1->selectedItems().count() <= 0) {
-        mensajeInfo("Tiene que seleccionar una cuenta.");
-        return;
-    } // end if
-
-    QTreeWidgetItem *it;
     CuentaView *nuevae = new CuentaView(empresaBase(), 0);
 
-    it = ListView1->currentItem();
-    if (it) {
-        codigo = it->text(ccuenta);
-        cadena = it->text(cgrupo);
-        idgrupo = cadena.toInt();
-        nuevae->nuevacuenta(codigo, idgrupo);
+    if (ListView1->selectedItems().count() > 0) {
+    QTreeWidgetItem *it;
+	it = ListView1->currentItem();
+	if (it) {
+		codigo = it->text(ccuenta);
+		nuevae->nuevacuenta(codigo);
+	} // end if
     } // end if
+
     empresaBase()->pWorkspace()->addWindow(nuevae);
     nuevae->show();
     _depura("END listcuentasview1::on_mui_crear_clicked", 0);
