@@ -59,19 +59,19 @@
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
         <property name="buddy" >
-         <cstring>m_nomFamilia</cstring>
+         <cstring>mui_nomFamilia</cstring>
         </property>
        </widget>
       </item>
       <item row="1" column="1" colspan="3" >
-       <widget class="QLineEdit" name="m_nomFamilia" >
+       <widget class="QLineEdit" name="mui_nomFamilia" >
         <property name="maxLength" >
          <number>50</number>
         </property>
        </widget>
       </item>
       <item row="0" column="3" >
-       <widget class="QLineEdit" name="m_codFamilia" >
+       <widget class="QLineEdit" name="mui_codFamilia" >
         <property name="maxLength" >
          <number>12</number>
         </property>
@@ -86,12 +86,12 @@
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
         <property name="buddy" >
-         <cstring>m_codFamilia</cstring>
+         <cstring>mui_codFamilia</cstring>
         </property>
        </widget>
       </item>
       <item row="0" column="1" >
-       <widget class="QLineEdit" name="m_codCompletoFamilia" >
+       <widget class="QLineEdit" name="mui_codCompletoFamilia" >
         <property name="maxLength" >
          <number>50</number>
         </property>
@@ -106,12 +106,12 @@
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
         <property name="buddy" >
-         <cstring>m_codCompletoFamilia</cstring>
+         <cstring>mui_codCompletoFamilia</cstring>
         </property>
        </widget>
       </item>
       <item row="3" column="0" colspan="5" >
-       <widget class="QTextEdit" name="m_descFamilia" />
+       <widget class="QTextEdit" name="mui_descFamilia" />
       </item>
       <item rowspan="2" row="0" column="4" >
        <widget class="QGroupBox" name="groupBox" >
@@ -473,12 +473,12 @@
   <tabstop>mui_guardar</tabstop>
   <tabstop>mui_imprimir</tabstop>
   <tabstop>mui_detalles</tabstop>
-  <tabstop>m_codCompletoFamilia</tabstop>
-  <tabstop>m_codFamilia</tabstop>
-  <tabstop>m_nomFamilia</tabstop>
+  <tabstop>mui_codCompletoFamilia</tabstop>
+  <tabstop>mui_codFamilia</tabstop>
+  <tabstop>mui_nomFamilia</tabstop>
   <tabstop>mui_serviciofamilia</tabstop>
   <tabstop>mui_productofamilia</tabstop>
-  <tabstop>m_descFamilia</tabstop>
+  <tabstop>mui_descFamilia</tabstop>
   <tabstop>m_listFamilias</tabstop>
   <tabstop>mui_aceptar</tabstop>
   <tabstop>mui_cancelar</tabstop>

@@ -59,15 +59,15 @@ public:
     virtual int borrar();
     virtual void on_mui_aceptar_clicked();
     virtual void on_mui_borrar_clicked();
-    virtual int sacaWindow();
+    virtual void on_mui_imprimir_clicked();
+    virtual int guardar();
 
 public slots:
     virtual void pintar();
     virtual void on_m_listFamilias_itemDoubleClicked(QTreeWidgetItem *);
-    virtual void on_mui_guardar_clicked();
-    virtual void on_mui_crear_clicked();
     virtual void on_m_listFamilias_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous);
-    virtual void on_mui_imprimir_clicked();
+    virtual void on_mui_crear_clicked();
+
 
 signals:
     void selected(QString);

@@ -95,27 +95,6 @@ void TipoArticuloList::setModoEdicion() {
 }
 
 
-///
-/**
-**/
-void TipoArticuloList::on_mui_aceptar_clicked() {
-    _depura("TipoArticuloList::on_mui_aceptar_clicked", 0);
-    close();
-    _depura("END TipoArticuloList::on_mui_aceptar_clicked", 0);
-}
-
-
-///
-/**
-\return
-**/
-int TipoArticuloList::sacaWindow() {
-    _depura("TipoArticuloList::sacaWindow", 0);
-    companyact->sacaWindow(this);
-    _depura("END TipoArticuloList::sacaWindow", 0);
-    return 0;
-}
-
 
 ///
 /**
@@ -249,17 +228,6 @@ void TipoArticuloList::mostrarplantilla() {
 }
 
 
-/// Antes de salir de la ventana debemos hacer la comprobacion de si se ha modificado algo
-/// Esta funcion esta dedicada a Francina, Bienvenida al mundo
-/**
-**/
-void TipoArticuloList::close() {
-    _depura("TipoArticuloList::close", 0);
-    trataModificado();
-    QWidget::close();
-    _depura("END TipoArticuloList::close", 0);
-}
-
 
 ///
 /**
@@ -287,7 +255,7 @@ bool TipoArticuloList::trataModificado() {
 /**
 \return
 **/
-void TipoArticuloList::on_mui_guardar_clicked() {
+int TipoArticuloList::guardar() {
     QString query = "UPDATE tipo_articulo SET codtipo_articulo = '" +
                     companyact->sanearCadena(m_codTipo->text()) + "', desctipo_articulo = '" +
                     companyact->sanearCadena(m_descTipo->toPlainText()) + "' WHERE idtipo_articulo = " + m_idtipo;
@@ -295,7 +263,7 @@ void TipoArticuloList::on_mui_guardar_clicked() {
     int error = companyact->ejecuta(query);
     if (error) {
         companyact->rollback();
-        return;
+        return -1;
     } // end if
     companyact->commit();
     //pintar();
@@ -310,6 +278,7 @@ void TipoArticuloList::on_mui_guardar_clicked() {
         it->setText(COL_DESCTIPOARTICULO, cursoraux1->valor("desctipo_articulo"));
     } // end if
     delete cursoraux1;
+    return 0;
 }
 
 
@@ -322,19 +291,22 @@ void TipoArticuloList::on_mui_crear_clicked() {
     _depura("TipoArticuloList::on_mui_crear_clicked", 0);
     /// Si se ha modificado el contenido advertimos y guardamos.
     trataModificado();
+    try {
 
     QString query = "INSERT INTO tipo_articulo (codtipo_articulo, desctipo_articulo) VALUES ('XXXXXX', 'Descripcion del tipo')";
     companyact->begin();
     int error = companyact->ejecuta(query);
-    if (error) {
-        companyact->rollback();
-        return;
-    } // end if
+    if (error) throw -1;
     cursor2 *cur = companyact->cargacursor("SELECT max(idtipo_articulo) AS idtipo FROM tipo_articulo");
     companyact->commit();
     m_idtipo = cur->valor("idtipo");
     delete cur;
     pintar();
+    } catch(...) {
+	companyact->rollback();
+	mensajeInfo("Error en la creacion");
+	return;
+    }
     _depura("END TipoArticuloList::on_mui_crear_clicked", 0);
 }
 

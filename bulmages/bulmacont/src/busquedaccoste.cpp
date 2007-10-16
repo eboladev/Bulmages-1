@@ -17,9 +17,6 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-
-
-
 #include  "busquedaccoste.h"
 #include  "funcaux.h"
 #include  "empresa.h"
@@ -57,7 +54,7 @@ QString BusquedaCCoste::idc_coste() {
     if (index > 0) {
         return(m_cursorcombo->valor("idc_coste", index - 1));
     } else {
-    _depura("END BusquedaCCoste::idc_coste", 0);
+        _depura("END BusquedaCCoste::idc_coste", 0);
         return "";
     } // end if
 }
@@ -70,7 +67,7 @@ QString BusquedaCCoste::idc_coste() {
 QString BusquedaCCoste::valorCampo() {
     _depura("BusquedaCCoste::valorCampo", 0);
     _depura("END BusquedaCCoste::valorCampo", 0);
-	return idc_coste();
+    return idc_coste();
 }
 
 
@@ -84,7 +81,7 @@ void BusquedaCCoste::m_activated(int index) {
         emit(valueChanged(m_cursorcombo->valor("idc_coste", index - 1)));
     } else {
         emit(valueChanged(""));
-    _depura("END BusquedaCCoste::m_activated", 0);
+        _depura("END BusquedaCCoste::m_activated", 0);
     } // end if
 }
 
@@ -122,7 +119,7 @@ void BusquedaCCoste::setidc_coste(QString idc_coste) {
 **/
 void BusquedaCCoste::setValorCampo(QString idc_coste) {
     _depura("BusquedaCCoste::setValorCampo", 0);
-	setidc_coste(idc_coste);
+    setidc_coste(idc_coste);
     _depura("END BusquedaCCoste::setValorCampo", 0);
 }
 
@@ -170,18 +167,15 @@ void BusquedaCCosteDelegate::set(const QString &cod) {
     clear();
 
     addItem("--");
-    ///TODO: La idea es que salga en el desplegable del combobox el listado de cuentas que
-    /// coincidan con el texto escrito para poder elegirlo.
     while (!m_cursorcombo->eof()) {
         addItem(m_cursorcombo->valor("nombre"));
-        if(m_cursorcombo->valor("nombre") == cod)
-		index = m_cursorcombo->regactual() + 1;
+        if (m_cursorcombo->valor("nombre") == cod)
+            index = m_cursorcombo->regactual() + 1;
         m_cursorcombo->siguienteregistro();
-    }
+    } // end while
     delete m_cursorcombo;
     setEditText(cod);
     setCurrentIndex(index);
-
     _depura("END BusquedaCCosteDelegate::set", 0);
 }
 

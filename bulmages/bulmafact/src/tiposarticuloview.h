@@ -53,17 +53,15 @@ public:
     QString codtipo_articulo();
     QString idtipo_articulo();
     QString desctipo_articulo();
-    virtual int sacaWindow();
+    virtual int guardar();
+    virtual void on_mui_borrar_clicked();
 
 public slots:
     virtual void pintar();
     virtual void on_m_listTipos_itemDoubleClicked(QTreeWidgetItem * item, int column);
-    virtual void close();
-    virtual void on_mui_guardar_clicked();
     virtual void on_mui_crear_clicked();
-    virtual void on_mui_borrar_clicked();
     virtual void on_m_listTipos_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous);
-    virtual void on_mui_aceptar_clicked();
+
 
 signals:
     void selected(QString);

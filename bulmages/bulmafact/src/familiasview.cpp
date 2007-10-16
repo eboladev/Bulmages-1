@@ -250,10 +250,10 @@ void FamiliasView::mostrarplantilla() {
     query= "SELECT * from familia WHERE idfamilia = " + m_idfamilia;
     cursor2 *cursorfamilia = companyact->cargacursor(query);
     if (!cursorfamilia->eof()) {
-        m_nomFamilia->setText(cursorfamilia->valor("nombrefamilia"));
-        m_descFamilia->setPlainText(cursorfamilia->valor("descfamilia"));
-        m_codCompletoFamilia->setText(cursorfamilia->valor("codigocompletofamilia"));
-        m_codFamilia->setText(cursorfamilia->valor("codigofamilia"));
+        mui_nomFamilia->setText(cursorfamilia->valor("nombrefamilia"));
+        mui_descFamilia->setPlainText(cursorfamilia->valor("descfamilia"));
+        mui_codCompletoFamilia->setText(cursorfamilia->valor("codigocompletofamilia"));
+        mui_codFamilia->setText(cursorfamilia->valor("codigofamilia"));
 
         if (cursorfamilia->valor("productofisicofamilia") == "t") {
             mui_productofamilia->setChecked(TRUE);
@@ -293,13 +293,13 @@ bool FamiliasView::trataModificado() {
 /**
 \return
 **/
-void FamiliasView::on_mui_guardar_clicked() {
-    _depura("FamiliasView::on_mui_guardar_clicked", 0);
+int FamiliasView::guardar() {
+    _depura("FamiliasView::guardar", 0);
     QString prodfam;
     try {
         if (m_idfamilia == "") {
             mensajeInfo(tr("Debe seleccionar una familia"));
-            return;
+            return -1;
         } // end if
     if (mui_productofamilia->isChecked()) {
         prodfam = " TRUE ";
@@ -307,9 +307,9 @@ void FamiliasView::on_mui_guardar_clicked() {
         prodfam = " FALSE ";
     } // end if
         QString query = "UPDATE familia SET nombrefamilia = '" +
-                        companyact->sanearCadena(m_nomFamilia->text()) + "', descfamilia = '" +
-                        companyact->sanearCadena(m_descFamilia->toPlainText()) + "' , codigofamilia = '" +
-                        companyact->sanearCadena(m_codFamilia->text()) + "', productofisicofamilia= " + prodfam + " WHERE idfamilia =" + m_idfamilia;
+                        companyact->sanearCadena(mui_nomFamilia->text()) + "', descfamilia = '" +
+                        companyact->sanearCadena(mui_descFamilia->toPlainText()) + "' , codigofamilia = '" +
+                        companyact->sanearCadena(mui_codFamilia->text()) + "', productofisicofamilia= " + prodfam + " WHERE idfamilia =" + m_idfamilia;
         int error = companyact->ejecuta(query);
         if (error) {
             throw -1;
@@ -319,16 +319,19 @@ void FamiliasView::on_mui_guardar_clicked() {
         QTreeWidgetItem *posicionCursor;
         posicionCursor = m_listFamilias->currentItem();
         posicionCursor->setSelected(TRUE);
+        /// Pintamos los datos en el listado.
+        pintar(posicionCursor);
         dialogChanges_cargaInicial();
-        _depura("END FamiliasView::on_mui_guardar_clicked", 0);
+        _depura("END FamiliasView::guardar", 0);
+	return 0;
     } catch (...) {
         mensajeInfo("Error al guardar la familia");
-        return;
+        return -1;
     } // end try
 }
 
 
-///
+/// Pinta una fila especifica del listado de familias presentado.
 /**
 \param it
 **/
@@ -512,14 +515,13 @@ void FamiliasView::on_mui_imprimir_clicked() {
 **/
 void FamiliasView::on_mui_aceptar_clicked() {
     _depura("FamiliasView::on_mui_aceptar_clicked", 0);
-    trataModificado();
     QTreeWidgetItem *it = m_listFamilias->currentItem();
     if (it) {
         m_idfamilia = it->text(COL_IDFAMILIA);
     } else {
         m_idfamilia = "";
     } // end if
-    close();
+    FichaBf::on_mui_aceptar_clicked();
     _depura("END FamiliasView::on_mui_aceptar_clicked", 0);
 }
 
@@ -540,13 +542,5 @@ void FamiliasView::setModoEdicion() {
 }
 
 
-///
-/**
-**/
-int FamiliasView::sacaWindow() {
-    _depura("FamiliasView::sacaWindow", 0);
-    companyact->sacaWindow(this);
-    _depura("END FamiliasView::sacaWindow", 0);
-    return 0;
-}
+
 
