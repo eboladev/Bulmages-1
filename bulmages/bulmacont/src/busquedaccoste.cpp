@@ -175,12 +175,12 @@ void BusquedaCCosteDelegate::set(const QString &cod) {
     while (!m_cursorcombo->eof()) {
         addItem(m_cursorcombo->valor("nombre"));
         if(m_cursorcombo->valor("nombre") == cod)
-		index = m_cursorcombo->regactual();
+		index = m_cursorcombo->regactual() + 1;
         m_cursorcombo->siguienteregistro();
     }
     delete m_cursorcombo;
     setEditText(cod);
-    setCurrentIndex(index+1);
+    setCurrentIndex(index);
 
     _depura("END BusquedaCCosteDelegate::set", 0);
 }

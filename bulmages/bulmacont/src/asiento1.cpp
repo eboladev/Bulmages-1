@@ -348,9 +348,9 @@ int Asiento1::guardar() {
         if (res != 0)
             return 0;
 
-
         if (estadoAsiento1() == ASCerrado)
             empresaBase()->cierraasiento(id.toInt());
+	cargar(id);
         g_main->statusBar()->showMessage(tr("El asiento se ha guardado correctamente."), 2000);
         _depura("END Asiento1::guardar",0);
         return 0;

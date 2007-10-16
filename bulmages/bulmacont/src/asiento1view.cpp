@@ -351,6 +351,16 @@ void Asiento1View::prepguardar() {
 }
 
 
+/// Post Guardado se hace una carga ya que la base de datos podria haber modificado cosas.
+/**
+**/
+int Asiento1View::guardarPost() {
+    _depura("Asiento1View::guardarPost", 0);
+    _depura("Asiento1View::guardarPost", 0);
+    return 0;
+}
+
+
 ///
 /**
 **/

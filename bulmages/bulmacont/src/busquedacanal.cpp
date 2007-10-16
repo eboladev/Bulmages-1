@@ -170,12 +170,12 @@ void BusquedaCanalDelegate::set(const QString &codigo) {
     while (!m_cursorcombo->eof()) {
         addItem(m_cursorcombo->valor("nombre"));
         if(m_cursorcombo->valor("nombre") == codigo)
-		index = m_cursorcombo->regactual();
+		index = m_cursorcombo->regactual() + 1;
         m_cursorcombo->siguienteregistro();
     }
     delete m_cursorcombo;
     setEditText(codigo);
-    setCurrentIndex(index+1);
+    setCurrentIndex(index);
 
     _depura("END BusquedaCanalDelegate::set", 0);
 }

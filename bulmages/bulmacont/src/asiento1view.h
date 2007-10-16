@@ -84,6 +84,7 @@ public:
     void muestraasiento(int v);
     /// Desabilitamos el sacaWindow ya que esta ventana no debe ser sacada ante un close.
     virtual int sacaWindow();
+    virtual int guardarPost();
 
 public:
     void setFecha(QString val);

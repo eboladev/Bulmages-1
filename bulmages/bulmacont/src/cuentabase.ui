@@ -1617,7 +1617,7 @@
         </widget>
        </item>
        <item row="0" column="1" colspan="6" >
-        <widget class="QLineEdit" name="nombreent" />
+        <widget class="QLineEdit" name="mui_nombreent_cuenta" />
        </item>
        <item row="1" column="0" >
         <widget class="QLabel" name="TextLabel1_2" >
@@ -1630,7 +1630,7 @@
         </widget>
        </item>
        <item row="1" column="1" >
-        <widget class="QLineEdit" name="cif" />
+        <widget class="QLineEdit" name="mui_cifent_cuenta" />
        </item>
        <item row="1" column="2" >
         <widget class="QLabel" name="TextLabel3_3_3" >
@@ -1643,7 +1643,7 @@
         </widget>
        </item>
        <item row="1" column="3" colspan="4" >
-        <widget class="QLineEdit" name="direccion" />
+        <widget class="QLineEdit" name="mui_dirent_cuenta" />
        </item>
        <item row="2" column="0" >
         <widget class="QLabel" name="TextLabel3_3" >
@@ -1656,7 +1656,7 @@
         </widget>
        </item>
        <item row="2" column="1" >
-        <widget class="QLineEdit" name="telf" />
+        <widget class="QLineEdit" name="mui_telent_cuenta" />
        </item>
        <item row="2" column="2" colspan="2" >
         <spacer>
@@ -1682,7 +1682,7 @@
         </widget>
        </item>
        <item row="2" column="5" >
-        <widget class="QLineEdit" name="cp" >
+        <widget class="QLineEdit" name="mui_cpent_cuenta" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>0</hsizetype>
@@ -1717,7 +1717,7 @@
         </widget>
        </item>
        <item row="3" column="1" colspan="3" >
-        <widget class="QLineEdit" name="banco" />
+        <widget class="QLineEdit" name="mui_bancoent_cuenta" />
        </item>
        <item row="4" column="0" >
         <widget class="QLabel" name="TextLabel3_3_2" >
@@ -1730,7 +1730,7 @@
         </widget>
        </item>
        <item row="4" column="1" colspan="3" >
-        <widget class="QLineEdit" name="email" />
+        <widget class="QLineEdit" name="mui_emailent_cuenta" />
        </item>
        <item row="4" column="4" >
         <widget class="QLabel" name="label_2" >
@@ -1753,7 +1753,7 @@
         </widget>
        </item>
        <item row="5" column="1" colspan="3" >
-        <widget class="QLineEdit" name="web" />
+        <widget class="QLineEdit" name="mui_webent_cuenta" />
        </item>
        <item row="5" column="4" >
         <widget class="QLabel" name="label_3" >
@@ -1776,7 +1776,7 @@
         </widget>
        </item>
        <item row="7" column="0" colspan="7" >
-        <widget class="QTextEdit" name="coments" >
+        <widget class="QTextEdit" name="mui_coment_cuenta" >
          <property name="focusPolicy" >
           <enum>Qt::StrongFocus</enum>
          </property>
@@ -1899,15 +1899,15 @@
   <tabstop>TabWidget2</tabstop>
   <tabstop>mui_aceptar</tabstop>
   <tabstop>mui_cancelar</tabstop>
-  <tabstop>nombreent</tabstop>
-  <tabstop>cif</tabstop>
-  <tabstop>direccion</tabstop>
-  <tabstop>telf</tabstop>
-  <tabstop>cp</tabstop>
-  <tabstop>banco</tabstop>
-  <tabstop>email</tabstop>
-  <tabstop>web</tabstop>
-  <tabstop>coments</tabstop>
+  <tabstop>mui_nombreent_cuenta</tabstop>
+  <tabstop>mui_cifent_cuenta</tabstop>
+  <tabstop>mui_dirent_cuenta</tabstop>
+  <tabstop>mui_telent_cuenta</tabstop>
+  <tabstop>mui_cpent_cuenta</tabstop>
+  <tabstop>mui_bancoent_cuenta</tabstop>
+  <tabstop>mui_emailent_cuenta</tabstop>
+  <tabstop>mui_webent_cuenta</tabstop>
+  <tabstop>mui_coment_cuenta</tabstop>
  </tabstops>
  <resources>
   <include location="../../bulmages.qrc" />

@@ -110,6 +110,14 @@ CREATE TABLE c_coste (
     haber numeric(12, 2) DEFAULT 0
 );
 
+\echo -n ':: Centro de coste distribuido ... '
+CREATE TABLE c_costedist (
+	idc_costedist serial PRIMARY KEY,
+	idc_coste     integer NOT NULL REFERENCES c_coste(idc_coste),
+	iddestc_coste integer NOT NULL REFERENCES c_coste(idc_coste),
+	porcentc_costedist numeric(12,2) DEFAULT 0
+);
+
 -- La tabla cuenta es la que presenta el plan contable.
 -- Principalmente define el arbol de cuentas, tiene varios campos de SOLO LECTURA que sirven para acumulados.
 -- Los campos son:
@@ -1771,7 +1779,68 @@ CREATE TRIGGER restriccionesborradortrigger
     BEFORE INSERT OR UPDATE ON borrador
     FOR EACH ROW
     EXECUTE PROCEDURE restriccionesborrador();
-    
+
+
+\echo -n ':: Funcion distribucion centros de coste en borrador ... '
+CREATE FUNCTION propagaccosteborrador() RETURNS "trigger"
+AS '
+DECLARE
+    ccostes RECORD;
+    a integer;
+    i integer;
+    tdebe numeric(12,2);
+    thaber numeric(12,2);
+    descuadredebe numeric(12,2);
+    descuadrehaber numeric(12,2);
+BEGIN
+
+    i := 0;
+    WHILE i = 0 LOOP
+	i := 1;
+
+	IF NEW.idc_coste IS NULL THEN
+		RETURN NEW;
+	END IF;
+	
+	a := 0;
+	descuadredebe := NEW.debe;
+	descuadrehaber := NEW.haber;
+	tdebe := NEW.debe;
+	thaber := NEW.haber;
+	FOR ccostes IN SELECT * FROM c_costedist WHERE iddestc_coste = NEW.idc_coste LOOP
+		descuadredebe := descuadredebe - tdebe * ccostes.porcentc_costedist / 100;
+		descuadrehaber := descuadrehaber - thaber * ccostes.porcentc_costedist / 100;
+		IF a = 0 THEN
+			NEW.debe := tdebe * ccostes.porcentc_costedist / 100;
+			NEW.haber := thaber * ccostes.porcentc_costedist / 100;
+			NEW.idc_coste := ccostes.idc_coste;
+			a := 1;
+			i := 0;
+		ELSE
+			INSERT INTO borrador (idasiento, fecha, conceptocontable, idcuenta, descripcion, debe, haber, contrapartida, comentario, idcanal, idc_coste, orden) VALUES(NEW.idasiento, NEW.fecha, NEW.conceptocontable, NEW.idcuenta, NEW.descripcion, tdebe * ccostes.porcentc_costedist / 100, thaber * ccostes.porcentc_costedist / 100, NEW.contrapartida, NEW.comentario, NEW.idcanal, ccostes.idc_coste, NEW.orden);
+		END IF;
+	END LOOP;
+	
+	IF a = 1 THEN 
+		NEW.debe := NEW.debe - descuadredebe;
+		NEW.haber := NEW.haber - descuadrehaber;
+	END IF;
+
+    END LOOP;
+
+    RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+
+\echo -n ':: Disparador restricciones borrador ... '
+CREATE TRIGGER propagaccosteborradortrigger
+    BEFORE INSERT OR UPDATE ON borrador
+    FOR EACH ROW
+    EXECUTE PROCEDURE propagaccosteborrador();
+
+
+
     
 \echo -n ':: Funcion restricciones asiento ... '
 CREATE FUNCTION restriccionesasiento() RETURNS "trigger"
@@ -1925,9 +1994,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.10.1-0002'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.10.1-0005'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.10.1-0002'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.10.1-0005'');
 	END IF;
 	RETURN 0;
 END;

@@ -52,6 +52,15 @@ CuentaView::CuentaView(Empresa  *emp, QWidget *parent, Qt::WFlags fl)
     addDBCampo("debe", DBCampo::DBnumeric , DBCampo::DBNoSave, tr("Debe"));
     addDBCampo("haber", DBCampo::DBnumeric , DBCampo::DBNoSave, tr("Haber"));
     addDBCampo("idc_coste", DBCampo::DBint, DBCampo::DBNothing, tr("Centro de coste por defecto"));
+    addDBCampo("nombreent_cuenta", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Entidad de la cuenta"));
+    addDBCampo("cifent_cuenta", DBCampo::DBvarchar, DBCampo::DBNothing, tr("CIF de la cuenta"));
+    addDBCampo("cpent_cuenta", DBCampo::DBvarchar, DBCampo::DBNothing, tr("CP de la cuenta"));
+    addDBCampo("telent_cuenta", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Telefono de la cuenta"));
+    addDBCampo("coment_cuenta", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Comentarios de la cuenta"));
+    addDBCampo("bancoent_cuenta", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Banco de la cuenta"));
+    addDBCampo("webent_cuenta", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Web de la cuenta"));
+    addDBCampo("emailent_cuenta", DBCampo::DBvarchar, DBCampo::DBNothing, tr("E-Mail de la cuenta"));
+    addDBCampo("dirent_cuenta", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Direccion de la cuenta"));
 
     mui_padre->setEmpresaBase(empresaBase());
     mui_idc_coste->setEmpresaBase(empresaBase());

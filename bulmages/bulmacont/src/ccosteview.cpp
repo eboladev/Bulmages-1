@@ -21,6 +21,7 @@
 #include "ccosteview.h"
 #include "empresa.h"
 #include "selectccosteview.h"
+#include "subform2bc.h"
 
 #define COL_NOM_COSTE  0
 #define COL_DESC_COSTE 1
@@ -36,13 +37,27 @@
 ccosteview::ccosteview(Empresa  *emp, QWidget *parent)
         : FichaBc(emp, parent) {
     _depura("ccosteview::ccosteview", 0);
+    setAttribute(Qt::WA_DeleteOnClose);
+    setupUi(this);
 
     setTitleName(tr("Centro de Coste"));
     /// Etablecemos cual va a ser la tabla para obtener los permisos
     setDBTableName("c_coste");
 
-    setAttribute(Qt::WA_DeleteOnClose);
-    setupUi(this);
+    /// Inicializamos el subformulario de centros distribuidos
+    mui_cdistribuidos->setEmpresaBase(emp);
+    mui_cdistribuidos->setDBTableName("c_costedist");
+    mui_cdistribuidos->setFileConfig("ccostedist");
+    mui_cdistribuidos->setDBCampoId("idc_costedist");
+    mui_cdistribuidos->addSHeader("nomc_coste", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Nombre Destinatario"));
+    mui_cdistribuidos->addSHeader("porcentc_costedist", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Porcentaje"));
+    mui_cdistribuidos->addSHeader("idc_costedist", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoWrite | SHeader::DBNoView, tr("Id"));
+    mui_cdistribuidos->addSHeader("idc_coste", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoWrite | SHeader::DBNoView, tr("Destinatario"));
+    mui_cdistribuidos->addSHeader("iddestc_coste", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoWrite | SHeader::DBNoView, tr("Origen"));
+    mui_cdistribuidos->setinsercion(TRUE);
+    mui_cdistribuidos->setOrdenEnabled(FALSE);
+
+
     idc_coste = 0;
     mui_list->setColumnCount(3);
     QStringList headers;
@@ -162,6 +177,11 @@ void ccosteview::mostrarplantilla() {
         mui_desccoste->setPlainText(cursorcoste->valor("descripcion"));
     } // end if
     delete cursorcoste;
+
+    query = "SELECT * FROM c_costedist LEFT JOIN (SELECT idc_coste AS idcc, nombre AS nomc_coste FROM c_coste) AS t1 ON c_costedist.idc_Coste = t1.idcc WHERE iddestc_coste=" + QString::number(idc_coste);
+    mui_cdistribuidos->cargar(query);
+
+
     dialogChanges_cargaInicial();
     _depura("END ccosteview::mostrarplantilla", 0);
 }
@@ -179,7 +199,10 @@ int ccosteview::guardar() {
     empresaBase()->begin();
     empresaBase()->ejecuta(query);
     empresaBase()->commit();
-    fprintf(stderr,"Se ha guardado el centro de coste\n");
+
+    mui_cdistribuidos->setColumnValue("iddestc_coste", QString::number(idc_coste));
+    mui_cdistribuidos->guardar();
+
     dialogChanges_cargaInicial();
     pintar();
     _depura("END ccosteview::guardar", 0);
