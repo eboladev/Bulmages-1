@@ -58,9 +58,9 @@ ClienteView::ClienteView(Company *comp, QWidget *parent)
         setDBTableName("cliente");
         setDBCampoId("idcliente");
         addDBCampo("idcliente", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Cliente", "ID cliente"));
-        addDBCampo("nomcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Nombre del cliente"));
+        addDBCampo("nomcliente", DBCampo::DBvarchar, DBCampo::DBNotNull, QApplication::translate("Cliente", "Nombre del cliente"));
         addDBCampo("nomaltcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Nombre alternativo del cliente"));
-        addDBCampo("cifcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "C.I.F. del cliente"));
+        addDBCampo("cifcliente", DBCampo::DBvarchar, DBCampo::DBNotNull, QApplication::translate("Cliente", "C.I.F. del cliente"));
         addDBCampo("bancocliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Numero cuenta corriente"));
         addDBCampo("dircliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Direccion"));
         addDBCampo("poblcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Poblacion"));

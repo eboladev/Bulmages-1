@@ -101,28 +101,37 @@ void TipoArticuloList::setModoEdicion() {
 **/
 void TipoArticuloList::pintar() {
     _depura("TipoArticuloList::pintar", 0);
-    QTreeWidgetItem * it;
+    cursor2 *cursoraux1 = NULL;
+    try {
+        QTreeWidgetItem * it;
 
-    /// vaciamos el arbol.
-    while (m_listTipos->topLevelItemCount() > 0) {
-        it = m_listTipos->takeTopLevelItem(0);
-        delete it;
-    } // end while
+        /// vaciamos el arbol.
+        /// \TODO Hay problemas en el vaciado del arbol. No lo hace bien y se cuelga. Por eso escondo sus items
+        while (m_listTipos->topLevelItemCount() > 1) {
+            it = m_listTipos->topLevelItem(0);
+            delete it;
+        } // end while
+        it = m_listTipos->topLevelItem(0);
+        if (it) it->setHidden(TRUE);
 
-    cursor2 *cursoraux1 = companyact->cargacursor("SELECT * FROM tipo_articulo ORDER BY codtipo_articulo");
-    while (!cursoraux1->eof()) {
-        it = new QTreeWidgetItem(m_listTipos);
-        it->setText(COL_IDTIPOARTICULO, cursoraux1->valor("idtipo_articulo"));
-        it->setText(COL_CODTIPOARTICULO,cursoraux1->valor("codtipo_articulo"));
-        it->setText(COL_DESCTIPOARTICULO, cursoraux1->valor("desctipo_articulo"));
-        //it->setOpen(true);
-        cursoraux1->siguienteregistro();
-    } // end while
-    delete cursoraux1;
-    m_idtipo = "";
-    /// Comprobamos cual es la cadena inicial.
-    dialogChanges_cargaInicial();
-    _depura("END TipoArticuloList::pintar", 0);
+        cursoraux1 = companyact->cargacursor("SELECT * FROM tipo_articulo ORDER BY codtipo_articulo");
+        while (!cursoraux1->eof()) {
+            it = new QTreeWidgetItem(m_listTipos);
+            it->setText(COL_IDTIPOARTICULO, cursoraux1->valor("idtipo_articulo"));
+            it->setText(COL_CODTIPOARTICULO,cursoraux1->valor("codtipo_articulo"));
+            it->setText(COL_DESCTIPOARTICULO, cursoraux1->valor("desctipo_articulo"));
+            //it->setOpen(true);
+            cursoraux1->siguienteregistro();
+        } // end while
+        delete cursoraux1;
+        m_idtipo = "";
+        /// Comprobamos cual es la cadena inicial.
+        dialogChanges_cargaInicial();
+        _depura("END TipoArticuloList::pintar", 0);
+    } catch (...) {
+        mensajeInfo("Error en la carga");
+        if (cursoraux1) delete cursoraux1;
+    } // end try
 }
 
 
@@ -136,7 +145,7 @@ QString TipoArticuloList::codtipo_articulo() {
     if (it) {
         return it->text(COL_CODTIPOARTICULO);
     } else {
-       return "";
+        return "";
     } // end if
     _depura("END TipoArticuloList::codtipo_articulo", 0);
 }
@@ -152,7 +161,7 @@ QString TipoArticuloList::idtipo_articulo() {
     if (it) {
         return it->text(COL_IDTIPOARTICULO);
     } else {
-       return "";
+        return "";
     } // end if
     _depura("TipoArticuloList::idtipo_articulo", 0);
 }
@@ -166,9 +175,9 @@ QString TipoArticuloList::desctipo_articulo() {
     _depura("TipoArticuloList::desctipo_articulo", 0);
     QTreeWidgetItem *it = m_listTipos->currentItem();
     if (it) {
-       return it->text(COL_DESCTIPOARTICULO);
+        return it->text(COL_DESCTIPOARTICULO);
     } else {
-       return "";
+        return "";
     } // end if
     _depura("END TipoArticuloList::desctipo_articulo", 0);
 }
@@ -182,7 +191,7 @@ QString TipoArticuloList::desctipo_articulo() {
 **/
 void TipoArticuloList::on_m_listTipos_itemDoubleClicked(QTreeWidgetItem *item, int) {
     if (m_modoConsulta) {
-    _depura("TipoArticuloList::on_m_listTipos_itemDoubleClicked", 0);
+        _depura("TipoArticuloList::on_m_listTipos_itemDoubleClicked", 0);
         m_idtipo = item->text(COL_IDTIPOARTICULO);
         emit selected(m_idtipo);
     } // end if
@@ -243,7 +252,7 @@ bool TipoArticuloList::trataModificado() {
                                  QMessageBox::Ok,
                                  QMessageBox::Cancel) == QMessageBox::Ok)
             on_mui_guardar_clicked();
-    _depura("END TipoArticuloList::trataModificado", 0);
+        _depura("END TipoArticuloList::trataModificado", 0);
         return TRUE;
     } // end if
     return FALSE;
@@ -289,25 +298,25 @@ int TipoArticuloList::guardar() {
 **/
 void TipoArticuloList::on_mui_crear_clicked() {
     _depura("TipoArticuloList::on_mui_crear_clicked", 0);
+    cursor2 *cur = NULL;
     /// Si se ha modificado el contenido advertimos y guardamos.
     trataModificado();
     try {
-
-    QString query = "INSERT INTO tipo_articulo (codtipo_articulo, desctipo_articulo) VALUES ('XXXXXX', 'Descripcion del tipo')";
-    companyact->begin();
-    int error = companyact->ejecuta(query);
-    if (error) throw -1;
-    cursor2 *cur = companyact->cargacursor("SELECT max(idtipo_articulo) AS idtipo FROM tipo_articulo");
-    companyact->commit();
-    m_idtipo = cur->valor("idtipo");
-    delete cur;
-    pintar();
-    } catch(...) {
-	companyact->rollback();
-	mensajeInfo("Error en la creacion");
-	return;
-    }
-    _depura("END TipoArticuloList::on_mui_crear_clicked", 0);
+        QString query = "INSERT INTO tipo_articulo (codtipo_articulo, desctipo_articulo) VALUES ('XXXXXX', 'Descripcion del tipo')";
+        companyact->begin();
+        int error = companyact->ejecuta(query);
+        if (error) throw -1;
+        cur = companyact->cargacursor("SELECT max(idtipo_articulo) AS idtipo FROM tipo_articulo");
+        companyact->commit();
+        m_idtipo = cur->valor("idtipo");
+        delete cur;
+        pintar();
+        _depura("END TipoArticuloList::on_mui_crear_clicked", 0);
+    } catch (...) {
+        mensajeInfo("Error en la creacion");
+        companyact->rollback();
+        return;
+    } // end try
 }
 
 

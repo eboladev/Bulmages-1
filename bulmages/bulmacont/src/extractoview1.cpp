@@ -346,8 +346,6 @@ void extractoview1::presentar() {
             tipopunteo += " AND " + tabla + ".contrapartida = id_cuenta('" + contra + "') ";
         } // end if
 
-
-
         query = "SELECT * FROM ((SELECT " + cont + " FROM " + tabla + " WHERE  idcuenta = " + idcuenta + " AND fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' " + ccostes + " " + ccanales + " " + tipopunteo + ") AS t2 ";
         query += " LEFT JOIN (SELECT idcuenta AS idc, descripcion, codigo, tipocuenta FROM cuenta) AS t9 ON t2.idcuenta = t9.idc) AS t1";
 	query += " LEFT JOIN asiento ON asiento.idasiento = t1.idasiento ";
