@@ -51,7 +51,7 @@
        </spacer>
       </item>
       <item row="0" column="1" >
-       <widget class="QLineEdit" name="m_descforma_pago" >
+       <widget class="QLineEdit" name="mui_descforma_pago" >
         <property name="minimumSize" >
          <size>
           <width>200</width>
@@ -61,7 +61,7 @@
        </widget>
       </item>
       <item row="6" column="1" >
-       <widget class="QLineEdit" name="m_tipoPlazoPrimerPago" >
+       <widget class="QLineEdit" name="mui_tipoPlazoPrimerPago" >
         <property name="enabled" >
          <bool>false</bool>
         </property>
@@ -140,20 +140,20 @@
        </widget>
       </item>
       <item row="2" column="1" >
-       <widget class="QLineEdit" name="m_nPlazosFPago" >
+       <widget class="QLineEdit" name="mui_nPlazosFPago" >
         <property name="enabled" >
          <bool>false</bool>
         </property>
        </widget>
       </item>
       <item row="3" column="1" >
-       <widget class="QLineEdit" name="m_descuentoforma_pago" />
+       <widget class="QLineEdit" name="mui_descuentoforma_pago" />
       </item>
       <item row="4" column="1" >
-       <widget class="QLineEdit" name="m_dias1tforma_pago" />
+       <widget class="QLineEdit" name="mui_dias1tforma_pago" />
       </item>
       <item row="1" column="1" >
-       <widget class="QLineEdit" name="m_plazoEntreReciboFPago" >
+       <widget class="QLineEdit" name="mui_plazoEntreReciboFPago" >
         <property name="enabled" >
          <bool>false</bool>
         </property>
@@ -206,7 +206,7 @@
        </widget>
       </item>
       <item row="5" column="1" >
-       <widget class="QLineEdit" name="m_tipoPlazoEntreReciboFPago" >
+       <widget class="QLineEdit" name="mui_tipoPlazoEntreReciboFPago" >
         <property name="enabled" >
          <bool>false</bool>
         </property>

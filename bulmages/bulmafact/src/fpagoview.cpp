@@ -37,6 +37,7 @@ FPagoView::FPagoView(Company *emp,QWidget *parent)
     _depura("FPagoView::FPagoView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
+    groupBox1->setDisabled(TRUE);
     setTitleName(tr("Forma de Pago"));
     setDBTableName("forma_pago");
     setModoEdicion();
@@ -84,27 +85,17 @@ FPagoView::~FPagoView() {
 
 ///
 /**
-\return
-**/
-int FPagoView::sacaWindow() {
-    _depura("FPagoView::sacaWindow", 0);
-    empresaBase()->sacaWindow(this);
-    _depura("END FPagoView::sacaWindow", 0);
-    return 0;
-}
-
-
-///
-/**
 \param cur
 **/
 void FPagoView::on_mui_lista_currentItemChanged(QListWidgetItem *cur, QListWidgetItem *) {
     _depura("on_mui_lista_currentItemChanged", 0);
+    if (!cur) return;
+    groupBox1->setEnabled(TRUE);
     int row = mui_lista->row(cur);
     trataModificado();
-    m_descforma_pago->setText(m_cursorFPagoView->valor("descforma_pago", row));
-    m_dias1tforma_pago->setText(m_cursorFPagoView->valor("dias1tforma_pago", row));
-    m_descuentoforma_pago->setText(m_cursorFPagoView->valor("descuentoforma_pago", row));
+    mui_descforma_pago->setText(m_cursorFPagoView->valor("descforma_pago", row));
+    mui_dias1tforma_pago->setText(m_cursorFPagoView->valor("dias1tforma_pago", row));
+    mui_descuentoforma_pago->setText(m_cursorFPagoView->valor("descuentoforma_pago", row));
     mdb_idforma_pago = m_cursorFPagoView->valor("idforma_pago", row);
     m_item = cur;
 
@@ -117,26 +108,28 @@ void FPagoView::on_mui_lista_currentItemChanged(QListWidgetItem *cur, QListWidge
 /**
 \return
 **/
-void FPagoView::on_mui_guardar_clicked() {
+int FPagoView::guardar() {
     _depura("FPagoView::on_mui_guardar_clicked", 0);
+    if (mdb_idforma_pago == "" || mdb_idforma_pago == "0") return 0;
     try {
         QString query = "UPDATE forma_pago SET descforma_pago = '" +
-                        empresaBase()->sanearCadena(m_descforma_pago->text()) + "', dias1tforma_pago= " +
-                        empresaBase()->sanearCadena(m_dias1tforma_pago->text()) + " , descuentoforma_pago = "+
-                        empresaBase()->sanearCadena(m_descuentoforma_pago->text()) + " WHERE idforma_pago =" + mdb_idforma_pago;
+                        empresaBase()->sanearCadena(mui_descforma_pago->text()) + "', dias1tforma_pago= " +
+                        empresaBase()->sanearCadena(mui_dias1tforma_pago->text()) + " , descuentoforma_pago = "+
+                        empresaBase()->sanearCadena(mui_descuentoforma_pago->text()) + " WHERE idforma_pago =" + mdb_idforma_pago;
         empresaBase()->ejecuta(query);
         if (m_cursorFPagoView != NULL) {
             delete m_cursorFPagoView;
         } // end if
         m_cursorFPagoView = empresaBase()->cargacursor("SELECT * FROM forma_pago ORDER BY idforma_pago");
         if (m_item) {
-            m_item->setText(m_descforma_pago->text());
+            m_item->setText(mui_descforma_pago->text());
         } // end if
         dialogChanges_cargaInicial();
+    _depura("END FPagoView::on_mui_guardar_clicked", 0);
+	return 0;
     } catch(...) {
         _depura ("error guardando la forma de pago", 1);
-    _depura("END FPagoView::on_mui_guardar_clicked", 0);
-        return;
+        return-1;
     } // end try
 }
 
