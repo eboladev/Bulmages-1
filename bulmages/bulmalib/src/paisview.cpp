@@ -35,6 +35,8 @@ PaisView::PaisView(EmpresaBase *emp, QWidget *parent)
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
 
+    mui_datospais->setDisabled(TRUE);
+
     mui_list->setEmpresaBase(emp);
     mui_listprovincias->setEmpresaBase(emp);
 
@@ -71,10 +73,9 @@ PaisView::PaisView(EmpresaBase *emp, QWidget *parent)
 
     m_idpais = "0";
 
-
-    dialogChanges_cargaInicial();
     meteWindow(windowTitle(), this);
     pintar();
+    dialogChanges_cargaInicial();
     _depura("END PaisView::PaisView", 0);
 }
 
@@ -127,14 +128,15 @@ void PaisView::mostrarplantilla() {
     _depura("PaisView::mostrarplantilla", 0);
 
     if (m_idpais != "0") {
+        mui_datospais->setEnabled(TRUE);
         cargar(m_idpais);
-    mui_descpais->setText(DBvalue("descpais"));
-    mui_cod2pais->setText(DBvalue("cod2pais"));
-    mui_cod3pais->setText(DBvalue("cod3pais"));
+        mui_descpais->setText(DBvalue("descpais"));
+        mui_cod2pais->setText(DBvalue("cod2pais"));
+        mui_cod3pais->setText(DBvalue("cod3pais"));
 
-    mui_listprovincias->cargar("SELECT * FROM provincia WHERE idpais=" + m_idpais);
+        mui_listprovincias->cargar("SELECT * FROM provincia WHERE idpais=" + m_idpais);
 
-    dialogChanges_cargaInicial();
+        dialogChanges_cargaInicial();
     } // end if
     _depura("END PaisView::mostrarplantilla", 0);
 }
@@ -193,9 +195,13 @@ void PaisView::on_mui_crear_clicked() {
 **/
 void PaisView::on_mui_borrar_clicked() {
     _depura("PaisView::on_mui_borrar_clicked", 0);
+    if (m_idpais == "" | m_idpais == "0" ) {
+        mensajeInfo(tr("Debe seleccionar un elemento de la lista"));
+        return;
+    } // end if
     switch (QMessageBox::warning(this,
                                  tr("Borrar pais"),
-                                 tr("Se va a borrar el centro de coste.\nEsta operacion puede ocasionar perdida de datos."),
+                                 tr("Se va a borrar el pais seleccionado.\nEsta operacion puede ocasionar perdida de datos."),
                                  tr("&Borrar"), tr("&Cancelar"), 0, 0, 1)) {
     case 0: /// Retry clicked or Enter pressed.
         QString query;

@@ -42,9 +42,9 @@ ProveedorView::ProveedorView(Company *comp, QWidget *parent)
         setDBTableName("proveedor");
         setDBCampoId("idproveedor");
         addDBCampo("idproveedor", DBCampo::DBint, DBCampo::DBPrimaryKey, tr("ID proveedor"));
-        addDBCampo("nomproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Nombre del proveedor"));
+        addDBCampo("nomproveedor", DBCampo::DBvarchar, DBCampo::DBNotNull, tr("Nombre del proveedor"));
         addDBCampo("nomaltproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Nombre alternativo del proveedor"));
-        addDBCampo("cifproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("C.I.F. del proveedor"));
+        addDBCampo("cifproveedor", DBCampo::DBvarchar, DBCampo::DBNotNull, tr("C.I.F. del proveedor"));
         addDBCampo("codicliproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Codigo cliente"));
         addDBCampo("cbancproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Banco proveedor"));
         addDBCampo("dirproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Direccion"));

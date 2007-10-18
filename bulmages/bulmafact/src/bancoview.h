@@ -50,12 +50,12 @@ public:
     BancoView(Company * emp, QWidget *parent = 0);
     ~BancoView();
     bool trataModificado();
+    virtual int guardar();
+    virtual void on_mui_borrar_clicked();
 
 private slots:
     virtual void on_mui_lista_currentItemChanged(QListWidgetItem *cur, QListWidgetItem *prev);
-    virtual void on_mui_guardar_clicked();
     virtual void on_mui_nuevo_clicked();
-    virtual void on_mui_borrar_clicked();
 };
 
 #endif
