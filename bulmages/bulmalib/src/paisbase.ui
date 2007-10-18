@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>556</width>
-    <height>513</height>
+    <width>636</width>
+    <height>578</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -15,20 +15,232 @@
   <property name="windowIcon" >
    <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_centroCoste.xpm</iconset>
   </property>
-  <layout class="QVBoxLayout" >
+  <layout class="QGridLayout" >
    <property name="margin" >
     <number>5</number>
    </property>
    <property name="spacing" >
     <number>5</number>
    </property>
-   <item>
+   <item row="2" column="0" >
+    <widget class="SubForm3" name="mui_list" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>7</hsizetype>
+       <vsizetype>7</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" >
+    <widget class="QGroupBox" name="mui_datospais" >
+     <property name="title" >
+      <string>Datos del pais:</string>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>5</number>
+      </property>
+      <property name="spacing" >
+       <number>5</number>
+      </property>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="textLabel1" >
+        <property name="text" >
+         <string>Nombre del pais:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2" >
+       <widget class="QLabel" name="textLabel1_3" >
+        <property name="text" >
+         <string>Codigo 3 letras:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="4" >
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" >
+         <size>
+          <width>71</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="1" column="3" >
+       <widget class="QLineEdit" name="mui_cod3pais" >
+        <property name="maxLength" >
+         <number>3</number>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" >
+       <widget class="QLineEdit" name="mui_cod2pais" >
+        <property name="maxLength" >
+         <number>2</number>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" colspan="3" >
+       <widget class="QLineEdit" name="mui_descpais" >
+        <property name="maxLength" >
+         <number>50</number>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" colspan="5" >
+       <widget class="SubForm3" name="mui_listprovincias" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>7</hsizetype>
+          <vsizetype>7</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QLabel" name="textLabel1_2" >
+        <property name="text" >
+         <string>Codigo 2 letras:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="4" >
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" >
+         <size>
+          <width>71</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="0" >
     <layout class="QHBoxLayout" >
      <property name="margin" >
       <number>0</number>
      </property>
      <property name="spacing" >
+      <number>5</number>
+     </property>
+     <item>
+      <widget class="QToolButton" name="mui_detalles" >
+       <property name="minimumSize" >
+        <size>
+         <width>22</width>
+         <height>22</height>
+        </size>
+       </property>
+       <property name="maximumSize" >
+        <size>
+         <width>22</width>
+         <height>22</height>
+        </size>
+       </property>
+       <property name="toolTip" >
+        <string>Mostrar/ocultar detalle</string>
+       </property>
+       <property name="whatsThis" >
+        <string>Mostrar/ocultar detalle</string>
+       </property>
+       <property name="text" >
+        <string/>
+       </property>
+       <property name="icon" >
+        <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_edit.png</iconset>
+       </property>
+       <property name="iconSize" >
+        <size>
+         <width>22</width>
+         <height>22</height>
+        </size>
+       </property>
+       <property name="checkable" >
+        <bool>true</bool>
+       </property>
+       <property name="checked" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item row="4" column="0" >
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
       <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>5</number>
+     </property>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>191</width>
+         <height>21</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton" >
+       <property name="text" >
+        <string>Cancelar</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="0" column="0" >
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>5</number>
      </property>
      <item>
       <widget class="QLabel" name="label" >
@@ -55,7 +267,7 @@
      <item>
       <widget class="QFrame" name="frame" >
        <property name="frameShape" >
-        <enum>QFrame::NoFrame</enum>
+        <enum>QFrame::StyledPanel</enum>
        </property>
        <property name="frameShadow" >
         <enum>QFrame::Plain</enum>
@@ -178,65 +390,6 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="3" >
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType" >
-           <enum>QSizePolicy::Fixed</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="0" column="4" >
-         <widget class="QToolButton" name="mui_detalles" >
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Ver/ocultar datos pais</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Ver/ocultar datos pais</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_tuxPeq.png</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="shortcut" >
-           <string>Ctrl+B</string>
-          </property>
-          <property name="checkable" >
-           <bool>true</bool>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
         <item row="0" column="5" >
          <spacer>
           <property name="orientation" >
@@ -258,165 +411,6 @@
      </item>
     </layout>
    </item>
-   <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item>
-      <widget class="SubForm3" name="mui_list" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>3</hsizetype>
-         <vsizetype>7</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QGroupBox" name="groupBox" >
-       <property name="title" >
-        <string>Datos del pais:</string>
-       </property>
-       <layout class="QGridLayout" >
-        <property name="margin" >
-         <number>5</number>
-        </property>
-        <property name="spacing" >
-         <number>5</number>
-        </property>
-        <item row="2" column="0" colspan="5" >
-         <widget class="SubForm3" name="mui_listprovincias" >
-          <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>7</hsizetype>
-            <vsizetype>7</vsizetype>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="2" >
-         <widget class="QLabel" name="textLabel1_3" >
-          <property name="text" >
-           <string>Codigo 3 letras:</string>
-          </property>
-          <property name="alignment" >
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="3" >
-         <widget class="QLineEdit" name="mui_cod3pais" >
-          <property name="maxLength" >
-           <number>3</number>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1" >
-         <widget class="QLineEdit" name="mui_cod2pais" >
-          <property name="maxLength" >
-           <number>2</number>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1" colspan="3" >
-         <widget class="QLineEdit" name="mui_descpais" >
-          <property name="maxLength" >
-           <number>50</number>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0" >
-         <widget class="QLabel" name="textLabel1" >
-          <property name="text" >
-           <string>Nombre del pais:</string>
-          </property>
-          <property name="alignment" >
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0" >
-         <widget class="QLabel" name="textLabel1_2" >
-          <property name="text" >
-           <string>Codigo 2 letras:</string>
-          </property>
-          <property name="alignment" >
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="4" >
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>71</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="1" column="4" >
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>71</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>0</number>
-     </property>
-     <item>
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType" >
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" >
-        <size>
-         <width>191</width>
-         <height>21</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton2" >
-       <property name="text" >
-        <string>Cerrar</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11" />
@@ -432,14 +426,14 @@
  </resources>
  <connections>
   <connection>
-   <sender>pushButton2</sender>
+   <sender>pushButton</sender>
    <signal>clicked()</signal>
    <receiver>paisbase</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel" >
-     <x>548</x>
-     <y>508</y>
+     <x>564</x>
+     <y>557</y>
     </hint>
     <hint type="destinationlabel" >
      <x>549</x>
@@ -450,16 +444,16 @@
   <connection>
    <sender>mui_detalles</sender>
    <signal>toggled(bool)</signal>
-   <receiver>groupBox</receiver>
+   <receiver>mui_datospais</receiver>
    <slot>setShown(bool)</slot>
    <hints>
     <hint type="sourcelabel" >
-     <x>235</x>
-     <y>43</y>
+     <x>31</x>
+     <y>72</y>
     </hint>
     <hint type="destinationlabel" >
-     <x>114</x>
-     <y>235</y>
+     <x>67</x>
+     <y>99</y>
     </hint>
    </hints>
   </connection>

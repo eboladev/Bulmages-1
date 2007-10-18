@@ -70,6 +70,13 @@ QString XMLProtect(const QString &string) {
     QString cadenatmp = "";
     QChar *data = cadena.data();
 
+    /// Cambia tambien otros caracteres no adecuados.
+    cadenatmp.replace("&", "&#38;");
+    cadenatmp.replace(">", "&#62;");
+    cadenatmp.replace("<", "&#60;");
+    cadenatmp.replace("\"", "&#34;");
+    cadenatmp.replace("\'", "&#39;");
+
     int i;
     for (i = 0; i < cadena.length(); i++) {
         if (data->unicode() > 127) {
@@ -83,16 +90,7 @@ QString XMLProtect(const QString &string) {
         ++data;
     } // end if
 
-    /// Cambia tambien otros caracteres no adecuados.
-    cadenatmp.replace("&", "&#38;");
-    cadenatmp.replace(">", "&#62;");
-    cadenatmp.replace("<", "&#60;");
-    cadenatmp.replace("\"", "&#34;");
-    cadenatmp.replace("\'", "&#39;");
-
     return cadenatmp;
-
-
 }
 
 
@@ -305,7 +303,7 @@ void _depura(const QString &cad, int nivel, const QString &param) {
 
     if (confpr->valor(CONF_DEBUG) == "TRUE") {
        static QFile file(confpr->valor(CONF_DIR_USER) + "bulmagesout.txt");
-       static QTextStream out(&file); 
+       static QTextStream out(&file);
        if (!semaforo) {
             if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
                 return;
@@ -365,7 +363,7 @@ void _depura(const QString &cad, int nivel, const QString &param) {
 #else
 
 inline void _depura(const QString &, int , const QString &) {
-	return;
+    return;
 }
 #endif
 

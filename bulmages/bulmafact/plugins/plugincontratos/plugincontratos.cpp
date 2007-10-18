@@ -124,4 +124,5 @@ int Ficha_cargar(Ficha *fich) {
         l->on_mui_actualizar_clicked();
         return 0;
     } // end if
+    return -1;
 }

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>435</width>
-    <height>622</height>
+    <width>690</width>
+    <height>490</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -16,14 +16,170 @@
   <property name="windowIcon" >
    <iconset resource="../../bulmages.qrc" >:/Bulmafact32x32/images/png/32x32/i_bulmages_articulos_familias.32x32.png</iconset>
   </property>
-  <layout class="QVBoxLayout" >
+  <layout class="QGridLayout" >
    <property name="margin" >
     <number>5</number>
    </property>
    <property name="spacing" >
     <number>5</number>
    </property>
-   <item>
+   <item row="2" column="0" >
+    <widget class="QTreeWidget" name="m_listTipos" />
+   </item>
+   <item row="4" column="0" >
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>5</number>
+     </property>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>581</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="mui_aceptar" >
+       <property name="text" >
+        <string>&amp;Aceptar</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="mui_cancelar" >
+       <property name="text" >
+        <string>&amp;Cancelar</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="3" column="0" >
+    <widget class="QGroupBox" name="groupBox1" >
+     <property name="title" >
+      <string>Tipo de articulo:</string>
+     </property>
+     <layout class="QVBoxLayout" >
+      <property name="margin" >
+       <number>5</number>
+      </property>
+      <property name="spacing" >
+       <number>5</number>
+      </property>
+      <item>
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>5</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="label" >
+          <property name="text" >
+           <string>Codigo:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="m_codTipo" />
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QLabel" name="label" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>5</hsizetype>
+          <vsizetype>0</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text" >
+         <string>Descripcion:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTextEdit" name="m_descTipo" />
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="0" >
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>5</number>
+     </property>
+     <item>
+      <widget class="QToolButton" name="mui_detalles" >
+       <property name="minimumSize" >
+        <size>
+         <width>22</width>
+         <height>22</height>
+        </size>
+       </property>
+       <property name="maximumSize" >
+        <size>
+         <width>22</width>
+         <height>22</height>
+        </size>
+       </property>
+       <property name="toolTip" >
+        <string>Mostrar / Ocultar detalle</string>
+       </property>
+       <property name="whatsThis" >
+        <string>Mostrar / Ocultar detalle</string>
+       </property>
+       <property name="text" >
+        <string/>
+       </property>
+       <property name="icon" >
+        <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_edit.png</iconset>
+       </property>
+       <property name="iconSize" >
+        <size>
+         <width>22</width>
+         <height>22</height>
+        </size>
+       </property>
+       <property name="checkable" >
+        <bool>true</bool>
+       </property>
+       <property name="checked" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item row="0" column="0" >
     <layout class="QHBoxLayout" >
      <property name="margin" >
       <number>0</number>
@@ -196,162 +352,6 @@
          </widget>
         </item>
        </layout>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <widget class="QTreeWidget" name="m_listTipos" />
-   </item>
-   <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>5</number>
-     </property>
-     <item>
-      <widget class="QToolButton" name="mui_detalles" >
-       <property name="minimumSize" >
-        <size>
-         <width>22</width>
-         <height>22</height>
-        </size>
-       </property>
-       <property name="maximumSize" >
-        <size>
-         <width>22</width>
-         <height>22</height>
-        </size>
-       </property>
-       <property name="toolTip" >
-        <string>Mostrar / Ocultar Detalle</string>
-       </property>
-       <property name="whatsThis" >
-        <string>Mostrar / Ocultar Detalle</string>
-       </property>
-       <property name="text" >
-        <string/>
-       </property>
-       <property name="icon" >
-        <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_edit.png</iconset>
-       </property>
-       <property name="iconSize" >
-        <size>
-         <width>22</width>
-         <height>22</height>
-        </size>
-       </property>
-       <property name="checkable" >
-        <bool>true</bool>
-       </property>
-       <property name="checked" >
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" >
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <widget class="QGroupBox" name="groupBox1" >
-     <property name="title" >
-      <string>Contenido de la familia:</string>
-     </property>
-     <layout class="QVBoxLayout" >
-      <property name="margin" >
-       <number>5</number>
-      </property>
-      <property name="spacing" >
-       <number>5</number>
-      </property>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>5</number>
-        </property>
-        <item>
-         <widget class="QLabel" name="label" >
-          <property name="text" >
-           <string>Codigo:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="m_codTipo" />
-        </item>
-       </layout>
-      </item>
-      <item>
-       <widget class="QLabel" name="label" >
-        <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>5</hsizetype>
-          <vsizetype>0</vsizetype>
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text" >
-         <string>Descripcion:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QTextEdit" name="m_descTipo" />
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>5</number>
-     </property>
-     <item>
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" >
-        <size>
-         <width>581</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="mui_cancelar" >
-       <property name="text" >
-        <string>&amp;Cancelar</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="mui_aceptar" >
-       <property name="text" >
-        <string>&amp;Aceptar</string>
-       </property>
       </widget>
      </item>
     </layout>

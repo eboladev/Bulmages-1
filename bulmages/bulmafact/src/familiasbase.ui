@@ -24,6 +24,9 @@
     <number>5</number>
    </property>
    <item row="2" column="0" >
+    <widget class="QTreeWidget" name="m_listFamilias" />
+   </item>
+   <item row="3" column="0" >
     <widget class="QGroupBox" name="groupBox1" >
      <property name="title" >
       <string>Contenido de la familia:</string>
@@ -111,7 +114,14 @@
        </widget>
       </item>
       <item row="3" column="0" colspan="5" >
-       <widget class="QTextEdit" name="mui_descFamilia" />
+       <widget class="QTextEdit" name="mui_descFamilia" >
+        <property name="minimumSize" >
+         <size>
+          <width>0</width>
+          <height>100</height>
+         </size>
+        </property>
+       </widget>
       </item>
       <item rowspan="2" row="0" column="4" >
        <widget class="QGroupBox" name="groupBox" >
@@ -145,10 +155,7 @@
      </layout>
     </widget>
    </item>
-   <item row="3" column="0" >
-    <widget class="QTreeWidget" name="m_listFamilias" />
-   </item>
-   <item row="1" column="0" >
+   <item row="4" column="0" >
     <layout class="QHBoxLayout" >
      <property name="margin" >
       <number>0</number>
@@ -157,57 +164,31 @@
       <number>5</number>
      </property>
      <item>
-      <widget class="QToolButton" name="mui_detalles" >
-       <property name="minimumSize" >
-        <size>
-         <width>22</width>
-         <height>22</height>
-        </size>
-       </property>
-       <property name="maximumSize" >
-        <size>
-         <width>22</width>
-         <height>22</height>
-        </size>
-       </property>
-       <property name="toolTip" >
-        <string>Mostrar / Ocultar Detalle</string>
-       </property>
-       <property name="whatsThis" >
-        <string>Mostrar / Ocultar Detalle</string>
-       </property>
-       <property name="text" >
-        <string/>
-       </property>
-       <property name="icon" >
-        <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_edit.png</iconset>
-       </property>
-       <property name="iconSize" >
-        <size>
-         <width>22</width>
-         <height>22</height>
-        </size>
-       </property>
-       <property name="checkable" >
-        <bool>true</bool>
-       </property>
-       <property name="checked" >
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
       <spacer>
        <property name="orientation" >
         <enum>Qt::Horizontal</enum>
        </property>
        <property name="sizeHint" >
         <size>
-         <width>40</width>
-         <height>20</height>
+         <width>331</width>
+         <height>27</height>
         </size>
        </property>
       </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="mui_aceptar" >
+       <property name="text" >
+        <string>&amp;Aceptar</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="mui_cancelar" >
+       <property name="text" >
+        <string>&amp;Cancelar</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
@@ -427,7 +408,7 @@
      </item>
     </layout>
    </item>
-   <item row="4" column="0" >
+   <item row="1" column="0" >
     <layout class="QHBoxLayout" >
      <property name="margin" >
       <number>0</number>
@@ -436,31 +417,57 @@
       <number>5</number>
      </property>
      <item>
+      <widget class="QToolButton" name="mui_detalles" >
+       <property name="minimumSize" >
+        <size>
+         <width>22</width>
+         <height>22</height>
+        </size>
+       </property>
+       <property name="maximumSize" >
+        <size>
+         <width>22</width>
+         <height>22</height>
+        </size>
+       </property>
+       <property name="toolTip" >
+        <string>Mostrar / Ocultar Detalle</string>
+       </property>
+       <property name="whatsThis" >
+        <string>Mostrar / Ocultar Detalle</string>
+       </property>
+       <property name="text" >
+        <string/>
+       </property>
+       <property name="icon" >
+        <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_edit.png</iconset>
+       </property>
+       <property name="iconSize" >
+        <size>
+         <width>22</width>
+         <height>22</height>
+        </size>
+       </property>
+       <property name="checkable" >
+        <bool>true</bool>
+       </property>
+       <property name="checked" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
       <spacer>
        <property name="orientation" >
         <enum>Qt::Horizontal</enum>
        </property>
        <property name="sizeHint" >
         <size>
-         <width>331</width>
-         <height>27</height>
+         <width>40</width>
+         <height>20</height>
         </size>
        </property>
       </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="mui_aceptar" >
-       <property name="text" >
-        <string>&amp;Aceptar</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="mui_cancelar" >
-       <property name="text" >
-        <string>&amp;Cancelar</string>
-       </property>
-      </widget>
      </item>
     </layout>
    </item>

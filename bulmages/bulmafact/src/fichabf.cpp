@@ -251,9 +251,9 @@ QString FichaBf::trataLineasDetalle(const QString &det) {
         Fixed base = Fixed(linea->DBvalue("cant" + m_listalineas->tableName()).toAscii().constData()) * Fixed(linea->DBvalue("pvp"+m_listalineas->tableName()).toAscii().constData());
         QString l;
 
-	QString desc = linea->DBvalue("desc" + m_listalineas->tableName());
+    QString desc = linea->DBvalue("desc" + m_listalineas->tableName());
         QStringList descp = desc.split("\n");
-	QString desc1 = "";
+    QString desc1 = "";
         for (int i = 0; i < descp.size(); ++i)
             desc1 += "<para>" + XMLProtect(descp[i]) + "</para>\n";
 
@@ -506,7 +506,7 @@ QString FichaBf::trataTotales(const QString &det) {
 **/
 void FichaBf::generaRML() {
     _depura("FichaBf::generaRML", 0);
-	generaRML(m_tablename + ".rml");
+    generaRML(m_tablename + ".rml");
     _depura("END FichaBf::generaRML", 0);
 
 }
@@ -624,7 +624,7 @@ void FichaBf::generaRML(const QString &arch) {
         fitxersortidatxt += "<tr>\n";
         fitxersortidatxt += "    <td>" + XMLProtect(linea->DBvalue("codigocompletoarticulo")) + "</td>\n";
         fitxersortidatxt += "    <td><para>" + XMLProtect(linea->DBvalue("desc" + m_listalineas->tableName())).replace(QChar('\n'), "</para><para>") + "</para></td>\n";
-        fitxersortidatxt += "    <td>" + l.sprintf("%d", (int)linea->DBvalue("cant" + m_listalineas->tableName()).toFloat()) + "</td>\n";
+        fitxersortidatxt += "    <td>" + linea->DBvalue("cant" + m_listalineas->tableName()) + "</td>\n";
         fitxersortidatxt += "    <td>" + l.sprintf("%s", XMLProtect(linea->DBvalue("pvp" + m_listalineas->tableName())).toAscii().constData()) + "</td>\n";
         fitxersortidatxt += "    <td>" + l.sprintf("%s", XMLProtect(linea->DBvalue("descuento" + m_listalineas->tableName())).toAscii().constData()) + " %</td>\n";
         fitxersortidatxt += "    <td>" + l.sprintf("%s", (base - base * Fixed(linea->DBvalue("descuento" + m_listalineas->tableName())) / 100).toQString().toAscii().constData()) + "</td>\n";
@@ -674,7 +674,7 @@ void FichaBf::generaRML(const QString &arch) {
     for (it = basesimp.begin(); it != basesimp.end(); ++it) {
         if (porcentt > 0) {
             parbaseimp = it.value() - it.value() * porcentt / 100;
-	    totdesc = totdesc + it.value() * porcentt / 100;
+        totdesc = totdesc + it.value() * porcentt / 100;
         } else {
             parbaseimp = it.value();
         } // end if
