@@ -1028,7 +1028,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_borrar" >
+         <widget class="QToolButton" name="mui_eliminar" >
           <property name="enabled" >
            <bool>true</bool>
           </property>
@@ -1049,31 +1049,6 @@
             <width>22</width>
             <height>22</height>
            </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="mui_imprimir" >
-          <property name="toolTip" >
-           <string>Imprimir proveedor</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Imprimir proveedor</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_filePrint.xpm</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>22</width>
-            <height>22</height>
-           </size>
-          </property>
-          <property name="shortcut" >
-           <string>Ctrl+P</string>
           </property>
          </widget>
         </item>
@@ -1103,16 +1078,6 @@
  <layoutdefault spacing="2" margin="2" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaProvincia</class>
-   <extends>QWidget</extends>
-   <header>busquedaprovincia.h</header>
-  </customwidget>
-  <customwidget>
-   <class>PedidosProveedorList</class>
-   <extends>QWidget</extends>
-   <header>pedidosproveedorlist.h</header>
-  </customwidget>
-  <customwidget>
    <class>AlbaranesProveedor</class>
    <extends>QWidget</extends>
    <header>albaranesproveedor.h</header>
@@ -1137,11 +1102,20 @@
    <extends>QComboBox</extends>
    <header>busquedaformapago.h</header>
   </customwidget>
+  <customwidget>
+   <class>BusquedaProvincia</class>
+   <extends>QWidget</extends>
+   <header>busquedaprovincia.h</header>
+  </customwidget>
+  <customwidget>
+   <class>PedidosProveedorList</class>
+   <extends>QWidget</extends>
+   <header>pedidosproveedorlist.h</header>
+  </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>mui_guardar</tabstop>
-  <tabstop>mui_borrar</tabstop>
-  <tabstop>mui_imprimir</tabstop>
+  <tabstop>mui_eliminar</tabstop>
   <tabstop>masdf</tabstop>
   <tabstop>mui_codproveedor</tabstop>
   <tabstop>mui_codicliproveedor</tabstop>

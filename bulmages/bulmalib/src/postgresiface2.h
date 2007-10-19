@@ -66,7 +66,8 @@ private:
     bool m_error;
     QString m_query;
     QHash<QString, int> m_campos;
-
+//      QList<QString, int>m_campos;
+//    QMap<QString, int> m_campos;
 public:
     /// Constructor, inicializa la estructura y realiza la consulta.
     cursor2(QString nombre, PGconn *conn1, QString SQLQuery);

@@ -81,11 +81,7 @@ cursor2::cursor2(QString nombre, PGconn *conn1, QString SQLQuery) {
         registroactual = 0;
         _depura(SQLQuery, 0);
         result = PQexec(conn, SQLQuery.toAscii().data());
-
-
         switch (PQresultStatus(result)) {
-        case PGRES_COMMAND_OK:
-            break;
         case PGRES_NONFATAL_ERROR:
         case PGRES_FATAL_ERROR:
         case NULL:
@@ -98,20 +94,20 @@ cursor2::cursor2(QString nombre, PGconn *conn1, QString SQLQuery) {
             PQclear(result);
             throw -1;
             break;
-        default:
-            break;
+	default:
+	    break;
         } // end switch
 
         nregistros = PQntuples(result);
         ncampos = PQnfields(result);
         registroactual = 0;
 
-        /// Rellenamos el hash para acelerar cosas
+        /// Rellenamos el hash que luego nos sirve en la consulta.
         m_campos.clear();
         for (int i = 0; i < ncampos; i++) {
-            m_campos[nomcampo(i)] = i;
+	    if (!m_campos.contains(nomcampo(i)))
+                m_campos[nomcampo(i)] = i;
         } // end for
-
 
         _depura("------------ RESULTADO DE LA CONSULTA -----------------");
         QString err;
@@ -119,7 +115,7 @@ cursor2::cursor2(QString nombre, PGconn *conn1, QString SQLQuery) {
         _depura(err);
         _depura("--------- FIN RESULTADO DE LA CONSULTA ----------------");
     } catch (...) {
-        _depura("cursor2::cursor2: Error en la consulta: " + SQLQuery, 3);
+        _depura("cursor2::cursor2: Error en la consulta: " + SQLQuery, 2);
         throw -1;
     } // end try
     _depura("END cursor2::cursor2", 0, " Numero de registros: " + QString::number(nregistros) + ", Numero de campos: " + QString::number(ncampos));
@@ -177,7 +173,11 @@ int cursor2::numcampos() {
 QString cursor2::nomcampo(int campo) {
     _depura("cursor2::nomcampo", 0);
     _depura("END cursor2::nomcampo", 0);
-    return ((QString)PQfname(result, campo));
+    if (campo >= 0) {
+        return ((QString)PQfname(result, campo));
+    } else {
+        return "--Campo no soportado--";
+    } // end if
 }
 
 
@@ -190,20 +190,8 @@ QString cursor2::nomcampo(int campo) {
 /// siempre muy reducido seguramente no arreglariamos nada de nada.
 int cursor2::numcampo(const QString &campo) {
     _depura("cursor2::numcampo", 0);
-    /*
-	/// OBSOLETO, lo reemplazo por un QHash para que sea más rápido.
-        int i = 0;
-        while (i < numcampos() && campo != nomcampo(i)) {
-            i++;
-        } // end while
-        if (i == numcampos()) {
-            return -1;
-        } // end if
-    */
-
     if (m_campos.contains(campo))
         return  m_campos.value(campo);
-
     _depura("END cursor2::numcampo", 0);
     return -1;
 }

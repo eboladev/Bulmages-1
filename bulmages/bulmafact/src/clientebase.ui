@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>671</width>
-    <height>628</height>
+    <height>629</height>
    </rect>
   </property>
   <property name="focusPolicy" >
@@ -701,7 +701,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_borrar" >
+         <widget class="QToolButton" name="mui_eliminar" >
           <property name="enabled" >
            <bool>true</bool>
           </property>
@@ -863,7 +863,7 @@
   <tabstop>mui_clientEcomerceData</tabstop>
   <tabstop>mui_bancocliente</tabstop>
   <tabstop>mui_guardar</tabstop>
-  <tabstop>mui_borrar</tabstop>
+  <tabstop>mui_eliminar</tabstop>
   <tabstop>mui_informe</tabstop>
   <tabstop>mui_cancelar</tabstop>
   <tabstop>mui_aceptar</tabstop>

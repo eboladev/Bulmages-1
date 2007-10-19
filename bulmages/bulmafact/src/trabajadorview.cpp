@@ -77,7 +77,7 @@ void TrabajadorView::imprimir() {
 /**
 **/
 void TrabajadorView::pintar() {
-    _depura("TrabajadorView::pintar", 2);
+    _depura("TrabajadorView::pintar", 0);
 
     mui_lista->clear();
 
@@ -92,7 +92,7 @@ void TrabajadorView::pintar() {
 
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
-    _depura("END TrabajadorView::pintar", 2);
+    _depura("END TrabajadorView::pintar", 0);
 }
 
 

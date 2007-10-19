@@ -145,7 +145,7 @@ void PaisView::mostrarplantilla() {
 ///
 /**
 **/
-void PaisView::on_mui_guardar_clicked() {
+int PaisView::guardar() {
     _depura("PaisView::on_mui_guardar_clicked", 0);
     QString id;
     setDBvalue("descpais", mui_descpais->text());
@@ -159,6 +159,7 @@ void PaisView::on_mui_guardar_clicked() {
     dialogChanges_cargaInicial();
     pintar();
     _depura("END PaisView::on_mui_guardar_clicked", 0);
+    return 0;
 }
 
 

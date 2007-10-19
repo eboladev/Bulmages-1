@@ -83,8 +83,7 @@ public:
 public slots:
     virtual void on_mui_aceptar_clicked();
     virtual void on_mui_borrar_clicked();
-    /// TODO: Se tiene que pasar de cancelar a cerrar en todas las ventanas.
-    /// Despu&eacute;s quedar&aacute; obsoleto.
+    virtual void on_mui_eliminar_clicked();
     virtual void on_mui_cancelar_clicked();
     virtual void on_mui_guardar_clicked();
     virtual void on_customContextMenuRequested(const QPoint &pos);
