@@ -26,12 +26,37 @@
 SET DATESTYLE TO European;
 
 \echo -n ':: Forma de pago ... '
+CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
+DECLARE
+    bs RECORD;
+BEGIN
+    SELECT INTO bs * FROM forma_pago WHERE descforma_pago = ''Contado'';
+    IF NOT FOUND THEN
+	INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) VALUES (''Contado'', 1, 5);
+    END IF;
+
+    SELECT INTO bs * FROM forma_pago WHERE descforma_pago = ''Pagaré 30 días'';
+    IF NOT FOUND THEN
+	INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) VALUES (''Pagare 30 días'', 30, 0);
+    END IF;
+
+    SELECT INTO bs * FROM forma_pago WHERE descforma_pago = ''Pagaré 60 días'';
+    IF NOT FOUND THEN
+	INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) VALUES (''Pagare 60 días'', 60, 0);
+    END IF;
+
+    SELECT INTO bs * FROM forma_pago WHERE descforma_pago = ''Talón 15 días'';
+    IF NOT FOUND THEN
+	INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) VALUES (''Talón 15 días'', 15, 0);
+    END IF;
+    
+    RETURN 0;
+END;
+' LANGUAGE plpgsql;    
+    
 BEGIN;
-INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) VALUES ('Contado', 1, 5);
-INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) VALUES ('Pagare 30 días', 30, 0);
-INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) VALUES ('Pagare 60 días', 60, 0);
-INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) VALUES ('Talón 15 dias', 15, 1);
 \echo -n ':: Forma de pago ... '
+SELECT aux();
 COMMIT;
 
 \echo -n ':: Almacen ... '

@@ -72,7 +72,12 @@ CREATE TABLE configuracion (
 );
 
 
-
+-- ** pais **
+-- idpais: Identificador de pais.
+-- cod2pais: codigo de 2 caracteres de pais.
+-- cod3pais: Codigo de 3 caracteres de pais.
+-- descpais: Nombre del pais.
+\echo -n ':: Pais ... '
 CREATE TABLE pais (
 	idpais serial PRIMARY KEY,
 	cod2pais character varying(2),
@@ -80,6 +85,12 @@ CREATE TABLE pais (
 	descpais character varying(50)
 );
 
+
+-- ** provincia **
+-- idprovincia: Identificador de provincia.
+-- idpais: Identificador de pais.
+-- provincia: Nombre de la provincia.
+\echo -n ':: Provincia ... '
 CREATE TABLE provincia (
 	idprovincia serial PRIMARY KEY,
 	idpais integer REFERENCES pais(idpais),

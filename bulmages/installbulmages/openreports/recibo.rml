@@ -7,13 +7,13 @@
 
 		<pageGraphics>
 			<!-- EL LOGO DE CABECERA -->
-			<image x="3cm" y="11cm" width="17cm" file="logo.jpg"/>
+			<image x="3cm" y="11cm" width="5cm" file="logo.jpg"/>
 	
 			<!-- EL PIE DE PAGINA -->
 			<setFont name="Helvetica" size="8"/>		
 			<fill color="(0,0,0)"/>	
 			<stroke color="(0,0,0)"/>
-			<drawString x="7.3cm" y="1.2cm">www.iglues.org -- info@iglues.org --</drawString>
+			<drawString x="7.3cm" y="1.2cm">www.iglues.org -- info@iglues.org -- ESTA PLANTILLA ES DE MUESTRA. --</drawString>
 	
 			<fill color="(0,0,0)"/>	
 			<stroke color="(0,0,0)"/>
@@ -32,7 +32,7 @@
 			<drawString x="13cm" y="8.75cm">FECHA:</drawString>
 			
 			<setFont name="Helvetica" size="12"/>
-			<drawString x="16cm" y="2.5cm">[cantidad] ?</drawString>
+			<drawString x="16cm" y="2.5cm">[cantidad] &#8364;</drawString>
 			<drawString x="16cm" y="8.75cm">[fecha]</drawString>
 			
 			<setFont name="Helvetica-Bold" size="12"/>
