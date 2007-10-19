@@ -188,16 +188,18 @@ void FPagoView::on_mui_crear_clicked() {
 void FPagoView::on_mui_borrar_clicked() {
     _depura("FPagoView::on_mui_borrar_clicked", 0);
     trataModificado();
-    empresaBase()->begin();
-    QString query = "DELETE FROM forma_pago WHERE idforma_pago = " + mdb_idforma_pago;
-    int error = empresaBase()->ejecuta(query);
-    if (error) {
+    try {
+        empresaBase()->begin();
+        QString query = "DELETE FROM forma_pago WHERE idforma_pago = " + mdb_idforma_pago;
+        empresaBase()->ejecuta(query);
+        empresaBase()->commit();
+        pintar();
+        groupBox1->setDisabled(TRUE);
+        _depura("END FPagoView::on_mui_borrar_clicked", 0);
+    } catch (...) {
+        mensajeInfo("Error al intentar borrar la forma de pago");
         empresaBase()->rollback();
-        return;
-    } // end if
-    empresaBase()->commit();
-    pintar();
-    _depura("END FPagoView::on_mui_borrar_clicked", 0);
+    } // end try
 }
 
 

@@ -55,14 +55,12 @@ public:
     void setModoConsulta();
     void setModoEdicion();
     bool trataModificado();
-    virtual void on_mui_borrar_clicked();
     virtual int guardar();
+    virtual void on_mui_borrar_clicked();
 
 private slots:
     virtual void on_mui_lista_currentItemChanged(QListWidgetItem *cur, QListWidgetItem *prev);
-
     virtual void on_mui_crear_clicked();
-
 };
 
 #endif

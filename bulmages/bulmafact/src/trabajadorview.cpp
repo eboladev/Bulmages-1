@@ -45,6 +45,7 @@ TrabajadorView::TrabajadorView(Company *emp, QWidget *parent)
     setDBTableName("trabajador");
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
+    mui_tab->setDisabled(TRUE);
     /// Disparamos los plugins.
     int res = g_plugins->lanza("TrabajadorView_TrabajadorView", this);
     if (res != 0) {
@@ -76,8 +77,10 @@ void TrabajadorView::imprimir() {
 /**
 **/
 void TrabajadorView::pintar() {
-    _depura("TrabajadorView::pintar", 0);
+    _depura("TrabajadorView::pintar", 2);
+
     mui_lista->clear();
+
     if (m_cursortrabajadores != NULL) {
         delete m_cursortrabajadores;
     } // end if
@@ -89,7 +92,7 @@ void TrabajadorView::pintar() {
 
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
-    _depura("END TrabajadorView::pintar", 0);
+    _depura("END TrabajadorView::pintar", 2);
 }
 
 
@@ -112,6 +115,9 @@ TrabajadorView::~TrabajadorView() {
 **/
 void TrabajadorView::on_mui_lista_currentItemChanged(QListWidgetItem *cur, QListWidgetItem *) {
     _depura( "on_mui_lista_currentItemChanged", 0);
+    if (!cur) return;
+    mui_tab->setEnabled(TRUE);
+
     int row = mui_lista->row(cur);
     trataModificado();
     m_nomtrabajador->setText(m_cursortrabajadores->valor("nomtrabajador", row));
@@ -217,21 +223,22 @@ bool TrabajadorView::trataModificado() {
 **/
 void TrabajadorView::on_mui_nuevo_clicked() {
     _depura("TrabajadorView::on_mui_nuevo_clicked", 0);
-    /// Si se ha modificado el contenido advertimos y guardamos.
-    trataModificado();
-    QString query = "INSERT INTO trabajador (nomtrabajador, apellidostrabajador, nsstrabajador) VALUES ('NUEVO TRABAJADOR','NUEVO TRABAJADOR','000000000000')";
-    empresaBase()->begin();
-    int error = empresaBase()->ejecuta(query);
-    if (error) {
+    try {
+        /// Si se ha modificado el contenido advertimos y guardamos.
+        trataModificado();
+        QString query = "INSERT INTO trabajador (nomtrabajador, apellidostrabajador, nsstrabajador) VALUES ('NUEVO TRABAJADOR','NUEVO TRABAJADOR','000000000000')";
+        empresaBase()->begin();
+        empresaBase()->ejecuta(query);
+        cursor2 *cur = empresaBase()->cargacursor("SELECT max(idtrabajador) AS idtrabajador FROM trabajador");
+        empresaBase()->commit();
+        mdb_idtrabajador = cur->valor("idtrabajador");
+        delete cur;
+        pintar();
+        _depura("END TrabajadorView::on_mui_nuevo_clicked", 0);
+    } catch (...) {
+        mensajeInfo(tr("Error al crear un nuevo Trabajador"));
         empresaBase()->rollback();
-        return;
-    } // end if
-    cursor2 *cur = empresaBase()->cargacursor("SELECT max(idtrabajador) AS idtrabajador FROM trabajador");
-    empresaBase()->commit();
-    mdb_idtrabajador = cur->valor("idtrabajador");
-    delete cur;
-    pintar();
-    _depura("END TrabajadorView::on_mui_nuevo_clicked", 0);
+    } // end try
 }
 
 
@@ -242,17 +249,20 @@ void TrabajadorView::on_mui_nuevo_clicked() {
 **/
 void TrabajadorView::on_mui_borrar_clicked() {
     _depura("TrabajadorView::on_mui_borrar_clicked", 0);
+    try {
+    mui_tab->setDisabled(TRUE);
     trataModificado();
     empresaBase()->begin();
     QString query = "DELETE FROM trabajador WHERE idtrabajador = " + mdb_idtrabajador;
-    int error = empresaBase()->ejecuta(query);
-    if (error) {
-        empresaBase()->rollback();
-        return;
-    } // end if
+    empresaBase()->ejecuta(query);
     empresaBase()->commit();
+    mdb_idtrabajador="";
     pintar();
     _depura("END TrabajadorView::on_mui_borrar_clicked", 0);
+    } catch(...) {
+	mensajeInfo(tr("Error al borrar el Trabajador"));
+	empresaBase()->rollback();
+    }// end try
 }
 
 

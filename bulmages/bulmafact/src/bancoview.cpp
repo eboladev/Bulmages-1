@@ -93,7 +93,7 @@ BancoView::~BancoView() {
 void BancoView::on_mui_lista_currentItemChanged(QListWidgetItem *cur, QListWidgetItem *) {
     _depura( "on_mui_lista_currentItemChanged", 0);
     if (cur)
-	groupBox1->setEnabled(TRUE);
+        groupBox1->setEnabled(TRUE);
     int row = mui_lista->row(cur);
     trataModificado();
     mui_nombanco->setText(m_cursorbancos->valor("nombanco", row));
@@ -194,21 +194,22 @@ bool BancoView::trataModificado() {
 **/
 void BancoView::on_mui_nuevo_clicked() {
     _depura("BancoView::on_mui_nuevo_clicked", 0);
-    /// Si se ha modificado el contenido advertimos y guardamos.
-    trataModificado();
-    QString query = "INSERT INTO banco (nombanco) VALUES ('NUEVO BANCO')";
-    empresaBase()->begin();
-    int error = empresaBase()->ejecuta(query);
-    if (error) {
+    try {
+        /// Si se ha modificado el contenido advertimos y guardamos.
+        trataModificado();
+        QString query = "INSERT INTO banco (nombanco) VALUES ('NUEVO BANCO')";
+        empresaBase()->begin();
+        empresaBase()->ejecuta(query);
+        cursor2 *cur = empresaBase()->cargacursor("SELECT max(idbanco) AS idbanco FROM banco");
+        empresaBase()->commit();
+        mdb_idbanco = cur->valor("idbanco");
+        delete cur;
+        pintar();
+        _depura("END BancoView::on_mui_nuevo_clicked", 0);
+    } catch (...) {
+        mensajeInfo(tr("Error inesperado el crear el Banco"));
         empresaBase()->rollback();
-        return;
-    } // end if
-    cursor2 *cur = empresaBase()->cargacursor("SELECT max(idbanco) AS idbanco FROM banco");
-    empresaBase()->commit();
-    mdb_idbanco = cur->valor("idbanco");
-    delete cur;
-    pintar();
-    _depura("END BancoView::on_mui_nuevo_clicked", 0);
+    } // end catch
 }
 
 
@@ -220,17 +221,22 @@ void BancoView::on_mui_nuevo_clicked() {
 void BancoView::on_mui_borrar_clicked() {
     _depura("BancoView::on_mui_borrar_clicked", 0);
     if (mdb_idbanco == "") return;
-    trataModificado();
-    empresaBase()->begin();
-    QString query = "DELETE FROM banco WHERE idbanco = " + mdb_idbanco;
-    int error = empresaBase()->ejecuta(query);
-    if (error) {
+    try {
+        trataModificado();
+        empresaBase()->begin();
+        QString query = "DELETE FROM banco WHERE idbanco = " + mdb_idbanco;
+        int error = empresaBase()->ejecuta(query);
+        if (error) {
+            empresaBase()->rollback();
+            return;
+        } // end if
+        empresaBase()->commit();
+        pintar();
+        _depura("END BancoView::on_mui_borrar_clicked", 0);
+    } catch (...) {
+        mensajeInfo(tr("Error inesperado al borrar el banco"));
         empresaBase()->rollback();
-        return;
-    } // end if
-    empresaBase()->commit();
-    pintar();
-    _depura("END BancoView::on_mui_borrar_clicked", 0);
+    } // end try
 }
 
 
@@ -238,8 +244,8 @@ void BancoView::on_mui_borrar_clicked() {
 /**
 **/
 void BancoView::imprimir() {
-        _depura("BancoView::imprimir", 0);
-        _depura("END BancoView::imprimir", 0);
+    _depura("BancoView::imprimir", 0);
+    _depura("END BancoView::imprimir", 0);
 }
 
 

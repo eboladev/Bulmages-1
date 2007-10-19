@@ -167,26 +167,31 @@ void PaisView::on_mui_guardar_clicked() {
 **/
 void PaisView::on_mui_crear_clicked() {
     _depura("PaisView::on_mui_crear_clicked", 0);
-    /// Si se ha modificado el contenido advertimos y guardamos.
-    if (dialogChanges_hayCambios()) {
-        if (QMessageBox::warning(this,
-                                 tr("Guardar pais"),
-                                 tr("Desea guardar los cambios?"),
-                                 QMessageBox::Ok,
-                                 QMessageBox::Cancel) == QMessageBox::Ok) {
-            on_mui_guardar_clicked();
+    try {
+        /// Si se ha modificado el contenido advertimos y guardamos.
+        if (dialogChanges_hayCambios()) {
+            if (QMessageBox::warning(this,
+                                     tr("Guardar pais"),
+                                     tr("Desea guardar los cambios?"),
+                                     QMessageBox::Ok,
+                                     QMessageBox::Cancel) == QMessageBox::Ok) {
+                on_mui_guardar_clicked();
+            } // end if
         } // end if
-    } // end if
 
-    QString query;
-    query.sprintf("INSERT INTO pais (cod2pais, cod3pais, descpais) VALUES ('--', '---', 'Nuevo pais')");
-    empresaBase()->begin();
-    empresaBase()->ejecuta(query);
-    empresaBase()->commit();
-    pintar();
-    mui_list->setCurrentItem(mui_list->rowCount(),1);
-    mostrarplantilla();
-    _depura("END PaisView::on_mui_crear_clicked", 0);
+        QString query;
+        query.sprintf("INSERT INTO pais (cod2pais, cod3pais, descpais) VALUES ('--', '---', 'Nuevo pais')");
+        empresaBase()->begin();
+        empresaBase()->ejecuta(query);
+        empresaBase()->commit();
+        pintar();
+        mui_list->setCurrentItem(mui_list->rowCount(),1);
+        mostrarplantilla();
+        _depura("END PaisView::on_mui_crear_clicked", 0);
+    } catch (...) {
+        mensajeInfo(tr("Error al crear el banco"));
+        empresaBase()->rollback();
+    } // end try
 }
 
 
@@ -205,12 +210,18 @@ void PaisView::on_mui_borrar_clicked() {
                                  tr("&Borrar"), tr("&Cancelar"), 0, 0, 1)) {
     case 0: /// Retry clicked or Enter pressed.
         QString query;
-        query = "DELETE FROM pais WHERE idpais = " + m_idpais;
-        empresaBase()->begin();
-        empresaBase()->ejecuta(query);
-        empresaBase()->commit();
-        m_idpais = "0";
-        pintar();
+        try {
+            query = "DELETE FROM pais WHERE idpais = " + m_idpais;
+            empresaBase()->begin();
+            empresaBase()->ejecuta(query);
+            empresaBase()->commit();
+            m_idpais = "0";
+            pintar();
+            mui_datospais->setDisabled(TRUE);
+        } catch (...) {
+            mensajeInfo(tr("Error al intentar borrar el pais"));
+            empresaBase()->rollback();
+        } // end try
     } // end switch
     _depura("END PaisView::on_mui_borrar_clicked", 0);
 }
