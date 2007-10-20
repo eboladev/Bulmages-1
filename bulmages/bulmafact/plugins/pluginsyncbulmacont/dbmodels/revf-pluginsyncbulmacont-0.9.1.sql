@@ -61,7 +61,7 @@ BEGIN
 	IF FOUND THEN
 		DROP VIEW bc_cuenta;
 	END IF;
-	CREATE OR REPLACE view BC_Cuenta AS SELECT * FROM dblink( 'SELECT idgrupo, idcuenta, codigo, descripcion, tipocuenta FROM cuenta') AS t1 (idgrupo integer, idcuenta integer, codigo varchar, descripcion varchar, tipocuenta integer);
+	CREATE OR REPLACE view BC_Cuenta AS SELECT * FROM dblink( 'SELECT idcuenta, codigo, descripcion, tipocuenta FROM cuenta') AS t1 ( idcuenta integer, codigo varchar, descripcion varchar, tipocuenta integer);
 
 	CREATE OR REPLACE VIEW BC_Asiento AS SELECT * FROM dblink( 'SELECT idasiento FROM asiento') AS t1 (idasiento integer);
 
@@ -865,7 +865,6 @@ DECLARE
 	subquery TEXT;
 	codcta INTEGER;
 	idpadre INTEGER;
-	grupo INTEGER;
 	descripcion TEXT;
 	cp TEXT;
 	cif TEXT;
@@ -889,14 +888,11 @@ BEGIN
 		END IF;
 	
 		-- Buscamos la cuenta padre (la 4300)
-		SELECT INTO bs idcuenta, idgrupo FROM bc_cuenta WHERE codigo ='4300';
+		SELECT INTO bs idcuenta FROM bc_cuenta WHERE codigo ='4300';
 		idpadre := bs.idcuenta;
-		grupo := bs.idgrupo;
-	
-
 
 		-- Creamos el Query de insercion
-		quer := 'INSERT INTO cuenta (descripcion, padre, codigo, idgrupo) VALUES ( ' || descripcion ||', ' || idpadre || ', ''' || codcta || ''' , ' || grupo ||')';
+		quer := 'INSERT INTO cuenta (descripcion, padre, codigo) VALUES ( ' || descripcion ||', ' || idpadre || ', ''' || codcta || ''' )';
 
 		PERFORM dblink_exec(quer);
 	
@@ -981,12 +977,11 @@ BEGIN
 		codcta := codcta +1;
 	
 		-- Buscamos la cuenta padre (la 4300)
-		SELECT INTO bs idcuenta, idgrupo FROM bc_cuenta WHERE codigo ='4000';
+		SELECT INTO bs idcuenta FROM bc_cuenta WHERE codigo ='4000';
 		idpadre := bs.idcuenta;
-		grupo := bs.idgrupo;
 	
 		-- Creamos el Query de insercion
-		quer := 'INSERT INTO cuenta (descripcion, padre, codigo, idgrupo) VALUES ( ' || descripcion ||', ' || idpadre || ', ''' || codcta || ''' , ' || grupo ||')';
+		quer := 'INSERT INTO cuenta (descripcion, padre, codigo) VALUES ( ' || descripcion ||', ' || idpadre || ', ''' || codcta || ''' )';
 		PERFORM dblink_exec(quer);
 	
 	
@@ -1053,7 +1048,6 @@ DECLARE
 	codcta INTEGER;
 	quer TEXT;
 	idpadre INTEGER;
-	grupo INTEGER;
 	descripcion TEXT;
 	tipocuenta1 INTEGER;
 BEGIN
@@ -1075,13 +1069,12 @@ BEGIN
 		END IF;
 	
 		-- Buscamos la cuenta padre (la 4300)
-		SELECT INTO bs idcuenta, idgrupo, tipocuenta FROM bc_cuenta WHERE codigo ='573';
+		SELECT INTO bs idcuenta, tipocuenta FROM bc_cuenta WHERE codigo ='573';
 		idpadre := bs.idcuenta;
-		grupo := bs.idgrupo;
 		tipocuenta1 := bs.tipocuenta;
 	
 		-- Creamos el Query de insercion
-		quer := 'INSERT INTO cuenta (descripcion, padre, codigo, idgrupo, tipocuenta) VALUES ( ' || descripcion ||', ' || idpadre || ', ''' || codcta || ''' , ' || grupo ||', '|| tipocuenta1 || ')';
+		quer := 'INSERT INTO cuenta (descripcion, padre, codigo, tipocuenta) VALUES ( ' || descripcion ||', ' || idpadre || ', ''' || codcta || ''' , '|| tipocuenta1 || ')';
 		PERFORM dblink_exec(quer);
 	
 		SELECT INTO bs  max(idcuenta) AS id FROM bc_cuenta;
@@ -1144,7 +1137,6 @@ DECLARE
 	codcta INTEGER;
 	quer TEXT;
 	idpadre INTEGER;
-	grupo INTEGER;
 	descripcion TEXT;
 	tipocuenta1 INTEGER;
 BEGIN
@@ -1166,15 +1158,14 @@ BEGIN
 		END IF;
 	
 		-- Buscamos la cuenta padre (la 4300)
-		SELECT INTO bs idcuenta, idgrupo, tipocuenta FROM bc_cuenta WHERE codigo ='570';
+		SELECT INTO bs idcuenta, tipocuenta FROM bc_cuenta WHERE codigo ='570';
 		idpadre := bs.idcuenta;
-		grupo := bs.idgrupo;
 		tipocuenta1 := bs.tipocuenta;
 	
 
 	
 		-- Creamos el Query de insercion
-		quer := 'INSERT INTO cuenta (descripcion, padre, codigo, idgrupo, tipocuenta) VALUES ( ' || descripcion ||', ' || idpadre || ', ''' || codcta || ''' , ' || grupo ||', '|| tipocuenta1 || ')';
+		quer := 'INSERT INTO cuenta (descripcion, padre, codigo, tipocuenta) VALUES ( ' || descripcion ||', ' || idpadre || ', ''' || codcta || ''' , '|| tipocuenta1 || ')';
 		PERFORM dblink_exec(quer);
 	
 		SELECT INTO bs  max(idcuenta) AS id FROM bc_cuenta;

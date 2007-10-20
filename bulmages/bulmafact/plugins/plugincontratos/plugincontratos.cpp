@@ -118,11 +118,12 @@ int ClienteView_ClienteView(ClienteView *art) {
 \return
 **/
 int Ficha_cargar(Ficha *fich) {
+    _depura("Ficha_cargar", 0);
     ContratosList *l = fich->findChild<ContratosList *>("ccontratoslist");
     if (l) {
         l->mui_idcliente->setidcliente(fich->DBvalue("idcliente"));
         l->on_mui_actualizar_clicked();
         return 0;
     } // end if
-    return -1;
+    return 0;
 }
