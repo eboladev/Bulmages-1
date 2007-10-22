@@ -251,11 +251,22 @@ QString FichaBf::trataLineasDetalle(const QString &det) {
         Fixed base = Fixed(linea->DBvalue("cant" + m_listalineas->tableName()).toAscii().constData()) * Fixed(linea->DBvalue("pvp"+m_listalineas->tableName()).toAscii().constData());
         QString l;
 
+	/// Los saltos de carro se deben tratar de modo especial ya que RML no los contempla bien.
         QString desc = linea->DBvalue("desc" + m_listalineas->tableName());
         QStringList descp = desc.split("\n");
         QString desc1 = "";
-        for (int i = 0; i < descp.size(); ++i)
-            desc1 += "<para>" + XMLProtect(descp[i]) + "</para>\n";
+        for (int i = 0; i < descp.size(); ++i) {
+	    if (descp[i] != "") {
+		if (descp[i].startsWith(" ")) {
+                    desc1 += "<pre>" + XMLProtect(descp[i]) + "</pre>\n";
+		} else {
+                   desc1 += "<para>" + XMLProtect(descp[i]) + "</para>\n";
+		} // end if
+	    } else {
+	       desc1 += "<spacer length=\"0.1cm\"/>\n";
+	    } // end if
+	} // end for
+
 
         salidatemp.replace("[desc"+m_listalineas->tableName()+"]", desc1);
 
