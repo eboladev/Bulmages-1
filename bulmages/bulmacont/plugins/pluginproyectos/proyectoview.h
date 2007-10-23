@@ -1,7 +1,7 @@
 /***************************************************************************
- *   Copyright (C) 2003 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2004 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org Asociación Iglues -- Contabilidad Linux         *
+ *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,44 +19,33 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef CCOSTEVIEW_H
-#define CCOSTEVIEW_H
+#ifndef PROYECTOVIEW_H
+#define PROYECTOVIEW_H
 
-#include <QWidget>
-#include <QComboBox>
 #include <QLineEdit>
-#include <QCloseEvent>
+#include <QLabel>
+#include <QCheckBox>
 
-#include "ui_ccostebase.h"
+#include "ui_proyectobase.h"
 #include "postgresiface2.h"
 #include "dialogchanges.h"
 #include "fichabc.h"
 
 
-class Empresa;
+class Company;
 
 
-/// Visualiza un centro de coste.
-/** */
-class ccosteview : public FichaBc, public Ui_ccostebase {
+/** Ventana de ficha de cobro.
+    Se encarga de la presentacion de la ficha de cobro y del tratamiento de eventos producidos
+    en dicha ventana.
+    Deriva de Ficha para metodos comunes a todas las ventanas.
+    Deriva de Cobro para el manejo de la Base de datos. */
+class ProyectoView : public FichaBc, public Ui_ProyectoBase {
     Q_OBJECT
 
 public:
-    int idc_coste; /// Indica cual es el centro de coste que se esta visualizando.
-    /// Si su valor es 0 entonces es que no se esta visualizando ning&uacute;n centro de coste.
-
-public:
-    ccosteview(Empresa *, QWidget *parent = 0);
-    ~ccosteview();
-    void repintar();
-    void mostrarplantilla();
-    virtual void on_mui_borrar_clicked();
-    virtual int guardar();
-
-public slots:
-    virtual void on_mui_crear_clicked();
-    virtual void on_mui_list_itemClicked(QTreeWidgetItem *, int);
-//    virtual void closeEvent(QCloseEvent *);
+    ProyectoView(Empresa *, QWidget *);
+    ~ProyectoView();
 };
 
 #endif

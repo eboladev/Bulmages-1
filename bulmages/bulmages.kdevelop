@@ -78,7 +78,7 @@
       <envvars/>
     </run>
     <general>
-      <activedir></activedir>
+      <activedir>bulmacont/plugins/pluginproyectos</activedir>
     </general>
     <make>
       <abortonerror>true</abortonerror>

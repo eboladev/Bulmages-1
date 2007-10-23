@@ -1,7 +1,7 @@
 /***************************************************************************
- *   Copyright (C) 2003 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2004 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org Asociación Iglues -- Contabilidad Linux         *
+ *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,44 +19,38 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef CCOSTEVIEW_H
-#define CCOSTEVIEW_H
+#ifndef PROYECTOSVIEW_H
+#define PROYECTOSVIEW_H
 
-#include <QWidget>
-#include <QComboBox>
-#include <QLineEdit>
-#include <QCloseEvent>
-
-#include "ui_ccostebase.h"
-#include "postgresiface2.h"
-#include "dialogchanges.h"
-#include "fichabc.h"
+#include "ui_listproyectosbase.h"
+#include "listado.h"
 
 
 class Empresa;
 
 
-/// Visualiza un centro de coste.
-/** */
-class ccosteview : public FichaBc, public Ui_ccostebase {
+/** Trata la ventana de Listado de Amortizaciones.
+*/
+class ListProyectosView : public Listado, public Ui_ListProyectosBase {
     Q_OBJECT
+private:
+
+    /// Esta variable contiene el idamortizacion cuando se devuelve un parametro.
+    QString mdb_idpresupuestoc;
+    /// Esta variable contiene el nomamortizacion cuando se devuelve un parametro.
+    QString mdb_nompresupuestoc;
 
 public:
-    int idc_coste; /// Indica cual es el centro de coste que se esta visualizando.
-    /// Si su valor es 0 entonces es que no se esta visualizando ning&uacute;n centro de coste.
+   ListProyectosView(Empresa *emp, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
+    ~ListProyectosView();
+    void inicializatabla();
+    void editar(int);
+    virtual void crear();
+    virtual void borrar();
 
-public:
-    ccosteview(Empresa *, QWidget *parent = 0);
-    ~ccosteview();
-    void repintar();
-    void mostrarplantilla();
-    virtual void on_mui_borrar_clicked();
-    virtual int guardar();
+signals:
+    void selected(QString);
 
-public slots:
-    virtual void on_mui_crear_clicked();
-    virtual void on_mui_list_itemClicked(QTreeWidgetItem *, int);
-//    virtual void closeEvent(QCloseEvent *);
 };
 
 #endif

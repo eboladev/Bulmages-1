@@ -1,7 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2003 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org Asociación Iglues -- Contabilidad Linux         *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,45 +18,19 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef CCOSTEVIEW_H
-#define CCOSTEVIEW_H
-
-#include <QWidget>
-#include <QComboBox>
-#include <QLineEdit>
-#include <QCloseEvent>
-
-#include "ui_ccostebase.h"
-#include "postgresiface2.h"
-#include "dialogchanges.h"
-#include "fichabc.h"
-
-
-class Empresa;
-
-
-/// Visualiza un centro de coste.
-/** */
-class ccosteview : public FichaBc, public Ui_ccostebase {
-    Q_OBJECT
-
-public:
-    int idc_coste; /// Indica cual es el centro de coste que se esta visualizando.
-    /// Si su valor es 0 entonces es que no se esta visualizando ning&uacute;n centro de coste.
-
-public:
-    ccosteview(Empresa *, QWidget *parent = 0);
-    ~ccosteview();
-    void repintar();
-    void mostrarplantilla();
-    virtual void on_mui_borrar_clicked();
-    virtual int guardar();
-
-public slots:
-    virtual void on_mui_crear_clicked();
-    virtual void on_mui_list_itemClicked(QTreeWidgetItem *, int);
-//    virtual void closeEvent(QCloseEvent *);
-};
-
+#ifdef Q_WS_WIN
+# define MY_EXPORT __declspec(dllexport)
+#else
+# define MY_EXPORT
 #endif
+
+#include <QObject>
+#include "bulmacont.h"
+#include "ccosteview.h"
+#include "ficha.h"
+
+extern "C" MY_EXPORT int entryPoint(Bulmacont *);
+extern "C" MY_EXPORT int ccosteview_ccosteview(ccosteview *);
+extern "C" MY_EXPORT int Ficha_cargar(Ficha *);
+
 
