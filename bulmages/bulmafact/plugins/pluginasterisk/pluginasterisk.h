@@ -37,5 +37,5 @@ extern "C" MY_EXPORT int TrabajadorView_on_mui_lista_currentItemChanged_Post(Tra
 extern "C" MY_EXPORT int TrabajadorView_on_mui_guardar_clicked(TrabajadorView *);
 extern "C" MY_EXPORT int AlmacenView_AlmacenView(AlmacenView *);
 extern "C" MY_EXPORT int Ficha_cargar(Ficha *);
-
+extern "C" MY_EXPORT int Ficha_guardar_Post(Ficha *);
 

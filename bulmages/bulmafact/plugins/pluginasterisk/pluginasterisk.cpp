@@ -74,27 +74,25 @@ int TrabajadorView_TrabajadorView_Post (TrabajadorView *trab) {
 
     /// Agregamos el subformulario de validaciones.
     SubForm2Bf *l = new SubForm2Bf(trab);
-    l->setObjectName(QString::fromUtf8("mui_validaciones"));
+    l->setObjectName(QString::fromUtf8("m_validacionestrab"));
     l->setEmpresaBase( trab->empresaBase());
     l->setDBTableName("valasterisk");
     l->setDBCampoId("idvalasterisk");
-    l->addSHeader("fechavalasterisk", DBCampo::DBvarchar, DBCampo::DBNothing , SHeader::DBNoWrite, QApplication::translate("TrabajadorView", "Fecha"));
-    l->addSHeader("horavalasterisk", DBCampo::DBvarchar, DBCampo::DBNothing , SHeader::DBNoWrite, QApplication::translate("TrabajadorView", "Hora"));
-    l->addSHeader("nomalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , QApplication::translate("TrabajadorView", "Almacén"));
-    l->addSHeader("aperturaalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , QApplication::translate("TrabajadorView", "Apertura Mañanas"));
-    l->addSHeader("cierrealmacen", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , QApplication::translate("TrabajadorView", "Cierre Mañanas"));
-    l->addSHeader("apertura1almacen", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , QApplication::translate("TrabajadorView", "Apertura Tardes"));
-    l->addSHeader("cierre1almacen", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , QApplication::translate("TrabajadorView", "Cierre Tardes"));
+    l->addSHeader("fechavalasterisk", DBCampo::DBdate, DBCampo::DBNotNull , SHeader::DBNone, QApplication::translate("TrabajadorView", "Fecha"));
+    l->addSHeader("horavalasterisk", DBCampo::DBvarchar, DBCampo::DBNotNull , SHeader::DBNone, QApplication::translate("TrabajadorView", "Hora"));
+    l->addSHeader("nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , QApplication::translate("TrabajadorView", "Almacén"));
+    l->addSHeader("aperturaalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , QApplication::translate("TrabajadorView", "Apertura Mañanas"));
+    l->addSHeader("cierrealmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , QApplication::translate("TrabajadorView", "Cierre Mañanas"));
+    l->addSHeader("apertura1almacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , QApplication::translate("TrabajadorView", "Apertura Tardes"));
+    l->addSHeader("cierre1almacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , QApplication::translate("TrabajadorView", "Cierre Tardes"));
     l->addSHeader("archvalasterisk", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , QApplication::translate("TrabajadorView", "Audicion"));
-    l->addSHeader("idalmacen", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite , QApplication::translate("TrabajadorView", "Id Almacen"));
+    l->addSHeader("idalmacen", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoWrite , QApplication::translate("TrabajadorView", "Id Almacen"));
     l->addSHeader("idvalasterisk", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate("TrabajadorView", "ID Validacion"));
     l->addSHeader("idtrabajador", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate("TrabajadorView", "ID Trabajador"));
-    l->setinsercion(FALSE);
-    l->setDelete(FALSE);
-    l->setSortingEnabled(TRUE);
+    l->setinsercion(TRUE);
+    l->setDelete(TRUE);
+    l->setSortingEnabled(FALSE);
     trab->mui_tab->addTab(l, "Validaciones Asterisk");
-
-
     return 0;
 }
 
@@ -137,21 +135,21 @@ int AlmacenView_AlmacenView(AlmacenView *alm) {
 
     /// Añadimos el subformulario de validaciones
     SubForm2Bf *l = new SubForm2Bf(alm);
-    l->setObjectName(QString::fromUtf8("mui_validacionesalm"));
+    l->setObjectName(QString::fromUtf8("m_validacionesalm"));
     l->setEmpresaBase( alm->empresaBase());
     l->setDBTableName("valasterisk");
     l->setDBCampoId("idvalasterisk");
-    l->addSHeader("fechavalasterisk", DBCampo::DBvarchar, DBCampo::DBNothing , SHeader::DBNoWrite, QApplication::translate("TrabajadorView", "Fecha"));
-    l->addSHeader("horavalasterisk", DBCampo::DBvarchar, DBCampo::DBNothing , SHeader::DBNoWrite, QApplication::translate("TrabajadorView", "Hora"));
-    l->addSHeader("nomtrabajador", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , QApplication::translate("TrabajadorView", "Trabajador"));
-    l->addSHeader("apellidostrabajador", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , QApplication::translate("TrabajadorView", "Apellidos"));
+    l->addSHeader("fechavalasterisk", DBCampo::DBdate, DBCampo::DBNotNull , SHeader::DBNone, QApplication::translate("TrabajadorView", "Fecha"));
+    l->addSHeader("horavalasterisk", DBCampo::DBvarchar, DBCampo::DBNotNull , SHeader::DBNone, QApplication::translate("TrabajadorView", "Hora"));
+    l->addSHeader("nomtrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , QApplication::translate("TrabajadorView", "Trabajador"));
+    l->addSHeader("apellidostrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , QApplication::translate("TrabajadorView", "Apellidos"));
     l->addSHeader("archvalasterisk", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , QApplication::translate("TrabajadorView", "Audicion"));
-    l->addSHeader("idalmacen", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite , QApplication::translate("TrabajadorView", "Id Almacen"));
+    l->addSHeader("idalmacen", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite , QApplication::translate("TrabajadorView", "Id Almacen"));
     l->addSHeader("idvalasterisk", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate("TrabajadorView", "ID Validacion"));
     l->addSHeader("idtrabajador", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate("TrabajadorView", "ID Trabajador"));
-    l->setinsercion(FALSE);
-    l->setDelete(FALSE);
-    l->setSortingEnabled(TRUE);
+    l->setinsercion(TRUE);
+    l->setDelete(TRUE);
+    l->setSortingEnabled(FALSE);
 
     alm->mui_tab->addTab(l, "Validaciones Asterisk");
 
@@ -174,6 +172,10 @@ int TrabajadorView_on_mui_guardar_clicked(TrabajadorView *trab) {
     trab->empresaBase()->begin();
     trab->empresaBase()->ejecuta(query);
     trab->empresaBase()->commit();
+
+    SubForm2Bf *l1 = trab->findChild<SubForm2Bf *>("m_validacionestrab");
+    l1->setColumnValue("idtrabajador", trab->idtrabajador());
+    l1->guardar();
     return 0;
 }
 
@@ -194,7 +196,7 @@ int TrabajadorView_on_mui_lista_currentItemChanged_Post(TrabajadorView *trab) {
 
 
     /// Cargamos las validaciones de asterisk.
-    SubForm2Bf *l1 = trab->findChild<SubForm2Bf *>("mui_validaciones");
+    SubForm2Bf *l1 = trab->findChild<SubForm2Bf *>("m_validacionestrab");
     l1->cargar("SELECT * FROM valasterisk NATURAL LEFT JOIN almacen WHERE idtrabajador = " + trab->idtrabajador());
 
     return 0;
@@ -207,7 +209,7 @@ int TrabajadorView_on_mui_lista_currentItemChanged_Post(TrabajadorView *trab) {
 \return
 **/
 int Ficha_cargar(Ficha *fich) {
-	SubForm3 *form = fich->findChild<SubForm3 *>("mui_validacionesalm");
+	SubForm3 *form = fich->findChild<SubForm3 *>("m_validacionesalm");
 	if (form) 
              form->cargar("SELECT * FROM valasterisk NATURAL LEFT JOIN trabajador WHERE idalmacen = " + fich->DBvalue("idalmacen"));
 	return 0;
@@ -220,14 +222,14 @@ int Ficha_cargar(Ficha *fich) {
 		form->cargar("SELECT *, tipotrabajo.idtipotrabajo AS origidtipotrabajo FROM almacentipotrabajo LEFT JOIN tipotrabajo ON almacentipotrabajo.idtipotrabajo = tipotrabajo.idtipotrabajo WHERE idalmacen = " + fich->DBvalue("idalmacen"));
 	return 0;
 }
-
+*/
 int Ficha_guardar_Post(Ficha *fich) {
-	SubForm3 *form = fich->findChild<SubForm3 *>("mui_tipostrabajo");
+	SubForm3 *form = fich->findChild<SubForm3 *>("m_validacionesalm");
 	if (form) {
 		form->setColumnValue("idalmacen", fich->DBvalue("idalmacen"));
 		form->guardar();
 	}
 	return 0;
 }
-*/
+
 

@@ -59,11 +59,11 @@ CuadranteView::CuadranteView(Company *comp, QWidget *parent)
 
         mui_listtrabajadores->setDragEnabled(TRUE);
         mui_cuadrante->setAcceptDrops(TRUE);
+	mui_cuadrante->verticalHeader()->hide();
 
         inicializaTrabajadores();
         inicializaCuadrante(QDate::currentDate());
 
-//        dialogChanges_cargaInicial();
         meteWindow(windowTitle(), this, FALSE);
     } catch (...) {
         mensajeInfo(tr("Error al crear el almacen"));
@@ -132,7 +132,7 @@ void CuadranteView::inicializaCuadrante(const QDate &dateorig) {
 
         mui_cuadrante->clear();
 
-        cursor2 *cur = empresaBase()->cargacursor("SELECT idalmacen FROM almacen");
+        cursor2 *cur = empresaBase()->cargacursor("SELECT idalmacen, tipoalmacen, nomalmacen FROM almacen ORDER BY tipoalmacen DESC, nomalmacen");
         if (!cur) throw -1;
 
 

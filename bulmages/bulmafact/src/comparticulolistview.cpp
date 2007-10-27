@@ -38,12 +38,13 @@ ListCompArticuloView::ListCompArticuloView(QWidget *parent, const char *)
     _depura("ListCompArticuloView::ListCompArticuloView", 0);
     setDBTableName("comparticulo");
     setDBCampoId("idcomponente");
-    addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Codigo completo del articulo"));
-    addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre del articulo"));
+    addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave | DBCampo::DBNotNull, SHeader::DBNone, tr("Codigo completo del articulo"));
+    addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("Nombre del articulo"));
     addSHeader("cantcomparticulo", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Cantidad de componente de articulo"));
-    addSHeader("idcomponente", DBCampo::DBint, DBCampo::DBPrimaryKey | DBCampo::DBNotNull, SHeader::DBNoView, tr("ID componente"));
-    addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBPrimaryKey | DBCampo::DBNotNull, SHeader::DBNoView, tr("ID articulo"));
+    addSHeader("idcomponente", DBCampo::DBint, DBCampo::DBPrimaryKey | DBCampo::DBNotNull, SHeader::DBNoWrite, tr("ID componente"));
+    addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBPrimaryKey | DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, tr("ID articulo"));
     setinsercion(TRUE);
+    setOrdenEnabled(FALSE);
     _depura("END ListCompArticuloView::ListCompArticuloView", 0);
 }
 

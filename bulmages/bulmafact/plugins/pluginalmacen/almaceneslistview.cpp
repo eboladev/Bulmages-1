@@ -53,7 +53,7 @@ AlmacenesListView::AlmacenesListView(QWidget *parent, Qt::WFlags flag)
     mui_list->setDBTableName("almacen");
     mui_list->setDBCampoId("idalmacen");
     mui_list->addSHeader("idalmacen", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("ID almacen"));
-    mui_list->addSHeader("codalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Código almacen"));
+    mui_list->addSHeader("codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Código almacen"));
     mui_list->addSHeader("nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre almacen"));
     mui_list->setinsercion(FALSE);
     mui_list->setDelete(FALSE);
@@ -86,7 +86,7 @@ AlmacenesListView::AlmacenesListView(Company *comp, QWidget *parent, Qt::WFlags 
     mui_list->setDBTableName("almacen");
     mui_list->setDBCampoId("idalmacen");
     mui_list->addSHeader("idalmacen", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("ID almacen"));
-    mui_list->addSHeader("codalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Código almacen"));
+    mui_list->addSHeader("codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Código almacen"));
     mui_list->addSHeader("nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre almacen"));
     mui_list->setinsercion(FALSE);
     mui_list->setDelete(FALSE);

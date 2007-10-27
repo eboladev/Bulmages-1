@@ -159,3 +159,63 @@ void BusquedaAlmacen::m_activated(int index) {
     _depura("END BusquedaAlmacen::m_activated", 0);
 }
 
+/// ========================= ITEM DELEGATE ===============================0
+
+/** Inicializa todos los componentes del Widget a NULL para que no haya posibles confusiones
+    sobre si un elemento ha sido creado o no. 
+    Conecta el SIGNAL activated() con m_activated() para tratarlo.
+*/
+/**
+\param parent
+**/
+BusquedaAlmacenDelegate::BusquedaAlmacenDelegate(QWidget *parent)
+        : QComboBox2(parent) {
+    _depura("BusquedaAlmacenDelegate::BusquedaAlmacenDelegate", 0);
+    m_cursorcombo = NULL;
+    setSizeAdjustPolicy(QComboBox::AdjustToContents);
+    connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
+    _depura("END BusquedaAlmacenDelegate::BusquedaAlmacenDelegate", 0);
+}
+
+
+/** Libera la memoria reservada.
+*/
+/**
+**/
+BusquedaAlmacenDelegate::~BusquedaAlmacenDelegate() {
+    _depura("BusquedaAlmacenDelegate::~BusquedaAlmacenDelegate", 0);
+    if (m_cursorcombo != NULL)
+        delete m_cursorcombo;
+    _depura("END BusquedaAlmacenDelegate::~BusquedaAlmacenDelegate", 0);
+}
+
+
+/** Permite indicar al Widget cual es la serie de factura seleccionada por defecto.
+    Recarga cursor de serie_factura y cuando encuentra un registro cuyo codigoserie_factura coincide con el pasado
+    como parametro lo establece como el registro activo por el comboBox.
+*/
+/**
+\param cod
+**/
+void BusquedaAlmacenDelegate::set(const QString &cod) {
+    _depura("BusquedaAlmacenDelegate::set", 0);
+    int index = 0;
+    QString codigo = cod;
+
+    if (m_cursorcombo != NULL)
+        delete m_cursorcombo;
+
+    m_cursorcombo = empresaBase()->cargacursor("SELECT codigoalmacen, nomalmacen FROM almacen ORDER BY nomalmacen");
+    clear();
+    while (!m_cursorcombo->eof()) {
+        addItem(m_cursorcombo->valor("nomalmacen")+", "+m_cursorcombo->valor("codigoalmacen"));
+        m_cursorcombo->siguienteregistro();
+        if(m_cursorcombo->valor("nomalmacen")+", "+m_cursorcombo->valor("codigoalmacen") == cod)
+		index = m_cursorcombo->regactual();
+    }// end while
+    setEditText(cod);
+    setCurrentIndex(index);
+
+    _depura("END BusquedaAlmacenDelegate::set", 0);
+}
+

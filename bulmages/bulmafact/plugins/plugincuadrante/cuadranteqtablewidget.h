@@ -36,10 +36,11 @@ class Company;
 /// Reimplementa los items de QTableWidget2 para que podamos programar cosas en ellos.
 class CuadranteQTextDocument : public QLabel, public QTableWidgetItem,  public PEmpresaBase {
 Q_OBJECT
-private:
+public:
 	QString mdb_idalmacen;
 	QDate   mdb_fechacuadrante;
 	QString mdb_idcuadrante;
+
 public:
     CuadranteQTextDocument(Company *emp, QWidget *parent = 0);
     virtual void setAlmFecha(QString idalmacen, const QDate &date);
@@ -47,10 +48,13 @@ public:
     void addTrabajador(QString);
     void pintaCuadrante(QString idalmacen, const QDate &date);
     QString idcuadrante();
+    QDate fechacuadrante();
+    QString idalmacen();
+    void setidcuadrante(QString);
     const QString impresion();
-    bool buscaConflictos(QString idtrabajador, const QDate &date, QString horain, QString horafin);
     void contextMenuEvent ( QContextMenuEvent * e );
     void mouseDoubleClickEvent ( QMouseEvent * event );
+    void setText(QString);
 public slots:
     virtual void refresh();
 };
@@ -76,6 +80,24 @@ public slots:
 
 
 };
+
+
+/// Reimplementa los items de QTableWidget2 para que podamos programar cosas en ellos.
+class ImpCuadrante :  public PEmpresaBase {
+public:
+	QString mdb_idalmacen;
+	QDate   mdb_fechacuadrante;
+	QString mdb_idcuadrante;
+	QString m_html;
+
+public:
+    ImpCuadrante(Company *emp);
+    ~ImpCuadrante();
+    void generar();
+    bool buscaConflictos(QString idtrabajador, const QDate &date, QString horain, QString horafin);
+
+};
+
 
 #endif
 
