@@ -92,6 +92,7 @@ int TrabajadorView_TrabajadorView_Post (TrabajadorView *trab) {
     l->setinsercion(TRUE);
     l->setDelete(TRUE);
     l->setSortingEnabled(FALSE);
+    trab->dialogChanges_setQObjectExcluido(l->mui_list);
     trab->mui_tab->addTab(l, "Validaciones Asterisk");
     return 0;
 }
@@ -191,9 +192,8 @@ int TrabajadorView_on_mui_lista_currentItemChanged_Post(TrabajadorView *trab) {
     cursor2 *cur = trab->empresaBase()->cargacursor("SELECT passasterisktrabajador FROM trabajador WHERE idtrabajador = " + trab->idtrabajador());
     if (!cur->eof()) {
 	l->setText(cur->valor("passasterisktrabajador")); 
-    }
+    } // end if
     delete cur;
-
 
     /// Cargamos las validaciones de asterisk.
     SubForm2Bf *l1 = trab->findChild<SubForm2Bf *>("m_validacionestrab");
@@ -215,14 +215,7 @@ int Ficha_cargar(Ficha *fich) {
 	return 0;
 }
 
-/*
-int Ficha_cargar(Ficha *fich) {
-	SubForm3 *form = fich->findChild<SubForm3 *>("mui_tipostrabajo");
-	if (form)
-		form->cargar("SELECT *, tipotrabajo.idtipotrabajo AS origidtipotrabajo FROM almacentipotrabajo LEFT JOIN tipotrabajo ON almacentipotrabajo.idtipotrabajo = tipotrabajo.idtipotrabajo WHERE idalmacen = " + fich->DBvalue("idalmacen"));
-	return 0;
-}
-*/
+
 int Ficha_guardar_Post(Ficha *fich) {
 	SubForm3 *form = fich->findChild<SubForm3 *>("m_validacionesalm");
 	if (form) {

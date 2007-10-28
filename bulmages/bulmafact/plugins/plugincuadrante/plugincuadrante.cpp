@@ -221,7 +221,7 @@ int AlmacenView_AlmacenView(AlmacenView *alm) {
 int TrabajadorView_TrabajadorView(TrabajadorView *trab) {
     _depura("TrabajadorView_TrabajadorView", 0);
     SubForm2Bf *l = new SubForm2Bf(trab);
-    l->setObjectName(QString::fromUtf8("mui_ausencias"));
+    l->setObjectName(QString::fromUtf8("m_ausencias"));
     l->setEmpresaBase( trab->empresaBase());
     l->setDBTableName("ausencia");
     l->setDBCampoId("idausencia");
@@ -234,6 +234,7 @@ int TrabajadorView_TrabajadorView(TrabajadorView *trab) {
     l->setDelete(TRUE);
     l->setSortingEnabled(FALSE);
     trab->mui_tab->addTab(l, "Ausencias");
+    trab->dialogChanges_setQObjectExcluido(l->mui_list);
 
     _depura("END TrabajadorView_TrabajadorView", 0);
     return 0;
@@ -247,7 +248,7 @@ int TrabajadorView_TrabajadorView(TrabajadorView *trab) {
 **/
 int TrabajadorView_on_mui_lista_currentItemChanged_Post(TrabajadorView *trab)  {
     _depura("TrabajadorView_on_mui_lista_currentItemChanged_Post", 0);
-    SubForm2Bf *l = trab->findChild<SubForm2Bf *>("mui_ausencias");
+    SubForm2Bf *l = trab->findChild<SubForm2Bf *>("m_ausencias");
     l->cargar("SELECT * FROM ausencia WHERE idtrabajador = " + trab->idtrabajador());
     _depura("END TrabajadorView_on_mui_lista_currentItemChanged_Post", 0);
     return 0;
@@ -260,7 +261,7 @@ int TrabajadorView_on_mui_lista_currentItemChanged_Post(TrabajadorView *trab)  {
 \return
 **/
 int TrabajadorView_on_mui_guardar_clicked(TrabajadorView *trab) {
-    SubForm2Bf *l = trab->findChild<SubForm2Bf *>("mui_ausencias");
+    SubForm2Bf *l = trab->findChild<SubForm2Bf *>("m_ausencias");
     l->setColumnValue("idtrabajador", trab->idtrabajador());
     l->guardar();
     return 0;

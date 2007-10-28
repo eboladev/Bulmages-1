@@ -112,7 +112,7 @@ void dialogChanges::dialogChanges_cargaInicial() {
     QListIterator<QTableWidget *> it3(l3);
     while (it3.hasNext()) {
         QTableWidget *item = it3.next();
-        if (item->objectName() != "" && !objExcluido(item)) {
+        if (item->objectName().startsWith("mui_") && !objExcluido(item)) {
             m_listaQTable[m_maxQTable++] = item;
         } // end if
     } // end while

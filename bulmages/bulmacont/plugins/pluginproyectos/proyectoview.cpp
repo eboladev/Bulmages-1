@@ -55,20 +55,13 @@ ProyectoView::ProyectoView(Empresa *comp, QWidget *parent)
         setDBTableName("presupuestoc");
         setDBCampoId("idpresupuestoc");
         addDBCampo("idpresupuestoc", DBCampo::DBint, DBCampo::DBPrimaryKey, tr( "ID almacen"));
+        addDBCampo("idc_coste", DBCampo::DBint, DBCampo::DBNotNull, tr("Id CCoste"));
+        addDBCampo("nompresupuestoc", DBCampo::DBvarchar, DBCampo::DBNotNull, tr("Nom Presupuesto"));
+        addDBCampo("fechapresupuestoc", DBCampo::DBdate, DBCampo::DBNothing, tr("fecha"));
+	addDBCampo("comentpresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Comentarios"));
 
-/*        addDBCampo("codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNotNull, tr( "Codigo almacen"));
-        addDBCampo("nomalmacen", DBCampo::DBvarchar, DBCampo::DBNotNull  , tr( "Nombre almacen"));
-        addDBCampo("diralmacen", DBCampo::DBvarchar, DBCampo::DBNothing, tr( "Direccion almacen"));
-        addDBCampo("poblalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, tr( "Poblacion almacen"));
-        addDBCampo("cpalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, tr( "Codigo postal"));
-        addDBCampo("telalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, tr( "Telefono almacen"));
-        addDBCampo("faxalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, tr( "Fax almacen"));
-        addDBCampo("emailalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, tr( "email almacen"));
-        addDBCampo("fechaalmacen", DBCampo::DBdate, DBCampo::DBNoSave, tr( "Fecha almacen"));
-	addDBCampo("tipoalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Tipo almacen"));
-	mui_tipoalmacen_t->setValorCampo("Tienda");
-	mui_tipoalmacen_a->setValorCampo("Almacen");
-*/
+	mui_idc_coste->setEmpresaBase(comp);
+        mui_idc_coste->setidc_coste("");
 
         dialogChanges_cargaInicial();
         meteWindow(windowTitle(), this, FALSE);

@@ -39,6 +39,7 @@ ListProyectosView::ListProyectosView(Empresa *emp, QWidget *parent,  Qt::WFlags 
 
     this->setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
+    setModoEdicion();
     setSubForm(mui_listado);
     mui_listado->setEmpresaBase( emp );
     mui_listado->setDBTableName("presupuestoc");

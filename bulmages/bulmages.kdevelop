@@ -78,7 +78,7 @@
       <envvars/>
     </run>
     <general>
-      <activedir>bulmafact/plugins/plugincuadrante</activedir>
+      <activedir>bulmacont/plugins/pluginproyectos</activedir>
     </general>
     <make>
       <abortonerror>true</abortonerror>
