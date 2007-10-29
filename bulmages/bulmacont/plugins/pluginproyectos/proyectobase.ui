@@ -14,14 +14,14 @@
    <string>Nuevo proyecto</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_cobros.48x48.png</iconset>
+   <iconset resource="../../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_presupuestos.48x48.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>9</number>
+    <number>5</number>
    </property>
    <property name="spacing" >
-    <number>6</number>
+    <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -49,7 +49,7 @@
         <string/>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_almacen.48x48.png</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_presupuestos.48x48.png</pixmap>
        </property>
       </widget>
      </item>
@@ -83,10 +83,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Guardar almacen</string>
+           <string>Guardar Proyecto</string>
           </property>
           <property name="whatsThis" >
-           <string>Guardar almacen</string>
+           <string>Guardar Proyecto</string>
           </property>
           <property name="text" >
            <string/>
@@ -165,6 +165,9 @@
    </item>
    <item>
     <widget class="QTabWidget" name="mui_tab" >
+     <property name="currentIndex" >
+      <number>0</number>
+     </property>
      <widget class="QWidget" name="tab_2" >
       <attribute name="title" >
        <string>General</string>
@@ -197,6 +200,38 @@
        </item>
        <item row="1" column="0" >
         <widget class="BusquedaFecha" name="mui_fechapresupuestoc" />
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab" >
+      <attribute name="title" >
+       <string>Gastos</string>
+      </attribute>
+      <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>9</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item>
+        <widget class="SubForm2Bc" name="mui_gastos" />
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_3" >
+      <attribute name="title" >
+       <string>Ingresos</string>
+      </attribute>
+      <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>9</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item>
+        <widget class="SubForm2Bc" name="mui_ingresos" />
        </item>
       </layout>
      </widget>
@@ -255,6 +290,11 @@
    <class>BusquedaCCoste</class>
    <extends>QComboBox</extends>
    <header>busquedaccoste.h</header>
+  </customwidget>
+  <customwidget>
+   <class>SubForm2Bc</class>
+   <extends>QTableWidget</extends>
+   <header>subform2bc.h</header>
   </customwidget>
  </customwidgets>
  <resources>

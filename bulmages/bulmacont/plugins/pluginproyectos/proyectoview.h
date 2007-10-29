@@ -46,6 +46,10 @@ class ProyectoView : public FichaBc, public Ui_ProyectoBase {
 public:
     ProyectoView(Empresa *, QWidget *);
     ~ProyectoView();
+    int cargarPost(QString);
+    int guardarPost();
+signals:
+     void save();
 };
 
 #endif

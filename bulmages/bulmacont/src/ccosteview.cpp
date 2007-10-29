@@ -47,10 +47,6 @@ ccosteview::ccosteview(Empresa  *emp, QWidget *parent)
     addDBCampo("idc_coste", DBCampo::DBint, DBCampo::DBPrimaryKey, tr("Id. Centro Coste"));
     addDBCampo("nombre", DBCampo::DBvarchar, DBCampo::DBNotNull, tr("Nombre"));
     addDBCampo("descripcion", DBCampo::DBvarchar, DBCampo::DBNotNull, tr("Descripcion"));
-//    addDBCampo("codigo", DBCampo::DBvarchar, DBCampo::DBNotNull, tr("Codigo"));
-//    addDBCampo("imputacion", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("AlbaranCliente", "Fecha albaran"));
-
-
 
     /// Inicializamos el subformulario de centros distribuidos
     mui_cdistribuidos->setEmpresaBase(emp);
