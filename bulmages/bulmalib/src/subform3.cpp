@@ -27,8 +27,216 @@
 #include <QShortcut>
 #include <QLocale>
 #include <QRegExp>
+#include <QDomDocument>
+#include <QDomNode>
 
 #include "subform3.h"
+
+
+/// SubForm3, constructor de la clase base para subformularios.
+/**
+\param parent
+**/
+SubForm3::SubForm3(QWidget *parent) : BLWidget(parent) {
+    _depura("SubForm3::SubForm3", 0);
+    setupUi(this);
+    /// Inicializamos los valores de columna y fila previas para que no tengan un valor indefinido.
+    /// Se inicializan con -1 para considerar que no hay celda previa.
+    m_prevCol = -1;
+    m_prevRow = -1;
+
+    /// Desactivamos el procesado de cambios.
+    m_procesacambios = FALSE;
+
+    m_textoceldaParaRowSpan = "";
+    m_filaInicialRowSpan = -1;
+
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("SubForm3_SubForm3", this);
+    if (res != 0) {
+        m_procesacambios = TRUE;
+        return;
+    } // end if
+
+    mui_list->setSelectionMode(QAbstractItemView::SingleSelection);
+    mui_list->setSelectionBehavior(QAbstractItemView::SelectRows);
+    mui_list->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
+    mui_list->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
+    mui_list->setSortingEnabled(FALSE);
+    /// TODO:Hay un Bug que impide ordenar bien los elementos.
+    mui_list->horizontalHeader()->setMovable(TRUE);
+    /// Valor por defecto en todos los listados.
+    setListadoPijama(TRUE);
+    QPalette p;
+    p = mui_list->palette();
+    m_colorfondo1 = p.color(QPalette::Normal, QPalette::Base);
+    m_colorfondo2 = p.color(QPalette::Normal, QPalette::AlternateBase);
+
+    /// Capturamos la secuencia de teclas para hacer aparecer o desaparecer
+    /// el panel de configuracion del subform3.
+    QShortcut *shortcut = new QShortcut(QKeySequence("Ctrl+B"), this);
+    connect(shortcut, SIGNAL(activated()), this, SLOT(toogleConfig()));
+
+    m_insercion = FALSE;
+    m_primero = TRUE;
+    m_sorting = FALSE;
+    m_orden = FALSE;
+    m_ordenporquery = FALSE;
+
+    /// Para el listado de columnas hacemos una inicializacion.
+    QStringList headers;
+    headers << "" << tr("Nombre") << tr("Nombre de campo") << tr("Visible");
+    mui_listcolumnas->setColumnCount(4);
+    mui_listcolumnas->setHorizontalHeaderLabels(headers);
+    mui_listcolumnas->setShowGrid(FALSE);
+    mui_listcolumnas->setColumnWidth(0, 25);
+    mui_listcolumnas->setColumnWidth(1, 100);
+    mui_listcolumnas->setColumnWidth(2, 175);
+    mui_listcolumnas->setColumnWidth(3, 0);
+    mui_listcolumnas->setSelectionBehavior(QAbstractItemView::SelectRows);
+    mui_listcolumnas->verticalHeader()->hide();
+    mui_listcolumnas->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    mui_listcolumnas->horizontalHeader()->setResizeMode(0, QHeaderView::Stretch);
+
+    /// Siempre que arrancamos mostramos la pagina 0.
+    mui_paginaact->setValue(1);
+    /// Ocultamos la configuracion.
+    hideConfig();
+    /// Limpiamos la lista.
+    m_lista.clear();
+    m_listaborrar.clear();
+
+    /// Inicializamos los valores de columna y fila previas para que no tengan un valor indefinido.
+    /// Se inicializan con -1 para considerar que no hay celda previa.
+    m_prevCol = -1;
+    m_prevRow = -1;
+    setDelete(TRUE);
+
+    /// Disparamos los plugins.
+    g_plugins->lanza("SubForm3_SubForm3_Post", this);
+    m_procesacambios = TRUE;
+    _depura("END SubForm3::SubForm3", 0);
+}
+
+
+
+/// Destructor de Clase que guarda la configuracion.
+/**
+**/
+SubForm3::~SubForm3() {
+    _depura("SubForm3::~SubForm3", 0);
+    /// PAra destruir desactivamos el control de cambios.
+    m_procesacambios = FALSE;
+    guardaconfig();
+    _depura("END SubForm3::~SubForm3", 0);
+}
+
+
+///
+/**
+\param emp
+**/
+void SubForm3::setEmpresaBase(EmpresaBase *emp) {
+    _depura("PEmpresaBase::setEmpresaBase", 0);
+    PEmpresaBase::setEmpresaBase(emp);
+    cargaSpecs();
+    _depura("END PEmpresaBase::setEmpresaBase", 0);
+}
+
+
+///
+/**
+**/
+void SubForm3::cargaSpecs() {
+    _depura("SubForm3::cargaSpecs", 0 );
+//    QFile file(confpr->valor(CONF_DIR_USER) + m_fileconfig + "_" + empresaBase()->nameDB() + "_specs.spc");
+    QFile file("/etc/bulmages/" + m_fileconfig + "_" + empresaBase()->nameDB() + "_specs.spc");
+    QDomDocument doc("mydocument");
+    if (!file.open(QIODevice::ReadOnly))
+        return;
+    if (!doc.setContent(&file)) {
+        file.close();
+        return;
+    }
+    file.close();
+
+    QDomElement docElem = doc.documentElement();
+    QDomElement principal = docElem.firstChildElement("SUBFORM");
+    /// Cogemos la coordenada X
+    QString tablename = principal.firstChildElement("TABLENAME").toElement().text();
+    QString campoid = principal.firstChildElement("CAMPOID").toElement().text();
+
+    QDomNodeList nodos = docElem.elementsByTagName("HEADER");
+    for (int i = 0; i < nodos.count(); i++) {
+        QDomNode ventana = nodos.item(i);
+        QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
+        if ( !e1.isNull() ) { /// the node was really an element.
+            DBCampo::dbtype type= DBCampo::DBvarchar;
+            QString nomheader = e1.firstChildElement("NOMHEADER").toElement().text();
+            QString nompheader = e1.firstChildElement("NOMPHEADER").toElement().text();
+            QString typeheader = e1.firstChildElement("DBTYPEHEADER").toElement().text();
+            if (typeheader == "DBVARCHAR") {
+                type = DBCampo::DBvarchar;
+            } else if (typeheader == "DBINT") {
+                type = DBCampo::DBint;
+            } else if (typeheader == "DBNUMERIC") {
+                type = DBCampo::DBnumeric;
+            } else if (typeheader == "DBBOOLEAN") {
+                type = DBCampo::DBboolean;
+            } else if (typeheader == "DBDATE") {
+                type = DBCampo::DBdate;
+            } // end if
+
+	    int restricciones = (int) DBCampo::DBNothing;
+            QDomElement restrict = e1.firstChildElement("RESTRICTIONSHEADER");
+	    while (!restrict.isNull()) {
+                QString trestrict = restrict.text();
+                if (trestrict == "DBNOTHING") {
+                   restricciones |= DBCampo::DBvarchar;
+		} else if (trestrict == "DBNOTNULL") {
+                   restricciones |= DBCampo::DBNotNull;
+		} else if (trestrict == "DBPRIMARYKEY") {
+                   restricciones |= DBCampo::DBPrimaryKey;
+		} else if (trestrict == "DBNOSAVE") {
+                   restricciones |= DBCampo::DBNoSave;
+		} else if (trestrict == "DBAUTO") {
+                   restricciones |= DBCampo::DBAuto;
+		} else if (trestrict == "DBAUTO") {
+                   restricciones |= DBCampo::DBAuto;
+		} else if (trestrict == "DBDUPPRIMARYKEY") {
+                   restricciones |= DBCampo::DBDupPrimaryKey;
+		} else if (trestrict == "DBREQUIRED") {
+                   restricciones |= DBCampo::DBRequired;
+		} else if (trestrict == "DBNOLOAD") {
+                   restricciones |= DBCampo::DBNoLoad;
+		} // end if
+		restrict = restrict.nextSiblingElement("RESTRICTIONSHEADER");
+            } // end while
+
+	    int opciones = (int) SHeader::DBNone;
+            QDomElement opci = e1.firstChildElement("OPTIONSHEADER");
+	    while (!opci.isNull()) {
+                QString topci = opci.text();
+                if (topci == "DBNONE") {
+                   opciones |= SHeader::DBNone;
+		} else if (topci == "DBREADONLY") {
+                   opciones |= SHeader::DBReadOnly;
+		} else if (topci == "DBNOVIEW") {
+                   opciones |= SHeader::DBNoView;
+		} else if (topci == "DBNOWRITE") {
+                   opciones |= SHeader::DBNoWrite;
+		} else if (topci == "DBBLOCKVIEW") {
+                   opciones |= SHeader::DBBlockView;
+		} // end if
+		opci = opci.nextSiblingElement("OPTIONSHEADER");
+            } // end while
+
+            addSHeader(nomheader, type, (DBCampo::dbrestrict) restricciones, (SHeader::dboptions) opciones, nompheader);
+        } // end if
+    } // end for
+
+    _depura("END SubForm3::cargaSpecs", 0);
+}
 
 
 ///
@@ -381,103 +589,6 @@ bool SubForm3::listadoPijama() {
     _depura("END SubForm3::listadoPijama", 0);
 }
 
-
-/// SubForm3, constructor de la clase base para subformularios.
-/**
-\param parent
-**/
-SubForm3::SubForm3(QWidget *parent) : BLWidget(parent) {
-    _depura("SubForm3::SubForm3", 0);
-    setupUi(this);
-    /// Inicializamos los valores de columna y fila previas para que no tengan un valor indefinido.
-    /// Se inicializan con -1 para considerar que no hay celda previa.
-    m_prevCol = -1;
-    m_prevRow = -1;
-
-    /// Desactivamos el procesado de cambios.
-    m_procesacambios = FALSE;
-
-    m_textoceldaParaRowSpan = "";
-    m_filaInicialRowSpan = -1;
-
-    /// Disparamos los plugins.
-    int res = g_plugins->lanza("SubForm3_SubForm3", this);
-    if (res != 0) {
-        m_procesacambios = TRUE;
-        return;
-    } // end if
-
-    mui_list->setSelectionMode(QAbstractItemView::SingleSelection);
-    mui_list->setSelectionBehavior(QAbstractItemView::SelectRows);
-    mui_list->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
-    mui_list->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
-    mui_list->setSortingEnabled(FALSE);
-    /// TODO:Hay un Bug que impide ordenar bien los elementos.
-    mui_list->horizontalHeader()->setMovable(TRUE);
-    /// Valor por defecto en todos los listados.
-    setListadoPijama(TRUE);
-    QPalette p;
-    p = mui_list->palette();
-    m_colorfondo1 = p.color(QPalette::Normal, QPalette::Base);
-    m_colorfondo2 = p.color(QPalette::Normal, QPalette::AlternateBase);
-
-    /// Capturamos la secuencia de teclas para hacer aparecer o desaparecer
-    /// el panel de configuracion del subform3.
-    QShortcut *shortcut = new QShortcut(QKeySequence("Ctrl+B"), this);
-    connect(shortcut, SIGNAL(activated()), this, SLOT(toogleConfig()));
-
-    m_insercion = FALSE;
-    m_primero = TRUE;
-    m_sorting = FALSE;
-    m_orden = FALSE;
-    m_ordenporquery = FALSE;
-
-    /// Para el listado de columnas hacemos una inicializacion.
-    QStringList headers;
-    headers << "" << tr("Nombre") << tr("Nombre de campo") << tr("Visible");
-    mui_listcolumnas->setColumnCount(4);
-    mui_listcolumnas->setHorizontalHeaderLabels(headers);
-    mui_listcolumnas->setShowGrid(FALSE);
-    mui_listcolumnas->setColumnWidth(0, 25);
-    mui_listcolumnas->setColumnWidth(1, 100);
-    mui_listcolumnas->setColumnWidth(2, 175);
-    mui_listcolumnas->setColumnWidth(3, 0);
-    mui_listcolumnas->setSelectionBehavior(QAbstractItemView::SelectRows);
-    mui_listcolumnas->verticalHeader()->hide();
-    mui_listcolumnas->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    mui_listcolumnas->horizontalHeader()->setResizeMode(0, QHeaderView::Stretch);
-
-    /// Siempre que arrancamos mostramos la pagina 0.
-    mui_paginaact->setValue(1);
-    /// Ocultamos la configuracion.
-    hideConfig();
-    /// Limpiamos la lista.
-    m_lista.clear();
-    m_listaborrar.clear();
-
-    /// Inicializamos los valores de columna y fila previas para que no tengan un valor indefinido.
-    /// Se inicializan con -1 para considerar que no hay celda previa.
-    m_prevCol = -1;
-    m_prevRow = -1;
-    setDelete(TRUE);
-
-    /// Disparamos los plugins.
-    g_plugins->lanza("SubForm3_SubForm3_Post", this);
-    m_procesacambios = TRUE;
-    _depura("END SubForm3::SubForm3", 0);
-}
-
-
-/// Destructor de Clase que guarda la configuracion.
-/**
-**/
-SubForm3::~SubForm3() {
-    _depura("SubForm3::~SubForm3", 0);
-    /// PAra destruir desactivamos el control de cambios.
-    m_procesacambios = FALSE;
-    guardaconfig();
-    _depura("END SubForm3::~SubForm3", 0);
-}
 
 
 /// Habilita o inhabilita el ordenado de columnas mediante el pulsar sobre ellas.
@@ -1229,26 +1340,26 @@ void SubForm3::on_mui_list_cellRePosition(int row, int col) {
     } // end if
 
     switch (key) {
-        case Qt::Key_Return:
-        case Qt::Key_Enter:
-        case Qt::Key_Tab:
-            if (!m_insercion) {
-                /// Se ha hecho un enter sobre una tabla sin insercion con lo que lanzamos un doble click para que sea
-                /// La accion simulada.
-                QTableWidgetItem *item = mui_list->currentItem();
-                emit itemDoubleClicked(item);
-                emit cellDoubleClicked(row, col);
-            } else {
-                situarse(row, col);
-            } // end if
-            break;
-        case Qt::Key_Down:
+    case Qt::Key_Return:
+    case Qt::Key_Enter:
+    case Qt::Key_Tab:
+        if (!m_insercion) {
+            /// Se ha hecho un enter sobre una tabla sin insercion con lo que lanzamos un doble click para que sea
+            /// La accion simulada.
+            QTableWidgetItem *item = mui_list->currentItem();
+            emit itemDoubleClicked(item);
+            emit cellDoubleClicked(row, col);
+        } else {
             situarse(row, col);
-            situarse1(row, col);
-            if (creado) {
-                mui_list->setCurrentCell(row + 1, col);
-            } // end if
-            break;
+        } // end if
+        break;
+    case Qt::Key_Down:
+        situarse(row, col);
+        situarse1(row, col);
+        if (creado) {
+            mui_list->setCurrentCell(row + 1, col);
+        } // end if
+        break;
     } // end switch
 
     _depura("END SubForm3::on_mui_list_cellRePosition", 0);
@@ -1434,7 +1545,7 @@ int SubForm3::guardar() {
         for (int j = 0; j < mui_list->rowCount() - 1; ++j) {
             rec = lineaat(j);
             if (rec) {
-        /// Si hay ordenacion de campos ahora la establecemos
+                /// Si hay ordenacion de campos ahora la establecemos
                 if (m_orden) {
                     rec->setDBvalue("orden" + m_tablename, QString::number(j));
                 } // end if

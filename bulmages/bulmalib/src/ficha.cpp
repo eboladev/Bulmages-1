@@ -503,7 +503,10 @@ int Ficha::cargar(QString id) {
 
 /// Guarda los datos de la ficha en la base de datos.
 /**
-\return
+  Este metodo guarda los contenidos de la Ficha (siempre que esta haya sido inicializada).
+  Luego llama a plugins y a guardarPost por si se quieren hacer acciones adicionales de guardado.
+  Tras guardar todos los elementos hace una carga.
+\return 0 Si no hay problemas. -1 Si ha habido problemas.
 **/
 int Ficha::guardar() {
     _depura("Ficha::guardar", 0);

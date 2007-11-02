@@ -36,15 +36,14 @@
     Mete la ventana en el workSpace.
     Este constructor no es completo, debe inicializarse con setcompany para que la clase pueda operar.    
 */
-CobrosList::CobrosList(QWidget *parent, Qt::WFlags flag)
-        : Listado(NULL, parent, flag) {
+CobrosList::CobrosList(QWidget *parent, Qt::WFlags flag, edmode editmodo)
+        : Listado(NULL, parent, flag, editmodo) {
     _depura("CobrosList::CobrosList", 0);
     setupUi(this);
     /// Disparamos los plugins.
     int res = g_plugins->lanza("CobrosList_CobrosList", this);
     if (res != 0)
         return;
-    setModoEdicion();
     mdb_idcobro = "";
     setSubForm(mui_list);
     hideBusqueda();
@@ -57,8 +56,8 @@ CobrosList::CobrosList(QWidget *parent, Qt::WFlags flag)
     Hace una presentacion inicial.
     Mete la ventana en el workSpace.
 */
-CobrosList::CobrosList(Company *comp, QWidget *parent, Qt::WFlags flag)
-        : Listado(comp, parent, flag) {
+CobrosList::CobrosList(Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo)
+        : Listado(comp, parent, flag, editmodo) {
     _depura("CobrosList::CobrosList",0);
     setupUi(this);
     /// Disparamos los plugins.
@@ -71,7 +70,6 @@ CobrosList::CobrosList(Company *comp, QWidget *parent, Qt::WFlags flag)
     mui_idbanco->setidbanco("");
     setSubForm(mui_list);
     presentar();
-    setModoEdicion();
     mdb_idcobro = "";
     if(modoEdicion()) 
     	empresaBase()->meteWindow(windowTitle(), this);
@@ -216,7 +214,7 @@ void CobrosList::editar(int) {
             empresaBase()->m_pWorkspace->addWindow(bud);
             bud->show();
         } else {
-            close();
+            emit(selected(mdb_idcobro));
         } // end if
     } catch(...) {
         mensajeInfo(tr("Debe seleccionar una fila primero"));

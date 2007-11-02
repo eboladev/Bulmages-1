@@ -32,8 +32,6 @@
 #include <QList>
 #include "facturapview.h"
 #include "fixed.h"
-
-
 #include "cobroslist.h"
 #include "cobroview.h"
 #include "company.h"

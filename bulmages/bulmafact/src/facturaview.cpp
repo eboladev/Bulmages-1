@@ -55,7 +55,6 @@ FacturaView::FacturaView(Company *comp, QWidget *parent)
     setupUi(this);
     setAttribute(Qt::WA_DeleteOnClose);
     try {
-
         setTitleName(tr("Factura"));
         setDBTableName ( "factura" );
         setDBCampoId ( "idfactura" );

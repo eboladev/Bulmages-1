@@ -78,7 +78,7 @@
       <envvars/>
     </run>
     <general>
-      <activedir>bulmacont</activedir>
+      <activedir></activedir>
     </general>
     <make>
       <abortonerror>true</abortonerror>

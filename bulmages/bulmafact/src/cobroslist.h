@@ -56,8 +56,8 @@ private:
     QString mdb_idcobro;
 
 public:
-    CobrosList(QWidget *parent = 0, Qt::WFlags flag = 0);
-    CobrosList(Company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0);
+    CobrosList(QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
+    CobrosList(Company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
     ~CobrosList();
     void presentar();
     void setEmpresaBase(Company *comp);
@@ -69,6 +69,10 @@ public:
     void crear();
     void editar(int);
     void submenu(const QPoint &);
+
+signals:
+    /// Estando en modo seleccion al seleccionar un elemento se emite esta se&ntilde;al.
+    void selected(QString);
 };
 
 #endif
