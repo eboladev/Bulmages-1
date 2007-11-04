@@ -77,8 +77,8 @@ public:
     virtual QString trataQuery(const QString &query, const QString &datos);
     virtual QString trataIfQuery(const QString &query, const QString &datos);
     virtual QString trataExists(const QString &query, const QString &datos);
-
-
+    virtual void cargaSpecs();
+    virtual void generaCampo(const QString &objname, const QString &textname, const QString &type);
 
 public slots:
     virtual void on_mui_aceptar_clicked();

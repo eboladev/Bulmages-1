@@ -23,6 +23,7 @@
 #include "qcombobox2.h"
 #include "plugins.h"
 #include "qradiobutton2.h"
+#include "busquedafecha.h"
 
 #include <QMenu>
 #include <QToolButton>
@@ -30,7 +31,8 @@
 #include <QCheckBox>
 #include <QFile>
 #include <QTextStream>
-
+#include <QDomDocument>
+#include <QDomNode>
 
 ///
 /**
@@ -89,6 +91,128 @@ Ficha::~Ficha() {
     _depura("END Ficha::~Ficha", 0);
 }
 
+
+
+///
+/**
+**/
+void Ficha::cargaSpecs() {
+    _depura("SubForm3::cargaSpecs", 0 );
+    _depura(objectName(), 2);
+//    QFile file(confpr->valor(CONF_DIR_USER) + m_fileconfig + "_" + empresaBase()->nameDB() + "_specs.spc");
+    QFile file("/etc/bulmages/" + objectName() + "_" + empresaBase()->nameDB() + "_spec.spc");
+    QDomDocument doc("mydocument");
+    if (!file.open(QIODevice::ReadOnly))
+        return;
+    if (!doc.setContent(&file)) {
+        file.close();
+        return;
+    } // end if
+    file.close();
+
+    QDomElement docElem = doc.documentElement();
+    QDomElement principal = docElem.firstChildElement("FICHA");
+    /// Cogemos la coordenada X
+    QString tablename = principal.firstChildElement("TABLENAME").toElement().text();
+    QString campoid = principal.firstChildElement("CAMPOID").toElement().text();
+
+    QDomNodeList nodos = docElem.elementsByTagName("CAMPO");
+    for (int i = 0; i < nodos.count(); i++) {
+        QDomNode ventana = nodos.item(i);
+        QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
+        if ( !e1.isNull() ) { /// the node was really an element.
+            DBCampo::dbtype type= DBCampo::DBvarchar;
+            QString nomheader = e1.firstChildElement("NOMCAMPO").toElement().text();
+            if (exists(nomheader)) return;
+            QString nompheader = e1.firstChildElement("NOMPCAMPO").toElement().text();
+            QString typeheader = e1.firstChildElement("DBTYPECAMPO").toElement().text();
+            if (typeheader == "DBVARCHAR") {
+                type = DBCampo::DBvarchar;
+            } else if (typeheader == "DBINT") {
+                type = DBCampo::DBint;
+            } else if (typeheader == "DBNUMERIC") {
+                type = DBCampo::DBnumeric;
+            } else if (typeheader == "DBBOOLEAN") {
+                type = DBCampo::DBboolean;
+            } else if (typeheader == "DBDATE") {
+                type = DBCampo::DBdate;
+            } // end if
+
+            int restricciones = (int) DBCampo::DBNothing;
+            QDomElement restrict = e1.firstChildElement("RESTRICTIONSCAMPO");
+            while (!restrict.isNull()) {
+                QString trestrict = restrict.text();
+                if (trestrict == "DBNOTHING") {
+                    restricciones |= DBCampo::DBvarchar;
+                } else if (trestrict == "DBNOTNULL") {
+                    restricciones |= DBCampo::DBNotNull;
+                } else if (trestrict == "DBPRIMARYKEY") {
+                    restricciones |= DBCampo::DBPrimaryKey;
+                } else if (trestrict == "DBNOSAVE") {
+                    restricciones |= DBCampo::DBNoSave;
+                } else if (trestrict == "DBAUTO") {
+                    restricciones |= DBCampo::DBAuto;
+                } else if (trestrict == "DBAUTO") {
+                    restricciones |= DBCampo::DBAuto;
+                } else if (trestrict == "DBDUPPRIMARYKEY") {
+                    restricciones |= DBCampo::DBDupPrimaryKey;
+                } else if (trestrict == "DBREQUIRED") {
+                    restricciones |= DBCampo::DBRequired;
+                } else if (trestrict == "DBNOLOAD") {
+                    restricciones |= DBCampo::DBNoLoad;
+                } // end if
+                restrict = restrict.nextSiblingElement("RESTRICTIONSCAMPO");
+            } // end while
+
+            addDBCampo(nomheader, type, (DBCampo::dbrestrict) restricciones, nompheader);
+            generaCampo(nomheader, nompheader, typeheader);
+        } // end if
+    } // end for
+
+    _depura("END SubForm3::cargaSpecs", 0);
+}
+
+
+void Ficha::generaCampo(const QString &objname, const QString &textname, const QString &type) {
+
+    /// Miramos si existe un menu Herramientas
+    QFrame *frame = findChild<QFrame *>("m_frameplugin");
+    /// Si no hay un frame con lo que buscamos buscamos cualquier frame
+    if (!frame) {
+        frame = findChild<QFrame *>("m_frameplugin");
+    } // end if
+    if (!frame) return;
+
+    QVBoxLayout *vboxl = frame->findChild<QVBoxLayout *>();
+    if (!vboxl) {
+        vboxl = new QVBoxLayout(frame);
+        vboxl->setSpacing(0);
+        vboxl->setMargin(0);
+        vboxl->setObjectName(QString::fromUtf8("m_framevboxlayout"));
+    } // end if
+
+
+    QHBoxLayout *hboxLayout160 = new QHBoxLayout();
+    hboxLayout160->setSpacing(2);
+    hboxLayout160->setMargin(0);
+    hboxLayout160->setObjectName(QString::fromUtf8("hboxLayout16"));
+
+    QLabel *textLabel2_9_26 = new QLabel(frame);
+    textLabel2_9_26->setObjectName(QString::fromUtf8("textLabel2_9_2"));
+    hboxLayout160->addWidget(textLabel2_9_26);
+    textLabel2_9_26->setText(textname);
+
+    if (type == "DBDATE") {
+        BusquedaFecha *bus = new BusquedaFecha(frame);
+        bus->setObjectName(objname);
+        hboxLayout160->addWidget(bus);
+    } else {
+        QLineEdit *bus = new QLineEdit(frame);
+        bus->setObjectName(objname);
+        hboxLayout160->addWidget(bus);
+    } // end if
+    vboxl->addLayout(hboxLayout160);
+}
 
 ///
 /**
@@ -183,7 +307,7 @@ void Ficha::on_mui_imprimir_clicked() {
 /**
 **/
 void Ficha::on_mui_eliminar_clicked() {
-	on_mui_borrar_clicked();
+    on_mui_borrar_clicked();
 }
 
 ///
@@ -271,7 +395,9 @@ void Ficha::meteWindow(QString nom, QObject *obj, bool compdup) {
 
     /// De Forma rapida hacemos un tratamiento de los permisos
     setDBTableName(tableName());
-
+    /// Tal vez no es el mejor sitio para hacer la carga de SPECS. Pero no hay llamada especifica
+    /// De configuración por lo que si no es este no es ninguno.
+    cargaSpecs();
     _depura("END Ficha::meteWindow", 0);
 }
 
@@ -457,18 +583,18 @@ void Ficha::recogeValores() {
 
         /// Buscamos los radio buttons y los preparamos.
         QList<QRadioButton2 *> l6 = findChildren<QRadioButton2 *>(QRegExp("mui_"+campo->nomcampo()+"_*"));
-	if (l6.size() > 0) {
-		int aux = 0;
-		for (int i = 0; i < l6.size(); ++i) {
-		if (l6.at(i)->isChecked()) {
-			campo->set(l6.at(i)->valorCampo());
-			aux = 1;
-		} // end if
-		} // end for
-		if (aux == 0) {
-			campo->set("");
-		} // end if
-	} // end if
+        if (l6.size() > 0) {
+            int aux = 0;
+            for (int i = 0; i < l6.size(); ++i) {
+                if (l6.at(i)->isChecked()) {
+                    campo->set(l6.at(i)->valorCampo());
+                    aux = 1;
+                } // end if
+            } // end for
+            if (aux == 0) {
+                campo->set("");
+            } // end if
+        } // end if
 
     } // end for
     _depura("END Ficha::recogeValores", 0);
