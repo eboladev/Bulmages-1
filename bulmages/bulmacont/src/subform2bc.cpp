@@ -166,14 +166,18 @@ void SubForm2Bc::on_mui_list_pressedAsterisk(int row, int col) {
 \return
 **/
 void SubForm2Bc::on_mui_list_pressedSlash(int row, int col) {
-    _depura("SubForm2Bc::on_mui_list_pressedSlash", 0);
+    _depura("SubForm2Bc::on_mui_list_pressedSlash", 2);
     SDBCampo *camp = (SDBCampo *) item(row, col);
-    if (camp->nomcampo() == "fecha")
+    if (camp->nomcampo() == "fecha") {
+	if (row > 0) {
+		SDBCampo *campoant = (SDBCampo *) item(row - 1, col);
+		camp->set(campoant->text());
+	} // end if
         return;
+    } // end if
     QString text = editaTexto(camp->text());
-    camp->set
-    (text);
-    _depura("END SubForm2Bc::on_mui_list_pressedSlash", 0);
+    camp->set(text);
+    _depura("END SubForm2Bc::on_mui_list_pressedSlash", 2);
 }
 
 

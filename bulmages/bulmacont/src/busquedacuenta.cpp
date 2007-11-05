@@ -36,7 +36,7 @@ BusquedaCuenta::BusquedaCuenta(QWidget *parent)
     mdb_nomcuenta = "";
     mdb_codigocuenta = "";
     mdb_tipocuenta = "";
-//    connect(mui_codigocuenta, SIGNAL(editingFinished()), this, SLOT(s_lostFocus()));
+    connect(mui_codigocuenta, SIGNAL(editingFinished()), this, SLOT(s_lostFocus()));
     _depura("END BusquedaCuenta::BusquedaCuenta", 0);
 }
 
@@ -302,7 +302,7 @@ void BusquedaCuenta::s_codigocuentatextChanged(const QString &val) {
 /**
 **/
 void BusquedaCuenta::s_lostFocus() {
-    _depura("BusquedaCuenta::s_lostFocus", 10);
+    _depura("BusquedaCuenta::s_lostFocus", 0);
     mdb_codigocuenta=mui_codigocuenta->text();
     QString cad = mdb_codigocuenta;
     if (cad != "") {

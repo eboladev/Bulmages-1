@@ -102,17 +102,17 @@ void aplinteligentesview::inicializa(int idasiento) {
 
     QFileInfoList list = dir.entryInfoList();
 
-    if(list.size() > 0) {
+    if (list.size() > 0) {
         /// Cargamos el combo con los ficheros de asientos inteligentes disponibles
         QStringList listaOrdenada;
-        while(!list.isEmpty()) {
+        while (!list.isEmpty()) {
             QFileInfo fileInfo = list.takeFirst();
             listaOrdenada.append(fileInfo.fileName().replace(".xml","")); /// cogemos los nombres de los ficheros sin la extension
             listasientos.append(fileInfo.filePath()); /// y la ruta completa
         }
         listaOrdenada.sort(); /// se ordena la lista alfabeticamente
         listasientos.sort(); /// y la de la ruta, que se ordenara igual
-        while(!listaOrdenada.isEmpty())
+        while (!listaOrdenada.isEmpty())
             mui_comboainteligentes->addItem(listaOrdenada.takeFirst()); /// y se carga en el combo
 
         /// Calculamos el n&uacute;mero de d&iacute;gitos que tiene una cuenta.
@@ -187,6 +187,28 @@ void aplinteligentesview::cifcuenta(int idcuenta) {
 ///
 /**
 **/
+void aplinteligentesview::eturn_cta() {
+    _depura("aplinteligentesview::eturn_cta", 0);
+    BusquedaCuenta *numero;
+    numero = (BusquedaCuenta *) sender();
+    selectsiguiente(numero);
+    _depura("END aplinteligentesview::eturn_cta", 0);
+}
+
+///
+/**
+**/
+void aplinteligentesview::eturn_fecha() {
+    _depura("aplinteligentesview::eturn_fecha", 0);
+    BusquedaFecha *numero;
+    numero = (BusquedaFecha *) sender();
+    selectsiguiente(numero);
+    _depura("END aplinteligentesview::eturn_fecha", 0);
+}
+
+///
+/**
+**/
 void aplinteligentesview::eturn_numero() {
     _depura("aplinteligentesview::eturn_numero", 0);
     QLineEdit *numero;
@@ -229,7 +251,7 @@ void aplinteligentesview::muestraplantilla(QString plantilla) {
     _depura("aplinteligentesview::muestraplantilla", 0);
     int i = mui_comboainteligentes->findText(plantilla);
     if (i >= 0)
-	mui_comboainteligentes->setCurrentIndex(i);
+        mui_comboainteligentes->setCurrentIndex(i);
     mostrarplantilla();
     _depura("aplinteligentesview::muestraplantilla", 0);
 }
@@ -266,6 +288,14 @@ void aplinteligentesview::on_mui_aceptar_clicked() {
     /// el control a la aplicaci&oacute;n principal.
     if (modo == 1) {
         close();
+    } else {
+        /// Reseteamos los valores de numeros y texto para que no haya dobles inserciones.
+        for (int i = 0; i < indvariablesnumero; i++) {
+            varnumero[i]->setText("");
+        } // end for
+        for (int i = 0; i < indvariablestexto; i++) {
+            vartexto[i]->setText("");
+        } // end for
     } // end if
     _depura("END aplinteligentesview::on_mui_aceptar_clicked", 0);
 }
@@ -288,7 +318,7 @@ void aplinteligentesview::mostrarplantilla() {
     numainteligente = idainteligente;
     /// Vamos a intentar borrar todos los datos antes de empezar.
     borrawidgets();
-    if(mui_comboainteligentes->currentIndex() != -1) {
+    if (mui_comboainteligentes->currentIndex() != -1) {
         QFile f(listasientos.at(mui_comboainteligentes->currentIndex()));
         if (!f.open(QIODevice::ReadOnly))
             return;
@@ -383,7 +413,7 @@ void aplinteligentesview::mostrarplantilla() {
             varcta[i] = new BusquedaCuenta(mui_datosAsiento);
             varcta[i]->setGeometry(QRect(150, inc + 32 * (j++), 300, 25));
             varcta[i]->setEmpresaBase(empresaBase());
-            connect(varcta[i], SIGNAL(returnPressed()), this, SLOT(return_cta()));
+            connect(varcta[i], SIGNAL(returnPressed()), this, SLOT(eturn_cta()));
             connect(varcta[i], SIGNAL(textChanged(const QString &)), this, SLOT(codigo_textChanged(const QString &)));
             varcta[i]->show();
         } // end for
@@ -397,7 +427,7 @@ void aplinteligentesview::mostrarplantilla() {
             varfecha[i] = new BusquedaFecha(mui_datosAsiento);
             varfecha[i]->setGeometry(QRect(150, inc + 32 * (j++), 150, 25));
 
-            connect(varfecha[i], SIGNAL(returnPressed()), this, SLOT(return_fecha()));
+            connect(varfecha[i], SIGNAL(returnPressed()), this, SLOT(eturn_fecha()));
             connect(varfecha[i], SIGNAL(textChanged(const QString &)), this, SLOT(fecha_textChanged(const QString &)));
             varfecha[i]->show();
         } // end for
@@ -502,12 +532,14 @@ void aplinteligentesview::creaasiento() {
     int idcuenta = 0;
     QString idcontrapartida;
     QString query;
-    cursor2 *cur1;
+    cursor2 *cur1 = NULL;
     try {
+        empresaBase()->begin();
         /// Calculamos a partir de que orden debemos empezar.
         int orden = 0;
         query = "SELECT max(orden) AS ordmax FROM borrador WHERE idasiento = " + QString::number(numasiento);
         cur1 = empresaBase()->cargacursor(query);
+	if (!cur1) throw -1;
         if (!cur1->eof()) {
             orden = cur1->valor("ordmax").toInt() + 1;
         } // end if
@@ -518,13 +550,16 @@ void aplinteligentesview::creaasiento() {
             codcuenta = aplicavariable(item.firstChildElement("codcuenta").text());
             query.sprintf("SELECT * FROM cuenta where codigo = '%s'", codcuenta.toAscii().constData());
             cur1 = empresaBase()->cargacursor(query, "buscacodigo");
+            if (!cur1) throw -1;
             if (!cur1->eof()) {
                 idcuenta = atoi(cur1->valor("idcuenta").toAscii().constData());
             } // end if
             delete cur1;
+
             contrapartida = aplicavariable(item.firstChildElement("contrapartida").text());
             query.sprintf("SELECT * FROM cuenta where codigo = '%s'", contrapartida.toAscii().constData());
             cur1 = empresaBase()->cargacursor(query, "buscacodigo");
+            if (!cur1) throw -1;
             if (!cur1->eof()) {
                 idcontrapartida = cur1->valor("idcuenta");
             } else {
@@ -537,12 +572,12 @@ void aplinteligentesview::creaasiento() {
             conceptocontable = aplicavariable(item.firstChildElement("conceptocontable").text());
             descripcion = aplicavariable(item.firstChildElement("descripcion").text());
             query.sprintf("INSERT INTO borrador (idasiento, idcuenta, contrapartida, debe, haber, fecha, conceptocontable, descripcion, orden) VALUES (%d, %d, %s, %s, %s, '%s', '%s', '%s', %d)", numasiento, idcuenta, idcontrapartida.toAscii().constData(), debe.toAscii().constData(), haber.toAscii().constData(), fecha.toAscii().constData(), conceptocontable.toAscii().constData(), descripcion.toAscii().constData(), orden++);
-            empresaBase()->begin();
             empresaBase()->ejecuta(query);
             empresaBase()->commit();
         } // end for
     } catch (...) {
         mensajeInfo(tr("Error al crear el asiento"));
+	empresaBase()->rollback();
         return;
     } // end try
     _depura("END aplinteligentesview::creaasiento", 0);
@@ -578,8 +613,7 @@ void aplinteligentesview::recogevariables(QString texto, int tipo) {
                 /// estorbe.
                 nomvar.replace(nomvar.length() - 1, nomvar.length(), "$");
             } else {
-                nomvar = subcadena;
-                descvar = "";
+                return;
             } // end if
             /// Buscamos si es una variable predefinida, y en caso de serlo obviamos una
             /// inserci&oacute;n de esta.
