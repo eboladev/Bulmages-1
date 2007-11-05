@@ -36,8 +36,7 @@ public:
     QString mdb_idinventario;
     ListControlStockView(QWidget *parent = 0, const char *name = 0);
     ~ListControlStockView();
-    int borrar();
-public slots:
+    virtual int borrar();
     virtual void cargar(QString);
     virtual int guardar();
     virtual void pregenerar();

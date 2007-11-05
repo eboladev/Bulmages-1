@@ -28,28 +28,6 @@
 #include "inventarioview.h"
 
 
-#define COL_IDINVENTARIO 0
-#define COL_NOMINVENTARIO 1
-#define COL_FECHAINVENTARIO 2
-
-
-// ==============================================
-//             InventariosView
-// ==============================================
-
-
-///
-/**
-\param comp
-**/
-void InventariosView::setcompany(Company *comp) {
-    _depura("InventariosView::setcompany", 0);
-    companyact = comp;
-    mui_listado->setEmpresaBase(comp);
-    _depura("END InventariosView::setcompany", 0);
-}
-
-
 ///
 /**
 **/
@@ -66,10 +44,10 @@ void InventariosView::on_mui_listado_itemDoubleClicked(QTableWidgetItem *) {
 **/
 void InventariosView::on_mui_crear_clicked() {
             _depura("InventariosView::on_mui_crear_clicked", 0);
-            InventarioView *bud = new InventarioView(companyact, 0);
+            InventarioView *bud = new InventarioView((Company *) empresaBase(), 0);
             if (bud->cargar("0"))
                 return;
-            companyact->m_pWorkspace->addWindow(bud);
+            empresaBase()->m_pWorkspace->addWindow(bud);
             bud->show();
             bud->mui_nominventario->setFocus();
             _depura("END InventariosView::on_mui_crear_clicked", 0);
@@ -88,33 +66,31 @@ void InventariosView::on_mui_listado_itemDoubleClicked() {
 
 ///
 /**
-\param parent
-\param flag
 **/
-InventariosView::InventariosView(QWidget *parent, Qt::WFlags flag)
-        : Ficha(parent, flag) {
-    _depura("InventariosView::InventariosView", 0);
-    setupUi(this);
-    companyact = NULL;
-    meteWindow(windowTitle(), this);
-    _depura("END InventariosView::InventariosView", 0);
+void InventariosView::presentar() {
+    _depura("InventariosView::presentar", 0);
+    mui_listado->cargar();
+    _depura("END InventariosView::presentar", 0);
 }
-
 
 ///
 /**
 \param comp
 \param parent
 **/
-InventariosView::InventariosView(Company *comp, QWidget *parent)
-        : Ficha(parent) {
+InventariosView::InventariosView(Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmode)
+        : Listado(comp, parent, flag, editmode) {
     _depura("InventariosView::InventariosView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
-    companyact = comp;
     mui_listado->setEmpresaBase(comp);
     mui_listado->cargar();
-    meteWindow(windowTitle(), this);
+    /// Si estamos en el modo edici&oacute;n metemos la ventana en el workSpace.
+    if (modoEdicion()) {
+        empresaBase()->meteWindow(windowTitle(), this);
+    } else {
+        setWindowTitle(tr("Selector de Inventarios"));
+    } // end if
     _depura("END InventariosView::InventariosView", 0);
 }
 
@@ -139,12 +115,12 @@ void InventariosView::on_mui_editar_clicked() {
         mensajeInfo(tr("Tiene que seleccionar un inventario"));
         return;
     } else {
-        QString idinventario = mui_listado->item(a, COL_IDINVENTARIO)->text();
+        QString idinventario = mui_listado->DBvalue("idinventario");
         if (idinventario != "") {
-            InventarioView *bud = new InventarioView(companyact, 0);
+            InventarioView *bud = new InventarioView((Company *) empresaBase(), 0);
             if (bud->cargar(idinventario))
                 return;
-            companyact->m_pWorkspace->addWindow(bud);
+            empresaBase()->m_pWorkspace->addWindow(bud);
             bud->show();
             bud->mui_nominventario->setFocus();
         } // end if
@@ -164,10 +140,10 @@ void InventariosView::on_mui_borrar2_clicked() {
         mensajeInfo(tr("Tiene que seleccionar un inventario"));
         return;
     } else {
-        QString idinventario = mui_listado->item(a, COL_IDINVENTARIO)->text();
+        QString idinventario = mui_listado->DBvalue("idinventario");
         if (idinventario != "") {
-            InventarioView *inv = new InventarioView(companyact, 0);
-            companyact->m_pWorkspace->addWindow(inv);
+            InventarioView *inv = new InventarioView((Company *) empresaBase(), 0);
+            empresaBase()->m_pWorkspace->addWindow(inv);
             inv->cargar(idinventario);
             /// Hacemos el borrado sin mostrar pantalla ni nada.
             inv->on_mui_borrar_clicked();
@@ -222,7 +198,7 @@ void InventariosView::on_mui_imprimir_clicked() {
 	txt += "<tr>\n\t<td></td>\n";
 	
 	QString query = "SELECT * FROM articulo ";
-	cursor2 *almacenes = companyact->cargacursor("SELECT * FROM almacen");
+	cursor2 *almacenes = empresaBase()->cargacursor("SELECT * FROM almacen");
 	while (!almacenes->eof()) {
 		QString idalmacen = almacenes->valor("idalmacen");
 		query += " LEFT JOIN ( SELECT stock AS stock"+idalmacen+", idarticulo FROM stock_almacen WHERE idalmacen="+almacenes->valor("idalmacen")+") AS t" + idalmacen +" ON " + " t"+idalmacen+".idarticulo = articulo.idarticulo";
@@ -234,7 +210,7 @@ void InventariosView::on_mui_imprimir_clicked() {
 	query += " WHERE articulo.stockarticulo <> 0";
 
 
-	cursor2 *cstock = companyact->cargacursor(query);
+	cursor2 *cstock = empresaBase()->cargacursor(query);
 	while (!cstock->eof()) {
 		txt += "<tr>\n";
 		txt += "\t<td>" + cstock->valor("nomarticulo")+"</td>\n";
@@ -293,6 +269,8 @@ InventariosSubForm::InventariosSubForm(QWidget *parent) : SubForm2Bf(parent) {
     addSHeader("nominventario", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre del inventario"));
     addSHeader("fechainventario", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Fecha del inventario"));
     setinsercion(FALSE);
+    setDelete(FALSE);
+    setSortingEnabled(TRUE);
     _depura("END InventariosSubForm::InventariosSubForm", 0);
 }
 
