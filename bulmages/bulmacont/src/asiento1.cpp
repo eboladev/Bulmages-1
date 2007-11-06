@@ -342,17 +342,19 @@ int Asiento1::guardar() {
         DBsave(id);
         setidasiento(id);
         listalineas->guardar();
-        empresaBase()->commit();
+
         /// Disparamos los plugins
         int res = g_plugins->lanza("Asiento1_guardaAsiento1_post", this);
         if (res != 0)
             return 0;
 
+        empresaBase()->commit();
+
         if (estadoAsiento1() == ASCerrado)
             empresaBase()->cierraasiento(id.toInt());
 	cargar(id);
         g_main->statusBar()->showMessage(tr("El asiento se ha guardado correctamente."), 2000);
-        _depura("END Asiento1::guardar",0);
+        _depura("END Asiento1::guardar", 0);
         return 0;
     } catch (...) {
         _depura("Error guardando, se cancela la operacion", 1);

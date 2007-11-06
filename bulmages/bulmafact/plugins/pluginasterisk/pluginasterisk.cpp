@@ -172,11 +172,11 @@ int TrabajadorView_on_mui_guardar_clicked(TrabajadorView *trab) {
     query += " WHERE idtrabajador=" + trab->empresaBase()->sanearCadena(trab->idtrabajador());
     trab->empresaBase()->begin();
     trab->empresaBase()->ejecuta(query);
-    trab->empresaBase()->commit();
 
     SubForm2Bf *l1 = trab->findChild<SubForm2Bf *>("m_validacionestrab");
     l1->setColumnValue("idtrabajador", trab->idtrabajador());
     l1->guardar();
+    trab->empresaBase()->commit();
     return 0;
 }
 
