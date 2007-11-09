@@ -18,7 +18,8 @@ INCLUDEPATH += ../../bulmalib/src \
 
 LIBPATH += ../../installbulmages
 
-CONFIG += release warn_on assistant debug
+# CONFIG += release warn_on assistant debug
+CONFIG += release warn_on assistant
 
 LIBS += -rdynamic \
 	-lbulmalib

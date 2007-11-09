@@ -87,3 +87,111 @@ int entryPoint(Bulmafact *bges) {
     return 0;
 }
 
+
+///
+/**
+\param art
+\return
+**/
+int ArticuloView_ArticuloView(ArticuloView *art) {
+    _depura("ArticuloView_ArticuloView", 0);
+    SubForm2Bf *l = new SubForm2Bf(art);
+    l->setEmpresaBase(art->empresaBase());
+    l->setObjectName(QString::fromUtf8("m_lmin"));
+    art->mui_tab->addTab(l, "Minimos Almacen");
+
+    l->setDBTableName("minimsalmacen");
+    l->setDBCampoId("idminimsalmacen");
+    l->addSHeader("nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , QApplication::translate("TrabajadorView", "Almacén"));
+    l->addSHeader("idalmacen", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoWrite , QApplication::translate("TrabajadorView", "Id Almacen"));
+    l->addSHeader("valminimsalmacen", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, QApplication::translate("TrabajadorView", "Minimo"));
+    l->addSHeader("idminimsalmacen", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate("TrabajadorView", "ID Validacion"));
+    l->addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate("TrabajadorView", "ID Trabajador"));
+    l->setinsercion(TRUE);
+    l->setDelete(TRUE);
+    l->setSortingEnabled(FALSE);
+    art->dialogChanges_setQObjectExcluido(l->mui_list);
+
+    _depura("END ArticuloView_ArticuloView", 0);
+    return 0;
+}
+
+
+///
+/**
+\param fich
+\return
+**/
+int Ficha_cargar(Ficha *fich) {
+    SubForm3 *form = fich->findChild<SubForm3 *>("m_lmin");
+    if (form)
+        form->cargar("SELECT * FROM minimsalmacen NATURAL LEFT JOIN almacen WHERE idarticulo = " + fich->DBvalue("idarticulo"));
+    return 0;
+}
+
+
+
+int Ficha_guardar_Post(Ficha *fich) {
+    SubForm3 *form = fich->findChild<SubForm3 *>("m_lmin");
+    if (form) {
+        form->setColumnValue("idarticulo", fich->DBvalue("idarticulo"));
+        form->guardar();
+    } // end if
+    return 0;
+}
+
+
+int SubForm2Bf_on_mui_list_editFinished(SubForm2Bf *subform) {
+    _depura("SubForm2Bf_on_mui_list_editFinished", 0);
+
+    if (subform->currentColumn() < 1 ) {
+        return 0;
+    } // end if
+
+    SDBCampo *camp = (SDBCampo *) subform->item(subform->currentRow(), subform->currentColumn()-1);
+    camp->refresh();
+
+    if (camp->nomcampo() == "cant"+subform->tableName()) {
+        SDBRecord *rec = subform->lineaat(subform->currentRow());
+        QObject *wid = subform->parent();
+        while (wid
+                && (wid->objectName() != "PresupuestoClienteBase")
+                && (wid->objectName() != "PedidoClienteBase")
+                && (wid->objectName() != "AlbaranClienteBase")
+              ) {
+            wid = wid->parent();
+        } // end if
+
+        if (!wid) return 0;
+
+        Ficha *fich = (Ficha *) wid;
+        QString idalmacen = fich->DBvalue("idalmacen");
+	if (idalmacen == "") return 0;
+
+	if (rec->DBvalue("idarticulo") == "") return 0;
+
+        QString query1 = "SELECT * FROM stock_almacen where idarticulo=" +rec->DBvalue("idarticulo") + " AND idalmacen = " +idalmacen;
+	cursor2 *cur1 = subform->empresaBase()->cargacursor(query1);
+	Fixed stock("0");
+	if (!cur1) return 0;
+	if (!cur1->eof()) {
+		stock = Fixed(cur1->valor("stock"));
+	} // end if
+	delete cur1;
+
+
+
+        QString query = "SELECT * FROM minimsalmacen where idarticulo=" +rec->DBvalue("idarticulo") + " AND idalmacen = " +idalmacen;
+        cursor2 *cur = subform->empresaBase()->cargacursor(query);
+        if (!cur) return 0;
+        if (!cur->eof()) {
+	    Fixed val = Fixed(cur->valor("valminimsalmacen"));
+	    Fixed valb = Fixed(camp->valorcampo());
+	    if (stock - valb <= val)
+                mensajeAviso("Stock Minimo Superado");
+        } // end if
+        delete cur;
+    } // end if
+    return 0;
+}
+

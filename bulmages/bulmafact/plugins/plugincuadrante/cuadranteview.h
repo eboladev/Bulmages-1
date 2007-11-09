@@ -53,6 +53,8 @@ public slots:
     virtual void on_mui_editar_clicked();
     virtual void on_mui_calendario_customContextMenuRequested ( const QPoint & pos );
     virtual void on_mui_actualizar_clicked();
+    virtual void on_mui_limpiar_clicked();
+    virtual void on_mui_duplicar_clicked();
 };
 #endif
 

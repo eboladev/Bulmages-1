@@ -62,6 +62,27 @@ int ClientsList_ClientsList(ClientsList *l) {
 }
 
 
+///
+/**
+\param l
+\return
+**/
+int ArticuloList_ArticuloList(ArticuloList *l) {
+       _depura("ArticuloList_ArticuloList", 0);
+//================================
+       InformeArtQToolButton *mui_exporta_efactura2 = new InformeArtQToolButton( l,  l->mui_plugbotones);
 
+       QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *>("hboxLayout1");
+       if (!m_hboxLayout1) {
+                m_hboxLayout1 = new QHBoxLayout(l->mui_plugbotones);
+                m_hboxLayout1->setSpacing(5);
+                m_hboxLayout1->setMargin(5);
+                m_hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));
+       } // end if
+       m_hboxLayout1->addWidget(mui_exporta_efactura2);
+//================================
+       _depura("END ArticuloList_ArticuloList", 0);
+       return 0;
+}
 
 

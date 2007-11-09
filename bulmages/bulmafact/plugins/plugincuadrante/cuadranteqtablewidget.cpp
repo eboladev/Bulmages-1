@@ -22,12 +22,14 @@
 #include <QEvent>
 #include <QLineEdit>
 #include <QTextEdit>
+#include <QMenu>
 
 #include "cuadranteqtablewidget.h"
 #include "configuracion.h"
 #include "funcaux.h"
 #include "company.h"
 #include "cuadrante1view.h"
+#include "cuadranteview.h"
 
 /** Constructor de CuadranteQTableWidget clase derivada de QTableWidget con
 un eventHandler especifico
@@ -116,20 +118,77 @@ void CuadranteQTableWidget::on_contextMenuRequested ( int , int , const QPoint &
 **/
 CuadranteQTextDocument::CuadranteQTextDocument(Company *emp, QWidget *parent) :QLabel(parent), QTableWidgetItem(QTableWidgetItem::UserType),  PEmpresaBase(emp) {
     _depura("CuadranteQTextDocument::CuadranteQTextDocument", 0);
-//    setScaledContents(TRUE);
+    setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(this, SIGNAL(customContextMenuRequested ( const QPoint &  )), this, SLOT(on_customContextMenuRequested ( const QPoint &  )));
     _depura("END CuadranteQTextDocument::CuadranteQTextDocument", 0);
 }
 
+
+void CuadranteQTextDocument::on_customContextMenuRequested ( const QPoint & pos ) {
+    QMap<QAction *, QString> horarios;
+    QMenu menu(this);
+    QAction *at = menu.addAction("Vaciar Personal");
+    QAction *com = menu.addAction("Quitar Comentarios");
+    QAction *fest = menu.addAction("Festivo");
+    QAction *nofest = menu.addAction("No Festivo");
+    QMenu *menu1 = menu.addMenu("Eliminar Personal");
+    cursor2 *cur1 = empresaBase()->cargacursor("SELECT * FROM horario, trabajador, tipotrabajo WHERE horario.idtrabajador = trabajador.idtrabajador AND trabajador.idtipotrabajo = tipotrabajo.idtipotrabajo AND idcuadrante = "+mdb_idcuadrante +" ORDER BY nomtipotrabajo, nomtrabajador, horainhorario");
+    if (!cur1) throw -1;
+    while (!cur1->eof()) {
+        QAction *ac = menu1->addAction(cur1->valor("nomtrabajador") + "(" + cur1->valor("horainhorario") + ":" + cur1->valor("horafinhorario") + ")");
+        horarios[ac] = cur1->valor("idhorario");
+        cur1->siguienteregistro();
+    } // end while
+    delete cur1;
+
+    QAction *sel = menu.exec(mapToGlobal(pos), at);
+
+    /// Miramos y tratamos la opcion seleccionada.
+    if (sel == at) {
+        QString query = "DELETE FROM horario WHERE idcuadrante = " + mdb_idcuadrante;
+        empresaBase()->ejecuta(query);
+    } // end if
+
+    if (horarios.contains(sel)) {
+        QString query = "DELETE FROM horario WHERE idhorario = " + horarios[sel];
+        empresaBase()->ejecuta(query);
+    } // end if
+
+    if (sel == fest) {
+	QString query = "UPDATE cuadrante SET fiestacuadrante = TRUE WHERE idcuadrante = " + mdb_idcuadrante;
+	empresaBase()->ejecuta(query);
+    } // end if
+
+    if (sel == nofest) {
+	QString query = "UPDATE cuadrante SET fiestacuadrante = FALSE WHERE idcuadrante = " + mdb_idcuadrante;
+	empresaBase()->ejecuta(query);
+    } // end if
+
+
+    if (sel == com) {
+	QString query = "UPDATE cuadrante SET comentcuadrante = '' WHERE idcuadrante = " + mdb_idcuadrante;
+	empresaBase()->ejecuta(query);
+    } // end if
+
+
+    QObject *wid = parent();
+    while (wid
+            && (wid->objectName() != "CuadranteBase")
+          ) {
+        wid = wid->parent();
+    } // end if
+    if (wid)
+        ((CuadranteView *)wid)->on_mui_actualizar_clicked();
+    return;
+
+}
 
 ///
 /**
 \param e
 **/
 void CuadranteQTextDocument::contextMenuEvent ( QContextMenuEvent *  ) {
-//        int currow = tableWidget()->row(this);
-//	int currcol = tableWidget()->column(this);
     QTableWidgetItem::setSelected(TRUE);
-//	tableWidget()->setRangeSelected( QTableWidgetSelectionRange(currow, currcol, currow, currcol ), TRUE );
 }
 
 
@@ -416,7 +475,7 @@ void ImpCuadrante::generar() {
 
         QString oldnomtipotrabajo = "";
 
-        cur1 = empresaBase()->cargacursor("SELECT * FROM horario, trabajador, tipotrabajo WHERE horario.idtrabajador = trabajador.idtrabajador AND trabajador.idtipotrabajo = tipotrabajo.idtipotrabajo AND idcuadrante = "+mdb_idcuadrante +" ORDER BY nomtipotrabajo, horainhorario, nomtrabajador");
+        cur1 = empresaBase()->cargacursor("SELECT * FROM horario, trabajador, tipotrabajo WHERE horario.idtrabajador = trabajador.idtrabajador AND trabajador.idtipotrabajo = tipotrabajo.idtipotrabajo AND idcuadrante = "+mdb_idcuadrante +" ORDER BY nomtipotrabajo, nomtrabajador, horainhorario ");
         if (!cur1) throw -1;
         while (!cur1->eof()) {
 

@@ -37,24 +37,6 @@
     ya han sido inicializados o no.
     Inicializando la clase con este constructor precisa que sea establecido el company con setcompany.
 */
-/*
-MovimientosView::MovimientosView(QWidget *parent, edmode editmodo)
-        : FichaBf(NULL, parent, 0) {
-    _depura("MovimientosView::MovimientosView", 0);
-    setAttribute(Qt::WA_DeleteOnClose);
-    setupUi(this);
-    iniciaForm();
-    m_modo = editmodo;
-    mdb_idfactura = "";
-    if (m_modo == EditMode) {
-        meteWindow(windowTitle(), this);
-    } // end if
-    hideBusqueda();
-    _depura("END MovimientosView::MovimientosView", 0);
-}
-*/
-
-
 /** Inicializa todos los componentes y prepara la ventana para funcionar.
 */
 
@@ -71,6 +53,7 @@ MovimientosView::MovimientosView(Company *comp, QWidget *parent, edmode editmodo
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     iniciaForm();
+    setDBTableName("movimiento");
     m_cliente->setEmpresaBase(empresaBase());
     m_articulo->setEmpresaBase(empresaBase());
     mui_list->setEmpresaBase(empresaBase());
@@ -190,7 +173,7 @@ MovimientosSubform::MovimientosSubform(QWidget *parent, const char *) : SubForm2
     addSHeader("idlalbaran", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone, tr("Id Albaran Cliente"));
     addSHeader("idlalbaranp", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone, tr("Id Albaran Proveedor"));
 
-    setinsercion(TRUE);
+    setinsercion(FALSE);
     setDelete(FALSE);
     setSortingEnabled(FALSE);
     _depura("END MovimientosSubform::MovimientosSubform", 0);

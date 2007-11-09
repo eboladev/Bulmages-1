@@ -27,8 +27,13 @@
 #include "postgresiface2.h"
 #include "bulmafact.h"
 #include "blwidget.h"
+#include "articuloview.h"
 
 extern "C" MY_EXPORT int entryPoint(Bulmafact *);
+extern "C" MY_EXPORT int ArticuloView_ArticuloView(ArticuloView *);
+extern "C" MY_EXPORT int Ficha_cargar(Ficha *);
+extern "C" MY_EXPORT int Ficha_guardar_Post(Ficha *);
+extern "C" MY_EXPORT int SubForm2Bf_on_mui_list_editFinished(SubForm2Bf *);
 
 class myplugininv : public QObject, PEmpresaBase {
     Q_OBJECT

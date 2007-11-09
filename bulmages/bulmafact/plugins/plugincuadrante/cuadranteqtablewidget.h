@@ -57,6 +57,7 @@ public:
     void setText(QString);
 public slots:
     virtual void refresh();
+    void on_customContextMenuRequested ( const QPoint & pos );
 };
 
 

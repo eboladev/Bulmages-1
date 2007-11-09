@@ -72,43 +72,6 @@
          <number>5</number>
         </property>
         <item>
-         <widget class="QToolButton" name="mui_borrar" >
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Borrar factura</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Borrar factura</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_editDelete.png</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="shortcut" >
-           <string>Ctrl+D</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QToolButton" name="mui_imprimir" >
           <property name="minimumSize" >
            <size>
@@ -160,10 +123,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Filtrar facturas</string>
+           <string>Filtrar</string>
           </property>
           <property name="whatsThis" >
-           <string>Filtrar facturas</string>
+           <string>Filtrar</string>
           </property>
           <property name="text" >
            <string/>
@@ -484,11 +447,6 @@
  <layoutdefault spacing="3" margin="5" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaArticulo</class>
-   <extends>QWidget</extends>
-   <header>busquedaarticulo.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaFecha</class>
    <extends>QWidget</extends>
    <header>../../../bulmalib/src/busquedafecha.h</header>
@@ -502,6 +460,11 @@
    <class>MovimientosSubform</class>
    <extends>QTableWidget</extends>
    <header>movimientosview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaArticulo</class>
+   <extends>QWidget</extends>
+   <header>busquedaarticulo.h</header>
   </customwidget>
  </customwidgets>
  <resources>

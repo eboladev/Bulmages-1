@@ -59,7 +59,7 @@ CuadranteView::CuadranteView(Company *comp, QWidget *parent)
 
         mui_listtrabajadores->setDragEnabled(TRUE);
         mui_cuadrante->setAcceptDrops(TRUE);
-	mui_cuadrante->verticalHeader()->hide();
+//	mui_cuadrante->verticalHeader()->hide();
 
         inicializaTrabajadores();
         inicializaCuadrante(QDate::currentDate());
@@ -100,7 +100,7 @@ void CuadranteView::inicializaTrabajadores() {
             it->setTextColor(0, QColor("#FF0000"));
 
             /// Cargamos los trabajadores correspondientes a este tipo de trabajo.
-            cursor2 *curtrab = empresaBase()->cargacursor("SELECT * FROM trabajador WHERE idtipotrabajo = "+cur->valor("idtipotrabajo"));
+            cursor2 *curtrab = empresaBase()->cargacursor("SELECT * FROM trabajador WHERE idtipotrabajo = "+cur->valor("idtipotrabajo") + "ORDER BY nomtrabajador, apellidostrabajador");
             if (curtrab) {
                 while (!curtrab->eof()) {
                     QTreeWidgetItem *itt = new QTreeWidgetItem(it);
@@ -230,7 +230,7 @@ void CuadranteView::on_mui_calendario_customContextMenuRequested ( const QPoint 
     QAction *norm = popup->addAction(tr("Normal"));
     QAction *fiesta = popup->addAction(tr("Fiesta General"));
 
-    QAction *opcion = popup->exec(pos);
+    QAction *opcion = popup->exec(mapToGlobal(pos));
     if (opcion == norm) {
         empresaBase()->begin();
         empresaBase()->ejecuta("UPDATE CUADRANTE SET fiestacuadrante = FALSE WHERE fechacuadrante = '"+mui_calendario->selectedDate().toString("dd/MM/yyyy")+"'");
@@ -256,6 +256,74 @@ void CuadranteView::on_mui_actualizar_clicked() {
         inicializaTrabajadores();
         inicializaCuadrante(QDate::currentDate());
     _depura("CuadranteView::on_mui_actualizar_clicked", 0);
+}
+
+
+///
+/**
+**/
+void CuadranteView::on_mui_limpiar_clicked() {
+    _depura("CuadranteView::on_mui_limpiar_clicked", 0);
+    QDate date = mui_calendario->selectedDate().addDays(-mui_calendario->selectedDate().dayOfWeek() + 1);
+    QDate datefin = date.addDays(6);
+    QString query = "DELETE FROM horario WHERE idcuadrante IN (SELECT idcuadrante FROM cuadrante WHERE fechacuadrante >= '"+date.toString("dd/MM/yyyy")+"' AND fechacuadrante <='"+datefin.toString("dd/MM/yyyy")+"')";
+    empresaBase()->ejecuta(query);
+    query = "DELETE FROM cuadrante WHERE fechacuadrante >= '"+date.toString("dd/MM/yyyy")+"' AND fechacuadrante <='"+datefin.toString("dd/MM/yyyy")+"'";
+    empresaBase()->ejecuta(query);
+    on_mui_actualizar_clicked();
+    _depura("CuadranteView::on_mui_limpiar_clicked", 0);
+}
+
+
+
+///
+/**
+**/
+void CuadranteView::on_mui_duplicar_clicked() {
+    _depura("CuadranteView::on_mui_limpiar_clicked", 0);
+    for (QDate date = mui_calendario->selectedDate().addDays(-mui_calendario->selectedDate().dayOfWeek() + 1)
+    ; date <= mui_calendario->selectedDate().addDays(-mui_calendario->selectedDate().dayOfWeek() + 7)
+    ; date = date.addDays(1)) {
+        QDate fechaant = date.addDays(-7);
+	QString query = "SELECT * FROM cuadrante WHERE fechacuadrante = '"+fechaant.toString("dd/MM/yyyy")+"'";
+	_depura(query, 2);
+	cursor2 *cur = empresaBase()->cargacursor(query);
+	while (!cur->eof()) {
+		query = "UPDATE cuadrante SET ";
+		query += " comentcuadrante = '"+cur->valor("comentcuadrante")+"'";
+		query += ", aperturacuadrante = "+ ((cur->valor("aperturacuadrante")=="")?"NULL":cur->valor("aperturacuadrante"));
+		query += ", cierrecuadrante = " + ((cur->valor("cierrecuadrante")=="")?"NULL":cur->valor("cierrecuadrante"));
+		query += ", apertura1cuadrante = " + ((cur->valor("apertura1cuadrante")=="")?"NULL":cur->valor("apertura1cuadrante"));
+		query += ", cierre1cuadrante = " + ((cur->valor("cierre1cuadrante")=="")?"NULL":cur->valor("cierre1cuadrante"));
+		query += ", fiestacuadrante = '" + cur->valor("fiestacuadrante")+"'";
+		query += " WHERE fechacuadrante = '" + date.toString("dd/MM/yyyy") + "' AND idalmacen = " +cur->valor("idalmacen");
+		empresaBase()->ejecuta(query);
+
+		cursor2 *cur1 = empresaBase()->cargacursor("SELECT * FROM cuadrante WHERE fechacuadrante = '" + date.toString("dd/MM/yyyy") + "' AND idalmacen = " +cur->valor("idalmacen"));
+		QString idcuadrante = cur1->valor("idcuadrante");
+		delete cur1;
+
+		cursor2 *cur2 = empresaBase()->cargacursor("SELECT * FROM horario WHERE idcuadrante=" + cur->valor("idcuadrante"));
+		while (!cur2->eof()) {
+			query = "INSERT INTO horario (idtrabajador, idcuadrante, horainhorario, horafinhorario) VALUES (";
+			query+= cur2->valor("idtrabajador");
+			query+= "," + idcuadrante;
+			query+= ",'" + cur2->valor("horainhorario") + "'";
+			query+= ",'" +cur2->valor("horafinhorario") +"'";
+			query+= ")";
+			empresaBase()->ejecuta(query);
+			cur2->siguienteregistro();
+		} // end while
+		delete cur2;
+
+		cur->siguienteregistro();
+	} // end while
+	delete cur;
+
+
+    } // end for
+    on_mui_actualizar_clicked();
+    _depura("CuadranteView::on_mui_limpiar_clicked", 0);
 }
 
 
@@ -317,34 +385,25 @@ void CuadranteView::on_mui_imprimir_clicked() {
     /// Buscamos el Lunes de la Semana
 //    QDate date = mui_calendario->selectedDate().addDays(-mui_calendario->selectedDate().dayOfWeek() + 1);
 
-
     cursor2 *cur = empresaBase()->cargacursor("SELECT idalmacen FROM almacen");
     if (!cur) throw -1;
 
     mui_cuadrante->setRowCount(cur->numregistros());
     mui_cuadrante->setColumnCount(7);
 
-
     int row = 0;
     while (!cur->eof()) {
 	fitxersortidatxt += "<tr>\n";
         for (int column = 0; column < 7; column ++) {
-
             CuadranteQTextDocument *newItem = (CuadranteQTextDocument *) mui_cuadrante->cellWidget(row, column);
 	    fitxersortidatxt += newItem->impresion();
-
         } // end for
         cur->siguienteregistro();
         row++;
 	fitxersortidatxt += "</tr>\n";
     } // end while
 
-
-
     fitxersortidatxt += "</blockTable>\n";
-
-
-
 
     buff.replace("[story]", fitxersortidatxt);
 

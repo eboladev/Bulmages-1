@@ -51,4 +51,22 @@ public slots:
 
 };
 
+
+class InformeArtQToolButton : public QToolButton, PEmpresaBase {
+	Q_OBJECT
+
+private:
+	ArticuloList *m_articuloList;
+
+public:
+	InformeArtQToolButton(ArticuloList * , QWidget *parent = NULL);
+	~InformeArtQToolButton();
+	void setBoton();
+	QString generarArticulos();
+
+public slots:
+	virtual void click();
+
+};
+
 #endif

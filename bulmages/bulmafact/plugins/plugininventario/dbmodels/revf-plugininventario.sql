@@ -91,6 +91,18 @@ BEGIN
 		PRIMARY KEY (idarticulo, idalmacen)
 		);
 	END IF;
+
+	SELECT INTO as * FROM pg_tables WHERE tablename=''minimsalmacen'';
+	IF NOT FOUND THEN
+		CREATE TABLE minimsalmacen (
+		idminimsalmacen SERIAL PRIMARY KEY,
+		idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
+		idarticulo integer NOT NULL REFERENCES articulo(idarticulo),
+		valminimsalmacen numeric(12,2) NOT NULL
+		);
+		
+	END IF;
+
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;
@@ -448,16 +460,16 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre=''DBRev-Inventario'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.9.1-0001'' WHERE nombre=''DBRev-Inventario'';
+		UPDATE CONFIGURACION SET valor=''0.10.1-0001'' WHERE nombre=''DBRev-Inventario'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DBRev-Inventario'', ''0.9.1-0001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DBRev-Inventario'', ''0.10.1-0001'');
 	END IF;
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;
 SELECT actualizarevision();
 DROP FUNCTION actualizarevision() CASCADE;
-\echo "Actualizada la revision de la base de datos a la version 0.9.1"
+\echo "Actualizada la revision de la base de datos a la version 0.10.1"
 
 
 DROP FUNCTION drop_if_exists_table(text) CASCADE;
