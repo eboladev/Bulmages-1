@@ -254,6 +254,8 @@ QString configuracion::nombre(int i) {
         return "CONF_SPLASH_BULMACONT";
     if (i == CONF_SPLASH_BULMAFACT)
         return "CONF_SPLASH_BULMAFACT";
+    if (i == CONF_SPLASH_BULMATPV)
+        return "CONF_SPLASH_BULMATPV";
     if (i == CONF_BACKGROUND)
         return "CONF_BACKGROUND";
     if (i == CONF_EJECUTABLES)
@@ -278,6 +280,8 @@ QString configuracion::nombre(int i) {
         return "CONF_PLUGINS_BULMAFACT";
     if (i == CONF_PLUGINS_BULMAGES)
         return "CONF_PLUGINS_BULMAGES";
+    if (i == CONF_PLUGINS_BULMATPV)
+        return "CONF_PLUGINS_BULMATPV";
     if (i == CONF_DIR_IMG_ARTICLES)
         return "CONF_DIR_IMG_ARTICLES";
     if (i == CONF_DIR_IMG_PERSONAL)

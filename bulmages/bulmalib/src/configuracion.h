@@ -124,6 +124,7 @@
 #define CONF_BACKGROUND              200
 /// Indica que imagen utilizar como splash de Bulmafact.
 #define CONF_SPLASH_BULMAFACT        196
+#define CONF_SPLASH_BULMATPV         171
 /// Esto indica donde se van a albergar los programas auxiliares a bulmages (cargaemp,
 /// creaemp, borraemp).
 #define CONF_EJECUTABLES             300
@@ -148,6 +149,7 @@
 #define CONF_PLUGINS_BULMACONT       312
 #define CONF_PLUGINS_BULMAFACT       313
 #define CONF_PLUGINS_BULMAGES        314
+#define CONF_PLUGINS_BULMATPV        315
 /// Indica donde estan los datos del programa. Por defecto /usr/share/bulmages.
 #define CONF_PROGDATA                320
 /// Determina el directorio donde se hayan ubicados los archivos de datos para OPENREPORTS.

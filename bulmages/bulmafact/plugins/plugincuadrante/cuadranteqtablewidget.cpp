@@ -155,30 +155,32 @@ void CuadranteQTextDocument::on_customContextMenuRequested ( const QPoint & pos 
     } // end if
 
     if (sel == fest) {
-	QString query = "UPDATE cuadrante SET fiestacuadrante = TRUE WHERE idcuadrante = " + mdb_idcuadrante;
-	empresaBase()->ejecuta(query);
+        QString query = "UPDATE cuadrante SET fiestacuadrante = TRUE WHERE idcuadrante = " + mdb_idcuadrante;
+        empresaBase()->ejecuta(query);
     } // end if
 
     if (sel == nofest) {
-	QString query = "UPDATE cuadrante SET fiestacuadrante = FALSE WHERE idcuadrante = " + mdb_idcuadrante;
-	empresaBase()->ejecuta(query);
+        QString query = "UPDATE cuadrante SET fiestacuadrante = FALSE WHERE idcuadrante = " + mdb_idcuadrante;
+        empresaBase()->ejecuta(query);
     } // end if
 
 
     if (sel == com) {
-	QString query = "UPDATE cuadrante SET comentcuadrante = '' WHERE idcuadrante = " + mdb_idcuadrante;
-	empresaBase()->ejecuta(query);
+        QString query = "UPDATE cuadrante SET comentcuadrante = '' WHERE idcuadrante = " + mdb_idcuadrante;
+        empresaBase()->ejecuta(query);
     } // end if
+    pintaCuadrante(mdb_idalmacen, mdb_fechacuadrante);
+    /*
 
-
-    QObject *wid = parent();
-    while (wid
-            && (wid->objectName() != "CuadranteBase")
-          ) {
-        wid = wid->parent();
-    } // end if
-    if (wid)
-        ((CuadranteView *)wid)->on_mui_actualizar_clicked();
+        QObject *wid = parent();
+        while (wid
+                && (wid->objectName() != "CuadranteBase")
+              ) {
+            wid = wid->parent();
+        } // end if
+        if (wid)
+            ((CuadranteView *)wid)->on_mui_actualizar_clicked();
+    */
     return;
 
 }
@@ -253,8 +255,9 @@ void CuadranteQTextDocument::addTrabajador(QString idtrabajador) {
     } catch (...) {
         empresaBase()->rollback();
         if (cur) delete cur;
-        mensajeInfo("Error al agregar el trabajador al cuadrantt");
+        mensajeInfo("Error al agregar el trabajador al cuadrante");
     } // end try
+    _depura("END CuadranteQTextDocument::addTrabajador", 0);
 }
 
 
@@ -278,16 +281,14 @@ void CuadranteQTextDocument::setAlmFecha(QString idalmacen, const QDate &date) {
             empresaBase()->commit();
         } // end if
         delete cur1;
-
         pintaCuadrante(idalmacen, date);
-
-
     } catch (...) {
         empresaBase()->rollback();
         mensajeInfo("Error en la carga");
         if (cur1) delete cur1;
         return;
     } // end try
+    _depura("END CuadranteQTextDocument::setAlmFecha", 0);
 }
 
 
@@ -307,8 +308,8 @@ void CuadranteQTextDocument::pintaCuadrante(QString idalmacen, const QDate &date
     imp->generar();
     QLabel::setText(imp->m_html);
     mdb_idcuadrante = imp->mdb_idcuadrante;
+    _depura("END CuadranteQTextDocument::pintaCuadrante", 0);
     return;
-
 }
 
 
@@ -339,8 +340,8 @@ QDate CuadranteQTextDocument::fechacuadrante() {
 \return
 **/
 QString CuadranteQTextDocument::idalmacen() {
-    _depura("CuadranteQTextDocument::idalmacen", 2);
-    _depura("END CuadranteQTextDocument::idalmacen", 2);
+    _depura("CuadranteQTextDocument::idalmacen", 0);
+    _depura("END CuadranteQTextDocument::idalmacen", 0);
     return mdb_idalmacen;
 }
 

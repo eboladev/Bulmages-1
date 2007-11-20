@@ -11,10 +11,10 @@ SUBDIRS += bulmalib
 SUBDIRS += bulmafact
 SUBDIRS += bulmacont
 SUBDIRS += bulmages
+SUBDIRS += bulmatpv
 
 exists(privateplugins) {
 SUBDIRS += privateplugins
 }
 
 
-#  SUBDIRS += bulmatpv
