@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2007 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *   http://www.iglues.org                                                 *
  *                                                                         *
@@ -19,47 +19,50 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef BULMATPV_H
-#define BULMATPV_H
+#ifndef TICKET_H
+#define TICKET_H
 
-#include <QMainWindow>
-#include <QWorkspace>
+#include <QWidget>
+#include <QCloseEvent>
+#include <QLabel>
 
-#include "qworkspace2.h"
-#include "ui_bulmatpvbase.h"
-#include "empresatpv.h"
-#include "listventanas.h"
 #include "funcaux.h"
-#include "splashscreen.h"
+#include "blwidget.h"
+#include "dbrecord.h"
+#include "fixed.h"
 
-
-/** Esta es la clase principal del programa ya que es la que deriva de QMainWindow.
-    Su funcionalidad es servir de base como aplicacion Qt y inicializar los componentes clave.
-    Tambien sirve de soporte al dise&ntilde;o especificado en bulmafactbase.ui con sus menus
-    y ToolBoxes.
-    Hace todo el traspaso de mensajes de los menus a company y captura algunos que no son
-    propiamente de la facturacion como pueda ser el FullScreen o el About.
-*/
-class BulmaTPV: public QMainWindow, public Ui_BulmaTPVBase {
+class Ticket :  public BLWidget, public DBRecord {
     Q_OBJECT
+private:
+    QList<DBRecord *> *m_listaLineas;
+    DBRecord *m_lineaActual;
 
 private:
-    /// El workSpace que se va a usar con la aplicacion.
-    QWorkspace2 *pWorkspace;
-    /// La clase corazon de la aplicacion y centralizadora de mensajes y componentes.
-    EmpresaTPV *m_empresaTPV;
+    DBRecord *agregarLinea();
+
+protected:
+    virtual void pintar();
 
 public:
-    BulmaTPV(QString bd);
-    ~BulmaTPV();
-    QWorkspace2 *workspace();
-    void createMainWindows(Splash *);
-    EmpresaTPV *empresaTPV() {return m_empresaTPV;};
+    Ticket(EmpresaBase *emp = NULL, QWidget *parent=0);
+    virtual ~Ticket();
 
-public slots:
-    virtual void closeEvent(QCloseEvent *);
-    virtual void s_ventanaCompleta();
-    virtual void s_About();
+    QList<DBRecord *> *listaLineas();
+    /// Inserta o agrega cantidad de articulos al ticket
+    /// El parametro nuevalinea indica que se inserte en nueva linea.
+    DBRecord * insertarArticulo(QString idArticulo, Fixed cantidad = Fixed("1"), int nuevaLinea = 0);
+    void borrarArticulo(DBRecord *linea, Fixed cantidad = Fixed("1"));
+    void vaciarTicket();
+    void subirPosArticulo(DBRecord *linea, int filas = 1);
+    void bajarPosArticulo(DBRecord *linea, int filas = 1);
+    void inicioPosTicket(DBRecord *);
+    void finPosTicket(DBRecord *);
+    DBRecord *lineaTicket(int posicion);
+    DBRecord *lineaActTicket();
+    void setLineaActual(DBRecord *);
+    void setDescuentoGlobal(Fixed descuento);
+    virtual void imprimir();
+
 
 };
 

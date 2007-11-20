@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2007 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *   http://www.iglues.org                                                 *
  *                                                                         *
@@ -19,47 +19,45 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef BULMATPV_H
-#define BULMATPV_H
+#ifndef MTICKET_H
+#define MTICKET_H
 
-#include <QMainWindow>
-#include <QWorkspace>
-
-#include "qworkspace2.h"
-#include "ui_bulmatpvbase.h"
+#include <QLabel>
+#include <QTableWidget>
+#include "ticket.h"
 #include "empresatpv.h"
-#include "listventanas.h"
-#include "funcaux.h"
-#include "splashscreen.h"
+#include "ui_mticketbase.h"
+#include "subform2bt.h"
 
 
-/** Esta es la clase principal del programa ya que es la que deriva de QMainWindow.
-    Su funcionalidad es servir de base como aplicacion Qt y inicializar los componentes clave.
-    Tambien sirve de soporte al dise&ntilde;o especificado en bulmafactbase.ui con sus menus
-    y ToolBoxes.
-    Hace todo el traspaso de mensajes de los menus a company y captura algunos que no son
-    propiamente de la facturacion como pueda ser el FullScreen o el About.
-*/
-class BulmaTPV: public QMainWindow, public Ui_BulmaTPVBase {
+class MTicket : public Ticket, public Ui_MTicketBase {
     Q_OBJECT
 
+public:
+    MTicket(EmpresaTPV *emp, QWidget *parent);
+    virtual ~MTicket();
+    virtual void pintar();
+public slots:
+    virtual void on_mui_subir_clicked();
+    virtual void on_mui_bajar_clicked();
+    virtual void on_mui_borrar_clicked();
+};
+
+
+
+class myplugin : public QObject {
+    Q_OBJECT
 private:
-    /// El workSpace que se va a usar con la aplicacion.
-    QWorkspace2 *pWorkspace;
-    /// La clase corazon de la aplicacion y centralizadora de mensajes y componentes.
-    EmpresaTPV *m_empresaTPV;
+    BulmaTPV *m_tpv;
+    SubForm2Bt *m_lan;
 
 public:
-    BulmaTPV(QString bd);
-    ~BulmaTPV();
-    QWorkspace2 *workspace();
-    void createMainWindows(Splash *);
-    EmpresaTPV *empresaTPV() {return m_empresaTPV;};
+    myplugin();
+    ~myplugin();
+    void inicializa(BulmaTPV *tpv);
 
 public slots:
-    virtual void closeEvent(QCloseEvent *);
-    virtual void s_ventanaCompleta();
-    virtual void s_About();
+    virtual void elslot(QTableWidgetItem *);
 
 };
 

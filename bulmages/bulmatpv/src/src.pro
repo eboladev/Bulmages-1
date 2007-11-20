@@ -5,19 +5,54 @@
 LANGUAGE = C++
 TARGET = ../../installbulmages/bulmatpv
 #CONFIG += qt debug
-CONFIG += release
+CONFIG += release warn_on assistant
 LIBS += -rdynamic
 TEMPLATE = app
-UI_DIR = .ui
-MOC_DIR = .moc
-OBJECTS_DIR = .obj
 
 QMAKE_LIBDIR += ../../installbulmages
 
+#Si existe distcc hacemos compilacion distribuida
+exists( /usr/bin/distcc ) {
+   QMAKE_CXX = distcc g++
+}
+# Lo mismo pero para SuSe (compilado distcc desde la fuente)
+exists( /usr/local/bin/distcc ) {
+   QMAKE_CXX = distcc g++
+}
+
+QMAKE_CFLAGS_WARN_OFF += strict_aliasing
+QMAKE_CXXFLAGS_WARN_OFF += strict_aliasing
+
 # Input
-HEADERS += bulmatpv.h filesave.xpm fileopen.xpm fileprint.xpm
-FORMS += bulmatpv.ui tpvdlg.ui
-SOURCES += bulmatpv.cpp main.cpp
+HEADERS += bulmatpv.h filesave.xpm fileopen.xpm fileprint.xpm \
+	   aboutview.h \
+	   empresatpv.h \
+	   ticket.h \
+	   subform2bt.h
+	   
+FORMS += bulmatpvbase.ui tpvdlg.ui \
+	aboutbase.ui
+	
+SOURCES += bulmatpv.cpp main.cpp \
+	aboutview.cpp \
+	empresatpv.cpp \
+	ticket.cpp \
+	subform2bt.cpp
+
+
+
+INCLUDEPATH += ../../bulmalib/src \
+../../bulmalib/src/.ui \
+../../bulmalib/src/.moc \
+/usr/include/qt4 \
+/usr/include/qt4/Qt \
+/usr/include/qt4/QtXml \
+/usr/include/qt4/QtGui \
+/usr/include/Qt \
+/usr/include/QtXml \
+/usr/lib/qt4/include/Qt \
+/usr/lib/qt4/include/QtXml \
+
 
 unix{
   TARGETDEPS += ../../installbulmages/libbulmalib.so

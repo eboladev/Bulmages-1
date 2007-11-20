@@ -19,48 +19,42 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef BULMATPV_H
-#define BULMATPV_H
+#ifndef EMPRESATPV_H
+#define EMPRESATPV_H
 
-#include <QMainWindow>
-#include <QWorkspace>
+#include <QObject>
+#include <QAssistantClient>
+#include <QLibraryInfo>
 
-#include "qworkspace2.h"
-#include "ui_bulmatpvbase.h"
-#include "empresatpv.h"
+#include "postgresiface2.h"
 #include "listventanas.h"
-#include "funcaux.h"
+#include "qworkspace2.h"
+#include "empresabase.h"
 #include "splashscreen.h"
+#include "ticket.h"
 
 
-/** Esta es la clase principal del programa ya que es la que deriva de QMainWindow.
-    Su funcionalidad es servir de base como aplicacion Qt y inicializar los componentes clave.
-    Tambien sirve de soporte al dise&ntilde;o especificado en bulmafactbase.ui con sus menus
-    y ToolBoxes.
-    Hace todo el traspaso de mensajes de los menus a company y captura algunos que no son
-    propiamente de la facturacion como pueda ser el FullScreen o el About.
-*/
-class BulmaTPV: public QMainWindow, public Ui_BulmaTPVBase {
-    Q_OBJECT
+class BulmaTPV;
 
+/// Clase company (empresa).
+/** Clase principal del programa donde se almacenan y gestionan
+    todos los datos de la empresa con la que se est&aacute; trabajando.
+    Deriva de postgresiface ya que tiene el tratamiento de la base de datos. */
+class EmpresaTPV : public EmpresaBase {
 private:
-    /// El workSpace que se va a usar con la aplicacion.
-    QWorkspace2 *pWorkspace;
-    /// La clase corazon de la aplicacion y centralizadora de mensajes y componentes.
-    EmpresaTPV *m_empresaTPV;
+    /// Puntero al mainWindow
+    BulmaTPV *m_bulmaTPV;
+    QList<Ticket *> m_listaTickets;
+    Ticket *m_ticketActual;
 
 public:
-    BulmaTPV(QString bd);
-    ~BulmaTPV();
-    QWorkspace2 *workspace();
+    EmpresaTPV(BulmaTPV *bges);
+    virtual ~EmpresaTPV();
     void createMainWindows(Splash *);
-    EmpresaTPV *empresaTPV() {return m_empresaTPV;};
-
-public slots:
-    virtual void closeEvent(QCloseEvent *);
-    virtual void s_ventanaCompleta();
-    virtual void s_About();
-
+    void guardaConf();
+    void cargaConf();
+    Ticket *newTicket();
+    Ticket *ticketActual() {return m_ticketActual;};
 };
 
 #endif
