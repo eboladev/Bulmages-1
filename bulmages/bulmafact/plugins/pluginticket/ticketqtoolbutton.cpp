@@ -222,7 +222,7 @@ void TicketQToolButton::click() {
 
         //==========================
 
-        QFile file( "/dev/usblp0" );
+        QFile file( confpr->valor(CONF_TICKET_PRINTER_FILE) );
         if ( !file.open(QIODevice::WriteOnly | QIODevice::Unbuffered)) {
             _depura("Error en la Impresion de ticket", 2);
         } // end if

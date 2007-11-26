@@ -1,7 +1,8 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org                                                 *
+ *   Copyright (C) 2006 by Fco. Javier M. C.                               *
+ *   fcojavmc@todo-redes.com                                               *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,45 +20,30 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef EMPRESATPV_H
-#define EMPRESATPV_H
 
-#include <QObject>
-#include <QAssistantClient>
-#include <QLibraryInfo>
-
-#include "postgresiface2.h"
-#include "listventanas.h"
-#include "qworkspace2.h"
-#include "empresabase.h"
-#include "splashscreen.h"
+#include "pluginartgraficos.h"
+#include "funcaux.h"
+#include "empresatpv.h"
+#include "artgraficos.h"
+#include "plugins.h"
 #include "ticket.h"
-#include "input.h"
 
 
-class BulmaTPV;
+ArtGraficos *g_graf;
+///
+/**
+\return
+**/
+int entryPoint(BulmaTPV *tpv) {
+    _depura("entryPoint", 0);
+    _depura("END entryPoint", 0);
+    return 0;
+}
 
-/// Clase company (empresa).
-/** Clase principal del programa donde se almacenan y gestionan
-    todos los datos de la empresa con la que se est&aacute; trabajando.
-    Deriva de postgresiface ya que tiene el tratamiento de la base de datos. */
-class EmpresaTPV : public EmpresaBase, public Input {
-private:
-    /// Puntero al mainWindow
-    BulmaTPV *m_bulmaTPV;
-    QList<Ticket *> m_listaTickets;
-    Ticket *m_ticketActual;
+int EmpresaTPV_createMainWindows_Post(EmpresaTPV *etpv) {
+	g_graf = new ArtGraficos(etpv, NULL);
+	etpv->pWorkspace()->addWindow(g_graf);
+	return 0;
+}
 
-public:
-    EmpresaTPV(BulmaTPV *bges);
-    virtual ~EmpresaTPV();
-    void createMainWindows(Splash *);
-    void guardaConf();
-    void cargaConf();
-    Ticket *newTicket();
-    Ticket *ticketActual() {return m_ticketActual;};
-
-};
-
-#endif
 

@@ -38,18 +38,9 @@
 **/
 int entryPoint(BulmaTPV *tpv) {
     _depura("entryPoint", 0);
-    /*
-        QLineEdit *lin = new QLineEdit(NULL);
-        tpv->workspace()->addWindow(lin);
-    */
-//    tpv->empresaTPV()->ticketActual()->setDBvalue("asdf", "asdf");
-
-
 
     myplugin *plug = new myplugin();
     plug->inicializa(tpv);
-
-
 
     _depura("END entryPoint", 0);
     return 0;

@@ -284,6 +284,8 @@ QString configuracion::nombre(int i) {
         return "CONF_PLUGINS_BULMATPV";
     if (i == CONF_DIR_IMG_ARTICLES)
         return "CONF_DIR_IMG_ARTICLES";
+    if (i == CONF_DIR_THUMB_ARTICLES)
+        return "CONF_DIR_THUMB_ARTICLES";
     if (i == CONF_DIR_IMG_PERSONAL)
         return "CONF_DIR_IMG_PERSONAL";
     if (i == CONF_FONTFAMILY_BULMAGES)
@@ -328,6 +330,8 @@ QString configuracion::nombre(int i) {
         return "CONF_BG_LISTARTICULOS";
     if (i == CONF_DIR_CANUALES)
         return "CONF_DIR_CANUALES";
+    if (i == CONF_TICKET_PRINTER_FILE)
+        return "CONF_TICKET_PRINTER_FILE";
     if (i == CONF_DEBUG)
         return "CONF_DEBUG";
     if (i == CONF_ALERTAS_DB)

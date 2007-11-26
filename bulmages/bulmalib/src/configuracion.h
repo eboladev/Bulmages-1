@@ -170,6 +170,11 @@
 #define CONF_DIR_IMG_ARTICLES        425
 #define CONF_DIR_IMG_PERSONAL        426
 #define CONF_DIR_CANUALES            427
+#define CONF_DIR_THUMB_ARTICLES      428
+
+/// Impresora de tickets
+#define CONF_TICKET_PRINTER_FILE     450
+
 /// CONF_NUM_AUT_* determina si se utilizaran numeradores automaticos para presupuestos,
 /// albaranes y facturas inicialmente vale "".
 #define CONF_NUM_AUT_PRESUP          500

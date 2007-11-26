@@ -24,11 +24,12 @@ QMAKE_CFLAGS_WARN_OFF += strict_aliasing
 QMAKE_CXXFLAGS_WARN_OFF += strict_aliasing
 
 # Input
-HEADERS += bulmatpv.h filesave.xpm fileopen.xpm fileprint.xpm \
+HEADERS += bulmatpv.h \
 	   aboutview.h \
 	   empresatpv.h \
 	   ticket.h \
-	   subform2bt.h
+	   subform2bt.h \
+	   input.h
 	   
 FORMS += bulmatpvbase.ui tpvdlg.ui \
 	aboutbase.ui
@@ -37,7 +38,8 @@ SOURCES += bulmatpv.cpp main.cpp \
 	aboutview.cpp \
 	empresatpv.cpp \
 	ticket.cpp \
-	subform2bt.cpp
+	subform2bt.cpp \
+	input.cpp
 
 
 

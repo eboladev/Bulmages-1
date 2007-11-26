@@ -36,9 +36,11 @@
 /**
 \param bges
 **/
-EmpresaTPV::EmpresaTPV(BulmaTPV *bges) : EmpresaBase() {
+EmpresaTPV::EmpresaTPV(BulmaTPV *bges) : EmpresaBase(), Input(this) {
     _depura("EmpresaTPV::EmpresaTPV", 0);
     m_bulmaTPV = bges;
+
+
 
     _depura("END EmpresaTPV::EmpresaTPV", 0);
 }
@@ -72,7 +74,6 @@ void EmpresaTPV::createMainWindows(Splash *splash) {
     _depura("EmpresaTPV::createMainWindows", 0);
     /// Establecemos el porcentaje del carga de informaci&oacute;n en las diferentes ventanas.
     /// pb = 0%
-    _depura("EmpresaTPV::createMainWindows inicializamos m_articleslist", 2);
     splash->mensaje(QApplication::translate("EmpresaTPV", "Inicializando listado de articulos"));
     splash->setBarraProgreso(30);
     m_progressbar->setValue(30);
@@ -82,14 +83,9 @@ void EmpresaTPV::createMainWindows(Splash *splash) {
     m_ticketActual = newTicket();
 
     if (!m_ticketActual) 
-	_depura("error en el sistema, reservando memoria.", 2);
+	_depura("error en el sistema, reservando memoria.", 0);
 
     m_listaTickets.append(m_ticketActual);
-
-    _depura("algo para recordar 2", 2);
-
-    m_ticketActual->setDBvalue("idticket", "23");
-    _depura("algo para recordar 3", 2);
 
     /// Disparamos los plugins.
     int res = g_plugins->lanza("EmpresaTPV_createMainWindows_Post", this);
@@ -251,4 +247,5 @@ Ticket *EmpresaTPV::newTicket() {
     _depura("END EmpresaTPV::newTicket", 0);
     return bud;
 }
+
 

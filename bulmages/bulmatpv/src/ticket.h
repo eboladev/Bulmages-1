@@ -50,7 +50,7 @@ public:
     QList<DBRecord *> *listaLineas();
     /// Inserta o agrega cantidad de articulos al ticket
     /// El parametro nuevalinea indica que se inserte en nueva linea.
-    DBRecord * insertarArticulo(QString idArticulo, Fixed cantidad = Fixed("1"), int nuevaLinea = 0);
+    DBRecord * insertarArticulo(QString idArticulo, Fixed cantidad = Fixed("1"), bool nuevaLinea = FALSE);
     void borrarArticulo(DBRecord *linea, Fixed cantidad = Fixed("1"));
     void vaciarTicket();
     void subirPosArticulo(DBRecord *linea, int filas = 1);
@@ -62,8 +62,14 @@ public:
     void setLineaActual(DBRecord *);
     void setDescuentoGlobal(Fixed descuento);
     virtual void imprimir();
-
-
+public slots:
+    virtual void subir();
+    virtual void bajar();
+    virtual void agregarCantidad(QString cantidad);
+    virtual void ponerCantidad(QString cantidad);
+    virtual void ponerPrecio(QString precio);
+    virtual void insertarArticuloCodigo(QString);
+    virtual void insertarArticuloCodigoNL(QString);
 };
 
 #endif

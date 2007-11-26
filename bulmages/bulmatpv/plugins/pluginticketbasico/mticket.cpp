@@ -22,6 +22,7 @@ MTicket::~MTicket() {
 
 void MTicket::pintar() {
     _depura("MTicket::pintar", 0);
+    Ticket::pintar();
 
     QString html = "<TABLE border=\"0\">";
     DBRecord *item;
@@ -30,9 +31,11 @@ void MTicket::pintar() {
         QString bgcolor="#FFFFFF";
         if (item == lineaActTicket()) bgcolor="#CCCCFF";
         html += "<TR>";
-        html += "<TD bgcolor=\"" + bgcolor +"\">" + item->DBvalue("nomarticulo") + "</TD>";
         html += "<TD bgcolor=\"" + bgcolor +"\" align=\"right\" width=\"50\">" + item->DBvalue("cantlticket") + "</TD>";
-        html += "<TD bgcolor=\"" + bgcolor +"\" align=\"right\" width=\"50\">" + item->DBvalue("pvplticket") + "</TD>";
+        html += "<TD bgcolor=\"" + bgcolor +"\">" + item->DBvalue("nomarticulo") + "</TD>";
+	Fixed totalLinea("0.00");
+	totalLinea = Fixed(item->DBvalue("cantlticket")) * Fixed(item->DBvalue("pvplticket"));
+        html += "<TD bgcolor=\"" + bgcolor +"\" align=\"right\" width=\"50\">" + totalLinea.toQString(); + "</TD>";
         html += "</TR>";
 
     }// end for
@@ -45,29 +48,25 @@ void MTicket::pintar() {
 
 
 void MTicket::on_mui_subir_clicked() {
+/// Simulamos la pulsacion de la techa arriba
+((EmpresaTPV *)empresaBase())->pulsaTecla(Qt::Key_Up);
 
-    int i = listaLineas()->indexOf(lineaActTicket());
-    if (i > 0) i--;
-    setLineaActual(listaLineas()->at(i));
-    pintar();
 }
 
 
 void MTicket::on_mui_bajar_clicked() {
-    int i = listaLineas()->indexOf(lineaActTicket());
-    if (i < listaLineas()->size() -1) i++;
-    setLineaActual(listaLineas()->at(i));
-    pintar();
+/// Simulamos la pulsacion de la techa arriba
+((EmpresaTPV *)empresaBase())->pulsaTecla(Qt::Key_Down);
 }
 
+
 void MTicket::on_mui_borrar_clicked() {
-    DBRecord *rec;
     listaLineas()->clear();
     setLineaActual(NULL);
     pintar();
 }
 
-/// ============================= MYPLUGIN =====================0
+/// ============================= MYPLUGIN =====================
 
 
 

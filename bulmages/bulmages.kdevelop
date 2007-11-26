@@ -78,7 +78,7 @@
       <envvars/>
     </run>
     <general>
-      <activedir>bulmatpv/plugins/pluginticketbasico</activedir>
+      <activedir>bulmatpv</activedir>
     </general>
     <make>
       <abortonerror>true</abortonerror>
