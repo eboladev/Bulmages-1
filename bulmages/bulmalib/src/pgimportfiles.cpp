@@ -458,7 +458,7 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
             if(!cod.isEmpty()) {
                 QString padre = searchParent(cod);
                 QString idgrupo = cod.left(1);
-                query = "INSERT INTO cuenta (imputacion, activo, tipocuenta, codigo, descripcion, cifent_cuenta, padre, idgrupo, nombreent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta) VALUES  (TRUE, TRUE, 1,'" + cod + "', '" + titulo + "', '" + nif + "', " + padre + ", " + idgrupo + ", 'importada de ContaPlus','" + domicilio + poblacion + provincia + codpostal + "','','','','','')";
+                query = "INSERT INTO cuenta (imputacion, activo, tipocuenta, codigo, descripcion, cifent_cuenta, padre, nombreent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta) VALUES  (TRUE, TRUE, 1,'" + cod + "', '" + titulo + "', '" + nif + "', " + padre + ", 'importada de ContaPlus','" + domicilio + poblacion + provincia + codpostal + "','','','','','')";
                 conexionbase->begin();
                 int error = conexionbase->ejecuta(query);
                 if (error) {
@@ -1267,7 +1267,6 @@ int pgimportfiles::bulmages2XML(QFile &xmlfile, unsigned long long int tipo) {
             stream << "\t<COMENT_CUENTA>" << XMLProtect(curcta->valor("coment_cuenta")) << "</COMENT_CUENTA>\n";
             stream << "\t<TELENT_CUENTA>" << XMLProtect(curcta->valor("telent_cuenta")) << "</TELENT_CUENTA>\n";
             stream << "\t<CPENT_CUENTA>" << XMLProtect(curcta->valor("cpent_cuenta")) << "</CPENT_CUENTA>\n";
-            stream << "\t<IDGRUPO>" << XMLProtect(curcta->valor("idgrupo")) << "</IDGRUPO>\n";
             stream << "\t<REGULARIZACION>" << XMLProtect(curcta->valor("regularizacion")) << "</REGULARIZACION>\n";
             stream << "\t<IMPUTACION>" << XMLProtect(curcta->valor("imputacion")) << "</IMPUTACION>\n";
             stream << "</CUENTA>\n";
@@ -1297,7 +1296,6 @@ int pgimportfiles::bulmages2XML(QFile &xmlfile, unsigned long long int tipo) {
             stream << "\t<COMENT_CUENTA>" << XMLProtect(curcta->valor("coment_cuenta")) << "</COMENT_CUENTA>\n";
             stream << "\t<TELENT_CUENTA>" << XMLProtect(curcta->valor("telent_cuenta")) << "</TELENT_CUENTA>\n";
             stream << "\t<CPENT_CUENTA>" << XMLProtect(curcta->valor("cpent_cuenta")) << "</CPENT_CUENTA>\n";
-            stream << "\t<IDGRUPO>" << XMLProtect(curcta->valor("idgrupo")) << "</IDGRUPO>\n";
             stream << "\t<REGULARIZACION>" << XMLProtect(curcta->valor("regularizacion")) << "</REGULARIZACION>\n";
             stream << "\t<IMPUTACION>" << XMLProtect(curcta->valor("imputacion")) << "</IMPUTACION>\n";
             stream << "</CUENTA>\n";
@@ -1479,7 +1477,7 @@ StructureParser::StructureParser(postgresiface2 *con, unsigned int tip) {
     conexionbase = con;
     m_tipo = tip;
     conexionbase->begin();
-    QString query = "INSERT INTO cuenta (codigo, descripcion, idgrupo) VALUES ('AUX', 'Una descripcion auxiliar de cuenta', 1)";
+    QString query = "INSERT INTO cuenta (codigo, descripcion) VALUES ('AUX', 'Una descripcion auxiliar de cuenta')";
     conexionbase->ejecuta(query);
     for (int i = 0; i <= 12; i++) {
         QString query2 = "INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2005, " + QString::number(i) + ", FALSE)";
@@ -1646,12 +1644,11 @@ bool StructureParser::endElement(const QString&, const QString&, const QString& 
         QString query = "SELECT * FROM cuenta WHERE codigo = '" + codigocuenta + "'";
         cursor2 *cur = conexionbase->cargacursor(query);
         if (cur->eof()) {
-            QString query = "INSERT INTO cuenta (tipocuenta, codigo, descripcion, padre, idgrupo, bloqueada, nodebe, nohaber) VALUES ("+
+            QString query = "INSERT INTO cuenta (tipocuenta, codigo, descripcion, padre, bloqueada, nodebe, nohaber) VALUES ("+
                             conexionbase->sanearCadena(m_tipoCuenta) + ",'" +
                             conexionbase->sanearCadena(codigocuenta) + "','" +
                             conexionbase->sanearCadena(descripcioncuenta) + "', " +
-                            vidcuenta + ", " +
-                            conexionbase->sanearCadena(idgrupo) + ", '" +
+                            vidcuenta + ", '" +
                             conexionbase->sanearCadena(m_bloqueadaCuenta) + "','" +
                             conexionbase->sanearCadena(m_nodebeCuenta) + "','" +
                             conexionbase->sanearCadena(m_nohaberCuenta) + "')";

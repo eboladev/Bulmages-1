@@ -23,6 +23,7 @@ public:
     virtual void keyReleaseEvent ( QKeyEvent * e );
     virtual void pulsaTecla(int tecla);
     QString valorInput() {return m_valorInput;};
+    void setValorInput(QString val) {m_valorInput = val;};
 
 signals:
     void sendTecla(int tecla);

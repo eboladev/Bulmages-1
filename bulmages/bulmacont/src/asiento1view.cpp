@@ -880,7 +880,7 @@ void Asiento1View::asiento_regularizacion(QString finicial, QString ffinal) {
         delete cur;
 
         /// Hacemos el calculo de saldos hasta la fecha.
-        query = "SELECT idcuenta, sum(debe) AS sumdebe, sum(haber) AS sumhaber, sum(debe)-sum(haber) AS saldito from apunte WHERE idcuenta IN (SELECT idcuenta FROM cuenta where idgrupo=6 OR idgrupo=7) AND fecha >= '"+finicial+"' AND fecha <= '"+ffinal+"' GROUP BY idcuenta ORDER BY saldito";
+        query = "SELECT codigo, idcuenta, sum(debe) AS sumdebe, sum(haber) AS sumhaber, sum(debe)-sum(haber) AS saldito from apunte WHERE idcuenta IN (SELECT idcuenta FROM cuenta where codigo LIKE '6%' OR codigo LIKE '7%') AND fecha >= '"+finicial+"' AND fecha <= '"+ffinal+"' GROUP BY idcuenta ORDER BY saldito";
         cur = empresaBase()->cargacursor(query);
         int orden=0;
         while (!cur->eof()) {
@@ -977,7 +977,7 @@ void Asiento1View::asiento_cierre(QString finicial, QString ffinal) {
         QString snuevodebe, snuevohaber;
         /// Si no hay asiento lo calculamos.
 
-        QString query ="SELECT idcuenta, sum(debe) AS sumdebe, sum(haber) AS sumhaber, sum(debe)-sum(haber) AS saldito FROM apunte WHERE idcuenta NOT IN (SELECT idcuenta FROM cuenta WHERE idgrupo=6 OR idgrupo=7)  AND fecha <= '"+ffinal+"' AND fecha >= '"+finicial+"' GROUP BY idcuenta ORDER BY saldito";
+        QString query ="SELECT codigo, idcuenta, sum(debe) AS sumdebe, sum(haber) AS sumhaber, sum(debe)-sum(haber) AS saldito FROM apunte WHERE idcuenta NOT IN (SELECT idcuenta FROM cuenta WHERE codigo LIKE '6%' OR codigo LIKE '7%')  AND fecha <= '"+ffinal+"' AND fecha >= '"+finicial+"' GROUP BY idcuenta ORDER BY saldito";
         empresaBase()->begin();
         cursor2 *cursor=empresaBase()->cargacursor(query, "cursor");
         empresaBase()->commit();

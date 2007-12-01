@@ -20,7 +20,7 @@ void Input::pulsaTecla(int tecla) {
 void Input::keyReleaseEvent ( QKeyEvent * e ) {
     switch (e->key()) {
     case Qt::Key_F1:
-        mensajeInfo("F1");
+        m_empresaTPV->cobrar();
         break;
     case Qt::Key_F2:
 	m_empresaTPV->ticketActual()->imprimir();
@@ -62,8 +62,6 @@ void Input::keyReleaseEvent ( QKeyEvent * e ) {
 
     /// Disparamos los plugins.
     int res = g_plugins->lanza("Input_keyReleaseEvent_Post", this);
-
-
 }
 
 

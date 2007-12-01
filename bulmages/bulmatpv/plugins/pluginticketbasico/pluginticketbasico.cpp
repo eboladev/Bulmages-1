@@ -30,7 +30,8 @@
 #include "mticket.h"
 
 
-
+QDockWidget *g_doc1;
+MTicket *g_bud;
 
 ///
 /**
@@ -42,16 +43,29 @@ int entryPoint(BulmaTPV *tpv) {
     myplugin *plug = new myplugin();
     plug->inicializa(tpv);
 
+
+
+    /// Vamos a probar con un docwindow.
+    g_doc1 = new QDockWidget("Total", tpv);
+    g_doc1->setFeatures(QDockWidget::AllDockWidgetFeatures);
+
+    g_doc1->setGeometry(100, 100, 100, 500);
+    g_doc1->resize(330, 400);
+    tpv->addDockWidget(Qt::RightDockWidgetArea, g_doc1);
+    g_doc1->show();
+
     _depura("END entryPoint", 0);
     return 0;
 }
 
-
-int EmpresaTPV_newTicket(EmpresaTPV *tpv, void* &bud) {
-    _depura("EmpresaTPV_newTicket", 0);
-    bud =  new MTicket(tpv, tpv->pWorkspace());
-    _depura("END EmpresaTPV_newTicket", 0);
-    return -1;
+int EmpresaTPV_createMainWindows_Post(EmpresaTPV *etpv) {
+    g_bud =  new MTicket(etpv, g_doc1);
+        g_doc1->setWidget((QWidget *)g_bud);
+	return 0;
 }
 
+int Ticket_pintar(Ticket *) {
+	g_bud->pintar();
+	return 0;
+}
 

@@ -5,7 +5,12 @@
 #include "bulmatpv.h"
 #include "subform2bt.h"
 
-MTicket::MTicket(EmpresaTPV *emp, QWidget *parent) : Ticket(emp, parent) {
+/// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
+/// como un QMap.
+typedef QMap<QString, Fixed> base;
+
+
+MTicket::MTicket(EmpresaTPV *emp, QWidget *parent) : BLWidget(emp, parent) {
     _depura("MTicket::MTicket", 0);
     setupUi(this);
     emp->pWorkspace()->addWindow(this);
@@ -22,25 +27,135 @@ MTicket::~MTicket() {
 
 void MTicket::pintar() {
     _depura("MTicket::pintar", 0);
-    Ticket::pintar();
-
-    QString html = "<TABLE border=\"0\">";
+	Ticket *tick =     ((EmpresaTPV *)empresaBase())->ticketActual();
+    QString html = "";
+    html += "Ticket: " + tick->DBvalue("nomticket") + "<BR>";
+    html += "Trabajador: " + tick->DBvalue("idtrabajador") + "<BR>";
+	
+    html += "<TABLE border=\"0\">";
     DBRecord *item;
-    for (int i = 0; i < listaLineas()->size(); ++i) {
-        item = listaLineas()->at(i);
+    for (int i = 0; i < tick->listaLineas()->size(); ++i) {
+        item = tick->listaLineas()->at(i);
         QString bgcolor="#FFFFFF";
-        if (item == lineaActTicket()) bgcolor="#CCCCFF";
+        if (item == tick->lineaActTicket()) bgcolor="#CCCCFF";
         html += "<TR>";
-        html += "<TD bgcolor=\"" + bgcolor +"\" align=\"right\" width=\"50\">" + item->DBvalue("cantlticket") + "</TD>";
+        html += "<TD bgcolor=\"" + bgcolor +"\" align=\"right\" width=\"50\">" + item->DBvalue("cantlalbaran") + "</TD>";
         html += "<TD bgcolor=\"" + bgcolor +"\">" + item->DBvalue("nomarticulo") + "</TD>";
 	Fixed totalLinea("0.00");
-	totalLinea = Fixed(item->DBvalue("cantlticket")) * Fixed(item->DBvalue("pvplticket"));
+	totalLinea = Fixed(item->DBvalue("cantlalbaran")) * Fixed(item->DBvalue("pvplalbaran"));
         html += "<TD bgcolor=\"" + bgcolor +"\" align=\"right\" width=\"50\">" + totalLinea.toQString(); + "</TD>";
         html += "</TR>";
-
     }// end for
     html += "</TABLE>";
 
+// ======================================
+    html += "<BR><HR><BR>";
+    base basesimp;
+    base basesimpreqeq;
+    DBRecord *linea;
+    /// Impresion de los contenidos.
+    QString l;
+    Fixed irpf("0");
+
+    cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM configuracion WHERE nombre = 'IRPF'");
+    if (cur) {
+        if (!cur->eof()) {
+            irpf = Fixed(cur->valor("valor"));
+        } // end if
+        delete cur;
+    } // end if
+
+
+    Fixed descuentolinea("0.00");
+    for (int i = 0; i < tick->listaLineas()->size(); ++i) {
+        linea = tick->listaLineas()->at(i);
+        Fixed cant(linea->DBvalue("cantlalbaran"));
+        Fixed pvpund(linea->DBvalue("pvplalbaran"));
+        Fixed desc1(linea->DBvalue("descuentolalbaran"));
+        Fixed cantpvp = cant * pvpund;
+        Fixed base = cantpvp - cantpvp * desc1 / 100;
+        descuentolinea = descuentolinea + (cantpvp * desc1 / 100);
+        basesimp[linea->DBvalue("ivalalbaran")] = basesimp[linea->DBvalue("ivalalbaran")] + base;
+        basesimpreqeq[linea->DBvalue("reqeqlalbaran")] = basesimpreqeq[linea->DBvalue("reqeqlalbaran")] + base;
+    } // end for
+
+    Fixed basei("0.00");
+    base::Iterator it;
+    for (it = basesimp.begin(); it != basesimp.end(); ++it) {
+        basei = basei + it.value();
+    } // end for
+
+    /// Calculamos el total de los descuentos.
+    /// De momento aqui no se usan descuentos generales en venta.
+    Fixed porcentt("0.00");
+/*
+    SDBRecord *linea1;
+    if (m_listadescuentos->rowCount()) {
+        for (int i = 0; i < m_listadescuentos->rowCount(); ++i) {
+            linea1 = m_listadescuentos->lineaat(i);
+            Fixed propor(linea1->DBvalue("proporcion" + m_listadescuentos->tableName()).toAscii().constData());
+            porcentt = porcentt + propor;
+        } // end for
+    } // end if
+*/
+
+    /// Calculamos el total de base imponible.
+    Fixed totbaseimp("0.00");
+    Fixed parbaseimp("0.00");
+    for (it = basesimp.begin(); it != basesimp.end(); ++it) {
+        if (porcentt > Fixed("0.00")) {
+            parbaseimp = it.value() - it.value() * porcentt / 100;
+        } else {
+            parbaseimp = it.value();
+        } // end if
+	html += "Base Imp " + it.key() + "% "+parbaseimp.toQString() + "<BR>"; 
+        totbaseimp = totbaseimp + parbaseimp;
+    } // end for
+
+    /// Calculamos el total de IVA.
+    Fixed totiva("0.00");
+    Fixed pariva("0.00");
+    for (it = basesimp.begin(); it != basesimp.end(); ++it) {
+        Fixed piva(it.key().toAscii().constData());
+        if (porcentt > Fixed("0.00")) {
+            pariva = (it.value() - it.value() * porcentt / 100) * piva / 100;
+        } else {
+            pariva = it.value() * piva / 100;
+        } // end if
+	html += "IVA " + it.key() + "% "+pariva.toQString() + "<BR>"; 
+        totiva = totiva + pariva;
+    } // end for
+
+    /// Calculamos el total de recargo de equivalencia.
+    Fixed totreqeq("0.00");
+    Fixed parreqeq("0.00");
+    for (it = basesimpreqeq.begin(); it != basesimpreqeq.end(); ++it) {
+        Fixed preqeq(it.key().toAscii().constData());
+        if (porcentt > Fixed("0.00")) {
+            parreqeq = (it.value() - it.value() * porcentt / 100) * preqeq / 100;
+        } else {
+            parreqeq = it.value() * preqeq / 100;
+        } // end if
+	html += "R.Eq " + it.key() + "% "+parreqeq.toQString() + "<BR>"; 
+        totreqeq = totreqeq + parreqeq;
+    } // end for
+
+
+
+    Fixed totirpf = totbaseimp * irpf / 100;
+
+	html += "<B>Base Imp. " + totbaseimp.toQString() + "<BR>"; 
+	html += "<B>IVA. " + totiva.toQString() + "<BR>"; 
+	html += "<B>IRPF. " + totirpf.toQString() + "<BR>"; 
+
+	Fixed total = totiva + totbaseimp + totreqeq - totirpf;
+	html += "<B>Total: " + total.toQString() + "<BR>"; 
+
+
+//    pintatotales(totiva, totbaseimp, totiva + totbaseimp + totreqeq - totirpf, (basei * porcentt / 100) + descuentolinea, totirpf, totreqeq);
+    _depura("FichaBf::calculaypintatotales", 0);
+
+// ======================================
     /// Pintamos el HTML en el textBrowser
     mui_browser->setText(html);
     _depura("END MTicket::pintar", 0);
@@ -61,8 +176,8 @@ void MTicket::on_mui_bajar_clicked() {
 
 
 void MTicket::on_mui_borrar_clicked() {
-    listaLineas()->clear();
-    setLineaActual(NULL);
+    ((EmpresaTPV *)empresaBase())->ticketActual()->listaLineas()->clear();
+        ((EmpresaTPV *)empresaBase())->ticketActual()->setLineaActual(NULL);
     pintar();
 }
 
@@ -124,7 +239,7 @@ void myplugin::inicializa(BulmaTPV *tpv) {
     m_lan->setDelete(FALSE);
     m_lan->setSortingEnabled(TRUE);
     tpv->workspace()->addWindow(m_lan);
-    m_lan->show();
+    m_lan->showFullScreen();
     m_lan->cargar("SELECT * FROM articulo");
 
     connect(m_lan, SIGNAL(itemDoubleClicked(QTableWidgetItem *)), this, SLOT(elslot(QTableWidgetItem *)));

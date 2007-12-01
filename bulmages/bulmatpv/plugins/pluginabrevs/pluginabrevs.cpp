@@ -20,31 +20,31 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QDockWidget>
 
-#include "plugintecladonumerico.h"
+#include "pluginabrevs.h"
 #include "funcaux.h"
 #include "empresatpv.h"
-#include "tecladonumerico.h"
+#include "abrevs.h"
+#include "plugins.h"
+#include "qapplication2.h"
+#include "trabajadores.h"
+#include <QX11EmbedContainer>
+#include <QProcess>
 
-
-
+Abrevs *g_tot;
 QDockWidget *g_doc1;
 
-TecladoNumerico *g_tecl;
 ///
 /**
 \return
 **/
 int entryPoint(BulmaTPV *tpv) {
     _depura("entryPoint", 0);
-    /// Vamos a probar con un docwindow.
-    g_doc1 = new QDockWidget("Teclado", tpv);
-    g_doc1->setFeatures(QDockWidget::AllDockWidgetFeatures);
 
-    g_doc1->setGeometry(100, 100, 100, 500);
-    g_doc1->resize(330, 400);
-    tpv->addDockWidget(Qt::LeftDockWidgetArea, g_doc1);
+    /// Vamos a probar con un docwindow.
+    g_doc1 = new QDockWidget("Abreviaturas", tpv);
+    g_doc1->setFeatures(QDockWidget::AllDockWidgetFeatures);
+    tpv->addDockWidget(Qt::BottomDockWidgetArea, g_doc1);
     g_doc1->show();
 
     _depura("END entryPoint", 0);
@@ -52,13 +52,13 @@ int entryPoint(BulmaTPV *tpv) {
 }
 
 int EmpresaTPV_createMainWindows_Post(EmpresaTPV *etpv) {
-	g_tecl = new TecladoNumerico(etpv, g_doc1);
-//	etpv->pWorkspace()->addWindow(g_tecl);
-	g_doc1->setWidget(g_tecl);
-	return 0;
+    g_tot = new Abrevs(etpv, g_doc1);
+    g_doc1->setWidget(g_tot);
+
+    Trabajadores *trab = new Trabajadores(etpv, 0);
+    trab->exec();
+    return 0;
 }
 
-int Input_keyReleaseEvent_Post(Input *in) {
-    g_tecl->mui_display->setText(in->valorInput());
-}
+
 

@@ -79,7 +79,15 @@ BulmaTPV::BulmaTPV(QString bd) : QMainWindow() {
 
     connect(pWorkspace, SIGNAL(windowActivated(QWidget *)), this, SLOT(informaindexador(QWidget *)));
 
+    setCorner(Qt::TopLeftCorner, Qt::TopDockWidgetArea);
+    setCorner(Qt::TopRightCorner, Qt::RightDockWidgetArea);
+    setCorner(Qt::BottomLeftCorner, Qt::LeftDockWidgetArea);
+    setCorner(Qt::BottomRightCorner, Qt::RightDockWidgetArea);
 
+
+
+    QDockWidget *widgetPrueba = new QDockWidget(NULL);
+    addDockWidget(Qt::LeftDockWidgetArea, widgetPrueba);
 //    m_company->setListVentanas(m_list);
 
     m_pb->setVisible(FALSE);

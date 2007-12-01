@@ -42,7 +42,9 @@ int entryPoint(BulmaTPV *tpv) {
 
 int EmpresaTPV_createMainWindows_Post(EmpresaTPV *etpv) {
 	g_graf = new ArtGraficos(etpv, NULL);
-	etpv->pWorkspace()->addWindow(g_graf);
+//	etpv->pWorkspace()->addWindow(g_graf);
+	//g_graf->showMaximized();
+	g_main->setCentralWidget(g_graf);
 	return 0;
 }
 

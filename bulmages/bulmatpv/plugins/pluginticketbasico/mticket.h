@@ -30,9 +30,8 @@
 #include "subform2bt.h"
 
 
-class MTicket : public Ticket, public Ui_MTicketBase {
+class MTicket : public BLWidget, public Ui_MTicketBase {
     Q_OBJECT
-
 public:
     MTicket(EmpresaTPV *emp, QWidget *parent);
     virtual ~MTicket();

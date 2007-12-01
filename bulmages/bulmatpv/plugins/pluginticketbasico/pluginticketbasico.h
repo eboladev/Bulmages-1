@@ -25,17 +25,12 @@
 #endif
 
 #include "bulmatpv.h"
-
-/*
-extern "C" MY_EXPORT int AlbaranClienteView_AlbaranClienteView(AlbaranClienteView *);
-extern "C" MY_EXPORT int PedidoClienteView_PedidoClienteView(PedidoClienteView *);
-extern "C" MY_EXPORT int PresupuestoView_PresupuestoView(PresupuestoView *);
-extern "C" MY_EXPORT int FacturaView_FacturaView(FacturaView *);
-*/
+#include "ticket.h"
+#include "empresatpv.h"
 
 extern "C" MY_EXPORT int entryPoint(BulmaTPV *);
-extern "C" MY_EXPORT int EmpresaTPV_newTicket(EmpresaTPV *tpv, void * &bud);
-
+extern "C" MY_EXPORT int Ticket_pintar(Ticket *);
+extern "C" MY_EXPORT int EmpresaTPV_createMainWindows_Post(EmpresaTPV *);
 
 
 

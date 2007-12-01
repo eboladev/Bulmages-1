@@ -130,6 +130,8 @@ int main(int argc, char **argv) {
             bges->hide();
         } // end if
 
+        g_main = bges;
+
         splashScr->show();
         splashScr->mensaje(QApplication::translate("main","Leyendo configuracion"));
         splashScr->setBarraProgreso(2);
@@ -186,15 +188,11 @@ int main(int argc, char **argv) {
         /// Lanzamos la creacion de las ventanas principales.
         bges->createMainWindows(splashScr);
 
-        g_main = bges;
-
         splashScr->mensaje(QApplication::translate("main", "Terminado"));
         splashScr->setBarraProgreso(100);
 
         delete splashScr;
-        _depura("vamos a presentar", 2);
-        bges->show();
-        _depura("Hemos presentado", 2);
+        bges->showFullScreen();
 
         theApp->exec();
     } catch (...) {

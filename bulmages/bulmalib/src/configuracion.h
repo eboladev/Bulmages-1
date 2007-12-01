@@ -183,6 +183,12 @@
 /// CONF_MOSTRAR_ALMACEN determina si se visualizaran el almacen en los listados y si
 /// aparecera inhibido en las entradas de datos inicialmente vale "".
 #define CONF_MOSTRAR_ALMACEN         510
+
+/// COnfiguraciones para el TPV
+#define CONF_IDCLIENTE_DEFECTO	     520
+#define CONF_IDALMACEN_DEFECTO       521
+#define CONF_IDARTICULO_DEFECTO      522
+
 /// CONF_DEBUG indica el modo de debug.
 #define CONF_DEBUG                   550
 ///Indica el color de fondo alternativo del pijama del libro diario.

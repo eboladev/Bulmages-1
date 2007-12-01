@@ -160,7 +160,6 @@ int listcuentasview1::inicializa() {
         it->setText(cnohaber, ctas->valor("nohaber"));
         it->setText(cregularizacion, ctas->valor("regularizacion"));
         it->setText(cimputacion, ctas->valor("imputacion"));
-        it->setText(cgrupo, ctas->valor("idgrupo"));
         it->setText(cdebe, ctas->valor("debe"));
         it->setText(chaber, ctas->valor("haber"));
         /// Ponemos los iconos.

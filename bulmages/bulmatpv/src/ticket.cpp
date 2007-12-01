@@ -28,15 +28,27 @@
 #include "ticket.h"
 #include "plugins.h"
 
-
+/// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
+/// como un QMap.
+typedef QMap<QString, Fixed> base;
 
 Ticket::Ticket(EmpresaBase *emp, QWidget *parent) : BLWidget(emp, parent), DBRecord(emp) {
     _depura("Ticket::Ticket", 0);
     /// Inicializamos los parametros del ticket para la base de datos.
-    setDBTableName ( "ticket" );
-    setDBCampoId ( "idticket" );
-    addDBCampo ( "idticket", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "Ticket", "Id ticket" ) );
-    addDBCampo ( "fechaticket", DBCampo::DBdate, DBCampo::DBNotNull, QApplication::translate ( "Ticket", "Id ticket" ) );
+    setDBTableName ( "albaran" );
+    setDBCampoId ( "idalbaran" );
+    addDBCampo ( "descalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Ticket", "descripcion"));
+    addDBCampo ( "nomticket", DBCampo::DBvarchar, DBCampo::DBNoSave, QApplication::translate("Ticket", "nombre"));
+    addDBCampo ( "idalbaran", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "Ticket", "Id albaran" ) );
+    addDBCampo ( "fechaalbaran", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate ( "Ticket", "Id fechaalbaran" ) );
+    addDBCampo ( "idtrabajador", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "Ticket", "Trabajador" ) );
+    addDBCampo ( "idcliente", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "Ticket", "Cliente" ) );
+    addDBCampo ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "Ticket", "Almacen" ) );
+    addDBCampo ( "numalbaran", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Ticket", "Num" ) );
+
+    setDBvalue("idalmacen", confpr->valor(CONF_IDALMACEN_DEFECTO));
+    setDBvalue("idcliente", confpr->valor(CONF_IDCLIENTE_DEFECTO));
+    setDBvalue("descalbaran", "Ticket de venta");
 
     m_lineaActual = NULL;
     m_listaLineas = new QList<DBRecord *>;
@@ -54,14 +66,21 @@ DBRecord * Ticket::agregarLinea() {
 
     /// Creamos un nuevo DBRecord y lo inicializamos.
     DBRecord * item = new DBRecord(empresaBase());
-    item->setDBTableName ( "lticket" );
-    item->setDBCampoId ( "idlticket" );
-    item->addDBCampo ( "idlticket", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "Ticket", "Id lticket" ) );
-    item->addDBCampo ( "cantlticket", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate ( "Ticket", "Cantidad" ) );
-    item->addDBCampo ( "pvplticket", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate ( "Ticket", "Precio" ) );
+    item->setDBTableName ( "lalbaran" );
+    item->setDBCampoId ( "numlalbaran" );
+    item->addDBCampo ( "idalbaran", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "Ticket", "Id Albaran" ) );
+    item->addDBCampo ( "numlalbaran", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "Ticket", "Id lalbaran" ) );
+    item->addDBCampo ( "cantlalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate ( "Ticket", "Cantidad" ) );
+    item->addDBCampo ( "pvplalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate ( "Ticket", "Precio" ) );
+    item->addDBCampo ( "ivalalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate ( "Ticket", "IVA" ) );
+    item->addDBCampo ( "descuentolalbaran", DBCampo::DBnumeric, DBCampo::DBNothing, QApplication::translate ( "Ticket", "Descuento" ) );
+    item->addDBCampo ( "ordenlalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate ( "Ticket", "Orden" ) );
+    item->addDBCampo ( "reqeqlalbaran", DBCampo::DBnumeric, DBCampo::DBNothing, QApplication::translate ( "Ticket", "REQ EQ" ) );
+//    item->addDBCampo ( "lotelalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate ( "Ticket", "Lote" ) );
     item->addDBCampo ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "Ticket", "Id Articulo" ) );
     item->addDBCampo ( "codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, QApplication::translate ( "Ticket", "Codigo Articulo" ) );
     item->addDBCampo ( "nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, QApplication::translate ( "Ticket", "Nombre Articulo" ) );
+    item->addDBCampo ( "desclalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Ticket", "Nombre Articulo" ) );
 
 
     /// Agregamos el DBRecord a la lista de lineas de ticket.
@@ -100,23 +119,29 @@ DBRecord *Ticket::insertarArticulo(QString idArticulo, Fixed cantidad, bool nuev
 
     if (m_lineaActual && nuevaLinea == FALSE) {
         /// Ya hay una linea con este articulo (es un agregado)
-        Fixed cantidadib(m_lineaActual->DBvalue("cantlticket"));
+        Fixed cantidadib(m_lineaActual->DBvalue("cantlalbaran"));
         Fixed cant1 = cantidadib + cantidad;
-        m_lineaActual->setDBvalue("cantlticket", cant1.toQString());
+        m_lineaActual->setDBvalue("cantlalbaran", cant1.toQString());
     } else {
         /// No hay ningun item con este articulo (es una insercion)
         m_lineaActual = agregarLinea();
         m_lineaActual->setDBvalue("idarticulo", idArticulo);
-        m_lineaActual->setDBvalue("cantlticket", cantidad.toQString());
+        m_lineaActual->setDBvalue("cantlalbaran", cantidad.toQString());
 
         /// Buscamos los parametros en la base de datos.
         QString query = "SELECT * FROM articulo WHERE idarticulo = " + idArticulo;
         cursor2 *cur = empresaBase()->cargacursor(query);
         if (!cur->eof()) {
-            m_lineaActual->setDBvalue("pvplticket", cur->valor("pvparticulo"));
+            m_lineaActual->setDBvalue("pvplalbaran", cur->valor("pvparticulo"));
             m_lineaActual->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
             m_lineaActual->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
+            m_lineaActual->setDBvalue("desclalbaran", cur->valor("nomarticulo"));
         } // end if
+
+        cursor2 *cur1 = empresaBase()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor("idtipo_iva") + " ORDER BY fechatasa_iva LIMIT 1");
+        if (!cur1->eof() )
+            m_lineaActual->setDBvalue("ivalalbaran", cur1->valor("porcentasa_iva"));
+        delete cur1;
         delete cur;
     } // end if
 
@@ -144,7 +169,6 @@ void  Ticket::finPosTicket(DBRecord *) {}
 
 
 DBRecord * Ticket::lineaTicket(int posicion) {
-
     return NULL;
 }
 
@@ -161,124 +185,209 @@ void Ticket::setLineaActual(DBRecord *rec) {
 void  Ticket::setDescuentoGlobal(Fixed descuento) {}
 
 void  Ticket::imprimir() {
-        QFile file( confpr->valor(CONF_TICKET_PRINTER_FILE) );
-        if ( !file.open(QIODevice::WriteOnly | QIODevice::Unbuffered)) {
-            _depura("Error en la Impresion de ticket", 2);
+    base basesimp;
+    base basesimpreqeq;
+
+    QFile file( confpr->valor(CONF_TICKET_PRINTER_FILE) );
+    if ( !file.open(QIODevice::WriteOnly | QIODevice::Unbuffered)) {
+        _depura("Error en la Impresion de ticket", 2);
+    } // end if
+    file.write (QString("Conetxia Soluciones Informaticas S.L\n").toAscii());
+    file.write (QString("====================================\n").toAscii());
+    file.write(QString("Joaquin Turina, 1 Local 4\n").toAscii());
+    file.write(QString("CP: 07004 Palma de Mallorca\n").toAscii());
+    file.write(QString("Tel: 971 29 06 29\n").toAscii());
+    /// Imprimimos espacios
+    file.write ( "\n \n", 3);
+    /// Imprimimos la fecha
+    file.write( QString("Fecha: ").toAscii());
+    QDate fecha = QDate::currentDate();
+    QString sfecha = fecha.toString("d-M-yyyy");
+    file.write( sfecha.toAscii());
+    file.write ( "\n", 1);
+
+
+    /// Imprimimos el trabajador
+            file.write( QString("Trabajador: ").toAscii());
+            file.write( DBvalue("idtrabajador").toAscii());
+            file.write ( "\n", 1);
+
+    /// Imprimimos el cliente
+	cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM cliente WHERE idcliente=" + DBvalue("idcliente"));
+	if (!cur->eof()) {
+            file.write( QString("Cliente: ").toAscii());
+            file.write( cur->valor("cifcliente").toAscii());
+            file.write ( " ", 1);
+            file.write( cur->valor("nomcliente").toAscii());
+            file.write ( "\n", 1);
+	} // end if
+
+
+
+    /*
+            file.write( QString("Descripcion: ").toAscii());
+            file.write( m_albaranClienteView->DBvalue("descalbaran").toAscii());
+            file.write ( "\n", 1);
+*/
+// ============================================
+    /// Impresion de los contenidos.
+    QString l;
+    Fixed irpf("0");
+
+    cur = empresaBase()->cargacursor("SELECT * FROM configuracion WHERE nombre = 'IRPF'");
+    if (cur) {
+        if (!cur->eof()) {
+            irpf = Fixed(cur->valor("valor"));
         } // end if
+        delete cur;
+    } // end if
+
+    DBRecord *linea;
+    Fixed descuentolinea("0.00");
+    for (int i = 0; i < listaLineas()->size(); ++i) {
+        linea = listaLineas()->at(i);
+        Fixed cant(linea->DBvalue("cantlalbaran"));
+        Fixed pvpund(linea->DBvalue("pvplalbaran"));
+        Fixed desc1(linea->DBvalue("descuentolalbaran"));
+        Fixed cantpvp = cant * pvpund;
+        Fixed base = cantpvp - cantpvp * desc1 / 100;
+        descuentolinea = descuentolinea + (cantpvp * desc1 / 100);
+        basesimp[linea->DBvalue("ivalalbaran")] = basesimp[linea->DBvalue("ivalalbaran")] + base;
+        basesimpreqeq[linea->DBvalue("reqeqlalbaran")] = basesimpreqeq[linea->DBvalue("reqeqlalbaran")] + base;
+	/// Hacemos la impresion
+        QString str = linea->DBvalue("cantlalbaran").rightJustified(5,' ')+QString("   ")+linea->DBvalue("desclalbaran").leftJustified(23,' ', TRUE)+linea->DBvalue("pvplalbaran").rightJustified(10, ' ');
+        file.write(str.toAscii());
+        file.write ( "\n", 1);
+    } // end for
+
+    Fixed basei("0.00");
+    base::Iterator it;
+    for (it = basesimp.begin(); it != basesimp.end(); ++it) {
+        basei = basei + it.value();
+    } // end for
+
+    /// Calculamos el total de los descuentos.
+    /// De momento aqui no se usan descuentos generales en venta.
+    Fixed porcentt("0.00");
 
 
-        file.write (QString("Conetxia Soluciones Informaticas S.L\n").toAscii());
-        file.write (QString("====================================\n").toAscii());
-        file.write(QString("Joaquin Turina, 1 Local 4\n").toAscii());
-        file.write(QString("CP: 07004 Palma de Mallorca\n").toAscii());
-        file.write(QString("Tel: 971 29 06 29\n").toAscii());
-        /// Imprimimos espacios
-        file.write ( "\n \n", 3);
-        /// Imprimimos la fecha
-        file.write( QString("Fecha: ").toAscii());
-        QDate fecha = QDate::currentDate();
-        QString sfecha = fecha.toString("d-M-yyyy");
-        file.write( sfecha.toAscii());
+    /// Calculamos el total de base imponible.
+    Fixed totbaseimp("0.00");
+    Fixed parbaseimp("0.00");
+    for (it = basesimp.begin(); it != basesimp.end(); ++it) {
+        if (porcentt > Fixed("0.00")) {
+            parbaseimp = it.value() - it.value() * porcentt / 100;
+        } else {
+            parbaseimp = it.value();
+        } // end if
+        QString str = "Base Imp" + it.key() + "% " + parbaseimp.toQString();
+        file.write(str.toAscii());
+        file.write ( "\n", 1);
+        totbaseimp = totbaseimp + parbaseimp;
+    } // end for
+
+    /// Calculamos el total de IVA.
+    Fixed totiva("0.00");
+    Fixed pariva("0.00");
+    for (it = basesimp.begin(); it != basesimp.end(); ++it) {
+        Fixed piva(it.key().toAscii().constData());
+        if (porcentt > Fixed("0.00")) {
+            pariva = (it.value() - it.value() * porcentt / 100) * piva / 100;
+        } else {
+            pariva = it.value() * piva / 100;
+        } // end if
+        QString str = "IVA" + it.key() + "% " + pariva.toQString();
+        file.write(str.toAscii());
         file.write ( "\n", 1);
 
-/*
-        file.write( QString("Trabajador: ").toAscii());
-        file.write( m_albaranClienteView->mui_idtrabajador->currentText().toAscii());
+        totiva = totiva + pariva;
+    } // end for
+
+    /// Calculamos el total de recargo de equivalencia.
+    Fixed totreqeq("0.00");
+    Fixed parreqeq("0.00");
+    for (it = basesimpreqeq.begin(); it != basesimpreqeq.end(); ++it) {
+        Fixed preqeq(it.key().toAscii().constData());
+        if (porcentt > Fixed("0.00")) {
+            parreqeq = (it.value() - it.value() * porcentt / 100) * preqeq / 100;
+        } else {
+            parreqeq = it.value() * preqeq / 100;
+        } // end if
+        QString str = "R. Eq" + it.key() + "% " + parreqeq.toQString();
+        file.write(str.toAscii());
+        file.write ( "\n", 1);
+        totreqeq = totreqeq + parreqeq;
+    } // end for
+
+
+
+    Fixed totirpf = totbaseimp * irpf / 100;
+
+        QString str = "Base Imp" + totbaseimp.toQString();
+        file.write(str.toAscii());
         file.write ( "\n", 1);
 
-        file.write( QString("Cliente: ").toAscii());
-        file.write( m_albaranClienteView->mui_idcliente->cifcliente().toAscii());
-        file.write ( " ", 1);
-        file.write( m_albaranClienteView->mui_idcliente->nomcliente().toAscii());
-        file.write ( "\n", 1);
-*/
-
-
-/*
-        file.write( QString("Descripcion: ").toAscii());
-        file.write( m_albaranClienteView->DBvalue("descalbaran").toAscii());
+        str = "IVA" + totiva.toQString();
+        file.write(str.toAscii());
         file.write ( "\n", 1);
 
-        /// Imprimimos espacios
-        file.write ( "\n \n", 3);
-
-        QString l;
-        SDBRecord *linea;
-        for (int i = 0; i < m_albaranClienteView->getlistalineas()->rowCount(); ++i) {
-            linea = m_albaranClienteView->getlistalineas()->lineaat(i);
-            if (linea->DBvalue( "idarticulo") != "") {
-                QString str = linea->DBvalue("cantlalbaran").rightJustified(5,' ')+QString("   ")+linea->DBvalue("desclalbaran").leftJustified(23,' ', TRUE)+linea->DBvalue("pvplalbaran").rightJustified(10, ' ');
-                file.write(str.toAscii());
-                file.write ( "\n", 1);
-            } // end if
-        } // end for
-
-        /// Imprimimos espacios
-        file.write ( "\n \n", 3);
-
-        /// Imprimimos la base imponible
-        QString stotalbases = QString("Base Imp").rightJustified(30,' ');
-        stotalbases = stotalbases + m_albaranClienteView->m_totalBases->text().rightJustified(10,' ');
-        file.write(stotalbases.toAscii());
+        str = "IRPF" + totirpf.toQString();
+        file.write(str.toAscii());
         file.write ( "\n", 1);
 
-        /// Imprimimos el IVA
-        QString stotaltases = QString("I.V.A.").rightJustified(30,' ');
-        stotaltases = stotaltases + m_albaranClienteView->m_totalTaxes->text().rightJustified(10,' ');
-        file.write(stotaltases.toAscii());
-        file.write ( "\n", 1);
+            /// Imprimimos el total
+            file.write (QString("____________________\n").rightJustified(42,' ').toAscii());
 
-        /// Imprimimos el total
-        file.write (QString("____________________\n").rightJustified(42,' ').toAscii());
-
-        QString stotal = QString("TOTAL").rightJustified(30,' ');
-        stotal = stotal + m_albaranClienteView->m_totalalbaran->text().rightJustified(10,' ');
-        file.write(stotal.toAscii());
+	Fixed total = totiva + totbaseimp + totreqeq - totirpf;
+        str = "TOTAL" + total.toQString();
+        file.write(str.toAscii());
         file.write ( "\n", 1);
 
 
-        /// Imprimimos espacios
-        file.write ( "\n \n \n \n", 7);
-
-        /// Preparamos para un codigo de barras
-        /// Especificamos la altura del codigo de barras
-        file.write ("\x1Dh\x40",3);
-        /// Especificamos que los caracteres vayan debajo del codigo de barras
-        file.write ( "\x1DH\x02",3);
-        /// Establecemos el tipo de codificacion para el codigo de barras
-        file.write ( "\x1D",1);
-        file.write ( "f\x01",2);
-        ;
-        /// Ponemos el ancho de la fuente a uno
-        file.write ( "\x1D\x77\x01",3);
-        /// Imprimimos la palabra top con el juego de caracteres 04
-        file.write ( "\x1Dk\x04",3);
-        file.write (QString("ALB").toAscii());
-        file.write (" ", 1);
-        file.write (m_albaranClienteView->DBvalue("idalbaran").toAscii());
-        file.write (" ", 1);
-        file.write (m_albaranClienteView->DBvalue("numalbaran").toAscii());
-        file.write (" ", 1);
-        file.write (m_albaranClienteView->DBvalue("refalbaran").toAscii());
-        file.write ("\x00", 1);
+// ============================================
 
 
-*/
-        /// Imprimimos el dibujo final
-        /*
-                file.write ("\x1B\x2A\x00\xD2\x00", 5);
-                for (int i=0; i <15; i++) {
-                    file.write ( "\x01\x02\x04\x08\x10\x20\x40\x80", 8);
-                    file.write ("\x40\x20\x10\x08\x04\x02", 6);
-                }
-        */
-        /// Imprimimos espacios
-        file.write ( "\n \n \n \n \n", 9);
+            /// Imprimimos espacios
+            file.write ( "\n \n \n \n", 7);
+
+            /// Preparamos para un codigo de barras
+            /// Especificamos la altura del codigo de barras
+            file.write ("\x1Dh\x40",3);
+            /// Especificamos que los caracteres vayan debajo del codigo de barras
+            file.write ( "\x1DH\x02",3);
+            /// Establecemos el tipo de codificacion para el codigo de barras
+            file.write ( "\x1D",1);
+            file.write ( "f\x01",2);
+            ;
+            /// Ponemos el ancho de la fuente a uno
+            file.write ( "\x1D\x77\x01",3);
+            /// Imprimimos la palabra top con el juego de caracteres 04
+            file.write ( "\x1Dk\x04",3);
+            file.write (QString("ALB").toAscii());
+            file.write (" ", 1);
+            file.write (DBvalue("idalbaran").toAscii());
+            file.write (" ", 1);
+            file.write (DBvalue("numalbaran").toAscii());
+            file.write (" ", 1);
+            file.write (DBvalue("refalbaran").toAscii());
+            file.write ("\x00", 1);
 
 
-        /// El corte de papel.
-        file.write ("\x1D\x56\x01", 3);
-        file.close();
+    /// Imprimimos el dibujo final
+    /*
+            file.write ("\x1B\x2A\x00\xD2\x00", 5);
+            for (int i=0; i <15; i++) {
+                file.write ( "\x01\x02\x04\x08\x10\x20\x40\x80", 8);
+                file.write ("\x40\x20\x10\x08\x04\x02", 6);
+            }
+    */
+    /// Imprimimos espacios
+    file.write ( "\n \n \n \n \n", 9);
+
+
+    /// El corte de papel.
+    file.write ("\x1D\x56\x01", 3);
+    file.close();
 }
 
 
@@ -299,13 +408,13 @@ void Ticket::bajar() {
 
 void Ticket::agregarCantidad(QString cantidad) {
     Fixed cant(cantidad);
-    Fixed cantorig(m_lineaActual->DBvalue("cantlticket"));
+    Fixed cantorig(m_lineaActual->DBvalue("cantlalbaran"));
     Fixed suma = cant + cantorig;
     if (suma == Fixed("0.00")) {
         listaLineas()->removeAt(listaLineas()->indexOf(m_lineaActual));
         m_lineaActual = listaLineas()->at(0);
     } else {
-        m_lineaActual->setDBvalue("cantlticket", suma.toQString());
+        m_lineaActual->setDBvalue("cantlalbaran", suma.toQString());
     } // end if
     pintar();
 }
@@ -315,13 +424,13 @@ void Ticket::ponerCantidad(QString cantidad) {
         listaLineas()->removeAt(listaLineas()->indexOf(m_lineaActual));
         m_lineaActual = listaLineas()->at(0);
     } else {
-        m_lineaActual->setDBvalue("cantlticket", cantidad);
+        m_lineaActual->setDBvalue("cantlalbaran", cantidad);
     } // end if
     pintar();
 }
 
 void Ticket::ponerPrecio(QString precio) {
-    m_lineaActual->setDBvalue("pvplticket", precio);
+    m_lineaActual->setDBvalue("pvplalbaran", precio);
     pintar();
 }
 
@@ -341,4 +450,41 @@ void Ticket::insertarArticuloCodigoNL(QString codigo) {
         insertarArticulo(cur->valor("idarticulo"), Fixed("1"), TRUE);
     } // end if
     delete cur;
+}
+
+
+
+
+/// Guarda los datos de la ficha en la base de datos.
+/**
+  Este metodo guarda los contenidos de la Ficha (siempre que esta haya sido inicializada).
+  Luego llama a plugins y a guardarPost por si se quieren hacer acciones adicionales de guardado.
+  Tras guardar todos los elementos hace una carga.
+\return 0 Si no hay problemas. -1 Si ha habido problemas.
+**/
+int Ticket::guardar() {
+    _depura("Ticket::guardar", 0);
+
+    try {
+        QString id;
+        empresaBase()->begin();
+        DBsave(id);
+        DBRecord *item;
+        for (int i = 0; i < listaLineas()->size(); ++i) {
+            QString id1;
+            item = listaLineas()->at(i);
+            item->setDBvalue("idalbaran", id);
+	    item->setDBvalue("ordenlalbaran", QString::number(i));
+            item->DBsave(id1);
+        }// end for
+        empresaBase()->commit();
+
+
+        _depura("END Ticket::guardar", 0);
+        return 0;
+    } catch (...) {
+        mensajeInfo("Error inesperado con la base de datos");
+        empresaBase()->rollback();
+        return -1;
+    } // end try
 }

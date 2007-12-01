@@ -31,7 +31,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #ifndef WIN32
-    #include <unistd.h>
+#include <unistd.h>
 #endif
 
 #include "configuracion.h"
@@ -336,7 +336,12 @@ QString configuracion::nombre(int i) {
         return "CONF_DEBUG";
     if (i == CONF_ALERTAS_DB)
         return "CONF_ALERTAS_DB";
-
+    if (i == CONF_IDCLIENTE_DEFECTO)
+        return "CONF_IDCLIENTE_DEFECTO";
+    if (i == CONF_IDALMACEN_DEFECTO)
+        return "CONF_IDALMACEN_DEFECTO";
+    if (i == CONF_IDARTICULO_DEFECTO)
+        return "CONF_IDARTICULO_DEFECTO";
     return "";
 //    _depura("END configuracion::nombre", 0);
 }

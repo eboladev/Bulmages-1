@@ -55,7 +55,10 @@ public:
     void guardaConf();
     void cargaConf();
     Ticket *newTicket();
+    void cobrar();
     Ticket *ticketActual() {return m_ticketActual;};
+    QList<Ticket *> *listaTickets() {return &m_listaTickets;};
+    void setTicketActual(Ticket *tick) {m_ticketActual = tick;};
 
 };
 

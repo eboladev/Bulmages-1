@@ -28,6 +28,7 @@
 #include <QDir>
 #include <QTextStream>
 #include <QLocale>
+#include <QProcess>
 
 #include "funcaux.h"
 #include "configuracion.h"
@@ -55,14 +56,14 @@ QString editaTexto(QString texto) {
 
 /// Proteje cadenas de texto pasandoles una sustitucion de codigos especiales de XML.
 QString XMLProtect(const QString &string) {
-/*    QString s = string;
-    s.replace("&", "&amp;");
-    s.replace(">", "&gt;");
-    s.replace("<", "&lt;");
-    s.replace("\"", "&quot;");
-    s.replace("\'", "&apos;");
-    return s;
-*/
+    /*    QString s = string;
+        s.replace("&", "&amp;");
+        s.replace(">", "&gt;");
+        s.replace("<", "&lt;");
+        s.replace("\"", "&quot;");
+        s.replace("\'", "&apos;");
+        return s;
+    */
     /// Recorre todo el QString y sustituye los caracteres NO ASCII y
     /// los caracteres que no van muy bien en un XML.
 
@@ -283,6 +284,28 @@ void mailsendPDF(const QString arch, const QString to, const QString subject, co
     system(cadsys.toAscii().data());
 }
 
+QString windowID(const QString &app) {
+    QString cad = "xwininfo -int -name \""+app+"\" | grep xwininfo | awk '{print $4}' > /tmp/xwinfo";
+
+    system(cad.toAscii());
+
+    QString winId = "";
+
+    QFile file("/tmp/xwinfo");
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+        return "";
+
+    QTextStream in(&file);
+    if (!in.atEnd()) {
+        winId = in.readLine();
+    } // end if
+
+
+    file.close();
+
+    return winId;
+}
+
 
 /// cad = String a presentar como texto de depuracion o como mensaje de error.
 /// nivel 0 = normal.
@@ -302,9 +325,9 @@ void _depura(const QString &cad, int nivel, const QString &param) {
 
 
     if (confpr->valor(CONF_DEBUG) == "TRUE") {
-       static QFile file(confpr->valor(CONF_DIR_USER) + "bulmagesout.txt");
-       static QTextStream out(&file);
-       if (!semaforo) {
+        static QFile file(confpr->valor(CONF_DIR_USER) + "bulmagesout.txt");
+        static QTextStream out(&file);
+        if (!semaforo) {
             if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
                 return;
             semaforo = 1;
@@ -377,29 +400,28 @@ void mensajeInfo(QString cad) {
 
 void mensajeAviso(QString cad) {
     QMessageBox::warning(NULL,
-                             QApplication::translate("funcaux", "Aviso del programa"),
-                             cad, QApplication::translate("funcaux", "&Continuar"),
-                             QString::null, 0);
+                         QApplication::translate("funcaux", "Aviso del programa"),
+                         cad, QApplication::translate("funcaux", "&Continuar"),
+                         QString::null, 0);
 }
 
 
 void mensajeError(QString cad) {
     QMessageBox::critical(NULL,
-                             QApplication::translate("funcaux", "Error del programa"),
-                             cad, QApplication::translate("funcaux", "&Continuar"),
-                             QString::null, 0);
+                          QApplication::translate("funcaux", "Error del programa"),
+                          cad, QApplication::translate("funcaux", "&Continuar"),
+                          QString::null, 0);
 }
 
 
-QString  num2texto(QString numero, QString moneda, QString singular)
-{
+QString  num2texto(QString numero, QString moneda, QString singular) {
     /// Si es 0 el n&uacute;mero, no tiene caso procesar toda la informaci&oacute;n.
-    if (numero == "0" || numero == "00"){
+    if (numero == "0" || numero == "00") {
         return "cero " + moneda;
     } // end if
 
     /// En caso que sea un peso, pues igual que el 0 aparte que no muestre el plural "pesos".
-    if (numero == "1"){
+    if (numero == "1") {
         return "un " + singular;
     } // end if
 
@@ -522,7 +544,7 @@ QString  num2texto(QString numero, QString moneda, QString singular)
                 num_string += numeros["centenas" + hundreds + chundreds];
             } else {
                 //echo " centenas ".numeros["centenas"][$hundreds][0]."<br>";
-                if(numeros.contains("centenas" + hundreds + "0")){
+                if (numeros.contains("centenas" + hundreds + "0")) {
                     num_string += numeros["centenas" + hundreds + "0"];
                 }
             } // end if
@@ -542,7 +564,7 @@ QString  num2texto(QString numero, QString moneda, QString singular)
                     } // end if
                 } else {
                     //echo " decenas ".numeros["decenas"][$tens][$ctens]."<br>";
-                    if (numeros.contains("decenas" + tens + ctens)){
+                    if (numeros.contains("decenas" + tens + ctens)) {
                         num_string += numeros["decenas" + tens + ctens];
                     }
                 } // end if
@@ -551,7 +573,7 @@ QString  num2texto(QString numero, QString moneda, QString singular)
                 ctens = "0";
                 tens = breakdown["entero" + breakdown_key + "10"];
                 //echo " decenas ".numeros["decenas"][$tens][$ctens]."<br>";
-                if (numeros.contains("decenas" + tens + ctens)){
+                if (numeros.contains("decenas" + tens + ctens)) {
                     num_string += numeros["decenas" + tens + ctens];
                 } // end if
             } // end if
@@ -583,9 +605,9 @@ QString  num2texto(QString numero, QString moneda, QString singular)
     } // end while
 //    return  num_string+" "+moneda+" "+decimal+"/100 M.N.";
     if (decimal != "0" && decimal != "00") {
-         return num_string + " " + moneda + " con "+ num2texto(decimal + ".00"," centimos", " centimo");
+        return num_string + " " + moneda + " con "+ num2texto(decimal + ".00"," centimos", " centimo");
     } else {
-         return num_string + " " + moneda;
+        return num_string + " " + moneda;
     } // end if
 }
 
@@ -601,16 +623,16 @@ void centrarEnPantalla(QWidget *ventana) {
 /// Distingue entre locales o un idioma configurado.
 /// Hace la carga y la pone en funcionamiento.
 void cargaTraducciones(const QString &traduccion) {
-        /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
-        QTranslator *traductor = new QTranslator(0);
-        if (confpr->valor(CONF_TRADUCCION) == "locales") {
-            traductor->load(traduccion + QString("_") + QLocale::system().name(),
-                            confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
-        } else {
-            QString archivo = traduccion + "_" + confpr->valor(CONF_TRADUCCION);
-           traductor->load(archivo, confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
-        } // end if
-        theApp->installTranslator(traductor);
+    /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
+    QTranslator *traductor = new QTranslator(0);
+    if (confpr->valor(CONF_TRADUCCION) == "locales") {
+        traductor->load(traduccion + QString("_") + QLocale::system().name(),
+                        confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    } else {
+        QString archivo = traduccion + "_" + confpr->valor(CONF_TRADUCCION);
+        traductor->load(archivo, confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    } // end if
+    theApp->installTranslator(traductor);
 }
 
 
