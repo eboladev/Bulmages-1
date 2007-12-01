@@ -32,7 +32,7 @@ Abrevs::Abrevs(EmpresaBase *emp, QWidget *parent) : BLWidget(emp, parent) {
     */
 
 
-    m_proc->start("matchbox-keyboard -xid");
+    m_proc->start("matchbox-keyboard -xid es");
     if (!m_proc->waitForStarted())
         return;
     m_proc->waitForReadyRead();
