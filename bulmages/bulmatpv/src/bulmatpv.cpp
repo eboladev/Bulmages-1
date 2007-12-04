@@ -185,8 +185,8 @@ QWorkspace2 * BulmaTPV::workspace() {
 }
 
 
-void BulmaTPV::keyReleaseEvent ( QKeyEvent * e ) {
-	m_empresaTPV->keyReleaseEvent(e);
+void BulmaTPV::keyPressEvent ( QKeyEvent * e ) {
+	m_empresaTPV->keyPressEvent(e);
 }
 
 

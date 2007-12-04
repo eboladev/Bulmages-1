@@ -30,6 +30,6 @@
 
 extern "C" MY_EXPORT int entryPoint(BulmaTPV *);
 extern "C" MY_EXPORT int EmpresaTPV_createMainWindows_Post(EmpresaTPV *);
-extern "C" MY_EXPORT int Input_keyReleaseEvent_Post(Input *);
+extern "C" MY_EXPORT int Input_keyPressEvent_Post(Input *);
 
 

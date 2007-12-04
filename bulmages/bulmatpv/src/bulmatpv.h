@@ -55,7 +55,7 @@ public:
     QWorkspace2 *workspace();
     void createMainWindows(Splash *);
     EmpresaTPV *empresaTPV() {return m_empresaTPV;};
-    virtual void keyReleaseEvent ( QKeyEvent * e );
+    virtual void keyPressEvent ( QKeyEvent * e );
 
 public slots:
     virtual void closeEvent(QCloseEvent *);

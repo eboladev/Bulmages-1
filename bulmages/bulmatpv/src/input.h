@@ -2,36 +2,34 @@
 #define INPUT_H
 
 
-#include <QObject>
+#include <QLineEdit>
 
 #include "funcaux.h"
 #include "blwidget.h"
 #include "dbrecord.h"
 #include "fixed.h"
 
+
 class EmpresaTPV;
 
 
-class Input :  public QObject {
+class Input : public QLineEdit {
     Q_OBJECT
+
 private:
-    QString m_valorInput;   //Contiene siempre el valor del input introducido.
     EmpresaTPV *m_empresaTPV;
+
 public:
     Input(EmpresaTPV *);
     virtual ~Input();
-    virtual void keyReleaseEvent ( QKeyEvent * e );
-    virtual void pulsaTecla(int tecla);
-    QString valorInput() {return m_valorInput;};
-    void setValorInput(QString val) {m_valorInput = val;};
+    virtual void keyPressEvent(QKeyEvent *e);
+    virtual void pulsaTecla(int tecla, const QString &texto = QString());
+    QString valorInput();
+    void setValorInput(QString val);
 
 signals:
     void sendTecla(int tecla);
-//    void keyUp();
 };
 
-
-
 #endif
-
 

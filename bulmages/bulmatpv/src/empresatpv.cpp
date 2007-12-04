@@ -75,13 +75,13 @@ void EmpresaTPV::createMainWindows(Splash *splash) {
     splash->setBarraProgreso(30);
     m_progressbar->setValue(30);
 
-    /*
-        /// Creamos los nuevos tickets.
-        m_ticketActual = newTicket();
-        if (!m_ticketActual)
-    	_depura("error en el sistema, reservando memoria.", 0);
-        m_listaTickets.append(m_ticketActual);
-    */
+    
+	/// Creamos los nuevos tickets.
+	m_ticketActual = newTicket();
+	if (!m_ticketActual)
+	_depura("error en el sistema, reservando memoria.", 0);
+	m_listaTickets.append(m_ticketActual);
+
 
 
     /// Disparamos los plugins.

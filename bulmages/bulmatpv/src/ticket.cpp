@@ -448,6 +448,11 @@ void Ticket::bajar() {
 
 void Ticket::agregarCantidad(QString cantidad) {
     Fixed cant(cantidad);
+    /// Comprueba la existencia de la linea de ticket.
+    if (m_lineaActual == NULL) {
+	mensajeAviso("No existe linea");
+	return;
+    } // end if
     Fixed cantorig(m_lineaActual->DBvalue("cantlalbaran"));
     Fixed suma = cant + cantorig;
     if (suma == Fixed("0.00")) {
@@ -460,6 +465,12 @@ void Ticket::agregarCantidad(QString cantidad) {
 }
 
 void Ticket::ponerCantidad(QString cantidad) {
+    /// Comprueba la existencia de la linea de ticket.
+    if (m_lineaActual == NULL) {
+	mensajeAviso("No existe linea");
+	return;
+    } // end if
+
     if (cantidad == "0") {
         listaLineas()->removeAt(listaLineas()->indexOf(m_lineaActual));
         m_lineaActual = listaLineas()->at(0);
@@ -470,6 +481,11 @@ void Ticket::ponerCantidad(QString cantidad) {
 }
 
 void Ticket::ponerPrecio(QString precio) {
+    /// Comprueba la existencia de la linea de ticket.
+    if (m_lineaActual == NULL) {
+	mensajeAviso("No existe linea");
+	return;
+    } // end if
     m_lineaActual->setDBvalue("pvplalbaran", precio);
     pintar();
 }

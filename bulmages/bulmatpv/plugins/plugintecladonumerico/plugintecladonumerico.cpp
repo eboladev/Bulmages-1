@@ -58,7 +58,7 @@ int EmpresaTPV_createMainWindows_Post(EmpresaTPV *etpv) {
 	return 0;
 }
 
-int Input_keyReleaseEvent_Post(Input *in) {
+int Input_keyPressEvent_Post(Input *in) {
     g_tecl->mui_display->setText(in->valorInput());
 }
 
