@@ -146,7 +146,7 @@
       <cursor>7</cursor>
      </property>
      <property name="text" >
-      <string>0</string>
+      <string></string>
      </property>
      <property name="alignment" >
       <set>Qt::AlignRight</set>
@@ -320,7 +320,26 @@
       </size>
      </property>
      <property name="text" >
-      <string>PRICE</string>
+      <string>PRECIO</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="2" >
+    <widget class="QToolButton" name="mui_borra" >
+     <property name="minimumSize" >
+      <size>
+       <width>48</width>
+       <height>48</height>
+      </size>
+     </property>
+     <property name="maximumSize" >
+      <size>
+       <width>48</width>
+       <height>48</height>
+      </size>
+     </property>
+     <property name="text" >
+      <string>C</string>
      </property>
     </widget>
    </item>
