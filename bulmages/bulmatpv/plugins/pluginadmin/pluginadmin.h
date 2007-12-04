@@ -1,7 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,50 +18,16 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef EMPRESATPV_H
-#define EMPRESATPV_H
-
-#include <QObject>
-#include <QAssistantClient>
-#include <QLibraryInfo>
-
-#include "postgresiface2.h"
-#include "listventanas.h"
-#include "qworkspace2.h"
-#include "empresabase.h"
-#include "splashscreen.h"
-#include "ticket.h"
-#include "input.h"
-
-
-class BulmaTPV;
-
-/// Clase company (empresa).
-/** Clase principal del programa donde se almacenan y gestionan
-    todos los datos de la empresa con la que se est&aacute; trabajando.
-    Deriva de postgresiface ya que tiene el tratamiento de la base de datos. */
-class EmpresaTPV : public EmpresaBase, public Input {
-private:
-    /// Puntero al mainWindow
-    BulmaTPV *m_bulmaTPV;
-    QList<Ticket *> m_listaTickets;
-    Ticket *m_ticketActual;
-
-public:
-    EmpresaTPV(BulmaTPV *bges);
-    virtual ~EmpresaTPV();
-    void createMainWindows(Splash *);
-    void guardaConf();
-    void cargaConf();
-    Ticket *newTicket();
-    void cobrar();
-    void z();
-    void x();
-    Ticket *ticketActual() {return m_ticketActual;};
-    QList<Ticket *> *listaTickets() {return &m_listaTickets;};
-    void setTicketActual(Ticket *tick) {m_ticketActual = tick;};
-
-};
-
+#ifdef Q_WS_WIN
+# define MY_EXPORT __declspec(dllexport)
+#else
+# define MY_EXPORT
 #endif
+
+#include "bulmatpv.h"
+#include "empresatpv.h"
+
+extern "C" MY_EXPORT int entryPoint(BulmaTPV *);
+extern "C" MY_EXPORT int EmpresaTPV_createMainWindows_Post(EmpresaTPV *);
+
 

@@ -7,6 +7,7 @@ SUBDIRS += plugintecladonumerico
 SUBDIRS += plugintotal
 SUBDIRS += pluginartgraficos
 SUBDIRS += pluginabrevs
+SUBDIRS += pluginadmin
 
 
 #Nota: Para implementar plugins que no van a ser liberados dentro del ambito de la asociacion IGLUES

@@ -1,0 +1,64 @@
+<ui version="4.0" >
+ <class>AdminBase</class>
+ <widget class="QWidget" name="AdminBase" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>164</width>
+    <height>92</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>0</number>
+   </property>
+   <property name="spacing" >
+    <number>0</number>
+   </property>
+   <item row="1" column="2" >
+    <widget class="QToolButton" name="mui_z" >
+     <property name="minimumSize" >
+      <size>
+       <width>72</width>
+       <height>72</height>
+      </size>
+     </property>
+     <property name="maximumSize" >
+      <size>
+       <width>200</width>
+       <height>72</height>
+      </size>
+     </property>
+     <property name="text" >
+      <string>Z</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1" >
+    <widget class="QToolButton" name="mui_x" >
+     <property name="minimumSize" >
+      <size>
+       <width>72</width>
+       <height>72</height>
+      </size>
+     </property>
+     <property name="maximumSize" >
+      <size>
+       <width>200</width>
+       <height>72</height>
+      </size>
+     </property>
+     <property name="text" >
+      <string>X</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

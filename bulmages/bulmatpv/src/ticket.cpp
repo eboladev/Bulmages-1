@@ -41,11 +41,16 @@ Ticket::Ticket(EmpresaBase *emp, QWidget *parent) : BLWidget(emp, parent), DBRec
     addDBCampo ( "nomticket", DBCampo::DBvarchar, DBCampo::DBNoSave, QApplication::translate("Ticket", "nombre"));
     addDBCampo ( "idalbaran", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "Ticket", "Id albaran" ) );
     addDBCampo ( "fechaalbaran", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate ( "Ticket", "Id fechaalbaran" ) );
+    addDBCampo ( "horaalbaran", DBCampo::DBvarchar, DBCampo::DBNoSave, QApplication::translate ( "Ticket", "hora" ) );
     addDBCampo ( "idtrabajador", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "Ticket", "Trabajador" ) );
     addDBCampo ( "idcliente", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "Ticket", "Cliente" ) );
     addDBCampo ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "Ticket", "Almacen" ) );
     addDBCampo ( "numalbaran", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Ticket", "Num" ) );
+    addDBCampo ( "refalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Ticket", "Referencia" ) );
+    addDBCampo ( "ticketalbaran", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate ( "Ticket", "Ticket" ) );
 
+
+    setDBvalue("ticketalbaran", "TRUE");
     setDBvalue("idalmacen", confpr->valor(CONF_IDALMACEN_DEFECTO));
     setDBvalue("idcliente", confpr->valor(CONF_IDCLIENTE_DEFECTO));
     setDBvalue("descalbaran", "Ticket de venta");
@@ -83,6 +88,7 @@ DBRecord * Ticket::agregarLinea() {
     item->addDBCampo ( "desclalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Ticket", "Nombre Articulo" ) );
 
 
+    item->setDBvalue("descuentolalbaran", "0");
     /// Agregamos el DBRecord a la lista de lineas de ticket.
     m_listaLineas->append(item);
 
@@ -199,36 +205,63 @@ void  Ticket::imprimir() {
     file.write(QString("Tel: 971 29 06 29\n").toAscii());
     /// Imprimimos espacios
     file.write ( "\n \n", 3);
+
+    /// Imprimimos el numero de Ticket
+    file.write( QString("Ticket: ").toAscii());
+    file.write( DBvalue("numalbaran").toAscii());
+    file.write ( "\n", 1);
+
+
     /// Imprimimos la fecha
     file.write( QString("Fecha: ").toAscii());
     QDate fecha = QDate::currentDate();
     QString sfecha = fecha.toString("d-M-yyyy");
     file.write( sfecha.toAscii());
+    QTime hora = QTime::currentTime();
+    QString stime = " " + hora.toString("HH:mm");
+    file.write( stime.toAscii());
     file.write ( "\n", 1);
 
 
     /// Imprimimos el trabajador
-            file.write( QString("Trabajador: ").toAscii());
-            file.write( DBvalue("idtrabajador").toAscii());
-            file.write ( "\n", 1);
+    file.write( QString("Trabajador: ").toAscii());
+    cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM trabajador WHERE idtrabajador=" + DBvalue("idtrabajador"));
+    if (!cur->eof()) {
+	    file.write( DBvalue("idtrabajador").toAscii());
+	    file.write(" ");
+	    file.write( cur->valor("nomtrabajador").toAscii());
+    	file.write ( "\n", 1);
+    } // end if
+    delete cur;
 
     /// Imprimimos el cliente
-	cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM cliente WHERE idcliente=" + DBvalue("idcliente"));
-	if (!cur->eof()) {
-            file.write( QString("Cliente: ").toAscii());
-            file.write( cur->valor("cifcliente").toAscii());
-            file.write ( " ", 1);
-            file.write( cur->valor("nomcliente").toAscii());
-            file.write ( "\n", 1);
-	} // end if
+    cur = empresaBase()->cargacursor("SELECT * FROM cliente WHERE idcliente=" + DBvalue("idcliente"));
+    if (!cur->eof()) {
+        file.write( QString("Cliente: ").toAscii());
+        file.write( cur->valor("cifcliente").toAscii());
+        file.write ( " ", 1);
+        file.write( cur->valor("nomcliente").toAscii());
+        file.write ( "\n", 1);
+    } // end if
+    delete cur;
+
+    /// Imprimimos el almacen
+    cur = empresaBase()->cargacursor("SELECT * FROM almacen WHERE idalmacen=" + DBvalue("idalmacen"));
+    if (!cur->eof()) {
+        file.write( QString("Almacen: ").toAscii());
+        file.write( cur->valor("nomalmacen").toAscii());
+        file.write ( "\n", 1);
+    } // end if
+    delete cur;
 
 
-
+    file.write ( "\n", 1);
+    file.write ( "\n", 1);
     /*
             file.write( QString("Descripcion: ").toAscii());
             file.write( m_albaranClienteView->DBvalue("descalbaran").toAscii());
             file.write ( "\n", 1);
-*/
+    */
 // ============================================
     /// Impresion de los contenidos.
     QString l;
@@ -254,11 +287,15 @@ void  Ticket::imprimir() {
         descuentolinea = descuentolinea + (cantpvp * desc1 / 100);
         basesimp[linea->DBvalue("ivalalbaran")] = basesimp[linea->DBvalue("ivalalbaran")] + base;
         basesimpreqeq[linea->DBvalue("reqeqlalbaran")] = basesimpreqeq[linea->DBvalue("reqeqlalbaran")] + base;
-	/// Hacemos la impresion
-        QString str = linea->DBvalue("cantlalbaran").rightJustified(5,' ')+QString("   ")+linea->DBvalue("desclalbaran").leftJustified(23,' ', TRUE)+linea->DBvalue("pvplalbaran").rightJustified(10, ' ');
+        /// Hacemos la impresion
+        QString str = linea->DBvalue("cantlalbaran").rightJustified(5,' ')+QString("   ")+linea->DBvalue("desclalbaran").leftJustified(24,' ', TRUE)+linea->DBvalue("pvplalbaran").rightJustified(10, ' ');
         file.write(str.toAscii());
         file.write ( "\n", 1);
     } // end for
+
+
+    file.write ( "\n", 1);
+    file.write ( "\n", 1);
 
     Fixed basei("0.00");
     base::Iterator it;
@@ -280,8 +317,8 @@ void  Ticket::imprimir() {
         } else {
             parbaseimp = it.value();
         } // end if
-        QString str = "Base Imp" + it.key() + "% " + parbaseimp.toQString();
-        file.write(str.toAscii());
+        QString str = "Base Imp" + it.key() + "% " + parbaseimp.toQString().rightJustified(10,' ');
+        file.write(str.rightJustified(42,' ').toAscii());
         file.write ( "\n", 1);
         totbaseimp = totbaseimp + parbaseimp;
     } // end for
@@ -296,8 +333,8 @@ void  Ticket::imprimir() {
         } else {
             pariva = it.value() * piva / 100;
         } // end if
-        QString str = "IVA" + it.key() + "% " + pariva.toQString();
-        file.write(str.toAscii());
+        QString str = "IVA" + it.key() + "% " + pariva.toQString().rightJustified(10,' ');
+        file.write(str.rightJustified(42,' ').toAscii());
         file.write ( "\n", 1);
 
         totiva = totiva + pariva;
@@ -313,8 +350,8 @@ void  Ticket::imprimir() {
         } else {
             parreqeq = it.value() * preqeq / 100;
         } // end if
-        QString str = "R. Eq" + it.key() + "% " + parreqeq.toQString();
-        file.write(str.toAscii());
+        QString str = "R. Eq" + it.key() + "% " + parreqeq.toQString().rightJustified(10,' ');
+        file.write(str.rightJustified(42,' ').toAscii());
         file.write ( "\n", 1);
         totreqeq = totreqeq + parreqeq;
     } // end for
@@ -323,54 +360,57 @@ void  Ticket::imprimir() {
 
     Fixed totirpf = totbaseimp * irpf / 100;
 
-        QString str = "Base Imp" + totbaseimp.toQString();
-        file.write(str.toAscii());
-        file.write ( "\n", 1);
+    file.write (QString("=======================\n").rightJustified(43,' ').toAscii());
 
-        str = "IVA" + totiva.toQString();
-        file.write(str.toAscii());
-        file.write ( "\n", 1);
 
-        str = "IRPF" + totirpf.toQString();
-        file.write(str.toAscii());
-        file.write ( "\n", 1);
+    QString str = "B.IMP " + totbaseimp.toQString().rightJustified(10,' ');
+    file.write(str.rightJustified(42,' ').toAscii());
+    file.write ( "\n", 1);
 
-            /// Imprimimos el total
-            file.write (QString("____________________\n").rightJustified(42,' ').toAscii());
+    str = "IVA " + totiva.toQString().rightJustified(10,' ');
+    file.write(str.rightJustified(42,' ').toAscii());
+    file.write ( "\n", 1);
 
-	Fixed total = totiva + totbaseimp + totreqeq - totirpf;
-        str = "TOTAL" + total.toQString();
-        file.write(str.toAscii());
-        file.write ( "\n", 1);
+    str = "IRPF " + totirpf.toQString().rightJustified(10,' ');
+    file.write(str.rightJustified(42,' ').toAscii());
+    file.write ( "\n", 1);
+
+    /// Imprimimos el total
+    file.write (QString("____________________\n").rightJustified(43,' ').toAscii());
+
+    Fixed total = totiva + totbaseimp + totreqeq - totirpf;
+    str = "TOTAL " + total.toQString().rightJustified(10,' ');
+    file.write(str.rightJustified(42,' ').toAscii());
+    file.write ( "\n", 1);
 
 
 // ============================================
 
 
-            /// Imprimimos espacios
-            file.write ( "\n \n \n \n", 7);
+    /// Imprimimos espacios
+    file.write ( "\n \n \n \n", 7);
 
-            /// Preparamos para un codigo de barras
-            /// Especificamos la altura del codigo de barras
-            file.write ("\x1Dh\x40",3);
-            /// Especificamos que los caracteres vayan debajo del codigo de barras
-            file.write ( "\x1DH\x02",3);
-            /// Establecemos el tipo de codificacion para el codigo de barras
-            file.write ( "\x1D",1);
-            file.write ( "f\x01",2);
-            ;
-            /// Ponemos el ancho de la fuente a uno
-            file.write ( "\x1D\x77\x01",3);
-            /// Imprimimos la palabra top con el juego de caracteres 04
-            file.write ( "\x1Dk\x04",3);
-            file.write (QString("ALB").toAscii());
-            file.write (" ", 1);
-            file.write (DBvalue("idalbaran").toAscii());
-            file.write (" ", 1);
-            file.write (DBvalue("numalbaran").toAscii());
-            file.write (" ", 1);
-            file.write (DBvalue("refalbaran").toAscii());
-            file.write ("\x00", 1);
+    /// Preparamos para un codigo de barras
+    /// Especificamos la altura del codigo de barras
+    file.write ("\x1Dh\x40",3);
+    /// Especificamos que los caracteres vayan debajo del codigo de barras
+    file.write ( "\x1DH\x02",3);
+    /// Establecemos el tipo de codificacion para el codigo de barras
+    file.write ( "\x1D",1);
+    file.write ( "f\x01",2);
+    ;
+    /// Ponemos el ancho de la fuente a uno
+    file.write ( "\x1D\x77\x01",3);
+    /// Imprimimos la palabra top con el juego de caracteres 04
+    file.write ( "\x1Dk\x04",3);
+    file.write (QString("ALB").toAscii());
+    file.write (" ", 1);
+    file.write (DBvalue("idalbaran").toAscii());
+    file.write (" ", 1);
+    file.write (DBvalue("numalbaran").toAscii());
+    file.write (" ", 1);
+    file.write (DBvalue("refalbaran").toAscii());
+    file.write ("\x00", 1);
 
 
     /// Imprimimos el dibujo final
@@ -474,11 +514,14 @@ int Ticket::guardar() {
             QString id1;
             item = listaLineas()->at(i);
             item->setDBvalue("idalbaran", id);
-	    item->setDBvalue("ordenlalbaran", QString::number(i));
+            item->setDBvalue("ordenlalbaran", QString::number(i));
             item->DBsave(id1);
         }// end for
         empresaBase()->commit();
 
+        cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM albaran WHERE idalbaran = " + id);
+        DBload(cur);
+        delete cur;
 
         _depura("END Ticket::guardar", 0);
         return 0;

@@ -57,7 +57,7 @@ int entryPoint(BulmaTPV *tpv) {
 }
 
 int EmpresaTPV_createMainWindows_Post(EmpresaTPV *etpv) {
-	g_tot = new Total(g_doc1);
+	g_tot = new Total(etpv, g_doc1);
 //	etpv->pWorkspace()->addWindow(g_tot);
         g_doc1->setWidget(g_tot);
 
