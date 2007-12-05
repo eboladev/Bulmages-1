@@ -51,6 +51,9 @@ void ArtGraficos::muestraPantalla(int numpantalla) {
     /// Cogemos la coordenada Y
     QString cellwidth = pantalla.firstChildElement("CELLWIDTH").toElement().text();
 
+    /// Cogemos el titulo de la pantalla
+    QString titulo = pantalla.firstChildElement("NOMBRE").toElement().text();
+    mui_titulo->setText(titulo);
 
     mui_list->clear();
     mui_list->setRowCount(grid.toInt());

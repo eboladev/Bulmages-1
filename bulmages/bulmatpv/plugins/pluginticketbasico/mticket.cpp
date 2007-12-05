@@ -4,6 +4,9 @@
 #include "dbrecord.h"
 #include "bulmatpv.h"
 #include "subform2bt.h"
+#include <QTextBrowser>
+
+extern QTextBrowser *g_browser;
 
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
 /// como un QMap.
@@ -28,9 +31,15 @@ MTicket::~MTicket() {
 void MTicket::pintar() {
     _depura("MTicket::pintar", 0);
 	Ticket *tick =     ((EmpresaTPV *)empresaBase())->ticketActual();
-    QString html = "";
-    html += "Ticket: " + tick->DBvalue("nomticket") + "<BR>";
-    html += "Trabajador: " + tick->DBvalue("idtrabajador") + "<BR>";
+    QString html = "<font size=\"1\">";
+    QString html1 = "<font size=\"1\">";
+
+    html1 += "Ticket: " + tick->DBvalue("nomticket") + "<BR>";
+    html1 += "Trabajador: " + tick->DBvalue("idtrabajador") + "<BR>";
+    QString query = "SELECT * FROM cliente WHERE idcliente = " + tick->DBvalue("idcliente");
+    cursor2 *cur1 = empresaBase()->cargacursor(query);
+    html1 += "Cliente: " + tick->DBvalue("idcliente") + " " + cur1->valor("nomcliente") + "<BR>";
+    delete cur1;
 	
     html += "<TABLE border=\"0\">";
     DBRecord *item;
@@ -108,7 +117,7 @@ void MTicket::pintar() {
         } else {
             parbaseimp = it.value();
         } // end if
-	html += "Base Imp " + it.key() + "% "+parbaseimp.toQString() + "<BR>"; 
+	html1 += "Base Imp " + it.key() + "% "+parbaseimp.toQString() + "<BR>"; 
         totbaseimp = totbaseimp + parbaseimp;
     } // end for
 
@@ -122,7 +131,7 @@ void MTicket::pintar() {
         } else {
             pariva = it.value() * piva / 100;
         } // end if
-	html += "IVA " + it.key() + "% "+pariva.toQString() + "<BR>"; 
+	html1 += "IVA " + it.key() + "% "+pariva.toQString() + "<BR>"; 
         totiva = totiva + pariva;
     } // end for
 
@@ -136,7 +145,7 @@ void MTicket::pintar() {
         } else {
             parreqeq = it.value() * preqeq / 100;
         } // end if
-	html += "R.Eq " + it.key() + "% "+parreqeq.toQString() + "<BR>"; 
+	html1 += "R.Eq " + it.key() + "% "+parreqeq.toQString() + "<BR>"; 
         totreqeq = totreqeq + parreqeq;
     } // end for
 
@@ -144,20 +153,22 @@ void MTicket::pintar() {
 
     Fixed totirpf = totbaseimp * irpf / 100;
 
-	html += "<B>Base Imp. " + totbaseimp.toQString() + "<BR>"; 
-	html += "<B>IVA. " + totiva.toQString() + "<BR>"; 
-	html += "<B>IRPF. " + totirpf.toQString() + "<BR>"; 
+	html1 += "<B>Base Imp. " + totbaseimp.toQString() + "<BR>"; 
+	html1 += "<B>IVA. " + totiva.toQString() + "<BR>"; 
+	html1 += "<B>IRPF. " + totirpf.toQString() + "<BR>"; 
 
 	Fixed total = totiva + totbaseimp + totreqeq - totirpf;
-	html += "<B>Total: " + total.toQString() + "<BR>"; 
+	html1 += "<B>Total: " + total.toQString() + "<BR>"; 
 
 
-//    pintatotales(totiva, totbaseimp, totiva + totbaseimp + totreqeq - totirpf, (basei * porcentt / 100) + descuentolinea, totirpf, totreqeq);
-    _depura("FichaBf::calculaypintatotales", 0);
+
+	html += "</FONT>";
+	html1 += "</FONT>";
 
 // ======================================
     /// Pintamos el HTML en el textBrowser
     mui_browser->setText(html);
+    g_browser->setText(html1);
     _depura("END MTicket::pintar", 0);
 }
 

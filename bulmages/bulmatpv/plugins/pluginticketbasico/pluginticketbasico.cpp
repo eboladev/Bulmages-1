@@ -31,7 +31,11 @@
 
 
 QDockWidget *g_doc1;
+QDockWidget *g_doc2;
+
 MTicket *g_bud;
+QTextBrowser *g_browser;
+
 
 ///
 /**
@@ -54,6 +58,16 @@ int entryPoint(BulmaTPV *tpv) {
     tpv->addDockWidget(Qt::RightDockWidgetArea, g_doc1);
     g_doc1->show();
 
+
+    /// Vamos a probar con un docwindow.
+    g_doc2 = new QDockWidget("Total", tpv);
+    g_doc2->setFeatures(QDockWidget::AllDockWidgetFeatures);
+
+    g_doc2->setGeometry(100, 100, 100, 500);
+    g_doc2->resize(330, 400);
+    tpv->addDockWidget(Qt::LeftDockWidgetArea, g_doc2);
+    g_doc2->show();
+
     _depura("END entryPoint", 0);
     return 0;
 }
@@ -61,6 +75,10 @@ int entryPoint(BulmaTPV *tpv) {
 int EmpresaTPV_createMainWindows_Post(EmpresaTPV *etpv) {
     g_bud =  new MTicket(etpv, g_doc1);
         g_doc1->setWidget((QWidget *)g_bud);
+
+	g_browser = new QTextBrowser(g_doc2);
+	g_doc2->setWidget(g_browser);
+
 	return 0;
 }
 

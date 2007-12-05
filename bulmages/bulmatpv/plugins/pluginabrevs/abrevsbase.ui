@@ -5,21 +5,40 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>288</width>
-    <height>72</height>
+    <width>418</width>
+    <height>84</height>
    </rect>
   </property>
   <property name="windowTitle" >
    <string>Form</string>
   </property>
-  <layout class="QGridLayout" >
+  <layout class="QHBoxLayout" >
    <property name="margin" >
     <number>0</number>
    </property>
    <property name="spacing" >
     <number>0</number>
    </property>
-   <item row="0" column="1" >
+   <item>
+    <widget class="QToolButton" name="mui_teclado" >
+     <property name="minimumSize" >
+      <size>
+       <width>72</width>
+       <height>72</height>
+      </size>
+     </property>
+     <property name="maximumSize" >
+      <size>
+       <width>200</width>
+       <height>72</height>
+      </size>
+     </property>
+     <property name="text" >
+      <string>TECLADO</string>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QToolButton" name="mui_usuario" >
      <property name="minimumSize" >
       <size>
@@ -38,8 +57,8 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="3" >
-    <widget class="QToolButton" name="mui_recuperar" >
+   <item>
+    <widget class="QToolButton" name="mui_cliente" >
      <property name="minimumSize" >
       <size>
        <width>72</width>
@@ -53,11 +72,11 @@
       </size>
      </property>
      <property name="text" >
-      <string>RECUPERAR</string>
+      <string>CLIENTE</string>
      </property>
     </widget>
    </item>
-   <item row="0" column="2" >
+   <item>
     <widget class="QToolButton" name="mui_aparcar" >
      <property name="minimumSize" >
       <size>
@@ -76,8 +95,8 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="0" >
-    <widget class="QToolButton" name="mui_teclado" >
+   <item>
+    <widget class="QToolButton" name="mui_recuperar" >
      <property name="minimumSize" >
       <size>
        <width>72</width>
@@ -91,7 +110,7 @@
       </size>
      </property>
      <property name="text" >
-      <string>TECLADO</string>
+      <string>RECUPERAR</string>
      </property>
     </widget>
    </item>

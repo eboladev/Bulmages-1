@@ -29,9 +29,12 @@
      </property>
      <property name="maximumSize" >
       <size>
-       <width>48</width>
-       <height>48</height>
+       <width>200</width>
+       <height>200</height>
       </size>
+     </property>
+     <property name="focusPolicy" >
+      <enum>Qt::NoFocus</enum>
      </property>
      <property name="text" >
       <string>3</string>
@@ -48,9 +51,12 @@
      </property>
      <property name="maximumSize" >
       <size>
-       <width>48</width>
-       <height>48</height>
+       <width>200</width>
+       <height>200</height>
       </size>
+     </property>
+     <property name="focusPolicy" >
+      <enum>Qt::NoFocus</enum>
      </property>
      <property name="text" >
       <string>9</string>
@@ -67,9 +73,12 @@
      </property>
      <property name="maximumSize" >
       <size>
-       <width>48</width>
-       <height>48</height>
+       <width>200</width>
+       <height>200</height>
       </size>
+     </property>
+     <property name="focusPolicy" >
+      <enum>Qt::NoFocus</enum>
      </property>
      <property name="text" >
       <string>2</string>
@@ -86,9 +95,12 @@
      </property>
      <property name="maximumSize" >
       <size>
-       <width>48</width>
-       <height>48</height>
+       <width>200</width>
+       <height>200</height>
       </size>
+     </property>
+     <property name="focusPolicy" >
+      <enum>Qt::NoFocus</enum>
      </property>
      <property name="text" >
       <string>8</string>
@@ -105,9 +117,12 @@
      </property>
      <property name="maximumSize" >
       <size>
-       <width>48</width>
-       <height>48</height>
+       <width>200</width>
+       <height>200</height>
       </size>
+     </property>
+     <property name="focusPolicy" >
+      <enum>Qt::NoFocus</enum>
      </property>
      <property name="text" >
       <string>1</string>
@@ -124,9 +139,12 @@
      </property>
      <property name="maximumSize" >
       <size>
-       <width>48</width>
-       <height>48</height>
+       <width>200</width>
+       <height>200</height>
       </size>
+     </property>
+     <property name="focusPolicy" >
+      <enum>Qt::NoFocus</enum>
      </property>
      <property name="text" >
       <string>7</string>
@@ -145,8 +163,11 @@
      <property name="cursor" >
       <cursor>7</cursor>
      </property>
+     <property name="focusPolicy" >
+      <enum>Qt::NoFocus</enum>
+     </property>
      <property name="text" >
-      <string></string>
+      <string/>
      </property>
      <property name="alignment" >
       <set>Qt::AlignRight</set>
@@ -163,9 +184,12 @@
      </property>
      <property name="maximumSize" >
       <size>
-       <width>48</width>
-       <height>48</height>
+       <width>200</width>
+       <height>200</height>
       </size>
+     </property>
+     <property name="focusPolicy" >
+      <enum>Qt::NoFocus</enum>
      </property>
      <property name="text" >
       <string>4</string>
@@ -182,9 +206,12 @@
      </property>
      <property name="maximumSize" >
       <size>
-       <width>48</width>
-       <height>48</height>
+       <width>200</width>
+       <height>200</height>
       </size>
+     </property>
+     <property name="focusPolicy" >
+      <enum>Qt::NoFocus</enum>
      </property>
      <property name="text" >
       <string>5</string>
@@ -201,9 +228,12 @@
      </property>
      <property name="maximumSize" >
       <size>
-       <width>48</width>
-       <height>48</height>
+       <width>200</width>
+       <height>200</height>
       </size>
+     </property>
+     <property name="focusPolicy" >
+      <enum>Qt::NoFocus</enum>
      </property>
      <property name="text" >
       <string>6</string>
@@ -220,9 +250,12 @@
      </property>
      <property name="maximumSize" >
       <size>
-       <width>48</width>
-       <height>48</height>
+       <width>200</width>
+       <height>200</height>
       </size>
+     </property>
+     <property name="focusPolicy" >
+      <enum>Qt::NoFocus</enum>
      </property>
      <property name="text" >
       <string>+</string>
@@ -239,9 +272,12 @@
      </property>
      <property name="maximumSize" >
       <size>
-       <width>48</width>
-       <height>48</height>
+       <width>200</width>
+       <height>200</height>
       </size>
+     </property>
+     <property name="focusPolicy" >
+      <enum>Qt::NoFocus</enum>
      </property>
      <property name="text" >
       <string>-</string>
@@ -258,9 +294,12 @@
      </property>
      <property name="maximumSize" >
       <size>
-       <width>48</width>
-       <height>48</height>
+       <width>200</width>
+       <height>200</height>
       </size>
+     </property>
+     <property name="focusPolicy" >
+      <enum>Qt::NoFocus</enum>
      </property>
      <property name="text" >
       <string>*</string>
@@ -277,9 +316,12 @@
      </property>
      <property name="maximumSize" >
       <size>
-       <width>48</width>
-       <height>48</height>
+       <width>200</width>
+       <height>200</height>
       </size>
+     </property>
+     <property name="focusPolicy" >
+      <enum>Qt::NoFocus</enum>
      </property>
      <property name="text" >
       <string>/</string>
@@ -296,9 +338,12 @@
      </property>
      <property name="maximumSize" >
       <size>
-       <width>48</width>
-       <height>48</height>
+       <width>200</width>
+       <height>200</height>
       </size>
+     </property>
+     <property name="focusPolicy" >
+      <enum>Qt::NoFocus</enum>
      </property>
      <property name="text" >
       <string>CANT</string>
@@ -315,9 +360,12 @@
      </property>
      <property name="maximumSize" >
       <size>
-       <width>48</width>
-       <height>48</height>
+       <width>200</width>
+       <height>200</height>
       </size>
+     </property>
+     <property name="focusPolicy" >
+      <enum>Qt::NoFocus</enum>
      </property>
      <property name="text" >
       <string>PRECIO</string>
@@ -334,9 +382,12 @@
      </property>
      <property name="maximumSize" >
       <size>
-       <width>48</width>
-       <height>48</height>
+       <width>200</width>
+       <height>200</height>
       </size>
+     </property>
+     <property name="focusPolicy" >
+      <enum>Qt::NoFocus</enum>
      </property>
      <property name="text" >
       <string>C</string>
@@ -353,9 +404,12 @@
      </property>
      <property name="maximumSize" >
       <size>
-       <width>48</width>
-       <height>48</height>
+       <width>200</width>
+       <height>200</height>
       </size>
+     </property>
+     <property name="focusPolicy" >
+      <enum>Qt::NoFocus</enum>
      </property>
      <property name="text" >
       <string>0</string>
@@ -372,9 +426,12 @@
      </property>
      <property name="maximumSize" >
       <size>
-       <width>48</width>
-       <height>48</height>
+       <width>200</width>
+       <height>200</height>
       </size>
+     </property>
+     <property name="focusPolicy" >
+      <enum>Qt::NoFocus</enum>
      </property>
      <property name="text" >
       <string>00</string>
@@ -391,9 +448,12 @@
      </property>
      <property name="maximumSize" >
       <size>
-       <width>48</width>
-       <height>48</height>
+       <width>200</width>
+       <height>200</height>
       </size>
+     </property>
+     <property name="focusPolicy" >
+      <enum>Qt::NoFocus</enum>
      </property>
      <property name="text" >
       <string>=</string>
@@ -410,9 +470,12 @@
      </property>
      <property name="maximumSize" >
       <size>
-       <width>48</width>
-       <height>48</height>
+       <width>200</width>
+       <height>200</height>
       </size>
+     </property>
+     <property name="focusPolicy" >
+      <enum>Qt::NoFocus</enum>
      </property>
      <property name="text" >
       <string>.</string>

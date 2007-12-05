@@ -109,3 +109,21 @@ void Abrevs::on_mui_recuperar_clicked() {
     Tickets *trab = new Tickets(empresaBase(), 0);
     trab->exec();
 }
+
+
+void Abrevs::on_mui_cliente_clicked() {
+    EmpresaTPV *emp = (EmpresaTPV *) empresaBase();
+
+    if (emp->valorInput() == "") return;
+    QString query = "SELECT * FROM cliente WHERE codcliente = '" + emp->valorInput() + "'";
+    cursor2 *cur = emp->cargacursor(query);
+    if(!cur->eof()) {
+    	emp->ticketActual()->setDBvalue("idcliente", cur->valor("idcliente"));
+    } else {
+	emp->ticketActual()->setDBvalue("idcliente", confpr->valor(CONF_IDCLIENTE_DEFECTO));
+    } // end if
+    delete cur;
+    emp->ticketActual()->pintar();
+    emp->setValorInput("");
+    emp->pulsaTecla(0,"");
+}

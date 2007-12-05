@@ -22,6 +22,7 @@ public slots:
     virtual void on_mui_usuario_clicked();
     virtual void on_mui_aparcar_clicked();
     virtual void on_mui_recuperar_clicked();
+    virtual void on_mui_cliente_clicked();
 
 };
 
