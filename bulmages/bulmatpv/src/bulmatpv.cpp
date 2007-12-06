@@ -77,7 +77,7 @@ BulmaTPV::BulmaTPV(QString bd) : QMainWindow() {
     m_empresaTPV->setWorkspace(pWorkspace);
 
 
-    connect(pWorkspace, SIGNAL(windowActivated(QWidget *)), this, SLOT(informaindexador(QWidget *)));
+    //connect(pWorkspace, SIGNAL(windowActivated(QWidget *)), this, SLOT(informaindexador(QWidget *)));
 
     setCorner(Qt::TopLeftCorner, Qt::TopDockWidgetArea);
     setCorner(Qt::TopRightCorner, Qt::RightDockWidgetArea);

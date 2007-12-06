@@ -92,7 +92,7 @@
          <string/>
         </property>
         <property name="icon" >
-         <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_back.png</iconset>
+         <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_up.png</iconset>
         </property>
         <property name="iconSize" >
          <size>
@@ -126,7 +126,7 @@
          <string/>
         </property>
         <property name="icon" >
-         <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_forward.png</iconset>
+         <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_down.png</iconset>
         </property>
         <property name="iconSize" >
          <size>

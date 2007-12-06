@@ -25,6 +25,7 @@
         <file>images/png/i_cuentasNeto.xpm</file>
         <file>images/png/i_cuentasPasivo.xpm</file>
         <file>images/png/i_diario.xpm</file>
+        <file>images/png/i_down.png</file>
         <file>images/png/i_downArrow.png</file>
         <file>images/png/i_edit.png</file>
         <file>images/png/i_editCopy</file>
@@ -101,6 +102,7 @@
         <file>images/png/i_tux.png</file>
         <file>images/png/i_tuxPeq.png</file>
         <file>images/png/i_undo</file>
+        <file>images/png/i_up.png</file>
         <file>images/png/i_usuario.xpm</file>
         <file>images/png/i_windowNew.png</file>
         <file>images/png/i_xClipboard.png</file>

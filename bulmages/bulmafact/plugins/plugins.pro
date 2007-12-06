@@ -35,5 +35,6 @@ SUBDIRS += plugin \
 
 # Dentro del archivo privatecode.pro basta tener una directiva SUBDIRS apuntando al directorio del
 # plugin.
+
 include(privatecode.pro)
 

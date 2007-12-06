@@ -31,7 +31,8 @@ MTicket::~MTicket() {
 void MTicket::pintar() {
     _depura("MTicket::pintar", 0);
 	Ticket *tick =     ((EmpresaTPV *)empresaBase())->ticketActual();
-    QString html = "<font size=\"1\">";
+    //QString html = "<font size=\"1\">";
+    QString html = "<p style=\"font-family:monospace; font-size: 12pt;\">";
     QString html1 = "<font size=\"1\">";
 
     html1 += "Ticket: " + tick->DBvalue("nomticket") + "<BR>";
@@ -162,7 +163,7 @@ void MTicket::pintar() {
 
 
 
-	html += "</FONT>";
+	html += "</p>";
 	html1 += "</FONT>";
 
 // ======================================
