@@ -160,7 +160,15 @@ DBRecord *Ticket::insertarArticulo(QString idArticulo, Fixed cantidad, bool nuev
 }
 
 
-void  Ticket::borrarArticulo(DBRecord *linea, Fixed cantidad) {}
+void  Ticket::borrarArticulo(DBRecord *linea, Fixed cantidad) {
+	/// Comprueba que haya un articulo seleccionado.
+	if (m_lineaActual == NULL) {
+		return;
+	}
+
+	m_lineaActual->borrar();
+
+}
 
 
 void  Ticket::vaciarTicket() {}
@@ -465,28 +473,30 @@ void Ticket::agregarCantidad(QString cantidad) {
 }
 
 void Ticket::ponerCantidad(QString cantidad) {
+     Fixed cant(cantidad);
     /// Comprueba la existencia de la linea de ticket.
     if (m_lineaActual == NULL) {
 	mensajeAviso("No existe linea");
 	return;
     } // end if
 
-    if (cantidad == "0") {
+    if (cant == 0) {
         listaLineas()->removeAt(listaLineas()->indexOf(m_lineaActual));
         m_lineaActual = listaLineas()->at(0);
     } else {
-        m_lineaActual->setDBvalue("cantlalbaran", cantidad);
+        m_lineaActual->setDBvalue("cantlalbaran", cant.toQString());
     } // end if
     pintar();
 }
 
 void Ticket::ponerPrecio(QString precio) {
+    Fixed valor(precio);
     /// Comprueba la existencia de la linea de ticket.
     if (m_lineaActual == NULL) {
 	mensajeAviso("No existe linea");
 	return;
     } // end if
-    m_lineaActual->setDBvalue("pvplalbaran", precio);
+    m_lineaActual->setDBvalue("pvplalbaran", valor.toQString());
     pintar();
 }
 

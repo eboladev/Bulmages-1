@@ -1,7 +1,7 @@
 /********************************************************************************
  *   Copyright (C) 2006 by IGLUES                                               *
  *   info@bulmages.org                                                          *
- *   Created by Pablo �lvarez de Sotomayor Posadillo <i02sopop@gmail.com>       *
+ *   Created by Pablo Alvarez de Sotomayor Posadillo <i02sopop@gmail.com>       *
  *                                                                              *
  *   This program is free software; you can redistribute it and/or modify       *
  *   it under the terms of the GNU General Public License as published by       *
@@ -41,9 +41,9 @@
 #endif
 
 
-QApplication2 *theApp;
-BulmaTPV *bges;
-QTranslator *traductor;
+QApplication2* theApp;
+BulmaTPV* bges;
+QTranslator* traductor;
 
 /// Inicio de ejecucion del programa.
 /// NOTA: En el main no se puede utilizar _depura ya que puede que no este bien inicializado confpr.
@@ -97,7 +97,7 @@ int main(int argc, char **argv) {
         theApp->installTranslator(traductor);
 
         /// Cargamos el splashScreen.
-        Splash *splashScr = new Splash(confpr->valor(CONF_SPLASH_BULMATPV), "BulmaTPV", "0.10.1");
+        Splash* splashScr = new Splash(confpr->valor(CONF_SPLASH_BULMATPV), "BulmaTPV", "0.10.1");
         splashScr->mensaje(QApplication::translate("main", "Iniciando clases"));
         splashScr->setBarraProgreso(1);
 
@@ -117,7 +117,7 @@ int main(int argc, char **argv) {
             bges = new BulmaTPV(db);
             bges->hide();
         } else {
-            logpass *login1 = new logpass(0, "");
+            logpass* login1 = new logpass(0, "");
             if (!login1->authOK()) {
                 login1->exec();
             } // end if
@@ -133,7 +133,7 @@ int main(int argc, char **argv) {
         g_main = bges;
 
         splashScr->show();
-        splashScr->mensaje(QApplication::translate("main","Leyendo configuracion"));
+        splashScr->mensaje(QApplication::translate("main", "Leyendo configuracion"));
         splashScr->setBarraProgreso(2);
 
         /// Leemos la configuracion especifica de la base de datos que se ha abierto.
@@ -208,22 +208,4 @@ int main(int argc, char **argv) {
 
     return 0;
 }
-
-
-
-/*
-#include <QApplication>
-#include "bulmatpv.h"
-
-int main(int argc,char **argv)
-{
-  QApplication a(argc,argv);
-  
-  bulmatpv *mw=new bulmatpv();
-  mw->show();
-  
-  a.connect(&a,SIGNAL(lastWindowClosed()),&a,SLOT(quit()));
-  return a.exec();
-}
-*/
 

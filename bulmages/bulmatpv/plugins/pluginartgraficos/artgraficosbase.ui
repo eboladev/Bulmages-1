@@ -57,6 +57,12 @@
         <property name="icon" >
          <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_back.png</iconset>
         </property>
+        <property name="iconSize" >
+         <size>
+          <width>22</width>
+          <height>22</height>
+         </size>
+        </property>
        </widget>
       </item>
       <item>
@@ -98,6 +104,12 @@
         </property>
         <property name="icon" >
          <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_forward.png</iconset>
+        </property>
+        <property name="iconSize" >
+         <size>
+          <width>22</width>
+          <height>22</height>
+         </size>
         </property>
        </widget>
       </item>

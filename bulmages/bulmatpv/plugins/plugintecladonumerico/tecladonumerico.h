@@ -48,17 +48,26 @@ public slots:
     virtual void on_mui_9_clicked() {
 	((EmpresaTPV *)empresaBase())->pulsaTecla(Qt::Key_9, "9");
     };
+    virtual void on_mui_punto_clicked() {
+	((EmpresaTPV *)empresaBase())->pulsaTecla(Qt::Key_Colon, ".");
+    };
     virtual void on_mui_cant_clicked() {
 	((EmpresaTPV *)empresaBase())->pulsaTecla(Qt::Key_Asterisk, "*");
     };
     virtual void on_mui_price_clicked() {
 	((EmpresaTPV *)empresaBase())->pulsaTecla(Qt::Key_Slash, "/");
     };
+    virtual void on_mui_c_clicked() {
+	((EmpresaTPV *)empresaBase())->pulsaTecla(Qt::Key_C, "C");
+    };
     virtual void on_mui_plus_clicked() {
 	((EmpresaTPV *)empresaBase())->pulsaTecla(Qt::Key_Plus, "+");
     };
     virtual void on_mui_minus_clicked() {
 	((EmpresaTPV *)empresaBase())->pulsaTecla(Qt::Key_Minus, "-");
+    };
+    virtual void on_mui_mesa_clicked() {
+	((EmpresaTPV *)empresaBase())->pulsaTecla(Qt::Key_M, "M");
     };
 };
 

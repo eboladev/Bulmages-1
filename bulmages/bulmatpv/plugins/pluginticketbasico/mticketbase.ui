@@ -49,10 +49,10 @@
          </size>
         </property>
         <property name="toolTip" >
-         <string>Imprimir listado</string>
+         <string>Imprimir ticket</string>
         </property>
         <property name="whatsThis" >
-         <string>Imprimir listado</string>
+         <string>Imprimir ticket</string>
         </property>
         <property name="text" >
          <string/>
@@ -83,10 +83,10 @@
          </size>
         </property>
         <property name="toolTip" >
-         <string>Imprimir listado</string>
+         <string>Subir</string>
         </property>
         <property name="whatsThis" >
-         <string>Imprimir listado</string>
+         <string>Subir</string>
         </property>
         <property name="text" >
          <string/>
@@ -117,10 +117,10 @@
          </size>
         </property>
         <property name="toolTip" >
-         <string>Imprimir listado</string>
+         <string>Bajar</string>
         </property>
         <property name="whatsThis" >
-         <string>Imprimir listado</string>
+         <string>Bajar</string>
         </property>
         <property name="text" >
          <string/>
@@ -151,10 +151,10 @@
          </size>
         </property>
         <property name="toolTip" >
-         <string>Imprimir listado</string>
+         <string>Borrar articulo</string>
         </property>
         <property name="whatsThis" >
-         <string>Imprimir listado</string>
+         <string>Borrar articulo</string>
         </property>
         <property name="text" >
          <string/>

@@ -54,8 +54,8 @@ public:
     ~BulmaTPV();
     QWorkspace2 *workspace();
     void createMainWindows(Splash *);
-    EmpresaTPV *empresaTPV() {return m_empresaTPV;};
-    virtual void keyPressEvent ( QKeyEvent * e );
+    EmpresaTPV *empresaTPV();
+    virtual void keyPressEvent(QKeyEvent *e);
 
 public slots:
     virtual void closeEvent(QCloseEvent *);

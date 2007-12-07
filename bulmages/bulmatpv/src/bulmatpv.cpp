@@ -190,14 +190,7 @@ void BulmaTPV::keyPressEvent ( QKeyEvent * e ) {
 }
 
 
-///
-/**
-\return
-**/
-/*
-Company * BulmaTPV::getcompany() {
-    _depura("BulmaTPV::getcompany", 0);
-    _depura("END BulmaTPV::getcompany", 0);
-    return m_company;
+EmpresaTPV *BulmaTPV::empresaTPV() {
+	return m_empresaTPV;
 }
-*/
+

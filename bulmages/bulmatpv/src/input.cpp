@@ -53,6 +53,9 @@ void Input::keyPressEvent(QKeyEvent *e) {
 	m_empresaTPV->ticketActual()->ponerPrecio(text());
         setText("");
 	break;
+    case Qt::Key_C:
+        setText("");
+	break;
     case Qt::Key_Return:
 	m_empresaTPV->ticketActual()->insertarArticuloCodigo(text());
         setText("");
@@ -60,6 +63,9 @@ void Input::keyPressEvent(QKeyEvent *e) {
     case Qt::Key_Enter:
 	m_empresaTPV->ticketActual()->insertarArticuloCodigoNL(text());
         setText("");
+	break;
+    case Qt::Key_M:
+        setText("MESA ");
 	break;
     default:
 	QLineEdit::keyPressEvent(e);

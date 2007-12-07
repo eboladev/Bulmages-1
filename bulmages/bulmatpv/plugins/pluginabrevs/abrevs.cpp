@@ -83,7 +83,10 @@ void Abrevs::on_mui_usuario_clicked() {
 void Abrevs::on_mui_aparcar_clicked() {
     EmpresaTPV *emp = (EmpresaTPV *) empresaBase();
     // El nombre del ticket no puede estar vacio.
-    if (emp->valorInput() == "") return;
+    if (emp->valorInput() == "") {
+	mensajeAviso(tr("Asigne un nombre al ticket antes de aparcarlo."));
+	return;
+    } // end if
 
     /// Miramos que no haya ningun ticket abierto con el nombre usado
     Ticket *ticket;
@@ -127,3 +130,4 @@ void Abrevs::on_mui_cliente_clicked() {
     emp->setValorInput("");
     emp->pulsaTecla(0,"");
 }
+

@@ -188,8 +188,10 @@ void MTicket::on_mui_bajar_clicked() {
 
 
 void MTicket::on_mui_borrar_clicked() {
-    ((EmpresaTPV *)empresaBase())->ticketActual()->listaLineas()->clear();
-        ((EmpresaTPV *)empresaBase())->ticketActual()->setLineaActual(NULL);
+
+    Ticket *tick = ((EmpresaTPV *)empresaBase())->ticketActual();
+    tick->ponerCantidad("0");
+
     pintar();
 }
 

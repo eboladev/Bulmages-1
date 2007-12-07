@@ -33,6 +33,11 @@
        <height>200</height>
       </size>
      </property>
+     <property name="font" >
+      <font>
+       <pointsize>30</pointsize>
+      </font>
+     </property>
      <property name="focusPolicy" >
       <enum>Qt::NoFocus</enum>
      </property>
@@ -54,6 +59,11 @@
        <width>200</width>
        <height>200</height>
       </size>
+     </property>
+     <property name="font" >
+      <font>
+       <pointsize>30</pointsize>
+      </font>
      </property>
      <property name="focusPolicy" >
       <enum>Qt::NoFocus</enum>
@@ -77,6 +87,11 @@
        <height>200</height>
       </size>
      </property>
+     <property name="font" >
+      <font>
+       <pointsize>30</pointsize>
+      </font>
+     </property>
      <property name="focusPolicy" >
       <enum>Qt::NoFocus</enum>
      </property>
@@ -98,6 +113,11 @@
        <width>200</width>
        <height>200</height>
       </size>
+     </property>
+     <property name="font" >
+      <font>
+       <pointsize>30</pointsize>
+      </font>
      </property>
      <property name="focusPolicy" >
       <enum>Qt::NoFocus</enum>
@@ -121,6 +141,11 @@
        <height>200</height>
       </size>
      </property>
+     <property name="font" >
+      <font>
+       <pointsize>30</pointsize>
+      </font>
+     </property>
      <property name="focusPolicy" >
       <enum>Qt::NoFocus</enum>
      </property>
@@ -143,6 +168,11 @@
        <height>200</height>
       </size>
      </property>
+     <property name="font" >
+      <font>
+       <pointsize>30</pointsize>
+      </font>
+     </property>
      <property name="focusPolicy" >
       <enum>Qt::NoFocus</enum>
      </property>
@@ -161,7 +191,7 @@
       </font>
      </property>
      <property name="cursor" >
-      <cursor>7</cursor>
+      <cursor>14</cursor>
      </property>
      <property name="focusPolicy" >
       <enum>Qt::NoFocus</enum>
@@ -188,6 +218,11 @@
        <height>200</height>
       </size>
      </property>
+     <property name="font" >
+      <font>
+       <pointsize>30</pointsize>
+      </font>
+     </property>
      <property name="focusPolicy" >
       <enum>Qt::NoFocus</enum>
      </property>
@@ -209,6 +244,11 @@
        <width>200</width>
        <height>200</height>
       </size>
+     </property>
+     <property name="font" >
+      <font>
+       <pointsize>30</pointsize>
+      </font>
      </property>
      <property name="focusPolicy" >
       <enum>Qt::NoFocus</enum>
@@ -232,6 +272,11 @@
        <height>200</height>
       </size>
      </property>
+     <property name="font" >
+      <font>
+       <pointsize>30</pointsize>
+      </font>
+     </property>
      <property name="focusPolicy" >
       <enum>Qt::NoFocus</enum>
      </property>
@@ -253,6 +298,11 @@
        <width>200</width>
        <height>200</height>
       </size>
+     </property>
+     <property name="font" >
+      <font>
+       <pointsize>30</pointsize>
+      </font>
      </property>
      <property name="focusPolicy" >
       <enum>Qt::NoFocus</enum>
@@ -276,6 +326,11 @@
        <height>200</height>
       </size>
      </property>
+     <property name="font" >
+      <font>
+       <pointsize>30</pointsize>
+      </font>
+     </property>
      <property name="focusPolicy" >
       <enum>Qt::NoFocus</enum>
      </property>
@@ -297,6 +352,11 @@
        <width>200</width>
        <height>200</height>
       </size>
+     </property>
+     <property name="font" >
+      <font>
+       <pointsize>30</pointsize>
+      </font>
      </property>
      <property name="focusPolicy" >
       <enum>Qt::NoFocus</enum>
@@ -320,6 +380,11 @@
        <height>200</height>
       </size>
      </property>
+     <property name="font" >
+      <font>
+       <pointsize>30</pointsize>
+      </font>
+     </property>
      <property name="focusPolicy" >
       <enum>Qt::NoFocus</enum>
      </property>
@@ -341,6 +406,13 @@
        <width>200</width>
        <height>200</height>
       </size>
+     </property>
+     <property name="font" >
+      <font>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
      </property>
      <property name="focusPolicy" >
       <enum>Qt::NoFocus</enum>
@@ -364,6 +436,13 @@
        <height>200</height>
       </size>
      </property>
+     <property name="font" >
+      <font>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
      <property name="focusPolicy" >
       <enum>Qt::NoFocus</enum>
      </property>
@@ -373,7 +452,7 @@
     </widget>
    </item>
    <item row="5" column="2" >
-    <widget class="QToolButton" name="mui_borra" >
+    <widget class="QToolButton" name="mui_c" >
      <property name="minimumSize" >
       <size>
        <width>48</width>
@@ -385,6 +464,13 @@
        <width>200</width>
        <height>200</height>
       </size>
+     </property>
+     <property name="font" >
+      <font>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
      </property>
      <property name="focusPolicy" >
       <enum>Qt::NoFocus</enum>
@@ -408,6 +494,11 @@
        <height>200</height>
       </size>
      </property>
+     <property name="font" >
+      <font>
+       <pointsize>30</pointsize>
+      </font>
+     </property>
      <property name="focusPolicy" >
       <enum>Qt::NoFocus</enum>
      </property>
@@ -430,6 +521,11 @@
        <height>200</height>
       </size>
      </property>
+     <property name="font" >
+      <font>
+       <pointsize>30</pointsize>
+      </font>
+     </property>
      <property name="focusPolicy" >
       <enum>Qt::NoFocus</enum>
      </property>
@@ -439,7 +535,7 @@
     </widget>
    </item>
    <item row="5" column="3" >
-    <widget class="QToolButton" name="mui_igual" >
+    <widget class="QToolButton" name="mui_mesa" >
      <property name="minimumSize" >
       <size>
        <width>48</width>
@@ -451,17 +547,24 @@
        <width>200</width>
        <height>200</height>
       </size>
+     </property>
+     <property name="font" >
+      <font>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
      </property>
      <property name="focusPolicy" >
       <enum>Qt::NoFocus</enum>
      </property>
      <property name="text" >
-      <string>=</string>
+      <string>MESA</string>
      </property>
     </widget>
    </item>
    <item row="4" column="2" >
-    <widget class="QToolButton" name="mui_boton1_17" >
+    <widget class="QToolButton" name="mui_punto" >
      <property name="minimumSize" >
       <size>
        <width>48</width>
@@ -473,6 +576,11 @@
        <width>200</width>
        <height>200</height>
       </size>
+     </property>
+     <property name="font" >
+      <font>
+       <pointsize>30</pointsize>
+      </font>
      </property>
      <property name="focusPolicy" >
       <enum>Qt::NoFocus</enum>

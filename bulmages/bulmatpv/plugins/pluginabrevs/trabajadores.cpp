@@ -73,3 +73,4 @@ void Trabajadores::trabajadorClicked() {
 
     done(0);
 }
+
