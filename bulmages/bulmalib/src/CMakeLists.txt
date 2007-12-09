@@ -1,5 +1,6 @@
+#Bulmalib
+
 INCLUDE(   ${QT_USE_FILE}   )
-set(VERSION 0.10.1)
 
 set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)
@@ -24,7 +25,7 @@ set(bulmalib_SRCS postgresiface2.cpp configuracion.cpp numerocuenta.cpp
 			ficha.cpp 
 			empresabase.cpp 
 	   		qtexteditdelegate.cpp 
-           	qdoublespinbox2.cpp 
+	           	qdoublespinbox2.cpp 
 	   		blwidget.cpp 
 			listado.cpp 
 			porcentajecarga.cpp 
@@ -33,6 +34,7 @@ set(bulmalib_SRCS postgresiface2.cpp configuracion.cpp numerocuenta.cpp
 			fichacfg.cpp 
 			paisview.cpp 
 			busquedaprovincia.cpp 
+			qradiobutton2.cpp
 			qcombobox2.cpp)
 
 set(bulmalib_MOCS 
@@ -59,7 +61,7 @@ set(bulmalib_MOCS
 			ficha.h 
 #			empresabase.h 
 	   		qtexteditdelegate.h 
-           	qdoublespinbox2.h 
+           		qdoublespinbox2.h 
 			blwidget.h 
 			listado.h 
 			porcentajecarga.h 
@@ -68,6 +70,7 @@ set(bulmalib_MOCS
 			fichacfg.h 
 			paisview.h 
 			busquedaprovincia.h 
+			qradiobutton2.h
 			qcombobox2.h)
 
 set(bulmalib_RCCS ../../bulmages.qrc)
@@ -86,9 +89,11 @@ include_directories(
 	${QT_QTXML_INCLUDE_DIR}
 	${CMAKE_CURRENT_BINARY_DIR}
 	${CMAKE_CURRENT_SOURCE_DIR}
-#  PGSQL_LIBRARIES   - List of libraries when using PGSQL.
-#  PGSQL_FOUND       -
-)
+	#${CMAKE_CURRENT_BINARY_DIR}/../../src/
+	${CMAKE_SOURCE_DIR}/bulmalib/src/
+	${CMAKE_CURRENT_BINARY_DIR}/bulmalib/src/
+	${CMAKE_SOURCE_DIR}/bulmacont/src/)
+
 
 # generate rules for building source files from the resources
 QT4_WRAP_UI(bulmalib_UIS_H ${bulmalib_UIS})
@@ -100,10 +105,16 @@ QT4_ADD_RESOURCES(bulmalib_RCC_SRCS ${bulmalib_RCCS})
 ADD_DEFINITIONS(${QT_DEFINITIONS})
 ADD_DEFINITIONS(-DQT_SHARED)
 # build sources, moc'd sources, and rcc'd sources
+
 add_library(bulmalib SHARED ${bulmalib_MOC_SRCS} ${bulmalib_UIS_H}
-					${bulmalib_SRCS} ${bulmalib_MOCS} ${bulmalib_RCC_SRCS})
+	${bulmalib_SRCS} ${bulmalib_MOCS} ${bulmalib_RCC_SRCS})
+
+set_target_properties( bulmalib PROPERTIES 
+  SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
+  VERSION "${BULMAGES_VERSION}")
+
 target_link_libraries( bulmalib ${QT_LIBRARIES}  ${QT_QTGUI_LIBRARY} ${PGSQL_LIBRARIES}
-								${QT_QTASSISTANT_LIBRARY} ${QT_QTXML_LIBRARY})
+	${QT_QTASSISTANT_LIBRARY} ${QT_QTXML_LIBRARY})
 
 
 # TRANSLATIONS += bulmalib_es.ts 

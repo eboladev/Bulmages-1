@@ -1,6 +1,4 @@
 #
-set(VERSION 1.0.0)
-
 set(TRANSLATIONS pluginsubformsxc_es.ts 
                 pluginsubformsxc_ca.ts 
                 pluginsubformsxc_en.ts 
@@ -9,7 +7,7 @@ set(TRANSLATIONS pluginsubformsxc_es.ts
                 pluginsubformsxc_zz.ts )
 
 INCLUDE(   ${QT_USE_FILE}   )
-set(VERSION 1.0.0)
+
 set(plugin_SRC pluginsubformsxc.cpp)
 
 include_directories(
@@ -32,7 +30,13 @@ include_directories(
 ADD_DEFINITIONS(${QT_DEFINITIONS})
 ADD_DEFINITIONS(-DQT_SHARED)
 # build sources, moc'd sources, and rcc'd sources
+
 add_library(pluginsubformsxc SHARED ${plugin_SRC})
+
+set_target_properties( pluginsubformsxc PROPERTIES 
+  SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
+  VERSION "${BULMAGES_VERSION}")
+
 target_link_libraries(pluginsubformsxc bulmalib ${QT_LIBRARIES}  ${QT_QTGUI_LIBRARY} ${PGSQL_LIBRARIES})
 
 

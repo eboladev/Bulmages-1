@@ -1,7 +1,4 @@
-set(VERSION 1.0.0)
-
 INCLUDE(   ${QT_USE_FILE}   )
-set(VERSION 1.0.0)
 set(plugin_SRC pluginclipboardbf.cpp)
 set(QT_USE_QTASSISTANT true)
 include_directories(
@@ -12,10 +9,7 @@ include_directories(
 	${CMAKE_CURRENT_SOURCE_DIR}
 	${CMAKE_CURRENT_BINARY_DIR}/../../src/
 	${CMAKE_SOURCE_DIR}/bulmalib/src
-	${QT_QTASSISTANT_INCLUDE_DIR}
-#  PGSQL_LIBRARIES   - List of libraries when using PGSQL.
-#  PGSQL_FOUND       -
-)
+	${QT_QTASSISTANT_INCLUDE_DIR})
 
 # generate rules for building source files from the resources
 #QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
@@ -26,9 +20,11 @@ ADD_DEFINITIONS(${QT_DEFINITIONS})
 ADD_DEFINITIONS(-DQT_SHARED)
 # build sources, moc'd sources, and rcc'd sources
 add_library(pluginclipboardbf SHARED ${plugin_SRC})
-target_link_libraries(pluginclipboardbf bulmalib ${QT_LIBRARIES} 
-												 ${QT_QTGUI_LIBRARY}
-												 ${PGSQL_LIBRARIES}
-												${QT_QTASSISTANT_LIBRARY}	)
 
+set_target_properties( pluginclipboardbf PROPERTIES 
+  SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
+  VERSION "${BULMAGES_VERSION}")
+
+target_link_libraries(pluginclipboardbf bulmalib ${QT_LIBRARIES} 
+ ${QT_QTGUI_LIBRARY}  ${PGSQL_LIBRARIES} ${QT_QTASSISTANT_LIBRARY})
 

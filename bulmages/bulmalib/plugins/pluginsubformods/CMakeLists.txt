@@ -1,5 +1,3 @@
-set(VERSION 1.0.0)
-
 set(TRANSLATIONS pluginsubformods_es.ts 
                 pluginsubformods_ca.ts 
                 pluginsubformods_en.ts 
@@ -8,7 +6,6 @@ set(TRANSLATIONS pluginsubformods_es.ts
                 pluginsubformods_zz.ts) 
 
 INCLUDE(   ${QT_USE_FILE}   )
-set(VERSION 1.0.0)
 set(plugin_SRC pluginsubformods.cpp)
 
 include_directories(
@@ -23,14 +20,15 @@ include_directories(
 #  PGSQL_FOUND       -
 )
 
-# generate rules for building source files from the resources
-#QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
-
-# generate rules for building source files that moc generates
 
 ADD_DEFINITIONS(${QT_DEFINITIONS})
 ADD_DEFINITIONS(-DQT_SHARED)
 # build sources, moc'd sources, and rcc'd sources
 add_library(pluginsubformods SHARED ${plugin_SRC})
+
+set_target_properties( pluginsubformods PROPERTIES 
+  SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
+  VERSION "${BULMAGES_VERSION}")
+
 target_link_libraries(pluginsubformods bulmalib ${QT_LIBRARIES}  ${QT_QTGUI_LIBRARY} ${PGSQL_LIBRARIES})
 

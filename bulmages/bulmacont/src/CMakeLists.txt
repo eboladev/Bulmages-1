@@ -1,14 +1,11 @@
-project(bulmacont)
-
 set(TRANSLATIONS bulmacont_es.ts 
                 bulmacont_ca.ts 
                 bulmacont_en.ts 
                 bulmacont_fr.ts 
                 bulmacont_de.ts 
-				bulmacont_zz.ts)
+		bulmacont_zz.ts)
 
 INCLUDE(   ${QT_USE_FILE}   )
-set(VERSION 0.10.1)
 set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)
 
@@ -183,14 +180,11 @@ ADD_DEFINITIONS(${QT_DEFINITIONS})
 ADD_DEFINITIONS(-DQT_SHARED)
 # build sources, moc'd sources, and rcc'd sources
 add_executable(bulmacont  ${bulmacont_MOC_SRCS} ${bulmacont_UIS_H}
-					${bulmacont_SRCS} ${bulmacont_MOCS} ${bulmacont_RCC_SRCS})
+	${bulmacont_SRCS} ${bulmacont_MOCS} ${bulmacont_RCC_SRCS})
+
 target_link_libraries( bulmacont bulmalib ${QT_LIBRARIES}
-										${QT_QTGUI_LIBRARY} 
-										${PGSQL_LIBRARIES}
-										${QT_QTASSISTANT_LIBRARY}
-										${QT_QTSQL_LIBRARY})
-
-
+	${QT_QTGUI_LIBRARY} ${PGSQL_LIBRARIES} 	${QT_QTASSISTANT_LIBRARY}
+	${QT_QTSQL_LIBRARY})
 
 
 
