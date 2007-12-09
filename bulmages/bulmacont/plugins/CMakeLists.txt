@@ -1,0 +1,6 @@
+add_subdirectory(pluginregistroiva)
+#add_subdirectory(plugincorrector)
+#add_subdirectory(plugin)
+#add_subdirectory(plugincanualesods)
+#add_subdirectory(plugindebugbc)
+#add_subdirectory(pluginproyectos)
