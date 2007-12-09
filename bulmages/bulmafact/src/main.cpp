@@ -128,6 +128,7 @@ int main(int argc, char **argv) {
             bges = new Bulmafact("");
             bges->hide();
         } // end if
+        g_main = bges;
 
         splashScr->show();
         splashScr->mensaje(QApplication::translate("main","Leyendo configuracion"));
@@ -185,7 +186,7 @@ int main(int argc, char **argv) {
         /// Lanzamos la creacion de las ventanas principales.
         bges->createMainWindows(splashScr);
 
-        g_main = bges;
+
 
         splashScr->mensaje(QApplication::translate("main", "Terminado"));
         splashScr->setBarraProgreso(100);

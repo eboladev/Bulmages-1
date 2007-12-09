@@ -285,7 +285,14 @@ void mailsendPDF(const QString arch, const QString to, const QString subject, co
 }
 
 QString windowID(const QString &app) {
-    QString cad = "xwininfo -int -name \""+app+"\" | grep xwininfo | awk '{print $4}' > /tmp/xwinfo";
+
+    QString cad = "";
+
+    if (app != "") {
+        cad = "xwininfo -int -name \""+app+"\" | grep xwininfo | awk '{print $4}' > /tmp/xwinfo";
+    } else {
+        cad = "xwininfo -int | grep Window | awk '{print $4}' > /tmp/xwinfo";
+    } // end if
 
     system(cad.toAscii());
 

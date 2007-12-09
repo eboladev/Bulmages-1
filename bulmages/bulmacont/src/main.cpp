@@ -130,6 +130,7 @@ int main(int argc, char **argv) {
             bges = new Bulmacont(NULL, 0, "");
 	    bges->hide();
         } // end if
+        g_main = bges;
 
 	splashScr->show();
         splashScr->mensaje(QApplication::translate("main","Leyendo configuracion"));
@@ -182,9 +183,6 @@ int main(int argc, char **argv) {
 
         splashScr->mensaje(QApplication::translate("main","Inicializando Componentes"));
         splashScr->setBarraProgreso(6);
-
-
-        g_main = bges;
 
 	bges->empresaactual()->createMainWindows(splashScr);
 

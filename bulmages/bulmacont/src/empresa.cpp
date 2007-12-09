@@ -264,6 +264,11 @@ int Empresa::createMainWindows(Splash *splash) {
         splash->setBarraProgreso(100);
         m_progressbar->setValue(100);
 
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("Empresa_createMainWindows_Post", this);
+    if (res != 0) {
+        return 0;
+    } // end if
 
         cargaConf();
 

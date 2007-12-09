@@ -32,6 +32,15 @@ Abrevs::Abrevs(EmpresaBase *emp, QWidget *parent) : BLWidget(emp, parent) {
     */
 
 
+/*
+        m_proc->start("klavier");
+        if (!m_proc->waitForStarted())
+            return;
+        QString winId = "";
+        while (winId == "") winId = windowID("klavier");
+*/
+
+
     m_proc->start("matchbox-keyboard -xid es");
     if (!m_proc->waitForStarted())
         return;

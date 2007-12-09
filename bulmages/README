@@ -17,14 +17,9 @@ software debe actuar:
 a) Contabilidad - BulmaCont
 b) Facturación - BulmaFact
 c) Terminal Punto de Venta - BTPV
-d) Gestión de Nóminas.
 
-En la actualidad, la aplicación de contabilidad (BulmaCont) ya es operativa. El
-programa de facturación (BulmaFact) se encuentra en sus últimas fases de
-desarrollo. También se han desarrollado herramientas para la sincronización y
-traspaso de datos con otros programas de gestión (Galopin, Contaplus, etc.). Una
-vez acabada la aplicación está tendrá un módulo más para poder denominarse ERP
-que será el módulo de nóminas y seguridad social. 
+
+En la actualidad, la aplicación de contabilidad (BulmaCont), facturacion (BulmaFact) y el terminal Punto de Venta ya son operativos.
 
 Características
 ===============
@@ -168,7 +163,9 @@ configuracion, algunos widgets raros. Son las librerias principales de la suite.
 
 bulmatpv 
 --------- 
-Aun no es operativo y no se incluye en la compilacion.
+Contiene el terminal punto de venta. El programa permite vender y controlar el hardware especifico de venta. Impresoras de Tickets y Lectores de codigos de Barras. En este programa la velocidad de las operaciones es lo fundamental.
+
+BulmaTPV es adaptabla a los distintos modelos de negocio gracias a sus sistema de plugins que dominan toda la interficie gráfica del programa.
 
 bulmages 
 ------- 
