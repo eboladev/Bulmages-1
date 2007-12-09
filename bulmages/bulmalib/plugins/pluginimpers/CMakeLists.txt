@@ -1,9 +1,9 @@
 ###########################################
 # Plugin for bulmalib					  #
 ###########################################
-#pluginclipboardbf
+#pluginimpers
 
-set (plugin pluginclipboardbf)
+set (plugin pluginimpers)
 
 file(GLOB_RECURSE plugin_SRC *.c *.cpp *.cxx)
 file(GLOB_RECURSE plugin_MOCS *.hpp *.h)
@@ -46,16 +46,10 @@ set_target_properties( ${plugin} PROPERTIES
   VERSION "${BULMAGES_VERSION}")
 
 target_link_libraries(${plugin} bulmalib ${QT_LIBRARIES}  ${QT_QTGUI_LIBRARY} ${PGSQL_LIBRARIES} ${QT_QTASSISTANT_LIBRARY})
+
 install_targets(/lib/bulmalib/plugins ${plugin})
 
-
-
-
-
-
-
-
-
+# 
 # INCLUDE(   ${QT_USE_FILE}   )
 # set(plugin_SRC pluginclipboardbf.cpp)
 # set(QT_USE_QTASSISTANT true)
@@ -85,4 +79,3 @@ install_targets(/lib/bulmalib/plugins ${plugin})
 # 
 # target_link_libraries(pluginclipboardbf bulmalib ${QT_LIBRARIES} 
 #  ${QT_QTGUI_LIBRARY}  ${PGSQL_LIBRARIES} ${QT_QTASSISTANT_LIBRARY})
-# 

@@ -1,13 +1,13 @@
 ###########################################
 # Plugin for bulmacont					  #
 ###########################################
-#pluginregistrodeiva
+#pluginproyectos
 
-set (plugin pluginregistrodeiva)
+set (plugin pluginproyectos)
 
-file(GLOB_RECURSE plugin_SRC *.c *.cpp *.cxx)
-file(GLOB_RECURSE plugin_MOCS *.hpp *.h)
-file(GLOB_RECURSE plugin_UIS *.ui)
+file(GLOB plugin_SRC *.c *.cpp *.cxx)
+file(GLOB plugin_MOCS *.hpp *.h)
+file(GLOB plugin_UIS *.ui)
 
 
 INCLUDE(   ${QT_USE_FILE}   )

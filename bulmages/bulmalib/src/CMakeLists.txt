@@ -2,6 +2,7 @@
 
 INCLUDE(   ${QT_USE_FILE}   )
 
+#bulmalib needs QtAssistant and QtXml
 set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)
 
@@ -25,7 +26,7 @@ set(bulmalib_SRCS postgresiface2.cpp configuracion.cpp numerocuenta.cpp
 			ficha.cpp 
 			empresabase.cpp 
 	   		qtexteditdelegate.cpp 
-	           	qdoublespinbox2.cpp 
+		        qdoublespinbox2.cpp 
 	   		blwidget.cpp 
 			listado.cpp 
 			porcentajecarga.cpp 
@@ -38,30 +39,19 @@ set(bulmalib_SRCS postgresiface2.cpp configuracion.cpp numerocuenta.cpp
 			qcombobox2.cpp)
 
 set(bulmalib_MOCS 
-#postgresiface2.h 
-#			configuracion.h 
-#			numerocuenta.h 
-#			funcaux.h 
 			logpass.h 
 			abreempresaview.h 
-#			dialogchanges.h 
-#			fixed.h 
 			msgerror.h 
 			busquedafecha.h 
 			qtable2.h 
-#			pgimportfiles.h 
-#			plugins.h 
 			busquedaperiodo.h 
-#			dbrecord.h 
-#			subform.h 
 			subform3.h 
 			listventanas.h 
 			qworkspace2.h 
 			qapplication2.h 
 			ficha.h 
-#			empresabase.h 
 	   		qtexteditdelegate.h 
-           		qdoublespinbox2.h 
+           	qdoublespinbox2.h 
 			blwidget.h 
 			listado.h 
 			porcentajecarga.h 
@@ -72,6 +62,20 @@ set(bulmalib_MOCS
 			busquedaprovincia.h 
 			qradiobutton2.h
 			qcombobox2.h)
+
+#headers that are not moc'ed
+#			postgresiface2.h 
+#			configuracion.h 
+#			numerocuenta.h 
+#			funcaux.h 
+#			dialogchanges.h 
+#			fixed.h 
+#			pgimportfiles.h 
+#			plugins.h 
+#			dbrecord.h 
+#			subform.h 
+#			empresabase.h 
+
 
 set(bulmalib_RCCS ../../bulmages.qrc)
 set(bulmalib_UIS logpassbase.ui 
@@ -116,6 +120,7 @@ set_target_properties( bulmalib PROPERTIES
 target_link_libraries( bulmalib ${QT_LIBRARIES}  ${QT_QTGUI_LIBRARY} ${PGSQL_LIBRARIES}
 	${QT_QTASSISTANT_LIBRARY} ${QT_QTXML_LIBRARY})
 
+install_targets(/lib bulmalib)
 
 # TRANSLATIONS += bulmalib_es.ts 
 #                 bulmalib_ca.ts 

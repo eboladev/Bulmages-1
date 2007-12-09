@@ -1,13 +1,13 @@
 ###########################################
 # Plugin for bulmacont					  #
 ###########################################
-#pluginregistrodeiva
+# plugin#################
 
-set (plugin pluginregistrodeiva)
+set (plugin ###############)
 
-file(GLOB_RECURSE plugin_SRC *.c *.cpp *.cxx)
-file(GLOB_RECURSE plugin_MOCS *.hpp *.h)
-file(GLOB_RECURSE plugin_UIS *.ui)
+file(GLOB plugin_SRC *.c *.cpp *.cxx)
+file(GLOB plugin_MOCS *.hpp *.h)
+file(GLOB plugin_UIS *.ui)
 
 
 INCLUDE(   ${QT_USE_FILE}   )
@@ -48,4 +48,5 @@ set_target_properties( ${plugin} PROPERTIES
   VERSION "${BULMAGES_VERSION}")
 
 target_link_libraries(${plugin} bulmalib ${QT_LIBRARIES}  ${QT_QTGUI_LIBRARY} ${PGSQL_LIBRARIES} ${QT_QTASSISTANT_LIBRARY})
+
 install_targets(/lib/bulmacont/plugins ${plugin})

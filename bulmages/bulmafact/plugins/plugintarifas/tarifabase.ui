@@ -347,7 +347,7 @@
   <customwidget>
    <class>BusquedaAlmacen</class>
    <extends>QComboBox</extends>
-   <header>../busquedaalmacen.h</header>
+   <header>busquedaalmacen.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

@@ -18,7 +18,7 @@ INCLUDE (${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindPostgreSQL.cmake)
 
 add_subdirectory(bulmalib)
 add_subdirectory(bulmacont)
-#add_subdirectory(bulmafact)
+add_subdirectory(bulmafact)
 #add_subdirectory(bulmages)
 #add_subdirectory(bulmatpv)
 add_subdirectory(installbulmages)

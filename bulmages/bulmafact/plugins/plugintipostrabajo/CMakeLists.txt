@@ -1,13 +1,13 @@
 ###########################################
-# Plugin for bulmacont					  #
+# Plugin for bulmafact					  #
 ###########################################
-#pluginregistrodeiva
+#plugintipostrabajo
 
-set (plugin pluginregistrodeiva)
+set (plugin plugintipostrabajo)
 
-file(GLOB_RECURSE plugin_SRC *.c *.cpp *.cxx)
-file(GLOB_RECURSE plugin_MOCS *.hpp *.h)
-file(GLOB_RECURSE plugin_UIS *.ui)
+file(GLOB plugin_SRC *.c *.cpp *.cxx)
+file(GLOB plugin_MOCS *.hpp *.h)
+file(GLOB plugin_UIS *.ui)
 
 
 INCLUDE(   ${QT_USE_FILE}   )
@@ -23,8 +23,11 @@ include_directories(
 	${CMAKE_CURRENT_SOURCE_DIR}
 	${CMAKE_BINARY_DIR}/bulmalib/src/
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
-	${CMAKE_BINARY_DIR}/bulmacont/src/
-	${CMAKE_SOURCE_DIR}/bulmacont/src/)
+	${CMAKE_BINARY_DIR}/bulmafact/src/
+	${CMAKE_SOURCE_DIR}/bulmafact/src/
+	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginalmacen/
+	${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginalmacen/
+	)
 
 # generate rules for building source files from the resources
 #QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
@@ -48,4 +51,4 @@ set_target_properties( ${plugin} PROPERTIES
   VERSION "${BULMAGES_VERSION}")
 
 target_link_libraries(${plugin} bulmalib ${QT_LIBRARIES}  ${QT_QTGUI_LIBRARY} ${PGSQL_LIBRARIES} ${QT_QTASSISTANT_LIBRARY})
-install_targets(/lib/bulmacont/plugins ${plugin})
+install_targets(/lib/bulmafact/plugins ${plugin})
