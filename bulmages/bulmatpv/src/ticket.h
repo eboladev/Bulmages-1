@@ -63,6 +63,7 @@ public:
     void setDescuentoGlobal(Fixed descuento);
     virtual void imprimir();
     int guardar();
+
 public slots:
     virtual void subir();
     virtual void bajar();

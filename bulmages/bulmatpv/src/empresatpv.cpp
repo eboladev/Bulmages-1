@@ -129,11 +129,11 @@ void EmpresaTPV::z() {
     } // end if
     file.write (QString("Informe Z\n").toAscii());
     file.write (QString("=========\n").toAscii());
-    file.write (QString("Conetxia Soluciones Informaticas S.L\n").toAscii());
+    file.write (QString("Empresa S.L\n").toAscii());
     file.write (QString("====================================\n").toAscii());
-    file.write(QString("Joaquin Turina, 1 Local 4\n").toAscii());
-    file.write(QString("CP: 07004 Palma de Mallorca\n").toAscii());
-    file.write(QString("Tel: 971 29 06 29\n").toAscii());
+    file.write(QString("Direccion\n").toAscii());
+    file.write(QString("CP: 07000 Palma de Mallorca\n").toAscii());
+    file.write(QString("Tel: 971 00 00 00\n").toAscii());
     /// Imprimimos espacios
     file.write ( "\n \n", 3);
 
@@ -233,11 +233,11 @@ void EmpresaTPV::x() {
     } // end if
     file.write (QString("Informe X\n").toAscii());
     file.write (QString("=========\n").toAscii());
-    file.write (QString("Conetxia Soluciones Informaticas S.L\n").toAscii());
+    file.write (QString("Empresa S.L.\n").toAscii());
     file.write (QString("====================================\n").toAscii());
-    file.write(QString("Joaquin Turina, 1 Local 4\n").toAscii());
-    file.write(QString("CP: 07004 Palma de Mallorca\n").toAscii());
-    file.write(QString("Tel: 971 29 06 29\n").toAscii());
+    file.write(QString("Direccion\n").toAscii());
+    file.write(QString("CP: 07000 Palma de Mallorca\n").toAscii());
+    file.write(QString("Tel: 971 00 00 00\n").toAscii());
     /// Imprimimos espacios
     file.write ( "\n \n", 3);
 

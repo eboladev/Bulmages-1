@@ -97,11 +97,19 @@ void Abrevs::on_mui_aparcar_clicked() {
 	return;
     } // end if
 
+
+    if (emp->ticketActual()->listaLineas()->count() == 0) {
+	mensajeAviso(tr("El ticket esta vacio. No se puede aparcar."));
+	return;
+    } // end if
+
+
     /// Miramos que no haya ningun ticket abierto con el nombre usado
     Ticket *ticket;
     for (int i = 0; i < emp->listaTickets()->size(); ++i) {
         ticket = emp->listaTickets()->at(i);
         if (emp->valorInput() == ticket->DBvalue("nomticket")) {
+	    mensajeAviso(tr("Ya existe un ticket aparcado con el mismo nombre."));
             return;
         }// end if
     }// end for
@@ -112,7 +120,8 @@ void Abrevs::on_mui_aparcar_clicked() {
     tick->setDBvalue("idtrabajador", emp->ticketActual()->DBvalue("idtrabajador"));
     emp->setTicketActual(tick);
     emp->listaTickets()->append(tick);
-    emp->setValorInput("");
+    /// Borra el valor del Input.
+    emp->pulsaTecla(Qt::Key_C, "C");
     tick->pintar();
 }
 

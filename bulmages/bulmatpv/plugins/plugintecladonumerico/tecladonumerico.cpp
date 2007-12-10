@@ -7,3 +7,4 @@ TecladoNumerico::TecladoNumerico(EmpresaBase *emp, QWidget *parent) : BLWidget(e
 
 TecladoNumerico::~TecladoNumerico() {
 }
+

@@ -51,10 +51,16 @@ public slots:
     virtual void on_mui_punto_clicked() {
 	((EmpresaTPV *)empresaBase())->pulsaTecla(Qt::Key_Colon, ".");
     };
-    virtual void on_mui_cant_clicked() {
+    virtual void on_mui_borrar_clicked() {
+	((EmpresaTPV *)empresaBase())->pulsaTecla(Qt::Key_Backspace);
+    };
+    virtual void on_mui_articulo_clicked() {
+	((EmpresaTPV *)empresaBase())->pulsaTecla(Qt::Key_Return);
+    };
+    virtual void on_mui_cantidad_clicked() {
 	((EmpresaTPV *)empresaBase())->pulsaTecla(Qt::Key_Asterisk, "*");
     };
-    virtual void on_mui_price_clicked() {
+    virtual void on_mui_precio_clicked() {
 	((EmpresaTPV *)empresaBase())->pulsaTecla(Qt::Key_Slash, "/");
     };
     virtual void on_mui_c_clicked() {
@@ -72,3 +78,4 @@ public slots:
 };
 
 #endif
+

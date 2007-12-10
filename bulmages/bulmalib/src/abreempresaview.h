@@ -57,7 +57,7 @@ public:
 public slots:
   /// Este SLOT se activa al seleccionar una compa&ntilde;ia y pulsar INTRO.
   virtual void accept();
-  /// This SLOT searches in the databases of postgres all the companyes needed.
+  /// This SLOT searches in the databases of postgres all the companies needed.
   virtual void on_mui_actualizar_clicked();
 
 private:
@@ -80,7 +80,7 @@ private:
   void guardaArchivo();
   /// Carga del archivo especificado en LISTEMPRESAS la lista de mui_empresas disponibles.
   void cargaArchivo();
-  /// Inserta una companya en el QList mui_empresas definido en el di&aacute;logo.
+  /// Inserta una compa&ntilde;ia en el QList mui_empresas definido en el di&aacute;logo.
   void insertCompany(QString, QString, QString, QString);
   void preparamui_empresas();
   void trataEmpresa(QString, QFile *);

@@ -17,3 +17,4 @@ void Admin::on_mui_z_clicked() {
 void Admin::on_mui_x_clicked() {
 	((EmpresaTPV *)empresaBase())->x();
 }
+

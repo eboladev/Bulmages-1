@@ -206,11 +206,11 @@ void  Ticket::imprimir() {
     if ( !file.open(QIODevice::WriteOnly | QIODevice::Unbuffered)) {
         _depura("Error en la Impresion de ticket", 2);
     } // end if
-    file.write (QString("Conetxia Soluciones Informaticas S.L\n").toAscii());
+    file.write (QString("Empresa S.L\n").toAscii());
     file.write (QString("====================================\n").toAscii());
-    file.write(QString("Joaquin Turina, 1 Local 4\n").toAscii());
-    file.write(QString("CP: 07004 Palma de Mallorca\n").toAscii());
-    file.write(QString("Tel: 971 29 06 29\n").toAscii());
+    file.write(QString("Direccion\n").toAscii());
+    file.write(QString("CP: 07000 Palma de Mallorca\n").toAscii());
+    file.write(QString("Tel: 971 00 00 00\n").toAscii());
     /// Imprimimos espacios
     file.write ( "\n \n", 3);
 
@@ -326,8 +326,8 @@ void  Ticket::imprimir() {
             parbaseimp = it.value();
         } // end if
         QString str = "Base Imp" + it.key() + "% " + parbaseimp.toQString().rightJustified(10,' ');
-        file.write(str.rightJustified(42,' ').toAscii());
-        file.write ( "\n", 1);
+//        file.write(str.rightJustified(42,' ').toAscii());
+//        file.write ( "\n", 1);
         totbaseimp = totbaseimp + parbaseimp;
     } // end for
 
@@ -342,8 +342,8 @@ void  Ticket::imprimir() {
             pariva = it.value() * piva / 100;
         } // end if
         QString str = "IVA" + it.key() + "% " + pariva.toQString().rightJustified(10,' ');
-        file.write(str.rightJustified(42,' ').toAscii());
-        file.write ( "\n", 1);
+//        file.write(str.rightJustified(42,' ').toAscii());
+//        file.write ( "\n", 1);
 
         totiva = totiva + pariva;
     } // end for
@@ -359,8 +359,8 @@ void  Ticket::imprimir() {
             parreqeq = it.value() * preqeq / 100;
         } // end if
         QString str = "R. Eq" + it.key() + "% " + parreqeq.toQString().rightJustified(10,' ');
-        file.write(str.rightJustified(42,' ').toAscii());
-        file.write ( "\n", 1);
+//        file.write(str.rightJustified(42,' ').toAscii());
+//        file.write ( "\n", 1);
         totreqeq = totreqeq + parreqeq;
     } // end for
 
@@ -368,20 +368,27 @@ void  Ticket::imprimir() {
 
     Fixed totirpf = totbaseimp * irpf / 100;
 
-    file.write (QString("=======================\n").rightJustified(43,' ').toAscii());
+//    file.write (QString("=======================\n").rightJustified(43,' ').toAscii());
 
 
     QString str = "B.IMP " + totbaseimp.toQString().rightJustified(10,' ');
-    file.write(str.rightJustified(42,' ').toAscii());
-    file.write ( "\n", 1);
+//    file.write(str.rightJustified(42,' ').toAscii());
+//    file.write ( "\n", 1);
 
     str = "IVA " + totiva.toQString().rightJustified(10,' ');
+//    file.write(str.rightJustified(42,' ').toAscii());
+//    file.write ( "\n", 1);
+
+    str = "IRPF " + totirpf.toQString().rightJustified(10,' ');
+//    file.write(str.rightJustified(42,' ').toAscii());
+//    file.write ( "\n", 1);
+
+
+    str = "( IVA INCLUIDO )";
     file.write(str.rightJustified(42,' ').toAscii());
     file.write ( "\n", 1);
 
-    str = "IRPF " + totirpf.toQString().rightJustified(10,' ');
-    file.write(str.rightJustified(42,' ').toAscii());
-    file.write ( "\n", 1);
+
 
     /// Imprimimos el total
     file.write (QString("____________________\n").rightJustified(43,' ').toAscii());
@@ -557,3 +564,4 @@ int Ticket::guardar() {
         return -1;
     } // end try
 }
+

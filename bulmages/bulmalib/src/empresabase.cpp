@@ -189,9 +189,9 @@ QString EmpresaBase::searchCompany(QString tipo) {
 \param visible
 **/
 void EmpresaBase::s_indexadorCambiaEstado(bool visible) {
-    _depura("company::s_indexadorCambiaEstado", 0);
+    _depura("EmpresaBase::s_indexadorCambiaEstado", 0);
     m_listventanas->cambiaVisible(visible);
-    _depura("END company::s_indexadorCambiaEstado", 0);
+    _depura("END EmpresaBase::s_indexadorCambiaEstado", 0);
 }
 
 
