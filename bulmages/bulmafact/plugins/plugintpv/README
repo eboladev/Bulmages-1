@@ -1,0 +1,27 @@
+Plugin de TPV
+=============
+
+(C) 2007 Conetxia Soluciones Informaticas.
+Software Bajo Licencia G.P.L. (Vea el archivo COPYNG adjunto)
+
+
+Versión: 0.10.1
+
+
+Descripcion: Permite el control de las cajas y las Z producidas por un TPV.
+
+Compilacion
+===========
+
+El plugin se compilará con el resto de bulmages y  se ubicara en bulmages/installbulmages/plugins con el nombre libplugintpv.so
+
+
+
+Instalacion
+===========
+Para instalar debe aplicar el parche ubicado en dbmodels a las bases de datos elegidas para funcionar con este plugin.
+
+Configure la directiva CONF_PLUGINS_BULMAFACT para que contenga la llamada a este plugin. Dicha directiva
+puede ser a modo global en el archivo /etc/bulmages.conf o personalizada con los archivos /etc/bulmafact_<<database>>.conf
+
+

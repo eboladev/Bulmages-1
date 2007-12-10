@@ -78,7 +78,7 @@
       <envvars/>
     </run>
     <general>
-      <activedir>bulmalib</activedir>
+      <activedir>bulmatpv/plugins/pluginabrevs</activedir>
     </general>
     <make>
       <abortonerror>true</abortonerror>
