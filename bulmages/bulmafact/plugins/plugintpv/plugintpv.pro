@@ -56,12 +56,15 @@ unix{
 }
 
 
-FORMS +=  zlistbase.ui
+FORMS +=  zlistbase.ui \
+	  zbase.ui
 
 
 SOURCES = plugintpv.cpp	\
-	  zlist.cpp 
+	  zlist.cpp \
+	  zview.cpp
 
 HEADERS = plugintpv.h \
-	  zlist.h 
+	  zlist.h \
+	  zview.h
 

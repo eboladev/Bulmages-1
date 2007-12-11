@@ -25,6 +25,7 @@
 #include <QMessageBox>
 
 #include "zlist.h"
+#include "zview.h"
 #include "company.h"
 #include "funcaux.h"
 #include "plugins.h"
@@ -66,7 +67,7 @@ ZList::ZList(Company *comp, QWidget *parent, Qt::WFlags flag)
     mui_list->setSortingEnabled(TRUE);
 
     presentar();
-    m_idalmacen = "";
+    m_idz = "";
     empresaBase()->meteWindow(windowTitle(), this);
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
@@ -91,7 +92,7 @@ ZList::~ZList() {
 QString ZList::idalmacen() {
     _depura("ZList::idalmacenk", 0);
     _depura("END ZList::idalmacenk", 0);
-    return m_idalmacen;
+    return m_idz;
 }
 
 
@@ -113,7 +114,7 @@ void ZList::setEmpresaBase(Company *comp) {
 void ZList::crear() {
     _depura("ZList::crear", 0);
 /*
-    AlmacenView *alm = new AlmacenView((Company *)empresaBase(), 0);
+    ZView *alm = new ZView((Company *)empresaBase(), 0);
     empresaBase()->pWorkspace()->addWindow(alm);
     alm->show();
 */
@@ -154,23 +155,23 @@ QString ZList::generaFiltro() {
 **/
 void ZList::editar(int row) {
     _depura("ZList::editar", 0);
-/*
+
     try {
-        m_idalmacen = mui_list->DBvalue(QString("idalmacen"), row);
+        m_idz = mui_list->DBvalue(QString("idz"), row);
 
         if (modoEdicion()) {
-            AlmacenView *alm = new AlmacenView((Company *)empresaBase(), 0);
+            ZView *alm = new ZView((Company *)empresaBase(), 0);
             empresaBase()->pWorkspace()->addWindow(alm);
             alm->show();
-            alm->cargar(m_idalmacen);
+            alm->cargar(m_idz);
         } else {
-            emit(selected(m_idalmacen));
+            emit(selected(m_idz));
         } // end if
         _depura("END ZList::editar", 0);
     } catch (...) {
         mensajeInfo(tr("Error al editar el almacen"));
     } // end try
-*/
+
 }
 
 
@@ -197,12 +198,12 @@ void ZList::borrar() {
         return;
     } // end if
     try {
-        m_idalmacen = mui_list->DBvalue(QString("idalmacen"));
+        m_idz = mui_list->DBvalue(QString("idalmacen"));
         if (modoEdicion()) {
-            AlmacenView *alm = new AlmacenView((Company *)empresaBase(), 0);
+            ZView *alm = new ZView((Company *)empresaBase(), 0);
             empresaBase()->pWorkspace()->addWindow(alm);
 //            alm->show();
-            alm->cargar(m_idalmacen);
+            alm->cargar(m_idz);
 	    alm->on_mui_borrar_clicked();
 	    alm->close();
 

@@ -56,7 +56,7 @@ class ZList : public Listado, public Ui_ZListBase {
     Q_OBJECT
 
 private:
-    QString m_idalmacen;
+    QString m_idz;
 
 public:
     ZList(Company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0);
