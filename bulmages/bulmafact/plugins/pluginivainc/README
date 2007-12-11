@@ -1,0 +1,30 @@
+Plugin de IVA incluido en precios
+=================================
+
+(C) 2007 Asociacion IGLUES.
+Software Bajo Licencia G.P.L. (Vea el archivo COPYNG adjunto)
+
+
+Versión: 0.10.1
+
+
+Descripcion: Plugin para soportar precios con IVA incluido
+
+Compilacion
+===========
+
+El plugin se compilará con el resto de bulmages y  se ubicara en bulmages/installbulmages/plugins con el nombre libpluginivainc.so
+
+
+
+Instalacion
+===========
+
+Configure la directiva CONF_PLUGINS_BULMAFACT para que contenga la llamada a este plugin. Dicha directiva
+puede ser a modo global en el archivo /etc/bulmages.conf o personalizada con los archivos /etc/bulmafact_<<database>>.conf
+
+Copie todos los archivos *.qm al directorio /usr/share/bulmages/traducciones
+
+Aplique el parche ubicado en dbmodels a la base de datos de la empresa que precise dicho soporte.
+
+
