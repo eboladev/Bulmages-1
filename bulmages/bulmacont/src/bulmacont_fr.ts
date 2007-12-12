@@ -202,7 +202,7 @@
     <message>
         <location filename="../../../../../BULMAGES/amortizacionview.cpp" line="201"/>
         <source>Identificador</source>
-        <translation>Identificateur</translation>
+        <translation>Identifieur</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/amortizacionview.cpp" line="320"/>
@@ -822,7 +822,7 @@
     <message>
         <location filename="../../../../../BULMAGES/bbloqfechabase.ui" line="93"/>
         <source>Agregar Ejercicio</source>
-        <translation>Ajouter éxercice</translation>
+        <translation>Ajouter exercice</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bbloqfechabase.ui" line="108"/>
@@ -1233,7 +1233,7 @@
     <message>
         <location filename="../../../../../BULMAGES/balance1view.cpp" line="82"/>
         <source>Debe ejercicio</source>
-        <translation>Débit exercice</translation>
+        <translation>Débit execice</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/balance1view.cpp" line="83"/>
@@ -1263,7 +1263,7 @@
     <message>
         <location filename="../../../../../BULMAGES/balance1view.cpp" line="430"/>
         <source>Ver Diario (este dia)</source>
-        <translation>Voir journal (aujourd&apos;hui)</translation>
+        <translation>Voir journal (ce jour)</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/balance1view.cpp" line="431"/>
@@ -1278,7 +1278,7 @@
     <message>
         <location filename="../../../../../BULMAGES/balance1view.cpp" line="434"/>
         <source>Ver extracto (este dia)</source>
-        <translation>Voir extrait (aujourd&apos;hui)</translation>
+        <translation>Voir extrait (ce jour)</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/balance1view.cpp" line="435"/>
@@ -1326,7 +1326,7 @@
     <message>
         <location filename="../../../../../BULMAGES/balanceview.cpp" line="191"/>
         <source>Debe ejercicio</source>
-        <translation>Débit exercice</translation>
+        <translation>Débit execice</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/balanceview.cpp" line="191"/>
@@ -1427,7 +1427,7 @@
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="423"/>
         <source>Anterior</source>
-        <translation>Antérieur</translation>
+        <translation>Précédent</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="412"/>
@@ -1457,12 +1457,12 @@
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="53"/>
         <source>&amp;Herramientas</source>
-        <translation>&amp;Outil</translation>
+        <translation>&amp;Outils</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="42"/>
         <source>&amp;Maestro</source>
-        <translation>&amp;Maitre</translation>
+        <translation>&amp;Maître</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="98"/>
@@ -1477,17 +1477,17 @@
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="174"/>
         <source>&amp;Ordenar asientos</source>
-        <translation>&amp;Ranger assiettes</translation>
+        <translation>&amp;ranger assiettes</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="179"/>
         <source>Asiento de a&amp;pertura</source>
-        <translation>Assiettes d&apos;&amp;ouverture</translation>
+        <translation>Assiettes d&apos;ou&amp;verture</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="184"/>
         <source>Asiento de &amp;regularizacion</source>
-        <translation>Assiette de &amp;régularisation</translation>
+        <translation>Assiette de &amp;régularization</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="189"/>
@@ -1512,7 +1512,7 @@
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="209"/>
         <source>&amp;Cobros y pagos</source>
-        <translation>&amp;encaissement et payements</translation>
+        <translation>&amp;Encaissements et payement</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="214"/>
@@ -1547,67 +1547,67 @@
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="287"/>
         <source>Formas de &amp;pago</source>
-        <translation type="unfinished"></translation>
+        <translation>Forme de &amp;payement</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="292"/>
         <source>Tipos de &amp;IVA</source>
-        <translation type="unfinished"></translation>
+        <translation>Type de &amp;TVA</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="300"/>
         <source>Centros de cos&amp;te</source>
-        <translation type="unfinished"></translation>
+        <translation>Cen&amp;tre de finnace</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="308"/>
         <source>&amp;Canales</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Canaux</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="324"/>
         <source>&amp;Imprimir</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Imprimer</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="332"/>
         <source>&amp;Guardar</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Garder</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="340"/>
         <source>&amp;Actualizar</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Actualiser</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="348"/>
         <source>&amp;Filtrar</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Filtrer</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="353"/>
         <source>&amp;Recalcular saldos iniciales</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Recalculer soldes intiaux</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="358"/>
         <source>&amp;Sustituir cuentas</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Remplacer comptes</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="363"/>
         <source>&amp;Bloquear fechas</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Bloquer dates</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="368"/>
         <source>&amp;Canal por defecto</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Canal par défaut</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="373"/>
         <source>Centro de cos&amp;te por defecto</source>
-        <translation type="unfinished"></translation>
+        <translation>Cen&amp;tre de finnance par défaut</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="378"/>
@@ -1622,7 +1622,7 @@
     <message encoding="UTF-8">
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="391"/>
         <source>Organización en &amp;cascada</source>
-        <translation type="unfinished"></translation>
+        <translation>Organisation en &amp;cascade</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="404"/>
@@ -1692,32 +1692,32 @@
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="381"/>
         <source>F11</source>
-        <translation type="unfinished"></translation>
+        <translation>F11</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="399"/>
         <source>F1</source>
-        <translation type="unfinished"></translation>
+        <translation>F1</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="415"/>
         <source>Ctrl+PgDown</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+PgDown</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="426"/>
         <source>Ctrl+PgUp</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+PgUp</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="437"/>
         <source>Ctrl+Home</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Home</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="448"/>
         <source>Ctrl+End</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+End</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="459"/>
@@ -1742,12 +1742,12 @@
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="472"/>
         <source>&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="477"/>
         <source>&apos;&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>&apos;&apos;</translation>
     </message>
 </context>
 <context>
@@ -1900,22 +1900,22 @@
     <message>
         <location filename="../../../../../BULMAGES/cambiactabase.ui" line="192"/>
         <source>Cuenta Destino</source>
-        <translation type="unfinished"></translation>
+        <translation>Compte Destin</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/cambiactabase.ui" line="229"/>
         <source>Cuenta Origen</source>
-        <translation type="unfinished"></translation>
+        <translation>Compte Origine</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/cambiactabase.ui" line="277"/>
         <source>Aceptar</source>
-        <translation type="unfinished"></translation>
+        <translation>Accepter</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/cambiactabase.ui" line="287"/>
         <source>Cerrar</source>
-        <translation type="unfinished"></translation>
+        <translation>Fermer</translation>
     </message>
 </context>
 <context>
@@ -1948,7 +1948,7 @@
     <message>
         <location filename="../../../../../BULMAGES/cuentabase.ui" line="344"/>
         <source>&amp;Datos contables</source>
-        <translation>&amp;Données comptables</translation>
+        <translation>&amp;Données contables</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/cuentabase.ui" line="359"/>
@@ -2286,7 +2286,7 @@ porque igual su trabajo se pierde.</source>
     <message encoding="UTF-8">
         <location filename="../../../../../BULMAGES/diarioprintbase.ui" line="16"/>
         <source>Impresión del Diario</source>
-        <translation type="unfinished"></translation>
+        <translation>Imprerrion du journal</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/diarioprintbase.ui" line="40"/>
@@ -2296,12 +2296,12 @@ porque igual su trabajo se pierde.</source>
     <message>
         <location filename="../../../../../BULMAGES/diarioprintbase.ui" line="53"/>
         <source>HT&amp;ML</source>
-        <translation type="unfinished"></translation>
+        <translation>HT&amp;ML</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/diarioprintbase.ui" line="66"/>
         <source>&amp;Kugar</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Kugar</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/diarioprintbase.ui" line="79"/>
@@ -2316,17 +2316,17 @@ porque igual su trabajo se pierde.</source>
     <message>
         <location filename="../../../../../BULMAGES/diarioprintbase.ui" line="164"/>
         <source>&amp;Imprimir</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Imprimer</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/diarioprintbase.ui" line="28"/>
         <source>Documento:</source>
-        <translation type="unfinished"></translation>
+        <translation>Document:</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/diarioprintbase.ui" line="92"/>
         <source>Formato del listado:</source>
-        <translation type="unfinished"></translation>
+        <translation>Format de la liste:</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/diarioprintbase.ui" line="104"/>
@@ -2429,7 +2429,7 @@ porque igual su trabajo se pierde.</source>
     <message>
         <location filename="../../../../../BULMAGES/diariosubform.cpp" line="44"/>
         <source>Canal</source>
-        <translation>Channel</translation>
+        <translation>Canal</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/diariosubform.cpp" line="45"/>
@@ -2469,7 +2469,7 @@ porque igual su trabajo se pierde.</source>
     <message>
         <location filename="../../../../../BULMAGES/diariosubform.cpp" line="51"/>
         <source>idcanal</source>
-        <translation>idchannel</translation>
+        <translation>idcanal</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/diariosubform.cpp" line="52"/>
@@ -2520,12 +2520,12 @@ porque igual su trabajo se pierde.</source>
     <message>
         <location filename="../../../../../BULMAGES/duplicarasientobase.ui" line="13"/>
         <source>Duplicar Asientos</source>
-        <translation type="unfinished"></translation>
+        <translation>Doubler assiette</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/duplicarasientobase.ui" line="28"/>
         <source>Origen:</source>
-        <translation type="unfinished"></translation>
+        <translation>Origine:</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/duplicarasientobase.ui" line="48"/>
@@ -2535,37 +2535,37 @@ porque igual su trabajo se pierde.</source>
     <message>
         <location filename="../../../../../BULMAGES/duplicarasientobase.ui" line="58"/>
         <source>Asiento inicial:</source>
-        <translation type="unfinished"></translation>
+        <translation>Assiette initiale:</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/duplicarasientobase.ui" line="65"/>
         <source>Asiento final:</source>
-        <translation type="unfinished"></translation>
+        <translation>Assiette finale:</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/duplicarasientobase.ui" line="92"/>
         <source>Destino:</source>
-        <translation type="unfinished"></translation>
+        <translation>Destin:</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="../../../../../BULMAGES/duplicarasientobase.ui" line="115"/>
         <source>Fecha con la que quedará el asiento:</source>
-        <translation type="unfinished"></translation>
+        <translation>Date qui restera avec l&apos;assiette:</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/duplicarasientobase.ui" line="139"/>
         <source>Tratamiento de la fecha:</source>
-        <translation type="unfinished"></translation>
+        <translation>Traitement de la date:</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/duplicarasientobase.ui" line="172"/>
         <source>Todos con la misma fecha</source>
-        <translation type="unfinished"></translation>
+        <translation>Tous avec la même date</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/duplicarasientobase.ui" line="179"/>
         <source>Mantener distacia entre fechas</source>
-        <translation type="unfinished"></translation>
+        <translation>Maintenir distance entre dates</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/duplicarasientobase.ui" line="250"/>
@@ -2575,7 +2575,7 @@ porque igual su trabajo se pierde.</source>
     <message>
         <location filename="../../../../../BULMAGES/duplicarasientobase.ui" line="260"/>
         <source>&amp;Cerrar</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Fermer</translation>
     </message>
 </context>
 <context>
@@ -2741,7 +2741,7 @@ porque igual su trabajo se pierde.</source>
     <message encoding="UTF-8">
         <location filename="../../../../../BULMAGES/extractoprintbase.ui" line="16"/>
         <source>Impresión del Extracto</source>
-        <translation type="unfinished"></translation>
+        <translation>Impression de l&apos;extrait</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/extractoprintbase.ui" line="64"/>
@@ -2751,7 +2751,7 @@ porque igual su trabajo se pierde.</source>
     <message>
         <location filename="../../../../../BULMAGES/extractoprintbase.ui" line="82"/>
         <source>HT&amp;ML</source>
-        <translation type="unfinished"></translation>
+        <translation>HT&amp;ML</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/extractoprintbase.ui" line="97"/>
@@ -2766,7 +2766,7 @@ porque igual su trabajo se pierde.</source>
     <message>
         <location filename="../../../../../BULMAGES/extractoprintbase.ui" line="149"/>
         <source>&amp;Imprimir</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Imprimer</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/extractoprintbase.ui" line="36"/>
@@ -2869,12 +2869,12 @@ porque igual su trabajo se pierde.</source>
     <message>
         <location filename="../../../../../BULMAGES/extractosubform.cpp" line="54"/>
         <source>idcanal</source>
-        <translation>idchannel</translation>
+        <translation>idcanal</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/extractosubform.cpp" line="55"/>
         <source>Canal</source>
-        <translation>Channel</translation>
+        <translation>Canal</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/extractosubform.cpp" line="56"/>
@@ -3008,7 +3008,7 @@ porque igual su trabajo se pierde.</source>
     <message>
         <location filename="../../../../../BULMAGES/listcuentasbase.ui" line="166"/>
         <source>Editar cuenta</source>
-        <translation type="unfinished"></translation>
+        <translation>Éditer compte</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/listcuentasbase.ui" line="226"/>
@@ -3018,17 +3018,17 @@ porque igual su trabajo se pierde.</source>
     <message>
         <location filename="../../../../../BULMAGES/listcuentasbase.ui" line="460"/>
         <source>S&amp;ubcuentas</source>
-        <translation type="unfinished"></translation>
+        <translation>S&amp;ubcomptes</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/listcuentasbase.ui" line="15"/>
         <source>Plan de cuentas</source>
-        <translation type="unfinished"></translation>
+        <translation>Plan de comptes</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/listcuentasbase.ui" line="121"/>
         <source>Nueva cuenta</source>
-        <translation type="unfinished"></translation>
+        <translation>Nouveau compte</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/listcuentasbase.ui" line="181"/>
@@ -3038,32 +3038,32 @@ porque igual su trabajo se pierde.</source>
     <message>
         <location filename="../../../../../BULMAGES/listcuentasbase.ui" line="211"/>
         <source>Borrar cuenta</source>
-        <translation type="unfinished"></translation>
+        <translation>Éraser compte</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/listcuentasbase.ui" line="248"/>
         <source>Imprimir cuentas</source>
-        <translation type="unfinished"></translation>
+        <translation>Imprimer comptes</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/listcuentasbase.ui" line="263"/>
         <source>Ctrl+P</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+P</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/listcuentasbase.ui" line="293"/>
         <source>Exportar cuentas</source>
-        <translation type="unfinished"></translation>
+        <translation>Exporter comptes</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/listcuentasbase.ui" line="335"/>
         <source>Importar cuentas</source>
-        <translation type="unfinished"></translation>
+        <translation>Importer comptes</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/listcuentasbase.ui" line="377"/>
         <source>Actualizar listado</source>
-        <translation type="unfinished"></translation>
+        <translation>Actualiser liste</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/listcuentasbase.ui" line="392"/>
@@ -3073,12 +3073,12 @@ porque igual su trabajo se pierde.</source>
     <message encoding="UTF-8">
         <location filename="../../../../../BULMAGES/listcuentasbase.ui" line="428"/>
         <source>Búsqueda:</source>
-        <translation type="unfinished"></translation>
+        <translation>Recherche:</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/listcuentasbase.ui" line="444"/>
         <source>Plan &amp;contable</source>
-        <translation type="unfinished"></translation>
+        <translation>Plan &amp;comptable</translation>
     </message>
 </context>
 <context>
@@ -3141,7 +3141,7 @@ porque igual su trabajo se pierde.</source>
     <message>
         <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="44"/>
         <source>ID Canal</source>
-        <translation>ID Channel</translation>
+        <translation>ID Canal</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/listlinasiento1view.cpp" line="45"/>
@@ -3274,12 +3274,12 @@ porque igual su trabajo se pierde.</source>
     <message>
         <location filename="../../../../../BULMAGES/listado347base.ui" line="104"/>
         <source>Ctrl+P</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+P</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/listado347base.ui" line="129"/>
         <source>Recalcular</source>
-        <translation type="unfinished"></translation>
+        <translation>Recalculer</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/listado347base.ui" line="141"/>
@@ -3289,7 +3289,7 @@ porque igual su trabajo se pierde.</source>
     <message>
         <location filename="../../../../../BULMAGES/listado347base.ui" line="179"/>
         <source>Ver filtro</source>
-        <translation type="unfinished"></translation>
+        <translation>Voir filtre</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/listado347base.ui" line="194"/>
@@ -3299,7 +3299,7 @@ porque igual su trabajo se pierde.</source>
     <message>
         <location filename="../../../../../BULMAGES/listado347base.ui" line="246"/>
         <source>Importe:</source>
-        <translation type="unfinished"></translation>
+        <translation>Montant:</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/listado347base.ui" line="259"/>
@@ -3314,12 +3314,12 @@ porque igual su trabajo se pierde.</source>
     <message>
         <location filename="../../../../../BULMAGES/listado347base.ui" line="305"/>
         <source>Ventas</source>
-        <translation type="unfinished"></translation>
+        <translation>Ventes</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/listado347base.ui" line="321"/>
         <source>Compras</source>
-        <translation type="unfinished"></translation>
+        <translation>Achats</translation>
     </message>
 </context>
 <context>
@@ -3332,12 +3332,12 @@ porque igual su trabajo se pierde.</source>
     <message>
         <location filename="../../../../../BULMAGES/mpatrimonialbase.ui" line="49"/>
         <source>Aceptar</source>
-        <translation type="unfinished"></translation>
+        <translation>Accepter</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/mpatrimonialbase.ui" line="56"/>
         <source>Cancelar</source>
-        <translation type="unfinished"></translation>
+        <translation>Annuler</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/mpatrimonialbase.ui" line="69"/>
@@ -3357,22 +3357,22 @@ porque igual su trabajo se pierde.</source>
     <message>
         <location filename="../../../../../BULMAGES/mpatrimonialbase.ui" line="377"/>
         <source>Agregar</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajouter</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/mpatrimonialbase.ui" line="384"/>
         <source>Quitar</source>
-        <translation type="unfinished"></translation>
+        <translation>Enlever</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/mpatrimonialbase.ui" line="321"/>
         <source>Suman</source>
-        <translation type="unfinished"></translation>
+        <translation>Additionent</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/mpatrimonialbase.ui" line="401"/>
         <source>Restan</source>
-        <translation type="unfinished"></translation>
+        <translation>Soustraient</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/mpatrimonialbase.ui" line="430"/>
@@ -3385,7 +3385,7 @@ porque igual su trabajo se pierde.</source>
     <message>
         <location filename="../../../../../BULMAGES/mpatrimonialesbase.ui" line="13"/>
         <source>Masas Patrimoniales</source>
-        <translation type="unfinished"></translation>
+        <translation>Masses patrimoniales</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/mpatrimonialesbase.ui" line="49"/>
@@ -3395,17 +3395,17 @@ porque igual su trabajo se pierde.</source>
     <message>
         <location filename="../../../../../BULMAGES/mpatrimonialesbase.ui" line="66"/>
         <source>Nuevo</source>
-        <translation type="unfinished"></translation>
+        <translation>Nouveau</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/mpatrimonialesbase.ui" line="73"/>
         <source>Borrar</source>
-        <translation type="unfinished"></translation>
+        <translation>Éraser</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/mpatrimonialesbase.ui" line="80"/>
         <source>Editar</source>
-        <translation type="unfinished"></translation>
+        <translation>Éditer</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/mpatrimonialesbase.ui" line="87"/>
@@ -3506,7 +3506,7 @@ porque igual su trabajo se pierde.</source>
     <message>
         <location filename="../../../../../BULMAGES/modelo300base.ui" line="211"/>
         <source>Cancelar</source>
-        <translation>Cancéler</translation>
+        <translation>Annuler</translation>
     </message>
 </context>
 <context>
@@ -3514,18 +3514,19 @@ porque igual su trabajo se pierde.</source>
     <message>
         <location filename="../../../../../BULMAGES/propiedadesempresabase.ui" line="16"/>
         <source>Propiedades de la empresa</source>
-        <translation type="unfinished"></translation>
+        <translation>Propriétées de l&apos;entreprise</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="../../../../../BULMAGES/propiedadesempresabase.ui" line="185"/>
         <source>xxxx --&gt; Dígitos de plan contable.
 yyyy --&gt; Dígitos de cuenta.</source>
-        <translation type="unfinished"></translation>
+        <translation>xxxx --&gt; Digits du plan comptable.
+yyyy--&gt; Digits du compte.</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/propiedadesempresabase.ui" line="216"/>
         <source>Modi&amp;ficar plan contable</source>
-        <translation type="unfinished"></translation>
+        <translation>Modi&amp;fier plan comptable</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/propiedadesempresabase.ui" line="67"/>
@@ -3540,22 +3541,22 @@ yyyy --&gt; Dígitos de cuenta.</source>
     <message encoding="UTF-8">
         <location filename="../../../../../BULMAGES/propiedadesempresabase.ui" line="117"/>
         <source>Dí&amp;gitos de cuentas</source>
-        <translation type="unfinished"></translation>
+        <translation>Di&amp;gits des comptes</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="../../../../../BULMAGES/propiedadesempresabase.ui" line="142"/>
         <source>Modelo del código de cuenta:</source>
-        <translation type="unfinished"></translation>
+        <translation>Modèle du code de compte:</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="../../../../../BULMAGES/propiedadesempresabase.ui" line="162"/>
         <source>Dígitos estanda&amp;r</source>
-        <translation type="unfinished"></translation>
+        <translation>Digits standa&amp;rd</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/propiedadesempresabase.ui" line="284"/>
         <source>Propiedades generales</source>
-        <translation type="unfinished"></translation>
+        <translation>Propriétées générales</translation>
     </message>
 </context>
 <context>
@@ -3568,18 +3569,19 @@ yyyy --&gt; Dígitos de cuenta.</source>
     <message>
         <location filename="../../../../../BULMAGES/modelo300.cpp" line="108"/>
         <source>Generar de todas formas</source>
-        <translation type="unfinished"></translation>
+        <translation>Générer de toute façon</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/modelo300.cpp" line="108"/>
         <source>Volver</source>
-        <translation type="unfinished"></translation>
+        <translation> Revenir</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/modelo300.cpp" line="107"/>
         <source>Aviso: El numero de cuenta bancario introducido
 no se corresponde con un CCC correcto.</source>
-        <translation type="unfinished"></translation>
+        <translation>Avis: Le numéro de compte bancaire introduit
+ne correspond pas avec un CCC correct.</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/modelo300.cpp" line="145"/>
@@ -3587,7 +3589,10 @@ no se corresponde con un CCC correcto.</source>
 Pruebe a descargarlo desde www.aeat.es y guaedelo en
 /usr/share/bulmages/formularios/ o en
 ~/.bulmages/formularios/.</source>
-        <translation type="unfinished"></translation>
+        <translation>Désolé, je ne trouve pas le formulaire original en pdf.
+Éssayer de le charger de www.impots.gouv.fr et garder-le dans
+/usr/shate/bulmages/formularios/ oú dans
+~/.bulmages/formularios/.</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/modelo300.cpp" line="146"/>
@@ -3660,7 +3665,7 @@ Pruebe a descargarlo desde www.aeat.es y guaedelo en
     <message>
         <location filename="../../../../../BULMAGES/regivaprintbase.ui" line="223"/>
         <source>Cancelar</source>
-        <translation>Cancéler</translation>
+        <translation>Annuler</translation>
     </message>
 </context>
 <context>
@@ -3897,17 +3902,17 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../../../../BULMAGES/canalbase.ui" line="16"/>
         <source>Canales</source>
-        <translation type="unfinished"></translation>
+        <translation>Canaux</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/canalbase.ui" line="190"/>
         <source>Canal:</source>
-        <translation type="unfinished"></translation>
+        <translation>Canal:</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="../../../../../BULMAGES/canalbase.ui" line="227"/>
         <source>Información del canal:</source>
-        <translation type="unfinished"></translation>
+        <translation>Information du canal:</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/canalbase.ui" line="247"/>
@@ -3917,12 +3922,12 @@ p, li { white-space: pre-wrap; }
     <message encoding="UTF-8">
         <location filename="../../../../../BULMAGES/canalbase.ui" line="267"/>
         <source>Descripción:</source>
-        <translation type="unfinished"></translation>
+        <translation>Description:</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/canalbase.ui" line="306"/>
         <source>&amp;Cerrar</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Fermer</translation>
     </message>
 </context>
 <context>
@@ -3987,17 +3992,17 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../../../../BULMAGES/ccostebase.ui" line="13"/>
         <source>Centros de Coste</source>
-        <translation type="unfinished"></translation>
+        <translation>Centre de finnace</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/ccostebase.ui" line="197"/>
         <source>Imprimir pedido</source>
-        <translation type="unfinished"></translation>
+        <translation>Imprimer commande</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/ccostebase.ui" line="249"/>
         <source>Contenido del centro de coste:</source>
-        <translation type="unfinished"></translation>
+        <translation>Contenu du centre de finnance:</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/ccostebase.ui" line="269"/>
@@ -4007,12 +4012,12 @@ p, li { white-space: pre-wrap; }
     <message encoding="UTF-8">
         <location filename="../../../../../BULMAGES/ccostebase.ui" line="297"/>
         <source>Descripción:</source>
-        <translation type="unfinished"></translation>
+        <translation>Description:</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/ccostebase.ui" line="336"/>
         <source>Cerrar</source>
-        <translation type="unfinished"></translation>
+        <translation>Fermer</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/ccostebase.ui" line="97"/>
@@ -4045,17 +4050,17 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../../../../BULMAGES/ccosteview.cpp" line="222"/>
         <source>Guardar centro de coste</source>
-        <translation type="unfinished"></translation>
+        <translation>Garder centre de finnances</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/ccosteview.cpp" line="223"/>
         <source>Desea guardar los cambios?</source>
-        <translation type="unfinished"></translation>
+        <translation>Désirez vous garder les changes?</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/ccosteview.cpp" line="122"/>
         <source>&amp;Guardar</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Garder</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/ccosteview.cpp" line="224"/>
@@ -4065,18 +4070,18 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../../../../BULMAGES/ccosteview.cpp" line="202"/>
         <source>Borrar centro de coste</source>
-        <translation type="unfinished"></translation>
+        <translation>Éraser centre de finances</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/ccosteview.cpp" line="203"/>
         <source>Se va a borrar el centro de coste.
 Esta operacion puede ocasionar perdida de datos.</source>
-        <translation type="unfinished"></translation>
+        <translation>Votre centre de finnances s&apos;érasera,cette opération peut vous causer une pèrte de données.</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/ccosteview.cpp" line="204"/>
         <source>&amp;Borrar</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Éraser</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/ccosteview.cpp" line="224"/>
@@ -4096,7 +4101,7 @@ Esta operacion puede ocasionar perdida de datos.</source>
     <message>
         <location filename="../../../../../BULMAGES/ccosteview.cpp" line="42"/>
         <source>Id centro de coste</source>
-        <translation type="unfinished"></translation>
+        <translation>Id centre de données</translation>
     </message>
 </context>
 <context>
@@ -4109,7 +4114,7 @@ Esta operacion puede ocasionar perdida de datos.</source>
     <message>
         <location filename="../../../../../BULMAGES/extractoview1.cpp" line="435"/>
         <source>Punteos (*.pto)</source>
-        <translation type="unfinished"></translation>
+        <translation>Pointajes (*.pto)</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/extractoview1.cpp" line="210"/>
@@ -4119,27 +4124,29 @@ Esta operacion puede ocasionar perdida de datos.</source>
     <message>
         <location filename="../../../../../BULMAGES/extractoview1.cpp" line="433"/>
         <source>Guardar punteo</source>
-        <translation type="unfinished"></translation>
+        <translation>Garder pointaje</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/extractoview1.cpp" line="467"/>
         <source>Borrar punteo</source>
-        <translation type="unfinished"></translation>
+        <translation>Éraser pointaje</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/extractoview1.cpp" line="493"/>
         <source>Cargar punteo</source>
-        <translation type="unfinished"></translation>
+        <translation>Charger pointaje</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/extractoview1.cpp" line="495"/>
         <source>Punteo (*.pto)</source>
-        <translation type="unfinished"></translation>
+        <translation>Pointaje (*.pto)</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/extractoview1.cpp" line="470"/>
         <source>Se dispone a borrar el punteo. Este cambio                                             es irrecuperable si no ha guardado su el punte.                                             Desea continuar?</source>
-        <translation type="unfinished"></translation>
+        <translation>On va à éraser le pointaje.
+Ce change est irrécupérable si vous ne l&apos;avez pas garder.
+Désirez vous continuer?</translation>
     </message>
 </context>
 <context>
@@ -4175,7 +4182,7 @@ Esta operacion puede ocasionar perdida de datos.</source>
 Esto puede ocasionar perdida de datos.
 Tal vez deberia pensarselo mejor antes
 porque igual su trabajo se pierde.</source>
-        <translation type="unfinished"></translation>
+        <translation>On va à éraser la forme de payement.Ca peut occasionner des pertes de données.</translation>
     </message>
 </context>
 <context>
@@ -4294,7 +4301,7 @@ porque igual su trabajo se pierde.</source>
     <message>
         <location filename="../../../../../BULMAGES/mpatrimonialview.cpp" line="38"/>
         <source>identificador</source>
-        <translation type="unfinished"></translation>
+        <translation>Identifieur</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/mpatrimonialview.cpp" line="38"/>
@@ -4309,7 +4316,7 @@ porque igual su trabajo se pierde.</source>
     <message>
         <location filename="../../../../../BULMAGES/mpatrimonialview.cpp" line="38"/>
         <source>tipo</source>
-        <translation type="unfinished"></translation>
+        <translation>Type</translation>
     </message>
 </context>
 <context>
@@ -4322,7 +4329,7 @@ porque igual su trabajo se pierde.</source>
     <message>
         <location filename="../../../../../BULMAGES/propiedadesempresa.cpp" line="89"/>
         <source>Desea guardar los cambios?</source>
-        <translation>Désirer vous garder les changes?</translation>
+        <translation>Désirez vous garder les changes?</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/propiedadesempresa.cpp" line="90"/>
@@ -4345,17 +4352,19 @@ porque igual su trabajo se pierde.</source>
 debe salir del programa y volver a entrar.
 
 Salir ahora?</source>
-        <translation type="unfinished"></translation>
+        <translation>Pour que les changements aient  un éffet
+nous devez sortir du programme et reentrer
+Sortir maintenant?</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/propiedadesempresa.cpp" line="129"/>
         <source>&amp;Salir</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sortir</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/propiedadesempresa.cpp" line="129"/>
         <source>&amp;No salir</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ne pas sortir</translation>
     </message>
 </context>
 <context>
@@ -4368,7 +4377,7 @@ Salir ahora?</source>
     <message>
         <location filename="../../../../../BULMAGES/selectcanalview.cpp" line="40"/>
         <source>desc_canal</source>
-        <translation>dec_channel</translation>
+        <translation>dec_canal</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/selectcanalview.cpp" line="40"/>
@@ -4378,7 +4387,7 @@ Salir ahora?</source>
     <message>
         <location filename="../../../../../BULMAGES/selectcanalview.cpp" line="40"/>
         <source>idcanal</source>
-        <translation>idchannel</translation>
+        <translation>idcanal</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/selectcanalview.cpp" line="40"/>
@@ -4391,17 +4400,17 @@ Salir ahora?</source>
     <message>
         <location filename="../../../../../BULMAGES/selectccosteview.cpp" line="37"/>
         <source>nom_coste</source>
-        <translation type="unfinished"></translation>
+        <translation>nom_finnance</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/selectccosteview.cpp" line="37"/>
         <source>desc_coste</source>
-        <translation type="unfinished"></translation>
+        <translation>dec_finnance</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/selectccosteview.cpp" line="37"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation>Status</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/selectccosteview.cpp" line="37"/>
@@ -4411,7 +4420,7 @@ Salir ahora?</source>
     <message>
         <location filename="../../../../../BULMAGES/selectccosteview.cpp" line="37"/>
         <source>Seleccion</source>
-        <translation type="unfinished"></translation>
+        <translation>Sélection</translation>
     </message>
 </context>
 <context>
