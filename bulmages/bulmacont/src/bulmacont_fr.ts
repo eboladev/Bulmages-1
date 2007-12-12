@@ -1627,37 +1627,37 @@
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="404"/>
         <source>&amp;Acerca de BulmaCont</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Au sujet de Bulmacont</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="13"/>
         <source>BulmaCont - Contabilidad GPL</source>
-        <translation type="unfinished"></translation>
+        <translation>Bulmacont - Comptabilité GPL</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="64"/>
         <source>Ventana</source>
-        <translation type="unfinished"></translation>
+        <translation>Fenêtre</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="30"/>
         <source>&amp;Ver</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Voir</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="156"/>
         <source>Configuracion</source>
-        <translation type="unfinished"></translation>
+        <translation>Configuration</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="161"/>
         <source>&amp;Salir del programa</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sortir du programme</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="164"/>
         <source>Ctrl+Q</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Q</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="169"/>
@@ -1677,17 +1677,17 @@
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="268"/>
         <source>&amp;Balance de Cuentas</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Balance de comptes</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="276"/>
         <source>Balance &amp;jerarquico de Sumas y Saldos</source>
-        <translation type="unfinished"></translation>
+        <translation>Balance &amp;hiérarchique d&apos;Additions et Soldes</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="282"/>
         <source>Balance jerarquico de Sumas y Saldos</source>
-        <translation type="unfinished"></translation>
+        <translation>Balance hiérarchique d&apos;Additions et Soldes</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="381"/>
@@ -1722,7 +1722,7 @@
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="459"/>
         <source>Indexador</source>
-        <translation type="unfinished"></translation>
+        <translation>Indexateur</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="462"/>
@@ -1732,12 +1732,12 @@
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="150"/>
         <source>&amp;Propiedades de la empresa...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Proriétées de l&apos;entreprise...</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="467"/>
         <source>Listado &amp;347</source>
-        <translation type="unfinished"></translation>
+        <translation>Liste &amp;347</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="472"/>
@@ -1755,7 +1755,7 @@
     <message>
         <location filename="../../../../../BULMAGES/bulmacont.cpp" line="402"/>
         <source>Listo.</source>
-        <translation type="unfinished"></translation>
+        <translation>Prêt.</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacont.cpp" line="351"/>
@@ -3264,7 +3264,7 @@ porque igual su trabajo se pierde.</source>
     <message>
         <location filename="../../../../../BULMAGES/listado347base.ui" line="14"/>
         <source>Listado para el modelo 347</source>
-        <translation type="unfinished"></translation>
+        <translation>Liste pour le modèle 347</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/listado347base.ui" line="89"/>
@@ -3729,22 +3729,22 @@ Pruebe a descargarlo desde www.aeat.es y guaedelo en
     <message>
         <location filename="../../../../../BULMAGES/sobrebase.ui" line="502"/>
         <source>Acerca de BulmaCont</source>
-        <translation type="unfinished"></translation>
+        <translation>Au sujet de Bulmacont</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/sobrebase.ui" line="573"/>
         <source>Contabilidad GPL - Version 0.9.3 -</source>
-        <translation type="unfinished"></translation>
+        <translation>Comptabilité GPL - Version 0.9.3 -</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/sobrebase.ui" line="605"/>
         <source>&amp;Acerca de</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Au sujet de</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/sobrebase.ui" line="628"/>
         <source>A&amp;utores</source>
-        <translation type="unfinished"></translation>
+        <translation>A&amp;uteurs</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/sobrebase.ui" line="649"/>
@@ -3752,17 +3752,20 @@ Pruebe a descargarlo desde www.aeat.es y guaedelo en
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/sobrebase.ui" line="660"/>
         <source>Sopor&amp;te</source>
-        <translation type="unfinished"></translation>
+        <translation>Supor&amp;t</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/sobrebase.ui" line="683"/>
         <source>Acuerdo de &amp;licencia</source>
-        <translation type="unfinished"></translation>
+        <translation>Accord de &amp;licence</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/sobrebase.ui" line="730"/>
