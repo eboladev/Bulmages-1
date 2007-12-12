@@ -6,10 +6,10 @@ file(GLOB bulmafact_SRC *.c *.cpp *.cxx)
 file(GLOB bulmafact_MOCS *.hpp *.h)
 file(GLOB bulmafact_UIS *.ui)
 
-
-INCLUDE(   ${QT_USE_FILE}   )
 set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)
+
+INCLUDE(   ${QT_USE_FILE}   )
 
 include_directories(
     ${QT_INCLUDE_DIR}
@@ -33,7 +33,7 @@ QT4_WRAP_CPP(bulmafact_MOC_SRCS ${bulmafact_MOCS})
 #QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
 
 
-ADD_DEFINITIONS(${QT_DEFINITIONS})
+#ADD_DEFINITIONS(${QT_DEFINITIONS})
 #ADD_DEFINITIONS(-DQT_SHARED)
 # build sources, moc'd sources, and rcc'd sources
 # # generate rules for building source files from the resources

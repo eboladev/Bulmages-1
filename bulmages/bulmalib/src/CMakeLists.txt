@@ -1,10 +1,10 @@
 #Bulmalib
 
-INCLUDE(   ${QT_USE_FILE}   )
-
 #bulmalib needs QtAssistant and QtXml
 set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)
+
+INCLUDE(${QT_USE_FILE})
 
 set(bulmalib_SRCS postgresiface2.cpp configuracion.cpp numerocuenta.cpp 
            	funcaux.cpp logpass.cpp 
@@ -106,7 +106,7 @@ QT4_ADD_RESOURCES(bulmalib_RCC_SRCS ${bulmalib_RCCS})
 
 # generate rules for building source files that moc generates
 
-ADD_DEFINITIONS(${QT_DEFINITIONS})
+#ADD_DEFINITIONS(${QT_DEFINITIONS})
 ADD_DEFINITIONS(-DQT_SHARED)
 # build sources, moc'd sources, and rcc'd sources
 
@@ -117,8 +117,7 @@ set_target_properties( bulmalib PROPERTIES
   SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
   VERSION "${BULMAGES_VERSION}")
 
-target_link_libraries( bulmalib ${QT_LIBRARIES}  ${QT_QTGUI_LIBRARY} ${PGSQL_LIBRARIES}
-	${QT_QTASSISTANT_LIBRARY} ${QT_QTXML_LIBRARY})
+target_link_libraries( bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES} )
 
 install_targets(/lib bulmalib)
 

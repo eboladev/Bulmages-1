@@ -63,9 +63,10 @@ set(bulmacont_MOCS bulmacont.h
 	   fichabc.h)
 
 
-INCLUDE(   ${QT_USE_FILE}   )
 set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)
+
+INCLUDE(   ${QT_USE_FILE}   )
 
 include_directories(
     ${QT_INCLUDE_DIR}
@@ -89,7 +90,7 @@ QT4_WRAP_CPP(bulmacont_MOC_SRCS ${bulmacont_MOCS})
 #QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
 
 
-ADD_DEFINITIONS(${QT_DEFINITIONS})
+#ADD_DEFINITIONS(${QT_DEFINITIONS})
 #ADD_DEFINITIONS(-DQT_SHARED)
 # build sources, moc'd sources, and rcc'd sources
 # # generate rules for building source files from the resources
@@ -97,8 +98,7 @@ ADD_DEFINITIONS(${QT_DEFINITIONS})
 add_executable(bulmacont   ${bulmacont_MOCS} ${bulmacont_MOC_SRCS} ${bulmacont_UIS_H}
 	${bulmacont_SRC} ${bulmacont_SRCS} )
 
-target_link_libraries( bulmacont bulmalib ${QT_LIBRARIES}
-	${QT_QTGUI_LIBRARY} ${PGSQL_LIBRARIES} 	${QT_QTASSISTANT_LIBRARY})
+target_link_libraries( bulmacont bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 
 install_targets(/bin bulmacont)	
 # 

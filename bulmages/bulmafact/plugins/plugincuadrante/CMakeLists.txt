@@ -9,10 +9,10 @@ file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
 file(GLOB plugin_UIS *.ui)
 
-
-INCLUDE(   ${QT_USE_FILE}   )
 set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)
+
+INCLUDE(   ${QT_USE_FILE}   )
 
 include_directories(
     ${QT_INCLUDE_DIR}
@@ -49,5 +49,5 @@ set_target_properties( ${plugin} PROPERTIES
   SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
   VERSION "${BULMAGES_VERSION}")
 
-target_link_libraries(${plugin} bulmalib ${QT_LIBRARIES}  ${QT_QTGUI_LIBRARY} ${PGSQL_LIBRARIES} ${QT_QTASSISTANT_LIBRARY})
+target_link_libraries(${plugin} bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 install_targets(/lib/bulmafact/plugins ${plugin})
