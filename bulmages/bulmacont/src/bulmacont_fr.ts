@@ -1537,12 +1537,12 @@
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="252"/>
         <source>Libro &amp;Mayor</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Gran livre</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="260"/>
         <source>Libro &amp;Diario</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Journal</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="287"/>
@@ -1612,12 +1612,12 @@
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="378"/>
         <source>&amp;Pantalla completa</source>
-        <translation type="unfinished"></translation>
+        <translation>Écran com&amp;plet</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="386"/>
         <source>Ordenar &amp;ventanas</source>
-        <translation type="unfinished"></translation>
+        <translation>Ranger &amp;Fenêtres</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="391"/>
@@ -1662,7 +1662,7 @@
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="169"/>
         <source>&amp;Espaciar asientos</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Espacer assiettes</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacontbase.ui" line="233"/>
@@ -1760,42 +1760,42 @@
     <message>
         <location filename="../../../../../BULMAGES/bulmacont.cpp" line="351"/>
         <source>Deshaciendo la ultima accion...</source>
-        <translation type="unfinished"></translation>
+        <translation>Défaisant la dernière action...</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacont.cpp" line="359"/>
         <source>Cortando seleccion...</source>
-        <translation type="unfinished"></translation>
+        <translation>Coupant sélection...</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacont.cpp" line="367"/>
         <source>Copiando la seleccion al portapapeles...</source>
-        <translation type="unfinished"></translation>
+        <translation>Copiant  la sélection au bloc-notes...</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacont.cpp" line="375"/>
         <source>Insertando el contenido del portapapeles...</source>
-        <translation type="unfinished"></translation>
+        <translation>Inserrant le contenu du bloc-notes...</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacont.cpp" line="383"/>
         <source>Cambinado barra de estado...</source>
-        <translation type="unfinished"></translation>
+        <translation>Changeant barre d&apos;état...</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacont.cpp" line="396"/>
         <source>Cambiando a modo de pantalla completa...</source>
-        <translation type="unfinished"></translation>
+        <translation>Changeant à mode de d&apos;écran complet...</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacont.cpp" line="417"/>
         <source>Listado de cuentas</source>
-        <translation type="unfinished"></translation>
+        <translation>Liste de comptes</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/bulmacont.cpp" line="85"/>
         <source>Listo</source>
-        <translation type="unfinished"></translation>
+        <translation>Prêt</translation>
     </message>
 </context>
 <context>
@@ -3564,7 +3564,7 @@ yyyy--&gt; Digits du compte.</translation>
     <message>
         <location filename="../../../../../BULMAGES/modelo300.cpp" line="141"/>
         <source>Formulario 300</source>
-        <translation type="unfinished"></translation>
+        <translation>Formulaire 300</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/modelo300.cpp" line="108"/>
@@ -3602,12 +3602,12 @@ Pruebe a descargarlo desde www.aeat.es y guaedelo en
     <message>
         <location filename="../../../../../BULMAGES/empresa.cpp" line="543"/>
         <source>Se han espaciado los asientos</source>
-        <translation type="unfinished"></translation>
+        <translation>On à espacé les assiettes</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/empresa.cpp" line="561"/>
         <source>Se han ordenado los asientos</source>
-        <translation type="unfinished"></translation>
+        <translation>On à rangé les assiettes</translation>
     </message>
 </context>
 <context>
@@ -3778,67 +3778,67 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../../../../BULMAGES/splashscreen.cpp" line="118"/>
         <source>Comprobando nivel de combustible</source>
-        <translation type="unfinished"></translation>
+        <translation>Vñerifiant niveau de combustible</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/splashscreen.cpp" line="119"/>
         <source>Calibrando los lasers del lector de CD</source>
-        <translation type="unfinished"></translation>
+        <translation>Calibration des lasers du lecteur CD</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/splashscreen.cpp" line="124"/>
         <source>Haciendo PING contra el servidor de la MetaBase</source>
-        <translation type="unfinished"></translation>
+        <translation>Faisant PING sur le serveur de la MetaBase</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/splashscreen.cpp" line="125"/>
         <source>Dejando tiempo libre al sistema</source>
-        <translation type="unfinished"></translation>
+        <translation>Laissant temps libre au sistème</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/splashscreen.cpp" line="126"/>
         <source>Sincronizando fases Alfa Beta</source>
-        <translation type="unfinished"></translation>
+        <translation>Sincro des fase Alfa Beta</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/splashscreen.cpp" line="122"/>
         <source>Golpecitos de reajuste del HD</source>
-        <translation type="unfinished"></translation>
+        <translation>Pichenette de réajuste du HD</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/splashscreen.cpp" line="120"/>
         <source>Comprobando la disquetera y la memoria fisica</source>
-        <translation type="unfinished"></translation>
+        <translation>Vérification de l&apos;unité de disque et la mémoire fisique</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/splashscreen.cpp" line="121"/>
         <source>Induciendo energia quantica, entre su RAM y su ROM</source>
-        <translation type="unfinished"></translation>
+        <translation>Induiction d&apos;énergie quantique, entre sa RAM et sa ROM</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/splashscreen.cpp" line="123"/>
         <source>Probando la velocidad del ventilador de la CPU y su frecuencia</source>
-        <translation type="unfinished"></translation>
+        <translation>Éssayant la vitesse du ventilateur de la CPU et sa fréquence</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/splashscreen.cpp" line="127"/>
         <source>Flusheando datos con vidas inteligentes superiores</source>
-        <translation type="unfinished"></translation>
+        <translation>Flushant données avec ntélligences supérieures</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/splashscreen.cpp" line="128"/>
         <source>Permutando las tablas de particion del Sistema Operativo</source>
-        <translation type="unfinished"></translation>
+        <translation>Permutant les tables de partition du SO</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/splashscreen.cpp" line="129"/>
         <source>Crackeando BulmaCont</source>
-        <translation type="unfinished"></translation>
+        <translation>Crackant BulmaCont</translation>
     </message>
     <message>
         <location filename="../../../../../BULMAGES/splashscreen.cpp" line="41"/>
         <source>&lt;center&gt;&lt;font size=+1 color=&quot;#fff8a1&quot;&gt;BulmaCont&lt;/font&gt;&amp;nbsp;&lt;font color=&quot;#ff5e00&quot;&gt;0.9.3&lt;/font&gt;&lt;/center&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;center&gt;&lt;font size=+1 color=&quot;#fff8a1&quot;&gt;BulmaCont&lt;/font&gt;&amp;nbsp;&lt;font color=&quot;#ff5e00&quot;&gt;0.9.3&lt;/font&gt;&lt;/center&gt;</translation>
     </message>
 </context>
 <context>
