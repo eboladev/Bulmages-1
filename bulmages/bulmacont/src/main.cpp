@@ -191,6 +191,10 @@ int main(int argc, char **argv) {
 	delete splashScr;
 
         valorsalida = theApp->exec();
+
+        /// Disparamos los plugins con entryPoint.
+        g_plugins->lanza("exitPoint", bges);
+
     } catch (...) {
         mensajeInfo("Error inesperado en BulmaCont, el programa se cerrara.");
     } // end try

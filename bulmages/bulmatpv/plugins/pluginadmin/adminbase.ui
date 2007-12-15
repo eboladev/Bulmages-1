@@ -5,21 +5,40 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>164</width>
-    <height>92</height>
+    <width>216</width>
+    <height>72</height>
    </rect>
   </property>
   <property name="windowTitle" >
    <string>Form</string>
   </property>
-  <layout class="QGridLayout" >
+  <layout class="QHBoxLayout" >
    <property name="margin" >
     <number>0</number>
    </property>
    <property name="spacing" >
     <number>0</number>
    </property>
-   <item row="1" column="2" >
+   <item>
+    <widget class="QToolButton" name="mui_x" >
+     <property name="minimumSize" >
+      <size>
+       <width>72</width>
+       <height>72</height>
+      </size>
+     </property>
+     <property name="maximumSize" >
+      <size>
+       <width>200</width>
+       <height>72</height>
+      </size>
+     </property>
+     <property name="text" >
+      <string>X</string>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QToolButton" name="mui_z" >
      <property name="minimumSize" >
       <size>
@@ -38,8 +57,8 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="1" >
-    <widget class="QToolButton" name="mui_x" >
+   <item>
+    <widget class="QToolButton" name="mui_salir" >
      <property name="minimumSize" >
       <size>
        <width>72</width>
@@ -53,7 +72,7 @@
       </size>
      </property>
      <property name="text" >
-      <string>X</string>
+      <string>SALIR</string>
      </property>
     </widget>
    </item>

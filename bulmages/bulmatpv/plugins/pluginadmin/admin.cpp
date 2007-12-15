@@ -18,3 +18,8 @@ void Admin::on_mui_x_clicked() {
 	((EmpresaTPV *)empresaBase())->x();
 }
 
+void Admin::on_mui_salir_clicked() {
+//	exit(0);
+	g_main->close();
+}
+

@@ -148,7 +148,6 @@ int listcuentasview1::inicializa() {
             it = new QTreeWidgetItem(ListView1);
             Lista1[idcuenta] = it;
         } else {
-            fprintf(stderr, "Cuentas de subnivel: %d\n", padre);
             it = new QTreeWidgetItem(Lista1[padre]);
             Lista1[idcuenta] = it;
         } // end if

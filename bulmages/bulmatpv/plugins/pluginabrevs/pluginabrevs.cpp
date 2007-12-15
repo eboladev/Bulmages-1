@@ -51,6 +51,20 @@ int entryPoint(BulmaTPV *tpv) {
     return 0;
 }
 
+///
+/**
+\return
+**/
+int exitPoint(BulmaTPV *tpv) {
+    _depura("exitPoint", 0);
+
+    /// Vamos a probar con un docwindow.
+    delete g_doc1;
+    delete g_tot;
+    _depura("END exitPoint", 0);
+    return 0;
+}
+
 int EmpresaTPV_createMainWindows_Post(EmpresaTPV *etpv) {
     g_tot = new Abrevs(etpv, g_doc1);
     g_doc1->setWidget(g_tot);

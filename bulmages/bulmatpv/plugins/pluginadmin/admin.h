@@ -15,6 +15,7 @@ public:
 public slots:
     virtual void on_mui_z_clicked();
     virtual void on_mui_x_clicked();
+    virtual void on_mui_salir_clicked();
 };
 
 #endif

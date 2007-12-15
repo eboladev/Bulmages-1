@@ -195,6 +195,9 @@ int main(int argc, char **argv) {
         bges->showFullScreen();
 
         theApp->exec();
+
+        /// Disparamos los plugins con entryPoint.
+        g_plugins->lanza("exitPoint", bges);
     } catch (...) {
         mensajeInfo(QApplication::translate("main", "Error inesperado en BulmaTPV. El programa se cerrara."));
     } // end try
