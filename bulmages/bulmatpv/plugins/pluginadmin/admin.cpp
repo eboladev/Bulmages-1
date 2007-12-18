@@ -19,7 +19,12 @@ void Admin::on_mui_x_clicked() {
 }
 
 void Admin::on_mui_salir_clicked() {
-//	exit(0);
-	g_main->close();
+            if (QMessageBox::warning(this,
+                                     tr("Salir"),
+                                     tr("Realmente desea abandonar el programa ?"),
+                                     QMessageBox::Ok,
+                                     QMessageBox::Cancel) == QMessageBox::Ok) {
+		g_main->close();
+            } // end if
 }
 

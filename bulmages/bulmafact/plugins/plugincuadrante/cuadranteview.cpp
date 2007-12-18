@@ -167,6 +167,7 @@ void CuadranteView::inicializaCuadrante(const QDate &dateorig) {
             cur->siguienteregistro();
             row++;
         } // end while
+	mui_cuadrante->resizeRowsToContents();
     } catch (...) {
         _depura("Error en la carga del calendario", 2);
         return;
@@ -254,7 +255,7 @@ void CuadranteView::on_mui_calendario_customContextMenuRequested ( const QPoint 
 void CuadranteView::on_mui_actualizar_clicked() {
     _depura("CuadranteView::on_mui_actualizar_clicked", 0);
         inicializaTrabajadores();
-        inicializaCuadrante(QDate::currentDate());
+        inicializaCuadrante(mui_calendario->selectedDate());
     _depura("CuadranteView::on_mui_actualizar_clicked", 0);
 }
 

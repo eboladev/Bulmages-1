@@ -116,10 +116,11 @@ void CuadranteQTableWidget::on_contextMenuRequested ( int , int , const QPoint &
 \param emp
 \param parent
 **/
-CuadranteQTextDocument::CuadranteQTextDocument(Company *emp, QWidget *parent) :QLabel(parent), QTableWidgetItem(QTableWidgetItem::UserType),  PEmpresaBase(emp) {
+CuadranteQTextDocument::CuadranteQTextDocument(Company *emp, QWidget *parent) :QLabel(parent),/* QTableWidgetItem(QTableWidgetItem::UserType),*/  PEmpresaBase(emp) {
     _depura("CuadranteQTextDocument::CuadranteQTextDocument", 0);
     setContextMenuPolicy(Qt::CustomContextMenu);
     connect(this, SIGNAL(customContextMenuRequested ( const QPoint &  )), this, SLOT(on_customContextMenuRequested ( const QPoint &  )));
+    resize(400,400);
     _depura("END CuadranteQTextDocument::CuadranteQTextDocument", 0);
 }
 
@@ -190,7 +191,7 @@ void CuadranteQTextDocument::on_customContextMenuRequested ( const QPoint & pos 
 \param e
 **/
 void CuadranteQTextDocument::contextMenuEvent ( QContextMenuEvent *  ) {
-    QTableWidgetItem::setSelected(TRUE);
+    /*QTableWidgetItem::setSelected(TRUE);*/
 }
 
 

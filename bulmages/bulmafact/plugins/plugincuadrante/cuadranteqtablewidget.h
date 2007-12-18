@@ -34,7 +34,7 @@
 class Company;
 
 /// Reimplementa los items de QTableWidget2 para que podamos programar cosas en ellos.
-class CuadranteQTextDocument : public QLabel, public QTableWidgetItem,  public PEmpresaBase {
+class CuadranteQTextDocument : public QLabel,/* public QTableWidgetItem,*/  public PEmpresaBase {
 Q_OBJECT
 public:
 	QString mdb_idalmacen;
