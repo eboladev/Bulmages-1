@@ -383,44 +383,49 @@ void CuadranteQTextDocument::setidcuadrante(QString text) {
 const QString CuadranteQTextDocument::impresion() {
     _depura("CuadranteQTextDocument::impresion", 0);
 
-    QString html = "";
-    html += "<td>\n";
-    QString style="";
-    cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM cuadrante, almacen WHERE cuadrante.idalmacen = almacen.idalmacen AND almacen.idalmacen="+mdb_idalmacen+" AND cuadrante.fechacuadrante ='" +mdb_fechacuadrante.toString("dd/MM/yyyy")+ "'");
-    if (!cur) throw -1;
-    if (!cur->eof()) {
-        if (cur->valor("fiestacuadrante") == "t") {
-            style = " style=\"festivo\"";
-        }
-        html += "<para "+style+"> <b>" + cur->valor("nomalmacen") + "</b>: " + mdb_fechacuadrante.toString("dd/MM/yyyy")+"</para><spacer length=\"0.1cm\"/>\n";
-    } // end if
-
-
-    QString oldnomtipotrabajo = "";
-
-    cursor2 *cur1 = empresaBase()->cargacursor("SELECT * FROM horario, trabajador, tipotrabajo WHERE horario.idtrabajador = trabajador.idtrabajador AND trabajador.idtipotrabajo = tipotrabajo.idtipotrabajo AND idcuadrante = "+mdb_idcuadrante +" ORDER BY nomtipotrabajo, horainhorario, nomtrabajador");
-    if (!cur1) throw -1;
-    while (!cur1->eof()) {
-        if (oldnomtipotrabajo != cur1->valor("nomtipotrabajo") ) {
-            html +=  "<para "+style+"><font color=\"red\" size=\"5\">" + cur1->valor("nomtipotrabajo") + ":</font></para><spacer length=\"0.1cm\"/>\n";
-            oldnomtipotrabajo = cur1->valor("nomtipotrabajo");
+    try {
+        QString html = "";
+        html += "<td>\n";
+        QString style="";
+        cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM cuadrante, almacen WHERE cuadrante.idalmacen = almacen.idalmacen AND almacen.idalmacen="+mdb_idalmacen+" AND cuadrante.fechacuadrante ='" +mdb_fechacuadrante.toString("dd/MM/yyyy")+ "'");
+        if (!cur) throw -1;
+        if (!cur->eof()) {
+            if (cur->valor("fiestacuadrante") == "t") {
+                style = " style=\"festivo\"";
+            }
+            html += "<para "+style+"> <b><font color=\"red\" size=\"5\">" + cur->valor("nomalmacen") + "</font></b>: " + mdb_fechacuadrante.toString("dd/MM/yyyy")+"</para><spacer length=\"0.1cm\"/>\n";
         } // end if
-        html += "<para "+style+"><font face=\"Helvetica\" size=\"6\" color=\"" + cur1->valor("colortipotrabajo") + "\">" + cur1->valor("nomtrabajador") + " " + cur1->valor("apellidostrabajador");
-        html += "<sup>(" + cur1->valor("horainhorario").left(5) + "--" + cur1->valor("horafinhorario").left(5) + ")</sup></font></para><spacer length=\"0.1cm\"/>\n";
 
-        cur1->siguienteregistro();
-    } // end while
-    delete cur1;
 
-    if (cur->valor("comentcuadrante") != "") {
-        html += "<para "+style+"><font face=\"Helvetica\" size=\"5\" color=\"black\">" + cur->valor("comentcuadrante").replace("\n", "<spacer length=\"0.1cm\"/>\n") + "</font></para>";
-    } // end if
+        QString oldnomtipotrabajo = "";
 
-    delete cur;
+        cursor2 *cur1 = empresaBase()->cargacursor("SELECT * FROM horario, trabajador, tipotrabajo WHERE horario.idtrabajador = trabajador.idtrabajador AND trabajador.idtipotrabajo = tipotrabajo.idtipotrabajo AND idcuadrante = "+mdb_idcuadrante +" ORDER BY nomtipotrabajo, horainhorario, nomtrabajador");
+        if (!cur1) throw -1;
+        while (!cur1->eof()) {
+            if (oldnomtipotrabajo != cur1->valor("nomtipotrabajo") ) {
+                html +=  "<para "+style+"><font color=\"red\" size=\"5\">" + cur1->valor("nomtipotrabajo") + ":</font></para><spacer length=\"0.1cm\"/>\n";
+                oldnomtipotrabajo = cur1->valor("nomtipotrabajo");
+            } // end if
+            html += "<para "+style+"><font face=\"Helvetica\" size=\"6\" color=\"" + cur1->valor("colortipotrabajo") + "\">" + cur1->valor("nomtrabajador") + " " + cur1->valor("apellidostrabajador");
+            html += "<sup>(" + cur1->valor("horainhorario").left(5) + "--" + cur1->valor("horafinhorario").left(5) + ")</sup></font></para><spacer length=\"0.1cm\"/>\n";
 
-    html += "</td>\n";
-    _depura("END CuadranteQTextDocument::impresion", 0);
-    return html;
+            cur1->siguienteregistro();
+        } // end while
+        delete cur1;
+
+        if (cur->valor("comentcuadrante") != "") {
+            html += "<para "+style+"><font face=\"Helvetica\" size=\"5\" color=\"black\">" + cur->valor("comentcuadrante").replace("\n", "<spacer length=\"0.1cm\"/>\n") + "</font></para>";
+        } // end if
+
+        delete cur;
+
+        html += "</td>\n";
+
+        _depura("END CuadranteQTextDocument::impresion", 0);
+	return html;
+    } catch (...) {
+    } // end try
+    return "";
 }
 
 
@@ -505,8 +510,6 @@ void ImpCuadrante::generar() {
         delete cur;
 
         html += "</td></tr></table>";
-
-//        QLabel::setText(html);
         m_html = html;
         _depura("END ImpCuadrante::generar", 0);
     } catch (...) {
@@ -528,11 +531,18 @@ void ImpCuadrante::generar() {
 **/
 bool ImpCuadrante::buscaConflictos(QString idtrabajador, const QDate &date, QString horain, QString horafin) {
     _depura ("ImpCuadrante::buscaConflictos", 0);
+
     bool conflicto = FALSE;
-    QString query = "SELECT * FROM horario NATURAL LEFT JOIN cuadrante  WHERE idtrabajador = " + idtrabajador + " AND NOT (( horafinhorario < '" + horain + "') OR (horainhorario > '" + horafin +"')) AND fechacuadrante = '" + date.toString("dd/MM/yyyy") + "'";
+    QString query = "SELECT * FROM horario NATURAL LEFT JOIN cuadrante  WHERE idtrabajador = " + idtrabajador;
+    query += " AND ((horainhorario < '"+horain+"' AND horafinhorario > '"+horain+"')";
+    query += " OR (horainhorario > '"+horain+"' AND horafinhorario < '"+horafin+"')";
+    query += " OR (horainhorario < '"+horafin+"' AND horafinhorario > '"+horafin+"')";
+    query += ")";
+    query += " AND fechacuadrante = '" + date.toString("dd/MM/yyyy") + "'";
     cursor2 *cur = empresaBase()->cargacursor(query);
     if (cur) {
         if (cur->numregistros() > 1) {
+
             conflicto = TRUE;
         } // end if
         delete cur;
@@ -542,6 +552,7 @@ bool ImpCuadrante::buscaConflictos(QString idtrabajador, const QDate &date, QStr
     cur = empresaBase()->cargacursor(query);
     if (cur) {
         if (!cur->eof()) {
+
             conflicto = TRUE;
         } // end if
         delete cur;

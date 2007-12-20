@@ -79,6 +79,7 @@ CuadranteView::CuadranteView(Company *comp, QWidget *parent)
 **/
 CuadranteView::~CuadranteView() {
     _depura("CuadranteView::~CuadranteView", 0);
+	guardaconfig();
     _depura("END CuadranteView::~CuadranteView", 0);
 }
 
@@ -129,6 +130,9 @@ void CuadranteView::inicializaTrabajadores() {
 void CuadranteView::inicializaCuadrante(const QDate &dateorig) {
     _depura("CuadranteView::inicializaCuadrante", 0);
     try {
+	/// Si el cuadrante ha sido manipulado guardamos las configuracion del mismo.
+	if (mui_cuadrante->rowCount() != 0)
+		guardaconfig();
 
         mui_cuadrante->clear();
 
@@ -167,7 +171,7 @@ void CuadranteView::inicializaCuadrante(const QDate &dateorig) {
             cur->siguienteregistro();
             row++;
         } // end while
-	mui_cuadrante->resizeRowsToContents();
+	cargaconfig();
     } catch (...) {
         _depura("Error en la carga del calendario", 2);
         return;
@@ -292,10 +296,10 @@ void CuadranteView::on_mui_duplicar_clicked() {
 	while (!cur->eof()) {
 		query = "UPDATE cuadrante SET ";
 		query += " comentcuadrante = '"+cur->valor("comentcuadrante")+"'";
-		query += ", aperturacuadrante = "+ ((cur->valor("aperturacuadrante")=="")?"NULL":cur->valor("aperturacuadrante"));
-		query += ", cierrecuadrante = " + ((cur->valor("cierrecuadrante")=="")?"NULL":cur->valor("cierrecuadrante"));
-		query += ", apertura1cuadrante = " + ((cur->valor("apertura1cuadrante")=="")?"NULL":cur->valor("apertura1cuadrante"));
-		query += ", cierre1cuadrante = " + ((cur->valor("cierre1cuadrante")=="")?"NULL":cur->valor("cierre1cuadrante"));
+		query += ", aperturacuadrante = "+ ((cur->valor("aperturacuadrante")=="")?"NULL":"'"+cur->valor("aperturacuadrante")+"'");
+		query += ", cierrecuadrante = " + ((cur->valor("cierrecuadrante")=="")?"NULL":"'"+cur->valor("cierrecuadrante")+"'");
+		query += ", apertura1cuadrante = " + ((cur->valor("apertura1cuadrante")=="")?"NULL":"'"+cur->valor("apertura1cuadrante")+"'");
+		query += ", cierre1cuadrante = " + ((cur->valor("cierre1cuadrante")=="")?"NULL":"'"+cur->valor("cierre1cuadrante")+"'");
 		query += ", fiestacuadrante = '" + cur->valor("fiestacuadrante")+"'";
 		query += " WHERE fechacuadrante = '" + date.toString("dd/MM/yyyy") + "' AND idalmacen = " +cur->valor("idalmacen");
 		empresaBase()->ejecuta(query);
@@ -418,4 +422,78 @@ void CuadranteView::on_mui_imprimir_clicked() {
 
 }
 
+
+/// Guardamos el archivo de configuracion.
+/**
+**/
+void CuadranteView::guardaconfig() {
+    _depura("CuadranteView::guardaconfig", 0);
+    QString aux = "";
+    QFile file(confpr->valor(CONF_DIR_USER) + "cuadrantecfn.cfn");
+    /// Guardado del orden y de configuraciones varias.
+    if (file.open(QIODevice::WriteOnly)) {
+        QTextStream stream(&file);
+
+        /// Guardado del ancho y alto de las columnas
+        for (int i = 0; i < mui_cuadrante->columnCount(); i++) {
+            stream << mui_cuadrante->columnWidth(i) << "\n";
+        } // end for
+
+        /// Guardado del ancho y alto de las columnas
+        for (int i = 0; i < mui_cuadrante->rowCount(); i++) {
+            stream << mui_cuadrante->rowHeight(i) << "\n";
+        } // end for
+
+        file.close();
+    } // end if
+    _depura("END CuadranteView::guardaconfig", 0);
+}
+
+
+///
+/**
+**/
+void CuadranteView::cargaconfig() {
+    _depura("CuadranteView::cargaconfig", 0);
+    QFile file(confpr->valor(CONF_DIR_USER) + "cuadrantecfn.cfn");
+    QString line;
+    int error = 1;
+    if (file.open(QIODevice::ReadOnly)) {
+        error = 0;
+        QTextStream stream(&file);
+        /// Establecemos la columna de ordenaci&oacute;n
+        QString linea = "";
+
+
+        /// Establecemos el ancho de las columnas.
+        for (int i = 0; i < mui_cuadrante->columnCount(); i++) {
+            linea = stream.readLine();
+            if (linea.toInt() > 0) {
+                mui_cuadrante->setColumnWidth(i, linea.toInt());
+            } else {
+                mui_cuadrante->setColumnWidth(i, 400);
+                error = 1;
+            } // end if
+        } // end for
+
+        /// Establecemos el ancho de las columnas.
+        for (int i = 0; i < mui_cuadrante->rowCount(); i++) {
+            linea = stream.readLine();
+            if (linea.toInt() > 0) {
+                mui_cuadrante->setRowHeight(i, linea.toInt());
+            } else {
+                mui_cuadrante->setRowHeight(i, 250);
+                error = 1;
+            } // end if
+        } // end for
+    } // end if
+    /// Si se ha producido alg&uacute;n error en la carga hacemos un maquetado autom&aacute;tico.
+    if (error) {
+        mui_cuadrante->resizeColumnsToContents();
+	mui_cuadrante->resizeRowsToContents();
+    }
+
+        file.close();
+    _depura("END CuadranteView::cargaconfig", 0);
+}
 

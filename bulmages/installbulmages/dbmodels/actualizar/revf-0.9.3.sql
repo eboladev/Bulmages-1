@@ -76,13 +76,13 @@ DROP FUNCTION compruebarevision() CASCADE;
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 BEGIN
-    ALTER TABLE	lpresupuesto ALTER COLUMN desclpresupuesto TYPE character varying;
-    ALTER TABLE lpedidocliente ALTER COLUMN desclpedidocliente TYPE character varying;
-    ALTER TABLE lpedidoproveedor ALTER COLUMN desclpedidoproveedor TYPE character varying;
-    ALTER TABLE	lalbaranp ALTER COLUMN desclalbaranp TYPE character varying;
-    ALTER TABLE	lalbaran ALTER COLUMN desclalbaran TYPE character varying;
-    ALTER TABLE	lfactura ALTER COLUMN desclfactura TYPE character varying;
-    ALTER TABLE	lfacturap ALTER COLUMN desclfacturap TYPE character varying;
+--    ALTER TABLE	lpresupuesto ALTER COLUMN desclpresupuesto TYPE character varying;
+--    ALTER TABLE lpedidocliente ALTER COLUMN desclpedidocliente TYPE character varying;
+--    ALTER TABLE lpedidoproveedor ALTER COLUMN desclpedidoproveedor TYPE character varying;
+--    ALTER TABLE	lalbaranp ALTER COLUMN desclalbaranp TYPE character varying;
+--    ALTER TABLE	lalbaran ALTER COLUMN desclalbaran TYPE character varying;
+--    ALTER TABLE	lfactura ALTER COLUMN desclfactura TYPE character varying;
+--    ALTER TABLE	lfacturap ALTER COLUMN desclfacturap TYPE character varying;
     RETURN 0;
 END;
 ' LANGUAGE plpgsql;

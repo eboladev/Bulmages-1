@@ -17,19 +17,37 @@
    <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_clock.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
-   <property name="margin" >
-    <number>5</number>
-   </property>
    <property name="spacing" >
-    <number>5</number>
+    <number>0</number>
+   </property>
+   <property name="leftMargin" >
+    <number>0</number>
+   </property>
+   <property name="topMargin" >
+    <number>0</number>
+   </property>
+   <property name="rightMargin" >
+    <number>0</number>
+   </property>
+   <property name="bottomMargin" >
+    <number>0</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
      <property name="spacing" >
       <number>6</number>
+     </property>
+     <property name="leftMargin" >
+      <number>0</number>
+     </property>
+     <property name="topMargin" >
+      <number>0</number>
+     </property>
+     <property name="rightMargin" >
+      <number>0</number>
+     </property>
+     <property name="bottomMargin" >
+      <number>0</number>
      </property>
      <item>
       <widget class="QLabel" name="label" >
@@ -62,11 +80,20 @@
         <enum>QFrame::Raised</enum>
        </property>
        <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>5</number>
-        </property>
         <property name="spacing" >
          <number>5</number>
+        </property>
+        <property name="leftMargin" >
+         <number>5</number>
+        </property>
+        <property name="topMargin" >
+         <number>0</number>
+        </property>
+        <property name="rightMargin" >
+         <number>0</number>
+        </property>
+        <property name="bottomMargin" >
+         <number>0</number>
         </property>
         <item>
          <widget class="QToolButton" name="mui_editar" >
@@ -203,7 +230,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_reload.png</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_editDelete.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -240,7 +267,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_reload.png</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/igualant.xpm</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -254,11 +281,52 @@
          </widget>
         </item>
         <item>
+         <widget class="QToolButton" name="mui_ocultar" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="toolTip" >
+           <string>Ocultar Panel</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Ocultar Panel</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_tux.png</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+D</string>
+          </property>
+          <property name="checkable" >
+           <bool>true</bool>
+          </property>
+          <property name="checked" >
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QFrame" name="mui_plugbotones" >
           <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>0</hsizetype>
-            <vsizetype>0</vsizetype>
+           <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -284,7 +352,7 @@
           </property>
           <property name="sizeHint" >
            <size>
-            <width>351</width>
+            <width>461</width>
             <height>34</height>
            </size>
           </property>
@@ -297,98 +365,110 @@
    </item>
    <item>
     <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>0</number>
-     </property>
      <item>
-      <layout class="QVBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
+      <widget class="QFrame" name="frame_2" >
+       <property name="frameShape" >
+        <enum>QFrame::NoFrame</enum>
        </property>
-       <property name="spacing" >
-        <number>0</number>
+       <property name="frameShadow" >
+        <enum>QFrame::Plain</enum>
        </property>
-       <item>
-        <widget class="QCalendarWidget" name="mui_calendario" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>0</hsizetype>
-           <vsizetype>0</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="contextMenuPolicy" >
-          <enum>Qt::CustomContextMenu</enum>
-         </property>
-         <property name="firstDayOfWeek" >
-          <enum>Qt::Monday</enum>
-         </property>
-         <property name="gridVisible" >
-          <bool>true</bool>
-         </property>
-         <property name="verticalHeaderFormat" >
-          <enum>QCalendarWidget::NoVerticalHeader</enum>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="CuadranteQTreeWidget" name="mui_listtrabajadores" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>0</hsizetype>
-           <vsizetype>13</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize" >
-          <size>
-           <width>100</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="maximumSize" >
-          <size>
-           <width>280</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="font" >
-          <font>
-           <pointsize>9</pointsize>
-          </font>
-         </property>
-         <property name="contextMenuPolicy" >
-          <enum>Qt::NoContextMenu</enum>
-         </property>
-         <property name="frameShape" >
-          <enum>QFrame::NoFrame</enum>
-         </property>
-         <property name="horizontalScrollBarPolicy" >
-          <enum>Qt::ScrollBarAlwaysOff</enum>
-         </property>
-         <property name="tabKeyNavigation" >
-          <bool>true</bool>
-         </property>
-         <property name="showDropIndicator" stdset="0" >
-          <bool>true</bool>
-         </property>
-         <property name="rootIsDecorated" >
-          <bool>true</bool>
-         </property>
-         <property name="animated" >
-          <bool>true</bool>
-         </property>
-         <property name="allColumnsShowFocus" >
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-      </layout>
+       <layout class="QVBoxLayout" >
+        <property name="spacing" >
+         <number>0</number>
+        </property>
+        <property name="leftMargin" >
+         <number>0</number>
+        </property>
+        <property name="topMargin" >
+         <number>0</number>
+        </property>
+        <property name="rightMargin" >
+         <number>0</number>
+        </property>
+        <property name="bottomMargin" >
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QCalendarWidget" name="mui_calendario" >
+          <property name="sizePolicy" >
+           <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="contextMenuPolicy" >
+           <enum>Qt::CustomContextMenu</enum>
+          </property>
+          <property name="firstDayOfWeek" >
+           <enum>Qt::Monday</enum>
+          </property>
+          <property name="gridVisible" >
+           <bool>true</bool>
+          </property>
+          <property name="verticalHeaderFormat" >
+           <enum>QCalendarWidget::NoVerticalHeader</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="CuadranteQTreeWidget" name="mui_listtrabajadores" >
+          <property name="sizePolicy" >
+           <sizepolicy vsizetype="Ignored" hsizetype="Fixed" >
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize" >
+           <size>
+            <width>100</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>280</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="font" >
+           <font>
+            <pointsize>9</pointsize>
+           </font>
+          </property>
+          <property name="contextMenuPolicy" >
+           <enum>Qt::NoContextMenu</enum>
+          </property>
+          <property name="frameShape" >
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="horizontalScrollBarPolicy" >
+           <enum>Qt::ScrollBarAlwaysOff</enum>
+          </property>
+          <property name="tabKeyNavigation" >
+           <bool>true</bool>
+          </property>
+          <property name="showDropIndicator" stdset="0" >
+           <bool>true</bool>
+          </property>
+          <property name="rootIsDecorated" >
+           <bool>true</bool>
+          </property>
+          <property name="animated" >
+           <bool>true</bool>
+          </property>
+          <property name="allColumnsShowFocus" >
+           <bool>true</bool>
+          </property>
+          <column>
+           <property name="text" >
+            <string>1</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </item>
      <item>
       <widget class="CuadranteQTableWidget" name="mui_cuadrante" >
@@ -420,5 +500,22 @@
  <resources>
   <include location="../../../bulmages.qrc" />
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>mui_ocultar</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>frame_2</receiver>
+   <slot>setShown(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>279</x>
+     <y>44</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>285</x>
+     <y>110</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
