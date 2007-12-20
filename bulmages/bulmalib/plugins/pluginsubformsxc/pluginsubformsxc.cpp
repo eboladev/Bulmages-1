@@ -107,19 +107,19 @@ void myplugsubformsxc::sacaSXC() {
 	fitxersortidatxt += "# Set variables\n";
 	fitxersortidatxt += "$doc = new ooolib(\"sxc\");\n";
 	fitxersortidatxt += "$doc->oooSet(\"builddir\", \".\");\n";
-	fitxersortidatxt += "$doc->oooSet(\"title\", \"Informe de Proveedores\");\n";
-	fitxersortidatxt += "$doc->oooSet(\"subject\", \"Proveedores\");\n";
-	fitxersortidatxt += "$doc->oooSet(\"comments\", \"Informe de Proveedores\");\n";
-	fitxersortidatxt += "$doc->oooSet(\"author\", \"ooolib Example\");\n";
+	fitxersortidatxt += "$doc->oooSet(\"title\", \"SubFormulario Exportado\");\n";
+	fitxersortidatxt += "$doc->oooSet(\"subject\", \"SubFormulario\");\n";
+	fitxersortidatxt += "$doc->oooSet(\"comments\", \"SubFormulario Exportado\");\n";
+	fitxersortidatxt += "$doc->oooSet(\"author\", \"Tomeu Borras\");\n";
 	fitxersortidatxt += "$doc->oooSet(\"meta1-name\", \"Programmer\");\n";
-	fitxersortidatxt += "$doc->oooSet(\"meta1-value\", \"Tomeu Borrás\");\n";
+	fitxersortidatxt += "$doc->oooSet(\"meta1-value\", \"Tomeu Borras\");\n";
 	fitxersortidatxt += "\n";
 
 	fitxersortidatxt += "$doc->oooSet(\"cell-auto\", \"1,0\");\n";
 	fitxersortidatxt += "$doc->oooSet(\"bold\", \"on\");\n";
 	fitxersortidatxt += "$doc->oooSet(\"text-size\", \"18\");\n";
 	fitxersortidatxt += "$doc->oooSet(\"cell-loc\", 4, 1);\n";
-	fitxersortidatxt += "$doc->oooData(\"cell-text\", \"INFORME ANUAL DE COMPRAS POR PROVEEDOR\");\n";
+	fitxersortidatxt += "$doc->oooData(\"cell-text\", \"DATOS EXPORTADOS\");\n";
 	fitxersortidatxt += "$doc->oooSet(\"text-size\", \"10\");\n";
 	fitxersortidatxt += "$doc->oooSet(\"bold\", \"off\");\n";
 
@@ -156,7 +156,7 @@ void myplugsubformsxc::sacaSXC() {
 			fitxersortidatxt += "# Fila "+ QString::number ( y ) +"\n";
 			fitxersortidatxt += "$doc->oooSet(\"bold\", \"on\");\n";
 			fitxersortidatxt += "$doc->oooSet(\"cell-loc\", "+ QString::number ( x++ ) +", "+ QString::number ( y ) +");\n";
-			fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" +(subf->mui_list->item(i, j)->text()) +"\");\n";
+			fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + parsearCode(subf->mui_list->item(i, j)->text()) +"\");\n";
 
 			fitxersortidatxt += "$doc->oooSet(\"bold\", \"off\");\n";
 			fitxersortidatxt += "\n";

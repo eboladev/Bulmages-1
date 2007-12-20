@@ -53,6 +53,18 @@ QString editaTexto(QString texto) {
     return vuelta;
 }
 
+/// Reformatea una cadena de caracteres para poder ser escrita desde un script.
+/// La conversion es a strings de C
+/// cambia los slash por slash + slash
+/// cambia las comillas por slash + comillas
+/// cambia los tabuladores por slah + t
+QString parsearCode(const QString &cad) {
+	QString result = cad;
+	result.replace("\\", "\\\\");
+	result.replace("\"", "\\\"");
+	result.replace("\t", "\\t");
+	return result;
+}
 
 /// Proteje cadenas de texto pasandoles una sustitucion de codigos especiales de XML.
 QString XMLProtect(const QString &string) {
