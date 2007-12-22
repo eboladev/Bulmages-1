@@ -51,7 +51,7 @@ set(bulmalib_MOCS
 			qapplication2.h 
 			ficha.h 
 	   		qtexteditdelegate.h 
-           	qdoublespinbox2.h 
+	           	qdoublespinbox2.h 
 			blwidget.h 
 			listado.h 
 			porcentajecarga.h 

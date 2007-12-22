@@ -49,4 +49,6 @@ set_target_properties( ${plugin} PROPERTIES
 
 target_link_libraries(${plugin} bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES} )
 
+add_dependencies(${plugin} bulmacont bulmalib)
+
 install_targets(/lib/bulmacont/plugins ${plugin})

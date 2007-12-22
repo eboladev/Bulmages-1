@@ -13,34 +13,35 @@ LIST( GET BULMAGES_VERSIONS 2 BULMAGES_VERSION_PATCH)
 INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR})
 find_package(Qt4 REQUIRED) 
 INCLUDE (${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindPostgreSQL.cmake)
-# ########## bulmages library ##########
 
+if(NOT PGSQL_FOUND)
+  message(ERROR "Bulmages needs libpq to compile")
+endif(NOT PGSQL_FOUND)
 
+########### bulmages library ##########
+message(STATUS "Working on bulmalib")
 add_subdirectory(bulmalib)
+
+########### bulmacont ##########
+message(STATUS "Working on bulmacont")
 add_subdirectory(bulmacont)
+
+########### bulmafact ##########
+message(STATUS "Working on bulmafact")
 add_subdirectory(bulmafact)
-#add_subdirectory(bulmages)
-#add_subdirectory(bulmatpv)
+
+########### bulmages launch ##########
+message(STATUS "Working on bulmages")
+add_subdirectory(bulmages)
+
+########### bulmatpv ##########
+message(STATUS "Working on bulmatpv")
+add_subdirectory(bulmatpv)
+
+########### some stuff ##########
+message(STATUS "Working on installbulmages")
 add_subdirectory(installbulmages)
 
 
 
 
-
-# Sources:
-#SET(bulmages_library_SRCS
-#    bulmages.qrc
-#)
-
-# Headers:
-#SET(bulmages_library_HDRS
-#)
-
-
-
-# actual target:
-#ADD_LIBRARY(bulmages ${bulmages_library}_SCRS ${bulmages_library_HDRS})
-#SET_TARGET_PROPERTIES(bulmages PROPERTIES VERSION 0.0.0)
-
-# add install target:
-#INSTALL(TARGETS bulmages DESTINATION lib)

@@ -1,113 +1,72 @@
-# Archivo generado por el gestor qmake de kdevelop. 
-# -------------------------------------------------
-
-QT += xml
-
-SET(LANGUAGE C++)
-
-INCLUDEPATH += ../../bulmalib/src  \
-	       ../../bulmalib/src/.ui \
-	       ../../bulmalib/src/.moc \
-	       ../../bulmages/src/.ui \
-	       /usr/include/qt4 \
-	       /usr/include/qt4/Qt \
-	       /usr/lib/qt4/include/Qt \
-	       /usr/lib/qt4/include/QtXml
-
-PROJECT(../../installbulmages/bulmages )
-
-RESOURCES += ../../bulmages.qrc
-
-CONFIG += release \
-          thread 
+###########################################
+# bulmages launcher					  	  #
+###########################################
 
 
-FORMS += comun/importContaplusBase.ui \
-	 comun/selectorbase.ui \
- 	 comun/configuracion.ui\
-	 comun/nuevaempresadlg.ui \
-	 comun/nuevafactbase.ui \
-	 comun/importexportbulmafactbase.ui
+set(bulmages_UIS comun/importContaplusBase.ui 
+	 comun/selectorbase.ui 
+ 	 comun/configuracion.ui
+	 comun/nuevaempresadlg.ui 
+	 comun/nuevafactbase.ui 
+	 comun/importexportbulmafactbase.ui)
 
-HEADERS += comun/bselector.h \
-           comun/bconfiguracion.h \
-           comun/bnuevaempresa.h \
-           comun/nuevafact.h \
-           comun/gongimportfiles.h \
-           comun/importContaplus.h \
-	   comun/importexportbulmafactview.h
+set(bulmages_SRC main.cpp 
+           comun/bselector.cpp 
+           comun/bconfiguracion.cpp 
+           comun/bnuevaempresa.cpp 
+           comun/nuevafact.cpp 
+           comun/gongimportfiles.cpp 
+           comun/importContaplus.cpp 
+	   	   comun/importexportbulmafactview.cpp)
 
-SOURCES += main.cpp \
-           comun/bselector.cpp \
-           comun/bconfiguracion.cpp \
-           comun/bnuevaempresa.cpp \
-           comun/nuevafact.cpp \
-           comun/gongimportfiles.cpp \
-           comun/importContaplus.cpp \
-	   comun/importexportbulmafactview.cpp
-
-TRANSLATIONS += bulmages_es.ts \
-                bulmages_ca.ts \
-                bulmages_en.ts \
-                bulmages_fr.ts \
-                bulmages_de.ts \
-                bulmages_zz.ts
-
-unix{
+set(bulmages_MOCS comun/bselector.h 
+           comun/bconfiguracion.h 
+           comun/bnuevaempresa.h 
+           #comun/nuevafact.h 
+           comun/gongimportfiles.h 
+           comun/importContaplus.h 
+	   	   comun/importexportbulmafactview.h)
 
 
-	LIBS += -lpq \
-	        -lbulmalib
+set(QT_USE_QTASSISTANT true)
+set(QT_USE_QTXML true)
 
-QMAKE_LIBDIR += ../../installbulmages
+INCLUDE(   ${QT_USE_FILE}   )
 
-SET(  UI_DIR .ui)
-SET(  MOC_DIR .moc)
-SET(  OBJECTS_DIR .obj)
-SET(  bulmages_install_script.path .)
-SET(  bulmages_install_script.extra echo; echo "**************************"; echo Para Instalar BULMAGES ejecute el script de instalaci�; echo "installbulmages"; echo que encontrara en la carpeta installbulmages.; echo Gracias.; echo "(El equipo de Bulmages)"; echo "**************************"; echo;)
-  exists(/usr/include/postgresql/libpq-fe.h){
-    DEFINES += DISTRO_DEBIAN
-  }
-  exists(/usr/include/postgresql/8.0/libpq-fe.h){
-    DEFINES += DISTRO_DEBIAN_8_0
-  }
-  exists(/usr/include/pgsql/libpq-fe.h){
-    DEFINES += DISTRO_RED_HAT
-  }
-  exists(/usr/include/postgresql/pgsql/libpq-fe.h){
-    DEFINES += DISTRO_GENTOO
-  }
-  exists(/usr/include/no_se_que/pgsql/libpq-fe.h){
-    DEFINES += DISTRO_NO_SE_QUE
-  }
-}
+include_directories(
+    ${QT_INCLUDE_DIR}
+	${PGSQL_INCLUDE_DIR}
+	${QT_QTXML_INCLUDE_DIR}
+	${QT_QTASSISTANT_INCLUDE_DIR}
+	${CMAKE_CURRENT_BINARY_DIR}
+	${CMAKE_CURRENT_SOURCE_DIR}
+	${CMAKE_BINARY_DIR}/bulmalib/src/
+	${CMAKE_SOURCE_DIR}/bulmalib/src/)
 
-win32{
-  DEFINES += WIN32
-  DEFINES += WINDOWS
+# generate rules for building source files from the resources
+#
 
-SET(  UI_DIR .ui)
+# generate rules for building source files that moc generates
+QT4_WRAP_UI(bulmages_UIS_H ${bulmages_UIS})
+QT4_WRAP_CPP(bulmages_MOC_SRCS ${bulmages_MOCS})
 
-SET(  MOC_DIR .moc)
+#QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
 
-SET(  OBJECTS_DIR .obj)
 
-  LIBS += ../../bulmalib/src/release/libbulmalib.a \
- 	C:\Qt\4.1.0\lib\libQtXml4.a \
-	C:\Qt\4.1.0\lib\libQtXmld4.a 
+#ADD_DEFINITIONS(${QT_DEFINITIONS})
+#ADD_DEFINITIONS(-DQT_SHARED)
+# build sources, moc'd sources, and rcc'd sources
+# # generate rules for building source files from the resources
+# build sources, moc'd sources, and rcc'd sources
 
-  INCLUDEPATH += ../../bulmalib/src/libpq \
-			../../bulmalib/src \
-			../../bulmalib/src/.ui \
-                        ../bulmacont/src \
-    		        comun \
- 	 	        C:\Qt\4.1.0\include\QtXml
 
-SET(TARGET ..\..\..\installbulmages\bulmages )
-  INCLUDEPATH += "C:\Archivos de programa\PostgreSQL\8.1\include"
-  LIBS += "C:\Archivos de programa\PostgreSQL\8.1\bin\libpq.dll"
+add_executable(bulmages  ${bulmages_MOCS} ${bulmages_MOC_SRCS} ${bulmages_UIS_H}
+	${bulmages_SRC} ${bulmages_SRCS} )
 
-}
+target_link_libraries( bulmages bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 
-ADD_LIBRARY(../../installbulmages/bulmages  ${../../installbulmages/bulmages _sources})ADD_EXECUTABLE(../../installbulmages/bulmages  ../../installbulmages/bulmages _sources)
+add_dependencies(bulmages bulmalib)
+
+install_targets(/bin bulmages)	
+
+

@@ -1,9 +1,9 @@
 ###########################################
-# Plugin for bulmafact					  #
+# Plugin for bulmatpv					  #
 ###########################################
-#plugin_tc_articulos
+# plugincobrar
 
-set (plugin plugin_tc_articulos)
+set (plugin plugincobrar)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
@@ -23,8 +23,8 @@ include_directories(
 	${CMAKE_CURRENT_SOURCE_DIR}
 	${CMAKE_BINARY_DIR}/bulmalib/src/
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
-	${CMAKE_BINARY_DIR}/bulmafact/src/
-	${CMAKE_SOURCE_DIR}/bulmafact/src/)
+	${CMAKE_BINARY_DIR}/bulmatpv/src/
+	${CMAKE_SOURCE_DIR}/bulmatpv/src/)
 
 # generate rules for building source files from the resources
 #QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})
@@ -48,5 +48,7 @@ set_target_properties( ${plugin} PROPERTIES
   VERSION "${BULMAGES_VERSION}")
 
 target_link_libraries(${plugin} bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
-install_targets(/lib/bulmafact/plugins ${plugin})
-add_dependencies(${plugin} bulmafact bulmalib)
+
+add_dependencies(${plugin} bulmatpv bulmalib)
+
+install_targets(/lib/bulmatpv/plugins ${plugin})

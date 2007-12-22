@@ -1,10 +1,17 @@
 ###########################################
-# bulmafact					  #
+# bulmatpv					  #
 ###########################################
 
-file(GLOB bulmafact_SRC *.c *.cpp *.cxx)
-file(GLOB bulmafact_MOCS *.hpp *.h)
-file(GLOB bulmafact_UIS *.ui)
+file(GLOB bulmatpv_SRC *.c *.cpp *.cxx)
+#file(GLOB bulmatpv_MOCS *.hpp *.h)
+file(GLOB bulmatpv_UIS *.ui)
+
+set(bulmatpv_MOCS bulmatpv.h 
+	   aboutview.h 
+	   empresatpv.h 
+	   ticket.h 
+	   subform2bt.h 
+	   input.h)
 
 set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)
@@ -20,15 +27,15 @@ include_directories(
 	${CMAKE_CURRENT_SOURCE_DIR}
 	${CMAKE_BINARY_DIR}/bulmalib/src/
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
-	${CMAKE_BINARY_DIR}/bulmafact/src/
-	${CMAKE_SOURCE_DIR}/bulmafact/src/)
+	${CMAKE_BINARY_DIR}/bulmatpv/src/
+	${CMAKE_SOURCE_DIR}/bulmatpv/src/)
 
 # generate rules for building source files from the resources
 #
 
 # generate rules for building source files that moc generates
-QT4_WRAP_UI(bulmafact_UIS_H ${bulmafact_UIS})
-QT4_WRAP_CPP(bulmafact_MOC_SRCS ${bulmafact_MOCS})
+QT4_WRAP_UI(bulmatpv_UIS_H ${bulmatpv_UIS})
+QT4_WRAP_CPP(bulmatpv_MOC_SRCS ${bulmatpv_MOCS})
 
 #QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
 
@@ -38,12 +45,11 @@ QT4_WRAP_CPP(bulmafact_MOC_SRCS ${bulmafact_MOCS})
 # build sources, moc'd sources, and rcc'd sources
 # # generate rules for building source files from the resources
 # build sources, moc'd sources, and rcc'd sources
-add_executable(bulmafact  ${bulmafact_MOC_SRCS} ${bulmafact_UIS_H}
-	${bulmafact_SRCS} ${bulmafact_MOCS} ${bulmafact_RCC_SRCS} ${bulmafact_SRC})
+add_executable(bulmatpv   ${bulmatpv_MOCS} ${bulmatpv_MOC_SRCS} ${bulmatpv_UIS_H}
+	${bulmatpv_SRC} ${bulmatpv_SRCS} )
 
-target_link_libraries( bulmafact bulmalib ${QT_LIBRARIES}
-	${QT_QTGUI_LIBRARY} ${PGSQL_LIBRARIES} 	${QT_QTASSISTANT_LIBRARY})
+target_link_libraries( bulmatpv bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 
-add_dependencies(bulmafact bulmalib)
+add_dependencies(bulmatpv bulmalib)
 
-install_targets(/bin bulmafact)
+install_targets(/bin bulmatpv)	

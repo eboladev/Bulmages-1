@@ -20,3 +20,12 @@ add_subdirectory(plugintipostrabajo)
 add_subdirectory(plugincuadrante)
 add_subdirectory(pluginasterisk)
 add_subdirectory(plugintpv)
+
+# if you want to add some private code
+# simple put your add_directory in a
+# CMakeLists.txt.private
+
+if(EXISTS "${CMAKE_SOURCE_DIR}/bulmafact/plugins/CMakeLists.txt.private")
+   message(STATUS "Private code inserted in bulmafact plugins")
+   include("${CMAKE_SOURCE_DIR}/bulmafact/plugins/CMakeLists.txt.private")
+endif(EXISTS "${CMAKE_SOURCE_DIR}/bulmafact/plugins/CMakeLists.txt.private")

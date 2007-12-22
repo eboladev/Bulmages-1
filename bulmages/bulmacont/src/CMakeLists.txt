@@ -100,7 +100,10 @@ add_executable(bulmacont   ${bulmacont_MOCS} ${bulmacont_MOC_SRCS} ${bulmacont_U
 
 target_link_libraries( bulmacont bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 
+add_dependencies(bulmacont bulmalib)
+
 install_targets(/bin bulmacont)	
+
 # 
 # 
 # set(TRANSLATIONS bulmacont_es.ts 
