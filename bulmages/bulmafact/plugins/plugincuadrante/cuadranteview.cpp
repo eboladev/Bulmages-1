@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2007 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -373,7 +373,7 @@ void CuadranteView::on_mui_imprimir_clicked() {
 
     ///Ponemos la tabla
     fitxersortidatxt += "<para>Cuadrante</para>\n";
-    fitxersortidatxt += "<blockTable style=\"tablacontenido\" colWidths=\"4cm, 4cm, 4cm, 4cm, 4cm, 4cm, 4cm\" repeatRows=\"1\">\n";
+    fitxersortidatxt += "<blockTable style=\"tablacontenido\" colWidths=\"6cm, 6cm, 6cm, 6cm, 6cm, 6cm, 4cm\" repeatRows=\"1\">\n";
     fitxersortidatxt += "<tr>\n";
     fitxersortidatxt += "    <td>Lunes</td>\n";
     fitxersortidatxt += "    <td>Martes</td>\n";

@@ -393,7 +393,7 @@ const QString CuadranteQTextDocument::impresion() {
             if (cur->valor("fiestacuadrante") == "t") {
                 style = " style=\"festivo\"";
             }
-            html += "<para "+style+"> <b><font color=\"red\" size=\"5\">" + cur->valor("nomalmacen") + "</font></b>: " + mdb_fechacuadrante.toString("dd/MM/yyyy")+"</para><spacer length=\"0.1cm\"/>\n";
+            html += "<para "+style+"> <b><font color=\"red\" size=\"5\">" + cur->valor("nomalmacen") + "</font></b><font size=\"5\">: " + mdb_fechacuadrante.toString("dd/MM/yyyy") + "</font></para><spacer length=\"0.1cm\"/>\n";
         } // end if
 
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <!DOCTYPE document SYSTEM "rml_1_0.dtd">
 <document>
-<template pageSize="(29.7cm, 21cm)" leftMargin="0cm" rightMargin="0cm" topMargin="1.0cm" bottomMargin="2.0cm" title="Listado apaisado" author="Tomeu Borras" allowSplitting="20">
+<template pageSize="(42cm, 59.4cm)" leftMargin="0cm" rightMargin="0cm" topMargin="1.0cm" bottomMargin="2.0cm" title="Listado apaisado" author="Tomeu Borras" allowSplitting="20">
 
 	<pageTemplate id="main">
 		<pageGraphics>
@@ -12,15 +12,10 @@
 			<setFont name="Helvetica" size="8"/>		
 			<fill color="(0,0,0)"/>	
 			<stroke color="(0,0,0)"/>
-			<!--drawString x="11.4cm" y="1.2cm">www.iglues.org -- info@iglues.org --</drawString -->
-	
-			<!-- fill color="(0,0,0)"/>	
-			<stroke color="(0,0,0)"/>
-			<setFont name="Helvetica" size="22"/>
-			<drawString x="2cm" y="15cm">[titulo]</drawString -->
+			<drawString x="21.4cm" y="1.2cm">www.iglues.org -- info@iglues.org --</drawString>
 	
 			<!-- FRAME DE CONTENIDOS -->
-			<frame id="column" x1="5cm" y1="2cm" width="19cm" height="15cm"/>
+			<frame id="column" x1="2cm" y1="2cm" width="39cm" height="57cm"/>
 		</pageGraphics>
 	</pageTemplate>
 	
