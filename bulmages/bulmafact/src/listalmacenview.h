@@ -40,12 +40,14 @@ class company;
 
 /// Muestra y administra las l&iacute;neas de detalle del listado de almacenes.
 /** */
-class ListAlmacenSubForm : public SubForm2Bf {
+class ListAlmacenSubForm : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
-    ListAlmacenSubForm(QWidget *parent = 0);
-    virtual ~ListAlmacenSubForm() {};
+    ListAlmacenSubForm ( QWidget *parent = 0 );
+    virtual ~ListAlmacenSubForm()
+    {};
 
 public slots:
     virtual void cargar();
@@ -57,11 +59,12 @@ public slots:
 
 /// Muestra y administra el listado de almacenes.
 /** */
-class ListAlmacenView : public FichaBf, public Ui_ListAlmacenBase {
+class ListAlmacenView : public FichaBf, public Ui_ListAlmacenBase
+{
     Q_OBJECT
 
 public:
-    ListAlmacenView(Company *comp, QWidget *parent);
+    ListAlmacenView ( Company *comp, QWidget *parent );
     virtual ~ListAlmacenView();
 
 public slots:

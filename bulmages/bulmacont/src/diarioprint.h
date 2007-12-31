@@ -40,17 +40,18 @@
 
 /// Imprime el libro diario.
 /** */
-class DiarioPrint : public PEmpresaBase {
+class DiarioPrint : public PEmpresaBase
+{
 public:
     char *finicial;
     char *ffinal;
     char *fichero;
 
 public:
-    DiarioPrint(Empresa *);
+    DiarioPrint ( Empresa * );
     ~DiarioPrint();
-    void inicializa1(char *, char *);
-    void inicializa2(char *);
+    void inicializa1 ( char *, char * );
+    void inicializa2 ( char * );
     void accept();
 
 };

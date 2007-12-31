@@ -34,19 +34,20 @@
 #include "articulolist.h"
 #include "blwidget.h"
 
-class CatalogoQToolButton : public QToolButton, PEmpresaBase {
-	Q_OBJECT
+class CatalogoQToolButton : public QToolButton, PEmpresaBase
+{
+    Q_OBJECT
 
 private:
-	ArticuloList *m_articuloList;
+    ArticuloList *m_articuloList;
 
 public:
-	CatalogoQToolButton(ArticuloList * , QWidget *parent = NULL);
-	~CatalogoQToolButton();
-	void setBoton();
-	QString detalleArticulos();
+    CatalogoQToolButton ( ArticuloList * , QWidget *parent = NULL );
+    ~CatalogoQToolButton();
+    void setBoton();
+    QString detalleArticulos();
 public slots:
-	virtual void click();
+    virtual void click();
 
 };
 

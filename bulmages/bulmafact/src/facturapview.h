@@ -38,27 +38,28 @@
 /** Implementa la pantalla de Facturas de Proveedores.
     Deriva de la clase ficha para heredar metodos comunes a las fichas.
     Tambien deriva de la clase \ref FacturaProveedor para trabajar con la tabla facturap. */
-class FacturaProveedorView : public FichaBf, public Ui_FacturaProveedorBase {
+class FacturaProveedorView : public FichaBf, public Ui_FacturaProveedorBase
+{
     Q_OBJECT
 
 public:
-    FacturaProveedorView(Company *, QWidget *parent = 0);
+    FacturaProveedorView ( Company *, QWidget *parent = 0 );
     virtual ~FacturaProveedorView();
     void inicializar();
 
-    virtual void pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq);
+    virtual void pintatotales ( Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq );
     /// Estos m&eacute;todos deben existir para poder trabajar con la clase Ficha.
     virtual int guardarPost();
-    virtual int cargarPost(QString id);
+    virtual int cargarPost ( QString id );
     virtual int borrarPre();
     virtual void imprimirFacturaProveedor();
 public slots:
     virtual void on_mui_pagar_clicked();
     virtual void s_nuevoPago();
-    virtual void on_m_descuentos_editFinish(int, int);
-    virtual void on_subform2_editFinish(int, int);
+    virtual void on_m_descuentos_editFinish ( int, int );
+    virtual void on_subform2_editFinish ( int, int );
     virtual void on_mui_veralbaranes_clicked();
-    virtual void on_mui_idproveedor_valueChanged(QString);
+    virtual void on_mui_idproveedor_valueChanged ( QString );
 };
 
 #endif

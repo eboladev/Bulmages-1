@@ -33,29 +33,30 @@
 \param emp
 \param parent
 **/
-ListProyectosView::ListProyectosView(Empresa *emp, QWidget *parent,  Qt::WFlags flag, edmode editmodo)
-        : Listado(emp, parent, flag, editmodo) {
-    _depura("ListProyectosView::ListProyectosView", 0);
+ListProyectosView::ListProyectosView ( Empresa *emp, QWidget *parent,  Qt::WFlags flag, edmode editmodo )
+        : Listado ( emp, parent, flag, editmodo )
+{
+    _depura ( "ListProyectosView::ListProyectosView", 0 );
 
-    this->setAttribute(Qt::WA_DeleteOnClose);
-    setupUi(this);
+    this->setAttribute ( Qt::WA_DeleteOnClose );
+    setupUi ( this );
     setModoEdicion();
-    setSubForm(mui_listado);
-    mui_listado->setEmpresaBase( emp );
-    mui_listado->setDBTableName("presupuestoc");
-    mui_listado->setDBCampoId("idpresupuestoc");
-    mui_listado->addSHeader("idpresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing , SHeader::DBNoWrite, QApplication::translate("TrabajadorView", "Fecha"));
-    mui_listado->addSHeader("idc_coste", DBCampo::DBvarchar, DBCampo::DBNothing , SHeader::DBNoWrite, QApplication::translate("TrabajadorView", "Hora"));
-    mui_listado->addSHeader("fechapresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , QApplication::translate("TrabajadorView", "Almacén"));
-    mui_listado->addSHeader("nombrepresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , QApplication::translate("TrabajadorView", "Apertura Mañanas"));
-    mui_listado->addSHeader("comentpresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , QApplication::translate("TrabajadorView", "Cierre Mañanas"));
-    mui_listado->addSHeader("archpresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , QApplication::translate("TrabajadorView", "Apertura Tardes"));
-    mui_listado->setinsercion(FALSE);
+    setSubForm ( mui_listado );
+    mui_listado->setEmpresaBase ( emp );
+    mui_listado->setDBTableName ( "presupuestoc" );
+    mui_listado->setDBCampoId ( "idpresupuestoc" );
+    mui_listado->addSHeader ( "idpresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing , SHeader::DBNoWrite, QApplication::translate ( "TrabajadorView", "Fecha" ) );
+    mui_listado->addSHeader ( "idc_coste", DBCampo::DBvarchar, DBCampo::DBNothing , SHeader::DBNoWrite, QApplication::translate ( "TrabajadorView", "Hora" ) );
+    mui_listado->addSHeader ( "fechapresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , QApplication::translate ( "TrabajadorView", "Almacén" ) );
+    mui_listado->addSHeader ( "nombrepresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , QApplication::translate ( "TrabajadorView", "Apertura Mañanas" ) );
+    mui_listado->addSHeader ( "comentpresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , QApplication::translate ( "TrabajadorView", "Cierre Mañanas" ) );
+    mui_listado->addSHeader ( "archpresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , QApplication::translate ( "TrabajadorView", "Apertura Tardes" ) );
+    mui_listado->setinsercion ( FALSE );
 
     presentar();
 
 //    meteWindow(windowTitle());
-    _depura("END ListProyectosView::ListProyectosView", 0);
+    _depura ( "END ListProyectosView::ListProyectosView", 0 );
 }
 
 
@@ -64,10 +65,11 @@ ListProyectosView::ListProyectosView(Empresa *emp, QWidget *parent,  Qt::WFlags 
  */
 /**
 **/
-ListProyectosView::~ListProyectosView() {
-    _depura("ListProyectosView::~ListProyectosView", 0);
+ListProyectosView::~ListProyectosView()
+{
+    _depura ( "ListProyectosView::~ListProyectosView", 0 );
     sacaWindow();
-    _depura("END ListProyectosView::~ListProyectosView", 0);
+    _depura ( "END ListProyectosView::~ListProyectosView", 0 );
 }
 
 
@@ -76,12 +78,13 @@ ListProyectosView::~ListProyectosView() {
  */
 /**
 **/
-void ListProyectosView::crear() {
-    _depura("ListProyectosView::on_mui_crear_clicked", 0);
-    ProyectoView *proj = new ProyectoView((Empresa *)empresaBase(), 0);
-    empresaBase()->pWorkspace()->addWindow(proj);
+void ListProyectosView::crear()
+{
+    _depura ( "ListProyectosView::on_mui_crear_clicked", 0 );
+    ProyectoView *proj = new ProyectoView ( ( Empresa * ) empresaBase(), 0 );
+    empresaBase() ->pWorkspace() ->addWindow ( proj );
     proj->show();
-    _depura("END ListProyectosView::on_mui_crear_clicked", 0);
+    _depura ( "END ListProyectosView::on_mui_crear_clicked", 0 );
 }
 
 
@@ -89,23 +92,24 @@ void ListProyectosView::crear() {
 /// La que esta seleccionada en el listado.
 /**
 **/
-void ListProyectosView::borrar() {
-    _depura("ListProyectosView::on_mui_borrar_clicked", 0);
+void ListProyectosView::borrar()
+{
+    _depura ( "ListProyectosView::on_mui_borrar_clicked", 0 );
     try {
-	QString codigo = mui_listado->DBvalue("idamortizacion");
-	if (codigo != "") {
-		QString query = "DELETE FROM linamortizacion WHERE idamortizacion = " + codigo;
-		empresaBase()->begin();
-		empresaBase()->ejecuta(query);
-		query = "DELETE FROM amortizacion WHERE idamortizacion = " + codigo;
-		empresaBase()->ejecuta(query);
-		empresaBase()->commit();
-		presentar();
-	} // end if
-     } catch(...) {
-	_depura(tr("Error al borrar la amortizacion"), 2);
-     } // end try
-    _depura("END ListProyectosView::on_mui_borrar_clicked", 0);
+        QString codigo = mui_listado->DBvalue ( "idamortizacion" );
+        if ( codigo != "" ) {
+            QString query = "DELETE FROM linamortizacion WHERE idamortizacion = " + codigo;
+            empresaBase() ->begin();
+            empresaBase() ->ejecuta ( query );
+            query = "DELETE FROM amortizacion WHERE idamortizacion = " + codigo;
+            empresaBase() ->ejecuta ( query );
+            empresaBase() ->commit();
+            presentar();
+        } // end if
+    } catch ( ... ) {
+        _depura ( tr ( "Error al borrar la amortizacion" ), 2 );
+    } // end try
+    _depura ( "END ListProyectosView::on_mui_borrar_clicked", 0 );
 }
 
 
@@ -121,20 +125,21 @@ void ListProyectosView::borrar() {
 /**
 \param row
 **/
-void ListProyectosView::editar(int row) {
-    _depura("ListProyectosView::editAmortizacion " + row, 0);
-    mdb_idpresupuestoc = mui_listado->DBvalue("idpresupuestoc");
-    mdb_nompresupuestoc = mui_listado->DBvalue("nompresupuestoc");
-    if (modoEdicion()) {
+void ListProyectosView::editar ( int row )
+{
+    _depura ( "ListProyectosView::editAmortizacion " + row, 0 );
+    mdb_idpresupuestoc = mui_listado->DBvalue ( "idpresupuestoc" );
+    mdb_nompresupuestoc = mui_listado->DBvalue ( "nompresupuestoc" );
+    if ( modoEdicion() ) {
         /// Creamos el objeto mpatrimonialview, y lo lanzamos.
-        ProyectoView *amor = new ProyectoView((Empresa *)empresaBase(), 0);
-        amor->cargar(mdb_idpresupuestoc);
-        empresaBase()->pWorkspace()->addWindow(amor);
+        ProyectoView * amor = new ProyectoView ( ( Empresa * ) empresaBase(), 0 );
+        amor->cargar ( mdb_idpresupuestoc );
+        empresaBase() ->pWorkspace() ->addWindow ( amor );
         amor->show();
     } else {
         close();
-        emit(selected(mdb_idpresupuestoc));
+        emit ( selected ( mdb_idpresupuestoc ) );
     } // end if
-    _depura("END ListProyectosView::editAmortizacion", 0);
+    _depura ( "END ListProyectosView::editAmortizacion", 0 );
 }
 

@@ -32,23 +32,24 @@
 class empresa;
 
 
-class ListIvaView : public QTableWidget, public ListIva {
+class ListIvaView : public QTableWidget, public ListIva
+{
     Q_OBJECT
 
 public:
-    ListIvaView(QWidget *parent = 0);
+    ListIvaView ( QWidget *parent = 0 );
     ~ListIvaView();
     virtual void pintaListIva();
-    virtual void pintaIva(int);
-    virtual bool eventFilter(QObject *obj, QEvent *ev);
-    Iva *lineaat(int);
+    virtual void pintaIva ( int );
+    virtual bool eventFilter ( QObject *obj, QEvent *ev );
+    Iva *lineaat ( int );
     Iva *lineaact();
     void guardaconfig();
     void cargaconfig();
 
 public slots:
-    virtual void valueBudgetLineChanged(int row, int col);
-    virtual void contextMenu(int, int, const QPoint &);
+    virtual void valueBudgetLineChanged ( int row, int col );
+    virtual void contextMenu ( int, int, const QPoint & );
     virtual void borraIvaAct();
 };
 

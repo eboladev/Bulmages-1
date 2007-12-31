@@ -29,18 +29,19 @@
 #include "company.h"
 
 
-extern "C" MY_EXPORT void entryPoint(Bulmafact *);
+extern "C" MY_EXPORT void entryPoint ( Bulmafact * );
 
 extern QApplication2 *theApp;
 
 
-class myplugin : public QObject {
+class myplugin : public QObject
+{
     Q_OBJECT
 public:
     myplugin();
     ~myplugin();
 
 public slots:
-    void cambia(bool);
+    void cambia ( bool );
 };
 

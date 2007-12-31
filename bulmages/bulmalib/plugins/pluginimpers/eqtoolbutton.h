@@ -28,21 +28,22 @@
 #include "funcaux.h"
 #include "ficha.h"
 
-class EQToolButton : public QWidget {
-	Q_OBJECT
+class EQToolButton : public QWidget
+{
+    Q_OBJECT
 
 private:
-	EmpresaBase *m_companyact;
-	Ficha *m_ficha;
-	
+    EmpresaBase *m_companyact;
+    Ficha *m_ficha;
+
 public:
-	EQToolButton(QWidget *parent = NULL);
-	~EQToolButton();
+    EQToolButton ( QWidget *parent = NULL );
+    ~EQToolButton();
 
 public slots:
-//	virtual void click();
-	virtual void pintaMenu(QMenu *);
-        virtual void trataMenu(QAction *action);
+// virtual void click();
+    virtual void pintaMenu ( QMenu * );
+    virtual void trataMenu ( QAction *action );
 
 };
 

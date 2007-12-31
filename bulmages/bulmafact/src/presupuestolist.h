@@ -33,16 +33,18 @@
 
 /// Administra el listado de presupuestos.
 /** */
-class PresupuestoListSubForm : public SubForm2Bf {
+class PresupuestoListSubForm : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
-    PresupuestoListSubForm(QWidget *parent = 0, const char *name = 0);
-    ~PresupuestoListSubForm() {}
+    PresupuestoListSubForm ( QWidget *parent = 0, const char *name = 0 );
+    ~PresupuestoListSubForm()
+    {}
 
 public slots:
     virtual void cargar();
-    virtual void cargar(QString query);
+    virtual void cargar ( QString query );
 };
 
 
@@ -51,31 +53,32 @@ public slots:
 
 /// Muestra y administra la ventana con el listado de presupuestos.
 /** */
-class PresupuestoList : public Listado, public Ui_PresupuestosListBase {
+class PresupuestoList : public Listado, public Ui_PresupuestosListBase
+{
     Q_OBJECT
 
 private:
     QString m_idpresupuesto;
 
 public:
-    PresupuestoList(QWidget *parent = 0, Qt::WFlags flag = 0);
-    PresupuestoList(Company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0);
+    PresupuestoList ( QWidget *parent = 0, Qt::WFlags flag = 0 );
+    PresupuestoList ( Company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0 );
     ~PresupuestoList();
     void presentar();
-    void editar(int);
+    void editar ( int );
     void borrar();
     void crear();
     QString idpresupuesto();
-    void setEmpresaBase (Company *comp);
+    void setEmpresaBase ( Company *comp );
     void imprimir();
-    void setidcliente(QString val);
-    void setidarticulo(QString val);
+    void setidcliente ( QString val );
+    void setidarticulo ( QString val );
     QString generaFiltro();
     void iniciaForm();
 
 
 signals:
-    void selected(QString);
+    void selected ( QString );
 };
 
 #endif

@@ -31,7 +31,8 @@
 /// Permite buscar y seleccionar un cliente.
 /** Implementa un Widget que permite buscar y seleccionar un
     cliente de BulmaFact de forma generica. */
-class BusquedaCliente : public BLWidget, public Ui_BusquedaClienteBase {
+class BusquedaCliente : public BLWidget, public Ui_BusquedaClienteBase
+{
     Q_OBJECT
 
 private:
@@ -47,24 +48,24 @@ private:
     bool m_semaforo;
 
 public:
-    BusquedaCliente(QWidget *parent = 0);
+    BusquedaCliente ( QWidget *parent = 0 );
     ~BusquedaCliente();
     void pinta();
     virtual QString cifcliente();
     virtual QString idcliente();
     virtual QString valorCampo();
     virtual QString nomcliente();
-    virtual void setidcliente(QString val);
-    virtual void setValorCampo(QString val);
-    virtual void setcifcliente(QString val);
+    virtual void setidcliente ( QString val );
+    virtual void setValorCampo ( QString val );
+    virtual void setcifcliente ( QString val );
 
 public slots:
     virtual void on_mui_buscar_clicked();
-    virtual void on_m_cifcliente_textChanged(const QString &);
+    virtual void on_m_cifcliente_textChanged ( const QString & );
     virtual void on_m_cifcliente_editingFinished();
 
 signals:
-    void valueChanged(QString);
+    void valueChanged ( QString );
 };
 
 #endif

@@ -25,10 +25,10 @@ class BPasswd : public UIPassword
 {
     Q_OBJECT
 public:
-    BPasswd(QString * usuario, QString * passwd, QWidget * parent=0, const char * name=0, bool modal=FALSE, WFlags f=0);
+    BPasswd ( QString * usuario, QString * passwd, QWidget * parent = 0, const char * name = 0, bool modal = FALSE, WFlags f = 0 );
     ~BPasswd();
 
-        
+
 private:
     QString * Usuario;
     QString * Password;

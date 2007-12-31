@@ -43,13 +43,14 @@ class Empresa;
 
 /// Visualiza una cuenta.
 /** */
-class CuentaView : public FichaBc, public Ui_CuentaBase {
+class CuentaView : public FichaBc, public Ui_CuentaBase
+{
     Q_OBJECT
 
 public:
-    CuentaView(Empresa *emp, QWidget *, Qt::WFlags fl = 0);
+    CuentaView ( Empresa *emp, QWidget *, Qt::WFlags fl = 0 );
     ~CuentaView();
-    int nuevacuenta(QString);
+    int nuevacuenta ( QString );
 };
 
 #endif

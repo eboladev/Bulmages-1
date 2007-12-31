@@ -30,8 +30,9 @@
 /**
 \return
 **/
-int entryPoint(Bulmafact *) {
-    _depura("Estoy dentro del plugin de tipos de almacenes", 0);
+int entryPoint ( Bulmafact * )
+{
+    _depura ( "Estoy dentro del plugin de tipos de almacenes", 0 );
     return 0;
 }
 
@@ -41,12 +42,13 @@ int entryPoint(Bulmafact *) {
 \param bges
 \return
 **/
-int Company_s_almacenes(Company *bges) {
-    _depura("Company_s_almacenes", 0);
-    AlmacenesListView *lser = new AlmacenesListView(bges, 0);
-    bges->pWorkspace()->addWindow(lser);
+int Company_s_almacenes ( Company *bges )
+{
+    _depura ( "Company_s_almacenes", 0 );
+    AlmacenesListView *lser = new AlmacenesListView ( bges, 0 );
+    bges->pWorkspace() ->addWindow ( lser );
     lser->show();
-    _depura("END Company_s_almacenes", 0);
+    _depura ( "END Company_s_almacenes", 0 );
     /// Este plugin reemplaza completamente la funcion llamante y por eso devuelve un valor distinto de 0
     return 1;
 }

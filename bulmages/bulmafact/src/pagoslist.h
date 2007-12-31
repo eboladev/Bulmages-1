@@ -33,11 +33,12 @@
 
 /// Administra el detalle del listado de pagos.
 /** */
-class PagosListSubForm : public SubForm2Bf {
+class PagosListSubForm : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
-    PagosListSubForm(QWidget *parent = 0);
+    PagosListSubForm ( QWidget *parent = 0 );
     ~PagosListSubForm();
 };
 
@@ -47,25 +48,26 @@ public:
 
 /// Muestra y administra el listado de pagos.
 /** */
-class PagosList : public Listado, private Ui_PagosListBase {
+class PagosList : public Listado, private Ui_PagosListBase
+{
     Q_OBJECT
 
 private:
     QString mdb_idpago;
 
 public:
-    PagosList(QWidget *parent = 0, Qt::WFlags flag = 0);
-    PagosList(Company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0);
+    PagosList ( QWidget *parent = 0, Qt::WFlags flag = 0 );
+    PagosList ( Company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0 );
     ~PagosList();
     void presentar();
-    void setEmpresaBase (Company *comp);
+    void setEmpresaBase ( Company *comp );
     QString idpago();
     void imprimir();
-    void setidproveedor(QString val);
+    void setidproveedor ( QString val );
     QString generaFiltro();
     void crear();
     void borrar();
-    void editar(int);
+    void editar ( int );
 
 };
 

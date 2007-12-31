@@ -44,26 +44,27 @@ class company;
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un pedido a proveedor.
 /** */
-class PedidoProveedorView : public FichaBf, public Ui_PedidoProveedorBase {
+class PedidoProveedorView : public FichaBf, public Ui_PedidoProveedorBase
+{
     Q_OBJECT
 
 public:
-    PedidoProveedorView(Company *, QWidget *parent = 0);
+    PedidoProveedorView ( Company *, QWidget *parent = 0 );
     ~PedidoProveedorView();
     void generarAlbaran();
     void inicialize();
-    void pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq);
-    virtual int cargarPost(QString);
+    void pintatotales ( Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq );
+    virtual int cargarPost ( QString );
     virtual int guardarPost();
     virtual int borrarPre();
     virtual void imprimir();
 
 public slots:
-    virtual void on_mui_proveedor_valueChanged(QString);
+    virtual void on_mui_proveedor_valueChanged ( QString );
     virtual void on_mui_pagar_clicked();
     virtual void on_mui_facturar_clicked();
-    virtual void on_mui_descuentos_editFinish(int, int);
-    virtual void on_mui_lineasDetalle_editFinish(int, int);
+    virtual void on_mui_descuentos_editFinish ( int, int );
+    virtual void on_mui_lineasDetalle_editFinish ( int, int );
 };
 
 #endif

@@ -34,12 +34,13 @@
 #include "postgresiface2.h"
 
 
-extern "C" MY_EXPORT void entryPoint(Bulmafact *);
+extern "C" MY_EXPORT void entryPoint ( Bulmafact * );
 
 extern QApplication2 *theApp;
 
 
-class plugin_tc_articulos : public QObject {
+class plugin_tc_articulos : public QObject
+{
     Q_OBJECT
 
 public:
@@ -48,7 +49,7 @@ public:
 public:
     plugin_tc_articulos();
     ~plugin_tc_articulos();
-    void inicializa(Bulmafact *);
+    void inicializa ( Bulmafact * );
 
 public slots:
     void tallas();

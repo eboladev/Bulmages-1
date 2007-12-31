@@ -27,7 +27,8 @@
 #include "listado.h"
 #include "bulmafact.h"
 
-class myplugincont : public QObject {
+class myplugincont : public QObject
+{
     Q_OBJECT
 
 public:
@@ -37,7 +38,7 @@ public:
 public:
     myplugincont();
     ~myplugincont();
-    void inicializa(Bulmafact *);
+    void inicializa ( Bulmafact * );
 
 public slots:
     void elslot();
@@ -48,11 +49,12 @@ public slots:
 /** Subformulario de contratoes.
     Esta clase derivada de SubForm2Bf presenta todo el listado de contratoes.
 */
-class ContratosListSubform : public SubForm2Bf {
+class ContratosListSubform : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
-    ContratosListSubform(QWidget *parent = 0, const char *name = 0);
+    ContratosListSubform ( QWidget *parent = 0, const char *name = 0 );
     ~ContratosListSubform();
 };
 
@@ -65,7 +67,8 @@ public:
     Tiene dos modos de funcionamiento (Edicion y Seleccion)
 */
 /// \TODO: Deberia crearse la clase Listado para poner en ella mas funcionalidades comunes a los listados.
-class ContratosList : public Listado, public Ui_ContratosListBase, public pgimportfiles {
+class ContratosList : public Listado, public Ui_ContratosListBase, public pgimportfiles
+{
     Q_OBJECT
 
 public:
@@ -87,7 +90,7 @@ private:
 
 
 public:
-    ContratosList(Company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode);
+    ContratosList ( Company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode );
     ~ContratosList();
     void selectMode();
     void editMode();
@@ -99,21 +102,21 @@ public:
     void showBotonera();
     void hideBusqueda();
     void showBusqueda();
-    void editar(int);
+    void editar ( int );
     virtual void on_mui_actualizar_clicked();
 
 public slots:
-    virtual void on_m_filtro_textChanged(const QString &text);
-    void on_mui_list_itemDoubleClicked(QTableWidgetItem *);
+    virtual void on_m_filtro_textChanged ( const QString &text );
+    void on_mui_list_itemDoubleClicked ( QTableWidgetItem * );
     virtual void on_mui_crear_clicked();
     virtual void on_mui_editar_clicked();
     virtual void on_mui_imprimir_clicked();
 
     virtual void on_mui_borrar_clicked();
-    virtual void on_mui_configurar_toggled(bool checked);
+    virtual void on_mui_configurar_toggled ( bool checked );
 
 signals:
-    void selected(QString);
+    void selected ( QString );
 };
 
 #endif

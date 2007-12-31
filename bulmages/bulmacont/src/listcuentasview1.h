@@ -35,7 +35,8 @@ class Empresa;
 /// Presenta un listado del plan contable.
 /** Esta pantalla tiene dos modos de funcionamiento, en uno act&uacute;a como selector de
     cuentas y en el otro act&uacute;a como soporte para la edici&oacute;n del plan contable. */
-class listcuentasview1 : public FichaBc, public Ui_ListCuentasBase, public pgimportfiles {
+class listcuentasview1 : public FichaBc, public Ui_ListCuentasBase, public pgimportfiles
+{
     Q_OBJECT
 
 public:
@@ -71,7 +72,7 @@ public:
     QString desccuenta();
 
 public:
-    listcuentasview1(Empresa *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode);
+    listcuentasview1 ( Empresa *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode );
     ~listcuentasview1();
     int inicializa();
     virtual void on_mui_borrar_clicked();
@@ -80,23 +81,23 @@ private:
     void inicializatabla();
 
 private slots:
-    virtual void on_ListView1_itemClicked(QTreeWidgetItem *, int);
-    virtual void on_ListView1_itemDoubleClicked(QTreeWidgetItem *, int);
+    virtual void on_ListView1_itemClicked ( QTreeWidgetItem *, int );
+    virtual void on_ListView1_itemDoubleClicked ( QTreeWidgetItem *, int );
 
 public slots:
-    virtual void on_tablacuentas_doubleClicked(int, int, int, const QPoint &);
+    virtual void on_tablacuentas_doubleClicked ( int, int, int, const QPoint & );
     virtual void on_mui_editar_clicked();
     virtual void on_mui_crear_clicked();
-    virtual void on_mui_busqueda_textChanged(const QString &);
+    virtual void on_mui_busqueda_textChanged ( const QString & );
     virtual void on_mui_busqueda_editFinished();
-    virtual bool eventFilter(QObject *, QEvent *);
+    virtual bool eventFilter ( QObject *, QEvent * );
     virtual void on_mui_imprimir_clicked();
     virtual void on_mui_exportar_clicked();
     virtual void on_mui_importar_clicked();
     virtual void on_mui_actualizar_clicked();
 
 signals:
-    void selected(QString);
+    void selected ( QString );
 };
 
 #endif

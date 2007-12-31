@@ -34,7 +34,8 @@
 class company;
 
 
-class BusquedaArticuloDelegate : public QComboBox2 {
+class BusquedaArticuloDelegate : public QComboBox2
+{
     Q_OBJECT
 
 private:
@@ -42,18 +43,19 @@ private:
     cursor2 *m_cursorcombo;
 
 public:
-    BusquedaArticuloDelegate(QWidget *parent = 0);
+    BusquedaArticuloDelegate ( QWidget *parent = 0 );
     ~BusquedaArticuloDelegate();
 
 public slots:
-    virtual void s_editTextChanged(const QString &);
+    virtual void s_editTextChanged ( const QString & );
 };
 
 
 /// Permite buscar y seleccionar un art&iacute;culo.
 /** Muestra la parte del formulario que permite buscar y seleccionar un
     art&iacute;culo. */
-class BusquedaArticulo : public BLWidget, public Ui_BusquedaArticuloBase {
+class BusquedaArticulo : public BLWidget, public Ui_BusquedaArticuloBase
+{
     Q_OBJECT
 
 private:
@@ -65,22 +67,22 @@ private:
     QString mdb_codigocompletoarticulo;
 
 public:
-    BusquedaArticulo(QWidget *parent = 0);
+    BusquedaArticulo ( QWidget *parent = 0 );
     ~BusquedaArticulo();
     virtual QString codigocompletoarticulo();
     virtual QString idarticulo();
     virtual QString nomarticulo();
     virtual QString valorCampo();
-    virtual void setidarticulo(QString val);
-    virtual void setValorCampo(QString val);
-    virtual void setcodigocompletoarticulo(QString val);
+    virtual void setidarticulo ( QString val );
+    virtual void setValorCampo ( QString val );
+    virtual void setcodigocompletoarticulo ( QString val );
 
 public slots:
     virtual void on_mui_buscar_clicked();
-    virtual void on_m_codigocompletoarticulo_textChanged(const QString &);
+    virtual void on_m_codigocompletoarticulo_textChanged ( const QString & );
 
 signals:
-    void valueChanged(QString);
+    void valueChanged ( QString );
 };
 
 #endif

@@ -26,21 +26,23 @@
 /**
 \param parent
 **/
-BusquedaCCoste::BusquedaCCoste(QWidget *parent, const char *)
-        : QComboBox2(parent) {
-    _depura("BusquedaCCoste::BusquedaCCoste", 0);
+BusquedaCCoste::BusquedaCCoste ( QWidget *parent, const char * )
+        : QComboBox2 ( parent )
+{
+    _depura ( "BusquedaCCoste::BusquedaCCoste", 0 );
     m_cursorcombo = NULL;
-    connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
-    _depura("END BusquedaCCoste::BusquedaCCoste", 0);
+    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
+    _depura ( "END BusquedaCCoste::BusquedaCCoste", 0 );
 }
 
 
 ///
 /**
 **/
-BusquedaCCoste::~BusquedaCCoste() {
-    _depura("BusquedaCCoste::~BusquedaCCoste", 0);
-    _depura("END BusquedaCCoste::~BusquedaCCoste", 0);
+BusquedaCCoste::~BusquedaCCoste()
+{
+    _depura ( "BusquedaCCoste::~BusquedaCCoste", 0 );
+    _depura ( "END BusquedaCCoste::~BusquedaCCoste", 0 );
 }
 
 
@@ -48,13 +50,14 @@ BusquedaCCoste::~BusquedaCCoste() {
 /**
 \return
 **/
-QString BusquedaCCoste::idc_coste() {
-    _depura("BusquedaCCoste::idc_coste", 0);
-    int index= currentIndex();
-    if (index > 0) {
-        return(m_cursorcombo->valor("idc_coste", index - 1));
+QString BusquedaCCoste::idc_coste()
+{
+    _depura ( "BusquedaCCoste::idc_coste", 0 );
+    int index = currentIndex();
+    if ( index > 0 ) {
+        return ( m_cursorcombo->valor ( "idc_coste", index - 1 ) );
     } else {
-        _depura("END BusquedaCCoste::idc_coste", 0);
+        _depura ( "END BusquedaCCoste::idc_coste", 0 );
         return "";
     } // end if
 }
@@ -64,9 +67,10 @@ QString BusquedaCCoste::idc_coste() {
 /**
 \return
 **/
-QString BusquedaCCoste::valorCampo() {
-    _depura("BusquedaCCoste::valorCampo", 0);
-    _depura("END BusquedaCCoste::valorCampo", 0);
+QString BusquedaCCoste::valorCampo()
+{
+    _depura ( "BusquedaCCoste::valorCampo", 0 );
+    _depura ( "END BusquedaCCoste::valorCampo", 0 );
     return idc_coste();
 }
 
@@ -75,13 +79,14 @@ QString BusquedaCCoste::valorCampo() {
 /**
 \param index
 **/
-void BusquedaCCoste::m_activated(int index) {
-    _depura("BusquedaCCoste::m_activated", 0);
-    if (index > 0) {
-        emit(valueChanged(m_cursorcombo->valor("idc_coste", index - 1)));
+void BusquedaCCoste::m_activated ( int index )
+{
+    _depura ( "BusquedaCCoste::m_activated", 0 );
+    if ( index > 0 ) {
+        emit ( valueChanged ( m_cursorcombo->valor ( "idc_coste", index - 1 ) ) );
     } else {
-        emit(valueChanged(""));
-        _depura("END BusquedaCCoste::m_activated", 0);
+        emit ( valueChanged ( "" ) );
+        _depura ( "END BusquedaCCoste::m_activated", 0 );
     } // end if
 }
 
@@ -90,26 +95,27 @@ void BusquedaCCoste::m_activated(int index) {
 /**
 \param idc_coste
 **/
-void BusquedaCCoste::setidc_coste(QString idc_coste) {
-    _depura("BusquedaCCoste::setidc_coste", 0, idc_coste);
-    if (m_cursorcombo != NULL) {
+void BusquedaCCoste::setidc_coste ( QString idc_coste )
+{
+    _depura ( "BusquedaCCoste::setidc_coste", 0, idc_coste );
+    if ( m_cursorcombo != NULL ) {
         delete m_cursorcombo;
     } // end if
-    m_cursorcombo = empresaBase()->cargacursor("SELECT * FROM c_coste");
+    m_cursorcombo = empresaBase() ->cargacursor ( "SELECT * FROM c_coste" );
     int i = 0;
     int i1 = 0;
     clear();
-    addItem("--");
-    while (!m_cursorcombo->eof()) {
+    addItem ( "--" );
+    while ( !m_cursorcombo->eof() ) {
         i ++;
-        if (m_cursorcombo->valor("idc_coste") == idc_coste) {
+        if ( m_cursorcombo->valor ( "idc_coste" ) == idc_coste ) {
             i1 = i;
         } // end if
-        addItem(m_cursorcombo->valor("nombre"));
+        addItem ( m_cursorcombo->valor ( "nombre" ) );
         m_cursorcombo->siguienteregistro();
     } //end while
-    setCurrentIndex(i1);
-    _depura("END BusquedaCCoste::setidc_coste", 0, idc_coste);
+    setCurrentIndex ( i1 );
+    _depura ( "END BusquedaCCoste::setidc_coste", 0, idc_coste );
 }
 
 
@@ -117,10 +123,11 @@ void BusquedaCCoste::setidc_coste(QString idc_coste) {
 /**
 \param idc_coste
 **/
-void BusquedaCCoste::setValorCampo(QString idc_coste) {
-    _depura("BusquedaCCoste::setValorCampo", 0);
-    setidc_coste(idc_coste);
-    _depura("END BusquedaCCoste::setValorCampo", 0);
+void BusquedaCCoste::setValorCampo ( QString idc_coste )
+{
+    _depura ( "BusquedaCCoste::setValorCampo", 0 );
+    setidc_coste ( idc_coste );
+    _depura ( "END BusquedaCCoste::setValorCampo", 0 );
 }
 
 /// ===================================================================
@@ -133,20 +140,22 @@ void BusquedaCCoste::setValorCampo(QString idc_coste) {
 /**
 \param parent
 **/
-BusquedaCCosteDelegate::BusquedaCCosteDelegate(QWidget *parent)
-        : QComboBox2(parent) {
-    _depura("BusquedaCCosteDelegate::BusquedaCCosteDelegate", 0);
-    setEditable(false);
-    _depura("END BusquedaCCosteDelegate::BusquedaCCosteDelegate", 0);
+BusquedaCCosteDelegate::BusquedaCCosteDelegate ( QWidget *parent )
+        : QComboBox2 ( parent )
+{
+    _depura ( "BusquedaCCosteDelegate::BusquedaCCosteDelegate", 0 );
+    setEditable ( false );
+    _depura ( "END BusquedaCCosteDelegate::BusquedaCCosteDelegate", 0 );
 }
 
 
 /// Libera la memoria reservada.
 /**
 **/
-BusquedaCCosteDelegate::~BusquedaCCosteDelegate() {
-    _depura("BusquedaCCosteDelegate::~BusquedaCCosteDelegate", 10);
-    _depura("END BusquedaCCosteDelegate::~BusquedaCCosteDelegate", 0);
+BusquedaCCosteDelegate::~BusquedaCCosteDelegate()
+{
+    _depura ( "BusquedaCCosteDelegate::~BusquedaCCosteDelegate", 10 );
+    _depura ( "END BusquedaCCosteDelegate::~BusquedaCCosteDelegate", 0 );
 }
 
 
@@ -158,25 +167,26 @@ BusquedaCCosteDelegate::~BusquedaCCosteDelegate() {
 \param cod
 \return
 **/
-void BusquedaCCosteDelegate::set(const QString &cod) {
-    _depura("BusquedaCCosteDelegate::set", 0);
+void BusquedaCCosteDelegate::set ( const QString &cod )
+{
+    _depura ( "BusquedaCCosteDelegate::set", 0 );
 
     int index = 0;
 
-    m_cursorcombo = empresaBase()->cargacursor("SELECT nombre FROM c_coste ORDER BY nombre ");
+    m_cursorcombo = empresaBase() ->cargacursor ( "SELECT nombre FROM c_coste ORDER BY nombre " );
     clear();
 
-    addItem("--");
-    while (!m_cursorcombo->eof()) {
-        addItem(m_cursorcombo->valor("nombre"));
-        if (m_cursorcombo->valor("nombre") == cod)
+    addItem ( "--" );
+    while ( !m_cursorcombo->eof() ) {
+        addItem ( m_cursorcombo->valor ( "nombre" ) );
+        if ( m_cursorcombo->valor ( "nombre" ) == cod )
             index = m_cursorcombo->regactual() + 1;
         m_cursorcombo->siguienteregistro();
     } // end while
     delete m_cursorcombo;
-    setEditText(cod);
-    setCurrentIndex(index);
-    _depura("END BusquedaCCosteDelegate::set", 0);
+    setEditText ( cod );
+    setCurrentIndex ( index );
+    _depura ( "END BusquedaCCosteDelegate::set", 0 );
 }
 
 

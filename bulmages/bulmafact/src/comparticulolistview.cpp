@@ -33,19 +33,20 @@
 /**
 \param parent
 **/
-ListCompArticuloView::ListCompArticuloView(QWidget *parent, const char *)
-        : SubForm2Bf(parent) {
-    _depura("ListCompArticuloView::ListCompArticuloView", 0);
-    setDBTableName("comparticulo");
-    setDBCampoId("idcomponente");
-    addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave | DBCampo::DBNotNull, SHeader::DBNone, tr("Codigo completo del articulo"));
-    addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("Nombre del articulo"));
-    addSHeader("cantcomparticulo", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Cantidad de componente de articulo"));
-    addSHeader("idcomponente", DBCampo::DBint, DBCampo::DBPrimaryKey | DBCampo::DBNotNull, SHeader::DBNoWrite, tr("ID componente"));
-    addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBPrimaryKey | DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, tr("ID articulo"));
-    setinsercion(TRUE);
-    setOrdenEnabled(FALSE);
-    _depura("END ListCompArticuloView::ListCompArticuloView", 0);
+ListCompArticuloView::ListCompArticuloView ( QWidget *parent, const char * )
+        : SubForm2Bf ( parent )
+{
+    _depura ( "ListCompArticuloView::ListCompArticuloView", 0 );
+    setDBTableName ( "comparticulo" );
+    setDBCampoId ( "idcomponente" );
+    addSHeader ( "codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave | DBCampo::DBNotNull, SHeader::DBNone, tr ( "Codigo completo del articulo" ) );
+    addSHeader ( "nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr ( "Nombre del articulo" ) );
+    addSHeader ( "cantcomparticulo", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Cantidad de componente de articulo" ) );
+    addSHeader ( "idcomponente", DBCampo::DBint, DBCampo::DBPrimaryKey | DBCampo::DBNotNull, SHeader::DBNoWrite, tr ( "ID componente" ) );
+    addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBPrimaryKey | DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "ID articulo" ) );
+    setinsercion ( TRUE );
+    setOrdenEnabled ( FALSE );
+    _depura ( "END ListCompArticuloView::ListCompArticuloView", 0 );
 }
 
 
@@ -57,29 +58,30 @@ ListCompArticuloView::ListCompArticuloView(QWidget *parent, const char *)
 \param col
 \return
 **/
-void ListCompArticuloView::pressedAsterisk(int row, int col) {
-    _depura("ListCompArticuloView::pressedAsterisk", 0);
-    SDBRecord *rec = lineaat(row);
-    SDBCampo *camp = (SDBCampo *) item(row,col);
-    if (camp->nomcampo() != "codigocompletoarticulo")
+void ListCompArticuloView::pressedAsterisk ( int row, int col )
+{
+    _depura ( "ListCompArticuloView::pressedAsterisk", 0 );
+    SDBRecord *rec = lineaat ( row );
+    SDBCampo *camp = ( SDBCampo * ) item ( row, col );
+    if ( camp->nomcampo() != "codigocompletoarticulo" )
         return;
-    _depura("ListCompArticuloView::searchArticle", 0);
-    ArticuloList *artlist = new ArticuloList((Company *)empresaBase(), NULL, 0, ArticuloList::SelectMode);
+    _depura ( "ListCompArticuloView::searchArticle", 0 );
+    ArticuloList *artlist = new ArticuloList ( ( Company * ) empresaBase(), NULL, 0, ArticuloList::SelectMode );
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
-    this->setEnabled(false);
+    this->setEnabled ( false );
     artlist->show();
-    while(!artlist->isHidden())
+    while ( !artlist->isHidden() )
         theApp->processEvents();
-    this->setEnabled(true);
+    this->setEnabled ( true );
     QString idArticle = artlist->idarticulo();
     delete artlist;
-    cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM articulo WHERE idarticulo=" + idArticle);
-    if (!cur->eof() ) {
-        rec->setDBvalue("idcomponente", idArticle);
-        rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
-        rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
+    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM articulo WHERE idarticulo=" + idArticle );
+    if ( !cur->eof() ) {
+        rec->setDBvalue ( "idcomponente", idArticle );
+        rec->setDBvalue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
+        rec->setDBvalue ( "nomarticulo", cur->valor ( "nomarticulo" ) );
     } // end if
-    _depura("END ListCompArticuloView::pressedAsterisk", 0);
+    _depura ( "END ListCompArticuloView::pressedAsterisk", 0 );
 }
 
 
@@ -90,20 +92,21 @@ void ListCompArticuloView::pressedAsterisk(int row, int col) {
 \param row
 \param col
 **/
-void ListCompArticuloView::editFinished(int row, int col) {
-    _depura("ListCompArticuloView::editFinished", 0);
-    SDBRecord *rec = lineaat(row);
-    SDBCampo *camp = (SDBCampo *) item(row, col);
+void ListCompArticuloView::editFinished ( int row, int col )
+{
+    _depura ( "ListCompArticuloView::editFinished", 0 );
+    SDBRecord *rec = lineaat ( row );
+    SDBCampo *camp = ( SDBCampo * ) item ( row, col );
     camp->refresh();
-    if (camp->nomcampo() == "codigocompletoarticulo") {
-        cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM articulo WHERE codigocompletoarticulo='" + camp->text() + "'");
-        if (!cur->eof() ) {
-            rec->setDBvalue("idcomponente", cur->valor("idarticulo"));
-            rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
-            rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
+    if ( camp->nomcampo() == "codigocompletoarticulo" ) {
+        cursor2 * cur = empresaBase() ->cargacursor ( "SELECT * FROM articulo WHERE codigocompletoarticulo='" + camp->text() + "'" );
+        if ( !cur->eof() ) {
+            rec->setDBvalue ( "idcomponente", cur->valor ( "idarticulo" ) );
+            rec->setDBvalue ( "codigocompletoarticulo", cur->valor ( "codigocompletoarticulo" ) );
+            rec->setDBvalue ( "nomarticulo", cur->valor ( "nomarticulo" ) );
         } // end if
     } // end if
-    _depura("END ListCompArticuloView::editFinished", 0);
+    _depura ( "END ListCompArticuloView::editFinished", 0 );
 }
 
 
@@ -111,9 +114,10 @@ void ListCompArticuloView::editFinished(int row, int col) {
 **/
 /**
 **/
-ListCompArticuloView::~ListCompArticuloView() {
-	_depura("ListCompArticuloView::~ListCompArticuloView", 0);
-	_depura("END ListCompArticuloView::~ListCompArticuloView", 0);
+ListCompArticuloView::~ListCompArticuloView()
+{
+    _depura ( "ListCompArticuloView::~ListCompArticuloView", 0 );
+    _depura ( "END ListCompArticuloView::~ListCompArticuloView", 0 );
 }
 
 
@@ -122,11 +126,12 @@ ListCompArticuloView::~ListCompArticuloView() {
 /**
 \param idarticulo
 **/
-void ListCompArticuloView::cargar(QString idarticulo) {
-        _depura("ListCompActiculo::cargar", 0);
-        mdb_idarticulo = idarticulo;
-        SubForm3::cargar("SELECT * FROM comparticulo, articulo WHERE comparticulo.idarticulo=" + mdb_idarticulo + " AND articulo.idarticulo = comparticulo.idcomponente");
-        _depura("END ListCompActiculo::cargar", 0);
+void ListCompArticuloView::cargar ( QString idarticulo )
+{
+    _depura ( "ListCompActiculo::cargar", 0 );
+    mdb_idarticulo = idarticulo;
+    SubForm3::cargar ( "SELECT * FROM comparticulo, articulo WHERE comparticulo.idarticulo=" + mdb_idarticulo + " AND articulo.idarticulo = comparticulo.idcomponente" );
+    _depura ( "END ListCompActiculo::cargar", 0 );
 }
 
 

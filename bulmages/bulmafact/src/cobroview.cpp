@@ -38,63 +38,66 @@
     Resetea el sistema de control de cambios para que considere que no hay cambios por parte del usuario.
     Mete la ventana en el workSpace.
 */
-CobroView::CobroView(Company *comp, QWidget *parent)
-        : FichaBf(comp, parent) {
-    _depura("CobroView::CobroView", 0);
-    setAttribute(Qt::WA_DeleteOnClose);
+CobroView::CobroView ( Company *comp, QWidget *parent )
+        : FichaBf ( comp, parent )
+{
+    _depura ( "CobroView::CobroView", 0 );
+    setAttribute ( Qt::WA_DeleteOnClose );
     try {
-        setupUi(this);
+        setupUi ( this );
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
-        mui_idcliente->setEmpresaBase(comp);
-        mui_refcobro->setEmpresaBase(comp);
-        mui_idbanco->setEmpresaBase(comp);
+        mui_idcliente->setEmpresaBase ( comp );
+        mui_refcobro->setEmpresaBase ( comp );
+        mui_idbanco->setEmpresaBase ( comp );
 
-        setTitleName(tr("Cobro"));
-        setDBTableName("cobro");
-        setDBCampoId("idcobro");
-        addDBCampo("idcobro", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Cobro", "ID cobro"));
-        addDBCampo("idcliente", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("Cobro", "ID cliente"));
-        addDBCampo("previsioncobro", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("Cobro", "Prevision de cobro"));
-        addDBCampo("fechacobro", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Cobro", "Fecha de cobro"));
-        addDBCampo("fechavenccobro", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Cobro", "Fecha de vencimiento"));
-        addDBCampo("refcobro", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cobro", "Referencia del cobro"));
-        addDBCampo("cantcobro", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate("Cobro", "Cantidad"));
-        addDBCampo("comentcobro", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cobro", "Comentarios"));
-        addDBCampo("idbanco", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Banco", "Comentarios"));
+        setTitleName ( tr ( "Cobro" ) );
+        setDBTableName ( "cobro" );
+        setDBCampoId ( "idcobro" );
+        addDBCampo ( "idcobro", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "Cobro", "ID cobro" ) );
+        addDBCampo ( "idcliente", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "Cobro", "ID cliente" ) );
+        addDBCampo ( "previsioncobro", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate ( "Cobro", "Prevision de cobro" ) );
+        addDBCampo ( "fechacobro", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate ( "Cobro", "Fecha de cobro" ) );
+        addDBCampo ( "fechavenccobro", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate ( "Cobro", "Fecha de vencimiento" ) );
+        addDBCampo ( "refcobro", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Cobro", "Referencia del cobro" ) );
+        addDBCampo ( "cantcobro", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate ( "Cobro", "Cantidad" ) );
+        addDBCampo ( "comentcobro", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Cobro", "Comentarios" ) );
+        addDBCampo ( "idbanco", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Banco", "Comentarios" ) );
 
-        meteWindow(windowTitle(), this, FALSE);
+        meteWindow ( windowTitle(), this, FALSE );
         pintar();
         dialogChanges_cargaInicial();
-    } catch (...) {
-        mensajeInfo(tr("Error al crear el cobro"));
+    } catch ( ... ) {
+        mensajeInfo ( tr ( "Error al crear el cobro" ) );
     } // end try
-    _depura("END CobroView::CobroView", 0);
+    _depura ( "END CobroView::CobroView", 0 );
 }
 
 
 /** No precisa acciones adicionales en el destructor.
 */
-CobroView::~CobroView() {
-    _depura("CobroView::~CobroView", 0);
+CobroView::~CobroView()
+{
+    _depura ( "CobroView::~CobroView", 0 );
     /// ATENCION: Hacer esto es un error ya que puede machacar procesos dependientes del listado.
     // ((Company *)empresaBase())->refreshCobrosCliente();
-    _depura("END CobroView::~CobroView", 0);
+    _depura ( "END CobroView::~CobroView", 0 );
 }
 
 
-void CobroView::on_mui_imprimir_clicked() {
-    _depura("CobroView::on_mui_imprimir_clicked", 0);
+void CobroView::on_mui_imprimir_clicked()
+{
+    _depura ( "CobroView::on_mui_imprimir_clicked", 0 );
 
     /// Disparamos los plugins
-    int res = g_plugins->lanza("CoboView_on_mui_imprimir_clicked", this);
-    if (res != 0) {
+    int res = g_plugins->lanza ( "CoboView_on_mui_imprimir_clicked", this );
+    if ( res != 0 ) {
         return;
     } // end if
     base basesimp;
     base basesimpreqeq;
-    QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) +"recibo.rml";
-    QString archivod = confpr->valor(CONF_DIR_USER) + "recibo.rml";
-    QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
+    QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "recibo.rml";
+    QString archivod = confpr->valor ( CONF_DIR_USER ) + "recibo.rml";
+    QString archivologo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
 
 
     /// Copiamos el archivo.
@@ -106,50 +109,50 @@ void CobroView::on_mui_imprimir_clicked() {
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
-    system (archivo.toAscii().constData());
+    system ( archivo.toAscii().constData() );
     /// Copiamos el logo
 #ifdef WINDOWS
 
-    archivologo = "copy " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
+    archivologo = "copy " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #else
 
-    archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
+    archivologo = "cp " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
-    system(archivologo.toAscii().constData());
+    system ( archivologo.toAscii().constData() );
     QFile file;
-    file.setFileName(archivod);
-    file.open(QIODevice::ReadOnly);
-    QTextStream stream(&file);
+    file.setFileName ( archivod );
+    file.open ( QIODevice::ReadOnly );
+    QTextStream stream ( &file );
     QString buff = stream.readAll();
     file.close();
     QString fitxersortidatxt = "";
 
     /// Linea de totales del Presupuesto.
-    QString SQLQuery = "SELECT * FROM cliente WHERE idcliente = " + DBvalue("idcliente");
-    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
-    if (!cur->eof()) {
-        buff.replace("[dircliente]", cur->valor("dircliente"));
-        buff.replace("[poblcliente]", cur->valor("poblcliente"));
-        buff.replace("[telcliente]", cur->valor("telcliente"));
-        buff.replace("[nomcliente]", cur->valor("nomcliente"));
-        buff.replace("[cifcliente]", cur->valor("cifcliente"));
-        buff.replace("[idcliente]", cur->valor("idcliente"));
-        buff.replace("[cpcliente]", cur->valor("cpcliente"));
-        buff.replace("[codcliente]", cur->valor("codcliente"));
+    QString SQLQuery = "SELECT * FROM cliente WHERE idcliente = " + DBvalue ( "idcliente" );
+    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
+    if ( !cur->eof() ) {
+        buff.replace ( "[dircliente]", cur->valor ( "dircliente" ) );
+        buff.replace ( "[poblcliente]", cur->valor ( "poblcliente" ) );
+        buff.replace ( "[telcliente]", cur->valor ( "telcliente" ) );
+        buff.replace ( "[nomcliente]", cur->valor ( "nomcliente" ) );
+        buff.replace ( "[cifcliente]", cur->valor ( "cifcliente" ) );
+        buff.replace ( "[idcliente]", cur->valor ( "idcliente" ) );
+        buff.replace ( "[cpcliente]", cur->valor ( "cpcliente" ) );
+        buff.replace ( "[codcliente]", cur->valor ( "codcliente" ) );
     } // end if
     delete cur;
 
-    buff.replace("[referencia]" , DBvalue("refcobro" ));
-    buff.replace("[cantidad]" , DBvalue("cantcobro" ));
-    buff.replace("[comentario]" , DBvalue("comentcobro" ));
-    buff.replace("[fecha]" , DBvalue("fechacobro" ));
+    buff.replace ( "[referencia]" , DBvalue ( "refcobro" ) );
+    buff.replace ( "[cantidad]" , DBvalue ( "cantcobro" ) );
+    buff.replace ( "[comentario]" , DBvalue ( "comentcobro" ) );
+    buff.replace ( "[fecha]" , DBvalue ( "fechacobro" ) );
 
 
 
-    buff.replace("[story]", fitxersortidatxt);
+    buff.replace ( "[story]", fitxersortidatxt );
 
-    Fixed basei("0.00");
+    Fixed basei ( "0.00" );
 
 
 
@@ -159,18 +162,18 @@ void CobroView::on_mui_imprimir_clicked() {
     //   buff.replace("[detallearticulos]", detalleArticulos());
 #endif
 
-    if (file.open(QIODevice::WriteOnly)) {
-        QTextStream stream(&file);
+    if ( file.open ( QIODevice::WriteOnly ) ) {
+        QTextStream stream ( &file );
         stream << buff;
         file.close();
     } // end if
 
 
 
-    _depura("FichaBf::imprimir", 0);
-    invocaPDF("recibo");
+    _depura ( "FichaBf::imprimir", 0 );
+    invocaPDF ( "recibo" );
 
-    _depura("END CobroView::on_mui_imprimir_clicked", 0);
+    _depura ( "END CobroView::on_mui_imprimir_clicked", 0 );
 }
 
 

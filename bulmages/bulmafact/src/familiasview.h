@@ -31,7 +31,8 @@ class Company;
 
 /// Muestra y administra la ventana de familias de art&iacute;culos.
 /** */
-class FamiliasView : public FichaBf, public Ui_familiasbase {
+class FamiliasView : public FichaBf, public Ui_familiasbase
+{
     Q_OBJECT
 
 private:
@@ -46,7 +47,7 @@ private:
     bool m_semaforoPintar;
 
 public:
-    FamiliasView(Company *, QWidget *parent = 0, bool modoConsulta = FALSE);
+    FamiliasView ( Company *, QWidget *parent = 0, bool modoConsulta = FALSE );
     ~FamiliasView();
     bool trataModificado();
     void mostrarplantilla();
@@ -55,7 +56,7 @@ public:
     QString codigoCompletoFamilia();
     QString idFamilia();
     QString nombreFamilia();
-    void pintar(QTreeWidgetItem *);
+    void pintar ( QTreeWidgetItem * );
     virtual int borrar();
     virtual void on_mui_aceptar_clicked();
     virtual void on_mui_borrar_clicked();
@@ -64,13 +65,13 @@ public:
 
 public slots:
     virtual void pintar();
-    virtual void on_m_listFamilias_itemDoubleClicked(QTreeWidgetItem *);
-    virtual void on_m_listFamilias_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous);
+    virtual void on_m_listFamilias_itemDoubleClicked ( QTreeWidgetItem * );
+    virtual void on_m_listFamilias_currentItemChanged ( QTreeWidgetItem *current, QTreeWidgetItem *previous );
     virtual void on_mui_crear_clicked();
 
 
 signals:
-    void selected(QString);
+    void selected ( QString );
 };
 
 #endif

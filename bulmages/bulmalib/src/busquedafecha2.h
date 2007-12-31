@@ -26,19 +26,20 @@
 #include <QKeyEvent>
 
 
-class BusquedaFecha2 : public QLineEdit {
+class BusquedaFecha2 : public QLineEdit
+{
     Q_OBJECT
 
 public:
-    BusquedaFecha2(QWidget *parent = 0);
+    BusquedaFecha2 ( QWidget *parent = 0 );
     ~BusquedaFecha2();
 
-    void setText(QString val);
-    virtual void setValorCampo(QString val);
+    void setText ( QString val );
+    virtual void setValorCampo ( QString val );
     QString text();
     virtual QString valorCampo();
     void selectAll();
-    virtual bool eventFilter(QObject *obj, QEvent *event);
+    virtual bool eventFilter ( QObject *obj, QEvent *event );
 
 public slots:
     void on_mui_editingFinished();

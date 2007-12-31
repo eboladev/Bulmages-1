@@ -33,18 +33,19 @@
 /**
 \param parent
 **/
-ListDescuentoAlbaranClienteView::ListDescuentoAlbaranClienteView(QWidget *parent)
-        : SubForm2Bf(parent) {
-    _depura("ListDescuentoAlbaranClienteView::ListDescuentoAlbaranClienteView", 0);
+ListDescuentoAlbaranClienteView::ListDescuentoAlbaranClienteView ( QWidget *parent )
+        : SubForm2Bf ( parent )
+{
+    _depura ( "ListDescuentoAlbaranClienteView::ListDescuentoAlbaranClienteView", 0 );
 
-    setDBTableName("dalbaran");
-    setDBCampoId("iddalbaran");
-    addSHeader("iddalbaran", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("Id descuento"));
-    addSHeader("conceptdalbaran", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Concepto descuento"));
-    addSHeader("proporciondalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("% Descuento"));
-    addSHeader("idalbaran", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, tr("Id albaran"));
-    setinsercion(TRUE);
-    _depura("END ListDescuentoAlbaranClienteView::ListDescuentoAlbaranClienteView", 0);
+    setDBTableName ( "dalbaran" );
+    setDBCampoId ( "iddalbaran" );
+    addSHeader ( "iddalbaran", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "Id descuento" ) );
+    addSHeader ( "conceptdalbaran", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Concepto descuento" ) );
+    addSHeader ( "proporciondalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr ( "% Descuento" ) );
+    addSHeader ( "idalbaran", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "Id albaran" ) );
+    setinsercion ( TRUE );
+    _depura ( "END ListDescuentoAlbaranClienteView::ListDescuentoAlbaranClienteView", 0 );
 }
 
 
@@ -52,8 +53,9 @@ ListDescuentoAlbaranClienteView::ListDescuentoAlbaranClienteView(QWidget *parent
 /**
 \param idalbaran
 **/
-void ListDescuentoAlbaranClienteView::cargar(QString idalbaran) {
-        _depura("ListDescuentoAlbaranClienteView::cargar", 0);
-        mdb_idalbaran = idalbaran;
-        SubForm3::cargar("SELECT * FROM dalbaran WHERE idalbaran=" + mdb_idalbaran);
+void ListDescuentoAlbaranClienteView::cargar ( QString idalbaran )
+{
+    _depura ( "ListDescuentoAlbaranClienteView::cargar", 0 );
+    mdb_idalbaran = idalbaran;
+    SubForm3::cargar ( "SELECT * FROM dalbaran WHERE idalbaran=" + mdb_idalbaran );
 }

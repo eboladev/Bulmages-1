@@ -24,7 +24,8 @@
 ///
 /**
 **/
-void msgError::hideFrame() {
+void msgError::hideFrame()
+{
     m_framedetalles->hide();
 }
 
@@ -32,7 +33,8 @@ void msgError::hideFrame() {
 ///
 /**
 **/
-void msgError::showFrame() {
+void msgError::showFrame()
+{
     m_framedetalles->show();
 }
 
@@ -40,8 +42,9 @@ void msgError::showFrame() {
 ///
 /**
 **/
-void msgError::s_mostrarDetalles() {
-    if (m_framedetalles->isVisible()) {
+void msgError::s_mostrarDetalles()
+{
+    if ( m_framedetalles->isVisible() ) {
         hideFrame();
     } else {
         showFrame();
@@ -53,10 +56,11 @@ void msgError::s_mostrarDetalles() {
 /**
 \param parent
 **/
-msgError::msgError(QWidget *parent) : QDialog(parent) {
-    setupUi(this);
-    QObject::connect(pushButton1, SIGNAL(clicked(bool)), this, SLOT(close()));
-    QObject::connect(pushButton2, SIGNAL(clicked(bool)), this, SLOT(s_mostarDetalles()));
+msgError::msgError ( QWidget *parent ) : QDialog ( parent )
+{
+    setupUi ( this );
+    QObject::connect ( pushButton1, SIGNAL ( clicked ( bool ) ), this, SLOT ( close() ) );
+    QObject::connect ( pushButton2, SIGNAL ( clicked ( bool ) ), this, SLOT ( s_mostarDetalles() ) );
 }
 
 
@@ -65,11 +69,12 @@ msgError::msgError(QWidget *parent) : QDialog(parent) {
 \param mensaje
 \param descripcion
 **/
-msgError::msgError(QString mensaje, QString descripcion) {
-    setupUi(this);
+msgError::msgError ( QString mensaje, QString descripcion )
+{
+    setupUi ( this );
     hideFrame();
-    m_mensaje->setText(mensaje);
-    m_detalles->setPlainText(descripcion);
+    m_mensaje->setText ( mensaje );
+    m_detalles->setPlainText ( descripcion );
     exec();
 }
 
@@ -77,5 +82,6 @@ msgError::msgError(QString mensaje, QString descripcion) {
 ///
 /**
 **/
-msgError::~msgError() {}
+msgError::~msgError()
+{}
 

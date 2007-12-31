@@ -33,16 +33,17 @@
 /**
 \param parent
 **/
-ListDescuentoPedidoClienteView::ListDescuentoPedidoClienteView(QWidget *parent)
-        : SubForm2Bf(parent) {
-    _depura("ListDescuentoPedidoClienteView::ListDescuentoPedidoClienteView", 0);
-    setDBTableName("dpedidocliente");
-    setDBCampoId("iddpedidocliente");
-    addSHeader("iddpedidocliente", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("Id descuento"));
-    addSHeader("conceptdpedidocliente", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Concepto descuento"));
-    addSHeader("proporciondpedidocliente", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("% Descuento"));
-    addSHeader("idpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, tr("Id pedido"));
-    setinsercion(TRUE);
-    _depura("END ListDescuentoPedidoClienteView::ListDescuentoPedidoClienteView", 0);
+ListDescuentoPedidoClienteView::ListDescuentoPedidoClienteView ( QWidget *parent )
+        : SubForm2Bf ( parent )
+{
+    _depura ( "ListDescuentoPedidoClienteView::ListDescuentoPedidoClienteView", 0 );
+    setDBTableName ( "dpedidocliente" );
+    setDBCampoId ( "iddpedidocliente" );
+    addSHeader ( "iddpedidocliente", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "Id descuento" ) );
+    addSHeader ( "conceptdpedidocliente", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Concepto descuento" ) );
+    addSHeader ( "proporciondpedidocliente", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr ( "% Descuento" ) );
+    addSHeader ( "idpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "Id pedido" ) );
+    setinsercion ( TRUE );
+    _depura ( "END ListDescuentoPedidoClienteView::ListDescuentoPedidoClienteView", 0 );
 }
 

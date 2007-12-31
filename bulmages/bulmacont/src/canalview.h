@@ -36,7 +36,8 @@
 class Empresa;
 
 
-class canalview : public FichaBc, public Ui_canaldlg {
+class canalview : public FichaBc, public Ui_canaldlg
+{
     Q_OBJECT
 
 private:
@@ -51,17 +52,17 @@ public:
 
 
 public:
-    canalview(Empresa *, QWidget *parent = 0);
+    canalview ( Empresa *, QWidget *parent = 0 );
     ~canalview();
     void mostrarplantilla();
     void pintar();
     void on_mui_borrar_clicked();
 
 public slots:
-    virtual void on_mui_idcanal_valueChanged(QString);
+    virtual void on_mui_idcanal_valueChanged ( QString );
     virtual void on_mui_guardar_clicked();
     virtual void on_mui_crear_clicked();
-    virtual void closeEvent(QCloseEvent *);
+    virtual void closeEvent ( QCloseEvent * );
 };
 
 #endif

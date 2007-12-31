@@ -25,12 +25,14 @@
 #include "subform2bf.h"
 
 
-class TarifaListSubform : public SubForm2Bf {
+class TarifaListSubform : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
-    TarifaListSubform(QWidget *parent = 0);
-    ~TarifaListSubform() {}    ;
+    TarifaListSubform ( QWidget *parent = 0 );
+    ~TarifaListSubform()
+    {}    ;
 
 public slots:
     virtual void cargar();

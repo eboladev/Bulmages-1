@@ -38,16 +38,17 @@ QDockWidget *g_doc1;
 /**
 \return
 **/
-int entryPoint(BulmaTPV *tpv) {
-    _depura("entryPoint", 0);
+int entryPoint ( BulmaTPV *tpv )
+{
+    _depura ( "entryPoint", 0 );
 
     /// Vamos a probar con un docwindow.
-    g_doc1 = new QDockWidget("Abreviaturas", tpv);
-    g_doc1->setFeatures(QDockWidget::AllDockWidgetFeatures);
-    tpv->addDockWidget(Qt::BottomDockWidgetArea, g_doc1);
+    g_doc1 = new QDockWidget ( "Abreviaturas", tpv );
+    g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
+    tpv->addDockWidget ( Qt::BottomDockWidgetArea, g_doc1 );
     g_doc1->show();
 
-    _depura("END entryPoint", 0);
+    _depura ( "END entryPoint", 0 );
     return 0;
 }
 
@@ -55,21 +56,23 @@ int entryPoint(BulmaTPV *tpv) {
 /**
 \return
 **/
-int exitPoint(BulmaTPV *tpv) {
-    _depura("exitPoint", 0);
+int exitPoint ( BulmaTPV *tpv )
+{
+    _depura ( "exitPoint", 0 );
 
     /// Vamos a probar con un docwindow.
     delete g_doc1;
     delete g_tot;
-    _depura("END exitPoint", 0);
+    _depura ( "END exitPoint", 0 );
     return 0;
 }
 
-int EmpresaTPV_createMainWindows_Post(EmpresaTPV *etpv) {
-    g_tot = new Abrevs(etpv, g_doc1);
-    g_doc1->setWidget(g_tot);
+int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
+{
+    g_tot = new Abrevs ( etpv, g_doc1 );
+    g_doc1->setWidget ( g_tot );
 
-    Trabajadores *trab = new Trabajadores(etpv, 0);
+    Trabajadores *trab = new Trabajadores ( etpv, 0 );
     trab->exec();
     return 0;
 }

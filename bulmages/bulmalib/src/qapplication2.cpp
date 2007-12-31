@@ -29,18 +29,20 @@
 \param argc
 \param argv
 **/
-QApplication2::QApplication2(int &argc, char **argv) : QApplication(argc, argv) {
-    _depura("QApplication2::QApplication2", 0);
-    _depura("END QApplication2::QApplication2", 0);
+QApplication2::QApplication2 ( int &argc, char **argv ) : QApplication ( argc, argv )
+{
+    _depura ( "QApplication2::QApplication2", 0 );
+    _depura ( "END QApplication2::QApplication2", 0 );
 }
 
 
 ///
 /**
 **/
-QApplication2::~QApplication2() {
-    _depura("QApplication2::~QApplication2", 0);
-    _depura("END QApplication2::~QApplication2", 0);
+QApplication2::~QApplication2()
+{
+    _depura ( "QApplication2::~QApplication2", 0 );
+    _depura ( "END QApplication2::~QApplication2", 0 );
 }
 
 
@@ -50,12 +52,13 @@ QApplication2::~QApplication2() {
 \param e
 \return
 **/
-bool QApplication2::notify(QObject *o, QEvent *e) {
+bool QApplication2::notify ( QObject *o, QEvent *e )
+{
 //    _depura("QApplication2::notify", 0);
     try {
-        return QApplication::notify(o, e);
-    } catch (...) {
-        _depura(tr("Error inesperado en BulmaFact"), 2);
+        return QApplication::notify ( o, e );
+    } catch ( ... ) {
+        _depura ( tr ( "Error inesperado en BulmaFact" ), 2 );
         return FALSE;
     } // end try
 //    _depura("END QApplication2::notify", 0);

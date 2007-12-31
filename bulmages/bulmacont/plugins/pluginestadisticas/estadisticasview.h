@@ -39,18 +39,19 @@
 #include "postgresiface2.h"
 /** *@author Tomeu Borrás Riera  */
 
-class estadisticasview : public estadisticasdlg  {
-   Q_OBJECT
+class estadisticasview : public estadisticasdlg
+{
+    Q_OBJECT
 public:
 
-postgresiface2 *conexionbase;
+    postgresiface2 *conexionbase;
 
-   int inicializa(postgresiface2 *);
-   estadisticasview(QWidget *parent=0, const char *name=0);
-   ~estadisticasview();
-   void presentar();
-#ifdef GDCHART   
-   void sacapie(float *,char **, int);
+    int inicializa ( postgresiface2 * );
+    estadisticasview ( QWidget *parent = 0, const char *name = 0 );
+    ~estadisticasview();
+    void presentar();
+#ifdef GDCHART
+    void sacapie ( float *, char **, int );
 #endif
 };
 

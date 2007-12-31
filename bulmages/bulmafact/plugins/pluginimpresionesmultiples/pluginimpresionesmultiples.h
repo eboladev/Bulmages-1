@@ -31,23 +31,23 @@
 #include "cobroslist.h"
 #include "bulmafact.h"
 
-extern "C" MY_EXPORT int PresupuestoList_PresupuestoList(PresupuestoList *);
-extern "C" MY_EXPORT int PresupuestoListSubForm_PresupuestoListSubForm(PresupuestoListSubForm *);
+extern "C" MY_EXPORT int PresupuestoList_PresupuestoList ( PresupuestoList * );
+extern "C" MY_EXPORT int PresupuestoListSubForm_PresupuestoListSubForm ( PresupuestoListSubForm * );
 
-extern "C" MY_EXPORT int PedidosClienteList_PedidosClienteList(PedidosClienteList *);
-extern "C" MY_EXPORT int PedidosClienteListSubform_PedidosClienteListSubform(PedidosClienteListSubform *);
+extern "C" MY_EXPORT int PedidosClienteList_PedidosClienteList ( PedidosClienteList * );
+extern "C" MY_EXPORT int PedidosClienteListSubform_PedidosClienteListSubform ( PedidosClienteListSubform * );
 
-extern "C" MY_EXPORT int AlbaranClienteList_AlbaranClienteList(AlbaranClienteList *);
-extern "C" MY_EXPORT int AlbaranClienteListSubform_AlbaranClienteListSubform(AlbaranClienteListSubform *);
+extern "C" MY_EXPORT int AlbaranClienteList_AlbaranClienteList ( AlbaranClienteList * );
+extern "C" MY_EXPORT int AlbaranClienteListSubform_AlbaranClienteListSubform ( AlbaranClienteListSubform * );
 
-extern "C" MY_EXPORT int FacturasList_FacturasList(FacturasList *);
-extern "C" MY_EXPORT int FacturasListSubform_FacturasListSubform(FacturasListSubform *);
+extern "C" MY_EXPORT int FacturasList_FacturasList ( FacturasList * );
+extern "C" MY_EXPORT int FacturasListSubform_FacturasListSubform ( FacturasListSubform * );
 
-extern "C" MY_EXPORT int CobrosList_CobrosList(CobrosList *);
-extern "C" MY_EXPORT int CobrosListSubForm_CobrosListSubForm(CobrosListSubForm *);
+extern "C" MY_EXPORT int CobrosList_CobrosList ( CobrosList * );
+extern "C" MY_EXPORT int CobrosListSubForm_CobrosListSubForm ( CobrosListSubForm * );
 
 
-extern "C" MY_EXPORT int entryPoint(Bulmafact *);
+extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 
 
 // extern QApplication2 *theApp;
@@ -55,17 +55,17 @@ extern "C" MY_EXPORT int entryPoint(Bulmafact *);
 /*
 class myplugin : public QObject {
     Q_OBJECT
-
+ 
 public:
     postgresiface2 *conexionbase;
-
+ 
 public:
     myplugin();
     ~myplugin();
     void inicializa(bulmafact *);
-
+ 
 public slots:
     void elslot();
 };
-
+ 
 */

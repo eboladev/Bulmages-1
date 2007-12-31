@@ -41,7 +41,8 @@
     El corrector solo tiene una instancia en toda la ejecucion del programa, es la clase
     empresa la que se encarga de construirlo y una vez construido permanece siempre en
     ejecucion. */
-class correctorwidget : public QWidget, public Ui_correctorbase {
+class correctorwidget : public QWidget, public Ui_correctorbase
+{
     Q_OBJECT
 
 public:
@@ -57,25 +58,27 @@ public:
     QDockWidget *dock;
 
 public:
-    correctorwidget(QWidget* parent = 0, Qt::WFlags fl = 0);
+    correctorwidget ( QWidget* parent = 0, Qt::WFlags fl = 0 );
     ~correctorwidget();
     /// El corrector, al contrario que todos los demas elementos tiene la inicializacion de
     /// la base de datos y de la empresa realizada de forma diferente. Debe usarse la
     /// funcion setEmpresa para inicializar el objeto. Esto es debido a que la construccion
     /// del corrector es anterior a la construccion de la clase empresa.
 
-    void setEmpresa(Empresa *empres) {
+    void setEmpresa ( Empresa *empres )
+    {
         empresaactual = empres;
         conexionbase = empres->bdempresa();
     }
-    void agregarError(QString, QString, QString);
+    void agregarError ( QString, QString, QString );
 
 public slots:
     virtual void on_mui_corregir_clicked();
     virtual void on_mui_configurar_clicked();
-    virtual void alink(const QUrl &url);
-    virtual void cambia(bool a) {
-        if (a) {
+    virtual void alink ( const QUrl &url );
+    virtual void cambia ( bool a )
+    {
+        if ( a ) {
             dock->hide();
             dock->show();
             dock->showMaximized();

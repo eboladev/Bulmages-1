@@ -34,15 +34,16 @@
 
 /// Muestra y administra la ventana con los datos de un inventario.
 /** */
-class InventarioView : public Inventario, public Ui_InventarioBase {
+class InventarioView : public Inventario, public Ui_InventarioBase
+{
     Q_OBJECT
 
 public:
-    InventarioView(Company *, QWidget *parent = 0);
+    InventarioView ( Company *, QWidget *parent = 0 );
     ~InventarioView();
-    void pintaidinventario(QString);
-    void pintafechainventario(QString id);
-    void pintanominventario(QString id);
+    void pintaidinventario ( QString );
+    void pintafechainventario ( QString id );
+    void pintanominventario ( QString id );
     virtual int sacaWindow();
 
 public slots:

@@ -25,8 +25,10 @@
 /**
 \param parent
 **/
-QLineEdit1::QLineEdit1(QWidget * parent) : QLineEdit(parent) {}
+QLineEdit1::QLineEdit1 ( QWidget * parent ) : QLineEdit ( parent )
+{}
 
 
-QLineEdit1::~QLineEdit1() {}
+QLineEdit1::~QLineEdit1()
+{}
 

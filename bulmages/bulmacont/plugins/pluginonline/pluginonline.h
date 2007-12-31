@@ -18,25 +18,26 @@
 #include <qapplication.h>
 #include <qobject.h>
 
-extern "C" MY_EXPORT void entryPoint(Bulmages01 *);
+extern "C" MY_EXPORT void entryPoint ( Bulmages01 * );
 
 extern QApplication *theApp;
 
 
 //class QT_WIDGET_PLUGIN_EXPORT myplugin : public QObject {
-class myplugin : public QObject {
-Q_OBJECT
+class myplugin : public QObject
+{
+    Q_OBJECT
 public:
-  postgresiface2 *conexionbase;
+    postgresiface2 *conexionbase;
 public:
-   myplugin();
-   ~myplugin();
-       void inicializa(Bulmages01 *);
+    myplugin();
+    ~myplugin();
+    void inicializa ( Bulmages01 * );
 public slots:
-	void elslot();
-	void soporte();
+    void elslot();
+    void soporte();
 };
 
 
 
- 
+

@@ -30,34 +30,36 @@
 \param emp
 \param parent
 **/
-propiedadesempresa::propiedadesempresa(Empresa *emp, QWidget *parent)
-        : FichaBc(emp, parent) {
-    _depura("propiedadesempresa::propiedadesempresa", 0);
+propiedadesempresa::propiedadesempresa ( Empresa *emp, QWidget *parent )
+        : FichaBc ( emp, parent )
+{
+    _depura ( "propiedadesempresa::propiedadesempresa", 0 );
 
-    setTitleName(tr("Configuracion"));
+    setTitleName ( tr ( "Configuracion" ) );
     /// Establecemos cual es la tabla en la que basarse para los permisos
-    setDBTableName("configuracion");
+    setDBTableName ( "configuracion" );
 
-    this->setAttribute(Qt::WA_DeleteOnClose);
-    setupUi(this);
+    this->setAttribute ( Qt::WA_DeleteOnClose );
+    setupUi ( this );
     inicializa();
 
-    mui_subform->setEmpresaBase(empresaBase());
+    mui_subform->setEmpresaBase ( empresaBase() );
     mui_subform->cargar();
     //mui_subform->setResizeMode(QHeaderView::Stretch);
 
-    empresaBase()->meteWindow(windowTitle(), this);
-    _depura("END propiedadesempresa::propiedadesempresa", 0);
+    empresaBase() ->meteWindow ( windowTitle(), this );
+    _depura ( "END propiedadesempresa::propiedadesempresa", 0 );
 }
 
 
 ///
 /**
 **/
-propiedadesempresa::~propiedadesempresa() {
-    _depura("propiedadesempresa::~propiedadesempresa", 0);
-    empresaBase()->sacaWindow(this);
-    _depura("END propiedadesempresa::~propiedadesempresa", 0);
+propiedadesempresa::~propiedadesempresa()
+{
+    _depura ( "propiedadesempresa::~propiedadesempresa", 0 );
+    empresaBase() ->sacaWindow ( this );
+    _depura ( "END propiedadesempresa::~propiedadesempresa", 0 );
 
 }
 
@@ -66,19 +68,20 @@ propiedadesempresa::~propiedadesempresa() {
 /**
 \return
 **/
-int propiedadesempresa::inicializa() {
-    _depura("propiedadesempresa::inicializa", 0);
+int propiedadesempresa::inicializa()
+{
+    _depura ( "propiedadesempresa::inicializa", 0 );
     int num;
 
     QString query = "SELECT * FROM configuracion WHERE nombre = 'CodCuenta'";
-    cursor2 *curs = empresaBase()->cargacursor(query);
+    cursor2 *curs = empresaBase() ->cargacursor ( query );
     num = curs->numregistros();
-    if (num > 0) {
-        modcodigo->setText(curs->valor("valor"));
+    if ( num > 0 ) {
+        modcodigo->setText ( curs->valor ( "valor" ) );
     } // end if
     delete curs;
 
-    _depura("END propiedadesempresa::inicializa", 0);
+    _depura ( "END propiedadesempresa::inicializa", 0 );
     return 0;
 }
 
@@ -86,16 +89,17 @@ int propiedadesempresa::inicializa() {
 ///
 /**
 **/
-void propiedadesempresa::on_mui_guardar_clicked() {
-    _depura("propiedadesempresa::on_mui_guardar_clicked", 0);
+void propiedadesempresa::on_mui_guardar_clicked()
+{
+    _depura ( "propiedadesempresa::on_mui_guardar_clicked", 0 );
     /// Iniciamos transaccion.
-    empresaBase()->begin();
+    empresaBase() ->begin();
     mui_subform->guardar();
 
     /// Procesamos la transaccion.
-    empresaBase()->commit();
+    empresaBase() ->commit();
     dialogChanges_cargaInicial();
-    _depura("END propiedadesempresa::on_mui_guardar_clicked", 0);
+    _depura ( "END propiedadesempresa::on_mui_guardar_clicked", 0 );
 }
 
 
@@ -103,18 +107,19 @@ void propiedadesempresa::on_mui_guardar_clicked() {
 /**
 \return
 **/
-bool propiedadesempresa::close() {
-    _depura("propiedadesempresa::close", 0);
+bool propiedadesempresa::close()
+{
+    _depura ( "propiedadesempresa::close", 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
-    if (dialogChanges_hayCambios()) {
-        if (QMessageBox::question(this,
-                                  tr("Guardar cambios"),
-                                  tr("Desea guardar los cambios?"),
-                                  tr("&Guardar"), tr("&No guardar"), 0, 0, 1) == 0) {
+    if ( dialogChanges_hayCambios() ) {
+        if ( QMessageBox::question ( this,
+                                     tr ( "Guardar cambios" ),
+                                     tr ( "Desea guardar los cambios?" ),
+                                     tr ( "&Guardar" ), tr ( "&No guardar" ), 0, 0, 1 ) == 0 ) {
             on_mui_guardar_clicked();
         } // end if
     } // end if
-    _depura("END propiedadesempresa::close", 0);
+    _depura ( "END propiedadesempresa::close", 0 );
     return QWidget::close();
 }
 
@@ -128,34 +133,35 @@ bool propiedadesempresa::close() {
     y subcuenta) por lo que siempre considera que las cuentas son 4 d&iacute;gitos. */
 /**
 **/
-void propiedadesempresa::on_mui_modificarplan_clicked() {
-    _depura("propiedadesempresa::on_mui_modificarplan_clicked", 0);
+void propiedadesempresa::on_mui_modificarplan_clicked()
+{
+    _depura ( "propiedadesempresa::on_mui_modificarplan_clicked", 0 );
     unsigned int nlong = modcodigo->text().length();
     QString codigo;
     QString query = "SELECT * FROM cuenta";
-    cursor2 *cur = empresaBase()->cargacursor(query);
-    while (!cur->eof()) {
-        codigo = cur->valor("codigo");
-        codigo = ajustacodigo(codigo, nlong);
-        empresaBase()->begin();
-        query = "UPDATE cuenta SET codigo = '" + codigo + "' WHERE idcuenta = " + cur->valor("idcuenta");
-        empresaBase()->ejecuta(query);
-        empresaBase()->commit();
+    cursor2 *cur = empresaBase() ->cargacursor ( query );
+    while ( !cur->eof() ) {
+        codigo = cur->valor ( "codigo" );
+        codigo = ajustacodigo ( codigo, nlong );
+        empresaBase() ->begin();
+        query = "UPDATE cuenta SET codigo = '" + codigo + "' WHERE idcuenta = " + cur->valor ( "idcuenta" );
+        empresaBase() ->ejecuta ( query );
+        empresaBase() ->commit();
         cur->siguienteregistro();
     } // end while
     delete cur;
     query = "UPDATE configuracion SET valor = '" + modcodigo->text() + "' WHERE nombre = 'CodCuenta'";
-    empresaBase()->begin();
-    empresaBase()->ejecuta(query);
-    empresaBase()->commit();
-    if (QMessageBox::warning(this,
-                             tr("Salir del programa"),
-                             tr("Para que los cambios tengan efecto\ndebe salir del programa y volver a entrar.\n\nSalir ahora?"),
-                             tr("&Salir"), tr("&No salir"), 0, 0, 1) == 0) {
-        exit(1);
+    empresaBase() ->begin();
+    empresaBase() ->ejecuta ( query );
+    empresaBase() ->commit();
+    if ( QMessageBox::warning ( this,
+                                tr ( "Salir del programa" ),
+                                tr ( "Para que los cambios tengan efecto\ndebe salir del programa y volver a entrar.\n\nSalir ahora?" ),
+                                tr ( "&Salir" ), tr ( "&No salir" ), 0, 0, 1 ) == 0 ) {
+        exit ( 1 );
     } // end if
     dialogChanges_cargaInicial();
-    _depura("END propiedadesempresa::on_mui_modificarplan_clicked", 0);
+    _depura ( "END propiedadesempresa::on_mui_modificarplan_clicked", 0 );
 }
 
 
@@ -165,9 +171,10 @@ void propiedadesempresa::on_mui_modificarplan_clicked() {
 ///
 /**
 **/
-ListConfiguracionSubForm::~ListConfiguracionSubForm() {
-    _depura("ListConfiguracionSubForm::~ListConfiguracionSubForm", 0);
-    _depura("END ListConfiguracionSubForm::~ListConfiguracionSubForm", 0);
+ListConfiguracionSubForm::~ListConfiguracionSubForm()
+{
+    _depura ( "ListConfiguracionSubForm::~ListConfiguracionSubForm", 0 );
+    _depura ( "END ListConfiguracionSubForm::~ListConfiguracionSubForm", 0 );
 }
 
 
@@ -175,24 +182,26 @@ ListConfiguracionSubForm::~ListConfiguracionSubForm() {
 /**
 \param parent
 **/
-ListConfiguracionSubForm::ListConfiguracionSubForm(QWidget *parent) : SubForm2Bc(parent) {
-    _depura("ListConfiguracionSubForm::ListConfiguracionSubForm", 0);
-    setDBTableName("configuracion");
-    setDBCampoId("nombre");
-    addSHeader("nombreorig", DBCampo::DBvarchar, DBCampo::DBDupPrimaryKey | DBCampo::DBNoSave, SHeader::DBNoView, "Nombre");
-    addSHeader("nombre", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite, tr("Nombre"));
-    addSHeader("valor", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Valor"));
-    setinsercion(FALSE);
-    setDelete(FALSE);
-    _depura("END ListConfiguracionSubForm::ListConfiguracionSubForm", 0);
+ListConfiguracionSubForm::ListConfiguracionSubForm ( QWidget *parent ) : SubForm2Bc ( parent )
+{
+    _depura ( "ListConfiguracionSubForm::ListConfiguracionSubForm", 0 );
+    setDBTableName ( "configuracion" );
+    setDBCampoId ( "nombre" );
+    addSHeader ( "nombreorig", DBCampo::DBvarchar, DBCampo::DBDupPrimaryKey | DBCampo::DBNoSave, SHeader::DBNoView, "Nombre" );
+    addSHeader ( "nombre", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite, tr ( "Nombre" ) );
+    addSHeader ( "valor", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Valor" ) );
+    setinsercion ( FALSE );
+    setDelete ( FALSE );
+    _depura ( "END ListConfiguracionSubForm::ListConfiguracionSubForm", 0 );
 }
 
 
 ///
 /**
 **/
-void ListConfiguracionSubForm::cargar() {
-    _depura("ListConfiguracionSubForm::cargar", 0);
-    SubForm3::cargar("SELECT *, nombre AS nombreorig FROM configuracion");
+void ListConfiguracionSubForm::cargar()
+{
+    _depura ( "ListConfiguracionSubForm::cargar", 0 );
+    SubForm3::cargar ( "SELECT *, nombre AS nombreorig FROM configuracion" );
 }
 

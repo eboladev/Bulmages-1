@@ -36,29 +36,32 @@ TecladoNumerico *g_tecl;
 /**
 \return
 **/
-int entryPoint(BulmaTPV *tpv) {
-    _depura("entryPoint", 0);
+int entryPoint ( BulmaTPV *tpv )
+{
+    _depura ( "entryPoint", 0 );
     /// Vamos a probar con un docwindow.
-    g_doc1 = new QDockWidget("Teclado", tpv);
-    g_doc1->setFeatures(QDockWidget::AllDockWidgetFeatures);
+    g_doc1 = new QDockWidget ( "Teclado", tpv );
+    g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
 
-    g_doc1->setGeometry(100, 100, 100, 500);
-    g_doc1->resize(330, 400);
-    tpv->addDockWidget(Qt::LeftDockWidgetArea, g_doc1);
+    g_doc1->setGeometry ( 100, 100, 100, 500 );
+    g_doc1->resize ( 330, 400 );
+    tpv->addDockWidget ( Qt::LeftDockWidgetArea, g_doc1 );
     g_doc1->show();
 
-    _depura("END entryPoint", 0);
+    _depura ( "END entryPoint", 0 );
     return 0;
 }
 
-int EmpresaTPV_createMainWindows_Post(EmpresaTPV *etpv) {
-	g_tecl = new TecladoNumerico(etpv, g_doc1);
-//	etpv->pWorkspace()->addWindow(g_tecl);
-	g_doc1->setWidget(g_tecl);
-	return 0;
+int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
+{
+    g_tecl = new TecladoNumerico ( etpv, g_doc1 );
+// etpv->pWorkspace()->addWindow(g_tecl);
+    g_doc1->setWidget ( g_tecl );
+    return 0;
 }
 
-int Input_keyPressEvent_Post(Input *in) {
-    g_tecl->mui_display->setText(in->valorInput());
+int Input_keyPressEvent_Post ( Input *in )
+{
+    g_tecl->mui_display->setText ( in->valorInput() );
 }
 

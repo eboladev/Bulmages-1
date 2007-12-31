@@ -33,24 +33,25 @@ class Company;
 /** Ventana de cuadrantes
     Se encarga de la creación de cuadrantes en la empresa, para ubicar empleados, etc etc etc
     Deriva de Ficha para metodos comunes a todas las fichas. */
-class CuadranteView : public FichaBf, public Ui_CuadranteBase {
+class CuadranteView : public FichaBf, public Ui_CuadranteBase
+{
     Q_OBJECT
 
 public:
-	CuadranteQTextDocument *m_actualcell;
+    CuadranteQTextDocument *m_actualcell;
 
 public:
-    CuadranteView(Company *, QWidget *);
+    CuadranteView ( Company *, QWidget * );
     ~CuadranteView();
     void inicializaTrabajadores();
-    void inicializaCuadrante(const QDate &dateorig);
+    void inicializaCuadrante ( const QDate &dateorig );
     virtual void on_mui_imprimir_clicked();
     void cargaconfig();
     void guardaconfig();
 
 public slots:
-    virtual void on_mui_calendario_clicked(const QDate &date);
-    virtual void on_mui_listtrabajadores_itemDoubleClicked(QTreeWidgetItem *item, int column);
+    virtual void on_mui_calendario_clicked ( const QDate &date );
+    virtual void on_mui_listtrabajadores_itemDoubleClicked ( QTreeWidgetItem *item, int column );
     virtual void on_mui_editar_clicked();
     virtual void on_mui_calendario_customContextMenuRequested ( const QPoint & pos );
     virtual void on_mui_actualizar_clicked();

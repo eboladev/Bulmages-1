@@ -31,7 +31,8 @@
 #include "fixed.h"
 #include "funcaux.h"
 
-class ListLinPrevCobro {
+class ListLinPrevCobro
+{
 public:
     Empresa *m_companyact;
     /// Opciones para filtrado y otros.
@@ -51,34 +52,37 @@ protected:
 public:
     Fixed totalCobro();
     Fixed totalPago();
-    ListLinPrevCobro(Empresa *comp);
+    ListLinPrevCobro ( Empresa *comp );
     ListLinPrevCobro();
     void inicializaVariables();
-    void setcompany(Empresa *c) {
+    void setcompany ( Empresa *c )
+    {
         m_companyact = c;
     };
     virtual ~ListLinPrevCobro();
     void guardaListLinPrevCobro();
     void vaciar();
-    virtual void pintaListLinPrevCobro() {
-        _depura("La funcion pintaListLinPrevCobro aun no ha sido implementada", 10);
+    virtual void pintaListLinPrevCobro()
+    {
+        _depura ( "La funcion pintaListLinPrevCobro aun no ha sido implementada", 10 );
     };
     int chargeBudgetLines();
     void borrar();
-    void nuevalinea(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString);
-    linprevcobro *linpos(int);
-    void borralinprevcobro(int);
-    void setidregistroiva(QString id) {
+    void nuevalinea ( QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString );
+    linprevcobro *linpos ( int );
+    void borralinprevcobro ( int );
+    void setidregistroiva ( QString id )
+    {
         mdb_idregistroiva = id;
         linprevcobro *linea;
-        QMutableListIterator<linprevcobro*> m_ilista(m_lista);
+        QMutableListIterator<linprevcobro*> m_ilista ( m_lista );
         /// Vamos delante del primer elemento de la lista.
         m_ilista.toFront();
         /// Comprobamos que el primer elemento y siguientes existan.
-        while (m_ilista.hasNext()) {
+        while ( m_ilista.hasNext() ) {
             /// Si existe el elemento nos desplazamos a el moviendo el cursor.
             linea = m_ilista.next();
-            linea->setidregistroiva(mdb_idregistroiva);
+            linea->setidregistroiva ( mdb_idregistroiva );
         } // end while
     };
 };

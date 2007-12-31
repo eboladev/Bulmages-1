@@ -29,14 +29,15 @@
 /**
 \param parent
 **/
-AboutView::AboutView(QDialog *parent) : QDialog(parent) {
+AboutView::AboutView ( QDialog *parent ) : QDialog ( parent )
+{
     QString str_sobre;
     QString str_autores;
     QString str_soporte;
     QString str_licencia;
-    setupUi(this);
+    setupUi ( this );
 
-    mui_lbversion->setText(mui_lbversion->text() + " " + tr("Compilado usando la version de QT:") + " " + QT_VERSION_STR);
+    mui_lbversion->setText ( mui_lbversion->text() + " " + tr ( "Compilado usando la version de QT:" ) + " " + QT_VERSION_STR );
 
     str_sobre = "<br /><br /><br /><br /><center><h2>Facturaci&oacute;n GPL</h2></center>";
     str_autores = "<center><h2>Autores de BulmaFact</h2>" \
@@ -404,15 +405,16 @@ AboutView::AboutView(QDialog *parent) : QDialog(parent) {
                    "<P> " \
                    "<H2>END OF TERMS AND CONDITIONS</H2>";
 
-    textEdit_sobre->setHtml(str_sobre);
-    textEdit_autores->setHtml(str_autores);
-    textEdit_soporte->setHtml(str_soporte);
-    textEdit_licencia->setHtml(str_licencia);
+    textEdit_sobre->setHtml ( str_sobre );
+    textEdit_autores->setHtml ( str_autores );
+    textEdit_soporte->setHtml ( str_soporte );
+    textEdit_licencia->setHtml ( str_licencia );
 }
 
 
 /// Destructor de la clase
 /**
 **/
-AboutView::~AboutView() {}
+AboutView::~AboutView()
+{}
 

@@ -38,29 +38,30 @@
 \param flag
 \return
 **/
-AlmacenesListView::AlmacenesListView(QWidget *parent, Qt::WFlags flag)
-        : Listado(NULL, parent, flag) {
-    _depura("AlmacenesListView::AlmacenesListView(1)", 0);
-    setupUi(this);
-    setAttribute(Qt::WA_DeleteOnClose);
+AlmacenesListView::AlmacenesListView ( QWidget *parent, Qt::WFlags flag )
+        : Listado ( NULL, parent, flag )
+{
+    _depura ( "AlmacenesListView::AlmacenesListView(1)", 0 );
+    setupUi ( this );
+    setAttribute ( Qt::WA_DeleteOnClose );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza("AlmacenesListView_AlmacenesListView", this);
-    if (res != 0)
+    int res = g_plugins->lanza ( "AlmacenesListView_AlmacenesListView", this );
+    if ( res != 0 )
         return;
     m_idalmacen = "";
-    setSubForm(mui_list);
+    setSubForm ( mui_list );
 
-    mui_list->setDBTableName("almacen");
-    mui_list->setDBCampoId("idalmacen");
-    mui_list->addSHeader("idalmacen", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("ID almacen"));
-    mui_list->addSHeader("codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Código almacen"));
-    mui_list->addSHeader("nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre almacen"));
-    mui_list->setinsercion(FALSE);
-    mui_list->setDelete(FALSE);
-    mui_list->setSortingEnabled(TRUE);
+    mui_list->setDBTableName ( "almacen" );
+    mui_list->setDBCampoId ( "idalmacen" );
+    mui_list->addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "ID almacen" ) );
+    mui_list->addSHeader ( "codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Código almacen" ) );
+    mui_list->addSHeader ( "nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre almacen" ) );
+    mui_list->setinsercion ( FALSE );
+    mui_list->setDelete ( FALSE );
+    mui_list->setSortingEnabled ( TRUE );
 
     hideBusqueda();
-    _depura("END AlmacenesListView::AlmacenesListView(1)", 0);
+    _depura ( "END AlmacenesListView::AlmacenesListView(1)", 0 );
 }
 
 
@@ -71,43 +72,45 @@ AlmacenesListView::AlmacenesListView(QWidget *parent, Qt::WFlags flag)
 \param flag
 \return
 **/
-AlmacenesListView::AlmacenesListView(Company *comp, QWidget *parent, Qt::WFlags flag)
-        : Listado(comp, parent, flag) {
-    _depura("AlmacenesListView::AlmacenesListView(2)", 0);
-    setupUi(this);
-    setAttribute(Qt::WA_DeleteOnClose);
+AlmacenesListView::AlmacenesListView ( Company *comp, QWidget *parent, Qt::WFlags flag )
+        : Listado ( comp, parent, flag )
+{
+    _depura ( "AlmacenesListView::AlmacenesListView(2)", 0 );
+    setupUi ( this );
+    setAttribute ( Qt::WA_DeleteOnClose );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza("AlmacenesListView_AlmacenesListView", this);
-    if (res != 0)
+    int res = g_plugins->lanza ( "AlmacenesListView_AlmacenesListView", this );
+    if ( res != 0 )
         return;
-    mui_list->setEmpresaBase(comp);
-    setSubForm(mui_list);
+    mui_list->setEmpresaBase ( comp );
+    setSubForm ( mui_list );
 
-    mui_list->setDBTableName("almacen");
-    mui_list->setDBCampoId("idalmacen");
-    mui_list->addSHeader("idalmacen", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("ID almacen"));
-    mui_list->addSHeader("codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Código almacen"));
-    mui_list->addSHeader("nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre almacen"));
-    mui_list->setinsercion(FALSE);
-    mui_list->setDelete(FALSE);
-    mui_list->setSortingEnabled(TRUE);
+    mui_list->setDBTableName ( "almacen" );
+    mui_list->setDBCampoId ( "idalmacen" );
+    mui_list->addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "ID almacen" ) );
+    mui_list->addSHeader ( "codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Código almacen" ) );
+    mui_list->addSHeader ( "nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre almacen" ) );
+    mui_list->setinsercion ( FALSE );
+    mui_list->setDelete ( FALSE );
+    mui_list->setSortingEnabled ( TRUE );
 
     presentar();
     m_idalmacen = "";
-    empresaBase()->meteWindow(windowTitle(), this);
+    empresaBase() ->meteWindow ( windowTitle(), this );
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
-    trataPermisos("almacen");
-    _depura("END AlmacenesListView::AlmacenesListView(2)", 0);
+    trataPermisos ( "almacen" );
+    _depura ( "END AlmacenesListView::AlmacenesListView(2)", 0 );
 }
 
 
 ///
 /**
 **/
-AlmacenesListView::~AlmacenesListView() {
-    _depura("AlmacenesListView::~AlmacenesListView", 0);
-    _depura("END AlmacenesListView::~AlmacenesListView", 0);
+AlmacenesListView::~AlmacenesListView()
+{
+    _depura ( "AlmacenesListView::~AlmacenesListView", 0 );
+    _depura ( "END AlmacenesListView::~AlmacenesListView", 0 );
 }
 
 
@@ -115,9 +118,10 @@ AlmacenesListView::~AlmacenesListView() {
 /**
 \return
 **/
-QString AlmacenesListView::idalmacen() {
-    _depura("AlmacenesListView::idalmacenk", 0);
-    _depura("END AlmacenesListView::idalmacenk", 0);
+QString AlmacenesListView::idalmacen()
+{
+    _depura ( "AlmacenesListView::idalmacenk", 0 );
+    _depura ( "END AlmacenesListView::idalmacenk", 0 );
     return m_idalmacen;
 }
 
@@ -126,39 +130,42 @@ QString AlmacenesListView::idalmacen() {
 /**
 \param comp
 **/
-void AlmacenesListView::setEmpresaBase(Company *comp) {
-    _depura("AlmacenesListView::setEmpresaBase", 0);
-    PEmpresaBase::setEmpresaBase(comp);
-    mui_list->setEmpresaBase(comp);
-    _depura("END AlmacenesListView::setEmpresaBase", 0);
+void AlmacenesListView::setEmpresaBase ( Company *comp )
+{
+    _depura ( "AlmacenesListView::setEmpresaBase", 0 );
+    PEmpresaBase::setEmpresaBase ( comp );
+    mui_list->setEmpresaBase ( comp );
+    _depura ( "END AlmacenesListView::setEmpresaBase", 0 );
 }
 
 
 ///
 /**
 **/
-void AlmacenesListView::crear() {
-    _depura("AlmacenesListView::crear", 0);
+void AlmacenesListView::crear()
+{
+    _depura ( "AlmacenesListView::crear", 0 );
     /*
         ((Company *)empresaBase())->s_newAlmacen();
     */
-    AlmacenView *alm = new AlmacenView((Company *)empresaBase(), 0);
-    empresaBase()->pWorkspace()->addWindow(alm);
+    AlmacenView *alm = new AlmacenView ( ( Company * ) empresaBase(), 0 );
+    empresaBase() ->pWorkspace() ->addWindow ( alm );
     alm->show();
-    _depura("END AlmacenesListView::crear", 0);
+    _depura ( "END AlmacenesListView::crear", 0 );
 }
 
 
 ///
 /**
 **/
-void AlmacenesListView::presentar() {
-    _depura("AlmacenesListView::presentar", 0);
+void AlmacenesListView::presentar()
+{
+    _depura ( "AlmacenesListView::presentar", 0 );
 
     /// Hacemos el listado y lo presentamos.
-    mui_list->cargar("SELECT * FROM almacen");
+    mui_list->cargar ( "SELECT * FROM almacen" );
 
-    _depura("END AlmacenesListView::presentar", 0);
+    _depura ( "END AlmacenesListView::presentar", 0 );
 }
 
 
@@ -166,13 +173,14 @@ void AlmacenesListView::presentar() {
 /**
 \return
 **/
-QString AlmacenesListView::generaFiltro() {
-    _depura("AlmacenesListView::generaFiltro", 0);
+QString AlmacenesListView::generaFiltro()
+{
+    _depura ( "AlmacenesListView::generaFiltro", 0 );
     /// Tratamiento de los filtros.
     QString filtro = "";
 
-    return (filtro);
-    _depura("END AlmacenesListView::generaFiltro", 0);
+    return ( filtro );
+    _depura ( "END AlmacenesListView::generaFiltro", 0 );
 }
 
 
@@ -180,22 +188,23 @@ QString AlmacenesListView::generaFiltro() {
 /**
 \param row
 **/
-void AlmacenesListView::editar(int row) {
-    _depura("AlmacenesListView::editar", 0);
+void AlmacenesListView::editar ( int row )
+{
+    _depura ( "AlmacenesListView::editar", 0 );
     try {
-        m_idalmacen = mui_list->DBvalue(QString("idalmacen"), row);
+        m_idalmacen = mui_list->DBvalue ( QString ( "idalmacen" ), row );
 
-        if (modoEdicion()) {
-            AlmacenView *alm = new AlmacenView((Company *)empresaBase(), 0);
-            empresaBase()->pWorkspace()->addWindow(alm);
+        if ( modoEdicion() ) {
+            AlmacenView * alm = new AlmacenView ( ( Company * ) empresaBase(), 0 );
+            empresaBase() ->pWorkspace() ->addWindow ( alm );
             alm->show();
-            alm->cargar(m_idalmacen);
+            alm->cargar ( m_idalmacen );
         } else {
-            emit(selected(m_idalmacen));
+            emit ( selected ( m_idalmacen ) );
         } // end if
-        _depura("END AlmacenesListView::editar", 0);
-    } catch (...) {
-        mensajeInfo(tr("Error al editar el almacen"));
+        _depura ( "END AlmacenesListView::editar", 0 );
+    } catch ( ... ) {
+        mensajeInfo ( tr ( "Error al editar el almacen" ) );
     } // end try
 }
 
@@ -203,10 +212,11 @@ void AlmacenesListView::editar(int row) {
 ///
 /**
 **/
-void AlmacenesListView::imprimir() {
-    _depura("AlmacenesListView::imprimir", 0);
-    mui_list->imprimirPDF(tr("Almacenes"));
-    _depura("END AlmacenesListView::imprimir", 0);
+void AlmacenesListView::imprimir()
+{
+    _depura ( "AlmacenesListView::imprimir", 0 );
+    mui_list->imprimirPDF ( tr ( "Almacenes" ) );
+    _depura ( "END AlmacenesListView::imprimir", 0 );
 }
 
 
@@ -214,22 +224,23 @@ void AlmacenesListView::imprimir() {
 /**
 \return
 **/
-void AlmacenesListView::borrar() {
-    _depura("AlmacenesListView::borrar", 0);
+void AlmacenesListView::borrar()
+{
+    _depura ( "AlmacenesListView::borrar", 0 );
     int a = mui_list->currentRow();
-    if (a < 0) {
-        mensajeInfo(tr("Debe seleccionar una linea"));
+    if ( a < 0 ) {
+        mensajeInfo ( tr ( "Debe seleccionar una linea" ) );
         return;
     } // end if
     try {
-        m_idalmacen = mui_list->DBvalue(QString("idalmacen"));
-        if (modoEdicion()) {
-            AlmacenView *alm = new AlmacenView((Company *)empresaBase(), 0);
-            empresaBase()->pWorkspace()->addWindow(alm);
+        m_idalmacen = mui_list->DBvalue ( QString ( "idalmacen" ) );
+        if ( modoEdicion() ) {
+            AlmacenView * alm = new AlmacenView ( ( Company * ) empresaBase(), 0 );
+            empresaBase() ->pWorkspace() ->addWindow ( alm );
 //            alm->show();
-            alm->cargar(m_idalmacen);
-	    alm->on_mui_borrar_clicked();
-	    alm->close();
+            alm->cargar ( m_idalmacen );
+            alm->on_mui_borrar_clicked();
+            alm->close();
             /*
                         PresupuestoView *pv = ((Company *)empresaBase())->nuevoPresupuestoView();
                         if (pv->cargar(m_idalmacen))
@@ -239,10 +250,10 @@ void AlmacenesListView::borrar() {
             */
         } // end if
         presentar();
-    } catch (...) {
-        mensajeInfo(tr("Error al borrar el almacen"));
+    } catch ( ... ) {
+        mensajeInfo ( tr ( "Error al borrar el almacen" ) );
     } // end try
-    _depura("END AlmacenesListView::borrar", 0);
+    _depura ( "END AlmacenesListView::borrar", 0 );
 }
 
 

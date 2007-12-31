@@ -1,7 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2006 by Arturo Martin Llado                             *
  *   amartin@conetxia.com                                                  *
- *									   *
+ *            *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
@@ -31,23 +31,25 @@
 \param emp
 \param parent
 **/
-EFacturaEnvio::EFacturaEnvio(Company *emp, QWidget *parent) : QWidget(parent) {
-        _depura("EFacturaEnvio::EFacturaEnvio", 0);
-	QString query;
-	
-	setupUi(this);  // Para que el form se inicialice bien
-	
-	//empresaBase() = emp;
-        _depura("END EFacturaEnvio::EFacturaEnvio", 0);
+EFacturaEnvio::EFacturaEnvio ( Company *emp, QWidget *parent ) : QWidget ( parent )
+{
+    _depura ( "EFacturaEnvio::EFacturaEnvio", 0 );
+    QString query;
+
+    setupUi ( this );  // Para que el form se inicialice bien
+
+    //empresaBase() = emp;
+    _depura ( "END EFacturaEnvio::EFacturaEnvio", 0 );
 }
 
 
 ///
 /**
 **/
-EFacturaEnvio::~EFacturaEnvio() {
-        _depura("EFacturaEnvio::~EFacturaEnvio", 0);
-        _depura("EFacturaEnvio::~EFacturaEnvio", 0);
+EFacturaEnvio::~EFacturaEnvio()
+{
+    _depura ( "EFacturaEnvio::~EFacturaEnvio", 0 );
+    _depura ( "EFacturaEnvio::~EFacturaEnvio", 0 );
 }
 
 

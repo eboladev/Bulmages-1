@@ -26,10 +26,10 @@
 #include "plugins.h"
 
 
-typedef int (*MyPrototype)(void *);
+typedef int ( *MyPrototype ) ( void * );
 MyPrototype myFunction;
 
-typedef int (*MyPrototype1)(void *, void **);
+typedef int ( *MyPrototype1 ) ( void *, void ** );
 MyPrototype1 myFunction1;
 
 Plugins *g_plugins;
@@ -38,18 +38,20 @@ Plugins *g_plugins;
 ///
 /**
 **/
-Plugins::Plugins() {
-    _depura("Plugins::Plugins", 0);
-    _depura("END Plugins::Plugins", 0);
+Plugins::Plugins()
+{
+    _depura ( "Plugins::Plugins", 0 );
+    _depura ( "END Plugins::Plugins", 0 );
 }
 
 
 ///
 /**
 **/
-Plugins::~Plugins() {
-    _depura("Plugins::~Plugins", 0);
-    _depura("END Plugins::~Plugins", 0);
+Plugins::~Plugins()
+{
+    _depura ( "Plugins::~Plugins", 0 );
+    _depura ( "END Plugins::~Plugins", 0 );
 }
 
 
@@ -57,25 +59,26 @@ Plugins::~Plugins() {
 /**
 \param libs
 **/
-void Plugins::cargaLibs(const QString libs) {
+void Plugins::cargaLibs ( const QString libs )
+{
     /// Hacemos la carga de los plugins.
     QString cad = libs;
-    _depura("Plugins::cargaLibs", 0, cad);
-    if (cad == "") {
-        _depura("END Plugins::cargaLibs", 0, cad);
+    _depura ( "Plugins::cargaLibs", 0, cad );
+    if ( cad == "" ) {
+        _depura ( "END Plugins::cargaLibs", 0, cad );
         return;
     } // end if
-    QStringList plugins = cad.split(";");
-    for (QStringList::Iterator it = plugins.begin(); it != plugins.end(); ++it) {
-        QLibrary *lib = new QLibrary(*it);
+    QStringList plugins = cad.split ( ";" );
+    for ( QStringList::Iterator it = plugins.begin(); it != plugins.end(); ++it ) {
+        QLibrary *lib = new QLibrary ( *it );
         lib->load();
-        if (!lib->isLoaded()) {
-            mensajeInfo("No se ha podido cargar la libreria: " + *it + "\nERROR: " + lib->errorString());
+        if ( !lib->isLoaded() ) {
+            mensajeInfo ( "No se ha podido cargar la libreria: " + *it + "\nERROR: " + lib->errorString() );
         } else {
-            m_lista.append(lib);
+            m_lista.append ( lib );
         } // end if
     } // end for
-    _depura("END Plugins::cargaLibs", 0);
+    _depura ( "END Plugins::cargaLibs", 0 );
 }
 
 ///
@@ -84,19 +87,20 @@ void Plugins::cargaLibs(const QString libs) {
 \param clase
 \return
 **/
-int Plugins::lanza(const char *func, void *clase) {
-    _depura("Plugins::lanza", 0, func);
+int Plugins::lanza ( const char *func, void *clase )
+{
+    _depura ( "Plugins::lanza", 0, func );
     int a = 0;
-    for (int i = 0; i < m_lista.size(); ++i) {
-        myFunction = (MyPrototype) m_lista.at(i)->resolve(func);
-        if (myFunction) {
-            _depura("Plugins_lanza", 0, "Encontrada una funcion correspondiente con el prototipo");
-            a = myFunction(clase);
+    for ( int i = 0; i < m_lista.size(); ++i ) {
+        myFunction = ( MyPrototype ) m_lista.at ( i ) ->resolve ( func );
+        if ( myFunction ) {
+            _depura ( "Plugins_lanza", 0, "Encontrada una funcion correspondiente con el prototipo" );
+            a = myFunction ( clase );
         } else {
-            _depura("Plugins_lanza", 0, "No ha entrado la libreria");
+            _depura ( "Plugins_lanza", 0, "No ha entrado la libreria" );
         } // end if
     } // end for
-    _depura("END Plugins::lanza", 0);
+    _depura ( "END Plugins::lanza", 0 );
     return a;
 }
 
@@ -105,19 +109,20 @@ int Plugins::lanza(const char *func, void *clase) {
 /**
 \return
 **/
-int Plugins::lanza(const char *func, void *clase, void **ret) {
-    _depura("Plugins::lanza", 0, func);
+int Plugins::lanza ( const char *func, void *clase, void **ret )
+{
+    _depura ( "Plugins::lanza", 0, func );
     int a = 0;
-    for (int i = 0; i < m_lista.size(); ++i) {
-        myFunction1 = (MyPrototype1) m_lista.at(i)->resolve(func);
-        if (myFunction1) {
-            _depura("Plugins_lanza", 0, "Encontrada una funcion correspondiente con el prototipo");
-            a = myFunction1(clase, ret);
+    for ( int i = 0; i < m_lista.size(); ++i ) {
+        myFunction1 = ( MyPrototype1 ) m_lista.at ( i ) ->resolve ( func );
+        if ( myFunction1 ) {
+            _depura ( "Plugins_lanza", 0, "Encontrada una funcion correspondiente con el prototipo" );
+            a = myFunction1 ( clase, ret );
         } else {
-            _depura("Plugins_lanza", 0, "No ha entrado la libreria");
+            _depura ( "Plugins_lanza", 0, "No ha entrado la libreria" );
         } // end if
     } // end for
-    _depura("END Plugins::lanza", 0);
+    _depura ( "END Plugins::lanza", 0 );
     return a;
 }
 

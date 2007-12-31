@@ -40,17 +40,18 @@ class Empresa;
 /// Trata el formulario de impresi&oacute;n del registro de IVA y genera los
 /// listados pertinentes.
 /** */
-class regivaprintview : public QDialog, public Ui_RegIvaPrintBase, public PEmpresaBase {
+class regivaprintview : public QDialog, public Ui_RegIvaPrintBase, public PEmpresaBase
+{
     Q_OBJECT
 
 public:
     char *fichero;
 
 public:
-    regivaprintview(Empresa *, QWidget *parent = 0);
+    regivaprintview ( Empresa *, QWidget *parent = 0 );
     ~regivaprintview();
-    void inicializa1(QString, QString);
-    void presentar(char *tipus);
+    void inicializa1 ( QString, QString );
+    void presentar ( char *tipus );
 
 public slots:
     virtual void accept();

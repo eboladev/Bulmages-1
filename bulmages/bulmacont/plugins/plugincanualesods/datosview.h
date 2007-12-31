@@ -27,11 +27,12 @@
 #include "ui_datosbase.h"
 
 
-class datosView : public QDialog, public Ui_datosBase {
+class datosView : public QDialog, public Ui_datosBase
+{
     Q_OBJECT
 
 public:
-    datosView(QWidget *parent = 0);
+    datosView ( QWidget *parent = 0 );
     ~datosView();
 
 public slots:

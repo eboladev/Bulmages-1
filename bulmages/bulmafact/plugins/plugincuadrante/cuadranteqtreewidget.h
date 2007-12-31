@@ -34,13 +34,14 @@
 /// Clase que deriva de QTableWidget para poder reprogramar ciertos aspectos y
 /// funcionalidades.
 /** Se usa principalmente como tabla para mostrar subformularios.*/
-class CuadranteQTreeWidget : public QTreeWidget {
+class CuadranteQTreeWidget : public QTreeWidget
+{
     Q_OBJECT
 
 public:
-    CuadranteQTreeWidget(QWidget *parent = 0);
+    CuadranteQTreeWidget ( QWidget *parent = 0 );
     ~CuadranteQTreeWidget();
-     virtual void startDrag( Qt::DropActions supportedActions );
+    virtual void startDrag ( Qt::DropActions supportedActions );
 };
 
 #endif

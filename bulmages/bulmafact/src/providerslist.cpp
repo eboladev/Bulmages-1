@@ -40,46 +40,48 @@
 \param editmode
 \return
 **/
-ProveedorList::ProveedorList(Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmode)
-        : Listado(comp, parent, flag, editmode), pgimportfiles(comp) {
-    _depura("ProveedorList::ProveedorList", 0);
-    setupUi(this);
-    mui_list->setEmpresaBase(comp);
+ProveedorList::ProveedorList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmode )
+        : Listado ( comp, parent, flag, editmode ), pgimportfiles ( comp )
+{
+    _depura ( "ProveedorList::ProveedorList", 0 );
+    setupUi ( this );
+    mui_list->setEmpresaBase ( comp );
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza("ProveedorList_ProveedorList", this);
-    if (res != 0)
+    int res = g_plugins->lanza ( "ProveedorList_ProveedorList", this );
+    if ( res != 0 )
         return;
 
-    setSubForm(mui_list);
+    setSubForm ( mui_list );
     hideBusqueda();
     m_idprovider = "";
     m_cifprovider = "";
     m_nomprovider = "";
-    if (modoEdicion()) {
-        empresaBase()->meteWindow(windowTitle(), this);
+    if ( modoEdicion() ) {
+        empresaBase() ->meteWindow ( windowTitle(), this );
     } else {
-        setWindowTitle(tr("Selector de proveedores"));
-        mui_editar->setHidden(TRUE);
-        mui_crear->setHidden(TRUE);
-        mui_borrar->setHidden(TRUE);
-        mui_exportar->setHidden(TRUE);
-        mui_importar->setHidden(TRUE);
-        mui_imprimir->setHidden(TRUE);
+        setWindowTitle ( tr ( "Selector de proveedores" ) );
+        mui_editar->setHidden ( TRUE );
+        mui_crear->setHidden ( TRUE );
+        mui_borrar->setHidden ( TRUE );
+        mui_exportar->setHidden ( TRUE );
+        mui_importar->setHidden ( TRUE );
+        mui_imprimir->setHidden ( TRUE );
     } // end if
     presentar();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
-    trataPermisos("proveedor");
-    _depura("END ProveedorList::ProveedorList", 0);
+    trataPermisos ( "proveedor" );
+    _depura ( "END ProveedorList::ProveedorList", 0 );
 }
 
 
 ///
 /**
 **/
-ProveedorList::~ProveedorList() {
-    _depura("ProveedorList::~ProveedorList", 0);
-    _depura("END ProveedorList::~ProveedorList", 0);
+ProveedorList::~ProveedorList()
+{
+    _depura ( "ProveedorList::~ProveedorList", 0 );
+    _depura ( "END ProveedorList::~ProveedorList", 0 );
 
 }
 
@@ -88,9 +90,10 @@ ProveedorList::~ProveedorList() {
 /**
 \return
 **/
-QString ProveedorList::idprovider() {
-    _depura("ProveedorList::idprovider", 0);
-    _depura("END ProveedorList::idprovider", 0);
+QString ProveedorList::idprovider()
+{
+    _depura ( "ProveedorList::idprovider", 0 );
+    _depura ( "END ProveedorList::idprovider", 0 );
     return m_idprovider;
 }
 
@@ -98,9 +101,10 @@ QString ProveedorList::idprovider() {
 /**
 \return
 **/
-QString ProveedorList::cifprovider() {
-    _depura("ProveedorList::cifprovider", 0);
-    _depura("END ProveedorList::cifprovider", 0);
+QString ProveedorList::cifprovider()
+{
+    _depura ( "ProveedorList::cifprovider", 0 );
+    _depura ( "END ProveedorList::cifprovider", 0 );
     return m_cifprovider;
 }
 
@@ -109,9 +113,10 @@ QString ProveedorList::cifprovider() {
 /**
 \return
 **/
-QString ProveedorList::nomprovider() {
-    _depura("ProveedorList::nomprovider", 0);
-    _depura("END ProveedorList::nomprovider", 0);
+QString ProveedorList::nomprovider()
+{
+    _depura ( "ProveedorList::nomprovider", 0 );
+    _depura ( "END ProveedorList::nomprovider", 0 );
     return m_nomprovider;
 }
 
@@ -119,22 +124,24 @@ QString ProveedorList::nomprovider() {
 ///
 /**
 **/
-void ProveedorList::presentar() {
-    _depura("ProveedorList::presentar", 0);
-    mui_list->cargar("SELECT * FROM proveedor WHERE lower(nomproveedor) LIKE lower('%" + m_filtro->text() + "%')");
-    _depura("END ProveedorList::presentar", 0);
+void ProveedorList::presentar()
+{
+    _depura ( "ProveedorList::presentar", 0 );
+    mui_list->cargar ( "SELECT * FROM proveedor WHERE lower(nomproveedor) LIKE lower('%" + m_filtro->text() + "%')" );
+    _depura ( "END ProveedorList::presentar", 0 );
 }
 
 
 /// \TODO: Esta creacion debe pasar por la clase company.
 /**
 **/
-void ProveedorList::crear() {
-    _depura("ProveedorList::crear", 0);
-        ProveedorView *prov = ((Company *)empresaBase())->newProveedorView();
-    empresaBase()->m_pWorkspace->addWindow(prov);
+void ProveedorList::crear()
+{
+    _depura ( "ProveedorList::crear", 0 );
+    ProveedorView *prov = ( ( Company * ) empresaBase() ) ->newProveedorView();
+    empresaBase() ->m_pWorkspace->addWindow ( prov );
     prov->show();
-    _depura("END ProveedorList::crear", 0);
+    _depura ( "END ProveedorList::crear", 0 );
 }
 
 
@@ -143,23 +150,24 @@ void ProveedorList::crear() {
 \param row
 \return
 **/
-void ProveedorList::editar(int row) {
-    _depura("ProveedorList::editar", 0);
-    m_idprovider = mui_list->DBvalue(QString("idproveedor"), row);
-    m_cifprovider = mui_list->DBvalue(QString("cifproveedor"), row);
-    m_nomprovider = mui_list->DBvalue(QString("nomproveedor"), row);
-    if (modoEdicion()) {
-        ProveedorView *prov = ((Company *)empresaBase())->newProveedorView();
-        if (prov->cargar(mui_list->DBvalue(QString("idproveedor"), row))) {
+void ProveedorList::editar ( int row )
+{
+    _depura ( "ProveedorList::editar", 0 );
+    m_idprovider = mui_list->DBvalue ( QString ( "idproveedor" ), row );
+    m_cifprovider = mui_list->DBvalue ( QString ( "cifproveedor" ), row );
+    m_nomprovider = mui_list->DBvalue ( QString ( "nomproveedor" ), row );
+    if ( modoEdicion() ) {
+        ProveedorView * prov = ( ( Company * ) empresaBase() ) ->newProveedorView();
+        if ( prov->cargar ( mui_list->DBvalue ( QString ( "idproveedor" ), row ) ) ) {
             delete prov;
             return;
         } // end if
-        empresaBase()->m_pWorkspace->addWindow(prov);
+        empresaBase() ->m_pWorkspace->addWindow ( prov );
         prov->show();
     } else {
-        emit(selected(m_idprovider));
+        emit ( selected ( m_idprovider ) );
     } // end if
-    _depura("END ProveedorList::editar", 0);
+    _depura ( "END ProveedorList::editar", 0 );
 }
 
 
@@ -170,64 +178,68 @@ void ProveedorList::editar(int row) {
 /// Se procede a borrar el proveedor.
 /**
 **/
-void ProveedorList::borrar() {
-    _depura("ProveedorList::borrar", 0);
+void ProveedorList::borrar()
+{
+    _depura ( "ProveedorList::borrar", 0 );
     try {
-        QString idprov = mui_list->DBvalue(QString("idproveedor"));
-        ProveedorView *prov = ((Company *)empresaBase())->newProveedorView();
-        prov->cargar(idprov);
+        QString idprov = mui_list->DBvalue ( QString ( "idproveedor" ) );
+        ProveedorView *prov = ( ( Company * ) empresaBase() ) ->newProveedorView();
+        prov->cargar ( idprov );
         prov->on_mui_borrar_clicked();
         delete prov;
         presentar();
-    } catch (...) {
-        mensajeInfo(tr("Error al borrar el proveedor"));
+    } catch ( ... ) {
+        mensajeInfo ( tr ( "Error al borrar el proveedor" ) );
     } // end try
-    _depura("END ProveedorList::borrar", 0);
+    _depura ( "END ProveedorList::borrar", 0 );
 }
 
 
 /// SLOT que se ejecuta al pulsar sobre el boton de imprimir en la ventana de proveedores
 /**
 **/
-void ProveedorList::imprimir() {
-    _depura("ProveedorList::on_mui_imprimir_clicked", 0);
-    mui_list->imprimirPDF(tr("Listado de Proveedores"));
-    _depura("END ProveedorList::on_mui_imprimir_clicked", 0);
+void ProveedorList::imprimir()
+{
+    _depura ( "ProveedorList::on_mui_imprimir_clicked", 0 );
+    mui_list->imprimirPDF ( tr ( "Listado de Proveedores" ) );
+    _depura ( "END ProveedorList::on_mui_imprimir_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void ProveedorList::on_mui_exportar_clicked() {
-    QFile filexml(QFileDialog::getSaveFileName(this,
-                  tr("Seleccione el archivo"),
-                  confpr->valor(CONF_DIR_USER),
-                  tr("Proveedores (*.xml)")));
+void ProveedorList::on_mui_exportar_clicked()
+{
+    QFile filexml ( QFileDialog::getSaveFileName ( this,
+                    tr ( "Seleccione el archivo" ),
+                    confpr->valor ( CONF_DIR_USER ),
+                    tr ( "Proveedores (*.xml)" ) ) );
 
-    if (filexml.open(QIODevice::WriteOnly)) {
-        bulmafact2XML(filexml, IMPORT_PROVEEDORES);
+    if ( filexml.open ( QIODevice::WriteOnly ) ) {
+        bulmafact2XML ( filexml, IMPORT_PROVEEDORES );
         filexml.close();
     } else {
-        _depura("ERROR AL ABRIR EL ARCHIVO\n", 2);
+        _depura ( "ERROR AL ABRIR EL ARCHIVO\n", 2 );
     } // end if
 }
 
 ///
 /**
 **/
-void ProveedorList::on_mui_importar_clicked() {
-    QFile filexml(QFileDialog::getOpenFileName(this,
-                  tr("Elija el archivo"),
-                  confpr->valor(CONF_DIR_USER),
-                  tr("Proveedores (*.xml)")));
+void ProveedorList::on_mui_importar_clicked()
+{
+    QFile filexml ( QFileDialog::getOpenFileName ( this,
+                    tr ( "Elija el archivo" ),
+                    confpr->valor ( CONF_DIR_USER ),
+                    tr ( "Proveedores (*.xml)" ) ) );
 
-    if (filexml.open(QIODevice::ReadOnly)) {
-        XML2BulmaFact(filexml, IMPORT_PROVEEDORES);
+    if ( filexml.open ( QIODevice::ReadOnly ) ) {
+        XML2BulmaFact ( filexml, IMPORT_PROVEEDORES );
         filexml.close();
         presentar();
     } else {
-        _depura("ERROR AL ABRIR EL ARCHIVO\n", 2);
+        _depura ( "ERROR AL ABRIR EL ARCHIVO\n", 2 );
     } // end if
 }
 
@@ -238,11 +250,12 @@ void ProveedorList::on_mui_importar_clicked() {
 ///
 /**
 **/
-void ProveedorListSubform::cargar() {
-    _depura("ProveedorListSubform::cargar", 0);
+void ProveedorListSubform::cargar()
+{
+    _depura ( "ProveedorListSubform::cargar", 0 );
     QString SQLQuery = "SELECT * FROM proveedor";
-    SubForm3::cargar(SQLQuery);
-    _depura("END ProveedorListSubform::cargar", 0);
+    SubForm3::cargar ( SQLQuery );
+    _depura ( "END ProveedorListSubform::cargar", 0 );
 }
 
 
@@ -250,10 +263,11 @@ void ProveedorListSubform::cargar() {
 /**
 \param a
 **/
-void ProveedorListSubform::cargar(QString a) {
-    _depura("ProveedorListSubform::cargar", 0);
-    SubForm3::cargar(a);
-    _depura("END ProveedorListSubform::cargar", 0);
+void ProveedorListSubform::cargar ( QString a )
+{
+    _depura ( "ProveedorListSubform::cargar", 0 );
+    SubForm3::cargar ( a );
+    _depura ( "END ProveedorListSubform::cargar", 0 );
 }
 
 
@@ -261,29 +275,30 @@ void ProveedorListSubform::cargar(QString a) {
 /**
 \param parent
 **/
-ProveedorListSubform::ProveedorListSubform(QWidget *parent) : SubForm2Bf(parent) {
-    _depura("ProveedorListSubform::ProveedorListSubform", 0);
-    setDBTableName("proveedor");
-    setDBCampoId("idproveedor");
-    addSHeader("idproveedor", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("ID proveedor"));
-    addSHeader("codproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Codigo"));
-    addSHeader("cifproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("C.I.F."));
-    addSHeader("nomproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre"));
-    addSHeader("nomaltproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre alternativo"));
-    addSHeader("codicliproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Codigo"));
-    addSHeader("cbancproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Numero de cuenta corriente"));
-    addSHeader("comentproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Comentarios"));
-    addSHeader("dirproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Direccion"));
-    addSHeader("poblproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Poblacion"));
-    addSHeader("cpproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Codigo postal"));
-    addSHeader("telproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Numero de telefono"));
-    addSHeader("faxproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Numero de fax"));
-    addSHeader("emailproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Direccion de correo electronico"));
-    addSHeader("urlproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Direccion de URL"));
-    addSHeader("clavewebproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Clave de acceso a la web del proveedor"));
-    setinsercion(FALSE);
-    setDelete(FALSE);
-    setSortingEnabled(TRUE);
-    _depura("END ProveedorListSubform::ProveedorListSubform", 0);
+ProveedorListSubform::ProveedorListSubform ( QWidget *parent ) : SubForm2Bf ( parent )
+{
+    _depura ( "ProveedorListSubform::ProveedorListSubform", 0 );
+    setDBTableName ( "proveedor" );
+    setDBCampoId ( "idproveedor" );
+    addSHeader ( "idproveedor", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "ID proveedor" ) );
+    addSHeader ( "codproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Codigo" ) );
+    addSHeader ( "cifproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "C.I.F." ) );
+    addSHeader ( "nomproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre" ) );
+    addSHeader ( "nomaltproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre alternativo" ) );
+    addSHeader ( "codicliproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Codigo" ) );
+    addSHeader ( "cbancproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Numero de cuenta corriente" ) );
+    addSHeader ( "comentproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Comentarios" ) );
+    addSHeader ( "dirproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Direccion" ) );
+    addSHeader ( "poblproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Poblacion" ) );
+    addSHeader ( "cpproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Codigo postal" ) );
+    addSHeader ( "telproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Numero de telefono" ) );
+    addSHeader ( "faxproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Numero de fax" ) );
+    addSHeader ( "emailproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Direccion de correo electronico" ) );
+    addSHeader ( "urlproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Direccion de URL" ) );
+    addSHeader ( "clavewebproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Clave de acceso a la web del proveedor" ) );
+    setinsercion ( FALSE );
+    setDelete ( FALSE );
+    setSortingEnabled ( TRUE );
+    _depura ( "END ProveedorListSubform::ProveedorListSubform", 0 );
 }
 

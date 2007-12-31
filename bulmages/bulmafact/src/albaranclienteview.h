@@ -47,18 +47,19 @@ class company;
     Se encarga del control de la pantalla de albaranes a clientes, el paso de mensajes y la visualizacion.
     Contiene todos los metodos de pintado que son llamados desde AlbaranCliente.
 */
-class AlbaranClienteView : public FichaBf, public Ui_AlbaranClienteBase {
+class AlbaranClienteView : public FichaBf, public Ui_AlbaranClienteBase
+{
     Q_OBJECT
 
 public:
     virtual int guardarPost();
     virtual int borrarPre();
-    virtual int cargarPost(QString);
-    AlbaranClienteView(Company *, QWidget *);
+    virtual int cargarPost ( QString );
+    AlbaranClienteView ( Company *, QWidget * );
     ~AlbaranClienteView();
     void inicializar();
 
-    void pintatotales(Fixed, Fixed, Fixed, Fixed, Fixed, Fixed);
+    void pintatotales ( Fixed, Fixed, Fixed, Fixed, Fixed, Fixed );
     void generarFactura();
     void agregarFactura();
 
@@ -70,10 +71,10 @@ public slots:
     virtual void on_mui_verpedidocliente_clicked();
     virtual void on_mui_facturar_clicked();
     virtual void on_mui_agregarafactura_clicked();
-    virtual void on_m_descuentos_editFinish(int, int);
-    virtual void on_subform2_editFinish(int, int);
+    virtual void on_m_descuentos_editFinish ( int, int );
+    virtual void on_subform2_editFinish ( int, int );
     virtual void on_mui_cobrar_clicked();
-    virtual void on_mui_idcliente_valueChanged(QString id);
+    virtual void on_mui_idcliente_valueChanged ( QString id );
 };
 
 #endif

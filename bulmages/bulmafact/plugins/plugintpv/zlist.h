@@ -27,7 +27,8 @@
 #include "bulmafact.h"
 #include "ui_zlistbase.h"
 
-class myplugincont : public QObject {
+class myplugincont : public QObject
+{
     Q_OBJECT
 
 public:
@@ -37,7 +38,7 @@ public:
 public:
     myplugincont();
     ~myplugincont();
-    void inicializa(Bulmafact *);
+    void inicializa ( Bulmafact * );
 
 public slots:
     void elslot();
@@ -52,28 +53,29 @@ public slots:
 /// \TODO: Deberia crearse la clase Listado para poner en ella mas funcionalidades comunes a los listados.
 /// Muestra y administra la ventana con el listado de presupuestos.
 /** */
-class ZList : public Listado, public Ui_ZListBase {
+class ZList : public Listado, public Ui_ZListBase
+{
     Q_OBJECT
 
 private:
     QString m_idz;
 
 public:
-    ZList(Company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0);
+    ZList ( Company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0 );
     ~ZList();
     void presentar();
-    void editar(int);
+    void editar ( int );
     void borrar();
     void crear();
     QString idalmacen();
-    void setEmpresaBase (Company *comp);
+    void setEmpresaBase ( Company *comp );
     void imprimir();
     QString generaFiltro();
     void iniciaForm();
 
 
 signals:
-    void selected(QString);
+    void selected ( QString );
 };
 
 #endif

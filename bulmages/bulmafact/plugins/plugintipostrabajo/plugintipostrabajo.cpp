@@ -31,30 +31,33 @@
 ///
 /**
 **/
-mytiptrab::mytiptrab() {
-    _depura("mytiptrab::mytiptrab", 0);
-    _depura("END mytiptrab::mytiptrab", 0);
+mytiptrab::mytiptrab()
+{
+    _depura ( "mytiptrab::mytiptrab", 0 );
+    _depura ( "END mytiptrab::mytiptrab", 0 );
 }
 
 
 ///
 /**
 **/
-mytiptrab::~mytiptrab() {
-    _depura("mytiptrab::~mytiptrab", 0);
-    _depura("END mytiptrab::~mytiptrab", 0);
+mytiptrab::~mytiptrab()
+{
+    _depura ( "mytiptrab::~mytiptrab", 0 );
+    _depura ( "END mytiptrab::~mytiptrab", 0 );
 }
 
 
 ///
 /**
 **/
-void mytiptrab::elslot() {
-    _depura("mytiptrab::elslot", 0);
-   ListTiposTrabajoView *l = new ListTiposTrabajoView((Company *)m_bulmafact->getcompany(), 0);
-    m_bulmafact->workspace()->addWindow(l);
+void mytiptrab::elslot()
+{
+    _depura ( "mytiptrab::elslot", 0 );
+    ListTiposTrabajoView *l = new ListTiposTrabajoView ( ( Company * ) m_bulmafact->getcompany(), 0 );
+    m_bulmafact->workspace() ->addWindow ( l );
     l->show();
-    _depura("END mytiptrab::elslot", 0);
+    _depura ( "END mytiptrab::elslot", 0 );
 }
 
 
@@ -62,15 +65,16 @@ void mytiptrab::elslot() {
 /**
 \param bges
 **/
-void mytiptrab::inicializa(Bulmafact *bges) {
+void mytiptrab::inicializa ( Bulmafact *bges )
+{
     /// Creamos el men&uacute;.
     m_bulmafact = bges;
-    QAction *accion = new QAction("&Tipos de Trabajo", 0);
-    accion->setStatusTip("Tipos de Trabajo");
-    accion->setWhatsThis("Tipos de Trabajo");
-    connect(accion, SIGNAL(activated()), this, SLOT(elslot()));
+    QAction *accion = new QAction ( "&Tipos de Trabajo", 0 );
+    accion->setStatusTip ( "Tipos de Trabajo" );
+    accion->setWhatsThis ( "Tipos de Trabajo" );
+    connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bges->menuMaestro->insertAction(bges->actionTrabajadores, accion);
+    bges->menuMaestro->insertAction ( bges->actionTrabajadores, accion );
 }
 
 
@@ -79,10 +83,11 @@ void mytiptrab::inicializa(Bulmafact *bges) {
 \param bges
 \return
 **/
-int entryPoint(Bulmafact *bges) {
-    _depura("Estoy dentro del plugin de tipos de trabajo", 0);
+int entryPoint ( Bulmafact *bges )
+{
+    _depura ( "Estoy dentro del plugin de tipos de trabajo", 0 );
     mytiptrab *plug = new mytiptrab();
-    plug->inicializa(bges);
+    plug->inicializa ( bges );
     return 0;
 }
 
@@ -92,56 +97,39 @@ int entryPoint(Bulmafact *bges) {
 \param trab
 \return
 **/
-int TrabajadorView_TrabajadorView_Post (TrabajadorView *trab) {
-    _depura("TrabajadorView_TrabajadorView_Post", 0);
+int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab )
+{
+    _depura ( "TrabajadorView_TrabajadorView_Post", 0 );
 
     QHBoxLayout *hboxLayout160 = new QHBoxLayout();
-    hboxLayout160->setSpacing(2);
-    hboxLayout160->setMargin(0);
-    hboxLayout160->setObjectName(QString::fromUtf8("hboxLayout16"));
+    hboxLayout160->setSpacing ( 2 );
+    hboxLayout160->setMargin ( 0 );
+    hboxLayout160->setObjectName ( QString::fromUtf8 ( "hboxLayout16" ) );
 
-    QLabel *textLabel2_9_26 = new QLabel(trab->m_frameplugin);
-    textLabel2_9_26->setObjectName(QString::fromUtf8("textLabel2_9_2"));
-    hboxLayout160->addWidget(textLabel2_9_26);
-    textLabel2_9_26->setText("Tipo Trabajo");
+    QLabel *textLabel2_9_26 = new QLabel ( trab->m_frameplugin );
+    textLabel2_9_26->setObjectName ( QString::fromUtf8 ( "textLabel2_9_2" ) );
+    hboxLayout160->addWidget ( textLabel2_9_26 );
+    textLabel2_9_26->setText ( "Tipo Trabajo" );
 
-    BusquedaTipoTrabajo *tipotraba = new BusquedaTipoTrabajo(trab->m_frameplugin);
-    tipotraba->setEmpresaBase(trab->empresaBase());
-    tipotraba->setidtipotrabajo("");
-    tipotraba->setObjectName(QString::fromUtf8("tipotraba"));
-    hboxLayout160->addWidget(tipotraba);
+    BusquedaTipoTrabajo *tipotraba = new BusquedaTipoTrabajo ( trab->m_frameplugin );
+    tipotraba->setEmpresaBase ( trab->empresaBase() );
+    tipotraba->setidtipotrabajo ( "" );
+    tipotraba->setObjectName ( QString::fromUtf8 ( "tipotraba" ) );
+    hboxLayout160->addWidget ( tipotraba );
 
 
     /// Comprobamos que exista el layout.
-    QVBoxLayout *m_hboxLayout1 = trab->m_frameplugin->findChild<QVBoxLayout *>("hboxLayout1");
-    if (!m_hboxLayout1) {
-        m_hboxLayout1 = new QVBoxLayout(trab->m_frameplugin);
-        m_hboxLayout1->setSpacing(0);
-        m_hboxLayout1->setMargin(0);
-        m_hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));
+    QVBoxLayout *m_hboxLayout1 = trab->m_frameplugin->findChild<QVBoxLayout *> ( "hboxLayout1" );
+    if ( !m_hboxLayout1 ) {
+        m_hboxLayout1 = new QVBoxLayout ( trab->m_frameplugin );
+        m_hboxLayout1->setSpacing ( 0 );
+        m_hboxLayout1->setMargin ( 0 );
+        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
     } // end if
 
-    m_hboxLayout1->addLayout(hboxLayout160);
+    m_hboxLayout1->addLayout ( hboxLayout160 );
 
 //   trab->m_frameplugin->setLayout(hboxLayout160);
-   return 0;
-}
-
-
-///
-/**
-\param trab
-\return
-**/
-int TrabajadorView_on_mui_guardar_clicked(TrabajadorView *trab) {
-
-    BusquedaTipoTrabajo *l = trab->findChild<BusquedaTipoTrabajo *>("tipotraba");
-    QString query = "UPDATE trabajador SET ";
-    query += " idtipotrabajo = " + l->idtipotrabajo();
-    query += " WHERE idtrabajador=" + trab->empresaBase()->sanearCadena(trab->idtrabajador());
-    trab->empresaBase()->begin();
-    trab->empresaBase()->ejecuta(query);
-    trab->empresaBase()->commit();
     return 0;
 }
 
@@ -151,12 +139,32 @@ int TrabajadorView_on_mui_guardar_clicked(TrabajadorView *trab) {
 \param trab
 \return
 **/
-int TrabajadorView_on_mui_lista_currentItemChanged_Post(TrabajadorView *trab) {
-    BusquedaTipoTrabajo *l = trab->findChild<BusquedaTipoTrabajo *>("tipotraba");
+int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView *trab )
+{
 
-    cursor2 *cur = trab->empresaBase()->cargacursor("SELECT idtipotrabajo FROM trabajador WHERE idtrabajador = " + trab->idtrabajador());
-    if (!cur->eof()) {
-	l->setidtipotrabajo(cur->valor("idtipotrabajo")); 
+    BusquedaTipoTrabajo * l = trab->findChild<BusquedaTipoTrabajo *> ( "tipotraba" );
+    QString query = "UPDATE trabajador SET ";
+    query += " idtipotrabajo = " + l->idtipotrabajo();
+    query += " WHERE idtrabajador=" + trab->empresaBase() ->sanearCadena ( trab->idtrabajador() );
+    trab->empresaBase() ->begin();
+    trab->empresaBase() ->ejecuta ( query );
+    trab->empresaBase() ->commit();
+    return 0;
+}
+
+
+///
+/**
+\param trab
+\return
+**/
+int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab )
+{
+    BusquedaTipoTrabajo * l = trab->findChild<BusquedaTipoTrabajo *> ( "tipotraba" );
+
+    cursor2 *cur = trab->empresaBase() ->cargacursor ( "SELECT idtipotrabajo FROM trabajador WHERE idtrabajador = " + trab->idtrabajador() );
+    if ( !cur->eof() ) {
+        l->setidtipotrabajo ( cur->valor ( "idtipotrabajo" ) );
     }
     delete cur;
     return 0;
@@ -168,28 +176,29 @@ int TrabajadorView_on_mui_lista_currentItemChanged_Post(TrabajadorView *trab) {
 \param alm
 \return
 **/
-int AlmacenView_AlmacenView(AlmacenView *alm) {
-   _depura("esxtoy en la clase almacen", 0);
+int AlmacenView_AlmacenView ( AlmacenView *alm )
+{
+    _depura ( "esxtoy en la clase almacen", 0 );
 
-    SubForm2Bf *form = new SubForm2Bf(alm);
+    SubForm2Bf *form = new SubForm2Bf ( alm );
     delete form->m_delegate;
-    form->m_delegate = new QSubForm3BfDelegate(form);
-    form->mui_list->setItemDelegate(form->m_delegate);
-    form->setObjectName("mui_tipostrabajo");
-    form->setEmpresaBase(alm->empresaBase());
-    form->setDBTableName("almacentipotrabajo");
-    form->setDBCampoId("idalmacen");
-    form->addSHeader("nomtipotrabajo", DBCampo::DBvarchar, DBCampo::DBNoSave , SHeader::DBNone, QApplication::translate("AlmacenView", "ID nom tipo Trabajo"));
-    form->addSHeader("numpers", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone , QApplication::translate("AlmacenView", "Numero de Cargos Necesarios"));
-    form->addSHeader("idalmacen", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate("AlmacenView", "ID almacen"));
-    form->addSHeader("idtipotrabajo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate("AlmacenView", "ID tipo Trabajo"));
-    form->addSHeader("origidtipotrabajo", DBCampo::DBint, DBCampo::DBDupPrimaryKey | DBCampo::DBNoSave, SHeader::DBNoView, "idtipotrabajo");
+    form->m_delegate = new QSubForm3BfDelegate ( form );
+    form->mui_list->setItemDelegate ( form->m_delegate );
+    form->setObjectName ( "mui_tipostrabajo" );
+    form->setEmpresaBase ( alm->empresaBase() );
+    form->setDBTableName ( "almacentipotrabajo" );
+    form->setDBCampoId ( "idalmacen" );
+    form->addSHeader ( "nomtipotrabajo", DBCampo::DBvarchar, DBCampo::DBNoSave , SHeader::DBNone, QApplication::translate ( "AlmacenView", "ID nom tipo Trabajo" ) );
+    form->addSHeader ( "numpers", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone , QApplication::translate ( "AlmacenView", "Numero de Cargos Necesarios" ) );
+    form->addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "AlmacenView", "ID almacen" ) );
+    form->addSHeader ( "idtipotrabajo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "AlmacenView", "ID tipo Trabajo" ) );
+    form->addSHeader ( "origidtipotrabajo", DBCampo::DBint, DBCampo::DBDupPrimaryKey | DBCampo::DBNoSave, SHeader::DBNoView, "idtipotrabajo" );
 
-    form->setinsercion(TRUE);
-    form->setDelete(TRUE);
-    form->setSortingEnabled(FALSE);
+    form->setinsercion ( TRUE );
+    form->setDelete ( TRUE );
+    form->setSortingEnabled ( FALSE );
 
-    alm->mui_tab->addTab(form, "Trabajadores Requeridos");
+    alm->mui_tab->addTab ( form, "Trabajadores Requeridos" );
     return 0;
 }
 
@@ -199,11 +208,12 @@ int AlmacenView_AlmacenView(AlmacenView *alm) {
 \param fich
 \return
 **/
-int Ficha_cargar(Ficha *fich) {
-	SubForm3 *form = fich->findChild<SubForm3 *>("mui_tipostrabajo");
-	if (form) 
-		form->cargar("SELECT *, tipotrabajo.idtipotrabajo AS origidtipotrabajo FROM almacentipotrabajo LEFT JOIN tipotrabajo ON almacentipotrabajo.idtipotrabajo = tipotrabajo.idtipotrabajo WHERE idalmacen = " + fich->DBvalue("idalmacen"));
-	return 0;
+int Ficha_cargar ( Ficha *fich )
+{
+    SubForm3 * form = fich->findChild<SubForm3 *> ( "mui_tipostrabajo" );
+    if ( form )
+        form->cargar ( "SELECT *, tipotrabajo.idtipotrabajo AS origidtipotrabajo FROM almacentipotrabajo LEFT JOIN tipotrabajo ON almacentipotrabajo.idtipotrabajo = tipotrabajo.idtipotrabajo WHERE idalmacen = " + fich->DBvalue ( "idalmacen" ) );
+    return 0;
 }
 
 
@@ -212,13 +222,14 @@ int Ficha_cargar(Ficha *fich) {
 \param fich
 \return
 **/
-int Ficha_guardar_Post(Ficha *fich) {
-	SubForm3 *form = fich->findChild<SubForm3 *>("mui_tipostrabajo");
-	if (form) {
-		form->setColumnValue("idalmacen", fich->DBvalue("idalmacen"));
-		form->guardar();
-	}
-	return 0;
+int Ficha_guardar_Post ( Ficha *fich )
+{
+    SubForm3 * form = fich->findChild<SubForm3 *> ( "mui_tipostrabajo" );
+    if ( form ) {
+        form->setColumnValue ( "idalmacen", fich->DBvalue ( "idalmacen" ) );
+        form->guardar();
+    }
+    return 0;
 }
 
 /// ============================= SUBFORM3BFDELEGATE =============================================
@@ -231,18 +242,20 @@ int Ficha_guardar_Post(Ficha *fich) {
 /**
 \param parent
 **/
-QSubForm3BfDelegate::QSubForm3BfDelegate(QObject *parent = 0) : QSubForm2BfDelegate(parent) {
-    _depura("QSubForm3BfDelegate::QSubForm3BfDelegate", 0);
-    _depura("END QSubForm3BfDelegate::QSubForm3BfDelegate", 0);
+QSubForm3BfDelegate::QSubForm3BfDelegate ( QObject *parent = 0 ) : QSubForm2BfDelegate ( parent )
+{
+    _depura ( "QSubForm3BfDelegate::QSubForm3BfDelegate", 0 );
+    _depura ( "END QSubForm3BfDelegate::QSubForm3BfDelegate", 0 );
 }
 
 
 ///
 /**
 **/
-QSubForm3BfDelegate::~QSubForm3BfDelegate() {
-    _depura("QSubForm3BfDelegate::~QSubForm3BfDelegate", 0);
-    _depura("END QSubForm3BfDelegate::~QSubForm3BfDelegate", 0);
+QSubForm3BfDelegate::~QSubForm3BfDelegate()
+{
+    _depura ( "QSubForm3BfDelegate::~QSubForm3BfDelegate", 0 );
+    _depura ( "END QSubForm3BfDelegate::~QSubForm3BfDelegate", 0 );
 }
 
 
@@ -253,19 +266,20 @@ QSubForm3BfDelegate::~QSubForm3BfDelegate() {
 \param index
 \return
 **/
-QWidget *QSubForm3BfDelegate::createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const {
-    _depura("QSubForm3BfDelegate::createEditor", 0);
+QWidget *QSubForm3BfDelegate::createEditor ( QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index ) const
+{
+    _depura ( "QSubForm3BfDelegate::createEditor", 0 );
     SHeader *linea;
-    linea = m_subform->cabecera()->at(index.column());
+    linea = m_subform->cabecera() ->at ( index.column() );
 
-    if (linea->nomcampo() == "nomtipotrabajo") {
-        BusquedaTipoTrabajoDelegate *editor = new BusquedaTipoTrabajoDelegate(parent);
-        editor->setEmpresaBase((Company *)m_subform->empresaBase());
+    if ( linea->nomcampo() == "nomtipotrabajo" ) {
+        BusquedaTipoTrabajoDelegate * editor = new BusquedaTipoTrabajoDelegate ( parent );
+        editor->setEmpresaBase ( ( Company * ) m_subform->empresaBase() );
         return editor;
     } else  {
-        return QSubForm2BfDelegate::createEditor(parent, option, index);
+        return QSubForm2BfDelegate::createEditor ( parent, option, index );
     } // end if
-    _depura("END QSubForm3BfDelegate::createEditor", 0);
+    _depura ( "END QSubForm3BfDelegate::createEditor", 0 );
 }
 
 
@@ -276,24 +290,25 @@ QWidget *QSubForm3BfDelegate::createEditor(QWidget *parent, const QStyleOptionVi
 \param index
 \return
 **/
-void QSubForm3BfDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const {
-    _depura("QSubForm3BfDelegate::setModelData", 0);
+void QSubForm3BfDelegate::setModelData ( QWidget *editor, QAbstractItemModel *model, const QModelIndex &index ) const
+{
+    _depura ( "QSubForm3BfDelegate::setModelData", 0 );
 
     /// Si la fila o columna pasadas son invalidas salimos.
-    if (index.column() < 0 || index.row() < 0)
+    if ( index.column() < 0 || index.row() < 0 )
         return;
 
     SHeader *linea;
-    linea = m_subform->cabecera()->at(index.column());
-    if (linea->nomcampo() == "nomtipotrabajo") {
-        BusquedaTipoTrabajoDelegate *comboBox = static_cast<BusquedaTipoTrabajoDelegate*>(editor);
+    linea = m_subform->cabecera() ->at ( index.column() );
+    if ( linea->nomcampo() == "nomtipotrabajo" ) {
+        BusquedaTipoTrabajoDelegate * comboBox = static_cast<BusquedaTipoTrabajoDelegate*> ( editor );
         QString value = comboBox->currentText();
-        model->setData(index, value);
-	m_subform->lineaat(index.row())->setDBvalue("idtipotrabajo", comboBox->id());
+        model->setData ( index, value );
+        m_subform->lineaat ( index.row() ) ->setDBvalue ( "idtipotrabajo", comboBox->id() );
     } else {
-        QSubForm2BfDelegate::setModelData(editor, model, index);
+        QSubForm2BfDelegate::setModelData ( editor, model, index );
     } // end if
-    _depura("END QSubForm3BfDelegate::setModelData", 0);
+    _depura ( "END QSubForm3BfDelegate::setModelData", 0 );
 }
 
 
@@ -302,18 +317,19 @@ void QSubForm3BfDelegate::setModelData(QWidget *editor, QAbstractItemModel *mode
 \param editor
 \param index
 **/
-void QSubForm3BfDelegate::setEditorData(QWidget* editor, const QModelIndex& index) const {
-    _depura("QSubForm3BfDelegate::setEditorData", 0);
+void QSubForm3BfDelegate::setEditorData ( QWidget* editor, const QModelIndex& index ) const
+{
+    _depura ( "QSubForm3BfDelegate::setEditorData", 0 );
     SHeader *linea;
-    linea = m_subform->cabecera()->at(index.column());
-    if (linea->nomcampo() == "nomtipotrabajo") {
-        QString value = index.model()->data(index, Qt::DisplayRole).toString();
-        BusquedaTipoTrabajoDelegate *comboBox = static_cast<BusquedaTipoTrabajoDelegate*>(editor);
-        comboBox->set(value);
+    linea = m_subform->cabecera() ->at ( index.column() );
+    if ( linea->nomcampo() == "nomtipotrabajo" ) {
+        QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
+        BusquedaTipoTrabajoDelegate *comboBox = static_cast<BusquedaTipoTrabajoDelegate*> ( editor );
+        comboBox->set ( value );
     } else {
-        QSubForm2BfDelegate::setEditorData(editor, index);
+        QSubForm2BfDelegate::setEditorData ( editor, index );
     } // end if
-    _depura("END QSubForm3BfDelegate::setEditorData", 0);
+    _depura ( "END QSubForm3BfDelegate::setEditorData", 0 );
 }
 
 

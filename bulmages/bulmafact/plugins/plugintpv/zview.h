@@ -42,13 +42,14 @@ class Company;
     en dicha ventana.
     Deriva de Ficha para metodos comunes a todas las ventanas.
     Deriva de Cobro para el manejo de la Base de datos. */
-class ZView : public FichaBf, public Ui_ZBase {
+class ZView : public FichaBf, public Ui_ZBase
+{
     Q_OBJECT
 
 public:
-    ZView(Company *, QWidget *);
+    ZView ( Company *, QWidget * );
     ~ZView();
-    int cargarPost(QString idz);
+    int cargarPost ( QString idz );
 };
 
 #endif

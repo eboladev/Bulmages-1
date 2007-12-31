@@ -29,23 +29,27 @@
 #include "subform2bf.h"
 #include "listado.h"
 
-class RutaComercialListSubForm : public SubForm2Bf {
+class RutaComercialListSubForm : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
-    RutaComercialListSubForm(QWidget *parent = 0);
-    ~RutaComercialListSubForm() {}
+    RutaComercialListSubForm ( QWidget *parent = 0 );
+    ~RutaComercialListSubForm()
+    {}
     ;
 
 public slots:
-    virtual void cargar() {
-        _depura("RutaComercialListSubForm::cargar\n", 0);
+    virtual void cargar()
+    {
+        _depura ( "RutaComercialListSubForm::cargar\n", 0 );
         QString SQLQuery = "SELECT * FROM presupuesto";
-        SubForm3::cargar(SQLQuery);
+        SubForm3::cargar ( SQLQuery );
     };
-    virtual void cargar(QString query) {
-        _depura("RutaComercialListSubForm::cargar\n", 0);
-        SubForm3::cargar(query);
+    virtual void cargar ( QString query )
+    {
+        _depura ( "RutaComercialListSubForm::cargar\n", 0 );
+        SubForm3::cargar ( query );
     };
 };
 
@@ -53,7 +57,8 @@ public slots:
 #include "ui_rutacomerciallistbase.h"
 
 
-class RutaComercialList : public Listado, public Ui_RutaComercialListBase {
+class RutaComercialList : public Listado, public Ui_RutaComercialListBase
+{
     Q_OBJECT
 
 private:
@@ -61,18 +66,18 @@ private:
     QString m_idpresupuesto;
 
 public:
-    RutaComercialList(QWidget *parent = 0);
-    RutaComercialList(Company *comp = NULL, QWidget *parent = 0);
+    RutaComercialList ( QWidget *parent = 0 );
+    RutaComercialList ( Company *comp = NULL, QWidget *parent = 0 );
     ~RutaComercialList();
     void presenta();
 
     QString idpresupuesto();
 
-    void setEmpresaBase(Company *comp);
+    void setEmpresaBase ( Company *comp );
     void imprimir();
-    void setidcliente(QString val);
+    void setidcliente ( QString val );
     QString generaFiltro();
-    void editar(int);
+    void editar ( int );
 
 public slots:
 
@@ -83,7 +88,7 @@ public slots:
 
 
 signals:
-    void selected(QString);
+    void selected ( QString );
 };
 
 #endif

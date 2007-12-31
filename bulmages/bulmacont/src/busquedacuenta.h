@@ -35,7 +35,8 @@
 class Empresa;
 
 
-class BusquedaCuentaDelegate : public QComboBox2 {
+class BusquedaCuentaDelegate : public QComboBox2
+{
     Q_OBJECT
 
 private:
@@ -44,15 +45,16 @@ private:
     QCompleter *completar;
 
 public:
-    BusquedaCuentaDelegate(QWidget *parent = 0);
+    BusquedaCuentaDelegate ( QWidget *parent = 0 );
     ~BusquedaCuentaDelegate();
 
 public slots:
-    virtual void s_editTextChanged(const QString &);
+    virtual void s_editTextChanged ( const QString & );
 };
 
 
-class BusquedaCuenta : public BLWidget, public Ui_BusquedaCuentaBase {
+class BusquedaCuenta : public BLWidget, public Ui_BusquedaCuentaBase
+{
     Q_OBJECT
 
 private:
@@ -63,27 +65,27 @@ private:
     int m_numdigitos;
 
 public:
-    BusquedaCuenta(QWidget *parent = 0);
+    BusquedaCuenta ( QWidget *parent = 0 );
     ~BusquedaCuenta();
     QString text();
     virtual QString valorCampo();
-    virtual void setText(QString val);
-    virtual void setValorCampo(QString val);
+    virtual void setText ( QString val );
+    virtual void setValorCampo ( QString val );
     virtual QString codigocuenta();
     virtual QString idcuenta();
     virtual QString nomcuenta();
     virtual QString tipocuenta();
-    virtual void setidcuenta(QString val);
-    virtual void setcodigocuenta(QString val);
-    virtual void setEmpresaBase(Empresa *emp);
+    virtual void setidcuenta ( QString val );
+    virtual void setcodigocuenta ( QString val );
+    virtual void setEmpresaBase ( Empresa *emp );
     void hideNombre();
     void showNombre();
 
 public slots:
     virtual void on_mui_buscar_clicked();
     virtual void s_searchCuenta();
-    virtual void on_mui_codigocuenta_textChanged(const QString &q);
-    virtual void s_codigocuentatextChanged(const QString &);
+    virtual void on_mui_codigocuenta_textChanged ( const QString &q );
+    virtual void s_codigocuentatextChanged ( const QString & );
     virtual void on_lostFocus();
     virtual void s_lostFocus();
     virtual void on_returnPressed();
@@ -92,7 +94,7 @@ public slots:
     virtual void setFocus();
 
 signals:
-    void valueChanged(QString);
+    void valueChanged ( QString );
     void returnPressed();
 };
 

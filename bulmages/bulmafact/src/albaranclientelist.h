@@ -33,22 +33,23 @@
 /** Esta clase se encarga de implementar el subformulario de albaranes a clientes.
     Es una clase derivada de SubForm2Bf, donde estan las funciones especificas de la facturacion.
     que a su vez deriva de SubForm3 que tiene las funciones de subformularios.
-
+ 
     La funcionalidad de esta clase es configurar el subformulario para que funcione
     con la tabla de albaranes.
-
+ 
     Reimplementa los metodos de cargar para producir el query adecuado.
 */
-class AlbaranClienteListSubform : public SubForm2Bf {
+class AlbaranClienteListSubform : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
-    AlbaranClienteListSubform(QWidget *parent = 0);
+    AlbaranClienteListSubform ( QWidget *parent = 0 );
     ~AlbaranClienteListSubform();
 
 public slots:
     virtual void cargar();
-    virtual void cargar(QString query);
+    virtual void cargar ( QString query );
 };
 
 
@@ -60,7 +61,8 @@ public slots:
 */
 /// \TODO: Deberia crearse una clase derivada de Ficha que fuese Listado y que
 /// incorporase algunas funcionalidades comunes a todos los listados.
-class AlbaranClienteList : public Listado, public Ui_AlbaranClienteListBase {
+class AlbaranClienteList : public Listado, public Ui_AlbaranClienteListBase
+{
     Q_OBJECT
 
 private:
@@ -68,23 +70,23 @@ private:
     QString mdb_idalbaran;
 
 public:
-    AlbaranClienteList(QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
-    AlbaranClienteList(Company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
-    void setEmpresaBase(Company *);
+    AlbaranClienteList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
+    AlbaranClienteList ( Company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
+    void setEmpresaBase ( Company * );
     ~AlbaranClienteList();
     void presentar();
     void imprimir();
-    void editar(int);
+    void editar ( int );
     void borrar();
     void crear();
-    void setidcliente(QString val);
+    void setidcliente ( QString val );
     QString idCliDelivNote();
     QString generarFiltro();
     void iniciaForm();
 
 signals:
     /// Estando en modo seleccion al seleccionar un elemento se emite esta se&ntilde;al.
-    void selected(QString);
+    void selected ( QString );
 };
 
 #endif

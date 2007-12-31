@@ -28,16 +28,17 @@
 
 ///
 /** */
-class ExtractoSubForm : public SubForm2Bc {
-Q_OBJECT
+class ExtractoSubForm : public SubForm2Bc
+{
+    Q_OBJECT
 
 public:
-    ExtractoSubForm(QWidget *parent = 0, const char *name = 0);
+    ExtractoSubForm ( QWidget *parent = 0, const char *name = 0 );
     virtual ~ExtractoSubForm();
 
 public slots:
-    virtual void s_pintaMenu(QMenu *menu);
-    virtual void s_trataMenu(QAction *action);
+    virtual void s_pintaMenu ( QMenu *menu );
+    virtual void s_trataMenu ( QAction *action );
 };
 
 #endif

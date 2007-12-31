@@ -27,20 +27,21 @@
 #include "company.h"
 
 
-class EFacturaEnvio : public QWidget, public Ui_EFacturaEnvioBase {
-	Q_OBJECT
+class EFacturaEnvio : public QWidget, public Ui_EFacturaEnvioBase
+{
+    Q_OBJECT
 
 private:
-	Company *empresaBase();
+    Company *empresaBase();
 
 public:
-	EFacturaEnvio(Company *emp, QWidget *parent = 0);
-	~EFacturaEnvio();
+    EFacturaEnvio ( Company *emp, QWidget *parent = 0 );
+    ~EFacturaEnvio();
 
 // public slots:
-// 	virtual void on_mui_examinaECertificado_clicked();
-// 	virtual void on_mui_cancelar_clicked();
-// 	virtual void on_mui_guardar_clicked();
+//  virtual void on_mui_examinaECertificado_clicked();
+//  virtual void on_mui_cancelar_clicked();
+//  virtual void on_mui_guardar_clicked();
 };
 
 #endif

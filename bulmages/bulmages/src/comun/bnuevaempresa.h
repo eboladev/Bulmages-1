@@ -32,11 +32,12 @@
 class BSelector;
 
 
-class BNuevaEmpresa : public QDialog, public Ui_nuevaempresadlg {
+class BNuevaEmpresa : public QDialog, public Ui_nuevaempresadlg
+{
     Q_OBJECT
 
 public:
-    BNuevaEmpresa(QWidget *parent = 0, Qt::WFlags f = Qt::Window);
+    BNuevaEmpresa ( QWidget *parent = 0, Qt::WFlags f = Qt::Window );
     ~BNuevaEmpresa();
 
 private slots:

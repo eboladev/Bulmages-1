@@ -18,79 +18,80 @@ General header common to chart (xy[z]) and pie
 #endif
 
 #ifndef TRUE
-#define TRUE	1
-#define FALSE	0
+#define TRUE 1
+#define FALSE 0
 #endif
 
-#define GDC_NOVALUE			-MAXFLOAT
-#define GDC_NULL			GDC_NOVALUE
+#define GDC_NOVALUE   -MAXFLOAT
+#define GDC_NULL   GDC_NOVALUE
 
-#define ABS( x )			( (x)<0.0? -(x): (x) )
-#define MAX( x, y )			( (x)>(y)?(x):(y) )
-#define MIN( x, y )			( (x)<(y)?(x):(y) ) 
+#define ABS( x )   ( (x)<0.0? -(x): (x) )
+#define MAX( x, y )   ( (x)>(y)?(x):(y) )
+#define MIN( x, y )   ( (x)<(y)?(x):(y) )
 
-#define GDC_NOCOLOR			0x1000000L
-#define GDC_DFLTCOLOR		0x2000000L
+#define GDC_NOCOLOR   0x1000000L
+#define GDC_DFLTCOLOR  0x2000000L
 #define PVRED               0x00FF0000
 #define PVGRN               0x0000FF00
 #define PVBLU               0x000000FF
 #define l2gdcal( c )        ((c)&PVRED)>>16 , ((c)&PVGRN)>>8 , ((c)&0x000000FF)
 #define l2gdshd( c )        (((c)&PVRED)>>16)/2 , (((c)&PVGRN)>>8)/2 , (((c)&0x000000FF))/2
-static int					_gdccfoo1;
-static unsigned long		_gdccfoo2;
-#define _gdcntrst(bg)		( ((bg)&0x800000?0x000000:0xFF0000)|	\
-							  ((bg)&0x008000?0x000000:0x00FF00)|	\
-							  ((bg)&0x000080?0x000000:0x0000FF) )
-#define _clrallocate( im, rawclr, bgc )														\
-							( (_gdccfoo2=rawclr==GDC_DFLTCOLOR? _gdcntrst(bgc): rawclr),	\
-							  (_gdccfoo1=gdImageColorExact(im,l2gdcal(_gdccfoo2))) != -1?	\
-								_gdccfoo1:													\
-								gdImageColorsTotal(im) == gdMaxColors?						\
-								   gdImageColorClosest(im,l2gdcal(_gdccfoo2)):				\
-								   gdImageColorAllocate(im,l2gdcal(_gdccfoo2)) )
-#define _clrshdallocate( im, rawclr, bgc )													\
-							( (_gdccfoo2=rawclr==GDC_DFLTCOLOR? _gdcntrst(bgc): rawclr),	\
-							  (_gdccfoo1=gdImageColorExact(im,l2gdshd(_gdccfoo2))) != -1?	\
-								_gdccfoo1:													\
-								gdImageColorsTotal(im) == gdMaxColors?						\
-									gdImageColorClosest(im,l2gdshd(_gdccfoo2)):				\
-									gdImageColorAllocate(im,l2gdshd(_gdccfoo2)) )
+static int     _gdccfoo1;
+static unsigned long  _gdccfoo2;
+#define _gdcntrst(bg)  ( ((bg)&0x800000?0x000000:0xFF0000)| \
+                         ((bg)&0x008000?0x000000:0x00FF00)| \
+                         ((bg)&0x000080?0x000000:0x0000FF) )
+#define _clrallocate( im, rawclr, bgc )              \
+    ( (_gdccfoo2=rawclr==GDC_DFLTCOLOR? _gdcntrst(bgc): rawclr), \
+      (_gdccfoo1=gdImageColorExact(im,l2gdcal(_gdccfoo2))) != -1? \
+      _gdccfoo1:             \
+      gdImageColorsTotal(im) == gdMaxColors?      \
+      gdImageColorClosest(im,l2gdcal(_gdccfoo2)):    \
+      gdImageColorAllocate(im,l2gdcal(_gdccfoo2)) )
+#define _clrshdallocate( im, rawclr, bgc )             \
+    ( (_gdccfoo2=rawclr==GDC_DFLTCOLOR? _gdcntrst(bgc): rawclr), \
+      (_gdccfoo1=gdImageColorExact(im,l2gdshd(_gdccfoo2))) != -1? \
+      _gdccfoo1:             \
+      gdImageColorsTotal(im) == gdMaxColors?      \
+      gdImageColorClosest(im,l2gdshd(_gdccfoo2)):    \
+      gdImageColorAllocate(im,l2gdshd(_gdccfoo2)) )
 
 /* ordered by size */
 enum GDC_font_size { GDC_pad     = 0,
-					 GDC_TINY    = 1,
-					 GDC_SMALL   = 2,
-					 GDC_MEDBOLD = 3,
-					 GDC_LARGE   = 4,
-					 GDC_GIANT   = 5,
-					 GDC_numfonts= 6 };		/* GDC[PIE]_fontc depends on this */
+                     GDC_TINY    = 1,
+                     GDC_SMALL   = 2,
+                     GDC_MEDBOLD = 3,
+                     GDC_LARGE   = 4,
+                     GDC_GIANT   = 5,
+                     GDC_numfonts = 6 };  /* GDC[PIE]_fontc depends on this */
 
 typedef enum {
-			 GDC_DESTROY_IMAGE = 0,			/* default */
-			 GDC_EXPOSE_IMAGE  = 1,			/* user must call GDC_destroy_image() */
-			 GDC_REUSE_IMAGE   = 2			/* i.e., paint on top of */
-			 } GDC_HOLD_IMAGE_T;			/* EXPOSE & REUSE */
+    GDC_DESTROY_IMAGE = 0,   /* default */
+    GDC_EXPOSE_IMAGE  = 1,   /* user must call GDC_destroy_image() */
+    GDC_REUSE_IMAGE   = 2   /* i.e., paint on top of */
+} GDC_HOLD_IMAGE_T;   /* EXPOSE & REUSE */
 
 #ifdef GDC_INCL
-struct	GDC_FONT_T	{
-					gdFontPtr	f;
-					char		h;
-					char		w;
-					};
+struct GDC_FONT_T
+{
+    gdFontPtr f;
+    char  h;
+    char  w;
+};
 
 typedef enum { GDC_JUSTIFY_RIGHT,
-			   GDC_JUSTIFY_CENTER,
-			   GDC_JUSTIFY_LEFT } GDC_justify_t;
+               GDC_JUSTIFY_CENTER,
+               GDC_JUSTIFY_LEFT } GDC_justify_t;
 
-void	GDCImageStringNL( gdImagePtr, struct GDC_FONT_T*, int, int, char*, int, GDC_justify_t );
-void	load_font_conversions();
-short	cnt_nl( char*, int* );
+void GDCImageStringNL ( gdImagePtr, struct GDC_FONT_T*, int, int, char*, int, GDC_justify_t );
+void load_font_conversions();
+short cnt_nl ( char*, int* );
 #endif
 
 #ifdef GDC_LIB
-#define EXTERND	extern
+#define EXTERND extern
 #define DEFAULTO(val)
-extern struct	GDC_FONT_T	GDC_fontc[];
+extern struct GDC_FONT_T GDC_fontc[];
 #else
 #define EXTERND extern
 #define DEFAULTO(val)
@@ -102,9 +103,9 @@ extern struct	GDC_FONT_T	GDC_fontc[];
 
 #define EXTERND extern
 /*
-EXTERND char				GDC_generate_gif	DEFAULTO( TRUE );
-EXTERND GDC_HOLD_IMAGE_T	GDC_hold_img		DEFAULTO( GDC_DESTROY_IMAGE );
-EXTERND void				*GDC_image			DEFAULTO( (void*)NULL );	
+EXTERND char    GDC_generate_gif DEFAULTO( TRUE );
+EXTERND GDC_HOLD_IMAGE_T GDC_hold_img  DEFAULTO( GDC_DESTROY_IMAGE );
+EXTERND void    *GDC_image   DEFAULTO( (void*)NULL ); 
 */
 
 extern char GDC_generate_gif;
@@ -115,12 +116,12 @@ extern void *GDC_image;
 /****************************************************/
 
 
-void	GDC_destroy_image( void* );
-void	out_err( int			GIFWIDTH,
-				 int			GIFHEIGHT,
-				 FILE*,
-				 unsigned long	BGColor,
-				 unsigned long	LineColor,
-				 char			*str );
+void GDC_destroy_image ( void* );
+void out_err ( int   GIFWIDTH,
+               int   GIFHEIGHT,
+               FILE*,
+               unsigned long BGColor,
+               unsigned long LineColor,
+               char   *str );
 
 #endif /*!_GDC_H*/

@@ -31,7 +31,8 @@ class Company;
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un tipo de art&iacute;culo.
 /** */
-class TipoArticuloList : public Ficha, public Ui_tiposarticulobase {
+class TipoArticuloList : public Ficha, public Ui_tiposarticulobase
+{
     Q_OBJECT
 
 private:
@@ -44,7 +45,7 @@ private:
     bool m_modoConsulta;
 
 public:
-    TipoArticuloList(Company *, QWidget *parent = 0, bool modoConsulta = FALSE);
+    TipoArticuloList ( Company *, QWidget *parent = 0, bool modoConsulta = FALSE );
     ~TipoArticuloList();
     bool trataModificado();
     void mostrarplantilla();
@@ -58,13 +59,13 @@ public:
 
 public slots:
     virtual void pintar();
-    virtual void on_m_listTipos_itemDoubleClicked(QTreeWidgetItem * item, int column);
+    virtual void on_m_listTipos_itemDoubleClicked ( QTreeWidgetItem * item, int column );
     virtual void on_mui_crear_clicked();
-    virtual void on_m_listTipos_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous);
+    virtual void on_m_listTipos_currentItemChanged ( QTreeWidgetItem *current, QTreeWidgetItem *previous );
 
 
 signals:
-    void selected(QString);
+    void selected ( QString );
 };
 
 #endif

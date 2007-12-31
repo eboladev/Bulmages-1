@@ -35,12 +35,13 @@
 #include "empresa.h"
 
 
-extern "C" MY_EXPORT void entryPoint(Bulmacont *);
+extern "C" MY_EXPORT void entryPoint ( Bulmacont * );
 
 extern QApplication2 *theApp;
 
 
-class myplugin : public QObject {
+class myplugin : public QObject
+{
     Q_OBJECT
 
 public:
@@ -49,7 +50,7 @@ public:
 public:
     myplugin();
     ~myplugin();
-    void inicializa(Bulmacont *);
+    void inicializa ( Bulmacont * );
 
 public slots:
     void elslot();

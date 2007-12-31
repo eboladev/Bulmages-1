@@ -31,7 +31,8 @@
 #include "blwidget.h"
 #include "dbrecord.h"
 
-class Ficha : public BLWidget, public DBRecord, public dialogChanges {
+class Ficha : public BLWidget, public DBRecord, public dialogChanges
+{
     Q_OBJECT
 
 public:
@@ -53,32 +54,32 @@ protected:
     bool modoConsulta();
 
 public:
-    Ficha(QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode);
-    Ficha(EmpresaBase *emp = NULL, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode);
+    Ficha ( QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode );
+    Ficha ( EmpresaBase *emp = NULL, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode );
     virtual ~Ficha();
     virtual int guardar();
     virtual int guardarPost();
     virtual int borrarPre();
     virtual int borrar();
-    virtual void closeEvent(QCloseEvent *);
+    virtual void closeEvent ( QCloseEvent * );
     virtual int sacaWindow();
-    virtual void meteWindow(QString , QObject *, bool compdup = TRUE);
-    void setDBTableName(QString nom);
-    void setTitleName(QString nom);
+    virtual void meteWindow ( QString , QObject *, bool compdup = TRUE );
+    void setDBTableName ( QString nom );
+    void setTitleName ( QString nom );
     virtual void pintar();
     virtual void pintarPost();
-    virtual int cargar(QString id);
-    virtual int cargarPost(QString id);
+    virtual int cargar ( QString id );
+    virtual int cargarPost ( QString id );
     virtual void recogeValores();
-    virtual void creaMenu(QMenu *);
-    virtual void procesaMenu(QAction *);
-    virtual void generaRML(const QString &);
-    virtual void trataTags(QString &buff);
-    virtual QString trataQuery(const QString &query, const QString &datos);
-    virtual QString trataIfQuery(const QString &query, const QString &datos);
-    virtual QString trataExists(const QString &query, const QString &datos);
+    virtual void creaMenu ( QMenu * );
+    virtual void procesaMenu ( QAction * );
+    virtual void generaRML ( const QString & );
+    virtual void trataTags ( QString &buff );
+    virtual QString trataQuery ( const QString &query, const QString &datos );
+    virtual QString trataIfQuery ( const QString &query, const QString &datos );
+    virtual QString trataExists ( const QString &query, const QString &datos );
     virtual void cargaSpecs();
-    virtual void generaCampo(const QString &objname, const QString &textname, const QString &type);
+    virtual void generaCampo ( const QString &objname, const QString &textname, const QString &type );
 
 public slots:
     virtual void on_mui_aceptar_clicked();
@@ -86,13 +87,13 @@ public slots:
     virtual void on_mui_eliminar_clicked();
     virtual void on_mui_cancelar_clicked();
     virtual void on_mui_guardar_clicked();
-    virtual void on_customContextMenuRequested(const QPoint &pos);
+    virtual void on_customContextMenuRequested ( const QPoint &pos );
     virtual void on_mui_imprimir_clicked();
 
 signals:
     virtual void cerrar();
-    void pintaMenu(QMenu *);
-    void trataMenu(QAction *);
+    void pintaMenu ( QMenu * );
+    void trataMenu ( QAction * );
 };
 
 #endif

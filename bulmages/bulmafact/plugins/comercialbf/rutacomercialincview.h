@@ -35,18 +35,19 @@
 
 
 
-class RutaComercialIncView : public FichaBf, public Ui_RutaComercialIncBase {
+class RutaComercialIncView : public FichaBf, public Ui_RutaComercialIncBase
+{
     Q_OBJECT
 
 public:
-    RutaComercialIncView(Company *, QWidget *);
+    RutaComercialIncView ( Company *, QWidget * );
     ~RutaComercialIncView();
-    void closeEvent(QCloseEvent *);
+    void closeEvent ( QCloseEvent * );
     virtual void pintar();
 
 public slots:
     virtual void on_mui_guardar_clicked();
-    virtual int cargar(QString id, QString id1);
+    virtual int cargar ( QString id, QString id1 );
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_aceptar_clicked();
 };

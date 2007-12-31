@@ -33,32 +33,33 @@
 /**
 \param parent
 **/
-ListLinAlbaranClienteView::ListLinAlbaranClienteView(QWidget *parent)
-        : SubForm2Bf(parent) {
-    _depura("ListLinAlbaranClienteView::ListLinAlbaranClienteView", 0);
-    setDBTableName("lalbaran");
-    setDBCampoId("numlalbaran");
+ListLinAlbaranClienteView::ListLinAlbaranClienteView ( QWidget *parent )
+        : SubForm2Bf ( parent )
+{
+    _depura ( "ListLinAlbaranClienteView::ListLinAlbaranClienteView", 0 );
+    setDBTableName ( "lalbaran" );
+    setDBCampoId ( "numlalbaran" );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza("ListLinAlbaranClienteView_ListLinAlbaranClienteView", this);
-    if (res != 0)
+    int res = g_plugins->lanza ( "ListLinAlbaranClienteView_ListLinAlbaranClienteView", this );
+    if ( res != 0 )
         return;
-    addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id articulo"));
-    addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Codigo completo articulo"));
-    addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("Nombre articulo"));
-    addSHeader("numlalbaran", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr("Nº linea"));
-    addSHeader("desclalbaran", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Descripcion"));
-    addSHeader("cantlalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Cantidad"));
-    addSHeader("pvplalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("P.V.P."));
-    addSHeader("ivalalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("I.V.A."));
-    addSHeader("reqeqlalbaran", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, tr("% Recargo E.Q."));
-    addSHeader("descuentolalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("% Descuento"));
-    addSHeader("idalbaran", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, tr("Id albaran"));
-    addSHeader("ordenlalbaran", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Orden"));
-    setinsercion(TRUE);
-    setOrdenEnabled(TRUE);
+    addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr ( "Id articulo" ) );
+    addSHeader ( "codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr ( "Codigo completo articulo" ) );
+    addSHeader ( "nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr ( "Nombre articulo" ) );
+    addSHeader ( "numlalbaran", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr ( "Nº linea" ) );
+    addSHeader ( "desclalbaran", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Descripcion" ) );
+    addSHeader ( "cantlalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Cantidad" ) );
+    addSHeader ( "pvplalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr ( "P.V.P." ) );
+    addSHeader ( "ivalalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr ( "I.V.A." ) );
+    addSHeader ( "reqeqlalbaran", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, tr ( "% Recargo E.Q." ) );
+    addSHeader ( "descuentolalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr ( "% Descuento" ) );
+    addSHeader ( "idalbaran", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "Id albaran" ) );
+    addSHeader ( "ordenlalbaran", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr ( "Orden" ) );
+    setinsercion ( TRUE );
+    setOrdenEnabled ( TRUE );
     /// Disparamos los plugins.
-    g_plugins->lanza("ListLinAlbaranClienteView_ListLinAlbaranClienteView_Post", this);
-    _depura("END ListLinAlbaranClienteView::ListLinAlbaranClienteView", 0);
+    g_plugins->lanza ( "ListLinAlbaranClienteView_ListLinAlbaranClienteView_Post", this );
+    _depura ( "END ListLinAlbaranClienteView::ListLinAlbaranClienteView", 0 );
 
 }
 
@@ -67,11 +68,12 @@ ListLinAlbaranClienteView::ListLinAlbaranClienteView(QWidget *parent)
 /**
 \param idalbaran
 **/
-void ListLinAlbaranClienteView::cargar(QString idalbaran) {
-    _depura("ListLinAlbaranClienteView::cargar", 0);
+void ListLinAlbaranClienteView::cargar ( QString idalbaran )
+{
+    _depura ( "ListLinAlbaranClienteView::cargar", 0 );
     mdb_idalbaran = idalbaran;
-    SubForm3::cargar("SELECT * FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran=" + mdb_idalbaran + "   ORDER BY ordenlalbaran");
-    _depura("END ListLinAlbaranClienteView::cargar", 0);
+    SubForm3::cargar ( "SELECT * FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran=" + mdb_idalbaran + "   ORDER BY ordenlalbaran" );
+    _depura ( "END ListLinAlbaranClienteView::cargar", 0 );
 }
 
 

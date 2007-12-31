@@ -6,11 +6,12 @@
 #include "ui_totalbase.h"
 #include "empresatpv.h"
 
-class Total : public BLWidget, public Ui_TotalBase {
+class Total : public BLWidget, public Ui_TotalBase
+{
     Q_OBJECT
 
 public:
-    Total(EmpresaTPV *emp, QWidget *parent);
+    Total ( EmpresaTPV *emp, QWidget *parent );
     virtual ~Total();
 public slots:
     virtual void on_mui_cobrar_clicked();

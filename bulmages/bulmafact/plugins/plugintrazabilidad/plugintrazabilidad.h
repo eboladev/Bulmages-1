@@ -38,17 +38,18 @@
 #include "listlinfacturapview.h"
 #include "blwidget.h"
 
-extern "C" MY_EXPORT int entryPoint(Bulmafact *);
-extern "C" MY_EXPORT int ListLinAlbaranProveedorView_ListLinAlbaranProveedorView(ListLinAlbaranProveedorView *);
-extern "C" MY_EXPORT int ListLinAlbaranClienteView_ListLinAlbaranClienteView(ListLinAlbaranClienteView *);
-extern "C" MY_EXPORT int ListLinFacturaView_ListLinFacturaView(ListLinFacturaView *);
-extern "C" MY_EXPORT int ListLinFacturaProveedorView_ListLinFacturaProveedorView(ListLinFacturaProveedorView *);
-extern "C" MY_EXPORT int SubForm2Bf_on_mui_list_editFinished(SubForm2Bf *);
+extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int ListLinAlbaranProveedorView_ListLinAlbaranProveedorView ( ListLinAlbaranProveedorView * );
+extern "C" MY_EXPORT int ListLinAlbaranClienteView_ListLinAlbaranClienteView ( ListLinAlbaranClienteView * );
+extern "C" MY_EXPORT int ListLinFacturaView_ListLinFacturaView ( ListLinFacturaView * );
+extern "C" MY_EXPORT int ListLinFacturaProveedorView_ListLinFacturaProveedorView ( ListLinFacturaProveedorView * );
+extern "C" MY_EXPORT int SubForm2Bf_on_mui_list_editFinished ( SubForm2Bf * );
 
 extern QApplication2 *theApp;
 
 
-class myplugin : public QObject, PEmpresaBase {
+class myplugin : public QObject, PEmpresaBase
+{
     Q_OBJECT
 
 public:
@@ -57,7 +58,7 @@ public:
 public:
     myplugin();
     ~myplugin();
-    void inicializa(Bulmafact *);
+    void inicializa ( Bulmafact * );
 
 public slots:
     void elslot();

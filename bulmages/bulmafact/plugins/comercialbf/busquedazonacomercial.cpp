@@ -28,23 +28,25 @@
 /**
 \param parent
 **/
-BusquedaZonaComercial::BusquedaZonaComercial(QWidget *parent)
-        : QComboBox(parent), PEmpresaBase() {
-    _depura("BusquedaZonaComercial::BusquedaZonaComercial", 0);
+BusquedaZonaComercial::BusquedaZonaComercial ( QWidget *parent )
+        : QComboBox ( parent ), PEmpresaBase()
+{
+    _depura ( "BusquedaZonaComercial::BusquedaZonaComercial", 0 );
     m_cursorcombo = NULL;
-    connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
-    _depura("END BusquedaZonaComercial::BusquedaZonaComercial", 0);
+    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
+    _depura ( "END BusquedaZonaComercial::BusquedaZonaComercial", 0 );
 }
 
 
 ///
 /**
 **/
-BusquedaZonaComercial::~BusquedaZonaComercial() {
-    _depura("BusquedaZonaComercial::~BusquedaZonaComercial", 0);
-    if (m_cursorcombo != NULL)
+BusquedaZonaComercial::~BusquedaZonaComercial()
+{
+    _depura ( "BusquedaZonaComercial::~BusquedaZonaComercial", 0 );
+    if ( m_cursorcombo != NULL )
         delete m_cursorcombo;
-    _depura("END BusquedaZonaComercial::~BusquedaZonaComercial", 0);
+    _depura ( "END BusquedaZonaComercial::~BusquedaZonaComercial", 0 );
 }
 
 
@@ -52,23 +54,24 @@ BusquedaZonaComercial::~BusquedaZonaComercial() {
 /**
 \param idzonacomercial
 **/
-void BusquedaZonaComercial::setidzonacomercial(QString idzonacomercial) {
-    _depura("BusquedaZonaComercial::~BusquedaZonaComercial", 0);
-    if (m_cursorcombo != NULL)
+void BusquedaZonaComercial::setidzonacomercial ( QString idzonacomercial )
+{
+    _depura ( "BusquedaZonaComercial::~BusquedaZonaComercial", 0 );
+    if ( m_cursorcombo != NULL )
         delete m_cursorcombo;
-    m_cursorcombo = empresaBase()->cargacursor("SELECT * FROM zonacomercial");
+    m_cursorcombo = empresaBase() ->cargacursor ( "SELECT * FROM zonacomercial" );
     int i = 0;
     int i1 = 0;
     clear();
-    addItem("--");
-    while (!m_cursorcombo->eof()) {
+    addItem ( "--" );
+    while ( !m_cursorcombo->eof() ) {
         i++;
-        if (m_cursorcombo->valor("idzonacomercial") == idzonacomercial)
+        if ( m_cursorcombo->valor ( "idzonacomercial" ) == idzonacomercial )
             i1 = i;
-        addItem(m_cursorcombo->valor("nomzonacomercial"));
+        addItem ( m_cursorcombo->valor ( "nomzonacomercial" ) );
         m_cursorcombo->siguienteregistro();
     } // end while
-    setCurrentIndex(i1);
-    _depura("END BusquedaZonaComercial::~BusquedaZonaComercial", 0);
+    setCurrentIndex ( i1 );
+    _depura ( "END BusquedaZonaComercial::~BusquedaZonaComercial", 0 );
 }
 

@@ -28,11 +28,12 @@
 /**
 \return
 **/
-int entryPoint(QApplication *) {
-    _depura("Punto de Entrada del plugin de PluginImPers\n", 0);
-        /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
-        cargaTraducciones("pluginimpers");
-    _depura("END Punto de Entrada del plugin de PluginImPers\n", 0);
+int entryPoint ( QApplication * )
+{
+    _depura ( "Punto de Entrada del plugin de PluginImPers\n", 0 );
+    /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
+    cargaTraducciones ( "pluginimpers" );
+    _depura ( "END Punto de Entrada del plugin de PluginImPers\n", 0 );
     return 0;
 }
 
@@ -42,13 +43,14 @@ int entryPoint(QApplication *) {
 \param l
 \return
 **/
-int Ficha_Ficha(Ficha *l) {
-       _depura("Ficha_Ficha", 0);
+int Ficha_Ficha ( Ficha *l )
+{
+    _depura ( "Ficha_Ficha", 0 );
 
-       EQToolButton *mui_imp = new EQToolButton(l);
+    EQToolButton *mui_imp = new EQToolButton ( l );
 
-       _depura("END Ficha_Ficha", 0);
-       return 0;
+    _depura ( "END Ficha_Ficha", 0 );
+    return 0;
 }
 
 

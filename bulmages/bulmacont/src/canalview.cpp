@@ -28,53 +28,56 @@
 \param emp
 \param parent
 **/
-canalview::canalview(Empresa  *emp, QWidget *parent)
-        : FichaBc(emp, parent) {
-    _depura("canalview::canalview", 0);
+canalview::canalview ( Empresa  *emp, QWidget *parent )
+        : FichaBc ( emp, parent )
+{
+    _depura ( "canalview::canalview", 0 );
 
-    setTitleName(tr("Canal"));
+    setTitleName ( tr ( "Canal" ) );
     /// EStablezco cual es la tabla en la que basarse para los permisos
-    setDBTableName("canal");
+    setDBTableName ( "canal" );
 
-    this->setAttribute(Qt::WA_DeleteOnClose);
-    setupUi(this);
-    mui_idcanal->setEmpresaBase(emp);
-    mui_idcanal->setidcanal("0");
+    this->setAttribute ( Qt::WA_DeleteOnClose );
+    setupUi ( this );
+    mui_idcanal->setEmpresaBase ( emp );
+    mui_idcanal->setidcanal ( "0" );
 
     m_nomcanal = new QLineEdit();
-    m_nomcanal->setText("");
+    m_nomcanal->setText ( "" );
     m_desccanal = new QTextEdit();
-    m_desccanal->setPlainText("");
+    m_desccanal->setPlainText ( "" );
 
     idcanal = 0;
-    dialogChanges_setQObjectExcluido(mui_idcanal);
+    dialogChanges_setQObjectExcluido ( mui_idcanal );
     dialogChanges_cargaInicial();
-    on_mui_idcanal_valueChanged(0);
-    empresaBase()->meteWindow(windowTitle(), this);
-    _depura("END canalview::canalview", 0);
+    on_mui_idcanal_valueChanged ( 0 );
+    empresaBase() ->meteWindow ( windowTitle(), this );
+    _depura ( "END canalview::canalview", 0 );
 }
 
 
 ///
 /**
 **/
-canalview::~canalview() {
-    _depura("canalview::~canalview", 0);
-    empresaBase()->sacaWindow(this);
-    _depura("END canalview::~canalview", 0);
+canalview::~canalview()
+{
+    _depura ( "canalview::~canalview", 0 );
+    empresaBase() ->sacaWindow ( this );
+    _depura ( "END canalview::~canalview", 0 );
 }
 
 
 ///
 /**
 **/
-void canalview::pintar() {
-    _depura("canalview::pintar", 0);
+void canalview::pintar()
+{
+    _depura ( "canalview::pintar", 0 );
     /// Si el combocoste no esta vacio se muestra el registro que contiene.
-    if (idcanal != 0) {
+    if ( idcanal != 0 ) {
         /// Habilita los campos para ser editados.
-        mui_nomcanal->setEnabled(TRUE);
-        mui_desccanal->setEnabled(TRUE);
+        mui_nomcanal->setEnabled ( TRUE );
+        mui_desccanal->setEnabled ( TRUE );
         mostrarplantilla();
     } else {
         idcanal = mui_idcanal->idcanal().toInt();
@@ -82,9 +85,9 @@ void canalview::pintar() {
     } // end if
 
     /// Si se han cambiado los canales, se rehace el selector de canales.
-    selectcanalview *scanal = empresaBase()->getselcanales();
+    selectcanalview *scanal = empresaBase() ->getselcanales();
     scanal->cargacanales();
-    _depura("END canalview::pintar", 0);
+    _depura ( "END canalview::pintar", 0 );
 }
 
 
@@ -92,56 +95,58 @@ void canalview::pintar() {
 /**
 \param numcombo
 **/
-void canalview::on_mui_idcanal_valueChanged(QString numcombo) {
-    _depura("canalview::on_mui_idcanal_valueChanged", 0);
+void canalview::on_mui_idcanal_valueChanged ( QString numcombo )
+{
+    _depura ( "canalview::on_mui_idcanal_valueChanged", 0 );
     int idcanal1 = numcombo.toInt();
     static bool flipflop = FALSE;
 
-    if (dialogChanges_hayCambios() && flipflop) {
-        if (QMessageBox::warning(this,
-                                 tr("Guardar canal"),
-                                 tr("Desea guardar los cambios."),
-                                 tr("&Guardar"), tr("&Cancelar"), 0 , 0, 1) == 0)
+    if ( dialogChanges_hayCambios() && flipflop ) {
+        if ( QMessageBox::warning ( this,
+                                    tr ( "Guardar canal" ),
+                                    tr ( "Desea guardar los cambios." ),
+                                    tr ( "&Guardar" ), tr ( "&Cancelar" ), 0 , 0, 1 ) == 0 )
             on_mui_guardar_clicked();
     } // end if
 
     /// Comprueba que el ID del 'combobox' este en la primera posicion '--' y deshabilita los
     /// campos de texto.
-    if (idcanal1 == 0) {
-        mui_nomcanal->setText("");
-        mui_nomcanal->setEnabled(FALSE);
-        mui_desccanal->setPlainText("");
-        mui_desccanal->setEnabled(FALSE);
+    if ( idcanal1 == 0 ) {
+        mui_nomcanal->setText ( "" );
+        mui_nomcanal->setEnabled ( FALSE );
+        mui_desccanal->setPlainText ( "" );
+        mui_desccanal->setEnabled ( FALSE );
         flipflop = FALSE;
         return;
     } else {
         /// Habilita los campos para ser editados.
-        mui_nomcanal->setEnabled(TRUE);
-        mui_desccanal->setEnabled(TRUE);
+        mui_nomcanal->setEnabled ( TRUE );
+        mui_desccanal->setEnabled ( TRUE );
     } // end if
 
     flipflop = TRUE;
     idcanal = idcanal1;
     mostrarplantilla();
-    _depura("END canalview::on_mui_idcanal_valueChanged", 0);
+    _depura ( "END canalview::on_mui_idcanal_valueChanged", 0 );
 }
 
 
 /// Esta funci&oacute;n muestra el canal en la ventana.
 /**
 **/
-void canalview::mostrarplantilla() {
-    _depura("canalview::mostrarplantilla", 0);
+void canalview::mostrarplantilla()
+{
+    _depura ( "canalview::mostrarplantilla", 0 );
     QString query;
-    QTextStream(&query) << "SELECT * from canal WHERE idcanal = '" << idcanal << "'";
-    cursor2 *cursorcanal = empresaBase()->cargacursor(query);
-    if (!cursorcanal->eof()) {
-        mui_nomcanal->setText(cursorcanal->valor("nombre"));
-        mui_desccanal->setPlainText(cursorcanal->valor("descripcion"));
+    QTextStream ( &query ) << "SELECT * from canal WHERE idcanal = '" << idcanal << "'";
+    cursor2 *cursorcanal = empresaBase() ->cargacursor ( query );
+    if ( !cursorcanal->eof() ) {
+        mui_nomcanal->setText ( cursorcanal->valor ( "nombre" ) );
+        mui_desccanal->setPlainText ( cursorcanal->valor ( "descripcion" ) );
     } // end if
-    mui_idcanal->setidcanal(QString::number(idcanal));
+    mui_idcanal->setidcanal ( QString::number ( idcanal ) );
     dialogChanges_cargaInicial();
-    _depura("END canalview::mostrarplantilla", 0);
+    _depura ( "END canalview::mostrarplantilla", 0 );
 
 }
 
@@ -149,70 +154,73 @@ void canalview::mostrarplantilla() {
 ///
 /**
 **/
-void canalview::on_mui_guardar_clicked() {
-    _depura("canalview::on_mui_guardar_clicked", 0);
+void canalview::on_mui_guardar_clicked()
+{
+    _depura ( "canalview::on_mui_guardar_clicked", 0 );
     QString nom = mui_nomcanal->text();
     QString desc = mui_desccanal->toPlainText();
     QString query;
-    QTextStream(&query) << "UPDATE canal SET nombre = '"
-                        << empresaBase()->sanearCadena(nom).toAscii().constData()
-                        << "', descripcion = '"
-                        << empresaBase()->sanearCadena(desc).toAscii().constData()
-                        << "' WHERE idcanal = '" << idcanal << "'";
-    empresaBase()->ejecuta(query);
+    QTextStream ( &query ) << "UPDATE canal SET nombre = '"
+    << empresaBase() ->sanearCadena ( nom ).toAscii().constData()
+    << "', descripcion = '"
+    << empresaBase() ->sanearCadena ( desc ).toAscii().constData()
+    << "' WHERE idcanal = '" << idcanal << "'";
+    empresaBase() ->ejecuta ( query );
     dialogChanges_cargaInicial();
     pintar();
-    _depura("END canalview::on_mui_guardar_clicked", 0);
+    _depura ( "END canalview::on_mui_guardar_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void canalview::on_mui_crear_clicked() {
-    _depura("canalview::on_mui_crear_clicked", 0);
+void canalview::on_mui_crear_clicked()
+{
+    _depura ( "canalview::on_mui_crear_clicked", 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
-    if (dialogChanges_hayCambios()) {
-        if (QMessageBox::warning(this,
-                                 tr("Guardar canal"),
-                                 tr("Desea guardar los cambios."),
-                                 tr("&Guardar"), tr("&Cancelar"), 0 , 0, 1) == 0)
+    if ( dialogChanges_hayCambios() ) {
+        if ( QMessageBox::warning ( this,
+                                    tr ( "Guardar canal" ),
+                                    tr ( "Desea guardar los cambios." ),
+                                    tr ( "&Guardar" ), tr ( "&Cancelar" ), 0 , 0, 1 ) == 0 )
             on_mui_guardar_clicked();
     } // end if
     QString query = "";
-    QTextStream(&query) << "INSERT INTO canal (nombre, descripcion) VALUES ('" << tr("Nuevo canal") << "', '" << tr("Escriba su descripcion") << "')";
-    empresaBase()->begin();
-    empresaBase()->ejecuta(query);
+    QTextStream ( &query ) << "INSERT INTO canal (nombre, descripcion) VALUES ('" << tr ( "Nuevo canal" ) << "', '" << tr ( "Escriba su descripcion" ) << "')";
+    empresaBase() ->begin();
+    empresaBase() ->ejecuta ( query );
     query = "";
-    QTextStream(&query) << "SELECT MAX(idcanal) AS id FROM canal";
-    cursor2 *cur = empresaBase()->cargacursor(query, "queryy");
-    idcanal = atoi(cur->valor("id").toAscii());
+    QTextStream ( &query ) << "SELECT MAX(idcanal) AS id FROM canal";
+    cursor2 *cur = empresaBase() ->cargacursor ( query, "queryy" );
+    idcanal = atoi ( cur->valor ( "id" ).toAscii() );
     delete cur;
-    empresaBase()->commit();
+    empresaBase() ->commit();
     pintar();
-    _depura("END canalview::on_mui_crear_clicked", 0);
+    _depura ( "END canalview::on_mui_crear_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void canalview::on_mui_borrar_clicked() {
-    _depura("canalview::on_mui_borrar_clicked", 0);
-    switch (QMessageBox::warning(this,
-                                 tr("Borrar canal"),
-                                 tr("Se va a borrar este canal.\nEsto puede ocasionar perdida de datos."),
-                                 tr("&Borrar"), tr("&Cancelar"), 0 , 0, 1)) {
+void canalview::on_mui_borrar_clicked()
+{
+    _depura ( "canalview::on_mui_borrar_clicked", 0 );
+    switch ( QMessageBox::warning ( this,
+                                    tr ( "Borrar canal" ),
+                                    tr ( "Se va a borrar este canal.\nEsto puede ocasionar perdida de datos." ),
+                                    tr ( "&Borrar" ), tr ( "&Cancelar" ), 0 , 0, 1 ) ) {
     case 0: /// Retry clicked or Enter pressed.
         QString query;
-        query.sprintf("DELETE FROM canal WHERE idcanal = %d", idcanal);
-        empresaBase()->begin();
-        empresaBase()->ejecuta(query);
-        empresaBase()->commit();
+        query.sprintf ( "DELETE FROM canal WHERE idcanal = %d", idcanal );
+        empresaBase() ->begin();
+        empresaBase() ->ejecuta ( query );
+        empresaBase() ->commit();
         idcanal = 0;
         pintar();
     } // end switch
-    _depura("END canalview::on_mui_borrar_clicked", 0);
+    _depura ( "END canalview::on_mui_borrar_clicked", 0 );
 }
 
 
@@ -220,18 +228,19 @@ void canalview::on_mui_borrar_clicked() {
 /**
 \param e
 **/
-void canalview::closeEvent(QCloseEvent *e) {
-    _depura("ccosteview::closeEvent", 0);
-    if (dialogChanges_hayCambios()) {
-        int val = QMessageBox::warning(this,
-                                       tr("Guardar canal"),
-                                       tr("Desea guardar los cambios?"),
-                                       tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
-        if (val == 0)
+void canalview::closeEvent ( QCloseEvent *e )
+{
+    _depura ( "ccosteview::closeEvent", 0 );
+    if ( dialogChanges_hayCambios() ) {
+        int val = QMessageBox::warning ( this,
+                                         tr ( "Guardar canal" ),
+                                         tr ( "Desea guardar los cambios?" ),
+                                         tr ( "&Si" ), tr ( "&No" ), tr ( "&Cancelar" ), 0, 2 );
+        if ( val == 0 )
             on_mui_guardar_clicked();
-        if (val == 2)
+        if ( val == 2 )
             e->ignore();
     } // end if
-    _depura("END ccosteview::closeEvent", 0);
+    _depura ( "END ccosteview::closeEvent", 0 );
 }
 

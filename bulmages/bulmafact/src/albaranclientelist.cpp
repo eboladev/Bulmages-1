@@ -33,11 +33,12 @@
 ///
 /**
 **/
-void AlbaranClienteListSubform::cargar() {
-    _depura("AlbaranClienteListSubform::cargar", 0);
+void AlbaranClienteListSubform::cargar()
+{
+    _depura ( "AlbaranClienteListSubform::cargar", 0 );
     QString SQLQuery = "SELECT * FROM albaran";
-    SubForm3::cargar(SQLQuery);
-    _depura("END AlbaranClienteListSubform::cargar", 0);
+    SubForm3::cargar ( SQLQuery );
+    _depura ( "END AlbaranClienteListSubform::cargar", 0 );
 }
 
 
@@ -45,10 +46,11 @@ void AlbaranClienteListSubform::cargar() {
 /**
 \param query
 **/
-void AlbaranClienteListSubform::cargar(QString query) {
-    _depura("AlbaranClienteListSubform::cargar", 0);
-    SubForm3::cargar(query);
-    _depura("END AlbaranClienteListSubform::cargar", 0);
+void AlbaranClienteListSubform::cargar ( QString query )
+{
+    _depura ( "AlbaranClienteListSubform::cargar", 0 );
+    SubForm3::cargar ( query );
+    _depura ( "END AlbaranClienteListSubform::cargar", 0 );
 }
 
 
@@ -56,10 +58,11 @@ void AlbaranClienteListSubform::cargar(QString query) {
 /**
 \param val
 **/
-void AlbaranClienteList::setidcliente(QString val) {
-    _depura("AlbaranClienteList::setidcliente", 0);
-    m_cliente->setidcliente(val);
-    _depura("END AlbaranClienteList::setidcliente", 0);
+void AlbaranClienteList::setidcliente ( QString val )
+{
+    _depura ( "AlbaranClienteList::setidcliente", 0 );
+    m_cliente->setidcliente ( val );
+    _depura ( "END AlbaranClienteList::setidcliente", 0 );
 }
 
 
@@ -67,9 +70,10 @@ void AlbaranClienteList::setidcliente(QString val) {
 /**
 \return
 **/
-QString AlbaranClienteList::idCliDelivNote() {
-    _depura("AlbaranClienteList::idCliDelivNote", 0);
-    _depura("END AlbaranClienteList::idCliDelivNote", 0);
+QString AlbaranClienteList::idCliDelivNote()
+{
+    _depura ( "AlbaranClienteList::idCliDelivNote", 0 );
+    _depura ( "END AlbaranClienteList::idCliDelivNote", 0 );
     return mdb_idalbaran;
 }
 
@@ -77,10 +81,11 @@ QString AlbaranClienteList::idCliDelivNote() {
 ///
 /**
 **/
-void AlbaranClienteList::crear() {
-    _depura("AlbaranClienteList::crear", 0);
-    ((Company *)empresaBase())->s_newAlbaranClienteView();
-    _depura("END AlbaranClienteList::crear", 0);
+void AlbaranClienteList::crear()
+{
+    _depura ( "AlbaranClienteList::crear", 0 );
+    ( ( Company * ) empresaBase() ) ->s_newAlbaranClienteView();
+    _depura ( "END AlbaranClienteList::crear", 0 );
 }
 
 
@@ -97,19 +102,20 @@ void AlbaranClienteList::crear() {
 \param editmodo
 \return
 **/
-AlbaranClienteList::AlbaranClienteList(QWidget *parent, Qt::WFlags flag, edmode editmodo)
-        : Listado(NULL, parent, flag, editmodo) {
-    _depura("AlbaranClienteList::AlbaranClienteList", 0);
-    setupUi(this);
+AlbaranClienteList::AlbaranClienteList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
+        : Listado ( NULL, parent, flag, editmodo )
+{
+    _depura ( "AlbaranClienteList::AlbaranClienteList", 0 );
+    setupUi ( this );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza("AlbaranClienteList_AlbaranClienteList", this);
-    if (res != 0)
+    int res = g_plugins->lanza ( "AlbaranClienteList_AlbaranClienteList", this );
+    if ( res != 0 )
         return;
     mdb_idalbaran = "";
-    setSubForm(mui_list);
+    setSubForm ( mui_list );
     hideBusqueda();
     iniciaForm();
-    _depura("END AlbaranClienteList::AlbaranClienteList", 0);
+    _depura ( "END AlbaranClienteList::AlbaranClienteList", 0 );
 }
 
 
@@ -126,27 +132,28 @@ AlbaranClienteList::AlbaranClienteList(QWidget *parent, Qt::WFlags flag, edmode 
 \param editmodo
 \return
 **/
-AlbaranClienteList::AlbaranClienteList(Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo)
-        : Listado(comp, parent, flag, editmodo) {
-    _depura("AlbaranClienteList::AlbaranClienteList", 0);
-    setupUi(this);
+AlbaranClienteList::AlbaranClienteList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+        : Listado ( comp, parent, flag, editmodo )
+{
+    _depura ( "AlbaranClienteList::AlbaranClienteList", 0 );
+    setupUi ( this );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza("AlbaranClienteList_AlbaranClienteList", this);
-    if (res != 0)
+    int res = g_plugins->lanza ( "AlbaranClienteList_AlbaranClienteList", this );
+    if ( res != 0 )
         return;
-    m_cliente->setEmpresaBase(comp);
-    m_articulo->setEmpresaBase(comp);
-    mui_list->setEmpresaBase(comp);
+    m_cliente->setEmpresaBase ( comp );
+    m_articulo->setEmpresaBase ( comp );
+    mui_list->setEmpresaBase ( comp );
     presentar();
-    setSubForm(mui_list);
+    setSubForm ( mui_list );
     mdb_idalbaran = "";
-    if (modoEdicion())
-        empresaBase()->meteWindow(windowTitle(), this);
+    if ( modoEdicion() )
+        empresaBase() ->meteWindow ( windowTitle(), this );
     hideBusqueda();
     iniciaForm();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
-    trataPermisos("albaran");
-    _depura("END AlbaranClienteList::AlbaranClienteList", 0);
+    trataPermisos ( "albaran" );
+    _depura ( "END AlbaranClienteList::AlbaranClienteList", 0 );
 }
 
 
@@ -154,16 +161,17 @@ AlbaranClienteList::AlbaranClienteList(Company *comp, QWidget *parent, Qt::WFlag
 /**
 \return
 **/
-void AlbaranClienteList::iniciaForm() {
-    _depura("AlbaranClienteList::iniciaForm");
+void AlbaranClienteList::iniciaForm()
+{
+    _depura ( "AlbaranClienteList::iniciaForm" );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza("AlbaranClienteList_iniciaForm", this);
-    if (res != 0)
+    int res = g_plugins->lanza ( "AlbaranClienteList_iniciaForm", this );
+    if ( res != 0 )
         return;
-    mui_procesada->insertItem(0, tr("Todos los albaranes"));
-    mui_procesada->insertItem(1, tr("Albaranes procesados"));
-    mui_procesada->insertItem(2, tr("Albaranes no procesados"));
-    _depura("END AlbaranClienteList::iniciaForm");
+    mui_procesada->insertItem ( 0, tr ( "Todos los albaranes" ) );
+    mui_procesada->insertItem ( 1, tr ( "Albaranes procesados" ) );
+    mui_procesada->insertItem ( 2, tr ( "Albaranes no procesados" ) );
+    _depura ( "END AlbaranClienteList::iniciaForm" );
 }
 
 
@@ -171,22 +179,24 @@ void AlbaranClienteList::iniciaForm() {
 /**
 \param comp
 **/
-void AlbaranClienteList::setEmpresaBase(Company *comp) {
-    _depura("AlbaranClienteList::setEmpresaBase", 0);
-    PEmpresaBase::setEmpresaBase(comp);
-    m_cliente->setEmpresaBase(comp);
-    m_articulo->setEmpresaBase(comp);
-    mui_list->setEmpresaBase(comp);
-    _depura("END AlbaranClienteList::setEmpresaBase", 0);
+void AlbaranClienteList::setEmpresaBase ( Company *comp )
+{
+    _depura ( "AlbaranClienteList::setEmpresaBase", 0 );
+    PEmpresaBase::setEmpresaBase ( comp );
+    m_cliente->setEmpresaBase ( comp );
+    m_articulo->setEmpresaBase ( comp );
+    mui_list->setEmpresaBase ( comp );
+    _depura ( "END AlbaranClienteList::setEmpresaBase", 0 );
 }
 
 
 /** Destructor de la clase */
 /**
 **/
-AlbaranClienteList::~AlbaranClienteList() {
-    _depura("AlbaranClienteList::~AlbaranClienteList", 0);
-    _depura("END AlbaranClienteList::~AlbaranClienteList", 0);
+AlbaranClienteList::~AlbaranClienteList()
+{
+    _depura ( "AlbaranClienteList::~AlbaranClienteList", 0 );
+    _depura ( "END AlbaranClienteList::~AlbaranClienteList", 0 );
 }
 
 
@@ -195,20 +205,21 @@ AlbaranClienteList::~AlbaranClienteList() {
 */
 /**
 **/
-void AlbaranClienteList::presentar() {
-    _depura("AlbaranClienteList::presentar");
+void AlbaranClienteList::presentar()
+{
+    _depura ( "AlbaranClienteList::presentar" );
 
-    mui_list->cargar("SELECT *, totalalbaran AS total, bimpalbaran AS base, impalbaran AS impuestos FROM albaran LEFT JOIN  cliente ON albaran.idcliente = cliente.idcliente LEFT JOIN almacen ON albaran.idalmacen = almacen.idalmacen LEFT JOIN forma_pago ON albaran.idforma_pago = forma_pago.idforma_pago WHERE 1 = 1 " + generarFiltro());
+    mui_list->cargar ( "SELECT *, totalalbaran AS total, bimpalbaran AS base, impalbaran AS impuestos FROM albaran LEFT JOIN  cliente ON albaran.idcliente = cliente.idcliente LEFT JOIN almacen ON albaran.idalmacen = almacen.idalmacen LEFT JOIN forma_pago ON albaran.idforma_pago = forma_pago.idforma_pago WHERE 1 = 1 " + generarFiltro() );
 
     /// Hacemos el calculo del total.
-    cursor2 *cur = empresaBase()->cargacursor("SELECT SUM(totalalbaran) AS total FROM albaran LEFT JOIN cliente ON albaran.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen = albaran.idalmacen where 1 = 1 " + generarFiltro());
+    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT SUM(totalalbaran) AS total FROM albaran LEFT JOIN cliente ON albaran.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen = albaran.idalmacen where 1 = 1 " + generarFiltro() );
     /// Esta consulta podría resultar NULA y debe tratarse el caso
-    if (cur) {
-        m_total->setText(cur->valor("total"));
+    if ( cur ) {
+        m_total->setText ( cur->valor ( "total" ) );
         delete cur;
     } // end if
 
-    _depura("End AlbaranClienteList::presentar");
+    _depura ( "End AlbaranClienteList::presentar" );
 }
 
 
@@ -216,7 +227,7 @@ void AlbaranClienteList::presentar() {
      o bien haciendo doble click en el modo de edicion se desea invocar la accion
      Editar el elemento si estamos en modo editmode o cerrar la ventana y emitir
      un signal selected() si estamos en el modo selector.
-
+ 
      Primero determina el idalbaran seleccionado, luego crea la instancia de
      la ventana de edicion AlbaranClienteView y lo mete en el workspace.
      Por ultimo hace que dicha ventana carge de la base de datos el idalbaran
@@ -226,21 +237,22 @@ void AlbaranClienteList::presentar() {
 \param row
 \return
 **/
-void AlbaranClienteList::editar(int row) {
-    _depura("AlbaranClienteList::editar", 0);
-    mdb_idalbaran = mui_list->DBvalue(QString("idalbaran"), row);
-    if (modoEdicion()) {
-        AlbaranClienteView *prov = ((Company *)empresaBase())->newAlbaranClienteView();
-        if (prov->cargar(mdb_idalbaran)) {
+void AlbaranClienteList::editar ( int row )
+{
+    _depura ( "AlbaranClienteList::editar", 0 );
+    mdb_idalbaran = mui_list->DBvalue ( QString ( "idalbaran" ), row );
+    if ( modoEdicion() ) {
+        AlbaranClienteView * prov = ( ( Company * ) empresaBase() ) ->newAlbaranClienteView();
+        if ( prov->cargar ( mdb_idalbaran ) ) {
             delete prov;
             return;
         } // end if
-        empresaBase()->m_pWorkspace->addWindow(prov);
+        empresaBase() ->m_pWorkspace->addWindow ( prov );
         prov->show();
     } else {
-        emit(selected(mdb_idalbaran));
+        emit ( selected ( mdb_idalbaran ) );
     } // end if
-    _depura("END AlbaranClienteList::editar", 0);
+    _depura ( "END AlbaranClienteList::editar", 0 );
 }
 
 
@@ -253,27 +265,28 @@ void AlbaranClienteList::editar(int row) {
 /**
 \return
 **/
-void AlbaranClienteList::borrar() {
-    _depura("AlbaranClienteList::borrar", 0);
+void AlbaranClienteList::borrar()
+{
+    _depura ( "AlbaranClienteList::borrar", 0 );
     int a = mui_list->currentRow();
-    if (a < 0) {
-        mensajeInfo(tr("Debe seleccionar una linea"));
+    if ( a < 0 ) {
+        mensajeInfo ( tr ( "Debe seleccionar una linea" ) );
         return;
     } // end if
     try {
-        mdb_idalbaran = mui_list->DBvalue(QString("idalbaran"));
-        if (modoEdicion()) {
-            AlbaranClienteView *acv = ((Company *)empresaBase())->newAlbaranClienteView();
-            if (acv->cargar(mdb_idalbaran))
-                throw -1;
+        mdb_idalbaran = mui_list->DBvalue ( QString ( "idalbaran" ) );
+        if ( modoEdicion() ) {
+            AlbaranClienteView * acv = ( ( Company * ) empresaBase() ) ->newAlbaranClienteView();
+            if ( acv->cargar ( mdb_idalbaran ) )
+                throw - 1;
             acv->on_mui_borrar_clicked();
             acv->close();
         } // end if
         presentar();
-    } catch (...) {
-        mensajeInfo(tr("Error al borrar el albaran a cliente"));
+    } catch ( ... ) {
+        mensajeInfo ( tr ( "Error al borrar el albaran a cliente" ) );
     } // end try
-    _depura("END AlbaranClienteList::borrar", 0);
+    _depura ( "END AlbaranClienteList::borrar", 0 );
 }
 
 
@@ -282,10 +295,11 @@ void AlbaranClienteList::borrar() {
 /// \TODO: Se podria hacer una clase derivada de Ficha que fuese Listado y que directamente implementase el metodo on_mui_imprimir.
 /**
 **/
-void AlbaranClienteList::imprimir() {
-    _depura("AlbaranClienteList::imprimir", 0);
-    mui_list->imprimirPDF(tr("Albaranes a clientes"));
-    _depura("END AlbaranClienteList::imprimir", 0);
+void AlbaranClienteList::imprimir()
+{
+    _depura ( "AlbaranClienteList::imprimir", 0 );
+    mui_list->imprimirPDF ( tr ( "Albaranes a clientes" ) );
+    _depura ( "END AlbaranClienteList::imprimir", 0 );
 }
 
 
@@ -295,42 +309,43 @@ void AlbaranClienteList::imprimir() {
 /**
 \return
 **/
-QString AlbaranClienteList::generarFiltro() {
+QString AlbaranClienteList::generarFiltro()
+{
     /// Tratamiento de los filtros.
-    _depura("AlbaranClienteList::generarFiltro", 0);
+    _depura ( "AlbaranClienteList::generarFiltro", 0 );
     QString filtro = "";
 
-    if (m_filtro->text() != "") {
+    if ( m_filtro->text() != "" ) {
         filtro = " AND ( lower(descalbaran) LIKE lower('%" + m_filtro->text() + "%') ";
-        filtro +=" OR refalbaran LIKE '"+m_filtro->text()+"%' ";
-        filtro +=" OR lower(nomcliente) LIKE lower('%" + m_filtro->text() + "%')) ";
+        filtro += " OR refalbaran LIKE '" + m_filtro->text() + "%' ";
+        filtro += " OR lower(nomcliente) LIKE lower('%" + m_filtro->text() + "%')) ";
     } else {
         filtro = "";
     } // end if
 
-    if (m_cliente->idcliente() != "")
+    if ( m_cliente->idcliente() != "" )
         filtro += " AND albaran.idcliente='" + m_cliente->idcliente() + "'";
 
-    if (m_articulo->idarticulo() != "")
+    if ( m_articulo->idarticulo() != "" )
         filtro += " AND idalbaran IN (SELECT DISTINCT idalbaran FROM lalbaran WHERE idarticulo='" + m_articulo->idarticulo() + "')";
 
     /// Tratamos los elementos procesados y no procesados.
-    if (mui_procesada->currentIndex() == 1) {
+    if ( mui_procesada->currentIndex() == 1 ) {
         /// Muestra solo las procesadas.
         filtro += " AND procesadoalbaran";
-    } else if (mui_procesada->currentIndex() == 2) {
+    } else if ( mui_procesada->currentIndex() == 2 ) {
         /// Muestra solo las NO procesadas.
         filtro += " AND NOT procesadoalbaran ";
     } // end if
 
-    if (m_fechain->text() != "")
+    if ( m_fechain->text() != "" )
         filtro += " AND fechaalbaran >= '" + m_fechain->text() + "' ";
 
-    if (m_fechafin->text() != "")
+    if ( m_fechafin->text() != "" )
         filtro += " AND fechaalbaran <= '" + m_fechafin->text() + "' ";
 
-    _depura("END AlbaranClienteList::generarFiltro", 0);
-    return (filtro);
+    _depura ( "END AlbaranClienteList::generarFiltro", 0 );
+    return ( filtro );
 }
 
 
@@ -344,42 +359,44 @@ QString AlbaranClienteList::generarFiltro() {
 \param parent
 \return
 **/
-AlbaranClienteListSubform::AlbaranClienteListSubform(QWidget *parent) : SubForm2Bf(parent) {
-    _depura("AlbaranClienteListSubform::AlbaranClienteListSubform", 0);
+AlbaranClienteListSubform::AlbaranClienteListSubform ( QWidget *parent ) : SubForm2Bf ( parent )
+{
+    _depura ( "AlbaranClienteListSubform::AlbaranClienteListSubform", 0 );
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza("AlbaranClienteListSubform_AlbaranClienteListSubform", this);
-    if (res != 0)
+    int res = g_plugins->lanza ( "AlbaranClienteListSubform_AlbaranClienteListSubform", this );
+    if ( res != 0 )
         return;
-    setDBTableName("albaran");
-    setDBCampoId("idalbaran");
-    addSHeader("refalbaran", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("Referencia de albaran"));
-    addSHeader("codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Codigo de almacen"));
-    addSHeader("numalbaran", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Numero de albaran"));
-    addSHeader("descalbaran", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Descripcion"));
-    addSHeader("fechaalbaran", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Fecha de albaran"));
-    addSHeader("nomcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre de cliente"));
-    addSHeader("idforma_pago", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("ID forma de pago"));
-    addSHeader("descforma_pago", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Descripcion de forma de pago"));
-    addSHeader("idtrabajador", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("ID trabajador"));
-    addSHeader("idcliente", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("ID cliente"));
-    addSHeader("idalbaran", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("ID albaran"));
-    addSHeader("comentalbaran", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Comentarios del albaran"));
-    addSHeader("idalmacen", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("ID almacen"));
-    addSHeader("base", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Base imponible"));
-    addSHeader("impuestos", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Impuestos"));
-    addSHeader("total", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Total"));
-    setinsercion(FALSE);
-    setDelete(FALSE);
-    setSortingEnabled(TRUE);
-    _depura("END AlbaranClienteListSubform::AlbaranClienteListSubform", 0);
+    setDBTableName ( "albaran" );
+    setDBCampoId ( "idalbaran" );
+    addSHeader ( "refalbaran", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "Referencia de albaran" ) );
+    addSHeader ( "codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Codigo de almacen" ) );
+    addSHeader ( "numalbaran", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Numero de albaran" ) );
+    addSHeader ( "descalbaran", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Descripcion" ) );
+    addSHeader ( "fechaalbaran", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Fecha de albaran" ) );
+    addSHeader ( "nomcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre de cliente" ) );
+    addSHeader ( "idforma_pago", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "ID forma de pago" ) );
+    addSHeader ( "descforma_pago", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Descripcion de forma de pago" ) );
+    addSHeader ( "idtrabajador", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "ID trabajador" ) );
+    addSHeader ( "idcliente", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "ID cliente" ) );
+    addSHeader ( "idalbaran", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "ID albaran" ) );
+    addSHeader ( "comentalbaran", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Comentarios del albaran" ) );
+    addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "ID almacen" ) );
+    addSHeader ( "base", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Base imponible" ) );
+    addSHeader ( "impuestos", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Impuestos" ) );
+    addSHeader ( "total", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Total" ) );
+    setinsercion ( FALSE );
+    setDelete ( FALSE );
+    setSortingEnabled ( TRUE );
+    _depura ( "END AlbaranClienteListSubform::AlbaranClienteListSubform", 0 );
 }
 
 
 ///
 /**
 **/
-AlbaranClienteListSubform::~AlbaranClienteListSubform() {
-    _depura("AlbaranClienteListSubform::~AlbaranClienteListSubform", 0);
-    _depura("END AlbaranClienteListSubform::~AlbaranClienteListSubform", 0);
+AlbaranClienteListSubform::~AlbaranClienteListSubform()
+{
+    _depura ( "AlbaranClienteListSubform::~AlbaranClienteListSubform", 0 );
+    _depura ( "END AlbaranClienteListSubform::~AlbaranClienteListSubform", 0 );
 }

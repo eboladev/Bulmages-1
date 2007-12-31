@@ -48,26 +48,26 @@
 /**
  * The class to use for a printer object.
  */
-class TOPrinter : public QPrinter {
-
+class TOPrinter : public QPrinter
+{
 };
 /**
  * The class to use for a dock widget.
  */
-class TODock : public QWidget {
-
+class TODock : public QWidget
+{
 };
 /**
  * The class to use for a file dialog.
  */
-class TOFileDialog : public QFileDialog {
-
+class TOFileDialog : public QFileDialog
+{
 };
 /**
  * The class to use for a messagebox.
  */
-class TOMessageBox : public QMessageBox {
-
+class TOMessageBox : public QMessageBox
+{
 };
 #endif
 
@@ -110,360 +110,371 @@ class toEditWidget;
  * depending on if TOra is a Qt or KDE application. In the case of Qt this will be a
  * QMainWindow descendant.
  */
-class toMain : public toMainWindow {
-  Q_OBJECT
+class toMain : public toMainWindow
+{
+    Q_OBJECT
 private:
-  /**
-   * The connections that have been opened in TOra.
-   */
-  std::list<toConnection *> Connections;
-  /**
-   * Workspace of main window.
-   */
-  QWorkspace *Workspace;
-  /**
-   * Handles available connections list in toolbar.
-   */
-  QComboBox *ConnectionSelection;
-  /**
-   * Add a new connection. The connection itself must already be created.
-   */
-  void addConnection(toConnection *conn);
-  /**
-   * A map from menu ID:s to tools.
-   */
-  std::map<int,toTool *> Tools;
-  /**
-   * A list of toolbuttons that need an open connection to be enabled. If tool pointer
-   * is zero simply require any connection to be enabled.
-   */
-  std::map<QToolButton *,toTool *> NeedConnection;
-  /**
-   * The ID of the tool providing the SQL editor.
-   */
-  int SQLEditor;
+    /**
+     * The connections that have been opened in TOra.
+     */
+    std::list<toConnection *> Connections;
+    /**
+     * Workspace of main window.
+     */
+    QWorkspace *Workspace;
+    /**
+     * Handles available connections list in toolbar.
+     */
+    QComboBox *ConnectionSelection;
+    /**
+     * Add a new connection. The connection itself must already be created.
+     */
+    void addConnection ( toConnection *conn );
+    /**
+     * A map from menu ID:s to tools.
+     */
+    std::map<int, toTool *> Tools;
+    /**
+     * A list of toolbuttons that need an open connection to be enabled. If tool pointer
+     * is zero simply require any connection to be enabled.
+     */
+    std::map<QToolButton *, toTool *> NeedConnection;
+    /**
+     * The ID of the tool providing the SQL editor.
+     */
+    int SQLEditor;
 
-  /** Status messages to display
-   */
-  std::list<QString> StatusMessages;
-  /**
-   * Disconnect connection button.
-   */
-  QToolButton *DisconnectButton;
-  /**
-   * Load file button.
-   */
-  QToolButton *LoadButton;
-  /**
-   * Save file button.
-   */
-  QToolButton *SaveButton;
-  /**
-   * Print button.
-   */
-  QToolButton *PrintButton;
-  /**
-   * Undo button.
-   */
-  QToolButton *UndoButton;
-  /**
-   * Redo button.
-   */
-  QToolButton *RedoButton;
-  /**
-   * Cut button.
-   */
-  QToolButton *CutButton;
-  /**
-   * Copy button.
-   */
-  QToolButton *CopyButton;
-  /**
-   * Paste button.
-   */
-  QToolButton *PasteButton;
+    /** Status messages to display
+     */
+    std::list<QString> StatusMessages;
+    /**
+     * Disconnect connection button.
+     */
+    QToolButton *DisconnectButton;
+    /**
+     * Load file button.
+     */
+    QToolButton *LoadButton;
+    /**
+     * Save file button.
+     */
+    QToolButton *SaveButton;
+    /**
+     * Print button.
+     */
+    QToolButton *PrintButton;
+    /**
+     * Undo button.
+     */
+    QToolButton *UndoButton;
+    /**
+     * Redo button.
+     */
+    QToolButton *RedoButton;
+    /**
+     * Cut button.
+     */
+    QToolButton *CutButton;
+    /**
+     * Copy button.
+     */
+    QToolButton *CopyButton;
+    /**
+     * Paste button.
+     */
+    QToolButton *PasteButton;
 
-  /**
-   * File menu.
-   */
-  QPopupMenu *FileMenu;
-  /**
-   * Edit menu.
-   */
-  QPopupMenu *EditMenu;
-  /**
-   * Tools menu.
-   */
-  QPopupMenu *ToolsMenu;
-  /**
-   * Windows menu.
-   */
-  QPopupMenu *WindowsMenu;
-  /**
-   * Help menu.
-   */
-  QPopupMenu *HelpMenu;
-  /**
-   * Display latest status messages
-   */
-  QPopupMenu *StatusMenu;
-  /**
-   * Current column label.
-   */
-  QLabel *ColumnLabel;
-  /**
-   * Current row label.
-   */
-  QLabel *RowLabel;
-  toBackground Poll;
-  /**
-   * Search & replace dialog if available.
-   */
-  toSearchReplace *Search;
-  /**
-   * Default tool id
-   */
-  int DefaultTool;
+    /**
+     * File menu.
+     */
+    QPopupMenu *FileMenu;
+    /**
+     * Edit menu.
+     */
+    QPopupMenu *EditMenu;
+    /**
+     * Tools menu.
+     */
+    QPopupMenu *ToolsMenu;
+    /**
+     * Windows menu.
+     */
+    QPopupMenu *WindowsMenu;
+    /**
+     * Help menu.
+     */
+    QPopupMenu *HelpMenu;
+    /**
+     * Display latest status messages
+     */
+    QPopupMenu *StatusMenu;
+    /**
+     * Current column label.
+     */
+    QLabel *ColumnLabel;
+    /**
+     * Current row label.
+     */
+    QLabel *RowLabel;
+    toBackground Poll;
+    /**
+     * Search & replace dialog if available.
+     */
+    toSearchReplace *Search;
+    /**
+     * Default tool id
+     */
+    int DefaultTool;
 
-  toEditWidget *Edit;
+    toEditWidget *Edit;
 
-  toEditWidget *findEdit(QWidget *edit);
-  void editEnable(toEditWidget *edit,
-		  bool open,bool save,bool print,
-		  bool undo,bool redo,
-		  bool cut,bool copy,bool paste,
-		  bool search,
-		  bool selectAll,bool readAll);
+    toEditWidget *findEdit ( QWidget *edit );
+    void editEnable ( toEditWidget *edit,
+                      bool open, bool save, bool print,
+                      bool undo, bool redo,
+                      bool cut, bool copy, bool paste,
+                      bool search,
+                      bool selectAll, bool readAll );
 public:
 
-  /** ID of the file menu
-   */
-  static const int TO_FILE_MENU;
-  /** ID of the edit menu
-   */
-  static const int TO_EDIT_MENU;
-  /** ID of the tools menu
-   */
-  static const int TO_TOOLS_MENU;
-  /** ID of the windows menu
-   */
-  static const int TO_WINDOWS_MENU;
-  /** ID of the help menu
-   */
-  static const int TO_HELP_MENU;
+    /** ID of the file menu
+     */
+    static const int TO_FILE_MENU;
+    /** ID of the edit menu
+     */
+    static const int TO_EDIT_MENU;
+    /** ID of the tools menu
+     */
+    static const int TO_TOOLS_MENU;
+    /** ID of the windows menu
+     */
+    static const int TO_WINDOWS_MENU;
+    /** ID of the help menu
+     */
+    static const int TO_HELP_MENU;
 
-  /** First ID of the tool specific menu items.
-   */
-  static const int TO_TOOL_MENU_ID;
-  /** Last ID of the tool specific menu items.
-   */
-  static const int TO_TOOL_MENU_ID_END;
+    /** First ID of the tool specific menu items.
+     */
+    static const int TO_TOOL_MENU_ID;
+    /** Last ID of the tool specific menu items.
+     */
+    static const int TO_TOOL_MENU_ID_END;
 
-  /** First ID of the tool specific about menu items.
-   */
-  static const int TO_TOOL_ABOUT_ID;
-  /** Last ID of the tool specific about menu items.
-   */
-  static const int TO_TOOL_ABOUT_ID_END;
+    /** First ID of the tool specific about menu items.
+     */
+    static const int TO_TOOL_ABOUT_ID;
+    /** Last ID of the tool specific about menu items.
+     */
+    static const int TO_TOOL_ABOUT_ID_END;
 
-  /**
-   * Create main window. Always NULL as parent.
-   */
-  toMain();
+    /**
+     * Create main window. Always NULL as parent.
+     */
+    toMain();
 
-  /**
-   * Get the workspace widget of the main window.
-   * @return Workspace widget.
-   */
-  QWorkspace *workspace()
-  { return Workspace; }
+    /**
+     * Get the workspace widget of the main window.
+     * @return Workspace widget.
+     */
+    QWorkspace *workspace()
+    {
+        return Workspace;
+    }
 
-  /**
-   * Get the current database connection
-   * @return Reference to current connection.
-   */
-  toConnection &currentConnection(void);
+    /**
+     * Get the current database connection
+     * @return Reference to current connection.
+     */
+    toConnection &currentConnection ( void );
 
-  /**
-   * Set the widget to edit through menues and toolbar.
-   */
-  static void setEditWidget(toEditWidget *edit);
-  /**
-   * Set available menu items in user interface. It is not enough to just call
-   * this function to make open for instance to actually work. It is a lot of
-   * more especially in @ref commandCallback and @ref editFileMenu. Will only
-   * update if this is the current editing widget.
-   */
-  static void editEnable(toEditWidget *edit);
-  /**
-   * Disable all the current available items in the user interface (That @ref
-   * editEnable can enable). If specified widget has the focus the edit widget
-   * is cleared.
-   */
-  static void editDisable(toEditWidget *edit);
+    /**
+     * Set the widget to edit through menues and toolbar.
+     */
+    static void setEditWidget ( toEditWidget *edit );
+    /**
+     * Set available menu items in user interface. It is not enough to just call
+     * this function to make open for instance to actually work. It is a lot of
+     * more especially in @ref commandCallback and @ref editFileMenu. Will only
+     * update if this is the current editing widget.
+     */
+    static void editEnable ( toEditWidget *edit );
+    /**
+     * Disable all the current available items in the user interface (That @ref
+     * editEnable can enable). If specified widget has the focus the edit widget
+     * is cleared.
+     */
+    static void editDisable ( toEditWidget *edit );
 
-  /**
-   * Close window
-   * @param del If user interaction is allowed.
-   * @return True if close was allowed, otherwise false.
-   */
-  virtual bool close(bool del);
-  /**
-   * Create the default tool for the current connection.
-   *
-   * This is the tool with the highest priority, usually the SQL worksheet.
-   */
-  void createDefault(void);
-  /**
-   * Set coordinates in the statusbar.
-   *
-   * Used to indicate current cursor position by child widgets.
-   */
-  void setCoordinates(int,int);
+    /**
+     * Close window
+     * @param del If user interaction is allowed.
+     * @return True if close was allowed, otherwise false.
+     */
+    virtual bool close ( bool del );
+    /**
+     * Create the default tool for the current connection.
+     *
+     * This is the tool with the highest priority, usually the SQL worksheet.
+     */
+    void createDefault ( void );
+    /**
+     * Set coordinates in the statusbar.
+     *
+     * Used to indicate current cursor position by child widgets.
+     */
+    void setCoordinates ( int, int );
 
-  /**
-   * Get the file menu.
-   * @return File menu
-   */
-  QPopupMenu *fileMenu()
-  { return FileMenu; }
-  /**
-   * Get the edit menu.
-   * @return Edit menu
-   */
-  QPopupMenu *editMenu()
-  { return EditMenu; }
-  /**
-   * Get the tools menu.
-   * @return Tools menu
-   */
-  QPopupMenu *toolsMenu()
-  { return ToolsMenu; }
-  /**
-   * Get the help menu.
-   * @return Help menu
-   */
-  QPopupMenu *helpMenu()
-  { return HelpMenu; }
+    /**
+     * Get the file menu.
+     * @return File menu
+     */
+    QPopupMenu *fileMenu()
+    {
+        return FileMenu;
+    }
+    /**
+     * Get the edit menu.
+     * @return Edit menu
+     */
+    QPopupMenu *editMenu()
+    {
+        return EditMenu;
+    }
+    /**
+     * Get the tools menu.
+     * @return Tools menu
+     */
+    QPopupMenu *toolsMenu()
+    {
+        return ToolsMenu;
+    }
+    /**
+     * Get the help menu.
+     * @return Help menu
+     */
+    QPopupMenu *helpMenu()
+    {
+        return HelpMenu;
+    }
 
-  /**
-   * Get a list of currently open connections.
-   * @return List of connection names. The returned list can then be used by
-   * @ref connection to get the actual connection.
-   */
-  std::list<QString> connections(void);
-  /** Get a connection identified by a string.
-   * @return A reference to a connection.
-   * @exception QString If connection wasn't found.
-   */
-  toConnection &connection(const QString &);
-  /** Set if a connection needs to be commited. Also updates visual feedback in interface.
-   */
-  void setNeedCommit(toConnection &conn,bool needCommit=true);
+    /**
+     * Get a list of currently open connections.
+     * @return List of connection names. The returned list can then be used by
+     * @ref connection to get the actual connection.
+     */
+    std::list<QString> connections ( void );
+    /** Get a connection identified by a string.
+     * @return A reference to a connection.
+     * @exception QString If connection wasn't found.
+     */
+    toConnection &connection ( const QString & );
+    /** Set if a connection needs to be commited. Also updates visual feedback in interface.
+     */
+    void setNeedCommit ( toConnection &conn, bool needCommit = true );
 
-  /** Edit an SQL statement in the SQL editor if any connected.
-   * @param str Identifier of the SQL to edit.
-   */
-  void editSQL(const QString &str);
-  /**
-   * Register a tool which to use as an SQL editor. When something is to be edited
-   * first a toolwindow will be created and the @ref sqlEditor will be emited, so
-   * the SQL editor must connect to this signal as well.
-   *
-   * @param toolid Which tool identifier to register as the SQL editor. This
-   *               is the value which is passed to the @ref toTool::customSetup
-   *               member.
-   */
-  void registerSQLEditor(int toolid);
-  /** Display status message in dialog.
-   */
-  void displayMessage(const QString &str);
+    /** Edit an SQL statement in the SQL editor if any connected.
+     * @param str Identifier of the SQL to edit.
+     */
+    void editSQL ( const QString &str );
+    /**
+     * Register a tool which to use as an SQL editor. When something is to be edited
+     * first a toolwindow will be created and the @ref sqlEditor will be emited, so
+     * the SQL editor must connect to this signal as well.
+     *
+     * @param toolid Which tool identifier to register as the SQL editor. This
+     *               is the value which is passed to the @ref toTool::customSetup
+     *               member.
+     */
+    void registerSQLEditor ( int toolid );
+    /** Display status message in dialog.
+     */
+    void displayMessage ( const QString &str );
 signals:
-  /** Invoked to start editing an SQL identifier.
-   * @param str Identifier to start editing.
-   */
-  void sqlEditor(const QString &str);
-  /** Invoked when a connection is added.
-   * @param str Connection identifier.
-   */
-  void addedConnection(const QString &str);
-  /** Invoked when a connection is removed.
-   * @param str Connection identifier.
-   */
-  void removedConnection(const QString &str);
-  /** Emitted before a commit or rollback is made to the current connection.
-   * @param conn Connection that is commited
-   * @param cmt True if commit, false if rollback.
-   */
-  void willCommit(toConnection &conn,bool cmt);
+    /** Invoked to start editing an SQL identifier.
+     * @param str Identifier to start editing.
+     */
+    void sqlEditor ( const QString &str );
+    /** Invoked when a connection is added.
+     * @param str Connection identifier.
+     */
+    void addedConnection ( const QString &str );
+    /** Invoked when a connection is removed.
+     * @param str Connection identifier.
+     */
+    void removedConnection ( const QString &str );
+    /** Emitted before a commit or rollback is made to the current connection.
+     * @param conn Connection that is commited
+     * @param cmt True if commit, false if rollback.
+     */
+    void willCommit ( toConnection &conn, bool cmt );
 public slots:
-  /** Used to enable/disable entries in the windows menu
-   */
-  void windowsMenu(void);
-  /** Used to fill the status menu with the latest status entries
-   */ 
-  void statusMenu(void);
-  /** Display context help. 
-   */
-  void contextHelp(void);
-  /** Called when active window is changed.
-   */
-  void windowActivated(QWidget *);
-  /** Used to enable/disable entries in the edit & file menu
-   */
-  void editFileMenu(void);
-  /** Check if object caching is done.
-   */
-  void checkCaching(void);
-  /** Change current connection
-   */
-  void changeConnection(void);
+    /** Used to enable/disable entries in the windows menu
+     */
+    void windowsMenu ( void );
+    /** Used to fill the status menu with the latest status entries
+     */
+    void statusMenu ( void );
+    /** Display context help.
+     */
+    void contextHelp ( void );
+    /** Called when active window is changed.
+     */
+    void windowActivated ( QWidget * );
+    /** Used to enable/disable entries in the edit & file menu
+     */
+    void editFileMenu ( void );
+    /** Check if object caching is done.
+     */
+    void checkCaching ( void );
+    /** Change current connection
+     */
+    void changeConnection ( void );
 private slots:
-  /** Add a connection
-   */
-  void addConnection(void);
-  /** Remove a connection
-   */
-  bool delConnection(void);
-  /** Handles menu selections
-   * @param cmd Menu entry ID selected
-   */
-  void commandCallback(int cmd);
+    /** Add a connection
+     */
+    void addConnection ( void );
+    /** Remove a connection
+     */
+    bool delConnection ( void );
+    /** Handles menu selections
+     * @param cmd Menu entry ID selected
+     */
+    void commandCallback ( int cmd );
 
-  /** Commit button pressed
-   */
-  void commitButton(void);
-  /** Rollback button pressed
-   */
-  void rollbackButton(void);
+    /** Commit button pressed
+     */
+    void commitButton ( void );
+    /** Rollback button pressed
+     */
+    void rollbackButton ( void );
 
-  /** Load button pressed
-   */
-  void loadButton(void);
-  /** Save button pressed
-   */
-  void saveButton(void);
-  /** Print button pressed
-   */
-  void printButton(void);
-  /** Undo button pressed
-   */
-  void undoButton(void);
-  /** Redo button pressed
-   */
-  void redoButton(void);
-  /** Copy button pressed
-   */
-  void copyButton(void);
-  /** Cut button pressed
-   */
-  void cutButton(void);
-  /** Paste button pressed
-   */
-  void pasteButton(void);
-  /** Display status message
-   */
-  void displayMessage(void);
+    /** Load button pressed
+     */
+    void loadButton ( void );
+    /** Save button pressed
+     */
+    void saveButton ( void );
+    /** Print button pressed
+     */
+    void printButton ( void );
+    /** Undo button pressed
+     */
+    void undoButton ( void );
+    /** Redo button pressed
+     */
+    void redoButton ( void );
+    /** Copy button pressed
+     */
+    void copyButton ( void );
+    /** Cut button pressed
+     */
+    void cutButton ( void );
+    /** Paste button pressed
+     */
+    void pasteButton ( void );
+    /** Display status message
+     */
+    void displayMessage ( void );
 };
 
 
@@ -472,11 +483,11 @@ private slots:
  * @param save If true don't remove the message after a specified interval.
  * @param log Log message. Will never log saved messages.
  */
-void toStatusMessage(const QString &str,bool save=false,bool log=true);
+void toStatusMessage ( const QString &str, bool save = false, bool log = true );
 /** Get a pointer to the main window
  * @return Pointer to main window.
  */
-toMain *toMainWidget(void);
+toMain *toMainWidget ( void );
 /** Get an address to a SQL statement in the SGA. The address has the form
  * 'address:hash_value' which are resolved from the v$sqltext_with_newlines
  * view in Oracle.
@@ -485,7 +496,7 @@ toMain *toMainWidget(void);
  * @return String with address in.
  * @exception QString if address not found.
  */
-QString toSQLToAddress(toConnection &conn,const QString &sql);
+QString toSQLToAddress ( toConnection &conn, const QString &sql );
 /** Get the full SQL of an address (See @ref toSQLToAddress) from the
  * SGA.
  * @param conn Connection to get address from
@@ -493,55 +504,55 @@ QString toSQLToAddress(toConnection &conn,const QString &sql);
  * @return String with SQL of statement.
  * @exception QString if address not found.
  */
-QString toSQLString(toConnection &conn,const QString &address);
+QString toSQLString ( toConnection &conn, const QString &address );
 /** Make a column name more readable.
  * @param col Name of column name, will be modified.
  */
-void toReadableColumn(QString &col);
+void toReadableColumn ( QString &col );
 /** Get the current database time in the current sessions dateformat.
  * @param conn Connection to get address from.
  * @return String with the current date and time.
  */
-QString toNow(toConnection &conn);
+QString toNow ( toConnection &conn );
 /** Set the current session type (Style)
  * @param str Session to set, can be any of Motif, Motif Plus, SGI, CDE, Windows and Platinum
  * @exception QString if style not available.
  */
-void toSetSessionType(const QString &str);
+void toSetSessionType ( const QString &str );
 /** Get current session type (Style)
  * @return A string describing the current style.
  * @see toSetSessionType
  */
-QString toGetSessionType(void);
+QString toGetSessionType ( void );
 /** Create or fill a combobox with refresh intervals.
  * @param parent Parent of created combobox.
  * @param name Name of created combobox.
  * @param def Default value of the combobox.
  * @param item Combo box to fill. If not specified a new combobox is created.
  */
-QComboBox *toRefreshCreate(QWidget *parent,const char *name=NULL,const QString &def=QString::null,
-			   QComboBox *item=NULL);
+QComboBox *toRefreshCreate ( QWidget *parent, const char *name = NULL, const QString &def = QString::null,
+                             QComboBox *item = NULL );
 /** Set a timer with the value from a refresh combobox (See @ref toRefreshCreate).
  * @param timer Timer to set timeout in.
  * @param str String from currentText of combobox. If empty, set to default.
  */
-void toRefreshParse(toTimer *timer,const QString &str=QString::null);
+void toRefreshParse ( toTimer *timer, const QString &str = QString::null );
 /** Get information about wether this TOra has plugin support or not.
  * @return True if plugin support is enabled.
  */
-bool toMonolithic(void);
+bool toMonolithic ( void );
 /** Make a deep copy of a string. Usefull when sharing copying strings between threads.
  * @param str String to copy
  * @return Copied string.
  */
-QString toDeepCopy(const QString &str);
+QString toDeepCopy ( const QString &str );
 /** Allocate a toolbar. This is needed since Qt and KDE use different toolbars.
  * @param parent Parent of toolbar.
  * @param name Name of toolbar.
  * @param db Database name or empty if N/A.
  * @return A newly created toolbar.
  */
-QToolBar *toAllocBar(QWidget *parent,const QString &name,const QString &db);
+QToolBar *toAllocBar ( QWidget *parent, const QString &name, const QString &db );
 /** Allocate a new docked window. This is needed since Qt and KDE docks windows differently
  * (Qt 2.x doesn't even have support for docked windows). Observe that you must attach a
  * dock using @ref toAttachDock after allocating it.
@@ -550,67 +561,67 @@ QToolBar *toAllocBar(QWidget *parent,const QString &name,const QString &db);
  * @param icon Icon of new dock.
  * @return A newly allocated fock.
  */
-TODock *toAllocDock(const QString &name,
-		    const QString &db,
-		    const QPixmap &icon);
+TODock *toAllocDock ( const QString &name,
+                      const QString &db,
+                      const QPixmap &icon );
 /** Attach a dock to a specified position.
  * @param dock Dock to attach
  * @param container Whatever container is supposed to be in the dock window.
  * @param place Where to place the dock.
  */
-void toAttachDock(TODock *dock,QWidget *container,QMainWindow::ToolBarDock place);
+void toAttachDock ( TODock *dock, QWidget *container, QMainWindow::ToolBarDock place );
 /** Decode a size string this basically converts "KB" to 1024, "MB" to 1024KB and
  * everything else to 1.
  * @return Multiplier specified by string.
  */
-int toSizeDecode(const QString &str);
+int toSizeDecode ( const QString &str );
 
 /** Shift the first value out of a list.
  * @param lst List to shift value from (Also modified).
  * @return The first value in the list.
  */
-template <class T> T toShift(std::list<T> &lst)
+template <class T> T toShift ( std::list<T> &lst )
 {
-  if (lst.begin()==lst.end()) {
-    T ret;
+    if ( lst.begin() == lst.end() ) {
+        T ret;
+        return ret;
+    }
+    T ret = ( *lst.begin() );
+    lst.erase ( lst.begin() );
     return ret;
-  }
-  T ret=(*lst.begin());
-  lst.erase(lst.begin());
-  return ret;
 }
 
 /** Push an object to the beginning of a list.
  * @param lst List to push value in from of.
  * @param str Object to push.
  */
-template <class T> void toUnShift(std::list<T> &lst,const T &str)
+template <class T> void toUnShift ( std::list<T> &lst, const T &str )
 {
-  lst.insert(lst.begin(),str);
+    lst.insert ( lst.begin(), str );
 }
 
 /** Pop the last value out of a list.
  * @param lst List to pop value from (Also modified).
  * @return The value in the list of objects.
  */
-template <class T> T toPop(std::list<T> &lst)
+template <class T> T toPop ( std::list<T> &lst )
 {
-  if (lst.begin()==lst.end()) {
-    T ret;
+    if ( lst.begin() == lst.end() ) {
+        T ret;
+        return ret;
+    }
+    T ret = ( *lst.rbegin() );
+    lst.pop_back();
     return ret;
-  }
-  T ret=(*lst.rbegin());
-  lst.pop_back();
-  return ret;
 }
 
 /** Push an object to the end of a list.
  * @param lst List to push value in from of.
  * @param str Object to push.
  */
-template <class T> void toPush(std::list<T> &lst,const T &str)
+template <class T> void toPush ( std::list<T> &lst, const T &str )
 {
-  lst.push_back(str);
+    lst.push_back ( str );
 }
 
 /** Find if an item exists in a list.
@@ -620,12 +631,12 @@ template <class T> void toPush(std::list<T> &lst,const T &str)
 //template <class T> std::list<T>::iterator toFind(std::list<T> &lst,const T &str)
 //template <class T> typename std::list<T>::iterator myiterador;
 
-template <class T> typename std::list<T,std::allocator<T> >::iterator toFind( typename std::list<T, std::allocator<T> > &lst,const T &str)
+template <class T> typename std::list<T, std::allocator<T> >::iterator toFind ( typename std::list<T, std::allocator<T> > &lst, const T &str )
 {
-  for(typename std::list<T,std::allocator<T> >::iterator i=lst.begin();i!=lst.end();i++)
-    if (*i==str)
-      return i;
-  return lst.end();
+    for ( typename std::list<T, std::allocator<T> >::iterator i = lst.begin();i != lst.end();i++ )
+        if ( *i == str )
+            return i;
+    return lst.end();
 }
 
 /** Get next SQL token from an editor.
@@ -636,147 +647,148 @@ template <class T> typename std::list<T,std::allocator<T> >::iterator toFind( ty
  * @param comments Include comments as tokens
  * @return String with next token in editor
  */
-QString toGetToken(toMarkedText *text,int &curLine,int &pos,
-		   bool forward=true,bool comments=false);
+QString toGetToken ( toMarkedText *text, int &curLine, int &pos,
+                     bool forward = true, bool comments = false );
 
 /** Convert a string representation to a font structure.
  * @param str String representing the font.
  * @return Font structure represented by the string.
  * @see toFontToString
  */
-QFont toStringToFont(const QString &str);
+QFont toStringToFont ( const QString &str );
 /** Convert a font to a string representation.
  * @param fnt Font to convert.
  * @return String representation of font.
  */
-QString toFontToString(const QFont &fnt);
+QString toFontToString ( const QFont &fnt );
 /** Get the path to the help directory.
  * @return Path to the help directory.
  */
-QString toHelpPath(void);
+QString toHelpPath ( void );
 /** Read file from filename.
  * @param filename Filename to read file from.
  * @return Contents of file.
  * @exception QString describing I/O problem.
  */
-QCString toReadFile(const QString &filename);
+QCString toReadFile ( const QString &filename );
 /** Write file to filename.
  * @param filename Filename to write file to.
  * @param data Data to write to file.
  */
-bool toWriteFile(const QString &filename,const QCString &data);
+bool toWriteFile ( const QString &filename, const QCString &data );
 /** Write file to filename.
  * @param filename Filename to write file to.
  * @param data Data to write to file.
  */
-bool toWriteFile(const QString &filename,const QString &data);
+bool toWriteFile ( const QString &filename, const QString &data );
 /** Compare two string lists.
  * @param l1 First list to compare.
  * @param l2 Second list to compare.
  * @param len Length of lists to compare.
  * @return True if all first len elements match.
  */
-bool toCompareLists(QStringList &l1,QStringList &l2,unsigned int len);
+bool toCompareLists ( QStringList &l1, QStringList &l2, unsigned int len );
 /** Set environment variable.
  * @param var Variable name to set.
  * @param val Value to set variable to.
  */
-void toSetEnv(const QCString &var,const QCString &val);
+void toSetEnv ( const QCString &var, const QCString &val );
 /** Delete an environment variable.
  * @param var Environment variable to delete.
  */
-void toUnSetEnv(const QCString &var);
+void toUnSetEnv ( const QCString &var );
 /** Pop up a dialog and choose a file to open.
  * @param filename Default filename to open.
  * @param filter Filter of filenames (See @ref QFileDialog)
  * @param parent Parent of dialog.
  * @return Selected filename.
  */
-QString toOpenFilename(const QString &filename,const QString &filter,QWidget *parent);
+QString toOpenFilename ( const QString &filename, const QString &filter, QWidget *parent );
 /** Pop up a dialog and choose a file to save to.
  * @param filename Default filename to open.
  * @param filter Filter of filenames (See @ref QFileDialog)
  * @param parent Parent of dialog.
  * @return Selected filename.
  */
-QString toSaveFilename(const QString &filename,const QString &filter,QWidget *parent);
+QString toSaveFilename ( const QString &filename, const QString &filter, QWidget *parent );
 /** Get index of menu to insert tool specific menu at.
  * @return Index of the tool menu entry.
  */
-int toToolMenuIndex(void);
+int toToolMenuIndex ( void );
 /** Check if a character is valid for an identifier in Oracle.
  * @param c Character to check
  * @return True if it is a valid Oracle identifier.
  */
-inline bool  toIsIdent(QChar c)
+inline bool  toIsIdent ( QChar c )
 {
-  return c.isLetterOrNumber()||c=='_'||c=='%'||c=='$'||c=='#';
+    return c.isLetterOrNumber() || c == '_' || c == '%' || c == '$' || c == '#';
 }
 /** Get installation directory of application (Plugin directory on unix, installation
  * target on windows).
  * @return String containing directory
  */
-QString toPluginPath(void);
+QString toPluginPath ( void );
 /** Get a list of the latest status messages that have been shown.
  */
-std::list<QString> toStatusMessages(void);
+std::list<QString> toStatusMessages ( void );
 /** Get a color for a chart item.
  * @param index Indicating which chart item to get color for.
  */
-QColor toChartColor(int index);
+QColor toChartColor ( int index );
 /** Return the connection most closely associated with a widget. Currently connections are
  * only stored in toToolWidgets.
  * @return Reference toConnection object closest to the current.
  */
-toConnection &toCurrentConnection(QObject *widget);
+toConnection &toCurrentConnection ( QObject *widget );
 /** Return the tool widget most closely associated with a widget.
  * @return Pointer to tool widget.
  */
-toToolWidget *toCurrentTool(QObject *widget);
+toToolWidget *toCurrentTool ( QObject *widget );
 /** Check if this connection is an oracle connection.
  */
-bool toIsOracle(const toConnection &);
+bool toIsOracle ( const toConnection & );
 /** Strip extra bind specifier from an SQL statement. (That means the extra <***> part after
  * the bind variable.
  * @param sql The sql to strip.
  * @return Return a string containing the same statement without qualifiers, which means the
  *         sql sent to Oracle and available in the SGA.
  */
-QString toSQLStripSpecifier(const QString &sql);
+QString toSQLStripSpecifier ( const QString &sql );
 /** Strip extra binds and replace with empty strings.
  * @param sql The sql to strip.
  * @return Return a string containing the same statement without binds.
  */
-QString toSQLStripBind(const QString &sql);
+QString toSQLStripBind ( const QString &sql );
 
 /** Find an item in a listview.
  * @param list The list to search for the item.
  * @param str The string to search for. You can specify parent/child with : in the string.
  */
-QListViewItem *toFindItem(QListView *list,const QString &str);
+QListViewItem *toFindItem ( QListView *list, const QString &str );
 /** Whenever this class is instantiated the window will display a busy cursor. You
  * can instantiate this function as many time as you want, only when all of them are
  * destructed the curser will revert back to normal.
  */
-class toBusy {
-  static unsigned int Count;
+class toBusy
+{
+    static unsigned int Count;
 public:
-  static void clear(void);
-  toBusy();
-  ~toBusy();
+    static void clear ( void );
+    toBusy();
+    ~toBusy();
 };
 /**
  * Set or change title of a tool window.
  * @param tool Widget of tool.
  * @param caption Caption to set to the tool.
  */
-void toToolCaption(toToolWidget *tool,const QString &caption);
+void toToolCaption ( toToolWidget *tool, const QString &caption );
 
 /**
  * Get maximum number of a and b.
  */
 template <class T>
-T max(T a, T b)
+T max ( T a, T b )
 {
     return a > b ? a : b ;
 }
@@ -785,7 +797,7 @@ T max(T a, T b)
  * Get minimum number of a and b.
  */
 template <class T>
-T min(T a, T b)
+T min ( T a, T b )
 {
     return a < b ? a : b ;
 }
@@ -793,18 +805,19 @@ T min(T a, T b)
 /** Popup toolbutton that works like I think they should under Qt 3.0 as well.
  * this means they will pop up a tool menu when you click on the button as well.
  */
-class toPopupButton : public QToolButton {
-  Q_OBJECT
+class toPopupButton : public QToolButton
+{
+    Q_OBJECT
 public:
-  /** Create button, same constructor as toolbutton except no slots
-   */
-  toPopupButton(const QIconSet &iconSet,const QString &textLabel,
-                const QString &grouptext,QToolBar *parent,const char *name=0);
-  /** Create button somewhere else than in a toolbar.
-   */
-  toPopupButton(QWidget *parent,const char *name=0);
+    /** Create button, same constructor as toolbutton except no slots
+     */
+    toPopupButton ( const QIconSet &iconSet, const QString &textLabel,
+                    const QString &grouptext, QToolBar *parent, const char *name = 0 );
+    /** Create button somewhere else than in a toolbar.
+     */
+    toPopupButton ( QWidget *parent, const char *name = 0 );
 private slots:
-  void click(void);
+    void click ( void );
 };
 
 /* This can't be documented in KDoc, anyway it is an easy way to catch any exception that
@@ -812,7 +825,7 @@ private slots:
  */
 #define TOCATCH \
     catch (const QString &str) {\
-      toStatusMessage(str);\
+        toStatusMessage(str);\
     }
 
 #endif

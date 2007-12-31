@@ -32,17 +32,18 @@
 #include <QMenu>
 #include <QApplication>
 
-extern "C" MY_EXPORT int entryPoint(QApplication *);
-extern "C" MY_EXPORT int SubForm3_SubForm3_Post(SubForm3 *);
+extern "C" MY_EXPORT int entryPoint ( QApplication * );
+extern "C" MY_EXPORT int SubForm3_SubForm3_Post ( SubForm3 * );
 
-class myplugsubformsxc : public QObject {
+class myplugsubformsxc : public QObject
+{
     Q_OBJECT
 public:
-    myplugsubformsxc(SubForm3 *);
+    myplugsubformsxc ( SubForm3 * );
     ~myplugsubformsxc();
     void sacaSXC();
 public slots:
-    virtual void s_pintaMenu(QMenu *);
-    virtual void s_trataMenu(QAction *);
+    virtual void s_pintaMenu ( QMenu * );
+    virtual void s_trataMenu ( QAction * );
 };
 

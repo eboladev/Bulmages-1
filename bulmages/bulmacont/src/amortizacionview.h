@@ -32,14 +32,15 @@
 class empresa;
 
 
-class AmortizacionSubForm : public SubForm2Bc {
+class AmortizacionSubForm : public SubForm2Bc
+{
     Q_OBJECT
 
 public:
-    AmortizacionSubForm(QWidget *parent);
+    AmortizacionSubForm ( QWidget *parent );
     virtual ~AmortizacionSubForm();
-    virtual void creaMenu(QMenu *);
-        virtual void procesaMenu(QAction *);
+    virtual void creaMenu ( QMenu * );
+    virtual void procesaMenu ( QAction * );
 };
 
 
@@ -48,7 +49,8 @@ public:
 
 /// Clase que muestra la ventana de amortizaci&oacute;n.
 /** Formulario de introducci&oacute;n y/o visi&oacute;n de amortizaciones. */
-class AmortizacionView : public FichaBc, public Ui_AmortizacionBase {
+class AmortizacionView : public FichaBc, public Ui_AmortizacionBase
+{
     Q_OBJECT
 
 private:
@@ -65,9 +67,9 @@ private:
     QString m_idamortizacion;
 
 public:
-    AmortizacionView(Empresa *, QWidget *);
+    AmortizacionView ( Empresa *, QWidget * );
     ~AmortizacionView();
-    virtual int cargar(QString idamortizacion);
+    virtual int cargar ( QString idamortizacion );
     virtual int guardar();
     virtual int borrar();
 

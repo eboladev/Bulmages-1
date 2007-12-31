@@ -36,14 +36,15 @@
 #include "almacenview.h"
 #include "trabajadorview.h"
 
-extern "C" MY_EXPORT void entryPoint(Bulmafact *);
-extern "C" MY_EXPORT int AlmacenView_AlmacenView(AlmacenView *);
-extern "C" MY_EXPORT int TrabajadorView_TrabajadorView(TrabajadorView *);
-extern "C" MY_EXPORT int TrabajadorView_on_mui_lista_currentItemChanged_Post(TrabajadorView *trab);
-extern "C" MY_EXPORT int TrabajadorView_on_mui_guardar_clicked(TrabajadorView *trab);
+extern "C" MY_EXPORT void entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int AlmacenView_AlmacenView ( AlmacenView * );
+extern "C" MY_EXPORT int TrabajadorView_TrabajadorView ( TrabajadorView * );
+extern "C" MY_EXPORT int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab );
+extern "C" MY_EXPORT int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView *trab );
 extern QApplication2 *theApp;
 
-class myplugin4 : public QObject, PEmpresaBase {
+class myplugin4 : public QObject, PEmpresaBase
+{
     Q_OBJECT
 
 public:
@@ -52,7 +53,7 @@ public:
 public:
     myplugin4();
     ~myplugin4();
-    void inicializa(Bulmafact *);
+    void inicializa ( Bulmafact * );
 
 public slots:
     void elslot();

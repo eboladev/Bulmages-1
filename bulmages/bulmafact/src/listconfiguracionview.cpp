@@ -45,20 +45,21 @@
 \param comp
 \param parent
 **/
-ListConfiguracionView::ListConfiguracionView(Company *comp, QWidget *parent) : FichaBf(comp, parent) {
-    _depura("ListConfiguracionView::ListConfiguracionView", 1);
-    setupUi(this);
+ListConfiguracionView::ListConfiguracionView ( Company *comp, QWidget *parent ) : FichaBf ( comp, parent )
+{
+    _depura ( "ListConfiguracionView::ListConfiguracionView", 1 );
+    setupUi ( this );
 
-    setTitleName(tr("Configuracion"));
-    setDBTableName("configuracion");
-    setDBCampoId("nombre");
+    setTitleName ( tr ( "Configuracion" ) );
+    setDBTableName ( "configuracion" );
+    setDBCampoId ( "nombre" );
 
-    this->setAttribute(Qt::WA_DeleteOnClose);
-    mui_listado->setEmpresaBase(empresaBase());
+    this->setAttribute ( Qt::WA_DeleteOnClose );
+    mui_listado->setEmpresaBase ( empresaBase() );
     mui_listado->cargar();
 
-    meteWindow(windowTitle(), this, FALSE);
-    _depura("END ListConfiguracionView::ListConfiguracionView", 1);
+    meteWindow ( windowTitle(), this, FALSE );
+    _depura ( "END ListConfiguracionView::ListConfiguracionView", 1 );
 }
 
 
@@ -66,9 +67,10 @@ ListConfiguracionView::ListConfiguracionView(Company *comp, QWidget *parent) : F
 */
 /**
 **/
-ListConfiguracionView::~ListConfiguracionView() {
-    _depura("ListConfiguracionView::~ListConfiguracionView", 0);
-    _depura("END ListConfiguracionView::~ListConfiguracionView", 0);
+ListConfiguracionView::~ListConfiguracionView()
+{
+    _depura ( "ListConfiguracionView::~ListConfiguracionView", 0 );
+    _depura ( "END ListConfiguracionView::~ListConfiguracionView", 0 );
 }
 
 
@@ -80,15 +82,16 @@ ListConfiguracionView::~ListConfiguracionView() {
 /**
 \param parent
 **/
-ListConfiguracionSubForm::ListConfiguracionSubForm(QWidget *parent) : SubForm2Bf(parent) {
-    _depura("ListConfiguracionSubForm::ListConfiguracionSubForm", 0);
-    setDBTableName("configuracion");
-    setDBCampoId("nombre");
-    addSHeader("nombreorig", DBCampo::DBvarchar, DBCampo::DBDupPrimaryKey | DBCampo::DBNoSave, SHeader::DBNoView | SHeader::DBBlockView, "nombre");
-    addSHeader("nombre", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite, tr("Nombre"));
-    addSHeader("valor", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Valor"));
-    setinsercion(FALSE);
-    setDelete(FALSE);
-    _depura("END ListConfiguracionSubForm::ListConfiguracionSubForm", 0);
+ListConfiguracionSubForm::ListConfiguracionSubForm ( QWidget *parent ) : SubForm2Bf ( parent )
+{
+    _depura ( "ListConfiguracionSubForm::ListConfiguracionSubForm", 0 );
+    setDBTableName ( "configuracion" );
+    setDBCampoId ( "nombre" );
+    addSHeader ( "nombreorig", DBCampo::DBvarchar, DBCampo::DBDupPrimaryKey | DBCampo::DBNoSave, SHeader::DBNoView | SHeader::DBBlockView, "nombre" );
+    addSHeader ( "nombre", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite, tr ( "Nombre" ) );
+    addSHeader ( "valor", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Valor" ) );
+    setinsercion ( FALSE );
+    setDelete ( FALSE );
+    _depura ( "END ListConfiguracionSubForm::ListConfiguracionSubForm", 0 );
 }
 

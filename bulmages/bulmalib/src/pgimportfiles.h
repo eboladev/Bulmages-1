@@ -56,7 +56,8 @@
 
 /// Clase para importaci&oacute;n y exportaci&oacute;n a distintos formatos de archivo de datos.
 /** */
-class pgimportfiles {
+class pgimportfiles
+{
 private:
     /// Base de datos con la que trabaja la clase y de la que se hace
     /// importaci&oacute;n/exportaci&oacute;n.
@@ -74,26 +75,26 @@ private:
 public:
     /// Para que la clase pueda emitir el estado de completitud se inicializa con un puntero
     /// a funci&oacute;n.
-    virtual void alerta(int, int);
+    virtual void alerta ( int, int );
     /// Para que la clase pueda emitir mensajes de error o de alerta se inicializa con un
     /// puntero de funci&oacute;n.
-    virtual void mensajeria(QString);
-    void setFInicial(QString f);
-    void setFFinal(QString f);
+    virtual void mensajeria ( QString );
+    void setFInicial ( QString f );
+    void setFFinal ( QString f );
     void setModoTest();
     void setModoNormal();
     bool modoTest();
-    pgimportfiles(postgresiface2 *);
+    pgimportfiles ( postgresiface2 * );
     virtual ~pgimportfiles();
-    int contaplus2Bulmages(QFile &, QFile &);
-    int bulmages2Contaplus(QFile &, QFile &);
+    int contaplus2Bulmages ( QFile &, QFile & );
+    int bulmages2Contaplus ( QFile &, QFile & );
     /// Esta funci&oacute;n pasa datos de una empresa al formato XML.
-    int bulmages2XML(QFile &, unsigned long long int tipo = IMPORT_TODO);
-    int bulmafact2XML(QFile &, unsigned long long int tipo = IMPORT_TODO);
+    int bulmages2XML ( QFile &, unsigned long long int tipo = IMPORT_TODO );
+    int bulmafact2XML ( QFile &, unsigned long long int tipo = IMPORT_TODO );
     /// Esta funci&oacute;n pasa datos de XML a bulmag&eacute;s.
-    int XML2Bulmages(QFile &, unsigned long long int tip = IMPORT_TODO);
-    int XML2BulmaFact(QFile &, unsigned long long int tip = IMPORT_TODO);
-    QString searchParent(QString);
+    int XML2Bulmages ( QFile &, unsigned long long int tip = IMPORT_TODO );
+    int XML2BulmaFact ( QFile &, unsigned long long int tip = IMPORT_TODO );
+    QString searchParent ( QString );
 };
 
 #endif

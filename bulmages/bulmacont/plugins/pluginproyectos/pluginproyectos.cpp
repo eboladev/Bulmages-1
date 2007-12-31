@@ -31,32 +31,35 @@
 ///
 /**
 **/
-mytiptrab::mytiptrab() {
-    _depura("mytiptrab::mytiptrab", 0);
-    _depura("END mytiptrab::mytiptrab", 0);
+mytiptrab::mytiptrab()
+{
+    _depura ( "mytiptrab::mytiptrab", 0 );
+    _depura ( "END mytiptrab::mytiptrab", 0 );
 }
 
 
 ///
 /**
 **/
-mytiptrab::~mytiptrab() {
-    _depura("mytiptrab::~mytiptrab", 0);
-    _depura("END mytiptrab::~mytiptrab", 0);
+mytiptrab::~mytiptrab()
+{
+    _depura ( "mytiptrab::~mytiptrab", 0 );
+    _depura ( "END mytiptrab::~mytiptrab", 0 );
 }
 
 
 ///
 /**
 **/
-void mytiptrab::elslot() {
-    _depura("mytiptrab::elslot", 0);
+void mytiptrab::elslot()
+{
+    _depura ( "mytiptrab::elslot", 0 );
     /// Agregamos el subformulario de proyectos.
-    ListProyectosView *l = new ListProyectosView(m_bulmacont->empresaactual(), 0, 0, Listado::EditMode);
-    l->setObjectName(QString::fromUtf8("mui_proyectos"));
-    m_bulmacont->workspace()->addWindow(l);
+    ListProyectosView *l = new ListProyectosView ( m_bulmacont->empresaactual(), 0, 0, Listado::EditMode );
+    l->setObjectName ( QString::fromUtf8 ( "mui_proyectos" ) );
+    m_bulmacont->workspace() ->addWindow ( l );
     l->show();
-    _depura("END mytiptrab::elslot", 0);
+    _depura ( "END mytiptrab::elslot", 0 );
 }
 
 
@@ -64,15 +67,16 @@ void mytiptrab::elslot() {
 /**
 \param bges
 **/
-void mytiptrab::inicializa(Bulmacont *bges) {
+void mytiptrab::inicializa ( Bulmacont *bges )
+{
     /// Creamos el men&uacute;.
     m_bulmacont = bges;
-    QAction *accion = new QAction("&Proyectos", 0);
-    accion->setStatusTip("Proyectos");
-    accion->setWhatsThis("Proyectos");
-    connect(accion, SIGNAL(activated()), this, SLOT(elslot()));
+    QAction *accion = new QAction ( "&Proyectos", 0 );
+    accion->setStatusTip ( "Proyectos" );
+    accion->setWhatsThis ( "Proyectos" );
+    connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bges->menuMaestro->insertAction(bges->actionPaises, accion);
+    bges->menuMaestro->insertAction ( bges->actionPaises, accion );
 }
 
 
@@ -81,10 +85,11 @@ void mytiptrab::inicializa(Bulmacont *bges) {
 \param bges
 \return
 **/
-int entryPoint(Bulmacont *bges) {
-    _depura("Estoy dentro del plugin de proyectos", 0);
+int entryPoint ( Bulmacont *bges )
+{
+    _depura ( "Estoy dentro del plugin de proyectos", 0 );
     mytiptrab *plug = new mytiptrab();
-    plug->inicializa(bges);
+    plug->inicializa ( bges );
     return 0;
 }
 
@@ -93,14 +98,15 @@ int entryPoint(Bulmacont *bges) {
 \param ccoste
 \return
 **/
-int ccosteview_ccosteview(ccosteview *ccoste) {
-    _depura("ccosteview_ccosteview", 0);
+int ccosteview_ccosteview ( ccosteview *ccoste )
+{
+    _depura ( "ccosteview_ccosteview", 0 );
 
     /// Agregamos el subformulario de proyectos.
-    ListProyectosView *l = new ListProyectosView(ccoste->empresaBase(),ccoste, 0, Listado::SelectMode);
-    l->setObjectName(QString::fromUtf8("mui_proyectos"));
-    l->mui_actualizar->setDisabled(TRUE);
-    ccoste->tabWidget->addTab(l, "Proyectos Asociados");
+    ListProyectosView *l = new ListProyectosView ( ccoste->empresaBase(), ccoste, 0, Listado::SelectMode );
+    l->setObjectName ( QString::fromUtf8 ( "mui_proyectos" ) );
+    l->mui_actualizar->setDisabled ( TRUE );
+    ccoste->tabWidget->addTab ( l, "Proyectos Asociados" );
     return 0;
 }
 
@@ -110,10 +116,11 @@ int ccosteview_ccosteview(ccosteview *ccoste) {
 \param ficha
 \return
 **/
-int Ficha_cargar(Ficha *ficha) {
-    ListProyectosView *l = ficha->findChild<ListProyectosView *>("mui_proyectos");
-    if (l)
-        l->mui_listado->cargar("SELECT * FROM presupuestoc WHERE idc_coste = " + ficha->DBvalue("idc_coste"));
+int Ficha_cargar ( Ficha *ficha )
+{
+    ListProyectosView * l = ficha->findChild<ListProyectosView *> ( "mui_proyectos" );
+    if ( l )
+        l->mui_listado->cargar ( "SELECT * FROM presupuestoc WHERE idc_coste = " + ficha->DBvalue ( "idc_coste" ) );
     return 0;
 }
 

@@ -28,25 +28,26 @@
 \param emp
 \param parent
 **/
-fpagoview::fpagoview(Empresa *emp, QWidget *parent)
-        : FichaBc(emp, parent) {
-    _depura("fpagoview::fpagoview", 0);
+fpagoview::fpagoview ( Empresa *emp, QWidget *parent )
+        : FichaBc ( emp, parent )
+{
+    _depura ( "fpagoview::fpagoview", 0 );
 
-    setTitleName(tr("Forma de Pago"));
+    setTitleName ( tr ( "Forma de Pago" ) );
     /// Establecemos cual es la tabla en la que basarse para los permisos
-    setDBTableName("fpago");
+    setDBTableName ( "fpago" );
 
-    this->setAttribute(Qt::WA_DeleteOnClose);
-    setupUi(this);
+    this->setAttribute ( Qt::WA_DeleteOnClose );
+    setupUi ( this );
     m_curfpago = NULL;
 
-    dialogChanges_setQObjectExcluido(mui_comboFPago);
+    dialogChanges_setQObjectExcluido ( mui_comboFPago );
 
     pintar();
     dialogChanges_cargaInicial();
-    emp->meteWindow(windowTitle(), this);
+    emp->meteWindow ( windowTitle(), this );
 
-    _depura("END fpagoview::fpagoview", 0);
+    _depura ( "END fpagoview::fpagoview", 0 );
 }
 
 
@@ -54,14 +55,15 @@ fpagoview::fpagoview(Empresa *emp, QWidget *parent)
 /// la memoria que se haya ocupado. */
 /**
 **/
-fpagoview::~fpagoview() {
-    _depura("fpagoview::~fpagoview", 0);
+fpagoview::~fpagoview()
+{
+    _depura ( "fpagoview::~fpagoview", 0 );
     on_mui_guardar_clicked();
-    if (m_curfpago != NULL) {
+    if ( m_curfpago != NULL ) {
         delete m_curfpago;
     } /// end if
     sacaWindow();
-    _depura("END fpagoview::~fpagoview", 0);
+    _depura ( "END fpagoview::~fpagoview", 0 );
 }
 
 
@@ -69,10 +71,11 @@ fpagoview::~fpagoview() {
 /**
 \param i
 **/
-void fpagoview::on_mui_comboFPago_currentIndexChanged(int i) {
-    _depura("fpagoview::on_mui_comboFPago_currentIndexChanged", 0);
-    cambiacombo(i);
-    _depura("END fpagoview::on_mui_comboFPago_currentIndexChanged", 0);
+void fpagoview::on_mui_comboFPago_currentIndexChanged ( int i )
+{
+    _depura ( "fpagoview::on_mui_comboFPago_currentIndexChanged", 0 );
+    cambiacombo ( i );
+    _depura ( "END fpagoview::on_mui_comboFPago_currentIndexChanged", 0 );
 }
 
 
@@ -81,49 +84,50 @@ void fpagoview::on_mui_comboFPago_currentIndexChanged(int i) {
 /**
 \param idfpago
 **/
-void fpagoview::pintar(QString idfpago) {
-    _depura("fpagoview::pintar", 0);
+void fpagoview::pintar ( QString idfpago )
+{
+    _depura ( "fpagoview::pintar", 0 );
     int posicion = 0;
     /// Vamos a inicializar el combo de los tipos de IVA.
-    if (m_curfpago != NULL)
+    if ( m_curfpago != NULL )
         delete m_curfpago;
     QString query = "SELECT * from fpago ORDER BY nomfpago";
-    m_curfpago = empresaBase()->cargacursor(query);
+    m_curfpago = empresaBase() ->cargacursor ( query );
     mui_comboFPago->clear();
     int i = 0;
-    while (!m_curfpago->eof()) {
-        mui_comboFPago->insertItem(i, m_curfpago->valor("nomfpago"));
-        if (idfpago == m_curfpago->valor("idfpago"))
+    while ( !m_curfpago->eof() ) {
+        mui_comboFPago->insertItem ( i, m_curfpago->valor ( "nomfpago" ) );
+        if ( idfpago == m_curfpago->valor ( "idfpago" ) )
             posicion = i;
         m_curfpago->siguienteregistro();
         i++;
     } // end while
 
-    if (mui_comboFPago->currentIndex() == -1) {
-        mui_nombreFPago->setEnabled(FALSE);
-        mui_plazoPrimerPago->setEnabled(FALSE);
-        mui_numeroPlazos->setEnabled(FALSE);
-        mui_tipoPlazoPrimerPago->setEnabled(FALSE);
-        mui_plazoEntreRecibos->setEnabled(FALSE);
-        mui_tipoPlazoEntreRecibos->setEnabled(FALSE);
+    if ( mui_comboFPago->currentIndex() == -1 ) {
+        mui_nombreFPago->setEnabled ( FALSE );
+        mui_plazoPrimerPago->setEnabled ( FALSE );
+        mui_numeroPlazos->setEnabled ( FALSE );
+        mui_tipoPlazoPrimerPago->setEnabled ( FALSE );
+        mui_plazoEntreRecibos->setEnabled ( FALSE );
+        mui_tipoPlazoEntreRecibos->setEnabled ( FALSE );
 
-        mui_nombreFPago->setText("");
-        mui_plazoPrimerPago->setText("");
-        mui_numeroPlazos->setText("");
-        mui_tipoPlazoPrimerPago->setText("");
-        mui_plazoEntreRecibos->setText("");
-        mui_tipoPlazoEntreRecibos->setText("");
+        mui_nombreFPago->setText ( "" );
+        mui_plazoPrimerPago->setText ( "" );
+        mui_numeroPlazos->setText ( "" );
+        mui_tipoPlazoPrimerPago->setText ( "" );
+        mui_plazoEntreRecibos->setText ( "" );
+        mui_tipoPlazoEntreRecibos->setText ( "" );
     } else {
-        mui_nombreFPago->setEnabled(TRUE);
-        mui_plazoPrimerPago->setEnabled(TRUE);
-        mui_numeroPlazos->setEnabled(TRUE);
-        mui_tipoPlazoPrimerPago->setEnabled(TRUE);
-        mui_plazoEntreRecibos->setEnabled(TRUE);
-        mui_tipoPlazoEntreRecibos->setEnabled(TRUE);
+        mui_nombreFPago->setEnabled ( TRUE );
+        mui_plazoPrimerPago->setEnabled ( TRUE );
+        mui_numeroPlazos->setEnabled ( TRUE );
+        mui_tipoPlazoPrimerPago->setEnabled ( TRUE );
+        mui_plazoEntreRecibos->setEnabled ( TRUE );
+        mui_tipoPlazoEntreRecibos->setEnabled ( TRUE );
 
-        mostrarplantilla(posicion);
+        mostrarplantilla ( posicion );
     } // end if
-    _depura("END fpagoview::pintar", 0);
+    _depura ( "END fpagoview::pintar", 0 );
 }
 
 
@@ -133,41 +137,43 @@ void fpagoview::pintar(QString idfpago) {
 /**
 \param pos
 **/
-void fpagoview::mostrarplantilla(int pos) {
-    _depura("fpagoview::mostrarplantilla", 0);
+void fpagoview::mostrarplantilla ( int pos )
+{
+    _depura ( "fpagoview::mostrarplantilla", 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
-    if (dialogChanges_hayCambios()) {
-        if (QMessageBox::warning(this,
-                                 tr("Guardar forma de pago"),
-                                 tr("Desea guardar los cambios?"),
-                                 QMessageBox::Ok, QMessageBox::Cancel) == QMessageBox::Ok)
+    if ( dialogChanges_hayCambios() ) {
+        if ( QMessageBox::warning ( this,
+                                    tr ( "Guardar forma de pago" ),
+                                    tr ( "Desea guardar los cambios?" ),
+                                    QMessageBox::Ok, QMessageBox::Cancel ) == QMessageBox::Ok )
             on_mui_guardar_clicked();
     } // end if
-    if (mui_comboFPago->count() > 0) {
-        if (pos != 0) {
-            mui_comboFPago->setCurrentIndex(pos);
+    if ( mui_comboFPago->count() > 0 ) {
+        if ( pos != 0 ) {
+            mui_comboFPago->setCurrentIndex ( pos );
         } // end if
         m_posactual = mui_comboFPago->currentIndex();
-        mui_nombreFPago->setText(m_curfpago->valor("nomfpago", m_posactual));
-        mui_plazoPrimerPago->setText(m_curfpago->valor("plazoprimerpagofpago", m_posactual));
-        mui_numeroPlazos->setText(m_curfpago->valor("nplazosfpago", m_posactual));
-        mui_tipoPlazoPrimerPago->setText(m_curfpago->valor("tipoplazoprimerpagofpago", m_posactual));
-        mui_plazoEntreRecibos->setText(m_curfpago->valor("plazoentrerecibofpago", m_posactual));
-        mui_tipoPlazoEntreRecibos->setText(m_curfpago->valor("tipoplazoentrerecibofpago", m_posactual));
+        mui_nombreFPago->setText ( m_curfpago->valor ( "nomfpago", m_posactual ) );
+        mui_plazoPrimerPago->setText ( m_curfpago->valor ( "plazoprimerpagofpago", m_posactual ) );
+        mui_numeroPlazos->setText ( m_curfpago->valor ( "nplazosfpago", m_posactual ) );
+        mui_tipoPlazoPrimerPago->setText ( m_curfpago->valor ( "tipoplazoprimerpagofpago", m_posactual ) );
+        mui_plazoEntreRecibos->setText ( m_curfpago->valor ( "plazoentrerecibofpago", m_posactual ) );
+        mui_tipoPlazoEntreRecibos->setText ( m_curfpago->valor ( "tipoplazoentrerecibofpago", m_posactual ) );
         /// Comprobamos cual es la cadena inicial.
         dialogChanges_cargaInicial();
     } // end if
-    _depura("END fpagoview::mostrarplantilla", 0);
+    _depura ( "END fpagoview::mostrarplantilla", 0 );
 }
 
 
 /// Esta funci&oacute;n sirve para hacer el cambio sobre un centro de coste.
 /**
 **/
-void fpagoview::cambiacombo(int) {
-    _depura("fpagoview::cambiacombo", 0);
+void fpagoview::cambiacombo ( int )
+{
+    _depura ( "fpagoview::cambiacombo", 0 );
     mostrarplantilla();
-    _depura("END fpagoview::cambiacombo", 0);
+    _depura ( "END fpagoview::cambiacombo", 0 );
 }
 
 
@@ -176,14 +182,15 @@ void fpagoview::cambiacombo(int) {
 /** Lo que hace es que se hace un update de todos los campos. */
 /**
 **/
-int fpagoview::guardar() {
-    _depura("fpagoview::on_mui_guardarFPago_clicked", 0);
-    QString idfpago = m_curfpago->valor("idfpago", m_posactual);
-    QString query = "UPDATE fpago SET nomfpago = '" + mui_nombreFPago->text() + "', nplazosfpago = " + mui_numeroPlazos->text() + " , plazoprimerpagofpago = " + mui_plazoPrimerPago->text() + ", plazoentrerecibofpago = " + mui_plazoEntreRecibos->text() + " WHERE idfpago = " + m_curfpago->valor("idfpago", m_posactual);
-    empresaBase()->ejecuta(query);
+int fpagoview::guardar()
+{
+    _depura ( "fpagoview::on_mui_guardarFPago_clicked", 0 );
+    QString idfpago = m_curfpago->valor ( "idfpago", m_posactual );
+    QString query = "UPDATE fpago SET nomfpago = '" + mui_nombreFPago->text() + "', nplazosfpago = " + mui_numeroPlazos->text() + " , plazoprimerpagofpago = " + mui_plazoPrimerPago->text() + ", plazoentrerecibofpago = " + mui_plazoEntreRecibos->text() + " WHERE idfpago = " + m_curfpago->valor ( "idfpago", m_posactual );
+    empresaBase() ->ejecuta ( query );
     dialogChanges_cargaInicial();
-    pintar(m_curfpago->valor("idfpago", m_posactual));
-    _depura("END fpagoview::on_mui_guardarFPago_clicked", 0);
+    pintar ( m_curfpago->valor ( "idfpago", m_posactual ) );
+    _depura ( "END fpagoview::on_mui_guardarFPago_clicked", 0 );
     return 0;
 }
 
@@ -192,29 +199,30 @@ int fpagoview::guardar() {
 /// de IVAs.
 /**
 **/
-void fpagoview::on_mui_crear_clicked() {
-    _depura("fpagoview::crear", 0);
+void fpagoview::on_mui_crear_clicked()
+{
+    _depura ( "fpagoview::crear", 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
-    if (dialogChanges_hayCambios()) {
-        if (QMessageBox::warning(this,
-                                 tr("Guardar forma de pago"),
-                                 tr("Desea guardar los cambios?"),
-                                 QMessageBox::Ok, QMessageBox::Cancel) == QMessageBox::Ok)
+    if ( dialogChanges_hayCambios() ) {
+        if ( QMessageBox::warning ( this,
+                                    tr ( "Guardar forma de pago" ),
+                                    tr ( "Desea guardar los cambios?" ),
+                                    QMessageBox::Ok, QMessageBox::Cancel ) == QMessageBox::Ok )
             on_mui_guardar_clicked();
     } // end if
     try {
-        QString query = "INSERT INTO fpago (nomfpago, nplazosfpago, plazoprimerpagofpago, plazoentrerecibofpago) VALUES ('" + tr("Nueva forma de pago") + "', 0, 0, 0)";
-        empresaBase()->begin();
-        empresaBase()->ejecuta(query);
-        cursor2 *cur = empresaBase()->cargacursor("SELECT max(idfpago) AS idfpago FROM fpago");
-        empresaBase()->commit();
-        pintar(cur->valor("idfpago"));
+        QString query = "INSERT INTO fpago (nomfpago, nplazosfpago, plazoprimerpagofpago, plazoentrerecibofpago) VALUES ('" + tr ( "Nueva forma de pago" ) + "', 0, 0, 0)";
+        empresaBase() ->begin();
+        empresaBase() ->ejecuta ( query );
+        cursor2 *cur = empresaBase() ->cargacursor ( "SELECT max(idfpago) AS idfpago FROM fpago" );
+        empresaBase() ->commit();
+        pintar ( cur->valor ( "idfpago" ) );
         delete cur;
-    } catch (...) {
-        empresaBase()->rollback();
+    } catch ( ... ) {
+        empresaBase() ->rollback();
         return;
     } // end try
-    _depura("END fpagoview::crear", 0);
+    _depura ( "END fpagoview::crear", 0 );
 }
 
 
@@ -223,18 +231,19 @@ void fpagoview::on_mui_crear_clicked() {
 /**
 \returns
 **/
-void fpagoview::on_mui_borrar_clicked() {
-    _depura("fpagoview::borrar", 0);
-    if (mui_comboFPago->currentIndex() == -1) {
-        mensajeInfo(tr("Tiene que seleccionar una forma de pago antes de borrarla"));
+void fpagoview::on_mui_borrar_clicked()
+{
+    _depura ( "fpagoview::borrar", 0 );
+    if ( mui_comboFPago->currentIndex() == -1 ) {
+        mensajeInfo ( tr ( "Tiene que seleccionar una forma de pago antes de borrarla" ) );
         return;
     } else {
-        switch (QMessageBox::warning(this,
-                                     tr("Borrar forma de pago"),
-                                     tr("Se va a borrar la forma de pago.\nEsto puede ocasionar perdida de datos.\n"),
-                                     QMessageBox::Ok, QMessageBox::Cancel)) {
+        switch ( QMessageBox::warning ( this,
+                                        tr ( "Borrar forma de pago" ),
+                                        tr ( "Se va a borrar la forma de pago.\nEsto puede ocasionar perdida de datos.\n" ),
+                                        QMessageBox::Ok, QMessageBox::Cancel ) ) {
         case QMessageBox::Ok: /// Retry clicked or Enter pressed.
-            empresaBase()->ejecuta("DELETE FROM fpago WHERE idfpago = " + m_curfpago->valor("idfpago", mui_comboFPago->currentIndex()));
+            empresaBase() ->ejecuta ( "DELETE FROM fpago WHERE idfpago = " + m_curfpago->valor ( "idfpago", mui_comboFPago->currentIndex() ) );
             pintar();
             break;
         case QMessageBox::Cancel: /// Abort clicked or Escape pressed.
@@ -242,7 +251,7 @@ void fpagoview::on_mui_borrar_clicked() {
         } // end switch
     } // end if
     return;
-    _depura("END fpagoview::borrar", 0);
+    _depura ( "END fpagoview::borrar", 0 );
 }
 
 

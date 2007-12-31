@@ -32,28 +32,29 @@
 \param emp
 \param parent
 **/
-AmortizacionesView::AmortizacionesView(Empresa *emp, QWidget *parent)
-        : Listado(emp, parent) {
-    _depura("AmortizacionesView::AmortizacionesView", 0);
+AmortizacionesView::AmortizacionesView ( Empresa *emp, QWidget *parent )
+        : Listado ( emp, parent )
+{
+    _depura ( "AmortizacionesView::AmortizacionesView", 0 );
 
-    this->setAttribute(Qt::WA_DeleteOnClose);
-    setupUi(this);
-    setSubForm(mui_listado);
-   /// Hacemos la inicializacion de un listado embebido.
-    mui_listado->setEmpresaBase(empresaBase());
-    mui_listado->setDBTableName("amortizacion");
-    mui_listado->setFileConfig("AmortizacionListSubform");
-    mui_listado->setDBCampoId("idamortizacion");
-    mui_listado->addSHeader("idamortizacion", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("Id amortizacion"));
-    mui_listado->addSHeader("nomamortizacion", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre"));
-    mui_listado->addSHeader("fechacompra", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Fecha compra"));
-    mui_listado->addSHeader("fecha1cuota", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Fecha 1 cuota"));
-    mui_listado->addSHeader("numcuotas", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Num cuotas"));
-    mui_listado->setinsercion(FALSE);
+    this->setAttribute ( Qt::WA_DeleteOnClose );
+    setupUi ( this );
+    setSubForm ( mui_listado );
+    /// Hacemos la inicializacion de un listado embebido.
+    mui_listado->setEmpresaBase ( empresaBase() );
+    mui_listado->setDBTableName ( "amortizacion" );
+    mui_listado->setFileConfig ( "AmortizacionListSubform" );
+    mui_listado->setDBCampoId ( "idamortizacion" );
+    mui_listado->addSHeader ( "idamortizacion", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "Id amortizacion" ) );
+    mui_listado->addSHeader ( "nomamortizacion", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre" ) );
+    mui_listado->addSHeader ( "fechacompra", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Fecha compra" ) );
+    mui_listado->addSHeader ( "fecha1cuota", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Fecha 1 cuota" ) );
+    mui_listado->addSHeader ( "numcuotas", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Num cuotas" ) );
+    mui_listado->setinsercion ( FALSE );
     presentar();
 
-    meteWindow(windowTitle());
-    _depura("END AmortizacionesView::AmortizacionesView", 0);
+    meteWindow ( windowTitle() );
+    _depura ( "END AmortizacionesView::AmortizacionesView", 0 );
 }
 
 
@@ -62,10 +63,11 @@ AmortizacionesView::AmortizacionesView(Empresa *emp, QWidget *parent)
  */
 /**
 **/
-AmortizacionesView::~AmortizacionesView() {
-    _depura("AmortizacionesView::~AmortizacionesView", 0);
+AmortizacionesView::~AmortizacionesView()
+{
+    _depura ( "AmortizacionesView::~AmortizacionesView", 0 );
     sacaWindow();
-    _depura("END AmortizacionesView::~AmortizacionesView", 0);
+    _depura ( "END AmortizacionesView::~AmortizacionesView", 0 );
 }
 
 
@@ -74,12 +76,13 @@ AmortizacionesView::~AmortizacionesView() {
  */
 /**
 **/
-void AmortizacionesView::crear() {
-    _depura("AmortizacionesView::on_mui_crear_clicked", 0);
-    AmortizacionView *amor = new AmortizacionView((Empresa *)empresaBase(), 0);
-    empresaBase()->pWorkspace()->addWindow(amor);
+void AmortizacionesView::crear()
+{
+    _depura ( "AmortizacionesView::on_mui_crear_clicked", 0 );
+    AmortizacionView *amor = new AmortizacionView ( ( Empresa * ) empresaBase(), 0 );
+    empresaBase() ->pWorkspace() ->addWindow ( amor );
     amor->show();
-    _depura("END AmortizacionesView::on_mui_crear_clicked", 0);
+    _depura ( "END AmortizacionesView::on_mui_crear_clicked", 0 );
 }
 
 
@@ -87,23 +90,24 @@ void AmortizacionesView::crear() {
 /// La que esta seleccionada en el listado.
 /**
 **/
-void AmortizacionesView::borrar() {
-    _depura("AmortizacionesView::on_mui_borrar_clicked", 0);
+void AmortizacionesView::borrar()
+{
+    _depura ( "AmortizacionesView::on_mui_borrar_clicked", 0 );
     try {
-	QString codigo = mui_listado->DBvalue("idamortizacion");
-	if (codigo != "") {
-		QString query = "DELETE FROM linamortizacion WHERE idamortizacion = " + codigo;
-		empresaBase()->begin();
-		empresaBase()->ejecuta(query);
-		query = "DELETE FROM amortizacion WHERE idamortizacion = " + codigo;
-		empresaBase()->ejecuta(query);
-		empresaBase()->commit();
-		presentar();
-	} // end if
-     } catch(...) {
-	_depura(tr("Error al borrar la amortizacion"), 2);
-     } // end try
-    _depura("END AmortizacionesView::on_mui_borrar_clicked", 0);
+        QString codigo = mui_listado->DBvalue ( "idamortizacion" );
+        if ( codigo != "" ) {
+            QString query = "DELETE FROM linamortizacion WHERE idamortizacion = " + codigo;
+            empresaBase() ->begin();
+            empresaBase() ->ejecuta ( query );
+            query = "DELETE FROM amortizacion WHERE idamortizacion = " + codigo;
+            empresaBase() ->ejecuta ( query );
+            empresaBase() ->commit();
+            presentar();
+        } // end if
+    } catch ( ... ) {
+        _depura ( tr ( "Error al borrar la amortizacion" ), 2 );
+    } // end try
+    _depura ( "END AmortizacionesView::on_mui_borrar_clicked", 0 );
 }
 
 
@@ -119,20 +123,21 @@ void AmortizacionesView::borrar() {
 /**
 \param row
 **/
-void AmortizacionesView::editar(int row) {
-    _depura("AmortizacionesView::editAmortizacion " + row, 0);
-    mdb_idamortizacion = mui_listado->DBvalue("idamortizacion");
-    mdb_nomamortizacion = mui_listado->DBvalue("nomamortizacion");
-    if (modoEdicion()) {
+void AmortizacionesView::editar ( int row )
+{
+    _depura ( "AmortizacionesView::editAmortizacion " + row, 0 );
+    mdb_idamortizacion = mui_listado->DBvalue ( "idamortizacion" );
+    mdb_nomamortizacion = mui_listado->DBvalue ( "nomamortizacion" );
+    if ( modoEdicion() ) {
         /// Creamos el objeto mpatrimonialview, y lo lanzamos.
-        AmortizacionView *amor = new AmortizacionView((Empresa *)empresaBase(), 0);
-        amor->cargar(mdb_idamortizacion);
-        empresaBase()->pWorkspace()->addWindow(amor);
+        AmortizacionView * amor = new AmortizacionView ( ( Empresa * ) empresaBase(), 0 );
+        amor->cargar ( mdb_idamortizacion );
+        empresaBase() ->pWorkspace() ->addWindow ( amor );
         amor->show();
     } else {
         close();
-        emit(selected(mdb_idamortizacion));
+        emit ( selected ( mdb_idamortizacion ) );
     } // end if
-    _depura("END AmortizacionesView::editAmortizacion", 0);
+    _depura ( "END AmortizacionesView::editAmortizacion", 0 );
 }
 

@@ -37,14 +37,17 @@
     todos los estados de cada cuenta (las hojas) cada vez que se modifican los valores
     de alguna de ellas.
 */
-class Arbol {
+class Arbol
+{
 private:
     typedef struct tipohoja;
-    typedef struct tiporama {
+    typedef struct tiporama
+    {
         tipohoja* hoja; /// Puntero a la hoja donde se almacena los datos de la cuenta.
         tiporama* sgte; /// Puntero a una rama que apunta a una hoja hermana (del mismo nivel).
     };
-    typedef struct tipohoja {
+    typedef struct tipohoja
+    {
         int idcuenta; /// Identificador de la cuenta de la base de datos.
         QString codigo; /// C&oacute;digo de la cuenta.
         QString descripcion; /// Su descripci&oacute;n contable.
@@ -60,28 +63,28 @@ private:
     QString hojaactiva; /// C&oacute;digo de la &uacute;ltima hoja visitada (nos servir&aacute; de &iacute;ndice).
 
 private:
-    void SintetizarRamas(cursor2**, tiporama**);
-    void ActualizarHoja(tiporama**, cursor2*, bool*);
-    void Deshojar(tiporama*, unsigned int, bool, bool*);
+    void SintetizarRamas ( cursor2**, tiporama** );
+    void ActualizarHoja ( tiporama**, cursor2*, bool* );
+    void Deshojar ( tiporama*, unsigned int, bool, bool* );
 
 public:
     Arbol();
     ~Arbol();
     /// A&ntilde;ade una nueva rama al arbol con su hoja.
-    void nuevarama(cursor2*);
+    void nuevarama ( cursor2* );
     /// Constituye el arbol inicializando los valores que corresponden a cada cuenta (hoja).
-    void inicializa(cursor2*);
+    void inicializa ( cursor2* );
     /// Actualiza los valores de las hojas en el arbol.
-    void actualizahojas(cursor2*);
+    void actualizahojas ( cursor2* );
     /// Inicializa el acceso al arbol cambiando el valor de la variable "visitada".
     void inicia();
     /// Mueve el puntero que indexa una hoja del arbol: primer parametro indica el nivel en el que queremos deshojar; el segundo si deshoja o no otros niveles
-    bool deshoja(unsigned int, bool);
+    bool deshoja ( unsigned int, bool );
     /// Devuelve el valor solicitado: codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej, etc.
-    QString hojaactual(QString);
+    QString hojaactual ( QString );
     /// Se posiciona el puntero en la hoja cuyo codigo corresponde al pasado por parametro e informa del exito o no
     /// El segundo parametro indica a que nivel de profundidad buscar las cuentas; por defecto a 4, el m�imo exigido en un balance abreviado
-    bool irHoja(QString, unsigned int nivel=4);
+    bool irHoja ( QString, unsigned int nivel = 4 );
 };
 
 #endif

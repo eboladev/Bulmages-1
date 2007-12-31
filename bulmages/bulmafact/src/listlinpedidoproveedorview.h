@@ -31,18 +31,20 @@
 
 /// Muestra y administra las l&iacute;neas de detalle de un pedido a un proveedor.
 /** */
-class ListLinPedidoProveedorView : public SubForm2Bf {
+class ListLinPedidoProveedorView : public SubForm2Bf
+{
     Q_OBJECT
 
 private:
     QString mdb_idpedidoproveedor;
 
 public:
-    ListLinPedidoProveedorView(QWidget *parent = 0);
-    virtual ~ListLinPedidoProveedorView() {};
+    ListLinPedidoProveedorView ( QWidget *parent = 0 );
+    virtual ~ListLinPedidoProveedorView()
+    {};
 
 public slots:
-    virtual void cargar(QString idpedidoproveedor);
+    virtual void cargar ( QString idpedidoproveedor );
 };
 
 #endif

@@ -28,15 +28,16 @@
 /// Muestra un listado de todos los asientos existentes e informa de si est&aacute;n
 /// abiertos o cerrados.
 /** */
-class AsientoListSubform : public SubForm2Bc {
+class AsientoListSubform : public SubForm2Bc
+{
     Q_OBJECT
 
 public:
-    AsientoListSubform(QWidget *parent = 0, const char *name = 0);
+    AsientoListSubform ( QWidget *parent = 0, const char *name = 0 );
     virtual ~AsientoListSubform();
 
 public slots:
-    virtual void contextMenuEvent(QContextMenuEvent *);
+    virtual void contextMenuEvent ( QContextMenuEvent * );
 };
 
 #endif

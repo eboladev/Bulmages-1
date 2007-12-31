@@ -25,11 +25,12 @@
 #include <QComboBox>
 #include "blwidget.h"
 
-class QComboBox2 : public QComboBox, public PEmpresaBase {
+class QComboBox2 : public QComboBox, public PEmpresaBase
+{
     Q_OBJECT
 
 public:
-    QComboBox2(QWidget *parent);
+    QComboBox2 ( QWidget *parent );
     ~QComboBox2();
 };
 

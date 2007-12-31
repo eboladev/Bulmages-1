@@ -37,24 +37,26 @@ QDockWidget *g_admin1;
 /**
 \return
 **/
-int entryPoint(BulmaTPV *tpv) {
-    _depura("entryPoint", 0);
+int entryPoint ( BulmaTPV *tpv )
+{
+    _depura ( "entryPoint", 0 );
 
     /// Vamos a probar con un docwindow.
-    g_admin1 = new QDockWidget("Administracion", tpv);
-    g_admin1->setFeatures(QDockWidget::AllDockWidgetFeatures);
+    g_admin1 = new QDockWidget ( "Administracion", tpv );
+    g_admin1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
 
-    g_admin1->setGeometry(100, 100, 100, 500);
-    g_admin1->resize(330, 400);
-    tpv->addDockWidget(Qt::BottomDockWidgetArea, g_admin1);
+    g_admin1->setGeometry ( 100, 100, 100, 500 );
+    g_admin1->resize ( 330, 400 );
+    tpv->addDockWidget ( Qt::BottomDockWidgetArea, g_admin1 );
     g_admin1->show();
 
-    _depura("END entryPoint", 0);
+    _depura ( "END entryPoint", 0 );
     return 0;
 }
 
-int EmpresaTPV_createMainWindows_Post(EmpresaTPV *etpv) {
-	g_admin = new Admin(etpv, g_admin1);
-        g_admin1->setWidget(g_admin);
-	return 0;
+int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
+{
+    g_admin = new Admin ( etpv, g_admin1 );
+    g_admin1->setWidget ( g_admin );
+    return 0;
 }

@@ -32,9 +32,9 @@
 //class QListViewItem1 : public Q3ListViewItem {
 public:
     int tipolista;
-
+ 
 public:
-
+ 
     QListViewItem1(Q3ListView *parent) : Q3ListViewItem(parent) {}
     ;
     QListViewItem1(Q3ListViewItem *parent) : Q3ListViewItem(parent) {}
@@ -46,7 +46,7 @@ public:
         tipolista = a;
     };
     void width(const QFontMetrics &, const Q3ListView *, int);
-
+ 
 };
 */
 #endif

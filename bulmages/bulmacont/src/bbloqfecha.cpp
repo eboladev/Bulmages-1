@@ -30,10 +30,11 @@
 \param parent
 \return
 **/
-miQTreeWidgetItem::miQTreeWidgetItem(QTreeWidget *parent)
-        : QTreeWidgetItem(parent) {
-    _depura("miQTreeWidgetItem::miQTreeWidgetItem", 0);
-    _depura("END miQTreeWidgetItem::miQTreeWidgetItem", 0);
+miQTreeWidgetItem::miQTreeWidgetItem ( QTreeWidget *parent )
+        : QTreeWidgetItem ( parent )
+{
+    _depura ( "miQTreeWidgetItem::miQTreeWidgetItem", 0 );
+    _depura ( "END miQTreeWidgetItem::miQTreeWidgetItem", 0 );
     return;
 }
 
@@ -43,10 +44,11 @@ miQTreeWidgetItem::miQTreeWidgetItem(QTreeWidget *parent)
 \param parent
 \return
 **/
-miQTreeWidgetItem::miQTreeWidgetItem(QTreeWidgetItem *parent)
-        : QTreeWidgetItem(parent) {
-    _depura("miQTreeWidgetItem::miQTreeWidgetItem", 0);
-    _depura("END miQTreeWidgetItem::miQTreeWidgetItem", 0);
+miQTreeWidgetItem::miQTreeWidgetItem ( QTreeWidgetItem *parent )
+        : QTreeWidgetItem ( parent )
+{
+    _depura ( "miQTreeWidgetItem::miQTreeWidgetItem", 0 );
+    _depura ( "END miQTreeWidgetItem::miQTreeWidgetItem", 0 );
     return;
 }
 
@@ -55,7 +57,8 @@ miQTreeWidgetItem::miQTreeWidgetItem(QTreeWidgetItem *parent)
 /**
 \return
 **/
-miQTreeWidgetItem::~miQTreeWidgetItem() {
+miQTreeWidgetItem::~miQTreeWidgetItem()
+{
     return;
 }
 
@@ -65,133 +68,136 @@ miQTreeWidgetItem::~miQTreeWidgetItem() {
 \param emp
 \param parent
 **/
-BbloqFecha::BbloqFecha(Empresa *emp, QWidget *parent)
-        : FichaBc(emp, parent) {
-    _depura("BbloqFecha::BbloqFecha", 0);
+BbloqFecha::BbloqFecha ( Empresa *emp, QWidget *parent )
+        : FichaBc ( emp, parent )
+{
+    _depura ( "BbloqFecha::BbloqFecha", 0 );
 
-    setTitleName(tr("Bloquear Fechas"));
+    setTitleName ( tr ( "Bloquear Fechas" ) );
     /// Establecemos cual es la tabla en la que basarse para obtener permisos
-    setDBTableName("asiento");
+    setDBTableName ( "asiento" );
 
-    qsbloqueado = tr("Bloqueado");
-    qsabierto = tr ("Abierto");
-    setAttribute(Qt::WA_DeleteOnClose);
-    setupUi(this);
+    qsbloqueado = tr ( "Bloqueado" );
+    qsabierto = tr ( "Abierto" );
+    setAttribute ( Qt::WA_DeleteOnClose );
+    setupUi ( this );
     QString query;
     inicializa();
-    empresaBase()->meteWindow(windowTitle(), this);
-    _depura("ENd BbloqFecha::BbloqFecha", 0);
+    empresaBase() ->meteWindow ( windowTitle(), this );
+    _depura ( "ENd BbloqFecha::BbloqFecha", 0 );
 }
 
 
 ///
 /**
 **/
-BbloqFecha::~BbloqFecha() {
-    _depura("BbloqFecha::~BbloqFecha", 0);
-    empresaBase()->sacaWindow(this);
-    _depura("ENd BbloqFecha::~BbloqFecha", 0);
+BbloqFecha::~BbloqFecha()
+{
+    _depura ( "BbloqFecha::~BbloqFecha", 0 );
+    empresaBase() ->sacaWindow ( this );
+    _depura ( "ENd BbloqFecha::~BbloqFecha", 0 );
 }
 
 
 ///
 /**
 **/
-void BbloqFecha::inicializa() {
-    _depura("BbloqFecha::inicializa", 0);
+void BbloqFecha::inicializa()
+{
+    _depura ( "BbloqFecha::inicializa", 0 );
     miQTreeWidgetItem *itemlevel0;
     miQTreeWidgetItem *itemlevel1 = 0;
 
     QString consultabd;
-    mui_treeWidget->setColumnCount(2);
+    mui_treeWidget->setColumnCount ( 2 );
     QStringList cabecera;
-    cabecera << tr("Ejercicio") << tr("Estado");
-    mui_treeWidget->setColumnWidth(0, 200);
-    mui_treeWidget->setHeaderLabels(cabecera);
+    cabecera << tr ( "Ejercicio" ) << tr ( "Estado" );
+    mui_treeWidget->setColumnWidth ( 0, 200 );
+    mui_treeWidget->setHeaderLabels ( cabecera );
 
     mui_treeWidget->clear();
-    mui_treeWidget->setSortingEnabled(FALSE);
+    mui_treeWidget->setSortingEnabled ( FALSE );
 
     /// Consultamos a la base de datos.
-    consultabd.sprintf("SELECT * FROM ejercicios WHERE periodo = 0 ORDER BY ejercicio DESC");
-    cursor2 *curPeri, *curEjer = empresaBase()->cargacursor(consultabd);
+    consultabd.sprintf ( "SELECT * FROM ejercicios WHERE periodo = 0 ORDER BY ejercicio DESC" );
+    cursor2 *curPeri, *curEjer = empresaBase() ->cargacursor ( consultabd );
 
-    while (!curEjer->eof()) {
+    while ( !curEjer->eof() ) {
 
-        itemlevel0 = new miQTreeWidgetItem(mui_treeWidget);
-        itemlevel0->setText(0, curEjer->valor("ejercicio")); /// Columna 0.
+        itemlevel0 = new miQTreeWidgetItem ( mui_treeWidget );
+        itemlevel0->setText ( 0, curEjer->valor ( "ejercicio" ) ); /// Columna 0.
 
-        if (curEjer->valor("bloqueado") == "t") {
-            itemlevel0->setText(1, qsbloqueado);
+        if ( curEjer->valor ( "bloqueado" ) == "t" ) {
+            itemlevel0->setText ( 1, qsbloqueado );
         } else {
-            itemlevel0->setText(1, qsabierto);
+            itemlevel0->setText ( 1, qsabierto );
         } // end if
 
-        itemlevel0->ej = curEjer->valor("ejercicio");
-        itemlevel0->per = curEjer->valor("periodo");
+        itemlevel0->ej = curEjer->valor ( "ejercicio" );
+        itemlevel0->per = curEjer->valor ( "periodo" );
 
 
-        consultabd.sprintf("SELECT * FROM ejercicios WHERE ejercicio = '%s' ORDER BY periodo DESC", curEjer->valor("ejercicio").toAscii().constData());
-        curPeri = empresaBase()->cargacursor(consultabd);
-        while (!curPeri->eof()) {
-            switch (curPeri->valor("periodo").toInt()) {
+        consultabd.sprintf ( "SELECT * FROM ejercicios WHERE ejercicio = '%s' ORDER BY periodo DESC", curEjer->valor ( "ejercicio" ).toAscii().constData() );
+        curPeri = empresaBase() ->cargacursor ( consultabd );
+        while ( !curPeri->eof() ) {
+            switch ( curPeri->valor ( "periodo" ).toInt() ) {
             case 12:
-                itemlevel1 = new miQTreeWidgetItem(itemlevel0);
-                itemlevel1->setText(0, tr("Diciembre")); /// Columna 0.
+                itemlevel1 = new miQTreeWidgetItem ( itemlevel0 );
+                itemlevel1->setText ( 0, tr ( "Diciembre" ) ); /// Columna 0.
                 break;
             case 11:
-                itemlevel1 = new miQTreeWidgetItem(itemlevel0);
-                itemlevel1->setText(0, tr("Noviembre")); /// Columna 0.
+                itemlevel1 = new miQTreeWidgetItem ( itemlevel0 );
+                itemlevel1->setText ( 0, tr ( "Noviembre" ) ); /// Columna 0.
                 break;
             case 10:
-                itemlevel1 = new miQTreeWidgetItem(itemlevel0);
-                itemlevel1->setText(0, tr("Octubre")); /// Columna 0.
+                itemlevel1 = new miQTreeWidgetItem ( itemlevel0 );
+                itemlevel1->setText ( 0, tr ( "Octubre" ) ); /// Columna 0.
                 break;
             case 9:
-                itemlevel1 = new miQTreeWidgetItem(itemlevel0);
-                itemlevel1->setText(0, tr("Septiembre")); /// Columna 0.
+                itemlevel1 = new miQTreeWidgetItem ( itemlevel0 );
+                itemlevel1->setText ( 0, tr ( "Septiembre" ) ); /// Columna 0.
                 break;
             case 8:
-                itemlevel1 = new miQTreeWidgetItem(itemlevel0);
-                itemlevel1->setText(0, tr("Agosto")); /// Columna 0.
+                itemlevel1 = new miQTreeWidgetItem ( itemlevel0 );
+                itemlevel1->setText ( 0, tr ( "Agosto" ) ); /// Columna 0.
                 break;
             case 7:
-                itemlevel1 = new miQTreeWidgetItem(itemlevel0);
-                itemlevel1->setText(0, tr("Julio")); /// Columna 0.
+                itemlevel1 = new miQTreeWidgetItem ( itemlevel0 );
+                itemlevel1->setText ( 0, tr ( "Julio" ) ); /// Columna 0.
                 break;
             case 6:
-                itemlevel1 = new miQTreeWidgetItem(itemlevel0);
-                itemlevel1->setText(0, tr("Junio")); /// Columna 0.
+                itemlevel1 = new miQTreeWidgetItem ( itemlevel0 );
+                itemlevel1->setText ( 0, tr ( "Junio" ) ); /// Columna 0.
                 break;
             case 5:
-                itemlevel1 = new miQTreeWidgetItem(itemlevel0);
-                itemlevel1->setText(0, tr("Mayo")); /// Columna 0.
+                itemlevel1 = new miQTreeWidgetItem ( itemlevel0 );
+                itemlevel1->setText ( 0, tr ( "Mayo" ) ); /// Columna 0.
                 break;
             case 4:
-                itemlevel1 = new miQTreeWidgetItem(itemlevel0);
-                itemlevel1->setText(0, tr("Abril")); /// Columna 0.
+                itemlevel1 = new miQTreeWidgetItem ( itemlevel0 );
+                itemlevel1->setText ( 0, tr ( "Abril" ) ); /// Columna 0.
                 break;
             case 3:
-                itemlevel1 = new miQTreeWidgetItem(itemlevel0);
-                itemlevel1->setText(0, tr("Marzo")); /// Columna 0.
+                itemlevel1 = new miQTreeWidgetItem ( itemlevel0 );
+                itemlevel1->setText ( 0, tr ( "Marzo" ) ); /// Columna 0.
                 break;
             case 2:
-                itemlevel1 = new miQTreeWidgetItem(itemlevel0);
-                itemlevel1->setText(0, tr("Febrero")); /// Columna 0.
+                itemlevel1 = new miQTreeWidgetItem ( itemlevel0 );
+                itemlevel1->setText ( 0, tr ( "Febrero" ) ); /// Columna 0.
                 break;
             case 1:
-                itemlevel1 = new miQTreeWidgetItem(itemlevel0);
-                itemlevel1->setText(0, tr("Enero")); /// Columna 0.
+                itemlevel1 = new miQTreeWidgetItem ( itemlevel0 );
+                itemlevel1->setText ( 0, tr ( "Enero" ) ); /// Columna 0.
                 break;
             } // end switch
-            itemlevel1->ej = curEjer->valor("ejercicio");
-            itemlevel1->per = curPeri->valor("periodo");
-            curPeri->valor("bloqueado") == "t" ? itemlevel1->setText(1, qsbloqueado) : itemlevel1->setText(1, qsabierto);
+            itemlevel1->ej = curEjer->valor ( "ejercicio" );
+            itemlevel1->per = curPeri->valor ( "periodo" );
+            curPeri->valor ( "bloqueado" ) == "t" ? itemlevel1->setText ( 1, qsbloqueado ) : itemlevel1->setText ( 1, qsabierto );
             curPeri->siguienteregistro();
         } // end while
         curEjer->siguienteregistro();
     } // end while
-    _depura("ENd BbloqFecha::inicializa", 0);
+    _depura ( "ENd BbloqFecha::inicializa", 0 );
 }
 
 
@@ -200,64 +206,66 @@ void BbloqFecha::inicializa() {
 \param item
 \param columna
 **/
-void BbloqFecha::on_mui_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int columna) {
-    _depura("BbloqFecha::on_mui_treeWidget_doubleClicked", 0);
+void BbloqFecha::on_mui_treeWidget_itemDoubleClicked ( QTreeWidgetItem *item, int columna )
+{
+    _depura ( "BbloqFecha::on_mui_treeWidget_doubleClicked", 0 );
     int error;
-    miQTreeWidgetItem *it = (miQTreeWidgetItem *) item;
-    if (columna == 1) {
-        if (item->text(1) == qsbloqueado) {
-            item->setText(1, qsabierto);
+    miQTreeWidgetItem *it = ( miQTreeWidgetItem * ) item;
+    if ( columna == 1 ) {
+        if ( item->text ( 1 ) == qsbloqueado ) {
+            item->setText ( 1, qsabierto );
             QString consultabd = "UPDATE ejercicios SET bloqueado = FALSE WHERE ejercicio = '" + it->ej + "' AND periodo = '" + it->per + "'";
-            error = empresaBase()->ejecuta(consultabd);
+            error = empresaBase() ->ejecuta ( consultabd );
         } else {
-            item->setText(1, qsbloqueado);
+            item->setText ( 1, qsbloqueado );
             QString consultabd = "UPDATE ejercicios SET bloqueado = TRUE WHERE ejercicio = '" + it->ej + "' AND periodo = '" + it->per + "'";
-            error = empresaBase()->ejecuta(consultabd);
+            error = empresaBase() ->ejecuta ( consultabd );
         } // end if
     } // end if
-    _depura("END BbloqFecha::on_mui_treeWidget_doubleClicked", 0);
+    _depura ( "END BbloqFecha::on_mui_treeWidget_doubleClicked", 0 );
 }
 
 
 ///
 /**
 **/
-void BbloqFecha::on_mui_crear_clicked() {
-    _depura("BbloqFecha::on_mui_crear_clicked", 0);
+void BbloqFecha::on_mui_crear_clicked()
+{
+    _depura ( "BbloqFecha::on_mui_crear_clicked", 0 );
     int ejer = 0;
 
-/*
-    QString consultabd = "SELECT max(ejercicio) AS ej FROM ejercicios";
-    cursor2 *cur = empresaBase()->cargacursor(consultabd);
-    if (!cur->eof()) {
-        ejer = cur->valor("ej").toInt();
-    } // end if
-    delete cur;
-
-    ejer++;
-*/
+    /*
+        QString consultabd = "SELECT max(ejercicio) AS ej FROM ejercicios";
+        cursor2 *cur = empresaBase()->cargacursor(consultabd);
+        if (!cur->eof()) {
+            ejer = cur->valor("ej").toInt();
+        } // end if
+        delete cur;
+     
+        ejer++;
+    */
 
     bool ok = FALSE;
-    while (ejer < 1000) {
+    while ( ejer < 1000 ) {
 
-        ejer = QInputDialog::getInteger(this, tr("Introduzca Ejercicio a Crear"),
-                                            tr("Ponga el año:"), 2000, 0, 10000, 1, &ok);
-        if (!ok) return;
-        if (ejer < 1000) {
-            mensajeInfo("Ejercicio invalido");
+        ejer = QInputDialog::getInteger ( this, tr ( "Introduzca Ejercicio a Crear" ),
+                                          tr ( "Ponga el año:" ), 2000, 0, 10000, 1, &ok );
+        if ( !ok ) return;
+        if ( ejer < 1000 ) {
+            mensajeInfo ( "Ejercicio invalido" );
         } // end if
 
 
     } // end if
 
 
-    for (int x = 0; x <= 12; x++) {
-        QString consultabd = "INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES('" + QString::number(ejer) + "', '" + QString::number(x) + "', 'f')";
-        empresaBase()->ejecuta(consultabd);
+    for ( int x = 0; x <= 12; x++ ) {
+        QString consultabd = "INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES('" + QString::number ( ejer ) + "', '" + QString::number ( x ) + "', 'f')";
+        empresaBase() ->ejecuta ( consultabd );
     } // end for
 
     inicializa();
 
-    _depura("BbloqFecha::on_mui_crear_clicked", 0);
+    _depura ( "BbloqFecha::on_mui_crear_clicked", 0 );
 }
 

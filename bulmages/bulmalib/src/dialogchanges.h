@@ -31,7 +31,8 @@
 /// La idea original es de Alvaro de Miguel en la que lo que hace la funcion es
 /// coger todos los campos de un determinado formulario y formar una cadena.
 /// Luego para saber si hay cambios en el formulario vuelve a comparar.
-class dialogChanges {
+class dialogChanges
+{
 private:
     int m_maxQLine;
     int m_maxQText;
@@ -46,16 +47,16 @@ private:
     QList<QObject*> m_listaExcluidos;
 
 public:
-    dialogChanges(QObject *ob);
+    dialogChanges ( QObject *ob );
     ~dialogChanges();
     void dialogChanges_cargaInicial();
     bool dialogChanges_hayCambios();
-    void dialogChanges_setQObjectExcluido(QObject *objetoexcluido);
-    bool objExcluido(QObject *item);
+    void dialogChanges_setQObjectExcluido ( QObject *objetoexcluido );
+    bool objExcluido ( QObject *item );
 
 private:
     QString calculateValues();
-    QString retrieveValues(QString qsWidget);
+    QString retrieveValues ( QString qsWidget );
 };
 
 #endif

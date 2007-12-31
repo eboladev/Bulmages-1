@@ -42,11 +42,12 @@ class Company;
     en dicha ventana.
     Deriva de Ficha para metodos comunes a todas las ventanas.
     Deriva de Cobro para el manejo de la Base de datos. */
-class AlmacenView : public FichaBf, public Ui_AlmacenBase {
+class AlmacenView : public FichaBf, public Ui_AlmacenBase
+{
     Q_OBJECT
 
 public:
-    AlmacenView(Company *, QWidget *);
+    AlmacenView ( Company *, QWidget * );
     ~AlmacenView();
 };
 

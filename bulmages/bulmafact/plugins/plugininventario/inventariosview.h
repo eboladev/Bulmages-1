@@ -28,12 +28,14 @@
 
 /// Muestra y administra las l&iacute;neas de detalle del listado de inventarios.
 /** */
-class InventariosSubForm : public SubForm2Bf {
+class InventariosSubForm : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
-    InventariosSubForm(QWidget *parent = 0);
-    ~InventariosSubForm() {};
+    InventariosSubForm ( QWidget *parent = 0 );
+    ~InventariosSubForm()
+    {};
 
 public slots:
     virtual void cargar();
@@ -45,11 +47,12 @@ public slots:
 
 /// Muestra y administra el listado de inventarios.
 /** */
-class InventariosView : public Listado, public Ui_InventariosBase {
+class InventariosView : public Listado, public Ui_InventariosBase
+{
     Q_OBJECT
 
 public:
-    InventariosView(Company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode);
+    InventariosView ( Company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode );
     ~InventariosView();
     void inicializa();
     void presentar();
@@ -58,7 +61,7 @@ public:
     virtual void on_mui_editar_clicked();
 
 public slots:
-    virtual void on_mui_listado_itemDoubleClicked(QTableWidgetItem *);
+    virtual void on_mui_listado_itemDoubleClicked ( QTableWidgetItem * );
     virtual void on_mui_listado_itemDoubleClicked();
     virtual void on_mui_borrar2_clicked();
 };

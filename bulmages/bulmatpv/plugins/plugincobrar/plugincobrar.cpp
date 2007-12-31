@@ -40,29 +40,31 @@ QDockWidget *g_doc1;
 /**
 \return
 **/
-int entryPoint(BulmaTPV *tpv) {
-    _depura("entryPoint", 0);
+int entryPoint ( BulmaTPV *tpv )
+{
+    _depura ( "entryPoint", 0 );
 
     /// Vamos a probar con un docwindow.
-    g_doc1 = new QDockWidget("Cobrar", tpv);
-    g_doc1->setFeatures(QDockWidget::AllDockWidgetFeatures);
+    g_doc1 = new QDockWidget ( "Cobrar", tpv );
+    g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
 
-    g_doc1->setGeometry(100, 100, 100, 500);
-    g_doc1->resize(330, 400);
-    tpv->addDockWidget(Qt::LeftDockWidgetArea, g_doc1);
+    g_doc1->setGeometry ( 100, 100, 100, 500 );
+    g_doc1->resize ( 330, 400 );
+    tpv->addDockWidget ( Qt::LeftDockWidgetArea, g_doc1 );
     g_doc1->show();
 
-    _depura("END entryPoint", 0);
+    _depura ( "END entryPoint", 0 );
     return 0;
 }
 
-int EmpresaTPV_createMainWindows_Post(EmpresaTPV *etpv) {
-	g_cobrar = new Cobrar(etpv, g_doc1);
-//	etpv->pWorkspace()->addWindow(g_cobrar);
-        g_doc1->setWidget(g_cobrar);
+int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
+{
+    g_cobrar = new Cobrar ( etpv, g_doc1 );
+// etpv->pWorkspace()->addWindow(g_cobrar);
+    g_doc1->setWidget ( g_cobrar );
 
 //        ((BulmaTPV *)etpv->parent())->addDockWidget(Qt::LeftDockWidgetArea, g_cobrar);
-	return 0;
+    return 0;
 }
 
 

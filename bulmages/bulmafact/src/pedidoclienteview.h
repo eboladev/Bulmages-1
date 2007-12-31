@@ -41,18 +41,19 @@
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un pedido de cliente.
 /** */
-class PedidoClienteView : public FichaBf, public Ui_PedidoClienteBase {
+class PedidoClienteView : public FichaBf, public Ui_PedidoClienteBase
+{
     Q_OBJECT
 
 public:
-    PedidoClienteView(Company *, QWidget *parent = 0);
+    PedidoClienteView ( Company *, QWidget *parent = 0 );
     ~PedidoClienteView();
-    virtual int cargarPost(QString);
+    virtual int cargarPost ( QString );
     virtual int guardarPost();
     virtual int borrarPre();
     void generarAlbaran();
     void inicializar();
-    void pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed, Fixed);
+    void pintatotales ( Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed, Fixed );
 
 
 public slots:
@@ -61,9 +62,9 @@ public slots:
     virtual void on_mui_verpresupuesto_clicked();
     virtual void on_mui_pasaraalbaran_clicked();
     virtual void on_mui_cobrar_clicked();
-    virtual void on_m_descuentos_editFinish(int, int);
-    virtual void on_subform3_editFinish(int, int);
-    virtual void on_mui_idcliente_valueChanged(QString id);
+    virtual void on_m_descuentos_editFinish ( int, int );
+    virtual void on_subform3_editFinish ( int, int );
+    virtual void on_mui_idcliente_valueChanged ( QString id );
 };
 
 #endif

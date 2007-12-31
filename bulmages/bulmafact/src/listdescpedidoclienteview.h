@@ -28,20 +28,23 @@
 
 /// Muestra y administra la ventana de lista de descuentos por pedido de cliente.
 /** */
-class ListDescuentoPedidoClienteView : public SubForm2Bf {
+class ListDescuentoPedidoClienteView : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
     QString mdb_idpedidocliente;
-    ListDescuentoPedidoClienteView(QWidget *parent = 0);
-    ~ListDescuentoPedidoClienteView() {}
+    ListDescuentoPedidoClienteView ( QWidget *parent = 0 );
+    ~ListDescuentoPedidoClienteView()
+    {}
     ;
 
 public slots:
-    virtual void cargar(QString idpedidocliente) {
-        _depura("ListDescuentoPedidoClienteView::cargar\n", 0);
+    virtual void cargar ( QString idpedidocliente )
+    {
+        _depura ( "ListDescuentoPedidoClienteView::cargar\n", 0 );
         mdb_idpedidocliente = idpedidocliente;
-        SubForm3::cargar("SELECT * FROM dpedidocliente WHERE idpedidocliente = " + mdb_idpedidocliente);
+        SubForm3::cargar ( "SELECT * FROM dpedidocliente WHERE idpedidocliente = " + mdb_idpedidocliente );
     };
 };
 

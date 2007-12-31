@@ -34,33 +34,34 @@
 \param parent
 \return
 **/
-ListLinPresupuestoView::ListLinPresupuestoView(QWidget *parent) : SubForm2Bf(parent) {
-    _depura("ListLinPresupuestoView::ListLinPresupuestoView", 0);
-    setDBTableName("lpresupuesto");
-    setDBCampoId("idlpresupuesto");
+ListLinPresupuestoView::ListLinPresupuestoView ( QWidget *parent ) : SubForm2Bf ( parent )
+{
+    _depura ( "ListLinPresupuestoView::ListLinPresupuestoView", 0 );
+    setDBTableName ( "lpresupuesto" );
+    setDBCampoId ( "idlpresupuesto" );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza("ListLinPresupuestoView_ListLinPresupuestoView", this);
-    if (res != 0) {
-         return;
+    int res = g_plugins->lanza ( "ListLinPresupuestoView_ListLinPresupuestoView", this );
+    if ( res != 0 ) {
+        return;
     } // end if
-    addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id articulo"));
-    addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Codigo completo"));
-    addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("Nombre del articulo"));
-    addSHeader("idlpresupuesto", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr("No de linea"));
-    addSHeader("desclpresupuesto", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Descripcion"));
-    addSHeader("cantlpresupuesto", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Cantidad"));
-    addSHeader("pvplpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr("Precio de venta s/IVA"));
-    addSHeader("ivalpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr("% I.V.A."));
-    addSHeader("reqeqlpresupuesto", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, tr("% Recargo E.Q."));
-    addSHeader("descuentolpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr("% Descuento"));
-    addSHeader("idpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, tr("Id presupuesto"));
-    addSHeader("ordenlpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Orden"));
-    setinsercion(TRUE);
-    setOrdenEnabled(TRUE);
-    setOrdenPorQuery(FALSE);
+    addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr ( "Id articulo" ) );
+    addSHeader ( "codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr ( "Codigo completo" ) );
+    addSHeader ( "nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr ( "Nombre del articulo" ) );
+    addSHeader ( "idlpresupuesto", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr ( "No de linea" ) );
+    addSHeader ( "desclpresupuesto", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Descripcion" ) );
+    addSHeader ( "cantlpresupuesto", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Cantidad" ) );
+    addSHeader ( "pvplpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Precio de venta s/IVA" ) );
+    addSHeader ( "ivalpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr ( "% I.V.A." ) );
+    addSHeader ( "reqeqlpresupuesto", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, tr ( "% Recargo E.Q." ) );
+    addSHeader ( "descuentolpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr ( "% Descuento" ) );
+    addSHeader ( "idpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "Id presupuesto" ) );
+    addSHeader ( "ordenlpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr ( "Orden" ) );
+    setinsercion ( TRUE );
+    setOrdenEnabled ( TRUE );
+    setOrdenPorQuery ( FALSE );
     /// Lanzamos los plugins
-    g_plugins->lanza("ListLinPresupuestoView_ListLinPresupuestoView_Post", this);
-    _depura("END ListLinPresupuestoView::ListLinPresupuestoView", 0);
+    g_plugins->lanza ( "ListLinPresupuestoView_ListLinPresupuestoView_Post", this );
+    _depura ( "END ListLinPresupuestoView::ListLinPresupuestoView", 0 );
 }
 
 
@@ -68,12 +69,13 @@ ListLinPresupuestoView::ListLinPresupuestoView(QWidget *parent) : SubForm2Bf(par
 /**
 \param idpresupuesto
 **/
-void ListLinPresupuestoView::cargar(QString idpresupuesto) {
-    _depura("ListLinPresupuestoView::cargar", 0);
+void ListLinPresupuestoView::cargar ( QString idpresupuesto )
+{
+    _depura ( "ListLinPresupuestoView::cargar", 0 );
     mdb_idpresupuesto = idpresupuesto;
     /// Al hacer la carge usamos el ordenlpresupuesto para indicar que el campo de ordenacion es el que toca.
-    SubForm3::cargar("SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE idpresupuesto = " + mdb_idpresupuesto +" ORDER BY ordenlpresupuesto");
-    _depura("END ListLinPresupuestoView::cargar", 0);
+    SubForm3::cargar ( "SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE idpresupuesto = " + mdb_idpresupuesto + " ORDER BY ordenlpresupuesto" );
+    _depura ( "END ListLinPresupuestoView::cargar", 0 );
 }
 
 

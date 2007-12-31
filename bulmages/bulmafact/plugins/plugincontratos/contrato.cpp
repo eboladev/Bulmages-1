@@ -33,21 +33,22 @@
 \param comp
 \param parent
 **/
-Contrato::Contrato(Company *comp, QWidget *parent) : FichaBf(comp, parent) {
-    _depura("Contrato::Contrato", 0);
-    setTitleName(tr("Contrato"));
-    setDBTableName("contrato");
-    setDBCampoId("idcontrato");
-    addDBCampo("idcontrato",  DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Contrato", "Id contrato"));
-    addDBCampo("idcliente",   DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("Contrato", "Id cliente"));
-    addDBCampo("refcontrato", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Contrato", "Referencia contrato"));
-    addDBCampo("descontrato", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Contrato", "Descripcion contrato"));
-    addDBCampo("nomcontrato", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Contrato", "Descripcion contrato"));
-    addDBCampo("loccontrato", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Contrato", "Descripcion contrato"));
-    addDBCampo("periodicidadcontrato", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Contrato", "Descripcion contrato"));
-    addDBCampo("fincontrato",  DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Contrato", "Descripcion contrato"));
-    addDBCampo("ffincontrato", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Contrato", "Descripcion contrato"));
-    _depura("END Contrato::Contrato", 0);
+Contrato::Contrato ( Company *comp, QWidget *parent ) : FichaBf ( comp, parent )
+{
+    _depura ( "Contrato::Contrato", 0 );
+    setTitleName ( tr ( "Contrato" ) );
+    setDBTableName ( "contrato" );
+    setDBCampoId ( "idcontrato" );
+    addDBCampo ( "idcontrato",  DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "Contrato", "Id contrato" ) );
+    addDBCampo ( "idcliente",   DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "Contrato", "Id cliente" ) );
+    addDBCampo ( "refcontrato", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Contrato", "Referencia contrato" ) );
+    addDBCampo ( "descontrato", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Contrato", "Descripcion contrato" ) );
+    addDBCampo ( "nomcontrato", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Contrato", "Descripcion contrato" ) );
+    addDBCampo ( "loccontrato", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Contrato", "Descripcion contrato" ) );
+    addDBCampo ( "periodicidadcontrato", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Contrato", "Descripcion contrato" ) );
+    addDBCampo ( "fincontrato",  DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate ( "Contrato", "Descripcion contrato" ) );
+    addDBCampo ( "ffincontrato", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate ( "Contrato", "Descripcion contrato" ) );
+    _depura ( "END Contrato::Contrato", 0 );
 }
 
 
@@ -55,9 +56,10 @@ Contrato::Contrato(Company *comp, QWidget *parent) : FichaBf(comp, parent) {
 */
 /**
 **/
-Contrato::~Contrato() {
-    _depura("Contrato::~Contrato", 0);
-    _depura("END Contrato::~Contrato", 0);
+Contrato::~Contrato()
+{
+    _depura ( "Contrato::~Contrato", 0 );
+    _depura ( "END Contrato::~Contrato", 0 );
 }
 
 
@@ -70,23 +72,24 @@ Contrato::~Contrato() {
 /**
 \return
 **/
-int Contrato::borrar() {
-    _depura("Contrato::borrar", 0);
-    if (DBvalue("idcontrato") != "") {
-        empresaBase()->begin();
+int Contrato::borrar()
+{
+    _depura ( "Contrato::borrar", 0 );
+    if ( DBvalue ( "idcontrato" ) != "" ) {
+        empresaBase() ->begin();
         int error = m_listalineas->borrar();
-        if (error) {
-            empresaBase()->rollback();
+        if ( error ) {
+            empresaBase() ->rollback();
             return -1;
         } // end if
         error = DBRecord::borrar();
-        if (error) {
-            empresaBase()->rollback();
+        if ( error ) {
+            empresaBase() ->rollback();
             return -1;
         } // end if
-        empresaBase()->commit();
+        empresaBase() ->commit();
     } // end if
-    _depura("END Contrato::borrar", 0);
+    _depura ( "END Contrato::borrar", 0 );
     return 0;
 }
 
@@ -95,10 +98,11 @@ int Contrato::borrar() {
 */
 /**
 **/
-void Contrato::vaciaContrato() {
-    _depura("Contrato::vaciaContrato", 0);
+void Contrato::vaciaContrato()
+{
+    _depura ( "Contrato::vaciaContrato", 0 );
     DBclear();
-    _depura("END Contrato::vaciaContrato", 0);
+    _depura ( "END Contrato::vaciaContrato", 0 );
 }
 
 
@@ -108,24 +112,25 @@ void Contrato::vaciaContrato() {
 /// \TODO: Deberia llamarse pintar.
 /**
 **/
-void Contrato::pintar() {
-    _depura("pintaContrato", 0);
-    pintaidcliente(DBvalue("idcliente"));
-    pintafincontrato(DBvalue("fincontrato"));
-    pintaffincontrato(DBvalue("ffincontrato"));
-    pintaperiodicidadcontrato(DBvalue("periodicidadcontrato"));
-    pintarefcontrato(DBvalue("refcontrato"));
-    pintadescontrato(DBvalue("descontrato"));
-    pintanomcontrato(DBvalue("nomcontrato"));
-    pintaloccontrato(DBvalue("loccontrato"));
+void Contrato::pintar()
+{
+    _depura ( "pintaContrato", 0 );
+    pintaidcliente ( DBvalue ( "idcliente" ) );
+    pintafincontrato ( DBvalue ( "fincontrato" ) );
+    pintaffincontrato ( DBvalue ( "ffincontrato" ) );
+    pintaperiodicidadcontrato ( DBvalue ( "periodicidadcontrato" ) );
+    pintarefcontrato ( DBvalue ( "refcontrato" ) );
+    pintadescontrato ( DBvalue ( "descontrato" ) );
+    pintanomcontrato ( DBvalue ( "nomcontrato" ) );
+    pintaloccontrato ( DBvalue ( "loccontrato" ) );
     /// Pintamoslas lineas
     m_listalineas->pintar();
-    _depura("END pintaContrato", 0);
+    _depura ( "END pintaContrato", 0 );
 }
 
 
 /// Esta funcion carga un contrato.
-/** Carga una contrato. 
+/** Carga una contrato.
     Crea el query de carga y delega el llenodo de registros a DBRecord.
     Una vez cargado DBRecord hace una llamada a la carga de lineas y descuentos.
     Tras el cargado se hace un pintado para que se vea bien todo.
@@ -136,18 +141,19 @@ void Contrato::pintar() {
 \param idbudget
 \return
 **/
-int Contrato::cargar(QString idbudget) {
-    _depura("Contrato::cargar", 0);
+int Contrato::cargar ( QString idbudget )
+{
+    _depura ( "Contrato::cargar", 0 );
     inicialize();
     QString query = "SELECT * FROM contrato WHERE idcontrato = " + idbudget;
-    cursor2 * cur= empresaBase()->cargacursor(query);
-    if (!cur->eof()) {
-        DBload(cur);
+    cursor2 * cur = empresaBase() ->cargacursor ( query );
+    if ( !cur->eof() ) {
+        DBload ( cur );
     } // end if
     delete cur;
-    m_listalineas->cargar(idbudget);
+    m_listalineas->cargar ( idbudget );
     pintar();
-    _depura("END Contrato::cargar", 0);
+    _depura ( "END Contrato::cargar", 0 );
     return 0;
 }
 
@@ -163,28 +169,29 @@ int Contrato::cargar(QString idbudget) {
 /**
 \return
 **/
-int Contrato::guardar() {
-    _depura("Contrato::guardar", 0);
+int Contrato::guardar()
+{
+    _depura ( "Contrato::guardar", 0 );
     QString fecha;
     try {
         /// Calculamos el proximo numero de contrato para poder insertarlo en caso de que este sea nulo.
         QString id;
-        empresaBase()->begin();
-        DBsave(id);
-        setDBvalue("idcontrato", id);
-	m_listalineas->setColumnValue("idcontrato", id);
-	m_listalineas->guardar();
-        empresaBase()->commit();
+        empresaBase() ->begin();
+        DBsave ( id );
+        setDBvalue ( "idcontrato", id );
+        m_listalineas->setColumnValue ( "idcontrato", id );
+        m_listalineas->guardar();
+        empresaBase() ->commit();
 
-	/// Hacemos una carga para recuperar datos como la referencia
-	cargar(id);
+        /// Hacemos una carga para recuperar datos como la referencia
+        cargar ( id );
 
-        _depura("END Contrato::guardar", 0);
+        _depura ( "END Contrato::guardar", 0 );
         return 0;
-    } catch (...) {
-        _depura("Contrato::guardar() se produjo un error guardando la contrato", 0);
-        empresaBase()->rollback();
-        throw  -1;
+    } catch ( ... ) {
+        _depura ( "Contrato::guardar() se produjo un error guardando la contrato", 0 );
+        empresaBase() ->rollback();
+        throw  - 1;
     } // end try
 }
 
@@ -194,10 +201,11 @@ int Contrato::guardar() {
 /**
 \return
 **/
-Company * Contrato::_company() {
-	_depura("Contrato::_company", 0);
-	_depura("END Contrato::_company", 0);
-        return empresaBase();
+Company * Contrato::_company()
+{
+    _depura ( "Contrato::_company", 0 );
+    _depura ( "END Contrato::_company", 0 );
+    return empresaBase();
 }
 
 
@@ -208,81 +216,90 @@ Company * Contrato::_company() {
 ///
 /**
 **/
-    void Contrato::pintaidcliente(QString) {
-    _depura("Contrato::pintaidcliente", 0);
-    _depura("END Contrato::pintaidcliente", 0);
+void Contrato::pintaidcliente ( QString )
+{
+    _depura ( "Contrato::pintaidcliente", 0 );
+    _depura ( "END Contrato::pintaidcliente", 0 );
 }
 
 
 ///
 /**
 **/
-    void Contrato::pintarefcontrato(QString) {
-    _depura("Contrato::pintarefcontrato", 0);
-    _depura("Contrato::pintarefcontrato", 0);
+void Contrato::pintarefcontrato ( QString )
+{
+    _depura ( "Contrato::pintarefcontrato", 0 );
+    _depura ( "Contrato::pintarefcontrato", 0 );
 }
 
 
 ///
 /**
 **/
-    void Contrato::pintafincontrato(QString ) {
-    _depura("Contrato::pintafincontrato", 0);
-    _depura("END Contrato::pintafincontrato", 0);
+void Contrato::pintafincontrato ( QString )
+{
+    _depura ( "Contrato::pintafincontrato", 0 );
+    _depura ( "END Contrato::pintafincontrato", 0 );
 }
 
 
 ///
 /**
 **/
-    void Contrato::pintadescontrato(QString) {
-    _depura("Contrato::pintadescontrato", 0);
-    _depura("END Contrato::pintadescontrato", 0);
+void Contrato::pintadescontrato ( QString )
+{
+    _depura ( "Contrato::pintadescontrato", 0 );
+    _depura ( "END Contrato::pintadescontrato", 0 );
 }
 
 
 ///
 /**
 **/
-    void Contrato::pintanomcontrato(QString) {
-    _depura("Contrato::pintanomcontrato", 0);
-    _depura("END Contrato::pintanomcontrato", 0);
+void Contrato::pintanomcontrato ( QString )
+{
+    _depura ( "Contrato::pintanomcontrato", 0 );
+    _depura ( "END Contrato::pintanomcontrato", 0 );
 }
 
 
 ///
 /**
 **/
-    void Contrato::pintaffincontrato(QString) {
-    _depura("Contrato::pintaffincontrato", 0);
-    _depura("END Contrato::pintaffincontrato", 0);
+void Contrato::pintaffincontrato ( QString )
+{
+    _depura ( "Contrato::pintaffincontrato", 0 );
+    _depura ( "END Contrato::pintaffincontrato", 0 );
 }
 
 
 ///
 /**
 **/
-    void Contrato::pintaloccontrato(QString) {
-    _depura("Contrato::pintaloccontrato", 0);
-    _depura("END Contrato::pintaloccontrato", 0);
+void Contrato::pintaloccontrato ( QString )
+{
+    _depura ( "Contrato::pintaloccontrato", 0 );
+    _depura ( "END Contrato::pintaloccontrato", 0 );
 }
 
 
 ///
 /**
 **/
-    void Contrato::pintaperiodicidadcontrato(QString) {
-    _depura("Contrato::pintaperiodicidadcontrato", 0);
-    _depura("END Contrato::pintaperiodicidadcontrato", 0);
+void Contrato::pintaperiodicidadcontrato ( QString )
+{
+    _depura ( "Contrato::pintaperiodicidadcontrato", 0 );
+    _depura ( "END Contrato::pintaperiodicidadcontrato", 0 );
 }
 
 
 ///
 /**
 **/
-    void Contrato::inicialize() {
-    _depura("Contrato::inicialize", 0);
-    _depura("END Contrato::inicialize", 0);
+void Contrato::inicialize()
+{
+    _depura ( "Contrato::inicialize", 0 );
+    _depura ( "END Contrato::inicialize", 0 );
 }
 
 
@@ -290,11 +307,12 @@ Company * Contrato::_company() {
 /**
 \return
 **/
-    QString Contrato::calculateValues() {
-    _depura("Contrato::calculateValues", 0);
-    _depura("END Contrato::calculateValues", 0);
-        return "";
-    }
+QString Contrato::calculateValues()
+{
+    _depura ( "Contrato::calculateValues", 0 );
+    _depura ( "END Contrato::calculateValues", 0 );
+    return "";
+}
 
 
 

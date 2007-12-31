@@ -46,15 +46,15 @@
 \param parent
 **/
 RutaComercialIncView::RutaComercialIncView ( Company *comp, QWidget *parent )
-		: FichaBf ( comp, parent )
+        : FichaBf ( comp, parent )
 {
-	_depura ( "RutaComercialIncView::RutaComercialIncView", 0 );
-	setAttribute ( Qt::WA_DeleteOnClose );
-	setupUi ( this );
-	mui_rutacomercial->setEmpresaBase ( comp );
-	mui_incidenciacomercial->setEmpresaBase ( comp );
-	meteWindow ( windowTitle(), this );
-	_depura ( "END RutaComercialIncView::RutaComercialIncView", 0 );
+    _depura ( "RutaComercialIncView::RutaComercialIncView", 0 );
+    setAttribute ( Qt::WA_DeleteOnClose );
+    setupUi ( this );
+    mui_rutacomercial->setEmpresaBase ( comp );
+    mui_incidenciacomercial->setEmpresaBase ( comp );
+    meteWindow ( windowTitle(), this );
+    _depura ( "END RutaComercialIncView::RutaComercialIncView", 0 );
 }
 
 
@@ -63,9 +63,9 @@ RutaComercialIncView::RutaComercialIncView ( Company *comp, QWidget *parent )
 **/
 RutaComercialIncView::~RutaComercialIncView()
 {
-	_depura ( "RutaComercialIncView::~RutaComercialIncView", 0 );
-	empresaBase()->sacaWindow ( this );
-	_depura ( "END RutaComercialIncView::~RutaComercialIncView", 0 );
+    _depura ( "RutaComercialIncView::~RutaComercialIncView", 0 );
+    empresaBase() ->sacaWindow ( this );
+    _depura ( "END RutaComercialIncView::~RutaComercialIncView", 0 );
 }
 
 
@@ -74,16 +74,15 @@ RutaComercialIncView::~RutaComercialIncView()
 **/
 void RutaComercialIncView::on_mui_borrar_clicked()
 {
-	_depura ( "RutaComercialIncView::on_mui_borrar_clicked\n", 0 );
-	if ( QMessageBox::warning ( this,
-	                            tr ( "BulmaFact - Rutas comerciales" ),
-	                            tr ( "Desea borrar esta ruta?" ),
-	                            tr ( "&Si" ), tr ( "&No" ) ) == 0 )
-	{
-		mui_rutacomercial->borrar();
-		mui_incidenciacomercial->borrar();
-	} // end if
-	_depura ( "END RutaComercialIncView::on_mui_borrar_clicked\n", 0 );
+    _depura ( "RutaComercialIncView::on_mui_borrar_clicked\n", 0 );
+    if ( QMessageBox::warning ( this,
+                                tr ( "BulmaFact - Rutas comerciales" ),
+                                tr ( "Desea borrar esta ruta?" ),
+                                tr ( "&Si" ), tr ( "&No" ) ) == 0 ) {
+        mui_rutacomercial->borrar();
+        mui_incidenciacomercial->borrar();
+    } // end if
+    _depura ( "END RutaComercialIncView::on_mui_borrar_clicked\n", 0 );
 }
 
 
@@ -92,16 +91,17 @@ void RutaComercialIncView::on_mui_borrar_clicked()
 **/
 void RutaComercialIncView::closeEvent ( QCloseEvent * )
 {
-	_depura ( "closeEvent", 0 );
+    _depura ( "closeEvent", 0 );
 }
 
 
 ///
 /**
 **/
-void RutaComercialIncView::pintar() {
-    _depura("RutaComercialIncView::pintar", 0);
-    _depura("END RutaComercialIncView::pintar", 0);
+void RutaComercialIncView::pintar()
+{
+    _depura ( "RutaComercialIncView::pintar", 0 );
+    _depura ( "END RutaComercialIncView::pintar", 0 );
 };
 
 
@@ -110,10 +110,10 @@ void RutaComercialIncView::pintar() {
 **/
 void RutaComercialIncView::on_mui_guardar_clicked()
 {
-	_depura ( "RutaComercialIncView::on_mui_guardar_clicked", 0 );
-	mui_rutacomercial->guardar();
-	mui_incidenciacomercial->guardar();
-	_depura ( "END RutaComercialIncView::on_mui_guardar_clicked", 0 );
+    _depura ( "RutaComercialIncView::on_mui_guardar_clicked", 0 );
+    mui_rutacomercial->guardar();
+    mui_incidenciacomercial->guardar();
+    _depura ( "END RutaComercialIncView::on_mui_guardar_clicked", 0 );
 }
 
 
@@ -125,13 +125,13 @@ void RutaComercialIncView::on_mui_guardar_clicked()
 **/
 int RutaComercialIncView::cargar ( QString id, QString id1 )
 {
-	_depura ( "RutaComercialIncView::cargar", 0 );
-	int err = mui_rutacomercial->cargar ( id );
-	err = mui_incidenciacomercial->cargar ( id1 );
-	setWindowTitle ( tr ( "Accion comercial" ) + " " + mui_rutacomercial->DBvalue ( "idrutacomercial" ) + " + " + mui_incidenciacomercial->DBvalue ( "idincidenciacomercial" ) );
-	meteWindow ( windowTitle(), this );
-	_depura ( "END RutaComercialIncView::cargar", 0 );
-	return err;
+    _depura ( "RutaComercialIncView::cargar", 0 );
+    int err = mui_rutacomercial->cargar ( id );
+    err = mui_incidenciacomercial->cargar ( id1 );
+    setWindowTitle ( tr ( "Accion comercial" ) + " " + mui_rutacomercial->DBvalue ( "idrutacomercial" ) + " + " + mui_incidenciacomercial->DBvalue ( "idincidenciacomercial" ) );
+    meteWindow ( windowTitle(), this );
+    _depura ( "END RutaComercialIncView::cargar", 0 );
+    return err;
 }
 
 
@@ -140,9 +140,9 @@ int RutaComercialIncView::cargar ( QString id, QString id1 )
 **/
 void RutaComercialIncView::on_mui_aceptar_clicked()
 {
-        _depura("RutaComercialIncView::on_mui_aceptar_clicked", 0);
-	on_mui_guardar_clicked();
-	close();
-        _depura("END RutaComercialIncView::on_mui_aceptar_clicked", 0);
+    _depura ( "RutaComercialIncView::on_mui_aceptar_clicked", 0 );
+    on_mui_guardar_clicked();
+    close();
+    _depura ( "END RutaComercialIncView::on_mui_aceptar_clicked", 0 );
 }
 

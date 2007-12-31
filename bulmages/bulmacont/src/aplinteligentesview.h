@@ -62,7 +62,8 @@
     al asiento abierto.
     En el segundo caso se genera un asiento nuevo por cada introducci&oacute;n de plantilla.
 */
-class aplinteligentesview : public FichaBc, public Ui_AplInteligentesBase {
+class aplinteligentesview : public FichaBc, public Ui_AplInteligentesBase
+{
     Q_OBJECT
 
 private:
@@ -107,25 +108,25 @@ private:
     unsigned int numdigitos;
 
 public:
-    aplinteligentesview(Empresa *, QWidget *parent = 0);
+    aplinteligentesview ( Empresa *, QWidget *parent = 0 );
     ~aplinteligentesview();
-    void inicializa(int);
+    void inicializa ( int );
     void mostrarplantilla();
     void recogevalores();
     void creaasiento();
-    void recogevariables(QString, int);
-    QString aplicavariable(QString);
+    void recogevariables ( QString, int );
+    QString aplicavariable ( QString );
     void borrawidgets();
-    void selectsiguiente(QObject *);
+    void selectsiguiente ( QObject * );
     void inicializavariables();
-    void cifcuenta(int);
+    void cifcuenta ( int );
     void selectfirst();
-    void muestraplantilla(QString);
-    void setvalores(QString, QString);
-    void setfechaasiento(QString fecha);
+    void muestraplantilla ( QString );
+    void setvalores ( QString, QString );
+    void setfechaasiento ( QString fecha );
     /// La funci&oacute;n sirve para especificar el modo de funcionamiento de los asientos
     /// intelgientes. Consultar la variable m&eacute;todo para m&aacute;s detalles.
-    void setmodo(int i);
+    void setmodo ( int i );
     void on_mui_aceptar_clicked();
     virtual void on_mui_guardar_clicked();
 
@@ -134,7 +135,7 @@ public slots:
     void eturn_texto();
     void eturn_fecha();
     void eturn_cta();
-    void on_mui_comboainteligentes_activated(int index);
+    void on_mui_comboainteligentes_activated ( int index );
 
 };
 

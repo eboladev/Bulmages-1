@@ -26,13 +26,14 @@
 #include <QWorkspace>
 
 
-class QWorkspace2 : public QWorkspace {
+class QWorkspace2 : public QWorkspace
+{
     Q_OBJECT
 
 public:
-    QWorkspace2(QWidget *);
+    QWorkspace2 ( QWidget * );
     ~QWorkspace2();
-    void addWindow(QWidget *);
+    void addWindow ( QWidget * );
 };
 
 #endif

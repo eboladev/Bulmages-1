@@ -31,12 +31,13 @@
 /**
 \param parent
 **/
-BusquedaTipoIva::BusquedaTipoIva(QWidget *parent)
-        : QComboBox2(parent) {
-    _depura("BusquedaTipoIva::BusquedaTipoIva", 0);
+BusquedaTipoIva::BusquedaTipoIva ( QWidget *parent )
+        : QComboBox2 ( parent )
+{
+    _depura ( "BusquedaTipoIva::BusquedaTipoIva", 0 );
     m_cursorcombo = NULL;
-    connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
-    _depura("END BusquedaTipoIva::BusquedaTipoIva", 0);
+    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
+    _depura ( "END BusquedaTipoIva::BusquedaTipoIva", 0 );
 }
 
 
@@ -44,12 +45,13 @@ BusquedaTipoIva::BusquedaTipoIva(QWidget *parent)
 */
 /**
 **/
-BusquedaTipoIva::~BusquedaTipoIva() {
-    _depura("BusquedaTipoIva::~BusquedaTipoIva", 0);
-    if (m_cursorcombo != NULL) {
+BusquedaTipoIva::~BusquedaTipoIva()
+{
+    _depura ( "BusquedaTipoIva::~BusquedaTipoIva", 0 );
+    if ( m_cursorcombo != NULL ) {
         delete m_cursorcombo;
     } // end if
-    _depura("END BusquedaTipoIva::~BusquedaTipoIva", 0);
+    _depura ( "END BusquedaTipoIva::~BusquedaTipoIva", 0 );
 }
 
 
@@ -61,28 +63,29 @@ BusquedaTipoIva::~BusquedaTipoIva() {
 \param idtipo_iva
 \returns
 **/
-void BusquedaTipoIva::setidtipo_iva(QString idtipo_iva) {
-    _depura("BusquedaTipoIva::setidtipo_iva", 0);
-    if (m_cursorcombo != NULL) {
+void BusquedaTipoIva::setidtipo_iva ( QString idtipo_iva )
+{
+    _depura ( "BusquedaTipoIva::setidtipo_iva", 0 );
+    if ( m_cursorcombo != NULL ) {
         delete m_cursorcombo;
     } // end if
-    m_cursorcombo = empresaBase()->cargacursor("SELECT * FROM tipo_iva");
+    m_cursorcombo = empresaBase() ->cargacursor ( "SELECT * FROM tipo_iva" );
     /// Tratamos el caso en que no se haya devuelto nada.
-    if (m_cursorcombo == NULL) return;
+    if ( m_cursorcombo == NULL ) return;
     int i = 0;
     int i1 = 0;
     clear();
-    addItem("--");
-    while (!m_cursorcombo->eof()) {
+    addItem ( "--" );
+    while ( !m_cursorcombo->eof() ) {
         i ++;
-        if (m_cursorcombo->valor("idtipo_iva") == idtipo_iva) {
+        if ( m_cursorcombo->valor ( "idtipo_iva" ) == idtipo_iva ) {
             i1 = i;
         } // end if
-        addItem(m_cursorcombo->valor("desctipo_iva"));
+        addItem ( m_cursorcombo->valor ( "desctipo_iva" ) );
         m_cursorcombo->siguienteregistro();
     } // end while
-    setCurrentIndex(i1);
-    _depura("END BusquedaTipoIva::setidtipo_iva", 0);
+    setCurrentIndex ( i1 );
+    _depura ( "END BusquedaTipoIva::setidtipo_iva", 0 );
 }
 
 
@@ -90,10 +93,11 @@ void BusquedaTipoIva::setidtipo_iva(QString idtipo_iva) {
 /**
 \param idtipo_iva
 **/
-void BusquedaTipoIva::setValorCampo(QString idtipo_iva) {
-    _depura("BusquedaTipoIva::setValorCampo", 0);
-    setidtipo_iva(idtipo_iva);
-    _depura("END BusquedaTipoIva::setValorCampo", 0);
+void BusquedaTipoIva::setValorCampo ( QString idtipo_iva )
+{
+    _depura ( "BusquedaTipoIva::setValorCampo", 0 );
+    setidtipo_iva ( idtipo_iva );
+    _depura ( "END BusquedaTipoIva::setValorCampo", 0 );
 }
 
 
@@ -102,12 +106,13 @@ void BusquedaTipoIva::setValorCampo(QString idtipo_iva) {
 /**
 \return
 **/
-QString BusquedaTipoIva::idtipo_iva() {
-    _depura("BusquedaTipoIva::idtipo_iva", 0);
-    _depura("END BusquedaTipoIva::idtipo_iva", 0);
+QString BusquedaTipoIva::idtipo_iva()
+{
+    _depura ( "BusquedaTipoIva::idtipo_iva", 0 );
+    _depura ( "END BusquedaTipoIva::idtipo_iva", 0 );
     /// Como puede haber habido un error con la base de datos debemos tratar dicho caso.
-    if (!m_cursorcombo) return "0";
-    return m_cursorcombo->valor("idtipo_iva", currentIndex() - 1);
+    if ( !m_cursorcombo ) return "0";
+    return m_cursorcombo->valor ( "idtipo_iva", currentIndex() - 1 );
 }
 
 /** Devuelve el identificador del tipo_iva seleccionado
@@ -115,10 +120,11 @@ QString BusquedaTipoIva::idtipo_iva() {
 /**
 \return
 **/
-QString BusquedaTipoIva::valorCampo() {
-    _depura("BusquedaTipoIva::valorCampo", 0);
+QString BusquedaTipoIva::valorCampo()
+{
+    _depura ( "BusquedaTipoIva::valorCampo", 0 );
     return idtipo_iva();
-    _depura("END BusquedaTipoIva::valorCampo", 0);
+    _depura ( "END BusquedaTipoIva::valorCampo", 0 );
 }
 
 
@@ -127,14 +133,15 @@ QString BusquedaTipoIva::valorCampo() {
 /**
 \param index
 **/
-void BusquedaTipoIva::m_activated(int index) {
-    _depura("BusquedaTipoIva::m_activated", 0);
-    if (index > 0) {
-        emit(valueChanged(m_cursorcombo->valor("idtipo_iva", index - 1)));
+void BusquedaTipoIva::m_activated ( int index )
+{
+    _depura ( "BusquedaTipoIva::m_activated", 0 );
+    if ( index > 0 ) {
+        emit ( valueChanged ( m_cursorcombo->valor ( "idtipo_iva", index - 1 ) ) );
     } else {
-        emit(valueChanged(""));
+        emit ( valueChanged ( "" ) );
     } // end if
-    _depura("END BusquedaTipoIva::m_activated", 0);
+    _depura ( "END BusquedaTipoIva::m_activated", 0 );
 }
 
 
@@ -148,13 +155,14 @@ void BusquedaTipoIva::m_activated(int index) {
 /**
 \param parent
 **/
-BusquedaTipoIVADelegate::BusquedaTipoIVADelegate(QWidget *parent)
-        : QComboBox2(parent) {
-    _depura("BusquedaTipoIVADelegate::BusquedaTipoIVADelegate", 0);
+BusquedaTipoIVADelegate::BusquedaTipoIVADelegate ( QWidget *parent )
+        : QComboBox2 ( parent )
+{
+    _depura ( "BusquedaTipoIVADelegate::BusquedaTipoIVADelegate", 0 );
     m_cursorcombo = NULL;
-    setSizeAdjustPolicy(QComboBox::AdjustToContents);
-    connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
-    _depura("END BusquedaTipoIVADelegate::BusquedaTipoIVADelegate", 0);
+    setSizeAdjustPolicy ( QComboBox::AdjustToContents );
+    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
+    _depura ( "END BusquedaTipoIVADelegate::BusquedaTipoIVADelegate", 0 );
 }
 
 
@@ -162,12 +170,13 @@ BusquedaTipoIVADelegate::BusquedaTipoIVADelegate(QWidget *parent)
 */
 /**
 **/
-BusquedaTipoIVADelegate::~BusquedaTipoIVADelegate() {
-    _depura("BusquedaTipoIVADelegate::~BusquedaTipoIVADelegate", 0);
-    if (m_cursorcombo != NULL) {
+BusquedaTipoIVADelegate::~BusquedaTipoIVADelegate()
+{
+    _depura ( "BusquedaTipoIVADelegate::~BusquedaTipoIVADelegate", 0 );
+    if ( m_cursorcombo != NULL ) {
         delete m_cursorcombo;
     } // end if
-    _depura("END BusquedaTipoIVADelegate::~BusquedaTipoIVADelegate", 0);
+    _depura ( "END BusquedaTipoIVADelegate::~BusquedaTipoIVADelegate", 0 );
 }
 
 
@@ -178,29 +187,30 @@ BusquedaTipoIVADelegate::~BusquedaTipoIVADelegate() {
 /**
 \param code
 **/
-void BusquedaTipoIVADelegate::set(const QString &cod) {
-    _depura("BusquedaTipoIVADelegate::set", 0);
+void BusquedaTipoIVADelegate::set ( const QString &cod )
+{
+    _depura ( "BusquedaTipoIVADelegate::set", 0 );
     int index = 0;
     QString codigo = cod;
 
-    if (m_cursorcombo != NULL) {
+    if ( m_cursorcombo != NULL ) {
         delete m_cursorcombo;
     } // end if
 
-    m_cursorcombo = empresaBase()->cargacursor("SELECT desctipo_iva FROM tipo_iva ");
+    m_cursorcombo = empresaBase() ->cargacursor ( "SELECT desctipo_iva FROM tipo_iva " );
     /// Comprobamos que no haya habido errores
-    if (!m_cursorcombo) return;
+    if ( !m_cursorcombo ) return;
 
     clear();
-    while (!m_cursorcombo->eof()) {
-        addItem(m_cursorcombo->valor("desctipo_iva"));
+    while ( !m_cursorcombo->eof() ) {
+        addItem ( m_cursorcombo->valor ( "desctipo_iva" ) );
         m_cursorcombo->siguienteregistro();
-        if (m_cursorcombo->valor("desctipo_iva") == cod)
-        index = m_cursorcombo->regactual();
+        if ( m_cursorcombo->valor ( "desctipo_iva" ) == cod )
+            index = m_cursorcombo->regactual();
     } // end while
-    setEditText(cod);
-    setCurrentIndex(index);
+    setEditText ( cod );
+    setCurrentIndex ( index );
 
-    _depura("END BusquedaTipoIVADelegate::set", 0);
+    _depura ( "END BusquedaTipoIVADelegate::set", 0 );
 }
 

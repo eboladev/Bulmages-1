@@ -23,8 +23,9 @@
 #include <QObject>
 #include "bulmacont.h"
 
-class mytiptrab : public QObject {
-Q_OBJECT
+class mytiptrab : public QObject
+{
+    Q_OBJECT
 
 public:
     Bulmacont *m_bulmacont;
@@ -32,7 +33,7 @@ public:
 public:
     mytiptrab();
     ~mytiptrab();
-    void inicializa(Bulmacont *);
+    void inicializa ( Bulmacont * );
 
 public slots:
     void elslot();

@@ -29,46 +29,49 @@
 \param parent
 \param f
 **/
-BNuevaEmpresa::BNuevaEmpresa(QWidget *parent, Qt::WFlags f)
-        : QDialog(parent, f) {
-    setupUi(this);
+BNuevaEmpresa::BNuevaEmpresa ( QWidget *parent, Qt::WFlags f )
+        : QDialog ( parent, f )
+{
+    setupUi ( this );
 
-    QObject::connect(PushButton1, SIGNAL(clicked()), this, SLOT(accept()));
-    QObject::connect(PushButton1_2, SIGNAL(clicked()), this, SLOT(close()));
+    QObject::connect ( PushButton1, SIGNAL ( clicked() ), this, SLOT ( accept() ) );
+    QObject::connect ( PushButton1_2, SIGNAL ( clicked() ), this, SLOT ( close() ) );
 }
 
 
 ///
 /**
 **/
-BNuevaEmpresa::~BNuevaEmpresa() {}
+BNuevaEmpresa::~BNuevaEmpresa()
+{}
 
 
 ///
 /**
 \return
 **/
-void BNuevaEmpresa::accept() {
+void BNuevaEmpresa::accept()
+{
     /// Falta comprobar que tengas permisos para crear nuevas empresas.
     QString nombredb;
     QString nombreEmp;
     QString ejemp = ejercicioempresa->text();
 
-    nombredb = bdempresa->text().trimmed()+ejercicioempresa->text().trimmed();
+    nombredb = bdempresa->text().trimmed() + ejercicioempresa->text().trimmed();
     nombreEmp = nombreempresa->text().trimmed();
 
     /// Comprobamos que se han introducido todos los datos para avisar en caso contrario.
-    if ((nombredb == "") || (nombreEmp == "") || (ejemp == "") ) {
-        QMessageBox::warning(this, tr("Datos incompletos"),
-                             tr("No puede dejar campos en blanco para crear una nueva empresa.\n"), tr("&Aceptar"), tr("&Cancelar"), 0, 0 );
+    if ( ( nombredb == "" ) || ( nombreEmp == "" ) || ( ejemp == "" ) ) {
+        QMessageBox::warning ( this, tr ( "Datos incompletos" ),
+                               tr ( "No puede dejar campos en blanco para crear una nueva empresa.\n" ), tr ( "&Aceptar" ), tr ( "&Cancelar" ), 0, 0 );
         return;
     } // end if
 
-    QString cadena = confpr->valor(CONF_PROGDATA);
+    QString cadena = confpr->valor ( CONF_PROGDATA );
     cadena += "dbmodels/creabulmacont --texto " + nombredb + " 1 " + nombreEmp + " " + ejercicioempresa->text().trimmed() + " " + "";
-    system(cadena.toAscii().constData());
+    system ( cadena.toAscii().constData() );
     /// Hacemos una recarga de empresas pq sabemos a ciencia cierta que ha cambiado el listado.
-    abreempresaview *abre = new abreempresaview(NULL, "hola", "hola");
+    abreempresaview *abre = new abreempresaview ( NULL, "hola", "hola" );
     abre->on_mui_actualizar_clicked();
     delete abre;
     close();

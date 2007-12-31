@@ -34,7 +34,8 @@ class Company;
     Deriva de la clase Ficha para el control de la ventana y de la clase Articulo
     para el control con la base de datos.
 */
-class ArticuloView : public FichaBf, public Ui_ArticuloBase {
+class ArticuloView : public FichaBf, public Ui_ArticuloBase
+{
     Q_OBJECT
 
 private:
@@ -44,12 +45,12 @@ private:
     cursor2 *m_cursorcombo;
 
 public:
-    ArticuloView(Company *emp, QWidget *parent = 0);
+    ArticuloView ( Company *emp, QWidget *parent = 0 );
     ~ArticuloView();
 
 public:
     virtual void pintarPost();
-    virtual int cargarPost(QString);
+    virtual int cargarPost ( QString );
     virtual int guardarPost();
     virtual int borrarPre();
 

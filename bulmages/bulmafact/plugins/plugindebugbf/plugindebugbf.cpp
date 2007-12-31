@@ -34,18 +34,20 @@
 ///
 /**
 **/
-myplugin::myplugin() {
-    _depura("myplugin::myplugin", 0);
-    _depura("END myplugin::myplugin", 0);
+myplugin::myplugin()
+{
+    _depura ( "myplugin::myplugin", 0 );
+    _depura ( "END myplugin::myplugin", 0 );
 }
 
 
 ///
 /**
 **/
-myplugin::~myplugin() {
-    _depura("myplugin::~myplugin", 0);
-    _depura("END myplugin::~myplugin", 0);
+myplugin::~myplugin()
+{
+    _depura ( "myplugin::~myplugin", 0 );
+    _depura ( "END myplugin::~myplugin", 0 );
 }
 
 
@@ -53,10 +55,11 @@ myplugin::~myplugin() {
 /**
 \return
 **/
-void myplugin::cambia(bool valor) {
-    _depura("myplugin::cambia", 0);
-	confpr->setValor(CONF_DEBUG, (valor?"TRUE":"FALSE"));
-    _depura("END myplugin::cambia", 0);
+void myplugin::cambia ( bool valor )
+{
+    _depura ( "myplugin::cambia", 0 );
+    confpr->setValor ( CONF_DEBUG, ( valor ? "TRUE" : "FALSE" ) );
+    _depura ( "END myplugin::cambia", 0 );
 }
 
 
@@ -65,27 +68,28 @@ void myplugin::cambia(bool valor) {
 /**
 \param bcont
 **/
-void entryPoint(Bulmafact *bcont) {
-    _depura("Entrada del plugin Corrector", 10);
+void entryPoint ( Bulmafact *bcont )
+{
+    _depura ( "Entrada del plugin Corrector", 10 );
 
     myplugin *corr = new myplugin();
 
     /// A&ntilde;ade en el men&uacute; del programa la opci&oacuteMn para
     /// acceder al corrector.
-    QAction *viewCorrector = new QAction("&Modo Debug", 0);
-    viewCorrector->setCheckable(TRUE);
+    QAction *viewCorrector = new QAction ( "&Modo Debug", 0 );
+    viewCorrector->setCheckable ( TRUE );
 
-    if(confpr->valor(CONF_DEBUG) == "TRUE") {
-    	viewCorrector->setChecked(TRUE);
+    if ( confpr->valor ( CONF_DEBUG ) == "TRUE" ) {
+        viewCorrector->setChecked ( TRUE );
     } else {
-	viewCorrector->setChecked(FALSE);
+        viewCorrector->setChecked ( FALSE );
     }
 
-    viewCorrector->setStatusTip("Activa/Desactiva el Modo Debug");
-    viewCorrector->setWhatsThis("Debug.\n\nActiva/Desactiva el Modo Debug");
-    QObject::connect(viewCorrector, SIGNAL(toggled(bool)), corr, SLOT(cambia(bool)));
+    viewCorrector->setStatusTip ( "Activa/Desactiva el Modo Debug" );
+    viewCorrector->setWhatsThis ( "Debug.\n\nActiva/Desactiva el Modo Debug" );
+    QObject::connect ( viewCorrector, SIGNAL ( toggled ( bool ) ), corr, SLOT ( cambia ( bool ) ) );
     bcont->menuVentana->addSeparator();
-    bcont->menuVentana->addAction(viewCorrector);
-    _depura("Iniciado correctamente el plugin Corrector", 10);
+    bcont->menuVentana->addAction ( viewCorrector );
+    _depura ( "Iniciado correctamente el plugin Corrector", 10 );
 }
 

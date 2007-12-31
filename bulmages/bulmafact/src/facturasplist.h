@@ -32,16 +32,17 @@
 
 /// Administra el detalle del listado de facturas de proveedor.
 /** */
-class FacturasProveedorListSubform : public SubForm2Bf {
+class FacturasProveedorListSubform : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
-    FacturasProveedorListSubform(QWidget *parent = 0);
+    FacturasProveedorListSubform ( QWidget *parent = 0 );
     ~FacturasProveedorListSubform();
 
 public slots:
     virtual void cargar();
-    virtual void cargar(QString query);
+    virtual void cargar ( QString query );
 };
 
 
@@ -50,23 +51,24 @@ public slots:
 
 /// Administra el listado de facturas de proveedor.
 /** */
-class FacturasProveedorList : public Listado, public Ui_FacturasProveedorListBase {
+class FacturasProveedorList : public Listado, public Ui_FacturasProveedorListBase
+{
     Q_OBJECT
 
 private:
     QString mdb_idfacturap;
 
 public:
-    FacturasProveedorList(QWidget *parent = 0, Qt::WFlags flag = 0);
-    FacturasProveedorList(Company *,QWidget *parent = 0);
+    FacturasProveedorList ( QWidget *parent = 0, Qt::WFlags flag = 0 );
+    FacturasProveedorList ( Company *, QWidget *parent = 0 );
     ~FacturasProveedorList();
     QString idfacturap();
     QString generaFiltro();
     void presentar();
-    void setEmpresaBase (Company *comp);
-    void setidproveedor(QString val);
-    void setidarticulo(QString val);
-    void editar(int);
+    void setEmpresaBase ( Company *comp );
+    void setidproveedor ( QString val );
+    void setidarticulo ( QString val );
+    void editar ( int );
     void borrar();
     void crear();
     void imprimir();

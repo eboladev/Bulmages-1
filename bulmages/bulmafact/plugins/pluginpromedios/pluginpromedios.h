@@ -30,9 +30,9 @@
 #include "bulmafact.h"
 
 
-extern "C" MY_EXPORT int entryPoint(Bulmafact *);
-extern "C" MY_EXPORT int ArticuloView_ArticuloView(ArticuloView *);
-extern "C" MY_EXPORT int ArticuloView_cargar(ArticuloView *);
+extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int ArticuloView_ArticuloView ( ArticuloView * );
+extern "C" MY_EXPORT int ArticuloView_cargar ( ArticuloView * );
 
 
 /*

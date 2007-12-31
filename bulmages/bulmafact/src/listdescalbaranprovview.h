@@ -28,20 +28,23 @@
 
 /// Muestra y administra la ventana de lista de descuentos por albar&aacute;n de proveedor.
 /** */
-class ListDescuentoAlbaranProvView : public SubForm2Bf {
+class ListDescuentoAlbaranProvView : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
     QString mdb_idalbaranp;
-    ListDescuentoAlbaranProvView(QWidget *parent = 0);
-    ~ListDescuentoAlbaranProvView() {}
+    ListDescuentoAlbaranProvView ( QWidget *parent = 0 );
+    ~ListDescuentoAlbaranProvView()
+    {}
     ;
 
 public slots:
-    virtual void cargar(QString idalbaranp) {
-        _depura("ListDescuentoAlbaranProvView::cargar\n", 0);
+    virtual void cargar ( QString idalbaranp )
+    {
+        _depura ( "ListDescuentoAlbaranProvView::cargar\n", 0 );
         mdb_idalbaranp = idalbaranp;
-        SubForm3::cargar("SELECT * FROM dalbaranp WHERE idalbaranp = " + mdb_idalbaranp);
+        SubForm3::cargar ( "SELECT * FROM dalbaranp WHERE idalbaranp = " + mdb_idalbaranp );
     };
 };
 

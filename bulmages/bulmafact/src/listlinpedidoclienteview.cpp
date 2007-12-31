@@ -33,37 +33,38 @@
 \param parent
 \return
 **/
-ListLinPedidoClienteView::ListLinPedidoClienteView(QWidget *parent) : SubForm2Bf(parent) {
-    _depura("ListLinPedidoClienteView::ListLinPedidoClienteView", 0);
-    setDBTableName("lpedidocliente");
-    setDBCampoId("numlpedidocliente");
+ListLinPedidoClienteView::ListLinPedidoClienteView ( QWidget *parent ) : SubForm2Bf ( parent )
+{
+    _depura ( "ListLinPedidoClienteView::ListLinPedidoClienteView", 0 );
+    setDBTableName ( "lpedidocliente" );
+    setDBCampoId ( "numlpedidocliente" );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza("ListLinPedidoClienteView_ListLinPedidoClienteView", this);
-    if (res != 0) {
-         return;
+    int res = g_plugins->lanza ( "ListLinPedidoClienteView_ListLinPedidoClienteView", this );
+    if ( res != 0 ) {
+        return;
     } // end if
-    addSHeader("puntlpedidocliente", DBCampo::DBboolean, DBCampo::DBNotNull, SHeader::DBNone, tr("Puntl pedido cliente"));
-    addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id articulo"));
-    addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Codigo completo articulo"));
-    addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("Nombre articulo"));
-    addSHeader("numlpedidocliente", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr("Numl pedido cliente"));
-    addSHeader("desclpedidocliente", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Descl pedido cliente"));
-    addSHeader("cantlpedidocliente", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Cantl pedido cliente"));
-    addSHeader("pvplpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr("PVPl pedido cliente"));
-    addSHeader("ivalpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr("IVAl pedido cliente"));
-    addSHeader("reqeqlpedidocliente", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, tr("% Recargo E.Q."));
-    addSHeader("descuentolpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr("Descuentol pedido cliente"));
-    addSHeader("idpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, tr("Id pedido cliente"));
-    addSHeader("ordenlpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Orden"));
+    addSHeader ( "puntlpedidocliente", DBCampo::DBboolean, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Puntl pedido cliente" ) );
+    addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr ( "Id articulo" ) );
+    addSHeader ( "codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr ( "Codigo completo articulo" ) );
+    addSHeader ( "nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr ( "Nombre articulo" ) );
+    addSHeader ( "numlpedidocliente", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr ( "Numl pedido cliente" ) );
+    addSHeader ( "desclpedidocliente", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Descl pedido cliente" ) );
+    addSHeader ( "cantlpedidocliente", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Cantl pedido cliente" ) );
+    addSHeader ( "pvplpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr ( "PVPl pedido cliente" ) );
+    addSHeader ( "ivalpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr ( "IVAl pedido cliente" ) );
+    addSHeader ( "reqeqlpedidocliente", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, tr ( "% Recargo E.Q." ) );
+    addSHeader ( "descuentolpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Descuentol pedido cliente" ) );
+    addSHeader ( "idpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "Id pedido cliente" ) );
+    addSHeader ( "ordenlpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr ( "Orden" ) );
 
     /// Establecemos los modos de comportamiento del subformulario
-    setinsercion(TRUE);
-    setOrdenEnabled(TRUE);
-    setOrdenPorQuery(FALSE);
+    setinsercion ( TRUE );
+    setOrdenEnabled ( TRUE );
+    setOrdenPorQuery ( FALSE );
 
     /// Lanzamos los plugins
-    g_plugins->lanza("ListLinPedidoClienteView_ListLinPedidoClienteView_Post", this);
-    _depura("END ListLinPedidoClienteView::ListLinPedidoClienteView", 0);
+    g_plugins->lanza ( "ListLinPedidoClienteView_ListLinPedidoClienteView_Post", this );
+    _depura ( "END ListLinPedidoClienteView::ListLinPedidoClienteView", 0 );
 }
 
 
@@ -71,11 +72,12 @@ ListLinPedidoClienteView::ListLinPedidoClienteView(QWidget *parent) : SubForm2Bf
 /**
 \param idpedidocliente
 **/
-void ListLinPedidoClienteView::cargar(QString idpedidocliente) {
-    _depura("ListLinPedidoClienteView::cargar", 0);
+void ListLinPedidoClienteView::cargar ( QString idpedidocliente )
+{
+    _depura ( "ListLinPedidoClienteView::cargar", 0 );
     mdb_idpedidocliente = idpedidocliente;
-    SubForm3::cargar("SELECT * FROM lpedidocliente LEFT JOIN articulo ON lpedidocliente.idarticulo = articulo.idarticulo WHERE idpedidocliente=" + mdb_idpedidocliente + " ORDER BY ordenlpedidocliente");
-    _depura("END ListLinPedidoClienteView::cargar", 0);
+    SubForm3::cargar ( "SELECT * FROM lpedidocliente LEFT JOIN articulo ON lpedidocliente.idarticulo = articulo.idarticulo WHERE idpedidocliente=" + mdb_idpedidocliente + " ORDER BY ordenlpedidocliente" );
+    _depura ( "END ListLinPedidoClienteView::cargar", 0 );
 }
 
 

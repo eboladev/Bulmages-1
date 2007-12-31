@@ -32,14 +32,15 @@
 
 /// Permite introducir una referencia.
 /** Este Widget permite introducir una referencia. */
-class BusquedaReferencia : public BLWidget, public Ui_BusquedaReferenciaBase {
+class BusquedaReferencia : public BLWidget, public Ui_BusquedaReferenciaBase
+{
     Q_OBJECT
 
 public:
-    BusquedaReferencia(QWidget *parent = 0);
+    BusquedaReferencia ( QWidget *parent = 0 );
     ~BusquedaReferencia();
-    virtual void setText(QString val);
-    virtual void setValorCampo(QString val);
+    virtual void setText ( QString val );
+    virtual void setValorCampo ( QString val );
     virtual QString text();
     virtual QString valorCampo();
 
@@ -49,7 +50,7 @@ public slots:
     virtual void on_mui_abrirtodo_clicked();
 
 signals:
-    void valueChanged(QString);
+    void valueChanged ( QString );
 };
 
 #endif

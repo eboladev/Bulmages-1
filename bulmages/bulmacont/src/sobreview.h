@@ -30,11 +30,12 @@
 
 /// Presenta la informaci&oacute;n sobre el programa.
 /** Esta clase muestra el di&aacute;logo de About. Presentan los cr&eacute;ditos del programa. */
-class sobreview : public QDialog, public Ui_SobreBase {
+class sobreview : public QDialog, public Ui_SobreBase
+{
     Q_OBJECT
 
 public:
-    sobreview(QWidget *parent = 0); /// Constructor de la clase.
+    sobreview ( QWidget *parent = 0 ); /// Constructor de la clase.
     ~sobreview(); /// Destructor de la clase.
 
 private slots:

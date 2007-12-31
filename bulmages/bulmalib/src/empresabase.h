@@ -30,7 +30,8 @@
 #include "qworkspace2.h"
 
 
-class EmpresaBase : public postgresiface2 {
+class EmpresaBase : public postgresiface2
+{
 protected:
     /// Puntero al dock que lista las ventansa. Puesto que esta clase hace el paso de
     /// mensajes tiene el control de la lista de ventanas.
@@ -47,17 +48,17 @@ public:
 public:
     EmpresaBase();
     virtual ~EmpresaBase();
-    virtual void init(QString bd, QString tipo);
-    QString searchCompany(QString);
-    void setListVentanas(ListVentanas *doc);
+    virtual void init ( QString bd, QString tipo );
+    QString searchCompany ( QString );
+    void setListVentanas ( ListVentanas *doc );
     QWorkspace2 *pWorkspace();
-    void setWorkspace(QWorkspace2 *qw);
-    void setProgressBar(QProgressBar *pb);
-    int meteWindow(QString nom, QObject *obj, bool compdup = TRUE);
-    int seleccionaWindow(QString nom, QObject *obj);
+    void setWorkspace ( QWorkspace2 *qw );
+    void setProgressBar ( QProgressBar *pb );
+    int meteWindow ( QString nom, QObject *obj, bool compdup = TRUE );
+    int seleccionaWindow ( QString nom, QObject *obj );
     int deSeleccionaWindow();
-    void sacaWindow(QObject *nom);
-    void s_indexadorCambiaEstado(bool);
+    void sacaWindow ( QObject *nom );
+    void s_indexadorCambiaEstado ( bool );
     void muestraPaises();
 };
 

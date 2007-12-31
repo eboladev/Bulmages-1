@@ -44,35 +44,36 @@
 \param editmode
 \return
 **/
-ContratosList::ContratosList(Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmode)
-        : Listado(comp, parent, flag), pgimportfiles(comp) {
-    _depura("ContratosList::ContratosList", 0);
-    setAttribute(Qt::WA_DeleteOnClose);
-    setupUi(this);
+ContratosList::ContratosList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmode )
+        : Listado ( comp, parent, flag ), pgimportfiles ( comp )
+{
+    _depura ( "ContratosList::ContratosList", 0 );
+    setAttribute ( Qt::WA_DeleteOnClose );
+    setupUi ( this );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza("ContratosList_ContratosList", this);
-    if (res != 0)
+    int res = g_plugins->lanza ( "ContratosList_ContratosList", this );
+    if ( res != 0 )
         return;
 
-    mui_list->setEmpresaBase(comp);
-    mui_idcliente->setEmpresaBase(comp);
+    mui_list->setEmpresaBase ( comp );
+    mui_idcliente->setEmpresaBase ( comp );
     mdb_idcontrato = "";
     mdb_nomcontrato = "";
     m_modo = editmode;
     hideBusqueda();
     /// Si estamos en el modo edici&oacute;n metemos la ventana en el workSpace.
-    if (m_modo == EditMode) {
-        empresaBase()->meteWindow(windowTitle(), this);
+    if ( m_modo == EditMode ) {
+        empresaBase() ->meteWindow ( windowTitle(), this );
     } else {
-        setWindowTitle(tr("Selector de contratos"));
-        mui_editar->setHidden(TRUE);
-        mui_crear->setHidden(TRUE);
-        mui_borrar->setHidden(TRUE);
-        mui_imprimir->setHidden(TRUE);
+        setWindowTitle ( tr ( "Selector de contratos" ) );
+        mui_editar->setHidden ( TRUE );
+        mui_crear->setHidden ( TRUE );
+        mui_borrar->setHidden ( TRUE );
+        mui_imprimir->setHidden ( TRUE );
     } // end if
     presenta();
-    trataPermisos("contrato");
-    _depura("END ContratosList::ContratosList", 0);
+    trataPermisos ( "contrato" );
+    _depura ( "END ContratosList::ContratosList", 0 );
 }
 
 
@@ -80,10 +81,11 @@ ContratosList::ContratosList(Company *comp, QWidget *parent, Qt::WFlags flag, ed
 */
 /**
 **/
-ContratosList::~ContratosList() {
-    _depura("ContratosList::~ContratosList", 0);
-    empresaBase()->sacaWindow(this);
-    _depura("END ContratosList::~ContratosList", 0);
+ContratosList::~ContratosList()
+{
+    _depura ( "ContratosList::~ContratosList", 0 );
+    empresaBase() ->sacaWindow ( this );
+    _depura ( "END ContratosList::~ContratosList", 0 );
 }
 
 
@@ -92,46 +94,48 @@ ContratosList::~ContratosList() {
 /// \TODO: Mejorar el sistema de filtrado incluyendo una funcion de generar Filtro.
 /**
 **/
-void ContratosList::presenta() {
-    _depura("ContratosList::presenta", 0);
+void ContratosList::presenta()
+{
+    _depura ( "ContratosList::presenta", 0 );
     QString where;
 
-    if (mui_idcliente->idcliente() != "") {
-	where = " AND contrato.idcliente = "+mui_idcliente->idcliente();
+    if ( mui_idcliente->idcliente() != "" ) {
+        where = " AND contrato.idcliente = " + mui_idcliente->idcliente();
     } // end if
 
-    mui_list->cargar("SELECT * FROM contrato NATURAL LEFT JOIN cliente  WHERE nomcontrato LIKE '%" + m_findClient->text() + "%' "+where+" ORDER BY nomcontrato");
-    _depura("END ContratosList::presenta", 0);
+    mui_list->cargar ( "SELECT * FROM contrato NATURAL LEFT JOIN cliente  WHERE nomcontrato LIKE '%" + m_findClient->text() + "%' " + where + " ORDER BY nomcontrato" );
+    _depura ( "END ContratosList::presenta", 0 );
 }
 
 
 /** LA accion de editar tiene una doble vertiente dependiendo del modo en que se ha abierto la ventana.
     Modo Edicion:
-	- Crea una instancia de ClienteView, lo inicializa y lo presenta.
+ - Crea una instancia de ClienteView, lo inicializa y lo presenta.
     Modo Seleccion:
-	- Establece cual es el elemento seleccionado y se cierra la ventana para devolver el control.
+ - Establece cual es el elemento seleccionado y se cierra la ventana para devolver el control.
 */
 /**
 \return
 **/
-void ContratosList::editar(int row) {
+void ContratosList::editar ( int row )
+{
 
-    _depura("ContratosList::editar", 0);
-    mdb_idcontrato = mui_list->DBvalue("idcontrato", row);
-    mdb_refcontrato = mui_list->DBvalue("refcontrato", row);
-    mdb_nomcontrato = mui_list->DBvalue("nomcontrato", row);
-    if (m_modo == 0) {
-        ContratoView *prov = new ContratoView((Company *)empresaBase());
-        if (prov->cargar(mdb_idcontrato)) {
+    _depura ( "ContratosList::editar", 0 );
+    mdb_idcontrato = mui_list->DBvalue ( "idcontrato", row );
+    mdb_refcontrato = mui_list->DBvalue ( "refcontrato", row );
+    mdb_nomcontrato = mui_list->DBvalue ( "nomcontrato", row );
+    if ( m_modo == 0 ) {
+        ContratoView * prov = new ContratoView ( ( Company * ) empresaBase() );
+        if ( prov->cargar ( mdb_idcontrato ) ) {
             delete prov;
             return;
         } // end if
-        empresaBase()->m_pWorkspace->addWindow(prov);
+        empresaBase() ->m_pWorkspace->addWindow ( prov );
         prov->show();
     } else {
-        emit(selected(mdb_idcontrato));
+        emit ( selected ( mdb_idcontrato ) );
     } // end if
-    _depura("END ContratosList::editar", 0);
+    _depura ( "END ContratosList::editar", 0 );
 
 }
 
@@ -142,14 +146,15 @@ void ContratosList::editar(int row) {
 /**
 \return
 **/
-void ContratosList::on_mui_editar_clicked() {
-    _depura("ContratosList::on_mui_editar_clicked", 0);
-    if (mui_list->currentRow() < 0) {
-        _depura("Debe seleccionar un elemento", 2);
+void ContratosList::on_mui_editar_clicked()
+{
+    _depura ( "ContratosList::on_mui_editar_clicked", 0 );
+    if ( mui_list->currentRow() < 0 ) {
+        _depura ( "Debe seleccionar un elemento", 2 );
         return;
     } // end if
-    editar(mui_list->currentRow());
-    _depura("END ContratosList::on_mui_editar_clicked", 0);
+    editar ( mui_list->currentRow() );
+    _depura ( "END ContratosList::on_mui_editar_clicked", 0 );
 }
 
 
@@ -158,10 +163,11 @@ void ContratosList::on_mui_editar_clicked() {
 */
 /**
 **/
-void ContratosList::on_mui_imprimir_clicked() {
-    _depura("ContratosList::on_mui_imprimir_clicked", 0);
-    mui_list->imprimirPDF(tr("Listado de Contratos"));
-    _depura("ContratosList::on_mui_imprimir_clicked", 0);
+void ContratosList::on_mui_imprimir_clicked()
+{
+    _depura ( "ContratosList::on_mui_imprimir_clicked", 0 );
+    mui_list->imprimirPDF ( tr ( "Listado de Contratos" ) );
+    _depura ( "ContratosList::on_mui_imprimir_clicked", 0 );
 }
 
 
@@ -173,52 +179,56 @@ void ContratosList::on_mui_imprimir_clicked() {
 */
 /**
 **/
-void ContratosList::on_mui_borrar_clicked() {
-    _depura("ContratosList::on_mui_borrar_clicked", 0);
+void ContratosList::on_mui_borrar_clicked()
+{
+    _depura ( "ContratosList::on_mui_borrar_clicked", 0 );
     try {
-/*
-        QString idcontrato = mui_list->DBvalue("idcontrato");
-        ClienteView *cli = empresaBase()->newClienteView();
-        if (cli->cargar(idcontrato)) {
-            delete cli;
-            throw -1;
-        } // end if
-        cli->on_mui_borrar_clicked();
-        delete cli;
-        presenta();
-*/
-    } catch (...) {
-        mensajeInfo(tr("Error al borrar un contrato"));
+        /*
+                QString idcontrato = mui_list->DBvalue("idcontrato");
+                ClienteView *cli = empresaBase()->newClienteView();
+                if (cli->cargar(idcontrato)) {
+                    delete cli;
+                    throw -1;
+                } // end if
+                cli->on_mui_borrar_clicked();
+                delete cli;
+                presenta();
+        */
+    } catch ( ... ) {
+        mensajeInfo ( tr ( "Error al borrar un contrato" ) );
     } // end try
-    _depura("END:ContratosList::on_mui_borrar_clicked", 0);
+    _depura ( "END:ContratosList::on_mui_borrar_clicked", 0 );
 }
 
 
 /// Establece el modo de funcionamiento como selector para esta ventana
 /**
 **/
-void ContratosList::selectMode() {
-    _depura("ContratosList::selectMode", 0);
+void ContratosList::selectMode()
+{
+    _depura ( "ContratosList::selectMode", 0 );
     m_modo = SelectMode;
-    _depura("END ContratosList::selectMode", 0);
+    _depura ( "END ContratosList::selectMode", 0 );
 }
 
 /// Establece el modo de funcionamiento como selector para edicion para esta ventana
 /**
 **/
-void ContratosList::editMode() {
-    _depura("ContratosList::editMode", 0);
+void ContratosList::editMode()
+{
+    _depura ( "ContratosList::editMode", 0 );
     m_modo = EditMode;
-    _depura("END ContratosList::editMode", 0);
+    _depura ( "END ContratosList::editMode", 0 );
 }
 
 /// Devuelve el identificador del contrato seleccionado
 /**
 \return
 **/
-QString ContratosList::idcontrato() {
-    _depura("ContratosList::idcontrato", 0);
-    _depura("END ContratosList::idcontrato", 0);
+QString ContratosList::idcontrato()
+{
+    _depura ( "ContratosList::idcontrato", 0 );
+    _depura ( "END ContratosList::idcontrato", 0 );
     return mdb_idcontrato;
 }
 
@@ -226,9 +236,10 @@ QString ContratosList::idcontrato() {
 /**
 \return
 **/
-QString ContratosList::nomcontrato() {
-    _depura("ContratosList::nomcontrato", 0);
-    _depura("END ContratosList::nomcontrato", 0);
+QString ContratosList::nomcontrato()
+{
+    _depura ( "ContratosList::nomcontrato", 0 );
+    _depura ( "END ContratosList::nomcontrato", 0 );
     return mdb_nomcontrato;
 }
 
@@ -237,9 +248,10 @@ QString ContratosList::nomcontrato() {
 /**
 \return
 **/
-QString ContratosList::refcontrato() {
-    _depura("ContratosList::refcontrato", 0);
-    _depura("END ContratosList::refcontrato", 0);
+QString ContratosList::refcontrato()
+{
+    _depura ( "ContratosList::refcontrato", 0 );
+    _depura ( "END ContratosList::refcontrato", 0 );
     return mdb_refcontrato;
 }
 
@@ -247,40 +259,44 @@ QString ContratosList::refcontrato() {
 /// Oculta la botonera
 /**
 **/
-void ContratosList::hideBotonera() {
-    _depura("ContratosList::hideBotonera", 0);
+void ContratosList::hideBotonera()
+{
+    _depura ( "ContratosList::hideBotonera", 0 );
     m_botonera->hide();
-    _depura("END ContratosList::hideBotonera", 0);
+    _depura ( "END ContratosList::hideBotonera", 0 );
 }
 
 
 /// Muestra la botonera
 /**
 **/
-void ContratosList::showBotonera() {
-    _depura("ContratosList::showBotonera", 0);
+void ContratosList::showBotonera()
+{
+    _depura ( "ContratosList::showBotonera", 0 );
     m_botonera->show();
-    _depura("END ContratosList::showBotonera", 0);
+    _depura ( "END ContratosList::showBotonera", 0 );
 }
 
 
 /// Oculta el layer de busqueda
 /**
 **/
-void ContratosList::hideBusqueda() {
-    _depura("ContratosList::hideBusqueda", 0);
+void ContratosList::hideBusqueda()
+{
+    _depura ( "ContratosList::hideBusqueda", 0 );
     m_busqueda->hide();
-    _depura("END ContratosList::hideBusqueda", 0);
+    _depura ( "END ContratosList::hideBusqueda", 0 );
 }
 
 
 /// Muestra el layer de busqueda
 /**
 **/
-void ContratosList::showBusqueda() {
-    _depura("ContratosList::showBusqueda", 0);
+void ContratosList::showBusqueda()
+{
+    _depura ( "ContratosList::showBusqueda", 0 );
     m_busqueda->show();
-    _depura("END ContratosList::showBusqueda", 0);
+    _depura ( "END ContratosList::showBusqueda", 0 );
 }
 
 
@@ -288,57 +304,62 @@ void ContratosList::showBusqueda() {
 /**
 \param text
 **/
-void ContratosList::on_m_filtro_textChanged(const QString &text) {
-    _depura("ContratosList::on_m_filtro_textChanged", 0);
-    if (text.size() >= 3) {
+void ContratosList::on_m_filtro_textChanged ( const QString &text )
+{
+    _depura ( "ContratosList::on_m_filtro_textChanged", 0 );
+    if ( text.size() >= 3 ) {
         on_mui_actualizar_clicked();
     } // end if
-    _depura("END ContratosList::on_m_filtro_textChanged", 0);
+    _depura ( "END ContratosList::on_m_filtro_textChanged", 0 );
 }
 
 /// SLOT automatico que se ejecuta al hacer doble click sobre un elemento determinado de la lista
 /**
 **/
-void ContratosList::on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
-    _depura("ContratosList::on_mui_list_itemDoubleClicked", 0);
+void ContratosList::on_mui_list_itemDoubleClicked ( QTableWidgetItem * )
+{
+    _depura ( "ContratosList::on_mui_list_itemDoubleClicked", 0 );
     on_mui_editar_clicked();
-    _depura("END ContratosList::on_mui_list_itemDoubleClicked", 0);
+    _depura ( "END ContratosList::on_mui_list_itemDoubleClicked", 0 );
 }
 
 /// SLOT automatico que se ejecuta al pulsar sobre el boton de crear en la botonera
 /**
 **/
-void ContratosList::on_mui_crear_clicked() {
-	_depura("ContratosList::on_mui_crear_clicked", 0);
-        ContratoView *prov = new ContratoView((Company *) empresaBase());
-	prov->cargar("0");
-        empresaBase()->m_pWorkspace->addWindow(prov);
-        prov->show();
-	_depura("END ContratosList::on_mui_crear_clicked", 0);
+void ContratosList::on_mui_crear_clicked()
+{
+    _depura ( "ContratosList::on_mui_crear_clicked", 0 );
+    ContratoView *prov = new ContratoView ( ( Company * ) empresaBase() );
+    prov->cargar ( "0" );
+    empresaBase() ->m_pWorkspace->addWindow ( prov );
+    prov->show();
+    _depura ( "END ContratosList::on_mui_crear_clicked", 0 );
 }
 
 
 /// SLOT automatico que se ejecuta al pulsar sobre el boton de actualizar en la botonera
 /**
 **/
-void ContratosList::on_mui_actualizar_clicked() {
-    _depura("ContratosList::on_mui_actualizar_clicked", 0);
+void ContratosList::on_mui_actualizar_clicked()
+{
+    _depura ( "ContratosList::on_mui_actualizar_clicked", 0 );
     presenta();
-    _depura("END ContratosList::on_mui_actualizar_clicked", 0);
+    _depura ( "END ContratosList::on_mui_actualizar_clicked", 0 );
 }
 
 /// SLOT automatico que se ejecuta al pulsar sobre el boton configurar en la botonera
 /**
 \param checked
 **/
-void ContratosList::on_mui_configurar_toggled(bool checked) {
-    _depura("ContratosList::on_mui_configurar_toggled", 0);
-    if (checked) {
+void ContratosList::on_mui_configurar_toggled ( bool checked )
+{
+    _depura ( "ContratosList::on_mui_configurar_toggled", 0 );
+    if ( checked ) {
         mui_list->showConfig();
     } else {
         mui_list->hideConfig();
     } // end if
-    _depura("END ContratosList::on_mui_configurar_toggled", 0);
+    _depura ( "END ContratosList::on_mui_configurar_toggled", 0 );
 }
 
 
@@ -352,30 +373,32 @@ void ContratosList::on_mui_configurar_toggled(bool checked) {
 /**
 \param parent
 **/
-ContratosListSubform::ContratosListSubform(QWidget *parent, const char *) : SubForm2Bf(parent) {
-    _depura("ContratosListSubform::ContratosListSubform", 0);
-    setDBTableName("contrato");
-    setDBCampoId("idcontrato");
-    addSHeader("idcontrato", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("ID contrato"));
-    addSHeader("codcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Codigo"));
-    addSHeader("cifcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("C.I.F."));
-    addSHeader("refcontrato", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Referencia"));
-    addSHeader("nomcontrato", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre de contrato"));
-    addSHeader("nomcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre alternativo del contrato"));
-    addSHeader("fincontrato", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Fecha de alta del contrato"));
-    addSHeader("ffincontrato", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Fecha de baja del contrato"));
-    addSHeader("periodicidadcontrato", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Fecha de baja del contrato"));
-    setinsercion(FALSE);
-    setDelete(FALSE);
-    setSortingEnabled(TRUE);
-    _depura("END ContratosListSubform::ContratosListSubform", 0);
+ContratosListSubform::ContratosListSubform ( QWidget *parent, const char * ) : SubForm2Bf ( parent )
+{
+    _depura ( "ContratosListSubform::ContratosListSubform", 0 );
+    setDBTableName ( "contrato" );
+    setDBCampoId ( "idcontrato" );
+    addSHeader ( "idcontrato", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "ID contrato" ) );
+    addSHeader ( "codcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Codigo" ) );
+    addSHeader ( "cifcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "C.I.F." ) );
+    addSHeader ( "refcontrato", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Referencia" ) );
+    addSHeader ( "nomcontrato", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre de contrato" ) );
+    addSHeader ( "nomcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre alternativo del contrato" ) );
+    addSHeader ( "fincontrato", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Fecha de alta del contrato" ) );
+    addSHeader ( "ffincontrato", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Fecha de baja del contrato" ) );
+    addSHeader ( "periodicidadcontrato", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Fecha de baja del contrato" ) );
+    setinsercion ( FALSE );
+    setDelete ( FALSE );
+    setSortingEnabled ( TRUE );
+    _depura ( "END ContratosListSubform::ContratosListSubform", 0 );
 }
 
 
 ///
 /**
 **/
-ContratosListSubform::~ContratosListSubform() {
-    _depura("ContratosListSubform::~ContratosListSubform", 0);
-    _depura("END ContratosListSubform::~ContratosListSubform", 0);
+ContratosListSubform::~ContratosListSubform()
+{
+    _depura ( "ContratosListSubform::~ContratosListSubform", 0 );
+    _depura ( "END ContratosListSubform::~ContratosListSubform", 0 );
 }

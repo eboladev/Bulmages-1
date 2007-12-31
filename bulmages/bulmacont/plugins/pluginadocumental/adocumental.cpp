@@ -35,20 +35,22 @@
 /**
 \param emp
 **/
-myplugin1::myplugin1(Empresa *emp) {
-    _depura("myplugin1::myplugin1", 0);
+myplugin1::myplugin1 ( Empresa *emp )
+{
+    _depura ( "myplugin1::myplugin1", 0 );
     empresaactual = emp;
     conexionbase = emp->bdempresa();
-    _depura("END myplugin1::myplugin1", 0);
+    _depura ( "END myplugin1::myplugin1", 0 );
 }
 
 
 ///
 /**
 **/
-myplugin1::~myplugin1() {
-    _depura("myplugin1::~myplugin1", 0);
-    _depura("END myplugin1::~myplugin1", 0);
+myplugin1::~myplugin1()
+{
+    _depura ( "myplugin1::~myplugin1", 0 );
+    _depura ( "END myplugin1::~myplugin1", 0 );
 }
 
 
@@ -56,32 +58,34 @@ myplugin1::~myplugin1() {
 /// ambas cosas.
 /**
 **/
-void myplugin1::boton_nuevoasientodocumental() {
-    _depura("myplugin1::boton_nuevoasientodocumental", 10);
-    adocumental *adoc = new adocumental(empresaactual, 0);
+void myplugin1::boton_nuevoasientodocumental()
+{
+    _depura ( "myplugin1::boton_nuevoasientodocumental", 10 );
+    adocumental *adoc = new adocumental ( empresaactual, 0 );
     adoc->presentaprimervacio();
     Asiento1View *intapunts = empresaactual->intapuntsempresa();
     intapunts->iniciar_asiento_nuevo();
-    adoc->asociaasiento(intapunts->idasiento());
+    adoc->asociaasiento ( intapunts->idasiento() );
     delete adoc;
-    _depura("END myplugin1::boton_nuevoasientodocumental", 10);
+    _depura ( "END myplugin1::boton_nuevoasientodocumental", 10 );
 }
 
 
 ///
 /**
 **/
-void myplugin1::boton_adjuntar() {
-    _depura("myplugin1::boton_adjuntar", 10);
-    adocumental *adoc = new adocumental(empresaactual, 0);
+void myplugin1::boton_adjuntar()
+{
+    _depura ( "myplugin1::boton_adjuntar", 10 );
+    adocumental *adoc = new adocumental ( empresaactual, 0 );
     adoc->setmodoconsulta();
     adoc->exec();
     /// Falta por resolver esta salvedad.
     Asiento1View *intapunts = empresaactual->intapuntsempresa();
-    if (intapunts->idasiento() != "-1")
-        adoc->asociaasiento(intapunts->idasiento());
+    if ( intapunts->idasiento() != "-1" )
+        adoc->asociaasiento ( intapunts->idasiento() );
     delete adoc;
-    _depura("END myplugin1::boton_adjuntar", 10);
+    _depura ( "END myplugin1::boton_adjuntar", 10 );
 }
 
 
@@ -93,12 +97,13 @@ void myplugin1::boton_adjuntar() {
 /// las imagenes de facturas para despues pasarlas.
 /**
 **/
-void myplugin1::archDoc() {
-    _depura("myplugin1::archDoc", 10);
-    adocumental *adoc = new adocumental(empresaactual, 0);
+void myplugin1::archDoc()
+{
+    _depura ( "myplugin1::archDoc", 10 );
+    adocumental *adoc = new adocumental ( empresaactual, 0 );
     adoc->exec();
     delete adoc;
-    _depura("END myplugin1::archDoc", 10);
+    _depura ( "END myplugin1::archDoc", 10 );
 }
 
 
@@ -107,11 +112,12 @@ void myplugin1::archDoc() {
 \param emp
 \param parent
 **/
-adocumental::adocumental(Empresa *emp, QWidget *parent)
-        : QDialog(parent) {
-    _depura("adocumental::adocumental", 10);
+adocumental::adocumental ( Empresa *emp, QWidget *parent )
+        : QDialog ( parent )
+{
+    _depura ( "adocumental::adocumental", 10 );
 
-    setupUi(this);
+    setupUi ( this );
 
     empresaactual = emp;
     conexionbase = emp->bdempresa();
@@ -119,72 +125,74 @@ adocumental::adocumental(Empresa *emp, QWidget *parent)
     idadocumental = "";
     QString query;
 
-    m_listado->setRowCount(0);
-    m_listado->setColumnCount(7);
+    m_listado->setRowCount ( 0 );
+    m_listado->setColumnCount ( 7 );
 
     QStringList cabecerasHorizontal;
-    cabecerasHorizontal << tr("Id archivo documental") << tr("Id asiento") << tr("Descripcion") << tr("Fecha doc.") << tr("Fecha asoc.") << tr("Archivo") << tr("Asiento");
-    m_listado->setHorizontalHeaderLabels(cabecerasHorizontal);
+    cabecerasHorizontal << tr ( "Id archivo documental" ) << tr ( "Id asiento" ) << tr ( "Descripcion" ) << tr ( "Fecha doc." ) << tr ( "Fecha asoc." ) << tr ( "Archivo" ) << tr ( "Asiento" );
+    m_listado->setHorizontalHeaderLabels ( cabecerasHorizontal );
 
-    m_listado->setColumnWidth(COL_IDADOCUMENTAL, 200);
-    m_listado->setColumnWidth(COL_IDASIENTO, 200);
-    m_listado->setColumnWidth(COL_DESCRIPCIONADOCUMENTAL, 200);
-    m_listado->setColumnWidth(COL_FECHAINTADOCUMENTAL, 50);
-    m_listado->setColumnWidth(COL_FECHAASADOCUMENTAL, 50);
-    m_listado->setColumnWidth(COL_ARCHIVOADOCUMENTAL, 250);
-    m_listado->setColumnWidth(COL_ORDENASIENTO, 75);
+    m_listado->setColumnWidth ( COL_IDADOCUMENTAL, 200 );
+    m_listado->setColumnWidth ( COL_IDASIENTO, 200 );
+    m_listado->setColumnWidth ( COL_DESCRIPCIONADOCUMENTAL, 200 );
+    m_listado->setColumnWidth ( COL_FECHAINTADOCUMENTAL, 50 );
+    m_listado->setColumnWidth ( COL_FECHAASADOCUMENTAL, 50 );
+    m_listado->setColumnWidth ( COL_ARCHIVOADOCUMENTAL, 250 );
+    m_listado->setColumnWidth ( COL_ORDENASIENTO, 75 );
 
-    m_listado->hideColumn(COL_IDADOCUMENTAL);
-    m_listado->hideColumn(COL_IDASIENTO);
-    m_listado->hideColumn(COL_FECHAINTADOCUMENTAL);
-    m_listado->hideColumn(COL_FECHAASADOCUMENTAL);
+    m_listado->hideColumn ( COL_IDADOCUMENTAL );
+    m_listado->hideColumn ( COL_IDASIENTO );
+    m_listado->hideColumn ( COL_FECHAINTADOCUMENTAL );
+    m_listado->hideColumn ( COL_FECHAASADOCUMENTAL );
 
     /// Iniciamos la presentacion.
     inicializa();
-    _depura("END adocumental::adocumental", 10);
+    _depura ( "END adocumental::adocumental", 10 );
 }
 
 
 ///
 /**
 **/
-adocumental::~adocumental() {
-    _depura("adocumental::~adocumental", 0);
-    _depura("END adocumental::~adocumental", 0);
+adocumental::~adocumental()
+{
+    _depura ( "adocumental::~adocumental", 0 );
+    _depura ( "END adocumental::~adocumental", 0 );
 }
 
 
 ///
 /**
 **/
-void adocumental::inicializa() {
-    _depura("adocumental::inicializa", 0);
+void adocumental::inicializa()
+{
+    _depura ( "adocumental::inicializa", 0 );
     QString query = "SELECT * FROM adocumental LEFT JOIN asiento ON adocumental.idasiento = asiento.idasiento ORDER BY ordenasiento";
     conexionbase->begin();
-    cursor2 *cursoraux1 = conexionbase->cargacursor(query, "elquery");
+    cursor2 *cursoraux1 = conexionbase->cargacursor ( query, "elquery" );
     conexionbase->commit();
-    m_listado->setRowCount(cursoraux1->numregistros());
+    m_listado->setRowCount ( cursoraux1->numregistros() );
     int i = 0;
-    while (!cursoraux1->eof()) {
-        QTableWidgetItem *nuevoItem0 = new QTableWidgetItem(cursoraux1->valor("idadocumental"));
-        m_listado->setItem(i, COL_IDADOCUMENTAL, nuevoItem0);
-        QTableWidgetItem *nuevoItem1 = new QTableWidgetItem(cursoraux1->valor("idasiento"));
-        m_listado->setItem(i, COL_IDASIENTO, nuevoItem1);
-        QTableWidgetItem *nuevoItem2 = new QTableWidgetItem(cursoraux1->valor("descripcionadocumental"));
-        m_listado->setItem(i, COL_DESCRIPCIONADOCUMENTAL, nuevoItem2);
-        QTableWidgetItem *nuevoItem3 = new QTableWidgetItem(cursoraux1->valor("fechaintadocumental"));
-        m_listado->setItem(i, COL_FECHAINTADOCUMENTAL, nuevoItem3);
-        QTableWidgetItem *nuevoItem4 = new QTableWidgetItem(cursoraux1->valor("fechaasadocumental"));
-        m_listado->setItem(i, COL_FECHAASADOCUMENTAL, nuevoItem4);
-        QTableWidgetItem *nuevoItem5 = new QTableWidgetItem(cursoraux1->valor("archivoadocumental"));
-        m_listado->setItem(i, COL_ARCHIVOADOCUMENTAL, nuevoItem5);
-        QTableWidgetItem *nuevoItem6 = new QTableWidgetItem(cursoraux1->valor("ordenasiento"));
-        m_listado->setItem(i, COL_ORDENASIENTO, nuevoItem6);
+    while ( !cursoraux1->eof() ) {
+        QTableWidgetItem * nuevoItem0 = new QTableWidgetItem ( cursoraux1->valor ( "idadocumental" ) );
+        m_listado->setItem ( i, COL_IDADOCUMENTAL, nuevoItem0 );
+        QTableWidgetItem *nuevoItem1 = new QTableWidgetItem ( cursoraux1->valor ( "idasiento" ) );
+        m_listado->setItem ( i, COL_IDASIENTO, nuevoItem1 );
+        QTableWidgetItem *nuevoItem2 = new QTableWidgetItem ( cursoraux1->valor ( "descripcionadocumental" ) );
+        m_listado->setItem ( i, COL_DESCRIPCIONADOCUMENTAL, nuevoItem2 );
+        QTableWidgetItem *nuevoItem3 = new QTableWidgetItem ( cursoraux1->valor ( "fechaintadocumental" ) );
+        m_listado->setItem ( i, COL_FECHAINTADOCUMENTAL, nuevoItem3 );
+        QTableWidgetItem *nuevoItem4 = new QTableWidgetItem ( cursoraux1->valor ( "fechaasadocumental" ) );
+        m_listado->setItem ( i, COL_FECHAASADOCUMENTAL, nuevoItem4 );
+        QTableWidgetItem *nuevoItem5 = new QTableWidgetItem ( cursoraux1->valor ( "archivoadocumental" ) );
+        m_listado->setItem ( i, COL_ARCHIVOADOCUMENTAL, nuevoItem5 );
+        QTableWidgetItem *nuevoItem6 = new QTableWidgetItem ( cursoraux1->valor ( "ordenasiento" ) );
+        m_listado->setItem ( i, COL_ORDENASIENTO, nuevoItem6 );
         cursoraux1->siguienteregistro();
         i++;
     } // end while
     delete cursoraux1;
-    _depura("END adocumental::inicializa", 0);
+    _depura ( "END adocumental::inicializa", 0 );
 }
 
 
@@ -192,19 +200,20 @@ void adocumental::inicializa() {
 /**
 \param row
 **/
-void adocumental::doubleclicked(int row, int, int, const QPoint &) {
-    _depura("adocumental::doubleclicked", 0);
-    idadocumental = m_listado->item(row, COL_IDADOCUMENTAL)->text();
+void adocumental::doubleclicked ( int row, int, int, const QPoint & )
+{
+    _depura ( "adocumental::doubleclicked", 0 );
+    idadocumental = m_listado->item ( row, COL_IDADOCUMENTAL ) ->text();
 
-    _depura("Archivo Documental: " + idadocumental, 10);
-    if (modo == 0) { /// Es el modo edicion.
-        QString archivo = m_listado->item(row, COL_ARCHIVOADOCUMENTAL)->text();
+    _depura ( "Archivo Documental: " + idadocumental, 10 );
+    if ( modo == 0 ) { /// Es el modo edicion.
+        QString archivo = m_listado->item ( row, COL_ARCHIVOADOCUMENTAL ) ->text();
         QString comando = "konqueror " + archivo + " &";
-        system(comando.toAscii().constData());
+        system ( comando.toAscii().constData() );
     } else { /// Es el modo consulta.
-        done(1);
+        done ( 1 );
     } // end if
-    _depura("END adocumental::doubleclicked", 0);
+    _depura ( "END adocumental::doubleclicked", 0 );
 }
 
 
@@ -212,13 +221,14 @@ void adocumental::doubleclicked(int row, int, int, const QPoint &) {
 /**
 \param archivo
 **/
-void adocumental::newADocumental(QString archivo) {
-    _depura("adocumental::newADocumental", 0);
-    QString SQLQuery = "INSERT INTO adocumental (archivoadocumental) VALUES ('" + conexionbase->sanearCadena(archivo) + "')";
+void adocumental::newADocumental ( QString archivo )
+{
+    _depura ( "adocumental::newADocumental", 0 );
+    QString SQLQuery = "INSERT INTO adocumental (archivoadocumental) VALUES ('" + conexionbase->sanearCadena ( archivo ) + "')";
     conexionbase->begin();
-    conexionbase->ejecuta(SQLQuery);
+    conexionbase->ejecuta ( SQLQuery );
     conexionbase->commit();
-    _depura("END adocumental::newADocumental", 0);
+    _depura ( "END adocumental::newADocumental", 0 );
 }
 
 
@@ -226,17 +236,18 @@ void adocumental::newADocumental(QString archivo) {
 /**
 \return
 **/
-void adocumental::boton_newadocumental() {
-    _depura("adocumental::boton_newadocumental", 0);
-    QString fn = QFileDialog::getOpenFileName(this, tr("Elija el nombre del archivo"),
-                 confpr->valor(CONF_DIR_USER),
-                 tr("Todos (*.*)"));
+void adocumental::boton_newadocumental()
+{
+    _depura ( "adocumental::boton_newadocumental", 0 );
+    QString fn = QFileDialog::getOpenFileName ( this, tr ( "Elija el nombre del archivo" ),
+                 confpr->valor ( CONF_DIR_USER ),
+                 tr ( "Todos (*.*)" ) );
 
-    if (!fn.isEmpty()) {
-        newADocumental(fn);
+    if ( !fn.isEmpty() ) {
+        newADocumental ( fn );
     } // end if
     inicializa();
-    _depura("END adocumental::boton_newadocumental", 0);
+    _depura ( "END adocumental::boton_newadocumental", 0 );
 }
 
 
@@ -244,10 +255,11 @@ void adocumental::boton_newadocumental() {
 /**
 \return
 **/
-inline QString adocumental::getidadocumental() {
-    _depura("adocumental::getidadocumental", 0);
-    _depura("END adocumental::getidadocumental", 0);
-    return (idadocumental);
+inline QString adocumental::getidadocumental()
+{
+    _depura ( "adocumental::getidadocumental", 0 );
+    _depura ( "END adocumental::getidadocumental", 0 );
+    return ( idadocumental );
 }
 
 
@@ -255,14 +267,15 @@ inline QString adocumental::getidadocumental() {
 /**
 \param idasiento
 **/
-void adocumental::asociaasiento(QString idasiento) {
-    _depura("AsociaAsiento:", 10);
-    _depura("idasiento:" + idasiento  + ", idadocumental:" + idadocumental);
-    if ((idadocumental != "") && (idasiento != "")) {
+void adocumental::asociaasiento ( QString idasiento )
+{
+    _depura ( "AsociaAsiento:", 10 );
+    _depura ( "idasiento:" + idasiento  + ", idadocumental:" + idadocumental );
+    if ( ( idadocumental != "" ) && ( idasiento != "" ) ) {
         QString SQLQuery = "UPDATE adocumental SET idasiento = " + idasiento + " WHERE idadocumental = " + idadocumental;
-        _depura(SQLQuery, 10);
+        _depura ( SQLQuery, 10 );
         conexionbase->begin();
-        conexionbase->ejecuta(SQLQuery);
+        conexionbase->ejecuta ( SQLQuery );
         conexionbase->commit();
     } // end if
     inicializa();
@@ -274,90 +287,95 @@ void adocumental::asociaasiento(QString idasiento) {
 ///
 /**
 **/
-void adocumental::presentaprimervacio() {
-    _depura("adocumental::presentaprimervacio", 10);
+void adocumental::presentaprimervacio()
+{
+    _depura ( "adocumental::presentaprimervacio", 10 );
     int i = 0;
-    while (i < m_listado->rowCount()) {
-        if (m_listado->item(i, COL_IDASIENTO)->text() == "") {
-            doubleclicked(i, 0, 0, QPoint::QPoint(0, 0));
+    while ( i < m_listado->rowCount() ) {
+        if ( m_listado->item ( i, COL_IDASIENTO ) ->text() == "" ) {
+            doubleclicked ( i, 0, 0, QPoint::QPoint ( 0, 0 ) );
         } // end if
         i++;
     } // end while
-    _depura("END adocumental::presentaprimervacio", 10);
+    _depura ( "END adocumental::presentaprimervacio", 10 );
 }
 
 ///
 /**
 **/
-void adocumental::boton_desasociar() {
-    _depura("adocumental::boton_desasociar", 0);
-    idadocumental = m_listado->item(m_listado->currentRow(), COL_IDADOCUMENTAL)->text();
-    if (idadocumental != "") {
+void adocumental::boton_desasociar()
+{
+    _depura ( "adocumental::boton_desasociar", 0 );
+    idadocumental = m_listado->item ( m_listado->currentRow(), COL_IDADOCUMENTAL ) ->text();
+    if ( idadocumental != "" ) {
         QString SQLQuery = "UPDATE adocumental SET idasiento = NULL WHERE idadocumental = " + idadocumental;
         conexionbase->begin();
-        conexionbase->ejecuta(SQLQuery);
+        conexionbase->ejecuta ( SQLQuery );
         conexionbase->commit();
     } // end if
     inicializa();
-    _depura("END adocumental::boton_desasociar", 0);
+    _depura ( "END adocumental::boton_desasociar", 0 );
 }
 
 
 ///
 /**
 **/
-void adocumental::s_deleteADocumental() {
-    _depura("adocumental::s_deleteADocumental", 0);
-    idadocumental = m_listado->item(m_listado->currentRow(), COL_IDADOCUMENTAL)->text();
-    if (idadocumental != "") {
+void adocumental::s_deleteADocumental()
+{
+    _depura ( "adocumental::s_deleteADocumental", 0 );
+    idadocumental = m_listado->item ( m_listado->currentRow(), COL_IDADOCUMENTAL ) ->text();
+    if ( idadocumental != "" ) {
         QString SQLQuery = "DELETE FROM adocumental WHERE idadocumental = " + idadocumental;
         conexionbase->begin();
-        conexionbase->ejecuta(SQLQuery);
+        conexionbase->ejecuta ( SQLQuery );
         conexionbase->commit();
     } // end if
     inicializa();
-    _depura("END adocumental::s_deleteADocumental", 0);
+    _depura ( "END adocumental::s_deleteADocumental", 0 );
 }
 
 ///
 /**
 **/
-void adocumental::s_saveADocumental() {
-    _depura("adocumental::s_saveADocumental", 0);
+void adocumental::s_saveADocumental()
+{
+    _depura ( "adocumental::s_saveADocumental", 0 );
     int row = m_listado->currentRow();
-    idadocumental = m_listado->item(row, COL_IDADOCUMENTAL)->text();
-    if (idadocumental != "") {
+    idadocumental = m_listado->item ( row, COL_IDADOCUMENTAL ) ->text();
+    if ( idadocumental != "" ) {
         QString Query;
         Query  = "UPDATE adocumental SET ";
-        Query += "descripcionadocumental = '" + m_listado->item(row, COL_DESCRIPCIONADOCUMENTAL)->text() + "'";
+        Query += "descripcionadocumental = '" + m_listado->item ( row, COL_DESCRIPCIONADOCUMENTAL ) ->text() + "'";
         Query += " WHERE idadocumental = " + idadocumental;
         conexionbase->begin();
-        conexionbase->ejecuta(Query);
+        conexionbase->ejecuta ( Query );
         conexionbase->commit();
     } // end if
     inicializa();
-    _depura("END adocumental::s_saveADocumental", 0);
+    _depura ( "END adocumental::s_saveADocumental", 0 );
 }
 
 
 ///
 /**
 **/
-void adocumental::s_agregarDirectorio() {
-    _depura("adocumental::s_agregarDirectorio", 0);
-    QString fn = QFileDialog::getExistingDirectory(this, tr("Elija un directorio"),
-                 confpr->valor(CONF_DIR_USER),
+void adocumental::s_agregarDirectorio()
+{
+    _depura ( "adocumental::s_agregarDirectorio", 0 );
+    QString fn = QFileDialog::getExistingDirectory ( this, tr ( "Elija un directorio" ),
+                 confpr->valor ( CONF_DIR_USER ),
                  QFileDialog::ShowDirsOnly
-                 | QFileDialog::DontResolveSymlinks);
+                 | QFileDialog::DontResolveSymlinks );
 
-    QDir d(fn);
+    QDir d ( fn );
     QFileInfoList list = d.entryInfoList();
-    for (int i = 0; i < list.size(); ++i) {
-        QFileInfo fileInfo = list.at(i);
-        newADocumental(fileInfo.filePath());
+    for ( int i = 0; i < list.size(); ++i ) {
+        QFileInfo fileInfo = list.at ( i );
+        newADocumental ( fileInfo.filePath() );
     } // end for
 
     inicializa();
-    _depura("END adocumental::s_agregarDirectorio", 0);
+    _depura ( "END adocumental::s_agregarDirectorio", 0 );
 }
 

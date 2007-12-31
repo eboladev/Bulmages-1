@@ -44,41 +44,44 @@
 \param comp
 \param parent
 **/
-ListTipoIVAView::ListTipoIVAView(Company *comp, QWidget *parent)
-        : FichaBf(comp, parent) {
-    _depura("ListTipoIVAView::ListTipoIVAView", 1);
-    setTitleName(tr("Tipo IVA"));
-    setDBTableName("tipo_iva");
-    setAttribute(Qt::WA_DeleteOnClose);
-    setupUi(this);
-    mui_listado->setEmpresaBase(comp);
+ListTipoIVAView::ListTipoIVAView ( Company *comp, QWidget *parent )
+        : FichaBf ( comp, parent )
+{
+    _depura ( "ListTipoIVAView::ListTipoIVAView", 1 );
+    setTitleName ( tr ( "Tipo IVA" ) );
+    setDBTableName ( "tipo_iva" );
+    setAttribute ( Qt::WA_DeleteOnClose );
+    setupUi ( this );
+    mui_listado->setEmpresaBase ( comp );
     mui_listado->cargar();
-    meteWindow(windowTitle(), this);
-    _depura("END ListTipoIVAView::ListTipoIVAView", 1);
+    meteWindow ( windowTitle(), this );
+    _depura ( "END ListTipoIVAView::ListTipoIVAView", 1 );
 }
 
 
 ///
 /**
 **/
-void ListTipoIVAView::on_mui_aceptar_clicked() {
-    _depura("ListTipoIVAView::on_mui_aceptar_clicked", 0);
+void ListTipoIVAView::on_mui_aceptar_clicked()
+{
+    _depura ( "ListTipoIVAView::on_mui_aceptar_clicked", 0 );
     try {
         mui_listado->guardar();
         close();
-    } catch (...) {
-        mensajeInfo("Error al guardar los almacenes");
+    } catch ( ... ) {
+        mensajeInfo ( "Error al guardar los almacenes" );
     } // end try
-    _depura("END ListTipoIVAView::on_mui_aceptar_clicked", 0);
+    _depura ( "END ListTipoIVAView::on_mui_aceptar_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-ListTipoIVAView::~ListTipoIVAView() {
-    _depura("ListTipoIVAView::~ListTipoIVAView", 0);
-    _depura("END ListTipoIVAView::~ListTipoIVAView", 0);
+ListTipoIVAView::~ListTipoIVAView()
+{
+    _depura ( "ListTipoIVAView::~ListTipoIVAView", 0 );
+    _depura ( "END ListTipoIVAView::~ListTipoIVAView", 0 );
 }
 
 /*
@@ -96,23 +99,25 @@ int ListTipoIVAView::sacaWindow() {
 /**
 \param parent
 **/
-ListTipoIVASubForm::ListTipoIVASubForm(QWidget *parent) : SubForm2Bf(parent) {
-    _depura("ListTipoIVASubForm::ListTipoIVASubForm", 0);
-    setDBTableName("tipo_iva");
-    setDBCampoId("idtipo_iva");
-    addSHeader("idtipo_iva", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr("Id Tipo IVA"));
-    addSHeader("desctipo_iva", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Tipo IVA"));
-    setinsercion(TRUE);
-    _depura("END ListTipoIVASubForm::ListTipoIVASubForm", 0);
+ListTipoIVASubForm::ListTipoIVASubForm ( QWidget *parent ) : SubForm2Bf ( parent )
+{
+    _depura ( "ListTipoIVASubForm::ListTipoIVASubForm", 0 );
+    setDBTableName ( "tipo_iva" );
+    setDBCampoId ( "idtipo_iva" );
+    addSHeader ( "idtipo_iva", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr ( "Id Tipo IVA" ) );
+    addSHeader ( "desctipo_iva", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Tipo IVA" ) );
+    setinsercion ( TRUE );
+    _depura ( "END ListTipoIVASubForm::ListTipoIVASubForm", 0 );
 }
 
 
 ///
 /**
 **/
-void ListTipoIVASubForm::cargar() {
-        _depura("ListTipoIVASubForm::cargar", 0);
-        SubForm3::cargar("SELECT * FROM tipo_iva");
-        _depura("END ListTipoIVASubForm::cargar", 0);
+void ListTipoIVASubForm::cargar()
+{
+    _depura ( "ListTipoIVASubForm::cargar", 0 );
+    SubForm3::cargar ( "SELECT * FROM tipo_iva" );
+    _depura ( "END ListTipoIVASubForm::cargar", 0 );
 }
 

@@ -80,50 +80,51 @@
 \param asientos
 \return
 **/
-int Contaplus2Fugit(QFile &fugitfile, QFile &subcuentas, QFile &asientos) {
-    QTextStream fugit(&fugitfile);
+int Contaplus2Fugit ( QFile &fugitfile, QFile &subcuentas, QFile &asientos )
+{
+    QTextStream fugit ( &fugitfile );
 
     fugit << "<?xml version=\"1.0\" encoding = \"iso-8859-1\"?>\n"
     "<!DOCTYPE FUGIT>\n"
     "<FUGIT version='0.3.1' origen='contaplus'"
-    " date='" << QDate().toString(Qt::ISODate) << "'>\n";
+    " date='" << QDate().toString ( Qt::ISODate ) << "'>\n";
     QString lopd_str, cuenta_str;
 
     /// Subcuentas.
-    QTextStream stream(&subcuentas);
-    while (!subcuentas.atEnd()) {
+    QTextStream stream ( &subcuentas );
+    while ( !subcuentas.atEnd() ) {
         QString line = stream.readLine();
-        if (line.length() < 2) {
+        if ( line.length() < 2 ) {
             break;
         } // end if
         int pos = 0;
-        QString cod = line.mid(pos, LEN_CODIGO_CUENTA).trimmed();
+        QString cod = line.mid ( pos, LEN_CODIGO_CUENTA ).trimmed();
         pos += LEN_CODIGO_CUENTA;
-        QString titulo = line.mid(pos, LEN_TITULO).trimmed();
+        QString titulo = line.mid ( pos, LEN_TITULO ).trimmed();
         pos += LEN_TITULO;
-        QString nif = line.mid(pos, LEN_NIF).trimmed();
+        QString nif = line.mid ( pos, LEN_NIF ).trimmed();
         pos += LEN_NIF;
-        QString domicilio = line.mid(pos, LEN_DOMICILIO).trimmed();
+        QString domicilio = line.mid ( pos, LEN_DOMICILIO ).trimmed();
         pos += LEN_DOMICILIO;
-        QString poblacion = line.mid(pos, LEN_POBLACION).trimmed();
+        QString poblacion = line.mid ( pos, LEN_POBLACION ).trimmed();
         pos += LEN_POBLACION;
-        QString provincia = line.mid(pos, LEN_PROVINCIA).trimmed();
+        QString provincia = line.mid ( pos, LEN_PROVINCIA ).trimmed();
         pos += LEN_PROVINCIA;
-        QString codpostal = line.mid(pos, LEN_CODPOSTAL).trimmed();
+        QString codpostal = line.mid ( pos, LEN_CODPOSTAL ).trimmed();
         pos += LEN_CODPOSTAL;
-        QString divisa = line.mid(pos, LEN_DIVISA).trimmed();
+        QString divisa = line.mid ( pos, LEN_DIVISA ).trimmed();
         pos += LEN_DIVISA;
-        QString cta_coddivisa = line.mid(pos, LEN_CTA_CODDIVISA).trimmed();
+        QString cta_coddivisa = line.mid ( pos, LEN_CTA_CODDIVISA ).trimmed();
         pos += LEN_CTA_CODDIVISA;
-        QString cta_documento = line.mid(pos, LEN_CTA_DOCUMENTO).trimmed();
+        QString cta_documento = line.mid ( pos, LEN_CTA_DOCUMENTO ).trimmed();
         pos += LEN_CTA_DOCUMENTO;
-        QString ajustame = line.mid(pos, LEN_AJUSTAME).trimmed();
+        QString ajustame = line.mid ( pos, LEN_AJUSTAME ).trimmed();
         pos += LEN_AJUSTAME;
-        QString tipoiva = line.mid(pos, LEN_TIPOIVA).trimmed();
+        QString tipoiva = line.mid ( pos, LEN_TIPOIVA ).trimmed();
         pos += LEN_TIPOIVA;
 
-        if (!nif.isEmpty() || !domicilio.isEmpty() || !poblacion.isEmpty()
-                || !provincia.isEmpty() || !codpostal.isEmpty()) {
+        if ( !nif.isEmpty() || !domicilio.isEmpty() || !poblacion.isEmpty()
+                || !provincia.isEmpty() || !codpostal.isEmpty() ) {
             lopd_str += "<LOPD>\n"
                         "\t<FIELD name='cif'>" + nif + "</FIELD>\n"
                         "\t<FIELD name='nombre'>" + titulo + "</FIELD>\n"
@@ -133,7 +134,7 @@ int Contaplus2Fugit(QFile &fugitfile, QFile &subcuentas, QFile &asientos) {
                         "\t<FIELD name='cp'>" + codpostal + "</FIELD>\n"
                         "</LOPD>\n";
         } // end if
-        if (!cod.isEmpty()) {
+        if ( !cod.isEmpty() ) {
             cuenta_str += "<CUENTA>\n"
                           "\t<FIELD name='cuenta'>" + cod + "</FIELD>\n"
                           "\t<FIELD name='descripcion'>" + titulo + "</FIELD>\n"
@@ -150,83 +151,83 @@ int Contaplus2Fugit(QFile &fugitfile, QFile &subcuentas, QFile &asientos) {
 
     /// Asientos.
     fugit << "<FICHERO_ASIENTO>\n";
-    QTextStream stream2(&asientos);
+    QTextStream stream2 ( &asientos );
     QString lastasiento;
     int napunte = 0;
-    while (!asientos.atEnd()) {
+    while ( !asientos.atEnd() ) {
         QString line = stream2.readLine();
-        if (line.length() < 2) {
+        if ( line.length() < 2 ) {
             break;
         } // end if
         int pos = 0;
-        QString asiento = line.mid(pos, LEN_ASIEN).trimmed();
+        QString asiento = line.mid ( pos, LEN_ASIEN ).trimmed();
         pos += LEN_ASIEN;
-        QString fecha = line.mid(pos, LEN_FECHA).trimmed();
-        fecha = fecha.mid(0, 4) + "-" + fecha.mid(4, 2) + "-" + fecha.mid(6, 2);
+        QString fecha = line.mid ( pos, LEN_FECHA ).trimmed();
+        fecha = fecha.mid ( 0, 4 ) + "-" + fecha.mid ( 4, 2 ) + "-" + fecha.mid ( 6, 2 );
         pos += LEN_FECHA;
-        QString subcta = line.mid(pos, LEN_SUBCTA).trimmed();
+        QString subcta = line.mid ( pos, LEN_SUBCTA ).trimmed();
         pos += LEN_SUBCTA;
-        QString contra = line.mid(pos, LEN_CONTRA).trimmed();
+        QString contra = line.mid ( pos, LEN_CONTRA ).trimmed();
         pos += LEN_CONTRA;
-        QString ptadebe = line.mid(pos, LEN_PTADEBE).trimmed();
+        QString ptadebe = line.mid ( pos, LEN_PTADEBE ).trimmed();
         pos += LEN_PTADEBE;
-        QString concepto = line.mid(pos, LEN_CONCEPTO).trimmed();
+        QString concepto = line.mid ( pos, LEN_CONCEPTO ).trimmed();
         pos += LEN_CONCEPTO;
-        QString ptahaber = line.mid(pos, LEN_PTAHABER).trimmed();
+        QString ptahaber = line.mid ( pos, LEN_PTAHABER ).trimmed();
         pos += LEN_PTAHABER;
-        QString factura = line.mid(pos, LEN_FACTURA).trimmed();
+        QString factura = line.mid ( pos, LEN_FACTURA ).trimmed();
         pos += LEN_FACTURA;
-        QString baseimpo = line.mid(pos, LEN_BASEIMPO).trimmed();
+        QString baseimpo = line.mid ( pos, LEN_BASEIMPO ).trimmed();
         pos += LEN_BASEIMPO;
-        QString iva = line.mid(pos, LEN_IVA).trimmed();
+        QString iva = line.mid ( pos, LEN_IVA ).trimmed();
         pos += LEN_IVA;
-        QString recequiv = line.mid(pos, LEN_RECEQUIV).trimmed();
+        QString recequiv = line.mid ( pos, LEN_RECEQUIV ).trimmed();
         pos += LEN_RECEQUIV;
-        QString documento = line.mid(pos, LEN_DOCUMENTO).trimmed();
+        QString documento = line.mid ( pos, LEN_DOCUMENTO ).trimmed();
         pos += LEN_DOCUMENTO;
-        QString departa = line.mid(pos, LEN_DEPARTA).trimmed();
+        QString departa = line.mid ( pos, LEN_DEPARTA ).trimmed();
         pos += LEN_DEPARTA;
-        QString clave = line.mid(pos, LEN_CLAVE).trimmed();
+        QString clave = line.mid ( pos, LEN_CLAVE ).trimmed();
         pos += LEN_CLAVE;
-        QString estado = line.mid(pos, LEN_ESTADO).trimmed();
+        QString estado = line.mid ( pos, LEN_ESTADO ).trimmed();
         pos += LEN_ESTADO;
-        QString ncasado = line.mid(pos, LEN_NCASADO).trimmed();
+        QString ncasado = line.mid ( pos, LEN_NCASADO ).trimmed();
         pos += LEN_NCASADO;
-        QString tcasado = line.mid(pos, LEN_TCASADO).trimmed();
+        QString tcasado = line.mid ( pos, LEN_TCASADO ).trimmed();
         pos += LEN_TCASADO;
-        QString trans = line.mid(pos, LEN_TRANS).trimmed();
+        QString trans = line.mid ( pos, LEN_TRANS ).trimmed();
         pos += LEN_TRANS;
-        QString cambio = line.mid(pos, LEN_CAMBIO).trimmed();
+        QString cambio = line.mid ( pos, LEN_CAMBIO ).trimmed();
         pos += LEN_CAMBIO;
-        QString debeme = line.mid(pos, LEN_DEBEME).trimmed();
+        QString debeme = line.mid ( pos, LEN_DEBEME ).trimmed();
         pos += LEN_DEBEME;
-        QString haberme = line.mid(pos, LEN_HABERME).trimmed();
+        QString haberme = line.mid ( pos, LEN_HABERME ).trimmed();
         pos += LEN_HABERME;
-        QString auxiliar = line.mid(pos, LEN_AUXILIAR).trimmed();
+        QString auxiliar = line.mid ( pos, LEN_AUXILIAR ).trimmed();
         pos += LEN_AUXILIAR;
-        QString serie = line.mid(pos, LEN_SERIE).trimmed();
+        QString serie = line.mid ( pos, LEN_SERIE ).trimmed();
         pos += LEN_SERIE;
-        QString sucursal = line.mid(pos, LEN_SUCURSAL).trimmed();
+        QString sucursal = line.mid ( pos, LEN_SUCURSAL ).trimmed();
         pos += LEN_SUCURSAL;
-        QString coddivisa = line.mid(pos, LEN_CODDIVISA).trimmed();
+        QString coddivisa = line.mid ( pos, LEN_CODDIVISA ).trimmed();
         pos += LEN_CODDIVISA;
-        QString impauxme = line.mid(pos, LEN_IMPAUXME).trimmed();
+        QString impauxme = line.mid ( pos, LEN_IMPAUXME ).trimmed();
         pos += LEN_IMPAUXME;
-        QString monedauso = line.mid(pos, LEN_MONEDAUSO).trimmed();
+        QString monedauso = line.mid ( pos, LEN_MONEDAUSO ).trimmed();
         pos += LEN_MONEDAUSO;
-        QString eurodebe = line.mid(pos, LEN_EURODEBE).trimmed();
+        QString eurodebe = line.mid ( pos, LEN_EURODEBE ).trimmed();
         pos += LEN_EURODEBE;
-        QString eurohaber = line.mid(pos, LEN_EUROHABER).trimmed();
+        QString eurohaber = line.mid ( pos, LEN_EUROHABER ).trimmed();
         pos += LEN_EUROHABER;
-        QString baseeuro = line.mid(pos, LEN_BASEEURO).trimmed();
+        QString baseeuro = line.mid ( pos, LEN_BASEEURO ).trimmed();
         pos += LEN_BASEEURO;
-        QString noconv = line.mid(pos, LEN_NOCONV).trimmed();
+        QString noconv = line.mid ( pos, LEN_NOCONV ).trimmed();
         pos += LEN_NOCONV;
-        QString numeroinv = line.mid(pos, LEN_NUMEROINV).trimmed();
+        QString numeroinv = line.mid ( pos, LEN_NUMEROINV ).trimmed();
         pos += LEN_NUMEROINV;
 
-        if (asiento != lastasiento) {
-            if (!lastasiento.isEmpty())
+        if ( asiento != lastasiento ) {
+            if ( !lastasiento.isEmpty() )
                 fugit <<  "</ASIENTO>\n";
             fugit << "<ASIENTO>\n"
             "\t<FIELD name='numasiento'>" + asiento + "</FIELD>\n"
@@ -239,22 +240,22 @@ int Contaplus2Fugit(QFile &fugitfile, QFile &subcuentas, QFile &asientos) {
         } // end if
         napunte++;
         fugit << "\t<APUNTE>\n"
-        "\t\t<FIELD name='numapunte'>" + QString::number(napunte) + "</FIELD>\n"
+        "\t\t<FIELD name='numapunte'>" + QString::number ( napunte ) + "</FIELD>\n"
         "\t\t<FIELD name='cuenta'>" + subcta + "</FIELD>\n"
         "\t\t<FIELD name='contrapartida'>" + contra + "</FIELD>\n"
         "\t\t<FIELD name='concepto'>" + concepto + "</FIELD>\n";
-        if (monedauso == "1") { /// Ptas.
+        if ( monedauso == "1" ) { /// Ptas.
             fugit <<
-            "\t\t<FIELD name='debe'>" + QString::number((ptadebe.toDouble()) / EURO) + "</FIELD>\n"
-            "\t\t<FIELD name='haber'>" + QString::number((ptahaber.toDouble()) / EURO) + "</FIELD>\n";
+            "\t\t<FIELD name='debe'>" + QString::number ( ( ptadebe.toDouble() ) / EURO ) + "</FIELD>\n"
+            "\t\t<FIELD name='haber'>" + QString::number ( ( ptahaber.toDouble() ) / EURO ) + "</FIELD>\n";
         } else {
             fugit <<
-            "\t\t<FIELD name='debe'>" + QString::number((eurodebe.toDouble()) ) + "</FIELD>\n"
-            "\t\t<FIELD name='haber'>" + QString::number((eurohaber.toDouble()) ) + "</FIELD>\n";
+            "\t\t<FIELD name='debe'>" + QString::number ( ( eurodebe.toDouble() ) ) + "</FIELD>\n"
+            "\t\t<FIELD name='haber'>" + QString::number ( ( eurohaber.toDouble() ) ) + "</FIELD>\n";
         } // end if
         fugit << "\t</APUNTE>\n";
     } // end while
-    if (!lastasiento.isEmpty()) {
+    if ( !lastasiento.isEmpty() ) {
         fugit << "</ASIENTO>\n";
     } // end if
     fugit << "</FICHERO_ASIENTO>\n";

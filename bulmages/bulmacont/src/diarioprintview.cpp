@@ -37,21 +37,23 @@
 \param emp
 \param parent
 **/
-DiarioPrintView::DiarioPrintView(Empresa  *emp, QWidget *parent)
-        : QDialog(parent), PEmpresaBase(emp) {
-    _depura("DiarioPrintView::DiarioPrintView", 0);
-    setupUi(this);
-    numdigitos = ((Empresa *)empresaBase())->numdigitosempresa();
-    _depura("END DiarioPrintView::DiarioPrintView", 0);
+DiarioPrintView::DiarioPrintView ( Empresa  *emp, QWidget *parent )
+        : QDialog ( parent ), PEmpresaBase ( emp )
+{
+    _depura ( "DiarioPrintView::DiarioPrintView", 0 );
+    setupUi ( this );
+    numdigitos = ( ( Empresa * ) empresaBase() ) ->numdigitosempresa();
+    _depura ( "END DiarioPrintView::DiarioPrintView", 0 );
 }
 
 
 ///
 /**
 **/
-DiarioPrintView::~DiarioPrintView() {
-    _depura("DiarioPrintView::~DiarioPrintView", 0);
-    _depura("END DiarioPrintView::~DiarioPrintView", 0);
+DiarioPrintView::~DiarioPrintView()
+{
+    _depura ( "DiarioPrintView::~DiarioPrintView", 0 );
+    _depura ( "END DiarioPrintView::~DiarioPrintView", 0 );
 }
 
 
@@ -61,9 +63,10 @@ DiarioPrintView::~DiarioPrintView() {
 /**
 \return
 **/
-QString DiarioPrintView::montaQuery() {
-    _depura("DiarioPrintView::montaQuery", 0);
-    DiarioView *diario = ((Empresa *)empresaBase())->diarioempresa();
+QString DiarioPrintView::montaQuery()
+{
+    _depura ( "DiarioPrintView::montaQuery", 0 );
+    DiarioView *diario = ( ( Empresa * ) empresaBase() ) ->diarioempresa();
     QString query;
     QString fecha;
     QString fechaasiento;
@@ -77,24 +80,24 @@ QString DiarioPrintView::montaQuery() {
     QString cad;
 
     /// Consideraciones para centros de coste y canales.
-    selectcanalview *scanal = ((Empresa *)empresaBase())->getselcanales();
-    SelectCCosteView *scoste = ((Empresa *)empresaBase())->getselccostes();
+    selectcanalview *scanal = ( ( Empresa * ) empresaBase() ) ->getselcanales();
+    SelectCCosteView *scoste = ( ( Empresa * ) empresaBase() ) ->getselccostes();
     QString ccostes = scoste->cadcoste();
-    if (ccostes != "") {
-        ccostes.sprintf(" AND idc_coste IN (%s) ", ccostes.toAscii().constData());
+    if ( ccostes != "" ) {
+        ccostes.sprintf ( " AND idc_coste IN (%s) ", ccostes.toAscii().constData() );
     } // end if
     QString ccanales = scanal->cadcanal();
-    if (ccanales != "") {
-        ccanales.sprintf(" AND idcanal IN (%s) ", ccanales.toAscii().constData());
+    if ( ccanales != "" ) {
+        ccanales.sprintf ( " AND idcanal IN (%s) ", ccanales.toAscii().constData() );
     } // end if
     QString tabla;
-    if (diario->mui_asAbiertos->isChecked()) {
+    if ( diario->mui_asAbiertos->isChecked() ) {
         tabla = "borrador";
     } else {
         tabla = "apunte";
     } // end if
-    query = "SELECT asiento.ordenasiento, " + tabla + ".contrapartida, " + tabla + ".fecha, asiento.fecha AS fechaasiento,cuenta.tipocuenta, cuenta.descripcion, "+tabla+".conceptocontable,"+tabla+".descripcion AS descapunte, to_char("+tabla+".debe,'MI999G999G990D99') AS debe, to_char("+tabla+".haber,'MI999G999G990D99') AS haber, cuenta.idcuenta, asiento.idasiento, "+tabla+".idc_coste, "+tabla+".idcanal, cuenta.codigo AS codigocuenta FROM asiento, "+tabla+", cuenta WHERE asiento.idasiento="+tabla+".idasiento AND "+tabla+".idcuenta = cuenta.idcuenta AND "+tabla+".fecha >= '"+finicial+"' AND "+tabla+".fecha <= '" + ffinal + "' " + ccostes + " " + ccanales + " ORDER BY asiento.ordenasiento, " + tabla + ".orden";
-    _depura("END DiarioPrintView::montaQuery", 0);
+    query = "SELECT asiento.ordenasiento, " + tabla + ".contrapartida, " + tabla + ".fecha, asiento.fecha AS fechaasiento,cuenta.tipocuenta, cuenta.descripcion, " + tabla + ".conceptocontable," + tabla + ".descripcion AS descapunte, to_char(" + tabla + ".debe,'MI999G999G990D99') AS debe, to_char(" + tabla + ".haber,'MI999G999G990D99') AS haber, cuenta.idcuenta, asiento.idasiento, " + tabla + ".idc_coste, " + tabla + ".idcanal, cuenta.codigo AS codigocuenta FROM asiento, " + tabla + ", cuenta WHERE asiento.idasiento=" + tabla + ".idasiento AND " + tabla + ".idcuenta = cuenta.idcuenta AND " + tabla + ".fecha >= '" + finicial + "' AND " + tabla + ".fecha <= '" + ffinal + "' " + ccostes + " " + ccanales + " ORDER BY asiento.ordenasiento, " + tabla + ".orden";
+    _depura ( "END DiarioPrintView::montaQuery", 0 );
     return query;
 }
 
@@ -103,23 +106,24 @@ QString DiarioPrintView::montaQuery() {
 /**
 \parent
 **/
-void DiarioPrintView::accept() {
-    _depura("DiarioPrintView::accept", 0);
+void DiarioPrintView::accept()
+{
+    _depura ( "DiarioPrintView::accept", 0 );
     /// Versi&oacute;n por si s&oacute;lo permitimos elegir una opci&oacute;n.
-    if (radiotexto->isChecked()) {
-        if (radionormal->isChecked()) {
-            presentar("txt");
-        } else if (radioaprendizaje->isChecked()) {
-            presentar("txtapren");
+    if ( radiotexto->isChecked() ) {
+        if ( radionormal->isChecked() ) {
+            presentar ( "txt" );
+        } else if ( radioaprendizaje->isChecked() ) {
+            presentar ( "txtapren" );
         } // end if
-    } else if (radiohtml->isChecked()) {
-        if (radionormal->isChecked()) {
-            presentar("html");
-        } else if (radioaprendizaje->isChecked()) {
-            presentar("htmlapren");
+    } else if ( radiohtml->isChecked() ) {
+        if ( radionormal->isChecked() ) {
+            presentar ( "html" );
+        } else if ( radioaprendizaje->isChecked() ) {
+            presentar ( "htmlapren" );
         } // end if
     } // end if
-    _depura("END DiarioPrintView::accept", 0);
+    _depura ( "END DiarioPrintView::accept", 0 );
 }
 
 
@@ -127,9 +131,10 @@ void DiarioPrintView::accept() {
 /**
 \param tipus
 **/
-void DiarioPrintView::presentar(char *tipus) {
-    _depura("DiarioPrintView::presentar", 0);
-    DiarioView *diario = ((Empresa *)empresaBase())->diarioempresa();
+void DiarioPrintView::presentar ( char *tipus )
+{
+    _depura ( "DiarioPrintView::presentar", 0 );
+    DiarioView *diario = ( ( Empresa * ) empresaBase() ) ->diarioempresa();
     int txt, html, txtapren, htmlapren;
     float debe, haber;
     int idcuenta;
@@ -144,51 +149,51 @@ void DiarioPrintView::presentar(char *tipus) {
     cursor2 *cursoraux;
 
     /// Tipo de presentaci&oacute;n.
-    txt =! strcmp(tipus, "txt");
-    html =! strcmp(tipus, "html");
-    txtapren =! strcmp(tipus, "txtapren");
-    htmlapren =! strcmp(tipus, "htmlapren");
+    txt = ! strcmp ( tipus, "txt" );
+    html = ! strcmp ( tipus, "html" );
+    txtapren = ! strcmp ( tipus, "txtapren" );
+    htmlapren = ! strcmp ( tipus, "htmlapren" );
 
     /// Cogemos los valores del formulario.
     QString finicial = diario->mui_fechainicial->text();
     QString ffinal = diario->mui_fechafinal->text();
 
-    if (txt | html) {
+    if ( txt | html ) {
         /// Creamos los archivos de salida.
 
-        QString archivo = confpr->valor(CONF_DIR_USER) + "diario.txt";
-        QString archivohtml = confpr->valor(CONF_DIR_USER) + "diario.html";
+        QString archivo = confpr->valor ( CONF_DIR_USER ) + "diario.txt";
+        QString archivohtml = confpr->valor ( CONF_DIR_USER ) + "diario.html";
 
 
-    QFile filehtml;
-    filehtml.setFileName(archivohtml);
-    filehtml.open(QIODevice::WriteOnly);
-    QTextStream fitxersortidahtml(&filehtml);
+        QFile filehtml;
+        filehtml.setFileName ( archivohtml );
+        filehtml.open ( QIODevice::WriteOnly );
+        QTextStream fitxersortidahtml ( &filehtml );
 
 
-    QFile filetxt;
-    filetxt.setFileName(archivo);
-    filetxt.open(QIODevice::WriteOnly);
-    QTextStream fitxersortidatxt(&filetxt);
+        QFile filetxt;
+        filetxt.setFileName ( archivo );
+        filetxt.open ( QIODevice::WriteOnly );
+        QTextStream fitxersortidatxt ( &filetxt );
 
 
 
-        if (txt | html) {
+        if ( txt | html ) {
             /// S&oacute;lo continuamos se hemos podido crear alg&uacute;n archivo.
-            if (txt) {
+            if ( txt ) {
                 /// Presentaci&oacute;n txt normal.
                 fitxersortidatxt << "                                        LLIBRE DIARI \n" ;
                 fitxersortidatxt << "Data Inicial: " << finicial.toAscii().constData() << "   Data Final: " << ffinal.toAscii().constData() << endl;
                 fitxersortidatxt << "ASIENTO   FECHA    SUBCUENTA   DESCRIPCION                                   DEBE     HABER \n" ;
                 fitxersortidatxt << "_______________________________________________________________________________________________\n";
             } // end if
-            if (html) {
+            if ( html ) {
                 /// Presentaci&oacute;n html normal.
                 fitxersortidahtml << "<html>\n";
                 fitxersortidahtml << "<head>\n";
                 fitxersortidahtml << "  <!DOCTYPE / public \"-//w3c//dtd xhtml 1.0 transitional//en\"\n";
                 fitxersortidahtml << "    \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n";
-                fitxersortidahtml << "  <LINK REL=StyleSheet HREF=\"" << confpr->valor(CONF_PLANTILLA).toAscii().constData() <<"\" TYPE=\"text/css\" MEDIA=screen>\n";
+                fitxersortidahtml << "  <LINK REL=StyleSheet HREF=\"" << confpr->valor ( CONF_PLANTILLA ).toAscii().constData() << "\" TYPE=\"text/css\" MEDIA=screen>\n";
                 fitxersortidahtml << "  <title> Llibre Diari </title>\n";
                 fitxersortidahtml << "</head>\n";
                 fitxersortidahtml << "<body>\n";
@@ -197,81 +202,81 @@ void DiarioPrintView::presentar(char *tipus) {
                 fitxersortidahtml << "<tr><td class=titolcolumnadiari>Assentament</td><td class=titolcolumnadiari>Data</td><td class=titolcolumnadiari>Subcompte</td><td class=titolcolumnadiari>Descripció</td><td class=titolcolumnadiari>Deure</td><td class=titolcolumnadiari>Haver</td></tr>\n";
             } // end if
             QString query = montaQuery();
-            empresaBase()->begin();
-            cursoraux = empresaBase()->cargacursor(query, "elquerydb");
-            empresaBase()->commit();
+            empresaBase() ->begin();
+            cursoraux = empresaBase() ->cargacursor ( query, "elquerydb" );
+            empresaBase() ->commit();
 
-            for (; !cursoraux->eof(); cursoraux->siguienteregistro()) {
-                fechaasiento = cursoraux->valor("fechaasiento").toAscii().constData();
-                idasiento = atoi(cursoraux->valor("ordenasiento").toAscii());
-                fecha = cursoraux->valor("fecha").toAscii().constData();
-                descripcion = cursoraux->valor("descripcion").toAscii().constData();
-                concepto = cursoraux->valor("conceptocontable").toAscii().constData();
-                debe = atof(cursoraux->valor("debe").toAscii());
-                haber = atof(cursoraux->valor("haber").toAscii());
-                idcuenta = atoi(cursoraux->valor("idcuenta").toAscii());
-                codigocuenta = cursoraux->valor("codigocuenta").toAscii().constData();
-		data = fecha.left(10);
-                if (txt) {
+            for ( ; !cursoraux->eof(); cursoraux->siguienteregistro() ) {
+                fechaasiento = cursoraux->valor ( "fechaasiento" ).toAscii().constData();
+                idasiento = atoi ( cursoraux->valor ( "ordenasiento" ).toAscii() );
+                fecha = cursoraux->valor ( "fecha" ).toAscii().constData();
+                descripcion = cursoraux->valor ( "descripcion" ).toAscii().constData();
+                concepto = cursoraux->valor ( "conceptocontable" ).toAscii().constData();
+                debe = atof ( cursoraux->valor ( "debe" ).toAscii() );
+                haber = atof ( cursoraux->valor ( "haber" ).toAscii() );
+                idcuenta = atoi ( cursoraux->valor ( "idcuenta" ).toAscii() );
+                codigocuenta = cursoraux->valor ( "codigocuenta" ).toAscii().constData();
+                data = fecha.left ( 10 );
+                if ( txt ) {
                     /// Presentaci&oacute;n txt normal.
                     fitxersortidatxt << idasiento << "  " << data << " " << codigocuenta <<  "  " << descripcion <<  " " << debe << " " << haber << endl;
                 } // end if
-                if (html) {
+                if ( html ) {
                     /// Presentaci&oacute; html normal.
                     fitxersortidahtml << "<tr><td class=assentamentdiari>" << idasiento << "</td><td class=datadiari>" << data << "</td><td class=codicomptediari>" << codigocuenta << "</td><td class=descripciodiari>" <<  descripcion << "</td><td class=dosdecimals>" << debe << "</td><td class=dosdecimals>" << haber << "</td></tr>\n";
                 } // end if
             } // end for
             delete cursoraux;
-            if (html) {
+            if ( html ) {
                 /// Presentaci&oacute;n html normal.
                 fitxersortidahtml << "</table>\n<hr>\n</body>\n</html>\n";
                 filehtml.close();
             } // end if
-            if (txt) {
+            if ( txt ) {
                 fitxersortidatxt << "_______________________________________________________________________________________________\n";
                 filetxt.close();
             } // end if
         } // end if
-        if (txt) {
+        if ( txt ) {
             /// Presentaci&oacute; txt normal.
-            QString cadaux = confpr->valor(CONF_EDITOR) + " diairo.txt";
-            system(cadaux.toAscii());
+            QString cadaux = confpr->valor ( CONF_EDITOR ) + " diairo.txt";
+            system ( cadaux.toAscii() );
         }
-        if (html) {
+        if ( html ) {
             /// Presentaci&oacute; html normal.
-            QString cadaux = confpr->valor(CONF_NAVEGADOR) + " diario.html";
-            system(cadaux.toAscii());
+            QString cadaux = confpr->valor ( CONF_NAVEGADOR ) + " diario.html";
+            system ( cadaux.toAscii() );
         } // end if
     } // end if
 
 
-    if (txtapren | htmlapren ) {
+    if ( txtapren | htmlapren ) {
 
-        QString archivo = confpr->valor(CONF_DIR_USER) + "diario.txt";
-        QString archivohtml = confpr->valor(CONF_DIR_USER) + "diario.html";
-
-
-    QFile filehtml;
-    filehtml.setFileName(archivohtml);
-    filehtml.open(QIODevice::WriteOnly);
-    QTextStream fitxersortidahtml(&filehtml);
+        QString archivo = confpr->valor ( CONF_DIR_USER ) + "diario.txt";
+        QString archivohtml = confpr->valor ( CONF_DIR_USER ) + "diario.html";
 
 
-    QFile filetxt;
-    filetxt.setFileName(archivo);
-    filetxt.open(QIODevice::WriteOnly);
-    QTextStream fitxersortidatxt(&filetxt);
+        QFile filehtml;
+        filehtml.setFileName ( archivohtml );
+        filehtml.open ( QIODevice::WriteOnly );
+        QTextStream fitxersortidahtml ( &filehtml );
 
 
-        if (txtapren | htmlapren) {
+        QFile filetxt;
+        filetxt.setFileName ( archivo );
+        filetxt.open ( QIODevice::WriteOnly );
+        QTextStream fitxersortidatxt ( &filetxt );
+
+
+        if ( txtapren | htmlapren ) {
             /// S&oacute;lo continuamos si hemos podido crear alg&uacute;n archivo.
-            if (txtapren) {
+            if ( txtapren ) {
                 /// Presentaci&oacute;n txt formato aprendizaje.
                 fitxersortidatxt << "                                                      LLIBRE DIARI \n" ;
                 fitxersortidatxt << "Data Inicial: " << finicial.toAscii().constData() << "   Data Final: " << ffinal.toAscii().constData() << endl;
                 fitxersortidatxt << "___________________________________________________________________________________________________________________________________\n";
             } // end if
-            if (htmlapren) {
+            if ( htmlapren ) {
                 /// Presentaci&oacute;n html formato aprendizaje.
                 fitxersortidahtml << "<html>\n";
                 fitxersortidahtml << "<head>\n";
@@ -284,54 +289,54 @@ void DiarioPrintView::presentar(char *tipus) {
                 fitxersortidahtml << "<table><tr><td colspan=\"7\" class=titoldiariapren> Llibre diari <hr></td></tr>\n\n";
                 fitxersortidahtml << "<tr><td colspan=\"7\" class=periodediariapren> Data Inicial: " << finicial.toAscii().constData() << " -  Data Final: " << ffinal.toAscii().constData() << "<hr></td></tr>\n\n";
             } // end if
-            empresaBase()->begin();
-            cursoraux = empresaBase()->cargaasientosfecha((char *)finicial.toAscii().constData(), (char *)ffinal.toAscii().constData());
+            empresaBase() ->begin();
+            cursoraux = empresaBase() ->cargaasientosfecha ( ( char * ) finicial.toAscii().constData(), ( char * ) ffinal.toAscii().constData() );
 
-            for (; !cursoraux->eof(); cursoraux->siguienteregistro()) {
-                int idasiento = atoi(cursoraux->valor("idasiento").toAscii());
-                if (txtapren) {
+            for ( ; !cursoraux->eof(); cursoraux->siguienteregistro() ) {
+                int idasiento = atoi ( cursoraux->valor ( "idasiento" ).toAscii() );
+                if ( txtapren ) {
                     /// Presentaci&oacute;n txt formato aprendizaje.
                     fitxersortidatxt << "_________________________________________________________   " << idasiento << "   ___________________________________________________________________\n";
                 } // end if
-                if (htmlapren) {
+                if ( htmlapren ) {
                     /// Presentaci&oacute;n html formato aprendizaje.
                     fitxersortidahtml << "\n<tr><td colspan=\"7\" class=liniadiariapren>____________________________________________________   " << idasiento << "   _____________________________________________________</td></tr>\n" ;
                 } // end if
                 char consulta[400];
                 char codicompte[20];
-                sprintf(consulta,"SELECT cuenta.codigo, cuenta.descripcion AS nomcuenta, apunte.debe AS debe, apunte.haber AS haber FROM apunte, cuenta WHERE apunte.idasiento=%d AND apunte.haber=0 AND cuenta.idcuenta=apunte.idcuenta",idasiento);
-                empresaBase()->begin();
-                cursor2 *cursasiento = empresaBase()->cargacursor(consulta,"asiento");
-                empresaBase()->commit();
+                sprintf ( consulta, "SELECT cuenta.codigo, cuenta.descripcion AS nomcuenta, apunte.debe AS debe, apunte.haber AS haber FROM apunte, cuenta WHERE apunte.idasiento=%d AND apunte.haber=0 AND cuenta.idcuenta=apunte.idcuenta", idasiento );
+                empresaBase() ->begin();
+                cursor2 *cursasiento = empresaBase() ->cargacursor ( consulta, "asiento" );
+                empresaBase() ->commit();
 
-                while (!cursasiento->eof()) {
-                    if (txtapren) {
+                while ( !cursasiento->eof() ) {
+                    if ( txtapren ) {
                         /// Presentaci&oacute;n txt formato aprendizaje.
-                        sprintf(codicompte,"( %s )",cursasiento->valor("codigo").toAscii().constData());
-                        fitxersortidatxt <<  atof(cursasiento->valor("debe").toAscii()) << "  " <<  codicompte << "  " << cursasiento->valor("nomcuenta").toAscii().constData() << endl;
+                        sprintf ( codicompte, "( %s )", cursasiento->valor ( "codigo" ).toAscii().constData() );
+                        fitxersortidatxt <<  atof ( cursasiento->valor ( "debe" ).toAscii() ) << "  " <<  codicompte << "  " << cursasiento->valor ( "nomcuenta" ).toAscii().constData() << endl;
                     } // end if
-                    if (htmlapren) {
+                    if ( htmlapren ) {
                         /// Presentaci&oacute;n html formato aprendizaje.
-                        fitxersortidahtml << " <tr><td class=deurediariapren> " << atof(cursasiento->valor("debe").toAscii()) << " </td><td class=codidiariapren> ( " << cursasiento->valor("codigo").toAscii().constData() << " ) </td><td class=nomcomptediariapren> " << cursasiento->valor("nomcuenta").toAscii().constData() << " </td><td> </td><td> </td><td> </td><td> </td></tr>\n";
+                        fitxersortidahtml << " <tr><td class=deurediariapren> " << atof ( cursasiento->valor ( "debe" ).toAscii() ) << " </td><td class=codidiariapren> ( " << cursasiento->valor ( "codigo" ).toAscii().constData() << " ) </td><td class=nomcomptediariapren> " << cursasiento->valor ( "nomcuenta" ).toAscii().constData() << " </td><td> </td><td> </td><td> </td><td> </td></tr>\n";
                     } // end if
                     cursasiento->siguienteregistro();
                 } // end while
 
                 delete cursasiento;
-                sprintf(consulta, "SELECT cuenta.codigo, cuenta.descripcion AS nomcuenta, apunte.debe AS debe, apunte.haber AS haber FROM apunte, cuenta WHERE apunte.idasiento = %d AND apunte.debe = 0 AND cuenta.idcuenta = apunte.idcuenta", idasiento);
-                empresaBase()->begin();
-                cursasiento = empresaBase()->cargacursor(consulta, "asiento");
-                empresaBase()->commit();
+                sprintf ( consulta, "SELECT cuenta.codigo, cuenta.descripcion AS nomcuenta, apunte.debe AS debe, apunte.haber AS haber FROM apunte, cuenta WHERE apunte.idasiento = %d AND apunte.debe = 0 AND cuenta.idcuenta = apunte.idcuenta", idasiento );
+                empresaBase() ->begin();
+                cursasiento = empresaBase() ->cargacursor ( consulta, "asiento" );
+                empresaBase() ->commit();
 
-                while (!cursasiento->eof()) {
-                    if (txtapren) {
+                while ( !cursasiento->eof() ) {
+                    if ( txtapren ) {
                         /// Presentaci&oacute;n txt formato aprendizaje.
-                        sprintf(codicompte, "( %s )", cursasiento->valor("codigo").toAscii().constData());
-                        fitxersortidatxt << "                                                                 a  " <<  cursasiento->valor("nomcuenta").toAscii().constData() << "  " << codicompte << "  " <<  atof(cursasiento->valor("haber").toAscii()) <<endl;
+                        sprintf ( codicompte, "( %s )", cursasiento->valor ( "codigo" ).toAscii().constData() );
+                        fitxersortidatxt << "                                                                 a  " <<  cursasiento->valor ( "nomcuenta" ).toAscii().constData() << "  " << codicompte << "  " <<  atof ( cursasiento->valor ( "haber" ).toAscii() ) << endl;
                     } // end if
-                    if (htmlapren) {
+                    if ( htmlapren ) {
                         /// Presentaci&oacute;n html formato aprendizaje.
-                        fitxersortidahtml << " <tr><td> </td><td> </td><td> </td><td class=adiariapren>  a  </td><td class=nomcomptediariapren> " << cursasiento->valor("nomcuenta").toAscii().constData() << " </td><td class=codidiariapren> ( " << cursasiento->valor("codigo").toAscii().constData() << " ) </td><td class=haverdiariapren> " <<  atof(cursasiento->valor("haber").toAscii()) << " </td></tr>\n";
+                        fitxersortidahtml << " <tr><td> </td><td> </td><td> </td><td class=adiariapren>  a  </td><td class=nomcomptediariapren> " << cursasiento->valor ( "nomcuenta" ).toAscii().constData() << " </td><td class=codidiariapren> ( " << cursasiento->valor ( "codigo" ).toAscii().constData() << " ) </td><td class=haverdiariapren> " <<  atof ( cursasiento->valor ( "haber" ).toAscii() ) << " </td></tr>\n";
                     } // end if
                     cursasiento->siguienteregistro();
                 } // end while
@@ -339,28 +344,28 @@ void DiarioPrintView::presentar(char *tipus) {
             } // end for
 
             delete cursoraux;
-            empresaBase()->commit();
+            empresaBase() ->commit();
 
-            if (txtapren) {
+            if ( txtapren ) {
                 fitxersortidatxt << "____________________________________________________________________________________________________________________________________\n" ;//presentació text format aprenentatge
                 filetxt.close();
             } // end if
-            if (htmlapren) {
+            if ( htmlapren ) {
                 fitxersortidahtml << "<tr><td colspan=\"7\"  class=liniadiariapren>\n_____________________________________________________________________________________________________________\n<hr></td></tr>\n</table>\n</body></html>\n";     //presentació html format aprenentatge
                 filehtml.close();
             } // end if
-            if (txtapren) {
+            if ( txtapren ) {
                 /// Presentaci&oacute;n txt formato aprendizaje.
-                QString cadaux = confpr->valor(CONF_EDITOR) + " diario.txt";
-                system(cadaux.toAscii());
+                QString cadaux = confpr->valor ( CONF_EDITOR ) + " diario.txt";
+                system ( cadaux.toAscii() );
             } // end if
-            if (htmlapren) {
+            if ( htmlapren ) {
                 /// Presentaci&oacute;n html formato aprendizaje.
-                QString cadaux = confpr->valor(CONF_NAVEGADOR) + " diario.txt";
-                system(cadaux.toAscii());
+                QString cadaux = confpr->valor ( CONF_NAVEGADOR ) + " diario.txt";
+                system ( cadaux.toAscii() );
             } // end if
         } // end if
     } // end if
-    _depura("END DiarioPrintView::presentar", 0);
+    _depura ( "END DiarioPrintView::presentar", 0 );
 }
 

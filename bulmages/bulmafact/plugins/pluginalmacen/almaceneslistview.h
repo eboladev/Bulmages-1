@@ -33,29 +33,30 @@
 
 /// Muestra y administra la ventana con el listado de presupuestos.
 /** */
-class AlmacenesListView : public Listado, public Ui_AlmacenesListBase {
+class AlmacenesListView : public Listado, public Ui_AlmacenesListBase
+{
     Q_OBJECT
 
 private:
     QString m_idalmacen;
 
 public:
-    AlmacenesListView(QWidget *parent = 0, Qt::WFlags flag = 0);
-    AlmacenesListView(Company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0);
+    AlmacenesListView ( QWidget *parent = 0, Qt::WFlags flag = 0 );
+    AlmacenesListView ( Company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0 );
     ~AlmacenesListView();
     void presentar();
-    void editar(int);
+    void editar ( int );
     void borrar();
     void crear();
     QString idalmacen();
-    void setEmpresaBase (Company *comp);
+    void setEmpresaBase ( Company *comp );
     void imprimir();
     QString generaFiltro();
     void iniciaForm();
 
 
 signals:
-    void selected(QString);
+    void selected ( QString );
 };
 
 #endif

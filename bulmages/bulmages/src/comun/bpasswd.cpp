@@ -14,29 +14,33 @@
  ***************************************************************************/
 #include "bpasswd.h"
 
-BPasswd::BPasswd(QString * usuario, QString * passwd, QWidget * parent, const char * name, bool modal, WFlags f)
- : UIPassword(parent,name,modal,f) {
+BPasswd::BPasswd ( QString * usuario, QString * passwd, QWidget * parent, const char * name, bool modal, WFlags f )
+        : UIPassword ( parent, name, modal, f )
+{
 
     Usuario = usuario;
     Password = passwd;
-    userLine->setText(*Usuario);
+    userLine->setText ( *Usuario );
 }
 
-void BPasswd::returnPressedOnUser() {
-    passwdLine->setFocus();
-}
+void BPasswd::returnPressedOnUser()
+                    {
+                        passwdLine->setFocus();
+                    }
 
-void BPasswd::returnPressedOnPasswd() {
-    validar();
-}
+                    void BPasswd::returnPressedOnPasswd()
+                                        {
+                                            validar();
+                                        }
 
-void BPasswd::validar() {
-    *Usuario = userLine->text();
-    *Password = passwdLine->text();
-    delete this;
-}
+                                        void BPasswd::validar()
+                                        {
+                                            *Usuario = userLine->text();
+                                            *Password = passwdLine->text();
+                                            delete this;
+                                        }
 
-BPasswd::~BPasswd() {
-}
+                                        BPasswd::~BPasswd()
+                                        {}
 
 

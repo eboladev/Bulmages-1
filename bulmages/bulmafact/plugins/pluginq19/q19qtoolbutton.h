@@ -32,25 +32,26 @@
 #include "cobroslist.h"
 
 
-class Q19QToolButton : public QToolButton {
-	Q_OBJECT
+class Q19QToolButton : public QToolButton
+{
+    Q_OBJECT
 
 private:
-	Company *m_companyact;
-	CobrosList     *m_cobrosList;
-	
+    Company *m_companyact;
+    CobrosList     *m_cobrosList;
+
 public:
-	Q19QToolButton(CobrosList *cob = NULL, QWidget *parent = NULL);
-	~Q19QToolButton();
-	void setBoton();
-	QByteArray cobroQ19(QTextStream &, QString );
-	QByteArray cabeceraPresentador(QTextStream &, QString);
-	QByteArray cabeceraOrdenante(QTextStream &, QString);
-	QByteArray totalOrdenante(QTextStream &, QString, QString, QString);
-	QByteArray totalGeneral(QTextStream &, QString, QString, QString);
+    Q19QToolButton ( CobrosList *cob = NULL, QWidget *parent = NULL );
+    ~Q19QToolButton();
+    void setBoton();
+    QByteArray cobroQ19 ( QTextStream &, QString );
+    QByteArray cabeceraPresentador ( QTextStream &, QString );
+    QByteArray cabeceraOrdenante ( QTextStream &, QString );
+    QByteArray totalOrdenante ( QTextStream &, QString, QString, QString );
+    QByteArray totalGeneral ( QTextStream &, QString, QString, QString );
 
 public slots:
-	virtual void click();
+    virtual void click();
 
 };
 

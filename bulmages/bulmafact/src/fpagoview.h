@@ -32,7 +32,8 @@ class Company;
 
 /// Muestra y administra la ventana de formas de pago.
 /** */
-class FPagoView : public FichaBf, private Ui_FPagoBase {
+class FPagoView : public FichaBf, private Ui_FPagoBase
+{
     Q_OBJECT
 
 private:
@@ -50,7 +51,7 @@ private:
     void pintar();
 
 public:
-    FPagoView(Company * emp, QWidget *parent = 0);
+    FPagoView ( Company * emp, QWidget *parent = 0 );
     ~FPagoView();
     void setModoConsulta();
     void setModoEdicion();
@@ -59,7 +60,7 @@ public:
     virtual void on_mui_borrar_clicked();
 
 private slots:
-    virtual void on_mui_lista_currentItemChanged(QListWidgetItem *cur, QListWidgetItem *prev);
+    virtual void on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWidgetItem *prev );
     virtual void on_mui_crear_clicked();
 };
 

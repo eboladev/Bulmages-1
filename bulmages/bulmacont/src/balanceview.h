@@ -37,12 +37,13 @@ class Empresa;
 
 
 /// Balance de Sumas y Saldos plano.
-/** 
+/**
     Esta clase muestra un balance de sumas y saldos de la empresa abierta.
     Esta clase genera el balance de sumas y saldos y lo muestra por pantalla en una
     ventana dise&ntilde;ada espec&iacute;ficamente para ello.
 */
-class BalanceView : public FichaBc, public Ui_BalanceBase {
+class BalanceView : public FichaBc, public Ui_BalanceBase
+{
     Q_OBJECT
 
 private:
@@ -53,8 +54,8 @@ private:
     /// Array que almacena los identificadores de los centros de coste.
 
 public:
-    BalanceView(Empresa *, QWidget *parent = 0, int flags = 0);
-    void inicializa1(QString, QString, QString, QString, QString);
+    BalanceView ( Empresa *, QWidget *parent = 0, int flags = 0 );
+    void inicializa1 ( QString, QString, QString, QString, QString );
     ~BalanceView();
     void imprimir();
     virtual void accept();
@@ -63,7 +64,7 @@ private:
     /// Presenta el Balance.
     void presentar();
     /// Presenta el Balance de Sumas y Saldos.
-    void presentarSyS(QString, QString, QString, QString, int, int, bool);
+    void presentarSyS ( QString, QString, QString, QString, int, int, bool );
 
 
 public slots:

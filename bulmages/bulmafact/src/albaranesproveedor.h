@@ -36,16 +36,17 @@
 /** Deriva de la clase SubForm2Bf.
     Reimplementa los metodos de carga para que trabajan con la tabla albaranp.
 */
-class AlbaranesProveedorListSubform : public SubForm2Bf {
+class AlbaranesProveedorListSubform : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
-    AlbaranesProveedorListSubform(QWidget *parent = 0);
+    AlbaranesProveedorListSubform ( QWidget *parent = 0 );
     ~AlbaranesProveedorListSubform();
 
 public slots:
     virtual void cargar();
-    virtual void cargar(QString query);
+    virtual void cargar ( QString query );
 };
 
 
@@ -54,7 +55,8 @@ public slots:
 
 /// Clase que controla la pantalla de listado de albaranes a proveedor.
 /// \TODO: Deberia derivar de Ficha o Listado en lugar de QWidget.
-class AlbaranesProveedor : public Listado, public Ui_AlbaranesProveedorListBase {
+class AlbaranesProveedor : public Listado, public Ui_AlbaranesProveedorListBase
+{
     Q_OBJECT
 
 private:
@@ -62,17 +64,17 @@ private:
     QString mdb_idalbaranp;
 
 public:
-    AlbaranesProveedor(QWidget *parent = 0, Qt::WFlags flag = 0);
-    AlbaranesProveedor(Company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0);
+    AlbaranesProveedor ( QWidget *parent = 0, Qt::WFlags flag = 0 );
+    AlbaranesProveedor ( Company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0 );
     ~AlbaranesProveedor();
     void presentar();
-    void setEmpresaBase(Company *comp);
+    void setEmpresaBase ( Company *comp );
     QString idalbaranp();
     void imprimir();
-    void setidproveedor(QString val);
-    void setidarticulo(QString val);
+    void setidproveedor ( QString val );
+    void setidarticulo ( QString val );
     QString generaFiltro();
-    void editar(int);
+    void editar ( int );
     void borrar();
     void crear();
     void iniciaForm();

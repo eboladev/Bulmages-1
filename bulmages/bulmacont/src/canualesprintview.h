@@ -42,7 +42,8 @@
 class Empresa;
 
 
-class CAnualesPrintView : public QDialog, public Ui_CAnualesPrintBase, public PEmpresaBase {
+class CAnualesPrintView : public QDialog, public Ui_CAnualesPrintBase, public PEmpresaBase
+{
     Q_OBJECT
 
 private:
@@ -51,14 +52,14 @@ private:
     QDomDocument m_doc;
 
 public:
-    CAnualesPrintView(Empresa *emp,QWidget *parent = 0);
+    CAnualesPrintView ( Empresa *emp, QWidget *parent = 0 );
     ~CAnualesPrintView();
-    void setidbalance(QString); /// Establece cual ser&aacute; el balance a imprimir.
-    bool procesaFormula(const QDomNode &);
-    bool procesaOperador(const QDomNode &);
-    bool valorItem(const QDomNode &, QString &, QString &);
-    void agregaValores(const QDomNode &, const QString &, const QString &);
-    void imprimir(QString, QString, QString, QString);
+    void setidbalance ( QString ); /// Establece cual ser&aacute; el balance a imprimir.
+    bool procesaFormula ( const QDomNode & );
+    bool procesaOperador ( const QDomNode & );
+    bool valorItem ( const QDomNode &, QString &, QString & );
+    void agregaValores ( const QDomNode &, const QString &, const QString & );
+    void imprimir ( QString, QString, QString, QString );
 
 public slots:
     virtual void on_mui_aceptar_clicked();

@@ -40,7 +40,8 @@
     Hace todo el traspaso de mensajes de los menus a company y captura algunos que no son
     propiamente de la facturacion como pueda ser el FullScreen o el About.
 */
-class BulmaTPV: public QMainWindow, public Ui_BulmaTPVBase {
+class BulmaTPV: public QMainWindow, public Ui_BulmaTPVBase
+{
     Q_OBJECT
 
 private:
@@ -50,15 +51,15 @@ private:
     EmpresaTPV *m_empresaTPV;
 
 public:
-    BulmaTPV(QString bd);
+    BulmaTPV ( QString bd );
     ~BulmaTPV();
     QWorkspace2 *workspace();
-    void createMainWindows(Splash *);
+    void createMainWindows ( Splash * );
     EmpresaTPV *empresaTPV();
-    virtual void keyPressEvent(QKeyEvent *e);
+    virtual void keyPressEvent ( QKeyEvent *e );
 
 public slots:
-    virtual void closeEvent(QCloseEvent *);
+    virtual void closeEvent ( QCloseEvent * );
     virtual void s_ventanaCompleta();
     virtual void s_About();
 

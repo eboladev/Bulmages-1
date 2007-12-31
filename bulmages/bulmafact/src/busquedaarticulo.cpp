@@ -29,14 +29,15 @@
 /**
 \param parent
 **/
-BusquedaArticulo::BusquedaArticulo(QWidget *parent)
-        : BLWidget(parent) {
-    _depura("BusquedaArticulo::BusquedaArticulo", 0);
-    setupUi(this);
+BusquedaArticulo::BusquedaArticulo ( QWidget *parent )
+        : BLWidget ( parent )
+{
+    _depura ( "BusquedaArticulo::BusquedaArticulo", 0 );
+    setupUi ( this );
     mdb_idarticulo = "";
     mdb_nomarticulo = "";
     mdb_codigocompletoarticulo = "";
-    _depura("END BusquedaArticulo::BusquedaArticulo", 0);
+    _depura ( "END BusquedaArticulo::BusquedaArticulo", 0 );
 }
 
 
@@ -44,9 +45,10 @@ BusquedaArticulo::BusquedaArticulo(QWidget *parent)
 */
 /**
 **/
-BusquedaArticulo::~BusquedaArticulo() {
-    _depura("BusquedaArticulo::~BusquedaArticulo", 0);
-    _depura("END BusquedaArticulo::~BusquedaArticulo", 0);
+BusquedaArticulo::~BusquedaArticulo()
+{
+    _depura ( "BusquedaArticulo::~BusquedaArticulo", 0 );
+    _depura ( "END BusquedaArticulo::~BusquedaArticulo", 0 );
 }
 
 
@@ -56,15 +58,16 @@ BusquedaArticulo::~BusquedaArticulo() {
 /**
 \param val
 **/
-void BusquedaArticulo::setidarticulo(QString val) {
-    _depura("BusquedaArticulo::setidarticulo", 0);
+void BusquedaArticulo::setidarticulo ( QString val )
+{
+    _depura ( "BusquedaArticulo::setidarticulo", 0 );
     mdb_idarticulo = val;
     QString SQLQuery = "SELECT * FROM articulo WHERE idarticulo='" + mdb_idarticulo + "'";
-    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
+    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
 
-    if(!cur->eof()) {
-        mdb_codigocompletoarticulo = cur->valor("codigocompletoarticulo");
-        mdb_nomarticulo = cur->valor("nomarticulo");
+    if ( !cur->eof() ) {
+        mdb_codigocompletoarticulo = cur->valor ( "codigocompletoarticulo" );
+        mdb_nomarticulo = cur->valor ( "nomarticulo" );
     } else {
         mdb_idarticulo = "";
         mdb_nomarticulo = "";
@@ -72,9 +75,9 @@ void BusquedaArticulo::setidarticulo(QString val) {
     } // end if
 
     delete cur;
-    m_codigocompletoarticulo->setText(mdb_codigocompletoarticulo);
-    m_nomarticulo->setText(mdb_nomarticulo);
-    _depura("END BusquedaArticulo::setidarticulo", 0);
+    m_codigocompletoarticulo->setText ( mdb_codigocompletoarticulo );
+    m_nomarticulo->setText ( mdb_nomarticulo );
+    _depura ( "END BusquedaArticulo::setidarticulo", 0 );
 }
 
 
@@ -82,10 +85,11 @@ void BusquedaArticulo::setidarticulo(QString val) {
 /**
 \param val
 **/
-void BusquedaArticulo::setValorCampo(QString val) {
-    _depura("BusquedaArticulo::setValorCampo", 0);
-    setidarticulo(val);
-    _depura("END BusquedaArticulo::setValorCampo", 0);
+void BusquedaArticulo::setValorCampo ( QString val )
+{
+    _depura ( "BusquedaArticulo::setValorCampo", 0 );
+    setidarticulo ( val );
+    _depura ( "END BusquedaArticulo::setValorCampo", 0 );
 }
 
 
@@ -97,22 +101,23 @@ void BusquedaArticulo::setValorCampo(QString val) {
 /**
 \param val
 **/
-void BusquedaArticulo::setcodigocompletoarticulo(QString val) {
-    _depura("BusquedaArticulo::setcodigocompletoarticulo", 0);
+void BusquedaArticulo::setcodigocompletoarticulo ( QString val )
+{
+    _depura ( "BusquedaArticulo::setcodigocompletoarticulo", 0 );
     mdb_codigocompletoarticulo = val;
     QString SQLQuery = "SELECT * FROM articulo WHERE codigocompletoarticulo='" + mdb_codigocompletoarticulo + "'";
-    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
-    if(!cur->eof()) {
-        mdb_idarticulo = cur->valor("idarticulo");
-        mdb_nomarticulo = cur->valor("nomarticulo");
+    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
+    if ( !cur->eof() ) {
+        mdb_idarticulo = cur->valor ( "idarticulo" );
+        mdb_nomarticulo = cur->valor ( "nomarticulo" );
     } else {
         mdb_idarticulo = "";
         mdb_nomarticulo = "";
     } // end if
     delete cur;
-    m_codigocompletoarticulo->setText(mdb_codigocompletoarticulo);
-    m_nomarticulo->setText(mdb_nomarticulo);
-    _depura("END BusquedaArticulo::setcodigocompletoarticulo", 0);
+    m_codigocompletoarticulo->setText ( mdb_codigocompletoarticulo );
+    m_nomarticulo->setText ( mdb_nomarticulo );
+    _depura ( "END BusquedaArticulo::setcodigocompletoarticulo", 0 );
 }
 
 
@@ -124,27 +129,28 @@ void BusquedaArticulo::setcodigocompletoarticulo(QString val) {
 */
 /**
 **/
-void BusquedaArticulo::on_mui_buscar_clicked() {
-    _depura("BusquedaArticulo::on_mui_buscar_clicked", 0);
-    QDialog *diag = new QDialog(0);
-    diag->setModal(true);
-    ArticuloList *articulos = new ArticuloList( (Company *) empresaBase(), diag, 0, ArticuloList::SelectMode);
-    connect(articulos, SIGNAL(selected(QString)), diag, SLOT(accept()));
+void BusquedaArticulo::on_mui_buscar_clicked()
+{
+    _depura ( "BusquedaArticulo::on_mui_buscar_clicked", 0 );
+    QDialog *diag = new QDialog ( 0 );
+    diag->setModal ( true );
+    ArticuloList *articulos = new ArticuloList ( ( Company * ) empresaBase(), diag, 0, ArticuloList::SelectMode );
+    connect ( articulos, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
     /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
     /// para que sea redimensionable y aparezca el titulo de la ventana.
     QHBoxLayout *layout = new QHBoxLayout;
-    layout->addWidget(articulos);
-    layout->setMargin(0);
-    layout->setSpacing(0);
-    diag->setLayout(layout);
-    diag->setWindowTitle(articulos->windowTitle());
+    layout->addWidget ( articulos );
+    layout->setMargin ( 0 );
+    layout->setSpacing ( 0 );
+    diag->setLayout ( layout );
+    diag->setWindowTitle ( articulos->windowTitle() );
 
     diag->exec();
-    if (articulos->codigocompletoarticulo() != "") {
-        m_codigocompletoarticulo->setText(articulos->codigocompletoarticulo());
+    if ( articulos->codigocompletoarticulo() != "" ) {
+        m_codigocompletoarticulo->setText ( articulos->codigocompletoarticulo() );
         mdb_codigocompletoarticulo = articulos->codigocompletoarticulo();
-        m_nomarticulo->setText(articulos->nomarticulo());
+        m_nomarticulo->setText ( articulos->nomarticulo() );
         mdb_nomarticulo = articulos->nomarticulo();
         mdb_idarticulo = articulos->idarticulo();
     } // end if
@@ -159,23 +165,24 @@ void BusquedaArticulo::on_mui_buscar_clicked() {
 /**
 \param val
 **/
-void BusquedaArticulo::on_m_codigocompletoarticulo_textChanged(const QString &val) {
-    _depura("BusquedaArticulo::on_m_codigocompletoarticulo_textChanged", 0);
+void BusquedaArticulo::on_m_codigocompletoarticulo_textChanged ( const QString &val )
+{
+    _depura ( "BusquedaArticulo::on_m_codigocompletoarticulo_textChanged", 0 );
     mdb_codigocompletoarticulo = val;
     QString SQLQuery = "SELECT * FROM articulo WHERE codigocompletoarticulo='" + mdb_codigocompletoarticulo + "'";
-    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
-    if(!cur->eof()) {
-        mdb_idarticulo = cur->valor("idarticulo");
-        mdb_nomarticulo = cur->valor("nomarticulo");
+    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
+    if ( !cur->eof() ) {
+        mdb_idarticulo = cur->valor ( "idarticulo" );
+        mdb_nomarticulo = cur->valor ( "nomarticulo" );
     } else {
         mdb_idarticulo = "";
         mdb_nomarticulo = "";
     } // end if
     delete cur;
-    m_codigocompletoarticulo->setText(mdb_codigocompletoarticulo);
-    m_nomarticulo->setText(mdb_nomarticulo);
-    emit(valueChanged(mdb_idarticulo));
-    _depura("END BusquedaArticulo::on_m_codigocompletoarticulo_textChanged", 0);
+    m_codigocompletoarticulo->setText ( mdb_codigocompletoarticulo );
+    m_nomarticulo->setText ( mdb_nomarticulo );
+    emit ( valueChanged ( mdb_idarticulo ) );
+    _depura ( "END BusquedaArticulo::on_m_codigocompletoarticulo_textChanged", 0 );
 }
 
 
@@ -183,9 +190,10 @@ void BusquedaArticulo::on_m_codigocompletoarticulo_textChanged(const QString &va
 /**
 \return
 **/
-QString BusquedaArticulo::codigocompletoarticulo() {
-    _depura("BusquedaArticulo::codigocompletoarticulo", 0);
-    _depura("END BusquedaArticulo::codigocompletoarticulo", 0);
+QString BusquedaArticulo::codigocompletoarticulo()
+{
+    _depura ( "BusquedaArticulo::codigocompletoarticulo", 0 );
+    _depura ( "END BusquedaArticulo::codigocompletoarticulo", 0 );
     return m_codigocompletoarticulo->text();
 }
 
@@ -194,9 +202,10 @@ QString BusquedaArticulo::codigocompletoarticulo() {
 /**
 \return
 **/
-QString BusquedaArticulo::idarticulo() {
-    _depura("BusquedaArticulo::idarticulo", 0);
-    _depura("END BusquedaArticulo::idarticulo", 0);
+QString BusquedaArticulo::idarticulo()
+{
+    _depura ( "BusquedaArticulo::idarticulo", 0 );
+    _depura ( "END BusquedaArticulo::idarticulo", 0 );
     return mdb_idarticulo;
 }
 
@@ -205,9 +214,10 @@ QString BusquedaArticulo::idarticulo() {
 /**
 \return
 **/
-QString BusquedaArticulo::valorCampo() {
-    _depura("BusquedaArticulo::valorCampo", 0);
-    _depura("END BusquedaArticulo::valorCampo", 0);
+QString BusquedaArticulo::valorCampo()
+{
+    _depura ( "BusquedaArticulo::valorCampo", 0 );
+    _depura ( "END BusquedaArticulo::valorCampo", 0 );
     return mdb_idarticulo;
 }
 
@@ -216,9 +226,10 @@ QString BusquedaArticulo::valorCampo() {
 /**
 \return
 **/
-QString BusquedaArticulo::nomarticulo() {
-    _depura("BusquedaArticulo::nomarticulo", 0);
-    _depura("END BusquedaArticulo::nomarticulo", 0);
+QString BusquedaArticulo::nomarticulo()
+{
+    _depura ( "BusquedaArticulo::nomarticulo", 0 );
+    _depura ( "END BusquedaArticulo::nomarticulo", 0 );
     return m_nomarticulo->text();
 }
 
@@ -233,23 +244,25 @@ QString BusquedaArticulo::nomarticulo() {
 /**
 \param parent
 **/
-BusquedaArticuloDelegate::BusquedaArticuloDelegate(QWidget *parent)
-        : QComboBox2(parent) {
-    _depura("BusquedaArticuloDelegate::BusquedaArticuloDelegate", 0);
+BusquedaArticuloDelegate::BusquedaArticuloDelegate ( QWidget *parent )
+        : QComboBox2 ( parent )
+{
+    _depura ( "BusquedaArticuloDelegate::BusquedaArticuloDelegate", 0 );
     m_cursorcombo = NULL;
-    setEditable(true);
-    connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
-    connect(this, SIGNAL(editTextChanged(const QString &)), this, SLOT(s_editTextChanged(const QString &)));
-    _depura("END BusquedaArticuloDelegate::BusquedaArticuloDelegate", 0);
+    setEditable ( true );
+    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
+    connect ( this, SIGNAL ( editTextChanged ( const QString & ) ), this, SLOT ( s_editTextChanged ( const QString & ) ) );
+    _depura ( "END BusquedaArticuloDelegate::BusquedaArticuloDelegate", 0 );
 }
 
 
 /** Libera la memoria reservada. */
 /**
 **/
-BusquedaArticuloDelegate::~BusquedaArticuloDelegate() {
-    _depura("BusquedaArticuloDelegate::~BusquedaArticuloDelegate", 0);
-    _depura("END BusquedaArticuloDelegate::~BusquedaArticuloDelegate", 0);
+BusquedaArticuloDelegate::~BusquedaArticuloDelegate()
+{
+    _depura ( "BusquedaArticuloDelegate::~BusquedaArticuloDelegate", 0 );
+    _depura ( "END BusquedaArticuloDelegate::~BusquedaArticuloDelegate", 0 );
 }
 
 
@@ -261,33 +274,34 @@ BusquedaArticuloDelegate::~BusquedaArticuloDelegate() {
 \param cod
 \return
 **/
-void BusquedaArticuloDelegate::s_editTextChanged(const QString &cod) {
-    _depura("BusquedaArticuloDelegate::s_editTextChanged", 0);
+void BusquedaArticuloDelegate::s_editTextChanged ( const QString &cod )
+{
+    _depura ( "BusquedaArticuloDelegate::s_editTextChanged", 0 );
     static bool semaforo = FALSE;
     QString codigo = cod;
 
-    if (codigo.size() < 3) {
+    if ( codigo.size() < 3 ) {
         return;
     } // end if
 
-    if (semaforo) {
+    if ( semaforo ) {
         return;
     } else  {
         semaforo = TRUE;
     } // end if
 
-    codigo = codigo.left(codigo.indexOf(".-"));
+    codigo = codigo.left ( codigo.indexOf ( ".-" ) );
 
-    m_cursorcombo = empresaBase()->cargacursor("SELECT codigocompletoarticulo, nomarticulo FROM articulo WHERE codigocompletoarticulo LIKE '"+codigo+"%' ORDER BY codigocompletoarticulo LIMIT 25");
+    m_cursorcombo = empresaBase() ->cargacursor ( "SELECT codigocompletoarticulo, nomarticulo FROM articulo WHERE codigocompletoarticulo LIKE '" + codigo + "%' ORDER BY codigocompletoarticulo LIMIT 25" );
     clear();
-    while (!m_cursorcombo->eof()) {
-        addItem(m_cursorcombo->valor("codigocompletoarticulo") + ".-" + m_cursorcombo->valor("nomarticulo"));
+    while ( !m_cursorcombo->eof() ) {
+        addItem ( m_cursorcombo->valor ( "codigocompletoarticulo" ) + ".-" + m_cursorcombo->valor ( "nomarticulo" ) );
         m_cursorcombo->siguienteregistro();
     } // end while
     delete m_cursorcombo;
-    setEditText(cod);
+    setEditText ( cod );
     //    showPopup();
     semaforo = FALSE;
-    _depura("END BusquedaArticuloDelegate::s_editTextChanged", 0);
+    _depura ( "END BusquedaArticuloDelegate::s_editTextChanged", 0 );
 }
 

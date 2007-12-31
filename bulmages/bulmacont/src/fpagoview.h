@@ -34,7 +34,8 @@ class Empresa;
 /// La clase fpagoview se encarga de la gesti&oacute;n de formas de pago.
 /** Las formas de pago son unas plantillas que se usan para determinar las formas en
     que se pagan o se cobran las facturas emitidas o recibidas. */
-class fpagoview : public FichaBc, public Ui_FPagoBase {
+class fpagoview : public FichaBc, public Ui_FPagoBase
+{
     Q_OBJECT
 
 private:
@@ -44,12 +45,12 @@ private:
     int m_posactual;
 
 private:
-    void pintar(QString idtipoiva = "");
-    void mostrarplantilla(int pos = 0);
-    void cambiacombo(int);
+    void pintar ( QString idtipoiva = "" );
+    void mostrarplantilla ( int pos = 0 );
+    void cambiacombo ( int );
 
 public:
-    fpagoview(Empresa *, QWidget *parent = 0);
+    fpagoview ( Empresa *, QWidget *parent = 0 );
     ~fpagoview();
 
     virtual int guardar();
@@ -57,7 +58,7 @@ public:
 
 private slots:
     virtual void on_mui_crear_clicked();
-    virtual void on_mui_comboFPago_currentIndexChanged(int i);
+    virtual void on_mui_comboFPago_currentIndexChanged ( int i );
 };
 
 #endif

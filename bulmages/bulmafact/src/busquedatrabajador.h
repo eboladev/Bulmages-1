@@ -33,7 +33,8 @@
     de esta forma la introduccion de tipos de IVA es sencilla.
     Esta clase se usa conjuntamente con SubForm2Bf para el cambio del editor
     estandar por un ComboBox */
-class BusquedaTrabajadorDelegate : public QComboBox2 {
+class BusquedaTrabajadorDelegate : public QComboBox2
+{
     Q_OBJECT
 
 private:
@@ -41,9 +42,9 @@ private:
     cursor2 *m_cursorcombo;
 
 public:
-    BusquedaTrabajadorDelegate(QWidget *parent = 0);
+    BusquedaTrabajadorDelegate ( QWidget *parent = 0 );
     ~BusquedaTrabajadorDelegate();
-    virtual void set(const QString &);
+    virtual void set ( const QString & );
 };
 
 
@@ -54,7 +55,8 @@ public:
     Antes de utilizarlo debe ser inicializado con setcompany().
     Cuando se cambia el valor del Widget se emite un SIGNAL valueChanged().
 */
-class BusquedaTrabajador : public QComboBox2 {
+class BusquedaTrabajador : public QComboBox2
+{
     Q_OBJECT
 
 private:
@@ -62,18 +64,18 @@ private:
     cursor2 *m_cursorcombo;
 
 public:
-    BusquedaTrabajador(QWidget *parent = 0);
+    BusquedaTrabajador ( QWidget *parent = 0 );
     ~BusquedaTrabajador();
-    virtual void setidtrabajador(QString idtrabajador);
-    virtual void setValorCampo(QString idtrabajador);
+    virtual void setidtrabajador ( QString idtrabajador );
+    virtual void setValorCampo ( QString idtrabajador );
     QString idtrabajador();
     virtual QString valorCampo();
 
 public slots:
-    void m_activated(int index);
+    void m_activated ( int index );
 
 signals:
-    void valueChanged(QString);
+    void valueChanged ( QString );
 };
 
 #endif

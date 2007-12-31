@@ -41,49 +41,52 @@ QTextBrowser *g_browser;
 /**
 \return
 **/
-int entryPoint(BulmaTPV *tpv) {
-    _depura("entryPoint", 0);
+int entryPoint ( BulmaTPV *tpv )
+{
+    _depura ( "entryPoint", 0 );
 
     myplugin *plug = new myplugin();
-    plug->inicializa(tpv);
+    plug->inicializa ( tpv );
 
 
 
     /// Vamos a probar con un docwindow.
-    g_doc1 = new QDockWidget("Total", tpv);
-    g_doc1->setFeatures(QDockWidget::AllDockWidgetFeatures);
+    g_doc1 = new QDockWidget ( "Total", tpv );
+    g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
 
-    g_doc1->setGeometry(100, 100, 100, 500);
-    g_doc1->resize(330, 400);
-    tpv->addDockWidget(Qt::RightDockWidgetArea, g_doc1);
+    g_doc1->setGeometry ( 100, 100, 100, 500 );
+    g_doc1->resize ( 330, 400 );
+    tpv->addDockWidget ( Qt::RightDockWidgetArea, g_doc1 );
     g_doc1->show();
 
 
     /// Vamos a probar con un docwindow.
-    g_doc2 = new QDockWidget("Total", tpv);
-    g_doc2->setFeatures(QDockWidget::AllDockWidgetFeatures);
+    g_doc2 = new QDockWidget ( "Total", tpv );
+    g_doc2->setFeatures ( QDockWidget::AllDockWidgetFeatures );
 
-    g_doc2->setGeometry(100, 100, 100, 500);
-    g_doc2->resize(330, 400);
-    tpv->addDockWidget(Qt::LeftDockWidgetArea, g_doc2);
+    g_doc2->setGeometry ( 100, 100, 100, 500 );
+    g_doc2->resize ( 330, 400 );
+    tpv->addDockWidget ( Qt::LeftDockWidgetArea, g_doc2 );
     g_doc2->show();
 
-    _depura("END entryPoint", 0);
+    _depura ( "END entryPoint", 0 );
     return 0;
 }
 
-int EmpresaTPV_createMainWindows_Post(EmpresaTPV *etpv) {
-    g_bud =  new MTicket(etpv, g_doc1);
-        g_doc1->setWidget((QWidget *)g_bud);
+int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
+{
+    g_bud =  new MTicket ( etpv, g_doc1 );
+    g_doc1->setWidget ( ( QWidget * ) g_bud );
 
-	g_browser = new QTextBrowser(g_doc2);
-	g_doc2->setWidget(g_browser);
+    g_browser = new QTextBrowser ( g_doc2 );
+    g_doc2->setWidget ( g_browser );
 
-	return 0;
+    return 0;
 }
 
-int Ticket_pintar(Ticket *) {
-	g_bud->pintar();
-	return 0;
+int Ticket_pintar ( Ticket * )
+{
+    g_bud->pintar();
+    return 0;
 }
 

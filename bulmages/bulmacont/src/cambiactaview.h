@@ -28,10 +28,11 @@
 class Empresa;
 
 
-class CambiaCtaView : public QDialog, public Ui_CambiaCuentaBase, public PEmpresaBase {
+class CambiaCtaView : public QDialog, public Ui_CambiaCuentaBase, public PEmpresaBase
+{
     Q_OBJECT
 public:
-    CambiaCtaView(Empresa *, QWidget *, Qt::WFlags flag = 0);
+    CambiaCtaView ( Empresa *, QWidget *, Qt::WFlags flag = 0 );
     ~CambiaCtaView();
 
 public slots:

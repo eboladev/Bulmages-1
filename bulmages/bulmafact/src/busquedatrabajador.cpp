@@ -31,12 +31,13 @@
 /**
 \param parent
 **/
-BusquedaTrabajador::BusquedaTrabajador(QWidget *parent)
-        : QComboBox2(parent) {
-    _depura("BusquedaTrabajador::BusquedaTrabajador", 0);
+BusquedaTrabajador::BusquedaTrabajador ( QWidget *parent )
+        : QComboBox2 ( parent )
+{
+    _depura ( "BusquedaTrabajador::BusquedaTrabajador", 0 );
     m_cursorcombo = NULL;
-    connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
-    _depura("END BusquedaTrabajador::BusquedaTrabajador", 0);
+    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
+    _depura ( "END BusquedaTrabajador::BusquedaTrabajador", 0 );
 }
 
 
@@ -44,11 +45,12 @@ BusquedaTrabajador::BusquedaTrabajador(QWidget *parent)
 */
 /**
 **/
-BusquedaTrabajador::~BusquedaTrabajador() {
-    _depura("BusquedaTrabajador::~BusquedaTrabajador", 0);
-    if (m_cursorcombo != NULL)
+BusquedaTrabajador::~BusquedaTrabajador()
+{
+    _depura ( "BusquedaTrabajador::~BusquedaTrabajador", 0 );
+    if ( m_cursorcombo != NULL )
         delete m_cursorcombo;
-    _depura("END BusquedaTrabajador::~BusquedaTrabajador", 0);
+    _depura ( "END BusquedaTrabajador::~BusquedaTrabajador", 0 );
 }
 
 
@@ -60,25 +62,26 @@ BusquedaTrabajador::~BusquedaTrabajador() {
 \param idtrabajador
 \return
 **/
-void BusquedaTrabajador::setidtrabajador(QString idtrabajador) {
-    _depura("BusquedaTrabajador::setidtrabajador", 0);
-    if (m_cursorcombo != NULL)
+void BusquedaTrabajador::setidtrabajador ( QString idtrabajador )
+{
+    _depura ( "BusquedaTrabajador::setidtrabajador", 0 );
+    if ( m_cursorcombo != NULL )
         delete m_cursorcombo;
-    m_cursorcombo = empresaBase()->cargacursor("SELECT * FROM trabajador");
-    if (!m_cursorcombo) return;
+    m_cursorcombo = empresaBase() ->cargacursor ( "SELECT * FROM trabajador" );
+    if ( !m_cursorcombo ) return;
     int i = 0;
     int i1 = 0;
     clear();
-    addItem("--");
-    while (!m_cursorcombo->eof()) {
+    addItem ( "--" );
+    while ( !m_cursorcombo->eof() ) {
         i ++;
-        if (m_cursorcombo->valor("idtrabajador") == idtrabajador)
+        if ( m_cursorcombo->valor ( "idtrabajador" ) == idtrabajador )
             i1 = i;
-        addItem(m_cursorcombo->valor("apellidostrabajador") + ", " + m_cursorcombo->valor("nomtrabajador"));
+        addItem ( m_cursorcombo->valor ( "apellidostrabajador" ) + ", " + m_cursorcombo->valor ( "nomtrabajador" ) );
         m_cursorcombo->siguienteregistro();
     } // end while
-    setCurrentIndex(i1);
-    _depura("END BusquedaTrabajador::setidtrabajador", 0);
+    setCurrentIndex ( i1 );
+    _depura ( "END BusquedaTrabajador::setidtrabajador", 0 );
 }
 
 
@@ -86,10 +89,11 @@ void BusquedaTrabajador::setidtrabajador(QString idtrabajador) {
 /**
 \param idtrabajador
 **/
-void BusquedaTrabajador::setValorCampo(QString idtrabajador) {
-    _depura("BusquedaTrabajador::setValorCampo", 0);
-	setidtrabajador(idtrabajador);
-    _depura("END BusquedaTrabajador::setValorCampo", 0);
+void BusquedaTrabajador::setValorCampo ( QString idtrabajador )
+{
+    _depura ( "BusquedaTrabajador::setValorCampo", 0 );
+    setidtrabajador ( idtrabajador );
+    _depura ( "END BusquedaTrabajador::setValorCampo", 0 );
 }
 
 
@@ -98,11 +102,12 @@ void BusquedaTrabajador::setValorCampo(QString idtrabajador) {
 /**
 \return
 **/
-QString BusquedaTrabajador::idtrabajador() {
-    _depura("BusquedaTrabajador::idtrabajador", 0);
-    _depura("END BusquedaTrabajador::idtrabajador", 0);
-    if (!m_cursorcombo) return "0";
-    return m_cursorcombo->valor("idtrabajador", currentIndex() - 1);
+QString BusquedaTrabajador::idtrabajador()
+{
+    _depura ( "BusquedaTrabajador::idtrabajador", 0 );
+    _depura ( "END BusquedaTrabajador::idtrabajador", 0 );
+    if ( !m_cursorcombo ) return "0";
+    return m_cursorcombo->valor ( "idtrabajador", currentIndex() - 1 );
 }
 
 
@@ -110,10 +115,11 @@ QString BusquedaTrabajador::idtrabajador() {
 /**
 \return
 **/
-QString BusquedaTrabajador::valorCampo() {
-    _depura("BusquedaTrabajador::valorCampo", 0);
-    _depura("END BusquedaTrabajador::valorCampo", 0);
-	return idtrabajador();
+QString BusquedaTrabajador::valorCampo()
+{
+    _depura ( "BusquedaTrabajador::valorCampo", 0 );
+    _depura ( "END BusquedaTrabajador::valorCampo", 0 );
+    return idtrabajador();
 }
 
 
@@ -122,14 +128,15 @@ QString BusquedaTrabajador::valorCampo() {
 /**
 \param index
 **/
-void BusquedaTrabajador::m_activated(int index) {
-    _depura("BusquedaTrabajador::m_activated", 0);
-    if (index > 0) {
-        emit(valueChanged(m_cursorcombo->valor("idtrabajador", index - 1)));
+void BusquedaTrabajador::m_activated ( int index )
+{
+    _depura ( "BusquedaTrabajador::m_activated", 0 );
+    if ( index > 0 ) {
+        emit ( valueChanged ( m_cursorcombo->valor ( "idtrabajador", index - 1 ) ) );
     } else {
-        emit(valueChanged(""));
+        emit ( valueChanged ( "" ) );
     }
-    _depura("END BusquedaTrabajador::m_activated", 0);
+    _depura ( "END BusquedaTrabajador::m_activated", 0 );
 }
 
 /// ========================= ITEM DELEGATE ===============================0
@@ -141,13 +148,14 @@ void BusquedaTrabajador::m_activated(int index) {
 /**
 \param parent
 **/
-BusquedaTrabajadorDelegate::BusquedaTrabajadorDelegate(QWidget *parent)
-        : QComboBox2(parent) {
-    _depura("BusquedaTrabajadorDelegate::BusquedaTrabajadorDelegate", 0);
+BusquedaTrabajadorDelegate::BusquedaTrabajadorDelegate ( QWidget *parent )
+        : QComboBox2 ( parent )
+{
+    _depura ( "BusquedaTrabajadorDelegate::BusquedaTrabajadorDelegate", 0 );
     m_cursorcombo = NULL;
-    setSizeAdjustPolicy(QComboBox::AdjustToContents);
-    connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
-    _depura("END BusquedaTrabajadorDelegate::BusquedaTrabajadorDelegate", 0);
+    setSizeAdjustPolicy ( QComboBox::AdjustToContents );
+    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
+    _depura ( "END BusquedaTrabajadorDelegate::BusquedaTrabajadorDelegate", 0 );
 }
 
 
@@ -155,11 +163,12 @@ BusquedaTrabajadorDelegate::BusquedaTrabajadorDelegate(QWidget *parent)
 */
 /**
 **/
-BusquedaTrabajadorDelegate::~BusquedaTrabajadorDelegate() {
-    _depura("BusquedaTrabajadorDelegate::~BusquedaTrabajadorDelegate", 0);
-    if (m_cursorcombo != NULL)
+BusquedaTrabajadorDelegate::~BusquedaTrabajadorDelegate()
+{
+    _depura ( "BusquedaTrabajadorDelegate::~BusquedaTrabajadorDelegate", 0 );
+    if ( m_cursorcombo != NULL )
         delete m_cursorcombo;
-    _depura("END BusquedaTrabajadorDelegate::~BusquedaTrabajadorDelegate", 0);
+    _depura ( "END BusquedaTrabajadorDelegate::~BusquedaTrabajadorDelegate", 0 );
 }
 
 
@@ -170,26 +179,27 @@ BusquedaTrabajadorDelegate::~BusquedaTrabajadorDelegate() {
 /**
 \param cod
 **/
-void BusquedaTrabajadorDelegate::set(const QString &cod) {
-    _depura("BusquedaTrabajadorDelegate::set", 0);
+void BusquedaTrabajadorDelegate::set ( const QString &cod )
+{
+    _depura ( "BusquedaTrabajadorDelegate::set", 0 );
     int index = 0;
     QString codigo = cod;
 
-    if (m_cursorcombo != NULL)
+    if ( m_cursorcombo != NULL )
         delete m_cursorcombo;
 
-    m_cursorcombo = empresaBase()->cargacursor("SELECT nomtrabajador, apellidostrabajador FROM trabajador ");
+    m_cursorcombo = empresaBase() ->cargacursor ( "SELECT nomtrabajador, apellidostrabajador FROM trabajador " );
     clear();
-    while (!m_cursorcombo->eof()) {
-        addItem(m_cursorcombo->valor("apellidostrabajador")+", "+m_cursorcombo->valor("nomtrabajador"));
+    while ( !m_cursorcombo->eof() ) {
+        addItem ( m_cursorcombo->valor ( "apellidostrabajador" ) + ", " + m_cursorcombo->valor ( "nomtrabajador" ) );
         m_cursorcombo->siguienteregistro();
-        if(m_cursorcombo->valor("apellidostrabajador")+", "+m_cursorcombo->valor("nomtrabajador") == cod)
-		index = m_cursorcombo->regactual();
+        if ( m_cursorcombo->valor ( "apellidostrabajador" ) + ", " + m_cursorcombo->valor ( "nomtrabajador" ) == cod )
+            index = m_cursorcombo->regactual();
     }// end while
-    setEditText(cod);
-    setCurrentIndex(index);
+    setEditText ( cod );
+    setCurrentIndex ( index );
 
-    _depura("END BusquedaTrabajadorDelegate::set", 0);
+    _depura ( "END BusquedaTrabajadorDelegate::set", 0 );
 }
 
 

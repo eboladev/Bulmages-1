@@ -30,10 +30,11 @@
 #include "subform2bt.h"
 
 
-class MTicket : public BLWidget, public Ui_MTicketBase {
+class MTicket : public BLWidget, public Ui_MTicketBase
+{
     Q_OBJECT
 public:
-    MTicket(EmpresaTPV *emp, QWidget *parent);
+    MTicket ( EmpresaTPV *emp, QWidget *parent );
     virtual ~MTicket();
     virtual void pintar();
 public slots:
@@ -44,7 +45,8 @@ public slots:
 
 
 
-class myplugin : public QObject {
+class myplugin : public QObject
+{
     Q_OBJECT
 private:
     BulmaTPV *m_tpv;
@@ -53,10 +55,10 @@ private:
 public:
     myplugin();
     ~myplugin();
-    void inicializa(BulmaTPV *tpv);
+    void inicializa ( BulmaTPV *tpv );
 
 public slots:
-    virtual void elslot(QTableWidgetItem *);
+    virtual void elslot ( QTableWidgetItem * );
 
 };
 

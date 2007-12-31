@@ -35,7 +35,8 @@ class Empresa;
     casaci&oacute;n.
     Y acceso a filtrado. Tambi&eacute;n desde esta pantalla se puede pedir m&aacute;s
     informaci&oacute;n de una cuenta determinada. */
-class extractoview1 : public FichaBc, public Ui_ExtractoBase {
+class extractoview1 : public FichaBc, public Ui_ExtractoBase
+{
     Q_OBJECT
 
 public:
@@ -43,14 +44,14 @@ public:
     cursor2 *m_cursorcta;
 
 public:
-    extractoview1(Empresa *, QWidget *parent = 0, int flags = 0);
+    extractoview1 ( Empresa *, QWidget *parent = 0, int flags = 0 );
     ~extractoview1();
-    void inicializa1(QString, QString, QString, QString, int);
+    void inicializa1 ( QString, QString, QString, QString, int );
     void vaciar();
     void presentar();
     void ajustes();
     void boton_filtrar();
-    QString imprimeExtractoCuenta(QString);
+    QString imprimeExtractoCuenta ( QString );
     int guardar();
     virtual void on_mui_imprimir_clicked();
 
@@ -69,7 +70,7 @@ public slots:
     virtual void on_mui_guardarpunteo_clicked();
     virtual void on_mui_cargarpunteos_clicked();
     virtual void on_mui_configurar_clicked();
-    virtual void on_mui_list_cellDoubleClicked(int, int columna);
+    virtual void on_mui_list_cellDoubleClicked ( int, int columna );
 };
 
 #endif

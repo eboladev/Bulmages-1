@@ -44,21 +44,22 @@ class Company;
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un presupuesto.
 /** */
-class PresupuestoView : public FichaBf, public Ui_PresupuestoClienteBase {
+class PresupuestoView : public FichaBf, public Ui_PresupuestoClienteBase
+{
     Q_OBJECT
 
 private:
     cursor2 *m_cursorcombo;
 
 public:
-    PresupuestoView(Company *, QWidget *);
+    PresupuestoView ( Company *, QWidget * );
     ~PresupuestoView();
-    virtual int cargarPost(QString);
+    virtual int cargarPost ( QString );
     virtual int guardarPost();
     virtual int borrarPre();
-    void pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq);
+    void pintatotales ( Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq );
     void inicializar();
-    void manageArticle(int);
+    void manageArticle ( int );
 
 private:
     void generarPedidoCliente();
@@ -70,9 +71,9 @@ public slots:
     /// Este slot se activa cuando hay cambios en los subformularios.
     virtual void s_pintaTotales();
     virtual void on_mui_pasarapedido_clicked();
-    virtual void on_m_descuentos_editFinish(int, int);
-    virtual void on_subform2_editFinish(int, int);
-    virtual void on_mui_idcliente_valueChanged(QString id);
+    virtual void on_m_descuentos_editFinish ( int, int );
+    virtual void on_subform2_editFinish ( int, int );
+    virtual void on_mui_idcliente_valueChanged ( QString id );
 };
 
 #endif

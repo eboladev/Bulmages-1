@@ -36,26 +36,28 @@
 /**
 \param bges
 **/
-EmpresaTPV::EmpresaTPV(BulmaTPV *bges) : EmpresaBase(), Input(this) {
-    _depura("EmpresaTPV::EmpresaTPV", 0);
+EmpresaTPV::EmpresaTPV ( BulmaTPV *bges ) : EmpresaBase(), Input ( this )
+{
+    _depura ( "EmpresaTPV::EmpresaTPV", 0 );
     m_bulmaTPV = bges;
-    _depura("END EmpresaTPV::EmpresaTPV", 0);
+    _depura ( "END EmpresaTPV::EmpresaTPV", 0 );
 }
 
 
 /// El destructor de la clase EmpresaTPV borra toda la memoria almacenada.
 /**
 **/
-EmpresaTPV::~EmpresaTPV() {
-    _depura("EmpresaTPV::~EmpresaTPV", 0);
+EmpresaTPV::~EmpresaTPV()
+{
+    _depura ( "EmpresaTPV::~EmpresaTPV", 0 );
 
-    while (!m_listaTickets.isEmpty())
+    while ( !m_listaTickets.isEmpty() )
         delete m_listaTickets.takeFirst();
 
     /// Guardamos la configuracion.
     guardaConf();
 
-    _depura("END EmpresaTPV::~EmpresaTPV", 0);
+    _depura ( "END EmpresaTPV::~EmpresaTPV", 0 );
 }
 
 
@@ -67,148 +69,150 @@ EmpresaTPV::~EmpresaTPV() {
 \param splash
 \return
 **/
-void EmpresaTPV::createMainWindows(Splash *splash) {
-    _depura("EmpresaTPV::createMainWindows", 0);
+void EmpresaTPV::createMainWindows ( Splash *splash )
+{
+    _depura ( "EmpresaTPV::createMainWindows", 0 );
     /// Establecemos el porcentaje del carga de informaci&oacute;n en las diferentes ventanas.
     /// pb = 0%
-    splash->mensaje(QApplication::translate("EmpresaTPV", "Inicializando listado de articulos"));
-    splash->setBarraProgreso(30);
-    m_progressbar->setValue(30);
+    splash->mensaje ( QApplication::translate ( "EmpresaTPV", "Inicializando listado de articulos" ) );
+    splash->setBarraProgreso ( 30 );
+    m_progressbar->setValue ( 30 );
 
-    
-	/// Creamos los nuevos tickets.
-	m_ticketActual = newTicket();
-	if (!m_ticketActual)
-	_depura("error en el sistema, reservando memoria.", 0);
-	m_listaTickets.append(m_ticketActual);
+
+    /// Creamos los nuevos tickets.
+    m_ticketActual = newTicket();
+    if ( !m_ticketActual )
+        _depura ( "error en el sistema, reservando memoria.", 0 );
+    m_listaTickets.append ( m_ticketActual );
 
 
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza("EmpresaTPV_createMainWindows_Post", this);
-    if (res != 0) {
+    int res = g_plugins->lanza ( "EmpresaTPV_createMainWindows_Post", this );
+    if ( res != 0 ) {
         return;
     } // end if
 
     cargaConf();
 
     /// Ponemos el titulo de la ventana
-    m_bulmaTPV->statusBar()->showMessage(nameDB(), 2000);
-    m_bulmaTPV->setWindowTitle(QApplication::translate("EmpresaTPV", "Terminal Punto de Venta GPL") + " :: " + nameDB());
+    m_bulmaTPV->statusBar() ->showMessage ( nameDB(), 2000 );
+    m_bulmaTPV->setWindowTitle ( QApplication::translate ( "EmpresaTPV", "Terminal Punto de Venta GPL" ) + " :: " + nameDB() );
 
-    _depura("END EmpresaTPV::createMainWindows", 0);
+    _depura ( "END EmpresaTPV::createMainWindows", 0 );
 }
 
 
-void EmpresaTPV::z() {
-	begin();
-	QString query = "INSERT INTO z (idalmacen) VALUES(" +confpr->valor(CONF_IDALMACEN_DEFECTO)+ ")";
-	ejecuta(query);
-	query = "SELECT max(idz) AS id FROM z";
-	cursor2 *cur = cargacursor(query);
-	QString idz = cur->valor("id");
-	delete cur;
-	query = "UPDATE albaran set idz = " + idz + " WHERE idz IS NULL AND ticketalbaran = TRUE";
-	ejecuta(query);
-	query = "SELECT count(idz) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz = " +idz;
-	cur = cargacursor(query);
-	QString numtickets = cur->valor("numtickets");
-	QString total = cur->valor("total");
-	if (total == "" ) total = "0";
-	query = "UPDATE z SET totalz = " + total + ", numtickets = " + numtickets + " WHERE idz =" + idz;
-	ejecuta(query);
-	commit();
-	delete cur;
+void EmpresaTPV::z()
+{
+    begin();
+    QString query = "INSERT INTO z (idalmacen) VALUES(" + confpr->valor ( CONF_IDALMACEN_DEFECTO ) + ")";
+    ejecuta ( query );
+    query = "SELECT max(idz) AS id FROM z";
+    cursor2 *cur = cargacursor ( query );
+    QString idz = cur->valor ( "id" );
+    delete cur;
+    query = "UPDATE albaran set idz = " + idz + " WHERE idz IS NULL AND ticketalbaran = TRUE";
+    ejecuta ( query );
+    query = "SELECT count(idz) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz = " + idz;
+    cur = cargacursor ( query );
+    QString numtickets = cur->valor ( "numtickets" );
+    QString total = cur->valor ( "total" );
+    if ( total == "" ) total = "0";
+    query = "UPDATE z SET totalz = " + total + ", numtickets = " + numtickets + " WHERE idz =" + idz;
+    ejecuta ( query );
+    commit();
+    delete cur;
 
 
 // ========================================
 
-    QFile file( confpr->valor(CONF_TICKET_PRINTER_FILE) );
-    if ( !file.open(QIODevice::WriteOnly | QIODevice::Unbuffered)) {
-        _depura("Error en la Impresion de ticket", 2);
+    QFile file ( confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
+    if ( !file.open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
+        _depura ( "Error en la Impresion de ticket", 2 );
     } // end if
-    file.write (QString("Informe Z\n").toAscii());
-    file.write (QString("=========\n").toAscii());
-    file.write (QString("Empresa S.L\n").toAscii());
-    file.write (QString("====================================\n").toAscii());
-    file.write(QString("Direccion\n").toAscii());
-    file.write(QString("CP: 07000 Palma de Mallorca\n").toAscii());
-    file.write(QString("Tel: 971 00 00 00\n").toAscii());
+    file.write ( QString ( "Informe Z\n" ).toAscii() );
+    file.write ( QString ( "=========\n" ).toAscii() );
+    file.write ( QString ( "Empresa S.L\n" ).toAscii() );
+    file.write ( QString ( "====================================\n" ).toAscii() );
+    file.write ( QString ( "Direccion\n" ).toAscii() );
+    file.write ( QString ( "CP: 07000 Palma de Mallorca\n" ).toAscii() );
+    file.write ( QString ( "Tel: 971 00 00 00\n" ).toAscii() );
     /// Imprimimos espacios
-    file.write ( "\n \n", 3);
+    file.write ( "\n \n", 3 );
 
 
     /// Imprimimos la fecha
-    file.write( QString("Fecha: ").toAscii());
+    file.write ( QString ( "Fecha: " ).toAscii() );
     QDate fecha = QDate::currentDate();
-    QString sfecha = fecha.toString("d-M-yyyy");
-    file.write( sfecha.toAscii());
+    QString sfecha = fecha.toString ( "d-M-yyyy" );
+    file.write ( sfecha.toAscii() );
     QTime hora = QTime::currentTime();
-    QString stime = " " + hora.toString("HH:mm");
-    file.write( stime.toAscii());
-    file.write ( "\n", 1);
+    QString stime = " " + hora.toString ( "HH:mm" );
+    file.write ( stime.toAscii() );
+    file.write ( "\n", 1 );
 
     /// Imprimimos el almacen
-    cur = cargacursor("SELECT * FROM almacen WHERE idalmacen=" + confpr->valor(CONF_IDALMACEN_DEFECTO));
-    if (!cur->eof()) {
-        file.write( QString("Almacen: ").toAscii());
-        file.write( cur->valor("nomalmacen").toAscii());
-        file.write ( "\n", 1);
+    cur = cargacursor ( "SELECT * FROM almacen WHERE idalmacen=" + confpr->valor ( CONF_IDALMACEN_DEFECTO ) );
+    if ( !cur->eof() ) {
+        file.write ( QString ( "Almacen: " ).toAscii() );
+        file.write ( cur->valor ( "nomalmacen" ).toAscii() );
+        file.write ( "\n", 1 );
     } // end if
     delete cur;
 
 
-    file.write ( "\n", 1);
-    file.write ( "\n", 1);
+    file.write ( "\n", 1 );
+    file.write ( "\n", 1 );
 
 // ============================================
 
 
 
-    file.write (QString("=======================\n").rightJustified(43,' ').toAscii());
+    file.write ( QString ( "=======================\n" ).rightJustified ( 43, ' ' ).toAscii() );
 
 
-    QString str = "Num tickets " + numtickets.rightJustified(10,' ');
-    file.write(str.rightJustified(42,' ').toAscii());
-    file.write ( "\n", 1);
+    QString str = "Num tickets " + numtickets.rightJustified ( 10, ' ' );
+    file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
+    file.write ( "\n", 1 );
 
-    str = "Total " + total.rightJustified(10,' ');
-    file.write(str.rightJustified(42,' ').toAscii());
-    file.write ( "\n", 1);
+    str = "Total " + total.rightJustified ( 10, ' ' );
+    file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
+    file.write ( "\n", 1 );
 
 
 // ============================================
 
 
     /// Imprimimos espacios
-    file.write ( "\n \n \n \n", 7);
+    file.write ( "\n \n \n \n", 7 );
 
     /// Preparamos para un codigo de barras
     /// Especificamos la altura del codigo de barras
-    file.write ("\x1Dh\x40",3);
+    file.write ( "\x1Dh\x40", 3 );
 
     /// Especificamos que los caracteres vayan debajo del codigo de barras
-    file.write ( "\x1DH\x02",3);
+    file.write ( "\x1DH\x02", 3 );
 
     /// Establecemos el tipo de codificacion para el codigo de barras
-    file.write ( "\x1D",1);
-    file.write ( "f\x01",2);
+    file.write ( "\x1D", 1 );
+    file.write ( "f\x01", 2 );
 
     /// Ponemos el ancho de la fuente a uno
-    file.write ( "\x1D\x77\x01",3);
+    file.write ( "\x1D\x77\x01", 3 );
     /// Imprimimos la palabra top con el juego de caracteres 04
-    file.write ( "\x1Dk\x04",3);
-    file.write (QString("ZZZ").toAscii());
-    file.write (" ", 1);
-    file.write (idz.toAscii());
-    file.write ("\x00", 1);
+    file.write ( "\x1Dk\x04", 3 );
+    file.write ( QString ( "ZZZ" ).toAscii() );
+    file.write ( " ", 1 );
+    file.write ( idz.toAscii() );
+    file.write ( "\x00", 1 );
 
     /// Imprimimos espacios
-    file.write ( "\n \n \n \n \n", 9);
+    file.write ( "\n \n \n \n \n", 9 );
 
 
     /// El corte de papel.
-    file.write ("\x1D\x56\x01", 3);
+    file.write ( "\x1D\x56\x01", 3 );
     file.close();
 
 // ========================================
@@ -216,83 +220,84 @@ void EmpresaTPV::z() {
 
 
 
-void EmpresaTPV::x() {
-	QString query = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE";
-	cursor2 *cur = cargacursor(query);
-	QString numtickets = cur->valor("numtickets");
-	QString total = cur->valor("total");
-	if (total == "" ) total = "0";
-	delete cur;
+void EmpresaTPV::x()
+{
+    QString query = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE";
+    cursor2 *cur = cargacursor ( query );
+    QString numtickets = cur->valor ( "numtickets" );
+    QString total = cur->valor ( "total" );
+    if ( total == "" ) total = "0";
+    delete cur;
 
 
 // ========================================
 
-    QFile file( confpr->valor(CONF_TICKET_PRINTER_FILE) );
-    if ( !file.open(QIODevice::WriteOnly | QIODevice::Unbuffered)) {
-        _depura("Error en la Impresion de ticket", 2);
+    QFile file ( confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
+    if ( !file.open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
+        _depura ( "Error en la Impresion de ticket", 2 );
     } // end if
-    file.write (QString("Informe X\n").toAscii());
-    file.write (QString("=========\n").toAscii());
-    file.write (QString("Empresa S.L.\n").toAscii());
-    file.write (QString("====================================\n").toAscii());
-    file.write(QString("Direccion\n").toAscii());
-    file.write(QString("CP: 07000 Palma de Mallorca\n").toAscii());
-    file.write(QString("Tel: 971 00 00 00\n").toAscii());
+    file.write ( QString ( "Informe X\n" ).toAscii() );
+    file.write ( QString ( "=========\n" ).toAscii() );
+    file.write ( QString ( "Empresa S.L.\n" ).toAscii() );
+    file.write ( QString ( "====================================\n" ).toAscii() );
+    file.write ( QString ( "Direccion\n" ).toAscii() );
+    file.write ( QString ( "CP: 07000 Palma de Mallorca\n" ).toAscii() );
+    file.write ( QString ( "Tel: 971 00 00 00\n" ).toAscii() );
     /// Imprimimos espacios
-    file.write ( "\n \n", 3);
+    file.write ( "\n \n", 3 );
 
 
     /// Imprimimos la fecha
-    file.write( QString("Fecha: ").toAscii());
+    file.write ( QString ( "Fecha: " ).toAscii() );
     QDate fecha = QDate::currentDate();
-    QString sfecha = fecha.toString("d-M-yyyy");
-    file.write( sfecha.toAscii());
+    QString sfecha = fecha.toString ( "d-M-yyyy" );
+    file.write ( sfecha.toAscii() );
     QTime hora = QTime::currentTime();
-    QString stime = " " + hora.toString("HH:mm");
-    file.write( stime.toAscii());
-    file.write ( "\n", 1);
+    QString stime = " " + hora.toString ( "HH:mm" );
+    file.write ( stime.toAscii() );
+    file.write ( "\n", 1 );
 
     /// Imprimimos el almacen
-    cur = cargacursor("SELECT * FROM almacen WHERE idalmacen=" + confpr->valor(CONF_IDALMACEN_DEFECTO));
-    if (!cur->eof()) {
-        file.write( QString("Almacen: ").toAscii());
-        file.write( cur->valor("nomalmacen").toAscii());
-        file.write ( "\n", 1);
+    cur = cargacursor ( "SELECT * FROM almacen WHERE idalmacen=" + confpr->valor ( CONF_IDALMACEN_DEFECTO ) );
+    if ( !cur->eof() ) {
+        file.write ( QString ( "Almacen: " ).toAscii() );
+        file.write ( cur->valor ( "nomalmacen" ).toAscii() );
+        file.write ( "\n", 1 );
     } // end if
     delete cur;
 
 
-    file.write ( "\n", 1);
-    file.write ( "\n", 1);
+    file.write ( "\n", 1 );
+    file.write ( "\n", 1 );
 
 // ============================================
 
 
 
-    file.write (QString("=======================\n").rightJustified(43,' ').toAscii());
+    file.write ( QString ( "=======================\n" ).rightJustified ( 43, ' ' ).toAscii() );
 
 
-    QString str = "Num tickets " + numtickets.rightJustified(10,' ');
-    file.write(str.rightJustified(42,' ').toAscii());
-    file.write ( "\n", 1);
+    QString str = "Num tickets " + numtickets.rightJustified ( 10, ' ' );
+    file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
+    file.write ( "\n", 1 );
 
-    str = "Total " + total.rightJustified(10,' ');
-    file.write(str.rightJustified(42,' ').toAscii());
-    file.write ( "\n", 1);
+    str = "Total " + total.rightJustified ( 10, ' ' );
+    file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
+    file.write ( "\n", 1 );
 
 
 // ============================================
 
 
     /// Imprimimos espacios
-    file.write ( "\n \n \n \n", 7);
+    file.write ( "\n \n \n \n", 7 );
 
     /// Imprimimos espacios
-    file.write ( "\n \n \n \n \n", 9);
+    file.write ( "\n \n \n \n \n", 9 );
 
 
     /// El corte de papel.
-    file.write ("\x1D\x56\x01", 3);
+    file.write ( "\x1D\x56\x01", 3 );
     file.close();
 
 // ========================================
@@ -305,8 +310,9 @@ void EmpresaTPV::x() {
 /// Guarda la configuracion de programa para poder recuperar algunas cosas de presentacion.
 /**
 **/
-void EmpresaTPV::guardaConf() {
-    _depura("EmpresaTPV::guardaConf", 0);
+void EmpresaTPV::guardaConf()
+{
+    _depura ( "EmpresaTPV::guardaConf", 0 );
     /*
         QFile file(confpr->valor(CONF_DIR_USER) + "bulmafact_" + nameDB() + ".cfn");
         /// Guardado del orden y de configuraciones varias.
@@ -341,7 +347,7 @@ void EmpresaTPV::guardaConf() {
             file.close();
         } // end if
     */
-    _depura("END EmpresaTPV::guardaConf", 0);
+    _depura ( "END EmpresaTPV::guardaConf", 0 );
 }
 
 
@@ -349,8 +355,9 @@ void EmpresaTPV::guardaConf() {
 /**
 \return
 **/
-void EmpresaTPV::cargaConf() {
-    _depura("EmpresaTPV::cargaConf", 0);
+void EmpresaTPV::cargaConf()
+{
+    _depura ( "EmpresaTPV::cargaConf", 0 );
     /*
         QFile file(confpr->valor(CONF_DIR_USER) + "bulmafact_" + nameDB() + ".cfn");
         QDomDocument doc("mydocument");
@@ -430,27 +437,29 @@ void EmpresaTPV::cargaConf() {
         if (activewindow)
             m_bulmafact->workspace()->setActiveWindow(activewindow);
     */
-    _depura("END EmpresaTPV::cargaConf", 0);
+    _depura ( "END EmpresaTPV::cargaConf", 0 );
 }
 
 
 
-Ticket *EmpresaTPV::newTicket() {
-    _depura("EmpresaTPV::newTicket", 0);
+Ticket *EmpresaTPV::newTicket()
+{
+    _depura ( "EmpresaTPV::newTicket", 0 );
     /// Lanzamos los plugins necesarios.
     Ticket *bud;
-    if (g_plugins->lanza("EmpresaTPV_newTicket", this, (void **)&bud))
+    if ( g_plugins->lanza ( "EmpresaTPV_newTicket", this, ( void ** ) & bud ) )
         return bud;
-    bud = new Ticket(this, NULL);
-    _depura("END EmpresaTPV::newTicket", 0);
+    bud = new Ticket ( this, NULL );
+    _depura ( "END EmpresaTPV::newTicket", 0 );
     return bud;
 }
 
-void EmpresaTPV::cobrar() {
-    QString idtrabajador = m_ticketActual->DBvalue("idtrabajador");
+void EmpresaTPV::cobrar()
+{
+    QString idtrabajador = m_ticketActual->DBvalue ( "idtrabajador" );
     m_ticketActual->guardar();
     m_ticketActual->imprimir();
-    m_listaTickets.removeAt(m_listaTickets.indexOf(m_ticketActual));
+    m_listaTickets.removeAt ( m_listaTickets.indexOf ( m_ticketActual ) );
     m_ticketActual = NULL;
 
 
@@ -458,22 +467,22 @@ void EmpresaTPV::cobrar() {
     Ticket *ticketv = NULL;
 
     /// Buscamos el ticket vacio de este trabajador y lo pintamos
-    for (int i = 0; i < m_listaTickets.size(); ++i) {
-        ticket = m_listaTickets.at(i);
+    for ( int i = 0; i < m_listaTickets.size(); ++i ) {
+        ticket = m_listaTickets.at ( i );
 
-        if ( "" == ticket->DBvalue("nomticket") && idtrabajador == ticket->DBvalue("idtrabajador")) {
-            setTicketActual(ticket);
+        if ( "" == ticket->DBvalue ( "nomticket" ) && idtrabajador == ticket->DBvalue ( "idtrabajador" ) ) {
+            setTicketActual ( ticket );
             ticket->pintar();
             ticketv = ticket;
         }// end if
     }// end for
 
     /// Si el trabajador no tiene ticket vacio lo creamos y le ponemos el idtrabajador.
-    if (!ticketv) {
-        Ticket *tick = newTicket();
-        tick->setDBvalue("idtrabajador", idtrabajador);
-        setTicketActual(tick);
-        m_listaTickets.append(tick);
+    if ( !ticketv ) {
+        Ticket * tick = newTicket();
+        tick->setDBvalue ( "idtrabajador", idtrabajador );
+        setTicketActual ( tick );
+        m_listaTickets.append ( tick );
         tick->pintar();
     }// end if
 

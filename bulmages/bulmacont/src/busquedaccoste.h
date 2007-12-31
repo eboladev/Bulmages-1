@@ -30,7 +30,8 @@ class Empresa;
 
 
 
-class BusquedaCCosteDelegate : public QComboBox2 {
+class BusquedaCCosteDelegate : public QComboBox2
+{
     Q_OBJECT
 
 private:
@@ -39,32 +40,33 @@ private:
     QCompleter *completar;
 
 public:
-    BusquedaCCosteDelegate(QWidget *parent = 0);
+    BusquedaCCosteDelegate ( QWidget *parent = 0 );
     ~BusquedaCCosteDelegate();
-    virtual void set(const QString &);
+    virtual void set ( const QString & );
 };
 
 
 
-class BusquedaCCoste : public QComboBox2 {
+class BusquedaCCoste : public QComboBox2
+{
     Q_OBJECT
 
 private:
     cursor2 *m_cursorcombo;
 
 public:
-    BusquedaCCoste(QWidget *parent = 0, const char *name = 0);
+    BusquedaCCoste ( QWidget *parent = 0, const char *name = 0 );
     ~BusquedaCCoste();
-    virtual void setidc_coste(QString idc_coste);
-    virtual void setValorCampo(QString idc_coste);
+    virtual void setidc_coste ( QString idc_coste );
+    virtual void setValorCampo ( QString idc_coste );
     QString idc_coste();
     virtual QString valorCampo();
 
 public slots:
-    void m_activated(int index);
+    void m_activated ( int index );
 
 signals:
-    void valueChanged(QString);
+    void valueChanged ( QString );
 };
 
 #endif

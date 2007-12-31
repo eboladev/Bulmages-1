@@ -39,17 +39,20 @@
 
 /// Muestra y administra las l&iacute;neas de detalle del listado de configuraci&oacute;nes.
 /** */
-class ListConfiguracionSubForm : public SubForm2Bf {
+class ListConfiguracionSubForm : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
-    ListConfiguracionSubForm(QWidget *parent = 0);
-    ~ListConfiguracionSubForm() {}
+    ListConfiguracionSubForm ( QWidget *parent = 0 );
+    ~ListConfiguracionSubForm()
+    {}
 
 public slots:
-    virtual void cargar() {
-        _depura("ListConfiguracionSubForm::cargar\n", 0);
-        SubForm3::cargar("SELECT *, nombre AS nombreorig FROM configuracion");
+    virtual void cargar()
+    {
+        _depura ( "ListConfiguracionSubForm::cargar\n", 0 );
+        SubForm3::cargar ( "SELECT *, nombre AS nombreorig FROM configuracion" );
     };
 };
 
@@ -59,14 +62,16 @@ public slots:
 
 /// Muestra y administra el listado de configuraci&oacute;nes.
 /** */
-class ListConfiguracionView : public FichaBf, public Ui_ListConfiguracionBase {
+class ListConfiguracionView : public FichaBf, public Ui_ListConfiguracionBase
+{
     Q_OBJECT
 public:
-    ListConfiguracionView(Company *comp, QWidget *parent = 0);
+    ListConfiguracionView ( Company *comp, QWidget *parent = 0 );
     ~ListConfiguracionView();
 
 public slots:
-    virtual void on_mui_aceptar_clicked() {
+    virtual void on_mui_aceptar_clicked()
+    {
         mui_listado->guardar();
         close();
     };

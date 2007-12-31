@@ -41,7 +41,8 @@ class BulmaTPV;
 /** Clase principal del programa donde se almacenan y gestionan
     todos los datos de la empresa con la que se est&aacute; trabajando.
     Deriva de postgresiface ya que tiene el tratamiento de la base de datos. */
-class EmpresaTPV : public EmpresaBase, public Input {
+class EmpresaTPV : public EmpresaBase, public Input
+{
 private:
     /// Puntero al mainWindow
     BulmaTPV *m_bulmaTPV;
@@ -49,18 +50,27 @@ private:
     Ticket *m_ticketActual;
 
 public:
-    EmpresaTPV(BulmaTPV *bges);
+    EmpresaTPV ( BulmaTPV *bges );
     virtual ~EmpresaTPV();
-    void createMainWindows(Splash *);
+    void createMainWindows ( Splash * );
     void guardaConf();
     void cargaConf();
     Ticket *newTicket();
     void cobrar();
     void z();
     void x();
-    Ticket *ticketActual() {return m_ticketActual;};
-    QList<Ticket *> *listaTickets() {return &m_listaTickets;};
-    void setTicketActual(Ticket *tick) {m_ticketActual = tick;};
+    Ticket *ticketActual()
+    {
+        return m_ticketActual;
+    };
+    QList<Ticket *> *listaTickets()
+    {
+        return & m_listaTickets;
+    };
+    void setTicketActual ( Ticket *tick )
+    {
+        m_ticketActual = tick;
+    };
 
 };
 

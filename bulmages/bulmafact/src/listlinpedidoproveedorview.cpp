@@ -32,27 +32,28 @@
 /**
 \param parent
 **/
-ListLinPedidoProveedorView::ListLinPedidoProveedorView(QWidget *parent) : SubForm2Bf(parent) {
-    _depura("ListLinPedidoProveedorView::ListLinPedidoProveedorView", 0);
-    setDBTableName("lpedidoproveedor");
-    setDBCampoId("idlpedidoproveedor");
-    addSHeader("puntlpedidoproveedor", DBCampo::DBboolean, DBCampo::DBNotNull, SHeader::DBNone, tr("Punteo"));
-    addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id articulo"));
-    addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Codigo completo articulo"));
-    addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("Nombre articulo"));
-    addSHeader("idlpedidoproveedor", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("Numero de linea"));
-    addSHeader("desclpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Descripcion"));
-    addSHeader("cantlpedidoproveedor", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Cantidad"));
-    addSHeader("pvplpedidoproveedor", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr("Precio"));
-    addSHeader("ivalpedidoproveedor", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr("% I.V.A."));
-    addSHeader("reqeqlpedidoproveedor", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone, tr("% R.E."));
-    addSHeader("descuentolpedidoproveedor", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr("% Descuento"));
-    addSHeader("idpedidoproveedor", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, tr("Id pedido"));
-    addSHeader("ordenlpedidoproveedor", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, tr("Orden"));
-    setinsercion(TRUE);
-    setOrdenEnabled(TRUE);
-    setOrdenPorQuery(FALSE);
-    _depura("END ListLinPedidoProveedorView::ListLinPedidoProveedorView", 0);
+ListLinPedidoProveedorView::ListLinPedidoProveedorView ( QWidget *parent ) : SubForm2Bf ( parent )
+{
+    _depura ( "ListLinPedidoProveedorView::ListLinPedidoProveedorView", 0 );
+    setDBTableName ( "lpedidoproveedor" );
+    setDBCampoId ( "idlpedidoproveedor" );
+    addSHeader ( "puntlpedidoproveedor", DBCampo::DBboolean, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Punteo" ) );
+    addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr ( "Id articulo" ) );
+    addSHeader ( "codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr ( "Codigo completo articulo" ) );
+    addSHeader ( "nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr ( "Nombre articulo" ) );
+    addSHeader ( "idlpedidoproveedor", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "Numero de linea" ) );
+    addSHeader ( "desclpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Descripcion" ) );
+    addSHeader ( "cantlpedidoproveedor", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Cantidad" ) );
+    addSHeader ( "pvplpedidoproveedor", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Precio" ) );
+    addSHeader ( "ivalpedidoproveedor", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr ( "% I.V.A." ) );
+    addSHeader ( "reqeqlpedidoproveedor", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone, tr ( "% R.E." ) );
+    addSHeader ( "descuentolpedidoproveedor", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr ( "% Descuento" ) );
+    addSHeader ( "idpedidoproveedor", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "Id pedido" ) );
+    addSHeader ( "ordenlpedidoproveedor", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "Orden" ) );
+    setinsercion ( TRUE );
+    setOrdenEnabled ( TRUE );
+    setOrdenPorQuery ( FALSE );
+    _depura ( "END ListLinPedidoProveedorView::ListLinPedidoProveedorView", 0 );
 }
 
 
@@ -60,10 +61,11 @@ ListLinPedidoProveedorView::ListLinPedidoProveedorView(QWidget *parent) : SubFor
 /**
 \param idpedidoproveedor
 **/
-void ListLinPedidoProveedorView::cargar(QString idpedidoproveedor) {
-        _depura("ListLinPedidoProveedorView::cargar", 0);
-        mdb_idpedidoproveedor = idpedidoproveedor;
-        SubForm3::cargar("SELECT * FROM lpedidoproveedor LEFT JOIN articulo ON lpedidoproveedor.idarticulo = articulo.idarticulo WHERE idpedidoproveedor=" + mdb_idpedidoproveedor + " ORDER BY ordenlpedidoproveedor");
-        _depura("END ListLinPedidoProveedorView::cargar", 0);
+void ListLinPedidoProveedorView::cargar ( QString idpedidoproveedor )
+{
+    _depura ( "ListLinPedidoProveedorView::cargar", 0 );
+    mdb_idpedidoproveedor = idpedidoproveedor;
+    SubForm3::cargar ( "SELECT * FROM lpedidoproveedor LEFT JOIN articulo ON lpedidoproveedor.idarticulo = articulo.idarticulo WHERE idpedidoproveedor=" + mdb_idpedidoproveedor + " ORDER BY ordenlpedidoproveedor" );
+    _depura ( "END ListLinPedidoProveedorView::cargar", 0 );
 }
 

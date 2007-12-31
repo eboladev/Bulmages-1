@@ -58,44 +58,45 @@
 \param emp
 \param parent
 **/
-BalanceTreeView::BalanceTreeView(Empresa *emp, QWidget *parent, int)
-        : FichaBc(emp, parent) {
-    setupUi(this);
-    _depura("BalanceTreeView::BalanceTreeView", 0);
+BalanceTreeView::BalanceTreeView ( Empresa *emp, QWidget *parent, int )
+        : FichaBc ( emp, parent )
+{
+    setupUi ( this );
+    _depura ( "BalanceTreeView::BalanceTreeView", 0 );
 
-    setTitleName(tr("Asiento Contable"));
+    setTitleName ( tr ( "Asiento Contable" ) );
     /// Establecemos cual es la tabla en la que basarse para los permisos
-    setDBTableName("asiento");
+    setDBTableName ( "asiento" );
 
-    numdigitos = empresaBase()->numdigitosempresa();
+    numdigitos = empresaBase() ->numdigitosempresa();
 
-    m_codigoinicial->setEmpresaBase(emp);
-    m_codigofinal->setEmpresaBase(emp);
+    m_codigoinicial->setEmpresaBase ( emp );
+    m_codigofinal->setEmpresaBase ( emp );
 
     m_codigoinicial->hideNombre();
     m_codigofinal->hideNombre();
     /// Hacemos la carga de los centros de coste. Rellenamos el combobox correspondiente.
-    mui_combocoste->setEmpresaBase(emp);
-    mui_combocoste->setidc_coste("0");
+    mui_combocoste->setEmpresaBase ( emp );
+    mui_combocoste->setidc_coste ( "0" );
 
     listado->clear();
 
-    listado->setColumnCount(12);
+    listado->setColumnCount ( 12 );
     QStringList nombrecolumnas;
-    nombrecolumnas << tr("Codigo cuenta")
-    << tr("Nombre de la cuenta")
-    << tr("Saldo anterior")
-    << tr("Debe")
-    << tr("Haber")
-    << tr("Saldo periodo")
-    << tr("Debe ejercicio")
-    << tr("Haber ejercicio")
-    << tr("Saldo ejercicio")
-    << tr("Nivel")
-    << tr("ID cuenta")
-    << tr("Padre");
+    nombrecolumnas << tr ( "Codigo cuenta" )
+    << tr ( "Nombre de la cuenta" )
+    << tr ( "Saldo anterior" )
+    << tr ( "Debe" )
+    << tr ( "Haber" )
+    << tr ( "Saldo periodo" )
+    << tr ( "Debe ejercicio" )
+    << tr ( "Haber ejercicio" )
+    << tr ( "Saldo ejercicio" )
+    << tr ( "Nivel" )
+    << tr ( "ID cuenta" )
+    << tr ( "Padre" );
 
-    listado->setHeaderLabels(nombrecolumnas);
+    listado->setHeaderLabels ( nombrecolumnas );
 
     CUENTA = 1;
     DENOMINACION = 2;
@@ -111,45 +112,46 @@ BalanceTreeView::BalanceTreeView(Empresa *emp, QWidget *parent, int)
     PADRE = 12;
 
     /// Inicializamos la tabla de nivel.
-    combonivel->insertItem(0, "2");
-    combonivel->insertItem(1, "3");
-    combonivel->insertItem(2, "4");
-    combonivel->insertItem(3, "5");
-    combonivel->insertItem(4, "6");
-    combonivel->insertItem(5, "7");
-    combonivel->insertItem(6, "8");
-    combonivel->insertItem(7, "9");
-    combonivel->insertItem(8, "10");
-    combonivel->insertItem(9, "11");
-    combonivel->insertItem(10, "12");
-    combonivel->insertItem(11, "13");
-    combonivel->insertItem(12, "14");
-    combonivel->insertItem(13, "15");
-    combonivel->insertItem(14, "16");
-    combonivel->insertItem(15, "17");
+    combonivel->insertItem ( 0, "2" );
+    combonivel->insertItem ( 1, "3" );
+    combonivel->insertItem ( 2, "4" );
+    combonivel->insertItem ( 3, "5" );
+    combonivel->insertItem ( 4, "6" );
+    combonivel->insertItem ( 5, "7" );
+    combonivel->insertItem ( 6, "8" );
+    combonivel->insertItem ( 7, "9" );
+    combonivel->insertItem ( 8, "10" );
+    combonivel->insertItem ( 9, "11" );
+    combonivel->insertItem ( 10, "12" );
+    combonivel->insertItem ( 11, "13" );
+    combonivel->insertItem ( 12, "14" );
+    combonivel->insertItem ( 13, "15" );
+    combonivel->insertItem ( 14, "16" );
+    combonivel->insertItem ( 15, "17" );
 
-    connect(listado, SIGNAL(contextMenuRequested(QTreeWidgetItem *, const QPoint &, int)), this, SLOT(contextmenu(QTreeWidgetItem *, const QPoint &, int)));
+    connect ( listado, SIGNAL ( contextMenuRequested ( QTreeWidgetItem *, const QPoint &, int ) ), this, SLOT ( contextmenu ( QTreeWidgetItem *, const QPoint &, int ) ) );
 
-    connect(combonivel, SIGNAL(activated(int)), this, SLOT(nivelactivated(int)));
+    connect ( combonivel, SIGNAL ( activated ( int ) ), this, SLOT ( nivelactivated ( int ) ) );
     /// Iniciamos los componentes de la fecha para que al principio aparezcan
     /// como el a&ntilde;o inicial.
     QString cadena;
-    cadena.sprintf("%2.2d/%2.2d/%4.4d", 1, 1, QDate::currentDate().year());
-    m_fechainicial1->setText(cadena);
-    cadena.sprintf("%2.2d/%2.2d/%4.4d", 31, 12, QDate::currentDate().year());
-    m_fechafinal1->setText(cadena);
-    meteWindow(windowTitle(), this);
-    _depura("END BalanceTreeView::BalanceTreeView", 0);
+    cadena.sprintf ( "%2.2d/%2.2d/%4.4d", 1, 1, QDate::currentDate().year() );
+    m_fechainicial1->setText ( cadena );
+    cadena.sprintf ( "%2.2d/%2.2d/%4.4d", 31, 12, QDate::currentDate().year() );
+    m_fechafinal1->setText ( cadena );
+    meteWindow ( windowTitle(), this );
+    _depura ( "END BalanceTreeView::BalanceTreeView", 0 );
 }
 
 
 ///
 /**
 **/
-BalanceTreeView::~BalanceTreeView() {
-    _depura("BalanceTreeView::~BalanceTreeView", 0);
+BalanceTreeView::~BalanceTreeView()
+{
+    _depura ( "BalanceTreeView::~BalanceTreeView", 0 );
     sacaWindow();
-    _depura("END BalanceTreeView::~BalanceTreeView", 0);
+    _depura ( "END BalanceTreeView::~BalanceTreeView", 0 );
 }
 
 
@@ -165,32 +167,33 @@ BalanceTreeView::~BalanceTreeView() {
 /**
 \param tipo
 **/
-void BalanceTreeView::boton_extracto1(int tipo) {
-    _depura("BalanceTreeView::boton_extracto1", 0);
+void BalanceTreeView::boton_extracto1 ( int tipo )
+{
+    _depura ( "BalanceTreeView::boton_extracto1", 0 );
     QDate fecha1, fecha2, fechaact, fechaact1;
-    if (!m_fechainicial1->text().isEmpty()) {
-        fechaact = normalizafecha(m_fechainicial1->text());
-        fechaact1 = normalizafecha(m_fechafinal1->text());
-        switch (tipo) {
+    if ( !m_fechainicial1->text().isEmpty() ) {
+        fechaact = normalizafecha ( m_fechainicial1->text() );
+        fechaact1 = normalizafecha ( m_fechafinal1->text() );
+        switch ( tipo ) {
         case 0:
-            fecha1.setYMD(fechaact.year(), fechaact.month(),fechaact.day());
-            fecha2.setYMD(fechaact1.year(), fechaact1.month(), fechaact1.day());
+            fecha1.setYMD ( fechaact.year(), fechaact.month(), fechaact.day() );
+            fecha2.setYMD ( fechaact1.year(), fechaact1.month(), fechaact1.day() );
             break;
         case 1:
-            fecha1.setYMD(fechaact.year(), fechaact.month(), 1);
-            fecha2.setYMD(fechaact.year(), fechaact.month(), fechaact.daysInMonth());
+            fecha1.setYMD ( fechaact.year(), fechaact.month(), 1 );
+            fecha2.setYMD ( fechaact.year(), fechaact.month(), fechaact.daysInMonth() );
             break;
         case 2:
-            fecha1.setYMD(fechaact.year(), 1, 1);
-            fecha2.setYMD(fechaact.year(), 12, 31);
+            fecha1.setYMD ( fechaact.year(), 1, 1 );
+            fecha2.setYMD ( fechaact.year(), 12, 31 );
             break;
         } // end switch
-        empresaBase()->extractoempresa()->inicializa1(listado->currentItem()->text(CUENTA), listado->currentItem()->text(CUENTA), fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), mui_combocoste->idc_coste().toInt());
+        empresaBase() ->extractoempresa() ->inicializa1 ( listado->currentItem() ->text ( CUENTA ), listado->currentItem() ->text ( CUENTA ), fecha1.toString ( "dd/MM/yyyy" ), fecha2.toString ( "dd/MM/yyyy" ), mui_combocoste->idc_coste().toInt() );
     } // end if
-    empresaBase()->extractoempresa()->accept();
-    empresaBase()->extractoempresa()->show();
-    empresaBase()->extractoempresa()->setFocus();
-    _depura("END BalanceTreeView::boton_extracto1", 0);
+    empresaBase() ->extractoempresa() ->accept();
+    empresaBase() ->extractoempresa() ->show();
+    empresaBase() ->extractoempresa() ->setFocus();
+    _depura ( "END BalanceTreeView::boton_extracto1", 0 );
 }
 
 
@@ -201,43 +204,45 @@ void BalanceTreeView::boton_extracto1(int tipo) {
 /**
 \param tipo
 **/
-void BalanceTreeView::boton_diario1(int tipo) {
-    _depura("BalanceTreeView::boton_diario1", 0);
+void BalanceTreeView::boton_diario1 ( int tipo )
+{
+    _depura ( "BalanceTreeView::boton_diario1", 0 );
     QDate fecha1, fecha2, fechaact, fechaact1;
-    if (!m_fechainicial1->text().isEmpty()) {
-        fechaact = normalizafecha(m_fechainicial1->text());
-        fechaact1 = normalizafecha(m_fechafinal1->text());
-        switch (tipo) {
+    if ( !m_fechainicial1->text().isEmpty() ) {
+        fechaact = normalizafecha ( m_fechainicial1->text() );
+        fechaact1 = normalizafecha ( m_fechafinal1->text() );
+        switch ( tipo ) {
         case 0:
-            fecha1.setYMD(fechaact.year(), fechaact.month(),fechaact.day());
-            fecha2.setYMD(fechaact1.year(), fechaact1.month(), fechaact1.day());
+            fecha1.setYMD ( fechaact.year(), fechaact.month(), fechaact.day() );
+            fecha2.setYMD ( fechaact1.year(), fechaact1.month(), fechaact1.day() );
             break;
         case 1:
-            fecha1.setYMD(fechaact.year(), fechaact.month(), 1);
-            fecha2.setYMD(fechaact.year(), fechaact.month(), fechaact.daysInMonth());
+            fecha1.setYMD ( fechaact.year(), fechaact.month(), 1 );
+            fecha2.setYMD ( fechaact.year(), fechaact.month(), fechaact.daysInMonth() );
             break;
         case 2:
-            fecha1.setYMD(fechaact.year(), 1, 1);
-            fecha2.setYMD(fechaact.year(), 12, 31);
+            fecha1.setYMD ( fechaact.year(), 1, 1 );
+            fecha2.setYMD ( fechaact.year(), 12, 31 );
             break;
         } // end switch
-        empresaBase()->diarioempresa()->inicializa1( fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
+        empresaBase() ->diarioempresa() ->inicializa1 ( fecha1.toString ( "dd/MM/yyyy" ), fecha2.toString ( "dd/MM/yyyy" ), 0 );
     } // end if
-    empresaBase()->diarioempresa()->accept();
-    empresaBase()->diarioempresa()->show();
-    empresaBase()->diarioempresa()->setFocus();
-    _depura("END BalanceTreeView::boton_diario1", 0);
+    empresaBase() ->diarioempresa() ->accept();
+    empresaBase() ->diarioempresa() ->show();
+    empresaBase() ->diarioempresa() ->setFocus();
+    _depura ( "END BalanceTreeView::boton_diario1", 0 );
 }
 
 
 ///
 /**
 **/
-void BalanceTreeView::boton_asiento() {
-    _depura("BalanceTreeView::boton_asiento", 0);
-    empresaBase()->intapuntsempresa()->show();
-    empresaBase()->intapuntsempresa()->setFocus();
-    _depura("END BalanceTreeView::boton_asiento", 0);
+void BalanceTreeView::boton_asiento()
+{
+    _depura ( "BalanceTreeView::boton_asiento", 0 );
+    empresaBase() ->intapuntsempresa() ->show();
+    empresaBase() ->intapuntsempresa() ->setFocus();
+    _depura ( "END BalanceTreeView::boton_asiento", 0 );
 }
 
 
@@ -249,23 +254,25 @@ void BalanceTreeView::boton_asiento() {
 \param fecha2
 \param idc_coste
 **/
-void BalanceTreeView::inicializa1(QString codinicial, QString codfinal, QString fecha1, QString fecha2, int idc_coste) {
-    _depura("BalanceTreeView::inicializa1", 0);
-    m_codigoinicial->setText(codinicial);
-    m_codigofinal->setText(codfinal);
-    m_fechainicial1->setText(normalizafecha(fecha1).toString("dd/MM/yyyy"));
-    m_fechafinal1->setText(normalizafecha(fecha2).toString("dd/MM/yyyy"));
+void BalanceTreeView::inicializa1 ( QString codinicial, QString codfinal, QString fecha1, QString fecha2, int idc_coste )
+{
+    _depura ( "BalanceTreeView::inicializa1", 0 );
+    m_codigoinicial->setText ( codinicial );
+    m_codigofinal->setText ( codfinal );
+    m_fechainicial1->setText ( normalizafecha ( fecha1 ).toString ( "dd/MM/yyyy" ) );
+    m_fechafinal1->setText ( normalizafecha ( fecha2 ).toString ( "dd/MM/yyyy" ) );
     /// Establecemos el centro de coste correspondiente.
-    mui_combocoste->setidc_coste(QString::number(idc_coste));
-    _depura("END BalanceTreeView::inicializa1", 0);
+    mui_combocoste->setidc_coste ( QString::number ( idc_coste ) );
+    _depura ( "END BalanceTreeView::inicializa1", 0 );
 }
 
 
 ///
 /**
 **/
-void BalanceTreeView::presentar() {
-    _depura("BalanceTreeView::presentar", 0);
+void BalanceTreeView::presentar()
+{
+    _depura ( "BalanceTreeView::presentar", 0 );
     //QListViewItem1 * it;
     QTreeWidgetItem *it;
     int num1;
@@ -276,7 +283,7 @@ void BalanceTreeView::presentar() {
     QString ffinal = m_fechafinal1->text();
     QString cinicial = m_codigoinicial->codigocuenta();
     QString cfinal = m_codigofinal->codigocuenta();
-    QString ejercicio = ffinal.right(4);
+    QString ejercicio = ffinal.right ( 4 );
     /// Hacemos la consulta de los apuntes a listar en la base de datos.
     int idc_coste;
     idc_coste = mui_combocoste->idc_coste().toInt();
@@ -288,122 +295,122 @@ void BalanceTreeView::presentar() {
     query += " LEFT JOIN (SELECT idcuenta, sum(debe) AS adebe, sum(haber) AS ahaber FROM apunte WHERE fecha < '" + finicial + "' GROUP BY idcuenta) AS t2 ON t2.idcuenta = cuenta.idcuenta";
     query += " LEFT JOIN (SELECT idcuenta, sum(debe) AS ejdebe, sum(haber) AS ejhaber FROM apunte WHERE EXTRACT (YEAR FROM fecha) = '" + ejercicio + "' GROUP BY idcuenta) AS t3 ON t3.idcuenta = cuenta.idcuenta";
 
-    empresaBase()->begin();
-    empresaBase()->ejecuta(query);
-    query.sprintf("UPDATE balancetemp SET padre = 0 WHERE padre ISNULL");
+    empresaBase() ->begin();
+    empresaBase() ->ejecuta ( query );
+    query.sprintf ( "UPDATE balancetemp SET padre = 0 WHERE padre ISNULL" );
 
-    empresaBase()->ejecuta(query);
-    query.sprintf("DELETE FROM balancetemp WHERE debe = 0 AND haber = 0");
-    empresaBase()->ejecuta(query);
+    empresaBase() ->ejecuta ( query );
+    query.sprintf ( "DELETE FROM balancetemp WHERE debe = 0 AND haber = 0" );
+    empresaBase() ->ejecuta ( query );
     /// Vamos a implementar el tema del c&oacute;digo.
-    if (cinicial != "") {
-        query.sprintf("DELETE FROM balancetemp WHERE codigo < '%s'", cinicial.toAscii().constData());
-        empresaBase()->ejecuta(query);
+    if ( cinicial != "" ) {
+        query.sprintf ( "DELETE FROM balancetemp WHERE codigo < '%s'", cinicial.toAscii().constData() );
+        empresaBase() ->ejecuta ( query );
     } // end if
-    if (cfinal != "") {
-        query.sprintf("DELETE FROM balancetemp WHERE codigo > '%s'", cfinal.toAscii().constData());
-        empresaBase()->ejecuta(query);
+    if ( cfinal != "" ) {
+        query.sprintf ( "DELETE FROM balancetemp WHERE codigo > '%s'", cfinal.toAscii().constData() );
+        empresaBase() ->ejecuta ( query );
     } // end if
 
     /// Para evitar problemas con los nulls hacemos algunos updates.
-    query.sprintf("UPDATE balancetemp SET tsaldo = 0 WHERE tsaldo ISNULL");
-    empresaBase()->ejecuta(query);
-    query.sprintf("UPDATE balancetemp SET tdebe = 0 WHERE tdebe ISNULL");
-    empresaBase()->ejecuta(query);
-    query.sprintf("UPDATE balancetemp SET thaber = 0 WHERE thaber ISNULL");
-    empresaBase()->ejecuta(query);
-    query.sprintf("UPDATE balancetemp SET asaldo = 0 WHERE asaldo ISNULL");
-    empresaBase()->ejecuta(query);
-    query.sprintf("UPDATE balancetemp SET ejsaldo = 0 WHERE ejsaldo ISNULL");
-    empresaBase()->ejecuta(query);
-    query.sprintf("UPDATE balancetemp SET ejdebe = 0 WHERE ejdebe ISNULL");
-    empresaBase()->ejecuta(query);
-    query.sprintf("UPDATE balancetemp SET ejhaber = 0 WHERE ejhaber ISNULL");
-    empresaBase()->ejecuta(query);
+    query.sprintf ( "UPDATE balancetemp SET tsaldo = 0 WHERE tsaldo ISNULL" );
+    empresaBase() ->ejecuta ( query );
+    query.sprintf ( "UPDATE balancetemp SET tdebe = 0 WHERE tdebe ISNULL" );
+    empresaBase() ->ejecuta ( query );
+    query.sprintf ( "UPDATE balancetemp SET thaber = 0 WHERE thaber ISNULL" );
+    empresaBase() ->ejecuta ( query );
+    query.sprintf ( "UPDATE balancetemp SET asaldo = 0 WHERE asaldo ISNULL" );
+    empresaBase() ->ejecuta ( query );
+    query.sprintf ( "UPDATE balancetemp SET ejsaldo = 0 WHERE ejsaldo ISNULL" );
+    empresaBase() ->ejecuta ( query );
+    query.sprintf ( "UPDATE balancetemp SET ejdebe = 0 WHERE ejdebe ISNULL" );
+    empresaBase() ->ejecuta ( query );
+    query.sprintf ( "UPDATE balancetemp SET ejhaber = 0 WHERE ejhaber ISNULL" );
+    empresaBase() ->ejecuta ( query );
 
     /// Cargamos el balance temporal
-    query.sprintf("SELECT idcuenta FROM balancetemp ORDER BY padre DESC");
-    cursorapt = empresaBase()->cargacursor(query);
-    while (!cursorapt->eof()) {
-        query.sprintf("SELECT * FROM balancetemp WHERE idcuenta = %s", cursorapt->valor("idcuenta").toAscii().constData());
-        cursor2 *mycur = empresaBase()->cargacursor(query);
-        if (!mycur->eof()) {
- 	    query = "UPDATE balancetemp SET tsaldo = tsaldo + "+mycur->valor("tsaldo")+", tdebe = tdebe + "+mycur->valor("tdebe")+", thaber = thaber +"+mycur->valor("thaber")+", asaldo = asaldo+"+mycur->valor("asaldo")+", ejdebe = ejdebe + "+mycur->valor("ejdebe")+", ejhaber = ejhaber + "+mycur->valor("ejhaber")+", ejsaldo = ejsaldo + "+mycur->valor("ejsaldo")+" WHERE idcuenta = "+mycur->valor("padre");
-            empresaBase()->ejecuta(query);
+    query.sprintf ( "SELECT idcuenta FROM balancetemp ORDER BY padre DESC" );
+    cursorapt = empresaBase() ->cargacursor ( query );
+    while ( !cursorapt->eof() ) {
+        query.sprintf ( "SELECT * FROM balancetemp WHERE idcuenta = %s", cursorapt->valor ( "idcuenta" ).toAscii().constData() );
+        cursor2 *mycur = empresaBase() ->cargacursor ( query );
+        if ( !mycur->eof() ) {
+            query = "UPDATE balancetemp SET tsaldo = tsaldo + " + mycur->valor ( "tsaldo" ) + ", tdebe = tdebe + " + mycur->valor ( "tdebe" ) + ", thaber = thaber +" + mycur->valor ( "thaber" ) + ", asaldo = asaldo+" + mycur->valor ( "asaldo" ) + ", ejdebe = ejdebe + " + mycur->valor ( "ejdebe" ) + ", ejhaber = ejhaber + " + mycur->valor ( "ejhaber" ) + ", ejsaldo = ejsaldo + " + mycur->valor ( "ejsaldo" ) + " WHERE idcuenta = " + mycur->valor ( "padre" );
+            empresaBase() ->ejecuta ( query );
         } /// end if
         delete mycur;
         cursorapt->siguienteregistro();
     } // end while
     delete cursorapt;
 
-    query ="SELECT * FROM balancetemp WHERE debe <> 0  OR haber <> 0 ORDER BY padre";
-    cursor2 *cursorapt1 = empresaBase()->cargacursor(query);
+    query = "SELECT * FROM balancetemp WHERE debe <> 0  OR haber <> 0 ORDER BY padre";
+    cursor2 *cursorapt1 = empresaBase() ->cargacursor ( query );
     /// Calculamos cuantos registros van a crearse y dimensionamos la tabla.
     num1 = cursorapt1->numregistros();
     listado->clear();
-    while (!cursorapt1->eof()) {
-        QString padre1 = cursorapt1->valor("padre");
+    while ( !cursorapt1->eof() ) {
+        QString padre1 = cursorapt1->valor ( "padre" );
 
-	QTreeWidgetItem *padre = NULL;
-	if (! listado->findItems(padre1, Qt::MatchCaseSensitive, IDCUENTA).isEmpty())
-        	padre = listado->findItems(padre1, Qt::MatchCaseSensitive, IDCUENTA).first();
+        QTreeWidgetItem *padre = NULL;
+        if ( ! listado->findItems ( padre1, Qt::MatchCaseSensitive, IDCUENTA ).isEmpty() )
+            padre = listado->findItems ( padre1, Qt::MatchCaseSensitive, IDCUENTA ).first();
 
         /// Si hemos encontrado el padre de la lista lo ponemos, si no lo hemos encontrado
         /// no lo ponemos.
-        if (padre != NULL) {
-            it = new QTreeWidgetItem(padre);
+        if ( padre != NULL ) {
+            it = new QTreeWidgetItem ( padre );
         } else {
-            it = new QTreeWidgetItem(listado);
+            it = new QTreeWidgetItem ( listado );
         } // end if
 
 
-	/// Establecemos los alineados del nuevo elemento creado.
-        it->setTextAlignment(CUENTA, Qt::AlignLeft);
-        it->setTextAlignment(DENOMINACION, Qt::AlignLeft);
-        it->setTextAlignment(SALDO_ANT, Qt::AlignRight);
-        it->setTextAlignment(DEBE, Qt::AlignRight);
-        it->setTextAlignment(HABER, Qt::AlignRight);
-        it->setTextAlignment(SALDO, Qt::AlignRight);
-        it->setTextAlignment(DEBEEJ, Qt::AlignRight);
-        it->setTextAlignment(HABEREJ, Qt::AlignRight);
-        it->setTextAlignment(SALDOEJ, Qt::AlignRight);
-        it->setTextAlignment(IDCUENTA, Qt::AlignRight);
-        it->setTextAlignment(NIVEL, Qt::AlignRight);
-        it->setTextAlignment(PADRE, Qt::AlignRight);
+        /// Establecemos los alineados del nuevo elemento creado.
+        it->setTextAlignment ( CUENTA, Qt::AlignLeft );
+        it->setTextAlignment ( DENOMINACION, Qt::AlignLeft );
+        it->setTextAlignment ( SALDO_ANT, Qt::AlignRight );
+        it->setTextAlignment ( DEBE, Qt::AlignRight );
+        it->setTextAlignment ( HABER, Qt::AlignRight );
+        it->setTextAlignment ( SALDO, Qt::AlignRight );
+        it->setTextAlignment ( DEBEEJ, Qt::AlignRight );
+        it->setTextAlignment ( HABEREJ, Qt::AlignRight );
+        it->setTextAlignment ( SALDOEJ, Qt::AlignRight );
+        it->setTextAlignment ( IDCUENTA, Qt::AlignRight );
+        it->setTextAlignment ( NIVEL, Qt::AlignRight );
+        it->setTextAlignment ( PADRE, Qt::AlignRight );
 
-	it->treeWidget()->expandItem(it);
+        it->treeWidget() ->expandItem ( it );
 
         /// Acumulamos los totales para al final poder escribirlos.
-        tsaldoant += atof(cursorapt1->valor("asaldo").toAscii());
-        tsaldo += atof(cursorapt1->valor("tsaldo").toAscii());
-        tdebe += atof(cursorapt1->valor("tdebe").toAscii());
-        thaber += atof(cursorapt1->valor("thaber").toAscii());
+        tsaldoant += atof ( cursorapt1->valor ( "asaldo" ).toAscii() );
+        tsaldo += atof ( cursorapt1->valor ( "tsaldo" ).toAscii() );
+        tdebe += atof ( cursorapt1->valor ( "tdebe" ).toAscii() );
+        thaber += atof ( cursorapt1->valor ( "thaber" ).toAscii() );
 
-        it->setText(CUENTA, cursorapt1->valor("codigo"));
-        if (cursorapt1->valor("tipocuenta") == "1") {
+        it->setText ( CUENTA, cursorapt1->valor ( "codigo" ) );
+        if ( cursorapt1->valor ( "tipocuenta" ) == "1" ) {
             //it->setPixmap(CUENTA, QPixmap(cactivo));
-        } else if (cursorapt1->valor("tipocuenta") == "2") {
+        } else if ( cursorapt1->valor ( "tipocuenta" ) == "2" ) {
             //it->setPixmap(CUENTA, QPixmap(cpasivo));
-        } else if (cursorapt1->valor("tipocuenta") == "3") {
+        } else if ( cursorapt1->valor ( "tipocuenta" ) == "3" ) {
             //it->setPixmap(CUENTA, QPixmap(cneto));
-        } else if (cursorapt1->valor("tipocuenta") == "4") {
+        } else if ( cursorapt1->valor ( "tipocuenta" ) == "4" ) {
             //it->setPixmap(CUENTA, QPixmap(cingresos));
-        } else if (cursorapt1->valor("tipocuenta") == "5") {
+        } else if ( cursorapt1->valor ( "tipocuenta" ) == "5" ) {
             //it->setPixmap(CUENTA, QPixmap(cgastos));
         } // end if
 
-        it->setText(DENOMINACION, cursorapt1->valor("descripcion"));
-        it->setText(SALDO_ANT, QString::number(cursorapt1->valor("asaldo").toDouble(), 'f', 2));
-        it->setText(DEBE, QString::number(cursorapt1->valor("tdebe").toDouble(), 'f', 2));
-        it->setText(HABER, QString::number(cursorapt1->valor("thaber").toDouble(), 'f', 2));
-        it->setText(SALDO, QString::number(cursorapt1->valor("tsaldo").toDouble(), 'f', 2));
-        it->setText(DEBEEJ, QString::number(cursorapt1->valor("ejdebe").toDouble(), 'f', 2));
-        it->setText(HABEREJ, QString::number(cursorapt1->valor("ejhaber").toDouble(), 'f', 2));
-        it->setText(SALDOEJ, QString::number(cursorapt1->valor("ejsaldo").toDouble(), 'f', 2));
+        it->setText ( DENOMINACION, cursorapt1->valor ( "descripcion" ) );
+        it->setText ( SALDO_ANT, QString::number ( cursorapt1->valor ( "asaldo" ).toDouble(), 'f', 2 ) );
+        it->setText ( DEBE, QString::number ( cursorapt1->valor ( "tdebe" ).toDouble(), 'f', 2 ) );
+        it->setText ( HABER, QString::number ( cursorapt1->valor ( "thaber" ).toDouble(), 'f', 2 ) );
+        it->setText ( SALDO, QString::number ( cursorapt1->valor ( "tsaldo" ).toDouble(), 'f', 2 ) );
+        it->setText ( DEBEEJ, QString::number ( cursorapt1->valor ( "ejdebe" ).toDouble(), 'f', 2 ) );
+        it->setText ( HABEREJ, QString::number ( cursorapt1->valor ( "ejhaber" ).toDouble(), 'f', 2 ) );
+        it->setText ( SALDOEJ, QString::number ( cursorapt1->valor ( "ejsaldo" ).toDouble(), 'f', 2 ) );
 
-        it->setText(NIVEL, cursorapt1->valor("nivel"));
-        it->setText(IDCUENTA, cursorapt1->valor("idcuenta"));
-        it->setText(PADRE, cursorapt1->valor("padre"));
+        it->setText ( NIVEL, cursorapt1->valor ( "nivel" ) );
+        it->setText ( IDCUENTA, cursorapt1->valor ( "idcuenta" ) );
+        it->setText ( PADRE, cursorapt1->valor ( "padre" ) );
         cursorapt1->siguienteregistro();
     } // end while
 
@@ -411,19 +418,19 @@ void BalanceTreeView::presentar() {
     delete cursorapt1;
 
     /// Eliminamos la tabla temporal y cerramos la transacci&oacute;n.
-    query.sprintf("DROP TABLE balancetemp");
-    empresaBase()->ejecuta(query);
-    empresaBase()->commit();
+    query.sprintf ( "DROP TABLE balancetemp" );
+    empresaBase() ->ejecuta ( query );
+    empresaBase() ->commit();
 
     /// Hacemos la actualizacion de los saldos totales.
-    totalsaldoant->setText(QString::number(tsaldoant, 'f', 2));
-    totaldebe->setText(QString::number(tdebe, 'f', 2));
-    totalhaber->setText(QString::number(thaber, 'f', 2));
-    totalsaldo->setText(QString::number(tsaldo, 'f', 2));
+    totalsaldoant->setText ( QString::number ( tsaldoant, 'f', 2 ) );
+    totaldebe->setText ( QString::number ( tdebe, 'f', 2 ) );
+    totalhaber->setText ( QString::number ( thaber, 'f', 2 ) );
+    totalsaldo->setText ( QString::number ( tsaldo, 'f', 2 ) );
 
     /// Activamos la parte de nivel para que se filtre el listado.
-    nivelactivated(combonivel->currentIndex());
-    _depura("END BalanceTreeView::presentar", 0);
+    nivelactivated ( combonivel->currentIndex() );
+    _depura ( "END BalanceTreeView::presentar", 0 );
 }
 
 
@@ -431,17 +438,18 @@ void BalanceTreeView::presentar() {
 /**
 \param nivel
 **/
-void BalanceTreeView::nivelactivated(int nivel) {
-    _depura("BalanceTreeView::nivelactivated", 0);
-    combonivel->setCurrentIndex(nivel);
+void BalanceTreeView::nivelactivated ( int nivel )
+{
+    _depura ( "BalanceTreeView::nivelactivated", 0 );
+    combonivel->setCurrentIndex ( nivel );
     int nivel1 = combonivel->currentText().toInt();
-    
+
     int j = 0;
-    while (j < listado->topLevelItemCount()) {
-    	nivelactivated1(nivel1, listado->topLevelItem(j));
+    while ( j < listado->topLevelItemCount() ) {
+        nivelactivated1 ( nivel1, listado->topLevelItem ( j ) );
         j++;
     } // end while
-    _depura("END BalanceTreeView::nivelactivated", 0);
+    _depura ( "END BalanceTreeView::nivelactivated", 0 );
 }
 
 
@@ -450,20 +458,21 @@ void BalanceTreeView::nivelactivated(int nivel) {
 /**
 \param ot
 **/
-void BalanceTreeView::nivelactivated1(int nivel, QTreeWidgetItem *ot) {
-    _depura("BalanceTreeView::nivelactivated1", 0);
-    if (ot) {
-        if (atoi(ot->text(NIVEL).toAscii()) <= nivel) {
-	    ot->treeWidget()->setItemExpanded(ot, TRUE);
-            ot->treeWidget()->expandItem(ot);
+void BalanceTreeView::nivelactivated1 ( int nivel, QTreeWidgetItem *ot )
+{
+    _depura ( "BalanceTreeView::nivelactivated1", 0 );
+    if ( ot ) {
+        if ( atoi ( ot->text ( NIVEL ).toAscii() ) <= nivel ) {
+            ot->treeWidget() ->setItemExpanded ( ot, TRUE );
+            ot->treeWidget() ->expandItem ( ot );
         } else {
-	    ot->treeWidget()->setItemExpanded(ot, FALSE);
-            ot->treeWidget()->collapseItem(ot);
+            ot->treeWidget() ->setItemExpanded ( ot, FALSE );
+            ot->treeWidget() ->collapseItem ( ot );
         } // end if
 //        nivelactivated1(nivel, ot->firstChild());
 //        nivelactivated1(nivel, ot->nextSibling());
     } // end if
-    _depura("END BalanceTreeView::nivelactivated1", 0);
+    _depura ( "END BalanceTreeView::nivelactivated1", 0 );
 }
 
 
@@ -474,40 +483,41 @@ void BalanceTreeView::nivelactivated1(int nivel, QTreeWidgetItem *ot) {
     Creamos el objeto QPopupMenu con las opciones que queremos que aparezcan.
     Lo invocamos y seg&uacute;n la opci&oacute;n que haya elegido el usuario llamamos
     a la funci&oacute;n que da respuesta a dicha petici&oacute;n. */
-void BalanceTreeView::contextmenu(const QPoint &point) {
-    _depura("BalanceTreeView::contextmenu", 0);
+void BalanceTreeView::contextmenu ( const QPoint &point )
+{
+    _depura ( "BalanceTreeView::contextmenu", 0 );
 
-    QMenu *menupopup = new QMenu(this);
-    QAction *opt1 = menupopup->addAction(tr("Ver Diario (este dia)"));
-    QAction *opt2 = menupopup->addAction(tr("Ver Diario (este mes)"));
-    QAction *opt3 = menupopup->addAction(tr("Ver Diario (este anyo)"));
+    QMenu *menupopup = new QMenu ( this );
+    QAction *opt1 = menupopup->addAction ( tr ( "Ver Diario (este dia)" ) );
+    QAction *opt2 = menupopup->addAction ( tr ( "Ver Diario (este mes)" ) );
+    QAction *opt3 = menupopup->addAction ( tr ( "Ver Diario (este anyo)" ) );
     menupopup->addSeparator();
-    QAction *opt4 = menupopup->addAction(tr("Ver extracto (este dia)"));
-    QAction *opt5 = menupopup->addAction(tr("Ver extracto (este mes)"));
-    QAction *opt6 = menupopup->addAction(tr("Ver extracto (este anyo)"));
-    QAction *opcion = menupopup->exec(point);
+    QAction *opt4 = menupopup->addAction ( tr ( "Ver extracto (este dia)" ) );
+    QAction *opt5 = menupopup->addAction ( tr ( "Ver extracto (este mes)" ) );
+    QAction *opt6 = menupopup->addAction ( tr ( "Ver extracto (este anyo)" ) );
+    QAction *opcion = menupopup->exec ( point );
 
-    if (opcion == opt1) {
-        boton_diario1(0);
+    if ( opcion == opt1 ) {
+        boton_diario1 ( 0 );
     } // end if
-    if (opcion == opt2) {
-        boton_diario1(1);
+    if ( opcion == opt2 ) {
+        boton_diario1 ( 1 );
     } // end if
-    if (opcion == opt3) {
-        boton_diario1(2);
+    if ( opcion == opt3 ) {
+        boton_diario1 ( 2 );
     } // end if
-    if (opcion == opt4) {
-        boton_extracto1(0);
+    if ( opcion == opt4 ) {
+        boton_extracto1 ( 0 );
     } // end if
-    if (opcion == opt5) {
-        boton_extracto1(1);
+    if ( opcion == opt5 ) {
+        boton_extracto1 ( 1 );
     } // end if
-    if (opcion == opt6) {
-        boton_extracto1(2);
+    if ( opcion == opt6 ) {
+        boton_extracto1 ( 2 );
     } // end if
 
     delete menupopup;
-    _depura("END BalanceTreeView::contextmenu", 0);
+    _depura ( "END BalanceTreeView::contextmenu", 0 );
 }
 
 
@@ -516,21 +526,23 @@ void BalanceTreeView::contextmenu(const QPoint &point) {
     y lo ejecuta en modo Modal. */
 /**
 **/
-void BalanceTreeView::on_mui_imprimir_clicked() {
-    _depura("BalanceTreeView::on_mui_imprimir_clicked", 0);
-    BalancePrintView *balan = new BalancePrintView(empresaBase());
-    balan->inicializa1(m_codigoinicial->text(), m_codigofinal->text(), m_fechainicial1->text(), m_fechafinal1->text(), TRUE);
+void BalanceTreeView::on_mui_imprimir_clicked()
+{
+    _depura ( "BalanceTreeView::on_mui_imprimir_clicked", 0 );
+    BalancePrintView *balan = new BalancePrintView ( empresaBase() );
+    balan->inicializa1 ( m_codigoinicial->text(), m_codigofinal->text(), m_fechainicial1->text(), m_fechafinal1->text(), TRUE );
     balan->exec();
-    _depura("END BalanceTreeView::on_mui_imprimir_clicked", 0);
+    _depura ( "END BalanceTreeView::on_mui_imprimir_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void BalanceTreeView::on_mui_actualizar_clicked() {
-    _depura("BalanceTreeView::on_mui_actualizar_clicked", 0);
-        presentar();
-    _depura("END BalanceTreeView::on_mui_actualizar_clicked", 0);
+void BalanceTreeView::on_mui_actualizar_clicked()
+{
+    _depura ( "BalanceTreeView::on_mui_actualizar_clicked", 0 );
+    presentar();
+    _depura ( "END BalanceTreeView::on_mui_actualizar_clicked", 0 );
 }
 

@@ -27,16 +27,17 @@
 #include <QMainWindow>
 
 
-class QApplication2 : public QApplication {
+class QApplication2 : public QApplication
+{
     Q_OBJECT
 
 private:
     QMainWindow *m_mainWindow;
 
 public:
-    QApplication2(int &argc, char **argv);
+    QApplication2 ( int &argc, char **argv );
     ~QApplication2();
-    bool notify(QObject *o, QEvent *e);
+    bool notify ( QObject *o, QEvent *e );
 };
 
 #endif

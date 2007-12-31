@@ -25,17 +25,18 @@
 /**
 \param parent
 **/
-porcentajeCarga::porcentajeCarga(QWidget *parent) : QDialog(parent) {
-    
+porcentajeCarga::porcentajeCarga ( QWidget *parent ) : QDialog ( parent )
+{
 }
 
 
 ///
 /**
 **/
-void porcentajeCarga::mostrar(){
-    fprintf(stderr, "\n\n\nestoooo\n");
-    setupUi(this);
+void porcentajeCarga::mostrar()
+{
+    fprintf ( stderr, "\n\n\nestoooo\n" );
+    setupUi ( this );
     show();
 }
 
@@ -43,7 +44,8 @@ void porcentajeCarga::mostrar(){
 ///
 /**
 **/
-void porcentajeCarga::cerrar() {
+void porcentajeCarga::cerrar()
+{
     close();
 }
 
@@ -51,5 +53,6 @@ void porcentajeCarga::cerrar() {
 ///
 /**
 **/
-porcentajeCarga::~porcentajeCarga() {}
+porcentajeCarga::~porcentajeCarga()
+{}
 

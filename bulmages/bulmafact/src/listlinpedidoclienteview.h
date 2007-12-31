@@ -31,17 +31,19 @@
 
 /// Muestra y administra las l&iacute;neas de detalle de un pedido de un cliente.
 /** */
-class ListLinPedidoClienteView : public SubForm2Bf {
+class ListLinPedidoClienteView : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
     QString mdb_idpedidocliente;
-    ListLinPedidoClienteView(QWidget *parent = 0);
-    ~ListLinPedidoClienteView() {}
+    ListLinPedidoClienteView ( QWidget *parent = 0 );
+    ~ListLinPedidoClienteView()
+    {}
     ;
 
 public slots:
-    virtual void cargar(QString idpedidocliente);
+    virtual void cargar ( QString idpedidocliente );
 };
 
 #endif

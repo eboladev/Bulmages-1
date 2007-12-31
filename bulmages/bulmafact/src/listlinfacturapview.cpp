@@ -34,45 +34,47 @@
 \param parent
 \return
 **/
-ListLinFacturaProveedorView::ListLinFacturaProveedorView(QWidget *parent)
-        : SubForm2Bf(parent) {
-    _depura("ListLinFacturaProveedorView::ListLinFacturaProveedorView", 0);
-    setDBTableName("lfacturap");
-    setDBCampoId("idlfacturap");
+ListLinFacturaProveedorView::ListLinFacturaProveedorView ( QWidget *parent )
+        : SubForm2Bf ( parent )
+{
+    _depura ( "ListLinFacturaProveedorView::ListLinFacturaProveedorView", 0 );
+    setDBTableName ( "lfacturap" );
+    setDBCampoId ( "idlfacturap" );
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza("ListLinFacturaProveedorView_ListLinFacturaProveedorView", this);
-    if (res != 0)
+    int res = g_plugins->lanza ( "ListLinFacturaProveedorView_ListLinFacturaProveedorView", this );
+    if ( res != 0 )
         return;
 
-    addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Articulo"));
-    addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Codigo completo"));
-    addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("Nombre"));
-    addSHeader("idlfacturap", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr("Linea"));
-    addSHeader("desclfacturap", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Descripcion"));
-    addSHeader("cantlfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Cantidad"));
-    addSHeader("pvplfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("P.V.P."));
-    addSHeader("ivalfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("% I.V.A."));
-    addSHeader("reqeqlfacturap", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, tr("% Recargo"));
-    addSHeader("descuentolfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Descuento"));
-    addSHeader("idfacturap", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, tr("Factura"));
-    addSHeader("ordenlfacturap", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Orden"));
-    setinsercion(TRUE);
-    setOrdenEnabled(TRUE);
+    addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr ( "Articulo" ) );
+    addSHeader ( "codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr ( "Codigo completo" ) );
+    addSHeader ( "nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr ( "Nombre" ) );
+    addSHeader ( "idlfacturap", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr ( "Linea" ) );
+    addSHeader ( "desclfacturap", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Descripcion" ) );
+    addSHeader ( "cantlfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Cantidad" ) );
+    addSHeader ( "pvplfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr ( "P.V.P." ) );
+    addSHeader ( "ivalfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr ( "% I.V.A." ) );
+    addSHeader ( "reqeqlfacturap", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, tr ( "% Recargo" ) );
+    addSHeader ( "descuentolfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Descuento" ) );
+    addSHeader ( "idfacturap", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "Factura" ) );
+    addSHeader ( "ordenlfacturap", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr ( "Orden" ) );
+    setinsercion ( TRUE );
+    setOrdenEnabled ( TRUE );
 
     /// Disparamos los plugins.
-    g_plugins->lanza("ListLinFacturaProveedorView_ListLinFacturaProveedorView_Post", this);
+    g_plugins->lanza ( "ListLinFacturaProveedorView_ListLinFacturaProveedorView_Post", this );
 
-    _depura("END ListLinFacturaProveedorView::ListLinFacturaProveedorView", 0);
+    _depura ( "END ListLinFacturaProveedorView::ListLinFacturaProveedorView", 0 );
 }
 
 ///
 /**
 \param idfacturap
 **/
-void ListLinFacturaProveedorView::cargar(QString idfacturap) {
-    _depura("ListLinFacturaProveedorView::cargar", 0);
+void ListLinFacturaProveedorView::cargar ( QString idfacturap )
+{
+    _depura ( "ListLinFacturaProveedorView::cargar", 0 );
     mdb_idfacturap = idfacturap;
-    SubForm3::cargar("SELECT * FROM lfacturap LEFT JOIN articulo ON lfacturap.idarticulo = articulo.idarticulo WHERE idfacturap = " + mdb_idfacturap + " ORDER BY ordenlfacturap");
-    _depura("END ListLinFacturaProveedorView::cargar", 0);
+    SubForm3::cargar ( "SELECT * FROM lfacturap LEFT JOIN articulo ON lfacturap.idarticulo = articulo.idarticulo WHERE idfacturap = " + mdb_idfacturap + " ORDER BY ordenlfacturap" );
+    _depura ( "END ListLinFacturaProveedorView::cargar", 0 );
 }

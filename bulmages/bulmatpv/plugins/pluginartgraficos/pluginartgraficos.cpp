@@ -34,18 +34,20 @@ ArtGraficos *g_graf;
 /**
 \return
 **/
-int entryPoint(BulmaTPV *tpv) {
-    _depura("entryPoint", 0);
-    _depura("END entryPoint", 0);
+int entryPoint ( BulmaTPV *tpv )
+{
+    _depura ( "entryPoint", 0 );
+    _depura ( "END entryPoint", 0 );
     return 0;
 }
 
-int EmpresaTPV_createMainWindows_Post(EmpresaTPV *etpv) {
-	g_graf = new ArtGraficos(etpv, NULL);
-//	etpv->pWorkspace()->addWindow(g_graf);
-	//g_graf->showMaximized();
-	g_main->setCentralWidget(g_graf);
-	return 0;
+int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
+{
+    g_graf = new ArtGraficos ( etpv, NULL );
+// etpv->pWorkspace()->addWindow(g_graf);
+    //g_graf->showMaximized();
+    g_main->setCentralWidget ( g_graf );
+    return 0;
 }
 
 

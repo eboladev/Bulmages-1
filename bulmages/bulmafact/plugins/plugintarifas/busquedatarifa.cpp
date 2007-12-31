@@ -29,21 +29,23 @@
 /**
 \param parent
 **/
-BusquedaTarifa::BusquedaTarifa(QWidget *parent)
-        : QComboBox(parent), PEmpresaBase() {
-        _depura("BusquedaTarifa::BusquedaTarifa", 0);
+BusquedaTarifa::BusquedaTarifa ( QWidget *parent )
+        : QComboBox ( parent ), PEmpresaBase()
+{
+    _depura ( "BusquedaTarifa::BusquedaTarifa", 0 );
     m_cursorcombo = NULL;
-    connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
-        _depura("END BusquedaTarifa::BusquedaTarifa", 0);
+    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
+    _depura ( "END BusquedaTarifa::BusquedaTarifa", 0 );
 }
 
 
 ///
 /**
 **/
-BusquedaTarifa::~BusquedaTarifa() {
-    _depura("BusquedaTarifa::~BusquedaTarifa", 0);
-    _depura("END BusquedaTarifa::~BusquedaTarifa", 0);
+BusquedaTarifa::~BusquedaTarifa()
+{
+    _depura ( "BusquedaTarifa::~BusquedaTarifa", 0 );
+    _depura ( "END BusquedaTarifa::~BusquedaTarifa", 0 );
 }
 
 
@@ -51,24 +53,25 @@ BusquedaTarifa::~BusquedaTarifa() {
 /**
 \param idtarifa
 **/
-void BusquedaTarifa::setidtarifa(QString idtarifa) {
-    _depura("BusquedaTarifa::setidtarifa", 0);
+void BusquedaTarifa::setidtarifa ( QString idtarifa )
+{
+    _depura ( "BusquedaTarifa::setidtarifa", 0 );
     mdb_idtarifa = idtarifa;
-    if (m_cursorcombo != NULL)
+    if ( m_cursorcombo != NULL )
         delete m_cursorcombo;
-    m_cursorcombo = empresaBase()->cargacursor("SELECT * FROM tarifa");
+    m_cursorcombo = empresaBase() ->cargacursor ( "SELECT * FROM tarifa" );
     int i = 0;
     int i1 = 0;
     clear();
-    addItem("--");
-    while (!m_cursorcombo->eof()) {
+    addItem ( "--" );
+    while ( !m_cursorcombo->eof() ) {
         i++;
-        if (m_cursorcombo->valor("idtarifa") == idtarifa)
+        if ( m_cursorcombo->valor ( "idtarifa" ) == idtarifa )
             i1 = i;
-        addItem(m_cursorcombo->valor("nomtarifa"));
+        addItem ( m_cursorcombo->valor ( "nomtarifa" ) );
         m_cursorcombo->siguienteregistro();
     }
-    setCurrentIndex(i1);
-    _depura("END BusquedaTarifa::setidtarifa", 0);
+    setCurrentIndex ( i1 );
+    _depura ( "END BusquedaTarifa::setidtarifa", 0 );
 }
 

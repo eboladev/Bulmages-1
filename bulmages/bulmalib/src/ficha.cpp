@@ -40,21 +40,22 @@
 \param f
 \param modo
 **/
-Ficha::Ficha(QWidget *parent, Qt::WFlags f, edmode modo) : BLWidget(parent, f), DBRecord(NULL), dialogChanges(this) {
-    _depura("Ficha::Ficha", 0);
+Ficha::Ficha ( QWidget *parent, Qt::WFlags f, edmode modo ) : BLWidget ( parent, f ), DBRecord ( NULL ), dialogChanges ( this )
+{
+    _depura ( "Ficha::Ficha", 0 );
 
     /// Disparamos los plugins
-    int res = g_plugins->lanza("Ficha_Ficha", this);
-    if (res != 0) {
+    int res = g_plugins->lanza ( "Ficha_Ficha", this );
+    if ( res != 0 ) {
         return;
     } // end if
 
     m_title = windowTitle();
-    setContextMenuPolicy(Qt::CustomContextMenu);
-    connect (this, SIGNAL(customContextMenuRequested(const QPoint &)), this, SLOT(on_customContextMenuRequested(const QPoint &)));
+    setContextMenuPolicy ( Qt::CustomContextMenu );
+    connect ( this, SIGNAL ( customContextMenuRequested ( const QPoint & ) ), this, SLOT ( on_customContextMenuRequested ( const QPoint & ) ) );
     m_modo = modo;
     dialogChanges_cargaInicial();
-    _depura("END Ficha::Ficha", 0);
+    _depura ( "END Ficha::Ficha", 0 );
 }
 
 
@@ -65,30 +66,32 @@ Ficha::Ficha(QWidget *parent, Qt::WFlags f, edmode modo) : BLWidget(parent, f), 
 \param f
 \param modo
 **/
-Ficha::Ficha(EmpresaBase *emp, QWidget *parent, Qt::WFlags f, edmode modo) : BLWidget(emp, parent, f), DBRecord(emp), dialogChanges(this) {
-    _depura("Ficha::Ficha", 0);
+Ficha::Ficha ( EmpresaBase *emp, QWidget *parent, Qt::WFlags f, edmode modo ) : BLWidget ( emp, parent, f ), DBRecord ( emp ), dialogChanges ( this )
+{
+    _depura ( "Ficha::Ficha", 0 );
 
     /// Disparamos los plugins
-    int res = g_plugins->lanza("Ficha_Ficha", this);
-    if (res != 0) {
+    int res = g_plugins->lanza ( "Ficha_Ficha", this );
+    if ( res != 0 ) {
         return;
     } // end if
 
-    setContextMenuPolicy(Qt::CustomContextMenu);
-    connect (this, SIGNAL(customContextMenuRequested(const QPoint &)), this, SLOT(on_customContextMenuRequested(const QPoint &)));
+    setContextMenuPolicy ( Qt::CustomContextMenu );
+    connect ( this, SIGNAL ( customContextMenuRequested ( const QPoint & ) ), this, SLOT ( on_customContextMenuRequested ( const QPoint & ) ) );
     m_modo = modo;
     dialogChanges_cargaInicial();
-    _depura("END Ficha::Ficha", 0);
+    _depura ( "END Ficha::Ficha", 0 );
 }
 
 
 ///
 /**
 **/
-Ficha::~Ficha() {
-    _depura("Ficha::~Ficha", 0, this->windowTitle());
+Ficha::~Ficha()
+{
+    _depura ( "Ficha::~Ficha", 0, this->windowTitle() );
     sacaWindow();
-    _depura("END Ficha::~Ficha", 0);
+    _depura ( "END Ficha::~Ficha", 0 );
 }
 
 
@@ -96,141 +99,145 @@ Ficha::~Ficha() {
 ///
 /**
 **/
-void Ficha::cargaSpecs() {
-    _depura("SubForm3::cargaSpecs", 0 );
-    _depura(objectName(), 2);
+void Ficha::cargaSpecs()
+{
+    _depura ( "SubForm3::cargaSpecs", 0 );
+    _depura ( objectName(), 2 );
 //    QFile file(confpr->valor(CONF_DIR_USER) + m_fileconfig + "_" + empresaBase()->nameDB() + "_specs.spc");
-    QFile file("/etc/bulmages/" + objectName() + "_" + empresaBase()->nameDB() + "_spec.spc");
-    QDomDocument doc("mydocument");
-    if (!file.open(QIODevice::ReadOnly))
+    QFile file ( "/etc/bulmages/" + objectName() + "_" + empresaBase() ->nameDB() + "_spec.spc" );
+    QDomDocument doc ( "mydocument" );
+    if ( !file.open ( QIODevice::ReadOnly ) )
         return;
-    if (!doc.setContent(&file)) {
+    if ( !doc.setContent ( &file ) ) {
         file.close();
         return;
     } // end if
     file.close();
 
     QDomElement docElem = doc.documentElement();
-    QDomElement principal = docElem.firstChildElement("FICHA");
+    QDomElement principal = docElem.firstChildElement ( "FICHA" );
     /// Cogemos la coordenada X
-    QString tablename = principal.firstChildElement("TABLENAME").toElement().text();
-    QString campoid = principal.firstChildElement("CAMPOID").toElement().text();
+    QString tablename = principal.firstChildElement ( "TABLENAME" ).toElement().text();
+    QString campoid = principal.firstChildElement ( "CAMPOID" ).toElement().text();
 
-    QDomNodeList nodos = docElem.elementsByTagName("CAMPO");
-    for (int i = 0; i < nodos.count(); i++) {
-        QDomNode ventana = nodos.item(i);
+    QDomNodeList nodos = docElem.elementsByTagName ( "CAMPO" );
+    for ( int i = 0; i < nodos.count(); i++ ) {
+        QDomNode ventana = nodos.item ( i );
         QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
         if ( !e1.isNull() ) { /// the node was really an element.
-            DBCampo::dbtype type= DBCampo::DBvarchar;
-            QString nomheader = e1.firstChildElement("NOMCAMPO").toElement().text();
-            if (exists(nomheader)) return;
-            QString nompheader = e1.firstChildElement("NOMPCAMPO").toElement().text();
-            QString typeheader = e1.firstChildElement("DBTYPECAMPO").toElement().text();
-            if (typeheader == "DBVARCHAR") {
+            DBCampo::dbtype type = DBCampo::DBvarchar;
+            QString nomheader = e1.firstChildElement ( "NOMCAMPO" ).toElement().text();
+            if ( exists ( nomheader ) ) return;
+            QString nompheader = e1.firstChildElement ( "NOMPCAMPO" ).toElement().text();
+            QString typeheader = e1.firstChildElement ( "DBTYPECAMPO" ).toElement().text();
+            if ( typeheader == "DBVARCHAR" ) {
                 type = DBCampo::DBvarchar;
-            } else if (typeheader == "DBINT") {
+            } else if ( typeheader == "DBINT" ) {
                 type = DBCampo::DBint;
-            } else if (typeheader == "DBNUMERIC") {
+            } else if ( typeheader == "DBNUMERIC" ) {
                 type = DBCampo::DBnumeric;
-            } else if (typeheader == "DBBOOLEAN") {
+            } else if ( typeheader == "DBBOOLEAN" ) {
                 type = DBCampo::DBboolean;
-            } else if (typeheader == "DBDATE") {
+            } else if ( typeheader == "DBDATE" ) {
                 type = DBCampo::DBdate;
             } // end if
 
-            int restricciones = (int) DBCampo::DBNothing;
-            QDomElement restrict = e1.firstChildElement("RESTRICTIONSCAMPO");
-            while (!restrict.isNull()) {
+            int restricciones = ( int ) DBCampo::DBNothing;
+            QDomElement restrict = e1.firstChildElement ( "RESTRICTIONSCAMPO" );
+            while ( !restrict.isNull() ) {
                 QString trestrict = restrict.text();
-                if (trestrict == "DBNOTHING") {
+                if ( trestrict == "DBNOTHING" ) {
                     restricciones |= DBCampo::DBvarchar;
-                } else if (trestrict == "DBNOTNULL") {
+                } else if ( trestrict == "DBNOTNULL" ) {
                     restricciones |= DBCampo::DBNotNull;
-                } else if (trestrict == "DBPRIMARYKEY") {
+                } else if ( trestrict == "DBPRIMARYKEY" ) {
                     restricciones |= DBCampo::DBPrimaryKey;
-                } else if (trestrict == "DBNOSAVE") {
+                } else if ( trestrict == "DBNOSAVE" ) {
                     restricciones |= DBCampo::DBNoSave;
-                } else if (trestrict == "DBAUTO") {
+                } else if ( trestrict == "DBAUTO" ) {
                     restricciones |= DBCampo::DBAuto;
-                } else if (trestrict == "DBAUTO") {
+                } else if ( trestrict == "DBAUTO" ) {
                     restricciones |= DBCampo::DBAuto;
-                } else if (trestrict == "DBDUPPRIMARYKEY") {
+                } else if ( trestrict == "DBDUPPRIMARYKEY" ) {
                     restricciones |= DBCampo::DBDupPrimaryKey;
-                } else if (trestrict == "DBREQUIRED") {
+                } else if ( trestrict == "DBREQUIRED" ) {
                     restricciones |= DBCampo::DBRequired;
-                } else if (trestrict == "DBNOLOAD") {
+                } else if ( trestrict == "DBNOLOAD" ) {
                     restricciones |= DBCampo::DBNoLoad;
                 } // end if
-                restrict = restrict.nextSiblingElement("RESTRICTIONSCAMPO");
+                restrict = restrict.nextSiblingElement ( "RESTRICTIONSCAMPO" );
             } // end while
 
-            addDBCampo(nomheader, type, (DBCampo::dbrestrict) restricciones, nompheader);
-            generaCampo(nomheader, nompheader, typeheader);
+            addDBCampo ( nomheader, type, ( DBCampo::dbrestrict ) restricciones, nompheader );
+            generaCampo ( nomheader, nompheader, typeheader );
         } // end if
     } // end for
 
-    _depura("END SubForm3::cargaSpecs", 0);
+    _depura ( "END SubForm3::cargaSpecs", 0 );
 }
 
 
-void Ficha::generaCampo(const QString &objname, const QString &textname, const QString &type) {
+void Ficha::generaCampo ( const QString &objname, const QString &textname, const QString &type )
+{
 
     /// Miramos si existe un menu Herramientas
-    QFrame *frame = findChild<QFrame *>("m_frameplugin");
+    QFrame * frame = findChild<QFrame *> ( "m_frameplugin" );
     /// Si no hay un frame con lo que buscamos buscamos cualquier frame
-    if (!frame) {
-        frame = findChild<QFrame *>("m_frameplugin");
+    if ( !frame ) {
+        frame = findChild<QFrame *> ( "m_frameplugin" );
     } // end if
-    if (!frame) return;
+    if ( !frame ) return;
 
     QVBoxLayout *vboxl = frame->findChild<QVBoxLayout *>();
-    if (!vboxl) {
-        vboxl = new QVBoxLayout(frame);
-        vboxl->setSpacing(0);
-        vboxl->setMargin(0);
-        vboxl->setObjectName(QString::fromUtf8("m_framevboxlayout"));
+    if ( !vboxl ) {
+        vboxl = new QVBoxLayout ( frame );
+        vboxl->setSpacing ( 0 );
+        vboxl->setMargin ( 0 );
+        vboxl->setObjectName ( QString::fromUtf8 ( "m_framevboxlayout" ) );
     } // end if
 
 
     QHBoxLayout *hboxLayout160 = new QHBoxLayout();
-    hboxLayout160->setSpacing(2);
-    hboxLayout160->setMargin(0);
-    hboxLayout160->setObjectName(QString::fromUtf8("hboxLayout16"));
+    hboxLayout160->setSpacing ( 2 );
+    hboxLayout160->setMargin ( 0 );
+    hboxLayout160->setObjectName ( QString::fromUtf8 ( "hboxLayout16" ) );
 
-    QLabel *textLabel2_9_26 = new QLabel(frame);
-    textLabel2_9_26->setObjectName(QString::fromUtf8("textLabel2_9_2"));
-    hboxLayout160->addWidget(textLabel2_9_26);
-    textLabel2_9_26->setText(textname);
+    QLabel *textLabel2_9_26 = new QLabel ( frame );
+    textLabel2_9_26->setObjectName ( QString::fromUtf8 ( "textLabel2_9_2" ) );
+    hboxLayout160->addWidget ( textLabel2_9_26 );
+    textLabel2_9_26->setText ( textname );
 
-    if (type == "DBDATE") {
-        BusquedaFecha *bus = new BusquedaFecha(frame);
-        bus->setObjectName(objname);
-        hboxLayout160->addWidget(bus);
+    if ( type == "DBDATE" ) {
+        BusquedaFecha * bus = new BusquedaFecha ( frame );
+        bus->setObjectName ( objname );
+        hboxLayout160->addWidget ( bus );
     } else {
-        QLineEdit *bus = new QLineEdit(frame);
-        bus->setObjectName(objname);
-        hboxLayout160->addWidget(bus);
+        QLineEdit *bus = new QLineEdit ( frame );
+        bus->setObjectName ( objname );
+        hboxLayout160->addWidget ( bus );
     } // end if
-    vboxl->addLayout(hboxLayout160);
+    vboxl->addLayout ( hboxLayout160 );
 }
 
 ///
 /**
 **/
-void Ficha::setModoConsulta() {
-    _depura("Ficha::setModoConsulta", 0);
+void Ficha::setModoConsulta()
+{
+    _depura ( "Ficha::setModoConsulta", 0 );
     m_modo = SelectMode;
-    _depura("END Ficha::setModoConsulta", 0);
+    _depura ( "END Ficha::setModoConsulta", 0 );
 }
 
 
 ///
 /**
 **/
-void Ficha::setModoEdicion() {
-    _depura("Ficha::setModoEdicion", 0);
+void Ficha::setModoEdicion()
+{
+    _depura ( "Ficha::setModoEdicion", 0 );
     m_modo = EditMode;
-    _depura("END Ficha::setModoEdicion", 0);
+    _depura ( "END Ficha::setModoEdicion", 0 );
 }
 
 
@@ -238,9 +245,10 @@ void Ficha::setModoEdicion() {
 /**
 \return
 **/
-bool Ficha::modoEdicion() {
-    _depura("Ficha::modoEdicion", 0);
-    _depura("END Ficha::modoEdicion", 0);
+bool Ficha::modoEdicion()
+{
+    _depura ( "Ficha::modoEdicion", 0 );
+    _depura ( "END Ficha::modoEdicion", 0 );
     return m_modo == EditMode;
 }
 
@@ -249,9 +257,10 @@ bool Ficha::modoEdicion() {
 /**
 \return
 **/
-bool Ficha::modoConsulta() {
-    _depura("Ficha::modoConsulta", 0);
-    _depura("END Ficha::modoConsulta", 0);
+bool Ficha::modoConsulta()
+{
+    _depura ( "Ficha::modoConsulta", 0 );
+    _depura ( "END Ficha::modoConsulta", 0 );
     return m_modo == SelectMode;
 }
 
@@ -259,79 +268,85 @@ bool Ficha::modoConsulta() {
 ///
 /**
 **/
-void Ficha::on_mui_cancelar_clicked() {
-    _depura("Ficha::on_mui_cancelar_clicked", 0);
+void Ficha::on_mui_cancelar_clicked()
+{
+    _depura ( "Ficha::on_mui_cancelar_clicked", 0 );
     close();
-    _depura("END Ficha::on_mui_cancelar_clicked", 0);
+    _depura ( "END Ficha::on_mui_cancelar_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void Ficha::on_mui_guardar_clicked() {
-    _depura("Ficha::on_mui_guardar_clicked", 0);
+void Ficha::on_mui_guardar_clicked()
+{
+    _depura ( "Ficha::on_mui_guardar_clicked", 0 );
     guardar();
-    _depura("END Ficha::on_mui_guardar_clicked", 0);
+    _depura ( "END Ficha::on_mui_guardar_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void Ficha::on_mui_aceptar_clicked() {
-    _depura("Ficha::on_mui_aceptar_clicked", 0);
+void Ficha::on_mui_aceptar_clicked()
+{
+    _depura ( "Ficha::on_mui_aceptar_clicked", 0 );
     try {
-        if (guardar()) {
-            throw -1;
+        if ( guardar() ) {
+            throw - 1;
         } // end if
         close();
-    } catch (...) {
-        _depura("Error al guardar la ficha", 2);
+    } catch ( ... ) {
+        _depura ( "Error al guardar la ficha", 2 );
     } // end try
-    _depura("Ficha::on_mui_aceptar_clicked", 0);
+    _depura ( "Ficha::on_mui_aceptar_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void Ficha::on_mui_imprimir_clicked() {
-    _depura("Ficha::on_mui_imprimir_clicked", 0);
+void Ficha::on_mui_imprimir_clicked()
+{
+    _depura ( "Ficha::on_mui_imprimir_clicked", 0 );
     imprimir();
-    _depura("END Ficha::on_mui_imprimir_clicked", 0);
+    _depura ( "END Ficha::on_mui_imprimir_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void Ficha::on_mui_eliminar_clicked() {
+void Ficha::on_mui_eliminar_clicked()
+{
     on_mui_borrar_clicked();
 }
 
 ///
 /**
 **/
-void Ficha::on_mui_borrar_clicked() {
-    _depura("Ficha::on_mui_borrar_clicked", 0);
+void Ficha::on_mui_borrar_clicked()
+{
+    _depura ( "Ficha::on_mui_borrar_clicked", 0 );
 
-    int val = QMessageBox::question(this,
-                                    tr("Borrar") + " " + windowTitle(),
-                                    tr("Desea eliminar '") + " " + windowTitle() + "' ?",
-                                    QMessageBox::Yes,
-                                    QMessageBox::Cancel | QMessageBox::Escape | QMessageBox::Default);
+    int val = QMessageBox::question ( this,
+                                      tr ( "Borrar" ) + " " + windowTitle(),
+                                      tr ( "Desea eliminar '" ) + " " + windowTitle() + "' ?",
+                                      QMessageBox::Yes,
+                                      QMessageBox::Cancel | QMessageBox::Escape | QMessageBox::Default );
 
-    if (val == QMessageBox::Yes) {
-        if (!borrar()) {
+    if ( val == QMessageBox::Yes ) {
+        if ( !borrar() ) {
             dialogChanges_cargaInicial();
-            _depura(windowTitle() + " " + "borrado satisfactoriamente.", 10);
+            _depura ( windowTitle() + " " + "borrado satisfactoriamente.", 10 );
             close();
         } else {
-            mensajeInfo(windowTitle() + tr("No se ha podido borrar"));
+            mensajeInfo ( windowTitle() + tr ( "No se ha podido borrar" ) );
         }// end if
     } // end if
-    _depura("END Ficha::on_mui_borrar_clicked", 0);
+    _depura ( "END Ficha::on_mui_borrar_clicked", 0 );
 }
 
 
@@ -340,18 +355,19 @@ void Ficha::on_mui_borrar_clicked() {
 \param e
 \return
 **/
-void Ficha::closeEvent(QCloseEvent *e) {
-    _depura("Ficha::closeEvent", 0, windowTitle());
+void Ficha::closeEvent ( QCloseEvent *e )
+{
+    _depura ( "Ficha::closeEvent", 0, windowTitle() );
     try {
-        if (dialogChanges_hayCambios()) {
-            int val = QMessageBox::warning(this,
-                                           tr("Guardar") + " " + windowTitle(),
-                                           tr("Desea guardar los cambios?"),
-                                           tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
-            if (val == 0) {
+        if ( dialogChanges_hayCambios() ) {
+            int val = QMessageBox::warning ( this,
+                                             tr ( "Guardar" ) + " " + windowTitle(),
+                                             tr ( "Desea guardar los cambios?" ),
+                                             tr ( "&Si" ), tr ( "&No" ), tr ( "&Cancelar" ), 0, 2 );
+            if ( val == 0 ) {
                 guardar();
             } // end if
-            if (val == 2) {
+            if ( val == 2 ) {
                 e->ignore();
                 return;
             } // end if
@@ -359,11 +375,11 @@ void Ficha::closeEvent(QCloseEvent *e) {
         /// \TODO Este sacaWindow encubre un bug. Debe tratarse de otra forma el
         /// sacar las ventanas de listventanas.
 //        sacaWindow();
-    } catch (...) {
-        mensajeInfo(tr("No se pudo cerrar la ventana debido a un error"));
+    } catch ( ... ) {
+        mensajeInfo ( tr ( "No se pudo cerrar la ventana debido a un error" ) );
         e->ignore();
     } // end try
-    _depura("END Ficha::closeEvent", 0);
+    _depura ( "END Ficha::closeEvent", 0 );
 }
 
 
@@ -371,12 +387,13 @@ void Ficha::closeEvent(QCloseEvent *e) {
 /**
 \return
 **/
-int Ficha::sacaWindow() {
-    _depura("Ficha::sacaWindow", 0);
-    if (empresaBase() != NULL) {
-        empresaBase()->sacaWindow(this);
+int Ficha::sacaWindow()
+{
+    _depura ( "Ficha::sacaWindow", 0 );
+    if ( empresaBase() != NULL ) {
+        empresaBase() ->sacaWindow ( this );
     } // end if
-    _depura("END Ficha::sacaWindow", 0);
+    _depura ( "END Ficha::sacaWindow", 0 );
     return 0;
 }
 
@@ -387,70 +404,74 @@ int Ficha::sacaWindow() {
 \param obj
 \param compdup
 **/
-void Ficha::meteWindow(QString nom, QObject *obj, bool compdup) {
-    _depura("Ficha::meteWindow", 0);
-    if (empresaBase() != NULL) {
-        empresaBase()->meteWindow(nom, obj, compdup);
+void Ficha::meteWindow ( QString nom, QObject *obj, bool compdup )
+{
+    _depura ( "Ficha::meteWindow", 0 );
+    if ( empresaBase() != NULL ) {
+        empresaBase() ->meteWindow ( nom, obj, compdup );
     } // end if
 
     /// De Forma rapida hacemos un tratamiento de los permisos
-    setDBTableName(tableName());
+    setDBTableName ( tableName() );
     /// Tal vez no es el mejor sitio para hacer la carga de SPECS. Pero no hay llamada especifica
     /// De configuración por lo que si no es este no es ninguno.
     cargaSpecs();
-    _depura("END Ficha::meteWindow", 0);
+    _depura ( "END Ficha::meteWindow", 0 );
 }
 
 
 ///
 /**
 **/
-void Ficha::on_customContextMenuRequested(const QPoint &) {
-    _depura("Ficha::on_customContextMenuRequested", 0);
-    QMenu *popup = new QMenu(this);
+void Ficha::on_customContextMenuRequested ( const QPoint & )
+{
+    _depura ( "Ficha::on_customContextMenuRequested", 0 );
+    QMenu *popup = new QMenu ( this );
 
     /// Lanzamos el evento para que pueda ser capturado por terceros.
-    emit pintaMenu(popup);
+    emit pintaMenu ( popup );
 
     /// Lanzamos la propagacion del menu a traves de las clases derivadas.
-    creaMenu(popup);
+    creaMenu ( popup );
 
 
-    QAction *avconfig = popup->addAction(tr("Opciones Avanzadas de Ficha"));
-    QAction *avprint = popup->addAction(tr("Imprimir Ficha"));
-    QAction *opcion = popup->exec(QCursor::pos());
+    QAction *avconfig = popup->addAction ( tr ( "Opciones Avanzadas de Ficha" ) );
+    QAction *avprint = popup->addAction ( tr ( "Imprimir Ficha" ) );
+    QAction *opcion = popup->exec ( QCursor::pos() );
 
-    if (opcion) {
-        if (opcion == avconfig) {
-            new FichaCfg(empresaBase(), this, 0);
-        } else if (opcion == avprint) {
+    if ( opcion ) {
+        if ( opcion == avconfig ) {
+            new FichaCfg ( empresaBase(), this, 0 );
+        } else if ( opcion == avprint ) {
             Ficha::imprimir();
         } // end if
 
-        emit trataMenu(opcion);
+        emit trataMenu ( opcion );
 
         /// Activamos las herederas.
-        procesaMenu(opcion);
+        procesaMenu ( opcion );
     } // end if
 
     delete popup;
-    _depura("END Ficha::on_customContextMenuRequested", 0);
+    _depura ( "END Ficha::on_customContextMenuRequested", 0 );
 }
 
 
 ///
 /**
 **/
-void Ficha::creaMenu(QMenu *) {
-    _depura("SubForm3:: CreaMenu", 0, "funcion para ser sobreescrita");
+void Ficha::creaMenu ( QMenu * )
+{
+    _depura ( "SubForm3:: CreaMenu", 0, "funcion para ser sobreescrita" );
 }
 
 
 ///
 /**
 **/
-void Ficha::procesaMenu(QAction *) {
-    _depura("SubForm3:: procesaMenu", 0, "funcion para ser sobreescrita");
+void Ficha::procesaMenu ( QAction * )
+{
+    _depura ( "SubForm3:: procesaMenu", 0, "funcion para ser sobreescrita" );
 }
 
 
@@ -458,19 +479,20 @@ void Ficha::procesaMenu(QAction *) {
 /**
 \param nom
 **/
-void Ficha::setDBTableName(QString nom) {
-    _depura("Ficha::setDBTableName", 0);
-    DBRecord::setDBTableName(nom);
+void Ficha::setDBTableName ( QString nom )
+{
+    _depura ( "Ficha::setDBTableName", 0 );
+    DBRecord::setDBTableName ( nom );
 
-    if (!empresaBase()->has_table_privilege(nom, "INSERT")) {
+    if ( !empresaBase() ->has_table_privilege ( nom, "INSERT" ) ) {
         /// Buscamos los permisos que tiene el usuario y desactivamos botones.
-        QToolButton *b = findChild<QToolButton *>("mui_guardar");
-        if (b) b->setDisabled(TRUE);
-        b = findChild<QToolButton *>("mui_borrar");
-        if (b) b->setDisabled(TRUE);
+        QToolButton * b = findChild<QToolButton *> ( "mui_guardar" );
+        if ( b ) b->setDisabled ( TRUE );
+        b = findChild<QToolButton *> ( "mui_borrar" );
+        if ( b ) b->setDisabled ( TRUE );
     } // end if
 
-    _depura("END Ficha::setDBTableName", 0);
+    _depura ( "END Ficha::setDBTableName", 0 );
 }
 
 
@@ -478,60 +500,62 @@ void Ficha::setDBTableName(QString nom) {
 /**
 \param nom
 **/
-void Ficha::setTitleName(QString nom) {
-    _depura("Ficha::setTitleName");
+void Ficha::setTitleName ( QString nom )
+{
+    _depura ( "Ficha::setTitleName" );
     m_title = nom;
-    _depura("END Ficha::setTitleName");
+    _depura ( "END Ficha::setTitleName" );
 }
 
 
 ///
 /**
 **/
-void Ficha::pintar() {
-    _depura("Ficha::pintar", 0);
+void Ficha::pintar()
+{
+    _depura ( "Ficha::pintar", 0 );
     DBCampo *campo;
     /// Recorremos todos los campos definidos.
-    for (int i = 0; i < m_lista.size(); ++i) {
-        campo = m_lista.at(i);
+    for ( int i = 0; i < m_lista.size(); ++i ) {
+        campo = m_lista.at ( i );
         /// Buscamos un QLineEdit con nombre coincidente.
-        QLineEdit *l = findChild<QLineEdit *>("mui_" + campo->nomcampo());
-        if (l) {
-            l->setText(campo->valorcampo());
+        QLineEdit *l = findChild<QLineEdit *> ( "mui_" + campo->nomcampo() );
+        if ( l ) {
+            l->setText ( campo->valorcampo() );
         } // end if
         /// Buscamos un QTextEdit con nombre coincidente.
-        QTextEdit *l3 = findChild<QTextEdit *>("mui_" + campo->nomcampo());
-        if (l3) {
-            l3->setText(campo->valorcampo());
+        QTextEdit *l3 = findChild<QTextEdit *> ( "mui_" + campo->nomcampo() );
+        if ( l3 ) {
+            l3->setText ( campo->valorcampo() );
         } // end if
         /// Buscamos BLWidgets que coincidan con el campo supuestamente
         /// sirve para los campos personales.
-        BLWidget *l1 = findChild<BLWidget *>("mui_" + campo->nomcampo());
-        if (l1) {
-            l1->setValorCampo(campo->valorcampo());
+        BLWidget *l1 = findChild<BLWidget *> ( "mui_" + campo->nomcampo() );
+        if ( l1 ) {
+            l1->setValorCampo ( campo->valorcampo() );
         } // end if
         /// Buscamos QComboBox2 que coincidan con el campo supuestamente
         /// sirve para los campos personales.
-        QComboBox2 *l2 = findChild<QComboBox2 *>("mui_" + campo->nomcampo());
-        if (l2) {
-            l2->setValorCampo(campo->valorcampo());
+        QComboBox2 *l2 = findChild<QComboBox2 *> ( "mui_" + campo->nomcampo() );
+        if ( l2 ) {
+            l2->setValorCampo ( campo->valorcampo() );
         } // end if
-        QCheckBox *l5 = findChild<QCheckBox *>("mui_" + campo->nomcampo());
-        if (l5) {
-            if (campo->valorcampo() == "t") {
-                l5->setChecked(TRUE);
+        QCheckBox *l5 = findChild<QCheckBox *> ( "mui_" + campo->nomcampo() );
+        if ( l5 ) {
+            if ( campo->valorcampo() == "t" ) {
+                l5->setChecked ( TRUE );
             } else {
-                l5->setChecked(FALSE);
+                l5->setChecked ( FALSE );
             } // end if
         } // end if
 
         /// Buscamos los radio buttons y los preparamos.
-        QList<QRadioButton2 *> l6 = findChildren<QRadioButton2 *>(QRegExp("mui_"+campo->nomcampo()+"_*"));
-        for (int i = 0; i < l6.size(); ++i) {
-            if (l6.at(i)->valorCampo() == campo->valorcampo()) {
-                l6.at(i)->setChecked(TRUE);
+        QList<QRadioButton2 *> l6 = findChildren<QRadioButton2 *> ( QRegExp ( "mui_" + campo->nomcampo() + "_*" ) );
+        for ( int i = 0; i < l6.size(); ++i ) {
+            if ( l6.at ( i ) ->valorCampo() == campo->valorcampo() ) {
+                l6.at ( i ) ->setChecked ( TRUE );
             } else {
-                l6.at(i)->setChecked(FALSE);
+                l6.at ( i ) ->setChecked ( FALSE );
             } // end if
         } // end for
     } // end for
@@ -546,58 +570,59 @@ void Ficha::pintar() {
 */
 /**
 **/
-void Ficha::recogeValores() {
-    _depura("Ficha::recogeValores", 0);
+void Ficha::recogeValores()
+{
+    _depura ( "Ficha::recogeValores", 0 );
     DBCampo *campo;
     /// Recorremos todos los campos definidos.
-    for (int i = 0; i < m_lista.size(); ++i) {
-        campo = m_lista.at(i);
+    for ( int i = 0; i < m_lista.size(); ++i ) {
+        campo = m_lista.at ( i );
         /// Buscamos un QLineEdit con nombre coincidente.
-        QLineEdit *l = findChild<QLineEdit *>("mui_" + campo->nomcampo());
-        if (l)
-            campo->set(l->text());
+        QLineEdit *l = findChild<QLineEdit *> ( "mui_" + campo->nomcampo() );
+        if ( l )
+            campo->set ( l->text() );
 
         /// Buscamos un QLineEdit con nombre coincidente.
-        QTextEdit *l3 = findChild<QTextEdit *>("mui_" + campo->nomcampo());
-        if (l3)
-            campo->set(l3->toPlainText());
+        QTextEdit *l3 = findChild<QTextEdit *> ( "mui_" + campo->nomcampo() );
+        if ( l3 )
+            campo->set ( l3->toPlainText() );
 
         /// Buscamos BLWidgets que coincidan con el campo supuestamente sirve para los campos personales
-        BLWidget *l1 = findChild<BLWidget *>("mui_" + campo->nomcampo());
-        if (l1)
-            campo->set(l1->valorCampo());
+        BLWidget *l1 = findChild<BLWidget *> ( "mui_" + campo->nomcampo() );
+        if ( l1 )
+            campo->set ( l1->valorCampo() );
 
         /// Buscamos QComboBox2 que coincidan con el campo supuestamente sirve para los campos personales
-        QComboBox2 *l2 = findChild<QComboBox2 *>("mui_" + campo->nomcampo());
-        if (l2)
-            campo->set(l2->valorCampo());
+        QComboBox2 *l2 = findChild<QComboBox2 *> ( "mui_" + campo->nomcampo() );
+        if ( l2 )
+            campo->set ( l2->valorCampo() );
 
-        QCheckBox *l5 = findChild<QCheckBox *>("mui_" + campo->nomcampo());
-        if (l5) {
-            if (l5->isChecked()) {
-                campo->set("TRUE");
+        QCheckBox *l5 = findChild<QCheckBox *> ( "mui_" + campo->nomcampo() );
+        if ( l5 ) {
+            if ( l5->isChecked() ) {
+                campo->set ( "TRUE" );
             } else {
-                campo->set("FALSE");
+                campo->set ( "FALSE" );
             } // end if
         } // end if
 
         /// Buscamos los radio buttons y los preparamos.
-        QList<QRadioButton2 *> l6 = findChildren<QRadioButton2 *>(QRegExp("mui_"+campo->nomcampo()+"_*"));
-        if (l6.size() > 0) {
+        QList<QRadioButton2 *> l6 = findChildren<QRadioButton2 *> ( QRegExp ( "mui_" + campo->nomcampo() + "_*" ) );
+        if ( l6.size() > 0 ) {
             int aux = 0;
-            for (int i = 0; i < l6.size(); ++i) {
-                if (l6.at(i)->isChecked()) {
-                    campo->set(l6.at(i)->valorCampo());
+            for ( int i = 0; i < l6.size(); ++i ) {
+                if ( l6.at ( i ) ->isChecked() ) {
+                    campo->set ( l6.at ( i ) ->valorCampo() );
                     aux = 1;
                 } // end if
             } // end for
-            if (aux == 0) {
-                campo->set("");
+            if ( aux == 0 ) {
+                campo->set ( "" );
             } // end if
         } // end if
 
     } // end for
-    _depura("END Ficha::recogeValores", 0);
+    _depura ( "END Ficha::recogeValores", 0 );
 }
 
 
@@ -606,23 +631,24 @@ void Ficha::recogeValores() {
 \param id
 \return
 **/
-int Ficha::cargar(QString id) {
-    _depura("Ficha::cargar", 0, id);
+int Ficha::cargar ( QString id )
+{
+    _depura ( "Ficha::cargar", 0, id );
     try {
-        if (DBRecord::cargar(id)) {
-            throw -1;
+        if ( DBRecord::cargar ( id ) ) {
+            throw - 1;
         } // end if
         /// Lanzamos los plugins.
-        if (g_plugins->lanza("Ficha_cargar", this)) return 0;
-        cargarPost(id);
-        setWindowTitle(m_title + " " + DBvalue(m_campoid));
+        if ( g_plugins->lanza ( "Ficha_cargar", this ) ) return 0;
+        cargarPost ( id );
+        setWindowTitle ( m_title + " " + DBvalue ( m_campoid ) );
         pintar();
         dialogChanges_cargaInicial();
-        meteWindow(windowTitle(), this);
-    } catch (...) {
+        meteWindow ( windowTitle(), this );
+    } catch ( ... ) {
         return -1;
     } // end try
-    _depura("END Ficha::cargar", 0);
+    _depura ( "END Ficha::cargar", 0 );
     return 0;
 }
 
@@ -634,38 +660,40 @@ int Ficha::cargar(QString id) {
   Tras guardar todos los elementos hace una carga.
 \return 0 Si no hay problemas. -1 Si ha habido problemas.
 **/
-int Ficha::guardar() {
-    _depura("Ficha::guardar", 0);
+int Ficha::guardar()
+{
+    _depura ( "Ficha::guardar", 0 );
 
     try {
         QString id;
         recogeValores();
-        empresaBase()->begin();
-        DBsave(id);
-        setDBvalue(m_campoid, id);
-        empresaBase()->commit();
+        empresaBase() ->begin();
+        DBsave ( id );
+        setDBvalue ( m_campoid, id );
+        empresaBase() ->commit();
 
         /// Lanzamos los plugins.
-        if (g_plugins->lanza("Ficha_guardar_Post", this)) return 0;
+        if ( g_plugins->lanza ( "Ficha_guardar_Post", this ) ) return 0;
 
         guardarPost();
 
         /// Hacemos una carga para que se actualizen datos como la referencia.
-        cargar(id);
+        cargar ( id );
 
-        _depura("END Ficha::guardar", 0);
+        _depura ( "END Ficha::guardar", 0 );
         return 0;
-    } catch (...) {
-        mensajeInfo("Error inesperado al guardar");
-        empresaBase()->rollback();
+    } catch ( ... ) {
+        mensajeInfo ( "Error inesperado al guardar" );
+        empresaBase() ->rollback();
         return -1;
     } // end try
 }
 
 
-int Ficha::borrarPre() {
-    _depura("Ficha::borrarPre", 0);
-    _depura("END Ficha::borrarPre", 0);
+int Ficha::borrarPre()
+{
+    _depura ( "Ficha::borrarPre", 0 );
+    _depura ( "END Ficha::borrarPre", 0 );
     return 0;
 }
 
@@ -676,10 +704,11 @@ int Ficha::borrarPre() {
 /**
 \return
 **/
-int Ficha::borrar() {
-    _depura("Ficha::borrar existe solo para ser derivado", 0);
+int Ficha::borrar()
+{
+    _depura ( "Ficha::borrar existe solo para ser derivado", 0 );
     /// Lanzamos los plugins.
-    if (g_plugins->lanza("Ficha_borrar", this)) return 0;
+    if ( g_plugins->lanza ( "Ficha_borrar", this ) ) return 0;
     borrarPre();
     return DBRecord::borrar();
 }
@@ -689,9 +718,10 @@ int Ficha::borrar() {
 /**
 \return
 **/
-int Ficha::guardarPost() {
-    _depura("Ficha::guardarPost", 0);
-    _depura("END Ficha::guardarPost", 0);
+int Ficha::guardarPost()
+{
+    _depura ( "Ficha::guardarPost", 0 );
+    _depura ( "END Ficha::guardarPost", 0 );
     return 0;
 }
 
@@ -700,9 +730,10 @@ int Ficha::guardarPost() {
 /**
 \return
 **/
-int Ficha::cargarPost(QString ) {
-    _depura("Ficha::cargarPost", 0);
-    _depura("END Ficha::cargarPost", 0);
+int Ficha::cargarPost ( QString )
+{
+    _depura ( "Ficha::cargarPost", 0 );
+    _depura ( "END Ficha::cargarPost", 0 );
     return 0;
 }
 
@@ -710,9 +741,10 @@ int Ficha::cargarPost(QString ) {
 /**
 \return
 **/
-void Ficha::pintarPost() {
-    _depura("Ficha::pintarPost", 0);
-    _depura("END Ficha::pintarPost", 0);
+void Ficha::pintarPost()
+{
+    _depura ( "Ficha::pintarPost", 0 );
+    _depura ( "END Ficha::pintarPost", 0 );
 }
 
 
@@ -723,15 +755,16 @@ void Ficha::pintarPost() {
 /**
 \param buff El texto entero sobre el que se hace el reemplazo de sentencias.
 **/
-void Ficha::trataTags(QString &buff) {
-    _depura("Ficha::trataTags", 0);
+void Ficha::trataTags ( QString &buff )
+{
+    _depura ( "Ficha::trataTags", 0 );
     int pos =  0;
 
     /// Buscamos parametros en el query y los ponemos.
-    QRegExp rx("\\[(\\w*)\\]");
-    while ((pos = rx.indexIn(buff, pos)) != -1) {
-        if (exists(rx.cap(1))) {
-            buff.replace(pos, rx.matchedLength(), DBvalue(rx.cap(1)));
+    QRegExp rx ( "\\[(\\w*)\\]" );
+    while ( ( pos = rx.indexIn ( buff, pos ) ) != -1 ) {
+        if ( exists ( rx.cap ( 1 ) ) ) {
+            buff.replace ( pos, rx.matchedLength(), DBvalue ( rx.cap ( 1 ) ) );
             pos = 0;
         } else {
             pos += rx.matchedLength();
@@ -740,46 +773,46 @@ void Ficha::trataTags(QString &buff) {
 
     /// Buscamos Query's en condicional
     pos = 0;
-    QRegExp rx9("<!--\\s*EXISTS\\s*FILE\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*EXISTS\\s*-->");
-    rx9.setMinimal(TRUE);
-    while ((pos = rx9.indexIn(buff, pos)) != -1) {
-        QString ldetalle = trataExists(rx9.cap(1), rx9.cap(2));
-        buff.replace(pos, rx9.matchedLength(), ldetalle);
+    QRegExp rx9 ( "<!--\\s*EXISTS\\s*FILE\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*EXISTS\\s*-->" );
+    rx9.setMinimal ( TRUE );
+    while ( ( pos = rx9.indexIn ( buff, pos ) ) != -1 ) {
+        QString ldetalle = trataExists ( rx9.cap ( 1 ), rx9.cap ( 2 ) );
+        buff.replace ( pos, rx9.matchedLength(), ldetalle );
         pos = 0;
     } // end while
 
     /// Buscamos Query's en condicional
     pos = 0;
-    QRegExp rx4("<!--\\s*IF\\s*QUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*IF\\s*QUERY\\s*-->");
-    rx4.setMinimal(TRUE);
-    while ((pos = rx4.indexIn(buff, pos)) != -1) {
-        QString ldetalle = trataIfQuery(rx4.cap(1), rx4.cap(2));
-        buff.replace(pos, rx4.matchedLength(), ldetalle);
+    QRegExp rx4 ( "<!--\\s*IF\\s*QUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*IF\\s*QUERY\\s*-->" );
+    rx4.setMinimal ( TRUE );
+    while ( ( pos = rx4.indexIn ( buff, pos ) ) != -1 ) {
+        QString ldetalle = trataIfQuery ( rx4.cap ( 1 ), rx4.cap ( 2 ) );
+        buff.replace ( pos, rx4.matchedLength(), ldetalle );
         pos = 0;
     } // end while
 
     /// Buscamos Query's por tratar
     pos = 0;
-    QRegExp rx1("<!--\\s*QUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*QUERY\\s*-->");
-    rx1.setMinimal(TRUE);
-    while ((pos = rx1.indexIn(buff, pos)) != -1) {
-        QString ldetalle = trataQuery(rx1.cap(1), rx1.cap(2));
-        buff.replace(pos, rx1.matchedLength(), ldetalle);
+    QRegExp rx1 ( "<!--\\s*QUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*QUERY\\s*-->" );
+    rx1.setMinimal ( TRUE );
+    while ( ( pos = rx1.indexIn ( buff, pos ) ) != -1 ) {
+        QString ldetalle = trataQuery ( rx1.cap ( 1 ), rx1.cap ( 2 ) );
+        buff.replace ( pos, rx1.matchedLength(), ldetalle );
         pos = 0;
     } // end while
 
 
     /// Buscamos Query's por tratar
     pos = 0;
-    QRegExp rx7("<!--\\s*SUBQUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*SUBQUERY\\s*-->");
-    rx7.setMinimal(TRUE);
-    while ((pos = rx7.indexIn(buff, pos)) != -1) {
-        QString ldetalle = trataQuery(rx7.cap(1), rx7.cap(2));
-        buff.replace(pos, rx7.matchedLength(), ldetalle);
+    QRegExp rx7 ( "<!--\\s*SUBQUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*SUBQUERY\\s*-->" );
+    rx7.setMinimal ( TRUE );
+    while ( ( pos = rx7.indexIn ( buff, pos ) ) != -1 ) {
+        QString ldetalle = trataQuery ( rx7.cap ( 1 ), rx7.cap ( 2 ) );
+        buff.replace ( pos, rx7.matchedLength(), ldetalle );
         pos = 0;
     } // end while
 
-    _depura("END Ficha::trataTags", 0);
+    _depura ( "END Ficha::trataTags", 0 );
 }
 
 
@@ -788,30 +821,31 @@ void Ficha::trataTags(QString &buff) {
 \param det Texto de entrada para ser tratado por iteracion.
 \return Si el query tiene elementos lo devuelve el parametro. En caso contrario no devuelve nada.
 **/
-QString Ficha::trataIfQuery(const QString &query, const QString &datos) {
-    _depura("Ficha::trataIfQuery", 0);
-    QString result="";
+QString Ficha::trataIfQuery ( const QString &query, const QString &datos )
+{
+    _depura ( "Ficha::trataIfQuery", 0 );
+    QString result = "";
     QString query1 = query;
 
     /// Buscamos parametros en el query y los ponemos.
-    QRegExp rx("\\[(\\w*)\\]");
+    QRegExp rx ( "\\[(\\w*)\\]" );
     int pos =  0;
-    while ((pos = rx.indexIn(query1, pos)) != -1) {
-        if (exists(rx.cap(1))) {
-            query1.replace(pos, rx.matchedLength(), DBvalue(rx.cap(1)));
+    while ( ( pos = rx.indexIn ( query1, pos ) ) != -1 ) {
+        if ( exists ( rx.cap ( 1 ) ) ) {
+            query1.replace ( pos, rx.matchedLength(), DBvalue ( rx.cap ( 1 ) ) );
             pos = 0;
         } else {
             pos += rx.matchedLength();
         }
     } // end while
     /// Cargamos el query y lo recorremos
-    cursor2 *cur = empresaBase()->cargacursor(query1);
-    if (!cur) return "";
-    if (!cur->eof()) {
+    cursor2 *cur = empresaBase() ->cargacursor ( query1 );
+    if ( !cur ) return "";
+    if ( !cur->eof() ) {
         result = datos;
     } // end while
     delete cur;
-    _depura("END Ficha::trataIfQuery", 0);
+    _depura ( "END Ficha::trataIfQuery", 0 );
     return result;
 }
 
@@ -821,17 +855,18 @@ QString Ficha::trataIfQuery(const QString &query, const QString &datos) {
 \param det Texto de entrada para ser tratado por iteracion.
 \return
 **/
-QString Ficha::trataQuery(const QString &query, const QString &datos) {
-    _depura("Ficha::trataQuery", 0);
-    QString result="";
+QString Ficha::trataQuery ( const QString &query, const QString &datos )
+{
+    _depura ( "Ficha::trataQuery", 0 );
+    QString result = "";
     QString query1 = query;
 
     /// Buscamos parametros en el query y los ponemos.
-    QRegExp rx("\\[(\\w*)\\]");
+    QRegExp rx ( "\\[(\\w*)\\]" );
     int pos =  0;
-    while ((pos = rx.indexIn(query1, pos)) != -1) {
-        if (exists(rx.cap(1))) {
-            query1.replace(pos, rx.matchedLength(), DBvalue(rx.cap(1)));
+    while ( ( pos = rx.indexIn ( query1, pos ) ) != -1 ) {
+        if ( exists ( rx.cap ( 1 ) ) ) {
+            query1.replace ( pos, rx.matchedLength(), DBvalue ( rx.cap ( 1 ) ) );
             pos = 0;
         } else {
             pos += rx.matchedLength();
@@ -839,17 +874,17 @@ QString Ficha::trataQuery(const QString &query, const QString &datos) {
     } // end while
 
     /// Cargamos el query y lo recorremos
-    cursor2 *cur = empresaBase()->cargacursor(query1);
-    if (!cur) return "";
-    while (!cur->eof()) {
+    cursor2 *cur = empresaBase() ->cargacursor ( query1 );
+    if ( !cur ) return "";
+    while ( !cur->eof() ) {
         QString salidatemp = datos;
 
         /// Buscamos cadenas perdidas adicionales que puedan quedar por poner.
-        QRegExp rx("\\[(\\w*)\\]");
+        QRegExp rx ( "\\[(\\w*)\\]" );
         int pos =  0;
-        while ((pos = rx.indexIn(salidatemp, pos)) != -1) {
-            if (cur->numcampo(rx.cap(1)) != -1) {
-                salidatemp.replace(pos, rx.matchedLength(), cur->valor(rx.cap(1)));
+        while ( ( pos = rx.indexIn ( salidatemp, pos ) ) != -1 ) {
+            if ( cur->numcampo ( rx.cap ( 1 ) ) != -1 ) {
+                salidatemp.replace ( pos, rx.matchedLength(), cur->valor ( rx.cap ( 1 ) ) );
                 pos = 0;
             } else {
                 pos += rx.matchedLength();
@@ -860,7 +895,7 @@ QString Ficha::trataQuery(const QString &query, const QString &datos) {
         cur->siguienteregistro();
     } // end while
     delete cur;
-    _depura("END Ficha::trataQuery", 0);
+    _depura ( "END Ficha::trataQuery", 0 );
     return result;
 }
 
@@ -870,28 +905,29 @@ QString Ficha::trataQuery(const QString &query, const QString &datos) {
 \param det Texto de entrada para ser tratado por iteracion.
 \return Si el query tiene elementos lo devuelve el parametro. En caso contrario no devuelve nada.
 **/
-QString Ficha::trataExists(const QString &query, const QString &datos) {
-    _depura("Ficha::trataExists", 0);
+QString Ficha::trataExists ( const QString &query, const QString &datos )
+{
+    _depura ( "Ficha::trataExists", 0 );
 
-    QString result="";
+    QString result = "";
     QString query1 = query;
 
     /// Buscamos parametros en el query y los ponemos.
-    QRegExp rx("\\[(\\w*)\\]");
+    QRegExp rx ( "\\[(\\w*)\\]" );
     int pos =  0;
-    while ((pos = rx.indexIn(query1, pos)) != -1) {
-        if (exists(rx.cap(1))) {
-            query1.replace(pos, rx.matchedLength(), DBvalue(rx.cap(1)));
+    while ( ( pos = rx.indexIn ( query1, pos ) ) != -1 ) {
+        if ( exists ( rx.cap ( 1 ) ) ) {
+            query1.replace ( pos, rx.matchedLength(), DBvalue ( rx.cap ( 1 ) ) );
             pos = 0;
         } else {
             pos += rx.matchedLength();
         }
     } // end while
 
-    QFile file(query1);
-    if (file.exists())
+    QFile file ( query1 );
+    if ( file.exists() )
         result = datos;
-    _depura("END Ficha::trataExists", 0);
+    _depura ( "END Ficha::trataExists", 0 );
 
     return result;
 }
@@ -900,17 +936,18 @@ QString Ficha::trataExists(const QString &query, const QString &datos) {
 ///
 /**
 **/
-void Ficha::generaRML(const QString &arch) {
-    _depura("Ficha::generaRML", 0);
+void Ficha::generaRML ( const QString &arch )
+{
+    _depura ( "Ficha::generaRML", 0 );
 
     /// Disparamos los plugins
-    int res = g_plugins->lanza("Ficha_generaRML", this);
-    if (res != 0) {
+    int res = g_plugins->lanza ( "Ficha_generaRML", this );
+    if ( res != 0 ) {
         return;
     } // end if
-    QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + arch;
-    QString archivod = confpr->valor(CONF_DIR_USER) + arch;
-    QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
+    QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + arch;
+    QString archivod = confpr->valor ( CONF_DIR_USER ) + arch;
+    QString archivologo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
 
 
     /// Copiamos el archivo.
@@ -922,34 +959,34 @@ void Ficha::generaRML(const QString &arch) {
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
-    system (archivo.toAscii().constData());
+    system ( archivo.toAscii().constData() );
     /// Copiamos el logo
 #ifdef WINDOWS
 
-    archivologo = "copy " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
+    archivologo = "copy " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #else
 
-    archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
+    archivologo = "cp " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
-    system(archivologo.toAscii().constData());
+    system ( archivologo.toAscii().constData() );
     QFile file;
-    file.setFileName(archivod);
-    file.open(QIODevice::ReadOnly);
-    QTextStream stream(&file);
+    file.setFileName ( archivod );
+    file.open ( QIODevice::ReadOnly );
+    QTextStream stream ( &file );
     QString buff = stream.readAll();
     file.close();
 
     /// Hacemos el tratamiento avanzado de TAGS
-    trataTags(buff);
+    trataTags ( buff );
 
-    if (file.open(QIODevice::WriteOnly)) {
-        QTextStream stream(&file);
+    if ( file.open ( QIODevice::WriteOnly ) ) {
+        QTextStream stream ( &file );
         stream << buff;
         file.close();
     } // end if
 
-    _depura("END Ficha::generaRML", 0);
+    _depura ( "END Ficha::generaRML", 0 );
 }
 
 

@@ -28,17 +28,19 @@
 
 /// Muestra y administra la ventana de lista de descuentos por albar&aacute;n a cliente.
 /** */
-class ListDescuentoAlbaranClienteView : public SubForm2Bf {
+class ListDescuentoAlbaranClienteView : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
     QString mdb_idalbaran;
-    ListDescuentoAlbaranClienteView(QWidget *parent = 0);
-    ~ListDescuentoAlbaranClienteView() {}
+    ListDescuentoAlbaranClienteView ( QWidget *parent = 0 );
+    ~ListDescuentoAlbaranClienteView()
+    {}
     ;
 
 public slots:
-    virtual void cargar(QString idalbaran);
+    virtual void cargar ( QString idalbaran );
 };
 
 #endif

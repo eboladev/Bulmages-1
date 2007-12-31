@@ -31,39 +31,42 @@
 \param emp
 \param parent
 **/
-selectcanalview::selectcanalview(Empresa *emp,QWidget *parent)
-        : QDialog(parent), PEmpresaBase(emp) {
-    _depura("selectcanalview::selectcanalview", 0);
-    setupUi(this);
-    numdigitos = ((Empresa *)empresaBase())->numdigitosempresa();
-    m_iterador = new QTreeWidgetItemIterator(m_listCanales);
+selectcanalview::selectcanalview ( Empresa *emp, QWidget *parent )
+        : QDialog ( parent ), PEmpresaBase ( emp )
+{
+    _depura ( "selectcanalview::selectcanalview", 0 );
+    setupUi ( this );
+    numdigitos = ( ( Empresa * ) empresaBase() ) ->numdigitosempresa();
+    m_iterador = new QTreeWidgetItemIterator ( m_listCanales );
 
-    m_listCanales->setColumnCount(5);
+    m_listCanales->setColumnCount ( 5 );
 
     QStringList etiquetas;
-    etiquetas << tr("nom_canal") << tr("desc_canal") << tr("Status") << tr("idcanal") << tr("Seleccion");
-    m_listCanales->setHeaderLabels(etiquetas);
+    etiquetas << tr ( "nom_canal" ) << tr ( "desc_canal" ) << tr ( "Status" ) << tr ( "idcanal" ) << tr ( "Seleccion" );
+    m_listCanales->setHeaderLabels ( etiquetas );
 
     cargacanales();
-    _depura("END selectcanalview::selectcanalview", 0);
+    _depura ( "END selectcanalview::selectcanalview", 0 );
 }
 
 
 ///
 /**
 **/
-selectcanalview::~selectcanalview() {
-    _depura("selectcanalview::~selectcanalview", 0);
+selectcanalview::~selectcanalview()
+{
+    _depura ( "selectcanalview::~selectcanalview", 0 );
     delete m_iterador;
-    _depura("END selectcanalview::~selectcanalview", 0);
+    _depura ( "END selectcanalview::~selectcanalview", 0 );
 }
 
 
 ///
 /**
 **/
-void selectcanalview::cargacanales() {
-    _depura("selectcanalview::cargacanales", 0);
+void selectcanalview::cargacanales()
+{
+    _depura ( "selectcanalview::cargacanales", 0 );
     QMap <int, QTreeWidgetItem *> Lista;
     QTreeWidgetItem *it;
 
@@ -71,23 +74,23 @@ void selectcanalview::cargacanales() {
     cursor2 *cursoraux1;
     /// Cogemos los canales y los ponemos donde toca.
     m_listCanales->clear();
-    empresaBase()->begin();
-    cursoraux1 = empresaBase()->cargacursor("SELECT * FROM canal", "canalillos");
-    empresaBase()->commit();
-    while (!cursoraux1->eof()) {
-        idcanal = atoi(cursoraux1->valor("idcanal").toAscii());
-        it = new QTreeWidgetItem(m_listCanales);
+    empresaBase() ->begin();
+    cursoraux1 = empresaBase() ->cargacursor ( "SELECT * FROM canal", "canalillos" );
+    empresaBase() ->commit();
+    while ( !cursoraux1->eof() ) {
+        idcanal = atoi ( cursoraux1->valor ( "idcanal" ).toAscii() );
+        it = new QTreeWidgetItem ( m_listCanales );
         Lista[idcanal] = it;
-        it->setText(3, cursoraux1->valor("idcanal"));
-        it->setText(1, cursoraux1->valor("descripcion"));
-        it->setText(0, cursoraux1->valor("nombre"));
-        it->setCheckState(0, Qt::Unchecked);
-         it->setExpanded(TRUE);
+        it->setText ( 3, cursoraux1->valor ( "idcanal" ) );
+        it->setText ( 1, cursoraux1->valor ( "descripcion" ) );
+        it->setText ( 0, cursoraux1->valor ( "nombre" ) );
+        it->setCheckState ( 0, Qt::Unchecked );
+        it->setExpanded ( TRUE );
         cursoraux1->siguienteregistro();
     } // end while
 
     delete cursoraux1;
-    _depura("END selectcanalview::cargacanales", 0);
+    _depura ( "END selectcanalview::cargacanales", 0 );
 }
 
 
@@ -97,11 +100,12 @@ void selectcanalview::cargacanales() {
 /**
 \return
 **/
-int selectcanalview::firstcanal() {
-    _depura("selectcanalview::firstcanal", 0);
+int selectcanalview::firstcanal()
+{
+    _depura ( "selectcanalview::firstcanal", 0 );
     delete m_iterador;
-    m_iterador = new QTreeWidgetItemIterator(m_listCanales);
-    _depura("END selectcanalview::firstcanal", 0);
+    m_iterador = new QTreeWidgetItemIterator ( m_listCanales );
+    _depura ( "END selectcanalview::firstcanal", 0 );
     return nextcanal();
 }
 
@@ -110,20 +114,21 @@ int selectcanalview::firstcanal() {
 /**
 \return
 **/
-int selectcanalview::nextcanal() {
-    _depura("selectcanalview::nextcanal", 0);
+int selectcanalview::nextcanal()
+{
+    _depura ( "selectcanalview::nextcanal", 0 );
     int idcanal = 0;
-    fprintf(stderr, "nextcanal\n");
-    while ((**m_iterador) && idcanal == 0) {
-        if ((**m_iterador)->checkState(0) == Qt::Checked) {
-            idcanal = (**m_iterador)->text(3).toInt();
-            fprintf(stderr, "siguiente canal:%d\n", idcanal);
+    fprintf ( stderr, "nextcanal\n" );
+    while ( ( **m_iterador ) && idcanal == 0 ) {
+        if ( ( **m_iterador ) ->checkState ( 0 ) == Qt::Checked ) {
+            idcanal = ( **m_iterador ) ->text ( 3 ).toInt();
+            fprintf ( stderr, "siguiente canal:%d\n", idcanal );
             return idcanal;
         } // end if
-        ++(*m_iterador);
+        ++ ( *m_iterador );
     } // end while
 
-    _depura("END selectcanalview::nextcanal", 0);
+    _depura ( "END selectcanalview::nextcanal", 0 );
     return idcanal;
 }
 
@@ -132,22 +137,23 @@ int selectcanalview::nextcanal() {
 /**
 \return
 **/
-QString selectcanalview::cadcanal() {
-    _depura("selectcanalview::cadcanal", 0);
+QString selectcanalview::cadcanal()
+{
+    _depura ( "selectcanalview::cadcanal", 0 );
 
     int idcanal;
     QString ccanales = "";
 
     idcanal = firstcanal();
-    while (idcanal) {
-        if (ccanales != "")
-            ccanales.sprintf("%s, %d", ccanales.toAscii().constData(), idcanal);
+    while ( idcanal ) {
+        if ( ccanales != "" )
+            ccanales.sprintf ( "%s, %d", ccanales.toAscii().constData(), idcanal );
         else
-            ccanales.sprintf("%d", idcanal);
+            ccanales.sprintf ( "%d", idcanal );
         idcanal = nextcanal();
     } // end while
 
-    _depura("END selectcanalview::cadcanal", 0);
+    _depura ( "END selectcanalview::cadcanal", 0 );
     return ccanales;
 }
 
@@ -156,17 +162,18 @@ QString selectcanalview::cadcanal() {
 /**
 \return
 **/
-QString selectcanalview::nomcanal() {
-    _depura("selectcanalview::nomcanal", 0);
-    QTreeWidgetItemIterator m_iterador(m_listCanales);
-    QString value= "";
+QString selectcanalview::nomcanal()
+{
+    _depura ( "selectcanalview::nomcanal", 0 );
+    QTreeWidgetItemIterator m_iterador ( m_listCanales );
+    QString value = "";
 
-    if ((*m_iterador)->checkState(0) == Qt::Checked) {
-        value = (*m_iterador)->text(0);
+    if ( ( *m_iterador ) ->checkState ( 0 ) == Qt::Checked ) {
+        value = ( *m_iterador ) ->text ( 0 );
     } // end if
 
     delete *m_iterador;
-    _depura("END selectcanalview::nomcanal", 0);
+    _depura ( "END selectcanalview::nomcanal", 0 );
     return value;
 }
 
@@ -174,55 +181,58 @@ QString selectcanalview::nomcanal() {
 ///
 /**
 **/
-void selectcanalview::on_mui_todo_clicked() {
-    _depura("selectcanalview::on_mui_todo_clicked", 0);
-    QTreeWidgetItemIterator m_iterador(m_listCanales);
+void selectcanalview::on_mui_todo_clicked()
+{
+    _depura ( "selectcanalview::on_mui_todo_clicked", 0 );
+    QTreeWidgetItemIterator m_iterador ( m_listCanales );
 
-    while (*m_iterador) {
-        (*m_iterador)->setCheckState(0, Qt::Checked);
+    while ( *m_iterador ) {
+        ( *m_iterador ) ->setCheckState ( 0, Qt::Checked );
         ++m_iterador;
     }
 
     delete *m_iterador;
-    _depura("END selectcanalview::on_mui_todo_clicked", 0);
+    _depura ( "END selectcanalview::on_mui_todo_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void selectcanalview::on_mui_nada_clicked() {
-    _depura("selectcanalview::on_mui_nada_clicked", 0);
+void selectcanalview::on_mui_nada_clicked()
+{
+    _depura ( "selectcanalview::on_mui_nada_clicked", 0 );
 
-    QTreeWidgetItemIterator m_iterador(m_listCanales);
+    QTreeWidgetItemIterator m_iterador ( m_listCanales );
 
-    while (*m_iterador) {
-        (*m_iterador)->setCheckState(0, Qt::Unchecked);
+    while ( *m_iterador ) {
+        ( *m_iterador ) ->setCheckState ( 0, Qt::Unchecked );
         ++m_iterador;
     }
 
     delete *m_iterador;
-    _depura("END selectcanalview::on_mui_nada_clicked", 0);
+    _depura ( "END selectcanalview::on_mui_nada_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void selectcanalview::on_mui_invertir_clicked() {
-    _depura("selectcanalview::on_mui_invertir_clicked", 0);
-    QTreeWidgetItemIterator m_iterador(m_listCanales);
+void selectcanalview::on_mui_invertir_clicked()
+{
+    _depura ( "selectcanalview::on_mui_invertir_clicked", 0 );
+    QTreeWidgetItemIterator m_iterador ( m_listCanales );
 
-    while (*m_iterador) {
-        if ((*m_iterador)->checkState(0) == Qt::Unchecked) {
-            (*m_iterador)->setCheckState(0, Qt::Checked);
+    while ( *m_iterador ) {
+        if ( ( *m_iterador ) ->checkState ( 0 ) == Qt::Unchecked ) {
+            ( *m_iterador ) ->setCheckState ( 0, Qt::Checked );
         } else {
-            (*m_iterador)->setCheckState(0, Qt::Unchecked);
+            ( *m_iterador ) ->setCheckState ( 0, Qt::Unchecked );
         } // end if
         ++m_iterador;
     } // end while
 
     delete *m_iterador;
-    _depura("END selectcanalview::on_mui_invertir_clicked", 0);
+    _depura ( "END selectcanalview::on_mui_invertir_clicked", 0 );
 }
 

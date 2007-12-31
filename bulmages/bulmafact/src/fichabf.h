@@ -31,7 +31,8 @@
 /// como un QMap.
 typedef QMap<QString, Fixed> base;
 
-class FichaBf : public Ficha {
+class FichaBf : public Ficha
+{
     Q_OBJECT
 
 public:
@@ -40,21 +41,22 @@ public:
 
 public:
     Company *empresaBase();
-    FichaBf(Company *comp, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode);
+    FichaBf ( Company *comp, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode );
     virtual ~FichaBf();
-    void setListaLineas(SubForm2Bf *form);
-    void setListaDescuentos(SubForm2Bf *form);
+    void setListaLineas ( SubForm2Bf *form );
+    void setListaDescuentos ( SubForm2Bf *form );
     SubForm2Bf* getlistalineas();
     SubForm2Bf* getlistadescuentos();
     virtual void imprimir();
     virtual void generaRML();
-    virtual void generaRML(const QString &arch);
+    virtual void generaRML ( const QString &arch );
     virtual void calculaypintatotales();
-    virtual void pintatotales(Fixed, Fixed, Fixed, Fixed, Fixed, Fixed) {};
-    virtual void trataTags(QString &buff);
-    virtual QString trataLineasDetalle(const QString &det);
-    virtual QString trataLineasDescuento(const QString &det);
-    virtual QString trataTotales(const QString &det);
+    virtual void pintatotales ( Fixed, Fixed, Fixed, Fixed, Fixed, Fixed )
+    {};
+    virtual void trataTags ( QString &buff );
+    virtual QString trataLineasDetalle ( const QString &det );
+    virtual QString trataLineasDescuento ( const QString &det );
+    virtual QString trataTotales ( const QString &det );
 };
 
 #endif

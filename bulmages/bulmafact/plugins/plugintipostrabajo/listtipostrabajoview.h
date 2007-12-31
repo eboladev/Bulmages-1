@@ -39,11 +39,12 @@ class company;
 
 /// Muestra y administra el listado de almacenes.
 /** */
-class ListTiposTrabajoView : public FichaBf, public Ui_ListTiposTrabajoBase {
+class ListTiposTrabajoView : public FichaBf, public Ui_ListTiposTrabajoBase
+{
     Q_OBJECT
 
 public:
-    ListTiposTrabajoView(Company *comp, QWidget *parent);
+    ListTiposTrabajoView ( Company *comp, QWidget *parent );
     virtual ~ListTiposTrabajoView();
 
 public slots:

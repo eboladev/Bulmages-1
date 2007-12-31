@@ -37,17 +37,18 @@
     (Fechas y rangos) y que se encarga de generar el balance en los formatos de
     impresi&oacute;n indicados.
 */
-class BalancePrintView : public QDialog, public Ui_BalancePrintBase, public PEmpresaBase {
+class BalancePrintView : public QDialog, public Ui_BalancePrintBase, public PEmpresaBase
+{
     Q_OBJECT
 
 
 public:
-    BalancePrintView(Empresa *emp);
+    BalancePrintView ( Empresa *emp );
     ~BalancePrintView();
-    void inicializa1(QString, QString, QString, QString, bool);
+    void inicializa1 ( QString, QString, QString, QString, bool );
 
 private:
-    void presentar(char *tipus);
+    void presentar ( char *tipus );
 
 private slots:
     virtual void on_mui_imprimir_clicked();

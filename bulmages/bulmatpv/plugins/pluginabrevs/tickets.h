@@ -9,11 +9,12 @@
 
 class EmpresaTPV;
 
-class Tickets : public QDialog, PEmpresaBase, public Ui_TicketsBase {
+class Tickets : public QDialog, PEmpresaBase, public Ui_TicketsBase
+{
     Q_OBJECT
 
 public:
-    Tickets(EmpresaBase *emp, QWidget *parent);
+    Tickets ( EmpresaBase *emp, QWidget *parent );
     virtual ~Tickets();
 public slots:
     virtual void ticketClicked();

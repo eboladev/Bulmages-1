@@ -54,38 +54,38 @@ extern QApplication2 *theApp;
 
 
 /// Extiende un string a un numero de cuenta sustituyendo los '.' por ceros.
-QString extiendecodigo (QString, unsigned int);
+QString extiendecodigo ( QString, unsigned int );
 /// Extiende un string a un numero de cuenta sustituyendo los '.' por ceros.
-QString extiendecodigo (QString, unsigned int);
+QString extiendecodigo ( QString, unsigned int );
 /// Redondeo de numeros en punto flotante.
-float fround(float, unsigned);
+float fround ( float, unsigned );
 /// Esta funcion convierte un numero con decimales a un entero.
-int roundI(double);
+int roundI ( double );
 /// Procesa el string pasado como parametro y devuelve una estructura del tipo QDate.
-QDate normalizafecha(QString);
+QDate normalizafecha ( QString );
 /// Proteje cadenas de texto pasandoles una sustitucion de codigos especiales de XML.
-QString XMLProtect(const QString&);
+QString XMLProtect ( const QString& );
 /// Ajusta un codigo de cuenta a una longitud determinada pasada como parametro.
-QString ajustacodigo(QString, unsigned int);
-void reemplazaarchivo(QString, QString, QString, QString);
+QString ajustacodigo ( QString, unsigned int );
+void reemplazaarchivo ( QString, QString, QString, QString );
 /// Esta funcion permite editar un texto en un QTextEdit y devuelve el texto editado.
-QString editaTexto(QString texto);
-void _depura(const QString &cad, int nivel = 0, const QString &param = "");
-void mensajeInfo(QString cad);
-void mensajeAviso(QString cad);
-void mensajeError(QString cad);
+QString editaTexto ( QString texto );
+void _depura ( const QString &cad, int nivel = 0, const QString &param = "" );
+void mensajeInfo ( QString cad );
+void mensajeAviso ( QString cad );
+void mensajeError ( QString cad );
 /// En la impresion de documentos con trml2pdf esta funcion hace casi todo el trabajo.
 /// de la invocacion de trml2pdf.
 /// Para evitar trabajo duplicado. El archivo debe estar ubicado ya en el directorio.
 /// especificado por CONF_DIR_USER.
-void invocaPDF(const QString arch);
-void generaPDF(const QString arch);
-QString num2texto(QString numero, QString moneda = "euros", QString singular = "euro");
-void centrarEnPantalla(QWidget *ventana);
-void cargaTraducciones(const QString &traduccion);
-QString windowID(const QString &);
+void invocaPDF ( const QString arch );
+void generaPDF ( const QString arch );
+QString num2texto ( QString numero, QString moneda = "euros", QString singular = "euro" );
+void centrarEnPantalla ( QWidget *ventana );
+void cargaTraducciones ( const QString &traduccion );
+QString windowID ( const QString & );
 /// Convierte un string en un string valido para ser escrito desde un script.
-QString parsearCode(const QString &cad);
+QString parsearCode ( const QString &cad );
 
 #endif
 

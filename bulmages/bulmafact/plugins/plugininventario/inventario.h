@@ -33,28 +33,29 @@
 
 /// Administra los datos de inventario.
 /** */
-class Inventario : public FichaBf {
+class Inventario : public FichaBf
+{
 protected:
     ListControlStockView *listalineas;
     Company *companyact;
 
 public:
-    Inventario(Company *comp, QWidget *parent);
+    Inventario ( Company *comp, QWidget *parent );
     virtual ~Inventario();
-    void setListControlStock(ListControlStockView *a);
+    void setListControlStock ( ListControlStockView *a );
     ListControlStockView *getlistalineas();
-    virtual int cargar(QString);
+    virtual int cargar ( QString );
     void pintaInventario();
     virtual int guardar();
     virtual int borrar();
     void imprimirInventario();
-    virtual void pintaidinventario(QString);
-    virtual void pintafechainventario(QString);
-    virtual void pintanominventario(QString);
+    virtual void pintaidinventario ( QString );
+    virtual void pintafechainventario ( QString );
+    virtual void pintanominventario ( QString );
     virtual void pregenerar();
-    void setidinventario(QString val);
-    void setfechainventario(QString val);
-    void setnominventario(QString val);
+    void setidinventario ( QString val );
+    void setfechainventario ( QString val );
+    void setnominventario ( QString val );
     void vaciaInventario();
 };
 

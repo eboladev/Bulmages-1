@@ -51,46 +51,48 @@
 \param editmodo
 \return
 **/
-ArticuloList::ArticuloList(Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo)
-        : Listado(comp, parent, flag, editmodo), pgimportfiles(comp) {
-    _depura("ArticuloList::ArticuloList", 0);
-    setupUi(this);
+ArticuloList::ArticuloList ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+        : Listado ( comp, parent, flag, editmodo ), pgimportfiles ( comp )
+{
+    _depura ( "ArticuloList::ArticuloList", 0 );
+    setupUi ( this );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza("ArticuloList_ArticuloList", this);
-    if (res != 0)
+    int res = g_plugins->lanza ( "ArticuloList_ArticuloList", this );
+    if ( res != 0 )
         return;
-    m_tipoarticulo->setEmpresaBase(comp);
-    m_familia->setEmpresaBase(comp);
-    mui_list->setEmpresaBase(comp);
-    setSubForm(mui_list);
-    m_usadoarticulo->setCheckState(Qt::Unchecked);
+    m_tipoarticulo->setEmpresaBase ( comp );
+    m_familia->setEmpresaBase ( comp );
+    mui_list->setEmpresaBase ( comp );
+    setSubForm ( mui_list );
+    m_usadoarticulo->setCheckState ( Qt::Unchecked );
 
-    if (modoEdicion()) {
-        empresaBase()->meteWindow(windowTitle(), this);
+    if ( modoEdicion() ) {
+        empresaBase() ->meteWindow ( windowTitle(), this );
     } else {
-        setWindowTitle(tr("Selector de articulos"));
-        mui_editar->setHidden(TRUE);
-        mui_crear->setHidden(TRUE);
-        mui_borrar->setHidden(TRUE);
-        mui_exportar->setHidden(TRUE);
-        mui_importar->setHidden(TRUE);
-        mui_imprimir->setHidden(TRUE);
+        setWindowTitle ( tr ( "Selector de articulos" ) );
+        mui_editar->setHidden ( TRUE );
+        mui_crear->setHidden ( TRUE );
+        mui_borrar->setHidden ( TRUE );
+        mui_exportar->setHidden ( TRUE );
+        mui_importar->setHidden ( TRUE );
+        mui_imprimir->setHidden ( TRUE );
     } // end if
     presentar();
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
-    trataPermisos("articulo");
-    _depura("END ArticuloList::ArticuloList", 0);
+    trataPermisos ( "articulo" );
+    _depura ( "END ArticuloList::ArticuloList", 0 );
 }
 
 
 /// Hace la carga del subformulario para presentar el listado.
 /**
 **/
-void ArticuloList::presentar() {
-    _depura("ArticuloList::INIT_presenta", 0);
-    mui_list->cargar(formaQuery());
-    _depura("ArticuloList::END_presenta", 0);
+void ArticuloList::presentar()
+{
+    _depura ( "ArticuloList::INIT_presenta", 0 );
+    mui_list->cargar ( formaQuery() );
+    _depura ( "ArticuloList::END_presenta", 0 );
 }
 
 
@@ -106,16 +108,17 @@ void ArticuloList::presentar() {
 \param row
 \return
 **/
-void ArticuloList::editar(int row) {
-    _depura("ArticuloList::editar", 0);
-    mdb_idarticulo = mui_list->DBvalue("idarticulo", row);
-    mdb_nomarticulo = mui_list->DBvalue("nomarticulo", row);
-    mdb_codigocompletoarticulo = mui_list->DBvalue("codigocompletoarticulo", row);
-    if (modoEdicion()) {
-        ArticuloView *art = ((Company *)empresaBase())->newArticuloView();
-        empresaBase()->m_pWorkspace->addWindow(art);
+void ArticuloList::editar ( int row )
+{
+    _depura ( "ArticuloList::editar", 0 );
+    mdb_idarticulo = mui_list->DBvalue ( "idarticulo", row );
+    mdb_nomarticulo = mui_list->DBvalue ( "nomarticulo", row );
+    mdb_codigocompletoarticulo = mui_list->DBvalue ( "codigocompletoarticulo", row );
+    if ( modoEdicion() ) {
+        ArticuloView * art = ( ( Company * ) empresaBase() ) ->newArticuloView();
+        empresaBase() ->m_pWorkspace->addWindow ( art );
         /// Si la carga no va bien entonces terminamos.
-        if (art->cargar(mdb_idarticulo)) {
+        if ( art->cargar ( mdb_idarticulo ) ) {
             delete art;
             return;
         } // end if
@@ -123,18 +126,19 @@ void ArticuloList::editar(int row) {
         art->show();
     } else {
         close();
-        emit(selected(mdb_idarticulo));
+        emit ( selected ( mdb_idarticulo ) );
     } // end if
-    _depura("ArticuloList::END_editArticle", 0);
+    _depura ( "ArticuloList::END_editArticle", 0 );
 }
 
 
 /// No requiere de ninguna accion adicional
 /**
 **/
-ArticuloList::~ArticuloList() {
-    _depura("ArticuloList::~ArticuloList", 0);
-    _depura("END ArticuloList::~ArticuloList", 0);
+ArticuloList::~ArticuloList()
+{
+    _depura ( "ArticuloList::~ArticuloList", 0 );
+    _depura ( "END ArticuloList::~ArticuloList", 0 );
 }
 
 
@@ -146,28 +150,29 @@ ArticuloList::~ArticuloList() {
 /**
 \return
 **/
-void ArticuloList::borrar() {
-    _depura("ArticuloList::on_mui_borrar_clicked", 0);
+void ArticuloList::borrar()
+{
+    _depura ( "ArticuloList::on_mui_borrar_clicked", 0 );
     int a = mui_list->currentRow();
-    if (a < 0) {
-        mensajeInfo(tr("Tiene que seleccionar un articulo"));
+    if ( a < 0 ) {
+        mensajeInfo ( tr ( "Tiene que seleccionar un articulo" ) );
         return;
     } // end if
     try {
-        QString idarticulo = mui_list->DBvalue("idarticulo");
-        if (QMessageBox::Yes == QMessageBox::question(this,
-                tr("Borrar articulo"),
-                tr("Esta a punto de borrar un articulo. Estos datos pueden dar problemas."),
-                QMessageBox::Yes, QMessageBox::No)) {
+        QString idarticulo = mui_list->DBvalue ( "idarticulo" );
+        if ( QMessageBox::Yes == QMessageBox::question ( this,
+                tr ( "Borrar articulo" ),
+                tr ( "Esta a punto de borrar un articulo. Estos datos pueden dar problemas." ),
+                QMessageBox::Yes, QMessageBox::No ) ) {
             QString SQLQuery = "DELETE FROM articulo WHERE idarticulo = " + idarticulo;
-            int error = empresaBase()->ejecuta(SQLQuery);
-            if (error)
-                throw -1;
+            int error = empresaBase() ->ejecuta ( SQLQuery );
+            if ( error )
+                throw - 1;
             presentar();
         } // end if
-        _depura("END ArticuloList::on_mui_borrar_clicked", 0);
-    } catch (...) {
-        mensajeInfo(tr("Error al borrar el articulo"));
+        _depura ( "END ArticuloList::on_mui_borrar_clicked", 0 );
+    } catch ( ... ) {
+        mensajeInfo ( tr ( "Error al borrar el articulo" ) );
     } // end try
 }
 
@@ -178,13 +183,14 @@ void ArticuloList::borrar() {
 */
 /**
 **/
-QString ArticuloList::formaQuery() {
-    _depura("ArticuloList::formaQuery", 0);
+QString ArticuloList::formaQuery()
+{
+    _depura ( "ArticuloList::formaQuery", 0 );
     QString query = "";
     query += "SELECT * FROM articulo NATURAL LEFT JOIN tipo_iva NATURAL LEFT JOIN tipo_articulo WHERE 1 = 1 ";
-    if (m_presentablearticulo->isChecked())
+    if ( m_presentablearticulo->isChecked() )
         query += " AND presentablearticulo ";
-    if (m_usadoarticulo->isChecked())
+    if ( m_usadoarticulo->isChecked() )
         query += " AND idarticulo IN (SELECT DISTINCT idarticulo FROM lpresupuesto"
                  " UNION SELECT DISTINCT idarticulo FROM lpedidocliente"
                  " UNION SELECT DISTINCT idarticulo FROM lalbaran"
@@ -193,48 +199,50 @@ QString ArticuloList::formaQuery() {
                  " UNION SELECT DISTINCT idarticulo FROM lalbaranp"
                  " UNION SELECT DISTINCT idarticulo FROM lfacturap"
                  ") ";
-    if (m_filtro->text() != "")
+    if ( m_filtro->text() != "" )
         query += " AND lower(nomarticulo) LIKE lower('%" + m_filtro->text() + "%') ";
-    if (m_familia->idfamilia() != "" ) {
+    if ( m_familia->idfamilia() != "" ) {
         query += " AND idfamilia IN (SELECT idfamilia FROM familia WHERE codigocompletofamilia LIKE '" + m_familia->codigocompletofamilia() + "%')";
     } // end if
-    if (m_tipoarticulo->idtipo_articulo() != "") {
+    if ( m_tipoarticulo->idtipo_articulo() != "" ) {
         query += " AND idtipo_articulo = " + m_tipoarticulo->idtipo_articulo();
     } // end if
-    query +=" ORDER BY codigocompletoarticulo";
-    return (query);
-    _depura("ArticuloList::END_formaQuery()\n", 0);
+    query += " ORDER BY codigocompletoarticulo";
+    return ( query );
+    _depura ( "ArticuloList::END_formaQuery()\n", 0 );
 }
 
 
 /// La impresion del listado esta completamente delegada en SubForm3.
 /**
 **/
-void ArticuloList::imprimir() {
-    _depura("ArticuloList::s_imprimir1", 0);
-    mui_list->imprimirPDF("Listado de artículos");
-    _depura("END ArticuloList::s_imprimir1", 0);
+void ArticuloList::imprimir()
+{
+    _depura ( "ArticuloList::s_imprimir1", 0 );
+    mui_list->imprimirPDF ( "Listado de artículos" );
+    _depura ( "END ArticuloList::s_imprimir1", 0 );
 }
 
 
 /// SLOT que exporta el listado de articulos a formato XML.
 /**
 **/
-void ArticuloList::on_mui_exportar_clicked() {
-    _depura("ArticuloList::on_mui_exportar_clicked", 0);
-    QFile filexml(QFileDialog::getSaveFileName(this,
-                  tr("Elija el archivo"),
-                  confpr->valor(CONF_DIR_USER),
-                  tr("Clientes (*.xml)")));
+void ArticuloList::on_mui_exportar_clicked()
+{
+    _depura ( "ArticuloList::on_mui_exportar_clicked", 0 );
+    QFile filexml ( QFileDialog::getSaveFileName ( this,
+                    tr ( "Elija el archivo" ),
+                    confpr->valor ( CONF_DIR_USER ),
+                    tr ( "Clientes (*.xml)" ) ) );
 
-    if(filexml.open(QIODevice::WriteOnly)) {
-        bulmafact2XML(filexml, IMPORT_ARTICULOS);
+    if ( filexml.open ( QIODevice::WriteOnly ) ) {
+        bulmafact2XML ( filexml, IMPORT_ARTICULOS );
         filexml.close();
     } else {
-        _depura("ERROR AL ABRIR EL ARCHIVO\n", 2);
+        _depura ( "ERROR AL ABRIR EL ARCHIVO\n", 2 );
     } // end if
 
-    _depura("END ArticuloList::on_mui_exportar_clicked", 0);
+    _depura ( "END ArticuloList::on_mui_exportar_clicked", 0 );
 }
 
 
@@ -244,21 +252,22 @@ void ArticuloList::on_mui_exportar_clicked() {
 */
 /**
 **/
-void ArticuloList::on_mui_importar_clicked() {
-    _depura("ArticuloList::INIT_s_importar", 0);
-    QFile filexml(QFileDialog::getOpenFileName(this,
-                  tr("Elija el archivo"),
-                  confpr->valor(CONF_DIR_USER),
-                  tr("Clientes (*.xml)")));
+void ArticuloList::on_mui_importar_clicked()
+{
+    _depura ( "ArticuloList::INIT_s_importar", 0 );
+    QFile filexml ( QFileDialog::getOpenFileName ( this,
+                    tr ( "Elija el archivo" ),
+                    confpr->valor ( CONF_DIR_USER ),
+                    tr ( "Clientes (*.xml)" ) ) );
 
-    if (filexml.open(QIODevice::ReadOnly)) {
-        XML2BulmaFact(filexml, IMPORT_ARTICULOS);
+    if ( filexml.open ( QIODevice::ReadOnly ) ) {
+        XML2BulmaFact ( filexml, IMPORT_ARTICULOS );
         filexml.close();
         presentar();
     } else {
-        _depura("ERROR AL ABRIR EL ARCHIVO", 2);
+        _depura ( "ERROR AL ABRIR EL ARCHIVO", 2 );
     } // end if
-    _depura("ArticuloList::END_s_importar", 0);
+    _depura ( "ArticuloList::END_s_importar", 0 );
 }
 
 
@@ -268,18 +277,19 @@ void ArticuloList::on_mui_importar_clicked() {
 /**
 \return
 **/
-void ArticuloList::submenu(const QPoint &) {
-    _depura("ArticuloList::on_mui_list_customContextMenuRequested", 0);
+void ArticuloList::submenu ( const QPoint & )
+{
+    _depura ( "ArticuloList::on_mui_list_customContextMenuRequested", 0 );
     int a = mui_list->currentRow();
-    if (a < 0)
+    if ( a < 0 )
         return;
-    QMenu *popup = new QMenu(this);
-    QAction *edit = popup->addAction(tr("Editar articulo"));
-    QAction *del = popup->addAction(tr("Borrar articulo"));
-    QAction *opcion = popup->exec(QCursor::pos());
-    if (opcion == del)
+    QMenu *popup = new QMenu ( this );
+    QAction *edit = popup->addAction ( tr ( "Editar articulo" ) );
+    QAction *del = popup->addAction ( tr ( "Borrar articulo" ) );
+    QAction *opcion = popup->exec ( QCursor::pos() );
+    if ( opcion == del )
         on_mui_borrar_clicked();
-    if (opcion == edit)
+    if ( opcion == edit )
         on_mui_editar_clicked();
     delete popup;
 }
@@ -288,10 +298,11 @@ void ArticuloList::submenu(const QPoint &) {
 ///
 /**
 **/
-void ArticuloList::crear() {
-    _depura("ArticuloList::crear", 0);
-    ((Company *)empresaBase())->s_newArticulo();
-    _depura("END ArticuloList::crear", 0);
+void ArticuloList::crear()
+{
+    _depura ( "ArticuloList::crear", 0 );
+    ( ( Company * ) empresaBase() ) ->s_newArticulo();
+    _depura ( "END ArticuloList::crear", 0 );
 }
 
 
@@ -299,9 +310,10 @@ void ArticuloList::crear() {
 /**
 \return
 **/
-QString ArticuloList::idarticulo() {
-    _depura("ArticuloList::idarticulo", 0);
-    _depura("END ArticuloList::idarticulo", 0);
+QString ArticuloList::idarticulo()
+{
+    _depura ( "ArticuloList::idarticulo", 0 );
+    _depura ( "END ArticuloList::idarticulo", 0 );
     return mdb_idarticulo;
 }
 
@@ -310,9 +322,10 @@ QString ArticuloList::idarticulo() {
 /**
 \return
 **/
-QString ArticuloList::nomarticulo() {
-    _depura("ArticuloList::nomarticulo", 0);
-    _depura("END ArticuloList::nomarticulo", 0);
+QString ArticuloList::nomarticulo()
+{
+    _depura ( "ArticuloList::nomarticulo", 0 );
+    _depura ( "END ArticuloList::nomarticulo", 0 );
     return mdb_nomarticulo;
 }
 
@@ -321,9 +334,10 @@ QString ArticuloList::nomarticulo() {
 /**
 \return
 **/
-QString ArticuloList::codigocompletoarticulo() {
-    _depura("ArticuloList::codigocompletoarticulo", 0);
-    _depura("END ArticuloList::codigocompletoarticulo", 0);
+QString ArticuloList::codigocompletoarticulo()
+{
+    _depura ( "ArticuloList::codigocompletoarticulo", 0 );
+    _depura ( "END ArticuloList::codigocompletoarticulo", 0 );
     return mdb_codigocompletoarticulo;
 }
 
@@ -337,32 +351,34 @@ QString ArticuloList::codigocompletoarticulo() {
 /**
 \param parent
 **/
-ArticuloListSubForm::ArticuloListSubForm(QWidget *parent, const char *)
-        : SubForm2Bf(parent) {
-    _depura("ArticuloListSubForm::ArticuloListSubForm", 0);
-    setDBTableName("articulo");
-    setDBCampoId("idarticulo");
-    addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("ID articulo"));
-    addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Codigo completo del articulo"));
-    addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre del articulo"));
-    addSHeader("abrevarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Descripcion abreviada del articulo"));
-    addSHeader("obserarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Observaciones sobre el articulo"));
-    addSHeader("desctipo_articulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Descripcion del tipo de articulo"));
-    addSHeader("desctipo_iva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Descripcion tipo de I.V.A."));
-    addSHeader("pvparticulo", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("P.V.P. articulo"));
-    addSHeader("stockarticulo", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Disponible en stock"));
-    setinsercion(FALSE);
-    setDelete(FALSE);
-    setSortingEnabled(TRUE);
-    _depura("END ArticuloListSubForm::ArticuloListSubForm", 0);
+ArticuloListSubForm::ArticuloListSubForm ( QWidget *parent, const char * )
+        : SubForm2Bf ( parent )
+{
+    _depura ( "ArticuloListSubForm::ArticuloListSubForm", 0 );
+    setDBTableName ( "articulo" );
+    setDBCampoId ( "idarticulo" );
+    addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "ID articulo" ) );
+    addSHeader ( "codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Codigo completo del articulo" ) );
+    addSHeader ( "nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre del articulo" ) );
+    addSHeader ( "abrevarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Descripcion abreviada del articulo" ) );
+    addSHeader ( "obserarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Observaciones sobre el articulo" ) );
+    addSHeader ( "desctipo_articulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Descripcion del tipo de articulo" ) );
+    addSHeader ( "desctipo_iva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Descripcion tipo de I.V.A." ) );
+    addSHeader ( "pvparticulo", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "P.V.P. articulo" ) );
+    addSHeader ( "stockarticulo", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Disponible en stock" ) );
+    setinsercion ( FALSE );
+    setDelete ( FALSE );
+    setSortingEnabled ( TRUE );
+    _depura ( "END ArticuloListSubForm::ArticuloListSubForm", 0 );
 }
 
 
 ///
 /**
 **/
-ArticuloListSubForm::~ArticuloListSubForm() {
-    _depura("ArticuloListSubForm::~ArticuloListSubForm", 0);
-    _depura("END ArticuloListSubForm::~ArticuloListSubForm", 0);
+ArticuloListSubForm::~ArticuloListSubForm()
+{
+    _depura ( "ArticuloListSubForm::~ArticuloListSubForm", 0 );
+    _depura ( "END ArticuloListSubForm::~ArticuloListSubForm", 0 );
 
 }

@@ -39,7 +39,8 @@
     Hace todo el traspaso de mensajes de los menus a company y captura algunos que no son
     propiamente de la facturacion como pueda ser el FullScreen o el About.
 */
-class Bulmafact: public QMainWindow, public Ui_bulmafactbase {
+class Bulmafact: public QMainWindow, public Ui_bulmafactbase
+{
     Q_OBJECT
 
 private:
@@ -51,14 +52,14 @@ private:
     ListVentanas *m_list;
 
 public:
-    Bulmafact(QString bd);
+    Bulmafact ( QString bd );
     ~Bulmafact();
     QWorkspace2 *workspace();
     Company *getcompany();
-    void createMainWindows(Splash *);
+    void createMainWindows ( Splash * );
 
 public slots:
-    virtual void closeEvent(QCloseEvent *);
+    virtual void closeEvent ( QCloseEvent * );
     virtual void emitirfactura();
     virtual void recibirfactura();
     virtual void s_FPago();
@@ -108,9 +109,9 @@ public slots:
 
 private slots:
     /// Este SLOT sirve para actualizar el Indexador cuando se activa una ventana
-    void informaindexador(QWidget *w);
-    void setActionIndexador(bool);
-    void documentacionError(const QString);
+    void informaindexador ( QWidget *w );
+    void setActionIndexador ( bool );
+    void documentacionError ( const QString );
 };
 
 #endif

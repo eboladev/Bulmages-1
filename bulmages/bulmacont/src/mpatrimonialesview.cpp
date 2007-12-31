@@ -28,41 +28,45 @@
 \param emp
 \param parent
 **/
-mpatrimonialesview::mpatrimonialesview(Empresa *emp, QWidget *parent)
-        : QDialog(parent), PEmpresaBase(emp) {
-    _depura("mpatrimonialesview::mpatrimonialesview", 0);
-    setupUi(this);
+mpatrimonialesview::mpatrimonialesview ( Empresa *emp, QWidget *parent )
+        : QDialog ( parent ), PEmpresaBase ( emp )
+{
+    _depura ( "mpatrimonialesview::mpatrimonialesview", 0 );
+    setupUi ( this );
     modo = 0;
-    _depura("END mpatrimonialesview::mpatrimonialesview", 0);
+    _depura ( "END mpatrimonialesview::mpatrimonialesview", 0 );
 }
 
 
 ///
 /**
 **/
-mpatrimonialesview::~mpatrimonialesview() {
-    _depura("mpatrimonialesview::~mpatrimonialesview", 0);
-    _depura("END mpatrimonialesview::~mpatrimonialesview", 0);
+mpatrimonialesview::~mpatrimonialesview()
+{
+    _depura ( "mpatrimonialesview::~mpatrimonialesview", 0 );
+    _depura ( "END mpatrimonialesview::~mpatrimonialesview", 0 );
 }
 
 
 ///
 /**
 **/
-void mpatrimonialesview::setmodoselector() {
-    _depura("mpatrimonialesview::setmodoselector", 0);
+void mpatrimonialesview::setmodoselector()
+{
+    _depura ( "mpatrimonialesview::setmodoselector", 0 );
     modo = 1;
-    _depura("END mpatrimonialesview::setmodoselector", 0);
+    _depura ( "END mpatrimonialesview::setmodoselector", 0 );
 }
 
 
 ///
 /**
 **/
-void mpatrimonialesview::setmodoeditor() {
-    _depura("mpatrimonialesview::setmodoeditor", 0);
+void mpatrimonialesview::setmodoeditor()
+{
+    _depura ( "mpatrimonialesview::setmodoeditor", 0 );
     modo = 0;
-    _depura("END mpatrimonialesview::setmodoeditor", 0);
+    _depura ( "END mpatrimonialesview::setmodoeditor", 0 );
 }
 
 
@@ -70,9 +74,10 @@ void mpatrimonialesview::setmodoeditor() {
 /**
 \return
 **/
-QString mpatrimonialesview::getnommasa() {
-    _depura("mpatrimonialesview::getnommasa", 0);
-    _depura("END mpatrimonialesview::getnommasa", 0);
+QString mpatrimonialesview::getnommasa()
+{
+    _depura ( "mpatrimonialesview::getnommasa", 0 );
+    _depura ( "END mpatrimonialesview::getnommasa", 0 );
     return nommasa;
 }
 
@@ -81,9 +86,10 @@ QString mpatrimonialesview::getnommasa() {
 /**
 \return
 **/
-QString mpatrimonialesview::getidmasa() {
-    _depura("mpatrimonialesview::getidmasa", 0);
-    _depura("END mpatrimonialesview::getidmasa", 0);
+QString mpatrimonialesview::getidmasa()
+{
+    _depura ( "mpatrimonialesview::getidmasa", 0 );
+    _depura ( "END mpatrimonialesview::getidmasa", 0 );
     return idmasa;
 }
 
@@ -94,57 +100,59 @@ QString mpatrimonialesview::getidmasa() {
 /**
 \return
 **/
-int mpatrimonialesview::inicializa() {
-    _depura("mpatrimonialesview::inicializa", 0);
+int mpatrimonialesview::inicializa()
+{
+    _depura ( "mpatrimonialesview::inicializa", 0 );
     cursor2 *cursoraux1;
 
     /// Vamos a cargar el n&uacute;mero de d&iacute;gitos de cuenta para poder hacer
     /// una introducci&oacute;n de numeros de cuenta m&aacute;s pr&aacute;ctica.
-    empresaBase()->begin();
+    empresaBase() ->begin();
     QString query = "SELECT valor FROM configuracion WHERE nombre = 'CodCuenta'";
-    cursoraux1 = empresaBase()->cargacursor(query, "codcuenta");
-    empresaBase()->commit();
-    numdigitos = cursoraux1->valor("valor").length();
+    cursoraux1 = empresaBase() ->cargacursor ( query, "codcuenta" );
+    empresaBase() ->commit();
+    numdigitos = cursoraux1->valor ( "valor" ).length();
     delete cursoraux1;
-    fprintf(stderr, "las cuentas tienen %d digitos\n", numdigitos);
+    fprintf ( stderr, "las cuentas tienen %d digitos\n", numdigitos );
     inicializatabla();
-    _depura("END mpatrimonialesview::inicializa", 0);
-    return(0);
+    _depura ( "END mpatrimonialesview::inicializa", 0 );
+    return ( 0 );
 }
 
 
 ///
 /**
 **/
-void mpatrimonialesview::inicializatabla() {
-    _depura("mpatrimonialesview::inicializatabla", 0);
+void mpatrimonialesview::inicializatabla()
+{
+    _depura ( "mpatrimonialesview::inicializatabla", 0 );
     QTableWidgetItem *item0, *item1;
-    mui_tabla->setRowCount(0);
-    mui_tabla->setColumnCount(2);
+    mui_tabla->setRowCount ( 0 );
+    mui_tabla->setColumnCount ( 2 );
     QStringList etiquetas;
-    etiquetas << tr("CODIGO") << tr("Masa patrimonial");
-    mui_tabla->setHorizontalHeaderLabels(etiquetas);
-    mui_tabla->hideColumn(2);
-    mui_tabla->hideColumn(0);
-    mui_tabla->setColumnWidth(1, 400);
+    etiquetas << tr ( "CODIGO" ) << tr ( "Masa patrimonial" );
+    mui_tabla->setHorizontalHeaderLabels ( etiquetas );
+    mui_tabla->hideColumn ( 2 );
+    mui_tabla->hideColumn ( 0 );
+    mui_tabla->setColumnWidth ( 1, 400 );
 
     QString query = "SELECT * FROM mpatrimonial WHERE idbalance ISNULL";
-    empresaBase()->begin();
-    cursor2 *cursoraux1 = empresaBase()->cargacursor(query, "elquery");
-    empresaBase()->commit();
+    empresaBase() ->begin();
+    cursor2 *cursoraux1 = empresaBase() ->cargacursor ( query, "elquery" );
+    empresaBase() ->commit();
 
-    mui_tabla->setRowCount(cursoraux1->numregistros());
+    mui_tabla->setRowCount ( cursoraux1->numregistros() );
     int i = 0;
-    while (!cursoraux1->eof()) {
-        item0 = new QTableWidgetItem(cursoraux1->valor("idmpatrimonial"));
-        mui_tabla->setItem(i, 0, item0);
-        item1 = new QTableWidgetItem(cursoraux1->valor("descmpatrimonial"));
-        mui_tabla->setItem(i, 1, item1);
+    while ( !cursoraux1->eof() ) {
+        item0 = new QTableWidgetItem ( cursoraux1->valor ( "idmpatrimonial" ) );
+        mui_tabla->setItem ( i, 0, item0 );
+        item1 = new QTableWidgetItem ( cursoraux1->valor ( "descmpatrimonial" ) );
+        mui_tabla->setItem ( i, 1, item1 );
         cursoraux1->siguienteregistro();
         i++;
     } // end while
     delete cursoraux1;
-    _depura("END mpatrimonialesview::inicializatabla", 0);
+    _depura ( "END mpatrimonialesview::inicializatabla", 0 );
 }
 
 
@@ -155,86 +163,91 @@ void mpatrimonialesview::inicializatabla() {
 \param button
 \param mouse
 **/
-void mpatrimonialesview::dbtabla(int row, int colummn, int button, const QPoint &mouse) {
-    _depura("mpatrimonialesview::dbtabla", 0);
-    fprintf(stderr, "Se ha hecho doble click sobre la tabla\n");
+void mpatrimonialesview::dbtabla ( int row, int colummn, int button, const QPoint &mouse )
+{
+    _depura ( "mpatrimonialesview::dbtabla", 0 );
+    fprintf ( stderr, "Se ha hecho doble click sobre la tabla\n" );
     /// Dependiendo del modo hacemos una cosa u otra.
-    if (modo == 0) {
-        QString idmpatrimonial = mui_tabla->item(row, 0)->text();
+    if ( modo == 0 ) {
+        QString idmpatrimonial = mui_tabla->item ( row, 0 ) ->text();
         /// Creamos el objeto mpatrimonialview, y lo lanzamos.
-        mpatrimonialview *masa = new mpatrimonialview((Empresa*)empresaBase(), this);
-        masa->inicializa1(idmpatrimonial);
+        mpatrimonialview *masa = new mpatrimonialview ( ( Empresa* ) empresaBase(), this );
+        masa->inicializa1 ( idmpatrimonial );
         masa->exec();
         delete masa;
         /// Como existe la posibilidad de que hayan cambiado las cosas forzamos un repintado.
         inicializatabla();
     } else {
-        idmasa = mui_tabla->item(mui_tabla->currentRow(), 0)->text();
-        nommasa = mui_tabla->item(mui_tabla->currentRow(), 1)->text();
+        idmasa = mui_tabla->item ( mui_tabla->currentRow(), 0 ) ->text();
+        nommasa = mui_tabla->item ( mui_tabla->currentRow(), 1 ) ->text();
         close();
     } // end if
 
     /// Para quitar el warning.
     colummn = button = 0;
     mouse.isNull();
-    _depura("END mpatrimonialesview::dbtabla", 0);
+    _depura ( "END mpatrimonialesview::dbtabla", 0 );
 }
 
 
 ///
 /**
 **/
-void mpatrimonialesview::on_mui_editar_clicked() {
-    _depura("mpatrimonialesview::on_mui_editar_clicked", 0);
+void mpatrimonialesview::on_mui_editar_clicked()
+{
+    _depura ( "mpatrimonialesview::on_mui_editar_clicked", 0 );
     int row = mui_tabla->currentRow();
     int col = mui_tabla->currentColumn();
     QPoint mouse;
-    dbtabla(row, col, 0, mouse);
+    dbtabla ( row, col, 0, mouse );
     inicializatabla();
-    _depura("END mpatrimonialesview::on_mui_editar_clicked", 0);
+    _depura ( "END mpatrimonialesview::on_mui_editar_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void mpatrimonialesview::on_mui_borrar_clicked() {
-    _depura("mpatrimonialesview::on_mui_borrar_clicked", 0);
+void mpatrimonialesview::on_mui_borrar_clicked()
+{
+    _depura ( "mpatrimonialesview::on_mui_borrar_clicked", 0 );
     int row;
     row = mui_tabla->currentRow();
-    idmasa = mui_tabla->item(mui_tabla->currentRow(), 0)->text();
+    idmasa = mui_tabla->item ( mui_tabla->currentRow(), 0 ) ->text();
     QString query;
-    query.sprintf("DELETE FROM compmasap WHERE idmpatrimonial=%s", idmasa.toAscii().constData());
-    empresaBase()->begin();
-    empresaBase()->ejecuta(query);
-    query.sprintf("DELETE FROM mpatrimonial WHERE idmpatrimonial=%s", idmasa.toAscii().constData());
-    empresaBase()->ejecuta(query);
-    empresaBase()->commit();
+    query.sprintf ( "DELETE FROM compmasap WHERE idmpatrimonial=%s", idmasa.toAscii().constData() );
+    empresaBase() ->begin();
+    empresaBase() ->ejecuta ( query );
+    query.sprintf ( "DELETE FROM mpatrimonial WHERE idmpatrimonial=%s", idmasa.toAscii().constData() );
+    empresaBase() ->ejecuta ( query );
+    empresaBase() ->commit();
     inicializatabla();
-    _depura("END mpatrimonialesview::on_mui_borrar_clicked", 0);
+    _depura ( "END mpatrimonialesview::on_mui_borrar_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void mpatrimonialesview::on_mui_nuevo_clicked() {
-    _depura("mpatrimonialesview::on_mui_nuevo_clicked", 0);
-    mpatrimonialview *masa = new mpatrimonialview((Empresa *)empresaBase(), this);
+void mpatrimonialesview::on_mui_nuevo_clicked()
+{
+    _depura ( "mpatrimonialesview::on_mui_nuevo_clicked", 0 );
+    mpatrimonialview *masa = new mpatrimonialview ( ( Empresa * ) empresaBase(), this );
     masa->exec();
     delete masa;
     /// Como existe la posibilidad de que hayan cambiado las cosas forzamos un repintado.
     inicializatabla();
-    _depura("END mpatrimonialesview::on_mui_nuevo_clicked", 0);
+    _depura ( "END mpatrimonialesview::on_mui_nuevo_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void mpatrimonialesview::on_mui_cancelar_clicked() {
-    _depura("mpatrimonialesview::on_mui_cancelar_clicked", 0);
+void mpatrimonialesview::on_mui_cancelar_clicked()
+{
+    _depura ( "mpatrimonialesview::on_mui_cancelar_clicked", 0 );
     close();
-    _depura("END mpatrimonialesview::on_mui_cancelar_clicked", 0);
+    _depura ( "END mpatrimonialesview::on_mui_cancelar_clicked", 0 );
 }
 

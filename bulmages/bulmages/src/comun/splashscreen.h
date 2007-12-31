@@ -20,16 +20,16 @@
 
 class Splash : public QDialog
 {
-  Q_OBJECT
+    Q_OBJECT
 private:
- QLabel *l;
+    QLabel *l;
 // QLabel *l2;
-QTextBrowser *l2;
+    QTextBrowser *l2;
 public:
-   Splash();
-   ~Splash();
+    Splash();
+    ~Splash();
 public slots:
-   void paint();
+    void paint();
 
 };
 #endif // _SPLASH_H

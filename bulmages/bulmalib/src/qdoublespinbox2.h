@@ -31,15 +31,16 @@
 #include "funcaux.h"
 
 
-class QDoubleSpinBox2 : public QDoubleSpinBox {
+class QDoubleSpinBox2 : public QDoubleSpinBox
+{
     Q_OBJECT
 
 public:
-    QDoubleSpinBox2(QWidget *parent = 0);
+    QDoubleSpinBox2 ( QWidget *parent = 0 );
     ~QDoubleSpinBox2();
-    void setValue(double valor);
+    void setValue ( double valor );
     QString const text();
-    virtual bool eventFilter(QObject *obj, QEvent *event);
+    virtual bool eventFilter ( QObject *obj, QEvent *event );
 };
 
 #endif

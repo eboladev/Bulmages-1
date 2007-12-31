@@ -31,17 +31,19 @@
 class Empresa;
 
 
-class miQTreeWidgetItem : public QTreeWidgetItem {
+class miQTreeWidgetItem : public QTreeWidgetItem
+{
 public:
-    miQTreeWidgetItem(QTreeWidget *parent);
-    miQTreeWidgetItem(QTreeWidgetItem *parent);
+    miQTreeWidgetItem ( QTreeWidget *parent );
+    miQTreeWidgetItem ( QTreeWidgetItem *parent );
     ~miQTreeWidgetItem();
     QString ej;
     QString per;
 };
 
 
-class BbloqFecha : public FichaBc, public Ui_BBloqFechaBase {
+class BbloqFecha : public FichaBc, public Ui_BBloqFechaBase
+{
     Q_OBJECT
 
 private:
@@ -50,14 +52,14 @@ private:
     QString qsabierto;
 
 public:
-    BbloqFecha(Empresa *emp, QWidget * parent = 0);
+    BbloqFecha ( Empresa *emp, QWidget * parent = 0 );
     ~BbloqFecha();
 
 public slots:
     virtual void on_mui_crear_clicked();
 
 private slots:
-    virtual void on_mui_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int columna);
+    virtual void on_mui_treeWidget_itemDoubleClicked ( QTreeWidgetItem *item, int columna );
 };
 
 #endif

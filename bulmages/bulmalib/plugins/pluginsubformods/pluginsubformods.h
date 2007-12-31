@@ -35,19 +35,20 @@
 #include "subform3.h"
 
 
-extern "C" MY_EXPORT int entryPoint(QApplication *);
-extern "C" MY_EXPORT int SubForm3_SubForm3_Post(SubForm3 *);
+extern "C" MY_EXPORT int entryPoint ( QApplication * );
+extern "C" MY_EXPORT int SubForm3_SubForm3_Post ( SubForm3 * );
 
-class myplugsubformods : public QObject {
+class myplugsubformods : public QObject
+{
     Q_OBJECT
 
 public:
-    myplugsubformods(SubForm3 *);
+    myplugsubformods ( SubForm3 * );
     ~myplugsubformods();
     void sacaods();
 
 public slots:
-    virtual void s_pintaMenu(QMenu *);
-    virtual void s_trataMenu(QAction *);
+    virtual void s_pintaMenu ( QMenu * );
+    virtual void s_trataMenu ( QAction * );
 };
 

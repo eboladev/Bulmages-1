@@ -27,13 +27,14 @@
 #include "fichabf.h"
 
 
-class IncidenciaComercial : public FichaBf {
+class IncidenciaComercial : public FichaBf
+{
 
 public:
-    IncidenciaComercial(Company *, QWidget *);
+    IncidenciaComercial ( Company *, QWidget * );
     virtual ~IncidenciaComercial();
     virtual void pintar();
-    virtual int cargar(QString);
+    virtual int cargar ( QString );
 };
 
 #endif

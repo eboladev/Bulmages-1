@@ -29,22 +29,24 @@
 
 class Company;
 
-class PromedioView : public QWidget, public Ui_PromedioBase, public dialogChanges, public DBRecord {
+class PromedioView : public QWidget, public Ui_PromedioBase, public dialogChanges, public DBRecord
+{
     Q_OBJECT
 
 private:
     Company *m_companyact;
 
 public:
-    PromedioView(Company *emp, QWidget *parent = 0);
+    PromedioView ( Company *emp, QWidget *parent = 0 );
     ~PromedioView();
-    Company *companyact() {
+    Company *companyact()
+    {
         return m_companyact;
     };
 
 public:
 
-    int cargar(QString);
+    int cargar ( QString );
 
 };
 

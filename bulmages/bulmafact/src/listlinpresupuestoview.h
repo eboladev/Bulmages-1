@@ -31,16 +31,18 @@
 
 /// Muestra y administra el detalle de las l&iacute;neas de un presupuesto.
 /** */
-class ListLinPresupuestoView : public SubForm2Bf {
+class ListLinPresupuestoView : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
     QString mdb_idpresupuesto;
-    ListLinPresupuestoView(QWidget *parent = 0);
-    ~ListLinPresupuestoView() {};
+    ListLinPresupuestoView ( QWidget *parent = 0 );
+    ~ListLinPresupuestoView()
+    {};
 
 public slots:
-    virtual void cargar(QString idpresupuesto);
+    virtual void cargar ( QString idpresupuesto );
 
 
 };

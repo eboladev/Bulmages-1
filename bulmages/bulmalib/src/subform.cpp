@@ -33,12 +33,13 @@ Mantiene un contador de elementos creados para depurar la liberacion de memoria.
 \param con Empresa con la que va a trabajar
 \todo Se debe eliminar el contador una vez testeado el consumo de memoria
 **/
-SDBRecord::SDBRecord(EmpresaBase *con) : DBRecord(con) {
-  _depura("SDBRecord::SDBRecord", 0);
-  static int creaciones = 0;
-  creaciones++;
-  _depura("SDBrecord::creados: ",0,  QString::number(creaciones));
-  _depura("END SDBRecord::SDBRecord", 0);
+SDBRecord::SDBRecord ( EmpresaBase *con ) : DBRecord ( con )
+{
+    _depura ( "SDBRecord::SDBRecord", 0 );
+    static int creaciones = 0;
+    creaciones++;
+    _depura ( "SDBrecord::creados: ", 0,  QString::number ( creaciones ) );
+    _depura ( "END SDBRecord::SDBRecord", 0 );
 }
 
 
@@ -47,12 +48,13 @@ SDBRecord::SDBRecord(EmpresaBase *con) : DBRecord(con) {
 Mantiene un contador de elementos destruidos para depurar la liberación de memoria
 \todo Se debe eliminar el contador una vez testeado la correcta liberacion de memoria
 **/
-SDBRecord::~SDBRecord() {
-  static int destrucciones = 0;
-  _depura("SDBRecord::~SDBRecord", 0);
-  destrucciones++;
-  _depura("SDBrecord::destruidos: ",0 ,  QString::number(destrucciones));
-  _depura("SDBRecord::~SDBRecord", 0);
+SDBRecord::~SDBRecord()
+{
+    static int destrucciones = 0;
+    _depura ( "SDBRecord::~SDBRecord", 0 );
+    destrucciones++;
+    _depura ( "SDBrecord::destruidos: ", 0 ,  QString::number ( destrucciones ) );
+    _depura ( "SDBRecord::~SDBRecord", 0 );
 }
 
 
@@ -61,11 +63,12 @@ SDBRecord::~SDBRecord() {
 \param id Devuelve el identificador del registro guardado
 \return Si todo ha ido bien devuelve 0
 **/
-int SDBRecord::DBsave(QString &id) {
-  _depura("SDBRecord::DBsave", 0);
-  refresh();
-  _depura("END SDBRecord::DBsave", 0);
-  return DBRecord::DBsave(id);
+int SDBRecord::DBsave ( QString &id )
+{
+    _depura ( "SDBRecord::DBsave", 0 );
+    refresh();
+    _depura ( "END SDBRecord::DBsave", 0 );
+    return DBRecord::DBsave ( id );
 }
 
 
@@ -73,14 +76,15 @@ int SDBRecord::DBsave(QString &id) {
 /**
 Actualiza los valores del registro acorde a los valores que tiene la tabla que lo contiene
 **/
-void SDBRecord::refresh() {
-  _depura("SDBRecord::refresh", 0);
-  SDBCampo *camp;
-  for (int i = 0; i < m_lista.size(); ++i) {
-    camp = (SDBCampo *) m_lista.at(i);
-    camp->refresh();
-  } // end for
-  _depura("END SDBRecord::refresh", 0);
+void SDBRecord::refresh()
+{
+    _depura ( "SDBRecord::refresh", 0 );
+    SDBCampo *camp;
+    for ( int i = 0; i < m_lista.size(); ++i ) {
+        camp = ( SDBCampo * ) m_lista.at ( i );
+        camp->refresh();
+    } // end for
+    _depura ( "END SDBRecord::refresh", 0 );
 }
 
 
@@ -92,13 +96,14 @@ void SDBRecord::refresh() {
 \param nomp Nombre a mostrar en caso de error
 \return
 **/
-int SDBRecord::addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp) {
-  _depura("SDBRecord::addDBCampo", 0);
-  SDBCampo *camp = new SDBCampo(this, m_conexionbase, nom, typ, res, nomp);
-  camp->set("");
-  m_lista.append(camp);
-  _depura("END SDBRecord::addDBCampo", 0);
-  return 0;
+int SDBRecord::addDBCampo ( QString nom, DBCampo::dbtype typ, int res, QString nomp )
+{
+    _depura ( "SDBRecord::addDBCampo", 0 );
+    SDBCampo *camp = new SDBCampo ( this, m_conexionbase, nom, typ, res, nomp );
+    camp->set ( "" );
+    m_lista.append ( camp );
+    _depura ( "END SDBRecord::addDBCampo", 0 );
+    return 0;
 }
 
 
@@ -111,20 +116,22 @@ int SDBRecord::addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nom
 \param res Las restricciones del campo
 \param nomp el nombre a presentar en caso de error.
 **/
-SDBCampo::SDBCampo(SDBRecord *par, postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp)
-  :QTableWidgetItem2(), DBCampo(com, nom, typ, res, nomp) {
-  _depura("SDBCampo::SDBCampo", 0);
-  m_pare = par;
-  _depura("SDBCampo::SDBCampo", 0);
+SDBCampo::SDBCampo ( SDBRecord *par, postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp )
+        : QTableWidgetItem2(), DBCampo ( com, nom, typ, res, nomp )
+{
+    _depura ( "SDBCampo::SDBCampo", 0 );
+    m_pare = par;
+    _depura ( "SDBCampo::SDBCampo", 0 );
 }
 
 
 ///
 /**
 **/
-SDBCampo::~SDBCampo() {
-  _depura("SDBCampo::~SDBCampo()", 0);
-  _depura("END SDBCampo::~SDBCampo()", 0);
+SDBCampo::~SDBCampo()
+{
+    _depura ( "SDBCampo::~SDBCampo()", 0 );
+    _depura ( "END SDBCampo::~SDBCampo()", 0 );
 }
 
 
@@ -132,14 +139,15 @@ SDBCampo::~SDBCampo() {
 /**
 Tiene especial intereses con los campos checkables ya que su tratamiento no es directo
 **/
-void SDBCampo::refresh() {
-  _depura("SDBCampo::refresh", 0);
-  if (this->tipo() == DBCampo::DBboolean)
-    DBCampo::set(checkState() == Qt::Checked ? "TRUE" : "FALSE");
-  else
-    DBCampo::set(text());
-  // end if
-  _depura("END SDBCampo::refresh", 0);
+void SDBCampo::refresh()
+{
+    _depura ( "SDBCampo::refresh", 0 );
+    if ( this->tipo() == DBCampo::DBboolean )
+        DBCampo::set ( checkState() == Qt::Checked ? "TRUE" : "FALSE" );
+    else
+        DBCampo::set ( text() );
+    // end if
+    _depura ( "END SDBCampo::refresh", 0 );
 }
 
 
@@ -150,28 +158,29 @@ para la presentacion de valores corregidos a un estandar.
 \param val Valor que toma el campo
 \return Si no hay errores devuelve 0
 **/
-int SDBCampo::set(QString val) {
-  _depura("SDBCampo::set", 0, nomcampo() + " = " + val);
-  QRegExp importe("^\\d*\\.\\d{2}$"); ///< Para emparejar los valores numericos con decimales
-  if (tipo() == DBCampo::DBboolean) {
-    if (restrictcampo() == SHeader::DBNoWrite) {
-      setFlags(this->flags() & (~Qt::ItemIsUserCheckable));
-    } // end if
-    if (val == "TRUE" || val == "t") {
-      setCheckState(Qt::Checked);
+int SDBCampo::set ( QString val )
+{
+    _depura ( "SDBCampo::set", 0, nomcampo() + " = " + val );
+    QRegExp importe ( "^\\d*\\.\\d{2}$" ); ///< Para emparejar los valores numericos con decimales
+    if ( tipo() == DBCampo::DBboolean ) {
+        if ( restrictcampo() == SHeader::DBNoWrite ) {
+            setFlags ( this->flags() & ( ~Qt::ItemIsUserCheckable ) );
+        } // end if
+        if ( val == "TRUE" || val == "t" ) {
+            setCheckState ( Qt::Checked );
+        } else {
+            setCheckState ( Qt::Unchecked );
+        } // end if
+    } else if ( tipo() == DBCampo::DBnumeric && importe.exactMatch ( val ) ) {
+        setText ( val );
+    } else if ( tipo() == DBCampo::DBdate ) {
+        setText ( val.left ( 10 ) );
     } else {
-      setCheckState(Qt::Unchecked);
+        setText ( val );
     } // end if
-  } else if (tipo() == DBCampo::DBnumeric && importe.exactMatch(val)) {
-    setText(val);
-  } else if (tipo() == DBCampo::DBdate) {
-    setText(val.left(10));
-  } else {
-    setText(val);
-  } // end if
-  DBCampo::set(val);
-  _depura("END SDBCampo::set", 0, val);
-  return 0;
+    DBCampo::set ( val );
+    _depura ( "END SDBCampo::set", 0, val );
+    return 0;
 }
 
 
@@ -180,37 +189,38 @@ int SDBCampo::set(QString val) {
 \param other El campo con el que hay que comprarar
 \return TRUE si se considere este el campo mas grande, FALSE en caso contrario.
 **/
-bool SDBCampo::operator< (const QTableWidgetItem &other) {
-  _depura("SDBCampo::operator <", 0, text());
-  SDBCampo *ot = (SDBCampo *) &other;
-  dbtype tip = ot->tipo();
-  if (tip == this->tipo()) {
-    QString val = ot->valorcampo();
+bool SDBCampo::operator< ( const QTableWidgetItem &other )
+{
+    _depura ( "SDBCampo::operator <", 0, text() );
+    SDBCampo *ot = ( SDBCampo * ) & other;
+    dbtype tip = ot->tipo();
+    if ( tip == this->tipo() ) {
+        QString val = ot->valorcampo();
 
-    if (this->tipo() == DBCampo::DBnumeric || this->tipo() == DBCampo::DBint) {
-      _depura("SDBCampo::operator < es del tipo numerico:", 0, this->nomcampo() + QString::number(this->tipo()));
-      double db1 = this->valorcampo().toDouble();
-      double db2 = val.toDouble();
-      return (db1 < db2);
-    } // end if
+        if ( this->tipo() == DBCampo::DBnumeric || this->tipo() == DBCampo::DBint ) {
+            _depura ( "SDBCampo::operator < es del tipo numerico:", 0, this->nomcampo() + QString::number ( this->tipo() ) );
+            double db1 = this->valorcampo().toDouble();
+            double db2 = val.toDouble();
+            return ( db1 < db2 );
+        } // end if
 
-    if (this->tipo() == DBCampo::DBdate) {
-      _depura("SDBCampo::operator < es del tipo fecha:", 0, this->nomcampo() + QString::number(this->tipo()));
-      QDate fech = normalizafecha(this->valorcampo());
-      QString db1 = fech.toString(Qt::ISODate);
-      QDate fech1 = normalizafecha(val);
-      QString db2 = fech1.toString(Qt::ISODate);
-      return (db1 < db2);
-    } // end if
+        if ( this->tipo() == DBCampo::DBdate ) {
+            _depura ( "SDBCampo::operator < es del tipo fecha:", 0, this->nomcampo() + QString::number ( this->tipo() ) );
+            QDate fech = normalizafecha ( this->valorcampo() );
+            QString db1 = fech.toString ( Qt::ISODate );
+            QDate fech1 = normalizafecha ( val );
+            QString db2 = fech1.toString ( Qt::ISODate );
+            return ( db1 < db2 );
+        } // end if
 
-    if (this->tipo() == DBCampo::DBvarchar) {
-      _depura("SDBCampo::operator < es del tipo varchar:", 0, this->nomcampo() + QString::number(this->tipo()));
-      return (this->valorcampo() < val);
-    } // end if
-    _depura("tipo desconocido", 0);
-  }
-  _depura("END SDBCampo::operator <", 0, text());
-  return FALSE;
+        if ( this->tipo() == DBCampo::DBvarchar ) {
+            _depura ( "SDBCampo::operator < es del tipo varchar:", 0, this->nomcampo() + QString::number ( this->tipo() ) );
+            return ( this->valorcampo() < val );
+        } // end if
+        _depura ( "tipo desconocido", 0 );
+    }
+    _depura ( "END SDBCampo::operator <", 0, text() );
+    return FALSE;
 }
 
 
@@ -220,10 +230,11 @@ Es util porque se activan signals sobre campos determinados en los que no sabrem
 pertencecen
 \return Puntero al registro
 **/
-SDBRecord *SDBCampo::pare() {
-  _depura("SDBCampo::pare", 0);
-  _depura("END SDBCampo::pare", 0);
-  return m_pare;
+SDBRecord *SDBCampo::pare()
+{
+    _depura ( "SDBCampo::pare", 0 );
+    _depura ( "END SDBCampo::pare", 0 );
+    return m_pare;
 }
 
 
@@ -235,34 +246,25 @@ SDBRecord *SDBCampo::pare() {
 \param opt Opciones de presentacion
 \param nomp Nombre a presentar en caso necesario para referirse a la columna
 **/
-SHeader::SHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp) {
-  _depura("SHeader::SHeader", 0);
-  m_nomcampo = nom;
-  m_tipo = typ;
-  m_restricciones = res;
-  m_options = opt;
-  m_nompresentacion = nomp;
-  _depura("END SHeader::SHeader", 0);
+SHeader::SHeader ( QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp )
+{
+    _depura ( "SHeader::SHeader", 0 );
+    m_nomcampo = nom;
+    m_tipo = typ;
+    m_restricciones = res;
+    m_options = opt;
+    m_nompresentacion = nomp;
+    _depura ( "END SHeader::SHeader", 0 );
 }
 
 
 ///
 /**
 **/
-SHeader::~SHeader() {
-  _depura("SHeader::~SHeader", 0);
-  _depura("END SHeader::~SHeader", 0);
-}
-
-
-///
-/**
-\return
-**/
-unsigned int SHeader::options() {
-  _depura("SHeader::options", 0);
-  _depura("END SHeader::options", 0);
-  return m_options;
+SHeader::~SHeader()
+{
+    _depura ( "SHeader::~SHeader", 0 );
+    _depura ( "END SHeader::~SHeader", 0 );
 }
 
 
@@ -270,10 +272,11 @@ unsigned int SHeader::options() {
 /**
 \return
 **/
-unsigned int SHeader::restricciones() {
-  _depura("SHeader::restricciones", 0);
-  _depura("END SHeader::restricciones", 0);
-  return m_restricciones;
+unsigned int SHeader::options()
+{
+    _depura ( "SHeader::options", 0 );
+    _depura ( "END SHeader::options", 0 );
+    return m_options;
 }
 
 
@@ -281,10 +284,23 @@ unsigned int SHeader::restricciones() {
 /**
 \return
 **/
-DBCampo::dbtype SHeader::tipo() {
-  _depura("DBCampo::dbtype SHeader::tipo", 0);
-  _depura("END DBCampo::dbtype SHeader::tipo", 0);
-  return m_tipo;
+unsigned int SHeader::restricciones()
+{
+    _depura ( "SHeader::restricciones", 0 );
+    _depura ( "END SHeader::restricciones", 0 );
+    return m_restricciones;
+}
+
+
+///
+/**
+\return
+**/
+DBCampo::dbtype SHeader::tipo()
+{
+    _depura ( "DBCampo::dbtype SHeader::tipo", 0 );
+    _depura ( "END DBCampo::dbtype SHeader::tipo", 0 );
+    return m_tipo;
 
 }
 
@@ -293,10 +309,11 @@ DBCampo::dbtype SHeader::tipo() {
 /**
 \return
 **/
-QString SHeader::nompresentacion() {
-  _depura("SHeader::nompresentacion", 0);
-  _depura("EDN SHeader::nompresentacion", 0);
-  return m_nompresentacion;
+QString SHeader::nompresentacion()
+{
+    _depura ( "SHeader::nompresentacion", 0 );
+    _depura ( "EDN SHeader::nompresentacion", 0 );
+    return m_nompresentacion;
 }
 
 
@@ -304,10 +321,11 @@ QString SHeader::nompresentacion() {
 /**
 \return
 **/
-int SHeader::restrictcampo() {
-  _depura("SHeader::restrictcampo", 0);
-  _depura("END SHeader::restrictcampo", 0);
-  return m_restricciones;
+int SHeader::restrictcampo()
+{
+    _depura ( "SHeader::restrictcampo", 0 );
+    _depura ( "END SHeader::restrictcampo", 0 );
+    return m_restricciones;
 }
 
 
@@ -315,9 +333,10 @@ int SHeader::restrictcampo() {
 /**
 \return
 **/
-QString SHeader::nomcampo() {
-  _depura("SHeader::nomcampo", 0); 
-  _depura("END SHeader::nomcampo", 0); 
-  return m_nomcampo;
+QString SHeader::nomcampo()
+{
+    _depura ( "SHeader::nomcampo", 0 );
+    _depura ( "END SHeader::nomcampo", 0 );
+    return m_nomcampo;
 }
 

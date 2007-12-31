@@ -36,46 +36,49 @@
 \param comp
 \param parent
 **/
-TarifaView::TarifaView(Company *comp, QWidget *parent)
-        : FichaBf(comp, parent) {
-    _depura("TarifaView::INIT_constructor()\n", 0);
-    setAttribute(Qt::WA_DeleteOnClose);
-    setupUi(this);
-    setTitleName(tr("Tarifa"));
-    setDBTableName("tarifa");
-    setDBCampoId("idtarifa");
-    addDBCampo("idtarifa", DBCampo::DBint, DBCampo::DBPrimaryKey, tr("ID tarifa"));
-    addDBCampo("nomtarifa", DBCampo::DBvarchar, DBCampo::DBNotNull, tr("Nombre de la tarifa"));
-    mui_idfamilia->setEmpresaBase(comp);
-    mui_almacen->setEmpresaBase(comp);
-    mui_almacen->setidalmacen("");
-    mui_list->setEmpresaBase(comp);
+TarifaView::TarifaView ( Company *comp, QWidget *parent )
+        : FichaBf ( comp, parent )
+{
+    _depura ( "TarifaView::INIT_constructor()\n", 0 );
+    setAttribute ( Qt::WA_DeleteOnClose );
+    setupUi ( this );
+    setTitleName ( tr ( "Tarifa" ) );
+    setDBTableName ( "tarifa" );
+    setDBCampoId ( "idtarifa" );
+    addDBCampo ( "idtarifa", DBCampo::DBint, DBCampo::DBPrimaryKey, tr ( "ID tarifa" ) );
+    addDBCampo ( "nomtarifa", DBCampo::DBvarchar, DBCampo::DBNotNull, tr ( "Nombre de la tarifa" ) );
+    mui_idfamilia->setEmpresaBase ( comp );
+    mui_almacen->setEmpresaBase ( comp );
+    mui_almacen->setidalmacen ( "" );
+    mui_list->setEmpresaBase ( comp );
 
-    meteWindow(tr("Tarifa edicion"), this);
+    meteWindow ( tr ( "Tarifa edicion" ), this );
 
     dialogChanges_cargaInicial();
-    _depura("TarifaView::END_constructor()\n", 0);
+    _depura ( "TarifaView::END_constructor()\n", 0 );
 }
 
 
 ///
 /**
 **/
-TarifaView::~TarifaView() {
-    _depura("TarifaView::INIT_destructor()\n", 0);
-    empresaBase()->sacaWindow(this);
-    _depura("TarifaView::END_destructor()\n", 0);
+TarifaView::~TarifaView()
+{
+    _depura ( "TarifaView::INIT_destructor()\n", 0 );
+    empresaBase() ->sacaWindow ( this );
+    _depura ( "TarifaView::END_destructor()\n", 0 );
 }
 
 
 ///
 /**
 **/
-void TarifaView::pintar() {
-    _depura("TarifaView::pintar", 0);
-    mui_nomtarifa->setText(DBvalue("nomtarifa"));
-    setWindowTitle(tr("Tarifa") + " " + mui_nomtarifa->text());
-    _depura("END TarifaView::pintar", 1);
+void TarifaView::pintar()
+{
+    _depura ( "TarifaView::pintar", 0 );
+    mui_nomtarifa->setText ( DBvalue ( "nomtarifa" ) );
+    setWindowTitle ( tr ( "Tarifa" ) + " " + mui_nomtarifa->text() );
+    _depura ( "END TarifaView::pintar", 1 );
 }
 
 
@@ -84,29 +87,30 @@ void TarifaView::pintar() {
 \param idtarifa
 \return
 **/
-QString TarifaView::formaQuery(QString idtarifa) {
-    _depura("TarifaView::formaQuery", 0);
+QString TarifaView::formaQuery ( QString idtarifa )
+{
+    _depura ( "TarifaView::formaQuery", 0 );
     QString wherearticulo = "";
     QString warticulo = " WHERE ";
 
     QString wherealmacen = "";
-    QString walmacen= " WHERE ";
+    QString walmacen = " WHERE ";
 
     QString idfamilia = mui_idfamilia->idfamilia();
-    if (idfamilia != "") {
+    if ( idfamilia != "" ) {
         wherearticulo += warticulo + " idfamilia = " + idfamilia;
         warticulo = " AND ";
     } // end if
 
     QString idalmacen = mui_almacen->idalmacen();
-    if (idalmacen != "") {
+    if ( idalmacen != "" ) {
         wherealmacen += walmacen + " idalmacen = " + idalmacen;
         walmacen = " AND ";
     } // end if
 
     QString SQLQuery = "SELECT * FROM (SELECT * FROM (SELECT * FROM almacen " + wherealmacen + ") AS t6, (SELECT * FROM articulo " + wherearticulo + ") AS t5, (SELECT * FROM tarifa WHERE idtarifa = " + idtarifa + ") AS t2 ) AS t3 ";
     SQLQuery += " LEFT JOIN (SELECT * FROM ltarifa WHERE idtarifa = " + idtarifa + ") as t1 ON t1.idtarifa = t3.idtarifa AND t1.idalmacen = t3.idalmacen AND t1.idarticulo = t3.idarticulo";
-    _depura("END TarifaView::formaQuery", 0);
+    _depura ( "END TarifaView::formaQuery", 0 );
     return SQLQuery;
 }
 
@@ -118,24 +122,25 @@ QString TarifaView::formaQuery(QString idtarifa) {
 \param idtarifa
 \return
 **/
-int TarifaView::cargar(QString idtarifa) {
-    _depura("TarifaView::cargar(" + idtarifa + ")\n", 0);
+int TarifaView::cargar ( QString idtarifa )
+{
+    _depura ( "TarifaView::cargar(" + idtarifa + ")\n", 0 );
     int error = 0;
-    setDBvalue("idtarifa", idtarifa);
-    DBRecord::cargar(idtarifa);
-    mui_list->cargar(formaQuery(idtarifa));
+    setDBvalue ( "idtarifa", idtarifa );
+    DBRecord::cargar ( idtarifa );
+    mui_list->cargar ( formaQuery ( idtarifa ) );
 
-    setWindowTitle(tr("Tarifa") + " " + DBvalue("nomtarifa"));
-    meteWindow(windowTitle(), this);
+    setWindowTitle ( tr ( "Tarifa" ) + " " + DBvalue ( "nomtarifa" ) );
+    meteWindow ( windowTitle(), this );
 
     dialogChanges_cargaInicial();
     /// Tratamiento de excepciones.
-    if (error == 1) {
-        _depura("TarifaView::END_chargeArticle Error en la carga del articulo()\n", 0);
+    if ( error == 1 ) {
+        _depura ( "TarifaView::END_chargeArticle Error en la carga del articulo()\n", 0 );
         return -1;
     } // end if
     pintar();
-    _depura("END TarifaView::cargar()\n", 0);
+    _depura ( "END TarifaView::cargar()\n", 0 );
     return 0;
 }
 
@@ -144,15 +149,16 @@ int TarifaView::cargar(QString idtarifa) {
 /**
 \return
 **/
-int TarifaView::guardar() {
-    _depura("TarifaView::INIT_s_grabarClicked()\n", 0);
-    setDBvalue("nomtarifa", mui_nomtarifa->text());
+int TarifaView::guardar()
+{
+    _depura ( "TarifaView::INIT_s_grabarClicked()\n", 0 );
+    setDBvalue ( "nomtarifa", mui_nomtarifa->text() );
     DBRecord::guardar();
     /// Guardamos la lista de componentes.
-    mui_list->setColumnValue("idtarifa", DBvalue("idtarifa"));
+    mui_list->setColumnValue ( "idtarifa", DBvalue ( "idtarifa" ) );
     mui_list->guardar();
     dialogChanges_cargaInicial();
-    _depura("TarifaView::END_s_grabarClicked()\n", 0);
+    _depura ( "TarifaView::END_s_grabarClicked()\n", 0 );
     return 0;
 }
 
@@ -160,48 +166,51 @@ int TarifaView::guardar() {
 /// Esta funci&oacute;n se ejecuta cuando se ha pulsado sobre el bot&oacute;n de nuevo.
 /**
 **/
-void TarifaView::on_mui_crear_clicked() {
-    _depura("TarifaView::INIT_boton_nuevo()\n", 0);
+void TarifaView::on_mui_crear_clicked()
+{
+    _depura ( "TarifaView::INIT_boton_nuevo()\n", 0 );
     vaciar();
     pintar();
-    _depura("TarifaView::END_boton_nuevo()\n", 0);
+    _depura ( "TarifaView::END_boton_nuevo()\n", 0 );
 }
 
 
 ///
 /**
 **/
-void TarifaView::on_mui_actualizar_clicked() {
-    _depura("TarifaView::INIT_boton_nuevo()\n", 0);
+void TarifaView::on_mui_actualizar_clicked()
+{
+    _depura ( "TarifaView::INIT_boton_nuevo()\n", 0 );
     guardar();
-    QString idtarifa = DBvalue("idtarifa");
-    cargar(idtarifa);
-    _depura("TarifaView::END_boton_nuevo()\n",0 );
+    QString idtarifa = DBvalue ( "idtarifa" );
+    cargar ( idtarifa );
+    _depura ( "TarifaView::END_boton_nuevo()\n", 0 );
 }
 
 
 /// Esta funci&oacute;n se ejecuta cuando se ha pulsado sobre el bot&oacute;n de borrar.
 /**
 **/
-void TarifaView::on_mui_borrar_clicked() {
-    _depura("TarifaView::INIT_boton_borrar()\n", 0);
-    if (DBvalue("idtarifa") != "") {
-        if (QMessageBox::question(this,
-                                  tr("Borrar tarifa"),
-                                  tr("Esta a punto de borrar una tarifa. Desea continuar?"),
-                                  tr("&Si"), tr("&No"), 0, 1, 0) == 0) {
-            empresaBase()->begin();
+void TarifaView::on_mui_borrar_clicked()
+{
+    _depura ( "TarifaView::INIT_boton_borrar()\n", 0 );
+    if ( DBvalue ( "idtarifa" ) != "" ) {
+        if ( QMessageBox::question ( this,
+                                     tr ( "Borrar tarifa" ),
+                                     tr ( "Esta a punto de borrar una tarifa. Desea continuar?" ),
+                                     tr ( "&Si" ), tr ( "&No" ), 0, 1, 0 ) == 0 ) {
+            empresaBase() ->begin();
             int error = mui_list->borrar();
             error += borrar();
-            if (error) {
-                empresaBase()->rollback();
+            if ( error ) {
+                empresaBase() ->rollback();
             } else
-                empresaBase()->commit();
+                empresaBase() ->commit();
             dialogChanges_cargaInicial();
             close();
         } // end if
     } // end if
-    _depura("TarifaView::END_boton_borrar()\n", 0);
+    _depura ( "TarifaView::END_boton_borrar()\n", 0 );
 }
 
 
@@ -209,16 +218,17 @@ void TarifaView::on_mui_borrar_clicked() {
 /**
 \param e
 **/
-void TarifaView::closeEvent(QCloseEvent *e) {
-    _depura("closeEvent", 0);
-    if (dialogChanges_hayCambios())  {
-        int val = QMessageBox::warning(this,
-                                       tr("Guardar tarifa"),
-                                       tr("Desea guardar los cambios?"),
-                                       tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
-        if (val == 0)
+void TarifaView::closeEvent ( QCloseEvent *e )
+{
+    _depura ( "closeEvent", 0 );
+    if ( dialogChanges_hayCambios() )  {
+        int val = QMessageBox::warning ( this,
+                                         tr ( "Guardar tarifa" ),
+                                         tr ( "Desea guardar los cambios?" ),
+                                         tr ( "&Si" ), tr ( "&No" ), tr ( "&Cancelar" ), 0, 2 );
+        if ( val == 0 )
             on_mui_guardar_clicked();
-        if (val == 2)
+        if ( val == 2 )
             e->ignore();
     } // end if
 }
@@ -227,10 +237,11 @@ void TarifaView::closeEvent(QCloseEvent *e) {
 ///
 /**
 **/
-void TarifaView::on_mui_aceptar_clicked() {
-    _depura("TarifaView::on_mui_aceptar_clicked", 0);
+void TarifaView::on_mui_aceptar_clicked()
+{
+    _depura ( "TarifaView::on_mui_aceptar_clicked", 0 );
     on_mui_guardar_clicked();
     close();
-    _depura("END TarifaView::on_mui_aceptar_clicked", 0);
+    _depura ( "END TarifaView::on_mui_aceptar_clicked", 0 );
 }
 

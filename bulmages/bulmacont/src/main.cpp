@@ -64,9 +64,10 @@ QTranslator *traductor;
     Y por &uacute;ltimo crea el objeto del tipo \ref Bulmacont que es la aplicaci&oacute;n
     de ventanas. */
 
-int main(int argc, char **argv) {
+int main ( int argc, char **argv )
+{
     /// Leemos la configuraci&oacute;n que luego podremos usar siempre.
-    confpr = new configuracion("bulmacont");
+    confpr = new configuracion ( "bulmacont" );
     Bulmacont *bges;
     int valorsalida = 0;
     QString db = argv[2];
@@ -77,126 +78,126 @@ int main(int argc, char **argv) {
         g_plugins = new Plugins();
 
         /// Creamos la aplicaci&oacute;n principal.
-        theApp = new QApplication2(argc, argv);
-        theApp->setFont(QFont(confpr->valor(CONF_FONTFAMILY_BULMAGES).toAscii(), atoi(confpr->valor(CONF_FONTSIZE_BULMAGES).toAscii())));
+        theApp = new QApplication2 ( argc, argv );
+        theApp->setFont ( QFont ( confpr->valor ( CONF_FONTFAMILY_BULMAGES ).toAscii(), atoi ( confpr->valor ( CONF_FONTSIZE_BULMAGES ).toAscii() ) ) );
 
         /// Definimos la codificaci&oacute;n a Unicode.
-        QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
-        QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
+        QTextCodec::setCodecForCStrings ( QTextCodec::codecForName ( "UTF-8" ) );
+        QTextCodec::setCodecForLocale ( QTextCodec::codecForName ( "UTF-8" ) );
         /// Cargamos las primeras traducciones para bulmalib y para bulmacont.
-        traductor = new QTranslator(0);
-        if (confpr->valor(CONF_TRADUCCION) == "locales") {
-            traductor->load(QString("bulmalib_") + QLocale::system().name(),
-                            confpr->valor(CONF_DIR_TRADUCCION).toAscii());
+        traductor = new QTranslator ( 0 );
+        if ( confpr->valor ( CONF_TRADUCCION ) == "locales" ) {
+            traductor->load ( QString ( "bulmalib_" ) + QLocale::system().name(),
+                              confpr->valor ( CONF_DIR_TRADUCCION ).toAscii() );
         } else {
-            QString archivo = "bulmalib_" + confpr->valor(CONF_TRADUCCION);
-            traductor->load(archivo, confpr->valor(CONF_DIR_TRADUCCION).toAscii());
+            QString archivo = "bulmalib_" + confpr->valor ( CONF_TRADUCCION );
+            traductor->load ( archivo, confpr->valor ( CONF_DIR_TRADUCCION ).toAscii() );
         } // end if
-        theApp->installTranslator(traductor);
+        theApp->installTranslator ( traductor );
 
-        traductor = new QTranslator(0);
-        if (confpr->valor(CONF_TRADUCCION) == "locales") {
-            traductor->load(QString("bulmacont_") + QLocale::system().name(),
-                            confpr->valor(CONF_DIR_TRADUCCION).toAscii());
+        traductor = new QTranslator ( 0 );
+        if ( confpr->valor ( CONF_TRADUCCION ) == "locales" ) {
+            traductor->load ( QString ( "bulmacont_" ) + QLocale::system().name(),
+                              confpr->valor ( CONF_DIR_TRADUCCION ).toAscii() );
         } else {
-            QString archivo = "bulmacont_" + confpr->valor(CONF_TRADUCCION);
-            traductor->load(archivo.toAscii(), confpr->valor(CONF_DIR_TRADUCCION).toAscii());
+            QString archivo = "bulmacont_" + confpr->valor ( CONF_TRADUCCION );
+            traductor->load ( archivo.toAscii(), confpr->valor ( CONF_DIR_TRADUCCION ).toAscii() );
         } // end if
-        theApp->installTranslator(traductor);
+        theApp->installTranslator ( traductor );
 
         /// Cargamos el splashScreen.
-        Splash *splashScr = new Splash(confpr->valor(CONF_SPLASH_BULMACONT), "BulmaCont", "0.10.1");
-        splashScr->mensaje(QApplication::translate("main","Iniciando clases"));
-        splashScr->setBarraProgreso(1);
+        Splash *splashScr = new Splash ( confpr->valor ( CONF_SPLASH_BULMACONT ), "BulmaCont", "0.10.1" );
+        splashScr->mensaje ( QApplication::translate ( "main", "Iniciando clases" ) );
+        splashScr->setBarraProgreso ( 1 );
 
         /// Miramos en los par&aacute;metros pasados al programa por si ya viene
         /// indicada la empresa y no hay que mostrar selector.
-        if (argc == 5) {
-            confpr->setValor(CONF_LOGIN_USER, us);
-            confpr->setValor(CONF_PASSWORD_USER, pass);
-            bges = new Bulmacont(NULL, 0, db);
-	    bges->hide();
-        } else if (argc == 3) {
-            QString db= argv[2];
-            bges = new Bulmacont(NULL, 0, db);
-	    bges->hide();
+        if ( argc == 5 ) {
+            confpr->setValor ( CONF_LOGIN_USER, us );
+            confpr->setValor ( CONF_PASSWORD_USER, pass );
+            bges = new Bulmacont ( NULL, 0, db );
+            bges->hide();
+        } else if ( argc == 3 ) {
+            QString db = argv[2];
+            bges = new Bulmacont ( NULL, 0, db );
+            bges->hide();
         } else {
-            logpass *login1 = new logpass(0, "");
-            if (!login1->authOK())
+            logpass *login1 = new logpass ( 0, "" );
+            if ( !login1->authOK() )
                 login1->exec();
-            if (!login1->authOK())
-                exit(1);
+            if ( !login1->authOK() )
+                exit ( 1 );
             delete login1;
-            bges = new Bulmacont(NULL, 0, "");
-	    bges->hide();
+            bges = new Bulmacont ( NULL, 0, "" );
+            bges->hide();
         } // end if
         g_main = bges;
 
-	splashScr->show();
-        splashScr->mensaje(QApplication::translate("main","Leyendo configuracion"));
-        splashScr->setBarraProgreso(2);
+        splashScr->show();
+        splashScr->mensaje ( QApplication::translate ( "main", "Leyendo configuracion" ) );
+        splashScr->setBarraProgreso ( 2 );
 
         /// Leemos la configuracion especifica de la base de datos que se ha abierto.
-        QString confEsp = CONFGLOBAL + bges->empresaactual()->nameDB() + ".conf";
+        QString confEsp = CONFGLOBAL + bges->empresaactual() ->nameDB() + ".conf";
         QDir archivoConf;
-        if (!archivoConf.exists(confEsp)) {
+        if ( !archivoConf.exists ( confEsp ) ) {
             QString mensaje = "--> El archivo '" + confEsp + "' no existe. <--\n";
-            fprintf(stderr, mensaje.toAscii().constData());
+            fprintf ( stderr, mensaje.toAscii().constData() );
         } else {
-            confpr->leeconfig(confEsp);
+            confpr->leeconfig ( confEsp );
         } // end if
 
-        splashScr->mensaje(QApplication::translate("main","Cargando Traducciones"));
-        splashScr->setBarraProgreso(3);
+        splashScr->mensaje ( QApplication::translate ( "main", "Cargando Traducciones" ) );
+        splashScr->setBarraProgreso ( 3 );
 
         /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
-        traductor = new QTranslator(0);
-        if (confpr->valor(CONF_TRADUCCION) == "locales") {
-            traductor->load(QString("bulmalib_") + QLocale::system().name(),
-                            confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+        traductor = new QTranslator ( 0 );
+        if ( confpr->valor ( CONF_TRADUCCION ) == "locales" ) {
+            traductor->load ( QString ( "bulmalib_" ) + QLocale::system().name(),
+                              confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
         } else {
-            QString archivo = "bulmalib_" + confpr->valor(CONF_TRADUCCION);
-            traductor->load(archivo, confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+            QString archivo = "bulmalib_" + confpr->valor ( CONF_TRADUCCION );
+            traductor->load ( archivo, confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
         } // end if
-        theApp->installTranslator(traductor);
+        theApp->installTranslator ( traductor );
 
-        traductor = new QTranslator(0);
-        if (confpr->valor(CONF_TRADUCCION) == "locales") {
-            traductor->load(QString("bulmacont_") + QLocale::system().name(),
-                            confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+        traductor = new QTranslator ( 0 );
+        if ( confpr->valor ( CONF_TRADUCCION ) == "locales" ) {
+            traductor->load ( QString ( "bulmacont_" ) + QLocale::system().name(),
+                              confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
         } else {
-            QString archivo = "bulmacont_" + confpr->valor(CONF_TRADUCCION);
-            traductor->load(archivo.toAscii().constData(), confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+            QString archivo = "bulmacont_" + confpr->valor ( CONF_TRADUCCION );
+            traductor->load ( archivo.toAscii().constData(), confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
         } // end if
-        theApp->installTranslator(traductor);
+        theApp->installTranslator ( traductor );
 
 
 
         /// Cargamos las librerias de g_plugins.
-        g_plugins->cargaLibs(confpr->valor(CONF_PLUGINS_BULMACONT));
+        g_plugins->cargaLibs ( confpr->valor ( CONF_PLUGINS_BULMACONT ) );
 
-        splashScr->mensaje(QApplication::translate("main","Lanzando Plugins"));
-        splashScr->setBarraProgreso(5);
+        splashScr->mensaje ( QApplication::translate ( "main", "Lanzando Plugins" ) );
+        splashScr->setBarraProgreso ( 5 );
 
         /// Disparamos los plugins con entryPoint.
-        g_plugins->lanza("entryPoint", bges);
+        g_plugins->lanza ( "entryPoint", bges );
 
-        splashScr->mensaje(QApplication::translate("main","Inicializando Componentes"));
-        splashScr->setBarraProgreso(6);
+        splashScr->mensaje ( QApplication::translate ( "main", "Inicializando Componentes" ) );
+        splashScr->setBarraProgreso ( 6 );
 
-	bges->empresaactual()->createMainWindows(splashScr);
+        bges->empresaactual() ->createMainWindows ( splashScr );
 
         bges->show();
 
-	delete splashScr;
+        delete splashScr;
 
         valorsalida = theApp->exec();
 
         /// Disparamos los plugins con entryPoint.
-        g_plugins->lanza("exitPoint", bges);
+        g_plugins->lanza ( "exitPoint", bges );
 
-    } catch (...) {
-        mensajeInfo("Error inesperado en BulmaCont, el programa se cerrara.");
+    } catch ( ... ) {
+        mensajeInfo ( "Error inesperado en BulmaCont, el programa se cerrara." );
     } // end try
 
     /// Liberamos memoria.
@@ -205,7 +206,7 @@ int main(int argc, char **argv) {
     delete traductor;
     delete confpr;
 
-    fprintf(stderr, "--> MAIN::Cerrando el programa. <--\n");
+    fprintf ( stderr, "--> MAIN::Cerrando el programa. <--\n" );
     return valorsalida;
 }
 

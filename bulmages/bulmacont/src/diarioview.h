@@ -31,16 +31,17 @@ class Empresa;
 
 /// Libro diario.
 /** Clase que muestra el libro diario de la empresa entre dos fechas. */
-class DiarioView : public FichaBc, public Ui::DiarioBase {
+class DiarioView : public FichaBc, public Ui::DiarioBase
+{
     Q_OBJECT
 
 public:
-    DiarioView(Empresa *, QWidget *parent = 0, int flags = 0);
+    DiarioView ( Empresa *, QWidget *parent = 0, int flags = 0 );
     virtual ~DiarioView();
     void accept();
     /// Inicializa la clase con las fechas inicial y final. El &uacute;ltimo par&aacute;metro
     /// no se usa.
-    void inicializa1(QString, QString, int);
+    void inicializa1 ( QString, QString, int );
     /// Slot que responde a la pulsaci&oacute;n del bot&oacute;n imprimir en el formulario.
     /// Realiza la impresi&oacute;n del listado que tenemos en pantalla.
     virtual void on_mui_imprimir_clicked();

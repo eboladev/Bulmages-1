@@ -47,7 +47,8 @@
 /// window and providing a menubar, toolbar
 /// and statusbar. For the main view, an instance of class Bulmages01View is
 /// created which creates your view.
-class Bulmacont : public QMainWindow, public Ui_BulmaContBase {
+class Bulmacont : public QMainWindow, public Ui_BulmaContBase
+{
     Q_OBJECT
 
 private:
@@ -57,7 +58,7 @@ private:
     listventanas *m_list;
 
 public:
-    Bulmacont(QWidget *parent = 0, Qt::WFlags f = Qt::Window, QString DB = "");
+    Bulmacont ( QWidget *parent = 0, Qt::WFlags f = Qt::Window, QString DB = "" );
     ~Bulmacont();
     Empresa *empresaactual();
     /// Exporta menues.
@@ -72,7 +73,7 @@ protected:
         eventFilter() tests if the document is modified; if yes, it asks the user to
         save the document. If the document title contains "Untitled", slotFileSaveAs()
         gets called to get a save name and path. */
-    virtual bool eventFilter(QObject* object, QEvent* event);
+    virtual bool eventFilter ( QObject* object, QEvent* event );
 
 private slots:
     /// Reverts the last editing action.
@@ -91,20 +92,20 @@ private slots:
     void slotPerdidas();
     void slotCentrosCoste();
     void slotCanales();
-    void slotViewFullScreen(bool toggle);
+    void slotViewFullScreen ( bool toggle );
     void slotCompBalance();
     virtual void s_asiento1();
-    void closeEvent(QCloseEvent *);
+    void closeEvent ( QCloseEvent * );
     /// Toggle the statusbar.
-    void slotViewStatusBar(bool toggle);
+    void slotViewStatusBar ( bool toggle );
     /// Creates a new view for the current document.
     void slotWindowNewWindow();
     /// Change the status message of the whole statusbar temporary.
-    void slotStatusHelpMsg(const QString &text);
+    void slotStatusHelpMsg ( const QString &text );
     /// Gets called when the window menu is activated; recreates the window menu with all
     /// opened window titles.
     void windowMenuAboutToShow();
-    void setActionIndexador(bool visible);
+    void setActionIndexador ( bool visible );
 
 private:
     /// El nombre de la base de datos.
@@ -152,7 +153,7 @@ public slots:
     virtual void on_actionInicio_triggered();
     virtual void on_actionFin_triggered();
     virtual void on_actionPaises_triggered();
-    virtual void informaindexador(QWidget *w);
+    virtual void informaindexador ( QWidget *w );
     virtual void on_actionIndexador_triggered();
 };
 

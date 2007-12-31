@@ -38,7 +38,8 @@ class Empresa;
     Tambi&eacute;n se utiliza para establecer el centro de coste por defecto, utlidad
     que permite introducir asientos directamente en un centro de coste sin tener que
     teclearlo en cada apunte. */
-class SelectCCosteView : public QDialog, public Ui_SelectCCosteBase, public PEmpresaBase {
+class SelectCCosteView : public QDialog, public Ui_SelectCCosteBase, public PEmpresaBase
+{
     Q_OBJECT
 
 private:
@@ -62,7 +63,7 @@ private:
 public:
     /// Constructor de la clase que recibe el parametro de empresa y que inicializa la
     /// base de datos a utilizar.
-    SelectCCosteView(Empresa *emp, QWidget *parent = 0);
+    SelectCCosteView ( Empresa *emp, QWidget *parent = 0 );
     /// Destructor de la clase.
     ~SelectCCosteView();
     void cargacostes();

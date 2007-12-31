@@ -31,30 +31,33 @@
 ///
 /**
 **/
-myplugin1::myplugin1() : PEmpresaBase() {
-    _depura("myplugin1::myplugin1", 0);
-    _depura("END myplugin1::myplugin1", 0);
+myplugin1::myplugin1() : PEmpresaBase()
+{
+    _depura ( "myplugin1::myplugin1", 0 );
+    _depura ( "END myplugin1::myplugin1", 0 );
 }
 
 
 ///
 /**
 **/
-myplugin1::~myplugin1() {
-    _depura("myplugin1::~myplugin1", 0);
-    _depura("END myplugin1::~myplugin1", 0);
+myplugin1::~myplugin1()
+{
+    _depura ( "myplugin1::~myplugin1", 0 );
+    _depura ( "END myplugin1::~myplugin1", 0 );
 }
 
 
 ///
 /**
 **/
-void myplugin1::elslot() {
-    _depura("myplugin1::elslot", 0);
-    TarifaListView *tar = new TarifaListView(((Company *)empresaBase()), NULL);
-    empresaBase()->m_pWorkspace->addWindow(tar);
+void myplugin1::elslot()
+{
+    _depura ( "myplugin1::elslot", 0 );
+    TarifaListView *tar = new TarifaListView ( ( ( Company * ) empresaBase() ), NULL );
+    empresaBase() ->m_pWorkspace->addWindow ( tar );
     tar->show();
-    _depura("END myplugin1::elslot", 0);
+    _depura ( "END myplugin1::elslot", 0 );
 }
 
 
@@ -62,19 +65,20 @@ void myplugin1::elslot() {
 /**
 \param bges
 **/
-void myplugin1::inicializa(Bulmafact *bges) {
-    _depura("myplugin1::inicializa", 0);
+void myplugin1::inicializa ( Bulmafact *bges )
+{
+    _depura ( "myplugin1::inicializa", 0 );
     /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
     m_bges = bges;
-    setEmpresaBase(bges->getcompany());
-   
-    QAction *planCuentas = new QAction(tr("&Tarifas"), 0);
-    planCuentas->setStatusTip(tr("Tarifas"));
-    planCuentas->setWhatsThis(tr("Tarifas"));
+    setEmpresaBase ( bges->getcompany() );
+
+    QAction *planCuentas = new QAction ( tr ( "&Tarifas" ), 0 );
+    planCuentas->setStatusTip ( tr ( "Tarifas" ) );
+    planCuentas->setWhatsThis ( tr ( "Tarifas" ) );
     bges->menuArticulos->addSeparator();
-    bges->menuArticulos->addAction(planCuentas);
-    connect(planCuentas, SIGNAL(activated()), this, SLOT(elslot()));
-    _depura("END myplugin1::inicializa", 0);
+    bges->menuArticulos->addAction ( planCuentas );
+    connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+    _depura ( "END myplugin1::inicializa", 0 );
 }
 
 
@@ -83,10 +87,11 @@ void myplugin1::inicializa(Bulmafact *bges) {
 \param bges
 \return
 **/
-int entryPoint(Bulmafact *bges) {
-    _depura("Punto de Entrada del plugin de Tarifas\n", 0);
+int entryPoint ( Bulmafact *bges )
+{
+    _depura ( "Punto de Entrada del plugin de Tarifas\n", 0 );
     myplugin1 *plug = new myplugin1();
-    plug->inicializa(bges);
+    plug->inicializa ( bges );
     return 0;
 }
 
@@ -96,28 +101,29 @@ int entryPoint(Bulmafact *bges) {
 \param cli
 \return
 **/
-int ClienteView_ClienteView(ClienteView *cli) {
-    _depura("dentro del plugin", 0);
+int ClienteView_ClienteView ( ClienteView *cli )
+{
+    _depura ( "dentro del plugin", 0 );
 
-    cli->addDBCampo("idtarifa", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Identificador", "plugintarifas"));
+    cli->addDBCampo ( "idtarifa", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Identificador", "plugintarifas" ) );
 
     QHBoxLayout *hboxLayout160 = new QHBoxLayout();
-    hboxLayout160->setSpacing(2);
-    hboxLayout160->setMargin(0);
-    hboxLayout160->setObjectName(QString::fromUtf8("hboxLayout16"));
+    hboxLayout160->setSpacing ( 2 );
+    hboxLayout160->setMargin ( 0 );
+    hboxLayout160->setObjectName ( QString::fromUtf8 ( "hboxLayout16" ) );
 
-    QLabel *textLabel2_9_26 = new QLabel(cli->m_frameplugin);
-    textLabel2_9_26->setObjectName(QString::fromUtf8("textLabel2_9_2"));
-    hboxLayout160->addWidget(textLabel2_9_26);
-    textLabel2_9_26->setText("Tarifa");
+    QLabel *textLabel2_9_26 = new QLabel ( cli->m_frameplugin );
+    textLabel2_9_26->setObjectName ( QString::fromUtf8 ( "textLabel2_9_2" ) );
+    hboxLayout160->addWidget ( textLabel2_9_26 );
+    textLabel2_9_26->setText ( "Tarifa" );
 
-    BusquedaTarifa *bus = new BusquedaTarifa(cli->m_frameplugin);
-    bus->setObjectName(QString::fromUtf8("mui_idtarifa"));
-    bus->setEmpresaBase(cli->empresaBase());
-    bus->setidtarifa("");
-    hboxLayout160->addWidget(bus);
+    BusquedaTarifa *bus = new BusquedaTarifa ( cli->m_frameplugin );
+    bus->setObjectName ( QString::fromUtf8 ( "mui_idtarifa" ) );
+    bus->setEmpresaBase ( cli->empresaBase() );
+    bus->setidtarifa ( "" );
+    hboxLayout160->addWidget ( bus );
 
-    cli->vboxLayout2->addLayout(hboxLayout160);
+    cli->vboxLayout2->addLayout ( hboxLayout160 );
     return 0;
 }
 
@@ -128,14 +134,15 @@ int ClienteView_ClienteView(ClienteView *cli) {
 \param art
 \return
 **/
-int ArticuloView_ArticuloView(ArticuloView *art) {
-    _depura("ArticuloView_ArticuloView", 0);
-    ListLTarifaView *l = new ListLTarifaView(art);
-    l->setObjectName(QString::fromUtf8("ltarifas"));
-    l->setEmpresaBase( art->empresaBase());
-    l->cargar("0");
-    art->mui_tab->addTab(l, "Tarifas");
-    _depura("END ArticuloView_ArticuloView", 0);
+int ArticuloView_ArticuloView ( ArticuloView *art )
+{
+    _depura ( "ArticuloView_ArticuloView", 0 );
+    ListLTarifaView *l = new ListLTarifaView ( art );
+    l->setObjectName ( QString::fromUtf8 ( "ltarifas" ) );
+    l->setEmpresaBase ( art->empresaBase() );
+    l->cargar ( "0" );
+    art->mui_tab->addTab ( l, "Tarifas" );
+    _depura ( "END ArticuloView_ArticuloView", 0 );
     return 0;
 }
 
@@ -145,11 +152,12 @@ int ArticuloView_ArticuloView(ArticuloView *art) {
 \param art
 \return
 **/
-int ArticuloView_cargar(ArticuloView *art) {
-    _depura("ArticuloView_cargar", 0);
-    ListLTarifaView *l = art->findChild<ListLTarifaView *>("ltarifas");
-    l->cargar(art->DBvalue("idarticulo"));
-    _depura("END ArticuloView_cargar", 0);
+int ArticuloView_cargar ( ArticuloView *art )
+{
+    _depura ( "ArticuloView_cargar", 0 );
+    ListLTarifaView *l = art->findChild<ListLTarifaView *> ( "ltarifas" );
+    l->cargar ( art->DBvalue ( "idarticulo" ) );
+    _depura ( "END ArticuloView_cargar", 0 );
     return 0;
 }
 
@@ -159,15 +167,16 @@ int ArticuloView_cargar(ArticuloView *art) {
 \param art
 \return
 **/
-int ArticuloView_guardar_post(ArticuloView *art) {
-    _depura("ArticuloView_guardar_post", 0);
+int ArticuloView_guardar_post ( ArticuloView *art )
+{
+    _depura ( "ArticuloView_guardar_post", 0 );
     try {
-        ListLTarifaView *l = art->findChild<ListLTarifaView *>("ltarifas");
-        l->setColumnValue("idarticulo", art->DBvalue("idarticulo"));
+        ListLTarifaView *l = art->findChild<ListLTarifaView *> ( "ltarifas" );
+        l->setColumnValue ( "idarticulo", art->DBvalue ( "idarticulo" ) );
         l->guardar();
         return 0;
-    } catch (...) {
-        _depura("Hubo un error al guardar las tarifas", 2);
+    } catch ( ... ) {
+        _depura ( "Hubo un error al guardar las tarifas", 2 );
         return 0;
     }
 }
@@ -178,15 +187,16 @@ int ArticuloView_guardar_post(ArticuloView *art) {
 \param art
 \return
 **/
-int ArticuloView_borrar(ArticuloView *art) {
-    _depura("ArticuloView_borrar", 0);
+int ArticuloView_borrar ( ArticuloView *art )
+{
+    _depura ( "ArticuloView_borrar", 0 );
     try {
-        ListLTarifaView *l = art->findChild<ListLTarifaView *>("ltarifas");
+        ListLTarifaView *l = art->findChild<ListLTarifaView *> ( "ltarifas" );
         l->borrar();
         return 0;
-    } catch (...) {
-        _depura("Hubo un error al borrar las tarifas", 0);
-        throw -1;
+    } catch ( ... ) {
+        _depura ( "Hubo un error al borrar las tarifas", 0 );
+        throw - 1;
     }
 }
 

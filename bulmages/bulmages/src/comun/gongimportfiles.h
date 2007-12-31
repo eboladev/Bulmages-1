@@ -21,5 +21,5 @@
 
 #include <QFile>
 
-int Contaplus2Fugit(QFile &fugitfile, QFile &subcuentas, QFile &asientos);
+int Contaplus2Fugit ( QFile &fugitfile, QFile &subcuentas, QFile &asientos );
 

@@ -8,13 +8,14 @@
 
 class EmpresaTPV;
 
-class Abrevs : public BLWidget, public Ui_AbrevsBase {
+class Abrevs : public BLWidget, public Ui_AbrevsBase
+{
     Q_OBJECT
 
 public:
     QProcess *m_proc;
     QDockWidget *m_doc2;
-    Abrevs(EmpresaBase *emp, QWidget *parent);
+    Abrevs ( EmpresaBase *emp, QWidget *parent );
     virtual ~Abrevs();
 
 public slots:

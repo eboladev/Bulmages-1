@@ -47,50 +47,54 @@
 \param art
 \param parent
 **/
-InformeQToolButton::InformeQToolButton(ClientsList *art , QWidget *parent) : QToolButton(parent), PEmpresaBase() {
-    _depura("InformeQToolButton::InformeQToolButton", 0);
+InformeQToolButton::InformeQToolButton ( ClientsList *art , QWidget *parent ) : QToolButton ( parent ), PEmpresaBase()
+{
+    _depura ( "InformeQToolButton::InformeQToolButton", 0 );
     m_clientsList = art;
     setBoton();
-    _depura("END InformeQToolButton::InformeQToolButton", 0);
+    _depura ( "END InformeQToolButton::InformeQToolButton", 0 );
 }
 
 
 ///
 /**
 **/
-InformeQToolButton::~InformeQToolButton() {
-    _depura("InformeQToolButton::~InformeQToolButton", 0);
-    _depura("END InformeQToolButton::~InformeQToolButton", 0);
+InformeQToolButton::~InformeQToolButton()
+{
+    _depura ( "InformeQToolButton::~InformeQToolButton", 0 );
+    _depura ( "END InformeQToolButton::~InformeQToolButton", 0 );
 }
 
 
 ///
 /**
 **/
-void InformeQToolButton::setBoton() {
-    _depura("InformeQToolButton::setBoton", 0);
-    connect(this, SIGNAL(clicked()), this, SLOT(click()));
-    setObjectName(QString::fromUtf8("exporta"));
-    setStatusTip("Imprimir Catalogo");
-    setToolTip("Imprimir Catalogo");
-    setMinimumSize(QSize(32, 32));
-    setIcon(QIcon(QString::fromUtf8("/usr/share/bulmages/icons/catalogo.png")));
-    setIconSize(QSize(22, 22));
-    _depura("END InformeQToolButton::setBoton", 0);
+void InformeQToolButton::setBoton()
+{
+    _depura ( "InformeQToolButton::setBoton", 0 );
+    connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
+    setObjectName ( QString::fromUtf8 ( "exporta" ) );
+    setStatusTip ( "Imprimir Catalogo" );
+    setToolTip ( "Imprimir Catalogo" );
+    setMinimumSize ( QSize ( 32, 32 ) );
+    setIcon ( QIcon ( QString::fromUtf8 ( "/usr/share/bulmages/icons/catalogo.png" ) ) );
+    setIconSize ( QSize ( 22, 22 ) );
+    _depura ( "END InformeQToolButton::setBoton", 0 );
 }
 
 
 ///
 /**
 **/
-void InformeQToolButton::click() {
-    _depura("InformeQToolButton::click", 0);
+void InformeQToolButton::click()
+{
+    _depura ( "InformeQToolButton::click", 0 );
     // Puede que no se haya actualizado bien el company
-    setEmpresaBase(m_clientsList->empresaBase());
+    setEmpresaBase ( m_clientsList->empresaBase() );
 
-    QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "informeclientes.rml";
-    QString archivod = confpr->valor(CONF_DIR_USER) + "informeclientes.rml";
-    QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
+    QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "informeclientes.rml";
+    QString archivod = confpr->valor ( CONF_DIR_USER ) + "informeclientes.rml";
+    QString archivologo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
 
     /// Copiamos el archivo.
 #ifdef WINDOWS
@@ -101,51 +105,51 @@ void InformeQToolButton::click() {
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
-    system (archivo.toAscii().constData());
+    system ( archivo.toAscii().constData() );
 
     /// Copiamos el logo.
 #ifdef WINDOWS
 
-    archivologo = "copy " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
+    archivologo = "copy " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #else
 
-    archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
+    archivologo = "cp " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
     QFile file;
-    file.setFileName(archivod);
-    file.open(QIODevice::ReadOnly);
-    QTextStream stream(&file);
+    file.setFileName ( archivod );
+    file.open ( QIODevice::ReadOnly );
+    QTextStream stream ( &file );
     QString buff = stream.readAll();
     file.close();
     QString fitxersortidatxt = "";
 
     /// Sacamos los datos del cliente.
     QString SQLQuery = "SELECT * FROM cliente ";
-    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
-    while (!cur->eof()) {
-	QString gen = generarCliente(cur->valor("idcliente"));
-	if (gen != "") {
-		fitxersortidatxt += "<para><H1>Cliente: " + cur->valor("nomcliente");
-		fitxersortidatxt += " -- " + cur->valor("cifcliente") + "</H1></para>\n";
-		fitxersortidatxt += gen;
-		fitxersortidatxt += "\n<nextPage/>\n";
-		fitxersortidatxt += "\n<nextFrame/>\n";
-	} // end if
+    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
+    while ( !cur->eof() ) {
+        QString gen = generarCliente ( cur->valor ( "idcliente" ) );
+        if ( gen != "" ) {
+            fitxersortidatxt += "<para><H1>Cliente: " + cur->valor ( "nomcliente" );
+            fitxersortidatxt += " -- " + cur->valor ( "cifcliente" ) + "</H1></para>\n";
+            fitxersortidatxt += gen;
+            fitxersortidatxt += "\n<nextPage/>\n";
+            fitxersortidatxt += "\n<nextFrame/>\n";
+        } // end if
         cur->siguienteregistro();
     } // end while
     delete cur;
 
-    buff.replace("[story]", fitxersortidatxt);
+    buff.replace ( "[story]", fitxersortidatxt );
 
-    if (file.open(QIODevice::WriteOnly)) {
-        QTextStream stream(&file);
+    if ( file.open ( QIODevice::WriteOnly ) ) {
+        QTextStream stream ( &file );
         stream << buff;
         file.close();
     } // end if
-    invocaPDF("informeclientes");
+    invocaPDF ( "informeclientes" );
 
-    _depura("END InformeQToolButton::click", 0);
+    _depura ( "END InformeQToolButton::click", 0 );
 }
 
 
@@ -154,8 +158,9 @@ void InformeQToolButton::click() {
 \param idcliente
 \return
 **/
-QString InformeQToolButton::generarCliente(QString idcliente) {
-    _depura("InformeQToolButton::generarCliente", 0);
+QString InformeQToolButton::generarCliente ( QString idcliente )
+{
+    _depura ( "InformeQToolButton::generarCliente", 0 );
     QString fitxersortidatxt;
     /// Sacamos todas las referencias de este cliente y las guardamos en el string referencias
     QString referencias = "(";
@@ -165,16 +170,16 @@ QString InformeQToolButton::generarCliente(QString idcliente) {
     SQLQuery += " UNION SELECT refalbaran FROM albaran AS referencia WHERE idcliente = " + idcliente;
     SQLQuery += " UNION SELECT reffactura FROM factura AS referencia WHERE idcliente = " + idcliente;
     SQLQuery += " UNION SELECT refcobro FROM cobro AS referencia WHERE idcliente = " + idcliente;
-    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
-    if (cur->eof()) {
-	delete cur;
-	return "";
+    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
+    if ( cur->eof() ) {
+        delete cur;
+        return "";
     } // end if
-    while (!cur->eof() ) {
-	referencias += coma + "'" + cur->valor("referencia") + "' ";
-	coma = ",";
+    while ( !cur->eof() ) {
+        referencias += coma + "'" + cur->valor ( "referencia" ) + "' ";
+        coma = ",";
         cur->siguienteregistro();
-    } 
+    }
     delete cur;
     referencias += ")";
 
@@ -183,11 +188,11 @@ QString InformeQToolButton::generarCliente(QString idcliente) {
     fitxersortidatxt += "<para>Resumen de ventas por articulo</para>\n";
     fitxersortidatxt += "<blockTable style=\"tablaresumen\" colWidths=\"9cm, 2.5cm, 2.5cm, 2.5cm, 2.5cm\" repeatRows=\"1\">\n";
     fitxersortidatxt += "<tr>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate("InformeClientes", "Articulo") + "</td>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate("InformeClientes", "Pres.") + "</td>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate("InformeClientes", "Pedido") + "</td>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate("InformeClientes", "Entregado") + "</td>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate("InformeClientes", "Facturado") + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeClientes", "Articulo" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeClientes", "Pres." ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeClientes", "Pedido" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeClientes", "Entregado" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeClientes", "Facturado" ) + "</td>\n";
     fitxersortidatxt += "</tr>\n";
 
     SQLQuery = " SELECT * FROM articulo ";
@@ -196,14 +201,14 @@ QString InformeQToolButton::generarCliente(QString idcliente) {
     SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlalbaran) AS cantlalbarant  FROM lalbaran WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE refalbaran IN " + referencias + ") GROUP BY idarticulo) AS t3 ON t3.idarticulo = articulo.idarticulo ";
     SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlfactura) AS cantlfacturat  FROM lfactura WHERE idfactura IN (SELECT idfactura FROM factura WHERE reffactura IN " + referencias + ") GROUP BY idarticulo) AS t4 ON t4.idarticulo = articulo.idarticulo ";
     SQLQuery += " WHERE  (cantlpresupuestot <>0 OR cantlpedidoclientet <> 0 OR cantlalbarant <> 0 OR cantlfacturat <> 0) ";
-    cur = empresaBase()->cargacursor(SQLQuery);
-    while (!cur->eof() ) {
+    cur = empresaBase() ->cargacursor ( SQLQuery );
+    while ( !cur->eof() ) {
         fitxersortidatxt += "<tr>\n";
-        fitxersortidatxt += "    <td>" + cur->valor("nomarticulo") + "</td>\n";
-        fitxersortidatxt += "    <td>" + cur->valor("cantlpresupuestot") + "</td>\n";
-        fitxersortidatxt += "    <td>" + cur->valor("cantlpedidoclientet") + "</td>\n";
-        fitxersortidatxt += "    <td>" + cur->valor("cantlalbarant") + "</td>\n";
-        fitxersortidatxt += "    <td>" + cur->valor("cantlfacturat") + "</td>\n";
+        fitxersortidatxt += "    <td>" + cur->valor ( "nomarticulo" ) + "</td>\n";
+        fitxersortidatxt += "    <td>" + cur->valor ( "cantlpresupuestot" ) + "</td>\n";
+        fitxersortidatxt += "    <td>" + cur->valor ( "cantlpedidoclientet" ) + "</td>\n";
+        fitxersortidatxt += "    <td>" + cur->valor ( "cantlalbarant" ) + "</td>\n";
+        fitxersortidatxt += "    <td>" + cur->valor ( "cantlfacturat" ) + "</td>\n";
         fitxersortidatxt += "</tr>\n";
         cur->siguienteregistro();
     } // end while
@@ -216,10 +221,10 @@ QString InformeQToolButton::generarCliente(QString idcliente) {
     fitxersortidatxt += "<para>Resumen de compras por articulo</para>\n";
     fitxersortidatxt += "<blockTable style=\"tablaresumen\" colWidths=\"10cm, 3cm, 3cm, 3cm\" repeatRows=\"1\">\n";
     fitxersortidatxt += "<tr>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate("InformeClientes", "Articulo") + "</td>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate("InformeClientes", "Pedido") + "</td>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate("InformeClientes", "Entregado") + "</td>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate("InformeClientes", "Facturado") + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeClientes", "Articulo" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeClientes", "Pedido" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeClientes", "Entregado" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeClientes", "Facturado" ) + "</td>\n";
     fitxersortidatxt += "</tr>\n";
 
     SQLQuery = " SELECT * FROM articulo ";
@@ -230,13 +235,13 @@ QString InformeQToolButton::generarCliente(QString idcliente) {
     SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlfacturap) AS cantlfacturapt  FROM lfacturap WHERE idfacturap IN (SELECT idfacturap FROM facturap WHERE reffacturap IN " + referencias + ") GROUP BY idarticulo) AS t4 ON t4.idarticulo = articulo.idarticulo ";
     SQLQuery += " WHERE  ( cantlpedidoproveedort <> 0 OR cantlalbaranpt <> 0 OR cantlfacturapt <> 0) ";
 
-    cur = empresaBase()->cargacursor(SQLQuery);
-    while (!cur->eof() ) {
+    cur = empresaBase() ->cargacursor ( SQLQuery );
+    while ( !cur->eof() ) {
         fitxersortidatxt += "<tr>\n";
-        fitxersortidatxt += "    <td>" + cur->valor("nomarticulo") + "</td>\n";
-        fitxersortidatxt += "    <td>" + cur->valor("cantlpedidoproveedort") + "</td>\n";
-        fitxersortidatxt += "    <td>" + cur->valor("cantlalbaranpt") + "</td>\n";
-        fitxersortidatxt += "    <td>" + cur->valor("cantlfacturapt") + "</td>\n";
+        fitxersortidatxt += "    <td>" + cur->valor ( "nomarticulo" ) + "</td>\n";
+        fitxersortidatxt += "    <td>" + cur->valor ( "cantlpedidoproveedort" ) + "</td>\n";
+        fitxersortidatxt += "    <td>" + cur->valor ( "cantlalbaranpt" ) + "</td>\n";
+        fitxersortidatxt += "    <td>" + cur->valor ( "cantlfacturapt" ) + "</td>\n";
         fitxersortidatxt += "</tr>\n";
         cur->siguienteregistro();
     } // end while
@@ -249,11 +254,11 @@ QString InformeQToolButton::generarCliente(QString idcliente) {
     fitxersortidatxt += "<para>Totales ventas</para>\n";
     fitxersortidatxt += "<blockTable style=\"tablatotales\" colWidths=\"3cm, 3cm, 3cm, 3cm, 3cm\" repeatRows=\"1\">\n";
     fitxersortidatxt += "<tr>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate("InformeClientes", "Pres.") + "</td>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate("InformeClientes", "Pedido") + "</td>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate("InformeClientes", "Entregado") + "</td>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate("InformeClientes", "Facturado") + "</td>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate("InformeClientes", "Cobrado") + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeClientes", "Pres." ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeClientes", "Pedido" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeClientes", "Entregado" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeClientes", "Facturado" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeClientes", "Cobrado" ) + "</td>\n";
     fitxersortidatxt += "</tr>\n";
 
     /// Calculo de las cantidades totales en moneda.
@@ -261,32 +266,32 @@ QString InformeQToolButton::generarCliente(QString idcliente) {
 
     /// Total presupuestado.
     SQLQuery = "SELECT SUM(totalpresupuesto) AS tpres FROM presupuesto WHERE refpresupuesto IN " + referencias;
-    cur = empresaBase()->cargacursor(SQLQuery);
-    fitxersortidatxt += "    <td>" + cur->valor("tpres") + "</td>\n";
+    cur = empresaBase() ->cargacursor ( SQLQuery );
+    fitxersortidatxt += "    <td>" + cur->valor ( "tpres" ) + "</td>\n";
     delete cur;
 
     /// Total pedido.
     SQLQuery = "SELECT SUM(totalpedidocliente) AS tpedcli FROM pedidocliente WHERE refpedidocliente IN " + referencias;
-    cur = empresaBase()->cargacursor(SQLQuery);
-    fitxersortidatxt += "    <td>" + cur->valor("tpedcli") + "</td>\n";
+    cur = empresaBase() ->cargacursor ( SQLQuery );
+    fitxersortidatxt += "    <td>" + cur->valor ( "tpedcli" ) + "</td>\n";
     delete cur;
 
     /// Total trabajado.
     SQLQuery = "SELECT SUM(totalalbaran) AS talb FROM albaran WHERE refalbaran IN " + referencias;
-    cur = empresaBase()->cargacursor(SQLQuery);
-    fitxersortidatxt += "    <td>" + cur->valor("talb") + "</td>\n";
+    cur = empresaBase() ->cargacursor ( SQLQuery );
+    fitxersortidatxt += "    <td>" + cur->valor ( "talb" ) + "</td>\n";
     delete cur;
 
     /// Total facturado.
     SQLQuery = "SELECT SUM(totalfactura) AS tfact FROM factura WHERE reffactura IN " + referencias;
-    cur = empresaBase()->cargacursor(SQLQuery);
-    fitxersortidatxt += "    <td>" + cur->valor("tfact") + "</td>\n";
+    cur = empresaBase() ->cargacursor ( SQLQuery );
+    fitxersortidatxt += "    <td>" + cur->valor ( "tfact" ) + "</td>\n";
     delete cur;
 
     /// Total cobrado.
     SQLQuery = "SELECT SUM(cantcobro) AS tcobro FROM cobro WHERE refcobro IN " + referencias;
-    cur = empresaBase()->cargacursor(SQLQuery);
-    fitxersortidatxt += "     <td>" + cur->valor("tcobro") + "</td>\n";
+    cur = empresaBase() ->cargacursor ( SQLQuery );
+    fitxersortidatxt += "     <td>" + cur->valor ( "tcobro" ) + "</td>\n";
     delete cur;
 
     fitxersortidatxt += "</tr>\n";
@@ -297,10 +302,10 @@ QString InformeQToolButton::generarCliente(QString idcliente) {
     fitxersortidatxt += "<para>Totales compras</para>\n";
     fitxersortidatxt += "<blockTable style=\"tablatotales\" colWidths=\" 4cm, 4cm, 4cm, 3cm\" repeatRows=\"1\">\n";
     fitxersortidatxt += "<tr>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate("InformeClientes", "Pedido") + "</td>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate("InformeClientes", "Entregado") + "</td>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate("InformeClientes", "Facturado") + "</td>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate("InformeClientes", "Pagado") + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeClientes", "Pedido" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeClientes", "Entregado" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeClientes", "Facturado" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeClientes", "Pagado" ) + "</td>\n";
     fitxersortidatxt += "</tr>\n";
 
     /// Calculo de las cantidades totales en moneda.
@@ -308,31 +313,31 @@ QString InformeQToolButton::generarCliente(QString idcliente) {
 
     /// Total pedido.
     SQLQuery = "SELECT SUM(totalpedidoproveedor) AS tpedpro FROM pedidoproveedor WHERE refpedidoproveedor IN " + referencias;
-    cur = empresaBase()->cargacursor(SQLQuery);
-    fitxersortidatxt += "    <td>" + cur->valor("tpedpro") + "</td>\n";
+    cur = empresaBase() ->cargacursor ( SQLQuery );
+    fitxersortidatxt += "    <td>" + cur->valor ( "tpedpro" ) + "</td>\n";
     delete cur;
 
     /// Total trabajado.
     SQLQuery = "SELECT SUM(totalalbaranp) AS talbp FROM albaranp WHERE refalbaranp IN " + referencias;
-    cur = empresaBase()->cargacursor(SQLQuery);
-    fitxersortidatxt += "    <td>" + cur->valor("talbp") + "</td>\n";
+    cur = empresaBase() ->cargacursor ( SQLQuery );
+    fitxersortidatxt += "    <td>" + cur->valor ( "talbp" ) + "</td>\n";
     delete cur;
 
     /// Total facturado.
     SQLQuery = "SELECT SUM(totalfacturap) AS tfactp FROM facturap WHERE reffacturap IN " + referencias;
-    cur = empresaBase()->cargacursor(SQLQuery);
-    fitxersortidatxt += "    <td>" + cur->valor("tfactp") + "</td>\n";
+    cur = empresaBase() ->cargacursor ( SQLQuery );
+    fitxersortidatxt += "    <td>" + cur->valor ( "tfactp" ) + "</td>\n";
     delete cur;
 
     /// Total cobrado.
     SQLQuery = "SELECT SUM(cantpago) AS tpago FROM pago WHERE refpago IN " + referencias;
-    cur = empresaBase()->cargacursor(SQLQuery);
-    fitxersortidatxt += "     <td>" + cur->valor("tpago") + "</td>\n";
+    cur = empresaBase() ->cargacursor ( SQLQuery );
+    fitxersortidatxt += "     <td>" + cur->valor ( "tpago" ) + "</td>\n";
     delete cur;
 
     fitxersortidatxt += "</tr>\n";
     fitxersortidatxt += "</blockTable>\n";
-    _depura("END InformeQToolButton::generarCliente", 0);
+    _depura ( "END InformeQToolButton::generarCliente", 0 );
     return fitxersortidatxt;
 }
 
@@ -345,50 +350,54 @@ QString InformeQToolButton::generarCliente(QString idcliente) {
 \param art
 \param parent
 **/
-InformeArtQToolButton::InformeArtQToolButton(ArticuloList *art , QWidget *parent) : QToolButton(parent), PEmpresaBase() {
-    _depura("InformeArtQToolButton::InformeQToolButton", 0);
+InformeArtQToolButton::InformeArtQToolButton ( ArticuloList *art , QWidget *parent ) : QToolButton ( parent ), PEmpresaBase()
+{
+    _depura ( "InformeArtQToolButton::InformeQToolButton", 0 );
     m_articuloList = art;
     setBoton();
-    _depura("END InformeArtQToolButton::InformeQToolButton", 0);
+    _depura ( "END InformeArtQToolButton::InformeQToolButton", 0 );
 }
 
 
 ///
 /**
 **/
-InformeArtQToolButton::~InformeArtQToolButton() {
-    _depura("InformeArtQToolButton::~InformeArtQToolButton", 0);
-    _depura("END InformeQToolButton::~InformeQToolButton", 0);
+InformeArtQToolButton::~InformeArtQToolButton()
+{
+    _depura ( "InformeArtQToolButton::~InformeArtQToolButton", 0 );
+    _depura ( "END InformeQToolButton::~InformeQToolButton", 0 );
 }
 
 
 ///
 /**
 **/
-void InformeArtQToolButton::setBoton() {
-    _depura("InformeArtQToolButton::setBoton", 0);
-    connect(this, SIGNAL(clicked()), this, SLOT(click()));
-    setObjectName(QString::fromUtf8("exporta"));
-    setStatusTip("Imprimir Informe Resumen");
-    setToolTip("Imprimir Informe Resumen");
-    setMinimumSize(QSize(32, 32));
-    setIcon(QIcon(QString::fromUtf8("/usr/share/bulmages/icons/catalogo.png")));
-    setIconSize(QSize(22, 22));
-    _depura("END InformeArtQToolButton::setBoton", 0);
+void InformeArtQToolButton::setBoton()
+{
+    _depura ( "InformeArtQToolButton::setBoton", 0 );
+    connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
+    setObjectName ( QString::fromUtf8 ( "exporta" ) );
+    setStatusTip ( "Imprimir Informe Resumen" );
+    setToolTip ( "Imprimir Informe Resumen" );
+    setMinimumSize ( QSize ( 32, 32 ) );
+    setIcon ( QIcon ( QString::fromUtf8 ( "/usr/share/bulmages/icons/catalogo.png" ) ) );
+    setIconSize ( QSize ( 22, 22 ) );
+    _depura ( "END InformeArtQToolButton::setBoton", 0 );
 }
 
 
 ///
 /**
 **/
-void InformeArtQToolButton::click() {
-    _depura("InformeArtQToolButton::click", 0);
+void InformeArtQToolButton::click()
+{
+    _depura ( "InformeArtQToolButton::click", 0 );
     // Puede que no se haya actualizado bien el company
-    setEmpresaBase(m_articuloList->empresaBase());
+    setEmpresaBase ( m_articuloList->empresaBase() );
 
-    QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "informearticulos.rml";
-    QString archivod = confpr->valor(CONF_DIR_USER) + "informearticulos.rml";
-    QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
+    QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "informearticulos.rml";
+    QString archivod = confpr->valor ( CONF_DIR_USER ) + "informearticulos.rml";
+    QString archivologo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
 
     /// Copiamos el archivo.
 #ifdef WINDOWS
@@ -399,36 +408,36 @@ void InformeArtQToolButton::click() {
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
-    system (archivo.toAscii().constData());
+    system ( archivo.toAscii().constData() );
 
     /// Copiamos el logo.
 #ifdef WINDOWS
 
-    archivologo = "copy " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
+    archivologo = "copy " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #else
 
-    archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
+    archivologo = "cp " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
     QFile file;
-    file.setFileName(archivod);
-    file.open(QIODevice::ReadOnly);
-    QTextStream stream(&file);
+    file.setFileName ( archivod );
+    file.open ( QIODevice::ReadOnly );
+    QTextStream stream ( &file );
     QString buff = stream.readAll();
     file.close();
     QString fitxersortidatxt = generarArticulos();
 
 
-    buff.replace("[story]", fitxersortidatxt);
+    buff.replace ( "[story]", fitxersortidatxt );
 
-    if (file.open(QIODevice::WriteOnly)) {
-        QTextStream stream(&file);
+    if ( file.open ( QIODevice::WriteOnly ) ) {
+        QTextStream stream ( &file );
         stream << buff;
         file.close();
     } // end if
-    invocaPDF("informearticulos");
+    invocaPDF ( "informearticulos" );
 
-    _depura("END InformeQToolButton::click", 0);
+    _depura ( "END InformeQToolButton::click", 0 );
 }
 
 
@@ -437,22 +446,23 @@ void InformeArtQToolButton::click() {
 \param idcliente
 \return
 **/
-QString InformeArtQToolButton::generarArticulos() {
-    _depura("InformeQToolButton::generarCliente", 0);
+QString InformeArtQToolButton::generarArticulos()
+{
+    _depura ( "InformeQToolButton::generarCliente", 0 );
     QString fitxersortidatxt;
 
 
     /// Generacion del informe de ventas.
     fitxersortidatxt += "<blockTable style=\"tablaresumen\" colWidths=\"9cm, 1.5cm, 1.5cm, 1.5cm, 1.5cm, 1.5cm, 1.5cm, 1.5cm\" repeatRows=\"1\">\n";
     fitxersortidatxt += "<tr>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate("InformeClientes", "Articulo") + "</td>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate("InformeClientes", "C. Ped.") + "</td>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate("InformeClientes", "C. Entr.") + "</td>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate("InformeClientes", "C. Fact.") + "</td>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate("InformeClientes", "V. Pres.") + "</td>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate("InformeClientes", "V. Ped.") + "</td>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate("InformeClientes", "V. Entr.") + "</td>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate("InformeClientes", "V. Fact.") + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeClientes", "Articulo" ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeClientes", "C. Ped." ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeClientes", "C. Entr." ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeClientes", "C. Fact." ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeClientes", "V. Pres." ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeClientes", "V. Ped." ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeClientes", "V. Entr." ) + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate ( "InformeClientes", "V. Fact." ) + "</td>\n";
     fitxersortidatxt += "</tr>\n";
 
     QString SQLQuery = " SELECT * FROM articulo ";
@@ -464,17 +474,17 @@ QString InformeArtQToolButton::generarArticulos() {
     SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlalbaranp) AS cantlalbaranpt  FROM lalbaranp GROUP BY idarticulo) AS t5 ON t5.idarticulo = articulo.idarticulo ";
     SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlfacturap) AS cantlfacturapt  FROM lfacturap GROUP BY idarticulo) AS t6 ON t6.idarticulo = articulo.idarticulo ";
     SQLQuery += " WHERE  (cantlpresupuestot <>0 OR cantlpedidoclientet <> 0 OR cantlalbarant <> 0 OR cantlfacturat <> 0 OR cantlpedidoproveedort <> 0 OR cantlalbaranpt <> 0 OR cantlfacturapt <> 0) ";
-    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
-    while (!cur->eof() ) {
+    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
+    while ( !cur->eof() ) {
         fitxersortidatxt += "<tr>\n";
-        fitxersortidatxt += "    <td>" + cur->valor("nomarticulo") + "</td>\n";
-        fitxersortidatxt += "    <td>" + cur->valor("cantlpedidoproveedort") + "</td>\n";
-        fitxersortidatxt += "    <td>" + cur->valor("cantlalbaranpt") + "</td>\n";
-        fitxersortidatxt += "    <td>" + cur->valor("cantlfacturapt") + "</td>\n";
-        fitxersortidatxt += "    <td>" + cur->valor("cantlpresupuestot") + "</td>\n";
-        fitxersortidatxt += "    <td>" + cur->valor("cantlpedidoclientet") + "</td>\n";
-        fitxersortidatxt += "    <td>" + cur->valor("cantlalbarant") + "</td>\n";
-        fitxersortidatxt += "    <td>" + cur->valor("cantlfacturat") + "</td>\n";
+        fitxersortidatxt += "    <td>" + cur->valor ( "nomarticulo" ) + "</td>\n";
+        fitxersortidatxt += "    <td>" + cur->valor ( "cantlpedidoproveedort" ) + "</td>\n";
+        fitxersortidatxt += "    <td>" + cur->valor ( "cantlalbaranpt" ) + "</td>\n";
+        fitxersortidatxt += "    <td>" + cur->valor ( "cantlfacturapt" ) + "</td>\n";
+        fitxersortidatxt += "    <td>" + cur->valor ( "cantlpresupuestot" ) + "</td>\n";
+        fitxersortidatxt += "    <td>" + cur->valor ( "cantlpedidoclientet" ) + "</td>\n";
+        fitxersortidatxt += "    <td>" + cur->valor ( "cantlalbarant" ) + "</td>\n";
+        fitxersortidatxt += "    <td>" + cur->valor ( "cantlfacturat" ) + "</td>\n";
         fitxersortidatxt += "</tr>\n";
         cur->siguienteregistro();
     } // end while
@@ -482,7 +492,7 @@ QString InformeArtQToolButton::generarArticulos() {
 
     fitxersortidatxt += "</blockTable>\n";
 
-    _depura("END InformeQToolButton::generarArticulos", 0);
+    _depura ( "END InformeQToolButton::generarArticulos", 0 );
     return fitxersortidatxt;
 }
 

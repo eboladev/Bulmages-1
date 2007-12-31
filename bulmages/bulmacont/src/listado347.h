@@ -27,12 +27,13 @@
 #include "blwidget.h"
 
 
-class Listado347 : public QDialog, public Ui_Listado347Base, PEmpresaBase {
-   Q_OBJECT
+class Listado347 : public QDialog, public Ui_Listado347Base, PEmpresaBase
+{
+    Q_OBJECT
 
 
 public:
-    Listado347(Empresa *emp = 0, QString ejerActual = "", QWidget *parent = 0, Qt::WFlags f = Qt::Window);
+    Listado347 ( Empresa *emp = 0, QString ejerActual = "", QWidget *parent = 0, Qt::WFlags f = Qt::Window );
     ~Listado347();
 
 private slots:

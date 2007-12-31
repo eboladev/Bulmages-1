@@ -41,41 +41,42 @@
 \param comp
 \param parent
 **/
-AlmacenView::AlmacenView(Company *comp, QWidget *parent)
-        : FichaBf(comp, parent) {
-    _depura("AlmacenView::AlmacenView", 0);
-    setAttribute(Qt::WA_DeleteOnClose);
+AlmacenView::AlmacenView ( Company *comp, QWidget *parent )
+        : FichaBf ( comp, parent )
+{
+    _depura ( "AlmacenView::AlmacenView", 0 );
+    setAttribute ( Qt::WA_DeleteOnClose );
     try {
-        setupUi(this);
+        setupUi ( this );
 
-	/// Lanzamos los plugins.
-	if (g_plugins->lanza("AlmacenView_AlmacenView", this)) return;
+        /// Lanzamos los plugins.
+        if ( g_plugins->lanza ( "AlmacenView_AlmacenView", this ) ) return;
 
-        setTitleName(tr("Almacen"));
-        setDBTableName("almacen");
-        setDBCampoId("idalmacen");
-        addDBCampo("idalmacen", DBCampo::DBint, DBCampo::DBPrimaryKey, tr( "ID almacen"));
-        addDBCampo("codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNotNull, tr( "Codigo almacen"));
-        addDBCampo("nomalmacen", DBCampo::DBvarchar, DBCampo::DBNotNull  , tr( "Nombre almacen"));
-        addDBCampo("diralmacen", DBCampo::DBvarchar, DBCampo::DBNothing, tr( "Direccion almacen"));
-        addDBCampo("poblalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, tr( "Poblacion almacen"));
-        addDBCampo("cpalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, tr( "Codigo postal"));
-        addDBCampo("telalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, tr( "Telefono almacen"));
-        addDBCampo("faxalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, tr( "Fax almacen"));
-        addDBCampo("emailalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, tr( "email almacen"));
-        addDBCampo("fechaalmacen", DBCampo::DBdate, DBCampo::DBNoSave, tr( "Fecha almacen"));
+        setTitleName ( tr ( "Almacen" ) );
+        setDBTableName ( "almacen" );
+        setDBCampoId ( "idalmacen" );
+        addDBCampo ( "idalmacen", DBCampo::DBint, DBCampo::DBPrimaryKey, tr ( "ID almacen" ) );
+        addDBCampo ( "codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNotNull, tr ( "Codigo almacen" ) );
+        addDBCampo ( "nomalmacen", DBCampo::DBvarchar, DBCampo::DBNotNull  , tr ( "Nombre almacen" ) );
+        addDBCampo ( "diralmacen", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Direccion almacen" ) );
+        addDBCampo ( "poblalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Poblacion almacen" ) );
+        addDBCampo ( "cpalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Codigo postal" ) );
+        addDBCampo ( "telalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Telefono almacen" ) );
+        addDBCampo ( "faxalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Fax almacen" ) );
+        addDBCampo ( "emailalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "email almacen" ) );
+        addDBCampo ( "fechaalmacen", DBCampo::DBdate, DBCampo::DBNoSave, tr ( "Fecha almacen" ) );
 
 
-	addDBCampo("tipoalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Tipo almacen"));
-	mui_tipoalmacen_t->setValorCampo("Tienda");
-	mui_tipoalmacen_a->setValorCampo("Almacen");
+        addDBCampo ( "tipoalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Tipo almacen" ) );
+        mui_tipoalmacen_t->setValorCampo ( "Tienda" );
+        mui_tipoalmacen_a->setValorCampo ( "Almacen" );
 
         dialogChanges_cargaInicial();
-        meteWindow(windowTitle(), this, FALSE);
-    } catch (...) {
-        mensajeInfo(tr("Error al crear el almacen"));
+        meteWindow ( windowTitle(), this, FALSE );
+    } catch ( ... ) {
+        mensajeInfo ( tr ( "Error al crear el almacen" ) );
     } // end try
-    _depura("END AlmacenView::AlmacenView", 0);
+    _depura ( "END AlmacenView::AlmacenView", 0 );
 }
 
 
@@ -83,9 +84,10 @@ AlmacenView::AlmacenView(Company *comp, QWidget *parent)
 
 /**
 **/
-AlmacenView::~AlmacenView() {
-    _depura("AlmacenView::~AlmacenView", 0);
-    _depura("END AlmacenView::~AlmacenView", 0);
+AlmacenView::~AlmacenView()
+{
+    _depura ( "AlmacenView::~AlmacenView", 0 );
+    _depura ( "END AlmacenView::~AlmacenView", 0 );
 }
 
 

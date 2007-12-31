@@ -25,8 +25,9 @@
 #include "subform2bf.h"
 
 
-class mytiptrab : public QObject {
-Q_OBJECT
+class mytiptrab : public QObject
+{
+    Q_OBJECT
 
 public:
     Bulmafact *m_bulmafact;
@@ -34,7 +35,7 @@ public:
 public:
     mytiptrab();
     ~mytiptrab();
-    void inicializa(Bulmafact *);
+    void inicializa ( Bulmafact * );
 
 public slots:
     void elslot();
@@ -49,13 +50,14 @@ public slots:
 
 /// Clase SubForm2BfDelegate
 /** Se encarga del control de los Widgets de Edicion del sistema.*/
-class QSubForm3BfDelegate : public QSubForm2BfDelegate {
+class QSubForm3BfDelegate : public QSubForm2BfDelegate
+{
 public:
-    QSubForm3BfDelegate(QObject *);
+    QSubForm3BfDelegate ( QObject * );
     virtual ~QSubForm3BfDelegate();
-    virtual void setEditorData(QWidget *, const QModelIndex &index) const;
-    virtual void setModelData(QWidget *editor,  QAbstractItemModel *model, const QModelIndex &index) const;
-    virtual QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const;
+    virtual void setEditorData ( QWidget *, const QModelIndex &index ) const;
+    virtual void setModelData ( QWidget *editor,  QAbstractItemModel *model, const QModelIndex &index ) const;
+    virtual QWidget *createEditor ( QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index ) const;
 };
 
 

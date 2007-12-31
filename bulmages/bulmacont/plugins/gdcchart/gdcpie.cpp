@@ -13,114 +13,118 @@
 #include <stdlib.h>
 
 /*
-
-unsigned long		GDCPIE_BGColor			DEFAULTO( 0x000000L );	
-unsigned long		GDCPIE_PlotColor		DEFAULTO( 0xC0C0C0L );	
-unsigned long		GDCPIE_LineColor		DEFAULTO( GDC_DFLTCOLOR );
-unsigned long		GDCPIE_EdgeColor		DEFAULTO( GDC_NOCOLOR ); 
-
-char				GDCPIE_other_threshold	DEFAULTO( -1 );
-unsigned short		GDCPIE_3d_angle			DEFAULTO( 45 );			
-unsigned short		GDCPIE_3d_depth			DEFAULTO( 10 );			
-char				*GDCPIE_title			DEFAULTO( NULL );		
-enum GDC_font_size	GDCPIE_title_size		DEFAULTO( GDC_MEDBOLD );
-enum GDC_font_size	GDCPIE_label_size		DEFAULTO( GDC_SMALL );
-int					GDCPIE_label_dist		DEFAULTO( 1+8/2 );		
-unsigned char		GDCPIE_label_line		DEFAULTO( FALSE );		
-
-int					*GDCPIE_explode			DEFAULTO( (int*)NULL );	
-															
-unsigned long		*GDCPIE_Color			DEFAULTO( (unsigned long*)NULL );
-unsigned char		*GDCPIE_missing			DEFAULTO( (unsigned char*)NULL );	
-
-GDCPIE_PCT_TYPE		GDCPIE_percent_labels	DEFAULTO( GDCPIE_PCT_NONE );
-
+ 
+unsigned long  GDCPIE_BGColor   DEFAULTO( 0x000000L ); 
+unsigned long  GDCPIE_PlotColor  DEFAULTO( 0xC0C0C0L ); 
+unsigned long  GDCPIE_LineColor  DEFAULTO( GDC_DFLTCOLOR );
+unsigned long  GDCPIE_EdgeColor  DEFAULTO( GDC_NOCOLOR ); 
+ 
+char    GDCPIE_other_threshold DEFAULTO( -1 );
+unsigned short  GDCPIE_3d_angle   DEFAULTO( 45 );   
+unsigned short  GDCPIE_3d_depth   DEFAULTO( 10 );   
+char    *GDCPIE_title   DEFAULTO( NULL );  
+enum GDC_font_size GDCPIE_title_size  DEFAULTO( GDC_MEDBOLD );
+enum GDC_font_size GDCPIE_label_size  DEFAULTO( GDC_SMALL );
+int     GDCPIE_label_dist  DEFAULTO( 1+8/2 );  
+unsigned char  GDCPIE_label_line  DEFAULTO( FALSE );  
+ 
+int     *GDCPIE_explode   DEFAULTO( (int*)NULL ); 
+               
+unsigned long  *GDCPIE_Color   DEFAULTO( (unsigned long*)NULL );
+unsigned char  *GDCPIE_missing   DEFAULTO( (unsigned char*)NULL ); 
+ 
+GDCPIE_PCT_TYPE  GDCPIE_percent_labels DEFAULTO( GDCPIE_PCT_NONE );
+ 
 */
-/* rem circle:  x = rcos(@), y = rsin(@)	*/
+/* rem circle:  x = rcos(@), y = rsin(@) */
 
-extern struct	GDC_FONT_T	GDC_fontc[];
+extern struct GDC_FONT_T GDC_fontc[];
 
-#define SET_RECT( gdp, x1, x2, y1, y2 )	gdp[0].x = gdp[3].x = x1,	\
-										gdp[0].y = gdp[1].y = y1,	\
-										gdp[1].x = gdp[2].x = x2,	\
-										gdp[2].y = gdp[3].y = y2
+#define SET_RECT( gdp, x1, x2, y1, y2 ) gdp[0].x = gdp[3].x = x1, \
+        gdp[0].y = gdp[1].y = y1, \
+                              gdp[1].x = gdp[2].x = x2, \
+                                                    gdp[2].y = gdp[3].y = y2
 
-#define PX( x )				( cx + (int)( ((float)rad)*sin(pscl*(double)(x)) ) )		/* expects a val */
-#define PY( x )				( cy - (int)( ((float)rad)*cos(pscl*(double)(x)) ) )		/* expects a val */
+#define PX( x )    ( cx + (int)( ((float)rad)*sin(pscl*(double)(x)) ) )  /* expects a val */
+#define PY( x )    ( cy - (int)( ((float)rad)*cos(pscl*(double)(x)) ) )  /* expects a val */
 
-#define CX( i,d )		( cx                +	\
-						  (d? xdepth_3D: 0) +	\
-						  (int)( (double)(GDCPIE_explode?GDCPIE_explode[(i)]:0) * sin((double)(slice_angle[0][i])) ) )
-#define CY( i,d )		( cy                -	\
-						  (d? ydepth_3D: 0) -	\
-						  (int)( (double)(GDCPIE_explode?GDCPIE_explode[(i)]:0) * cos((double)(slice_angle[0][i])) ) )
-/* expect slice number:     i (index into slice_angle array) *\ 
+#define CX( i,d )  ( cx                + \
+                     (d? xdepth_3D: 0) + \
+                     (int)( (double)(GDCPIE_explode?GDCPIE_explode[(i)]:0) * sin((double)(slice_angle[0][i])) ) )
+#define CY( i,d )  ( cy                - \
+                     (d? ydepth_3D: 0) - \
+                     (int)( (double)(GDCPIE_explode?GDCPIE_explode[(i)]:0) * cos((double)(slice_angle[0][i])) ) )
+/* expect slice number:     i (index into slice_angle array) *\
  *   and position on slice: f (0: slice middle,              *
  *                             1: leading (clockwise),       *
  *                             2: trailing edge)             *
  *   and 3D depth:          d (0: do depth,                  *
  *                             1: no depth adjustment)       *
 \* adjusts for explosion                                     */
-#define IX( i,f,d )		( CX(i,d) + (int)( (double)rad * sin((double)(slice_angle[f][i])) ) )
-#define IY( i,f,d )		( CY(i,d) - (int)( (double)rad * cos((double)(slice_angle[f][i])) ) )
+#define IX( i,f,d )  ( CX(i,d) + (int)( (double)rad * sin((double)(slice_angle[f][i])) ) )
+#define IY( i,f,d )  ( CY(i,d) - (int)( (double)rad * cos((double)(slice_angle[f][i])) ) )
 /* same as above except o is angle */
-#define OX( i,o,d )		( CX(i,d) + (int)( (double)rad * sin((double)(o)) ) )
-#define OY( i,o,d )		( CY(i,d) - (int)( (double)rad * cos((double)(o)) ) )
+#define OX( i,o,d )  ( CX(i,d) + (int)( (double)rad * sin((double)(o)) ) )
+#define OY( i,o,d )  ( CY(i,d) - (int)( (double)rad * cos((double)(o)) ) )
 
-#define TO_INT_DEG(o)		(int)rint( (double)((o)/(2.0*M_PI)*360.0) )
-#define TO_INT_DEG_FLOOR(o)	(int)floor( (double)((o)/(2.0*M_PI)*360.0) )
-#define TO_INT_DEG_CEIL(o)	(int)ceil( (double)((o)/(2.0*M_PI)*360.0) )
-#define TO_RAD(o)			( (o)/360.0*(2.0*M_PI) )
-																					/* assume !> 4*PI */
-#define MOD_2PI(o)			( (o)>=(2.0*M_PI)? ((o)-(2.0*M_PI)): (((o)<0)? ((o)+(2.0*M_PI)): (o)) )
-#define MOD_360(o)			( (o)>=360? (o)-360: (o) )								/* assume !> 720 */ 
+#define TO_INT_DEG(o)  (int)rint( (double)((o)/(2.0*M_PI)*360.0) )
+#define TO_INT_DEG_FLOOR(o) (int)floor( (double)((o)/(2.0*M_PI)*360.0) )
+#define TO_INT_DEG_CEIL(o) (int)ceil( (double)((o)/(2.0*M_PI)*360.0) )
+#define TO_RAD(o)   ( (o)/360.0*(2.0*M_PI) )
+/* assume !> 4*PI */
+#define MOD_2PI(o)   ( (o)>=(2.0*M_PI)? ((o)-(2.0*M_PI)): (((o)<0)? ((o)+(2.0*M_PI)): (o)) )
+#define MOD_360(o)   ( (o)>=360? (o)-360: (o) )        /* assume !> 720 */
 
-struct tmp_slice_t { int	i;					// original index
-					 char	hidden;				// 'behind' top [3D] pie
-					 float	angle;				// radian 
-					 float	slice; };			// radian
-static float				pie_3D_rad;			// user requested 3D angle in radians
+struct tmp_slice_t
+{
+    int i;     // original index
+    char hidden;    // 'behind' top [3D] pie
+    float angle;    // radian
+    float slice;
+}
+;   // radian
+static float    pie_3D_rad;   // user requested 3D angle in radians
 
 // degrees (radians) between angle a, and depth angle
 // 1&2, so comparisons can be done.
-#define RAD_DIST1( a )		( (dist_foo1=ABS(((a>-.00001&&a<.00001)?0.00001:a)-pie_3D_rad)), ((dist_foo1>M_PI)? ABS(dist_foo1-2.0*M_PI): dist_foo1) )
-#define RAD_DIST2( a )		( (dist_foo2=ABS(((a>-.00001&&a<.00001)?0.00001:a)-pie_3D_rad)), ((dist_foo2>M_PI)? ABS(dist_foo2-2.0*M_PI): dist_foo2) )
-static float				dist_foo1, dist_foo2;
+#define RAD_DIST1( a )  ( (dist_foo1=ABS(((a>-.00001&&a<.00001)?0.00001:a)-pie_3D_rad)), ((dist_foo1>M_PI)? ABS(dist_foo1-2.0*M_PI): dist_foo1) )
+#define RAD_DIST2( a )  ( (dist_foo2=ABS(((a>-.00001&&a<.00001)?0.00001:a)-pie_3D_rad)), ((dist_foo2>M_PI)? ABS(dist_foo2-2.0*M_PI): dist_foo2) )
+static float    dist_foo1, dist_foo2;
 
-/* ------------------------------------------------------- *\ 
+/* ------------------------------------------------------- *\
  * oof!  cleaner way???
  * order by angle opposite (180) of depth angle
  * comparing across 0-360 line
 \* ------------------------------------------------------- */
 //static int ocmpr( struct tmp_slice_t *a, struct tmp_slice_t *b )
-static int ocmpr( const void *a1, const void *b1 )
+static int ocmpr ( const void *a1, const void *b1 )
 {
-         struct tmp_slice_t *a = (tmp_slice_t *)a1;
-         struct tmp_slice_t *b = (tmp_slice_t *)b1;
-	if( RAD_DIST1(a->angle) < RAD_DIST2(b->angle) )
-		return 1;
-	if( RAD_DIST1(a->angle) > RAD_DIST2(b->angle) )
-		return -1;
+    struct tmp_slice_t * a = ( tmp_slice_t * ) a1;
+    struct tmp_slice_t *b = ( tmp_slice_t * ) b1;
+    if ( RAD_DIST1 ( a->angle ) < RAD_DIST2 ( b->angle ) )
+        return 1;
+    if ( RAD_DIST1 ( a->angle ) > RAD_DIST2 ( b->angle ) )
+        return -1;
 
-	/* a tie (will happen between each slice) */
-	/* are we within pie_3D_rad */
-	if( (a->angle < pie_3D_rad) && (pie_3D_rad < a->slice) ||
-		(a->slice < pie_3D_rad) && (pie_3D_rad < a->angle) )
-		return 1;
-	if( (b->slice < pie_3D_rad) && (pie_3D_rad < b->angle) ||
-		(b->angle < pie_3D_rad) && (pie_3D_rad < b->slice) )
-		return -1;
+    /* a tie (will happen between each slice) */
+    /* are we within pie_3D_rad */
+    if ( ( a->angle < pie_3D_rad ) && ( pie_3D_rad < a->slice ) ||
+            ( a->slice < pie_3D_rad ) && ( pie_3D_rad < a->angle ) )
+        return 1;
+    if ( ( b->slice < pie_3D_rad ) && ( pie_3D_rad < b->angle ) ||
+            ( b->angle < pie_3D_rad ) && ( pie_3D_rad < b->slice ) )
+        return -1;
 
-	/* let slice angle decide */
-	if( RAD_DIST1(a->slice) < RAD_DIST2(b->slice) )
-		return 1;
-	if( RAD_DIST1(a->slice) > RAD_DIST2(b->slice) )
-		return -1;
+    /* let slice angle decide */
+    if ( RAD_DIST1 ( a->slice ) < RAD_DIST2 ( b->slice ) )
+        return 1;
+    if ( RAD_DIST1 ( a->slice ) > RAD_DIST2 ( b->slice ) )
+        return -1;
 
-	return 0;
+    return 0;
 }
 
-/* ======================================================= *\ 
+/* ======================================================= *\
  * PIE
  * 
  * Notes:
@@ -129,527 +133,511 @@ static int ocmpr( const void *a1, const void *b1 )
  *  sum(val[0], ... val[num_points-1]) is assumed to be 100%
 \* ======================================================= */
 void
-pie_gif( short			GIFWIDTH,
-		 short			GIFHEIGHT,
-		 FILE			*gif_fptr,			/* open file pointer */
-		 GDCPIE_TYPE	type,
-		 int			num_points,
-		 char			**lbl,				/* data labels */
-		 float			*val )				/* data */
+pie_gif ( short   GIFWIDTH,
+          short   GIFHEIGHT,
+          FILE   *gif_fptr,   /* open file pointer */
+          GDCPIE_TYPE type,
+          int   num_points,
+          char   **lbl,    /* data labels */
+          float   *val )    /* data */
 {
 #ifndef WIN32
-	int			i;
+    int   i;
 
-	gdImagePtr	im;
-	int			BGColor,
-				LineColor,
-				PlotColor,
-				EdgeColor,
-				EdgeColorShd,
-				SliceColor[num_points],
-				SliceColorShd[num_points];
+    gdImagePtr im;
+    int   BGColor,
+    LineColor,
+    PlotColor,
+    EdgeColor,
+    EdgeColorShd,
+    SliceColor[num_points],
+    SliceColorShd[num_points];
 
-	float		rad = 0.0;					// radius
-	float		tot_val = 0.0;
-	float		pscl;
-	int			cx,							// affects PX()
-				cy;							// affects PY()
-								/* ~ 1% for a size of 100 pixs */
-								/* label sizes will more dictate thos */
-	float		min_grphable = ( GDCPIE_other_threshold < 0?
-								  100.0/(float)MIN(GIFWIDTH,GIFHEIGHT):
-								  (float)GDCPIE_other_threshold )/100.0;
-	short		num_slices1 = 0,
-				num_slices2 = 0;
-	char		any_too_small = FALSE;
-	char		others[num_points];
-	float		slice_angle[3][num_points];	// must be used with others[]
-	char		threeD = ( type == GDC_3DPIE );
+    float  rad = 0.0;     // radius
+    float  tot_val = 0.0;
+    float  pscl;
+    int   cx,       // affects PX()
+    cy;       // affects PY()
+    /* ~ 1% for a size of 100 pixs */
+    /* label sizes will more dictate thos */
+    float  min_grphable = ( GDCPIE_other_threshold < 0 ?
+                            100.0 / ( float ) MIN ( GIFWIDTH, GIFHEIGHT ) :
+                            ( float ) GDCPIE_other_threshold ) / 100.0;
+    short  num_slices1 = 0,
+                         num_slices2 = 0;
+    char  any_too_small = FALSE;
+    char  others[num_points];
+    float  slice_angle[3][num_points]; // must be used with others[]
+    char  threeD = ( type == GDC_3DPIE );
 
-	int			xdepth_3D      = 0,			// affects PX()
-				ydepth_3D      = 0;			// affects PY()
-	int			do3Dx = 0,					// reserved for macro use
-				do3Dy = 0;
+    int   xdepth_3D      = 0,   // affects PX()
+                           ydepth_3D      = 0;   // affects PY()
+    int   do3Dx = 0,     // reserved for macro use
+                  do3Dy = 0;
 
-//	GDCPIE_3d_angle = MOD_360(90-GDCPIE_3d_angle+360);
-	pie_3D_rad = TO_RAD( GDCPIE_3d_angle );
+// GDCPIE_3d_angle = MOD_360(90-GDCPIE_3d_angle+360);
+    pie_3D_rad = TO_RAD ( GDCPIE_3d_angle );
 
-	xdepth_3D      = threeD? (int)( cos((double)MOD_2PI(M_PI_2-pie_3D_rad+2.0*M_PI)) * GDCPIE_3d_depth ): 0;
-	ydepth_3D      = threeD? (int)( sin((double)MOD_2PI(M_PI_2-pie_3D_rad+2.0*M_PI)) * GDCPIE_3d_depth ): 0;
-//	xdepth_3D      = threeD? (int)( cos(pie_3D_rad) * GDCPIE_3d_depth ): 0;
-//	ydepth_3D      = threeD? (int)( sin(pie_3D_rad) * GDCPIE_3d_depth ): 0;
+    xdepth_3D      = threeD ? ( int ) ( cos ( ( double ) MOD_2PI ( M_PI_2 - pie_3D_rad + 2.0 * M_PI ) ) * GDCPIE_3d_depth ) : 0;
+    ydepth_3D      = threeD ? ( int ) ( sin ( ( double ) MOD_2PI ( M_PI_2 - pie_3D_rad + 2.0 * M_PI ) ) * GDCPIE_3d_depth ) : 0;
+// xdepth_3D      = threeD? (int)( cos(pie_3D_rad) * GDCPIE_3d_depth ): 0;
+// ydepth_3D      = threeD? (int)( sin(pie_3D_rad) * GDCPIE_3d_depth ): 0;
 
-	load_font_conversions();
+    load_font_conversions();
 
-	/* ----- get total value ----- */
-	for( i=0; i<num_points; ++i )
-		tot_val += val[i];
+    /* ----- get total value ----- */
+    for ( i = 0; i < num_points; ++i )
+        tot_val += val[i];
 
-	/* ----- pie sizing ----- */
-	/* ----- make width room for labels, depth, etc.: ----- */
-	/* ----- determine pie's radius ----- */
-	{
-	int		title_hgt  = GDCPIE_title? 1			/*  title? horizontal text line */
-									   + GDC_fontc[GDCPIE_title_size].h
-										* (int)cnt_nl( GDCPIE_title, (int*)NULL )
-									   + 2:
-									   0;
-	float	last = 0.0;
-	float	label_explode_limit = 0.0;
-	int		cheight,
-			cwidth;
+    /* ----- pie sizing ----- */
+    /* ----- make width room for labels, depth, etc.: ----- */
+    /* ----- determine pie's radius ----- */
+    {
+        int  title_hgt  = GDCPIE_title ? 1   /*  title? horizontal text line */
+                          + GDC_fontc[GDCPIE_title_size].h
+                          * ( int ) cnt_nl ( GDCPIE_title, ( int* ) NULL )
+                          + 2 :
+                          0;
+        float last = 0.0;
+        float label_explode_limit = 0.0;
+        int  cheight,
+        cwidth;
 
-	// maximum: no labels, explosions
-	// gotta start somewhere
-	rad = (float)MIN( GIFWIDTH/2-(1+ABS(xdepth_3D)), GIFHEIGHT/2-(1+ABS(ydepth_3D))-title_hgt );
+        // maximum: no labels, explosions
+        // gotta start somewhere
+        rad = ( float ) MIN ( GIFWIDTH / 2 - ( 1 + ABS ( xdepth_3D ) ), GIFHEIGHT / 2 - ( 1 + ABS ( ydepth_3D ) ) - title_hgt );
 
-	/* ok fix center, i.e., no floating re labels, explosion, etc. */
-	cx = GIFWIDTH/2 /* - xdepth_3D */ ;
-	cy = (GIFHEIGHT-title_hgt)/2 + title_hgt /* + ydepth_3D */ ;
+        /* ok fix center, i.e., no floating re labels, explosion, etc. */
+        cx = GIFWIDTH / 2 /* - xdepth_3D */ ;
+        cy = ( GIFHEIGHT - title_hgt ) / 2 + title_hgt /* + ydepth_3D */ ;
 
-	cheight = (GIFHEIGHT- title_hgt)/2 /* - ydepth_3D */ ;
-	cwidth  = cx;
+        cheight = ( GIFHEIGHT - title_hgt ) / 2 /* - ydepth_3D */ ;
+        cwidth  = cx;
 
-	/* walk around pie. determine spacing to edge */
-	for( i=0; i<num_points; ++i )
-		{
-		float	thos_pct = val[i]/tot_val;						/* should never be > 100% */
-		float	thos = thos_pct*(2.0*M_PI);						/* pie-portion */
-		if( (thos_pct > min_grphable) ||						/* too small */
-			(!GDCPIE_missing || !GDCPIE_missing[i]) )			/* still want angles */
-			{
-			int thos_explode = GDCPIE_explode? GDCPIE_explode[i]: 0;
-			double	thos_sin;
-			double	thos_cos;
-			slice_angle[0][i] = thos/2.0+last;				/* mid-point on full pie */
-			slice_angle[1][i] = last;						/* 1st on full pie */
-			slice_angle[2][i] = thos+last;					/* 2nd on full pie */
-			thos_sin        = sin( (double)slice_angle[0][i] );
-			thos_cos        = cos( (double)slice_angle[0][i] );
+        /* walk around pie. determine spacing to edge */
+        for ( i = 0; i < num_points; ++i )
+        {
+            float thos_pct = val[i] / tot_val;      /* should never be > 100% */
+            float thos = thos_pct * ( 2.0 * M_PI );      /* pie-portion */
+            if ( ( thos_pct > min_grphable ) ||      /* too small */
+                    ( !GDCPIE_missing || !GDCPIE_missing[i] ) )   /* still want angles */
+            {
+                int thos_explode = GDCPIE_explode ? GDCPIE_explode[i] : 0;
+                double thos_sin;
+                double thos_cos;
+                slice_angle[0][i] = thos / 2.0 + last;    /* mid-point on full pie */
+                slice_angle[1][i] = last;      /* 1st on full pie */
+                slice_angle[2][i] = thos + last;     /* 2nd on full pie */
+                thos_sin        = sin ( ( double ) slice_angle[0][i] );
+                thos_cos        = cos ( ( double ) slice_angle[0][i] );
 
-			if( !GDCPIE_missing || !(GDCPIE_missing[i]) )
-				{
-				short	lbl_wdth,
-						lbl_hgt;
-				float	thos_y_explode_limit,
-						thos_x_explode_limit;
+                if ( !GDCPIE_missing || ! ( GDCPIE_missing[i] ) )
+                {
+                    short lbl_wdth,
+                    lbl_hgt;
+                    float thos_y_explode_limit,
+                    thos_x_explode_limit;
 
-				/* start slice label height, width     */
-				/*  accounting for PCT placement, font */
-				if( lbl && lbl[i] )
-					{
-					char	foo[1+4+1+1];					/* XPG2 compatibility */
-					int		pct_len;
-					int		lbl_len = 0;
-					lbl_hgt = ( cnt_nl(lbl[i], &lbl_len) + (GDCPIE_percent_labels == GDCPIE_PCT_ABOVE ||
-															GDCPIE_percent_labels == GDCPIE_PCT_BELOW? 1: 0) )
-							  * (GDC_fontc[GDCPIE_label_size].h+1);
-					sprintf( foo,
-							 (GDCPIE_percent_labels==GDCPIE_PCT_LEFT ||
-							  GDCPIE_percent_labels==GDCPIE_PCT_RIGHT) &&
-							 lbl[i]? "(%.0f%%)":
-									 "%.0f%%",
-							thos_pct * 100.0 );
-					pct_len = GDCPIE_percent_labels == GDCPIE_PCT_NONE? 0: strlen(foo);
-					lbl_wdth = ( GDCPIE_percent_labels == GDCPIE_PCT_RIGHT ||
-								 GDCPIE_percent_labels == GDCPIE_PCT_LEFT? lbl_len+1+pct_len:
-																		   MAX(lbl_len,pct_len) )
-							   * GDC_fontc[GDCPIE_label_size].w;
-					}
-				else
-					lbl_wdth = lbl_hgt = 0;
-				/* end label height, width */
-				
-				/* diamiter limited by thos piont's: explosion, label                 */
-				/* (radius to box @ slice_angle) - (explode) - (projected label size) */
-				/* radius constraint due to labels */
-				thos_y_explode_limit = (float)thos_cos==0.0? MAXFLOAT:
-										(	(float)( (double)cheight/ABS(thos_cos) ) - 
-											(float)( thos_explode + (lbl[i]? GDCPIE_label_dist: 0) ) -
-											(float)( lbl_hgt/2 ) / (float)ABS(thos_cos)	);
-				thos_x_explode_limit = (float)thos_sin==0.0? MAXFLOAT:
-										(	(float)( (double)cwidth/ABS(thos_sin) ) - 
-											(float)( thos_explode + (lbl[i]? GDCPIE_label_dist: 0) ) -
-											(float)( lbl_wdth ) / (float)ABS(thos_sin)	);
+                    /* start slice label height, width     */
+                    /*  accounting for PCT placement, font */
+                    if ( lbl && lbl[i] ) {
+                        char foo[1+4+1+1];     /* XPG2 compatibility */
+                        int  pct_len;
+                        int  lbl_len = 0;
+                        lbl_hgt = ( cnt_nl ( lbl[i], &lbl_len ) + ( GDCPIE_percent_labels == GDCPIE_PCT_ABOVE ||
+                                    GDCPIE_percent_labels == GDCPIE_PCT_BELOW ? 1 : 0 ) )
+                                  * ( GDC_fontc[GDCPIE_label_size].h + 1 );
+                        sprintf ( foo,
+                                  ( GDCPIE_percent_labels == GDCPIE_PCT_LEFT ||
+                                    GDCPIE_percent_labels == GDCPIE_PCT_RIGHT ) &&
+                                  lbl[i] ? "(%.0f%%)" :
+                                  "%.0f%%",
+                                  thos_pct * 100.0 );
+                        pct_len = GDCPIE_percent_labels == GDCPIE_PCT_NONE ? 0 : strlen ( foo );
+                        lbl_wdth = ( GDCPIE_percent_labels == GDCPIE_PCT_RIGHT ||
+                                     GDCPIE_percent_labels == GDCPIE_PCT_LEFT ? lbl_len + 1 + pct_len :
+                                     MAX ( lbl_len, pct_len ) )
+                                   * GDC_fontc[GDCPIE_label_size].w;
+                    } else
+                        lbl_wdth = lbl_hgt = 0;
+                    /* end label height, width */
 
-				rad = MIN( rad, thos_y_explode_limit );
-				rad = MIN( rad, thos_x_explode_limit );
+                    /* diamiter limited by thos piont's: explosion, label                 */
+                    /* (radius to box @ slice_angle) - (explode) - (projected label size) */
+                    /* radius constraint due to labels */
+                    thos_y_explode_limit = ( float ) thos_cos == 0.0 ? MAXFLOAT :
+                                           ( ( float ) ( ( double ) cheight / ABS ( thos_cos ) ) -
+                                             ( float ) ( thos_explode + ( lbl[i] ? GDCPIE_label_dist : 0 ) ) -
+                                             ( float ) ( lbl_hgt / 2 ) / ( float ) ABS ( thos_cos ) );
+                    thos_x_explode_limit = ( float ) thos_sin == 0.0 ? MAXFLOAT :
+                                           ( ( float ) ( ( double ) cwidth / ABS ( thos_sin ) ) -
+                                             ( float ) ( thos_explode + ( lbl[i] ? GDCPIE_label_dist : 0 ) ) -
+                                             ( float ) ( lbl_wdth ) / ( float ) ABS ( thos_sin ) );
 
-				// ok at thos radius (which is most likely larger than final)
-				// adjust for inter-label spacing
-//				if( lbl[i] && *lbl[i] )
-//					{
-//					char which_edge = slice_angle[0][i] > M_PI? +1: -1;		// which semi
-//					last_label_yedge = cheight - (int)( (rad +				// top or bottom of label
-//														(float)(thos_explode +
-//														(float)GDCPIE_label_dist)) * (float)thos_cos ) +
-//											     ( (GDC_fontc[GDCPIE_label_size].h+1)/2 +
-//													GDC_label_spacing )*which_edge;
-//					}
+                    rad = MIN ( rad, thos_y_explode_limit );
+                    rad = MIN ( rad, thos_x_explode_limit );
 
-				/* radius constriant due to exploded depth */
-				/* at each edge of the slice, and the middle */
-				/* thos is really stupid */
-				/*  thos section uses a different algorithm then above, but does the same thing */
-				/*  could be combined, but each is ugly enough! */
+                    // ok at thos radius (which is most likely larger than final)
+                    // adjust for inter-label spacing
+//    if( lbl[i] && *lbl[i] )
+//     {
+//     char which_edge = slice_angle[0][i] > M_PI? +1: -1;  // which semi
+//     last_label_yedge = cheight - (int)( (rad +    // top or bottom of label
+//              (float)(thos_explode +
+//              (float)GDCPIE_label_dist)) * (float)thos_cos ) +
+//                ( (GDC_fontc[GDCPIE_label_size].h+1)/2 +
+//             GDC_label_spacing )*which_edge;
+//     }
+
+                    /* radius constriant due to exploded depth */
+                    /* at each edge of the slice, and the middle */
+                    /* thos is really stupid */
+                    /*  thos section uses a different algorithm then above, but does the same thing */
+                    /*  could be combined, but each is ugly enough! */
 // PROTECT /0
-				if( threeD )
-					{
-					short	j;
-					int		thos_y_explode_pos;
-					int		thos_x_explode_pos;
+                    if ( threeD ) {
+                        short j;
+                        int  thos_y_explode_pos;
+                        int  thos_x_explode_pos;
 
-					// first N E S W (actually no need for N)
-					if( (slice_angle[1][i] < M_PI_2 && M_PI_2 < slice_angle[2][i]) &&				// E
-						(thos_x_explode_pos=OX(i,M_PI_2,1)) > cx+cwidth )
-						rad -= (float)ABS( (double)(1+thos_x_explode_pos-(cx+cwidth))/sin(M_PI_2) );
-					if( (slice_angle[1][i] < 3.0*M_PI_2 && 3.0*M_PI_2 < slice_angle[2][i]) &&		// W
-						(thos_x_explode_pos=OX(i,3.0*M_PI_2,1)) < cx-cwidth )
-						rad -= (float)ABS( (double)(thos_x_explode_pos-(cx+cwidth))/sin(3.0*M_PI_2) );
-					if( (slice_angle[1][i] < M_PI && M_PI < slice_angle[2][i]) &&					// S
-						(thos_y_explode_pos=OY(i,M_PI,1)) > cy+cheight )
-						rad -= (float)ABS( (double)(1+thos_y_explode_pos-(cy+cheight))/cos(M_PI) );
+                        // first N E S W (actually no need for N)
+                        if ( ( slice_angle[1][i] < M_PI_2 && M_PI_2 < slice_angle[2][i] ) &&    // E
+                                ( thos_x_explode_pos = OX ( i, M_PI_2, 1 ) ) > cx + cwidth )
+                            rad -= ( float ) ABS ( ( double ) ( 1 + thos_x_explode_pos - ( cx + cwidth ) ) / sin ( M_PI_2 ) );
+                        if ( ( slice_angle[1][i] < 3.0 * M_PI_2 && 3.0 * M_PI_2 < slice_angle[2][i] ) &&  // W
+                                ( thos_x_explode_pos = OX ( i, 3.0 * M_PI_2, 1 ) ) < cx - cwidth )
+                            rad -= ( float ) ABS ( ( double ) ( thos_x_explode_pos - ( cx + cwidth ) ) / sin ( 3.0 * M_PI_2 ) );
+                        if ( ( slice_angle[1][i] < M_PI && M_PI < slice_angle[2][i] ) &&     // S
+                                ( thos_y_explode_pos = OY ( i, M_PI, 1 ) ) > cy + cheight )
+                            rad -= ( float ) ABS ( ( double ) ( 1 + thos_y_explode_pos - ( cy + cheight ) ) / cos ( M_PI ) );
 
-					for( j=0; j<3; ++j )
-						{
-						thos_y_explode_pos = IY(i,j,1);
-						if( thos_y_explode_pos < cy-cheight )
-							rad -= (float)ABS( (double)((cy-cheight)-thos_y_explode_pos)/cos((double)slice_angle[j][i]) );
-						if( thos_y_explode_pos > cy+cheight )
-							rad -= (float)ABS( (double)(1+thos_y_explode_pos-(cy+cheight))/cos((double)slice_angle[j][i]) );
+                        for ( j = 0; j < 3; ++j ) {
+                            thos_y_explode_pos = IY ( i, j, 1 );
+                            if ( thos_y_explode_pos < cy - cheight )
+                                rad -= ( float ) ABS ( ( double ) ( ( cy - cheight ) - thos_y_explode_pos ) / cos ( ( double ) slice_angle[j][i] ) );
+                            if ( thos_y_explode_pos > cy + cheight )
+                                rad -= ( float ) ABS ( ( double ) ( 1 + thos_y_explode_pos - ( cy + cheight ) ) / cos ( ( double ) slice_angle[j][i] ) );
 
-						thos_x_explode_pos = IX(i,j,1);
-						if( thos_x_explode_pos < cx-cwidth )
-							rad -= (float)ABS( (double)((cx-cwidth)-thos_x_explode_pos)/sin((double)slice_angle[j][i]) );
-						if( thos_x_explode_pos > cx+cwidth )
-							rad -= (float)ABS( (double)(1+thos_x_explode_pos-(cx+cwidth))/sin((double)slice_angle[j][i]) );
-						}
-					}
-				}
-			others[i] = FALSE;
-			}
-		else
-			{
-			others[i] = TRUE;
-			slice_angle[0][i] = -MAXFLOAT;
-			}
-		last += thos;
-		}
-	}
+                            thos_x_explode_pos = IX ( i, j, 1 );
+                            if ( thos_x_explode_pos < cx - cwidth )
+                                rad -= ( float ) ABS ( ( double ) ( ( cx - cwidth ) - thos_x_explode_pos ) / sin ( ( double ) slice_angle[j][i] ) );
+                            if ( thos_x_explode_pos > cx + cwidth )
+                                rad -= ( float ) ABS ( ( double ) ( 1 + thos_x_explode_pos - ( cx + cwidth ) ) / sin ( ( double ) slice_angle[j][i] ) );
+                        }
+                    }
+                }
+                others[i] = FALSE;
+            } else {
+                others[i] = TRUE;
+                slice_angle[0][i] = -MAXFLOAT;
+            }
+            last += thos;
+        }
+    }
 
-	/* ----- go ahead and start the GIF ----- */
-	im = gdImageCreate( GIFWIDTH, GIFHEIGHT );
+    /* ----- go ahead and start the GIF ----- */
+    im = gdImageCreate ( GIFWIDTH, GIFHEIGHT );
 
-	/* --- allocate the requested colors --- */
-	BGColor   = clrallocate( im, GDCPIE_BGColor );
-	LineColor = clrallocate( im, GDCPIE_LineColor );
-	PlotColor = clrallocate( im, GDCPIE_PlotColor );
-	if( GDCPIE_EdgeColor != GDC_NOCOLOR )
-	 {
-	 EdgeColor = clrallocate( im, GDCPIE_EdgeColor );
-	 if( threeD )
-	  EdgeColorShd = clrshdallocate( im, GDCPIE_EdgeColor );
-	 }
+    /* --- allocate the requested colors --- */
+    BGColor   = clrallocate ( im, GDCPIE_BGColor );
+    LineColor = clrallocate ( im, GDCPIE_LineColor );
+    PlotColor = clrallocate ( im, GDCPIE_PlotColor );
+    if ( GDCPIE_EdgeColor != GDC_NOCOLOR )
+    {
+        EdgeColor = clrallocate ( im, GDCPIE_EdgeColor );
+        if ( threeD )
+            EdgeColorShd = clrshdallocate ( im, GDCPIE_EdgeColor );
+    }
 
-	/* --- set color for each slice --- */
-	for( i=0; i<num_points; ++i )
-		if( GDCPIE_Color )
-			{
-			unsigned long	slc_clr = GDCPIE_Color[i];
+    /* --- set color for each slice --- */
+    for ( i = 0; i < num_points; ++i )
+        if ( GDCPIE_Color )
+        {
+            unsigned long slc_clr = GDCPIE_Color[i];
 
-			SliceColor[i]     = clrallocate( im, slc_clr );
-			if( threeD )
-			 SliceColorShd[i] = clrshdallocate( im, slc_clr );
-			}
-		else
-			{
-			SliceColor[i]     = PlotColor;
-			if( threeD )
-			 SliceColorShd[i] = clrshdallocate( im, GDCPIE_PlotColor );
-			}
+            SliceColor[i]     = clrallocate ( im, slc_clr );
+            if ( threeD )
+                SliceColorShd[i] = clrshdallocate ( im, slc_clr );
+        } else
+        {
+            SliceColor[i]     = PlotColor;
+            if ( threeD )
+                SliceColorShd[i] = clrshdallocate ( im, GDCPIE_PlotColor );
+        }
 
-	pscl = (2.0*M_PI)/tot_val;
-	
-	/* ----- calc: smallest a slice can be ----- */
-	/* 1/2 circum / num slices per side. */
-	/*              determined by number of labels that'll fit (height) */
-	/* scale to user values */
-	/* ( M_PI / (GIFHEIGHT / (SFONTHGT+1)) ) */
-//	min_grphable = tot_val /
-//				   ( 2.0 * (float)GIFHEIGHT / (float)(SFONTHGT+1+TFONTHGT+2) );
+    pscl = ( 2.0 * M_PI ) / tot_val;
+
+    /* ----- calc: smallest a slice can be ----- */
+    /* 1/2 circum / num slices per side. */
+    /*              determined by number of labels that'll fit (height) */
+    /* scale to user values */
+    /* ( M_PI / (GIFHEIGHT / (SFONTHGT+1)) ) */
+// min_grphable = tot_val /
+//       ( 2.0 * (float)GIFHEIGHT / (float)(SFONTHGT+1+TFONTHGT+2) );
 
 
-	if( threeD )
-		{
-		/* draw background shaded pie */
-		{
-		float	rad1 = rad;
-		for( i=0; i<num_points; ++i )
-			if( !(others[i]) &&
-				(!GDCPIE_missing || !GDCPIE_missing[i]) )
-				{
-				float	rad = rad1;
+    if ( threeD )
+    {
+        /* draw background shaded pie */
+        {
+            float rad1 = rad;
+            for ( i = 0; i < num_points; ++i )
+                if ( ! ( others[i] ) &&
+                        ( !GDCPIE_missing || !GDCPIE_missing[i] ) )
+                {
+                    float rad = rad1;
 
-				gdImageLine( im, CX(i,1), CY(i,1), IX(i,1,1), IY(i,1,1), SliceColorShd[i] );
-				gdImageLine( im, CX(i,1), CY(i,1), IX(i,2,1), IY(i,2,1), SliceColorShd[i] );
+                    gdImageLine ( im, CX ( i, 1 ), CY ( i, 1 ), IX ( i, 1, 1 ), IY ( i, 1, 1 ), SliceColorShd[i] );
+                    gdImageLine ( im, CX ( i, 1 ), CY ( i, 1 ), IX ( i, 2, 1 ), IY ( i, 2, 1 ), SliceColorShd[i] );
 
-				gdImageArc( im, CX(i,1), CY(i,1),
-								rad*2, rad*2,
-								TO_INT_DEG_FLOOR(slice_angle[1][i])+270,
-								TO_INT_DEG_CEIL(slice_angle[2][i])+270,
-								SliceColorShd[i] );
-				rad1 = rad;
-				rad *= 3.0/4.0;
-				gdImageFillToBorder( im, IX(i,0,1), IY(i,0,1), SliceColorShd[i], SliceColorShd[i] );
-				rad = rad1;
-				if( GDCPIE_EdgeColor != GDC_NOCOLOR )
-					{
-					gdImageLine( im, CX(i,1), CY(i,1), IX(i,1,1), IY(i,1,1), EdgeColorShd );
-					gdImageLine( im, CX(i,1), CY(i,1), IX(i,2,1), IY(i,2,1), EdgeColorShd );
-					gdImageArc( im, CX(i,1), CY(i,1), 
-									rad*2, rad*2,
-									TO_INT_DEG(slice_angle[1][i])+270, TO_INT_DEG(slice_angle[2][i])+270,
-									EdgeColorShd);
-					}
-				}
-		}
-		/* fill in connection to foreground pie */
-		/* thos is where we earn our keep */
-		{
-		struct tmp_slice_t	tmp_slice[2*num_points+2];
-		int					t,
-							num_slice_angles = 0;
+                    gdImageArc ( im, CX ( i, 1 ), CY ( i, 1 ),
+                                 rad * 2, rad * 2,
+                                 TO_INT_DEG_FLOOR ( slice_angle[1][i] ) + 270,
+                                 TO_INT_DEG_CEIL ( slice_angle[2][i] ) + 270,
+                                 SliceColorShd[i] );
+                    rad1 = rad;
+                    rad *= 3.0 / 4.0;
+                    gdImageFillToBorder ( im, IX ( i, 0, 1 ), IY ( i, 0, 1 ), SliceColorShd[i], SliceColorShd[i] );
+                    rad = rad1;
+                    if ( GDCPIE_EdgeColor != GDC_NOCOLOR ) {
+                        gdImageLine ( im, CX ( i, 1 ), CY ( i, 1 ), IX ( i, 1, 1 ), IY ( i, 1, 1 ), EdgeColorShd );
+                        gdImageLine ( im, CX ( i, 1 ), CY ( i, 1 ), IX ( i, 2, 1 ), IY ( i, 2, 1 ), EdgeColorShd );
+                        gdImageArc ( im, CX ( i, 1 ), CY ( i, 1 ),
+                                     rad * 2, rad * 2,
+                                     TO_INT_DEG ( slice_angle[1][i] ) + 270, TO_INT_DEG ( slice_angle[2][i] ) + 270,
+                                     EdgeColorShd );
+                    }
+                }
+        }
+        /* fill in connection to foreground pie */
+        /* thos is where we earn our keep */
+        {
+            struct tmp_slice_t tmp_slice[2*num_points+2];
+            int     t,
+            num_slice_angles = 0;
 
-		for( i=0; i<num_points; ++i )
-			if( !GDCPIE_missing || !GDCPIE_missing[i] )
-				{
-				if( RAD_DIST1(slice_angle[1][i]) < RAD_DIST2(slice_angle[0][i]) )
-					tmp_slice[num_slice_angles].hidden = FALSE;
-				else
-					tmp_slice[num_slice_angles].hidden = TRUE;
-				tmp_slice[num_slice_angles].i       = i;
-				tmp_slice[num_slice_angles].slice   = slice_angle[0][i];
-				tmp_slice[num_slice_angles++].angle = slice_angle[1][i];
-				if( RAD_DIST1(slice_angle[2][i]) < RAD_DIST2(slice_angle[0][i]) )
-					tmp_slice[num_slice_angles].hidden = FALSE;
-				else
-					tmp_slice[num_slice_angles].hidden = TRUE;
-				tmp_slice[num_slice_angles].i       = i;
-				tmp_slice[num_slice_angles].slice   = slice_angle[0][i];
-				tmp_slice[num_slice_angles++].angle = slice_angle[2][i];
-				// identify which 2 slices (i) have a tangent parallel to depth angle 
-				if( slice_angle[1][i]<MOD_2PI(pie_3D_rad+M_PI_2) && slice_angle[2][i]>MOD_2PI(pie_3D_rad+M_PI_2) )
-					{
-					tmp_slice[num_slice_angles].i       = i;
-					tmp_slice[num_slice_angles].hidden  = FALSE;
-					tmp_slice[num_slice_angles].slice   = slice_angle[0][i];
-					tmp_slice[num_slice_angles++].angle = MOD_2PI( pie_3D_rad+M_PI_2 );
-					}
-				if( slice_angle[1][i]<MOD_2PI(pie_3D_rad+3.0*M_PI_2) && slice_angle[2][i]>MOD_2PI(pie_3D_rad+3.0*M_PI_2) )
-					{
-					tmp_slice[num_slice_angles].i       = i;
-					tmp_slice[num_slice_angles].hidden  = FALSE;
-					tmp_slice[num_slice_angles].slice   = slice_angle[0][i];
-					tmp_slice[num_slice_angles++].angle = MOD_2PI( pie_3D_rad+3.0*M_PI_2 );
-					}
-				}
+            for ( i = 0; i < num_points; ++i )
+                if ( !GDCPIE_missing || !GDCPIE_missing[i] )
+                {
+                    if ( RAD_DIST1 ( slice_angle[1][i] ) < RAD_DIST2 ( slice_angle[0][i] ) )
+                        tmp_slice[num_slice_angles].hidden = FALSE;
+                    else
+                        tmp_slice[num_slice_angles].hidden = TRUE;
+                    tmp_slice[num_slice_angles].i       = i;
+                    tmp_slice[num_slice_angles].slice   = slice_angle[0][i];
+                    tmp_slice[num_slice_angles++].angle = slice_angle[1][i];
+                    if ( RAD_DIST1 ( slice_angle[2][i] ) < RAD_DIST2 ( slice_angle[0][i] ) )
+                        tmp_slice[num_slice_angles].hidden = FALSE;
+                    else
+                        tmp_slice[num_slice_angles].hidden = TRUE;
+                    tmp_slice[num_slice_angles].i       = i;
+                    tmp_slice[num_slice_angles].slice   = slice_angle[0][i];
+                    tmp_slice[num_slice_angles++].angle = slice_angle[2][i];
+                    // identify which 2 slices (i) have a tangent parallel to depth angle
+                    if ( slice_angle[1][i] < MOD_2PI ( pie_3D_rad + M_PI_2 ) && slice_angle[2][i] > MOD_2PI ( pie_3D_rad + M_PI_2 ) ) {
+                        tmp_slice[num_slice_angles].i       = i;
+                        tmp_slice[num_slice_angles].hidden  = FALSE;
+                        tmp_slice[num_slice_angles].slice   = slice_angle[0][i];
+                        tmp_slice[num_slice_angles++].angle = MOD_2PI ( pie_3D_rad + M_PI_2 );
+                    }
+                    if ( slice_angle[1][i] < MOD_2PI ( pie_3D_rad + 3.0 * M_PI_2 ) && slice_angle[2][i] > MOD_2PI ( pie_3D_rad + 3.0 * M_PI_2 ) ) {
+                        tmp_slice[num_slice_angles].i       = i;
+                        tmp_slice[num_slice_angles].hidden  = FALSE;
+                        tmp_slice[num_slice_angles].slice   = slice_angle[0][i];
+                        tmp_slice[num_slice_angles++].angle = MOD_2PI ( pie_3D_rad + 3.0 * M_PI_2 );
+                    }
+                }
 
-		qsort( (void *)tmp_slice, num_slice_angles, sizeof(struct tmp_slice_t), ocmpr );
-		for( t=0; t<num_slice_angles; ++t )
-			{
-			gdPoint	gdp[4];
+            qsort ( ( void * ) tmp_slice, num_slice_angles, sizeof ( struct tmp_slice_t ), ocmpr );
+            for ( t = 0; t < num_slice_angles; ++t )
+            {
+                gdPoint gdp[4];
 
-			i = tmp_slice[t].i;
+                i = tmp_slice[t].i;
 
-			gdp[0].x  = CX(i,0);					gdp[0].y = CY(i,0);
-			gdp[1].x  = CX(i,1);					gdp[1].y = CY(i,1);
-			gdp[2].x  = OX(i,tmp_slice[t].angle,1);	gdp[2].y = OY(i,tmp_slice[t].angle,1);
-			gdp[3].x  = OX(i,tmp_slice[t].angle,0);	gdp[3].y = OY(i,tmp_slice[t].angle,0);
+                gdp[0].x  = CX ( i, 0 );     gdp[0].y = CY ( i, 0 );
+                gdp[1].x  = CX ( i, 1 );     gdp[1].y = CY ( i, 1 );
+                gdp[2].x  = OX ( i, tmp_slice[t].angle, 1 ); gdp[2].y = OY ( i, tmp_slice[t].angle, 1 );
+                gdp[3].x  = OX ( i, tmp_slice[t].angle, 0 ); gdp[3].y = OY ( i, tmp_slice[t].angle, 0 );
 
-			if( !(tmp_slice[t].hidden) )
-				gdImageFilledPolygon( im, gdp, 4, SliceColorShd[i] );
-			else
-				{
-				rad -= 2.0;										/* no peeking */
-				gdp[0].x  = OX(i,slice_angle[0][i],0);	gdp[0].y = OY(i,slice_angle[0][i],0);
-				gdp[1].x  = OX(i,slice_angle[0][i],1);	gdp[1].y = OY(i,slice_angle[0][i],1);
-				rad += 2.0;
-				gdp[2].x  = OX(i,slice_angle[1][i],1);	gdp[2].y = OY(i,slice_angle[1][i],1);
-				gdp[3].x  = OX(i,slice_angle[1][i],0);	gdp[3].y = OY(i,slice_angle[1][i],0);
-				gdImageFilledPolygon( im, gdp, 4, SliceColorShd[i] );
-				gdp[2].x  = OX(i,slice_angle[2][i],1);	gdp[2].y = OY(i,slice_angle[2][i],1);
-				gdp[3].x  = OX(i,slice_angle[2][i],0);	gdp[3].y = OY(i,slice_angle[2][i],0);
-				gdImageFilledPolygon( im, gdp, 4, SliceColorShd[i] );
-				}
-				
-
-			if( GDCPIE_EdgeColor != GDC_NOCOLOR )
-				{
-				gdImageLine( im, CX(i,0), CY(i,0), CX(i,1), CY(i,1), EdgeColorShd );
-				gdImageLine( im, OX(i,tmp_slice[t].angle,0), OY(i,tmp_slice[t].angle,0),
-								 OX(i,tmp_slice[t].angle,1), OY(i,tmp_slice[t].angle,1),
-							 EdgeColorShd );
-				}
-			}
-		}
-		}
+                if ( ! ( tmp_slice[t].hidden ) )
+                    gdImageFilledPolygon ( im, gdp, 4, SliceColorShd[i] );
+                else {
+                    rad -= 2.0;          /* no peeking */
+                    gdp[0].x  = OX ( i, slice_angle[0][i], 0 ); gdp[0].y = OY ( i, slice_angle[0][i], 0 );
+                    gdp[1].x  = OX ( i, slice_angle[0][i], 1 ); gdp[1].y = OY ( i, slice_angle[0][i], 1 );
+                    rad += 2.0;
+                    gdp[2].x  = OX ( i, slice_angle[1][i], 1 ); gdp[2].y = OY ( i, slice_angle[1][i], 1 );
+                    gdp[3].x  = OX ( i, slice_angle[1][i], 0 ); gdp[3].y = OY ( i, slice_angle[1][i], 0 );
+                    gdImageFilledPolygon ( im, gdp, 4, SliceColorShd[i] );
+                    gdp[2].x  = OX ( i, slice_angle[2][i], 1 ); gdp[2].y = OY ( i, slice_angle[2][i], 1 );
+                    gdp[3].x  = OX ( i, slice_angle[2][i], 0 ); gdp[3].y = OY ( i, slice_angle[2][i], 0 );
+                    gdImageFilledPolygon ( im, gdp, 4, SliceColorShd[i] );
+                }
 
 
-	/* ----- pie face ----- */
-	{
-	// float	last = 0.0;
-	float	rad1 = rad;
-	for( i=0; i<num_points; ++i )
-		if( !others[i] &&
-			(!GDCPIE_missing || !GDCPIE_missing[i]) )
-			{
-			float	rad = rad1;
+                if ( GDCPIE_EdgeColor != GDC_NOCOLOR ) {
+                    gdImageLine ( im, CX ( i, 0 ), CY ( i, 0 ), CX ( i, 1 ), CY ( i, 1 ), EdgeColorShd );
+                    gdImageLine ( im, OX ( i, tmp_slice[t].angle, 0 ), OY ( i, tmp_slice[t].angle, 0 ),
+                                  OX ( i, tmp_slice[t].angle, 1 ), OY ( i, tmp_slice[t].angle, 1 ),
+                                  EdgeColorShd );
+                }
+            }
+        }
+    }
 
-			// last += val[i];
-			// EXPLODE_CX_CY( slice_angle[0][i], i );
-			gdImageLine( im, CX(i,0), CY(i,0), IX(i,1,0), IY(i,1,0), SliceColor[i] );
-			gdImageLine( im, CX(i,0), CY(i,0), IX(i,2,0), IY(i,2,0), SliceColor[i] );
 
-			gdImageArc( im, CX(i,0), CY(i,0), 
-							(int)rad*2, (int)rad*2,
-							TO_INT_DEG_FLOOR(slice_angle[1][i])+270,
-							TO_INT_DEG_CEIL(slice_angle[2][i])+270,
-							SliceColor[i] );
-			rad1 = rad;
-			rad *= 3.0/4.0;
-			gdImageFillToBorder( im, IX(i,0,0), IY(i,0,0), SliceColor[i], SliceColor[i] );
-			/* catch missed pixels on narrow slices */
-			gdImageLine( im, CX(i,0), CY(i,0), IX(i,0,0), IY(i,0,0), SliceColor[i] );
-			rad = rad1;
-			if( GDCPIE_EdgeColor != GDC_NOCOLOR )
-				{
-				gdImageLine( im, CX(i,0), CY(i,0), IX(i,1,0), IY(i,1,0), EdgeColor );
-				gdImageLine( im, CX(i,0), CY(i,0), IX(i,2,0), IY(i,2,0), EdgeColor );
+    /* ----- pie face ----- */
+    {
+        // float last = 0.0;
+        float rad1 = rad;
+        for ( i = 0; i < num_points; ++i )
+            if ( !others[i] &&
+                    ( !GDCPIE_missing || !GDCPIE_missing[i] ) )
+            {
+                float rad = rad1;
 
-				gdImageArc( im, CX(i,0), CY(i,0), 
-								rad*2, rad*2,
-								TO_INT_DEG(slice_angle[1][i])+270, TO_INT_DEG(slice_angle[2][i])+270,
-								EdgeColor );
-				}
-			}
-	}
+                // last += val[i];
+                // EXPLODE_CX_CY( slice_angle[0][i], i );
+                gdImageLine ( im, CX ( i, 0 ), CY ( i, 0 ), IX ( i, 1, 0 ), IY ( i, 1, 0 ), SliceColor[i] );
+                gdImageLine ( im, CX ( i, 0 ), CY ( i, 0 ), IX ( i, 2, 0 ), IY ( i, 2, 0 ), SliceColor[i] );
 
-	if( GDCPIE_title )
-		{
-		int	title_len;
+                gdImageArc ( im, CX ( i, 0 ), CY ( i, 0 ),
+                             ( int ) rad * 2, ( int ) rad * 2,
+                             TO_INT_DEG_FLOOR ( slice_angle[1][i] ) + 270,
+                             TO_INT_DEG_CEIL ( slice_angle[2][i] ) + 270,
+                             SliceColor[i] );
+                rad1 = rad;
+                rad *= 3.0 / 4.0;
+                gdImageFillToBorder ( im, IX ( i, 0, 0 ), IY ( i, 0, 0 ), SliceColor[i], SliceColor[i] );
+                /* catch missed pixels on narrow slices */
+                gdImageLine ( im, CX ( i, 0 ), CY ( i, 0 ), IX ( i, 0, 0 ), IY ( i, 0, 0 ), SliceColor[i] );
+                rad = rad1;
+                if ( GDCPIE_EdgeColor != GDC_NOCOLOR ) {
+                    gdImageLine ( im, CX ( i, 0 ), CY ( i, 0 ), IX ( i, 1, 0 ), IY ( i, 1, 0 ), EdgeColor );
+                    gdImageLine ( im, CX ( i, 0 ), CY ( i, 0 ), IX ( i, 2, 0 ), IY ( i, 2, 0 ), EdgeColor );
 
-		cnt_nl( GDCPIE_title, &title_len );
-		GDCImageStringNL( im,
-						  &GDC_fontc[GDCPIE_title_size],
-						  (GIFWIDTH-title_len*GDC_fontc[GDCPIE_title_size].w)/2,
-						  1,
-						  GDCPIE_title,
-						  LineColor,
-						  GDC_JUSTIFY_CENTER );
-		}
+                    gdImageArc ( im, CX ( i, 0 ), CY ( i, 0 ),
+                                 rad * 2, rad * 2,
+                                 TO_INT_DEG ( slice_angle[1][i] ) + 270, TO_INT_DEG ( slice_angle[2][i] ) + 270,
+                                 EdgeColor );
+                }
+            }
+    }
 
-	/* labels */
-	if( lbl )
-		{
-		float	liner = rad;
+    if ( GDCPIE_title )
+    {
+        int title_len;
 
-		rad += GDCPIE_label_dist;
-		for( i=0; i<num_points; ++i )
-			{
-			if( !others[i] &&
-				(!GDCPIE_missing || !GDCPIE_missing[i]) )
-				{
-				char	pct_str[1+4+1+1];
-				int		pct_wdth;
-				int		lbl_wdth;
-				short	num_nl = cnt_nl( lbl[i], &lbl_wdth );
-				int		lblx,  pctx,
-						lbly,  pcty,
-						linex, liney;
+        cnt_nl ( GDCPIE_title, &title_len );
+        GDCImageStringNL ( im,
+                           &GDC_fontc[GDCPIE_title_size],
+                           ( GIFWIDTH - title_len * GDC_fontc[GDCPIE_title_size].w ) / 2,
+                           1,
+                           GDCPIE_title,
+                           LineColor,
+                           GDC_JUSTIFY_CENTER );
+    }
 
-				lbl_wdth *= GDC_fontc[GDCPIE_label_size].w;
-				sprintf( pct_str,
-						 (GDCPIE_percent_labels==GDCPIE_PCT_LEFT ||
-						  GDCPIE_percent_labels==GDCPIE_PCT_RIGHT) &&
-						 lbl[i]? "(%.0f%%)":
-								 "%.0f%%",
-						(val[i]/tot_val) * 100.0 );
-				pct_wdth = GDCPIE_percent_labels == GDCPIE_PCT_NONE?
-							0:
-							strlen(pct_str) * GDC_fontc[GDCPIE_label_size].w;
+    /* labels */
+    if ( lbl )
+    {
+        float liner = rad;
 
-				lbly = (liney = IY(i,0,0))-( num_nl * (1+GDC_fontc[GDCPIE_label_size].h) ) / 2;
-				lblx = pctx = linex = IX(i,0,0);
+        rad += GDCPIE_label_dist;
+        for ( i = 0; i < num_points; ++i ) {
+            if ( !others[i] &&
+                    ( !GDCPIE_missing || !GDCPIE_missing[i] ) ) {
+                char pct_str[1+4+1+1];
+                int  pct_wdth;
+                int  lbl_wdth;
+                short num_nl = cnt_nl ( lbl[i], &lbl_wdth );
+                int  lblx,  pctx,
+                lbly,  pcty,
+                linex, liney;
 
-				if( slice_angle[0][i] > M_PI )								/* which semicircle */
-					{
-					lblx -= lbl_wdth;
-					pctx = lblx;
-					++linex;
-					}
-				else
-					--linex;
+                lbl_wdth *= GDC_fontc[GDCPIE_label_size].w;
+                sprintf ( pct_str,
+                          ( GDCPIE_percent_labels == GDCPIE_PCT_LEFT ||
+                            GDCPIE_percent_labels == GDCPIE_PCT_RIGHT ) &&
+                          lbl[i] ? "(%.0f%%)" :
+                          "%.0f%%",
+                          ( val[i] / tot_val ) * 100.0 );
+                pct_wdth = GDCPIE_percent_labels == GDCPIE_PCT_NONE ?
+                           0 :
+                           strlen ( pct_str ) * GDC_fontc[GDCPIE_label_size].w;
 
-				switch( GDCPIE_percent_labels )
-					{
-					case GDCPIE_PCT_LEFT:	if( slice_angle[0][i] > M_PI )
-												pctx -= lbl_wdth-1;
-											else
-												lblx += pct_wdth+1;
-											pcty = IY(i,0,0) - ( 1+GDC_fontc[GDCPIE_label_size].h ) / 2;
-											break;
-					case GDCPIE_PCT_RIGHT:	if( slice_angle[0][i] > M_PI )
-												lblx -= pct_wdth-1;
-											else
-												pctx += lbl_wdth+1;
-											pcty = IY(i,0,0) - ( 1+GDC_fontc[GDCPIE_label_size].h ) / 2;
-											break;
-					case GDCPIE_PCT_ABOVE:	lbly += (1+GDC_fontc[GDCPIE_label_size].h) / 2;
-											pcty = lbly - (GDC_fontc[GDCPIE_label_size].h);
-											break;
-					case GDCPIE_PCT_BELOW:	lbly -= (1+GDC_fontc[GDCPIE_label_size].h) / 2;
-											pcty = lbly + (GDC_fontc[GDCPIE_label_size].h) * num_nl;
-											break;
-					case GDCPIE_PCT_NONE:
-					default:
-                                        break;
-					}
+                lbly = ( liney = IY ( i, 0, 0 ) ) - ( num_nl * ( 1 + GDC_fontc[GDCPIE_label_size].h ) ) / 2;
+                lblx = pctx = linex = IX ( i, 0, 0 );
 
-				if( GDCPIE_percent_labels != GDCPIE_PCT_NONE )
-					gdImageString( im,
-								   GDC_fontc[GDCPIE_label_size].f,
-								   slice_angle[0][i] <= M_PI? pctx:
-															  pctx+lbl_wdth-pct_wdth,
-								   pcty,
-								   (unsigned char *)pct_str,
-								   LineColor );
-				if( lbl[i] )
-					GDCImageStringNL( im,
-									  &GDC_fontc[GDCPIE_label_size],
-									  lblx,
-									  lbly,
-									  lbl[i],
-									  LineColor,
-									  slice_angle[0][i] <= M_PI? GDC_JUSTIFY_LEFT:
-																 GDC_JUSTIFY_RIGHT );
-				if( GDCPIE_label_line )
-					{
-					float	rad = liner;
-					gdImageLine( im, linex, liney, IX(i,0,0), IY(i,0,0), LineColor );
-					}
-				}
-			}
-		rad -= GDCPIE_label_dist;
-		}
+                if ( slice_angle[0][i] > M_PI )        /* which semicircle */
+                {
+                    lblx -= lbl_wdth;
+                    pctx = lblx;
+                    ++linex;
+                } else
+                    --linex;
 
-	gdImageGif(im, gif_fptr);
+                switch ( GDCPIE_percent_labels ) {
+                case GDCPIE_PCT_LEFT: if ( slice_angle[0][i] > M_PI )
+                        pctx -= lbl_wdth - 1;
+                    else
+                        lblx += pct_wdth + 1;
+                    pcty = IY ( i, 0, 0 ) - ( 1 + GDC_fontc[GDCPIE_label_size].h ) / 2;
+                    break;
+                case GDCPIE_PCT_RIGHT: if ( slice_angle[0][i] > M_PI )
+                        lblx -= pct_wdth - 1;
+                    else
+                        pctx += lbl_wdth + 1;
+                    pcty = IY ( i, 0, 0 ) - ( 1 + GDC_fontc[GDCPIE_label_size].h ) / 2;
+                    break;
+                case GDCPIE_PCT_ABOVE: lbly += ( 1 + GDC_fontc[GDCPIE_label_size].h ) / 2;
+                    pcty = lbly - ( GDC_fontc[GDCPIE_label_size].h );
+                    break;
+                case GDCPIE_PCT_BELOW: lbly -= ( 1 + GDC_fontc[GDCPIE_label_size].h ) / 2;
+                    pcty = lbly + ( GDC_fontc[GDCPIE_label_size].h ) * num_nl;
+                    break;
+                case GDCPIE_PCT_NONE:
+                default:
+                    break;
+                }
 
-	gdImageDestroy(im);
-	return;
+                if ( GDCPIE_percent_labels != GDCPIE_PCT_NONE )
+                    gdImageString ( im,
+                                    GDC_fontc[GDCPIE_label_size].f,
+                                    slice_angle[0][i] <= M_PI ? pctx :
+                                    pctx + lbl_wdth - pct_wdth,
+                                    pcty,
+                                    ( unsigned char * ) pct_str,
+                                    LineColor );
+                if ( lbl[i] )
+                    GDCImageStringNL ( im,
+                                       &GDC_fontc[GDCPIE_label_size],
+                                       lblx,
+                                       lbly,
+                                       lbl[i],
+                                       LineColor,
+                                       slice_angle[0][i] <= M_PI ? GDC_JUSTIFY_LEFT :
+                                       GDC_JUSTIFY_RIGHT );
+                if ( GDCPIE_label_line ) {
+                    float rad = liner;
+                    gdImageLine ( im, linex, liney, IX ( i, 0, 0 ), IY ( i, 0, 0 ), LineColor );
+                }
+            }
+        }
+        rad -= GDCPIE_label_dist;
+    }
+
+    gdImageGif ( im, gif_fptr );
+
+    gdImageDestroy ( im );
+    return;
 #endif
 }
 
 
-void hola() {
-fprintf(stderr,"hola");
+void hola()
+{
+    fprintf ( stderr, "hola" );
+}// end hola;
 }// end hola;

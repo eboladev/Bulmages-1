@@ -25,10 +25,11 @@
 /**
 \return
 **/
-QString BusquedaPeriodo::periodo() {
-  _depura("BusquedaPeriodo::periodo", 0);
-  _depura("END BusquedaPeriodo::periodo", 0);
-    return m_valores[currentIndex()];
+QString BusquedaPeriodo::periodo()
+{
+    _depura ( "BusquedaPeriodo::periodo", 0 );
+    _depura ( "END BusquedaPeriodo::periodo", 0 );
+    return m_valores[currentIndex() ];
 }
 
 
@@ -36,10 +37,11 @@ QString BusquedaPeriodo::periodo() {
 /**
 \return
 **/
-QString BusquedaPeriodo::valorCampo() {
-  _depura("BusquedaPeriodo::valorCampo", 0);
-  _depura("END BusquedaPeriodo::valorCampo", 0);
-    return m_valores[currentIndex()];
+QString BusquedaPeriodo::valorCampo()
+{
+    _depura ( "BusquedaPeriodo::valorCampo", 0 );
+    _depura ( "END BusquedaPeriodo::valorCampo", 0 );
+    return m_valores[currentIndex() ];
 }
 
 
@@ -47,12 +49,13 @@ QString BusquedaPeriodo::valorCampo() {
 /**
 \param index
 **/
-void BusquedaPeriodo::s_activated(int index) {
-    _depura("Activado el combo box.", 0);
-    if (index > 0) {
-        emit(valueChanged(m_valores[currentIndex()]));
+void BusquedaPeriodo::s_activated ( int index )
+{
+    _depura ( "Activado el combo box.", 0 );
+    if ( index > 0 ) {
+        emit ( valueChanged ( m_valores[currentIndex() ] ) );
     } else {
-        emit(valueChanged(""));
+        emit ( valueChanged ( "" ) );
     } // end if
 }
 
@@ -61,15 +64,16 @@ void BusquedaPeriodo::s_activated(int index) {
 /**
 \param parent
 **/
-BusquedaPeriodo::BusquedaPeriodo(QWidget *parent) : QComboBox2(parent) {
-    _depura("BusquedaPeriodo::BusquedaPeriodo", 0);
-    m_textos[0] = tr("Semanal");
-    m_textos[1] = tr("Quincenal");
-    m_textos[2] = tr("Mensual");
-    m_textos[3] = tr("Trimestral");
-    m_textos[4] = tr("Semestral");
-    m_textos[5] = tr("Anual");
-    m_textos[6] = tr("Bienal");
+BusquedaPeriodo::BusquedaPeriodo ( QWidget *parent ) : QComboBox2 ( parent )
+{
+    _depura ( "BusquedaPeriodo::BusquedaPeriodo", 0 );
+    m_textos[0] = tr ( "Semanal" );
+    m_textos[1] = tr ( "Quincenal" );
+    m_textos[2] = tr ( "Mensual" );
+    m_textos[3] = tr ( "Trimestral" );
+    m_textos[4] = tr ( "Semestral" );
+    m_textos[5] = tr ( "Anual" );
+    m_textos[6] = tr ( "Bienal" );
     m_textos[7] = "";
 
     m_valores[0] = "@ 7 days";
@@ -82,23 +86,24 @@ BusquedaPeriodo::BusquedaPeriodo(QWidget *parent) : QComboBox2(parent) {
     m_valores[7] = "";
 
     int i = 0;
-    while (m_textos[i] != "") {
+    while ( m_textos[i] != "" ) {
         /// Anyade un nuevo elemento al final del QComboBox.
-        insertItem(this->count() + 1, m_textos[i]);
+        insertItem ( this->count() + 1, m_textos[i] );
         i++;
     } // end while
 
-    connect(this, SIGNAL(activated(int)), this, SLOT(s_activated(int)));
-    _depura("END BusquedaPeriodo::BusquedaPeriodo", 0);
+    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( s_activated ( int ) ) );
+    _depura ( "END BusquedaPeriodo::BusquedaPeriodo", 0 );
 }
 
 
 ///
 /**
 **/
-BusquedaPeriodo::~BusquedaPeriodo() {
-  _depura("BusquedaPeriodo::~BusquedaPeriodo", 0);
-  _depura("END BusquedaPeriodo::~BusquedaPeriodo", 0);
+BusquedaPeriodo::~BusquedaPeriodo()
+{
+    _depura ( "BusquedaPeriodo::~BusquedaPeriodo", 0 );
+    _depura ( "END BusquedaPeriodo::~BusquedaPeriodo", 0 );
 }
 
 
@@ -106,18 +111,19 @@ BusquedaPeriodo::~BusquedaPeriodo() {
 /**
 \param periodo
 **/
-void BusquedaPeriodo::setperiodo(QString periodo) {
-    _depura("BusquedaPeriodo::setperiodo", 0);
+void BusquedaPeriodo::setperiodo ( QString periodo )
+{
+    _depura ( "BusquedaPeriodo::setperiodo", 0 );
     int i = 0;
-    while (m_valores[i] != periodo && m_valores[i] != "") {
-//	_depura(m_valores[i]+" "+periodo, 2);
+    while ( m_valores[i] != periodo && m_valores[i] != "" ) {
+// _depura(m_valores[i]+" "+periodo, 2);
         i++;
     } // end while
-    if (m_valores[i] != "")
-        setCurrentIndex(i);
+    if ( m_valores[i] != "" )
+        setCurrentIndex ( i );
     else
-        setCurrentIndex(0);
-    _depura("END BusquedaPeriodo::setperiodo", 0);
+        setCurrentIndex ( 0 );
+    _depura ( "END BusquedaPeriodo::setperiodo", 0 );
 }
 
 
@@ -125,10 +131,11 @@ void BusquedaPeriodo::setperiodo(QString periodo) {
 /**
 \param periodo
 **/
-void BusquedaPeriodo::setValorCampo(QString periodo) {
-  _depura("BusquedaPeriodo::setValorCampo", 0);
-	setperiodo(periodo);
-  _depura("END BusquedaPeriodo::setValorCampo", 0);
+void BusquedaPeriodo::setValorCampo ( QString periodo )
+{
+    _depura ( "BusquedaPeriodo::setValorCampo", 0 );
+    setperiodo ( periodo );
+    _depura ( "END BusquedaPeriodo::setValorCampo", 0 );
 }
 
 

@@ -27,20 +27,22 @@
 /**
 \param parent
 **/
-BusquedaFecha2::BusquedaFecha2(QWidget *parent) : QLineEdit(parent) {
-    _depura("BusquedaFecha2::BusquedaFecha2", 0);
-    installEventFilter(this);
-    QObject::connect(this, SIGNAL(editingFinished()), this, SLOT(on_mui_editingFinished()));
-    _depura("END BusquedaFecha2::BusquedaFecha2", 0);
+BusquedaFecha2::BusquedaFecha2 ( QWidget *parent ) : QLineEdit ( parent )
+{
+    _depura ( "BusquedaFecha2::BusquedaFecha2", 0 );
+    installEventFilter ( this );
+    QObject::connect ( this, SIGNAL ( editingFinished() ), this, SLOT ( on_mui_editingFinished() ) );
+    _depura ( "END BusquedaFecha2::BusquedaFecha2", 0 );
 }
 
 
 ///No requiere de acciones especiales en el destructor.
 /**
 **/
-BusquedaFecha2::~BusquedaFecha2() {
-    _depura("BusquedaFecha2::~BusquedaFecha2", 0);
-    _depura("END BusquedaFecha2::~BusquedaFecha2", 0);
+BusquedaFecha2::~BusquedaFecha2()
+{
+    _depura ( "BusquedaFecha2::~BusquedaFecha2", 0 );
+    _depura ( "END BusquedaFecha2::~BusquedaFecha2", 0 );
 }
 
 
@@ -48,10 +50,11 @@ BusquedaFecha2::~BusquedaFecha2() {
 /**
 \param val
 **/
-void BusquedaFecha2::setText(QString val) {
-    _depura("BusquedaFecha2::setText", 0);
-    QLineEdit::setText(val);
-    _depura("END BusquedaFecha2::setText", 0);
+void BusquedaFecha2::setText ( QString val )
+{
+    _depura ( "BusquedaFecha2::setText", 0 );
+    QLineEdit::setText ( val );
+    _depura ( "END BusquedaFecha2::setText", 0 );
 }
 
 
@@ -59,19 +62,21 @@ void BusquedaFecha2::setText(QString val) {
 /**
 \param val
 **/
-void BusquedaFecha2::setValorCampo(QString val) {
-    _depura("BusquedaFecha2::setValorCampo", 0);
-    QLineEdit::setText(val);
-    _depura("END BusquedaFecha2::setValorCampo", 0);
+void BusquedaFecha2::setValorCampo ( QString val )
+{
+    _depura ( "BusquedaFecha2::setValorCampo", 0 );
+    QLineEdit::setText ( val );
+    _depura ( "END BusquedaFecha2::setValorCampo", 0 );
 }
 
 
 ///
 /**
 **/
-void BusquedaFecha2::selectAll() {
-    _depura("BusquedaFecha2::selectAll", 0);
-    _depura("END BusquedaFecha2::selectAll", 0);
+void BusquedaFecha2::selectAll()
+{
+    _depura ( "BusquedaFecha2::selectAll", 0 );
+    _depura ( "END BusquedaFecha2::selectAll", 0 );
 }
 
 
@@ -79,9 +84,10 @@ void BusquedaFecha2::selectAll() {
 /**
 \return
 **/
-QString BusquedaFecha2::text() {
-    _depura("BusquedaFecha2::text", 0);
-    _depura("END BusquedaFecha2::text", 0);
+QString BusquedaFecha2::text()
+{
+    _depura ( "BusquedaFecha2::text", 0 );
+    _depura ( "END BusquedaFecha2::text", 0 );
     return QLineEdit::text();
 }
 
@@ -90,9 +96,10 @@ QString BusquedaFecha2::text() {
 /**
 \return
 **/
-QString BusquedaFecha2::valorCampo() {
-    _depura("BusquedaFecha2::valorCampo", 0);
-    _depura("END BusquedaFecha2::valorCampo", 0);
+QString BusquedaFecha2::valorCampo()
+{
+    _depura ( "BusquedaFecha2::valorCampo", 0 );
+    _depura ( "END BusquedaFecha2::valorCampo", 0 );
     return QLineEdit::text();
 }
 
@@ -100,10 +107,11 @@ QString BusquedaFecha2::valorCampo() {
 ///
 /**
 **/
-void BusquedaFecha2::on_mui_editingFinished() {
-    _depura("BusquedaFecha2::on_mui_editingFinished", 0);
-    setText(normalizafecha(text()).toString("dd/MM/yyyy"));
-    _depura("END BusquedaFecha2::on_mui_editingFinished", 0);
+void BusquedaFecha2::on_mui_editingFinished()
+{
+    _depura ( "BusquedaFecha2::on_mui_editingFinished", 0 );
+    setText ( normalizafecha ( text() ).toString ( "dd/MM/yyyy" ) );
+    _depura ( "END BusquedaFecha2::on_mui_editingFinished", 0 );
 }
 
 
@@ -113,27 +121,28 @@ void BusquedaFecha2::on_mui_editingFinished() {
 \param event
 \return
 **/
-bool BusquedaFecha2::eventFilter(QObject *obj, QEvent *event) {
-    _depura("BusquedaFecha2::eventFilter", 0);
-/*
-    if (event->type() == QEvent::KeyRelease) {
-        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
-        int key = keyEvent->key();
-        switch (key) {
-        case Qt::Key_Return:
-        case Qt::Key_Enter:
-            setText(normalizafecha(text()).toString());
-            break;
-      } // end switch
-    } // end if
-*/
-/*
-    if (event->type() == QEvent::FocusOut) {
-        setText("1111");
-        return TRUE;
-    } // end if
-*/
-    _depura("END BusquedaFecha2::eventFilter", 0);
-    return QLineEdit::eventFilter(obj, event);
+bool BusquedaFecha2::eventFilter ( QObject *obj, QEvent *event )
+{
+    _depura ( "BusquedaFecha2::eventFilter", 0 );
+    /*
+        if (event->type() == QEvent::KeyRelease) {
+            QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+            int key = keyEvent->key();
+            switch (key) {
+            case Qt::Key_Return:
+            case Qt::Key_Enter:
+                setText(normalizafecha(text()).toString());
+                break;
+          } // end switch
+        } // end if
+    */
+    /*
+        if (event->type() == QEvent::FocusOut) {
+            setText("1111");
+            return TRUE;
+        } // end if
+    */
+    _depura ( "END BusquedaFecha2::eventFilter", 0 );
+    return QLineEdit::eventFilter ( obj, event );
 }
 

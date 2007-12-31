@@ -35,7 +35,8 @@
 class Empresa;
 
 
-class myplugin1 : public QObject {
+class myplugin1 : public QObject
+{
     Q_OBJECT
 
 public:
@@ -43,7 +44,7 @@ public:
     postgresiface2 *conexionbase;
 
 public:
-    myplugin1(Empresa *);
+    myplugin1 ( Empresa * );
     ~myplugin1();
 
 public slots:
@@ -53,7 +54,8 @@ public slots:
 };
 
 
-class adocumental : public QDialog, public Ui_adocumentalbase {
+class adocumental : public QDialog, public Ui_adocumentalbase
+{
     Q_OBJECT
 
 private:
@@ -73,23 +75,25 @@ private:
     QString idadocumental;
 
 public:
-    adocumental(Empresa *, QWidget *parent = 0);
+    adocumental ( Empresa *, QWidget *parent = 0 );
     ~adocumental();
-    void setmodoedicion() {
+    void setmodoedicion()
+    {
         modo = 0;
     };
-    void setmodoconsulta() {
+    void setmodoconsulta()
+    {
         modo = 1;
     };
     QString getidadocumental();
-    void asociaasiento(QString);
+    void asociaasiento ( QString );
     void presentaprimervacio();
     /// A veces es necesario repintar las cosas. Esta funcion es la que lo hace.
     void inicializa();
-    void newADocumental(QString);
+    void newADocumental ( QString );
 
 public slots:
-    virtual void doubleclicked(int, int, int, const QPoint &);
+    virtual void doubleclicked ( int, int, int, const QPoint & );
     virtual void boton_newadocumental();
     virtual void boton_desasociar();
     virtual void s_deleteADocumental();

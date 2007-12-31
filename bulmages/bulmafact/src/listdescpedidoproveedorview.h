@@ -28,20 +28,23 @@
 
 /// Muestra y administra la ventana de lista de descuentos por pedido a proveedor.
 /** */
-class ListDescuentoPedidoProveedorView : public SubForm2Bf {
+class ListDescuentoPedidoProveedorView : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
     QString mdb_idpedidoproveedor;
-    ListDescuentoPedidoProveedorView(QWidget *parent = 0);
-    ~ListDescuentoPedidoProveedorView() {}
+    ListDescuentoPedidoProveedorView ( QWidget *parent = 0 );
+    ~ListDescuentoPedidoProveedorView()
+    {}
     ;
 
 public slots:
-    virtual void cargar(QString idpedidoproveedor) {
-        _depura("ListCompArticulo::cargaListCompArticulo\n", 0);
+    virtual void cargar ( QString idpedidoproveedor )
+    {
+        _depura ( "ListCompArticulo::cargaListCompArticulo\n", 0 );
         mdb_idpedidoproveedor = idpedidoproveedor;
-        SubForm3::cargar("SELECT * FROM dpedidoproveedor WHERE idpedidoproveedor = " + mdb_idpedidoproveedor);
+        SubForm3::cargar ( "SELECT * FROM dpedidoproveedor WHERE idpedidoproveedor = " + mdb_idpedidoproveedor );
     };
 
 };

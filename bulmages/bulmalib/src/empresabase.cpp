@@ -29,10 +29,11 @@
 /**
 \param doc
 **/
-void EmpresaBase::setListVentanas(ListVentanas *doc) {
-    _depura("EmpresaBase::setListVentanas", 0);
+void EmpresaBase::setListVentanas ( ListVentanas *doc )
+{
+    _depura ( "EmpresaBase::setListVentanas", 0 );
     m_listventanas = doc;
-    _depura("END EmpresaBase::setListVentanas", 0);
+    _depura ( "END EmpresaBase::setListVentanas", 0 );
 }
 
 
@@ -40,9 +41,10 @@ void EmpresaBase::setListVentanas(ListVentanas *doc) {
 /**
 \return
 **/
-QWorkspace2 *EmpresaBase::pWorkspace() {
-    _depura("EmpresaBase::pWorkspace", 0);
-    _depura("END EmpresaBase::pWorkspace", 0);
+QWorkspace2 *EmpresaBase::pWorkspace()
+{
+    _depura ( "EmpresaBase::pWorkspace", 0 );
+    _depura ( "END EmpresaBase::pWorkspace", 0 );
     return m_pWorkspace;
 }
 
@@ -51,10 +53,11 @@ QWorkspace2 *EmpresaBase::pWorkspace() {
 /**
 \param qw
 **/
-void EmpresaBase::setWorkspace(QWorkspace2 *qw) {
-    _depura("EmpresaBase::setWorkspace", 0);
+void EmpresaBase::setWorkspace ( QWorkspace2 *qw )
+{
+    _depura ( "EmpresaBase::setWorkspace", 0 );
     m_pWorkspace = qw;
-    _depura("END EmpresaBase::setWorkspace", 0);
+    _depura ( "END EmpresaBase::setWorkspace", 0 );
 }
 
 
@@ -62,10 +65,11 @@ void EmpresaBase::setWorkspace(QWorkspace2 *qw) {
 /**
 \param pb
 **/
-void EmpresaBase::setProgressBar(QProgressBar *pb) {
-    _depura("EmpresaBase::setProgressBar", 0);
+void EmpresaBase::setProgressBar ( QProgressBar *pb )
+{
+    _depura ( "EmpresaBase::setProgressBar", 0 );
     m_progressbar = pb;
-    _depura("END EmpresaBase::setProgressBar", 0);
+    _depura ( "END EmpresaBase::setProgressBar", 0 );
 }
 
 
@@ -76,10 +80,11 @@ void EmpresaBase::setProgressBar(QProgressBar *pb) {
 \param compdup
 \return
 **/
-int EmpresaBase::meteWindow(QString nom, QObject *obj, bool compdup) {
-    _depura("EmpresaBase::meteWindow", 0);
-    _depura("END EmpresaBase::meteWindow", 0);
-    return m_listventanas->meteWindow(nom, obj, compdup);
+int EmpresaBase::meteWindow ( QString nom, QObject *obj, bool compdup )
+{
+    _depura ( "EmpresaBase::meteWindow", 0 );
+    _depura ( "END EmpresaBase::meteWindow", 0 );
+    return m_listventanas->meteWindow ( nom, obj, compdup );
 }
 
 
@@ -89,10 +94,11 @@ int EmpresaBase::meteWindow(QString nom, QObject *obj, bool compdup) {
 \param obj
 \return
 **/
-int EmpresaBase::seleccionaWindow(QString nom, QObject *obj) {
-    _depura("EmpresaBase::seleccionaWindow", 0);
-    _depura("END EmpresaBase::seleccionaWindow", 0);
-    return m_listventanas->seleccionaWindow(nom, obj);
+int EmpresaBase::seleccionaWindow ( QString nom, QObject *obj )
+{
+    _depura ( "EmpresaBase::seleccionaWindow", 0 );
+    _depura ( "END EmpresaBase::seleccionaWindow", 0 );
+    return m_listventanas->seleccionaWindow ( nom, obj );
 }
 
 
@@ -100,9 +106,10 @@ int EmpresaBase::seleccionaWindow(QString nom, QObject *obj) {
 /**
 \return
 **/
-int EmpresaBase::deSeleccionaWindow() {
-    _depura("EmpresaBase::deSeleccionaWindow", 0);
-    _depura("END EmpresaBase::deSeleccionaWindow", 0);
+int EmpresaBase::deSeleccionaWindow()
+{
+    _depura ( "EmpresaBase::deSeleccionaWindow", 0 );
+    _depura ( "END EmpresaBase::deSeleccionaWindow", 0 );
     return m_listventanas->deSeleccionaWindow();
 }
 
@@ -111,31 +118,34 @@ int EmpresaBase::deSeleccionaWindow() {
 /**
 \param nom
 **/
-void EmpresaBase::sacaWindow(QObject *nom) {
-    _depura("EmpresaBase::sacaWindow", 0);
-    m_listventanas->sacaWindow(nom);
-    _depura("END EmpresaBase::sacaWindow", 0);
+void EmpresaBase::sacaWindow ( QObject *nom )
+{
+    _depura ( "EmpresaBase::sacaWindow", 0 );
+    m_listventanas->sacaWindow ( nom );
+    _depura ( "END EmpresaBase::sacaWindow", 0 );
 }
 
 
 /// No precisa de operaciones en su construccion.
 /**
 **/
-EmpresaBase::EmpresaBase() {
-    _depura("EmpresaBase::EmpresaBase", 0);
-    _depura("END EmpresaBase::EmpresaBase", 0);
+EmpresaBase::EmpresaBase()
+{
+    _depura ( "EmpresaBase::EmpresaBase", 0 );
+    _depura ( "END EmpresaBase::EmpresaBase", 0 );
 }
 
 
 /// El destructor de la clase EmpresaBase borra toda la memoria almacenada.
 /**
 **/
-EmpresaBase::~EmpresaBase() {
-    _depura("EmpresaBase::~EmpresaBase", 0);
+EmpresaBase::~EmpresaBase()
+{
+    _depura ( "EmpresaBase::~EmpresaBase", 0 );
     /// cerramos todas las ventanas y las DestructiveClose se borran.
     m_listventanas->vaciar();
     /// \NOTE: El vaciado de las ventanas debe hacerse en la clase hija ya que el destructor de la clase derivada se ejecuta primero y se generaria un segfault.
-    _depura("END EmpresaBase::~EmpresaBase", 0);
+    _depura ( "END EmpresaBase::~EmpresaBase", 0 );
 }
 
 
@@ -145,17 +155,18 @@ EmpresaBase::~EmpresaBase() {
 \param bd
 \param tipo
 **/
-void EmpresaBase::init(QString bd, QString tipo) {
-    _depura("EmpresaBase::init", 0);
-    if (bd == "") {
-        bd = searchCompany(tipo);
+void EmpresaBase::init ( QString bd, QString tipo )
+{
+    _depura ( "EmpresaBase::init", 0 );
+    if ( bd == "" ) {
+        bd = searchCompany ( tipo );
     } // end if
     /// Hacemos visible el ProgressBar mientras se habre la base de datos y se cargan
     /// los datos de la en las ventanas.
-    m_progressbar->setVisible(TRUE);
+    m_progressbar->setVisible ( TRUE );
 
-    inicializa(bd);
-    _depura("END EmpresaBase::init", 0);
+    inicializa ( bd );
+    _depura ( "END EmpresaBase::init", 0 );
 }
 
 
@@ -166,20 +177,21 @@ void EmpresaBase::init(QString bd, QString tipo) {
 \param tipo
 \return
 **/
-QString EmpresaBase::searchCompany(QString tipo) {
+QString EmpresaBase::searchCompany ( QString tipo )
+{
     /// El cambio de empresa se realiza desde el selector.
-    _depura("EmpresaBase::searchCompany", 0);
-    abreempresaview *nuevae = new abreempresaview(0, tipo);
+    _depura ( "EmpresaBase::searchCompany", 0 );
+    abreempresaview *nuevae = new abreempresaview ( 0, tipo );
     nuevae->exec();
-    _depura("Vamos a cambiar la empresa", 0);
+    _depura ( "Vamos a cambiar la empresa", 0 );
     QString bd = nuevae->nomDB();
-    _depura("Empresa cambiada a " + bd, 0);
+    _depura ( "Empresa cambiada a " + bd, 0 );
     delete nuevae;
     /// Si no se ha seleccionado ninguna base de datos entonces abortamos.
-    if (bd == "") {
-        exit(1);
+    if ( bd == "" ) {
+        exit ( 1 );
     } // end if
-    _depura("END EmpresaBase::searchCompany", 0);
+    _depura ( "END EmpresaBase::searchCompany", 0 );
     return bd;
 }
 
@@ -188,21 +200,23 @@ QString EmpresaBase::searchCompany(QString tipo) {
 /**
 \param visible
 **/
-void EmpresaBase::s_indexadorCambiaEstado(bool visible) {
-    _depura("EmpresaBase::s_indexadorCambiaEstado", 0);
-    m_listventanas->cambiaVisible(visible);
-    _depura("END EmpresaBase::s_indexadorCambiaEstado", 0);
+void EmpresaBase::s_indexadorCambiaEstado ( bool visible )
+{
+    _depura ( "EmpresaBase::s_indexadorCambiaEstado", 0 );
+    m_listventanas->cambiaVisible ( visible );
+    _depura ( "END EmpresaBase::s_indexadorCambiaEstado", 0 );
 }
 
 
 ///
 /**
 **/
-void EmpresaBase::muestraPaises() {
-    _depura("EmpresaBase::muestrapaises", 0);
-    PaisView *pais = new PaisView(this, 0);
-    m_pWorkspace->addWindow(pais);
+void EmpresaBase::muestraPaises()
+{
+    _depura ( "EmpresaBase::muestrapaises", 0 );
+    PaisView *pais = new PaisView ( this, 0 );
+    m_pWorkspace->addWindow ( pais );
     pais->show();
-    _depura("END EmpresaBase::muestrapaises", 0);
+    _depura ( "END EmpresaBase::muestrapaises", 0 );
 }
 

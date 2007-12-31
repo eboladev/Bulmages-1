@@ -37,7 +37,8 @@ class EmpresaBase;
 
 /// Visualiza un centro de coste.
 /** */
-class PaisView : public Ficha, public Ui_paisbase {
+class PaisView : public Ficha, public Ui_paisbase
+{
     Q_OBJECT
 
 public:
@@ -46,7 +47,7 @@ public:
 
 
 public:
-    PaisView(EmpresaBase *, QWidget *parent = 0);
+    PaisView ( EmpresaBase *, QWidget *parent = 0 );
     ~PaisView();
     void pintar();
     void mostrarplantilla();
@@ -55,7 +56,7 @@ public:
 
 public slots:
     virtual void on_mui_crear_clicked();
-    virtual void on_mui_list_itemClicked(QTableWidgetItem *item);
+    virtual void on_mui_list_itemClicked ( QTableWidgetItem *item );
 };
 
 #endif

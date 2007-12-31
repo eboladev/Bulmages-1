@@ -30,12 +30,12 @@
 #include "albaranclienteview.h"
 #include "bulmafact.h"
 
-extern "C" MY_EXPORT int AlbaranClienteView_AlbaranClienteView(AlbaranClienteView *);
-extern "C" MY_EXPORT int PedidoClienteView_PedidoClienteView(PedidoClienteView *);
-extern "C" MY_EXPORT int PresupuestoView_PresupuestoView(PresupuestoView *);
-extern "C" MY_EXPORT int FacturaView_FacturaView(FacturaView *);
+extern "C" MY_EXPORT int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView * );
+extern "C" MY_EXPORT int PedidoClienteView_PedidoClienteView ( PedidoClienteView * );
+extern "C" MY_EXPORT int PresupuestoView_PresupuestoView ( PresupuestoView * );
+extern "C" MY_EXPORT int FacturaView_FacturaView ( FacturaView * );
 
-extern "C" MY_EXPORT int entryPoint(Bulmafact *);
+extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 
 
 // extern QApplication2 *theApp;
@@ -43,17 +43,17 @@ extern "C" MY_EXPORT int entryPoint(Bulmafact *);
 /*
 class myplugin : public QObject {
     Q_OBJECT
-
+ 
 public:
     postgresiface2 *conexionbase;
-
+ 
 public:
     myplugin();
     ~myplugin();
     void inicializa(bulmafact *);
-
+ 
 public slots:
     void elslot();
 };
-
+ 
 */

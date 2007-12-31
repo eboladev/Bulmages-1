@@ -41,7 +41,8 @@ class Empresa;
     acci&oacute;n y casi toda la interactuaci&oacute;n del usuario con el programa.
     Pretende conseguir una interficie que resulte muy r&iacute;gida y c&oacute;moda para
     el usuario que introduzca datos. Hereda intapunts3dlg. */
-class ListAsientos : public Asiento1 {
+class ListAsientos : public Asiento1
+{
     Q_OBJECT
 
 private:
@@ -49,7 +50,7 @@ private:
     cursor2 *cursorasientos;
 
 public:
-    ListAsientos(Empresa *, QWidget *parent);
+    ListAsientos ( Empresa *, QWidget *parent );
     virtual ~ListAsientos();
     void cargaasientos();
     void boton_inicio();
@@ -57,8 +58,8 @@ public:
     void boton_siguiente();
     void boton_anterior();
     void boton_filtrar();
-    virtual void muestraasiento(QString);
-    void situarasiento(QString);
+    virtual void muestraasiento ( QString );
+    void situarasiento ( QString );
     bool esprimerasiento();
     bool esultimoasiento();
     QString idasientoanterior();
@@ -66,40 +67,41 @@ public:
 };
 
 
-class Asiento1View : public ListAsientos, public Ui_AsientoBase {
+class Asiento1View : public ListAsientos, public Ui_AsientoBase
+{
     Q_OBJECT
 
 private:
-    void pintafecha(QString val);
-    void pintaordenasiento(QString val);
-    void pintaclase(QString val);
-    void pintacomentariosasiento(QString text);
+    void pintafecha ( QString val );
+    void pintaordenasiento ( QString val );
+    void pintaclase ( QString val );
+    void pintacomentariosasiento ( QString text );
     virtual void calculaypintatotales();
     void prepguardar();
 
 public:
-    Asiento1View(Empresa *, QWidget *parent = 0, int flags = 0);
+    Asiento1View ( Empresa *, QWidget *parent = 0, int flags = 0 );
     ~Asiento1View();
-    void muestraasiento(QString v);
-    void muestraasiento(int v);
+    void muestraasiento ( QString v );
+    void muestraasiento ( int v );
     /// Desabilitamos el sacaWindow ya que esta ventana no debe ser sacada ante un close.
     virtual int sacaWindow();
     virtual int guardarPost();
 
 public:
-    void setFecha(QString val);
+    void setFecha ( QString val );
     virtual void trataestadoAsiento1();
     void asientoabiertop();
     void asientocerradop();
-    void iniciar_asiento_nuevo(QString nuevoordenasiento = "");
+    void iniciar_asiento_nuevo ( QString nuevoordenasiento = "" );
     virtual void on_mui_borrar_clicked();
-    virtual void on_mui_borrar_clicked(bool);
-    virtual void asiento_regularizacion(QString, QString);
-    virtual void asiento_cierre(QString, QString);
-    virtual void asiento_apertura(QString);
+    virtual void on_mui_borrar_clicked ( bool );
+    virtual void asiento_regularizacion ( QString, QString );
+    virtual void asiento_cierre ( QString, QString );
+    virtual void asiento_apertura ( QString );
 
 public slots:
-    virtual void on_mui_list_editFinish(int, int);
+    virtual void on_mui_list_editFinish ( int, int );
     virtual void on_mui_abrirasiento_clicked();
     virtual void on_mui_cerrarasiento_clicked();
     virtual void on_mui_guardarasiento_clicked();
@@ -123,11 +125,12 @@ private:
     Asiento1View *objeto;
 
 public:
-    eventos_mui_ordenasiento(Asiento1View *ob);
-    ~eventos_mui_ordenasiento() {};
+    eventos_mui_ordenasiento ( Asiento1View *ob );
+    ~eventos_mui_ordenasiento()
+    {};
 
 protected:
-    bool eventFilter(QObject *obj, QEvent *event);
+    bool eventFilter ( QObject *obj, QEvent *event );
 };
 
 #endif

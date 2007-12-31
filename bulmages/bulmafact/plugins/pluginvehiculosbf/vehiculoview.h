@@ -31,13 +31,14 @@
 
 /// Clase que muestra la ventana de amortizaci&oacute;n.
 /** Formulario de introducci&oacute;n y/o visi&oacute;n de amortizaciones. */
-class VehiculoView : public FichaBf, Ui_VehiculoBase{
+class VehiculoView : public FichaBf, Ui_VehiculoBase
+{
     Q_OBJECT
 
 public:
-    VehiculoView(Company *, QWidget *parent = 0);
+    VehiculoView ( Company *, QWidget *parent = 0 );
     ~VehiculoView();
-    virtual int cargar(QString idvehiculo);
+    virtual int cargar ( QString idvehiculo );
     virtual int guardar();
 
 };

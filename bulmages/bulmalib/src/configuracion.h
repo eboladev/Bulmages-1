@@ -185,7 +185,7 @@
 #define CONF_MOSTRAR_ALMACEN         510
 
 /// COnfiguraciones para el TPV
-#define CONF_IDCLIENTE_DEFECTO	     520
+#define CONF_IDCLIENTE_DEFECTO      520
 #define CONF_IDALMACEN_DEFECTO       521
 #define CONF_IDARTICULO_DEFECTO      522
 
@@ -205,7 +205,8 @@ typedef QMap<int, QString> mapa;
 /// NOTA: tambien ha adoptado la capacidad de ser un paso de parametros configurables de
 /// la aplicacion. Esto se traduce en que algunos parametros se pueden modificar en tiempo
 /// de ejecucion.
-class configuracion {
+class configuracion
+{
 private:
     /// La forma de almacenar los campos va a ser mediante un mapa de valores.
     /// De esta forma no tendremos memoria desaprovechada.
@@ -219,13 +220,13 @@ private:
     QString m_programLocalConfFile;
 
 public:
-    configuracion(QString nombreprograma);
+    configuracion ( QString nombreprograma );
     ~configuracion();
-    QString valor(int);
-    void setValor(int, QString);
-    bool leeconfig(QString);
+    QString valor ( int );
+    void setValor ( int, QString );
+    bool leeconfig ( QString );
     void saveconfig();
-    QString nombre(int);
+    QString nombre ( int );
 };
 
 

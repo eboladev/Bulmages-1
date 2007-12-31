@@ -29,16 +29,18 @@
 
 /// Administra el listado de proveedores.
 /** */
-class ProveedorListSubform : public SubForm2Bf {
+class ProveedorListSubform : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
-    ProveedorListSubform(QWidget *parent = 0);
-    ~ProveedorListSubform() {}
+    ProveedorListSubform ( QWidget *parent = 0 );
+    ~ProveedorListSubform()
+    {}
 
 public slots:
     virtual void cargar();
-    virtual void cargar(QString a);
+    virtual void cargar ( QString a );
 };
 
 
@@ -47,7 +49,8 @@ public slots:
 
 /// Muestra y administra la ventana con el listado de proveedores.
 /** */
-class ProveedorList : public Listado, public Ui_ProveedorListBase, public pgimportfiles {
+class ProveedorList : public Listado, public Ui_ProveedorListBase, public pgimportfiles
+{
     Q_OBJECT
 
 
@@ -57,10 +60,10 @@ private:
     QString m_nomprovider;
 
 public:
-    ProveedorList(Company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode);
+    ProveedorList ( Company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode );
     virtual ~ProveedorList();
     void presentar();
-    void editar(int);
+    void editar ( int );
     void imprimir();
     void crear();
     void borrar();
@@ -73,7 +76,7 @@ public slots:
     virtual void on_mui_importar_clicked();
 
 signals:
-    void selected(QString);
+    void selected ( QString );
 };
 
 #endif

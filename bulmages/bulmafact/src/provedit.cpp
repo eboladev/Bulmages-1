@@ -33,78 +33,80 @@
 \param comp
 \param parent
 **/
-ProveedorView::ProveedorView(Company *comp, QWidget *parent)
-        : FichaBf(comp, parent) {
-    _depura("ProveedorView::ProveedorView", 0);
-    setAttribute(Qt::WA_DeleteOnClose);
+ProveedorView::ProveedorView ( Company *comp, QWidget *parent )
+        : FichaBf ( comp, parent )
+{
+    _depura ( "ProveedorView::ProveedorView", 0 );
+    setAttribute ( Qt::WA_DeleteOnClose );
     try {
-        setTitleName(tr("Proveedor"));
-        setDBTableName("proveedor");
-        setDBCampoId("idproveedor");
-        addDBCampo("idproveedor", DBCampo::DBint, DBCampo::DBPrimaryKey, tr("ID proveedor"));
-        addDBCampo("nomproveedor", DBCampo::DBvarchar, DBCampo::DBNotNull, tr("Nombre del proveedor"));
-        addDBCampo("nomaltproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Nombre alternativo del proveedor"));
-        addDBCampo("cifproveedor", DBCampo::DBvarchar, DBCampo::DBNotNull, tr("C.I.F. del proveedor"));
-        addDBCampo("codicliproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Codigo cliente"));
-        addDBCampo("cbancproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Banco proveedor"));
-        addDBCampo("dirproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Direccion"));
-        addDBCampo("poblproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Poblacion"));
-        addDBCampo("idprovincia", DBCampo::DBint, DBCampo::DBNothing, tr("Provincia"));
-        addDBCampo("cpproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Codigo postal"));
-        addDBCampo("telproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Numero de telefono"));
-        addDBCampo("faxproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Numero de fax"));
-        addDBCampo("emailproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Direccion electronica"));
-        addDBCampo("urlproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("URL"));
-        addDBCampo("comentproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Comentarios"));
-        addDBCampo("codproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Codigo"));
-        addDBCampo("regimenfiscalproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Proveedor", "Regimen Fiscal"));
-        addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Proveedor", "Forma_Pago"));
-        addDBCampo("recargoeqproveedor", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("Proveedor", "Recargo de Equivalencia"));
-        addDBCampo("irpfproveedor", DBCampo::DBnumeric, DBCampo::DBNothing, QApplication::translate("Proveedor", "IRPF"));
+        setTitleName ( tr ( "Proveedor" ) );
+        setDBTableName ( "proveedor" );
+        setDBCampoId ( "idproveedor" );
+        addDBCampo ( "idproveedor", DBCampo::DBint, DBCampo::DBPrimaryKey, tr ( "ID proveedor" ) );
+        addDBCampo ( "nomproveedor", DBCampo::DBvarchar, DBCampo::DBNotNull, tr ( "Nombre del proveedor" ) );
+        addDBCampo ( "nomaltproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Nombre alternativo del proveedor" ) );
+        addDBCampo ( "cifproveedor", DBCampo::DBvarchar, DBCampo::DBNotNull, tr ( "C.I.F. del proveedor" ) );
+        addDBCampo ( "codicliproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Codigo cliente" ) );
+        addDBCampo ( "cbancproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Banco proveedor" ) );
+        addDBCampo ( "dirproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Direccion" ) );
+        addDBCampo ( "poblproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Poblacion" ) );
+        addDBCampo ( "idprovincia", DBCampo::DBint, DBCampo::DBNothing, tr ( "Provincia" ) );
+        addDBCampo ( "cpproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Codigo postal" ) );
+        addDBCampo ( "telproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Numero de telefono" ) );
+        addDBCampo ( "faxproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Numero de fax" ) );
+        addDBCampo ( "emailproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Direccion electronica" ) );
+        addDBCampo ( "urlproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "URL" ) );
+        addDBCampo ( "comentproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Comentarios" ) );
+        addDBCampo ( "codproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Codigo" ) );
+        addDBCampo ( "regimenfiscalproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Proveedor", "Regimen Fiscal" ) );
+        addDBCampo ( "idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Proveedor", "Forma_Pago" ) );
+        addDBCampo ( "recargoeqproveedor", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate ( "Proveedor", "Recargo de Equivalencia" ) );
+        addDBCampo ( "irpfproveedor", DBCampo::DBnumeric, DBCampo::DBNothing, QApplication::translate ( "Proveedor", "IRPF" ) );
 
 
-        setupUi(this);
+        setupUi ( this );
 
-        mui_idprovincia->setEmpresaBase(empresaBase());
-        mui_idprovincia->setIdProvincia("");
+        mui_idprovincia->setEmpresaBase ( empresaBase() );
+        mui_idprovincia->setIdProvincia ( "" );
 
         /// Desabilitamos los tabs que aun no se usan
-        masdf->setTabEnabled(5, FALSE);
-        masdf->setTabEnabled(6, FALSE);
-        masdf->setTabEnabled(7, FALSE);
+        masdf->setTabEnabled ( 5, FALSE );
+        masdf->setTabEnabled ( 6, FALSE );
+        masdf->setTabEnabled ( 7, FALSE );
 
         /// Cargamos el listado de pedidos del proveedor y dejamos presentable.
-        m_listpedidosprov->setEmpresaBase(empresaBase());
+        m_listpedidosprov->setEmpresaBase ( empresaBase() );
         m_listpedidosprov->hideBusqueda();
 
-        m_albaranesprov->setEmpresaBase(empresaBase());
+        m_albaranesprov->setEmpresaBase ( empresaBase() );
         m_albaranesprov->hideBusqueda();
 
-        m_listfacturasprov->setEmpresaBase(empresaBase());
+        m_listfacturasprov->setEmpresaBase ( empresaBase() );
         m_listfacturasprov->hideBusqueda();
 
-        m_listpagosprov->setEmpresaBase(empresaBase());
+        m_listpagosprov->setEmpresaBase ( empresaBase() );
         m_listpagosprov->hideBusqueda();
 
-        mui_forma_pago->setEmpresaBase(empresaBase());
-        mui_forma_pago->setidforma_pago("0");
+        mui_forma_pago->setEmpresaBase ( empresaBase() );
+        mui_forma_pago->setidforma_pago ( "0" );
 
 
-        meteWindow(windowTitle(), this, FALSE);
+        meteWindow ( windowTitle(), this, FALSE );
         dialogChanges_cargaInicial();
-    } catch (...) {
-        mensajeInfo(tr("Error al crear el proveedor"));
+    } catch ( ... ) {
+        mensajeInfo ( tr ( "Error al crear el proveedor" ) );
     } // end try
 
-    _depura("END ProveedorView::ProveedorView", 0);
+    _depura ( "END ProveedorView::ProveedorView", 0 );
 }
 
 ///
 /**
 **/
-ProveedorView::~ProveedorView() {
-    _depura("ProveedorView::~ProveedorView", 0);
-    _depura("END ProveedorView::~ProveedorView", 0);
+ProveedorView::~ProveedorView()
+{
+    _depura ( "ProveedorView::~ProveedorView", 0 );
+    _depura ( "END ProveedorView::~ProveedorView", 0 );
 }
 
 
@@ -116,20 +118,21 @@ ProveedorView::~ProveedorView() {
 \param idprov
 \return
 **/
-int ProveedorView::cargarPost(QString idprov) {
-    _depura("ProveedorView::cargar", 0, idprov);
+int ProveedorView::cargarPost ( QString idprov )
+{
+    _depura ( "ProveedorView::cargar", 0, idprov );
 
     /// Cargamos las ventanas auxiliares.
-    m_listpedidosprov->setidproveedor(DBvalue("idproveedor"));
+    m_listpedidosprov->setidproveedor ( DBvalue ( "idproveedor" ) );
     m_listpedidosprov->presentar();
-    m_albaranesprov->setidproveedor(DBvalue("idproveedor"));
+    m_albaranesprov->setidproveedor ( DBvalue ( "idproveedor" ) );
     m_albaranesprov->presentar();
-    m_listfacturasprov->setidproveedor(DBvalue("idproveedor"));
+    m_listfacturasprov->setidproveedor ( DBvalue ( "idproveedor" ) );
     m_listfacturasprov->presentar();
-    m_listpagosprov->setidproveedor(DBvalue("idproveedor"));
+    m_listpagosprov->setidproveedor ( DBvalue ( "idproveedor" ) );
     m_listpagosprov->presentar();
 
-    _depura("END ProveedorView::cargar", 0);
+    _depura ( "END ProveedorView::cargar", 0 );
     return 0;
 }
 

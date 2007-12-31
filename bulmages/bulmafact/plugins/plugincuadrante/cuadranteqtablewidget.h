@@ -34,27 +34,28 @@
 class Company;
 
 /// Reimplementa los items de QTableWidget2 para que podamos programar cosas en ellos.
-class CuadranteQTextDocument : public QLabel,/* public QTableWidgetItem,*/  public PEmpresaBase {
-Q_OBJECT
+class CuadranteQTextDocument : public QLabel,/* public QTableWidgetItem,*/  public PEmpresaBase
+{
+    Q_OBJECT
 public:
-	QString mdb_idalmacen;
-	QDate   mdb_fechacuadrante;
-	QString mdb_idcuadrante;
+    QString mdb_idalmacen;
+    QDate   mdb_fechacuadrante;
+    QString mdb_idcuadrante;
 
 public:
-    CuadranteQTextDocument(Company *emp, QWidget *parent = 0);
-    virtual void setAlmFecha(QString idalmacen, const QDate &date);
+    CuadranteQTextDocument ( Company *emp, QWidget *parent = 0 );
+    virtual void setAlmFecha ( QString idalmacen, const QDate &date );
     ~CuadranteQTextDocument();
-    void addTrabajador(QString);
-    void pintaCuadrante(QString idalmacen, const QDate &date);
+    void addTrabajador ( QString );
+    void pintaCuadrante ( QString idalmacen, const QDate &date );
     QString idcuadrante();
     QDate fechacuadrante();
     QString idalmacen();
-    void setidcuadrante(QString);
+    void setidcuadrante ( QString );
     const QString impresion();
     void contextMenuEvent ( QContextMenuEvent * e );
     void mouseDoubleClickEvent ( QMouseEvent * event );
-    void setText(QString);
+    void setText ( QString );
 public slots:
     virtual void refresh();
     void on_customContextMenuRequested ( const QPoint & pos );
@@ -64,17 +65,18 @@ public slots:
 /// Clase que deriva de QTableWidget para poder reprogramar ciertos aspectos y
 /// funcionalidades.
 /** Se usa principalmente como tabla para mostrar subformularios.*/
-class CuadranteQTableWidget : public QTableWidget {
+class CuadranteQTableWidget : public QTableWidget
+{
     Q_OBJECT
 public:
-    CuadranteQTableWidget(QWidget *parent = 0);
+    CuadranteQTableWidget ( QWidget *parent = 0 );
     ~CuadranteQTableWidget();
 
 protected:
-    virtual bool dropMimeData (int row, int column,const QMimeData *data, Qt::DropAction action);
-    virtual void dragEnterEvent(QDragEnterEvent *event);
-    virtual void dropEvent(QDropEvent *event);
-    virtual void dragMoveEvent(QDragMoveEvent *event);
+    virtual bool dropMimeData ( int row, int column, const QMimeData *data, Qt::DropAction action );
+    virtual void dragEnterEvent ( QDragEnterEvent *event );
+    virtual void dropEvent ( QDropEvent *event );
+    virtual void dragMoveEvent ( QDragMoveEvent *event );
 
 public slots:
     void on_contextMenuRequested ( int row, int col, const QPoint & pos );
@@ -84,18 +86,19 @@ public slots:
 
 
 /// Reimplementa los items de QTableWidget2 para que podamos programar cosas en ellos.
-class ImpCuadrante :  public PEmpresaBase {
+class ImpCuadrante :  public PEmpresaBase
+{
 public:
-	QString mdb_idalmacen;
-	QDate   mdb_fechacuadrante;
-	QString mdb_idcuadrante;
-	QString m_html;
+    QString mdb_idalmacen;
+    QDate   mdb_fechacuadrante;
+    QString mdb_idcuadrante;
+    QString m_html;
 
 public:
-    ImpCuadrante(Company *emp);
+    ImpCuadrante ( Company *emp );
     ~ImpCuadrante();
     void generar();
-    bool buscaConflictos(QString idtrabajador, const QDate &date, QString horain, QString horafin);
+    bool buscaConflictos ( QString idtrabajador, const QDate &date, QString horain, QString horafin );
 
 };
 

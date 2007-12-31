@@ -39,11 +39,12 @@
 /**
 \param parent
 **/
-BusquedaReferencia::BusquedaReferencia(QWidget *parent)
-        : BLWidget(parent) {
-    _depura("BusquedaReferencia::BusquedaReferencia", 0);
-    setupUi(this);
-    _depura("END BusquedaReferencia::BusquedaReferencia", 0);
+BusquedaReferencia::BusquedaReferencia ( QWidget *parent )
+        : BLWidget ( parent )
+{
+    _depura ( "BusquedaReferencia::BusquedaReferencia", 0 );
+    setupUi ( this );
+    _depura ( "END BusquedaReferencia::BusquedaReferencia", 0 );
 }
 
 
@@ -51,9 +52,10 @@ BusquedaReferencia::BusquedaReferencia(QWidget *parent)
 */
 /**
 **/
-BusquedaReferencia::~BusquedaReferencia() {
-    _depura("BusquedaReferencia::~BusquedaReferencia", 0);
-    _depura("END BusquedaReferencia::~BusquedaReferencia", 0);
+BusquedaReferencia::~BusquedaReferencia()
+{
+    _depura ( "BusquedaReferencia::~BusquedaReferencia", 0 );
+    _depura ( "END BusquedaReferencia::~BusquedaReferencia", 0 );
 }
 
 
@@ -62,13 +64,14 @@ BusquedaReferencia::~BusquedaReferencia() {
 */
 /**
 **/
-void BusquedaReferencia::on_mui_informe_clicked() {
-    _depura("BusquedaReferencia::on_mui_buscar_clicked\n", 0);
-    InformeReferencia *inf = new InformeReferencia((Company *)empresaBase());
-    inf->setreferencia(mui_referencia->text());
+void BusquedaReferencia::on_mui_informe_clicked()
+{
+    _depura ( "BusquedaReferencia::on_mui_buscar_clicked\n", 0 );
+    InformeReferencia *inf = new InformeReferencia ( ( Company * ) empresaBase() );
+    inf->setreferencia ( mui_referencia->text() );
     inf->generarinforme();
     delete inf;
-    _depura("END BusquedaReferencia::on_mui_buscar_clicked\n", 0);
+    _depura ( "END BusquedaReferencia::on_mui_buscar_clicked\n", 0 );
 
 }
 
@@ -78,10 +81,11 @@ void BusquedaReferencia::on_mui_informe_clicked() {
 */
 /**
 **/
-void BusquedaReferencia::on_mui_referencia_editingFinished() {
-    _depura("BusquedaReferencia::on_m_cifcliente_editingFinished", 0);
-    emit(valueChanged(mui_referencia->text()));
-    _depura("END BusquedaReferencia::on_m_cifcliente_editingFinished", 0);
+void BusquedaReferencia::on_mui_referencia_editingFinished()
+{
+    _depura ( "BusquedaReferencia::on_m_cifcliente_editingFinished", 0 );
+    emit ( valueChanged ( mui_referencia->text() ) );
+    _depura ( "END BusquedaReferencia::on_m_cifcliente_editingFinished", 0 );
 }
 
 
@@ -92,92 +96,93 @@ void BusquedaReferencia::on_mui_referencia_editingFinished() {
 */
 /**
 **/
-void BusquedaReferencia::on_mui_abrirtodo_clicked() {
-    _depura("BusquedddaReferencia::on_mui_abrirtodo_clicked", 0);
+void BusquedaReferencia::on_mui_abrirtodo_clicked()
+{
+    _depura ( "BusquedddaReferencia::on_mui_abrirtodo_clicked", 0 );
     /// Empezamos con los presupuestos.
     QString SQLQuery = "SELECT * FROM presupuesto WHERE refpresupuesto = '" + mui_referencia->text() + "'";
-    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
-    while (!cur->eof()) {
-        PresupuestoView *bud = ((Company *)empresaBase())->nuevoPresupuestoView();
-        empresaBase()->m_pWorkspace->addWindow(bud);
-        bud->cargar(cur->valor("idpresupuesto"));
+    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
+    while ( !cur->eof() ) {
+        PresupuestoView * bud = ( ( Company * ) empresaBase() ) ->nuevoPresupuestoView();
+        empresaBase() ->m_pWorkspace->addWindow ( bud );
+        bud->cargar ( cur->valor ( "idpresupuesto" ) );
         bud->show();
         cur->siguienteregistro();
     } // end while
     delete cur;
 
     SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + mui_referencia->text() + "'";
-    cur = empresaBase()->cargacursor(SQLQuery);
-    while (!cur->eof()) {
-        PedidoClienteView *bud = ((Company *)empresaBase())->newPedidoClienteView();
-        empresaBase()->m_pWorkspace->addWindow(bud);
-        bud->cargar(cur->valor("idpedidocliente"));
+    cur = empresaBase() ->cargacursor ( SQLQuery );
+    while ( !cur->eof() ) {
+        PedidoClienteView * bud = ( ( Company * ) empresaBase() ) ->newPedidoClienteView();
+        empresaBase() ->m_pWorkspace->addWindow ( bud );
+        bud->cargar ( cur->valor ( "idpedidocliente" ) );
         bud->show();
         cur->siguienteregistro();
     } // end while
     delete cur;
 
     SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + mui_referencia->text() + "'";
-    cur = empresaBase()->cargacursor(SQLQuery);
-    while (!cur->eof()) {
-        AlbaranClienteView *bud = ((Company *)empresaBase())->newAlbaranClienteView();
-        empresaBase()->m_pWorkspace->addWindow(bud);
-        bud->cargar(cur->valor("idalbaran"));
+    cur = empresaBase() ->cargacursor ( SQLQuery );
+    while ( !cur->eof() ) {
+        AlbaranClienteView * bud = ( ( Company * ) empresaBase() ) ->newAlbaranClienteView();
+        empresaBase() ->m_pWorkspace->addWindow ( bud );
+        bud->cargar ( cur->valor ( "idalbaran" ) );
         bud->show();
         cur->siguienteregistro();
     } // end while
     delete cur;
 
     SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + mui_referencia->text() + "'";
-    cur = empresaBase()->cargacursor(SQLQuery);
-    while (!cur->eof()) {
-        FacturaView *bud = ((Company *)empresaBase())->newFacturaView();
-        empresaBase()->m_pWorkspace->addWindow(bud);
-        bud->cargar(cur->valor("idfactura"));
+    cur = empresaBase() ->cargacursor ( SQLQuery );
+    while ( !cur->eof() ) {
+        FacturaView * bud = ( ( Company * ) empresaBase() ) ->newFacturaView();
+        empresaBase() ->m_pWorkspace->addWindow ( bud );
+        bud->cargar ( cur->valor ( "idfactura" ) );
         bud->show();
         cur->siguienteregistro();
     } // end while
     delete cur;
 
     SQLQuery = "SELECT * FROM cobro WHERE refcobro = '" + mui_referencia->text() + "'";
-    cur = empresaBase()->cargacursor(SQLQuery);
-    while (!cur->eof()) {
-        CobroView *bud = ((Company *)empresaBase())->newCobroView();
-        empresaBase()->m_pWorkspace->addWindow(bud);
-        bud->cargar(cur->valor("idcobro"));
+    cur = empresaBase() ->cargacursor ( SQLQuery );
+    while ( !cur->eof() ) {
+        CobroView * bud = ( ( Company * ) empresaBase() ) ->newCobroView();
+        empresaBase() ->m_pWorkspace->addWindow ( bud );
+        bud->cargar ( cur->valor ( "idcobro" ) );
         bud->show();
         cur->siguienteregistro();
     } // end while
     delete cur;
 
     SQLQuery = "SELECT * FROM pago WHERE refpago = '" + mui_referencia->text() + "'";
-    cur = empresaBase()->cargacursor(SQLQuery);
-    while (!cur->eof()) {
-        PagoView *bud = ((Company *)empresaBase())->newPagoView();
-        empresaBase()->m_pWorkspace->addWindow(bud);
-        bud->cargar(cur->valor("idpago"));
+    cur = empresaBase() ->cargacursor ( SQLQuery );
+    while ( !cur->eof() ) {
+        PagoView * bud = ( ( Company * ) empresaBase() ) ->newPagoView();
+        empresaBase() ->m_pWorkspace->addWindow ( bud );
+        bud->cargar ( cur->valor ( "idpago" ) );
         bud->show();
         cur->siguienteregistro();
     } // end while
     delete cur;
 
     SQLQuery = "SELECT * FROM pedidoproveedor WHERE refpedidoproveedor = '" + mui_referencia->text() + "'";
-    cur = empresaBase()->cargacursor(SQLQuery);
-    while (!cur->eof()) {
-        PedidoProveedorView *bud = ((Company *)empresaBase())->nuevoPedidoProveedorView();
-        empresaBase()->m_pWorkspace->addWindow(bud);
-        bud->cargar(cur->valor("idpedidoproveedor"));
+    cur = empresaBase() ->cargacursor ( SQLQuery );
+    while ( !cur->eof() ) {
+        PedidoProveedorView * bud = ( ( Company * ) empresaBase() ) ->nuevoPedidoProveedorView();
+        empresaBase() ->m_pWorkspace->addWindow ( bud );
+        bud->cargar ( cur->valor ( "idpedidoproveedor" ) );
         bud->show();
         cur->siguienteregistro();
     } // end while
     delete cur;
 
     SQLQuery = "SELECT * FROM albaranp WHERE refalbaranp = '" + mui_referencia->text() + "'";
-    cur = empresaBase()->cargacursor(SQLQuery);
-    while (!cur->eof()) {
-        AlbaranProveedorView *bud = ((Company *)empresaBase())->newAlbaranProveedorView();
-        empresaBase()->m_pWorkspace->addWindow(bud);
-        bud->cargar(cur->valor("idalbaranp"));
+    cur = empresaBase() ->cargacursor ( SQLQuery );
+    while ( !cur->eof() ) {
+        AlbaranProveedorView * bud = ( ( Company * ) empresaBase() ) ->newAlbaranProveedorView();
+        empresaBase() ->m_pWorkspace->addWindow ( bud );
+        bud->cargar ( cur->valor ( "idalbaranp" ) );
         bud->show();
         cur->siguienteregistro();
     } // end while
@@ -185,17 +190,17 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked() {
 
 
     SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + mui_referencia->text() + "'";
-    cur = empresaBase()->cargacursor(SQLQuery);
-    while (!cur->eof()) {
-        FacturaProveedorView *bud = ((Company *)empresaBase())->newFacturaProveedorView();
-        empresaBase()->m_pWorkspace->addWindow(bud);
-        bud->cargar(cur->valor("idfacturap"));
+    cur = empresaBase() ->cargacursor ( SQLQuery );
+    while ( !cur->eof() ) {
+        FacturaProveedorView * bud = ( ( Company * ) empresaBase() ) ->newFacturaProveedorView();
+        empresaBase() ->m_pWorkspace->addWindow ( bud );
+        bud->cargar ( cur->valor ( "idfacturap" ) );
         bud->show();
         cur->siguienteregistro();
     } // end while
     delete cur;
 
-    _depura("END BusquedddaReferencia::on_mui_abrirtodo_clicked", 0);
+    _depura ( "END BusquedddaReferencia::on_mui_abrirtodo_clicked", 0 );
 }
 
 
@@ -204,10 +209,11 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked() {
 /**
 \param val
 **/
-void BusquedaReferencia::setText(QString val) {
-    _depura("BusquedaReferencia::setText", 0);
-    mui_referencia->setText(val);
-    _depura("END BusquedaReferencia::setText", 0);
+void BusquedaReferencia::setText ( QString val )
+{
+    _depura ( "BusquedaReferencia::setText", 0 );
+    mui_referencia->setText ( val );
+    _depura ( "END BusquedaReferencia::setText", 0 );
 }
 
 
@@ -216,10 +222,11 @@ void BusquedaReferencia::setText(QString val) {
 /**
 \param val
 **/
-void BusquedaReferencia::setValorCampo(QString val) {
-    _depura("BusquedaReferencia::setText", 0);
-    mui_referencia->setText(val);
-    _depura("END BusquedaReferencia::setText", 0);
+void BusquedaReferencia::setValorCampo ( QString val )
+{
+    _depura ( "BusquedaReferencia::setText", 0 );
+    mui_referencia->setText ( val );
+    _depura ( "END BusquedaReferencia::setText", 0 );
 }
 
 
@@ -228,9 +235,10 @@ void BusquedaReferencia::setValorCampo(QString val) {
 /**
 \return
 **/
-QString BusquedaReferencia::text() {
-    _depura("BusquedaReferencia::text", 0);
-    _depura("END BusquedaReferencia::text", 0);
+QString BusquedaReferencia::text()
+{
+    _depura ( "BusquedaReferencia::text", 0 );
+    _depura ( "END BusquedaReferencia::text", 0 );
     return mui_referencia->text();
 }
 
@@ -240,9 +248,10 @@ QString BusquedaReferencia::text() {
 /**
 \return
 **/
-QString BusquedaReferencia::valorCampo() {
-    _depura("BusquedaReferencia::text", 0);
-    _depura("END BusquedaReferencia::text", 0);
+QString BusquedaReferencia::valorCampo()
+{
+    _depura ( "BusquedaReferencia::text", 0 );
+    _depura ( "END BusquedaReferencia::text", 0 );
     return mui_referencia->text();
 }
 

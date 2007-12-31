@@ -35,33 +35,36 @@
 ///
 /**
 **/
-myplugin::myplugin() {
-    _depura("myplugin::myplugin", 0);
-    _depura("END myplugin::myplugin", 0);
+myplugin::myplugin()
+{
+    _depura ( "myplugin::myplugin", 0 );
+    _depura ( "END myplugin::myplugin", 0 );
 }
 
 
 ///
 /**
 **/
-myplugin::~myplugin() {
-    _depura("myplugin::~myplugin", 0);
-    _depura("END myplugin::~myplugin", 0);
+myplugin::~myplugin()
+{
+    _depura ( "myplugin::~myplugin", 0 );
+    _depura ( "END myplugin::~myplugin", 0 );
 }
 
 
 ///
 /**
 **/
-void myplugin::elslot() {
-    _depura("myplugin::elslot", 0);
-    fprintf(stderr, "Sa ha activado el slot\n");
-    QMessageBox::warning(0,
-                         "Titulo de la ventana",
-                         "Mensaje.",
-                         QMessageBox::Ok,
-                         QMessageBox::Cancel);
-    _depura("END myplugin::elslot", 0);
+void myplugin::elslot()
+{
+    _depura ( "myplugin::elslot", 0 );
+    fprintf ( stderr, "Sa ha activado el slot\n" );
+    QMessageBox::warning ( 0,
+                           "Titulo de la ventana",
+                           "Mensaje.",
+                           QMessageBox::Ok,
+                           QMessageBox::Cancel );
+    _depura ( "END myplugin::elslot", 0 );
 }
 
 
@@ -69,27 +72,28 @@ void myplugin::elslot() {
 /**
 \param bges
 **/
-void myplugin::inicializa(Bulmafact *bges) {
-    _depura("myplugin::inicializa", 0);
+void myplugin::inicializa ( Bulmafact *bges )
+{
+    _depura ( "myplugin::inicializa", 0 );
     QMenu *pPluginMenu;
     /// Miramos si existe un menu Herramientas
-    pPluginMenu = bges->menuBar()->findChild<QMenu *>("Herramientas");
+    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "Herramientas" );
 
     /// Creamos el men&uacute;.
-    if (!pPluginMenu) {
-        pPluginMenu = new QMenu("&Herramientas", bges->menuBar());
-        pPluginMenu->setObjectName(QString::fromUtf8("Herramientas"));
+    if ( !pPluginMenu ) {
+        pPluginMenu = new QMenu ( "&Herramientas", bges->menuBar() );
+        pPluginMenu->setObjectName ( QString::fromUtf8 ( "Herramientas" ) );
     } // end if
     /// Creamos el men&uacute;.
 
-    QAction *accion = new QAction("&Prueba de plugin", 0);
-    accion->setStatusTip("Muestra statustip");
-    accion->setWhatsThis("Muestra que es esto");
-    connect(accion, SIGNAL(activated()), this, SLOT(elslot()));
-    pPluginMenu->addAction(accion);
+    QAction *accion = new QAction ( "&Prueba de plugin", 0 );
+    accion->setStatusTip ( "Muestra statustip" );
+    accion->setWhatsThis ( "Muestra que es esto" );
+    connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+    pPluginMenu->addAction ( accion );
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bges->menuBar()->insertMenu(bges->menuVentana->menuAction(), pPluginMenu);
-    _depura("END myplugin::inicializa", 0);
+    bges->menuBar() ->insertMenu ( bges->menuVentana->menuAction(), pPluginMenu );
+    _depura ( "END myplugin::inicializa", 0 );
 }
 
 
@@ -97,12 +101,13 @@ void myplugin::inicializa(Bulmafact *bges) {
 /**
 \param bges
 **/
-void entryPoint(Bulmafact *bges) {
-    _depura("Estoy dentro del plugin de demo", 0);
+void entryPoint ( Bulmafact *bges )
+{
+    _depura ( "Estoy dentro del plugin de demo", 0 );
     myplugin *plug = new myplugin();
-    plug->inicializa(bges);
+    plug->inicializa ( bges );
     /// S&Oacute;LO A MODO DE EJEMPLO: se modifica el t&iacute;tulo de la ventana principal
     /// del programa para indicar que el plugin se ha cargado.
-    bges->setWindowTitle("Prueba de plugin.");
+    bges->setWindowTitle ( "Prueba de plugin." );
 }
 

@@ -31,16 +31,18 @@
 
 /// Muestra y administra las l&iacute;neas de detalle de albaranes de un proveedor.
 /** */
-class ListLinAlbaranProveedorView : public SubForm2Bf {
+class ListLinAlbaranProveedorView : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
     QString mdb_idalbaranp;
-    ListLinAlbaranProveedorView(QWidget *parent = 0);
-    ~ListLinAlbaranProveedorView() {};
+    ListLinAlbaranProveedorView ( QWidget *parent = 0 );
+    ~ListLinAlbaranProveedorView()
+    {};
 
 public slots:
-    virtual void cargar(QString idalbaranp);
+    virtual void cargar ( QString idalbaranp );
 };
 
 #endif

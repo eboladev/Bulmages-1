@@ -40,16 +40,17 @@ class Company;
     en dicha ventana.
     Deriva de Ficha para metodos comunes a todas las ventanas.
     Deriva de Cobro para el manejo de la Base de datos. */
-class Cuadrante1View : public FichaBf, public Ui_Cuadrante1Base {
+class Cuadrante1View : public FichaBf, public Ui_Cuadrante1Base
+{
     Q_OBJECT
 
 public:
-    Cuadrante1View(Company *, QWidget *);
+    Cuadrante1View ( Company *, QWidget * );
     ~Cuadrante1View();
-    int cargarPost(QString);
+    int cargarPost ( QString );
     int guardarPost();
 signals:
-     void save();
+    void save();
 };
 
 #endif

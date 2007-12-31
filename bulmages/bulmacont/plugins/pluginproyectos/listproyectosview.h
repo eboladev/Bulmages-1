@@ -31,7 +31,8 @@ class Empresa;
 
 /** Trata la ventana de Listado de Amortizaciones.
 */
-class ListProyectosView : public Listado, public Ui_ListProyectosBase {
+class ListProyectosView : public Listado, public Ui_ListProyectosBase
+{
     Q_OBJECT
 private:
 
@@ -41,15 +42,15 @@ private:
     QString mdb_nompresupuestoc;
 
 public:
-   ListProyectosView(Empresa *emp, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
+    ListProyectosView ( Empresa *emp, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
     ~ListProyectosView();
     void inicializatabla();
-    void editar(int);
+    void editar ( int );
     virtual void crear();
     virtual void borrar();
 
 signals:
-    void selected(QString);
+    void selected ( QString );
 
 };
 

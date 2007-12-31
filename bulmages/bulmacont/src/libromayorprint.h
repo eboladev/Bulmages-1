@@ -39,7 +39,8 @@
 
 ///
 /** */
-class libromayorprint : public PEmpresaBase {
+class libromayorprint : public PEmpresaBase
+{
 public:
     QString codinicial;
     QString codfinal;
@@ -48,10 +49,10 @@ public:
     char *fichero;
 
 public:
-    libromayorprint(Empresa *emp);
+    libromayorprint ( Empresa *emp );
     ~libromayorprint();
-    void inicializa1(QString, QString, QString, QString);
-    void inicializa2(char *);
+    void inicializa1 ( QString, QString, QString, QString );
+    void inicializa2 ( char * );
     void accept();
 };
 

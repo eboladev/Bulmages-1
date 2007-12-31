@@ -37,74 +37,78 @@
 \param parent
 \return
 **/
-TrabajadorView::TrabajadorView(Company *emp, QWidget *parent)
-        : FichaBf(emp, parent) {
-    _depura("TrabajadorView::TrabajadorView", 0);
+TrabajadorView::TrabajadorView ( Company *emp, QWidget *parent )
+        : FichaBf ( emp, parent )
+{
+    _depura ( "TrabajadorView::TrabajadorView", 0 );
 
-    setTitleName(tr("Trabajador"));
-    setDBTableName("trabajador");
-    setAttribute(Qt::WA_DeleteOnClose);
-    setupUi(this);
-    mui_tab->setDisabled(TRUE);
+    setTitleName ( tr ( "Trabajador" ) );
+    setDBTableName ( "trabajador" );
+    setAttribute ( Qt::WA_DeleteOnClose );
+    setupUi ( this );
+    mui_tab->setDisabled ( TRUE );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza("TrabajadorView_TrabajadorView", this);
-    if (res != 0) {
+    int res = g_plugins->lanza ( "TrabajadorView_TrabajadorView", this );
+    if ( res != 0 ) {
         return;
     } // end if
     m_archivoimagen = "";
     setModoEdicion();
     m_cursortrabajadores = NULL;
     m_item = NULL;
-    res = g_plugins->lanza("TrabajadorView_TrabajadorView_Post", this);
-    if (res != 0) {
+    res = g_plugins->lanza ( "TrabajadorView_TrabajadorView_Post", this );
+    if ( res != 0 ) {
         return;
     } // end if
     pintar();
-    meteWindow(windowTitle(), this);
-    _depura("END TrabajadorView::TrabajadorView", 0);
+    meteWindow ( windowTitle(), this );
+    _depura ( "END TrabajadorView::TrabajadorView", 0 );
 }
 
 
 ///
 /**
 **/
-void TrabajadorView::imprimir() {
-    _depura("TrabajadorView::imprimir", 0);
-    _depura("END TrabajadorView::imprimir", 0);
+void TrabajadorView::imprimir()
+{
+    _depura ( "TrabajadorView::imprimir", 0 );
+    _depura ( "END TrabajadorView::imprimir", 0 );
 }
 
 /// Carga el query de la base de datos y carga el qlistview.
 /**
 **/
-void TrabajadorView::pintar() {
-    _depura("TrabajadorView::pintar", 0);
+void TrabajadorView::pintar()
+{
+    _depura ( "TrabajadorView::pintar", 0 );
 
     mui_lista->clear();
 
-    if (m_cursortrabajadores != NULL) {
+    if ( m_cursortrabajadores != NULL ) {
         delete m_cursortrabajadores;
     } // end if
-    m_cursortrabajadores = empresaBase()->cargacursor("SELECT * FROM trabajador ORDER BY apellidostrabajador");
-    while (!m_cursortrabajadores->eof()) {
-        new QListWidgetItem(m_cursortrabajadores->valor("apellidostrabajador") + " " + m_cursortrabajadores->valor("nomtrabajador"), mui_lista);
+    m_cursortrabajadores = empresaBase() ->cargacursor ( "SELECT * FROM trabajador ORDER BY apellidostrabajador" );
+    while ( !m_cursortrabajadores->eof() ) {
+        new QListWidgetItem ( m_cursortrabajadores->valor ( "apellidostrabajador" ) + " " + m_cursortrabajadores->valor ( "nomtrabajador" ), mui_lista );
         m_cursortrabajadores->siguienteregistro();
     } // end while
 
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
-    _depura("END TrabajadorView::pintar", 0);
+    _depura ( "END TrabajadorView::pintar", 0 );
 }
 
 
 ///
 /**
 **/
-TrabajadorView::~TrabajadorView() {
-    _depura("TrabajadorView::~TrabajadorView", 0);
-    if (m_cursortrabajadores != NULL) {
+TrabajadorView::~TrabajadorView()
+{
+    _depura ( "TrabajadorView::~TrabajadorView", 0 );
+    if ( m_cursortrabajadores != NULL ) {
         delete m_cursortrabajadores;
     } // end if
-    _depura("END TrabajadorView::~TrabajadorView", 0);
+    _depura ( "END TrabajadorView::~TrabajadorView", 0 );
 }
 
 
@@ -113,36 +117,37 @@ TrabajadorView::~TrabajadorView() {
 \param cur
 \return
 **/
-void TrabajadorView::on_mui_lista_currentItemChanged(QListWidgetItem *cur, QListWidgetItem *) {
-    _depura( "on_mui_lista_currentItemChanged", 0);
-    if (!cur) return;
-    mui_tab->setEnabled(TRUE);
+void TrabajadorView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWidgetItem * )
+{
+    _depura ( "on_mui_lista_currentItemChanged", 0 );
+    if ( !cur ) return;
+    mui_tab->setEnabled ( TRUE );
 
-    int row = mui_lista->row(cur);
+    int row = mui_lista->row ( cur );
     trataModificado();
-    m_nomtrabajador->setText(m_cursortrabajadores->valor("nomtrabajador", row));
-    mdb_idtrabajador = m_cursortrabajadores->valor("idtrabajador", row);
-    m_apellidostrabajador->setText(m_cursortrabajadores->valor("apellidostrabajador", row));
-    m_nsstrabajador->setText(m_cursortrabajadores->valor("nsstrabajador", row));
-    m_dirtrabajador->setText(m_cursortrabajadores->valor("dirtrabajador", row));
-    m_teltrabajador->setText(m_cursortrabajadores->valor("teltrabajador", row));
-    m_moviltrabajador->setText(m_cursortrabajadores->valor("moviltrabajador", row));
-    m_emailtrabajador->setText(m_cursortrabajadores->valor("emailtrabajador", row));
-    if (m_cursortrabajadores->valor("activotrabajador", row) == "t") {
-        m_activotrabajador->setChecked(TRUE);
+    m_nomtrabajador->setText ( m_cursortrabajadores->valor ( "nomtrabajador", row ) );
+    mdb_idtrabajador = m_cursortrabajadores->valor ( "idtrabajador", row );
+    m_apellidostrabajador->setText ( m_cursortrabajadores->valor ( "apellidostrabajador", row ) );
+    m_nsstrabajador->setText ( m_cursortrabajadores->valor ( "nsstrabajador", row ) );
+    m_dirtrabajador->setText ( m_cursortrabajadores->valor ( "dirtrabajador", row ) );
+    m_teltrabajador->setText ( m_cursortrabajadores->valor ( "teltrabajador", row ) );
+    m_moviltrabajador->setText ( m_cursortrabajadores->valor ( "moviltrabajador", row ) );
+    m_emailtrabajador->setText ( m_cursortrabajadores->valor ( "emailtrabajador", row ) );
+    if ( m_cursortrabajadores->valor ( "activotrabajador", row ) == "t" ) {
+        m_activotrabajador->setChecked ( TRUE );
     } else {
-        m_activotrabajador->setChecked(FALSE);
+        m_activotrabajador->setChecked ( FALSE );
     } // end if
     m_item = cur;
     /// Comprobamos cual es la cadena inicial.
     /// Disparamos los plugins.
-    int res = g_plugins->lanza("TrabajadorView_on_mui_lista_currentItemChanged_Post", this);
-    if (res != 0) {
+    int res = g_plugins->lanza ( "TrabajadorView_on_mui_lista_currentItemChanged_Post", this );
+    if ( res != 0 ) {
         return;
     } // end if
     dialogChanges_cargaInicial();
-    m_imagen->setPixmap(QPixmap(confpr->valor(CONF_DIR_IMG_PERSONAL) + mdb_idtrabajador + ".jpg"));
-    _depura( "END on_mui_lista_currentItemChanged", 0);
+    m_imagen->setPixmap ( QPixmap ( confpr->valor ( CONF_DIR_IMG_PERSONAL ) + mdb_idtrabajador + ".jpg" ) );
+    _depura ( "END on_mui_lista_currentItemChanged", 0 );
 }
 
 
@@ -150,52 +155,53 @@ void TrabajadorView::on_mui_lista_currentItemChanged(QListWidgetItem *cur, QList
 /**
 \return
 **/
-void TrabajadorView::on_mui_guardar_clicked() {
-    _depura("TrabajadorView::on_mui_guardar_clicked", 0);
+void TrabajadorView::on_mui_guardar_clicked()
+{
+    _depura ( "TrabajadorView::on_mui_guardar_clicked", 0 );
     try {
         /// Disparamos los plugins.
-        int res = g_plugins->lanza("TrabajadorView_on_mui_guardar_clicked", this);
-        if (res != 0) {
+        int res = g_plugins->lanza ( "TrabajadorView_on_mui_guardar_clicked", this );
+        if ( res != 0 ) {
             return;
         } // end if
         QString m_textactivotrabajador = "FALSE";
-        if (m_activotrabajador->isChecked()) {
+        if ( m_activotrabajador->isChecked() ) {
             m_textactivotrabajador = "TRUE";
         } // end if
         QString query = "UPDATE trabajador SET ";
-        query += "  nomtrabajador='" + empresaBase()->sanearCadena(m_nomtrabajador->text()) + "'";
-        query += ", apellidostrabajador= '" + empresaBase()->sanearCadena(m_apellidostrabajador->text()) + "'";
-        query += ", nsstrabajador = '" + empresaBase()->sanearCadena(m_nsstrabajador->text()) + "'";
-        query += ", dirtrabajador = '" + empresaBase()->sanearCadena(m_dirtrabajador->text()) + "'";
-        query += ", teltrabajador = '" + empresaBase()->sanearCadena(m_teltrabajador->text()) + "'";
-        query += ", moviltrabajador = '" + empresaBase()->sanearCadena(m_moviltrabajador->text()) + "'";
-        query += ", emailtrabajador = '" + empresaBase()->sanearCadena(m_emailtrabajador->text()) + "'";
-        query += ", activotrabajador = " + empresaBase()->sanearCadena(m_textactivotrabajador);
-        query += " WHERE idtrabajador=" + empresaBase()->sanearCadena(mdb_idtrabajador);
+        query += "  nomtrabajador='" + empresaBase() ->sanearCadena ( m_nomtrabajador->text() ) + "'";
+        query += ", apellidostrabajador= '" + empresaBase() ->sanearCadena ( m_apellidostrabajador->text() ) + "'";
+        query += ", nsstrabajador = '" + empresaBase() ->sanearCadena ( m_nsstrabajador->text() ) + "'";
+        query += ", dirtrabajador = '" + empresaBase() ->sanearCadena ( m_dirtrabajador->text() ) + "'";
+        query += ", teltrabajador = '" + empresaBase() ->sanearCadena ( m_teltrabajador->text() ) + "'";
+        query += ", moviltrabajador = '" + empresaBase() ->sanearCadena ( m_moviltrabajador->text() ) + "'";
+        query += ", emailtrabajador = '" + empresaBase() ->sanearCadena ( m_emailtrabajador->text() ) + "'";
+        query += ", activotrabajador = " + empresaBase() ->sanearCadena ( m_textactivotrabajador );
+        query += " WHERE idtrabajador=" + empresaBase() ->sanearCadena ( mdb_idtrabajador );
 
-	empresaBase()->begin();
-        empresaBase()->ejecuta(query);
-	empresaBase()->commit();
-        if (m_cursortrabajadores != NULL) {
+        empresaBase() ->begin();
+        empresaBase() ->ejecuta ( query );
+        empresaBase() ->commit();
+        if ( m_cursortrabajadores != NULL ) {
             delete m_cursortrabajadores;
         } // end if
 
-        m_cursortrabajadores = empresaBase()->cargacursor("SELECT * FROM trabajador ORDER BY apellidostrabajador");
+        m_cursortrabajadores = empresaBase() ->cargacursor ( "SELECT * FROM trabajador ORDER BY apellidostrabajador" );
 
-        if (m_item) {
-            m_item->setText(m_apellidostrabajador->text() + m_nomtrabajador->text());
+        if ( m_item ) {
+            m_item->setText ( m_apellidostrabajador->text() + m_nomtrabajador->text() );
         } // end if
-        if (m_archivoimagen != "") {
-            QString cadena = "cp " + m_archivoimagen + " " + confpr->valor(CONF_DIR_IMG_PERSONAL) + mdb_idtrabajador + ".jpg";
-            system( cadena.toAscii().constData());
+        if ( m_archivoimagen != "" ) {
+            QString cadena = "cp " + m_archivoimagen + " " + confpr->valor ( CONF_DIR_IMG_PERSONAL ) + mdb_idtrabajador + ".jpg";
+            system ( cadena.toAscii().constData() );
         } // end if
         /// Comprobamos cual es la cadena inicial.
         dialogChanges_cargaInicial();
-    } catch (...) {
-	mensajeInfo("Error al guardar el trabajador");
-        empresaBase()->rollback();
+    } catch ( ... ) {
+        mensajeInfo ( "Error al guardar el trabajador" );
+        empresaBase() ->rollback();
     } // end try
-    _depura("END TrabajadorView::on_mui_guardar_clicked", 0);
+    _depura ( "END TrabajadorView::on_mui_guardar_clicked", 0 );
 }
 
 
@@ -203,19 +209,20 @@ void TrabajadorView::on_mui_guardar_clicked() {
 /**
 \return
 **/
-bool TrabajadorView::trataModificado() {
-    _depura( "TrabajadorView::trataModificado", 0);
+bool TrabajadorView::trataModificado()
+{
+    _depura ( "TrabajadorView::trataModificado", 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
-    if (dialogChanges_hayCambios()) {
-        if (QMessageBox::warning(this,
-                                 tr("Guardar datos del trabajador"),
-                                 tr("Desea guardar los cambios?"),
-                                 tr("&Si"), tr("&No"), 0, 0, 1 ) == 0)
+    if ( dialogChanges_hayCambios() ) {
+        if ( QMessageBox::warning ( this,
+                                    tr ( "Guardar datos del trabajador" ),
+                                    tr ( "Desea guardar los cambios?" ),
+                                    tr ( "&Si" ), tr ( "&No" ), 0, 0, 1 ) == 0 )
             on_mui_guardar_clicked();
-        return (TRUE);
+        return ( TRUE );
     } // end if
-    _depura("END TrabajadorView::trataModificado", 0);
-    return (FALSE);
+    _depura ( "END TrabajadorView::trataModificado", 0 );
+    return ( FALSE );
 }
 
 
@@ -224,23 +231,24 @@ bool TrabajadorView::trataModificado() {
 /**
 \return
 **/
-void TrabajadorView::on_mui_nuevo_clicked() {
-    _depura("TrabajadorView::on_mui_nuevo_clicked", 0);
+void TrabajadorView::on_mui_nuevo_clicked()
+{
+    _depura ( "TrabajadorView::on_mui_nuevo_clicked", 0 );
     try {
         /// Si se ha modificado el contenido advertimos y guardamos.
         trataModificado();
         QString query = "INSERT INTO trabajador (nomtrabajador, apellidostrabajador, nsstrabajador) VALUES ('NUEVO TRABAJADOR','NUEVO TRABAJADOR','000000000000')";
-        empresaBase()->begin();
-        empresaBase()->ejecuta(query);
-        cursor2 *cur = empresaBase()->cargacursor("SELECT max(idtrabajador) AS idtrabajador FROM trabajador");
-        empresaBase()->commit();
-        mdb_idtrabajador = cur->valor("idtrabajador");
+        empresaBase() ->begin();
+        empresaBase() ->ejecuta ( query );
+        cursor2 *cur = empresaBase() ->cargacursor ( "SELECT max(idtrabajador) AS idtrabajador FROM trabajador" );
+        empresaBase() ->commit();
+        mdb_idtrabajador = cur->valor ( "idtrabajador" );
         delete cur;
         pintar();
-        _depura("END TrabajadorView::on_mui_nuevo_clicked", 0);
-    } catch (...) {
-        mensajeInfo(tr("Error al crear un nuevo Trabajador"));
-        empresaBase()->rollback();
+        _depura ( "END TrabajadorView::on_mui_nuevo_clicked", 0 );
+    } catch ( ... ) {
+        mensajeInfo ( tr ( "Error al crear un nuevo Trabajador" ) );
+        empresaBase() ->rollback();
     } // end try
 }
 
@@ -250,21 +258,22 @@ void TrabajadorView::on_mui_nuevo_clicked() {
 /**
 \return
 **/
-void TrabajadorView::on_mui_borrar_clicked() {
-    _depura("TrabajadorView::on_mui_borrar_clicked", 0);
+void TrabajadorView::on_mui_borrar_clicked()
+{
+    _depura ( "TrabajadorView::on_mui_borrar_clicked", 0 );
     try {
-        mui_tab->setDisabled(TRUE);
+        mui_tab->setDisabled ( TRUE );
         trataModificado();
-        empresaBase()->begin();
+        empresaBase() ->begin();
         QString query = "DELETE FROM trabajador WHERE idtrabajador = " + mdb_idtrabajador;
-        empresaBase()->ejecuta(query);
-        empresaBase()->commit();
-        mdb_idtrabajador="";
+        empresaBase() ->ejecuta ( query );
+        empresaBase() ->commit();
+        mdb_idtrabajador = "";
         pintar();
-        _depura("END TrabajadorView::on_mui_borrar_clicked", 0);
-    } catch (...) {
-        mensajeInfo(tr("Error al borrar el Trabajador"));
-        empresaBase()->rollback();
+        _depura ( "END TrabajadorView::on_mui_borrar_clicked", 0 );
+    } catch ( ... ) {
+        mensajeInfo ( tr ( "Error al borrar el Trabajador" ) );
+        empresaBase() ->rollback();
     }// end try
 }
 
@@ -273,14 +282,15 @@ void TrabajadorView::on_mui_borrar_clicked() {
 /**
 \return
 **/
-void TrabajadorView::on_mui_imagen_clicked() {
-    _depura("TrabajadorView::on_mui_imagen_clicked", 0);
-    m_archivoimagen = QFileDialog::getOpenFileName(this,
-                      tr("Seleccione archivo"),
+void TrabajadorView::on_mui_imagen_clicked()
+{
+    _depura ( "TrabajadorView::on_mui_imagen_clicked", 0 );
+    m_archivoimagen = QFileDialog::getOpenFileName ( this,
+                      tr ( "Seleccione archivo" ),
                       "",
-                      tr("Imagenes (*.jpg)"));
-    m_imagen->setPixmap(QPixmap(m_archivoimagen));
-    _depura("END TrabajadorView::on_mui_imagen_clicked", 0);
+                      tr ( "Imagenes (*.jpg)" ) );
+    m_imagen->setPixmap ( QPixmap ( m_archivoimagen ) );
+    _depura ( "END TrabajadorView::on_mui_imagen_clicked", 0 );
 }
 
 
@@ -288,10 +298,11 @@ void TrabajadorView::on_mui_imagen_clicked() {
 /**
 \return
 **/
-QString TrabajadorView::idtrabajador() {
-    _depura("TrabajadorView::idtrabajador", 0);
+QString TrabajadorView::idtrabajador()
+{
+    _depura ( "TrabajadorView::idtrabajador", 0 );
     return mdb_idtrabajador;
-    _depura("END TrabajadorView::idtrabajador", 0);
+    _depura ( "END TrabajadorView::idtrabajador", 0 );
 }
 
 

@@ -10,7 +10,6 @@
 
 void extractodlg1::accept()
 {
-
 }
 
 
@@ -30,19 +29,16 @@ void extractodlg1::accept()
 
 void extractodlg1::boton_casacion()
 {
-
 }
 
 
 void extractodlg1::boton_guardarpunteo()
 {
-
 }
 
 
 void extractodlg1::boton_cargarpunteos()
 {
-
 }
 
 
@@ -52,5 +48,4 @@ void extractodlg1::boton_cargarpunteos()
 
 void extractodlg1::boton_borrapunteo()
 {
-
 }

@@ -8,7 +8,7 @@
 #include "bulmages01.h"
 
 
-extern "C" MY_EXPORT void entryPoint(Bulmages01 *);
+extern "C" MY_EXPORT void entryPoint ( Bulmages01 * );
 
 
 

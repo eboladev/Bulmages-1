@@ -20,7 +20,7 @@
 
 // #ifndef EFQTOOLBUTTON_H
 // #define EFQTOOLBUTTON_H
-		
+
 #include <QWidget>
 #include <QToolButton>
 #include "company.h"
@@ -29,20 +29,21 @@
 #include "blwidget.h"
 
 
-class EFQToolButton : public QToolButton, PEmpresaBase {
-	Q_OBJECT
+class EFQToolButton : public QToolButton, PEmpresaBase
+{
+    Q_OBJECT
 
 private:
-	FacturaView *m_factura;
-	
+    FacturaView *m_factura;
+
 public:
-	EFQToolButton(FacturaView *fac, QWidget *parent = 0);
-	~EFQToolButton();
-	void escribe_descuento_factura(QString &string, cursor2 *descuentos_factura, Fixed bimpfactura);
-	void escribe_linea_factura(QString &string, cursor2 *lfactura, int numerolinea);
-	void exporta_factura_ubl();
-	
+    EFQToolButton ( FacturaView *fac, QWidget *parent = 0 );
+    ~EFQToolButton();
+    void escribe_descuento_factura ( QString &string, cursor2 *descuentos_factura, Fixed bimpfactura );
+    void escribe_linea_factura ( QString &string, cursor2 *lfactura, int numerolinea );
+    void exporta_factura_ubl();
+
 public slots:
-	virtual void click();
+    virtual void click();
 
 };

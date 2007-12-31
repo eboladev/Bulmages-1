@@ -30,15 +30,16 @@
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un proveedor.
 /** */
-class ProveedorView : public FichaBf, public Ui_ProveedorBase {
+class ProveedorView : public FichaBf, public Ui_ProveedorBase
+{
     Q_OBJECT
 
 public:
-    ProveedorView(Company *comp, QWidget *parent = 0);
+    ProveedorView ( Company *comp, QWidget *parent = 0 );
     ~ProveedorView();
 
 public:
-    virtual int cargarPost(QString);
+    virtual int cargarPost ( QString );
 };
 
 #endif

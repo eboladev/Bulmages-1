@@ -43,30 +43,31 @@
 \param parent
 \return
 **/
-ContratoView::ContratoView(Company *comp, QWidget *parent)
-        : Contrato(comp, parent) {
-    _depura("ContratoView::ContratoView", 0);
-    setAttribute(Qt::WA_DeleteOnClose);
+ContratoView::ContratoView ( Company *comp, QWidget *parent )
+        : Contrato ( comp, parent )
+{
+    _depura ( "ContratoView::ContratoView", 0 );
+    setAttribute ( Qt::WA_DeleteOnClose );
     try {
-        setupUi(this);
+        setupUi ( this );
 
         /// Disparamos los plugins.
-        int res = g_plugins->lanza("ContratoView_ContratoView", this);
-        if (res != 0)
+        int res = g_plugins->lanza ( "ContratoView_ContratoView", this );
+        if ( res != 0 )
             return;
 
-        subform2->setEmpresaBase(comp);
-        mui_lineas->setEmpresaBase(comp);
-        mui_idcliente->setEmpresaBase(comp);
-        mui_refcontrato->setEmpresaBase(comp);
+        subform2->setEmpresaBase ( comp );
+        mui_lineas->setEmpresaBase ( comp );
+        mui_idcliente->setEmpresaBase ( comp );
+        mui_refcontrato->setEmpresaBase ( comp );
 
         /// Inicializamos FichaBf
-        setListaLineas(mui_lineas);
-        meteWindow(windowTitle(), this, FALSE);
-    } catch (...) {
-        mensajeInfo(tr("Error al crear la contrato"));
+        setListaLineas ( mui_lineas );
+        meteWindow ( windowTitle(), this, FALSE );
+    } catch ( ... ) {
+        mensajeInfo ( tr ( "Error al crear la contrato" ) );
     }
-    _depura("END ContratoView::ContratoView");
+    _depura ( "END ContratoView::ContratoView" );
 }
 
 
@@ -75,9 +76,10 @@ ContratoView::ContratoView(Company *comp, QWidget *parent)
 */
 /**
 **/
-ContratoView::~ContratoView() {
-    _depura("ContratoView::~ContratoView", 0);
-    _depura("END ContratoView::~ContratoView", 0);
+ContratoView::~ContratoView()
+{
+    _depura ( "ContratoView::~ContratoView", 0 );
+    _depura ( "END ContratoView::~ContratoView", 0 );
 }
 
 
@@ -85,11 +87,12 @@ ContratoView::~ContratoView() {
 */
 /**
 **/
-void ContratoView::inicializar() {
-    _depura("ContratoView::inicializar", 0);
+void ContratoView::inicializar()
+{
+    _depura ( "ContratoView::inicializar", 0 );
     subform2->inicializar();
     dialogChanges_cargaInicial();
-    _depura("END ContratoView::inicializar", 0);
+    _depura ( "END ContratoView::inicializar", 0 );
 }
 
 
@@ -101,21 +104,22 @@ void ContratoView::inicializar() {
 \param id
 \return
 **/
-int ContratoView::cargar(QString id) {
-    _depura("ContratoView::cargar", 0);
+int ContratoView::cargar ( QString id )
+{
+    _depura ( "ContratoView::cargar", 0 );
     try {
-        Contrato::cargar(id);
-        if (DBvalue("idcontrato") != "") {
-            setWindowTitle(tr("Contrato") + " " + DBvalue("refcontrato") + " " + DBvalue("idcontrato"));
-            meteWindow(windowTitle(), this);
+        Contrato::cargar ( id );
+        if ( DBvalue ( "idcontrato" ) != "" ) {
+            setWindowTitle ( tr ( "Contrato" ) + " " + DBvalue ( "refcontrato" ) + " " + DBvalue ( "idcontrato" ) );
+            meteWindow ( windowTitle(), this );
         } // end if
-        mui_lineas->cargar(id);
-        subform2->cargar("SELECT * FROM factura LEFT JOIN cliente ON cliente.idcliente = factura.idcliente LEFT JOIN almacen ON factura.idalmacen = almacen.idalmacen  WHERE factura.idcliente ="+DBvalue("idcliente")+ " AND reffactura = '"+DBvalue("refcontrato")+"'");
+        mui_lineas->cargar ( id );
+        subform2->cargar ( "SELECT * FROM factura LEFT JOIN cliente ON cliente.idcliente = factura.idcliente LEFT JOIN almacen ON factura.idalmacen = almacen.idalmacen  WHERE factura.idcliente =" + DBvalue ( "idcliente" ) + " AND reffactura = '" + DBvalue ( "refcontrato" ) + "'" );
         dialogChanges_cargaInicial();
-    } catch (...) {
+    } catch ( ... ) {
         return -1;
     } // end try
-    _depura("END ContratoView::cargar", 0);
+    _depura ( "END ContratoView::cargar", 0 );
     return 0;
 }
 
@@ -129,24 +133,25 @@ int ContratoView::cargar(QString id) {
 /**
 \return
 **/
-int ContratoView::guardar() {
-    _depura("ContratoView::guardar", 0);
+int ContratoView::guardar()
+{
+    _depura ( "ContratoView::guardar", 0 );
     try {
-        setDBvalue("refcontrato", mui_refcontrato->text());
-        setDBvalue("nomcontrato", mui_nomcontrato->text());
-        setDBvalue("idcliente", mui_idcliente->idcliente());
-        setDBvalue("fincontrato", mui_fincontrato->text());
-        setDBvalue("ffincontrato", mui_ffincontrato->text());
-        setDBvalue("loccontrato", mui_loccontrato->text());
-        setDBvalue("descontrato", mui_descontrato->toPlainText());
-        setDBvalue("periodicidadcontrato",mui_periodicidadcontrato->periodo());
+        setDBvalue ( "refcontrato", mui_refcontrato->text() );
+        setDBvalue ( "nomcontrato", mui_nomcontrato->text() );
+        setDBvalue ( "idcliente", mui_idcliente->idcliente() );
+        setDBvalue ( "fincontrato", mui_fincontrato->text() );
+        setDBvalue ( "ffincontrato", mui_ffincontrato->text() );
+        setDBvalue ( "loccontrato", mui_loccontrato->text() );
+        setDBvalue ( "descontrato", mui_descontrato->toPlainText() );
+        setDBvalue ( "periodicidadcontrato", mui_periodicidadcontrato->periodo() );
         Contrato::guardar();
         dialogChanges_cargaInicial();
-    } catch (...) {
-        _depura("ContratoView::guardar error al guardar", 0);
-        throw -1;
+    } catch ( ... ) {
+        _depura ( "ContratoView::guardar error al guardar", 0 );
+        throw - 1;
     } // end try
-    _depura("END ContratoView::guardar", 0);
+    _depura ( "END ContratoView::guardar", 0 );
     return 0;
 }
 
@@ -155,10 +160,11 @@ int ContratoView::guardar() {
 /**
 \param id
 **/
-void ContratoView::on_m_cliente_valueChanged(QString id) {
-    _depura("ContratoView::on_m_cliente_valueChanged", 0);
-    subform2->setIdCliente(id);
-    _depura("END ContratoView::on_m_cliente_valueChanged", 0);
+void ContratoView::on_m_cliente_valueChanged ( QString id )
+{
+    _depura ( "ContratoView::on_m_cliente_valueChanged", 0 );
+    subform2->setIdCliente ( id );
+    _depura ( "END ContratoView::on_m_cliente_valueChanged", 0 );
 }
 
 
@@ -166,10 +172,11 @@ void ContratoView::on_m_cliente_valueChanged(QString id) {
 /**
 \param id
 **/
-void ContratoView::pintaidcliente(QString id) {
-    _depura("ContratoView::pintaidcliente", 0);
-    mui_idcliente->setidcliente(id);
-    _depura("END ContratoView::pintaidcliente", 0);
+void ContratoView::pintaidcliente ( QString id )
+{
+    _depura ( "ContratoView::pintaidcliente", 0 );
+    mui_idcliente->setidcliente ( id );
+    _depura ( "END ContratoView::pintaidcliente", 0 );
 }
 
 
@@ -177,10 +184,11 @@ void ContratoView::pintaidcliente(QString id) {
 /**
 \param id
 **/
-void ContratoView::pintafincontrato(QString id) {
-    _depura("ContratoView::pintafincontrato", 0);
-    mui_fincontrato->setText(id);
-    _depura("ContratoView::pintafincontrato", 0);
+void ContratoView::pintafincontrato ( QString id )
+{
+    _depura ( "ContratoView::pintafincontrato", 0 );
+    mui_fincontrato->setText ( id );
+    _depura ( "ContratoView::pintafincontrato", 0 );
 }
 
 
@@ -188,10 +196,11 @@ void ContratoView::pintafincontrato(QString id) {
 /**
 \param id
 **/
-void ContratoView::pintaffincontrato(QString id) {
-    _depura("ContratoView::pintaffincontrato", 0);
-    mui_ffincontrato->setText(id);
-    _depura("END ContratoView::pintaffincontrato", 0);
+void ContratoView::pintaffincontrato ( QString id )
+{
+    _depura ( "ContratoView::pintaffincontrato", 0 );
+    mui_ffincontrato->setText ( id );
+    _depura ( "END ContratoView::pintaffincontrato", 0 );
 }
 
 
@@ -199,10 +208,11 @@ void ContratoView::pintaffincontrato(QString id) {
 /**
 \param id
 **/
-void ContratoView::pintadescontrato(QString id) {
-    _depura("ContratoView::pintadescontrato", 0);
-    mui_descontrato->setText(id);
-    _depura("END ContratoView::pintadescontrato", 0);
+void ContratoView::pintadescontrato ( QString id )
+{
+    _depura ( "ContratoView::pintadescontrato", 0 );
+    mui_descontrato->setText ( id );
+    _depura ( "END ContratoView::pintadescontrato", 0 );
 }
 
 
@@ -210,10 +220,11 @@ void ContratoView::pintadescontrato(QString id) {
 /**
 \param id
 **/
-void ContratoView::pintarefcontrato(QString id) {
-    _depura("ContratoView::pintarefcontrato", 0);
-    mui_refcontrato->setText(id);
-    _depura("END ContratoView::pintarefcontrato", 0);
+void ContratoView::pintarefcontrato ( QString id )
+{
+    _depura ( "ContratoView::pintarefcontrato", 0 );
+    mui_refcontrato->setText ( id );
+    _depura ( "END ContratoView::pintarefcontrato", 0 );
 }
 
 
@@ -221,10 +232,11 @@ void ContratoView::pintarefcontrato(QString id) {
 /**
 \param id
 **/
-void ContratoView::pintanomcontrato(QString id) {
-    _depura("ContratoView::pintanomcontrato", 0);
-    mui_nomcontrato->setText(id);
-    _depura("ContratoView::pintanomcontrato", 0);
+void ContratoView::pintanomcontrato ( QString id )
+{
+    _depura ( "ContratoView::pintanomcontrato", 0 );
+    mui_nomcontrato->setText ( id );
+    _depura ( "ContratoView::pintanomcontrato", 0 );
 }
 
 
@@ -232,9 +244,10 @@ void ContratoView::pintanomcontrato(QString id) {
 /**
 \param id
 **/
-void ContratoView::pintaperiodicidadcontrato(QString id) {
-    _depura("ContratoView::pintaperiodicidadcontrato", 0, id);
-    mui_periodicidadcontrato->setperiodo(id);
+void ContratoView::pintaperiodicidadcontrato ( QString id )
+{
+    _depura ( "ContratoView::pintaperiodicidadcontrato", 0, id );
+    mui_periodicidadcontrato->setperiodo ( id );
 }
 
 
@@ -242,10 +255,11 @@ void ContratoView::pintaperiodicidadcontrato(QString id) {
 /**
 \param id
 **/
-void ContratoView::pintaloccontrato(QString id) {
-    _depura("ContratoView::pintaloccontrato", 0);
-    mui_loccontrato->setText(id);
-    _depura("END ContratoView::pintaloccontrato", 0);
+void ContratoView::pintaloccontrato ( QString id )
+{
+    _depura ( "ContratoView::pintaloccontrato", 0 );
+    mui_loccontrato->setText ( id );
+    _depura ( "END ContratoView::pintaloccontrato", 0 );
 }
 
 
@@ -253,67 +267,69 @@ void ContratoView::pintaloccontrato(QString id) {
 /**
 \return
 **/
-void ContratoView::on_subform2_itemDoubleClicked(QTableWidgetItem *) {
-    _depura("ContratoView::on_subform2_itemDoubleClicked", 0);
-    QString idfactura = subform2->DBvalue(QString("idfactura"), subform2->currentRow());
-    FacturaView *prov = empresaBase()->newFacturaView();
-    if (prov->cargar(idfactura)) {
+void ContratoView::on_subform2_itemDoubleClicked ( QTableWidgetItem * )
+{
+    _depura ( "ContratoView::on_subform2_itemDoubleClicked", 0 );
+    QString idfactura = subform2->DBvalue ( QString ( "idfactura" ), subform2->currentRow() );
+    FacturaView *prov = empresaBase() ->newFacturaView();
+    if ( prov->cargar ( idfactura ) ) {
         delete prov;
         return;
     } // end if
-    empresaBase()->m_pWorkspace->addWindow(prov);
+    empresaBase() ->m_pWorkspace->addWindow ( prov );
     prov->show();
-    _depura("END ContratoView::on_subform2_itemDoubleClicked", 0);
+    _depura ( "END ContratoView::on_subform2_itemDoubleClicked", 0 );
 }
 
 
 ///
 /**
 **/
-void ContratoView::on_mui_facturar_clicked() {
-    _depura("ContratoView::on_mui_facturar_clicked", 0);
+void ContratoView::on_mui_facturar_clicked()
+{
+    _depura ( "ContratoView::on_mui_facturar_clicked", 0 );
     int periodo = 1;
     QString query;
     bool end = FALSE;
-    while(!end) {
-	query = "SELECT ('"+DBvalue("fincontrato")+"'::DATE +"+QString::number(periodo-1)+"* '"+DBvalue("periodicidadcontrato")+"'::INTERVAL) AS finperiodo";
-	query += ", ('"+DBvalue("fincontrato")+"'::DATE +"+QString::number(periodo)+"* '"+DBvalue("periodicidadcontrato")+"'::INTERVAL) AS ffinperiodo";
-	cursor2 *cur1=empresaBase()->cargacursor(query);
+    while ( !end ) {
+        query = "SELECT ('" + DBvalue ( "fincontrato" ) + "'::DATE +" + QString::number ( periodo - 1 ) + "* '" + DBvalue ( "periodicidadcontrato" ) + "'::INTERVAL) AS finperiodo";
+        query += ", ('" + DBvalue ( "fincontrato" ) + "'::DATE +" + QString::number ( periodo ) + "* '" + DBvalue ( "periodicidadcontrato" ) + "'::INTERVAL) AS ffinperiodo";
+        cursor2 *cur1 = empresaBase() ->cargacursor ( query );
 
-        query = "SELECT count(idfactura) AS cuenta FROM factura WHERE ffactura >= '"+cur1->valor("finperiodo")+"'";
-        query += " AND ffactura <  '"+cur1->valor("ffinperiodo")+"'";
-	query += " AND reffactura = '"+DBvalue("refcontrato")+"'";
-        query += " AND idcliente = "+DBvalue("idcliente");
+        query = "SELECT count(idfactura) AS cuenta FROM factura WHERE ffactura >= '" + cur1->valor ( "finperiodo" ) + "'";
+        query += " AND ffactura <  '" + cur1->valor ( "ffinperiodo" ) + "'";
+        query += " AND reffactura = '" + DBvalue ( "refcontrato" ) + "'";
+        query += " AND idcliente = " + DBvalue ( "idcliente" );
 
-        cursor2 *cur = empresaBase()->cargacursor(query);
-        if(cur->valor("cuenta") != "0") {
-		if (cur->valor("cuenta") != "1") {
-			_depura("Detectada doble factura en un periodo", 2, cur->valor("cuenta"));
-		} // end if
-	} else {
+        cursor2 *cur = empresaBase() ->cargacursor ( query );
+        if ( cur->valor ( "cuenta" ) != "0" ) {
+            if ( cur->valor ( "cuenta" ) != "1" ) {
+                _depura ( "Detectada doble factura en un periodo", 2, cur->valor ( "cuenta" ) );
+            } // end if
+        } else {
             // GENERAMOS LA FACTURA
-            FacturaView *fac = empresaBase()->newFacturaView();
-            empresaBase()->m_pWorkspace->addWindow(fac);
-            fac->cargar("0");
+            FacturaView *fac = empresaBase() ->newFacturaView();
+            empresaBase() ->m_pWorkspace->addWindow ( fac );
+            fac->cargar ( "0" );
             fac->show();
-            fac->setDBvalue("reffactura", DBvalue("refcontrato"));
-            fac->setDBvalue("idcliente", DBvalue("idcliente"));
-            fac->setDBvalue("descfactura", DBvalue("nomcontrato")+" Periodo:  "+cur1->valor("finperiodo").left(10)+ " -- "+cur1->valor("ffinperiodo").left(10));
+            fac->setDBvalue ( "reffactura", DBvalue ( "refcontrato" ) );
+            fac->setDBvalue ( "idcliente", DBvalue ( "idcliente" ) );
+            fac->setDBvalue ( "descfactura", DBvalue ( "nomcontrato" ) + " Periodo:  " + cur1->valor ( "finperiodo" ).left ( 10 ) + " -- " + cur1->valor ( "ffinperiodo" ).left ( 10 ) );
 
             QString l;
             SDBRecord *linea, *linea1;
-            for (int i = 0; i < m_listalineas->rowCount(); ++i) {
-                linea = m_listalineas->lineaat(i);
-                if (linea->DBvalue( "idarticulo") != "") {
-                    linea1 = fac->getlistalineas()->lineaat(fac->getlistalineas()->rowCount() - 1);
-                    linea1->setDBvalue("idarticulo", linea->DBvalue("idarticulo"));
-                    linea1->setDBvalue("codigocompletoarticulo", linea->DBvalue("codigocompletoarticulo"));
-                    linea1->setDBvalue("nomarticulo", linea->DBvalue("nomarticulo"));
-                    linea1->setDBvalue("desclfactura", linea->DBvalue("desclcontrato"));
-                    linea1->setDBvalue("descuentolfactura", "0");
-                    linea1->setDBvalue("cantlfactura", linea->DBvalue("cantlcontrato"));
-                    linea1->setDBvalue("pvplfactura", linea->DBvalue("pvplcontrato"));
-                    fac->getlistalineas()->nuevoRegistro();
+            for ( int i = 0; i < m_listalineas->rowCount(); ++i ) {
+                linea = m_listalineas->lineaat ( i );
+                if ( linea->DBvalue ( "idarticulo" ) != "" ) {
+                    linea1 = fac->getlistalineas() ->lineaat ( fac->getlistalineas() ->rowCount() - 1 );
+                    linea1->setDBvalue ( "idarticulo", linea->DBvalue ( "idarticulo" ) );
+                    linea1->setDBvalue ( "codigocompletoarticulo", linea->DBvalue ( "codigocompletoarticulo" ) );
+                    linea1->setDBvalue ( "nomarticulo", linea->DBvalue ( "nomarticulo" ) );
+                    linea1->setDBvalue ( "desclfactura", linea->DBvalue ( "desclcontrato" ) );
+                    linea1->setDBvalue ( "descuentolfactura", "0" );
+                    linea1->setDBvalue ( "cantlfactura", linea->DBvalue ( "cantlcontrato" ) );
+                    linea1->setDBvalue ( "pvplfactura", linea->DBvalue ( "pvplcontrato" ) );
+                    fac->getlistalineas() ->nuevoRegistro();
                 } // end if
             } // end for
             fac->calculaypintatotales();
@@ -321,15 +337,15 @@ void ContratoView::on_mui_facturar_clicked() {
         } // end if
         delete cur;
 
-        query = "SELECT (now() < '"+DBvalue("fincontrato")+"'::DATE + '"+DBvalue("periodicidadcontrato")+"'::INTERVAL *"+QString::number(periodo)+" ) AS dato";
-        cur = empresaBase()->cargacursor(query);
-        if(cur->valor("dato") == "t") {
+        query = "SELECT (now() < '" + DBvalue ( "fincontrato" ) + "'::DATE + '" + DBvalue ( "periodicidadcontrato" ) + "'::INTERVAL *" + QString::number ( periodo ) + " ) AS dato";
+        cur = empresaBase() ->cargacursor ( query );
+        if ( cur->valor ( "dato" ) == "t" ) {
             end = TRUE;
         }// end if
-	delete cur1;
+        delete cur1;
         periodo++;
     } // end while
-    _depura("END ContratoView::on_mui_facturar_clicked", 0);
+    _depura ( "END ContratoView::on_mui_facturar_clicked", 0 );
 }
 
 /// =============================================================================
@@ -340,33 +356,34 @@ void ContratoView::on_mui_facturar_clicked() {
 /**
 \param parent
 **/
-FacturasContratoListSubForm::FacturasContratoListSubForm(QWidget *parent, const char *) : SubForm2Bf(parent) {
-    _depura("FacturasContratoListSubForm::FacturasContratoListSubForm", 0);
-    setDBTableName("factura");
-    setDBCampoId("idfactura");
-    setFileConfig("contratofactura");
-    addSHeader("numfactura", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Numero"));
-    addSHeader("ffactura", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Fecha"));
-    addSHeader("nomcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre cliente"));
-    addSHeader("telfactura", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Telefono factura"));
-    addSHeader("bimpfactura", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Base imponible"));
-    addSHeader("impfactura", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Impuestos"));
-    addSHeader("totalfactura", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Total"));
-    addSHeader("procesadafactura", DBCampo::DBboolean, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Procesada"));
-    addSHeader("idfactura", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Id factura"));
-    addSHeader("reffactura", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("Ref factura"));
-    addSHeader("codigoserie_factura", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Serie"));
-    addSHeader("cifcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("CIF cliente"));
-    addSHeader("codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Codigo almacen"));
-    addSHeader("contactfactura", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Contact factura"));
-    addSHeader("comentfactura", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Comentario factura"));
-    addSHeader("idtrabajador", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Id trabajador"));
-    addSHeader("idcliente", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Id cliente"));
-    addSHeader("idalmacen", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Id almacen"));
-    setinsercion(FALSE);
-    setDelete(FALSE);
-    setSortingEnabled(TRUE);
-    _depura("END FacturasContratoListSubForm::FacturasContratoListSubForm", 0);
+FacturasContratoListSubForm::FacturasContratoListSubForm ( QWidget *parent, const char * ) : SubForm2Bf ( parent )
+{
+    _depura ( "FacturasContratoListSubForm::FacturasContratoListSubForm", 0 );
+    setDBTableName ( "factura" );
+    setDBCampoId ( "idfactura" );
+    setFileConfig ( "contratofactura" );
+    addSHeader ( "numfactura", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Numero" ) );
+    addSHeader ( "ffactura", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Fecha" ) );
+    addSHeader ( "nomcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre cliente" ) );
+    addSHeader ( "telfactura", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Telefono factura" ) );
+    addSHeader ( "bimpfactura", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Base imponible" ) );
+    addSHeader ( "impfactura", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Impuestos" ) );
+    addSHeader ( "totalfactura", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Total" ) );
+    addSHeader ( "procesadafactura", DBCampo::DBboolean, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Procesada" ) );
+    addSHeader ( "idfactura", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Id factura" ) );
+    addSHeader ( "reffactura", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "Ref factura" ) );
+    addSHeader ( "codigoserie_factura", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Serie" ) );
+    addSHeader ( "cifcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "CIF cliente" ) );
+    addSHeader ( "codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Codigo almacen" ) );
+    addSHeader ( "contactfactura", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Contact factura" ) );
+    addSHeader ( "comentfactura", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Comentario factura" ) );
+    addSHeader ( "idtrabajador", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Id trabajador" ) );
+    addSHeader ( "idcliente", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Id cliente" ) );
+    addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Id almacen" ) );
+    setinsercion ( FALSE );
+    setDelete ( FALSE );
+    setSortingEnabled ( TRUE );
+    _depura ( "END FacturasContratoListSubForm::FacturasContratoListSubForm", 0 );
 }
 
 

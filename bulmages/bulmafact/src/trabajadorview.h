@@ -30,7 +30,8 @@
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un trabajador.
 /** */
-class TrabajadorView : public FichaBf, public Ui_TrabajadorBase {
+class TrabajadorView : public FichaBf, public Ui_TrabajadorBase
+{
     Q_OBJECT
 
 private:
@@ -50,7 +51,7 @@ private:
     virtual void imprimir();
 
 public:
-    TrabajadorView(Company * emp, QWidget *parent = 0);
+    TrabajadorView ( Company * emp, QWidget *parent = 0 );
     ~TrabajadorView();
     bool trataModificado();
     QString idtrabajador();
@@ -58,7 +59,7 @@ public:
     virtual void on_mui_borrar_clicked();
 
 private slots:
-    virtual void on_mui_lista_currentItemChanged(QListWidgetItem *cur, QListWidgetItem *prev);
+    virtual void on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWidgetItem *prev );
     virtual void on_mui_nuevo_clicked();
     virtual void on_mui_imagen_clicked();
 };

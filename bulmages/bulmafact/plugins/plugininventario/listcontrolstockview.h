@@ -29,15 +29,16 @@
 
 /// Muestra y administra el listado de control de stocks.
 /** */
-class ListControlStockView : public SubForm2Bf {
+class ListControlStockView : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
     QString mdb_idinventario;
-    ListControlStockView(QWidget *parent = 0, const char *name = 0);
+    ListControlStockView ( QWidget *parent = 0, const char *name = 0 );
     ~ListControlStockView();
     virtual int borrar();
-    virtual void cargar(QString);
+    virtual void cargar ( QString );
     virtual int guardar();
     virtual void pregenerar();
 };

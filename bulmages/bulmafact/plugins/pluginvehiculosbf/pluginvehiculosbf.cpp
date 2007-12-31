@@ -35,30 +35,33 @@
 ///
 /**
 **/
-myplugin::myplugin() {
-    _depura("myplugin::myplugin", 0);
-    _depura("END myplugin::myplugin", 0);
+myplugin::myplugin()
+{
+    _depura ( "myplugin::myplugin", 0 );
+    _depura ( "END myplugin::myplugin", 0 );
 }
 
 
 ///
 /**
 **/
-myplugin::~myplugin() {
-    _depura("myplugin::~myplugin", 0);
-    _depura("END myplugin::~myplugin", 0);
+myplugin::~myplugin()
+{
+    _depura ( "myplugin::~myplugin", 0 );
+    _depura ( "END myplugin::~myplugin", 0 );
 }
 
 
 ///
 /**
 **/
-void myplugin::elslot() {
-    _depura("myplugin::elslot", 0);
-    VehiculoView *vehiculoview = new VehiculoView((Company *) m_conexionbase);
-    m_bulmafact->workspace()->addWindow(vehiculoview);
+void myplugin::elslot()
+{
+    _depura ( "myplugin::elslot", 0 );
+    VehiculoView *vehiculoview = new VehiculoView ( ( Company * ) m_conexionbase );
+    m_bulmafact->workspace() ->addWindow ( vehiculoview );
     vehiculoview->show();
-    _depura("END myplugin::elslot", 0);
+    _depura ( "END myplugin::elslot", 0 );
 }
 
 
@@ -66,20 +69,21 @@ void myplugin::elslot() {
 /**
 \param bges
 **/
-void myplugin::inicializa(Bulmafact *bges) {
-    _depura("myplugin::inicializa", 0);
+void myplugin::inicializa ( Bulmafact *bges )
+{
+    _depura ( "myplugin::inicializa", 0 );
     /// Creamos el men&uacute;.
     m_conexionbase = bges->getcompany();
     m_bulmafact = bges;
-    QMenu *pPluginMenu = new QMenu("&Vehiculos");
-    QAction *accion = new QAction("&Nuevo vehiculo", 0);
-    accion->setStatusTip("Vehiculos");
-    accion->setWhatsThis("Vehiculos");
-    connect(accion, SIGNAL(activated()), this, SLOT(elslot()));
-    pPluginMenu->addAction(accion);
+    QMenu *pPluginMenu = new QMenu ( "&Vehiculos" );
+    QAction *accion = new QAction ( "&Nuevo vehiculo", 0 );
+    accion->setStatusTip ( "Vehiculos" );
+    accion->setWhatsThis ( "Vehiculos" );
+    connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+    pPluginMenu->addAction ( accion );
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bges->menuBar()->addMenu(pPluginMenu);
-    _depura("END myplugin::inicializa", 0);
+    bges->menuBar() ->addMenu ( pPluginMenu );
+    _depura ( "END myplugin::inicializa", 0 );
 }
 
 
@@ -88,11 +92,12 @@ void myplugin::inicializa(Bulmafact *bges) {
 \param bges
 \return
 **/
-int entryPoint(Bulmafact *bges) {
-    _depura("Punto de Entrada del plugin PluginVehiculosBF", 0);
+int entryPoint ( Bulmafact *bges )
+{
+    _depura ( "Punto de Entrada del plugin PluginVehiculosBF", 0 );
     myplugin *plug = new myplugin();
-    plug->inicializa(bges);
-    _depura("END Punto de Entrada del plugin PluginVehiculosBF", 0);
+    plug->inicializa ( bges );
+    _depura ( "END Punto de Entrada del plugin PluginVehiculosBF", 0 );
     return 0;
 }
 

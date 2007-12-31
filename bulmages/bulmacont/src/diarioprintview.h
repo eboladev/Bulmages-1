@@ -40,7 +40,8 @@
 /// Ventana de impresi&oacute; de diarios.
 /// @class DiarioPrintView diarioprintview.h
 /** Es la ventana de impresi&oacute; de diarios. */
-class DiarioPrintView : public QDialog, public Ui_DiarioPrintBase, PEmpresaBase {
+class DiarioPrintView : public QDialog, public Ui_DiarioPrintBase, PEmpresaBase
+{
     Q_OBJECT
 
 public:
@@ -51,9 +52,9 @@ public:
     /// Establece cual es la ventana de filtro de diario. Es imprescindible
     /// inicializar el filtro antes de mostrar la ventana o el bot&oacute;n de filtro
     /// no funcionar&aacute;.
-    DiarioPrintView(Empresa *emp, QWidget *parent);
+    DiarioPrintView ( Empresa *emp, QWidget *parent );
     ~DiarioPrintView();
-    void presentar(char *tipus = "html");
+    void presentar ( char *tipus = "html" );
 
 private:
     QString montaQuery();

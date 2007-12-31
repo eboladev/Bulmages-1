@@ -32,5 +32,5 @@
 
 #include "bulmafact.h"
 
-extern "C" MY_EXPORT int entryPoint(Bulmafact *);
+extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 

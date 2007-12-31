@@ -49,51 +49,52 @@
 /**
 \param bd
 **/
-BulmaTPV::BulmaTPV(QString bd) : QMainWindow() {
-    _depura("BulmaTPV::BulmaTPV", 0);
-    setupUi(this);
-    setUpdatesEnabled(TRUE);
-    pWorkspace = new QWorkspace2(this);
-    pWorkspace->setScrollBarsEnabled(TRUE);
+BulmaTPV::BulmaTPV ( QString bd ) : QMainWindow()
+{
+    _depura ( "BulmaTPV::BulmaTPV", 0 );
+    setupUi ( this );
+    setUpdatesEnabled ( TRUE );
+    pWorkspace = new QWorkspace2 ( this );
+    pWorkspace->setScrollBarsEnabled ( TRUE );
     QFrame *m_frame1 = new QFrame();
     QProgressBar *m_pb = new QProgressBar();
-    m_pb->setMaximum(100);
-    m_pb->setMinimum(0);
-    m_pb->setValue(0);
+    m_pb->setMaximum ( 100 );
+    m_pb->setMinimum ( 0 );
+    m_pb->setValue ( 0 );
     /// Hacemos que el ProgressBar est&eacute; invisible hasta que se seleccione una empresa.
-    m_pb->setVisible(FALSE);
-    setCentralWidget(m_frame1);
+    m_pb->setVisible ( FALSE );
+    setCentralWidget ( m_frame1 );
     /// Creamos un VerticalLayout donde metemos el contenido central del QMainWindow.
-    QVBoxLayout *vboxlayout = new QVBoxLayout(this->centralWidget());
-    vboxlayout->setSpacing(0);
-    vboxlayout->setMargin(0);
-    vboxlayout->addWidget(pWorkspace);
-    vboxlayout->addWidget(m_pb);
+    QVBoxLayout *vboxlayout = new QVBoxLayout ( this->centralWidget() );
+    vboxlayout->setSpacing ( 0 );
+    vboxlayout->setMargin ( 0 );
+    vboxlayout->addWidget ( pWorkspace );
+    vboxlayout->addWidget ( m_pb );
 
 
-    m_empresaTPV = new EmpresaTPV(this);
-    m_empresaTPV->setProgressBar(m_pb);
-    m_empresaTPV->init(bd, "BulmaFact");
-    m_empresaTPV->setWorkspace(pWorkspace);
+    m_empresaTPV = new EmpresaTPV ( this );
+    m_empresaTPV->setProgressBar ( m_pb );
+    m_empresaTPV->init ( bd, "BulmaFact" );
+    m_empresaTPV->setWorkspace ( pWorkspace );
 
 
     //connect(pWorkspace, SIGNAL(windowActivated(QWidget *)), this, SLOT(informaindexador(QWidget *)));
 
-    setCorner(Qt::TopLeftCorner, Qt::TopDockWidgetArea);
-    setCorner(Qt::TopRightCorner, Qt::RightDockWidgetArea);
-    setCorner(Qt::BottomLeftCorner, Qt::LeftDockWidgetArea);
-    setCorner(Qt::BottomRightCorner, Qt::RightDockWidgetArea);
+    setCorner ( Qt::TopLeftCorner, Qt::TopDockWidgetArea );
+    setCorner ( Qt::TopRightCorner, Qt::RightDockWidgetArea );
+    setCorner ( Qt::BottomLeftCorner, Qt::LeftDockWidgetArea );
+    setCorner ( Qt::BottomRightCorner, Qt::RightDockWidgetArea );
 
 
 
-    QDockWidget *widgetPrueba = new QDockWidget(NULL);
-    addDockWidget(Qt::LeftDockWidgetArea, widgetPrueba);
+    QDockWidget *widgetPrueba = new QDockWidget ( NULL );
+    addDockWidget ( Qt::LeftDockWidgetArea, widgetPrueba );
 //    m_company->setListVentanas(m_list);
 
-    m_pb->setVisible(FALSE);
-    statusBar()->showMessage(bd, 2000);
-    setWindowTitle(bd);
-    _depura("END BulmaTPV::BulmaTPV", 0);
+    m_pb->setVisible ( FALSE );
+    statusBar() ->showMessage ( bd, 2000 );
+    setWindowTitle ( bd );
+    _depura ( "END BulmaTPV::BulmaTPV", 0 );
 }
 
 
@@ -102,10 +103,11 @@ BulmaTPV::BulmaTPV(QString bd) : QMainWindow() {
 /**
 \param splashScr
 **/
-void BulmaTPV::createMainWindows(Splash *splashScr) {
-    _depura("BulmaTPV::createMainWindows", 0);
-    m_empresaTPV->createMainWindows(splashScr);
-    _depura("END BulmaTPV::createMainWindows", 0);
+void BulmaTPV::createMainWindows ( Splash *splashScr )
+{
+    _depura ( "BulmaTPV::createMainWindows", 0 );
+    m_empresaTPV->createMainWindows ( splashScr );
+    _depura ( "END BulmaTPV::createMainWindows", 0 );
 }
 
 
@@ -113,17 +115,18 @@ void BulmaTPV::createMainWindows(Splash *splashScr) {
 */
 /**
 **/
-BulmaTPV::~BulmaTPV() {
-    _depura("BulmaTPV::~BulmaTPV", 0);
+BulmaTPV::~BulmaTPV()
+{
+    _depura ( "BulmaTPV::~BulmaTPV", 0 );
     delete pWorkspace;
     /// En MS-Windows no termina bien la ejecucion del programa y por eso
     /// agregamos esta salida rapida.
 #ifdef WINDOWS
 
-    exit(0);
+    exit ( 0 );
 #endif
 
-    _depura("END BulmaTPV::~BulmaTPV", 0);
+    _depura ( "END BulmaTPV::~BulmaTPV", 0 );
 }
 
 
@@ -132,14 +135,15 @@ BulmaTPV::~BulmaTPV() {
 */
 /**
 **/
-void BulmaTPV::s_ventanaCompleta() {
-    _depura("BulmaTPV::s_ventanaCompleta", 0);
-    if (isFullScreen()) {
+void BulmaTPV::s_ventanaCompleta()
+{
+    _depura ( "BulmaTPV::s_ventanaCompleta", 0 );
+    if ( isFullScreen() ) {
         showNormal();
     } else {
         showFullScreen();
     } // end if
-    _depura("END BulmaTPV::s_ventanaCompleta", 0);
+    _depura ( "END BulmaTPV::s_ventanaCompleta", 0 );
 }
 
 
@@ -148,11 +152,12 @@ void BulmaTPV::s_ventanaCompleta() {
 */
 /**
 **/
-void BulmaTPV::s_About() {
-    _depura("BulmaTPV::s_About", 0);
+void BulmaTPV::s_About()
+{
+    _depura ( "BulmaTPV::s_About", 0 );
     AboutView about;
     about.exec();
-    _depura("END BulmaTPV::s_About", 0);
+    _depura ( "END BulmaTPV::s_About", 0 );
 }
 
 
@@ -161,16 +166,17 @@ void BulmaTPV::s_About() {
 */
 /**
 **/
-void BulmaTPV::closeEvent(QCloseEvent *) {
-    _depura("BulmaTPV::closeEvent", 0);
+void BulmaTPV::closeEvent ( QCloseEvent * )
+{
+    _depura ( "BulmaTPV::closeEvent", 0 );
 //    delete m_company;
 //    m_company = NULL;
 #ifdef WINDOWS
 
-    exit(0);
+    exit ( 0 );
 #endif
 
-    _depura("END BulmaTPV::closeEvent", 0);
+    _depura ( "END BulmaTPV::closeEvent", 0 );
 }
 
 
@@ -178,19 +184,22 @@ void BulmaTPV::closeEvent(QCloseEvent *) {
 /**
 \return
 **/
-QWorkspace2 * BulmaTPV::workspace() {
-    _depura("BulmaTPV::workspace", 0);
-    _depura("END BulmaTPV::workspace", 0);
+QWorkspace2 * BulmaTPV::workspace()
+{
+    _depura ( "BulmaTPV::workspace", 0 );
+    _depura ( "END BulmaTPV::workspace", 0 );
     return pWorkspace;
 }
 
 
-void BulmaTPV::keyPressEvent ( QKeyEvent * e ) {
-	m_empresaTPV->keyPressEvent(e);
+void BulmaTPV::keyPressEvent ( QKeyEvent * e )
+{
+    m_empresaTPV->keyPressEvent ( e );
 }
 
 
-EmpresaTPV *BulmaTPV::empresaTPV() {
-	return m_empresaTPV;
+EmpresaTPV *BulmaTPV::empresaTPV()
+{
+    return m_empresaTPV;
 }
 

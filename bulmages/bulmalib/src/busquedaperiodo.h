@@ -26,7 +26,8 @@
 #include "funcaux.h"
 
 
-class BusquedaPeriodo : public QComboBox2 {
+class BusquedaPeriodo : public QComboBox2
+{
     Q_OBJECT
 
 private:
@@ -34,18 +35,18 @@ private:
     QString m_valores[10];
 
 public:
-    BusquedaPeriodo(QWidget *parent = 0);
+    BusquedaPeriodo ( QWidget *parent = 0 );
     ~BusquedaPeriodo();
-    virtual void setperiodo(QString periodo);
-    virtual void setValorCampo(QString periodo);
+    virtual void setperiodo ( QString periodo );
+    virtual void setValorCampo ( QString periodo );
     QString periodo();
     virtual QString valorCampo();
 
 public slots:
-    void s_activated(int index);
+    void s_activated ( int index );
 
 signals:
-    void valueChanged(QString);
+    void valueChanged ( QString );
 };
 
 #endif

@@ -25,14 +25,15 @@
 
 /// Esta clase implementa el C&oacute;digo Cuenta Cliente (CCC) de un banco.
 /** Su funci&oacute;n m&aacute;s importante es 'cuentaesvalida'. */
-class numerocuenta {
+class numerocuenta
+{
 public:
     /// Banco, entidad, dc y numcuenta.
-    numerocuenta(QString, QString, QString, QString);
+    numerocuenta ( QString, QString, QString, QString );
     /// Banco, entidad y numcuenta. El dc lo calcula autom&aacute;ticamente.
-    numerocuenta(QString, QString, QString);
+    numerocuenta ( QString, QString, QString );
     /// Banco, entidad, dc y numcuenta todo seguido, con guiones opcionales.
-    numerocuenta(QString);
+    numerocuenta ( QString );
     ~numerocuenta();
     /// Calcula y devuelve los digitos de control del ccc.
     QString getdc();
@@ -40,7 +41,7 @@ public:
     /// Devuelve TRUE si es un CCC correcto. FALSE en caso contrario.
     bool cuentaesvalida();
     /// Devuelve el CCC separando sus miembros por la cadena \c sep.
-    QString getcodigo(QString sep = "");
+    QString getcodigo ( QString sep = "" );
     /// Devuelve el n&uacute;mero de cuenta.
     QString getnumcuenta();
     /// Devuelve el n&uacute;mero de banco.
@@ -49,13 +50,13 @@ public:
     QString getentidad();
     /// Fija el n&uacute;mero de cuenta.
     /// Si el argumento tiene menos de 10 d&iacute;gitos, se rellena con ceros a la izquierda.
-    void setnumcuenta(QString cad);
+    void setnumcuenta ( QString cad );
     /// Fija el n&uacute;mero de banco.
     /// Si el argumento tiene menos de 4 d&iacute;gitos, se rellena con ceros a la izquierda.
-    void setbanco(QString cad);
+    void setbanco ( QString cad );
     /// Fija el n&uacute;mero de entidad.
     /// Si el argumento tiene menos de 4 d&iacute;gitos, se rellena con ceros a la izquierda.
-    void setentidad(QString cad);
+    void setentidad ( QString cad );
 
 private:
     QString banco;

@@ -44,45 +44,47 @@
 \param comp
 \param parent
 **/
-PagoView::PagoView(Company *comp, QWidget *parent)
-        :  FichaBf(comp, parent) {
-    _depura("PagoView::PagoView", 0);
+PagoView::PagoView ( Company *comp, QWidget *parent )
+        :  FichaBf ( comp, parent )
+{
+    _depura ( "PagoView::PagoView", 0 );
     try {
-        setAttribute(Qt::WA_DeleteOnClose);
-        setupUi(this);
+        setAttribute ( Qt::WA_DeleteOnClose );
+        setupUi ( this );
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
-        mui_idproveedor->setEmpresaBase(comp);
-        mui_refpago->setEmpresaBase(comp);
-        mui_idbanco->setEmpresaBase(comp);
+        mui_idproveedor->setEmpresaBase ( comp );
+        mui_refpago->setEmpresaBase ( comp );
+        mui_idbanco->setEmpresaBase ( comp );
 
-        setTitleName(tr("Pago"));
-        setDBTableName("pago");
-        setDBCampoId("idpago");
-        addDBCampo("idpago", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Pago", "Id pago"));
-        addDBCampo("idproveedor", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("Pago", "Id proveedor"));
-        addDBCampo("previsionpago", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("Pago", "Previcion de pago"));
-        addDBCampo("fechapago", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Pago", "Fecha de pago"));
-        addDBCampo("refpago", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Pago", "Referencia de pago"));
-        addDBCampo("cantpago", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate("Pago", "Cantidad"));
-        addDBCampo("comentpago", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Pago", "Comentario del pago"));
-        addDBCampo("idbanco", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Pago", "Banco"));
+        setTitleName ( tr ( "Pago" ) );
+        setDBTableName ( "pago" );
+        setDBCampoId ( "idpago" );
+        addDBCampo ( "idpago", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "Pago", "Id pago" ) );
+        addDBCampo ( "idproveedor", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "Pago", "Id proveedor" ) );
+        addDBCampo ( "previsionpago", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate ( "Pago", "Previcion de pago" ) );
+        addDBCampo ( "fechapago", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate ( "Pago", "Fecha de pago" ) );
+        addDBCampo ( "refpago", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Pago", "Referencia de pago" ) );
+        addDBCampo ( "cantpago", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate ( "Pago", "Cantidad" ) );
+        addDBCampo ( "comentpago", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Pago", "Comentario del pago" ) );
+        addDBCampo ( "idbanco", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Pago", "Banco" ) );
 
-        meteWindow(windowTitle(), this, FALSE);
+        meteWindow ( windowTitle(), this, FALSE );
         pintar();
         dialogChanges_cargaInicial();
-    } catch (...) {
-        mensajeInfo(tr("Error al crear el pago"));
+    } catch ( ... ) {
+        mensajeInfo ( tr ( "Error al crear el pago" ) );
     } // end try
-    _depura("Fin de la inicializacion de PagoView\n", 0);
-    _depura("END PagoView::PagoView", 0);
+    _depura ( "Fin de la inicializacion de PagoView\n", 0 );
+    _depura ( "END PagoView::PagoView", 0 );
 }
 
 
 ///
 /**
 **/
-PagoView::~PagoView() {
-    _depura("PagoView::~PagoView", 0);
-    _depura("END PagoView::~PagoView", 0);
+PagoView::~PagoView()
+{
+    _depura ( "PagoView::~PagoView", 0 );
+    _depura ( "END PagoView::~PagoView", 0 );
 }
 

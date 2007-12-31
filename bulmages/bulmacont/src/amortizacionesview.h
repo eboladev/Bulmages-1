@@ -31,7 +31,8 @@ class Empresa;
 
 /** Trata la ventana de Listado de Amortizaciones.
 */
-class AmortizacionesView : public Listado, public Ui_AmortizacionesBase {
+class AmortizacionesView : public Listado, public Ui_AmortizacionesBase
+{
     Q_OBJECT
 private:
 
@@ -41,15 +42,15 @@ private:
     QString mdb_nomamortizacion;
 
 public:
-   AmortizacionesView(Empresa *, QWidget *);
+    AmortizacionesView ( Empresa *, QWidget * );
     ~AmortizacionesView();
     void inicializatabla();
-    void editar(int);
+    void editar ( int );
     virtual void crear();
     virtual void borrar();
 
 signals:
-    void selected(QString);
+    void selected ( QString );
 
 };
 

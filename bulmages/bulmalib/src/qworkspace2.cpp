@@ -28,18 +28,20 @@
 ///
 /**
 **/
-QWorkspace2::QWorkspace2(QWidget *) {
-    _depura("QWorkspace2::QWorkspace2", 0);
-    _depura("END QWorkspace2::QWorkspace2", 0);
+QWorkspace2::QWorkspace2 ( QWidget * )
+{
+    _depura ( "QWorkspace2::QWorkspace2", 0 );
+    _depura ( "END QWorkspace2::QWorkspace2", 0 );
 }
 
 
 ///
 /**
 **/
-QWorkspace2::~QWorkspace2() {
-    _depura("QWorkspace2::~QWorkspace2", 0);
-    _depura("END QWorkspace2::~QWorkspace2", 0);
+QWorkspace2::~QWorkspace2()
+{
+    _depura ( "QWorkspace2::~QWorkspace2", 0 );
+    _depura ( "END QWorkspace2::~QWorkspace2", 0 );
 }
 
 
@@ -47,8 +49,9 @@ QWorkspace2::~QWorkspace2() {
 /**
 \param w
 **/
-void QWorkspace2::addWindow(QWidget * w) {
-    _depura("QWorkspace2::addWindow", 0);
+void QWorkspace2::addWindow ( QWidget * w )
+{
+    _depura ( "QWorkspace2::addWindow", 0 );
     int tamdispW;
     int tamdispH;
     int tamventanadecoW;
@@ -57,37 +60,37 @@ void QWorkspace2::addWindow(QWidget * w) {
     int tamventanaH;
     int margen = 10;
 
-    QWorkspace::addWindow(w);
+    QWorkspace::addWindow ( w );
 
     /// Se comprueba el tama&ntilde;o de la ventana que esta dise&ntilde;ada con Designer:
     /// S&oacute;lo si la ventana es m&aacute;s grande que el espacio de representaci&oacute;n
     /// se ajusta para caber dentro.
 
     /// Captura el tama&ntilde;o disponible. Restamos el margen que dejamos a cada lado (x2).
-    tamdispW = this->width() - (margen * 2);
-    tamdispH = this->height() - (margen * 2);
+    tamdispW = this->width() - ( margen * 2 );
+    tamdispH = this->height() - ( margen * 2 );
 
     /// Captura el tama&ntilde;o con decoraci&oacute;n de la ventana a insertar.
-    tamventanadecoW = w->parentWidget()->frameGeometry().width();
-    tamventanadecoH = w->parentWidget()->frameGeometry().height();
+    tamventanadecoW = w->parentWidget() ->frameGeometry().width();
+    tamventanadecoH = w->parentWidget() ->frameGeometry().height();
     /// Captura el tama&ntilde;o sin decoraci&oacute;n de la ventana a insertar.
     tamventanaW = w->geometry().width();
     tamventanaH = w->geometry().height();
 
     /// Comprobamos si es necesario cambiar el tama&ntilde;o a la ventana.
-    if (tamventanadecoW > tamdispW)
-        tamventanaW = tamdispW - (tamventanadecoW - tamventanaW);
-    if (tamventanadecoH > tamdispH)
-        tamventanaH = tamdispH - (tamventanadecoH - tamventanaH);
+    if ( tamventanadecoW > tamdispW )
+        tamventanaW = tamdispW - ( tamventanadecoW - tamventanaW );
+    if ( tamventanadecoH > tamdispH )
+        tamventanaH = tamdispH - ( tamventanadecoH - tamventanaH );
 
-    w->setGeometry(0, 0, tamventanaW, tamventanaH);
-    w->parentWidget()->move(margen, margen);
+    w->setGeometry ( 0, 0, tamventanaW, tamventanaH );
+    w->parentWidget() ->move ( margen, margen );
 
     /// Crea un QAction para manejar la tecla rapida ESC para cerrar la ventana.
-    QAction *accionEsc = new QAction(w);
-    accionEsc->setShortcut(tr("Esc"));
-    connect(accionEsc, SIGNAL(triggered()), w, SLOT(close()));
-    w->addAction(accionEsc);
-    _depura("END QWorkspace2::addWindow", 0);
+    QAction *accionEsc = new QAction ( w );
+    accionEsc->setShortcut ( tr ( "Esc" ) );
+    connect ( accionEsc, SIGNAL ( triggered() ), w, SLOT ( close() ) );
+    w->addAction ( accionEsc );
+    _depura ( "END QWorkspace2::addWindow", 0 );
 }
 

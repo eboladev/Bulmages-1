@@ -43,43 +43,44 @@
 /**
 \param bcont
 **/
-void entryPoint(Bulmacont *bcont) {
-    _depura("Entrada del plugin ADocumental.", 10);
+void entryPoint ( Bulmacont *bcont )
+{
+    _depura ( "Entrada del plugin ADocumental.", 10 );
 
-    QPixmap *img = new QPixmap(napuntedoc);
-    QPixmap *img1 = new QPixmap(ndoc);
+    QPixmap *img = new QPixmap ( napuntedoc );
+    QPixmap *img1 = new QPixmap ( ndoc );
 
     Empresa *emp = bcont->empresaactual();
     Asiento1View *intapunts = emp->intapuntsempresa();
 
-    myplugin1 *pub = new myplugin1(emp);
+    myplugin1 *pub = new myplugin1 ( emp );
     intapunts->hide();
 
-    QToolButton *m_adocumental = new QToolButton(intapunts);
-    m_adocumental->setIcon(QIcon(*img));
-    m_adocumental->setMinimumSize(QSize(22, 22));
-    m_adocumental->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    QObject::connect(m_adocumental, SIGNAL(clicked()), pub, SLOT(boton_adjuntar()));
+    QToolButton *m_adocumental = new QToolButton ( intapunts );
+    m_adocumental->setIcon ( QIcon ( *img ) );
+    m_adocumental->setMinimumSize ( QSize ( 22, 22 ) );
+    m_adocumental->setSizePolicy ( QSizePolicy::Fixed, QSizePolicy::Fixed );
+    QObject::connect ( m_adocumental, SIGNAL ( clicked() ), pub, SLOT ( boton_adjuntar() ) );
 
-    intapunts->hboxLayout1->addWidget(m_adocumental);
+    intapunts->hboxLayout1->addWidget ( m_adocumental );
 
-    QToolButton *m_adocumental1 = new QToolButton(intapunts);
-    m_adocumental1->setIcon(QIcon(*img1));
-    m_adocumental1->setMinimumSize(QSize(22, 22));
-    m_adocumental1->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    QObject::connect(m_adocumental1, SIGNAL(clicked()), pub, SLOT(boton_nuevoasientodocumental()));
+    QToolButton *m_adocumental1 = new QToolButton ( intapunts );
+    m_adocumental1->setIcon ( QIcon ( *img1 ) );
+    m_adocumental1->setMinimumSize ( QSize ( 22, 22 ) );
+    m_adocumental1->setSizePolicy ( QSizePolicy::Fixed, QSizePolicy::Fixed );
+    QObject::connect ( m_adocumental1, SIGNAL ( clicked() ), pub, SLOT ( boton_nuevoasientodocumental() ) );
 
-    intapunts->hboxLayout1->addWidget(m_adocumental1);
+    intapunts->hboxLayout1->addWidget ( m_adocumental1 );
 
     /// Hacemos la entrada de menu.
-    QAction *ArchDoc = new QAction("&Archivo documental", 0);
-    ArchDoc->setStatusTip("Archivo documental");
-    ArchDoc->setWhatsThis("Archivo documental");
-    QObject::connect(ArchDoc, SIGNAL(activated()), pub, SLOT(archDoc()));
+    QAction *ArchDoc = new QAction ( "&Archivo documental", 0 );
+    ArchDoc->setStatusTip ( "Archivo documental" );
+    ArchDoc->setWhatsThis ( "Archivo documental" );
+    QObject::connect ( ArchDoc, SIGNAL ( activated() ), pub, SLOT ( archDoc() ) );
 
     /// Pone la opcion dentro del menu HERRAMIENTAS.
-    bcont->mui_MenuHerramientas()->addSeparator();
-    bcont->mui_MenuHerramientas()->addAction(ArchDoc);
-    _depura("Iniciado correctamente el plugin ADocumental.", 10);
+    bcont->mui_MenuHerramientas() ->addSeparator();
+    bcont->mui_MenuHerramientas() ->addAction ( ArchDoc );
+    _depura ( "Iniciado correctamente el plugin ADocumental.", 10 );
 }
 

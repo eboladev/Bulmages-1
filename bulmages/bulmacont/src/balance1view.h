@@ -51,7 +51,8 @@ class Empresa;
     Esta clase sirve para presentar en balance de sumas y saldos en forma de tabla. Permite
     presentar el balance entre unos rangos definidos, incluyendo las cuentas de un nivel
     determinado. */
-class BalanceTreeView : public FichaBc, public Ui_BalanceTreeBase {
+class BalanceTreeView : public FichaBc, public Ui_BalanceTreeBase
+{
     Q_OBJECT
 
 private:
@@ -71,20 +72,20 @@ private:
     int m_cpadre;
 
 public:
-    BalanceTreeView(Empresa *, QWidget *parent = 0, int flags = 0);
-    void inicializa1(QString, QString, QString, QString, int);
+    BalanceTreeView ( Empresa *, QWidget *parent = 0, int flags = 0 );
+    void inicializa1 ( QString, QString, QString, QString, int );
     ~BalanceTreeView();
 
 private:
     void presentar();
 
 private slots:
-    virtual void contextmenu(const QPoint &);
-    virtual void nivelactivated(int);
-    virtual void nivelactivated1(int, QTreeWidgetItem *);
-    virtual void boton_extracto1(int);
+    virtual void contextmenu ( const QPoint & );
+    virtual void nivelactivated ( int );
+    virtual void nivelactivated1 ( int, QTreeWidgetItem * );
+    virtual void boton_extracto1 ( int );
     virtual void boton_asiento();
-    virtual void boton_diario1(int);
+    virtual void boton_diario1 ( int );
 
 public slots:
     virtual void on_mui_actualizar_clicked();

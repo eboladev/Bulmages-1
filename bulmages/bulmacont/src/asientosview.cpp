@@ -35,65 +35,69 @@
 \param flag
 \param edmode
 **/
-AsientosView::AsientosView(Empresa *comp, QWidget *parent, Qt::WFlags flag, edmode )
-    : Listado(comp, parent, flag) {
-    _depura("AsientosView::AsientosView", 0);
-    setupUi(this);
+AsientosView::AsientosView ( Empresa *comp, QWidget *parent, Qt::WFlags flag, edmode )
+        : Listado ( comp, parent, flag )
+{
+    _depura ( "AsientosView::AsientosView", 0 );
+    setupUi ( this );
 
-    mui_mostrar->insertItem(0, tr("Todos los asientos"));
-    mui_mostrar->insertItem(1, tr("Asientos cerrados"));
-    mui_mostrar->insertItem(2, tr("Asientos abiertos"));
+    mui_mostrar->insertItem ( 0, tr ( "Todos los asientos" ) );
+    mui_mostrar->insertItem ( 1, tr ( "Asientos cerrados" ) );
+    mui_mostrar->insertItem ( 2, tr ( "Asientos abiertos" ) );
 
     rellenaListaEjercicio();
 
     mui_filtrar->toggle();
-    mui_list->setEmpresaBase(comp);
-    setSubForm(mui_list);
-    empresaBase()->meteWindow(windowTitle(), this);
-    _depura("END AsientosView::AsientosView", 0);
+    mui_list->setEmpresaBase ( comp );
+    setSubForm ( mui_list );
+    empresaBase() ->meteWindow ( windowTitle(), this );
+    _depura ( "END AsientosView::AsientosView", 0 );
 }
 
 
 ///
 /**
 **/
-void AsientosView::rellenaListaEjercicio() {
-    _depura("AsientosView::rellenaListaEjercicio", 0);
+void AsientosView::rellenaListaEjercicio()
+{
+    _depura ( "AsientosView::rellenaListaEjercicio", 0 );
     /// Actualiza el contenido del combobox.
     mui_ejercicio->clear();
-    mui_ejercicio->insertItem(0, tr("(todos)"));
+    mui_ejercicio->insertItem ( 0, tr ( "(todos)" ) );
     QString SQLQuery = "SELECT DISTINCT EXTRACT (YEAR FROM fecha) AS ano FROM borrador";
-    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
-    while (!cur->eof()) {
-        mui_ejercicio->addItem(cur->valor("ano"));
+    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
+    while ( !cur->eof() ) {
+        mui_ejercicio->addItem ( cur->valor ( "ano" ) );
         cur->siguienteregistro();
     } // end while
     delete cur;
-    _depura("END AsientosView::rellenaListaEjercicio", 0);
+    _depura ( "END AsientosView::rellenaListaEjercicio", 0 );
 }
 
 
 ///
 /**
 **/
-AsientosView::~AsientosView() {
-    _depura("AsientosView::~AsientosView\n", 0);
-    empresaBase()->sacaWindow(this);
-    _depura("END AsientosView::~AsientosView\n", 0);
+AsientosView::~AsientosView()
+{
+    _depura ( "AsientosView::~AsientosView\n", 0 );
+    empresaBase() ->sacaWindow ( this );
+    _depura ( "END AsientosView::~AsientosView\n", 0 );
 }
 
 
 ///
 /**
 **/
-void AsientosView::on_mui_list_cellDoubleClicked(int, int) {
-    _depura("AsientosView::on_mui_list_cellDoubleClicked", 0);
-    QString idasiento = mui_list->DBvalue("idasiento");
-    ((Empresa *)empresaBase())->intapuntsempresa()->muestraasiento(idasiento);
-    ((Empresa *)empresaBase())->intapuntsempresa()->show();
-    ((Empresa *)empresaBase())->intapuntsempresa()->setFocus();
-    ((Empresa *)empresaBase())->muestraapuntes1();
-    _depura("END AsientosView::on_mui_list_cellDoubleClicked", 0);
+void AsientosView::on_mui_list_cellDoubleClicked ( int, int )
+{
+    _depura ( "AsientosView::on_mui_list_cellDoubleClicked", 0 );
+    QString idasiento = mui_list->DBvalue ( "idasiento" );
+    ( ( Empresa * ) empresaBase() ) ->intapuntsempresa() ->muestraasiento ( idasiento );
+    ( ( Empresa * ) empresaBase() ) ->intapuntsempresa() ->show();
+    ( ( Empresa * ) empresaBase() ) ->intapuntsempresa() ->setFocus();
+    ( ( Empresa * ) empresaBase() ) ->muestraapuntes1();
+    _depura ( "END AsientosView::on_mui_list_cellDoubleClicked", 0 );
 }
 
 
@@ -101,8 +105,9 @@ void AsientosView::on_mui_list_cellDoubleClicked(int, int) {
 /// y presentando los resultados en pantalla.
 /**
 **/
-void AsientosView::presentar() {
-    _depura("AsientosView::presentar", 0);
+void AsientosView::presentar()
+{
+    _depura ( "AsientosView::presentar", 0 );
     QString saldototal = mui_saldoasiento->text();
     /// Pasamos el texto a minusculas para hacer la busqueda 'case insensitive'.
     QString nombreasiento = mui_nombreasiento->text().toLower();
@@ -124,24 +129,24 @@ void AsientosView::presentar() {
     int pand = 0;
 
     /// Componemos la consulta a partir de la parte de filtrado.
-    if (saldototal != "") {
+    if ( saldototal != "" ) {
         cadwhere = " WHERE ";
         textsaldototal = " asiento.idasiento IN (SELECT idasiento FROM (SELECT idasiento, SUM(debe) AS totaldebe, SUM(haber) as totalhaber FROM apunte GROUP BY idasiento) AS foo WHERE foo.totaldebe = " + saldototal + " OR foo.totalhaber = " + saldototal + ")";
         pand = 1;
     } // end if
-    if (apuntemayoroigual != "") {
+    if ( apuntemayoroigual != "" ) {
         cadwhere = " WHERE ";
-        if (pand) {
+        if ( pand ) {
             /// Ya existe un saldototal ('igual a') por lo que se hace un OR a la consulta.
             textapuntemayoroigual = " OR (";
         } // end if
         textapuntemayoroigual += " asiento.idasiento IN (SELECT idasiento FROM apunte WHERE debe >= " + apuntemayoroigual + " OR haber >= " + apuntemayoroigual + ")";
         pand = 1;
     } // end if
-    if (apuntemenoroigual != "") {
+    if ( apuntemenoroigual != "" ) {
         cadwhere = " WHERE ";
-        if (pand) {
-            if (apuntemayoroigual != "") {
+        if ( pand ) {
+            if ( apuntemayoroigual != "" ) {
                 /// Hay definido un 'mayor o igual' y tambien un 'igual a'.
                 textapuntemenoroigual = " AND ";
             } else {
@@ -153,13 +158,13 @@ void AsientosView::presentar() {
         pand = 1;
     } // end if
     /// Se mira si se tiene que cerrar el parentesis en la consulta a la base de datos.
-    if (saldototal != "" && (apuntemenoroigual != "" || apuntemayoroigual != "")) {
+    if ( saldototal != "" && ( apuntemenoroigual != "" || apuntemayoroigual != "" ) ) {
         textoparentesis = ")";
     } // end if
 
-    if (nombreasiento != "") {
+    if ( nombreasiento != "" ) {
         cadwhere = " WHERE ";
-        if (pand) {
+        if ( pand ) {
             textnombreasiento = " AND ";
         } // end if
         textnombreasiento += " asiento.idasiento in (SELECT idasiento FROM apunte WHERE lower(conceptocontable) LIKE '%" + nombreasiento + "%' )";
@@ -174,68 +179,68 @@ void AsientosView::presentar() {
     ///         entonces el combobox de 'ejercicio' queda anulado.
     /// Regla: Si esta especificado 'ejercicio' pero solo una fecha 'inicial' o 'final'
     ///         se pone automaticamente la fecha que falta.
-    if (buscafechainicial != "" && buscafechafinal == "") {
+    if ( buscafechainicial != "" && buscafechafinal == "" ) {
         /// Falta fecha final.
-        if (mui_ejercicio->currentIndex() == 0) {
+        if ( mui_ejercicio->currentIndex() == 0 ) {
             /// Todos los ejercicios.
-            if (pand) {
-                textejercicio = " AND fecha >= '" + QDateTime::fromString(buscafechainicial, "dd/MM/yyyy").toString("yyyy-MM-dd") + "'";
+            if ( pand ) {
+                textejercicio = " AND fecha >= '" + QDateTime::fromString ( buscafechainicial, "dd/MM/yyyy" ).toString ( "yyyy-MM-dd" ) + "'";
             } else {
-                textejercicio = " WHERE fecha >= '" + QDateTime::fromString(buscafechainicial, "dd/MM/yyyy").toString("yyyy-MM-dd") + "'";
+                textejercicio = " WHERE fecha >= '" + QDateTime::fromString ( buscafechainicial, "dd/MM/yyyy" ).toString ( "yyyy-MM-dd" ) + "'";
                 pand = 1;
             } // end if
         } else {
             /// Ejercicio seleccionado. Maximo hasta final de ese a&ntilde;o,
             buscafechafinal = "31/12/" + mui_ejercicio->currentText();
-            mui_fechaFinal->setText(buscafechafinal);
-            if (pand) {
-                textejercicio = " AND fecha >= '" + QDateTime::fromString(buscafechainicial, "dd/MM/yyyy").toString("yyyy-MM-dd") + "' AND fecha <= '" + QDateTime::fromString(buscafechafinal, "dd/MM/yyyy").toString("yyyy-MM-dd") + "'";
+            mui_fechaFinal->setText ( buscafechafinal );
+            if ( pand ) {
+                textejercicio = " AND fecha >= '" + QDateTime::fromString ( buscafechainicial, "dd/MM/yyyy" ).toString ( "yyyy-MM-dd" ) + "' AND fecha <= '" + QDateTime::fromString ( buscafechafinal, "dd/MM/yyyy" ).toString ( "yyyy-MM-dd" ) + "'";
             } else {
-                textejercicio = " WHERE fecha >= '" + QDateTime::fromString(buscafechainicial, "dd/MM/yyyy").toString("yyyy-MM-dd") + "' AND fecha <= '" + QDateTime::fromString(buscafechafinal, "dd/MM/yyyy").toString("yyyy-MM-dd") + "'";
+                textejercicio = " WHERE fecha >= '" + QDateTime::fromString ( buscafechainicial, "dd/MM/yyyy" ).toString ( "yyyy-MM-dd" ) + "' AND fecha <= '" + QDateTime::fromString ( buscafechafinal, "dd/MM/yyyy" ).toString ( "yyyy-MM-dd" ) + "'";
                 pand = 1;
             } // end if
         } // end if
-    } else if (buscafechainicial == "" && buscafechafinal != "") {
+    } else if ( buscafechainicial == "" && buscafechafinal != "" ) {
         /// Falta fecha inicial.
-        if (mui_ejercicio->currentIndex() == 0) {
+        if ( mui_ejercicio->currentIndex() == 0 ) {
             /// Todos los ejercicios.
-            if (pand) {
-                textejercicio = " AND fecha <= '" + QDateTime::fromString(buscafechafinal, "dd/MM/yyyy").toString("yyyy-MM-dd") + "'";
+            if ( pand ) {
+                textejercicio = " AND fecha <= '" + QDateTime::fromString ( buscafechafinal, "dd/MM/yyyy" ).toString ( "yyyy-MM-dd" ) + "'";
             } else {
-                textejercicio = " WHERE fecha <= '" + QDateTime::fromString(buscafechafinal, "dd/MM/yyyy").toString("yyyy-MM-dd") + "'";
+                textejercicio = " WHERE fecha <= '" + QDateTime::fromString ( buscafechafinal, "dd/MM/yyyy" ).toString ( "yyyy-MM-dd" ) + "'";
                 pand = 1;
             } // end if
         } else {
             /// Ejercicio seleccionado. Maximo hasta final de ese a&ntilde;o,
             buscafechainicial = "01/01/" + mui_ejercicio->currentText();
-            mui_fechaInicial->setText(buscafechainicial);
-            if (pand) {
-                textejercicio = " AND fecha >= '" + QDateTime::fromString(buscafechainicial, "dd/MM/yyyy").toString("yyyy-MM-dd") + "' AND fecha <= '" + QDateTime::fromString(buscafechafinal, "dd/MM/yyyy").toString("yyyy-MM-dd") + "'";
+            mui_fechaInicial->setText ( buscafechainicial );
+            if ( pand ) {
+                textejercicio = " AND fecha >= '" + QDateTime::fromString ( buscafechainicial, "dd/MM/yyyy" ).toString ( "yyyy-MM-dd" ) + "' AND fecha <= '" + QDateTime::fromString ( buscafechafinal, "dd/MM/yyyy" ).toString ( "yyyy-MM-dd" ) + "'";
             } else {
-                textejercicio = " WHERE fecha >= '" + QDateTime::fromString(buscafechainicial, "dd/MM/yyyy").toString("yyyy-MM-dd") + "' AND fecha <= '" + QDateTime::fromString(buscafechafinal, "dd/MM/yyyy").toString("yyyy-MM-dd") + "'";
+                textejercicio = " WHERE fecha >= '" + QDateTime::fromString ( buscafechainicial, "dd/MM/yyyy" ).toString ( "yyyy-MM-dd" ) + "' AND fecha <= '" + QDateTime::fromString ( buscafechafinal, "dd/MM/yyyy" ).toString ( "yyyy-MM-dd" ) + "'";
                 pand = 1;
             } // end if
         } // end if
-    } else if (buscafechainicial != "" && buscafechafinal != "") {
+    } else if ( buscafechainicial != "" && buscafechafinal != "" ) {
         /// Hay fecha inicial y fecha final.
         /// Primero se comprueba que la fecha final sea mayor que la fecha inicial.
-        if (QDateTime::fromString(buscafechainicial, "dd/MM/yyyy") > QDateTime::fromString(buscafechafinal, "dd/MM/yyyy")) {
+        if ( QDateTime::fromString ( buscafechainicial, "dd/MM/yyyy" ) > QDateTime::fromString ( buscafechafinal, "dd/MM/yyyy" ) ) {
             /// Error de fechas.
-            mensajeAviso(tr("La fecha inicial es posterior a la fecha final."));
+            mensajeAviso ( tr ( "La fecha inicial es posterior a la fecha final." ) );
             return;
         } else {
-            if (pand) {
-                textejercicio = " AND fecha >= '" + QDateTime::fromString(buscafechainicial, "dd/MM/yyyy").toString("yyyy-MM-dd") + "' AND fecha <= '" + QDateTime::fromString(buscafechafinal, "dd/MM/yyyy").toString("yyyy-MM-dd") + "'";
+            if ( pand ) {
+                textejercicio = " AND fecha >= '" + QDateTime::fromString ( buscafechainicial, "dd/MM/yyyy" ).toString ( "yyyy-MM-dd" ) + "' AND fecha <= '" + QDateTime::fromString ( buscafechafinal, "dd/MM/yyyy" ).toString ( "yyyy-MM-dd" ) + "'";
             } else {
-                textejercicio = " WHERE fecha >= '" + QDateTime::fromString(buscafechainicial, "dd/MM/yyyy").toString("yyyy-MM-dd") + "' AND fecha <= '" + QDateTime::fromString(buscafechafinal, "dd/MM/yyyy").toString("yyyy-MM-dd") + "'";
+                textejercicio = " WHERE fecha >= '" + QDateTime::fromString ( buscafechainicial, "dd/MM/yyyy" ).toString ( "yyyy-MM-dd" ) + "' AND fecha <= '" + QDateTime::fromString ( buscafechafinal, "dd/MM/yyyy" ).toString ( "yyyy-MM-dd" ) + "'";
                 pand = 1;
             } // end if
         } // end if
-    } else if (buscafechainicial == "" && buscafechafinal == "" && mui_ejercicio->currentIndex() != 0) {
+    } else if ( buscafechainicial == "" && buscafechafinal == "" && mui_ejercicio->currentIndex() != 0 ) {
         /// No hay ninguna fecha.
-        if (mui_ejercicio->currentIndex() != 0) {
+        if ( mui_ejercicio->currentIndex() != 0 ) {
             /// Ejercicio seleccionado.
-            if (pand) {
+            if ( pand ) {
                 textejercicio = " AND EXTRACT(YEAR FROM fecha) = '" + ejercicio + "'";
             } else {
                 textejercicio = " WHERE EXTRACT(YEAR FROM fecha) = '" + ejercicio + "'";
@@ -245,16 +250,16 @@ void AsientosView::presentar() {
     } // end if
 
     /// Mostramos todos los asientos, solo los cerrados o solo los abiertos.
-    if (mui_mostrar->currentIndex() == 1) {
+    if ( mui_mostrar->currentIndex() == 1 ) {
         /// Muestra solo los cerrados.
-        if (pand) {
+        if ( pand ) {
             muestra += " AND numap IS NOT NULL ";
         } else {
             muestra += " WHERE numap IS NOT NULL ";
         } // end if
-    } else if (mui_mostrar->currentIndex() == 2) {
+    } else if ( mui_mostrar->currentIndex() == 2 ) {
         /// Muestra solo los abiertos.
-        if (pand) {
+        if ( pand ) {
             muestra += " AND numap IS NULL ";
         } else {
             muestra += " WHERE numap IS NULL ";
@@ -262,33 +267,34 @@ void AsientosView::presentar() {
     } // end if
 
     query = "SELECT asiento.ordenasiento, asiento.idasiento, asiento.fecha, totaldebe, totalhaber, numap, numborr, comentariosasiento, clase FROM asiento LEFT JOIN (SELECT count(idborrador) AS numborr, idasiento FROM borrador GROUP BY idasiento) AS foo1 ON foo1.idasiento = asiento.idasiento LEFT JOIN (SELECT SUM(debe) AS totaldebe, SUM(haber) AS totalhaber, count(idapunte) AS numap, idasiento FROM apunte GROUP BY idasiento) AS fula ON asiento.idasiento = fula.idasiento " + cadwhere + textsaldototal + textapuntemayoroigual + textapuntemenoroigual + textoparentesis + textnombreasiento + textejercicio + muestra + " ORDER BY EXTRACT (YEAR FROM asiento.fecha), asiento.ordenasiento";
-    mui_list->cargar(query);
+    mui_list->cargar ( query );
 
     /// Actualiza el contenido del combobox.
     rellenaListaEjercicio();
 
     /// Busca el texto guardado anteriormente del combobox y lo selecciona.
     int ejercicioIndice;
-    ejercicioIndice = mui_ejercicio->findText(ejercicio);
-    mui_ejercicio->setCurrentIndex(ejercicioIndice);
+    ejercicioIndice = mui_ejercicio->findText ( ejercicio );
+    mui_ejercicio->setCurrentIndex ( ejercicioIndice );
 
     /// Calculamos el total en el subformulario y lo presentamos.
-    Fixed td= mui_list->sumarCampo("totaldebe");
-    Fixed th = mui_list->sumarCampo("totalhaber");
-    mui_totalDebe->setText(td.toQString());
-    mui_totalHaber->setText(th.toQString());
+    Fixed td = mui_list->sumarCampo ( "totaldebe" );
+    Fixed th = mui_list->sumarCampo ( "totalhaber" );
+    mui_totalDebe->setText ( td.toQString() );
+    mui_totalHaber->setText ( th.toQString() );
 
-    _depura("END AsientosView::presentar", 0);
+    _depura ( "END AsientosView::presentar", 0 );
 }
 
 
 ///
 /**
 **/
-void AsientosView::imprimir() {
-    _depura("AsientosView::on_mui_imprimir_clicked", 0);
-    mui_list->imprimirPDF(tr("Asientos"));
-    _depura("END AsientosView::on_mui_imprimir_clicked", 0);
+void AsientosView::imprimir()
+{
+    _depura ( "AsientosView::on_mui_imprimir_clicked", 0 );
+    mui_list->imprimirPDF ( tr ( "Asientos" ) );
+    _depura ( "END AsientosView::on_mui_imprimir_clicked", 0 );
 }
 
 

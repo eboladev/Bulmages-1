@@ -28,15 +28,16 @@
 /**
 \param parent
 **/
-BusquedaEstadoIncidencia::BusquedaEstadoIncidencia(QWidget *parent)
-        : QComboBox(parent) {
-    _depura("BusquedaEstadoIncidencia::BusquedaEstadoIncidencia", 0);
-    m_textos[0] = tr("Pendiente");
-    m_textos[1] = tr("Terminada");
-    m_textos[2] = tr("No quiere nada");
-    m_textos[3] = tr("No paga");
-    m_textos[4] = tr("Cambio datos");
-    m_textos[5] = tr("Revisar");
+BusquedaEstadoIncidencia::BusquedaEstadoIncidencia ( QWidget *parent )
+        : QComboBox ( parent )
+{
+    _depura ( "BusquedaEstadoIncidencia::BusquedaEstadoIncidencia", 0 );
+    m_textos[0] = tr ( "Pendiente" );
+    m_textos[1] = tr ( "Terminada" );
+    m_textos[2] = tr ( "No quiere nada" );
+    m_textos[3] = tr ( "No paga" );
+    m_textos[4] = tr ( "Cambio datos" );
+    m_textos[5] = tr ( "Revisar" );
 
     m_valores[0] = "1";
     m_valores[1] = "2";
@@ -46,22 +47,23 @@ BusquedaEstadoIncidencia::BusquedaEstadoIncidencia(QWidget *parent)
     m_valores[5] = "6";
 
     int i = 0;
-    while (i <= 5) {
-        addItem(m_textos[i]);
+    while ( i <= 5 ) {
+        addItem ( m_textos[i] );
         i++;
     } // end while
 
-    connect(this, SIGNAL(activated(int)), this, SLOT(s_activated(int)));
-    _depura("END BusquedaEstadoIncidencia::BusquedaEstadoIncidencia", 0);
+    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( s_activated ( int ) ) );
+    _depura ( "END BusquedaEstadoIncidencia::BusquedaEstadoIncidencia", 0 );
 }
 
 
 ///
 /**
 **/
-BusquedaEstadoIncidencia::~BusquedaEstadoIncidencia() {
-    _depura("BusquedaEstadoIncidencia::~BusquedaEstadoIncidencia", 0);
-    _depura("END BusquedaEstadoIncidencia::~BusquedaEstadoIncidencia", 0);
+BusquedaEstadoIncidencia::~BusquedaEstadoIncidencia()
+{
+    _depura ( "BusquedaEstadoIncidencia::~BusquedaEstadoIncidencia", 0 );
+    _depura ( "END BusquedaEstadoIncidencia::~BusquedaEstadoIncidencia", 0 );
 }
 
 
@@ -69,16 +71,17 @@ BusquedaEstadoIncidencia::~BusquedaEstadoIncidencia() {
 /**
 \param estado
 **/
-void BusquedaEstadoIncidencia::setestado(QString estado) {
-    _depura("BusquedaEstadoIncidencia::setestado", 0);
+void BusquedaEstadoIncidencia::setestado ( QString estado )
+{
+    _depura ( "BusquedaEstadoIncidencia::setestado", 0 );
     int i = 0;
-    while (m_valores[i] != estado && i <= 5) {
+    while ( m_valores[i] != estado && i <= 5 ) {
         i ++;
     }
-    if (i <= 5)
-        setCurrentIndex(i);
+    if ( i <= 5 )
+        setCurrentIndex ( i );
     else
-        setCurrentIndex(0);
-    _depura("END BusquedaEstadoIncidencia::setestado", 0);
+        setCurrentIndex ( 0 );
+    _depura ( "END BusquedaEstadoIncidencia::setestado", 0 );
 }
 

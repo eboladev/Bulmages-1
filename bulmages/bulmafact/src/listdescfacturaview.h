@@ -28,20 +28,23 @@
 
 /// Muestra y administra la ventana de lista de descuentos por factura a cliente.
 /** */
-class ListDescuentoFacturaView : public SubForm2Bf {
+class ListDescuentoFacturaView : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
     QString mdb_idfactura;
-    ListDescuentoFacturaView(QWidget *parent = 0);
-    ~ListDescuentoFacturaView() {}
+    ListDescuentoFacturaView ( QWidget *parent = 0 );
+    ~ListDescuentoFacturaView()
+    {}
     ;
 
 public slots:
-    virtual void cargar(QString idfactura) {
-        _depura("ListCompArticulo::cargaListCompArticulo\n", 0);
+    virtual void cargar ( QString idfactura )
+    {
+        _depura ( "ListCompArticulo::cargaListCompArticulo\n", 0 );
         mdb_idfactura = idfactura;
-        SubForm3::cargar("SELECT * FROM dfactura WHERE idfactura = " + mdb_idfactura);
+        SubForm3::cargar ( "SELECT * FROM dfactura WHERE idfactura = " + mdb_idfactura );
     };
 };
 

@@ -29,14 +29,15 @@
 /**
 \param parent
 **/
-BusquedaTipoArticulo::BusquedaTipoArticulo(QWidget *parent)
-        : BLWidget(parent) {
-    _depura("BusquedaTipoArticulo::BusquedaTipoArticulo", 0);
-    setupUi(this);
+BusquedaTipoArticulo::BusquedaTipoArticulo ( QWidget *parent )
+        : BLWidget ( parent )
+{
+    _depura ( "BusquedaTipoArticulo::BusquedaTipoArticulo", 0 );
+    setupUi ( this );
     mdb_idtipo_articulo = "";
     mdb_desctipo_articulo = "";
     mdb_codtipo_articulo = "";
-    _depura("BusquedaTipoArticulo::BusquedaTipoArticulo", 0);
+    _depura ( "BusquedaTipoArticulo::BusquedaTipoArticulo", 0 );
 }
 
 
@@ -44,9 +45,10 @@ BusquedaTipoArticulo::BusquedaTipoArticulo(QWidget *parent)
 */
 /**
 **/
-BusquedaTipoArticulo::~BusquedaTipoArticulo() {
-    _depura("BusquedaTipoArticulo::~BusquedaTipoArticulo", 0);
-    _depura("END BusquedaTipoArticulo::~BusquedaTipoArticulo", 0);
+BusquedaTipoArticulo::~BusquedaTipoArticulo()
+{
+    _depura ( "BusquedaTipoArticulo::~BusquedaTipoArticulo", 0 );
+    _depura ( "END BusquedaTipoArticulo::~BusquedaTipoArticulo", 0 );
 }
 
 
@@ -57,29 +59,30 @@ BusquedaTipoArticulo::~BusquedaTipoArticulo() {
 /**
 \param val
 **/
-void BusquedaTipoArticulo::setidtipo_articulo(QString val) {
-    _depura("BusquedaTipoArticulo::setidtipo_articulo", 0);
+void BusquedaTipoArticulo::setidtipo_articulo ( QString val )
+{
+    _depura ( "BusquedaTipoArticulo::setidtipo_articulo", 0 );
     mdb_idtipo_articulo = val;
 
     /// Comprobamos que hayamos pasado un parametro valido.
-    if (val == "") {
+    if ( val == "" ) {
         mdb_idtipo_articulo = "";
         mdb_desctipo_articulo = "";
         mdb_codtipo_articulo = "";
     } else {
         QString SQLQuery = "SELECT * FROM tipo_articulo WHERE idtipo_articulo = '" + mdb_idtipo_articulo + "'";
-        cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
+        cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
 
-        if (!cur->eof()) {
-            mdb_codtipo_articulo = cur->valor("codtipo_articulo");
-            mdb_desctipo_articulo = cur->valor("desctipo_articulo");
+        if ( !cur->eof() ) {
+            mdb_codtipo_articulo = cur->valor ( "codtipo_articulo" );
+            mdb_desctipo_articulo = cur->valor ( "desctipo_articulo" );
         } // end if
 
         delete cur;
     } // end if
-    m_codtipo_articulo->setText(mdb_codtipo_articulo);
-    m_desctipo_articulo->setText(mdb_desctipo_articulo);
-    _depura("END BusquedaTipoArticulo::setidtipo_articulo", 0);
+    m_codtipo_articulo->setText ( mdb_codtipo_articulo );
+    m_desctipo_articulo->setText ( mdb_desctipo_articulo );
+    _depura ( "END BusquedaTipoArticulo::setidtipo_articulo", 0 );
 }
 
 
@@ -87,10 +90,11 @@ void BusquedaTipoArticulo::setidtipo_articulo(QString val) {
 /**
 \param val
 **/
-void BusquedaTipoArticulo::setValorCampo(QString val) {
-    _depura("BusquedaTipoArticulo::setValorCampo", 0);
-    setidtipo_articulo(val);
-    _depura("END BusquedaTipoArticulo::setValorCampo", 0);
+void BusquedaTipoArticulo::setValorCampo ( QString val )
+{
+    _depura ( "BusquedaTipoArticulo::setValorCampo", 0 );
+    setidtipo_articulo ( val );
+    _depura ( "END BusquedaTipoArticulo::setValorCampo", 0 );
 }
 
 
@@ -101,24 +105,25 @@ void BusquedaTipoArticulo::setValorCampo(QString val) {
 /**
 \param val
 **/
-void BusquedaTipoArticulo::setcodtipo_articulo(QString val) {
-    _depura("BusquedaTipoArticulo::setcodtipo_articulo", 0);
+void BusquedaTipoArticulo::setcodtipo_articulo ( QString val )
+{
+    _depura ( "BusquedaTipoArticulo::setcodtipo_articulo", 0 );
     mdb_codtipo_articulo = val;
     QString SQLQuery = "SELECT * FROM tipo_articulo WHERE codtipo_articulo = '" + mdb_codtipo_articulo + "'";
-    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
+    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
 
-    if(!cur->eof()) {
-        mdb_idtipo_articulo = cur->valor("idtipo_articulo");
-        mdb_desctipo_articulo = cur->valor("desctipo_articulo");
+    if ( !cur->eof() ) {
+        mdb_idtipo_articulo = cur->valor ( "idtipo_articulo" );
+        mdb_desctipo_articulo = cur->valor ( "desctipo_articulo" );
     } else {
         mdb_idtipo_articulo = "";
         mdb_desctipo_articulo = "";
     } // end if
 
     delete cur;
-    m_codtipo_articulo->setText(mdb_codtipo_articulo);
-    m_desctipo_articulo->setText(mdb_desctipo_articulo);
-    _depura("END BusquedaTipoArticulo::setcodtipo_articulo", 0);
+    m_codtipo_articulo->setText ( mdb_codtipo_articulo );
+    m_desctipo_articulo->setText ( mdb_desctipo_articulo );
+    _depura ( "END BusquedaTipoArticulo::setcodtipo_articulo", 0 );
 }
 
 
@@ -131,35 +136,36 @@ void BusquedaTipoArticulo::setcodtipo_articulo(QString val) {
 */
 /**
 **/
-void BusquedaTipoArticulo::on_mui_buscar_clicked() {
-    _depura("BusquedaTipoArticulo::on_mui_buscar_clicked", 0);
-    QDialog *diag = new QDialog(0);
-    diag->setModal(true);
+void BusquedaTipoArticulo::on_mui_buscar_clicked()
+{
+    _depura ( "BusquedaTipoArticulo::on_mui_buscar_clicked", 0 );
+    QDialog *diag = new QDialog ( 0 );
+    diag->setModal ( true );
 
-    TipoArticuloList *tip = ((Company *)empresaBase())->newTipoArticuloList(diag, TRUE);
-    connect(tip, SIGNAL(selected(QString)), diag, SLOT(accept()));
+    TipoArticuloList *tip = ( ( Company * ) empresaBase() ) ->newTipoArticuloList ( diag, TRUE );
+    connect ( tip, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
     /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
     /// para que sea redimensionable y aparezca el titulo de la ventana.
     QHBoxLayout *layout = new QHBoxLayout;
-    layout->addWidget(tip);
-    layout->setMargin(0);
-    layout->setSpacing(0);
-    diag->setLayout(layout);
-    diag->setWindowTitle(tip->windowTitle());
+    layout->addWidget ( tip );
+    layout->setMargin ( 0 );
+    layout->setSpacing ( 0 );
+    diag->setLayout ( layout );
+    diag->setWindowTitle ( tip->windowTitle() );
 
     diag->exec();
 
-    if (tip->codtipo_articulo() != "") {
-        m_codtipo_articulo->setText(tip->codtipo_articulo());
+    if ( tip->codtipo_articulo() != "" ) {
+        m_codtipo_articulo->setText ( tip->codtipo_articulo() );
         mdb_codtipo_articulo = tip->codtipo_articulo();
-        m_desctipo_articulo->setText(tip->desctipo_articulo());
+        m_desctipo_articulo->setText ( tip->desctipo_articulo() );
         mdb_desctipo_articulo = tip->desctipo_articulo();
         mdb_idtipo_articulo = tip->idtipo_articulo();
     } // end if
 
     delete diag;
-    _depura("END BusquedaTipoArticulo::on_mui_buscar_clicked", 0);
+    _depura ( "END BusquedaTipoArticulo::on_mui_buscar_clicked", 0 );
 
 }
 
@@ -172,25 +178,26 @@ void BusquedaTipoArticulo::on_mui_buscar_clicked() {
 /**
 \param val
 **/
-void BusquedaTipoArticulo::on_m_codtipo_articulo_textChanged(const QString &val) {
-    _depura("BusquedaTipoArticulo::on_m_codtipo_articulo_textChanged", 0);
+void BusquedaTipoArticulo::on_m_codtipo_articulo_textChanged ( const QString &val )
+{
+    _depura ( "BusquedaTipoArticulo::on_m_codtipo_articulo_textChanged", 0 );
     mdb_codtipo_articulo = val;
     QString SQLQuery = "SELECT * FROM tipo_articulo WHERE codtipo_articulo = '" + mdb_codtipo_articulo + "'";
-    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
+    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
 
-    if (!cur->eof()) {
-        mdb_idtipo_articulo = cur->valor("idtipo_articulo");
-        mdb_desctipo_articulo = cur->valor("desctipo_articulo");
+    if ( !cur->eof() ) {
+        mdb_idtipo_articulo = cur->valor ( "idtipo_articulo" );
+        mdb_desctipo_articulo = cur->valor ( "desctipo_articulo" );
     } else {
         mdb_idtipo_articulo = "";
         mdb_desctipo_articulo = "";
     } // end if
 
     delete cur;
-    m_codtipo_articulo->setText(mdb_codtipo_articulo);
-    m_desctipo_articulo->setText(mdb_desctipo_articulo);
-    emit(valueChanged(mdb_idtipo_articulo));
-    _depura("END BusquedaTipoArticulo::on_m_codtipo_articulo_textChanged", 0);
+    m_codtipo_articulo->setText ( mdb_codtipo_articulo );
+    m_desctipo_articulo->setText ( mdb_desctipo_articulo );
+    emit ( valueChanged ( mdb_idtipo_articulo ) );
+    _depura ( "END BusquedaTipoArticulo::on_m_codtipo_articulo_textChanged", 0 );
 }
 
 
@@ -201,9 +208,10 @@ void BusquedaTipoArticulo::on_m_codtipo_articulo_textChanged(const QString &val)
 /**
 \return
 **/
-QString BusquedaTipoArticulo::codtipo_articulo() {
-    _depura("BusquedaTipoArticulo::codtipo_articulo", 0);
-    _depura("END BusquedaTipoArticulo::codtipo_articulo", 0);
+QString BusquedaTipoArticulo::codtipo_articulo()
+{
+    _depura ( "BusquedaTipoArticulo::codtipo_articulo", 0 );
+    _depura ( "END BusquedaTipoArticulo::codtipo_articulo", 0 );
     return m_codtipo_articulo->text();
 }
 
@@ -214,9 +222,10 @@ QString BusquedaTipoArticulo::codtipo_articulo() {
 /**
 \return
 **/
-QString BusquedaTipoArticulo::idtipo_articulo() {
-    _depura("BusquedaTipoArticulo::idtipo_articulo", 0);
-    _depura("END BusquedaTipoArticulo::idtipo_articulo", 0);
+QString BusquedaTipoArticulo::idtipo_articulo()
+{
+    _depura ( "BusquedaTipoArticulo::idtipo_articulo", 0 );
+    _depura ( "END BusquedaTipoArticulo::idtipo_articulo", 0 );
     return mdb_idtipo_articulo;
 }
 
@@ -226,9 +235,10 @@ QString BusquedaTipoArticulo::idtipo_articulo() {
 /**
 \return
 **/
-QString BusquedaTipoArticulo::valorCampo() {
-    _depura("BusquedaTipoArticulo::valorCampo", 0);
-    _depura("END BusquedaTipoArticulo::valorCampo", 0);
+QString BusquedaTipoArticulo::valorCampo()
+{
+    _depura ( "BusquedaTipoArticulo::valorCampo", 0 );
+    _depura ( "END BusquedaTipoArticulo::valorCampo", 0 );
     return mdb_idtipo_articulo;
 }
 
@@ -239,9 +249,10 @@ QString BusquedaTipoArticulo::valorCampo() {
 /**
 \return
 **/
-QString BusquedaTipoArticulo::desctipo_articulo() {
-    _depura("BusquedaTipoArticulo::desctipo_articulo", 0);
-    _depura("END BusquedaTipoArticulo::desctipo_articulo", 0);
+QString BusquedaTipoArticulo::desctipo_articulo()
+{
+    _depura ( "BusquedaTipoArticulo::desctipo_articulo", 0 );
+    _depura ( "END BusquedaTipoArticulo::desctipo_articulo", 0 );
     return desctipo_articulo();
 }
 

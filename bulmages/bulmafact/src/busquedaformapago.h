@@ -31,7 +31,8 @@
 /// Permite buscar y seleccionar una forma de pago.
 /** Widget que permite buscar y seleccionar una
     forma de pago. Aparece en forma de comboBox. */
-class BusquedaFormaPago : public QComboBox2 {
+class BusquedaFormaPago : public QComboBox2
+{
     Q_OBJECT
 
 private:
@@ -39,20 +40,20 @@ private:
     cursor2 *m_cursorcombo;
 
 public:
-    BusquedaFormaPago(QWidget *parent = 0);
+    BusquedaFormaPago ( QWidget *parent = 0 );
     ~BusquedaFormaPago();
     QString idforma_pago();
     virtual QString  valorCampo();
-    virtual void setidforma_pago(QString idforma_pago);
-    virtual void setValorCampo(QString idforma_pago);
-    virtual void setIdCliente(QString);
-    virtual void setIdProveedor(QString);
+    virtual void setidforma_pago ( QString idforma_pago );
+    virtual void setValorCampo ( QString idforma_pago );
+    virtual void setIdCliente ( QString );
+    virtual void setIdProveedor ( QString );
 
 public slots:
-    virtual void m_activated(int index);
+    virtual void m_activated ( int index );
 
 signals:
-    void valueChanged(QString);
+    void valueChanged ( QString );
 };
 
 #endif

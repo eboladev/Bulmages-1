@@ -28,32 +28,35 @@
 #include "funcaux.h"
 #include "blwidget.h"
 
-class BusquedaZonaComercial : public QComboBox, public PEmpresaBase {
+class BusquedaZonaComercial : public QComboBox, public PEmpresaBase
+{
     Q_OBJECT
 
 private:
     cursor2 *m_cursorcombo;
 
 public:
-    BusquedaZonaComercial(QWidget *parent = 0);
+    BusquedaZonaComercial ( QWidget *parent = 0 );
     ~BusquedaZonaComercial();
-    virtual void setidzonacomercial(QString idzonacomercial);
-    QString idzonacomercial() {
-        return m_cursorcombo->valor("idzonacomercial", currentIndex() - 1);
+    virtual void setidzonacomercial ( QString idzonacomercial );
+    QString idzonacomercial()
+    {
+        return m_cursorcombo->valor ( "idzonacomercial", currentIndex() - 1 );
     };
 
 public slots:
-    void m_activated(int index) {
-        _depura("Activado el combo box", 0);
-        if (index > 0) {
-            emit(valueChanged(m_cursorcombo->valor("idzonacomercial", index - 1)));
+    void m_activated ( int index )
+    {
+        _depura ( "Activado el combo box", 0 );
+        if ( index > 0 ) {
+            emit ( valueChanged ( m_cursorcombo->valor ( "idzonacomercial", index - 1 ) ) );
         } else {
-            emit(valueChanged(""));
+            emit ( valueChanged ( "" ) );
         }
     };
 
 signals:
-    void valueChanged(QString);
+    void valueChanged ( QString );
 };
 
 #endif

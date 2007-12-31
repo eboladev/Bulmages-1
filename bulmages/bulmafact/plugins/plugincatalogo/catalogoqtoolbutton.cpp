@@ -47,50 +47,54 @@
 \param art
 \param parent
 **/
-CatalogoQToolButton::CatalogoQToolButton(ArticuloList *art , QWidget *parent) : QToolButton(parent), PEmpresaBase() {
-    _depura("CatalogoQToolButton::CatalogoQToolButton", 0);
+CatalogoQToolButton::CatalogoQToolButton ( ArticuloList *art , QWidget *parent ) : QToolButton ( parent ), PEmpresaBase()
+{
+    _depura ( "CatalogoQToolButton::CatalogoQToolButton", 0 );
     m_articuloList = art;
     setBoton();
-    _depura("END CatalogoQToolButton::CatalogoQToolButton", 0);
+    _depura ( "END CatalogoQToolButton::CatalogoQToolButton", 0 );
 }
 
 
 ///
 /**
 **/
-CatalogoQToolButton::~CatalogoQToolButton() {
-    _depura("CatalogoQToolButton::~CatalogoQToolButton", 0);
-    _depura("END CatalogoQToolButton::~CatalogoQToolButton", 0);
+CatalogoQToolButton::~CatalogoQToolButton()
+{
+    _depura ( "CatalogoQToolButton::~CatalogoQToolButton", 0 );
+    _depura ( "END CatalogoQToolButton::~CatalogoQToolButton", 0 );
 }
 
 
 ///
 /**
 **/
-void CatalogoQToolButton::setBoton() {
-    _depura("CatalogoQToolButton::setBoton", 0);
-    connect(this, SIGNAL(clicked()), this, SLOT(click()));
-    setObjectName(QString::fromUtf8("exporta"));
-    setStatusTip("Imprimir Catalogo");
-    setToolTip("Imprimir Catalogo");
-    setMinimumSize(QSize(32, 32));
-    setIcon(QIcon(QString::fromUtf8("/usr/share/bulmages/icons/catalogo.png")));
-    setIconSize(QSize(22, 22));
-    _depura("END CatalogoQToolButton::setBoton", 0);
+void CatalogoQToolButton::setBoton()
+{
+    _depura ( "CatalogoQToolButton::setBoton", 0 );
+    connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
+    setObjectName ( QString::fromUtf8 ( "exporta" ) );
+    setStatusTip ( "Imprimir Catalogo" );
+    setToolTip ( "Imprimir Catalogo" );
+    setMinimumSize ( QSize ( 32, 32 ) );
+    setIcon ( QIcon ( QString::fromUtf8 ( "/usr/share/bulmages/icons/catalogo.png" ) ) );
+    setIconSize ( QSize ( 22, 22 ) );
+    _depura ( "END CatalogoQToolButton::setBoton", 0 );
 }
 
 
 ///
 /**
 **/
-void CatalogoQToolButton::click() {
-    _depura("CatalogoQToolButton::click", 0);
+void CatalogoQToolButton::click()
+{
+    _depura ( "CatalogoQToolButton::click", 0 );
 
-    setEmpresaBase(m_articuloList->empresaBase());
+    setEmpresaBase ( m_articuloList->empresaBase() );
 
-    QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "articulos.rml";
-    QString archivod = confpr->valor(CONF_DIR_USER) + "articulos.rml";
-    QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
+    QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "articulos.rml";
+    QString archivod = confpr->valor ( CONF_DIR_USER ) + "articulos.rml";
+    QString archivologo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
     /// Copiamos el archivo.
 #ifdef WINDOWS
 
@@ -100,34 +104,34 @@ void CatalogoQToolButton::click() {
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
-    system (archivo.toAscii().constData());
+    system ( archivo.toAscii().constData() );
     /// Copiamos el logo.
 #ifdef WINDOWS
 
-    archivologo = "copy " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
+    archivologo = "copy " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #else
 
-    archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
+    archivologo = "cp " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
-    system(archivologo.toAscii().constData());
+    system ( archivologo.toAscii().constData() );
     QFile file;
-    file.setFileName(archivod);
-    file.open(QIODevice::ReadOnly);
-    QTextStream stream(&file);
+    file.setFileName ( archivod );
+    file.open ( QIODevice::ReadOnly );
+    QTextStream stream ( &file );
     QString buff = stream.readAll();
     file.close();
     QString texto;
     /// Linea de totales del presupuesto.
-    buff.replace("[detallearticulos]", detalleArticulos());
-    if (file.open(QIODevice::WriteOnly)) {
-        QTextStream stream(&file);
+    buff.replace ( "[detallearticulos]", detalleArticulos() );
+    if ( file.open ( QIODevice::WriteOnly ) ) {
+        QTextStream stream ( &file );
         stream << buff;
         file.close();
     } // end if
-    invocaPDF("articulos");
+    invocaPDF ( "articulos" );
 
-    _depura("END CatalogoQToolButton::click", 0);
+    _depura ( "END CatalogoQToolButton::click", 0 );
 }
 
 
@@ -137,23 +141,24 @@ void CatalogoQToolButton::click() {
 /**
 \return
 **/
-QString CatalogoQToolButton::detalleArticulos() {
-    _depura("CatalogoQToolButton::detalleArticulos", 0);
+QString CatalogoQToolButton::detalleArticulos()
+{
+    _depura ( "CatalogoQToolButton::detalleArticulos", 0 );
     QString texto = "";
 
 
-    cursor2 *cur = empresaBase()->cargacursor(m_articuloList->formaQuery());
-    while (!cur->eof()) {
+    cursor2 *cur = empresaBase() ->cargacursor ( m_articuloList->formaQuery() );
+    while ( !cur->eof() ) {
         texto += "<blockTable style=\"tabla1\">\n";
         texto += "<tr>\n";
-        texto += "<td><para><H1>" + XMLProtect(cur->valor("nomarticulo")) + "</H1></para>";
-        texto += "<para>" + XMLProtect(cur->valor("obserarticulo")) + "</para></td></tr><tr>\n";
-        QString file = confpr->valor(CONF_DIR_IMG_ARTICLES) + XMLProtect(cur->valor("codigocompletoarticulo")) + ".jpg";
-        QFile f(file);
-        if (f.exists()) {
+        texto += "<td><para><H1>" + XMLProtect ( cur->valor ( "nomarticulo" ) ) + "</H1></para>";
+        texto += "<para>" + XMLProtect ( cur->valor ( "obserarticulo" ) ) + "</para></td></tr><tr>\n";
+        QString file = confpr->valor ( CONF_DIR_IMG_ARTICLES ) + XMLProtect ( cur->valor ( "codigocompletoarticulo" ) ) + ".jpg";
+        QFile f ( file );
+        if ( f.exists() ) {
             texto += "<td><!-- illustration x=\"0\" y=\"0\" height=\"5cm\" -->\n"
-                     "<image file=\"" + confpr->valor(CONF_DIR_IMG_ARTICLES) +
-                     XMLProtect(cur->valor("codigocompletoarticulo")) +
+                     "<image file=\"" + confpr->valor ( CONF_DIR_IMG_ARTICLES ) +
+                     XMLProtect ( cur->valor ( "codigocompletoarticulo" ) ) +
                      ".jpg\" x=\"0\" y=\"0\" height=\"5cm\"/>\n"
                      "<!-- /illustration --></td>\n";
         } else {
@@ -164,7 +169,7 @@ QString CatalogoQToolButton::detalleArticulos() {
         cur->siguienteregistro();
     } // end while
     delete cur;
-    _depura("END CatalogoQToolButton::detalleArticulos()", 0);
+    _depura ( "END CatalogoQToolButton::detalleArticulos()", 0 );
     return texto;
 }
 

@@ -29,19 +29,21 @@
 /**
 \param parent
 **/
-QTextEditDelegate::QTextEditDelegate(QWidget *parent) : QTextEdit(parent) {
-    _depura("QTextEditDelegate::QTextEditDelegate", 0);
-    installEventFilter(this);
-    _depura("END QTextEditDelegate::QTextEditDelegate", 0);
+QTextEditDelegate::QTextEditDelegate ( QWidget *parent ) : QTextEdit ( parent )
+{
+    _depura ( "QTextEditDelegate::QTextEditDelegate", 0 );
+    installEventFilter ( this );
+    _depura ( "END QTextEditDelegate::QTextEditDelegate", 0 );
 }
 
 
 ///
 /**
 **/
-QTextEditDelegate::~QTextEditDelegate() {
-    _depura("QTextEditDelegate::~QTextEditDelegate", 0);
-    _depura("END QTextEditDelegate::~QTextEditDelegate", 0);
+QTextEditDelegate::~QTextEditDelegate()
+{
+    _depura ( "QTextEditDelegate::~QTextEditDelegate", 0 );
+    _depura ( "END QTextEditDelegate::~QTextEditDelegate", 0 );
 }
 
 
@@ -51,25 +53,26 @@ QTextEditDelegate::~QTextEditDelegate() {
 \param event
 \return
 **/
-bool QTextEditDelegate::eventFilter(QObject *obj, QEvent *event) {
-    _depura("QTextEditDelegate::eventFilter", 0, QString::number(event->type()));
+bool QTextEditDelegate::eventFilter ( QObject *obj, QEvent *event )
+{
+    _depura ( "QTextEditDelegate::eventFilter", 0, QString::number ( event->type() ) );
 
     /// Si es un release de tecla se hace la funcionalidad especificada.
-    if (event->type() == QEvent::KeyPress || event->type() == QEvent::KeyRelease) {
-        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+    if ( event->type() == QEvent::KeyPress || event->type() == QEvent::KeyRelease ) {
+        QKeyEvent * keyEvent = static_cast<QKeyEvent *> ( event );
         int key = keyEvent->key();
-        _depura("QTextEditDelegate::key = :", 0, QString::number(key));
+        _depura ( "QTextEditDelegate::key = :", 0, QString::number ( key ) );
         Qt::KeyboardModifiers mod = keyEvent->modifiers();
         /// ------------------ EL CAMBIO ------------------------------
-        switch (key) {
+        switch ( key ) {
         case Qt::Key_Return:
         case Qt::Key_Enter:
             return TRUE;
             break;
         } // end switch
     } // end if
-    _depura("END QTextEditDelegate::eventFilter()", 0);
-    return QTextEdit::eventFilter(obj, event);
-    //	return TRUE;
+    _depura ( "END QTextEditDelegate::eventFilter()", 0 );
+    return QTextEdit::eventFilter ( obj, event );
+    // return TRUE;
 }
 

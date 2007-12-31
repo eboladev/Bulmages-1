@@ -31,7 +31,7 @@ class PlaComptes : public QDialog
     Q_OBJECT
 
 public:
-    PlaComptes( QWidget* parent = 0, const char* name = 0, bool modal = FALSE, WFlags fl = 0 );
+    PlaComptes ( QWidget* parent = 0, const char* name = 0, bool modal = FALSE, WFlags fl = 0 );
     ~PlaComptes();
 
     QLabel* TextLabel1;
@@ -50,12 +50,12 @@ public:
 
 public slots:
     virtual void borrarcuenta();
-    virtual void codigocambiado(const QString &);
-    virtual void dbtabla(int,int,int,const QPoint&);
-    virtual void descripcioncambiada(const QString &);
+    virtual void codigocambiado ( const QString & );
+    virtual void dbtabla ( int, int, int, const QPoint& );
+    virtual void descripcioncambiada ( const QString & );
     virtual void editarcuenta();
-    virtual void listdblpulsada(QListViewItem *);
-    virtual void listpulsada(QListViewItem *);
+    virtual void listdblpulsada ( QListViewItem * );
+    virtual void listpulsada ( QListViewItem * );
     virtual void return_descripcion();
     virtual void nuevacuenta();
     virtual void return_codigo();

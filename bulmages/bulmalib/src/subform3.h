@@ -43,11 +43,12 @@
 registros de la base de datos proporcionando un potente manejador
 tabular de datos que puede generar desde listados hasta subformularios
 */
-class SubForm3: public BLWidget, public Ui_SubForm3Base {
+class SubForm3: public BLWidget, public Ui_SubForm3Base
+{
     Q_OBJECT
 
 private:
-    virtual void cargar(cursor2 *cur);
+    virtual void cargar ( cursor2 *cur );
 
 private:
     QString m_query;
@@ -88,7 +89,7 @@ protected:
     int m_filaInicialRowSpan;
     QColor m_colorfondo1;
     QColor m_colorfondo2;
-    void ponItemColorFondo(QTableWidget *twidget, int filainicial, int totalfilas, QColor colorfondo);
+    void ponItemColorFondo ( QTableWidget *twidget, int filainicial, int totalfilas, QColor colorfondo );
 
 public:
     /// Indica cual es el &uacute;ltimo campo (fila) que se ha editado.
@@ -119,31 +120,31 @@ public:
     QList<SHeader *> *cabecera();
 
 public:
-    SubForm3(QWidget *parent);
+    SubForm3 ( QWidget *parent );
     virtual ~SubForm3();
-    virtual void setEmpresaBase(EmpresaBase *);
-    void setProcesarCambios(bool);
+    virtual void setEmpresaBase ( EmpresaBase * );
+    void setProcesarCambios ( bool );
     bool procesaCambios();
     /// Define si el listado presentar&aacute; las filas con colores alternativos.
-    void setListadoPijama(bool pijama);
+    void setListadoPijama ( bool pijama );
     bool listadoPijama();
     /// Establece el modo de funcionamiento del scroll horizontal.
-    void setHorizontalScrollMode(QAbstractItemView::ScrollMode mode);
+    void setHorizontalScrollMode ( QAbstractItemView::ScrollMode mode );
     /// Establece los colores para dibujar el fondo de las filas.
     /// Si la propiedad 'alternatingRowColors' est&aacute; en TRUE entonces de usan
     /// los dos colores, si est&aacute; en FALSE s&oacute;lo se usa 'ColorFondo1'.
     /// Estos valores corresponden a QPalette::Base y QPalette::AlternateBase.
-    void setColorFondo1(QString color);
-    void setColorFondo2(QString color);
+    void setColorFondo1 ( QString color );
+    void setColorFondo2 ( QString color );
     /// Establece que los elementos del subformulario son ordenables
-    void setSortingEnabled(bool);
+    void setSortingEnabled ( bool );
     /// Indica si los elementos del subformulario son ordenables.
     bool sortingEnabled();
     /// Establece en el subformulario un modo de funcionamiento mediante
     /// el cual el orden de los elementos se almacena en la base de datos
     /// mediante un campo orden"tabla" de tipo num&eacute;rico.
-    void setOrdenEnabled(bool);
-    void setOrdenPorQuery(bool);
+    void setOrdenEnabled ( bool );
+    void setOrdenPorQuery ( bool );
     /// Indica si esta establecido el modo de ordenaci&oacute;n en la base
     /// de datos.
     bool ordenEnabled();
@@ -151,25 +152,25 @@ public:
     /// para intentar ser guardada en la base de datos. O lo que es lo mismo
     /// si todos los campos necesarios para guardar el registro est&aacute;n
     /// rellenados
-    bool campoCompleto(int row);
+    bool campoCompleto ( int row );
     /// Establece el modo de borrado de registros que permite al subformulario
     /// borrar filas con su correspondiente borrado en la base de datos.
-    void setDelete(bool f);
+    void setDelete ( bool f );
     /// Devuelve el elemento del subformulario ubicado en la posici&oacute;n
     /// indicada
-    SDBCampo *item(int row, int col);
+    SDBCampo *item ( int row, int col );
     /// Pone el foco en una celda determinada.
-    void setCurrentItem(int row, int col);
+    void setCurrentItem ( int row, int col );
     /// Devuelve el n&uacute;mero total de columnas del subformulario.
     int columnCount();
     /// Muestra la columna indicada en el subformulario.
-    void showColumn(int i);
+    void showColumn ( int i );
     /// Devuelve el ancho de la columna indicada.
-    int columnWidth(int i);
+    int columnWidth ( int i );
     /// Establece el ancho de la columna indicada.
-    void setColumnWidth(int i, int j);
+    void setColumnWidth ( int i, int j );
     /// Oculta la columna indicada.
-    void hideColumn(int i);
+    void hideColumn ( int i );
     /// Devuelve la fila que en la actualidad posee el foco en el subformulario.
     int currentRow();
     /// Devuelve el n&uacute;mero de filas en el subformulario.
@@ -177,7 +178,7 @@ public:
     /// Devuelve la columna que en la actualidad posee el foco del subformulario.
     int currentColumn();
     /// Establece la forma de redimensionado de las columnas del subformulario.
-    void setResizeMode(QHeaderView::ResizeMode modo);
+    void setResizeMode ( QHeaderView::ResizeMode modo );
     /// Redimensiona las columnas del subformulario para ajustarlas
     /// a los contenidos.
     void resizeColumnsToContents();
@@ -185,81 +186,81 @@ public:
     /// a los contenidos.
     void resizeRowsToContents();
     /// Redimensiona las columnas del subformulario para ajustarlas a los contenidos
-    void resizeColumnToContents(int i);
+    void resizeColumnToContents ( int i );
     /// Ajusta la fila indicada a sus contenidos.
-    void resizeRowToContents(int i);
+    void resizeRowToContents ( int i );
     /// Oculta el configurador del subformulario
     void hideConfig();
     /// Muestra el configurador del subformulario
     void showConfig();
     /// Hace la impresion del subformulario en formato de tabla RML.
     QString imprimir();
-    void sortItems(int col, Qt::SortOrder orden);
-    void setinsercion(bool b);
+    void sortItems ( int col, Qt::SortOrder orden );
+    void setinsercion ( bool b );
     /// Define que campo se utilizar&aacute; para unir las filas que tengan el mismo texto (rowSpan).
     /// Es &uacute;til en contabilidad para unir filas del mismo asiento.
-    void setColumnToRowSpan(QString campo);
-    void setDBTableName(QString nom);
+    void setColumnToRowSpan ( QString campo );
+    void setDBTableName ( QString nom );
     QString tableName();
-    void setFileConfig(QString nom);
-    void setDBCampoId(QString nom);
+    void setFileConfig ( QString nom );
+    void setDBCampoId ( QString nom );
     void clear();
-    void setRowCount(int i);
-    void setColumnCount(int i);
-    void situarse(unsigned int, unsigned int);
-    void situarse1(unsigned int, unsigned int);
-    int addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp);
+    void setRowCount ( int i );
+    void setColumnCount ( int i );
+    void situarse ( unsigned int, unsigned int );
+    void situarse1 ( unsigned int, unsigned int );
+    int addSHeader ( QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp );
     SDBRecord *newSDBRecord();
-    virtual void setColumnValue(QString, QString);
-    QString DBvalue(const QString &campo, int row = -1);
-    void setDBvalue(const QString &campo, int row, const QString &valor);
+    virtual void setColumnValue ( QString, QString );
+    QString DBvalue ( const QString &campo, int row = -1 );
+    void setDBvalue ( const QString &campo, int row, const QString &valor );
     SDBRecord *lineaact();
-    SDBRecord *lineaat(int row);
-    virtual void imprimirPDF(const QString &);
+    SDBRecord *lineaat ( int row );
+    virtual void imprimirPDF ( const QString & );
     virtual void nuevoRegistro();
     virtual int borrar();
-    virtual int borrar(int);
+    virtual int borrar ( int );
     virtual int guardar();
-    virtual void cargar(QString query);
+    virtual void cargar ( QString query );
     virtual int inicializar();
     virtual void pintar();
-    virtual void creaMenu(QMenu *);
-    virtual void procesaMenu(QAction *);
-    virtual Fixed sumarCampo(QString);
-    bool existsHeader(const QString &);
+    virtual void creaMenu ( QMenu * );
+    virtual void procesaMenu ( QAction * );
+    virtual Fixed sumarCampo ( QString );
+    bool existsHeader ( const QString & );
     virtual int cerrarEditor();
     virtual void confquery();
-    QString columnDBfieldName(int columna);
+    QString columnDBfieldName ( int columna );
 
 public slots:
-    virtual void on_mui_list_cellRePosition(int, int);
-    virtual void on_mui_list_cellChanged(int, int);
-    virtual void contextMenuEvent(QContextMenuEvent *);
+    virtual void on_mui_list_cellRePosition ( int, int );
+    virtual void on_mui_list_cellChanged ( int, int );
+    virtual void contextMenuEvent ( QContextMenuEvent * );
     virtual void on_mui_confcol_clicked();
     virtual void on_mui_confquery_clicked();
-    virtual void on_mui_list_pressedSlash(int row, int col);
-    virtual void on_mui_list_pressedAsterisk(int row, int col);
-    virtual void on_mui_list_pressedPlus(int row, int col);
-    virtual void on_mui_list_pressedMinus(int row, int col);
-    virtual void on_mui_list_ctrlSubir(int row, int col);
-    virtual void on_mui_list_ctrlBajar(int row, int col);
+    virtual void on_mui_list_pressedSlash ( int row, int col );
+    virtual void on_mui_list_pressedAsterisk ( int row, int col );
+    virtual void on_mui_list_pressedPlus ( int row, int col );
+    virtual void on_mui_list_pressedMinus ( int row, int col );
+    virtual void on_mui_list_ctrlSubir ( int row, int col );
+    virtual void on_mui_list_ctrlBajar ( int row, int col );
     virtual void on_mui_pagsiguiente_clicked();
     virtual void on_mui_paganterior_clicked();
-    virtual void on_mui_list_itemDoubleClicked(QTableWidgetItem *item);
-    virtual void on_mui_list_itemClicked(QTableWidgetItem *item);
-    virtual void on_mui_list_cellDoubleClicked(int row, int col);
+    virtual void on_mui_list_itemDoubleClicked ( QTableWidgetItem *item );
+    virtual void on_mui_list_itemClicked ( QTableWidgetItem *item );
+    virtual void on_mui_list_cellDoubleClicked ( int row, int col );
     virtual void toogleConfig();
     virtual void on_mui_botonCerrar_clicked();
-    virtual void on_mui_list_itemChanged(QTableWidgetItem *it);
+    virtual void on_mui_list_itemChanged ( QTableWidgetItem *it );
 
 signals:
-    void toogledConfig(bool);
-    void editFinish(int, int);
-    void itemDoubleClicked(QTableWidgetItem *);
-    void itemClicked(QTableWidgetItem *);
-    void cellDoubleClicked(int row, int col);
-    void pintaMenu(QMenu *);
-    void trataMenu(QAction *);
+    void toogledConfig ( bool );
+    void editFinish ( int, int );
+    void itemDoubleClicked ( QTableWidgetItem * );
+    void itemClicked ( QTableWidgetItem * );
+    void cellDoubleClicked ( int row, int col );
+    void pintaMenu ( QMenu * );
+    void trataMenu ( QAction * );
 };
 
 #endif

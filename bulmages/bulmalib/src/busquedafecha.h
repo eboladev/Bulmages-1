@@ -28,29 +28,30 @@
 #include "ui_busquedafechabase.h"
 
 
-class BusquedaFecha : public BLWidget, public Ui_BusquedaFechaBase {
+class BusquedaFecha : public BLWidget, public Ui_BusquedaFechaBase
+{
     Q_OBJECT
 
 public:
-    BusquedaFecha(QWidget *parent = 0);
+    BusquedaFecha ( QWidget *parent = 0 );
     ~BusquedaFecha();
-    virtual void setfecha(QString val);
-    virtual void setText(QString val);
-    virtual void setValorCampo(QString val);
+    virtual void setfecha ( QString val );
+    virtual void setText ( QString val );
+    virtual void setValorCampo ( QString val );
     virtual QString fecha();
     virtual QString text();
     virtual QString valorCampo();
 
 public slots:
     virtual void s_searchFecha();
-    virtual void s_fechatextChanged(const QString &);
+    virtual void s_fechatextChanged ( const QString & );
     virtual void s_fechalostFocus();
     virtual void s_returnPressed();
     virtual void selectAll();
     virtual void setFocus();
 
 signals:
-    void valueChanged(QString);
+    void valueChanged ( QString );
     void returnPressed();
     void editingFinished();
 };

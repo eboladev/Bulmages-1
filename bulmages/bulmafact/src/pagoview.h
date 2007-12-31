@@ -39,11 +39,12 @@ class Company;
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un pago.
 /** */
-class PagoView : public FichaBf, public Ui_PagoBase  {
+class PagoView : public FichaBf, public Ui_PagoBase
+{
     Q_OBJECT
 
 public:
-    PagoView(Company *, QWidget *);
+    PagoView ( Company *, QWidget * );
     ~PagoView();
 };
 

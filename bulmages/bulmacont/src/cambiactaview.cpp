@@ -31,30 +31,33 @@
 \param parent
 \param flag
 **/
-CambiaCtaView::CambiaCtaView(Empresa *emp, QWidget *parent, Qt::WFlags flag)
-        : QDialog(parent, flag), PEmpresaBase(emp) {
-    _depura("CambiaCtaView::CambiaCtaView", 0);
-    setupUi(this);
-    mui_codigoorigen->setEmpresaBase(emp);
-    mui_codigodestino->setEmpresaBase(emp);
-    _depura("END CambiaCtaView::CambiaCtaView", 0);
+CambiaCtaView::CambiaCtaView ( Empresa *emp, QWidget *parent, Qt::WFlags flag )
+        : QDialog ( parent, flag ), PEmpresaBase ( emp )
+{
+    _depura ( "CambiaCtaView::CambiaCtaView", 0 );
+    setupUi ( this );
+    mui_codigoorigen->setEmpresaBase ( emp );
+    mui_codigodestino->setEmpresaBase ( emp );
+    _depura ( "END CambiaCtaView::CambiaCtaView", 0 );
 }
 
 
 ///
 /**
 **/
-CambiaCtaView::~CambiaCtaView() {
-    _depura("CambiaCtaView::~CambiaCtaView", 0);
-    _depura("END CambiaCtaView::~CambiaCtaView", 0);
+CambiaCtaView::~CambiaCtaView()
+{
+    _depura ( "CambiaCtaView::~CambiaCtaView", 0 );
+    _depura ( "END CambiaCtaView::~CambiaCtaView", 0 );
 }
 
 
 ///
 /**
 **/
-void CambiaCtaView::accept() {
-    _depura("CambiaCtaView::accept", 0);
+void CambiaCtaView::accept()
+{
+    _depura ( "CambiaCtaView::accept", 0 );
     QString origen = mui_codigoorigen->text();
     QString destino = mui_codigodestino->text();
     QString ainicial = asientoinicial->text();
@@ -63,86 +66,86 @@ void CambiaCtaView::accept() {
     QString ffinal = fechafinal->text();
     /// Modificamos los borradores.
     QString query = "UPDATE borrador SET idcuenta = id_cuenta('" + destino + "') WHERE idcuenta = id_cuenta('" + origen + "')";
-    if (ainicial != "") {
+    if ( ainicial != "" ) {
         query = query + " AND idasiento IN (SELECT idasiento FROM asiento WHERE ordenasiento >= " + ainicial + ")";
     } // end if
-    if (afinal != "") {
+    if ( afinal != "" ) {
         query = query + " AND idasiento IN (SELECT idasiento FROM asiento WHERE ordenasiento <= " + afinal + ")";
     } // end if
-    if (finicial != "") {
+    if ( finicial != "" ) {
         query = query + " AND fecha >= '" + finicial + "'";
     } // end if
-    if (ffinal != "") {
+    if ( ffinal != "" ) {
         query = query + " AND fecha <= '" + ffinal + "'";
     } // end if
 
     /// Modificamos las contrapartidas de los borradores.
     QString query2 = "UPDATE borrador SET contrapartida = id_cuenta('" + destino + "') WHERE contrapartida = id_cuenta('" + origen + "')";
-    if (ainicial != "") {
+    if ( ainicial != "" ) {
         query2 = query2 + " AND idasiento IN (SELECT idasiento FROM asiento WHERE ordenasiento >= " + ainicial + ")";
     } // end if
-    if (afinal != "") {
+    if ( afinal != "" ) {
         query2 = query2 + " AND idasiento IN (SELECT idasiento FROM asiento WHERE ordenasiento <= " + afinal + ")";
     } // end if
-    if (finicial != "") {
+    if ( finicial != "" ) {
         query2 = query2 + " AND fecha >= '" + finicial + "'";
     } // end if
-    if (ffinal != "") {
+    if ( ffinal != "" ) {
         query2 = query2 + " AND fecha <= '" + ffinal + "'";
     } // end if
 
     /// Modificamos tambi&eacute;n los apuntes.
     QString query1 = "UPDATE apunte SET idcuenta = id_cuenta('" + destino + "') WHERE idcuenta = id_cuenta('" + origen + "')";
-    if (ainicial != "") {
+    if ( ainicial != "" ) {
         query1 = query1 + " AND idasiento IN (SELECT idasiento FROM asiento WHERE ordenasiento >= " + ainicial + ")";
     } // end if
-    if (afinal != "") {
+    if ( afinal != "" ) {
         query1 = query1 + " AND idasiento IN (SELECT idasiento FROM asiento WHERE ordenasiento <= " + afinal + ")";
     } // end if
-    if (finicial != "") {
+    if ( finicial != "" ) {
         query1 = query1 + " AND fecha >= '" + finicial + "'";
     } // end if
-    if (ffinal != "") {
+    if ( ffinal != "" ) {
         query1 = query1 + " AND fecha <= '" + ffinal + "'";
     } // end if
 
     /// Modificamos tambi&eacute;n las contrapartidas de los apuntes.
     QString query3 = "UPDATE apunte SET contrapartida = id_cuenta('" + destino + "') WHERE contrapartida = id_cuenta('" + origen + "')";
-    if (ainicial != "") {
-        query3 = query3 + " AND idasiento IN (SELECT idasiento FROM asiento WHERE ordenasiento >= "+ainicial+")";
+    if ( ainicial != "" ) {
+        query3 = query3 + " AND idasiento IN (SELECT idasiento FROM asiento WHERE ordenasiento >= " + ainicial + ")";
     } // end if
-    if (afinal != "") {
-        query3 = query3 + " AND idasiento IN (SELECT idasiento FROM asiento WHERE ordenasiento <= "+afinal+")";
+    if ( afinal != "" ) {
+        query3 = query3 + " AND idasiento IN (SELECT idasiento FROM asiento WHERE ordenasiento <= " + afinal + ")";
     } // end if
-    if (finicial != "") {
+    if ( finicial != "" ) {
         query3 = query3 + " AND fecha >= '" + finicial + "'";
     } // end if
-    if (ffinal != "") {
+    if ( ffinal != "" ) {
         query3 = query3 + " AND fecha <= '" + ffinal + "'";
     } // end if
 
     /// Modificamos los registros de IVA.
     QString query4 = "UPDATE registroiva SET contrapartida = id_cuenta('" + destino + "') WHERE contrapartida = id_cuenta('" + origen + "')";
-    if (ainicial != "") {
+    if ( ainicial != "" ) {
         query4 = query4 + " AND idborrador IN (SELECT idborrador FROM borrador,asiento WHERE ordenasiento >= " + ainicial + " AND borrador.idasiento = asiento.idasiento)";
     } // end if
-    if (afinal != "") {
+    if ( afinal != "" ) {
         query4 = query4 + " AND idborrador IN (SELECT idborrador FROM borrador,asiento WHERE ordenasiento <= " + afinal + " AND borrador.idasiento = asiento.idasiento)";
     } // end if
-    if (finicial != "") {
+    if ( finicial != "" ) {
         query4 = query4 + " AND ffactura >= '" + finicial + "'";
     } // end if
-    if (ffinal != "") {
+    if ( ffinal != "" ) {
         query4 = query4 + " AND ffactura <= '" + ffinal + "'";
     } // end if
-    empresaBase()->begin();
-    empresaBase()->ejecuta(query);
-    empresaBase()->ejecuta(query1);
-    empresaBase()->ejecuta(query2);
-    empresaBase()->ejecuta(query3);
-    empresaBase()->ejecuta(query4);
-    empresaBase()->commit();
-    done(1);
-    _depura("END CambiaCtaView::accept", 0);
+    empresaBase() ->begin();
+    empresaBase() ->ejecuta ( query );
+    empresaBase() ->ejecuta ( query1 );
+    empresaBase() ->ejecuta ( query2 );
+    empresaBase() ->ejecuta ( query3 );
+    empresaBase() ->ejecuta ( query4 );
+    empresaBase() ->commit();
+    done ( 1 );
+    _depura ( "END CambiaCtaView::accept", 0 );
 }
 

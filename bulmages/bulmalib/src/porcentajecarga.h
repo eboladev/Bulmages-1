@@ -27,11 +27,12 @@
 #include <ui_porcentajecargabase.h>
 
 
-class porcentajeCarga : public QDialog, public Ui_porcentajeCargaBase {
+class porcentajeCarga : public QDialog, public Ui_porcentajeCargaBase
+{
     Q_OBJECT
 
 public:
-    porcentajeCarga(QWidget *parent = 0);
+    porcentajeCarga ( QWidget *parent = 0 );
     ~porcentajeCarga();
     void mostrar();
     void cerrar();

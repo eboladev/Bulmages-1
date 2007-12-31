@@ -34,17 +34,20 @@
 #include "fichabf.h"
 
 
-class ListZonaComercialSubForm : public SubForm2Bf {
+class ListZonaComercialSubForm : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
-    ListZonaComercialSubForm(QWidget *parent = 0);
-    ~ListZonaComercialSubForm() {};
+    ListZonaComercialSubForm ( QWidget *parent = 0 );
+    ~ListZonaComercialSubForm()
+    {};
 
 public slots:
-    virtual void cargar() {
-        _depura("ListZonaComercialSubForm::cargar\n",0);
-        SubForm3::cargar("SELECT * FROM zonacomercial");
+    virtual void cargar()
+    {
+        _depura ( "ListZonaComercialSubForm::cargar\n", 0 );
+        SubForm3::cargar ( "SELECT * FROM zonacomercial" );
     };
 };
 
@@ -52,15 +55,17 @@ public slots:
 #include "ui_listzonacomercialbase.h"
 
 
-class ListZonaComercialView : public FichaBf, public Ui_ListZonaComercialBase {
+class ListZonaComercialView : public FichaBf, public Ui_ListZonaComercialBase
+{
     Q_OBJECT
 
 public:
-    ListZonaComercialView(Company *, QWidget *);
+    ListZonaComercialView ( Company *, QWidget * );
     ~ListZonaComercialView();
 
 public slots:
-    virtual void on_mui_aceptar_clicked() {
+    virtual void on_mui_aceptar_clicked()
+    {
         mui_listado->guardar();
         close();
     };

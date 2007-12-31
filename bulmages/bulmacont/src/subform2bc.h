@@ -34,22 +34,24 @@ class SubForm2Bc;
 
 /// Clase SubForm2BcDelegate
 /** Se encarga del control de los Widgets de Edicion del sistema.*/
-class QSubForm2BcDelegate : public QItemDelegate, public PEmpresaBase {
+class QSubForm2BcDelegate : public QItemDelegate, public PEmpresaBase
+{
 private:
     /// Clase padre y acceso a base de datos.
     SubForm2Bc *m_subform;
 
 public:
-    QSubForm2BcDelegate(QObject *);
+    QSubForm2BcDelegate ( QObject * );
     ~QSubForm2BcDelegate();
-    void setEditorData(QWidget *, const QModelIndex &index) const;
-    void setModelData(QWidget *editor,  QAbstractItemModel *model, const QModelIndex &index) const;
-    QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const;
-    virtual bool eventFilter(QObject *obj, QEvent *event);
+    void setEditorData ( QWidget *, const QModelIndex &index ) const;
+    void setModelData ( QWidget *editor,  QAbstractItemModel *model, const QModelIndex &index ) const;
+    QWidget *createEditor ( QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index ) const;
+    virtual bool eventFilter ( QObject *obj, QEvent *event );
 };
 
 
-class SubForm2Bc : public SubForm3 {
+class SubForm2Bc : public SubForm3
+{
     Q_OBJECT
 
 public:
@@ -57,20 +59,20 @@ public:
 
 public:
     Empresa *empresaBase();
-    SubForm2Bc(QWidget *parent = 0);
+    SubForm2Bc ( QWidget *parent = 0 );
     virtual ~SubForm2Bc();
     virtual void boton_asiento();
-    virtual void boton_extracto1(int);
-    virtual void boton_balance1(int);
-    virtual void boton_diario1(int);
-    virtual void creaMenu(QMenu *);
-    virtual void procesaMenu(QAction *);
-    virtual void setEmpresaBase(EmpresaBase *c);
-    virtual void on_mui_list_cellChanged(int row, int col);
+    virtual void boton_extracto1 ( int );
+    virtual void boton_balance1 ( int );
+    virtual void boton_diario1 ( int );
+    virtual void creaMenu ( QMenu * );
+    virtual void procesaMenu ( QAction * );
+    virtual void setEmpresaBase ( EmpresaBase *c );
+    virtual void on_mui_list_cellChanged ( int row, int col );
 
 public slots:
-    virtual void on_mui_list_pressedSlash(int row, int col);
-    virtual void on_mui_list_pressedAsterisk(int row, int col);
+    virtual void on_mui_list_pressedSlash ( int row, int col );
+    virtual void on_mui_list_pressedAsterisk ( int row, int col );
 };
 
 #endif

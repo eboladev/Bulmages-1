@@ -35,29 +35,32 @@
 ///
 /**
 **/
-myplugincont::myplugincont() {
-    _depura("myplugincont::myplugincont", 0);
-    _depura("END myplugincont::myplugincont", 0);
+myplugincont::myplugincont()
+{
+    _depura ( "myplugincont::myplugincont", 0 );
+    _depura ( "END myplugincont::myplugincont", 0 );
 }
 
 ///
 /**
 **/
-myplugincont::~myplugincont() {
-    _depura("myplugincont::~myplugincont", 0);
-    _depura("END myplugincont::~myplugincont", 0);
+myplugincont::~myplugincont()
+{
+    _depura ( "myplugincont::~myplugincont", 0 );
+    _depura ( "END myplugincont::~myplugincont", 0 );
 }
 
 
 ///
 /**
 **/
-void myplugincont::elslot() {
-    _depura("myplugincont::elslot", 0);
-    ContratosList *vehiculoview = new ContratosList((Company *) m_conexionbase);
-    m_bulmafact->workspace()->addWindow(vehiculoview);
+void myplugincont::elslot()
+{
+    _depura ( "myplugincont::elslot", 0 );
+    ContratosList *vehiculoview = new ContratosList ( ( Company * ) m_conexionbase );
+    m_bulmafact->workspace() ->addWindow ( vehiculoview );
     vehiculoview->show();
-    _depura("END myplugincont::elslot", 0);
+    _depura ( "END myplugincont::elslot", 0 );
 }
 
 
@@ -65,19 +68,20 @@ void myplugincont::elslot() {
 /**
 \param bges
 **/
-void myplugincont::inicializa(Bulmafact *bges) {
-    _depura("myplugincont::inicializa", 0);
+void myplugincont::inicializa ( Bulmafact *bges )
+{
+    _depura ( "myplugincont::inicializa", 0 );
     /// Creamos el men&uacute;.
     m_conexionbase = bges->getcompany();
     m_bulmafact = bges;
-    QAction *accion = new QAction("&Contratos", 0);
-    accion->setStatusTip("Listado de Contratos");
-    accion->setWhatsThis("Listado de Contratos");
-    connect(accion, SIGNAL(activated()), this, SLOT(elslot()));
+    QAction *accion = new QAction ( "&Contratos", 0 );
+    accion->setStatusTip ( "Listado de Contratos" );
+    accion->setWhatsThis ( "Listado de Contratos" );
+    connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->menuVentas->addSeparator();
-    bges->menuVentas->addAction(accion);
-    _depura("END myplugincont::inicializa", 0);
+    bges->menuVentas->addAction ( accion );
+    _depura ( "END myplugincont::inicializa", 0 );
 }
 
 
@@ -86,11 +90,12 @@ void myplugincont::inicializa(Bulmafact *bges) {
 \param bges
 \return
 **/
-int entryPoint(Bulmafact *bges) {
-    _depura("Punto de Entrada del plugin PluginContratos", 0);
+int entryPoint ( Bulmafact *bges )
+{
+    _depura ( "Punto de Entrada del plugin PluginContratos", 0 );
     myplugincont *plug = new myplugincont();
-    plug->inicializa(bges);
-    _depura("END Punto de Entrada del plugin PluginContratos", 0);
+    plug->inicializa ( bges );
+    _depura ( "END Punto de Entrada del plugin PluginContratos", 0 );
     return 0;
 }
 
@@ -100,14 +105,15 @@ int entryPoint(Bulmafact *bges) {
 \param art
 \return
 **/
-int ClienteView_ClienteView(ClienteView *art) {
-    _depura("ClienteView_ClienteView", 0);
+int ClienteView_ClienteView ( ClienteView *art )
+{
+    _depura ( "ClienteView_ClienteView", 0 );
     /// Para que funcione bien debemos iniciar con SelectMode y luego pasar a EditMode ya que si no se hace un meteWindow y no es deseable.
-    ContratosList *l = new ContratosList(((Company *)art->empresaBase()), art, 0, ContratosList::SelectMode);
-    l->setObjectName(QString::fromUtf8("ccontratoslist"));
-    art->mui_tab->addTab(l, "Contratos");
+    ContratosList *l = new ContratosList ( ( ( Company * ) art->empresaBase() ), art, 0, ContratosList::SelectMode );
+    l->setObjectName ( QString::fromUtf8 ( "ccontratoslist" ) );
+    art->mui_tab->addTab ( l, "Contratos" );
     l->editMode();
-    _depura("END ClienteView_ClienteView", 0);
+    _depura ( "END ClienteView_ClienteView", 0 );
     return 0;
 }
 
@@ -117,11 +123,12 @@ int ClienteView_ClienteView(ClienteView *art) {
 \param fich
 \return
 **/
-int Ficha_cargar(Ficha *fich) {
-    _depura("Ficha_cargar", 0);
-    ContratosList *l = fich->findChild<ContratosList *>("ccontratoslist");
-    if (l) {
-        l->mui_idcliente->setidcliente(fich->DBvalue("idcliente"));
+int Ficha_cargar ( Ficha *fich )
+{
+    _depura ( "Ficha_cargar", 0 );
+    ContratosList *l = fich->findChild<ContratosList *> ( "ccontratoslist" );
+    if ( l ) {
+        l->mui_idcliente->setidcliente ( fich->DBvalue ( "idcliente" ) );
         l->on_mui_actualizar_clicked();
         return 0;
     } // end if

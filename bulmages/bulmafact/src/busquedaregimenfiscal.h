@@ -29,22 +29,23 @@
 /// Permite buscar y seleccionar una forma de pago.
 /** Widget que permite buscar y seleccionar una
     forma de pago. Aparece en forma de comboBox. */
-class BusquedaRegimenFiscal : public QComboBox2 {
+class BusquedaRegimenFiscal : public QComboBox2
+{
     Q_OBJECT
 
 public:
-    BusquedaRegimenFiscal(QWidget *parent = 0);
+    BusquedaRegimenFiscal ( QWidget *parent = 0 );
     ~BusquedaRegimenFiscal();
     QString regimenFiscal();
     virtual QString valorCampo();
-    virtual void setRegimenFiscal(QString regimen);
-    virtual void setValorCampo(QString regimen);
+    virtual void setRegimenFiscal ( QString regimen );
+    virtual void setValorCampo ( QString regimen );
 
 public slots:
-    virtual void m_activated(int index);
+    virtual void m_activated ( int index );
 
 signals:
-    void valueChanged(QString);
+    void valueChanged ( QString );
 };
 
 #endif

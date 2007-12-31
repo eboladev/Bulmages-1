@@ -26,7 +26,8 @@
 #include "bulmafact.h"
 #include "blwidget.h"
 
-class mypluginbf : public QObject, PEmpresaBase {
+class mypluginbf : public QObject, PEmpresaBase
+{
     Q_OBJECT
 
 private:
@@ -34,7 +35,7 @@ private:
 public:
     mypluginbf();
     virtual ~mypluginbf();
-    virtual void inicializa(Bulmafact *);
+    virtual void inicializa ( Bulmafact * );
 
 public slots:
     void elslot();

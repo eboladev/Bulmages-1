@@ -41,21 +41,22 @@
 \param flag
 \return
 **/
-FacturasProveedorList::FacturasProveedorList(QWidget *parent, Qt::WFlags flag)
-        : Listado(NULL, parent, flag) {
-    _depura("FacturasProveedorList::FacturasProveedorList", 0);
-    setupUi(this);
+FacturasProveedorList::FacturasProveedorList ( QWidget *parent, Qt::WFlags flag )
+        : Listado ( NULL, parent, flag )
+{
+    _depura ( "FacturasProveedorList::FacturasProveedorList", 0 );
+    setupUi ( this );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza("FacturasProveedorList_FacturasProveedorList", this);
-    if (res != 0) {
+    int res = g_plugins->lanza ( "FacturasProveedorList_FacturasProveedorList", this );
+    if ( res != 0 ) {
         return;
     } // end if
     mdb_idfacturap = "";
-    setSubForm(mui_list);
+    setSubForm ( mui_list );
     hideBusqueda();
     iniciaForm();
-    g_plugins->lanza("FacturasProveedorList_FacturasProveedorList_Post", this);
-    _depura("FacturasProveedorList::FacturasProveedorList", 0);
+    g_plugins->lanza ( "FacturasProveedorList_FacturasProveedorList_Post", this );
+    _depura ( "FacturasProveedorList::FacturasProveedorList", 0 );
 }
 
 
@@ -66,31 +67,32 @@ FacturasProveedorList::FacturasProveedorList(QWidget *parent, Qt::WFlags flag)
 \param parent
 \return
 **/
-FacturasProveedorList::FacturasProveedorList(Company *comp, QWidget *parent)
-        : Listado(comp, parent) {
-    _depura("FacturasProveedorList::FacturasProveedorList", 0);
-    setupUi(this);
+FacturasProveedorList::FacturasProveedorList ( Company *comp, QWidget *parent )
+        : Listado ( comp, parent )
+{
+    _depura ( "FacturasProveedorList::FacturasProveedorList", 0 );
+    setupUi ( this );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza("FacturasProveedorList_FacturasProveedorList", this);
-    if (res != 0) {
+    int res = g_plugins->lanza ( "FacturasProveedorList_FacturasProveedorList", this );
+    if ( res != 0 ) {
         return;
     } // end if
-    m_proveedor->setEmpresaBase(empresaBase());
-    m_articulo->setEmpresaBase(empresaBase());
-    mui_list->setEmpresaBase(comp);
+    m_proveedor->setEmpresaBase ( empresaBase() );
+    m_articulo->setEmpresaBase ( empresaBase() );
+    mui_list->setEmpresaBase ( comp );
     presentar();
-    setSubForm(mui_list);
+    setSubForm ( mui_list );
     mdb_idfacturap = "";
-    empresaBase()->meteWindow(windowTitle(), this);
+    empresaBase() ->meteWindow ( windowTitle(), this );
     hideBusqueda();
     iniciaForm();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
-    trataPermisos("facturap");
+    trataPermisos ( "facturap" );
 
     /// Disparamos los plugins.
-    g_plugins->lanza("FacturasProveedorList_FacturasProveedorList_Post", this);
+    g_plugins->lanza ( "FacturasProveedorList_FacturasProveedorList_Post", this );
 
-    _depura("END FacturasProveedorList::FacturasProveedorList", 0);
+    _depura ( "END FacturasProveedorList::FacturasProveedorList", 0 );
 }
 
 
@@ -98,25 +100,27 @@ FacturasProveedorList::FacturasProveedorList(Company *comp, QWidget *parent)
 /**
 \return
 **/
-void FacturasProveedorList::iniciaForm() {
-    _depura("FacturasProveedorList::iniciaForm");
+void FacturasProveedorList::iniciaForm()
+{
+    _depura ( "FacturasProveedorList::iniciaForm" );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza("FacturasProveedorList_iniciaForm", this);
-    if (res != 0)
+    int res = g_plugins->lanza ( "FacturasProveedorList_iniciaForm", this );
+    if ( res != 0 )
         return;
-    mui_procesada->insertItem(0, tr("Todas las facturas"));
-    mui_procesada->insertItem(1, tr("Facturas procesadas"));
-    mui_procesada->insertItem(2, tr("Facturas no procesadas"));
-    _depura("END FacturasProveedorList::iniciaForm");
+    mui_procesada->insertItem ( 0, tr ( "Todas las facturas" ) );
+    mui_procesada->insertItem ( 1, tr ( "Facturas procesadas" ) );
+    mui_procesada->insertItem ( 2, tr ( "Facturas no procesadas" ) );
+    _depura ( "END FacturasProveedorList::iniciaForm" );
 }
 
 
 /** No precisa de acciones especiales en el destructor. */
 /**
 **/
-FacturasProveedorList::~FacturasProveedorList() {
-    _depura("FacturasProveedorList::~FacturasProveedorList", 0);
-    _depura("END FacturasProveedorList::~FacturasProveedorList", 0);
+FacturasProveedorList::~FacturasProveedorList()
+{
+    _depura ( "FacturasProveedorList::~FacturasProveedorList", 0 );
+    _depura ( "END FacturasProveedorList::~FacturasProveedorList", 0 );
 }
 
 
@@ -125,17 +129,18 @@ FacturasProveedorList::~FacturasProveedorList() {
 /**
 \return
 **/
-void FacturasProveedorList::presentar() {
-    _depura("FacturasProveedorList::presentar", 0);
-    mui_list->cargar("SELECT *, totalfacturap AS total, bimpfacturap AS base, impfacturap AS impuestos  FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  " + generaFiltro());
+void FacturasProveedorList::presentar()
+{
+    _depura ( "FacturasProveedorList::presentar", 0 );
+    mui_list->cargar ( "SELECT *, totalfacturap AS total, bimpfacturap AS base, impfacturap AS impuestos  FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  " + generaFiltro() );
 
     /// Hacemos el calculo del total.
-    cursor2 *cur = empresaBase()->cargacursor("SELECT SUM(totalfacturap) AS total FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  " + generaFiltro());
+    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT SUM(totalfacturap) AS total FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  " + generaFiltro() );
     /// Si ha habido un error con el query salimos
-    if (!cur) return;
-    m_total->setText(cur->valor("total"));
+    if ( !cur ) return;
+    m_total->setText ( cur->valor ( "total" ) );
     delete cur;
-    _depura("END FacturasProveedorList::presentar", 0);
+    _depura ( "END FacturasProveedorList::presentar", 0 );
 }
 
 
@@ -144,40 +149,41 @@ void FacturasProveedorList::presentar() {
 /**
 \return
 **/
-QString FacturasProveedorList::generaFiltro() {
-    _depura("FacturasProveedorList::generaFiltro", 0);
+QString FacturasProveedorList::generaFiltro()
+{
+    _depura ( "FacturasProveedorList::generaFiltro", 0 );
     /// Tratamiento de los filtros.
     QString filtro = "";
-    if (m_filtro->text() != "") {
+    if ( m_filtro->text() != "" ) {
         filtro = " AND ( lower(descfacturap) LIKE lower('%" + m_filtro->text() + "%') ";
-        filtro +=" OR reffacturap LIKE '" + m_filtro->text() + "%' ";
-        filtro +=" OR lower(nomproveedor) LIKE lower('%" + m_filtro->text() + "%')) ";
+        filtro += " OR reffacturap LIKE '" + m_filtro->text() + "%' ";
+        filtro += " OR lower(nomproveedor) LIKE lower('%" + m_filtro->text() + "%')) ";
     } // end if
-    if (m_proveedor->idproveedor() != "") {
+    if ( m_proveedor->idproveedor() != "" ) {
         filtro += " AND facturap.idproveedor = " + m_proveedor->idproveedor();
     } // end if
 
     /// Tratamos los elementos procesados y no procesados.
-    if (mui_procesada->currentIndex() == 1) {
+    if ( mui_procesada->currentIndex() == 1 ) {
         /// Muestra solo las procesadas.
         filtro += " AND procesadafacturap";
-    } else if (mui_procesada->currentIndex() == 2) {
+    } else if ( mui_procesada->currentIndex() == 2 ) {
         /// Muestra solo las NO procesadas.
         filtro += " AND NOT procesadafacturap ";
     } // end if
 
-    if (m_articulo->idarticulo() != "") {
+    if ( m_articulo->idarticulo() != "" ) {
         filtro += " AND idfacturap IN (SELECT DISTINCT idfacturap FROM lfacturap WHERE idarticulo = '" + m_articulo->idarticulo() + "')";
     } // end if
 
-    if (m_fechain->text() != "")
+    if ( m_fechain->text() != "" )
         filtro += " AND ffacturap >= '" + m_fechain->text() + "' ";
 
-    if (m_fechafin->text() != "")
+    if ( m_fechafin->text() != "" )
         filtro += " AND ffacturap <= '" + m_fechafin->text() + "' ";
 
-    _depura("END FacturasProveedorList::generaFiltro", 0);
-    return (filtro);
+    _depura ( "END FacturasProveedorList::generaFiltro", 0 );
+    return ( filtro );
 }
 
 
@@ -187,25 +193,26 @@ QString FacturasProveedorList::generaFiltro() {
 /**
 \return
 **/
-void FacturasProveedorList::editar(int row) {
-    _depura("FacturasProveedorList::editar", 0);
+void FacturasProveedorList::editar ( int row )
+{
+    _depura ( "FacturasProveedorList::editar", 0 );
     try {
-        mdb_idfacturap = mui_list->DBvalue(QString("idfacturap"), row);
-        if (modoEdicion()) {
-            FacturaProveedorView *prov = ((Company *)empresaBase())->newFacturaProveedorView();
-            if (prov->cargar(mdb_idfacturap)) {
+        mdb_idfacturap = mui_list->DBvalue ( QString ( "idfacturap" ), row );
+        if ( modoEdicion() ) {
+            FacturaProveedorView * prov = ( ( Company * ) empresaBase() ) ->newFacturaProveedorView();
+            if ( prov->cargar ( mdb_idfacturap ) ) {
                 delete prov;
                 return;
             } // end if
-            empresaBase()->m_pWorkspace->addWindow(prov);
+            empresaBase() ->m_pWorkspace->addWindow ( prov );
             prov->show();
         } else {
-            emit(selected(mdb_idfacturap));
+            emit ( selected ( mdb_idfacturap ) );
         } // end if
-    } catch(...) {
-        mensajeInfo(tr("Error al cargar la factura proveedor"));
+    } catch ( ... ) {
+        mensajeInfo ( tr ( "Error al cargar la factura proveedor" ) );
     } // end try
-    _depura("END FacturasProveedorList::editar", 0);
+    _depura ( "END FacturasProveedorList::editar", 0 );
 }
 
 
@@ -217,24 +224,25 @@ void FacturasProveedorList::editar(int row) {
 /**
 \return
 **/
-void FacturasProveedorList::borrar() {
-    _depura("FacturasProveedorList::borrar", 0);
+void FacturasProveedorList::borrar()
+{
+    _depura ( "FacturasProveedorList::borrar", 0 );
     int a = mui_list->currentRow();
-    if (a < 0) {
-        mensajeInfo(tr("Debe seleccionar una linea"));
+    if ( a < 0 ) {
+        mensajeInfo ( tr ( "Debe seleccionar una linea" ) );
         return;
     } // end if
     try {
-        mdb_idfacturap = mui_list->DBvalue("idfacturap");
-        FacturaProveedorView *bud = ((Company *)empresaBase())->newFacturaProveedorView();
-        bud->cargar(mdb_idfacturap);
+        mdb_idfacturap = mui_list->DBvalue ( "idfacturap" );
+        FacturaProveedorView *bud = ( ( Company * ) empresaBase() ) ->newFacturaProveedorView();
+        bud->cargar ( mdb_idfacturap );
         bud->on_mui_borrar_clicked();
         delete bud;
         presentar();
-    } catch (...) {
-        mensajeInfo(tr("Error al borrar la factura de proveedor"));
+    } catch ( ... ) {
+        mensajeInfo ( tr ( "Error al borrar la factura de proveedor" ) );
     } // end try
-    _depura("END FacturasProveedorList::borrar", 0);
+    _depura ( "END FacturasProveedorList::borrar", 0 );
 }
 
 
@@ -242,10 +250,11 @@ void FacturasProveedorList::borrar() {
     La impresion de listados esta completamente delegada en SubForm3. */
 /**
 **/
-void FacturasProveedorList::imprimir() {
-    _depura("FacturasProveedorList::on_mui_imprimir_clicked", 0);
-    mui_list->imprimirPDF(tr("Facturas de proveedores"));
-    _depura("END FacturasProveedorList::on_mui_imprimir_clicked", 0);
+void FacturasProveedorList::imprimir()
+{
+    _depura ( "FacturasProveedorList::on_mui_imprimir_clicked", 0 );
+    mui_list->imprimirPDF ( tr ( "Facturas de proveedores" ) );
+    _depura ( "END FacturasProveedorList::on_mui_imprimir_clicked", 0 );
 }
 
 
@@ -253,13 +262,14 @@ void FacturasProveedorList::imprimir() {
 /**
 \param comp
 **/
-void FacturasProveedorList::setEmpresaBase (Company *comp) {
-    _depura("FacturasProveedorList::setEmpresaBase", 0);
-    PEmpresaBase::setEmpresaBase(comp);
-    m_proveedor->setEmpresaBase(comp);
-    m_articulo->setEmpresaBase(comp);
-    mui_list->setEmpresaBase(comp);
-    _depura("END FacturasProveedorList::setEmpresaBase", 0);
+void FacturasProveedorList::setEmpresaBase ( Company *comp )
+{
+    _depura ( "FacturasProveedorList::setEmpresaBase", 0 );
+    PEmpresaBase::setEmpresaBase ( comp );
+    m_proveedor->setEmpresaBase ( comp );
+    m_articulo->setEmpresaBase ( comp );
+    mui_list->setEmpresaBase ( comp );
+    _depura ( "END FacturasProveedorList::setEmpresaBase", 0 );
 }
 
 
@@ -267,10 +277,11 @@ void FacturasProveedorList::setEmpresaBase (Company *comp) {
 /**
 \return
 **/
-QString FacturasProveedorList::idfacturap() {
-    _depura("FacturasProveedorList::idfacturap", 0);
+QString FacturasProveedorList::idfacturap()
+{
+    _depura ( "FacturasProveedorList::idfacturap", 0 );
     return mdb_idfacturap;
-    _depura("END FacturasProveedorList::idfacturap", 0);
+    _depura ( "END FacturasProveedorList::idfacturap", 0 );
 }
 
 
@@ -278,10 +289,11 @@ QString FacturasProveedorList::idfacturap() {
 /**
 \param val
 **/
-void FacturasProveedorList::setidproveedor(QString val) {
-    _depura("FacturasProveedorList::setidproveedor", 0);
-    m_proveedor->setidproveedor(val);
-    _depura("END FacturasProveedorList::setidproveedor", 0);
+void FacturasProveedorList::setidproveedor ( QString val )
+{
+    _depura ( "FacturasProveedorList::setidproveedor", 0 );
+    m_proveedor->setidproveedor ( val );
+    _depura ( "END FacturasProveedorList::setidproveedor", 0 );
 }
 
 
@@ -289,20 +301,22 @@ void FacturasProveedorList::setidproveedor(QString val) {
 /**
 \param val
 **/
-void FacturasProveedorList::setidarticulo(QString val) {
-    _depura("FacturasProveedorList::setidarticulo", 0);
-    m_articulo->setidarticulo(val);
-    _depura("END FacturasProveedorList::setidarticulo", 0);
+void FacturasProveedorList::setidarticulo ( QString val )
+{
+    _depura ( "FacturasProveedorList::setidarticulo", 0 );
+    m_articulo->setidarticulo ( val );
+    _depura ( "END FacturasProveedorList::setidarticulo", 0 );
 }
 
 
 ///
 /**
 **/
-void FacturasProveedorList::crear() {
-    _depura("FacturasProveedorList::crear", 0);
-    ((Company *)empresaBase())->s_newFacturaPro();
-    _depura("END FacturasProveedorList::crear", 0);
+void FacturasProveedorList::crear()
+{
+    _depura ( "FacturasProveedorList::crear", 0 );
+    ( ( Company * ) empresaBase() ) ->s_newFacturaPro();
+    _depura ( "END FacturasProveedorList::crear", 0 );
 }
 
 
@@ -313,47 +327,50 @@ void FacturasProveedorList::crear() {
 /**
 \param parent
 **/
-FacturasProveedorListSubform::FacturasProveedorListSubform(QWidget *parent) : SubForm2Bf(parent) {
-    _depura("FacturasProveedorListSubform::FacturasProveedorListSubform", 0);
-    setDBTableName("facturap");
-    setDBCampoId("idfacturap");
-    addSHeader("reffacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Referencia factura"));
-    addSHeader("idfacturap", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("Id factura"));
-    addSHeader("numfacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Numero factura"));
-    addSHeader("nomproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre proveedor"));
-    addSHeader("ffacturap", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Fecha factura"));
-    addSHeader("contactfacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Persona de contacto"));
-    addSHeader("telfacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Telefono factura"));
-    addSHeader("comentfacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Comentario factura"));
-    addSHeader("idtrabajador", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Id trabajador"));
-    addSHeader("idproveedor", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Id proveedor"));
-    addSHeader("total", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Total"));
-    addSHeader("base", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Base imponible"));
-    addSHeader("impuestos", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Impuestos"));
-    setinsercion(FALSE);
-    setDelete(FALSE);
-    setSortingEnabled(TRUE);
-    _depura("END FacturasProveedorListSubform::FacturasProveedorListSubform", 0);
+FacturasProveedorListSubform::FacturasProveedorListSubform ( QWidget *parent ) : SubForm2Bf ( parent )
+{
+    _depura ( "FacturasProveedorListSubform::FacturasProveedorListSubform", 0 );
+    setDBTableName ( "facturap" );
+    setDBCampoId ( "idfacturap" );
+    addSHeader ( "reffacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Referencia factura" ) );
+    addSHeader ( "idfacturap", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "Id factura" ) );
+    addSHeader ( "numfacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Numero factura" ) );
+    addSHeader ( "nomproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre proveedor" ) );
+    addSHeader ( "ffacturap", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Fecha factura" ) );
+    addSHeader ( "contactfacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Persona de contacto" ) );
+    addSHeader ( "telfacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Telefono factura" ) );
+    addSHeader ( "comentfacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Comentario factura" ) );
+    addSHeader ( "idtrabajador", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Id trabajador" ) );
+    addSHeader ( "idproveedor", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Id proveedor" ) );
+    addSHeader ( "total", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Total" ) );
+    addSHeader ( "base", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Base imponible" ) );
+    addSHeader ( "impuestos", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Impuestos" ) );
+    setinsercion ( FALSE );
+    setDelete ( FALSE );
+    setSortingEnabled ( TRUE );
+    _depura ( "END FacturasProveedorListSubform::FacturasProveedorListSubform", 0 );
 }
 
 
 ///
 /**
 **/
-FacturasProveedorListSubform::~FacturasProveedorListSubform() {
-    _depura("FacturasProveedorListSubform::~FacturasProveedorListSubform", 0);
-    _depura("END FacturasProveedorListSubform::~FacturasProveedorListSubform", 0);
+FacturasProveedorListSubform::~FacturasProveedorListSubform()
+{
+    _depura ( "FacturasProveedorListSubform::~FacturasProveedorListSubform", 0 );
+    _depura ( "END FacturasProveedorListSubform::~FacturasProveedorListSubform", 0 );
 }
 
 
 ///
 /**
 **/
-void FacturasProveedorListSubform::cargar() {
-    _depura("AlbaranesProveedorListSubform::cargar()\n", 0);
+void FacturasProveedorListSubform::cargar()
+{
+    _depura ( "AlbaranesProveedorListSubform::cargar()\n", 0 );
     QString SQLQuery = "SELECT * FROM facturap";
-    SubForm3::cargar(SQLQuery);
-    _depura("END AlbaranesProveedorListSubform::cargar()\n", 0);
+    SubForm3::cargar ( SQLQuery );
+    _depura ( "END AlbaranesProveedorListSubform::cargar()\n", 0 );
 }
 
 
@@ -361,9 +378,10 @@ void FacturasProveedorListSubform::cargar() {
 /**
 \param query
 **/
-void FacturasProveedorListSubform::cargar(QString query) {
-    _depura("AlbaranesProveedorListSubform::cargar(QString query)\n", 0);
-    SubForm3::cargar(query);
-    _depura("END AlbaranesProveedorListSubform::cargar(QString query)\n", 0);
+void FacturasProveedorListSubform::cargar ( QString query )
+{
+    _depura ( "AlbaranesProveedorListSubform::cargar(QString query)\n", 0 );
+    SubForm3::cargar ( query );
+    _depura ( "END AlbaranesProveedorListSubform::cargar(QString query)\n", 0 );
 }
 

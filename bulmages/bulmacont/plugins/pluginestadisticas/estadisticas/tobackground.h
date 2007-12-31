@@ -42,27 +42,32 @@ class QMovie;
 
 /** A timer descendant which also keep track of the last timer setting sent to it.
  */
-class toTimer : public QTimer {
-  int LastTimer;
+class toTimer : public QTimer
+{
+    int LastTimer;
 public:
-  /** Create timer.
-   * @param parent Parent object of timer.
-   * @param name Name of timer.
-   */
-  toTimer(QObject *parent=0,const char * name=0)
-    : QTimer(parent,name)
-  { }
-  /** Start timer.
-   * @param msec Milliseconds to timeout.
-   * @param sshot Set to true if only timeout once.
-   */
-  int start(int msec,bool sshot=false)
-  { LastTimer=msec; return QTimer::start(msec,sshot); }
-  /** Get last timer start timeout.
-   * @return Last timeout in millisecond.
-   */
-  int lastTimer(void)
-  { return LastTimer; }
+    /** Create timer.
+     * @param parent Parent object of timer.
+     * @param name Name of timer.
+     */
+    toTimer ( QObject *parent = 0, const char * name = 0 )
+            : QTimer ( parent, name )
+    { }
+    /** Start timer.
+     * @param msec Milliseconds to timeout.
+     * @param sshot Set to true if only timeout once.
+     */
+    int start ( int msec, bool sshot = false )
+    {
+        LastTimer = msec; return QTimer::start ( msec, sshot );
+    }
+    /** Get last timer start timeout.
+     * @return Last timeout in millisecond.
+     */
+    int lastTimer ( void )
+    {
+        return LastTimer;
+    }
 };
 
 /**
@@ -70,29 +75,30 @@ public:
  * main window when any timer is running. Can not do singleshots, only
  * periodic intervals.
  */
-class toBackground : public toTimer {
-  static int Running;
-  static QLabel *Label;
-  static QMovie *Animation;
+class toBackground : public toTimer
+{
+    static int Running;
+    static QLabel *Label;
+    static QMovie *Animation;
 public:
-  /**
-   * Create a background timer widget.
-   * @param parent Parent widget.
-   * @param name Name of widget.
-   */
-  toBackground(QObject* parent=0,const char* name=0)
-    : toTimer(parent,name)
-  { }
-  ~toBackground();
-  /** Start repeating timer with msec interval.
-   * @param msec Millsecond repeat interval.
-   */
-  void start(int msec);
-  /** Stop timer
-   */
-  void stop(void);
+    /**
+     * Create a background timer widget.
+     * @param parent Parent widget.
+     * @param name Name of widget.
+     */
+    toBackground ( QObject* parent = 0, const char* name = 0 )
+            : toTimer ( parent, name )
+    { }
+    ~toBackground();
+    /** Start repeating timer with msec interval.
+     * @param msec Millsecond repeat interval.
+     */
+    void start ( int msec );
+    /** Stop timer
+     */
+    void stop ( void );
 
-  static void init(void);
+    static void init ( void );
 };
 
 #endif

@@ -13,22 +13,23 @@
 class EmpresaTPV;
 
 
-class Input : public QLineEdit {
+class Input : public QLineEdit
+{
     Q_OBJECT
 
 private:
     EmpresaTPV *m_empresaTPV;
 
 public:
-    Input(EmpresaTPV *);
+    Input ( EmpresaTPV * );
     virtual ~Input();
-    virtual void keyPressEvent(QKeyEvent *e);
-    virtual void pulsaTecla(int tecla, const QString &texto = QString());
+    virtual void keyPressEvent ( QKeyEvent *e );
+    virtual void pulsaTecla ( int tecla, const QString &texto = QString() );
     QString valorInput();
-    void setValorInput(QString val);
+    void setValorInput ( QString val );
 
 signals:
-    void sendTecla(int tecla);
+    void sendTecla ( int tecla );
 };
 
 #endif

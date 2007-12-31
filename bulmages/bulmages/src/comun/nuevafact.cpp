@@ -26,36 +26,39 @@
 \param parent
 \param f
 **/
-nuevafact::nuevafact(QWidget *parent, Qt::WFlags f) 
-  : QDialog(parent, f) {
-  setupUi(this);
+nuevafact::nuevafact ( QWidget *parent, Qt::WFlags f )
+        : QDialog ( parent, f )
+{
+    setupUi ( this );
 
-  /// Signals and slots connections.
-  QObject::connect(PushButton1, SIGNAL(clicked()), this, SLOT(accept()));
-  QObject::connect(PushButton1_2, SIGNAL(clicked()), this, SLOT(close()));
+    /// Signals and slots connections.
+    QObject::connect ( PushButton1, SIGNAL ( clicked() ), this, SLOT ( accept() ) );
+    QObject::connect ( PushButton1_2, SIGNAL ( clicked() ), this, SLOT ( close() ) );
 }
 
 
 ///
 /**
 **/
-nuevafact::~nuevafact() {}
+nuevafact::~nuevafact()
+{}
 
 
 ///
 /**
 **/
-void nuevafact::accept() {
-  /// Falta comprobar que tengas permisos para crear nuevas empresas.
-  QString nombredb;
-  QString nombreEmp;
+void nuevafact::accept()
+{
+    /// Falta comprobar que tengas permisos para crear nuevas empresas.
+    QString nombredb;
+    QString nombreEmp;
 
-  nombredb = bdempresa->text().trimmed() + ejercicioempresa->text().trimmed();
-  nombreEmp = nombreempresa->text().trimmed();
-  QString cadena = confpr->valor(CONF_PROGDATA);
-  cadena += "dbmodels/creabulmafact --texto " + nombredb + " 1 " + nombreEmp + " " + ejercicioempresa->text().trimmed() + " ";
-  
-  system(cadena.toAscii().constData());
-  close();
+    nombredb = bdempresa->text().trimmed() + ejercicioempresa->text().trimmed();
+    nombreEmp = nombreempresa->text().trimmed();
+    QString cadena = confpr->valor ( CONF_PROGDATA );
+    cadena += "dbmodels/creabulmafact --texto " + nombredb + " 1 " + nombreEmp + " " + ejercicioempresa->text().trimmed() + " ";
+
+    system ( cadena.toAscii().constData() );
+    close();
 }
 

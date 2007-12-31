@@ -6,11 +6,12 @@
 #include "ui_adminbase.h"
 #include "empresatpv.h"
 
-class Admin : public BLWidget, public Ui_AdminBase {
+class Admin : public BLWidget, public Ui_AdminBase
+{
     Q_OBJECT
 
 public:
-    Admin(EmpresaTPV *emp, QWidget *parent);
+    Admin ( EmpresaTPV *emp, QWidget *parent );
     virtual ~Admin();
 public slots:
     virtual void on_mui_z_clicked();

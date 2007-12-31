@@ -29,14 +29,15 @@
 /**
 \param parent
 **/
-BusquedaFamilia::BusquedaFamilia(QWidget *parent)
-        : BLWidget(parent) {
-    _depura("BusquedaFamilia::BusquedaFamilia", 0);
-    setupUi(this);
+BusquedaFamilia::BusquedaFamilia ( QWidget *parent )
+        : BLWidget ( parent )
+{
+    _depura ( "BusquedaFamilia::BusquedaFamilia", 0 );
+    setupUi ( this );
     mdb_idfamilia = "";
     mdb_nombrefamilia = "";
     mdb_codigocompletofamilia = "";
-    _depura("END BusquedaFamilia::BusquedaFamilia", 0);
+    _depura ( "END BusquedaFamilia::BusquedaFamilia", 0 );
 }
 
 
@@ -44,9 +45,10 @@ BusquedaFamilia::BusquedaFamilia(QWidget *parent)
 */
 /**
 **/
-BusquedaFamilia::~BusquedaFamilia() {
-    _depura("BusquedaFamilia::~BusquedaFamilia", 0);
-    _depura("END BusquedaFamilia::~BusquedaFamilia", 0);
+BusquedaFamilia::~BusquedaFamilia()
+{
+    _depura ( "BusquedaFamilia::~BusquedaFamilia", 0 );
+    _depura ( "END BusquedaFamilia::~BusquedaFamilia", 0 );
 }
 
 
@@ -54,15 +56,16 @@ BusquedaFamilia::~BusquedaFamilia() {
 /**
 \param val
 **/
-void BusquedaFamilia::setidfamilia(QString val) {
-    _depura("BusquedaFamilia::setidfamilia", 0);
+void BusquedaFamilia::setidfamilia ( QString val )
+{
+    _depura ( "BusquedaFamilia::setidfamilia", 0 );
     mdb_idfamilia = val;
     QString SQLQuery = "SELECT * FROM familia WHERE idfamilia='" + mdb_idfamilia + "'";
-    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
+    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
 
-    if(!cur->eof()) {
-        mdb_codigocompletofamilia = cur->valor("codigocompletofamilia");
-        mdb_nombrefamilia = cur->valor("nombrefamilia");
+    if ( !cur->eof() ) {
+        mdb_codigocompletofamilia = cur->valor ( "codigocompletofamilia" );
+        mdb_nombrefamilia = cur->valor ( "nombrefamilia" );
     } else {
         mdb_idfamilia = "";
         mdb_nombrefamilia = "";
@@ -70,9 +73,9 @@ void BusquedaFamilia::setidfamilia(QString val) {
     } // end if
 
     delete cur;
-    m_codigocompletofamilia->setText(mdb_codigocompletofamilia);
-    m_nombrefamilia->setText(mdb_nombrefamilia);
-    _depura("END BusquedaFamilia::setidfamilia", 0);
+    m_codigocompletofamilia->setText ( mdb_codigocompletofamilia );
+    m_nombrefamilia->setText ( mdb_nombrefamilia );
+    _depura ( "END BusquedaFamilia::setidfamilia", 0 );
 }
 
 
@@ -80,10 +83,11 @@ void BusquedaFamilia::setidfamilia(QString val) {
 /**
 \param val
 **/
-void BusquedaFamilia::setValorCampo(QString val) {
-    _depura("BusquedaFamilia::setValorCampo", 0);
-	setidfamilia(val);
-    _depura("END BusquedaFamilia::setValorCampo", 0);
+void BusquedaFamilia::setValorCampo ( QString val )
+{
+    _depura ( "BusquedaFamilia::setValorCampo", 0 );
+    setidfamilia ( val );
+    _depura ( "END BusquedaFamilia::setValorCampo", 0 );
 }
 
 
@@ -91,83 +95,86 @@ void BusquedaFamilia::setValorCampo(QString val) {
 /**
 \param val
 **/
-void BusquedaFamilia::setcodigocompletofamilia(QString val) {
-    _depura("BusquedaFamilia::setcodigocompletofamilia", 0);
+void BusquedaFamilia::setcodigocompletofamilia ( QString val )
+{
+    _depura ( "BusquedaFamilia::setcodigocompletofamilia", 0 );
     mdb_codigocompletofamilia = val;
     QString SQLQuery = "SELECT * FROM familia WHERE codigocompletofamilia='" + mdb_codigocompletofamilia + "'";
-    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
+    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
 
-    if(!cur->eof()) {
-        mdb_idfamilia = cur->valor("idfamilia");
-        mdb_nombrefamilia = cur->valor("nombrefamilia");
+    if ( !cur->eof() ) {
+        mdb_idfamilia = cur->valor ( "idfamilia" );
+        mdb_nombrefamilia = cur->valor ( "nombrefamilia" );
     } else {
         mdb_idfamilia = "";
         mdb_nombrefamilia = "";
     } // end if
 
     delete cur;
-    m_codigocompletofamilia->setText(mdb_codigocompletofamilia);
-    m_nombrefamilia->setText(mdb_nombrefamilia);
-    _depura("END BusquedaFamilia::setcodigocompletofamilia", 0);
+    m_codigocompletofamilia->setText ( mdb_codigocompletofamilia );
+    m_nombrefamilia->setText ( mdb_nombrefamilia );
+    _depura ( "END BusquedaFamilia::setcodigocompletofamilia", 0 );
 }
 
 
 /// Busqueda de familias.
 /**
 **/
-void BusquedaFamilia::on_mui_buscar_clicked() {
-    _depura("BusquedaFamilia::on_mui_buscar_clicked", 0);
-    QDialog *diag = new QDialog(0);
-    diag->setModal(true);
+void BusquedaFamilia::on_mui_buscar_clicked()
+{
+    _depura ( "BusquedaFamilia::on_mui_buscar_clicked", 0 );
+    QDialog *diag = new QDialog ( 0 );
+    diag->setModal ( true );
 
-    FamiliasView *fam = ((Company *)empresaBase())->newfamiliasview(diag, TRUE);
-    connect(fam, SIGNAL(selected(QString)), diag, SLOT(accept()));
+    FamiliasView *fam = ( ( Company * ) empresaBase() ) ->newfamiliasview ( diag, TRUE );
+    connect ( fam, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
     /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
     /// para que sea redimensionable y aparezca el titulo de la ventana.
     QHBoxLayout *layout = new QHBoxLayout;
-    layout->addWidget(fam);
-    layout->setMargin(0);
-    layout->setSpacing(0);
-    diag->setLayout(layout);
-    diag->setWindowTitle(fam->windowTitle());
+    layout->addWidget ( fam );
+    layout->setMargin ( 0 );
+    layout->setSpacing ( 0 );
+    diag->setLayout ( layout );
+    diag->setWindowTitle ( fam->windowTitle() );
 
     diag->exec();
-    if (fam->codigoCompletoFamilia() != "") {
-        m_codigocompletofamilia->setText(fam->codigoCompletoFamilia());
+    if ( fam->codigoCompletoFamilia() != "" ) {
+        m_codigocompletofamilia->setText ( fam->codigoCompletoFamilia() );
         mdb_codigocompletofamilia = fam->codigoCompletoFamilia();
-        m_nombrefamilia->setText(fam->nombreFamilia());
+        m_nombrefamilia->setText ( fam->nombreFamilia() );
         mdb_nombrefamilia = fam->nombreFamilia();
         mdb_idfamilia = fam->idFamilia();
     } // end if
     delete diag;
-    emit(valueChanged(mdb_idfamilia));
-    _depura("END BusquedaFamilia::on_mui_buscar_clicked", 0);
+    emit ( valueChanged ( mdb_idfamilia ) );
+    _depura ( "END BusquedaFamilia::on_mui_buscar_clicked", 0 );
 }
 
 ///
 /**
 \param val
 **/
-void BusquedaFamilia::on_m_codigocompletofamilia_textChanged(const QString &val) {
-    _depura("BusquedaFamilia::on_m_codigocompletofamilia_textChanged", 0);
+void BusquedaFamilia::on_m_codigocompletofamilia_textChanged ( const QString &val )
+{
+    _depura ( "BusquedaFamilia::on_m_codigocompletofamilia_textChanged", 0 );
     mdb_codigocompletofamilia = val;
     QString SQLQuery = "SELECT * FROM familia WHERE codigocompletofamilia='" + mdb_codigocompletofamilia + "'";
-    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
+    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
 
-    if(!cur->eof()) {
-        mdb_idfamilia = cur->valor("idfamilia");
-        mdb_nombrefamilia = cur->valor("nombrefamilia");
+    if ( !cur->eof() ) {
+        mdb_idfamilia = cur->valor ( "idfamilia" );
+        mdb_nombrefamilia = cur->valor ( "nombrefamilia" );
     } else {
         mdb_idfamilia = "";
         mdb_nombrefamilia = "";
     } // end if
 
     delete cur;
-    m_codigocompletofamilia->setText(mdb_codigocompletofamilia);
-    m_nombrefamilia->setText(mdb_nombrefamilia);
-    emit(valueChanged(mdb_idfamilia));
-    _depura("END BusquedaFamilia::on_m_codigocompletofamilia_textChanged", 0);
+    m_codigocompletofamilia->setText ( mdb_codigocompletofamilia );
+    m_nombrefamilia->setText ( mdb_nombrefamilia );
+    emit ( valueChanged ( mdb_idfamilia ) );
+    _depura ( "END BusquedaFamilia::on_m_codigocompletofamilia_textChanged", 0 );
 }
 
 
@@ -175,9 +182,10 @@ void BusquedaFamilia::on_m_codigocompletofamilia_textChanged(const QString &val)
 /**
 \return
 **/
-QString BusquedaFamilia::codigocompletofamilia() {
-    _depura("BusquedaFamilia::codigocompletofamilia", 0);
-    _depura("END BusquedaFamilia::codigocompletofamilia", 0);
+QString BusquedaFamilia::codigocompletofamilia()
+{
+    _depura ( "BusquedaFamilia::codigocompletofamilia", 0 );
+    _depura ( "END BusquedaFamilia::codigocompletofamilia", 0 );
     return m_codigocompletofamilia->text();
 }
 
@@ -186,9 +194,10 @@ QString BusquedaFamilia::codigocompletofamilia() {
 /**
 \return
 **/
-QString BusquedaFamilia::idfamilia() {
-    _depura("BusquedaFamilia::idfamilia", 0);
-    _depura("END BusquedaFamilia::idfamilia", 0);
+QString BusquedaFamilia::idfamilia()
+{
+    _depura ( "BusquedaFamilia::idfamilia", 0 );
+    _depura ( "END BusquedaFamilia::idfamilia", 0 );
     return mdb_idfamilia;
 }
 
@@ -197,9 +206,10 @@ QString BusquedaFamilia::idfamilia() {
 /**
 \return
 **/
-QString BusquedaFamilia::valorCampo() {
-    _depura("BusquedaFamilia::valorCampo", 0);
-    _depura("END BusquedaFamilia::valorCampo", 0);
+QString BusquedaFamilia::valorCampo()
+{
+    _depura ( "BusquedaFamilia::valorCampo", 0 );
+    _depura ( "END BusquedaFamilia::valorCampo", 0 );
     return mdb_idfamilia;
 }
 
@@ -208,9 +218,10 @@ QString BusquedaFamilia::valorCampo() {
 /**
 \returns
 **/
-QString BusquedaFamilia::nombrefamilia() {
-    _depura("BusquedaFamilia::nombrefamilia", 0);
-    _depura("END BusquedaFamilia::nombrefamilia", 0);
+QString BusquedaFamilia::nombrefamilia()
+{
+    _depura ( "BusquedaFamilia::nombrefamilia", 0 );
+    _depura ( "END BusquedaFamilia::nombrefamilia", 0 );
     return nombrefamilia();
 }
 

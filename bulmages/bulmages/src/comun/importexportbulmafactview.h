@@ -29,7 +29,8 @@
 #include "postgresiface2.h"
 
 
-class ImportExportBulmafactView : public QDialog, public Ui_ImportExportBulmafactBase, public pgimportfiles {
+class ImportExportBulmafactView : public QDialog, public Ui_ImportExportBulmafactBase, public pgimportfiles
+{
     Q_OBJECT
 
 private:
@@ -37,16 +38,18 @@ private:
     QString mensajein;
 
 private:
-    void inicializaMensajeria() {
+    void inicializaMensajeria()
+    {
         mensajein = "";
     };
 
 public:
-    ImportExportBulmafactView(postgresiface2 *, QWidget *, Qt::WFlags);
-    ~ImportExportBulmafactView() {}
+    ImportExportBulmafactView ( postgresiface2 *, QWidget *, Qt::WFlags );
+    ~ImportExportBulmafactView()
+    {}
     ;
-    virtual void alerta(int, int);
-    virtual void mensajeria(QString);
+    virtual void alerta ( int, int );
+    virtual void mensajeria ( QString );
 
 public slots:
     virtual void botonBuscarXML();

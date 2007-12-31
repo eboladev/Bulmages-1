@@ -35,23 +35,24 @@
 #include "facturasplist.h"
 #include "blwidget.h"
 
-extern "C" MY_EXPORT void entryPoint(Bulmafact *);
-extern "C" MY_EXPORT int FacturaView_FacturaView(FacturaView *);
-extern "C" MY_EXPORT int FacturasProveedorList_FacturasProveedorList_Post(FacturasProveedorList *);
+extern "C" MY_EXPORT void entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int FacturaView_FacturaView ( FacturaView * );
+extern "C" MY_EXPORT int FacturasProveedorList_FacturasProveedorList_Post ( FacturasProveedorList * );
 extern QApplication2 *theApp;
 
 
-class efacturabf : public QObject, PEmpresaBase {
-	Q_OBJECT
+class efacturabf : public QObject, PEmpresaBase
+{
+    Q_OBJECT
 
 public:
-	efacturabf();
-	~efacturabf();
-	void inicializa(Bulmafact *);
-	int FacturaView_FacturaView(FacturaView *);
-	int FacturasProveedorList_FacturasProveedorList_Post(FacturasProveedorList *);
+    efacturabf();
+    ~efacturabf();
+    void inicializa ( Bulmafact * );
+    int FacturaView_FacturaView ( FacturaView * );
+    int FacturasProveedorList_FacturasProveedorList_Post ( FacturasProveedorList * );
 
 public slots:
-	void elslot();
-	void elslot1();
+    void elslot();
+    void elslot1();
 };

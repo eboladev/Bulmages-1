@@ -34,21 +34,23 @@ class Fixed;
 \param parent
 \param f
 **/
-FichaBc::FichaBc(Empresa *comp, QWidget *parent, Qt::WFlags f)
-        : Ficha(comp, parent, f) {
-    _depura("FichaBc::FichaBc", 0);
+FichaBc::FichaBc ( Empresa *comp, QWidget *parent, Qt::WFlags f )
+        : Ficha ( comp, parent, f )
+{
+    _depura ( "FichaBc::FichaBc", 0 );
     m_listalineas = NULL;
-    _depura("END FichaBc::FichaBc", 0);
+    _depura ( "END FichaBc::FichaBc", 0 );
 }
 
 
 ///
 /**
 **/
-FichaBc::~FichaBc() {
-    _depura("FichaBc::~FichaBc", 0);
-    empresaBase()->sacaWindow(this);
-    _depura("END FichaBc::~FichaBc", 0);
+FichaBc::~FichaBc()
+{
+    _depura ( "FichaBc::~FichaBc", 0 );
+    empresaBase() ->sacaWindow ( this );
+    _depura ( "END FichaBc::~FichaBc", 0 );
 }
 
 
@@ -56,10 +58,11 @@ FichaBc::~FichaBc() {
 /**
 \param form
 **/
-void FichaBc::setListaLineas(SubForm2Bc * form) {
-    _depura("FichaBc::setListaLineas", 0);
+void FichaBc::setListaLineas ( SubForm2Bc * form )
+{
+    _depura ( "FichaBc::setListaLineas", 0 );
     m_listalineas = form;
-    _depura("END FichaBc::setListaLineas", 0);
+    _depura ( "END FichaBc::setListaLineas", 0 );
 }
 
 
@@ -67,9 +70,10 @@ void FichaBc::setListaLineas(SubForm2Bc * form) {
 /**
 \return
 **/
-SubForm2Bc* FichaBc::listalineas() {
-    _depura("FichaBc::listalineas", 0);
-    _depura("END FichaBc::listalineas", 0);
+SubForm2Bc* FichaBc::listalineas()
+{
+    _depura ( "FichaBc::listalineas", 0 );
+    _depura ( "END FichaBc::listalineas", 0 );
     return m_listalineas;
 }
 
@@ -78,10 +82,11 @@ SubForm2Bc* FichaBc::listalineas() {
 /**
 \return
 **/
-Empresa * FichaBc::empresaBase() {
-    _depura("FichaBc::empresaBase", 0);
-    _depura("END FichaBc::empresaBase", 0);
-    return (Empresa *)Ficha::empresaBase();
+Empresa * FichaBc::empresaBase()
+{
+    _depura ( "FichaBc::empresaBase", 0 );
+    _depura ( "END FichaBc::empresaBase", 0 );
+    return ( Empresa * ) Ficha::empresaBase();
 }
 
 

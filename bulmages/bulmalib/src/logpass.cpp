@@ -32,9 +32,10 @@
 /**
 \return
 **/
-bool logpass::authOK() {
-    _depura("logpass::authOK", 0);
-    _depura("END logpass::authOK", 0);
+bool logpass::authOK()
+{
+    _depura ( "logpass::authOK", 0 );
+    _depura ( "END logpass::authOK", 0 );
     return m_authOK;
 }
 
@@ -44,71 +45,74 @@ bool logpass::authOK() {
 \param parent
 \param name
 **/
-logpass::logpass(QWidget *parent, const char *name) : QDialog(parent) {
-    _depura("logpass::logpass", 0);
-    setWindowTitle(name);
-    setupUi(this);
-    grpAuthError->setVisible(TRUE);
-    QObject::connect(pbValidar, SIGNAL(clicked()), this, SLOT(validar()));
-    QObject::connect(pbCerrar, SIGNAL(clicked()), this, SLOT(close()));
+logpass::logpass ( QWidget *parent, const char *name ) : QDialog ( parent )
+{
+    _depura ( "logpass::logpass", 0 );
+    setWindowTitle ( name );
+    setupUi ( this );
+    grpAuthError->setVisible ( TRUE );
+    QObject::connect ( pbValidar, SIGNAL ( clicked() ), this, SLOT ( validar() ) );
+    QObject::connect ( pbCerrar, SIGNAL ( clicked() ), this, SLOT ( close() ) );
     validar();
-    _depura("END logpass::logpass", 0);
+    _depura ( "END logpass::logpass", 0 );
 }
 
 
 ///
 /**
 **/
-logpass::~logpass() {
-    _depura("logpass::~logpass", 0);
-    _depura("END logpass::~logpass", 0);
+logpass::~logpass()
+{
+    _depura ( "logpass::~logpass", 0 );
+    _depura ( "END logpass::~logpass", 0 );
 }
 
 
 /// Valida si postgres puede abrir bases de datos y si no es asi pide login y password.
 /**
 **/
-void logpass::validar() {
-    _depura("logpass::validar");
-    m_login->setText(postgresiface2::sanearCadena(m_login->text()));
+void logpass::validar()
+{
+    _depura ( "logpass::validar" );
+    m_login->setText ( postgresiface2::sanearCadena ( m_login->text() ) );
     m_authOK = false;
 
-    confpr->setValor(CONF_LOGIN_USER, m_login->text());
-    confpr->setValor(CONF_PASSWORD_USER, m_password->text());
+    confpr->setValor ( CONF_LOGIN_USER, m_login->text() );
+    confpr->setValor ( CONF_PASSWORD_USER, m_password->text() );
 
     /// Comprobamos si es un usuario v&aacute;lido.
     metabase = new postgresiface2();
-    if (!metabase->inicializa("bulmafact")) {
+    if ( !metabase->inicializa ( "bulmafact" ) ) {
         m_authOK = true;
     } // end if
     delete metabase;
-    if (!m_authOK) {
-	metabase = new postgresiface2();
-	if (!metabase->inicializa("bulmacont")) {
-		m_authOK = true;
-	} // end if
-	delete metabase;
+    if ( !m_authOK ) {
+        metabase = new postgresiface2();
+        if ( !metabase->inicializa ( "bulmacont" ) ) {
+            m_authOK = true;
+        } // end if
+        delete metabase;
     } // end if
-    if (!m_authOK) {
-	metabase = new postgresiface2();
-	if (!metabase->inicializa("template1")) {
-		m_authOK = true;
-	} // end if
-	delete metabase;
+    if ( !m_authOK ) {
+        metabase = new postgresiface2();
+        if ( !metabase->inicializa ( "template1" ) ) {
+            m_authOK = true;
+        } // end if
+        delete metabase;
     } // end if
 
     /// Si es v&aacute;lido abrimos el selector y si no mostramos un error y limpiamos
     /// el formulario.
-    if (m_authOK) {
-        grpAuthError->setVisible(FALSE);
-        done(1);
+    if ( m_authOK ) {
+        grpAuthError->setVisible ( FALSE );
+        done ( 1 );
     } else {
-        grpAuthError->setVisible(TRUE);
-        lblAuthError->setText(tr("Error: usuario y/o contrasenya incorrectos"));
-        m_login->setText("");
-        m_password->setText("");
+        grpAuthError->setVisible ( TRUE );
+        lblAuthError->setText ( tr ( "Error: usuario y/o contrasenya incorrectos" ) );
+        m_login->setText ( "" );
+        m_password->setText ( "" );
         m_login->setFocus();
     } // end if
-    _depura("END logpass::validar");
+    _depura ( "END logpass::validar" );
 }
 

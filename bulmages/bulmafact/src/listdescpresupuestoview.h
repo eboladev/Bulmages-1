@@ -28,20 +28,23 @@
 
 /// Muestra y administra la ventana con la lista de descuentos por presupuesto.
 /** */
-class ListDescuentoPresupuestoView : public SubForm2Bf {
+class ListDescuentoPresupuestoView : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
     QString mdb_idpresupuesto;
-    ListDescuentoPresupuestoView(QWidget *parent = 0);
-    ~ListDescuentoPresupuestoView() {}
+    ListDescuentoPresupuestoView ( QWidget *parent = 0 );
+    ~ListDescuentoPresupuestoView()
+    {}
     ;
 
 public slots:
-    virtual void cargar(QString idpresupuesto) {
-        _depura("ListDescuentoPresupuestoView::cargar\n", 0);
+    virtual void cargar ( QString idpresupuesto )
+    {
+        _depura ( "ListDescuentoPresupuestoView::cargar\n", 0 );
         mdb_idpresupuesto = idpresupuesto;
-        SubForm3::cargar("SELECT * FROM dpresupuesto WHERE idpresupuesto = " + mdb_idpresupuesto);
+        SubForm3::cargar ( "SELECT * FROM dpresupuesto WHERE idpresupuesto = " + mdb_idpresupuesto );
     };
 };
 

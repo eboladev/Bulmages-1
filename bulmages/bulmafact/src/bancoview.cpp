@@ -36,85 +36,89 @@
 \param emp
 \param parent
 **/
-BancoView::BancoView(Company *emp, QWidget *parent)
-        : FichaBf(emp, parent) {
-    _depura("BancoView::BancoView", 0);
-    setTitleName(tr("Banco"));
+BancoView::BancoView ( Company *emp, QWidget *parent )
+        : FichaBf ( emp, parent )
+{
+    _depura ( "BancoView::BancoView", 0 );
+    setTitleName ( tr ( "Banco" ) );
     /// Indicamos que vamos a operar con la tabla banco para que los permisos se traten adecuadamente.
-    setDBTableName("banco");
-    setAttribute(Qt::WA_DeleteOnClose);
-    setupUi(this);
-    groupBox1->setDisabled(TRUE);
+    setDBTableName ( "banco" );
+    setAttribute ( Qt::WA_DeleteOnClose );
+    setupUi ( this );
+    groupBox1->setDisabled ( TRUE );
     setModoEdicion();
     m_cursorbancos = NULL;
     m_item = NULL;
     pintar();
-    meteWindow(windowTitle(), this);
-    _depura("END BancoView::BancoView", 0);
+    meteWindow ( windowTitle(), this );
+    _depura ( "END BancoView::BancoView", 0 );
 }
 
 
 /// Carga el query de la base de datos y carga el qlistview.
 /**
 **/
-void BancoView::pintar() {
-    _depura("BancoView::pintar", 0);
+void BancoView::pintar()
+{
+    _depura ( "BancoView::pintar", 0 );
     mui_lista->clear();
-    if (m_cursorbancos != NULL) {
+    if ( m_cursorbancos != NULL ) {
         delete m_cursorbancos;
     } // end if
-    m_cursorbancos = empresaBase()->cargacursor("SELECT * FROM banco ORDER BY nombanco");
-    while (!m_cursorbancos->eof()) {
-        new QListWidgetItem(m_cursorbancos->valor("nombanco") , mui_lista);
+    m_cursorbancos = empresaBase() ->cargacursor ( "SELECT * FROM banco ORDER BY nombanco" );
+    while ( !m_cursorbancos->eof() ) {
+        new QListWidgetItem ( m_cursorbancos->valor ( "nombanco" ) , mui_lista );
         m_cursorbancos->siguienteregistro();
     } // end while
 
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
-    _depura("END BancoView::pintar", 0);
+    _depura ( "END BancoView::pintar", 0 );
 }
 
 
 ///
 /**
 **/
-BancoView::~BancoView() {
-    _depura("BancoView::~BancoView", 0);
-    if (m_cursorbancos != NULL) {
+BancoView::~BancoView()
+{
+    _depura ( "BancoView::~BancoView", 0 );
+    if ( m_cursorbancos != NULL ) {
         delete m_cursorbancos;
     } // end if
-    _depura("END BancoView::~BancoView", 0);
+    _depura ( "END BancoView::~BancoView", 0 );
 }
 
 
 ///
 /**
 **/
-void BancoView::on_mui_lista_currentItemChanged(QListWidgetItem *cur, QListWidgetItem *) {
-    _depura( "on_mui_lista_currentItemChanged", 0);
-    if (cur)
-        groupBox1->setEnabled(TRUE);
-    int row = mui_lista->row(cur);
+void BancoView::on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWidgetItem * )
+{
+    _depura ( "on_mui_lista_currentItemChanged", 0 );
+    if ( cur )
+        groupBox1->setEnabled ( TRUE );
+    int row = mui_lista->row ( cur );
     trataModificado();
-    mui_nombanco->setText(m_cursorbancos->valor("nombanco", row));
-    mdb_idbanco = m_cursorbancos->valor("idbanco", row);
-    mui_dirbanco->setText(m_cursorbancos->valor("dirbanco", row));
-    mui_poblbanco->setText(m_cursorbancos->valor("poblbanco", row));
-    mui_cpbanco->setText(m_cursorbancos->valor("cpbanco", row));
-    mui_telbanco->setText(m_cursorbancos->valor("telbanco", row));
-    mui_faxbanco->setText(m_cursorbancos->valor("faxbanco", row));
-    mui_emailbanco->setText(m_cursorbancos->valor("emailbanco", row));
-    mui_contactobanco->setText(m_cursorbancos->valor("contactobanco", row));
-    mui_codentidadbanco->setText(m_cursorbancos->valor("codentidadbanco", row));
-    mui_codagenciabanco->setText(m_cursorbancos->valor("codagenciabanco", row));
-    mui_numcuentabanco->setText(m_cursorbancos->valor("numcuentabanco", row));
-    mui_dcbanco->setText(m_cursorbancos->valor("dcbanco", row));
-    mui_comentbanco->setText(m_cursorbancos->valor("comentbanco", row));
-    mui_webbanco->setText(m_cursorbancos->valor("webbanco", row));
+    mui_nombanco->setText ( m_cursorbancos->valor ( "nombanco", row ) );
+    mdb_idbanco = m_cursorbancos->valor ( "idbanco", row );
+    mui_dirbanco->setText ( m_cursorbancos->valor ( "dirbanco", row ) );
+    mui_poblbanco->setText ( m_cursorbancos->valor ( "poblbanco", row ) );
+    mui_cpbanco->setText ( m_cursorbancos->valor ( "cpbanco", row ) );
+    mui_telbanco->setText ( m_cursorbancos->valor ( "telbanco", row ) );
+    mui_faxbanco->setText ( m_cursorbancos->valor ( "faxbanco", row ) );
+    mui_emailbanco->setText ( m_cursorbancos->valor ( "emailbanco", row ) );
+    mui_contactobanco->setText ( m_cursorbancos->valor ( "contactobanco", row ) );
+    mui_codentidadbanco->setText ( m_cursorbancos->valor ( "codentidadbanco", row ) );
+    mui_codagenciabanco->setText ( m_cursorbancos->valor ( "codagenciabanco", row ) );
+    mui_numcuentabanco->setText ( m_cursorbancos->valor ( "numcuentabanco", row ) );
+    mui_dcbanco->setText ( m_cursorbancos->valor ( "dcbanco", row ) );
+    mui_comentbanco->setText ( m_cursorbancos->valor ( "comentbanco", row ) );
+    mui_webbanco->setText ( m_cursorbancos->valor ( "webbanco", row ) );
     m_item = cur;
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
-    _depura( "END on_mui_lista_currentItemChanged", 0);
+    _depura ( "END on_mui_lista_currentItemChanged", 0 );
 }
 
 
@@ -122,46 +126,47 @@ void BancoView::on_mui_lista_currentItemChanged(QListWidgetItem *cur, QListWidge
 /**
 \return
 **/
-int BancoView::guardar() {
-    _depura("BancoView::on_mui_guardar_clicked", 0);
+int BancoView::guardar()
+{
+    _depura ( "BancoView::on_mui_guardar_clicked", 0 );
     try {
         QString query = "UPDATE banco SET ";
-        query += "nombanco='" + empresaBase()->sanearCadena(mui_nombanco->text()) + "'";
-        query += ", dirbanco='" + empresaBase()->sanearCadena(mui_dirbanco->text()) + "'";
-        query += ", poblbanco='" + empresaBase()->sanearCadena(mui_poblbanco->text()) + "'";
-        query += ", cpbanco='" + empresaBase()->sanearCadena(mui_cpbanco->text()) + "'";
-        query += ", telbanco='" + empresaBase()->sanearCadena(mui_telbanco->text()) + "'";
-        query += ", faxbanco='" + empresaBase()->sanearCadena(mui_faxbanco->text()) + "'";
-        query += ", emailbanco='" + empresaBase()->sanearCadena(mui_emailbanco->text()) + "'";
-        query += ", contactobanco='" + empresaBase()->sanearCadena(mui_contactobanco->text()) + "'";
-        query += ", codentidadbanco='" + empresaBase()->sanearCadena(mui_codentidadbanco->text()) + "'";
-        query += ", codagenciabanco='" + empresaBase()->sanearCadena(mui_codagenciabanco->text()) + "'";
-        query += ", numcuentabanco='" + empresaBase()->sanearCadena(mui_numcuentabanco->text()) + "'";
-        query += ", dcbanco='" + empresaBase()->sanearCadena(mui_dcbanco->text()) + "'";
-        query += ", comentbanco='" + empresaBase()->sanearCadena(mui_comentbanco->toPlainText()) + "'";
-        query += ",  webbanco='" + empresaBase()->sanearCadena(mui_webbanco->text()) + "'";
-        query += " WHERE idbanco=" + empresaBase()->sanearCadena(mdb_idbanco);
+        query += "nombanco='" + empresaBase() ->sanearCadena ( mui_nombanco->text() ) + "'";
+        query += ", dirbanco='" + empresaBase() ->sanearCadena ( mui_dirbanco->text() ) + "'";
+        query += ", poblbanco='" + empresaBase() ->sanearCadena ( mui_poblbanco->text() ) + "'";
+        query += ", cpbanco='" + empresaBase() ->sanearCadena ( mui_cpbanco->text() ) + "'";
+        query += ", telbanco='" + empresaBase() ->sanearCadena ( mui_telbanco->text() ) + "'";
+        query += ", faxbanco='" + empresaBase() ->sanearCadena ( mui_faxbanco->text() ) + "'";
+        query += ", emailbanco='" + empresaBase() ->sanearCadena ( mui_emailbanco->text() ) + "'";
+        query += ", contactobanco='" + empresaBase() ->sanearCadena ( mui_contactobanco->text() ) + "'";
+        query += ", codentidadbanco='" + empresaBase() ->sanearCadena ( mui_codentidadbanco->text() ) + "'";
+        query += ", codagenciabanco='" + empresaBase() ->sanearCadena ( mui_codagenciabanco->text() ) + "'";
+        query += ", numcuentabanco='" + empresaBase() ->sanearCadena ( mui_numcuentabanco->text() ) + "'";
+        query += ", dcbanco='" + empresaBase() ->sanearCadena ( mui_dcbanco->text() ) + "'";
+        query += ", comentbanco='" + empresaBase() ->sanearCadena ( mui_comentbanco->toPlainText() ) + "'";
+        query += ",  webbanco='" + empresaBase() ->sanearCadena ( mui_webbanco->text() ) + "'";
+        query += " WHERE idbanco=" + empresaBase() ->sanearCadena ( mdb_idbanco );
 
-        int error = empresaBase()->ejecuta(query);
-        if (error) {
-            empresaBase()->rollback();
+        int error = empresaBase() ->ejecuta ( query );
+        if ( error ) {
+            empresaBase() ->rollback();
             return -1;
         } // end if
-        if (m_cursorbancos != NULL) {
+        if ( m_cursorbancos != NULL ) {
             delete m_cursorbancos;
         } // end if
 
-        m_cursorbancos = empresaBase()->cargacursor("SELECT * FROM banco ORDER BY nombanco");
+        m_cursorbancos = empresaBase() ->cargacursor ( "SELECT * FROM banco ORDER BY nombanco" );
 
-        if (m_item) {
-            m_item->setText( mui_nombanco->text());
+        if ( m_item ) {
+            m_item->setText ( mui_nombanco->text() );
         } // end if
         /// Comprobamos cual es la cadena inicial.
         dialogChanges_cargaInicial();
-        _depura("END BancoView::on_mui_guardar_clicked", 0);
+        _depura ( "END BancoView::on_mui_guardar_clicked", 0 );
         return 0;
-    } catch (...) {
-        mensajeInfo("Error al guardar");
+    } catch ( ... ) {
+        mensajeInfo ( "Error al guardar" );
         return -1;
     } // end try
 }
@@ -171,19 +176,20 @@ int BancoView::guardar() {
 /**
 \return
 **/
-bool BancoView::trataModificado() {
-    _depura( "BancoView::trataModificado", 0);
+bool BancoView::trataModificado()
+{
+    _depura ( "BancoView::trataModificado", 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
-    if (dialogChanges_hayCambios()) {
-        if (QMessageBox::warning(this,
-                                 tr("Guardar datos del trabajador"),
-                                 tr("Desea guardar los cambios?"),
-                                 tr("&Si"), tr("&No"), 0, 0, 1 ) == 0)
+    if ( dialogChanges_hayCambios() ) {
+        if ( QMessageBox::warning ( this,
+                                    tr ( "Guardar datos del trabajador" ),
+                                    tr ( "Desea guardar los cambios?" ),
+                                    tr ( "&Si" ), tr ( "&No" ), 0, 0, 1 ) == 0 )
             on_mui_guardar_clicked();
-        return (TRUE);
+        return ( TRUE );
     } // end if
-    _depura("END BancoView::trataModificado", 0);
-    return (FALSE);
+    _depura ( "END BancoView::trataModificado", 0 );
+    return ( FALSE );
 }
 
 
@@ -192,23 +198,24 @@ bool BancoView::trataModificado() {
 /**
 \return
 **/
-void BancoView::on_mui_nuevo_clicked() {
-    _depura("BancoView::on_mui_nuevo_clicked", 0);
+void BancoView::on_mui_nuevo_clicked()
+{
+    _depura ( "BancoView::on_mui_nuevo_clicked", 0 );
     try {
         /// Si se ha modificado el contenido advertimos y guardamos.
         trataModificado();
         QString query = "INSERT INTO banco (nombanco) VALUES ('NUEVO BANCO')";
-        empresaBase()->begin();
-        empresaBase()->ejecuta(query);
-        cursor2 *cur = empresaBase()->cargacursor("SELECT max(idbanco) AS idbanco FROM banco");
-        empresaBase()->commit();
-        mdb_idbanco = cur->valor("idbanco");
+        empresaBase() ->begin();
+        empresaBase() ->ejecuta ( query );
+        cursor2 *cur = empresaBase() ->cargacursor ( "SELECT max(idbanco) AS idbanco FROM banco" );
+        empresaBase() ->commit();
+        mdb_idbanco = cur->valor ( "idbanco" );
         delete cur;
         pintar();
-        _depura("END BancoView::on_mui_nuevo_clicked", 0);
-    } catch (...) {
-        mensajeInfo(tr("Error inesperado el crear el Banco"));
-        empresaBase()->rollback();
+        _depura ( "END BancoView::on_mui_nuevo_clicked", 0 );
+    } catch ( ... ) {
+        mensajeInfo ( tr ( "Error inesperado el crear el Banco" ) );
+        empresaBase() ->rollback();
     } // end catch
 }
 
@@ -218,24 +225,25 @@ void BancoView::on_mui_nuevo_clicked() {
 /**
 \return
 **/
-void BancoView::on_mui_borrar_clicked() {
-    _depura("BancoView::on_mui_borrar_clicked", 0);
-    if (mdb_idbanco == "") return;
+void BancoView::on_mui_borrar_clicked()
+{
+    _depura ( "BancoView::on_mui_borrar_clicked", 0 );
+    if ( mdb_idbanco == "" ) return;
     try {
         trataModificado();
-        empresaBase()->begin();
+        empresaBase() ->begin();
         QString query = "DELETE FROM banco WHERE idbanco = " + mdb_idbanco;
-        int error = empresaBase()->ejecuta(query);
-        if (error) {
-            empresaBase()->rollback();
+        int error = empresaBase() ->ejecuta ( query );
+        if ( error ) {
+            empresaBase() ->rollback();
             return;
         } // end if
-        empresaBase()->commit();
+        empresaBase() ->commit();
         pintar();
-        _depura("END BancoView::on_mui_borrar_clicked", 0);
-    } catch (...) {
-        mensajeInfo(tr("Error inesperado al borrar el banco"));
-        empresaBase()->rollback();
+        _depura ( "END BancoView::on_mui_borrar_clicked", 0 );
+    } catch ( ... ) {
+        mensajeInfo ( tr ( "Error inesperado al borrar el banco" ) );
+        empresaBase() ->rollback();
     } // end try
 }
 
@@ -243,9 +251,10 @@ void BancoView::on_mui_borrar_clicked() {
 ///
 /**
 **/
-void BancoView::imprimir() {
-    _depura("BancoView::imprimir", 0);
-    _depura("END BancoView::imprimir", 0);
+void BancoView::imprimir()
+{
+    _depura ( "BancoView::imprimir", 0 );
+    _depura ( "END BancoView::imprimir", 0 );
 }
 
 

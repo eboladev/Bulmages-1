@@ -36,19 +36,21 @@
 
 
 
-class IncidenciaComercialView : public IncidenciaComercial, private Ui_IncidenciaComercialBase {
+class IncidenciaComercialView : public IncidenciaComercial, private Ui_IncidenciaComercialBase
+{
     Q_OBJECT
 
 public:
-    IncidenciaComercialView(QWidget *parent = NULL);
+    IncidenciaComercialView ( QWidget *parent = NULL );
     ~IncidenciaComercialView();
-    IncidenciaComercialView(Company *, QWidget *parent = NULL);
-    void closeEvent(QCloseEvent *);
-    virtual void pintar() {}
+    IncidenciaComercialView ( Company *, QWidget *parent = NULL );
+    void closeEvent ( QCloseEvent * );
+    virtual void pintar()
+    {}
     ;
-    void setEmpresaBase(Company *comp);
+    void setEmpresaBase ( Company *comp );
     virtual int guardar();
-    virtual int cargar(QString id);
+    virtual int cargar ( QString id );
 };
 
 #endif

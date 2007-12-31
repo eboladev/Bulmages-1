@@ -39,25 +39,27 @@
 \param comp
 \param parent
 **/
-InventarioView::InventarioView(Company *comp, QWidget *parent)
-        :  Inventario(comp, parent) {
-    _depura("InventarioView::InventarioView", 0);
-    setAttribute(Qt::WA_DeleteOnClose);
-    setupUi(this);
+InventarioView::InventarioView ( Company *comp, QWidget *parent )
+        :  Inventario ( comp, parent )
+{
+    _depura ( "InventarioView::InventarioView", 0 );
+    setAttribute ( Qt::WA_DeleteOnClose );
+    setupUi ( this );
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
-    subform2->setEmpresaBase(comp);
-    setListControlStock(subform2);
-    meteWindow(windowTitle(), this);
-    _depura("END InventarioView::InventarioView", 0);
+    subform2->setEmpresaBase ( comp );
+    setListControlStock ( subform2 );
+    meteWindow ( windowTitle(), this );
+    _depura ( "END InventarioView::InventarioView", 0 );
 }
 
 
 ///
 /**
 **/
-InventarioView::~InventarioView() {
-    _depura("InventarioView::~InventarioView", 0);
-    _depura("END InventarioView::~InventarioView", 0);
+InventarioView::~InventarioView()
+{
+    _depura ( "InventarioView::~InventarioView", 0 );
+    _depura ( "END InventarioView::~InventarioView", 0 );
 }
 
 
@@ -65,16 +67,17 @@ InventarioView::~InventarioView() {
 /**
 \return
 **/
-void InventarioView::on_mui_guardar2_clicked() {
-    _depura("InventarioView::on_mui_guardar2_clicked", 0);
-    if (mui_nominventario->text() == "") {
-        mensajeInfo(tr("Tiene que escribir una descripcion de inventario antes de guardar"));
+void InventarioView::on_mui_guardar2_clicked()
+{
+    _depura ( "InventarioView::on_mui_guardar2_clicked", 0 );
+    if ( mui_nominventario->text() == "" ) {
+        mensajeInfo ( tr ( "Tiene que escribir una descripcion de inventario antes de guardar" ) );
         return;
     } // end if
-    setfechainventario(mui_fechainventario->text());
-    setnominventario(mui_nominventario->text());
+    setfechainventario ( mui_fechainventario->text() );
+    setnominventario ( mui_nominventario->text() );
     Inventario::guardar();
-    _depura("END InventarioView::on_mui_guardar2_clicked", 0);
+    _depura ( "END InventarioView::on_mui_guardar2_clicked", 0 );
 }
 
 
@@ -82,48 +85,40 @@ void InventarioView::on_mui_guardar2_clicked() {
 /**
 \return
 **/
-int InventarioView::sacaWindow() {
-    _depura("InventarioView::sacaWindow", 0);
-    companyact->sacaWindow(this);
+int InventarioView::sacaWindow()
+{
+    _depura ( "InventarioView::sacaWindow", 0 );
+    companyact->sacaWindow ( this );
     return 0;
-    _depura("END InventarioView::sacaWindow", 0);
+    _depura ( "END InventarioView::sacaWindow", 0 );
 }
 
 
 /// Esta funci&oacute;n se ejecuta cuando se ha pulsado sobre el bot&oacute;n de borrar.
 /**
 **/
-void InventarioView::on_mui_borrar2_clicked() {
-    _depura("InventarioView::on_mui_borrar2_clicked", 0);
-    if (DBvalue("idinventario") != "") {
-        if (QMessageBox::question(this,
-                                  tr("Borrar inventario"),
-                                  tr("Esta a punto de borrar un inventario. Desea continuar?"),
-                                  tr("Si"), tr("No"), 0, 1, 0) == 0) {
+void InventarioView::on_mui_borrar2_clicked()
+{
+    _depura ( "InventarioView::on_mui_borrar2_clicked", 0 );
+    if ( DBvalue ( "idinventario" ) != "" ) {
+        if ( QMessageBox::question ( this,
+                                     tr ( "Borrar inventario" ),
+                                     tr ( "Esta a punto de borrar un inventario. Desea continuar?" ),
+                                     tr ( "Si" ), tr ( "No" ), 0, 1, 0 ) == 0 ) {
             Inventario::borrar();
         } // end if
     } // end if
-    _depura("END InventarioView::on_mui_borrar2_clicked", 0);
+    _depura ( "END InventarioView::on_mui_borrar2_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void InventarioView::pintaidinventario(QString) {
-    _depura("InventarioView::pintaidinventario", 0);
-    _depura("END InventarioView::pintaidinventario", 0);
-}
-
-
-///
-/**
-\param id
-**/
-void InventarioView::pintafechainventario(QString id) {
-    _depura("InventarioView::pintaidinventario", 0);
-    mui_fechainventario->setText(id);
-    _depura("InventarioView::pintaidinventario", 0);
+void InventarioView::pintaidinventario ( QString )
+{
+    _depura ( "InventarioView::pintaidinventario", 0 );
+    _depura ( "END InventarioView::pintaidinventario", 0 );
 }
 
 
@@ -131,32 +126,47 @@ void InventarioView::pintafechainventario(QString id) {
 /**
 \param id
 **/
-void InventarioView::pintanominventario(QString id) {
-    _depura("InventarioView::pintaidinventario", 0);
-    mui_nominventario->setText(id);
-    _depura("InventarioView::pintaidinventario", 0);
+void InventarioView::pintafechainventario ( QString id )
+{
+    _depura ( "InventarioView::pintaidinventario", 0 );
+    mui_fechainventario->setText ( id );
+    _depura ( "InventarioView::pintaidinventario", 0 );
+}
+
+
+///
+/**
+\param id
+**/
+void InventarioView::pintanominventario ( QString id )
+{
+    _depura ( "InventarioView::pintaidinventario", 0 );
+    mui_nominventario->setText ( id );
+    _depura ( "InventarioView::pintaidinventario", 0 );
 }
 
 
 ///
 /**
 **/
-void InventarioView::on_mui_aceptar_clicked() {
-	_depura("InventarioView::on_mui_aceptar_clicked", 0);
-    setfechainventario(mui_fechainventario->text());
-    setnominventario(mui_nominventario->text());
-    if (!Inventario::guardar()) {
+void InventarioView::on_mui_aceptar_clicked()
+{
+    _depura ( "InventarioView::on_mui_aceptar_clicked", 0 );
+    setfechainventario ( mui_fechainventario->text() );
+    setnominventario ( mui_nominventario->text() );
+    if ( !Inventario::guardar() ) {
         close();
     } // end if
-	_depura("END InventarioView::on_mui_aceptar_clicked", 0);
+    _depura ( "END InventarioView::on_mui_aceptar_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void InventarioView::on_mui_pregenerar_clicked() {
-    _depura("InventarioView::on_mui_pregenerar_clicked", 0);
+void InventarioView::on_mui_pregenerar_clicked()
+{
+    _depura ( "InventarioView::on_mui_pregenerar_clicked", 0 );
     pregenerar();
-    _depura("END InventarioView::on_mui_pregenerar_clicked", 0);
+    _depura ( "END InventarioView::on_mui_pregenerar_clicked", 0 );
 }

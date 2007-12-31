@@ -40,16 +40,17 @@ class Company;
     en dicha ventana.
     Deriva de Ficha para metodos comunes a todas las ventanas.
     Deriva de Cobro para el manejo de la Base de datos. */
-class ProyectoView : public FichaBc, public Ui_ProyectoBase {
+class ProyectoView : public FichaBc, public Ui_ProyectoBase
+{
     Q_OBJECT
 
 public:
-    ProyectoView(Empresa *, QWidget *);
+    ProyectoView ( Empresa *, QWidget * );
     ~ProyectoView();
-    int cargarPost(QString);
+    int cargarPost ( QString );
     int guardarPost();
 signals:
-     void save();
+    void save();
 };
 
 #endif

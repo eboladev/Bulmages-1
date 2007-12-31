@@ -33,7 +33,8 @@
     Antes de utilizarlo debe ser inicializado con setcompany().
     Cuando se cambia el valor del Widget se emite un SIGNAL valueChanged().
 */
-class BusquedaBanco : public QComboBox2 {
+class BusquedaBanco : public QComboBox2
+{
     Q_OBJECT
 
 private:
@@ -41,18 +42,18 @@ private:
     cursor2 *m_cursorcombo;
 
 public:
-    BusquedaBanco(QWidget *parent = 0);
+    BusquedaBanco ( QWidget *parent = 0 );
     ~BusquedaBanco();
-    virtual void setidbanco(QString idbanco);
-    virtual void setValorCampo(QString idbanco);
+    virtual void setidbanco ( QString idbanco );
+    virtual void setValorCampo ( QString idbanco );
     QString idbanco();
     virtual QString valorCampo();
 
 public slots:
-    void m_activated(int index);
+    void m_activated ( int index );
 
 signals:
-    void valueChanged(QString);
+    void valueChanged ( QString );
 };
 
 #endif

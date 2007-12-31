@@ -32,7 +32,8 @@
 #include "blwidget.h"
 
 
-class Listado : public BLWidget {
+class Listado : public BLWidget
+{
     Q_OBJECT
 public:
     enum edmode
@@ -48,20 +49,20 @@ private:
     edmode m_modo;
 
 protected:
-    void setSubForm(SubForm3 *);
+    void setSubForm ( SubForm3 * );
 
 
 
 public:
-    Listado(QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode);
-    Listado(EmpresaBase *emp = NULL, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode);
-    virtual void editar(int);
+    Listado ( QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode );
+    Listado ( EmpresaBase *emp = NULL, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode );
+    virtual void editar ( int );
     virtual void imprimir();
     virtual void presentar();
     virtual ~Listado();
     virtual int sacaWindow();
-    virtual int meteWindow(QString title);
-    virtual void submenu(const QPoint &);
+    virtual int meteWindow ( QString title );
+    virtual void submenu ( const QPoint & );
     virtual void crear();
     virtual void borrar();
     void hideBotonera();
@@ -72,23 +73,23 @@ public:
     void setModoEdicion();
     bool modoEdicion();
     bool modoConsulta();
-    void trataPermisos(QString nomtabla);
+    void trataPermisos ( QString nomtabla );
 
 public slots:
-    virtual void on_mui_list_customContextMenuRequested(const QPoint &);
-    virtual void on_mui_list_cellDoubleClicked(int, int);
-    virtual void on_mui_list_toogledConfig(bool check);
-    virtual void on_m_filtro_textChanged(const QString &text);
+    virtual void on_mui_list_customContextMenuRequested ( const QPoint & );
+    virtual void on_mui_list_cellDoubleClicked ( int, int );
+    virtual void on_mui_list_toogledConfig ( bool check );
+    virtual void on_m_filtro_textChanged ( const QString &text );
     virtual void on_m_filtro_editingFinished();
     virtual void on_mui_actualizar_clicked();
     virtual void on_mui_imprimir_clicked();
     virtual void on_mui_editar_clicked();
-    virtual void on_mui_configurar_toggled(bool checked);
+    virtual void on_mui_configurar_toggled ( bool checked );
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_crear_clicked();
 
 signals:
-    void selected(QString);
+    void selected ( QString );
 };
 
 #endif

@@ -30,13 +30,14 @@
 /**
 \param parent
 **/
-BusquedaAlmacen::BusquedaAlmacen(QWidget *parent, const char *)
-        : QComboBox2(parent) {
-    _depura("BusquedaAlmacen::BusquedaAlmacen", 0);
+BusquedaAlmacen::BusquedaAlmacen ( QWidget *parent, const char * )
+        : QComboBox2 ( parent )
+{
+    _depura ( "BusquedaAlmacen::BusquedaAlmacen", 0 );
     m_cursorcombo = NULL;
-    connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
+    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
     m_codigoalmacen = "";
-    _depura("END BusquedaAlmacen::BusquedaAlmacen", 0);
+    _depura ( "END BusquedaAlmacen::BusquedaAlmacen", 0 );
 }
 
 
@@ -44,9 +45,10 @@ BusquedaAlmacen::BusquedaAlmacen(QWidget *parent, const char *)
 */
 /**
 **/
-BusquedaAlmacen::~BusquedaAlmacen() {
-    _depura("BusquedaAlmacen::~BusquedaAlmacen", 0);
-    _depura("END BusquedaAlmacen::~BusquedaAlmacen", 0);
+BusquedaAlmacen::~BusquedaAlmacen()
+{
+    _depura ( "BusquedaAlmacen::~BusquedaAlmacen", 0 );
+    _depura ( "END BusquedaAlmacen::~BusquedaAlmacen", 0 );
 }
 
 
@@ -58,33 +60,34 @@ BusquedaAlmacen::~BusquedaAlmacen() {
 \param idalmacen
 \return
 **/
-void BusquedaAlmacen::setidalmacen(QString idalmacen) {
-    _depura("BusquedaAlmacen::setidalmacen", 0, idalmacen);
-    if (m_cursorcombo != NULL) {
+void BusquedaAlmacen::setidalmacen ( QString idalmacen )
+{
+    _depura ( "BusquedaAlmacen::setidalmacen", 0, idalmacen );
+    if ( m_cursorcombo != NULL ) {
         delete m_cursorcombo;
     } // end if
-    m_cursorcombo = empresaBase()->cargacursor("SELECT * FROM almacen ORDER BY nomalmacen");
-    if (!m_cursorcombo) return;
+    m_cursorcombo = empresaBase() ->cargacursor ( "SELECT * FROM almacen ORDER BY nomalmacen" );
+    if ( !m_cursorcombo ) return;
     int i = 0;
     int i1 = 0;
     int i2 = 0;
     clear();
-    addItem("--");
-    while (!m_cursorcombo->eof()) {
-       i++;
-       if (m_cursorcombo->valor("codigoalmacen") == m_codigoalmacen)
-           i2 = i;
-            if (m_cursorcombo->valor("idalmacen") == idalmacen)
-                i1 = i;
-            addItem(m_cursorcombo->valor("nomalmacen"));
-            m_cursorcombo->siguienteregistro();
-        } //end while
-        if (i1 != 0) {
-            setCurrentIndex(i1);
-        } else {
-            setCurrentIndex(i2);
+    addItem ( "--" );
+    while ( !m_cursorcombo->eof() ) {
+        i++;
+        if ( m_cursorcombo->valor ( "codigoalmacen" ) == m_codigoalmacen )
+            i2 = i;
+        if ( m_cursorcombo->valor ( "idalmacen" ) == idalmacen )
+            i1 = i;
+        addItem ( m_cursorcombo->valor ( "nomalmacen" ) );
+        m_cursorcombo->siguienteregistro();
+    } //end while
+    if ( i1 != 0 ) {
+        setCurrentIndex ( i1 );
+    } else {
+        setCurrentIndex ( i2 );
     } // end if
-    _depura("END BusquedaAlmacen::setidalmacen", 0, idalmacen);
+    _depura ( "END BusquedaAlmacen::setidalmacen", 0, idalmacen );
 }
 
 
@@ -92,10 +95,11 @@ void BusquedaAlmacen::setidalmacen(QString idalmacen) {
 /**
 \param idalmacen
 **/
-void BusquedaAlmacen::setValorCampo(QString idalmacen) {
-    _depura("BusquedaAlmacen::setValorCampo", 0);
-    setidalmacen(idalmacen);
-    _depura("END BusquedaAlmacen::setValorCampo", 0);
+void BusquedaAlmacen::setValorCampo ( QString idalmacen )
+{
+    _depura ( "BusquedaAlmacen::setValorCampo", 0 );
+    setidalmacen ( idalmacen );
+    _depura ( "END BusquedaAlmacen::setValorCampo", 0 );
 }
 
 
@@ -103,16 +107,17 @@ void BusquedaAlmacen::setValorCampo(QString idalmacen) {
 /**
 \return
 **/
-QString BusquedaAlmacen::idalmacen() {
-    _depura("BusquedaAlmacen::idalmacen", 0);
-        int index= currentIndex();
-        if (index > 0) {
-            _depura("END BusquedaAlmacen::idalmacen", 0);
-            return(m_cursorcombo->valor("idalmacen", index - 1));
-        } else {
-            _depura("END BusquedaAlmacen::idalmacen", 0);
-            return "";
-        } // end if
+QString BusquedaAlmacen::idalmacen()
+{
+    _depura ( "BusquedaAlmacen::idalmacen", 0 );
+    int index = currentIndex();
+    if ( index > 0 ) {
+        _depura ( "END BusquedaAlmacen::idalmacen", 0 );
+        return ( m_cursorcombo->valor ( "idalmacen", index - 1 ) );
+    } else {
+        _depura ( "END BusquedaAlmacen::idalmacen", 0 );
+        return "";
+    } // end if
 }
 
 
@@ -120,9 +125,10 @@ QString BusquedaAlmacen::idalmacen() {
 /**
 \return
 **/
-QString BusquedaAlmacen::valorCampo() {
-    _depura("BusquedaAlmacen::valorCampo", 0);
-    _depura("END BusquedaAlmacen::valorCampo", 0);
+QString BusquedaAlmacen::valorCampo()
+{
+    _depura ( "BusquedaAlmacen::valorCampo", 0 );
+    _depura ( "END BusquedaAlmacen::valorCampo", 0 );
     return idalmacen();
 }
 
@@ -131,17 +137,18 @@ QString BusquedaAlmacen::valorCampo() {
 /**
 \param comp
 **/
-void BusquedaAlmacen::setEmpresaBase(Company *comp) {
-    _depura("BusquedaAlmacen::setEmpresaBase", 0);
-    PEmpresaBase::setEmpresaBase(comp);
-    cursor2 *cur = empresaBase()->cargacursor("SELECT * FROM configuracion WHERE nombre ='AlmacenDefecto'");
-    if (cur) {
-	if (!cur->eof()) {
-		m_codigoalmacen = cur->valor("valor");
-	} // end if
-	delete cur;
+void BusquedaAlmacen::setEmpresaBase ( Company *comp )
+{
+    _depura ( "BusquedaAlmacen::setEmpresaBase", 0 );
+    PEmpresaBase::setEmpresaBase ( comp );
+    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre ='AlmacenDefecto'" );
+    if ( cur ) {
+        if ( !cur->eof() ) {
+            m_codigoalmacen = cur->valor ( "valor" );
+        } // end if
+        delete cur;
     } // end if
-    _depura("END BusquedaAlmacen::setEmpresaBase", 0);
+    _depura ( "END BusquedaAlmacen::setEmpresaBase", 0 );
 }
 
 
@@ -149,14 +156,15 @@ void BusquedaAlmacen::setEmpresaBase(Company *comp) {
 /**
 \param index
 **/
-void BusquedaAlmacen::m_activated(int index) {
-    _depura("BusquedaAlmacen::m_activated", 0);
-        if (index > 0) {
-            emit(valueChanged(m_cursorcombo->valor("idalmacen", index - 1)));
-        } else {
-            emit(valueChanged(""));
-        } // end if
-    _depura("END BusquedaAlmacen::m_activated", 0);
+void BusquedaAlmacen::m_activated ( int index )
+{
+    _depura ( "BusquedaAlmacen::m_activated", 0 );
+    if ( index > 0 ) {
+        emit ( valueChanged ( m_cursorcombo->valor ( "idalmacen", index - 1 ) ) );
+    } else {
+        emit ( valueChanged ( "" ) );
+    } // end if
+    _depura ( "END BusquedaAlmacen::m_activated", 0 );
 }
 
 /// ========================= ITEM DELEGATE ===============================0
@@ -168,13 +176,14 @@ void BusquedaAlmacen::m_activated(int index) {
 /**
 \param parent
 **/
-BusquedaAlmacenDelegate::BusquedaAlmacenDelegate(QWidget *parent)
-        : QComboBox2(parent) {
-    _depura("BusquedaAlmacenDelegate::BusquedaAlmacenDelegate", 0);
+BusquedaAlmacenDelegate::BusquedaAlmacenDelegate ( QWidget *parent )
+        : QComboBox2 ( parent )
+{
+    _depura ( "BusquedaAlmacenDelegate::BusquedaAlmacenDelegate", 0 );
     m_cursorcombo = NULL;
-    setSizeAdjustPolicy(QComboBox::AdjustToContents);
-    connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
-    _depura("END BusquedaAlmacenDelegate::BusquedaAlmacenDelegate", 0);
+    setSizeAdjustPolicy ( QComboBox::AdjustToContents );
+    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
+    _depura ( "END BusquedaAlmacenDelegate::BusquedaAlmacenDelegate", 0 );
 }
 
 
@@ -182,11 +191,12 @@ BusquedaAlmacenDelegate::BusquedaAlmacenDelegate(QWidget *parent)
 */
 /**
 **/
-BusquedaAlmacenDelegate::~BusquedaAlmacenDelegate() {
-    _depura("BusquedaAlmacenDelegate::~BusquedaAlmacenDelegate", 0);
-    if (m_cursorcombo != NULL)
+BusquedaAlmacenDelegate::~BusquedaAlmacenDelegate()
+{
+    _depura ( "BusquedaAlmacenDelegate::~BusquedaAlmacenDelegate", 0 );
+    if ( m_cursorcombo != NULL )
         delete m_cursorcombo;
-    _depura("END BusquedaAlmacenDelegate::~BusquedaAlmacenDelegate", 0);
+    _depura ( "END BusquedaAlmacenDelegate::~BusquedaAlmacenDelegate", 0 );
 }
 
 
@@ -197,25 +207,26 @@ BusquedaAlmacenDelegate::~BusquedaAlmacenDelegate() {
 /**
 \param cod
 **/
-void BusquedaAlmacenDelegate::set(const QString &cod) {
-    _depura("BusquedaAlmacenDelegate::set", 0);
+void BusquedaAlmacenDelegate::set ( const QString &cod )
+{
+    _depura ( "BusquedaAlmacenDelegate::set", 0 );
     int index = 0;
     QString codigo = cod;
 
-    if (m_cursorcombo != NULL)
+    if ( m_cursorcombo != NULL )
         delete m_cursorcombo;
 
-    m_cursorcombo = empresaBase()->cargacursor("SELECT codigoalmacen, nomalmacen FROM almacen ORDER BY nomalmacen");
+    m_cursorcombo = empresaBase() ->cargacursor ( "SELECT codigoalmacen, nomalmacen FROM almacen ORDER BY nomalmacen" );
     clear();
-    while (!m_cursorcombo->eof()) {
-        addItem(m_cursorcombo->valor("nomalmacen")+", "+m_cursorcombo->valor("codigoalmacen"));
+    while ( !m_cursorcombo->eof() ) {
+        addItem ( m_cursorcombo->valor ( "nomalmacen" ) + ", " + m_cursorcombo->valor ( "codigoalmacen" ) );
         m_cursorcombo->siguienteregistro();
-        if(m_cursorcombo->valor("nomalmacen")+", "+m_cursorcombo->valor("codigoalmacen") == cod)
-		index = m_cursorcombo->regactual();
+        if ( m_cursorcombo->valor ( "nomalmacen" ) + ", " + m_cursorcombo->valor ( "codigoalmacen" ) == cod )
+            index = m_cursorcombo->regactual();
     }// end while
-    setEditText(cod);
-    setCurrentIndex(index);
+    setEditText ( cod );
+    setCurrentIndex ( index );
 
-    _depura("END BusquedaAlmacenDelegate::set", 0);
+    _depura ( "END BusquedaAlmacenDelegate::set", 0 );
 }
 

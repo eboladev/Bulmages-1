@@ -29,16 +29,17 @@
 /**
 \param parent
 **/
-sobreview::sobreview(QWidget *parent) : QDialog(parent) {
-    _depura("sobreview::sobreview", 0);
+sobreview::sobreview ( QWidget *parent ) : QDialog ( parent )
+{
+    _depura ( "sobreview::sobreview", 0 );
 
     QString str_sobre;
     QString str_autores;
     QString str_soporte;
     QString str_licencia;
-    setupUi(this);
+    setupUi ( this );
 
-    mui_lbversion->setText(mui_lbversion->text() + " " + tr("Compilado usando la version de QT:") + " " + QT_VERSION_STR);
+    mui_lbversion->setText ( mui_lbversion->text() + " " + tr ( "Compilado usando la version de QT:" ) + " " + QT_VERSION_STR );
 
     str_sobre = "<br /><br /><br /><br /><center><h2>Contabilidad GPL</h2></center>";
 
@@ -417,11 +418,11 @@ sobreview::sobreview(QWidget *parent) : QDialog(parent) {
                    "<P> " \
                    "<H2>END OF TERMS AND CONDITIONS</H2>";
 
-    textEdit_sobre->setHtml(str_sobre);
-    textEdit_autores->setHtml(str_autores);
-    textEdit_soporte->setHtml(str_soporte);
-    textEdit_licencia->setHtml(str_licencia);
-    _depura("END sobreview::sobreview", 0);
+    textEdit_sobre->setHtml ( str_sobre );
+    textEdit_autores->setHtml ( str_autores );
+    textEdit_soporte->setHtml ( str_soporte );
+    textEdit_licencia->setHtml ( str_licencia );
+    _depura ( "END sobreview::sobreview", 0 );
 }
 
 
@@ -430,18 +431,20 @@ sobreview::sobreview(QWidget *parent) : QDialog(parent) {
     visualizaci&oacute;n y no realiza acciones. */
 /**
 **/
-sobreview::~sobreview() {
-    _depura("sobreview::~sobreview", 0);
-    _depura("END sobreview::~sobreview", 0);
+sobreview::~sobreview()
+{
+    _depura ( "sobreview::~sobreview", 0 );
+    _depura ( "END sobreview::~sobreview", 0 );
 }
 
 
 ///
 /**
 **/
-void sobreview::on_mui_aceptar_clicked() {
-    _depura("sobreview::on_mui_aceptar_clicked", 0);
+void sobreview::on_mui_aceptar_clicked()
+{
+    _depura ( "sobreview::on_mui_aceptar_clicked", 0 );
     close();
-    _depura("END sobreview::on_mui_aceptar_clicked", 0);
+    _depura ( "END sobreview::on_mui_aceptar_clicked", 0 );
 }
 

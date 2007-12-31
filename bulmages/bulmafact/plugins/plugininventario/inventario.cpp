@@ -31,25 +31,27 @@
 \param comp
 \param parent
 **/
-Inventario::Inventario(Company *comp, QWidget *parent) : FichaBf(comp, parent) {
-    _depura("Inventario::Inventario", 0);
+Inventario::Inventario ( Company *comp, QWidget *parent ) : FichaBf ( comp, parent )
+{
+    _depura ( "Inventario::Inventario", 0 );
     companyact = comp;
-    setTitleName(tr("Inventario"));
-    setDBTableName("inventario");
-    setDBCampoId("idinventario");
-    addDBCampo("idinventario", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Inventario", "Identificador inventario"));
-    addDBCampo("fechainventario", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Inventario", "Fecha inventario"));
-    addDBCampo("nominventario", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Inventario", "Nombre inventario"));
-    _depura("END Inventario::Inventario", 0);
+    setTitleName ( tr ( "Inventario" ) );
+    setDBTableName ( "inventario" );
+    setDBCampoId ( "idinventario" );
+    addDBCampo ( "idinventario", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "Inventario", "Identificador inventario" ) );
+    addDBCampo ( "fechainventario", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate ( "Inventario", "Fecha inventario" ) );
+    addDBCampo ( "nominventario", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Inventario", "Nombre inventario" ) );
+    _depura ( "END Inventario::Inventario", 0 );
 }
 
 
 ///
 /**
 **/
-Inventario::~Inventario() {
-    _depura("Inventario::~Inventario", 0);
-    _depura("END Inventario::~Inventario", 0);
+Inventario::~Inventario()
+{
+    _depura ( "Inventario::~Inventario", 0 );
+    _depura ( "END Inventario::~Inventario", 0 );
 }
 
 
@@ -57,15 +59,16 @@ Inventario::~Inventario() {
 /**
 \return
 **/
-int Inventario::borrar() {
-    if (DBvalue("idinventario") != "") {
-        _depura("vamos a borrar las lineas del inventario", 0);
+int Inventario::borrar()
+{
+    if ( DBvalue ( "idinventario" ) != "" ) {
+        _depura ( "vamos a borrar las lineas del inventario", 0 );
         companyact->begin();
 
         listalineas->borrar();
-        _depura("Vamos a borrar el resto",0);
-        int error = companyact->ejecuta("DELETE FROM inventario WHERE idinventario = " + DBvalue("idinventario"));
-        if (error) {
+        _depura ( "Vamos a borrar el resto", 0 );
+        int error = companyact->ejecuta ( "DELETE FROM inventario WHERE idinventario = " + DBvalue ( "idinventario" ) );
+        if ( error ) {
             companyact->rollback();
             return -1;
         } // end if
@@ -78,21 +81,23 @@ int Inventario::borrar() {
 ///
 /**
 **/
-void Inventario::vaciaInventario() {
-    _depura("Inventario::vaciaInventario", 0);
+void Inventario::vaciaInventario()
+{
+    _depura ( "Inventario::vaciaInventario", 0 );
     DBclear();
-    _depura("END Inventario::vaciaInventario", 0);
+    _depura ( "END Inventario::vaciaInventario", 0 );
 }
 
 
 ///
 /**
 **/
-void Inventario::pintaInventario() {
-    _depura("pintaInventario\n", 0);
-    pintaidinventario(DBvalue("idinventario"));
-    pintanominventario(DBvalue("nominventario"));
-    pintafechainventario(DBvalue("fechainventario"));
+void Inventario::pintaInventario()
+{
+    _depura ( "pintaInventario\n", 0 );
+    pintaidinventario ( DBvalue ( "idinventario" ) );
+    pintanominventario ( DBvalue ( "nominventario" ) );
+    pintafechainventario ( DBvalue ( "fechainventario" ) );
     /// Pinta el subformulario de detalle del Inventario.
     //listalineas->pintaListControlStock();
 }
@@ -103,14 +108,15 @@ void Inventario::pintaInventario() {
 \param idbudget
 \return
 **/
-int Inventario::cargar(QString idbudget) {
+int Inventario::cargar ( QString idbudget )
+{
     QString query = "SELECT * FROM inventario WHERE idinventario = " + idbudget;
-    cursor2 * cur= companyact->cargacursor(query);
-    if (!cur->eof()) {
-        DBload(cur);
+    cursor2 * cur = companyact->cargacursor ( query );
+    if ( !cur->eof() ) {
+        DBload ( cur );
     } // end if
     delete cur;
-    listalineas->cargar(idbudget);
+    listalineas->cargar ( idbudget );
     pintaInventario();
     return 0;
 }
@@ -120,22 +126,23 @@ int Inventario::cargar(QString idbudget) {
 /**
 \return
 **/
-int Inventario::guardar() {
-    _depura("Inventario::guardar()", 0);
+int Inventario::guardar()
+{
+    _depura ( "Inventario::guardar()", 0 );
     companyact->begin();
     try {
         QString id;
-        DBsave(id);
-        setidinventario(id);
+        DBsave ( id );
+        setidinventario ( id );
         listalineas->guardar();
         companyact->commit();
-        cargar(id);
-        _depura("END Inventario::guardar()", 0);
+        cargar ( id );
+        _depura ( "END Inventario::guardar()", 0 );
         return 0;
-    } catch (...) {
-        _depura("Error guardando el inventario", 2);
+    } catch ( ... ) {
+        _depura ( "Error guardando el inventario", 2 );
         companyact->rollback();
-    _depura("END Inventario::guardar()", 0);
+        _depura ( "END Inventario::guardar()", 0 );
         return -1;
     } // end try
 }
@@ -144,10 +151,11 @@ int Inventario::guardar() {
 ///
 /**
 **/
-void Inventario::pregenerar() {
-    _depura("Inventario::pregenerar", 0);
+void Inventario::pregenerar()
+{
+    _depura ( "Inventario::pregenerar", 0 );
     listalineas->pregenerar();
-    _depura("END Inventario::pregenerar", 0);
+    _depura ( "END Inventario::pregenerar", 0 );
 }
 
 
@@ -155,11 +163,12 @@ void Inventario::pregenerar() {
 /**
 \param a
 **/
-void Inventario::setListControlStock(ListControlStockView *a) {
-    _depura("Inventario::setListControlStock", 0);
+void Inventario::setListControlStock ( ListControlStockView *a )
+{
+    _depura ( "Inventario::setListControlStock", 0 );
     listalineas = a;
-    listalineas->setEmpresaBase(companyact);
-    _depura("END Inventario::setListControlStock", 0);
+    listalineas->setEmpresaBase ( companyact );
+    _depura ( "END Inventario::setListControlStock", 0 );
 }
 
 
@@ -167,9 +176,10 @@ void Inventario::setListControlStock(ListControlStockView *a) {
 /**
 \return
 **/
-ListControlStockView *Inventario::getlistalineas() {
-    _depura("Inventario::getlistalineas", 0);
-    _depura("Inventario::getlistalineas", 0);
+ListControlStockView *Inventario::getlistalineas()
+{
+    _depura ( "Inventario::getlistalineas", 0 );
+    _depura ( "Inventario::getlistalineas", 0 );
     return listalineas;
 }
 
@@ -177,39 +187,30 @@ ListControlStockView *Inventario::getlistalineas() {
 ///
 /**
 **/
-void Inventario::pintaidinventario(QString) {
-    _depura("Inventario::pintaidinventario", 0);
-    _depura("END Inventario::pintaidinventario", 0);
+void Inventario::pintaidinventario ( QString )
+{
+    _depura ( "Inventario::pintaidinventario", 0 );
+    _depura ( "END Inventario::pintaidinventario", 0 );
 }
 
 
 ///
 /**
 **/
-void Inventario::pintafechainventario(QString) {
-    _depura("Inventario::pintafechainventario", 0);
-    _depura("END Inventario::pintafechainventario", 0);
+void Inventario::pintafechainventario ( QString )
+{
+    _depura ( "Inventario::pintafechainventario", 0 );
+    _depura ( "END Inventario::pintafechainventario", 0 );
 }
 
 
 ///
 /**
 **/
-void Inventario::pintanominventario(QString) {
-    _depura("Inventario::pintanominventario", 0);
-    _depura("END Inventario::pintanominventario", 0);
-}
-
-
-///
-/**
-\param val
-**/
-void Inventario::setidinventario(QString val) {
-    _depura("Inventario::setidinventario", 0);
-    setDBvalue("idinventario", val);
-    listalineas->setColumnValue("idinventario", val);
-    _depura("END Inventario::setidinventario", 0);
+void Inventario::pintanominventario ( QString )
+{
+    _depura ( "Inventario::pintanominventario", 0 );
+    _depura ( "END Inventario::pintanominventario", 0 );
 }
 
 
@@ -217,10 +218,12 @@ void Inventario::setidinventario(QString val) {
 /**
 \param val
 **/
-void Inventario::setfechainventario(QString val) {
-    _depura("Inventario::setfechainventario", 0);
-    setDBvalue("fechainventario", val);
-    _depura("END Inventario::setfechainventario", 0);
+void Inventario::setidinventario ( QString val )
+{
+    _depura ( "Inventario::setidinventario", 0 );
+    setDBvalue ( "idinventario", val );
+    listalineas->setColumnValue ( "idinventario", val );
+    _depura ( "END Inventario::setidinventario", 0 );
 }
 
 
@@ -228,46 +231,60 @@ void Inventario::setfechainventario(QString val) {
 /**
 \param val
 **/
-void Inventario::setnominventario(QString val) {
-    _depura("Inventario::setnominventario", 0);
-    setDBvalue("nominventario", val);
-    _depura("END Inventario::setnominventario", 0);
+void Inventario::setfechainventario ( QString val )
+{
+    _depura ( "Inventario::setfechainventario", 0 );
+    setDBvalue ( "fechainventario", val );
+    _depura ( "END Inventario::setfechainventario", 0 );
+}
+
+
+///
+/**
+\param val
+**/
+void Inventario::setnominventario ( QString val )
+{
+    _depura ( "Inventario::setnominventario", 0 );
+    setDBvalue ( "nominventario", val );
+    _depura ( "END Inventario::setnominventario", 0 );
 }
 
 
 ///
 /**
 **/
-void Inventario::imprimirInventario() {
-	_depura("Inventario::imprimirInventario", 0);
-	QString txt = "<blockTable>\n";
-	txt += "<tr><td></td>\n";
-	
-	QString query = "SELECT idarticulo, codigocompeltoarticulo, nomarticulo FROM articulo ";
-	cursor2 *almacenes = companyact->cargacursor("SELECT * FROM almacen");
-	while (!almacenes->eof()) {
-		QString idalmacen = almacenes->valor("idalmacen");
-		query += " LEFT JOIN ( SELECT stock, idarticulo FROM stock_almacen WHERE idalmacen="+almacenes->valor("idalmacen")+") AS t" + idalmacen +" ON " + " t"+idalmacen+".idarticulo = articulo.idarticulo";
-		txt += "<td>" + almacenes->valor("nomalmacen") + "</td>";
-		almacenes->siguienteregistro();
-	} // end while
-	delete almacenes;
-	txt += "</tr>\n";
+void Inventario::imprimirInventario()
+{
+    _depura ( "Inventario::imprimirInventario", 0 );
+    QString txt = "<blockTable>\n";
+    txt += "<tr><td></td>\n";
 
-	cursor2 *cstock = companyact->cargacursor(query);
-	while (!cstock->eof()) {
-		txt += "<tr>\n";
-		txt += "<td>" + cstock->valor("nomarticulo");
-		for (int i = 0; i < cstock->numcampos(); i++) {
-			txt += "<td>"+cstock->valor(i)+"</td>";
-		} // end for
-		cstock->siguienteregistro();
-		txt += "\n";
-		txt += "</tr>\n";
-	} // end while
-	delete cstock;
+    QString query = "SELECT idarticulo, codigocompeltoarticulo, nomarticulo FROM articulo ";
+    cursor2 *almacenes = companyact->cargacursor ( "SELECT * FROM almacen" );
+    while ( !almacenes->eof() ) {
+        QString idalmacen = almacenes->valor ( "idalmacen" );
+        query += " LEFT JOIN ( SELECT stock, idarticulo FROM stock_almacen WHERE idalmacen=" + almacenes->valor ( "idalmacen" ) + ") AS t" + idalmacen + " ON " + " t" + idalmacen + ".idarticulo = articulo.idarticulo";
+        txt += "<td>" + almacenes->valor ( "nomalmacen" ) + "</td>";
+        almacenes->siguienteregistro();
+    } // end while
+    delete almacenes;
+    txt += "</tr>\n";
 
-	_depura(txt, 2);
-	_depura("END Inventario::imprimirInventario", 0);
+    cursor2 *cstock = companyact->cargacursor ( query );
+    while ( !cstock->eof() ) {
+        txt += "<tr>\n";
+        txt += "<td>" + cstock->valor ( "nomarticulo" );
+        for ( int i = 0; i < cstock->numcampos(); i++ ) {
+            txt += "<td>" + cstock->valor ( i ) + "</td>";
+        } // end for
+        cstock->siguienteregistro();
+        txt += "\n";
+        txt += "</tr>\n";
+    } // end while
+    delete cstock;
+
+    _depura ( txt, 2 );
+    _depura ( "END Inventario::imprimirInventario", 0 );
 }
 

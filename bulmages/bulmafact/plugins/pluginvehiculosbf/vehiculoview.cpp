@@ -29,49 +29,51 @@
 \param emp
 \param parent
 **/
-VehiculoView::VehiculoView(Company *emp, QWidget *parent)
-        : FichaBf(emp, parent) {
-    _depura("VehiculoView::VehiculoView", 0);
-    this->setAttribute(Qt::WA_DeleteOnClose);
-    setupUi(this);
-    mui_listadomantvehiculo->setEmpresaBase(emp);
+VehiculoView::VehiculoView ( Company *emp, QWidget *parent )
+        : FichaBf ( emp, parent )
+{
+    _depura ( "VehiculoView::VehiculoView", 0 );
+    this->setAttribute ( Qt::WA_DeleteOnClose );
+    setupUi ( this );
+    mui_listadomantvehiculo->setEmpresaBase ( emp );
 
     /// Inicializamos la clase para la base de datos.
-    setTitleName(tr("Vehiculo"));
-    setDBTableName("vehiculo");
-    setDBCampoId("idvehiculo");
-    addDBCampo("idvehiculo", DBCampo::DBint, DBCampo::DBPrimaryKey, tr("idvehiculo"));
-    addDBCampo("matriculavehiculo", DBCampo::DBvarchar, DBCampo::DBNotNull, tr("matriculavehiculo"));
-    addDBCampo("marcavehiculo", DBCampo::DBvarchar, DBCampo::DBNothing, tr("marcavehiculo"));
-    addDBCampo("modelovehiculo", DBCampo::DBvarchar, DBCampo::DBNothing, tr("modelovehiculo"));
-    addDBCampo("bastidorvehiculo", DBCampo::DBvarchar, DBCampo::DBNothing, tr("bastidorvehiculo"));
-    addDBCampo("colorvehiculo", DBCampo::DBvarchar, DBCampo::DBNothing, tr("colorvehiculo"));
-    addDBCampo("fechacompravehiculo", DBCampo::DBdate, DBCampo::DBNothing, tr("fechavehiculo"));
-    addDBCampo("preciovehiculo", DBCampo::DBnumeric, DBCampo::DBNothing, tr("preciovehiculo"));
+    setTitleName ( tr ( "Vehiculo" ) );
+    setDBTableName ( "vehiculo" );
+    setDBCampoId ( "idvehiculo" );
+    addDBCampo ( "idvehiculo", DBCampo::DBint, DBCampo::DBPrimaryKey, tr ( "idvehiculo" ) );
+    addDBCampo ( "matriculavehiculo", DBCampo::DBvarchar, DBCampo::DBNotNull, tr ( "matriculavehiculo" ) );
+    addDBCampo ( "marcavehiculo", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "marcavehiculo" ) );
+    addDBCampo ( "modelovehiculo", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "modelovehiculo" ) );
+    addDBCampo ( "bastidorvehiculo", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "bastidorvehiculo" ) );
+    addDBCampo ( "colorvehiculo", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "colorvehiculo" ) );
+    addDBCampo ( "fechacompravehiculo", DBCampo::DBdate, DBCampo::DBNothing, tr ( "fechavehiculo" ) );
+    addDBCampo ( "preciovehiculo", DBCampo::DBnumeric, DBCampo::DBNothing, tr ( "preciovehiculo" ) );
 
     /// Inicializamos el listado.
-    mui_listadomantvehiculo->setDBTableName("mantvehiculo");
-    mui_listadomantvehiculo->setDBCampoId("idmantvehiculo");
-    mui_listadomantvehiculo->addSHeader("idmantvehiculo", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoWrite, tr("idmantvehiculo"));
-    mui_listadomantvehiculo->addSHeader("fechamantvehiculo", DBCampo::DBdate, DBCampo::DBNotNull, SHeader::DBNone, tr("fechamantvehiculo"));
-    mui_listadomantvehiculo->addSHeader("preciomantvehiculo", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, tr("preciomantvehiculo"));
-    mui_listadomantvehiculo->addSHeader("idvehiculo", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoWrite | SHeader::DBNoView, tr("idvehiculo"));
-    mui_listadomantvehiculo->setinsercion(TRUE);
+    mui_listadomantvehiculo->setDBTableName ( "mantvehiculo" );
+    mui_listadomantvehiculo->setDBCampoId ( "idmantvehiculo" );
+    mui_listadomantvehiculo->addSHeader ( "idmantvehiculo", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoWrite, tr ( "idmantvehiculo" ) );
+    mui_listadomantvehiculo->addSHeader ( "fechamantvehiculo", DBCampo::DBdate, DBCampo::DBNotNull, SHeader::DBNone, tr ( "fechamantvehiculo" ) );
+    mui_listadomantvehiculo->addSHeader ( "preciomantvehiculo", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, tr ( "preciomantvehiculo" ) );
+    mui_listadomantvehiculo->addSHeader ( "idvehiculo", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoWrite | SHeader::DBNoView, tr ( "idvehiculo" ) );
+    mui_listadomantvehiculo->setinsercion ( TRUE );
 
     /// Fin de nuevas amortizaciones
-    empresaBase()->meteWindow(windowTitle(), this);
-    cargar("1");
-    _depura("END VehiculoView::VehiculoView", 0);
+    empresaBase() ->meteWindow ( windowTitle(), this );
+    cargar ( "1" );
+    _depura ( "END VehiculoView::VehiculoView", 0 );
 }
 
 
 ///
 /**
 **/
-VehiculoView::~VehiculoView() {
-    _depura("VehiculoView::~VehiculoView", 0);
-    empresaBase()->sacaWindow(this);
-    _depura("END VehiculoView::~VehiculoView", 0);
+VehiculoView::~VehiculoView()
+{
+    _depura ( "VehiculoView::~VehiculoView", 0 );
+    empresaBase() ->sacaWindow ( this );
+    _depura ( "END VehiculoView::~VehiculoView", 0 );
 }
 
 
@@ -79,26 +81,27 @@ VehiculoView::~VehiculoView() {
 /**
 \return
 **/
-int VehiculoView::guardar() {
-    _depura("VehiculoView::guardar", 0);
+int VehiculoView::guardar()
+{
+    _depura ( "VehiculoView::guardar", 0 );
     try {
-        setDBvalue("matriculavehiculo", mui_matriculavehiculo->text());
-        setDBvalue("marcavehiculo", mui_marcavehiculo->text());
-        setDBvalue("modelovehiculo", mui_modelovehiculo->text());
-        setDBvalue("fechacompravehiculo", mui_fechacompravehiculo->text());
-        setDBvalue("preciovehiculo", mui_preciovehiculo->text());
+        setDBvalue ( "matriculavehiculo", mui_matriculavehiculo->text() );
+        setDBvalue ( "marcavehiculo", mui_marcavehiculo->text() );
+        setDBvalue ( "modelovehiculo", mui_modelovehiculo->text() );
+        setDBvalue ( "fechacompravehiculo", mui_fechacompravehiculo->text() );
+        setDBvalue ( "preciovehiculo", mui_preciovehiculo->text() );
 
         QString id = "";
-        DBRecord::DBsave(id);
-        mui_listadomantvehiculo->setColumnValue("idvehiculo", id);
+        DBRecord::DBsave ( id );
+        mui_listadomantvehiculo->setColumnValue ( "idvehiculo", id );
         mui_listadomantvehiculo->guardar();
         dialogChanges_cargaInicial();
         return 0;
-    } catch (...) {
-        mensajeInfo(tr("Error al guardar la ficha"));
+    } catch ( ... ) {
+        mensajeInfo ( tr ( "Error al guardar la ficha" ) );
         return -1;
     } // end try
-    _depura("END VehiculoView::guardar", 0);
+    _depura ( "END VehiculoView::guardar", 0 );
 }
 
 
@@ -107,27 +110,28 @@ int VehiculoView::guardar() {
 \param idvehiculo
 \return
 **/
-int VehiculoView::cargar(QString idvehiculo) {
-    _depura("VehiculoView::cargar", 0);
+int VehiculoView::cargar ( QString idvehiculo )
+{
+    _depura ( "VehiculoView::cargar", 0 );
     try {
-        DBRecord::cargar(idvehiculo);
+        DBRecord::cargar ( idvehiculo );
 
         // Se pinta.
-        mui_matriculavehiculo->setText(DBvalue("matriculavehiculo"));
-        mui_marcavehiculo->setText(DBvalue("marcavehiculo"));
-        mui_modelovehiculo->setText(DBvalue("modelovehiculo"));
-        mui_fechacompravehiculo->setText(DBvalue("fechacompravehiculo"));
-        mui_preciovehiculo->setText(DBvalue("preciovehiculo"));
+        mui_matriculavehiculo->setText ( DBvalue ( "matriculavehiculo" ) );
+        mui_marcavehiculo->setText ( DBvalue ( "marcavehiculo" ) );
+        mui_modelovehiculo->setText ( DBvalue ( "modelovehiculo" ) );
+        mui_fechacompravehiculo->setText ( DBvalue ( "fechacompravehiculo" ) );
+        mui_preciovehiculo->setText ( DBvalue ( "preciovehiculo" ) );
 
-	QString mantenimientos = "SELECT * FROM mantvehiculo WHERE idvehiculo = '" + idvehiculo + "'";
-	mui_listadomantvehiculo->cargar(mantenimientos);
+        QString mantenimientos = "SELECT * FROM mantvehiculo WHERE idvehiculo = '" + idvehiculo + "'";
+        mui_listadomantvehiculo->cargar ( mantenimientos );
 
         dialogChanges_cargaInicial();
-        empresaBase()->meteWindow(windowTitle(), this);
-        _depura("END VehiculoView::cargar", 0);
+        empresaBase() ->meteWindow ( windowTitle(), this );
+        _depura ( "END VehiculoView::cargar", 0 );
         return 0;
-    } catch (...) {
-        mensajeInfo(tr("Error al cargar los datos en la ficha."));
+    } catch ( ... ) {
+        mensajeInfo ( tr ( "Error al cargar los datos en la ficha." ) );
         return -1;
     }
 }

@@ -44,38 +44,41 @@
 \param comp
 \param parent
 **/
-ListTasaIVAView::ListTasaIVAView(Company *comp, QWidget *parent)
-        : FichaBf(comp, parent) {
-    _depura("ListTasaIVAView::ListTasaIVAView", 1);
-    setTitleName(tr("Tasa IVA"));
-    setDBTableName("tasa_iva");
-    setAttribute(Qt::WA_DeleteOnClose);
-    setupUi(this);
-    mui_listado->setEmpresaBase(comp);
+ListTasaIVAView::ListTasaIVAView ( Company *comp, QWidget *parent )
+        : FichaBf ( comp, parent )
+{
+    _depura ( "ListTasaIVAView::ListTasaIVAView", 1 );
+    setTitleName ( tr ( "Tasa IVA" ) );
+    setDBTableName ( "tasa_iva" );
+    setAttribute ( Qt::WA_DeleteOnClose );
+    setupUi ( this );
+    mui_listado->setEmpresaBase ( comp );
     mui_listado->cargar();
-    meteWindow(windowTitle(), this);
-    _depura("END ListTasaIVAView::ListTasaIVAView", 1);
+    meteWindow ( windowTitle(), this );
+    _depura ( "END ListTasaIVAView::ListTasaIVAView", 1 );
 }
 
 
 ///
 /**
 **/
-void ListTasaIVAView::on_mui_aceptar_clicked() {
-    _depura("ListTasaIVAView::on_mui_aceptar_clicked", 0);
+void ListTasaIVAView::on_mui_aceptar_clicked()
+{
+    _depura ( "ListTasaIVAView::on_mui_aceptar_clicked", 0 );
     try {
         mui_listado->guardar();
         close();
-    } catch (...) {
-        mensajeInfo("Error al guardar los almacenes");
+    } catch ( ... ) {
+        mensajeInfo ( "Error al guardar los almacenes" );
     } // end try
-    _depura("END ListTasaIVAView::on_mui_aceptar_clicked", 0);
+    _depura ( "END ListTasaIVAView::on_mui_aceptar_clicked", 0 );
 }
 
 
-ListTasaIVAView::~ListTasaIVAView() {
-    _depura("ListTasaIVAView::~ListTasaIVAView", 0);
-    _depura("END ListTasaIVAView::~ListTasaIVAView", 0);
+ListTasaIVAView::~ListTasaIVAView()
+{
+    _depura ( "ListTasaIVAView::~ListTasaIVAView", 0 );
+    _depura ( "END ListTasaIVAView::~ListTasaIVAView", 0 );
 }
 
 
@@ -84,27 +87,29 @@ ListTasaIVAView::~ListTasaIVAView() {
 /**
 \param parent
 **/
-ListTasaIVASubForm::ListTasaIVASubForm(QWidget *parent) : SubForm2Bf(parent) {
-    _depura("ListTasaIVASubForm::ListTasaIVASubForm", 0);
-    setDBTableName("tasa_iva");
-    setDBCampoId("idtasa_iva");
-    addSHeader("idtasa_iva", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr("Id Tasa IVA"));
-    addSHeader("desctipo_iva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Tipo IVA"));
-    addSHeader("idtipo_iva", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id Tipo IVA"));
-    addSHeader("porcentasa_iva", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Porcentaje IVA"));
-    addSHeader("porcentretasa_iva", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Porcentaje Recargo Equivalencia"));
-    addSHeader("fechatasa_iva", DBCampo::DBdate, DBCampo::DBNotNull, SHeader::DBNone, tr("Fecha Entrada en Vigor"));
-    setinsercion(TRUE);
-    _depura("END ListTasaIVASubForm::ListTasaIVASubForm", 0);
+ListTasaIVASubForm::ListTasaIVASubForm ( QWidget *parent ) : SubForm2Bf ( parent )
+{
+    _depura ( "ListTasaIVASubForm::ListTasaIVASubForm", 0 );
+    setDBTableName ( "tasa_iva" );
+    setDBCampoId ( "idtasa_iva" );
+    addSHeader ( "idtasa_iva", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr ( "Id Tasa IVA" ) );
+    addSHeader ( "desctipo_iva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr ( "Tipo IVA" ) );
+    addSHeader ( "idtipo_iva", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr ( "Id Tipo IVA" ) );
+    addSHeader ( "porcentasa_iva", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Porcentaje IVA" ) );
+    addSHeader ( "porcentretasa_iva", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Porcentaje Recargo Equivalencia" ) );
+    addSHeader ( "fechatasa_iva", DBCampo::DBdate, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Fecha Entrada en Vigor" ) );
+    setinsercion ( TRUE );
+    _depura ( "END ListTasaIVASubForm::ListTasaIVASubForm", 0 );
 }
 
 
 ///
 /**
 **/
-void ListTasaIVASubForm::cargar() {
-        _depura("ListTasaIVASubForm::cargar", 0);
-        SubForm3::cargar("SELECT * FROM tasa_iva LEFT JOIN tipo_iva on tasa_iva.idtipo_iva = tipo_iva.idtipo_iva");
-        _depura("END ListTasaIVASubForm::cargar", 0);
+void ListTasaIVASubForm::cargar()
+{
+    _depura ( "ListTasaIVASubForm::cargar", 0 );
+    SubForm3::cargar ( "SELECT * FROM tasa_iva LEFT JOIN tipo_iva on tasa_iva.idtipo_iva = tipo_iva.idtipo_iva" );
+    _depura ( "END ListTasaIVASubForm::cargar", 0 );
 }
 

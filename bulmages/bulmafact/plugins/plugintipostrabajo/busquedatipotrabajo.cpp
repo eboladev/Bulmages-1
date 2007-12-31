@@ -29,22 +29,24 @@
 /**
 \param parent
 **/
-BusquedaTipoTrabajo::BusquedaTipoTrabajo(QWidget *parent, const char *)
-        : QComboBox(parent), PEmpresaBase() {
-    _depura("BusquedaTipoTrabajo::BusquedaTipoTrabajo", 0);
+BusquedaTipoTrabajo::BusquedaTipoTrabajo ( QWidget *parent, const char * )
+        : QComboBox ( parent ), PEmpresaBase()
+{
+    _depura ( "BusquedaTipoTrabajo::BusquedaTipoTrabajo", 0 );
     m_cursorcombo = NULL;
-    connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
+    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
     m_idtipotrabajo = "";
-    _depura("END BusquedaTipoTrabajo::BusquedaTipoTrabajo", 0);
+    _depura ( "END BusquedaTipoTrabajo::BusquedaTipoTrabajo", 0 );
 }
 
 
 /// El destructor no precisa de operaciones especiales
 /**
 **/
-BusquedaTipoTrabajo::~BusquedaTipoTrabajo() {
-    _depura("BusquedaTipoTrabajo::~BusquedaTipoTrabajo", 0);
-    _depura("END BusquedaTipoTrabajo::~BusquedaTipoTrabajo", 0);
+BusquedaTipoTrabajo::~BusquedaTipoTrabajo()
+{
+    _depura ( "BusquedaTipoTrabajo::~BusquedaTipoTrabajo", 0 );
+    _depura ( "END BusquedaTipoTrabajo::~BusquedaTipoTrabajo", 0 );
 }
 
 
@@ -55,28 +57,29 @@ BusquedaTipoTrabajo::~BusquedaTipoTrabajo() {
 /**
 \param idtipotrabajo
 **/
-void BusquedaTipoTrabajo::setidtipotrabajo(QString idtipotrabajo) {
-    _depura("BusquedaTipoTrabajo::setidtipotrabajo", 0, idtipotrabajo);
-    if (m_cursorcombo != NULL) {
+void BusquedaTipoTrabajo::setidtipotrabajo ( QString idtipotrabajo )
+{
+    _depura ( "BusquedaTipoTrabajo::setidtipotrabajo", 0, idtipotrabajo );
+    if ( m_cursorcombo != NULL ) {
         delete m_cursorcombo;
     } // end if
-    m_cursorcombo = empresaBase()->cargacursor("SELECT * FROM tipotrabajo ORDER BY nomtipotrabajo");
-    if (!m_cursorcombo) return;
+    m_cursorcombo = empresaBase() ->cargacursor ( "SELECT * FROM tipotrabajo ORDER BY nomtipotrabajo" );
+    if ( !m_cursorcombo ) return;
     int i = 0;
     int i1 = 0;
     clear();
-    addItem("--");
-    while (!m_cursorcombo->eof()) {
+    addItem ( "--" );
+    while ( !m_cursorcombo->eof() ) {
         i++;
-        if (m_cursorcombo->valor("idtipotrabajo") == idtipotrabajo)
+        if ( m_cursorcombo->valor ( "idtipotrabajo" ) == idtipotrabajo )
             i1 = i;
-        addItem(m_cursorcombo->valor("nomtipotrabajo"));
+        addItem ( m_cursorcombo->valor ( "nomtipotrabajo" ) );
         m_cursorcombo->siguienteregistro();
     } //end while
-    if (i1 != 0) {
-        setCurrentIndex(i1);
+    if ( i1 != 0 ) {
+        setCurrentIndex ( i1 );
     } // end if
-    _depura("END BusquedaTipoTrabajo::setidtipotrabajo", 0, idtipotrabajo);
+    _depura ( "END BusquedaTipoTrabajo::setidtipotrabajo", 0, idtipotrabajo );
 }
 
 
@@ -84,14 +87,15 @@ void BusquedaTipoTrabajo::setidtipotrabajo(QString idtipotrabajo) {
 /**
 \return
 **/
-QString BusquedaTipoTrabajo::idtipotrabajo() {
-    _depura("BusquedaTipoTrabajo::idtipotrabajo", 0);
-    int index= currentIndex();
-    if (index > 0) {
-        _depura("END BusquedaTipoTrabajo::idtipotrabajo", 0);
-        return(m_cursorcombo->valor("idtipotrabajo", index - 1));
+QString BusquedaTipoTrabajo::idtipotrabajo()
+{
+    _depura ( "BusquedaTipoTrabajo::idtipotrabajo", 0 );
+    int index = currentIndex();
+    if ( index > 0 ) {
+        _depura ( "END BusquedaTipoTrabajo::idtipotrabajo", 0 );
+        return ( m_cursorcombo->valor ( "idtipotrabajo", index - 1 ) );
     } else {
-        _depura("END BusquedaTipoTrabajo::idtipotrabajo", 0);
+        _depura ( "END BusquedaTipoTrabajo::idtipotrabajo", 0 );
         return "";
     } // end if
 }
@@ -101,14 +105,15 @@ QString BusquedaTipoTrabajo::idtipotrabajo() {
 /**
 \param index
 **/
-void BusquedaTipoTrabajo::m_activated(int index) {
-    _depura("BusquedaTipoTrabajo::m_activated", 0);
-    if (index > 0) {
-        emit(valueChanged(m_cursorcombo->valor("idtipotrabajo", index - 1)));
+void BusquedaTipoTrabajo::m_activated ( int index )
+{
+    _depura ( "BusquedaTipoTrabajo::m_activated", 0 );
+    if ( index > 0 ) {
+        emit ( valueChanged ( m_cursorcombo->valor ( "idtipotrabajo", index - 1 ) ) );
     } else {
-        emit(valueChanged(""));
+        emit ( valueChanged ( "" ) );
     } // end if
-    _depura("END BusquedaTipoTrabajo::m_activated", 0);
+    _depura ( "END BusquedaTipoTrabajo::m_activated", 0 );
 }
 
 
@@ -122,13 +127,14 @@ void BusquedaTipoTrabajo::m_activated(int index) {
 /**
 \param parent
 **/
-BusquedaTipoTrabajoDelegate::BusquedaTipoTrabajoDelegate(QWidget *parent)
-        : QComboBox2(parent) {
-    _depura("BusquedaTipoTrabajoDelegate::BusquedaTipoTrabajoDelegate", 0);
+BusquedaTipoTrabajoDelegate::BusquedaTipoTrabajoDelegate ( QWidget *parent )
+        : QComboBox2 ( parent )
+{
+    _depura ( "BusquedaTipoTrabajoDelegate::BusquedaTipoTrabajoDelegate", 0 );
     m_cursorcombo = NULL;
-    setSizeAdjustPolicy(QComboBox::AdjustToContents);
-    connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
-    _depura("END BusquedaTipoTrabajoDelegate::BusquedaTipoTrabajoDelegate", 0);
+    setSizeAdjustPolicy ( QComboBox::AdjustToContents );
+    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
+    _depura ( "END BusquedaTipoTrabajoDelegate::BusquedaTipoTrabajoDelegate", 0 );
 }
 
 
@@ -136,11 +142,12 @@ BusquedaTipoTrabajoDelegate::BusquedaTipoTrabajoDelegate(QWidget *parent)
 */
 /**
 **/
-BusquedaTipoTrabajoDelegate::~BusquedaTipoTrabajoDelegate() {
-    _depura("BusquedaTipoTrabajoDelegate::~BusquedaTipoTrabajoDelegate", 0);
-    if (m_cursorcombo != NULL)
+BusquedaTipoTrabajoDelegate::~BusquedaTipoTrabajoDelegate()
+{
+    _depura ( "BusquedaTipoTrabajoDelegate::~BusquedaTipoTrabajoDelegate", 0 );
+    if ( m_cursorcombo != NULL )
         delete m_cursorcombo;
-    _depura("END BusquedaTipoTrabajoDelegate::~BusquedaTipoTrabajoDelegate", 0);
+    _depura ( "END BusquedaTipoTrabajoDelegate::~BusquedaTipoTrabajoDelegate", 0 );
 }
 
 
@@ -151,26 +158,27 @@ BusquedaTipoTrabajoDelegate::~BusquedaTipoTrabajoDelegate() {
 /**
 \param cod
 **/
-void BusquedaTipoTrabajoDelegate::set(const QString &cod) {
-    _depura("BusquedaTipoTrabajoDelegate::set", 0);
+void BusquedaTipoTrabajoDelegate::set ( const QString &cod )
+{
+    _depura ( "BusquedaTipoTrabajoDelegate::set", 0 );
     int index = 0;
     QString codigo = cod;
 
-    if (m_cursorcombo != NULL)
+    if ( m_cursorcombo != NULL )
         delete m_cursorcombo;
 
-    m_cursorcombo = empresaBase()->cargacursor("SELECT idtipotrabajo, nomtipotrabajo FROM tipotrabajo ");
+    m_cursorcombo = empresaBase() ->cargacursor ( "SELECT idtipotrabajo, nomtipotrabajo FROM tipotrabajo " );
     clear();
-    while (!m_cursorcombo->eof()) {
-        addItem(m_cursorcombo->valor("nomtipotrabajo"));
+    while ( !m_cursorcombo->eof() ) {
+        addItem ( m_cursorcombo->valor ( "nomtipotrabajo" ) );
         m_cursorcombo->siguienteregistro();
-        if(m_cursorcombo->valor("nomtipotrabajo") == cod)
-		index = m_cursorcombo->regactual();
+        if ( m_cursorcombo->valor ( "nomtipotrabajo" ) == cod )
+            index = m_cursorcombo->regactual();
     }// end while
-    setEditText(cod);
-    setCurrentIndex(index);
+    setEditText ( cod );
+    setCurrentIndex ( index );
 
-    _depura("END BusquedaTipoTrabajoDelegate::set", 0);
+    _depura ( "END BusquedaTipoTrabajoDelegate::set", 0 );
 }
 
 
@@ -178,10 +186,11 @@ void BusquedaTipoTrabajoDelegate::set(const QString &cod) {
 /**
 \return
 **/
-QString BusquedaTipoTrabajoDelegate::id()  {
-    _depura("BusquedaTipoTrabajoDelegate::id", 0);
-    _depura("END BusquedaTipoTrabajoDelegate::id", 0);
-    return m_cursorcombo->valor("idtipotrabajo", currentIndex());
+QString BusquedaTipoTrabajoDelegate::id()
+{
+    _depura ( "BusquedaTipoTrabajoDelegate::id", 0 );
+    _depura ( "END BusquedaTipoTrabajoDelegate::id", 0 );
+    return m_cursorcombo->valor ( "idtipotrabajo", currentIndex() );
 }
 
 

@@ -40,17 +40,20 @@ class Company;
 
 /// Administra el detalle del listado de series de factura.
 /** */
-class ListSerieFacturaSubForm : public SubForm2Bf {
+class ListSerieFacturaSubForm : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
-    ListSerieFacturaSubForm(QWidget *parent = 0);
-    ~ListSerieFacturaSubForm() {}
+    ListSerieFacturaSubForm ( QWidget *parent = 0 );
+    ~ListSerieFacturaSubForm()
+    {}
 
 public slots:
-    virtual void cargar() {
-        _depura("ListSerieFacturaSubForm::cargar\n",0);
-        SubForm3::cargar("SELECT *, codigoserie_factura AS codigoserie_facturaorig FROM serie_factura");
+    virtual void cargar()
+    {
+        _depura ( "ListSerieFacturaSubForm::cargar\n", 0 );
+        SubForm3::cargar ( "SELECT *, codigoserie_factura AS codigoserie_facturaorig FROM serie_factura" );
     }
 };
 
@@ -60,15 +63,17 @@ public slots:
 
 /// Muestra y administra la ventana con la lista de series de facturas.
 /** */
-class ListSerieFacturaView : public FichaBf, public Ui_ListSerieFacturaBase {
+class ListSerieFacturaView : public FichaBf, public Ui_ListSerieFacturaBase
+{
     Q_OBJECT
 
 public:
-    ListSerieFacturaView(Company *, QWidget *);
+    ListSerieFacturaView ( Company *, QWidget * );
     virtual ~ListSerieFacturaView();
 
 public slots:
-    virtual void on_mui_aceptar_clicked() {
+    virtual void on_mui_aceptar_clicked()
+    {
         mui_listado->guardar();
         close();
     }

@@ -41,50 +41,51 @@
 \param comp
 \param parent
 **/
-Cuadrante1View::Cuadrante1View(Company *comp, QWidget *parent)
-        : FichaBf(comp, parent) {
-    _depura("Cuadrante1View::Cuadrante1View", 0);
-    setAttribute(Qt::WA_DeleteOnClose);
+Cuadrante1View::Cuadrante1View ( Company *comp, QWidget *parent )
+        : FichaBf ( comp, parent )
+{
+    _depura ( "Cuadrante1View::Cuadrante1View", 0 );
+    setAttribute ( Qt::WA_DeleteOnClose );
     try {
-        setupUi(this);
+        setupUi ( this );
 
         /// Lanzamos los plugins.
-        if (g_plugins->lanza("Cuadrante1View_Cuadrante1View", this)) return;
+        if ( g_plugins->lanza ( "Cuadrante1View_Cuadrante1View", this ) ) return;
 
-        setTitleName(tr("Cuadrante"));
-        setDBTableName("cuadrante");
-        setDBCampoId("idcuadrante");
-        addDBCampo("idcuadrante", DBCampo::DBint, DBCampo::DBPrimaryKey, tr( "ID cuadrante"));
-        addDBCampo("idalmacen", DBCampo::DBint, DBCampo::DBNoSave, tr( "Almacen"));
-        addDBCampo("fechacuadrante", DBCampo::DBdate, DBCampo::DBNoSave  , tr( "Fecha"));
-        addDBCampo("comentcuadrante", DBCampo::DBvarchar, DBCampo::DBNothing, tr( "Comentarios"));
-        addDBCampo("aperturacuadrante", DBCampo::DBvarchar, DBCampo::DBNothing, tr( "Apertura Mañana"));
-        addDBCampo("cierrecuadrante", DBCampo::DBvarchar, DBCampo::DBNothing, tr( "Cierre Mañana"));
-        addDBCampo("apertura1cuadrante", DBCampo::DBvarchar, DBCampo::DBNothing, tr( "Apartura Tarde"));
-        addDBCampo("cierre1cuadrante", DBCampo::DBvarchar, DBCampo::DBNothing, tr( "Cierre Tarde"));
-        addDBCampo("fiestacuadrante", DBCampo::DBboolean, DBCampo::DBNothing, tr( "Festivo"));
+        setTitleName ( tr ( "Cuadrante" ) );
+        setDBTableName ( "cuadrante" );
+        setDBCampoId ( "idcuadrante" );
+        addDBCampo ( "idcuadrante", DBCampo::DBint, DBCampo::DBPrimaryKey, tr ( "ID cuadrante" ) );
+        addDBCampo ( "idalmacen", DBCampo::DBint, DBCampo::DBNoSave, tr ( "Almacen" ) );
+        addDBCampo ( "fechacuadrante", DBCampo::DBdate, DBCampo::DBNoSave  , tr ( "Fecha" ) );
+        addDBCampo ( "comentcuadrante", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Comentarios" ) );
+        addDBCampo ( "aperturacuadrante", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Apertura Mañana" ) );
+        addDBCampo ( "cierrecuadrante", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Cierre Mañana" ) );
+        addDBCampo ( "apertura1cuadrante", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Apartura Tarde" ) );
+        addDBCampo ( "cierre1cuadrante", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Cierre Tarde" ) );
+        addDBCampo ( "fiestacuadrante", DBCampo::DBboolean, DBCampo::DBNothing, tr ( "Festivo" ) );
 
-        mui_idalmacen->setEmpresaBase(comp);
+        mui_idalmacen->setEmpresaBase ( comp );
 
-        mui_list->setEmpresaBase(comp);
-        mui_list->setDBTableName("horario");
-        mui_list->setDBCampoId("idhorario");
-        mui_list->addSHeader("nomtrabajador",  DBCampo::DBvarchar, DBCampo::DBNoSave,     SHeader::DBNone,                         tr("Nombre Trabajador"));
-        mui_list->addSHeader("horainhorario",  DBCampo::DBvarchar, DBCampo::DBNotNull,    SHeader::DBNone,                         tr("Hora Inicio"));
-        mui_list->addSHeader("horafinhorario", DBCampo::DBvarchar, DBCampo::DBNotNull,    SHeader::DBNone,                         tr("Hora Fin"));
-        mui_list->addSHeader("idcuadrante",    DBCampo::DBint,     DBCampo::DBNotNull,    SHeader::DBNoView | SHeader::DBNoWrite,  tr("ID Cuadrante"));
-        mui_list->addSHeader("idtrabajador",   DBCampo::DBint,     DBCampo::DBNotNull,    SHeader::DBNone,  tr("ID trabajador"));
-        mui_list->addSHeader("idhorario",      DBCampo::DBint,     DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite,  tr("ID horario"));
-        mui_list->setinsercion(TRUE);
-        mui_list->setDelete(TRUE);
-        mui_list->setSortingEnabled(FALSE);
+        mui_list->setEmpresaBase ( comp );
+        mui_list->setDBTableName ( "horario" );
+        mui_list->setDBCampoId ( "idhorario" );
+        mui_list->addSHeader ( "nomtrabajador",  DBCampo::DBvarchar, DBCampo::DBNoSave,     SHeader::DBNone,                         tr ( "Nombre Trabajador" ) );
+        mui_list->addSHeader ( "horainhorario",  DBCampo::DBvarchar, DBCampo::DBNotNull,    SHeader::DBNone,                         tr ( "Hora Inicio" ) );
+        mui_list->addSHeader ( "horafinhorario", DBCampo::DBvarchar, DBCampo::DBNotNull,    SHeader::DBNone,                         tr ( "Hora Fin" ) );
+        mui_list->addSHeader ( "idcuadrante",    DBCampo::DBint,     DBCampo::DBNotNull,    SHeader::DBNoView | SHeader::DBNoWrite,  tr ( "ID Cuadrante" ) );
+        mui_list->addSHeader ( "idtrabajador",   DBCampo::DBint,     DBCampo::DBNotNull,    SHeader::DBNone,  tr ( "ID trabajador" ) );
+        mui_list->addSHeader ( "idhorario",      DBCampo::DBint,     DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite,  tr ( "ID horario" ) );
+        mui_list->setinsercion ( TRUE );
+        mui_list->setDelete ( TRUE );
+        mui_list->setSortingEnabled ( FALSE );
 
         dialogChanges_cargaInicial();
-        meteWindow(windowTitle(), this, FALSE);
-    } catch (...) {
-        mensajeInfo(tr("Error al crear el almacen"));
+        meteWindow ( windowTitle(), this, FALSE );
+    } catch ( ... ) {
+        mensajeInfo ( tr ( "Error al crear el almacen" ) );
     } // end try
-    _depura("END Cuadrante1View::Cuadrante1View", 0);
+    _depura ( "END Cuadrante1View::Cuadrante1View", 0 );
 }
 
 
@@ -92,9 +93,10 @@ Cuadrante1View::Cuadrante1View(Company *comp, QWidget *parent)
 */
 /**
 **/
-Cuadrante1View::~Cuadrante1View() {
-    _depura("Cuadrante1View::~Cuadrante1View", 0);
-    _depura("END Cuadrante1View::~Cuadrante1View", 0);
+Cuadrante1View::~Cuadrante1View()
+{
+    _depura ( "Cuadrante1View::~Cuadrante1View", 0 );
+    _depura ( "END Cuadrante1View::~Cuadrante1View", 0 );
 }
 
 
@@ -103,8 +105,9 @@ Cuadrante1View::~Cuadrante1View() {
 \param idcuadrante
 \return
 **/
-int Cuadrante1View::cargarPost(QString idcuadrante) {
-    mui_list->cargar("SELECT * FROM horario LEFT JOIN trabajador ON horario.idtrabajador = trabajador.idtrabajador WHERE idcuadrante=" + idcuadrante);
+int Cuadrante1View::cargarPost ( QString idcuadrante )
+{
+    mui_list->cargar ( "SELECT * FROM horario LEFT JOIN trabajador ON horario.idtrabajador = trabajador.idtrabajador WHERE idcuadrante=" + idcuadrante );
     return 0;
 }
 
@@ -113,11 +116,12 @@ int Cuadrante1View::cargarPost(QString idcuadrante) {
 /**
 \return
 **/
-int Cuadrante1View::guardarPost() {
-	mui_list->setColumnValue("idcuadrante", DBvalue("idcuadrante"));
-	mui_list->guardar();
-	emit(save());
-	return 0;
+int Cuadrante1View::guardarPost()
+{
+    mui_list->setColumnValue ( "idcuadrante", DBvalue ( "idcuadrante" ) );
+    mui_list->guardar();
+    emit ( save() );
+    return 0;
 }
 
 

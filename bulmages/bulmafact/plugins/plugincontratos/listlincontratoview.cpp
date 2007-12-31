@@ -33,22 +33,23 @@
 /**
 \param parent
 **/
-ListLinContratoView::ListLinContratoView(QWidget *parent) : SubForm2Bf(parent) {
-    _depura("ListLinContratoView::ListLinContratoView", 0);
-    setDBTableName("lcontrato");
-    setDBCampoId("idlcontrato");
-    addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id articulo"));
-    addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Codigo completo articulo"));
-    addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("Nombre articulo"));
-    addSHeader("idlcontrato", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr("Idl contrato"));
-    addSHeader("desclcontrato", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Descripcionl contrato"));
-    addSHeader("cantlcontrato", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Cantidadl contrato"));
-    addSHeader("pvplcontrato", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("PVPl contrato"));
-    addSHeader("idcontrato", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id contrato"));
-    addSHeader("ordenlcontrato", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Orden"));
-    setinsercion(TRUE);
-    setOrdenEnabled(TRUE);
-    _depura("END ListLinContratoView::ListLinContratoView", 0);
+ListLinContratoView::ListLinContratoView ( QWidget *parent ) : SubForm2Bf ( parent )
+{
+    _depura ( "ListLinContratoView::ListLinContratoView", 0 );
+    setDBTableName ( "lcontrato" );
+    setDBCampoId ( "idlcontrato" );
+    addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr ( "Id articulo" ) );
+    addSHeader ( "codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr ( "Codigo completo articulo" ) );
+    addSHeader ( "nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr ( "Nombre articulo" ) );
+    addSHeader ( "idlcontrato", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr ( "Idl contrato" ) );
+    addSHeader ( "desclcontrato", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Descripcionl contrato" ) );
+    addSHeader ( "cantlcontrato", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Cantidadl contrato" ) );
+    addSHeader ( "pvplcontrato", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr ( "PVPl contrato" ) );
+    addSHeader ( "idcontrato", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr ( "Id contrato" ) );
+    addSHeader ( "ordenlcontrato", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr ( "Orden" ) );
+    setinsercion ( TRUE );
+    setOrdenEnabled ( TRUE );
+    _depura ( "END ListLinContratoView::ListLinContratoView", 0 );
 }
 
 
@@ -56,11 +57,12 @@ ListLinContratoView::ListLinContratoView(QWidget *parent) : SubForm2Bf(parent) {
 /**
 \param idcontrato
 **/
-void ListLinContratoView::cargar(QString idcontrato) {
-    _depura("ListLinContratoView::cargar", 0);
+void ListLinContratoView::cargar ( QString idcontrato )
+{
+    _depura ( "ListLinContratoView::cargar", 0 );
     mdb_idcontrato = idcontrato;
-    SubForm3::cargar("SELECT * FROM lcontrato LEFT JOIN articulo ON lcontrato.idarticulo = articulo.idarticulo WHERE idcontrato=" + mdb_idcontrato + " ORDER BY ordenlcontrato");
-    _depura("END ListLinContratoView::cargar", 0);
+    SubForm3::cargar ( "SELECT * FROM lcontrato LEFT JOIN articulo ON lcontrato.idarticulo = articulo.idarticulo WHERE idcontrato=" + mdb_idcontrato + " ORDER BY ordenlcontrato" );
+    _depura ( "END ListLinContratoView::cargar", 0 );
 }
 
 

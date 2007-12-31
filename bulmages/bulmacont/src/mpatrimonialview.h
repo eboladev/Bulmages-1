@@ -30,7 +30,8 @@
 
 class Empresa;
 
-class mpatrimonialview : public QDialog, public Ui_MPatrimonialBase, public PEmpresaBase {
+class mpatrimonialview : public QDialog, public Ui_MPatrimonialBase, public PEmpresaBase
+{
     Q_OBJECT
 
 public:
@@ -39,9 +40,9 @@ public:
     QString idmpatrimonial;
 
 public:
-    mpatrimonialview(Empresa *, QWidget *parent = 0, Qt::WFlags fl = 0);
+    mpatrimonialview ( Empresa *, QWidget *parent = 0, Qt::WFlags fl = 0 );
     ~mpatrimonialview();
-    void inicializa1(QString);
+    void inicializa1 ( QString );
     QString getidmasa();
     QString getnommasa();
 

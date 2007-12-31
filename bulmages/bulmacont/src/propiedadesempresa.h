@@ -38,11 +38,12 @@ class Empresa;
 
 /// Muestra y administra las l&iacute;neas de detalle del listado de configuraci&oacute;nes.
 /** */
-class ListConfiguracionSubForm : public SubForm2Bc {
+class ListConfiguracionSubForm : public SubForm2Bc
+{
     Q_OBJECT
 
 public:
-    ListConfiguracionSubForm(QWidget *parent = 0);
+    ListConfiguracionSubForm ( QWidget *parent = 0 );
     ~ListConfiguracionSubForm();
 
 public slots:
@@ -57,11 +58,12 @@ public slots:
 sobre la tabla configuracion en dicha empresa
  @TODO: Como estan duplicadas estas tablas tanto en bulmafact conmo en bulmacont se podria hacer una abstraccion en bulmalib.
 */
-class propiedadesempresa : public FichaBc, public Ui_PropiedadesEmpresaBase {
+class propiedadesempresa : public FichaBc, public Ui_PropiedadesEmpresaBase
+{
     Q_OBJECT
 
 public:
-    propiedadesempresa(Empresa *emp, QWidget *parent = 0);
+    propiedadesempresa ( Empresa *emp, QWidget *parent = 0 );
     ~propiedadesempresa();
     int inicializa();
     virtual void on_mui_guardar_clicked();

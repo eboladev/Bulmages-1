@@ -32,19 +32,19 @@
 
 /*
 myplugin1::myplugin1() {}
-
-
+ 
+ 
 myplugin1::~myplugin1() {}
-
-
+ 
+ 
 void myplugin1::elslot() {
-
+ 
 //    TarifaListView *tar = new TarifaListView(m_companyact, NULL);
 //    m_companyact->m_pWorkspace->addWindow(tar);
 //    tar->show();
 }
-
-
+ 
+ 
 void myplugin1::inicializa(bulmafact *bges) {
     /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
     m_companyact = bges->getcompany();
@@ -55,8 +55,8 @@ void myplugin1::inicializa(bulmafact *bges) {
     bges->menuArticulos->addAction(planCuentas);
     connect(planCuentas, SIGNAL(activated()), this, SLOT(elslot()));
 }
-
-
+ 
+ 
 */
 
 
@@ -64,8 +64,9 @@ void myplugin1::inicializa(bulmafact *bges) {
 /**
 \return
 **/
-int entryPoint(Bulmafact *) {
-    _depura("Punto de Entrada del plugin de Promedios", 0);
+int entryPoint ( Bulmafact * )
+{
+    _depura ( "Punto de Entrada del plugin de Promedios", 0 );
 //    myplugin1 *plug = new myplugin1();
 //    plug->inicializa(bges);
     return 0;
@@ -77,12 +78,13 @@ int entryPoint(Bulmafact *) {
 \param art
 \return
 **/
-int ArticuloView_ArticuloView(ArticuloView *art) {
-    _depura("ArticuloView_ArticuloView", 0);
-    PromedioView *l = new PromedioView(art->empresaBase(), art);
-    l->setObjectName(QString::fromUtf8("lpromedios"));
-    art->mui_tab->addTab(l, "Promedios");
-    _depura("END ArticuloView_ArticuloView", 0);
+int ArticuloView_ArticuloView ( ArticuloView *art )
+{
+    _depura ( "ArticuloView_ArticuloView", 0 );
+    PromedioView *l = new PromedioView ( art->empresaBase(), art );
+    l->setObjectName ( QString::fromUtf8 ( "lpromedios" ) );
+    art->mui_tab->addTab ( l, "Promedios" );
+    _depura ( "END ArticuloView_ArticuloView", 0 );
     return 0;
 }
 
@@ -92,11 +94,12 @@ int ArticuloView_ArticuloView(ArticuloView *art) {
 \param art
 \return
 **/
-int ArticuloView_cargar(ArticuloView *art) {
-    _depura("ArticuloView_cargar", 0);
-    PromedioView *l = art->findChild<PromedioView *>("lpromedios");
-    l->cargar(art->DBvalue("idarticulo"));
-    _depura("END ArticuloView_cargar", 0);
+int ArticuloView_cargar ( ArticuloView *art )
+{
+    _depura ( "ArticuloView_cargar", 0 );
+    PromedioView *l = art->findChild<PromedioView *> ( "lpromedios" );
+    l->cargar ( art->DBvalue ( "idarticulo" ) );
+    _depura ( "END ArticuloView_cargar", 0 );
     return 0;
 }
 

@@ -30,20 +30,21 @@
 /**
 \param parent
 **/
-BusquedaCliente::BusquedaCliente(QWidget *parent)
-        : BLWidget(parent) {
-    _depura("BusquedaCliente::BusquedaCliente", 0);
-    setupUi(this);
+BusquedaCliente::BusquedaCliente ( QWidget *parent )
+        : BLWidget ( parent )
+{
+    _depura ( "BusquedaCliente::BusquedaCliente", 0 );
+    setupUi ( this );
     /// Establecemos los Buddies:
-    mui_labelCliente->setText(tr("Clien&te:"));
-    mui_labelCliente->setBuddy(mui_buscar);
+    mui_labelCliente->setText ( tr ( "Clien&te:" ) );
+    mui_labelCliente->setBuddy ( mui_buscar );
 
     mdb_idcliente = "";
     mdb_nomcliente = "";
     mdb_cifcliente = "";
     mdb_codcliente = "";
     m_semaforo = FALSE;
-    _depura("END BusquedaCliente::BusquedaCliente", 0);
+    _depura ( "END BusquedaCliente::BusquedaCliente", 0 );
 }
 
 
@@ -51,9 +52,10 @@ BusquedaCliente::BusquedaCliente(QWidget *parent)
 */
 /**
 **/
-BusquedaCliente::~BusquedaCliente() {
-    _depura("BusquedaCliente::~BusquedaCliente", 0);
-    _depura("END BusquedaCliente::~BusquedaCliente", 0);
+BusquedaCliente::~BusquedaCliente()
+{
+    _depura ( "BusquedaCliente::~BusquedaCliente", 0 );
+    _depura ( "END BusquedaCliente::~BusquedaCliente", 0 );
 }
 
 
@@ -61,14 +63,15 @@ BusquedaCliente::~BusquedaCliente() {
 */
 /**
 **/
-void BusquedaCliente::pinta() {
-    _depura ("BusquedaCliente::pinta", 0);
+void BusquedaCliente::pinta()
+{
+    _depura ( "BusquedaCliente::pinta", 0 );
     m_semaforo = TRUE;
-    m_cifcliente->setText(mdb_cifcliente);
-    m_nomcliente->setText(mdb_codcliente + " - " + mdb_nomcliente);
+    m_cifcliente->setText ( mdb_cifcliente );
+    m_nomcliente->setText ( mdb_codcliente + " - " + mdb_nomcliente );
     m_semaforo = FALSE;
-    emit(valueChanged(mdb_idcliente));
-    _depura ("END BusquedaCliente::pinta", 0);
+    emit ( valueChanged ( mdb_idcliente ) );
+    _depura ( "END BusquedaCliente::pinta", 0 );
 }
 
 
@@ -81,27 +84,28 @@ void BusquedaCliente::pinta() {
 /**
 \param val
 **/
-void BusquedaCliente::setidcliente(QString val) {
-    _depura("BusquedaCliente::setidcliente", 0, val);
+void BusquedaCliente::setidcliente ( QString val )
+{
+    _depura ( "BusquedaCliente::setidcliente", 0, val );
     mdb_idcliente = val;
 
-    if (val == "") {
+    if ( val == "" ) {
         mdb_idcliente = "";
         mdb_nomcliente = "";
         mdb_cifcliente = "";
         mdb_codcliente = "";
     } else {
         QString SQLQuery = "SELECT * FROM cliente WHERE idcliente = '" + mdb_idcliente + "'";
-        cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
-        if (!cur->eof()) {
-            mdb_nomcliente = cur->valor("nomcliente");
-            mdb_cifcliente = cur->valor("cifcliente");
-            mdb_codcliente = cur->valor("codcliente");
+        cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
+        if ( !cur->eof() ) {
+            mdb_nomcliente = cur->valor ( "nomcliente" );
+            mdb_cifcliente = cur->valor ( "cifcliente" );
+            mdb_codcliente = cur->valor ( "codcliente" );
         } // end if
         delete cur;
     } // end if
     pinta();
-    _depura("END BusquedaCliente::setidcliente", 0);
+    _depura ( "END BusquedaCliente::setidcliente", 0 );
 }
 
 
@@ -109,10 +113,11 @@ void BusquedaCliente::setidcliente(QString val) {
 /**
 \param val
 **/
-void BusquedaCliente::setValorCampo(QString val) {
-    _depura("BusquedaCliente::setValorCampo", 0);
-    setidcliente(val);
-    _depura("END BusquedaCliente::setValorCampo", 0);
+void BusquedaCliente::setValorCampo ( QString val )
+{
+    _depura ( "BusquedaCliente::setValorCampo", 0 );
+    setidcliente ( val );
+    _depura ( "END BusquedaCliente::setValorCampo", 0 );
 }
 
 
@@ -125,16 +130,17 @@ void BusquedaCliente::setValorCampo(QString val) {
 /**
 \param val
 **/
-void BusquedaCliente::setcifcliente(QString val) {
-    _depura("BusquedaCliente::setcifcliente", 0, val);
+void BusquedaCliente::setcifcliente ( QString val )
+{
+    _depura ( "BusquedaCliente::setcifcliente", 0, val );
     mdb_cifcliente = val;
     QString SQLQuery = "SELECT * FROM cliente WHERE cifcliente = '" + mdb_cifcliente + "'";
-    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
+    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
 
-    if(!cur->eof()) {
-        mdb_idcliente = cur->valor("idcliente");
-        mdb_nomcliente = cur->valor("nomcliente");
-        mdb_codcliente = cur->valor("codcliente");
+    if ( !cur->eof() ) {
+        mdb_idcliente = cur->valor ( "idcliente" );
+        mdb_nomcliente = cur->valor ( "nomcliente" );
+        mdb_codcliente = cur->valor ( "codcliente" );
     } else {
         mdb_idcliente = "";
         mdb_nomcliente = "";
@@ -142,7 +148,7 @@ void BusquedaCliente::setcifcliente(QString val) {
     } // end if
     delete cur;
     pinta();
-    _depura("END BusquedaCliente::setcifcliente", 0, val);
+    _depura ( "END BusquedaCliente::setcifcliente", 0, val );
 }
 
 
@@ -154,30 +160,31 @@ void BusquedaCliente::setcifcliente(QString val) {
 */
 /**
 **/
-void BusquedaCliente::on_mui_buscar_clicked() {
-    _depura("BusquedaCliente::on_mui_buscar_clicked", 0);
-    QDialog *diag = new QDialog(0);
-    diag->setModal(true);
+void BusquedaCliente::on_mui_buscar_clicked()
+{
+    _depura ( "BusquedaCliente::on_mui_buscar_clicked", 0 );
+    QDialog *diag = new QDialog ( 0 );
+    diag->setModal ( true );
 
-    ClientsList *clients = new ClientsList((Company *)empresaBase(), diag, 0, ClientsList::SelectMode);
-    connect(clients, SIGNAL(selected(QString)), diag, SLOT(accept()));
+    ClientsList *clients = new ClientsList ( ( Company * ) empresaBase(), diag, 0, ClientsList::SelectMode );
+    connect ( clients, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
     /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
     /// para que sea redimensionable y aparezca el titulo de la ventana.
     QHBoxLayout *layout = new QHBoxLayout;
-    layout->addWidget(clients);
-    layout->setMargin(0);
-    layout->setSpacing(0);
-    diag->setLayout(layout);
-    diag->setWindowTitle(clients->windowTitle());
+    layout->addWidget ( clients );
+    layout->setMargin ( 0 );
+    layout->setSpacing ( 0 );
+    diag->setLayout ( layout );
+    diag->setWindowTitle ( clients->windowTitle() );
 
     diag->exec();
-    if (clients->cifclient() != "") {
-        setcifcliente(clients->cifclient());
+    if ( clients->cifclient() != "" ) {
+        setcifcliente ( clients->cifclient() );
     } // end if
     delete diag;
 
-    _depura("END BusquedaCliente::on_mui_buscar_clicked", 0);
+    _depura ( "END BusquedaCliente::on_mui_buscar_clicked", 0 );
 }
 
 
@@ -187,10 +194,11 @@ void BusquedaCliente::on_mui_buscar_clicked() {
 */
 /**
 **/
-void BusquedaCliente::on_m_cifcliente_editingFinished() {
-    _depura("BusquedaCliente::on_m_cifcliente_editingFinished", 0);
+void BusquedaCliente::on_m_cifcliente_editingFinished()
+{
+    _depura ( "BusquedaCliente::on_m_cifcliente_editingFinished", 0 );
     pinta();
-    _depura("END BusquedaCliente::on_m_cifcliente_editingFinished", 0);
+    _depura ( "END BusquedaCliente::on_m_cifcliente_editingFinished", 0 );
 }
 
 /** SLOT que responde a la modificacion del campo de texto del Widget.
@@ -202,63 +210,64 @@ void BusquedaCliente::on_m_cifcliente_editingFinished() {
 \param val
 \return
 **/
-void BusquedaCliente::on_m_cifcliente_textChanged(const QString &val) {
-    _depura("BusquedaCliente::on_m_cifcliente_textChanged", 0);
-    if (m_semaforo)
+void BusquedaCliente::on_m_cifcliente_textChanged ( const QString &val )
+{
+    _depura ( "BusquedaCliente::on_m_cifcliente_textChanged", 0 );
+    if ( m_semaforo )
         return;
 
     bool encontrado = FALSE;
     QString SQLQuery = "SELECT * FROM cliente WHERE cifcliente = '" + val + "'";
-    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
-    if(!cur->eof()) {
-        mdb_idcliente = cur->valor("idcliente");
-        mdb_nomcliente = cur->valor("nomcliente");
-        mdb_cifcliente = cur->valor("cifcliente");
-        mdb_codcliente = cur->valor("codcliente");
+    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
+    if ( !cur->eof() ) {
+        mdb_idcliente = cur->valor ( "idcliente" );
+        mdb_nomcliente = cur->valor ( "nomcliente" );
+        mdb_cifcliente = cur->valor ( "cifcliente" );
+        mdb_codcliente = cur->valor ( "codcliente" );
         encontrado = TRUE;
     }
     delete cur;
 
-    if (! encontrado) {
+    if ( ! encontrado ) {
         QString SQLQuery = "SELECT * FROM cliente WHERE codcliente = '" + val + "'";
-        cur = empresaBase()->cargacursor(SQLQuery);
-        if(!cur->eof()) {
-            mdb_idcliente = cur->valor("idcliente");
-            mdb_nomcliente = cur->valor("nomcliente");
-            mdb_cifcliente = cur->valor("cifcliente");
-            mdb_codcliente = cur->valor("codcliente");
+        cur = empresaBase() ->cargacursor ( SQLQuery );
+        if ( !cur->eof() ) {
+            mdb_idcliente = cur->valor ( "idcliente" );
+            mdb_nomcliente = cur->valor ( "nomcliente" );
+            mdb_cifcliente = cur->valor ( "cifcliente" );
+            mdb_codcliente = cur->valor ( "codcliente" );
             encontrado = TRUE;
         } // end if
         delete cur;
     } // end if
 
 
-    if (! encontrado) {
+    if ( ! encontrado ) {
         QString SQLQuery = "SELECT * FROM cliente WHERE upper(nomcliente) LIKE upper('%" + val + "%')";
-        cur = empresaBase()->cargacursor(SQLQuery);
-        if(cur->numregistros() == 1) {
-            mdb_idcliente = cur->valor("idcliente");
-            mdb_nomcliente = cur->valor("nomcliente");
-            mdb_cifcliente = cur->valor("cifcliente");
-            mdb_codcliente = cur->valor("codcliente");
+        cur = empresaBase() ->cargacursor ( SQLQuery );
+        if ( cur->numregistros() == 1 ) {
+            mdb_idcliente = cur->valor ( "idcliente" );
+            mdb_nomcliente = cur->valor ( "nomcliente" );
+            mdb_cifcliente = cur->valor ( "cifcliente" );
+            mdb_codcliente = cur->valor ( "codcliente" );
             encontrado = TRUE;
         } // end if
         delete cur;
     } // end if
 
 
-    if(!encontrado) {
-        m_nomcliente->setText("");
+    if ( !encontrado ) {
+        m_nomcliente->setText ( "" );
         mdb_idcliente = "";
         mdb_cifcliente = "";
         mdb_codcliente = "";
         mdb_nomcliente = "";
     } // end if
 
-    if (encontrado) {
-        m_nomcliente->setText(mdb_codcliente + " - " + mdb_nomcliente);
+    if ( encontrado ) {
+        m_nomcliente->setText ( mdb_codcliente + " - " + mdb_nomcliente );
     } // end if
-    _depura("END BusquedaCliente::on_m_cifcliente_textChanged", 0);
+    _depura ( "END BusquedaCliente::on_m_cifcliente_textChanged", 0 );
 
 }
 
@@ -267,18 +276,20 @@ void BusquedaCliente::on_m_cifcliente_textChanged(const QString &val) {
 /**
 \return
 **/
-QString BusquedaCliente::cifcliente() {
-    _depura("BusquedaCliente::cifcliente", 0);
-    _depura("END BusquedaCliente::cifcliente", 0);
+QString BusquedaCliente::cifcliente()
+{
+    _depura ( "BusquedaCliente::cifcliente", 0 );
+    _depura ( "END BusquedaCliente::cifcliente", 0 );
     return m_cifcliente->text();
 }
 
 ///
 /**
 **/
-QString BusquedaCliente::idcliente() {
-    _depura("BusquedaCliente::idcliente", 0);
-    _depura("END BusquedaCliente::idcliente", 0);
+QString BusquedaCliente::idcliente()
+{
+    _depura ( "BusquedaCliente::idcliente", 0 );
+    _depura ( "END BusquedaCliente::idcliente", 0 );
     return mdb_idcliente;
 }
 
@@ -287,9 +298,10 @@ QString BusquedaCliente::idcliente() {
 /**
 \return
 **/
-QString BusquedaCliente::valorCampo() {
-    _depura("BusquedaCliente::valorCampo", 0);
-    _depura("END BusquedaCliente::valorCampo", 0);
+QString BusquedaCliente::valorCampo()
+{
+    _depura ( "BusquedaCliente::valorCampo", 0 );
+    _depura ( "END BusquedaCliente::valorCampo", 0 );
     return mdb_idcliente;
 }
 
@@ -298,8 +310,9 @@ QString BusquedaCliente::valorCampo() {
 /**
 \return
 **/
-QString BusquedaCliente::nomcliente() {
-    _depura("BusquedaCliente::nomcliente", 0);
-    _depura("END BusquedaCliente::nomcliente", 0);
+QString BusquedaCliente::nomcliente()
+{
+    _depura ( "BusquedaCliente::nomcliente", 0 );
+    _depura ( "END BusquedaCliente::nomcliente", 0 );
     return mdb_nomcliente;
 }

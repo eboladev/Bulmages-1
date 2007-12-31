@@ -33,8 +33,9 @@
 ///
 /**
 **/
-void entryPoint(Bulmafact *) {
-    _depura("Estoy dentro del plugin de informe Clientes", 0);
+void entryPoint ( Bulmafact * )
+{
+    _depura ( "Estoy dentro del plugin de informe Clientes", 0 );
 }
 
 
@@ -43,22 +44,23 @@ void entryPoint(Bulmafact *) {
 \param l
 \return
 **/
-int ClientsList_ClientsList(ClientsList *l) {
-       _depura("ClientsList_ClientsList", 0);
+int ClientsList_ClientsList ( ClientsList *l )
+{
+    _depura ( "ClientsList_ClientsList", 0 );
 //================================
-       InformeQToolButton *mui_exporta_efactura2 = new InformeQToolButton( l,  l->mui_plugbotones);
+    InformeQToolButton *mui_exporta_efactura2 = new InformeQToolButton ( l,  l->mui_plugbotones );
 
-       QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *>("hboxLayout1");
-       if (!m_hboxLayout1) {
-                m_hboxLayout1 = new QHBoxLayout(l->mui_plugbotones);
-                m_hboxLayout1->setSpacing(5);
-                m_hboxLayout1->setMargin(5);
-                m_hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));
-       } // end if
-       m_hboxLayout1->addWidget(mui_exporta_efactura2);
+    QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
+    if ( !m_hboxLayout1 ) {
+        m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
+        m_hboxLayout1->setSpacing ( 5 );
+        m_hboxLayout1->setMargin ( 5 );
+        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    } // end if
+    m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 //================================
-       _depura("END ClientsList_ClientsList", 0);
-       return 0;
+    _depura ( "END ClientsList_ClientsList", 0 );
+    return 0;
 }
 
 
@@ -67,22 +69,23 @@ int ClientsList_ClientsList(ClientsList *l) {
 \param l
 \return
 **/
-int ArticuloList_ArticuloList(ArticuloList *l) {
-       _depura("ArticuloList_ArticuloList", 0);
+int ArticuloList_ArticuloList ( ArticuloList *l )
+{
+    _depura ( "ArticuloList_ArticuloList", 0 );
 //================================
-       InformeArtQToolButton *mui_exporta_efactura2 = new InformeArtQToolButton( l,  l->mui_plugbotones);
+    InformeArtQToolButton *mui_exporta_efactura2 = new InformeArtQToolButton ( l,  l->mui_plugbotones );
 
-       QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *>("hboxLayout1");
-       if (!m_hboxLayout1) {
-                m_hboxLayout1 = new QHBoxLayout(l->mui_plugbotones);
-                m_hboxLayout1->setSpacing(5);
-                m_hboxLayout1->setMargin(5);
-                m_hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));
-       } // end if
-       m_hboxLayout1->addWidget(mui_exporta_efactura2);
+    QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
+    if ( !m_hboxLayout1 ) {
+        m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
+        m_hboxLayout1->setSpacing ( 5 );
+        m_hboxLayout1->setMargin ( 5 );
+        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    } // end if
+    m_hboxLayout1->addWidget ( mui_exporta_efactura2 );
 //================================
-       _depura("END ArticuloList_ArticuloList", 0);
-       return 0;
+    _depura ( "END ArticuloList_ArticuloList", 0 );
+    return 0;
 }
 
 

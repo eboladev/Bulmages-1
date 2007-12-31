@@ -36,7 +36,8 @@ class QString;
   * En una primera pasada introduce en el sistema las masas patrimoniales y en una segunda pasada introduce los componentes del balance
   * Es preciso mantener en memoria algunos identificadores y esto se hace mediante el uso de un mapa
   */
-class ImportBalance: public QXmlDefaultHandler, public PEmpresaBase {
+class ImportBalance: public QXmlDefaultHandler, public PEmpresaBase
+{
 private:
 
     /// Esta variable global indica siempre el tag que está procesando el parser
@@ -59,25 +60,25 @@ private:
 
 public:
     /// Constructor de la clase que inicializa determinadas variables de clase.
-    ImportBalance(Empresa *);
+    ImportBalance ( Empresa * );
     /// Implementaci&oacute;n del analizador (parser) que procesa un tag de inicio.
-    bool startElement(const QString&, const QString&, const QString&, const QXmlAttributes&);
+    bool startElement ( const QString&, const QString&, const QString&, const QXmlAttributes& );
     /// Implementaci&oacute;n del analizador (parser) que procesa un tag de cierre
-    bool endElement(const QString&, const QString&, const QString&);
+    bool endElement ( const QString&, const QString&, const QString& );
     /// Implementaci&oacute;n del analizador (parser) que procesa un tag de inicio en la
     /// primera pasada.
-    bool startElement1(const QString&, const QString&, const QString&, const QXmlAttributes&);
+    bool startElement1 ( const QString&, const QString&, const QString&, const QXmlAttributes& );
     /// Implementaci&oacute;n del analizador (parser) que procesa un tag de cierre en la
     /// primera pasada.
-    bool endElement1(const QString&, const QString&, const QString& );
+    bool endElement1 ( const QString&, const QString&, const QString& );
     /// Implementaci&oacute;n del analizador (parser) que procesa un tag de inicio en la
     /// segunda pasada.
-    bool startElement2(const QString&, const QString&, const QString&, const QXmlAttributes&);
+    bool startElement2 ( const QString&, const QString&, const QString&, const QXmlAttributes& );
     /// Implementaci&oacute;n del analizador (parser) que procesa un tag de cierre en la
     /// primera pasada.
-    bool endElement2(const QString&, const QString&, const QString& );
+    bool endElement2 ( const QString&, const QString&, const QString& );
     /// Recoge valores asignados a un determinado tag y los almacena en la variable m_data
-    bool characters(const QString &);
+    bool characters ( const QString & );
     /// Cambia de numero de paso. Recordar que en este caso la importación se hace en dos
     /// pasos.
     void cambiapaso();

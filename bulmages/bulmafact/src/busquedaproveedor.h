@@ -35,7 +35,8 @@ class Company;
 /// Permite buscar y seleccionar un proveedor.
 /** Widget que permite buscar y seleccionar un
     proveedor. */
-class BusquedaProveedor : public BLWidget, public Ui_BusquedaProveedorBase {
+class BusquedaProveedor : public BLWidget, public Ui_BusquedaProveedorBase
+{
     Q_OBJECT
 
 private:
@@ -51,12 +52,12 @@ private:
     bool m_semaforo;
 
 public:
-    BusquedaProveedor(QWidget *parent = 0);
+    BusquedaProveedor ( QWidget *parent = 0 );
     void pinta();
     virtual ~BusquedaProveedor();
-    virtual void setidproveedor(QString val);
-    virtual void setValorCampo(QString val);
-    virtual void setcifproveedor(QString val);
+    virtual void setidproveedor ( QString val );
+    virtual void setValorCampo ( QString val );
+    virtual void setcifproveedor ( QString val );
     virtual QString cifproveedor();
     virtual QString idproveedor();
     virtual QString valorCampo();
@@ -64,11 +65,11 @@ public:
 
 public slots:
     virtual void on_mui_buscar_clicked();
-    virtual void on_m_cifproveedor_textChanged(const QString &);
+    virtual void on_m_cifproveedor_textChanged ( const QString & );
     virtual void on_m_cifproveedor_editingFinished();
 
 signals:
-    void valueChanged(QString);
+    void valueChanged ( QString );
 };
 
 #endif

@@ -34,18 +34,20 @@
 /**
 \param parent
 **/
-QListWidget1::QListWidget1(QWidget * parent) : QListWidget(parent) {
-    _depura("QListWidget1::QListWidget1", 0);
-    _depura("END QListWidget1::QListWidget1", 0);
+QListWidget1::QListWidget1 ( QWidget * parent ) : QListWidget ( parent )
+{
+    _depura ( "QListWidget1::QListWidget1", 0 );
+    _depura ( "END QListWidget1::QListWidget1", 0 );
 }
 
 
 ///
 /**
 **/
-QListWidget1::~QListWidget1() {
-    _depura("QListWidget1::~QListWidget1", 0);
-    _depura("END QListWidget1::~QListWidget1", 0);
+QListWidget1::~QListWidget1()
+{
+    _depura ( "QListWidget1::~QListWidget1", 0 );
+    _depura ( "END QListWidget1::~QListWidget1", 0 );
 }
 
 
@@ -54,20 +56,22 @@ QListWidget1::~QListWidget1() {
 \param l
 \param p
 **/
-QListWidgetItem1::QListWidgetItem1(QListWidget1 *l, QPixmap &p) : QListWidgetItem(l) {
-    _depura("QListWidgetItem1::QListWidgetItem1", 0);
-    setIcon(QIcon(p));
+QListWidgetItem1::QListWidgetItem1 ( QListWidget1 *l, QPixmap &p ) : QListWidgetItem ( l )
+{
+    _depura ( "QListWidgetItem1::QListWidgetItem1", 0 );
+    setIcon ( QIcon ( p ) );
     m_list = l;
-    _depura("END QListWidgetItem1::QListWidgetItem1", 0);
+    _depura ( "END QListWidgetItem1::QListWidgetItem1", 0 );
 }
 
 
 ///
 /**
 **/
-QListWidgetItem1::~QListWidgetItem1() {
-    _depura("QListWidget1::~QListWidgetItem1", 0);
-    _depura("END QListWidget1::~QListWidgetItem1", 0);
+QListWidgetItem1::~QListWidgetItem1()
+{
+    _depura ( "QListWidget1::~QListWidgetItem1", 0 );
+    _depura ( "END QListWidget1::~QListWidgetItem1", 0 );
 }
 
 
@@ -75,10 +79,11 @@ QListWidgetItem1::~QListWidgetItem1() {
 /**
 \param m
 **/
-void QListWidgetItem1::setObject(QObject *m) {
-    _depura("QListWidgetItem1::setObject", 0);
+void QListWidgetItem1::setObject ( QObject *m )
+{
+    _depura ( "QListWidgetItem1::setObject", 0 );
     m_obj = m;
-    _depura("END QListWidgetItem1::setObject", 0);
+    _depura ( "END QListWidgetItem1::setObject", 0 );
 }
 
 
@@ -86,11 +91,12 @@ void QListWidgetItem1::setObject(QObject *m) {
 /**
 \param m
 **/
-void QListWidgetItem1::setNombre(QString m) {
-    _depura("QListWidgetItem1::setNombre", 0);
+void QListWidgetItem1::setNombre ( QString m )
+{
+    _depura ( "QListWidgetItem1::setNombre", 0 );
     m_nombre = m;
-    setText(m);
-    _depura("END QListWidgetItem1::setNombre", 0);
+    setText ( m );
+    _depura ( "END QListWidgetItem1::setNombre", 0 );
 }
 
 
@@ -98,9 +104,10 @@ void QListWidgetItem1::setNombre(QString m) {
 /**
 \return
 **/
-QObject *QListWidgetItem1::object() {
-    _depura("QListWidgetItem1::object", 0);
-    _depura("END QListWidgetItem1::object", 0);
+QObject *QListWidgetItem1::object()
+{
+    _depura ( "QListWidgetItem1::object", 0 );
+    _depura ( "END QListWidgetItem1::object", 0 );
     return m_obj;
 }
 
@@ -109,9 +116,10 @@ QObject *QListWidgetItem1::object() {
 /**
 \return
 **/
-QString QListWidgetItem1::nombre() {
-    _depura("QListWidgetItem1::nombre", 0);
-    _depura("END QListWidgetItem1::nombre", 0);
+QString QListWidgetItem1::nombre()
+{
+    _depura ( "QListWidgetItem1::nombre", 0 );
+    _depura ( "END QListWidgetItem1::nombre", 0 );
     return m_nombre;
 }
 
@@ -120,10 +128,11 @@ QString QListWidgetItem1::nombre() {
 /**
 \param w
 **/
-void ListVentanas::setWorkspace(QWorkspace2 *w) {
-    _depura("ListVentanas::setWorkspace", 0);
+void ListVentanas::setWorkspace ( QWorkspace2 *w )
+{
+    _depura ( "ListVentanas::setWorkspace", 0 );
     m_pWorkspace = w;
-    _depura("END ListVentanas::setWorkspace", 0);
+    _depura ( "END ListVentanas::setWorkspace", 0 );
 }
 
 
@@ -131,80 +140,85 @@ void ListVentanas::setWorkspace(QWorkspace2 *w) {
 /**
 \param a
 **/
-ListVentanas::ListVentanas(QWidget *a) : QDockWidget(a) {
-    _depura("ListVentanas::ListVentanas", 0);
-    m_listBox = new QListWidget1(this);
-    m_listBox->setIconSize(QSize(32, 32));
-    m_listBox->setContentsMargins(0, 0, 0, 0);
-    m_listBox->setSpacing(0);
-    m_listBox->setWindowTitle(tr("Indexador"));
-    setWindowTitle(tr("Indexador"));
-    setFocusPolicy(Qt::StrongFocus);
-    setWidget(m_listBox);
-    connect(m_listBox, SIGNAL(itemDoubleClicked(QListWidgetItem *)), this, SLOT(dclicked()));
-    connect(m_listBox, SIGNAL(itemClicked(QListWidgetItem *)), this, SLOT(clicked()));
-    _depura("END ListVentanas::ListVentanas", 0);
+ListVentanas::ListVentanas ( QWidget *a ) : QDockWidget ( a )
+{
+    _depura ( "ListVentanas::ListVentanas", 0 );
+    m_listBox = new QListWidget1 ( this );
+    m_listBox->setIconSize ( QSize ( 32, 32 ) );
+    m_listBox->setContentsMargins ( 0, 0, 0, 0 );
+    m_listBox->setSpacing ( 0 );
+    m_listBox->setWindowTitle ( tr ( "Indexador" ) );
+    setWindowTitle ( tr ( "Indexador" ) );
+    setFocusPolicy ( Qt::StrongFocus );
+    setWidget ( m_listBox );
+    connect ( m_listBox, SIGNAL ( itemDoubleClicked ( QListWidgetItem * ) ), this, SLOT ( dclicked() ) );
+    connect ( m_listBox, SIGNAL ( itemClicked ( QListWidgetItem * ) ), this, SLOT ( clicked() ) );
+    _depura ( "END ListVentanas::ListVentanas", 0 );
 }
 
 
 ///
 /**
 **/
-void ListVentanas::dclicked() {
-    _depura("ListVentanas::dclicked", 0);
-    QWidget *widget = (QWidget *)((QListWidgetItem1 *) m_listBox->currentItem())->object();
-    if (widget != NULL) {
-        if (widget->isMaximized() == TRUE) {
+void ListVentanas::dclicked()
+{
+    _depura ( "ListVentanas::dclicked", 0 );
+    QWidget *widget = ( QWidget * ) ( ( QListWidgetItem1 * ) m_listBox->currentItem() ) ->object();
+    if ( widget != NULL ) {
+        if ( widget->isMaximized() == TRUE ) {
             widget->showNormal();
         } else {
             widget->showMaximized();
         } // end if
     } // end if
-    _depura("END ListVentanas::dclicked", 0);
+    _depura ( "END ListVentanas::dclicked", 0 );
 }
 
 
 ///
 /**
 **/
-void ListVentanas::clicked() {
-    _depura("ListVentanas::clicked", 0);
-    QWidget *widget = (QWidget *)((QListWidgetItem1 *) m_listBox->currentItem())->object();
-    if (widget != NULL) {
+void ListVentanas::clicked()
+{
+    _depura ( "ListVentanas::clicked", 0 );
+    QWidget *widget = ( QWidget * ) ( ( QListWidgetItem1 * ) m_listBox->currentItem() ) ->object();
+    if ( widget != NULL ) {
         widget->show();
-        widget->parentWidget()->raise();
-        m_pWorkspace->setActiveWindow(widget);
+        widget->parentWidget() ->raise();
+        m_pWorkspace->setActiveWindow ( widget );
     } // end if
-    _depura("END ListVentanas::clicked", 0);
+    _depura ( "END ListVentanas::clicked", 0 );
 }
 
 
 ///
 /**
 **/
-ListVentanas::~ListVentanas() {
-    _depura("ListVentanas::~ListVentanas", 0);
+ListVentanas::~ListVentanas()
+{
+    _depura ( "ListVentanas::~ListVentanas", 0 );
     delete m_listBox;
-    _depura("END ListVentanas::~ListVentanas", 0);
+    _depura ( "END ListVentanas::~ListVentanas", 0 );
 }
 
 
 ///
 /**
 **/
-void ListVentanas::vaciar() {
-    _depura("ListVentanas::vaciar", 0);
+void ListVentanas::vaciar()
+{
+    _depura ( "ListVentanas::vaciar", 0 );
     /// Buscamos la ventana correspondiente y la borramos.
     int i = 0;
-    while (i < m_listBox->count()) {
-        QListWidgetItem1 *m = (QListWidgetItem1 *)m_listBox->item(i);
-        if (((QWidget *)m->object())->testAttribute(Qt::WA_DeleteOnClose)) {
+    while ( i < m_listBox->count() ) {
+        QListWidgetItem1 * m = ( QListWidgetItem1 * ) m_listBox->item ( i );
+        if ( ( ( QWidget * ) m->object() ) ->testAttribute ( Qt::WA_DeleteOnClose ) ) {
             delete m->object();
         } else {
             i++;
         } // end if
     } // end while
-    _depura("END ListVentanas::vaciar", 0);
+    _depura ( "END ListVentanas::vaciar", 0 );
 }
 
 
@@ -212,9 +226,10 @@ void ListVentanas::vaciar() {
 /**
 \return
 **/
-int ListVentanas::numVentanas() {
-    _depura("ListVentanas::numVentanas", 0);
-    _depura("END ListVentanas::numVentanas", 0);
+int ListVentanas::numVentanas()
+{
+    _depura ( "ListVentanas::numVentanas", 0 );
+    _depura ( "END ListVentanas::numVentanas", 0 );
     return m_listBox->count();
 }
 
@@ -224,10 +239,11 @@ int ListVentanas::numVentanas() {
 \param index
 \return
 **/
-QObject *ListVentanas::ventana(int index) {
-    _depura("ListVentanas::ventana", 0);
-    QListWidgetItem1 *m = (QListWidgetItem1 *)m_listBox->item(index);
-    _depura("END ListVentanas::ventana", 0);
+QObject *ListVentanas::ventana ( int index )
+{
+    _depura ( "ListVentanas::ventana", 0 );
+    QListWidgetItem1 *m = ( QListWidgetItem1 * ) m_listBox->item ( index );
+    _depura ( "END ListVentanas::ventana", 0 );
     return m->object();
 }
 
@@ -235,15 +251,16 @@ QObject *ListVentanas::ventana(int index) {
 ///
 /**
 **/
-void ListVentanas::vaciarCompleto() {
-    _depura("ListVentanas::vaciarCompleto", 0);
+void ListVentanas::vaciarCompleto()
+{
+    _depura ( "ListVentanas::vaciarCompleto", 0 );
     /// Buscamos la ventana correspondiente y la borramos.
     int i = 0;
-    while (i < m_listBox->count()) {
-        QListWidgetItem1 *m = (QListWidgetItem1 *)m_listBox->item(i);
+    while ( i < m_listBox->count() ) {
+        QListWidgetItem1 * m = ( QListWidgetItem1 * ) m_listBox->item ( i );
         delete m->object();
     } // end while
-    _depura("END ListVentanas::vaciarCompleto", 0);
+    _depura ( "END ListVentanas::vaciarCompleto", 0 );
 }
 
 
@@ -256,43 +273,44 @@ void ListVentanas::vaciarCompleto() {
 \param compdup
 \return
 **/
-int ListVentanas::meteWindow(QString nombre, QObject *obj, bool compdup) {
-    _depura("ListVentanas::meteWindow", 0, nombre);
+int ListVentanas::meteWindow ( QString nombre, QObject *obj, bool compdup )
+{
+    _depura ( "ListVentanas::meteWindow", 0, nombre );
     try {
         int i = 0;
-        while (i < m_listBox->count()) {
-            QListWidgetItem1 *m = (QListWidgetItem1 *)m_listBox->item(i);
+        while ( i < m_listBox->count() ) {
+            QListWidgetItem1 * m = ( QListWidgetItem1 * ) m_listBox->item ( i );
             /// Si la ventana ya esta en la lista.
-            if (m->object() == obj) {
-                _depura("ListVentanas::La ventana ya existe", 0, nombre);
-                m->setNombre(nombre);
+            if ( m->object() == obj ) {
+                _depura ( "ListVentanas::La ventana ya existe", 0, nombre );
+                m->setNombre ( nombre );
                 return 0;
             } // end if
 
             /// Comprobamos ventanas duplicadas.
-            if (m->nombre() == nombre && compdup) {
-                _depura("ListVentanas::hay una duplicada y la cerramos", 0);
-                _depura("ListVentanas::mostramos la original", 0);
-                ((QWidget *)m->object())->hide();
-                ((QWidget *)m->object())->show();
-                sacaWindow(obj);
-                _depura("ListVentanas::Establecemos la nueva primaria", 0);
-                throw -1;
+            if ( m->nombre() == nombre && compdup ) {
+                _depura ( "ListVentanas::hay una duplicada y la cerramos", 0 );
+                _depura ( "ListVentanas::mostramos la original", 0 );
+                ( ( QWidget * ) m->object() ) ->hide();
+                ( ( QWidget * ) m->object() ) ->show();
+                sacaWindow ( obj );
+                _depura ( "ListVentanas::Establecemos la nueva primaria", 0 );
+                throw - 1;
             } // end if
             i++;
         } // end while
-        if (i >= m_listBox->count()) {
-            _depura("insercion", 0);
-            QPixmap icon = ((QWidget *)obj)->windowIcon().pixmap(32, 32);
-            QListWidgetItem1 *m = new QListWidgetItem1(m_listBox, icon);
-            m->setObject(obj);
-            m->setNombre(nombre);
+        if ( i >= m_listBox->count() ) {
+            _depura ( "insercion", 0 );
+            QPixmap icon = ( ( QWidget * ) obj ) ->windowIcon().pixmap ( 32, 32 );
+            QListWidgetItem1 *m = new QListWidgetItem1 ( m_listBox, icon );
+            m->setObject ( obj );
+            m->setNombre ( nombre );
         } // end if
-    } catch (...) {
-        _depura("ListVentanas::meteWindow ventana duplicada", 0);
-        throw -1;
+    } catch ( ... ) {
+        _depura ( "ListVentanas::meteWindow ventana duplicada", 0 );
+        throw - 1;
     } // end try
-    _depura("END ListVentanas::meteWindow", 0);
+    _depura ( "END ListVentanas::meteWindow", 0 );
     return 0;
 }
 
@@ -303,24 +321,25 @@ int ListVentanas::meteWindow(QString nombre, QObject *obj, bool compdup) {
 \param obj
 \return
 **/
-int ListVentanas::seleccionaWindow(QString nombre, QObject *obj) {
-    _depura("ListVentanas::seleccionaWindow", 0);
+int ListVentanas::seleccionaWindow ( QString nombre, QObject *obj )
+{
+    _depura ( "ListVentanas::seleccionaWindow", 0 );
     try {
         int i = 0;
-        while (i < m_listBox->count()) {
-            QListWidgetItem1 *m = (QListWidgetItem1 *)m_listBox->item(i);
+        while ( i < m_listBox->count() ) {
+            QListWidgetItem1 * m = ( QListWidgetItem1 * ) m_listBox->item ( i );
             /// Encuentra la ventana en la lista.
-            if (m->object() == obj) {
-                _depura("END ListVentanas::seleccionaWindow", 0, "Se ha encontrado la ventana" + nombre);
-                m_listBox->setCurrentItem(m);
+            if ( m->object() == obj ) {
+                _depura ( "END ListVentanas::seleccionaWindow", 0, "Se ha encontrado la ventana" + nombre );
+                m_listBox->setCurrentItem ( m );
                 return 0;
             } // end if
             i++;
         } // end while
-    } catch (...) {
-        throw -1;
+    } catch ( ... ) {
+        throw - 1;
     } // end try
-    _depura("END ListVentanas::seleccionaWindow", 0);
+    _depura ( "END ListVentanas::seleccionaWindow", 0 );
     return 0;
 }
 
@@ -329,15 +348,16 @@ int ListVentanas::seleccionaWindow(QString nombre, QObject *obj) {
 /**
 \return
 **/
-int ListVentanas::deSeleccionaWindow() {
-    _depura("ListVentanas::deSeleccionaWindow", 0);
+int ListVentanas::deSeleccionaWindow()
+{
+    _depura ( "ListVentanas::deSeleccionaWindow", 0 );
     try {
         m_listBox->clearSelection();
         return 0;
-    } catch (...) {
+    } catch ( ... ) {
         throw -1;
     } // end try
-    _depura("END ListVentanas::deSeleccionaWindow", 0);
+    _depura ( "END ListVentanas::deSeleccionaWindow", 0 );
     return 0;
 }
 
@@ -346,21 +366,22 @@ int ListVentanas::deSeleccionaWindow() {
 /**
 \param obj
 **/
-void ListVentanas::sacaWindow(QObject *obj) {
-    _depura("ListVentanas::sacaWindow", 0);
+void ListVentanas::sacaWindow ( QObject *obj )
+{
+    _depura ( "ListVentanas::sacaWindow", 0 );
     /// Buscamos la entrada correspondiente dentro del Indexador y la borramos.
     int i = 0;
-    while (i < m_listBox->count()) {
-        QListWidgetItem1 *m = (QListWidgetItem1 *)m_listBox->item(i);
-        if (m->object() == obj) {
-            _depura("ListVentanas::sacaWindow ventana encontrada y vamos a sacarla", 0, m->nombre());
-            m_listBox->takeItem(i);
+    while ( i < m_listBox->count() ) {
+        QListWidgetItem1 * m = ( QListWidgetItem1 * ) m_listBox->item ( i );
+        if ( m->object() == obj ) {
+            _depura ( "ListVentanas::sacaWindow ventana encontrada y vamos a sacarla", 0, m->nombre() );
+            m_listBox->takeItem ( i );
             delete m;
             break;
         } // end if
         i++;
     } // end while
-    _depura("END ListVentanas::sacaWindow", 0);
+    _depura ( "END ListVentanas::sacaWindow", 0 );
 }
 
 
@@ -368,23 +389,25 @@ void ListVentanas::sacaWindow(QObject *obj) {
 /**
 \param visible
 **/
-void ListVentanas::cambiaVisible(bool visible) {
-    _depura("ListVentanas::cambiaVisible", 0);
-    if (visible == TRUE) {
+void ListVentanas::cambiaVisible ( bool visible )
+{
+    _depura ( "ListVentanas::cambiaVisible", 0 );
+    if ( visible == TRUE ) {
         this->show();
     } else {
         this->hide();
     } // end if
-    _depura("END ListVentanas::cambiaVisible", 0);
+    _depura ( "END ListVentanas::cambiaVisible", 0 );
 }
 
 
 ///
 /**
 **/
-void ListVentanas::closeEvent(QCloseEvent *) {
-    _depura("ListVentanas::closeEvent", 0);
-    emit(cambiaEstadoVisible(FALSE));
-    _depura("END ListVentanas::closeEvent", 0);
+void ListVentanas::closeEvent ( QCloseEvent * )
+{
+    _depura ( "ListVentanas::closeEvent", 0 );
+    emit ( cambiaEstadoVisible ( FALSE ) );
+    _depura ( "END ListVentanas::closeEvent", 0 );
 }
 

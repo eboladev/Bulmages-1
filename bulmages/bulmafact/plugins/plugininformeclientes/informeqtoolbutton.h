@@ -34,38 +34,40 @@
 #include "clientslist.h"
 #include "blwidget.h"
 
-class InformeQToolButton : public QToolButton, PEmpresaBase {
-	Q_OBJECT
+class InformeQToolButton : public QToolButton, PEmpresaBase
+{
+    Q_OBJECT
 
 private:
-	ClientsList *m_clientsList;
+    ClientsList *m_clientsList;
 
 public:
-	InformeQToolButton(ClientsList * , QWidget *parent = NULL);
-	~InformeQToolButton();
-	void setBoton();
-	QString generarCliente(QString idcliente);
+    InformeQToolButton ( ClientsList * , QWidget *parent = NULL );
+    ~InformeQToolButton();
+    void setBoton();
+    QString generarCliente ( QString idcliente );
 
 public slots:
-	virtual void click();
+    virtual void click();
 
 };
 
 
-class InformeArtQToolButton : public QToolButton, PEmpresaBase {
-	Q_OBJECT
+class InformeArtQToolButton : public QToolButton, PEmpresaBase
+{
+    Q_OBJECT
 
 private:
-	ArticuloList *m_articuloList;
+    ArticuloList *m_articuloList;
 
 public:
-	InformeArtQToolButton(ArticuloList * , QWidget *parent = NULL);
-	~InformeArtQToolButton();
-	void setBoton();
-	QString generarArticulos();
+    InformeArtQToolButton ( ArticuloList * , QWidget *parent = NULL );
+    ~InformeArtQToolButton();
+    void setBoton();
+    QString generarArticulos();
 
 public slots:
-	virtual void click();
+    virtual void click();
 
 };
 

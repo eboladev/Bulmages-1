@@ -32,8 +32,9 @@
 /**
 \return
 **/
-int entryPoint(Bulmafact *) {
-    _depura("Estoy dentro del plugin de impresiones multiples", 0);
+int entryPoint ( Bulmafact * )
+{
+    _depura ( "Estoy dentro del plugin de impresiones multiples", 0 );
     return 0;
 }
 
@@ -43,10 +44,11 @@ int entryPoint(Bulmafact *) {
 \param l
 \return
 **/
-int PedidosClienteListSubform_PedidosClienteListSubform(PedidosClienteListSubform *l) {
-    _depura("PedidosClienteListSubform_PedidosClienteListSubform", 0);
-    l->addSHeader("selector", DBCampo::DBboolean, DBCampo::DBNoSave | DBCampo::DBNoLoad, SHeader::DBNone |SHeader::DBNoWrite, "selector");
-    _depura("END PedidosClienteListSubform_PedidosClienteListSubform", 0);
+int PedidosClienteListSubform_PedidosClienteListSubform ( PedidosClienteListSubform *l )
+{
+    _depura ( "PedidosClienteListSubform_PedidosClienteListSubform", 0 );
+    l->addSHeader ( "selector", DBCampo::DBboolean, DBCampo::DBNoSave | DBCampo::DBNoLoad, SHeader::DBNone | SHeader::DBNoWrite, "selector" );
+    _depura ( "END PedidosClienteListSubform_PedidosClienteListSubform", 0 );
     return 0;
 }
 
@@ -56,12 +58,13 @@ int PedidosClienteListSubform_PedidosClienteListSubform(PedidosClienteListSubfor
 \param l
 \return
 **/
-int AlbaranClienteListSubform_AlbaranClienteListSubform(AlbaranClienteListSubform *l) {
-    _depura("AlbaranClienteListSubform_AlbaranClienteListSubform", 0);
-    if (!l->existsHeader( "selector")) {
-        l->addSHeader("selector", DBCampo::DBboolean, DBCampo::DBNoSave | DBCampo::DBNoLoad, SHeader::DBNone |SHeader::DBNoWrite, "selector");
+int AlbaranClienteListSubform_AlbaranClienteListSubform ( AlbaranClienteListSubform *l )
+{
+    _depura ( "AlbaranClienteListSubform_AlbaranClienteListSubform", 0 );
+    if ( !l->existsHeader ( "selector" ) ) {
+        l->addSHeader ( "selector", DBCampo::DBboolean, DBCampo::DBNoSave | DBCampo::DBNoLoad, SHeader::DBNone | SHeader::DBNoWrite, "selector" );
     } // end if
-    _depura("END AlbaranClienteListSubform_AlbaranClienteListSubform", 0);
+    _depura ( "END AlbaranClienteListSubform_AlbaranClienteListSubform", 0 );
     return 0;
 }
 
@@ -71,10 +74,11 @@ int AlbaranClienteListSubform_AlbaranClienteListSubform(AlbaranClienteListSubfor
 \param l
 \return
 **/
-int FacturasListSubform_FacturasListSubform(FacturasListSubform *l) {
-    _depura("FacturasListSubform_FacturasListSubform", 0);
-    l->addSHeader("selector", DBCampo::DBboolean, DBCampo::DBNoSave | DBCampo::DBNoLoad, SHeader::DBNone | SHeader::DBNoWrite, "selector");
-    _depura("END FacturasListSubform_FacturasListSubform", 0);
+int FacturasListSubform_FacturasListSubform ( FacturasListSubform *l )
+{
+    _depura ( "FacturasListSubform_FacturasListSubform", 0 );
+    l->addSHeader ( "selector", DBCampo::DBboolean, DBCampo::DBNoSave | DBCampo::DBNoLoad, SHeader::DBNone | SHeader::DBNoWrite, "selector" );
+    _depura ( "END FacturasListSubform_FacturasListSubform", 0 );
     return 0;
 }
 
@@ -84,10 +88,11 @@ int FacturasListSubform_FacturasListSubform(FacturasListSubform *l) {
 \param l
 \return
 **/
-int PresupuestoListSubForm_PresupuestoListSubForm(PresupuestoListSubForm *l) {
-    _depura("PresupuestoListSubForm_PresupuestoListSubForm", 0);
-    l->addSHeader("selector", DBCampo::DBboolean, DBCampo::DBNoSave | DBCampo::DBNoLoad, SHeader::DBNone | SHeader::DBNoWrite, "selector");
-    _depura("END PresupuestoListSubForm_PresupuestoListSubForm", 0);
+int PresupuestoListSubForm_PresupuestoListSubForm ( PresupuestoListSubForm *l )
+{
+    _depura ( "PresupuestoListSubForm_PresupuestoListSubForm", 0 );
+    l->addSHeader ( "selector", DBCampo::DBboolean, DBCampo::DBNoSave | DBCampo::DBNoLoad, SHeader::DBNone | SHeader::DBNoWrite, "selector" );
+    _depura ( "END PresupuestoListSubForm_PresupuestoListSubForm", 0 );
     return 0;
 }
 
@@ -97,10 +102,11 @@ int PresupuestoListSubForm_PresupuestoListSubForm(PresupuestoListSubForm *l) {
 \param l
 \return
 **/
-int CobrosListSubForm_CobrosListSubForm(CobrosListSubForm *l) {
-    _depura("CobrosListSubForm_CobrosListSubForm", 0);
-    l->addSHeader("selector", DBCampo::DBboolean, DBCampo::DBNoSave | DBCampo::DBNoLoad, SHeader::DBNone | SHeader::DBNoWrite, "selector");
-    _depura("CobrosListSubForm_CobrosListSubForm", 0);
+int CobrosListSubForm_CobrosListSubForm ( CobrosListSubForm *l )
+{
+    _depura ( "CobrosListSubForm_CobrosListSubForm", 0 );
+    l->addSHeader ( "selector", DBCampo::DBboolean, DBCampo::DBNoSave | DBCampo::DBNoLoad, SHeader::DBNone | SHeader::DBNoWrite, "selector" );
+    _depura ( "CobrosListSubForm_CobrosListSubForm", 0 );
     return 0;
 }
 
@@ -110,25 +116,26 @@ int CobrosListSubForm_CobrosListSubForm(CobrosListSubForm *l) {
 \param l
 \return
 **/
-int CobrosList_CobrosList(CobrosList *l) {
-    _depura("CobrosList_CobrosList", 0);
+int CobrosList_CobrosList ( CobrosList *l )
+{
+    _depura ( "CobrosList_CobrosList", 0 );
 
-    SelQToolButton *sel = new SelQToolButton(NULL, NULL, NULL, NULL, l, l->mui_plugbotones);
-    ImpQToolButton *imp = new ImpQToolButton(NULL, NULL, NULL, NULL, l, l->mui_plugbotones);
+    SelQToolButton *sel = new SelQToolButton ( NULL, NULL, NULL, NULL, l, l->mui_plugbotones );
+    ImpQToolButton *imp = new ImpQToolButton ( NULL, NULL, NULL, NULL, l, l->mui_plugbotones );
 //    EmailQToolButton *email = new EmailQToolButton(NULL, NULL, NULL, NULL, l, l->mui_plugbotones);
 
-    QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *>("hboxLayout1");
-    if (!m_hboxLayout1) {
-        m_hboxLayout1 = new QHBoxLayout(l->mui_plugbotones);
-        m_hboxLayout1->setSpacing(5);
-        m_hboxLayout1->setMargin(5);
-        m_hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));
+    QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
+    if ( !m_hboxLayout1 ) {
+        m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
+        m_hboxLayout1->setSpacing ( 5 );
+        m_hboxLayout1->setMargin ( 5 );
+        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
     } // end if
-    m_hboxLayout1->addWidget(sel);
-    m_hboxLayout1->addWidget(imp);
+    m_hboxLayout1->addWidget ( sel );
+    m_hboxLayout1->addWidget ( imp );
 //    m_hboxLayout1->addWidget(email);
 
-    _depura("END CobrosList_CobrosList", 0);
+    _depura ( "END CobrosList_CobrosList", 0 );
     return 0;
 }
 
@@ -138,25 +145,26 @@ int CobrosList_CobrosList(CobrosList *l) {
 \param l
 \return
 **/
-int PresupuestoList_PresupuestoList(PresupuestoList *l) {
-    _depura("PresupuestoList_PresupuestoList", 0);
+int PresupuestoList_PresupuestoList ( PresupuestoList *l )
+{
+    _depura ( "PresupuestoList_PresupuestoList", 0 );
 
-    SelQToolButton *sel = new SelQToolButton(l, NULL, NULL, NULL,NULL, l->mui_plugbotones);
-    ImpQToolButton *imp = new ImpQToolButton(l, NULL, NULL, NULL,NULL, l->mui_plugbotones);
-    EmailQToolButton *email = new EmailQToolButton(l, NULL, NULL, NULL,NULL, l->mui_plugbotones);
+    SelQToolButton *sel = new SelQToolButton ( l, NULL, NULL, NULL, NULL, l->mui_plugbotones );
+    ImpQToolButton *imp = new ImpQToolButton ( l, NULL, NULL, NULL, NULL, l->mui_plugbotones );
+    EmailQToolButton *email = new EmailQToolButton ( l, NULL, NULL, NULL, NULL, l->mui_plugbotones );
 
-    QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *>("hboxLayout1");
-    if (!m_hboxLayout1) {
-        m_hboxLayout1 = new QHBoxLayout(l->mui_plugbotones);
-        m_hboxLayout1->setSpacing(5);
-        m_hboxLayout1->setMargin(5);
-        m_hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));
+    QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
+    if ( !m_hboxLayout1 ) {
+        m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
+        m_hboxLayout1->setSpacing ( 5 );
+        m_hboxLayout1->setMargin ( 5 );
+        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
     } // end if
-    m_hboxLayout1->addWidget(sel);
-    m_hboxLayout1->addWidget(imp);
-    m_hboxLayout1->addWidget(email);
+    m_hboxLayout1->addWidget ( sel );
+    m_hboxLayout1->addWidget ( imp );
+    m_hboxLayout1->addWidget ( email );
 
-    _depura("END PresupuestoList_PresupuestoList", 0);
+    _depura ( "END PresupuestoList_PresupuestoList", 0 );
     return 0;
 }
 
@@ -166,26 +174,27 @@ int PresupuestoList_PresupuestoList(PresupuestoList *l) {
 \param l
 \return
 **/
-int PedidosClienteList_PedidosClienteList(PedidosClienteList *l) {
-    _depura("PedidosClienteList_PedidosClienteList", 0);
+int PedidosClienteList_PedidosClienteList ( PedidosClienteList *l )
+{
+    _depura ( "PedidosClienteList_PedidosClienteList", 0 );
 
-    SelQToolButton *sel = new SelQToolButton(NULL, l, NULL, NULL,NULL, l->mui_plugbotones);
-    ImpQToolButton *imp = new ImpQToolButton(NULL, l, NULL, NULL,NULL, l->mui_plugbotones);
-    EmailQToolButton *email = new EmailQToolButton(NULL, l, NULL, NULL,NULL, l->mui_plugbotones);
+    SelQToolButton *sel = new SelQToolButton ( NULL, l, NULL, NULL, NULL, l->mui_plugbotones );
+    ImpQToolButton *imp = new ImpQToolButton ( NULL, l, NULL, NULL, NULL, l->mui_plugbotones );
+    EmailQToolButton *email = new EmailQToolButton ( NULL, l, NULL, NULL, NULL, l->mui_plugbotones );
 
-    QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *>("hboxLayout1");
-    if (!m_hboxLayout1) {
-        m_hboxLayout1 = new QHBoxLayout(l->mui_plugbotones);
-        m_hboxLayout1->setSpacing(5);
-        m_hboxLayout1->setMargin(5);
-        m_hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));
+    QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
+    if ( !m_hboxLayout1 ) {
+        m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
+        m_hboxLayout1->setSpacing ( 5 );
+        m_hboxLayout1->setMargin ( 5 );
+        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
     } // end if
 
-    m_hboxLayout1->addWidget(sel);
-    m_hboxLayout1->addWidget(imp);
-    m_hboxLayout1->addWidget(email);
+    m_hboxLayout1->addWidget ( sel );
+    m_hboxLayout1->addWidget ( imp );
+    m_hboxLayout1->addWidget ( email );
 
-    _depura("END PedidosClienteList_PedidosClienteList", 0);
+    _depura ( "END PedidosClienteList_PedidosClienteList", 0 );
     return 0;
 }
 
@@ -195,25 +204,26 @@ int PedidosClienteList_PedidosClienteList(PedidosClienteList *l) {
 \param l
 \return
 **/
-int AlbaranClienteList_AlbaranClienteList(AlbaranClienteList *l) {
-    _depura("PedidosClienteList_PedidosClienteList", 0);
+int AlbaranClienteList_AlbaranClienteList ( AlbaranClienteList *l )
+{
+    _depura ( "PedidosClienteList_PedidosClienteList", 0 );
 
-    SelQToolButton *sel = new SelQToolButton(NULL,  NULL, l, NULL,NULL, l->mui_plugbotones);
-    ImpQToolButton *imp = new ImpQToolButton(NULL,  NULL, l, NULL,NULL, l->mui_plugbotones);
-    EmailQToolButton *email = new EmailQToolButton(NULL,  NULL, l, NULL,NULL, l->mui_plugbotones);
+    SelQToolButton *sel = new SelQToolButton ( NULL,  NULL, l, NULL, NULL, l->mui_plugbotones );
+    ImpQToolButton *imp = new ImpQToolButton ( NULL,  NULL, l, NULL, NULL, l->mui_plugbotones );
+    EmailQToolButton *email = new EmailQToolButton ( NULL,  NULL, l, NULL, NULL, l->mui_plugbotones );
 
-    QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *>("hboxLayout1");
-    if (!m_hboxLayout1) {
-        m_hboxLayout1 = new QHBoxLayout(l->mui_plugbotones);
-        m_hboxLayout1->setSpacing(5);
-        m_hboxLayout1->setMargin(5);
-        m_hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));
+    QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
+    if ( !m_hboxLayout1 ) {
+        m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
+        m_hboxLayout1->setSpacing ( 5 );
+        m_hboxLayout1->setMargin ( 5 );
+        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
     } // end if
-    m_hboxLayout1->addWidget(sel);
-    m_hboxLayout1->addWidget(imp);
-    m_hboxLayout1->addWidget(email);
+    m_hboxLayout1->addWidget ( sel );
+    m_hboxLayout1->addWidget ( imp );
+    m_hboxLayout1->addWidget ( email );
 
-    _depura("END PedidosClienteList_PedidosClienteList", 0);
+    _depura ( "END PedidosClienteList_PedidosClienteList", 0 );
     return 0;
 }
 
@@ -223,24 +233,25 @@ int AlbaranClienteList_AlbaranClienteList(AlbaranClienteList *l) {
 \param l
 \return
 **/
-int FacturasList_FacturasList(FacturasList *l) {
-    _depura("FacturasList_FacturasList", 0);
+int FacturasList_FacturasList ( FacturasList *l )
+{
+    _depura ( "FacturasList_FacturasList", 0 );
 
-    SelQToolButton *sel = new SelQToolButton(NULL, NULL, NULL, l,NULL, l->mui_plugbotones);
-    ImpQToolButton *imp = new ImpQToolButton(NULL, NULL, NULL, l,NULL, l->mui_plugbotones);
-    EmailQToolButton *email = new EmailQToolButton(NULL, NULL, NULL, l,NULL, l->mui_plugbotones);
+    SelQToolButton *sel = new SelQToolButton ( NULL, NULL, NULL, l, NULL, l->mui_plugbotones );
+    ImpQToolButton *imp = new ImpQToolButton ( NULL, NULL, NULL, l, NULL, l->mui_plugbotones );
+    EmailQToolButton *email = new EmailQToolButton ( NULL, NULL, NULL, l, NULL, l->mui_plugbotones );
 
-    QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *>("hboxLayout1");
-    if (!m_hboxLayout1) {
-        m_hboxLayout1 = new QHBoxLayout(l->mui_plugbotones);
-        m_hboxLayout1->setSpacing(5);
-        m_hboxLayout1->setMargin(5);
-        m_hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));
+    QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
+    if ( !m_hboxLayout1 ) {
+        m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
+        m_hboxLayout1->setSpacing ( 5 );
+        m_hboxLayout1->setMargin ( 5 );
+        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
     } // end if
-    m_hboxLayout1->addWidget(sel);
-    m_hboxLayout1->addWidget(imp);
-    m_hboxLayout1->addWidget(email);
+    m_hboxLayout1->addWidget ( sel );
+    m_hboxLayout1->addWidget ( imp );
+    m_hboxLayout1->addWidget ( email );
 
-    _depura("END FacturasList_FacturasList", 0);
+    _depura ( "END FacturasList_FacturasList", 0 );
     return 0;
 }

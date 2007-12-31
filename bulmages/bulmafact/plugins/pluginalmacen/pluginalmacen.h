@@ -28,6 +28,6 @@
 #include "bulmafact.h"
 #include "company.h"
 
-extern "C" MY_EXPORT int entryPoint(Bulmafact *);
-extern "C" MY_EXPORT int Company_s_almacenes(Company *);
+extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int Company_s_almacenes ( Company * );
 

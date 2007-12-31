@@ -42,27 +42,28 @@ class Company;
     Deriva de Ficha para temas de visualizacion y de AlbaranProveedor para cuestiones
     de manejo de la base de datos.
  */
-class AlbaranProveedorView : public FichaBf, public Ui_AlbaranProveedorBase {
+class AlbaranProveedorView : public FichaBf, public Ui_AlbaranProveedorBase
+{
     Q_OBJECT
 
 public:
-    AlbaranProveedorView(Company *, QWidget *);
+    AlbaranProveedorView ( Company *, QWidget * );
     ~AlbaranProveedorView();
     void inicializar();
-    void pintatotales(Fixed, Fixed, Fixed, Fixed, Fixed, Fixed);
+    void pintatotales ( Fixed, Fixed, Fixed, Fixed, Fixed, Fixed );
     /// Estos metodos deben existir para poder trabajar con la clase Ficha
     virtual int guardarPost();
-    virtual int cargarPost(QString id);
+    virtual int cargarPost ( QString id );
     virtual int borrarPre();
     void generarFacturaProveedor();
 
 public slots:
     virtual void on_mui_facturar_clicked();
-    virtual void on_m_descuentos_editFinish(int, int);
-    virtual void on_subform2_editFinish(int, int);
+    virtual void on_m_descuentos_editFinish ( int, int );
+    virtual void on_subform2_editFinish ( int, int );
     virtual void on_mui_pagar_clicked();
     virtual void on_mui_verpedidosproveedor_clicked();
-    virtual void on_mui_idproveedor_valueChanged(QString);
+    virtual void on_mui_idproveedor_valueChanged ( QString );
 };
 
 #endif

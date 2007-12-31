@@ -37,92 +37,102 @@
 \param comp
 \param parent
 **/
-Asiento1::Asiento1(Empresa *comp, QWidget *parent) : FichaBc (comp, parent) {
-    _depura("Asiento1::Asiento1", 0);
-    setTitleName(tr("Asiento Contable"));
-    setDBTableName("asiento");
-    setDBCampoId("idasiento");
-    addDBCampo("idasiento", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Asiento1", "Id asiento"));
-    addDBCampo("descripcion", DBCampo::DBvarchar, DBCampo::DBNoSave, QApplication::translate("Asiento1", "Descripcion del asiento"));
-    addDBCampo("fecha", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Asiento1", "Fecha del asiento"));
-    addDBCampo("comentariosasiento", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Asiento1", "Comentarios del asiento"));
-    addDBCampo("ordenasiento", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Asiento1", "Orden de asiento"));
-    addDBCampo("clase", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Asiento1", "Tipo de asiento"));
+Asiento1::Asiento1 ( Empresa *comp, QWidget *parent ) : FichaBc ( comp, parent )
+{
+    _depura ( "Asiento1::Asiento1", 0 );
+    setTitleName ( tr ( "Asiento Contable" ) );
+    setDBTableName ( "asiento" );
+    setDBCampoId ( "idasiento" );
+    addDBCampo ( "idasiento", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "Asiento1", "Id asiento" ) );
+    addDBCampo ( "descripcion", DBCampo::DBvarchar, DBCampo::DBNoSave, QApplication::translate ( "Asiento1", "Descripcion del asiento" ) );
+    addDBCampo ( "fecha", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate ( "Asiento1", "Fecha del asiento" ) );
+    addDBCampo ( "comentariosasiento", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Asiento1", "Comentarios del asiento" ) );
+    addDBCampo ( "ordenasiento", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Asiento1", "Orden de asiento" ) );
+    addDBCampo ( "clase", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Asiento1", "Tipo de asiento" ) );
     listalineas = NULL;
-    _depura("END Asiento1::Asiento1", 0);
+    _depura ( "END Asiento1::Asiento1", 0 );
 }
 
 
 ///
 /**
 **/
-Asiento1::~Asiento1() {
-    _depura("Asiento1::~Asiento1", 0);
-    _depura("END Asiento1::~Asiento1", 0);
+Asiento1::~Asiento1()
+{
+    _depura ( "Asiento1::~Asiento1", 0 );
+    _depura ( "END Asiento1::~Asiento1", 0 );
 }
 
 
 ///
 /**
 **/
-void Asiento1::pintaidasiento(QString) {
-    _depura("funcion no implementada pintaidasiento");
+void Asiento1::pintaidasiento ( QString )
+{
+    _depura ( "funcion no implementada pintaidasiento" );
 }
 
 
 ///
 /**
 **/
-void Asiento1::pintadescripcion(QString) {
-    _depura("funcion no implementada pintadescripcion");
+void Asiento1::pintadescripcion ( QString )
+{
+    _depura ( "funcion no implementada pintadescripcion" );
 }
 
 
 ///
 /**
 **/
-void Asiento1::pintafecha(QString) {
-    _depura("funcion no implementada pintafecha");
+void Asiento1::pintafecha ( QString )
+{
+    _depura ( "funcion no implementada pintafecha" );
 }
 
 
 ///
 /**
 **/
-void Asiento1::pintacomentariosasiento(QString) {
-    _depura("funcion no implementada pintacomentariosasiento", 2);
+void Asiento1::pintacomentariosasiento ( QString )
+{
+    _depura ( "funcion no implementada pintacomentariosasiento", 2 );
 }
 
 
 ///
 /**
 **/
-void Asiento1::pintaordenasiento(QString) {
-    _depura("funcion no implementada pintaordenasiento", 2);
+void Asiento1::pintaordenasiento ( QString )
+{
+    _depura ( "funcion no implementada pintaordenasiento", 2 );
 }
 
 
 ///
 /**
 **/
-void Asiento1::pintaclase(QString) {
-    _depura("funcion no implementada pintaclase", 2);
+void Asiento1::pintaclase ( QString )
+{
+    _depura ( "funcion no implementada pintaclase", 2 );
 }
 
 
 ///
 /**
 **/
-void Asiento1::calculaypintatotales() {
-    _depura("funcion no implementada calculaypintatotales", 2);
+void Asiento1::calculaypintatotales()
+{
+    _depura ( "funcion no implementada calculaypintatotales", 2 );
 }
 
 
 ///
 /**
 **/
-void Asiento1::trataestadoAsiento1() {
-    _depura("funcion no implementada trataestadoAsiento1", 2);
+void Asiento1::trataestadoAsiento1()
+{
+    _depura ( "funcion no implementada trataestadoAsiento1", 2 );
 }
 
 
@@ -140,46 +150,47 @@ void Asiento1::trataestadoAsiento1() {
 \param atendido
 \return
 **/
-int Asiento1::borrar(bool atendido) {
-    _depura("Asiento1::borrar", 0);
+int Asiento1::borrar ( bool atendido )
+{
+    _depura ( "Asiento1::borrar", 0 );
     int error;
-    if (DBvalue("idasiento") != "") {
-	if (atendido) {
-		switch (QMessageBox::warning(0,
-			QApplication::translate("Asiento1", "Borrar asiento"),
-			QApplication::translate("Asiento1", "Se va a borrar el asiento. Esta seguro?"),
-			QMessageBox::Ok,
-			QMessageBox::Cancel)) {
-		case QMessageBox::Ok: /// Retry clicked or Enter pressed.
-		empresaBase()->begin();
-		listalineas->borrar();
-		error = empresaBase()->ejecuta("DELETE FROM apunte WHERE idasiento = " + DBvalue("idasiento"));
-		error += empresaBase()->ejecuta("DELETE FROM asiento WHERE idasiento = " + DBvalue("idasiento"));
-		if (error) {
-			empresaBase()->rollback();
-			return -1;
-		} // end if
-		empresaBase()->commit();
-		vaciar();
-		return 3;
-		case QMessageBox::Cancel: /// Abort clicked or Escape pressed.
-		return 2;
-		} // end switch
-	} else {
-		empresaBase()->begin();
-		listalineas->borrar();
-		error = empresaBase()->ejecuta("DELETE FROM apunte WHERE idasiento = " + DBvalue("idasiento"));
-		error += empresaBase()->ejecuta("DELETE FROM asiento WHERE idasiento = " + DBvalue("idasiento"));
-		if (error) {
-			empresaBase()->rollback();
-			return -1;
-		} // end if
-		empresaBase()->commit();
-		vaciar();
-		return 3;
-	} // end if
+    if ( DBvalue ( "idasiento" ) != "" ) {
+        if ( atendido ) {
+            switch ( QMessageBox::warning ( 0,
+                                            QApplication::translate ( "Asiento1", "Borrar asiento" ),
+                                            QApplication::translate ( "Asiento1", "Se va a borrar el asiento. Esta seguro?" ),
+                                            QMessageBox::Ok,
+                                            QMessageBox::Cancel ) ) {
+            case QMessageBox::Ok: /// Retry clicked or Enter pressed.
+                empresaBase() ->begin();
+                listalineas->borrar();
+                error = empresaBase() ->ejecuta ( "DELETE FROM apunte WHERE idasiento = " + DBvalue ( "idasiento" ) );
+                error += empresaBase() ->ejecuta ( "DELETE FROM asiento WHERE idasiento = " + DBvalue ( "idasiento" ) );
+                if ( error ) {
+                    empresaBase() ->rollback();
+                    return -1;
+                } // end if
+                empresaBase() ->commit();
+                vaciar();
+                return 3;
+            case QMessageBox::Cancel: /// Abort clicked or Escape pressed.
+                return 2;
+            } // end switch
+        } else {
+            empresaBase() ->begin();
+            listalineas->borrar();
+            error = empresaBase() ->ejecuta ( "DELETE FROM apunte WHERE idasiento = " + DBvalue ( "idasiento" ) );
+            error += empresaBase() ->ejecuta ( "DELETE FROM asiento WHERE idasiento = " + DBvalue ( "idasiento" ) );
+            if ( error ) {
+                empresaBase() ->rollback();
+                return -1;
+            } // end if
+            empresaBase() ->commit();
+            vaciar();
+            return 3;
+        } // end if
     } // end if
-    _depura("END Asiento1::borrar", 0);
+    _depura ( "END Asiento1::borrar", 0 );
     return 0;
 }
 
@@ -187,32 +198,34 @@ int Asiento1::borrar(bool atendido) {
 ///
 /**
 **/
-void Asiento1::vaciar() {
-    _depura("Asiento1::vaciar", 0);
+void Asiento1::vaciar()
+{
+    _depura ( "Asiento1::vaciar", 0 );
     DBclear();
 
     /// Vaciamos compeltamente el subformulario para que no quede ningun tipo de restos
-    listalineas->setColumnCount(0);
-    listalineas->setRowCount(0);
-    _depura("END Asiento1::vaciar", 0);
+    listalineas->setColumnCount ( 0 );
+    listalineas->setRowCount ( 0 );
+    _depura ( "END Asiento1::vaciar", 0 );
 }
 
 
 /// Se encarga del pintado del asiento.
 /**
 **/
-void Asiento1::pintar() {
-    _depura("Asiento1::pintar", 0, idasiento());
-    pintaidasiento(idasiento());
-    pintadescripcion(DBvalue("descripcion"));
-    pintafecha(DBvalue("fecha"));
-    pintacomentariosasiento(DBvalue("comentariosasiento"));
-    pintaordenasiento(DBvalue("ordenasiento"));
-    pintaclase(DBvalue("clase"));
+void Asiento1::pintar()
+{
+    _depura ( "Asiento1::pintar", 0, idasiento() );
+    pintaidasiento ( idasiento() );
+    pintadescripcion ( DBvalue ( "descripcion" ) );
+    pintafecha ( DBvalue ( "fecha" ) );
+    pintacomentariosasiento ( DBvalue ( "comentariosasiento" ) );
+    pintaordenasiento ( DBvalue ( "ordenasiento" ) );
+    pintaclase ( DBvalue ( "clase" ) );
     /// Pintamos los totales.
     calculaypintatotales();
     trataestadoAsiento1();
-    _depura("END Asiento1::pintar", 0);
+    _depura ( "END Asiento1::pintar", 0 );
 }
 
 
@@ -221,18 +234,19 @@ void Asiento1::pintar() {
 \param idasiento
 \return
 **/
-int Asiento1::cargar(QString idasiento) {
-    _depura("Asiento1::cargar", 0, idasiento);
+int Asiento1::cargar ( QString idasiento )
+{
+    _depura ( "Asiento1::cargar", 0, idasiento );
     QString query = "SELECT * FROM asiento WHERE idasiento = " + idasiento;
-    cursor2 *cur = empresaBase()->cargacursor(query);
-    if (!cur->eof()) {
-        DBload(cur);
+    cursor2 *cur = empresaBase() ->cargacursor ( query );
+    if ( !cur->eof() ) {
+        DBload ( cur );
     } // end if
     delete cur;
     trataestadoAsiento1();
-    listalineas->cargar(idasiento);
+    listalineas->cargar ( idasiento );
     pintar();
-    _depura("END Asiento1::cargar", 0, idasiento);
+    _depura ( "END Asiento1::cargar", 0, idasiento );
     return 0;
 }
 
@@ -241,8 +255,9 @@ int Asiento1::cargar(QString idasiento) {
 /**
 \return
 **/
-Fixed Asiento1::totaldebe(QString idasiento) {
-    return listalineas->totaldebe(idasiento);
+Fixed Asiento1::totaldebe ( QString idasiento )
+{
+    return listalineas->totaldebe ( idasiento );
 }
 
 
@@ -250,8 +265,9 @@ Fixed Asiento1::totaldebe(QString idasiento) {
 /**
 \return
 **/
-Fixed Asiento1::totalhaber(QString idbudget) {
-    return listalineas->totalhaber(idbudget);
+Fixed Asiento1::totalhaber ( QString idbudget )
+{
+    return listalineas->totalhaber ( idbudget );
 }
 
 
@@ -259,16 +275,17 @@ Fixed Asiento1::totalhaber(QString idbudget) {
 /**
 \return
 **/
-void Asiento1::abrir() {
-    _depura("Asiento1::abreAsiento1", 0);
-    if (estadoAsiento1() != ASCerrado)
+void Asiento1::abrir()
+{
+    _depura ( "Asiento1::abreAsiento1", 0 );
+    if ( estadoAsiento1() != ASCerrado )
         return;
-    QString id = DBvalue("idasiento");
-    if (id == "") {
-        _depura("No hay asiento");
+    QString id = DBvalue ( "idasiento" );
+    if ( id == "" ) {
+        _depura ( "No hay asiento" );
         return;
     }
-    empresaBase()->abreasiento(id.toInt());
+    empresaBase() ->abreasiento ( id.toInt() );
     trataestadoAsiento1();
 }
 
@@ -277,25 +294,26 @@ void Asiento1::abrir() {
 /**
 \return
 **/
-void Asiento1::cerrar() {
-    _depura("Asiento1::cierraAsiento1", 0);
-    if (estadoAsiento1() != ASAbierto) {
-        _depura("Asiento1::cierraAsiento1" , 0, "asiento no abierto");
+void Asiento1::cerrar()
+{
+    _depura ( "Asiento1::cierraAsiento1", 0 );
+    if ( estadoAsiento1() != ASAbierto ) {
+        _depura ( "Asiento1::cierraAsiento1" , 0, "asiento no abierto" );
         return;
     } // end if
-    if (guardar())
+    if ( guardar() )
         return;
-    QString id = DBvalue("idasiento");
-    if (id == "") {
-        _depura("No hay asiento", 0);
+    QString id = DBvalue ( "idasiento" );
+    if ( id == "" ) {
+        _depura ( "No hay asiento", 0 );
         return;
     }
 
-    cursor2 *cur = empresaBase()->cargacursor("SELECT cierraasiento(" + id + ")");
+    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT cierraasiento(" + id + ")" );
     delete cur;
     vaciar();
-    cargar(id);
-    _depura("END Asiento1::cierraasiento1", 0);
+    cargar ( id );
+    _depura ( "END Asiento1::cierraasiento1", 0 );
 }
 
 
@@ -303,26 +321,27 @@ void Asiento1::cerrar() {
 /**
 \return
 **/
-Asiento1::estadoasiento Asiento1::estadoAsiento1() {
-    _depura("Asiento1::estadoasiento", 0);
-    if (DBvalue("idasiento") == "")
+Asiento1::estadoasiento Asiento1::estadoAsiento1()
+{
+    _depura ( "Asiento1::estadoasiento", 0 );
+    if ( DBvalue ( "idasiento" ) == "" )
         return ASVacio;
 
-    QString SQLQuery1 = "SELECT count(idapunte) AS cuenta1 FROM apunte WHERE idasiento = " + DBvalue("idasiento");
-    cursor2 *cur1 = empresaBase()->cargacursor(SQLQuery1);
-    QString numap = cur1->valor("cuenta1");
+    QString SQLQuery1 = "SELECT count(idapunte) AS cuenta1 FROM apunte WHERE idasiento = " + DBvalue ( "idasiento" );
+    cursor2 *cur1 = empresaBase() ->cargacursor ( SQLQuery1 );
+    QString numap = cur1->valor ( "cuenta1" );
     delete cur1;
 
-    QString SQLQuery = "SELECT count(idborrador) AS cuenta FROM borrador WHERE idasiento = " + DBvalue("idasiento");
-    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
-    QString numborr = cur->valor("cuenta");
+    QString SQLQuery = "SELECT count(idborrador) AS cuenta FROM borrador WHERE idasiento = " + DBvalue ( "idasiento" );
+    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
+    QString numborr = cur->valor ( "cuenta" );
     delete cur;
 
-    _depura("END Asiento1::estadoasiento", 0, "borradores: " + numborr + " -- apuntes: " + numap);
+    _depura ( "END Asiento1::estadoasiento", 0, "borradores: " + numborr + " -- apuntes: " + numap );
 
-    if (numborr == "0") {
+    if ( numborr == "0" ) {
         return ASVacio;
-    } else if (numap != "0") {
+    } else if ( numap != "0" ) {
         return ASCerrado;
     } else {
         return ASAbierto;
@@ -334,31 +353,32 @@ Asiento1::estadoasiento Asiento1::estadoAsiento1() {
 /**
 \return
 **/
-int Asiento1::guardar() {
-    _depura("Asiento1::guardar", 0);
+int Asiento1::guardar()
+{
+    _depura ( "Asiento1::guardar", 0 );
     QString id;
-    empresaBase()->begin();
+    empresaBase() ->begin();
     try {
-        DBsave(id);
-        setidasiento(id);
+        DBsave ( id );
+        setidasiento ( id );
         listalineas->guardar();
 
         /// Disparamos los plugins
-        int res = g_plugins->lanza("Asiento1_guardaAsiento1_post", this);
-        if (res != 0)
+        int res = g_plugins->lanza ( "Asiento1_guardaAsiento1_post", this );
+        if ( res != 0 )
             return 0;
 
-        empresaBase()->commit();
+        empresaBase() ->commit();
 
-        if (estadoAsiento1() == ASCerrado)
-            empresaBase()->cierraasiento(id.toInt());
-	cargar(id);
-        g_main->statusBar()->showMessage(tr("El asiento se ha guardado correctamente."), 2000);
-        _depura("END Asiento1::guardar", 0);
+        if ( estadoAsiento1() == ASCerrado )
+            empresaBase() ->cierraasiento ( id.toInt() );
+        cargar ( id );
+        g_main->statusBar() ->showMessage ( tr ( "El asiento se ha guardado correctamente." ), 2000 );
+        _depura ( "END Asiento1::guardar", 0 );
         return 0;
-    } catch (...) {
-        _depura("Error guardando, se cancela la operacion", 1);
-        empresaBase()->rollback();
+    } catch ( ... ) {
+        _depura ( "Error guardando, se cancela la operacion", 1 );
+        empresaBase() ->rollback();
         return -1;
     } // end try
 }
@@ -368,9 +388,10 @@ int Asiento1::guardar() {
 /**
 \return
 **/
-Empresa *Asiento1::companyact() {
-    _depura("Asiento1::companyact", 0);
-    _depura("END Asiento1::companyact", 0);
+Empresa *Asiento1::companyact()
+{
+    _depura ( "Asiento1::companyact", 0 );
+    _depura ( "END Asiento1::companyact", 0 );
     return empresaBase();
 }
 
@@ -379,11 +400,12 @@ Empresa *Asiento1::companyact() {
 /**
 \param val
 **/
-void Asiento1::setidasiento(QString val) {
-    _depura("Asiento1::setidasiento", 0);
-    setDBvalue("idasiento", val);
-    listalineas->setColumnValue("idasiento", val);
-    _depura("END Asiento1::setidasiento", 0);
+void Asiento1::setidasiento ( QString val )
+{
+    _depura ( "Asiento1::setidasiento", 0 );
+    setDBvalue ( "idasiento", val );
+    listalineas->setColumnValue ( "idasiento", val );
+    _depura ( "END Asiento1::setidasiento", 0 );
 }
 
 
@@ -391,10 +413,11 @@ void Asiento1::setidasiento(QString val) {
 /**
 \return
 **/
-QString Asiento1::idasiento() {
-    _depura("Asiento1::idasiento", 0);
-    _depura("END Asiento1::idasiento", 0);
-    return DBvalue("idasiento");
+QString Asiento1::idasiento()
+{
+    _depura ( "Asiento1::idasiento", 0 );
+    _depura ( "END Asiento1::idasiento", 0 );
+    return DBvalue ( "idasiento" );
 }
 
 
@@ -402,9 +425,10 @@ QString Asiento1::idasiento() {
 /**
 \param a
 **/
-void Asiento1::setListLinAsiento1(ListLinAsiento1View *a) {
-    _depura("Asiento1::setListLinAsiento1", 0);
+void Asiento1::setListLinAsiento1 ( ListLinAsiento1View *a )
+{
+    _depura ( "Asiento1::setListLinAsiento1", 0 );
     listalineas = a;
-    _depura("END Asiento1::setListLinAsiento1", 0);
+    _depura ( "END Asiento1::setListLinAsiento1", 0 );
 }
 

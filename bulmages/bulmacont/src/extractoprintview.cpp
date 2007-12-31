@@ -42,36 +42,39 @@
     @param parent Ventana que llama a esta ventana.
     @param name Nombre de la ventana.
     Aqu&iacute; tambi&eacute;n se inicializa la variable global conexionbase. */
-ExtractoPrintView::ExtractoPrintView(Empresa *emp, QWidget *parent = 0)
-        : QDialog(parent), PEmpresaBase(emp) {
-    _depura("ExtractoPrintView::ExtractoPrintView", 0);
-    setupUi(this);
+ExtractoPrintView::ExtractoPrintView ( Empresa *emp, QWidget *parent = 0 )
+        : QDialog ( parent ), PEmpresaBase ( emp )
+{
+    _depura ( "ExtractoPrintView::ExtractoPrintView", 0 );
+    setupUi ( this );
     fichero = NULL;
-    _depura("END ExtractoPrintView::ExtractoPrintView", 0);
+    _depura ( "END ExtractoPrintView::ExtractoPrintView", 0 );
 }
 
 
 ///
 /**
 **/
-ExtractoPrintView::~ExtractoPrintView() {
-    _depura("ExtractoPrintView::~ExtractoPrintView", 0);
-    _depura("END ExtractoPrintView::~ExtractoPrintView", 0);
+ExtractoPrintView::~ExtractoPrintView()
+{
+    _depura ( "ExtractoPrintView::~ExtractoPrintView", 0 );
+    _depura ( "END ExtractoPrintView::~ExtractoPrintView", 0 );
 }
 
 
 /// Se ha pulsado sobre el bot&oacute;n aceptar del formulario.
 /**
 **/
-void ExtractoPrintView::accept() {
-    _depura("ExtractoPrintView::accept", 0);
+void ExtractoPrintView::accept()
+{
+    _depura ( "ExtractoPrintView::accept", 0 );
     /// Versi&oacute;n por si s&oacute;lo permitimos elegir una opci&oacute;n.
-    if (radiotexto->isChecked()) {
-        presentar("txt");
-    } else if (radiohtml->isChecked()) {
-        presentar("html");
+    if ( radiotexto->isChecked() ) {
+        presentar ( "txt" );
+    } else if ( radiohtml->isChecked() ) {
+        presentar ( "html" );
     } // end if
-    _depura("END ExtractoPrintView::accept", 0);
+    _depura ( "END ExtractoPrintView::accept", 0 );
 }
 
 
@@ -81,9 +84,10 @@ void ExtractoPrintView::accept() {
 /**
 \return
 **/
-QString ExtractoPrintView::montaQuery() {
-    _depura("ExtractoPrintView::montaQuery", 0);
-    extractoview1 *extracto = ((Empresa *)empresaBase())->extractoempresa();
+QString ExtractoPrintView::montaQuery()
+{
+    _depura ( "ExtractoPrintView::montaQuery", 0 );
+    extractoview1 *extracto = ( ( Empresa * ) empresaBase() ) ->extractoempresa();
     /// Cogemos los valores del formulario para poder hacer un filtraje adecuado.
     QString finicial = extracto->m_fechainicial1->text();
     QString ffinal = extracto->m_fechafinal1->text();
@@ -94,29 +98,29 @@ QString ExtractoPrintView::montaQuery() {
     /// Preparamos el string para que aparezca una u otra cosa seg&uacute;n el punteo.
     QString tipopunteo;
     tipopunteo = "";
-    if (extracto->mui_punteotodos->isChecked()) {
+    if ( extracto->mui_punteotodos->isChecked() ) {
         tipopunteo = "";
-    } else if (extracto->mui_punteopunteado->isChecked()) {
+    } else if ( extracto->mui_punteopunteado->isChecked() ) {
         tipopunteo = " AND apunte.punteo = TRUE ";
     } else {
         tipopunteo = " AND apunte.punteo = FALSE ";
     } // end if
-    if (contra != "") {
+    if ( contra != "" ) {
         tipopunteo += " AND apunte.contrapartida = id_cuenta('" + contra + "') ";
     } // end if
 
-    selectcanalview *scanal = ((Empresa *)empresaBase())->getselcanales();
-    SelectCCosteView *scoste = ((Empresa *)empresaBase())->getselccostes();
+    selectcanalview *scanal = ( ( Empresa * ) empresaBase() ) ->getselcanales();
+    SelectCCosteView *scoste = ( ( Empresa * ) empresaBase() ) ->getselccostes();
     QString ccostes = scoste->cadcoste();
-    if (ccostes != "") {
-        ccostes.sprintf(" AND idc_coste IN (%s) ", ccostes.toAscii().constData());
+    if ( ccostes != "" ) {
+        ccostes.sprintf ( " AND idc_coste IN (%s) ", ccostes.toAscii().constData() );
     } // end if
     QString ccanales = scanal->cadcanal();
-    if (ccanales != "") {
-        ccanales.sprintf(" AND idcanal IN (%s) ", ccanales.toAscii().constData());
+    if ( ccanales != "" ) {
+        ccanales.sprintf ( " AND idcanal IN (%s) ", ccanales.toAscii().constData() );
     } // end if
     QString tabla;
-    if (extracto->mui_asAbiertos->isChecked()) {
+    if ( extracto->mui_asAbiertos->isChecked() ) {
         tabla = "borrador";
     } else {
         tabla = "apunte";
@@ -132,7 +136,7 @@ QString ExtractoPrintView::montaQuery() {
     query += ccostes;
     query += ccanales;
     query += " ORDER BY codigo, fecha";
-    _depura("END ExtractoPrintView::montaQuery", 0);
+    _depura ( "END ExtractoPrintView::montaQuery", 0 );
     return query;
 }
 
@@ -141,10 +145,11 @@ QString ExtractoPrintView::montaQuery() {
 /**
 \param tipus
 **/
-void ExtractoPrintView::presentar(char *tipus) {
-    _depura("ExtractoPrintView::presentar", 0);
+void ExtractoPrintView::presentar ( char *tipus )
+{
+    _depura ( "ExtractoPrintView::presentar", 0 );
     int txt, html;
-    float debe, haber,saldo;
+    float debe, haber, saldo;
     float debeinicial = 0, haberinicial = 0, saldoinicial = 0;
     float debefinal, haberfinal, saldofinal;
     int idcuenta;
@@ -154,46 +159,46 @@ void ExtractoPrintView::presentar(char *tipus) {
     int activo;
     QString cad;
     cursor2 *cursoraux, *cursoraux1, *cursoraux2, *cursoraux3;
-    extractoview1 *extracto = ((Empresa *)empresaBase())->extractoempresa();
+    extractoview1 *extracto = ( ( Empresa * ) empresaBase() ) ->extractoempresa();
     QString finicial = extracto->m_fechainicial1->text();
     QString ffinal = extracto->m_fechafinal1->text();
     QString cinicial = extracto->m_codigoinicial->text();
     QString cfinal = extracto->m_codigofinal->text();
 
     /// Tipos de presentaci&oacute;n.
-    txt =! strcmp(tipus,"txt");
-    html =! strcmp(tipus,"html");
+    txt = ! strcmp ( tipus, "txt" );
+    html = ! strcmp ( tipus, "html" );
 
 
-        QString archivo = confpr->valor(CONF_DIR_USER) + "mayor.txt";
-        QString archivohtml = confpr->valor(CONF_DIR_USER) + "mayor.html";
+    QString archivo = confpr->valor ( CONF_DIR_USER ) + "mayor.txt";
+    QString archivohtml = confpr->valor ( CONF_DIR_USER ) + "mayor.html";
 
 
     QFile filehtml;
-    filehtml.setFileName(archivohtml);
-    filehtml.open(QIODevice::WriteOnly);
-    QTextStream fitxersortidahtml(&filehtml);
+    filehtml.setFileName ( archivohtml );
+    filehtml.open ( QIODevice::WriteOnly );
+    QTextStream fitxersortidahtml ( &filehtml );
 
 
     QFile filetxt;
-    filetxt.setFileName(archivo);
-    filetxt.open(QIODevice::WriteOnly);
-    QTextStream fitxersortidatxt(&filetxt);
+    filetxt.setFileName ( archivo );
+    filetxt.open ( QIODevice::WriteOnly );
+    QTextStream fitxersortidatxt ( &filetxt );
 
-/*
-    ofstream fitxersortidatxt("mayor.txt"); /// Creamos los archivos de salida.
-    ofstream fitxersortidahtml("mayor.htm");
-*/
+    /*
+        ofstream fitxersortidatxt("mayor.txt"); /// Creamos los archivos de salida.
+        ofstream fitxersortidahtml("mayor.htm");
+    */
 
     /// S&oaqcute;lo continuamos si hemos podido crear alg&uacute;n archivo.
-    if (txt | html) {
-        if (txt) {
+    if ( txt | html ) {
+        if ( txt ) {
             /// Presentaci&oacute;n txt.
             fitxersortidatxt << "                                    MAYOR \n" ;
             fitxersortidatxt << "Fecha Inicial: " << finicial.toAscii().constData() << "   Fecha Final: " << ffinal.toAscii().constData() << endl;
             fitxersortidatxt << "_________________________________________________________________________________________________________\n";
         } // end if
-        if (html) {
+        if ( html ) {
             /// Presentaci&oacute;n html.
             fitxersortidahtml << "<html>\n";
             fitxersortidahtml << "<head>\n";
@@ -206,52 +211,52 @@ void ExtractoPrintView::presentar(char *tipus) {
             fitxersortidahtml << "<table><tr><td colspan=\"6\" class=titolmajor> Mayor <hr></td></tr>\n\n";
             fitxersortidahtml << "<tr><td colspan=\"6\" class=periodemajor> Fecha Inicial: " << finicial.toAscii().constData() << " -  Fecha Final: " << ffinal.toAscii().constData() << "<hr></td></tr>\n\n";
         } // end if
-        empresaBase()->begin();
-        cursoraux = empresaBase()->cargacuentascodigo(-1,cinicial, cfinal);
-        empresaBase()->commit();
-        while (!cursoraux->eof()) {
-            idcuenta = atoi(cursoraux->valor("idcuenta").toAscii());
-            empresaBase()->begin();
-            cursoraux1 = empresaBase()->cargaapuntesctafecha(idcuenta, finicial.toAscii(), ffinal.toAscii());
-            empresaBase()->commit();
-            if (!cursoraux1->eof()) {
-                activo = strcmp((char *) cursoraux->valor("activo").toAscii().constData(), "f");
-                if (txt) {
-                    fitxersortidatxt << "\n\n" << cursoraux->valor("codigo").toAscii().constData() << cursoraux->valor("descripcion").toAscii().constData() << endl;
-                    if (activo) {
+        empresaBase() ->begin();
+        cursoraux = empresaBase() ->cargacuentascodigo ( -1, cinicial, cfinal );
+        empresaBase() ->commit();
+        while ( !cursoraux->eof() ) {
+            idcuenta = atoi ( cursoraux->valor ( "idcuenta" ).toAscii() );
+            empresaBase() ->begin();
+            cursoraux1 = empresaBase() ->cargaapuntesctafecha ( idcuenta, finicial.toAscii(), ffinal.toAscii() );
+            empresaBase() ->commit();
+            if ( !cursoraux1->eof() ) {
+                activo = strcmp ( ( char * ) cursoraux->valor ( "activo" ).toAscii().constData(), "f" );
+                if ( txt ) {
+                    fitxersortidatxt << "\n\n" << cursoraux->valor ( "codigo" ).toAscii().constData() << cursoraux->valor ( "descripcion" ).toAscii().constData() << endl;
+                    if ( activo ) {
                         fitxersortidatxt << " Cuenta de activo";
                     } else {
                         fitxersortidatxt << " Cuenta de pasivo";
                     } // end if
                 } // end if
-                if (html) {
-                    fitxersortidahtml << "<tr><td colspan=\"6\" class=comptemajor>" << cursoraux->valor("codigo").toAscii().constData() << " "<< cursoraux->valor("descripcion").toAscii().constData() << "</td></tr>\n";
-                    if (activo) {
+                if ( html ) {
+                    fitxersortidahtml << "<tr><td colspan=\"6\" class=comptemajor>" << cursoraux->valor ( "codigo" ).toAscii().constData() << " " << cursoraux->valor ( "descripcion" ).toAscii().constData() << "</td></tr>\n";
+                    if ( activo ) {
                         fitxersortidahtml << "<tr><td colspan=\"6\" class=tipuscomptemajor> Cuenta de activo </td></tr>\n";
                     } else {
                         fitxersortidahtml << "<tr><td colspan=\"6\" class=tipuscomptemajor> Cuenta de pasivo </td></tr>\n";
                     } // end if
                 } // end if
-                empresaBase()->begin();
-                cursoraux2 = empresaBase()->cargasaldoscuentafecha(idcuenta, (char *)finicial.toAscii().constData());
-                empresaBase()->commit();
-                if (!cursoraux2->eof()) {
-                    debeinicial = atof(cursoraux2->valor("tdebe").toAscii());
-                    haberinicial = atof(cursoraux2->valor("thaber").toAscii());
-                    if (activo) {
+                empresaBase() ->begin();
+                cursoraux2 = empresaBase() ->cargasaldoscuentafecha ( idcuenta, ( char * ) finicial.toAscii().constData() );
+                empresaBase() ->commit();
+                if ( !cursoraux2->eof() ) {
+                    debeinicial = atof ( cursoraux2->valor ( "tdebe" ).toAscii() );
+                    haberinicial = atof ( cursoraux2->valor ( "thaber" ).toAscii() );
+                    if ( activo ) {
                         saldoinicial = debeinicial - haberinicial;
                     } else {
-                        saldoinicial = haberinicial-debeinicial;
+                        saldoinicial = haberinicial - debeinicial;
                     } // end if
 
-                    if (txt) {
+                    if ( txt ) {
                         /// Presentaci&oacute;n txt.
                         fitxersortidatxt << "\nAsiento  Fecha   Contrapartida   Descripcion                          Debe         Haber         Saldo\n";
                         fitxersortidatxt << "                                                 SUMAS ANTERIORES...   " <<  debeinicial << haberinicial << saldoinicial << endl;
                         fitxersortidatxt << "_________________________________________________________________________________________________________\n";
                     } // end if
 
-                    if (html) {
+                    if ( html ) {
                         /// Presentaci&oacute;n html.
                         fitxersortidahtml << "<tr><td class=titolcolumnamajor> Asiento </td><td class=titolcolumnamajor> Fecha </td><td class=titolcolumnamajor> Contrapartida </td><td class=titolcolumnamajor> Descripcion </td><td class=titolcolumnamajor> Debe </td><td class=titolcolumnamajor> Haber </td><td class=titolcolumnamajor> Saldo </td></tr>\n";
                         fitxersortidahtml << "<tr><td></td><td></td><td></td><td class=sumamajor> Sumes anteriors...</td><td class=dosdecimals> " << debeinicial << " </td><td class=dosdecimals> " << haberinicial << " </td><td class=dosdecimals> " << saldoinicial << "</td><td>\n";
@@ -261,45 +266,45 @@ void ExtractoPrintView::presentar(char *tipus) {
                     debefinal = debeinicial;
                     haberfinal = haberinicial;
 
-                    for (; !cursoraux1->eof(); cursoraux1->siguienteregistro()) {
-                        idasiento = atoi(cursoraux1->valor("idasiento").toAscii());
-                        contrapartida = atoi(cursoraux1->valor("contrapartida").toAscii());
-                        empresaBase()->begin();
-                        cursoraux3 = empresaBase()->cargacuenta(contrapartida);
-                        codcontrapartida = cursoraux3->valor("codigo").toAscii().constData();
-                        empresaBase()->commit();
-                        debe = atof(cursoraux1->valor("debe").toAscii());
-                        haber = atof(cursoraux1->valor("haber").toAscii());
-                        if (activo) {
+                    for ( ; !cursoraux1->eof(); cursoraux1->siguienteregistro() ) {
+                        idasiento = atoi ( cursoraux1->valor ( "idasiento" ).toAscii() );
+                        contrapartida = atoi ( cursoraux1->valor ( "contrapartida" ).toAscii() );
+                        empresaBase() ->begin();
+                        cursoraux3 = empresaBase() ->cargacuenta ( contrapartida );
+                        codcontrapartida = cursoraux3->valor ( "codigo" ).toAscii().constData();
+                        empresaBase() ->commit();
+                        debe = atof ( cursoraux1->valor ( "debe" ).toAscii() );
+                        haber = atof ( cursoraux1->valor ( "haber" ).toAscii() );
+                        if ( activo ) {
                             saldo += debe - haber;
                         } else {
                             saldo += haber - debe;
                         } // end if
                         debefinal += debe;
                         haberfinal += haber;
-                        cad = cursoraux1->valor("fecha").toAscii().constData();
+                        cad = cursoraux1->valor ( "fecha" ).toAscii().constData();
                         /// Presentaci&oacute;n txt.
-                        if (txt) {
-                            fitxersortidatxt <<  idasiento << cad.left(10) << codcontrapartida << "  " <<  cursoraux1->valor("conceptocontable").toAscii().constData() <<  debe << haber << saldo << endl;
+                        if ( txt ) {
+                            fitxersortidatxt <<  idasiento << cad.left ( 10 ) << codcontrapartida << "  " <<  cursoraux1->valor ( "conceptocontable" ).toAscii().constData() <<  debe << haber << saldo << endl;
                         } // end if
                         /// Presentaci&oacute;n html.
-                        if (html) {
-                            fitxersortidahtml << " <tr><td class=assentamentmajor> " << idasiento << " </td><td> " << cad.left(10) << " </td><td class=contrapartidamajor> " << codcontrapartida << " </td><td> " << cursoraux1->valor("conceptocontable").toAscii().constData() << " </td><td class=dosdecimals> " << debe << " </td><td class=dosdecimals> " << haber << " </td><td class=dosdecimals> " << saldo << " </td></tr>\n ";
+                        if ( html ) {
+                            fitxersortidahtml << " <tr><td class=assentamentmajor> " << idasiento << " </td><td> " << cad.left ( 10 ) << " </td><td class=contrapartidamajor> " << codcontrapartida << " </td><td> " << cursoraux1->valor ( "conceptocontable" ).toAscii().constData() << " </td><td class=dosdecimals> " << debe << " </td><td class=dosdecimals> " << haber << " </td><td class=dosdecimals> " << saldo << " </td></tr>\n ";
                         } // end if
                         cursoraux3->cerrar();
                     } // end for
 
-                    if (activo) {
+                    if ( activo ) {
                         saldofinal = debefinal - haberfinal;
                     } else {
                         saldofinal = haberfinal - debefinal;
                     } // end if
-                    if (txt) {
+                    if ( txt ) {
                         /// Presentaci&oacute;n txt.
                         fitxersortidatxt << "                                               __________________________________________________________\n";
                         fitxersortidatxt << "                                                  TOTAL SUBCUENTA...   " <<  debefinal << haberfinal << saldofinal << endl;
                     } // end if
-                    if (html) {
+                    if ( html ) {
                         /// Presentaci&oacute;n html.
                         fitxersortidahtml << "<tr><td></td><td></td><td></td><td class=sumamajor> Total subcompte... </td><td class=dosdecimals>" << debefinal << " </td><td class=dosdecimals> " << haberfinal << " </td><td class=dosdecimals> " << saldofinal << "</td></tr>\n\n";
                     } // end if
@@ -309,25 +314,25 @@ void ExtractoPrintView::presentar(char *tipus) {
             cursoraux1->cerrar();
             cursoraux->siguienteregistro();
         } // end while
-        if (html) {
+        if ( html ) {
             /// Presentaci&oacute;n html.
             fitxersortidahtml << "\n</table></body></html>\n";
         } // end if
-        empresaBase()->commit();
+        empresaBase() ->commit();
         delete cursoraux;
     }
-    if (txt) {
+    if ( txt ) {
         /// Presentaci&oacute;n txt.
         filetxt.close();
-        QString cad = confpr->valor(CONF_EDITOR) + " mayor.txt";
-        system(cad.toAscii().constData());
+        QString cad = confpr->valor ( CONF_EDITOR ) + " mayor.txt";
+        system ( cad.toAscii().constData() );
     } // end if
-    if (html) {
+    if ( html ) {
         /// Presentaci&oacute;n html.
         filehtml.close();
-        QString cad = confpr->valor(CONF_NAVEGADOR) + " mayor.html";
-        system(cad.toAscii().constData());
+        QString cad = confpr->valor ( CONF_NAVEGADOR ) + " mayor.html";
+        system ( cad.toAscii().constData() );
     } // end if
-    _depura("END ExtractoPrintView::presentar", 0);
+    _depura ( "END ExtractoPrintView::presentar", 0 );
 }
 

@@ -67,7 +67,8 @@ class Bulmafact;
 /** Clase principal del programa donde se almacenan y gestionan
     todos los datos de la empresa con la que se est&aacute; trabajando.
     Deriva de postgresiface ya que tiene el tratamiento de la base de datos. */
-class Company : public EmpresaBase {
+class Company : public EmpresaBase
+{
 private:
     /// Puntero al mainWindow
     Bulmafact *m_bulmafact;
@@ -97,7 +98,7 @@ private:
     PagosList *m_pagosList;
 
 public:
-    Company(Bulmafact *bges);
+    Company ( Bulmafact *bges );
     virtual ~Company();
     FacturasProveedorList *facturasProveedorList();
     PresupuestoList *presupuestoList();
@@ -113,7 +114,7 @@ public:
     ClienteView *newClienteView();
     ProveedorView *newProveedorView();
     ArticuloView *newArticuloView();
-    void createMainWindows(Splash *);
+    void createMainWindows ( Splash * );
     void refreshArticles();
     void refreshPresupuestos();
     void refreshCobrosCliente();
@@ -168,8 +169,8 @@ public:
     AlbaranClienteView *newAlbaranClienteView();
     AlbaranProveedorView *newAlbaranProveedorView();
     PedidoClienteView *newPedidoClienteView();
-    TipoArticuloList *newTipoArticuloList(QWidget *parent = 0, bool modoConsulta = FALSE);
-    FamiliasView *newfamiliasview(QWidget *parent = 0, bool modoConsulta = FALSE);
+    TipoArticuloList *newTipoArticuloList ( QWidget *parent = 0, bool modoConsulta = FALSE );
+    FamiliasView *newfamiliasview ( QWidget *parent = 0, bool modoConsulta = FALSE );
 };
 
 #endif

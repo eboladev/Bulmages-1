@@ -44,30 +44,33 @@
 ///
 /**
 **/
-myplugin4::myplugin4() {
-    _depura("myplugin4::myplugin4", 0);
-    _depura("END myplugin4::myplugin4", 0);
+myplugin4::myplugin4()
+{
+    _depura ( "myplugin4::myplugin4", 0 );
+    _depura ( "END myplugin4::myplugin4", 0 );
 }
 
 
 ///
 /**
 **/
-myplugin4::~myplugin4() {
-    _depura("myplugin4::~myplugin4", 0);
-    _depura("END myplugin4::~myplugin4", 0);
+myplugin4::~myplugin4()
+{
+    _depura ( "myplugin4::~myplugin4", 0 );
+    _depura ( "END myplugin4::~myplugin4", 0 );
 }
 
 
 ///
 /**
 **/
-void myplugin4::elslot() {
-    _depura("myplugin4::elslot", 0);
-    CuadranteView *cuad = new CuadranteView((Company *)empresaBase(), 0);
-    empresaBase()->pWorkspace()->addWindow(cuad);
+void myplugin4::elslot()
+{
+    _depura ( "myplugin4::elslot", 0 );
+    CuadranteView *cuad = new CuadranteView ( ( Company * ) empresaBase(), 0 );
+    empresaBase() ->pWorkspace() ->addWindow ( cuad );
     cuad->show();
-    _depura("END myplugin4::elslot", 0);
+    _depura ( "END myplugin4::elslot", 0 );
 }
 
 
@@ -75,29 +78,30 @@ void myplugin4::elslot() {
 /**
 \param bges
 **/
-void myplugin4::inicializa(Bulmafact *bges) {
-    _depura("myplugin4::inicializa", 0);
+void myplugin4::inicializa ( Bulmafact *bges )
+{
+    _depura ( "myplugin4::inicializa", 0 );
     /// Creamos el men&uacute;.
-    setEmpresaBase(bges->getcompany());
+    setEmpresaBase ( bges->getcompany() );
     m_bulmafact = bges;
     QMenu *pPluginMenu;
     /// Miramos si existe un menu Herramientas
-    pPluginMenu = bges->menuBar()->findChild<QMenu *>("Herramientas");
+    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "Herramientas" );
 
     /// Creamos el men&uacute;.
-    if (!pPluginMenu) {
-        pPluginMenu = new QMenu("&Herramientas", bges->menuBar());
-        pPluginMenu->setObjectName(QString::fromUtf8("Herramientas"));
+    if ( !pPluginMenu ) {
+        pPluginMenu = new QMenu ( "&Herramientas", bges->menuBar() );
+        pPluginMenu->setObjectName ( QString::fromUtf8 ( "Herramientas" ) );
     } // end if
 
-    QAction *accion = new QAction("&Cuadrantes", 0);
-    accion->setStatusTip("Permite realizar Plannings Laborales");
-    accion->setWhatsThis("Podra destinar los trabajadores a distintos almacenes");
-    connect(accion, SIGNAL(activated()), this, SLOT(elslot()));
-    pPluginMenu->addAction(accion);
+    QAction *accion = new QAction ( "&Cuadrantes", 0 );
+    accion->setStatusTip ( "Permite realizar Plannings Laborales" );
+    accion->setWhatsThis ( "Podra destinar los trabajadores a distintos almacenes" );
+    connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+    pPluginMenu->addAction ( accion );
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bges->menuBar()->insertMenu(bges->menuVentana->menuAction(), pPluginMenu);
-    _depura("END myplugin4::inicializa", 0);
+    bges->menuBar() ->insertMenu ( bges->menuVentana->menuAction(), pPluginMenu );
+    _depura ( "END myplugin4::inicializa", 0 );
 }
 
 
@@ -105,22 +109,23 @@ void myplugin4::inicializa(Bulmafact *bges) {
 /**
 \param bges
 **/
-void entryPoint(Bulmafact *bges) {
-    _depura("entryPoint", 0);
+void entryPoint ( Bulmafact *bges )
+{
+    _depura ( "entryPoint", 0 );
     /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
-    QTranslator *traductor = new QTranslator(0);
-    if (confpr->valor(CONF_TRADUCCION) == "locales") {
-        traductor->load(QString("plugincuadrante_") + QLocale::system().name(),
-                        confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    QTranslator *traductor = new QTranslator ( 0 );
+    if ( confpr->valor ( CONF_TRADUCCION ) == "locales" ) {
+        traductor->load ( QString ( "plugincuadrante_" ) + QLocale::system().name(),
+                          confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
     } else {
-        QString archivo = "plugincuadrante_" + confpr->valor(CONF_TRADUCCION);
-        traductor->load(archivo, confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+        QString archivo = "plugincuadrante_" + confpr->valor ( CONF_TRADUCCION );
+        traductor->load ( archivo, confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
     } // end if
-    theApp->installTranslator(traductor);
+    theApp->installTranslator ( traductor );
 
     myplugin4 *plug = new myplugin4();
-    plug->inicializa(bges);
-    _depura("END entryPoint", 0);
+    plug->inicializa ( bges );
+    _depura ( "END entryPoint", 0 );
 }
 
 
@@ -129,41 +134,42 @@ void entryPoint(Bulmafact *bges) {
 \param alm
 \return
 **/
-int AlmacenView_AlmacenView(AlmacenView *alm) {
-    _depura("esxtoy en la clase almacen", 0);
+int AlmacenView_AlmacenView ( AlmacenView *alm )
+{
+    _depura ( "esxtoy en la clase almacen", 0 );
 
-    alm->addDBCampo("aperturaalmacen", DBCampo::DBvarchar, DBCampo::DBNothing,  "Apertura Mañana");
-    alm->addDBCampo("cierrealmacen", DBCampo::DBvarchar, DBCampo::DBNothing, "Cierre Mañana");
-    alm->addDBCampo("apertura1almacen", DBCampo::DBvarchar, DBCampo::DBNothing,  "Apertura Tarde");
-    alm->addDBCampo("cierre1almacen", DBCampo::DBvarchar, DBCampo::DBNothing, "Cierre Tarde");
+    alm->addDBCampo ( "aperturaalmacen", DBCampo::DBvarchar, DBCampo::DBNothing,  "Apertura Mañana" );
+    alm->addDBCampo ( "cierrealmacen", DBCampo::DBvarchar, DBCampo::DBNothing, "Cierre Mañana" );
+    alm->addDBCampo ( "apertura1almacen", DBCampo::DBvarchar, DBCampo::DBNothing,  "Apertura Tarde" );
+    alm->addDBCampo ( "cierre1almacen", DBCampo::DBvarchar, DBCampo::DBNothing, "Cierre Tarde" );
 
 
 // ---------------
     /// Creamos el horario de mañana.
     QHBoxLayout *hboxLayout160 = new QHBoxLayout();
-    hboxLayout160->setSpacing(2);
-    hboxLayout160->setMargin(0);
-    hboxLayout160->setObjectName(QString::fromUtf8("hboxLayout16"));
+    hboxLayout160->setSpacing ( 2 );
+    hboxLayout160->setMargin ( 0 );
+    hboxLayout160->setObjectName ( QString::fromUtf8 ( "hboxLayout16" ) );
 
     /// Apertura
-    QLabel *textLabel2_9_26 = new QLabel(alm->mui_frameplugin);
-    textLabel2_9_26->setObjectName(QString::fromUtf8("textLabel2_9_2"));
-    textLabel2_9_26->setText("Apertura Mañanas");
-    hboxLayout160->addWidget(textLabel2_9_26);
+    QLabel *textLabel2_9_26 = new QLabel ( alm->mui_frameplugin );
+    textLabel2_9_26->setObjectName ( QString::fromUtf8 ( "textLabel2_9_2" ) );
+    textLabel2_9_26->setText ( "Apertura Mañanas" );
+    hboxLayout160->addWidget ( textLabel2_9_26 );
 
-    QLineEdit *horain = new QLineEdit(alm);
-    horain->setObjectName("mui_aperturaalmacen");
-    hboxLayout160->addWidget(horain);
+    QLineEdit *horain = new QLineEdit ( alm );
+    horain->setObjectName ( "mui_aperturaalmacen" );
+    hboxLayout160->addWidget ( horain );
 
     /// Cierre
-    QLabel *textLabel2_9_27 = new QLabel(alm->mui_frameplugin);
-    textLabel2_9_27->setText("Cierre Mañanas");
-    hboxLayout160->addWidget(textLabel2_9_27);
+    QLabel *textLabel2_9_27 = new QLabel ( alm->mui_frameplugin );
+    textLabel2_9_27->setText ( "Cierre Mañanas" );
+    hboxLayout160->addWidget ( textLabel2_9_27 );
 
-    QLineEdit *horafin = new QLineEdit(alm);
-    horafin->setObjectName("mui_cierrealmacen");
+    QLineEdit *horafin = new QLineEdit ( alm );
+    horafin->setObjectName ( "mui_cierrealmacen" );
 
-    hboxLayout160->addWidget(horafin);
+    hboxLayout160->addWidget ( horafin );
 
 
 // ---------------
@@ -171,44 +177,44 @@ int AlmacenView_AlmacenView(AlmacenView *alm) {
 // ---------------
     /// Creamos el horario de tardes.
     QHBoxLayout *hboxLayout170 = new QHBoxLayout();
-    hboxLayout170->setSpacing(2);
-    hboxLayout170->setMargin(0);
-    hboxLayout170->setObjectName(QString::fromUtf8("hboxLayout17"));
+    hboxLayout170->setSpacing ( 2 );
+    hboxLayout170->setMargin ( 0 );
+    hboxLayout170->setObjectName ( QString::fromUtf8 ( "hboxLayout17" ) );
 
     /// Apertura
-    QLabel *textLabel2_9_28 = new QLabel(alm->mui_frameplugin);
-    textLabel2_9_28->setText("Apertura Tardes");
-    hboxLayout170->addWidget(textLabel2_9_28);
+    QLabel *textLabel2_9_28 = new QLabel ( alm->mui_frameplugin );
+    textLabel2_9_28->setText ( "Apertura Tardes" );
+    hboxLayout170->addWidget ( textLabel2_9_28 );
 
-    QLineEdit *horaint = new QLineEdit(alm);
-    horaint->setObjectName("mui_apertura1almacen");
-    hboxLayout170->addWidget(horaint);
+    QLineEdit *horaint = new QLineEdit ( alm );
+    horaint->setObjectName ( "mui_apertura1almacen" );
+    hboxLayout170->addWidget ( horaint );
 
     /// Cierre
-    QLabel *textLabel2_9_29 = new QLabel(alm->mui_frameplugin);
-    textLabel2_9_29->setText("Cierre Tardes");
-    hboxLayout170->addWidget(textLabel2_9_29);
+    QLabel *textLabel2_9_29 = new QLabel ( alm->mui_frameplugin );
+    textLabel2_9_29->setText ( "Cierre Tardes" );
+    hboxLayout170->addWidget ( textLabel2_9_29 );
 
-    QLineEdit *horafint = new QLineEdit(alm);
-    horafint->setObjectName("mui_cierre1almacen");
+    QLineEdit *horafint = new QLineEdit ( alm );
+    horafint->setObjectName ( "mui_cierre1almacen" );
 
-    hboxLayout170->addWidget(horafint);
+    hboxLayout170->addWidget ( horafint );
 
 
 // ---------------
 
 
     /// Comprobamos que exista el layout.
-    QVBoxLayout *m_hboxLayout1 = alm->mui_frameplugin->findChild<QVBoxLayout *>("hboxLayout1");
-    if (!m_hboxLayout1) {
-        m_hboxLayout1 = new QVBoxLayout(alm->mui_frameplugin);
-        m_hboxLayout1->setSpacing(0);
-        m_hboxLayout1->setMargin(0);
-        m_hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));
+    QVBoxLayout *m_hboxLayout1 = alm->mui_frameplugin->findChild<QVBoxLayout *> ( "hboxLayout1" );
+    if ( !m_hboxLayout1 ) {
+        m_hboxLayout1 = new QVBoxLayout ( alm->mui_frameplugin );
+        m_hboxLayout1->setSpacing ( 0 );
+        m_hboxLayout1->setMargin ( 0 );
+        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
     } // end if
 //       m_hboxLayout1->addWidget(horain);
-    m_hboxLayout1->addLayout(hboxLayout160);
-    m_hboxLayout1->addLayout(hboxLayout170);
+    m_hboxLayout1->addLayout ( hboxLayout160 );
+    m_hboxLayout1->addLayout ( hboxLayout170 );
     return 0;
 }
 
@@ -218,25 +224,26 @@ int AlmacenView_AlmacenView(AlmacenView *alm) {
 \param trab
 \return
 **/
-int TrabajadorView_TrabajadorView(TrabajadorView *trab) {
-    _depura("TrabajadorView_TrabajadorView", 0);
-    SubForm2Bf *l = new SubForm2Bf(trab);
-    l->setObjectName(QString::fromUtf8("m_ausencias"));
-    l->setEmpresaBase( trab->empresaBase());
-    l->setDBTableName("ausencia");
-    l->setDBCampoId("idausencia");
-    l->addSHeader("fechainausencia", DBCampo::DBvarchar, DBCampo::DBNothing , SHeader::DBNone, QApplication::translate("AlmacenView", "ID nom tipo Trabajo"));
-    l->addSHeader("fechafinausencia", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone , QApplication::translate("AlmacenView", "Numero de Cargos Necesarios"));
-    l->addSHeader("motivoausencia", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone , QApplication::translate("AlmacenView", "Numero de Cargos Necesarios"));
-    l->addSHeader("idausencia", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate("AlmacenView", "ID almacen"));
-    l->addSHeader("idtrabajador", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate("AlmacenView", "ID tipo Trabajo"));
-    l->setinsercion(TRUE);
-    l->setDelete(TRUE);
-    l->setSortingEnabled(FALSE);
-    trab->mui_tab->addTab(l, "Ausencias");
-    trab->dialogChanges_setQObjectExcluido(l->mui_list);
+int TrabajadorView_TrabajadorView ( TrabajadorView *trab )
+{
+    _depura ( "TrabajadorView_TrabajadorView", 0 );
+    SubForm2Bf *l = new SubForm2Bf ( trab );
+    l->setObjectName ( QString::fromUtf8 ( "m_ausencias" ) );
+    l->setEmpresaBase ( trab->empresaBase() );
+    l->setDBTableName ( "ausencia" );
+    l->setDBCampoId ( "idausencia" );
+    l->addSHeader ( "fechainausencia", DBCampo::DBvarchar, DBCampo::DBNothing , SHeader::DBNone, QApplication::translate ( "AlmacenView", "ID nom tipo Trabajo" ) );
+    l->addSHeader ( "fechafinausencia", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone , QApplication::translate ( "AlmacenView", "Numero de Cargos Necesarios" ) );
+    l->addSHeader ( "motivoausencia", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone , QApplication::translate ( "AlmacenView", "Numero de Cargos Necesarios" ) );
+    l->addSHeader ( "idausencia", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "AlmacenView", "ID almacen" ) );
+    l->addSHeader ( "idtrabajador", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "AlmacenView", "ID tipo Trabajo" ) );
+    l->setinsercion ( TRUE );
+    l->setDelete ( TRUE );
+    l->setSortingEnabled ( FALSE );
+    trab->mui_tab->addTab ( l, "Ausencias" );
+    trab->dialogChanges_setQObjectExcluido ( l->mui_list );
 
-    _depura("END TrabajadorView_TrabajadorView", 0);
+    _depura ( "END TrabajadorView_TrabajadorView", 0 );
     return 0;
 }
 
@@ -246,11 +253,12 @@ int TrabajadorView_TrabajadorView(TrabajadorView *trab) {
 \param trab
 \return
 **/
-int TrabajadorView_on_mui_lista_currentItemChanged_Post(TrabajadorView *trab)  {
-    _depura("TrabajadorView_on_mui_lista_currentItemChanged_Post", 0);
-    SubForm2Bf *l = trab->findChild<SubForm2Bf *>("m_ausencias");
-    l->cargar("SELECT * FROM ausencia WHERE idtrabajador = " + trab->idtrabajador());
-    _depura("END TrabajadorView_on_mui_lista_currentItemChanged_Post", 0);
+int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab )
+{
+    _depura ( "TrabajadorView_on_mui_lista_currentItemChanged_Post", 0 );
+    SubForm2Bf *l = trab->findChild<SubForm2Bf *> ( "m_ausencias" );
+    l->cargar ( "SELECT * FROM ausencia WHERE idtrabajador = " + trab->idtrabajador() );
+    _depura ( "END TrabajadorView_on_mui_lista_currentItemChanged_Post", 0 );
     return 0;
 }
 
@@ -260,9 +268,10 @@ int TrabajadorView_on_mui_lista_currentItemChanged_Post(TrabajadorView *trab)  {
 \param trab
 \return
 **/
-int TrabajadorView_on_mui_guardar_clicked(TrabajadorView *trab) {
-    SubForm2Bf *l = trab->findChild<SubForm2Bf *>("m_ausencias");
-    l->setColumnValue("idtrabajador", trab->idtrabajador());
+int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView *trab )
+{
+    SubForm2Bf * l = trab->findChild<SubForm2Bf *> ( "m_ausencias" );
+    l->setColumnValue ( "idtrabajador", trab->idtrabajador() );
     l->guardar();
     return 0;
 }

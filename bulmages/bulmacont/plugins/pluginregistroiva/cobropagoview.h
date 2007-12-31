@@ -29,14 +29,15 @@
 
 /// Listado de gestion de cobros y pagos.
 /// TODO: Esta clase debe derivar de FichaBc
-class cobropagoview : public Ficha, public Ui_CobroPagoBase {
+class cobropagoview : public Ficha, public Ui_CobroPagoBase
+{
     Q_OBJECT
 
 private:
     Empresa *m_companyact;
 
 public:
-    cobropagoview(Empresa *, QWidget *parent = 0);
+    cobropagoview ( Empresa *, QWidget *parent = 0 );
     ~cobropagoview();
 
 public slots:

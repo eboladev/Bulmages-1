@@ -30,7 +30,8 @@
 /** Esta clase es una plantilla para las ventanas de BulmaCont. Contiene metodos
     comunes a todas las pantallas.
 */
-class FichaBc : public Ficha {
+class FichaBc : public Ficha
+{
     Q_OBJECT
 
 public:
@@ -41,9 +42,9 @@ public:
     /// Puntero a la clase company para poder trabajar con la base de datos y hacer
     /// traspaso de mensajes.
     Empresa *empresaBase();
-    FichaBc(Empresa *comp, QWidget *parent = 0, Qt::WFlags f = 0);
+    FichaBc ( Empresa *comp, QWidget *parent = 0, Qt::WFlags f = 0 );
     virtual ~FichaBc();
-    void setListaLineas(SubForm2Bc * form);
+    void setListaLineas ( SubForm2Bc * form );
     SubForm2Bc* listalineas();
 
 };

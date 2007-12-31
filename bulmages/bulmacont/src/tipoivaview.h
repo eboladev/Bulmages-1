@@ -32,7 +32,8 @@ class empresa;
 
 /// Esta clase hace el mantenimiento de la tabla de Tipos de IVA.
 /** Su funcionamiento se basa un poco en el funcionamiento de la pantalla de canales. */
-class tipoivaview : public FichaBc, public Ui_TipoIvaBase {
+class tipoivaview : public FichaBc, public Ui_TipoIvaBase
+{
     Q_OBJECT
 
 private:
@@ -42,15 +43,15 @@ private:
     int m_posactual;
 
 public:
-    tipoivaview(Empresa *, QWidget *parent = 0);
+    tipoivaview ( Empresa *, QWidget *parent = 0 );
     ~tipoivaview();
 
 private:
-    void pintar(QString idtipoiva = "");
-    void mostrarplantilla(int pos = 0);
+    void pintar ( QString idtipoiva = "" );
+    void mostrarplantilla ( int pos = 0 );
 
 private slots:
-    virtual void on_mui_comboTipoIVA_currentIndexChanged(int);
+    virtual void on_mui_comboTipoIVA_currentIndexChanged ( int );
     virtual void on_mui_guardar2_clicked();
     virtual void on_mui_nuevo2_clicked();
     virtual void on_mui_borrar2_clicked();

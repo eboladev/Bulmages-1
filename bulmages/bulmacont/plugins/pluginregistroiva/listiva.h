@@ -31,44 +31,49 @@
 #include "fixed.h"
 
 
-class ListIva {
+class ListIva
+{
 public:
     Empresa *companyact;
     QString mdb_idregistroiva;
     QList<Iva*> m_lista;
 
 public:
-    ListIva(Empresa *comp);
+    ListIva ( Empresa *comp );
     ListIva();
-    void setcompany(Empresa *c) {
+    void setcompany ( Empresa *c )
+    {
         companyact = c;
     };
     virtual ~ListIva();
     void guardaListIva();
     void vaciar();
-    virtual void pintaListIva() {
-        _depura("Esta funcion aun no ha sido implementada\n", 2);
+    virtual void pintaListIva()
+    {
+        _depura ( "Esta funcion aun no ha sido implementada\n", 2 );
     };
-    int cargaListIva(QString);
+    int cargaListIva ( QString );
     void borrar();
-    Iva *linpos(int);
-    void append(Iva *iva) {
-        m_lista.append(iva);
+    Iva *linpos ( int );
+    void append ( Iva *iva )
+    {
+        m_lista.append ( iva );
     };
     Fixed calculaiva();
     Fixed calculabase();
-    void borraIva(int);
-    void setidregistroiva(QString id) {
+    void borraIva ( int );
+    void setidregistroiva ( QString id )
+    {
         mdb_idregistroiva = id;
         Iva *linea;
-        QMutableListIterator<Iva*> m_ilista(m_lista);
+        QMutableListIterator<Iva*> m_ilista ( m_lista );
         /// Vamos delante del primer elemento de la lista.
         m_ilista.toFront();
         /// Comprobamos que el primer elemento y siguientes existan.
-        while (m_ilista.hasNext()) {
+        while ( m_ilista.hasNext() ) {
             /// Si existe el elemento nos desplazamos a el moviendo el cursor.
             linea = m_ilista.next();
-            linea->setidregistroiva(mdb_idregistroiva);
+            linea->setidregistroiva ( mdb_idregistroiva );
         } // end while
     };
 };

@@ -38,54 +38,55 @@ También prepara el campo para ser almacenado en la base de datos aunque el guar
 clase \ref DBRecord
 \todo Esta clase deberia derivar de \ref PEmpresaBase
 */
-class DBCampo {
+class DBCampo
+{
 public:
     /**
- 	Indica el tipo de dato al que pertenece el campo. 
-	- DBint  . Entero 
-	- DBvarchar . String de longitud indeterminada.
-	- DBdate . Fecha en formato Europeo (dd/mm/yyyy)
-	- DBnumeric . Numero en punto fijo
-	- DBboolean . Valor Booleano (TRUE / FALSE) (t / f)
+    Indica el tipo de dato al que pertenece el campo. 
+    - DBint  . Entero 
+    - DBvarchar . String de longitud indeterminada.
+    - DBdate . Fecha en formato Europeo (dd/mm/yyyy)
+    - DBnumeric . Numero en punto fijo
+    - DBboolean . Valor Booleano (TRUE / FALSE) (t / f)
     */
     enum dbtype {DBint = 1, DBvarchar = 2, DBdate = 3, DBnumeric = 4, DBboolean = 5};
-    /** Indica las restricciones que soporta el dato. 
-	- DBNothing . Ninguna, 
-	- DBNotNull . No puede ser nulo, 
-	- DBPrimaryKey . Es clave primaria, 
-	- DBNoSave . No se debe almacenenar en la base de datos.
-	- DBAuto . Es autonumerico, 
-	- DBDupPrimaryKey . Duplicado de la clave primaria (util para aquellos casos en que la clave principal puede ser modificada). En este caso el valor del campo comentario es el de la llave a la que duplica.
-	- DBRequired . Requerido, 
-	- DBNoLoad . No debe cargarse desde la base de datos.
+    /** Indica las restricciones que soporta el dato.
+    - DBNothing . Ninguna, 
+    - DBNotNull . No puede ser nulo, 
+    - DBPrimaryKey . Es clave primaria, 
+    - DBNoSave . No se debe almacenenar en la base de datos.
+    - DBAuto . Es autonumerico, 
+    - DBDupPrimaryKey . Duplicado de la clave primaria (util para aquellos casos en que la clave principal puede ser modificada). En este caso el valor del campo comentario es el de la llave a la que duplica.
+    - DBRequired . Requerido, 
+    - DBNoLoad . No debe cargarse desde la base de datos.
     **/
     enum dbrestrict {DBNothing = 0, DBNotNull = 1, DBPrimaryKey = 2,
                      DBNoSave = 4, DBAuto = 8, DBDupPrimaryKey = 16, DBRequired = 32, DBNoLoad = 64};
 
 private:
-    QString m_nomcampo;		        ///< El nombre del campo
-    QString m_valorcampo;	        ///< El valor actual del campo, en el registro, no en la base de datos
-    QString m_nompresentacion;	        ///< El nombre que se mostrara en los mensajes de error y presentacion
-    int m_restrict;		        ///< Las restricciones del campo
-    dbtype m_tipo;		        ///< El tipo de dato almacenado
-    postgresiface2 *m_conexionbase;	///< Puntero a la base de datos a utilizar
-    QString m_valorcampoorig;	        ///< indica el valor del campo en un estado anterior para determinar si ha habido cambios.
+    QString m_nomcampo;          ///< El nombre del campo
+    QString m_valorcampo;         ///< El valor actual del campo, en el registro, no en la base de datos
+    QString m_nompresentacion;         ///< El nombre que se mostrara en los mensajes de error y presentacion
+    int m_restrict;          ///< Las restricciones del campo
+    dbtype m_tipo;          ///< El tipo de dato almacenado
+    postgresiface2 *m_conexionbase; ///< Puntero a la base de datos a utilizar
+    QString m_valorcampoorig;         ///< indica el valor del campo en un estado anterior para determinar si ha habido cambios.
 
 
 public:
-    DBCampo(postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp = "");
+    DBCampo ( postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp = "" );
     virtual ~DBCampo();
     bool cambiado();
     void resetCambio();
     postgresiface2 *conexionbase();
-    void setconexionbase(postgresiface2 *comp);
+    void setconexionbase ( postgresiface2 *comp );
     dbtype tipo();
-    virtual int set(QString val);
+    virtual int set ( QString val );
     int restrictcampo();
     QString nomcampo();
     QString nompresentacion();
     QString valorcampo();
-    QString valorcampoprep(int &error);
+    QString valorcampoprep ( int &error );
 };
 
 
@@ -99,38 +100,39 @@ El uso normal de esta clase es la carga de un registro, modificacion de sus camp
 y almacenado del mismo.
 \todo Esta clase deberia derivar de \ref PEmpresaBase
 */
-class DBRecord {
+class DBRecord
+{
 protected:
     QList<DBCampo *> m_lista; ///< Lista de campos que conforman la tabla de la BD
     EmpresaBase *m_conexionbase; ///< Puntero a la base de datos con la que se opera
-    QString m_tablename;	///< Nombre de la tabla por defecto que se utiliza
-    QString m_campoid;	///< Nombre del campo identificador en la tabla
-    bool m_nuevoCampo;	///< Indicador sobre si es un nuevo registro o un registro modificado
+    QString m_tablename; ///< Nombre de la tabla por defecto que se utiliza
+    QString m_campoid; ///< Nombre del campo identificador en la tabla
+    bool m_nuevoCampo; ///< Indicador sobre si es un nuevo registro o un registro modificado
 
 public:
-    DBRecord(EmpresaBase *);
+    DBRecord ( EmpresaBase * );
     virtual ~DBRecord();
-    void setconexionbase(EmpresaBase *comp);
+    void setconexionbase ( EmpresaBase *comp );
     EmpresaBase *conexionbase();
-    int DBload(cursor2 *);
-    virtual int DBsave(QString &id);
-    virtual int setDBvalue(QString, QString);
-    QString DBvalue(QString);
-    bool exists(QString);
-    QString DBvalueprep(QString);
-    void setDBTableName(QString nom);
-    void setNuevo(bool n);
+    int DBload ( cursor2 * );
+    virtual int DBsave ( QString &id );
+    virtual int setDBvalue ( QString, QString );
+    QString DBvalue ( QString );
+    bool exists ( QString );
+    QString DBvalueprep ( QString );
+    void setDBTableName ( QString nom );
+    void setNuevo ( bool n );
     QString tableName();
     QString campoId();
-    void setDBCampoId(QString nom);
-    int addDBCampo(QString, DBCampo::dbtype, int, QString);
+    void setDBCampoId ( QString nom );
+    int addDBCampo ( QString, DBCampo::dbtype, int, QString );
     void DBclear();
     QList<DBCampo *> *lista();
     virtual int borrar();
     virtual int guardar();
     virtual void vaciar();
     virtual void imprimir();
-    virtual int cargar(QString);
+    virtual int cargar ( QString );
 };
 
 #endif

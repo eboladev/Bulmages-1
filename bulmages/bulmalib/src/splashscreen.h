@@ -39,7 +39,8 @@
 
 /// Muestra y administra la ventana de bienvenida al programa.
 /** */
-class Splash : public QDialog {
+class Splash : public QDialog
+{
     Q_OBJECT
 
 private:
@@ -48,10 +49,10 @@ private:
     QPixmap *image0;
 
 public:
-    Splash(QString appSplash, QString appName, QString appVersion);
+    Splash ( QString appSplash, QString appName, QString appVersion );
     ~Splash();
-    void mensaje(QString);
-    void setBarraProgreso(int);
+    void mensaje ( QString );
+    void setBarraProgreso ( int );
 
 private slots:
     void barraprogreso();

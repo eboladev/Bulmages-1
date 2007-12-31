@@ -34,13 +34,14 @@
 #include "bulmafact.h"
 
 
-extern "C" MY_EXPORT int entryPoint(Bulmafact *);
+extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 
 
 extern QApplication2 *theApp;
 
 
-class myplugin : public QObject {
+class myplugin : public QObject
+{
     Q_OBJECT
 
 public:
@@ -50,7 +51,7 @@ public:
 public:
     myplugin();
     ~myplugin();
-    void inicializa(Bulmafact *);
+    void inicializa ( Bulmafact * );
 
 public slots:
     void elslot();

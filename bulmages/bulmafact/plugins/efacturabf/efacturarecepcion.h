@@ -27,17 +27,18 @@
 #include "company.h"
 #include "fichabf.h"
 
-class EFacturaRecepcion : public FichaBf, public Ui_EFacturaRecepcionBase {
-	Q_OBJECT
+class EFacturaRecepcion : public FichaBf, public Ui_EFacturaRecepcionBase
+{
+    Q_OBJECT
 public:
-	EFacturaRecepcion(Company *emp, QWidget *parent = 0);
-	~EFacturaRecepcion();
+    EFacturaRecepcion ( Company *emp, QWidget *parent = 0 );
+    ~EFacturaRecepcion();
 
 public slots:
-// 	virtual void on_mui_examinaECertificado_clicked();
-	virtual void on_mui_recibir_clicked();
-	virtual void on_mui_abrir_clicked();
-	virtual void on_mui_salir_clicked();
+//  virtual void on_mui_examinaECertificado_clicked();
+    virtual void on_mui_recibir_clicked();
+    virtual void on_mui_abrir_clicked();
+    virtual void on_mui_salir_clicked();
 };
 
 #endif

@@ -25,13 +25,14 @@
 #include <QTextEdit>
 
 
-class QTextEditDelegate : public QTextEdit {
+class QTextEditDelegate : public QTextEdit
+{
     Q_OBJECT
 
 public:
-    QTextEditDelegate(QWidget *parent = 0);
+    QTextEditDelegate ( QWidget *parent = 0 );
     virtual ~QTextEditDelegate();
-    virtual bool eventFilter(QObject *obj, QEvent *event);
+    virtual bool eventFilter ( QObject *obj, QEvent *event );
 };
 
 #endif

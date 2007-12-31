@@ -33,11 +33,12 @@
 
 /** Subformulario especializado en el trabajo con Cobros.
 */
-class CobrosListSubForm : public SubForm2Bf {
+class CobrosListSubForm : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
-    CobrosListSubForm(QWidget *parent = 0);
+    CobrosListSubForm ( QWidget *parent = 0 );
     ~CobrosListSubForm();
 };
 
@@ -48,7 +49,8 @@ public:
 /** Clase que presenta el listado de Cobros.
     Deriva de la clase Ficha para estandarizacion de Formularios.
     Controla los eventos y la sincronizacion del listado con el filtrado. */
-class CobrosList : public Listado, public Ui_CobrosListBase {
+class CobrosList : public Listado, public Ui_CobrosListBase
+{
     Q_OBJECT
 
 private:
@@ -56,23 +58,23 @@ private:
     QString mdb_idcobro;
 
 public:
-    CobrosList(QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
-    CobrosList(Company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
+    CobrosList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
+    CobrosList ( Company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
     ~CobrosList();
     void presentar();
-    void setEmpresaBase(Company *comp);
+    void setEmpresaBase ( Company *comp );
     QString idcobro();
     void imprimir();
-    void setidcliente(QString val);
+    void setidcliente ( QString val );
     QString generaFiltro();
     void borrar();
     void crear();
-    void editar(int);
-    void submenu(const QPoint &);
+    void editar ( int );
+    void submenu ( const QPoint & );
 
 signals:
     /// Estando en modo seleccion al seleccionar un elemento se emite esta se&ntilde;al.
-    void selected(QString);
+    void selected ( QString );
 };
 
 #endif

@@ -34,7 +34,8 @@
     de esta forma la introduccion de tipos de IVA es sencilla.
     Esta clase se usa conjuntamente con SubForm2Bf para el cambio del editor
     estandar por un ComboBox */
-class BusquedaTipoTrabajoDelegate : public QComboBox2 {
+class BusquedaTipoTrabajoDelegate : public QComboBox2
+{
     Q_OBJECT
 
 private:
@@ -42,16 +43,17 @@ private:
     cursor2 *m_cursorcombo;
 
 public:
-    BusquedaTipoTrabajoDelegate(QWidget *parent = 0);
+    BusquedaTipoTrabajoDelegate ( QWidget *parent = 0 );
     ~BusquedaTipoTrabajoDelegate();
-    virtual void set(const QString &);
+    virtual void set ( const QString & );
     QString id();
 };
 
 /// Clase que sirve para seleccionar un almac&eacute;n.
 /** Creamos un QComboBox que sirve para presentar la lista de almacenes
     disponibles para poder seleccionar uno de ellos.*/
-class BusquedaTipoTrabajo : public QComboBox, public PEmpresaBase {
+class BusquedaTipoTrabajo : public QComboBox, public PEmpresaBase
+{
     Q_OBJECT
 
 private:
@@ -61,16 +63,16 @@ private:
     QString m_idtipotrabajo;
 
 public:
-    BusquedaTipoTrabajo(QWidget *parent = 0, const char *name = 0);
+    BusquedaTipoTrabajo ( QWidget *parent = 0, const char *name = 0 );
     ~BusquedaTipoTrabajo();
-    virtual void setidtipotrabajo(QString idtipotrabajo);
+    virtual void setidtipotrabajo ( QString idtipotrabajo );
     QString idtipotrabajo();
 
 public slots:
-    void m_activated(int index);
+    void m_activated ( int index );
 
 signals:
-    void valueChanged(QString);
+    void valueChanged ( QString );
 };
 
 #endif

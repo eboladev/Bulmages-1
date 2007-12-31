@@ -25,19 +25,20 @@
 ///
 /**
 **/
-void Iva::definetabla() {
-    _depura("Iva::definetabla", 0);
-    setDBTableName("iva");
-    setDBCampoId("idiva");
-    addDBCampo("idiva", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador");
-    addDBCampo("idtipoiva", DBCampo::DBint, DBCampo::DBNotNull, "Id tipo IVA");
-    addDBCampo("idregistroiva", DBCampo::DBint, DBCampo::DBNotNull, "Id registro IVA");
-    addDBCampo("baseiva", DBCampo::DBnumeric, DBCampo::DBNotNull, "Cantidad");
-    addDBCampo("ivaiva", DBCampo::DBnumeric, DBCampo::DBNotNull, "Precio linea presupuesto");
-    addDBCampo("idcuenta", DBCampo::DBint, DBCampo::DBNoSave, "Id. cuenta");
-    addDBCampo("codigo", DBCampo::DBvarchar, DBCampo::DBNoSave, "Codigo");
-    addDBCampo("nombretipoiva", DBCampo::DBvarchar, DBCampo::DBNoSave, "Nombre tipo IVA");
-    _depura("END Iva::definetabla",0);
+void Iva::definetabla()
+{
+    _depura ( "Iva::definetabla", 0 );
+    setDBTableName ( "iva" );
+    setDBCampoId ( "idiva" );
+    addDBCampo ( "idiva", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador" );
+    addDBCampo ( "idtipoiva", DBCampo::DBint, DBCampo::DBNotNull, "Id tipo IVA" );
+    addDBCampo ( "idregistroiva", DBCampo::DBint, DBCampo::DBNotNull, "Id registro IVA" );
+    addDBCampo ( "baseiva", DBCampo::DBnumeric, DBCampo::DBNotNull, "Cantidad" );
+    addDBCampo ( "ivaiva", DBCampo::DBnumeric, DBCampo::DBNotNull, "Precio linea presupuesto" );
+    addDBCampo ( "idcuenta", DBCampo::DBint, DBCampo::DBNoSave, "Id. cuenta" );
+    addDBCampo ( "codigo", DBCampo::DBvarchar, DBCampo::DBNoSave, "Codigo" );
+    addDBCampo ( "nombretipoiva", DBCampo::DBvarchar, DBCampo::DBNoSave, "Nombre tipo IVA" );
+    _depura ( "END Iva::definetabla", 0 );
 }
 
 
@@ -45,11 +46,12 @@ void Iva::definetabla() {
 /**
 \param comp
 **/
-Iva::Iva(Empresa *comp) : DBRecord(comp) {
-    _depura("Iva::Iva", 0);
+Iva::Iva ( Empresa *comp ) : DBRecord ( comp )
+{
+    _depura ( "Iva::Iva", 0 );
     m_companyact = comp;
     definetabla();
-    _depura("END Iva::Iva", 0);
+    _depura ( "END Iva::Iva", 0 );
 }
 
 
@@ -58,18 +60,19 @@ Iva::Iva(Empresa *comp) : DBRecord(comp) {
 \param comp
 \param idiva
 **/
-Iva::Iva(Empresa *comp, QString idiva) : DBRecord(comp) {
-    _depura("Iva::Iva", 0);
+Iva::Iva ( Empresa *comp, QString idiva ) : DBRecord ( comp )
+{
+    _depura ( "Iva::Iva", 0 );
     m_companyact = comp;
     definetabla();
     QString SQLQuery = "SELECT * FROM iva LEFT JOIN tipoiva ON iva.idtipoiva = tipoiva.idtipoiva LEFT JOIN cuenta ON cuenta.idcuenta = tipoiva.idtipoiva WHERE idiva = " + idiva;
-    cursor2 *cur = m_companyact->cargacursor(SQLQuery);
-    if (!cur->eof()) {
-        DBload(cur);
+    cursor2 *cur = m_companyact->cargacursor ( SQLQuery );
+    if ( !cur->eof() ) {
+        DBload ( cur );
     } else {
         vaciaIva();
     } // end if
-    _depura("END Iva::Iva", 0);
+    _depura ( "END Iva::Iva", 0 );
 }
 
 
@@ -78,31 +81,34 @@ Iva::Iva(Empresa *comp, QString idiva) : DBRecord(comp) {
 \param comp
 \param cur
 **/
-Iva::Iva(Empresa *comp, cursor2 *cur) : DBRecord(comp) {
-    _depura("Iva::Iva", 0);
+Iva::Iva ( Empresa *comp, cursor2 *cur ) : DBRecord ( comp )
+{
+    _depura ( "Iva::Iva", 0 );
     m_companyact = comp;
     definetabla();
-    DBload(cur);
-    _depura("END Iva::Iva", 0);
+    DBload ( cur );
+    _depura ( "END Iva::Iva", 0 );
 }
 
 
 ///
 /**
 **/
-Iva::~Iva() {
-    _depura("Iva::~Iva", 0);
-    _depura("END Iva::~Iva", 0);
+Iva::~Iva()
+{
+    _depura ( "Iva::~Iva", 0 );
+    _depura ( "END Iva::~Iva", 0 );
 }
 
 
 ///
 /**
 **/
-void Iva::vaciaIva() {
-    _depura("Iva::vaciaIva", 0);
+void Iva::vaciaIva()
+{
+    _depura ( "Iva::vaciaIva", 0 );
     DBclear();
-    _depura("END Iva::vaciaIva", 0);
+    _depura ( "END Iva::vaciaIva", 0 );
 }
 
 
@@ -110,19 +116,20 @@ void Iva::vaciaIva() {
 /**
 \return
 **/
-int Iva::borrar() {
-    _depura("Iva::borrar", 0);
-    if (DBvalue("idiva") != "") {
+int Iva::borrar()
+{
+    _depura ( "Iva::borrar", 0 );
+    if ( DBvalue ( "idiva" ) != "" ) {
         m_companyact->begin();
-        int error = m_companyact->ejecuta("DELETE FROM iva WHERE idiva = " + DBvalue("idiva"));
-        if (error) {
+        int error = m_companyact->ejecuta ( "DELETE FROM iva WHERE idiva = " + DBvalue ( "idiva" ) );
+        if ( error ) {
             m_companyact->rollback();
             return -1;
         } // end if
         m_companyact->commit();
         vaciaIva();
     } // end if
-    _depura("END Iva::borrar", 0);
+    _depura ( "END Iva::borrar", 0 );
     return 0;
 }
 
@@ -131,18 +138,19 @@ int Iva::borrar() {
 /**
 \return
 **/
-void Iva::guardaIva() {
-    _depura("Iva::guardaIva", 0);
+void Iva::guardaIva()
+{
+    _depura ( "Iva::guardaIva", 0 );
     QString id;
     m_companyact->begin();
-    int error = DBsave(id);
-    if (error) {
+    int error = DBsave ( id );
+    if ( error ) {
         m_companyact->rollback();
         return;
     } // end if
-    setDBvalue("idiva", id);
+    setDBvalue ( "idiva", id );
     m_companyact->commit();
-    _depura("END Iva::guardaIva", 0);
+    _depura ( "END Iva::guardaIva", 0 );
 }
 
 
@@ -150,17 +158,18 @@ void Iva::guardaIva() {
 /**
 \param val
 **/
-void Iva::setidtipoiva(const QString &val) {
-    _depura("Iva::setidtipoiva", 0);
+void Iva::setidtipoiva ( const QString &val )
+{
+    _depura ( "Iva::setidtipoiva", 0 );
     QString SQLQuery = "SELECT * FROM tipoiva LEFT JOIN cuenta ON cuenta.idcuenta = tipoiva.idcuenta WHERE idtipoiva = " + val;
-    cursor2 *cur= m_companyact->cargacursor(SQLQuery);
-    if (!cur->eof()) {
-        _depura(cur->valor("codigo"), 0);
-        setDBvalue("idcuenta",cur->valor("idcuenta"));
-        setDBvalue("codigo", cur->valor("codigo"));
-        setDBvalue("nombretipoiva", cur->valor("nombretipoiva"));
+    cursor2 *cur = m_companyact->cargacursor ( SQLQuery );
+    if ( !cur->eof() ) {
+        _depura ( cur->valor ( "codigo" ), 0 );
+        setDBvalue ( "idcuenta", cur->valor ( "idcuenta" ) );
+        setDBvalue ( "codigo", cur->valor ( "codigo" ) );
+        setDBvalue ( "nombretipoiva", cur->valor ( "nombretipoiva" ) );
     } // end if
     delete cur;
-    setDBvalue("idtipoiva", val);
+    setDBvalue ( "idtipoiva", val );
 }
 

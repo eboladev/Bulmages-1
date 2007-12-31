@@ -47,24 +47,25 @@
 \param parent
 \param editmodo
 **/
-MovimientosView::MovimientosView(Company *comp, QWidget *parent, edmode editmodo)
-        : FichaBf(comp, parent, 0) {
-    _depura("MovimientosView::MovimientosView", 0);
-    setAttribute(Qt::WA_DeleteOnClose);
-    setupUi(this);
+MovimientosView::MovimientosView ( Company *comp, QWidget *parent, edmode editmodo )
+        : FichaBf ( comp, parent, 0 )
+{
+    _depura ( "MovimientosView::MovimientosView", 0 );
+    setAttribute ( Qt::WA_DeleteOnClose );
+    setupUi ( this );
     iniciaForm();
-    setDBTableName("movimiento");
-    m_cliente->setEmpresaBase(empresaBase());
-    m_articulo->setEmpresaBase(empresaBase());
-    mui_list->setEmpresaBase(empresaBase());
+    setDBTableName ( "movimiento" );
+    m_cliente->setEmpresaBase ( empresaBase() );
+    m_articulo->setEmpresaBase ( empresaBase() );
+    mui_list->setEmpresaBase ( empresaBase() );
     presenta();
     m_modo = editmodo;
     mdb_idfactura = "";
-    if (m_modo == EditMode) {
-        meteWindow(windowTitle(), this);
+    if ( m_modo == EditMode ) {
+        meteWindow ( windowTitle(), this );
     } // end if
     hideBusqueda();
-    _depura("END MovimientosView::MovimientosView", 0);
+    _depura ( "END MovimientosView::MovimientosView", 0 );
 }
 
 
@@ -72,16 +73,17 @@ MovimientosView::MovimientosView(Company *comp, QWidget *parent, edmode editmodo
 /**
 \return
 **/
-void MovimientosView::iniciaForm() {
-    _depura("MovimientosView::iniciaForm");
+void MovimientosView::iniciaForm()
+{
+    _depura ( "MovimientosView::iniciaForm" );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza("MovimientosView_MovimientosView", this);
-    if (res != 0)
+    int res = g_plugins->lanza ( "MovimientosView_MovimientosView", this );
+    if ( res != 0 )
         return;
-    mui_procesada->insertItem(0, tr("Todas las facturas"));
-    mui_procesada->insertItem(1, tr("Facturas procesadas"));
-    mui_procesada->insertItem(2, tr("Facturas no procesadas"));
-    _depura("END MovimientosView::iniciaForm");
+    mui_procesada->insertItem ( 0, tr ( "Todas las facturas" ) );
+    mui_procesada->insertItem ( 1, tr ( "Facturas procesadas" ) );
+    mui_procesada->insertItem ( 2, tr ( "Facturas no procesadas" ) );
+    _depura ( "END MovimientosView::iniciaForm" );
 }
 
 
@@ -90,10 +92,11 @@ void MovimientosView::iniciaForm() {
 ///
 /**
 **/
-MovimientosView::~MovimientosView() {
-    _depura("MovimientosView::~MovimientosView", 0);
-    empresaBase()->sacaWindow(this);
-    _depura("END MovimientosView::~MovimientosView", 0);
+MovimientosView::~MovimientosView()
+{
+    _depura ( "MovimientosView::~MovimientosView", 0 );
+    empresaBase() ->sacaWindow ( this );
+    _depura ( "END MovimientosView::~MovimientosView", 0 );
 }
 
 
@@ -101,12 +104,13 @@ MovimientosView::~MovimientosView() {
 */
 /**
 **/
-void MovimientosView::presenta() {
-    _depura("MovimientosView::presenta", 0);
+void MovimientosView::presenta()
+{
+    _depura ( "MovimientosView::presenta", 0 );
 
-    mui_list->cargar("SELECT * FROM movimiento LEFT JOIN articulo ON movimiento.idarticulo=articulo.idarticulo LEFT JOIN almacen ON movimiento.idalmacen = almacen.idalmacen ORDER BY idmovimiento");
+    mui_list->cargar ( "SELECT * FROM movimiento LEFT JOIN articulo ON movimiento.idarticulo=articulo.idarticulo LEFT JOIN almacen ON movimiento.idalmacen = almacen.idalmacen ORDER BY idmovimiento" );
 
-    _depura("END MovimientosView::presenta", 0);
+    _depura ( "END MovimientosView::presenta", 0 );
 }
 
 
@@ -115,13 +119,14 @@ void MovimientosView::presenta() {
 /**
 \return
 **/
-QString MovimientosView::generaFiltro() {
-    _depura("MovimientosView::generaFiltro", 0);
+QString MovimientosView::generaFiltro()
+{
+    _depura ( "MovimientosView::generaFiltro", 0 );
     /// Tratamiento de los filtros.
     QString filtro = "";
 
-    _depura("END MovimientosView::generaFiltro", 0);
-    return (filtro);
+    _depura ( "END MovimientosView::generaFiltro", 0 );
+    return ( filtro );
 }
 
 
@@ -133,10 +138,11 @@ QString MovimientosView::generaFiltro() {
 ///
 /**
 **/
-void MovimientosView::on_mui_imprimir_clicked() {
-    _depura("MovimientosView::on_mui_imprimir_clicked", 0);
-    mui_list->imprimirPDF(tr("Facturas a clientes"));
-    _depura("MovimientosView::on_mui_imprimir_clicked", 0);
+void MovimientosView::on_mui_imprimir_clicked()
+{
+    _depura ( "MovimientosView::on_mui_imprimir_clicked", 0 );
+    mui_list->imprimirPDF ( tr ( "Facturas a clientes" ) );
+    _depura ( "MovimientosView::on_mui_imprimir_clicked", 0 );
 }
 
 
@@ -152,30 +158,31 @@ void MovimientosView::on_mui_imprimir_clicked() {
 \param parent
 \return
 **/
-MovimientosSubform::MovimientosSubform(QWidget *parent, const char *) : SubForm2Bf(parent) {
-    _depura("MovimientosSubform::MovimientosSubform", 0);
+MovimientosSubform::MovimientosSubform ( QWidget *parent, const char * ) : SubForm2Bf ( parent )
+{
+    _depura ( "MovimientosSubform::MovimientosSubform", 0 );
     /// Disparamos los plugins.
-    int res = g_plugins->lanza("MovimientosSubform_MovimientosSubform", this);
-    if (res != 0)
+    int res = g_plugins->lanza ( "MovimientosSubform_MovimientosSubform", this );
+    if ( res != 0 )
         return;
-    setDBTableName("movimiento");
-    setDBCampoId("idmovimiento");
-    addSHeader("idmovimiento", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNone | SHeader::DBNoWrite, tr("idarticulo"));
-    addSHeader("fechamovimiento", DBCampo::DBdate, DBCampo::DBNotNull, SHeader::DBNone , tr("Fecha"));
-    addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone | SHeader::DBNoWrite, tr("Id Articulo"));
-    addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone | SHeader::DBNoWrite, tr("Codigo Articulo"));
-    addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre Articulo"));
-    addSHeader("cantidadmovimiento", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone , tr("Cantidad"));
-    addSHeader("lotemovimiento", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, tr("Lote"));
-    addSHeader("idalmacen", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone | SHeader::DBNoWrite, tr("Id Almacen"));
-    addSHeader("codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone | SHeader::DBNoWrite, tr("Codigo Almacen"));
-    addSHeader("nomalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre Almacen"));
-    addSHeader("idlalbaran", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone, tr("Id Albaran Cliente"));
-    addSHeader("idlalbaranp", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone, tr("Id Albaran Proveedor"));
+    setDBTableName ( "movimiento" );
+    setDBCampoId ( "idmovimiento" );
+    addSHeader ( "idmovimiento", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNone | SHeader::DBNoWrite, tr ( "idarticulo" ) );
+    addSHeader ( "fechamovimiento", DBCampo::DBdate, DBCampo::DBNotNull, SHeader::DBNone , tr ( "Fecha" ) );
+    addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Id Articulo" ) );
+    addSHeader ( "codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Codigo Articulo" ) );
+    addSHeader ( "nomarticulo", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre Articulo" ) );
+    addSHeader ( "cantidadmovimiento", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone , tr ( "Cantidad" ) );
+    addSHeader ( "lotemovimiento", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, tr ( "Lote" ) );
+    addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Id Almacen" ) );
+    addSHeader ( "codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Codigo Almacen" ) );
+    addSHeader ( "nomalmacen", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre Almacen" ) );
+    addSHeader ( "idlalbaran", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone, tr ( "Id Albaran Cliente" ) );
+    addSHeader ( "idlalbaranp", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone, tr ( "Id Albaran Proveedor" ) );
 
-    setinsercion(FALSE);
-    setDelete(FALSE);
-    setSortingEnabled(FALSE);
-    _depura("END MovimientosSubform::MovimientosSubform", 0);
+    setinsercion ( FALSE );
+    setDelete ( FALSE );
+    setSortingEnabled ( FALSE );
+    _depura ( "END MovimientosSubform::MovimientosSubform", 0 );
 }
 

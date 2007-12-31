@@ -34,34 +34,35 @@
 \param parent
 \return
 **/
-ListLinAlbaranProveedorView::ListLinAlbaranProveedorView(QWidget *parent) : SubForm2Bf(parent) {
-    _depura("ListLinAlbaranProveedorView::ListLinAlbaranProveedorView", 0);
-    setDBTableName("lalbaranp");
-    setDBCampoId("numlalbaranp");
+ListLinAlbaranProveedorView::ListLinAlbaranProveedorView ( QWidget *parent ) : SubForm2Bf ( parent )
+{
+    _depura ( "ListLinAlbaranProveedorView::ListLinAlbaranProveedorView", 0 );
+    setDBTableName ( "lalbaranp" );
+    setDBCampoId ( "numlalbaranp" );
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza("ListLinAlbaranProveedorView_ListLinAlbaranProveedorView", this);
-    if (res != 0)
+    int res = g_plugins->lanza ( "ListLinAlbaranProveedorView_ListLinAlbaranProveedorView", this );
+    if ( res != 0 )
         return;
 
-    addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id articulo"));
-    addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Codigo completo articulo"));
-    addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("Nombre articulo"));
-    addSHeader("numlalbaranp", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr("Numero de linea"));
-    addSHeader("desclalbaranp", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Descripcion"));
-    addSHeader("cantlalbaranp", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Cantidad"));
-    addSHeader("pvplalbaranp", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Precio"));
-    addSHeader("ivalalbaranp", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("% I.V.A."));
-    addSHeader("reqeqlalbaranp", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, tr("% R.E."));
-    addSHeader("descuentolalbaranp", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("% Descuento"));
-    addSHeader("idalbaranp", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, tr("Id albaran"));
-    addSHeader("ordenlalbaranp", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Orden"));
-    setinsercion(TRUE);
-    setDelete(TRUE);
-    setOrdenEnabled(TRUE);
+    addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr ( "Id articulo" ) );
+    addSHeader ( "codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr ( "Codigo completo articulo" ) );
+    addSHeader ( "nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr ( "Nombre articulo" ) );
+    addSHeader ( "numlalbaranp", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr ( "Numero de linea" ) );
+    addSHeader ( "desclalbaranp", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Descripcion" ) );
+    addSHeader ( "cantlalbaranp", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Cantidad" ) );
+    addSHeader ( "pvplalbaranp", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Precio" ) );
+    addSHeader ( "ivalalbaranp", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr ( "% I.V.A." ) );
+    addSHeader ( "reqeqlalbaranp", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, tr ( "% R.E." ) );
+    addSHeader ( "descuentolalbaranp", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr ( "% Descuento" ) );
+    addSHeader ( "idalbaranp", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "Id albaran" ) );
+    addSHeader ( "ordenlalbaranp", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr ( "Orden" ) );
+    setinsercion ( TRUE );
+    setDelete ( TRUE );
+    setOrdenEnabled ( TRUE );
     /// Disparamos los plugins.
-    g_plugins->lanza("ListLinAlbaranProveedorView_ListLinAlbaranProveedorView_Post", this);
-    _depura("END ListLinAlbaranProveedorView::ListLinAlbaranProveedorView", 0);
+    g_plugins->lanza ( "ListLinAlbaranProveedorView_ListLinAlbaranProveedorView_Post", this );
+    _depura ( "END ListLinAlbaranProveedorView::ListLinAlbaranProveedorView", 0 );
 }
 
 
@@ -69,11 +70,12 @@ ListLinAlbaranProveedorView::ListLinAlbaranProveedorView(QWidget *parent) : SubF
 /**
 \param isalbaranp
 **/
-void ListLinAlbaranProveedorView::cargar(QString idalbaranp) {
-    _depura("ListLinPedidoProveedorView::cargar", 0);
+void ListLinAlbaranProveedorView::cargar ( QString idalbaranp )
+{
+    _depura ( "ListLinPedidoProveedorView::cargar", 0 );
     mdb_idalbaranp = idalbaranp;
-    SubForm3::cargar("SELECT * FROM lalbaranp LEFT JOIN articulo ON lalbaranp.idarticulo = articulo.idarticulo WHERE idalbaranp = " + mdb_idalbaranp + " ORDER BY ordenlalbaranp");
-    _depura("END ListLinPedidoProveedorView::cargar", 0);
+    SubForm3::cargar ( "SELECT * FROM lalbaranp LEFT JOIN articulo ON lalbaranp.idarticulo = articulo.idarticulo WHERE idalbaranp = " + mdb_idalbaranp + " ORDER BY ordenlalbaranp" );
+    _depura ( "END ListLinPedidoProveedorView::cargar", 0 );
 }
 
 

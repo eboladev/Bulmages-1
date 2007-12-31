@@ -31,15 +31,16 @@
     de la clase Cliente para el manejo con la base de datos.
     Se encarga de recibir y lanzar eventos.
 */
-class ClienteView : public FichaBf, public Ui_ClienteBase  {
+class ClienteView : public FichaBf, public Ui_ClienteBase
+{
     Q_OBJECT
 
 public:
-    ClienteView(Company *emp, QWidget *parent = 0);
+    ClienteView ( Company *emp, QWidget *parent = 0 );
     ~ClienteView();
 
 public:
-    int cargarPost(QString client);
+    int cargarPost ( QString client );
 
 
 

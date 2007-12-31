@@ -45,61 +45,62 @@ QTranslator *traductor;
 \param argv
 \return
 **/
-int main(int argc, char **argv) {
-    confpr = new configuracion("bulmages");
-    QApplication2 a(argc, argv);
-    Q_INIT_RESOURCE(bulmages);
+int main ( int argc, char **argv )
+{
+    confpr = new configuracion ( "bulmages" );
+    QApplication2 a ( argc, argv );
+    Q_INIT_RESOURCE ( bulmages );
     theApp = &a;
 
     /// Preparamos el sistema de plugins.
     g_plugins = new Plugins();
 
     /// Definimos la codificaci&oacute;n a Unicode.
-    QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
-    QTextCodec::setCodecForLocale(QTextCodec::codecForName("CP1252"));
+    QTextCodec::setCodecForCStrings ( QTextCodec::codecForName ( "UTF-8" ) );
+    QTextCodec::setCodecForLocale ( QTextCodec::codecForName ( "CP1252" ) );
 
-    theApp->setFont(QFont(confpr->valor(CONF_FONTFAMILY_BULMAGES).toAscii().constData(),atoi(confpr->valor(CONF_FONTSIZE_BULMAGES).toAscii().constData())));
+    theApp->setFont ( QFont ( confpr->valor ( CONF_FONTFAMILY_BULMAGES ).toAscii().constData(), atoi ( confpr->valor ( CONF_FONTSIZE_BULMAGES ).toAscii().constData() ) ) );
 
     /// Set the location where your .qm files are in load() below as the last parameter
     /// instead of "." for development, use "/" to use the english original as
     /// .qm files are stored in the base project directory.
-    traductor = new QTranslator(0);
-    if (confpr->valor(CONF_TRADUCCION) == "locales") {
-        traductor->load(QString("bulmalib_") + QLocale::system().name(), confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    traductor = new QTranslator ( 0 );
+    if ( confpr->valor ( CONF_TRADUCCION ) == "locales" ) {
+        traductor->load ( QString ( "bulmalib_" ) + QLocale::system().name(), confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
     } else {
-        QString archivo = "bulmalib_" + confpr->valor(CONF_TRADUCCION);
-        traductor->load(archivo, confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+        QString archivo = "bulmalib_" + confpr->valor ( CONF_TRADUCCION );
+        traductor->load ( archivo, confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
     } // end if
-    a.installTranslator(traductor);
+    a.installTranslator ( traductor );
 
-    traductor = new QTranslator(0);
-    if (confpr->valor(CONF_TRADUCCION) == "locales") {
-        traductor->load(QString("bulmages_") + QLocale::system().name(), confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+    traductor = new QTranslator ( 0 );
+    if ( confpr->valor ( CONF_TRADUCCION ) == "locales" ) {
+        traductor->load ( QString ( "bulmages_" ) + QLocale::system().name(), confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
     } else {
-        QString archivo = "bulmages_" + confpr->valor(CONF_TRADUCCION);
-        traductor->load(archivo.toAscii().constData(), confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+        QString archivo = "bulmages_" + confpr->valor ( CONF_TRADUCCION );
+        traductor->load ( archivo.toAscii().constData(), confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
     } // end if
-    a.installTranslator(traductor);
+    a.installTranslator ( traductor );
 
     /// Hacemos la carga de las librerias que contienen los plugins.
-    g_plugins->cargaLibs(confpr->valor(CONF_PLUGINS_BULMAGES));
+    g_plugins->cargaLibs ( confpr->valor ( CONF_PLUGINS_BULMAGES ) );
 
     /// Disparamos los plugins con entryPoint.
-    g_plugins->lanza("entryPoint", theApp);
+    g_plugins->lanza ( "entryPoint", theApp );
 
 
     BSelector *bw = new BSelector();
-    bw->setWindowTitle(theApp->translate("main", "Selector de BulmaGes"));
+    bw->setWindowTitle ( theApp->translate ( "main", "Selector de BulmaGes" ) );
 
     /// Lo primero que hacemos es comprobar el sistema de autentificacion de
     /// Postgres para pedir un 'login' y un 'password' en caso de que sea necesario para
     /// entrar en el sistema.
-    logpass *login1 = new logpass(0, "");
-    if (!login1->authOK()) {
+    logpass *login1 = new logpass ( 0, "" );
+    if ( !login1->authOK() ) {
         login1->exec();
     } // end if
-    if (!login1->authOK()) {
-        exit(1);
+    if ( !login1->authOK() ) {
+        exit ( 1 );
     } // end if
     delete login1;
 

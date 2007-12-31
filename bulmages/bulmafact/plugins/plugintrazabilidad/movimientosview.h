@@ -31,21 +31,25 @@
 
 /// Administra el detalle del listado de facturas a clientes.
 /** */
-class MovimientosSubform : public SubForm2Bf {
+class MovimientosSubform : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
-    MovimientosSubform(QWidget *parent = 0, const char *name = 0);
-    ~MovimientosSubform() {}
+    MovimientosSubform ( QWidget *parent = 0, const char *name = 0 );
+    ~MovimientosSubform()
+    {}
 
 public slots:
-    virtual void cargar() {
-        _depura("MovimientosSubform::cargar\n", 0);
+    virtual void cargar()
+    {
+        _depura ( "MovimientosSubform::cargar\n", 0 );
         QString SQLQuery = "SELECT * FROM factura";
-        SubForm3::cargar(SQLQuery);
+        SubForm3::cargar ( SQLQuery );
     }
-    virtual void cargar(QString query) {
-	SubForm3::cargar(query);
+    virtual void cargar ( QString query )
+    {
+        SubForm3::cargar ( query );
     }
 };
 
@@ -55,7 +59,8 @@ public slots:
 
 /// Administra el listado de facturas a clientes.
 /** */
-class MovimientosView : public FichaBf, public Ui_MovimientosBase {
+class MovimientosView : public FichaBf, public Ui_MovimientosBase
+{
     Q_OBJECT
 
 public:
@@ -71,58 +76,71 @@ private:
 
 public:
 //    MovimientosView(QWidget *parent = 0, edmode editmodo = EditMode);
-    MovimientosView(Company *,QWidget *parent = 0, edmode editmodo = EditMode);
+    MovimientosView ( Company *, QWidget *parent = 0, edmode editmodo = EditMode );
     virtual ~MovimientosView();
     void iniciaForm();
-    void setEmpresaBase (Company *comp) {
-        PEmpresaBase::setEmpresaBase(comp);
-        m_cliente->setEmpresaBase(comp);
-        m_articulo->setEmpresaBase(comp);
-        mui_list->setEmpresaBase(comp);
+    void setEmpresaBase ( Company *comp )
+    {
+        PEmpresaBase::setEmpresaBase ( comp );
+        m_cliente->setEmpresaBase ( comp );
+        m_articulo->setEmpresaBase ( comp );
+        mui_list->setEmpresaBase ( comp );
     };
 
-    int modo() {
+    int modo()
+    {
         return m_modo;
     };
-    void modoseleccion() {
+    void modoseleccion()
+    {
         m_modo = SelectMode;
     };
-    void modoedicion() {
+    void modoedicion()
+    {
         m_modo = EditMode;
     };
-    QString idfactura() {
+    QString idfactura()
+    {
         return mdb_idfactura;
     };
-    void hideBusqueda() {
+    void hideBusqueda()
+    {
         m_busqueda->hide();
     };
-    void showBusqueda() {
+    void showBusqueda()
+    {
         m_busqueda->show();
     };
-    void setidcliente(QString val) {
-        m_cliente->setidcliente(val);
+    void setidcliente ( QString val )
+    {
+        m_cliente->setidcliente ( val );
     };
-    void setidarticulo(QString val) {
-        m_articulo->setidarticulo(val);
+    void setidarticulo ( QString val )
+    {
+        m_articulo->setidarticulo ( val );
     };
     QString generaFiltro();
 
     void presenta();
 
 public slots:
-    virtual void on_m_filtro_textChanged(const QString &text) {
-    if (text.size() >= 3) 
-		on_mui_actualizar_clicked();
+    virtual void on_m_filtro_textChanged ( const QString &text )
+    {
+        if ( text.size() >= 3 )
+            on_mui_actualizar_clicked();
     };
-    virtual void on_mui_actualizar_clicked() {
+    virtual void on_mui_actualizar_clicked()
+    {
         presenta();
     }
-    virtual void on_mui_crear_clicked() {
-        empresaBase()->s_newFacturaCli();
+    virtual void on_mui_crear_clicked()
+    {
+        empresaBase() ->s_newFacturaCli();
     };
     virtual void on_mui_imprimir_clicked();
-    virtual void on_mui_configurar_toggled(bool checked) {
-        if (checked) {
+    virtual void on_mui_configurar_toggled ( bool checked )
+    {
+        if ( checked ) {
             mui_list->showConfig();
         } else {
             mui_list->hideConfig();
@@ -130,7 +148,7 @@ public slots:
     };
 
 signals:
-    void selected(QString);
+    void selected ( QString );
 };
 
 #endif

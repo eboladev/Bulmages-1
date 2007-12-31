@@ -32,27 +32,29 @@
 \param comp
 \param parent
 **/
-RutaComercial::RutaComercial(Company *comp, QWidget *parent) : FichaBf(comp, parent) {
-    _depura("RutaComercial::RutaComercial", 0);
-    setTitleName(tr("Ruta Comercial"));
-    setDBTableName("rutacomercial");
-    setDBCampoId("idrutacomercial");
-    addDBCampo("idrutacomercial", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("RutaComercial", "Identificador"));
-    addDBCampo("fecharutacomercial", DBCampo::DBdate, DBCampo::DBNotNull, QApplication::translate("RutaComercial", "Fecha"));
-    addDBCampo("idcliente", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("RutaComercial", "Familia"));
-    addDBCampo("comentariosrutacomercial", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("RutaComercial", "Comentarios"));
-    addDBCampo("horarutacomercial", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("RutaComercial", "Hora"));
-    addDBCampo("refrutacomercial",  DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("RutaComercial", "Referencia"));
-    _depura("END RutaComercial::RutaComercial", 0);
+RutaComercial::RutaComercial ( Company *comp, QWidget *parent ) : FichaBf ( comp, parent )
+{
+    _depura ( "RutaComercial::RutaComercial", 0 );
+    setTitleName ( tr ( "Ruta Comercial" ) );
+    setDBTableName ( "rutacomercial" );
+    setDBCampoId ( "idrutacomercial" );
+    addDBCampo ( "idrutacomercial", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "RutaComercial", "Identificador" ) );
+    addDBCampo ( "fecharutacomercial", DBCampo::DBdate, DBCampo::DBNotNull, QApplication::translate ( "RutaComercial", "Fecha" ) );
+    addDBCampo ( "idcliente", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "RutaComercial", "Familia" ) );
+    addDBCampo ( "comentariosrutacomercial", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "RutaComercial", "Comentarios" ) );
+    addDBCampo ( "horarutacomercial", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "RutaComercial", "Hora" ) );
+    addDBCampo ( "refrutacomercial",  DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "RutaComercial", "Referencia" ) );
+    _depura ( "END RutaComercial::RutaComercial", 0 );
 }
 
 
 ///
 /**
 **/
-RutaComercial::~RutaComercial() {
-    _depura("RutaComercial::~RutaComercial", 0);
-    _depura("END RutaComercial::~RutaComercial", 0);
+RutaComercial::~RutaComercial()
+{
+    _depura ( "RutaComercial::~RutaComercial", 0 );
+    _depura ( "END RutaComercial::~RutaComercial", 0 );
 }
 
 
@@ -60,14 +62,15 @@ RutaComercial::~RutaComercial() {
 /**
 \return
 **/
-void RutaComercial::pintar() {
-    _depura("RutaComercial::pintar", 0);
+void RutaComercial::pintar()
+{
+    _depura ( "RutaComercial::pintar", 0 );
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
-    int res = g_plugins->lanza("RutaComercial_pintar", this);
-    if (res != 0)
+    int res = g_plugins->lanza ( "RutaComercial_pintar", this );
+    if ( res != 0 )
         return;
-    _depura("funcion no sobrecargada", 2);
-    _depura("END RutaComercial::pintar", 0);
+    _depura ( "funcion no sobrecargada", 2 );
+    _depura ( "END RutaComercial::pintar", 0 );
 }
 
 
@@ -76,15 +79,16 @@ void RutaComercial::pintar() {
 \param id
 \return
 **/
-int RutaComercial::cargar(QString id) {
-    _depura("RutaComercial::cargar", 0);
+int RutaComercial::cargar ( QString id )
+{
+    _depura ( "RutaComercial::cargar", 0 );
     QString query = "SELECT * FROM rutacomercial WHERE idrutacomercial = " + id;
-    cursor2 *cur = empresaBase()->cargacursor(query);
-    if (!cur->eof())  {
-        DBload(cur);
+    cursor2 *cur = empresaBase() ->cargacursor ( query );
+    if ( !cur->eof() )  {
+        DBload ( cur );
     }
     delete cur;
-    _depura("END RutaComercial::cargar", 0);
+    _depura ( "END RutaComercial::cargar", 0 );
     return 0;
 }
 

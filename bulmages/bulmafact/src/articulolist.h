@@ -32,11 +32,12 @@
     Deriva de SubForm2Bf y agrega la configuracion para tratar especificamente
     con la tabla articulo.
 */
-class ArticuloListSubForm : public SubForm2Bf {
+class ArticuloListSubForm : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
-    ArticuloListSubForm(QWidget *parent = 0, const char *name = 0);
+    ArticuloListSubForm ( QWidget *parent = 0, const char *name = 0 );
     ~ArticuloListSubForm();
 };
 
@@ -49,7 +50,8 @@ public:
 */
 /// \TODO: Deberia crearse la clase Listado y hacer que esta clase derive de Listado en lugar
 /// derivar de Ficha.
-class ArticuloList : public Listado, public Ui_ArticuloListBase, public pgimportfiles {
+class ArticuloList : public Listado, public Ui_ArticuloListBase, public pgimportfiles
+{
     Q_OBJECT
 
 private:
@@ -61,25 +63,25 @@ private:
     QString mdb_codigocompletoarticulo;
 
 public:
-    ArticuloList(Company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
+    ArticuloList ( Company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
     virtual ~ArticuloList();
     QString formaQuery();
     QString idarticulo();
     QString nomarticulo();
     QString codigocompletoarticulo();
     void presentar();
-    void editar(int);
+    void editar ( int );
     void imprimir();
     void borrar();
     void crear();
-    void submenu(const QPoint &);
+    void submenu ( const QPoint & );
 
 public slots:
     virtual void on_mui_importar_clicked();
     virtual void on_mui_exportar_clicked();
 
 signals:
-    void selected(QString);
+    void selected ( QString );
 };
 
 #endif

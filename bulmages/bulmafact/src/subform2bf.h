@@ -37,18 +37,19 @@ class SubForm2Bf;
 
 /// Clase SubForm2BfDelegate
 /** Se encarga del control de los 'Widgets' de edici&oacute;n del sistema.*/
-class QSubForm2BfDelegate : public QItemDelegate, public PEmpresaBase {
+class QSubForm2BfDelegate : public QItemDelegate, public PEmpresaBase
+{
 protected:
     SubForm2Bf *m_subform;
 
 public:
-    QSubForm2BfDelegate(QObject *);
+    QSubForm2BfDelegate ( QObject * );
     virtual ~QSubForm2BfDelegate();
-    virtual void setEditorData(QWidget *, const QModelIndex &index) const;
-    virtual void setModelData(QWidget *editor,  QAbstractItemModel *model, const QModelIndex &index) const;
-    virtual QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const;
-    virtual bool eventFilter(QObject *obj, QEvent *event);
-    virtual int cerrarEditor(QWidget *editor);
+    virtual void setEditorData ( QWidget *, const QModelIndex &index ) const;
+    virtual void setModelData ( QWidget *editor,  QAbstractItemModel *model, const QModelIndex &index ) const;
+    virtual QWidget *createEditor ( QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index ) const;
+    virtual bool eventFilter ( QObject *obj, QEvent *event );
+    virtual int cerrarEditor ( QWidget *editor );
 };
 
 
@@ -56,7 +57,8 @@ public:
 /** Es la primera abstraccion de los subformularios que incluye todas las caracter&iacute;sticas
     comunes de la facturaci&oacute;n.
 */
-class SubForm2Bf : public SubForm3 {
+class SubForm2Bf : public SubForm3
+{
     Q_OBJECT
 
 public:
@@ -67,19 +69,19 @@ protected:
     QString mdb_idproveedor;
 
 public:
-    SubForm2Bf(QWidget *parent = 0);
+    SubForm2Bf ( QWidget *parent = 0 );
     virtual ~SubForm2Bf();
-    virtual void cargar(QString query);
-    virtual void setEmpresaBase(EmpresaBase *);
-    virtual void on_mui_list_cellChanged(int row, int col);
+    virtual void cargar ( QString query );
+    virtual void setEmpresaBase ( EmpresaBase * );
+    virtual void on_mui_list_cellChanged ( int row, int col );
     virtual int cerrarEditor();
-    void setIdCliente(QString id);
-    void setIdProveedor(QString id);
+    void setIdCliente ( QString id );
+    void setIdProveedor ( QString id );
 
 public slots:
-    virtual void on_mui_list_pressedSlash(int row, int col);
-    virtual void on_mui_list_pressedAsterisk(int row, int col);
-    virtual void on_mui_list_pressedMinus(int row, int col);
+    virtual void on_mui_list_pressedSlash ( int row, int col );
+    virtual void on_mui_list_pressedAsterisk ( int row, int col );
+    virtual void on_mui_list_pressedMinus ( int row, int col );
 };
 
 #endif

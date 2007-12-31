@@ -32,16 +32,17 @@
 
 /// Administra el detalle del listado de facturas a clientes.
 /** */
-class FacturasListSubform : public SubForm2Bf {
+class FacturasListSubform : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
-    FacturasListSubform(QWidget *parent = 0, const char *name = 0);
+    FacturasListSubform ( QWidget *parent = 0, const char *name = 0 );
     ~FacturasListSubform();
 
 public slots:
     virtual void cargar();
-    virtual void cargar(QString query);
+    virtual void cargar ( QString query );
 };
 
 
@@ -50,30 +51,31 @@ public slots:
 
 /// Administra el listado de facturas a clientes.
 /** */
-class FacturasList : public Listado, public Ui_FacturasListBase {
+class FacturasList : public Listado, public Ui_FacturasListBase
+{
     Q_OBJECT
 
 private:
     QString mdb_idfactura;
 
 public:
-    FacturasList(QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
-    FacturasList(Company *,QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
+    FacturasList ( QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
+    FacturasList ( Company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
     ~FacturasList();
     void iniciaForm();
-    void setEmpresaBase (Company *comp);
+    void setEmpresaBase ( Company *comp );
     QString idfactura();
-    void setidcliente(QString val);
-    void setidarticulo(QString val);
+    void setidcliente ( QString val );
+    void setidarticulo ( QString val );
     QString generaFiltro();
     void presentar();
-    void editar(int);
+    void editar ( int );
     void borrar();
     void crear();
     void imprimir();
 
 signals:
-    void selected(QString);
+    void selected ( QString );
 };
 
 #endif

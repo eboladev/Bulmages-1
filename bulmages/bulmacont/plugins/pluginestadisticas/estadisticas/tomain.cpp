@@ -98,1014 +98,1018 @@
 
 #define DEFAULT_TITLE "TOra %s"
 
-const int toMain::TO_FILE_MENU		= 10;
-const int toMain::TO_EDIT_MENU		= 20;
-const int toMain::TO_TOOLS_MENU		= 30;
-const int toMain::TO_WINDOWS_MENU	= 40;
-const int toMain::TO_HELP_MENU		= 50;
+const int toMain::TO_FILE_MENU  = 10;
+const int toMain::TO_EDIT_MENU  = 20;
+const int toMain::TO_TOOLS_MENU  = 30;
+const int toMain::TO_WINDOWS_MENU = 40;
+const int toMain::TO_HELP_MENU  = 50;
 
-const int toMain::TO_TOOL_MENU_ID	= 2000;
-const int toMain::TO_TOOL_MENU_ID_END	= 2999;
+const int toMain::TO_TOOL_MENU_ID = 2000;
+const int toMain::TO_TOOL_MENU_ID_END = 2999;
 
-const int toMain::TO_TOOL_ABOUT_ID	= 3000;
-const int toMain::TO_TOOL_ABOUT_ID_END	= 3999;
+const int toMain::TO_TOOL_ABOUT_ID = 3000;
+const int toMain::TO_TOOL_ABOUT_ID_END = 3999;
 
-#define TO_STATUS_ID		4000
-#define TO_STATUS_ID_END	4999
-#define TO_NEW_CONNECTION	100
-#define TO_CLOSE_CONNECTION	101
-#define TO_FILE_OPEN		102
-#define TO_FILE_SAVE		103
-#define TO_FILE_SAVE_AS		104
-#define TO_FILE_COMMIT		105
-#define TO_FILE_ROLLBACK	106
+#define TO_STATUS_ID  4000
+#define TO_STATUS_ID_END 4999
+#define TO_NEW_CONNECTION 100
+#define TO_CLOSE_CONNECTION 101
+#define TO_FILE_OPEN  102
+#define TO_FILE_SAVE  103
+#define TO_FILE_SAVE_AS  104
+#define TO_FILE_COMMIT  105
+#define TO_FILE_ROLLBACK 106
 #define TO_FILE_CURRENT         107
-#define TO_FILE_CLEARCACHE	108
-#define TO_FILE_PRINT		109
-#define TO_FILE_QUIT		110
+#define TO_FILE_CLEARCACHE 108
+#define TO_FILE_PRINT  109
+#define TO_FILE_QUIT  110
 
-#define TO_EDIT_UNDO		200
-#define TO_EDIT_REDO		201
-#define TO_EDIT_CUT		202
-#define TO_EDIT_COPY		203
-#define TO_EDIT_PASTE		204
-#define TO_EDIT_SELECT_ALL	205
-#define TO_EDIT_OPTIONS		206
-#define TO_EDIT_READ_ALL	207
-#define TO_EDIT_SEARCH		208
-#define TO_EDIT_SEARCH_NEXT	209
+#define TO_EDIT_UNDO  200
+#define TO_EDIT_REDO  201
+#define TO_EDIT_CUT  202
+#define TO_EDIT_COPY  203
+#define TO_EDIT_PASTE  204
+#define TO_EDIT_SELECT_ALL 205
+#define TO_EDIT_OPTIONS  206
+#define TO_EDIT_READ_ALL 207
+#define TO_EDIT_SEARCH  208
+#define TO_EDIT_SEARCH_NEXT 209
 
-#define TO_WINDOWS_TILE		300
-#define TO_WINDOWS_CASCADE	301
-#define TO_WINDOWS_CLOSE	302
-#define TO_WINDOWS_CLOSE_ALL	303
-#define TO_WINDOWS_WINDOWS	310
-#define TO_WINDOWS_END		399
+#define TO_WINDOWS_TILE  300
+#define TO_WINDOWS_CASCADE 301
+#define TO_WINDOWS_CLOSE 302
+#define TO_WINDOWS_CLOSE_ALL 303
+#define TO_WINDOWS_WINDOWS 310
+#define TO_WINDOWS_END  399
 
-#define TO_HELP_CONTENTS	900
-#define TO_HELP_CONTEXT		901
-#define TO_HELP_ABOUT		902
-#define TO_HELP_LICENSE		903
-#define TO_HELP_QUOTES		904
-#define TO_HELP_REGISTER	905
+#define TO_HELP_CONTENTS 900
+#define TO_HELP_CONTEXT  901
+#define TO_HELP_ABOUT  902
+#define TO_HELP_LICENSE  903
+#define TO_HELP_QUOTES  904
+#define TO_HELP_REGISTER 905
 
-#define TO_TOOLS		1000
-#define TO_ABOUT_ID_OFFSET	(toMain::TO_TOOL_ABOUT_ID-TO_TOOLS)
+#define TO_TOOLS  1000
+#define TO_ABOUT_ID_OFFSET (toMain::TO_TOOL_ABOUT_ID-TO_TOOLS)
 
-QString toCheckLicense(bool);
-bool toFreeware(void);
+QString toCheckLicense ( bool );
+bool toFreeware ( void );
 
 toMain::toMain()
-  : toMainWindow()
+        : toMainWindow()
 {
-  qApp->setMainWidget(this);
-  setDockMenuEnabled(true);
+    qApp->setMainWidget ( this );
+    setDockMenuEnabled ( true );
 
-  Edit=NULL;
+    Edit = NULL;
 
-  FileMenu=new QPopupMenu(this);
-  FileMenu->insertItem(QPixmap((const char **)connect_xpm),
-		       "&New Connection...",TO_NEW_CONNECTION);
-  FileMenu->insertItem(QPixmap((const char **)disconnect_xpm),
-		       "&Close Connection",this,SLOT(delConnection()),0,TO_CLOSE_CONNECTION);
-  FileMenu->insertSeparator();
-  FileMenu->insertItem(QPixmap((const char **)commit_xpm),"&Commit Connection",TO_FILE_COMMIT);
-  FileMenu->insertItem(QPixmap((const char **)rollback_xpm),"&Rollback Connection",TO_FILE_ROLLBACK);
-  FileMenu->insertItem("C&urrent Connection",TO_FILE_CURRENT);
-  FileMenu->insertItem(QPixmap((const char **)trash_xpm),"Reread Object Cache",TO_FILE_CLEARCACHE);
-  FileMenu->insertSeparator();
-  FileMenu->insertItem(QPixmap((const char **)fileopen_xpm),"&Open File...",TO_FILE_OPEN);
-  FileMenu->insertItem(QPixmap((const char **)filesave_xpm),"&Save",TO_FILE_SAVE);
-  FileMenu->insertItem("Save A&s...",TO_FILE_SAVE_AS);
-  FileMenu->insertSeparator();
-  FileMenu->insertItem(QPixmap((const char **)print_xpm),"&Print..",TO_FILE_PRINT);
-  FileMenu->insertSeparator();
-  FileMenu->insertItem("&Quit",TO_FILE_QUIT);
-  menuBar()->insertItem("&File",FileMenu,TO_FILE_MENU);
-  FileMenu->setAccel(Key_G|CTRL,TO_NEW_CONNECTION);
-  FileMenu->setAccel(Key_O|CTRL,TO_FILE_OPEN);
-  FileMenu->setAccel(Key_S|CTRL,TO_FILE_SAVE);
-  FileMenu->setAccel(Key_W|CTRL,TO_FILE_COMMIT);
-  FileMenu->setAccel(Key_R|CTRL,TO_FILE_ROLLBACK);
-  FileMenu->setAccel(Key_U|CTRL,TO_FILE_CURRENT);
-  connect(FileMenu,SIGNAL(aboutToShow()),this,SLOT( editFileMenu()));
+    FileMenu = new QPopupMenu ( this );
+    FileMenu->insertItem ( QPixmap ( ( const char ** ) connect_xpm ),
+                           "&New Connection...", TO_NEW_CONNECTION );
+    FileMenu->insertItem ( QPixmap ( ( const char ** ) disconnect_xpm ),
+                           "&Close Connection", this, SLOT ( delConnection() ), 0, TO_CLOSE_CONNECTION );
+    FileMenu->insertSeparator();
+    FileMenu->insertItem ( QPixmap ( ( const char ** ) commit_xpm ), "&Commit Connection", TO_FILE_COMMIT );
+    FileMenu->insertItem ( QPixmap ( ( const char ** ) rollback_xpm ), "&Rollback Connection", TO_FILE_ROLLBACK );
+    FileMenu->insertItem ( "C&urrent Connection", TO_FILE_CURRENT );
+    FileMenu->insertItem ( QPixmap ( ( const char ** ) trash_xpm ), "Reread Object Cache", TO_FILE_CLEARCACHE );
+    FileMenu->insertSeparator();
+    FileMenu->insertItem ( QPixmap ( ( const char ** ) fileopen_xpm ), "&Open File...", TO_FILE_OPEN );
+    FileMenu->insertItem ( QPixmap ( ( const char ** ) filesave_xpm ), "&Save", TO_FILE_SAVE );
+    FileMenu->insertItem ( "Save A&s...", TO_FILE_SAVE_AS );
+    FileMenu->insertSeparator();
+    FileMenu->insertItem ( QPixmap ( ( const char ** ) print_xpm ), "&Print..", TO_FILE_PRINT );
+    FileMenu->insertSeparator();
+    FileMenu->insertItem ( "&Quit", TO_FILE_QUIT );
+    menuBar() ->insertItem ( "&File", FileMenu, TO_FILE_MENU );
+    FileMenu->setAccel ( Key_G | CTRL, TO_NEW_CONNECTION );
+    FileMenu->setAccel ( Key_O | CTRL, TO_FILE_OPEN );
+    FileMenu->setAccel ( Key_S | CTRL, TO_FILE_SAVE );
+    FileMenu->setAccel ( Key_W | CTRL, TO_FILE_COMMIT );
+    FileMenu->setAccel ( Key_R | CTRL, TO_FILE_ROLLBACK );
+    FileMenu->setAccel ( Key_U | CTRL, TO_FILE_CURRENT );
+    connect ( FileMenu, SIGNAL ( aboutToShow() ), this, SLOT ( editFileMenu() ) );
 
-  EditMenu=new QPopupMenu(this);
-  EditMenu->insertItem(QPixmap((const char **)undo_xpm),"&Undo",TO_EDIT_UNDO);
-  EditMenu->insertItem(QPixmap((const char **)redo_xpm),"&Redo",TO_EDIT_REDO);
-  EditMenu->insertSeparator();
-  EditMenu->insertItem(QPixmap((const char **)cut_xpm),"Cu&t",TO_EDIT_CUT);
-  EditMenu->insertItem(QPixmap((const char **)copy_xpm),"&Copy",TO_EDIT_COPY);
-  EditMenu->insertItem(QPixmap((const char **)paste_xpm),"&Paste",TO_EDIT_PASTE);
-  EditMenu->insertSeparator();
-  EditMenu->insertItem("&Search && Replace",TO_EDIT_SEARCH);
-  EditMenu->insertItem("Search &Next",TO_EDIT_SEARCH_NEXT);
-  EditMenu->insertItem("Select &All",TO_EDIT_SELECT_ALL);
-  EditMenu->insertItem("Read All &Items",TO_EDIT_READ_ALL);
-  EditMenu->insertSeparator();
-  EditMenu->insertItem("&Options...",TO_EDIT_OPTIONS);
-  EditMenu->setAccel(Key_Z|CTRL,TO_EDIT_UNDO);
-  EditMenu->setAccel(Key_Y|CTRL,TO_EDIT_REDO);
-  EditMenu->setAccel(Key_X|CTRL,TO_EDIT_CUT);
-  EditMenu->setAccel(Key_C|CTRL,TO_EDIT_COPY);
-  EditMenu->setAccel(Key_V|CTRL,TO_EDIT_PASTE);
-  EditMenu->setAccel(Key_F|CTRL,TO_EDIT_SEARCH);
-  EditMenu->setAccel(Key_F3,TO_EDIT_SEARCH_NEXT);
-  connect(EditMenu,SIGNAL(aboutToShow()),this,SLOT( editFileMenu()));
-  menuBar()->insertItem("&Edit",EditMenu,TO_EDIT_MENU);
+    EditMenu = new QPopupMenu ( this );
+    EditMenu->insertItem ( QPixmap ( ( const char ** ) undo_xpm ), "&Undo", TO_EDIT_UNDO );
+    EditMenu->insertItem ( QPixmap ( ( const char ** ) redo_xpm ), "&Redo", TO_EDIT_REDO );
+    EditMenu->insertSeparator();
+    EditMenu->insertItem ( QPixmap ( ( const char ** ) cut_xpm ), "Cu&t", TO_EDIT_CUT );
+    EditMenu->insertItem ( QPixmap ( ( const char ** ) copy_xpm ), "&Copy", TO_EDIT_COPY );
+    EditMenu->insertItem ( QPixmap ( ( const char ** ) paste_xpm ), "&Paste", TO_EDIT_PASTE );
+    EditMenu->insertSeparator();
+    EditMenu->insertItem ( "&Search && Replace", TO_EDIT_SEARCH );
+    EditMenu->insertItem ( "Search &Next", TO_EDIT_SEARCH_NEXT );
+    EditMenu->insertItem ( "Select &All", TO_EDIT_SELECT_ALL );
+    EditMenu->insertItem ( "Read All &Items", TO_EDIT_READ_ALL );
+    EditMenu->insertSeparator();
+    EditMenu->insertItem ( "&Options...", TO_EDIT_OPTIONS );
+    EditMenu->setAccel ( Key_Z | CTRL, TO_EDIT_UNDO );
+    EditMenu->setAccel ( Key_Y | CTRL, TO_EDIT_REDO );
+    EditMenu->setAccel ( Key_X | CTRL, TO_EDIT_CUT );
+    EditMenu->setAccel ( Key_C | CTRL, TO_EDIT_COPY );
+    EditMenu->setAccel ( Key_V | CTRL, TO_EDIT_PASTE );
+    EditMenu->setAccel ( Key_F | CTRL, TO_EDIT_SEARCH );
+    EditMenu->setAccel ( Key_F3, TO_EDIT_SEARCH_NEXT );
+    connect ( EditMenu, SIGNAL ( aboutToShow() ), this, SLOT ( editFileMenu() ) );
+    menuBar() ->insertItem ( "&Edit", EditMenu, TO_EDIT_MENU );
 
-  std::map<QString,toTool *> &tools=toTool::tools();
+    std::map<QString, toTool *> &tools = toTool::tools();
 
-  QToolBar *toolbar=toAllocBar(this,"Application",QString::null);
+    QToolBar *toolbar = toAllocBar ( this, "Application", QString::null );
 
-  LoadButton=new QToolButton(QPixmap((const char **)fileopen_xpm),
-			     "Load file into editor",
-			     "Load file into editor",
-			     this,SLOT(loadButton()),toolbar);
-  SaveButton=new QToolButton(QPixmap((const char **)filesave_xpm),
-			     "Save file from editor",
-			     "Save file from editor",
-			     this,SLOT(saveButton()),toolbar);
-  PrintButton=new QToolButton(QPixmap((const char **)print_xpm),
-			     "Print",
-			     "Print",
-			     this,SLOT(printButton()),toolbar);
-  PrintButton->setEnabled(false);
-  LoadButton->setEnabled(false);
-  SaveButton->setEnabled(false);
-  toolbar->addSeparator();
-  UndoButton=new QToolButton(QPixmap((const char **)undo_xpm),
-			     "Undo",
-			     "Undo",
-			     this,SLOT(undoButton()),toolbar);
-  RedoButton=new QToolButton(QPixmap((const char **)redo_xpm),
-			     "Redo",
-			     "Redo",
-			     this,SLOT(redoButton()),toolbar);
-  CutButton=new QToolButton(QPixmap((const char **)cut_xpm),
-			     "Cut to clipboard",
-			     "Cut to clipboard",
-			     this,SLOT(cutButton()),toolbar);
-  CopyButton=new QToolButton(QPixmap((const char **)copy_xpm),
-			     "Copy to clipboard",
-			     "Copy to clipboard",
-			     this,SLOT(copyButton()),toolbar);
-  PasteButton=new QToolButton(QPixmap((const char **)paste_xpm),
-			      "Paste from clipboard",
-			      "Paste from clipboard",
-			      this,SLOT(pasteButton()),toolbar);
-  UndoButton->setEnabled(false);
-  RedoButton->setEnabled(false);
-  CutButton->setEnabled(false);
-  CopyButton->setEnabled(false);
-  PasteButton->setEnabled(false);
+    LoadButton = new QToolButton ( QPixmap ( ( const char ** ) fileopen_xpm ),
+                                   "Load file into editor",
+                                   "Load file into editor",
+                                   this, SLOT ( loadButton() ), toolbar );
+    SaveButton = new QToolButton ( QPixmap ( ( const char ** ) filesave_xpm ),
+                                   "Save file from editor",
+                                   "Save file from editor",
+                                   this, SLOT ( saveButton() ), toolbar );
+    PrintButton = new QToolButton ( QPixmap ( ( const char ** ) print_xpm ),
+                                    "Print",
+                                    "Print",
+                                    this, SLOT ( printButton() ), toolbar );
+    PrintButton->setEnabled ( false );
+    LoadButton->setEnabled ( false );
+    SaveButton->setEnabled ( false );
+    toolbar->addSeparator();
+    UndoButton = new QToolButton ( QPixmap ( ( const char ** ) undo_xpm ),
+                                   "Undo",
+                                   "Undo",
+                                   this, SLOT ( undoButton() ), toolbar );
+    RedoButton = new QToolButton ( QPixmap ( ( const char ** ) redo_xpm ),
+                                   "Redo",
+                                   "Redo",
+                                   this, SLOT ( redoButton() ), toolbar );
+    CutButton = new QToolButton ( QPixmap ( ( const char ** ) cut_xpm ),
+                                  "Cut to clipboard",
+                                  "Cut to clipboard",
+                                  this, SLOT ( cutButton() ), toolbar );
+    CopyButton = new QToolButton ( QPixmap ( ( const char ** ) copy_xpm ),
+                                   "Copy to clipboard",
+                                   "Copy to clipboard",
+                                   this, SLOT ( copyButton() ), toolbar );
+    PasteButton = new QToolButton ( QPixmap ( ( const char ** ) paste_xpm ),
+                                    "Paste from clipboard",
+                                    "Paste from clipboard",
+                                    this, SLOT ( pasteButton() ), toolbar );
+    UndoButton->setEnabled ( false );
+    RedoButton->setEnabled ( false );
+    CutButton->setEnabled ( false );
+    CopyButton->setEnabled ( false );
+    PasteButton->setEnabled ( false );
 
-  ToolsMenu=new QPopupMenu(this);
+    ToolsMenu = new QPopupMenu ( this );
 
 #ifdef TOOL_TOOLBAR
-  toolbar=new toAllocBar(this,"Tools",QString::null);
+    toolbar = new toAllocBar ( this, "Tools", QString::null );
 #else
-  toolbar->addSeparator();
+    toolbar->addSeparator();
 #endif
 
-  int toolID=TO_TOOLS;
-  int lastPriorityPix=0;
-  int lastPriorityMenu=0;
-  SQLEditor=-1;
-  DefaultTool=toolID;
-  QString defName=toTool::globalConfig(CONF_DEFAULT_TOOL,"");
+    int toolID = TO_TOOLS;
+    int lastPriorityPix = 0;
+    int lastPriorityMenu = 0;
+    SQLEditor = -1;
+    DefaultTool = toolID;
+    QString defName = toTool::globalConfig ( CONF_DEFAULT_TOOL, "" );
 
-  HelpMenu=new QPopupMenu(this);
-  HelpMenu->insertItem("C&urrent Context",TO_HELP_CONTEXT);
-  HelpMenu->insertItem("&Contents",TO_HELP_CONTENTS);
-  HelpMenu->insertSeparator();
-  HelpMenu->insertItem("&About TOra",TO_HELP_ABOUT);
-  HelpMenu->insertItem("&License",TO_HELP_LICENSE);
-  HelpMenu->insertItem("&Quotes",TO_HELP_QUOTES);
-  HelpMenu->setAccel(Key_F1,TO_HELP_CONTEXT);
-  if (!toFreeware()) {
+    HelpMenu = new QPopupMenu ( this );
+    HelpMenu->insertItem ( "C&urrent Context", TO_HELP_CONTEXT );
+    HelpMenu->insertItem ( "&Contents", TO_HELP_CONTENTS );
     HelpMenu->insertSeparator();
-    HelpMenu->insertItem("&Register",TO_HELP_REGISTER);
-  }
-  QPopupMenu *toolAbout=NULL;
-
-  for (std::map<QString,toTool *>::iterator i=tools.begin();i!=tools.end();i++) {
-    const QPixmap *pixmap=(*i).second->toolbarImage();
-    const char *toolTip=(*i).second->toolbarTip();
-    const char *menuName=(*i).second->menuItem();
-
-    QString tmp=(*i).second->name();
-    tmp+=CONF_TOOL_ENABLE;
-    if (toTool::globalConfig(tmp,"Yes").isEmpty())
-      continue;
-
-    if (defName==menuName)
-      DefaultTool=toolID;
-
-    int priority=(*i).second->priority();
-    if (priority/100!=lastPriorityPix/100&&
-	pixmap) {
-      toolbar->addSeparator();
-      lastPriorityPix=priority;
+    HelpMenu->insertItem ( "&About TOra", TO_HELP_ABOUT );
+    HelpMenu->insertItem ( "&License", TO_HELP_LICENSE );
+    HelpMenu->insertItem ( "&Quotes", TO_HELP_QUOTES );
+    HelpMenu->setAccel ( Key_F1, TO_HELP_CONTEXT );
+    if ( !toFreeware() ) {
+        HelpMenu->insertSeparator();
+        HelpMenu->insertItem ( "&Register", TO_HELP_REGISTER );
     }
-    if (priority/100!=lastPriorityMenu/100&&
-	menuName) {
-      ToolsMenu->insertSeparator();
-      lastPriorityMenu=priority;
+    QPopupMenu *toolAbout = NULL;
+
+    for ( std::map<QString, toTool *>::iterator i = tools.begin();i != tools.end();i++ ) {
+        const QPixmap *pixmap = ( *i ).second->toolbarImage();
+        const char *toolTip = ( *i ).second->toolbarTip();
+        const char *menuName = ( *i ).second->menuItem();
+
+        QString tmp = ( *i ).second->name();
+        tmp += CONF_TOOL_ENABLE;
+        if ( toTool::globalConfig ( tmp, "Yes" ).isEmpty() )
+            continue;
+
+        if ( defName == menuName )
+            DefaultTool = toolID;
+
+        int priority = ( *i ).second->priority();
+        if ( priority / 100 != lastPriorityPix / 100 &&
+                pixmap ) {
+            toolbar->addSeparator();
+            lastPriorityPix = priority;
+        }
+        if ( priority / 100 != lastPriorityMenu / 100 &&
+                menuName ) {
+            ToolsMenu->insertSeparator();
+            lastPriorityMenu = priority;
+        }
+
+        if ( pixmap ) {
+            if ( !toolTip )
+                toolTip = "";
+            NeedConnection[new QToolButton ( *pixmap,
+                                             toolTip,
+                                             toolTip,
+                                             ( *i ).second,
+                                             SLOT ( createWindow ( void ) ),
+                                             toolbar ) ] = ( *i ).second;
+        }
+
+        if ( menuName ) {
+            if ( pixmap )
+                ToolsMenu->insertItem ( *pixmap, menuName, toolID );
+            else
+                ToolsMenu->insertItem ( menuName, toolID );
+            ToolsMenu->setItemEnabled ( toolID, false );
+        }
+
+        if ( ( *i ).second->hasAbout() && menuName ) {
+            if ( !toolAbout ) {
+                toolAbout = new QPopupMenu ( this );
+                HelpMenu->insertItem ( "Tools", toolAbout );
+            }
+            if ( pixmap )
+                toolAbout->insertItem ( *pixmap, menuName, toolID + TO_ABOUT_ID_OFFSET );
+            else
+                toolAbout->insertItem ( menuName, toolID + TO_ABOUT_ID_OFFSET );
+        }
+
+        Tools[toolID] = ( *i ).second;
+
+        toolID++;
     }
-
-    if (pixmap) {
-      if (!toolTip)
-	toolTip="";
-      NeedConnection[new QToolButton(*pixmap,
-				     toolTip,
-				     toolTip,
-				     (*i).second,
-				     SLOT(createWindow(void)),
-				     toolbar)]=(*i).second;
-    }
-
-    if (menuName) {
-      if (pixmap)
-	ToolsMenu->insertItem(*pixmap,menuName,toolID);
-      else
-	ToolsMenu->insertItem(menuName,toolID);
-      ToolsMenu->setItemEnabled(toolID,false);
-    }
-
-    if ((*i).second->hasAbout()&&menuName) {
-      if (!toolAbout) {
-	toolAbout=new QPopupMenu(this);
-	HelpMenu->insertItem("Tools",toolAbout);
-      }
-      if (pixmap)
-	toolAbout->insertItem(*pixmap,menuName,toolID+TO_ABOUT_ID_OFFSET);
-      else
-	toolAbout->insertItem(menuName,toolID+TO_ABOUT_ID_OFFSET);
-    }
-
-    Tools[toolID]=(*i).second;
-
-    toolID++;
-  }
 
 #ifndef TOOL_TOOLBAR
-  toolbar->setStretchableWidget(new QLabel("",toolbar));
+    toolbar->setStretchableWidget ( new QLabel ( "", toolbar ) );
 #endif
 
-  new QToolButton(QPixmap((const char **)connect_xpm),
-		  "Connect to database",
-		  "Connect to database",
-		  this,SLOT(addConnection()),toolbar);
-  DisconnectButton=new QToolButton(QPixmap((const char **)disconnect_xpm),
-				   "Disconnect current connection",
-				   "Disconnect current connection",
-				   this,SLOT(delConnection()),toolbar);
-  DisconnectButton->setEnabled(false);
-  toolbar->addSeparator();
-  NeedConnection[new QToolButton(QPixmap((const char **)commit_xpm),
-				 "Commit connection",
-				 "Commit connection",
-				 this,SLOT(commitButton()),toolbar)]=NULL;
-  NeedConnection[new QToolButton(QPixmap((const char **)rollback_xpm),
-				 "Rollback connection",
-				 "Rollback connection",
-				 this,SLOT(rollbackButton()),toolbar)]=NULL;
-  toolbar->addSeparator();
-  ConnectionSelection=new QComboBox(toolbar);
-  ConnectionSelection->setFixedWidth(200);
-  ConnectionSelection->setFocusPolicy(NoFocus);
-  connect(ConnectionSelection,SIGNAL(activated(int)),this,SLOT(changeConnection()));
+    new QToolButton ( QPixmap ( ( const char ** ) connect_xpm ),
+                      "Connect to database",
+                      "Connect to database",
+                      this, SLOT ( addConnection() ), toolbar );
+    DisconnectButton = new QToolButton ( QPixmap ( ( const char ** ) disconnect_xpm ),
+                                         "Disconnect current connection",
+                                         "Disconnect current connection",
+                                         this, SLOT ( delConnection() ), toolbar );
+    DisconnectButton->setEnabled ( false );
+    toolbar->addSeparator();
+    NeedConnection[new QToolButton ( QPixmap ( ( const char ** ) commit_xpm ),
+                                     "Commit connection",
+                                     "Commit connection",
+                                     this,SLOT ( commitButton() ),toolbar ) ] = NULL;
+    NeedConnection[new QToolButton ( QPixmap ( ( const char ** ) rollback_xpm ),
+                                     "Rollback connection",
+                                     "Rollback connection",
+                                     this,SLOT ( rollbackButton() ),toolbar ) ] = NULL;
+    toolbar->addSeparator();
+    ConnectionSelection = new QComboBox ( toolbar );
+    ConnectionSelection->setFixedWidth ( 200 );
+    ConnectionSelection->setFocusPolicy ( NoFocus );
+    connect ( ConnectionSelection, SIGNAL ( activated ( int ) ), this, SLOT ( changeConnection() ) );
 
-  menuBar()->insertItem("&Tools",ToolsMenu,TO_TOOLS_MENU);
+    menuBar() ->insertItem ( "&Tools", ToolsMenu, TO_TOOLS_MENU );
 
-  WindowsMenu=new QPopupMenu(this);
-  WindowsMenu->setCheckable(true);
-  connect(WindowsMenu,SIGNAL(aboutToShow()),this,SLOT( windowsMenu()));
-  menuBar()->insertItem("&Window",WindowsMenu,TO_WINDOWS_MENU);
+    WindowsMenu = new QPopupMenu ( this );
+    WindowsMenu->setCheckable ( true );
+    connect ( WindowsMenu, SIGNAL ( aboutToShow() ), this, SLOT ( windowsMenu() ) );
+    menuBar() ->insertItem ( "&Window", WindowsMenu, TO_WINDOWS_MENU );
 
-  menuBar()->insertSeparator();
+    menuBar() ->insertSeparator();
 
-  menuBar()->insertItem("&Help",HelpMenu,TO_HELP_MENU);
+    menuBar() ->insertItem ( "&Help", HelpMenu, TO_HELP_MENU );
 
-  char buffer[100];
-  sprintf(buffer,DEFAULT_TITLE,TOVERSION);
-  setCaption(buffer);
+    char buffer[100];
+    sprintf ( buffer, DEFAULT_TITLE, TOVERSION );
+    setCaption ( buffer );
 
 #ifdef TO_KDE
-  KDockWidget *mainDock=createDockWidget(buffer,QPixmap((const char **)toramini_xpm));
-  Workspace=new QWorkspace(mainDock);
-  mainDock->setWidget(Workspace);
-  setView(mainDock);
-  setMainDockWidget(mainDock);
-  mainDock->setEnableDocking(KDockWidget::DockNone);
+    KDockWidget *mainDock = createDockWidget ( buffer, QPixmap ( ( const char ** ) toramini_xpm ) );
+    Workspace = new QWorkspace ( mainDock );
+    mainDock->setWidget ( Workspace );
+    setView ( mainDock );
+    setMainDockWidget ( mainDock );
+    mainDock->setEnableDocking ( KDockWidget::DockNone );
 #else
-  Workspace=new QWorkspace(this);
-  setCentralWidget(Workspace);
+    Workspace = new QWorkspace ( this );
+    setCentralWidget ( Workspace );
 #endif
-  setIcon(QPixmap((const char **)toramini_xpm));
+    setIcon ( QPixmap ( ( const char ** ) toramini_xpm ) );
 
-  statusBar()->message("Ready");
-  menuBar()->setItemEnabled(TO_CLOSE_CONNECTION,false);
-  menuBar()->setItemEnabled(TO_FILE_COMMIT,false);
-  menuBar()->setItemEnabled(TO_FILE_ROLLBACK,false);
-  menuBar()->setItemEnabled(TO_FILE_CLEARCACHE,false);
-  DisconnectButton->setEnabled(false);
+    statusBar() ->message ( "Ready" );
+    menuBar() ->setItemEnabled ( TO_CLOSE_CONNECTION, false );
+    menuBar() ->setItemEnabled ( TO_FILE_COMMIT, false );
+    menuBar() ->setItemEnabled ( TO_FILE_ROLLBACK, false );
+    menuBar() ->setItemEnabled ( TO_FILE_CLEARCACHE, false );
+    DisconnectButton->setEnabled ( false );
 
-  for (std::map<QToolButton *,toTool *>::iterator j=NeedConnection.begin();
-       j!=NeedConnection.end();j++)
-    (*j).first->setEnabled(false);
+    for ( std::map<QToolButton *, toTool *>::iterator j = NeedConnection.begin();
+            j != NeedConnection.end();j++ )
+        ( *j ).first->setEnabled ( false );
 
-  connect(menuBar(),SIGNAL(activated(int)),this,SLOT(commandCallback(int)));
+    connect ( menuBar(), SIGNAL ( activated ( int ) ), this, SLOT ( commandCallback ( int ) ) );
 
-  RowLabel=new QLabel(statusBar());
-  statusBar()->addWidget(RowLabel,0,true);
-  RowLabel->setMinimumWidth(60);
-  RowLabel->hide();
+    RowLabel = new QLabel ( statusBar() );
+    statusBar() ->addWidget ( RowLabel, 0, true );
+    RowLabel->setMinimumWidth ( 60 );
+    RowLabel->hide();
 
-  ColumnLabel=new QLabel(statusBar());
-  statusBar()->addWidget(ColumnLabel,0,true);
-  ColumnLabel->setMinimumWidth(60);
-  ColumnLabel->hide();
+    ColumnLabel = new QLabel ( statusBar() );
+    statusBar() ->addWidget ( ColumnLabel, 0, true );
+    ColumnLabel->setMinimumWidth ( 60 );
+    ColumnLabel->hide();
 
-  QToolButton *dispStatus=new toPopupButton(statusBar());
-  dispStatus->setIconSet(QPixmap((const char **)up_xpm));
-  statusBar()->addWidget(dispStatus,0,true);
-  StatusMenu=new QPopupMenu(dispStatus);
-  dispStatus->setPopup(StatusMenu);
-  connect(StatusMenu,SIGNAL(aboutToShow()),
-	  this,SLOT(statusMenu()));
-  connect(StatusMenu,SIGNAL(activated(int)),this,SLOT(commandCallback(int)));
+    QToolButton *dispStatus = new toPopupButton ( statusBar() );
+    dispStatus->setIconSet ( QPixmap ( ( const char ** ) up_xpm ) );
+    statusBar() ->addWidget ( dispStatus, 0, true );
+    StatusMenu = new QPopupMenu ( dispStatus );
+    dispStatus->setPopup ( StatusMenu );
+    connect ( StatusMenu, SIGNAL ( aboutToShow() ),
+              this, SLOT ( statusMenu() ) );
+    connect ( StatusMenu, SIGNAL ( activated ( int ) ), this, SLOT ( commandCallback ( int ) ) );
 
-  toolID=TO_TOOLS;
-  for (std::map<QString,toTool *>::iterator k=tools.begin();k!=tools.end();k++) {
-    (*k).second->customSetup(toolID);
-    toolID++;
-  }
-  Search=NULL;
+    toolID = TO_TOOLS;
+    for ( std::map<QString, toTool *>::iterator k = tools.begin();k != tools.end();k++ ) {
+        ( *k ).second->customSetup ( toolID );
+        toolID++;
+    }
+    Search = NULL;
 
-  if (!toTool::globalConfig(CONF_MAXIMIZE_MAIN,"Yes").isEmpty())
-    showMaximized();
-  show();
+    if ( !toTool::globalConfig ( CONF_MAXIMIZE_MAIN, "Yes" ).isEmpty() )
+        showMaximized();
+    show();
 
-  QString welcome;
+    QString welcome;
 
-  do {
-    welcome=toCheckLicense(false);
-  } while(welcome.isNull());
-
-  toStatusMessage(welcome,true);
-
-  connect(&Poll,SIGNAL(timeout()),this,SLOT(checkCaching()));
-
-  try {
-    toNewConnection newConnection(this,"First connection",true);
-    
-    toConnection *conn;
-    
     do {
-      conn=NULL;
-      if (newConnection.exec()) {
-	conn=newConnection.makeConnection();
-      } else {
-	break;
-      }
-    } while(!conn);
-    
-    if (conn)
-      addConnection(conn);
-  } TOCATCH
-  connect(toMainWidget()->workspace(),SIGNAL(windowActivated(QWidget *)),
-	  this,SLOT(windowActivated(QWidget *)));
-}
+        welcome = toCheckLicense ( false );
+    } while ( welcome.isNull() );
 
-void toMain::windowActivated(QWidget *widget)
-{
-  if (toTool::globalConfig(CONF_CHANGE_CONNECTION,"Yes").isEmpty())
-    return;
-  toToolWidget *tool=dynamic_cast<toToolWidget *>(widget);
-  if (tool) {
-    toConnection &conn=tool->connection();
-    int pos=0;
-    for (std::list<toConnection *>::iterator i=Connections.begin();i!=Connections.end();i++) {
-      if (&conn==*i) {
-	ConnectionSelection->setCurrentItem(pos);
-	changeConnection();
-	break;
-      }
-      pos++;
+    toStatusMessage ( welcome, true );
+
+    connect ( &Poll, SIGNAL ( timeout() ), this, SLOT ( checkCaching() ) );
+
+    try {
+        toNewConnection newConnection ( this, "First connection", true );
+
+        toConnection *conn;
+
+        do {
+            conn = NULL;
+            if ( newConnection.exec() ) {
+                conn = newConnection.makeConnection();
+            } else {
+                break;
+            }
+        } while ( !conn );
+
+        if ( conn )
+            addConnection ( conn );
     }
-  }
+    TOCATCH
+    connect ( toMainWidget() ->workspace(), SIGNAL ( windowActivated ( QWidget * ) ),
+              this, SLOT ( windowActivated ( QWidget * ) ) );
 }
 
-void toMain::editFileMenu(void)	// Ugly hack to disable edit with closed child windows
+void toMain::windowActivated ( QWidget *widget )
 {
-  menuBar()->setItemEnabled(TO_EDIT_UNDO,Edit&&Edit->undoEnabled());
-  menuBar()->setItemEnabled(TO_EDIT_REDO,Edit&&Edit->redoEnabled());
-  menuBar()->setItemEnabled(TO_EDIT_CUT,Edit&&Edit->cutEnabled());
-  menuBar()->setItemEnabled(TO_EDIT_COPY,Edit&&Edit->copyEnabled());
-  menuBar()->setItemEnabled(TO_EDIT_PASTE,Edit&&Edit->pasteEnabled());
-  menuBar()->setItemEnabled(TO_EDIT_SELECT_ALL,Edit&&Edit->selectAllEnabled());
-  menuBar()->setItemEnabled(TO_EDIT_READ_ALL,Edit&&Edit->readAllEnabled());
-  menuBar()->setItemEnabled(TO_EDIT_SEARCH,Edit&&Edit->searchEnabled());
-  menuBar()->setItemEnabled(TO_FILE_OPEN,Edit&&Edit->openEnabled());
-  menuBar()->setItemEnabled(TO_FILE_SAVE,Edit&&Edit->saveEnabled());
-  menuBar()->setItemEnabled(TO_FILE_SAVE_AS,Edit&&Edit->saveEnabled());
-  menuBar()->setItemEnabled(TO_EDIT_SEARCH_NEXT,
-			    Search&&Search->searchNextAvailable());
+    if ( toTool::globalConfig ( CONF_CHANGE_CONNECTION, "Yes" ).isEmpty() )
+        return;
+    toToolWidget *tool = dynamic_cast<toToolWidget *> ( widget );
+    if ( tool ) {
+        toConnection & conn = tool->connection();
+        int pos = 0;
+        for ( std::list<toConnection *>::iterator i = Connections.begin();i != Connections.end();i++ ) {
+            if ( &conn == *i ) {
+                ConnectionSelection->setCurrentItem ( pos );
+                changeConnection();
+                break;
+            }
+            pos++;
+        }
+    }
 }
 
-void toMain::windowsMenu(void)
+void toMain::editFileMenu ( void ) // Ugly hack to disable edit with closed child windows
 {
-  WindowsMenu->clear();
+    menuBar() ->setItemEnabled ( TO_EDIT_UNDO, Edit && Edit->undoEnabled() );
+    menuBar() ->setItemEnabled ( TO_EDIT_REDO, Edit && Edit->redoEnabled() );
+    menuBar() ->setItemEnabled ( TO_EDIT_CUT, Edit && Edit->cutEnabled() );
+    menuBar() ->setItemEnabled ( TO_EDIT_COPY, Edit && Edit->copyEnabled() );
+    menuBar() ->setItemEnabled ( TO_EDIT_PASTE, Edit && Edit->pasteEnabled() );
+    menuBar() ->setItemEnabled ( TO_EDIT_SELECT_ALL, Edit && Edit->selectAllEnabled() );
+    menuBar() ->setItemEnabled ( TO_EDIT_READ_ALL, Edit && Edit->readAllEnabled() );
+    menuBar() ->setItemEnabled ( TO_EDIT_SEARCH, Edit && Edit->searchEnabled() );
+    menuBar() ->setItemEnabled ( TO_FILE_OPEN, Edit && Edit->openEnabled() );
+    menuBar() ->setItemEnabled ( TO_FILE_SAVE, Edit && Edit->saveEnabled() );
+    menuBar() ->setItemEnabled ( TO_FILE_SAVE_AS, Edit && Edit->saveEnabled() );
+    menuBar() ->setItemEnabled ( TO_EDIT_SEARCH_NEXT,
+                                 Search && Search->searchNextAvailable() );
+}
 
-  WindowsMenu->insertItem("C&lose",TO_WINDOWS_CLOSE);
-  if (!workspace()->activeWindow())
-    WindowsMenu->setItemEnabled(TO_WINDOWS_CLOSE,false);
+void toMain::windowsMenu ( void )
+{
+    WindowsMenu->clear();
 
-  WindowsMenu->insertItem("Close &All",TO_WINDOWS_CLOSE_ALL);
-  WindowsMenu->insertSeparator();
-  WindowsMenu->insertItem("&Cascade",TO_WINDOWS_CASCADE);
-  WindowsMenu->insertItem("&Tile",TO_WINDOWS_TILE);
-  if (workspace()->windowList().isEmpty()) {
-    WindowsMenu->setItemEnabled(TO_WINDOWS_CASCADE,false);
-    WindowsMenu->setItemEnabled(TO_WINDOWS_TILE,false);
-    WindowsMenu->setItemEnabled(TO_WINDOWS_CLOSE_ALL,false);
-  } else {
+    WindowsMenu->insertItem ( "C&lose", TO_WINDOWS_CLOSE );
+    if ( !workspace() ->activeWindow() )
+        WindowsMenu->setItemEnabled ( TO_WINDOWS_CLOSE, false );
+
+    WindowsMenu->insertItem ( "Close &All", TO_WINDOWS_CLOSE_ALL );
     WindowsMenu->insertSeparator();
-    QRegExp strip(" <[0-9]+>$");
-    for (unsigned int i=0;i<workspace()->windowList().count();i++) {
-      QWidget *widget=workspace()->windowList().at(i);
-      QString caption=widget->caption();
-      caption.replace(strip,"");
-      WindowsMenu->insertItem(caption,TO_WINDOWS_WINDOWS+i);
-      WindowsMenu->setItemChecked(TO_WINDOWS_WINDOWS+i,workspace()->activeWindow()==workspace()->windowList().at(i));
-      if (i<9) {
-	WindowsMenu->setAccel(Key_1+i|CTRL,TO_WINDOWS_WINDOWS+i);
-	caption+=" <";
-	caption+=QString::number(i+1);
-	caption+=">";
-      }
-      widget->setCaption(caption);
+    WindowsMenu->insertItem ( "&Cascade", TO_WINDOWS_CASCADE );
+    WindowsMenu->insertItem ( "&Tile", TO_WINDOWS_TILE );
+    if ( workspace() ->windowList().isEmpty() ) {
+        WindowsMenu->setItemEnabled ( TO_WINDOWS_CASCADE, false );
+        WindowsMenu->setItemEnabled ( TO_WINDOWS_TILE, false );
+        WindowsMenu->setItemEnabled ( TO_WINDOWS_CLOSE_ALL, false );
+    } else {
+        WindowsMenu->insertSeparator();
+        QRegExp strip ( " <[0-9]+>$" );
+        for ( unsigned int i = 0;i < workspace() ->windowList().count();i++ ) {
+            QWidget *widget = workspace() ->windowList().at ( i );
+            QString caption = widget->caption();
+            caption.replace ( strip, "" );
+            WindowsMenu->insertItem ( caption, TO_WINDOWS_WINDOWS + i );
+            WindowsMenu->setItemChecked ( TO_WINDOWS_WINDOWS + i, workspace() ->activeWindow() == workspace() ->windowList().at ( i ) );
+            if ( i < 9 ) {
+                WindowsMenu->setAccel ( Key_1 + i | CTRL, TO_WINDOWS_WINDOWS + i );
+                caption += " <";
+                caption += QString::number ( i + 1 );
+                caption += ">";
+            }
+            widget->setCaption ( caption );
+        }
     }
-  }
 }
 
-void toMain::commandCallback(int cmd)
+void toMain::commandCallback ( int cmd )
 {
-  QWidget *focus=qApp->focusWidget();
-  
-  if (focus) {
-    toEditWidget *edit=findEdit(focus);
-    if (edit&&edit!=Edit)
-      setEditWidget(edit);
-    else if (focus->inherits("QLineEdit")||
-	     focus->isA("QSpinBox"))
-      editDisable(Edit);
-  }
+    QWidget * focus = qApp->focusWidget();
 
-  if (Tools[cmd])
-    Tools[cmd]->createWindow();
-  else if (cmd>=TO_TOOL_ABOUT_ID&&cmd<=TO_TOOL_ABOUT_ID_END) {
-    if (Tools[cmd-TO_ABOUT_ID_OFFSET])
-      Tools[cmd-TO_ABOUT_ID_OFFSET]->about(this);
-  } else if (cmd>=TO_WINDOWS_WINDOWS&&cmd<=TO_WINDOWS_END) {
-    if (cmd-TO_WINDOWS_WINDOWS<int(workspace()->windowList().count()))
-      workspace()->windowList().at(cmd-TO_WINDOWS_WINDOWS)->setFocus();
-  } else if (cmd>=TO_STATUS_ID&&cmd<=TO_STATUS_ID_END) {
-    QString str=StatusMenu->text(cmd);
-    new toMemoEditor(this,str);
-  } else {
-    QWidget *currWidget=qApp->focusWidget();
-    toEditWidget *edit=NULL;
-    while(currWidget&&!edit) {
-      edit=dynamic_cast<toEditWidget *>(currWidget);
-      currWidget=currWidget->parentWidget();
+    if ( focus ) {
+        toEditWidget * edit = findEdit ( focus );
+        if ( edit && edit != Edit )
+            setEditWidget ( edit );
+        else if ( focus->inherits ( "QLineEdit" ) ||
+                  focus->isA ( "QSpinBox" ) )
+            editDisable ( Edit );
     }
-    if (edit) {
-      switch(cmd) {
-      case TO_EDIT_REDO:
-	edit->editRedo();
-	break;
-      case TO_EDIT_UNDO:
-	edit->editUndo();
-	break;
-      case TO_EDIT_COPY:
-	edit->editCopy();
-	break;
-      case TO_EDIT_PASTE:
-	edit->editPaste();
-	break;
-      case TO_EDIT_CUT:
-	edit->editCut();
-	break;
-      case TO_EDIT_SELECT_ALL:
-	edit->editSelectAll();;
-	break;
-      case TO_EDIT_READ_ALL:
-	edit->editReadAll();
-	break;
-      case TO_EDIT_SEARCH:
-	if (!Search)
-	  Search=new toSearchReplace(this);
-	edit->editSearch(Search);
-	break;
-      case TO_FILE_OPEN:
-	edit->editOpen();
-	break;
-      case TO_FILE_SAVE_AS:
-	edit->editSave(true);
-	break;
-      case TO_FILE_SAVE:
-	edit->editSave(false);
-	break;
-      case TO_FILE_PRINT:
-	edit->editPrint();
-	break;
-      }
+
+    if ( Tools[cmd] )
+        Tools[cmd]->createWindow();
+    else if ( cmd >= TO_TOOL_ABOUT_ID && cmd <= TO_TOOL_ABOUT_ID_END ) {
+        if ( Tools[cmd-TO_ABOUT_ID_OFFSET] )
+            Tools[cmd-TO_ABOUT_ID_OFFSET]->about ( this );
+    } else if ( cmd >= TO_WINDOWS_WINDOWS && cmd <= TO_WINDOWS_END ) {
+        if ( cmd - TO_WINDOWS_WINDOWS < int ( workspace() ->windowList().count() ) )
+            workspace() ->windowList().at ( cmd - TO_WINDOWS_WINDOWS ) ->setFocus();
+    } else if ( cmd >= TO_STATUS_ID && cmd <= TO_STATUS_ID_END ) {
+        QString str = StatusMenu->text ( cmd );
+        new toMemoEditor ( this, str );
+    } else {
+        QWidget *currWidget = qApp->focusWidget();
+        toEditWidget *edit = NULL;
+        while ( currWidget && !edit ) {
+            edit = dynamic_cast<toEditWidget *> ( currWidget );
+            currWidget = currWidget->parentWidget();
+        }
+        if ( edit ) {
+            switch ( cmd ) {
+            case TO_EDIT_REDO:
+                edit->editRedo();
+                break;
+            case TO_EDIT_UNDO:
+                edit->editUndo();
+                break;
+            case TO_EDIT_COPY:
+                edit->editCopy();
+                break;
+            case TO_EDIT_PASTE:
+                edit->editPaste();
+                break;
+            case TO_EDIT_CUT:
+                edit->editCut();
+                break;
+            case TO_EDIT_SELECT_ALL:
+                edit->editSelectAll();;
+                break;
+            case TO_EDIT_READ_ALL:
+                edit->editReadAll();
+                break;
+            case TO_EDIT_SEARCH:
+                if ( !Search )
+                    Search = new toSearchReplace ( this );
+                edit->editSearch ( Search );
+                break;
+            case TO_FILE_OPEN:
+                edit->editOpen();
+                break;
+            case TO_FILE_SAVE_AS:
+                edit->editSave ( true );
+                break;
+            case TO_FILE_SAVE:
+                edit->editSave ( false );
+                break;
+            case TO_FILE_PRINT:
+                edit->editPrint();
+                break;
+            }
+        }
+        switch ( cmd ) {
+        case TO_FILE_COMMIT:
+            try {
+                toConnection & conn = currentConnection();
+                emit willCommit ( conn, true );
+                conn.commit();
+                setNeedCommit ( conn, false );
+            }
+            TOCATCH
+            break;
+        case TO_FILE_CLEARCACHE:
+            try {
+                currentConnection().rereadCache();
+            }
+            TOCATCH
+            toMainWidget() ->checkCaching();
+            break;
+        case TO_FILE_ROLLBACK:
+            try {
+                toConnection &conn = currentConnection();
+                emit willCommit ( conn, false );
+                conn.rollback();
+                setNeedCommit ( conn, false );
+            }
+            TOCATCH
+            break;
+        case TO_FILE_CURRENT:
+            ConnectionSelection->setFocus();
+            break;
+        case TO_FILE_QUIT:
+            close ( true );
+            break;
+        case TO_EDIT_SEARCH_NEXT:
+            if ( Search )
+                Search->searchNext();
+            break;
+        case TO_WINDOWS_CASCADE:
+            workspace() ->cascade();
+            break;
+        case TO_WINDOWS_TILE:
+            workspace() ->tile();
+            break;
+        case TO_NEW_CONNECTION:
+            addConnection();
+            break;
+        case TO_HELP_CONTEXT:
+            contextHelp();
+            break;
+        case TO_HELP_CONTENTS:
+            toHelp::displayHelp ( "toc.htm" );
+            break;
+        case TO_HELP_ABOUT:
+        case TO_HELP_LICENSE:
+        case TO_HELP_QUOTES: {
+            toAbout *about = new toAbout ( cmd - TO_HELP_ABOUT, this, "About TOra", true );
+            about->exec();
+            delete about;
+        }
+        break;
+        case TO_HELP_REGISTER:
+            toCheckLicense ( true );
+            break;
+        case TO_EDIT_OPTIONS:
+            toPreferences::displayPreferences ( this );
+            break;
+        case TO_WINDOWS_CLOSE_ALL:
+            while ( workspace() ->windowList().count() > 0 && workspace() ->windowList().at ( 0 ) )
+                if ( workspace() ->windowList().at ( 0 ) &&
+                        !workspace() ->windowList().at ( 0 ) ->close ( true ) )
+                    return;
+            break;
+        case TO_WINDOWS_CLOSE:
+            QWidget *widget = workspace() ->activeWindow();
+            if ( widget )
+                widget->close ( true );
+            break;
+        }
     }
-    switch(cmd) {
-    case TO_FILE_COMMIT:
-      try {
-	toConnection &conn=currentConnection();
-	emit willCommit(conn,true);
-	conn.commit();
-	setNeedCommit(conn,false);
-      } TOCATCH
-      break;
-    case TO_FILE_CLEARCACHE:
-      try {
-	currentConnection().rereadCache();
-      } TOCATCH
-      toMainWidget()->checkCaching();
-      break;
-    case TO_FILE_ROLLBACK:
-      try {
-	toConnection &conn=currentConnection();
-	emit willCommit(conn,false);
-	conn.rollback();
-	setNeedCommit(conn,false);
-      } TOCATCH
-      break;
-    case TO_FILE_CURRENT:
-      ConnectionSelection->setFocus();
-      break;
-    case TO_FILE_QUIT:
-      close(true);
-      break;
-    case TO_EDIT_SEARCH_NEXT:
-      if (Search)
-	Search->searchNext();
-      break;
-    case TO_WINDOWS_CASCADE:
-      workspace()->cascade();
-      break;
-    case TO_WINDOWS_TILE:
-      workspace()->tile();
-      break;
-    case TO_NEW_CONNECTION:
-      addConnection();
-      break;
-    case TO_HELP_CONTEXT:
-      contextHelp();
-      break;
-    case TO_HELP_CONTENTS:
-      toHelp::displayHelp("toc.htm");
-      break;
-    case TO_HELP_ABOUT:
-    case TO_HELP_LICENSE:
-    case TO_HELP_QUOTES:
-      {
-	toAbout *about=new toAbout(cmd-TO_HELP_ABOUT,this,"About TOra",true);
-	about->exec();
-	delete about;
-      }
-      break;
-    case TO_HELP_REGISTER:
-      toCheckLicense(true);
-      break;
-    case TO_EDIT_OPTIONS:
-      toPreferences::displayPreferences(this);
-      break;
-    case TO_WINDOWS_CLOSE_ALL:
-      while (workspace()->windowList().count()>0&&workspace()->windowList().at(0))
-	if (workspace()->windowList().at(0)&&
-	    !workspace()->windowList().at(0)->close(true))
-	  return;
-      break;
-    case TO_WINDOWS_CLOSE:
-      QWidget *widget=workspace()->activeWindow();
-      if (widget)
-	widget->close(true);
-      break;
-    }
-  }
 }
 
-void toMain::addConnection(void)
+void toMain::addConnection ( void )
 {
-  try {
-    toNewConnection newConnection(this,"New connection",true);
+    try {
+        toNewConnection newConnection ( this, "New connection", true );
 
-    toConnection *conn=NULL;
+        toConnection *conn = NULL;
 
-    if (newConnection.exec())
-      conn=newConnection.makeConnection();
+        if ( newConnection.exec() )
+            conn = newConnection.makeConnection();
 
-    if (conn)
-      addConnection(conn);
-  } TOCATCH
+        if ( conn )
+            addConnection ( conn );
+    }
+    TOCATCH
 }
 
 toConnection &toMain::currentConnection()
 {
-  for (std::list<toConnection *>::iterator i=Connections.begin();i!=Connections.end();i++) {
-    if (ConnectionSelection->currentText().startsWith((*i)->description())) {
-      return *(*i);
+    for ( std::list<toConnection *>::iterator i = Connections.begin();i != Connections.end();i++ ) {
+        if ( ConnectionSelection->currentText().startsWith ( ( *i ) ->description() ) ) {
+            return * ( *i );
+        }
     }
-  }
-  throw QString("Can't find active connection");
+    throw QString ( "Can't find active connection" );
 }
 
-void toMain::addConnection(toConnection *conn)
+void toMain::addConnection ( toConnection *conn )
 {
-  int j=0;
-  for (std::list<toConnection *>::iterator i=Connections.begin();i!=Connections.end();i++,j++) {
-    if ((*i)->description()==conn->description()) {
-      ConnectionSelection->setCurrentItem(j);
-      createDefault();
-      return;
+    int j = 0;
+    for ( std::list<toConnection *>::iterator i = Connections.begin();i != Connections.end();i++, j++ ) {
+        if ( ( *i ) ->description() == conn->description() ) {
+            ConnectionSelection->setCurrentItem ( j );
+            createDefault();
+            return;
+        }
     }
-  }
 
-  Connections.insert(Connections.end(),conn);
-  ConnectionSelection->insertItem(conn->description());
-  ConnectionSelection->setCurrentItem(ConnectionSelection->count()-1);
+    Connections.insert ( Connections.end(), conn );
+    ConnectionSelection->insertItem ( conn->description() );
+    ConnectionSelection->setCurrentItem ( ConnectionSelection->count() - 1 );
 
-  if (ConnectionSelection->count()==1) {
-    menuBar()->setItemEnabled(TO_FILE_COMMIT,true);
-    menuBar()->setItemEnabled(TO_FILE_ROLLBACK,true);
-    menuBar()->setItemEnabled(TO_FILE_CLEARCACHE,true);
-    menuBar()->setItemEnabled(TO_CLOSE_CONNECTION,true);
-    DisconnectButton->setEnabled(true);
-  }
-
-  checkCaching();
-
-  changeConnection();
-  emit addedConnection(conn->description());
-  createDefault();
-}
-
-void toMain::setNeedCommit(toConnection &conn,bool needCommit)
-{
-  int pos=0;
-  for (std::list<toConnection *>::iterator i=Connections.begin();i!=Connections.end();i++) {
-    if (conn.description()==(*i)->description()) {
-      QString dsc=conn.description();
-      if (needCommit)
-	dsc+=" *";
-      ConnectionSelection->changeItem(dsc,pos);
-      break;
+    if ( ConnectionSelection->count() == 1 ) {
+        menuBar() ->setItemEnabled ( TO_FILE_COMMIT, true );
+        menuBar() ->setItemEnabled ( TO_FILE_ROLLBACK, true );
+        menuBar() ->setItemEnabled ( TO_FILE_CLEARCACHE, true );
+        menuBar() ->setItemEnabled ( TO_CLOSE_CONNECTION, true );
+        DisconnectButton->setEnabled ( true );
     }
-    pos++;
-  }
-  conn.setNeedCommit(needCommit);
-}
 
-bool toMain::delConnection(void)
-{
-  toConnection *conn=NULL;
-  int pos=0;
-  for (std::list<toConnection *>::iterator i=Connections.begin();i!=Connections.end();i++) {
-    if (ConnectionSelection->currentText().startsWith((*i)->description())) {
-      conn=(*i);
-      if (conn->needCommit()) {
-	QString str("Commit work in session to ");
-	str.append(conn->description());
-	str.append(" before closing it?");
-	switch(TOMessageBox::warning(this,"Commit work?",str,"&Yes","&No","&Cancel")) {
-	case 0:
-	  conn->commit();
-	  break;
-	case 1:
-	  conn->rollback();
-	  break;
-	case 2:
-	  return false;
-	}
-      }
-      if (!conn->closeWidgets())
-	return false;
-      emit removedConnection(conn->description());
-      Connections.erase(i);
-      ConnectionSelection->removeItem(pos);
-      if (ConnectionSelection->count())
-	ConnectionSelection->setCurrentItem(max(pos-1,0));
-      delete conn;
-      break;
-    }
-    pos++;
-  }
-  if (ConnectionSelection->count()==0) {
-    menuBar()->setItemEnabled(TO_FILE_COMMIT,false);
-    menuBar()->setItemEnabled(TO_FILE_ROLLBACK,false);
-    menuBar()->setItemEnabled(TO_FILE_CLEARCACHE,false);
-    menuBar()->setItemEnabled(TO_CLOSE_CONNECTION,false);
-    DisconnectButton->setEnabled(false);
-    for (std::map<QToolButton *,toTool *>::iterator i=NeedConnection.begin();
-	 i!=NeedConnection.end();i++)
-      (*i).first->setEnabled(false);
-    for (std::map<int,toTool *>::iterator j=Tools.begin();j!=Tools.end();j++)
-      menuBar()->setItemEnabled((*j).first,false);
-  } else
+    checkCaching();
+
     changeConnection();
-  return true;
+    emit addedConnection ( conn->description() );
+    createDefault();
 }
 
-std::list<QString> toMain::connections(void)
+void toMain::setNeedCommit ( toConnection &conn, bool needCommit )
 {
-  std::list<QString> ret;
-  for (std::list<toConnection *>::iterator i=Connections.begin();i!=Connections.end();i++)
-    toPush(ret,(*i)->description());
-  return ret;
+    int pos = 0;
+    for ( std::list<toConnection *>::iterator i = Connections.begin();i != Connections.end();i++ ) {
+        if ( conn.description() == ( *i ) ->description() ) {
+            QString dsc = conn.description();
+            if ( needCommit )
+                dsc += " *";
+            ConnectionSelection->changeItem ( dsc, pos );
+            break;
+        }
+        pos++;
+    }
+    conn.setNeedCommit ( needCommit );
 }
 
-toConnection &toMain::connection(const QString &str)
+bool toMain::delConnection ( void )
 {
-  for (std::list<toConnection *>::iterator i=Connections.begin();i!=Connections.end();i++)
-    if ((*i)->description()==str)
-      return *(*i);
-  throw QString("Couldn't find specified connectionts (%1)").arg(str);
+    toConnection * conn = NULL;
+    int pos = 0;
+    for ( std::list<toConnection *>::iterator i = Connections.begin();i != Connections.end();i++ ) {
+        if ( ConnectionSelection->currentText().startsWith ( ( *i ) ->description() ) ) {
+            conn = ( *i );
+            if ( conn->needCommit() ) {
+                QString str ( "Commit work in session to " );
+                str.append ( conn->description() );
+                str.append ( " before closing it?" );
+                switch ( TOMessageBox::warning ( this, "Commit work?", str, "&Yes", "&No", "&Cancel" ) ) {
+                case 0:
+                    conn->commit();
+                    break;
+                case 1:
+                    conn->rollback();
+                    break;
+                case 2:
+                    return false;
+                }
+            }
+            if ( !conn->closeWidgets() )
+                return false;
+            emit removedConnection ( conn->description() );
+            Connections.erase ( i );
+            ConnectionSelection->removeItem ( pos );
+            if ( ConnectionSelection->count() )
+                ConnectionSelection->setCurrentItem ( max ( pos - 1, 0 ) );
+            delete conn;
+            break;
+        }
+        pos++;
+    }
+    if ( ConnectionSelection->count() == 0 ) {
+        menuBar() ->setItemEnabled ( TO_FILE_COMMIT, false );
+        menuBar() ->setItemEnabled ( TO_FILE_ROLLBACK, false );
+        menuBar() ->setItemEnabled ( TO_FILE_CLEARCACHE, false );
+        menuBar() ->setItemEnabled ( TO_CLOSE_CONNECTION, false );
+        DisconnectButton->setEnabled ( false );
+        for ( std::map<QToolButton *, toTool *>::iterator i = NeedConnection.begin();
+                i != NeedConnection.end();i++ )
+            ( *i ).first->setEnabled ( false );
+        for ( std::map<int, toTool *>::iterator j = Tools.begin();j != Tools.end();j++ )
+            menuBar() ->setItemEnabled ( ( *j ).first, false );
+    } else
+        changeConnection();
+    return true;
 }
 
-void toMain::loadButton(void)
+std::list<QString> toMain::connections ( void )
 {
-  commandCallback(TO_FILE_OPEN);
+    std::list<QString> ret;
+    for ( std::list<toConnection *>::iterator i = Connections.begin();i != Connections.end();i++ )
+        toPush ( ret, ( *i ) ->description() );
+    return ret;
 }
 
-void toMain::commitButton(void)
+toConnection &toMain::connection ( const QString &str )
 {
-  commandCallback(TO_FILE_COMMIT);
+    for ( std::list<toConnection *>::iterator i = Connections.begin();i != Connections.end();i++ )
+        if ( ( *i ) ->description() == str )
+            return * ( *i );
+    throw QString ( "Couldn't find specified connectionts (%1)" ).arg ( str );
 }
 
-void toMain::rollbackButton(void)
+void toMain::loadButton ( void )
 {
-  commandCallback(TO_FILE_ROLLBACK);
+    commandCallback ( TO_FILE_OPEN );
 }
 
-void toMain::saveButton(void)
+void toMain::commitButton ( void )
 {
-  commandCallback(TO_FILE_SAVE);
+    commandCallback ( TO_FILE_COMMIT );
 }
 
-void toMain::undoButton(void)
+void toMain::rollbackButton ( void )
 {
-  commandCallback(TO_EDIT_UNDO);
+    commandCallback ( TO_FILE_ROLLBACK );
 }
 
-void toMain::redoButton(void)
+void toMain::saveButton ( void )
 {
-  commandCallback(TO_EDIT_REDO);
+    commandCallback ( TO_FILE_SAVE );
 }
 
-void toMain::copyButton(void)
+void toMain::undoButton ( void )
 {
-  commandCallback(TO_EDIT_COPY);
+    commandCallback ( TO_EDIT_UNDO );
 }
 
-void toMain::cutButton(void)
+void toMain::redoButton ( void )
 {
-  commandCallback(TO_EDIT_CUT);
+    commandCallback ( TO_EDIT_REDO );
 }
 
-void toMain::pasteButton(void)
+void toMain::copyButton ( void )
 {
-  commandCallback(TO_EDIT_PASTE);
+    commandCallback ( TO_EDIT_COPY );
 }
 
-void toMain::printButton(void)
+void toMain::cutButton ( void )
 {
-  commandCallback(TO_FILE_PRINT);
+    commandCallback ( TO_EDIT_CUT );
 }
 
-void toMain::setEditWidget(toEditWidget *edit)
+void toMain::pasteButton ( void )
 {
-  toMain *main=(toMain *)qApp->mainWidget();
-  if (main&&edit) {
-    main->Edit=edit;
-    main->RowLabel->hide();
-    main->ColumnLabel->hide();
-    main->editEnable(edit);
-  }
+    commandCallback ( TO_EDIT_PASTE );
 }
 
-void toMain::editEnable(toEditWidget *edit)
+void toMain::printButton ( void )
 {
-  toMain *main=(toMain *)qApp->mainWidget();
-  if (main)
-    main->editEnable(edit,
-		     edit->openEnabled(),
-		     edit->saveEnabled(),
-		     edit->printEnabled(),
-		     edit->undoEnabled(),
-		     edit->redoEnabled(),
-		     edit->cutEnabled(),
-		     edit->copyEnabled(),
-		     edit->pasteEnabled(),
-		     edit->searchEnabled(),
-		     edit->selectAllEnabled(),
-		     edit->readAllEnabled());
+    commandCallback ( TO_FILE_PRINT );
+}
+
+void toMain::setEditWidget ( toEditWidget *edit )
+{
+    toMain * main = ( toMain * ) qApp->mainWidget();
+    if ( main && edit ) {
+        main->Edit = edit;
+        main->RowLabel->hide();
+        main->ColumnLabel->hide();
+        main->editEnable ( edit );
+    }
+}
+
+void toMain::editEnable ( toEditWidget *edit )
+{
+    toMain * main = ( toMain * ) qApp->mainWidget();
+    if ( main )
+        main->editEnable ( edit,
+                           edit->openEnabled(),
+                           edit->saveEnabled(),
+                           edit->printEnabled(),
+                           edit->undoEnabled(),
+                           edit->redoEnabled(),
+                           edit->cutEnabled(),
+                           edit->copyEnabled(),
+                           edit->pasteEnabled(),
+                           edit->searchEnabled(),
+                           edit->selectAllEnabled(),
+                           edit->readAllEnabled() );
 
 #if QT_VERSION >= 300
-  // Set Selection Mode on X11
-  QClipboard *clip=qApp->clipboard();
-  if(clip->supportsSelection())
-    clip->setSelectionMode(true);
+    // Set Selection Mode on X11
+    QClipboard *clip = qApp->clipboard();
+    if ( clip->supportsSelection() )
+        clip->setSelectionMode ( true );
 #endif
 }
 
-void toMain::editDisable(toEditWidget *edit)
+void toMain::editDisable ( toEditWidget *edit )
 {
-  toMain *main=(toMain *)qApp->mainWidget();
+    toMain * main = ( toMain * ) qApp->mainWidget();
 
-  if (main) {
-    if(edit&&edit==main->Edit) {
-      main->editEnable(edit,false,false,false,false,false,false,false,false,false,false,false);
-      main->Edit=NULL;
+    if ( main ) {
+        if ( edit && edit == main->Edit ) {
+            main->editEnable ( edit, false, false, false, false, false, false, false, false, false, false, false );
+            main->Edit = NULL;
+        }
     }
-  }
 }
 
-toEditWidget *toMain::findEdit(QWidget *widget)
+toEditWidget *toMain::findEdit ( QWidget *widget )
 {
-  while(widget) {
-    toEditWidget *edit=dynamic_cast<toEditWidget *>(widget);
-    if (edit)
-      return edit;
-    widget=widget->parentWidget();
-  }
-  return NULL;
-}
-
-void toMain::editEnable(toEditWidget *edit,bool open,bool save,bool print,
-			bool undo,bool redo,
-			bool cut,bool copy,bool paste,
-			bool,bool,bool)
-{
-  if (edit&&edit==Edit) {
-    LoadButton->setEnabled(open);
-    if (save)
-      SaveButton->setEnabled(true);
-    else
-      SaveButton->setEnabled(false);
-
-    PrintButton->setEnabled(print);
-
-    if (undo)
-      UndoButton->setEnabled(true);
-    else
-      UndoButton->setEnabled(false);
-    if (redo)
-      RedoButton->setEnabled(true);
-    else
-      RedoButton->setEnabled(false);
-
-    if (cut)
-      CutButton->setEnabled(true);
-    else
-      CutButton->setEnabled(false);
-    if (copy)
-      CopyButton->setEnabled(true);
-    else
-      CopyButton->setEnabled(false);
-
-    if (paste)
-      PasteButton->setEnabled(true);
-    else
-      PasteButton->setEnabled(false);
-  }
-}
-
-void toMain::registerSQLEditor(int tool)
-{
-  SQLEditor=tool;
-}
-
-bool toMain::close(bool del)
-{
-  // Workaround in bug in Qt 3.0.0
-  while (workspace()->windowList().count()>0&&workspace()->windowList().at(0))
-    if (workspace()->windowList().at(0)&&
-	!workspace()->windowList().at(0)->close(true))
-      return false;
-  while (Connections.end()!=Connections.begin()) {
-    if (!delConnection())
-      return false;
-  }
-  return QMainWindow::close(del);
-}
-
-void toMain::createDefault(void)
-{
-  commandCallback(DefaultTool);
-}
-
-void toMain::setCoordinates(int line,int col)
-{
-  QString str("Row: ");
-  str+=QString::number(line);
-  RowLabel->setText(str);
-  str="Col:";
-  str+=QString::number(col);
-  ColumnLabel->setText(str);
-  RowLabel->show();
-  ColumnLabel->show();
-}
-
-void toMain::editSQL(const QString &str)
-{
-  if (SQLEditor>=0&&Tools[SQLEditor]) {
-    Tools[SQLEditor]->createWindow();
-    emit sqlEditor(str);
-  }
-}
-
-void toMain::contextHelp(void)
-{
-  toHelp::displayHelp();
-}
-
-void toMain::statusMenu(void)
-{
-  std::list<QString> status=toStatusMessages();
-  StatusMenu->clear();
-  int id=TO_STATUS_ID;
-  for(std::list<QString>::iterator i=status.begin();i!=status.end();i++)
-    StatusMenu->insertItem(*i,id++);
-}
-
-void toMain::changeConnection(void)
-{
-  toConnection &conn=currentConnection();
-  for (std::map<QToolButton *,toTool *>::iterator i=NeedConnection.begin();
-       i!=NeedConnection.end();i++) {
-    toTool *tool=(*i).second;
-    if (!tool)
-      (*i).first->setEnabled(true);
-    else if (tool->canHandle(conn))
-      (*i).first->setEnabled(true);
-    else
-      (*i).first->setEnabled(false);
-  }  
-  for (std::map<int,toTool *>::iterator j=Tools.begin();j!=Tools.end();j++) {
-    toTool *tool=(*j).second;
-    if (!tool)
-      menuBar()->setItemEnabled((*j).first,true);
-    else if (tool->canHandle(conn))
-      menuBar()->setItemEnabled((*j).first,true);
-    else
-      menuBar()->setItemEnabled((*j).first,false);
-
-  }
-}
-
-void toMain::checkCaching(void)
-{
-  int num=0;
-  for(std::list<toConnection *>::iterator i=Connections.begin();i!=Connections.end();i++) {
-    if (!(*i)->cacheAvailable(false,false))
-      num++;
-  }
-  if (num==0)
-    Poll.stop();
-  else
-    Poll.start(100);
-}
-
-void toMain::displayMessage(void)
-{
-  static bool recursive=false;
-  if (recursive)
-    return;
-  recursive=true;
-
-  for(QString str=toShift(StatusMessages);!str.isEmpty();str=toShift(StatusMessages)) {
-    toMessageUI dialog(toMainWidget(),NULL,true);
-    dialog.Message->setText(str);
-    dialog.exec();
-    if (dialog.Statusbar->isChecked()) {
-      toTool::globalSetConfig(CONF_MESSAGE_STATUSBAR,"Yes");
-      TOMessageBox::information(toMainWidget(),
-				"Information","You can enable this through the Global Settings in the Options (Edit menu)");
-      toTool::saveConfig();
+    while ( widget ) {
+        toEditWidget * edit = dynamic_cast<toEditWidget *> ( widget );
+        if ( edit )
+            return edit;
+        widget = widget->parentWidget();
     }
-  }
-  recursive=false;
+    return NULL;
 }
 
-void toMain::displayMessage(const QString &str)
+void toMain::editEnable ( toEditWidget *edit, bool open, bool save, bool print,
+                          bool undo, bool redo,
+                          bool cut, bool copy, bool paste,
+                          bool, bool, bool )
 {
-  toPush(StatusMessages,str);
-  QTimer::singleShot(1,this,SLOT(displayMessage()));
+    if ( edit && edit == Edit ) {
+        LoadButton->setEnabled ( open );
+        if ( save )
+            SaveButton->setEnabled ( true );
+        else
+            SaveButton->setEnabled ( false );
+
+        PrintButton->setEnabled ( print );
+
+        if ( undo )
+            UndoButton->setEnabled ( true );
+        else
+            UndoButton->setEnabled ( false );
+        if ( redo )
+            RedoButton->setEnabled ( true );
+        else
+            RedoButton->setEnabled ( false );
+
+        if ( cut )
+            CutButton->setEnabled ( true );
+        else
+            CutButton->setEnabled ( false );
+        if ( copy )
+            CopyButton->setEnabled ( true );
+        else
+            CopyButton->setEnabled ( false );
+
+        if ( paste )
+            PasteButton->setEnabled ( true );
+        else
+            PasteButton->setEnabled ( false );
+    }
+}
+
+void toMain::registerSQLEditor ( int tool )
+{
+    SQLEditor = tool;
+}
+
+bool toMain::close ( bool del )
+{
+    // Workaround in bug in Qt 3.0.0
+    while ( workspace() ->windowList().count() > 0 && workspace() ->windowList().at ( 0 ) )
+        if ( workspace() ->windowList().at ( 0 ) &&
+                !workspace() ->windowList().at ( 0 ) ->close ( true ) )
+            return false;
+    while ( Connections.end() != Connections.begin() ) {
+        if ( !delConnection() )
+            return false;
+    }
+    return QMainWindow::close ( del );
+}
+
+void toMain::createDefault ( void )
+{
+    commandCallback ( DefaultTool );
+}
+
+void toMain::setCoordinates ( int line, int col )
+{
+    QString str ( "Row: " );
+    str += QString::number ( line );
+    RowLabel->setText ( str );
+    str = "Col:";
+    str += QString::number ( col );
+    ColumnLabel->setText ( str );
+    RowLabel->show();
+    ColumnLabel->show();
+}
+
+void toMain::editSQL ( const QString &str )
+{
+    if ( SQLEditor >= 0 && Tools[SQLEditor] ) {
+        Tools[SQLEditor]->createWindow();
+        emit sqlEditor ( str );
+    }
+}
+
+void toMain::contextHelp ( void )
+{
+    toHelp::displayHelp();
+}
+
+void toMain::statusMenu ( void )
+{
+    std::list<QString> status = toStatusMessages();
+    StatusMenu->clear();
+    int id = TO_STATUS_ID;
+    for ( std::list<QString>::iterator i = status.begin();i != status.end();i++ )
+        StatusMenu->insertItem ( *i, id++ );
+}
+
+void toMain::changeConnection ( void )
+{
+    toConnection & conn = currentConnection();
+    for ( std::map<QToolButton *, toTool *>::iterator i = NeedConnection.begin();
+            i != NeedConnection.end();i++ ) {
+        toTool *tool = ( *i ).second;
+        if ( !tool )
+            ( *i ).first->setEnabled ( true );
+        else if ( tool->canHandle ( conn ) )
+            ( *i ).first->setEnabled ( true );
+        else
+            ( *i ).first->setEnabled ( false );
+    }
+    for ( std::map<int, toTool *>::iterator j = Tools.begin();j != Tools.end();j++ ) {
+        toTool *tool = ( *j ).second;
+        if ( !tool )
+            menuBar() ->setItemEnabled ( ( *j ).first, true );
+        else if ( tool->canHandle ( conn ) )
+            menuBar() ->setItemEnabled ( ( *j ).first, true );
+        else
+            menuBar() ->setItemEnabled ( ( *j ).first, false );
+
+    }
+}
+
+void toMain::checkCaching ( void )
+{
+    int num = 0;
+    for ( std::list<toConnection *>::iterator i = Connections.begin();i != Connections.end();i++ ) {
+        if ( ! ( *i ) ->cacheAvailable ( false, false ) )
+            num++;
+    }
+    if ( num == 0 )
+        Poll.stop();
+    else
+        Poll.start ( 100 );
+}
+
+void toMain::displayMessage ( void )
+{
+    static bool recursive = false;
+    if ( recursive )
+        return;
+    recursive = true;
+
+    for ( QString str = toShift ( StatusMessages );!str.isEmpty();str = toShift ( StatusMessages ) ) {
+        toMessageUI dialog ( toMainWidget(), NULL, true );
+        dialog.Message->setText ( str );
+        dialog.exec();
+        if ( dialog.Statusbar->isChecked() ) {
+            toTool::globalSetConfig ( CONF_MESSAGE_STATUSBAR, "Yes" );
+            TOMessageBox::information ( toMainWidget(),
+                                        "Information", "You can enable this through the Global Settings in the Options (Edit menu)" );
+            toTool::saveConfig();
+        }
+    }
+    recursive = false;
+}
+
+void toMain::displayMessage ( const QString &str )
+{
+    toPush ( StatusMessages, str );
+    QTimer::singleShot ( 1, this, SLOT ( displayMessage() ) );
 }

@@ -29,19 +29,20 @@
 /** Implementa el subformulario de asientos contables.
     Deriva de SubForm2Bc.
 */
-class ListLinAsiento1View : public SubForm2Bc {
+class ListLinAsiento1View : public SubForm2Bc
+{
     Q_OBJECT
 
 public:
-    ListLinAsiento1View(QWidget *parent = 0, const char *name = 0);
+    ListLinAsiento1View ( QWidget *parent = 0, const char *name = 0 );
     ~ListLinAsiento1View();
-    virtual void cargar(QString);
-    Fixed totaldebe(QString);
-    Fixed totalhaber(QString);
+    virtual void cargar ( QString );
+    Fixed totaldebe ( QString );
+    Fixed totalhaber ( QString );
 
 public slots:
-    virtual void s_pintaMenu(QMenu *menu);
-    virtual void s_trataMenu(QAction *action);
+    virtual void s_pintaMenu ( QMenu *menu );
+    virtual void s_trataMenu ( QAction *action );
 };
 
 #endif

@@ -37,12 +37,14 @@
 
 /// Muestra y administra las l&iacute;neas de detalle del listado de almacenes.
 /** */
-class ListTipoIVASubForm : public SubForm2Bf {
+class ListTipoIVASubForm : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
-    ListTipoIVASubForm(QWidget *parent = 0);
-    virtual ~ListTipoIVASubForm() {};
+    ListTipoIVASubForm ( QWidget *parent = 0 );
+    virtual ~ListTipoIVASubForm()
+    {};
 
 public slots:
     virtual void cargar();
@@ -54,10 +56,11 @@ public slots:
 
 /// Muestra y administra el listado de almacenes.
 /** */
-class ListTipoIVAView : public FichaBf, public Ui_ListTipoIVABase {
+class ListTipoIVAView : public FichaBf, public Ui_ListTipoIVABase
+{
     Q_OBJECT
 public:
-    ListTipoIVAView(Company *comp, QWidget *parent);
+    ListTipoIVAView ( Company *comp, QWidget *parent );
     ~ListTipoIVAView();
 public slots:
     virtual void on_mui_aceptar_clicked();

@@ -28,7 +28,8 @@
 #include "postgresiface2.h"
 
 
-class BusquedaCanalDelegate : public QComboBox2 {
+class BusquedaCanalDelegate : public QComboBox2
+{
     Q_OBJECT
 
 private:
@@ -37,32 +38,33 @@ private:
     QCompleter *completar;
 
 public:
-    BusquedaCanalDelegate(QWidget *parent = 0);
+    BusquedaCanalDelegate ( QWidget *parent = 0 );
     ~BusquedaCanalDelegate();
-    virtual void set(const QString &);
+    virtual void set ( const QString & );
 };
 
 
 
-class BusquedaCanal : public QComboBox2 {
+class BusquedaCanal : public QComboBox2
+{
     Q_OBJECT
 
 private:
     cursor2 *m_cursorcombo;
 
 public:
-    BusquedaCanal(QWidget *parent = 0);
+    BusquedaCanal ( QWidget *parent = 0 );
     ~BusquedaCanal();
-    virtual void setidcanal(QString idcanal);
-    virtual void setValorCampo(QString idcanal);
+    virtual void setidcanal ( QString idcanal );
+    virtual void setValorCampo ( QString idcanal );
     QString idcanal();
     virtual QString valorCampo();
 
 public slots:
-    void m_activated(int index);
+    void m_activated ( int index );
 
 signals:
-    void valueChanged(QString);
+    void valueChanged ( QString );
 };
 
 #endif

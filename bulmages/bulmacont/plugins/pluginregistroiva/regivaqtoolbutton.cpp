@@ -48,57 +48,61 @@
 \param as
 \param parent
 **/
-RegIVAQToolButton::RegIVAQToolButton(Asiento1View *as , QWidget *parent) : QToolButton(parent) {
-    _depura("RegIVAQToolButton::RegIVAQToolButton", 0);
+RegIVAQToolButton::RegIVAQToolButton ( Asiento1View *as , QWidget *parent ) : QToolButton ( parent )
+{
+    _depura ( "RegIVAQToolButton::RegIVAQToolButton", 0 );
     m_asiento1View = as;
     setBoton();
-    _depura("END RegIVAQToolButton::RegIVAQToolButton", 0);
+    _depura ( "END RegIVAQToolButton::RegIVAQToolButton", 0 );
 }
 
 
 ///
 /**
 **/
-RegIVAQToolButton::~RegIVAQToolButton() {
-    _depura("RegIVAQToolButton::~RegIVAQToolButton", 0);
-    _depura("END RegIVAQToolButton::~RegIVAQToolButton", 0);
+RegIVAQToolButton::~RegIVAQToolButton()
+{
+    _depura ( "RegIVAQToolButton::~RegIVAQToolButton", 0 );
+    _depura ( "END RegIVAQToolButton::~RegIVAQToolButton", 0 );
 }
 
 
 ///
 /**
 **/
-void RegIVAQToolButton::setBoton() {
-    _depura("RegIVAQToolButton::setBoton", 0);
-    connect(this, SIGNAL(clicked()), this, SLOT(click()));
-    setObjectName(QString::fromUtf8("exporta"));
-    setStatusTip(tr("Registro de IVA"));
-    setToolTip(tr("Registro de IVA"));
-    setMinimumSize(QSize(32, 32));
-    setIcon(QIcon(QString::fromUtf8(":/BulmaCont32x32/images/png/i_iva.xpm")));
-    setIconSize(QSize(32, 32));
-    _depura("END RegIVAQToolButton::setBoton", 0);
+void RegIVAQToolButton::setBoton()
+{
+    _depura ( "RegIVAQToolButton::setBoton", 0 );
+    connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
+    setObjectName ( QString::fromUtf8 ( "exporta" ) );
+    setStatusTip ( tr ( "Registro de IVA" ) );
+    setToolTip ( tr ( "Registro de IVA" ) );
+    setMinimumSize ( QSize ( 32, 32 ) );
+    setIcon ( QIcon ( QString::fromUtf8 ( ":/BulmaCont32x32/images/png/i_iva.xpm" ) ) );
+    setIconSize ( QSize ( 32, 32 ) );
+    _depura ( "END RegIVAQToolButton::setBoton", 0 );
 }
 
 
 ///
 /**
 **/
-void RegIVAQToolButton::click() {
-    _depura("ImpQToolButton::click", 0);
+void RegIVAQToolButton::click()
+{
+    _depura ( "ImpQToolButton::click", 0 );
     ListLinAsiento1View *las = m_asiento1View->mui_list;
     las->guardar();
     try {
-        int idborrador = las->DBvalue("idborrador").toInt();
-        RegistroIvaView *nuevae = new RegistroIvaView((Empresa *) las->empresaBase(), 0);
-        nuevae->inicializa1(idborrador);
-        ((Empresa *)las->empresaBase())->pWorkspace()->addWindow(nuevae);
+        int idborrador = las->DBvalue ( "idborrador" ).toInt();
+        RegistroIvaView *nuevae = new RegistroIvaView ( ( Empresa * ) las->empresaBase(), 0 );
+        nuevae->inicializa1 ( idborrador );
+        ( ( Empresa * ) las->empresaBase() ) ->pWorkspace() ->addWindow ( nuevae );
         nuevae->show();
-    } catch (...) {
-        mensajeInfo("Debe seleccionar un apunte");
+    } catch ( ... ) {
+        mensajeInfo ( "Debe seleccionar un apunte" );
     } // end try
 
-    _depura("END ImpQToolButton::click", 0);
+    _depura ( "END ImpQToolButton::click", 0 );
 }
 
 

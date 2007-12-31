@@ -32,9 +32,10 @@
 class BSelector;
 
 
-class nuevafact : public QDialog, public Ui_nuevafactbase {
+class nuevafact : public QDialog, public Ui_nuevafactbase
+{
 public:
-    nuevafact(QWidget *parent = 0, Qt::WFlags f = Qt::Window);
+    nuevafact ( QWidget *parent = 0, Qt::WFlags f = Qt::Window );
     ~nuevafact();
 
 private slots:

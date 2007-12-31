@@ -38,7 +38,8 @@
 #include "empresa.h"
 
 
-class ListRegistroIvaView : public QWidget, public Ui_ListRegistroIvaBase {
+class ListRegistroIvaView : public QWidget, public Ui_ListRegistroIvaBase
+{
     Q_OBJECT
 
 private:
@@ -50,20 +51,21 @@ public:
     Empresa *m_companyact;
 
 public:
-    ListRegistroIvaView(Empresa *, QString ejerActual = "", QWidget *parent = 0);
+    ListRegistroIvaView ( Empresa *, QString ejerActual = "", QWidget *parent = 0 );
     ~ListRegistroIvaView();
     void inicializa();
 
 public slots:
-    virtual void on_mui_tablasoportado_cellDoubleClicked(int, int);
-    virtual void on_mui_tablarepercutido_cellDoubleClicked(int, int);
-    virtual void on_mui_tablarepercutido_pintaMenu(QMenu *menu);
-    virtual void on_mui_tablasoportado_pintaMenu(QMenu *menu);
-    virtual void on_mui_tablasoportado_trataMenu(QAction *ac);
-    virtual void on_mui_tablarepercutido_trataMenu(QAction *ac);
+    virtual void on_mui_tablasoportado_cellDoubleClicked ( int, int );
+    virtual void on_mui_tablarepercutido_cellDoubleClicked ( int, int );
+    virtual void on_mui_tablarepercutido_pintaMenu ( QMenu *menu );
+    virtual void on_mui_tablasoportado_pintaMenu ( QMenu *menu );
+    virtual void on_mui_tablasoportado_trataMenu ( QAction *ac );
+    virtual void on_mui_tablarepercutido_trataMenu ( QAction *ac );
     virtual void on_mui_actualizar_clicked();
     virtual void boton_print();
-    virtual void on_mui_list_editFinished(int, int) {}
+    virtual void on_mui_list_editFinished ( int, int )
+    {}
     ;
 };
 

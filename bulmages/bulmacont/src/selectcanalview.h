@@ -30,11 +30,12 @@ class Empresa;
 
 ///
 /** */
-class selectcanalview : public QDialog, public Ui_SelectCanalBase, public PEmpresaBase {
+class selectcanalview : public QDialog, public Ui_SelectCanalBase, public PEmpresaBase
+{
     Q_OBJECT
 
 public:
-    selectcanalview(Empresa *emp, QWidget *parent = 0);
+    selectcanalview ( Empresa *emp, QWidget *parent = 0 );
     ~selectcanalview();
 
 private:

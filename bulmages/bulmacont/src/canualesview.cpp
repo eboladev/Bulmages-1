@@ -34,49 +34,53 @@
 \param emp
 \param parent
 **/
-CAnualesView::CAnualesView(Empresa  *emp, QWidget *parent)
-        : FichaBc(emp, parent) {
-    _depura("CAnualesView::CAnualesView", 0);
-    setTitleName(tr("Cuentas Anuales"));
+CAnualesView::CAnualesView ( Empresa  *emp, QWidget *parent )
+        : FichaBc ( emp, parent )
+{
+    _depura ( "CAnualesView::CAnualesView", 0 );
+    setTitleName ( tr ( "Cuentas Anuales" ) );
     /// Establecemos cual va a ser la tabla en la que basarse para los permisos
-    setDBTableName("asiento");
+    setDBTableName ( "asiento" );
 
-    this->setAttribute(Qt::WA_DeleteOnClose);
-    setupUi(this);
+    this->setAttribute ( Qt::WA_DeleteOnClose );
+    setupUi ( this );
     m_modo = 0;
     inicializatabla();
-    empresaBase()->meteWindow(windowTitle(), this);
-    _depura("END CAnualesView::CAnualesView", 0);
+    empresaBase() ->meteWindow ( windowTitle(), this );
+    _depura ( "END CAnualesView::CAnualesView", 0 );
 }
 
 
 ///
 /**
 **/
-CAnualesView::~CAnualesView() {
-    _depura("CAnualesView::~CAnualesView\n", 0);
-    empresaBase()->sacaWindow(this);
-    _depura("END CAnualesView::~CAnualesView\n", 0);
+CAnualesView::~CAnualesView()
+{
+    _depura ( "CAnualesView::~CAnualesView\n", 0 );
+    empresaBase() ->sacaWindow ( this );
+    _depura ( "END CAnualesView::~CAnualesView\n", 0 );
 }
 
 
 ///
 /**
 **/
-void CAnualesView::setmodoselector() {
-    _depura("CAnualesView::setmodoselector", 0);
+void CAnualesView::setmodoselector()
+{
+    _depura ( "CAnualesView::setmodoselector", 0 );
     m_modo = 1;
-    _depura("END CAnualesView::setmodoselector", 0);
+    _depura ( "END CAnualesView::setmodoselector", 0 );
 }
 
 
 ///
 /**
 **/
-void CAnualesView::setmodoeditor() {
-    _depura("CAnualesView::setmodoeditor", 0);
+void CAnualesView::setmodoeditor()
+{
+    _depura ( "CAnualesView::setmodoeditor", 0 );
     m_modo = 0;
-    _depura("END CAnualesView::setmodoeditor", 0);
+    _depura ( "END CAnualesView::setmodoeditor", 0 );
 }
 
 
@@ -84,9 +88,10 @@ void CAnualesView::setmodoeditor() {
 /**
 \return
 **/
-QString CAnualesView::nomBalance() {
-    _depura("CAnualesView::nomBalance", 0);
-    _depura("END CAnualesView::nomBalance", 0);
+QString CAnualesView::nomBalance()
+{
+    _depura ( "CAnualesView::nomBalance", 0 );
+    _depura ( "END CAnualesView::nomBalance", 0 );
     return m_nomBalance;
 }
 
@@ -95,9 +100,10 @@ QString CAnualesView::nomBalance() {
 /**
 \return
 **/
-QString CAnualesView::idBalance() {
-    _depura("CAnualesView::idBalance", 0);
-    _depura("END CAnualesView::idBalance", 0);
+QString CAnualesView::idBalance()
+{
+    _depura ( "CAnualesView::idBalance", 0 );
+    _depura ( "END CAnualesView::idBalance", 0 );
     return m_idBalance;
 }
 
@@ -106,73 +112,76 @@ QString CAnualesView::idBalance() {
 /**
 \return
 **/
-void CAnualesView::inicializatabla() {
-    _depura("CAnualesView::inicializatabla", 0);
+void CAnualesView::inicializatabla()
+{
+    _depura ( "CAnualesView::inicializatabla", 0 );
 
     mui_listado->clear();
-    mui_listado->setColumnCount(2);
+    mui_listado->setColumnCount ( 2 );
     QStringList headerlabels;
-    headerlabels << tr("Archivo") << tr("Archivo");
-    mui_listado->setHorizontalHeaderLabels(headerlabels);
+    headerlabels << tr ( "Archivo" ) << tr ( "Archivo" );
+    mui_listado->setHorizontalHeaderLabels ( headerlabels );
 
-    mui_listado->setColumnWidth(COL_ARCHIVO, 290);
-    mui_listado->setColumnWidth(COL_NOMBRE, 290);
-    mui_listado->hideColumn(COL_ARCHIVO);
+    mui_listado->setColumnWidth ( COL_ARCHIVO, 290 );
+    mui_listado->setColumnWidth ( COL_NOMBRE, 290 );
+    mui_listado->hideColumn ( COL_ARCHIVO );
 
-    QDir dir(confpr->valor(CONF_DIR_CANUALES));
+    QDir dir ( confpr->valor ( CONF_DIR_CANUALES ) );
 
-    dir.setFilter(QDir::Files );
-    dir.setSorting(QDir::Size | QDir::Reversed);
+    dir.setFilter ( QDir::Files );
+    dir.setSorting ( QDir::Size | QDir::Reversed );
 
     QFileInfoList list = dir.entryInfoList();
-    mui_listado->setRowCount(list.size());
+    mui_listado->setRowCount ( list.size() );
 
-    for (int i = 0; i < list.size(); ++i) {
-        QFileInfo fileInfo = list.at(i);
-        QTableWidgetItem *newItem1 = new QTableWidgetItem(fileInfo.filePath(), 0);
-        mui_listado->setItem(i, COL_ARCHIVO, newItem1);
+    for ( int i = 0; i < list.size(); ++i ) {
+        QFileInfo fileInfo = list.at ( i );
+        QTableWidgetItem *newItem1 = new QTableWidgetItem ( fileInfo.filePath(), 0 );
+        mui_listado->setItem ( i, COL_ARCHIVO, newItem1 );
 
         /// Cogemos el nombre y lo mostramos.
         QDomDocument doc;
-        QFile f(newItem1->text());
-        if (!f.open(QIODevice::ReadOnly)) {
+        QFile f ( newItem1->text() );
+        if ( !f.open ( QIODevice::ReadOnly ) ) {
             return;
         } // end if
-        if (!doc.setContent(&f)) {
+        if ( !doc.setContent ( &f ) ) {
             f.close();
             return;
         } // end if
         f.close();
-        QDomElement nodo = doc.namedItem("BALANCE").namedItem("TITULO").toElement();
-        QTableWidgetItem *newItem2 = new QTableWidgetItem(nodo.text(), 0);
+        QDomElement nodo = doc.namedItem ( "BALANCE" ).namedItem ( "TITULO" ).toElement();
+        QTableWidgetItem *newItem2 = new QTableWidgetItem ( nodo.text(), 0 );
 
-        mui_listado->setItem(i, COL_NOMBRE, newItem2);
+        mui_listado->setItem ( i, COL_NOMBRE, newItem2 );
     } // end for
-    _depura("END CAnualesView::inicializatabla", 0);
+    _depura ( "END CAnualesView::inicializatabla", 0 );
 }
 
 
 ///
 /**
 **/
-void CAnualesView::on_mui_listado_itemDoubleClicked(QTableWidgetItem *) {
-    _depura("CAnualesView::on_listado_itemDoubleclicked", 0);
+void CAnualesView::on_mui_listado_itemDoubleClicked ( QTableWidgetItem * )
+{
+    _depura ( "CAnualesView::on_listado_itemDoubleclicked", 0 );
     imprimir();
-    _depura("END CAnualesView::on_listado_itemDoubleclicked", 0);
+    _depura ( "END CAnualesView::on_listado_itemDoubleclicked", 0 );
 }
 
 
 ///
 /**
 **/
-void CAnualesView::imprimir() {
-    _depura("CAnualesView::imprimir", 0);
-    QString idbalance = mui_listado->item(mui_listado->currentRow(), COL_ARCHIVO)->text();
-    CAnualesPrintView *b = new CAnualesPrintView(empresaBase(), 0);
-    b->setidbalance(idbalance);
+void CAnualesView::imprimir()
+{
+    _depura ( "CAnualesView::imprimir", 0 );
+    QString idbalance = mui_listado->item ( mui_listado->currentRow(), COL_ARCHIVO ) ->text();
+    CAnualesPrintView *b = new CAnualesPrintView ( empresaBase(), 0 );
+    b->setidbalance ( idbalance );
     b->exec();
     delete b;
-    _depura("END CAnualesView::imprimir", 0);
+    _depura ( "END CAnualesView::imprimir", 0 );
 
 }
 

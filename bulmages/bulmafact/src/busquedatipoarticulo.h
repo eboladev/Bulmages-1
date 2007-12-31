@@ -34,7 +34,8 @@ class company;
 /// Permite buscar y seleccionar un tipo de art&iacute;culo.
 /** Este Widget permite buscar y seleccionar un
     tipo de art&iacute;culo. */
-class BusquedaTipoArticulo : public BLWidget, public Ui_BusquedaTipoArticuloBase {
+class BusquedaTipoArticulo : public BLWidget, public Ui_BusquedaTipoArticuloBase
+{
     Q_OBJECT
 
 private:
@@ -46,22 +47,22 @@ private:
     QString mdb_codtipo_articulo;
 
 public:
-    BusquedaTipoArticulo(QWidget *parent = 0);
+    BusquedaTipoArticulo ( QWidget *parent = 0 );
     ~BusquedaTipoArticulo();
     virtual QString codtipo_articulo();
     virtual QString idtipo_articulo();
     virtual QString valorCampo();
     virtual QString desctipo_articulo();
-    virtual void setidtipo_articulo(QString val);
-    virtual void setValorCampo(QString val);
-    virtual void setcodtipo_articulo(QString val);
+    virtual void setidtipo_articulo ( QString val );
+    virtual void setValorCampo ( QString val );
+    virtual void setcodtipo_articulo ( QString val );
 
 public slots:
     virtual void on_mui_buscar_clicked();
-    virtual void on_m_codtipo_articulo_textChanged(const QString &);
+    virtual void on_m_codtipo_articulo_textChanged ( const QString & );
 
 signals:
-    void valueChanged(QString);
+    void valueChanged ( QString );
 };
 
 #endif

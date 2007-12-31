@@ -33,7 +33,8 @@
     Antes de utilizarlo debe ser inicializa con setcompany.
     Cuando se cambia el elemento seleccionado emite un SIGNAL valueChanged().
 */
-class BusquedaSerieFactura : public QComboBox2 {
+class BusquedaSerieFactura : public QComboBox2
+{
     Q_OBJECT
 
 private:
@@ -43,19 +44,19 @@ private:
     QString m_codigoserie_factura;
 
 public:
-    BusquedaSerieFactura(QWidget *parent = 0);
+    BusquedaSerieFactura ( QWidget *parent = 0 );
     ~BusquedaSerieFactura();
-    void setEmpresaBase(Company *comp);
+    void setEmpresaBase ( Company *comp );
     QString codigoserie_factura();
     virtual QString valorCampo();
-    virtual void setcodigoserie_factura(QString);
-    virtual void setValorCampo(QString);
+    virtual void setcodigoserie_factura ( QString );
+    virtual void setValorCampo ( QString );
 
 public slots:
-    void m_activated(int index);
+    void m_activated ( int index );
 
 signals:
-    void valueChanged(QString);
+    void valueChanged ( QString );
 };
 
 #endif

@@ -31,31 +31,32 @@
 /// Administra los datos de una contrato a cliente.
 /** Intermedia entre la base de datos y la pantalla de presentacion.
 */
-class Contrato : public FichaBf {
-Q_OBJECT
+class Contrato : public FichaBf
+{
+    Q_OBJECT
 
 public:
-    Contrato(Company *, QWidget *parent);
+    Contrato ( Company *, QWidget *parent );
     virtual ~Contrato();
     /// Establece cu&aacute;l es la lista subformulario del presupuesto. Normalmente para
     /// apuntar listlinpresupuestoview.
 
     Company *_company();
-    virtual int cargar(QString);
+    virtual int cargar ( QString );
     void pintar();
     virtual int guardar();
     virtual int  borrar();
 
     void vaciaContrato();
 
-    virtual void pintaidcliente(QString);
-    virtual void pintarefcontrato(QString);
-    virtual void pintafincontrato(QString );
-    virtual void pintadescontrato(QString);
-    virtual void pintanomcontrato(QString);
-    virtual void pintaffincontrato(QString);
-    virtual void pintaloccontrato(QString);
-    virtual void pintaperiodicidadcontrato(QString);
+    virtual void pintaidcliente ( QString );
+    virtual void pintarefcontrato ( QString );
+    virtual void pintafincontrato ( QString );
+    virtual void pintadescontrato ( QString );
+    virtual void pintanomcontrato ( QString );
+    virtual void pintaffincontrato ( QString );
+    virtual void pintaloccontrato ( QString );
+    virtual void pintaperiodicidadcontrato ( QString );
     virtual void inicialize();
     virtual QString calculateValues();
 

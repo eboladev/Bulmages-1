@@ -31,31 +31,34 @@
 /** Implementa los elementos de edicion por defecto de un QTableWidgetItem2.
 Mediante esta clase se crean editores especificos que luego pueden sobrecargarse.
 */
-class QTableItemTextDelegate : public QItemDelegate {
+class QTableItemTextDelegate : public QItemDelegate
+{
 public:
-    QTableItemTextDelegate(QObject *);
+    QTableItemTextDelegate ( QObject * );
     ~QTableItemTextDelegate();
-    void setEditorData(QWidget *, const QModelIndex &index) const;
-    void setModelData(QWidget *editor,  QAbstractItemModel *model, const QModelIndex &index) const;
-    QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const;
+    void setEditorData ( QWidget *, const QModelIndex &index ) const;
+    void setModelData ( QWidget *editor,  QAbstractItemModel *model, const QModelIndex &index ) const;
+    QWidget *createEditor ( QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index ) const;
 };
 
 
 /// Reimplementa los items de QTableWidget2 para que podamos programar cosas en ellos.
-class QTableWidgetItem2 : public QTableWidgetItem {
+class QTableWidgetItem2 : public QTableWidgetItem
+{
 public:
     int modo;
-    QTableWidgetItem2(int type = Type, int mode = 0);
-    QTableWidgetItem2(const QString &text, int type = Type, int mode = 0);
+    QTableWidgetItem2 ( int type = Type, int mode = 0 );
+    QTableWidgetItem2 ( const QString &text, int type = Type, int mode = 0 );
     ~QTableWidgetItem2();
-    virtual bool operator< (const QTableWidgetItem &other) const;
+    virtual bool operator< ( const QTableWidgetItem &other ) const;
 };
 
 
 /// Clase que deriva de QTableWidget para poder reprogramar ciertos aspectos y
 /// funcionalidades.
 /** Se usa principalmente como tabla para mostrar subformularios.*/
-class QTableWidget2 : public QTableWidget {
+class QTableWidget2 : public QTableWidget
+{
     Q_OBJECT
 
 private:
@@ -69,33 +72,33 @@ public:
 public:
     int tipoorden();
     int colorden();
-    void settipoorden(int t);
-    void setcolorden(int t);
-    void columnMoved(int column, int oldIndex, int newIndex);
-    QTableWidget2(QWidget *parent = 0);
+    void settipoorden ( int t );
+    void setcolorden ( int t );
+    void columnMoved ( int column, int oldIndex, int newIndex );
+    QTableWidget2 ( QWidget *parent = 0 );
     ~QTableWidget2();
-    void editItem(QTableWidgetItem *it);
-    virtual bool eventFilter(QObject *obj, QEvent *event);
-    void setText(int x, int y, const QString &val);
+    void editItem ( QTableWidgetItem *it );
+    virtual bool eventFilter ( QObject *obj, QEvent *event );
+    void setText ( int x, int y, const QString &val );
     virtual void ordenar();
-    void sortByColumn(int column, Qt::SortOrder order = Qt::AscendingOrder);
-    void sortItems(int column, Qt::SortOrder order = Qt::AscendingOrder);
-    void setSortingEnabled(bool);
+    void sortByColumn ( int column, Qt::SortOrder order = Qt::AscendingOrder );
+    void sortItems ( int column, Qt::SortOrder order = Qt::AscendingOrder );
+    void setSortingEnabled ( bool );
 
 public slots:
-    virtual void sitemChanged(QTableWidgetItem *it);
+    virtual void sitemChanged ( QTableWidgetItem *it );
 
 signals:
-    void cellRePosition(int, int);
-    void pulsadomas(int, int, int);
-    void pressedAsterisk(int, int);
-    void pressedPlus(int, int);
-    void pressedMinus(int, int);
-    void pressedSlash(int, int);
-    void ctrlSubir(int, int);
-    void ctrlBajar(int, int);
-    void ctrlDerecha(int, int);
-    void ctrlIzquierda(int, int);
+    void cellRePosition ( int, int );
+    void pulsadomas ( int, int, int );
+    void pressedAsterisk ( int, int );
+    void pressedPlus ( int, int );
+    void pressedMinus ( int, int );
+    void pressedSlash ( int, int );
+    void ctrlSubir ( int, int );
+    void ctrlBajar ( int, int );
+    void ctrlDerecha ( int, int );
+    void ctrlIzquierda ( int, int );
 };
 
 #endif

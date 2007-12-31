@@ -30,30 +30,32 @@
 #include "empresabase.h"
 
 
-class PEmpresaBase {
+class PEmpresaBase
+{
 private:
-  /// Indica si es modo consulta o modo edicion. (altera el comportamiento del
-  /// doble click sobre la lista)
-  EmpresaBase *m_empresaBase;
+    /// Indica si es modo consulta o modo edicion. (altera el comportamiento del
+    /// doble click sobre la lista)
+    EmpresaBase *m_empresaBase;
 
 public:
-  PEmpresaBase(EmpresaBase *);
-  PEmpresaBase();
-  virtual ~PEmpresaBase();
-  virtual void setEmpresaBase(EmpresaBase *);
-  virtual EmpresaBase *empresaBase();
-  virtual QString valorCampo();
-  virtual void setValorCampo(QString );
+    PEmpresaBase ( EmpresaBase * );
+    PEmpresaBase();
+    virtual ~PEmpresaBase();
+    virtual void setEmpresaBase ( EmpresaBase * );
+    virtual EmpresaBase *empresaBase();
+    virtual QString valorCampo();
+    virtual void setValorCampo ( QString );
 };
 
 
-class BLWidget : public QWidget, public PEmpresaBase {
-  Q_OBJECT
+class BLWidget : public QWidget, public PEmpresaBase
+{
+    Q_OBJECT
 
 public:
-  BLWidget(QWidget *parent = 0, Qt::WFlags f = 0);
-  BLWidget(EmpresaBase *, QWidget *parent = 0, Qt::WFlags f = 0);
-  virtual ~BLWidget();
+    BLWidget ( QWidget *parent = 0, Qt::WFlags f = 0 );
+    BLWidget ( EmpresaBase *, QWidget *parent = 0, Qt::WFlags f = 0 );
+    virtual ~BLWidget();
 };
 
 #endif

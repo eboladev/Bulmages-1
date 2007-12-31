@@ -34,7 +34,8 @@ class Empresa;
 
 /// Clase Asiento1.
 /** */
-class Asiento1 : public FichaBc {
+class Asiento1 : public FichaBc
+{
     Q_OBJECT
 
 public:
@@ -44,28 +45,28 @@ protected:
     ListLinAsiento1View *listalineas;
 
 public:
-    Asiento1(Empresa *, QWidget *parent);
+    Asiento1 ( Empresa *, QWidget *parent );
     virtual ~Asiento1();
     Empresa *companyact();
-    int cargar(QString);
-    Fixed totaldebe(QString);
-    Fixed totalhaber(QString);
+    int cargar ( QString );
+    Fixed totaldebe ( QString );
+    Fixed totalhaber ( QString );
     void vaciar();
     void abrir();
     void cerrar();
     estadoasiento estadoAsiento1();
     int guardar();
-    void setidasiento(QString val);
+    void setidasiento ( QString val );
     QString idasiento();
     /// Establece cual es la lista subformulario del presupuesto.
-    void setListLinAsiento1(ListLinAsiento1View *a);
-    virtual int borrar(bool);
-    virtual void pintaidasiento(QString);
-    virtual void pintadescripcion(QString);
-    virtual void pintafecha(QString);
-    virtual void pintacomentariosasiento(QString);
-    virtual void pintaordenasiento(QString);
-    virtual void pintaclase(QString);
+    void setListLinAsiento1 ( ListLinAsiento1View *a );
+    virtual int borrar ( bool );
+    virtual void pintaidasiento ( QString );
+    virtual void pintadescripcion ( QString );
+    virtual void pintafecha ( QString );
+    virtual void pintacomentariosasiento ( QString );
+    virtual void pintaordenasiento ( QString );
+    virtual void pintaclase ( QString );
     virtual void calculaypintatotales();
     virtual void pintar();
     virtual void trataestadoAsiento1();

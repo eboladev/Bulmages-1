@@ -35,66 +35,68 @@
 \param emp
 \param parent
 **/
-AmortizacionView::AmortizacionView(Empresa *emp, QWidget *parent)
-        : FichaBc(emp, parent) {
-    _depura("AmortizacionView::AmortizacionView", 0);
+AmortizacionView::AmortizacionView ( Empresa *emp, QWidget *parent )
+        : FichaBc ( emp, parent )
+{
+    _depura ( "AmortizacionView::AmortizacionView", 0 );
 
-    this->setAttribute(Qt::WA_DeleteOnClose);
-    setupUi(this);
+    this->setAttribute ( Qt::WA_DeleteOnClose );
+    setupUi ( this );
     m_idamortizacion = "";
     m_idctaactivo = "";
     m_idctaamortizacion = "";
 
     /// Nueva inicializacion de amortizaciones
-    mui_listcuotas->setEmpresaBase(emp);
-    ctaactivo->setEmpresaBase(emp);
-    ctaamortizacion->setEmpresaBase(emp);
+    mui_listcuotas->setEmpresaBase ( emp );
+    ctaactivo->setEmpresaBase ( emp );
+    ctaamortizacion->setEmpresaBase ( emp );
 
     /// Inicializamos la clase para la base de datos.
-    setTitleName(tr("Amortizacion"));
-    setDBTableName("amortizacion");
-    setDBCampoId("idamortizacion");
-    addDBCampo("nomamortizacion", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Nombre de la amortizacion"));
-    addDBCampo("descamortizacion", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Descripcion de la amortizacion"));
-    addDBCampo("fechacompra", DBCampo::DBdate, DBCampo::DBNothing, tr("Fecha de la compra"));
-    addDBCampo("fecha1cuota", DBCampo::DBdate, DBCampo::DBNothing, tr("Fecha 1a cuota"));
-    addDBCampo("valorcompra", DBCampo::DBnumeric, DBCampo::DBNothing, tr("Valor de la compra"));
-    addDBCampo("periodicidad", DBCampo::DBint, DBCampo::DBNothing, tr("Periodicidad"));
-    addDBCampo("numcuotas", DBCampo::DBint, DBCampo::DBNothing, tr("Numero de cuotas"));
-    addDBCampo("metodo", DBCampo::DBvarchar, DBCampo::DBNoSave, tr("Metodo"));
-    addDBCampo("nifproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("NIF del proveedor"));
-    addDBCampo("nomproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Nombre del proveedor"));
-    addDBCampo("dirproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Direccion del proveedor"));
-    addDBCampo("telproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Telefono del proveedor"));
-    addDBCampo("agrupacion", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Agrupacion"));
-    addDBCampo("idamortizacion", DBCampo::DBint, DBCampo::DBPrimaryKey, tr("Id amortizacion"));
-    addDBCampo("idcuentaactivo", DBCampo::DBint, DBCampo::DBNothing, tr("Identificador"));
-    addDBCampo("idcuentaamortizacion", DBCampo::DBint, DBCampo::DBNotNull, tr("Id cuenta amortizacion"));
+    setTitleName ( tr ( "Amortizacion" ) );
+    setDBTableName ( "amortizacion" );
+    setDBCampoId ( "idamortizacion" );
+    addDBCampo ( "nomamortizacion", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Nombre de la amortizacion" ) );
+    addDBCampo ( "descamortizacion", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Descripcion de la amortizacion" ) );
+    addDBCampo ( "fechacompra", DBCampo::DBdate, DBCampo::DBNothing, tr ( "Fecha de la compra" ) );
+    addDBCampo ( "fecha1cuota", DBCampo::DBdate, DBCampo::DBNothing, tr ( "Fecha 1a cuota" ) );
+    addDBCampo ( "valorcompra", DBCampo::DBnumeric, DBCampo::DBNothing, tr ( "Valor de la compra" ) );
+    addDBCampo ( "periodicidad", DBCampo::DBint, DBCampo::DBNothing, tr ( "Periodicidad" ) );
+    addDBCampo ( "numcuotas", DBCampo::DBint, DBCampo::DBNothing, tr ( "Numero de cuotas" ) );
+    addDBCampo ( "metodo", DBCampo::DBvarchar, DBCampo::DBNoSave, tr ( "Metodo" ) );
+    addDBCampo ( "nifproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "NIF del proveedor" ) );
+    addDBCampo ( "nomproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Nombre del proveedor" ) );
+    addDBCampo ( "dirproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Direccion del proveedor" ) );
+    addDBCampo ( "telproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Telefono del proveedor" ) );
+    addDBCampo ( "agrupacion", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Agrupacion" ) );
+    addDBCampo ( "idamortizacion", DBCampo::DBint, DBCampo::DBPrimaryKey, tr ( "Id amortizacion" ) );
+    addDBCampo ( "idcuentaactivo", DBCampo::DBint, DBCampo::DBNothing, tr ( "Identificador" ) );
+    addDBCampo ( "idcuentaamortizacion", DBCampo::DBint, DBCampo::DBNotNull, tr ( "Id cuenta amortizacion" ) );
 
     /// Inicializamos el listado.
-    mui_listcuotas->setDBTableName("linamortizacion");
-    mui_listcuotas->setDBCampoId("idlinamortizacion");
-    mui_listcuotas->addSHeader("ejercicio", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone, tr("Ejercicio"));
-    mui_listcuotas->addSHeader("fechaprevista", DBCampo::DBdate, DBCampo::DBNothing, SHeader::DBNone, tr("Fecha prevista"));
-    mui_listcuotas->addSHeader("cantidad", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, tr("Cantidad"));
-    mui_listcuotas->addSHeader("idasiento", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoWrite , tr("Id asiento"));
-    mui_listcuotas->addSHeader("idlinamortizacion", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoWrite , tr("Id lineas de amortizacion"));
-    mui_listcuotas->addSHeader("idamortizacion", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoWrite , tr("Id amortizacion"));
-    mui_listcuotas->setinsercion(FALSE);
-    mui_listcuotas->setOrdenEnabled(FALSE);
+    mui_listcuotas->setDBTableName ( "linamortizacion" );
+    mui_listcuotas->setDBCampoId ( "idlinamortizacion" );
+    mui_listcuotas->addSHeader ( "ejercicio", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone, tr ( "Ejercicio" ) );
+    mui_listcuotas->addSHeader ( "fechaprevista", DBCampo::DBdate, DBCampo::DBNothing, SHeader::DBNone, tr ( "Fecha prevista" ) );
+    mui_listcuotas->addSHeader ( "cantidad", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, tr ( "Cantidad" ) );
+    mui_listcuotas->addSHeader ( "idasiento", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoWrite , tr ( "Id asiento" ) );
+    mui_listcuotas->addSHeader ( "idlinamortizacion", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoWrite , tr ( "Id lineas de amortizacion" ) );
+    mui_listcuotas->addSHeader ( "idamortizacion", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoWrite , tr ( "Id amortizacion" ) );
+    mui_listcuotas->setinsercion ( FALSE );
+    mui_listcuotas->setOrdenEnabled ( FALSE );
 
     /// Fin de nuevas amortizaciones
-    meteWindow(windowTitle(), this);
-    _depura("END AmortizacionView::AmortizacionView", 0);
+    meteWindow ( windowTitle(), this );
+    _depura ( "END AmortizacionView::AmortizacionView", 0 );
 }
 
 
 ///
 /**
 **/
-AmortizacionView::~AmortizacionView() {
-    _depura("AmortizacionView::~AmortizacionView", 0);
-    _depura("END AmortizacionView::~AmortizacionView", 0);
+AmortizacionView::~AmortizacionView()
+{
+    _depura ( "AmortizacionView::~AmortizacionView", 0 );
+    _depura ( "END AmortizacionView::~AmortizacionView", 0 );
 }
 
 
@@ -102,16 +104,17 @@ AmortizacionView::~AmortizacionView() {
 /**
 \return
 **/
-int AmortizacionView::borrar() {
-    _depura("AmortizacionView::borrar", 0);
-    if (m_idamortizacion != "") {
+int AmortizacionView::borrar()
+{
+    _depura ( "AmortizacionView::borrar", 0 );
+    if ( m_idamortizacion != "" ) {
         QString query = "DELETE FROM linamortizacion WHERE idamortizacion = " + m_idamortizacion;
-        empresaBase()->ejecuta(query);
+        empresaBase() ->ejecuta ( query );
         query = "DELETE FROM amortizacion WHERE idamortizacion = " + m_idamortizacion;
-        empresaBase()->ejecuta(query);
+        empresaBase() ->ejecuta ( query );
         close();
     } // end if
-    _depura("END AmortizacionView::borrar", 0);
+    _depura ( "END AmortizacionView::borrar", 0 );
     return 0;
 }
 
@@ -120,30 +123,31 @@ int AmortizacionView::borrar() {
 /**
 \return
 **/
-int AmortizacionView::guardar() {
-    _depura("AmortizacionView::guardar", 0);
+int AmortizacionView::guardar()
+{
+    _depura ( "AmortizacionView::guardar", 0 );
     try {
         /// Guardamos los datos del formulario
-        setDBvalue("nomamortizacion", nomamortizacion->text() );
-        setDBvalue("idcuentaactivo",  ctaactivo->idcuenta() );
-        setDBvalue("valorcompra", valorcompra->text() );
-        setDBvalue("numcuotas", numcuotas->text());
-        setDBvalue("fechacompra", fechacompra->text());
-        setDBvalue("fecha1cuota", fecha1cuota->text());
-        setDBvalue("idcuentaamortizacion", ctaamortizacion->idcuenta());
-        setDBvalue("agrupacion", agrupacion->text());
+        setDBvalue ( "nomamortizacion", nomamortizacion->text() );
+        setDBvalue ( "idcuentaactivo",  ctaactivo->idcuenta() );
+        setDBvalue ( "valorcompra", valorcompra->text() );
+        setDBvalue ( "numcuotas", numcuotas->text() );
+        setDBvalue ( "fechacompra", fechacompra->text() );
+        setDBvalue ( "fecha1cuota", fecha1cuota->text() );
+        setDBvalue ( "idcuentaamortizacion", ctaamortizacion->idcuenta() );
+        setDBvalue ( "agrupacion", agrupacion->text() );
 
         QString id = "";
-        DBRecord::DBsave(id);
+        DBRecord::DBsave ( id );
 
         /// Guardamos las lineas de amortizacion.
-        mui_listcuotas->setColumnValue("idamortizacion", id);
+        mui_listcuotas->setColumnValue ( "idamortizacion", id );
         mui_listcuotas->guardar();
-        cargar(id);
-        _depura("END AmortizacionView::guardar", 0);
+        cargar ( id );
+        _depura ( "END AmortizacionView::guardar", 0 );
         return 0;
-    } catch (...) {
-        mensajeInfo("Error en el guardado");
+    } catch ( ... ) {
+        mensajeInfo ( "Error en el guardado" );
         return -1;
     } // end try
 }
@@ -155,52 +159,53 @@ int AmortizacionView::guardar() {
 \param idamortizacion
 \param
 **/
-int AmortizacionView::cargar(QString idamortizacion) {
-    _depura("AmortizacionView::cargar", 0, idamortizacion);
+int AmortizacionView::cargar ( QString idamortizacion )
+{
+    _depura ( "AmortizacionView::cargar", 0, idamortizacion );
     try {
         m_idamortizacion = idamortizacion;
-        DBRecord::cargar(m_idamortizacion);
+        DBRecord::cargar ( m_idamortizacion );
 
         /// se ha cargado de la base de datos.
-        nomamortizacion->setText(DBvalue("nomamortizacion"));
-        valorcompra->setText(DBvalue("valorcompra"));
-        numcuotas->setText(DBvalue("numcuotas"));
-        fechacompra->setText(DBvalue( "fechacompra"));
-        fecha1cuota->setText(DBvalue("fecha1cuota"));
-        ctaactivo->setidcuenta(DBvalue("idcuentaactivo"));
-        m_idctaactivo = DBvalue("idcuentaactivo");
-        ctaamortizacion->setidcuenta(DBvalue("idcuentaamortizacion"));
-        m_idctaamortizacion= DBvalue("idcuentaamortizacion");
-        agrupacion->setText(DBvalue("agrupacion"));
+        nomamortizacion->setText ( DBvalue ( "nomamortizacion" ) );
+        valorcompra->setText ( DBvalue ( "valorcompra" ) );
+        numcuotas->setText ( DBvalue ( "numcuotas" ) );
+        fechacompra->setText ( DBvalue ( "fechacompra" ) );
+        fecha1cuota->setText ( DBvalue ( "fecha1cuota" ) );
+        ctaactivo->setidcuenta ( DBvalue ( "idcuentaactivo" ) );
+        m_idctaactivo = DBvalue ( "idcuentaactivo" );
+        ctaamortizacion->setidcuenta ( DBvalue ( "idcuentaamortizacion" ) );
+        m_idctaamortizacion = DBvalue ( "idcuentaamortizacion" );
+        agrupacion->setText ( DBvalue ( "agrupacion" ) );
 
         QString query = "SELECT *, fechaprevista <= now() AS ant FROM linamortizacion LEFT JOIN asiento ON linamortizacion.idasiento = asiento.idasiento WHERE idamortizacion = " + m_idamortizacion + " ORDER BY fechaprevista";
-        mui_listcuotas->cargar(query);
+        mui_listcuotas->cargar ( query );
 
         /// Calculamos lo que ya llevamos amortizado y lo presentamos en la pantalla.
         query = "SELECT sum(cantidad) AS amortizado FROM linamortizacion WHERE idasiento IS NOT NULL AND idamortizacion = " + m_idamortizacion;
-        cursor2 *curs = empresaBase()->cargacursor(query);
-        if (!curs->eof()) {
-            amortizado->setText(curs->valor("amortizado"));
+        cursor2 *curs = empresaBase() ->cargacursor ( query );
+        if ( !curs->eof() ) {
+            amortizado->setText ( curs->valor ( "amortizado" ) );
         } // end if
         delete curs;
 
         /// Calculamos lo que nos falta por amortizar y lo presentamos en la pantalla.
         query = "SELECT sum(cantidad) AS pdte FROM linamortizacion WHERE idasiento IS NULL AND idamortizacion = " + m_idamortizacion;
-        curs = empresaBase()->cargacursor(query, "pdte");
-        if (!curs->eof()) {
-            pendiente->setText(curs->valor("pdte"));
+        curs = empresaBase() ->cargacursor ( query, "pdte" );
+        if ( !curs->eof() ) {
+            pendiente->setText ( curs->valor ( "pdte" ) );
         } // end if
         delete curs;
 
         /// Deshabilitamos el bot&oacute;n de calcular, porque la amortizaci&oacute;n ya
         /// est&aacute; hecha.
-        mui_btcalcular->setDisabled(TRUE);
+        mui_btcalcular->setDisabled ( TRUE );
         dialogChanges_cargaInicial();
-        empresaBase()->meteWindow(windowTitle() + DBvalue("idamortizacion"), this);
-        _depura("END AmortizacionView::cargar", 0);
+        empresaBase() ->meteWindow ( windowTitle() + DBvalue ( "idamortizacion" ), this );
+        _depura ( "END AmortizacionView::cargar", 0 );
         return 0;
-    } catch (...) {
-        mensajeInfo(tr("Error en la carga de la amortizacion"));
+    } catch ( ... ) {
+        mensajeInfo ( tr ( "Error en la carga de la amortizacion" ) );
         return -1;
     } // end try
 }
@@ -209,11 +214,12 @@ int AmortizacionView::cargar(QString idamortizacion) {
 ///
 /**
 **/
-void AmortizacionView::on_mui_btcalcular_clicked() {
-    _depura("AmortizacionView::calculaamortizacion", 0);
+void AmortizacionView::on_mui_btcalcular_clicked()
+{
+    _depura ( "AmortizacionView::calculaamortizacion", 0 );
     /// Para hacer el c&iacute;rculo de los plazos de cada amortizaci&oacute;n
     /// Hay que obtener diversos datos.
-    QDate f1cuota = normalizafecha(fecha1cuota->text());
+    QDate f1cuota = normalizafecha ( fecha1cuota->text() );
     int ncuotas = numcuotas->text().toInt();
     QString periodicidadtxt = periodicidad->currentText();
     double valcuota;
@@ -222,116 +228,116 @@ void AmortizacionView::on_mui_btcalcular_clicked() {
     mui_listcuotas->inicializar();
     mui_listcuotas->pintar();
     /// Si usamos el m&eacute;todo lineal:
-    if (metodolineal->isChecked()) {
+    if ( metodolineal->isChecked() ) {
         valcuota = valorcompra->text().toDouble() / ncuotas;
-        valcuotastr.sprintf("%10.2f", valcuota);
-        for (int i = 0; i < ncuotas; i++) {
-            mui_listcuotas->setinsercion(TRUE);
+        valcuotastr.sprintf ( "%10.2f", valcuota );
+        for ( int i = 0; i < ncuotas; i++ ) {
+            mui_listcuotas->setinsercion ( TRUE );
             mui_listcuotas->nuevoRegistro();
-            mui_listcuotas->setinsercion(FALSE);
-            SDBRecord *rec = mui_listcuotas->lista()->last();
-            rec->setDBvalue("fechaprevista", f1cuota.toString("dd/MM/yyyy"));
-            rec->setDBvalue("cantidad", valcuotastr);
+            mui_listcuotas->setinsercion ( FALSE );
+            SDBRecord *rec = mui_listcuotas->lista() ->last();
+            rec->setDBvalue ( "fechaprevista", f1cuota.toString ( "dd/MM/yyyy" ) );
+            rec->setDBvalue ( "cantidad", valcuotastr );
 
             /// Dependiendo de la periodicidad actualizamos la fecha.
-            if (periodicidadtxt == tr("Anual")) {
-                f1cuota = f1cuota.addYears(1);
-            } else if (periodicidadtxt == tr("Mensual")) {
-                f1cuota = f1cuota.addMonths(1);
-            } else if (periodicidadtxt == tr("Semestral")) {
-                f1cuota = f1cuota.addMonths(6);
-            } else if (periodicidadtxt == tr("Trimestral")) {
-                f1cuota = f1cuota.addMonths(3);
+            if ( periodicidadtxt == tr ( "Anual" ) ) {
+                f1cuota = f1cuota.addYears ( 1 );
+            } else if ( periodicidadtxt == tr ( "Mensual" ) ) {
+                f1cuota = f1cuota.addMonths ( 1 );
+            } else if ( periodicidadtxt == tr ( "Semestral" ) ) {
+                f1cuota = f1cuota.addMonths ( 6 );
+            } else if ( periodicidadtxt == tr ( "Trimestral" ) ) {
+                f1cuota = f1cuota.addMonths ( 3 );
             } // end if
         } // end for
-    } else if (metodoincremental->isChecked()) {
+    } else if ( metodoincremental->isChecked() ) {
         /// El m&eacute;todo de amortizaci&oacute;n es el incremental.
         double total = 0;
-        for (int j = 1; j <= ncuotas; j++) {
+        for ( int j = 1; j <= ncuotas; j++ ) {
             total = total + j;
         } // end for
 
-        for (int i = 1; i <= ncuotas; i++) {
-            valcuota = valorcompra->text().toDouble() * i/total;
-            valcuotastr.sprintf("%10.2f", valcuota);
-            mui_listcuotas->setinsercion(TRUE);
+        for ( int i = 1; i <= ncuotas; i++ ) {
+            valcuota = valorcompra->text().toDouble() * i / total;
+            valcuotastr.sprintf ( "%10.2f", valcuota );
+            mui_listcuotas->setinsercion ( TRUE );
             mui_listcuotas->nuevoRegistro();
-            mui_listcuotas->setinsercion(FALSE);
-            SDBRecord *rec = mui_listcuotas->lista()->last();
-            rec->setDBvalue("fechaprevista", f1cuota.toString("dd/MM/yyyy"));
-            rec->setDBvalue("cantidad", valcuotastr);
+            mui_listcuotas->setinsercion ( FALSE );
+            SDBRecord *rec = mui_listcuotas->lista() ->last();
+            rec->setDBvalue ( "fechaprevista", f1cuota.toString ( "dd/MM/yyyy" ) );
+            rec->setDBvalue ( "cantidad", valcuotastr );
             /// Dependiendo de la periodicidad actualizamos la fecha.
-            if (periodicidadtxt == tr("Anual")) {
-                f1cuota = f1cuota.addYears(1);
-            } else if (periodicidadtxt == tr("Mensual")) {
-                f1cuota = f1cuota.addMonths(1);
-            } else if (periodicidadtxt == tr("Semestral")) {
-                f1cuota = f1cuota.addMonths(6);
-            } else if (periodicidadtxt == tr("Trimestral")) {
-                f1cuota = f1cuota.addMonths(3);
+            if ( periodicidadtxt == tr ( "Anual" ) ) {
+                f1cuota = f1cuota.addYears ( 1 );
+            } else if ( periodicidadtxt == tr ( "Mensual" ) ) {
+                f1cuota = f1cuota.addMonths ( 1 );
+            } else if ( periodicidadtxt == tr ( "Semestral" ) ) {
+                f1cuota = f1cuota.addMonths ( 6 );
+            } else if ( periodicidadtxt == tr ( "Trimestral" ) ) {
+                f1cuota = f1cuota.addMonths ( 3 );
             } // end if
         } // end for
 
-    } else if (metododecremental->isChecked()) {
+    } else if ( metododecremental->isChecked() ) {
         /// El m&eacute;todo de amortizaci&oacute;n es el incremental.
         double total = 0;
-        for (int j = 1; j <= ncuotas; j++) {
+        for ( int j = 1; j <= ncuotas; j++ ) {
             total = total + j;
         } // end for
-        for (int i = 0; i < ncuotas; i++) {
-            valcuota = valorcompra->text().toDouble() * (ncuotas - i) / total;
-            valcuotastr.sprintf("%10.2f", valcuota);
-            mui_listcuotas->setinsercion(TRUE);
+        for ( int i = 0; i < ncuotas; i++ ) {
+            valcuota = valorcompra->text().toDouble() * ( ncuotas - i ) / total;
+            valcuotastr.sprintf ( "%10.2f", valcuota );
+            mui_listcuotas->setinsercion ( TRUE );
             mui_listcuotas->nuevoRegistro();
-            mui_listcuotas->setinsercion(FALSE);
-            SDBRecord *rec = mui_listcuotas->lista()->last();
-            rec->setDBvalue("fechaprevista", f1cuota.toString("dd/MM/yyyy"));
-            rec->setDBvalue("cantidad", valcuotastr);
+            mui_listcuotas->setinsercion ( FALSE );
+            SDBRecord *rec = mui_listcuotas->lista() ->last();
+            rec->setDBvalue ( "fechaprevista", f1cuota.toString ( "dd/MM/yyyy" ) );
+            rec->setDBvalue ( "cantidad", valcuotastr );
 
             /// Dependiendo de la periodicidad actualizamos la fecha.
-            if (periodicidadtxt == tr("Anual")) {
-                f1cuota = f1cuota.addYears(1);
-            } else if (periodicidadtxt == tr("Mensual")) {
-                f1cuota = f1cuota.addMonths(1);
-            } else if (periodicidadtxt == tr("Semestral")) {
-                f1cuota = f1cuota.addMonths(6);
-            } else if (periodicidadtxt == tr("Trimestral")) {
-                f1cuota = f1cuota.addMonths(3);
+            if ( periodicidadtxt == tr ( "Anual" ) ) {
+                f1cuota = f1cuota.addYears ( 1 );
+            } else if ( periodicidadtxt == tr ( "Mensual" ) ) {
+                f1cuota = f1cuota.addMonths ( 1 );
+            } else if ( periodicidadtxt == tr ( "Semestral" ) ) {
+                f1cuota = f1cuota.addMonths ( 6 );
+            } else if ( periodicidadtxt == tr ( "Trimestral" ) ) {
+                f1cuota = f1cuota.addMonths ( 3 );
             } // end if
         } // end for
-    } else if (metodoporcentual->isChecked()) {
+    } else if ( metodoporcentual->isChecked() ) {
         /// El m&eacute;todo de amortizaci&oacute;n es el incremental.
-        double porcent = (double) 1 / (double) ncuotas;
-        fprintf(stderr, "El coeficiente es: %10.2f\n", porcent);
+        double porcent = ( double ) 1 / ( double ) ncuotas;
+        fprintf ( stderr, "El coeficiente es: %10.2f\n", porcent );
         double total = 0;
-        for (int i = 0; i < ncuotas; i++) {
-            if (i < (ncuotas - 1)) {
-                valcuota = (valorcompra->text().toDouble() - total) * porcent;
+        for ( int i = 0; i < ncuotas; i++ ) {
+            if ( i < ( ncuotas - 1 ) ) {
+                valcuota = ( valorcompra->text().toDouble() - total ) * porcent;
                 total += valcuota;
-                fprintf(stderr, "cuota: %10.2f -- total: %10.2f\n", valcuota, total);
+                fprintf ( stderr, "cuota: %10.2f -- total: %10.2f\n", valcuota, total );
             } else {
                 valcuota = valorcompra->text().toDouble() - total;
             } // end if
-            valcuotastr.sprintf("%10.2f", valcuota);
-            mui_listcuotas->setinsercion(TRUE);
+            valcuotastr.sprintf ( "%10.2f", valcuota );
+            mui_listcuotas->setinsercion ( TRUE );
             mui_listcuotas->nuevoRegistro();
-            mui_listcuotas->setinsercion(FALSE);
-            SDBRecord *rec = mui_listcuotas->lista()->last();
-            rec->setDBvalue("fechaprevista", f1cuota.toString("dd/MM/yyyy"));
-            rec->setDBvalue("cantidad", valcuotastr);
+            mui_listcuotas->setinsercion ( FALSE );
+            SDBRecord *rec = mui_listcuotas->lista() ->last();
+            rec->setDBvalue ( "fechaprevista", f1cuota.toString ( "dd/MM/yyyy" ) );
+            rec->setDBvalue ( "cantidad", valcuotastr );
             /// Dependiendo de la periodicidad actualizamos la fecha.
-            if (periodicidadtxt == tr("Anual")) {
-                f1cuota = f1cuota.addYears(1);
-            } else if (periodicidadtxt == tr("Mensual")) {
-                f1cuota = f1cuota.addMonths(1);
-            } else if (periodicidadtxt == tr("Semestral")) {
-                f1cuota = f1cuota.addMonths(6);
-            } else if (periodicidadtxt == tr("Trimestral")) {
-                f1cuota = f1cuota.addMonths(3);
+            if ( periodicidadtxt == tr ( "Anual" ) ) {
+                f1cuota = f1cuota.addYears ( 1 );
+            } else if ( periodicidadtxt == tr ( "Mensual" ) ) {
+                f1cuota = f1cuota.addMonths ( 1 );
+            } else if ( periodicidadtxt == tr ( "Semestral" ) ) {
+                f1cuota = f1cuota.addMonths ( 6 );
+            } else if ( periodicidadtxt == tr ( "Trimestral" ) ) {
+                f1cuota = f1cuota.addMonths ( 3 );
             } // end if
         } // end for
     } // end if
-    _depura("AmortizacionView::calculaamortizacion", 0);
+    _depura ( "AmortizacionView::calculaamortizacion", 0 );
 }
 
 
@@ -344,18 +350,20 @@ void AmortizacionView::on_mui_btcalcular_clicked() {
 /**
 \param parent
 **/
-AmortizacionSubForm::AmortizacionSubForm(QWidget *parent) : SubForm2Bc(parent) {
-    _depura("AmortizacionSubForm::AmortizacionSubForm", 0);
-    _depura("END AmortizacionSubForm::AmortizacionSubForm", 0);
+AmortizacionSubForm::AmortizacionSubForm ( QWidget *parent ) : SubForm2Bc ( parent )
+{
+    _depura ( "AmortizacionSubForm::AmortizacionSubForm", 0 );
+    _depura ( "END AmortizacionSubForm::AmortizacionSubForm", 0 );
 }
 
 
 ///
 /**
 **/
-AmortizacionSubForm::~AmortizacionSubForm() {
-    _depura("AmortizacionSubForm::~AmortizacionSubForm", 0);
-    _depura("END AmortizacionSubForm::~AmortizacionSubForm", 0);
+AmortizacionSubForm::~AmortizacionSubForm()
+{
+    _depura ( "AmortizacionSubForm::~AmortizacionSubForm", 0 );
+    _depura ( "END AmortizacionSubForm::~AmortizacionSubForm", 0 );
 }
 
 
@@ -363,27 +371,28 @@ AmortizacionSubForm::~AmortizacionSubForm() {
 /**
 \param menu
 **/
-void AmortizacionSubForm::creaMenu(QMenu *menu) {
-    _depura("AmortizacionSubForm::creaMenu", 0);
-    QAction *opt1 = menu->addAction(tr("Generar asiento"));
+void AmortizacionSubForm::creaMenu ( QMenu *menu )
+{
+    _depura ( "AmortizacionSubForm::creaMenu", 0 );
+    QAction *opt1 = menu->addAction ( tr ( "Generar asiento" ) );
     menu->addSeparator();
-    QAction *opt2 = menu->addAction(tr("Ver asiento"));
+    QAction *opt2 = menu->addAction ( tr ( "Ver asiento" ) );
     menu->addSeparator();
-    QAction *opt3 = menu->addAction(tr("Desvincular asiento"));
-    QAction *opt4 = menu->addAction(tr("Borrar asiento"));
+    QAction *opt3 = menu->addAction ( tr ( "Desvincular asiento" ) );
+    QAction *opt4 = menu->addAction ( tr ( "Borrar asiento" ) );
 
-    if (DBvalue("idasiento") == "") {
-        opt1->setEnabled(TRUE);
-        opt2->setEnabled(FALSE);
-        opt3->setEnabled(FALSE);
-        opt4->setEnabled(FALSE);
+    if ( DBvalue ( "idasiento" ) == "" ) {
+        opt1->setEnabled ( TRUE );
+        opt2->setEnabled ( FALSE );
+        opt3->setEnabled ( FALSE );
+        opt4->setEnabled ( FALSE );
     } else {
-        opt1->setEnabled(FALSE);
-        opt2->setEnabled(TRUE);
-        opt3->setEnabled(TRUE);
-        opt4->setEnabled(TRUE);
+        opt1->setEnabled ( FALSE );
+        opt2->setEnabled ( TRUE );
+        opt3->setEnabled ( TRUE );
+        opt4->setEnabled ( TRUE );
     } // end if
-    _depura("END AmortizacionSubForm::creaMenu", 0);
+    _depura ( "END AmortizacionSubForm::creaMenu", 0 );
 }
 
 
@@ -392,104 +401,105 @@ void AmortizacionSubForm::creaMenu(QMenu *menu) {
 \param opcion
 \return
 **/
-void AmortizacionSubForm::procesaMenu(QAction *opcion) {
-    _depura("AmortizacionSubForm:: procesaMenu, funcion para ser sobreescrita", 0);
+void AmortizacionSubForm::procesaMenu ( QAction *opcion )
+{
+    _depura ( "AmortizacionSubForm:: procesaMenu, funcion para ser sobreescrita", 0 );
 
     /// Si no se ha seleccionado ninguna accion salimos.
-    if (! opcion )
+    if ( ! opcion )
         return;
 
 
-    if (opcion->text() == tr("Borrar cuota")) {
-        QString idlinamortizacion = DBvalue("idlinamortizacion");
+    if ( opcion->text() == tr ( "Borrar cuota" ) ) {
+        QString idlinamortizacion = DBvalue ( "idlinamortizacion" );
         QString query = "DELETE FROM linamortizacion WHERE idlinamortizacion = " + idlinamortizacion;
-        if (idlinamortizacion != "") {
-            empresaBase()->begin();
-            empresaBase()->ejecuta(query);
-            empresaBase()->commit();
+        if ( idlinamortizacion != "" ) {
+            empresaBase() ->begin();
+            empresaBase() ->ejecuta ( query );
+            empresaBase() ->commit();
         } // end if
         on_mui_confquery_clicked();
     } // end if
-    if (opcion->text() == tr("Ver asiento") || opcion->text() == tr("Borrar asiento")) {
+    if ( opcion->text() == tr ( "Ver asiento" ) || opcion->text() == tr ( "Borrar asiento" ) ) {
         /// Si se va a mostrar el asiento, o se va a borrar.
-/*
-        ((Empresa *)empresaBase())->intapuntsempresa()->show();
-        QString idasiento = DBvalue("idasiento");
-        ((Empresa *)empresaBase())->intapuntsempresa()->muestraasiento(idasiento.toInt());
-*/
-	boton_asiento();
+        /*
+                ((Empresa *)empresaBase())->intapuntsempresa()->show();
+                QString idasiento = DBvalue("idasiento");
+                ((Empresa *)empresaBase())->intapuntsempresa()->muestraasiento(idasiento.toInt());
+        */
+        boton_asiento();
     } // end if
-    if (opcion->text() == tr("Desvincular asiento") || opcion->text() == tr("Borrar asiento")) {
+    if ( opcion->text() == tr ( "Desvincular asiento" ) || opcion->text() == tr ( "Borrar asiento" ) ) {
         /// Si se va a desvincular el asiento o se va a borrar.
-        QString idasiento = DBvalue("idasiento");
-        QString idlinamortizacion = DBvalue("idlinamortizacion");
+        QString idasiento = DBvalue ( "idasiento" );
+        QString idlinamortizacion = DBvalue ( "idlinamortizacion" );
         QString query = "UPDATE linamortizacion SET idasiento = NULL WHERE idlinamortizacion = " + idlinamortizacion;
-        empresaBase()->ejecuta(query);
+        empresaBase() ->ejecuta ( query );
     } // end if
-    if (opcion->text() == tr("Borrar asiento")) {
+    if ( opcion->text() == tr ( "Borrar asiento" ) ) {
         /// Si se va a borrar el asiento.
-        ((Empresa *)empresaBase())->intapuntsempresa()->on_mui_borrar_clicked();
+        ( ( Empresa * ) empresaBase() ) ->intapuntsempresa() ->on_mui_borrar_clicked();
     } // end if
-    if (opcion->text() == tr("Generar asiento")) {
+    if ( opcion->text() == tr ( "Generar asiento" ) ) {
         /// Se va a generar el asiento.
-        QString fecha = DBvalue("fechaprevista");
+        QString fecha = DBvalue ( "fechaprevista" );
         //            fprintf(stderr, "Fecha: %s\n", fecha.toAscii().constData());
-        QString cant = DBvalue("cantidad");
+        QString cant = DBvalue ( "cantidad" );
         //            fprintf(stderr, "Cuota: %s\n", cant.toAscii().constData());
 
         QString cuenta, cuentaamort;
-        QString query = "SELECT idcuentaactivo, idcuentaamortizacion FROM amortizacion WHERE idamortizacion="+DBvalue("idamortizacion");
-        cursor2 *cur = empresaBase()->cargacursor(query);
-        if (! cur->eof()) {
-            query = "SELECT codigo from cuenta where idcuenta=" + cur->valor("idcuentaactivo");
-            cursor2 *cur1 = empresaBase()->cargacursor(query);
-            if (! cur1->eof()) {
-                cuenta = cur1->valor("codigo");
+        QString query = "SELECT idcuentaactivo, idcuentaamortizacion FROM amortizacion WHERE idamortizacion=" + DBvalue ( "idamortizacion" );
+        cursor2 *cur = empresaBase() ->cargacursor ( query );
+        if ( ! cur->eof() ) {
+            query = "SELECT codigo from cuenta where idcuenta=" + cur->valor ( "idcuentaactivo" );
+            cursor2 *cur1 = empresaBase() ->cargacursor ( query );
+            if ( ! cur1->eof() ) {
+                cuenta = cur1->valor ( "codigo" );
             } // end if
             delete cur1;
 
-            query = "SELECT codigo from cuenta where idcuenta=" + cur->valor("idcuentaamortizacion");
-            cur1 = empresaBase()->cargacursor(query);
-            if (! cur1->eof()) {
-                cuentaamort = cur1->valor("codigo");
+            query = "SELECT codigo from cuenta where idcuenta=" + cur->valor ( "idcuentaamortizacion" );
+            cur1 = empresaBase() ->cargacursor ( query );
+            if ( ! cur1->eof() ) {
+                cuentaamort = cur1->valor ( "codigo" );
             } // end if
             delete cur1;
 
         } // end if
         delete cur;
 
-        aplinteligentesview *nueva = new aplinteligentesview(((Empresa *)empresaBase()), 0);
-        nueva->inicializa(0);
+        aplinteligentesview *nueva = new aplinteligentesview ( ( ( Empresa * ) empresaBase() ), 0 );
+        nueva->inicializa ( 0 );
 
-        nueva->muestraplantilla("amortizacion");
-        nueva->setvalores("$cuenta$", cuentaamort);
-        nueva->setvalores("$cuentabien$", cuenta);
-        nueva->setvalores("$fechaasiento$", fecha);
-        nueva->setvalores("$cuota$", cant.replace(',','.'));
+        nueva->muestraplantilla ( "amortizacion" );
+        nueva->setvalores ( "$cuenta$", cuentaamort );
+        nueva->setvalores ( "$cuentabien$", cuenta );
+        nueva->setvalores ( "$fechaasiento$", fecha );
+        nueva->setvalores ( "$cuota$", cant.replace ( ',', '.' ) );
         /// Ponemos la fecha del asiento para evitar escribir.
-        nueva->setfechaasiento(fecha);
+        nueva->setfechaasiento ( fecha );
         /// Ponemos los asientos plantilla en modo exclusivo, para poder recuperar
         /// el control en cuanto se haya hecho la inserci&oacute;n del asiento.
-        nueva->setmodo(1);
-        empresaBase()->pWorkspace()->addWindow(nueva);
+        nueva->setmodo ( 1 );
+        empresaBase() ->pWorkspace() ->addWindow ( nueva );
         nueva->show();
         nueva->on_mui_aceptar_clicked();
 
         /// Cogemos los datos del asiento recien creado.
-        int numasiento1 = ((Empresa *)empresaBase())->intapuntsempresa()->idasiento().toInt();
+        int numasiento1 = ( ( Empresa * ) empresaBase() ) ->intapuntsempresa() ->idasiento().toInt();
         QString ordenasiento;
-        QString SQLQuery = "SELECT * FROM asiento where idasiento = " + QString::number(numasiento1);
-        empresaBase()->begin();
-        cur = empresaBase()->cargacursor(SQLQuery);
-        empresaBase()->commit();
-        if (!cur->eof()) {
-            ordenasiento = cur->valor("ordenasiento");
+        QString SQLQuery = "SELECT * FROM asiento where idasiento = " + QString::number ( numasiento1 );
+        empresaBase() ->begin();
+        cur = empresaBase() ->cargacursor ( SQLQuery );
+        empresaBase() ->commit();
+        if ( !cur->eof() ) {
+            ordenasiento = cur->valor ( "ordenasiento" );
         } // end if
         delete cur;
         /// Debemos guardar la modificaci&oacute;n en la l&iacute;nea de amortizaci&oacute;n.
-        QString idlinamortizacion = DBvalue("idlinamortizacion");
-        SQLQuery = "UPDATE linamortizacion set idasiento = " + QString::number(numasiento1) + " WHERE idlinamortizacion = " + idlinamortizacion;
-        empresaBase()->ejecuta(SQLQuery);
+        QString idlinamortizacion = DBvalue ( "idlinamortizacion" );
+        SQLQuery = "UPDATE linamortizacion set idasiento = " + QString::number ( numasiento1 ) + " WHERE idlinamortizacion = " + idlinamortizacion;
+        empresaBase() ->ejecuta ( SQLQuery );
     } // end if
 //    on_mui_confquery_clicked();
 }

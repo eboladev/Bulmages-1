@@ -30,16 +30,17 @@ class Empresa;
 
 ///
 /** */
-class DuplicarAsientoView : public QDialog, public Ui_DuplicarAsientoBase, PEmpresaBase {
+class DuplicarAsientoView : public QDialog, public Ui_DuplicarAsientoBase, PEmpresaBase
+{
     Q_OBJECT
 
 public:
     int idasiento;
 
 public:
-    DuplicarAsientoView(Empresa *, QWidget *, Qt::WFlags flag = 0);
+    DuplicarAsientoView ( Empresa *, QWidget *, Qt::WFlags flag = 0 );
     ~DuplicarAsientoView();
-    void inicializa(QString, QString);
+    void inicializa ( QString, QString );
 
 public slots:
     virtual void on_mui_aceptar_clicked();

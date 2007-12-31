@@ -36,8 +36,9 @@
 class empresa;
 
 
-class myRegIVA : public QObject {
-Q_OBJECT
+class myRegIVA : public QObject
+{
+    Q_OBJECT
 
 public:
     Bulmacont *m_bulmacont;
@@ -45,7 +46,7 @@ public:
 public:
     myRegIVA();
     ~myRegIVA();
-    void inicializa(Bulmacont *);
+    void inicializa ( Bulmacont * );
 
 public slots:
     void elslot();
@@ -54,7 +55,8 @@ public slots:
 
 
 
-class RegistroIvaView : public RegistroIva, public Ui_RegistroIvaBase {
+class RegistroIvaView : public RegistroIva, public Ui_RegistroIvaBase
+{
     Q_OBJECT
 
 private:
@@ -63,92 +65,112 @@ private:
     cursor2 *m_cursorFPago;
 
 public:
-    RegistroIvaView(Empresa *, QWidget *);
+    RegistroIvaView ( Empresa *, QWidget * );
     virtual ~RegistroIvaView();
-    void manageArticle(int);
-    virtual void pintaidregistroiva(const QString &) {}
+    void manageArticle ( int );
+    virtual void pintaidregistroiva ( const QString & )
+    {}
     ;
-    virtual void pintacontrapartida(const QString &val) {
-        m_contrapartida->setidcuenta(val);
+    virtual void pintacontrapartida ( const QString &val )
+    {
+        m_contrapartida->setidcuenta ( val );
     };
-    virtual void pintabaseimp(const QString &val) {
-        Fixed total(val);
-        total = total + Fixed(iva());
-        m_baseImponible->setText(val);
-        m_totalFactura->setText(total.toQString());
+    virtual void pintabaseimp ( const QString &val )
+    {
+        Fixed total ( val );
+        total = total + Fixed ( iva() );
+        m_baseImponible->setText ( val );
+        m_totalFactura->setText ( total.toQString() );
     };
-    virtual void pintaiva(const QString &val) {
-        Fixed total(val);
-        total = total + Fixed(baseimp());
-        m_totalFactura->setText(total.toQString());
-        m_importeiva->setText(val);
+    virtual void pintaiva ( const QString &val )
+    {
+        Fixed total ( val );
+        total = total + Fixed ( baseimp() );
+        m_totalFactura->setText ( total.toQString() );
+        m_importeiva->setText ( val );
     };
-    virtual void pintaffactura(const QString &val) {
-        m_ffactura->setText(val);
+    virtual void pintaffactura ( const QString &val )
+    {
+        m_ffactura->setText ( val );
     };
-    virtual void pintafemisionregistroiva(const QString &val) {
-        m_femisionregistroiva->setText(val);
+    virtual void pintafemisionregistroiva ( const QString &val )
+    {
+        m_femisionregistroiva->setText ( val );
     };
-    virtual void pintaserieregistroiva(const QString &val) {
-        m_serieregistroiva->setText(val);
+    virtual void pintaserieregistroiva ( const QString &val )
+    {
+        m_serieregistroiva->setText ( val );
     };
-    virtual void pintafactura(const QString &val) {
-        m_factura->setText(val);
+    virtual void pintafactura ( const QString &val )
+    {
+        m_factura->setText ( val );
     };
-    virtual void pintaidborrador(const QString &) {}
+    virtual void pintaidborrador ( const QString & )
+    {}
     ;
-    virtual void pintaregularizacion(const QString &) {}
+    virtual void pintaregularizacion ( const QString & )
+    {}
     ;
-    virtual void pintaplan349(const QString &) {}
+    virtual void pintaplan349 ( const QString & )
+    {}
     ;
-    virtual void pintanumorden(const QString &val) {
-        m_numorden->setText(val);
+    virtual void pintanumorden ( const QString &val )
+    {
+        m_numorden->setText ( val );
     };
-    virtual void pintacif(const QString &val) {
-        m_cif->setText(val);
+    virtual void pintacif ( const QString &val )
+    {
+        m_cif->setText ( val );
     };
-    virtual void pintaidfpago(const QString &) {}
+    virtual void pintaidfpago ( const QString & )
+    {}
     ;
-    virtual void pintafactemitida(const QString &val) {
-        if (val == "t" || val == "TRUE")
-            m_factEmitida->setChecked(TRUE);
+    virtual void pintafactemitida ( const QString &val )
+    {
+        if ( val == "t" || val == "TRUE" )
+            m_factEmitida->setChecked ( TRUE );
         else
-            m_factSoportada->setChecked(TRUE);
+            m_factSoportada->setChecked ( TRUE );
     };
-virtual void pintarectificaaregistroiva(const QString &) {}
+    virtual void pintarectificaaregistroiva ( const QString & )
+{}
     ;
-    virtual void pintaincregistro(const QString &val) {
-        if (val == "t" || val == "TRUE")
-            m_incregistroIVA->setChecked(TRUE);
+    virtual void pintaincregistro ( const QString &val )
+    {
+        if ( val == "t" || val == "TRUE" )
+            m_incregistroIVA->setChecked ( TRUE );
         else
-            m_incregistroIVA->setChecked(FALSE);
+            m_incregistroIVA->setChecked ( FALSE );
     };
 
-    virtual void recalculaIva() {
-        Fixed base = mui_listIva->sumarCampo("baseiva");
-        Fixed iva = mui_listIva->sumarCampo("ivaiva");
-        setbaseimp(base.toQString());
-        setiva(iva.toQString());
-        pintabaseimp(base.toQString());
-        pintaiva(iva.toQString());
+    virtual void recalculaIva()
+    {
+        Fixed base = mui_listIva->sumarCampo ( "baseiva" );
+        Fixed iva = mui_listIva->sumarCampo ( "ivaiva" );
+        setbaseimp ( base.toQString() );
+        setiva ( iva.toQString() );
+        pintabaseimp ( base.toQString() );
+        pintaiva ( iva.toQString() );
     };
     virtual int guardar();
-    int cargar(QString id);
-    virtual int borrar() {
+    int cargar ( QString id );
+    virtual int borrar()
+    {
         return RegistroIva::borrar();
     };
 
 private:
     void generarPedidoCliente();
-    void cargarComboFPago(QString);
+    void cargarComboFPago ( QString );
 
 public slots:
     virtual void on_mui_generarPrevisiones_clicked();
     /// Este slot se activa cuando hay cambios en los subformularios.
-    virtual void on_mui_listIva_editFinish(int, int) {
-        _depura("RegistroIvaView::on_mui_listIva_editFinish", 0);
-	recalculaIva();
-        _depura("END RegistroIvaView::on_mui_listIva_editFinish", 0);
+    virtual void on_mui_listIva_editFinish ( int, int )
+    {
+        _depura ( "RegistroIvaView::on_mui_listIva_editFinish", 0 );
+        recalculaIva();
+        _depura ( "END RegistroIvaView::on_mui_listIva_editFinish", 0 );
     };
 };
 

@@ -31,7 +31,8 @@
 
 
 /** Muestra un selector de aplicaciones y configuracion. */
-class BSelector : public QMainWindow, public Ui_selectorbase {
+class BSelector : public QMainWindow, public Ui_selectorbase
+{
     Q_OBJECT
 
 private:
@@ -41,12 +42,12 @@ private:
     QString m_tipoempresa;
 
 public:
-    BSelector(QWidget *parent = 0);
+    BSelector ( QWidget *parent = 0 );
     ~BSelector();
     QString empresaDB();
-    void setEmpresaBD(QString emp);
+    void setEmpresaBD ( QString emp );
     QString tipoEmpresa();
-    void setTipoEmpresa(QString tip);
+    void setTipoEmpresa ( QString tip );
 
 public slots:
     virtual void seleccionaempresa_clicked();

@@ -28,7 +28,8 @@
 
 
 
-class TarifaView : public FichaBf, public Ui_TarifaBase {
+class TarifaView : public FichaBf, public Ui_TarifaBase
+{
     Q_OBJECT
 
 private:
@@ -36,22 +37,24 @@ private:
     QString m_nomtarifa;
     cursor2 *m_cursorcombo;
 public:
-    TarifaView(Company *emp, QWidget *parent = 0);
+    TarifaView ( Company *emp, QWidget *parent = 0 );
     ~TarifaView();
-    Company *companyact() {
+    Company *companyact()
+    {
         return empresaBase();
     };
 
 public:
     void pintar();
-    int cargar(QString);
+    int cargar ( QString );
     int guardar();
-    int cargarcomboiva(QString);
-    void closeEvent(QCloseEvent *);
-    QString formaQuery(QString);
+    int cargarcomboiva ( QString );
+    void closeEvent ( QCloseEvent * );
+    QString formaQuery ( QString );
 
 public slots:
-    virtual void on_mui_guardar_clicked() {
+    virtual void on_mui_guardar_clicked()
+    {
         guardar();
     };
     virtual void on_mui_crear_clicked();

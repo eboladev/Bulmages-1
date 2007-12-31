@@ -35,19 +35,20 @@
 
 
 
-class RegIVAQToolButton : public QToolButton {
-	Q_OBJECT
+class RegIVAQToolButton : public QToolButton
+{
+    Q_OBJECT
 
 private:
-	Empresa *m_companyact;
-	Asiento1View *m_asiento1View;	
+    Empresa *m_companyact;
+    Asiento1View *m_asiento1View;
 
 public:
-	RegIVAQToolButton(Asiento1View * , QWidget *parent = NULL);
-	~RegIVAQToolButton();
-	void setBoton();
+    RegIVAQToolButton ( Asiento1View * , QWidget *parent = NULL );
+    ~RegIVAQToolButton();
+    void setBoton();
 public slots:
-	virtual void click();
+    virtual void click();
 
 };
 

@@ -31,12 +31,13 @@
 /**
 \param parent
 **/
-BusquedaBanco::BusquedaBanco(QWidget *parent)
-        : QComboBox2(parent) {
-    _depura("BusquedaBanco::BusquedaBanco", 0);
+BusquedaBanco::BusquedaBanco ( QWidget *parent )
+        : QComboBox2 ( parent )
+{
+    _depura ( "BusquedaBanco::BusquedaBanco", 0 );
     m_cursorcombo = NULL;
-    connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
-    _depura("END BusquedaBanco::BusquedaBanco", 0);
+    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
+    _depura ( "END BusquedaBanco::BusquedaBanco", 0 );
 }
 
 
@@ -44,11 +45,12 @@ BusquedaBanco::BusquedaBanco(QWidget *parent)
 */
 /**
 **/
-BusquedaBanco::~BusquedaBanco() {
-    _depura("BusquedaBanco::~BusquedaBanco", 0);
-    if (m_cursorcombo != NULL)
+BusquedaBanco::~BusquedaBanco()
+{
+    _depura ( "BusquedaBanco::~BusquedaBanco", 0 );
+    if ( m_cursorcombo != NULL )
         delete m_cursorcombo;
-    _depura("END BusquedaBanco::~BusquedaBanco", 0);
+    _depura ( "END BusquedaBanco::~BusquedaBanco", 0 );
 }
 
 
@@ -60,26 +62,27 @@ BusquedaBanco::~BusquedaBanco() {
 \param idbanco
 \return
 **/
-void BusquedaBanco::setidbanco(QString idbanco) {
-    _depura("BusquedaBanco::setidbanco", 0);
-    if (m_cursorcombo != NULL)
+void BusquedaBanco::setidbanco ( QString idbanco )
+{
+    _depura ( "BusquedaBanco::setidbanco", 0 );
+    if ( m_cursorcombo != NULL )
         delete m_cursorcombo;
-    m_cursorcombo = empresaBase()->cargacursor("SELECT * FROM banco");
+    m_cursorcombo = empresaBase() ->cargacursor ( "SELECT * FROM banco" );
     /// Tratamos el caso en que no se haya devuelto nada.
-    if (m_cursorcombo == NULL) return;
+    if ( m_cursorcombo == NULL ) return;
     int i = 0;
     int i1 = 0;
     clear();
-    addItem("--");
-    while (!m_cursorcombo->eof()) {
+    addItem ( "--" );
+    while ( !m_cursorcombo->eof() ) {
         i ++;
-        if (m_cursorcombo->valor("idbanco") == idbanco)
+        if ( m_cursorcombo->valor ( "idbanco" ) == idbanco )
             i1 = i;
-        addItem(m_cursorcombo->valor("nombanco") );
+        addItem ( m_cursorcombo->valor ( "nombanco" ) );
         m_cursorcombo->siguienteregistro();
     } // end while
-    setCurrentIndex(i1);
-    _depura("END BusquedaBanco::setidbanco", 0);
+    setCurrentIndex ( i1 );
+    _depura ( "END BusquedaBanco::setidbanco", 0 );
 }
 
 
@@ -87,10 +90,11 @@ void BusquedaBanco::setidbanco(QString idbanco) {
 /**
 \param idbanco
 **/
-void BusquedaBanco::setValorCampo(QString idbanco) {
-    _depura("BusquedaBanco::setValorCampo", 0);
-    setidbanco(idbanco);
-    _depura("END BusquedaBanco::setValorCampo", 0);
+void BusquedaBanco::setValorCampo ( QString idbanco )
+{
+    _depura ( "BusquedaBanco::setValorCampo", 0 );
+    setidbanco ( idbanco );
+    _depura ( "END BusquedaBanco::setValorCampo", 0 );
 }
 
 /** Devuelve el identificador del banco seleccionado
@@ -98,12 +102,13 @@ void BusquedaBanco::setValorCampo(QString idbanco) {
 /**
 \return
 **/
-QString BusquedaBanco::idbanco() {
-    _depura("BusquedaBanco::idbanco", 0);
-    _depura("END BusquedaBanco::idbanco", 0);
+QString BusquedaBanco::idbanco()
+{
+    _depura ( "BusquedaBanco::idbanco", 0 );
+    _depura ( "END BusquedaBanco::idbanco", 0 );
     /// Como puede haber habido un error con la base de datos debemos tratar dicho caso.
-    if (!m_cursorcombo) return "0";
-    return m_cursorcombo->valor("idbanco", currentIndex() - 1);
+    if ( !m_cursorcombo ) return "0";
+    return m_cursorcombo->valor ( "idbanco", currentIndex() - 1 );
 }
 
 /** Devuelve el identificador del banco seleccionado
@@ -111,7 +116,8 @@ QString BusquedaBanco::idbanco() {
 /**
 \return
 **/
-QString BusquedaBanco::valorCampo() {
+QString BusquedaBanco::valorCampo()
+{
     return idbanco();
 }
 
@@ -121,14 +127,15 @@ QString BusquedaBanco::valorCampo() {
 /**
 \param index
 **/
-void BusquedaBanco::m_activated(int index) {
-    _depura("BusquedaBanco::m_activated", 0);
-    if (index > 0) {
-        emit(valueChanged(m_cursorcombo->valor("idbanco", index - 1)));
+void BusquedaBanco::m_activated ( int index )
+{
+    _depura ( "BusquedaBanco::m_activated", 0 );
+    if ( index > 0 ) {
+        emit ( valueChanged ( m_cursorcombo->valor ( "idbanco", index - 1 ) ) );
     } else {
-        emit(valueChanged(""));
+        emit ( valueChanged ( "" ) );
     }
-    _depura("END BusquedaBanco::m_activated", 0);
+    _depura ( "END BusquedaBanco::m_activated", 0 );
 }
 
 

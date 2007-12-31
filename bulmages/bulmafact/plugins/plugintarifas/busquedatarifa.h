@@ -27,7 +27,8 @@
 #include "postgresiface2.h"
 #include "blwidget.h"
 
-class BusquedaTarifa : public QComboBox, public PEmpresaBase {
+class BusquedaTarifa : public QComboBox, public PEmpresaBase
+{
     Q_OBJECT
 
 private:
@@ -35,26 +36,28 @@ private:
     QString mdb_idtarifa;
 
 public:
-    BusquedaTarifa(QWidget *parent = 0);
+    BusquedaTarifa ( QWidget *parent = 0 );
     ~BusquedaTarifa();
-    virtual void setidtarifa(QString idtarifa);
-    QString idtarifa() {
+    virtual void setidtarifa ( QString idtarifa );
+    QString idtarifa()
+    {
         return mdb_idtarifa;
     };
 
 public slots:
-    void m_activated(int index) {
-        if (index > 0) {
-            mdb_idtarifa=m_cursorcombo->valor("idtarifa", index - 1);
-            emit(valueChanged(m_cursorcombo->valor("idtarifa", index - 1)));
+    void m_activated ( int index )
+    {
+        if ( index > 0 ) {
+            mdb_idtarifa = m_cursorcombo->valor ( "idtarifa", index - 1 );
+            emit ( valueChanged ( m_cursorcombo->valor ( "idtarifa", index - 1 ) ) );
         } else {
-            emit(valueChanged(""));
+            emit ( valueChanged ( "" ) );
             mdb_idtarifa = "";
         }
     };
 
 signals:
-    void valueChanged(QString);
+    void valueChanged ( QString );
 };
 
 #endif

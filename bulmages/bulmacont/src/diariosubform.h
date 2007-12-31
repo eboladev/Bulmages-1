@@ -30,16 +30,17 @@
 /** SubFormulario de la pantalla de Diario.*/
 
 
-class DiarioSubForm : public SubForm2Bc {
-   Q_OBJECT
+class DiarioSubForm : public SubForm2Bc
+{
+    Q_OBJECT
 
 public:
-    DiarioSubForm(QWidget *parent = 0, const char *name = 0);
+    DiarioSubForm ( QWidget *parent = 0, const char *name = 0 );
     virtual ~DiarioSubForm();
 
 public slots:
-    virtual void s_pintaMenu(QMenu *menu);
-    virtual void s_trataMenu(QAction *action);
+    virtual void s_pintaMenu ( QMenu *menu );
+    virtual void s_trataMenu ( QAction *action );
 };
 
 #endif

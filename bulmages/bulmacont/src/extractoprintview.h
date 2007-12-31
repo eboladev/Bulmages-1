@@ -41,13 +41,14 @@ class Empresa;
 /// Clase que corresponde con la ventana de impresi&oacute;n de extractos.
 /** \todo Falta hacer que en los campos se haga el autocompletado.
     \todo Falta incluir el filtrado en el extracto. */
-class ExtractoPrintView : public QDialog, public Ui_ExtractoPrintBase, PEmpresaBase {
+class ExtractoPrintView : public QDialog, public Ui_ExtractoPrintBase, PEmpresaBase
+{
     Q_OBJECT
 
 public:
     char *fichero;
-    ExtractoPrintView(Empresa *, QWidget *);
-    void presentar(char *tipus);
+    ExtractoPrintView ( Empresa *, QWidget * );
+    void presentar ( char *tipus );
     ~ExtractoPrintView();
 
 private:

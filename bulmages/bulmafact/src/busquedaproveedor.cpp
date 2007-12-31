@@ -32,16 +32,17 @@
 /**
 \param parent
 **/
-BusquedaProveedor::BusquedaProveedor(QWidget *parent)
-        : BLWidget(parent) {
-    _depura("BusquedaProveedor::BusquedaProveedor", 0);
-    setupUi(this);
+BusquedaProveedor::BusquedaProveedor ( QWidget *parent )
+        : BLWidget ( parent )
+{
+    _depura ( "BusquedaProveedor::BusquedaProveedor", 0 );
+    setupUi ( this );
     mdb_idproveedor = "";
     mdb_nomproveedor = "";
     mdb_cifproveedor = "";
     mdb_codproveedor = "";
     m_semaforo = FALSE;
-    _depura("END BusquedaProveedor::BusquedaProveedor", 0);
+    _depura ( "END BusquedaProveedor::BusquedaProveedor", 0 );
 }
 
 
@@ -51,14 +52,15 @@ BusquedaProveedor::BusquedaProveedor(QWidget *parent)
 */
 /**
 **/
-void BusquedaProveedor::pinta() {
-    _depura("BusquedaProveedor::pinta", 0);
+void BusquedaProveedor::pinta()
+{
+    _depura ( "BusquedaProveedor::pinta", 0 );
     m_semaforo = TRUE;
-    m_cifproveedor->setText(mdb_cifproveedor);
-    m_nomproveedor->setText(mdb_codproveedor + ".- " + mdb_nomproveedor);
+    m_cifproveedor->setText ( mdb_cifproveedor );
+    m_nomproveedor->setText ( mdb_codproveedor + ".- " + mdb_nomproveedor );
     m_semaforo = FALSE;
-    emit(valueChanged(mdb_idproveedor));
-    _depura("END BusquedaProveedor::pinta", 0);
+    emit ( valueChanged ( mdb_idproveedor ) );
+    _depura ( "END BusquedaProveedor::pinta", 0 );
 }
 
 
@@ -66,9 +68,10 @@ void BusquedaProveedor::pinta() {
 */
 /**
 **/
-BusquedaProveedor::~BusquedaProveedor() {
-    _depura("BusquedaProveedor::~BusquedaProveedor", 0);
-    _depura("END BusquedaProveedor::~BusquedaProveedor", 0);
+BusquedaProveedor::~BusquedaProveedor()
+{
+    _depura ( "BusquedaProveedor::~BusquedaProveedor", 0 );
+    _depura ( "END BusquedaProveedor::~BusquedaProveedor", 0 );
 }
 
 
@@ -79,18 +82,19 @@ BusquedaProveedor::~BusquedaProveedor() {
 /**
 \param val
 **/
-void BusquedaProveedor::setidproveedor(QString val) {
-    _depura("BusquedaProveedor::setidproveedor", 0);
+void BusquedaProveedor::setidproveedor ( QString val )
+{
+    _depura ( "BusquedaProveedor::setidproveedor", 0 );
     mdb_idproveedor = val;
-    if (mdb_idproveedor != "") {
-	QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor = '" + mdb_idproveedor + "'";
-	cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
-	if (!cur->eof()) {
-		mdb_cifproveedor = cur->valor("cifproveedor");
-		mdb_nomproveedor = cur->valor("nomproveedor");
-		mdb_codproveedor = cur->valor("codproveedor");
-	} // end if
-	delete cur;
+    if ( mdb_idproveedor != "" ) {
+        QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor = '" + mdb_idproveedor + "'";
+        cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
+        if ( !cur->eof() ) {
+            mdb_cifproveedor = cur->valor ( "cifproveedor" );
+            mdb_nomproveedor = cur->valor ( "nomproveedor" );
+            mdb_codproveedor = cur->valor ( "codproveedor" );
+        } // end if
+        delete cur;
     } else {
         mdb_idproveedor = "";
         mdb_nomproveedor = "";
@@ -98,17 +102,18 @@ void BusquedaProveedor::setidproveedor(QString val) {
         mdb_codproveedor = "";
     } // end if
     pinta();
-    _depura("END BusquedaProveedor::setidproveedor", 0);
+    _depura ( "END BusquedaProveedor::setidproveedor", 0 );
 }
 
 ///
 /**
 \param val
 **/
-void BusquedaProveedor::setValorCampo(QString val) {
-    _depura("BusquedaProveedor::setValorCampo", 0);
-	setidproveedor(val);
-    _depura("END BusquedaProveedor::setValorCampo", 0);
+void BusquedaProveedor::setValorCampo ( QString val )
+{
+    _depura ( "BusquedaProveedor::setValorCampo", 0 );
+    setidproveedor ( val );
+    _depura ( "END BusquedaProveedor::setValorCampo", 0 );
 }
 
 /** Mediante este metodo indicamos al Widget que proveedor debe ser puesto como el Seleccionado.
@@ -118,16 +123,17 @@ void BusquedaProveedor::setValorCampo(QString val) {
 /**
 \param val
 **/
-void BusquedaProveedor::setcifproveedor(QString val) {
-    _depura("BusquedaProveedor::setcifproveedor", 0);
+void BusquedaProveedor::setcifproveedor ( QString val )
+{
+    _depura ( "BusquedaProveedor::setcifproveedor", 0 );
     mdb_cifproveedor = val;
     QString SQLQuery = "SELECT * FROM proveedor WHERE cifproveedor = '" + mdb_cifproveedor + "'";
-    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
+    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
 
-    if (!cur->eof()) {
-        mdb_idproveedor = cur->valor("idproveedor");
-        mdb_nomproveedor = cur->valor("nomproveedor");
-        mdb_codproveedor = cur->valor("codproveedor");
+    if ( !cur->eof() ) {
+        mdb_idproveedor = cur->valor ( "idproveedor" );
+        mdb_nomproveedor = cur->valor ( "nomproveedor" );
+        mdb_codproveedor = cur->valor ( "codproveedor" );
     } else {
         mdb_idproveedor = "";
         mdb_nomproveedor = "";
@@ -136,7 +142,7 @@ void BusquedaProveedor::setcifproveedor(QString val) {
 
     delete cur;
     pinta();
-    _depura("END BusquedaProveedor::setcifproveedor", 0);
+    _depura ( "END BusquedaProveedor::setcifproveedor", 0 );
 }
 
 
@@ -147,35 +153,36 @@ void BusquedaProveedor::setcifproveedor(QString val) {
 */
 /**
 **/
-void BusquedaProveedor::on_mui_buscar_clicked() {
-    _depura("BusquedaProveedor::on_mui_buscar_clicked", 0);
+void BusquedaProveedor::on_mui_buscar_clicked()
+{
+    _depura ( "BusquedaProveedor::on_mui_buscar_clicked", 0 );
 
     /// Esto es convertir un QWidget en un sistema modal de di&aacute;logo.
-    QDialog *diag = new QDialog(0);
-    diag->setModal(true);
+    QDialog *diag = new QDialog ( 0 );
+    diag->setModal ( true );
 
-    ProveedorList *providers = new ProveedorList((Company *) empresaBase(), diag, 0, ProveedorList::SelectMode);
-    connect(providers, SIGNAL(selected(QString)), diag, SLOT(accept()));
+    ProveedorList *providers = new ProveedorList ( ( Company * ) empresaBase(), diag, 0, ProveedorList::SelectMode );
+    connect ( providers, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
     /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
     /// para que sea redimensionable y aparezca el titulo de la ventana.
     QHBoxLayout *layout = new QHBoxLayout;
-    layout->addWidget(providers);
-    layout->setMargin(0);
-    layout->setSpacing(0);
-    diag->setLayout(layout);
-    diag->setWindowTitle(providers->windowTitle());
+    layout->addWidget ( providers );
+    layout->setMargin ( 0 );
+    layout->setSpacing ( 0 );
+    diag->setLayout ( layout );
+    diag->setWindowTitle ( providers->windowTitle() );
 
     diag->exec();
 
-    if (providers->cifprovider() != "") {
-        setcifproveedor(providers->cifprovider());
-        emit(valueChanged(mdb_idproveedor));
+    if ( providers->cifprovider() != "" ) {
+        setcifproveedor ( providers->cifprovider() );
+        emit ( valueChanged ( mdb_idproveedor ) );
     } // end if
 
     delete providers;
     delete diag;
-    _depura("END BusquedaProveedor::on_mui_buscar_clicked", 0);
+    _depura ( "END BusquedaProveedor::on_mui_buscar_clicked", 0 );
 }
 
 /** SLOT que responde al fin de la edicion del campo de texto para el CIF.
@@ -183,11 +190,12 @@ void BusquedaProveedor::on_mui_buscar_clicked() {
 */
 /**
 **/
-void BusquedaProveedor::on_m_cifproveedor_editingFinished() {
-    _depura("BusquedaProveedor::on_m_cifproveedor_editingFinished", 0);
+void BusquedaProveedor::on_m_cifproveedor_editingFinished()
+{
+    _depura ( "BusquedaProveedor::on_m_cifproveedor_editingFinished", 0 );
     pinta();
-    emit(valueChanged(mdb_idproveedor));
-    _depura("END BusquedaProveedor::on_m_cifproveedor_editingFinished", 0);
+    emit ( valueChanged ( mdb_idproveedor ) );
+    _depura ( "END BusquedaProveedor::on_m_cifproveedor_editingFinished", 0 );
 }
 
 /** SLOT que responde a la produccion de cambios en el campo de texto del widget.
@@ -198,58 +206,59 @@ void BusquedaProveedor::on_m_cifproveedor_editingFinished() {
 \param val
 \return
 **/
-void BusquedaProveedor::on_m_cifproveedor_textChanged(const QString &val) {
-    _depura("BusquedaProveedor::on_m_cifproveedor_textChanged", 0);
-    if (m_semaforo)
+void BusquedaProveedor::on_m_cifproveedor_textChanged ( const QString &val )
+{
+    _depura ( "BusquedaProveedor::on_m_cifproveedor_textChanged", 0 );
+    if ( m_semaforo )
         return;
 
     bool encontrado = FALSE;
     QString SQLQuery = "SELECT * FROM proveedor WHERE cifproveedor = '" + val + "'";
-    cursor2 *cur = empresaBase()->cargacursor(SQLQuery);
-    if (!cur->eof()) {
-        mdb_idproveedor = cur->valor("idproveedor");
-        mdb_nomproveedor = cur->valor("nomproveedor");
-        mdb_cifproveedor = cur->valor("cifproveedor");
-        mdb_codproveedor = cur->valor("codproveedor");
+    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
+    if ( !cur->eof() ) {
+        mdb_idproveedor = cur->valor ( "idproveedor" );
+        mdb_nomproveedor = cur->valor ( "nomproveedor" );
+        mdb_cifproveedor = cur->valor ( "cifproveedor" );
+        mdb_codproveedor = cur->valor ( "codproveedor" );
         encontrado = TRUE;
     }
     delete cur;
 
-    if (!encontrado) {
+    if ( !encontrado ) {
         QString SQLQuery = "SELECT * FROM proveedor WHERE codproveedor = '" + val + "'";
-        cur = empresaBase()->cargacursor(SQLQuery);
-        if(!cur->eof()) {
-            mdb_idproveedor = cur->valor("idproveedor");
-            mdb_nomproveedor = cur->valor("nomproveedor");
-            mdb_cifproveedor = cur->valor("cifproveedor");
-            mdb_codproveedor = cur->valor("codproveedor");
+        cur = empresaBase() ->cargacursor ( SQLQuery );
+        if ( !cur->eof() ) {
+            mdb_idproveedor = cur->valor ( "idproveedor" );
+            mdb_nomproveedor = cur->valor ( "nomproveedor" );
+            mdb_cifproveedor = cur->valor ( "cifproveedor" );
+            mdb_codproveedor = cur->valor ( "codproveedor" );
             encontrado = TRUE;
         } // end if
         delete cur;
     } // end if
 
-    if (!encontrado) {
+    if ( !encontrado ) {
         QString SQLQuery = "SELECT * FROM proveedor WHERE upper(nomproveedor) LIKE upper('%" + val + "%')";
-        cur = empresaBase()->cargacursor(SQLQuery);
-        if(cur->numregistros() == 1) {
-            mdb_idproveedor = cur->valor("idproveedor");
-            mdb_nomproveedor = cur->valor("nomproveedor");
-            mdb_cifproveedor = cur->valor("cifproveedor");
-            mdb_codproveedor = cur->valor("codproveedor");
+        cur = empresaBase() ->cargacursor ( SQLQuery );
+        if ( cur->numregistros() == 1 ) {
+            mdb_idproveedor = cur->valor ( "idproveedor" );
+            mdb_nomproveedor = cur->valor ( "nomproveedor" );
+            mdb_cifproveedor = cur->valor ( "cifproveedor" );
+            mdb_codproveedor = cur->valor ( "codproveedor" );
             encontrado = TRUE;
         } // end if
         delete cur;
     } // end if
 
 
-    if (!encontrado) {
-        m_nomproveedor->setText("");
+    if ( !encontrado ) {
+        m_nomproveedor->setText ( "" );
     } // end if
 
-    if (encontrado) {
-        m_nomproveedor->setText(mdb_codproveedor + ".- " + mdb_nomproveedor);
+    if ( encontrado ) {
+        m_nomproveedor->setText ( mdb_codproveedor + ".- " + mdb_nomproveedor );
     } // end if
-    _depura("END BusquedaProveedor::on_m_cifproveedor_textChanged", 0);
+    _depura ( "END BusquedaProveedor::on_m_cifproveedor_textChanged", 0 );
 }
 
 
@@ -258,9 +267,10 @@ void BusquedaProveedor::on_m_cifproveedor_textChanged(const QString &val) {
 /**
 \return
 **/
-QString BusquedaProveedor::cifproveedor() {
-    _depura("BusquedaProveedor::cifproveedor", 0);
-    _depura("END BusquedaProveedor::cifproveedor", 0);
+QString BusquedaProveedor::cifproveedor()
+{
+    _depura ( "BusquedaProveedor::cifproveedor", 0 );
+    _depura ( "END BusquedaProveedor::cifproveedor", 0 );
     return m_cifproveedor->text();
 }
 
@@ -270,9 +280,10 @@ QString BusquedaProveedor::cifproveedor() {
 /**
 \return
 **/
-QString BusquedaProveedor::idproveedor() {
-    _depura("BusquedaProveedor::idproveedor", 0);
-    _depura("END BusquedaProveedor::idproveedor", 0);
+QString BusquedaProveedor::idproveedor()
+{
+    _depura ( "BusquedaProveedor::idproveedor", 0 );
+    _depura ( "END BusquedaProveedor::idproveedor", 0 );
     return mdb_idproveedor;
 }
 
@@ -282,9 +293,10 @@ QString BusquedaProveedor::idproveedor() {
 /**
 \return
 **/
-QString BusquedaProveedor::valorCampo() {
-    _depura("BusquedaProveedor::idproveedor", 0);
-    _depura("END BusquedaProveedor::idproveedor", 0);
+QString BusquedaProveedor::valorCampo()
+{
+    _depura ( "BusquedaProveedor::idproveedor", 0 );
+    _depura ( "END BusquedaProveedor::idproveedor", 0 );
     return mdb_idproveedor;
 }
 
@@ -293,9 +305,10 @@ QString BusquedaProveedor::valorCampo() {
 /**
 \return
 **/
-QString BusquedaProveedor::nomproveedor() {
-    _depura("BusquedaProveedor::nomproveedor", 0);
-    _depura("END BusquedaProveedor::nomproveedor", 0);
+QString BusquedaProveedor::nomproveedor()
+{
+    _depura ( "BusquedaProveedor::nomproveedor", 0 );
+    _depura ( "END BusquedaProveedor::nomproveedor", 0 );
     return nomproveedor();
 }
 

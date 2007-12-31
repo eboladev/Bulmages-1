@@ -32,47 +32,54 @@
 /// TODO: Esta clase debe derivar de SubForm2Bc
 /** Se encarga de la gestion del listado de lineas de cobro
 */
-class ListLinPrevCobroView : public QTableWidget, public ListLinPrevCobro {
+class ListLinPrevCobroView : public QTableWidget, public ListLinPrevCobro
+{
     Q_OBJECT
 
 public:
-    ListLinPrevCobroView(QWidget *parent = 0);
+    ListLinPrevCobroView ( QWidget *parent = 0 );
     ~ListLinPrevCobroView();
     virtual void pintalistlinprevcobro();
-    virtual void pintalinlistlinprevcobro(int);
-    linprevcobro *lineaat(int);
+    virtual void pintalinlistlinprevcobro ( int );
+    linprevcobro *lineaat ( int );
     linprevcobro *lineaact();
-    void arreglaPosicion(int, int);
+    void arreglaPosicion ( int, int );
     void presentacionFactura();
     void presentacionListado();
 
 private:
-    virtual void pintalistlinprevcobro(linprevcobro *, int);
+    virtual void pintalistlinprevcobro ( linprevcobro *, int );
 
 public slots:
-    virtual void valueLineChanged(int row, int col);
+    virtual void valueLineChanged ( int row, int col );
     virtual QString searchCuenta();
-    virtual void contextMenu(int, int, const QPoint &);
+    virtual void contextMenu ( int, int, const QPoint & );
     virtual void borralinprevcobroact();
     virtual void s_creaPago();
     /// Esto activa a las variables de filtro con lo que los nombres de las funciones no son
     /// muy acertados.
-    virtual void s_settipoprevcobro(QString tip) {
+    virtual void s_settipoprevcobro ( QString tip )
+    {
         mfilt_tipoprevcobro = tip;
     };
-    virtual void s_setcodigocuentaprevcobro(QString tip) {
+    virtual void s_setcodigocuentaprevcobro ( QString tip )
+    {
         mfilt_codigocuentaprevcobro = tip;
     };
-    virtual void s_setfinprevcobro(QString tip) {
+    virtual void s_setfinprevcobro ( QString tip )
+    {
         mfilt_finprevcobro = tip;
     };
-    virtual void s_setffiprevcobro(QString tip) {
+    virtual void s_setffiprevcobro ( QString tip )
+    {
         mfilt_ffiprevcobro = tip;
     };
-    virtual void s_setprocesado(QString tip) {
+    virtual void s_setprocesado ( QString tip )
+    {
         mfilt_procesado = tip;
     };
-    virtual void s_setidregistroiva(QString tip) {
+    virtual void s_setidregistroiva ( QString tip )
+    {
         mfilt_idregistroiva = tip;
     };
 };

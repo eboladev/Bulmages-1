@@ -27,12 +27,13 @@
 #include <ui_msgerrorbase.h>
 
 
-class msgError : public QDialog, public Ui_msgErrorBase {
+class msgError : public QDialog, public Ui_msgErrorBase
+{
     Q_OBJECT
 
 public:
-    msgError(QWidget *parent = 0);
-    msgError(QString, QString);
+    msgError ( QWidget *parent = 0 );
+    msgError ( QString, QString );
     virtual ~msgError();
     void hideFrame();
     void showFrame();

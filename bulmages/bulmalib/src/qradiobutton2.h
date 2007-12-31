@@ -25,16 +25,23 @@
 #include <QRadioButton>
 #include <QString>
 
-class QRadioButton2 : public QRadioButton {
+class QRadioButton2 : public QRadioButton
+{
     Q_OBJECT
 private:
-	QString m_valorcampo;
+    QString m_valorcampo;
 public:
-    QRadioButton2(QWidget *parent);
+    QRadioButton2 ( QWidget *parent );
     QRadioButton2 ( const QString & text, QWidget * parent = 0 );
     ~QRadioButton2();
-    void setValorCampo(QString val) {m_valorcampo = val;};
-    QString valorCampo() {return m_valorcampo;};
+    void setValorCampo ( QString val )
+    {
+        m_valorcampo = val;
+    };
+    QString valorCampo()
+    {
+        return m_valorcampo;
+    };
 };
 
 #endif

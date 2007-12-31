@@ -43,11 +43,12 @@
 class BSelector;
 
 
-class BConfiguracion : public QDialog, public Ui_UIconfiguracion {
+class BConfiguracion : public QDialog, public Ui_UIconfiguracion
+{
     Q_OBJECT
 
 public:
-    BConfiguracion(BSelector *, QWidget *, Qt::WFlags);
+    BConfiguracion ( BSelector *, QWidget *, Qt::WFlags );
     ~BConfiguracion();
 
 private:
@@ -59,11 +60,11 @@ private:
 
 private slots:
     virtual void cerrar();
-    virtual void listView1_currentChanged(QListWidgetItem *);
-    virtual void listView2_clickBotonDerecho(QListWidgetItem *, const QPoint&, int);
-    virtual void listiView2_clickMouse(int, QListWidgetItem *, const QPoint&, int);
-    virtual void FontChanged(const QString &);
-    virtual void FontSizeChanged(int);
+    virtual void listView1_currentChanged ( QListWidgetItem * );
+    virtual void listView2_clickBotonDerecho ( QListWidgetItem *, const QPoint&, int );
+    virtual void listiView2_clickMouse ( int, QListWidgetItem *, const QPoint&, int );
+    virtual void FontChanged ( const QString & );
+    virtual void FontSizeChanged ( int );
     virtual void salvarEmpresa();
     virtual void BotonA_10aceptar();
     virtual void BotonA_11rechazar();

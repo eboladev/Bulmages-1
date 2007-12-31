@@ -28,26 +28,28 @@
 #include "qworkspace2.h"
 
 
-class QListWidget1 : public QListWidget {
+class QListWidget1 : public QListWidget
+{
     Q_OBJECT
 
 public:
-    QListWidget1(QWidget * parent = 0);
+    QListWidget1 ( QWidget * parent = 0 );
     ~QListWidget1();
 };
 
 
-class QListWidgetItem1 : public QListWidgetItem {
+class QListWidgetItem1 : public QListWidgetItem
+{
 private:
     QObject *m_obj;
     QString m_nombre;
     QListWidget1 *m_list;
 
 public:
-    QListWidgetItem1(QListWidget1 *l, QPixmap &p);
+    QListWidgetItem1 ( QListWidget1 *l, QPixmap &p );
     ~QListWidgetItem1();
-    void setObject(QObject *m);
-    void setNombre(QString m);
+    void setObject ( QObject *m );
+    void setNombre ( QString m );
     QObject *object();
     QString nombre();
 };
@@ -56,7 +58,8 @@ public:
 /// Provides the dock window to list all windows in BulmaFact
 /// \param m_listBox this variable is the listBox that contains all
 /// titles of the diferent windows.
-class ListVentanas : public QDockWidget {
+class ListVentanas : public QDockWidget
+{
     Q_OBJECT
 
 private:
@@ -64,30 +67,30 @@ private:
     QWorkspace2 *m_pWorkspace;
 
 public:
-    void setWorkspace(QWorkspace2 *w);
-    ListVentanas(QWidget *a = 0);
+    void setWorkspace ( QWorkspace2 *w );
+    ListVentanas ( QWidget *a = 0 );
     ~ListVentanas();
 
 public:
-    int meteWindow(QString, QObject *, bool compdup = TRUE);
-    int seleccionaWindow(QString, QObject *);
+    int meteWindow ( QString, QObject *, bool compdup = TRUE );
+    int seleccionaWindow ( QString, QObject * );
     int deSeleccionaWindow();
-    void sacaWindow(QObject *);
-    void cambiaVisible(bool);
+    void sacaWindow ( QObject * );
+    void cambiaVisible ( bool );
     void vaciar();
     void vaciarCompleto();
     int numVentanas();
-    QObject *ventana(int index);
+    QObject *ventana ( int index );
 
 protected:
-    void closeEvent(QCloseEvent *event);
+    void closeEvent ( QCloseEvent *event );
 
 public slots:
     virtual void dclicked();
     virtual void clicked();
 
 signals:
-    void cambiaEstadoVisible(bool);
+    void cambiaEstadoVisible ( bool );
 };
 
 #endif

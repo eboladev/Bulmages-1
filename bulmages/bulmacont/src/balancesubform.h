@@ -27,15 +27,17 @@
 
 ///
 /** */
-class BalanceSubForm : public SubForm2Bc {
+class BalanceSubForm : public SubForm2Bc
+{
     Q_OBJECT
 
 public:
-    BalanceSubForm(QWidget *parent = 0, const char *name = 0);
-    virtual ~BalanceSubForm() {};
+    BalanceSubForm ( QWidget *parent = 0, const char *name = 0 );
+    virtual ~BalanceSubForm()
+    {};
 
 public slots:
-    virtual void contextMenuEvent (QContextMenuEvent *);
+    virtual void contextMenuEvent ( QContextMenuEvent * );
 };
 
 #endif

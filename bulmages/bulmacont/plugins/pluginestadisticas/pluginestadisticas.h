@@ -17,22 +17,23 @@
 #include <qapplication.h>
 #include <qobject.h>
 
-extern "C" MY_EXPORT void entryPoint(Bulmages01 *);
+extern "C" MY_EXPORT void entryPoint ( Bulmages01 * );
 
 extern QApplication *theApp;
 
 
-class QT_WIDGET_PLUGIN_EXPORT myplugin : public QObject {
-Q_OBJECT
+class QT_WIDGET_PLUGIN_EXPORT myplugin : public QObject
+{
+    Q_OBJECT
 public:
-  postgresiface2 *conexionbase;
-  empresa *empresaactual;
+    postgresiface2 *conexionbase;
+    empresa *empresaactual;
 public:
-   myplugin();
-   ~myplugin();
-       void inicializa(Bulmages01 *);
+    myplugin();
+    ~myplugin();
+    void inicializa ( Bulmages01 * );
 public slots:
-	virtual void SegCuentas();
-	virtual void BalanceGrafico();
+    virtual void SegCuentas();
+    virtual void BalanceGrafico();
 };
 

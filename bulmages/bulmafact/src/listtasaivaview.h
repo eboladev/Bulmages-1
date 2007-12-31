@@ -38,12 +38,14 @@
 
 /// Muestra y administra las l&iacute;neas de detalle del listado de almacenes.
 /** */
-class ListTasaIVASubForm : public SubForm2Bf {
+class ListTasaIVASubForm : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
-    ListTasaIVASubForm(QWidget *parent = 0);
-    virtual ~ListTasaIVASubForm() {};
+    ListTasaIVASubForm ( QWidget *parent = 0 );
+    virtual ~ListTasaIVASubForm()
+    {};
 
 public slots:
     virtual void cargar();
@@ -55,10 +57,11 @@ public slots:
 
 /// Muestra y administra el listado de almacenes.
 /** */
-class ListTasaIVAView : public FichaBf, public Ui_ListTasaIVABase {
+class ListTasaIVAView : public FichaBf, public Ui_ListTasaIVABase
+{
     Q_OBJECT
 public:
-    ListTasaIVAView(Company *comp, QWidget *parent);
+    ListTasaIVAView ( Company *comp, QWidget *parent );
     ~ListTasaIVAView();
 public slots:
     virtual void on_mui_aceptar_clicked();

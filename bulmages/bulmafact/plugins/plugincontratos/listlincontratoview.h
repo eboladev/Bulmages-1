@@ -30,15 +30,17 @@
 
 /// Muestra y administra las l&iacute;neas de detalle de una contrato a un cliente.
 /** */
-class ListLinContratoView : public SubForm2Bf {
+class ListLinContratoView : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
     QString mdb_idcontrato;
-    ListLinContratoView(QWidget *parent = 0);
-    ~ListLinContratoView() {};
+    ListLinContratoView ( QWidget *parent = 0 );
+    ~ListLinContratoView()
+    {};
 public slots:
-    virtual void cargar(QString idcontrato);
+    virtual void cargar ( QString idcontrato );
 };
 
 #endif

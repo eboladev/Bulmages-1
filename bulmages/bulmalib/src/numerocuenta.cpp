@@ -26,8 +26,9 @@
 /**
 \return
 **/
-bool numerocuenta::cuentaesvalida() {
-    return (getdc() == dc);
+bool numerocuenta::cuentaesvalida()
+{
+    return ( getdc() == dc );
 }
 
 
@@ -36,8 +37,9 @@ bool numerocuenta::cuentaesvalida() {
 \param sep
 \return
 **/
-QString numerocuenta::getcodigo(QString sep) {
-    return (banco + sep + entidad + sep + dc + sep + numcuenta);
+QString numerocuenta::getcodigo ( QString sep )
+{
+    return ( banco + sep + entidad + sep + dc + sep + numcuenta );
 }
 
 
@@ -45,7 +47,8 @@ QString numerocuenta::getcodigo(QString sep) {
 /**
 \return
 **/
-QString numerocuenta::getnumcuenta() {
+QString numerocuenta::getnumcuenta()
+{
     return numcuenta;
 }
 
@@ -54,7 +57,8 @@ QString numerocuenta::getnumcuenta() {
 /**
 \return
 **/
-QString numerocuenta::getbanco() {
+QString numerocuenta::getbanco()
+{
     return banco;
 }
 
@@ -63,7 +67,8 @@ QString numerocuenta::getbanco() {
 /**
 \return
 **/
-QString numerocuenta::getentidad() {
+QString numerocuenta::getentidad()
+{
     return entidad;
 }
 
@@ -72,8 +77,9 @@ QString numerocuenta::getentidad() {
 /**
 \param cad
 **/
-void numerocuenta::setnumcuenta(QString cad) {
-    numcuenta = cad.rightJustified(10, '0');
+void numerocuenta::setnumcuenta ( QString cad )
+{
+    numcuenta = cad.rightJustified ( 10, '0' );
 }
 
 
@@ -81,8 +87,9 @@ void numerocuenta::setnumcuenta(QString cad) {
 /**
 \param cad
 **/
-void numerocuenta::setbanco(QString cad) {
-    banco = cad.rightJustified(4, '0');
+void numerocuenta::setbanco ( QString cad )
+{
+    banco = cad.rightJustified ( 4, '0' );
 }
 
 
@@ -90,8 +97,9 @@ void numerocuenta::setbanco(QString cad) {
 /**
 \param cad
 **/
-void numerocuenta::setentidad(QString cad) {
-    entidad = cad.rightJustified(4, '0');
+void numerocuenta::setentidad ( QString cad )
+{
+    entidad = cad.rightJustified ( 4, '0' );
 }
 
 
@@ -100,10 +108,11 @@ void numerocuenta::setentidad(QString cad) {
 /// \param entidadpar Codigo entidad (4 digitos)
 /// \param dcpar Digitos de Control (2 digitos)
 /// \param numcuentapar Codigo de cuenta (10 digitos)
-numerocuenta::numerocuenta(QString bancopar, QString entidadpar, QString dcpar, QString numcuentapar) {
-    setbanco(bancopar);
-    setentidad(entidadpar);
-    setnumcuenta(numcuentapar);
+numerocuenta::numerocuenta ( QString bancopar, QString entidadpar, QString dcpar, QString numcuentapar )
+{
+    setbanco ( bancopar );
+    setentidad ( entidadpar );
+    setnumcuenta ( numcuentapar );
     dc = dcpar;
 }
 
@@ -114,10 +123,11 @@ numerocuenta::numerocuenta(QString bancopar, QString entidadpar, QString dcpar, 
 \param entidadpar
 \param numcuentapar
 **/
-numerocuenta::numerocuenta(QString bancopar, QString entidadpar, QString numcuentapar) {
-    setbanco(bancopar);
-    setentidad(entidadpar);
-    setnumcuenta(numcuentapar);
+numerocuenta::numerocuenta ( QString bancopar, QString entidadpar, QString numcuentapar )
+{
+    setbanco ( bancopar );
+    setentidad ( entidadpar );
+    setnumcuenta ( numcuentapar );
     dc = getdc();
 }
 
@@ -126,27 +136,30 @@ numerocuenta::numerocuenta(QString bancopar, QString entidadpar, QString numcuen
 /**
 \param cuenpar
 **/
-numerocuenta::numerocuenta(QString cuenpar) {
+numerocuenta::numerocuenta ( QString cuenpar )
+{
     QString tem = cuenpar;
-    tem.remove("-"); /// TODO: Que elimine tambien otro tipo de caracteres como espacios, etc.
-    banco = tem.mid(0, 4);
-    entidad = tem.mid(4, 4);
-    dc = tem.mid(8, 2);
-    numcuenta = tem.mid(10, 10);
+    tem.remove ( "-" ); /// TODO: Que elimine tambien otro tipo de caracteres como espacios, etc.
+    banco = tem.mid ( 0, 4 );
+    entidad = tem.mid ( 4, 4 );
+    dc = tem.mid ( 8, 2 );
+    numcuenta = tem.mid ( 10, 10 );
 }
 
 
 ///
 /**
 **/
-numerocuenta::~numerocuenta() {}
+numerocuenta::~numerocuenta()
+{}
 
 
 /// Devuelve los digitos de control del numero de cuenta.
 /**
 \return
 **/
-QString numerocuenta::getdc() {
+QString numerocuenta::getdc()
+{
     QString resul;
     int i;
     int sum = 0;
@@ -166,33 +179,33 @@ QString numerocuenta::getdc() {
                          1, 2, 4, 8, 5, 10, 9, 7, 3, 6
                      };
 
-    for (i = 0; i < 4; i++)
-        sum += QString(banco[i]).toInt() * we[i + 2];
+    for ( i = 0; i < 4; i++ )
+        sum += QString ( banco[i] ).toInt() * we[i + 2];
 
-    for (i = 0; i < 4; i++)
-        sum += QString(entidad[i]).toInt() * we[i + 6];
+    for ( i = 0; i < 4; i++ )
+        sum += QString ( entidad[i] ).toInt() * we[i + 6];
 
-    sum = (sum % 11);
+    sum = ( sum % 11 );
     sum = 11 - sum;
 
-    if (sum == 11)
+    if ( sum == 11 )
         sum = 0;
-    if (sum == 10)
+    if ( sum == 10 )
         sum = 1;
 
     int sum2 = 0;
-    for (i = 0; i < 10; i++)
-        sum2 += QString(numcuenta[i]).toInt() * we[i];
+    for ( i = 0; i < 10; i++ )
+        sum2 += QString ( numcuenta[i] ).toInt() * we[i];
 
-    sum2 = (sum2 % 11);
+    sum2 = ( sum2 % 11 );
     sum2 = 11 - sum2;
 
-    if (sum2 == 11)
+    if ( sum2 == 11 )
         sum2 = 0;
-    if (sum2 == 10)
+    if ( sum2 == 10 )
         sum2 = 1;
 
-    resul.sprintf("%d%d", sum, sum2);
+    resul.sprintf ( "%d%d", sum, sum2 );
     return resul;
 }
 

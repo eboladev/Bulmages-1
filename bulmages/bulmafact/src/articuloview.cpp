@@ -47,66 +47,68 @@
 \param parent
 \return
 **/
-ArticuloView::ArticuloView(Company *comp, QWidget *parent)
-        : FichaBf(comp, parent) {
-    _depura("ArticuloView::ArticuloView", 0);
-    setAttribute(Qt::WA_DeleteOnClose);
+ArticuloView::ArticuloView ( Company *comp, QWidget *parent )
+        : FichaBf ( comp, parent )
+{
+    _depura ( "ArticuloView::ArticuloView", 0 );
+    setAttribute ( Qt::WA_DeleteOnClose );
     try {
-        setupUi(this);
+        setupUi ( this );
 
-        setTitleName(tr("Articulo"));
-        setDBTableName("articulo");
-        setDBCampoId("idarticulo");
-        addDBCampo("idarticulo", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Articulo", "Identificador"));
-        addDBCampo("codarticulo", DBCampo::DBvarchar, DBCampo::DBNotNull, QApplication::translate("Articulo", "Codigo"));
-        addDBCampo("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNotNull, QApplication::translate("Articulo", "Nombre del articulo"));
-        addDBCampo("abrevarticulo", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Articulo", "Abreviacion"));
-        addDBCampo("obserarticulo", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Articulo", "Observaciones"));
-        addDBCampo("presentablearticulo", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("Articulo", "Incluir en presentaciones"));
-        addDBCampo("controlstockarticulo", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("Articulo", "Incluir en control de stock"));
-        addDBCampo("idtipo_articulo", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Articulo", "Tipo de articulo"));
-        addDBCampo("idtipo_iva", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Articulo", "Tipo de I.V.A."));
-        addDBCampo("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, QApplication::translate("Articulo", "Codigo completo"));
-        addDBCampo("idfamilia", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("Articulo", "Familia"));
-        addDBCampo("stockarticulo", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Articulo", "Stock"));
-        addDBCampo("inactivoarticulo", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("Articulo", "Inactivo"));
-        addDBCampo("pvparticulo", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate("Articulo", "P.V.P. base"));
-        addDBCampo("pesoundarticulo", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate("Articulo", "Peso Unidad"));
-        addDBCampo("volumenundarticulo", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate("Articulo", "Volumen Unidad"));
+        setTitleName ( tr ( "Articulo" ) );
+        setDBTableName ( "articulo" );
+        setDBCampoId ( "idarticulo" );
+        addDBCampo ( "idarticulo", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "Articulo", "Identificador" ) );
+        addDBCampo ( "codarticulo", DBCampo::DBvarchar, DBCampo::DBNotNull, QApplication::translate ( "Articulo", "Codigo" ) );
+        addDBCampo ( "nomarticulo", DBCampo::DBvarchar, DBCampo::DBNotNull, QApplication::translate ( "Articulo", "Nombre del articulo" ) );
+        addDBCampo ( "abrevarticulo", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Articulo", "Abreviacion" ) );
+        addDBCampo ( "obserarticulo", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Articulo", "Observaciones" ) );
+        addDBCampo ( "presentablearticulo", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate ( "Articulo", "Incluir en presentaciones" ) );
+        addDBCampo ( "controlstockarticulo", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate ( "Articulo", "Incluir en control de stock" ) );
+        addDBCampo ( "idtipo_articulo", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Articulo", "Tipo de articulo" ) );
+        addDBCampo ( "idtipo_iva", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Articulo", "Tipo de I.V.A." ) );
+        addDBCampo ( "codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, QApplication::translate ( "Articulo", "Codigo completo" ) );
+        addDBCampo ( "idfamilia", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "Articulo", "Familia" ) );
+        addDBCampo ( "stockarticulo", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Articulo", "Stock" ) );
+        addDBCampo ( "inactivoarticulo", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate ( "Articulo", "Inactivo" ) );
+        addDBCampo ( "pvparticulo", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate ( "Articulo", "P.V.P. base" ) );
+        addDBCampo ( "pesoundarticulo", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate ( "Articulo", "Peso Unidad" ) );
+        addDBCampo ( "volumenundarticulo", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate ( "Articulo", "Volumen Unidad" ) );
 
         /// Disparamos los plugins.
-        int res = g_plugins->lanza("ArticuloView_ArticuloView", this);
-        if (res != 0) {
+        int res = g_plugins->lanza ( "ArticuloView_ArticuloView", this );
+        if ( res != 0 ) {
             return;
         } // end if
 
-        mui_idfamilia->setEmpresaBase(comp);
-        mui_idtipoarticulo->setEmpresaBase(comp);
-        mui_idtipo_iva->setEmpresaBase(comp);
-        m_componentes->setEmpresaBase(comp);
+        mui_idfamilia->setEmpresaBase ( comp );
+        mui_idtipoarticulo->setEmpresaBase ( comp );
+        mui_idtipo_iva->setEmpresaBase ( comp );
+        m_componentes->setEmpresaBase ( comp );
 
         /// Inicializamos para que no se queden sin ser pintada.
-        mui_idtipo_iva->setValorCampo("0");
+        mui_idtipo_iva->setValorCampo ( "0" );
 
-        dialogChanges_setQObjectExcluido(m_componentes);
-        dialogChanges_setQObjectExcluido(m_componentes->mui_list);
+        dialogChanges_setQObjectExcluido ( m_componentes );
+        dialogChanges_setQObjectExcluido ( m_componentes->mui_list );
         m_archivoimagen = "";
-        m_imagen->setPixmap(QPixmap("/usr/share/bulmages/logopeq.png"));
-        meteWindow(windowTitle(), this, FALSE);
+        m_imagen->setPixmap ( QPixmap ( "/usr/share/bulmages/logopeq.png" ) );
+        meteWindow ( windowTitle(), this, FALSE );
         dialogChanges_cargaInicial();
-    } catch (...) {
-        mensajeInfo(tr("Error al crear el articulo"));
+    } catch ( ... ) {
+        mensajeInfo ( tr ( "Error al crear el articulo" ) );
     } // end try
-    _depura("END ArticuloView::ArticuloView", 0);
+    _depura ( "END ArticuloView::ArticuloView", 0 );
 }
 
 
 /** No requiere de ninguna actuacion especial. */
 /**
 **/
-ArticuloView::~ArticuloView() {
-    _depura("ArticuloView::~ArticuloView", 0);
-    _depura("END ArticuloView::~ArticuloView", 0);
+ArticuloView::~ArticuloView()
+{
+    _depura ( "ArticuloView::~ArticuloView", 0 );
+    _depura ( "END ArticuloView::~ArticuloView", 0 );
 }
 
 
@@ -115,10 +117,11 @@ ArticuloView::~ArticuloView() {
 */
 /**
 **/
-void ArticuloView::pintarPost() {
-    _depura("ArticuloView::pintar", 0);
-    m_imagen->setPixmap(QPixmap(confpr->valor(CONF_DIR_IMG_ARTICLES) + mui_codigocompletoarticulo->text() + ".jpg"));
-    _depura("END ArticuloView::pintar", 0);
+void ArticuloView::pintarPost()
+{
+    _depura ( "ArticuloView::pintar", 0 );
+    m_imagen->setPixmap ( QPixmap ( confpr->valor ( CONF_DIR_IMG_ARTICLES ) + mui_codigocompletoarticulo->text() + ".jpg" ) );
+    _depura ( "END ArticuloView::pintar", 0 );
 }
 
 
@@ -129,19 +132,20 @@ void ArticuloView::pintarPost() {
 \param idarticulo
 \return
 **/
-int ArticuloView::cargarPost(QString idarticulo) {
-    _depura("ArticuloView::cargar", 0);
+int ArticuloView::cargarPost ( QString idarticulo )
+{
+    _depura ( "ArticuloView::cargar", 0 );
 
     /// Disparamos los plugins.
-    int res = g_plugins->lanza("ArticuloView_cargar", this);
-    if (res != 0) {
+    int res = g_plugins->lanza ( "ArticuloView_cargar", this );
+    if ( res != 0 ) {
         return 0;
     } // end if
 
     /// Cargamos los componentes.
-    m_componentes->cargar(idarticulo);
+    m_componentes->cargar ( idarticulo );
 
-    _depura("END ArticuloView::cargar", 0);
+    _depura ( "END ArticuloView::cargar", 0 );
     return 0;
 }
 
@@ -153,20 +157,21 @@ int ArticuloView::cargarPost(QString idarticulo) {
 /**
 \return
 **/
-void ArticuloView::on_mui_codigocompletoarticulo_editingFinished() {
-    _depura("ArticuloView::on_m_codigocompletoarticulo_editingFinished", 0);
+void ArticuloView::on_mui_codigocompletoarticulo_editingFinished()
+{
+    _depura ( "ArticuloView::on_m_codigocompletoarticulo_editingFinished", 0 );
 
-    if (mui_codigocompletoarticulo->text() == DBvalue("codigocompletoarticulo")) {
+    if ( mui_codigocompletoarticulo->text() == DBvalue ( "codigocompletoarticulo" ) ) {
         return;
     } // end if
     QString SQlQuery = "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + mui_codigocompletoarticulo->text() + "'";
-    cursor2 *cur = empresaBase()->cargacursor(SQlQuery);
-    if (!cur) return;
-    if (!cur->eof()) {
-        cargar(cur->valor("idarticulo"));
+    cursor2 *cur = empresaBase() ->cargacursor ( SQlQuery );
+    if ( !cur ) return;
+    if ( !cur->eof() ) {
+        cargar ( cur->valor ( "idarticulo" ) );
     } // end if
     delete cur;
-    _depura("END ArticuloView::on_m_codigocompletoarticulo_editingFinished", 0);
+    _depura ( "END ArticuloView::on_m_codigocompletoarticulo_editingFinished", 0 );
 }
 
 
@@ -179,26 +184,27 @@ void ArticuloView::on_mui_codigocompletoarticulo_editingFinished() {
 /**
 \return
 **/
-int ArticuloView::guardarPost() {
-    _depura("ArticuloView::guardarPost", 0);
+int ArticuloView::guardarPost()
+{
+    _depura ( "ArticuloView::guardarPost", 0 );
     /// Guardamos la imagen, si es que existe.
-    if (m_archivoimagen != "") {
-        cursor2 *cur1 = empresaBase()->cargacursor("SELECT codigocompletoarticulo FROM articulo WHERE idarticulo = " + DBvalue("idarticulo"));
-        if (!cur1) throw -1;
-        QString cadena = "cp " + m_archivoimagen + " " + confpr->valor(CONF_DIR_IMG_ARTICLES) + cur1->valor("codigocompletoarticulo") + ".jpg";
+    if ( m_archivoimagen != "" ) {
+        cursor2 * cur1 = empresaBase() ->cargacursor ( "SELECT codigocompletoarticulo FROM articulo WHERE idarticulo = " + DBvalue ( "idarticulo" ) );
+        if ( !cur1 ) throw - 1;
+        QString cadena = "cp " + m_archivoimagen + " " + confpr->valor ( CONF_DIR_IMG_ARTICLES ) + cur1->valor ( "codigocompletoarticulo" ) + ".jpg";
         delete cur1;
-        system(cadena.toAscii().constData());
+        system ( cadena.toAscii().constData() );
     } // end if
 
     /// Guardamos la lista de componentes.
-    m_componentes->setColumnValue("idarticulo", DBvalue("idarticulo"));
-    if (m_componentes->guardar() != 0) {
-        throw -1;
+    m_componentes->setColumnValue ( "idarticulo", DBvalue ( "idarticulo" ) );
+    if ( m_componentes->guardar() != 0 ) {
+        throw - 1;
     } // end if
     /// Disparamos los plugins
-    g_plugins->lanza("ArticuloView_guardar_post", this);
+    g_plugins->lanza ( "ArticuloView_guardar_post", this );
 
-    _depura("END ArticuloView::guardarPost", 0);
+    _depura ( "END ArticuloView::guardarPost", 0 );
     return 0;
 
 }
@@ -216,10 +222,11 @@ int ArticuloView::guardarPost() {
 /**
 \return
 **/
-int ArticuloView::borrarPre() {
-    _depura ("ArticuloView::borrar", 0);
+int ArticuloView::borrarPre()
+{
+    _depura ( "ArticuloView::borrar", 0 );
     m_componentes->borrar();
-    _depura("END ArticuloView::borrar", 0);
+    _depura ( "END ArticuloView::borrar", 0 );
     return 0;
 }
 
@@ -230,15 +237,16 @@ int ArticuloView::borrarPre() {
 */
 /**
 **/
-void ArticuloView::on_mui_cambiarimagen_clicked() {
-    _depura("ArticuloView::INIT_s_cambiarimagen()", 0);
-    m_archivoimagen = QFileDialog::getOpenFileName(
+void ArticuloView::on_mui_cambiarimagen_clicked()
+{
+    _depura ( "ArticuloView::INIT_s_cambiarimagen()", 0 );
+    m_archivoimagen = QFileDialog::getOpenFileName (
                           this,
-                          tr("Abrir ventana de archivo"),
+                          tr ( "Abrir ventana de archivo" ),
                           "",
-                          tr("Imagenes (*.jpg)"));
+                          tr ( "Imagenes (*.jpg)" ) );
 
-    m_imagen->setPixmap(QPixmap(m_archivoimagen));
-    _depura("ArticuloView::END_s_cambiarimagen()", 0);
+    m_imagen->setPixmap ( QPixmap ( m_archivoimagen ) );
+    _depura ( "ArticuloView::END_s_cambiarimagen()", 0 );
 }
 

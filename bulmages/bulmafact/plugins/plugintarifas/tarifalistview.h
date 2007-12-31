@@ -26,7 +26,8 @@
 #include "pgimportfiles.h"
 #include "fichabf.h"
 
-class TarifaListView : public FichaBf, private Ui_TarifaListBase, public pgimportfiles {
+class TarifaListView : public FichaBf, private Ui_TarifaListBase, public pgimportfiles
+{
     Q_OBJECT
 
 public:
@@ -39,14 +40,15 @@ private:
     edmode m_modo;
 
 public:
-    TarifaListView(Company *, QWidget *parent = 0, edmode editmodo = EditMode);
+    TarifaListView ( Company *, QWidget *parent = 0, edmode editmodo = EditMode );
     ~TarifaListView();
-    void editar(int);
+    void editar ( int );
 public slots:
     void on_mui_crear_clicked();
     void on_mui_editar_clicked();
     void on_mui_borrar_clicked();
-    void on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
+    void on_mui_list_itemDoubleClicked ( QTableWidgetItem * )
+    {
         on_mui_editar_clicked();
     };
 };

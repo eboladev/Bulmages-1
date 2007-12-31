@@ -41,31 +41,32 @@
 /** A widget that displays a barchart. Each line is added onto the next one.
  */
 
-class toBarChart : public toLineChart {
-  Q_OBJECT
+class toBarChart : public toLineChart
+{
+    Q_OBJECT
 
 protected:
-  virtual void paintChart(QPainter *p,QRect &rect);
+    virtual void paintChart ( QPainter *p, QRect &rect );
 public:
-  /** Create a new barchart.
-   * @param parent Parent widget.
-   * @param name Name of widget.
-   * @param f Widget flags.
-   */
-  toBarChart(QWidget *parent=NULL,const char *name=NULL,WFlags f=0);
+    /** Create a new barchart.
+     * @param parent Parent widget.
+     * @param name Name of widget.
+     * @param f Widget flags.
+     */
+    toBarChart ( QWidget *parent = NULL, const char *name = NULL, WFlags f = 0 );
 
-  /** Create a new barchart by copying all the data from another barchart.
-   * @param chart Chart to copy data from.
-   * @param parent Parent widget.
-   * @param name Name of widget.
-   * @param f Widget flags.
-   */
-  toBarChart(toBarChart *chart,QWidget *parent=NULL,const char *name=NULL,WFlags f=0);
+    /** Create a new barchart by copying all the data from another barchart.
+     * @param chart Chart to copy data from.
+     * @param parent Parent widget.
+     * @param name Name of widget.
+     * @param f Widget flags.
+     */
+    toBarChart ( toBarChart *chart, QWidget *parent = NULL, const char *name = NULL, WFlags f = 0 );
 
 public slots:
-  /** Open chart in new window.
-   */
-  virtual void openCopy(void);
+    /** Open chart in new window.
+     */
+    virtual void openCopy ( void );
 };
 
 #endif

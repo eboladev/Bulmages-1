@@ -29,31 +29,33 @@
 class empresa;
 
 
-class estadisticasview : public estadisticasdlg  {
-   Q_OBJECT
+class estadisticasview : public estadisticasdlg
+{
+    Q_OBJECT
 public:
 
-postgresiface2 *conexionbase;
+    postgresiface2 *conexionbase;
 
-   int inicializa(postgresiface2 *, int);
-   estadisticasview(QWidget *parent=0, const char *name=0);
-   ~estadisticasview();
-   void presentar();
-   void presentarbarras();
+    int inicializa ( postgresiface2 *, int );
+    estadisticasview ( QWidget *parent = 0, const char *name = 0 );
+    ~estadisticasview();
+    void presentar();
+    void presentarbarras();
 };
 
 
-class myplugin : public QObject {
-Q_OBJECT
+class myplugin : public QObject
+{
+    Q_OBJECT
 public:
-  postgresiface2 *conexionbase;
-  empresa *empresaactual;
+    postgresiface2 *conexionbase;
+    empresa *empresaactual;
 public:
-   myplugin();
-   ~myplugin();
+    myplugin();
+    ~myplugin();
 public slots:
-	virtual void BalanceGrafico();
-	virtual void BalanceBarras();
+    virtual void BalanceGrafico();
+    virtual void BalanceBarras();
 };
 
 #endif

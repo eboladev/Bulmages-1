@@ -29,17 +29,18 @@
 #include "postgresiface2.h"
 
 
-class importContaplus: public QDialog, public Ui_importContaplusBase, public pgimportfiles {
+class importContaplus: public QDialog, public Ui_importContaplusBase, public pgimportfiles
+{
     Q_OBJECT
 
 private:
     postgresiface2 *conexionbase;
 
 public:
-    importContaplus(postgresiface2 *, QWidget *, Qt::WFlags);
+    importContaplus ( postgresiface2 *, QWidget *, Qt::WFlags );
     ~importContaplus();
-    void alerta(int, int);
-    void mensajeria(QString);
+    void alerta ( int, int );
+    void mensajeria ( QString );
 
 public slots:
     virtual void botonBuscarSubCta();

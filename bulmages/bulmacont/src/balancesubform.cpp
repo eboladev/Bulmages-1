@@ -27,24 +27,25 @@
 /**
 \param parent
 **/
-BalanceSubForm::BalanceSubForm(QWidget *parent, const char *) : SubForm2Bc(parent) {
-    _depura("BalanceSubForm::BalanceSubForm", 0);
-    setDBTableName("borrador");
-    setFileConfig("balancesubform");
-    setDBCampoId("idborrador");
-    addSHeader("idcuenta", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("idcuenta"));
-    addSHeader("tipocuenta", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("tipocuenta"));
-    addSHeader("codigo", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("codigo"));
-    addSHeader("descripcion", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("descripcion"));
-    addSHeader("asaldo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("asaldo"));
-    addSHeader("tdebe", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("tdebe"));
-    addSHeader("thaber", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("thaber"));
-    addSHeader("tsaldo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("tsaldo"));
-    addSHeader("ejdebe", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("ejdebe"));
-    addSHeader("ejhaber", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("ejhaber"));
-    addSHeader("ejsaldo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("ejsaldo"));
-    setinsercion(FALSE);
-    _depura("END BalanceSubForm::BalanceSubForm", 0);
+BalanceSubForm::BalanceSubForm ( QWidget *parent, const char * ) : SubForm2Bc ( parent )
+{
+    _depura ( "BalanceSubForm::BalanceSubForm", 0 );
+    setDBTableName ( "borrador" );
+    setFileConfig ( "balancesubform" );
+    setDBCampoId ( "idborrador" );
+    addSHeader ( "idcuenta", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "idcuenta" ) );
+    addSHeader ( "tipocuenta", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "tipocuenta" ) );
+    addSHeader ( "codigo", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "codigo" ) );
+    addSHeader ( "descripcion", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "descripcion" ) );
+    addSHeader ( "asaldo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "asaldo" ) );
+    addSHeader ( "tdebe", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "tdebe" ) );
+    addSHeader ( "thaber", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "thaber" ) );
+    addSHeader ( "tsaldo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "tsaldo" ) );
+    addSHeader ( "ejdebe", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "ejdebe" ) );
+    addSHeader ( "ejhaber", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "ejhaber" ) );
+    addSHeader ( "ejsaldo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "ejsaldo" ) );
+    setinsercion ( FALSE );
+    _depura ( "END BalanceSubForm::BalanceSubForm", 0 );
 }
 
 
@@ -52,79 +53,80 @@ BalanceSubForm::BalanceSubForm(QWidget *parent, const char *) : SubForm2Bc(paren
 /**
 \return
 **/
-void BalanceSubForm::contextMenuEvent(QContextMenuEvent *) {
-    _depura("SubForm2Bc::contextMenuEvent", 0);
+void BalanceSubForm::contextMenuEvent ( QContextMenuEvent * )
+{
+    _depura ( "SubForm2Bc::contextMenuEvent", 0 );
     QAction *del = NULL;
     int row = currentRow();
-    if (row < 0) {
+    if ( row < 0 ) {
         return;
     } // end if
     int col = currentColumn();
-    if (row < 0) {
+    if ( row < 0 ) {
         return;
     } // end if
-    QMenu *popup = new QMenu(this);
-    QAction *mostapunte = popup->addAction("Mostrar asiento");
+    QMenu *popup = new QMenu ( this );
+    QAction *mostapunte = popup->addAction ( "Mostrar asiento" );
     popup->addSeparator();
-    QAction *mostextractodia = popup->addAction("Mostrar extracto (dia)");
-    QAction *mostextractomes = popup->addAction("Mostrar extracto (mes)");
-    QAction *mostextractoano = popup->addAction("Mostrar extracto (ano)");
+    QAction *mostextractodia = popup->addAction ( "Mostrar extracto (dia)" );
+    QAction *mostextractomes = popup->addAction ( "Mostrar extracto (mes)" );
+    QAction *mostextractoano = popup->addAction ( "Mostrar extracto (ano)" );
     popup->addSeparator();
-    QAction *mostbalancedia = popup->addAction("Mostrar balance (dia)");
-    QAction *mostbalancemes = popup->addAction("Mostrar balance (mes)");
-    QAction *mostbalanceano = popup->addAction("Mostrar balance (anyo)");
+    QAction *mostbalancedia = popup->addAction ( "Mostrar balance (dia)" );
+    QAction *mostbalancemes = popup->addAction ( "Mostrar balance (mes)" );
+    QAction *mostbalanceano = popup->addAction ( "Mostrar balance (anyo)" );
 
-    if (m_delete)
-        del = popup->addAction(tr("Borrar registro"));
+    if ( m_delete )
+        del = popup->addAction ( tr ( "Borrar registro" ) );
     popup->addSeparator();
-    QAction *ajustc = popup->addAction(tr("Ajustar columa"));
-    QAction *ajustac = popup->addAction(tr("Ajustar altura"));
-    QAction *ajust = popup->addAction(tr("Ajustar columnas"));
-    QAction *ajusta = popup->addAction(tr("Ajustar alturas"));
+    QAction *ajustc = popup->addAction ( tr ( "Ajustar columa" ) );
+    QAction *ajustac = popup->addAction ( tr ( "Ajustar altura" ) );
+    QAction *ajust = popup->addAction ( tr ( "Ajustar columnas" ) );
+    QAction *ajusta = popup->addAction ( tr ( "Ajustar alturas" ) );
     popup->addSeparator();
-    QAction *verconfig = popup->addAction(tr("Ver configurador de subformulario"));
-    QAction *opcion = popup->exec(QCursor::pos());
+    QAction *verconfig = popup->addAction ( tr ( "Ver configurador de subformulario" ) );
+    QAction *opcion = popup->exec ( QCursor::pos() );
 
-    if (opcion == mostapunte) {
+    if ( opcion == mostapunte ) {
         boton_asiento();
     } // end if
-    if (opcion == del) {
-        borrar(row);
+    if ( opcion == del ) {
+        borrar ( row );
     } // end if
-    if (opcion == ajust) {
+    if ( opcion == ajust ) {
         resizeColumnsToContents();
     } // end if
-    if (opcion == ajusta) {
+    if ( opcion == ajusta ) {
         resizeRowsToContents();
     } // end if
-    if (opcion == ajustc) {
-        resizeColumnToContents(col);
+    if ( opcion == ajustc ) {
+        resizeColumnToContents ( col );
     } // end if
-    if (opcion == ajustac) {
-        resizeRowToContents(row);
+    if ( opcion == ajustac ) {
+        resizeRowToContents ( row );
     } // end if
-    if (opcion == verconfig) {
+    if ( opcion == verconfig ) {
         showConfig();
     } // end if
-    if (opcion == mostextractodia) {
-        boton_extracto1(0);
+    if ( opcion == mostextractodia ) {
+        boton_extracto1 ( 0 );
     } // end if
-    if (opcion == mostextractomes) {
-        boton_extracto1(1);
+    if ( opcion == mostextractomes ) {
+        boton_extracto1 ( 1 );
     } // end if
-    if (opcion == mostextractoano) {
-        boton_extracto1(2);
+    if ( opcion == mostextractoano ) {
+        boton_extracto1 ( 2 );
     } // end if
-    if (opcion == mostbalancedia) {
-        boton_balance1(0);
+    if ( opcion == mostbalancedia ) {
+        boton_balance1 ( 0 );
     } // end if
-    if (opcion == mostbalancemes) {
-        boton_balance1(1);
+    if ( opcion == mostbalancemes ) {
+        boton_balance1 ( 1 );
     } // end if
-    if (opcion == mostbalanceano) {
-        boton_balance1(2);
+    if ( opcion == mostbalanceano ) {
+        boton_balance1 ( 2 );
     } // end if
     delete popup;
-    _depura("END SubForm2Bc::contextMenuEvent", 0);
+    _depura ( "END SubForm2Bc::contextMenuEvent", 0 );
 }
 

@@ -30,30 +30,32 @@ class Company;
 
 /// Genera un informe utilizando una referencia.
 /** */
-class InformeReferencia {
+class InformeReferencia
+{
 private:
     QString m_referencia;
     Company* companyact;
 
 public:
-    InformeReferencia(Company *);
+    InformeReferencia ( Company * );
     ~InformeReferencia();
-    void setreferencia(QString val);
+    void setreferencia ( QString val );
     void generarinforme();
 };
 
 
 /// Genera un informe utilizando un identificador de cliente.
 /** */
-class InformeCliente {
+class InformeCliente
+{
 private:
     QString m_idcliente;
     Company* companyact;
 
 public:
-    InformeCliente(Company *);
+    InformeCliente ( Company * );
     ~InformeCliente();
-    void setCliente(QString );
+    void setCliente ( QString );
     void generarInforme();
 };
 

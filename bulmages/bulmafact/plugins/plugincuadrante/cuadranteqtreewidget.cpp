@@ -35,37 +35,40 @@ un eventHandler especifico
 /**
 \param parent
 **/
-CuadranteQTreeWidget::CuadranteQTreeWidget(QWidget *parent) : QTreeWidget(parent) {
-    _depura("CuadranteQTreeWidget::CuadranteQTreeWidget", 0);
-    _depura("END CuadranteQTreeWidget::CuadranteQTreeWidget", 0);
+CuadranteQTreeWidget::CuadranteQTreeWidget ( QWidget *parent ) : QTreeWidget ( parent )
+{
+    _depura ( "CuadranteQTreeWidget::CuadranteQTreeWidget", 0 );
+    _depura ( "END CuadranteQTreeWidget::CuadranteQTreeWidget", 0 );
 }
 
 
 ///
 /**
 **/
-CuadranteQTreeWidget::~CuadranteQTreeWidget() {
-    _depura("END ~CuadranteQTreeWidget", 0);
+CuadranteQTreeWidget::~CuadranteQTreeWidget()
+{
+    _depura ( "END ~CuadranteQTreeWidget", 0 );
 }
 
 
 ///
 /**
 **/
-void CuadranteQTreeWidget::startDrag( Qt::DropActions supportedActions ) {
-	_depura("CuadranteQTreeWidget::startDrag", 0);
+void CuadranteQTreeWidget::startDrag ( Qt::DropActions supportedActions )
+{
+    _depura ( "CuadranteQTreeWidget::startDrag", 0 );
 
-         QDrag *drag = new QDrag(this);
-         QMimeData *mimeData = new QMimeData;
+    QDrag *drag = new QDrag ( this );
+    QMimeData *mimeData = new QMimeData;
 
-         mimeData->setText(currentItem()->text(1));
+    mimeData->setText ( currentItem() ->text ( 1 ) );
 //         mimeData->setText("macagonsaputa");
-         drag->setMimeData(mimeData);
+    drag->setMimeData ( mimeData );
 //         drag->setPixmap(iconPixmap);
 
-         Qt::DropAction dropAction = drag->start(Qt::ActionMask);
-	 
-	 _depura("finalizado",0 , QString::number(dropAction));
+    Qt::DropAction dropAction = drag->start ( Qt::ActionMask );
+
+    _depura ( "finalizado", 0 , QString::number ( dropAction ) );
 
 }
 

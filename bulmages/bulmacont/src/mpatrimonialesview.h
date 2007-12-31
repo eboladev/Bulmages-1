@@ -32,7 +32,8 @@ class Empresa;
 
 ///
 /** */
-class mpatrimonialesview : public QDialog, public Ui_MPatrimonialesBase, public PEmpresaBase {
+class mpatrimonialesview : public QDialog, public Ui_MPatrimonialesBase, public PEmpresaBase
+{
     Q_OBJECT
 
 public:
@@ -47,7 +48,7 @@ public:
     QString idmasa;
 
 public:
-    mpatrimonialesview(Empresa *emp, QWidget *parent = 0);
+    mpatrimonialesview ( Empresa *emp, QWidget *parent = 0 );
     ~mpatrimonialesview();
     int inicializa();
     void inicializatabla();
@@ -57,7 +58,7 @@ public:
     QString getidmasa();
 
 public slots:
-    virtual void dbtabla(int, int, int, const QPoint &);
+    virtual void dbtabla ( int, int, int, const QPoint & );
     virtual void on_mui_nuevo_clicked();
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_editar_clicked();

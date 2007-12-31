@@ -30,7 +30,8 @@
 
 /// Presenta un di&aacute;logo que pregunta el usuario y la contrase&ntilde;a
 /// para acceder a la base de datos.
-class logpass : public QDialog, public Ui_logpassbase {
+class logpass : public QDialog, public Ui_logpassbase
+{
     Q_OBJECT
 
 private:
@@ -40,7 +41,7 @@ private:
     postgresiface2 *metabase;
 
 public:
-    logpass(QWidget *parent = 0, const char *name = 0);
+    logpass ( QWidget *parent = 0, const char *name = 0 );
     ~logpass();
     bool authOK();
 

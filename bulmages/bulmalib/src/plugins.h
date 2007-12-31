@@ -28,16 +28,17 @@
 
 /** Controla el sistema de carga y disparo segun metodo de los plugins
  */
-class Plugins {
+class Plugins
+{
 private:
     QList<QLibrary *> m_lista;
 
 public:
     Plugins();
     ~Plugins();
-    void cargaLibs(const QString libs);
-    int lanza(const char *func, void *clase);
-    int lanza(const char *func, void *clase, void **ret);
+    void cargaLibs ( const QString libs );
+    int lanza ( const char *func, void *clase );
+    int lanza ( const char *func, void *clase, void **ret );
 };
 
 extern Plugins *g_plugins;

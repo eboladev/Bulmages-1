@@ -27,24 +27,26 @@
 /**
 \param parent
 **/
-TarifaListSubform::TarifaListSubform(QWidget *parent)
-        : SubForm2Bf(parent) {
-    _depura("TarifaListSubform::TarifaListSubform", 0);
-    setDBTableName("tarifa");
-    setDBCampoId("idtarifa");
-    addSHeader("nomtarifa", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre de la tarifa"));
-    addSHeader("idtarifa", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, tr("ID tarifa"));
-    setinsercion(FALSE);
-    _depura("END TarifaListSubform::TarifaListSubform", 0);
+TarifaListSubform::TarifaListSubform ( QWidget *parent )
+        : SubForm2Bf ( parent )
+{
+    _depura ( "TarifaListSubform::TarifaListSubform", 0 );
+    setDBTableName ( "tarifa" );
+    setDBCampoId ( "idtarifa" );
+    addSHeader ( "nomtarifa", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre de la tarifa" ) );
+    addSHeader ( "idtarifa", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "ID tarifa" ) );
+    setinsercion ( FALSE );
+    _depura ( "END TarifaListSubform::TarifaListSubform", 0 );
 }
 
 
 ///
 /**
 **/
-void TarifaListSubform::cargar() {
-    _depura("TarifaListSubform::cargar\n", 0);
+void TarifaListSubform::cargar()
+{
+    _depura ( "TarifaListSubform::cargar\n", 0 );
     QString SQLQuery = "SELECT * FROM tarifa";
-    SubForm3::cargar(SQLQuery);
+    SubForm3::cargar ( SQLQuery );
 }
 

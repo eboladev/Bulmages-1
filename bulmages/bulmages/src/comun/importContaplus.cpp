@@ -41,11 +41,12 @@ QString mensajein = "";
 \param a
 \param b
 **/
-void importContaplus::alerta(int a, int b) {
-    _depura("importContaplus::alerta", 0);
-    fprintf(stderr, "mensaje publicado");
-    progress->setRange(a, b);
-    _depura("END importContaplus::alerta", 0);
+void importContaplus::alerta ( int a, int b )
+{
+    _depura ( "importContaplus::alerta", 0 );
+    fprintf ( stderr, "mensaje publicado" );
+    progress->setRange ( a, b );
+    _depura ( "END importContaplus::alerta", 0 );
 }
 
 
@@ -53,12 +54,13 @@ void importContaplus::alerta(int a, int b) {
 /**
 \param mensaje
 **/
-void importContaplus::mensajeria(QString mensaje) {
-    _depura("importContaplus::mensajeria", 0);
+void importContaplus::mensajeria ( QString mensaje )
+{
+    _depura ( "importContaplus::mensajeria", 0 );
     mensajein += mensaje;
-    mensajes->setText(mensajein);
+    mensajes->setText ( mensajein );
     mensajes->ensureCursorVisible();
-    _depura("END importContaplus::mensajeria", 0);
+    _depura ( "END importContaplus::mensajeria", 0 );
 }
 
 
@@ -68,32 +70,34 @@ void importContaplus::mensajeria(QString mensaje) {
 \param parent
 \param f
 **/
-importContaplus::importContaplus(postgresiface2 *con, QWidget *parent, Qt::WFlags f = 0)
-        : QDialog(parent, f), pgimportfiles(con) {
-    _depura("importContaplus::importContaplus", 0);
-    setupUi(this);
+importContaplus::importContaplus ( postgresiface2 *con, QWidget *parent, Qt::WFlags f = 0 )
+        : QDialog ( parent, f ), pgimportfiles ( con )
+{
+    _depura ( "importContaplus::importContaplus", 0 );
+    setupUi ( this );
 
     /// Signals and slots connections.
-    QObject::connect(pushButton33, SIGNAL(clicked()), this, SLOT(botonImportar()));
-    QObject::connect(pushButton33_2, SIGNAL(clicked()), this, SLOT(botonExportar()));
-    QObject::connect(pushButtonF_X, SIGNAL(clicked()), this, SLOT(close()));
-    QObject::connect(toolButton1_2, SIGNAL(clicked()), this, SLOT(botonBuscarDiario()));
-    QObject::connect(toolButton1, SIGNAL(clicked()), this, SLOT(botonBuscarSubCta()));
-    QObject::connect(toolButton1_5, SIGNAL(clicked()), this, SLOT(botonBuscarXML()));
+    QObject::connect ( pushButton33, SIGNAL ( clicked() ), this, SLOT ( botonImportar() ) );
+    QObject::connect ( pushButton33_2, SIGNAL ( clicked() ), this, SLOT ( botonExportar() ) );
+    QObject::connect ( pushButtonF_X, SIGNAL ( clicked() ), this, SLOT ( close() ) );
+    QObject::connect ( toolButton1_2, SIGNAL ( clicked() ), this, SLOT ( botonBuscarDiario() ) );
+    QObject::connect ( toolButton1, SIGNAL ( clicked() ), this, SLOT ( botonBuscarSubCta() ) );
+    QObject::connect ( toolButton1_5, SIGNAL ( clicked() ), this, SLOT ( botonBuscarXML() ) );
 
     progress = m_progressbar;
     mensajes = m_mensajes;
     conexionbase = con;
-    _depura("END importContaplus::importContaplus", 0);
+    _depura ( "END importContaplus::importContaplus", 0 );
 }
 
 
 ///
 /**
 **/
-importContaplus::~importContaplus() {
-    _depura("importContaplus::~importContaplus", 0);
-    _depura("END importContaplus::~importContaplus", 0);
+importContaplus::~importContaplus()
+{
+    _depura ( "importContaplus::~importContaplus", 0 );
+    _depura ( "END importContaplus::~importContaplus", 0 );
 }
 
 
@@ -101,64 +105,68 @@ importContaplus::~importContaplus() {
 /// Se ha pulsado sobre el boton de bsqueda de una subcuenta.
 /**
 **/
-void importContaplus::botonBuscarXML() {
-    _depura("importContaplus::botonBuscarXML", 0);
-    m_XML->setText(QFileDialog::getSaveFileName(this, tr("Guardar archivo"), confpr->valor(CONF_DIR_USER), tr("Contaplus (*.xml)")));
+void importContaplus::botonBuscarXML()
+{
+    _depura ( "importContaplus::botonBuscarXML", 0 );
+    m_XML->setText ( QFileDialog::getSaveFileName ( this, tr ( "Guardar archivo" ), confpr->valor ( CONF_DIR_USER ), tr ( "Contaplus (*.xml)" ) ) );
     ;
-    _depura("END importContaplus::botonBuscarXML", 0);
+    _depura ( "END importContaplus::botonBuscarXML", 0 );
 }
 
 
 /// Se ha pulsado sobre el boton de bsqueda de una subcuenta.
 /**
 **/
-void importContaplus::botonBuscarSubCta() {
-    _depura("importContaplus::botonBuscarSubCta", 0);
-    m_subCta->setText(QFileDialog::getSaveFileName(this, tr("Guardar archivo"), confpr->valor(CONF_DIR_USER), tr("Contaplus (*.txt)")));
+void importContaplus::botonBuscarSubCta()
+{
+    _depura ( "importContaplus::botonBuscarSubCta", 0 );
+    m_subCta->setText ( QFileDialog::getSaveFileName ( this, tr ( "Guardar archivo" ), confpr->valor ( CONF_DIR_USER ), tr ( "Contaplus (*.txt)" ) ) );
     ;
-    _depura("END importContaplus::botonBuscarSubCta", 0);
+    _depura ( "END importContaplus::botonBuscarSubCta", 0 );
 }
 
 
 /// SLOT que responde a la pulsacion de seleccion de archivo.
 /**
 **/
-void importContaplus::botonBuscarDiario() {
-    _depura("importContaplus::botonBuscarDiario", 0);
-    m_diario->setText(QFileDialog::getSaveFileName(this, tr("Guardar archivo"), confpr->valor(CONF_DIR_USER), tr("Contaplus (*.txt)")));
+void importContaplus::botonBuscarDiario()
+{
+    _depura ( "importContaplus::botonBuscarDiario", 0 );
+    m_diario->setText ( QFileDialog::getSaveFileName ( this, tr ( "Guardar archivo" ), confpr->valor ( CONF_DIR_USER ), tr ( "Contaplus (*.txt)" ) ) );
     ;
-    _depura("END importContaplus::botonBuscarDiario", 0);
+    _depura ( "END importContaplus::botonBuscarDiario", 0 );
 }
 
 
 ///
 /**
 **/
-void importContaplus::botonImportar() {
-    _depura("importContaplus::botonImportar", 0);
+void importContaplus::botonImportar()
+{
+    _depura ( "importContaplus::botonImportar", 0 );
     QString finicial = m_fechainicial->text();
     QString ffinal = m_fechafinal->text();
-    if (m_subCta->text() != "") {
-        QFile filecont(m_subCta->text());
-        QFile fileasie(m_diario->text());
-        filecont.open(QIODevice::ReadOnly);
-        fileasie.open(QIODevice::ReadOnly);
-        setFInicial(finicial);
-        setFFinal(ffinal);
-        if (m_test->isChecked()) {
+    if ( m_subCta->text() != "" ) {
+        QFile filecont ( m_subCta->text() );
+        QFile fileasie ( m_diario->text() );
+        filecont.open ( QIODevice::ReadOnly );
+        fileasie.open ( QIODevice::ReadOnly );
+        setFInicial ( finicial );
+        setFFinal ( ffinal );
+        if ( m_test->isChecked() ) {
             setModoTest();
         } // end if
-        contaplus2Bulmages(filecont, fileasie);
+        contaplus2Bulmages ( filecont, fileasie );
         filecont.close();
         fileasie.close();
     } else {
-        QFile filexml(m_XML->text());
-        filexml.open(QIODevice::ReadOnly);
-        XML2Bulmages(filexml);
+        QFile filexml ( m_XML->text() );
+        filexml.open ( QIODevice::ReadOnly );
+        XML2Bulmages ( filexml );
         filexml.close();
     } // end if
     mensajein = "";
-    _depura("END importContaplus::botonImportar", 0);
+    _depura ( "END importContaplus::botonImportar", 0 );
 }
 
 
@@ -172,34 +180,35 @@ void importContaplus::botonImportar() {
 /// haciendo derivar esta clase de pgimportfiles.
 /**
 **/
-void importContaplus::botonExportar() {
-    _depura("importContaplus::botonExportar", 0);
+void importContaplus::botonExportar()
+{
+    _depura ( "importContaplus::botonExportar", 0 );
 
     /// Leemos las fechas entre las que tiene que ser el listado.
     QString finicial = m_fechainicial->text();
     QString ffinal = m_fechafinal->text();
 
-    setFInicial(finicial);
-    setFFinal(ffinal);
-    if (m_test->isChecked()) {
+    setFInicial ( finicial );
+    setFFinal ( ffinal );
+    if ( m_test->isChecked() ) {
         setModoTest();
     } // end if
-    if (m_subCta->text() != "") {
-        QFile filecont(m_subCta->text());
-        QFile fileasie(m_diario->text());
-        filecont.open(QIODevice::WriteOnly);
-        fileasie.open(QIODevice::WriteOnly);
-        bulmages2Contaplus(filecont, fileasie);
+    if ( m_subCta->text() != "" ) {
+        QFile filecont ( m_subCta->text() );
+        QFile fileasie ( m_diario->text() );
+        filecont.open ( QIODevice::WriteOnly );
+        fileasie.open ( QIODevice::WriteOnly );
+        bulmages2Contaplus ( filecont, fileasie );
         filecont.close();
         fileasie.close();
     } // end if
-    if (m_XML->text() != "") {
-        QFile filexml(m_XML->text());
-        filexml.open(QIODevice::WriteOnly);
-        bulmages2XML(filexml);
+    if ( m_XML->text() != "" ) {
+        QFile filexml ( m_XML->text() );
+        filexml.open ( QIODevice::WriteOnly );
+        bulmages2XML ( filexml );
         filexml.close();
     } // end if
     mensajein = "";
-    _depura("END importContaplus::botonExportar", 0);
+    _depura ( "END importContaplus::botonExportar", 0 );
 }
 

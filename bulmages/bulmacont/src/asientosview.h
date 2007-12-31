@@ -32,20 +32,21 @@ class Empresa;
 /// Muestra un listado de todos los asientos existentes e informa de si est&aacute;n
 /// abiertos o cerrados.
 /** */
-class AsientosView : public Listado, public Ui_AsientoListBase {
+class AsientosView : public Listado, public Ui_AsientoListBase
+{
     Q_OBJECT
 
 private:
     void rellenaListaEjercicio();
 
 public:
-    AsientosView(Empresa *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
+    AsientosView ( Empresa *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
     ~AsientosView();
     void presentar();
     void imprimir();
 
 public slots:
-    virtual void on_mui_list_cellDoubleClicked(int, int);
+    virtual void on_mui_list_cellDoubleClicked ( int, int );
 };
 
 #endif

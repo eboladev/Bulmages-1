@@ -31,15 +31,17 @@
 
 /// Muestra y administra las l&iacute;neas de detalle de una factura a un cliente.
 /** */
-class ListLinFacturaView : public SubForm2Bf {
+class ListLinFacturaView : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
     QString mdb_idfactura;
-    ListLinFacturaView(QWidget *parent = 0);
-    ~ListLinFacturaView() {};
+    ListLinFacturaView ( QWidget *parent = 0 );
+    ~ListLinFacturaView()
+    {};
 public slots:
-    virtual void cargar(QString idfactura);
+    virtual void cargar ( QString idfactura );
 };
 
 #endif

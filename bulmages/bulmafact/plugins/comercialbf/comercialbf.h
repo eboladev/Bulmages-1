@@ -35,9 +35,9 @@
 #include "bulmafact.h"
 
 
-extern "C" MY_EXPORT int entryPoint(Bulmafact *);
-extern "C" MY_EXPORT int ClienteView_ClienteView_Post(ClienteView *);
-extern "C" MY_EXPORT int ClienteView_Des_ClienteView(ClienteView *);
+extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int ClienteView_ClienteView_Post ( ClienteView * );
+extern "C" MY_EXPORT int ClienteView_Des_ClienteView ( ClienteView * );
 /*
 extern "C" MY_EXPORT int ClienteView_saveClient(ClienteView *);
 extern "C" MY_EXPORT int Cliente_pintaCliente(Cliente *);

@@ -27,42 +27,46 @@
 ///
 /**
 **/
-mypluginbf::mypluginbf() : QObject() {
-    _depura("mypluginbf::mypluginbf", 0);
-    _depura("END mypluginbf::mypluginbf", 0);
+mypluginbf::mypluginbf() : QObject()
+{
+    _depura ( "mypluginbf::mypluginbf", 0 );
+    _depura ( "END mypluginbf::mypluginbf", 0 );
 }
 
 
 ///
 /**
 **/
-mypluginbf::~mypluginbf() {
-    _depura("mypluginbf::~mypluginbf", 0);
-    _depura("END mypluginbf::~mypluginbf", 0);
+mypluginbf::~mypluginbf()
+{
+    _depura ( "mypluginbf::~mypluginbf", 0 );
+    _depura ( "END mypluginbf::~mypluginbf", 0 );
 }
 
 
 ///
 /**
 **/
-void mypluginbf::elslot() {
-    _depura("mypluginbf::elslot", 0);
-    RutaComercialList *list  = new RutaComercialList((Company *)empresaBase(), NULL);
-    empresaBase()->m_pWorkspace->addWindow(list);
+void mypluginbf::elslot()
+{
+    _depura ( "mypluginbf::elslot", 0 );
+    RutaComercialList *list  = new RutaComercialList ( ( Company * ) empresaBase(), NULL );
+    empresaBase() ->m_pWorkspace->addWindow ( list );
     list->show();
-    _depura("END mypluginbf::elslot", 0);
+    _depura ( "END mypluginbf::elslot", 0 );
 }
 
 
 ///
 /**
 **/
-void mypluginbf::elslot1() {
-    _depura("mypluginbf::elslot1", 0);
-    ListZonaComercialView *list = new ListZonaComercialView((Company *)empresaBase(), NULL);
-    empresaBase()->m_pWorkspace->addWindow(list);
+void mypluginbf::elslot1()
+{
+    _depura ( "mypluginbf::elslot1", 0 );
+    ListZonaComercialView *list = new ListZonaComercialView ( ( Company * ) empresaBase(), NULL );
+    empresaBase() ->m_pWorkspace->addWindow ( list );
     list->show();
-    _depura("END mypluginbf::elslot1", 0);
+    _depura ( "END mypluginbf::elslot1", 0 );
 }
 
 
@@ -70,26 +74,27 @@ void mypluginbf::elslot1() {
 /**
 \param bges
 **/
-void mypluginbf::inicializa(Bulmafact *bges) {
-    _depura("mypluginbf::inicializa", 0);
+void mypluginbf::inicializa ( Bulmafact *bges )
+{
+    _depura ( "mypluginbf::inicializa", 0 );
     /// El men&uacute; de empresa.
     m_bges = bges;
     /// Cogemos la 'company' para tener acceso a todo y sobretodo a BD.
-    setEmpresaBase(bges->getcompany());
+    setEmpresaBase ( bges->getcompany() );
     /// Insertamos un separador en el men&uacute;.
     bges->menuMaestro->addSeparator();
     /// Creamos la opci&oacute;n para Zonas Comerciales que dispare el m&eacute;todo adecuado.
-    QAction *planCuentas1 = new QAction(tr("&Zonas comerciales"), 0);
-    planCuentas1->setStatusTip(tr("Zonas comerciales"));
-    planCuentas1->setWhatsThis(tr("Zonas comerciales"));
-    bges->menuMaestro->addAction(planCuentas1);
-    connect(planCuentas1, SIGNAL(activated()), this, SLOT(elslot1()));
+    QAction *planCuentas1 = new QAction ( tr ( "&Zonas comerciales" ), 0 );
+    planCuentas1->setStatusTip ( tr ( "Zonas comerciales" ) );
+    planCuentas1->setWhatsThis ( tr ( "Zonas comerciales" ) );
+    bges->menuMaestro->addAction ( planCuentas1 );
+    connect ( planCuentas1, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
     /// Creamos la opci&oacute;n para Rutas Comerciales que dispare el m&eacute;todo adecuado.
-    QAction *planCuentas = new QAction(tr("&Rutas comerciales"), 0);
-    planCuentas->setStatusTip(tr("Rutas comerciales"));
-    planCuentas->setWhatsThis(tr("Rutas comerciales"));
-    bges->menuMaestro->addAction(planCuentas);
-    connect(planCuentas, SIGNAL(activated()), this, SLOT(elslot()));
-    _depura("END mypluginbf::inicializa", 0);
+    QAction *planCuentas = new QAction ( tr ( "&Rutas comerciales" ), 0 );
+    planCuentas->setStatusTip ( tr ( "Rutas comerciales" ) );
+    planCuentas->setWhatsThis ( tr ( "Rutas comerciales" ) );
+    bges->menuMaestro->addAction ( planCuentas );
+    connect ( planCuentas, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
+    _depura ( "END mypluginbf::inicializa", 0 );
 }
 

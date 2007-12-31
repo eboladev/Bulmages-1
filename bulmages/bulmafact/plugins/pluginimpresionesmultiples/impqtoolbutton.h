@@ -34,64 +34,67 @@
 
 
 
-class ImpQToolButton : public QToolButton {
-	Q_OBJECT
+class ImpQToolButton : public QToolButton
+{
+    Q_OBJECT
 
 private:
-	Company *m_companyact;
-	PresupuestoList *m_presupuestoList;
-	PedidosClienteList *m_pedidosClienteList;
-	AlbaranClienteList *m_albaranClienteList;
-	FacturasList    *m_facturasList;
-	CobrosList     *m_cobrosList;
-	
+    Company *m_companyact;
+    PresupuestoList *m_presupuestoList;
+    PedidosClienteList *m_pedidosClienteList;
+    AlbaranClienteList *m_albaranClienteList;
+    FacturasList    *m_facturasList;
+    CobrosList     *m_cobrosList;
+
 public:
-	ImpQToolButton( PresupuestoList *pres = NULL, PedidosClienteList *ped = NULL, AlbaranClienteList *alb = NULL,  FacturasList *fac = NULL , CobrosList *cob = NULL, QWidget *parent = NULL);
-	~ImpQToolButton();
-	void setBoton();
+    ImpQToolButton ( PresupuestoList *pres = NULL, PedidosClienteList *ped = NULL, AlbaranClienteList *alb = NULL,  FacturasList *fac = NULL , CobrosList *cob = NULL, QWidget *parent = NULL );
+    ~ImpQToolButton();
+    void setBoton();
 public slots:
-	virtual void click();
+    virtual void click();
 
 };
 
 
-class SelQToolButton : public QToolButton {
-	Q_OBJECT
+class SelQToolButton : public QToolButton
+{
+    Q_OBJECT
 
 private:
-	Company *m_companyact;
-	PresupuestoList *m_presupuestoList;
-	PedidosClienteList *m_pedidosClienteList;
-	AlbaranClienteList *m_albaranClienteList;
-	FacturasList    *m_facturasList;
-	CobrosList    *m_cobrosList;	
+    Company *m_companyact;
+    PresupuestoList *m_presupuestoList;
+    PedidosClienteList *m_pedidosClienteList;
+    AlbaranClienteList *m_albaranClienteList;
+    FacturasList    *m_facturasList;
+    CobrosList    *m_cobrosList;
 public:
-	SelQToolButton(PresupuestoList *pres = NULL, PedidosClienteList *ped = NULL, AlbaranClienteList *alb = NULL,  FacturasList *fac = NULL ,CobrosList *cob = NULL,  QWidget *parent = NULL);
-	~SelQToolButton();
-	void setBoton();
+    SelQToolButton ( PresupuestoList *pres = NULL, PedidosClienteList *ped = NULL, AlbaranClienteList *alb = NULL,  FacturasList *fac = NULL , CobrosList *cob = NULL,  QWidget *parent = NULL );
+    ~SelQToolButton();
+    void setBoton();
 public slots:
-	virtual void click();
+    virtual void click();
 
 };
 
-class EmailQToolButton : public QToolButton {
-	Q_OBJECT
+class EmailQToolButton : public QToolButton
+{
+    Q_OBJECT
 
 private:
-	Company *m_companyact;
-	PresupuestoList *m_presupuestoList;
-	PedidosClienteList *m_pedidosClienteList;
-	AlbaranClienteList *m_albaranClienteList;
-	FacturasList    *m_facturasList;
-	CobrosList *m_cobrosList;	
+    Company *m_companyact;
+    PresupuestoList *m_presupuestoList;
+    PedidosClienteList *m_pedidosClienteList;
+    AlbaranClienteList *m_albaranClienteList;
+    FacturasList    *m_facturasList;
+    CobrosList *m_cobrosList;
 
-	
+
 public:
-	EmailQToolButton(PresupuestoList *pres = NULL, PedidosClienteList *ped = NULL, AlbaranClienteList *alb = NULL,  FacturasList *fac = NULL, CobrosList *cob=NULL , QWidget *parent = NULL);
-	~EmailQToolButton();
-	void setBoton();
+    EmailQToolButton ( PresupuestoList *pres = NULL, PedidosClienteList *ped = NULL, AlbaranClienteList *alb = NULL,  FacturasList *fac = NULL, CobrosList *cob = NULL , QWidget *parent = NULL );
+    ~EmailQToolButton();
+    void setBoton();
 public slots:
-	virtual void click();
+    virtual void click();
 
 };
 

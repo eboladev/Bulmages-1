@@ -25,26 +25,27 @@
 /**
 \param parent
 **/
-ListControlStockView::ListControlStockView(QWidget *parent, const char *)
-        : SubForm2Bf(parent) {
-    _depura("ListControlStockView::ListControlStockView", 0);
-    setDBTableName("controlstock");
-    setDBCampoId("idarticulo");
-    addSHeader("punteocontrolstock", DBCampo::DBboolean, DBCampo::DBNothing, SHeader::DBNone, tr("Punteado"));
-    addSHeader("codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Codigo almacen"));
-    addSHeader("nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre almacen"));
-    addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Codigo completo articulo"));
-    addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre articulo"));
-    addSHeader("stockantcontrolstock", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNoWrite, tr("Stock anterior"));
-    addSHeader("stocknewcontrolstock", DBCampo::DBnumeric, DBCampo::DBRequired, SHeader::DBNone, tr("Stock revisado"));
-    addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNone | SHeader::DBNoView, tr("Id articulo"));
-    addSHeader("idalmacen", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNone | SHeader::DBNoView, "Id almacen");
-    addSHeader("idinventario", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNone | SHeader::DBNoView, "Id inventario");
-    addSHeader("idarticulopk", DBCampo::DBint, DBCampo::DBNoSave | DBCampo::DBDupPrimaryKey, SHeader::DBNone | SHeader::DBNoView | SHeader::DBBlockView, "idarticulo");
-    addSHeader("idalmacenpk", DBCampo::DBint,  DBCampo::DBNoSave | DBCampo::DBDupPrimaryKey, SHeader::DBNone | SHeader::DBNoView | SHeader::DBBlockView, "idalmacen");
+ListControlStockView::ListControlStockView ( QWidget *parent, const char * )
+        : SubForm2Bf ( parent )
+{
+    _depura ( "ListControlStockView::ListControlStockView", 0 );
+    setDBTableName ( "controlstock" );
+    setDBCampoId ( "idarticulo" );
+    addSHeader ( "punteocontrolstock", DBCampo::DBboolean, DBCampo::DBNothing, SHeader::DBNone, tr ( "Punteado" ) );
+    addSHeader ( "codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr ( "Codigo almacen" ) );
+    addSHeader ( "nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre almacen" ) );
+    addSHeader ( "codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Codigo completo articulo" ) );
+    addSHeader ( "nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre articulo" ) );
+    addSHeader ( "stockantcontrolstock", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNoWrite, tr ( "Stock anterior" ) );
+    addSHeader ( "stocknewcontrolstock", DBCampo::DBnumeric, DBCampo::DBRequired, SHeader::DBNone, tr ( "Stock revisado" ) );
+    addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNone | SHeader::DBNoView, tr ( "Id articulo" ) );
+    addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNone | SHeader::DBNoView, "Id almacen" );
+    addSHeader ( "idinventario", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNone | SHeader::DBNoView, "Id inventario" );
+    addSHeader ( "idarticulopk", DBCampo::DBint, DBCampo::DBNoSave | DBCampo::DBDupPrimaryKey, SHeader::DBNone | SHeader::DBNoView | SHeader::DBBlockView, "idarticulo" );
+    addSHeader ( "idalmacenpk", DBCampo::DBint,  DBCampo::DBNoSave | DBCampo::DBDupPrimaryKey, SHeader::DBNone | SHeader::DBNoView | SHeader::DBBlockView, "idalmacen" );
 //    addSHeader("idinventariopk", DBCampo::DBint,  DBCampo::DBNoSave | DBCampo::DBDupPrimaryKey, SHeader::DBNone | SHeader::DBNoView | SHeader::DBBlockView, "idinventario");
-    setinsercion(FALSE);
-    _depura("END ListControlStockView::ListControlStockView", 0);
+    setinsercion ( FALSE );
+    _depura ( "END ListControlStockView::ListControlStockView", 0 );
 }
 
 
@@ -52,16 +53,17 @@ ListControlStockView::ListControlStockView(QWidget *parent, const char *)
 /**
 \param idinventario
 **/
-void ListControlStockView::cargar(QString idinventario) {
-    _depura("ListControlStockView::cargar", 0);
+void ListControlStockView::cargar ( QString idinventario )
+{
+    _depura ( "ListControlStockView::cargar", 0 );
     mdb_idinventario = idinventario;
     QString SQLQuery = "SELECT * FROM ";
     SQLQuery += " (SELECT idarticulo, idalmacen, nomarticulo, nomalmacen, codigocompletoarticulo, codigoalmacen FROM articulo, almacen) AS t1 ";
     SQLQuery += " LEFT JOIN (SELECT punteocontrolstock,stockantcontrolstock, stocknewcontrolstock, idarticulo AS idarticulopk, idalmacen AS idalmacenpk, idinventario FROM controlstock WHERE idinventario = " + idinventario + ") AS t2 ON t1.idarticulo = t2.idarticulopk AND t1.idalmacen = t2.idalmacenpk ";
     SQLQuery += " WHERE idarticulo IN (SELECT idarticulo from lalbaranp UNION SELECT idarticulo FROM lalbaran)";
     SQLQuery += " ORDER BY codigoalmacen, codigocompletoarticulo";
-    SubForm2Bf::cargar(SQLQuery);
-    _depura("END ListControlStockView::cargar", 0);
+    SubForm2Bf::cargar ( SQLQuery );
+    _depura ( "END ListControlStockView::cargar", 0 );
 }
 
 
@@ -69,10 +71,11 @@ void ListControlStockView::cargar(QString idinventario) {
 /**
 \return
 **/
-int ListControlStockView::borrar() {
-    _depura("ListControlStockView::borrar", 0);
-    empresaBase()->ejecuta("DELETE FROM controlstock WHERE idinventario = " + mdb_idinventario);
-    _depura("END ListControlStockView::borrar", 0);
+int ListControlStockView::borrar()
+{
+    _depura ( "ListControlStockView::borrar", 0 );
+    empresaBase() ->ejecuta ( "DELETE FROM controlstock WHERE idinventario = " + mdb_idinventario );
+    _depura ( "END ListControlStockView::borrar", 0 );
     return 0;
 }
 
@@ -80,21 +83,23 @@ int ListControlStockView::borrar() {
 ///
 /**
 **/
-void ListControlStockView::pregenerar() {
-    _depura("ListControlStockView::pregenerar", 0);
+void ListControlStockView::pregenerar()
+{
+    _depura ( "ListControlStockView::pregenerar", 0 );
     QString query;
     query = "SELECT * FROM (SELECT * FROM articulo, almacen) AS t1 LEFT JOIN (SELECT stocknewcontrolstock, idarticulo AS idarticulopk, idalmacen AS idalmacenpk, idinventario AS idinventariopk FROM controlstock WHERE idinventario = 1) AS t2 ON t1.idarticulo = t2.idarticulopk AND t1.idalmacen = t2.idalmacenpk ORDER BY codigoalmacen, codigocompletoarticulo;";
-    SubForm3::cargar(query);
-    _depura("END ListControlStockView::pregenerar", 0);
+    SubForm3::cargar ( query );
+    _depura ( "END ListControlStockView::pregenerar", 0 );
 }
 
 
 ///
 /**
 **/
-ListControlStockView::~ListControlStockView() {
-    _depura("ListControlStockView::~ListControlStockView", 0);
-    _depura("END ListControlStockView::~ListControlStockView", 0);
+ListControlStockView::~ListControlStockView()
+{
+    _depura ( "ListControlStockView::~ListControlStockView", 0 );
+    _depura ( "END ListControlStockView::~ListControlStockView", 0 );
 }
 
 
@@ -102,10 +107,11 @@ ListControlStockView::~ListControlStockView() {
 /**
 \return
 **/
-int ListControlStockView::guardar() {
-    _depura("ListControlStockView::guardar", 0);
+int ListControlStockView::guardar()
+{
+    _depura ( "ListControlStockView::guardar", 0 );
     SubForm2Bf::guardar();
-    _depura("END ListControlStockView::guardar", 0);
+    _depura ( "END ListControlStockView::guardar", 0 );
     return 0;
 }
 

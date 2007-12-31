@@ -42,25 +42,26 @@ class Company;
 
 /// Muestra y administra la ventana de una factura a cliente.
 /** */
-class FacturaView : public FichaBf, public Ui_FacturaBase {
+class FacturaView : public FichaBf, public Ui_FacturaBase
+{
     Q_OBJECT
 
 public:
-    FacturaView(Company *, QWidget *parent = 0);
+    FacturaView ( Company *, QWidget *parent = 0 );
     ~FacturaView();
     void inicializar();
-    void pintatotales(Fixed, Fixed, Fixed, Fixed, Fixed, Fixed);
-    virtual int cargarPost(QString);
+    void pintatotales ( Fixed, Fixed, Fixed, Fixed, Fixed, Fixed );
+    virtual int cargarPost ( QString );
     virtual int guardarPost();
     virtual int borrarPre();
 
 public slots:
     virtual void on_mui_agregaralbaran_clicked();
-    virtual void on_m_descuentos_editFinish(int, int);
-    virtual void on_subform2_editFinish(int, int);
+    virtual void on_m_descuentos_editFinish ( int, int );
+    virtual void on_subform2_editFinish ( int, int );
     virtual void on_mui_cobrar_clicked();
     virtual void on_mui_veralbaranes_clicked();
-    virtual void on_mui_idcliente_valueChanged(QString id);
+    virtual void on_mui_idcliente_valueChanged ( QString id );
 };
 
 #endif

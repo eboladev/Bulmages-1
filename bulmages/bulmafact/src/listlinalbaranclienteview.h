@@ -31,16 +31,18 @@
 
 /// Muestra y administra las l&iacute;neas de detalle de albaranes a un cliente.
 /** */
-class ListLinAlbaranClienteView : public SubForm2Bf {
+class ListLinAlbaranClienteView : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
     QString mdb_idalbaran;
-    ListLinAlbaranClienteView(QWidget *parent = 0);
-    ~ListLinAlbaranClienteView() {};
+    ListLinAlbaranClienteView ( QWidget *parent = 0 );
+    ~ListLinAlbaranClienteView()
+    {};
 
 public slots:
-    virtual void cargar(QString idalbaran);
+    virtual void cargar ( QString idalbaran );
 };
 
 #endif

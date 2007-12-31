@@ -35,19 +35,20 @@
     de la base de datos.
     Al ser una clase derivada de SubForm2Bf para funcionar debe ser previamente inicializada
     con setcompany. */
-class ListCompArticuloView : public SubForm2Bf {
+class ListCompArticuloView : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
     /// Indica el idarticulo de la ficha con el que trabajamos.
     QString mdb_idarticulo;
-    ListCompArticuloView(QWidget *parent = 0, const char *name = 0);
+    ListCompArticuloView ( QWidget *parent = 0, const char *name = 0 );
     ~ListCompArticuloView();
 
 public slots:
-    virtual void cargar(QString idarticulo);
-    virtual void editFinished(int row, int col);
-    virtual void pressedAsterisk(int row, int col);
+    virtual void cargar ( QString idarticulo );
+    virtual void editFinished ( int row, int col );
+    virtual void pressedAsterisk ( int row, int col );
 };
 
 #endif

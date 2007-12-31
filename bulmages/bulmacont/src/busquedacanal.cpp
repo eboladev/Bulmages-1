@@ -27,21 +27,23 @@
 ///
 /**
 **/
-BusquedaCanal::BusquedaCanal(QWidget *parent)
-        : QComboBox2(parent) {
-    _depura("BusquedaCanal::BusquedaCanal", 0);
+BusquedaCanal::BusquedaCanal ( QWidget *parent )
+        : QComboBox2 ( parent )
+{
+    _depura ( "BusquedaCanal::BusquedaCanal", 0 );
     m_cursorcombo = NULL;
-    connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
-    _depura("END BusquedaCanal::BusquedaCanal", 0);
+    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
+    _depura ( "END BusquedaCanal::BusquedaCanal", 0 );
 }
 
 
 ///
 /**
 **/
-BusquedaCanal::~BusquedaCanal() {
-    _depura("BusquedaCanal::~BusquedaCanal", 0);
-    _depura("END BusquedaCanal::~BusquedaCanal", 0);
+BusquedaCanal::~BusquedaCanal()
+{
+    _depura ( "BusquedaCanal::~BusquedaCanal", 0 );
+    _depura ( "END BusquedaCanal::~BusquedaCanal", 0 );
 }
 
 
@@ -49,26 +51,27 @@ BusquedaCanal::~BusquedaCanal() {
 /**
 \param idcanal
 **/
-void BusquedaCanal::setidcanal(QString idcanal) {
-    _depura("BusquedaCanal::setidcanal", 0, idcanal);
-    if (m_cursorcombo != NULL) {
+void BusquedaCanal::setidcanal ( QString idcanal )
+{
+    _depura ( "BusquedaCanal::setidcanal", 0, idcanal );
+    if ( m_cursorcombo != NULL ) {
         delete m_cursorcombo;
     } // end if
-    m_cursorcombo = empresaBase()->cargacursor("SELECT * FROM canal");
+    m_cursorcombo = empresaBase() ->cargacursor ( "SELECT * FROM canal" );
     int i = 0;
     int i1 = 0;
     clear();
-    addItem("--");
-    while (!m_cursorcombo->eof()) {
+    addItem ( "--" );
+    while ( !m_cursorcombo->eof() ) {
         i ++;
-        if (m_cursorcombo->valor("idcanal") == idcanal) {
+        if ( m_cursorcombo->valor ( "idcanal" ) == idcanal ) {
             i1 = i;
         } // end if
-        addItem(m_cursorcombo->valor("nombre"));
+        addItem ( m_cursorcombo->valor ( "nombre" ) );
         m_cursorcombo->siguienteregistro();
     } //end while
-    setCurrentIndex(i1);
-    _depura("END BusquedaCanal::setidcanal", 0, idcanal);
+    setCurrentIndex ( i1 );
+    _depura ( "END BusquedaCanal::setidcanal", 0, idcanal );
 }
 
 
@@ -76,10 +79,11 @@ void BusquedaCanal::setidcanal(QString idcanal) {
 /**
 \param idcanal
 **/
-void BusquedaCanal::setValorCampo(QString idcanal) {
-        _depura("BusquedaCanal::setValorCampo", 0);
-	setidcanal(idcanal);
-        _depura("END BusquedaCanal::setValorCampo", 0);
+void BusquedaCanal::setValorCampo ( QString idcanal )
+{
+    _depura ( "BusquedaCanal::setValorCampo", 0 );
+    setidcanal ( idcanal );
+    _depura ( "END BusquedaCanal::setValorCampo", 0 );
 }
 
 
@@ -87,14 +91,15 @@ void BusquedaCanal::setValorCampo(QString idcanal) {
 /**
 \param index
 **/
-void BusquedaCanal::m_activated(int index) {
-    _depura("BusquedaCanal::m_activated", 0);
-    if (index > 0) {
-        emit(valueChanged(m_cursorcombo->valor("idcanal", index - 1)));
+void BusquedaCanal::m_activated ( int index )
+{
+    _depura ( "BusquedaCanal::m_activated", 0 );
+    if ( index > 0 ) {
+        emit ( valueChanged ( m_cursorcombo->valor ( "idcanal", index - 1 ) ) );
     } else {
-        emit(valueChanged(""));
+        emit ( valueChanged ( "" ) );
     } // end if
-    _depura("END BusquedaCanal::m_activated", 0);
+    _depura ( "END BusquedaCanal::m_activated", 0 );
 }
 
 
@@ -102,15 +107,16 @@ void BusquedaCanal::m_activated(int index) {
 /**
 \return
 **/
-QString BusquedaCanal::idcanal() {
-    _depura("BusquedaCanal::idcanal", 0);
-    int index= currentIndex();
-    if (index > 0) {
-        return(m_cursorcombo->valor("idcanal", index - 1));
+QString BusquedaCanal::idcanal()
+{
+    _depura ( "BusquedaCanal::idcanal", 0 );
+    int index = currentIndex();
+    if ( index > 0 ) {
+        return ( m_cursorcombo->valor ( "idcanal", index - 1 ) );
     } else {
         return "";
     } // end if
-    _depura("END BusquedaCanal::idcanal", 0);
+    _depura ( "END BusquedaCanal::idcanal", 0 );
 }
 
 
@@ -118,8 +124,9 @@ QString BusquedaCanal::idcanal() {
 /**
 \return
 **/
-QString BusquedaCanal::valorCampo() {
-	return idcanal();
+QString BusquedaCanal::valorCampo()
+{
+    return idcanal();
 }
 
 /// ===================================================================
@@ -131,11 +138,12 @@ QString BusquedaCanal::valorCampo() {
 /**
 \param parent
 **/
-BusquedaCanalDelegate::BusquedaCanalDelegate(QWidget *parent)
-        : QComboBox2(parent) {
-    _depura("BusquedaCanalDelegate::BusquedaCanalDelegate", 10);
-    setEditable(false);
-    _depura("END BusquedaCanalDelegate::BusquedaCanalDelegate", 0);
+BusquedaCanalDelegate::BusquedaCanalDelegate ( QWidget *parent )
+        : QComboBox2 ( parent )
+{
+    _depura ( "BusquedaCanalDelegate::BusquedaCanalDelegate", 10 );
+    setEditable ( false );
+    _depura ( "END BusquedaCanalDelegate::BusquedaCanalDelegate", 0 );
 }
 
 
@@ -143,9 +151,10 @@ BusquedaCanalDelegate::BusquedaCanalDelegate(QWidget *parent)
 /// Libera la memoria reservada.
 /**
 **/
-BusquedaCanalDelegate::~BusquedaCanalDelegate() {
-    _depura("BusquedaCanalDelegate::~BusquedaCanalDelegate", 10);
-    _depura("END BusquedaCanalDelegate::~BusquedaCanalDelegate", 0);
+BusquedaCanalDelegate::~BusquedaCanalDelegate()
+{
+    _depura ( "BusquedaCanalDelegate::~BusquedaCanalDelegate", 10 );
+    _depura ( "END BusquedaCanalDelegate::~BusquedaCanalDelegate", 0 );
 }
 
 
@@ -157,26 +166,27 @@ BusquedaCanalDelegate::~BusquedaCanalDelegate() {
 \param cod
 \return
 **/
-void BusquedaCanalDelegate::set(const QString &codigo) {
-    _depura("BusquedaCanalDelegate::set", 0);
+void BusquedaCanalDelegate::set ( const QString &codigo )
+{
+    _depura ( "BusquedaCanalDelegate::set", 0 );
     int index = 0;
 
-    m_cursorcombo = empresaBase()->cargacursor("SELECT nombre FROM canal ORDER BY nombre");
+    m_cursorcombo = empresaBase() ->cargacursor ( "SELECT nombre FROM canal ORDER BY nombre" );
     clear();
 
-    addItem("--");
+    addItem ( "--" );
     ///TODO: La idea es que salga en el desplegable del combobox el listado de cuentas que
     /// coincidan con el texto escrito para poder elegirlo.
-    while (!m_cursorcombo->eof()) {
-        addItem(m_cursorcombo->valor("nombre"));
-        if(m_cursorcombo->valor("nombre") == codigo)
-		index = m_cursorcombo->regactual() + 1;
+    while ( !m_cursorcombo->eof() ) {
+        addItem ( m_cursorcombo->valor ( "nombre" ) );
+        if ( m_cursorcombo->valor ( "nombre" ) == codigo )
+            index = m_cursorcombo->regactual() + 1;
         m_cursorcombo->siguienteregistro();
     }
     delete m_cursorcombo;
-    setEditText(codigo);
-    setCurrentIndex(index);
+    setEditText ( codigo );
+    setCurrentIndex ( index );
 
-    _depura("END BusquedaCanalDelegate::set", 0);
+    _depura ( "END BusquedaCanalDelegate::set", 0 );
 }
 

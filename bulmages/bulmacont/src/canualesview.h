@@ -35,7 +35,8 @@ class Empresa;
 /** Clase que muestra un listado de todos los balances introducidos en el sistema.
     Sirve como punto de entrada a la generaci&oacute;n de los balances permitiendo la
     importaci&oacute;n/exportaci&oacute;n de los mismos, su modificaci&oacute;n y su impresi&oacute;n. */
-class CAnualesView : public FichaBc, public Ui_CAnualesBase {
+class CAnualesView : public FichaBc, public Ui_CAnualesBase
+{
     Q_OBJECT
 
 private:
@@ -49,7 +50,7 @@ private:
     QString m_idBalance;
 
 public:
-    CAnualesView(Empresa *, QWidget *parent = 0);
+    CAnualesView ( Empresa *, QWidget *parent = 0 );
     ~CAnualesView();
     void inicializatabla();
     /// Establece el funcionamiento de la ventana como selector (afecta sobre
@@ -67,7 +68,7 @@ private slots:
     /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n de imprimir balance.
     virtual void imprimir();
     /// SLOT que responde a la acci&oacute;n de hacer doble click sobre el listado.
-    virtual void on_mui_listado_itemDoubleClicked(QTableWidgetItem *);
+    virtual void on_mui_listado_itemDoubleClicked ( QTableWidgetItem * );
 };
 
 #endif

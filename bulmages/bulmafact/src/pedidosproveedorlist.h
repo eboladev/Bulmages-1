@@ -32,14 +32,15 @@
 
 /// Administra las l&iacute;neas de detalle de pedidos a proveedor.
 /** */
-class PedidosProveedorListSubform : public SubForm2Bf {
+class PedidosProveedorListSubform : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
-    PedidosProveedorListSubform(QWidget *parent = 0);
+    PedidosProveedorListSubform ( QWidget *parent = 0 );
     ~PedidosProveedorListSubform();
     virtual void cargar();
-    virtual void cargar(QString query);
+    virtual void cargar ( QString query );
 };
 
 
@@ -48,23 +49,24 @@ public:
 
 /// Muestra y administra la ventana con la informaci&oacute;n de los pedidos a proveedor.
 /** */
-class PedidosProveedorList : public Listado, public Ui_PedidosProveedorListBase {
+class PedidosProveedorList : public Listado, public Ui_PedidosProveedorListBase
+{
     Q_OBJECT
 
 private:
     QString mdb_idpedidoproveedor;
 
 public:
-    PedidosProveedorList(QWidget *parent = 0, Qt::WFlags flag = 0);
-    PedidosProveedorList(Company *, QWidget *parent = 0, Qt::WFlags flag = 0);
+    PedidosProveedorList ( QWidget *parent = 0, Qt::WFlags flag = 0 );
+    PedidosProveedorList ( Company *, QWidget *parent = 0, Qt::WFlags flag = 0 );
     ~PedidosProveedorList();
     void presentar();
     void imprimir();
-    void setEmpresaBase(Company *comp);
+    void setEmpresaBase ( Company *comp );
     QString idpedidoproveedor();
-    void setidproveedor(QString val);
+    void setidproveedor ( QString val );
     QString generarFiltro();
-    void editar(int);
+    void editar ( int );
     void borrar();
     void crear();
     void iniciaForm();

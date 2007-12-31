@@ -25,29 +25,32 @@
 /**
 \param emp
 **/
-PEmpresaBase::PEmpresaBase(EmpresaBase *emp) {
-  _depura("PEmpresaBase::PEmpresaBase", 0);
-  m_empresaBase = emp;
-  _depura("END PEmpresaBase::PEmpresaBase", 0);
+PEmpresaBase::PEmpresaBase ( EmpresaBase *emp )
+{
+    _depura ( "PEmpresaBase::PEmpresaBase", 0 );
+    m_empresaBase = emp;
+    _depura ( "END PEmpresaBase::PEmpresaBase", 0 );
 }
 
 
 ///
 /**
 **/
-PEmpresaBase::PEmpresaBase() {
-  _depura("PEmpresaBase::PEmpresaBases", 0);
-  m_empresaBase = NULL;
-  _depura("END PEmpresaBase::PEmpresaBases", 0);
+PEmpresaBase::PEmpresaBase()
+{
+    _depura ( "PEmpresaBase::PEmpresaBases", 0 );
+    m_empresaBase = NULL;
+    _depura ( "END PEmpresaBase::PEmpresaBases", 0 );
 }
 
 
 ///
 /**
 **/
-PEmpresaBase::~PEmpresaBase() {
-  _depura("PEmpresaBase::~PEmpresaBase", 0);
-  _depura("END PEmpresaBase::~PEmpresaBase", 0);
+PEmpresaBase::~PEmpresaBase()
+{
+    _depura ( "PEmpresaBase::~PEmpresaBase", 0 );
+    _depura ( "END PEmpresaBase::~PEmpresaBase", 0 );
 }
 
 
@@ -55,10 +58,11 @@ PEmpresaBase::~PEmpresaBase() {
 /**
 \param emp
 **/
-void PEmpresaBase::setEmpresaBase(EmpresaBase *emp) {
-  _depura("PEmpresaBase::setEmpresaBase", 0);
-  m_empresaBase = emp;
-  _depura("END PEmpresaBase::setEmpresaBase", 0);
+void PEmpresaBase::setEmpresaBase ( EmpresaBase *emp )
+{
+    _depura ( "PEmpresaBase::setEmpresaBase", 0 );
+    m_empresaBase = emp;
+    _depura ( "END PEmpresaBase::setEmpresaBase", 0 );
 }
 
 
@@ -66,10 +70,11 @@ void PEmpresaBase::setEmpresaBase(EmpresaBase *emp) {
 /**
 \return 
 **/
-EmpresaBase *PEmpresaBase::empresaBase() {
-  _depura("PEmpresaBase::empresaBase", 0);
-  return m_empresaBase;
-  _depura("END PEmpresaBase::empresaBase", 0);
+EmpresaBase *PEmpresaBase::empresaBase()
+{
+    _depura ( "PEmpresaBase::empresaBase", 0 );
+    return m_empresaBase;
+    _depura ( "END PEmpresaBase::empresaBase", 0 );
 }
 
 
@@ -77,17 +82,19 @@ EmpresaBase *PEmpresaBase::empresaBase() {
 /**
 \return 
 **/
-QString PEmpresaBase::valorCampo() {
-	_depura("PEmpresaBase::valorCampo", 2, "debe ser derivado");
-	return "";
+QString PEmpresaBase::valorCampo()
+{
+    _depura ( "PEmpresaBase::valorCampo", 2, "debe ser derivado" );
+    return "";
 }
 
 
 ///
 /**
 **/
-void PEmpresaBase::setValorCampo(QString) {
-	_depura("PEmpresaBase::setValorCampo", 2, "debe ser derivado");
+void PEmpresaBase::setValorCampo ( QString )
+{
+    _depura ( "PEmpresaBase::setValorCampo", 2, "debe ser derivado" );
 }
 
 
@@ -101,10 +108,11 @@ void PEmpresaBase::setValorCampo(QString) {
 \param parent
 \param f
 **/
-BLWidget::BLWidget(QWidget *parent, Qt::WFlags f) 
-  :QWidget(parent, f), PEmpresaBase() {
-  _depura("BLWidget::BLWidget", 0);
-  _depura("END BLWidget::BLWidget", 0);
+BLWidget::BLWidget ( QWidget *parent, Qt::WFlags f )
+        : QWidget ( parent, f ), PEmpresaBase()
+{
+    _depura ( "BLWidget::BLWidget", 0 );
+    _depura ( "END BLWidget::BLWidget", 0 );
 }
 
 
@@ -114,18 +122,20 @@ BLWidget::BLWidget(QWidget *parent, Qt::WFlags f)
 \param parent
 \param f
 **/
-BLWidget::BLWidget(EmpresaBase *emp, QWidget *parent, Qt::WFlags f) 
-  :QWidget(parent, f), PEmpresaBase(emp) {
-  _depura("BLWidget::BLWidget", 0);
-  _depura("END BLWidget::BLWidget", 0);
+BLWidget::BLWidget ( EmpresaBase *emp, QWidget *parent, Qt::WFlags f )
+        : QWidget ( parent, f ), PEmpresaBase ( emp )
+{
+    _depura ( "BLWidget::BLWidget", 0 );
+    _depura ( "END BLWidget::BLWidget", 0 );
 }
 
 
 ///
 /**
 **/
-BLWidget::~BLWidget() {
-  _depura("BLWidget::~BLWidget", 0);
-  _depura("END BLWidget::~BLWidget", 0);
+BLWidget::~BLWidget()
+{
+    _depura ( "BLWidget::~BLWidget", 0 );
+    _depura ( "END BLWidget::~BLWidget", 0 );
 }
 

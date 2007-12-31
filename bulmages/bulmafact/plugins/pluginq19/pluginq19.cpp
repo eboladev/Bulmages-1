@@ -33,8 +33,9 @@
 /**
 \return
 **/
-int entryPoint(Bulmafact *) {
-    _depura("Estoy dentro del plugin de Q19", 0);
+int entryPoint ( Bulmafact * )
+{
+    _depura ( "Estoy dentro del plugin de Q19", 0 );
     return 0;
 }
 
@@ -44,20 +45,21 @@ int entryPoint(Bulmafact *) {
 \param l
 \return
 **/
-int CobrosList_CobrosList(CobrosList *l) {
-    _depura("CobrosList_CobrosList", 0);
+int CobrosList_CobrosList ( CobrosList *l )
+{
+    _depura ( "CobrosList_CobrosList", 0 );
 
-    Q19QToolButton *sel = new Q19QToolButton( l, l->mui_plugbotones);
+    Q19QToolButton *sel = new Q19QToolButton ( l, l->mui_plugbotones );
 
-    QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *>("hboxLayout1");
-    if (!m_hboxLayout1) {
-        m_hboxLayout1 = new QHBoxLayout(l->mui_plugbotones);
-        m_hboxLayout1->setSpacing(5);
-        m_hboxLayout1->setMargin(5);
-        m_hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));
+    QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *> ( "hboxLayout1" );
+    if ( !m_hboxLayout1 ) {
+        m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
+        m_hboxLayout1->setSpacing ( 5 );
+        m_hboxLayout1->setMargin ( 5 );
+        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
     } // end if
-    m_hboxLayout1->addWidget(sel);
+    m_hboxLayout1->addWidget ( sel );
 
-    _depura("END CobrosList_CobrosList", 0);
+    _depura ( "END CobrosList_CobrosList", 0 );
     return 0;
 }

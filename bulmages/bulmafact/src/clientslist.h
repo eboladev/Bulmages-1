@@ -31,11 +31,12 @@
 /** Subformulario de clientes.
     Esta clase derivada de SubForm2Bf presenta todo el listado de clientes.
 */
-class ClienteListSubform : public SubForm2Bf {
+class ClienteListSubform : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
-    ClienteListSubform(QWidget *parent = 0, const char *name = 0);
+    ClienteListSubform ( QWidget *parent = 0, const char *name = 0 );
     ~ClienteListSubform();
 };
 
@@ -48,7 +49,8 @@ public:
     Tiene dos modos de funcionamiento (Edicion y Seleccion)
 */
 /// \TODO: Deberia crearse la clase Listado para poner en ella mas funcionalidades comunes a los listados.
-class ClientsList : public Listado, public Ui_ClientsListBase, public pgimportfiles {
+class ClientsList : public Listado, public Ui_ClientsListBase, public pgimportfiles
+{
     Q_OBJECT
 
 private:
@@ -60,24 +62,24 @@ private:
     QString mdb_cifcliente;
 
 public:
-    ClientsList(Company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode);
+    ClientsList ( Company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode );
     virtual ~ClientsList();
     void presentar();
-    void editar(int);
+    void editar ( int );
     void imprimir();
     void crear();
     void borrar();
     QString idclient();
     QString nomclient();
     QString cifclient();
-    void submenu(const QPoint &);
+    void submenu ( const QPoint & );
 
 public slots:
     virtual void on_mui_exportar_clicked();
     virtual void on_mui_importar_clicked();
 
 signals:
-    void selected(QString);
+    void selected ( QString );
 };
 
 #endif

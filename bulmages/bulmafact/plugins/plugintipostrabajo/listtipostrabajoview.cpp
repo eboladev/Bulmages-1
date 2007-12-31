@@ -42,36 +42,38 @@
 \param comp
 \param parent
 **/
-ListTiposTrabajoView::ListTiposTrabajoView(Company *comp, QWidget *parent)
-        : FichaBf(comp, parent) {
-    _depura("ListTiposTrabajoView::ListTiposTrabajoView", 1);
-    setDBTableName(tr("almacen"));
-    setAttribute(Qt::WA_DeleteOnClose);
-    setupUi(this);
-    mui_listado->setEmpresaBase(comp);
+ListTiposTrabajoView::ListTiposTrabajoView ( Company *comp, QWidget *parent )
+        : FichaBf ( comp, parent )
+{
+    _depura ( "ListTiposTrabajoView::ListTiposTrabajoView", 1 );
+    setDBTableName ( tr ( "almacen" ) );
+    setAttribute ( Qt::WA_DeleteOnClose );
+    setupUi ( this );
+    mui_listado->setEmpresaBase ( comp );
 
-    mui_listado->setDBTableName("tipotrabajo");
-    mui_listado->setDBCampoId("idtipotrabajo");
-    mui_listado->addSHeader("idtipotrabajo", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr("Id Tipo Trabajo"));
-    mui_listado->addSHeader("nomtipotrabajo", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Nombre Tipo Trabajo"));
-    mui_listado->addSHeader("colortipotrabajo", DBCampo::DBvarchar, DBCampo::DBNothing , SHeader::DBNone, tr("Color Tipo Trabajo"));
-    mui_listado->setinsercion(TRUE);
+    mui_listado->setDBTableName ( "tipotrabajo" );
+    mui_listado->setDBCampoId ( "idtipotrabajo" );
+    mui_listado->addSHeader ( "idtipotrabajo", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr ( "Id Tipo Trabajo" ) );
+    mui_listado->addSHeader ( "nomtipotrabajo", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Nombre Tipo Trabajo" ) );
+    mui_listado->addSHeader ( "colortipotrabajo", DBCampo::DBvarchar, DBCampo::DBNothing , SHeader::DBNone, tr ( "Color Tipo Trabajo" ) );
+    mui_listado->setinsercion ( TRUE );
 
-    mui_listado->cargar("SELECT * FROM tipotrabajo");
-    meteWindow(windowTitle(), this);
-    _depura("END ListTiposTrabajoView::ListTiposTrabajoView", 1);
+    mui_listado->cargar ( "SELECT * FROM tipotrabajo" );
+    meteWindow ( windowTitle(), this );
+    _depura ( "END ListTiposTrabajoView::ListTiposTrabajoView", 1 );
 }
 
 
 ///
 /**
 **/
-void ListTiposTrabajoView::on_mui_aceptar_clicked() {
+void ListTiposTrabajoView::on_mui_aceptar_clicked()
+{
     try {
         mui_listado->guardar();
         close();
-    } catch (...) {
-        mensajeInfo("Error al guardar los tipos de trabajo");
+    } catch ( ... ) {
+        mensajeInfo ( "Error al guardar los tipos de trabajo" );
     } // end try
 }
 
@@ -79,9 +81,10 @@ void ListTiposTrabajoView::on_mui_aceptar_clicked() {
 ///
 /**
 **/
-ListTiposTrabajoView::~ListTiposTrabajoView() {
-    _depura("ListTiposTrabajoView::~ListTiposTrabajoView", 0);
-    _depura("END ListTiposTrabajoView::~ListTiposTrabajoView", 0);
+ListTiposTrabajoView::~ListTiposTrabajoView()
+{
+    _depura ( "ListTiposTrabajoView::~ListTiposTrabajoView", 0 );
+    _depura ( "END ListTiposTrabajoView::~ListTiposTrabajoView", 0 );
 }
 
 

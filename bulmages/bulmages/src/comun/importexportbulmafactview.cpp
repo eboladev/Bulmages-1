@@ -36,10 +36,11 @@
 \param a
 \param b
 **/
-void ImportExportBulmafactView::alerta(int a, int b) {
-    _depura("ImportExportBulmafactView::alerta", 0);
-    m_progressbar->setRange(a, b);
-    _depura("END ImportExportBulmafactView::alerta", 0);
+void ImportExportBulmafactView::alerta ( int a, int b )
+{
+    _depura ( "ImportExportBulmafactView::alerta", 0 );
+    m_progressbar->setRange ( a, b );
+    _depura ( "END ImportExportBulmafactView::alerta", 0 );
 }
 
 
@@ -47,13 +48,14 @@ void ImportExportBulmafactView::alerta(int a, int b) {
 /**
 \param mensaje
 **/
-void ImportExportBulmafactView::mensajeria(QString mensaje) {
-    _depura("ImportExportBulmafactView::mensajeria", 0);
-    fprintf(stderr, "MENSAJE:\n\n\n%s\n\n\n", mensaje.toAscii().constData());
+void ImportExportBulmafactView::mensajeria ( QString mensaje )
+{
+    _depura ( "ImportExportBulmafactView::mensajeria", 0 );
+    fprintf ( stderr, "MENSAJE:\n\n\n%s\n\n\n", mensaje.toAscii().constData() );
     mensajein += mensaje + "<BR>";
-    m_mensajes->setText("<HTML><BODY BGCOLOR='#CCCCCC'>" + QString(mensajein.toLatin1()) + "</BODY></HTML>");
+    m_mensajes->setText ( "<HTML><BODY BGCOLOR='#CCCCCC'>" + QString ( mensajein.toLatin1() ) + "</BODY></HTML>" );
     m_mensajes->ensureCursorVisible();
-    _depura("END ImportExportBulmafactView::mensajeria", 0);
+    _depura ( "END ImportExportBulmafactView::mensajeria", 0 );
 }
 
 
@@ -63,79 +65,83 @@ void ImportExportBulmafactView::mensajeria(QString mensaje) {
 \param parent
 \param f
 **/
-ImportExportBulmafactView::ImportExportBulmafactView(postgresiface2 *con, QWidget *parent, Qt::WFlags f = 0)
-        : QDialog(parent, f), pgimportfiles(con) {
-    _depura("ImportExportBulmafactView::ImportExportBulmafactView", 0);
-    setupUi(this);
+ImportExportBulmafactView::ImportExportBulmafactView ( postgresiface2 *con, QWidget *parent, Qt::WFlags f = 0 )
+        : QDialog ( parent, f ), pgimportfiles ( con )
+{
+    _depura ( "ImportExportBulmafactView::ImportExportBulmafactView", 0 );
+    setupUi ( this );
 
     /// Signals and slots connections.
-    QObject::connect(pushButton33, SIGNAL(clicked()), this, SLOT(botonImportar()));
-    QObject::connect(pushButton33_2, SIGNAL(clicked()), this, SLOT(botonExportar()));
-    QObject::connect(pushButtonF_X, SIGNAL(clicked()), this, SLOT(close()));
-    QObject::connect(toolButton1_5, SIGNAL(clicked()), this, SLOT(botonBuscarXML()));
+    QObject::connect ( pushButton33, SIGNAL ( clicked() ), this, SLOT ( botonImportar() ) );
+    QObject::connect ( pushButton33_2, SIGNAL ( clicked() ), this, SLOT ( botonExportar() ) );
+    QObject::connect ( pushButtonF_X, SIGNAL ( clicked() ), this, SLOT ( close() ) );
+    QObject::connect ( toolButton1_5, SIGNAL ( clicked() ), this, SLOT ( botonBuscarXML() ) );
 
     conexionbase = con;
     inicializaMensajeria();
-    _depura("END ImportExportBulmafactView::ImportExportBulmafactView", 0);
+    _depura ( "END ImportExportBulmafactView::ImportExportBulmafactView", 0 );
 }
 
 
 /// Se ha pulsado sobre el boton de bsqueda de una subcuenta.
 /**
 **/
-void ImportExportBulmafactView::botonBuscarXML() {
-    _depura("ImportExportBulmafactView::botonBuscarXML", 0);
-    m_XML->setText(QFileDialog::getSaveFileName(this, tr("Guardar archivo"), confpr->valor(CONF_DIR_USER), tr("Contaplus (*.xml)")));
-    _depura("END ImportExportBulmafactView::botonBuscarXML", 0);
+void ImportExportBulmafactView::botonBuscarXML()
+{
+    _depura ( "ImportExportBulmafactView::botonBuscarXML", 0 );
+    m_XML->setText ( QFileDialog::getSaveFileName ( this, tr ( "Guardar archivo" ), confpr->valor ( CONF_DIR_USER ), tr ( "Contaplus (*.xml)" ) ) );
+    _depura ( "END ImportExportBulmafactView::botonBuscarXML", 0 );
 }
 
 
 ///
 /**
 **/
-void ImportExportBulmafactView::botonImportar() {
-    _depura("ImportExportBulmafactView::botonImportar", 0);
+void ImportExportBulmafactView::botonImportar()
+{
+    _depura ( "ImportExportBulmafactView::botonImportar", 0 );
     inicializaMensajeria();
     QString finicial = m_fechainicial->text();
     QString ffinal = m_fechafinal->text();
-    QFile filexml(m_XML->text());
-    filexml.open(QIODevice::ReadOnly);
-    XML2BulmaFact(filexml);
+    QFile filexml ( m_XML->text() );
+    filexml.open ( QIODevice::ReadOnly );
+    XML2BulmaFact ( filexml );
     filexml.close();
-    m_mensajes->setText("");
-    _depura("END ImportExportBulmafactView::botonImportar", 0);
+    m_mensajes->setText ( "" );
+    _depura ( "END ImportExportBulmafactView::botonImportar", 0 );
 }
 
 
 /** SLOT que responde a la pulsacion del boton de exportar. */
 /// Se ha pulsado sobre el boton de exportar. Lee los campos del formulario
 /// mira si la opcion de exportaci� es XML o contaplus y llama a las funciones apropiadas
-/// de la clase \ref pgimportfiles 
+/// de la clase \ref pgimportfiles
 /// Esta funcion utiliza los punteros a funcion para inicializar \ref pgimportfiles
 /// con las funciones que se van a encargar de presentacion del estado de la importacion.
 /// \todo Los punteros a funcion deberian ser reemplazados por funciones virtuales y
 /// haciendo derivar esta clase de pgimportfiles.
 /**
 **/
-void ImportExportBulmafactView::botonExportar() {
-    _depura("ImportExportBulmafactView::botonExportar", 0);
+void ImportExportBulmafactView::botonExportar()
+{
+    _depura ( "ImportExportBulmafactView::botonExportar", 0 );
     /// Leemos las fechas entre las que tiene que ser el listado.
     inicializaMensajeria();
     QString finicial = m_fechainicial->text();
     QString ffinal = m_fechafinal->text();
 
-    setFInicial(finicial);
-    setFFinal(ffinal);
-    if (m_test->isChecked() ) {
+    setFInicial ( finicial );
+    setFFinal ( ffinal );
+    if ( m_test->isChecked() ) {
         setModoTest();
     } // end if
-    if (m_XML->text() != "") {
-        QFile filexml (m_XML->text());
-        filexml.open(QIODevice::WriteOnly);
-        bulmafact2XML(filexml);
+    if ( m_XML->text() != "" ) {
+        QFile filexml ( m_XML->text() );
+        filexml.open ( QIODevice::WriteOnly );
+        bulmafact2XML ( filexml );
         filexml.close();
     } // end if
-    m_mensajes->setText("");
-    _depura("END ImportExportBulmafactView::botonExportar", 0);
+    m_mensajes->setText ( "" );
+    _depura ( "END ImportExportBulmafactView::botonExportar", 0 );
 }
 

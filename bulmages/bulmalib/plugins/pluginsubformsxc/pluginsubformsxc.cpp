@@ -34,10 +34,11 @@
 /**
 \return
 **/
-int entryPoint(QApplication *) {
-    _depura("Punto de Entrada del plugin de SubformSXC\n", 0);
-    cargaTraducciones("pluginsubformsxc");
-    _depura("END Punto de Entrada del plugin de SubformSXC\n", 0);
+int entryPoint ( QApplication * )
+{
+    _depura ( "Punto de Entrada del plugin de SubformSXC\n", 0 );
+    cargaTraducciones ( "pluginsubformsxc" );
+    _depura ( "END Punto de Entrada del plugin de SubformSXC\n", 0 );
     return 0;
 }
 
@@ -46,18 +47,20 @@ int entryPoint(QApplication *) {
 /**
 \param parent
 **/
-myplugsubformsxc::myplugsubformsxc(SubForm3 *parent) : QObject(parent) {
-  _depura("myplugsubformsxc::myplugsubformsxc", 0);
-  _depura("END myplugsubformsxc::myplugsubformsxc", 0);
+myplugsubformsxc::myplugsubformsxc ( SubForm3 *parent ) : QObject ( parent )
+{
+    _depura ( "myplugsubformsxc::myplugsubformsxc", 0 );
+    _depura ( "END myplugsubformsxc::myplugsubformsxc", 0 );
 }
 
 
 ///
 /**
 **/
-myplugsubformsxc::~myplugsubformsxc(){
-  _depura("myplugsubformsxc::~myplugsubformsxc", 0);
-  _depura("END myplugsubformsxc::~myplugsubformsxc", 0);
+myplugsubformsxc::~myplugsubformsxc()
+{
+    _depura ( "myplugsubformsxc::~myplugsubformsxc", 0 );
+    _depura ( "END myplugsubformsxc::~myplugsubformsxc", 0 );
 }
 
 
@@ -65,11 +68,12 @@ myplugsubformsxc::~myplugsubformsxc(){
 /**
 \param menu
 **/
-void myplugsubformsxc::s_pintaMenu(QMenu *menu) {
-    _depura("myplugsubformsxc::s_pintaMenu", 0);
+void myplugsubformsxc::s_pintaMenu ( QMenu *menu )
+{
+    _depura ( "myplugsubformsxc::s_pintaMenu", 0 );
     menu->addSeparator();
-    menu->addAction(tr("Exportar a Hoja de Calculo"));
-    _depura("END myplugsubformsxc::s_pintaMenu", 0);
+    menu->addAction ( tr ( "Exportar a Hoja de Calculo" ) );
+    _depura ( "END myplugsubformsxc::s_pintaMenu", 0 );
 }
 
 
@@ -77,66 +81,68 @@ void myplugsubformsxc::s_pintaMenu(QMenu *menu) {
 /**
 \param action
 **/
-void myplugsubformsxc::s_trataMenu(QAction *action) {
-    _depura("myplugsubformsxc::s_trataMenu", 0);
-    if (action->text() == tr("Exportar a Hoja de Calculo")) {
-	sacaSXC();
+void myplugsubformsxc::s_trataMenu ( QAction *action )
+{
+    _depura ( "myplugsubformsxc::s_trataMenu", 0 );
+    if ( action->text() == tr ( "Exportar a Hoja de Calculo" ) ) {
+        sacaSXC();
     } // end if
-    _depura("END myplugsubformsxc::s_trataMenu", 0);
+    _depura ( "END myplugsubformsxc::s_trataMenu", 0 );
 }
 
 
 ///
 /**
 **/
-void myplugsubformsxc::sacaSXC() {
-    _depura("myplugsubformsxc::sacaSXC", 0);
+void myplugsubformsxc::sacaSXC()
+{
+    _depura ( "myplugsubformsxc::sacaSXC", 0 );
 
     QString archivod = confpr->valor ( CONF_DIR_USER ) + "listadosxc.perl";
-    SubForm3 * subf = (SubForm3 *) parent();
+    SubForm3 * subf = ( SubForm3 * ) parent();
 
 
-	QString fitxersortidatxt = "";
+    QString fitxersortidatxt = "";
 
-	fitxersortidatxt += "#!/usr/bin/perl\n";
-	fitxersortidatxt += "# calc-example5 - Set Column sizes\n";
-	fitxersortidatxt += "\n";
-	fitxersortidatxt += "use ooolib;\n";
-	fitxersortidatxt += "use utf8;\n";
-	fitxersortidatxt += "\n";
-	fitxersortidatxt += "# Set variables\n";
-	fitxersortidatxt += "$doc = new ooolib(\"sxc\");\n";
-	fitxersortidatxt += "$doc->oooSet(\"builddir\", \".\");\n";
-	fitxersortidatxt += "$doc->oooSet(\"title\", \"SubFormulario Exportado\");\n";
-	fitxersortidatxt += "$doc->oooSet(\"subject\", \"SubFormulario\");\n";
-	fitxersortidatxt += "$doc->oooSet(\"comments\", \"SubFormulario Exportado\");\n";
-	fitxersortidatxt += "$doc->oooSet(\"author\", \"Tomeu Borras\");\n";
-	fitxersortidatxt += "$doc->oooSet(\"meta1-name\", \"Programmer\");\n";
-	fitxersortidatxt += "$doc->oooSet(\"meta1-value\", \"Tomeu Borras\");\n";
-	fitxersortidatxt += "\n";
+    fitxersortidatxt += "#!/usr/bin/perl\n";
+    fitxersortidatxt += "# calc-example5 - Set Column sizes\n";
+    fitxersortidatxt += "\n";
+    fitxersortidatxt += "use ooolib;\n";
+    fitxersortidatxt += "use utf8;\n";
+    fitxersortidatxt += "\n";
+    fitxersortidatxt += "# Set variables\n";
+    fitxersortidatxt += "$doc = new ooolib(\"sxc\");\n";
+    fitxersortidatxt += "$doc->oooSet(\"builddir\", \".\");\n";
+    fitxersortidatxt += "$doc->oooSet(\"title\", \"SubFormulario Exportado\");\n";
+    fitxersortidatxt += "$doc->oooSet(\"subject\", \"SubFormulario\");\n";
+    fitxersortidatxt += "$doc->oooSet(\"comments\", \"SubFormulario Exportado\");\n";
+    fitxersortidatxt += "$doc->oooSet(\"author\", \"Tomeu Borras\");\n";
+    fitxersortidatxt += "$doc->oooSet(\"meta1-name\", \"Programmer\");\n";
+    fitxersortidatxt += "$doc->oooSet(\"meta1-value\", \"Tomeu Borras\");\n";
+    fitxersortidatxt += "\n";
 
-	fitxersortidatxt += "$doc->oooSet(\"cell-auto\", \"1,0\");\n";
-	fitxersortidatxt += "$doc->oooSet(\"bold\", \"on\");\n";
-	fitxersortidatxt += "$doc->oooSet(\"text-size\", \"18\");\n";
-	fitxersortidatxt += "$doc->oooSet(\"cell-loc\", 4, 1);\n";
-	fitxersortidatxt += "$doc->oooData(\"cell-text\", \"DATOS EXPORTADOS\");\n";
-	fitxersortidatxt += "$doc->oooSet(\"text-size\", \"10\");\n";
-	fitxersortidatxt += "$doc->oooSet(\"bold\", \"off\");\n";
+    fitxersortidatxt += "$doc->oooSet(\"cell-auto\", \"1,0\");\n";
+    fitxersortidatxt += "$doc->oooSet(\"bold\", \"on\");\n";
+    fitxersortidatxt += "$doc->oooSet(\"text-size\", \"18\");\n";
+    fitxersortidatxt += "$doc->oooSet(\"cell-loc\", 4, 1);\n";
+    fitxersortidatxt += "$doc->oooData(\"cell-text\", \"DATOS EXPORTADOS\");\n";
+    fitxersortidatxt += "$doc->oooSet(\"text-size\", \"10\");\n";
+    fitxersortidatxt += "$doc->oooSet(\"bold\", \"off\");\n";
 
 
-	int y=1;
-        int x = 1;
+    int y = 1;
+    int x = 1;
     /// Sacamos las cabeceras
-    for (int h = 0; h < subf->mui_listcolumnas->rowCount(); ++h) {
-        if (subf->mui_listcolumnas->item(h, 0)->checkState() == Qt::Checked) {
+    for ( int h = 0; h < subf->mui_listcolumnas->rowCount(); ++h ) {
+        if ( subf->mui_listcolumnas->item ( h, 0 ) ->checkState() == Qt::Checked ) {
 
-			fitxersortidatxt += "# Fila "+ QString::number ( y ) +"\n";
-			fitxersortidatxt += "$doc->oooSet(\"bold\", \"on\");\n";
-			fitxersortidatxt += "$doc->oooSet(\"cell-loc\", "+ QString::number ( x++ ) +", "+ QString::number ( y ) +");\n";
-			fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" +(subf->mui_listcolumnas->item(h, 2)->text()) +"\");\n";
+            fitxersortidatxt += "# Fila " + QString::number ( y ) + "\n";
+            fitxersortidatxt += "$doc->oooSet(\"bold\", \"on\");\n";
+            fitxersortidatxt += "$doc->oooSet(\"cell-loc\", " + QString::number ( x++ ) + ", " + QString::number ( y ) + ");\n";
+            fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + ( subf->mui_listcolumnas->item ( h, 2 ) ->text() ) + "\");\n";
 
-			fitxersortidatxt += "$doc->oooSet(\"bold\", \"off\");\n";
-			fitxersortidatxt += "\n";
+            fitxersortidatxt += "$doc->oooSet(\"bold\", \"off\");\n";
+            fitxersortidatxt += "\n";
 
         } // end if
     } // end for
@@ -145,21 +151,21 @@ void myplugsubformsxc::sacaSXC() {
     y += 2;
 
     /// Sacamos el contenido
-    for (int i = 0; i < subf->mui_list->rowCount(); ++i) {
+    for ( int i = 0; i < subf->mui_list->rowCount(); ++i ) {
 
         int x = 1;
-        for (int j = 0; j < subf->mui_listcolumnas->rowCount(); ++j) {
+        for ( int j = 0; j < subf->mui_listcolumnas->rowCount(); ++j ) {
 
-            if (subf->mui_listcolumnas->item(j, 0)->checkState() == Qt::Checked) {
+            if ( subf->mui_listcolumnas->item ( j, 0 ) ->checkState() == Qt::Checked ) {
 
 
-			fitxersortidatxt += "# Fila "+ QString::number ( y ) +"\n";
-			fitxersortidatxt += "$doc->oooSet(\"bold\", \"on\");\n";
-			fitxersortidatxt += "$doc->oooSet(\"cell-loc\", "+ QString::number ( x++ ) +", "+ QString::number ( y ) +");\n";
-			fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + parsearCode(subf->mui_list->item(i, j)->text()) +"\");\n";
+                fitxersortidatxt += "# Fila " + QString::number ( y ) + "\n";
+                fitxersortidatxt += "$doc->oooSet(\"bold\", \"on\");\n";
+                fitxersortidatxt += "$doc->oooSet(\"cell-loc\", " + QString::number ( x++ ) + ", " + QString::number ( y ) + ");\n";
+                fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + parsearCode ( subf->mui_list->item ( i, j ) ->text() ) + "\");\n";
 
-			fitxersortidatxt += "$doc->oooSet(\"bold\", \"off\");\n";
-			fitxersortidatxt += "\n";
+                fitxersortidatxt += "$doc->oooSet(\"bold\", \"off\");\n";
+                fitxersortidatxt += "\n";
 
             } // end if
         } // end forXMLProtect(subf->mui_list->item(i, j)->text())
@@ -167,30 +173,30 @@ void myplugsubformsxc::sacaSXC() {
     } // end for
 
 
-	fitxersortidatxt += "my($filename) = $doc->oooGenerate(\"listadosxc.sxc\");\n";
-	fitxersortidatxt += "\n";
-	fitxersortidatxt += "exit;\n";
+    fitxersortidatxt += "my($filename) = $doc->oooGenerate(\"listadosxc.sxc\");\n";
+    fitxersortidatxt += "\n";
+    fitxersortidatxt += "exit;\n";
 
 
-	QString cadena ="rm "+confpr->valor ( CONF_DIR_USER ) + "listadosxc.sxc";
-	system ( cadena.toAscii() );
-	cadena ="rm "+ archivod;
-	system ( cadena.toAscii() );
+    QString cadena = "rm " + confpr->valor ( CONF_DIR_USER ) + "listadosxc.sxc";
+    system ( cadena.toAscii() );
+    cadena = "rm " + archivod;
+    system ( cadena.toAscii() );
 
-	QFile file ( archivod );
-	if ( file.open ( QIODevice::WriteOnly ) )  {
-		QTextStream stream ( &file );
-		stream.setCodec("UTF-8");
-		stream << fitxersortidatxt;
-		file.close();
-	} // end if
+    QFile file ( archivod );
+    if ( file.open ( QIODevice::WriteOnly ) )  {
+        QTextStream stream ( &file );
+        stream.setCodec ( "UTF-8" );
+        stream << fitxersortidatxt;
+        file.close();
+    } // end if
 
-	cadena= " cd "+confpr->valor ( CONF_DIR_USER ) +"; perl "+archivod;
-	system ( cadena.toAscii() );
-	cadena = "kspread "+confpr->valor ( CONF_DIR_USER ) + "listadosxc.sxc &";
-	system ( cadena.toAscii() );
+    cadena = " cd " + confpr->valor ( CONF_DIR_USER ) + "; perl " + archivod;
+    system ( cadena.toAscii() );
+    cadena = "kspread " + confpr->valor ( CONF_DIR_USER ) + "listadosxc.sxc &";
+    system ( cadena.toAscii() );
 
-    _depura("END myplugsubformsxc::sacaSXC", 0);
+    _depura ( "END myplugsubformsxc::sacaSXC", 0 );
 }
 
 
@@ -199,12 +205,13 @@ void myplugsubformsxc::sacaSXC() {
 \param sub
 \return
 **/
-int SubForm3_SubForm3_Post(SubForm3 *sub) {
-    _depura("SubForm3_SubForm3_Post", 0);
-   myplugsubformsxc *subformsxc = new myplugsubformsxc(sub);
-   sub->QObject::connect(sub, SIGNAL(pintaMenu(QMenu *)), subformsxc, SLOT(s_pintaMenu(QMenu *)));
-   sub->QObject::connect(sub, SIGNAL(trataMenu(QAction *)), subformsxc, SLOT(s_trataMenu(QAction *)));
-    _depura("END SubForm3_SubForm3_Post", 0);
-   return 0;
+int SubForm3_SubForm3_Post ( SubForm3 *sub )
+{
+    _depura ( "SubForm3_SubForm3_Post", 0 );
+    myplugsubformsxc *subformsxc = new myplugsubformsxc ( sub );
+    sub->QObject::connect ( sub, SIGNAL ( pintaMenu ( QMenu * ) ), subformsxc, SLOT ( s_pintaMenu ( QMenu * ) ) );
+    sub->QObject::connect ( sub, SIGNAL ( trataMenu ( QAction * ) ), subformsxc, SLOT ( s_trataMenu ( QAction * ) ) );
+    _depura ( "END SubForm3_SubForm3_Post", 0 );
+    return 0;
 }
 

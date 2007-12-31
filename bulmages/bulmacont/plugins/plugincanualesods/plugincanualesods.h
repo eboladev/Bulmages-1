@@ -36,17 +36,18 @@
 #include "empresa.h"
 #include "fixed.h"
 
-extern "C" MY_EXPORT void entryPoint(Bulmacont *);
+extern "C" MY_EXPORT void entryPoint ( Bulmacont * );
 
 extern QApplication2 *theApp;
 
 
-class pluginCAnualesODS : public QObject {
+class pluginCAnualesODS : public QObject
+{
     Q_OBJECT
 
 private:
-    Fixed saldoCuenta(int cuenta);
-    Fixed saldoCuentaAnt(int cuenta);
+    Fixed saldoCuenta ( int cuenta );
+    Fixed saldoCuentaAnt ( int cuenta );
     QString ejercicioActual_fechaBalance;
     QString ejercicioAnterior_fechaBalance;
 
@@ -57,7 +58,7 @@ public:
 public:
     pluginCAnualesODS();
     ~pluginCAnualesODS();
-    void inicializa(Bulmacont *);
+    void inicializa ( Bulmacont * );
 
 public slots:
     void balanceSituacionODS();

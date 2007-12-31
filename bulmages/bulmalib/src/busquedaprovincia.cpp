@@ -32,23 +32,25 @@
 /**
 \param parent
 **/
-BusquedaProvincia::BusquedaProvincia(QWidget *parent)
-        : QComboBox2(parent) {
-    _depura("BusquedaProvincia::BusquedaProvincia", 0);
+BusquedaProvincia::BusquedaProvincia ( QWidget *parent )
+        : QComboBox2 ( parent )
+{
+    _depura ( "BusquedaProvincia::BusquedaProvincia", 0 );
     m_cursorcombo = NULL;
-    connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
-    _depura("END BusquedaProvincia::BusquedaProvincia", 0);
+    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
+    _depura ( "END BusquedaProvincia::BusquedaProvincia", 0 );
 }
 
 
 /// El destructor libera memoria utilizada por el programa.
 /**
 **/
-BusquedaProvincia::~BusquedaProvincia() {
-    _depura("BusquedaProvincia::~BusquedaProvincia", 0);
-    if (m_cursorcombo != NULL)
+BusquedaProvincia::~BusquedaProvincia()
+{
+    _depura ( "BusquedaProvincia::~BusquedaProvincia", 0 );
+    if ( m_cursorcombo != NULL )
         delete m_cursorcombo;
-    _depura("END BusquedaProvincia::~BusquedaProvincia", 0);
+    _depura ( "END BusquedaProvincia::~BusquedaProvincia", 0 );
 }
 
 
@@ -59,29 +61,30 @@ BusquedaProvincia::~BusquedaProvincia() {
 /**
 \param idprovincia
 **/
-void BusquedaProvincia::setIdProvincia(QString idprovincia) {
-    _depura("BusquedaProvincia::setIdProvincia", 0, idprovincia);
-    if (m_cursorcombo != NULL)
+void BusquedaProvincia::setIdProvincia ( QString idprovincia )
+{
+    _depura ( "BusquedaProvincia::setIdProvincia", 0, idprovincia );
+    if ( m_cursorcombo != NULL )
         delete m_cursorcombo;
-    m_cursorcombo = empresaBase()->cargacursor("SELECT * FROM provincia LEFT JOIN pais ON provincia.idpais = pais.idpais ORDER BY descpais, provincia");
+    m_cursorcombo = empresaBase() ->cargacursor ( "SELECT * FROM provincia LEFT JOIN pais ON provincia.idpais = pais.idpais ORDER BY descpais, provincia" );
     /// Si ha habido un problema con la base de datos salimos.
-    if (!m_cursorcombo) return;
+    if ( !m_cursorcombo ) return;
 
     int i = 0;
     int i1 = 0;
     clear();
-    addItem("--");
+    addItem ( "--" );
 
-    while (!m_cursorcombo->eof()) {
+    while ( !m_cursorcombo->eof() ) {
         i ++;
-        if (m_cursorcombo->valor("idprovincia") == idprovincia)
+        if ( m_cursorcombo->valor ( "idprovincia" ) == idprovincia )
             i1 = i;
-        addItem(m_cursorcombo->valor("provincia")+" ("+m_cursorcombo->valor("descpais")+")");
+        addItem ( m_cursorcombo->valor ( "provincia" ) + " (" + m_cursorcombo->valor ( "descpais" ) + ")" );
         m_cursorcombo->siguienteregistro();
     } // end while
 
-    setCurrentIndex(i1);
-    _depura("END BusquedaProvincia::setIdProvincia", 0);
+    setCurrentIndex ( i1 );
+    _depura ( "END BusquedaProvincia::setIdProvincia", 0 );
 }
 
 
@@ -89,10 +92,11 @@ void BusquedaProvincia::setIdProvincia(QString idprovincia) {
 /**
 \param idprovincia
 **/
-void BusquedaProvincia::setValorCampo(QString idprovincia) {
-    _depura("BusquedaProvincia::setValorCampo", 0);
-	setIdProvincia(idprovincia);
-    _depura("END BusquedaProvincia::setValorCampo", 0);
+void BusquedaProvincia::setValorCampo ( QString idprovincia )
+{
+    _depura ( "BusquedaProvincia::setValorCampo", 0 );
+    setIdProvincia ( idprovincia );
+    _depura ( "END BusquedaProvincia::setValorCampo", 0 );
 }
 
 
@@ -100,14 +104,15 @@ void BusquedaProvincia::setValorCampo(QString idprovincia) {
 /**
 \param index
 **/
-void BusquedaProvincia::m_activated(int index) {
-    _depura("BusquedaProvincia::m_activated", 0);
-    if (index > 0) {
-        emit(valueChanged(m_cursorcombo->valor("idprovincia", index-1)));
+void BusquedaProvincia::m_activated ( int index )
+{
+    _depura ( "BusquedaProvincia::m_activated", 0 );
+    if ( index > 0 ) {
+        emit ( valueChanged ( m_cursorcombo->valor ( "idprovincia", index - 1 ) ) );
     } else {
-        emit(valueChanged(""));
+        emit ( valueChanged ( "" ) );
     }
-    _depura("END BusquedaProvincia::m_activated", 0);
+    _depura ( "END BusquedaProvincia::m_activated", 0 );
 }
 
 
@@ -115,14 +120,15 @@ void BusquedaProvincia::m_activated(int index) {
 /**
 \return
 **/
-QString BusquedaProvincia::idProvincia() {
-    _depura("BusquedaProvincia::idProvincia", 0);
-    if (currentIndex() > 0) {
-    	return m_cursorcombo->valor("idprovincia", currentIndex()-1);
+QString BusquedaProvincia::idProvincia()
+{
+    _depura ( "BusquedaProvincia::idProvincia", 0 );
+    if ( currentIndex() > 0 ) {
+        return m_cursorcombo->valor ( "idprovincia", currentIndex() - 1 );
     } else {
-	return "";
+        return "";
     } // end if
-    _depura("END BusquedaProvincia::idProvincia", 0);
+    _depura ( "END BusquedaProvincia::idProvincia", 0 );
 }
 
 
@@ -130,9 +136,10 @@ QString BusquedaProvincia::idProvincia() {
 /**
 \return
 **/
-QString BusquedaProvincia::valorCampo() {
-    _depura("BusquedaProvincia::valorCampo", 0);
-    _depura("END BusquedaProvincia::valorCampo", 0);
-	return idProvincia();
+QString BusquedaProvincia::valorCampo()
+{
+    _depura ( "BusquedaProvincia::valorCampo", 0 );
+    _depura ( "END BusquedaProvincia::valorCampo", 0 );
+    return idProvincia();
 }
 

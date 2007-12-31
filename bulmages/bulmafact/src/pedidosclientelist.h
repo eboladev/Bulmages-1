@@ -32,16 +32,18 @@
 
 /// Administra las l&iacute;neas de detalle del listado de pedidos de cliente.
 /** */
-class PedidosClienteListSubform : public SubForm2Bf {
+class PedidosClienteListSubform : public SubForm2Bf
+{
     Q_OBJECT
 
 public:
-    PedidosClienteListSubform(QWidget *parent = 0, const char *name = 0);
-    ~PedidosClienteListSubform() {}
+    PedidosClienteListSubform ( QWidget *parent = 0, const char *name = 0 );
+    ~PedidosClienteListSubform()
+    {}
 
 public slots:
     virtual void cargar();
-    virtual void cargar(QString query);
+    virtual void cargar ( QString query );
 };
 
 
@@ -50,23 +52,24 @@ public slots:
 
 /// Muestra y administra el listado de pedidos de cliente.
 /** */
-class PedidosClienteList : public Listado, public Ui_PedidosClienteListBase {
+class PedidosClienteList : public Listado, public Ui_PedidosClienteListBase
+{
     Q_OBJECT
 
 private:
     QString m_idpedidocliente;
 
 public:
-    PedidosClienteList(QWidget *parent = 0, Qt::WFlags flag = 0);
-    PedidosClienteList(Company *, QWidget *parent = 0, Qt::WFlags flag = 0);
+    PedidosClienteList ( QWidget *parent = 0, Qt::WFlags flag = 0 );
+    PedidosClienteList ( Company *, QWidget *parent = 0, Qt::WFlags flag = 0 );
     ~PedidosClienteList();
     void presentar();
     void imprimir();
-    void editar(int);
+    void editar ( int );
     void borrar();
     void crear();
-    void setEmpresaBase(Company *comp);
-    void setidcliente(QString val);
+    void setEmpresaBase ( Company *comp );
+    void setidcliente ( QString val );
     QString idpedidocliente();
     QString generarFiltro();
     void iniciaForm();

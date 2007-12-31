@@ -27,10 +27,11 @@
 
 ///
 /** */
-class QLineEdit1: public QLineEdit {
+class QLineEdit1: public QLineEdit
+{
 public:
     int hola;
-    QLineEdit1(QWidget *);
+    QLineEdit1 ( QWidget * );
     ~QLineEdit1();
 };
 

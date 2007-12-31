@@ -37,48 +37,23 @@
 /**
 \param parent
 **/
-EQToolButton::EQToolButton(QWidget *parent) : QWidget(parent) {
-    _depura("EQToolButton::EQToolButton", 0);
-      connect (parent, SIGNAL(pintaMenu(QMenu *)), this, SLOT(pintaMenu(QMenu *)));
-      connect (parent, SIGNAL(trataMenu(QAction *)), this, SLOT(trataMenu(QAction *)));
-    m_ficha = (Ficha *) parent;
-    _depura("END EQToolButton::EQToolButton", 0);
+EQToolButton::EQToolButton ( QWidget *parent ) : QWidget ( parent )
+{
+    _depura ( "EQToolButton::EQToolButton", 0 );
+    connect ( parent, SIGNAL ( pintaMenu ( QMenu * ) ), this, SLOT ( pintaMenu ( QMenu * ) ) );
+    connect ( parent, SIGNAL ( trataMenu ( QAction * ) ), this, SLOT ( trataMenu ( QAction * ) ) );
+    m_ficha = ( Ficha * ) parent;
+    _depura ( "END EQToolButton::EQToolButton", 0 );
 }
 
 
 ///
 /**
 **/
-EQToolButton::~EQToolButton() {
-    _depura("EQToolButton::~EQToolButton", 0);
-    _depura("END EQToolButton::~EQToolButton", 0);
-}
-
-
-///
-/**
-\param menu El menu sobre el que pintar la opcion
-**/
-void EQToolButton::pintaMenu(QMenu *menu) {
-    _depura("EQToolButton::pintaMenu", 0);
-    QMenu *ajust = menu->addMenu(tr("Informes Personales"));
-
-     /// Buscamos ficheros que tengan el nombre de la tabla
-     QDir dir(confpr->valor(CONF_DIR_OPENREPORTS));
-     dir.setFilter(QDir::Files | QDir::NoSymLinks);
-     dir.setSorting(QDir::Size | QDir::Reversed);
-     /// Hacemos un filtrado de busqueda
-     QStringList filters;
-     filters << "*" + m_ficha->tableName() + "*.rml";
-     dir.setNameFilters(filters);
-
-
-     QFileInfoList list = dir.entryInfoList();
-     for (int i = 0; i < list.size(); ++i) {
-         QFileInfo fileInfo = list.at(i);
-	 ajust->addAction(fileInfo.fileName());
-     }
-    _depura("END EQToolButton::pintaMenu", 0);
+EQToolButton::~EQToolButton()
+{
+    _depura ( "EQToolButton::~EQToolButton", 0 );
+    _depura ( "END EQToolButton::~EQToolButton", 0 );
 }
 
 
@@ -86,28 +61,57 @@ void EQToolButton::pintaMenu(QMenu *menu) {
 /**
 \param menu El menu sobre el que pintar la opcion
 **/
-void EQToolButton::trataMenu(QAction *action) {
-    _depura("EQToolButton::trataMenu", 0);
+void EQToolButton::pintaMenu ( QMenu *menu )
+{
+    _depura ( "EQToolButton::pintaMenu", 0 );
+    QMenu *ajust = menu->addMenu ( tr ( "Informes Personales" ) );
 
-     /// Buscamos ficheros que tengan el nombre de la tabla
-     QDir dir(confpr->valor(CONF_DIR_OPENREPORTS));
-     dir.setFilter(QDir::Files | QDir::NoSymLinks);
-     dir.setSorting(QDir::Size | QDir::Reversed);
-     /// Hacemos un filtrado de busqueda
-     QStringList filters;
-     filters << "*" + m_ficha->tableName() + "*.rml";
-     dir.setNameFilters(filters);
+    /// Buscamos ficheros que tengan el nombre de la tabla
+    QDir dir ( confpr->valor ( CONF_DIR_OPENREPORTS ) );
+    dir.setFilter ( QDir::Files | QDir::NoSymLinks );
+    dir.setSorting ( QDir::Size | QDir::Reversed );
+    /// Hacemos un filtrado de busqueda
+    QStringList filters;
+    filters << "*" + m_ficha->tableName() + "*.rml";
+    dir.setNameFilters ( filters );
 
 
-     QFileInfoList list = dir.entryInfoList();
-     for (int i = 0; i < list.size(); ++i) {
-         QFileInfo fileInfo = list.at(i);
-	 if (action->text() == fileInfo.fileName()) {
-		m_ficha->generaRML(fileInfo.fileName());
-		invocaPDF(fileInfo.fileName().left(fileInfo.fileName().size()-4));
-	 } // end if
-     }
-    _depura("END EQToolButton::trataMenu", 0);
+    QFileInfoList list = dir.entryInfoList();
+    for ( int i = 0; i < list.size(); ++i ) {
+        QFileInfo fileInfo = list.at ( i );
+        ajust->addAction ( fileInfo.fileName() );
+    }
+    _depura ( "END EQToolButton::pintaMenu", 0 );
+}
+
+
+///
+/**
+\param menu El menu sobre el que pintar la opcion
+**/
+void EQToolButton::trataMenu ( QAction *action )
+{
+    _depura ( "EQToolButton::trataMenu", 0 );
+
+    /// Buscamos ficheros que tengan el nombre de la tabla
+    QDir dir ( confpr->valor ( CONF_DIR_OPENREPORTS ) );
+    dir.setFilter ( QDir::Files | QDir::NoSymLinks );
+    dir.setSorting ( QDir::Size | QDir::Reversed );
+    /// Hacemos un filtrado de busqueda
+    QStringList filters;
+    filters << "*" + m_ficha->tableName() + "*.rml";
+    dir.setNameFilters ( filters );
+
+
+    QFileInfoList list = dir.entryInfoList();
+    for ( int i = 0; i < list.size(); ++i ) {
+        QFileInfo fileInfo = list.at ( i );
+        if ( action->text() == fileInfo.fileName() ) {
+            m_ficha->generaRML ( fileInfo.fileName() );
+            invocaPDF ( fileInfo.fileName().left ( fileInfo.fileName().size() - 4 ) );
+        } // end if
+    }
+    _depura ( "END EQToolButton::trataMenu", 0 );
 }
 
 

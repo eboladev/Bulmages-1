@@ -34,24 +34,25 @@
 #include "postgresiface2.h"
 #include "blwidget.h"
 
-extern "C" MY_EXPORT int entryPoint(QApplication *);
-extern "C" MY_EXPORT int SubForm3_SubForm3_Post(SubForm3 *);
+extern "C" MY_EXPORT int entryPoint ( QApplication * );
+extern "C" MY_EXPORT int SubForm3_SubForm3_Post ( SubForm3 * );
 
 extern QApplication2 *theApp;
 
 
 
 
-class myplugclipboard : public QObject {
+class myplugclipboard : public QObject
+{
     Q_OBJECT
 
 public:
-    myplugclipboard(SubForm3 *);
+    myplugclipboard ( SubForm3 * );
     ~myplugclipboard();
     void pegaSXC();
     void pegaODS();
 
 public slots:
-    virtual void s_pintaMenu(QMenu *);
-    virtual void s_trataMenu(QAction *);
+    virtual void s_pintaMenu ( QMenu * );
+    virtual void s_trataMenu ( QAction * );
 };

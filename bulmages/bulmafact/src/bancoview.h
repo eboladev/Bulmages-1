@@ -30,7 +30,8 @@
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un banco.
 /** */
-class BancoView : public FichaBf, private Ui_BancoBase {
+class BancoView : public FichaBf, private Ui_BancoBase
+{
     Q_OBJECT
 
 private:
@@ -47,14 +48,14 @@ private:
     virtual void imprimir();
 
 public:
-    BancoView(Company * emp, QWidget *parent = 0);
+    BancoView ( Company * emp, QWidget *parent = 0 );
     ~BancoView();
     bool trataModificado();
     virtual int guardar();
     virtual void on_mui_borrar_clicked();
 
 private slots:
-    virtual void on_mui_lista_currentItemChanged(QListWidgetItem *cur, QListWidgetItem *prev);
+    virtual void on_mui_lista_currentItemChanged ( QListWidgetItem *cur, QListWidgetItem *prev );
     virtual void on_mui_nuevo_clicked();
 };
 

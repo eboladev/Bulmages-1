@@ -35,13 +35,14 @@
 /**
 \param parent
 **/
-RutaComercialList::RutaComercialList(QWidget *parent)
-        : Listado(NULL, parent) {
-    _depura("RutaComercialList::RutaComercialList", 0);
-    setAttribute(Qt::WA_DeleteOnClose);
-    setupUi(this);
+RutaComercialList::RutaComercialList ( QWidget *parent )
+        : Listado ( NULL, parent )
+{
+    _depura ( "RutaComercialList::RutaComercialList", 0 );
+    setAttribute ( Qt::WA_DeleteOnClose );
+    setupUi ( this );
     m_idpresupuesto = "";
-    _depura("END RutaComercialList::RutaComercialList", 0);
+    _depura ( "END RutaComercialList::RutaComercialList", 0 );
 }
 
 
@@ -50,28 +51,30 @@ RutaComercialList::RutaComercialList(QWidget *parent)
 \param comp
 \param parent
 **/
-RutaComercialList::RutaComercialList(Company *comp, QWidget *parent)
-        : Listado(comp, parent) {
-    _depura("RutaComercialList::RutaComercialList", 0);
-    setAttribute(Qt::WA_DeleteOnClose);
-    setupUi(this);
-    setSubForm(mui_list);
-    m_cliente->setEmpresaBase(empresaBase());
-    mui_list->setEmpresaBase(comp);
+RutaComercialList::RutaComercialList ( Company *comp, QWidget *parent )
+        : Listado ( comp, parent )
+{
+    _depura ( "RutaComercialList::RutaComercialList", 0 );
+    setAttribute ( Qt::WA_DeleteOnClose );
+    setupUi ( this );
+    setSubForm ( mui_list );
+    m_cliente->setEmpresaBase ( empresaBase() );
+    mui_list->setEmpresaBase ( comp );
     presenta();
     m_idpresupuesto = "";
     hideBusqueda();
-    empresaBase()->meteWindow(windowTitle(), this);
-    _depura("END RutaComercialList::RutaComercialList", 0);
+    empresaBase() ->meteWindow ( windowTitle(), this );
+    _depura ( "END RutaComercialList::RutaComercialList", 0 );
 }
 
 
 ///
 /**
 **/
-RutaComercialList::~RutaComercialList() {
-    _depura("RutaComercialList::~RutaComercialList", 0);
-    _depura("END RutaComercialList::~RutaComercialList", 0);
+RutaComercialList::~RutaComercialList()
+{
+    _depura ( "RutaComercialList::~RutaComercialList", 0 );
+    _depura ( "END RutaComercialList::~RutaComercialList", 0 );
 }
 
 
@@ -79,22 +82,24 @@ RutaComercialList::~RutaComercialList() {
 /**
 \param comp
 **/
-void RutaComercialList::setEmpresaBase(Company *comp) {
-    _depura("RutaComercialList::setEmpresaBase", 0);
-    PEmpresaBase::setEmpresaBase(comp);
-    m_cliente->setEmpresaBase(comp);
-    _depura("RutaComercialList::setEmpresaBase", 0);
+void RutaComercialList::setEmpresaBase ( Company *comp )
+{
+    _depura ( "RutaComercialList::setEmpresaBase", 0 );
+    PEmpresaBase::setEmpresaBase ( comp );
+    m_cliente->setEmpresaBase ( comp );
+    _depura ( "RutaComercialList::setEmpresaBase", 0 );
 }
 
 
 ///
 /**
 **/
-void RutaComercialList::presenta() {
-    _depura("RutaComercialList::presenta()\n", 0);
+void RutaComercialList::presenta()
+{
+    _depura ( "RutaComercialList::presenta()\n", 0 );
     QString SQLQuery = "SELECT * FROM (SELECT * FROM rutacomercial NATURAL LEFT JOIN incidenciacomercial UNION SELECT * FROM rutacomercial NATURAL RIGHT JOIN incidenciacomercial WHERE incidenciacomercial.idrutacomercial IS NULL) AS t1 NATURAL LEFT JOIN trabajador LEFT JOIN (SELECT * FROM cliente NATURAL LEFT JOIN zonacomercial) AS t2 ON t1.idcliente = t2.idcliente WHERE 1 = 1 " + generaFiltro();
-    mui_list->cargar(SQLQuery);
-    _depura("end RutaComercialList::presenta()\n", 0);
+    mui_list->cargar ( SQLQuery );
+    _depura ( "end RutaComercialList::presenta()\n", 0 );
 }
 
 
@@ -102,19 +107,20 @@ void RutaComercialList::presenta() {
 /**
 \return
 **/
-QString RutaComercialList::generaFiltro() {
-    _depura("RutaComercialList::generaFiltro", 0);
+QString RutaComercialList::generaFiltro()
+{
+    _depura ( "RutaComercialList::generaFiltro", 0 );
     /// Tratamiento de los filtros.
     QString filtro = "";
-    if (m_cliente->idcliente() != "") {
+    if ( m_cliente->idcliente() != "" ) {
         filtro += " AND t1.idcliente = " + m_cliente->idcliente();
     } // end if
-    if (m_fechain->text() != "")
+    if ( m_fechain->text() != "" )
         filtro += " AND t1.fechaincidenciacomercial >= '" + m_fechain->text() + "' ";
-    if (m_fechafin->text() != "")
+    if ( m_fechafin->text() != "" )
         filtro += " AND t1.fechaincidenciacomercial <= '" + m_fechafin->text() + "' ";
-    _depura("END RutaComercialList::generaFiltro", 0);
-    return (filtro);
+    _depura ( "END RutaComercialList::generaFiltro", 0 );
+    return ( filtro );
 }
 
 
@@ -123,41 +129,44 @@ QString RutaComercialList::generaFiltro() {
 \param row
 \return
 **/
-void RutaComercialList::editar(int row) {
-    _depura("RutaComercialList::editar", 0);
-    QString idrutacomercial = mui_list->DBvalue("idrutacomercial", row);
-    QString idincidenciacomercial = mui_list->DBvalue("idincidenciacomercial", row);
-    RutaComercialIncView *rut = new RutaComercialIncView((Company *)empresaBase(), NULL);
-    if (rut->cargar(idrutacomercial, idincidenciacomercial))
+void RutaComercialList::editar ( int row )
+{
+    _depura ( "RutaComercialList::editar", 0 );
+    QString idrutacomercial = mui_list->DBvalue ( "idrutacomercial", row );
+    QString idincidenciacomercial = mui_list->DBvalue ( "idincidenciacomercial", row );
+    RutaComercialIncView *rut = new RutaComercialIncView ( ( Company * ) empresaBase(), NULL );
+    if ( rut->cargar ( idrutacomercial, idincidenciacomercial ) )
         return;
-    empresaBase()->m_pWorkspace->addWindow(rut);
-    empresaBase()->meteWindow("Nueva incidencia Comercial", rut);
+    empresaBase() ->m_pWorkspace->addWindow ( rut );
+    empresaBase() ->meteWindow ( "Nueva incidencia Comercial", rut );
     rut->show();
-    _depura("END RutaComercialList::editar", 0);
+    _depura ( "END RutaComercialList::editar", 0 );
 }
 
 
 ///
 /**
 **/
-void RutaComercialList::on_mui_crear_clicked() {
-    _depura("RutaComercialList::on_mui_crear_clicked", 0);
-    RutaComercialIncView *rut = new RutaComercialIncView((Company *)empresaBase(), NULL);
-    empresaBase()->m_pWorkspace->addWindow(rut);
-    empresaBase()->meteWindow("Nueva Incidencia Comercial",rut);
+void RutaComercialList::on_mui_crear_clicked()
+{
+    _depura ( "RutaComercialList::on_mui_crear_clicked", 0 );
+    RutaComercialIncView *rut = new RutaComercialIncView ( ( Company * ) empresaBase(), NULL );
+    empresaBase() ->m_pWorkspace->addWindow ( rut );
+    empresaBase() ->meteWindow ( "Nueva Incidencia Comercial", rut );
     rut->show();
-    _depura("END RutaComercialList::on_mui_crear_clicked", 0);
+    _depura ( "END RutaComercialList::on_mui_crear_clicked", 0 );
 }
 
 
 ///
 /**
 **/
-void RutaComercialList::imprimir() {
-    _depura("RutaComercialList::imprimir", 0);
-    QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "rutascomerciales.rml";
-    QString archivod = confpr->valor(CONF_DIR_USER) + "rutascomerciales.rml";
-    QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
+void RutaComercialList::imprimir()
+{
+    _depura ( "RutaComercialList::imprimir", 0 );
+    QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "rutascomerciales.rml";
+    QString archivod = confpr->valor ( CONF_DIR_USER ) + "rutascomerciales.rml";
+    QString archivologo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
     /// Copiamos el archivo.
 #ifdef WINDOWS
 
@@ -167,22 +176,22 @@ void RutaComercialList::imprimir() {
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
-    system(archivo.toAscii());
+    system ( archivo.toAscii() );
     /// Copiamos el logo.
 #ifdef WINDOWS
 
-    archivologo = "copy " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
+    archivologo = "copy " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #else
 
-    archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
+    archivologo = "cp " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
-    system(archivologo.toAscii());
+    system ( archivologo.toAscii() );
 
     QFile file;
-    file.setFileName(archivod);
-    file.open(QIODevice::ReadOnly);
-    QTextStream stream(&file);
+    file.setFileName ( archivod );
+    file.open ( QIODevice::ReadOnly );
+    QTextStream stream ( &file );
     QString buff = stream.readAll();
     file.close();
     QString fitxersortidatxt;
@@ -190,16 +199,16 @@ void RutaComercialList::imprimir() {
     fitxersortidatxt += mui_list->imprimir();
     fitxersortidatxt += "</blockTable>";
 
-    buff.replace("[story]", fitxersortidatxt);
+    buff.replace ( "[story]", fitxersortidatxt );
 
-    if (file.open(QIODevice::WriteOnly)) {
-        QTextStream stream(&file);
+    if ( file.open ( QIODevice::WriteOnly ) ) {
+        QTextStream stream ( &file );
         stream << buff;
         file.close();
     } // end if
     /// Crea el pdf y lo muestra.
-    invocaPDF("rutascomerciales");
-    _depura("END RutaComercialList::imprimir", 0);
+    invocaPDF ( "rutascomerciales" );
+    _depura ( "END RutaComercialList::imprimir", 0 );
 }
 
 
@@ -207,15 +216,16 @@ void RutaComercialList::imprimir() {
 /**
 \return
 **/
-void RutaComercialList::on_mui_borrar_clicked() {
-    _depura("RutaComercialList::on_mui_borrar_clicked", 0);
-    QString idrutacomercial = mui_list->DBvalue("idrutacomercial");
-    QString idincidenciacomercial = mui_list->DBvalue("idincidenciacomercial");
-    RutaComercialIncView *rut = new RutaComercialIncView((Company *)empresaBase(), NULL);
-    if (rut->cargar(idrutacomercial, idincidenciacomercial))
+void RutaComercialList::on_mui_borrar_clicked()
+{
+    _depura ( "RutaComercialList::on_mui_borrar_clicked", 0 );
+    QString idrutacomercial = mui_list->DBvalue ( "idrutacomercial" );
+    QString idincidenciacomercial = mui_list->DBvalue ( "idincidenciacomercial" );
+    RutaComercialIncView *rut = new RutaComercialIncView ( ( Company * ) empresaBase(), NULL );
+    if ( rut->cargar ( idrutacomercial, idincidenciacomercial ) )
         return;
     rut->on_mui_borrar_clicked();
-    _depura("END RutaComercialList::on_mui_borrar_clicked", 0);
+    _depura ( "END RutaComercialList::on_mui_borrar_clicked", 0 );
 }
 
 
@@ -223,22 +233,24 @@ void RutaComercialList::on_mui_borrar_clicked() {
 /**
 \return
 **/
-    QString RutaComercialList::idpresupuesto() {
-    _depura("RutaComercialList::idpresupuesto", 0);
-    _depura("END RutaComercialList::idpresupuesto", 0);
-        return m_idpresupuesto;
-    }
+QString RutaComercialList::idpresupuesto()
+{
+    _depura ( "RutaComercialList::idpresupuesto", 0 );
+    _depura ( "END RutaComercialList::idpresupuesto", 0 );
+    return m_idpresupuesto;
+}
 
 
 ///
 /**
 \param val
 **/
-    void RutaComercialList::setidcliente(QString val) {
-        _depura("RutaComercialList::setidcliente", 0);
-        m_cliente->setidcliente(val);
-        _depura("END RutaComercialList::setidcliente", 0);
-    }
+void RutaComercialList::setidcliente ( QString val )
+{
+    _depura ( "RutaComercialList::setidcliente", 0 );
+    m_cliente->setidcliente ( val );
+    _depura ( "END RutaComercialList::setidcliente", 0 );
+}
 
 
 
@@ -250,32 +262,33 @@ void RutaComercialList::on_mui_borrar_clicked() {
 /**
 \param parent
 **/
-RutaComercialListSubForm::RutaComercialListSubForm(QWidget *parent) : SubForm2Bf(parent) {
-    _depura("RutaComercialListSubForm::RutaComercialListSubForm", 0);
-    setDBTableName("rutacomercial");
-    setDBCampoId("idrutacomercial");
-    addSHeader("cifcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("CIF del cliente"));
-    addSHeader("nomcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre del cliente"));
-    addSHeader("idzonacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoView | SHeader::DBNoWrite, tr("ID zona comercial"));
-    addSHeader("fecharutacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Fecha ruta comercial"));
-    addSHeader("fechaincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Fecha incidencia comercial"));
-    addSHeader("nomtrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre del trabajador"));
-    addSHeader("apellidostrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Apellidos del trabajador"));
-    addSHeader("idcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoView | SHeader::DBNoWrite, tr("ID cliente"));
-    addSHeader("idtrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoView | SHeader::DBNoWrite, tr("ID trabajador"));
-    addSHeader("idrutacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoView | SHeader::DBNoWrite, tr("ID ruta comercial"));
-    addSHeader("comentariosrutacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Comentarios ruta comercial"));
-    addSHeader("idincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoView | SHeader::DBNoWrite, tr("ID incidencia comercial"));
-    addSHeader("comentincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Comentario de la incidencia comercial"));
-    addSHeader("estadoincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Estado de la incidencia comercial"));
-    addSHeader("idpedidocliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoView | SHeader::DBNoWrite, tr("ID pedido cliente"));
-    addSHeader("idcobro", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoView | SHeader::DBNoWrite, tr("ID cobro"));
-    addSHeader("nomzonacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre zona comercial"));
-    addSHeader("refrutacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Referencia ruta"));
-    addSHeader("horarutacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Hora ruta"));
-    addSHeader("refincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Referencia de la incidencia"));
-    addSHeader("horaincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Hora de la incidencia"));
-    setinsercion(FALSE);
-    _depura("END RutaComercialListSubForm::RutaComercialListSubForm", 0);
+RutaComercialListSubForm::RutaComercialListSubForm ( QWidget *parent ) : SubForm2Bf ( parent )
+{
+    _depura ( "RutaComercialListSubForm::RutaComercialListSubForm", 0 );
+    setDBTableName ( "rutacomercial" );
+    setDBCampoId ( "idrutacomercial" );
+    addSHeader ( "cifcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "CIF del cliente" ) );
+    addSHeader ( "nomcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre del cliente" ) );
+    addSHeader ( "idzonacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "ID zona comercial" ) );
+    addSHeader ( "fecharutacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Fecha ruta comercial" ) );
+    addSHeader ( "fechaincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Fecha incidencia comercial" ) );
+    addSHeader ( "nomtrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre del trabajador" ) );
+    addSHeader ( "apellidostrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Apellidos del trabajador" ) );
+    addSHeader ( "idcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "ID cliente" ) );
+    addSHeader ( "idtrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "ID trabajador" ) );
+    addSHeader ( "idrutacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "ID ruta comercial" ) );
+    addSHeader ( "comentariosrutacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Comentarios ruta comercial" ) );
+    addSHeader ( "idincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "ID incidencia comercial" ) );
+    addSHeader ( "comentincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Comentario de la incidencia comercial" ) );
+    addSHeader ( "estadoincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Estado de la incidencia comercial" ) );
+    addSHeader ( "idpedidocliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "ID pedido cliente" ) );
+    addSHeader ( "idcobro", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "ID cobro" ) );
+    addSHeader ( "nomzonacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre zona comercial" ) );
+    addSHeader ( "refrutacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Referencia ruta" ) );
+    addSHeader ( "horarutacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Hora ruta" ) );
+    addSHeader ( "refincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Referencia de la incidencia" ) );
+    addSHeader ( "horaincidenciacomercial", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Hora de la incidencia" ) );
+    setinsercion ( FALSE );
+    _depura ( "END RutaComercialListSubForm::RutaComercialListSubForm", 0 );
 };
 

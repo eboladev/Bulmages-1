@@ -34,20 +34,21 @@
     postscript.
     Utiliza los formularios oficiales obtenidos de la Agencia Tributaria (http://www.aeat.es)
     convertidos de pdf a postscript. Hereda de \ref Modgenps */
-class Mod300ps: public QDialog, public Ui_Modelo300Base, public Modgenps {
+class Mod300ps: public QDialog, public Ui_Modelo300Base, public Modgenps
+{
     Q_OBJECT
 
 public:
-    Mod300ps(QWidget *parent);
+    Mod300ps ( QWidget *parent );
     ~Mod300ps();
     void accept();
     void generaps();
-    void escribe_cuenta_bancaria(int, int);
-    void escribe_postscriptdefs(void);
+    void escribe_cuenta_bancaria ( int, int );
+    void escribe_postscriptdefs ( void );
     void rellena_identificacion();
     void rellena_compensacion();
     void rellena_liquidacion();
-    void escribe_codigo_postal(QString);
+    void escribe_codigo_postal ( QString );
     float baser0;
     float baser16;
     float baser7;

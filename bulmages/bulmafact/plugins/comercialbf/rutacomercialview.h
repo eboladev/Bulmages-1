@@ -36,17 +36,19 @@
 class company;
 
 
-class RutaComercialView : public RutaComercial, public Ui_RutaComercialBase {
+class RutaComercialView : public RutaComercial, public Ui_RutaComercialBase
+{
     Q_OBJECT
 
 public:
-    RutaComercialView(Company *, QWidget *parent = NULL);
-    RutaComercialView(QWidget *parent = NULL);
+    RutaComercialView ( Company *, QWidget *parent = NULL );
+    RutaComercialView ( QWidget *parent = NULL );
     ~RutaComercialView();
-    virtual void pintar() {};
-    void setEmpresaBase(Company *comp);
+    virtual void pintar()
+    {};
+    void setEmpresaBase ( Company *comp );
     virtual int guardar();
-    virtual int cargar(QString id);
+    virtual int cargar ( QString id );
 };
 
 #endif

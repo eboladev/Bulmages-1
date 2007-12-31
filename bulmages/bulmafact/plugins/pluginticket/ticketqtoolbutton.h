@@ -37,22 +37,23 @@
 #include "albaranclienteview.h"
 
 
-class TicketQToolButton : public QToolButton {
-	Q_OBJECT
+class TicketQToolButton : public QToolButton
+{
+    Q_OBJECT
 
 private:
-	Company *m_companyact;
-	PresupuestoView *m_presupuestoView;
-	PedidoClienteView *m_pedidoClienteView;
-	AlbaranClienteView *m_albaranClienteView;
-	FacturaView    *m_facturaView;	
+    Company *m_companyact;
+    PresupuestoView *m_presupuestoView;
+    PedidoClienteView *m_pedidoClienteView;
+    AlbaranClienteView *m_albaranClienteView;
+    FacturaView    *m_facturaView;
 
 public:
-	TicketQToolButton(PresupuestoView *, PedidoClienteView *, AlbaranClienteView *,  FacturaView * , QWidget *parent = NULL);
-	~TicketQToolButton();
-	void setBoton();
+    TicketQToolButton ( PresupuestoView *, PedidoClienteView *, AlbaranClienteView *,  FacturaView * , QWidget *parent = NULL );
+    ~TicketQToolButton();
+    void setBoton();
 public slots:
-	virtual void click();
+    virtual void click();
 
 };
 

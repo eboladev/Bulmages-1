@@ -26,21 +26,22 @@
 /**
 \param parent
 **/
-ListLTarifaView::ListLTarifaView(QWidget *parent) : SubForm2Bf(parent) {
-    _depura("ListLTarifaView::ListLTarifaView", 0);
-    setDBTableName("ltarifa");
-    setDBCampoId("idltarifa");
-    addSHeader("nomtarifa", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre tarifa"));
-    addSHeader("nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre almacen"));
-    addSHeader("pvpltarifa", DBCampo::DBnumeric, DBCampo::DBRequired, SHeader::DBNone, tr("Precio de venta"));
-    addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("ID articulo"));
-    addSHeader("idalmacen", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("ID almacen"));
-    addSHeader("idtarifa", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("ID tarifa"));
-    addSHeader("idltarifa", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr("Nº de linea"));
-    addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoView, tr("Codigo completo del articulo"));
-    addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoView, tr("Nombre del articulo"));
-    setinsercion(FALSE);
-    _depura("END ListLTarifaView::ListLTarifaView", 0);
+ListLTarifaView::ListLTarifaView ( QWidget *parent ) : SubForm2Bf ( parent )
+{
+    _depura ( "ListLTarifaView::ListLTarifaView", 0 );
+    setDBTableName ( "ltarifa" );
+    setDBCampoId ( "idltarifa" );
+    addSHeader ( "nomtarifa", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre tarifa" ) );
+    addSHeader ( "nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre almacen" ) );
+    addSHeader ( "pvpltarifa", DBCampo::DBnumeric, DBCampo::DBRequired, SHeader::DBNone, tr ( "Precio de venta" ) );
+    addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr ( "ID articulo" ) );
+    addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr ( "ID almacen" ) );
+    addSHeader ( "idtarifa", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr ( "ID tarifa" ) );
+    addSHeader ( "idltarifa", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr ( "Nº de linea" ) );
+    addSHeader ( "codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoView, tr ( "Codigo completo del articulo" ) );
+    addSHeader ( "nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoView, tr ( "Nombre del articulo" ) );
+    setinsercion ( FALSE );
+    _depura ( "END ListLTarifaView::ListLTarifaView", 0 );
 }
 
 
@@ -48,20 +49,21 @@ ListLTarifaView::ListLTarifaView(QWidget *parent) : SubForm2Bf(parent) {
 /**
 \param parent
 **/
-ListLTarifaView1::ListLTarifaView1(QWidget *parent) : SubForm2Bf(parent) {
-    _depura("ListLTarifaView1::ListLTarifaView1", 0);
-    setDBTableName("ltarifa");
-    setDBCampoId("idltarifa");
-    addSHeader("nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite , tr("Nombre almacen"));
-    addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Codigo completo del articulo"));
-    addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite , tr("Nombre articulo"));
-    addSHeader("pvpltarifa", DBCampo::DBnumeric, DBCampo::DBRequired, SHeader::DBNone, tr("Precio de venta"));
-    addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("ID articulo"));
-    addSHeader("idalmacen", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("ID almacen"));
-    addSHeader("idtarifa", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("ID tarifa"));
-    addSHeader("idltarifa", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr("Nº de linea"));
-    addSHeader("nomtarifa", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoView, tr("Nombre de la tarifa"));
-    setinsercion(FALSE);
-    _depura("ListLTarifaView1::ListLTarifaView1", 0);
+ListLTarifaView1::ListLTarifaView1 ( QWidget *parent ) : SubForm2Bf ( parent )
+{
+    _depura ( "ListLTarifaView1::ListLTarifaView1", 0 );
+    setDBTableName ( "ltarifa" );
+    setDBCampoId ( "idltarifa" );
+    addSHeader ( "nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite , tr ( "Nombre almacen" ) );
+    addSHeader ( "codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Codigo completo del articulo" ) );
+    addSHeader ( "nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite , tr ( "Nombre articulo" ) );
+    addSHeader ( "pvpltarifa", DBCampo::DBnumeric, DBCampo::DBRequired, SHeader::DBNone, tr ( "Precio de venta" ) );
+    addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr ( "ID articulo" ) );
+    addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr ( "ID almacen" ) );
+    addSHeader ( "idtarifa", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr ( "ID tarifa" ) );
+    addSHeader ( "idltarifa", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr ( "Nº de linea" ) );
+    addSHeader ( "nomtarifa", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoView, tr ( "Nombre de la tarifa" ) );
+    setinsercion ( FALSE );
+    _depura ( "ListLTarifaView1::ListLTarifaView1", 0 );
 }
 

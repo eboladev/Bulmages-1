@@ -30,10 +30,10 @@
 #include "bulmafact.h"
 
 
-extern "C" MY_EXPORT int entryPoint(Bulmafact *);
-extern "C" MY_EXPORT int ClienteView_ClienteView(ClienteView *);
-extern "C" MY_EXPORT int ArticuloView_ArticuloView(ArticuloView *);
-extern "C" MY_EXPORT int ArticuloView_cargar(ArticuloView *);
-extern "C" MY_EXPORT int ArticuloView_guardar_post(ArticuloView *);
-extern "C" MY_EXPORT int ArticuloView_borrar(ArticuloView *);
+extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int ClienteView_ClienteView ( ClienteView * );
+extern "C" MY_EXPORT int ArticuloView_ArticuloView ( ArticuloView * );
+extern "C" MY_EXPORT int ArticuloView_cargar ( ArticuloView * );
+extern "C" MY_EXPORT int ArticuloView_guardar_post ( ArticuloView * );
+extern "C" MY_EXPORT int ArticuloView_borrar ( ArticuloView * );
 

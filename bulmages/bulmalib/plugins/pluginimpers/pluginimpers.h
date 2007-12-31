@@ -27,6 +27,6 @@
 #include "ficha.h"
 #include "empresabase.h"
 
-extern "C" MY_EXPORT int Ficha_Ficha(Ficha *);
-extern "C" MY_EXPORT int entryPoint(QApplication *);
+extern "C" MY_EXPORT int Ficha_Ficha ( Ficha * );
+extern "C" MY_EXPORT int entryPoint ( QApplication * );
 

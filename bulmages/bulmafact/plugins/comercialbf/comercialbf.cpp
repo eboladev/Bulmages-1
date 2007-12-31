@@ -40,22 +40,23 @@
 \param bges
 \return
 **/
-int entryPoint(Bulmafact *bges) {
-    _depura("Punto de Entrada del plugin ComercialBF", 0);
-        /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
-        QTranslator *traductor = new QTranslator(0);
-        if (confpr->valor(CONF_TRADUCCION) == "locales") {
-            traductor->load(QString("comercialbf_") + QLocale::system().name(),
-                            confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
-        } else {
-            QString archivo = "comercialbf_" + confpr->valor(CONF_TRADUCCION);
-           traductor->load(archivo, confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
-        } // end if
-        theApp->installTranslator(traductor);
+int entryPoint ( Bulmafact *bges )
+{
+    _depura ( "Punto de Entrada del plugin ComercialBF", 0 );
+    /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
+    QTranslator *traductor = new QTranslator ( 0 );
+    if ( confpr->valor ( CONF_TRADUCCION ) == "locales" ) {
+        traductor->load ( QString ( "comercialbf_" ) + QLocale::system().name(),
+                          confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    } else {
+        QString archivo = "comercialbf_" + confpr->valor ( CONF_TRADUCCION );
+        traductor->load ( archivo, confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
+    } // end if
+    theApp->installTranslator ( traductor );
 
     mypluginbf *plug = new mypluginbf();
-    plug->inicializa(bges);
-    _depura("END Punto de Entrada del plugin ComercialBF", 0);
+    plug->inicializa ( bges );
+    _depura ( "END Punto de Entrada del plugin ComercialBF", 0 );
     return 0;
 }
 
@@ -65,19 +66,20 @@ int entryPoint(Bulmafact *bges) {
 \param cli
 \return
 **/
-int ClienteView_ClienteView_Post(ClienteView *cli) {
-    _depura("ClienteView_ClienteView_Post",0);
+int ClienteView_ClienteView_Post ( ClienteView *cli )
+{
+    _depura ( "ClienteView_ClienteView_Post", 0 );
     /// Agregamos los campos de registro que hacen falta.
-    cli->addDBCampo("idzonacomercial", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("ClienteView_ClienteView_Post", "Zona comercial"));
-    cli->addDBCampo("fechabasecomercialcliente", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("ClienteView_ClienteView_Post", "Fecha base"));
-    cli->addDBCampo("periodocomercialcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("ClienteView_ClienteView_Post", "Periodo"));
-    cli->addDBCampo("comentcomercialcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("ClienteView_ClienteView_Post", "Comentarios para el comercial"));
+    cli->addDBCampo ( "idzonacomercial", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "ClienteView_ClienteView_Post", "Zona comercial" ) );
+    cli->addDBCampo ( "fechabasecomercialcliente", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate ( "ClienteView_ClienteView_Post", "Fecha base" ) );
+    cli->addDBCampo ( "periodocomercialcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "ClienteView_ClienteView_Post", "Periodo" ) );
+    cli->addDBCampo ( "comentcomercialcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "ClienteView_ClienteView_Post", "Comentarios para el comercial" ) );
     /// Creamos la pesta&ntilde;a de comercial y la tratamos.
-    ComercialClienteView *l = new ComercialClienteView(cli);
-    l->setEmpresaBase(cli->empresaBase());
-    l->setObjectName(QString::fromUtf8("lcomercial"));
-    cli->mui_tab->addTab(l, QApplication::translate("ClienteView_ClienteView_Post", "&Comercial"));
-    _depura("END ClienteView_ClienteView_Post", 0);
+    ComercialClienteView *l = new ComercialClienteView ( cli );
+    l->setEmpresaBase ( cli->empresaBase() );
+    l->setObjectName ( QString::fromUtf8 ( "lcomercial" ) );
+    cli->mui_tab->addTab ( l, QApplication::translate ( "ClienteView_ClienteView_Post", "&Comercial" ) );
+    _depura ( "END ClienteView_ClienteView_Post", 0 );
     return 0;
 }
 
@@ -87,12 +89,13 @@ int ClienteView_ClienteView_Post(ClienteView *cli) {
 \param cli
 \return
 **/
-int ClienteView_Des_ClienteView_Post(ClienteView *cli) {
-    _depura("ClienteView_Des_ClienteView", 0);
+int ClienteView_Des_ClienteView_Post ( ClienteView *cli )
+{
+    _depura ( "ClienteView_Des_ClienteView", 0 );
     /// Creamos la pesta&ntilde;a de comercial y la tratamos.
-    ComercialClienteView *bus = cli->findChild<ComercialClienteView *>("lcomercial");
+    ComercialClienteView *bus = cli->findChild<ComercialClienteView *> ( "lcomercial" );
     delete bus;
-    _depura("END ClienteView_Des_ClienteView", 0);
+    _depura ( "END ClienteView_Des_ClienteView", 0 );
     return 0;
 }
 
@@ -104,12 +107,12 @@ int ClienteView_saveClient(ClienteView *cli) {
     cli->setDBvalue("fechabasecomercialcliente", bus->mui_fechabasecomercialcliente->fecha());
     cli->setDBvalue("periodocomercialcliente", bus->mui_periodocomercialcliente->periodo());
     cli->setDBvalue("comentcomercialcliente", bus->mui_comentcomercialcliente->toPlainText());
-
+ 
     _depura("END ClienteView_saveClient", 0);
     return 0;
 }
-
-
+ 
+ 
 int Cliente_pintaCliente(Cliente *cli) {
     _depura("Cliente_pintaCliente", 0);
     ClienteView *clo = (ClienteView *) cli;
