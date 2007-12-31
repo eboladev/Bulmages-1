@@ -48,7 +48,7 @@ private:
     /// La clase corazon de la aplicacion y centralizadora de mensajes y componentes.
     Company *m_company;
     /// El listado de ventanas abiertas que esta en forma de dock en la parte izquierda.
-    listventanas *m_list;
+    ListVentanas *m_list;
 
 public:
     Bulmafact(QString bd);

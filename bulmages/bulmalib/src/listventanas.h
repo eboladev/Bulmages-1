@@ -56,7 +56,7 @@ public:
 /// Provides the dock window to list all windows in BulmaFact
 /// \param m_listBox this variable is the listBox that contains all
 /// titles of the diferent windows.
-class listventanas : public QDockWidget {
+class ListVentanas : public QDockWidget {
     Q_OBJECT
 
 private:
@@ -65,8 +65,8 @@ private:
 
 public:
     void setWorkspace(QWorkspace2 *w);
-    listventanas(QWidget *a = 0);
-    ~listventanas();
+    ListVentanas(QWidget *a = 0);
+    ~ListVentanas();
 
 public:
     int meteWindow(QString, QObject *, bool compdup = TRUE);

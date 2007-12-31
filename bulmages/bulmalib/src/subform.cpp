@@ -27,11 +27,13 @@
 #include "subform.h"
 
 
-///
+/// Inicia el constructor
 /**
-\param con
+Mantiene un contador de elementos creados para depurar la liberacion de memoria.
+\param con Empresa con la que va a trabajar
+\todo Se debe eliminar el contador una vez testeado el consumo de memoria
 **/
-SDBRecord::SDBRecord(postgresiface2 *con) : DBRecord(con) {
+SDBRecord::SDBRecord(EmpresaBase *con) : DBRecord(con) {
   _depura("SDBRecord::SDBRecord", 0);
   static int creaciones = 0;
   creaciones++;
@@ -40,8 +42,10 @@ SDBRecord::SDBRecord(postgresiface2 *con) : DBRecord(con) {
 }
 
 
-///
+/// Destruye la clase
 /**
+Mantiene un contador de elementos destruidos para depurar la liberación de memoria
+\todo Se debe eliminar el contador una vez testeado la correcta liberacion de memoria
 **/
 SDBRecord::~SDBRecord() {
   static int destrucciones = 0;
@@ -54,8 +58,8 @@ SDBRecord::~SDBRecord() {
 
 ///
 /**
-\param id
-\return
+\param id Devuelve el identificador del registro guardado
+\return Si todo ha ido bien devuelve 0
 **/
 int SDBRecord::DBsave(QString &id) {
   _depura("SDBRecord::DBsave", 0);
@@ -65,8 +69,9 @@ int SDBRecord::DBsave(QString &id) {
 }
 
 
-///
+/// Actualiza los contenidos del subformulario acorde a los valores de la tabla
 /**
+Actualiza los valores del registro acorde a los valores que tiene la tabla que lo contiene
 **/
 void SDBRecord::refresh() {
   _depura("SDBRecord::refresh", 0);
@@ -79,12 +84,12 @@ void SDBRecord::refresh() {
 }
 
 
-///
+/// Agrega un campo al registro
 /**
-\param nom
-\param typ
-\param res
-\param nomp
+\param nom Nombre del campo
+\param typ Tipo del campo
+\param res Restricciones a aplicar en el campo
+\param nomp Nombre a mostrar en caso de error
 \return
 **/
 int SDBRecord::addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp) {
@@ -97,14 +102,14 @@ int SDBRecord::addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nom
 }
 
 
-///
+/// Constructor de SDBCampo. Representa, maneja y alberga un campo de un registro de un recordset.
 /**
-\param par
-\param com
-\param nom
-\param typ
-\param res
-\param nomp
+\param par El registro padre del campo
+\param com La base de datos con la que esta trabajando
+\param nom El nombre del campo
+\param typ El tipo de campo
+\param res Las restricciones del campo
+\param nomp el nombre a presentar en caso de error.
 **/
 SDBCampo::SDBCampo(SDBRecord *par, postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp)
   :QTableWidgetItem2(), DBCampo(com, nom, typ, res, nomp) {
@@ -123,8 +128,9 @@ SDBCampo::~SDBCampo() {
 }
 
 
-///
+/// Refresco de los contenidos de un campo con lo que se esta visualizando
 /**
+Tiene especial intereses con los campos checkables ya que su tratamiento no es directo
 **/
 void SDBCampo::refresh() {
   _depura("SDBCampo::refresh", 0);
@@ -137,14 +143,16 @@ void SDBCampo::refresh() {
 }
 
 
-///
+/// Establece el valor que debe tener un campo
 /**
-\param val
-\return
+Al introducir un valor en el campo ya se hacen las posibles conversiones que puedan interesar
+para la presentacion de valores corregidos a un estandar.
+\param val Valor que toma el campo
+\return Si no hay errores devuelve 0
 **/
 int SDBCampo::set(QString val) {
   _depura("SDBCampo::set", 0, nomcampo() + " = " + val);
-  QRegExp importe("^\\d*\\.\\d{2}$"); /// Para emparejar los valores numericos con decimales
+  QRegExp importe("^\\d*\\.\\d{2}$"); ///< Para emparejar los valores numericos con decimales
   if (tipo() == DBCampo::DBboolean) {
     if (restrictcampo() == SHeader::DBNoWrite) {
       setFlags(this->flags() & (~Qt::ItemIsUserCheckable));
@@ -167,10 +175,10 @@ int SDBCampo::set(QString val) {
 }
 
 
-///
+/// Comparacion entre campos
 /**
-\param other
-\return
+\param other El campo con el que hay que comprarar
+\return TRUE si se considere este el campo mas grande, FALSE en caso contrario.
 **/
 bool SDBCampo::operator< (const QTableWidgetItem &other) {
   _depura("SDBCampo::operator <", 0, text());
@@ -206,9 +214,11 @@ bool SDBCampo::operator< (const QTableWidgetItem &other) {
 }
 
 
-///
+/// Devuelve el registro que alberga este campo
 /**
-\return
+Es util porque se activan signals sobre campos determinados en los que no sabremos a que registro
+pertencecen
+\return Puntero al registro
 **/
 SDBRecord *SDBCampo::pare() {
   _depura("SDBCampo::pare", 0);
@@ -217,13 +227,13 @@ SDBRecord *SDBCampo::pare() {
 }
 
 
-///
+/// Construye una columna de la descripcion del recordset
 /**
-\param nom
-\param typ
-\param res
-\param opt
-\param nomp
+\param nom Nombre de la columna
+\param typ Tipo de los datos que alberga
+\param res Restricciones de la columna
+\param opt Opciones de presentacion
+\param nomp Nombre a presentar en caso necesario para referirse a la columna
 **/
 SHeader::SHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp) {
   _depura("SHeader::SHeader", 0);
@@ -232,7 +242,6 @@ SHeader::SHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nom
   m_restricciones = res;
   m_options = opt;
   m_nompresentacion = nomp;
-  m_valorcampo = "";
   _depura("END SHeader::SHeader", 0);
 }
 
@@ -243,19 +252,6 @@ SHeader::SHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nom
 SHeader::~SHeader() {
   _depura("SHeader::~SHeader", 0);
   _depura("END SHeader::~SHeader", 0);
-}
-
-
-///
-/**
-\param val
-\return
-**/
-int SHeader::set(QString val) {
-  _depura("SHeader::set", 0); 
-  m_valorcampo = val;
-  _depura("END SHeader::set", 0); 
-  return 0;
 }
 
 

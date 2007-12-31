@@ -29,7 +29,7 @@
 /**
 \param doc
 **/
-void EmpresaBase::setListVentanas(listventanas *doc) {
+void EmpresaBase::setListVentanas(ListVentanas *doc) {
     _depura("EmpresaBase::setListVentanas", 0);
     m_listventanas = doc;
     _depura("END EmpresaBase::setListVentanas", 0);

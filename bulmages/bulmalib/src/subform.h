@@ -29,23 +29,33 @@
 #include "qtable2.h"
 #include "dbrecord.h"
 
-
+/// Describe una cabecera de recordset preparada para trabajar con SubFormularios \ref SubForm3
+/**
+Al crear un subformulario \ref subform3, todos los registros tienen exactamente las mismas cabeceras.
+Esta clase sirve para describir una cabecera. Es analoga a la clase \ref DBCampo pero en lugar de
+describir un unico registro describe a varios.
+*/
 class SHeader {
 public:
+    /** Opciones para la columna del SubFormulario
+	- DBNone . Opciones por defecto.
+	- DBReadOnly . La columna es de solo lectura.
+	- DBNoView . Por defecto la columna es invisible aunque puede verse si el usuario lo desea
+	- DBNoWrite . El usuario no puede escribir en esta columna.
+	- DBBlockView . El usuario no podrá ver esta columna ni aun configurandola
+    */
     enum dboptions {DBNone = 0, DBReadOnly = 1, DBNoView = 2, DBNoWrite = 4, DBBlockView = 8};
 
 protected:
-    QString m_nomcampo;
-    QString m_valorcampo;
-    QString m_nompresentacion;
-    unsigned int m_restricciones;
-    DBCampo::dbtype m_tipo;
-    unsigned int m_options;
+    QString m_nomcampo;			///< El nombre de la cabecera en el recordset		
+    QString m_nompresentacion;		///< El nombre para mostrar en los errores
+    unsigned int m_restricciones;	///< Las restricciones de la columna en el recordset
+    DBCampo::dbtype m_tipo;		///< El tipo de los datos
+    unsigned int m_options;		///< Las opciones para la columna en el SubFormulario
 
 public:
     SHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp = "");
     ~SHeader();
-    int set(QString val);
     unsigned int options();
     unsigned int restricciones();
     DBCampo::dbtype tipo();
@@ -54,10 +64,14 @@ public:
     QString nomcampo();
 };
 
-
+/// Registro de \ref subform3 subformulario
+/**
+   Maneja un registro de un subformulario de tal forma que permite el trabajo mediante tablas de los registros.
+   Es muy similar a la clase \ref DBRecord pero reimplementa el guardado
+*/
 class SDBRecord: public DBRecord {
 public:
-    SDBRecord(postgresiface2 *con);
+    SDBRecord(EmpresaBase *con);
     ~SDBRecord();
     int addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp = "");
     void refresh();
@@ -65,15 +79,19 @@ public:
 };
 
 
+/// Descripcion de campos en \ref subform3 subformularios.
+/** 
+Junta la información de campo (Base de Datos) con  un QTableWidgetItem.
+De esta forma los elementos adscritos a una talba y a un recordset son los mismos.
+*/
 class SDBCampo: public QTableWidgetItem2, public DBCampo {
 private:
-    SDBRecord *m_pare;
+    SDBRecord *m_pare;	///< Puntero al \ref SDBRecord al que pertenece. Acelera procesos.
 
 public:
-    SDBRecord *pare();
     SDBCampo(SDBRecord *par, postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp = "");
     virtual ~SDBCampo();
-    int addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp = "");
+    SDBRecord *pare();
     virtual int set(QString val);
     void refresh();
     virtual bool operator< (const QTableWidgetItem &other);

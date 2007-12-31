@@ -214,31 +214,58 @@ QString DBCampo::valorcampoprep(int &error) {
 }
 
 
-///
+/// Constructor de la clase que toma por defecto la base de datos con la que va a operar.
 /**
-\param comp
+\param con Puntero a la base de datos con la que vamos a trabajar.
 **/
-void DBRecord::setconexionbase(postgresiface2 *comp) {
+DBRecord::DBRecord(EmpresaBase *con) {
+    _depura("DBRecord::DBRecord", 0);
+    m_conexionbase = con;
+    m_nuevoCampo = TRUE;
+    _depura("END DBRecord::DBRecord", 0);
+}
+
+
+/// Destructor de la clase
+/**
+Limpia y libera toda la memoria que se haya podido reservar.
+Esta operacion no contempla que haya habido cambios en el registro sin guardar.
+**/
+DBRecord::~DBRecord() {
+    _depura("DBRecord::~DBRecord", 0);
+    m_lista.clear();
+    _depura("END DBRecord::~DBRecord", 0);
+}
+
+/// Establece la base de datos que debe utilizar la clase.
+/**
+Esta clase funciona siempre ligada a una base de datos. Esta se especifica 
+en el constructor de la clase.
+\param comp Puntero a la base de datos que debe utilizar la clase.
+**/
+void DBRecord::setconexionbase(EmpresaBase *comp) {
     _depura("DBRecord::setconexionbase", 0);
     m_conexionbase = comp;
     _depura("END DBRecord::setconexionbase", 0);
 }
 
 
-///
+/// Devuelve el puntero de la base de datos con la que ha sido inicializada la clase.
 /**
-\return
+\return Puntero a la base de datos con la que se ha inicializado la clase.
 **/
-postgresiface2 *DBRecord::conexionbase() {
+EmpresaBase *DBRecord::conexionbase() {
     _depura("DBRecord::conexionbase", 0);
     _depura("END DBRecord::conexionbase", 0);
     return m_conexionbase;
 }
 
 
-///
+/// Establece cual es la tabla por defecto que se va a usar para hacer las operaciones.
 /**
-\param nom
+Esta clase funciona siempre con una tabla especificada. De esta forma todas las cargas, inserciones
+y modificaciones se hacen sobre la tabla que se haya especificado.
+\param nom Nombre de la tabla de la base de datos que se usa por defecto.
 **/
 void DBRecord::setDBTableName(QString nom) {
     _depura("DBRecord::setDBTableName", 0);
@@ -247,9 +274,15 @@ void DBRecord::setDBTableName(QString nom) {
 }
 
 
-///
+/// Establece el tipo de operacion que se realizara en la base de datos.
 /**
-\param n
+Si se establece TRUE entonces se hará una inserción del registro en la tabla por
+defecto. Si por el contrario se establece como FALSE se hará una modificacion de los
+registros que coincidan en sus PrimaryKey con los datos del registro.
+
+Este metodo es de uso interno. Es la propia clase la que regula si es una insercion
+o no dependiendo de si se hecho una carga previa del registro.
+\param n Registro para insertar o para modificar.
 **/
 void DBRecord::setNuevo(bool n) {
     _depura("DBRecord::setNuevo", 0);
@@ -258,9 +291,9 @@ void DBRecord::setNuevo(bool n) {
 }
 
 
-///
+/// Devuelve el nombre de la tabla de la base de datos con la que se opera por defecto
 /**
-\return
+\return El nombre de la tabla que usa la clase al  operar con la base de datos
 **/
 QString DBRecord::tableName() {
     _depura("DBRecord::tableName", 0);
@@ -269,9 +302,9 @@ QString DBRecord::tableName() {
 }
 
 
-///
+/// Devuelve el nombre del campo clave primaria en la tabla por defecto.
 /**
-\return
+\return El nombre del campo que se considera Identificador. (Clave Primaria)
 **/
 QString DBRecord::campoId() {
     _depura("DBRecord::campoId", 0);
@@ -280,9 +313,9 @@ QString DBRecord::campoId() {
 }
 
 
-///
+/// Establece el nombre del campo identificador en la talba por defecto.
 /**
-\param nom
+\param nom El nombre del campo que se considera la clave primaria
 **/
 void DBRecord::setDBCampoId(QString nom) {
     _depura("DBRecord::setDBCampoId", 0);
@@ -291,9 +324,10 @@ void DBRecord::setDBCampoId(QString nom) {
 }
 
 
-///
+/// Devuelve la lista de campos con los que esta operando la clase.
 /**
-\return
+Normalmente coincide esta lista con la definicion de la tabla con la que opera.
+\return Lista de campos con los que se esta operando.
 **/
 QList<DBCampo *> *DBRecord::lista() {
     _depura("DBRecord::lista", 0);
@@ -302,7 +336,7 @@ QList<DBCampo *> *DBRecord::lista() {
 }
 
 
-///
+/// Vacia la clase para que no tenga parametros por defecto.
 /**
 **/
 void DBRecord::vaciar() {
@@ -312,58 +346,43 @@ void DBRecord::vaciar() {
 }
 
 
-///
-/**
-\param con
-**/
-DBRecord::DBRecord(postgresiface2 *con) {
-    _depura("DBRecord::DBRecord", 0);
-    m_conexionbase = con;
-    m_nuevoCampo = TRUE;
-    _depura("END DBRecord::DBRecord", 0);
-}
 
-
-///
+/// Efectura la carga de un Registro de la base de datos a partir de un recorset (\class cursor2).
 /**
-**/
-DBRecord::~DBRecord() {
-    _depura("DBRecord::~DBRecord", 0);
-    m_lista.clear();
-    _depura("END DBRecord::~DBRecord", 0);
-}
-
-///
-/**
-\param cur
-\return
+\param cur recordset con resultados.
+\return Si no hay errores devuelve 0. En caso contrario devuelve otro valor.
 **/
 int DBRecord::DBload(cursor2 *cur) {
     _depura("DBRecord::DBload", 0);
-    m_nuevoCampo = FALSE;
-
-    DBCampo *campo;
-    int error = 0;
-    for (int i = 0; i < m_lista.size(); ++i) {
-        campo = m_lista.at(i);
-        if (! (campo->restrictcampo() & DBCampo::DBNoLoad)) {
-            QString nom = campo->nomcampo();
-            QString val = cur->valor(nom);
-            if ((campo->restrictcampo() & DBCampo::DBPrimaryKey) && (val == ""))
-                m_nuevoCampo = TRUE;
-            if ((campo->restrictcampo() & DBCampo::DBDupPrimaryKey) && (val == ""))
-                m_nuevoCampo = TRUE;
-            error += campo->set(val);
-            /// Al ser una carga consideramos que los cambios estan inicializados.
-            campo->resetCambio();
-        } // end if
-    } // end for
-    _depura("END DBRecord::DBload", 0);
-    return error;
+    try {
+	m_nuevoCampo = FALSE;
+	
+	DBCampo *campo;
+	int error = 0;
+	for (int i = 0; i < m_lista.size(); ++i) {
+		campo = m_lista.at(i);
+		if (! (campo->restrictcampo() & DBCampo::DBNoLoad)) {
+		QString nom = campo->nomcampo();
+		QString val = cur->valor(nom);
+		if ((campo->restrictcampo() & DBCampo::DBPrimaryKey) && (val == ""))
+			m_nuevoCampo = TRUE;
+		if ((campo->restrictcampo() & DBCampo::DBDupPrimaryKey) && (val == ""))
+			m_nuevoCampo = TRUE;
+		error += campo->set(val);
+		/// Al ser una carga consideramos que los cambios estan inicializados.
+		campo->resetCambio();
+		} // end if
+	} // end for
+	_depura("END DBRecord::DBload", 0);
+	return error;
+     } catch(...) {
+	_depura("EXCEPTION DBRecord::DBload", 0);
+	return -1;
+     } // end try
 }
 
 
-///
+/// Inicializa la clase limpiando posibles componentes utilizados con anterioridad.
 /**
 **/
 void DBRecord::DBclear() {
@@ -372,16 +391,15 @@ void DBRecord::DBclear() {
     DBCampo *campo;
     for(int i = 0; i < m_lista.size(); ++i) {
         campo = m_lista.at(i);
-        campo->set
-        ("");
+        campo->set("");
     } // end for
     _depura("END DBRecord::DBclear", 0);
 }
 
 
-///
+/// Guarda el registro actual contenido en la clase en la base de datos.
 /**
-\param id
+\param id Devuelve el identificador (primary key) con que ha quedado guardado el registro.
 **/
 int DBRecord::DBsave(QString &id) {
     _depura("DBRecord::DBsave - " + id, 0);
@@ -398,7 +416,7 @@ int DBRecord::DBsave(QString &id) {
         for (int i = 0; i < m_lista.size(); ++i) {
             campo = m_lista.at(i);
 
-            /// Si el campo esta en DupPrimaryKey lo ponemos en query.
+            /// Si el campo esta en DupPrimaryKey lo ponemos en el query.
             if (campo->restrictcampo() & DBCampo::DBDupPrimaryKey) {
                 QString lin = campo->valorcampoprep(err);
                 if (err)
@@ -462,10 +480,10 @@ int DBRecord::DBsave(QString &id) {
 }
 
 
-///
+/// Establece un nuevo valor para un campo del registro con el que estamos tratando.
 /**
-\param nomb
-\param valor
+\param nomb Nombre del campo cuyo valor vamos a establecer.
+\param valor Valor que toma el campo.
 \return
 **/
 int DBRecord::setDBvalue(QString nomb, QString valor) {
@@ -487,10 +505,10 @@ int DBRecord::setDBvalue(QString nomb, QString valor) {
 }
 
 
-///
+/// Consulta el valor que tiene un campo del registro actual
 /**
-\param nomb
-\return
+\param nomb Nombre del campo que queremos consultar.
+\return Valor que contiene el campo.
 **/
 QString DBRecord::DBvalue(QString nomb) {
     _depura("DBRecord::value", 0, nomb);
@@ -511,10 +529,10 @@ QString DBRecord::DBvalue(QString nomb) {
 }
 
 
-///
+/// Indica si un campo esta inicializado en el registro o no.
 /**
-\param nomb
-\return
+\param nomb Campo del que queremos saber si existe o no
+\return TRUE si existe o FALSE si no existe
 **/
 bool DBRecord::exists(QString nomb) {
     _depura("DBRecord::exists", 0, nomb);
@@ -534,10 +552,10 @@ bool DBRecord::exists(QString nomb) {
 }
 
 
-///
+/// Prepara un campo para un eventual almacenado en la base de datos.
 /**
-\param nomb
-\return
+\param nomb campo a preparar para ser guardado
+\return El valor del campo una vez preprocesado para el guardado.
 **/
 QString DBRecord::DBvalueprep(QString nomb) {
     _depura("DBRecord::DBvalueprep", 0);
@@ -559,12 +577,15 @@ QString DBRecord::DBvalueprep(QString nomb) {
 }
 
 
-///
+/// Agrega un nuevo campo a la definicion del registro actual
 /**
-\param nom
-\param typ
-\param res
-\param nomp
+Al iniciar la clase no tiene ninguna definicion de la tabla con la que va a operar ni
+de los campos que contiene dicha tabla. Mediante este metodo podemos inicialiar
+la clase para que aprenda a operar con una tabla determinada.
+\param nom Nombre del campo
+\param typ Tipo del campo
+\param res Restricciones a considerar en el campo
+\param nomp Nombre para mostrar en los mensajes que involucren al campo
 \return
 **/
 int DBRecord::addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp = "") {
@@ -578,9 +599,9 @@ int DBRecord::addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp
 }
 
 
-///
+/// Elimina el registro que tenemos de la base de dato (Si es que existe)
 /**
-\return
+\return si no se han producido errores devuelve 0 en caso contrario devuelve -1
 **/
 int DBRecord::borrar() {
     _depura("DBRecord::borrar", 0);
@@ -626,9 +647,11 @@ int DBRecord::borrar() {
 }
 
 
-///
+/// Guarda el registro actual en la base de datos
 /**
-\return
+Esta funcion, de un nivel algo superior a la llamada DBsave hace el guardado y maneja las 
+excepciones que se hayan podido producir
+\return si no se producen errores devuelve 0 en caso contrario genera una excepcion
 **/
 int DBRecord::guardar() {
     _depura("DBRecord::guardar", 0);
@@ -646,25 +669,31 @@ int DBRecord::guardar() {
 
 
 
-/// Esta funcion carga un articulo.
+/// Esta funcion carga un registro..
 /**
-\param id
-\return
+\param id Identificador del registro a cargar en la tabla por defecto.
+\return Si no hay errores devuelve 0 sino devuelve -1
 **/
 int DBRecord::cargar(QString id) {
     _depura("DBRecord::cargar", 0);
-    QString query = "SELECT * FROM " + m_tablename + " WHERE " + m_campoid + " = " + id;
-    cursor2 *cur = m_conexionbase->cargacursor(query);
-    if (!cur->eof()) {
-        DBload(cur);
-    } // end if
-    delete cur;
-    _depura("END DBRecord::cargar", 0);
-    return 0;
+    try {
+	QString query = "SELECT * FROM " + m_tablename + " WHERE " + m_campoid + " = " + id;
+	cursor2 *cur = m_conexionbase->cargacursor(query);
+	if (!cur) throw -1;
+	if (!cur->eof()) {
+		DBload(cur);
+	} // end if
+	delete cur;
+	_depura("END DBRecord::cargar", 0);
+	return 0;
+    } catch(...) {
+	mensajeError("DBRecord::cargar Se ha producido un error al cargar el registro.");
+	return -1;
+    } // end try
 }
 
 
-///
+/// Realiza una impresion generica del registro a partir de la plantilla ficha.rml
 /**
 **/
 void DBRecord::imprimir() {

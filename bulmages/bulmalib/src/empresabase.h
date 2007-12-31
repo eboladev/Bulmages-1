@@ -34,7 +34,7 @@ class EmpresaBase : public postgresiface2 {
 protected:
     /// Puntero al dock que lista las ventansa. Puesto que esta clase hace el paso de
     /// mensajes tiene el control de la lista de ventanas.
-    listventanas *m_listventanas;
+    ListVentanas *m_listventanas;
 
 public:
     /// Puntero al workScpace de la aplicacion. Ya que esta clase crea todas las ventanas,
@@ -49,7 +49,7 @@ public:
     virtual ~EmpresaBase();
     virtual void init(QString bd, QString tipo);
     QString searchCompany(QString);
-    void setListVentanas(listventanas *doc);
+    void setListVentanas(ListVentanas *doc);
     QWorkspace2 *pWorkspace();
     void setWorkspace(QWorkspace2 *qw);
     void setProgressBar(QProgressBar *pb);

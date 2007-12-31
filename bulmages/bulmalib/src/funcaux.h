@@ -35,8 +35,6 @@
 #include <sstream>
 #include <string>
 
-using std::string;
-
 #include <QString>
 #include <math.h>
 
@@ -55,15 +53,8 @@ extern QMainWindow *g_main;
 extern QApplication2 *theApp;
 
 
-template <typename T>
-std::string Ttos(T arg) {
-    std::ostringstream buffer;
-    buffer << arg; /// send to the ostringstream.
-    return buffer.str(); /// capture the string.
-}
-
 /// Extiende un string a un numero de cuenta sustituyendo los '.' por ceros.
-string extiendecodigo (string, unsigned int);
+QString extiendecodigo (QString, unsigned int);
 /// Extiende un string a un numero de cuenta sustituyendo los '.' por ceros.
 QString extiendecodigo (QString, unsigned int);
 /// Redondeo de numeros en punto flotante.

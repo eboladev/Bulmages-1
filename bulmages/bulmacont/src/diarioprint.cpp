@@ -77,12 +77,12 @@ void DiarioPrint::accept() {
     float debe, haber;
     int idcuenta;
     int idasiento;
-    string fecha;
-    string fechaasiento;
-    string descripcion;
-    string concepto;
-    string codigocuenta;
-    string cad;
+    QString fecha;
+    QString fechaasiento;
+    QString descripcion;
+    QString concepto;
+    QString codigocuenta;
+    QString cad;
     cursor2 *cursoraux, *cursoraux1, *cursoraux2;
 
     FILE *mifile;
@@ -94,7 +94,6 @@ void DiarioPrint::accept() {
         empresaBase()->begin();
         cursoraux = empresaBase()->cargaasientosfecha(finicial, ffinal);
         for (; !cursoraux->eof(); cursoraux->siguienteregistro()) {
-            fprintf(stderr, "bucle\n");
             fechaasiento = cursoraux->valor(2).toAscii().constData();
             idasiento = atoi(cursoraux->valor(0).toAscii());
             cursoraux1 = empresaBase()->cargaapuntes(idasiento);
@@ -112,7 +111,7 @@ void DiarioPrint::accept() {
                 } // end if
                 cursoraux2->cerrar();
                 delete cursoraux2;
-                fprintf(mifile, "%5d %-10.10s %10s %-30.30s %9.2f %9.2f\n", idasiento, fecha.c_str(), codigocuenta.c_str(), descripcion.c_str(), debe, haber);
+                fprintf(mifile, "%5d %-10.10s %10s %-30.30s %9.2f %9.2f\n", idasiento, fecha.toAscii().data(), codigocuenta.toAscii().data(), descripcion.toAscii().data(), debe, haber);
             } // end for
             cursoraux1->cerrar();
             delete cursoraux1;

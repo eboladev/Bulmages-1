@@ -1392,7 +1392,6 @@ void SubForm3::on_mui_list_cellChanged(int row, int col) {
 int SubForm3::addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp) {
     _depura("SubForm3::addSHeader (" + nom + ")", 0);
     SHeader *camp = new SHeader(nom, typ, res, opt, nomp);
-    camp->set("");
     m_lcabecera.append(camp);
     mui_listcolumnas->insertRow(mui_listcolumnas->rowCount());
     /// 19/07/2007

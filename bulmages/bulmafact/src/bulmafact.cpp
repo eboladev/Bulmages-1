@@ -79,7 +79,7 @@ Bulmafact::Bulmafact(QString bd) : QMainWindow() {
     connect(pWorkspace, SIGNAL(windowActivated(QWidget *)), this, SLOT(informaindexador(QWidget *)));
 
     /// Aqui creamos la ventana dock para meter las distintas ventanas.
-    m_list = new listventanas(0);
+    m_list = new ListVentanas(0);
     m_list->setVisible(FALSE);
     /// Iniciamos el listventanas con el workspace para que pueda operar con el.
     m_list->setWorkspace(pWorkspace);

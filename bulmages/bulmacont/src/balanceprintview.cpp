@@ -26,6 +26,8 @@
 #include <QComboBox>
 #include <QToolButton>
 #include <QCheckBox>
+#include <QFile>
+#include <QTextStream>
 
 #include <busquedafecha.h>
 
@@ -40,8 +42,6 @@
 #ifndef WIN32
 #include <unistd.h>
 #endif
-
-using namespace std;
 
 
 ///
@@ -147,19 +147,34 @@ void BalancePrintView::presentar(char *tipus) {
         QString archivo = confpr->valor(CONF_DIR_USER) + "balance.txt";
         QString archivokugar = confpr->valor(CONF_DIR_USER) + "balance.kud";
         QString archivohtml = confpr->valor(CONF_DIR_USER) + "balance.html";
-        fprintf(stderr, "%s\n", archivo.toAscii().constData());
 
         /// Creamos los ficheros de salida.
-        ofstream fitxersortidakugar(archivokugar.toAscii().constData());
-        ofstream fitxersortidatxt(archivo.toAscii().constData());
-        ofstream fitxersortidahtml(archivohtml.toAscii().constData());
+    QFile filekugar;
+    filekugar.setFileName(archivokugar);
+    filekugar.open(QIODevice::WriteOnly);
+    QTextStream fitxersortidakugar(&filekugar);
 
+
+
+    QFile filehtml;
+    filehtml.setFileName(archivohtml);
+    filehtml.open(QIODevice::WriteOnly);
+    QTextStream fitxersortidahtml(&filehtml);
+
+
+    QFile filetxt;
+    filetxt.setFileName(archivo);
+    filetxt.open(QIODevice::WriteOnly);
+    QTextStream fitxersortidatxt(&filetxt);
+
+/*
         if (!fitxersortidatxt)
             txt = 0; /// Verificamos que se hayan creado correctamente los archivos.
         if (!fitxersortidahtml)
             html = 0; /// Se puede mejorar el tratamiento de errores.
         if (!fitxersortidakugar)
             kugar = 0;
+*/
 
         /// S&oacute;lo continuamos si hemos podido crear alg&uacute;n archivo.
         if (txt | html | kugar) {
@@ -186,9 +201,6 @@ void BalancePrintView::presentar(char *tipus) {
             /// cada hoja (cuenta) seg&uacute;n los per&iacute;odos que necesitemos acotar.
             /// Pero antes, preparamos las plantillas segun el tipo de salida seleccionado.
             if (kugar) {
-                fitxersortidakugar.setf(ios::fixed)
-                    ;
-                fitxersortidakugar.precision(2);
                 fitxersortidakugar << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" ;
                 fitxersortidakugar << "<!DOCTYPE KugarData [\n" ;
                 fitxersortidakugar << "\t<!ELEMENT KugarData (Row* )>\n" ;
@@ -218,9 +230,6 @@ void BalancePrintView::presentar(char *tipus) {
 
             if (txt) {
                 /// Presentaci&oacute;n txt normal.
-                fitxersortidatxt.setf(ios::fixed)
-                    ;
-                fitxersortidatxt.precision(2);
                 fitxersortidatxt << "                                        Balance \n" ;
                 fitxersortidatxt << "Fecha Inicial: " << finicial.toAscii().constData() << "   Fecha Final: " << ffinal.toAscii().constData() << endl;
                 fitxersortidatxt << "Cuenta            Denominación                        Saldo ant.         Debe        Haber        Saldo     Debe ej.    Haber ej.    Saldo ej.\n" ;
@@ -229,9 +238,6 @@ void BalancePrintView::presentar(char *tipus) {
 
             if (html) {
                 /// Presentaci&oacute;n html normal.
-                fitxersortidahtml.setf(ios::fixed)
-                    ;
-                fitxersortidahtml.precision(2);
                 fitxersortidahtml << "<html>\n";
                 fitxersortidahtml << "<head>\n";
                 fitxersortidahtml << "  <!DOCTYPE / public \"-//w3c//dtd xhtml 1.0 transitional//en\"\n";
@@ -296,7 +302,7 @@ void BalancePrintView::presentar(char *tipus) {
                 /// Imprimimos l&iacute;nea seg&uacute;n formato.
                 /// Presentaci&oacute;n en txt normal.
                 if (txt) {
-                    fitxersortidatxt << setiosflags(ios::left) << setw(10) <<  lcuenta.toAscii().constData() << " " << setw(40) <<  ldenominacion.left(40).toAscii().constData() << " " << resetiosflags(ios::left) << setw(12) <<  lsaldoant.toAscii().constData() << " " << setw(12) <<  ldebe.toAscii().constData() << " " << setw(12) <<  lhaber.toAscii().constData() << " " << setw(12) <<  lsaldo.toAscii().constData() << " " << setw(12) <<  ldebeej.toAscii().constData() << " " << setw(12) <<  lhaberej.toAscii().constData() << " " << setw(12) <<  lsaldoej.toAscii().constData() << " " << setw(12) <<  endl;
+                    fitxersortidatxt << lcuenta.toAscii().constData() <<  ldenominacion.left(40).toAscii().constData() << " " << lsaldoant.toAscii().constData() << " " <<  ldebe.toAscii().constData() << " " <<  lhaber.toAscii().constData() << " " << lsaldo.toAscii().constData() << " " << ldebeej.toAscii().constData() << " " << lhaberej.toAscii().constData() << " " << lsaldoej.toAscii().constData() << " ";
                 } // end if
 
                 /// Presentaci&oacute;n en html normal.
@@ -352,7 +358,7 @@ void BalancePrintView::presentar(char *tipus) {
             /// Presentaci&oacute;n txt normal.
             if (txt) {
                 fitxersortidatxt << "                                            __________________________________________________________________________________________________\n";
-                fitxersortidatxt << "                                            Totales " << setw(12) <<  totalsaldoant.toAscii().constData() << " " << setw(12) <<  totaldebe.toAscii().constData() << " " << setw(12) <<  totalhaber.toAscii().constData() << " " << setw(12) <<  totalsaldo.toAscii().constData()  << " " << setw(12) <<  totaldebeej.toAscii().constData() << " " << setw(12) <<  totalhaberej.toAscii().constData() << " " << setw(12) <<  totalsaldoej.toAscii().constData() << endl;
+                fitxersortidatxt << "                                            Totales " <<  totalsaldoant.toAscii().constData() << " " << totaldebe.toAscii().constData() << " " <<  totalhaber.toAscii().constData() << " " <<  totalsaldo.toAscii().constData()  << " " << totaldebeej.toAscii().constData() << " " <<  totalhaberej.toAscii().constData() << " " <<  totalsaldoej.toAscii().constData() << endl;
             }
 
             /// Presentaci&oacute;n html normal.
@@ -378,7 +384,9 @@ void BalancePrintView::presentar(char *tipus) {
             delete arbol;
             empresaBase()->commit();
 
-            fitxersortidatxt.close();
+            filetxt.close();
+	    filekugar.close();
+	    filehtml.close();
             /// Dependiendo del formato de salida ejecutaremos el programa correspondiente.
             /// Presentaci&oacxute;n txt normal.
             if (txt) {

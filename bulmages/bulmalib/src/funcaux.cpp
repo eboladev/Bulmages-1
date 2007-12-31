@@ -108,24 +108,6 @@ QString XMLProtect(const QString &string) {
 
 
 /// Extiende un string a un numero de cuenta sustituyendo los '.' por ceros.
-/// cad = Cadena inicial.
-/// num1 = Numero de digitos totales de la cuenta.
-/// Devuelve un string con el codigo de cuenta extendido al numero de digitos indicado.
-string extiendecodigo(string cad, unsigned int num1) {
-    string cod = cad;
-    unsigned int num = num1;
-    if (cod.length() < num) {
-        string str7(num - cod.length() + 1, '0');
-        int pos = cod.find(".", 0);
-        if (pos > 0) {
-            cod.replace(pos, 1, str7);
-        } // end if
-    } // end if
-    return (cod);
-}
-
-
-/// Extiende un string a un numero de cuenta sustituyendo los '.' por ceros.
 /// cad = Cadena inicial
 /// num1 = Numero de digitos totales de la cuenta.
 /// Devuelve un QString con la cuenta extendida al nmero de digitos indicado.
@@ -134,10 +116,10 @@ QString extiendecodigo(QString cad, unsigned int num1) {
     QString cod = cad;
     int num = num1;
     if (cod.length() < num) {
-        string str7(num - cod.length() + 1, '0');
+        QString str7(num - cod.length() + 1, '0');
         int pos = cod.indexOf(".", 0);
         if (pos > 0) {
-            cod.replace(pos, 1, str7.c_str());
+            cod.replace(pos, 1, str7);
         } // end if
     } // end if
     _depura("END funcaux::extiendecodigo", 0);
@@ -234,9 +216,9 @@ QString ajustacodigo(QString cad, unsigned int num1) {
     unsigned int longcad = cad.length();
     if (longcad > 4) {
         if (longcad < num1) {
-            string str7(num1 - longcad, '0');
+            QString str7(num1 - longcad, '0');
             cod = cad.left(4);
-            cod += QString(str7.c_str());
+            cod += str7;
             cod += cad.right(longcad - 4);
         } // end if
         if (longcad > num1) {

@@ -24,6 +24,8 @@
 
 #include <QWidget>
 #include <QCheckBox>
+#include <QFile>
+#include <QTextStream>
 
 #include "extractoprintview.h"
 #include "extractoview1.h"
@@ -34,7 +36,6 @@
 #include "busquedafecha.h"
 #include "busquedacuenta.h"
 
-using namespace std;
 
 /// Constructor de la clase que inicializa los parametros necesarios para esta
 /** @param emp Empresa con la que va a trabajar esta clase.
@@ -149,9 +150,9 @@ void ExtractoPrintView::presentar(char *tipus) {
     int idcuenta;
     int idasiento;
     int contrapartida;
-    string codcontrapartida;
+    QString codcontrapartida;
     int activo;
-    string cad;
+    QString cad;
     cursor2 *cursoraux, *cursoraux1, *cursoraux2, *cursoraux3;
     extractoview1 *extracto = ((Empresa *)empresaBase())->extractoempresa();
     QString finicial = extracto->m_fechainicial1->text();
@@ -163,31 +164,37 @@ void ExtractoPrintView::presentar(char *tipus) {
     txt =! strcmp(tipus,"txt");
     html =! strcmp(tipus,"html");
 
+
+        QString archivo = confpr->valor(CONF_DIR_USER) + "mayor.txt";
+        QString archivohtml = confpr->valor(CONF_DIR_USER) + "mayor.html";
+
+
+    QFile filehtml;
+    filehtml.setFileName(archivohtml);
+    filehtml.open(QIODevice::WriteOnly);
+    QTextStream fitxersortidahtml(&filehtml);
+
+
+    QFile filetxt;
+    filetxt.setFileName(archivo);
+    filetxt.open(QIODevice::WriteOnly);
+    QTextStream fitxersortidatxt(&filetxt);
+
+/*
     ofstream fitxersortidatxt("mayor.txt"); /// Creamos los archivos de salida.
     ofstream fitxersortidahtml("mayor.htm");
+*/
 
-    if (!fitxersortidatxt) {
-        txt = 0; /// Verificamos que se hayan creado correctamente los archivos.
-    } // end if
-    if (!fitxersortidahtml) {
-        html = 0; /// Se puede mejorar el tratamiento de errores.
-    } // end if
     /// S&oaqcute;lo continuamos si hemos podido crear alg&uacute;n archivo.
     if (txt | html) {
         if (txt) {
             /// Presentaci&oacute;n txt.
-            fitxersortidatxt.setf(ios::fixed)
-                ;
-            fitxersortidatxt.precision(2);
             fitxersortidatxt << "                                    MAYOR \n" ;
             fitxersortidatxt << "Fecha Inicial: " << finicial.toAscii().constData() << "   Fecha Final: " << ffinal.toAscii().constData() << endl;
             fitxersortidatxt << "_________________________________________________________________________________________________________\n";
         } // end if
         if (html) {
             /// Presentaci&oacute;n html.
-            fitxersortidahtml.setf(ios::fixed)
-                ;
-            fitxersortidahtml.precision(2);
             fitxersortidahtml << "<html>\n";
             fitxersortidahtml << "<head>\n";
             fitxersortidahtml << "  <!DOCTYPE / public \"-//w3c//dtd xhtml 1.0 transitional//en\"\n";
@@ -210,7 +217,7 @@ void ExtractoPrintView::presentar(char *tipus) {
             if (!cursoraux1->eof()) {
                 activo = strcmp((char *) cursoraux->valor("activo").toAscii().constData(), "f");
                 if (txt) {
-                    fitxersortidatxt << "\n\n" << setw(12) << cursoraux->valor("codigo").toAscii().constData() << setw(50) << cursoraux->valor("descripcion").toAscii().constData() << endl;
+                    fitxersortidatxt << "\n\n" << cursoraux->valor("codigo").toAscii().constData() << cursoraux->valor("descripcion").toAscii().constData() << endl;
                     if (activo) {
                         fitxersortidatxt << " Cuenta de activo";
                     } else {
@@ -240,7 +247,7 @@ void ExtractoPrintView::presentar(char *tipus) {
                     if (txt) {
                         /// Presentaci&oacute;n txt.
                         fitxersortidatxt << "\nAsiento  Fecha   Contrapartida   Descripcion                          Debe         Haber         Saldo\n";
-                        fitxersortidatxt << "                                                 SUMAS ANTERIORES...   " << setw(10) << debeinicial << setw(10) << haberinicial << setw(10) << saldoinicial << endl;
+                        fitxersortidatxt << "                                                 SUMAS ANTERIORES...   " <<  debeinicial << haberinicial << saldoinicial << endl;
                         fitxersortidatxt << "_________________________________________________________________________________________________________\n";
                     } // end if
 
@@ -273,11 +280,11 @@ void ExtractoPrintView::presentar(char *tipus) {
                         cad = cursoraux1->valor("fecha").toAscii().constData();
                         /// Presentaci&oacute;n txt.
                         if (txt) {
-                            fitxersortidatxt <<  setw(5) << idasiento << setw(14) << cad.substr(0,10).c_str() << setw(10) << codcontrapartida << "  " << setw(40)  << setiosflags(ios::left) << cursoraux1->valor("conceptocontable").toAscii().constData() << setw(10) << resetiosflags(ios::left) << debe << setw(10) << haber << setw(10) << saldo << endl;
+                            fitxersortidatxt <<  idasiento << cad.left(10) << codcontrapartida << "  " <<  cursoraux1->valor("conceptocontable").toAscii().constData() <<  debe << haber << saldo << endl;
                         } // end if
                         /// Presentaci&oacute;n html.
                         if (html) {
-                            fitxersortidahtml << " <tr><td class=assentamentmajor> " << idasiento << " </td><td> " << cad.substr(0,10).c_str() << " </td><td class=contrapartidamajor> " << codcontrapartida << " </td><td> " << cursoraux1->valor("conceptocontable").toAscii().constData() << " </td><td class=dosdecimals> " << debe << " </td><td class=dosdecimals> " << haber << " </td><td class=dosdecimals> " << saldo << " </td></tr>\n ";
+                            fitxersortidahtml << " <tr><td class=assentamentmajor> " << idasiento << " </td><td> " << cad.left(10) << " </td><td class=contrapartidamajor> " << codcontrapartida << " </td><td> " << cursoraux1->valor("conceptocontable").toAscii().constData() << " </td><td class=dosdecimals> " << debe << " </td><td class=dosdecimals> " << haber << " </td><td class=dosdecimals> " << saldo << " </td></tr>\n ";
                         } // end if
                         cursoraux3->cerrar();
                     } // end for
@@ -290,7 +297,7 @@ void ExtractoPrintView::presentar(char *tipus) {
                     if (txt) {
                         /// Presentaci&oacute;n txt.
                         fitxersortidatxt << "                                               __________________________________________________________\n";
-                        fitxersortidatxt << "                                                  TOTAL SUBCUENTA...   " << setw(10) << debefinal << setw(10) << haberfinal << setw(10) << saldofinal << endl;
+                        fitxersortidatxt << "                                                  TOTAL SUBCUENTA...   " <<  debefinal << haberfinal << saldofinal << endl;
                     } // end if
                     if (html) {
                         /// Presentaci&oacute;n html.
@@ -311,13 +318,13 @@ void ExtractoPrintView::presentar(char *tipus) {
     }
     if (txt) {
         /// Presentaci&oacute;n txt.
-        fitxersortidatxt.close();
+        filetxt.close();
         QString cad = confpr->valor(CONF_EDITOR) + " mayor.txt";
         system(cad.toAscii().constData());
     } // end if
     if (html) {
         /// Presentaci&oacute;n html.
-        fitxersortidahtml.close();
+        filehtml.close();
         QString cad = confpr->valor(CONF_NAVEGADOR) + " mayor.html";
         system(cad.toAscii().constData());
     } // end if

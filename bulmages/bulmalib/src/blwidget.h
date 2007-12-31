@@ -53,7 +53,7 @@ class BLWidget : public QWidget, public PEmpresaBase {
 public:
   BLWidget(QWidget *parent = 0, Qt::WFlags f = 0);
   BLWidget(EmpresaBase *, QWidget *parent = 0, Qt::WFlags f = 0);
-  ~BLWidget();
+  virtual ~BLWidget();
 };
 
 #endif

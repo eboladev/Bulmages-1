@@ -86,7 +86,7 @@ void libromayorprint::accept() {
     int idasiento;
     char *textasiento;
     int activo;
-    string cad;
+    QString cad;
     cursor2 *cursoraux, *cursoraux1, *cursoraux2;
 
     FILE *mifile;
@@ -134,7 +134,7 @@ void libromayorprint::accept() {
                     debefinal = debefinal + debe;
                     haberfinal = haberfinal + haber;
                     cad = cursoraux1->valor(4).toAscii().constData();
-                    fprintf(mifile,"%5.5d %10.10s %10.10s %-40.40s %10.2s %10.2s %10.2s\n", idasiento, cad.substr(1,10).c_str(), textasiento, cursoraux1->valor(5).toAscii().constData(), debe.toQString().toAscii().constData(), haber.toQString().toAscii().constData(), saldo.toQString().toAscii().constData());
+                    fprintf(mifile,"%5.5d %10.10s %10.10s %-40.40s %10.2s %10.2s %10.2s\n", idasiento, cad.left(10).toAscii(), textasiento, cursoraux1->valor(5).toAscii().constData(), debe.toQString().toAscii().constData(), haber.toQString().toAscii().constData(), saldo.toQString().toAscii().constData());
                 } // end for
                 if (activo) {
                     saldofinal = debefinal - haberfinal;

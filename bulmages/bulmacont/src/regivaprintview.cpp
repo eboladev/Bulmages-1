@@ -25,10 +25,9 @@
 #ifndef WIN32
 #include <unistd.h>
 #endif
-#include <fstream>
+
 #include "fixed.h"
 
-using namespace std;
 
 extern Mod300ps *modelo;
 
@@ -96,8 +95,6 @@ void regivaprintview::presentar(char *tipus) {
     _depura("regivaprintview::presentar", 0);
 #ifndef WIN32
     int txt, html, txtapren, htmlapren;
-    int error;
-    int pid;
     QString data;
     QString datahora;
 
@@ -114,16 +111,23 @@ void regivaprintview::presentar(char *tipus) {
     QString ffinal = fechafinal1->text();
 
     if (txt | html) {
-        char *argstxt[] = {"iva.txt", "iva.txt", NULL}; /// Presentaci&oacute;n txt normal.
-        char *argshtml[]={"iva.html","iva.html",NULL}; /// Presentaci&oacute;n html normal.
 
-        ofstream fitxersortidatxt(argstxt[0]); /// Creamos los archivos de salida.
-        ofstream fitxersortidahtml(argshtml[0]);
+        QString archivo = confpr->valor(CONF_DIR_USER) + "iva.txt";
+        QString archivohtml = confpr->valor(CONF_DIR_USER) + "iva.html";
 
-        if (!fitxersortidatxt)
-            txt = 0; ///  Verificamos que se hayan creado correctamente los archivos.
-        if (!fitxersortidahtml)
-            html = 0;  /// Se puede mejorar el tratamiento de errores.
+
+    QFile filehtml;
+    filehtml.setFileName(archivohtml);
+    filehtml.open(QIODevice::WriteOnly);
+    QTextStream fitxersortidahtml(&filehtml);
+
+
+    QFile filetxt;
+    filetxt.setFileName(archivo);
+    filetxt.open(QIODevice::WriteOnly);
+    QTextStream fitxersortidatxt(&filetxt);
+
+
         if (txt | html) { /// S&oacute;lo continuamos si hemos podido crear alg&uacute;n archivo.
             int num1;
             cursor2 *cursorapt;
@@ -138,9 +142,6 @@ void regivaprintview::presentar(char *tipus) {
 
             if (txt) {
                 /// Presentaci&oacute;n txt normal.
-                fitxersortidatxt.setf(ios::fixed)
-                    ;
-                fitxersortidatxt.precision(2);
                 fitxersortidatxt << "                                        IVA Repercutido \n" ;
                 fitxersortidatxt << "Fecha Inicial: " << finicial.toAscii().constData() <<
                 "   Fecha Final: " << ffinal.toAscii().constData() << endl;
@@ -149,9 +150,6 @@ void regivaprintview::presentar(char *tipus) {
             } // end if
             if (html) {
                 /// Presentaci&oacute;n html normal.
-                fitxersortidahtml.setf(ios::fixed)
-                    ;
-                fitxersortidahtml.precision(2);
                 fitxersortidahtml << "<html>\n";
                 fitxersortidahtml << "<head>\n";
                 fitxersortidahtml << "  <!DOCTYPE / public \"-//w3c//dtd xhtml 1.0 transitional//en\"\n";
@@ -173,7 +171,7 @@ void regivaprintview::presentar(char *tipus) {
                 numberstr = numberstr.left(numberstr.length() - 2) + "." + numberstr.right(2);
                 if (txt) {
                     /// Presentaci&oacute;n txt normal.
-                    fitxersortidatxt << setw(10) << cursorapt->valor("ordenasiento").toAscii().data() << " " <<
+                    fitxersortidatxt << cursorapt->valor("ordenasiento").toAscii().data() << " " <<
                     data.toAscii().constData() << " " <<
                     cursorapt->valor("contrapartida").toAscii().constData() << " " << cursorapt->valor("descripcion").toAscii().constData() << " " << cursorapt->valor("baseimp").toAscii().constData() << " " <<
                     cursorapt->valor("iva").toAscii().constData() << " " <<
@@ -211,9 +209,9 @@ void regivaprintview::presentar(char *tipus) {
                 QString iva = QString::number(cursorapt->valor("tbaseiva").toDouble(), 'f', 2);
                 QString bi = QString::number(numberstr.toDouble(), 'f', 2);
 
-                fitxersortidatxt << setiosflags( ios::left ) << setw(16) << cur->valor("nombretipoiva").toAscii().constData() << " IVA: ";
-                fitxersortidatxt << resetiosflags( ios::left ) << setw(12) << iva.toAscii().constData() << " BI: ";
-                fitxersortidatxt << setw(10) << bi.toAscii().constData() << endl;
+                fitxersortidatxt << cur->valor("nombretipoiva").toAscii().constData() << " IVA: ";
+                fitxersortidatxt << iva.toAscii().constData() << " BI: ";
+                fitxersortidatxt << bi.toAscii().constData() << endl;
 
                 tivar = tivar+baseiva;
                 tbaseimpr = tbaseimpr+baseimp;
@@ -232,18 +230,12 @@ void regivaprintview::presentar(char *tipus) {
             hoja = 0;
             if (txt) {
                 /// Presentaci&oacute;n txt normal.
-                fitxersortidatxt.setf(ios::fixed)
-                    ;
-                fitxersortidatxt.precision(2);
                 fitxersortidatxt << "                                        IVA Soportado \n" ;
                 fitxersortidatxt << "Asiento   Fecha     Cuenta   Descripción                        Subtotal Cuota   IVA       Total   Factura    CIF\n" ;
                 fitxersortidatxt << "_______________________________________________________________________________________________________________________\n";
             }
             if (html) {
                 /// Presentaci&oacute;n html normal.
-                fitxersortidahtml.setf(ios::fixed)
-                    ;
-                fitxersortidahtml.precision(2);
                 fitxersortidahtml << "<html>\n";
                 fitxersortidahtml << "<head>\n";
                 fitxersortidahtml << "  <!DOCTYPE / public \"-//w3c//dtd xhtml 1.0 transitional//en\"\n";
@@ -270,7 +262,7 @@ void regivaprintview::presentar(char *tipus) {
                 /// Acumulamos los totales para al final poder escribirlos.
                 if (txt) {
                     /// Presentaci&oacute;n txt normal.
-                    fitxersortidatxt << setiosflags(ios::left) << setw(8) << cursorapt->valor("ordenasiento").toAscii().constData() << setw(12) << data.toAscii().constData() << setw(9) << cursorapt->valor("codigo").toAscii().constData() << setw(30) << cursorapt->valor("descripcion").left(30).toAscii().constData() << " " << resetiosflags( ios::left ) << setw(12) << bi.toAscii().constData() << " " << setw(3) << cuota.toAscii().constData() << "%" << setw(9) << iva.toAscii().constData() << setw(12) << total.toAscii().constData() << setiosflags( ios::left ) << "  " << setw(10) << cursorapt->valor("factura").right(8).toAscii().constData() <<  setw(10) << cursorapt->valor("cif").toAscii().constData() << endl;
+                    fitxersortidatxt << cursorapt->valor("ordenasiento").toAscii().constData() <<  data.toAscii().constData() <<  cursorapt->valor("codigo").toAscii().constData() <<  cursorapt->valor("descripcion").left(30).toAscii().constData() << " " <<   bi.toAscii().constData() << " " <<  cuota.toAscii().constData() << "%" <<  iva.toAscii().constData() <<  total.toAscii().constData() <<  "  " <<  cursorapt->valor("factura").right(8).toAscii().constData() <<   cursorapt->valor("cif").toAscii().constData() << endl;
                 }
                 if (html) {
                     /// Presentaci&oacute;n html normal.
@@ -304,9 +296,9 @@ void regivaprintview::presentar(char *tipus) {
                 if (j == 0) {
                     fitxersortidatxt << endl;
                 } // end if
-                fitxersortidatxt << setiosflags(ios::left) << setw(16) << cur->valor("nombretipoiva").toAscii().constData() << " BI: ";
-                fitxersortidatxt << resetiosflags( ios::left ) << setw(12) << bi.toAscii().constData() << " IVA: ";
-                fitxersortidatxt << setw(10) << iva.toAscii().constData() << endl;
+                fitxersortidatxt << cur->valor("nombretipoiva").toAscii().constData() << " BI: ";
+                fitxersortidatxt <<  bi.toAscii().constData() << " IVA: ";
+                fitxersortidatxt << iva.toAscii().constData() << endl;
 
                 tivas = tivas + ivacalculado;
                 tbaseimps = tbaseimps + baseiva;
@@ -317,27 +309,16 @@ void regivaprintview::presentar(char *tipus) {
 
             /// Ahora cerramos los ficheros.
             if (txt) {
-                fitxersortidatxt.close();
-                /// Presentaci&oacute;n txt normal.
-                if ((pid=fork()) < 0) {
-                    perror ("Fork failed");
-                    exit(errno);
-                } // end if
-                if (!pid) {
-                    error = execvp(confpr->valor(CONF_EDITOR).toAscii(), argstxt);
-                } // end if
+                filetxt.close();
+		QString comando = confpr->valor(CONF_EDITOR) + " " + archivo + " &";
+		system (comando.toAscii());
             } // end if
             if (html) {
                 fitxersortidahtml << "\n</table>\n</body>\n</html>\n";
-                fitxersortidahtml.close();
+                filehtml.close();
                 /// Presentaci&oacute;n html normal.
-                if ((pid = fork()) < 0) {
-                    perror("Fork failed");
-                    exit(errno);
-                } // end if
-                if (!pid) {
-                    error = execvp(confpr->valor(CONF_NAVEGADOR).toAscii(),argshtml);
-                } // end if
+		QString comando = confpr->valor(CONF_NAVEGADOR) + " " + archivohtml + " &";
+		system (comando.toAscii());
             } // end if
         }
     }

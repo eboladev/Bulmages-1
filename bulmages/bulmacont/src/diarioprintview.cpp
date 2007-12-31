@@ -30,7 +30,6 @@
 #include "selectcanalview.h"
 #include "diarioview.h"
 
-using namespace std;
 
 
 ///
@@ -135,13 +134,13 @@ void DiarioPrintView::presentar(char *tipus) {
     float debe, haber;
     int idcuenta;
     int idasiento;
-    char data[15];
-    string fecha;
-    string fechaasiento;
-    string descripcion;
-    string concepto;
-    string codigocuenta;
-    string cad;
+    QString data;
+    QString fecha;
+    QString fechaasiento;
+    QString descripcion;
+    QString concepto;
+    QString codigocuenta;
+    QString cad;
     cursor2 *cursoraux;
 
     /// Tipo de presentaci&oacute;n.
@@ -156,23 +155,28 @@ void DiarioPrintView::presentar(char *tipus) {
 
     if (txt | html) {
         /// Creamos los archivos de salida.
-        ofstream fitxersortidatxt("diario.txt");
-        ofstream fitxersortidahtml("diario.html");
 
-        if (!fitxersortidatxt) {
-            /// Verificamos que se hayan creado correctamente los archivos.
-            txt = 0;
-        } // end if
-        if (!fitxersortidahtml) {
-            html = 0;
-        } // end if
+        QString archivo = confpr->valor(CONF_DIR_USER) + "diario.txt";
+        QString archivohtml = confpr->valor(CONF_DIR_USER) + "diario.html";
+
+
+    QFile filehtml;
+    filehtml.setFileName(archivohtml);
+    filehtml.open(QIODevice::WriteOnly);
+    QTextStream fitxersortidahtml(&filehtml);
+
+
+    QFile filetxt;
+    filetxt.setFileName(archivo);
+    filetxt.open(QIODevice::WriteOnly);
+    QTextStream fitxersortidatxt(&filetxt);
+
+
 
         if (txt | html) {
             /// S&oacute;lo continuamos se hemos podido crear alg&uacute;n archivo.
             if (txt) {
                 /// Presentaci&oacute;n txt normal.
-                fitxersortidatxt.setf(ios::fixed);
-                fitxersortidatxt.precision(2);
                 fitxersortidatxt << "                                        LLIBRE DIARI \n" ;
                 fitxersortidatxt << "Data Inicial: " << finicial.toAscii().constData() << "   Data Final: " << ffinal.toAscii().constData() << endl;
                 fitxersortidatxt << "ASIENTO   FECHA    SUBCUENTA   DESCRIPCION                                   DEBE     HABER \n" ;
@@ -180,8 +184,6 @@ void DiarioPrintView::presentar(char *tipus) {
             } // end if
             if (html) {
                 /// Presentaci&oacute;n html normal.
-                fitxersortidahtml.setf(ios::fixed);
-                fitxersortidahtml.precision(2);
                 fitxersortidahtml << "<html>\n";
                 fitxersortidahtml << "<head>\n";
                 fitxersortidahtml << "  <!DOCTYPE / public \"-//w3c//dtd xhtml 1.0 transitional//en\"\n";
@@ -209,26 +211,25 @@ void DiarioPrintView::presentar(char *tipus) {
                 haber = atof(cursoraux->valor("haber").toAscii());
                 idcuenta = atoi(cursoraux->valor("idcuenta").toAscii());
                 codigocuenta = cursoraux->valor("codigocuenta").toAscii().constData();
-                strncpy(data,fecha.c_str(), 10);
-                data[10] = '\0';
+		data = fecha.left(10);
                 if (txt) {
                     /// Presentaci&oacute;n txt normal.
-                    fitxersortidatxt << setw(5) << idasiento << "  " << setw(10) << data << " " << setw(10) << codigocuenta.c_str() <<  "  " << setw(40) <<  setiosflags(ios::left) << descripcion.c_str() <<  resetiosflags(ios::left)<< " " << setw(10) << debe << " " << setw(10) << haber << endl;
+                    fitxersortidatxt << idasiento << "  " << data << " " << codigocuenta <<  "  " << descripcion <<  " " << debe << " " << haber << endl;
                 } // end if
                 if (html) {
                     /// Presentaci&oacute; html normal.
-                    fitxersortidahtml << "<tr><td class=assentamentdiari>" << idasiento << "</td><td class=datadiari>" << data << "</td><td class=codicomptediari>" << codigocuenta.c_str() << "</td><td class=descripciodiari>" <<  descripcion.c_str() << "</td><td class=dosdecimals>" << debe << "</td><td class=dosdecimals>" << haber << "</td></tr>\n";
+                    fitxersortidahtml << "<tr><td class=assentamentdiari>" << idasiento << "</td><td class=datadiari>" << data << "</td><td class=codicomptediari>" << codigocuenta << "</td><td class=descripciodiari>" <<  descripcion << "</td><td class=dosdecimals>" << debe << "</td><td class=dosdecimals>" << haber << "</td></tr>\n";
                 } // end if
             } // end for
             delete cursoraux;
             if (html) {
                 /// Presentaci&oacute;n html normal.
                 fitxersortidahtml << "</table>\n<hr>\n</body>\n</html>\n";
-                fitxersortidahtml.close();
+                filehtml.close();
             } // end if
             if (txt) {
                 fitxersortidatxt << "_______________________________________________________________________________________________\n";
-                fitxersortidatxt.close();
+                filetxt.close();
             } // end if
         } // end if
         if (txt) {
@@ -242,37 +243,36 @@ void DiarioPrintView::presentar(char *tipus) {
             system(cadaux.toAscii());
         } // end if
     } // end if
-    if (txtapren | htmlapren ) {
-        char *argstxt[] = {"diariaprenentatge.txt", "diariaprenentatge.txt", NULL};
-        char *argshtml[] = {"diariaprenentatge.html", "diariaprenentatge.html", NULL};
-        /// Creamos los archivos de salida.
-        ofstream fitxersortidatxt(argstxt[0]);
-        ofstream fitxersortidahtml(argshtml[0]);
 
-        if (!fitxersortidatxt) {
-            /// Verificamos que se hayan podido crear correctamente los archivos.
-            txtapren = 0;
-        } // end if
-        if (!fitxersortidahtml) {
-            /// Se puede mejorar el tratamiento de errores.
-            htmlapren = 0;
-        } // end if
+
+    if (txtapren | htmlapren ) {
+
+        QString archivo = confpr->valor(CONF_DIR_USER) + "diario.txt";
+        QString archivohtml = confpr->valor(CONF_DIR_USER) + "diario.html";
+
+
+    QFile filehtml;
+    filehtml.setFileName(archivohtml);
+    filehtml.open(QIODevice::WriteOnly);
+    QTextStream fitxersortidahtml(&filehtml);
+
+
+    QFile filetxt;
+    filetxt.setFileName(archivo);
+    filetxt.open(QIODevice::WriteOnly);
+    QTextStream fitxersortidatxt(&filetxt);
+
+
         if (txtapren | htmlapren) {
             /// S&oacute;lo continuamos si hemos podido crear alg&uacute;n archivo.
             if (txtapren) {
                 /// Presentaci&oacute;n txt formato aprendizaje.
-                fitxersortidatxt.setf(ios::fixed)
-                    ;
-                fitxersortidatxt.precision(2);
                 fitxersortidatxt << "                                                      LLIBRE DIARI \n" ;
                 fitxersortidatxt << "Data Inicial: " << finicial.toAscii().constData() << "   Data Final: " << ffinal.toAscii().constData() << endl;
                 fitxersortidatxt << "___________________________________________________________________________________________________________________________________\n";
             } // end if
             if (htmlapren) {
                 /// Presentaci&oacute;n html formato aprendizaje.
-                fitxersortidahtml.setf(ios::fixed)
-                    ;
-                fitxersortidahtml.precision(2);
                 fitxersortidahtml << "<html>\n";
                 fitxersortidahtml << "<head>\n";
                 fitxersortidahtml << "  <!DOCTYPE / public \"-//w3c//dtd xhtml 1.0 transitional//en\"\n";
@@ -308,7 +308,7 @@ void DiarioPrintView::presentar(char *tipus) {
                     if (txtapren) {
                         /// Presentaci&oacute;n txt formato aprendizaje.
                         sprintf(codicompte,"( %s )",cursasiento->valor("codigo").toAscii().constData());
-                        fitxersortidatxt << setw(12) << atof(cursasiento->valor("debe").toAscii()) << "  " << setw(10) << codicompte << "  " << cursasiento->valor("nomcuenta").toAscii().constData() << endl;
+                        fitxersortidatxt <<  atof(cursasiento->valor("debe").toAscii()) << "  " <<  codicompte << "  " << cursasiento->valor("nomcuenta").toAscii().constData() << endl;
                     } // end if
                     if (htmlapren) {
                         /// Presentaci&oacute;n html formato aprendizaje.
@@ -327,7 +327,7 @@ void DiarioPrintView::presentar(char *tipus) {
                     if (txtapren) {
                         /// Presentaci&oacute;n txt formato aprendizaje.
                         sprintf(codicompte, "( %s )", cursasiento->valor("codigo").toAscii().constData());
-                        fitxersortidatxt << "                                                                 a  " << setw(30) << cursasiento->valor("nomcuenta").toAscii().constData() << "  " << setw(10) << codicompte << "  " << setw(12) <<  atof(cursasiento->valor("haber").toAscii()) <<endl;
+                        fitxersortidatxt << "                                                                 a  " <<  cursasiento->valor("nomcuenta").toAscii().constData() << "  " << codicompte << "  " <<  atof(cursasiento->valor("haber").toAscii()) <<endl;
                     } // end if
                     if (htmlapren) {
                         /// Presentaci&oacute;n html formato aprendizaje.
@@ -343,11 +343,11 @@ void DiarioPrintView::presentar(char *tipus) {
 
             if (txtapren) {
                 fitxersortidatxt << "____________________________________________________________________________________________________________________________________\n" ;//presentació text format aprenentatge
-                fitxersortidatxt.close();
+                filetxt.close();
             } // end if
             if (htmlapren) {
                 fitxersortidahtml << "<tr><td colspan=\"7\"  class=liniadiariapren>\n_____________________________________________________________________________________________________________\n<hr></td></tr>\n</table>\n</body></html>\n";     //presentació html format aprenentatge
-                fitxersortidahtml.close();
+                filehtml.close();
             } // end if
             if (txtapren) {
                 /// Presentaci&oacute;n txt formato aprendizaje.

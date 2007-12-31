@@ -28,11 +28,11 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #endif
+/*
 #include <errno.h>
 #include <sys/types.h>
 #include <string>
-
-using std::string;
+*/
 
 #include "blwidget.h"
 #include "empresa.h"
