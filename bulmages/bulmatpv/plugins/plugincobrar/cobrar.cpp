@@ -20,4 +20,3 @@ void Cobrar::on_mui_abrircajon_clicked()
 {
     ( ( EmpresaTPV * ) empresaBase() ) ->pulsaTecla ( Qt::Key_F3 );
 }
-}

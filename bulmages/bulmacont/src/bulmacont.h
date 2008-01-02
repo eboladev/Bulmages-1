@@ -55,7 +55,7 @@ private:
     Empresa *m_empresaactual;
     /// m_pWorkspace is the MDI frame widget that handles MDI child widgets.
     QWorkspace2 *m_pWorkspace;
-    listventanas *m_list;
+    ListVentanas *m_list;
 
 public:
     Bulmacont ( QWidget *parent = 0, Qt::WFlags f = Qt::Window, QString DB = "" );

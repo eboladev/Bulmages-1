@@ -43,5 +43,9 @@ message(STATUS "Working on installbulmages")
 add_subdirectory(installbulmages)
 
 
-
+########### private code ########
+if(EXISTS "${CMAKE_SOURCE_DIR}/CMakeLists.txt.private")
+   message(STATUS "Private code inserted")
+   include("${CMAKE_SOURCE_DIR}/CMakeLists.txt.private")
+endif(EXISTS "${CMAKE_SOURCE_DIR}/CMakeLists.txt.private")
 

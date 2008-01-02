@@ -20,6 +20,7 @@ add_subdirectory(plugintipostrabajo)
 add_subdirectory(plugincuadrante)
 add_subdirectory(pluginasterisk)
 add_subdirectory(plugintpv)
+add_subdirectory(plugindebugbf)
 
 # if you want to add some private code
 # simple put your add_directory in a
