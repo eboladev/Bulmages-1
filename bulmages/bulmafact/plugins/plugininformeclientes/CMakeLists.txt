@@ -50,3 +50,10 @@ set_target_properties( ${plugin} PROPERTIES
 target_link_libraries(${plugin} bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 install_targets(/lib/bulmafact/plugins ${plugin})
 add_dependencies(${plugin} bulmafact bulmalib)
+
+set(files informeclientes.png)
+set(files1 informeclientes.rml informearticulos.rml)
+
+install(FILES ${files} DESTINATION share/bulmages/icons)
+install (FILES ${files1} DESTINATION share/bulmages/openreports)
+

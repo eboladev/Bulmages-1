@@ -36,9 +36,9 @@
 #include "balanceview.h"
 
 
-///
+/// Constructor de la clase
 /**
-\param parent
+\param parent Widget padre del SubFormulario
 **/
 SubForm2Bc::SubForm2Bc ( QWidget *parent ) : SubForm3 ( parent )
 {
@@ -49,8 +49,9 @@ SubForm2Bc::SubForm2Bc ( QWidget *parent ) : SubForm3 ( parent )
 }
 
 
-///
+/// Destructor del Subformulario
 /**
+Libera la memoria que se haya reservado durante el funcionamiento de la clase.
 **/
 SubForm2Bc::~SubForm2Bc()
 {
@@ -84,11 +85,50 @@ Empresa *SubForm2Bc::empresaBase()
     return ( ( Empresa * ) PEmpresaBase::empresaBase() );
 }
 
-
-///
+/// Se ha pulsado la combinacion de teclas Ctrl + +
 /**
-\param row
-\param col
+\param row Fila en la que se ha hecho la pulsacion
+\param col Columna en la que se ha hecho la pulsacion
+\return
+**/
+void SubForm2Bc::on_mui_list_pressedPlus ( int row, int col )
+{
+    _depura ( "SubForm2Bc::on_mui_list_pressedPlus", 0 );
+    /// Cogemos la informacion que ha producido el eento
+    SDBRecord *rec = lineaat ( row );
+    SDBCampo *camp = ( SDBCampo * ) item ( row, col );
+    /// Si no es un campo de tipo debe o haber salimos.
+    if ( camp->nomcampo() != "debe" && camp->nomcampo() != "haber" )
+        return;
+
+    /// Ponemos los campos a cero en esta fila
+    rec->setDBvalue("debe", "0");
+    rec->setDBvalue("haber", "0");
+
+    /// Hacemos las sumas y las restamos
+    Fixed debe = sumarCampo("debe");
+    Fixed haber = sumarCampo("haber");
+    Fixed result = debe -haber;
+
+    /// Segun el resultado imputamos al debe o al haber para que la cosa cuadre.
+    if (result > 0) {
+	rec->setDBvalue("haber", result.toQString());
+    } // end if
+
+    if (result < 0) {
+	result = result * -1;
+	rec->setDBvalue("debe", result.toQString());
+    } // end if
+
+    /// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
+    on_mui_list_cellChanged ( row, col );
+    _depura ( "SubForm2Bc::on_mui_list_pressedPlus", 0 );
+}
+
+/// Se ha pulsado la combinacion de teclas Ctrl + *
+/**
+\param row Fila en la que se ha hecho la pulsacion
+\param col Columna en la que se ha hecho la pulsacion
 \return
 **/
 void SubForm2Bc::on_mui_list_pressedAsterisk ( int row, int col )
@@ -117,7 +157,7 @@ void SubForm2Bc::on_mui_list_pressedAsterisk ( int row, int col )
 
     diag->exec();
     QString codigo = listcuentas->codcuenta();
-    //delete diag;
+    delete diag;
 
     if ( codigo != "" ) {
         QString query = "SELECT * FROM cuenta WHERE codigo = '" + codigo + "'";
@@ -155,10 +195,10 @@ void SubForm2Bc::on_mui_list_pressedAsterisk ( int row, int col )
 }
 
 
-///
+/// Se ha pulsado Ctrl + / en el subformulario
 /**
-\param row
-\param col1
+\param row Fila en la que se ha hecho la pulsacion
+\param col1 Columna en la que se ha hecho la pulsacion
 \return
 **/
 void SubForm2Bc::on_mui_list_pressedSlash ( int row, int col )
@@ -188,11 +228,11 @@ void SubForm2Bc::on_mui_list_pressedSlash ( int row, int col )
     } // end if
     QString text = editaTexto ( camp->text() );
     camp->set ( text );
-    _depura ( "END SubForm2Bc::on_mui_list_pressedSlash", 2 );
+    _depura ( "END SubForm2Bc::on_mui_list_pressedSlash", 0 );
 }
 
 
-///
+/// Slot que se activa al cambiar de celda dentro del SubFormulario
 /**
 \param row
 \param col

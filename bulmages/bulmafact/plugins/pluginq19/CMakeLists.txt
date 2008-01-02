@@ -51,3 +51,9 @@ target_link_libraries(${plugin} bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 install_targets(/lib/bulmafact/plugins ${plugin})
 
 add_dependencies(${plugin} bulmafact bulmalib)
+
+set(files q19.png)
+install(FILES ${files} DESTINATION share/bulmages/icons)
+
+set(files1 recibos.rml)
+install(FILES ${files1} DESTINATION share/bulmages/openreports)
