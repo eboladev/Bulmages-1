@@ -50,3 +50,8 @@ set_target_properties( ${plugin} PROPERTIES
 target_link_libraries(${plugin} bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 install_targets(/lib/bulmafact/plugins ${plugin})
 add_dependencies(${plugin} bulmafact bulmalib)
+
+set(files dbmodels/revf-plugincontratos-0.9.1.sql)
+
+install(FILES ${files} DESTINATION share/bulmages/dbmodels/plugins)
+
