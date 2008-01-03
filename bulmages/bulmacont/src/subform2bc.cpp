@@ -102,22 +102,22 @@ void SubForm2Bc::on_mui_list_pressedPlus ( int row, int col )
         return;
 
     /// Ponemos los campos a cero en esta fila
-    rec->setDBvalue("debe", "0");
-    rec->setDBvalue("haber", "0");
+    rec->setDBvalue ( "debe", "0" );
+    rec->setDBvalue ( "haber", "0" );
 
     /// Hacemos las sumas y las restamos
-    Fixed debe = sumarCampo("debe");
-    Fixed haber = sumarCampo("haber");
-    Fixed result = debe -haber;
+    Fixed debe = sumarCampo ( "debe" );
+    Fixed haber = sumarCampo ( "haber" );
+    Fixed result = debe - haber;
 
     /// Segun el resultado imputamos al debe o al haber para que la cosa cuadre.
-    if (result > 0) {
-	rec->setDBvalue("haber", result.toQString());
+    if ( result > 0 ) {
+        rec->setDBvalue ( "haber", result.toQString() );
     } // end if
 
-    if (result < 0) {
-	result = result * -1;
-	rec->setDBvalue("debe", result.toQString());
+    if ( result < 0 ) {
+        result = result * -1;
+        rec->setDBvalue ( "debe", result.toQString() );
     } // end if
 
     /// Invocamos la finalizacion de edicion para que todos los campos se actualicen.

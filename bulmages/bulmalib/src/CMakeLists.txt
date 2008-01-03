@@ -108,6 +108,10 @@ QT4_ADD_RESOURCES(bulmalib_RCC_SRCS ${bulmalib_RCCS})
 
 #ADD_DEFINITIONS(${QT_DEFINITIONS})
 ADD_DEFINITIONS(-DQT_SHARED)
+
+# Defines if we want our own debugging code
+ADD_DEFINITIONS(-DEPURA_DEBUG)
+
 # build sources, moc'd sources, and rcc'd sources
 
 add_library(bulmalib SHARED ${bulmalib_MOC_SRCS} ${bulmalib_UIS_H}

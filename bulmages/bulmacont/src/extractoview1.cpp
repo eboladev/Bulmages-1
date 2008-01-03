@@ -451,29 +451,28 @@ void extractoview1::inicializa1 ( QString codinicial, QString codfinal, QString 
 void extractoview1::on_mui_casacion_clicked()
 {
     _depura ( "extractoview1::on_mui_casacion_clicked", 0 );
-    QString query;
-    query.sprintf ( "SELECT * FROM apunte WHERE punteo = FALSE AND haber <> 0 AND idcuenta = %s ORDER BY fecha", m_cursorcta->valor ( "idcuenta" ).toAscii().constData() );
-    empresaBase() ->begin();
-    cursor2 *curshaber = empresaBase() ->cargacursor ( query, "curshaber" );
-    empresaBase() ->commit();
-    while ( !curshaber->eof() ) {
-        query.sprintf ( "SELECT * FROM apunte WHERE punteo = FALSE AND debe = %s AND idcuenta = %s ORDER BY fecha", curshaber->valor ( "haber" ).toAscii().constData(), m_cursorcta->valor ( "idcuenta" ).toAscii().constData() );
-        empresaBase() ->begin();
-        cursor2 *cursdebe = empresaBase() ->cargacursor ( query.toAscii(), "cursdebe" );
-        empresaBase() ->commit();
-        if ( !cursdebe->eof() ) {
-            query.sprintf ( "UPDATE apunte set punteo = TRUE WHERE idapunte = %s", curshaber->valor ( "idapunte" ).toAscii().constData() );
-            empresaBase() ->begin();
-            empresaBase() ->ejecuta ( query );
-            query.sprintf ( "UPDATE apunte SET punteo = TRUE WHERE idapunte = %s", cursdebe->valor ( "idapunte" ).toAscii().constData() );
-            empresaBase() ->ejecuta ( query );
-            empresaBase() ->commit();
-        } // end if
-        delete cursdebe;
-        curshaber->siguienteregistro();
-    } // end while
-    delete curshaber;
-    presentar();
+    try {
+        QString query = "SELECT * FROM apunte WHERE punteo = FALSE AND haber <> 0 AND idcuenta = " + m_cursorcta->valor ( "idcuenta" ) + " ORDER BY fecha";
+        cursor2 *curshaber = empresaBase() ->cargacursor ( query );
+        while ( !curshaber->eof() ) {
+            query =  "SELECT * FROM apunte WHERE punteo = FALSE AND debe = " + curshaber->valor ( "haber" ) + " AND idcuenta = " + m_cursorcta->valor ( "idcuenta" ) + " ORDER BY fecha";
+            cursor2 *cursdebe = empresaBase() ->cargacursor ( query.toAscii(), "cursdebe" );
+            if ( !cursdebe->eof() ) {
+                query = "UPDATE apunte set punteo = TRUE WHERE idapunte = " + curshaber->valor ( "idapunte" );
+                empresaBase() ->begin();
+                empresaBase() ->ejecuta ( query );
+                query = "UPDATE apunte SET punteo = TRUE WHERE idapunte = " + cursdebe->valor ( "idapunte" );
+                empresaBase() ->ejecuta ( query );
+                empresaBase() ->commit();
+            } // end if
+            delete cursdebe;
+            curshaber->siguienteregistro();
+        } // end while
+        delete curshaber;
+        presentar();
+    } catch ( ... ) {
+        mensajeError ( "Se produjo un error en la casacion" );
+    } // end try
     _depura ( "END extractoview1::on_mui_casacion_clicked", 0 );
 }
 

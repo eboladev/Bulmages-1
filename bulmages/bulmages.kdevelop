@@ -78,7 +78,7 @@
       <envvars/>
     </run>
     <general>
-      <activedir>bulmatpv/plugins/plugintotal</activedir>
+      <activedir>bulmacont/src</activedir>
     </general>
     <make>
       <abortonerror>true</abortonerror>
