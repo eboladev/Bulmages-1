@@ -45,6 +45,7 @@ int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab )
     _depura ( "TrabajadorView_TrabajadorView_Post", 0 );
 
     trab->addDBCampo ( "passasterisktrabajador", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Trabajador", "Password." ) );
+    trab->addDBCampo ( "validasiempreasterisktrabajador", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate ( "Trabajador", "Valida Siempre." ) );
 
 
     QHBoxLayout *hboxLayout160 = new QHBoxLayout();
@@ -60,6 +61,15 @@ int TrabajadorView_TrabajadorView_Post ( TrabajadorView *trab )
     QLineEdit *passtrab = new QLineEdit ( trab->m_frameplugin );
     passtrab->setObjectName ( QString::fromUtf8 ( "mui_passasterisktrabajador" ) );
     hboxLayout160->addWidget ( passtrab );
+
+    QLabel *textLabel2_9_27 = new QLabel ( trab->m_frameplugin );
+    textLabel2_9_27->setObjectName ( QString::fromUtf8 ( "textLabel2_9_10" ) );
+    hboxLayout160->addWidget ( textLabel2_9_27 );
+    textLabel2_9_27->setText ( "Valida siempre" );
+
+    QCheckBox *vals = new QCheckBox ( trab->m_frameplugin );
+    vals->setObjectName ( QString::fromUtf8 ( "mui_validasiempreasterisktrabajador" ) );
+    hboxLayout160->addWidget ( vals );
 
 
     /// Comprobamos que exista el layout.
@@ -171,8 +181,16 @@ int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView *trab )
 {
 
     QLineEdit * l = trab->findChild<QLineEdit *> ( "mui_passasterisktrabajador" );
+    QCheckBox * l9 = trab->findChild<QCheckBox *> ( "mui_validasiempreasterisktrabajador" );
+
     QString query = "UPDATE trabajador SET ";
     query += " passasterisktrabajador = '" + l->text() + "'";
+    query += " ,validasiempreasterisktrabajador = ";
+    if (l9->isChecked()) {
+	 query += "TRUE";
+    } else {
+	query += "FALSE";
+    } // end if
     query += " WHERE idtrabajador=" + trab->empresaBase() ->sanearCadena ( trab->idtrabajador() );
     trab->empresaBase() ->begin();
     trab->empresaBase() ->ejecuta ( query );
@@ -193,10 +211,12 @@ int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView *trab )
 int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab )
 {
     QLineEdit * l = trab->findChild<QLineEdit *> ( "mui_passasterisktrabajador" );
+    QCheckBox * l9 = trab->findChild<QCheckBox *> ( "mui_validasiempreasterisktrabajador" );
 
-    cursor2 *cur = trab->empresaBase() ->cargacursor ( "SELECT passasterisktrabajador FROM trabajador WHERE idtrabajador = " + trab->idtrabajador() );
+    cursor2 *cur = trab->empresaBase() ->cargacursor ( "SELECT passasterisktrabajador, validasiempreasterisktrabajador FROM trabajador WHERE idtrabajador = " + trab->idtrabajador() );
     if ( !cur->eof() ) {
         l->setText ( cur->valor ( "passasterisktrabajador" ) );
+	l9->setChecked((cur->valor ( "validasiempreasterisktrabajador") == "t"));
     } // end if
     delete cur;
 

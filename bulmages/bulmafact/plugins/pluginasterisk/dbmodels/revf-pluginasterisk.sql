@@ -76,6 +76,11 @@ BEGIN
 
 	END IF;
 
+        SELECT INTO as * FROM pg_attribute WHERE attname=''validasiempreasterisktrabajador'';
+	IF NOT FOUND THEN
+	    ALTER TABLE trabajador ADD COLUMN validasiempreasterisktrabajador BOOLEAN DEFAULT FALSE;
+	END IF;
+
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;
@@ -118,9 +123,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre=''DBRev-ValAsterisk'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.9.3-0001'' WHERE nombre=''DBRev-ValAsterisk'';
+		UPDATE CONFIGURACION SET valor=''0.11-001'' WHERE nombre=''DBRev-ValAsterisk'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DBRev-ValAsterisk'', ''0.9.3-0001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DBRev-ValAsterisk'', ''0.11-001'');
 	END IF;
 	RETURN 0;
 END;
