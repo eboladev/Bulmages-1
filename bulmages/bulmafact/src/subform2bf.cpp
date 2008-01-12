@@ -170,6 +170,8 @@ void SubForm2Bf::on_mui_list_pressedMinus ( int row, int col )
 void SubForm2Bf::on_mui_list_cellChanged ( int row, int col )
 {
     _depura ( "SubForm2Bf::on_mui_list_cellChanged", 0, QString::number ( row ) + " " + QString::number ( col ) );
+    m_prevRow = row;
+    m_prevCol = col;
 
     if ( !m_procesacambios ) {
         _depura ( "SubForm2Bf::on_mui_list_cellChanged", 0, QString::number ( row ) + " " + QString::number ( col ) + " m_procesacambios es FALSE" );
@@ -443,6 +445,24 @@ int SubForm2Bf::cerrarEditor()
 }
 
 
+/// Devuelve el identificador de cliente, si es un subformulario de cliente.
+/**
+\return El identificador de cliente
+**/
+QString SubForm2Bf::idcliente(){
+	return mdb_idcliente;
+}
+
+
+/// Devuelve el identificador de proveedor, si es un subformulario de proveedor.
+/**
+\return El identificador de proveedor
+**/
+QString SubForm2Bf::idproveedor() {
+	return mdb_idproveedor;
+}
+
+
 /// ===============================================================
 ///  Tratamientos del Item Delegate
 /// ===============================================================
@@ -704,4 +724,5 @@ int QSubForm2BfDelegate::cerrarEditor ( QWidget *editor )
     _depura ( "END QSubForm2BfDelegate::cerrarEditor", 0 );
     return 0;
 }
+
 

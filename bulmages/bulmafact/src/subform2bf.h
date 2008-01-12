@@ -77,6 +77,8 @@ public:
     virtual int cerrarEditor();
     void setIdCliente ( QString id );
     void setIdProveedor ( QString id );
+    QString idcliente();
+    QString idproveedor();
 
 public slots:
     virtual void on_mui_list_pressedSlash ( int row, int col );

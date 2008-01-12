@@ -1,0 +1,61 @@
+#!/bin/bash
+
+# (C) Tomeu Borras Riera, tborras@conetxia.com
+# Script que hace enlaces de las aplicaciones a las ubicaciones pertienentes
+# Debe ejecutarse como root
+
+rm /usr/bin/bulmacont
+ln -s $1/bulmacont /usr/bin/bulmacont
+
+rm /usr/bin/bulmafact
+ln -s $1/bulmafact /usr/bin/bulmafact
+
+rm /usr/bin/bulmatpv
+ln -s $1/bulmatpv /usr/bin/bulmatpv
+
+rm /usr/bin/bgtrml2pdf.py
+ln -s $1/bgtrml2pdf/bgtrml2pdf.py /usr/bin/bgtrml2pdf.py
+
+rm /usr/bin/bulmages
+ln -s $1/bulmages /usr/bin/bulmages
+
+rm -rf /usr/share/bulmages
+ln -s $1 /usr/share/bulmages
+
+rm /usr/lib/libbulmalib*
+ln -s $1/libbulmalib.so /usr/lib/libbulmalib.so
+ln -s $1/libbulmalib.so.0 /usr/lib/libbulmalib.so.0
+ln -s $1/libbulmalib.so.0.11 /usr/lib/libbulmalib.so.0.11
+ln -s $1/libbulmalib.so.0.11.0 /usr/lib/libbulmalib.so.0.11.0
+
+rm -rf /usr/lib/bulmages
+mkdir /usr/lib/bulmages
+
+rm -rf /usr/lib/bulmafact
+mkdir /usr/lib/bulmafact
+
+rm -rf /usr/lib/bulmatpv
+mkdir /usr/lib/bulmatpv
+
+rm -rf /usr/lib/bulmacont
+mkdir /usr/lib/bulmacont
+
+rm -rf /usr/lib/bulmalib
+mkdir /usr/lib/bulmalib
+
+ln -s $1/plugins /usr/lib/bulmafact
+ln -s $1/plugins  /usr/lib/bulmatpv
+ln -s $1/plugins /usr/lib/bulmacont
+ln -s $1/plugins  /usr/lib/bulmalib
+ln -s $1/plugins /usr/lib/bulmages
+
+ln -s $1/bgtrml2pdf/bgtrml2pdf/bgcolor.py /usr/lib/bulmages
+ln -s $1/bgtrml2pdf/bgtrml2pdf/bgutils.py /usr/lib/bulmages
+
+#rm /usr/share/man/man1/bulmacont.1.gz
+#ln -s $1/share/man/bulmacont.1.gz /usr/share/man/man1/bulmacont.1.gz
+
+#rm /usr/share/man/man1/bulmafact.1.gz
+#ln -s $1/share/man/bulmafact.1.gz /usr/share/man/man1/bulmafact.1.gz
+
+
