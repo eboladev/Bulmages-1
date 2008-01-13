@@ -1,9 +1,9 @@
 ###########################################
 # Plugin for bulmafact					  #
 ###########################################
-#pluginasterisk
+#pluginpreciocoste
 
-set (plugin pluginasterisk)
+set (plugin pluginpreciocoste)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
@@ -24,9 +24,7 @@ include_directories(
 	${CMAKE_BINARY_DIR}/bulmalib/src/
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
 	${CMAKE_BINARY_DIR}/bulmafact/src/
-	${CMAKE_SOURCE_DIR}/bulmafact/src/
-	${CMAKE_BINARY_DIR}/bulmafact/plugins/pluginalmacen/
-        ${CMAKE_SOURCE_DIR}/bulmafact/plugins/pluginalmacen/)
+	${CMAKE_SOURCE_DIR}/bulmafact/src/)
 
 # generate rules for building source files from the resources
 #QT4_WRAP_CPP(plugin_MOC_SRCS ${plugin_MOCS})

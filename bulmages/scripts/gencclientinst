@@ -1,0 +1,123 @@
+#!/bin/bash
+
+# (C) Tomeu Borras Riera, tborras@conetxia.com
+# Script que hace enlaces de las aplicaciones a las ubicaciones pertienentes
+# Debe ejecutarse como root
+
+# Hace los enlaces desde el directorio de build de cmake.
+# Hay cosas no enlazadas que deben asegurarse despues.
+
+# Coge dos parametros el build y el installbulmages.
+
+rm /usr/bin/bulmacont
+ln -s $1/bulmacont/src/bulmacont /usr/bin/bulmacont
+
+rm /usr/bin/bulmafact
+ln -s $1/bulmafact/src/bulmafact /usr/bin/bulmafact
+
+rm /usr/bin/bulmatpv
+ln -s $1/bulmatpv/src/bulmatpv /usr/bin/bulmatpv
+
+rm /usr/bin/bgtrml2pdf.py
+ln -s $2/bgtrml2pdf/bgtrml2pdf.py /usr/bin/bgtrml2pdf.py
+
+rm /usr/bin/bulmages
+ln -s $1/bulmages/src/bulmages /usr/bin/bulmages
+
+rm -rf /usr/share/bulmages
+ln -s $2 /usr/share/bulmages
+
+rm /usr/lib/libbulmalib*
+ln -s $1/bulmalib/src/libbulmalib.so /usr/lib/libbulmalib.so
+ln -s $1/bulmalib/src/libbulmalib.so.0 /usr/lib/libbulmalib.so.0
+ln -s $1/bulmalib/src/libbulmalib.so.0.11 /usr/lib/libbulmalib.so.0.11
+ln -s $1/bulmalib/src/libbulmalib.so.0.11.0 /usr/lib/libbulmalib.so.0.11.0
+
+rm -rf /usr/lib/bulmages
+rm -rf /usr/lib/bulmafact
+rm -rf /usr/lib/bulmatpv
+rm -rf /usr/lib/bulmacont
+rm -rf /usr/lib/bulmalib
+
+#ln -s $1/lib/bulmafact /usr/lib/bulmafact
+#ln -s $1/lib/bulmatpv  /usr/lib/bulmatpv
+#ln -s $1/lib/bulmacont /usr/lib/bulmacont
+#ln -s $1/lib/bulmalib  /usr/lib/bulmalib
+
+mkdir /usr/lib/bulmages
+ln -s $2/bgtrml2pdf/bgcolor.py /usr/lib/bulmages
+ln -s $2/bgtrml2pdf/bgutils.py /usr/lib/bulmages
+
+mkdir /usr/lib/bulmacont
+mkdir /usr/lib/bulmafact
+mkdir /usr/lib/bulmatpv
+mkdir /usr/lib/bulmalib
+
+mkdir /usr/lib/bulmacont/plugins
+mkdir /usr/lib/bulmafact/plugins
+mkdir /usr/lib/bulmatpv/plugins
+mkdir /usr/lib/bulmalib/plugins
+
+ln -s $1/privateplugins/pluginllamadas/libpluginllamadas.so        /usr/lib/bulmafact/plugins/
+ln -s $1/privateplugins/pluginservconetxia/libpluginservconetxia.so        /usr/lib/bulmafact/plugins/
+# ln -s $1/privateplugins/pluginticket/libpluginticket.so        /usr/lib/bulmafact/plugins/
+ln -s $1/privateplugins/plugindock/libplugindock.so        /usr/lib/bulmalib/plugins/
+ln -s $1/privateplugins/florida/libflorida.so        /usr/lib/bulmafact/plugins/
+ln -s $1/privateplugins/lafac/liblafac.so        /usr/lib/bulmafact/plugins/
+ln -s $1/privateplugins/pluginfacturar/libpluginfacturar.so        /usr/lib/bulmafact/plugins/
+#ln -s $1/privateplugins/pluginmail/libpluginmail.so        /usr/lib/bulmafact/plugins/
+ln -s $1/privateplugins/pluginetiquetas/libpluginetiquetas.so        /usr/lib/bulmafact/plugins/
+ln -s $1/privateplugins/plugincorrectorbf/libplugincorrectorbf.so        /usr/lib/bulmafact/plugins/
+ln -s $1/privateplugins/pluginetiquetado/libpluginetiquetado.so        /usr/lib/bulmafact/plugins/
+ln -s $1/privateplugins/plugincalc/libplugincalc.so        /usr/lib/bulmalib/plugins/
+ln -s $1/privateplugins/pluginresumcta/libpluginresumcta.so        /usr/lib/bulmafact/plugins/
+#ln -s $1/privateplugins/pluginpromedios/libpluginpromedios.so        /usr/lib/bulmafact/plugins/
+ln -s $1/privateplugins/plugininformeclientessxc/libplugininformeclientessxc.so        /usr/lib/bulmafact/plugins/
+ln -s $1/privateplugins/pluginnq19/libpluginnq19.so        /usr/lib/bulmafact/plugins/
+
+ln -s $1/bulmalib/plugins/pluginsubformods/libpluginsubformods.so        /usr/lib/bulmalib/plugins/
+ln -s $1/bulmalib/plugins/pluginimpers/libpluginimpers.so        /usr/lib/bulmalib/plugins/
+ln -s $1/bulmalib/plugins/pluginclipboardbf/libpluginclipboardbf.so        /usr/lib/bulmalib/plugins/
+ln -s $1/bulmalib/plugins/pluginsubformsxc/libpluginsubformsxc.so        /usr/lib/bulmalib/plugins/
+
+ln -s $1/bulmafact/plugins/plugintipostrabajo/libplugintipostrabajo.so        /usr/lib/bulmafact/plugins/
+ln -s $1/bulmafact/plugins/efacturabf/libefacturabf.so        /usr/lib/bulmafact/plugins/
+ln -s $1/bulmafact/plugins/pluginpreciocoste/libpluginpreciocoste.so        /usr/lib/bulmafact/plugins/
+ln -s $1/bulmafact/plugins/plugininformeclientes/libplugininformeclientes.so        /usr/lib/bulmafact/plugins/
+ln -s $1/bulmafact/plugins/plugininventario/libplugininventario.so        /usr/lib/bulmafact/plugins/
+ln -s $1/bulmafact/plugins/pluginticket/libpluginticket.so        /usr/lib/bulmafact/plugins/
+ln -s $1/bulmafact/plugins/plugincatalogo/libplugincatalogo.so        /usr/lib/bulmafact/plugins/
+ln -s $1/bulmafact/plugins/pluginasterisk/libpluginasterisk.so        /usr/lib/bulmafact/plugins/
+ln -s $1/bulmafact/plugins/plugintrazabilidad/libplugintrazabilidad.so        /usr/lib/bulmafact/plugins/
+ln -s $1/bulmafact/plugins/plugin/libplugin.so        /usr/lib/bulmafact/plugins/
+ln -s $1/bulmafact/plugins/pluginbarcodeopen/libpluginbarcodeopen.so        /usr/lib/bulmafact/plugins/
+ln -s $1/bulmafact/plugins/comercialbf/libcomercialbf.so        /usr/lib/bulmafact/plugins/
+ln -s $1/bulmafact/plugins/pluginvehiculosbf/libpluginvehiculosbf.so        /usr/lib/bulmafact/plugins/
+ln -s $1/bulmafact/plugins/plugintarifas/libplugintarifas.so        /usr/lib/bulmafact/plugins/
+ln -s $1/bulmafact/plugins/plugin_tc_articulos/libplugin_tc_articulos.so        /usr/lib/bulmafact/plugins/
+ln -s $1/bulmafact/plugins/plugincuadrante/libplugincuadrante.so        /usr/lib/bulmafact/plugins/
+ln -s $1/bulmafact/plugins/pluginmail/libpluginmail.so        /usr/lib/bulmafact/plugins/
+ln -s $1/bulmafact/plugins/pluginq19/libpluginq19.so        /usr/lib/bulmafact/plugins/
+ln -s $1/bulmafact/plugins/plugintpv/libplugintpv.so        /usr/lib/bulmafact/plugins/
+ln -s $1/bulmafact/plugins/plugincontratos/libplugincontratos.so        /usr/lib/bulmafact/plugins/
+ln -s $1/bulmafact/plugins/pluginimpresionesmultiples/libpluginimpresionesmultiples.so        /usr/lib/bulmafact/plugins/
+ln -s $1/bulmafact/plugins/plugindebugbf/libplugindebugbf.so        /usr/lib/bulmafact/plugins/
+ln -s $1/bulmafact/plugins/pluginpromedios/libpluginpromedios.so        /usr/lib/bulmafact/plugins/
+ln -s $1/bulmafact/plugins/pluginalmacen/libpluginalmacen.so        /usr/lib/bulmafact/plugins/
+
+ln -s $1/bulmatpv/plugins/pluginadmin/libpluginadmin.so        /usr/lib/bulmatpv/plugins/
+ln -s $1/bulmatpv/plugins/pluginticketbasico/libpluginticketbasico.so        /usr/lib/bulmatpv/plugins/
+ln -s $1/bulmatpv/plugins/pluginartgraficos/libpluginartgraficos.so        /usr/lib/bulmatpv/plugins/
+ln -s $1/bulmatpv/plugins/plugintotal/libplugintotal.so        /usr/lib/bulmatpv/plugins/
+ln -s $1/bulmatpv/plugins/plugincobrar/libplugincobrar.so        /usr/lib/bulmatpv/plugins/
+ln -s $1/bulmatpv/plugins/plugintecladonumerico/libplugintecladonumerico.so        /usr/lib/bulmatpv/plugins/
+ln -s $1/bulmatpv/plugins/pluginabrevs/libpluginabrevs.so        /usr/lib/bulmatpv/plugins/
+
+ln -s $1/bulmacont/plugins/pluginproyectos/libpluginproyectos.so        /usr/lib/bulmacont/plugins/
+ln -s $1/bulmacont/plugins/plugincanualesods/libplugincanualesods.so        /usr/lib/bulmacont/plugins/
+ln -s $1/bulmacont/plugins/pluginregistroiva/libpluginregistrodeiva.so        /usr/lib/bulmacont/plugins/
+ln -s $1/bulmacont/plugins/plugincorrector/libplugincorrector.so        /usr/lib/bulmacont/plugins/
+ln -s $1/bulmacont/plugins/pluginadocumental/libpluginadocumental.so        /usr/lib/bulmacont/plugins/
+ln -s $1/bulmacont/plugins/plugindebugbc/libplugindebugbc.so        /usr/lib/bulmacont/plugins/
+
+
