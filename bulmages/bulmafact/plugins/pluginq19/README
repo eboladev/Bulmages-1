@@ -8,12 +8,7 @@ Software Bajo Licencia G.P.L. (Vea el archivo COPYNG adjunto)
 Versión: 0.9.3
 
 
-Descripcion: Agrega un checkbox en cada uno de los miembros del listado de presupuestos, pedidos, albaranes y facturas.
-Agrega tres botones de menu en cada uno de dichos listados con las siguientes funcionalidades:
-
-	1.- Invertir Seleccion: Invierte el estado de los checkbox agregados.
-	2.- Imprimir multiples elementos: Imprime los elementos seleccionados de forma directa.
-	3.- Envio multiple de e-mail: Prepara el envio de e-mail con los documentos seleccionados como adjuntos.
+Descripcion: Agrega el formato de transacciones bancarias para hacer reclamaciones de cobros.
 
 
 
