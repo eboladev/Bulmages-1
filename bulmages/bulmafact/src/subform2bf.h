@@ -73,7 +73,7 @@ public:
     virtual ~SubForm2Bf();
     virtual void cargar ( QString query );
     virtual void setEmpresaBase ( EmpresaBase * );
-    virtual void on_mui_list_cellChanged ( int row, int col );
+    virtual void editFinished ( int row, int col, SDBRecord *rec, SDBCampo *camp );
     virtual int cerrarEditor();
     void setIdCliente ( QString id );
     void setIdProveedor ( QString id );

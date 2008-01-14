@@ -61,12 +61,39 @@ BEGIN
 	IF NOT FOUND THEN
 		ALTER TABLE articulo ADD COLUMN preciocostearticulo NUMERIC(12,2) DEFAULT 0;
 	END IF;
+
+	SELECT INTO as * FROM pg_attribute  WHERE attname=''margenarticulo'';
+	IF NOT FOUND THEN
+		ALTER TABLE articulo ADD COLUMN margenarticulo NUMERIC(12,2) DEFAULT 0;
+		ALTER TABLE articulo ADD COLUMN actualizarmargenarticulo BOOLEAN DEFAULT FALSE;
+	END IF;
+
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;
 SELECT aux();
 DROP FUNCTION aux() CASCADE;
 \echo "Agregamos el campo precio de coste a los articulos"
+
+
+SELECT drop_if_exists_proc('actpvparticulo', '');
+\echo -n ':: Funcion para actualizar precios de venta segun precios de coste ... '
+CREATE OR REPLACE FUNCTION actpvparticulo() RETURNS "trigger" AS '
+DECLARE
+BEGIN
+    IF NEW.actualizarmargenarticulo  = TRUE THEN
+	NEW.pvparticulo := NEW.preciocostearticulo + NEW.preciocostearticulo * NEW.margenarticulo / 100;
+    END IF;
+    RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+\echo "Agregamos el trigger que hace la actualizacion de precio de coste.
+
+CREATE TRIGGER actpvparticulot
+    BEFORE INSERT OR UPDATE ON articulo
+    FOR EACH ROW
+    EXECUTE PROCEDURE actpvparticulo();
 
 
 -- ==============================================================================
@@ -80,9 +107,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre=''DBRev-PrecioCoste'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.10.1-0001'' WHERE nombre=''DBRev-PrecioCoste'';
+		UPDATE CONFIGURACION SET valor=''0.10.1-0002'' WHERE nombre=''DBRev-PrecioCoste'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DBRev-PrecioCoste'', ''0.10.1-0001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DBRev-PrecioCoste'', ''0.10.1-0002'');
 	END IF;
 	RETURN 0;
 END;

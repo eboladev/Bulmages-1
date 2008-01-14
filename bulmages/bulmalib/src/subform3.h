@@ -234,7 +234,8 @@ public:
 
 public slots:
     virtual void on_mui_list_cellRePosition ( int, int );
-    virtual void on_mui_list_cellChanged ( int, int );
+//    virtual void on_mui_list_cellChanged ( int, int );
+    void on_mui_list_cellChanged ( int, int );
     virtual void contextMenuEvent ( QContextMenuEvent * );
     virtual void on_mui_confcol_clicked();
     virtual void on_mui_confquery_clicked();
@@ -252,6 +253,7 @@ public slots:
     virtual void toogleConfig();
     virtual void on_mui_botonCerrar_clicked();
     virtual void on_mui_list_itemChanged ( QTableWidgetItem *it );
+    virtual void editFinished ( int, int, SDBRecord *, SDBCampo * );
 
 signals:
     void toogledConfig ( bool );

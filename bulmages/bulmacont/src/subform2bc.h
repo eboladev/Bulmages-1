@@ -68,7 +68,7 @@ public:
     virtual void creaMenu ( QMenu * );
     virtual void procesaMenu ( QAction * );
     virtual void setEmpresaBase ( EmpresaBase *c );
-    virtual void on_mui_list_cellChanged ( int row, int col );
+    virtual void editFinished ( int row, int col, SDBRecord *rec, SDBCampo *camp );
 
 public slots:
     virtual void on_mui_list_pressedSlash ( int row, int col );

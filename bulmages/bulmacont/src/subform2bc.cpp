@@ -141,7 +141,7 @@ void SubForm2Bc::on_mui_list_pressedAsterisk ( int row, int col )
     if ( camp->nomcampo() != "codigo" && camp->nomcampo() != "codigoctacliente" )
         return;
 
-    m_procesacambios = FALSE;
+
 
     /// Nos llevamos el foco para que no haya un EditorDelegado que no se actualice bien.
 
@@ -188,7 +188,7 @@ void SubForm2Bc::on_mui_list_pressedAsterisk ( int row, int col )
         delete cur;
     } // end if
 
-    m_procesacambios = TRUE;
+
     /// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
     on_mui_list_cellChanged ( row, col );
     _depura ( "END SubForm2Bc::on_mui_list_pressedAsterisk", 0 );
@@ -238,43 +238,15 @@ void SubForm2Bc::on_mui_list_pressedSlash ( int row, int col )
 \param col
 \return
 **/
-void SubForm2Bc::on_mui_list_cellChanged ( int row, int col )
+void SubForm2Bc::editFinished ( int row, int col, SDBRecord *rec, SDBCampo *camp )
 {
-    _depura ( "SubForm2Bc::on_mui_list_cellChanged", 0, "Row: " + QString::number ( row ) + " Col: " + QString::number ( col ) );
+    _depura ( "SubForm2Bc::editFinished", 0, "Row: " + QString::number ( row ) + " Col: " + QString::number ( col ) );
 
-    /// Miramos el estado del semaforo para saber si es una entrada concurrente.
-    if ( !m_procesacambios ) {
-        _depura ( "SubForm2Bc::on_mui_list_cellChanged", 0, QString::number ( row ) + " " + QString::number ( col ) + " m_procesacambios es FALSE" );
-        return;
-    } // end if
 
-    m_procesacambios = FALSE;
 
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "SubForm2Bc_on_mui_list_cellChanged", this );
     if ( res != 0 ) {
-        m_procesacambios = TRUE;
-        return;
-    } // end if
-
-    SDBRecord *rec = lineaat ( row );
-    if ( rec == NULL ) {
-        _depura ( "END SubForm2Bc::on_mui_list_cellChanged", 0, QString::number ( row ) + " " + QString::number ( col ) + "la linea no existe" );
-        m_procesacambios = TRUE;
-        return;
-    }
-
-
-    /// Refrescamos el campo actual para que tenga los valores correctos.
-    SDBCampo *camp = ( SDBCampo * ) item ( row, col );
-    camp->refresh();
-
-
-    /// Si el campo no ha sido cambiado se sale.
-    if ( !camp->cambiado() ) {
-        _depura ( "END SubForm2Bc::on_mui_list_cellChanged", 0, QString::number ( row ) + " " + QString::number ( col ) + "Sin cambios" );
-        SubForm3::on_mui_list_cellChanged ( row, col );
-        m_procesacambios = TRUE;
         return;
     } // end if
 
@@ -338,7 +310,6 @@ void SubForm2Bc::on_mui_list_cellChanged ( int row, int col )
     g_plugins->lanza ( "SubForm2Bc_on_mui_list_cellChanged_post", this );
 
     SubForm3::on_mui_list_cellChanged ( row, col );
-    m_procesacambios = TRUE;
     _depura ( "END SubForm2Bc::on_mui_list_cellChanged", 0 );
 }
 

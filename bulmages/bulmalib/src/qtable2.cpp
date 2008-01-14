@@ -365,10 +365,10 @@ bool QTableWidget2::eventFilter ( QObject *obj, QEvent *event )
             break;
         case Qt::Key_Plus:
             if ( ( mod & Qt::ControlModifier ) || ( mod & Qt::AltModifier ) ) {
-            emit pressedPlus ( row, col );
-            return TRUE;
+                emit pressedPlus ( row, col );
+                return TRUE;
             } // end if
-	    break;
+            break;
         case Qt::Key_Asterisk:
             if ( ( mod & Qt::ControlModifier ) || ( mod & Qt::AltModifier ) ) {
                 emit pressedAsterisk ( row, col );

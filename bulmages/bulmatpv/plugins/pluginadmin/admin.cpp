@@ -8,8 +8,7 @@ Admin::Admin ( EmpresaTPV *emp, QWidget *parent ) : BLWidget ( emp, parent )
 
 
 Admin::~Admin()
-{
-}
+{}
 
 void Admin::on_mui_z_clicked()
 {

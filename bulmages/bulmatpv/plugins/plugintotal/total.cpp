@@ -8,8 +8,7 @@ Total::Total ( EmpresaTPV *emp, QWidget *parent ) : BLWidget ( emp, parent )
 
 
 Total::~Total()
-{
-}
+{}
 
 void Total::on_mui_cobrar_clicked()
 {

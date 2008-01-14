@@ -92,7 +92,6 @@ void SubForm2Bf::on_mui_list_pressedAsterisk ( int row, int col )
         return;
     } // end if
 
-    m_procesacambios = FALSE;
 
     ArticuloList *artlist = new ArticuloList ( ( Company * ) empresaBase(), NULL, 0, ArticuloList::SelectMode );
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
@@ -106,7 +105,6 @@ void SubForm2Bf::on_mui_list_pressedAsterisk ( int row, int col )
 
     /// Si no tenemos un idarticulo salimos ya que significa que no se ha seleccionado ninguno.
     if ( idArticle == "" ) {
-        m_procesacambios = TRUE;
         return;
     } // end if
 
@@ -117,9 +115,11 @@ void SubForm2Bf::on_mui_list_pressedAsterisk ( int row, int col )
         rec->setDBvalue ( "nomarticulo", cur->valor ( "nomarticulo" ) );
     } // end if
     delete cur;
-    m_procesacambios = TRUE;
+
+
     /// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
     on_mui_list_cellChanged ( row, col );
+
     _depura ( "END SubForm2Bf::pressedAsterisk", 0 );
 }
 
@@ -167,17 +167,9 @@ void SubForm2Bf::on_mui_list_pressedMinus ( int row, int col )
 \param col
 \return
 **/
-void SubForm2Bf::on_mui_list_cellChanged ( int row, int col )
+void SubForm2Bf::editFinished ( int row, int col, SDBRecord *rec, SDBCampo *camp )
 {
-    _depura ( "SubForm2Bf::on_mui_list_cellChanged", 0, QString::number ( row ) + " " + QString::number ( col ) );
-    m_prevRow = row;
-    m_prevCol = col;
-
-    if ( !m_procesacambios ) {
-        _depura ( "SubForm2Bf::on_mui_list_cellChanged", 0, QString::number ( row ) + " " + QString::number ( col ) + " m_procesacambios es FALSE" );
-        return;
-    } // end if
-    m_procesacambios = FALSE;
+    _depura ( "SubForm2Bf::editFinished", 0, QString::number ( row ) + " " + QString::number ( col ) );
 
     cursor2 *cur2 = NULL;
     cursor2 *cur = NULL;
@@ -186,27 +178,10 @@ void SubForm2Bf::on_mui_list_cellChanged ( int row, int col )
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "SubForm2Bf_on_mui_list_editFinished", this );
     if ( res != 0 ) {
-        m_procesacambios = TRUE;
         return;
     } // end if
 
-    SDBRecord *rec = lineaat ( row );
-    if ( rec == NULL ) {
-        _depura ( "SubForm2Bf::on_mui_list_cellChanged", 0, QString::number ( row ) + " " + QString::number ( col ) + "la linea no existe" );
-        m_procesacambios = TRUE;
-        return;
-    } // end if
 
-    SDBCampo *camp = ( SDBCampo * ) item ( row, col );
-    camp->refresh();
-
-    /// Si el campo no ha sido cambiado se sale.
-    if ( ! camp->cambiado() ) {
-        _depura ( "SubForm2Bf::on_mui_list_cellChanged", 0, QString::number ( row ) + " " + QString::number ( col ) + camp->valorcampo() + "Sin cambios" );
-        SubForm3::on_mui_list_cellChanged ( row, col );
-        m_procesacambios = TRUE;
-        return;
-    } // end if
 
     if ( camp->nomcampo() == "desctipo_iva" ) {
         cur = empresaBase() ->cargacursor ( "SELECT * FROM tipo_iva WHERE desctipo_iva = '" + camp->text() + "'" );
@@ -250,7 +225,6 @@ void SubForm2Bf::on_mui_list_cellChanged ( int row, int col )
         } else {
             mensajeAviso ( tr ( "Articulo inexistente" ) );
             delete cur;
-            m_procesacambios = TRUE;
             return;
         } // end if
 
@@ -298,10 +272,10 @@ void SubForm2Bf::on_mui_list_cellChanged ( int row, int col )
             delete cur;
     } // end if
 
-    SubForm3::on_mui_list_cellChanged ( row, col );
-    m_procesacambios = TRUE;
-
-    _depura ( "END SubForm2Bf::on_mui_list_editFinished", 0 );
+    /*
+        SubForm3::on_mui_list_cellChanged ( row, col );
+    */
+    _depura ( "END SubForm2Bf::editFinished", 0 );
 }
 
 
@@ -449,8 +423,9 @@ int SubForm2Bf::cerrarEditor()
 /**
 \return El identificador de cliente
 **/
-QString SubForm2Bf::idcliente(){
-	return mdb_idcliente;
+QString SubForm2Bf::idcliente()
+{
+    return mdb_idcliente;
 }
 
 
@@ -458,8 +433,9 @@ QString SubForm2Bf::idcliente(){
 /**
 \return El identificador de proveedor
 **/
-QString SubForm2Bf::idproveedor() {
-	return mdb_idproveedor;
+QString SubForm2Bf::idproveedor()
+{
+    return mdb_idproveedor;
 }
 
 

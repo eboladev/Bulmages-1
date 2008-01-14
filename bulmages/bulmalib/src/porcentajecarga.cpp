@@ -26,8 +26,7 @@
 \param parent
 **/
 porcentajeCarga::porcentajeCarga ( QWidget *parent ) : QDialog ( parent )
-{
-}
+{}
 
 
 ///

@@ -1436,7 +1436,30 @@ void SubForm3::on_mui_list_cellRePosition ( int row, int col )
 void SubForm3::on_mui_list_cellChanged ( int row, int col )
 {
     _depura ( "SubForm3::on_mui_list_cellChanged", 0, "Row: " + QString::number ( row ) + " col: " + QString::number ( col ) );
-    emit editFinish ( row, col );
+
+    SDBRecord *rec = lineaat ( row );
+    if ( rec == NULL ) {
+        _depura ( "SubForm3::on_mui_list_cellChanged", 0, QString::number ( row ) + " " + QString::number ( col ) + "la linea no existe" );
+        return;
+    } // end if
+
+    SDBCampo *camp = ( SDBCampo * ) item ( row, col );
+    camp->refresh();
+
+    /// Si el campo no ha sido cambiado se sale.
+    if ( ! camp->cambiado() ) {
+        _depura ( "SubForm3::on_mui_list_cellChanged", 0, QString::number ( row ) + " " + QString::number ( col ) + camp->valorcampo() + "Sin cambios" );
+        return;
+    } // end if
+
+    if ( m_procesacambios ) {
+        m_procesacambios = FALSE;
+        m_prevRow = row;
+        m_prevCol = col;
+        editFinished ( row, col, rec, camp );
+        emit editFinish ( row, col );
+        m_procesacambios = TRUE;
+    } // end if
     _depura ( "END SubForm3::on_mui_list_cellChanged", 0 );
 }
 
@@ -2270,5 +2293,13 @@ QString SubForm3::columnDBfieldName ( int columna )
     SHeader * linea;
     linea = m_lcabecera.at ( columna );
     return linea->nomcampo();
+}
+
+
+/// Para ser derivado, permite a las clases derivadas y a esta el tratamiento de cambio de celda.
+void SubForm3::editFinished ( int, int, SDBRecord *, SDBCampo * )
+{
+    _depura ( "SubForm3::editFinished", 0 );
+    _depura ( "END SubForm3::editFinished", 0 );
 }
 

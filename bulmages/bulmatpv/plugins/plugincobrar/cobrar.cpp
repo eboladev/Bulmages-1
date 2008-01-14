@@ -8,8 +8,7 @@ Cobrar::Cobrar ( EmpresaTPV *emp, QWidget *parent ) : BLWidget ( emp, parent )
 
 
 Cobrar::~Cobrar()
-{
-}
+{}
 
 void Cobrar::on_mui_cobrar_clicked()
 {

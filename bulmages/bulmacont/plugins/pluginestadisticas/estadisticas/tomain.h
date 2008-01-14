@@ -49,26 +49,22 @@
  * The class to use for a printer object.
  */
 class TOPrinter : public QPrinter
-{
-};
+    {};
 /**
  * The class to use for a dock widget.
  */
 class TODock : public QWidget
-{
-};
+    {};
 /**
  * The class to use for a file dialog.
  */
 class TOFileDialog : public QFileDialog
-{
-};
+    {};
 /**
  * The class to use for a messagebox.
  */
 class TOMessageBox : public QMessageBox
-{
-};
+    {};
 #endif
 
 #ifdef TO_KDE

@@ -102,7 +102,6 @@ Ficha::~Ficha()
 void Ficha::cargaSpecs()
 {
     _depura ( "SubForm3::cargaSpecs", 0 );
-    _depura ( objectName(), 2 );
 //    QFile file(confpr->valor(CONF_DIR_USER) + m_fileconfig + "_" + empresaBase()->nameDB() + "_specs.spc");
     QFile file ( "/etc/bulmages/" + objectName() + "_" + empresaBase() ->nameDB() + "_spec.spc" );
     QDomDocument doc ( "mydocument" );

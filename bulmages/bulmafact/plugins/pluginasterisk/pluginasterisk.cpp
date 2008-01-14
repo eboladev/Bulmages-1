@@ -186,10 +186,10 @@ int TrabajadorView_on_mui_guardar_clicked ( TrabajadorView *trab )
     QString query = "UPDATE trabajador SET ";
     query += " passasterisktrabajador = '" + l->text() + "'";
     query += " ,validasiempreasterisktrabajador = ";
-    if (l9->isChecked()) {
-	 query += "TRUE";
+    if ( l9->isChecked() ) {
+        query += "TRUE";
     } else {
-	query += "FALSE";
+        query += "FALSE";
     } // end if
     query += " WHERE idtrabajador=" + trab->empresaBase() ->sanearCadena ( trab->idtrabajador() );
     trab->empresaBase() ->begin();
@@ -216,7 +216,7 @@ int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab )
     cursor2 *cur = trab->empresaBase() ->cargacursor ( "SELECT passasterisktrabajador, validasiempreasterisktrabajador FROM trabajador WHERE idtrabajador = " + trab->idtrabajador() );
     if ( !cur->eof() ) {
         l->setText ( cur->valor ( "passasterisktrabajador" ) );
-	l9->setChecked((cur->valor ( "validasiempreasterisktrabajador") == "t"));
+        l9->setChecked ( ( cur->valor ( "validasiempreasterisktrabajador" ) == "t" ) );
     } // end if
     delete cur;
 
