@@ -112,7 +112,7 @@ QString BusquedaAlmacen::idalmacen()
     _depura ( "BusquedaAlmacen::idalmacen", 0 );
     int index = currentIndex();
     if ( index > 0 ) {
-        _depura ( "END BusquedaAlmacen::idalmacen", 0 );
+        _depura ( "END BusquedaAlmacen::idalmacen", 0, m_cursorcombo->valor ( "idalmacen", index - 1 ) );
         return ( m_cursorcombo->valor ( "idalmacen", index - 1 ) );
     } else {
         _depura ( "END BusquedaAlmacen::idalmacen", 0 );

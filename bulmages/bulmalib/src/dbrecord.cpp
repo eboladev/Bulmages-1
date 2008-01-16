@@ -192,9 +192,11 @@ QString DBCampo::valorcampoprep ( int &error )
         if ( m_valorcampo == "" ) {
             mensajeAviso ( "El campo '" + m_nompresentacion + "' no puede estar vacio." );
             error = -1;
-            valor = "";
+	    _depura ( "END DBCampo::valorcampoprep", 0, m_nomcampo +" " + m_valorcampo + "-->" + valor );
+	    return valor;
         } // end if
-    } else {
+    } // end if
+
         switch ( m_tipo ) {
         case DBint:
             if ( m_valorcampo == "" ) {
@@ -238,8 +240,8 @@ QString DBCampo::valorcampoprep ( int &error )
         default:
             error = -1;
         } // end switch
-    } // end if
-    _depura ( "END DBCampo::valorcampoprep", 0, valor );
+
+    _depura ( "END DBCampo::valorcampoprep", 0, m_nomcampo +" " + m_valorcampo + "-->" + valor );
     return valor;
 }
 
@@ -446,7 +448,7 @@ void DBRecord::DBclear()
 **/
 int DBRecord::DBsave ( QString &id )
 {
-    _depura ( "DBRecord::DBsave - " + id, 0 );
+    _depura ( "DBRecord::DBsave", 0, id );
     try {
         DBCampo *campo;
         QString listcampos = "";
@@ -517,7 +519,7 @@ int DBRecord::DBsave ( QString &id )
         m_nuevoCampo = FALSE;
         return 0;
     } catch ( ... ) {
-        _depura ( "EXCEPTION DBRecord::DBsave", 0 );
+        _depura ( "END DBRecord::DBsave", 0, "Error de guardado" );
         throw - 1;
     } // end try
     _depura ( "END DBRecord::DBSave", 0 );

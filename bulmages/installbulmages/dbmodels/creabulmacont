@@ -129,7 +129,6 @@ if [ "$3" = "1" -o "$3" = "2" ]; then
    # Cargamos lo minimo, para dejar la empresa con un plan contable vacio.
    info "Cargamos el conjunto minimo de datos. \n Plan contable simple. \n"
    psql $2 < crear/bulmacont/t_configuracion_data.sql 2>> /tmp/errores.txt > /dev/null
-   psql $2 < crear/bulmacont/t_grupo_data.sql 2>> /tmp/errores.txt > /dev/null
    psql $2 < crear/bulmacont/t_cuenta_data.sql 2>> /tmp/errores.txt > /dev/null
    psql $2 < crear/bulmacont/t_fpago_data.sql 2>> /tmp/errores.txt > /dev/null
    tiempo
