@@ -156,10 +156,13 @@ void SubForm3::cargaSpecs()
 //    QFile file(confpr->valor(CONF_DIR_USER) + m_fileconfig + "_" + empresaBase()->nameDB() + "_specs.spc");
     QFile file ( "/etc/bulmages/" + m_fileconfig + "_" + empresaBase() ->nameDB() + "_specs.spc" );
     QDomDocument doc ( "mydocument" );
-    if ( !file.open ( QIODevice::ReadOnly ) )
+    if ( !file.open ( QIODevice::ReadOnly ) ) {
+        _depura ( "END SubForm3::cargaSpecs", 0, "No se pudo abrir archivo" );
         return;
+    }
     if ( !doc.setContent ( &file ) ) {
         file.close();
+        _depura ( "END SubForm3::cargaSpecs", 0, "XML no valido" );
         return;
     }
     file.close();
@@ -262,8 +265,8 @@ QList<SDBRecord *> *SubForm3::lista()
 QList<SHeader *> *SubForm3::cabecera()
 {
     _depura ( "SubForm3::cabecera", 0 );
-    return &m_lcabecera;
     _depura ( "END SubForm3::cabecera", 0 );
+    return &m_lcabecera;
 }
 
 
@@ -411,8 +414,8 @@ int SubForm3::rowCount()
 int SubForm3::currentColumn()
 {
     _depura ( "SubForm3::currentColumn", 0 );
-    return mui_list->currentColumn();
     _depura ( "END SubForm3::currentColumn", 0 );
+    return mui_list->currentColumn();
 }
 
 
@@ -787,8 +790,10 @@ SDBRecord *SubForm3::newSDBRecord()
 void SubForm3::nuevoRegistro()
 {
     _depura ( "SubForm3::nuevoRegistro", 0 );
-    if ( !m_insercion )
+    if ( !m_insercion ) {
+        _depura ( "END SubForm3::nuevoRegistro", 0, "No se permiten inserciones" );
         return;
+    } // end if
 
     /// Desactivamos el sorting debido a un error en las Qt4
     mui_list->setSortingEnabled ( FALSE );
@@ -1273,7 +1278,10 @@ void SubForm3::cargar ( QString query )
 {
     _depura ( "SubForm3::cargar", 0 );
     /// Si el query no existe no hacemos nada.
-    if ( query == "" ) return;
+    if ( query == "" ) {
+        _depura ( "SubForm3::cargar", 0, "Query inexistente" );
+        return;
+    } // end if
 
     try {
         m_query = query;
@@ -1320,6 +1328,7 @@ SDBRecord *SubForm3::lineaact()
 SDBRecord *SubForm3::lineaat ( int row )
 {
     _depura ( "SubForm3::lineaat()", 0, QString::number ( row ) );
+    SDBRecord *rec = NULL;
     try {
         /// Si la lista no tiene suficientes elementos devolvemos NULL
         if ( mui_list->rowCount() < row || row < 0 ) {
@@ -1331,17 +1340,14 @@ SDBRecord *SubForm3::lineaat ( int row )
         if ( !camp ) {
             throw - 1;
         } // end if
-        SDBRecord *rec = ( SDBRecord * ) camp->pare();
+        rec = ( SDBRecord * ) camp->pare();
 
-        m_procesacambios = TRUE;
-
-        _depura ( "END SubForm3::lineaat()", 0 );
-        return rec;
     } catch ( ... ) {
         _depura ( "SubForm3::lineaat linea inexistente", 2, QString::number ( row ) );
-        m_procesacambios = TRUE;
-        return NULL;
+        rec = NULL;
     }
+    _depura ( "END SubForm3::lineaat()", 0 );
+    return rec;
 }
 
 
@@ -1367,12 +1373,12 @@ bool SubForm3::campoCompleto ( int row )
                 && camp->text() == ""
                 && ! ( header->options() & SHeader::DBNoView )
                 && camp->tipo() != DBCampo::DBboolean ) {
-            _depura ( "SubForm3::campoCompleto", 0, "El campo no es completo." );
+            _depura ( "END SubForm3::campoCompleto", 0, "El campo no es completo." );
             return FALSE;
         } // end if
         if ( camp->restrictcampo() & DBCampo::DBRequired
                 && camp->text() == "" ) {
-            _depura ( "SubForm3::campoCompleto", 0, "El campo no es completo." );
+            _depura ( "END SubForm3::campoCompleto", 0, "El campo no es completo." );
             return FALSE;
         } // end if
 
@@ -1439,7 +1445,7 @@ void SubForm3::on_mui_list_cellChanged ( int row, int col )
 
     SDBRecord *rec = lineaat ( row );
     if ( rec == NULL ) {
-        _depura ( "SubForm3::on_mui_list_cellChanged", 0, QString::number ( row ) + " " + QString::number ( col ) + "la linea no existe" );
+        _depura ( "END SubForm3::on_mui_list_cellChanged", 0, QString::number ( row ) + " " + QString::number ( col ) + "la linea no existe" );
         return;
     } // end if
 
@@ -1448,7 +1454,7 @@ void SubForm3::on_mui_list_cellChanged ( int row, int col )
 
     /// Si el campo no ha sido cambiado se sale.
     if ( ! camp->cambiado() ) {
-        _depura ( "SubForm3::on_mui_list_cellChanged", 0, QString::number ( row ) + " " + QString::number ( col ) + camp->valorcampo() + "Sin cambios" );
+        _depura ( "END SubForm3::on_mui_list_cellChanged", 0, QString::number ( row ) + " " + QString::number ( col ) + camp->valorcampo() + "Sin cambios" );
         return;
     } // end if
 
@@ -1477,7 +1483,7 @@ void SubForm3::on_mui_list_cellChanged ( int row, int col )
 **/
 int SubForm3::addSHeader ( QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp )
 {
-    _depura ( "SubForm3::addSHeader (" + nom + ")", 0 );
+    _depura ( "SubForm3::addSHeader", 0,  nom );
     SHeader *camp = new SHeader ( nom, typ, res, opt, nomp );
     m_lcabecera.append ( camp );
     mui_listcolumnas->insertRow ( mui_listcolumnas->rowCount() );
@@ -1505,7 +1511,7 @@ int SubForm3::addSHeader ( QString nom, DBCampo::dbtype typ, int res, int opt, Q
     it = new QTableWidgetItem2 ( "" );
     mui_listcolumnas->setItem ( mui_listcolumnas->rowCount() - 1, 3, it );
 
-    _depura ( "END SubForm3::addSHeader (" + nom + ")", 0 );
+    _depura ( "END SubForm3::addSHeader", 0, nom );
     return 0;
 }
 

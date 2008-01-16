@@ -178,6 +178,7 @@ void SubForm2Bf::editFinished ( int row, int col, SDBRecord *rec, SDBCampo *camp
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "SubForm2Bf_on_mui_list_editFinished", this );
     if ( res != 0 ) {
+        _depura ( "END SubForm2Bf::editFinished", 0, "Salida por plugins" );
         return;
     } // end if
 
@@ -225,6 +226,7 @@ void SubForm2Bf::editFinished ( int row, int col, SDBRecord *rec, SDBCampo *camp
         } else {
             mensajeAviso ( tr ( "Articulo inexistente" ) );
             delete cur;
+            _depura ( "END SubForm2Bf::editFinished", 0, "Articulo inexistente" );
             return;
         } // end if
 
@@ -275,6 +277,8 @@ void SubForm2Bf::editFinished ( int row, int col, SDBRecord *rec, SDBCampo *camp
     /*
         SubForm3::on_mui_list_cellChanged ( row, col );
     */
+    /// Refrescamos el registro.
+    rec->refresh();
     _depura ( "END SubForm2Bf::editFinished", 0 );
 }
 
@@ -291,11 +295,15 @@ void SubForm2Bf::setIdCliente ( QString id )
     /// En la primera carga no hay reajustes, pero si actualización del cliente.
     if ( mdb_idcliente  == "" ) {
         mdb_idcliente = id;
+        _depura ( "END SubForm2Bf::setIdCliente", 0, "Primera carga" );
         return;
     } // end if
 
     /// En las cargas sucesivas si el idcliente no ha cambiado no se hace nada
-    if ( mdb_idcliente == id ) return;
+    if ( mdb_idcliente == id ) {
+        _depura ( "END SubForm2Bf::setIdCliente", 0, "cliente sin cambios" );
+        return;
+    } // end if
 
     /// Reseteamos los valores.
     for ( int i = 0; i < rowCount() - 1; i++ ) {
@@ -473,15 +481,14 @@ QSubForm2BfDelegate::~QSubForm2BfDelegate()
 **/
 QWidget *QSubForm2BfDelegate::createEditor ( QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index ) const
 {
-    _depura ( "QSubForm2BfDelegate::createEditor", 0 );
+    _depura ( "QSubForm2BfDelegate::createEditor", 0, "CurrentColumn: " + QString::number ( index.column() ) + "CurrentRow" + QString::number ( index.row() )  );
     SHeader *linea;
     linea = m_subform->cabecera() ->at ( index.column() );
-    _depura ( "QSubForm2BfDelegate::createEditor", 0, "CurrentColumn: " + QString::number ( index.column() ) );
-    _depura ( "QSubForm2BfDelegate::createEditor", 0, "CurrentRow" + QString::number ( index.row() ) );
 
     if ( linea->nomcampo() == "desc" + m_subform->tableName() ) {
         QTextEditDelegate * editor = new QTextEditDelegate ( parent );
         editor->setObjectName ( "QTextEditDelegate" );
+        _depura ( "END QSubForm2BfDelegate::createEditor", 0, "QTextEdit" );
         return editor;
 
     } else if ( linea->nomcampo() == "cant" + m_subform->tableName()
@@ -493,23 +500,28 @@ QWidget *QSubForm2BfDelegate::createEditor ( QWidget *parent, const QStyleOption
         QDoubleSpinBox2 * editor = new QDoubleSpinBox2 ( parent );
         editor->setMinimum ( -1000000 );
         editor->setMaximum ( 1000000 );
+        _depura ( "END QSubForm2BfDelegate::createEditor", 0, "QSPinBox" );
         return editor;
 
     } else if ( linea->nomcampo() == "codigocompletoarticulo" ) {
         BusquedaArticuloDelegate * editor = new BusquedaArticuloDelegate ( parent );
         editor->setEmpresaBase ( ( Company * ) m_subform->empresaBase() );
+        _depura ( "END QSubForm2BfDelegate::createEditor", 0, "BusquedaArticulo" );
         return editor;
     } else if ( linea->nomcampo() == "desctipo_iva" ) {
         BusquedaTipoIVADelegate * editor = new BusquedaTipoIVADelegate ( parent );
         editor->setEmpresaBase ( ( Company * ) m_subform->empresaBase() );
+        _depura ( "END QSubForm2BfDelegate::createEditor", 0, "BusquedaTipoIVA" );
         return editor;
     } else if ( linea->nomcampo() == "nomtrabajador" ) {
         BusquedaTrabajadorDelegate * editor = new BusquedaTrabajadorDelegate ( parent );
         editor->setEmpresaBase ( ( Company * ) m_subform->empresaBase() );
+        _depura ( "END QSubForm2BfDelegate::createEditor", 0, "BusquedaTrabajadorDelegate" );
         return editor;
     } else if ( linea->nomcampo() == "nomalmacen" ) {
         BusquedaAlmacenDelegate * editor = new BusquedaAlmacenDelegate ( parent );
         editor->setEmpresaBase ( ( Company * ) m_subform->empresaBase() );
+        _depura ( "END QSubForm2BfDelegate::createEditor", 0, "BusquedaAlmacenDelegate" );
         return editor;
     } else  {
 //        QWidget *it = QItemDelegate::createEditor(parent, option, index);
@@ -518,9 +530,9 @@ QWidget *QSubForm2BfDelegate::createEditor ( QWidget *parent, const QStyleOption
 //        } else {
 
 //        } // end if
+        _depura ( "END QSubForm2BfDelegate::createEditor", 0, "Default Editor" );
         return QItemDelegate::createEditor ( parent, option, index );
     } // end if
-    _depura ( "END QSubForm2BfDelegate::createEditor", 0 );
 }
 
 
@@ -533,21 +545,19 @@ QWidget *QSubForm2BfDelegate::createEditor ( QWidget *parent, const QStyleOption
 **/
 void QSubForm2BfDelegate::setModelData ( QWidget *editor, QAbstractItemModel *model, const QModelIndex &index ) const
 {
-    _depura ( "QSubForm2BfDelegate::setModelData", 0 );
-    _depura ( "QSubForm2BfDelegate::setModelData", 0, "CurrentColumn: " + QString::number ( index.column() ) );
-    _depura ( "QSubForm2BfDelegate::setModelData", 0, "CurrentRow: " + QString::number ( index.row() ) );
+    _depura ( "QSubForm2BfDelegate::setModelData", 0, "CurrentColumn: " + QString::number ( index.column() ) + "CurrentRow: " + QString::number ( index.row() ) );
 
     /// Si la fila o columna pasadas son inv&aacute;lidas salimos.
-    if ( index.column() < 0 || index.row() < 0 )
+    if ( index.column() < 0 || index.row() < 0 ) {
+        _depura ( "END QSubForm2BfDelegate::setModelData", 0, "Fila o columna invalida" );
         return;
+    } // end if
 
     SHeader *linea;
     linea = m_subform->cabecera() ->at ( index.column() );
     if ( linea->nomcampo() == "desc" + m_subform->tableName() ) {
         QTextEditDelegate * textedit = qobject_cast<QTextEditDelegate *> ( editor );
         model->setData ( index, textedit->toPlainText() );
-        return;
-
     } else if ( linea->nomcampo() == "cant" + m_subform->tableName()
                 || linea->nomcampo() == "pvp" + m_subform->tableName()
                 || linea->nomcampo() == "descuento" + m_subform->tableName()
@@ -590,16 +600,13 @@ void QSubForm2BfDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mo
 **/
 void QSubForm2BfDelegate::setEditorData ( QWidget* editor, const QModelIndex& index ) const
 {
-    _depura ( "QSubForm2BfDelegate::setEditorData", 0 );
-    _depura ( "QSubForm2BfDelegate::setEditorData", 0, "CurrentColumn: " + QString::number ( index.column() ) );
-    _depura ( "QSubForm2BfDelegate::setEditorData", 0, "CurrentRow: " + QString::number ( index.row() ) );
+    _depura ( "QSubForm2BfDelegate::setEditorData", 0, "CurrentColumn: " + QString::number ( index.column() ) +  "CurrentRow: " + QString::number ( index.row() )  );
     SHeader *linea;
     linea = m_subform->cabecera() ->at ( index.column() );
     if ( linea->nomcampo() == "desc" + m_subform->tableName() ) {
         QString data = index.model() ->data ( index, Qt::DisplayRole ).toString();
         QTextEditDelegate *textedit = qobject_cast<QTextEditDelegate*> ( editor );
         textedit->setText ( data );
-
     } else if ( linea->nomcampo() == "cant" + m_subform->tableName()
                 || linea->nomcampo() == "pvp" + m_subform->tableName()
                 || linea->nomcampo() == "descuento" + m_subform->tableName()

@@ -31,7 +31,7 @@ QDoubleSpinBox2::QDoubleSpinBox2 ( QWidget *parent ) : QDoubleSpinBox ( parent )
     installEventFilter ( this );
     setAlignment ( Qt::AlignRight );
     setButtonSymbols ( QAbstractSpinBox::PlusMinus );
-    _depura ( "EDN QDoubleSpinBox2::QDoubleSpinBox2", 0 );
+    _depura ( "END QDoubleSpinBox2::QDoubleSpinBox2", 0 );
 }
 
 

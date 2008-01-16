@@ -58,8 +58,10 @@ ArticuloList::ArticuloList ( Company *comp, QWidget *parent, Qt::WFlags flag, ed
     setupUi ( this );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "ArticuloList_ArticuloList", this );
-    if ( res != 0 )
+    if ( res != 0 ) {
+        _depura ( "END ArticuloList::ArticuloList", 0, "Salida por plugin" );
         return;
+    } // end if
     m_tipoarticulo->setEmpresaBase ( comp );
     m_familia->setEmpresaBase ( comp );
     mui_list->setEmpresaBase ( comp );
@@ -120,6 +122,7 @@ void ArticuloList::editar ( int row )
         /// Si la carga no va bien entonces terminamos.
         if ( art->cargar ( mdb_idarticulo ) ) {
             delete art;
+            _depura ( "END ArticuloList::editar", 0, "Carga Erronea" );
             return;
         } // end if
         art->hide();
@@ -128,7 +131,7 @@ void ArticuloList::editar ( int row )
         close();
         emit ( selected ( mdb_idarticulo ) );
     } // end if
-    _depura ( "ArticuloList::END_editArticle", 0 );
+    _depura ( "END ArticuloList::editar", 0 );
 }
 
 

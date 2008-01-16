@@ -101,14 +101,17 @@ Ficha::~Ficha()
 **/
 void Ficha::cargaSpecs()
 {
-    _depura ( "SubForm3::cargaSpecs", 0 );
+    _depura ( "Ficha::cargaSpecs", 0 );
 //    QFile file(confpr->valor(CONF_DIR_USER) + m_fileconfig + "_" + empresaBase()->nameDB() + "_specs.spc");
     QFile file ( "/etc/bulmages/" + objectName() + "_" + empresaBase() ->nameDB() + "_spec.spc" );
     QDomDocument doc ( "mydocument" );
-    if ( !file.open ( QIODevice::ReadOnly ) )
+    if ( !file.open ( QIODevice::ReadOnly ) ) {
+        _depura ( "END Ficha::cargaSpecs", 0, "Fichero no se puede abrir" );
         return;
+    } // end if
     if ( !doc.setContent ( &file ) ) {
         file.close();
+        _depura ( "END Ficha::cargaSpecs", 0, "XML Invalido" );
         return;
     } // end if
     file.close();
@@ -172,7 +175,7 @@ void Ficha::cargaSpecs()
         } // end if
     } // end for
 
-    _depura ( "END SubForm3::cargaSpecs", 0 );
+    _depura ( "END Ficha::cargaSpecs", 0 );
 }
 
 
@@ -300,7 +303,7 @@ void Ficha::on_mui_aceptar_clicked()
     } catch ( ... ) {
         _depura ( "Error al guardar la ficha", 2 );
     } // end try
-    _depura ( "Ficha::on_mui_aceptar_clicked", 0 );
+    _depura ( "END Ficha::on_mui_aceptar_clicked", 0 );
 }
 
 
@@ -559,6 +562,7 @@ void Ficha::pintar()
         } // end for
     } // end for
     pintarPost();
+    _depura ( "END Ficha::pintar", 0 );
 }
 
 
@@ -645,6 +649,7 @@ int Ficha::cargar ( QString id )
         dialogChanges_cargaInicial();
         meteWindow ( windowTitle(), this );
     } catch ( ... ) {
+        _depura ( "END Ficha::cargar", 0, "Error en la carga" );
         return -1;
     } // end try
     _depura ( "END Ficha::cargar", 0 );

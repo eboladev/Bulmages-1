@@ -200,10 +200,11 @@ QString cursor2::nomcampo ( int campo )
 int cursor2::numcampo ( const QString &campo )
 {
     _depura ( "cursor2::numcampo", 0 );
+    int val = -1;
     if ( m_campos.contains ( campo ) )
-        return  m_campos.value ( campo );
-    _depura ( "END cursor2::numcampo", 0 );
-    return -1;
+        val =  m_campos.value ( campo );
+    _depura ( "END cursor2::numcampo", 0 , QString::number ( val ) );
+    return val;
 }
 
 
@@ -238,8 +239,10 @@ QString cursor2::valor ( const QString &campo, int registro )
         registro = registroactual;
     } // end if
     i = numcampo ( campo );
-    if ( i == -1 )
+    if ( i == -1 ) {
+        _depura ( "END cursor2::valor ", 0, "No hay valor" );
         return "";
+    } // end if
     _depura ( "END cursor2::valor ", 0, "campo:" + campo + " ----- Valor:" + PQgetvalue ( result, registro, i ) );
     return ( QString::fromUtf8 ( PQgetvalue ( result, registro, i ) ) );
 }
@@ -300,11 +303,13 @@ int cursor2::ultimoregistro()
 bool cursor2::eof()
 {
     _depura ( "cursor2::eof", 0 );
+    bool result = FALSE;
     if ( nregistros == 0 ) {
-        return ( true );
+        result = TRUE;
     } // end if
+    result = registroactual >= nregistros;
     _depura ( "END cursor2::eof", 0 );
-    return ( registroactual >= nregistros );
+    return result;
 }
 
 
@@ -511,14 +516,14 @@ void postgresiface2::commit()
 {
     _depura ( "postgresiface2::commit", 0 );
     if ( !m_transaccion ) {
-        _depura ( "No estamos en ninguna transaccion", 0 );
+        _depura ( "END postgresiface2::commit", 0, "No estamos en ninguna transaccion" );
         return;
     } // end if
     PGresult *res;
     res = PQexec ( conn, "COMMIT" );
     PQclear ( res );
     m_transaccion = FALSE;
-    _depura ( "postgresiface2::commit", 0 );
+    _depura ( "END postgresiface2::commit", 0 );
 }
 
 
@@ -532,7 +537,7 @@ void postgresiface2::rollback()
 {
     _depura ( "postgresiface2::rollback", 0 );
     if ( !m_transaccion ) {
-        _depura ( "No estamos en ninguna transaccion", 0 );
+        _depura ( "END postgresiface2::rollback", 0, "No estamos en ninguna transaccion" );
         return;
     } // end if
     PGresult *res;
@@ -564,9 +569,8 @@ cursor2 *postgresiface2::cargacursor ( QString query, QString nomcursor, int lim
 
         cur = new cursor2 ( nomcursor, conn, query );
     } catch ( ... ) {
-        _depura ( "postgresiface2::cargacursor La base de datos genero un error: ", 0 );
         delete cur;
-//        throw -1;
+        _depura ( "END postgresiface2::cargacursor", 0, "Error en la base de datos" );
         return NULL;
     } // end try
     _depura ( "END postgresiface2::cargacursor", 0, nomcursor );
@@ -599,28 +603,26 @@ int postgresiface2::ejecuta ( QString Query )
         if ( !result || PQresultStatus ( result ) != PGRES_COMMAND_OK )
             throw - 1;
         PQclear ( result );
-        _depura ( "postgresiface2::ejecuta", 0 );
+        _depura ( "END postgresiface2::ejecuta", 0 );
         return 0;
     } catch ( int e ) {
         if ( e == 42501 ) {
-            _depura ( "SQL command failed: " + Query );
-            fprintf ( stderr, "%s\n", PQerrorMessage ( conn ) );
+            _depura ( "END postgresiface2::ejecuta", 0, "SQL command failed: " + Query );
             QString mensaje = "No tiene permisos suficientes para ejecutar el comando SQL:\n";
             msgError ( mensaje + ( QString ) PQerrorMessage ( conn ), Query + "\n" + ( QString ) PQerrorMessage ( conn ) );
             PQclear ( result );
             throw - 1;
         } else {
-            _depura ( "SQL command failed: " + Query );
-            fprintf ( stderr, "%s\n", PQerrorMessage ( conn ) );
+            _depura ( "END postgresiface2::ejecuta", 0, "SQL command failed: " + Query );
             QString mensaje = "Error al intentar modificar la base de datos:\n";
             msgError ( mensaje + ( QString ) PQerrorMessage ( conn ), Query + "\n" + ( QString ) PQerrorMessage ( conn ) );
             PQclear ( result );
             throw - 1;
         } // end if
     } catch ( ... ) {
+        _depura ( "END postgresiface2::ejecuta", 0, "SQL command failed: " + Query );
         throw - 1;
     } // end try
-    _depura ( "END postgresiface2::ejecuta", 0, Query );
 }
 
 

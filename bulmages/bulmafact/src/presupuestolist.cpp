@@ -235,8 +235,8 @@ QString PresupuestoList::generaFiltro()
         filtro += " AND fpresupuesto >= '" + m_fechain->text() + "' ";
     if ( m_fechafin->text() != "" )
         filtro += " AND fpresupuesto <= '" + m_fechafin->text() + "' ";
-    return ( filtro );
     _depura ( "END PresupuestoList::generaFiltro", 0 );
+    return ( filtro );
 }
 
 
@@ -322,8 +322,10 @@ PresupuestoListSubForm::PresupuestoListSubForm ( QWidget *parent, const char * )
     _depura ( "PresupuestoListSubForm::PresupuestoListSubForm", 0 );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "PresupuestoListSubForm_PresupuestoListSubForm", this );
-    if ( res != 0 )
+    if ( res != 0 ) {
+        _depura ( "END PresupuestoListSubForm::PresupuestoListSubForm", 0, "Salida por Plugin" );
         return;
+    } // end if
     setDBTableName ( "presupuesto" );
     setDBCampoId ( "idpresupuesto" );
     addSHeader ( "idpresupuesto", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "ID presupuesto" ) );
@@ -346,9 +348,8 @@ PresupuestoListSubForm::PresupuestoListSubForm ( QWidget *parent, const char * )
     setDelete ( FALSE );
     setSortingEnabled ( TRUE );
     /// Disparamos los plugins.
-    res = g_plugins->lanza ( "PresupuestoListSubForm_PresupuestoListSubForm_Post", this );
-    if ( res != 0 )
-        _depura ( "PresupuestoListSubForm::PresupuestoListSubForm", 0 );
+    g_plugins->lanza ( "PresupuestoListSubForm_PresupuestoListSubForm_Post", this );
+    _depura ( "END PresupuestoListSubForm::PresupuestoListSubForm", 0 );
     return;
 }
 
@@ -373,5 +374,5 @@ void PresupuestoListSubForm::cargar ( QString query )
 {
     _depura ( "PresupuestoListSubForm::cargar", 0, query );
     SubForm3::cargar ( query );
-    _depura ( "PresupuestoListSubForm::cargar", 0 );
+    _depura ( "END PresupuestoListSubForm::cargar", 0 );
 }

@@ -103,8 +103,9 @@ int SubForm2Bf_on_mui_list_editFinished ( SubForm2Bf *subform )
     cursor2 *cur1 = NULL;
     cursor2 *cur2 = NULL;
 
-
-    if ( subform->currentColumn() < 1 ) {
+    if (  subform->tableName() != "lpedidoproveedor"
+            && subform->tableName() != "lalbaranp"
+            && subform->tableName() != "lfacturap" ) {
         return 0;
     } // end if
 
@@ -191,7 +192,6 @@ int SubForm2Bf_on_mui_list_editFinished ( SubForm2Bf *subform )
             delete cur1;
         if ( cur != NULL )
             delete cur;
-        return -1;
     } // end if
 
     return 0;

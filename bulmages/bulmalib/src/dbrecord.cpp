@@ -88,8 +88,8 @@ void DBCampo::setconexionbase ( postgresiface2 *comp )
 **/
 DBCampo::dbtype DBCampo::tipo()
 {
-    _depura ( "DBCampo::dbtype DBCampo::tipo", 0 );
-    _depura ( "END DBCampo::dbtype DBCampo::tipo", 0 );
+    _depura ( "DBCampo::tipo", 0 );
+    _depura ( "END DBCampo::tipo", 0 );
     return m_tipo;
 }
 
@@ -187,43 +187,60 @@ QString DBCampo::valorcampoprep ( int &error )
 {
     _depura ( "DBCampo::valorcampoprep", 0 );
     error = 0;
+    QString valor = "";
     if ( ( m_restrict & DBNotNull ) && ! ( m_restrict & DBAuto ) ) {
         if ( m_valorcampo == "" ) {
             mensajeAviso ( "El campo '" + m_nompresentacion + "' no puede estar vacio." );
             error = -1;
-            return "";
+            valor = "";
         } // end if
+    } else {
+        switch ( m_tipo ) {
+        case DBint:
+            if ( m_valorcampo == "" ) {
+                valor = "NULL";
+            } else {
+                m_valorcampo.replace ( ",", "." );
+                valor = "'" + m_conexionbase->sanearCadena ( m_valorcampo ) + "'";
+            } // end if
+            break;
+        case DBvarchar:
+            if ( m_valorcampo == "" ) {
+                valor = "NULL";
+            } else {
+                valor = "'" + m_conexionbase->sanearCadena ( m_valorcampo ) + "'";
+            } // end if
+            break;
+        case DBdate:
+            if ( m_valorcampo == "" ) {
+                valor = "NULL";
+            } else {
+                valor = "'" + m_conexionbase->sanearCadena ( m_valorcampo ) + "'";
+            } // end if
+            break;
+        case DBnumeric:
+            if ( m_valorcampo == "" ) {
+                valor = "NULL";
+            } else {
+                m_valorcampo.replace ( ",", "." );
+                valor =  "'" + m_conexionbase->sanearCadena ( m_valorcampo ) + "'";
+            } // end if
+            break;
+        case DBboolean:
+            if ( m_valorcampo == "" ) {
+                valor = "NULL";
+            } else if ( m_valorcampo == "f" || m_valorcampo == "t" ) {
+                valor = "'" + m_conexionbase->sanearCadena ( m_valorcampo ) + "'";
+            } else {
+                valor = m_conexionbase->sanearCadena ( m_valorcampo );
+            } // end if
+            break;
+        default:
+            error = -1;
+        } // end switch
     } // end if
-    switch ( m_tipo ) {
-    case DBint:
-        if ( m_valorcampo == "" )
-            return "NULL";
-        m_valorcampo.replace ( ",", "." );
-        return "'" + m_conexionbase->sanearCadena ( m_valorcampo ) + "'";
-    case DBvarchar:
-        if ( m_valorcampo == "" )
-            return "NULL";
-        return "'" + m_conexionbase->sanearCadena ( m_valorcampo ) + "'";
-    case DBdate:
-        if ( m_valorcampo == "" )
-            return "NULL";
-        return "'" + m_conexionbase->sanearCadena ( m_valorcampo ) + "'";
-    case DBnumeric:
-        if ( m_valorcampo == "" )
-            return "NULL";
-        m_valorcampo.replace ( ",", "." );
-        return "'" + m_conexionbase->sanearCadena ( m_valorcampo ) + "'";
-    case DBboolean:
-        if ( m_valorcampo == "" )
-            return "NULL";
-        if ( m_valorcampo == "f" || m_valorcampo == "t" )
-            return "'" + m_conexionbase->sanearCadena ( m_valorcampo ) + "'";
-        return m_conexionbase->sanearCadena ( m_valorcampo );
-    } // end switch
-    error = -1;
-    _depura ( "Error en la conversion de tipos", 2 );
-    _depura ( "END DBCampo::valorcampoprep", 10 );
-    return "";
+    _depura ( "END DBCampo::valorcampoprep", 0, valor );
+    return valor;
 }
 
 
@@ -254,7 +271,7 @@ DBRecord::~DBRecord()
 
 /// Establece la base de datos que debe utilizar la clase.
 /**
-Esta clase funciona siempre ligada a una base de datos. Esta se especifica 
+Esta clase funciona siempre ligada a una base de datos. Esta se especifica
 en el constructor de la clase.
 \param comp Puntero a la base de datos que debe utilizar la clase.
 **/
@@ -540,21 +557,23 @@ int DBRecord::setDBvalue ( QString nomb, QString valor )
 **/
 QString DBRecord::DBvalue ( QString nomb )
 {
-    _depura ( "DBRecord::value", 0, nomb );
+    _depura ( "DBRecord::DBvalue", 0, nomb );
     DBCampo *campo;
+    QString valor = "";
     int i = 0;
+
+    /// Recorremos la lista en busqueda del campo.
     campo = m_lista.value ( i );
     while ( campo && campo->nomcampo() != nomb )
         campo = m_lista.value ( ++i );
+
     if ( !campo ) {
         _depura ( "Campo " + nomb + " no encontrado", 2 );
-        return "";
+    } else if ( campo->nomcampo() == nomb ) {
+        valor = campo->valorcampo();
     } // end if
-    if ( campo->nomcampo() == nomb ) {
-        return campo->valorcampo();
-    } // end if
-    _depura ( "END DBRecord::value", 0, nomb );
-    return "";
+    _depura ( "END DBRecord::DBvalue", 0, nomb );
+    return valor;
 }
 
 
@@ -567,18 +586,18 @@ bool DBRecord::exists ( QString nomb )
 {
     _depura ( "DBRecord::exists", 0, nomb );
     DBCampo *campo;
+    bool existe = FALSE;
     int i = 0;
     campo = m_lista.value ( i );
     while ( campo && campo->nomcampo() != nomb )
         campo = m_lista.value ( ++i );
-    if ( !campo ) {
-        return FALSE;
-    } // end if
-    if ( campo->nomcampo() == nomb ) {
-        return TRUE;
+    if ( campo ) {
+        if ( campo->nomcampo() == nomb ) {
+            existe = TRUE;
+        } // end if
     } // end if
     _depura ( "END DBRecord::exists", 0, nomb );
-    return FALSE;
+    return existe;
 }
 
 
@@ -682,7 +701,7 @@ int DBRecord::borrar()
 
 /// Guarda el registro actual en la base de datos
 /**
-Esta funcion, de un nivel algo superior a la llamada DBsave hace el guardado y maneja las 
+Esta funcion, de un nivel algo superior a la llamada DBsave hace el guardado y maneja las
 excepciones que se hayan podido producir
 \return si no se producen errores devuelve 0 en caso contrario genera una excepcion
 **/

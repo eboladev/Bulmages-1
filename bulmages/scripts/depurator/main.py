@@ -31,7 +31,8 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
 #	self.tree.setColumnWidth(2,20)
 	
 	
-	self.f = open("~/.bulmages/bulmagesout.txt", 'r')
+#	self.f = open("~/.bulmages/bulmagesout.txt", 'r')
+	self.f = open("/home/tborras/.bulmages/bulmagesout.xml", 'r')
 	self.f.seek(0,2)
 
 	self.t = QtCore.QTimer()
@@ -42,12 +43,14 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
 
     def on_mui_conectar_clicked(self):
 	print "Conexion !!"
-	self.f = open("~/.bulmages/bulmagesout.txt", 'r')
+#	self.f = open("~/.bulmages/bulmagesout.txt", 'r')
+	self.f = open("/home/tborras/.bulmages/bulmagesout.xml", 'r')	
 	self.f.seek(0,2)
 	
     def on_mui_conectar_triggered(self):
 #	print "Conexion !!"
-	self.f = open("~/.bulmages/bulmagesout.txt", 'r')
+#	self.f = open("~/.bulmages/bulmagesout.txt", 'r')
+	self.f = open("/home/tborras/.bulmages/bulmagesout.xml", 'r')
 	self.f.seek(0,2)
 
     def on_mui_tableclear_triggered(self):
@@ -99,6 +102,10 @@ class HelloWindow(QtGui.QMainWindow, Ui_Principal):
     def procesaMensaje(self, mens):
 	sacamensaje = 0	
 	mensajefin = 1
+	
+	while mens.startswith(" "):
+		mens = mens[1:]
+		
 	mensaje = mens
 	
 	if mensaje.startswith("END "):

@@ -156,15 +156,17 @@ AlbaranesProveedor::AlbaranesProveedor ( Company *comp, QWidget *parent, Qt::WFl
 **/
 void AlbaranesProveedor::iniciaForm()
 {
-    _depura ( "FacturasProveedorList::iniciaForm" );
+    _depura ( "FacturasProveedorList::iniciaForm", 0 );
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "AlbaranesProveedor_iniciaForm", this );
-    if ( res != 0 )
+    if ( res != 0 ) {
+        _depura ( "END AlbaranesProveedor::iniciaForm", 0, "Salida por Plugin" );
         return;
+    } // end if
     mui_procesada->insertItem ( 0, tr ( "Todos los albaranes" ) );
     mui_procesada->insertItem ( 1, tr ( "Albaranes procesados" ) );
     mui_procesada->insertItem ( 2, tr ( "Albaranes no procesados" ) );
-    _depura ( "END AlbaranesProveedor::iniciaForm" );
+    _depura ( "END AlbaranesProveedor::iniciaForm", 0 );
 }
 
 

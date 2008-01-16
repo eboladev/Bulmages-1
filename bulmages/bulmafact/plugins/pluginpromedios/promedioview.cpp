@@ -34,11 +34,11 @@
 PromedioView::PromedioView ( Company *comp, QWidget *parent )
         : QWidget ( parent ) , dialogChanges ( this ), DBRecord ( comp )
 {
-    _depura ( "PromedioView::INIT_constructor()", 0 );
+    _depura ( "PromedioView::PromedioView", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
     m_companyact = comp;
     setupUi ( this );
-    _depura ( "PromedioView::END_constructor()", 0 );
+    _depura ( "END PromedioView::PromedioView", 0 );
 }
 
 
@@ -47,9 +47,9 @@ PromedioView::PromedioView ( Company *comp, QWidget *parent )
 **/
 PromedioView::~PromedioView()
 {
-    _depura ( "PromedioView::INIT_destructor()\n", 0 );
+    _depura ( "PromedioView::~PromedioView", 0 );
     m_companyact->sacaWindow ( this );
-    _depura ( "PromedioView::END_destructor()\n", 0 );
+    _depura ( "END PromedioView::~PromedioView", 0 );
 }
 
 
@@ -64,7 +64,7 @@ PromedioView::~PromedioView()
 **/
 int PromedioView::cargar ( QString idarticulo )
 {
-    _depura ( "PromedioView::cargar(" + idarticulo + ")", 0 );
+    _depura ( "PromedioView::cargar", 0, idarticulo );
 
     cursor2 *cur = m_companyact->cargacursor ( "SELECT sum(pvplalbaranp*cantlalbaranp)::NUMERIC(12,2) AS tot, sum(cantlalbaranp) as und, max(pvplalbaranp) AS mayor, min(pvplalbaranp) AS menor, avg(pvplalbaranp)::NUMERIC(12,2) AS media, max(cantlalbaranp) as undmayorcompras, min(cantlalbaranp) AS undmenorcompras, avg(cantlalbaranp)::NUMERIC(12,2) AS undavgcompras  FROM lalbaranp WHERE idarticulo=" + idarticulo );
     if ( !cur->eof() ) {
@@ -93,7 +93,7 @@ int PromedioView::cargar ( QString idarticulo )
     } // end if
     delete cur1;
 
-    _depura ( "END PromedioView::cargar()", 0 );
+    _depura ( "END PromedioView::cargar", 0 );
     return 0;
 }
 

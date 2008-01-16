@@ -342,11 +342,18 @@ void _depura ( const QString &cad, int nivel, const QString &param )
     if ( confpr->valor ( CONF_DEBUG ) == "TRUE" ) {
         static QFile file ( confpr->valor ( CONF_DIR_USER ) + "bulmagesout.txt" );
         static QTextStream out ( &file );
+
+        static QFile filexml ( confpr->valor ( CONF_DIR_USER ) + "bulmagesout.xml" );
+        static QTextStream outxml ( &filexml );
+
         if ( !semaforo ) {
             if ( !file.open ( QIODevice::WriteOnly | QIODevice::Text ) )
                 return;
+            if ( !filexml.open ( QIODevice::WriteOnly | QIODevice::Text ) )
+                return;
             semaforo = 1;
         } // end if
+        static int auxxml = 0;
         static int supnivel = 0;
         static int indice = 0;
         static QString mensajesanulados[7000];
@@ -361,10 +368,22 @@ void _depura ( const QString &cad, int nivel, const QString &param )
             supnivel = 2;
             nivel = 2;
         } // end if
-        if ( nivel == 0 ) {
+        if ( nivel == 0 || nivel == 1 ) {
             out << cad << " " << param << "\n" << flush;
-        } else if ( nivel == 1 ) {
-            out << cad << " " << param << "\n" << flush;
+            /// Si la cadena contiene END bajamos el nivel
+            if ( cad.contains ( "::" ) && !cad.startsWith ( "END" ) && !cad.contains ( " " ) ) {
+                auxxml ++;
+                if ( auxxml > 20 ) auxxml = 1;
+            } // end if
+            if ( !cad.contains ( " " ) || cad.startsWith ( "END" ) ) {
+                for ( int i = 0; i < auxxml; i++ )
+                    outxml << "    ";
+                outxml << cad << " " << param << "\n" << flush;
+            } // end if
+            if ( cad.startsWith ( "END" ) ) {
+                auxxml --;
+                if ( auxxml < 0 ) auxxml = 20;
+            } // end if
         } // end if
         for ( int i = 0; i < indice; i++ ) {
             if ( cad == mensajesanulados[i] ) {

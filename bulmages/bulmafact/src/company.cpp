@@ -955,7 +955,7 @@ void Company::refreshAlbaranesCliente()
     _depura ( "Company::refreshAlbaranesCliente", 0 );
     if ( m_clientDelivNotesList != NULL )
         m_clientDelivNotesList->presentar();
-    _depura ( "Company::refreshAlbaranesCliente", 0 );
+    _depura ( "END Company::refreshAlbaranesCliente", 0 );
 }
 
 
@@ -1293,12 +1293,14 @@ void Company::s_almacenes()
 {
     _depura ( "Company::s_almacenes", 0 );
     /// Lanzamos los plugins necesarios.
-    if ( g_plugins->lanza ( "Company_s_almacenes", this ) )
+    if ( g_plugins->lanza ( "Company_s_almacenes", this ) ) {
+        _depura ( "END Company::s_almacenes", 0, "Salida por plugin" );
         return;
+    } // end if
     ListAlmacenView *lser = new ListAlmacenView ( this, 0 );
     m_pWorkspace->addWindow ( lser );
     lser->show();
-    _depura ( "END_Company::s_almacenes", 0 );
+    _depura ( "END Company::s_almacenes", 0 );
 }
 
 

@@ -38,8 +38,7 @@ SDBRecord::SDBRecord ( EmpresaBase *con ) : DBRecord ( con )
     _depura ( "SDBRecord::SDBRecord", 0 );
     static int creaciones = 0;
     creaciones++;
-    _depura ( "SDBrecord::creados: ", 0,  QString::number ( creaciones ) );
-    _depura ( "END SDBRecord::SDBRecord", 0 );
+    _depura ( "END SDBRecord::SDBRecord", 0, "Creaciones" + QString::number ( creaciones ) );
 }
 
 
@@ -53,8 +52,7 @@ SDBRecord::~SDBRecord()
     static int destrucciones = 0;
     _depura ( "SDBRecord::~SDBRecord", 0 );
     destrucciones++;
-    _depura ( "SDBrecord::destruidos: ", 0 ,  QString::number ( destrucciones ) );
-    _depura ( "SDBRecord::~SDBRecord", 0 );
+    _depura ( "END SDBRecord::~SDBRecord", 0, "Destrucciones " + QString::number ( destrucciones ) );
 }
 
 
@@ -121,7 +119,7 @@ SDBCampo::SDBCampo ( SDBRecord *par, postgresiface2 *com, QString nom, dbtype ty
 {
     _depura ( "SDBCampo::SDBCampo", 0 );
     m_pare = par;
-    _depura ( "SDBCampo::SDBCampo", 0 );
+    _depura ( "END SDBCampo::SDBCampo", 0 );
 }
 
 
@@ -298,8 +296,8 @@ unsigned int SHeader::restricciones()
 **/
 DBCampo::dbtype SHeader::tipo()
 {
-    _depura ( "DBCampo::dbtype SHeader::tipo", 0 );
-    _depura ( "END DBCampo::dbtype SHeader::tipo", 0 );
+    _depura ( "SHeader::tipo", 0 );
+    _depura ( "END SHeader::tipo", 0 );
     return m_tipo;
 
 }
@@ -312,7 +310,7 @@ DBCampo::dbtype SHeader::tipo()
 QString SHeader::nompresentacion()
 {
     _depura ( "SHeader::nompresentacion", 0 );
-    _depura ( "EDN SHeader::nompresentacion", 0 );
+    _depura ( "END SHeader::nompresentacion", 0 );
     return m_nompresentacion;
 }
 

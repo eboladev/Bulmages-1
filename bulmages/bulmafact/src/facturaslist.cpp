@@ -120,7 +120,7 @@ FacturasList::~FacturasList()
 **/
 void FacturasList::presentar()
 {
-    _depura ( "FacturasList::presenta", 0 );
+    _depura ( "FacturasList::presentar", 0 );
 
     mui_list->cargar ( "SELECT *, totalfactura AS total, bimpfactura AS base, impfactura AS impuestos FROM factura LEFT JOIN cliente ON factura.idcliente = cliente.idcliente LEFT JOIN almacen ON factura.idalmacen = almacen.idalmacen WHERE 1 = 1 " + generaFiltro() );
 

@@ -58,7 +58,7 @@ Q19QToolButton::Q19QToolButton ( CobrosList *cob , QWidget *parent ) : QToolButt
 Q19QToolButton::~Q19QToolButton()
 {
     _depura ( "Q19QToolButton::~Q19QToolButton", 0 );
-    _depura ( "Q19QToolButton::~Q19QToolButton", 0 );
+    _depura ( "END Q19QToolButton::~Q19QToolButton", 0 );
 }
 
 

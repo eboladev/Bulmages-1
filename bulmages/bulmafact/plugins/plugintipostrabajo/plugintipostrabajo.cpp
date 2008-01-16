@@ -190,7 +190,7 @@ int AlmacenView_AlmacenView ( AlmacenView *alm )
     form->setDBCampoId ( "idalmacen" );
     form->addSHeader ( "nomtipotrabajo", DBCampo::DBvarchar, DBCampo::DBNoSave , SHeader::DBNone, QApplication::translate ( "AlmacenView", "ID nom tipo Trabajo" ) );
     form->addSHeader ( "numpers", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone , QApplication::translate ( "AlmacenView", "Numero de Cargos Necesarios" ) );
-    form->addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "AlmacenView", "ID almacen" ) );
+    form->addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "AlmacenView", "ID almacen" ) );
     form->addSHeader ( "idtipotrabajo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "AlmacenView", "ID tipo Trabajo" ) );
     form->addSHeader ( "origidtipotrabajo", DBCampo::DBint, DBCampo::DBDupPrimaryKey | DBCampo::DBNoSave, SHeader::DBNoView, "idtipotrabajo" );
 
@@ -224,11 +224,13 @@ int Ficha_cargar ( Ficha *fich )
 **/
 int Ficha_guardar_Post ( Ficha *fich )
 {
+    _depura ( "Ficha_guardar_Post", 0 );
     SubForm3 * form = fich->findChild<SubForm3 *> ( "mui_tipostrabajo" );
     if ( form ) {
         form->setColumnValue ( "idalmacen", fich->DBvalue ( "idalmacen" ) );
         form->guardar();
     }
+    _depura ( "END Ficha_guardar_Post", 0 );
     return 0;
 }
 

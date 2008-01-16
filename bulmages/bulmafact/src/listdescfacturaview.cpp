@@ -44,6 +44,6 @@ ListDescuentoFacturaView::ListDescuentoFacturaView ( QWidget *parent )
     addSHeader ( "proporciondfactura", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr ( "% Descuento" ) );
     addSHeader ( "idfactura", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "Id factura" ) );
     setinsercion ( TRUE );
-    _depura ( "ListDescuentoFacturaView::ListDescuentoFacturaView", 0 );
+    _depura ( "END ListDescuentoFacturaView::ListDescuentoFacturaView", 0 );
 }
 

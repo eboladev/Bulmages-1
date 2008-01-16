@@ -219,7 +219,7 @@ void AlbaranClienteList::presentar()
         delete cur;
     } // end if
 
-    _depura ( "End AlbaranClienteList::presentar" );
+    _depura ( "END AlbaranClienteList::presentar" );
 }
 
 

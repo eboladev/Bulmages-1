@@ -37,7 +37,7 @@ BusquedaTipoArticulo::BusquedaTipoArticulo ( QWidget *parent )
     mdb_idtipo_articulo = "";
     mdb_desctipo_articulo = "";
     mdb_codtipo_articulo = "";
-    _depura ( "BusquedaTipoArticulo::BusquedaTipoArticulo", 0 );
+    _depura ( "END BusquedaTipoArticulo::BusquedaTipoArticulo", 0 );
 }
 
 

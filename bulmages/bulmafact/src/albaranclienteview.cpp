@@ -115,9 +115,9 @@ AlbaranClienteView::AlbaranClienteView ( Company *comp, QWidget *parent )
 **/
 AlbaranClienteView::~AlbaranClienteView()
 {
-    _depura ( "AlbaranClienteView::~AlbaranClienteView(", 0 );
+    _depura ( "AlbaranClienteView::~AlbaranClienteView", 0 );
     empresaBase() ->refreshAlbaranesCliente();
-    _depura ( "END AlbaranClienteView::~AlbaranClienteView(", 0 );
+    _depura ( "END AlbaranClienteView::~AlbaranClienteView", 0 );
 }
 
 
@@ -532,7 +532,7 @@ int AlbaranClienteView::cargarPost ( QString idalbaran )
     g_plugins->lanza ( "AlbaranCliente_cargarPost_Post", this );
 
     calculaypintatotales();
-    _depura ( "Fin AlbaranClienteView::cargar", 0 );
+    _depura ( "END AlbaranClienteView::cargar", 0 );
     return 0;
 }
 

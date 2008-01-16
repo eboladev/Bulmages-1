@@ -78,7 +78,7 @@
       <envvars/>
     </run>
     <general>
-      <activedir>bulmalib/src</activedir>
+      <activedir>bulmafact/plugins/plugintipostrabajo</activedir>
     </general>
     <make>
       <abortonerror>true</abortonerror>

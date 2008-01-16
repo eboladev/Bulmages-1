@@ -86,7 +86,7 @@ int SubForm3_SubForm3_Post ( SubForm3 *sub )
 myplugclipboard::myplugclipboard ( SubForm3 *parent ) : QObject ( parent )
 {
     _depura ( "myplugclipboard::myplugclipboard", 0 );
-    _depura ( "myplugclipboard::myplugclipboard", 0 );
+    _depura ( "END myplugclipboard::myplugclipboard", 0 );
 }
 
 
@@ -96,7 +96,7 @@ myplugclipboard::myplugclipboard ( SubForm3 *parent ) : QObject ( parent )
 myplugclipboard::~myplugclipboard()
 {
     _depura ( "myplugclipboard::~myplugclipboard", 0 );
-    _depura ( "myplugclipboard::~myplugclipboard", 0 );
+    _depura ( "END myplugclipboard::~myplugclipboard", 0 );
 }
 
 

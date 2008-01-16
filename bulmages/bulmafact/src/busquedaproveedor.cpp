@@ -209,8 +209,10 @@ void BusquedaProveedor::on_m_cifproveedor_editingFinished()
 void BusquedaProveedor::on_m_cifproveedor_textChanged ( const QString &val )
 {
     _depura ( "BusquedaProveedor::on_m_cifproveedor_textChanged", 0 );
-    if ( m_semaforo )
+    if ( m_semaforo ) {
+        _depura ( "BusquedaProveedor::on_m_cifproveedor_textChanged", 0, "Semaforo en rojo" );
         return;
+    } // end if
 
     bool encontrado = FALSE;
     QString SQLQuery = "SELECT * FROM proveedor WHERE cifproveedor = '" + val + "'";

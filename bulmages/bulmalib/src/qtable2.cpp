@@ -184,7 +184,7 @@ QTableWidgetItem2::~QTableWidgetItem2()
 **/
 bool QTableWidgetItem2::operator< ( const QTableWidgetItem & other ) const
 {
-    _depura ( "QTableWidgetItem2::operator <", 0, text() + " < " + other.text() );
+    _depura ( "QTableWidgetItem2::operator<", 0, text() + " < " + other.text() );
     bool oknumero;
     bool oknumero1;
     QString cad = text();
@@ -195,6 +195,7 @@ bool QTableWidgetItem2::operator< ( const QTableWidgetItem & other ) const
         double ncad = cad.toDouble ( &oknumero );
         double ncad1 = cad1.toDouble ( &oknumero1 );
         if ( oknumero && oknumero1 ) {
+            _depura ( "END QTableWidgetItem2::operator<", 0 );
             return ncad < ncad1;
         } // end if
         /// Comprobamos si es una fecha
@@ -204,11 +205,12 @@ bool QTableWidgetItem2::operator< ( const QTableWidgetItem & other ) const
             QDate fcad1 = normalizafecha ( cad1 );
             QString acad1 = fcad1.toString ( Qt::ISODate );
             if ( acad[4] == '-' && acad1[4] == '-' && acad[7] == '-' && acad1[7] == '-' ) {
+                _depura ( "END QTableWidgetItem2::operator<", 0 );
                 return fcad < fcad1;
             } // end if
         } // end if
     } // end if
-    _depura ( "END QTableWidgetItem2::operator <", 0 );
+    _depura ( "END QTableWidgetItem2::operator<", 0 );
     return cad < cad1;
 }
 
@@ -413,7 +415,7 @@ metodo de ordenacion.
 **/
 void QTableWidget2::ordenar()
 {
-    _depura ( "QTableWidget2::ordenar ", 0, QString::number ( m_colorden ) );
+    _depura ( "QTableWidget2::ordenar", 0, QString::number ( m_colorden ) );
     /// Puede ocurrir que el parametro de ordenacion sea invalido por cualquier extranyo motivo.
     if ( m_colorden < columnCount() ) {
         sortByColumn ( m_colorden );

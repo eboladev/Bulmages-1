@@ -36,7 +36,7 @@ BusquedaFecha::BusquedaFecha ( QWidget *parent ) : BLWidget ( parent )
     QObject::connect ( mui_textoFecha, SIGNAL ( returnPressed() ), this, SLOT ( s_returnPressed() ) );
     QObject::connect ( mui_textoFecha, SIGNAL ( editingFinished() ), this, SLOT ( s_fechalostFocus() ) );
     QObject::connect ( mui_textoFecha, SIGNAL ( editingFinished() ), this, SIGNAL ( editingFinished() ) );
-    _depura ( "BusquedaFecha::BusquedaFecha", 0 );
+    _depura ( "END BusquedaFecha::BusquedaFecha", 0 );
 }
 
 

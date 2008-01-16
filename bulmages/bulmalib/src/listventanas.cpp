@@ -282,32 +282,28 @@ int ListVentanas::meteWindow ( QString nombre, QObject *obj, bool compdup )
             QListWidgetItem1 * m = ( QListWidgetItem1 * ) m_listBox->item ( i );
             /// Si la ventana ya esta en la lista.
             if ( m->object() == obj ) {
-                _depura ( "ListVentanas::La ventana ya existe", 0, nombre );
+                _depura ( "END ListVentanas::meteWindow", 0, "Ya existe" + nombre );
                 m->setNombre ( nombre );
                 return 0;
             } // end if
 
             /// Comprobamos ventanas duplicadas.
             if ( m->nombre() == nombre && compdup ) {
-                _depura ( "ListVentanas::hay una duplicada y la cerramos", 0 );
-                _depura ( "ListVentanas::mostramos la original", 0 );
                 ( ( QWidget * ) m->object() ) ->hide();
                 ( ( QWidget * ) m->object() ) ->show();
                 sacaWindow ( obj );
-                _depura ( "ListVentanas::Establecemos la nueva primaria", 0 );
                 throw - 1;
             } // end if
             i++;
         } // end while
         if ( i >= m_listBox->count() ) {
-            _depura ( "insercion", 0 );
             QPixmap icon = ( ( QWidget * ) obj ) ->windowIcon().pixmap ( 32, 32 );
             QListWidgetItem1 *m = new QListWidgetItem1 ( m_listBox, icon );
             m->setObject ( obj );
             m->setNombre ( nombre );
         } // end if
     } catch ( ... ) {
-        _depura ( "ListVentanas::meteWindow ventana duplicada", 0 );
+        _depura ( "END ListVentanas::meteWindow", 0, " ventana duplicada" );
         throw - 1;
     } // end try
     _depura ( "END ListVentanas::meteWindow", 0 );

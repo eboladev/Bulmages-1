@@ -96,7 +96,7 @@ PaisView::~PaisView()
 **/
 void PaisView::pintar()
 {
-    _depura ( "PaisView::pintar", 10 );
+    _depura ( "PaisView::pintar", 0 );
     mui_list->cargar ( "SELECT * FROM pais ORDER BY descpais" );
     _depura ( "END PaisView::pintar", 0 );
 }

@@ -173,7 +173,7 @@ void FichaBf::calculaypintatotales()
 
     Fixed totirpf = totbaseimp * irpf / 100;
     pintatotales ( totiva, totbaseimp, totiva + totbaseimp + totreqeq - totirpf, ( basei * porcentt / 100 ) + descuentolinea, totirpf, totreqeq );
-    _depura ( "FichaBf::calculaypintatotales", 0 );
+    _depura ( "END FichaBf::calculaypintatotales", 0 );
 }
 
 

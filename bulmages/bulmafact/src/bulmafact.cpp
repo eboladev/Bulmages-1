@@ -234,18 +234,18 @@ void Bulmafact::informaindexador ( QWidget *w )
     _depura ( "Bulmafact::informaindexador", 0 );
 
     /// Si no esta inicializado company no se le puede informar.
-    if ( m_company == NULL )
+    if ( m_company == NULL ) {
+        _depura ( "END Bulmafact::informaindexador", 0, "Company no iniciado" );
         return;
+    } // end if
 
     /// No existe una ventana que activar.
     if ( w == NULL ) {
         m_company->deSeleccionaWindow();
+        _depura ( "END Bulmafact::informaindexador", 0, "No existe la ventana a activar" );
         return;
     } // end if
     m_company->seleccionaWindow ( w->windowTitle(), w );
-
-    QString texto = "Window activated. " + w->windowTitle();
-    _depura ( texto, 10 );
 
     _depura ( "END Bulmafact::informaindexador", 0 );
 }

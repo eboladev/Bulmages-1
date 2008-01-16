@@ -145,7 +145,7 @@ ClienteView::~ClienteView()
 **/
 int ClienteView::cargarPost ( QString idcliente )
 {
-    _depura ( "ClienteView::cargar", 0 );
+    _depura ( "ClienteView::cargarPost", 0 );
 
 
     /// Hacemos que el listado de presupuestos de un cliente se inicialize.
@@ -161,7 +161,7 @@ int ClienteView::cargarPost ( QString idcliente )
     m_listcobros->presentar();
 
 
-    _depura ( "ClienteView::cargar", 0 );
+    _depura ( "END ClienteView::cargarPost", 0 );
     return 0;
 }
 

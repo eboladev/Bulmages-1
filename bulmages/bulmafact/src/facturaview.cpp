@@ -160,7 +160,7 @@ void FacturaView::pintatotales ( Fixed iva, Fixed base, Fixed total, Fixed desc,
     m_totalDiscounts->setText ( desc.toQString() );
     m_totalIRPF->setText ( QString ( irpf.toQString() ) );
     m_totalReqEq->setText ( QString ( reqeq.toQString() ) );
-    _depura ( "FacturaView::pintatotales", 0 );
+    _depura ( "END FacturaView::pintatotales", 0 );
 }
 
 

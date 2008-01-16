@@ -82,7 +82,8 @@ class ListaClases:
 if (__name__=='__main__'):
 	lmen = ListaClases()
 		
-	f = open("~/.bulmages/bulmagesout.txt", 'r')
+#	f = open("~/.bulmages/bulmagesout.txt", 'r')
+	f = open("/home/tborras/.bulmages/bulmagesout.txt", 'r')
 	f.seek(0,2)
 	while 1:
 		line = f.readline(300)

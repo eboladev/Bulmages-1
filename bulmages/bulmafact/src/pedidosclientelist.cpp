@@ -171,6 +171,7 @@ QString PedidosClienteList::generarFiltro()
     if ( m_fechafin->text() != "" ) {
         filtro += " AND fechapedidocliente <= '" + m_fechafin->text() + "' ";
     } // end if
+    _depura ( "END PedidosClienteList::generarFiltro", 0 );
     return ( filtro );
 }
 

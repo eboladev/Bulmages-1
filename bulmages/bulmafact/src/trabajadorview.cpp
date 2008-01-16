@@ -301,8 +301,8 @@ void TrabajadorView::on_mui_imagen_clicked()
 QString TrabajadorView::idtrabajador()
 {
     _depura ( "TrabajadorView::idtrabajador", 0 );
-    return mdb_idtrabajador;
     _depura ( "END TrabajadorView::idtrabajador", 0 );
+    return mdb_idtrabajador;
 }
 
 

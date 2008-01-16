@@ -73,8 +73,8 @@ void PEmpresaBase::setEmpresaBase ( EmpresaBase *emp )
 EmpresaBase *PEmpresaBase::empresaBase()
 {
     _depura ( "PEmpresaBase::empresaBase", 0 );
-    return m_empresaBase;
     _depura ( "END PEmpresaBase::empresaBase", 0 );
+    return m_empresaBase;
 }
 
 

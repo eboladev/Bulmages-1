@@ -367,10 +367,10 @@ FacturasProveedorListSubform::~FacturasProveedorListSubform()
 **/
 void FacturasProveedorListSubform::cargar()
 {
-    _depura ( "AlbaranesProveedorListSubform::cargar()\n", 0 );
+    _depura ( "FacturasProveedorListSubform::cargar", 0 );
     QString SQLQuery = "SELECT * FROM facturap";
     SubForm3::cargar ( SQLQuery );
-    _depura ( "END AlbaranesProveedorListSubform::cargar()\n", 0 );
+    _depura ( "END FacturasProveedorListSubform::cargar", 0 );
 }
 
 
@@ -380,8 +380,8 @@ void FacturasProveedorListSubform::cargar()
 **/
 void FacturasProveedorListSubform::cargar ( QString query )
 {
-    _depura ( "AlbaranesProveedorListSubform::cargar(QString query)\n", 0 );
+    _depura ( "FacturasProveedorListSubform::cargar", 0 );
     SubForm3::cargar ( query );
-    _depura ( "END AlbaranesProveedorListSubform::cargar(QString query)\n", 0 );
+    _depura ( "END FacturasProveedorListSubform::cargar", 0 );
 }
 

@@ -213,8 +213,10 @@ void BusquedaCliente::on_m_cifcliente_editingFinished()
 void BusquedaCliente::on_m_cifcliente_textChanged ( const QString &val )
 {
     _depura ( "BusquedaCliente::on_m_cifcliente_textChanged", 0 );
-    if ( m_semaforo )
+    if ( m_semaforo ) {
+        _depura ( "END BusquedaCliente::on_m_cifcliente_textChanged", 0, "Semaforo parado" );
         return;
+    } // end if
 
     bool encontrado = FALSE;
     QString SQLQuery = "SELECT * FROM cliente WHERE cifcliente = '" + val + "'";
