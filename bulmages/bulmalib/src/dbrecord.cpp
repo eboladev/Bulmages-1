@@ -192,56 +192,56 @@ QString DBCampo::valorcampoprep ( int &error )
         if ( m_valorcampo == "" ) {
             mensajeAviso ( "El campo '" + m_nompresentacion + "' no puede estar vacio." );
             error = -1;
-	    _depura ( "END DBCampo::valorcampoprep", 0, m_nomcampo +" " + m_valorcampo + "-->" + valor );
-	    return valor;
+            _depura ( "END DBCampo::valorcampoprep", 0, m_nomcampo + " " + m_valorcampo + "-->" + valor );
+            return valor;
         } // end if
     } // end if
 
-        switch ( m_tipo ) {
-        case DBint:
-            if ( m_valorcampo == "" ) {
-                valor = "NULL";
-            } else {
-                m_valorcampo.replace ( ",", "." );
-                valor = "'" + m_conexionbase->sanearCadena ( m_valorcampo ) + "'";
-            } // end if
-            break;
-        case DBvarchar:
-            if ( m_valorcampo == "" ) {
-                valor = "NULL";
-            } else {
-                valor = "'" + m_conexionbase->sanearCadena ( m_valorcampo ) + "'";
-            } // end if
-            break;
-        case DBdate:
-            if ( m_valorcampo == "" ) {
-                valor = "NULL";
-            } else {
-                valor = "'" + m_conexionbase->sanearCadena ( m_valorcampo ) + "'";
-            } // end if
-            break;
-        case DBnumeric:
-            if ( m_valorcampo == "" ) {
-                valor = "NULL";
-            } else {
-                m_valorcampo.replace ( ",", "." );
-                valor =  "'" + m_conexionbase->sanearCadena ( m_valorcampo ) + "'";
-            } // end if
-            break;
-        case DBboolean:
-            if ( m_valorcampo == "" ) {
-                valor = "NULL";
-            } else if ( m_valorcampo == "f" || m_valorcampo == "t" ) {
-                valor = "'" + m_conexionbase->sanearCadena ( m_valorcampo ) + "'";
-            } else {
-                valor = m_conexionbase->sanearCadena ( m_valorcampo );
-            } // end if
-            break;
-        default:
-            error = -1;
-        } // end switch
+    switch ( m_tipo ) {
+    case DBint:
+        if ( m_valorcampo == "" ) {
+            valor = "NULL";
+        } else {
+            m_valorcampo.replace ( ",", "." );
+            valor = "'" + m_conexionbase->sanearCadena ( m_valorcampo ) + "'";
+        } // end if
+        break;
+    case DBvarchar:
+        if ( m_valorcampo == "" ) {
+            valor = "NULL";
+        } else {
+            valor = "'" + m_conexionbase->sanearCadena ( m_valorcampo ) + "'";
+        } // end if
+        break;
+    case DBdate:
+        if ( m_valorcampo == "" ) {
+            valor = "NULL";
+        } else {
+            valor = "'" + m_conexionbase->sanearCadena ( m_valorcampo ) + "'";
+        } // end if
+        break;
+    case DBnumeric:
+        if ( m_valorcampo == "" ) {
+            valor = "NULL";
+        } else {
+            m_valorcampo.replace ( ",", "." );
+            valor =  "'" + m_conexionbase->sanearCadena ( m_valorcampo ) + "'";
+        } // end if
+        break;
+    case DBboolean:
+        if ( m_valorcampo == "" ) {
+            valor = "NULL";
+        } else if ( m_valorcampo == "f" || m_valorcampo == "t" ) {
+            valor = "'" + m_conexionbase->sanearCadena ( m_valorcampo ) + "'";
+        } else {
+            valor = m_conexionbase->sanearCadena ( m_valorcampo );
+        } // end if
+        break;
+    default:
+        error = -1;
+    } // end switch
 
-    _depura ( "END DBCampo::valorcampoprep", 0, m_nomcampo +" " + m_valorcampo + "-->" + valor );
+    _depura ( "END DBCampo::valorcampoprep", 0, m_nomcampo + " " + m_valorcampo + "-->" + valor );
     return valor;
 }
 
@@ -475,8 +475,10 @@ int DBRecord::DBsave ( QString &id )
             /// No es lo mismo que los not null ya que estos si dan error
             if ( ! ( campo->restrictcampo() & DBCampo::DBNoSave ) ) {
                 if ( campo->restrictcampo() & DBCampo::DBRequired ) {
-                    if ( campo->valorcampo() == "" )
+                    if ( campo->valorcampo() == "" ) {
+                        _depura ( "END DBRecord::DBsave", 0, "Campo requerido vacio" );
                         return 0;
+                    } // end if
                 } // end if
                 if ( campo->restrictcampo() & DBCampo::DBPrimaryKey ) {
                     QString lin = campo->valorcampoprep ( err );
@@ -517,12 +519,12 @@ int DBRecord::DBsave ( QString &id )
             m_conexionbase->ejecuta ( query );
         } // end if
         m_nuevoCampo = FALSE;
-        return 0;
     } catch ( ... ) {
         _depura ( "END DBRecord::DBsave", 0, "Error de guardado" );
         throw - 1;
     } // end try
     _depura ( "END DBRecord::DBSave", 0 );
+    return 0;
 }
 
 

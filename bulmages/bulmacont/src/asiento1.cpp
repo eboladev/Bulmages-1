@@ -278,15 +278,18 @@ Fixed Asiento1::totalhaber ( QString idbudget )
 void Asiento1::abrir()
 {
     _depura ( "Asiento1::abreAsiento1", 0 );
-    if ( estadoAsiento1() != ASCerrado )
+    if ( estadoAsiento1() != ASCerrado ) {
+        _depura ( "END Asiento1::abreAsiento1", 0, "Asiento Abierto" );
         return;
+    } // end if
     QString id = DBvalue ( "idasiento" );
     if ( id == "" ) {
-        _depura ( "No hay asiento" );
+        _depura ( "END Asiento1::abreAsiento1", 0, "Asiento Inexistente" );
         return;
     }
     empresaBase() ->abreasiento ( id.toInt() );
     trataestadoAsiento1();
+    _depura ( "END Asiento1::abreAsiento1", 0 );
 }
 
 
@@ -296,24 +299,24 @@ void Asiento1::abrir()
 **/
 void Asiento1::cerrar()
 {
-    _depura ( "Asiento1::cierraAsiento1", 0 );
+    _depura ( "Asiento1::cerrar", 0 );
     if ( estadoAsiento1() != ASAbierto ) {
-        _depura ( "Asiento1::cierraAsiento1" , 0, "asiento no abierto" );
+        _depura ( "Asiento1::cerrar" , 0, "asiento no abierto" );
         return;
     } // end if
     if ( guardar() )
         return;
     QString id = DBvalue ( "idasiento" );
     if ( id == "" ) {
-        _depura ( "No hay asiento", 0 );
+        _depura ( "Asiento1::cerrar" , 0, "No hay asiento" );
         return;
-    }
+    } // end if
 
     cursor2 *cur = empresaBase() ->cargacursor ( "SELECT cierraasiento(" + id + ")" );
     delete cur;
     vaciar();
     cargar ( id );
-    _depura ( "END Asiento1::cierraasiento1", 0 );
+    _depura ( "END Asiento1::cerrar", 0 );
 }
 
 
@@ -324,8 +327,10 @@ void Asiento1::cerrar()
 Asiento1::estadoasiento Asiento1::estadoAsiento1()
 {
     _depura ( "Asiento1::estadoasiento", 0 );
-    if ( DBvalue ( "idasiento" ) == "" )
+    if ( DBvalue ( "idasiento" ) == "" ) {
+        _depura ( "END Asiento1::estadoasiento", 0, "Asiento Vacio" );
         return ASVacio;
+    } // end if
 
     QString SQLQuery1 = "SELECT count(idapunte) AS cuenta1 FROM apunte WHERE idasiento = " + DBvalue ( "idasiento" );
     cursor2 *cur1 = empresaBase() ->cargacursor ( SQLQuery1 );
@@ -337,13 +342,15 @@ Asiento1::estadoasiento Asiento1::estadoAsiento1()
     QString numborr = cur->valor ( "cuenta" );
     delete cur;
 
-    _depura ( "END Asiento1::estadoasiento", 0, "borradores: " + numborr + " -- apuntes: " + numap );
 
     if ( numborr == "0" ) {
+        _depura ( "END Asiento1::estadoasiento", 0, "Asiento Vacio" );
         return ASVacio;
     } else if ( numap != "0" ) {
+        _depura ( "END Asiento1::estadoasiento", 0, "Asiento Cerrado" );
         return ASCerrado;
     } else {
+        _depura ( "END Asiento1::estadoasiento", 0, "Asiento Abierto" );
         return ASAbierto;
     } // end if
 }
@@ -377,8 +384,8 @@ int Asiento1::guardar()
         _depura ( "END Asiento1::guardar", 0 );
         return 0;
     } catch ( ... ) {
-        _depura ( "Error guardando, se cancela la operacion", 1 );
         empresaBase() ->rollback();
+        _depura ( "END Asiento1::guardar", 0, "Error en el guardado" );
         return -1;
     } // end try
 }

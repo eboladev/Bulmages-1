@@ -39,7 +39,7 @@
 **/
 int entryPoint ( QApplication * )
 {
-    _depura ( "Punto de Entrada del plugin de Subformods\n", 0 );
+    _depura ( "entryPoint" , 0, "Punto de Entrada del plugin de Subformods" );
     /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
     QTranslator *traductor = new QTranslator ( 0 );
     if ( confpr->valor ( CONF_TRADUCCION ) == "locales" ) {
@@ -50,7 +50,7 @@ int entryPoint ( QApplication * )
         traductor->load ( archivo, confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
     } // end if
     theApp->installTranslator ( traductor );
-    _depura ( "END Punto de Entrada del plugin de Subformods\n", 0 );
+    _depura ( "END entryPoint", 0, "Punto de Entrada del plugin de Subformods" );
     return 0;
 }
 

@@ -33,7 +33,7 @@ BusquedaFecha::BusquedaFecha ( QWidget *parent ) : BLWidget ( parent )
     _depura ( "BusquedaFecha::BusquedaFecha", 0 );
     setupUi ( this );
     QObject::connect ( mui_busquedaFecha, SIGNAL ( clicked ( bool ) ), this, SLOT ( s_searchFecha() ) );
-    QObject::connect ( mui_textoFecha, SIGNAL ( returnPressed() ), this, SLOT ( s_returnPressed() ) );
+    QObject::connect ( mui_textoFecha, SIGNAL ( enterPressed() ), this, SLOT ( s_enterPressed() ) );
     QObject::connect ( mui_textoFecha, SIGNAL ( editingFinished() ), this, SLOT ( s_fechalostFocus() ) );
     QObject::connect ( mui_textoFecha, SIGNAL ( editingFinished() ), this, SIGNAL ( editingFinished() ) );
     _depura ( "END BusquedaFecha::BusquedaFecha", 0 );
@@ -124,102 +124,102 @@ QString BusquedaFecha::valorCampo()
 ///
 /**
 **/
-void BusquedaFecha::s_returnPressed()
-                            {
-                                _depura ( "BusquedaFecha::s_returnPressed", 0 );
-                                s_fechalostFocus();
-                                emit returnPressed();
-                                _depura ( "END BusquedaFecha::s_returnPressed", 0 );
-                            }
+void BusquedaFecha::s_enterPressed()
+{
+    _depura ( "BusquedaFecha::s_enterPressed", 0 );
+    s_fechalostFocus();
+    emit enterPressed();
+    _depura ( "END BusquedaFecha::s_enterPressed", 0 );
+}
 
 
-                            ///
-                            /**
-                            **/
-                            void BusquedaFecha::selectAll()
-                            {
-                                _depura ( "BusquedaFecha::selectAll", 0 );
-                                mui_textoFecha->selectAll();
-                                _depura ( "END BusquedaFecha::selectAll", 0 );
-                            }
+///
+/**
+**/
+void BusquedaFecha::selectAll()
+{
+    _depura ( "BusquedaFecha::selectAll", 0 );
+    mui_textoFecha->selectAll();
+    _depura ( "END BusquedaFecha::selectAll", 0 );
+}
 
 
-                            ///
-                            /**
-                            **/
-                            void BusquedaFecha::setFocus()
-                            {
-                                _depura ( "BusquedaFecha::setFocus", 0 );
-                                mui_textoFecha->setFocus ( Qt::OtherFocusReason );
-                                _depura ( "END BusquedaFecha::setFocus", 0 );
-                            }
+///
+/**
+**/
+void BusquedaFecha::setFocus()
+{
+    _depura ( "BusquedaFecha::setFocus", 0 );
+    mui_textoFecha->setFocus ( Qt::OtherFocusReason );
+    _depura ( "END BusquedaFecha::setFocus", 0 );
+}
 
 
-                            ///
-                            /**
-                            **/
-                            void BusquedaFecha::s_searchFecha()
-                            {
-                                _depura ( "BusquedaFecha::s_searchFecha", 0 );
+///
+/**
+**/
+void BusquedaFecha::s_searchFecha()
+{
+    _depura ( "BusquedaFecha::s_searchFecha", 0 );
 
-                                QDialog *diag = new QDialog ( 0 );
-                                diag->setModal ( true );
-                                QCalendarWidget *calend = new QCalendarWidget ( diag );
-                                /// Se pone el 1er dia del calendario a lunes.
-                                calend->setFirstDayOfWeek ( Qt::Monday );
-                                connect ( calend, SIGNAL ( activated ( const QDate & ) ), diag, SLOT ( accept() ) );
+    QDialog *diag = new QDialog ( 0 );
+    diag->setModal ( true );
+    QCalendarWidget *calend = new QCalendarWidget ( diag );
+    /// Se pone el 1er dia del calendario a lunes.
+    calend->setFirstDayOfWeek ( Qt::Monday );
+    connect ( calend, SIGNAL ( activated ( const QDate & ) ), diag, SLOT ( accept() ) );
 
-                                /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
-                                /// para que sea redimensionable y aparezca el titulo de la ventana.
-                                QHBoxLayout *layout = new QHBoxLayout;
-                                layout->addWidget ( calend );
-                                layout->setMargin ( 0 );
-                                layout->setSpacing ( 0 );
-                                diag->setLayout ( layout );
-                                diag->setWindowTitle ( tr ( "Seleccione fecha" ) );
-                                diag->exec();
+    /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
+    /// para que sea redimensionable y aparezca el titulo de la ventana.
+    QHBoxLayout *layout = new QHBoxLayout;
+    layout->addWidget ( calend );
+    layout->setMargin ( 0 );
+    layout->setSpacing ( 0 );
+    diag->setLayout ( layout );
+    diag->setWindowTitle ( tr ( "Seleccione fecha" ) );
+    diag->exec();
 
-                                mui_textoFecha->setText ( calend->selectedDate().toString ( "dd/MM/yyyy" ) );
+    mui_textoFecha->setText ( calend->selectedDate().toString ( "dd/MM/yyyy" ) );
 
-                                delete calend;
-                                delete diag;
+    delete calend;
+    delete diag;
 
-                                emit ( valueChanged ( mui_textoFecha->text() ) );
-                                _depura ( "END BusquedaFecha::s_searchFecha", 0 );
-                            }
-
-
-                            ///
-                            /**
-                            \param texto
-                            \return
-                            **/
-                            void BusquedaFecha::s_fechatextChanged ( const QString &texto )
-                            {
-                                _depura ( "BusquedaFecha::s_fechatextChanged", 0 );
-                                if ( texto == "+" )
-                                    s_searchFecha();
-                                if ( texto == "*" )
-                                    mui_textoFecha->setText ( QDate::currentDate().toString ( "dd/MM/yyyy" ) );
-                                mui_textoFecha->setText ( normalizafecha ( texto ).toString ( "dd/MM/yyyy" ) );
-                                if ( texto == "" ) {
-                                    mui_textoFecha->setText ( "" );
-                                    return;
-                                } // end if
-                                emit ( valueChanged ( mui_textoFecha->text() ) );
-                                _depura ( "END BusquedaFecha::s_fechatextChanged", 0 );
-                            }
+    emit ( valueChanged ( mui_textoFecha->text() ) );
+    _depura ( "END BusquedaFecha::s_searchFecha", 0 );
+}
 
 
-                            ///
-                            /**
-                            **/
-                            void BusquedaFecha::s_fechalostFocus()
-                            {
-                                _depura ( "BusquedaFecha::s_fechalostFocus", 0 );
-                                QString fech = mui_textoFecha->text();
-                                if ( fech != "" )
-                                    s_fechatextChanged ( fech );
-                                _depura ( "END BusquedaFecha::s_fechalostFocus", 0 );
-                            }
+///
+/**
+\param texto
+\return
+**/
+void BusquedaFecha::s_fechatextChanged ( const QString &texto )
+{
+    _depura ( "BusquedaFecha::s_fechatextChanged", 0 );
+    if ( texto == "+" )
+        s_searchFecha();
+    if ( texto == "*" )
+        mui_textoFecha->setText ( QDate::currentDate().toString ( "dd/MM/yyyy" ) );
+    mui_textoFecha->setText ( normalizafecha ( texto ).toString ( "dd/MM/yyyy" ) );
+    if ( texto == "" ) {
+        mui_textoFecha->setText ( "" );
+        return;
+    } // end if
+    emit ( valueChanged ( mui_textoFecha->text() ) );
+    _depura ( "END BusquedaFecha::s_fechatextChanged", 0 );
+}
+
+
+///
+/**
+**/
+void BusquedaFecha::s_fechalostFocus()
+{
+    _depura ( "BusquedaFecha::s_fechalostFocus", 0 );
+    QString fech = mui_textoFecha->text();
+    if ( fech != "" )
+        s_fechatextChanged ( fech );
+    _depura ( "END BusquedaFecha::s_fechalostFocus", 0 );
+}
 

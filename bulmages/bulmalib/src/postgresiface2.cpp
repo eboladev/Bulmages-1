@@ -292,6 +292,7 @@ int cursor2::ultimoregistro()
 {
     _depura ( "cursor2::ultimoregistro", 0, "Registro actual: " + QString::number ( registroactual ) + " Numero de registros: " + QString::number ( nregistros ) );
     registroactual = nregistros - 1;
+    _depura ( "END cursor2::ultimoregistro", 0 );
     return registroactual;
 }
 

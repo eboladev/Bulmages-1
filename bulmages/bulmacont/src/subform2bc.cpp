@@ -510,26 +510,32 @@ QWidget *QSubForm2BcDelegate::createEditor ( QWidget *parent, const QStyleOption
     if ( linea->nomcampo().startsWith ( "desc" ) ) {
         QTextEditDelegate * editor = new QTextEditDelegate ( parent );
         editor->setObjectName ( "QTextEditDelegate" );
+        _depura ( "END QSubForm2BcDelegate::createEditor", 0, "QTextEditDelegate" );
         return editor;
     } else if ( linea->nomcampo() == "debe" || linea->nomcampo() == "haber" ) {
         QDoubleSpinBox2 * editor = new QDoubleSpinBox2 ( parent );
         editor->setMinimum ( -1000000 );
         editor->setMaximum ( 1000000 );
+        _depura ( "END QSubForm2BcDelegate::createEditor", 0, "QDoubleSpinBox2" );
         return editor;
     } else if ( linea->nomcampo() == "codigo" ) {
         BusquedaCuentaDelegate * editor = new BusquedaCuentaDelegate ( parent );
         editor->setEmpresaBase ( ( Empresa * ) m_subform->empresaBase() );
+        _depura ( "END QSubForm2BcDelegate::createEditor", 0, "BusquedaCuentaDelegate" );
         return editor;
     } else if ( linea->nomcampo() == "nomcanal" ) {
         BusquedaCanalDelegate * editor = new BusquedaCanalDelegate ( parent );
         editor->setEmpresaBase ( m_subform->empresaBase() );
+        _depura ( "END QSubForm2BcDelegate::createEditor", 0, "BusquedaCanalDelegate" );
         return editor;
     } else if ( linea->nomcampo() == "nomc_coste" ) {
         BusquedaCCosteDelegate * editor = new BusquedaCCosteDelegate ( parent );
         editor->setEmpresaBase ( m_subform->empresaBase() );
+        _depura ( "END QSubForm2BcDelegate::createEditor", 0, "BusquedaCCosteDelegate" );
         return editor;
     } else if ( linea->nomcampo().startsWith ( "fecha" ) ) {
         BusquedaFecha2 * editor = new BusquedaFecha2 ( parent );
+        _depura ( "END QSubForm2BcDelegate::createEditor", 0, "BusquedaFecha2" );
         return editor;
     } else {
         /// DBint = 1, DBvarchar = 2, DBdate = 3, DBnumeric = 4, DBboolean
@@ -537,6 +543,7 @@ QWidget *QSubForm2BcDelegate::createEditor ( QWidget *parent, const QStyleOption
         //QSpinBox *editor = new QSpinBox(parent);
         //return editor;
         QLineEdit *editor = new QLineEdit ( parent );
+        _depura ( "END QSubForm2BcDelegate::createEditor", 0, "QLineEdit" );
         return editor;
         //} else {
         //    return QItemDelegate::createEditor(parent, option, index);
@@ -555,12 +562,12 @@ QWidget *QSubForm2BcDelegate::createEditor ( QWidget *parent, const QStyleOption
 void QSubForm2BcDelegate::setModelData ( QWidget *editor, QAbstractItemModel *model, const QModelIndex &index ) const
 {
     _depura ( "QSubForm2BcDelegate::setModelData", 0 );
-    _depura ( "QSubForm2BcDelegate::setModelData", 0, "CurrentColumn: " + QString::number ( index.column() ) );
-    _depura ( "QSubForm2BcDelegate::setModelData", 0, "CurrentRow: " + QString::number ( index.row() ) );
 
     /// Si la fila o columna pasadas son invalidas salimos.
-    if ( index.column() < 0 || index.row() < 0 )
+    if ( index.column() < 0 || index.row() < 0 ) {
+        _depura ( "END QSubForm2BcDelegate::setModelData", 0, "Fila o columna invalidas" );
         return;
+    } // end if
 
     SHeader *linea;
     linea = m_subform->cabecera() ->at ( index.column() );
@@ -569,7 +576,9 @@ void QSubForm2BcDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mo
 //    if (linea->nomcampo() == "desc" + m_subform->tableName()) {
         QTextEditDelegate * textedit = qobject_cast<QTextEditDelegate *> ( editor );
         model->setData ( index, textedit->toPlainText() );
-        return;
+
+//    Este return sobra.
+//        return;
 
         // TODO: 04/05/07 Se quita esta linea porque hacia que los valores en la celda "haber" no apareciese
         //        con decimales. Ademas no se que es lo que tiene que hacer
@@ -626,8 +635,6 @@ void QSubForm2BcDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mo
 void QSubForm2BcDelegate::setEditorData ( QWidget *editor, const QModelIndex &index ) const
 {
     _depura ( "QSubForm2BcDelegate::setEditorData", 0 );
-    _depura ( "QSubForm2BcDelegate::setEditorData", 0, "CurrentColumn: " + QString::number ( index.column() ) );
-    _depura ( "QSubForm2BcDelegate::setEditorData", 0, "CurrentRow: " + QString::number ( index.row() ) );
     SHeader *linea;
     linea = m_subform->cabecera() ->at ( index.column() );
     //if (linea->nomcampo() == "desc" + m_subform->tableName()) {

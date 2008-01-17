@@ -92,10 +92,10 @@ void myplugincont::inicializa ( Bulmafact *bges )
 **/
 int entryPoint ( Bulmafact *bges )
 {
-    _depura ( "Punto de Entrada del plugin PluginContratos", 0 );
+    _depura ( "entryPoint", 0, "Punto de Entrada del plugin PluginContratos" );
     myplugincont *plug = new myplugincont();
     plug->inicializa ( bges );
-    _depura ( "END Punto de Entrada del plugin PluginContratos", 0 );
+    _depura ( "END entryPoint", 0, "Punto de Entrada del plugin PluginContratos" );
     return 0;
 }
 

@@ -328,8 +328,8 @@ void SubForm3::setCurrentItem ( int row, int col )
 int SubForm3::columnCount()
 {
     _depura ( "SubForm3::columnCount", 0 );
-    return mui_list->columnCount();
     _depura ( "END SubForm3::columnCount", 0 );
+    return mui_list->columnCount();
 }
 
 

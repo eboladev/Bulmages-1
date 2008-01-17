@@ -23,24 +23,24 @@ BPasswd::BPasswd ( QString * usuario, QString * passwd, QWidget * parent, const 
     userLine->setText ( *Usuario );
 }
 
-void BPasswd::returnPressedOnUser()
-                    {
-                        passwdLine->setFocus();
-                    }
+void BPasswd::enterPressedOnUser()
+{
+    passwdLine->setFocus();
+}
 
-                    void BPasswd::returnPressedOnPasswd()
-                                        {
-                                            validar();
-                                        }
+void BPasswd::enterPressedOnPasswd()
+{
+    validar();
+}
 
-                                        void BPasswd::validar()
-                                        {
-                                            *Usuario = userLine->text();
-                                            *Password = passwdLine->text();
-                                            delete this;
-                                        }
+void BPasswd::validar()
+{
+    *Usuario = userLine->text();
+    *Password = passwdLine->text();
+    delete this;
+}
 
-                                        BPasswd::~BPasswd()
-                                        {}
+BPasswd::~BPasswd()
+{}
 
 

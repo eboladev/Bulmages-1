@@ -349,9 +349,9 @@ int ListVentanas::deSeleccionaWindow()
     _depura ( "ListVentanas::deSeleccionaWindow", 0 );
     try {
         m_listBox->clearSelection();
-        return 0;
     } catch ( ... ) {
-        throw -1;
+        _depura ( "ListVentanas::deSeleccionaWindow", 2, "Error en la Seleccion" );
+        throw - 1;
     } // end try
     _depura ( "END ListVentanas::deSeleccionaWindow", 0 );
     return 0;
@@ -370,7 +370,7 @@ void ListVentanas::sacaWindow ( QObject *obj )
     while ( i < m_listBox->count() ) {
         QListWidgetItem1 * m = ( QListWidgetItem1 * ) m_listBox->item ( i );
         if ( m->object() == obj ) {
-            _depura ( "ListVentanas::sacaWindow ventana encontrada y vamos a sacarla", 0, m->nombre() );
+            _depura ( "Ventana encontrada y vamos a sacarla", 0, m->nombre() );
             m_listBox->takeItem ( i );
             delete m;
             break;

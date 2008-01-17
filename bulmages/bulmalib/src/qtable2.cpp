@@ -173,7 +173,8 @@ QTableWidgetItem2::QTableWidgetItem2 ( const QString &text, int type, int mode )
 **/
 QTableWidgetItem2::~QTableWidgetItem2()
 {
-    _depura ( "~QTableWidgetItem2", 1 );
+    _depura ( "QTableWidgetItem2::~QTableWidgetItem2", 0 );
+    _depura ( "END QTableWidgetItem2::~QTableWidgetItem2", 0 );
 }
 
 
@@ -281,7 +282,8 @@ void QTableWidget2::columnMoved ( int column, int oldIndex, int newIndex )
 **/
 QTableWidget2::~QTableWidget2()
 {
-    _depura ( "END ~QTableWidget2", 0 );
+    _depura ( "QTableWidget2::~QTableWidget2", 0 );
+    _depura ( "END QTableWidget2::~QTableWidget2", 0 );
 }
 
 /// Habilita o inhabilita el ordenado de columnas mediante el pulsar sobre ellas.

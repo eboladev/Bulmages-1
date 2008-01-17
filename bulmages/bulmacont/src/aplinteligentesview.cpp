@@ -426,7 +426,7 @@ void aplinteligentesview::mostrarplantilla()
             varcta[i] = new BusquedaCuenta ( mui_datosAsiento );
             varcta[i]->setGeometry ( QRect ( 150, inc + 32 * ( j++ ), 300, 25 ) );
             varcta[i]->setEmpresaBase ( empresaBase() );
-            connect ( varcta[i], SIGNAL ( returnPressed() ), this, SLOT ( eturn_cta() ) );
+            connect ( varcta[i], SIGNAL ( enterPressed() ), this, SLOT ( eturn_cta() ) );
             connect ( varcta[i], SIGNAL ( textChanged ( const QString & ) ), this, SLOT ( codigo_textChanged ( const QString & ) ) );
             varcta[i]->show();
         } // end for
@@ -440,7 +440,7 @@ void aplinteligentesview::mostrarplantilla()
             varfecha[i] = new BusquedaFecha ( mui_datosAsiento );
             varfecha[i]->setGeometry ( QRect ( 150, inc + 32 * ( j++ ), 150, 25 ) );
 
-            connect ( varfecha[i], SIGNAL ( returnPressed() ), this, SLOT ( eturn_fecha() ) );
+            connect ( varfecha[i], SIGNAL ( enterPressed() ), this, SLOT ( eturn_fecha() ) );
             connect ( varfecha[i], SIGNAL ( textChanged ( const QString & ) ), this, SLOT ( fecha_textChanged ( const QString & ) ) );
             varfecha[i]->show();
         } // end for
@@ -452,7 +452,7 @@ void aplinteligentesview::mostrarplantilla()
             labelnumero[i]->show();
             varnumero[i] = new QLineEdit ( "", mui_datosAsiento );
             varnumero[i]->setGeometry ( QRect ( 150, inc + 32 * ( j++ ), 150, 25 ) );
-            connect ( varnumero[i], SIGNAL ( returnPressed() ), this, SLOT ( eturn_numero() ) );
+            connect ( varnumero[i], SIGNAL ( enterPressed() ), this, SLOT ( eturn_numero() ) );
             varnumero[i]->show();
         } // end for
 
@@ -463,7 +463,7 @@ void aplinteligentesview::mostrarplantilla()
             labeltexto[i]->show();
             vartexto[i] = new QLineEdit ( "", mui_datosAsiento );
             vartexto[i]->setGeometry ( QRect ( 150, inc + 32 * ( j++ ), 350, 25 ) );
-            connect ( vartexto[i], SIGNAL ( returnPressed() ), this, SLOT ( eturn_texto() ) );
+            connect ( vartexto[i], SIGNAL ( enterPressed() ), this, SLOT ( eturn_texto() ) );
             vartexto[i]->show();
         } // end for
     }

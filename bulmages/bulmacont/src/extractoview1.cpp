@@ -575,144 +575,157 @@ void extractoview1::on_mui_cargarpunteos_clicked()
 QString extractoview1::imprimeExtractoCuenta ( QString idcuenta )
 {
     _depura ( "extractoview1::imprimeExtractoCuenta", 0, idcuenta );
-    QString salida = "";
-    Fixed debeinicial ( "0" ), haberinicial ( "0" ), saldoinicial ( "0" );
-    Fixed debefinal ( "0" ), haberfinal ( "0" ), saldofinal ( "0" );
-    QString finicial = m_fechainicial1->text();
-    QString ffinal = m_fechafinal1->text();
-    QString contra = mui_codigocontrapartida->text();
+    try {
+        QString salida = "";
+        Fixed debeinicial ( "0" ), haberinicial ( "0" ), saldoinicial ( "0" );
+        Fixed debefinal ( "0" ), haberfinal ( "0" ), saldofinal ( "0" );
+        QString finicial = m_fechainicial1->text();
+        QString ffinal = m_fechafinal1->text();
+        QString contra = mui_codigocontrapartida->text();
 
-    /// Preparamos el string para que aparezca una u otra cosa seg&uacute;n el punteo.
-    QString tipopunteo;
-    tipopunteo = "";
-    if ( mui_punteotodos->isChecked() ) {
+        /// Preparamos el string para que aparezca una u otra cosa seg&uacute;n el punteo.
+        QString tipopunteo;
         tipopunteo = "";
-    } else if ( mui_punteopunteado->isChecked() ) {
-        tipopunteo = " AND punteo = TRUE ";
-    } else {
-        tipopunteo = " AND punteo = FALSE ";
-    } // end if
+        if ( mui_punteotodos->isChecked() ) {
+            tipopunteo = "";
+        } else if ( mui_punteopunteado->isChecked() ) {
+            tipopunteo = " AND punteo = TRUE ";
+        } else {
+            tipopunteo = " AND punteo = FALSE ";
+        } // end if
 
-    if ( contra != "" ) {
-        tipopunteo += " AND apunte.contrapartida = id_cuenta('" + contra + "') ";
-    } // end if
+        if ( contra != "" ) {
+            tipopunteo += " AND apunte.contrapartida = id_cuenta('" + contra + "') ";
+        } // end if
 
-    QString cad;
-    QString cadaux;
-    cursor2 *cursorapt;
+        QString cad;
+        QString cadaux;
+        cursor2 *cursorapt;
 
-    if ( idcuenta == "" )
+        if ( idcuenta == "" ) {
+            _depura ( "END extractoview1::imprimeExtractoCuenta", 0, "No hay cuenta" );
+            return "";
+        } // end if
+
+        /// Hacemos la consulta de los apuntes a listar en la base de datos.
+        QString query = "";
+        /// Al igual que en el caso anterior los centros de coste han cambiado y a&uacute;n
+        /// no se pueden implementar.
+        selectcanalview *scanal = empresaBase() ->getselcanales();
+        SelectCCosteView *scoste = empresaBase() ->getselccostes();
+        QString ccostes = scoste->cadcoste();
+        if ( ccostes != "" ) {
+            ccostes.sprintf ( " AND t5.idc_coste IN (%s) ", ccostes.toAscii().constData() );
+        } // end if
+        QString ccanales = scanal->cadcanal();
+        if ( ccanales != "" ) {
+            ccanales.sprintf ( " AND idcanal IN (%s) ", ccanales.toAscii().constData() );
+        } // end if
+        QString tabla;
+        QString cont;
+        if ( mui_asAbiertos->isChecked() ) {
+            tabla = "borrador";
+            cont = " FALSE AS punteo, * ";
+        } else {
+            tabla = "apunte";
+            cont = " * ";
+        } // end if
+
+        query = "SELECT * FROM ((SELECT " + cont + ",idc_coste AS centrocoste FROM " + tabla + " WHERE  idcuenta = " + idcuenta + " AND fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' " + ccostes + " " + ccanales + " " + tipopunteo + ") AS t2 LEFT JOIN cuenta ON t2.idcuenta = cuenta.idcuenta) AS t1 LEFT JOIN asiento ON asiento.idasiento = t1.idasiento ";
+        query += " LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste FROM c_coste) AS t5 ON t5.idc_coste = t1.centrocoste ";
+        query += " LEFT JOIN (SELECT idcanal, nombre AS nombrecanal FROM canal) AS t6 ON t6.idcanal = t1.idcanal ";
+        query += " ORDER BY t1.fecha, ordenasiento, t1.orden";
+
+        cursorapt = empresaBase() ->cargacursor ( query );
+        if ( !cursorapt ) throw - 1;
+
+        /// Cargamos los saldos iniciales.
+        cursor2 *cursoraux;
+        query = "SELECT sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE idcuenta =" + idcuenta + " AND fecha < '" + finicial + "'";
+        cursoraux = empresaBase() ->cargacursor ( query );
+        if ( !cursoraux ) {
+            delete cursorapt;
+            throw - 1;
+        } // end if
+        if ( !cursoraux->eof() ) {
+            debeinicial = Fixed ( cursoraux->valor ( "tdebe" ) );
+            haberinicial = Fixed ( cursoraux->valor ( "thaber" ) );
+            saldoinicial = debeinicial - haberinicial;
+            debefinal = debeinicial;
+            haberfinal = haberinicial;
+        } // end if
+        delete cursoraux;
+
+        /// Presentamos la información inicial y de la cuenta.
+        cursor2 *cursorcta = empresaBase() ->cargacursor ( "SELECT * FROM cuenta WHERE idcuenta=" + idcuenta );
+        if ( !cursorcta ) throw - 1;
+
+        salida += "<blockTable>\n";
+        salida += "<tr>";
+        salida += "<td> Codigo: " + cursorcta->valor ( "codigo" ) + " </td>";
+        salida += "<td> Fecha Inicial: " + finicial + " </td>";
+        salida += "<td> Fecha Final: " + ffinal + " </td>";
+        salida += "<td> Debe Inicial: " + debeinicial.toQString() + " </td>";
+        salida += "<td> Debe Final: " + haberinicial.toQString() + " </td>";
+        salida += "</tr>";
+        salida += "<tr>";
+        salida += "<td> Cuenta: " + cursorcta->valor ( "descripcion" ) + " </td>";
+        salida += "<td> </td>";
+        salida += "<td> </td>";
+        salida += "<td> </td>";
+        salida += "<td> </td>";
+        salida += "</tr>";
+        salida += "</blockTable>\n";
+        salida += "<spacer length=\"5mm\" width=\"1mm\"/>\n";
+
+        delete cursorcta;
+        /// Aqui va la impresion pero con cabeceras.
+        salida += "<blockTable style=\"tabla\" repeatRows=\"1\">\n";
+        salida += "<tr>\n";
+        salida += "<td> Fecha </td>";
+        salida += "<td> Asiento </td>";
+        salida += "<td> Concepto </td>";
+        salida += "<td> Debe </td>";
+        salida += "<td> Haber </td>";
+        salida += "<td> Saldo </td>";
+        salida += "</tr>\n";
+
+        while ( ! cursorapt->eof() ) {
+            saldofinal = saldofinal + Fixed ( cursorapt->valor ( "debe" ) ) - Fixed ( cursorapt->valor ( "haber" ) );
+            debefinal = debefinal + Fixed ( cursorapt->valor ( "debe" ) );
+            haberfinal = haberfinal + Fixed ( cursorapt->valor ( "haber" ) );
+
+            salida +=  "<tr>\n";
+            salida +=  "<td>" + cursorapt->valor ( "fecha" ) + "</td>";
+            salida +=  "<td>" + cursorapt->valor ( "orden" ) + "</td>";
+            salida +=  "<td>" + cursorapt->valor ( "conceptocontable" ) + "</td>";
+            salida +=  "<td>" + cursorapt->valor ( "debe" ) + "</td>";
+            salida +=  "<td>" + cursorapt->valor ( "haber" ) + "</td>";
+            salida +=  "<td>" + saldofinal.toQString() + "</td>";
+            salida +=  "</tr>\n";
+            cursorapt->siguienteregistro();
+        } // end while
+
+        salida += "</blockTable>\n";
+
+        salida += "<spacer length=\"5mm\" width=\"1mm\"/>\n";
+
+
+        salida += "<blockTable>\n";
+        salida += "<tr>\n";
+        salida += "<td> Debe Final: " + debefinal.toQString() + " </td>\n";
+        salida += "<td> Haber Final: " + haberfinal.toQString() + " </td>\n";
+        salida += "<td> Saldo Final: " + saldofinal.toQString() + "</td>\n";
+        salida += "</tr>\n";
+        salida += "</blockTable>\n";
+
+        delete cursorapt;
+        _depura ( "END extractoview1::imprimeExtractoCuenta", 0 );
+        return salida;
+    } catch ( ... ) {
+        mensajeError ( "Ocurrio un error inesperado" );
         return "";
-
-    /// Hacemos la consulta de los apuntes a listar en la base de datos.
-    QString query = "";
-    /// Al igual que en el caso anterior los centros de coste han cambiado y a&uacute;n
-    /// no se pueden implementar.
-    selectcanalview *scanal = empresaBase() ->getselcanales();
-    SelectCCosteView *scoste = empresaBase() ->getselccostes();
-    QString ccostes = scoste->cadcoste();
-    if ( ccostes != "" ) {
-        ccostes.sprintf ( " AND idc_coste IN (%s) ", ccostes.toAscii().constData() );
-    } // end if
-    QString ccanales = scanal->cadcanal();
-    if ( ccanales != "" ) {
-        ccanales.sprintf ( " AND idcanal IN (%s) ", ccanales.toAscii().constData() );
-    } // end if
-    QString tabla;
-    QString cont;
-    if ( mui_asAbiertos->isChecked() ) {
-        tabla = "borrador";
-        cont = " FALSE AS punteo, * ";
-    } else {
-        tabla = "apunte";
-        cont = " * ";
-    } // end if
-
-    query = "SELECT * FROM ((SELECT " + cont + " FROM " + tabla + " WHERE  idcuenta = " + idcuenta + " AND fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' " + ccostes + " " + ccanales + " " + tipopunteo + ") AS t2 LEFT JOIN cuenta ON t2.idcuenta = cuenta.idcuenta) AS t1 LEFT JOIN asiento ON asiento.idasiento = t1.idasiento ";
-    query += " LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste FROM c_coste) AS t5 ON t5.idc_coste = t1.idc_coste ";
-    query += " LEFT JOIN (SELECT idcanal, nombre AS nombrecanal FROM canal) AS t6 ON t6.idcanal = t1.idcanal ";
-    query += " ORDER BY t1.fecha, ordenasiento, t1.orden";
-
-    cursorapt = empresaBase() ->cargacursor ( query );
-
-    /// Cargamos los saldos iniciales.
-    cursor2 *cursoraux;
-    query = "SELECT sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE idcuenta =" + idcuenta + " AND fecha < '" + finicial + "'";
-    cursoraux = empresaBase() ->cargacursor ( query );
-    if ( !cursoraux->eof() ) {
-        debeinicial = Fixed ( cursoraux->valor ( "tdebe" ) );
-        haberinicial = Fixed ( cursoraux->valor ( "thaber" ) );
-        saldoinicial = debeinicial - haberinicial;
-        debefinal = debeinicial;
-        haberfinal = haberinicial;
-    } // end if
-    delete cursoraux;
-
-    /// Presentamos la información inicial y de la cuenta.
-    cursor2 *cursorcta = empresaBase() ->cargacursor ( "SELECT * FROM cuenta WHERE idcuenta=" + idcuenta );
-
-    salida += "<blockTable>\n";
-    salida += "<tr>";
-    salida += "<td> Codigo: " + cursorcta->valor ( "codigo" ) + " </td>";
-    salida += "<td> Fecha Inicial: " + finicial + " </td>";
-    salida += "<td> Fecha Final: " + ffinal + " </td>";
-    salida += "<td> Debe Inicial: " + debeinicial.toQString() + " </td>";
-    salida += "<td> Debe Final: " + haberinicial.toQString() + " </td>";
-    salida += "</tr>";
-    salida += "<tr>";
-    salida += "<td> Cuenta: " + cursorcta->valor ( "descripcion" ) + " </td>";
-    salida += "<td> </td>";
-    salida += "<td> </td>";
-    salida += "<td> </td>";
-    salida += "<td> </td>";
-    salida += "</tr>";
-    salida += "</blockTable>\n";
-    salida += "<spacer length=\"5mm\" width=\"1mm\"/>\n";
-
-    delete cursorcta;
-    /// Aqui va la impresion pero con cabeceras.
-    salida += "<blockTable style=\"tabla\" repeatRows=\"1\">\n";
-    salida += "<tr>\n";
-    salida += "<td> Fecha </td>";
-    salida += "<td> Asiento </td>";
-    salida += "<td> Concepto </td>";
-    salida += "<td> Debe </td>";
-    salida += "<td> Haber </td>";
-    salida += "<td> Saldo </td>";
-    salida += "</tr>\n";
-
-    while ( ! cursorapt->eof() ) {
-        saldofinal = saldofinal + Fixed ( cursorapt->valor ( "debe" ) ) - Fixed ( cursorapt->valor ( "haber" ) );
-        debefinal = debefinal + Fixed ( cursorapt->valor ( "debe" ) );
-        haberfinal = haberfinal + Fixed ( cursorapt->valor ( "haber" ) );
-
-        salida +=  "<tr>\n";
-        salida +=  "<td>" + cursorapt->valor ( "fecha" ) + "</td>";
-        salida +=  "<td>" + cursorapt->valor ( "orden" ) + "</td>";
-        salida +=  "<td>" + cursorapt->valor ( "conceptocontable" ) + "</td>";
-        salida +=  "<td>" + cursorapt->valor ( "debe" ) + "</td>";
-        salida +=  "<td>" + cursorapt->valor ( "haber" ) + "</td>";
-        salida +=  "<td>" + saldofinal.toQString() + "</td>";
-        salida +=  "</tr>\n";
-        cursorapt->siguienteregistro();
-    } // end while
-
-    salida += "</blockTable>\n";
-
-    salida += "<spacer length=\"5mm\" width=\"1mm\"/>\n";
-
-
-    salida += "<blockTable>\n";
-    salida += "<tr>\n";
-    salida += "<td> Debe Final: " + debefinal.toQString() + " </td>\n";
-    salida += "<td> Haber Final: " + haberfinal.toQString() + " </td>\n";
-    salida += "<td> Saldo Final: " + saldofinal.toQString() + "</td>\n";
-    salida += "</tr>\n";
-    salida += "</blockTable>\n";
-
-    delete cursorapt;
-    _depura ( "END extractoview1::imprimeExtractoCuenta", 0 );
-    return salida;
+    }
 }
 
 

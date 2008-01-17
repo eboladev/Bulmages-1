@@ -46,13 +46,13 @@ public slots:
     virtual void s_searchFecha();
     virtual void s_fechatextChanged ( const QString & );
     virtual void s_fechalostFocus();
-    virtual void s_returnPressed();
+    virtual void s_enterPressed();
     virtual void selectAll();
     virtual void setFocus();
 
 signals:
     void valueChanged ( QString );
-    void returnPressed();
+    void enterPressed();
     void editingFinished();
 };
 

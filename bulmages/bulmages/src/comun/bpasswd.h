@@ -35,8 +35,8 @@ private:
 
 private slots:
     virtual void validar();
-    virtual void returnPressedOnUser();
-    virtual void returnPressedOnPasswd();
+    virtual void enterPressedOnUser();
+    virtual void enterPressedOnPasswd();
 
 };
 

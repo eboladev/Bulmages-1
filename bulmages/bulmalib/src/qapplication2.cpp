@@ -54,12 +54,13 @@ QApplication2::~QApplication2()
 **/
 bool QApplication2::notify ( QObject *o, QEvent *e )
 {
-    _depura ( "QApplication2::notify", 0 );
+//    _depura ( "QApplication2::notify", 0 );
     try {
-        _depura ( "END QApplication2::notify", 0 );
+//        _depura ( "END QApplication2::notify", 0 );
         return QApplication::notify ( o, e );
     } catch ( ... ) {
-        _depura ( "END QApplication2::notify", 0, "Error inesperado en la aplicacion" );
+//        _depura ( "END QApplication2::notify", 0, "Error inesperado en la aplicacion" );
+        _depura ( "END QApplication2::notify", 2, "Error inesperado en la aplicacion" );
         return FALSE;
     } // end try
 }

@@ -866,11 +866,14 @@ void Bulmacont::informaindexador ( QWidget *w )
 {
     _depura ( "Bulmacont::informaindexador", 0 );
     /// No existe una ventana que activar.
-    if ( m_empresaactual == NULL )
+    if ( m_empresaactual == NULL ) {
+        _depura ( "END Bulmacont::informaindexador", 0, "Sin empresa" );
         return;
+    } // end if
 
     if ( w == NULL ) {
         m_empresaactual->deSeleccionaWindow();
+        _depura ( "END Bulmacont::informaindexador", 0, "Sin Widget" );
         return;
     } // end if
     m_empresaactual->deSeleccionaWindow();

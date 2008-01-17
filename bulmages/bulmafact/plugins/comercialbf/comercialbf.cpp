@@ -42,7 +42,7 @@
 **/
 int entryPoint ( Bulmafact *bges )
 {
-    _depura ( "Punto de Entrada del plugin ComercialBF", 0 );
+    _depura ( "entryPoint", 0, "Punto de Entrada del plugin ComercialBF" );
     /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
     QTranslator *traductor = new QTranslator ( 0 );
     if ( confpr->valor ( CONF_TRADUCCION ) == "locales" ) {
@@ -56,7 +56,7 @@ int entryPoint ( Bulmafact *bges )
 
     mypluginbf *plug = new mypluginbf();
     plug->inicializa ( bges );
-    _depura ( "END Punto de Entrada del plugin ComercialBF", 0 );
+    _depura ( "END entryPoint", 0, "Punto de Entrada del plugin ComercialBF" );
     return 0;
 }
 

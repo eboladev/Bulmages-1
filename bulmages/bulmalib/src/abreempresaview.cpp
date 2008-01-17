@@ -523,11 +523,14 @@ bool abreempresaview::eventFilter ( QObject *obj, QEvent *ev )
                 // end if
                 break;
             } // end switch
+            _depura ( "END abreempresaview::eventFilter", 0, "Pulsacion de Tecla" );
             return false;
-        } else
+        } else {
+            _depura ( "END abreempresaview::eventFilter", 0, "Evento sin interes" );
             return false;
-    } else /// Si no se ha tratado el evento, se deja pasar.
-        _depura ( "END abreempresaview::eventFilter", 0 );
+        } // end if
+    } // end if
+    _depura ( "END abreempresaview::eventFilter", 0, "Objeto no deseado" );
     return QDialog::eventFilter ( obj, ev );
     // end if
 }

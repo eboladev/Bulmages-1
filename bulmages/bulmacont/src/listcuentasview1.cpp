@@ -119,6 +119,7 @@ listcuentasview1::~listcuentasview1()
 bool listcuentasview1::eventFilter ( QObject *obj, QEvent *event )
 {
     _depura ( "listcuentasview1::eventFilter", 0 );
+    _depura ( "END listcuentasview1::eventFilter", 0 );
     return QWidget::eventFilter ( obj, event );
 }
 
@@ -132,60 +133,61 @@ bool listcuentasview1::eventFilter ( QObject *obj, QEvent *event )
 int listcuentasview1::inicializa()
 {
     _depura ( "listcuentasview1::inicializa", 0 );
-    QTreeWidgetItem *it;
-    QMap <int, QTreeWidgetItem*> Lista1;
-    int idcuenta;
-    int padre;
-    ListView1->clear();
+    try {
+        QTreeWidgetItem *it;
+        QMap <int, QTreeWidgetItem*> Lista1;
+        int idcuenta;
+        int padre;
+        ListView1->clear();
 
-    /// Cargamos y pintamos las cuentas hijas.
-    cursor2 *ctas = empresaBase() ->cargacursor ( "SELECT * FROM cuenta ORDER BY codigo" );
-    if ( ctas->eof() ) {
-        _depura ( "El query esta vacio\n", 0 );
-    } else {
-        fprintf ( stderr, "El query tiene registros \n" );
-    } // end if
-    while ( !ctas->eof() ) {
-        idcuenta = ctas->valor ( "idcuenta" ).toInt();
-        padre = ctas->valor ( "padre" ).toInt();
-        if ( padre == 0 ) {
-            it = new QTreeWidgetItem ( ListView1 );
-            Lista1[idcuenta] = it;
-        } else {
-            it = new QTreeWidgetItem ( Lista1[padre] );
-            Lista1[idcuenta] = it;
-        } // end if
-        it->setText ( ccuenta, ctas->valor ( "codigo" ) );
-        it->setText ( cdesccuenta, ctas->valor ( "descripcion" ) );
-        it->setText ( cidcuenta, ctas->valor ( "idcuenta" ) );
-        it->setText ( cbloqueada, ctas->valor ( "bloqueada" ) );
-        it->setText ( cnodebe, ctas->valor ( "nodebe" ) );
-        it->setText ( cnohaber, ctas->valor ( "nohaber" ) );
-        it->setText ( cregularizacion, ctas->valor ( "regularizacion" ) );
-        it->setText ( cimputacion, ctas->valor ( "imputacion" ) );
-        it->setText ( cdebe, ctas->valor ( "debe" ) );
-        it->setText ( chaber, ctas->valor ( "haber" ) );
-        /// Ponemos los iconos.
-        if ( ctas->valor ( "tipocuenta" ) == "1" )
-            it->setIcon ( ccuenta, QPixmap ( cactivo ) );
-        else if ( ctas->valor ( "tipocuenta" ) == "2" )
-            it->setIcon ( ccuenta, QPixmap ( cpasivo ) );
-        else if ( ctas->valor ( "tipocuenta" ) == "3" )
-            it->setIcon ( ccuenta, QPixmap ( cneto ) );
-        else if ( ctas->valor ( "tipocuenta" ) == "4" )
-            it->setIcon ( ccuenta, QPixmap ( cingresos ) );
-        else if ( ctas->valor ( "tipocuenta" ) == "5" )
-            it->setIcon ( ccuenta, QPixmap ( cgastos ) );
-        ListView1->setItemExpanded ( it, TRUE );
-        ctas->siguienteregistro();
-    } // end while
-    delete ctas;
+        /// Cargamos y pintamos las cuentas hijas.
+        cursor2 *ctas = empresaBase() ->cargacursor ( "SELECT * FROM cuenta ORDER BY codigo" );
+        while ( !ctas->eof() ) {
+            idcuenta = ctas->valor ( "idcuenta" ).toInt();
+            padre = ctas->valor ( "padre" ).toInt();
+            if ( padre == 0 ) {
+                it = new QTreeWidgetItem ( ListView1 );
+                Lista1[idcuenta] = it;
+            } else {
+                it = new QTreeWidgetItem ( Lista1[padre] );
+                Lista1[idcuenta] = it;
+            } // end if
+            it->setText ( ccuenta, ctas->valor ( "codigo" ) );
+            it->setText ( cdesccuenta, ctas->valor ( "descripcion" ) );
+            it->setText ( cidcuenta, ctas->valor ( "idcuenta" ) );
+            it->setText ( cbloqueada, ctas->valor ( "bloqueada" ) );
+            it->setText ( cnodebe, ctas->valor ( "nodebe" ) );
+            it->setText ( cnohaber, ctas->valor ( "nohaber" ) );
+            it->setText ( cregularizacion, ctas->valor ( "regularizacion" ) );
+            it->setText ( cimputacion, ctas->valor ( "imputacion" ) );
+            it->setText ( cdebe, ctas->valor ( "debe" ) );
+            it->setText ( chaber, ctas->valor ( "haber" ) );
+            /// Ponemos los iconos.
+            if ( ctas->valor ( "tipocuenta" ) == "1" )
+                it->setIcon ( ccuenta, QPixmap ( cactivo ) );
+            else if ( ctas->valor ( "tipocuenta" ) == "2" )
+                it->setIcon ( ccuenta, QPixmap ( cpasivo ) );
+            else if ( ctas->valor ( "tipocuenta" ) == "3" )
+                it->setIcon ( ccuenta, QPixmap ( cneto ) );
+            else if ( ctas->valor ( "tipocuenta" ) == "4" )
+                it->setIcon ( ccuenta, QPixmap ( cingresos ) );
+            else if ( ctas->valor ( "tipocuenta" ) == "5" )
+                it->setIcon ( ccuenta, QPixmap ( cgastos ) );
+            ListView1->setItemExpanded ( it, TRUE );
+            ctas->siguienteregistro();
+        } // end while
+        delete ctas;
 
-    /// Cargamos el n&uacute;mero de d&iacute;gitos de cuenta para poder hacer una
-    /// introducci&oacute;n de n&uacute;meros de cuenta m&aacute;s pr&aacute;ctica.
-    numdigitos = empresaBase() ->numdigitosempresa();
+        /// Cargamos el n&uacute;mero de d&iacute;gitos de cuenta para poder hacer una
+        /// introducci&oacute;n de n&uacute;meros de cuenta m&aacute;s pr&aacute;ctica.
+        numdigitos = empresaBase() ->numdigitosempresa();
 
-    inicializatabla();
+        inicializatabla();
+    } catch ( ... ) {
+        mensajeInfo ( "Error en la carga" );
+        _depura ( "END listcuentasview1::inicializa", 0, "Error en la carga" );
+        return -1;
+    } // end try
     _depura ( "END listcuentasview1::inicializa", 0 );
     return 0;
 }
@@ -315,7 +317,7 @@ void listcuentasview1::on_ListView1_itemDoubleClicked ( QTreeWidgetItem *it, int
     } else {
         emit ( selected ( mdb_idcuenta ) );
     } // end if
-    _depura ( "listcuentasview1::on_ListView1_doubleClicked", 0 );
+    _depura ( "END listcuentasview1::on_ListView1_doubleClicked", 0 );
 }
 
 
@@ -366,6 +368,7 @@ void listcuentasview1::on_mui_editar_clicked()
     it = ListView1->currentItem();
     if ( !it ) {
         mensajeInfo ( tr ( "Debe seleccionar una cuenta" ) );
+        _depura ( "END listcuentasview1::on_mui_editar_clicked", 0, "Debe seleccionar una cuenta" );
         return;
     }
     on_ListView1_itemClicked ( it, 0 );
@@ -568,7 +571,7 @@ void listcuentasview1::selectMode()
 {
     _depura ( "listcuentasview1::selectMode", 0 );
     m_modo = SelectMode;
-    _depura ( "listcuentasview1::selectMode", 0 );
+    _depura ( "END listcuentasview1::selectMode", 0 );
 }
 
 
@@ -590,7 +593,7 @@ QString listcuentasview1::codcuenta()
 {
     _depura ( "listcuentasview1::codcuenta", 0 );
     return mdb_codcuenta;
-    _depura ( "listcuentasview1::codcuenta", 0 );
+    _depura ( "END listcuentasview1::codcuenta", 0 );
 }
 
 
@@ -601,7 +604,7 @@ QString listcuentasview1::codcuenta()
 QString listcuentasview1::idcuenta()
 {
     _depura ( "listcuentasview1::idcuenta", 0 );
-    _depura ( "listcuentasview1::idcuenta", 0 );
+    _depura ( "END listcuentasview1::idcuenta", 0 );
     return mdb_idcuenta;
 }
 

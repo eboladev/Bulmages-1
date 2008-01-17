@@ -70,7 +70,7 @@ DiarioSubForm::DiarioSubForm ( QWidget *parent, const char * ) : SubForm2Bc ( pa
     /// Preparamos el sistema de menus contextuales
     connect ( this, SIGNAL ( pintaMenu ( QMenu * ) ), this, SLOT ( s_pintaMenu ( QMenu * ) ) );
     connect ( this, SIGNAL ( trataMenu ( QAction * ) ), this, SLOT ( s_trataMenu ( QAction * ) ) );
-    _depura ( "DiarioSubForm::DiarioSubForm", 0 );
+    _depura ( "END DiarioSubForm::DiarioSubForm", 0 );
 }
 
 
@@ -101,7 +101,7 @@ void DiarioSubForm::s_pintaMenu ( QMenu *menu )
     menu->addAction ( tr ( "Mostrar balance (dia)" ) );
     menu->addAction ( tr ( "Mostrar balance (mes)" ) );
     menu->addAction ( tr ( "Mostrar balance (ano)" ) );
-    _depura ( "ListLinAsiento1View::s_pintaMenu", 0 );
+    _depura ( "END ListLinAsiento1View::s_pintaMenu", 0 );
 }
 
 /// Slot que trata la activacion de un elemento en el menu contextual.

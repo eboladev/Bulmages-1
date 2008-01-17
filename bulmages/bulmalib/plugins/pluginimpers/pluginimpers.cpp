@@ -30,10 +30,10 @@
 **/
 int entryPoint ( QApplication * )
 {
-    _depura ( "Punto de Entrada del plugin de PluginImPers\n", 0 );
+    _depura ( "entryPoint", 0, "Punto de Entrada del plugin de PluginImPers" );
     /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
     cargaTraducciones ( "pluginimpers" );
-    _depura ( "END Punto de Entrada del plugin de PluginImPers\n", 0 );
+    _depura ( "END entryPoint", 0, "Punto de Entrada del plugin de PluginImPers" );
     return 0;
 }
 

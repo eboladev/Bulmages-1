@@ -108,7 +108,7 @@ public slots:
     virtual void on_mui_nuevoasiento_clicked();
     virtual void on_mui_duplicar_clicked();
     virtual void on_mui_inteligente_clicked();
-    virtual void on_mui_fecha_returnPressed();
+    virtual void on_mui_fecha_enterPressed();
     /// Al pulsar return sobre el n&uacute;mero de asiento se procede como si fuese una
     /// carga de dicho asiento.
     void mui_ordenasiento_pulsadoIntro();

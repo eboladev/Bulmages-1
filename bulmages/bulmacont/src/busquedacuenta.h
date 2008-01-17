@@ -88,14 +88,14 @@ public slots:
     virtual void s_codigocuentatextChanged ( const QString & );
     virtual void on_lostFocus();
     virtual void s_lostFocus();
-    virtual void on_returnPressed();
-    virtual void s_returnPressed();
+    virtual void on_enterPressed();
+    virtual void s_enterPressed();
     virtual void selectAll();
     virtual void setFocus();
 
 signals:
     void valueChanged ( QString );
-    void returnPressed();
+    void enterPressed();
 };
 
 #endif

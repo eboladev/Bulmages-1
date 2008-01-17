@@ -29,6 +29,7 @@
 #include <QTextStream>
 #include <QLocale>
 #include <QProcess>
+#include <QTime>
 
 #include "funcaux.h"
 #include "configuracion.h"
@@ -346,19 +347,23 @@ void _depura ( const QString &cad, int nivel, const QString &param )
         static QFile filexml ( confpr->valor ( CONF_DIR_USER ) + "bulmagesout.xml" );
         static QTextStream outxml ( &filexml );
 
-        if ( !semaforo ) {
-            if ( !file.open ( QIODevice::WriteOnly | QIODevice::Text ) )
-                return;
-            if ( !filexml.open ( QIODevice::WriteOnly | QIODevice::Text ) )
-                return;
-            semaforo = 1;
-        } // end if
         static int auxxml = 0;
         static int supnivel = 0;
         static int indice = 0;
         static QString mensajesanulados[7000];
         static QString clasesanuladas[7000];
         static int indiceclases = 0;
+        static QTime t;
+
+        if ( !semaforo ) {
+            t.start();
+            if ( !file.open ( QIODevice::WriteOnly | QIODevice::Text ) )
+                return;
+            if ( !filexml.open ( QIODevice::WriteOnly | QIODevice::Text ) )
+                return;
+            semaforo = 1;
+        } // end if
+
 
         if ( nivel == 5 ) {
             supnivel = 0;
@@ -369,17 +374,27 @@ void _depura ( const QString &cad, int nivel, const QString &param )
             nivel = 2;
         } // end if
         if ( nivel == 0 || nivel == 1 ) {
-            out << cad << " " << param << "\n" << flush;
             /// Si la cadena contiene END bajamos el nivel
-            if ( cad.contains ( "::" ) && !cad.startsWith ( "END" ) && !cad.contains ( " " ) ) {
+            if ( !cad.contains ( " " ) ) {
                 auxxml ++;
                 if ( auxxml > 20 ) auxxml = 1;
             } // end if
-            if ( !cad.contains ( " " ) || cad.startsWith ( "END" ) ) {
-                for ( int i = 0; i < auxxml; i++ )
-                    outxml << "    ";
-                outxml << cad << " " << param << "\n" << flush;
+            for ( int i = 0; i < auxxml; i++ ) {
+                outxml << "    ";
+                out << "    ";
+            } // end for
+
+            QString cad1 = cad;
+            if ( cad.startsWith ( "END" ) ) {
+                cad1 = "</" + cad1.remove ( 0, 4 ) + " time=\"" + QString::number ( t.elapsed() ) + "\" result=\"" + param + "\" >";
+            } else if ( cad.contains ( " " ) ) {
+                cad1 = "    <COMENT value=\"" + cad + " " + param + "\"></COMENT>";
+            } else {
+                cad1 = "<" + cad1 + " time=\"" + QString::number ( t.elapsed() ) + "\" param=\"" + param + "\" >";
             } // end if
+
+            outxml << cad1  << "\n" << flush;
+            out << cad << " " << param << "\n" << flush;
             if ( cad.startsWith ( "END" ) ) {
                 auxxml --;
                 if ( auxxml < 0 ) auxxml = 20;

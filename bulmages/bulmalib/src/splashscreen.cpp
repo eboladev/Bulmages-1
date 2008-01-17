@@ -104,8 +104,7 @@ Splash::~Splash()
 **/
 void Splash::mensaje ( QString mens )
 {
-    _depura ( "Splash::mensaje", 0 );
-    _depura ( mens, 0 );
+    _depura ( "Splash::mensaje", 0, mens );
     static int a = 0;
     static QString cadant = "";
     QString cad = "";

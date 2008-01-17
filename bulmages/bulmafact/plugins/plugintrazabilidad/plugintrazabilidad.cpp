@@ -94,10 +94,10 @@ void myplugin::inicializa ( Bulmafact *bges )
 **/
 int entryPoint ( Bulmafact *bges )
 {
-    _depura ( "Punto de Entrada del plugin PluginTrazabilidad", 0 );
+    _depura ( "entryPoint", 0, "Punto de Entrada del plugin PluginTrazabilidad" );
     myplugin *plug = new myplugin();
     plug->inicializa ( bges );
-    _depura ( "END Punto de Entrada del plugin PluginTrazabilidad", 0 );
+    _depura ( "END entryPoint", 0, "Punto de Entrada del plugin PluginTrazabilidad" );
     return 0;
 }
 

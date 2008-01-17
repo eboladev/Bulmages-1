@@ -70,7 +70,7 @@ ln -s $1/privateplugins/pluginetiquetas/libpluginetiquetas.so        /usr/lib/bu
 ln -s $1/privateplugins/plugincorrectorbf/libplugincorrectorbf.so        /usr/lib/bulmafact/plugins/
 ln -s $1/privateplugins/pluginetiquetado/libpluginetiquetado.so        /usr/lib/bulmafact/plugins/
 ln -s $1/privateplugins/plugincalc/libplugincalc.so        /usr/lib/bulmalib/plugins/
-ln -s $1/privateplugins/pluginresumcta/libpluginresumcta.so        /usr/lib/bulmafact/plugins/
+ln -s $1/privateplugins/pluginresumcta/libpluginresumcta.so        /usr/lib/bulmacont/plugins/
 #ln -s $1/privateplugins/pluginpromedios/libpluginpromedios.so        /usr/lib/bulmafact/plugins/
 ln -s $1/privateplugins/plugininformeclientessxc/libplugininformeclientessxc.so        /usr/lib/bulmafact/plugins/
 ln -s $1/privateplugins/pluginnq19/libpluginnq19.so        /usr/lib/bulmafact/plugins/

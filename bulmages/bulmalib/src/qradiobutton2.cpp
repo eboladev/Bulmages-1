@@ -11,7 +11,7 @@
 QRadioButton2::QRadioButton2 ( QWidget *parent )
         : QRadioButton ( parent )
 {
-    _depura ( "QQRadioButton2::QRadioButton2", 0 );
+    _depura ( "QRadioButton2::QRadioButton2", 0 );
     _depura ( "END QRadioButton2::QRadioButton2", 0 );
 }
 
@@ -27,7 +27,7 @@ QRadioButton2::QRadioButton2 ( QWidget *parent )
 QRadioButton2::QRadioButton2 ( const QString & text, QWidget * parent )
         : QRadioButton ( text, parent )
 {
-    _depura ( "QQRadioButton2::QRadioButton2", 0 );
+    _depura ( "QRadioButton2::QRadioButton2", 0 );
     _depura ( "END QRadioButton2::QRadioButton2", 0 );
 }
 
