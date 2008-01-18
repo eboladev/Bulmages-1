@@ -1904,9 +1904,29 @@ void SubForm3::on_mui_list_pressedSlash ( int, int )
 ///
 /**
 **/
-void SubForm3::on_mui_list_pressedAsterisk ( int, int )
+void SubForm3::on_mui_list_pressedAsterisk ( int row, int col )
 {
-    _depura ( "SubForm3::on_mui_list_pressedAsterisk", 1, "pressedAsterisk aun no implementado" );
+    _depura ( "SubForm3::on_mui_list_pressedAsterisk", 0 );
+    SDBRecord *rec = lineaat ( row );
+    if ( rec == NULL ) {
+        _depura ( "END SubForm3::on_mui_list_pressedAsterisk", 0, QString::number ( row ) + " " + QString::number ( col ) + "la linea no existe" );
+        return;
+    } // end if
+
+    SDBCampo *camp = ( SDBCampo * ) item ( row, col );
+    camp->refresh();
+
+    if ( m_procesacambios ) {
+        m_procesacambios = FALSE;
+        m_prevRow = row;
+        m_prevCol = col;
+        pressedAsterisk ( row, col, rec, camp );
+        emit pushAsterisk ( row, col );
+        m_procesacambios = TRUE;
+        /// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
+        on_mui_list_cellChanged ( row, col );
+    } // end if
+    _depura ( "END SubForm3::on_mui_list_pressedAsterisk", 0 );
 }
 
 
@@ -2309,3 +2329,9 @@ void SubForm3::editFinished ( int, int, SDBRecord *, SDBCampo * )
     _depura ( "END SubForm3::editFinished", 0 );
 }
 
+/// Para ser derivado, permite a las clases derivadas y a esta el tratamiento de cambio de celda.
+void SubForm3::pressedAsterisk ( int, int, SDBRecord *, SDBCampo * )
+{
+    _depura ( "SubForm3::pressedAsterisk", 0 );
+    _depura ( "END SubForm3::pressedAsterisk", 0 );
+}

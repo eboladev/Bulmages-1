@@ -37,9 +37,9 @@
 #include "plugins.h"
 
 
-///
+/// Clase de subformularios especificos.
 /**
-\param parent
+\param parent El widget propietario del subformulario.
 **/
 SubForm2Bf::SubForm2Bf ( QWidget *parent ) : SubForm3 ( parent )
 {
@@ -52,7 +52,7 @@ SubForm2Bf::SubForm2Bf ( QWidget *parent ) : SubForm3 ( parent )
 }
 
 
-///
+/// Destructor de la clase.
 /**
 **/
 SubForm2Bf::~SubForm2Bf()
@@ -63,13 +63,13 @@ SubForm2Bf::~SubForm2Bf()
 }
 
 
-///
+/// Carga un Query
 /**
-\param query
+\param query Una consulta SQL valida.
 **/
 void SubForm2Bf::cargar ( QString query )
 {
-    _depura ( "SubForm2Bf::cargar", 0 );
+    _depura ( "SubForm2Bf::cargar", 0, query );
     SubForm3::cargar ( query );
     _depura ( "END SubForm2Bf::cargar", 0 );
 }
@@ -81,14 +81,12 @@ void SubForm2Bf::cargar ( QString query )
 \param col
 \return
 **/
-void SubForm2Bf::on_mui_list_pressedAsterisk ( int row, int col )
+void SubForm2Bf::pressedAsterisk ( int row, int col, SDBRecord *rec, SDBCampo *camp )
 {
     _depura ( "SubForm2Bf::pressedAsterisk", 0 );
 
-    SDBRecord *rec = lineaat ( row );
-    SDBCampo *camp = ( SDBCampo * ) item ( row, col );
-
     if ( camp->nomcampo() != "codigocompletoarticulo" ) {
+        _depura ( "END SubForm2Bf::pressedAsterisk", 0 );
         return;
     } // end if
 
@@ -105,6 +103,7 @@ void SubForm2Bf::on_mui_list_pressedAsterisk ( int row, int col )
 
     /// Si no tenemos un idarticulo salimos ya que significa que no se ha seleccionado ninguno.
     if ( idArticle == "" ) {
+        _depura ( "END SubForm2Bf::pressedAsterisk", 0 );
         return;
     } // end if
 
@@ -115,10 +114,6 @@ void SubForm2Bf::on_mui_list_pressedAsterisk ( int row, int col )
         rec->setDBvalue ( "nomarticulo", cur->valor ( "nomarticulo" ) );
     } // end if
     delete cur;
-
-
-    /// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
-    on_mui_list_cellChanged ( row, col );
 
     _depura ( "END SubForm2Bf::pressedAsterisk", 0 );
 }
