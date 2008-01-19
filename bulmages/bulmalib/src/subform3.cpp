@@ -1895,10 +1895,29 @@ void SubForm3::on_mui_confcol_clicked()
 ///
 /**
 **/
-void SubForm3::on_mui_list_pressedSlash ( int, int )
+void SubForm3::on_mui_list_pressedSlash ( int row, int col )
 {
-    _depura ( "SubForm3::on_mui_list_pressedSlash", 1, "pulsadoSlash aun no implementado" );
-}
+    _depura ( "SubForm3::on_mui_list_pressedSlash", 0 );
+    SDBRecord *rec = lineaat ( row );
+    if ( rec == NULL ) {
+        _depura ( "END SubForm3::on_mui_list_pressedSlash", 0, QString::number ( row ) + " " + QString::number ( col ) + "la linea no existe" );
+        return;
+    } // end if
+
+    SDBCampo *camp = ( SDBCampo * ) item ( row, col );
+    camp->refresh();
+
+    if ( m_procesacambios ) {
+        m_procesacambios = FALSE;
+        m_prevRow = row;
+        m_prevCol = col;
+        pressedSlash ( row, col, rec, camp );
+        emit pushSlash ( row, col );
+        m_procesacambios = TRUE;
+        /// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
+        on_mui_list_cellChanged ( row, col );
+    } // end if
+    _depura ( "END SubForm3::on_mui_list_pressedSlash", 0 );}
 
 
 ///
@@ -1933,18 +1952,58 @@ void SubForm3::on_mui_list_pressedAsterisk ( int row, int col )
 ///
 /**
 **/
-void SubForm3::on_mui_list_pressedPlus ( int, int )
+void SubForm3::on_mui_list_pressedPlus ( int row, int col )
 {
-    _depura ( "SubForm3::on_mui_list_pressedPlus", 1, "pulsadoPlus aun no implementado" );
+    _depura ( "SubForm3::on_mui_list_pressedPlus", 0 );
+    SDBRecord *rec = lineaat ( row );
+    if ( rec == NULL ) {
+        _depura ( "END SubForm3::on_mui_list_pressedPlus", 0, QString::number ( row ) + " " + QString::number ( col ) + "la linea no existe" );
+        return;
+    } // end if
+
+    SDBCampo *camp = ( SDBCampo * ) item ( row, col );
+    camp->refresh();
+
+    if ( m_procesacambios ) {
+        m_procesacambios = FALSE;
+        m_prevRow = row;
+        m_prevCol = col;
+        pressedPlus ( row, col, rec, camp );
+        emit pushPlus ( row, col );
+        m_procesacambios = TRUE;
+        /// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
+        on_mui_list_cellChanged ( row, col );
+    } // end if
+    _depura ( "END SubForm3::on_mui_list_pressedPlus", 0 );
 }
 
 
 ///
 /**
 **/
-void SubForm3::on_mui_list_pressedMinus ( int, int )
+void SubForm3::on_mui_list_pressedMinus ( int row, int col )
 {
-    _depura ( "SubForm3::on_mui_list_pressedMinus", 1, "pressedMinus aun no implementado" );
+    _depura ( "SubForm3::on_mui_list_pressedMinus", 0 );
+    SDBRecord *rec = lineaat ( row );
+    if ( rec == NULL ) {
+        _depura ( "END SubForm3::on_mui_list_pressedMinus", 0, QString::number ( row ) + " " + QString::number ( col ) + "la linea no existe" );
+        return;
+    } // end if
+
+    SDBCampo *camp = ( SDBCampo * ) item ( row, col );
+    camp->refresh();
+
+    if ( m_procesacambios ) {
+        m_procesacambios = FALSE;
+        m_prevRow = row;
+        m_prevCol = col;
+        pressedMinus ( row, col, rec, camp );
+        emit pushMinus ( row, col );
+        m_procesacambios = TRUE;
+        /// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
+        on_mui_list_cellChanged ( row, col );
+    } // end if
+    _depura ( "END SubForm3::on_mui_list_pressedMinus", 0 );
 }
 
 
@@ -2335,3 +2394,27 @@ void SubForm3::pressedAsterisk ( int, int, SDBRecord *, SDBCampo * )
     _depura ( "SubForm3::pressedAsterisk", 0 );
     _depura ( "END SubForm3::pressedAsterisk", 0 );
 }
+
+
+/// Para ser derivado, permite a las clases derivadas y a esta el tratamiento de cambio de celda.
+void SubForm3::pressedPlus ( int, int, SDBRecord *, SDBCampo * )
+{
+    _depura ( "SubForm3::pressedPlus", 0 );
+    _depura ( "END SubForm3::pressedPlus", 0 );
+}
+
+
+/// Para ser derivado, permite a las clases derivadas y a esta el tratamiento de cambio de celda.
+void SubForm3::pressedMinus ( int, int, SDBRecord *, SDBCampo * )
+{
+    _depura ( "SubForm3::pressedMinus", 0 );
+    _depura ( "END SubForm3::pressedMinus", 0 );
+}
+
+/// Para ser derivado, permite a las clases derivadas y a esta el tratamiento de cambio de celda.
+void SubForm3::pressedSlash ( int, int, SDBRecord *, SDBCampo * )
+{
+    _depura ( "SubForm3::pressedSlash", 0 );
+    _depura ( "END SubForm3::pressedSlash", 0 );
+}
+

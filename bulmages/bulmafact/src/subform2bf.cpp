@@ -124,10 +124,9 @@ void SubForm2Bf::pressedAsterisk ( int row, int col, SDBRecord *rec, SDBCampo *c
 \param row
 \param col
 **/
-void SubForm2Bf::on_mui_list_pressedSlash ( int row, int col )
+void SubForm2Bf::pressedSlash ( int row, int col, SDBRecord *rec, SDBCampo *camp )
 {
     _depura ( "SubForm2Bf::pressedSlash", 0 );
-    SDBCampo *camp = ( SDBCampo * ) item ( row, col );
     QString text = editaTexto ( camp->text() );
     camp->set ( text );
     _depura ( "END SubForm2Bf::pressedSlash", 0 );
@@ -139,19 +138,26 @@ void SubForm2Bf::on_mui_list_pressedSlash ( int row, int col )
 \param row
 \param col
 **/
-void SubForm2Bf::on_mui_list_pressedMinus ( int row, int col )
+void SubForm2Bf::pressedMinus ( int row, int col, SDBRecord *rec, SDBCampo *camp )
 {
     _depura ( "SubForm2Bf::pressedMinus", 0 );
 
-    SDBRecord *rec = lineaat ( row );
-    SDBCampo *camp = ( SDBCampo * ) item ( row, col );
+    if (!rec->exists("idarticulo")) {
+        _depura ( "END SubForm2Bf::pressedMinus", 0, "No hay un idarticulo" );
+	return;
+    } // end if
+
     cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM articulo WHERE idarticulo = " + rec->DBvalue ( "idarticulo" ) );
+    if (!cur) {
+        _depura ( "END SubForm2Bf::pressedMinus", 0, "No hay un idarticulo" );
+	return;
+    } // end if
+
     if ( !cur->eof() ) {
         rec->setDBvalue ( camp->nomcampo(), cur->valor ( "obserarticulo" ) );
     } // end if
     delete cur;
-    /// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
-    on_mui_list_cellChanged ( row, col );
+
     _depura ( "END SubForm2Bf::pressedMinus", 0 );
 }
 

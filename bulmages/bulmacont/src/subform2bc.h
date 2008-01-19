@@ -69,11 +69,9 @@ public:
     virtual void procesaMenu ( QAction * );
     virtual void setEmpresaBase ( EmpresaBase *c );
     virtual void editFinished ( int row, int col, SDBRecord *rec, SDBCampo *camp );
-
-public slots:
-    virtual void on_mui_list_pressedSlash ( int row, int col );
-    virtual void on_mui_list_pressedAsterisk ( int row, int col );
-    virtual void on_mui_list_pressedPlus ( int row, int col );
+    virtual void pressedAsterisk ( int row, int col, SDBRecord *rec, SDBCampo *camp );
+    virtual void pressedPlus ( int row, int col, SDBRecord *rec, SDBCampo *camp );
+    virtual void pressedSlash ( int row, int col, SDBRecord *rec, SDBCampo *camp );
 };
 
 #endif

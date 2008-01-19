@@ -91,15 +91,15 @@ Empresa *SubForm2Bc::empresaBase()
 \param col Columna en la que se ha hecho la pulsacion
 \return
 **/
-void SubForm2Bc::on_mui_list_pressedPlus ( int row, int col )
+void SubForm2Bc::pressedPlus ( int row, int col, SDBRecord *rec, SDBCampo *camp )
 {
-    _depura ( "SubForm2Bc::on_mui_list_pressedPlus", 0 );
-    /// Cogemos la informacion que ha producido el eento
-    SDBRecord *rec = lineaat ( row );
-    SDBCampo *camp = ( SDBCampo * ) item ( row, col );
+    _depura ( "SubForm2Bc::pressedPlus", 0 );
+
     /// Si no es un campo de tipo debe o haber salimos.
-    if ( camp->nomcampo() != "debe" && camp->nomcampo() != "haber" )
+    if ( camp->nomcampo() != "debe" && camp->nomcampo() != "haber" ) {
+        _depura ( "END SubForm2Bc::pressedPlus", 0, "Campo incorrecto" );
         return;
+    } // end if
 
     /// Ponemos los campos a cero en esta fila
     rec->setDBvalue ( "debe", "0" );
@@ -120,9 +120,7 @@ void SubForm2Bc::on_mui_list_pressedPlus ( int row, int col )
         rec->setDBvalue ( "debe", result.toQString() );
     } // end if
 
-    /// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
-    on_mui_list_cellChanged ( row, col );
-    _depura ( "SubForm2Bc::on_mui_list_pressedPlus", 0 );
+    _depura ( "END SubForm2Bc::pressedPlus", 0 );
 }
 
 /// Se ha pulsado la combinacion de teclas Ctrl + *
@@ -131,17 +129,13 @@ void SubForm2Bc::on_mui_list_pressedPlus ( int row, int col )
 \param col Columna en la que se ha hecho la pulsacion
 \return
 **/
-void SubForm2Bc::on_mui_list_pressedAsterisk ( int row, int col )
+void SubForm2Bc::pressedAsterisk ( int row, int col, SDBRecord *rec, SDBCampo *camp )
 {
-    _depura ( "SubForm2Bc::on_mui_list_pressedAsterisk", 0 );
+    _depura ( "SubForm2Bc::pressedAsterisk", 0 );
 
-    SDBRecord *rec = lineaat ( row );
-    SDBCampo *camp = ( SDBCampo * ) item ( row, col );
     /// Si no es un campo de tipo codigo salimos.
     if ( camp->nomcampo() != "codigo" && camp->nomcampo() != "codigoctacliente" )
         return;
-
-
 
     /// Nos llevamos el foco para que no haya un EditorDelegado que no se actualice bien.
 
@@ -189,9 +183,7 @@ void SubForm2Bc::on_mui_list_pressedAsterisk ( int row, int col )
     } // end if
 
 
-    /// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
-    on_mui_list_cellChanged ( row, col );
-    _depura ( "END SubForm2Bc::on_mui_list_pressedAsterisk", 0 );
+    _depura ( "END SubForm2Bc::pressedAsterisk", 0 );
 }
 
 
@@ -201,10 +193,10 @@ void SubForm2Bc::on_mui_list_pressedAsterisk ( int row, int col )
 \param col1 Columna en la que se ha hecho la pulsacion
 \return
 **/
-void SubForm2Bc::on_mui_list_pressedSlash ( int row, int col )
+void SubForm2Bc::pressedSlash ( int row, int col, SDBRecord *rec, SDBCampo *camp )
 {
-    _depura ( "SubForm2Bc::on_mui_list_pressedSlash", 2 );
-    SDBCampo *camp = ( SDBCampo * ) item ( row, col );
+    _depura ( "SubForm2Bc::pressedSlash", 0 );
+
     if ( camp->nomcampo() == "fecha" ) {
         if ( row > 0 ) {
             SDBCampo * campoant = ( SDBCampo * ) item ( row - 1, col );
@@ -228,7 +220,7 @@ void SubForm2Bc::on_mui_list_pressedSlash ( int row, int col )
     } // end if
     QString text = editaTexto ( camp->text() );
     camp->set ( text );
-    _depura ( "END SubForm2Bc::on_mui_list_pressedSlash", 0 );
+    _depura ( "END SubForm2Bc::pressedSlash", 0 );
 }
 
 

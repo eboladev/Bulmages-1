@@ -76,7 +76,7 @@ void SubForm2Bt::cargar ( QString query )
 \param col
 \return
 **/
-void SubForm2Bt::on_mui_list_pressedAsterisk ( int row, int col )
+void SubForm2Bt::pressedAsterisk ( int row, int col, SDBRecord *rec, SDBCampo *camp )
 {
     _depura ( "SubForm2Bt::pressedAsterisk", 0 );
     _depura ( "END SubForm2Bt::pressedAsterisk", 0 );

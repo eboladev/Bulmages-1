@@ -234,15 +234,14 @@ public:
 
 public slots:
     virtual void on_mui_list_cellRePosition ( int, int );
-//    virtual void on_mui_list_cellChanged ( int, int );
     void on_mui_list_cellChanged ( int, int );
     virtual void contextMenuEvent ( QContextMenuEvent * );
     virtual void on_mui_confcol_clicked();
     virtual void on_mui_confquery_clicked();
-    virtual void on_mui_list_pressedSlash ( int row, int col );
+    void on_mui_list_pressedSlash ( int row, int col );
     void on_mui_list_pressedAsterisk ( int row, int col );
-    virtual void on_mui_list_pressedPlus ( int row, int col );
-    virtual void on_mui_list_pressedMinus ( int row, int col );
+    void on_mui_list_pressedPlus ( int row, int col );
+    void on_mui_list_pressedMinus ( int row, int col );
     virtual void on_mui_list_ctrlSubir ( int row, int col );
     virtual void on_mui_list_ctrlBajar ( int row, int col );
     virtual void on_mui_pagsiguiente_clicked();
@@ -255,11 +254,17 @@ public slots:
     virtual void on_mui_list_itemChanged ( QTableWidgetItem *it );
     virtual void editFinished ( int, int, SDBRecord *, SDBCampo * );
     virtual void pressedAsterisk ( int, int, SDBRecord *, SDBCampo * );
+    virtual void pressedPlus ( int, int, SDBRecord *, SDBCampo * );
+    virtual void pressedMinus ( int, int, SDBRecord *, SDBCampo * );
+    virtual void pressedSlash ( int, int, SDBRecord *, SDBCampo * );
 
 signals:
     void toogledConfig ( bool );
     void editFinish ( int, int );
     void pushAsterisk( int, int );
+    void pushPlus( int, int );
+    void pushMinus( int, int );
+    void pushSlash( int, int );
     void itemDoubleClicked ( QTableWidgetItem * );
     void itemClicked ( QTableWidgetItem * );
     void cellDoubleClicked ( int row, int col );

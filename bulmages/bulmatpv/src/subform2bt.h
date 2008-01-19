@@ -77,10 +77,10 @@ public:
     virtual int cerrarEditor();
     void setIdCliente ( QString id );
     void setIdProveedor ( QString id );
+    virtual void pressedAsterisk ( int row, int col, SDBRecord *rec, SDBCampo *camp );
 
 public slots:
     virtual void on_mui_list_pressedSlash ( int row, int col );
-    virtual void on_mui_list_pressedAsterisk ( int row, int col );
     virtual void on_mui_list_pressedMinus ( int row, int col );
 };
 

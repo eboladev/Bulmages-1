@@ -75,15 +75,13 @@ public:
     virtual void setEmpresaBase ( EmpresaBase * );
     virtual void editFinished ( int row, int col, SDBRecord *rec, SDBCampo *camp );
     virtual void pressedAsterisk ( int row, int col, SDBRecord *rec, SDBCampo *camp );
+    virtual void pressedMinus ( int row, int col, SDBRecord *rec, SDBCampo *camp );
+    virtual void pressedSlash ( int row, int col, SDBRecord *rec, SDBCampo *camp );
     virtual int cerrarEditor();
     void setIdCliente ( QString id );
     void setIdProveedor ( QString id );
     QString idcliente();
     QString idproveedor();
-
-public slots:
-    virtual void on_mui_list_pressedSlash ( int row, int col );
-    virtual void on_mui_list_pressedMinus ( int row, int col );
 };
 
 #endif
