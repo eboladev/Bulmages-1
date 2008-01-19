@@ -49,3 +49,8 @@ if(EXISTS "${CMAKE_SOURCE_DIR}/CMakeLists.txt.private")
    include("${CMAKE_SOURCE_DIR}/CMakeLists.txt.private")
 endif(EXISTS "${CMAKE_SOURCE_DIR}/CMakeLists.txt.private")
 
+if(APPLE)
+   message(STATUS "Compiling for OSX")
+   set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -undefined dynamic_lookup")
+   
+endif(APPLE)

@@ -31,13 +31,14 @@ FIND_PATH(PGSQL_INCLUDE_DIR libpq-fe.h
   /usr/include/pgsql
   /usr/include
   /usr/pgsql/include
-  /usr/include/postgresql/
+  /usr/include/postgresql
+  /opt/local/include/postgresql82
 )
 
 SET(PGSQL_NAMES pq)
 SET(PGSQL_SEARCH_LIB_PATHS 
   ${PGSQL_SEARCH_LIB_PATHS}
-  /usr/local/pgsql/lib /usr/local/lib /usr/lib
+  /usr/local/pgsql/lib /usr/local/lib /usr/lib /opt/local/lib/postgresql82
 )
 FIND_LIBRARY(PGSQL_LIBRARY
   NAMES ${PGSQL_NAMES}
