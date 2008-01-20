@@ -1,10 +1,12 @@
-﻿<CUENTA>
+<?xml version="1.0" encoding = "UTF8"?>
+<!DOCTYPE FUGIT>
+<FUGIT version='0.3.1' origen='BulmaGes' date=''>
+<CUENTA>
 <IDCUENTA>1</IDCUENTA>
         <CODIGO>1</CODIGO>
         <DESCRIPCION>Financiación básica</DESCRIPCION>
         <CIFENT_CUENTA></CIFENT_CUENTA>
         <DIRENT_CUENTA></DIRENT_CUENTA>
-
         <BLOQUEADA>t</BLOQUEADA>
         <NODEBE>t</NODEBE>
         <NOHABER>t</NOHABER>
@@ -15,7 +17,6 @@
         <DESCRIPCION> Capital</DESCRIPCION>
         <CIFENT_CUENTA></CIFENT_CUENTA>
         <DIRENT_CUENTA></DIRENT_CUENTA>
-
         <BLOQUEADA>t</BLOQUEADA>
         <NODEBE>t</NODEBE>
         <NOHABER>t</NOHABER>
@@ -7555,3 +7556,4 @@
         <NODEBE>t</NODEBE>
         <NOHABER>t</NOHABER>
 </CUENTA>
+</FUGIT>

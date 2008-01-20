@@ -72,14 +72,6 @@ QString parsearCode ( const QString &cad )
 /// Proteje cadenas de texto pasandoles una sustitucion de codigos especiales de XML.
 QString XMLProtect ( const QString &string )
 {
-    /*    QString s = string;
-        s.replace("&", "&amp;");
-        s.replace(">", "&gt;");
-        s.replace("<", "&lt;");
-        s.replace("\"", "&quot;");
-        s.replace("\'", "&apos;");
-        return s;
-    */
     /// Recorre todo el QString y sustituye los caracteres NO ASCII y
     /// los caracteres que no van muy bien en un XML.
 
@@ -106,6 +98,28 @@ QString XMLProtect ( const QString &string )
         } // end if
         ++data;
     } // end if
+    return cadenatmp;
+}
+
+
+/// Proteje cadenas de texto pasandoles una sustitucion de codigos especiales de XML.
+QString XMLDesProtect ( const QString &string )
+{
+    /// Recorre todo el QString y sustituye los caracteres NO ASCII y
+    /// los caracteres que no van muy bien en un XML.
+    QString cadenatmp = string;
+
+    /// Cambia tambien otros caracteres no adecuados.
+    cadenatmp.replace ( "&#38;", "&" );
+    cadenatmp.replace ( "&#62;", ">" );
+    cadenatmp.replace ( "&#60;", "<" );
+    cadenatmp.replace ( "&#34;", "\"" );
+    cadenatmp.replace ( "&#39;", "\'" );
+    cadenatmp.replace( "<br />", "\n");
+
+    for (int i = 126; i < 256; i++) {
+	cadenatmp.replace ("&#" + QString::number(i) + ";", QChar(i));
+    } // end for
 
     return cadenatmp;
 }

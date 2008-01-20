@@ -1099,7 +1099,7 @@ doc.save(\"canualesods.ods\")\n";
     empresaact = bcont->empresaactual();
     conexionbase = empresaact->bdempresa();
     /// Creamos el men&uacute;.
-    QMenu *pPluginMenu = new QMenu ( "&Cuentas anuales" );
+    QMenu *pPluginMenu = new QMenu ( "&Informes ODS" );
     QAction *accion = new QAction ( "&Balance de situacion", 0 );
     accion->setStatusTip ( "Balance de situacion" );
     accion->setWhatsThis ( "Balance de situacion" );

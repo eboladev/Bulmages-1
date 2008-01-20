@@ -551,7 +551,7 @@ void listcuentasview1::on_mui_importar_clicked()
     _depura ( "listcuentasview1::on_mui_importar_clicked", 0 );
     QFile filexml ( QFileDialog::getOpenFileName ( this,
                     tr ( "Elija el archivo" ),
-                    confpr->valor ( CONF_DIR_USER ),
+                    "/usr/share/bulmages",
                     tr ( "Plan contable (*.xml)" ) ) );
     if ( filexml.open ( QIODevice::ReadOnly ) ) {
         XML2Bulmages ( filexml, IMPORT_CUENTAS );

@@ -65,6 +65,7 @@ int roundI ( double );
 QDate normalizafecha ( QString );
 /// Proteje cadenas de texto pasandoles una sustitucion de codigos especiales de XML.
 QString XMLProtect ( const QString& );
+QString XMLDesProtect ( const QString& );
 /// Ajusta un codigo de cuenta a una longitud determinada pasada como parametro.
 QString ajustacodigo ( QString, unsigned int );
 void reemplazaarchivo ( QString, QString, QString, QString );

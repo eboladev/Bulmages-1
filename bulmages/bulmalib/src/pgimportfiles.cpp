@@ -1290,9 +1290,7 @@ int pgimportfiles::bulmages2XML ( QFile &xmlfile, unsigned long long int tipo )
         } // end while
         delete curcta;
         query = "SELECT * FROM cuenta LEFT JOIN (SELECT codigo AS codpadre, idcuenta as idpadre FROM cuenta) AS t1 ON cuenta.padre = t1.idpadre WHERE padre IS NOT NULL ORDER BY idpadre";
-        conexionbase->begin();
-        curcta = conexionbase->cargacursor ( query, "elquery" );
-        conexionbase->commit();
+        curcta = conexionbase->cargacursor ( query );
         while ( !curcta->eof() ) {
             stream << "<CUENTA>\n";
             stream << "\t<IDCUENTA>" << XMLProtect ( curcta->valor ( "idcuenta" ) ) << "</IDCUENTA>\n";
@@ -1362,9 +1360,7 @@ int pgimportfiles::bulmages2XML ( QFile &xmlfile, unsigned long long int tipo )
             query += "LEFT JOIN (SELECT nombre AS nc_coste, idc_coste FROM c_coste) AS c_coste1 ON c_coste1.idc_coste = apunte.idc_coste ";
             query += "LEFT JOIN (SELECT codigo AS codcontrapartida, idcuenta FROM cuenta) AS contra ON contra.idcuenta = apunte.contrapartida ";
             query += " WHERE " + curas->valor ( "idasiento" ) + " = apunte.idasiento ";
-            conexionbase->begin();
             cursor2 *curap = conexionbase->cargacursor ( query, "masquery1" );
-            conexionbase->commit();
             while ( !curap->eof() ) {
                 stream << "\t<APUNTE>\n";
                 QString fecha = curap->valor ( "fecha" );
@@ -1385,9 +1381,7 @@ int pgimportfiles::bulmages2XML ( QFile &xmlfile, unsigned long long int tipo )
                 query  = "SELECT * FROM registroiva";
                 query += " LEFT JOIN (SELECT codigo, idcuenta FROM cuenta) AS t1 ON registroiva.contrapartida = t1.idcuenta ";
                 query += " WHERE idborrador IN (SELECT idborrador FROM borrador WHERE idasiento=" + curas->valor ( "idasiento" ) + " AND orden = " + curap->valor ( "orden" ) + ")";
-                conexionbase->begin();
                 cursor2 *curreg = conexionbase->cargacursor ( query, "queryregiva" );
-                conexionbase->commit();
                 while ( !curreg->eof() ) {
                     stream << "\t\t<REGISTROIVA>\n";
                     stream << "\t\t\t<CONTRAPARTIDA>" << XMLProtect ( curreg->valor ( "codigo" ) ) << "</CONTRAPARTIDA>\n";
@@ -1403,9 +1397,7 @@ int pgimportfiles::bulmages2XML ( QFile &xmlfile, unsigned long long int tipo )
                     query  = "SELECT * FROM iva ";
                     query += " LEFT JOIN tipoiva ON iva.idtipoiva = tipoiva.idtipoiva ";
                     query += " WHERE idregistroiva = " + curreg->valor ( "idregistroiva" );
-                    conexionbase->begin();
                     cursor2 *curiva = conexionbase->cargacursor ( query, "queryiva" );
-                    conexionbase->commit();
                     while ( !curiva->eof() ) {
                         stream << "\t\t\t<RIVA>\n";
                         stream << "\t\t\t\t<IDTIPOIVA>" << XMLProtect ( curiva->valor ( "idtipoiva" ) ) << "</IDTIPOIVA>\n";
@@ -1470,7 +1462,6 @@ int pgimportfiles::XML2BulmaFact ( QFile &fichero, unsigned long long int tip )
 {
     _depura ( "pgimportfiles::XML2BulmaFact", 0 );
     bool noerror = TRUE;
-    fprintf ( stderr, "pgimportfiles::XML2BulmaFact()\n" );
     ImportBulmaFact handler ( this, conexionbase, tip );
     QXmlInputSource source ( &fichero );
     QXmlSimpleReader reader;
@@ -1539,8 +1530,7 @@ bool StructureParser::startDocument()
 **/
 bool StructureParser::startElement ( const QString&, const QString&, const QString& qName, const QXmlAttributes& )
 {
-    _depura ( "StructureParser::startElement", 0 );
-    fprintf ( stderr, "%s<%s>\n", indent.toAscii().data(), qName.toAscii().data() );
+    _depura ( "StructureParser::startElement", 0, qName );
     indent += "..";
     if ( qName == "ASIENTO" && m_tipo & IMPORT_ASIENTOS ) {
         tagpadre = "ASIENTO";
@@ -1551,7 +1541,6 @@ bool StructureParser::startElement ( const QString&, const QString&, const QStri
         conexionbase->commit();
         if ( !cur->eof() ) {
             idasiento = cur->valor ( "max" );
-            fprintf ( stderr, "INSERCION DE ASIENTO:%s\n", idasiento.toAscii().data() );
         } // end if
         /// Iniciamos el orden para que los apuntes salgan en orden empezando desde cero.
         m_ordenapunte = 0;
@@ -1565,7 +1554,6 @@ bool StructureParser::startElement ( const QString&, const QString&, const QStri
         conexionbase->commit();
         if ( !cur->eof() ) {
             idborrador = cur->valor ( "max" );
-            fprintf ( stderr, "INSERCION DE APUNTE:%s\n", idborrador.toAscii().data() );
         } // end if
         delete cur;
         tagpadre = "APUNTE";
@@ -1578,7 +1566,6 @@ bool StructureParser::startElement ( const QString&, const QString&, const QStri
         conexionbase->commit();
         if ( !cur->eof() ) {
             m_idRegistroIva = cur->valor ( "max" );
-            fprintf ( stderr, "INSERCION DE REGISTRO DE IVA:%s\n", idborrador.toAscii().data() );
         } // end if
         delete cur;
         tagpadre = "REGISTROIVA";
@@ -1610,16 +1597,15 @@ bool StructureParser::startElement ( const QString&, const QString&, const QStri
 **/
 bool StructureParser::endElement ( const QString&, const QString&, const QString& qName )
 {
-    _depura ( "StructureParser::endElement", 0 );
+    _depura ( "StructureParser::endElement", 0, qName );
     indent.remove ( ( uint ) 0, 2 );
     /// Vamos a ir distinguiendo casos y actuando segun cada caso.
     /// En la mayoria de casos iremos actuando en consecuencia.
     /// Ha terminado un asiento, por tanto hacemos el update de los campos.
     if ( qName == "ASIENTO" && m_tipo & IMPORT_ASIENTOS ) {
-        fprintf ( stderr, "Fin de Asiento" );
         QString query = "UPDATE asiento set fecha = '" +
-                        conexionbase->sanearCadena ( fechaasiento ) + "' WHERE idasiento = " +
-                        conexionbase->sanearCadena ( idasiento );
+                        conexionbase->sanearCadena ( XMLDesProtect(fechaasiento) ) + "' WHERE idasiento = " +
+                        conexionbase->sanearCadena ( XMLDesProtect(idasiento) );
         conexionbase->begin();
         conexionbase->ejecuta ( query );
         cursor2 *cur = conexionbase->cargacursor ( "SELECT cierraasiento(" + idasiento + ")" );
@@ -1633,7 +1619,7 @@ bool StructureParser::endElement ( const QString&, const QString&, const QString
                         conexionbase->sanearCadena ( haberapunte ) + ", idcuenta = id_cuenta('" +
                         conexionbase->sanearCadena ( codigocuentaapunte ) + "'), fecha = '" +
                         conexionbase->sanearCadena ( fechaapunte ) + "', conceptocontable = '" +
-                        conexionbase->sanearCadena ( conceptocontableapunte ) + "' WHERE idborrador = " + idborrador;
+                        conexionbase->sanearCadena ( XMLDesProtect(conceptocontableapunte) ) + "' WHERE idborrador = " + idborrador;
         conexionbase->ejecuta ( query );
     } // end if
     if ( qName == "FECHA" && tagpadre == "ASIENTO" )
@@ -1656,7 +1642,7 @@ bool StructureParser::endElement ( const QString&, const QString&, const QString
         /// Primero debemos determinar si existe o no dicha cuenta para hacer la insercion o la modificacion.
         QString vidcuenta;
         if ( codigopadre != "" )  {
-            vidcuenta = "id_cuenta('" + conexionbase->sanearCadena ( codigopadre ) + "')";
+            vidcuenta = "id_cuenta('" + conexionbase->sanearCadena ( XMLDesProtect(codigopadre) ) + "')";
         } else {
             vidcuenta = "NULL";
         } // end if
@@ -1670,7 +1656,7 @@ bool StructureParser::endElement ( const QString&, const QString&, const QString
             QString query = "INSERT INTO cuenta (tipocuenta, codigo, descripcion, padre, bloqueada, nodebe, nohaber) VALUES (" +
                             conexionbase->sanearCadena ( m_tipoCuenta ) + ",'" +
                             conexionbase->sanearCadena ( codigocuenta ) + "','" +
-                            conexionbase->sanearCadena ( descripcioncuenta ) + "', " +
+                            conexionbase->sanearCadena ( XMLDesProtect(descripcioncuenta) ) + "', " +
                             vidcuenta + ", '" +
                             conexionbase->sanearCadena ( m_bloqueadaCuenta ) + "','" +
                             conexionbase->sanearCadena ( m_nodebeCuenta ) + "','" +
@@ -1678,7 +1664,7 @@ bool StructureParser::endElement ( const QString&, const QString&, const QString
             conexionbase->ejecuta ( query );
         } else {
             QString query = "UPDATE cuenta SET ";
-            query += "descripcion = '" + conexionbase->sanearCadena ( descripcioncuenta ) + "'";
+            query += "descripcion = '" + conexionbase->sanearCadena ( XMLDesProtect(descripcioncuenta) ) + "'";
             query += ", tipocuenta = " + conexionbase->sanearCadena ( m_tipoCuenta );
             query += ", bloqueada = '" + conexionbase->sanearCadena ( m_bloqueadaCuenta ) + "'";
             query += ", nodebe = '" + conexionbase->sanearCadena ( m_nodebeCuenta ) + "'";

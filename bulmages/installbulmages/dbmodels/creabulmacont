@@ -99,17 +99,6 @@ if [ "$LANG_PSQL" != "" ]; then
 fi;
 
 
-# Ya no hacemos esta comprobacion y dejamos que la haga el propio motor de base de datos.
-# El codigo comentado es un resquicio.
-#info "Comprobamos la existencia de PLPGSQL"
-#   LANG_PSQL=`locate plpgsql.so`
-#   if [ "$LANG_PSQL" = "" ]; then
-#      mensaje "PostgreSQL no esta bien instalado o la distribucion no es una \n de las soportadas por el instalador. \
-#   No se ha encontrado la libreria plpgsql.so necesaria para instalar las \n bases de datos
-#   Por favor, localicela e intente una instalacion manual\n"
-#      exit 1
-#   fi
-
 
 # La creacion de las bases de datos como UNICODE da muchos problemas con los caracteres especiales
 # Por ese motivo de momento crearemos las bases de datos como SQL_ASCII
@@ -122,15 +111,31 @@ if [ "$3" = "1" -o "$3" = "2" -o "$3" = "0" ]; then
 	info "Importamos el esquema de base de datos de una empresa. \n"
 	tiempo
 	psql $2 < crear/bulmacont/bulmacont_schema.sql 2>> /tmp/errores.txt > /dev/null
+        psql $2 < crear/bulmacont/t_configuracion_data.sql 2>> /tmp/errores.txt > /dev/null
+
+	# Creamos el ejercicio
+	echo "INSERT into ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 0, FALSE);"  | psql $2 > /dev/null
+	echo "INSERT into ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 1, FALSE);" | psql $2 > /dev/null
+	echo "INSERT into ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 2, FALSE);" | psql $2 > /dev/null
+	echo "INSERT into ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 3, FALSE);" | psql $2 > /dev/null
+	echo "INSERT into ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 4, FALSE);" | psql $2 > /dev/null
+	echo "INSERT into ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 5, FALSE);" | psql $2 > /dev/null
+	echo "INSERT into ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 6, FALSE);" | psql $2 > /dev/null
+	echo "INSERT into ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 7, FALSE);" | psql $2 > /dev/null
+	echo "INSERT into ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 8, FALSE);" | psql $2 > /dev/null
+	echo "INSERT into ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 9, FALSE);" | psql $2 > /dev/null
+	echo "INSERT into ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 10, FALSE);" | psql $2 > /dev/null
+	echo "INSERT into ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 11, FALSE);" | psql $2 > /dev/null
+	echo "INSERT into ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 12, FALSE);" | psql $2 > /dev/null
 fi
 
 # En caso de querer un conjunto minimo de datos se meten los datos minimos.
 if [ "$3" = "1" -o "$3" = "2" ]; then
    # Cargamos lo minimo, para dejar la empresa con un plan contable vacio.
    info "Cargamos el conjunto minimo de datos. \n Plan contable simple. \n"
-   psql $2 < crear/bulmacont/t_configuracion_data.sql 2>> /tmp/errores.txt > /dev/null
    psql $2 < crear/bulmacont/t_cuenta_data.sql 2>> /tmp/errores.txt > /dev/null
    psql $2 < crear/bulmacont/t_fpago_data.sql 2>> /tmp/errores.txt > /dev/null
+
    tiempo
 fi
 
