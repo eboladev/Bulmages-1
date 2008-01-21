@@ -1,0 +1,180 @@
+#!/bin/bash
+###############################################################################
+# Installation script of the db of BulmaGes.
+# (c) Tomeu Borras y Rene Merou Septiembre 2004
+# (c) Leopold Palomo 2008
+# This script is licensed under GPL
+#------------------------------------------------------------------------------
+# Parameters
+#     $1 : --texto
+#          --dialog (default)
+###############################################################################
+
+
+version="v"`cat version`" - server"
+direj=$(pwd)
+
+
+# We need to now if the parameter is text of not
+if [ "$1" = "--texto" ]; then
+  texto="1"
+  ptexto="--texto"
+else
+  texto="0"
+  ptexto="--dialog"
+fi
+
+# Erasing old files that can make problems
+if [ -e /tmp/bulmages/errores.txt ]; then
+   rm -f /tmp/bulmages/errores.txt
+fi
+if [ -e /tmp/bulmages/listdb.lst ]; then
+   rm -f /tmp/bulmages/listdb.lst
+fi
+if [ -e /tmp/bulmages/listuser.lst ]; then
+   rm -f /tmp/bulmages/listuser.lst
+fi
+if [ -e /tmp/bulmages/error.txt ]; then
+   rm -f /tmp/bulmages/error.txt
+fi
+
+# Esta funcion presenta mensajes por pantalla.
+function mensaje() {
+   if [ ! -e /usr/bin/dialog -a ! -e /usr/bin/xdialog -o $texto = 1 ]; then
+      echo -e "$2" "$1"  "$3"
+   elif [ -e /usr/bin/xdialog ]; then
+      xdialog --title "Instalacion de BulmaGes $version" --backtitle "Asociacion Iglues" --msgbox "$1" 10 60
+   else
+      dialog --title "Instalacion de BulmaGes $version" --backtitle "Asociacion Iglues" --msgbox "$1" 10 60
+   fi
+}
+
+
+# Esta funcion presenta mensajes.
+function info() {
+   if [ ! -e /usr/bin/dialog -a ! -e /usr/bin/xdialog -o $texto = 1 ]; then
+      echo -e  "$2" "$1"  "$3"
+   elif [ -e /usr/bin/xdialog ]; then
+      xdialog --title "Instalacion de BulmaGes $version" --backtitle "Asociacion Iglues" --infobox "$1" 10 60
+   else
+      dialog --title "Instalacion de BulmaGes $version" --backtitle "Asociacion Iglues" --infobox "$1" 10 60
+   fi
+}
+
+
+#Esta funcion crea usuarios que van a manejar la base de datos.
+function lee() {
+   if [ ! -e /usr/bin/dialog -a ! -e /usr/bin/xdialog -o $texto = 1 ]; then
+      echo -e  "\033[33m""Indique el usuario que va a trabajar con BulmaGes. Pulse enter si no desea crear usuarios de PostgreSQL."  "\033[0m"
+      read user
+   elif [ -e /usr/bin/xdialog ]; then
+      xdialog --title "Instalacion de BulmaGes $version" --inputbox "Nombre del usuario que va a trabajar normalmente con BulmaGes. \n deje el campo en blanco para terminar." 10 60  2>/tmp/bulmages/dialog.ans
+      user=`cat /tmp/bulmages/dialog.ans`
+      rm -f /tmp/bulmages/dialog.ans # don't litter !
+   else
+      xdialog --title "Instalacion de BulmaGes $version" --inputbox "Nombre del usuario que va a trabajar normalmente con BulmaGes. \n deje el campo en blanco para terminar." 10 60  2>/tmp/bulmages/dialog.ans
+      user=`cat /tmp/bulmages/dialog.ans`
+      rm -f /tmp/bulmages/dialog.ans # don't litter !
+   fi
+   while [ "$user" != "" ]
+   do
+      su - postgres -c "createuser --adduser --createdb $user"
+      if [ ! -e /usr/bin/dialog -a ! -e /usr/bin/xdialog -o $texto = 1 ]; then
+         echo -e  "\033[33m""Indique el usuario que va a trabajar con BulmaGes. Pulse enter si no desea crear usuarios de PostgreSQL."  "\033[0m"
+         read user
+      elif [ -e /usr/bin/xdialog ]; then
+         dialog --title "Instalacion de BulmaGes $version" --inputbox "Nombre del usuario que va a trabajar normalmente con BulmaGes. \n deje el campo en blanco para terminar." 10 60  2>/tmp/bulmages/dialog.ans
+         user=`cat /tmp/bulmages/dialog.ans`
+         rm -f /tmp/bulmages/dialog.ans # don't litter !
+      else
+         dialog --title "Instalacion de BulmaGes $version" --inputbox "Nombre del usuario que va a trabajar normalmente con BulmaGes. \n deje el campo en blanco para terminar." 10 60  2>/tmp/bulmages/dialog.ans
+         user=`cat /tmp/bulmages/dialog.ans`
+         rm -f /tmp/bulmages/dialog.ans # don't litter !
+      fi
+   done
+}
+
+function tiempo {
+  sleep 1.5
+}
+
+function linea {
+   if [ ! -e /usr/bin/dialog -a ! -e /usr/bin/xdialog -o $texto = 1 ]; then
+     echo -e "\033[32m----------------------------------------------\033[0m\n"
+   fi
+}
+
+function dlinea {
+   if [ ! -e /usr/bin/dialog -a ! -e /usr/bin/xdialog -o $texto = 1 ]; then
+     echo -e "\033[32m===============================================\033[0m\n"
+   fi
+}
+
+
+# Comprobamos que estamos ejecutando como root el programa
+if [ ! $(whoami) = "root" ]; then
+   mensaje "Este script de instalacion debe ejecutarse como root. \n"
+   exit 1
+fi
+
+
+# Iniciamos el tema de los errores.
+if [ -e /tmp/bulmages/errores.txt ]; then
+    rm -f /tmp/bulmages/errores.txt
+fi
+
+#Comprobamos que estamos en el directorio adecuado
+if [ ! -e ./installbulmages-db ]; then
+ mensaje "Directorio incorrecto. La instalacion debe ejecutarse desde el directorio donde se encuentra el script. \n"
+ exit 1
+fi
+
+
+#instal alos archivos necesarios para el servidor.
+instalararchivos
+
+
+# Distinguimos entre una instalacion y una actualizacion.
+info "Comprobando la existencia de versiones anteriores. \n" "\033[32m" "\033[0m"
+tiempo
+if [ -e /etc/bulmages/bulmages-server.conf ]; then
+   # Tratando base de datos de.
+   # La forma mas limpia para obtener un listado de las bases de datos instaladas.
+   LIST_DATABASES=`su - postgres -c "echo 'SELECT datname FROM pg_database' | psql -t template1"`
+   for database in $LIST_DATABASES; do
+	dlinea
+	info "Comprobamos $database \n"
+	   su - postgres -c "@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/actualizabulmafact --texto $database"
+	   su - postgres -c "@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/actualizabulmacont --texto $database"
+   done 
+else
+
+      info "Creando bases de datos del sistema y empresas de ejemplo. \n"
+      tiempo
+
+      # Creamos las bases de datos para bulmacont.
+      su - postgres -c "@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/creabulmacont $ptexto bulmacont 2 BulmaCont 2006"
+      su - postgres -c "@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/creabulmacont $ptexto bgplangcont 1 \"Plan Contable Vacio\" 2006"
+      
+      # Creamos las bases de datos para bulmafact.
+      su - postgres -c "@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/creabulmafact $ptexto bulmafact 2 \"Facturacion Vacia\""
+      
+      # Tratamos el archivo de configuracion.
+      info "Instalando la nueva version del archivo de configuracion. \n"
+      touch /etc/bulmages/bulmages-server.conf
+      # Dejamos que la insercionœ del usuario la haga una funcionœ y asi encapsulamos un poco.
+      lee
+fi
+
+# Presentamos los errores acaecidos.
+if [ -e /tmp/bulmages/errores.txt ]; then
+   cat /tmp/bulmages/errores.txt | grep ERROR
+fi
+      
+mensaje "INSTALACION FINALIZADA CON EXITO" "\033[32m" "\033[0m"
+mensaje "Puede que el programa arranque pero no le deje acceder a la informacion.\n"
+mensaje "En ese caso debe revisar la configuracion de postgres o crear un usuario para el acceso a las bases de datos.\n"
+mensaje "Tenga presente que los backups estan en /tmp y se borrarán en el proximo reinicio del ordenador \n"
+mensaje "\n"
+mensaje "Recuerde que este instalador no ha configurado extensiones adicionales.\n"
+mensaje "Revise los directorios de Plugins en el codigo fuente para instalar las extensiones que considere convenientes."

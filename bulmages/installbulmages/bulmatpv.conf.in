@@ -1,0 +1,14 @@
+CONF_PLUGINS_BULMATPV		@CMAKE_INSTALL_PREFIX@/lib/bulmages/plugins/libplugintecladonumerico; \
+				@CMAKE_INSTALL_PREFIX@/lib/bulmages/plugins/libpluginticketbasico; \
+				@CMAKE_INSTALL_PREFIX@/lib/bulmages/plugins/libplugintotal; \
+				@CMAKE_INSTALL_PREFIX@/lib/bulmages/plugins/libpluginimpers; \
+				@CMAKE_INSTALL_PREFIX@/lib/bulmages/plugins/libpluginartgraficos; \
+				@CMAKE_INSTALL_PREFIX@/lib/bulmages/plugins/libpluginabrevs
+
+CONF_DIR_THUMB_ARTICLES		/var/bulmages/articles_thumbs/
+CONF_TICKET_PRINTER_FILE	/dev/null
+
+CONF_IDCLIENTE_DEFECTO		1
+CONF_IDALMACEN_DEFECTO		1
+CONF_IDARTICULO_DEFECTO		2922
+
