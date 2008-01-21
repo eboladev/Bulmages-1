@@ -42,6 +42,7 @@
 #include "logpass.h"
 #include "plugins.h"
 #include "qapplication2.h"
+#include "config.h"
 
 #ifdef WIN32
 #define CONFGLOBAL "C:\\bulmages\\bulmages_"
@@ -106,7 +107,7 @@ int main ( int argc, char **argv )
         theApp->installTranslator ( traductor );
 
         /// Cargamos el splashScreen.
-        Splash *splashScr = new Splash ( confpr->valor ( CONF_SPLASH_BULMACONT ), "BulmaCont", "0.10.1" );
+        Splash *splashScr = new Splash ( confpr->valor ( CONF_SPLASH_BULMACONT ), "BulmaCont", CONFIG_VERSION );
         splashScr->mensaje ( QApplication::translate ( "main", "Iniciando clases" ) );
         splashScr->setBarraProgreso ( 1 );
 

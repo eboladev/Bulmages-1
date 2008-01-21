@@ -58,7 +58,8 @@ HEADERS += postgresiface2.h \
 	   paisview.h \
 	   busquedaprovincia.h \
 	   qcombobox2.h \
-	   qradiobutton2.h
+	   qradiobutton2.h \
+	   config.h
 	   
 	   
 SOURCES += postgresiface2.cpp \
@@ -116,7 +117,7 @@ QT += xml
 CONFIG += uic
 
 # Si se quiere depuracion por compilacion activar DEPURA_DEBUG, el programa es mas lento
-DEFINES += DEPURA_DEBUG
+# DEFINES += DEPURA_DEBUG
 
 unix{
     UI_DIR = .ui

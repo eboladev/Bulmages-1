@@ -343,7 +343,7 @@ QString windowID ( const QString &app )
 /// nivel 4 = Comienza depuracion indiscriminada.
 /// nivel 5 = Termina depuracion indiscriminada.
 /// nivel 10 = Salida a terminal.
-#ifdef DEPURA_DEBUG
+#if CONFIG_DEBUG == TRUE
 void _depura ( const QString &cad, int nivel, const QString &param )
 {
     /// Si el objeto confpr no esta creado puede dar segmentation fault.
@@ -446,12 +446,12 @@ void _depura ( const QString &cad, int nivel, const QString &param )
     }
 }
 
-#else
-
-inline void _depura ( const QString &, int , const QString & )
-{
-    return;
-}
+//#else
+//
+//inline void _depura ( const QString &, int , const QString & )
+//{
+//    return;
+//}
 #endif
 
 void mensajeInfo ( QString cad )

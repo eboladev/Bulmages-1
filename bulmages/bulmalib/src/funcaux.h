@@ -38,7 +38,6 @@
 #include <QString>
 #include <math.h>
 
-#define __DEBUG__
 
 /// g_main debe estar declarado en cada una de las aplicacioones y hace referencia al
 /// QMainWindow respectivo en cada caso. Se usa para acceder a determiandos elementos
@@ -47,10 +46,13 @@
 #include <QStatusBar>
 
 #include "qapplication2.h"
+#include "config.h"
 
 extern QMainWindow *g_main;
 
 extern QApplication2 *theApp;
+
+
 
 
 /// Extiende un string a un numero de cuenta sustituyendo los '.' por ceros.
@@ -71,7 +73,13 @@ QString ajustacodigo ( QString, unsigned int );
 void reemplazaarchivo ( QString, QString, QString, QString );
 /// Esta funcion permite editar un texto en un QTextEdit y devuelve el texto editado.
 QString editaTexto ( QString texto );
+
+#if CONFIG_DEBUG == TRUE
 void _depura ( const QString &cad, int nivel = 0, const QString &param = "" );
+#else
+#define _depura(...)       // sin debug
+#endif
+
 void mensajeInfo ( QString cad );
 void mensajeAviso ( QString cad );
 void mensajeError ( QString cad );

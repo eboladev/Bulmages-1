@@ -34,6 +34,7 @@
 #include <unistd.h>
 #endif
 
+#include "config.h"
 #include "configuracion.h"
 #include "funcaux.h"
 
@@ -77,7 +78,7 @@ configuracion::configuracion ( QString nombreprograma )
 #ifdef WIN32
     m_dirGlobalConf = "C:/bulmages/";
 #else
-    m_dirGlobalConf = "/etc/bulmages/";
+    m_dirGlobalConf = CONFIG_DIR_CONFIG;
 #endif
     QString mensaje;
     QFile genericGlobalConfFile;
