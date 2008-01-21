@@ -79,6 +79,14 @@ CONF_DIR_TRADUCCION            @CMAKE_INSTALL_PREFIX@/share/bulmages/traduccione
 CONF_ARCHIVO_LOG               /var/log/bulmages.log
 
 
+CONF_DIR_PLUGINS     @CMAKE_INSTALL_PREFIX@/lib/bulmages/plugins/; \
+		     @CMAKE_INSTALL_PREFIX@/lib/bulmalib/plugins/; \
+		     @CMAKE_INSTALL_PREFIX@/lib/bulmacont/plugins/; \
+		     @CMAKE_INSTALL_PREFIX@/lib/bulmafact/plugins/; \
+		     @CMAKE_INSTALL_PREFIX@/lib/bulmatpv/plugins/; \
+
+
+
 # Este parametro indica en que directorio se hayan los archivos REPORTS.
 CONF_DIR_REPORTS               @CMAKE_INSTALL_PREFIX@/share/bulmages/reports/
 # Este parametro indica en que directorio se encuentran los archivos de KUGAR.

@@ -150,8 +150,12 @@
 #define CONF_PLUGINS_BULMAFACT       313
 #define CONF_PLUGINS_BULMAGES        314
 #define CONF_PLUGINS_BULMATPV        315
+
+/// Indica cuales son los directorios de plugins
+#define CONF_DIR_PLUGINS	     316
+
 /// Indica donde estan los datos del programa. Por defecto /usr/share/bulmages.
-#define CONF_PROGDATA                320
+#define CONF_PROGDATA                321
 /// Determina el directorio donde se hayan ubicados los archivos de datos para OPENREPORTS.
 #define CONF_DIR_OPENREPORTS         330
 /// Dictamina cuales son los privilegios del usuario.

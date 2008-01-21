@@ -24,7 +24,7 @@
 
 #include "funcaux.h"
 #include "plugins.h"
-
+#include "configuracion.h"
 
 typedef int ( *MyPrototype ) ( void * );
 MyPrototype myFunction;
@@ -59,23 +59,35 @@ Plugins::~Plugins()
 /**
 \param libs
 **/
-void Plugins::cargaLibs ( const QString libs )
+void Plugins::cargaLibs ( const QString &libs )
 {
+    _depura ( "Plugins::cargaLibs", 0, libs );
+
+    bool cargado = FALSE;
     /// Hacemos la carga de los plugins.
     QString cad = libs;
-    _depura ( "Plugins::cargaLibs", 0, cad );
+
     if ( cad == "" ) {
         _depura ( "END Plugins::cargaLibs", 0, cad );
         return;
     } // end if
+
+    QStringList dirs = confpr->valor(CONF_DIR_PLUGINS).split(";");
+
     QStringList plugins = cad.split ( ";" );
     for ( QStringList::Iterator it = plugins.begin(); it != plugins.end(); ++it ) {
-        QLibrary *lib = new QLibrary ( *it );
-        lib->load();
-        if ( !lib->isLoaded() ) {
-            mensajeInfo ( "No se ha podido cargar la libreria: " + *it + "\nERROR: " + lib->errorString() );
-        } else {
-            m_lista.append ( lib );
+	cargado = FALSE;
+	for (QStringList::Iterator ot = dirs.begin(); ot != dirs.end(); ++ot) {
+		QString file = *ot + *it;
+		QLibrary *lib = new QLibrary ( file );
+		lib->load();
+		if ( lib->isLoaded() ) {
+			cargado = TRUE;
+			m_lista.append ( lib );
+		} // end if
+	} // end for
+	if ( ! cargado ) {
+            mensajeInfo ( "No se ha podido cargar la libreria: " + *it );
         } // end if
     } // end for
     _depura ( "END Plugins::cargaLibs", 0 );
