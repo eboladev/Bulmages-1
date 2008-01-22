@@ -232,13 +232,13 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
 
         query += "(SELECT idcuenta, codigo FROM cuenta) AS cuenta ";
 
-        query += " LEFT JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe) - sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = '" + ffinal.right ( 4 ) + "' " + wherecostesycanales + " GROUP BY idcuenta) AS ejercicio ON ejercicio.idcuenta = cuenta.idcuenta";
+        query += " LEFT JOIN (SELECT idcuenta,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe) - sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = '" + ffinal.right ( 4 ) + "' " + wherecostesycanales + " GROUP BY idcuenta) AS ejercicio ON ejercicio.idcuenta = cuenta.idcuenta";
 
-        query += " LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe) - sum(haber)) AS saldo FROM apunte WHERE fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' " + wherecostesycanales + " GROUP BY idcuenta) AS periodo ON periodo.idcuenta = ejercicio.idcuenta ";
+        query += " LEFT OUTER JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes, sum(debe) AS debe, sum(haber) AS haber, (sum(debe) - sum(haber)) AS saldo FROM apunte WHERE fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' " + wherecostesycanales + " GROUP BY idcuenta) AS periodo ON periodo.idcuenta = cuenta.idcuenta ";
 
-        query += " LEFT OUTER JOIN (SELECT idcuenta, (sum(debe) - sum(haber)) AS saldoant FROM apunte WHERE  fecha < '" + finicial + "' " + wherecostesycanales;
+        query += " LEFT OUTER JOIN (SELECT idcuenta, (sum(debe) - sum(haber)) AS saldoant FROM apunte WHERE  fecha < '" + finicial + "' " + wherecostesycanales +  " GROUP BY idcuenta) AS anterior ON cuenta.idcuenta = anterior.idcuenta ORDER BY codigo";
 
-        query += " GROUP BY idcuenta) AS anterior ON cuenta.idcuenta = anterior.idcuenta ORDER BY codigo";
+
 
         /// Poblamos el &aacute;rbol de hojas (cuentas).
         hojas = empresaBase() ->cargacursor ( query );

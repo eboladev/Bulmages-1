@@ -29,7 +29,6 @@
 #include "asientosview.h"
 #include "amortizacionesview.h"
 #include "canualesview.h"
-//#include "balance1view.h"
 #include "cuentaview.h"
 #include "canalview.h"
 #include "ccosteview.h"
@@ -711,7 +710,7 @@ int Empresa::librobalance()
 ///
 /**
 **/
-void Empresa::Abrirasientos()
+void Empresa::abrirAsientos()
 {
     _depura ( "Empresa::Abrirasientos", 0 );
     cursor2 *cur = NULL;
@@ -722,6 +721,26 @@ void Empresa::Abrirasientos()
         _depura ( "END Empresa::Abrirasientos", 0 );
     } catch ( ... ) {
         mensajeError ( "Ha habido un error al espaciar los asientos" );
+        if ( cur ) delete cur;
+        return;
+    } // end try
+}
+
+
+///
+/**
+**/
+void Empresa::cerrarAsientos()
+{
+    _depura ( "Empresa::cerrarAsientos", 0 );
+    cursor2 *cur = NULL;
+    try {
+        cur = cargacursor ( "SELECT cierraasiento(idasiento) FROM asiento" );
+        g_main->statusBar() ->showMessage ( QObject::tr ( "Se han cerrado los asientos" ), 2000 );
+        delete cur;
+        _depura ( "END Empresa::cerrarAsientos", 0 );
+    } catch ( ... ) {
+        mensajeError ( "Ha habido un error al cerrar los asientos" );
         if ( cur ) delete cur;
         return;
     } // end try

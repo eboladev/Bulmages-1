@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1015</width>
-    <height>690</height>
+    <width>583</width>
+    <height>391</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -21,7 +21,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1015</width>
+     <width>583</width>
      <height>26</height>
     </rect>
    </property>
@@ -46,17 +46,6 @@
     <addaction name="actionAsiento_de_Apertura" />
     <addaction name="actionAsiento_de_Regularizacion" />
     <addaction name="actionAsiento_de_Cierre" />
-   </widget>
-   <widget class="QMenu" name="menuHerramientas" >
-    <property name="title" >
-     <string>&amp;Herramientas</string>
-    </property>
-    <addaction name="actionRecalcular_Saldos_Iniciales" />
-    <addaction name="actionSustituir_Cuentas" />
-    <addaction name="actionBloquear_Fechas" />
-    <addaction name="separator" />
-    <addaction name="actionCanal_por_Defecto" />
-    <addaction name="actionCentro_de_Coste_por_Defecto" />
    </widget>
    <widget class="QMenu" name="menuVer" >
     <property name="title" >
@@ -103,6 +92,18 @@
     <addaction name="actionListado_347" />
     <addaction name="separator" />
     <addaction name="actionAmortizaciones" />
+   </widget>
+   <widget class="QMenu" name="menuHerramientas" >
+    <property name="title" >
+     <string>&amp;Herramientas</string>
+    </property>
+    <addaction name="actionRecalcular_Saldos_Iniciales" />
+    <addaction name="actionCerrar_Asientos" />
+    <addaction name="actionSustituir_Cuentas" />
+    <addaction name="actionBloquear_Fechas" />
+    <addaction name="separator" />
+    <addaction name="actionCanal_por_Defecto" />
+    <addaction name="actionCentro_de_Coste_por_Defecto" />
    </widget>
    <addaction name="menuEmpresa" />
    <addaction name="menuAsiento" />
@@ -453,6 +454,11 @@
   <action name="actionPaises" >
    <property name="text" >
     <string>Paises</string>
+   </property>
+  </action>
+  <action name="actionCerrar_Asientos" >
+   <property name="text" >
+    <string>Cerrar Asientos</string>
    </property>
   </action>
  </widget>

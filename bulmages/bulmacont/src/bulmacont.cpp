@@ -172,6 +172,16 @@ void Bulmacont::on_actionTipos_de_IVA_triggered()
 ///
 /**
 **/
+void Bulmacont::on_actionCerrar_Asientos_triggered()
+{
+    _depura ( "Bulmacont::on_actionCerrar_Asientos_triggered", 0 );
+    m_empresaactual->cerrarAsientos();
+    _depura ( "END Bulmacont::on_actionCerrar_Asientos_triggered", 0 );
+}
+
+///
+/**
+**/
 void Bulmacont::on_actionFormas_de_Pago_triggered()
 {
     _depura ( "Bulmacont::on_actionFormas_de_Pago_triggered", 0 );
@@ -405,7 +415,7 @@ void Bulmacont::on_actionOrganizaci_n_en_Cascada_triggered()
 void Bulmacont::on_actionAbrir_Asientos_triggered()
 {
     _depura ( "Bulmacont::on_actionAbrir_Asientos_triggered", 0 );
-    m_empresaactual->Abrirasientos();
+    m_empresaactual->abrirAsientos();
     _depura ( "END Bulmacont::on_actionAbrir_Asientos_triggered", 0 );
 }
 

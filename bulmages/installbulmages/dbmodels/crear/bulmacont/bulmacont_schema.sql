@@ -1612,6 +1612,20 @@ DECLARE
     mrecord RECORD;
 BEGIN
     DELETE FROM apunte WHERE idasiento=id_asiento;
+
+     -- // Debemos comprobar que el asiento se puede cerrar.
+     SELECT INTO mrecord SUM(debe) AS tdebe, SUM(haber) AS thaber FROM borrador WHERE idasiento = id_asiento;
+     IF FOUND THEN
+	IF mrecord.tdebe <> mrecord.thaber THEN
+		RETURN -1;
+	END IF;
+	IF mrecord.tdebe = 0 THEN
+		RETURN -1;
+	END IF;
+     ELSE
+	RETURN -1;
+     END IF;
+
      -- // Linia afegida per Josep B.
     FOR mrecord IN SELECT * from borrador WHERE idasiento = id_asiento LOOP
 	INSERT INTO apunte (codigoborrador, idasiento, iddiario, fecha, conceptocontable, idcuenta, descripcion, debe,
@@ -1994,9 +2008,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.10.1-0005'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.11.1-0001'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.10.1-0005'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.11.1-0001'');
 	END IF;
 	RETURN 0;
 END;

@@ -122,7 +122,8 @@ public:
     void regularizaempresa();
     void regularizaempresa ( QString, QString );
     void maximiza();
-    void Abrirasientos();
+    void abrirAsientos();
+    void cerrarAsientos();
     void Ordenarasientos();
     void Filtro();
     int mpatrimoniales();

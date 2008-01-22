@@ -295,6 +295,7 @@ void BalanceTreeView::presentar()
     query += " LEFT JOIN (SELECT idcuenta, sum(debe) AS adebe, sum(haber) AS ahaber FROM apunte WHERE fecha < '" + finicial + "' GROUP BY idcuenta) AS t2 ON t2.idcuenta = cuenta.idcuenta";
     query += " LEFT JOIN (SELECT idcuenta, sum(debe) AS ejdebe, sum(haber) AS ejhaber FROM apunte WHERE EXTRACT (YEAR FROM fecha) = '" + ejercicio + "' GROUP BY idcuenta) AS t3 ON t3.idcuenta = cuenta.idcuenta";
 
+
     empresaBase() ->begin();
     empresaBase() ->ejecuta ( query );
     query.sprintf ( "UPDATE balancetemp SET padre = 0 WHERE padre ISNULL" );
@@ -349,6 +350,7 @@ void BalanceTreeView::presentar()
     num1 = cursorapt1->numregistros();
     listado->clear();
     while ( !cursorapt1->eof() ) {
+
         QString padre1 = cursorapt1->valor ( "padre" );
 
         QTreeWidgetItem *padre = NULL;
