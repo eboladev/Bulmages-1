@@ -131,7 +131,7 @@ fi
 
 
 #instal alos archivos necesarios para el servidor.
-instalararchivos
+#instalararchivos
 
 
 # Distinguimos entre una instalacion y una actualizacion.

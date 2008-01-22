@@ -39,7 +39,7 @@ set (scripts installbulmages-client
 			${CMAKE_BINARY_DIR}/uninstallbulmages)
 install(FILES ${scripts} DESTINATION share/bulmages
 		PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
-                      GROUP_EXECUTE GROUP_READ)
+                      GROUP_EXECUTE GROUP_READ WORLD_READ WORLD_EXECUTE)
 
 FILE(GLOB scriptsdb dbmodels/actualizabulmacont
 					dbmodels/actualizabulmafact
@@ -47,6 +47,7 @@ FILE(GLOB scriptsdb dbmodels/actualizabulmacont
 					dbmodels/creabulmafact)
 install(FILES ${scriptsdb} DESTINATION share/bulmages/dbmodels
 		PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
-                      GROUP_EXECUTE GROUP_READ)
+                      GROUP_EXECUTE GROUP_READ GROUP_READ WORLD_READ WORLD_EXECUTE)
+
 
 
