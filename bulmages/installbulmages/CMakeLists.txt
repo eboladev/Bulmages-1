@@ -5,6 +5,10 @@ configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/bulmacont.conf.in bulmacont.
 configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/bulmatpv.conf.in bulmatpv.conf @ONLY)
 configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/installbulmages-db.in installbulmages-db @ONLY)
 configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/uninstallbulmages.in uninstallbulmages  @ONLY)
+configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/dbmodels/actualizabulmacont.in actualizabulmacont @ONLY)
+configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/dbmodels/actualizabulmafact.in actualizabulmafact @ONLY)
+configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/dbmodels/creabulmacont.in creabulmacont @ONLY)
+configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/dbmodels/creabulmafact.in creabulmafact @ONLY)
 
 install(DIRECTORY ayuda ainteligentes bgtrml2pdf 
 				balances planescontables 
@@ -41,10 +45,10 @@ install(FILES ${scripts} DESTINATION share/bulmages
 		PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
                       GROUP_EXECUTE GROUP_READ WORLD_READ WORLD_EXECUTE)
 
-FILE(scriptsdb dbmodels/actualizabulmacont
-					dbmodels/actualizabulmafact
-					dbmodels/creabulmatcont
-					dbmodels/creabulmafact)
+set (scriptsdb  ${CMAKE_BINARY_DIR}/actualizabulmacont 
+			    ${CMAKE_BINARY_DIR}/actualizabulmafact 
+				${CMAKE_BINARY_DIR}/creabulmacont
+				${CMAKE_BINARY_DIR}/creabulmafact)
 install(FILES ${scriptsdb} DESTINATION share/bulmages/dbmodels
 		PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
                       GROUP_EXECUTE GROUP_READ GROUP_READ WORLD_READ WORLD_EXECUTE)

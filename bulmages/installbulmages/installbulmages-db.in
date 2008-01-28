@@ -149,7 +149,7 @@ tiempo
 if [ -e /etc/bulmages/bulmages-server.conf ]; then
    # Tratando base de datos de.
    # La forma mas limpia para obtener un listado de las bases de datos instaladas.
-   LIST_DATABASES=`su - postgres -c "echo 'SELECT datname FROM pg_database' | psql -t template1"`
+   LIST_DATABASES=`su - postgres -c "echo 'SELECT datname FROM pg_database' | $PSQL -t template1"`
    for database in $LIST_DATABASES; do
 	dlinea
 	info "Comprobamos $database \n"

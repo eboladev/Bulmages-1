@@ -56,7 +56,7 @@ BSelector::BSelector ( QWidget *parent )
     /// Al crear el selector, todos los modulos estan cerrados = NULL
     m_tipoempresa = "";
     /// Mira si esta instalado el bulmafact y de no estarlo desabilita el boon�.
-    QFile f ( "/usr/bin/bulmafact" );
+/*    QFile f ( "/usr/bin/bulmafact" );
     if ( !f.exists() )
         m_bulmafact->setEnabled ( FALSE );
     QFile f1 ( "/usr/bin/bulmatpv" );
@@ -69,6 +69,7 @@ BSelector::BSelector ( QWidget *parent )
     if ( !f3.exists() )
         m_galopin->setEnabled ( FALSE );
     QFile f4 ( "/var/www/bcontaweb" );
+*/
     g_plugins->lanza ( "BSelector_BSelector_Post", this );
     _depura ( "END BSelector::BSelector", 0 );
 }
