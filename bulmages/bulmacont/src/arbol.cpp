@@ -176,14 +176,20 @@ void Arbol::actualizahojas ( cursor2 *cuenta )
 {
     _depura ( "Arbol::actualizahojas", 0 );
     unsigned int i = 0;
-    bool actualizado;
+    bool actualizado, condition = true;
     tipohoja *hojaraiz;
 
     QString cuentapadre = cuenta->valor ( "codigo" ).left ( 2 );
     do {
         hojaraiz = raiz[i];
-        i++;
-    } while ( i < 70 && cuentapadre != hojaraiz->codigo );
+        if(i <70)
+          i++;
+        else
+          condition = false;
+        if(condition)
+          if(cuentapadre != hojaraiz->codigo)
+            condition = false;
+    } while ( condition );
     actualizado = false;
     if ( hojaraiz->ramas ) {
         ActualizarHoja ( & ( hojaraiz->ramas ), cuenta, &actualizado );
