@@ -1167,7 +1167,7 @@ QString postgresiface2::sanearCadena ( QString cadena )
 {
     _depura ( "postgresiface2::sanearCadena", 0 );
     int longitud = 0;
-    char *buffer = "";
+    char *buffer = NULL;
     QString cadenaLimpia = "";
     longitud = cadena.size();
     /// Reservamos (la funci&oacute;n de postgres lo necesita) un buffer del
