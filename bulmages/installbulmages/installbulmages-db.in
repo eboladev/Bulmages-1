@@ -14,6 +14,15 @@
 version="v"`cat version`" - server"
 direj=$(pwd)
 
+PSQL=$(which psql)
+echo "Utilizando "$PSQL
+
+CREATEDB=$(which createdb)
+echo "Utilizando "$CREATEDB
+
+CREATEUSER=$(which createuser)
+echo "Utilizando "$CREATEUSER
+
 
 # We need to now if the parameter is text of not
 if [ "$1" = "--texto" ]; then

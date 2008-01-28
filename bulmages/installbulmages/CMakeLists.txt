@@ -41,7 +41,7 @@ install(FILES ${scripts} DESTINATION share/bulmages
 		PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
                       GROUP_EXECUTE GROUP_READ WORLD_READ WORLD_EXECUTE)
 
-FILE(GLOB scriptsdb dbmodels/actualizabulmacont
+FILE(scriptsdb dbmodels/actualizabulmacont
 					dbmodels/actualizabulmafact
 					dbmodels/creabulmatcont
 					dbmodels/creabulmafact)
