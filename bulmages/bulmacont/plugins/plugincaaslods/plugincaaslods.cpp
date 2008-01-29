@@ -122,16 +122,16 @@ void pluginCAaslODS::formDatosBalance()
         ejercicioAnterior_fechaBalance = dv->mui_ejercicioAnterior_fechaBalance->text();
     } // end if
     delete dv;
-	
-	if(ejercicioActual_fechaBalance.isEmpty()){
-		mensajeError ( "ERROR: Debe introducir una fecha en el balance actual.");
-		resultado = 0;
-	}
-	else{
-		if(ejercicioAnterior_fechaBalance.isEmpty()){
-			mensajeError ( "ERROR: Debe introducir una fecha en el balance anterior.");
-			resultado = 0;
-		}
+        
+        if(ejercicioActual_fechaBalance.isEmpty()){
+                mensajeError ( "ERROR: Debe introducir una fecha en el balance actual.");
+                resultado = 0;
+        }
+        else{
+                if(ejercicioAnterior_fechaBalance.isEmpty()){
+                        mensajeError ( "ERROR: Debe introducir una fecha en el balance anterior.");
+                        resultado = 0;
+                }
     } // end if
 
     /// Se pulso el boton 'cancelar'
@@ -176,7 +176,7 @@ doc.set_cell_value(4, 5, 'string', 'Ejercicio N-1')\n\
 doc.set_cell_property('bold', False)\n\
 \
 doc.set_cell_property('bold', True)\n\
-doc.set_cell_value(2, 7, 'string', 'A) Accionistas (socios) por desembolsos no exigidos')\n\
+doc.set_cell_value(2, 7, 'string', 'A) Fundadores/asociados por desembolsos no exigidos')\n\
 doc.set_cell_value(3, 7, 'float', '" + ( saldoCuenta ( 196 ) + saldoCuenta ( 197 ) ).toQString ( '.' ) + "')\n\
 doc.set_cell_value(4, 7, 'float', '" + ( saldoCuentaAnt ( 196 ) + saldoCuentaAnt ( 197 ) ).toQString ( '.' ) + "')\n\
 doc.set_cell_property('bold', False)\n\
@@ -353,7 +353,7 @@ doc.set_cell_value(2, 9, 'string', '            a) Ayudas monetarias')\n\
 doc.set_cell_value(3, 9, 'float', '" + ( saldoCuenta ( 650 ) + saldoCuenta ( 651 ) + saldoCuenta ( 652 ) ).toQString ( '.' ) + "')\n\
 doc.set_cell_value(4, 9, 'float', '" + ( saldoCuentaAnt ( 650 ) + saldoCuentaAnt ( 651 ) + saldoCuentaAnt ( 652 ) ).toQString ( '.' ) + "')\n\
 \
-doc.set_cell_value(2, 10, 'string', '            b) Gastos por colaboraciones y del órganode gobierno')\n\
+doc.set_cell_value(2, 10, 'string', '            b) Gastos por colaboraciones y del órgano de gobierno')\n\
 doc.set_cell_value(3, 10, 'float', '" + ( saldoCuenta ( 653 ) + saldoCuenta ( 654 ) ).toQString ( '.' ) + "')\n\
 doc.set_cell_value(4, 10, 'float', '" + ( saldoCuentaAnt ( 653 ) + saldoCuentaAnt ( 654 ) ).toQString ( '.' ) + "')\n\
 \
@@ -367,7 +367,7 @@ doc.set_cell_value(4, 12, 'float', '" + ( saldoCuentaAnt ( 60 ) +  saldoCuentaAn
 \
 doc.set_cell_value(2, 13, 'string', '       3. Gastos de personal')\n\
 doc.set_cell_value(3, 13, 'formula', '=SUM(C14:C15)')\n\
-doc.set_cell_value(4, 13, 'formula', '=SUM(C14:C15)')\n\
+doc.set_cell_value(4, 13, 'formula', '=SUM(D14:D15)')\n\
 \
 doc.set_cell_value(2, 14, 'string', '            a) Sueldos, salarios y asimilados')\n\
 doc.set_cell_value(3, 14, 'float', '" + ( saldoCuenta ( 640 ) + saldoCuenta ( 641 ) ).toQString ( '.' ) + "')\n\
@@ -422,7 +422,7 @@ doc.set_cell_value(3, 29, 'float', '" + saldoCuenta ( 668 ).toQString ( '.' ) + 
 doc.set_cell_value(4, 29, 'float', '" + saldoCuentaAnt ( 668 ).toQString ( '.' ) + "')\n\
 \
 doc.set_cell_value(2, 30, 'string', '   II.  RESULTADOS FINANCIEROS POSITIVOS')\n\
-doc.set_cell_value(2, 31, 'string', '        (B4I+B5-A7-A8-A9)')\n\
+doc.set_cell_value(2, 31, 'string', '        (B4+B5-A7-A8-A9)')\n\
 doc.set_cell_value(3, 30, 'formula', '=Haber.C19+Haber.C24-C23-C28-C29')\n\
 doc.set_cell_value(4, 30, 'formula', '=Haber.D19+Haber.D24-D23-D28-D29')\n\
 \
@@ -658,4 +658,3 @@ doc.save(\"canualesods.ods\")\n";
     /// S&Oacute;LO A MODO DE EJEMPLO: se modifica el t&iacute;tulo de la ventana principal
     /// del programa para indicar que el plugin se ha cargado.
 }
-
