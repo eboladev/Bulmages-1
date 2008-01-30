@@ -24,7 +24,7 @@
 
 #define CONFIG_DIR_CONFIG "/etc/bulmages/"
 #define CONFIG_VERSION    "0.11.1"
-#define CONFIG_DEBUG FALSE
+#define CONFIG_DEBUG TRUE
 //#undef CONFIG_DEBUG
 
 #endif

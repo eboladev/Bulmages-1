@@ -39,6 +39,7 @@
 #include "albaranclienteview.h"
 #include "pedidoproveedorview.h"
 #include "cuadranteview.h"
+#include "cuadrantediarioview.h"
 
 
 ///
@@ -76,6 +77,19 @@ void myplugin4::elslot()
 
 ///
 /**
+**/
+void myplugin4::elslot1()
+{
+    _depura ( "myplugin4::elslot1", 0 );
+    CuadranteDiarioView *cuad = new CuadranteDiarioView ( ( Company * ) empresaBase(), 0 );
+    empresaBase() ->pWorkspace() ->addWindow ( cuad );
+    cuad->show();
+    _depura ( "END myplugin4::elslot1", 0 );
+}
+
+
+///
+/**
 \param bges
 **/
 void myplugin4::inicializa ( Bulmafact *bges )
@@ -94,11 +108,18 @@ void myplugin4::inicializa ( Bulmafact *bges )
         pPluginMenu->setObjectName ( QString::fromUtf8 ( "Herramientas" ) );
     } // end if
 
-    QAction *accion = new QAction ( "&Cuadrantes", 0 );
+    QAction *accion = new QAction ( "&Cuadrante Semanal", 0 );
     accion->setStatusTip ( "Permite realizar Plannings Laborales" );
     accion->setWhatsThis ( "Podra destinar los trabajadores a distintos almacenes" );
     connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
     pPluginMenu->addAction ( accion );
+
+    QAction *accion1 = new QAction ( "&Cuadrante Diario", 0 );
+    accion1->setStatusTip ( "Permite realizar Plannings Laborales" );
+    accion1->setWhatsThis ( "Podra destinar los trabajadores a distintos almacenes" );
+    connect ( accion1, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
+    pPluginMenu->addAction ( accion1 );
+
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->menuBar() ->insertMenu ( bges->menuVentana->menuAction(), pPluginMenu );
     _depura ( "END myplugin4::inicializa", 0 );

@@ -93,17 +93,20 @@ TRANSLATIONS += plugincuadrante_es.ts \
                 plugincuadrante_zz.ts 
 
 FORMS += cuadrantebase.ui \
-	 cuadrante1base.ui
+	 cuadrante1base.ui \
+	 cuadrantediariobase.ui
 
 SOURCES = plugincuadrante.cpp \
 	  cuadranteview.cpp \
 	  cuadranteqtablewidget.cpp \
 	  cuadranteqtreewidget.cpp \
-	  cuadrante1view.cpp
+	  cuadrante1view.cpp \
+	  cuadrantediarioview.cpp
 
 HEADERS = plugincuadrante.h \
           cuadranteview.h \
 	  cuadranteqtablewidget.h \
 	  cuadranteqtreewidget.h \
-	  cuadrante1view.h
+	  cuadrante1view.h \
+	  cuadrantediarioview.h
 

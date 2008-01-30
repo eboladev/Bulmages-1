@@ -229,12 +229,12 @@ void FacturaView::on_mui_agregaralbaran_clicked()
         /// Los registros vacios no se tienen en cuenta.
         if ( linea->DBvalue ( "idarticulo" ) != "" ) {
             linea1 = getlistalineas() ->lineaat ( getlistalineas() ->rowCount() - 1 );
+            linea1->setDBvalue ( "codigocompletoarticulo", linea->DBvalue ( "codigocompletoarticulo" ) );
             linea1->setDBvalue ( "desclfactura", linea->DBvalue ( "desclalbaran" ) );
             linea1->setDBvalue ( "cantlfactura", linea->DBvalue ( "cantlalbaran" ) );
             linea1->setDBvalue ( "pvplfactura", linea->DBvalue ( "pvplalbaran" ) );
             linea1->setDBvalue ( "descuentolfactura", linea->DBvalue ( "descuentolalbaran" ) );
             linea1->setDBvalue ( "idarticulo", linea->DBvalue ( "idarticulo" ) );
-            linea1->setDBvalue ( "codigocompletoarticulo", linea->DBvalue ( "codigocompletoarticulo" ) );
             linea1->setDBvalue ( "nomarticulo", linea->DBvalue ( "nomarticulo" ) );
             linea1->setDBvalue ( "ivalfactura", linea->DBvalue ( "ivalalbaran" ) );
             getlistalineas() ->nuevoRegistro();
@@ -260,20 +260,28 @@ void FacturaView::on_mui_agregaralbaran_clicked()
 void FacturaView::on_mui_veralbaranes_clicked()
 {
     _depura ( "FacturaView::on_mui_veralbaranes_clicked", 0 );
+    AlbaranClienteView *bud = NULL;
+    cursor2 *cur = NULL;
+    try {
     QString SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + DBvalue ( "reffactura" ) + "'";
-    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
+    cur = empresaBase() ->cargacursor ( SQLQuery );
     if ( !cur->eof() ) {
         while ( !cur->eof() ) {
-            AlbaranClienteView * bud = new AlbaranClienteView ( empresaBase(), NULL );
+            bud = new AlbaranClienteView ( empresaBase(), NULL );
             empresaBase() ->m_pWorkspace->addWindow ( bud );
             bud->cargar ( cur->valor ( "idalbaran" ) );
             bud->show();
             cur->siguienteregistro();
         } // end while
     } else {
-        _depura ( "no hay albaranes con esta referencia", 2 );
+        mensajeInfo ( "no hay albaranes con esta referencia" );
     } // end if
     delete cur;
+    } catch (...) {
+	mensajeInfo("error Inesperado");
+	if (cur) delete cur;
+	if (bud) delete bud;
+    } // end try
     _depura ( "END FacturaView::on_mui_veralbaranes_clicked", 0 );
 }
 

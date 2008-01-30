@@ -8,7 +8,8 @@ CONFIG += release \
           plugin \
 	  assistant
 	 
-LIBS +=	 -rdynamic 	 
+LIBS +=	 -rdynamic \
+	 -lbulmalib
 
 VERSION = 1.0.0
 

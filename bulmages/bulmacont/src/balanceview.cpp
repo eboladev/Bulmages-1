@@ -35,6 +35,7 @@
 #include "selectccosteview.h"
 #include "selectcanalview.h"
 
+
 #define CUENTA          0
 #define DENOMINACION    1
 #define SALDO_ANT       2
@@ -252,9 +253,19 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
         /// Por fin, presentamos los valores.
         /// Aunque antes, prepararemos el Widget con la cabecera a mostrar.
         QStringList headers, datos;
-        headers << tr ( "Codigo" ) << tr ( "Denominacion" ) << tr ( "Saldo anterior" ) << tr ( "Debe" ) << tr ( "Haber" ) << tr ( "Saldo" ) << tr ( "Debe ejercicio" ) << tr ( "Haber ejercicio" ) << tr ( "Saldo ejercicio" );
+        headers << tr ( "Codigo" ) << tr ( "Denominacion" ) << tr ( "Saldo anterior" ) << tr ( "Debe" ) << tr ( "Haber" ) << tr ( "Saldo" ) << tr ( "Debe " ) +ffinal.right ( 4 ) << tr ( "Haber " ) + ffinal.right ( 4 ) << tr ( "Saldo " ) + ffinal.right ( 4 );
         mui_list->setHeaderLabels ( headers );
         mui_list->clear();
+
+	mui_list->setColumnWidth(CUENTA, 100);
+	mui_list->setColumnWidth(DENOMINACION, 150);
+	mui_list->setColumnWidth(SALDO_ANT, 100);
+	mui_list->setColumnWidth(DEBE, 100);
+	mui_list->setColumnWidth(HABER, 100);
+	mui_list->setColumnWidth(SALDO, 100);
+	mui_list->setColumnWidth(DEBEEJ, 100);
+	mui_list->setColumnWidth(HABEREJ, 100);
+	mui_list->setColumnWidth(SALDOEJ, 100);
 
         /// Cada hoja del &aacute;rbol usara uno de estos Widgets para mostrarse.
         QTreeWidgetItem *it;

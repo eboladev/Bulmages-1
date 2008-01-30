@@ -194,7 +194,7 @@ void EmailQToolButton::click()
 
         cad = "kmail -s \"Factura " + num + "\" --body \"Estimado cliente,\n\n";
         cad += "Adjunto le enviamos la factura número " + serie + num + " con fecha " + fecha + "\n";
-        cad += "Sin otro particular, reciba un cordial saludo:\n\n\n";
+        cad += "Sin otro particular, reciba un cordial saludo:\n\n\n\"";
         cad += " --attach " + confpr->valor ( CONF_DIR_USER ) + "factura" + serie + num + ".pdf " + email;
         system ( cad.toAscii().data() );
     } // end if
