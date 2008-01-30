@@ -13,13 +13,13 @@
 
 version=@BULMAGES_VERSION@
 
-PSQL=$(which psql)
+PSQL=@PGSQL_BIN_DIR@/psql
 echo "Utilizando "$PSQL
 
-CREATEDB=$(which createdb)
+CREATEDB=@PGSQL_BIN_DIR@/createdb
 echo "Utilizando "$CREATEDB
 
-CREATEUSER=$(which createuser)
+CREATEUSER=@PGSQL_BIN_DIR@/createuser
 echo "Utilizando "$CREATEUSER
 
 # SOLO APLICAMOS PARCHES A VERSIONES POSTERIORES A LA 0.5.9 
@@ -117,7 +117,8 @@ info "Realizamos backup de $2 en /tmp/backup no olvide poner el backup a buen re
 if [ ! -e /tmp/backup ]; then
 	mkdir /tmp/backup
 fi
-pg_dump $2 > /tmp/backup/$2.pgdump
+
+@PGSQL_BIN_DIR@/pg_dump $2 > /tmp/backup/$2.pgdump
 tiempo
 
 

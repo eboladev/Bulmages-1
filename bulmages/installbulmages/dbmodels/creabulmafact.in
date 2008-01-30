@@ -20,13 +20,13 @@
 
 version=@BULMAGES_VERSION@
 
-PSQL=$(which psql)
+PSQL=@PGSQL_BIN_DIR@/psql
 echo "Utilizando "$PSQL
 
-CREATEDB=$(which createdb)
+CREATEDB=@PGSQL_BIN_DIR@/createdb
 echo "Utilizando "$CREATEDB
 
-CREATEUSER=$(which createuser)
+CREATEUSER=@PGSQL_BIN_DIR@/createuser
 echo "Utilizando "$CREATEUSER
 
 #Buscamos el parametro para saber si es texto o no
@@ -146,7 +146,7 @@ if [ -e /tmp/errores.txt ]; then
 fi
 if [ "$DBS" ]; then
    mensaje "Se han producido errores al instalar la base de datos $2 \n Se abortara instalacion. Para mas informacion consulte http://www.iglues.org . \n$DBS"
-   dropdb $2
+   @PGSQL_BIN_DIR@/dropdb $2
    exit 1
 else
    info "La instalacion de la base de datos $2 ha sido un exito. \n"

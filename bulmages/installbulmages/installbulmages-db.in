@@ -14,13 +14,13 @@
 version="v"`cat version`" - server"
 direj=$(pwd)
 
-PSQL=$(which psql)
+PSQL=@PGSQL_BIN_DIR@/psql
 echo "Utilizando "$PSQL
 
-CREATEDB=$(which createdb)
+CREATEDB=@PGSQL_BIN_DIR@/createdb
 echo "Utilizando "$CREATEDB
 
-CREATEUSER=$(which createuser)
+CREATEUSER=@PGSQL_BIN_DIR@/createuser
 echo "Utilizando "$CREATEUSER
 
 
