@@ -87,7 +87,7 @@ function lee() {
    fi
    while [ "$user" != "" ]
    do
-      su - postgres -c "createuser --adduser --createdb $user"
+      su - postgres -c "$CREATEUSER --adduser --createdb $user"
       if [ ! -e /usr/bin/dialog -a ! -e /usr/bin/xdialog -o $texto = 1 ]; then
          echo -e  "\033[33m""Indique el usuario que va a trabajar con BulmaGes. Pulse enter si no desea crear usuarios de PostgreSQL."  "\033[0m"
          read user
