@@ -146,6 +146,7 @@ void entryPoint ( Bulmafact *bges )
 
     myplugin4 *plug = new myplugin4();
     plug->inicializa ( bges );
+
     _depura ( "END entryPoint", 0 );
 }
 

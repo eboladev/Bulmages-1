@@ -570,7 +570,7 @@ cursor2 *postgresiface2::cargacursor ( QString query, QString nomcursor, int lim
 
         cur = new cursor2 ( nomcursor, conn, query );
     } catch ( ... ) {
-        delete cur;
+        if (cur) delete cur;
         _depura ( "END postgresiface2::cargacursor", 0, "Error en la base de datos" );
         return NULL;
     } // end try
