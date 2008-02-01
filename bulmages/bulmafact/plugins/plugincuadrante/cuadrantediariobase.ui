@@ -26,7 +26,7 @@
    <item row="1" column="1" >
     <widget class="QTabWidget" name="tabWidget" >
      <property name="currentIndex" >
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tab" >
       <attribute name="title" >
@@ -71,7 +71,7 @@
         <number>0</number>
        </property>
        <item>
-        <widget class="SubForm2Bf" name="mui_list" />
+        <widget class="SubForm2Bf" name="mui_listvalidaciones" />
        </item>
       </layout>
      </widget>

@@ -38,11 +38,6 @@ add_subdirectory(bulmages)
 message(STATUS "Working on bulmatpv")
 add_subdirectory(bulmatpv)
 
-########### some stuff ##########
-message(STATUS "Working on installbulmages")
-add_subdirectory(installbulmages)
-
-
 ########### private code ########
 if(EXISTS "${CMAKE_SOURCE_DIR}/CMakeLists.txt.private")
    message(STATUS "Private code inserted")
@@ -53,6 +48,13 @@ if(APPLE)
    message(STATUS "Compiling for OSX")
    set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -undefined dynamic_lookup")
    
+
+########### some stuff ##########
+message(STATUS "Working on installbulmages")
+add_subdirectory(installbulmages)
+
+
+
 SET(CPACK_CMAKE_GENERATOR "Unix Makefiles")
 SET(CPACK_GENERATOR "PackageMaker;STGZ;TGZ")
 SET(CPACK_INSTALL_CMAKE_PROJECTS "/Users/Shared/bulmages/trunk/bulmages/build;local/bulmages;ALL;/")

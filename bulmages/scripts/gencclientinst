@@ -62,7 +62,7 @@ ln -s $1/privateplugins/pluginllamadas/libpluginllamadas.so        /usr/lib/bulm
 ln -s $1/privateplugins/pluginservconetxia/libpluginservconetxia.so        /usr/lib/bulmafact/plugins/
 # ln -s $1/privateplugins/pluginticket/libpluginticket.so        /usr/lib/bulmafact/plugins/
 ln -s $1/privateplugins/plugindock/libplugindock.so        /usr/lib/bulmalib/plugins/
-ln -s $1/privateplugins/florida/libflorida.so        /usr/lib/bulmafact/plugins/
+ln -s $1/privateplugins/florida/libpluginflorida.so        /usr/lib/bulmafact/plugins/
 ln -s $1/privateplugins/lafac/liblafac.so        /usr/lib/bulmafact/plugins/
 ln -s $1/privateplugins/pluginfacturar/libpluginfacturar.so        /usr/lib/bulmafact/plugins/
 #ln -s $1/privateplugins/pluginmail/libpluginmail.so        /usr/lib/bulmafact/plugins/

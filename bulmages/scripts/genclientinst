@@ -13,8 +13,8 @@ ln -s $1/bin/bulmafact /usr/bin/bulmafact
 rm /usr/bin/bulmatpv
 ln -s $1/bin/bulmatpv /usr/bin/bulmatpv
 
-rm /usr/bin/bgtrml2pdf.py
-ln -s $1/usr/share/bulmages/bgtrml2pdf.py /usr/bin/bgtrml2pdf.py
+rm /usr/bin/bgtrml2pdf
+ln -s $1/usr/share/bulmages/bgtrml2pdf /usr/bin/bgtrml2pdf
 
 rm /usr/bin/bulmages
 ln -s $1/bin/bulmages /usr/bin/bulmages

@@ -52,6 +52,9 @@ CuadranteDiarioView::CuadranteDiarioView ( Company *comp, QWidget *parent )
     try {
         setupUi ( this );
 
+        mui_listvalidaciones->setEmpresaBase ( empresaBase() );
+
+
         /// Lanzamos los plugins.
         if ( g_plugins->lanza ( "CuadranteDiarioView_CuadranteDiarioView", this ) ) return;
 
@@ -63,26 +66,33 @@ CuadranteDiarioView::CuadranteDiarioView ( Company *comp, QWidget *parent )
 // mui_cuadrante->verticalHeader()->hide();
 
         inicializaTrabajadores();
-        inicializaCuadrante ( QDate::currentDate() );
   
-    mui_list->setEmpresaBase ( empresaBase() );
-    mui_list->setDBTableName ( "valasterisk" );
-    mui_list->setDBCampoId ( "idvalasterisk" );
-    mui_list->addSHeader ( "fechavalasterisk", DBCampo::DBdate, DBCampo::DBNotNull , SHeader::DBNone, QApplication::translate ( "TrabajadorView", "Fecha" ) );
-    mui_list->addSHeader ( "horavalasterisk", DBCampo::DBvarchar, DBCampo::DBNotNull , SHeader::DBNone, QApplication::translate ( "TrabajadorView", "Hora" ) );
-    mui_list->addSHeader ( "nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , QApplication::translate ( "TrabajadorView", "Almacén" ) );
-    mui_list->addSHeader ( "aperturaalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , QApplication::translate ( "TrabajadorView", "Apertura Mañanas" ) );
-    mui_list->addSHeader ( "cierrealmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , QApplication::translate ( "TrabajadorView", "Cierre Mañanas" ) );
-    mui_list->addSHeader ( "apertura1almacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , QApplication::translate ( "TrabajadorView", "Apertura Tardes" ) );
-    mui_list->addSHeader ( "cierre1almacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , QApplication::translate ( "TrabajadorView", "Cierre Tardes" ) );
-    mui_list->addSHeader ( "archvalasterisk", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , QApplication::translate ( "TrabajadorView", "Audicion" ) );
-    mui_list->addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoWrite , QApplication::translate ( "TrabajadorView", "Id Almacen" ) );
-    mui_list->addSHeader ( "idvalasterisk", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "TrabajadorView", "ID Validacion" ) );
-    mui_list->addSHeader ( "idtrabajador", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "TrabajadorView", "ID Trabajador" ) );
-    mui_list->setinsercion ( FALSE );
-    mui_list->setDelete ( FALSE );
-    mui_list->setSortingEnabled ( FALSE );
-    dialogChanges_setQObjectExcluido ( mui_list->mui_list );
+    mui_listvalidaciones->setDBTableName ( "valasterisk" );
+    mui_listvalidaciones->setDBCampoId ( "idvalasterisk" );
+    mui_listvalidaciones->addSHeader ( "fechavalasterisk", DBCampo::DBdate, DBCampo::DBNotNull , SHeader::DBNone, QApplication::translate ( "TrabajadorView", "Fecha" ) );
+    mui_listvalidaciones->addSHeader ( "horavalasterisk", DBCampo::DBvarchar, DBCampo::DBNotNull , SHeader::DBNone, QApplication::translate ( "TrabajadorView", "Hora" ) );
+    mui_listvalidaciones->addSHeader ( "nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , QApplication::translate ( "TrabajadorView", "Almacén" ) );
+    mui_listvalidaciones->addSHeader ( "nomtrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , QApplication::translate ( "TrabajadorView", "Almacén" ) );
+    mui_listvalidaciones->addSHeader ( "apellidostrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , QApplication::translate ( "TrabajadorView", "Almacén" ) );
+
+/*
+    mui_listvalidaciones->addSHeader ( "aperturaalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , QApplication::translate ( "TrabajadorView", "Apertura Mañanas" ) );
+    mui_listvalidaciones->addSHeader ( "cierrealmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , QApplication::translate ( "TrabajadorView", "Cierre Mañanas" ) );
+    mui_listvalidaciones->addSHeader ( "apertura1almacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , QApplication::translate ( "TrabajadorView", "Apertura Tardes" ) );
+    mui_listvalidaciones->addSHeader ( "cierre1almacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , QApplication::translate ( "TrabajadorView", "Cierre Tardes" ) );
+    mui_listvalidaciones->addSHeader ( "archvalasterisk", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , QApplication::translate ( "TrabajadorView", "Audicion" ) );
+    mui_listvalidaciones->addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoWrite , QApplication::translate ( "TrabajadorView", "Id Almacen" ) );
+    mui_listvalidaciones->addSHeader ( "idvalasterisk", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "TrabajadorView", "ID Validacion" ) );
+    mui_listvalidaciones->addSHeader ( "idtrabajador", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "TrabajadorView", "ID Trabajador" ) );
+*/
+    mui_listvalidaciones->setinsercion ( FALSE );
+    mui_listvalidaciones->setDelete ( FALSE );
+    mui_listvalidaciones->setSortingEnabled ( FALSE );
+    dialogChanges_setQObjectExcluido ( mui_listvalidaciones->mui_list );
+
+
+        inicializaCuadrante ( QDate::currentDate() );
+
 
         meteWindow ( windowTitle(), this, FALSE );
     } catch ( ... ) {
@@ -206,9 +216,9 @@ void CuadranteDiarioView::inicializaCuadrante ( const QDate &dateorig )
         } // end while
 
         /// Hacemos la carga de las validaciones del dia.
-	QString query1 = "SELECT * FROM valasterisk LEFT JOIN trabajador ON trabajador.idtrabajador = valasterisk.idtrabajador WHERE fechavalasterisk = '" + mui_calendario->selectedDate().toString ( "dd/MM/yyyy" ) + "'";
-	mui_list->setEmpresaBase(empresaBase());
-        mui_list->cargar ( query1 );
+	QString query1 = "SELECT * FROM valasterisk LEFT JOIN trabajador ON trabajador.idtrabajador = valasterisk.idtrabajador ";
+	query1 += " LEFT JOIN almacen ON valasterisk.idalmacen = almacen.idalmacen WHERE fechavalasterisk = '" + mui_calendario->selectedDate().toString ( "dd/MM/yyyy" ) + "'";
+        mui_listvalidaciones->cargar ( query1 );
 
 
         cargaconfig();
