@@ -56,20 +56,20 @@ add_subdirectory(installbulmages)
 
 
 ## We include cpack for others platforms differents than unix
-SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "The Bulmagés Suite")
+SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "The BulmaGés Suite")
 SET(CPACK_PACKAGE_VENDOR "Iglues")
 SET(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_CURRENT_SOURCE_DIR}/README")
 SET(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/installbulmages/COPYING")
-SET(CPACK_PACKAGE_VERSION_MAJOR "1")
-SET(CPACK_PACKAGE_VERSION_MINOR "3")
-SET(CPACK_PACKAGE_VERSION_PATCH "2")
+SET(CPACK_PACKAGE_VERSION_MAJOR "0")
+SET(CPACK_PACKAGE_VERSION_MINOR "11")
+SET(CPACK_PACKAGE_VERSION_PATCH "1")
 SET(CPACK_PACKAGE_INSTALL_DIRECTORY "CMake ${CMake_VERSION_MAJOR}.${CMake_VERSION_MINOR}")
 IF(WIN32 AND NOT UNIX)
   # There is a bug in NSI that does not handle full unix paths properly. Make
   # sure there is at least one set of four (4) backlasshes.
   SET(CPACK_PACKAGE_ICON "${CMake_SOURCE_DIR}/installbulmages/icons\\\\iconbulmacont.xpm")
   SET(CPACK_NSIS_INSTALLED_ICON_NAME "bin\\\\bulmacont")
-  SET(CPACK_NSIS_DISPLAY_NAME "${CPACK_PACKAGE_INSTALL_DIRECTORY} The Bulmagés Suite")
+  SET(CPACK_NSIS_DISPLAY_NAME "${CPACK_PACKAGE_INSTALL_DIRECTORY} The BulmaGés Suite")
   SET(CPACK_NSIS_HELP_LINK "http:\\\\\\\\developer.berlios.de/projects/bulmages")
   SET(CPACK_NSIS_URL_INFO_ABOUT "http:\\\\\\\\developer.berlios.de/projects/bulmages")
   SET(CPACK_NSIS_CONTACT "bulmages@bulma.net")
@@ -82,8 +82,11 @@ SET(CPACK_PACKAGE_EXECUTABLES "bulmacont" "bulmafact" "bulmatpv")
 
 
 INCLUDE(CPack)
+set( BULMAGES_CONFIG_DIR /etc/bulmages CACHE PATH "The location of bulmages configuration dir")
 
-
+MARK_AS_ADVANCED(
+	BULMAGES_VERSION
+)
 # 	SET(CPACK_CMAKE_GENERATOR "Unix Makefiles")
 # 	SET(CPACK_GENERATOR "PackageMaker;STGZ;TGZ")
 # 	SET(CPACK_INSTALL_CMAKE_PROJECTS "/Users/Shared/bulmages/trunk/bulmages/build;local/bulmages;ALL;/")

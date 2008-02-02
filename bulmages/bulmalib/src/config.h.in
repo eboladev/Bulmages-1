@@ -2,6 +2,7 @@
  *   Copyright (C) 2008 by IGLUES                                               *
  *   info@bulmages.org                                                          *
  *   Created by Tomeu Borras  <tborras@conetxia.com>                            *
+ *   Created by Leopold Palomo <leo@alaxarxa.net> 	                            * 
  *                                                                              *
  *   This program is free software; you can redistribute it and/or modify       *
  *   it under the terms of the GNU General Public License as published by       *
@@ -22,8 +23,8 @@
 #ifndef _CONFIG_H
 #define _CONFIG_H
 
-#define CONFIG_DIR_CONFIG "/etc/bulmages/"
-#define CONFIG_VERSION    "0.11.1"
+#define CONFIG_DIR_CONFIG "@BULMAGES_CONFIG_DIR@"
+#define CONFIG_VERSION    "@BULMAGES_VERSION@"
 #define CONFIG_DEBUG TRUE
 //#undef CONFIG_DEBUG
 

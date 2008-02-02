@@ -93,7 +93,7 @@ CONF_DIR_REPORTS               @CMAKE_INSTALL_PREFIX@/share/bulmages/reports/
 CONF_DIR_KUGAR                @CMAKE_INSTALL_PREFIX@/share/bulmages/kugar/
 # Este parametro indica los plugins que se deben instalar con el programa.
 #CONF_PLUGINS_BULMACONT       @CMAKE_INSTALL_PREFIX@/lib/bulmages/plugins/libestadisticas.so;@CMAKE_INSTALL_PREFIX@/lib/bulmages/plugins/libadocumental.so;@CMAKE_INSTALL_PREFIX@/lib/bulmages/plugins/libcorrector.so
-CONF_PLUGINS_BULMACONT        @CMAKE_INSTALL_PREFIX@/lib/bulmages/plugins/libadocumental.so;@CMAKE_INSTALL_PREFIX@/lib/bulmages/plugins/libcorrector.so
+CONF_PLUGINS_BULMACONT        @CMAKE_INSTALL_PREFIX@/lib/bulmacont/plugins/libadocumental.so;@CMAKE_INSTALL_PREFIX@/lib/bulmacont/plugins/libcorrector.so
 
 
 # Este parametro indica en que directorio se hayan los archivos de informes formularios.

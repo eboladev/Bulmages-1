@@ -1,5 +1,7 @@
 #Bulmalib
 
+configure_file( ${CMAKE_SOURCE_DIR}/bulmalib/src/config.h.in  ${CMAKE_BINARY_DIR}/bulmalib/src/config.h @ONLY)
+
 #bulmalib needs QtAssistant and QtXml
 set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)
@@ -95,7 +97,7 @@ include_directories(
 	${CMAKE_CURRENT_SOURCE_DIR}
 	#${CMAKE_CURRENT_BINARY_DIR}/../../src/
 	${CMAKE_SOURCE_DIR}/bulmalib/src/
-	${CMAKE_CURRENT_BINARY_DIR}/bulmalib/src/
+	${CMAKE_BINARY_DIR}/bulmalib/src/
 	${CMAKE_SOURCE_DIR}/bulmacont/src/)
 
 
