@@ -47,7 +47,7 @@
 #ifdef WIN32
 #define CONFGLOBAL "C:\\bulmages\\bulmages_"
 #else
-#define CONFGLOBAL "/etc/bulmages/bulmages_"
+#define CONFGLOBAL CONFIG_DIR_CONFIG + QString("bulmages_")
 #endif
 
 

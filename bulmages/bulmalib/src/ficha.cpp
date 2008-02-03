@@ -103,7 +103,7 @@ void Ficha::cargaSpecs()
 {
     _depura ( "Ficha::cargaSpecs", 0 );
 //    QFile file(confpr->valor(CONF_DIR_USER) + m_fileconfig + "_" + empresaBase()->nameDB() + "_specs.spc");
-    QFile file ( "/etc/bulmages/" + objectName() + "_" + empresaBase() ->nameDB() + "_spec.spc" );
+    QFile file ( CONFIG_DIR_CONFIG + objectName() + "_" + empresaBase() ->nameDB() + "_spec.spc" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) ) {
         _depura ( "END Ficha::cargaSpecs", 0, "Fichero no se puede abrir" );

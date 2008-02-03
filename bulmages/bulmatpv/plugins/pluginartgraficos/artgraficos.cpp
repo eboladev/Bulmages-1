@@ -14,7 +14,7 @@ ArtGraficos::ArtGraficos ( EmpresaBase *emp, QWidget *parent ) : BLWidget ( emp,
     m_pantallaActual = 0;
     mui_list->horizontalHeader() ->hide();
     mui_list->verticalHeader() ->hide();
-    cargaXML ( "/etc/bulmages/pantallastpv.xml" );
+    cargaXML ( CONFIG_DIR_CONFIG + QString("pantallastpv.xml") );
     muestraPantalla ( 0 );
 }
 

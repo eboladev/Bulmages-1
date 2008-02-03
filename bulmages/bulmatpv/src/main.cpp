@@ -38,7 +38,7 @@
 #ifdef WIN32
 #define CONFGLOBAL "C:\\bulmages\\bulmatpv_"
 #else
-#define CONFGLOBAL "/etc/bulmages/bulmatpv_"
+#define CONFGLOBAL CONFIG_DIR_CONFIG + QString("bulmatpv_")
 #endif
 
 

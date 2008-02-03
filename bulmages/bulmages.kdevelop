@@ -1,16 +1,16 @@
 <?xml version = '1.0'?>
 <kdevelop>
   <general>
-  <projectmanagement>KDevCustomProject</projectmanagement>
-  <projectdirectory>/home/tborras/bulmages/trunk/bulmages</projectdirectory>
-  <absoluteprojectpath>true</absoluteprojectpath>
     <author>Tomeu Borras</author>
     <email>tborras@conetxia.com</email>
     <version>0.5.9</version>
+    <projectmanagement>KDevTrollProject</projectmanagement>
     <primarylanguage>C++</primarylanguage>
     <keywords>
       <keyword>Qt</keyword>
     </keywords>
+    <projectdirectory>.</projectdirectory>
+    <absoluteprojectpath>false</absoluteprojectpath>
     <description/>
     <ignoreparts/>
     <secondaryLanguages/>
@@ -50,9 +50,6 @@
   </kdevdoctreeview>
   <kdevdebugger>
     <general>
-  <projectmanagement>KDevCustomProject</projectmanagement>
-  <projectdirectory>/home/tborras/bulmages/trunk/bulmages</projectdirectory>
-  <absoluteprojectpath>true</absoluteprojectpath>
       <dbgshell/>
       <programargs/>
       <gdbpath/>
@@ -81,10 +78,7 @@
       <envvars/>
     </run>
     <general>
-  <projectmanagement>KDevCustomProject</projectmanagement>
-  <projectdirectory>/home/tborras/bulmages/trunk/bulmages</projectdirectory>
-  <absoluteprojectpath>true</absoluteprojectpath>
-      <activedir>bulmalib</activedir>
+      <activedir></activedir>
     </general>
     <make>
       <abortonerror>true</abortonerror>

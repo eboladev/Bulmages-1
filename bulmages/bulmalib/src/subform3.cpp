@@ -154,7 +154,7 @@ void SubForm3::cargaSpecs()
 {
     _depura ( "SubForm3::cargaSpecs", 0 );
 //    QFile file(confpr->valor(CONF_DIR_USER) + m_fileconfig + "_" + empresaBase()->nameDB() + "_specs.spc");
-    QFile file ( "/etc/bulmages/" + m_fileconfig + "_" + empresaBase() ->nameDB() + "_specs.spc" );
+    QFile file ( CONFIG_DIR_CONFIG + m_fileconfig + "_" + empresaBase() ->nameDB() + "_specs.spc" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) ) {
         _depura ( "END SubForm3::cargaSpecs", 0, "No se pudo abrir archivo" );
