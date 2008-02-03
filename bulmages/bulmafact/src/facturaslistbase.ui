@@ -885,7 +885,7 @@
   <customwidget>
    <class>BusquedaFecha</class>
    <extends>QWidget</extends>
-   <header>../../../bulmalib/src/busquedafecha.h</header>
+   <header>../../bulmalib/src/busquedafecha.h</header>
   </customwidget>
  </customwidgets>
  <resources>
