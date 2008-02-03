@@ -1,95 +1,45 @@
 <?xml version = '1.0'?>
 <kdevelop>
   <general>
-    <author>Tomeu Borras</author>
-    <email>tborras@conetxia.com</email>
-    <version>0.5.9</version>
-    <projectmanagement>KDevTrollProject</projectmanagement>
+  <projectmanagement>KDevCustomProject</projectmanagement>
+  <projectdirectory>/home/tborras/bulmages/trunk/bulmages</projectdirectory>
+  <absoluteprojectpath>true</absoluteprojectpath>
+    <author/>
+    <email/>
+    <version>$VERSION$</version>
     <primarylanguage>C++</primarylanguage>
-    <keywords>
-      <keyword>Qt</keyword>
-    </keywords>
-    <projectdirectory>.</projectdirectory>
-    <absoluteprojectpath>false</absoluteprojectpath>
-    <description/>
     <ignoreparts/>
-    <secondaryLanguages/>
+    <secondaryLanguages>
+      <language>C</language>
+    </secondaryLanguages>
     <projectname>bulmages</projectname>
   </general>
-  <kdevfileview>
-    <groups>
-      <group pattern="*.cpp;*.cxx;*.h" name="Sources" />
-      <group pattern="*.ui" name="User Interface" />
-      <group pattern="*.png" name="Icons" />
-      <group pattern="*" name="Others" />
-      <hidenonprojectfiles>false</hidenonprojectfiles>
-      <hidenonlocation>false</hidenonlocation>
-    </groups>
-    <tree>
-      <hidepatterns>pro</hidepatterns>
-      <hidenonprojectfiles>false</hidenonprojectfiles>
-      <showvcsfields>false</showvcsfields>
-    </tree>
-  </kdevfileview>
-  <kdevdoctreeview>
-    <ignoretocs>
-      <toc>gtk</toc>
-      <toc>gnustep</toc>
-      <toc>python</toc>
-      <toc>php</toc>
-      <toc>perl</toc>
-    </ignoretocs>
-    <projectdoc>
-      <userdocDir>html/</userdocDir>
-      <apidocDir>html/</apidocDir>
-    </projectdoc>
-    <ignoreqt_xml/>
-    <ignoredoxygen/>
-    <ignorekdocs/>
-    <ignoredevhelp/>
-  </kdevdoctreeview>
-  <kdevdebugger>
-    <general>
-      <dbgshell/>
-      <programargs/>
-      <gdbpath/>
-      <configGdbScript/>
-      <runShellScript/>
-      <runGdbScript/>
-      <breakonloadinglibs>true</breakonloadinglibs>
-      <separatetty>false</separatetty>
-      <floatingtoolbar>false</floatingtoolbar>
-      <runappinappdirectory>true</runappinappdirectory>
-    </general>
-    <display>
-      <staticmembers>false</staticmembers>
-      <demanglenames>true</demanglenames>
-      <outputradix>10</outputradix>
-    </display>
-  </kdevdebugger>
-  <kdevtrollproject>
+  <kdevcustomproject>
+    <filelistdirectory>/home/tborras/bulmages/trunk/bulmages</filelistdirectory>
     <run>
-      <mainprogram/>
+      <mainprogram>/home/tborras/bulmages/trunk/bulmages/bulmacont/src/bulmacont</mainprogram>
+      <directoryradio>custom</directoryradio>
+      <customdirectory>/home/tborras/bulmages/trunk/bulmages</customdirectory>
       <programargs/>
-      <directoryradio>executable</directoryradio>
-      <customdirectory>/</customdirectory>
       <terminal>false</terminal>
       <autocompile>true</autocompile>
       <envvars/>
     </run>
-    <general>
-      <activedir>bulmafact/src</activedir>
-    </general>
+    <build>
+      <buildtool>make</buildtool>
+      <builddir>/home/tborras/bulmages/trunk/bulmages</builddir>
+    </build>
     <make>
-      <abortonerror>true</abortonerror>
+      <abortonerror>false</abortonerror>
       <numberofjobs>1</numberofjobs>
       <dontact>false</dontact>
       <makebin/>
-      <envvars/>
-      <prio>0</prio>
+      <selectedenvironment>default</selectedenvironment>
+      <environments>
+        <default/>
+      </environments>
     </make>
-    <subclassing/>
-  </kdevtrollproject>
+  </kdevcustomproject>
   <kdevfilecreate>
     <filetypes/>
     <useglobaltypes>
@@ -98,8 +48,24 @@
       <type ext="h" />
     </useglobaltypes>
   </kdevfilecreate>
+  <kdevdoctreeview>
+    <projectdoc>
+      <userdocDir>html/</userdocDir>
+      <apidocDir>html/</apidocDir>
+    </projectdoc>
+    <ignoreqt_xml/>
+    <ignoredoxygen/>
+    <ignorekdocs/>
+    <ignoretocs/>
+    <ignoredevhelp/>
+  </kdevdoctreeview>
+  <cppsupportpart>
+    <filetemplates>
+      <interfacesuffix>.h</interfacesuffix>
+      <implementationsuffix>.cpp</implementationsuffix>
+    </filetemplates>
+  </cppsupportpart>
   <kdevcppsupport>
-    <references/>
     <codecompletion>
       <includeGlobalFunctions>true</includeGlobalFunctions>
       <includeTypes>true</includeTypes>
@@ -126,84 +92,31 @@
       <usePermanentCaching>true</usePermanentCaching>
       <alwaysIncludeNamespaces>false</alwaysIncludeNamespaces>
       <includePaths>.;</includePaths>
-      <parseMissingHeadersExperimental>false</parseMissingHeadersExperimental>
-      <resolveIncludePathsUsingMakeExperimental>false</resolveIncludePathsUsingMakeExperimental>
     </codecompletion>
-    <designerintegration>
-      <qtdesigner/>
-    </designerintegration>
+    <references/>
     <qt>
       <used>false</used>
       <version>3</version>
       <includestyle>3</includestyle>
       <root>/usr/share/qt3</root>
       <designerintegration>EmbeddedKDevDesigner</designerintegration>
-      <qmake>/usr/bin/qmake</qmake>
-      <designer>/usr/bin/designer</designer>
+      <qmake>/usr/bin/qmake-qt3</qmake>
+      <designer>/usr/bin/designer-qt3</designer>
       <designerpluginpaths/>
     </qt>
   </kdevcppsupport>
-  <cppsupportpart>
-    <filetemplates>
-      <interfacesuffix>.h</interfacesuffix>
-      <implementationsuffix>.cpp</implementationsuffix>
-      <choosefiles>false</choosefiles>
-      <interfaceURL/>
-      <implementationURL/>
-      <lowercasefilenames>true</lowercasefilenames>
-    </filetemplates>
-    <codecompletion/>
-  </cppsupportpart>
-  <kdevcvs>
-    <cvsoptions>-f</cvsoptions>
-    <commitoptions/>
-    <updateoptions>-dP</updateoptions>
-    <addoptions/>
-    <removeoptions>-f</removeoptions>
-    <diffoptions>-u3 -p</diffoptions>
-    <logoptions/>
-    <rshoptions>ssh</rshoptions>
-  </kdevcvs>
-  <kdevclassview>
-    <folderhierarchy>true</folderhierarchy>
-    <depthoffolders>2</depthoffolders>
-  </kdevclassview>
-  <kdevcvsservice>
-    <recursivewhenupdate>true</recursivewhenupdate>
-    <prunedirswhenupdate>true</prunedirswhenupdate>
-    <createdirswhenupdate>true</createdirswhenupdate>
-    <recursivewhencommitremove>true</recursivewhencommitremove>
-    <revertoptions>-C</revertoptions>
-  </kdevcvsservice>
-  <dist>
-    <custom>false</custom>
-    <bzip>false</bzip>
-    <archname/>
-    <appname>bulmages.kdevelop</appname>
-    <version>0.5.9</version>
-    <release/>
-    <vendor/>
-    <licence/>
-    <summary/>
-    <group/>
-    <packager/>
-    <description/>
-    <changelog/>
-    <devpackage>false</devpackage>
-    <docspackage>false</docspackage>
-    <appicon>false</appicon>
-    <arch>0</arch>
-    <genHTML>false</genHTML>
-    <useRPM>false</useRPM>
-    <ftpkde>false</ftpkde>
-    <appskde>false</appskde>
-    <url/>
-  </dist>
-  <kdevdocumentation>
-    <projectdoc>
-      <docsystem/>
-      <docurl/>
-      <usermanualurl/>
-    </projectdoc>
-  </kdevdocumentation>
+  <kdevfileview>
+    <groups>
+      <group pattern="CMakeLists.txt;*.cmake;CMakeLists.txt.private;version.in;bulmages.conf.in;bulmafact.conf.in;bulmacont.conf.in;bulmatpv.conf.in;installbulmages-db.in;uninstallbulmages.in;actualizabulmacont.in;actualizabulmafact.in;creabulmacont.in;creabulmafact.in;" name="CMake" />
+      <group pattern="*.h;*.hxx" name="Header" />
+      <group pattern="*.cpp;*.c;*.C;*.cxx" name="Sources" />
+      <group pattern="*.ui" name="Qt Designer files" />
+      <hidenonprojectfiles>true</hidenonprojectfiles>
+      <hidenonlocation>false</hidenonlocation>
+    </groups>
+    <tree>
+      <hidepatterns>*.o,*.lo,CVS,*~,cmake*</hidepatterns>
+      <hidenonprojectfiles>true</hidenonprojectfiles>
+    </tree>
+  </kdevfileview>
 </kdevelop>

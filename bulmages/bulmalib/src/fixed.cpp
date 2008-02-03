@@ -123,10 +123,10 @@ Fixed operator / ( int x, Fixed y )
 \param separadorDecimal
 \return
 **/
-QString Fixed::toQString ( QChar separadorDecimal )
+QString Fixed::toQString ( QChar separadorDecimal, int precision )
 {
     _depura ( "Fixed::toQString", 0 );
-    setprecision ( 2 );
+    setprecision ( precision );
     int options = COMMAS;
     Fixed_numerator x = value;
     bool negative;
