@@ -33,7 +33,7 @@ FILE(GLOB conf_etc ${CMAKE_BINARY_DIR}/bulmacont.conf
 					${CMAKE_BINARY_DIR}/bulmafact.conf
 					${CMAKE_BINARY_DIR}/bulmages.conf
 					${CMAKE_BINARY_DIR}/bulmatpv.conf)
-install(FILES ${conf_etc} DESTINATION /etc/bulmages)
+install(FILES ${conf_etc} DESTINATION ${BULMAGES_CONFIG_DIR} )
 
 
 set (scripts installbulmages-client
