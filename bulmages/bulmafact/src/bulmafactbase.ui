@@ -9,6 +9,12 @@
     <height>691</height>
    </rect>
   </property>
+  <property name="minimumSize" >
+   <size>
+    <width>750</width>
+    <height>550</height>
+   </size>
+  </property>
   <property name="focusPolicy" >
    <enum>Qt::StrongFocus</enum>
   </property>
@@ -25,7 +31,7 @@
      <x>0</x>
      <y>0</y>
      <width>1016</width>
-     <height>29</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuCompras" >

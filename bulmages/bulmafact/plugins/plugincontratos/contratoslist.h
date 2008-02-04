@@ -111,10 +111,9 @@ public slots:
     virtual void on_mui_crear_clicked();
     virtual void on_mui_editar_clicked();
     virtual void on_mui_imprimir_clicked();
-
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_configurar_toggled ( bool checked );
-
+    virtual void on_mui_facturar_clicked();
 signals:
     void selected ( QString );
 };
