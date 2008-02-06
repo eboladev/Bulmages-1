@@ -47,6 +47,10 @@ FacturasList::FacturasList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
 {
     _depura ( "FacturasList::FacturasList", 0 );
     setupUi ( this );
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza ( "FacturasList_FacturasList", this );
+    if ( res != 0 )
+        return;
     iniciaForm();
     mdb_idfactura = "";
     setSubForm ( mui_list );
@@ -68,6 +72,10 @@ FacturasList::FacturasList ( Company *comp, QWidget *parent, Qt::WFlags flag, ed
 {
     _depura ( "FacturasList::FacturasList", 0 );
     setupUi ( this );
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza ( "FacturasList_FacturasList", this );
+    if ( res != 0 )
+        return;
     iniciaForm();
     m_cliente->setEmpresaBase ( empresaBase() );
     m_articulo->setEmpresaBase ( empresaBase() );

@@ -469,14 +469,21 @@ int postgresiface2::formatofecha()
     PQclear ( res );
 
     /// Establecemos la codificacion por defecto a UNICODE.
-    /// Pero con los problemas que está teniendo el UNICODE lo vamos a dejar en
-    /// SQL_ASCII QUE funciona bastante mejor.
     query = "SET client_encoding = 'UTF8'";
     res = PQexec ( conn, query.toAscii().data() );
     if ( !res || PQresultStatus ( res ) != PGRES_COMMAND_OK ) {
         _depura ( "Cambio del formato de codificacion" );
     } // end if
     PQclear ( res );
+
+    /// Establecemos la zona horaria de Madrid
+    query = "SET TIME ZONE  'Europe/Madrid'";
+    res = PQexec ( conn, query.toAscii().data() );
+    if ( !res || PQresultStatus ( res ) != PGRES_COMMAND_OK ) {
+        _depura ( "Cambio de zona horaria" );
+    } // end if
+    PQclear ( res );
+
     _depura ( "END postgresiface2::formatofecha", 0 );
     return 0;
 }

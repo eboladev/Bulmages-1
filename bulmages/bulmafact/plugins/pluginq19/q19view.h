@@ -1,6 +1,7 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2004 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -18,20 +19,48 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
+#ifndef COBROVIEW_H
+#define COBROVIEW_H
 
+#include <QLineEdit>
+#include <QLabel>
+#include <QCheckBox>
+#include <QTextStream>
 
-#include "cobroslist.h"
+#include "ui_q19base.h"
+#include "postgresiface2.h"
+#include "busquedafecha.h"
+#include "dialogchanges.h"
+#include "fichabf.h"
 #include "facturaslist.h"
-#include "bulmafact.h"
+
+class Company;
 
 
-extern "C" MY_EXPORT int CobrosList_CobrosList ( CobrosList * );
-extern "C" MY_EXPORT int FacturasList_FacturasList ( FacturasList * );
-extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+/** Ventana de ficha de cobro.
+    Se encarga de la presentacion de la ficha de cobro y del tratamiento de eventos producidos
+    en dicha ventana.
+    Deriva de Ficha para metodos comunes a todas las ventanas.
+    Deriva de Cobro para el manejo de la Base de datos. */
+class Q19View : public FichaBf, public Ui_Q19Base
+{
+    Q_OBJECT
 
+public:
+    FacturasList *m_facturasList;
+
+    Q19View (FacturasList *,  Company *, QWidget * );
+    ~Q19View();
+
+    QByteArray cobroQ19 ( QTextStream &, QString );
+    QByteArray cabeceraPresentador ( QTextStream &, QString );
+    QByteArray cabeceraOrdenante ( QTextStream &, QString );
+    QByteArray totalOrdenante ( QTextStream &, QString, QString, QString );
+    QByteArray totalGeneral ( QTextStream &, QString , QString , QString  );
+    /// Como ya es un signaling slot en la clase ficha no se delcara como slot.
+    virtual void on_mui_aceptar_clicked();
+
+};
+
+#endif
 

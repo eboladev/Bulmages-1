@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2007 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,21 +17,37 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifndef IMPQTOOLBUTTON1_H
+#define IMPQTOOLBUTTON1_H
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
-
-
-#include "cobroslist.h"
+#include <QWidget>
+#include <QToolButton>
+#include <QString>
+#include "company.h"
+#include "funcaux.h"
+#include <QtXml/QDomDocument>
+#include <QMap>
+#include <QString>
 #include "facturaslist.h"
-#include "bulmafact.h"
 
 
-extern "C" MY_EXPORT int CobrosList_CobrosList ( CobrosList * );
-extern "C" MY_EXPORT int FacturasList_FacturasList ( FacturasList * );
-extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+class Q19QToolButton1 : public QToolButton
+{
+    Q_OBJECT
+
+private:
+    Company *m_companyact;
+    FacturasList     *m_facturasList;
+
+public:
+    Q19QToolButton1 ( FacturasList *cob = NULL, QWidget *parent = NULL );
+    ~Q19QToolButton1();
+    void setBoton();
+
+public slots:
+    virtual void click();
+
+};
 
 
+#endif
