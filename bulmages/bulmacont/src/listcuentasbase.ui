@@ -451,7 +451,7 @@
         <number>5</number>
        </property>
        <item>
-        <widget class="QTreeWidget" name="ListView1" />
+        <widget class="QTreeWidget" name="mui_arbolcuentas" />
        </item>
       </layout>
      </widget>
@@ -467,7 +467,7 @@
         <number>5</number>
        </property>
        <item row="0" column="0" >
-        <widget class="QTableWidget" name="tablacuentas" />
+        <widget class="QTableWidget" name="mui_tablacuentas" />
        </item>
       </layout>
      </widget>
@@ -479,14 +479,14 @@
  <tabstops>
   <tabstop>mui_busqueda</tabstop>
   <tabstop>TabWidget2</tabstop>
-  <tabstop>ListView1</tabstop>
+  <tabstop>mui_arbolcuentas</tabstop>
   <tabstop>mui_editar</tabstop>
   <tabstop>mui_borrar</tabstop>
   <tabstop>mui_imprimir</tabstop>
   <tabstop>mui_exportar</tabstop>
   <tabstop>mui_importar</tabstop>
   <tabstop>mui_actualizar</tabstop>
-  <tabstop>tablacuentas</tabstop>
+  <tabstop>mui_tablacuentas</tabstop>
  </tabstops>
  <resources>
   <include location="../../bulmages.qrc" />

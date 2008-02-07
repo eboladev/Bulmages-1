@@ -346,7 +346,7 @@ QByteArray Q19View::cobroQ19 ( QTextStream &out, QString idfactura )
     cab_indob.append ( codrefint.toAscii() );
 
     /// Primer campo de concepto Longitud: 40
-    QString concepto = curcobro->valor ( "comentfactura" );
+    QString concepto = curcobro->valor ( "descfactura" );
     concepto = concepto.leftJustified ( 40, ' ' );
     concepto = concepto.left ( 40 );
     cab_indob.append ( concepto.toAscii() );

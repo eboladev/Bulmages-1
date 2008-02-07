@@ -60,7 +60,7 @@ listcuentasview1::listcuentasview1 ( Empresa *emp, QWidget *parent, Qt::WFlags f
     /// Para el listado de columnas hacemos una inicializaci&oacute;n.
     QStringList headers;
     headers << tr ( "Codigo cuenta" ) << tr ( "Nombre cuenta" ) << tr ( "Debe" ) << tr ( "Haber" ) << tr ( "ID cuenta" ) << tr ( "Bloqueada" ) << tr ( "Nodebe" ) << tr ( "Nohaber" ) << tr ( "Regularizacion" ) << tr ( "Imputacion" ) << tr ( "Grupo" ) << tr ( "Tipo cuenta" );
-    ListView1->setHeaderLabels ( headers );
+    mui_arbolcuentas->setHeaderLabels ( headers );
     ccuenta = 0;
     cdesccuenta = 1;
     cdebe = 2;
@@ -74,23 +74,23 @@ listcuentasview1::listcuentasview1 ( Empresa *emp, QWidget *parent, Qt::WFlags f
     cgrupo = 10;
     ctipocuenta = 11;
 
-    ListView1->setColumnWidth ( ccuenta, 175 );
-    ListView1->setColumnWidth ( cdesccuenta, 400 );
-    ListView1->hideColumn ( cidcuenta );
-    ListView1->hideColumn ( cnodebe );
-    ListView1->hideColumn ( cnohaber );
-    ListView1->hideColumn ( cregularizacion );
-    ListView1->hideColumn ( cimputacion );
-    ListView1->hideColumn ( cgrupo );
-    ListView1->hideColumn ( ctipocuenta );
+    mui_arbolcuentas->setColumnWidth ( ccuenta, 175 );
+    mui_arbolcuentas->setColumnWidth ( cdesccuenta, 400 );
+    mui_arbolcuentas->hideColumn ( cidcuenta );
+    mui_arbolcuentas->hideColumn ( cnodebe );
+    mui_arbolcuentas->hideColumn ( cnohaber );
+    mui_arbolcuentas->hideColumn ( cregularizacion );
+    mui_arbolcuentas->hideColumn ( cimputacion );
+    mui_arbolcuentas->hideColumn ( cgrupo );
+    mui_arbolcuentas->hideColumn ( ctipocuenta );
 
-    tablacuentas->setColumnCount ( 3 );
+    mui_tablacuentas->setColumnCount ( 3 );
     headers << tr ( "CODIGO" ) << tr ( "NOMBRE" );
-    tablacuentas->setHorizontalHeaderLabels ( headers );
+    mui_tablacuentas->setHorizontalHeaderLabels ( headers );
 
-    tablacuentas->hideColumn ( 2 );
-    tablacuentas->setColumnWidth ( 1, 400 );
-    tablacuentas->setColumnWidth ( 0, 100 );
+    mui_tablacuentas->hideColumn ( 2 );
+    mui_tablacuentas->setColumnWidth ( 1, 400 );
+    mui_tablacuentas->setColumnWidth ( 0, 100 );
 
     installEventFilter ( this );
     if ( m_modo == EditMode )
@@ -138,7 +138,7 @@ int listcuentasview1::inicializa()
         QMap <int, QTreeWidgetItem*> Lista1;
         int idcuenta;
         int padre;
-        ListView1->clear();
+        mui_arbolcuentas->clear();
 
         /// Cargamos y pintamos las cuentas hijas.
         cursor2 *ctas = empresaBase() ->cargacursor ( "SELECT * FROM cuenta ORDER BY codigo" );
@@ -146,7 +146,7 @@ int listcuentasview1::inicializa()
             idcuenta = ctas->valor ( "idcuenta" ).toInt();
             padre = ctas->valor ( "padre" ).toInt();
             if ( padre == 0 ) {
-                it = new QTreeWidgetItem ( ListView1 );
+                it = new QTreeWidgetItem ( mui_arbolcuentas );
                 Lista1[idcuenta] = it;
             } else {
                 it = new QTreeWidgetItem ( Lista1[padre] );
@@ -173,7 +173,7 @@ int listcuentasview1::inicializa()
                 it->setIcon ( ccuenta, QPixmap ( cingresos ) );
             else if ( ctas->valor ( "tipocuenta" ) == "5" )
                 it->setIcon ( ccuenta, QPixmap ( cgastos ) );
-            ListView1->setItemExpanded ( it, TRUE );
+            mui_arbolcuentas->setItemExpanded ( it, TRUE );
             ctas->siguienteregistro();
         } // end while
         delete ctas;
@@ -204,7 +204,7 @@ void listcuentasview1::inicializatabla()
     QString query;
     query = "SELECT * FROM cuenta ORDER BY codigo";
     cursor2 *cursoraux1 = empresaBase() ->cargacursor ( query );
-    tablacuentas->setRowCount ( cursoraux1->numregistros() );
+    mui_tablacuentas->setRowCount ( cursoraux1->numregistros() );
     int i = 0;
     QTableWidgetItem *dato;
     while ( !cursoraux1->eof() ) {
@@ -221,17 +221,17 @@ void listcuentasview1::inicializatabla()
             dato->setIcon ( QPixmap ( cingresos ) );
         else if ( cursoraux1->valor ( "tipocuenta" ) == "5" )
             dato->setIcon ( QPixmap ( cgastos ) );
-        tablacuentas->setItem ( i, 0, dato );
+        mui_tablacuentas->setItem ( i, 0, dato );
         dato = new QTableWidgetItem ( cursoraux1->valor ( "descripcion" ) );
         dato->setFlags ( Qt::ItemIsEnabled );
-        tablacuentas->setItem ( i, 1, dato );
+        mui_tablacuentas->setItem ( i, 1, dato );
         dato->setFlags ( Qt::ItemIsEnabled );
         dato = new QTableWidgetItem ( cursoraux1->valor ( "idcuenta" ) );
-        tablacuentas->setItem ( i, 2, dato );
+        mui_tablacuentas->setItem ( i, 2, dato );
 
         QString codigo = cursoraux1->valor ( "codigo" );
         if ( ( unsigned int ) codigo.length() != numdigitos ) {
-            tablacuentas->hideRow ( i );
+            mui_tablacuentas->hideRow ( i );
         } // end if
         cursoraux1->siguienteregistro();
         i++;
@@ -248,20 +248,20 @@ void listcuentasview1::inicializatabla()
 /**
 \param it
 **/
-void listcuentasview1::on_ListView1_itemClicked ( QTreeWidgetItem *it, int )
+void listcuentasview1::on_mui_arbolcuentas_itemClicked ( QTreeWidgetItem *it, int )
 {
-    _depura ( "listcuentasview1::on_ListView1_itemClicked", 0 );
+    _depura ( "listcuentasview1::on_mui_arbolcuentas_itemClicked", 0 );
     QString idcuenta = it->text ( cidcuenta );
     QString cad;
-    for ( int i = 0; i < tablacuentas->rowCount() - 1; i++ ) {
-        cad = tablacuentas->item ( i, 2 ) ->text();
+    for ( int i = 0; i < mui_tablacuentas->rowCount() - 1; i++ ) {
+        cad = mui_tablacuentas->item ( i, 2 ) ->text();
         if ( cad == idcuenta ) {
-            tablacuentas->setCurrentCell ( i, 2 );
-            tablacuentas->scrollToItem ( tablacuentas->item ( i, 2 ), QAbstractItemView::EnsureVisible );
+            mui_tablacuentas->setCurrentCell ( i, 2 );
+            mui_tablacuentas->scrollToItem ( mui_tablacuentas->item ( i, 2 ), QAbstractItemView::EnsureVisible );
             break;
         } // end if
     } // end for
-    _depura ( "END listcuentasview1::on_ListView1_itemClicked", 0 );
+    _depura ( "END listcuentasview1::on_mui_arbolcuentas_itemClicked", 0 );
 }
 
 
@@ -276,16 +276,16 @@ void listcuentasview1::on_mui_busqueda_textChanged ( const QString &string1 )
     _depura ( "listcuentasview1::on_mui_busqueda_textChanged", 0 );
     QList<QTreeWidgetItem *> it;
     QString cod = extiendecodigo ( string1, ( int ) numdigitos );
-    it = ListView1->findItems ( cod, Qt::MatchStartsWith, ccuenta );
+    it = mui_arbolcuentas->findItems ( cod, Qt::MatchStartsWith, ccuenta );
     if ( it.count() > 0 ) {
-        ListView1->setCurrentItem ( it.first() );
+        mui_arbolcuentas->setCurrentItem ( it.first() );
     } else {
-        QTreeWidgetItemIterator it ( ListView1 );
+        QTreeWidgetItemIterator it ( mui_arbolcuentas );
         QRegExp patron ( "^.*" + string1 + ".*$" );
         patron.setCaseSensitivity ( Qt::CaseInsensitive );
         while ( *it ) {
             if ( patron.exactMatch ( ( *it ) ->text ( cdesccuenta ) ) )
-                ListView1->setCurrentItem ( *it );
+                mui_arbolcuentas->setCurrentItem ( *it );
             ++it;
         } // end while
     } // end if
@@ -301,10 +301,10 @@ void listcuentasview1::on_mui_busqueda_textChanged ( const QString &string1 )
 /**
 \param it
 **/
-void listcuentasview1::on_ListView1_itemDoubleClicked ( QTreeWidgetItem *it, int )
+void listcuentasview1::on_mui_arbolcuentas_itemDoubleClicked ( QTreeWidgetItem *it, int )
 {
-    _depura ( "listcuentasview1::on_ListView1_doubleClicked", 0 );
-    on_ListView1_itemClicked ( it, 0 );
+    _depura ( "listcuentasview1::on_mui_arbolcuentas_doubleClicked", 0 );
+    on_mui_arbolcuentas_itemClicked ( it, 0 );
     mdb_codcuenta = it->text ( ccuenta );
     mdb_idcuenta = it->text ( cidcuenta );
     mdb_desccuenta = it->text ( cdesccuenta );
@@ -317,7 +317,7 @@ void listcuentasview1::on_ListView1_itemDoubleClicked ( QTreeWidgetItem *it, int
     } else {
         emit ( selected ( mdb_idcuenta ) );
     } // end if
-    _depura ( "END listcuentasview1::on_ListView1_doubleClicked", 0 );
+    _depura ( "END listcuentasview1::on_mui_arbolcuentas_doubleClicked", 0 );
 }
 
 
@@ -337,9 +337,9 @@ void listcuentasview1::on_mui_crear_clicked()
 
     CuentaView *nuevae = new CuentaView ( empresaBase(), 0 );
 
-    if ( ListView1->selectedItems().count() > 0 ) {
+    if ( mui_arbolcuentas->selectedItems().count() > 0 ) {
         QTreeWidgetItem * it;
-        it = ListView1->currentItem();
+        it = mui_arbolcuentas->currentItem();
         if ( it ) {
             codigo = it->text ( ccuenta );
             nuevae->nuevacuenta ( codigo );
@@ -365,13 +365,13 @@ void listcuentasview1::on_mui_editar_clicked()
 {
     _depura ( "listcuentasview1::on_mui_editar_clicked", 0 );
     QTreeWidgetItem *it;
-    it = ListView1->currentItem();
+    it = mui_arbolcuentas->currentItem();
     if ( !it ) {
         mensajeInfo ( tr ( "Debe seleccionar una cuenta" ) );
         _depura ( "END listcuentasview1::on_mui_editar_clicked", 0, "Debe seleccionar una cuenta" );
         return;
     }
-    on_ListView1_itemClicked ( it, 0 );
+    on_mui_arbolcuentas_itemClicked ( it, 0 );
     mdb_codcuenta = it->text ( ccuenta );
     mdb_idcuenta = it->text ( cidcuenta );
     mdb_desccuenta = it->text ( cdesccuenta );
@@ -391,7 +391,7 @@ void listcuentasview1::on_mui_borrar_clicked()
 {
     _depura ( "listcuentasview1::on_mui_borrar_clicked", 0 );
     QTreeWidgetItem *it;
-    it = ListView1->currentItem();
+    it = mui_arbolcuentas->currentItem();
     if ( !it ) {
         mensajeInfo ( tr ( "Debe seleccionar una cuenta" ) );
         return;
@@ -420,15 +420,18 @@ void listcuentasview1::on_mui_borrar_clicked()
 /**
 \param row
 **/
-void listcuentasview1::on_tablacuentas_doubleClicked ( int row, int, int, const QPoint & )
+void listcuentasview1::on_mui_tablacuentas_cellDoubleClicked ( int row, int )
 {
-    _depura ( "listcuentasview1::on_tablacuentas_doubleClicked", 0 );
-    QString idcuenta = tablacuentas->item ( row, 2 ) ->text();
+    _depura ( "listcuentasview1::on_mui_tablacuentas_doubleClicked", 0 );
+    QString idcuenta = mui_tablacuentas->item ( row, 2 ) ->text();
     QList <QTreeWidgetItem *> it;
-    it = ListView1->findItems ( idcuenta, Qt::MatchExactly, cidcuenta );
-    ListView1->setCurrentItem ( it.first() );
-    on_ListView1_itemDoubleClicked ( it.first(), 0 );
-    _depura ( "END listcuentasview1::on_tablacuentas_doubleClicked", 0 );
+
+    it = mui_arbolcuentas->findItems ( idcuenta, Qt::MatchRecursive | Qt::MatchExactly, cidcuenta );
+    if (! it.isEmpty() ) {
+    	mui_arbolcuentas->setCurrentItem ( it.first() );
+    	on_mui_arbolcuentas_itemDoubleClicked ( it.first(), 0 );
+    } // end if
+    _depura ( "END listcuentasview1::on_mui_tablacuentas_doubleClicked", 0 );
 }
 
 
@@ -438,9 +441,9 @@ void listcuentasview1::on_tablacuentas_doubleClicked ( int row, int, int, const 
 void listcuentasview1::on_mui_busqueda_editFinished()
 {
     _depura ( "listcuentasview1::on_mui_busqueda_editFinished", 0 );
-    QTreeWidgetItem *it = ListView1->currentItem();
+    QTreeWidgetItem *it = mui_arbolcuentas->currentItem();
     if ( it != 0 ) {
-        on_ListView1_itemDoubleClicked ( it, 0 );
+        on_mui_arbolcuentas_itemDoubleClicked ( it, 0 );
     } // end if
     _depura ( "END listcuentasview1::on_mui_busqueda_editFinished", 0 );
 }

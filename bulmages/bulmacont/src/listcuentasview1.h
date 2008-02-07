@@ -81,11 +81,11 @@ private:
     void inicializatabla();
 
 private slots:
-    virtual void on_ListView1_itemClicked ( QTreeWidgetItem *, int );
-    virtual void on_ListView1_itemDoubleClicked ( QTreeWidgetItem *, int );
+    virtual void on_mui_arbolcuentas_itemClicked ( QTreeWidgetItem *, int );
+    virtual void on_mui_arbolcuentas_itemDoubleClicked ( QTreeWidgetItem *, int );
 
 public slots:
-    virtual void on_tablacuentas_doubleClicked ( int, int, int, const QPoint & );
+    virtual void on_mui_tablacuentas_cellDoubleClicked ( int row, int);
     virtual void on_mui_editar_clicked();
     virtual void on_mui_crear_clicked();
     virtual void on_mui_busqueda_textChanged ( const QString & );
