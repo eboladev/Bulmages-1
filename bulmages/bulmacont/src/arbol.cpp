@@ -180,6 +180,7 @@ void Arbol::actualizahojas ( cursor2 *cuenta )
     tipohoja *hojaraiz;
 
     QString cuentapadre = cuenta->valor ( "codigo" ).left ( 2 );
+    /// Buscamos la rama del arbol que es la padre la cuenta pasada.
     do {
         hojaraiz = raiz[i];
         if(i <70)
@@ -191,6 +192,8 @@ void Arbol::actualizahojas ( cursor2 *cuenta )
             condition = false;
     } while ( condition );
     actualizado = false;
+
+    /// Si la rama encontrada tiene hijos se actualiza
     if ( hojaraiz->ramas ) {
         ActualizarHoja ( & ( hojaraiz->ramas ), cuenta, &actualizado );
         if ( actualizado ) {
@@ -217,10 +220,15 @@ void Arbol::actualizahojas ( cursor2 *cuenta )
 void Arbol::ActualizarHoja ( tiporama** ramaraiz, cursor2* cuenta, bool* actualizado )
 {
     _depura ( "Arbol::ActualizarHoja", 0 );
+
+
     tiporama* rama = *ramaraiz;
+
+    int idcuenta = cuenta->valor ( "idcuenta" ).toInt();
+
     /// Buscamos por cada una de las ramas.
     while ( rama && ! ( *actualizado ) ) {
-        int idcuenta = atoi ( cuenta->valor ( "idcuenta" ).toAscii().constData() );
+
         if ( rama->hoja->idcuenta == idcuenta ) {
             /// Ponemos los valores obtenidos de la BD.
             rama->hoja->saldoant = Fixed ( cuenta->valor ( "saldoant" ) );
@@ -231,6 +239,8 @@ void Arbol::ActualizarHoja ( tiporama** ramaraiz, cursor2* cuenta, bool* actuali
             rama->hoja->haberej = Fixed ( cuenta->valor ( "haberej" ) );
             rama->hoja->saldoej = Fixed ( cuenta->valor ( "saldoej" ) );
             rama->hoja->numapuntes = cuenta->valor ( "numapuntes" ).toInt();
+            _depura ( "Arbol::ActualizarHoja", 2, cuenta->valor("codigo") + " " + QString::number(rama->hoja->numapuntes) );
+
             *actualizado = true;
         } else {
             if ( rama->hoja->ramas ) {
@@ -266,7 +276,7 @@ void Arbol::inicia()
 }
 
 
-///
+/// Busca el Siguiente elemento que no sea descartable.
 /**
 \param nivel
 \param superiores

@@ -240,13 +240,13 @@ int Empresa::createMainWindows ( Splash *splash )
         m_pWorkspace->addWindow ( balance );
 
         /// pb = 50%
-        /*
+/*
             splash->mensaje(QApplication::translate("company", "Inicializando Balance Jerarquico"));
             splash->setBarraProgreso(50);
             m_progressbar->setValue(50);
             balance1 = new BalanceTreeView(this, 0);
             m_pWorkspace->addWindow(balance1);
-        */
+*/
 
         /// pb = 60%
         splash->mensaje ( QApplication::translate ( "company", "Inicializando Asientos" ) );

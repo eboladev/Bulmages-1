@@ -23,7 +23,7 @@ set(bulmacont_MOCS bulmacont.h
            cuentaview.h 
            diarioview.h 
            extractoview1.h 
-           balance1view.h 
+#           balance1view.h 
            balanceview.h 
            aplinteligentesview.h 
            asientosview.h 

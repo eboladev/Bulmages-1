@@ -193,6 +193,8 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
         QString query = "SELECT *, nivel(codigo) AS nivel FROM cuenta ORDER BY codigo";
 
         ramas = empresaBase() ->cargacursor ( query );
+
+	/// Creamos el arbol y lo inicializamos con todas las cuentas.
         Arbol *arbol;
         arbol = new Arbol;
         while ( !ramas->eof() ) {
@@ -240,7 +242,6 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
         query += " LEFT OUTER JOIN (SELECT idcuenta, (sum(debe) - sum(haber)) AS saldoant FROM apunte WHERE  fecha < '" + finicial + "' " + wherecostesycanales +  " GROUP BY idcuenta) AS anterior ON cuenta.idcuenta = anterior.idcuenta ORDER BY codigo";
 
 
-
         /// Poblamos el &aacute;rbol de hojas (cuentas).
         hojas = empresaBase() ->cargacursor ( query );
         while ( !hojas->eof() ) {
@@ -249,7 +250,9 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
             hojas->siguienteregistro();
         } // end while
         delete hojas;
+	/// Establecemos la hoja activa
         arbol->inicia();
+
         /// Por fin, presentamos los valores.
         /// Aunque antes, prepararemos el Widget con la cabecera a mostrar.
         QStringList headers, datos;
@@ -257,6 +260,7 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
         mui_list->setHeaderLabels ( headers );
         mui_list->clear();
 
+	/// Ponemos las columnas
 	mui_list->setColumnWidth(CUENTA, 100);
 	mui_list->setColumnWidth(DENOMINACION, 150);
 	mui_list->setColumnWidth(SALDO_ANT, 100);
@@ -276,6 +280,8 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
         /// adicional.
         QMap <int, QTreeWidgetItem *>::const_iterator ptrIt, i;
         ptrList.clear();
+
+	
         while ( arbol->deshoja ( nivel, jerarquico ) ) {
             QString lcuenta = arbol->hojaactual ( "codigo" );
             QString ldenominacion = arbol->hojaactual ( "descripcion" );

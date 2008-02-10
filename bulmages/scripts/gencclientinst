@@ -119,5 +119,5 @@ ln -s $1/bulmacont/plugins/pluginregistroiva/libpluginregistrodeiva.so        /u
 ln -s $1/bulmacont/plugins/plugincorrector/libplugincorrector.so        /usr/lib/bulmacont/plugins/
 ln -s $1/bulmacont/plugins/pluginadocumental/libpluginadocumental.so        /usr/lib/bulmacont/plugins/
 ln -s $1/bulmacont/plugins/plugindebugbc/libplugindebugbc.so        /usr/lib/bulmacont/plugins/
-
+ln -s $1/bulmacont/plugins/pluginbalancetree/libpluginbalancetree.so /usr/lib/bulmacont/plugins/
 

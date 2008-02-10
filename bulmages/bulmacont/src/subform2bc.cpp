@@ -29,12 +29,11 @@
 #include "empresa.h"
 #include "asiento1view.h"
 #include "extractoview1.h"
-#include "balance1view.h"
 #include "qtexteditdelegate.h"
 #include "qdoublespinbox2.h"
 #include "busquedacanal.h"
 #include "balanceview.h"
-
+#include "busquedaccoste.h"
 
 /// Constructor de la clase
 /**
