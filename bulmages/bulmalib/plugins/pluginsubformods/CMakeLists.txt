@@ -1,9 +1,30 @@
+# Copyright (C) 2008 by Leopold Palomo-Avellaneda                       #
+# leo@alaxarxa.net                                                      #
+# http://www.iglues.org                                                 #
+#                                                                       #
+# This program is free software; you can redistribute it and/or modify  #
+# it under the terms of the GNU General Public License as published by  #
+# the Free Software Foundation; either version 2 of the License, or     #
+# (at your option) any later version.                                   #
+#                                                                       #
+# This program is distributed in the hope that it will be useful,       #
+# but WITHOUT ANY WARRANTY; without even the implied warranty of        #
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         #
+# GNU General Public License for more details.                          #
+#                                                                       #
+# You should have received a copy of the GNU General Public License     #
+# along with this program; if not, write to the                         #
+# Free Software Foundation, Inc.,                                       #
+# 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
+#                                                                       #
+
 ###########################################
 # Plugin for bulmalib					  #
 ###########################################
 #pluginsubformods
 
 set (plugin pluginsubformods)
+
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
@@ -49,6 +70,8 @@ target_link_libraries(${plugin} bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 
 install_targets(/lib/bulmalib/plugins ${plugin})
 
+add_dependencies(${plugin} bulmalib)
+
 # 
 # set(TRANSLATIONS pluginsubformods_es.ts 
 #                 pluginsubformods_ca.ts 
@@ -56,31 +79,4 @@ install_targets(/lib/bulmalib/plugins ${plugin})
 #                 pluginsubformods_fr.ts 
 #                 pluginsubformods_de.ts 
 #                 pluginsubformods_zz.ts) 
-# 
-# INCLUDE(   ${QT_USE_FILE}   )
-# set(plugin_SRC pluginsubformods.cpp)
-# 
-# include_directories(
-#     ${QT_INCLUDE_DIR}
-# 	${PGSQL_INCLUDE_DIR}
-# 	${QT_QTXML_INCLUDE_DIR}
-# 	${CMAKE_CURRENT_BINARY_DIR}
-# 	${CMAKE_CURRENT_SOURCE_DIR}
-# 	${CMAKE_CURRENT_BINARY_DIR}/../../src/
-# 	${CMAKE_SOURCE_DIR}/bulmalib/src
-# #  PGSQL_LIBRARIES   - List of libraries when using PGSQL.
-# #  PGSQL_FOUND       -
-# )
-# 
-# 
-# ADD_DEFINITIONS(${QT_DEFINITIONS})
-# ADD_DEFINITIONS(-DQT_SHARED)
-# # build sources, moc'd sources, and rcc'd sources
-# add_library(pluginsubformods SHARED ${plugin_SRC})
-# 
-# set_target_properties( pluginsubformods PROPERTIES 
-#   SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
-#   VERSION "${BULMAGES_VERSION}")
-# 
-# target_link_libraries(pluginsubformods bulmalib ${QT_LIBRARIES}  ${QT_QTGUI_LIBRARY} ${PGSQL_LIBRARIES})
 # 

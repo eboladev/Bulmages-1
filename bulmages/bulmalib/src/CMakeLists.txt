@@ -1,3 +1,24 @@
+# Copyright (C) 2008 by Leopold Palomo-Avellaneda                       #
+# leo@alaxarxa.net                                                      #
+# http://www.iglues.org                                                 #
+#                                                                       #
+# This program is free software; you can redistribute it and/or modify  #
+# it under the terms of the GNU General Public License as published by  #
+# the Free Software Foundation; either version 2 of the License, or     #
+# (at your option) any later version.                                   #
+#                                                                       #
+# This program is distributed in the hope that it will be useful,       #
+# but WITHOUT ANY WARRANTY; without even the implied warranty of        #
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         #
+# GNU General Public License for more details.                          #
+#                                                                       #
+# You should have received a copy of the GNU General Public License     #
+# along with this program; if not, write to the                         #
+# Free Software Foundation, Inc.,                                       #
+# 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
+#                                                                       #
+
+
 #Bulmalib
 
 configure_file( ${CMAKE_SOURCE_DIR}/bulmalib/src/config.h.in  ${CMAKE_BINARY_DIR}/bulmalib/src/config.h @ONLY)
@@ -9,61 +30,61 @@ set(QT_USE_QTXML true)
 INCLUDE(${QT_USE_FILE})
 
 set(bulmalib_SRCS postgresiface2.cpp configuracion.cpp numerocuenta.cpp 
-           	funcaux.cpp logpass.cpp 
-			abreempresaview.cpp 
-			dialogchanges.cpp 
-			fixed.cpp 
-			msgerror.cpp 
-			busquedafecha.cpp 
-			qtable2.cpp 
-			pgimportfiles.cpp 
-			plugins.cpp 
-			busquedaperiodo.cpp 
-			dbrecord.cpp 
-			subform.cpp 
-			subform3.cpp 
-			listventanas.cpp 
-			qworkspace2.cpp 
-			qapplication2.cpp 
-			ficha.cpp 
-			empresabase.cpp 
-	   		qtexteditdelegate.cpp 
-		        qdoublespinbox2.cpp 
-	   		blwidget.cpp 
-			listado.cpp 
-			porcentajecarga.cpp 
-			busquedafecha2.cpp 
-			splashscreen.cpp 
-			fichacfg.cpp 
-			paisview.cpp 
-			busquedaprovincia.cpp 
-			qradiobutton2.cpp
-			qcombobox2.cpp)
+         funcaux.cpp logpass.cpp
+         abreempresaview.cpp
+         dialogchanges.cpp
+         fixed.cpp
+         msgerror.cpp
+         busquedafecha.cpp
+         qtable2.cpp 
+         pgimportfiles.cpp
+         plugins.cpp
+         busquedaperiodo.cpp
+         dbrecord.cpp
+         subform.cpp
+         subform3.cpp
+         listventanas.cpp
+         qworkspace2.cpp
+         qapplication2.cpp
+         ficha.cpp
+         empresabase.cpp
+         qtexteditdelegate.cpp
+         qdoublespinbox2.cpp
+         blwidget.cpp
+         listado.cpp
+         porcentajecarga.cpp
+         busquedafecha2.cpp
+         splashscreen.cpp
+         fichacfg.cpp
+         paisview.cpp
+         busquedaprovincia.cpp
+         qradiobutton2.cpp
+         qcombobox2.cpp)
 
 set(bulmalib_MOCS 
-			logpass.h 
-			abreempresaview.h 
-			msgerror.h 
-			busquedafecha.h 
-			qtable2.h 
-			busquedaperiodo.h 
-			subform3.h 
-			listventanas.h 
-			qworkspace2.h 
-			qapplication2.h 
-			ficha.h 
-	   		qtexteditdelegate.h 
-	           	qdoublespinbox2.h 
-			blwidget.h 
-			listado.h 
-			porcentajecarga.h 
-			busquedafecha2.h 
-			splashscreen.h 
-			fichacfg.h 
-			paisview.h 
-			busquedaprovincia.h 
-			qradiobutton2.h
-			qcombobox2.h)
+         logpass.h 
+         abreempresaview.h 
+         msgerror.h 
+         busquedafecha.h 
+         qtable2.h 
+         busquedaperiodo.h 
+         subform3.h 
+         listventanas.h 
+         qworkspace2.h 
+         qapplication2.h 
+         ficha.h 
+         qtexteditdelegate.h 
+         qdoublespinbox2.h 
+         blwidget.h 
+         listado.h 
+         porcentajecarga.h 
+         busquedafecha2.h 
+         splashscreen.h 
+         fichacfg.h 
+         paisview.h 
+         busquedaprovincia.h 
+         qradiobutton2.h
+         qcombobox2.h)
 
 #headers that are not moc'ed
 #			postgresiface2.h 
@@ -81,24 +102,23 @@ set(bulmalib_MOCS
 
 set(bulmalib_RCCS ../../bulmages.qrc)
 set(bulmalib_UIS logpassbase.ui 
-        abreempresabase.ui 
-        msgerrorbase.ui 
-        busquedafechabase.ui 
-        subform3base.ui 
-	 	porcentajecargabase.ui 
-	 	fichacfgbase.ui 
-	 	paisbase.ui)
+      abreempresabase.ui 
+      msgerrorbase.ui 
+      busquedafechabase.ui 
+      subform3base.ui 
+      porcentajecargabase.ui 
+      fichacfgbase.ui 
+      paisbase.ui)
 
 include_directories(
-    ${QT_INCLUDE_DIR}
-	${PGSQL_INCLUDE_DIR}
-	${QT_QTXML_INCLUDE_DIR}
-	${CMAKE_CURRENT_BINARY_DIR}
-	${CMAKE_CURRENT_SOURCE_DIR}
-	#${CMAKE_CURRENT_BINARY_DIR}/../../src/
-	${CMAKE_SOURCE_DIR}/bulmalib/src/
-	${CMAKE_BINARY_DIR}/bulmalib/src/
-	${CMAKE_SOURCE_DIR}/bulmacont/src/)
+      ${QT_INCLUDE_DIR}
+      ${PGSQL_INCLUDE_DIR}
+      ${QT_QTXML_INCLUDE_DIR}
+      ${CMAKE_CURRENT_BINARY_DIR}
+      ${CMAKE_CURRENT_SOURCE_DIR}
+      ${CMAKE_SOURCE_DIR}/bulmalib/src/
+      ${CMAKE_BINARY_DIR}/bulmalib/src/
+      ${CMAKE_SOURCE_DIR}/bulmacont/src/)
 
 
 # generate rules for building source files from the resources
@@ -134,12 +154,3 @@ install_targets(/lib bulmalib)
 #                 bulmalib_de.ts 
 #                 bulmalib_zz.ts 
 # 
-# 	   
-# 	   
-	   
-
-
-
-
-
-

@@ -1,4 +1,28 @@
+# Copyright (C) 2008 by Leopold Palomo-Avellaneda                       #
+# leo@alaxarxa.net                                                      #
+# http://www.iglues.org                                                 #
+#                                                                       #
+# This program is free software; you can redistribute it and/or modify  #
+# it under the terms of the GNU General Public License as published by  #
+# the Free Software Foundation; either version 2 of the License, or     #
+# (at your option) any later version.                                   #
+#                                                                       #
+# This program is distributed in the hope that it will be useful,       #
+# but WITHOUT ANY WARRANTY; without even the implied warranty of        #
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         #
+# GNU General Public License for more details.                          #
+#                                                                       #
+# You should have received a copy of the GNU General Public License     #
+# along with this program; if not, write to the                         #
+# Free Software Foundation, Inc.,                                       #
+# 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
+#                                                                       #
+
+
 # ########## Project setup ##########
+
+
+
 PROJECT(bulmages)
 CMAKE_MINIMUM_REQUIRED(VERSION 2.4.5)
 
@@ -60,14 +84,14 @@ SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "The BulmaGés Suite")
 SET(CPACK_PACKAGE_VENDOR "Iglues")
 SET(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_CURRENT_SOURCE_DIR}/README.txt")
 SET(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/installbulmages/COPYING.txt")
-SET(CPACK_PACKAGE_VERSION_MAJOR "0")
-SET(CPACK_PACKAGE_VERSION_MINOR "11")
-SET(CPACK_PACKAGE_VERSION_PATCH "1")
-SET(CPACK_PACKAGE_INSTALL_DIRECTORY "CMake ${CMake_VERSION_MAJOR}.${CMake_VERSION_MINOR}")
+SET(CPACK_PACKAGE_VERSION_MAJOR ${BULMAGES_VERSION_MAJOR})
+SET(CPACK_PACKAGE_VERSION_MINOR ${BULMAGES_VERSION_MINOR})
+SET(CPACK_PACKAGE_VERSION_PATCH ${BULMAGES_VERSION_PATCH})
+SET(CPACK_PACKAGE_INSTALL_DIRECTORY "CMake ${CMAKE_VERSION_MAJOR}.${CMAKE_VERSION_MINOR}")
 IF(WIN32 AND NOT UNIX)
   # There is a bug in NSI that does not handle full unix paths properly. Make
   # sure there is at least one set of four (4) backlasshes.
-  SET(CPACK_PACKAGE_ICON "${CMake_SOURCE_DIR}/installbulmages/icons\\\\iconbulmacont.xpm")
+  SET(CPACK_PACKAGE_ICON "${CMAKE_SOURCE_DIR}/installbulmages/icons\\\\iconbulmacont.xpm")
   SET(CPACK_NSIS_INSTALLED_ICON_NAME "bin\\\\bulmacont")
   SET(CPACK_NSIS_DISPLAY_NAME "${CPACK_PACKAGE_INSTALL_DIRECTORY} The BulmaGés Suite")
   SET(CPACK_NSIS_HELP_LINK "http:\\\\\\\\developer.berlios.de/projects/bulmages")
