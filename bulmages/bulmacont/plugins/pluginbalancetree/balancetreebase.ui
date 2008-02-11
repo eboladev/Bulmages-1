@@ -14,7 +14,7 @@
    <string>Balance jerarquico de Cuentas</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_arbolBalance.xpm</iconset>
+   <iconset/>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
@@ -29,7 +29,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>5</number>
+      <number>6</number>
      </property>
      <item>
       <widget class="QLabel" name="pixmapLabel1" >
@@ -54,7 +54,7 @@
         </size>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_arbolBalance.xpm</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_arbolBalance.xpm</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>
@@ -114,7 +114,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_filePrint.xpm</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_filePrint.xpm</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -148,7 +148,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_find.png</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_filter.xpm</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -188,7 +188,47 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_reload.png</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_reload.png</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
+          </property>
+          <property name="checkable" >
+           <bool>false</bool>
+          </property>
+          <property name="checked" >
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="mui_hojacalculo" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="toolTip" >
+           <string>Imprimir albaran</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Imprimir albaran</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_estadisticas.xpm</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -214,8 +254,8 @@
           </property>
           <property name="sizeHint" >
            <size>
-            <width>421</width>
-            <height>26</height>
+            <width>331</width>
+            <height>34</height>
            </size>
           </property>
          </spacer>
@@ -383,28 +423,8 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="0" >
-       <widget class="QLabel" name="textLabel1" >
-        <property name="text" >
-         <string>Centro de coste:</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
       <item row="2" column="3" >
        <widget class="QComboBox" name="combonivel" >
-        <property name="minimumSize" >
-         <size>
-          <width>150</width>
-          <height>0</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1" >
-       <widget class="BusquedaCCoste" name="mui_combocoste" >
         <property name="minimumSize" >
          <size>
           <width>150</width>
@@ -718,14 +738,9 @@
  <layoutdefault spacing="2" margin="5" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaCCoste</class>
-   <extends>QComboBox</extends>
-   <header>busquedaccoste.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaFecha</class>
    <extends>QWidget</extends>
-   <header>../../bulmalib/src/busquedafecha.h</header>
+   <header>../../../bulmalib/src/busquedafecha.h</header>
   </customwidget>
   <customwidget>
    <class>BusquedaCuenta</class>
@@ -734,7 +749,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../../bulmages.qrc" />
+  <include location="../../../bulmages.qrc" />
  </resources>
  <connections>
   <connection>

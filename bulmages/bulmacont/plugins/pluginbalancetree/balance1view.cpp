@@ -30,6 +30,9 @@
 #include "busquedacuenta.h"
 #include "asiento1view.h"
 
+#include "selectcanalview.h"
+#include "selectccosteview.h"
+
 /// Incluimos las imagenes que catalogan los tipos de cuentas.
 
 #include "images/cactivo.xpm"
@@ -76,8 +79,8 @@ BalanceTreeView::BalanceTreeView ( Empresa *emp, QWidget *parent, int )
     m_codigoinicial->hideNombre();
     m_codigofinal->hideNombre();
     /// Hacemos la carga de los centros de coste. Rellenamos el combobox correspondiente.
-    mui_combocoste->setEmpresaBase ( emp );
-    mui_combocoste->setidc_coste ( "0" );
+//    mui_combocoste->setEmpresaBase ( emp );
+//    mui_combocoste->setidc_coste ( "0" );
 
     listado->clear();
 
@@ -176,7 +179,7 @@ void BalanceTreeView::boton_extracto1 ( int tipo )
             fecha2.setYMD ( fechaact.year(), 12, 31 );
             break;
         } // end switch
-        empresaBase() ->extractoempresa() ->inicializa1 ( listado->currentItem() ->text ( CUENTA ), listado->currentItem() ->text ( CUENTA ), fecha1.toString ( "dd/MM/yyyy" ), fecha2.toString ( "dd/MM/yyyy" ), mui_combocoste->idc_coste().toInt() );
+//        empresaBase() ->extractoempresa() ->inicializa1 ( listado->currentItem() ->text ( CUENTA ), listado->currentItem() ->text ( CUENTA ), fecha1.toString ( "dd/MM/yyyy" ), fecha2.toString ( "dd/MM/yyyy" ), mui_combocoste->idc_coste().toInt() );
     } // end if
     empresaBase() ->extractoempresa() ->accept();
     empresaBase() ->extractoempresa() ->show();
@@ -250,7 +253,7 @@ void BalanceTreeView::inicializa1 ( QString codinicial, QString codfinal, QStrin
     m_fechainicial1->setText ( normalizafecha ( fecha1 ).toString ( "dd/MM/yyyy" ) );
     m_fechafinal1->setText ( normalizafecha ( fecha2 ).toString ( "dd/MM/yyyy" ) );
     /// Establecemos el centro de coste correspondiente.
-    mui_combocoste->setidc_coste ( QString::number ( idc_coste ) );
+//    mui_combocoste->setidc_coste ( QString::number ( idc_coste ) );
     _depura ( "END BalanceTreeView::inicializa1", 0 );
 }
 
@@ -272,16 +275,32 @@ void BalanceTreeView::presentar()
     QString cinicial = m_codigoinicial->codigocuenta();
     QString cfinal = m_codigofinal->codigocuenta();
     QString ejercicio = ffinal.right ( 4 );
+
     /// Hacemos la consulta de los apuntes a listar en la base de datos.
-    int idc_coste;
-    idc_coste = mui_combocoste->idc_coste().toInt();
+        // Consideraciones para centros de coste y canales
+        selectcanalview *scanal = empresaBase() ->getselcanales();
+        SelectCCosteView *scoste = empresaBase() ->getselccostes();
+        QString ccostes = scoste->cadcoste();
+	QString logicand = "";
+        if ( ccostes != "" ) {
+            ccostes = "AND apunte.idc_coste IN (" + ccostes + ") ";
+	
+        } // end if
+
+        QString ccanales = scanal->cadcanal();
+        if ( ccanales != "" ) {
+            ccanales =  " AND apunte.idcanal IN (" + ccanales + ") ";
+        } // end if
+
+	QString clauswhere = ccostes + ccanales;
+
 
     /// La consulta es compleja, requiere la creaci&oacute;n de una tabla temporal y de
     /// cierta mandanga por lo que puede causar problemas con el motor de base de datos.
     query = "CREATE TEMPORARY TABLE balancetemp AS SELECT cuenta.idcuenta, codigo, nivel(codigo) AS nivel, cuenta.descripcion, padre, tipocuenta ,debe, haber, tdebe, thaber,(tdebe - thaber) AS tsaldo, (debe - haber) AS saldo, adebe, ahaber, (adebe - ahaber) AS asaldo, ejdebe, ejhaber, (ejdebe - ejhaber) AS ejsaldo FROM cuenta";
-    query += " LEFT JOIN (SELECT idcuenta, sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' GROUP BY idcuenta) AS t1 ON t1.idcuenta = cuenta.idcuenta";
-    query += " LEFT JOIN (SELECT idcuenta, sum(debe) AS adebe, sum(haber) AS ahaber FROM apunte WHERE fecha < '" + finicial + "' GROUP BY idcuenta) AS t2 ON t2.idcuenta = cuenta.idcuenta";
-    query += " LEFT JOIN (SELECT idcuenta, sum(debe) AS ejdebe, sum(haber) AS ejhaber FROM apunte WHERE EXTRACT (YEAR FROM fecha) = '" + ejercicio + "' GROUP BY idcuenta) AS t3 ON t3.idcuenta = cuenta.idcuenta";
+    query += " LEFT JOIN (SELECT idcuenta, sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' " + clauswhere + "  GROUP BY idcuenta) AS t1 ON t1.idcuenta = cuenta.idcuenta";
+    query += " LEFT JOIN (SELECT idcuenta, sum(debe) AS adebe, sum(haber) AS ahaber FROM apunte WHERE fecha < '" + finicial + "' " + clauswhere + " GROUP BY idcuenta) AS t2 ON t2.idcuenta = cuenta.idcuenta";
+    query += " LEFT JOIN (SELECT idcuenta, sum(debe) AS ejdebe, sum(haber) AS ejhaber FROM apunte WHERE EXTRACT (YEAR FROM fecha) = '" + ejercicio + "' " + clauswhere + " GROUP BY idcuenta) AS t3 ON t3.idcuenta = cuenta.idcuenta";
 
     empresaBase() ->begin();
     empresaBase() ->ejecuta ( query );
@@ -358,19 +377,7 @@ void BalanceTreeView::presentar()
         } // end if
 
 
-        /// Establecemos los alineados del nuevo elemento creado.
-        it->setTextAlignment ( CUENTA, Qt::AlignLeft );
-        it->setTextAlignment ( DENOMINACION, Qt::AlignLeft );
-        it->setTextAlignment ( SALDO_ANT, Qt::AlignRight );
-        it->setTextAlignment ( DEBE, Qt::AlignRight );
-        it->setTextAlignment ( HABER, Qt::AlignRight );
-        it->setTextAlignment ( SALDO, Qt::AlignRight );
-        it->setTextAlignment ( DEBEEJ, Qt::AlignRight );
-        it->setTextAlignment ( HABEREJ, Qt::AlignRight );
-        it->setTextAlignment ( SALDOEJ, Qt::AlignRight );
-        it->setTextAlignment ( IDCUENTA, Qt::AlignRight );
-        it->setTextAlignment ( NIVEL, Qt::AlignRight );
-        it->setTextAlignment ( PADRE, Qt::AlignRight );
+
 
         it->treeWidget() ->expandItem ( it );
 
@@ -407,6 +414,10 @@ void BalanceTreeView::presentar()
         it->setText ( PADRE, cursorapt1->valor ( "padre" ) );
 
                 /// Formateamos un poquito la informaci&oacute;n mostrada.
+
+        /// Establecemos los alineados del nuevo elemento creado.
+
+
                 int tamanyo = 10;
                 if ( cursorapt1->valor ( "descripcion" ).length() > 40 ) {
                     tamanyo -= 1;
@@ -421,7 +432,6 @@ void BalanceTreeView::presentar()
                     } else {
                         it->setFont ( col, QFont ( "SansSerif", 10, QFont::Normal, false ) );
                     } // end if
-                    it->setTextAlignment ( col, Qt::AlignRight );
 
                     if ( cursorapt1->valor ( "nivel" ).toInt() == 2 ) {
                         it->setTextColor ( col, Qt::darkGray );
@@ -436,6 +446,18 @@ void BalanceTreeView::presentar()
                     } // end if
                 } // end for
 
+        it->setTextAlignment ( CUENTA, Qt::AlignLeft );
+        it->setTextAlignment ( DENOMINACION, Qt::AlignLeft );
+        it->setTextAlignment ( SALDO_ANT, Qt::AlignRight );
+        it->setTextAlignment ( DEBE, Qt::AlignRight );
+        it->setTextAlignment ( HABER, Qt::AlignRight );
+        it->setTextAlignment ( SALDO, Qt::AlignRight );
+        it->setTextAlignment ( DEBEEJ, Qt::AlignRight );
+        it->setTextAlignment ( HABEREJ, Qt::AlignRight );
+        it->setTextAlignment ( SALDOEJ, Qt::AlignRight );
+        it->setTextAlignment ( IDCUENTA, Qt::AlignRight );
+        it->setTextAlignment ( NIVEL, Qt::AlignRight );
+        it->setTextAlignment ( PADRE, Qt::AlignRight );
 
 
 
