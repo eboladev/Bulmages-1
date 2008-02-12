@@ -42,6 +42,8 @@ if(NOT PGSQL_FOUND)
   message(ERROR "Bulmages needs libpq to compile")
 endif(NOT PGSQL_FOUND)
 
+set( BULMAGES_CONFIG_DIR /etc/bulmages CACHE PATH "The location of bulmages configuration dir")
+
 ########### bulmages library ##########
 message(STATUS "Working on bulmalib")
 add_subdirectory(bulmalib)
@@ -106,7 +108,10 @@ SET(CPACK_PACKAGE_EXECUTABLES "bulmacont" "bulmafact" "bulmatpv")
 
 
 INCLUDE(CPack)
-set( BULMAGES_CONFIG_DIR /etc/bulmages CACHE PATH "The location of bulmages configuration dir")
+
+#if(BULMAGES_CONFIG_DIR STREQUAL "")
+#   set (BULMAGES_CONFIG_DIR /etc/bulmages)
+#endif(BULMAGES_CONFIG_DIR STREQUAL "")
 
 MARK_AS_ADVANCED(
 	BULMAGES_VERSION
