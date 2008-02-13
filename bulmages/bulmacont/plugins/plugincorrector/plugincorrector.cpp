@@ -31,6 +31,10 @@
 #include "plugincorrector.h"
 #include "correctorwidget.h"
 #include "empresa.h"
+#include "bdockwidget.h"
+
+BDockWidget *doc1;
+QAction *viewCorrector;
 
 ///
 /**
@@ -41,7 +45,7 @@ void entryPoint ( Bulmacont *bcont )
     _depura ( "Entrada del plugin Corrector", 10 );
     Empresa *emp = bcont->empresaactual();
     /// Vamos a probar con un docwindow.
-    QDockWidget *doc1 = new QDockWidget ( "Corrector", bcont );
+    doc1 = new BDockWidget ( "Corrector", bcont );
     doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
 
     doc1->setGeometry ( 100, 100, 100, 500 );
@@ -57,14 +61,42 @@ void entryPoint ( Bulmacont *bcont )
 
     /// A&ntilde;ade en el men&uacute; del programa la opci&oacuteMn para
     /// acceder al corrector.
-    QAction *viewCorrector = new QAction ( "&Corrector", 0 );
+    viewCorrector = new QAction ( "&Corrector", 0 );
     viewCorrector->setCheckable ( TRUE );
-    viewCorrector->setChecked ( TRUE );
+
     viewCorrector->setStatusTip ( "Muestra/oculta el corrector" );
     viewCorrector->setWhatsThis ( "Corrector.\n\nMuestra/oculta el corrector" );
     QObject::connect ( viewCorrector, SIGNAL ( toggled ( bool ) ), corr, SLOT ( cambia ( bool ) ) );
+    QObject::connect ( doc1, SIGNAL (cambiaEstadoVisible (bool)), corr, SLOT ( cambia ( bool ) ) );
     bcont->mui_MenuVer() ->addSeparator();
     bcont->mui_MenuVer() ->addAction ( viewCorrector );
+
+    corr->m_viewCorrector = viewCorrector;
+
+    QFile file(confpr->valor(CONF_DIR_USER) + "plugincorrector_" + emp->nameDB() + ".cfn");
+    if ( file.exists () ) {
+        doc1->show();
+        viewCorrector->setChecked ( TRUE );
+    } else {
+	doc1->hide();
+        viewCorrector->setChecked ( FALSE );
+    } // end if
+
     _depura ( "Iniciado correctamente el plugin Corrector", 10 );
 }
 
+///
+/**
+\param bcont
+**/
+int Bulmacont_closeEvent ( Bulmacont *bcont )  {
+    Empresa *emp = bcont->empresaactual();
+    QFile file(confpr->valor(CONF_DIR_USER) + "plugincorrector_" + emp->nameDB() + ".cfn");
+	if (!viewCorrector->isChecked()) {
+		file.remove();
+	} else {
+		file.open(QIODevice::WriteOnly);
+		file.close();
+	} // end if
+	return 0;
+}

@@ -811,6 +811,9 @@ void Bulmacont::slotWindowNewWindow()
 void Bulmacont::closeEvent ( QCloseEvent * )
 {
     _depura ( "Bulmacont::closeEvent", 0 );
+
+    g_plugins->lanza("Bulmacont_closeEvent",this);
+
     delete m_empresaactual;
     m_empresaactual = NULL;
     delete m_list;

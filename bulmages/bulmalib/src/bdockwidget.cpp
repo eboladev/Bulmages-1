@@ -18,17 +18,76 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
+#include <QObject>
+#include <QPixmap>
+#include <QImage>
+#include <QPainter>
+#include <QVBoxLayout>
 
-#include "bulmacont.h"
-#include "postgresiface2.h"
-#include "empresa.h"
+#include <map>
+
+#include "funcaux.h"
+#include "bdockwidget.h"
+
+///
+/**
+\param w
+**/
+void BDockWidget::setWorkspace ( QWorkspace2 *w )
+{
+    _depura ( "BDockWidget::setWorkspace", 0 );
+    m_pWorkspace = w;
+    _depura ( "END BDockWidget::setWorkspace", 0 );
+}
 
 
-extern "C" MY_EXPORT void entryPoint ( Bulmacont * );
-extern "C" MY_EXPORT int Bulmacont_closeEvent ( Bulmacont * );
+///
+/**
+\param a
+**/
+BDockWidget::BDockWidget (const QString & title, QWidget * parent, Qt::WindowFlags flags ) :QDockWidget ( title, parent, flags )
+{
+    _depura ( "BDockWidget::BDockWidget", 0 );
+    setFocusPolicy ( Qt::StrongFocus );
+
+    _depura ( "END BDockWidget::BDockWidget", 0 );
+}
+
+
+///
+/**
+**/
+BDockWidget::~BDockWidget()
+{
+    _depura ( "BDockWidget::~BDockWidget", 0 );
+    _depura ( "END BDockWidget::~BDockWidget", 0 );
+}
+
+
+
+///
+/**
+\param visible
+**/
+void BDockWidget::cambiaVisible ( bool visible )
+{
+    _depura ( "BDockWidget::cambiaVisible", 0 );
+    if ( visible == TRUE ) {
+        this->show();
+    } else {
+        this->hide();
+    } // end if
+    _depura ( "END BDockWidget::cambiaVisible", 0 );
+}
+
+
+///
+/**
+**/
+void BDockWidget::closeEvent ( QCloseEvent * )
+{
+    _depura ( "BDockWidget::closeEvent", 0 );
+    emit ( cambiaEstadoVisible ( FALSE ) );
+    _depura ( "END BDockWidget::closeEvent", 0 );
+}
 

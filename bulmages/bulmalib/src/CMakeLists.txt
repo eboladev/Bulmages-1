@@ -37,6 +37,7 @@ set(bulmalib_SRCS postgresiface2.cpp configuracion.cpp numerocuenta.cpp
          msgerror.cpp
          busquedafecha.cpp
          qtable2.cpp 
+	 bdockwidget.cpp
          pgimportfiles.cpp
          plugins.cpp
          busquedaperiodo.cpp
@@ -68,6 +69,7 @@ set(bulmalib_MOCS
          busquedafecha.h 
          qtable2.h 
          busquedaperiodo.h 
+         bdockwidget.h 
          subform3.h 
          listventanas.h 
          qworkspace2.h 

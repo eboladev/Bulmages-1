@@ -1,6 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -18,17 +19,39 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
+#ifndef __BDOCKWIDGET__
+#define __BDOCKWIDGET__
+
+#include <QDockWidget>
+
+#include "qworkspace2.h"
+
+
+/// Provides the dock window to list all windows in BulmaFact
+/// \param m_listBox this variable is the listBox that contains all
+/// titles of the diferent windows.
+class BDockWidget : public QDockWidget
+{
+    Q_OBJECT
+
+private:
+    QWorkspace2 *m_pWorkspace;
+
+public:
+    void setWorkspace ( QWorkspace2 *w );
+    BDockWidget ( const QString & title, QWidget * parent = 0, Qt::WindowFlags flags = 0 );
+    ~BDockWidget();
+
+public:
+
+    void cambiaVisible ( bool );
+
+protected:
+    void closeEvent ( QCloseEvent *event );
+
+signals:
+    void cambiaEstadoVisible ( bool );
+};
+
 #endif
-
-#include "bulmacont.h"
-#include "postgresiface2.h"
-#include "empresa.h"
-
-
-extern "C" MY_EXPORT void entryPoint ( Bulmacont * );
-extern "C" MY_EXPORT int Bulmacont_closeEvent ( Bulmacont * );
 

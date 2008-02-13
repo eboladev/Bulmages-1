@@ -45,6 +45,7 @@ correctorwidget::correctorwidget ( QWidget* parent, Qt::WFlags fl )
 correctorwidget::~correctorwidget()
 {
     _depura ( "Salida del plugin Corrector", 10 );
+
 }
 
 
