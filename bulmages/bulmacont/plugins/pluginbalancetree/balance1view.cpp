@@ -418,6 +418,38 @@ void BalanceTreeView::presentar()
         /// Establecemos los alineados del nuevo elemento creado.
 
 
+
+                for ( int col = 0; col < it->columnCount(); col++ ) {
+
+                    if ( col == DEBE || col == HABER || col == SALDO ||  col == DEBEEJ || col == HABEREJ || col == SALDOEJ ) {
+                        it->setFont ( col, QFont ( "SansSerif", 10, QFont::DemiBold, false ) );
+                    } else {
+                        it->setFont ( col, QFont ( "SansSerif", 10, QFont::Normal, false ) );
+                    } // end if
+
+                    if ( cursorapt1->valor ( "nivel" ).toInt() == 2 ) {
+                        it->setTextColor ( col, Qt::black );
+                        it->setFont ( col, QFont ( "SansSerif", 12, QFont::Bold, false ) );
+		    } else if (cursorapt1->valor ("nivel").toInt() < 5) {
+                        it->setTextColor ( col, Qt::blue );
+                    } else  {
+
+                    	if ( col == DEBE || col == HABER || col == DEBEEJ || col == HABEREJ ) {
+	                        it->setTextColor ( col, Qt::darkGray );
+			} else if ( col == SALDO || col == SALDOEJ)  {
+	                        it->setTextColor ( col, Qt::darkGreen );
+	                        if ( it->text ( col ).left ( 1 ) == "-" ) {
+        	                    it->setTextColor ( col, Qt::darkRed );
+                	        } // end if
+
+                    	} else {
+	                        it->setFont ( col, QFont ( "SansSerif", 10, QFont::Normal, false ) );
+	                        it->setTextColor ( col, Qt::darkGray );
+        	        } // end if
+
+                    } // end if
+                } // end for
+
                 int tamanyo = 10;
                 if ( cursorapt1->valor ( "descripcion" ).length() > 40 ) {
                     tamanyo -= 1;
@@ -425,26 +457,6 @@ void BalanceTreeView::presentar()
                     tamanyo -= 2;
                 } // end if
                 it->setFont ( DENOMINACION, QFont ( "Serif", tamanyo, -1, false ) );
-                for ( int col = 0; col < it->columnCount(); col++ ) {
-
-                    if ( col == DEBE or col == HABER or col == SALDO ) {
-                        it->setFont ( col, QFont ( "SansSerif", 10, QFont::DemiBold, false ) );
-                    } else {
-                        it->setFont ( col, QFont ( "SansSerif", 10, QFont::Normal, false ) );
-                    } // end if
-
-                    if ( cursorapt1->valor ( "nivel" ).toInt() == 2 ) {
-                        it->setTextColor ( col, Qt::darkGray );
-                    } else if (cursorapt1->valor ("nivel").toInt() == numdigitos){
-                        if ( it->text ( col ).left ( 1 ) == "-" ) {
-                            it->setTextColor ( col, Qt::darkRed );
-                        } else {
-                            it->setTextColor ( col, Qt::black );
-                        } // end if
-                    } else  {
-                        it->setTextColor ( col, Qt::blue );
-                    } // end if
-                } // end for
 
         it->setTextAlignment ( CUENTA, Qt::AlignLeft );
         it->setTextAlignment ( DENOMINACION, Qt::AlignLeft );
