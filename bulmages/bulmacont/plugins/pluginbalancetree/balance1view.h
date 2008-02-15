@@ -75,6 +75,7 @@ public:
     BalanceTreeView ( Empresa *, QWidget *parent = 0, int flags = 0 );
     void inicializa1 ( QString, QString, QString, QString, int );
     ~BalanceTreeView();
+    virtual void imprimir();
 
 private:
     void presentar();
@@ -89,7 +90,6 @@ private slots:
 
 public slots:
     virtual void on_mui_actualizar_clicked();
-    virtual void on_mui_imprimir_clicked();
 };
 
 #endif

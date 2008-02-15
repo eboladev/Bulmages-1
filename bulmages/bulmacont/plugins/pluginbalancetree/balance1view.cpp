@@ -590,12 +590,109 @@ void BalanceTreeView::contextmenu ( const QPoint &point )
     y lo ejecuta en modo Modal. */
 /**
 **/
-void BalanceTreeView::on_mui_imprimir_clicked()
+void BalanceTreeView::imprimir()
 {
     _depura ( "BalanceTreeView::on_mui_imprimir_clicked", 0 );
-    BalancePrintView *balan = new BalancePrintView ( empresaBase() );
-    balan->inicializa1 ( m_codigoinicial->text(), m_codigofinal->text(), m_fechainicial1->text(), m_fechafinal1->text(), TRUE );
-    balan->exec();
+
+
+    //QListViewItem1 * it;
+    QTreeWidgetItem *it;
+    int num1;
+    double tsaldoant = 0, tdebe = 0, thaber = 0, tsaldo = 0;
+    QString query;
+    cursor2 *cursorapt;
+    QString finicial = m_fechainicial1->text();
+    QString ffinal = m_fechafinal1->text();
+    QString cinicial = m_codigoinicial->codigocuenta();
+    QString cfinal = m_codigofinal->codigocuenta();
+    QString ejercicio = ffinal.right ( 4 );
+
+    /// Hacemos la consulta de los apuntes a listar en la base de datos.
+        // Consideraciones para centros de coste y canales
+        selectcanalview *scanal = empresaBase() ->getselcanales();
+        SelectCCosteView *scoste = empresaBase() ->getselccostes();
+        QString ccostes = scoste->cadcoste();
+	QString logicand = "";
+        if ( ccostes != "" ) {
+            ccostes = "AND apunte.idc_coste IN (" + ccostes + ") ";
+	
+        } // end if
+
+        QString ccanales = scanal->cadcanal();
+        if ( ccanales != "" ) {
+            ccanales =  " AND apunte.idcanal IN (" + ccanales + ") ";
+        } // end if
+
+	QString clauswhere = ccostes + ccanales;
+
+
+    /// La consulta es compleja, requiere la creaci&oacute;n de una tabla temporal y de
+    /// cierta mandanga por lo que puede causar problemas con el motor de base de datos.
+    query = "CREATE TEMPORARY TABLE balancetemp AS SELECT cuenta.idcuenta, codigo, nivel(codigo) AS nivel, cuenta.descripcion, padre, tipocuenta ,debe, haber, tdebe, thaber,(tdebe - thaber) AS tsaldo, (debe - haber) AS saldo, adebe, ahaber, (adebe - ahaber) AS asaldo, ejdebe, ejhaber, (ejdebe - ejhaber) AS ejsaldo FROM cuenta";
+    query += " LEFT JOIN (SELECT idcuenta, sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' " + clauswhere + "  GROUP BY idcuenta) AS t1 ON t1.idcuenta = cuenta.idcuenta";
+    query += " LEFT JOIN (SELECT idcuenta, sum(debe) AS adebe, sum(haber) AS ahaber FROM apunte WHERE fecha < '" + finicial + "' " + clauswhere + " GROUP BY idcuenta) AS t2 ON t2.idcuenta = cuenta.idcuenta";
+    query += " LEFT JOIN (SELECT idcuenta, sum(debe) AS ejdebe, sum(haber) AS ejhaber FROM apunte WHERE EXTRACT (YEAR FROM fecha) = '" + ejercicio + "' " + clauswhere + " GROUP BY idcuenta) AS t3 ON t3.idcuenta = cuenta.idcuenta";
+
+    empresaBase() ->begin();
+    empresaBase() ->ejecuta ( query );
+    query.sprintf ( "UPDATE balancetemp SET padre = 0 WHERE padre ISNULL" );
+    empresaBase() ->ejecuta ( query );
+
+    query.sprintf ( "DELETE FROM balancetemp WHERE debe = 0 AND haber = 0" );
+    empresaBase() ->ejecuta ( query );
+    /// Vamos a implementar el tema del c&oacute;digo.
+    if ( cinicial != "" ) {
+        query.sprintf ( "DELETE FROM balancetemp WHERE codigo < '%s'", cinicial.toAscii().constData() );
+        empresaBase() ->ejecuta ( query );
+    } // end if
+    if ( cfinal != "" ) {
+        query.sprintf ( "DELETE FROM balancetemp WHERE codigo > '%s'", cfinal.toAscii().constData() );
+        empresaBase() ->ejecuta ( query );
+    } // end if
+
+    /// Para evitar problemas con los nulls hacemos algunos updates.
+    query.sprintf ( "UPDATE balancetemp SET tsaldo = 0 WHERE tsaldo ISNULL" );
+    empresaBase() ->ejecuta ( query );
+    query.sprintf ( "UPDATE balancetemp SET tdebe = 0 WHERE tdebe ISNULL" );
+    empresaBase() ->ejecuta ( query );
+    query.sprintf ( "UPDATE balancetemp SET thaber = 0 WHERE thaber ISNULL" );
+    empresaBase() ->ejecuta ( query );
+    query.sprintf ( "UPDATE balancetemp SET asaldo = 0 WHERE asaldo ISNULL" );
+    empresaBase() ->ejecuta ( query );
+    query.sprintf ( "UPDATE balancetemp SET ejsaldo = 0 WHERE ejsaldo ISNULL" );
+    empresaBase() ->ejecuta ( query );
+    query.sprintf ( "UPDATE balancetemp SET ejdebe = 0 WHERE ejdebe ISNULL" );
+    empresaBase() ->ejecuta ( query );
+    query.sprintf ( "UPDATE balancetemp SET ejhaber = 0 WHERE ejhaber ISNULL" );
+    empresaBase() ->ejecuta ( query );
+
+    /// Cargamos el balance temporal
+    query.sprintf ( "SELECT idcuenta FROM balancetemp ORDER BY padre DESC" );
+    cursorapt = empresaBase() ->cargacursor ( query );
+    while ( !cursorapt->eof() ) {
+        query.sprintf ( "SELECT * FROM balancetemp WHERE idcuenta = %s", cursorapt->valor ( "idcuenta" ).toAscii().constData() );
+        cursor2 *mycur = empresaBase() ->cargacursor ( query );
+        if ( !mycur->eof() ) {
+            query = "UPDATE balancetemp SET tsaldo = tsaldo + " + mycur->valor ( "tsaldo" ) + ", tdebe = tdebe + " + mycur->valor ( "tdebe" ) + ", thaber = thaber +" + mycur->valor ( "thaber" ) + ", asaldo = asaldo+" + mycur->valor ( "asaldo" ) + ", ejdebe = ejdebe + " + mycur->valor ( "ejdebe" ) + ", ejhaber = ejhaber + " + mycur->valor ( "ejhaber" ) + ", ejsaldo = ejsaldo + " + mycur->valor ( "ejsaldo" ) + " WHERE idcuenta = " + mycur->valor ( "padre" );
+            empresaBase() ->ejecuta ( query );
+        } /// end if
+        delete mycur;
+        cursorapt->siguienteregistro();
+    } // end while
+    delete cursorapt;
+
+
+    query.sprintf ( "DELETE FROM balancetemp WHERE tdebe = 0 AND thaber = 0" );
+    empresaBase() ->ejecuta ( query );
+
+    generaRML("balance.rml");
+    invocaPDF ( "balance" );
+
+    /// Eliminamos la tabla temporal y cerramos la transacci&oacute;n.
+    query.sprintf ( "DROP TABLE balancetemp" );
+    empresaBase() ->ejecuta ( query );
+    empresaBase() ->commit();
+
     _depura ( "END BalanceTreeView::on_mui_imprimir_clicked", 0 );
 }
 
