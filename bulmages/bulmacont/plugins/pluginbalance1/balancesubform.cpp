@@ -71,10 +71,7 @@ void BalanceSubForm::contextMenuEvent ( QContextMenuEvent * )
     QAction *mostextractodia = popup->addAction ( "Mostrar extracto (dia)" );
     QAction *mostextractomes = popup->addAction ( "Mostrar extracto (mes)" );
     QAction *mostextractoano = popup->addAction ( "Mostrar extracto (ano)" );
-    popup->addSeparator();
-    QAction *mostbalancedia = popup->addAction ( "Mostrar balance (dia)" );
-    QAction *mostbalancemes = popup->addAction ( "Mostrar balance (mes)" );
-    QAction *mostbalanceano = popup->addAction ( "Mostrar balance (anyo)" );
+
 
     if ( m_delete )
         del = popup->addAction ( tr ( "Borrar registro" ) );
@@ -116,15 +113,6 @@ void BalanceSubForm::contextMenuEvent ( QContextMenuEvent * )
     } // end if
     if ( opcion == mostextractoano ) {
         boton_extracto1 ( 2 );
-    } // end if
-    if ( opcion == mostbalancedia ) {
-        boton_balance1 ( 0 );
-    } // end if
-    if ( opcion == mostbalancemes ) {
-        boton_balance1 ( 1 );
-    } // end if
-    if ( opcion == mostbalanceano ) {
-        boton_balance1 ( 2 );
     } // end if
     delete popup;
     _depura ( "END SubForm2Bc::contextMenuEvent", 0 );

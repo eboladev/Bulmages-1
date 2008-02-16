@@ -44,13 +44,13 @@ set(bulmacont_MOCS bulmacont.h
            diarioview.h 
            extractoview1.h 
 #           balance1view.h 
-           balanceview.h 
+#           balanceview.h 
            aplinteligentesview.h 
            asientosview.h 
            regivaprintview.h 
            mpatrimonialview.h 
            mpatrimonialesview.h 
-           balanceprintview.h 
+#           balanceprintview.h 
            canualesprintview.h 
            canualesview.h 
            canalview.h 
@@ -77,7 +77,7 @@ set(bulmacont_MOCS bulmacont.h
 	   diariosubform.h 
 	   extractosubform.h 
 	   asientolistsubform.h 
-	   balancesubform.h 
+#	   balancesubform.h 
 	   busquedaccoste.h 
 	   busquedacanal.h 
 	   fichabc.h)

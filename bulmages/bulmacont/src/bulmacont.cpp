@@ -256,16 +256,6 @@ void Bulmacont::on_actionPlan_Contable_triggered()
 }
 
 
-///
-/**
-**/
-void Bulmacont::on_actionBalance_de_Cuentas_triggered()
-{
-    _depura ( "Bulmacont::on_actionBalance_de_Cuentas_triggered", 0 );
-    m_empresaactual->librobalance();
-    _depura ( "END Bulmacont::on_actionBalance_de_Cuentas_triggered", 0 );
-}
-
 
 ///
 /**

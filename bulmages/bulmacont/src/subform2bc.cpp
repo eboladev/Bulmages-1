@@ -32,8 +32,9 @@
 #include "qtexteditdelegate.h"
 #include "qdoublespinbox2.h"
 #include "busquedacanal.h"
-#include "balanceview.h"
 #include "busquedaccoste.h"
+#include "listcuentasview1.h"
+#include "diarioview.h"
 
 /// Constructor de la clase
 /**
@@ -403,6 +404,7 @@ void SubForm2Bc::boton_diario1 ( int tipo )
 /**
 \param tipo
 **/
+/*
 void SubForm2Bc::boton_balance1 ( int tipo )
 {
     _depura ( "SubForm2Bc::boton_balance1", 0 );
@@ -432,7 +434,7 @@ void SubForm2Bc::boton_balance1 ( int tipo )
     } // end if
     _depura ( "END SubForm2Bc::boton_balance1", 0 );
 }
-
+*/
 
 
 /// Se ha dado la orden de crear el menu contextual. Y esta funcion funciona con

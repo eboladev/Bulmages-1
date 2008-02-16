@@ -42,7 +42,6 @@ class SelectCCosteView;
 class selectcanalview;
 class Asiento1View;
 class DiarioView;
-class BalanceView;
 class AsientosView;
 class CuentaView;
 class PaisView;
@@ -70,7 +69,6 @@ private:
     QString contrasenya;
     DiarioView *diario;
     extractoview1 *extracto;
-    BalanceView *balance;
     Asiento1View *introapunts2;
     AsientosView *m_listasientos;
     listcuentasview1 *m_listcuentas;
@@ -88,7 +86,6 @@ public:
     virtual ~Empresa();
     /// Devuelve un puntero a la clase de la base de datos.
     postgresiface2 *bdempresa();
-    BalanceView *balanceempresa();
     extractoview1 *extractoempresa();
     DiarioView *diarioempresa();
     Asiento1View *intapuntsempresa();
@@ -103,7 +100,6 @@ public:
     int propiedadempresa();
     int libromayor();
     int librodiario();
-    int librobalance();
     int listado347();
     int createMainWindows ( Splash * );
     int boton_siguiente();

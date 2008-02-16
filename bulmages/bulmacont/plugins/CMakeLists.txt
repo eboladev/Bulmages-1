@@ -27,6 +27,7 @@ add_subdirectory(plugindebugbc)
 add_subdirectory(pluginproyectos)
 add_subdirectory(plugincaaslods)
 add_subdirectory(pluginbalancetree)
+add_subdirectory(pluginbalance1)
 
 # if you want to add some private code
 # simple put your add_directory in a

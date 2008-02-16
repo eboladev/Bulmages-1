@@ -35,7 +35,6 @@
 #include "configuracion.h"
 #include "asiento1view.h"
 #include "extractoview1.h"
-#include "balanceview.h"
 #include "selectccosteview.h"
 #include "selectcanalview.h"
 #include "busquedafecha.h"

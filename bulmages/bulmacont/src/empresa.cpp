@@ -42,10 +42,10 @@
 #include "plugins.h"
 #include "bbloqfecha.h"
 #include "diarioview.h"
-#include "balanceview.h"
 #include "listado347.h"
 #include "paisview.h"
 #include "bulmacont.h"
+#include "extractoview1.h"
 
 #ifndef WIN32
 #include <unistd.h>
@@ -75,7 +75,6 @@ Empresa::Empresa ( Bulmacont *bcont ) : EmpresaBase()
     m_bulmacont = bcont;
     diario = NULL;
     extracto = NULL;
-    balance = NULL;
     selccostes  = NULL;
     selcanales = NULL;
     introapunts2 = NULL;
@@ -108,14 +107,6 @@ postgresiface2 *Empresa::bdempresa()
 }
 
 
-///
-/**
-\return
-**/
-BalanceView *Empresa::balanceempresa()
-{
-    return balance;
-}
 
 ///
 /**
@@ -205,7 +196,6 @@ int Empresa::createMainWindows ( Splash *splash )
         if ( extracto != NULL ) {
             delete extracto;
             delete diario;
-            delete balance;
             delete selccostes;
             delete selcanales;
             delete m_listasientos;
@@ -231,14 +221,14 @@ int Empresa::createMainWindows ( Splash *splash )
         m_progressbar->setValue ( 20 );
         diario = new DiarioView ( this, 0 );
         m_pWorkspace->addWindow ( diario );
-
+/*
         /// pb = 35%
         splash->mensaje ( QApplication::translate ( "Empresa", "Inicializando Balance" ) );
         splash->setBarraProgreso ( 35 );
         m_progressbar->setValue ( 35 );
         balance = new BalanceView ( this, 0 );
         m_pWorkspace->addWindow ( balance );
-
+*/
         /// pb = 50%
 /*
             splash->mensaje(QApplication::translate("company", "Inicializando Balance Jerarquico"));
@@ -302,7 +292,6 @@ void Empresa::maximiza()
     _depura ( "Empresa::maximiza", 0 );
     diario->showMaximized();
     extracto->showMaximized();
-    balance->showMaximized();
     _depura ( "END Empresa::maximiza", 0 );
 }
 
@@ -610,8 +599,6 @@ int Empresa::boton_imprimir()
     QWidget *widget = m_pWorkspace->activeWindow();
     if ( widget == diario ) {
         diario->boton_imprimir();
-    } else if ( widget == balance ) {
-        balance->on_mui_imprimir_clicked();
     } else if ( widget == extracto ) {
         extracto->boton_imprimir();
     } // end if
@@ -633,8 +620,6 @@ int Empresa::boton_reload()
         diario->accept();
     } else if ( widget == extracto ) {
         extracto->accept();
-    } else if ( widget == balance ) {
-        balance->accept();
     } // end if
     _depura ( "END Empresa::boton_reload", 0 );
     return 0;
@@ -698,6 +683,7 @@ int Empresa::librodiario()
 /**
 \return
 **/
+/*
 int Empresa::librobalance()
 {
     _depura ( "Empresa::librobalance", 0 );
@@ -705,6 +691,7 @@ int Empresa::librobalance()
     _depura ( "END Empresa::librobalance", 0 );
     return 0;
 }
+*/
 
 
 ///

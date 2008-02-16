@@ -31,7 +31,6 @@
 #include "libromayorprint.h"
 #include "empresa.h"
 #include "asiento1view.h"
-#include "balanceview.h"
 #include "diarioview.h"
 #include "listcuentasview1.h"
 #include "selectccosteview.h"

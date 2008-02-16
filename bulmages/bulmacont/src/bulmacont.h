@@ -122,7 +122,6 @@ public slots:
     virtual void on_actionLibro_Mayor_triggered();
     virtual void on_actionLibro_Diario_triggered();
     virtual void on_actionPlan_Contable_triggered();
-    virtual void on_actionBalance_de_Cuentas_triggered();
     virtual void on_actionImprimir_triggered();
     virtual void on_actionGuardar_triggered();
     virtual void on_actionActualizar_triggered();

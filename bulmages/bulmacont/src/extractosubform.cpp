@@ -94,10 +94,6 @@ void ExtractoSubForm::s_pintaMenu ( QMenu *menu )
     menu->addAction ( tr ( "Mostrar diario (dia)" ) );
     menu->addAction ( tr ( "Mostrar diario (mes)" ) );
     menu->addAction ( tr ( "Mostrar diario (ano)" ) );
-    menu->addSeparator();
-    menu->addAction ( tr ( "Mostrar balance (dia)" ) );
-    menu->addAction ( tr ( "Mostrar balance (mes)" ) );
-    menu->addAction ( tr ( "Mostrar balance (ano)" ) );
     _depura ( "ListLinAsiento1View::s_pintaMenu", 0 );
 }
 
@@ -118,12 +114,6 @@ void ExtractoSubForm::s_trataMenu ( QAction *action )
         boton_diario1 ( 1 );
     if ( action->text() == tr ( "Mostrar diario (ano)" ) )
         boton_diario1 ( 2 );
-    if ( action->text() == tr ( "Mostrar balance (dia)" ) )
-        boton_balance1 ( 0 );
-    if ( action->text() == tr ( "Mostrar balance (mes)" ) )
-        boton_balance1 ( 1 );
-    if ( action->text() == tr ( "Mostrar balance (ano)" ) )
-        boton_balance1 ( 2 );
     _depura ( "END ListLinAsiento1View::s_trataMenu", 0 );
 }
 
