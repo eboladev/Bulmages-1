@@ -30,7 +30,7 @@
 		<fill color="(0,0,0)"/>	
 		<stroke color="(0,0,0)"/>
 		<setFont name="Helvetica" size="22"/>
-		<drawString x="18cm" y="19.5cm">[titulo]</drawString>
+		<drawString x="18cm" y="19.5cm">Balance de Situación</drawString>
 		</pageGraphics>
 	<frame id="column" x1="1cm" y1="1cm" width="27cm" height="17.5cm"/>
 	</pageTemplate>
@@ -52,6 +52,7 @@
 		<blockFont name="Helvetica" size="6" start="0,1" stop="-1,-1"/>
 		<blockFont name="Helvetica" size="6" start="1,1" stop="1,-1"/>
 	</blockTableStyle>
+	<paraStyle name="rojo" alignment="right" textColor="red" fontSize="6"/>
 </stylesheet>
 
 <story>
@@ -75,10 +76,19 @@
 <td>[asaldo]</td>
 <td>[tdebe]</td>
 <td>[thaber]</td>
-<td>[tsaldo]</td>
+<!-- IF ="[tsaldo] < 0" -->
+<td><para style="rojo">[tsaldo]</para></td>
+<!-- ELSE -->
+<td  >[tsaldo]</td>
+<!-- END IF -->
+
 <td>[ejdebe]</td>
 <td>[ejhaber]</td>
-<td>[ejsaldo]</td>
+<!-- IF ="[tsaldo] < 0" -->
+<td><para style="rojo">[ejsaldo]</para></td>
+<!-- ELSE -->
+<td  >[ejsaldo]</td>
+<!-- END IF -->
 </tr>
 <!--END QUERY-->
 </blockTable>		

@@ -77,6 +77,7 @@ public:
     virtual void trataTags ( QString &buff );
     virtual QString trataQuery ( const QString &query, const QString &datos );
     virtual QString trataIfQuery ( const QString &query, const QString &datos );
+    virtual QString trataIf ( const QString &query, const QString &datos, const QString &datos1 );
     virtual QString trataExists ( const QString &query, const QString &datos );
     virtual void cargaSpecs();
     virtual void generaCampo ( const QString &objname, const QString &textname, const QString &type );

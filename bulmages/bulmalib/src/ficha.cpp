@@ -795,6 +795,9 @@ void Ficha::trataTags ( QString &buff )
         pos = 0;
     } // end while
 
+
+
+
     /// Buscamos Query's por tratar
     pos = 0;
     QRegExp rx1 ( "<!--\\s*QUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*QUERY\\s*-->" );
@@ -815,6 +818,17 @@ void Ficha::trataTags ( QString &buff )
         buff.replace ( pos, rx7.matchedLength(), ldetalle );
         pos = 0;
     } // end while
+
+    /// Buscamos Query's en condicional
+    pos = 0;
+    QRegExp rx11 ( "<!--\\s*IF\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*ELSE\\s*-->(.*)<!--\\s*END\\s*IF\\s*-->" );
+    rx11.setMinimal ( TRUE );
+    while ( ( pos = rx11.indexIn ( buff, pos ) ) != -1 ) {
+        QString ldetalle = trataIf ( rx11.cap ( 1 ), rx11.cap ( 2 ), rx11.cap (3) );
+        buff.replace ( pos, rx11.matchedLength(), ldetalle );
+        pos = 0;
+    } // end while
+
 
     _depura ( "END Ficha::trataTags", 0 );
 }
@@ -850,6 +864,45 @@ QString Ficha::trataIfQuery ( const QString &query, const QString &datos )
     } // end while
     delete cur;
     _depura ( "END Ficha::trataIfQuery", 0 );
+    return result;
+}
+
+
+/// Trata las lineas de detalle encontradas dentro de los tags <!--LINEAS DETALLE-->
+/**
+\param det Texto de entrada para ser tratado por iteracion.
+\return Si el query tiene elementos lo devuelve el parametro. En caso contrario no devuelve nada.
+**/
+QString Ficha::trataIf ( const QString &query, const QString &datos, const QString &datos1 )
+{
+    _depura ( "Ficha::trataIfQuery", 0 );
+    QString result = "";
+    QString query1 = query;
+
+    /// Buscamos parametros en el query y los ponemos.
+    QRegExp rx ( "\\[(\\w*)\\]" );
+    int pos =  0;
+    while ( ( pos = rx.indexIn ( query1, pos ) ) != -1 ) {
+        if ( exists ( rx.cap ( 1 ) ) ) {
+            query1.replace ( pos, rx.matchedLength(), DBvalue ( rx.cap ( 1 ) ) );
+            pos = 0;
+        } else {
+            pos += rx.matchedLength();
+        }
+    } // end while
+    QString query2 = "SELECT ("+query1+") AS res";
+    /// Cargamos el query y lo recorremos
+    cursor2 *cur = empresaBase() ->cargacursor ( query2 );
+    if ( !cur ) return "";
+    if ( !cur->eof() ) {
+	if (cur->valor("res") == "t") {
+        	result = datos;
+	} else {
+		result = datos1;
+	} // end if
+    } // end while
+    delete cur;
+    _depura ( "END Ficha::trataIf", 0 );
     return result;
 }
 
