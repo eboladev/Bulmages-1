@@ -42,8 +42,7 @@ public:
     BDockWidget ( const QString & title, QWidget * parent = 0, Qt::WindowFlags flags = 0 );
     ~BDockWidget();
 
-public:
-
+public slots:
     void cambiaVisible ( bool );
 
 protected:

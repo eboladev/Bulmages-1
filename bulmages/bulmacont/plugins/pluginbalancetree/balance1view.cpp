@@ -25,7 +25,6 @@
 
 #include "balance1view.h"
 #include "listcuentasview1.h"
-#include "balanceprintview.h"
 #include "empresa.h"
 #include "busquedacuenta.h"
 #include "asiento1view.h"

@@ -209,6 +209,9 @@ void Bulmafact::s_About()
 void Bulmafact::closeEvent ( QCloseEvent * )
 {
     _depura ( "Bulmafact::closeEvent", 0 );
+
+    g_plugins->lanza("Bulmafact_closeEvent",this);
+
     delete m_company;
     m_company = NULL;
     delete m_list;

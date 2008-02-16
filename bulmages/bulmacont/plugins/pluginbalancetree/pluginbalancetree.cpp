@@ -92,6 +92,8 @@ void myplugin4::inicializa ( Bulmacont *bges )
     QAction *accion = new QAction ( "&Balance Jerárquico", 0 );
     accion->setStatusTip ( "Permite realizar Balances" );
     accion->setWhatsThis ( "Podra disponer de la informacion del balance" );
+    accion->setIcon(QIcon(QString::fromUtf8(":/BulmaCont32x32/images/png/i_arbolBalance.xpm")));
+    bges->toolBar->addAction(accion);
     connect ( accion, SIGNAL ( activated() ), this, SLOT ( elslot() ) );
     pPluginMenu->addAction ( accion );
 

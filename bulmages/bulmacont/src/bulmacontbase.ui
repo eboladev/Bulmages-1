@@ -40,7 +40,6 @@
     <addaction name="actionApuntes_Contables" />
     <addaction name="actionLibro_Mayor" />
     <addaction name="actionLibro_Diario" />
-    <addaction name="actionBalance_de_Cuentas" />
    </widget>
    <widget class="QMenu" name="menuAsiento" >
     <property name="title" >
@@ -140,7 +139,6 @@
    <addaction name="actionAsientos" />
    <addaction name="actionLibro_Mayor" />
    <addaction name="actionLibro_Diario" />
-   <addaction name="actionBalance_de_Cuentas" />
    <addaction name="actionInicio" />
    <addaction name="actionAnterior" />
    <addaction name="actionSiguiente" />
@@ -252,14 +250,6 @@
    </property>
    <property name="text" >
     <string>Libro &amp;Diario</string>
-   </property>
-  </action>
-  <action name="actionBalance_de_Cuentas" >
-   <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_balance.xpm</iconset>
-   </property>
-   <property name="text" >
-    <string>&amp;Balance de Cuentas</string>
    </property>
   </action>
   <action name="actionFormas_de_Pago" >
