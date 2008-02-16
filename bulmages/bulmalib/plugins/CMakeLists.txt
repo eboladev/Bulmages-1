@@ -3,4 +3,4 @@ add_subdirectory(pluginsubformsxc)
 add_subdirectory(pluginsubformods)
 add_subdirectory(pluginclipboardbf)
 add_subdirectory(pluginimpers)
-
+add_subdirectory(plugindocked)

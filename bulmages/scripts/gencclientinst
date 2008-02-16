@@ -79,6 +79,7 @@ ln -s $1/bulmalib/plugins/pluginsubformods/libpluginsubformods.so        /usr/li
 ln -s $1/bulmalib/plugins/pluginimpers/libpluginimpers.so        /usr/lib/bulmalib/plugins/
 ln -s $1/bulmalib/plugins/pluginclipboardbf/libpluginclipboardbf.so        /usr/lib/bulmalib/plugins/
 ln -s $1/bulmalib/plugins/pluginsubformsxc/libpluginsubformsxc.so        /usr/lib/bulmalib/plugins/
+ln -s $1/bulmalib/plugins/plugindocked/libplugindocked.so                /usr/lib/bulmalib/plugins/
 
 ln -s $1/bulmafact/plugins/plugintipostrabajo/libplugintipostrabajo.so        /usr/lib/bulmafact/plugins/
 ln -s $1/bulmafact/plugins/efacturabf/libefacturabf.so        /usr/lib/bulmafact/plugins/
