@@ -79,6 +79,7 @@ public:
 
 private:
     void presentar();
+    void generarBalance();
 
 private slots:
     virtual void contextmenu ( const QPoint & );
@@ -90,6 +91,7 @@ private slots:
 
 public slots:
     virtual void on_mui_actualizar_clicked();
+    virtual void on_mui_hojacalculo_clicked();
 };
 
 #endif

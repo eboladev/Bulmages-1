@@ -105,7 +105,7 @@ void myplugsubformsxc::sacaSXC()
     QString fitxersortidatxt = "";
 
     fitxersortidatxt += "#!/usr/bin/perl\n";
-    fitxersortidatxt += "# calc-example5 - Set Column sizes\n";
+    fitxersortidatxt += "# SubForm Export\n";
     fitxersortidatxt += "\n";
     fitxersortidatxt += "use ooolib;\n";
     fitxersortidatxt += "use utf8;\n";
