@@ -103,10 +103,8 @@ Bulmacont::~Bulmacont()
     /// En MS-Windows no termina bien la ejecucion del programa y por eso
     /// agregamos esta salida rapida.
 #ifdef WINDOWS
-
     exit ( 0 );
 #endif
-
     _depura ( "END Bulmacont::~Bulmacont", 0 );
 }
 

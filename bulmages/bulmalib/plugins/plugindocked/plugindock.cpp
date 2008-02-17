@@ -37,10 +37,10 @@
 #include "myplugindock.h"
 #include "bdockwidget.h"
 #include "qworkspace2.h"
+#include "bx11embedcontainer.h"
 
-
-QMainWindow *g_bges;
-
+QMainWindow *g_bges = NULL;
+EmpresaBase *g_emp = NULL;
 ///
 /**
 **/
@@ -65,7 +65,9 @@ void myplugincont::elslot() {
     _depura ( "myplugincont::elslot", 0 );
 
     /// Vamos a probar con un docwindow.
-    BDockWidget *doc1 = new BDockWidget ( "Aplicacion", g_main );
+    BDockWidget *doc1 = new BDockWidget ( "Aplicacion Externa", g_main );
+    doc1->setWindowIcon(QIcon(QString::fromUtf8(":/BulmaCont32x32/images/png/i_lo32-app-bulmages.png")));
+
     doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
 
     doc1->setGeometry ( 100, 100, 100, 500 );
@@ -76,11 +78,9 @@ void myplugincont::elslot() {
     QString winId = "";
     while ( winId == "" ) winId = windowID ( "" );
 
-
     QX11EmbedContainer *container = new QX11EmbedContainer ( doc1 );
     container->embedClient ( winId.toInt() );
     doc1->setWidget ( container );
-
 
     _depura ( "END myplugincont::elslot", 0 );
 }
@@ -94,18 +94,15 @@ void myplugincont::elslot1() {
     while ( winId == "" ) winId = windowID ( "" );
     QWorkspace2 *work =     g_bges ->findChild<QWorkspace2 *> (  );
     if (work) {
-//    QX11EmbedContainer *container = new QX11EmbedContainer ( ((EmpresaBase *)( g_main )) ->pWorkspace() );
-        QX11EmbedContainer *container = new QX11EmbedContainer ( work );
-//    QX11EmbedWidget *wid = new QX11EmbedWidget;
+        BX11EmbedContainer *container = new BX11EmbedContainer ( g_emp, work );
+        container->setAttribute ( Qt::WA_DeleteOnClose );
+      container->setWindowIcon(QIcon(QString::fromUtf8(":/BulmaCont32x32/images/png/i_lo32-app-bulmages.png")));
         work->addWindow ( container );
-
+	if (g_emp)
+		g_emp->meteWindow("Aplicacion Externa", container, FALSE);
         container->embedClient ( winId.toInt() );
-//    wid->embedInto(winId.to
-//    ((EmpresaBase *)( g_main )) ->pWorkspace() ->addWindow ( container );
-
-    container->show();
+        container->show();
     } // end if
-
 
     _depura ( "END myplugincont::elslot", 0 );
 }
@@ -153,62 +150,17 @@ void entryPoint ( QMainWindow *bges ) {
 }
 
 
-/*
+
 
 int Company_createMainWindows_Post ( Company *cmp )
 {
-    _depura ( "myplugincont::inicializa", 0 );
-
-    Bulmafact *main = ( Bulmafact * ) g_main;
-
-    myplugincont *mcont = new myplugincont;
-
-    /// Creamos el men&uacute;.
-    QAction *accion = new QAction ( "&Dock Aplicacion", 0 );
-    accion->setStatusTip ( "Dockear Aplicacion" );
-    accion->setWhatsThis ( "Dockear Aplicacion" );
-
-    /// Creamos el men&uacute;.
-    QAction *accion1 = new QAction ( "&Embeber Aplicacion", 0 );
-    accion1->setStatusTip ( "Embeber Aplicacion" );
-    accion1->setWhatsThis ( "Embeber Aplicacion" );
-
-    mcont->connect ( accion, SIGNAL ( activated() ), mcont, SLOT ( elslot() ) );
-    mcont->connect ( accion1, SIGNAL ( activated() ), mcont, SLOT ( elslot1() ) );
-
-    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    main->menuVentana->addSeparator();
-    main->menuVentana->addAction ( accion );
-    main->menuVentana->addAction ( accion1 );
-    _depura ( "END myplugincont::inicializa", 0 );
-
+    g_emp = cmp;
     return 0;
 }
 
-int Company_createMainWindows_Post ( Empresa *cmp )
+int Empresa_createMainWindows_Post ( Empresa *cmp )
 {
-    Bulmacont * main = ( Bulmacont * ) g_main;
-    myplugincont *mcont = new myplugincont;
-
-    _depura ( "myplugincont::inicializa", 0 );
-    /// Creamos el men&uacute;.
-    QAction *accion = new QAction ( "&Dock Aplicacion", 0 );
-    accion->setStatusTip ( "Dockear Aplicacion" );
-    accion->setWhatsThis ( "Dockear Aplicacion" );
-
-    /// Creamos el men&uacute;.
-    QAction *accion1 = new QAction ( "&Embeber Aplicacion", 0 );
-    accion1->setStatusTip ( "Embeber Aplicacion" );
-    accion1->setWhatsThis ( "Embeber Aplicacion" );
-
-    mcont->connect ( accion, SIGNAL ( activated() ), mcont, SLOT ( elslot() ) );
-    mcont->connect ( accion1, SIGNAL ( activated() ), mcont, SLOT ( elslot1() ) );
-
-    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-
-    main->menuVentana->addSeparator();
-    main->menuVentana->addAction ( accion );
-    main->menuVentana->addAction ( accion1 );
+    g_emp = cmp;
     return 0;
 }
-*/
+
