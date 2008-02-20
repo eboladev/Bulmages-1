@@ -1,0 +1,4 @@
+01_bgtrml2pdf.patch 	-p1
+00_distcc_remove.patch 	-p0
+disable_bad_plugins.patch -p0
+02_ftbfs_pluginclipboardbf.pro.patch -p0

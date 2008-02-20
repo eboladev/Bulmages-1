@@ -1,0 +1,92 @@
+bulmages (0.10.0-1) unstable; urgency=low
+
+  [Miguel Gea Milvaques]
+  * New upstream version
+  * Added new bulmages-plugins package.
+  * Moved Homepage as field in debian/control
+
+ -- Miguel Gea Milvaques <xerakko@debian.org>  Wed, 02 Jan 2008 13:19:16 +0100
+
+bulmages (0.9.1-2) unstable; urgency=low
+  [ Miguel Gea Milvaques]
+  * Add only the libbulmalib.so.1 library (Closes: #423845).
+
+ -- René Mérou <ochominutosdearco@gmail.com>  Sun, 13 May 2007 19:33:44 +0200
+
+bulmages (0.9.1-1) unstable; urgency=low
+  [ Miguel Gea Milvaques ] 
+  * New Upsream release. 
+  * Modified control file to avoid virtual package problems Closes: #406932
+
+  [ René Mérou ]
+  * Deleted unused scripts creaemp nuevaemp and cargaemp Closes: #409292
+  * Improved descriptions of packages Closes: #406924
+  * Header library files added Closes: #406931
+  * Bulmages description improved Closes: #407520
+
+ -- René Mérou <ochominutosdearco@gmail.com>  Sat,  3 Mar 2007 10:54:35 +0100
+
+bulmages (0.5.9+svn20061021+20061210-1) unstable; urgency=low
+
+  [  Miguel Gea Milvaques]
+  * added btrml2pdf.py manual
+  * removed debconf templates
+  * added python dependence
+  * renamed bgtrml2pdf.py to bgtrml2pdf
+  * bulmafact-server and bulmacont-server are now joined in bulmages-servers.
+  * added quilt support
+
+ -- René Mérou <rene.merou@kdemail.net>  Sat, 23 Dec 2006 00:00:17 +0100
+
+bulmages (0.5.9+svn20061021-2) unstable; urgency=low
+
+  * Added python2.4-imaging dependence.
+  * Added licences to copyright.
+  * Installed plugins (modified rules file).
+  * Installed bgtrml2pdf files.
+
+ -- René Mérou <rene.merou@kdemail.net>  Sat, 18 Nov 2006 21:18:36 +0100
+ 
+bulmages (0.5.9+svn20061021-1) unstable; urgency=low
+
+  * first 0.5.9 release.
+
+ -- René Mérou <rene.merou@kdemail.net>  Sun, 24 Sep 2006 20:42:45 +0200
+
+bulmages (0.5.3+svn20060108-1) unstable; urgency=low
+
+  * Last qt3 release.
+
+ -- René Mérou <rene.merou@kdemail.net>  Sun,  2 Apr 2006 09:29:45 +0200
+
+bulmages (0.5.1.1-1+4) unstable; urgency=low
+
+  * Bug 'bug -bugreports- word in bulmages man' fixed.
+
+ -- René Mérou <ochominutosdearco@gmail.com>  Fri, 09 Dec 2005 20:48:11 +0100
+
+bulmages (0.5.1.1-1+3) unstable; urgency=low
+
+  * Bug 'bug port 5432-5433' fixed.
+
+ -- René Mérou <ochominutosdearco@gmail.com>  Wed, 26 Oct 2005 14:38:31 +0200
+
+bulmages (0.5.1.1-1+2) unstable; urgency=low
+
+  * Bug 'Depends: postgresql-8.0 for servers' fixed.
+
+ -- René Mérou <ochominutosdearco@gmail.com>  Thu, 20 Oct 2005 23:18:02 +0200
+
+bulmages (0.5.1.1-1+1) unstable; urgency=low
+
+  * Bug 'locate plpgsql.so' fixed.
+
+ -- René Mérou <ochominutosdearco@gmail.com>  Wed, 19 Oct 2005 02:21:08 +0200
+
+bulmages (0.5.1.1-1) unstable; urgency=low
+
+  [ René Mérou ]
+  * Initial release Closes:  #311876
+
+ -- René Mérou <ochominutosdearco@gmail.com>  Mon,  5 Sep 2005 02:13:52 +0200
+

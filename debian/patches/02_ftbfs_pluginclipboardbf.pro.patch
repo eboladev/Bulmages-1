@@ -1,0 +1,26 @@
+diff -urN bulmages-stable/bulmafact/plugins/plugin/plugin.pro bulmages/bulmafact/plugins/plugin/plugin.pro
+--- bulmages-stable/bulmafact/plugins/plugin/plugin.pro	2007-10-06 20:47:12.000000000 +0200
++++ bulmages/bulmafact/plugins/plugin/plugin.pro	2008-01-29 23:22:03.000000000 +0100
+@@ -8,7 +8,8 @@
+           plugin \
+ 	  assistant
+ 	 
+-LIBS +=	 -rdynamic 	 
++LIBS +=	 -rdynamic \
++	 -lbulmalib
+ 
+ VERSION = 1.0.0
+ 
+diff -urN bulmages-stable/bulmalib/plugins/pluginclipboardbf/pluginclipboardbf.pro bulmages/bulmalib/plugins/pluginclipboardbf/pluginclipboardbf.pro
+--- bulmages-stable/bulmalib/plugins/pluginclipboardbf/pluginclipboardbf.pro	2007-10-06 20:47:12.000000000 +0200
++++ bulmages/bulmalib/plugins/pluginclipboardbf/pluginclipboardbf.pro	2008-01-29 23:22:03.000000000 +0100
+@@ -8,7 +8,8 @@
+           plugin \
+ 	  assistant
+ 	 
+-LIBS +=	 -rdynamic 	 
++LIBS +=	 -rdynamic \ 	 
++	 -lbulmalib
+ 
+ VERSION = 1.0.0
+ 

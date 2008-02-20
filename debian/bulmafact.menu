@@ -1,0 +1,4 @@
+?package(bulmafact):needs="X11" section="Apps/Tools"\
+ longtitle="BulmaFact: billing aplication"\
+ title="BulmaFact" command="/usr/bin/bulmafact"\
+ icon="/usr/share/bulmages/icons/iconbulmafact.xpm"
