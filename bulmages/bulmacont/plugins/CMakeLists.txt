@@ -22,12 +22,15 @@ add_subdirectory(pluginregistroiva)
 add_subdirectory(pluginadocumental)
 add_subdirectory(plugincorrector)
 add_subdirectory(plugin)
-add_subdirectory(plugincanualesods)
 add_subdirectory(plugindebugbc)
 add_subdirectory(pluginproyectos)
-add_subdirectory(plugincaaslods)
 add_subdirectory(pluginbalancetree)
 add_subdirectory(pluginbalance1)
+
+#add_subdirectory(plugincanualesods)
+#add_subdirectory(plugincaaslods)
+
+add_subdirectory(pluginreportods)
 
 # if you want to add some private code
 # simple put your add_directory in a
