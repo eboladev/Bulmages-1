@@ -66,7 +66,11 @@ private:
     QString ejercicioAnterior_fechaBalance;
 	Fixed cuentaPositiva( Fixed valor );
 	Fixed cuentaNevativa( Fixed valor );
+
+
 	QString cuentaAnualAsociancionSinLucro ();
+	QString cuentaAnualCAPGC07();
+	QString cuentaAnualCAPYMES08();
 	
 
 public:
