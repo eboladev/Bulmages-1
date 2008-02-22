@@ -49,7 +49,7 @@ class Q19View : public FichaBf, public Ui_Q19Base
 public:
     FacturasList *m_facturasList;
 
-    Q19View (FacturasList *,  Company *, QWidget * );
+    Q19View ( FacturasList *,  Company *, QWidget * );
     ~Q19View();
 
     QByteArray cobroQ19 ( QTextStream &, QString );

@@ -930,7 +930,7 @@ void Asiento1View::asiento_regularizacion ( QString finicial, QString ffinal )
         /// Hacemos el calculo de saldos hasta la fecha.
         query = "SELECT t1.codigo, t1.idcuenta, sum(t1.debe) AS sumdebe, sum(t1.haber) AS sumhaber, sum(t1.debe)-sum(t1.haber) AS saldito FROM ( SELECT cuenta.codigo AS codigo, cuenta.idcuenta AS idcuenta, apunte.debe AS debe, apunte.haber AS haber FROM (apunte LEFT JOIN cuenta ON apunte.idcuenta = cuenta.idcuenta) WHERE apunte.idcuenta IN (SELECT idcuenta FROM cuenta WHERE codigo LIKE '6%' OR codigo LIKE '7%') AND fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "'  ) AS t1 GROUP BY t1.idcuenta, t1.codigo ORDER BY saldito";
         cur = empresaBase() ->cargacursor ( query );
-	if (!cur) throw -1;
+        if ( !cur ) throw - 1;
         int orden = 0;
         while ( !cur->eof() ) {
             orden++;

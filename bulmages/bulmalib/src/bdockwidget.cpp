@@ -45,7 +45,7 @@ void BDockWidget::setWorkspace ( QWorkspace2 *w )
 /**
 \param a
 **/
-BDockWidget::BDockWidget (const QString & title, QWidget * parent, Qt::WindowFlags flags ) :QDockWidget ( title, parent, flags )
+BDockWidget::BDockWidget ( const QString & title, QWidget * parent, Qt::WindowFlags flags ) : QDockWidget ( title, parent, flags )
 {
     _depura ( "BDockWidget::BDockWidget", 0 );
     setFocusPolicy ( Qt::StrongFocus );

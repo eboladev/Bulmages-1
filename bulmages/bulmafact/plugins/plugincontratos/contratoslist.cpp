@@ -371,30 +371,30 @@ void ContratosList::on_mui_facturar_clicked()
     _depura ( "ContratosList::on_mui_facturar", 0 );
     cursor2 *cur = NULL;
     try {
-    QString where;
+        QString where;
 
-    if ( mui_idcliente->idcliente() != "" ) {
-        where = " AND contrato.idcliente = " + mui_idcliente->idcliente();
-    } // end if
-
-    cur = empresaBase()->cargacursor ( "SELECT * FROM contrato NATURAL LEFT JOIN cliente  WHERE nomcontrato LIKE '%" + m_findClient->text() + "%' " + where + " ORDER BY nomcontrato" );
-    while (!cur->eof()) {
-        ContratoView * prov = new ContratoView ( ( Company * ) empresaBase() );
-        if ( prov->cargar ( cur->valor("idcontrato") ) ) {
-            delete prov;
+        if ( mui_idcliente->idcliente() != "" ) {
+            where = " AND contrato.idcliente = " + mui_idcliente->idcliente();
         } // end if
+
+        cur = empresaBase() ->cargacursor ( "SELECT * FROM contrato NATURAL LEFT JOIN cliente  WHERE nomcontrato LIKE '%" + m_findClient->text() + "%' " + where + " ORDER BY nomcontrato" );
+        while ( !cur->eof() ) {
+            ContratoView * prov = new ContratoView ( ( Company * ) empresaBase() );
+            if ( prov->cargar ( cur->valor ( "idcontrato" ) ) ) {
+                delete prov;
+            } // end if
 //        empresaBase() ->m_pWorkspace->addWindow ( prov );
-        prov->on_mui_facturar_clicked();
-	delete prov;
+            prov->on_mui_facturar_clicked();
+            delete prov;
 
-	cur->siguienteregistro();
-    } // end while
-    delete cur;
+            cur->siguienteregistro();
+        } // end while
+        delete cur;
 
-    } catch( ... ) {
-	mensajeInfo("Error inesperado");
-	if (cur) delete cur;
-	return;
+    } catch ( ... ) {
+        mensajeInfo ( "Error inesperado" );
+        if ( cur ) delete cur;
+        return;
     } // end try
     _depura ( "END ContratosList::on_mui_facturar", 0 );
 }

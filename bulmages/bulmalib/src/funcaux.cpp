@@ -115,10 +115,10 @@ QString XMLDesProtect ( const QString &string )
     cadenatmp.replace ( "&#60;", "<" );
     cadenatmp.replace ( "&#34;", "\"" );
     cadenatmp.replace ( "&#39;", "\'" );
-    cadenatmp.replace( "<br />", "\n");
+    cadenatmp.replace ( "<br />", "\n" );
 
-    for (int i = 126; i < 256; i++) {
-	cadenatmp.replace ("&#" + QString::number(i) + ";", QChar(i));
+    for ( int i = 126; i < 256; i++ ) {
+        cadenatmp.replace ( "&#" + QString::number ( i ) + ";", QChar ( i ) );
     } // end for
 
     return cadenatmp;

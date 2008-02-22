@@ -56,8 +56,8 @@ private:
     Fixed saldoCuentaAnt ( int cuenta );
     QString ejercicioActual_fechaBalance;
     QString ejercicioAnterior_fechaBalance;
-	Fixed cuentaPositiva( Fixed valor );
-	Fixed cuentaNevativa( Fixed valor );
+    Fixed cuentaPositiva ( Fixed valor );
+    Fixed cuentaNevativa ( Fixed valor );
 
 public:
     Empresa *empresaact;

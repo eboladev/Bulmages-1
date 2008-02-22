@@ -322,7 +322,7 @@ void ContratoView::on_mui_facturar_clicked()
                 linea = m_listalineas->lineaat ( i );
                 if ( linea->DBvalue ( "idarticulo" ) != "" ) {
                     linea1 = fac->getlistalineas() ->lineaat ( fac->getlistalineas() ->rowCount() - 1 );
-		    /// Haciendo la nueva linea antes nos evitamos problemas de foco
+                    /// Haciendo la nueva linea antes nos evitamos problemas de foco
                     fac->getlistalineas() ->nuevoRegistro();
                     fac->getlistalineas() ->setProcesarCambios ( FALSE );
                     linea1->setDBvalue ( "idarticulo", linea->DBvalue ( "idarticulo" ) );
@@ -333,7 +333,7 @@ void ContratoView::on_mui_facturar_clicked()
                     linea1->setDBvalue ( "cantlfactura", linea->DBvalue ( "cantlcontrato" ) );
                     linea1->setDBvalue ( "pvplfactura", linea->DBvalue ( "pvplcontrato" ) );
                     fac->getlistalineas() ->setProcesarCambios ( TRUE );
-		    linea1->refresh();
+                    linea1->refresh();
                 } // end if
             } // end for
             fac->calculaypintatotales();

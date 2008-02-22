@@ -261,10 +261,10 @@ public slots:
 signals:
     void toogledConfig ( bool );
     void editFinish ( int, int );
-    void pushAsterisk( int, int );
-    void pushPlus( int, int );
-    void pushMinus( int, int );
-    void pushSlash( int, int );
+    void pushAsterisk ( int, int );
+    void pushPlus ( int, int );
+    void pushMinus ( int, int );
+    void pushSlash ( int, int );
     void itemDoubleClicked ( QTableWidgetItem * );
     void itemClicked ( QTableWidgetItem * );
     void cellDoubleClicked ( int row, int col );

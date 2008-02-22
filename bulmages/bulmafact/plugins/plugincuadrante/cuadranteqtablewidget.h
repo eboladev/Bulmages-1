@@ -27,6 +27,7 @@
 #include <QTableWidgetItem>
 #include <QItemDelegate>
 #include <QLabel>
+#include <QMenu>
 #include "funcaux.h"
 #include "blwidget.h"
 
@@ -41,6 +42,8 @@ public:
     QString mdb_idalmacen;
     QDate   mdb_fechacuadrante;
     QString mdb_idcuadrante;
+    QMenu   *m_menu;
+    QAction *m_accion;
 
 public:
     CuadranteQTextDocument ( Company *emp, QWidget *parent = 0 );

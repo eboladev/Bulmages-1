@@ -142,15 +142,15 @@ void SubForm2Bf::pressedMinus ( int row, int col, SDBRecord *rec, SDBCampo *camp
 {
     _depura ( "SubForm2Bf::pressedMinus", 0 );
 
-    if (!rec->exists("idarticulo")) {
+    if ( !rec->exists ( "idarticulo" ) ) {
         _depura ( "END SubForm2Bf::pressedMinus", 0, "No hay un idarticulo" );
-	return;
+        return;
     } // end if
 
     cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM articulo WHERE idarticulo = " + rec->DBvalue ( "idarticulo" ) );
-    if (!cur) {
+    if ( !cur ) {
         _depura ( "END SubForm2Bf::pressedMinus", 0, "No hay un idarticulo" );
-	return;
+        return;
     } // end if
 
     if ( !cur->eof() ) {

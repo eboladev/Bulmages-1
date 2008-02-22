@@ -1604,8 +1604,8 @@ bool StructureParser::endElement ( const QString&, const QString&, const QString
     /// Ha terminado un asiento, por tanto hacemos el update de los campos.
     if ( qName == "ASIENTO" && m_tipo & IMPORT_ASIENTOS ) {
         QString query = "UPDATE asiento set fecha = '" +
-                        conexionbase->sanearCadena ( XMLDesProtect(fechaasiento) ) + "' WHERE idasiento = " +
-                        conexionbase->sanearCadena ( XMLDesProtect(idasiento) );
+                        conexionbase->sanearCadena ( XMLDesProtect ( fechaasiento ) ) + "' WHERE idasiento = " +
+                        conexionbase->sanearCadena ( XMLDesProtect ( idasiento ) );
         conexionbase->begin();
         conexionbase->ejecuta ( query );
         cursor2 *cur = conexionbase->cargacursor ( "SELECT cierraasiento(" + idasiento + ")" );
@@ -1619,7 +1619,7 @@ bool StructureParser::endElement ( const QString&, const QString&, const QString
                         conexionbase->sanearCadena ( haberapunte ) + ", idcuenta = id_cuenta('" +
                         conexionbase->sanearCadena ( codigocuentaapunte ) + "'), fecha = '" +
                         conexionbase->sanearCadena ( fechaapunte ) + "', conceptocontable = '" +
-                        conexionbase->sanearCadena ( XMLDesProtect(conceptocontableapunte) ) + "' WHERE idborrador = " + idborrador;
+                        conexionbase->sanearCadena ( XMLDesProtect ( conceptocontableapunte ) ) + "' WHERE idborrador = " + idborrador;
         conexionbase->ejecuta ( query );
     } // end if
     if ( qName == "FECHA" && tagpadre == "ASIENTO" )
@@ -1642,7 +1642,7 @@ bool StructureParser::endElement ( const QString&, const QString&, const QString
         /// Primero debemos determinar si existe o no dicha cuenta para hacer la insercion o la modificacion.
         QString vidcuenta;
         if ( codigopadre != "" )  {
-            vidcuenta = "id_cuenta('" + conexionbase->sanearCadena ( XMLDesProtect(codigopadre) ) + "')";
+            vidcuenta = "id_cuenta('" + conexionbase->sanearCadena ( XMLDesProtect ( codigopadre ) ) + "')";
         } else {
             vidcuenta = "NULL";
         } // end if
@@ -1656,7 +1656,7 @@ bool StructureParser::endElement ( const QString&, const QString&, const QString
             QString query = "INSERT INTO cuenta (tipocuenta, codigo, descripcion, padre, bloqueada, nodebe, nohaber) VALUES (" +
                             conexionbase->sanearCadena ( m_tipoCuenta ) + ",'" +
                             conexionbase->sanearCadena ( codigocuenta ) + "','" +
-                            conexionbase->sanearCadena ( XMLDesProtect(descripcioncuenta) ) + "', " +
+                            conexionbase->sanearCadena ( XMLDesProtect ( descripcioncuenta ) ) + "', " +
                             vidcuenta + ", '" +
                             conexionbase->sanearCadena ( m_bloqueadaCuenta ) + "','" +
                             conexionbase->sanearCadena ( m_nodebeCuenta ) + "','" +
@@ -1664,7 +1664,7 @@ bool StructureParser::endElement ( const QString&, const QString&, const QString
             conexionbase->ejecuta ( query );
         } else {
             QString query = "UPDATE cuenta SET ";
-            query += "descripcion = '" + conexionbase->sanearCadena ( XMLDesProtect(descripcioncuenta) ) + "'";
+            query += "descripcion = '" + conexionbase->sanearCadena ( XMLDesProtect ( descripcioncuenta ) ) + "'";
             query += ", tipocuenta = " + conexionbase->sanearCadena ( m_tipoCuenta );
             query += ", bloqueada = '" + conexionbase->sanearCadena ( m_bloqueadaCuenta ) + "'";
             query += ", nodebe = '" + conexionbase->sanearCadena ( m_nodebeCuenta ) + "'";

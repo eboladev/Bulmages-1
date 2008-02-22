@@ -81,11 +81,11 @@ void myplugin4::inicializa ( Bulmacont *bges )
     m_bulmacont = bges;
     QMenu *pPluginMenu;
     /// Miramos si existe un menu Herramientas
-    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( tr("Ver") );
+    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( tr ( "Ver" ) );
 
     /// Creamos el men&uacute;.
     if ( !pPluginMenu ) {
-        pPluginMenu = new QMenu ( tr("&Ver"), bges->menuBar() );
+        pPluginMenu = new QMenu ( tr ( "&Ver" ), bges->menuBar() );
         pPluginMenu->setObjectName ( QString::fromUtf8 ( "Ver" ) );
     } // end if
 

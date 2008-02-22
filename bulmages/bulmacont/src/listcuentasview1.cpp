@@ -427,9 +427,9 @@ void listcuentasview1::on_mui_tablacuentas_cellDoubleClicked ( int row, int )
     QList <QTreeWidgetItem *> it;
 
     it = mui_arbolcuentas->findItems ( idcuenta, Qt::MatchRecursive | Qt::MatchExactly, cidcuenta );
-    if (! it.isEmpty() ) {
-    	mui_arbolcuentas->setCurrentItem ( it.first() );
-    	on_mui_arbolcuentas_itemDoubleClicked ( it.first(), 0 );
+    if ( ! it.isEmpty() ) {
+        mui_arbolcuentas->setCurrentItem ( it.first() );
+        on_mui_arbolcuentas_itemDoubleClicked ( it.first(), 0 );
     } // end if
     _depura ( "END listcuentasview1::on_mui_tablacuentas_doubleClicked", 0 );
 }

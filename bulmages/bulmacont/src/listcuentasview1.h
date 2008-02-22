@@ -85,7 +85,7 @@ private slots:
     virtual void on_mui_arbolcuentas_itemDoubleClicked ( QTreeWidgetItem *, int );
 
 public slots:
-    virtual void on_mui_tablacuentas_cellDoubleClicked ( int row, int);
+    virtual void on_mui_tablacuentas_cellDoubleClicked ( int row, int );
     virtual void on_mui_editar_clicked();
     virtual void on_mui_crear_clicked();
     virtual void on_mui_busqueda_textChanged ( const QString & );

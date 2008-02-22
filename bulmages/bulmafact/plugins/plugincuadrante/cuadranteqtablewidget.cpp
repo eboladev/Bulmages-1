@@ -136,12 +136,12 @@ CuadranteQTextDocument::CuadranteQTextDocument ( Company *emp, QWidget *parent )
 void CuadranteQTextDocument::on_customContextMenuRequested ( const QPoint & pos )
 {
     QMap<QAction *, QString> horarios;
-    QMenu menu ( this );
-    QAction *at = menu.addAction ( "Vaciar Personal" );
-    QAction *com = menu.addAction ( "Quitar Comentarios" );
-    QAction *fest = menu.addAction ( "Festivo" );
-    QAction *nofest = menu.addAction ( "No Festivo" );
-    QMenu *menu1 = menu.addMenu ( "Eliminar Personal" );
+    m_menu = new QMenu ( this );
+    QAction *at = m_menu->addAction ( "Vaciar Personal" );
+    QAction *com = m_menu->addAction ( "Quitar Comentarios" );
+    QAction *fest = m_menu->addAction ( "Festivo" );
+    QAction *nofest = m_menu->addAction ( "No Festivo" );
+    QMenu *menu1 = m_menu->addMenu ( "Eliminar Personal" );
     cursor2 *cur1 = empresaBase() ->cargacursor ( "SELECT * FROM horario, trabajador, tipotrabajo WHERE horario.idtrabajador = trabajador.idtrabajador AND trabajador.idtipotrabajo = tipotrabajo.idtipotrabajo AND idcuadrante = " + mdb_idcuadrante + " ORDER BY nomtipotrabajo, nomtrabajador, horainhorario" );
     if ( !cur1 ) throw - 1;
     while ( !cur1->eof() ) {
@@ -151,7 +151,14 @@ void CuadranteQTextDocument::on_customContextMenuRequested ( const QPoint & pos 
     } // end while
     delete cur1;
 
-    QAction *sel = menu.exec ( mapToGlobal ( pos ), at );
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza ( "CuadranteQTextDocument_on_customContextMenuRequested", this );
+    if ( res != 0 ) {
+        return;
+    } // end if
+
+    QAction *sel = m_menu->exec ( mapToGlobal ( pos ), at );
+    m_accion = sel;
 
     /// Miramos y tratamos la opcion seleccionada.
     if ( sel == at ) {
@@ -179,18 +186,14 @@ void CuadranteQTextDocument::on_customContextMenuRequested ( const QPoint & pos 
         QString query = "UPDATE cuadrante SET comentcuadrante = '' WHERE idcuadrante = " + mdb_idcuadrante;
         empresaBase() ->ejecuta ( query );
     } // end if
-    pintaCuadrante ( mdb_idalmacen, mdb_fechacuadrante );
-    /*
 
-        QObject *wid = parent();
-        while (wid
-                && (wid->objectName() != "CuadranteBase")
-              ) {
-            wid = wid->parent();
-        } // end if
-        if (wid)
-            ((CuadranteView *)wid)->on_mui_actualizar_clicked();
-    */
+    g_plugins->lanza ( "CuadranteQTextDocument_on_customContextMenuRequested_Post", this );
+
+
+    pintaCuadrante ( mdb_idalmacen, mdb_fechacuadrante );
+
+    delete m_menu;
+
     return;
 
 }
@@ -322,6 +325,7 @@ void CuadranteQTextDocument::pintaCuadrante ( QString idalmacen, const QDate &da
     imp->mdb_idalmacen = idalmacen;
     imp->mdb_fechacuadrante = date;
     imp->generar();
+    QLabel::setAlignment ( Qt::AlignTop );
     QLabel::setText ( imp->m_html );
     mdb_idcuadrante = imp->mdb_idcuadrante;
     _depura ( "END CuadranteQTextDocument::pintaCuadrante", 0 );

@@ -44,7 +44,7 @@ public:
     Fixed operator [] ( int ) const;
     Fixed operator = ( Fixed );
     Fixed operator = ( int );
-    QString toQString ( QChar separadorDecimal = ',', int precision=2 );
+    QString toQString ( QChar separadorDecimal = ',', int precision = 2 );
     friend Fixed operator + ( Fixed, Fixed );
     friend Fixed operator - ( Fixed, Fixed );
     friend Fixed operator * ( Fixed, Fixed );

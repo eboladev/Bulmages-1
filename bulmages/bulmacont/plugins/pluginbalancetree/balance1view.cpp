@@ -113,9 +113,9 @@ BalanceTreeView::BalanceTreeView ( Empresa *emp, QWidget *parent, int )
     IDCUENTA = 11;
     PADRE = 12;
 
-    for (int i= 2; i <= numdigitos; i++) {
-    /// Inicializamos la tabla de nivel.
-    combonivel->insertItem ( i, QString::number(i) );
+    for ( int i = 2; i <= numdigitos; i++ ) {
+        /// Inicializamos la tabla de nivel.
+        combonivel->insertItem ( i, QString::number ( i ) );
     } // end for
 
 
@@ -257,7 +257,8 @@ void BalanceTreeView::inicializa1 ( QString codinicial, QString codfinal, QStrin
 }
 
 
-void BalanceTreeView::generarBalance() {
+void BalanceTreeView::generarBalance()
+{
     //QListViewItem1 * it;
     int num1;
     QString query;
@@ -269,22 +270,22 @@ void BalanceTreeView::generarBalance() {
     QString ejercicio = ffinal.right ( 4 );
 
     /// Hacemos la consulta de los apuntes a listar en la base de datos.
-        // Consideraciones para centros de coste y canales
-        selectcanalview *scanal = empresaBase() ->getselcanales();
-        SelectCCosteView *scoste = empresaBase() ->getselccostes();
-        QString ccostes = scoste->cadcoste();
-	QString logicand = "";
-        if ( ccostes != "" ) {
-            ccostes = "AND apunte.idc_coste IN (" + ccostes + ") ";
-	
-        } // end if
+    // Consideraciones para centros de coste y canales
+    selectcanalview *scanal = empresaBase() ->getselcanales();
+    SelectCCosteView *scoste = empresaBase() ->getselccostes();
+    QString ccostes = scoste->cadcoste();
+    QString logicand = "";
+    if ( ccostes != "" ) {
+        ccostes = "AND apunte.idc_coste IN (" + ccostes + ") ";
 
-        QString ccanales = scanal->cadcanal();
-        if ( ccanales != "" ) {
-            ccanales =  " AND apunte.idcanal IN (" + ccanales + ") ";
-        } // end if
+    } // end if
 
-	QString clauswhere = ccostes + ccanales;
+    QString ccanales = scanal->cadcanal();
+    if ( ccanales != "" ) {
+        ccanales =  " AND apunte.idcanal IN (" + ccanales + ") ";
+    } // end if
+
+    QString clauswhere = ccostes + ccanales;
 
 
     /// La consulta es compleja, requiere la creaci&oacute;n de una tabla temporal y de
@@ -361,7 +362,7 @@ void BalanceTreeView::presentar()
     QTreeWidgetItem *it;
     double tsaldoant = 0, tdebe = 0, thaber = 0, tsaldo = 0;
     generarBalance();
-   
+
 
     query = "SELECT * FROM balancetemp WHERE debe <> 0  OR haber <> 0 ORDER BY padre, codigo";
     cursor2 *cursorapt1 = empresaBase() ->cargacursor ( query );
@@ -397,15 +398,15 @@ void BalanceTreeView::presentar()
 
         it->setText ( CUENTA, cursorapt1->valor ( "codigo" ) );
         if ( cursorapt1->valor ( "tipocuenta" ) == "1" ) {
-            it->setIcon(CUENTA, QIcon(QPixmap(cactivo)));
+            it->setIcon ( CUENTA, QIcon ( QPixmap ( cactivo ) ) );
         } else if ( cursorapt1->valor ( "tipocuenta" ) == "2" ) {
-            it->setIcon(CUENTA, QIcon(QPixmap(cpasivo)));
+            it->setIcon ( CUENTA, QIcon ( QPixmap ( cpasivo ) ) );
         } else if ( cursorapt1->valor ( "tipocuenta" ) == "3" ) {
-            it->setIcon(CUENTA, QIcon(QPixmap(cneto)));
+            it->setIcon ( CUENTA, QIcon ( QPixmap ( cneto ) ) );
         } else if ( cursorapt1->valor ( "tipocuenta" ) == "4" ) {
-            it->setIcon(CUENTA, QIcon(QPixmap(cingresos)));
+            it->setIcon ( CUENTA, QIcon ( QPixmap ( cingresos ) ) );
         } else if ( cursorapt1->valor ( "tipocuenta" ) == "5" ) {
-            it->setIcon(CUENTA, QIcon(QPixmap(cgastos)));
+            it->setIcon ( CUENTA, QIcon ( QPixmap ( cgastos ) ) );
         } // end if
 
         it->setText ( DENOMINACION, cursorapt1->valor ( "descripcion" ) );
@@ -421,50 +422,50 @@ void BalanceTreeView::presentar()
         it->setText ( IDCUENTA, cursorapt1->valor ( "idcuenta" ) );
         it->setText ( PADRE, cursorapt1->valor ( "padre" ) );
 
-                /// Formateamos un poquito la informaci&oacute;n mostrada.
+        /// Formateamos un poquito la informaci&oacute;n mostrada.
 
         /// Establecemos los alineados del nuevo elemento creado.
 
 
 
-                for ( int col = 0; col < it->columnCount(); col++ ) {
+        for ( int col = 0; col < it->columnCount(); col++ ) {
 
-                    if ( col == DEBE || col == HABER || col == SALDO ||  col == DEBEEJ || col == HABEREJ || col == SALDOEJ ) {
-                        it->setFont ( col, QFont ( "SansSerif", 10, QFont::DemiBold, false ) );
-                    } else {
-                        it->setFont ( col, QFont ( "SansSerif", 10, QFont::Normal, false ) );
+            if ( col == DEBE || col == HABER || col == SALDO ||  col == DEBEEJ || col == HABEREJ || col == SALDOEJ ) {
+                it->setFont ( col, QFont ( "SansSerif", 10, QFont::DemiBold, false ) );
+            } else {
+                it->setFont ( col, QFont ( "SansSerif", 10, QFont::Normal, false ) );
+            } // end if
+
+            if ( cursorapt1->valor ( "nivel" ).toInt() == 2 ) {
+                it->setTextColor ( col, Qt::black );
+                it->setFont ( col, QFont ( "SansSerif", 12, QFont::Bold, false ) );
+            } else if ( cursorapt1->valor ( "nivel" ).toInt() < 5 ) {
+                it->setTextColor ( col, Qt::blue );
+            } else  {
+
+                if ( col == DEBE || col == HABER || col == DEBEEJ || col == HABEREJ ) {
+                    it->setTextColor ( col, Qt::darkGray );
+                } else if ( col == SALDO || col == SALDOEJ )  {
+                    it->setTextColor ( col, Qt::darkGreen );
+                    if ( it->text ( col ).left ( 1 ) == "-" ) {
+                        it->setTextColor ( col, Qt::darkRed );
                     } // end if
 
-                    if ( cursorapt1->valor ( "nivel" ).toInt() == 2 ) {
-                        it->setTextColor ( col, Qt::black );
-                        it->setFont ( col, QFont ( "SansSerif", 12, QFont::Bold, false ) );
-		    } else if (cursorapt1->valor ("nivel").toInt() < 5) {
-                        it->setTextColor ( col, Qt::blue );
-                    } else  {
-
-                    	if ( col == DEBE || col == HABER || col == DEBEEJ || col == HABEREJ ) {
-	                        it->setTextColor ( col, Qt::darkGray );
-			} else if ( col == SALDO || col == SALDOEJ)  {
-	                        it->setTextColor ( col, Qt::darkGreen );
-	                        if ( it->text ( col ).left ( 1 ) == "-" ) {
-        	                    it->setTextColor ( col, Qt::darkRed );
-                	        } // end if
-
-                    	} else {
-	                        it->setFont ( col, QFont ( "SansSerif", 10, QFont::Normal, false ) );
-	                        it->setTextColor ( col, Qt::darkGray );
-        	        } // end if
-
-                    } // end if
-                } // end for
-
-                int tamanyo = 10;
-                if ( cursorapt1->valor ( "descripcion" ).length() > 40 ) {
-                    tamanyo -= 1;
-                } else if ( cursorapt1->valor ( "descripcion" ).length() > 50 ) {
-                    tamanyo -= 2;
+                } else {
+                    it->setFont ( col, QFont ( "SansSerif", 10, QFont::Normal, false ) );
+                    it->setTextColor ( col, Qt::darkGray );
                 } // end if
-                it->setFont ( DENOMINACION, QFont ( "Serif", tamanyo, -1, false ) );
+
+            } // end if
+        } // end for
+
+        int tamanyo = 10;
+        if ( cursorapt1->valor ( "descripcion" ).length() > 40 ) {
+            tamanyo -= 1;
+        } else if ( cursorapt1->valor ( "descripcion" ).length() > 50 ) {
+            tamanyo -= 2;
+        } // end if
+        it->setFont ( DENOMINACION, QFont ( "Serif", tamanyo, -1, false ) );
 
         it->setTextAlignment ( CUENTA, Qt::AlignLeft );
         it->setTextAlignment ( DENOMINACION, Qt::AlignLeft );
@@ -539,9 +540,9 @@ void BalanceTreeView::nivelactivated1 ( int nivel, QTreeWidgetItem *ot )
             ot->treeWidget() ->collapseItem ( ot );
         } // end if
 
-	for (int i = 0; i < ot->childCount(); i++) {
-        	nivelactivated1(nivel, ot->child(i));
-	} // end for
+        for ( int i = 0; i < ot->childCount(); i++ ) {
+            nivelactivated1 ( nivel, ot->child ( i ) );
+        } // end for
 
     } // end if
     _depura ( "END BalanceTreeView::nivelactivated1", 0 );
@@ -604,7 +605,7 @@ void BalanceTreeView::imprimir()
     QString query;
     generarBalance();
 
-    generaRML("balance.rml");
+    generaRML ( "balance.rml" );
     invocaPDF ( "balance" );
 
     /// Eliminamos la tabla temporal y cerramos la transacci&oacute;n.
@@ -638,7 +639,7 @@ void BalanceTreeView::on_mui_hojacalculo_clicked()
     QTreeWidgetItem *it;
     double tsaldoant = 0, tdebe = 0, thaber = 0, tsaldo = 0;
     generarBalance();
-   
+
 
 // =================================================================
 
@@ -681,12 +682,12 @@ void BalanceTreeView::on_mui_hojacalculo_clicked()
     /// Sacamos las cabeceras
     for ( int h = 0; h < cursorapt1->numcampos(); h++ ) {
 
-            fitxersortidatxt += "# Fila " + QString::number ( y ) + "\n";
-            fitxersortidatxt += "$doc->oooSet(\"bold\", \"on\");\n";
-            fitxersortidatxt += "$doc->oooSet(\"cell-loc\", " + QString::number ( x++ ) + ", " + QString::number ( y ) + ");\n";
-            fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + parsearCode(cursorapt1->nomcampo(h)) + "\");\n";
-            fitxersortidatxt += "$doc->oooSet(\"bold\", \"off\");\n";
-            fitxersortidatxt += "\n";
+        fitxersortidatxt += "# Fila " + QString::number ( y ) + "\n";
+        fitxersortidatxt += "$doc->oooSet(\"bold\", \"on\");\n";
+        fitxersortidatxt += "$doc->oooSet(\"cell-loc\", " + QString::number ( x++ ) + ", " + QString::number ( y ) + ");\n";
+        fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + parsearCode ( cursorapt1->nomcampo ( h ) ) + "\");\n";
+        fitxersortidatxt += "$doc->oooSet(\"bold\", \"off\");\n";
+        fitxersortidatxt += "\n";
 
     } // end for
 
@@ -700,16 +701,16 @@ void BalanceTreeView::on_mui_hojacalculo_clicked()
 
         int x = 1;
         for ( int j = 0; j < cursorapt1->numcampos(); j++ ) {
-                fitxersortidatxt += "# Fila " + QString::number ( y ) + "\n";
-                fitxersortidatxt += "$doc->oooSet(\"bold\", \"on\");\n";
-                fitxersortidatxt += "$doc->oooSet(\"cell-loc\", " + QString::number ( x++ ) + ", " + QString::number ( y ) + ");\n";
-                fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + parsearCode ( cursorapt1->valor(j) ) + "\");\n";
-                fitxersortidatxt += "$doc->oooSet(\"bold\", \"off\");\n";
-                fitxersortidatxt += "\n";
+            fitxersortidatxt += "# Fila " + QString::number ( y ) + "\n";
+            fitxersortidatxt += "$doc->oooSet(\"bold\", \"on\");\n";
+            fitxersortidatxt += "$doc->oooSet(\"cell-loc\", " + QString::number ( x++ ) + ", " + QString::number ( y ) + ");\n";
+            fitxersortidatxt += "$doc->oooData(\"cell-text\", \"" + parsearCode ( cursorapt1->valor ( j ) ) + "\");\n";
+            fitxersortidatxt += "$doc->oooSet(\"bold\", \"off\");\n";
+            fitxersortidatxt += "\n";
 
         } // end for
         y++;
-	cursorapt1->siguienteregistro();
+        cursorapt1->siguienteregistro();
     } // end while
     /// Vaciamos el cursor de la base de datos.
     delete cursorapt1;

@@ -123,15 +123,14 @@ void pluginCAnualesODS::formDatosBalance()
     } // end if
     delete dv;
 
-	if(ejercicioActual_fechaBalance.isEmpty()){
-		mensajeError ( "ERROR: Debe introducir una fecha en el balance actual.");
-		resultado = 0;
-	}
-	else{
-		if(ejercicioAnterior_fechaBalance.isEmpty()){
-			mensajeError ( "ERROR: Debe introducir una fecha en el balance anterior.");
-			resultado = 0;
-		}
+    if ( ejercicioActual_fechaBalance.isEmpty() ) {
+        mensajeError ( "ERROR: Debe introducir una fecha en el balance actual." );
+        resultado = 0;
+    } else {
+        if ( ejercicioAnterior_fechaBalance.isEmpty() ) {
+            mensajeError ( "ERROR: Debe introducir una fecha en el balance anterior." );
+            resultado = 0;
+        }
     } // end if
 
     /// Se pulso el boton 'cancelar'

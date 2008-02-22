@@ -67,18 +67,18 @@ void entryPoint ( Bulmacont *bcont )
     viewCorrector->setStatusTip ( "Muestra/oculta el corrector" );
     viewCorrector->setWhatsThis ( "Corrector.\n\nMuestra/oculta el corrector" );
     QObject::connect ( viewCorrector, SIGNAL ( toggled ( bool ) ), corr, SLOT ( cambia ( bool ) ) );
-    QObject::connect ( doc1, SIGNAL (cambiaEstadoVisible (bool)), corr, SLOT ( cambia ( bool ) ) );
+    QObject::connect ( doc1, SIGNAL ( cambiaEstadoVisible ( bool ) ), corr, SLOT ( cambia ( bool ) ) );
     bcont->mui_MenuVer() ->addSeparator();
     bcont->mui_MenuVer() ->addAction ( viewCorrector );
 
     corr->m_viewCorrector = viewCorrector;
 
-    QFile file(confpr->valor(CONF_DIR_USER) + "plugincorrector_" + emp->nameDB() + ".cfn");
+    QFile file ( confpr->valor ( CONF_DIR_USER ) + "plugincorrector_" + emp->nameDB() + ".cfn" );
     if ( file.exists () ) {
         doc1->show();
         viewCorrector->setChecked ( TRUE );
     } else {
-	doc1->hide();
+        doc1->hide();
         viewCorrector->setChecked ( FALSE );
     } // end if
 
@@ -89,14 +89,16 @@ void entryPoint ( Bulmacont *bcont )
 /**
 \param bcont
 **/
-int Bulmacont_closeEvent ( Bulmacont *bcont )  {
-    Empresa *emp = bcont->empresaactual();
-    QFile file(confpr->valor(CONF_DIR_USER) + "plugincorrector_" + emp->nameDB() + ".cfn");
-	if (!viewCorrector->isChecked()) {
-		file.remove();
-	} else {
-		file.open(QIODevice::WriteOnly);
-		file.close();
-	} // end if
-	return 0;
+int Bulmacont_closeEvent ( Bulmacont *bcont )
+{
+    Empresa * emp = bcont->empresaactual();
+    QFile file ( confpr->valor ( CONF_DIR_USER ) + "plugincorrector_" + emp->nameDB() + ".cfn" );
+    if ( !viewCorrector->isChecked() ) {
+        file.remove();
+    } else {
+        file.open ( QIODevice::WriteOnly );
+        file.close();
+    } // end if
+    return 0;
+}
 }

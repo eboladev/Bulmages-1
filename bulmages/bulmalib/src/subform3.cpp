@@ -1917,7 +1917,8 @@ void SubForm3::on_mui_list_pressedSlash ( int row, int col )
         /// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
         on_mui_list_cellChanged ( row, col );
     } // end if
-    _depura ( "END SubForm3::on_mui_list_pressedSlash", 0 );}
+    _depura ( "END SubForm3::on_mui_list_pressedSlash", 0 );
+}
 
 
 ///

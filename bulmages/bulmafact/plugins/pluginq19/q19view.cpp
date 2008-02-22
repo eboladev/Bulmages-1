@@ -45,33 +45,33 @@ Q19View::Q19View ( FacturasList *fac, Company *comp, QWidget *parent )
     try {
         setupUi ( this );
 
-	m_facturasList = fac;
+        m_facturasList = fac;
 
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
 //        mui_idcliente->setEmpresaBase ( comp );
 //        mui_refcobro->setEmpresaBase ( comp );
         mui_idbanco->setEmpresaBase ( comp );
-	mui_idbanco->setidbanco("0");
+        mui_idbanco->setidbanco ( "0" );
 
         setDBTableName ( "factura" );
         setDBCampoId ( "idfactura" );
 
-/*
-        setTitleName ( tr ( "Cobro" ) );
-
-        addDBCampo ( "idcobro", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "Cobro", "ID cobro" ) );
-        addDBCampo ( "idcliente", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "Cobro", "ID cliente" ) );
-        addDBCampo ( "previsioncobro", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate ( "Cobro", "Prevision de cobro" ) );
-        addDBCampo ( "fechacobro", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate ( "Cobro", "Fecha de cobro" ) );
-        addDBCampo ( "fechavenccobro", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate ( "Cobro", "Fecha de vencimiento" ) );
-        addDBCampo ( "refcobro", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Cobro", "Referencia del cobro" ) );
-        addDBCampo ( "cantcobro", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate ( "Cobro", "Cantidad" ) );
-        addDBCampo ( "comentcobro", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Cobro", "Comentarios" ) );
-        addDBCampo ( "idbanco", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Banco", "Comentarios" ) );
-
-        pintar();
-        dialogChanges_cargaInicial();
-*/
+        /*
+                setTitleName ( tr ( "Cobro" ) );
+         
+                addDBCampo ( "idcobro", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "Cobro", "ID cobro" ) );
+                addDBCampo ( "idcliente", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "Cobro", "ID cliente" ) );
+                addDBCampo ( "previsioncobro", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate ( "Cobro", "Prevision de cobro" ) );
+                addDBCampo ( "fechacobro", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate ( "Cobro", "Fecha de cobro" ) );
+                addDBCampo ( "fechavenccobro", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate ( "Cobro", "Fecha de vencimiento" ) );
+                addDBCampo ( "refcobro", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Cobro", "Referencia del cobro" ) );
+                addDBCampo ( "cantcobro", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate ( "Cobro", "Cantidad" ) );
+                addDBCampo ( "comentcobro", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Cobro", "Comentarios" ) );
+                addDBCampo ( "idbanco", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Banco", "Comentarios" ) );
+         
+                pintar();
+                dialogChanges_cargaInicial();
+        */
         meteWindow ( windowTitle(), this, FALSE );
         dialogChanges_cargaInicial();
 
@@ -103,9 +103,9 @@ Q19View::~Q19View()
 QByteArray Q19View::cabeceraPresentador ( QTextStream &out, QString idfactura )
 {
     _depura ( "Q19View::cabeceraPresentador", 0 );
-    cursor2 *curcobro = empresaBase()->cargacursor ( "SELECT * FROM factura WHERE idfactura = " + idfactura );
+    cursor2 *curcobro = empresaBase() ->cargacursor ( "SELECT * FROM factura WHERE idfactura = " + idfactura );
 
-    cursor2 *curbanco = empresaBase()-> cargacursor( "SELECT * FROM banco WHERE idbanco = " + mui_idbanco->idbanco() );
+    cursor2 *curbanco = empresaBase() -> cargacursor ( "SELECT * FROM banco WHERE idbanco = " + mui_idbanco->idbanco() );
 
     /// CABECERA PRESENTADOR
     /// Generamos la cabecera presentador
@@ -116,7 +116,7 @@ QByteArray Q19View::cabeceraPresentador ( QTextStream &out, QString idfactura )
     cab_present.append ( "80" );
 
     /// Codigo de presentador (NIF + Sufijo alineado a la derecha y rellenado con ceros) Longitud: 12
-    cursor2 *cur = empresaBase()->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CIF'" );
+    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CIF'" );
     QString nif = cur->valor ( "valor" );
     delete cur;
     QString sufijo = "000";
@@ -178,9 +178,9 @@ QByteArray Q19View::cabeceraPresentador ( QTextStream &out, QString idfactura )
 QByteArray Q19View::cabeceraOrdenante ( QTextStream &out, QString idfactura )
 {
     _depura ( "Q19View::cabeceraOrdenante", 0 );
-    cursor2 *curcobro = empresaBase()->cargacursor ( "SELECT * FROM factura WHERE idfactura = " + idfactura );
+    cursor2 *curcobro = empresaBase() ->cargacursor ( "SELECT * FROM factura WHERE idfactura = " + idfactura );
 
-    cursor2 *curbanco = empresaBase()-> cargacursor( "SELECT * FROM banco WHERE idbanco = " + mui_idbanco->idbanco() );
+    cursor2 *curbanco = empresaBase() -> cargacursor ( "SELECT * FROM banco WHERE idbanco = " + mui_idbanco->idbanco() );
 
 
     /// GENERAMOS LA CABECERA ORDENANTE
@@ -268,7 +268,7 @@ QByteArray Q19View::cabeceraOrdenante ( QTextStream &out, QString idfactura )
 QByteArray Q19View::cobroQ19 ( QTextStream &out, QString idfactura )
 {
     _depura ( "Q19View::cobroQ19", 0 );
-    cursor2 *curcobro = empresaBase()->cargacursor ( "SELECT * FROM factura WHERE idfactura = " + idfactura );
+    cursor2 *curcobro = empresaBase() ->cargacursor ( "SELECT * FROM factura WHERE idfactura = " + idfactura );
 
 //    cursor2 *curbanco = empresaBase()-> cargacursor( "SELECT * FROM banco WHERE idbanco = " + mui_idbanco->idbanco() );
 
@@ -297,7 +297,7 @@ QByteArray Q19View::cobroQ19 ( QTextStream &out, QString idfactura )
 
 
     /// Nombre del titular de la domiciliacion: 40
-    cur = empresaBase()->cargacursor ( "SELECT * FROM cliente WHERE idcliente= " + curcobro->valor ( "idcliente" ) );
+    cur = empresaBase() ->cargacursor ( "SELECT * FROM cliente WHERE idcliente= " + curcobro->valor ( "idcliente" ) );
     QString clientedomiciliacion = cur->valor ( "nomcliente" );
 
     clientedomiciliacion = clientedomiciliacion.leftJustified ( 40, ' ' );
@@ -346,7 +346,7 @@ QByteArray Q19View::cobroQ19 ( QTextStream &out, QString idfactura )
     cab_indob.append ( codrefint.toAscii() );
 
     /// Primer campo de concepto Longitud: 40
-    QString concepto = "FRA " + curcobro->valor("codigoserie_factura") +  curcobro->valor("numfactura") + " " + curcobro->valor ( "descfactura" );
+    QString concepto = "FRA " + curcobro->valor ( "codigoserie_factura" ) +  curcobro->valor ( "numfactura" ) + " " + curcobro->valor ( "descfactura" );
     concepto = concepto.leftJustified ( 40, ' ' );
     concepto = concepto.left ( 40 );
     cab_indob.append ( concepto.toAscii() );
@@ -520,7 +520,7 @@ void Q19View::on_mui_aceptar_clicked()
 {
     _depura ( "Q19View::on_mui_aceptar_clicked", 0 );
     try {
-        mensajeInfo("Generando");
+        mensajeInfo ( "Generando" );
 
 /// ----------------------------------
 
@@ -528,40 +528,40 @@ void Q19View::on_mui_aceptar_clicked()
 //                       "",
 //                       tr ( "*.q19" ) );
 
-    QFile file ( mui_archivo->text() );
-    if ( !file.open ( QIODevice::WriteOnly | QIODevice::Text ) )
-        return;
+        QFile file ( mui_archivo->text() );
+        if ( !file.open ( QIODevice::WriteOnly | QIODevice::Text ) )
+            return;
 
-    QTextStream out ( &file );
+        QTextStream out ( &file );
 
-    SubForm3 *sub = m_facturasList->mui_list;
+        SubForm3 *sub = m_facturasList->mui_list;
 
-    Fixed total ( "0.00" );
-    int j = 0;
-    /// Reseteamos los valores
-    for ( int i = 0; i < sub->rowCount(); i++ ) {
-        SDBRecord *rec = sub->lineaat ( i );
-        rec->refresh();
-        QString val = rec->DBvalue ( "selector" );
-        if ( val == "TRUE" ) {
-            /// La primera vez se ponen las cabeceras
-            if ( j == 0 ) {
-                cabeceraPresentador ( out, rec->DBvalue ( "idfactura" ) );
-                cabeceraOrdenante ( out, rec->DBvalue ( "idfactura" ) );
+        Fixed total ( "0.00" );
+        int j = 0;
+        /// Reseteamos los valores
+        for ( int i = 0; i < sub->rowCount(); i++ ) {
+            SDBRecord *rec = sub->lineaat ( i );
+            rec->refresh();
+            QString val = rec->DBvalue ( "selector" );
+            if ( val == "TRUE" ) {
+                /// La primera vez se ponen las cabeceras
+                if ( j == 0 ) {
+                    cabeceraPresentador ( out, rec->DBvalue ( "idfactura" ) );
+                    cabeceraOrdenante ( out, rec->DBvalue ( "idfactura" ) );
+                } // end if
+                cobroQ19 ( out, rec->DBvalue ( "idfactura" ) );
+                j++;
+                total = total + Fixed ( rec->DBvalue ( "total" ) );
             } // end if
-            cobroQ19 ( out, rec->DBvalue ( "idfactura" ) );
-            j++;
-            total = total + Fixed ( rec->DBvalue ( "total" ) );
-        } // end if
-    } // end for
+        } // end for
 
-    mensajeInfo("Numero de Operaciones: " + QString::number(j));
-    mensajeInfo("Total del archivo: " + total.toQString());
+        mensajeInfo ( "Numero de Operaciones: " + QString::number ( j ) );
+        mensajeInfo ( "Total del archivo: " + total.toQString() );
 //    buscarBanco();
 
-    totalOrdenante ( out, total.toQString().remove ( ',' ).remove ( '.' ), QString::number ( j ), QString::number ( j + 2 ) );
-    totalGeneral ( out, total.toQString().remove ( ',' ).remove ( '.' ), QString::number ( j ), QString::number ( j + 4 ) );
-    file.close();
+        totalOrdenante ( out, total.toQString().remove ( ',' ).remove ( '.' ), QString::number ( j ), QString::number ( j + 2 ) );
+        totalGeneral ( out, total.toQString().remove ( ',' ).remove ( '.' ), QString::number ( j ), QString::number ( j + 4 ) );
+        file.close();
 
 
 /// -----------------------------------

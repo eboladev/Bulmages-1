@@ -44,7 +44,8 @@ EmpresaBase *g_emp = NULL;
 ///
 /**
 **/
-myplugincont::myplugincont() {
+myplugincont::myplugincont()
+{
     _depura ( "myplugincont::myplugincont", 0 );
     _depura ( "END myplugincont::myplugincont", 0 );
 }
@@ -52,7 +53,8 @@ myplugincont::myplugincont() {
 ///
 /**
 **/
-myplugincont::~myplugincont() {
+myplugincont::~myplugincont()
+{
     _depura ( "myplugincont::~myplugincont", 0 );
     _depura ( "END myplugincont::~myplugincont", 0 );
 }
@@ -61,12 +63,13 @@ myplugincont::~myplugincont() {
 ///
 /**
 **/
-void myplugincont::elslot() {
+void myplugincont::elslot()
+{
     _depura ( "myplugincont::elslot", 0 );
 
     /// Vamos a probar con un docwindow.
     BDockWidget *doc1 = new BDockWidget ( "Aplicacion Externa", g_main );
-    doc1->setWindowIcon(QIcon(QString::fromUtf8(":/BulmaCont32x32/images/png/i_lo32-app-bulmages.png")));
+    doc1->setWindowIcon ( QIcon ( QString::fromUtf8 ( ":/BulmaCont32x32/images/png/i_lo32-app-bulmages.png" ) ) );
 
     doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
 
@@ -88,18 +91,19 @@ void myplugincont::elslot() {
 ///
 /**
 **/
-void myplugincont::elslot1() {
+void myplugincont::elslot1()
+{
     _depura ( "myplugincont::elslot", 0 );
     QString winId = "";
     while ( winId == "" ) winId = windowID ( "" );
     QWorkspace2 *work =     g_bges ->findChild<QWorkspace2 *> (  );
-    if (work) {
-        BX11EmbedContainer *container = new BX11EmbedContainer ( g_emp, work );
+    if ( work ) {
+        BX11EmbedContainer * container = new BX11EmbedContainer ( g_emp, work );
         container->setAttribute ( Qt::WA_DeleteOnClose );
-      container->setWindowIcon(QIcon(QString::fromUtf8(":/BulmaCont32x32/images/png/i_lo32-app-bulmages.png")));
+        container->setWindowIcon ( QIcon ( QString::fromUtf8 ( ":/BulmaCont32x32/images/png/i_lo32-app-bulmages.png" ) ) );
         work->addWindow ( container );
-	if (g_emp)
-		g_emp->meteWindow("Aplicacion Externa", container, FALSE);
+        if ( g_emp )
+            g_emp->meteWindow ( "Aplicacion Externa", container, FALSE );
         container->embedClient ( winId.toInt() );
         container->show();
     } // end if
@@ -109,7 +113,8 @@ void myplugincont::elslot1() {
 
 
 
-void entryPoint ( QMainWindow *bges ) {
+void entryPoint ( QMainWindow *bges )
+{
     _depura ( "Entrada del plugin Docket", 0 );
 
     g_bges = bges;

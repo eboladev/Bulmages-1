@@ -824,7 +824,7 @@ void Ficha::trataTags ( QString &buff )
     QRegExp rx11 ( "<!--\\s*IF\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*ELSE\\s*-->(.*)<!--\\s*END\\s*IF\\s*-->" );
     rx11.setMinimal ( TRUE );
     while ( ( pos = rx11.indexIn ( buff, pos ) ) != -1 ) {
-        QString ldetalle = trataIf ( rx11.cap ( 1 ), rx11.cap ( 2 ), rx11.cap (3) );
+        QString ldetalle = trataIf ( rx11.cap ( 1 ), rx11.cap ( 2 ), rx11.cap ( 3 ) );
         buff.replace ( pos, rx11.matchedLength(), ldetalle );
         pos = 0;
     } // end while
@@ -890,16 +890,16 @@ QString Ficha::trataIf ( const QString &query, const QString &datos, const QStri
             pos += rx.matchedLength();
         }
     } // end while
-    QString query2 = "SELECT ("+query1+") AS res";
+    QString query2 = "SELECT (" + query1 + ") AS res";
     /// Cargamos el query y lo recorremos
     cursor2 *cur = empresaBase() ->cargacursor ( query2 );
     if ( !cur ) return "";
     if ( !cur->eof() ) {
-	if (cur->valor("res") == "t") {
-        	result = datos;
-	} else {
-		result = datos1;
-	} // end if
+        if ( cur->valor ( "res" ) == "t" ) {
+            result = datos;
+        } else {
+            result = datos1;
+        } // end if
     } // end while
     delete cur;
     _depura ( "END Ficha::trataIf", 0 );

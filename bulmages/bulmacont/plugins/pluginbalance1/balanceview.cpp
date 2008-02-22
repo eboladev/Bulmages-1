@@ -194,7 +194,7 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
 
         ramas = empresaBase() ->cargacursor ( query );
 
-	/// Creamos el arbol y lo inicializamos con todas las cuentas.
+        /// Creamos el arbol y lo inicializamos con todas las cuentas.
         Arbol *arbol;
         arbol = new Arbol;
         while ( !ramas->eof() ) {
@@ -250,26 +250,26 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
             hojas->siguienteregistro();
         } // end while
         delete hojas;
-	/// Establecemos la hoja activa
+        /// Establecemos la hoja activa
         arbol->inicia();
 
         /// Por fin, presentamos los valores.
         /// Aunque antes, prepararemos el Widget con la cabecera a mostrar.
         QStringList headers, datos;
-        headers << tr ( "Codigo" ) << tr ( "Denominacion" ) << tr ( "Saldo anterior" ) << tr ( "Debe" ) << tr ( "Haber" ) << tr ( "Saldo" ) << tr ( "Debe " ) +ffinal.right ( 4 ) << tr ( "Haber " ) + ffinal.right ( 4 ) << tr ( "Saldo " ) + ffinal.right ( 4 );
+        headers << tr ( "Codigo" ) << tr ( "Denominacion" ) << tr ( "Saldo anterior" ) << tr ( "Debe" ) << tr ( "Haber" ) << tr ( "Saldo" ) << tr ( "Debe " ) + ffinal.right ( 4 ) << tr ( "Haber " ) + ffinal.right ( 4 ) << tr ( "Saldo " ) + ffinal.right ( 4 );
         mui_list->setHeaderLabels ( headers );
         mui_list->clear();
 
-	/// Ponemos las columnas
-	mui_list->setColumnWidth(CUENTA, 100);
-	mui_list->setColumnWidth(DENOMINACION, 150);
-	mui_list->setColumnWidth(SALDO_ANT, 100);
-	mui_list->setColumnWidth(DEBE, 100);
-	mui_list->setColumnWidth(HABER, 100);
-	mui_list->setColumnWidth(SALDO, 100);
-	mui_list->setColumnWidth(DEBEEJ, 100);
-	mui_list->setColumnWidth(HABEREJ, 100);
-	mui_list->setColumnWidth(SALDOEJ, 100);
+        /// Ponemos las columnas
+        mui_list->setColumnWidth ( CUENTA, 100 );
+        mui_list->setColumnWidth ( DENOMINACION, 150 );
+        mui_list->setColumnWidth ( SALDO_ANT, 100 );
+        mui_list->setColumnWidth ( DEBE, 100 );
+        mui_list->setColumnWidth ( HABER, 100 );
+        mui_list->setColumnWidth ( SALDO, 100 );
+        mui_list->setColumnWidth ( DEBEEJ, 100 );
+        mui_list->setColumnWidth ( HABEREJ, 100 );
+        mui_list->setColumnWidth ( SALDOEJ, 100 );
 
         /// Cada hoja del &aacute;rbol usara uno de estos Widgets para mostrarse.
         QTreeWidgetItem *it;
@@ -281,7 +281,7 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
         QMap <int, QTreeWidgetItem *>::const_iterator ptrIt, i;
         ptrList.clear();
 
-	
+
         while ( arbol->deshoja ( nivel, jerarquico ) ) {
             QString lcuenta = arbol->hojaactual ( "codigo" );
             QString ldenominacion = arbol->hojaactual ( "descripcion" );

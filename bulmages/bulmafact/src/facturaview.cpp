@@ -263,24 +263,24 @@ void FacturaView::on_mui_veralbaranes_clicked()
     AlbaranClienteView *bud = NULL;
     cursor2 *cur = NULL;
     try {
-    QString SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + DBvalue ( "reffactura" ) + "'";
-    cur = empresaBase() ->cargacursor ( SQLQuery );
-    if ( !cur->eof() ) {
-        while ( !cur->eof() ) {
-            bud = new AlbaranClienteView ( empresaBase(), NULL );
-            empresaBase() ->m_pWorkspace->addWindow ( bud );
-            bud->cargar ( cur->valor ( "idalbaran" ) );
-            bud->show();
-            cur->siguienteregistro();
-        } // end while
-    } else {
-        mensajeInfo ( "no hay albaranes con esta referencia" );
-    } // end if
-    delete cur;
-    } catch (...) {
-	mensajeInfo("error Inesperado");
-	if (cur) delete cur;
-	if (bud) delete bud;
+        QString SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + DBvalue ( "reffactura" ) + "'";
+        cur = empresaBase() ->cargacursor ( SQLQuery );
+        if ( !cur->eof() ) {
+            while ( !cur->eof() ) {
+                bud = new AlbaranClienteView ( empresaBase(), NULL );
+                empresaBase() ->m_pWorkspace->addWindow ( bud );
+                bud->cargar ( cur->valor ( "idalbaran" ) );
+                bud->show();
+                cur->siguienteregistro();
+            } // end while
+        } else {
+            mensajeInfo ( "no hay albaranes con esta referencia" );
+        } // end if
+        delete cur;
+    } catch ( ... ) {
+        mensajeInfo ( "error Inesperado" );
+        if ( cur ) delete cur;
+        if ( bud ) delete bud;
     } // end try
     _depura ( "END FacturaView::on_mui_veralbaranes_clicked", 0 );
 }

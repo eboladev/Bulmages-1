@@ -84,10 +84,10 @@ public slots:
             dock->hide();
             dock->show();
             dock->showMaximized();
-	    m_viewCorrector->setChecked(TRUE);
+            m_viewCorrector->setChecked ( TRUE );
         } else {
             dock->hide();
-	    m_viewCorrector->setChecked(FALSE);
+            m_viewCorrector->setChecked ( FALSE );
         } // end if
     };
 };

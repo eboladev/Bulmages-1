@@ -72,21 +72,21 @@ void Plugins::cargaLibs ( const QString &libs )
         return;
     } // end if
 
-    QStringList dirs = confpr->valor(CONF_DIR_PLUGINS).split(";");
+    QStringList dirs = confpr->valor ( CONF_DIR_PLUGINS ).split ( ";" );
 
     QStringList plugins = cad.split ( ";" );
     for ( QStringList::Iterator it = plugins.begin(); it != plugins.end(); ++it ) {
-	cargado = FALSE;
-	for (QStringList::Iterator ot = dirs.begin(); ot != dirs.end(); ++ot) {
-		QString file = *ot + *it;
-		QLibrary *lib = new QLibrary ( file );
-		lib->load();
-		if ( lib->isLoaded() ) {
-			cargado = TRUE;
-			m_lista.append ( lib );
-		} // end if
-	} // end for
-	if ( ! cargado ) {
+        cargado = FALSE;
+        for ( QStringList::Iterator ot = dirs.begin(); ot != dirs.end(); ++ot ) {
+            QString file = *ot + *it;
+            QLibrary *lib = new QLibrary ( file );
+            lib->load();
+            if ( lib->isLoaded() ) {
+                cargado = TRUE;
+                m_lista.append ( lib );
+            } // end if
+        } // end for
+        if ( ! cargado ) {
             mensajeInfo ( "No se ha podido cargar la libreria: " + *it );
         } // end if
     } // end for

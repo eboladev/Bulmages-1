@@ -183,13 +183,13 @@ void Arbol::actualizahojas ( cursor2 *cuenta )
     /// Buscamos la rama del arbol que es la padre la cuenta pasada.
     do {
         hojaraiz = raiz[i];
-        if(i <70)
-          i++;
+        if ( i < 70 )
+            i++;
         else
-          condition = false;
-        if(condition)
-          if(cuentapadre != hojaraiz->codigo)
             condition = false;
+        if ( condition )
+            if ( cuentapadre != hojaraiz->codigo )
+                condition = false;
     } while ( condition );
     actualizado = false;
 
@@ -239,7 +239,7 @@ void Arbol::ActualizarHoja ( tiporama** ramaraiz, cursor2* cuenta, bool* actuali
             rama->hoja->haberej = Fixed ( cuenta->valor ( "haberej" ) );
             rama->hoja->saldoej = Fixed ( cuenta->valor ( "saldoej" ) );
             rama->hoja->numapuntes = cuenta->valor ( "numapuntes" ).toInt();
-            _depura ( "Arbol::ActualizarHoja", 2, cuenta->valor("codigo") + " " + QString::number(rama->hoja->numapuntes) );
+            _depura ( "Arbol::ActualizarHoja", 2, cuenta->valor ( "codigo" ) + " " + QString::number ( rama->hoja->numapuntes ) );
 
             *actualizado = true;
         } else {

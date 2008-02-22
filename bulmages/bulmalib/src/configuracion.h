@@ -152,7 +152,7 @@
 #define CONF_PLUGINS_BULMATPV        315
 
 /// Indica cuales son los directorios de plugins
-#define CONF_DIR_PLUGINS	     316
+#define CONF_DIR_PLUGINS      316
 
 /// Indica donde estan los datos del programa. Por defecto /usr/share/bulmages.
 #define CONF_PROGDATA                321

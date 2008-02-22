@@ -85,51 +85,51 @@ void Q19QToolButton1::click()
 {
     _depura ( "Q19QToolButton1::click", 0 );
 
-	Q19View *q19 = new Q19View(m_facturasList, (Company *)m_facturasList->empresaBase(), 0);
-//	m_facturasList->empresaBase()->meteWindow("Domiciliaciones Bancarias", q19);
-        m_facturasList->empresaBase()->pWorkspace()->addWindow ( q19 );
-	q19->show();
+    Q19View *q19 = new Q19View ( m_facturasList, ( Company * ) m_facturasList->empresaBase(), 0 );
+// m_facturasList->empresaBase()->meteWindow("Domiciliaciones Bancarias", q19);
+    m_facturasList->empresaBase() ->pWorkspace() ->addWindow ( q19 );
+    q19->show();
 
-/*
-    QString fileName = QFileDialog::getSaveFileName ( this, tr ( "Save File" ),
-                       "",
-                       tr ( "*.q19" ) );
-    QFile file ( fileName );
-    if ( !file.open ( QIODevice::WriteOnly | QIODevice::Text ) )
-        return;
-
-    QTextStream out ( &file );
-
-    m_companyact = ( Company * ) m_facturasList->empresaBase();
-    SubForm3 *sub = m_facturasList->mui_list;
-
-    Fixed total ( "0.00" );
-    int j = 0;
-    /// Reseteamos los valores
-    for ( int i = 0; i < sub->rowCount(); i++ ) {
-        SDBRecord *rec = sub->lineaat ( i );
-        rec->refresh();
-        QString val = rec->DBvalue ( "selector" );
-        if ( val == "TRUE" ) {
-            /// La primera vez se ponen las cabeceras
-            if ( j == 0 ) {
-                cabeceraPresentador ( out, rec->DBvalue ( "idfactura" ) );
-                cabeceraOrdenante ( out, rec->DBvalue ( "idfactura" ) );
-            }
-            cobroQ19 ( out, rec->DBvalue ( "idfactura" ) );
-            j++;
-            total = total + Fixed ( rec->DBvalue ( "totalfactura" ) );
-        } // end if
-    } // end for
-
-
-//    buscarBanco();
-
-    totalOrdenante ( out, total.toQString().remove ( ',' ).remove ( '.' ), QString::number ( j ), QString::number ( j + 2 ) );
-    totalGeneral ( out, total.toQString().remove ( ',' ).remove ( '.' ), QString::number ( j ), QString::number ( j + 4 ) );
-    file.close();
-
-*/
+    /*
+        QString fileName = QFileDialog::getSaveFileName ( this, tr ( "Save File" ),
+                           "",
+                           tr ( "*.q19" ) );
+        QFile file ( fileName );
+        if ( !file.open ( QIODevice::WriteOnly | QIODevice::Text ) )
+            return;
+     
+        QTextStream out ( &file );
+     
+        m_companyact = ( Company * ) m_facturasList->empresaBase();
+        SubForm3 *sub = m_facturasList->mui_list;
+     
+        Fixed total ( "0.00" );
+        int j = 0;
+        /// Reseteamos los valores
+        for ( int i = 0; i < sub->rowCount(); i++ ) {
+            SDBRecord *rec = sub->lineaat ( i );
+            rec->refresh();
+            QString val = rec->DBvalue ( "selector" );
+            if ( val == "TRUE" ) {
+                /// La primera vez se ponen las cabeceras
+                if ( j == 0 ) {
+                    cabeceraPresentador ( out, rec->DBvalue ( "idfactura" ) );
+                    cabeceraOrdenante ( out, rec->DBvalue ( "idfactura" ) );
+                }
+                cobroQ19 ( out, rec->DBvalue ( "idfactura" ) );
+                j++;
+                total = total + Fixed ( rec->DBvalue ( "totalfactura" ) );
+            } // end if
+        } // end for
+     
+     
+    //    buscarBanco();
+     
+        totalOrdenante ( out, total.toQString().remove ( ',' ).remove ( '.' ), QString::number ( j ), QString::number ( j + 2 ) );
+        totalGeneral ( out, total.toQString().remove ( ',' ).remove ( '.' ), QString::number ( j ), QString::number ( j + 4 ) );
+        file.close();
+     
+    */
     _depura ( "END Q19QToolButton1::click", 0 );
 
 }
