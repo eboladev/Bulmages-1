@@ -71,9 +71,9 @@ int main ( int argc, char **argv )
     confpr = new configuracion ( "bulmacont" );
     Bulmacont *bges;
     int valorsalida = 0;
-    QString db = argv[2];
-    QString us = argv[3];
-    QString pass = argv[4];
+    QString db = "";
+    QString us = "";
+    QString pass = "";
     try {
         /// Inicializamos el objeto global para uso de plugins.
         g_plugins = new Plugins();
@@ -114,12 +114,15 @@ int main ( int argc, char **argv )
         /// Miramos en los par&aacute;metros pasados al programa por si ya viene
         /// indicada la empresa y no hay que mostrar selector.
         if ( argc == 5 ) {
+	    db = argv[2];
+	    us = argv[3];
+	    pass = argv[4];
             confpr->setValor ( CONF_LOGIN_USER, us );
             confpr->setValor ( CONF_PASSWORD_USER, pass );
             bges = new Bulmacont ( NULL, 0, db );
             bges->hide();
         } else if ( argc == 3 ) {
-            QString db = argv[2];
+            db = argv[2];
             bges = new Bulmacont ( NULL, 0, db );
             bges->hide();
         } else {

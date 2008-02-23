@@ -55,7 +55,7 @@ ListProyectosView::ListProyectosView ( Empresa *emp, QWidget *parent,  Qt::WFlag
 
     presentar();
 
-//    meteWindow(windowTitle());
+    meteWindow(windowTitle());
     _depura ( "END ListProyectosView::ListProyectosView", 0 );
 }
 

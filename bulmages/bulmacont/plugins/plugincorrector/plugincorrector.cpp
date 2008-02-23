@@ -101,4 +101,3 @@ int Bulmacont_closeEvent ( Bulmacont *bcont )
     } // end if
     return 0;
 }
-}

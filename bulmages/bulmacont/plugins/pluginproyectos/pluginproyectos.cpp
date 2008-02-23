@@ -57,6 +57,7 @@ void mytiptrab::elslot()
     /// Agregamos el subformulario de proyectos.
     ListProyectosView *l = new ListProyectosView ( m_bulmacont->empresaactual(), 0, 0, Listado::EditMode );
     l->setObjectName ( QString::fromUtf8 ( "mui_proyectos" ) );
+//    m_bulmacont->empresaactual()->meteWindow(l);
     m_bulmacont->workspace() ->addWindow ( l );
     l->show();
     _depura ( "END mytiptrab::elslot", 0 );

@@ -103,18 +103,24 @@ int main ( int argc, char **argv )
         splashScr->setBarraProgreso ( 1 );
 
         /// Leemos los argumentos pasados por la linea de comandos.
-        QString db = argv[2];
-        QString us = argv[3];
-        QString pass = argv[4];
+        QString db = "";
+        QString us = "";
+        QString pass = "";
 
         /// Dependiendo de los argumentos pasados se lanza con unas opciones u otras para la
         /// conexion con la base de datos.
         if ( argc == 5 ) {
+            /// Leemos los argumentos pasados por la linea de comandos.
+            db = argv[2];
+            us = argv[3];
+            pass = argv[4];
             confpr->setValor ( CONF_LOGIN_USER, us );
             confpr->setValor ( CONF_PASSWORD_USER, pass );
             bges = new Bulmafact ( db );
             bges->hide();
         } else if ( argc == 3 ) {
+            /// Leemos los argumentos pasados por la linea de comandos.
+            db = argv[2];
             bges = new Bulmafact ( db );
             bges->hide();
         } else {
