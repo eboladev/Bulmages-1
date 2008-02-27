@@ -95,6 +95,6 @@ void cargaTraducciones ( const QString &traduccion );
 QString windowID ( const QString & );
 /// Convierte un string en un string valido para ser escrito desde un script.
 QString parsearCode ( const QString &cad );
-
+QString ascii127(const QString &orig);
 #endif
 

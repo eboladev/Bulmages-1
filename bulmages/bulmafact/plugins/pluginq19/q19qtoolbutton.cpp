@@ -94,8 +94,8 @@ void Q19QToolButton::click()
     if ( !file.open ( QIODevice::WriteOnly | QIODevice::Text ) )
         return;
 
-    QTextStream out ( &file );
-
+    QDataStream out ( &file );
+//    out.setCodec("CP1252");
     m_companyact = ( Company * ) m_cobrosList->empresaBase();
     SubForm3 *sub = m_cobrosList->mui_list;
 
@@ -131,7 +131,7 @@ void Q19QToolButton::click()
 \param idcobro
 \return
 **/
-QByteArray Q19QToolButton::cabeceraPresentador ( QTextStream &out, QString idcobro )
+QByteArray Q19QToolButton::cabeceraPresentador ( QDataStream &out, QString idcobro )
 {
     _depura ( "Q19QToolButton::cabeceraPresentador", 0 );
     cursor2 *curcobro = m_companyact->cargacursor ( "SELECT * FROM cobro NATURAL LEFT JOIN banco WHERE idcobro = " + idcobro );
@@ -150,50 +150,50 @@ QByteArray Q19QToolButton::cabeceraPresentador ( QTextStream &out, QString idcob
     delete cur;
     QString sufijo = "000";
     QString codpresent = nif + sufijo;
-    codpresent = codpresent.rightJustified ( 12, '0' );
+    codpresent = ascii127(codpresent).rightJustified ( 12, '0' );
     if ( codpresent.size() > 12 )  _depura ( "El CIF del ordenante supera la longitud maxima", 2 );
-    cab_present.append ( codpresent.toAscii() );
+    cab_present.append ( codpresent.toLatin1() );
 
     /// Fecha de emision del archivo
     QString fechaemfich = QDate::currentDate().toString ( "ddMMyy" );
-    cab_present.append ( fechaemfich.toAscii() );
+    cab_present.append ( fechaemfich.toLatin1() );
 
     /// Espacio libre Longitud: 6
-    cab_present.append ( QString ( 6, ' ' ).toAscii() );
+    cab_present.append ( QString ( 6, ' ' ).toLatin1() );
 
     /// Nombre del cliente Presentador Longitud: 40
     cur = m_cobrosList->empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
     QString clientepresentador = cur->valor ( "valor" );
     delete cur;
-    clientepresentador = clientepresentador.leftJustified ( 40, ' ' );
+    clientepresentador = ascii127(clientepresentador).leftJustified ( 40, ' ' );
     clientepresentador = clientepresentador.left ( 40 );
-    cab_present.append ( clientepresentador.toAscii() );
+    cab_present.append ( clientepresentador.toLatin1() );
 
     /// Espacio libre Longitud: 20
-    cab_present.append ( QString ( 20, ' ' ).toAscii() );
+    cab_present.append ( QString ( 20, ' ' ).toLatin1() );
 
     /// Entidad Receptora del fichero Longitud: 4
-    QString ent_recept = curcobro->valor ( "codentidadbanco" ).leftJustified ( 4, '0' );
+    QString ent_recept = ascii127(curcobro->valor ( "codentidadbanco" )).leftJustified ( 4, '0' );
     if ( ent_recept.size() > 4 ) _depura ( "Entidad bancaria supera longitud maxima", 2 );
-    cab_present.append ( ent_recept.toAscii() );
+    cab_present.append ( ent_recept.toLatin1() );
 
     /// Oficina Receptora del fichero Longitud: 4
-    QString ofi_recept = curcobro->valor ( "codagenciabanco" ).leftJustified ( 4, '0' );
+    QString ofi_recept = ascii127(curcobro->valor ( "codagenciabanco" )).leftJustified ( 4, '0' );
     if ( ofi_recept.size() > 4 ) _depura ( "Oficina bancaria supera longitud maxima", 2 );
-    cab_present.append ( ofi_recept.toAscii() );
+    cab_present.append ( ofi_recept.toLatin1() );
 
     /// Espacio libre Longitud: 12
-    cab_present.append ( QString ( 12, ' ' ).toAscii() );
+    cab_present.append ( QString ( 12, ' ' ).toLatin1() );
 
     /// Espacio libre Longitud: 40
-    cab_present.append ( QString ( 40, ' ' ).toAscii() );
+    cab_present.append ( QString ( 40, ' ' ).toLatin1() );
 
     /// Espacio libre Longitud: 14
-    cab_present.append ( QString ( 14, ' ' ).toAscii() );
-    out << cab_present.toAscii()  << "\n";
+    cab_present.append ( QString ( 14, ' ' ).toLatin1() );
+    out << cab_present.toLatin1()  << "\n";
     delete curcobro;
     _depura ( "END Q19QToolButton::cabeceraPresentador", 0 );
-    return cab_present.toAscii();
+    return cab_present.toLatin1();
 }
 
 
@@ -203,7 +203,7 @@ QByteArray Q19QToolButton::cabeceraPresentador ( QTextStream &out, QString idcob
 \param idcobro
 \return
 **/
-QByteArray Q19QToolButton::cabeceraOrdenante ( QTextStream &out, QString idcobro )
+QByteArray Q19QToolButton::cabeceraOrdenante ( QDataStream &out, QString idcobro )
 {
     _depura ( "Q19QToolButton::cabeceraOrdenante", 0 );
     cursor2 *curcobro = m_companyact->cargacursor ( "SELECT * FROM cobro NATURAL LEFT JOIN banco WHERE idcobro = " + idcobro );
@@ -222,51 +222,51 @@ QByteArray Q19QToolButton::cabeceraOrdenante ( QTextStream &out, QString idcobro
     delete cur;
     QString sufijo = "000";
     QString codpresent = nif + sufijo;
-    codpresent = codpresent.rightJustified ( 12, '0' );
+    codpresent = ascii127(codpresent).rightJustified ( 12, '0' );
     if ( codpresent.size() > 12 ) _depura ( "CIF demasiado largo", 2 );
-    cab_orden.append ( codpresent.toAscii() );
+    cab_orden.append ( codpresent.toLatin1() );
 
     /// Fecha de emision del archivo
     QString fechaemfich = QDate::currentDate().toString ( "ddMMyy" );
-    cab_orden.append ( fechaemfich.toAscii() );
+    cab_orden.append ( fechaemfich.toLatin1() );
 
     /// Fecha de cargo
     QString fechacargo = normalizafecha ( curcobro->valor ( "fechacobro" ) ).toString ( "ddMMyy" );
-    cab_orden.append ( fechacargo.toAscii() );
+    cab_orden.append ( fechacargo.toLatin1() );
 
     /// Nombre del cliente Ordenante Longitud: 40
     cur = m_cobrosList->empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
     QString clientepresentador = cur->valor ( "valor" );
     delete cur;
-    clientepresentador = clientepresentador.leftJustified ( 40, ' ' );
+    clientepresentador = ascii127(clientepresentador).leftJustified ( 40, ' ' );
     if ( clientepresentador.size() > 40 ) _depura ( "Nombre de empresa demasiado largo", 2 );
-    cab_orden.append ( clientepresentador.toAscii() );
+    cab_orden.append ( clientepresentador.toLatin1() );
 
     /// Entidad Receptora del fichero Longitud: 4
-    QString ent_recept = curcobro->valor ( "codentidadbanco" ).leftJustified ( 4, '0' );
+    QString ent_recept = ascii127(curcobro->valor ( "codentidadbanco" )).leftJustified ( 4, '0' );
     if ( ent_recept.size() > 4 ) _depura ( "Entidad bancaria demasiado larga", 2 );
-    cab_orden.append ( ent_recept.toAscii() );
+    cab_orden.append ( ent_recept.toLatin1() );
 
     /// Oficina Receptora del fichero Longitud: 4
-    QString ofi_recept = curcobro->valor ( "codagenciabanco" ).leftJustified ( 4, '0' );
+    QString ofi_recept = ascii127(curcobro->valor ( "codagenciabanco" )).leftJustified ( 4, '0' );
     if ( ofi_recept.size() > 4 ) _depura ( "Oficina bancaria demasiado larga", 2 );
-    cab_orden.append ( ofi_recept.toAscii() );
+    cab_orden.append ( ofi_recept.toLatin1() );
 
     /// DC Receptora del fichero Longitud: 2
-    QString dc_recept = curcobro->valor ( "dcbanco" ).leftJustified ( 2, '0' );
+    QString dc_recept = ascii127(curcobro->valor ( "dcbanco" )).leftJustified ( 2, '0' );
     if ( dc_recept.size() > 4 ) _depura ( "Control bancario demasiado larga", 2 );
-    cab_orden.append ( dc_recept.toAscii() );
+    cab_orden.append ( dc_recept.toLatin1() );
 
     /// Oficina Receptora del fichero Longitud: 10
-    QString cta_recept = curcobro->valor ( "numcuentabanco" ).leftJustified ( 10, '0' );
+    QString cta_recept = ascii127(curcobro->valor ( "numcuentabanco" )).leftJustified ( 10, '0' );
     if ( cta_recept.size() > 10 ) _depura ( "Cuenta bancaria demasiado larga", 2 );
-    cab_orden.append ( cta_recept.toAscii() );
+    cab_orden.append ( cta_recept.toLatin1() );
 
     /// Espacio libre Longitud: 8
     cab_orden.append ( QString ( 8, ' ' ) );
 
     /// Procedimiento de realizacion del adeudo (01 o 02) Longitud: 2
-    cab_orden.append ( QString ( "01" ).toAscii() );
+    cab_orden.append ( QString ( "01" ).toLatin1() );
 
     /// Espacio libre Longitud: 10
     cab_orden.append ( QString ( 10, ' ' ) );
@@ -276,10 +276,10 @@ QByteArray Q19QToolButton::cabeceraOrdenante ( QTextStream &out, QString idcobro
 
     /// Espacio libre Longitud: 14
     cab_orden.append ( QString ( 14, ' ' ) );
-    out << cab_orden.toAscii()  << "\n";
+    out << cab_orden.toLatin1()  << "\n";
     delete curcobro;
     _depura ( "END Q19QToolButton::cabeceraOrdenante", 0 );
-    return cab_orden.toAscii();
+    return cab_orden.toLatin1();
 }
 
 
@@ -289,7 +289,7 @@ QByteArray Q19QToolButton::cabeceraOrdenante ( QTextStream &out, QString idcobro
 \param idcobro
 \return
 **/
-QByteArray Q19QToolButton::cobroQ19 ( QTextStream &out, QString idcobro )
+QByteArray Q19QToolButton::cobroQ19 ( QDataStream &out, QString idcobro )
 {
     _depura ( "Q19QToolButton::cobroQ19", 0 );
     cursor2 *curcobro = m_companyact->cargacursor ( "SELECT * FROM cobro NATURAL LEFT JOIN banco WHERE idcobro = " + idcobro );
@@ -307,77 +307,77 @@ QByteArray Q19QToolButton::cobroQ19 ( QTextStream &out, QString idcobro )
     delete cur;
     QString sufijo = "000";
     QString codpresent = nif + sufijo;
-    codpresent = codpresent.rightJustified ( 12, '0' );
+    codpresent = ascii127(codpresent).rightJustified ( 12, '0' );
     if ( codpresent.size() > 12 ) _depura ( "CIF CLiente demasiado largo", 2 );
-    cab_indob.append ( codpresent.toAscii() );
+    cab_indob.append ( codpresent.toLatin1() );
 
     /// Codigo de referencia Longitud: 12
     QString cod_ref = curcobro->valor ( "idcliente" );
-    cod_ref = cod_ref.rightJustified ( 12, '0' );
-    cab_indob.append ( cod_ref.toAscii() );
+    cod_ref = ascii127(cod_ref).rightJustified ( 12, '0' );
+    cab_indob.append ( cod_ref.toLatin1() );
 
 
     /// Nombre del titular de la domiciliacion: 40
     cur = m_companyact->cargacursor ( "SELECT * FROM cliente WHERE idcliente= " + curcobro->valor ( "idcliente" ) );
     QString clientedomiciliacion = cur->valor ( "nomcliente" );
 
-    clientedomiciliacion = clientedomiciliacion.leftJustified ( 40, ' ' );
+    clientedomiciliacion = ascii127(clientedomiciliacion).leftJustified ( 40, ' ' );
     if ( clientedomiciliacion.size() > 40 ) _depura ( "Nombre cliente demasiado largo", 2 );
-    cab_indob.append ( clientedomiciliacion.toAscii() );
+    cab_indob.append ( clientedomiciliacion.toLatin1() );
 
 
     /// Entidad domiciliacion del fichero Longitud: 4
     QString bancocliente = cur->valor ( "bancocliente" ).remove ( QChar ( ' ' ) );
     if ( bancocliente.size() != 20 )
         _depura ( "Banco de Cliente invalido en el cobro", 2 );
-    bancocliente = bancocliente.leftJustified ( 20, ' ' );
+    bancocliente = ascii127(bancocliente).leftJustified ( 20, ' ' );
     QString ent_recept = bancocliente.left ( 4 );
-    cab_indob.append ( ent_recept.toAscii() );
+    cab_indob.append ( ent_recept.toLatin1() );
 
     /// Oficina domiciliacion del fichero Longitud: 4
     bancocliente = bancocliente.left ( 16 );
     QString ofi_recept = bancocliente.left ( 4 );
-    cab_indob.append ( ofi_recept.toAscii() );
+    cab_indob.append ( ofi_recept.toLatin1() );
 
     /// DC domiciliacion del fichero Longitud: 2
     bancocliente = bancocliente.left ( 12 );
     QString dc_recept = bancocliente.left ( 2 );
-    cab_indob.append ( dc_recept.toAscii() );
+    cab_indob.append ( dc_recept.toLatin1() );
 
     /// Oficina domiciliacion del fichero Longitud: 10
     bancocliente = bancocliente.left ( 10 );
     QString cta_recept = bancocliente.left ( 10 );
-    cab_indob.append ( cta_recept.toAscii() );
+    cab_indob.append ( cta_recept.toLatin1() );
 
     delete cur;
 
     /// Total Importe domiciliacion Longitud: 10
     QString importe = curcobro->valor ( "cantcobro" ).remove ( '.' ).remove ( ',' );
     importe = importe.rightJustified ( 10, '0' );
-    cab_indob.append ( importe.toAscii() );
+    cab_indob.append ( importe.toLatin1() );
 
     /// Codigo para devoluciones Longitud : 6
     QString coddev = curcobro->valor ( "idcobro" );
     coddev = coddev.rightJustified ( 6, '0' );
-    cab_indob.append ( coddev.toAscii() );
+    cab_indob.append ( coddev.toLatin1() );
 
     /// Codigo de referencia interna Longitud 10
     QString codrefint = curcobro->valor ( "idcobro" );
     codrefint = codrefint.rightJustified ( 10, ' ' );
-    cab_indob.append ( codrefint.toAscii() );
+    cab_indob.append ( codrefint.toLatin1() );
 
     /// Primer campo de concepto Longitud: 40
     QString concepto = curcobro->valor ( "comentcobro" );
-    concepto = concepto.leftJustified ( 40, ' ' );
+    concepto = ascii127(concepto).leftJustified ( 40, ' ' );
     concepto = concepto.left ( 40 );
-    cab_indob.append ( concepto.toAscii() );
+    cab_indob.append ( concepto.toLatin1() );
 
     /// Espacio libre Longitud: 8
-    cab_indob.append ( QString ( 8, ' ' ).toAscii() );
-    out << cab_indob.toAscii() << "\n";
+    cab_indob.append ( QString ( 8, ' ' ).toLatin1() );
+    out << cab_indob.toLatin1() << "\n";
     delete curcobro;
     _depura ( "END Q19QToolButton::cobroQ19", 0 );
-    return cab_indob.toAscii();
+    return cab_indob.toLatin1();
 }
 
 
@@ -389,7 +389,7 @@ QByteArray Q19QToolButton::cobroQ19 ( QTextStream &out, QString idcobro )
 \param registros
 \return
 **/
-QByteArray Q19QToolButton::totalOrdenante ( QTextStream &out, QString importes, QString ordenantes, QString registros )
+QByteArray Q19QToolButton::totalOrdenante ( QDataStream &out, QString importes, QString ordenantes, QString registros )
 {
     _depura ( "Q19QToolButton::totalOrdenante", 0 );
     /// CABECERA TOTAL ORDENANTE
@@ -407,53 +407,53 @@ QByteArray Q19QToolButton::totalOrdenante ( QTextStream &out, QString importes, 
     delete cur;
     QString sufijo = "000";
     QString codpresent = nif + sufijo;
-    codpresent = codpresent.rightJustified ( 12, '0' );
+    codpresent = ascii127(codpresent).rightJustified ( 12, '0' );
     if ( codpresent.size() > 12 ) _depura ( "CIF demasiado largo", 2 );
-    cab_indob.append ( codpresent.toAscii() );
+    cab_indob.append ( codpresent.toLatin1() );
 
 
     /// Espacio libre Longitud: 12
-    cab_indob.append ( QString ( 12, ' ' ).toAscii() );
+    cab_indob.append ( QString ( 12, ' ' ).toLatin1() );
 
 
     /// Espacio libre Longitud: 40
-    cab_indob.append ( QString ( 40, ' ' ).toAscii() );
+    cab_indob.append ( QString ( 40, ' ' ).toLatin1() );
 
     /// Espacio libre Longitud: 20
-    cab_indob.append ( QString ( 20, ' ' ).toAscii() );
+    cab_indob.append ( QString ( 20, ' ' ).toLatin1() );
 
     /// Suma de Importes del Ordenante Longitud: 10
     QString importe = importes;
     importe = importe.rightJustified ( 10, '0' );
     importe = importe.right ( 10 );
-    cab_indob.append ( importe.toAscii() );
+    cab_indob.append ( importe.toLatin1() );
 
     /// Espacio libre Longitud: 6
-    cab_indob.append ( QString ( 6, ' ' ).toAscii() );
+    cab_indob.append ( QString ( 6, ' ' ).toLatin1() );
 
     /// Numero de domiciliaciones del ordenante : 10
     QString coddev = ordenantes;
     coddev = coddev.rightJustified ( 10, '0' );
     coddev = coddev.right ( 10 );
-    cab_indob.append ( coddev.toAscii() );
+    cab_indob.append ( coddev.toLatin1() );
 
     /// Numero total registros del ordenante : 10
     coddev = registros;
     coddev = coddev.rightJustified ( 10, '0' );
     coddev = coddev.right ( 10 );
-    cab_indob.append ( coddev.toAscii() );
+    cab_indob.append ( coddev.toLatin1() );
 
     /// Espacio libre Longitud: 20
-    cab_indob.append ( QString ( 20, ' ' ).toAscii() );
+    cab_indob.append ( QString ( 20, ' ' ).toLatin1() );
 
     /// Espacio libre Longitud: 18
-    cab_indob.append ( QString ( 18, ' ' ).toAscii() );
+    cab_indob.append ( QString ( 18, ' ' ).toLatin1() );
 
 
     /// Imprimimos los resultados
-    out << cab_indob.toAscii() << "\n";
+    out << cab_indob.toLatin1() << "\n";
     _depura ( "END Q19QToolButton::totalOrdenante", 0 );
-    return cab_indob.toAscii();
+    return cab_indob.toLatin1();
 }
 
 
@@ -465,7 +465,7 @@ QByteArray Q19QToolButton::totalOrdenante ( QTextStream &out, QString importes, 
 \param registros
 \return
 **/
-QByteArray Q19QToolButton::totalGeneral ( QTextStream &out, QString importes, QString domiciliaciones, QString registros )
+QByteArray Q19QToolButton::totalGeneral ( QDataStream &out, QString importes, QString domiciliaciones, QString registros )
 {
     _depura ( "Q19QToolButton::totalGeneral", 0 );
     /// CABECERA INDIVIDUAL OBLIGATORIO
@@ -481,56 +481,56 @@ QByteArray Q19QToolButton::totalGeneral ( QTextStream &out, QString importes, QS
     delete cur;
     QString sufijo = "000";
     QString codpresent = nif + sufijo;
-    codpresent = codpresent.rightJustified ( 12, '0' );
+    codpresent = ascii127(codpresent).rightJustified ( 12, '0' );
     codpresent = codpresent.right ( 12 );
-    cab_indob.append ( codpresent.toAscii() );
+    cab_indob.append ( codpresent.toLatin1() );
 
 
     /// Espacio libre Longitud: 12
-    cab_indob.append ( QString ( 12, ' ' ).toAscii() );
+    cab_indob.append ( QString ( 12, ' ' ).toLatin1() );
 
 
     /// Espacio libre Longitud: 40
-    cab_indob.append ( QString ( 40, ' ' ).toAscii() );
+    cab_indob.append ( QString ( 40, ' ' ).toLatin1() );
 
     /// Numero de Ordenantes Longitud : 4
     /// PAra este algoritmo siempre es un ordenante
     QString coddev = "1";
     coddev = coddev.rightJustified ( 4, '0' );
-    cab_indob.append ( coddev.toAscii() );
+    cab_indob.append ( coddev.toLatin1() );
 
     /// Espacio libre Longitud: 16
-    cab_indob.append ( QString ( 16, ' ' ).toAscii() );
+    cab_indob.append ( QString ( 16, ' ' ).toLatin1() );
 
     /// Suma de Importes Longitud: 10
     QString importe = importes;
     importe = importe.rightJustified ( 10, '0' );
-    cab_indob.append ( importe.toAscii() );
+    cab_indob.append ( importe.toLatin1() );
 
     /// Espacio libre Longitud: 6
-    cab_indob.append ( QString ( 6, ' ' ).toAscii() );
+    cab_indob.append ( QString ( 6, ' ' ).toLatin1() );
 
     /// Numero de domiciliaciones : 10
     coddev = domiciliaciones;
     coddev = coddev.rightJustified ( 10, '0' );
-    cab_indob.append ( coddev.toAscii() );
+    cab_indob.append ( coddev.toLatin1() );
 
     /// Numero total registros : 10
     coddev = registros;
     coddev = coddev.rightJustified ( 10, '0' );
-    cab_indob.append ( coddev.toAscii() );
+    cab_indob.append ( coddev.toLatin1() );
 
     /// Espacio libre Longitud: 20
-    cab_indob.append ( QString ( 20, ' ' ).toAscii() );
+    cab_indob.append ( QString ( 20, ' ' ).toLatin1() );
 
     /// Espacio libre Longitud: 18
-    cab_indob.append ( QString ( 18, ' ' ).toAscii() );
+    cab_indob.append ( QString ( 18, ' ' ).toLatin1() );
 
 
     /// Imprimimos los resultados
-    out << cab_indob.toAscii() << "\n";
+    out << cab_indob.toLatin1() << "\n";
     _depura ( "END Q19QToolButton::totalGeneral", 0 );
-    return cab_indob.toAscii();
+    return cab_indob.toLatin1();
 }
 
 

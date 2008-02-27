@@ -705,4 +705,50 @@ void cargaTraducciones ( const QString &traduccion )
     theApp->installTranslator ( traductor );
 }
 
+QString ascii127(const QString &orig) {
+    /// Recorre todo el QString y sustituye los caracteres NO ASCII y
+    /// los caracteres que no van muy bien en un XML.
 
+    QString cadena = orig;
+    QString cadenatmp = "";
+
+
+    /// Cambia tambien otros caracteres no adecuados.
+    cadena = cadena.replace ( "á", "a" );
+    cadena = cadena.replace ( "é", "e" );
+    cadena = cadena.replace ( "í", "i" );
+    cadena = cadena.replace ( "ó", "o" );
+    cadena = cadena.replace ( "í", "u" );
+
+    cadena = cadena.replace ( "à", "a" );
+    cadena = cadena.replace ( "è", "e" );
+    cadena = cadena.replace ( "ì", "i" );
+    cadena = cadena.replace ( "ò", "o" );
+    cadena = cadena.replace ( "ù", "u" );
+
+    cadena = cadena.replace ( "ä", "a" );
+    cadena = cadena.replace ( "ë", "e" );
+    cadena = cadena.replace ( "ï", "i" );
+    cadena = cadena.replace ( "ö", "o" );
+    cadena = cadena.replace ( "ü", "u" );
+
+    cadena = cadena.replace ( "â", "a" );
+    cadena = cadena.replace ( "ê", "e" );
+    cadena = cadena.replace ( "î", "i" );
+    cadena = cadena.replace ( "ô", "o" );
+    cadena = cadena.replace ( "û", "u" );
+
+    cadena = cadena.replace ( "ñ", "n" );
+    cadena = cadena.replace ( "ç", "c" );
+
+    QChar *data = cadena.data();
+    int i;
+    for ( i = 0; i < cadena.length(); i++ ) {
+        if ( data->unicode() <= 127 ) {
+            cadenatmp = cadenatmp + QString ( *data );
+        } // end if
+        ++data;
+    } // end if
+    mensajeInfo(cadenatmp);
+    return cadenatmp;
+}

@@ -28,7 +28,7 @@
 #include <QtXml/QDomDocument>
 #include <QMap>
 #include <QString>
-#include <QTextStream>
+#include <QDataStream>
 #include "cobroslist.h"
 
 
@@ -44,11 +44,11 @@ public:
     Q19QToolButton ( CobrosList *cob = NULL, QWidget *parent = NULL );
     ~Q19QToolButton();
     void setBoton();
-    QByteArray cobroQ19 ( QTextStream &, QString );
-    QByteArray cabeceraPresentador ( QTextStream &, QString );
-    QByteArray cabeceraOrdenante ( QTextStream &, QString );
-    QByteArray totalOrdenante ( QTextStream &, QString, QString, QString );
-    QByteArray totalGeneral ( QTextStream &, QString, QString, QString );
+    QByteArray cobroQ19 ( QDataStream &, QString );
+    QByteArray cabeceraPresentador ( QDataStream &, QString );
+    QByteArray cabeceraOrdenante ( QDataStream &, QString );
+    QByteArray totalOrdenante ( QDataStream &, QString, QString, QString );
+    QByteArray totalGeneral ( QDataStream &, QString, QString, QString );
 
 public slots:
     virtual void click();
