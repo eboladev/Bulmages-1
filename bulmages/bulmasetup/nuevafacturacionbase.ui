@@ -36,24 +36,36 @@
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="4" column="1" >
-    <widget class="QDialogButtonBox" name="mui_botonera" >
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
+   <item row="2" column="0" colspan="3" >
+    <widget class="QGroupBox" name="groupBox" >
+     <property name="title" >
+      <string>Plugins</string>
      </property>
-     <property name="standardButtons" >
-      <set>QDialogButtonBox::Cancel|QDialogButtonBox::NoButton|QDialogButtonBox::Ok</set>
-     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="1" column="0" >
+       <widget class="QCheckBox" name="mui_llamadas" >
+        <property name="text" >
+         <string>Registro de llamadas de Clientes</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" >
+       <widget class="QCheckBox" name="mui_contratos" >
+        <property name="text" >
+         <string>Contratos de Servicios</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </item>
-   <item row="4" column="0" >
-    <widget class="QPushButton" name="mui_aceptar" >
-     <property name="text" >
-      <string>PushButton</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1" >
+   <item row="1" column="1" colspan="2" >
     <widget class="QLineEdit" name="mui_nomdb" />
    </item>
    <item row="1" column="0" >
@@ -76,32 +88,24 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="1" >
+   <item row="0" column="1" colspan="2" >
     <widget class="QLineEdit" name="mui_nomempresa" />
    </item>
-   <item row="2" column="0" colspan="2" >
-    <widget class="QGroupBox" name="groupBox" >
-     <property name="title" >
-      <string>Plugins</string>
+   <item row="4" column="2" >
+    <widget class="QPushButton" name="mui_cancelar" >
+     <property name="text" >
+      <string>Cancelar</string>
      </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
-       <number>9</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
-      <item row="0" column="0" >
-       <widget class="QCheckBox" name="mui_contratos" >
-        <property name="text" >
-         <string>Contratos de Servicios</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
     </widget>
    </item>
-   <item row="3" column="0" colspan="2" >
+   <item row="4" column="1" >
+    <widget class="QPushButton" name="mui_aceptar" >
+     <property name="text" >
+      <string>Aceptar</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="3" >
     <widget class="QTextBrowser" name="mui_textBrowser" />
    </item>
   </layout>
@@ -109,34 +113,18 @@
  <resources/>
  <connections>
   <connection>
-   <sender>mui_botonera</sender>
-   <signal>accepted()</signal>
-   <receiver>NuevaFacturacionBase</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>248</x>
-     <y>254</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>157</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>mui_botonera</sender>
-   <signal>rejected()</signal>
+   <sender>mui_cancelar</sender>
+   <signal>released()</signal>
    <receiver>NuevaFacturacionBase</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel" >
-     <x>316</x>
-     <y>260</y>
+     <x>226</x>
+     <y>494</y>
     </hint>
     <hint type="destinationlabel" >
-     <x>286</x>
-     <y>274</y>
+     <x>297</x>
+     <y>496</y>
     </hint>
    </hints>
   </connection>

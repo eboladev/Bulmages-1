@@ -10,7 +10,6 @@ class NuevaFacturacion(QtGui.QDialog, Ui_NuevaFacturacionBase):
     def __init__(self, parent = None):
         QtGui.QDialog.__init__(self,parent)
 	self.setupUi(self)
-#	self.mui_textBrowser.setTextFormat(QTextBrowser.LogText)
 	
 	self.process = QtCore.QProcess()
 	self.connect(self.process, SIGNAL("readyReadStandardOutput()"), self.readOutput)
@@ -18,8 +17,6 @@ class NuevaFacturacion(QtGui.QDialog, Ui_NuevaFacturacionBase):
 	self.connect(self.process, SIGNAL("finished()"), self.finished)
 	self.connect(self.process, SIGNAL("started()"), self.started)
 	
-#	self.connect(self.process, SIGNAL("processExited()"), self.resetButtons)
-
     def readOutput(self):
 	self.mui_textBrowser.append(QString(self.process.readAllStandardOutput()))
 
@@ -34,25 +31,57 @@ class NuevaFacturacion(QtGui.QDialog, Ui_NuevaFacturacionBase):
 
 
     def on_mui_aceptar_released(self):
+	self.hayplugins = 0
 	self.nomdb = self.mui_nomdb.text()
 	self.command = 'kdesu -u postgres -c "createdb -E UNICODE ' + self.nomdb +'"'
+	self.mui_textBrowser.append(self.command)
 	self.process.start(self.command)
 	self.process.waitForFinished(-1)
 	
 	self.command = 'kdesu -u postgres -c "psql ' + self.nomdb + ' < /usr/share/bulmages/dbmodels/crear/bulmafact/bulmafact_schema.sql"'
+	self.mui_textBrowser.append(self.command)
 	self.process.start(self.command)
 	self.process.waitForFinished(-1)
-#        os.system(self.command.toAscii())
 
-	self.command = 'psql ' + self.nomdb + ' < /usr/share/bulmages/dbmodels/crear/bulmafact/bulmafact_data.sql'
-#        os.system(self.command.toAscii())
+	self.command = 'kdesu -u postgres -c "psql ' + self.nomdb + ' < /usr/share/bulmages/dbmodels/crear/bulmafact/bulmafact_data.sql"'
+	self.mui_textBrowser.append(self.command)
+	self.process.start(self.command)
+	self.process.waitForFinished(-1)
 
 	self.nomempresa = self.mui_nomempresa.text()
-	self.command = 'echo "UPDATE configuracion set valor=\'self.nomempresa\' WHERE nombre = \'NombreEmpresa\';\" | psql ' + self.nomdb
-#        os.system(self.command.toAscii())
+	self.subcomand = 'UPDATE configuracion set valor=\'\"\'' +self.nomempresa +'\'\"\' WHERE nombre = \'\"\'NombreEmpresa\'\"\';'
+	self.command = 'kdesu -u postgres -c \'psql ' + self.nomdb + ' -c \"' +self.subcomand+ '\"\''
+	self.mui_textBrowser.append(self.command)
+        os.system(self.command.toAscii().data())
 
+	if (self.mui_contratos.isChecked()):
+		self.command = 'kdesu -u postgres -c "psql ' + self.nomdb + ' < /usr/share/bulmages/dbmodels/plugins/revf-contratos.sql"'
+		self.mui_textBrowser.append(self.command)
+		self.process.start(self.command)
+		self.process.waitForFinished(-1)
+		self.hayplugins = 1
 	
+	if (self.hayplugins == 1):
+		self.mui_textBrowser.append("Escribiendo configuracion en /etc/bulmages")
+		self.file = QFile("/etc/bulmages/bulmafact_" + self.nomdb + ".conf");
+		if not(self.file.open(QIODevice.WriteOnly | QIODevice.Text)):
+			return;
+		self.out = QTextStream(self.file)
+		self.terminador = ""
+		self.out << "CONF_PLUGINS_BULMAFACT   "
+		
+		if (self.mui_contratos.isChecked()):
+			self.out << self.terminador << "libplugincontratos.so"
+			self.terminador = "; \\ \n";
+		
+		if (self.mui_llamadas.isChecked()):
+			self.out << self.terminador << "libpluginllamadas.so"
+			self.terminador = "; \\ \n";
 
+		self.out << "\n"
+	self.mui_textBrowser.append("Done.")
+
+	self.file.close()
 
 
 def main(args):
