@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'nuevafacturacionbase.ui'
 #
-# Created: Thu Feb 28 21:25:47 2008
+# Created: Fri Feb 29 13:39:49 2008
 #      by: PyQt4 UI code generator 4.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -32,15 +32,11 @@ class Ui_NuevaFacturacionBase(object):
         self.mui_botonera.setOrientation(QtCore.Qt.Horizontal)
         self.mui_botonera.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.NoButton|QtGui.QDialogButtonBox.Ok)
         self.mui_botonera.setObjectName("mui_botonera")
-        self.gridlayout.addWidget(self.mui_botonera,3,0,1,2)
+        self.gridlayout.addWidget(self.mui_botonera,4,1,1,1)
 
-        self.groupBox = QtGui.QGroupBox(NuevaFacturacionBase)
-        self.groupBox.setObjectName("groupBox")
-
-        self.mui_contratos = QtGui.QCheckBox(self.groupBox)
-        self.mui_contratos.setGeometry(QtCore.QRect(30,30,161,19))
-        self.mui_contratos.setObjectName("mui_contratos")
-        self.gridlayout.addWidget(self.groupBox,2,0,1,2)
+        self.mui_aceptar = QtGui.QPushButton(NuevaFacturacionBase)
+        self.mui_aceptar.setObjectName("mui_aceptar")
+        self.gridlayout.addWidget(self.mui_aceptar,4,0,1,1)
 
         self.mui_nomdb = QtGui.QLineEdit(NuevaFacturacionBase)
         self.mui_nomdb.setObjectName("mui_nomdb")
@@ -57,6 +53,23 @@ class Ui_NuevaFacturacionBase(object):
         self.mui_nomempresa = QtGui.QLineEdit(NuevaFacturacionBase)
         self.mui_nomempresa.setObjectName("mui_nomempresa")
         self.gridlayout.addWidget(self.mui_nomempresa,0,1,1,1)
+
+        self.groupBox = QtGui.QGroupBox(NuevaFacturacionBase)
+        self.groupBox.setObjectName("groupBox")
+
+        self.gridlayout1 = QtGui.QGridLayout(self.groupBox)
+        self.gridlayout1.setMargin(9)
+        self.gridlayout1.setSpacing(6)
+        self.gridlayout1.setObjectName("gridlayout1")
+
+        self.mui_contratos = QtGui.QCheckBox(self.groupBox)
+        self.mui_contratos.setObjectName("mui_contratos")
+        self.gridlayout1.addWidget(self.mui_contratos,0,0,1,1)
+        self.gridlayout.addWidget(self.groupBox,2,0,1,2)
+
+        self.mui_textBrowser = QtGui.QTextBrowser(NuevaFacturacionBase)
+        self.mui_textBrowser.setObjectName("mui_textBrowser")
+        self.gridlayout.addWidget(self.mui_textBrowser,3,0,1,2)
         self.label_2.setBuddy(self.mui_nomdb)
         self.label.setBuddy(self.mui_nomempresa)
 
@@ -67,8 +80,9 @@ class Ui_NuevaFacturacionBase(object):
 
     def retranslateUi(self, NuevaFacturacionBase):
         NuevaFacturacionBase.setWindowTitle(QtGui.QApplication.translate("NuevaFacturacionBase", "Nueva Facturacion", None, QtGui.QApplication.UnicodeUTF8))
-        self.groupBox.setTitle(QtGui.QApplication.translate("NuevaFacturacionBase", "Plugins", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_contratos.setText(QtGui.QApplication.translate("NuevaFacturacionBase", "Contratos de Servicios", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_aceptar.setText(QtGui.QApplication.translate("NuevaFacturacionBase", "PushButton", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("NuevaFacturacionBase", "Nombre Base de Datos", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("NuevaFacturacionBase", "Nombre Empresa", None, QtGui.QApplication.UnicodeUTF8))
+        self.groupBox.setTitle(QtGui.QApplication.translate("NuevaFacturacionBase", "Plugins", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_contratos.setText(QtGui.QApplication.translate("NuevaFacturacionBase", "Contratos de Servicios", None, QtGui.QApplication.UnicodeUTF8))
 
