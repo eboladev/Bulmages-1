@@ -67,10 +67,12 @@ private:
 	Fixed cuentaPositiva( Fixed valor );
 	Fixed cuentaNevativa( Fixed valor );
 
+	void mensajeAdvertenciaPGC(CAnuales tipus);
 
 	QString cuentaAnualAsociancionSinLucro ();
 	QString cuentaAnualCAPGC07();
 	QString cuentaAnualCAPYMES08();
+	QString cuentaAnualCAAPGC08();
 	
 
 public:
