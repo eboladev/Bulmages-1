@@ -1,3 +1,6 @@
+<?xml version="1.0" encoding = "UTF8"?>
+<!DOCTYPE FUGIT>
+<FUGIT version='0.3.1' origen='BulmaGes' date=''>
 <CUENTA>
  <IDCUENTA>1</IDCUENTA>
  <CODIGO>10</CODIGO>
@@ -16982,3 +16985,5 @@
  <REGULARIZACION>t</REGULARIZACION>
  <IMPUTACION>t</IMPUTACION>
 </CUENTA>
+
+</FUGIT>
