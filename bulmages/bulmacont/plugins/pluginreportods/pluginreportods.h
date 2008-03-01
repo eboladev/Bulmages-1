@@ -64,16 +64,16 @@ private:
     Fixed saldoCuentaAnt ( int cuenta );
     QString ejercicioActual_fechaBalance;
     QString ejercicioAnterior_fechaBalance;
-	Fixed cuentaPositiva( Fixed valor );
-	Fixed cuentaNevativa( Fixed valor );
+    Fixed cuentaPositiva( Fixed valor );
+    Fixed cuentaNegativa( Fixed valor );
 
-	void mensajeAdvertenciaPGC(CAnuales tipus);
+    void mensajeAdvertenciaPGC(CAnuales tipus);
 
-	QString cuentaAnualAsociancionSinLucro ();
-	QString cuentaAnualCAPGC07();
-	QString cuentaAnualCAPYMES08();
-	QString cuentaAnualCAAPGC08();
-	
+    QString cuentaAnualAsociancionSinLucro ();
+    QString cuentaAnualCAPGC07();
+    QString cuentaAnualCAPYMES08();
+    QString cuentaAnualCAAPGC08();
+
 
 public:
     Empresa *empresaact;

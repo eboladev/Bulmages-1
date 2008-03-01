@@ -385,12 +385,12 @@ Fixed pluginReportODS::cuentaPositiva( Fixed valor )
 \param cuentaNegativa
 \return
 **/
-Fixed pluginReportODS::cuentaNevativa( Fixed valor )
+Fixed pluginReportODS::cuentaNegativa( Fixed valor )
 {
     _depura ( "pluginReportODS::cuentaNegativa", 0 );
     /// Comprueba que sea un número negativo
     Fixed resultado;
-    if (valor > Fixed("0.00"))
+    if (valor < Fixed("0.00"))
 		resultado = valor;
     else
 		resultado = Fixed("0.00");
@@ -485,6 +485,13 @@ import ooolib\n\
 # Crea el documento\n\
 doc = ooolib.Calc(\"Activo\")\n\
 \n\
+# Això és una comprovació\n\
+\
+doc.set_cell_value(3, 1, 'float', '"+(Fixed("0.00") + cuentaPositiva( saldoCuenta ( 553 ) ) ).toQString ( '.' ) + "')\n\
+doc.set_cell_value(4, 1, 'float', '" +(Fixed("0.00") + cuentaNegativa( saldoCuenta ( 553 ))).toQString ( '.' ) + "')\n\
+\
+# Aquí s'acaba la comprovació\n\
+\
 doc.set_column_property(1, 'width', '0.5in')\n\
 doc.set_column_property(2, 'width', '5in')\n\
 doc.set_cell_property('bold', True)\n\
@@ -635,8 +642,8 @@ doc.set_cell_property('bold', False)\n\
 \
 doc.set_cell_property('bold', True)\n\
 doc.set_cell_value(2, 19, 'string', 'E) Acreedores a corto plazo')\n\
-doc.set_cell_value(3, 19, 'float', '" +(- ( saldoCuenta ( 400 ) + saldoCuenta ( 401 ) + saldoCuenta ( 402 ) + saldoCuenta ( 403 ) + ( saldoCuenta ( 406 ) ) + saldoCuenta ( 41 ) + saldoCuenta ( 437 ) + saldoCuenta ( 465 ) + saldoCuenta ( 475 ) + saldoCuenta ( 476 ) + saldoCuenta ( 477 ) + saldoCuenta ( 479 ) + saldoCuenta ( 485 ) + saldoCuenta ( 499 ) + saldoCuenta ( 50 ) + saldoCuenta ( 51 ) + saldoCuenta ( 52 ) + cuentaNevativa( saldoCuenta ( 551 )) + cuentaNevativa( saldoCuenta ( 552 )) + cuentaNevativa( saldoCuenta ( 553 )) + saldoCuenta ( 555 ) + saldoCuenta ( 556 ) + saldoCuenta ( 560 ) + saldoCuenta ( 561 ) + saldoCuenta ( 585 ) )).toQString ( '.' ) + "')\n\
-doc.set_cell_value(4, 19, 'float', '" + (- ( saldoCuentaAnt ( 400 ) + saldoCuentaAnt ( 401 ) + saldoCuentaAnt ( 402 ) + saldoCuentaAnt ( 403 ) + ( saldoCuentaAnt ( 406 ) ) + saldoCuentaAnt ( 41 ) + saldoCuentaAnt ( 437 ) + saldoCuentaAnt ( 465 ) + saldoCuentaAnt ( 475 ) + saldoCuentaAnt ( 476 ) + saldoCuentaAnt ( 477 ) + saldoCuentaAnt ( 479 ) + saldoCuentaAnt ( 485 ) + saldoCuentaAnt ( 499 ) + saldoCuentaAnt ( 50 ) + saldoCuentaAnt ( 51 ) + saldoCuentaAnt ( 52 ) + cuentaNevativa( saldoCuentaAnt ( 551 )) + cuentaNevativa( saldoCuentaAnt ( 552 )) + cuentaNevativa( saldoCuentaAnt ( 553 )) + saldoCuentaAnt ( 555 ) + saldoCuentaAnt ( 556 ) + saldoCuentaAnt ( 560 ) + saldoCuentaAnt ( 561 ) + saldoCuentaAnt ( 585 )) ).toQString ( '.' ) + "')\n\
+doc.set_cell_value(3, 19, 'float', '" +(- ( saldoCuenta ( 400 ) + saldoCuenta ( 401 ) + saldoCuenta ( 402 ) + saldoCuenta ( 403 ) + ( saldoCuenta ( 406 ) ) + saldoCuenta ( 41 ) + saldoCuenta ( 437 ) + saldoCuenta ( 465 ) + saldoCuenta ( 475 ) + saldoCuenta ( 476 ) + saldoCuenta ( 477 ) + saldoCuenta ( 479 ) + saldoCuenta ( 485 ) + saldoCuenta ( 499 ) + saldoCuenta ( 50 ) + saldoCuenta ( 51 ) + saldoCuenta ( 52 ) + cuentaNegativa( saldoCuenta ( 551 )) + cuentaNegativa( saldoCuenta ( 552 )) + cuentaNegativa( saldoCuenta ( 553 )) + saldoCuenta ( 555 ) + saldoCuenta ( 556 ) + saldoCuenta ( 560 ) + saldoCuenta ( 561 ) + saldoCuenta ( 585 ) )).toQString ( '.' ) + "')\n\
+doc.set_cell_value(4, 19, 'float', '" + (- ( saldoCuentaAnt ( 400 ) + saldoCuentaAnt ( 401 ) + saldoCuentaAnt ( 402 ) + saldoCuentaAnt ( 403 ) + ( saldoCuentaAnt ( 406 ) ) + saldoCuentaAnt ( 41 ) + saldoCuentaAnt ( 437 ) + saldoCuentaAnt ( 465 ) + saldoCuentaAnt ( 475 ) + saldoCuentaAnt ( 476 ) + saldoCuentaAnt ( 477 ) + saldoCuentaAnt ( 479 ) + saldoCuentaAnt ( 485 ) + saldoCuentaAnt ( 499 ) + saldoCuentaAnt ( 50 ) + saldoCuentaAnt ( 51 ) + saldoCuentaAnt ( 52 ) + cuentaNegativa( saldoCuentaAnt ( 551 )) + cuentaNegativa( saldoCuentaAnt ( 552 )) + cuentaNegativa( saldoCuentaAnt ( 553 )) + saldoCuentaAnt ( 555 ) + saldoCuentaAnt ( 556 ) + saldoCuentaAnt ( 560 ) + saldoCuentaAnt ( 561 ) + saldoCuentaAnt ( 585 )) ).toQString ( '.' ) + "')\n\
 doc.set_cell_property('bold', False)\n\
 \
 doc.set_cell_property('bold', True)\n\
@@ -1978,6 +1985,13 @@ doc.set_cell_value(5,25, 'float', '"+ ( saldoCuentaAnt (57)).toQString ( '.' ) +
 doc.set_cell_property('bold', False)\n\
 \
 \
+doc.set_cell_property('bold', True)\n\
+doc.set_cell_value(2,27, 'string', 'TOTAL ACTIVO (A+B)')\n\
+doc.set_cell_value(4,27, 'formula', '=D6+D15')\n\
+doc.set_cell_value(5,27, 'formula', '=E6+E15')\n\
+doc.set_cell_property('bold', False)\n\
+\
+\
 \
 \
 \
@@ -2180,9 +2194,9 @@ doc.set_cell_property('bold', False)\n\
 \
 \
 doc.set_cell_property('bold', True)\n\
-doc.set_cell_value(2,32, 'string', 'TOTAL PATRIMONIO NETO Y PASIVO (A + B + C)')\n\
-doc.set_cell_value(4,32, 'formula', '=D6+D21+D32')\n\
-doc.set_cell_value(5,32, 'formula', '=E6+E21+E32')\n\
+doc.set_cell_value(2,45, 'string', 'TOTAL PATRIMONIO NETO Y PASIVO (A + B + C)')\n\
+doc.set_cell_value(4,45, 'formula', '=D6+D21+D32')\n\
+doc.set_cell_value(5,45, 'formula', '=E6+E21+E32')\n\
 doc.set_cell_property('bold', False)\n\
 \
 \
