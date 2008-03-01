@@ -1,6 +1,7 @@
 import sys
 import os
-from PyQt4 import *
+from PyQt4.QtGui import *
+from PyQt4.QtCore import *
 from nuevousuariobase import *
 
 
@@ -10,10 +11,21 @@ class NuevoUsuario(QtGui.QDialog, Ui_NuevoUsuario):
     def __init__(self, parent = None):
         QtGui.QDialog.__init__(self,parent)
 	self.setupUi(self)
+	self.process = QtCore.QProcess()	
 	
     def on_mui_botonera_accepted(self):
-	QtGui.QMessageBox.warning(self, "My Application", "The document has been modified.\n" "Do you want to save your changes?",QtGui.QMessageBox.Save | QtGui.QMessageBox.Discard | QtGui.QMessageBox.Cancel, QtGui.QMessageBox.Save)
-        os.system('xeyes')
+	# Creamos el usuario
+	self.command = 'kdesu -u postgres -c "createuser -s -d -r  ' + self.mui_nombre.text() +'"'
+	self.process.start(self.command)
+	self.process.waitForFinished(-1)
+
+	# Cambiamos el password del usuario
+	self.subcomand = 'ALTER USER ' +self.mui_nombre.text()+ ' WITH PASSWORD \'\"\'' +self.mui_password.text() +'\'\"\' ;'
+	self.command = 'kdesu -u postgres -c \'psql template1 -c \"' +self.subcomand+ '\"\''
+        os.system(self.command.toAscii().data())
+	
+	self.accept()
+
 
 def main(args):
     app=QtGui.QApplication(args)

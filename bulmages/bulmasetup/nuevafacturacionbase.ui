@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>578</width>
-    <height>513</height>
+    <width>800</width>
+    <height>608</height>
    </rect>
   </property>
   <property name="sizePolicy" >
@@ -19,7 +19,7 @@
   </property>
   <property name="maximumSize" >
    <size>
-    <width>578</width>
+    <width>800</width>
     <height>608</height>
    </size>
   </property>
@@ -36,39 +36,10 @@
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="2" column="0" colspan="3" >
-    <widget class="QGroupBox" name="groupBox" >
-     <property name="title" >
-      <string>Plugins</string>
-     </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
-       <number>9</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
-      <item row="1" column="0" >
-       <widget class="QCheckBox" name="mui_llamadas" >
-        <property name="text" >
-         <string>Registro de llamadas de Clientes</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0" >
-       <widget class="QCheckBox" name="mui_contratos" >
-        <property name="text" >
-         <string>Contratos de Servicios</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="1" column="1" colspan="2" >
+   <item row="0" column="3" colspan="2" >
     <widget class="QLineEdit" name="mui_nomdb" />
    </item>
-   <item row="1" column="0" >
+   <item row="0" column="2" >
     <widget class="QLabel" name="label_2" >
      <property name="text" >
       <string>Nombre Base de Datos</string>
@@ -77,6 +48,9 @@
       <cstring>mui_nomdb</cstring>
      </property>
     </widget>
+   </item>
+   <item row="0" column="1" >
+    <widget class="QLineEdit" name="mui_nomempresa" />
    </item>
    <item row="0" column="0" >
     <widget class="QLabel" name="label" >
@@ -88,25 +62,247 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="1" colspan="2" >
-    <widget class="QLineEdit" name="mui_nomempresa" />
-   </item>
-   <item row="4" column="2" >
+   <item row="3" column="4" >
     <widget class="QPushButton" name="mui_cancelar" >
      <property name="text" >
-      <string>Cancelar</string>
+      <string>Cerrar</string>
      </property>
     </widget>
    </item>
-   <item row="4" column="1" >
+   <item row="2" column="0" colspan="5" >
+    <widget class="QTextBrowser" name="mui_textBrowser" />
+   </item>
+   <item row="1" column="0" colspan="5" >
+    <widget class="QGroupBox" name="groupBox" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>7</hsizetype>
+       <vsizetype>7</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="sizeIncrement" >
+      <size>
+       <width>1</width>
+       <height>1</height>
+      </size>
+     </property>
+     <property name="title" >
+      <string>Plugins</string>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="8" column="1" >
+       <widget class="QCheckBox" name="mui_llamadas_19" >
+        <property name="text" >
+         <string>Tipos de Trabajadores</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1" >
+       <widget class="QCheckBox" name="mui_llamadas_8" >
+        <property name="text" >
+         <string>Modo Debug</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1" >
+       <widget class="QCheckBox" name="mui_llamadas_22" >
+        <property name="text" >
+         <string>Gestión de Vehiculos</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" >
+       <widget class="QCheckBox" name="mui_llamadas_4" >
+        <property name="text" >
+         <string>Validacion de Trabajadores con Asterisk</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="0" >
+       <widget class="QCheckBox" name="mui_llamadas_20" >
+        <property name="text" >
+         <string>Uso con BulmaTPV</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0" >
+       <widget class="QCheckBox" name="mui_llamadas_21" >
+        <property name="text" >
+         <string>Gestión Trazabilidad</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0" >
+       <widget class="QCheckBox" name="mui_llamadas_11" >
+        <property name="text" >
+         <string>Inventarios</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0" >
+       <widget class="QCheckBox" name="mui_llamadas" >
+        <property name="text" >
+         <string>Registro de llamadas de Clientes</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0" >
+       <widget class="QCheckBox" name="mui_contratos" >
+        <property name="text" >
+         <string>Contratos de Servicios</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0" >
+       <widget class="QCheckBox" name="mui_llamadas_5" >
+        <property name="text" >
+         <string>Generación de códigos de barras</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="2" >
+       <widget class="QCheckBox" name="checkBox_7" >
+        <property name="text" >
+         <string>Importar subformularios desde Hoja de Calculo</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="2" >
+       <widget class="QCheckBox" name="checkBox_9" >
+        <property name="text" >
+         <string>Exportar Subformularios a Hoja de Calculo v2</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="2" >
+       <widget class="QCheckBox" name="checkBox_5" >
+        <property name="text" >
+         <string>Exportar Subformularios a Hoja de Calculo</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="2" >
+       <widget class="QCheckBox" name="mui_llamadas_18" >
+        <property name="text" >
+         <string>Generación de Tickets</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2" >
+       <widget class="QCheckBox" name="mui_llamadas_16" >
+        <property name="text" >
+         <string>Generación de remesas bancarias (Q19)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="2" >
+       <widget class="QCheckBox" name="mui_llamadas_17" >
+        <property name="text" >
+         <string>Gestión de Tarifas</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2" >
+       <widget class="QCheckBox" name="mui_llamadas_15" >
+        <property name="text" >
+         <string>Promedios de Compras y Ventas</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2" >
+       <widget class="QCheckBox" name="mui_llamadas_14" >
+        <property name="text" >
+         <string>Gestión de precios de Coste y de Márgenes</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1" >
+       <widget class="QCheckBox" name="mui_llamadas_7" >
+        <property name="text" >
+         <string>Cuadrante de Trabajadores</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1" >
+       <widget class="QCheckBox" name="mui_llamadas_12" >
+        <property name="text" >
+         <string>Gestión de Precios con IVA Incluido</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1" >
+       <widget class="QCheckBox" name="mui_llamadas_10" >
+        <property name="text" >
+         <string>Informe de Clientes</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1" >
+       <widget class="QCheckBox" name="mui_llamadas_9" >
+        <property name="text" >
+         <string>Impresión de múltiples documentos</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2" >
+       <widget class="QCheckBox" name="mui_llamadas_13" >
+        <property name="text" >
+         <string>Envio de documentos por e-mail</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" >
+       <widget class="QCheckBox" name="mui_llamadas_6" >
+        <property name="text" >
+         <string>Generación de catálogos de Productos</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" >
+       <widget class="QCheckBox" name="mui_llamadas_3" >
+        <property name="text" >
+         <string>Gestión Mejorada de Almacenes</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QCheckBox" name="mui_llamadas_2" >
+        <property name="text" >
+         <string>Gestión de Comerciales</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" >
+       <widget class="QCheckBox" name="checkBox_6" >
+        <property name="text" >
+         <string>Embeber Aplicaciones</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" >
+       <widget class="QCheckBox" name="checkBox_8" >
+        <property name="text" >
+         <string>Impresiones Personalizadas</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="3" column="2" colspan="2" >
     <widget class="QPushButton" name="mui_aceptar" >
      <property name="text" >
-      <string>Aceptar</string>
+      <string>Generar</string>
      </property>
     </widget>
-   </item>
-   <item row="3" column="0" colspan="3" >
-    <widget class="QTextBrowser" name="mui_textBrowser" />
    </item>
   </layout>
  </widget>
