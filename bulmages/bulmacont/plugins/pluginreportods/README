@@ -1,5 +1,5 @@
-Plugin de Cuentas anuales para Organizaciones sin lucro
-=======================================================
+Plugin de Cuentas Anuales 
+=========================
 
 (C) 2008 Adelaida Clavaguera-Leopold Palomo.
 Software Bajo Licencia G.P.L. (Vea el archivo COPYNG adjunto)
@@ -8,15 +8,25 @@ Software Bajo Licencia G.P.L. (Vea el archivo COPYNG adjunto)
 Versión: = bulmages
 
 
-Descripcion: Permite obtener un balanze de cuentas anuales aplicando para
-organizaciones sin lucro. El formato de salida es ods. Esta basado en el
-plugincanualesods.
+Descripcion: Permite obtener un balanze de cuentas anuales para los
+siguientes planes contables:
+
+PGC 2008
+        Cuentas Anuales PGC
+        Cuentas Anuales Abreviadas PGC
+        Cuentas Anuales PYMES
+PGC Anterior 2008
+        Cuentas Anuales PGC
+        Cuentas A. Abreviadas Sin Lucro
+
+
+El formato de salida es ods. Esta basado en el plugincanualesods.
 
 Compilacion
 ===========
 
 El plugin se compilará con el resto de bulmages con el nombre
-libplugincaaslods.so
+libpluginreportods.so
 
 
 

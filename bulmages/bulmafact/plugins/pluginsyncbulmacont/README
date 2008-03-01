@@ -5,7 +5,8 @@ Sincronizacion con Bulmacont.
 Software Bajo Licencia G.P.L. (Vea el archivo COPYNG adjunto)
 
 
-Versión: 0.10.1
+Versión: = bulmages
+
 
 
 Prerequisitos:
@@ -22,7 +23,7 @@ Instalacion del plugin
 Debe ejecutarse el script de funcionamiento en la base de datos seleccionada.
 
 Ejemplo:
-	$ psql bulmafact < revf-pluginsyncbulmacont-0.9.1.sql
+	$ psql bulmafact < revf-pluginsyncbulmacont.sql
 
 Una vez instalado el plugin debe configurarse el parametro de la facturacion DataBaseContabilidad y especificar en dicho parametro la base de datos de contabilidad que se debe actualizar automaticamente.
 
