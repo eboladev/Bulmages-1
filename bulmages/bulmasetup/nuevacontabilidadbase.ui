@@ -49,98 +49,98 @@
        <number>6</number>
       </property>
       <item row="6" column="0" >
-       <widget class="QCheckBox" name="checkBox_14" >
+       <widget class="QCheckBox" name="mui_pluginproyectos" >
         <property name="text" >
          <string>Gestión de proyectos Contables</string>
         </property>
        </widget>
       </item>
       <item row="5" column="0" >
-       <widget class="QCheckBox" name="checkBox_11" >
+       <widget class="QCheckBox" name="mui_pluginreportods" >
         <property name="text" >
          <string>Cuentas Anuales en formato ODS v2.0</string>
         </property>
        </widget>
       </item>
       <item row="4" column="0" >
-       <widget class="QCheckBox" name="checkBox_10" >
+       <widget class="QCheckBox" name="mui_plugincanualesods" >
         <property name="text" >
          <string>Cuentas Anuales en formato ODS</string>
         </property>
        </widget>
       </item>
       <item row="3" column="0" >
-       <widget class="QCheckBox" name="checkBox_7" >
+       <widget class="QCheckBox" name="mui_pluginclipboardbf" >
         <property name="text" >
          <string>Importar subformularios desde Hoja de Calculo</string>
         </property>
        </widget>
       </item>
       <item row="2" column="0" >
-       <widget class="QCheckBox" name="checkBox_6" >
+       <widget class="QCheckBox" name="mui_plugindocked" >
         <property name="text" >
          <string>Embeber Aplicaciones</string>
         </property>
        </widget>
       </item>
       <item row="1" column="0" >
-       <widget class="QCheckBox" name="checkBox_2" >
+       <widget class="QCheckBox" name="mui_pluginregistrodeiva" >
         <property name="text" >
          <string>Registro de IVA</string>
         </property>
        </widget>
       </item>
       <item row="1" column="1" >
-       <widget class="QCheckBox" name="checkBox_4" >
+       <widget class="QCheckBox" name="mui_pluginbalance1" >
         <property name="text" >
          <string>Balance Jerarquico v2</string>
         </property>
        </widget>
       </item>
       <item row="0" column="1" >
-       <widget class="QCheckBox" name="checkBox_3" >
+       <widget class="QCheckBox" name="mui_pluginbalancetree" >
         <property name="text" >
          <string>Balance Jerarquico</string>
         </property>
        </widget>
       </item>
       <item row="0" column="0" >
-       <widget class="QCheckBox" name="checkBox" >
+       <widget class="QCheckBox" name="mui_pluginresumcta" >
         <property name="text" >
          <string>Resumen de Cuenta</string>
         </property>
        </widget>
       </item>
       <item row="4" column="1" >
-       <widget class="QCheckBox" name="checkBox_8" >
+       <widget class="QCheckBox" name="mui_pluginimpers" >
         <property name="text" >
          <string>Impresiones Personalizadas</string>
         </property>
        </widget>
       </item>
       <item row="2" column="1" >
-       <widget class="QCheckBox" name="checkBox_5" >
+       <widget class="QCheckBox" name="mui_pluginsubformsxc" >
         <property name="text" >
          <string>Exportar Subformularios a Hoja de Calculo</string>
         </property>
        </widget>
       </item>
       <item row="3" column="1" >
-       <widget class="QCheckBox" name="checkBox_9" >
+       <widget class="QCheckBox" name="mui_pluginsubformods" >
         <property name="text" >
          <string>Exportar Subformularios a Hoja de Calculo v2</string>
         </property>
        </widget>
       </item>
       <item row="5" column="1" >
-       <widget class="QCheckBox" name="checkBox_12" >
+       <widget class="QCheckBox" name="mui_plugincorrector" >
         <property name="text" >
          <string>Corrector Contable</string>
         </property>
        </widget>
       </item>
       <item row="6" column="1" >
-       <widget class="QCheckBox" name="checkBox_13" >
+       <widget class="QCheckBox" name="mui_plugindebugbc" >
         <property name="text" >
          <string>Modo debug</string>
         </property>
@@ -200,12 +200,12 @@
       <string>Nombre Base de Datos</string>
      </property>
      <property name="buddy" >
-      <cstring>lineEdit_2</cstring>
+      <cstring>mui_nomdb</cstring>
      </property>
     </widget>
    </item>
    <item row="1" column="1" colspan="3" >
-    <widget class="QLineEdit" name="lineEdit_2" />
+    <widget class="QLineEdit" name="mui_nomdb" />
    </item>
    <item row="0" column="0" >
     <widget class="QLabel" name="label" >
@@ -216,12 +216,12 @@
       <string>Nombre Empresa</string>
      </property>
      <property name="buddy" >
-      <cstring>lineEdit</cstring>
+      <cstring>mui_nomempresa</cstring>
      </property>
     </widget>
    </item>
    <item row="0" column="1" colspan="3" >
-    <widget class="QLineEdit" name="lineEdit" />
+    <widget class="QLineEdit" name="mui_nomempresa" />
    </item>
    <item row="5" column="2" >
     <widget class="QPushButton" name="mui_aceptar" >
@@ -247,14 +247,14 @@
   </layout>
  </widget>
  <tabstops>
-  <tabstop>lineEdit</tabstop>
-  <tabstop>lineEdit_2</tabstop>
+  <tabstop>mui_nomempresa</tabstop>
+  <tabstop>mui_nomdb</tabstop>
   <tabstop>comboBox</tabstop>
-  <tabstop>checkBox</tabstop>
-  <tabstop>checkBox_3</tabstop>
-  <tabstop>checkBox_2</tabstop>
-  <tabstop>checkBox_4</tabstop>
-  <tabstop>checkBox_5</tabstop>
+  <tabstop>mui_pluginresumcta</tabstop>
+  <tabstop>mui_pluginbalancetree</tabstop>
+  <tabstop>mui_pluginregistrodeiva</tabstop>
+  <tabstop>mui_pluginbalance1</tabstop>
+  <tabstop>mui_pluginsubformsxc</tabstop>
   <tabstop>mui_aceptar</tabstop>
   <tabstop>mui_cancelar</tabstop>
   <tabstop>mui_textBrowser</tabstop>

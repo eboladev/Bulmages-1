@@ -99,49 +99,49 @@
        <number>6</number>
       </property>
       <item row="8" column="1" >
-       <widget class="QCheckBox" name="mui_llamadas_19" >
+       <widget class="QCheckBox" name="mui_plugintipostrabajo" >
         <property name="text" >
          <string>Tipos de Trabajadores</string>
         </property>
        </widget>
       </item>
       <item row="7" column="1" >
-       <widget class="QCheckBox" name="mui_llamadas_8" >
+       <widget class="QCheckBox" name="mui_plugindebugbf" >
         <property name="text" >
          <string>Modo Debug</string>
         </property>
        </widget>
       </item>
       <item row="6" column="1" >
-       <widget class="QCheckBox" name="mui_llamadas_22" >
+       <widget class="QCheckBox" name="mui_pluginvehiculosbf" >
         <property name="text" >
          <string>Gestión de Vehiculos</string>
         </property>
        </widget>
       </item>
       <item row="3" column="0" >
-       <widget class="QCheckBox" name="mui_llamadas_4" >
+       <widget class="QCheckBox" name="mui_pluginasterisk" >
         <property name="text" >
          <string>Validacion de Trabajadores con Asterisk</string>
         </property>
        </widget>
       </item>
       <item row="9" column="0" >
-       <widget class="QCheckBox" name="mui_llamadas_20" >
+       <widget class="QCheckBox" name="mui_plugintpv" >
         <property name="text" >
          <string>Uso con BulmaTPV</string>
         </property>
        </widget>
       </item>
       <item row="8" column="0" >
-       <widget class="QCheckBox" name="mui_llamadas_21" >
+       <widget class="QCheckBox" name="mui_plugintrazabilidad" >
         <property name="text" >
          <string>Gestión Trazabilidad</string>
         </property>
        </widget>
       </item>
       <item row="7" column="0" >
-       <widget class="QCheckBox" name="mui_llamadas_11" >
+       <widget class="QCheckBox" name="mui_plugininventario" >
         <property name="text" >
          <string>Inventarios</string>
         </property>
@@ -162,133 +162,133 @@
        </widget>
       </item>
       <item row="4" column="0" >
-       <widget class="QCheckBox" name="mui_llamadas_5" >
+       <widget class="QCheckBox" name="mui_pluginbarcodeopen" >
         <property name="text" >
          <string>Generación de códigos de barras</string>
         </property>
        </widget>
       </item>
       <item row="6" column="2" >
-       <widget class="QCheckBox" name="checkBox_7" >
+       <widget class="QCheckBox" name="mui_pluginclipboardbf" >
         <property name="text" >
          <string>Importar subformularios desde Hoja de Calculo</string>
         </property>
        </widget>
       </item>
       <item row="8" column="2" >
-       <widget class="QCheckBox" name="checkBox_9" >
+       <widget class="QCheckBox" name="mui_pluginsubformods" >
         <property name="text" >
          <string>Exportar Subformularios a Hoja de Calculo v2</string>
         </property>
        </widget>
       </item>
       <item row="7" column="2" >
-       <widget class="QCheckBox" name="checkBox_5" >
+       <widget class="QCheckBox" name="mui_pluginsubformsxc" >
         <property name="text" >
          <string>Exportar Subformularios a Hoja de Calculo</string>
         </property>
        </widget>
       </item>
       <item row="5" column="2" >
-       <widget class="QCheckBox" name="mui_llamadas_18" >
+       <widget class="QCheckBox" name="mui_pluginticket" >
         <property name="text" >
          <string>Generación de Tickets</string>
         </property>
        </widget>
       </item>
       <item row="3" column="2" >
-       <widget class="QCheckBox" name="mui_llamadas_16" >
+       <widget class="QCheckBox" name="mui_pluginq19" >
         <property name="text" >
          <string>Generación de remesas bancarias (Q19)</string>
         </property>
        </widget>
       </item>
       <item row="4" column="2" >
-       <widget class="QCheckBox" name="mui_llamadas_17" >
+       <widget class="QCheckBox" name="mui_plugintarifas" >
         <property name="text" >
          <string>Gestión de Tarifas</string>
         </property>
        </widget>
       </item>
       <item row="2" column="2" >
-       <widget class="QCheckBox" name="mui_llamadas_15" >
+       <widget class="QCheckBox" name="mui_pluginpromedios" >
         <property name="text" >
          <string>Promedios de Compras y Ventas</string>
         </property>
        </widget>
       </item>
       <item row="1" column="2" >
-       <widget class="QCheckBox" name="mui_llamadas_14" >
+       <widget class="QCheckBox" name="mui_pluginpreciocoste" >
         <property name="text" >
          <string>Gestión de precios de Coste y de Márgenes</string>
         </property>
        </widget>
       </item>
       <item row="2" column="1" >
-       <widget class="QCheckBox" name="mui_llamadas_7" >
+       <widget class="QCheckBox" name="mui_plugincuadrante" >
         <property name="text" >
          <string>Cuadrante de Trabajadores</string>
         </property>
        </widget>
       </item>
       <item row="5" column="1" >
-       <widget class="QCheckBox" name="mui_llamadas_12" >
+       <widget class="QCheckBox" name="mui_pluginivainc" >
         <property name="text" >
          <string>Gestión de Precios con IVA Incluido</string>
         </property>
        </widget>
       </item>
       <item row="4" column="1" >
-       <widget class="QCheckBox" name="mui_llamadas_10" >
+       <widget class="QCheckBox" name="mui_plugininformeclientes" >
         <property name="text" >
          <string>Informe de Clientes</string>
         </property>
        </widget>
       </item>
       <item row="3" column="1" >
-       <widget class="QCheckBox" name="mui_llamadas_9" >
+       <widget class="QCheckBox" name="mui_pluginimpresionesmultiples" >
         <property name="text" >
          <string>Impresión de múltiples documentos</string>
         </property>
        </widget>
       </item>
       <item row="0" column="2" >
-       <widget class="QCheckBox" name="mui_llamadas_13" >
+       <widget class="QCheckBox" name="mui_pluginmail" >
         <property name="text" >
          <string>Envio de documentos por e-mail</string>
         </property>
        </widget>
       </item>
       <item row="1" column="1" >
-       <widget class="QCheckBox" name="mui_llamadas_6" >
+       <widget class="QCheckBox" name="mui_plugincatalogo" >
         <property name="text" >
          <string>Generación de catálogos de Productos</string>
         </property>
        </widget>
       </item>
       <item row="2" column="0" >
-       <widget class="QCheckBox" name="mui_llamadas_3" >
+       <widget class="QCheckBox" name="mui_pluginalmacen" >
         <property name="text" >
          <string>Gestión Mejorada de Almacenes</string>
         </property>
        </widget>
       </item>
       <item row="1" column="0" >
-       <widget class="QCheckBox" name="mui_llamadas_2" >
+       <widget class="QCheckBox" name="mui_comercialbf" >
         <property name="text" >
          <string>Gestión de Comerciales</string>
         </property>
        </widget>
       </item>
       <item row="0" column="0" >
-       <widget class="QCheckBox" name="checkBox_6" >
+       <widget class="QCheckBox" name="mui_plugindocked" >
         <property name="text" >
          <string>Embeber Aplicaciones</string>
         </property>
        </widget>
       </item>
       <item row="0" column="1" >
-       <widget class="QCheckBox" name="checkBox_8" >
+       <widget class="QCheckBox" name="mui_pluginimpers" >
         <property name="text" >
          <string>Impresiones Personalizadas</string>
         </property>
