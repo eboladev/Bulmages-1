@@ -73,6 +73,7 @@ private:
     QString cuentaAnualCAPGC07();
     QString cuentaAnualCAPYMES08();
     QString cuentaAnualCAAPGC08();
+	QString cuentaAnualCAPGC08();
 
 
 public:

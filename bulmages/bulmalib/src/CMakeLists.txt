@@ -88,6 +88,31 @@ set(bulmalib_MOCS
          qradiobutton2.h
          qcombobox2.h)
 
+set (bulmalib_HDRS abreempresaview.h
+			busquedafecha.h
+			busquedaperiodo.h
+			calendario.h
+			configuracion.h
+			dbrecord.h
+			dialogchanges.h
+			empresabase.h
+			ficha.h
+			fixed.h
+			funcaux.h
+			listventanas.h
+			logpass.h
+			msgerror.h
+			numerocuenta.h
+			pgimportfiles.h
+			plugins.h
+			postgresiface2.h
+			qapplication2.h
+			qmcdatenav.h
+			qtable2.h
+			qtexteditdelegate.h
+			qworkspace2.h
+			subform.h
+			subform3.h)
 #headers that are not moc'ed
 #			postgresiface2.h 
 #			configuracion.h 
@@ -124,7 +149,7 @@ include_directories(
 
 
 # generate rules for building source files from the resources
-QT4_WRAP_UI(bulmalib_UIS_H ${bulmalib_UIS})
+QT4_WRAP_UI(bulmalib_UIS_H ${bulmalib_UIS} OPTIONS -tr QObject::trUtf8)
 QT4_WRAP_CPP(bulmalib_MOC_SRCS ${bulmalib_MOCS})
 QT4_ADD_RESOURCES(bulmalib_RCC_SRCS ${bulmalib_RCCS})
 
@@ -148,6 +173,8 @@ set_target_properties( bulmalib PROPERTIES
 target_link_libraries( bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES} )
 
 install_targets(/lib bulmalib)
+install (FILES ${bulmalib_HDRS} DESTINATION include)
+
 
 # TRANSLATIONS += bulmalib_es.ts 
 #                 bulmalib_ca.ts 

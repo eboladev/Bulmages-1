@@ -104,7 +104,7 @@ include_directories(
 #
 
 # generate rules for building source files that moc generates
-QT4_WRAP_UI(bulmacont_UIS_H ${bulmacont_UIS})
+QT4_WRAP_UI(bulmacont_UIS_H ${bulmacont_UIS} OPTIONS -tr QObject::trUtf8)
 QT4_WRAP_CPP(bulmacont_MOC_SRCS ${bulmacont_MOCS})
 
 #QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
