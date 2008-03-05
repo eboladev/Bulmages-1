@@ -91,7 +91,6 @@ set(bulmalib_MOCS
 set (bulmalib_HDRS abreempresaview.h
 			busquedafecha.h
 			busquedaperiodo.h
-			calendario.h
 			configuracion.h
 			dbrecord.h
 			dialogchanges.h
@@ -107,7 +106,6 @@ set (bulmalib_HDRS abreempresaview.h
 			plugins.h
 			postgresiface2.h
 			qapplication2.h
-			qmcdatenav.h
 			qtable2.h
 			qtexteditdelegate.h
 			qworkspace2.h
