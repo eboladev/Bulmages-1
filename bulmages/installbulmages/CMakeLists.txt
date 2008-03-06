@@ -30,10 +30,9 @@ configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/dbmodels/actualizabulmafact.
 configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/dbmodels/creabulmacont.in creabulmacont @ONLY)
 configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/dbmodels/creabulmafact.in creabulmafact @ONLY)
 
-install(DIRECTORY ayuda ainteligentes bgtrml2pdf 
-				balances planescontables 
+install(DIRECTORY ainteligentes bgtrml2pdf 
+				canuales planescontables 
 				openreports icons 
-				formularios css
 				DESTINATION share/bulmages
  				PATTERN ".svn" EXCLUDE)
 
