@@ -30,15 +30,41 @@ configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/dbmodels/actualizabulmafact.
 configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/dbmodels/creabulmacont.in creabulmacont @ONLY)
 configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/dbmodels/creabulmafact.in creabulmafact @ONLY)
 
-install(DIRECTORY ainteligentes bgtrml2pdf 
-				canuales planescontables 
+install(DIRECTORY ainteligentes canuales planescontables 
 				openreports icons 
 				DESTINATION share/bulmages
  				PATTERN ".svn" EXCLUDE)
 
-install(DIRECTORY dbmodels/crear dbmodels/actualizar 
-				DESTINATION share/bulmages/dbmodels
- 				PATTERN ".svn" EXCLUDE)
+install(FILES bgtrml2pdf/bgtrml2pdf 
+		DESTINATION share/bulmages/bgtrml2pdf
+                PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
+                	    GROUP_EXECUTE GROUP_READ
+                            WORLD_READ WORLD_EXECUTE)
+
+file(GLOB f_rml bgtrml2pdf/*.py)
+install(FILES ${f_rml} 
+		DESTINATION share/bulmages/bgtrml2pdf)
+
+
+install(DIRECTORY dbmodels/actualizar
+  		  DESTINATION share/bulmages/dbmodels
+ 		  PATTERN ".svn" EXCLUDE)
+
+install(DIRECTORY dbmodels/crear/bulmafact dbmodels/crear/bulmatpv
+                                DESTINATION share/bulmages/dbmodels/crear
+                                PATTERN ".svn" EXCLUDE)
+
+file(GLOB f_dbmodels dbmodels/crear/bulmacont/*.sh)
+install(FILES ${f_dbmodels} 
+		DESTINATION share/bulmages/dbmodels/crear/bulmacont
+                PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
+                	    GROUP_EXECUTE GROUP_READ
+                            WORLD_READ WORLD_EXECUTE)
+
+file(GLOB f_dbsql dbmodels/crear/bulmacont/*.sql)
+install(FILES ${f_dbsql} 
+		DESTINATION share/bulmages/dbmodels/crear/bulmacont)
+
 
 install(DIRECTORY man DESTINATION share/
 				PATTERN ".svn" EXCLUDE)
