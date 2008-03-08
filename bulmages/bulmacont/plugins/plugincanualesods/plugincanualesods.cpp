@@ -27,7 +27,7 @@
 
 #include <cstdio>
 
-#include "pluginreportods.h"
+#include "plugincanualesods.h"
 #include "empresa.h"
 #include "funcaux.h"
 
@@ -37,20 +37,20 @@
 ///
 /**
 **/
-pluginReportODS::pluginReportODS()
+pluginCAnualesODS::pluginCAnualesODS()
 {
-    _depura ( "pluginReportODS::pluginReportODS", 0 );
-    _depura ( "END pluginReportODS::pluginReportODS", 0 );
+    _depura ( "pluginCAnualesODS::pluginCAnualesODS", 0 );
+    _depura ( "END pluginCAnualesODS::pluginCAnualesODS", 0 );
 }
 
 
 ///
 /**
 **/
-pluginReportODS::~pluginReportODS()
+pluginCAnualesODS::~pluginCAnualesODS()
 {
-    _depura ( "pluginReportODS::~pluginReportODS", 0 );
-    _depura ( "END pluginReportODS::~pluginReportODS", 0 );
+    _depura ( "pluginCAnualesODS::~pluginCAnualesODS", 0 );
+    _depura ( "END pluginCAnualesODS::~pluginCAnualesODS", 0 );
 }
 
 
@@ -113,9 +113,9 @@ OK, aqui poden haver passat 3 coses.
 \param cuenta
 \return
 **/
-Fixed pluginReportODS::saldoCuenta ( int cuenta )
+Fixed pluginCAnualesODS::saldoCuenta ( int cuenta )
 {
-    _depura ( "pluginReportODS::saldoCuenta", 0 );
+    _depura ( "pluginCAnualesODS::saldoCuenta", 0 );
     /// Ejercicio actual.
     QString query;
     cursor2 *cur;
@@ -133,7 +133,7 @@ Fixed pluginReportODS::saldoCuenta ( int cuenta )
 	else
 		mensajeInfo(trUtf8("Error con la base de datos"));
 
-    _depura ( "END pluginReportODS::saldoCuenta", 0 );
+    _depura ( "END pluginCAnualesODS::saldoCuenta", 0 );
     return resultado;
 }
 
@@ -143,9 +143,9 @@ Fixed pluginReportODS::saldoCuenta ( int cuenta )
 \param cuenta
 \return
 **/
-Fixed pluginReportODS::saldoCuentaAnt ( int cuenta )
+Fixed pluginCAnualesODS::saldoCuentaAnt ( int cuenta )
 {
-    _depura ( "pluginReportODS::saldoCuentaAnt", 0 );
+    _depura ( "pluginCAnualesODS::saldoCuentaAnt", 0 );
     /// Ejercicio anterior.
     QString query;
     cursor2 *cur;
@@ -162,7 +162,7 @@ Fixed pluginReportODS::saldoCuentaAnt ( int cuenta )
 	else
 		mensajeInfo(trUtf8("Error con la base de datos"));
 
-    _depura ( "END pluginReportODS::saldoCuentaAnt", 0 );
+    _depura ( "END pluginCAnualesODS::saldoCuentaAnt", 0 );
     return resultado;
 }
 
@@ -172,9 +172,9 @@ Fixed pluginReportODS::saldoCuentaAnt ( int cuenta )
 /**
 \return
 **/
-void pluginReportODS::formDatosBalance(CAnuales tipus)
+void pluginCAnualesODS::formDatosBalance(CAnuales tipus)
 {
-    _depura ( "pluginReportODS::formDatosBalance", 0 );
+    _depura ( "pluginCAnualesODS::formDatosBalance", 0 );
     int resultado;
 
     datosView *dv = new datosView ( 0 );
@@ -209,7 +209,7 @@ void pluginReportODS::formDatosBalance(CAnuales tipus)
 
     /// Generamos el balance
     balanceSituacionODS(tipus);
-    _depura ( "END pluginReportODS::formDatosBalance", 0 );
+    _depura ( "END pluginCAnualesODS::formDatosBalance", 0 );
 }
 
 
@@ -223,9 +223,9 @@ void pluginReportODS::formDatosBalance(CAnuales tipus)
 ///
 /**
 **/
-void pluginReportODS::balanceSituacionODS(CAnuales tipus)
+void pluginCAnualesODS::balanceSituacionODS(CAnuales tipus)
 {
-    _depura ( "pluginReportODS::balanceSituacionODS", 0 );
+    _depura ( "pluginCAnualesODS::balanceSituacionODS", 0 );
     /// Se genera el Balance de Situacion en formato ODS (Hoja de calculo OpenOffice.org).
 
     /// BUG: Se necesita usar .toQString('.') porque sino los decimales no
@@ -282,7 +282,7 @@ void pluginReportODS::balanceSituacionODS(CAnuales tipus)
     system ( cadena.toAscii() );
     cadena = "oocalc " + confpr->valor ( CONF_DIR_USER ) + "canualesods.ods &";
     system ( cadena.toAscii() );
-    _depura ( "END pluginReportODS::balanceSituacionODS", 0 );
+    _depura ( "END pluginCAnualesODS::balanceSituacionODS", 0 );
 }
 
 //Cuentas Anuales Abreviadas Asociación Sin Lucro CAAASL
@@ -295,9 +295,9 @@ void pluginReportODS::balanceSituacionODS(CAnuales tipus)
     /**
     \param bcont
     **/
-    void pluginReportODS::inicializa ( Bulmacont *bcont )
+    void pluginCAnualesODS::inicializa ( Bulmacont *bcont )
 {
-    _depura ( "pluginReportODS::inicializa", 0 );
+    _depura ( "pluginCAnualesODS::inicializa", 0 );
     empresaact = bcont->empresaactual();
     conexionbase = empresaact->bdempresa();
     /// Creamos el men&uacute;.
@@ -349,7 +349,7 @@ void pluginReportODS::balanceSituacionODS(CAnuales tipus)
 
 	/// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bcont->menuBar() ->addMenu ( pPluginMenu );
-    _depura ( "END pluginReportODS::inicializa", 0 );
+    _depura ( "END pluginCAnualesODS::inicializa", 0 );
 }
 
 
@@ -360,7 +360,7 @@ void pluginReportODS::balanceSituacionODS(CAnuales tipus)
     void entryPoint ( Bulmacont *bcont )
 {
     _depura ( "Estoy dentro del plugin\n", 0 );
-    pluginReportODS *plug = new pluginReportODS();
+    pluginCAnualesODS *plug = new pluginCAnualesODS();
     plug->inicializa ( bcont );
     /// S&Oacute;LO A MODO DE EJEMPLO: se modifica el t&iacute;tulo de la ventana principal
     /// del programa para indicar que el plugin se ha cargado.
@@ -372,9 +372,9 @@ void pluginReportODS::balanceSituacionODS(CAnuales tipus)
 \param cuentaPositiva
 \return
 **/
-Fixed pluginReportODS::cuentaPositiva( Fixed valor )
+Fixed pluginCAnualesODS::cuentaPositiva( Fixed valor )
 {
-    _depura ( "pluginReportODS::cuentaPositiva", 0 );
+    _depura ( "pluginCAnualesODS::cuentaPositiva", 0 );
     /// Comprueba que sea un número positivo
     Fixed resultado;
     if (valor > Fixed("0.00"))
@@ -389,9 +389,9 @@ Fixed pluginReportODS::cuentaPositiva( Fixed valor )
 \param cuentaNegativa
 \return
 **/
-Fixed pluginReportODS::cuentaNegativa( Fixed valor )
+Fixed pluginCAnualesODS::cuentaNegativa( Fixed valor )
 {
-    _depura ( "pluginReportODS::cuentaNegativa", 0 );
+    _depura ( "pluginCAnualesODS::cuentaNegativa", 0 );
     /// Comprueba que sea un número negativo
     Fixed resultado;
     if (valor < Fixed("0.00"))
@@ -403,42 +403,42 @@ Fixed pluginReportODS::cuentaNegativa( Fixed valor )
 
 // CAnuales CAAASL, CAPGC07, CAPYMES08, CAPGC08, CAAPGC08}
 
-void pluginReportODS::balsitCAAASL ()
+void pluginCAnualesODS::balsitCAAASL ()
 {
 	CAnuales CA = CAAASL;
 	mensajeAdvertenciaPGC(CA);
 	formDatosBalance(CA);
 }
 
-void pluginReportODS::balsitCAPGC07 ()
+void pluginCAnualesODS::balsitCAPGC07 ()
 {
 	CAnuales CA = CAPGC07;
 	mensajeAdvertenciaPGC(CA);
 	formDatosBalance(CA);
 }
 
-void pluginReportODS::balsitCAPYMES08 ()
+void pluginCAnualesODS::balsitCAPYMES08 ()
 {
 	CAnuales CA = CAPYMES08;
 	mensajeAdvertenciaPGC(CA);
 	formDatosBalance(CA);
 }
 
-void pluginReportODS::balsitCAPGC08()
+void pluginCAnualesODS::balsitCAPGC08()
 {
 	CAnuales CA = CAPGC08;
 	mensajeAdvertenciaPGC(CA);
 	formDatosBalance(CA);
 }
 
-void pluginReportODS::balsitCAAPGC08()
+void pluginCAnualesODS::balsitCAAPGC08()
 {
 	CAnuales CA = CAAPGC08;
 	mensajeAdvertenciaPGC(CA);
 	formDatosBalance(CA);
 }
 
-void pluginReportODS::mensajeAdvertenciaPGC(CAnuales tipus)
+void pluginCAnualesODS::mensajeAdvertenciaPGC(CAnuales tipus)
 {
 //Cuentas Anuales Abreviadas Asociación Sin Lucro CAAASL
 //Cuentas Anuales Plan General Contable hasta 2007 CAPGC07
@@ -482,7 +482,7 @@ void pluginReportODS::mensajeAdvertenciaPGC(CAnuales tipus)
 ///
 /**
 **/
-QString pluginReportODS::cuentaAnualAsociancionSinLucro ()
+QString pluginCAnualesODS::cuentaAnualAsociancionSinLucro ()
 {
 	return QString::QString("\
 #!/usr/bin/python\n\
@@ -933,7 +933,7 @@ doc.save(\"canualesods.ods\")\n");
 ///
 /**
 **/
-QString pluginReportODS::cuentaAnualCAPGC07()
+QString pluginCAnualesODS::cuentaAnualCAPGC07()
 {
 	return QString::QString("\
 #!/usr/bin/python\n\
@@ -1859,7 +1859,7 @@ doc.save(\"canualesods.ods\")\n");
 /**
 **/
 
-QString pluginReportODS::cuentaAnualCAPYMES08()
+QString pluginCAnualesODS::cuentaAnualCAPYMES08()
 {
 	return QString::QString("\
 #!/usr/bin/python\n\
@@ -2374,7 +2374,7 @@ doc.save(\"canualesods.ods\")\n");
 /**
 **/
 
-QString pluginReportODS::cuentaAnualCAAPGC08()
+QString pluginCAnualesODS::cuentaAnualCAAPGC08()
 {
 	return QString::QString("\
 #!/usr/bin/python\n\
@@ -3024,7 +3024,7 @@ doc.save(\"canualesods.ods\")\n");
 /**
 **/
 
-QString pluginReportODS::cuentaAnualCAPGC08()
+QString pluginCAnualesODS::cuentaAnualCAPGC08()
 {
 	return QString::QString("\
 #!/usr/bin/python\n\

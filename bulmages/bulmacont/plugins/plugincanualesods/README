@@ -1,7 +1,10 @@
 Plugin de Cuentas Anuales 
 =========================
 
-(C) 2008 Adelaida Clavaguera-Leopold Palomo.
+(c) 2008 Adelaida Clavaguera
+(c) 2008 Leopold Palomo.
+(c) 2006 Fco. Javier M. C.   
+(c) 2005 Tomeu Borras 
 Software Bajo Licencia G.P.L. (Vea el archivo COPYNG adjunto)
 
 
@@ -20,17 +23,30 @@ PGC Anterior 2008
         Cuentas A. Abreviadas Sin Lucro
 
 
-El formato de salida es ods. Esta basado en el plugincanualesods.
+El formato de salida es ods. 
 
-Compilacion
+Historia
+========
+
+Esta basado en el plugincanualesods, creado por Fco. Javier a partir de un
+código de Tomeu. A partir de esto primero creamos (AC i LP) el caaslods, que
+era las cuentas anuales para las asociaciones sin lucro. Luego creamos
+reportods donde integramos, canuales y caaslods y añadimos el resto de
+cuentas anuales que existen publicadas en el BOE. 
+
+Entonces, viendo que reportods hacia lo mismo que los otros dos, se decide
+substituir canuales por reportods intedrando en un nuevo canuales todas las
+cuentas anuales.
+
+Compilación
 ===========
 
 El plugin se compilará con el resto de bulmages con el nombre
-libpluginreportods.so
+libplugincanualesods.so
 
 
 
-Instalacion
+Instalación
 ===========
 
 Configure la directiva CONF_PLUGINS_BULMACONT para que contenga la llamada 

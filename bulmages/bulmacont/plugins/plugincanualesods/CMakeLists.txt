@@ -24,7 +24,7 @@
 ###########################################
 # plugin#################
 
-set (plugin pluginreportods)
+set (plugin plugincanualesods)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)

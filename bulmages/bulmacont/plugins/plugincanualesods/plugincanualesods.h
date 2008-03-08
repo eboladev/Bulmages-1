@@ -19,8 +19,8 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef PLUGINREPORTODS_H
-#define PLUGINREPORTODS_H
+#ifndef PLUGINCANUALESODS_H
+#define PLUGINCANUALESODS_H
 
 #ifdef Q_WS_WIN
 # define MY_EXPORT __declspec(dllexport)
@@ -55,7 +55,7 @@ extern QApplication2 *theApp;
 enum CAnuales {CAAASL, CAPGC07, CAPYMES08, CAPGC08, CAAPGC08};
 
 
-class pluginReportODS : public QObject
+class pluginCAnualesODS : public QObject
 {
     Q_OBJECT
 
@@ -81,8 +81,8 @@ public:
     postgresiface2 *conexionbase;
 
 public:
-    pluginReportODS();
-    ~pluginReportODS();
+    pluginCAnualesODS();
+    ~pluginCAnualesODS();
     void inicializa ( Bulmacont * );
 
 public slots:
@@ -97,4 +97,4 @@ public slots:
 };
 
 
-#endif //PLUGINREPORTODS_H
+#endif //PLUGINCANUALESODS_H
