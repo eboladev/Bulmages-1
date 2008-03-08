@@ -2,9 +2,12 @@ Source: bulmages
 Section: kde
 Priority: optional
 Maintainer: René Mérou <ochominutosdearco@gmail.com>
-Build-Depends: debhelper (>= 5.0.37.2), qt4-dev-tools(>= 4.1.4), libqt4-qt3support(>= 4.1.4), libqt4-dev, python, python-support (>= 0.3), libmysqlclient15-dev, libsqlite0-dev, quilt
-Standards-Version: 3.7.2
+Uploaders: Tomeu Borràs Riera <tborras@conetxcia.com>, Miguel Gea Milvaques <xerakko@debian.org>, Leopold Palomo Avellaneda <leo@alaxarxa.net>
+Build-Depends: debhelper (>= 5.0.37.2), qt4-dev-tools(>= 4.1.4), libqt4-qt3support(>= 4.1.4), libqt4-dev, python,  python-support (>= 0.3), libmysqlclient15-dev, libsqlite0-dev, quilt, cmake (>=2.4.8)
+Standards-Version: 3.7.3
 Homepage: http://www.iglues.org
+XS-Vcs-Svn: svn://svn.berlios.de/bulmages/trunk/debian
+XS-Vcs-Browser: http://svn.berlios.de/wsvn/bulmages/trunk/debian/
 
 Package: bulmages
 Architecture: any
@@ -15,17 +18,6 @@ Description: Accounting and invoicing programs for Spanish little businesses
  program (bulmafact), administration programs, and documentation.
  .
  This program is made in an open community, you are welcome to join us.
-
-Package: bulmages-plugins
-Architecture: any
-Depends: ${shlibs:Depends}, bulmages (>= 0.10.0)
-Description: plugins collection for Bulmages.
- Provides a optional plugin collection for bulmages, bulmacont, and bulmafact. 
- Some of them need a patched database, so read the README file.
- .
- Bulmages is an accounting and invoicing programs for Spanish little business. It
- includes an accounting program (bulmacont), an invoicing program (bulmafact),
- administration programs and documentation.
 
 Package: bulmages-admin
 Architecture: any
@@ -45,7 +37,7 @@ Depends: ${shlibs:Depends}, python2.4-imaging, kpdf, python
 Description: Bulmages invoicing and accounting, config and common stuff
  The config file bulmages.conf for all the bulmages programs.
 
-Package: bulmages-docs
+Package: bulmages-doc
 Section: doc
 Architecture: all
 Depends: ${shlibs:Depends}
@@ -56,7 +48,7 @@ Description: Bulmages invoicing and accounting documentation files
 
 Package: bulmacont
 Architecture: any
-Depends: ${shlibs:Depends},python-reportlab, python, postgresql-client (>= 8.1.0), bulmages-admin (>= 0.5.9), bulmages-common (>= 0.5.9)
+Depends: ${shlibs:Depends}, python-reportlab, python, postgresql-client (>= 8.1.0), bulmages-admin (>= 0.5.9), bulmages-common (>= 0.5.9)
 Recommends: bulmages-servers
 Description: Spanish accounting program
  This package helps with the accounting task for small or medium sized 
@@ -66,13 +58,25 @@ Description: Spanish accounting program
 
 Package: bulmafact
 Architecture: any
-Depends: ${shlibs:Depends},python-reportlab, python, postgresql-client (>= 8.1.0), bulmages-admin (>= 0.5.9), bulmages-common (>= 0.5.9)
+Depends: ${shlibs:Depends}, python-reportlab, python, postgresql-client (>= 8.1.0), bulmages-admin (>= 0.5.9), bulmages-common (>= 0.5.9)
 Recommends: bulmages-servers
 Description: Spanish invoicing program
  This package helps to manage the invoicing of small or medium sized businesses
  in Spain.
  .
  This program is made in an open community, you are welcome to join us.
+
+Package: bulmatpv
+Architecture: any
+Depends: ${shlibs:Depends}, python-reportlab, python, postgresql-client (>= 8.1.0), bulmages-common (>= 0.5.9)
+Recommends: bulmages-admin, bulmages-servers
+Description: Spanish invoicing program
+ This package contains a Point of sale (POS) program for a small or medium 
+ sized businesses in Spain.
+ .
+ This program is made in an open community, you are welcome to join us.
+
+
 
 Package: bulmages-servers
 Architecture: all
@@ -86,9 +90,8 @@ Description: Spanish accounting program server
  .
  This program is made in an open community, you are welcome to join us.
 
-Package: libbulmalib1-dev
-Provides: libbulmalib-1-dev
-Conflicts: libbulmalib-1-dev,libbulmalib
+Package: libbulmalib0.11-dev
+Conflicts: libbulmalib-1-dev,libbulmalib0
 Section: libdevel
 Architecture: any
 Depends: libbulmalib1, ${shlibs:Depends}
@@ -98,9 +101,8 @@ Description: bulmages headers for development
  In this package you can find all files needed for a developer
  environment (Headers, plus shared library).
 
-Package: libbulmalib1
-Provides: libbulmalib-1
-Conflicts: libbulmalib-1,libbulmalib
+Package: libbulmalib0.11
+Conflicts: libbulmalib-1,libbulmalib0
 Section: libs
 Architecture: any
 Depends: ${shlibs:Depends}
@@ -109,3 +111,36 @@ Description: bulmages headers (runtime)
  .
  In this package you can find the shared library, necessary for
  execution environments.
+
+Package: bulmacont-plugins
+Architecture: any
+Depends: ${shlibs:Depends}, bulmacont (>= 0.11.0), python-ooolib
+Description: plugins collection for Bulmages.
+ Provides a optional plugin collection for bulmacont. 
+ Some of them need a patched database, so read the README file.
+ .
+ Bulmages is an accounting and invoicing programs for Spanish little business. It
+ includes an accounting program (bulmacont), an invoicing program (bulmafact),
+ administration programs and documentation.
+
+Package: bulmafact-plugins
+Architecture: any
+Depends: ${shlibs:Depends}, bulmafact (>= 0.11.0)
+Description: plugins collection for Bulmafact.
+ Provides a optional plugin collection for bulmafact. 
+ Some of them need a patched database, so read the README file.
+ .
+ Bulmages is an accounting and invoicing programs for Spanish little business. It
+ includes an accounting program (bulmacont), an invoicing program (bulmafact),
+ administration programs and documentation.
+
+Package: bulmatpv-plugins
+Architecture: any
+Depends: ${shlibs:Depends}, bulmatpv (>= 0.11.0)
+Description: plugins collection for Bulmatpv.
+ Provides a optional plugin collection for bulmatpv. 
+ Some of them need a patched database, so read the README file.
+ .
+ Bulmages is an accounting and invoicing programs for Spanish little business. It
+ includes an accounting program (bulmacont), an invoicing program (bulmafact),
+ administration programs and documentation.

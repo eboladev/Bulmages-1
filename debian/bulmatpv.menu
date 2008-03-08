@@ -1,0 +1,4 @@
+?package(bulmatpv):needs="X11" section="Apps/Tools"\
+ longtitle="BulmaTpv: Point of Sale"\
+ title="BulmaTpv" command="/usr/bin/bulmatpv"\
+ icon="/usr/share/bulmages/icons/iconbulmatpv.xpm"

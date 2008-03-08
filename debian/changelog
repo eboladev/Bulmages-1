@@ -1,3 +1,22 @@
+bulmages (0.11+svn20080308+1) unstable; urgency=low
+  [Leopold Palomo Avellaneda]
+  * Added Uploaders: Miguel Gea Milvaques, Tomeu Borràs Riera and 
+    Leopold Palomo Avellaneda
+  * Working on the svn preparing the new upstream version
+  * Migrating to the new build system cmake (>=2.48). Added dependecy.
+  * Added new bulmatpv package
+  * Added new bulmatpv-plugins package
+  * Converted bulmages-plugins in two new packages: bulmacont-plugins and 
+    bulmafact-plugins.
+  * Added XS-Vcs-Svn and XS-Vcs-Browser fields in debian/control
+  * Added python-ooolib as dependency of bulmacont-plugins.
+  * Renamed bulmges-docs to bulmages-doc and repair the mistake with 
+    the dirs. Closes: #436131
+  * New repackaging schema. Closes: #456880. Closes: #458850
+  * Corrected mispelled error in menu. Closes: #428514. Closes : #428516.
+  
+ -- Leopold Palomo Avellaneda <leo@alaxarxa.net>  Mon, 03 Mar 2008 20:47:49 +0100
+
 bulmages (0.10.0-1) unstable; urgency=low
 
   [Miguel Gea Milvaques]

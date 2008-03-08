@@ -10,8 +10,8 @@
 export DH_VERBOSE=1
 
 # shared library versions, option 1
-version=1.0.10.0
-major=1
+#version=0.11~svn2389
+#major=1
 
 
 CFLAGS = -Wall -g
@@ -25,19 +25,25 @@ endif
 configure: configure-stamp
 configure-stamp:
 	dh_testdir
-	tar xzf bulmages-stable.tar.gz
-	mv bulmages-stable bulmages
-	$(MAKE) -f /usr/share/quilt/quilt.make patch
+	#This part should be looked when prepare the relase
+	#tar xzf bulmages-stable.tar.gz
+	#mv bulmages-stable bulmages
+	#$(MAKE) -f /usr/share/quilt/quilt.make patch
 
 	# Add here commands to configure the package.
-	( cd bulmages; qmake-qt4 -recursive)
-	( cd bulmages/bulmalib; qmake-qt4 -recursive )
-	( cd bulmages/bulmalib/src; qmake-qt4 -recursive )
-	( cd bulmages/bulmalib/plugins; qmake-qt4 )
-	( cd bulmages/bulmafact/plugins ; qmake-qt4 )
-	( cd bulmages/bulmafact/src; qmake-qt4 )
-	( cd bulmages/bulmacont/src; qmake-qt4 )
-	( cd bulmages/bulmacont/plugins; qmake-qt4 )
+# 	( cd bulmages; qmake-qt4 -recursive)
+# 	( cd bulmages/bulmalib; qmake-qt4 -recursive )
+# 	( cd bulmages/bulmalib/src; qmake-qt4 -recursive )
+# 	( cd bulmages/bulmalib/plugins; qmake-qt4 )
+# 	( cd bulmages/bulmafact/plugins ; qmake-qt4 )
+# 	( cd bulmages/bulmafact/src; qmake-qt4 )
+# 	( cd bulmages/bulmacont/src; qmake-qt4 )
+# 	( cd bulmages/bulmacont/plugins; qmake-qt4 )
+
+	cd bulmages; mkdir build.debian; cd build.debian; cmake ../ -DCMAKE_INSTALL_PREFIX=/usr \
+	-DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed" \
+	-DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed" \
+	-DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed";
 
 	touch configure-stamp
 
@@ -48,7 +54,7 @@ build-stamp: configure-stamp
 	dh_testdir
 
 	# Add here commands to compile the package.
-	cd bulmages; $(MAKE) -j2
+	cd bulmages/build.debian; $(MAKE) -j2 VERBOSE=1;
 	#dh_install bulmages/installbulmages/libbulmalib.so.$(version) \
 	#	debian/tmp/usr/lib ;
 	# (cd debian/tmp/usr/lib ; ln -sf libbulmalib.so.$(version) \
@@ -63,8 +69,9 @@ clean:
 	rm -f build-stamp configure-stamp
 
 #	Add here commands to clean up after the build process.
-	[ ! -d bulmages ] || rm -Rf bulmages
-	$(MAKE) -f /usr/share/quilt/quilt.make unpatch
+	-rm -rf bulmages/build.debian
+# 	[ ! -d bulmages ] || rm -Rf bulmages
+# 	$(MAKE) -f /usr/share/quilt/quilt.make unpatch
 	dh_clean 
 
 install: build
@@ -74,107 +81,12 @@ install: build
 	dh_clean -k 
 	dh_installdirs
 
-	dh_installdirs -pbulmages-common  usr/share/bulmages
-	dh_installdirs -pbulmages-common  usr/share/bulmages/dbmodels
-	#dh_installdirs -pbulmages-server usr/share/dbconfig-common/data/bulmacont-server/install
-	#dh_installdirs -pbulmages-server usr/share/dbconfig-common/data/bulmafact-server/install
-
-	dh_installdirs 	-pbulmages-docs 	usr/share/bulmages/docs	
-	dh_install 	-pbulmages-docs      	bulmages/doc/* usr/share/bulmages/docs
-
-	dh_install 	-plibbulmalib1   bulmages/installbulmages/libbulmalib*.so usr/lib/
-	dh_install 	-plibbulmalib1-dev   bulmages/bulmalib/*.h usr/include/
-	dh_install 	-plibbulmalib1       bulmages/installbulmages/libbulmalib*.so.* usr/lib/
+	# Add here commands to install the package into debian/tmp
+	cd bulmages/build.debian; $(MAKE) install DESTDIR=$(CURDIR)/debian/tmp
 	
-	dh_install 	-pbulmages-common  bulmages/installbulmages/*.jpg usr/share/bulmages
-	dh_install 	-pbulmages-common  bulmages/installbulmages/*.png usr/share/bulmages
-	dh_install 	-pbulmages-common  bulmages/installbulmages/rev-* usr/share/bulmages
-	dh_install 	-pbulmages-common  bulmages/installbulmages/dbmodels usr/share/bulmages
-	dh_install 	-pbulmages-common  bulmages/installbulmages/ayuda usr/share/bulmages
-	dh_install 	-pbulmages-common  bulmages/installbulmages/css usr/share/bulmages
-	dh_install 	-pbulmages-common  bulmages/installbulmages/icons/*.png usr/share/bulmages
+	#####################
+	#here put the install files
 
-	dh_install 	-pbulmafact bulmages/installbulmages/icons/iconbulmafact.xpm\
-					usr/share/bulmages/icons/
-	dh_install 	-pbulmacont bulmages/installbulmages/icons/iconbulmacont.xpm\
-					usr/share/bulmages/icons/
-	dh_install 	-pbulmages-common  bulmages/installbulmages/traducciones usr/share/bulmages
-	dh_install 	-pbulmages-common  bulmages/installbulmages/formularios usr/share/bulmages
-	dh_install 	-pbulmages-common  bulmages/installbulmages/ainteligentes usr/share/bulmages
-	dh_install 	-pbulmages-common  bulmages/installbulmages/balances usr/share/bulmages
-	dh_install 	-pbulmages-common  bulmages/installbulmages/openreports usr/share/bulmages
-	dh_install 	-pbulmages-common  bulmages/installbulmages/bulmages.conf etc/bulmages
-	dh_install 	-pbulmages-common  bulmages/installbulmages/bulmafact.conf etc/bulmages
-	dh_install 	-pbulmages-common  bulmages/installbulmages/bulmacont.conf etc/bulmages
-
-	# instala el bgtrml2pdf
-	dh_installdirs 	-pbulmages-common usr/share/bulmages/bgtrml2pdf
-	dh_install 	-pbulmages-common bulmages/installbulmages/bgtrml2pdf/bgtrml2pdf usr/bin
-	dh_install 	-pbulmages-common bulmages/installbulmages/bgtrml2pdf/bgcolor.py usr/share/bulmages/bgtrml2pdf
-	dh_install 	-pbulmages-common bulmages/installbulmages/bgtrml2pdf/bg__init__.py  usr/share/bulmages/bgtrml2pdf
-	dh_install 	-pbulmages-common bulmages/installbulmages/bgtrml2pdf/bgutils.py usr/share/bulmages/bgtrml2pdf
-	dh_installman 	-pbulmages-common debian/bgtrml2pdf.1
-	dh_installman 	-pbulmages-servers debian/creabulmafact.1
-	dh_installman 	-pbulmages-servers debian/creabulmacont.1
-
-
-
-	#dh_install    	-pbulmages-server debian/database/bulmacont/pgsql usr/share/dbconfig-common/data/bulmacont-server/install
-	#dh_install    	-pbulmages-server debian/database/bulmacont/install-dbadmin/pgsql usr/share/dbconfig-common/data/bulmacont-server/install-dbadmin
-	dh_install     	-pbulmages-servers debian/bulmacont-server-install usr/sbin
-	dh_install 	-pbulmages-servers debian/creabulmacont usr/bin
-	dh_install 	-pbulmages-servers debian/creabulmafact usr/bin
-
-	dh_installman  	-pbulmages-servers debian/bulmacont-server-install.1
-
-	dh_install     	-pbulmacont bulmages/installbulmages/bulmacont usr/bin
-	dh_installman  	-pbulmacont debian/bulmacont.1
-	dh_installdirs 	-pbulmacont usr/lib/bulmages/plugins
-	
-	# Install plugins
-	
-	# Disabled temporally.
-	#dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libadocumental.so usr/lib/bulmages/plugins
-	
-	# libbulmalib plugins 
-	dh_install     	-plibbulmalib1 bulmages/installbulmages/plugins/libpluginclipboardbf.so usr/lib/bulmages/plugins
-	dh_install     	-plibbulmalib1 bulmages/installbulmages/plugins/libpluginsubformods.so usr/lib/bulmages/plugins
-	dh_install     	-plibbulmalib1 bulmages/installbulmages/plugins/libpluginsubformsxc.so usr/lib/bulmages/plugins
-	
-	# Optional plugins	
-	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libcorrector.so usr/lib/bulmages/plugins
-	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libplugininformeclientes.so usr/lib/bulmages/plugins
-	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libcomercialbf.so usr/lib/bulmages/plugins
-	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libefacturabf.so usr/lib/bulmages/plugins
-	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libimpresionesmultiples.so usr/lib/bulmages/plugins
-	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libmypluginbf.so usr/lib/bulmages/plugins
-	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libplugin_tc_articulos.so usr/lib/bulmages/plugins
-	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libpluginalmacen.so usr/lib/bulmages/plugins
-	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libpluginasterisk.so usr/lib/bulmages/plugins
-	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libpluginbarcodeopen.so usr/lib/bulmages/plugins
-	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libplugincatalogo.so usr/lib/bulmages/plugins
-	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libplugincontratos.so usr/lib/bulmages/plugins
-	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libplugincuadrante.so usr/lib/bulmages/plugins
-	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libplugininformeclientes.so usr/lib/bulmages/plugins
-	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libplugininventario.so usr/lib/bulmages/plugins
-	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libpluginmailbf.so usr/lib/bulmages/plugins
-	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libpluginpromedios.so usr/lib/bulmages/plugins
-	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libpluginq19.so usr/lib/bulmages/plugins
-	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libplugintipostrabajo.so usr/lib/bulmages/plugins
-	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libplugintrazabilidad.so usr/lib/bulmages/plugins
-	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libpluginvehiculosbf.so usr/lib/bulmages/plugins
-	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libtarifasbf.so usr/lib/bulmages/plugins
-	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libticket.so usr/lib/bulmages/plugins
-
-	#dh_install    	-pbulmages-server debian/database/bulmafact/pgsql usr/share/dbconfig-common/data/bulmafact-server/install
-	#dh_install    	-pbulmages-server debian/database/bulmafact/install-dbadmin/pgsql usr/share/dbconfig-common/data/bulmafact-server/install-dbadmin
-
-	dh_install     	-pbulmages-servers debian/bulmafact-server-install usr/sbin
-	dh_installman  	-pbulmages-servers debian/bulmafact-server-install.1
-	dh_installman  	-pbulmafact debian/bulmafact.1
-	dh_install     	-pbulmafact bulmages/installbulmages/bulmafact usr/bin
-	
-	dh_install      -pbulmages bulmages/installbulmages/bulmages usr/bin
 	dh_compress
 
 
@@ -189,13 +101,21 @@ binary-arch: build install
 	dh_installchangelogs 
 	dh_installdocs debian/README.*Debian 
 	dh_installexamples
-
+	dh_install --sourcedir=debian/tmp
 	dh_pysupport
-	dh_install 
+#	dh_install 
 
 	#dh_installdebconf	
 
 	dh_installmenu
+	dh_installman 	-pbulmages-common debian/bgtrml2pdf.1
+	dh_installman 	-pbulmages-servers debian/creabulmafact.1
+	dh_installman 	-pbulmages-servers debian/creabulmacont.1
+	dh_installman  	-pbulmages-servers debian/bulmacont-server-install.1
+	dh_installman  	-pbulmages-servers debian/bulmafact-server-install.1
+	dh_installman  	-pbulmacont debian/bulmacont.1
+	dh_installman  	-pbulmafact debian/bulmafact.1
+	
 	dh_installman
 	dh_link
 	dh_strip
@@ -211,3 +131,103 @@ binary-arch: build install
 
 binary: binary-indep binary-arch
 .PHONY: build clean binary-indep binary-arch binary install configure
+
+
+
+##################################################################################
+# 	
+# 	dh_install 	-pbulmafact bulmages/installbulmages/icons/iconbulmafact.xpm\
+# 					usr/share/bulmages/icons/
+# 	dh_install 	-pbulmacont bulmages/installbulmages/icons/iconbulmacont.xpm\
+# 					usr/share/bulmages/icons/
+
+
+# 	dh_install 	-pbulmages-common  bulmages/installbulmages/traducciones usr/share/bulmages
+# 	dh_install 	-pbulmages-common  bulmages/installbulmages/formularios usr/share/bulmages
+# 	dh_install 	-pbulmages-common  bulmages/installbulmages/ainteligentes usr/share/bulmages
+# 	dh_install 	-pbulmages-common  bulmages/installbulmages/balances usr/share/bulmages
+# 	dh_install 	-pbulmages-common  bulmages/installbulmages/openreports usr/share/bulmages
+# 	dh_install 	-pbulmages-common  bulmages/installbulmages/bulmages.conf etc/bulmages
+# 	dh_install 	-pbulmages-common  bulmages/installbulmages/bulmafact.conf etc/bulmages
+# 	dh_install 	-pbulmages-common  bulmages/installbulmages/bulmacont.conf etc/bulmages
+# 
+# 	# instala el bgtrml2pdf
+# 	dh_installdirs 	-pbulmages-common usr/share/bulmages/bgtrml2pdf
+# 	dh_install 	-pbulmages-common bulmages/installbulmages/bgtrml2pdf/bgtrml2pdf usr/bin
+# 	dh_install 	-pbulmages-common bulmages/installbulmages/bgtrml2pdf/bgcolor.py usr/share/bulmages/bgtrml2pdf
+# 	dh_install 	-pbulmages-common bulmages/installbulmages/bgtrml2pdf/bg__init__.py  usr/share/bulmages/bgtrml2pdf
+# 	dh_install 	-pbulmages-common bulmages/installbulmages/bgtrml2pdf/bgutils.py usr/share/bulmages/bgtrml2pdf
+# 
+# 
+# 
+# 	#dh_install    	-pbulmages-server debian/database/bulmacont/pgsql usr/share/dbconfig-common/data/bulmacont-server/install
+# 	#dh_install    	-pbulmages-server debian/database/bulmacont/install-dbadmin/pgsql usr/share/dbconfig-common/data/bulmacont-server/install-dbadmin
+# 	dh_install     	-pbulmages-servers debian/bulmacont-server-install usr/sbin
+# 	dh_install 		-pbulmages-servers debian/creabulmacont usr/bin
+# 	dh_install 		-pbulmages-servers debian/creabulmafact usr/bin
+# 
+# 
+# 	dh_install     	-pbulmacont bulmages/installbulmages/bulmacont usr/bin
+# 	dh_installdirs 	-pbulmacont usr/lib/bulmages/plugins
+# 	
+# 	# Install plugins
+# 	
+# 	# Disabled temporally.
+# 	#dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libadocumental.so usr/lib/bulmages/plugins
+# 	
+# 	# libbulmalib plugins 
+# 	dh_install     	-plibbulmalib1 bulmages/installbulmages/plugins/libpluginclipboardbf.so usr/lib/bulmages/plugins
+# 	dh_install     	-plibbulmalib1 bulmages/installbulmages/plugins/libpluginsubformods.so usr/lib/bulmages/plugins
+# 	dh_install     	-plibbulmalib1 bulmages/installbulmages/plugins/libpluginsubformsxc.so usr/lib/bulmages/plugins
+# 	
+# 	# Optional plugins	
+# 	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libcorrector.so usr/lib/bulmages/plugins
+# 	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libplugininformeclientes.so usr/lib/bulmages/plugins
+# 	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libcomercialbf.so usr/lib/bulmages/plugins
+# 	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libefacturabf.so usr/lib/bulmages/plugins
+# 	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libimpresionesmultiples.so usr/lib/bulmages/plugins
+# 	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libmypluginbf.so usr/lib/bulmages/plugins
+# 	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libplugin_tc_articulos.so usr/lib/bulmages/plugins
+# 	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libpluginalmacen.so usr/lib/bulmages/plugins
+# 	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libpluginasterisk.so usr/lib/bulmages/plugins
+# 	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libpluginbarcodeopen.so usr/lib/bulmages/plugins
+# 	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libplugincatalogo.so usr/lib/bulmages/plugins
+# 	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libplugincontratos.so usr/lib/bulmages/plugins
+# 	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libplugincuadrante.so usr/lib/bulmages/plugins
+# 	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libplugininformeclientes.so usr/lib/bulmages/plugins
+# 	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libplugininventario.so usr/lib/bulmages/plugins
+# 	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libpluginmailbf.so usr/lib/bulmages/plugins
+# 	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libpluginpromedios.so usr/lib/bulmages/plugins
+# 	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libpluginq19.so usr/lib/bulmages/plugins
+# 	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libplugintipostrabajo.so usr/lib/bulmages/plugins
+# 	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libplugintrazabilidad.so usr/lib/bulmages/plugins
+# 	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libpluginvehiculosbf.so usr/lib/bulmages/plugins
+# 	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libtarifasbf.so usr/lib/bulmages/plugins
+# 	dh_install     	-pbulmages-plugins bulmages/installbulmages/plugins/libticket.so usr/lib/bulmages/plugins
+# 
+# 	#dh_install    	-pbulmages-server debian/database/bulmafact/pgsql usr/share/dbconfig-common/data/bulmafact-server/install
+# 	#dh_install    	-pbulmages-server debian/database/bulmafact/install-dbadmin/pgsql usr/share/dbconfig-common/data/bulmafact-server/install-dbadmin
+# 
+# 	dh_install     	-pbulmages-servers debian/bulmafact-server-install usr/sbin
+# 	dh_install     	-pbulmafact bulmages/installbulmages/bulmafact usr/bin
+# 	
+# 	dh_install      -pbulmages bulmages/installbulmages/bulmages usr/bin
+	
+	#bulmages-doc
+# 	dh_installdirs 	-pbulmages-doc 		usr/share/doc/bulmages-doc	
+# 	dh_install 	-pbulmages-doc      	usr/share/bulmages/doc/* usr/share/doc/bulmages-doc
+# 
+# 	#bulmages-common
+# 	dh_installdirs 	-pbulmages-common  usr/share/bulmages
+# 	dh_installdirs 	-pbulmages-common  usr/share/bulmages/dbmodels
+# 	dh_install 		-pbulmages-common  usr/share/bulmages/* usr/share/bulmages
+# # 
+# 	#libbulmalib0.11
+#  	dh_install 	-plibbulmalib0.11       usr/lib/libbulmalib*.so.* usr/lib/
+# 	dh_installdirs 	-plibbulmalib0.11 	usr/lib/bulmalib/
+# 	dh_install 	-plibbulmalib0.11       usr/lib/bulmalib/plugins  usr/lib/bulmalib/
+# 
+# 	dh_install 	-plibbulmalib0.11-dev   	usr/include/*.h usr/include/
+#  	dh_install 	-plibbulmalib0.11-dev   	usr/lib/libbulmalib*.so usr/lib/
+
+# 

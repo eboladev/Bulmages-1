@@ -1,2 +1,2 @@
-?package(bulmacont):needs="X11" section="Apps/Tools" longtitle="BulmaCont: accounting aplication" title="BulmaCont" command="/usr/bin/bulmacont" icon="/usr/share/bulmages/icons/iconbulmacont.xpm"
+?package(bulmacont):needs="X11" section="Apps/Tools" longtitle="BulmaCont: accounting application" title="BulmaCont" command="/usr/bin/bulmacont" icon="/usr/share/bulmages/icons/iconbulmacont.xpm"
 
