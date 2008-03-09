@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'bulmasetup.ui'
 #
-# Created: Mon Feb 25 20:46:02 2008
+# Created: Mon Mar  3 20:54:36 2008
 #      by: PyQt4 UI code generator 4.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -13,7 +13,7 @@ from PyQt4 import QtCore, QtGui
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(QtCore.QSize(QtCore.QRect(0,0,557,257).size()).expandedTo(MainWindow.minimumSizeHint()))
+        MainWindow.resize(QtCore.QSize(QtCore.QRect(0,0,557,372).size()).expandedTo(MainWindow.minimumSizeHint()))
 
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Policy(0),QtGui.QSizePolicy.Policy(0))
         sizePolicy.setHorizontalStretch(0)
@@ -23,12 +23,6 @@ class Ui_MainWindow(object):
 
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-
-        self.line = QtGui.QFrame(self.centralwidget)
-        self.line.setGeometry(QtCore.QRect(230,20,20,221))
-        self.line.setFrameShape(QtGui.QFrame.VLine)
-        self.line.setFrameShadow(QtGui.QFrame.Sunken)
-        self.line.setObjectName("line")
 
         self.label = QtGui.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(20,20,209,150))
@@ -58,9 +52,33 @@ class Ui_MainWindow(object):
         self.mui_crearbulmafact.setIcon(QtGui.QIcon("../images/png/bulmafact.png"))
         self.mui_crearbulmafact.setIconSize(QtCore.QSize(48,48))
         self.mui_crearbulmafact.setObjectName("mui_crearbulmafact")
+
+        self.label_2 = QtGui.QLabel(self.centralwidget)
+        self.label_2.setGeometry(QtCore.QRect(30,210,171,81))
+        self.label_2.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_2.setObjectName("label_2")
+
+        self.mui_salir = QtGui.QPushButton(self.centralwidget)
+        self.mui_salir.setGeometry(QtCore.QRect(470,330,75,24))
+        self.mui_salir.setObjectName("mui_salir")
+
+        self.line = QtGui.QFrame(self.centralwidget)
+        self.line.setGeometry(QtCore.QRect(230,20,20,331))
+        self.line.setFrameShape(QtGui.QFrame.VLine)
+        self.line.setFrameShadow(QtGui.QFrame.Sunken)
+        self.line.setObjectName("line")
+
+        self.mui_adminempresas = QtGui.QPushButton(self.centralwidget)
+        self.mui_adminempresas.setGeometry(QtCore.QRect(250,240,291,61))
+        self.mui_adminempresas.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.mui_adminempresas.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.mui_adminempresas.setIcon(QtGui.QIcon("../images/png/i_empresa.xpm"))
+        self.mui_adminempresas.setIconSize(QtCore.QSize(48,48))
+        self.mui_adminempresas.setObjectName("mui_adminempresas")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
+        QtCore.QObject.connect(self.mui_salir,QtCore.SIGNAL("released()"),MainWindow.close)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -68,4 +86,13 @@ class Ui_MainWindow(object):
         self.mui_crearusuario.setText(QtGui.QApplication.translate("MainWindow", "Nuevo Usuario", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_crearbulmacont.setText(QtGui.QApplication.translate("MainWindow", "Nueva Empresa de Contabilidad", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_crearbulmafact.setText(QtGui.QApplication.translate("MainWindow", "Nueva Empresa de Facturacion", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_2.setText(QtGui.QApplication.translate("MainWindow", "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+        "p, li { white-space: pre-wrap; }\n"
+        "</style></head><body style=\" font-family:\'Sans Serif\'; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;\">\n"
+        "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">BulmaSetup v 0.11</span></p>\n"
+        "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p>\n"
+        "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Administración de Bases</p>\n"
+        "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">de Datos para BulmaGés</p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_salir.setText(QtGui.QApplication.translate("MainWindow", "Salir", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_adminempresas.setText(QtGui.QApplication.translate("MainWindow", "Administrar Empresas Existentes", None, QtGui.QApplication.UnicodeUTF8))
 

@@ -6,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>557</width>
-    <height>257</height>
+    <height>372</height>
    </rect>
   </property>
   <property name="sizePolicy" >
@@ -21,19 +21,6 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget" >
-   <widget class="Line" name="line" >
-    <property name="geometry" >
-     <rect>
-      <x>230</x>
-      <y>20</y>
-      <width>20</width>
-      <height>221</height>
-     </rect>
-    </property>
-    <property name="orientation" >
-     <enum>Qt::Vertical</enum>
-    </property>
-   </widget>
    <widget class="QLabel" name="label" >
     <property name="geometry" >
      <rect>
@@ -134,8 +121,101 @@
      </size>
     </property>
    </widget>
+   <widget class="QLabel" name="label_2" >
+    <property name="geometry" >
+     <rect>
+      <x>30</x>
+      <y>210</y>
+      <width>171</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
+p, li { white-space: pre-wrap; }
+&lt;/style>&lt;/head>&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;">
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-weight:600;">BulmaSetup v 0.11&lt;/span>&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Administración de Bases&lt;/p>
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">de Datos para BulmaGés&lt;/p>&lt;/body>&lt;/html></string>
+    </property>
+    <property name="alignment" >
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="mui_salir" >
+    <property name="geometry" >
+     <rect>
+      <x>470</x>
+      <y>330</y>
+      <width>75</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Salir</string>
+    </property>
+   </widget>
+   <widget class="Line" name="line" >
+    <property name="geometry" >
+     <rect>
+      <x>230</x>
+      <y>20</y>
+      <width>20</width>
+      <height>331</height>
+     </rect>
+    </property>
+    <property name="orientation" >
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="mui_adminempresas" >
+    <property name="geometry" >
+     <rect>
+      <x>250</x>
+      <y>240</y>
+      <width>291</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="focusPolicy" >
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="layoutDirection" >
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="text" >
+     <string>Administrar Empresas Existentes</string>
+    </property>
+    <property name="icon" >
+     <iconset>../images/png/i_empresa.xpm</iconset>
+    </property>
+    <property name="iconSize" >
+     <size>
+      <width>48</width>
+      <height>48</height>
+     </size>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>mui_salir</sender>
+   <signal>released()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>503</x>
+     <y>402</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>372</x>
+     <y>392</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

@@ -10,6 +10,7 @@ from PyQt4 import *
 from nuevousuario import NuevoUsuario
 from nuevafacturacion import NuevaFacturacion
 from nuevacontabilidad import NuevaContabilidad
+from listempresas import ListEmpresas
 
 class HelloWindow(QtGui.QMainWindow, Ui_MainWindow):
     def __init__(self, *args):
@@ -27,6 +28,11 @@ class HelloWindow(QtGui.QMainWindow, Ui_MainWindow):
     def on_mui_crearbulmacont_released(self):
 	    win = NuevaContabilidad()
 	    win.exec_()
+	    
+    def on_mui_adminempresas_released(self):
+	    win = ListEmpresas()
+	    win.exec_()
+	    
 	    
 def main(args):
     app=QtGui.QApplication(args)
