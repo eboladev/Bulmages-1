@@ -2,11 +2,11 @@ import sys
 import os
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
-from modificarfacturacionbase import *
+from modificarcontabilidadbase import *
 from plugins import Plugins
 
 
-class ModificarFacturacion(QtGui.QDialog, Ui_ModificarFacturacionBase, Plugins):
+class ModificarContabilidad(QtGui.QDialog, Ui_ModificarContabilidadBase, Plugins):
     def __init__(self, database, parent = None):
         QtGui.QDialog.__init__(self,parent)
 	Plugins.__init__(self)
@@ -67,7 +67,7 @@ class ModificarFacturacion(QtGui.QDialog, Ui_ModificarFacturacionBase, Plugins):
 	return QString(self.process.readAllStandardOutput())
 
     def on_mui_actualizardatabase_released(self):
-	self.revisiones = ["revf-0.5.9.sql","revf-0.9.1.sql", "revf-0.9.3.sql", "revf-0.10.sql"]
+	self.revisiones = ["rev-0.9.1.sql", "rev-0.9.3.sql", "rev-0.10.sql", "rev-0.11.sql"]
 	#Parcheamos todo lo que hay que parchear
 	for self.parche in self.revisiones:
 		self.command = 'su postgres -c \"psql -t -f  /usr/share/bulmages/dbmodels/actualizar/' + self.parche + ' ' + self.database  + '\"'
@@ -107,7 +107,7 @@ class ModificarFacturacion(QtGui.QDialog, Ui_ModificarFacturacionBase, Plugins):
 	self.version = self.execQuery('SELECT valor FROM configuracion WHERE nombre = \'' + plugin +'\'').replace('\n','').replace(' ','')
 	if (self.version != ''):
 		return self.version
-	self.command = 'grep '+libreria+' /etc/bulmages/bulmafact_' + self.database + '.conf'
+	self.command = 'grep '+libreria+' /etc/bulmages/bulmacont_' + self.database + '.conf'
 	self.writecommand(self.command)
 	self.process.start(self.command)
 	self.process.waitForFinished(-1)
@@ -120,18 +120,18 @@ class ModificarFacturacion(QtGui.QDialog, Ui_ModificarFacturacionBase, Plugins):
     def buscaPlugins(self):
 	self.writecommand("Buscando Pluggins")
 
-	self.mui_plugins.setRowCount(len(self.pluginsbulmafact))
+	self.mui_plugins.setRowCount(len(self.pluginsbulmacont))
 	self.i = 0
-	while (self.i < len(self.pluginsbulmafact)):
-		self.versioninst = self.buscaPluginInstalado(self.pluginsbulmafact[self.i][3], self.pluginsbulmafact[self.i][1])
-		self.check = QTableWidgetItem(QString(self.pluginsbulmafact[self.i][0]))
+	while (self.i < len(self.pluginsbulmacont)):
+		self.versioninst = self.buscaPluginInstalado(self.pluginsbulmacont[self.i][3], self.pluginsbulmacont[self.i][1])
+		self.check = QTableWidgetItem(QString(self.pluginsbulmacont[self.i][0]))
 		self.check.setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
 		self.check.setCheckState(Qt.Unchecked)
 		if (self.versioninst != ''):
 			self.check.setCheckState(Qt.Checked)
 		self.mui_plugins.setItem(self.i, 0, self.check)
 		self.mui_plugins.setItem(self.i, 2, QTableWidgetItem(self.versioninst))
-		self.mui_plugins.setItem(self.i , 1 , QTableWidgetItem(self.pluginsbulmafact[self.i][2]))
+		self.mui_plugins.setItem(self.i , 1 , QTableWidgetItem(self.pluginsbulmacont[self.i][2]))
 		self.mui_plugins.setRowHeight(self.i, 50)
 		self.i = self.i + 1
 	
@@ -140,10 +140,10 @@ class ModificarFacturacion(QtGui.QDialog, Ui_ModificarFacturacionBase, Plugins):
 	self.writecommand('ACTUALIZANDO PLUGINS')
 	self.i = 0
 	while (self.i < self.mui_plugins.rowCount()):
-		self.writecommand('Tratando ' + self.pluginsbulmafact[self.i][0])
+		self.writecommand('Tratando ' + self.pluginsbulmacont[self.i][0])
 		if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
-			self.writecommand('Ha que actualizar ' + self.pluginsbulmafact[self.i][0])
-			self.command = 'su postgres -c \"psql -t -f  /usr/share/bulmages/dbmodels/actualizar/' + self.pluginsbulmafact[self.i][4] + '\"'
+			self.writecommand('Ha que actualizar ' + self.pluginsbulmacont[self.i][0])
+			self.command = 'su postgres -c \"psql -t -f  /usr/share/bulmages/dbmodels/actualizar/' + self.pluginsbulmacont[self.i][4] + '\"'
 			self.writecommand(self.command)
 			self.process.start(self.command)
 			self.process.waitForFinished(-1)
@@ -154,7 +154,7 @@ class ModificarFacturacion(QtGui.QDialog, Ui_ModificarFacturacionBase, Plugins):
     def on_mui_aceptar_released(self):
 	self.writecommand('ESCRIBIENDO CONFIGURACION')
 	self.writecommand("Escribiendo configuracion en /etc/bulmages")
-	self.file = QFile("/etc/bulmages/bulmafact_" + self.database + ".conf");
+	self.file = QFile("/etc/bulmages/bulmacont_" + self.database + ".conf");
 	if not(self.file.open(QIODevice.WriteOnly | QIODevice.Text)):
 		return;
 	self.out = QTextStream(self.file)
@@ -164,10 +164,10 @@ class ModificarFacturacion(QtGui.QDialog, Ui_ModificarFacturacionBase, Plugins):
 	
 	self.i = 0
 	while (self.i < self.mui_plugins.rowCount()):
-		self.writecommand('Tratando ' + self.pluginsbulmafact[self.i][0])
+		self.writecommand('Tratando ' + self.pluginsbulmacont[self.i][0])
 		if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
-			self.writecommand('Ha que actualizar ' + self.pluginsbulmafact[self.i][0])
-			self.out << self.terminador << self.pluginsbulmafact[self.i][1]
+			self.writecommand('Ha que actualizar ' + self.pluginsbulmacont[self.i][0])
+			self.out << self.terminador << self.pluginsbulmacont[self.i][1]
 			self.terminador = "; \\\n";
 		self.i = self.i +1
 	self.out << "\n"
@@ -175,7 +175,7 @@ class ModificarFacturacion(QtGui.QDialog, Ui_ModificarFacturacionBase, Plugins):
 
 def main(args):
     app=QtGui.QApplication(args)
-    win=ModificarFacturacion('bulmafact')
+    win=ModificarContabilidad('bulmacont')
     win.exec_()
     sys.exit(app.exec_())
 

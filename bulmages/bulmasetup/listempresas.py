@@ -4,6 +4,7 @@ from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 from listempresasbase import *
 from modificarfacturacion import ModificarFacturacion
+from modificarcontabilidad import ModificarContabilidad
 
 
 class ListEmpresas(QtGui.QDialog, Ui_ListEmpresasBase):
@@ -82,6 +83,9 @@ class ListEmpresas(QtGui.QDialog, Ui_ListEmpresasBase):
 	if (self.mui_listado.item(row,2).text() == QString('BulmaFact')):
 		self.fact = ModificarFacturacion(self.mui_listado.item(row,1).text())
 		self.fact.exec_()
+	if (self.mui_listado.item(row,2).text() == QString('BulmaCont')):
+		self.cont = ModificarContabilidad(self.mui_listado.item(row,1).text())
+		self.cont.exec_()
 
 def main(args):
     app=QtGui.QApplication(args)

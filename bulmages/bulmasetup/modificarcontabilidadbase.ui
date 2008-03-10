@@ -1,0 +1,182 @@
+<ui version="4.0" >
+ <class>ModificarContabilidadBase</class>
+ <widget class="QDialog" name="ModificarContabilidadBase" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>608</height>
+   </rect>
+  </property>
+  <property name="sizePolicy" >
+   <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="maximumSize" >
+   <size>
+    <width>800</width>
+    <height>608</height>
+   </size>
+  </property>
+  <property name="windowTitle" >
+   <string>Modificar Contabilidad</string>
+  </property>
+  <property name="windowIcon" >
+   <iconset>../../../../.designer/images/png/bulmafact.png</iconset>
+  </property>
+  <layout class="QGridLayout" >
+   <item row="0" column="0" >
+    <widget class="QLabel" name="label" >
+     <property name="text" >
+      <string>Nombre Empresa</string>
+     </property>
+     <property name="buddy" >
+      <cstring>mui_nomempresa</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1" colspan="2" >
+    <widget class="QLineEdit" name="mui_nomempresa" />
+   </item>
+   <item row="0" column="3" >
+    <widget class="QLabel" name="label_2" >
+     <property name="text" >
+      <string>Nombre Base de Datos</string>
+     </property>
+     <property name="buddy" >
+      <cstring>mui_nomdb</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="4" colspan="2" >
+    <widget class="QLineEdit" name="mui_nomdb" >
+     <property name="readOnly" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="2" >
+    <widget class="QLabel" name="label_3" >
+     <property name="text" >
+      <string>Version de la Base de Datos</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2" >
+    <widget class="QLineEdit" name="mui_databaserevision" >
+     <property name="readOnly" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="3" >
+    <widget class="QLabel" name="label_4" >
+     <property name="text" >
+      <string>Plugins Instalados</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="6" >
+    <widget class="QTableWidget" name="mui_plugins" >
+     <property name="alternatingRowColors" >
+      <bool>true</bool>
+     </property>
+     <column>
+      <property name="text" >
+       <string>Plugin</string>
+      </property>
+     </column>
+     <column>
+      <property name="text" >
+       <string>Descripcion</string>
+      </property>
+     </column>
+     <column>
+      <property name="text" >
+       <string>Version Instalada</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="3" >
+    <widget class="QCheckBox" name="mui_checkbox" >
+     <property name="text" >
+      <string>Ver Consola</string>
+     </property>
+     <property name="checked" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0" colspan="6" >
+    <widget class="QTextBrowser" name="mui_textBrowser" />
+   </item>
+   <item row="6" column="0" colspan="2" >
+    <widget class="QPushButton" name="mui_actualizardatabase" >
+     <property name="text" >
+      <string>Actualizar Base de Datos</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="2" >
+    <widget class="QPushButton" name="mui_hacerbackup" >
+     <property name="text" >
+      <string>Hacer copia de Seguridad</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="3" colspan="2" >
+    <widget class="QPushButton" name="mui_aceptar" >
+     <property name="text" >
+      <string>Generar .conf</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="5" >
+    <widget class="QPushButton" name="mui_cancelar" >
+     <property name="text" >
+      <string>Cerrar</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>mui_cancelar</sender>
+   <signal>released()</signal>
+   <receiver>ModificarContabilidadBase</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>790</x>
+     <y>598</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>297</x>
+     <y>496</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>mui_checkbox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>mui_textBrowser</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>63</x>
+     <y>432</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>120</x>
+     <y>510</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
