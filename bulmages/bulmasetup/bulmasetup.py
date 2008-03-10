@@ -2,20 +2,19 @@
 
 # Form implementation generated from reading ui file 'bulmasetup.ui'
 #
-# Created: Mon Mar  3 20:54:36 2008
-#      by: PyQt4 UI code generator 4.1
+# Created: Mon Mar 10 20:39:53 2008
+#      by: PyQt4 UI code generator 4.3
 #
 # WARNING! All changes made in this file will be lost!
 
-import sys
 from PyQt4 import QtCore, QtGui
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(QtCore.QSize(QtCore.QRect(0,0,557,372).size()).expandedTo(MainWindow.minimumSizeHint()))
+        MainWindow.resize(QtCore.QSize(QtCore.QRect(0,0,557,459).size()).expandedTo(MainWindow.minimumSizeHint()))
 
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Policy(0),QtGui.QSizePolicy.Policy(0))
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed,QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
@@ -26,6 +25,8 @@ class Ui_MainWindow(object):
 
         self.label = QtGui.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(20,20,209,150))
+        self.label.setMinimumSize(QtCore.QSize(209,150))
+        self.label.setMaximumSize(QtCore.QSize(209,150))
         self.label.setPixmap(QtGui.QPixmap("../images/logotipo/variaciones 18/variacion 18 - logotipo 02.jpg"))
         self.label.setObjectName("label")
 
@@ -59,7 +60,8 @@ class Ui_MainWindow(object):
         self.label_2.setObjectName("label_2")
 
         self.mui_salir = QtGui.QPushButton(self.centralwidget)
-        self.mui_salir.setGeometry(QtCore.QRect(470,330,75,24))
+        self.mui_salir.setGeometry(QtCore.QRect(460,420,75,24))
+        self.mui_salir.setIcon(QtGui.QIcon("../images/png/i_exit.png"))
         self.mui_salir.setObjectName("mui_salir")
 
         self.line = QtGui.QFrame(self.centralwidget)
@@ -75,6 +77,14 @@ class Ui_MainWindow(object):
         self.mui_adminempresas.setIcon(QtGui.QIcon("../images/png/i_empresa.xpm"))
         self.mui_adminempresas.setIconSize(QtCore.QSize(48,48))
         self.mui_adminempresas.setObjectName("mui_adminempresas")
+
+        self.mui_restbackup = QtGui.QPushButton(self.centralwidget)
+        self.mui_restbackup.setGeometry(QtCore.QRect(250,310,291,61))
+        self.mui_restbackup.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.mui_restbackup.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.mui_restbackup.setIcon(QtGui.QIcon("../images/png/i_cargaEmpresa.xpm"))
+        self.mui_restbackup.setIconSize(QtCore.QSize(48,48))
+        self.mui_restbackup.setObjectName("mui_restbackup")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -83,9 +93,9 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QtGui.QApplication.translate("MainWindow", "MainWindow", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_crearusuario.setText(QtGui.QApplication.translate("MainWindow", "Nuevo Usuario", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_crearusuario.setText(QtGui.QApplication.translate("MainWindow", "Nuevo Usuario de PostgreSQL", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_crearbulmacont.setText(QtGui.QApplication.translate("MainWindow", "Nueva Empresa de Contabilidad", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_crearbulmafact.setText(QtGui.QApplication.translate("MainWindow", "Nueva Empresa de Facturacion", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_crearbulmafact.setText(QtGui.QApplication.translate("MainWindow", "Nueva Empresa de Facturacion / TPV", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("MainWindow", "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
         "p, li { white-space: pre-wrap; }\n"
         "</style></head><body style=\" font-family:\'Sans Serif\'; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;\">\n"
@@ -95,4 +105,5 @@ class Ui_MainWindow(object):
         "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">de Datos para BulmaGés</p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_salir.setText(QtGui.QApplication.translate("MainWindow", "Salir", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_adminempresas.setText(QtGui.QApplication.translate("MainWindow", "Administrar Empresas Existentes", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_restbackup.setText(QtGui.QApplication.translate("MainWindow", "Restaurar desde una Copia de Seguridad", None, QtGui.QApplication.UnicodeUTF8))
 

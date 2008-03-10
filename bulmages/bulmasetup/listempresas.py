@@ -17,6 +17,9 @@ class ListEmpresas(QtGui.QDialog, Ui_ListEmpresasBase):
 	self.connect(self.process, SIGNAL("started()"), self.started)
 	
 	self.buscarEmpresas()
+
+	self.mui_listado.resizeColumnsToContents()
+	self.mui_checkbox.setCheckState(Qt.Unchecked)
 	
     def readOutput(self):
 	self.mui_textBrowser.append(QString(self.process.readAllStandardOutput()))
@@ -52,21 +55,19 @@ class ListEmpresas(QtGui.QDialog, Ui_ListEmpresasBase):
     def buscarEmpresas(self):
 	self.mui_textBrowser.append("hola mundo")
 	self.command = 'su - postgres -c \"echo \'SELECT datname FROM pg_database\' | psql -t template1\"'
-#	self.linea = QByteArray()
 	self.writecommand(self.command)
 	self.process.start(self.command)
 	self.process.waitForFinished(-1)
 	self.databases = QString(self.process.readAllStandardOutput())
 	self.writecommand(self.databases)
 	self.arrdatabase = self.databases.split(QString(" "))
-#	self.writecommand(self.databases.split(QString(" ")).count())
 	self.mui_listado.setRowCount(self.arrdatabase.count() -1)
 	self.i = 1
 	while (self.i < self.arrdatabase.count()):
 		self.writecommand(self.arrdatabase[self.i])
 		self.mui_listado.setItem(self.i-1 , 1 , QTableWidgetItem(self.arrdatabase[self.i].replace('\n', '')))
 		self.nombre = self.execQuery('SELECT valor FROM configuracion where nombre =\'NombreEmpresa\';').replace('\n', '')
-		self.tipo = self.execQuery('SELECT valor FROM configuracion where nombre =\'Tipo\';').replace('\n', '')
+		self.tipo = self.execQuery('SELECT valor FROM configuracion where nombre =\'Tipo\';').replace('\n', '').replace(' ','')
 		self.databaserevision = self.execQuery('SELECT valor FROM configuracion where nombre =\'DatabaseRevision\';').replace('\n', '')
 		self.mui_listado.setItem(self.i-1 , 0 , QTableWidgetItem(self.nombre))
 		self.mui_listado.setItem(self.i-1 , 2 , QTableWidgetItem(self.tipo))
@@ -78,8 +79,9 @@ class ListEmpresas(QtGui.QDialog, Ui_ListEmpresasBase):
 
     def on_mui_listado_cellDoubleClicked(self, row, col):
 	self.mui_textBrowser.append(QString("<font color =\"#0000FF\">DOBLECLICK ")+QString.number(row)+QString("</font>"))
-	self.fact = ModificarFacturacion(self.mui_listado.item(row,1).text())
-	self.fact.exec_()
+	if (self.mui_listado.item(row,2).text() == QString('BulmaFact')):
+		self.fact = ModificarFacturacion(self.mui_listado.item(row,1).text())
+		self.fact.exec_()
 
 def main(args):
     app=QtGui.QApplication(args)

@@ -3,12 +3,13 @@ import os
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 from nuevafacturacionbase import *
+from plugins import Plugins
 
 
-
-class NuevaFacturacion(QtGui.QDialog, Ui_NuevaFacturacionBase):
+class NuevaFacturacion(QtGui.QDialog, Ui_NuevaFacturacionBase, Plugins):
     def __init__(self, parent = None):
         QtGui.QDialog.__init__(self,parent)
+	Plugins.__init__(self)
 	self.setupUi(self)
 	
 	self.process = QtCore.QProcess()
@@ -16,6 +17,11 @@ class NuevaFacturacion(QtGui.QDialog, Ui_NuevaFacturacionBase):
 	self.connect(self.process, SIGNAL("readyReadStandardError()"), self.readErrors)
 	self.connect(self.process, SIGNAL("finished()"), self.finished)
 	self.connect(self.process, SIGNAL("started()"), self.started)
+	
+	self.buscaPlugins()
+	# Ajustamos la presentacion
+	self.mui_plugins.resizeColumnsToContents()
+	self.mui_checkbox.setCheckState(Qt.Unchecked)
 	
     def readOutput(self):
 	self.mui_textBrowser.append(QString(self.process.readAllStandardOutput()))
@@ -31,6 +37,59 @@ class NuevaFacturacion(QtGui.QDialog, Ui_NuevaFacturacionBase):
 
     def writecommand(self, comm):
 	self.mui_textBrowser.append("<font color =\"#0000FF\">"+comm+"</font>")
+
+
+    def buscaPlugins(self):
+	self.writecommand("Buscando Pluggins")
+
+	self.mui_plugins.setRowCount(len(self.pluginsbulmafact))
+	self.i = 0
+	while (self.i < len(self.pluginsbulmafact)):
+		self.check = QTableWidgetItem(QString(self.pluginsbulmafact[self.i][0]))
+		self.check.setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
+		self.check.setCheckState(Qt.Unchecked)
+		self.mui_plugins.setItem(self.i, 0, self.check)
+		self.mui_plugins.setItem(self.i , 1 , QTableWidgetItem(self.pluginsbulmafact[self.i][2]))
+		self.mui_plugins.setRowHeight(self.i, 50)
+		self.i = self.i + 1
+	
+	
+    def actualizarPlugins(self):
+	self.writecommand('ACTUALIZANDO PLUGINS')
+	self.i = 0
+	while (self.i < self.mui_plugins.rowCount()):
+		self.writecommand('Tratando ' + self.pluginsbulmafact[self.i][0])
+		if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
+			self.writecommand('Ha que actualizar ' + self.pluginsbulmafact[self.i][0])
+			self.command = 'su postgres -c \"psql -t -f  /usr/share/bulmages/dbmodels/actualizar/' + self.pluginsbulmafact[self.i][4] +' '+ self.nomdb +'\"'
+			self.writecommand(self.command)
+			self.process.start(self.command)
+			self.process.waitForFinished(-1)
+			self.writecommand(self.process.readAllStandardOutput())
+			self.hayplugins = 1
+		self.i = self.i +1
+
+    def writeConfig(self):
+	self.writecommand('ESCRIBIENDO CONFIGURACION')
+	self.writecommand("Escribiendo configuracion en /etc/bulmages")
+	self.file = QFile("/etc/bulmages/bulmafact_" + self.nomdb + ".conf");
+	if not(self.file.open(QIODevice.WriteOnly | QIODevice.Text)):
+		return;
+	self.out = QTextStream(self.file)
+	self.terminador = ""
+	self.out << "CONF_PLUGINS_BULMAFACT   "
+	
+	
+	self.i = 0
+	while (self.i < self.mui_plugins.rowCount()):
+		self.writecommand('Tratando ' + self.pluginsbulmafact[self.i][0])
+		if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
+			self.writecommand('Ha que actualizar ' + self.pluginsbulmafact[self.i][0])
+			self.out << self.terminador << self.pluginsbulmafact[self.i][1]
+			self.terminador = "; \\\n";
+		self.i = self.i +1
+	self.out << "\n"
+	self.file.close()
 
 
     def on_mui_aceptar_released(self):
@@ -64,276 +123,13 @@ class NuevaFacturacion(QtGui.QDialog, Ui_NuevaFacturacionBase):
 	self.writecommand(self.command)
         os.system(self.command.toAscii().data())
 
-	# Si esta seleccionado el checkbox de contratos cargamos el parche de contratos
-	if (self.mui_contratos.isChecked()):
-		self.command = 'su postgres -c "psql ' + self.nomdb + ' < /usr/share/bulmages/dbmodels/plugins/revf-contratos.sql"'
-		self.writecommand(self.command)
-		self.process.start(self.command)
-		self.process.waitForFinished(-1)
-		self.hayplugins = 1
-	
-	if (self.mui_plugindocked.isChecked()):
-		self.hayplugins = 1
-	
-	if (self.mui_pluginimpers.isChecked()):
-		self.hayplugins = 1
-		
-	if (self.mui_pluginmail.isChecked()):
-		self.hayplugins = 1
-
-	if (self.mui_comercialbf.isChecked()):
-		self.command = 'su postgres -c "psql ' + self.nomdb + ' < /usr/share/bulmages/dbmodels/plugins/revf-comercialbf.sql"'
-		self.writecommand(self.command)
-		self.process.start(self.command)
-		self.process.waitForFinished(-1)
-		self.hayplugins = 1
-
-	if (self.mui_plugincatalogo.isChecked()):
-		self.hayplugins = 1
-
-	if (self.mui_pluginpreciocoste.isChecked()):
-		self.command = 'su postgres -c "psql ' + self.nomdb + ' < /usr/share/bulmages/dbmodels/plugins/revf-pluginpreciocoste.sql"'
-		self.writecommand(self.command)
-		self.process.start(self.command)
-		self.process.waitForFinished(-1)
-		self.hayplugins = 1
-
-	if (self.mui_pluginalmacen.isChecked()):
-		self.hayplugins = 1
-
-	if (self.mui_plugincuadrante.isChecked()):
-		self.command = 'su postgres -c "psql ' + self.nomdb + ' < /usr/share/bulmages/dbmodels/plugins/revf-plugincuadrante.sql"'
-		self.writecommand(self.command)
-		self.process.start(self.command)
-		self.process.waitForFinished(-1)
-		self.hayplugins = 1
-
-	if (self.mui_pluginpromedios.isChecked()):
-		self.hayplugins = 1
-
-	if (self.mui_pluginasterisk.isChecked()):
-		self.command = 'su postgres -c "psql ' + self.nomdb + ' < /usr/share/bulmages/dbmodels/plugins/revf-pluginasterisk.sql"'
-		self.writecommand(self.command)
-		self.process.start(self.command)
-		self.process.waitForFinished(-1)
-		self.hayplugins = 1
-
-	if (self.mui_pluginimpresionesmultiples.isChecked()):
-		self.hayplugins = 1
-
-	if (self.mui_pluginq19.isChecked()):
-		self.hayplugins = 1
-
-	if (self.mui_pluginbarcodeopen.isChecked()):
-		self.hayplugins = 1
-		
-	if (self.mui_plugininformeclientes.isChecked()):
-		self.hayplugins = 1
-
-	if (self.mui_plugintarifas.isChecked()):
-		self.hayplugins = 1
-
-#	if (self.mui_pluginivainc.isChecked()):
-#		self.hayplugins = 1
-
-	if (self.mui_pluginticket.isChecked()):
-		self.hayplugins = 1
-
-	if (self.mui_pluginvehiculosbf.isChecked()):
-		self.command = 'su postgres -c "psql ' + self.nomdb + ' < /usr/share/bulmages/dbmodels/plugins/revf-pluginvehiculosbf.sql"'
-		self.writecommand(self.command)
-		self.process.start(self.command)
-		self.process.waitForFinished(-1)
-		self.hayplugins = 1
-
-	if (self.mui_pluginclipboardbf.isChecked()):
-		self.hayplugins = 1
-
-	if (self.mui_plugininventario.isChecked()):
-		self.command = 'su postgres -c "psql ' + self.nomdb + ' < /usr/share/bulmages/dbmodels/plugins/revf-plugininventario.sql"'
-		self.writecommand(self.command)
-		self.process.start(self.command)
-		self.process.waitForFinished(-1)
-		self.hayplugins = 1
-
-	if (self.mui_plugindebugbf.isChecked()):
-		self.hayplugins = 1
-
-	if (self.mui_pluginsubformsxc.isChecked()):
-		self.hayplugins = 1
-
-	if (self.mui_plugintrazabilidad.isChecked()):
-		self.command = 'su postgres -c "psql ' + self.nomdb + ' < /usr/share/bulmages/dbmodels/plugins/revf-plugintrazabilidad.sql"'
-		self.writecommand(self.command)
-		self.process.start(self.command)
-		self.process.waitForFinished(-1)
-		self.hayplugins = 1
-
-	if (self.mui_plugintipostrabajo.isChecked()):
-		self.command = 'su postgres -c "psql ' + self.nomdb + ' < /usr/share/bulmages/dbmodels/plugins/revf-plugintipostrabajo.sql"'
-		self.writecommand(self.command)
-		self.process.start(self.command)
-		self.process.waitForFinished(-1)
-		self.hayplugins = 1
-
-	if (self.mui_pluginsubformods.isChecked()):
-		self.hayplugins = 1
-
-	if (self.mui_plugintpv.isChecked()):
-		self.hayplugins = 1
+	self.hayplugins = 0
+	self.actualizarPlugins()
 
 	# Si hay plugins seleccionados escribimos la configuracion para esta empresa
 	if (self.hayplugins == 1):
-		self.writecommand("Escribiendo configuracion en /etc/bulmages")
-		self.file = QFile("/etc/bulmages/bulmafact_" + self.nomdb + ".conf");
-		if not(self.file.open(QIODevice.WriteOnly | QIODevice.Text)):
-			return;
-		self.out = QTextStream(self.file)
-		self.terminador = ""
-		self.out << "CONF_PLUGINS_BULMAFACT   "
+		self.writeConfig()
 		
-		# Ponemos la configuracion del plugin docked
-		if (self.mui_plugindocked.isChecked()):
-			self.out << self.terminador << "libplugindocked.so"
-			self.terminador = "; \\\n";
-
-		# Ponemos la configuracion del plugin impresiones personalizadas
-		if (self.mui_pluginimpers.isChecked()):
-			self.out << self.terminador << "libpluginimpers.so"
-			self.terminador = "; \\\n";
-			
-		# Ponemos la configuracion del plugin de e-mail
-		if (self.mui_pluginmail.isChecked()):
-			self.out << self.terminador << "libpluginmail.so"
-			self.terminador = "; \\\n";
-
-		# Ponemos la configuracion de comerciales
-		if (self.mui_comercialbf.isChecked()):
-			self.out << self.terminador << "libcomercialbf.so"
-			self.terminador = "; \\\n";
-
-		# Ponemos la configuracion del plugin de catalogo
-		if (self.mui_plugincatalogo.isChecked()):
-			self.out << self.terminador << "libplugincatalogo.so"
-			self.terminador = "; \\\n";
-
-		# Ponemos la configuracion del plugin de precios de coste
-		if (self.mui_pluginpreciocoste.isChecked()):
-			self.out << self.terminador << "libpluginpreciocoste.so"
-			self.terminador = "; \\\n";
-
-		# Ponemos la configuracion del plugin de almacen
-		if (self.mui_pluginalmacen.isChecked()):
-			self.out << self.terminador << "libpluginalmacen.so"
-			self.terminador = "; \\\n";
-
-		# Ponemos la configuracion del plugin de cuadrante
-		if (self.mui_plugincuadrante.isChecked()):
-			self.out << self.terminador << "libplugincuadrante.so"
-			self.terminador = "; \\\n";
-
-		# Ponemos la configuracion del plugin de cuadrante
-		if (self.mui_pluginpromedios.isChecked()):
-			self.out << self.terminador << "libpluginpromedios.so"
-			self.terminador = "; \\\n";
-
-		# Ponemos la configuracion del plugin de asterisk
-		if (self.mui_pluginasterisk.isChecked()):
-			self.out << self.terminador << "libpluginasterisk.so"
-			self.terminador = "; \\\n";
-
-		# Ponemos la configuracion del plugin de impresiones multiples
-		if (self.mui_pluginimpresionesmultiples.isChecked()):
-			self.out << self.terminador << "libpluginimpresionesmultiples.so"
-			self.terminador = "; \\\n";
-
-		# Ponemos la configuracion del plugin de Q19
-		if (self.mui_pluginq19.isChecked()):
-			self.out << self.terminador << "libpluginq19.so"
-			self.terminador = "; \\\n";
-
-		# Ponemos la configuracion del plugin de barcode
-		if (self.mui_pluginbarcodeopen.isChecked()):
-			self.out << self.terminador << "libpluginbarcodeopen.so"
-			self.terminador = "; \\\n";
-
-		# Ponemos la configuracion del plugin de informe de clientes
-		if (self.mui_plugininformeclientes.isChecked()):
-			self.out << self.terminador << "libplugininformeclientes.so"
-			self.terminador = "; \\\n";
-
-		# Ponemos la configuracion del plugin de tarifas
-		if (self.mui_plugintarifas.isChecked()):
-			self.out << self.terminador << "libplugintarifas.so"
-			self.terminador = "; \\\n";
-
-		# Ponemos la configuracion de contratos
-		if (self.mui_contratos.isChecked()):
-			self.out << self.terminador << "libplugincontratos.so"
-			self.terminador = "; \\\n";
-
-		# Ponemos la configuracion de iva incluido
-#		if (self.mui_pluginivainc.isChecked()):
-#			self.out << self.terminador << "libpluginivainc.so"
-#			self.terminador = "; \\\n";
-
-		# Ponemos la configuracion de tickets
-		if (self.mui_pluginticket.isChecked()):
-			self.out << self.terminador << "libpluginticket.so"
-			self.terminador = "; \\\n";
-
-		# Ponemos la configuracion del plugin de llamadas
-		if (self.mui_llamadas.isChecked()):
-			self.out << self.terminador << "libpluginllamadas.so"
-			self.terminador = "; \\\n";
-
-		# Ponemos la configuracion del plugin de vehiculos
-		if (self.mui_pluginvehiculosbf.isChecked()):
-			self.out << self.terminador << "libpluginvehiculosbf.so"
-			self.terminador = "; \\\n";
-
-		# Ponemos la configuracion del plugin de clipboard
-		if (self.mui_pluginclipboardbf.isChecked()):
-			self.out << self.terminador << "libpluginclipboardbf.so"
-			self.terminador = "; \\\n";
-
-		# Ponemos la configuracion del plugin de inventario
-		if (self.mui_plugininventario.isChecked()):
-			self.out << self.terminador << "libplugininventario.so"
-			self.terminador = "; \\\n";
-
-		# Ponemos la configuracion del plugin de debug
-		if (self.mui_plugindebugbf.isChecked()):
-			self.out << self.terminador << "libplugindebugbf.so"
-			self.terminador = "; \\\n";
-
-		# Ponemos la configuracion del plugin de subformularios
-		if (self.mui_pluginsubformsxc.isChecked()):
-			self.out << self.terminador << "libpluginsubformsxc.so"
-			self.terminador = "; \\\n";
-
-		# Ponemos la configuracion del plugin de trazabilidad
-		if (self.mui_plugintrazabilidad.isChecked()):
-			self.out << self.terminador << "libplugintrazabilidad.so"
-			self.terminador = "; \\\n";
-
-		# Ponemos la configuracion del plugin de tipos de trabajo
-		if (self.mui_plugintipostrabajo.isChecked()):
-			self.out << self.terminador << "libplugintipostrabajo.so"
-			self.terminador = "; \\\n";
-
-		# Ponemos la configuracion del plugin subformods
-		if (self.mui_pluginsubformods.isChecked()):
-			self.out << self.terminador << "libpluginsubformods.so"
-			self.terminador = "; \\\n";
-
-		# Ponemos la configuracion del plugin tpv
-		if (self.mui_plugintpv.isChecked()):
-			self.out << self.terminador << "libplugintpv.so"
-			self.terminador = "; \\\n";
-
-		self.out << "\n"
-		self.file.close()
 	self.mui_textBrowser.append("Done.")
 
 

@@ -11,6 +11,7 @@ from nuevousuario import NuevoUsuario
 from nuevafacturacion import NuevaFacturacion
 from nuevacontabilidad import NuevaContabilidad
 from listempresas import ListEmpresas
+from restbackup   import RestBackup
 
 class HelloWindow(QtGui.QMainWindow, Ui_MainWindow):
     def __init__(self, *args):
@@ -33,6 +34,9 @@ class HelloWindow(QtGui.QMainWindow, Ui_MainWindow):
 	    win = ListEmpresas()
 	    win.exec_()
 	    
+    def on_mui_restbackup_released(self):
+	    win = RestBackup()
+	    win.exec_()
 	    
 def main(args):
     app=QtGui.QApplication(args)

@@ -6,13 +6,11 @@
     <x>0</x>
     <y>0</y>
     <width>557</width>
-    <height>372</height>
+    <height>459</height>
    </rect>
   </property>
   <property name="sizePolicy" >
-   <sizepolicy>
-    <hsizetype>0</hsizetype>
-    <vsizetype>0</vsizetype>
+   <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -29,6 +27,18 @@
       <width>209</width>
       <height>150</height>
      </rect>
+    </property>
+    <property name="minimumSize" >
+     <size>
+      <width>209</width>
+      <height>150</height>
+     </size>
+    </property>
+    <property name="maximumSize" >
+     <size>
+      <width>209</width>
+      <height>150</height>
+     </size>
     </property>
     <property name="text" >
      <string/>
@@ -53,7 +63,7 @@
      <enum>Qt::LeftToRight</enum>
     </property>
     <property name="text" >
-     <string>Nuevo Usuario</string>
+     <string>Nuevo Usuario de PostgreSQL</string>
     </property>
     <property name="icon" >
      <iconset>../images/png/i_usuario.xpm</iconset>
@@ -109,7 +119,7 @@
      <enum>Qt::LeftToRight</enum>
     </property>
     <property name="text" >
-     <string>Nueva Empresa de Facturacion</string>
+     <string>Nueva Empresa de Facturacion / TPV</string>
     </property>
     <property name="icon" >
      <iconset>../images/png/bulmafact.png</iconset>
@@ -146,14 +156,17 @@ p, li { white-space: pre-wrap; }
    <widget class="QPushButton" name="mui_salir" >
     <property name="geometry" >
      <rect>
-      <x>470</x>
-      <y>330</y>
+      <x>460</x>
+      <y>420</y>
       <width>75</width>
       <height>24</height>
      </rect>
     </property>
     <property name="text" >
      <string>Salir</string>
+    </property>
+    <property name="icon" >
+     <iconset>../images/png/i_exit.png</iconset>
     </property>
    </widget>
    <widget class="Line" name="line" >
@@ -189,6 +202,34 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="icon" >
      <iconset>../images/png/i_empresa.xpm</iconset>
+    </property>
+    <property name="iconSize" >
+     <size>
+      <width>48</width>
+      <height>48</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="mui_restbackup" >
+    <property name="geometry" >
+     <rect>
+      <x>250</x>
+      <y>310</y>
+      <width>291</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="focusPolicy" >
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="layoutDirection" >
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="text" >
+     <string>Restaurar desde una Copia de Seguridad</string>
+    </property>
+    <property name="icon" >
+     <iconset>../images/png/i_cargaEmpresa.xpm</iconset>
     </property>
     <property name="iconSize" >
      <size>

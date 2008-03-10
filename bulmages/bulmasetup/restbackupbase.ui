@@ -1,0 +1,93 @@
+<ui version="4.0" >
+ <class>RestBackupBase</class>
+ <widget class="QDialog" name="RestBackupBase" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>450</width>
+    <height>118</height>
+   </rect>
+  </property>
+  <property name="sizePolicy" >
+   <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="maximumSize" >
+   <size>
+    <width>450</width>
+    <height>118</height>
+   </size>
+  </property>
+  <property name="windowTitle" >
+   <string>Restaurar Backup</string>
+  </property>
+  <layout class="QGridLayout" >
+   <item row="0" column="0" >
+    <widget class="QLabel" name="label" >
+     <property name="text" >
+      <string>Base de Datos a crear</string>
+     </property>
+     <property name="buddy" >
+      <cstring>mui_dbname</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1" colspan="3" >
+    <widget class="QLineEdit" name="mui_dbname" />
+   </item>
+   <item row="1" column="0" >
+    <widget class="QLabel" name="label_2" >
+     <property name="text" >
+      <string>Archivo a Restaurar</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1" colspan="2" >
+    <widget class="QLineEdit" name="mui_filename" />
+   </item>
+   <item row="1" column="3" >
+    <widget class="QToolButton" name="mui_filesearch" >
+     <property name="text" >
+      <string>...</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1" >
+    <widget class="QPushButton" name="mui_aceptar" >
+     <property name="text" >
+      <string>Aceptar</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2" colspan="2" >
+    <widget class="QPushButton" name="mui_cancelar" >
+     <property name="text" >
+      <string>Cancelar</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>mui_cancelar</sender>
+   <signal>released()</signal>
+   <receiver>RestBackupBase</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>345</x>
+     <y>93</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>32</x>
+     <y>84</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

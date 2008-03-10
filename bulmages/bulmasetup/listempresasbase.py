@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'listempresasbase.ui'
 #
-# Created: Sat Mar  8 19:32:24 2008
+# Created: Mon Mar 10 20:00:05 2008
 #      by: PyQt4 UI code generator 4.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -23,8 +23,6 @@ class Ui_ListEmpresasBase(object):
         ListEmpresasBase.setWindowIcon(QtGui.QIcon("../images/png/i_empresa.xpm"))
 
         self.gridlayout = QtGui.QGridLayout(ListEmpresasBase)
-        self.gridlayout.setMargin(9)
-        self.gridlayout.setSpacing(6)
         self.gridlayout.setObjectName("gridlayout")
 
         self.mui_listado = QtGui.QTableWidget(ListEmpresasBase)
@@ -47,17 +45,23 @@ class Ui_ListEmpresasBase(object):
         self.mui_listado.setObjectName("mui_listado")
         self.gridlayout.addWidget(self.mui_listado,0,0,1,1)
 
+        self.mui_checkbox = QtGui.QCheckBox(ListEmpresasBase)
+        self.mui_checkbox.setChecked(True)
+        self.mui_checkbox.setObjectName("mui_checkbox")
+        self.gridlayout.addWidget(self.mui_checkbox,1,0,1,1)
+
         self.mui_textBrowser = QtGui.QTextBrowser(ListEmpresasBase)
         self.mui_textBrowser.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.mui_textBrowser.setObjectName("mui_textBrowser")
-        self.gridlayout.addWidget(self.mui_textBrowser,1,0,1,1)
+        self.gridlayout.addWidget(self.mui_textBrowser,2,0,1,1)
 
         self.mui_cancelar = QtGui.QPushButton(ListEmpresasBase)
         self.mui_cancelar.setObjectName("mui_cancelar")
-        self.gridlayout.addWidget(self.mui_cancelar,2,0,1,1)
+        self.gridlayout.addWidget(self.mui_cancelar,3,0,1,1)
 
         self.retranslateUi(ListEmpresasBase)
         QtCore.QObject.connect(self.mui_cancelar,QtCore.SIGNAL("released()"),ListEmpresasBase.reject)
+        QtCore.QObject.connect(self.mui_checkbox,QtCore.SIGNAL("toggled(bool)"),self.mui_textBrowser.setVisible)
         QtCore.QMetaObject.connectSlotsByName(ListEmpresasBase)
 
     def retranslateUi(self, ListEmpresasBase):
@@ -81,5 +85,6 @@ class Ui_ListEmpresasBase(object):
         headerItem3 = QtGui.QTableWidgetItem()
         headerItem3.setText(QtGui.QApplication.translate("ListEmpresasBase", "Version", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_listado.setHorizontalHeaderItem(3,headerItem3)
+        self.mui_checkbox.setText(QtGui.QApplication.translate("ListEmpresasBase", "Ver Consola", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_cancelar.setText(QtGui.QApplication.translate("ListEmpresasBase", "Cerrar", None, QtGui.QApplication.UnicodeUTF8))
 
