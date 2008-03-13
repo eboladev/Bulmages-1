@@ -2,9 +2,11 @@
 # bulmatpv					  #
 ###########################################
 
-file(GLOB bulmatpv_SRC *.c *.cpp *.cxx)
+file(GLOB bulmatpv_SRC *.c *.cpp)
 #file(GLOB bulmatpv_MOCS *.hpp *.h)
 file(GLOB bulmatpv_UIS *.ui)
+
+set(bulmatpvEx main.cxx)
 
 set(bulmatpv_MOCS bulmatpv.h 
 	   aboutview.h 
@@ -41,15 +43,29 @@ QT4_WRAP_CPP(bulmatpv_MOC_SRCS ${bulmatpv_MOCS})
 
 
 #ADD_DEFINITIONS(${QT_DEFINITIONS})
-#ADD_DEFINITIONS(-DQT_SHARED)
+ADD_DEFINITIONS(-DQT_SHARED)
 # build sources, moc'd sources, and rcc'd sources
 # # generate rules for building source files from the resources
 # build sources, moc'd sources, and rcc'd sources
-add_executable(bulmatpv   ${bulmatpv_MOCS} ${bulmatpv_MOC_SRCS} ${bulmatpv_UIS_H}
-	${bulmatpv_SRC} ${bulmatpv_SRCS} )
 
-target_link_libraries( bulmatpv bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 
-add_dependencies(bulmatpv bulmalib)
+add_library(libbulmatpv SHARED ${bulmatpv_MOC_SRCS} ${bulmatpv_UIS_H}
+        ${bulmatpv_SRCS} ${bulmatpv_MOCS})
+
+set_target_properties( libbulmatpv PROPERTIES
+  SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
+  VERSION "${BULMAGES_VERSION}"
+  OUTPUT_NAME lbulmatpv )
+
+target_link_libraries( libbulmatpv bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+
+add_executable(bulmatpv   ${bulmatpvEx})
+
+target_link_libraries( bulmatpv libbulmatpv bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+
+
+
+add_dependencies(libbulmatpv bulmalib)
+add_dependencies(bulmatpv libbulmatpv )
 
 install_targets(/bin bulmatpv)	
