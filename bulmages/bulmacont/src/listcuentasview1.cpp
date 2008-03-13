@@ -143,15 +143,21 @@ int listcuentasview1::inicializa()
         /// Cargamos y pintamos las cuentas hijas.
         cursor2 *ctas = empresaBase() ->cargacursor ( "SELECT * FROM cuenta ORDER BY codigo" );
         while ( !ctas->eof() ) {
+
             idcuenta = ctas->valor ( "idcuenta" ).toInt();
             padre = ctas->valor ( "padre" ).toInt();
+
             if ( padre == 0 ) {
+
                 it = new QTreeWidgetItem ( mui_arbolcuentas );
+
                 Lista1[idcuenta] = it;
             } else {
                 it = new QTreeWidgetItem ( Lista1[padre] );
                 Lista1[idcuenta] = it;
             } // end if
+
+
             it->setText ( ccuenta, ctas->valor ( "codigo" ) );
             it->setText ( cdesccuenta, ctas->valor ( "descripcion" ) );
             it->setText ( cidcuenta, ctas->valor ( "idcuenta" ) );
@@ -162,6 +168,7 @@ int listcuentasview1::inicializa()
             it->setText ( cimputacion, ctas->valor ( "imputacion" ) );
             it->setText ( cdebe, ctas->valor ( "debe" ) );
             it->setText ( chaber, ctas->valor ( "haber" ) );
+
             /// Ponemos los iconos.
             if ( ctas->valor ( "tipocuenta" ) == "1" )
                 it->setIcon ( ccuenta, QPixmap ( cactivo ) );
@@ -173,9 +180,10 @@ int listcuentasview1::inicializa()
                 it->setIcon ( ccuenta, QPixmap ( cingresos ) );
             else if ( ctas->valor ( "tipocuenta" ) == "5" )
                 it->setIcon ( ccuenta, QPixmap ( cgastos ) );
-            mui_arbolcuentas->setItemExpanded ( it, TRUE );
+
             ctas->siguienteregistro();
         } // end while
+	mui_arbolcuentas->expandAll();
         delete ctas;
 
         /// Cargamos el n&uacute;mero de d&iacute;gitos de cuenta para poder hacer una

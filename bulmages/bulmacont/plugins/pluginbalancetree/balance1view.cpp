@@ -347,7 +347,10 @@ void BalanceTreeView::generarBalance()
     query.sprintf ( "DELETE FROM balancetemp WHERE tdebe = 0 AND thaber = 0" );
     empresaBase() ->ejecuta ( query );
 
-
+    if(!mui_jerarquico->isChecked()) {
+	query = "DELETE FROM balancetemp WHERE nivel <> " + combonivel->currentText();
+	empresaBase()->ejecuta ( query );
+    } // end if
 
 }
 

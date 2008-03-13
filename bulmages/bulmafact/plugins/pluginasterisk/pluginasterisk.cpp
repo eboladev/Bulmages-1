@@ -222,7 +222,7 @@ int TrabajadorView_on_mui_lista_currentItemChanged_Post ( TrabajadorView *trab )
 
     /// Cargamos las validaciones de asterisk.
     SubForm2Bf *l1 = trab->findChild<SubForm2Bf *> ( "m_validacionestrab" );
-    l1->cargar ( "SELECT * FROM valasterisk NATURAL LEFT JOIN almacen WHERE idtrabajador = " + trab->idtrabajador() );
+    l1->cargar ( "SELECT * FROM valasterisk NATURAL LEFT JOIN almacen WHERE idtrabajador = " + trab->idtrabajador() + " ORDER BY fechavalasterisk, horavalasterisk" );
 
     return 0;
 }
@@ -237,7 +237,7 @@ int Ficha_cargar ( Ficha *fich )
 {
     SubForm3 * form = fich->findChild<SubForm3 *> ( "m_validacionesalm" );
     if ( form )
-        form->cargar ( "SELECT * FROM valasterisk NATURAL LEFT JOIN trabajador WHERE idalmacen = " + fich->DBvalue ( "idalmacen" ) );
+        form->cargar ( "SELECT * FROM valasterisk NATURAL LEFT JOIN trabajador WHERE idalmacen = " + fich->DBvalue ( "idalmacen" ) + " ORDER BY fechavalasterisk, horavalasterisk");
     return 0;
 }
 

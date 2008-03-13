@@ -17,26 +17,42 @@
    <iconset/>
   </property>
   <layout class="QVBoxLayout" >
-   <property name="margin" >
+   <property name="spacing" >
     <number>5</number>
    </property>
-   <property name="spacing" >
+   <property name="leftMargin" >
+    <number>5</number>
+   </property>
+   <property name="topMargin" >
+    <number>5</number>
+   </property>
+   <property name="rightMargin" >
+    <number>5</number>
+   </property>
+   <property name="bottomMargin" >
     <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
      <property name="spacing" >
       <number>6</number>
+     </property>
+     <property name="leftMargin" >
+      <number>0</number>
+     </property>
+     <property name="topMargin" >
+      <number>0</number>
+     </property>
+     <property name="rightMargin" >
+      <number>0</number>
+     </property>
+     <property name="bottomMargin" >
+      <number>0</number>
      </property>
      <item>
       <widget class="QLabel" name="pixmapLabel1" >
        <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>0</hsizetype>
-         <vsizetype>0</vsizetype>
+        <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -64,9 +80,7 @@
      <item>
       <widget class="QFrame" name="frame_3" >
        <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>7</hsizetype>
-         <vsizetype>7</vsizetype>
+        <sizepolicy vsizetype="Expanding" hsizetype="Expanding" >
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -84,10 +98,19 @@
         <enum>QFrame::Raised</enum>
        </property>
        <layout class="QHBoxLayout" >
-        <property name="margin" >
+        <property name="spacing" >
          <number>5</number>
         </property>
-        <property name="spacing" >
+        <property name="leftMargin" >
+         <number>5</number>
+        </property>
+        <property name="topMargin" >
+         <number>5</number>
+        </property>
+        <property name="rightMargin" >
+         <number>5</number>
+        </property>
+        <property name="bottomMargin" >
          <number>5</number>
         </property>
         <item>
@@ -268,9 +291,7 @@
    <item>
     <widget class="QFrame" name="frame" >
      <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>5</hsizetype>
-       <vsizetype>1</vsizetype>
+      <sizepolicy vsizetype="Minimum" hsizetype="Preferred" >
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -282,10 +303,22 @@
       <enum>QFrame::Raised</enum>
      </property>
      <layout class="QGridLayout" >
-      <property name="margin" >
+      <property name="leftMargin" >
        <number>5</number>
       </property>
-      <property name="spacing" >
+      <property name="topMargin" >
+       <number>5</number>
+      </property>
+      <property name="rightMargin" >
+       <number>5</number>
+      </property>
+      <property name="bottomMargin" >
+       <number>5</number>
+      </property>
+      <property name="horizontalSpacing" >
+       <number>5</number>
+      </property>
+      <property name="verticalSpacing" >
        <number>5</number>
       </property>
       <item row="0" column="4" >
@@ -433,19 +466,44 @@
         </property>
        </widget>
       </item>
+      <item row="2" column="0" >
+       <widget class="QCheckBox" name="mui_jerarquico" >
+        <property name="text" >
+         <string>Jerarquico</string>
+        </property>
+        <property name="checked" >
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
    <item>
-    <widget class="QTreeWidget" name="listado" />
+    <widget class="QTreeWidget" name="listado" >
+     <column>
+      <property name="text" >
+       <string>1</string>
+      </property>
+     </column>
+    </widget>
    </item>
    <item>
     <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
      <property name="spacing" >
       <number>5</number>
+     </property>
+     <property name="leftMargin" >
+      <number>0</number>
+     </property>
+     <property name="topMargin" >
+      <number>0</number>
+     </property>
+     <property name="rightMargin" >
+      <number>0</number>
+     </property>
+     <property name="bottomMargin" >
+      <number>0</number>
      </property>
      <item>
       <spacer>

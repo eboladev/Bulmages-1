@@ -112,6 +112,23 @@ END;
 '  LANGUAGE 'plpgsql';
 \echo ":: Funcion validacionasterisk que genera una validacion para asterisk ... "
 
+
+CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
+DECLARE
+	as RECORD;
+BEGIN
+	SELECT INTO as * FROM pg_attribute  WHERE attname=''arreglovalasterisk'';
+	IF NOT FOUND THEN
+		ALTER TABLE valasterisk ADD COLUMN arreglovalasterisk BOOLEAN DEFAULT FALSE;
+	END IF;
+
+	RETURN 0;
+END;
+'   LANGUAGE plpgsql;
+SELECT aux();
+DROP FUNCTION aux() CASCADE;
+\echo ":: Agregamos el campo de arreglos ... "
+
 -- ==============================================================================
 
 
@@ -123,9 +140,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre=''DBRev-ValAsterisk'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.11-001'' WHERE nombre=''DBRev-ValAsterisk'';
+		UPDATE CONFIGURACION SET valor=''0.11-002'' WHERE nombre=''DBRev-ValAsterisk'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DBRev-ValAsterisk'', ''0.11-001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DBRev-ValAsterisk'', ''0.11-002'');
 	END IF;
 	RETURN 0;
 END;
