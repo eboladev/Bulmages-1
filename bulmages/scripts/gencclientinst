@@ -123,4 +123,5 @@ ln -s $1/$2/bulmacont/plugins/plugindebugbc/libplugindebugbc.so        /usr/lib/
 ln -s $1/$2/bulmacont/plugins/pluginbalancetree/libpluginbalancetree.so /usr/lib/bulmacont/plugins/
 ln -s $1/$2/bulmacont/plugins/pluginbalance1/libpluginbalance1.so       /usr/lib/bulmacont/plugins/
 ln -s $1/$2/bulmacont/plugins/pluginreportods/libpluginreportods.so       /usr/lib/bulmacont/plugins/
+ln -s $1/$2/bulmacont/plugins/pluginbalance/libpluginbalance.so       /usr/lib/bulmacont/plugins/
 
