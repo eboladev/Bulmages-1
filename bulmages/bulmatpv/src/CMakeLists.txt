@@ -50,7 +50,7 @@ ADD_DEFINITIONS(-DQT_SHARED)
 
 
 add_library(libbulmatpv SHARED ${bulmatpv_MOC_SRCS} ${bulmatpv_UIS_H}
-        ${bulmatpv_SRCS} ${bulmatpv_MOCS})
+        ${bulmatpv_SRC} ${bulmatpv_MOCS})
 
 set_target_properties( libbulmatpv PROPERTIES
   SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
