@@ -137,7 +137,11 @@ void entryPoint ( QMainWindow *bges )
     QMenu *pPluginMenu = NULL;
     /// Miramos si existe un menu Herramientas
     pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "Herramientas" );
-
+    /// En BulmaCont el menu de Herramientas tiene otro nombre.
+    if ( !pPluginMenu ) {
+	pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "menuHerramientas" );
+    } // end if
+	
     /// Creamos el men&uacute;.
     if ( !pPluginMenu ) {
         pPluginMenu = new QMenu ( "&Herramientas", bges->menuBar() );

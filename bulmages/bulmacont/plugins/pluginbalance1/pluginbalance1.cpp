@@ -81,12 +81,12 @@ void myplugin4::inicializa ( Bulmacont *bges )
     m_bulmacont = bges;
     QMenu *pPluginMenu;
     /// Miramos si existe un menu Herramientas
-    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( tr ( "Ver" ) );
+    pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( tr ( "menuVentana" ) );
 
     /// Creamos el men&uacute;.
     if ( !pPluginMenu ) {
         pPluginMenu = new QMenu ( tr ( "&Ver" ), bges->menuBar() );
-        pPluginMenu->setObjectName ( QString::fromUtf8 ( "Ver" ) );
+        pPluginMenu->setObjectName ( QString::fromUtf8 ( "menuVentana" ) );
     } // end if
 
     QAction *accion = new QAction ( "&Balance Jerárquico", 0 );
