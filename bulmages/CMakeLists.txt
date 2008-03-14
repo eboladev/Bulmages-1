@@ -36,10 +36,26 @@ LIST( GET BULMAGES_VERSIONS 2 BULMAGES_VERSION_PATCH)
 # ######### General setup ##########
 INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR})
 find_package(Qt4 REQUIRED) 
+
+if(NOT QT4_FOUND)
+  message(FATAL_ERROR "Bulmages needs QT4 to compile")
+endif(NOT QT4_FOUND)
+
+###############################################3
+# and now the version string given by qmake
+STRING(REGEX REPLACE "^([0-9]+)\\.[0-9]+\\.[0-9]+.*" "\\1" QT_MAJOR_VERSION "${QTVERSION}")
+STRING(REGEX REPLACE "^[0-9]+\\.([0-9])+\\.[0-9]+.*" "\\1" QT_MINOR_VERSION "${QTVERSION}")
+STRING(REGEX REPLACE "^[0-9]+\\.[0-9]+\\.([0-9]+).*" "\\1" QT_PATCH_VERSION "${QTVERSION}")
+
+if (${QT_MAJOR_VERSION}.${QT_MINOR_VERSION} LESS 4.3)
+   message(FATAL_ERROR " Bulmages needs >= QT4.3 to compile")
+endif (${QT_MAJOR_VERSION}.${QT_MINOR_VERSION} LESS 4.3) 
+
+
 INCLUDE (${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindPostgreSQL.cmake)
 
 if(NOT PGSQL_FOUND)
-  message(ERROR "Bulmages needs libpq to compile")
+  message(FATAL_ERROR "Bulmages needs libpq to compile")
 endif(NOT PGSQL_FOUND)
 
 set( BULMAGES_CONFIG_DIR /etc/bulmages CACHE PATH "The location of bulmages configuration dir")

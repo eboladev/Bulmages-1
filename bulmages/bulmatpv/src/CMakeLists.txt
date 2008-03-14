@@ -69,4 +69,4 @@ add_dependencies(libbulmatpv bulmalib)
 add_dependencies(bulmatpv libbulmatpv )
 
 install_targets(/bin bulmatpv)	
-install_targets(/lib libbulmatpv)
+install_targets(/lib/bulmatpv libbulmatpv)

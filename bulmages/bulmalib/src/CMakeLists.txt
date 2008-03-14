@@ -170,7 +170,7 @@ set_target_properties( bulmalib PROPERTIES
 
 target_link_libraries( bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES} )
 
-install_targets(/lib bulmalib)
+install_targets(/lib/bulmalib bulmalib)
 install (FILES ${bulmalib_HDRS} DESTINATION include)
 
 
