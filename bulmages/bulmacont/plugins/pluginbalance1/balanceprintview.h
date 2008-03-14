@@ -48,7 +48,7 @@ public:
     void inicializa1 ( QString, QString, QString, QString, bool );
 
 private:
-    void presentar ( char *tipus );
+    void presentar ( const char * tipus );
 
 private slots:
     virtual void on_mui_imprimir_clicked();

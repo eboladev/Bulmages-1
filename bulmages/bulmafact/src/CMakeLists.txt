@@ -1,10 +1,33 @@
+# Copyright (C) 2008 by Leopold Palomo-Avellaneda                       #
+# leo@alaxarxa.net                                                      #
+# http://www.iglues.org                                                 #
+#                                                                       #
+# This program is free software; you can redistribute it and/or modify  #
+# it under the terms of the GNU General Public License as published by  #
+# the Free Software Foundation; either version 2 of the License, or     #
+# (at your option) any later version.                                   #
+#                                                                       #
+# This program is distributed in the hope that it will be useful,       #
+# but WITHOUT ANY WARRANTY; without even the implied warranty of        #
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         #
+# GNU General Public License for more details.                          #
+#                                                                       #
+# You should have received a copy of the GNU General Public License     #
+# along with this program; if not, write to the                         #
+# Free Software Foundation, Inc.,                                       #
+# 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
+#                                                                       #
+
 ###########################################
 # bulmafact					  #
 ###########################################
 
-file(GLOB bulmafact_SRC *.c *.cpp *.cxx)
+file(GLOB bulmafact_SRC *.c *.cpp)
 file(GLOB bulmafact_MOCS *.hpp *.h)
 file(GLOB bulmafact_UIS *.ui)
+
+
+set(bulmafactEx main.cxx)
 
 set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)
@@ -30,20 +53,28 @@ include_directories(
 QT4_WRAP_UI(bulmafact_UIS_H ${bulmafact_UIS} OPTIONS -tr QObject::trUtf8)
 QT4_WRAP_CPP(bulmafact_MOC_SRCS ${bulmafact_MOCS})
 
-#QT4_ADD_RESOURCES(plugin_RCC_SRCS ${plugin_RCCS})
 
 
-#ADD_DEFINITIONS(${QT_DEFINITIONS})
-#ADD_DEFINITIONS(-DQT_SHARED)
-# build sources, moc'd sources, and rcc'd sources
-# # generate rules for building source files from the resources
-# build sources, moc'd sources, and rcc'd sources
-add_executable(bulmafact  ${bulmafact_MOC_SRCS} ${bulmafact_UIS_H}
-	${bulmafact_SRCS} ${bulmafact_MOCS} ${bulmafact_RCC_SRCS} ${bulmafact_SRC})
+add_library(libbulmafact SHARED ${bulmafact_MOCS} ${bulmafact_MOC_SRCS}
+		${bulmafact_UIS_H} ${bulmafact_SRC} ${bulmafact_SRCS} )
 
-target_link_libraries( bulmafact bulmalib ${QT_LIBRARIES}
-	${QT_QTGUI_LIBRARY} ${PGSQL_LIBRARIES} 	${QT_QTASSISTANT_LIBRARY})
+set_target_properties( libbulmafact PROPERTIES
+  SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
+  VERSION "${BULMAGES_VERSION}"
+  OUTPUT_NAME bulmafact )
 
-add_dependencies(bulmafact bulmalib)
+target_link_libraries( libbulmafact bulmalib ${QT_LIBRARIES}
+				${PGSQL_LIBRARIES})
 
-install_targets(/bin bulmafact)
+
+add_executable(bulmafact ${bulmafactEx})
+
+target_link_libraries( bulmafact libbulmafact bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+
+add_dependencies(libbulmafact bulmalib)
+add_dependencies(bulmafact libbulmafact)
+
+install_targets(/bin bulmafact)	
+install_targets(/lib/bulmafact libbulmafact)                   
+
+

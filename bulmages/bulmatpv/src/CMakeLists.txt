@@ -55,7 +55,7 @@ add_library(libbulmatpv SHARED ${bulmatpv_MOC_SRCS} ${bulmatpv_UIS_H}
 set_target_properties( libbulmatpv PROPERTIES
   SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
   VERSION "${BULMAGES_VERSION}"
-  OUTPUT_NAME lbulmatpv )
+  OUTPUT_NAME bulmatpv )
 
 target_link_libraries( libbulmatpv bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 
@@ -69,3 +69,4 @@ add_dependencies(libbulmatpv bulmalib)
 add_dependencies(bulmatpv libbulmatpv )
 
 install_targets(/bin bulmatpv)	
+install_targets(/lib libbulmatpv)

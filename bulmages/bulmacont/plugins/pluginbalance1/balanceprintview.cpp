@@ -125,7 +125,7 @@ void BalancePrintView::on_mui_imprimir_clicked()
 /**
 \param tipus
 **/
-void BalancePrintView::presentar ( char *tipus )
+void BalancePrintView::presentar ( const char* tipus )
 {
     _depura ( "BalancePrintView::presentar", 0 );
 #ifndef WIN32
