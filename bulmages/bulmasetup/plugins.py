@@ -1,4 +1,7 @@
-class Plugins():
+import sys
+import os
+
+class PluginsBulmaSetup():
     def __init__(self):
 	self.pluginsbulmafact = [
 	['Comerciales','libcomercialbf.so','Tratamiento de Comerciales','DBRev-ComercialBF','revf-comercialbf.sql'],

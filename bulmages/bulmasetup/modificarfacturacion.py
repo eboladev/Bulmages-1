@@ -3,13 +3,13 @@ import os
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 from modificarfacturacionbase import *
-from plugins import Plugins
+from plugins import PluginsBulmaSetup
 
 
-class ModificarFacturacion(QtGui.QDialog, Ui_ModificarFacturacionBase, Plugins):
+class ModificarFacturacion(QtGui.QDialog, Ui_ModificarFacturacionBase, PluginsBulmaSetup):
     def __init__(self, database, parent = None):
         QtGui.QDialog.__init__(self,parent)
-	Plugins.__init__(self)
+	PluginsBulmaSetup.__init__(self)
 	self.setupUi(self)
 	
 	self.process = QtCore.QProcess()

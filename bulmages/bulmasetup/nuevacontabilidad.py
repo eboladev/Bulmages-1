@@ -3,13 +3,13 @@ import os
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 from nuevacontabilidadbase import *
-from plugins import Plugins
+from plugins import PluginsBulmaSetup
 
 
-class NuevaContabilidad(QtGui.QDialog, Ui_NuevaContabilidadBase, Plugins):
+class NuevaContabilidad(QtGui.QDialog, Ui_NuevaContabilidadBase, PluginsBulmaSetup):
     def __init__(self, parent = None):
         QtGui.QDialog.__init__(self,parent)
-	Plugins.__init__(self)
+	PluginsBulmaSetup.__init__(self)
 	self.setupUi(self)
 	
 	self.process = QtCore.QProcess()

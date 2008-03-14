@@ -96,10 +96,20 @@ void SubForm2Bc::pressedPlus ( int row, int col, SDBRecord *rec, SDBCampo *camp 
     _depura ( "SubForm2Bc::pressedPlus", 0 );
 
     /// Si no es un campo de tipo debe o haber salimos.
-    if ( camp->nomcampo() != "debe" && camp->nomcampo() != "haber" ) {
+    if ( camp->nomcampo() != "debe" && camp->nomcampo() != "haber" && camp->nomcampo() != "fecha" ) {
         _depura ( "END SubForm2Bc::pressedPlus", 0, "Campo incorrecto" );
         return;
     } // end if
+
+
+	if (camp->nomcampo() == "fecha") {
+	_depura("algo", 2);
+        SDBRecord *recant = lineaat ( row - 1 );
+        if ( recant ) {
+            rec->setDBvalue ( "fecha", recant->DBvalue("fecha") );
+	} // end if
+	return;
+	} // end if
 
     /// Ponemos los campos a cero en esta fila
     rec->setDBvalue ( "debe", "0" );
