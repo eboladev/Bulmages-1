@@ -75,6 +75,6 @@ add_dependencies(libbulmafact bulmalib)
 add_dependencies(bulmafact libbulmafact)
 
 install_targets(/bin bulmafact)	
-install_targets(/lib/bulmafact libbulmafact)                   
+install_targets(/lib libbulmafact)                   
 
 

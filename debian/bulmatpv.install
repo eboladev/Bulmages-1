@@ -1,3 +1,4 @@
 usr/bin/bulmatpv
 usr/share/bulmages/splashbulmatpv.jpg
 etc/bulmages/bulmatpv.conf
+usr/lib/libbulmatpv*

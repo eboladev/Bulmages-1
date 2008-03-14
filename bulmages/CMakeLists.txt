@@ -80,6 +80,11 @@ add_subdirectory(bulmages)
 message(STATUS "Working on bulmatpv")
 add_subdirectory(bulmatpv)
 
+########### bulmasetup ##########
+message(STATUS "Working on bulmasetup")
+add_subdirectory(bulmasetup)
+
+
 ########### private code ########
 if(EXISTS "${CMAKE_SOURCE_DIR}/CMakeLists.txt.private")
    message(STATUS "Private code inserted")

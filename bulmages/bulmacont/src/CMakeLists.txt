@@ -130,4 +130,4 @@ add_dependencies(libbulmacont bulmalib)
 add_dependencies(bulmacont libbulmacont)
 
 install_targets(/bin bulmacont)	
-install_targets(/lib/bulmacont libbulmacont)                   
+install_targets(/lib/ libbulmacont)                   

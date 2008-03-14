@@ -1,4 +1,16 @@
+bulmages (0.11+svn20080314+1) unstable; urgency=low
+
+  [Leopold Palomo Avellaneda]
+  * New subversion upstream. Solves warnings of linkages.
+  * Added postinst and postrm to bulmacont, bulmafact and bulmatpv
+    because now they have libs.
+  * Added conffiles to avoid problems with the updates
+  
+
+ -- Leopold Palomo Avellaneda <leo@alaxarxa.net>  Fri, 14 Mar 2008 18:39:31 +0100
+
 bulmages (0.11+svn20080308+1) unstable; urgency=low
+  
   [Leopold Palomo Avellaneda]
   * Added Uploaders: Miguel Gea Milvaques, Tomeu Borràs Riera and 
     Leopold Palomo Avellaneda

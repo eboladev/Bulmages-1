@@ -19,7 +19,9 @@ usr/share/bulmages/ainteligentes/factclientes16iva.xml
 usr/share/bulmages/ainteligentes/pago.xml
 usr/share/bulmages/splashbulmacont.jpg
 usr/share/bulmages/canuales/Balance_Abreviado.xml  
-usr/share/bulmages/canuales/balance.xml  
+usr/share/bulmages/canuales/Balance_Situacion_Abreviado.xml
 usr/share/bulmages/canuales/Balance.xml  
 usr/share/bulmages/canuales/Perdidas_Ganancias_Abreviado.xml  
 usr/share/bulmages/canuales/perdigan.xml
+usr/lib/libbulmacont.so.*
+
