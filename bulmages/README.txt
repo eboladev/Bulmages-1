@@ -4,7 +4,7 @@ Instalacion del software de gestion BulmaGes
 http://www.iglues.org
 --------------------------------------------
 
-BulmaGés 0.10.1 (octubre 2007)
+BulmaGés 0.11.0 (marzo 2008)
 
 
 Introducción
@@ -19,7 +19,8 @@ b) Facturación - BulmaFact
 c) Terminal Punto de Venta - BTPV
 
 
-En la actualidad, la aplicación de contabilidad (BulmaCont), facturacion (BulmaFact) y el terminal Punto de Venta ya son operativos.
+En la actualidad, la aplicación de contabilidad (BulmaCont), facturacion (BulmaFact)
+y el terminal Punto de Venta ya son operativos.
 
 Características
 ===============
@@ -39,13 +40,12 @@ Estos son los directorios principales del svn y sus respectivas explicaciones.
 
 bulmafact 
 ---------- 
-Este directorio contiene el codigo fuente de la facturacion. Es un programa en
-C++ y Qt. En las code partys trabajamos sobre ello, aunque Josep Burcion tiene
-un repositorio especial con el programa. Luego tendremos que adaptarlo. Todo
+Este directorio contiene el codigo fuente de la facturación. Es un programa escrito en
+C++ y Qt. En las 'code partys' trabajamos sobre ello. Luego tendremos que adaptarlo. Todo
 depende del bulmalib. 
 
-Actualmente, (versión 0.10.1) bulmafact realiza las tareas de facturación y de gestión habituales de una empresa
-y contiene los siguientes plugins:
+Actualmente, (versión 0.11.0) bulmafact realiza las tareas de facturación y de gestión
+habituales de una empresa y contiene los siguientes plugins:
 
 1) comercialbf (Plugin de Comerciales)
 
@@ -62,15 +62,16 @@ Ejemplo de código para desarrollar un plugin a medida.
 
 4) barcodeopen (Plugin de apertura Rapida a partir de códigos de barras)
 
-Permite abrir cualquier documento identificado con el codigo de barras. Basta con seleccionar la apertura rapida, pasar el documento por el lector y se abrira automaticamente el documento correspondiente.
+Permite abrir cualquier documento identificado con el codigo de barras. Basta con seleccionar la
+apertura rápida, pasar el documento por el lector y se abrira automáticamente el documento correspondiente.
 
 5) plugincatalogo (Plugin de catálogos)
 
-Permite la impresion de catalogos de productos
+Permite la impresión de catálogos de productos
 
 6) plugincontratos (Plugin de Informes de Clientes)
 
-Permite el control de contratos con clientes y generar una facturacion asociada a dichos contratos.
+Permite el control de contratos con clientes y generar una facturación asociada a dichos contratos.
 
 7) impresionesmultiples (Plugin de Impresiones Multiples)
 
@@ -78,7 +79,8 @@ Agrega un checkbox en cada uno de los miembros del listado de presupuestos, pedi
 Agrega tres botones de menu en cada uno de dichos listados con las siguientes funcionalidades:
 	1.- Invertir Seleccion: Invierte el estado de los checkbox agregados.
 	2.- Imprimir multiples elementos: Imprime los elementos seleccionados de forma directa.
-	3.- Envio multiple de e-mail: Prepara el envio de e-mail con los documentos seleccionados como adjuntos.
+	3.- Envio múltiple de e-mail: Prepara el envio de e-mail con los documentos seleccionados como
+	    adjuntos.
 
 8) plugininformeclientes (Plugin de Informes de Clientes)
 
@@ -90,19 +92,19 @@ Permite el control de inventarios.
 
 10) pluginmail (Plugin de  envio de documentos por e-mail)
 
-Permite el envio de documentos generados con BulmaGés via e-mai mediante un boton en el programa. 
+Permite el envio de documentos generados con BulmaGés via e-mai mediante un botón en el programa. 
 
 11) pluginpromedios (Plugin promedios)
 
-Muestra el promédio de compra y de venta por artículo.
+Muestra el promedio de compra y de venta por artículo.
 
 12) pluginq19 (Plugin q19)
 
-Genera un fichero con formato q19 para los cobros en una entidad bancária.
+Genera un fichero con formato q19 para los cobros en una entidad bancaria.
 
 13) pluginsyncbulmacont (Sincronizacion con Bulmacont)
 
-Todas las operaciones que se realicen con faturacion serán traspasadas a contabilidad.
+Todas las operaciones que se realicen con faturación serán traspasadas a contabilidad.
 
 14) plugintarifas (Plugin de tarifas)
 
@@ -110,7 +112,7 @@ Permite especificar diferentes tarifas donde el mismo artículo puede tener prec
 
 15) pluginticket (Plugin de  impresion de tickets)
 
-Permite la impresion de tickets.
+Permite la impresión de tickets.
 
 16) plugintrazabilidad (Plugin de Trazabilidad)
 
@@ -121,7 +123,7 @@ Permite el control de trazabilidad por lotes. Agrega una tabla de movimientos de
 
 Permite especificar diferentes tipos de trabajo de los diferentes trabajadores.
 
-18) pluginvehiculos (Plugin de vehiculos)
+18) pluginvehiculos (Plugin de vehículos)
 
 Permite la gestión de una flota de vehículos.
 
@@ -137,7 +139,7 @@ Permite registras las facturas para hacer el listado modelo 377.
 
 2) pluginadocumental (Plugin de documentos)
 
-Permite introducir documentos. Actualmente (0.10.1) no está operativo.
+Permite introducir documentos. Actualmente (0.11.0) no está operativo.
 
 3) plugincorrector (Plugin corrector)
 
@@ -155,7 +157,9 @@ Permite generar balances en una hoja de cálculo.
 bulmalib 
 -------- 
 Hay algunas librerias que son comunes a varios de los proyectos. postgresiface,
-configuracion, algunos widgets raros. Son las librerias principales de la suite. A partir de la versión 0.10.x se intentará que todas las versiones x.y.z con numeración x.y igual sean compatibles en ABI de libraria y base de datos. Bulmalib contiene los siguientes plugins: 
+configuracion, algunos widgets raros. Son las librerias principales de la suite. A partir de la versión
+0.11.x se intentará que todas las versiones x.y.z con numeración x.y igual sean compatibles en ABI de
+libraria y base de datos. Bulmalib contiene los siguientes plugins: 
 - pluginclipboardbf. Permite el intercambio con hojas de cálculo kspread i oocalc utilizando el portapapeles.
 - pluginsubformods. Permite el intercambio utilizando ficheros OpenDocument. Necesita una libreria de python.
 - pluginsubformsxc. Permite el intercambio utilizando ficheros OpenOffice. Necesita una libreria de perl.
@@ -163,9 +167,12 @@ configuracion, algunos widgets raros. Son las librerias principales de la suite.
 
 bulmatpv 
 --------- 
-Contiene el terminal punto de venta. El programa permite vender y controlar el hardware especifico de venta. Impresoras de Tickets y Lectores de codigos de Barras. En este programa la velocidad de las operaciones es lo fundamental.
+Contiene el terminal punto de venta. El programa permite vender y controlar el hardware específico de venta.
+Impresoras de Tickets y Lectores de códigos de Barras. En este programa la velocidad de las operaciones es
+lo fundamental.
 
-BulmaTPV es adaptabla a los distintos modelos de negocio gracias a sus sistema de plugins que dominan toda la interficie gráfica del programa.
+BulmaTPV es adaptabla a los distintos modelos de negocio gracias a sus sistema de plugins que dominan toda
+la interficie gráfica del programa.
 
 bulmages 
 ------- 
@@ -174,23 +181,23 @@ Contiene el lanzador del programa.
 installbulmages 
 --------------- 
 Con el directorio fuentes obtenemos el binario de bulmages. En este directorio
-tenemos todo lo necesario para realizar una instalacion.
+tenemos todo lo necesario para realizar una instalación.
 Lo que se traduce en que: 
-1.- Si modificas la base de datos tienes que plasmar los cambios aqui para que
+1.- Si modificas la base de datos tienes que plasmar los cambios aquí para que
 se hagan en las nuevas versiones. Por coherencia de datos tenemos los scripts de
-creacion de una base de datos nueva y los scripts de cambios entre versiones y
+creación de una base de datos nueva y los scripts de cambios entre versiones y
 hay que mantenerlos.
 
 - Los scripts de instalacion estan en dbmodels/crear
 - Los scripts de actualizacion estan en dbmodels/actualizar
  
-2.- Tambien esta el archivos bulmages.conf que se instalara en las próximas
-versiones. Por tanto todo lo que se agrega en la configuracion debe ir tambien
-reflejado en su correspondiente archivo aquí. Tambien hay unos archivos de
+2.- También está el archivos bulmages.conf que se instalará en las próximas
+versiones. Por tanto todo lo que se agrega en la configuración debe ir también
+reflejado en su correspondiente archivo aquí. También hay unos archivos de
 revisión entre versiones del archivo. Para que las actualizaciones no cambien
-toda la configuracion del sistema. 
+toda la configuración del sistema. 
 
-3.- Tambien estan los scripts de instalacion.
+3.- También están los scripts de instalación.
 
 - installbulmages-server que monta las bases de datos y prepara un servidor.
 - installbulmages-client que monta un clienta.
@@ -212,10 +219,15 @@ COMPILACION
 Para compilar basta con hacer en el directorio que se desee (para compilar todo
 lo que haya dentro del directorio)
 
-$qmake-qt4
-$make
+Se necesita la versión 2.4.8 de cmake
 
-Los ejecutables estaran dentro de installbulmages
+dentro del directorio trunk hacer:
+
+1)	mkdir build
+2)	cd build
+3)	cmake ../
+4)	make
+
 
 INSTALACION
 -----------
@@ -239,7 +251,7 @@ del
 directorio de desarrollo.
 
 Estos son los archivos que se deben enlazar:
-/usr/lib/libbulmages.0.10.1.so
+/usr/lib/libbulmages.0.11.0.so
 /usr/bin/bulmages
 /usr/bin/bulmafact
 /usr/bin/bulmacont
