@@ -124,7 +124,7 @@ else
 fi
 
 
-# Hacemos una insercion inicial de las bases de datos.
+# Creamos el directorio principal de bulmages.
    info "Inicializando directorio /usr/share/bulmages.\n"
    tiempo
    if [ ! -e /usr/share/bulmages ]; then
