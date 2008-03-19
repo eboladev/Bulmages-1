@@ -213,7 +213,8 @@ void DiarioView::presentar()
         if ( mui_asAbiertos->isChecked() ) {
             query += " LEFT JOIN (SELECT idregistroiva, factura, idborrador FROM registroiva) AS t3 ON t3.idborrador = " + tabla + ".idborrador ";
         } else {
-            query += " LEFT JOIN (SELECT idregistroiva, factura, idborrador FROM registroiva) AS t3 ON t3.idborrador IN (SELECT idborrador FROM borrador WHERE idapunte = " + tabla + ".idapunte)";
+	    query += " LEFT JOIN (SELECT idborrador AS idborr, idapunte AS idap FROM borrador) AS t9 ON apunte.idapunte = t9.idap ";
+            query += " LEFT JOIN (SELECT idregistroiva, factura, idborrador FROM registroiva) AS t3 ON t3.idborrador = t9.idborr";
         } // end if
         query += " LEFT JOIN (SELECT idcuenta AS idcontrapartida, codigo AS codcontrapartida FROM cuenta) as t8 ON t8.idcontrapartida = " + tabla + ".contrapartida";
 

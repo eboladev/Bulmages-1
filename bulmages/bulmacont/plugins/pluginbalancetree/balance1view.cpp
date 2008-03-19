@@ -32,6 +32,8 @@
 #include "selectcanalview.h"
 #include "selectccosteview.h"
 
+#include "blprogressbar.h"
+
 /// Incluimos las imagenes que catalogan los tipos de cuentas.
 
 #include "images/cactivo.xpm"
@@ -366,9 +368,14 @@ void BalanceTreeView::presentar()
     double tsaldoant = 0, tdebe = 0, thaber = 0, tsaldo = 0;
     generarBalance();
 
+    /// Barra de progreso pq el tema tarda.
+    BLProgressBar barra;
+    barra.show();
+    barra.setValue(0);
 
     query = "SELECT * FROM balancetemp WHERE debe <> 0  OR haber <> 0 ORDER BY padre, codigo";
     cursor2 *cursorapt1 = empresaBase() ->cargacursor ( query );
+    barra.setRange(0, cursorapt1->numregistros());
     /// Calculamos cuantos registros van a crearse y dimensionamos la tabla.
     num1 = cursorapt1->numregistros();
     listado->clear();
@@ -387,11 +394,6 @@ void BalanceTreeView::presentar()
         } else {
             it = new QTreeWidgetItem ( listado );
         } // end if
-
-
-
-
-        it->treeWidget() ->expandItem ( it );
 
         /// Acumulamos los totales para al final poder escribirlos.
         tsaldoant += atof ( cursorapt1->valor ( "asaldo" ).toAscii() );
@@ -486,10 +488,14 @@ void BalanceTreeView::presentar()
 
 
         cursorapt1->siguienteregistro();
+	barra.setValue(barra.value() + 1);
     } // end while
 
     /// Vaciamos el cursor de la base de datos.
     delete cursorapt1;
+
+    /// Expandimos el listado.
+    listado->expandAll();
 
     /// Eliminamos la tabla temporal y cerramos la transacci&oacute;n.
     query.sprintf ( "DROP TABLE balancetemp" );

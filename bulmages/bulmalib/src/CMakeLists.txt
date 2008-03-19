@@ -60,7 +60,8 @@ set(bulmalib_SRCS postgresiface2.cpp configuracion.cpp numerocuenta.cpp
          paisview.cpp
          busquedaprovincia.cpp
          qradiobutton2.cpp
-         qcombobox2.cpp)
+         qcombobox2.cpp
+         blprogressbar.cpp)
 
 set(bulmalib_MOCS 
          logpass.h 
@@ -110,7 +111,8 @@ set (bulmalib_HDRS abreempresaview.h
 			qtexteditdelegate.h
 			qworkspace2.h
 			subform.h
-			subform3.h)
+			subform3.h
+			blprogressbar.h)
 #headers that are not moc'ed
 #			postgresiface2.h 
 #			configuracion.h 

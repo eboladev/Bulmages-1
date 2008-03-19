@@ -31,7 +31,7 @@
 #include <QDomNode>
 
 #include "subform3.h"
-
+#include "blprogressbar.h"
 
 /// SubForm3, constructor de la clase base para subformularios.
 /**
@@ -1061,6 +1061,13 @@ void SubForm3::cargar ( cursor2 *cur )
     QColor colorfondo = m_colorfondo1;
     bool coloraponerfondo = FALSE;
 
+    /// Preparamos la barra de progreso
+    BLProgressBar barra;
+    if(cur->numregistros() > 100) {
+	barra.setValue(0);
+	barra.show();
+    } // end if
+
     /// Desactivamos el sorting debido a un error en las Qt4.
     mui_list->setSortingEnabled ( FALSE );
 
@@ -1142,6 +1149,7 @@ void SubForm3::cargar ( cursor2 *cur )
 
     /// Inicializamos la tabla con las filas necesarias.
     mui_list->setRowCount ( m_lista.count() );
+    barra.setRange(0, m_lista.size());
     for ( int i = 0; i < m_lista.size(); ++i ) {
         reg = m_lista.at ( i );
         QRegExp patronFecha ( "^.*00:00:00.*$" ); /// Para emparejar los valores fechas.
@@ -1155,6 +1163,7 @@ void SubForm3::cargar ( cursor2 *cur )
             /// Rellena la tabla con los datos.
             mui_list->setItem ( i, j, camp );
         } // end for
+	barra.setValue(i);
     } // end for
 
     /// Establece el "rowSpan" de la tabla.
