@@ -2024,11 +2024,16 @@ void SubForm3::on_mui_list_pressedMinus ( int row, int col )
 QString SubForm3::imprimir()
 {
     _depura ( "SubForm3::imprimir", 0 );
+    BLProgressBar barra;
+    barra.show();
+    barra.setRange(0, mui_listcolumnas->rowCount() + mui_list->rowCount());
+    barra.setValue(0);
     QString fitxersortidarml = "<tr>\n";
     for ( int h = 0; h < mui_listcolumnas->rowCount(); ++h ) {
         if ( mui_listcolumnas->item ( h, 0 ) ->checkState() == Qt::Checked ) {
             fitxersortidarml += "    <td>" + XMLProtect ( mui_listcolumnas->item ( h, 2 ) ->text() ) + "</td>\n";
         } // end if
+	barra.setValue(barra.value() +1);
     } // end for
     fitxersortidarml += "</tr>\n";
     for ( int i = 0; i < mui_list->rowCount(); ++i ) {
@@ -2040,6 +2045,7 @@ QString SubForm3::imprimir()
             } // end if
         } // end for
         fitxersortidarml += "</tr>\n";
+	barra.setValue(barra.value() +1);
     } // end for
     _depura ( "END SubForm3::imprimir", 0 );
     return fitxersortidarml;

@@ -41,6 +41,8 @@
 #include "company.h"
 #include "dbrecord.h"
 #include "articulolist.h"
+#include "blprogressbar.h"
+
 
 ///
 /**
@@ -124,9 +126,16 @@ void InformeQToolButton::click()
     file.close();
     QString fitxersortidatxt = "";
 
+
     /// Sacamos los datos del cliente.
     QString SQLQuery = "SELECT * FROM cliente ";
     cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
+
+    /// Mostramos la barra de progreso
+    BLProgressBar barra;
+    barra.setRange(0, cur->numregistros());
+    barra.show();
+
     while ( !cur->eof() ) {
         QString gen = generarCliente ( cur->valor ( "idcliente" ) );
         if ( gen != "" ) {
@@ -137,6 +146,7 @@ void InformeQToolButton::click()
             fitxersortidatxt += "\n<nextFrame/>\n";
         } // end if
         cur->siguienteregistro();
+	barra.setValue(barra.value() +1);
     } // end while
     delete cur;
 
@@ -475,6 +485,12 @@ QString InformeArtQToolButton::generarArticulos()
     SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlfacturap) AS cantlfacturapt  FROM lfacturap GROUP BY idarticulo) AS t6 ON t6.idarticulo = articulo.idarticulo ";
     SQLQuery += " WHERE  (cantlpresupuestot <>0 OR cantlpedidoclientet <> 0 OR cantlalbarant <> 0 OR cantlfacturat <> 0 OR cantlpedidoproveedort <> 0 OR cantlalbaranpt <> 0 OR cantlfacturapt <> 0) ";
     cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
+
+    /// Generamos la barra de progreso.
+    BLProgressBar barra;
+    barra.setRange(0, cur->numregistros());
+    barra.show();
+
     while ( !cur->eof() ) {
         fitxersortidatxt += "<tr>\n";
         fitxersortidatxt += "    <td>" + cur->valor ( "nomarticulo" ) + "</td>\n";
@@ -487,6 +503,7 @@ QString InformeArtQToolButton::generarArticulos()
         fitxersortidatxt += "    <td>" + cur->valor ( "cantlfacturat" ) + "</td>\n";
         fitxersortidatxt += "</tr>\n";
         cur->siguienteregistro();
+	barra.setValue(barra.value() +1);
     } // end while
     delete cur;
 

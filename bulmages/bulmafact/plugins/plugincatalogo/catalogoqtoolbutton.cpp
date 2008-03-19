@@ -40,7 +40,7 @@
 
 #include "company.h"
 #include "dbrecord.h"
-
+#include "blprogressbar.h"
 
 ///
 /**
@@ -146,8 +146,13 @@ QString CatalogoQToolButton::detalleArticulos()
     _depura ( "CatalogoQToolButton::detalleArticulos", 0 );
     QString texto = "";
 
+    BLProgressBar barra;
+    barra.show();
+
 
     cursor2 *cur = empresaBase() ->cargacursor ( m_articuloList->formaQuery() );
+    barra.setRange(0, cur->numregistros());
+    barra.setValue(0);
     while ( !cur->eof() ) {
         texto += "<blockTable style=\"tabla1\">\n";
         texto += "<tr>\n";
@@ -167,6 +172,7 @@ QString CatalogoQToolButton::detalleArticulos()
         texto += "</tr>\n";
         texto += "</blockTable>";
         cur->siguienteregistro();
+	barra.setValue(barra.value() +1);
     } // end while
     delete cur;
     _depura ( "END CatalogoQToolButton::detalleArticulos()", 0 );

@@ -22,6 +22,8 @@
 
 #include "pluginsubformsxc.h"
 #include "funcaux.h"
+#include "blprogressbar.h"
+
 
 #include <QFile>
 #include <QTextStream>
@@ -150,6 +152,11 @@ void myplugsubformsxc::sacaSXC()
 
     y += 2;
 
+    /// Tratamos el progreso de la operacion.
+    BLProgressBar barra;
+    barra.setRange(0, subf->mui_list->rowCount()-1);
+    barra.show();
+
     /// Sacamos el contenido
     for ( int i = 0; i < subf->mui_list->rowCount(); ++i ) {
 
@@ -170,6 +177,7 @@ void myplugsubformsxc::sacaSXC()
             } // end if
         } // end forXMLProtect(subf->mui_list->item(i, j)->text())
         y++;
+	barra.setValue(i);
     } // end for
 
 
