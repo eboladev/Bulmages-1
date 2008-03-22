@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import sys
 import os
 from PyQt4.QtGui import *
@@ -47,11 +49,11 @@ class NuevaContabilidad(QtGui.QDialog, Ui_NuevaContabilidadBase, PluginsBulmaSet
 	self.mui_plugins.setRowCount(len(self.pluginsbulmacont))
 	self.i = 0
 	while (self.i < len(self.pluginsbulmacont)):
-		self.check = QTableWidgetItem(QString(self.pluginsbulmacont[self.i][0]))
+		self.check = QTableWidgetItem(QtGui.QApplication.translate("MainWindow", self.pluginsbulmacont[self.i][0], None, QtGui.QApplication.UnicodeUTF8))
 		self.check.setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
 		self.check.setCheckState(Qt.Unchecked)
 		self.mui_plugins.setItem(self.i, 0, self.check)
-		self.mui_plugins.setItem(self.i , 1 , QTableWidgetItem(self.pluginsbulmacont[self.i][2]))
+		self.mui_plugins.setItem(self.i , 1 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmacont[self.i][2], None, QtGui.QApplication.UnicodeUTF8)))
 		self.mui_plugins.setRowHeight(self.i, 50)
 		self.i = self.i + 1
 	
@@ -63,7 +65,7 @@ class NuevaContabilidad(QtGui.QDialog, Ui_NuevaContabilidadBase, PluginsBulmaSet
 		self.writecommand('Tratando ' + self.pluginsbulmacont[self.i][0])
 		if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
 			self.writecommand('Ha que actualizar ' + self.pluginsbulmacont[self.i][0])
-			self.command = 'su postgres -c \"psql -t -f  /usr/share/bulmages/dbmodels/actualizar/' + self.pluginsbulmacont[self.i][4] +' '+ self.nomdb +'\"'
+			self.command = 'su postgres -c \"psql -t -f  ' + self.pathdbparches + self.pluginsbulmacont[self.i][4] +' '+ self.nomdb +'\"'
 			self.writecommand(self.command)
 			self.process.start(self.command)
 			self.process.waitForFinished(-1)
@@ -73,8 +75,8 @@ class NuevaContabilidad(QtGui.QDialog, Ui_NuevaContabilidadBase, PluginsBulmaSet
 
     def writeConfig(self):
 	self.writecommand('ESCRIBIENDO CONFIGURACION')
-	self.writecommand("Escribiendo configuracion en /etc/bulmages")
-	self.file = QFile("/etc/bulmages/bulmacont_" + self.nomdb + ".conf");
+	self.writecommand("Escribiendo configuracion en " + self.configfiles)
+	self.file = QFile(self.configfiles + "bulmacont_" + self.nomdb + ".conf");
 	if not(self.file.open(QIODevice.WriteOnly | QIODevice.Text)):
 		return;
 	self.out = QTextStream(self.file)
@@ -106,13 +108,13 @@ class NuevaContabilidad(QtGui.QDialog, Ui_NuevaContabilidadBase, PluginsBulmaSet
 	self.process.waitForFinished(-1)
 	
 	# Cargamos la esquematica de la base de datos
-	self.command = 'su postgres -c "psql ' + self.nomdb + ' < /usr/share/bulmages/dbmodels/crear/bulmacont/bulmacont_schema.sql"'
+	self.command = 'su postgres -c "psql ' + self.nomdb + ' < '+ self.pathdbbulmacont +'bulmacont_schema.sql"'
 	self.writecommand(self.command)
 	self.process.start(self.command)
 	self.process.waitForFinished(-1)
 
 	# Cargamos los datos minimos
-	self.command = 'su postgres -c "psql ' + self.nomdb + ' < /usr/share/bulmages/dbmodels/crear/bulmacont/t_configuracion_data.sql"'
+	self.command = 'su postgres -c "psql ' + self.nomdb + ' < ' + self.pathdbbulmacont + 't_configuracion_data.sql"'
 	self.writecommand(self.command)
 	self.process.start(self.command)
 	self.process.waitForFinished(-1)

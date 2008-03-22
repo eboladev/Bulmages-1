@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import sys
 import os
 from PyQt4.QtGui import *
@@ -17,6 +19,7 @@ class ListEmpresas(QtGui.QDialog, Ui_ListEmpresasBase):
 	self.connect(self.process, SIGNAL("finished()"), self.finished)
 	self.connect(self.process, SIGNAL("started()"), self.started)
 	
+	self.show()
 	self.buscarEmpresas()
 
 	self.mui_listado.resizeColumnsToContents()
@@ -64,6 +67,9 @@ class ListEmpresas(QtGui.QDialog, Ui_ListEmpresasBase):
 	self.arrdatabase = self.databases.split(QString(" "))
 	self.mui_listado.setRowCount(self.arrdatabase.count() -1)
 	self.i = 1
+	self.progress = QtGui.QProgressBar(self)
+	self.progress.setRange(0, self.arrdatabase.count())
+	self.progress.show()
 	while (self.i < self.arrdatabase.count()):
 		self.writecommand(self.arrdatabase[self.i])
 		self.mui_listado.setItem(self.i-1 , 1 , QTableWidgetItem(self.arrdatabase[self.i].replace('\n', '')))
@@ -76,7 +82,8 @@ class ListEmpresas(QtGui.QDialog, Ui_ListEmpresasBase):
 		if (self.tipo == ''):
 			self.mui_listado.hideRow(self.i-1)
 		self.i = self.i + 1
-	
+		self.progress.setValue(self.progress.value() + 1)
+	self.progress.hide()
 
     def on_mui_listado_cellDoubleClicked(self, row, col):
 	self.mui_textBrowser.append(QString("<font color =\"#0000FF\">DOBLECLICK ")+QString.number(row)+QString("</font>"))

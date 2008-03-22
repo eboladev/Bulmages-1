@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import sys
 import os
 from PyQt4.QtGui import *
@@ -70,7 +72,7 @@ class ModificarFacturacion(QtGui.QDialog, Ui_ModificarFacturacionBase, PluginsBu
 	self.revisiones = ["revf-0.5.9.sql","revf-0.9.1.sql", "revf-0.9.3.sql", "revf-0.10.sql"]
 	#Parcheamos todo lo que hay que parchear
 	for self.parche in self.revisiones:
-		self.command = 'su postgres -c \"psql -t -f  /usr/share/bulmages/dbmodels/actualizar/' + self.parche + ' ' + self.database  + '\"'
+		self.command = 'su postgres -c \"psql -t -f  ' + self.pathdbparches + self.parche + ' ' + self.database  + '\"'
 		self.writecommand(self.command)
 		self.process.start(self.command)
 		self.process.waitForFinished(-1)
@@ -107,7 +109,7 @@ class ModificarFacturacion(QtGui.QDialog, Ui_ModificarFacturacionBase, PluginsBu
 	self.version = self.execQuery('SELECT valor FROM configuracion WHERE nombre = \'' + plugin +'\'').replace('\n','').replace(' ','')
 	if (self.version != ''):
 		return self.version
-	self.command = 'grep '+libreria+' /etc/bulmages/bulmafact_' + self.database + '.conf'
+	self.command = 'grep '+libreria+' '+self.configfiles+'bulmafact_' + self.database + '.conf'
 	self.writecommand(self.command)
 	self.process.start(self.command)
 	self.process.waitForFinished(-1)
@@ -124,14 +126,14 @@ class ModificarFacturacion(QtGui.QDialog, Ui_ModificarFacturacionBase, PluginsBu
 	self.i = 0
 	while (self.i < len(self.pluginsbulmafact)):
 		self.versioninst = self.buscaPluginInstalado(self.pluginsbulmafact[self.i][3], self.pluginsbulmafact[self.i][1])
-		self.check = QTableWidgetItem(QString(self.pluginsbulmafact[self.i][0]))
+		self.check = QTableWidgetItem(QtGui.QApplication.translate("MainWindow", self.pluginsbulmafact[self.i][0], None, QtGui.QApplication.UnicodeUTF8))
 		self.check.setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
 		self.check.setCheckState(Qt.Unchecked)
 		if (self.versioninst != ''):
 			self.check.setCheckState(Qt.Checked)
 		self.mui_plugins.setItem(self.i, 0, self.check)
 		self.mui_plugins.setItem(self.i, 2, QTableWidgetItem(self.versioninst))
-		self.mui_plugins.setItem(self.i , 1 , QTableWidgetItem(self.pluginsbulmafact[self.i][2]))
+		self.mui_plugins.setItem(self.i , 1 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmafact[self.i][2], None, QtGui.QApplication.UnicodeUTF8)))
 		self.mui_plugins.setRowHeight(self.i, 50)
 		self.i = self.i + 1
 	
@@ -143,7 +145,7 @@ class ModificarFacturacion(QtGui.QDialog, Ui_ModificarFacturacionBase, PluginsBu
 		self.writecommand('Tratando ' + self.pluginsbulmafact[self.i][0])
 		if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
 			self.writecommand('Ha que actualizar ' + self.pluginsbulmafact[self.i][0])
-			self.command = 'su postgres -c \"psql -t -f  /usr/share/bulmages/dbmodels/actualizar/' + self.pluginsbulmafact[self.i][4] + '\"'
+			self.command = 'su postgres -c \"psql -t -f  '+ self.pathdbparches + self.pluginsbulmafact[self.i][4] + '\"'
 			self.writecommand(self.command)
 			self.process.start(self.command)
 			self.process.waitForFinished(-1)
@@ -153,8 +155,8 @@ class ModificarFacturacion(QtGui.QDialog, Ui_ModificarFacturacionBase, PluginsBu
 
     def on_mui_aceptar_released(self):
 	self.writecommand('ESCRIBIENDO CONFIGURACION')
-	self.writecommand("Escribiendo configuracion en /etc/bulmages")
-	self.file = QFile("/etc/bulmages/bulmafact_" + self.database + ".conf");
+	self.writecommand("Escribiendo configuracion en "+self.configfiles)
+	self.file = QFile(self.configfiles + "bulmafact_" + self.database + ".conf");
 	if not(self.file.open(QIODevice.WriteOnly | QIODevice.Text)):
 		return;
 	self.out = QTextStream(self.file)

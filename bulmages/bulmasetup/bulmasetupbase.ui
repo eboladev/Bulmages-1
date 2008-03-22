@@ -44,7 +44,7 @@
      <string/>
     </property>
     <property name="pixmap" >
-     <pixmap>../images/logotipo/variaciones 18/variacion 18 - logotipo 02.jpg</pixmap>
+     <pixmap>bulmasetup_iglues.jpg</pixmap>
     </property>
    </widget>
    <widget class="QPushButton" name="mui_crearusuario" >
@@ -66,7 +66,7 @@
      <string>Nuevo Usuario de PostgreSQL</string>
     </property>
     <property name="icon" >
-     <iconset>../images/png/i_usuario.xpm</iconset>
+     <iconset>bulmasetup_usuario.xpm</iconset>
     </property>
     <property name="iconSize" >
      <size>
@@ -94,7 +94,7 @@
      <string>Nueva Empresa de Contabilidad</string>
     </property>
     <property name="icon" >
-     <iconset>../images/png/bulmacont.png</iconset>
+     <iconset>bulmasetup_bulmacont.png</iconset>
     </property>
     <property name="iconSize" >
      <size>
@@ -122,7 +122,7 @@
      <string>Nueva Empresa de Facturacion / TPV</string>
     </property>
     <property name="icon" >
-     <iconset>../images/png/bulmafact.png</iconset>
+     <iconset>bulmasetup_bulmafact.png</iconset>
     </property>
     <property name="iconSize" >
      <size>
@@ -166,7 +166,7 @@ p, li { white-space: pre-wrap; }
      <string>Salir</string>
     </property>
     <property name="icon" >
-     <iconset>../images/png/i_exit.png</iconset>
+     <iconset>bulmasetup_exit.png</iconset>
     </property>
    </widget>
    <widget class="Line" name="line" >
@@ -201,7 +201,7 @@ p, li { white-space: pre-wrap; }
      <string>Administrar Empresas Existentes</string>
     </property>
     <property name="icon" >
-     <iconset>../images/png/i_empresa.xpm</iconset>
+     <iconset>bulmasetup_empresa.xpm</iconset>
     </property>
     <property name="iconSize" >
      <size>
@@ -226,10 +226,10 @@ p, li { white-space: pre-wrap; }
      <enum>Qt::LeftToRight</enum>
     </property>
     <property name="text" >
-     <string>Restaurar desde una Copia de Seguridad</string>
+     <string>Restaurar una Copia de Seguridad</string>
     </property>
     <property name="icon" >
-     <iconset>../images/png/i_cargaEmpresa.xpm</iconset>
+     <iconset>bulmasetup_cargarempresa.xpm</iconset>
     </property>
     <property name="iconSize" >
      <size>

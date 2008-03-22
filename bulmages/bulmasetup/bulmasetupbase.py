@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'bulmasetupbase.ui'
 #
-# Created: Wed Mar 12 00:05:17 2008
+# Created: Sat Mar 22 00:56:29 2008
 #      by: PyQt4 UI code generator 4.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -27,14 +27,14 @@ class Ui_MainWindow(object):
         self.label.setGeometry(QtCore.QRect(20,20,209,150))
         self.label.setMinimumSize(QtCore.QSize(209,150))
         self.label.setMaximumSize(QtCore.QSize(209,150))
-        self.label.setPixmap(QtGui.QPixmap("../images/logotipo/variaciones 18/variacion 18 - logotipo 02.jpg"))
+        self.label.setPixmap(QtGui.QPixmap("bulmasetup_iglues.jpg"))
         self.label.setObjectName("label")
 
         self.mui_crearusuario = QtGui.QPushButton(self.centralwidget)
         self.mui_crearusuario.setGeometry(QtCore.QRect(250,30,291,61))
         self.mui_crearusuario.setFocusPolicy(QtCore.Qt.NoFocus)
         self.mui_crearusuario.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.mui_crearusuario.setIcon(QtGui.QIcon("../images/png/i_usuario.xpm"))
+        self.mui_crearusuario.setIcon(QtGui.QIcon("bulmasetup_usuario.xpm"))
         self.mui_crearusuario.setIconSize(QtCore.QSize(48,48))
         self.mui_crearusuario.setObjectName("mui_crearusuario")
 
@@ -42,7 +42,7 @@ class Ui_MainWindow(object):
         self.mui_crearbulmacont.setGeometry(QtCore.QRect(250,100,291,61))
         self.mui_crearbulmacont.setFocusPolicy(QtCore.Qt.NoFocus)
         self.mui_crearbulmacont.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.mui_crearbulmacont.setIcon(QtGui.QIcon("../images/png/bulmacont.png"))
+        self.mui_crearbulmacont.setIcon(QtGui.QIcon("bulmasetup_bulmacont.png"))
         self.mui_crearbulmacont.setIconSize(QtCore.QSize(48,48))
         self.mui_crearbulmacont.setObjectName("mui_crearbulmacont")
 
@@ -50,7 +50,7 @@ class Ui_MainWindow(object):
         self.mui_crearbulmafact.setGeometry(QtCore.QRect(250,170,291,61))
         self.mui_crearbulmafact.setFocusPolicy(QtCore.Qt.NoFocus)
         self.mui_crearbulmafact.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.mui_crearbulmafact.setIcon(QtGui.QIcon("../images/png/bulmafact.png"))
+        self.mui_crearbulmafact.setIcon(QtGui.QIcon("bulmasetup_bulmafact.png"))
         self.mui_crearbulmafact.setIconSize(QtCore.QSize(48,48))
         self.mui_crearbulmafact.setObjectName("mui_crearbulmafact")
 
@@ -61,7 +61,7 @@ class Ui_MainWindow(object):
 
         self.mui_salir = QtGui.QPushButton(self.centralwidget)
         self.mui_salir.setGeometry(QtCore.QRect(460,420,75,24))
-        self.mui_salir.setIcon(QtGui.QIcon("../images/png/i_exit.png"))
+        self.mui_salir.setIcon(QtGui.QIcon("bulmasetup_exit.png"))
         self.mui_salir.setObjectName("mui_salir")
 
         self.line = QtGui.QFrame(self.centralwidget)
@@ -74,7 +74,7 @@ class Ui_MainWindow(object):
         self.mui_adminempresas.setGeometry(QtCore.QRect(250,240,291,61))
         self.mui_adminempresas.setFocusPolicy(QtCore.Qt.NoFocus)
         self.mui_adminempresas.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.mui_adminempresas.setIcon(QtGui.QIcon("../images/png/i_empresa.xpm"))
+        self.mui_adminempresas.setIcon(QtGui.QIcon("bulmasetup_empresa.xpm"))
         self.mui_adminempresas.setIconSize(QtCore.QSize(48,48))
         self.mui_adminempresas.setObjectName("mui_adminempresas")
 
@@ -82,7 +82,7 @@ class Ui_MainWindow(object):
         self.mui_restbackup.setGeometry(QtCore.QRect(250,310,291,61))
         self.mui_restbackup.setFocusPolicy(QtCore.Qt.NoFocus)
         self.mui_restbackup.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.mui_restbackup.setIcon(QtGui.QIcon("../images/png/i_cargaEmpresa.xpm"))
+        self.mui_restbackup.setIcon(QtGui.QIcon("bulmasetup_cargarempresa.xpm"))
         self.mui_restbackup.setIconSize(QtCore.QSize(48,48))
         self.mui_restbackup.setObjectName("mui_restbackup")
         MainWindow.setCentralWidget(self.centralwidget)
@@ -105,5 +105,5 @@ class Ui_MainWindow(object):
         "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">de Datos para BulmaGés</p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_salir.setText(QtGui.QApplication.translate("MainWindow", "Salir", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_adminempresas.setText(QtGui.QApplication.translate("MainWindow", "Administrar Empresas Existentes", None, QtGui.QApplication.UnicodeUTF8))
-        self.mui_restbackup.setText(QtGui.QApplication.translate("MainWindow", "Restaurar desde una Copia de Seguridad", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_restbackup.setText(QtGui.QApplication.translate("MainWindow", "Restaurar una Copia de Seguridad", None, QtGui.QApplication.UnicodeUTF8))
 
