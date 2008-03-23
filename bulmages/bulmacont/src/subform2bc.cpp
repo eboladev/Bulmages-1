@@ -96,39 +96,50 @@ void SubForm2Bc::pressedPlus ( int row, int col, SDBRecord *rec, SDBCampo *camp 
     _depura ( "SubForm2Bc::pressedPlus", 0 );
 
     /// Si no es un campo de tipo debe o haber salimos.
+/*
     if ( camp->nomcampo() != "debe" && camp->nomcampo() != "haber" && camp->nomcampo() != "fecha" ) {
         _depura ( "END SubForm2Bc::pressedPlus", 0, "Campo incorrecto" );
         return;
     } // end if
-
+*/
 
 	if (camp->nomcampo() == "fecha") {
-	_depura("algo", 2);
-        SDBRecord *recant = lineaat ( row - 1 );
-        if ( recant ) {
-            rec->setDBvalue ( "fecha", recant->DBvalue("fecha") );
+		SDBRecord *recant = lineaat ( row - 1 );
+		if ( recant ) {
+		rec->setDBvalue ( "fecha", recant->DBvalue("fecha") );
+		} // end if
+		return;
 	} // end if
-	return;
+
+	if (camp->nomcampo() == "debe" || camp->nomcampo() == "haber") {
+
+		/// Ponemos los campos a cero en esta fila
+		rec->setDBvalue ( "debe", "0" );
+		rec->setDBvalue ( "haber", "0" );
+		
+		/// Hacemos las sumas y las restamos
+		Fixed debe = sumarCampo ( "debe" );
+		Fixed haber = sumarCampo ( "haber" );
+		Fixed result = debe - haber;
+		
+		/// Segun el resultado imputamos al debe o al haber para que la cosa cuadre.
+		if ( result > 0 ) {
+			rec->setDBvalue ( "haber", result.toQString() );
+		} // end if
+		
+		if ( result < 0 ) {
+			result = result * -1;
+			rec->setDBvalue ( "debe", result.toQString() );
+		} // end if
+		return;
 	} // end if
 
-    /// Ponemos los campos a cero en esta fila
-    rec->setDBvalue ( "debe", "0" );
-    rec->setDBvalue ( "haber", "0" );
+	SDBRecord *recant = lineaat ( row -1 );
+	if (recant ) {
+		rec->setDBvalue( camp->nomcampo(), recant->DBvalue(camp->nomcampo()));
+		return;
+	} // end if
 
-    /// Hacemos las sumas y las restamos
-    Fixed debe = sumarCampo ( "debe" );
-    Fixed haber = sumarCampo ( "haber" );
-    Fixed result = debe - haber;
-
-    /// Segun el resultado imputamos al debe o al haber para que la cosa cuadre.
-    if ( result > 0 ) {
-        rec->setDBvalue ( "haber", result.toQString() );
-    } // end if
-
-    if ( result < 0 ) {
-        result = result * -1;
-        rec->setDBvalue ( "debe", result.toQString() );
-    } // end if
 
     _depura ( "END SubForm2Bc::pressedPlus", 0 );
 }

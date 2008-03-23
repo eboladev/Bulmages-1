@@ -68,6 +68,8 @@ class ListEmpresas(QtGui.QDialog, Ui_ListEmpresasBase):
 	self.mui_listado.setRowCount(self.arrdatabase.count() -1)
 	self.i = 1
 	self.progress = QtGui.QProgressBar(self)
+#	self.progress.setGeometry(self.width /2, self.height/2, 200, 20)
+	self.progress.setGeometry(self.width() / 2 -100, self.height() /2 -10, 200, 40)
 	self.progress.setRange(0, self.arrdatabase.count())
 	self.progress.show()
 	while (self.i < self.arrdatabase.count()):

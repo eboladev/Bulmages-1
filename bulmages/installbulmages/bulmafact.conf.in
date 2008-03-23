@@ -20,6 +20,43 @@ CONF_ARCHIVO_LOG               /var/log/bulmages/bulmafact.log
 
 CONF_DEBUG FALSE
 
+CONF_SPLASH_BULMAFACT          @CMAKE_INSTALL_PREFIX@/share/bulmages/splashbulmafact.jpg
+
+
+# Estos parametros indican si los numeradores son automaticos.
+CONF_NUM_AUT_PRESUP           YES
+CONF_NUM_AUT_FACTURA          YES
+CONF_NUM_AUT_ALBARAN          YES
+
+# Este parametro indica si se mostrara el almacen y se podria seleccionar.
+CONF_MOSTRAR_ALMACEN          YES
+
+# Directorio donde se almacenaran las imagenes para bulmafact.
+CONF_DIR_IMG_ARTICLES         /var/bulmages/articles/
+
+
+CONF_DIR_IMG_ARTICLES         /var/bulmages/articles/
+CONF_DIR_IMG_PERSONAL         /var/bulmages/personal/
+
+# Estos valores indican el fondo y la fuente de la ventana de facturacion.
+CONF_BG_LISTPRESUPUESTOS      #CCCC33
+CONF_BG_LINPRESUPUESTOS       #CCCC33
+CONF_BG_DESCPRESUPUESTOS      #CCCC33
+
+CONF_BG_LISTPEDIDOSCLIENTE    #33CC33
+CONF_BG_LINPEDIDOSCLIENTE     #33CC33
+CONF_BG_DESCPEDIDOSCLIENTE    #33CC33
+
+CONF_BG_LISTALBARANESCLIENTE  #CC3333
+CONF_BG_LINALBARANESCLIENTE   #CC3333
+CONF_BG_DESCALBARANESCLIENTE  #CC3333
+
+CONF_BG_LISTFACTURASCLIENTE   #C3CC33
+CONF_BG_LINFACTURASCLIENTE    #C3CC33
+CONF_BG_DESCFACTURASCLIENTE   #C3CC33
+
+CONF_BG_LISTARTICULOS         #DDFFDD
+
 
 # NOTA PARA DESARROLLADORES:
 # --------------------------

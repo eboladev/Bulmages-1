@@ -69,6 +69,7 @@ Asiento1View::Asiento1View ( Empresa *emp, QWidget *parent, int )
     /// Desplazamos hasta el Ãºltimo asiento.
     boton_fin();
     empresaBase() ->meteWindow ( windowTitle(), this );
+    dialogChanges_cargaInicial();
     _depura ( "END Asiento1View::Asiento1View", 0 );
 }
 

@@ -43,8 +43,7 @@ CONF_BG_BALANCETREE            #CCCC66
 
 # Parametros de configuracion del splash y del fondo del area de trabajo.
 CONF_BACKGROUND                @CMAKE_INSTALL_PREFIX@/share/bulmages/backgrounds/universo.jpg
-CONF_SPLASH                    @CMAKE_INSTALL_PREFIX@/share/bulmages/splashbulmacont.jpg
-CONF_SPLASH_BULMAFACT          @CMAKE_INSTALL_PREFIX@/share/bulmages/splashbulmafact.jpg
+CONF_SPLASH_BULMACONT          @CMAKE_INSTALL_PREFIX@/share/bulmages/splashbulmacont.jpg
 
 
 # Parametros de configuracion de la base de datos.
@@ -136,6 +135,8 @@ CONF_BG_LISTARTICULOS         #DDFFDD
 CONF_DIR_CANUALES             @CMAKE_INSTALL_PREFIX@/share/bulmages/canuales/
 
 CONF_DEBUG FALSE
+
+CONF_DIR_CANUALES             @CMAKE_INSTALL_PREFIX@/share/bulmages/canuales/
 
 
 # NOTA PARA DESARROLLADORES:

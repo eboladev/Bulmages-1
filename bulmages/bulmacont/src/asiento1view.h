@@ -29,7 +29,6 @@
 #include "configuracion.h"
 #include "busquedafecha.h"
 #include "asiento1.h"
-
 #include "ui_asientobase.h"
 
 
