@@ -42,8 +42,8 @@ CONF_BG_BALANCE                #FFCC99
 CONF_BG_BALANCETREE            #CCCC66
 
 # Parametros de configuracion del splash y del fondo del area de trabajo.
-CONF_BACKGROUND                @CMAKE_INSTALL_PREFIX@/share/bulmages/backgrounds/universo.jpg
-CONF_SPLASH_BULMACONT          @CMAKE_INSTALL_PREFIX@/share/bulmages/splashbulmacont.jpg
+CONF_BACKGROUND                @CMAKE_INSTALL_PREFIX@/share/bulmages/images/universo.jpg
+CONF_SPLASH_BULMACONT          @CMAKE_INSTALL_PREFIX@/share/bulmages/images/splashbulmacont.jpg
 
 # Este parametro indica los plugins que se deben instalar con el programa.
 CONF_PLUGINS_BULMACONT        libplugincanualesods.so; \

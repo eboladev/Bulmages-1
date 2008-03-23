@@ -8,13 +8,14 @@
 
 
 
-# Parametros de configuracion de la base de datos.
+# Parametros de configuracion de la base de datos postgresql.
 CONF_SERVIDOR                  --
 CONF_PUERTO                    5432
 
 # Parametros de configuracion de programas.
-CONF_EDITOR                    kedit
-CONF_NAVEGADOR                 konqueror
+# Por defecto se proponen estos programas. Configurar a gusto.
+CONF_EDITOR                    kate
+CONF_NAVEGADOR                 x-www-browser
 CONF_PDF                       kpdf
 CONF_DIR_TMP                   /tmp/
 
@@ -34,11 +35,10 @@ CONF_ARCHIVO_LOG               /var/log/bulmages.log
 
 
 CONF_DIR_PLUGINS     @CMAKE_INSTALL_PREFIX@/lib/bulmages/plugins/; \
-		     @CMAKE_INSTALL_PREFIX@/lib/bulmalib/plugins/; \
-		     @CMAKE_INSTALL_PREFIX@/lib/bulmacont/plugins/; \
-		     @CMAKE_INSTALL_PREFIX@/lib/bulmafact/plugins/; \
-		     @CMAKE_INSTALL_PREFIX@/lib/bulmatpv/plugins/; \
-
+		               @CMAKE_INSTALL_PREFIX@/lib/bulmalib/plugins/; \
+		               @CMAKE_INSTALL_PREFIX@/lib/bulmacont/plugins/; \
+		               @CMAKE_INSTALL_PREFIX@/lib/bulmafact/plugins/; \
+		               @CMAKE_INSTALL_PREFIX@/lib/bulmatpv/plugins/
 
 
 # Este parametro indica en que directorio se hayan los archivos de informes formularios.
