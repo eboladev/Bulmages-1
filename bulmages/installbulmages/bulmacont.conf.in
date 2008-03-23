@@ -28,7 +28,7 @@ CONF_CCOSTE_DIARIO             YES
 
 # Estos valores indican el fondo de la ventan del diario.
 CONF_BG_DIARIO                 #66CCCC
-CONF_BG_ALT_DIARIO              #6699CC
+CONF_BG_ALT_DIARIO             #6699CC
 CONF_FONTSIZE_DIARIO           12
 CONF_FONTFAMILY_DIARIO         Arial
 CONF_FG_DIARIO1                #CC0000
@@ -45,99 +45,18 @@ CONF_BG_BALANCETREE            #CCCC66
 CONF_BACKGROUND                @CMAKE_INSTALL_PREFIX@/share/bulmages/backgrounds/universo.jpg
 CONF_SPLASH_BULMACONT          @CMAKE_INSTALL_PREFIX@/share/bulmages/splashbulmacont.jpg
 
-
-# Parametros de configuracion de la base de datos.
-CONF_METABASE                  metabd
-#CONF_SERVIDOR                 192.168.0.50
-CONF_SERVIDOR                  --
-CONF_PUERTO                    5432
-
-# Parametros de configuracion de programas.
-CONF_EDITOR                    kedit
-CONF_NAVEGADOR                 konqueror
-CONF_PDF                       kpdf
-CONF_DIR_TMP                   /tmp/
-#CONF_PYTHON 
-#CONF_FLIP
-
-# Parametros de configuracion del programa.
-# Esto indica donde se van a albergar los programas auxiliares a bulmages (cargaemp, creaemp, borraemp).
-CONF_EJECUTABLES               @CMAKE_INSTALL_PREFIX@/bin/
-
-# Esto indica que CSS usar con los listados.
-CONF_PLANTILLA                 @CMAKE_INSTALL_PREFIX@/share/bulmages/css/groc.css
-
-# Esto indica que idioma utilizar (es  ca en fr de o locales(coger el idioma de las locales)).
-CONF_TRADUCCION                es
-
-# Este parametro indica en que directorio estan las traducciones.
-CONF_DIR_TRADUCCION            @CMAKE_INSTALL_PREFIX@/share/bulmages/traducciones/
-
-
-# Parametro que indica donde se encuentra el archivo de log.
-CONF_ARCHIVO_LOG               /var/log/bulmages.log
-
-
-# Este parametro indica en que directorio se hayan los archivos REPORTS.
-CONF_DIR_REPORTS               @CMAKE_INSTALL_PREFIX@/share/bulmages/reports/
-# Este parametro indica en que directorio se encuentran los archivos de KUGAR.
-CONF_DIR_KUGAR                @CMAKE_INSTALL_PREFIX@/share/bulmages/kugar/
 # Este parametro indica los plugins que se deben instalar con el programa.
-#CONF_PLUGINS_BULMACONT       @CMAKE_INSTALL_PREFIX@/lib/bulmages/plugins/libestadisticas.so;@CMAKE_INSTALL_PREFIX@/lib/bulmages/plugins/libadocumental.so;@CMAKE_INSTALL_PREFIX@/lib/bulmages/plugins/libcorrector.so
-CONF_PLUGINS_BULMACONT        @CMAKE_INSTALL_PREFIX@/lib/bulmacont/plugins/libadocumental.so;@CMAKE_INSTALL_PREFIX@/lib/bulmacont/plugins/libcorrector.so
-
-
-# Este parametro indica en que directorio se hayan los archivos de informes formularios.
-CONF_PROGDATA                 @CMAKE_INSTALL_PREFIX@/share/bulmages/
-
-# Este parametro indica en que directorio se encuentran los archivos de OPENREPORTS.
-CONF_DIR_OPENREPORTS          @CMAKE_INSTALL_PREFIX@/share/bulmages/openreports/
-
-# Este parametro indica familias genericas para Bulmages.
-CONF_FONTFAMILY_BULMAGES      Lucilda
-CONF_FONTSIZE_BULMAGES        12
-
-# Estos parametros indican si los numeradores son automaticos.
-CONF_NUM_AUT_PRESUP           YES
-CONF_NUM_AUT_FACTURA          YES
-CONF_NUM_AUT_ALBARAN          YES
-
-# Este parametro indica si se mostrara el almacen y se podria seleccionar.
-CONF_MOSTRAR_ALMACEN          YES
-
-# Directorio donde se almacenaran las imagenes para bulmafact.
-CONF_DIR_IMG_ARTICLES         /var/bulmages/articles/
-
-
-CONF_DIR_IMG_ARTICLES         /var/bulmages/articles/
-CONF_DIR_IMG_PERSONAL         /var/bulmages/personal/
-
-# Estos valores indican el fondo y la fuente de la ventana de facturacion.
-CONF_BG_LISTPRESUPUESTOS      #CCCC33
-CONF_BG_LINPRESUPUESTOS       #CCCC33
-CONF_BG_DESCPRESUPUESTOS      #CCCC33
-
-CONF_BG_LISTPEDIDOSCLIENTE    #33CC33
-CONF_BG_LINPEDIDOSCLIENTE     #33CC33
-CONF_BG_DESCPEDIDOSCLIENTE    #33CC33
-
-CONF_BG_LISTALBARANESCLIENTE  #CC3333
-CONF_BG_LINALBARANESCLIENTE   #CC3333
-CONF_BG_DESCALBARANESCLIENTE  #CC3333
-
-CONF_BG_LISTFACTURASCLIENTE   #C3CC33
-CONF_BG_LINFACTURASCLIENTE    #C3CC33
-CONF_BG_DESCFACTURASCLIENTE   #C3CC33
-
-CONF_BG_LISTARTICULOS         #DDFFDD
+CONF_PLUGINS_BULMACONT        libplugincanualesods.so; \
+                              libpluginbalancetree.so; \
+                              libplugincorrector.so; \
+                              libpluginimpers.so; \
+                              libpluginsubformsxc.so; \
+                              libplugindocked.so; \
+                              libpluginsubformods.so
+                              
 
 
 CONF_DIR_CANUALES             @CMAKE_INSTALL_PREFIX@/share/bulmages/canuales/
-
-CONF_DEBUG FALSE
-
-CONF_DIR_CANUALES             @CMAKE_INSTALL_PREFIX@/share/bulmages/canuales/
-
 
 # NOTA PARA DESARROLLADORES:
 # --------------------------

@@ -19,10 +19,12 @@
 #                                                                       #
 
 add_subdirectory(pluginregistroiva)
-add_subdirectory(pluginadocumental)
+# pluginadocumental deprecated.
+#add_subdirectory(pluginadocumental)
 add_subdirectory(plugincorrector)
 add_subdirectory(plugin)
 add_subdirectory(plugindebugbc)
+# pluginproyectos bajo desarrollo.
 add_subdirectory(pluginproyectos)
 add_subdirectory(pluginbalancetree)
 add_subdirectory(pluginbalance1)

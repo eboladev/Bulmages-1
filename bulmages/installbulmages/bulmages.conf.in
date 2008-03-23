@@ -56,7 +56,6 @@ CONF_DEBUG                    FALSE
 CONF_ALERTAS_DBF               Yes
 
 
-
 # NOTA PARA DESARROLLADORES:
 # --------------------------
 # Atencion: Las lineas que se agregen en este archivo deben

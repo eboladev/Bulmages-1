@@ -4,22 +4,6 @@
 #                                                                    #
 #--------------------------------------------------------------------#
 
-# Parametros de configuracion de la base de datos.
-CONF_METABASE                  metabd
-#CONF_SERVIDOR                 192.168.0.50
-CONF_SERVIDOR                  --
-CONF_PUERTO                    5432
-
-# Esto indica que idioma utilizar (es  ca en fr de o locales(coger el idioma de las locales)).
-CONF_TRADUCCION                es
-
-# Parametro que indica donde se encuentra el archivo de log.
-CONF_ARCHIVO_LOG               /var/log/bulmages/bulmafact.log
-
-#CONF_PLUGINS_BULMAFACT        
-
-CONF_DEBUG FALSE
-
 CONF_SPLASH_BULMAFACT          @CMAKE_INSTALL_PREFIX@/share/bulmages/splashbulmafact.jpg
 
 
@@ -32,9 +16,6 @@ CONF_NUM_AUT_ALBARAN          YES
 CONF_MOSTRAR_ALMACEN          YES
 
 # Directorio donde se almacenaran las imagenes para bulmafact.
-CONF_DIR_IMG_ARTICLES         /var/bulmages/articles/
-
-
 CONF_DIR_IMG_ARTICLES         /var/bulmages/articles/
 CONF_DIR_IMG_PERSONAL         /var/bulmages/personal/
 
@@ -57,7 +38,21 @@ CONF_BG_DESCFACTURASCLIENTE   #C3CC33
 
 CONF_BG_LISTARTICULOS         #DDFFDD
 
+CONF_PLUGINS_BULMAFACT        libpluginq19.so; \
+                              libpluginsyncbulmacont.so;\
+                              libpluginimpresionesmultiples.so; \  
+                              libplugininformeclientes.so; \       
+                              libplugininformeclientessxc.so; \    
+                              libpluginmail.so; \                  
+                              libpluginpromedios.so; \
+                              libplugintrazabilidad.so; \
+                              libpluginvehiculosbf.so; \
+                              libpluginimpers.so; \
+                              libpluginsubformsxc.so; \
+                              libplugindocked.so; \
+                              libpluginsubformods.so
 
+  
 # NOTA PARA DESARROLLADORES:
 # --------------------------
 # Atencion: Las lineas que se agregen en este archivo deben

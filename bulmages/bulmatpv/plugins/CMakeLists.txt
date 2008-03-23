@@ -2,7 +2,10 @@ add_subdirectory(pluginticketbasico)
 add_subdirectory(plugintecladonumerico)
 add_subdirectory(plugintotal)
 add_subdirectory(pluginartgraficos)
+
+#pluginagrevs en desarrollo
 #add_subdirectory(pluginabrevs)
+
 add_subdirectory(pluginadmin)
 add_subdirectory(plugincobrar)
 
