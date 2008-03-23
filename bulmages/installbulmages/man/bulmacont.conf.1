@@ -1,0 +1,29 @@
+.TH bulmacont.conf 1 User Manuals
+.SH NAME
+bulmacont.conf \- config file for bulmacont
+bulmages.conf - configuration File for bulmages.  BulmaGés suports severals mecanisms for supplying configuration: command line options, global configuration and user configuration. The bulmages.conf file has the configuration of all the aplications of the bulmages proyect. bulmacont.conf file has the configuration of bulmatpv and will overrride the configuration of bulmages.conf. If found at user space, the bulmages.conf or the bulmacont.conf will override all other config files. If there is not user config file at ~/bulmages.conf it will be used the /etc/bulmages/bulmages.conf. The available command line options and enviroment variables are descrived in bulmacont, bulmafact and bulmages man pages. Most configuration file parameters, with their defaults, are descrived below. 
+.SH DESCRIPTION
+BulmaCont program use a configuration file called bulmacont.conf for its initial setup. This configuration file is searched for the following places: /etc/bulmages/bulmacont.conf and ~/bulmacont.conf.
+.SH CONFIGURATION OPTIONS
+The valid configuration options are:
+.TP
+\fBPLUGINGS\f1
+The BulmaGés applications have several plugins witch can be added or removeb by simply adding it or removing it at the bulmages.conf.
+
+Bulmacont plugins:
+\fBpluginregistrodeiva \f1It allows to register the invoices to make the spanish listing model 377 for Hacienda. This meens that you can specify associated data of invoicing to the accounting that are necessary to obtain some obligatory information. 
+\fBplugincorrector \f1It allows to test the accounting database for errors.
+\fBplugincanualesods \f1It allows to get the balances, the annual accounts, in format ods for this spanish official documents: For the Plan General Contable of 2008: Cuentas Anuales PGC, Cuentas Anuales Abreviadas PGC, Cuentas Anuales PYMES For the Plan General Contable related to the year 2007 or before: Cuentas Anuales PGC, Cuentas A. Abreviadas Sin Lucro 
+\fBplugin \f1Example of plugins. It does not has utility if you don't need to talk about plugins.
+.SH AUTHOR
+bulmages was written by the IGLUES team <info\@iglues.org>
+.SH REPORTING BUGS
+Report bugs to <info\@iglues.org>
+.SH COPYRIGHT
+Copyright (C) 2005 Free Software Foundation, Inc. This is free software; see the source for copying conditions. There is NO war- ranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+.SH COMMENTS
+This man page was written using \fBxmltoman(1)\f1.
+.SH FILES
+/etc/bulmages/bulmages.conf
+.SH SEE ALSO
+bulmasetup(1) bulmages(1) bulmacont(1) bulmafact(1) bulmatpv(1) bulmages.conf(1) bulmafact.conf(1) bulmatpv.conf(1)

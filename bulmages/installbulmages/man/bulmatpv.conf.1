@@ -1,0 +1,32 @@
+.TH bulmatpv.conf 1 User Manuals
+.SH NAME
+bulmatpv.conf \- config file for bulmatpv
+bulmatpv.conf - configuration File for bulmatpv.  BulmaGés suports severals mecanisms for supplying configuration: command line options, global configuration and user configuration. The bulmages.conf file has the configuration of all the aplications of the bulmages proyect. bulmatpv.conf file has the configuration of bulmatpv and will overrride the configuration of bulmages.conf. If found at user space, the bulmages.conf or the bulmacont.conf will override all other config files. If there is not user config file at ~/bulmages.conf it will be used the /etc/bulmages/bulmages.conf. The available command line options and enviroment variables are descrived in bulmacont, bulmafact and bulmages man pages. Most configuration file parameters, with their defaults, are descrived below. 
+.SH DESCRIPTION
+BulmaTPV use a configuration file called bulmatpv.conf for its initial setup. This configuration file is searched for the following places: /etc/bulmages/bulmatpv.conf and ~/bulmatpv.conf.
+.SH CONFIGURATION OPTIONS
+The valid configuration options are:
+.TP
+\fBPLUGINGS\f1
+The BulmaTPV application have several plugins witch can be added or removeb by simply adding it or removing it at the bulmatpv.conf.
+Bulmatpv plugins:
+\fBpluginticket \f1It adds one button in the program to allows the shipment by emai of the document generated with BulmaGés.
+\fBpluginabrevs\f1Abreviations
+\fBpluginadmin\f1x, y, z, and the buttons exit
+\fBpluginartgraficos\f1It shows the grid to select products.
+\fBplugincobrar\f1It shows the button to receive.
+\fBplugintecladonumerico\f1It adds the numeric keyboard
+\fBpluginticketbasico\f1Ticket
+\fBplugintotal\f1It shows the total in the tickets.
+.SH AUTHOR
+bulmages was written by the IGLUES team <info\@iglues.org>
+.SH REPORTING BUGS
+Report bugs to <info\@iglues.org>
+.SH COPYRIGHT
+Copyright (C) 2005 Free Software Foundation, Inc. This is free software; see the source for copying conditions. There is NO war- ranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+.SH COMMENTS
+This man page was written using \fBxmltoman(1)\f1.
+.SH FILES
+/etc/bulmages/bulmages.conf
+.SH SEE ALSO
+bulmasetup(1) bulmages(1) bulmacont(1) bulmafact(1) bulmatpv(1) bulmages.conf(1) bulmafact.conf(1) bulmacont.conf(1)
