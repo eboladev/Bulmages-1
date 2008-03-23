@@ -1,0 +1,37 @@
+Plugin de  impresion de tickets
+=========================================
+
+(C) 2007 Conetxia Soluciones Informaticas.
+Software Bajo Licencia G.P.L. (Vea el archivo COPYNG adjunto)
+
+
+Versión: 0.9.1
+
+
+Descripcion: Permite la impresion de tickets.
+
+Compilacion
+===========
+ Para compilar este plugin debe descomprimirse el directorio pluginticket dentro de bulmages/bulmafact/src y debe agregarse en el archivo bulmages/bulmafact/privatecode.pro la linea:
+
+	SUBDIRS += src/pluginticket
+
+
+Luego siguiendo el proceso de compilacion normal el plugin se compilará con el resto de bulmages y el plugin se ubicara en bulmages/installbulmages/plugins con el nombre libticketbf.so
+
+
+
+Instalacion
+===========
+La instalacion no requiere de parches de base de datos ni pasos adicionales. Simplemente cambie el parametro CONF_PLUGINS_BULMAFACT para que llame al archivo de plugin y ya tendra
+la funcionalidad instalada.
+
+Debe copiar la imagen ticket.png en el directorio /usr/share/bulmages/icons/
+
+Nota de Conetxia
+================
+Este plugin forma parte del software de Gestión BulmaGés.
+Si desea conocer nuevas versiones del plugin, u otros componentes relacionados con BulmaGés visite: http://bulmages.conetxia.com
+
+Este plugin se suministra como codigo fuente ya que es muy sencillo el proceso de compilacion del mismo.
+

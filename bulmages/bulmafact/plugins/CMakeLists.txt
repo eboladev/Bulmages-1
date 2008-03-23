@@ -24,6 +24,8 @@ add_subdirectory(plugindebugbf)
 add_subdirectory(pluginpreciocoste)
 add_subdirectory(pluginivainc)
 add_subdirectory(pluginsyncbulmacont)
+add_subdirectory(plugininformeclientessxc)
+add_subdirectory(pluginetiquetado)
 
 # if you want to add some private code
 # simple put your add_directory in a
