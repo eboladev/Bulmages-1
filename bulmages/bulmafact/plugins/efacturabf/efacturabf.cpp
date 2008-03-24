@@ -161,7 +161,7 @@ int FacturaView_FacturaView ( FacturaView *fac )
     EFQToolButton *mui_exporta_efactura = new EFQToolButton ( fac, fac->mui_plugbotones );
     mui_exporta_efactura->setObjectName ( QString::fromUtf8 ( "exporta" ) );
     mui_exporta_efactura->setMinimumSize ( QSize ( 32, 32 ) );
-    mui_exporta_efactura->setIcon ( QIcon ( QString::fromUtf8 ( "/usr/share/bulmages/efactura/efactura.png" ) ) );
+    mui_exporta_efactura->setIcon ( QIcon ( confpr->valor(CONF_PROGDATA) +"efactura/efactura.png" ) );
     mui_exporta_efactura->setIconSize ( QSize ( 22, 22 ) );
     mui_exporta_efactura->setStatusTip ( "Exportar eFactura" );
     mui_exporta_efactura->setToolTip ( "Exportar eFactura" );
@@ -194,7 +194,7 @@ int FacturasProveedorList_FacturasProveedorList_Post ( FacturasProveedorList *li
     EFQToolButtonImportar *mui_importa_efactura = new EFQToolButtonImportar ( listfac, listfac->mui_plugbotones );
     mui_importa_efactura->setObjectName ( QString::fromUtf8 ( "importa" ) );
     mui_importa_efactura->setMinimumSize ( QSize ( 32, 32 ) );
-    mui_importa_efactura->setIcon ( QIcon ( QString::fromUtf8 ( "/usr/share/bulmages/efactura/efactura.png" ) ) );
+    mui_importa_efactura->setIcon ( QIcon ( confpr->valor(CONF_PROGDATA) +"efactura/efactura.png" ) );
     mui_importa_efactura->setIconSize ( QSize ( 22, 22 ) );
     mui_importa_efactura->setStatusTip ( "Importar eFactura" );
     mui_importa_efactura->setToolTip ( "Importar eFactura" );

@@ -75,7 +75,7 @@ void InformeQToolButton::setBoton()
     setStatusTip ( "Informe en Hoja de Cálculo" );
     setToolTip ( "Informe en Hoja de Cálculo" );
     setMinimumSize ( QSize ( 32, 32 ) );
-    setIcon ( QIcon ( QString::fromUtf8 ( "/usr/share/bulmages/icons/informeclientessxc.png" ) ) );
+    setIcon ( QIcon ( confpr->valor(CONF_PROGDATA) +"icons/informeclientessxc.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
     _depura ( "END InformeQToolButton::setBoton", 0 );
 }
@@ -328,7 +328,7 @@ void InformeProveedorQToolButton::setBoton()
     setStatusTip ( "Informe en Hoja de Cálculo" );
     setToolTip ( "Informe en Hoja de Cálculo" );
     setMinimumSize ( QSize ( 32, 32 ) );
-    setIcon ( QIcon ( QString::fromUtf8 ( "/usr/share/bulmages/icons/informeclientessxc.png" ) ) );
+    setIcon ( QIcon ( confpr->valor(CONF_PROGDATA) +"icons/informeclientessxc.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
     _depura ( "END InformeProveedorQToolButton::setBoton", 0 );
 }

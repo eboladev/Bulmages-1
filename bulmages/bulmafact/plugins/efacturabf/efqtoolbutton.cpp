@@ -31,7 +31,7 @@
 #include <QtXml/QXmlInputSource>
 #include <QtXml/QXmlSimpleReader>
 
-#define _PLANTILLA_ "/usr/share/bulmages/efactura/plantilla_efactura.xml"
+#define _PLANTILLA_ confpr->valor(CONF_PROGDATA) + "efactura/plantilla_efactura.xml"
 #define _RESULTADO_ "/tmp/efactura"
 
 

@@ -100,7 +100,7 @@ void aplinteligentesview::inicializa ( int idasiento )
     numasiento = idasiento;
     inicializavariables();
 
-    QDir dir ( "/usr/share/bulmages/ainteligentes/" );
+    QDir dir ( confpr->valor(CONF_PROGDATA) + "ainteligentes/" );
     dir.setFilter ( QDir::Files );
     dir.setNameFilters ( QStringList ( "*.xml" ) );
     dir.setSorting ( QDir::Size | QDir::Reversed );
