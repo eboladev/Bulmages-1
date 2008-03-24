@@ -1,6 +1,6 @@
 usr/share/bulmages/README
 usr/share/bulmages/version
-usr/share/bulmages/bgtrml2pdf
+usr/bin/bgtrml2pdf
 usr/share/bulmages/bgtrml2pdf/bgcolor.py
 usr/share/bulmages/bgtrml2pdf/bgtrml2pdf
 usr/share/bulmages/bgtrml2pdf/bgutils.py
@@ -36,5 +36,4 @@ usr/share/bulmages/icons/informeclientes.png
 usr/share/bulmages/icons/messagebox_critical.png
 usr/share/bulmages/icons/messagebox_info.png
 usr/share/bulmages/icons/messagebox_warning.png
-usr/share/bulmages/icons/q19.png
-usr/share/bulmages/logopeq.png
+etc/bulmages/bulmages.conf

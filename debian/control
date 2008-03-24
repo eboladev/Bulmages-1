@@ -33,7 +33,7 @@ Description: Small GUI to launch some management programs for little businesses
 
 Package: bulmages-common
 Architecture: all
-Depends: ${shlibs:Depends}, python2.4-imaging, kpdf, python
+Depends: ${shlibs:Depends}, kpdf, python
 Description: Bulmages invoicing and accounting, config and common stuff
  The config file bulmages.conf for all the bulmages programs.
 
@@ -102,10 +102,10 @@ Description: bulmages headers for development
  environment (Headers, plus shared library).
 
 Package: libbulmalib0.11
-Conflicts: libbulmalib-1,libbulmalib0
+Conflicts: libbulmalib-1, libbulmalib0
 Section: libs
 Architecture: any
-Depends: ${shlibs:Depends}
+Depends: ${shlibs:Depends}, kspread
 Description: bulmages headers (runtime)
  Bulmages is invoicing and accounting for small businesses.
  .
@@ -114,7 +114,7 @@ Description: bulmages headers (runtime)
 
 Package: bulmacont-plugins
 Architecture: any
-Depends: ${shlibs:Depends}, bulmacont (>= 0.11.0), python-ooolib
+Depends: ${shlibs:Depends}, bulmacont (>= 0.11), python-ooolib
 Description: plugins collection for Bulmages.
  Provides a optional plugin collection for bulmacont. 
  Some of them need a patched database, so read the README file.
@@ -125,7 +125,7 @@ Description: plugins collection for Bulmages.
 
 Package: bulmafact-plugins
 Architecture: any
-Depends: ${shlibs:Depends}, bulmafact (>= 0.11.0)
+Depends: ${shlibs:Depends}, bulmafact (>= 0.11), kmail
 Description: plugins collection for Bulmafact.
  Provides a optional plugin collection for bulmafact. 
  Some of them need a patched database, so read the README file.
@@ -136,7 +136,7 @@ Description: plugins collection for Bulmafact.
 
 Package: bulmatpv-plugins
 Architecture: any
-Depends: ${shlibs:Depends}, bulmatpv (>= 0.11.0)
+Depends: ${shlibs:Depends}, bulmatpv (>= 0.11)
 Description: plugins collection for Bulmatpv
  Provides a optional plugin collection for bulmatpv. 
  Some of them need a patched database, so read the README file.

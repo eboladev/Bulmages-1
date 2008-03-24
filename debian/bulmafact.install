@@ -1,5 +1,5 @@
 usr/bin/bulmafact
 etc/bulmages/bulmafact.conf
 usr/share/bulmages/icons/iconbulmafact.xpm
-usr/share/bulmages/splashbulmafact.jpg
+usr/share/bulmages/images/splashbulmafact.jpg
 usr/lib/libbulmafact.so.*
