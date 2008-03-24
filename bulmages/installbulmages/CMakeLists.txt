@@ -29,13 +29,13 @@ configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/examples/scripts/actualizabu
 configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/examples/scripts/creabulmacont.in creabulmacont @ONLY)
 configure_file( ${CMAKE_SOURCE_DIR}/installbulmages/examples/scripts/creabulmafact.in creabulmafact @ONLY)
 
-install(DIRECTORY ainteligentes canuales planescontables 
-				openreports icons images dbmodels help
+install(DIRECTORY ainteligentes canuales planescontables rev-conf
+				openreports icons images dbmodels help 
 				DESTINATION share/bulmages
  				PATTERN ".svn" EXCLUDE)
 
 install(FILES bgtrml2pdf/bgtrml2pdf 
-		DESTINATION bin/bgtrml2pdf
+		DESTINATION bin/
                 PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
                 	    GROUP_EXECUTE GROUP_READ
                             WORLD_READ WORLD_EXECUTE)
@@ -69,10 +69,9 @@ FILE(GLOB scripts_ex ${CMAKE_BINARY_DIR}/installbulmages-db
                      ${CMAKE_BINARY_DIR}/actualizabulmafact
                      ${CMAKE_BINARY_DIR}/creabulmacont
                      ${CMAKE_BINARY_DIR}/creabulmafact)
-install(FILES ${scripts_ex} DESTINATION DESTINATION share/bulmages/examples/scripts)
-
-
-
-
+install(FILES ${scripts_ex} DESTINATION DESTINATION share/bulmages/examples/scripts
+PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
+                	    GROUP_EXECUTE GROUP_READ
+                            WORLD_READ WORLD_EXECUTE)
 
 

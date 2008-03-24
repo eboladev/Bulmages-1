@@ -1,5 +1,4 @@
 usr/bin/bulmacont
-etc/bulmages/bulmacont.conf
 usr/share/bulmages/icons/iconbulmacont.xpm
 usr/share/bulmages/planescontables
 usr/share/bulmages/planescontables/PlaComptableFundacions_ca.xml
@@ -24,4 +23,5 @@ usr/share/bulmages/canuales/Balance.xml
 usr/share/bulmages/canuales/Perdidas_Ganancias_Abreviado.xml  
 usr/share/bulmages/canuales/perdigan.xml
 usr/lib/libbulmacont.so.*
+etc/bulmages/bulmacont.conf
 

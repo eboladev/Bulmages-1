@@ -95,7 +95,7 @@ void regivaprintview::inicializa1 ( QString finicial1, QString ffinal1 )
 /**
 \param tipus
 **/
-void regivaprintview::presentar ( char *tipus )
+void regivaprintview::presentar ( const char *tipus )
 {
     _depura ( "regivaprintview::presentar", 0 );
 #ifndef WIN32

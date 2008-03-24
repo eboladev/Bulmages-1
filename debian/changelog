@@ -18,7 +18,7 @@ bulmages (0.11+svn20080324+1) unstable; urgency=low
 bulmages (0.11+svn20080308+1) unstable; urgency=low
   
   [Leopold Palomo Avellaneda]
-  * Added Uploaders: Miguel Gea Milvaques, Tomeu Borràs Riera and 
+  * Added Uploaders: Miguel Gea Milvaques, Tomeu BorrÃ s Riera and 
     Leopold Palomo Avellaneda
   * Working on the svn preparing the new upstream version
   * Migrating to the new build system cmake (>=2.48). Added dependecy.

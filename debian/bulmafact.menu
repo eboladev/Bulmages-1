@@ -1,4 +1,7 @@
-?package(bulmafact):needs="X11" section="Applications/Office"\
- longtitle="BulmaFact: billing application"\
- title="BulmaFact" command="/usr/bin/bulmafact"\
- icon="/usr/share/bulmages/icons/iconbulmafact.xpm"
+?package(bulmafact):\
+	needs="X11"	
+	section="Applications/Office"\
+	title="BulmaFact" command="/usr/bin/bulmafact"\
+	longtitle="BulmaFact: billing application"\
+	command="/usr/bin/bulmafact"\
+	icon="/usr/share/bulmages/icons/iconbulmafact.xpm"

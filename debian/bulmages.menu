@@ -1,0 +1,8 @@
+?package(bulmages):\
+	needs="X11"\
+	section="Applications/Office"\
+	title="BulmaGes"\
+	longtitle="Bulmages: the launcher"\
+	command="/usr/bin/bulmages"\
+	icon="/usr/share/bulmages/icons/iconbulmages.xpm"
+

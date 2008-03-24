@@ -51,7 +51,7 @@ public:
     regivaprintview ( Empresa *, QWidget *parent = 0 );
     ~regivaprintview();
     void inicializa1 ( QString, QString );
-    void presentar ( char *tipus );
+    void presentar ( const char *tipus );
 
 public slots:
     virtual void accept();

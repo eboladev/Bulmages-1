@@ -1,15 +1,12 @@
 usr/share/bulmages/dbmodels/plugins/revf-comercialbf.sql
-usr/share/bulmages/dbmodels/plugins/revf-plugin_tc_articulos.sql
 usr/share/bulmages/dbmodels/plugins/revf-pluginasterisk.sql
 usr/share/bulmages/dbmodels/plugins/revf-plugincontratos.sql
 usr/share/bulmages/dbmodels/plugins/revf-plugincuadrante.sql
 usr/share/bulmages/dbmodels/plugins/revf-plugininventario.sql
-usr/share/bulmages/dbmodels/plugins/revf-pluginivainc.sql
 usr/share/bulmages/dbmodels/plugins/revf-pluginpreciocoste.sql
 usr/share/bulmages/dbmodels/plugins/revf-pluginsyncbulmacont.sql
 usr/share/bulmages/dbmodels/plugins/revf-plugintipostrabajo.sql
 usr/share/bulmages/dbmodels/plugins/revf-plugintrazabilidad.sql
-usr/share/bulmages/dbmodels/plugins/revf-pluginvehiculosbf.sql
 usr/share/bulmages/dbmodels/plugins/rm-pluginsyncbulmacont.sql
 usr/share/bulmages/dbmodels/plugins/stock_sin_inventario.sql
 usr/share/bulmages/dbmodels/plugins/traspasafacturacion.sql
