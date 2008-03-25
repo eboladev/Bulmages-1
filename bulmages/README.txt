@@ -129,7 +129,23 @@ Permite la gestión de una flota de vehículos.
 
 
 
+
+
+
+
 bulmacont
+pluginbarcodeopen <p>Permite abrir cualquier documento identificado con el codigo de barras. Basta con seleccionar la apertura rapida, pasar el documento por el lector y se abrirá automaticamente el documento correspondiente.</p>
+
+
+plugincatalogo <p>Permite la impresion de catalogos de productos</p>
+
+
+plugincontratos <p>Permite el control de contratos con clientes y generar una facturacion asociada a dichos contratos.</p>
+
+
+plugincuadrante <p>Permite la elavoracion de cuadrantes de los trabajadores asignandoles horarios en los distintos almacenes</p>
+
+
 ---------
 Contiene la parte de contabilidad y contiene los siguientes plugins:
 
@@ -152,6 +168,35 @@ Código ejemplo para desarrollar un plugin.
 5) plugincanualesods (Plugin de balances)
 
 Permite generar balances en una hoja de cálculo.
+
+
+
+	<p>Bulmatpv plugins:</p>
+
+
+pluginticket <p>It adds one button in the program to allows the shipment by emai of the document generated with BulmaGés.</p>
+
+
+pluginabrevs<p>nose</p>
+
+
+pluginadmin<p>x, y, z, y el boton de salir</p>
+
+
+pluginartgraficos<p>enseña el panel en forma de regilla para poder seleccionarlos.</p>
+
+
+plugincobrar<p>el boton de cobrar</p>
+
+
+plugintecladonumerico<p>añade un teclado numérico</p>
+
+
+pluginticketbasico<p>Ticket</p>
+
+
+plugintotal<p>muestra los totales de los tickets</p>
+
 
 
 bulmalib 
