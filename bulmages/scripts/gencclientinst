@@ -21,8 +21,12 @@ ln -s $1/$2/bulmatpv/src/bulmatpv /usr/bin/bulmatpv
 rm /usr/bin/bgtrml2pdf.py
 ln -s $1/installbulmages/bgtrml2pdf/bgtrml2pdf.py /usr/bin/bgtrml2pdf.py
 
+rm /usr/bin/bgtrml2pdf
+ln -s $1/installbulmages/bgtrml2pdf/bgtrml2pdf /usr/bin/bgtrml2pdf
+
+
 rm /usr/bin/bulmages
-ln -s $1/installbulmages/bulmages/src/bulmages /usr/bin/bulmages
+ln -s $1/$2/bulmages/src/bulmages /usr/bin/bulmages
 
 rm -rf /usr/share/bulmages
 ln -s $1/installbulmages /usr/share/bulmages
@@ -58,70 +62,30 @@ mkdir /usr/lib/bulmafact/plugins
 mkdir /usr/lib/bulmatpv/plugins
 mkdir /usr/lib/bulmalib/plugins
 
-ln -s $1/$2/privateplugins/pluginllamadas/libpluginllamadas.so        /usr/lib/bulmafact/plugins/
-ln -s $1/$2/privateplugins/pluginservconetxia/libpluginservconetxia.so        /usr/lib/bulmafact/plugins/
-# ln -s $1/privateplugins/pluginticket/libpluginticket.so        /usr/lib/bulmafact/plugins/
-ln -s $1/$2/privateplugins/plugindock/libplugindock.so        /usr/lib/bulmalib/plugins/
-ln -s $1/$2/privateplugins/florida/libpluginflorida.so        /usr/lib/bulmafact/plugins/
-ln -s $1/$2/privateplugins/lafac/liblafac.so        /usr/lib/bulmafact/plugins/
-ln -s $1/$2/privateplugins/pluginfacturar/libpluginfacturar.so        /usr/lib/bulmafact/plugins/
-#ln -s $1/privateplugins/pluginmail/libpluginmail.so        /usr/lib/bulmafact/plugins/
-ln -s $1/$2/privateplugins/pluginetiquetas/libpluginetiquetas.so        /usr/lib/bulmafact/plugins/
-ln -s $1/$2/privateplugins/plugincorrectorbf/libplugincorrectorbf.so        /usr/lib/bulmafact/plugins/
-ln -s $1/$2/privateplugins/pluginetiquetado/libpluginetiquetado.so        /usr/lib/bulmafact/plugins/
-ln -s $1/$2/privateplugins/plugincalc/libplugincalc.so        /usr/lib/bulmalib/plugins/
-ln -s $1/$2/privateplugins/pluginresumcta/libpluginresumcta.so        /usr/lib/bulmacont/plugins/
-#ln -s $1/privateplugins/pluginpromedios/libpluginpromedios.so        /usr/lib/bulmafact/plugins/
-ln -s $1/$2/privateplugins/plugininformeclientessxc/libplugininformeclientessxc.so        /usr/lib/bulmafact/plugins/
-ln -s $1/$2/privateplugins/pluginnq19/libpluginnq19.so        /usr/lib/bulmafact/plugins/
+find $1/$2/bulmafact/plugins/ -name "*.so" | xargs -I '{}' ln -s '{}' /usr/lib/bulmafact/plugins/
+find $1/$2/bulmacont/plugins/ -name "*.so" | xargs -I '{}' ln -s '{}' /usr/lib/bulmacont/plugins/
+find $1/$2/bulmalib/plugins/  -name "*.so" | xargs -I '{}' ln -s '{}' /usr/lib/bulmalib/plugins/
+find $1/$2/bulmatpv/plugins/ -name "*.so" | xargs -I '{}' ln -s '{}' /usr/lib/bulmatpv/plugins/
 
-ln -s $1/$2/bulmalib/plugins/pluginsubformods/libpluginsubformods.so        /usr/lib/bulmalib/plugins/
-ln -s $1/$2/bulmalib/plugins/pluginimpers/libpluginimpers.so        /usr/lib/bulmalib/plugins/
-ln -s $1/$2/bulmalib/plugins/pluginclipboardbf/libpluginclipboardbf.so        /usr/lib/bulmalib/plugins/
-ln -s $1/$2/bulmalib/plugins/pluginsubformsxc/libpluginsubformsxc.so        /usr/lib/bulmalib/plugins/
-ln -s $1/$2/bulmalib/plugins/plugindocked/libplugindocked.so                /usr/lib/bulmalib/plugins/
+find $1/$2/privateplugins/ -name "*.so" | xargs -I '{}' ln -s '{}' /usr/lib/bulmafact/plugins/
 
-ln -s $1/$2/bulmafact/plugins/plugintipostrabajo/libplugintipostrabajo.so        /usr/lib/bulmafact/plugins/
-ln -s $1/$2/bulmafact/plugins/efacturabf/libefacturabf.so        /usr/lib/bulmafact/plugins/
-ln -s $1/$2/bulmafact/plugins/pluginpreciocoste/libpluginpreciocoste.so        /usr/lib/bulmafact/plugins/
-ln -s $1/$2/bulmafact/plugins/plugininformeclientes/libplugininformeclientes.so        /usr/lib/bulmafact/plugins/
-ln -s $1/$2/bulmafact/plugins/plugininventario/libplugininventario.so        /usr/lib/bulmafact/plugins/
-ln -s $1/$2/bulmafact/plugins/pluginticket/libpluginticket.so        /usr/lib/bulmafact/plugins/
-ln -s $1/$2/bulmafact/plugins/plugincatalogo/libplugincatalogo.so        /usr/lib/bulmafact/plugins/
-ln -s $1/$2/bulmafact/plugins/pluginasterisk/libpluginasterisk.so        /usr/lib/bulmafact/plugins/
-ln -s $1/$2/bulmafact/plugins/plugintrazabilidad/libplugintrazabilidad.so        /usr/lib/bulmafact/plugins/
-ln -s $1/$2/bulmafact/plugins/plugin/libplugin.so        /usr/lib/bulmafact/plugins/
-ln -s $1/$2/bulmafact/plugins/pluginbarcodeopen/libpluginbarcodeopen.so        /usr/lib/bulmafact/plugins/
-ln -s $1/$2/bulmafact/plugins/comercialbf/libcomercialbf.so        /usr/lib/bulmafact/plugins/
-ln -s $1/$2/bulmafact/plugins/pluginvehiculosbf/libpluginvehiculosbf.so        /usr/lib/bulmafact/plugins/
-ln -s $1/$2/bulmafact/plugins/plugintarifas/libplugintarifas.so        /usr/lib/bulmafact/plugins/
-ln -s $1/$2/bulmafact/plugins/plugin_tc_articulos/libplugin_tc_articulos.so        /usr/lib/bulmafact/plugins/
-ln -s $1/$2/bulmafact/plugins/plugincuadrante/libplugincuadrante.so        /usr/lib/bulmafact/plugins/
-ln -s $1/$2/bulmafact/plugins/pluginmail/libpluginmail.so        /usr/lib/bulmafact/plugins/
-ln -s $1/$2/bulmafact/plugins/pluginq19/libpluginq19.so        /usr/lib/bulmafact/plugins/
-ln -s $1/$2/bulmafact/plugins/plugintpv/libplugintpv.so        /usr/lib/bulmafact/plugins/
-ln -s $1/$2/bulmafact/plugins/plugincontratos/libplugincontratos.so        /usr/lib/bulmafact/plugins/
-ln -s $1/$2/bulmafact/plugins/pluginimpresionesmultiples/libpluginimpresionesmultiples.so        /usr/lib/bulmafact/plugins/
-ln -s $1/$2/bulmafact/plugins/plugindebugbf/libplugindebugbf.so        /usr/lib/bulmafact/plugins/
-ln -s $1/$2/bulmafact/plugins/pluginpromedios/libpluginpromedios.so        /usr/lib/bulmafact/plugins/
-ln -s $1/$2/bulmafact/plugins/pluginalmacen/libpluginalmacen.so        /usr/lib/bulmafact/plugins/
 
-ln -s $1/$2/bulmatpv/plugins/pluginadmin/libpluginadmin.so        /usr/lib/bulmatpv/plugins/
-ln -s $1/$2/bulmatpv/plugins/pluginticketbasico/libpluginticketbasico.so        /usr/lib/bulmatpv/plugins/
-ln -s $1/$2/bulmatpv/plugins/pluginartgraficos/libpluginartgraficos.so        /usr/lib/bulmatpv/plugins/
-ln -s $1/$2/bulmatpv/plugins/plugintotal/libplugintotal.so        /usr/lib/bulmatpv/plugins/
-ln -s $1/$2/bulmatpv/plugins/plugincobrar/libplugincobrar.so        /usr/lib/bulmatpv/plugins/
-ln -s $1/$2/bulmatpv/plugins/plugintecladonumerico/libplugintecladonumerico.so        /usr/lib/bulmatpv/plugins/
-ln -s $1/$2/bulmatpv/plugins/pluginabrevs/libpluginabrevs.so        /usr/lib/bulmatpv/plugins/
+#Archivos adicionales de bulmafact que pertenezcan a los plugins.
+find $1/bulmafact/plugins/ -name "*.png" | xargs -I '{}' ln -s '{}' /usr/share/bulmages/icons/
+find $1/bulmafact/plugins/ -name "*.jpg" | xargs -I '{}' ln -s '{}' /usr/share/bulmages/icons/
+find $1/bulmafact/plugins/ -name "*.xpn" | xargs -I '{}' ln -s '{}' /usr/share/bulmages/icons/
+find $1/bulmafact/plugins/ -name "*.rml" | xargs -I '{}' ln -s '{}' /usr/share/bulmages/openreports/
 
-ln -s $1/$2/bulmacont/plugins/pluginproyectos/libpluginproyectos.so        /usr/lib/bulmacont/plugins/
-ln -s $1/$2/bulmacont/plugins/plugincanualesods/libplugincanualesods.so        /usr/lib/bulmacont/plugins/
-ln -s $1/$2/bulmacont/plugins/pluginregistroiva/libpluginregistrodeiva.so        /usr/lib/bulmacont/plugins/
-ln -s $1/$2/bulmacont/plugins/plugincorrector/libplugincorrector.so        /usr/lib/bulmacont/plugins/
-ln -s $1/$2/bulmacont/plugins/pluginadocumental/libpluginadocumental.so        /usr/lib/bulmacont/plugins/
-ln -s $1/$2/bulmacont/plugins/plugindebugbc/libplugindebugbc.so        /usr/lib/bulmacont/plugins/
-ln -s $1/$2/bulmacont/plugins/pluginbalancetree/libpluginbalancetree.so /usr/lib/bulmacont/plugins/
-ln -s $1/$2/bulmacont/plugins/pluginbalance1/libpluginbalance1.so       /usr/lib/bulmacont/plugins/
-ln -s $1/$2/bulmacont/plugins/pluginreportods/libpluginreportods.so       /usr/lib/bulmacont/plugins/
-ln -s $1/$2/bulmacont/plugins/pluginbalance/libpluginbalance.so       /usr/lib/bulmacont/plugins/
+#Archivos adicionales de bulmacont que pertenezcan a los plugins.
+find $1/bulmacont/plugins/ -name "*.png" | xargs -I '{}' ln -s '{}' /usr/share/bulmages/icons/
+find $1/bulmacont/plugins/ -name "*.jpg" | xargs -I '{}' ln -s '{}' /usr/share/bulmages/icons/
+find $1/bulmacont/plugins/ -name "*.xpn" | xargs -I '{}' ln -s '{}' /usr/share/bulmages/icons/
+find $1/bulmacont/plugins/ -name "*.rml" | xargs -I '{}' ln -s '{}' /usr/share/bulmages/openreports/
+ 
+#Archivos adicionales de bulmalib que pertenezcan a los plugins.
+find $1/bulmalib/plugins/ -name "*.png" | xargs -I '{}' ln -s '{}' /usr/share/bulmages/icons/
+find $1/bulmalib/plugins/ -name "*.jpg" | xargs -I '{}' ln -s '{}' /usr/share/bulmages/icons/
+find $1/bulmalib/plugins/ -name "*.xpn" | xargs -I '{}' ln -s '{}' /usr/share/bulmages/icons/
+find $1/bulmalib/plugins/ -name "*.rml" | xargs -I '{}' ln -s '{}' /usr/share/bulmages/openreports/
+
 
