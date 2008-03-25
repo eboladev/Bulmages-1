@@ -108,6 +108,8 @@ binary-arch: build install
 	dh_installdebconf	
 
 	install -D -o root -g root -m 0644 debian/bulmacont.lintian $(CURDIR)/debian/bulmacont/usr/share/lintian/overrides/bulmacont
+	install -D -o root -g root -m 0644 debian/bulmafact.lintian $(CURDIR)/debian/bulmafact/usr/share/lintian/overrides/bulmafact
+	install -D -o root -g root -m 0644 debian/bulmatpv.lintian $(CURDIR)/debian/bulmatpv/usr/share/lintian/overrides/bulmatpv
 
 
 	dh_installmenu
