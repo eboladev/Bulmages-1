@@ -365,12 +365,12 @@ void extractoview1::presentar()
 	bool ok = FALSE;
 	float ssup = mui_saldosup->text().toFloat(&ok);
 	if (ok) {
-		saldosup = " AND " + tabla + ".debe >= " + mui_saldosup->text() + " OR " + tabla + ".haber >= " + mui_saldosup->text();
+		saldosup = " AND " + tabla + ".debe + " + tabla + ".haber >= " + mui_saldosup->text();
 	} // end if
 	ok = FALSE;
 	float sinf = mui_saldoinf->text().toFloat(&ok);
 	if (ok) {
-		saldoinf = " AND " + tabla + ".debe <= " + mui_saldoinf->text() + " AND " + tabla + ".haber <= " + mui_saldoinf->text();
+		saldoinf = " AND " + tabla + ".debe + " + tabla + ".haber <= " + mui_saldoinf->text();
 	} // end if
         query = "SELECT * FROM ((SELECT " + cont + " FROM " + tabla + " WHERE  idcuenta = " + idcuenta + " AND fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' " + ccostes + " " + ccanales + " " + tipopunteo + saldosup + saldoinf +") AS t2 ";
         query += " LEFT JOIN (SELECT idcuenta AS idc, descripcion, codigo, tipocuenta FROM cuenta) AS t9 ON t2.idcuenta = t9.idc) AS t1";
