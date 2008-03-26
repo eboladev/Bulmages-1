@@ -172,6 +172,7 @@ int Asiento1::borrar ( bool atendido )
                 } // end if
                 empresaBase() ->commit();
                 vaciar();
+		dialogChanges_cargaInicial();
                 return 3;
             case QMessageBox::Cancel: /// Abort clicked or Escape pressed.
                 return 2;
@@ -187,6 +188,7 @@ int Asiento1::borrar ( bool atendido )
             } // end if
             empresaBase() ->commit();
             vaciar();
+	    dialogChanges_cargaInicial();
             return 3;
         } // end if
     } // end if

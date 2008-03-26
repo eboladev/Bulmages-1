@@ -313,6 +313,8 @@ void extractoview1::presentar()
     QString cadaux;
     cursor2 *cursorapt = NULL;
     cursor2 *cursoraux = NULL;
+    QString saldosup = "";
+    QString saldoinf = "";
     try {
         /// Preparamos el string para que aparezca una u otra cosa seg&uacute;n el punteo.
         QString tipopunteo;
@@ -360,8 +362,17 @@ void extractoview1::presentar()
         if ( contra != "" ) {
             tipopunteo += " AND " + tabla + ".contrapartida = id_cuenta('" + contra + "') ";
         } // end if
-
-        query = "SELECT * FROM ((SELECT " + cont + " FROM " + tabla + " WHERE  idcuenta = " + idcuenta + " AND fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' " + ccostes + " " + ccanales + " " + tipopunteo + ") AS t2 ";
+	bool ok = FALSE;
+	float ssup = mui_saldosup->text().toFloat(&ok);
+	if (ok) {
+		saldosup = " AND " + tabla + ".debe >= " + mui_saldosup->text() + " OR " + tabla + ".haber >= " + mui_saldosup->text();
+	} // end if
+	ok = FALSE;
+	float sinf = mui_saldoinf->text().toFloat(&ok);
+	if (ok) {
+		saldoinf = " AND " + tabla + ".debe <= " + mui_saldoinf->text() + " AND " + tabla + ".haber <= " + mui_saldoinf->text();
+	} // end if
+        query = "SELECT * FROM ((SELECT " + cont + " FROM " + tabla + " WHERE  idcuenta = " + idcuenta + " AND fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' " + ccostes + " " + ccanales + " " + tipopunteo + saldosup + saldoinf +") AS t2 ";
         query += " LEFT JOIN (SELECT idcuenta AS idc, descripcion, codigo, tipocuenta FROM cuenta) AS t9 ON t2.idcuenta = t9.idc) AS t1";
         query += " LEFT JOIN asiento ON asiento.idasiento = t1.idasiento ";
         query += " LEFT JOIN (SELECT idc_coste AS idccoste, nombre AS nombrec_coste FROM c_coste) AS t5 ON t5.idccoste = t1.idc_coste ";

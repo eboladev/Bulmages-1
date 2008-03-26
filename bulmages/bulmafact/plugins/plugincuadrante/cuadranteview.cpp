@@ -34,7 +34,7 @@
 #include "plugins.h"
 
 #include "funcaux.h"
-
+#include "blprogressbar.h"
 
 /** inicializa todos los componentes de la clase.
     Resetea el sistema de control de cambios para que considere que no hay cambios por parte del usuario.
@@ -153,7 +153,12 @@ void CuadranteView::inicializaCuadrante ( const QDate &dateorig )
 
 
         int row = 0;
+        BLProgressBar barra;
+	barra.setRange(0, cur->numregistros());
+	barra.show();
+
         while ( !cur->eof() ) {
+	    
             /// Establecemos la altura de los campos.
             mui_cuadrante->setRowHeight ( row, 100 );
 
@@ -174,6 +179,7 @@ void CuadranteView::inicializaCuadrante ( const QDate &dateorig )
             } // end for
             cur->siguienteregistro();
             row++;
+	    barra.setValue(row);
         } // end while
         cargaconfig();
     } catch ( ... ) {

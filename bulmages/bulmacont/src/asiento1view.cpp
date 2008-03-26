@@ -303,7 +303,6 @@ void Asiento1View::on_mui_inteligente_clicked()
     } // end if
     aplinteligentesview *nueva = new aplinteligentesview ( empresaBase(), 0 );
     nueva->inicializa ( numasiento );
-    empresaBase() ->pWorkspace() ->addWindow ( nueva );
     nueva->show();
     _depura ( "END Asiento1View::on_mui_inteligente_clicked", 0 );
 }
