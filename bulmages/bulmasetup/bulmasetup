@@ -7,10 +7,11 @@ __author__ = "Tomeu Borras <tborras@conetxia.com>"
 __all__ = ["bulmasetup"]
 __doc__ = "Sistema de instalacion y mantenimiento de Bases de Datos para BulmaGes.\r\n"
 
+import sys
+
 sys.path.append('/usr/lib/bulmages')
 
 
-import sys
 from bulmasetupbase import *
 from PyQt4 import *
 from nuevousuario import NuevoUsuario
