@@ -3,6 +3,12 @@
 import sys
 import os
 
+global pathdbbulmafact
+global pathdbbulmacont
+global pathdbparches
+global configfiles
+
+
 class PluginsBulmaSetup:
     def __init__(self):
 	self.pluginsbulmafact = [
@@ -66,9 +72,5 @@ class PluginsBulmaSetup:
 
 	]
 	
-	self.pathdbbulmafact = '/usr/share/bulmages/dbmodels/crear/bulmafact/'
-	self.pathdbbulmacont = '/usr/share/bulmages/dbmodels/crear/bulmacont/'
-	self.pathdbparches = '/usr/share/bulmages/dbmodels/actualizar/'
-	self.configfiles = '/etc/bulmages/'
-	
+
 	

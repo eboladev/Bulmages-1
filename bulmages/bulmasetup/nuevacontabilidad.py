@@ -6,6 +6,7 @@ from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 from nuevacontabilidadbase import *
 from plugins import PluginsBulmaSetup
+import plugins
 
 
 class NuevaContabilidad(QtGui.QDialog, Ui_NuevaContabilidadBase, PluginsBulmaSetup):
@@ -65,7 +66,7 @@ class NuevaContabilidad(QtGui.QDialog, Ui_NuevaContabilidadBase, PluginsBulmaSet
 		self.writecommand('Tratando ' + self.pluginsbulmacont[self.i][0])
 		if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
 			self.writecommand('Ha que actualizar ' + self.pluginsbulmacont[self.i][0])
-			self.command = 'su postgres -c \"psql -t -f  ' + self.pathdbparches + self.pluginsbulmacont[self.i][4] +' '+ self.nomdb +'\"'
+			self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbparches + self.pluginsbulmacont[self.i][4] +' '+ self.nomdb +'\"'
 			self.writecommand(self.command)
 			self.process.start(self.command)
 			self.process.waitForFinished(-1)
@@ -75,8 +76,8 @@ class NuevaContabilidad(QtGui.QDialog, Ui_NuevaContabilidadBase, PluginsBulmaSet
 
     def writeConfig(self):
 	self.writecommand('ESCRIBIENDO CONFIGURACION')
-	self.writecommand("Escribiendo configuracion en " + self.configfiles)
-	self.file = QFile(self.configfiles + "bulmacont_" + self.nomdb + ".conf");
+	self.writecommand("Escribiendo configuracion en " + plugins.configfiles)
+	self.file = QFile(plugins.configfiles + "bulmacont_" + self.nomdb + ".conf");
 	if not(self.file.open(QIODevice.WriteOnly | QIODevice.Text)):
 		return;
 	self.out = QTextStream(self.file)
@@ -108,13 +109,13 @@ class NuevaContabilidad(QtGui.QDialog, Ui_NuevaContabilidadBase, PluginsBulmaSet
 	self.process.waitForFinished(-1)
 	
 	# Cargamos la esquematica de la base de datos
-	self.command = 'su postgres -c "psql ' + self.nomdb + ' < '+ self.pathdbbulmacont +'bulmacont_schema.sql"'
+	self.command = 'su postgres -c "psql ' + self.nomdb + ' < '+ plugins.pathdbbulmacont +'bulmacont_schema.sql"'
 	self.writecommand(self.command)
 	self.process.start(self.command)
 	self.process.waitForFinished(-1)
 
 	# Cargamos los datos minimos
-	self.command = 'su postgres -c "psql ' + self.nomdb + ' < ' + self.pathdbbulmacont + 't_configuracion_data.sql"'
+	self.command = 'su postgres -c "psql ' + self.nomdb + ' < ' + plugins.pathdbbulmacont + 't_configuracion_data.sql"'
 	self.writecommand(self.command)
 	self.process.start(self.command)
 	self.process.waitForFinished(-1)

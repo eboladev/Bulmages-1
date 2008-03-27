@@ -11,7 +11,6 @@ import sys
 
 sys.path.append('/usr/lib/bulmages')
 
-
 from bulmasetupbase import *
 from PyQt4 import *
 from nuevousuario import NuevoUsuario
@@ -19,7 +18,13 @@ from nuevafacturacion import NuevaFacturacion
 from nuevacontabilidad import NuevaContabilidad
 from listempresas import ListEmpresas
 from restbackup   import RestBackup
+import plugins
 from plugins import PluginsBulmaSetup
+
+plugins.pathdbbulmafact = '/usr/share/bulmages/dbmodels/crear/bulmafact/'
+plugins.pathdbbulmacont = '/usr/share/bulmages/dbmodels/crear/bulmacont/'
+plugins.pathdbparches = '/usr/share/bulmages/dbmodels/actualizar/'
+plugins.configfiles = '/etc/bulmages/'
 
 class HelloWindow(QtGui.QMainWindow, Ui_MainWindow, PluginsBulmaSetup):
     def __init__(self, *args):

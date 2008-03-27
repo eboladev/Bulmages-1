@@ -6,7 +6,7 @@ from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 from modificarfacturacionbase import *
 from plugins import PluginsBulmaSetup
-
+import plugins
 
 class ModificarFacturacion(QtGui.QDialog, Ui_ModificarFacturacionBase, PluginsBulmaSetup):
     def __init__(self, database, parent = None):
@@ -72,7 +72,7 @@ class ModificarFacturacion(QtGui.QDialog, Ui_ModificarFacturacionBase, PluginsBu
 	self.revisiones = ["revf-0.5.9.sql","revf-0.9.1.sql", "revf-0.9.3.sql", "revf-0.10.sql"]
 	#Parcheamos todo lo que hay que parchear
 	for self.parche in self.revisiones:
-		self.command = 'su postgres -c \"psql -t -f  ' + self.pathdbparches + self.parche + ' ' + self.database  + '\"'
+		self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbparches + self.parche + ' ' + self.database  + '\"'
 		self.writecommand(self.command)
 		self.process.start(self.command)
 		self.process.waitForFinished(-1)
@@ -109,7 +109,7 @@ class ModificarFacturacion(QtGui.QDialog, Ui_ModificarFacturacionBase, PluginsBu
 	self.version = self.execQuery('SELECT valor FROM configuracion WHERE nombre = \'' + plugin +'\'').replace('\n','').replace(' ','')
 	if (self.version != ''):
 		return self.version
-	self.command = 'grep '+libreria+' '+self.configfiles+'bulmafact_' + self.database + '.conf'
+	self.command = 'grep '+libreria+' '+ plugins.configfiles + 'bulmafact_' + self.database + '.conf'
 	self.writecommand(self.command)
 	self.process.start(self.command)
 	self.process.waitForFinished(-1)
@@ -145,7 +145,7 @@ class ModificarFacturacion(QtGui.QDialog, Ui_ModificarFacturacionBase, PluginsBu
 		self.writecommand('Tratando ' + self.pluginsbulmafact[self.i][0])
 		if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
 			self.writecommand('Ha que actualizar ' + self.pluginsbulmafact[self.i][0])
-			self.command = 'su postgres -c \"psql -t -f  '+ self.pathdbparches + self.pluginsbulmafact[self.i][4] + '\"'
+			self.command = 'su postgres -c \"psql -t -f  '+ plugins.pathdbparches + self.pluginsbulmafact[self.i][4] + '\"'
 			self.writecommand(self.command)
 			self.process.start(self.command)
 			self.process.waitForFinished(-1)
@@ -155,8 +155,8 @@ class ModificarFacturacion(QtGui.QDialog, Ui_ModificarFacturacionBase, PluginsBu
 
     def on_mui_aceptar_released(self):
 	self.writecommand('ESCRIBIENDO CONFIGURACION')
-	self.writecommand("Escribiendo configuracion en "+self.configfiles)
-	self.file = QFile(self.configfiles + "bulmafact_" + self.database + ".conf");
+	self.writecommand("Escribiendo configuracion en "+ plugins.configfiles)
+	self.file = QFile( plugins.configfiles + "bulmafact_" + self.database + ".conf");
 	if not(self.file.open(QIODevice.WriteOnly | QIODevice.Text)):
 		return;
 	self.out = QTextStream(self.file)
