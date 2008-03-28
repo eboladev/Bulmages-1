@@ -1,5 +1,6 @@
 usr/bin/bulmatpv
 usr/share/bulmages/images/splashbulmatpv.jpg
-usr/share/bulmages/icons/iconbulmatpv.xpm
+usr/share/bulmages/icons/icon_bulmatpv_16x16.xpm
+usr/share/bulmages/icons/icon_bulmatpv_32x32.xpm
 etc/bulmages/bulmatpv.conf
 usr/lib/libbulmatpv.so.*

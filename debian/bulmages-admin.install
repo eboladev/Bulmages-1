@@ -46,4 +46,5 @@ usr/share/bulmages/dbmodels/crear/bulmatpv/README
 usr/share/bulmages/dbmodels/crear/bulmatpv/bulmatpv_schema.sql
 usr/share/bulmages/bulmasetup
 usr/bin/bulmasetup
-
+usr/share/bulmages/icons/icon_bulmasetup_16x16.xpm
+usr/share/bulmages/icons/icon_bulmasetup_32x32.xpm

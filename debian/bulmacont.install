@@ -1,5 +1,6 @@
 usr/bin/bulmacont
-usr/share/bulmages/icons/iconbulmacont.xpm
+usr/share/bulmages/icons/icon_bulmacont_16x16.xpm
+usr/share/bulmages/icons/icon_bulmacont_32x32.xpm
 usr/share/bulmages/planescontables
 usr/share/bulmages/planescontables/PlaComptableFundacions_ca.xml
 usr/share/bulmages/planescontables/PlanContPymes2008.xml

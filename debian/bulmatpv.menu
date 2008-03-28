@@ -4,5 +4,6 @@
 	title="BulmaTpv"\
 	longtitle="BulmaTpv: Point of Sale"\
 	command="/usr/bin/bulmatpv"\
-	icon="/usr/share/bulmages/icons/iconbulmatpv.xpm"
+	icon32x32="/usr/share/bulmages/icons/icon_bulmatpv_32x32.xpm"\
+    icon16x16="/usr/share/bulmages/icons/icon_bulmatpv_16x16.xpm"
 

@@ -31,14 +31,6 @@ configure-stamp:
 	#$(MAKE) -f /usr/share/quilt/quilt.make patch
 
 	# Add here commands to configure the package.
-# 	( cd bulmages; qmake-qt4 -recursive)
-# 	( cd bulmages/bulmalib; qmake-qt4 -recursive )
-# 	( cd bulmages/bulmalib/src; qmake-qt4 -recursive )
-# 	( cd bulmages/bulmalib/plugins; qmake-qt4 )
-# 	( cd bulmages/bulmafact/plugins ; qmake-qt4 )
-# 	( cd bulmages/bulmafact/src; qmake-qt4 )
-# 	( cd bulmages/bulmacont/src; qmake-qt4 )
-# 	( cd bulmages/bulmacont/plugins; qmake-qt4 )
 
 	cd bulmages; mkdir build.debian; cd build.debian; cmake ../ -DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed" \
@@ -102,8 +94,18 @@ binary-arch: build install
 	dh_installdocs debian/README.*Debian 
 	dh_installexamples
 	dh_install --sourcedir=debian/tmp
-	dh_pysupport
+#	dh_pysupport
 #	dh_install 
+
+#If the private modules are not in a default directory (like
+#/usr/share/$package or /usr/lib/$package) you should pass the directory
+#to dh_pysupport and dh_python:
+	dh_pysupport 	-pbulmages-common /usr/share/bulmages/bgtrml2pdf
+	dh_python 	-pbulmages-common /usr/share/bulmages/bgtrml2pdf
+
+	dh_pysupport 	-pbulmages-admin /usr/share/bulmages/bulmasetup
+	dh_python 	-pbulmages-admin /usr/share/bulmages/bulmasetup
+
 
 	dh_installdebconf	
 

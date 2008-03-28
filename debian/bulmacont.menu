@@ -4,5 +4,6 @@
 	title="BulmaCont"\
 	longtitle="BulmaCont: accounting application"\
 	command="/usr/bin/bulmacont"\
-	icon="/usr/share/bulmages/icons/iconbulmacont.xpm"
+	icon32x32="/usr/share/bulmages/icons/icon_bulmacont_32x32.xpm"\
+    icon16x16="/usr/share/bulmages/icons/icon_bulmacont_16x16.xpm"
 

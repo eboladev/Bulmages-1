@@ -1,4 +1,15 @@
-bulmages (0.11+svn20080324+1) unstable; urgency=low
+bulmages (0.11+svn20080327-1) unstable; urgency=low
+
+  [Leopold Palomo Avellaneda]
+  * New subversion upstream.
+  * Added the python support to acomplish the debian policy.
+  * Corrected the number of the version from +1 to -1.
+  * New version of the menu entries, with the 32x32 and 16x16 icons versions.
+  
+
+ -- Leopold Palomo Avellaneda <leo@alaxarxa.net>  Thu, 27 Mar 2008 21:40:38 +0100
+
+bulmages (0.11+svn20080324-1) unstable; urgency=low
 
   [Leopold Palomo Avellaneda]
   * New subversion upstream. Solves warnings of linkages.
@@ -16,7 +27,7 @@ bulmages (0.11+svn20080324+1) unstable; urgency=low
 
  -- Leopold Palomo Avellaneda <leo@alaxarxa.net>  Fri, 26 Mar 2008 00:32:31 +0100
 
-bulmages (0.11+svn20080308+1) unstable; urgency=low
+bulmages (0.11+svn20080308-1) unstable; urgency=low
   
   [Leopold Palomo Avellaneda]
   * Added Uploaders: Miguel Gea Milvaques, Tomeu Borràs Riera and 
