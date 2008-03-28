@@ -54,7 +54,7 @@ public:
     /// no funcionar&aacute;.
     DiarioPrintView ( Empresa *emp, QWidget *parent );
     ~DiarioPrintView();
-    void presentar ( char *tipus = "html" );
+    void presentar ( const char *tipus = "html" );
 
 private:
     QString montaQuery();

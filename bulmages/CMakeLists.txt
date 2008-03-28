@@ -53,6 +53,7 @@ endif (${QT_MAJOR_VERSION}.${QT_MINOR_VERSION} LESS 4.3)
 
 
 INCLUDE (${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindPostgreSQL.cmake)
+INCLUDE (${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindGettext.cmake)
 
 if(NOT PGSQL_FOUND)
   message(FATAL_ERROR "Bulmages needs libpq to compile")
@@ -137,4 +138,5 @@ INCLUDE(CPack)
 MARK_AS_ADVANCED(
 	BULMAGES_VERSION
 )
+
  

@@ -9,8 +9,7 @@ __doc__ = "Sistema de instalacion y mantenimiento de Bases de Datos para BulmaGe
 
 import sys
 
-sys.path.append('/usr/lib/bulmages')
-sys.path.append('/usr/local/share/bulmages/bulmasetup')
+sys.path.append('@CMAKE_INSTALL_PREFIX@/share/bulmages/bulmasetup')
 
 
 from bulmasetupbase import *
@@ -23,10 +22,10 @@ from restbackup   import RestBackup
 import plugins
 from plugins import PluginsBulmaSetup
 
-plugins.pathdbbulmafact = '/usr/share/bulmages/dbmodels/crear/bulmafact/'
-plugins.pathdbbulmacont = '/usr/share/bulmages/dbmodels/crear/bulmacont/'
-plugins.pathdbparches = '/usr/share/bulmages/dbmodels/actualizar/'
-plugins.configfiles = '/etc/bulmages/'
+plugins.pathdbbulmafact = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/crear/bulmafact/'
+plugins.pathdbbulmacont = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/crear/bulmacont/'
+plugins.pathdbparches = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/actualizar/'
+plugins.configfiles = '@BULMAGES_CONFIG_DIR@'
 
 class HelloWindow(QtGui.QMainWindow, Ui_MainWindow, PluginsBulmaSetup):
     def __init__(self, *args):
