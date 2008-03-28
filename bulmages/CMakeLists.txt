@@ -103,7 +103,7 @@ add_subdirectory(installbulmages)
 
 
 ## We include cpack for others platforms differents than unix
-SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "The BulmaGés Suite")
+SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "The BulmaGes Suite")
 SET(CPACK_PACKAGE_VENDOR "Iglues")
 SET(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_CURRENT_SOURCE_DIR}/README.txt")
 SET(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/installbulmages/COPYING.txt")
@@ -116,7 +116,7 @@ IF(WIN32 AND NOT UNIX)
   # sure there is at least one set of four (4) backlasshes.
   SET(CPACK_PACKAGE_ICON "${CMAKE_SOURCE_DIR}/installbulmages/icons\\\\iconbulmacont.xpm")
   SET(CPACK_NSIS_INSTALLED_ICON_NAME "bin\\\\bulmacont")
-  SET(CPACK_NSIS_DISPLAY_NAME "${CPACK_PACKAGE_INSTALL_DIRECTORY} The BulmaGés Suite")
+  SET(CPACK_NSIS_DISPLAY_NAME "${CPACK_PACKAGE_INSTALL_DIRECTORY} The BulmaGes Suite")
   SET(CPACK_NSIS_HELP_LINK "http:\\\\\\\\developer.berlios.de/projects/bulmages")
   SET(CPACK_NSIS_URL_INFO_ABOUT "http:\\\\\\\\developer.berlios.de/projects/bulmages")
   SET(CPACK_NSIS_CONTACT "bulmages@bulma.net")

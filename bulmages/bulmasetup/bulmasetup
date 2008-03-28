@@ -10,6 +10,8 @@ __doc__ = "Sistema de instalacion y mantenimiento de Bases de Datos para BulmaGe
 import sys
 
 sys.path.append('/usr/lib/bulmages')
+sys.path.append('/usr/local/share/bulmages/bulmasetup')
+
 
 from bulmasetupbase import *
 from PyQt4 import *
