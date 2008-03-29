@@ -540,6 +540,10 @@ void extractoview1::on_mui_guardarpunteo_clicked()
 
 	if ( !fn.isEmpty() )
 	{
+		// Si el archivo no tiene extension le ponemos extension .pto
+		if  (!fn.contains(".")) {
+			fn = fn + ".pto";
+		} // end if
 		FILE * mifile;
 		mifile = fopen ( ( char * ) fn.toAscii().constData(), "wt" );
 		if ( mifile != NULL )
@@ -601,10 +605,11 @@ void extractoview1::on_mui_borrapunteo_clicked()
 void extractoview1::on_mui_cargarpunteos_clicked()
 {
 	_depura ( "extractoview1::on_mui_cargarpunteos_clicked", 0 );
+	try {
 	QString fn = QFileDialog::getOpenFileName ( this,
 	             tr ( "Cargar punteo" ),
 	             confpr->valor ( CONF_DIR_USER ),
-	             tr ( "Punteo (*.pto)" ) );
+	             tr ( "Punteo (*.pto);;Todos los archivos (*)" ) );
 
 	if ( !fn.isEmpty() )
 	{
@@ -614,18 +619,25 @@ void extractoview1::on_mui_cargarpunteos_clicked()
 			return;
 		} // end if
 		QTextStream filestr ( &file );
-		QString a;
-		empresaBase() ->ejecuta ( "UPDATE apunte SET punteo = FALSE" );
-		while ( !filestr.atEnd() )
+		empresaBase()->begin();
+		QString query = "UPDATE apunte SET punteo = FALSE";
+		empresaBase() ->ejecuta ( query );
+		QString a = filestr.readLine();
+		while ( !a.isNull() )
 		{
-			filestr >> a;
 			QString query;
 			query = "UPDATE apunte SET punteo = TRUE WHERE idapunte = " + a;
 			empresaBase() ->ejecuta ( query );
+			a = filestr.readLine();
 		} // end while
+		empresaBase()->commit();
 		file.close();
 	} // end if
 	presentar();
+	} catch(...) {
+		mensajeInfo("Error en la carga del punteo");
+		empresaBase()->rollback();
+	} // end try
 	_depura ( "END extractoview1::on_mui_cargarpunteos_clicked", 0 );
 }
 

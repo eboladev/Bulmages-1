@@ -121,6 +121,97 @@ END;
 
 
 
+\echo -n ':: Funcion aumenta valor ... '
+SELECT drop_if_exists_proc('aumenta_valor','');
+CREATE FUNCTION aumenta_valor() RETURNS "trigger"
+    AS '
+DECLARE
+    cta int4;
+    ccost int4;
+    ctar RECORD;
+    ccostr RECORD;
+BEGIN
+    IF NEW.debe <> OLD.debe OR NEW.haber <> OLD.haber THEN
+	UPDATE cuenta SET debe = debe + NEW.debe, haber = haber + NEW.haber WHERE idcuenta = NEW.idcuenta;
+	UPDATE c_coste SET debe = debe + NEW.debe, haber = haber + NEW.haber WHERE idc_coste = NEW.idc_coste;
+	IF NEW.idcuenta IS NOT NULL THEN
+		UPDATE acumulado_canal SET debe = debe + NEW.debe, haber = haber + NEW.haber WHERE idcuenta = NEW.idcuenta AND idcanal = NEW.idcanal;
+	END IF;
+	cta := NEW.idcuenta;
+	ccost := NEW.idc_coste;
+	-- RAISE NOTICE '' Se ha lanzado la funcion aumenta_valor()'';
+	SELECT INTO ccostr * FROM c_coste WHERE idc_coste = ccost;
+	WHILE FOUND LOOP
+		SELECT INTO ctar * FROM cuenta WHERE idcuenta = cta;
+		WHILE FOUND LOOP
+		-- RAISE NOTICE '' Cuenta % Centro Coste %'', ctar.idcuenta, ccostr.idc_coste;
+		UPDATE acumulado_c_coste SET debe = debe + NEW.debe, haber = haber + NEW.haber WHERE idc_coste = ccostr.idc_coste AND idcuenta = ctar.idcuenta;
+		SELECT INTO ctar * FROM cuenta WHERE idcuenta = ctar.padre;
+		END LOOP;
+		SELECT INTO ccostr * FROM c_coste WHERE idc_coste = ccostr.padre;
+	END LOOP;
+    END IF;
+    RETURN NEW;
+END;
+'
+    LANGUAGE plpgsql;
+
+
+\echo -n ':: Disparador nuevo apunte aumente valor ... '
+CREATE TRIGGER nuevo_apunte
+    AFTER INSERT OR UPDATE ON apunte
+    FOR EACH ROW
+    EXECUTE PROCEDURE aumenta_valor();
+
+
+
+
+\echo -n ':: Funcion disminuye valor ... '
+SELECT drop_if_exists_proc('disminuye_valor','');
+CREATE FUNCTION disminuye_valor() RETURNS "trigger"
+    AS '
+DECLARE
+    cta int4;
+    ccost int4;
+    ctar RECORD;
+    ccostr RECORD;
+BEGIN
+    IF NEW.debe <> OLD.debe OR NEW.haber <> OLD.haber THEN
+	-- RAISE NOTICE ''disminuye_valor: debe antiguo %, debe nuevo %'', OLD.debe, NEW.debe;
+	UPDATE cuenta SET debe = debe - OLD.debe, haber = haber - OLD.haber WHERE idcuenta = OLD.idcuenta;
+	UPDATE c_coste SET debe = debe - OLD.debe, haber = haber - OLD.haber WHERE idc_coste = OLD.idc_coste;
+	IF OLD.idcuenta IS NOT NULL THEN
+		UPDATE acumulado_canal SET debe= debe - OLD.debe, haber =haber - OLD.haber WHERE idcuenta = OLD.idcuenta AND idcanal = OLD.idcanal;
+	END IF;
+	cta := OLD.idcuenta;
+	ccost := OLD.idc_coste;
+	-- RAISE NOTICE '' Se ha lanzado la funcion disminuye_valor()'';
+	SELECT INTO ccostr * FROM c_coste WHERE idc_coste = ccost;
+	WHILE FOUND LOOP
+		SELECT INTO ctar * FROM cuenta WHERE idcuenta = cta;
+		WHILE FOUND LOOP
+		-- RAISE NOTICE '' Cuenta % Centro Coste %'', ctar.idcuenta, ccostr.idc_coste;
+		UPDATE acumulado_c_coste SET debe = debe - OLD.debe, haber = haber -OLD.haber WHERE idc_coste = ccostr.idc_coste AND idcuenta = ctar.idcuenta;
+		SELECT INTO ctar * FROM cuenta WHERE idcuenta = ctar.padre;
+		END LOOP;
+		SELECT INTO ccostr * FROM c_coste WHERE idc_coste = ccostr.padre;
+	END LOOP;
+	-- RAISE NOTICE '' disminuye_valor: Finaliza el algoritmo. '';
+    END IF;
+    RETURN NEW;
+END;
+'
+    LANGUAGE plpgsql;
+
+
+\echo -n ':: Disparador nuevo apunte disminuye valor ... '
+CREATE TRIGGER nuevo_apunte1
+    AFTER UPDATE ON apunte
+    FOR EACH ROW
+    EXECUTE PROCEDURE disminuye_valor();
+
+
+
 -- ================================== FIN PARCHE. ACTUALIZACION  =======================
 -- =====================================================================================
 
@@ -132,9 +223,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.11.1-0001'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.11.1-0002'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.11.1-0001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.11.1-0002'');
 	END IF;
 	RETURN 0;
 END;

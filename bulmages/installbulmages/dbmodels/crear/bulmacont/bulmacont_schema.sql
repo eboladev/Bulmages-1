@@ -1261,24 +1261,26 @@ DECLARE
     ctar RECORD;
     ccostr RECORD;
 BEGIN
-    UPDATE cuenta SET debe = debe + NEW.debe, haber = haber + NEW.haber WHERE idcuenta = NEW.idcuenta;
-    UPDATE c_coste SET debe = debe + NEW.debe, haber = haber + NEW.haber WHERE idc_coste = NEW.idc_coste;
-    IF NEW.idcuenta IS NOT NULL THEN
-	UPDATE acumulado_canal SET debe = debe + NEW.debe, haber = haber + NEW.haber WHERE idcuenta = NEW.idcuenta AND idcanal = NEW.idcanal;
-    END IF;
-    cta := NEW.idcuenta;
-    ccost := NEW.idc_coste;
-    -- RAISE NOTICE '' Se ha lanzado la funcion aumenta_valor()'';
-    SELECT INTO ccostr * FROM c_coste WHERE idc_coste = ccost;
-    WHILE FOUND LOOP
-	SELECT INTO ctar * FROM cuenta WHERE idcuenta = cta;
+    IF NEW.debe <> OLD.debe OR NEW.haber <> OLD.haber THEN
+	UPDATE cuenta SET debe = debe + NEW.debe, haber = haber + NEW.haber WHERE idcuenta = NEW.idcuenta;
+	UPDATE c_coste SET debe = debe + NEW.debe, haber = haber + NEW.haber WHERE idc_coste = NEW.idc_coste;
+	IF NEW.idcuenta IS NOT NULL THEN
+		UPDATE acumulado_canal SET debe = debe + NEW.debe, haber = haber + NEW.haber WHERE idcuenta = NEW.idcuenta AND idcanal = NEW.idcanal;
+	END IF;
+	cta := NEW.idcuenta;
+	ccost := NEW.idc_coste;
+	-- RAISE NOTICE '' Se ha lanzado la funcion aumenta_valor()'';
+	SELECT INTO ccostr * FROM c_coste WHERE idc_coste = ccost;
 	WHILE FOUND LOOP
-	    -- RAISE NOTICE '' Cuenta % Centro Coste %'', ctar.idcuenta, ccostr.idc_coste;
-	    UPDATE acumulado_c_coste SET debe = debe + NEW.debe, haber = haber + NEW.haber WHERE idc_coste = ccostr.idc_coste AND idcuenta = ctar.idcuenta;
-	    SELECT INTO ctar * FROM cuenta WHERE idcuenta = ctar.padre;
+		SELECT INTO ctar * FROM cuenta WHERE idcuenta = cta;
+		WHILE FOUND LOOP
+		-- RAISE NOTICE '' Cuenta % Centro Coste %'', ctar.idcuenta, ccostr.idc_coste;
+		UPDATE acumulado_c_coste SET debe = debe + NEW.debe, haber = haber + NEW.haber WHERE idc_coste = ccostr.idc_coste AND idcuenta = ctar.idcuenta;
+		SELECT INTO ctar * FROM cuenta WHERE idcuenta = ctar.padre;
+		END LOOP;
+		SELECT INTO ccostr * FROM c_coste WHERE idc_coste = ccostr.padre;
 	END LOOP;
-	SELECT INTO ccostr * FROM c_coste WHERE idc_coste = ccostr.padre;
-    END LOOP;
+    END IF;
     RETURN NEW;
 END;
 '
@@ -1301,26 +1303,28 @@ DECLARE
     ctar RECORD;
     ccostr RECORD;
 BEGIN
-    -- RAISE NOTICE ''disminuye_valor: debe antiguo %, debe nuevo %'', OLD.debe, NEW.debe;
-    UPDATE cuenta SET debe = debe - OLD.debe, haber = haber - OLD.haber WHERE idcuenta = OLD.idcuenta;
-    UPDATE c_coste SET debe = debe - OLD.debe, haber = haber - OLD.haber WHERE idc_coste = OLD.idc_coste;
-    IF OLD.idcuenta IS NOT NULL THEN
-	UPDATE acumulado_canal SET debe= debe - OLD.debe, haber =haber - OLD.haber WHERE idcuenta = OLD.idcuenta AND idcanal = OLD.idcanal;
-    END IF;
-    cta := OLD.idcuenta;
-    ccost := OLD.idc_coste;
-    -- RAISE NOTICE '' Se ha lanzado la funcion disminuye_valor()'';
-    SELECT INTO ccostr * FROM c_coste WHERE idc_coste = ccost;
-    WHILE FOUND LOOP
-	SELECT INTO ctar * FROM cuenta WHERE idcuenta = cta;
+    IF NEW.debe <> OLD.debe OR NEW.haber <> OLD.haber THEN
+	-- RAISE NOTICE ''disminuye_valor: debe antiguo %, debe nuevo %'', OLD.debe, NEW.debe;
+	UPDATE cuenta SET debe = debe - OLD.debe, haber = haber - OLD.haber WHERE idcuenta = OLD.idcuenta;
+	UPDATE c_coste SET debe = debe - OLD.debe, haber = haber - OLD.haber WHERE idc_coste = OLD.idc_coste;
+	IF OLD.idcuenta IS NOT NULL THEN
+		UPDATE acumulado_canal SET debe= debe - OLD.debe, haber =haber - OLD.haber WHERE idcuenta = OLD.idcuenta AND idcanal = OLD.idcanal;
+	END IF;
+	cta := OLD.idcuenta;
+	ccost := OLD.idc_coste;
+	-- RAISE NOTICE '' Se ha lanzado la funcion disminuye_valor()'';
+	SELECT INTO ccostr * FROM c_coste WHERE idc_coste = ccost;
 	WHILE FOUND LOOP
-	    -- RAISE NOTICE '' Cuenta % Centro Coste %'', ctar.idcuenta, ccostr.idc_coste;
-	    UPDATE acumulado_c_coste SET debe = debe - OLD.debe, haber = haber -OLD.haber WHERE idc_coste = ccostr.idc_coste AND idcuenta = ctar.idcuenta;
-	    SELECT INTO ctar * FROM cuenta WHERE idcuenta = ctar.padre;
-        END LOOP;
-        SELECT INTO ccostr * FROM c_coste WHERE idc_coste = ccostr.padre;
-    END LOOP;
-    -- RAISE NOTICE '' disminuye_valor: Finaliza el algoritmo. '';
+		SELECT INTO ctar * FROM cuenta WHERE idcuenta = cta;
+		WHILE FOUND LOOP
+		-- RAISE NOTICE '' Cuenta % Centro Coste %'', ctar.idcuenta, ccostr.idc_coste;
+		UPDATE acumulado_c_coste SET debe = debe - OLD.debe, haber = haber -OLD.haber WHERE idc_coste = ccostr.idc_coste AND idcuenta = ctar.idcuenta;
+		SELECT INTO ctar * FROM cuenta WHERE idcuenta = ctar.padre;
+		END LOOP;
+		SELECT INTO ccostr * FROM c_coste WHERE idc_coste = ccostr.padre;
+	END LOOP;
+	-- RAISE NOTICE '' disminuye_valor: Finaliza el algoritmo. '';
+    END IF;
     RETURN NEW;
 END;
 '
@@ -2008,9 +2012,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.11.1-0001'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.11.1-0002'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.11.1-0001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.11.1-0002'');
 	END IF;
 	RETURN 0;
 END;
