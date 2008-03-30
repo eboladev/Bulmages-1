@@ -92,7 +92,7 @@ Package: libbulmalib0.11-dev
 Conflicts: libbulmalib-1-dev,libbulmalib0
 Section: libdevel
 Architecture: any
-Depends: libbulmalib1, ${shlibs:Depends}
+Depends: libbulmalib0.11, ${shlibs:Depends}
 Description: bulmages headers for development
  Bulmages is invoicing and accounting for small businesses.
  .
