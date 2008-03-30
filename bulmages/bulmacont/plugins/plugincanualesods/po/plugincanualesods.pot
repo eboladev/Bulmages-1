@@ -1,0 +1,898 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: bulmages@bulma.net\n"
+"POT-Creation-Date: 2008-03-30 21:26+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: plugincanualesods.cpp:134 plugincanualesods.cpp:163
+msgid "Error con la base de datos"
+msgstr ""
+
+#: plugincanualesods.cpp:195
+msgid "ERROR: Debe introducir una fecha en el balance actual."
+msgstr ""
+
+#: plugincanualesods.cpp:200
+msgid "ERROR: Debe introducir una fecha en el balance anterior."
+msgstr ""
+
+#: plugincanualesods.cpp:258 plugincanualesods.cpp:474
+msgid "ERROR: Funcion no implementada todavia."
+msgstr ""
+
+#: plugincanualesods.cpp:278
+msgid "ERROR: No se ha podido crear el archivo"
+msgstr ""
+
+#: plugincanualesods.cpp:304
+msgid "&Cuentas Anuales"
+msgstr ""
+
+#: plugincanualesods.cpp:306
+msgid "&PGC 2008"
+msgstr ""
+
+#: plugincanualesods.cpp:307
+msgid "PGC &Anterior 2008"
+msgstr ""
+
+#: plugincanualesods.cpp:309 plugincanualesods.cpp:326
+msgid "&Cuentas Anuales PGC"
+msgstr ""
+
+#: plugincanualesods.cpp:310 plugincanualesods.cpp:311
+msgid "Cuentas Anuales Plan General Contable 2008"
+msgstr ""
+
+#: plugincanualesods.cpp:314
+msgid "Cuentas Anuales &Abreviadas PGC"
+msgstr ""
+
+#: plugincanualesods.cpp:315 plugincanualesods.cpp:316
+msgid "Cuentas Anuales Abreviadas Plan General Contable 2008"
+msgstr ""
+
+#: plugincanualesods.cpp:319
+msgid "Cuentas Anuales &PYMES"
+msgstr ""
+
+#: plugincanualesods.cpp:320 plugincanualesods.cpp:321
+msgid "Cuentas Anuales PYMES 2008"
+msgstr ""
+
+#: plugincanualesods.cpp:327 plugincanualesods.cpp:328
+msgid "Cuentas Anuales Plan General Contable hasta 2007"
+msgstr ""
+
+#: plugincanualesods.cpp:331
+msgid "Cuentas A. Abreviadas &Sin lucro"
+msgstr ""
+
+#: plugincanualesods.cpp:332 plugincanualesods.cpp:333
+msgid "Cuentas Anuales Abreviadas Asociación Sin ánimo de lucro"
+msgstr ""
+
+#: plugincanualesods.cpp:454
+msgid "Cuentas Anuales Abreviadas para Asociacion Sin Lucro. "
+msgstr ""
+
+#: plugincanualesods.cpp:458
+msgid "Cuentas Anuales del Plan General Contable hasta 2007. "
+msgstr ""
+
+#: plugincanualesods.cpp:462
+msgid "Cuentas Anuales para PYMES 2008. "
+msgstr ""
+
+#: plugincanualesods.cpp:466
+msgid "Cuentas Anuales Abreviadas del Plan General Contable 2008. "
+msgstr ""
+
+#: plugincanualesods.cpp:470
+msgid "Cuentas Anuales del Plan General Contable 2008. "
+msgstr ""
+
+#: plugincanualesods.cpp:478
+msgid "Advertencia: ha escojido las "
+msgstr ""
+
+#: plugincanualesods.cpp:478
+msgid ""
+"El resultado solo sera correcto si coincide con el plan contable de su "
+"empresa."
+msgstr ""
+
+#: plugincanualesods.cpp:1874 plugincanualesods.cpp:3040
+#: plugincanualesods.cpp:3046
+msgid "ACTIVO"
+msgstr ""
+
+#: plugincanualesods.cpp:1879
+msgid "BALANCE DE PYMES AL CIERRE DEL EJERCICIO"
+msgstr ""
+
+#: plugincanualesods.cpp:2918 plugincanualesods.cpp:3654
+#: plugincanualesods.cpp:3660 plugincanualesods.cpp:3967
+msgid "PERDIDAS_Y_GANANCIAS"
+msgstr ""
+
+#: plugincanualesods.cpp:2928 plugincanualesods.cpp:3976
+msgid "I. Por valoración de instrumentos financieros."
+msgstr ""
+
+#: plugincanualesods.cpp:3045 plugincanualesods.cpp:3345
+msgid "BALANCE AL CIERRE DEL EJERCICIO"
+msgstr ""
+
+#: plugincanualesods.cpp:3047 plugincanualesods.cpp:3348
+#: plugincanualesods.cpp:3662 plugincanualesods.cpp:3958
+msgid "NOTAS"
+msgstr ""
+
+#: plugincanualesods.cpp:3048 plugincanualesods.cpp:3349
+#: plugincanualesods.cpp:3663 plugincanualesods.cpp:3959
+msgid "Ejercicio N"
+msgstr ""
+
+#: plugincanualesods.cpp:3049 plugincanualesods.cpp:3350
+#: plugincanualesods.cpp:3664 plugincanualesods.cpp:3960
+msgid "Ejercicio N-1"
+msgstr ""
+
+#: plugincanualesods.cpp:3055
+msgid "A) ACTIVO NO CORRIENTE"
+msgstr ""
+
+#: plugincanualesods.cpp:3063
+msgid "I. Inmovilizado intangible."
+msgstr ""
+
+#: plugincanualesods.cpp:3068
+msgid "1. Desarrollo."
+msgstr ""
+
+#: plugincanualesods.cpp:3072
+msgid "2. Concesiones."
+msgstr ""
+
+#: plugincanualesods.cpp:3076
+msgid "3. Patentes, licencias, marcas y similares."
+msgstr ""
+
+#: plugincanualesods.cpp:3080
+msgid "4. Fondo de comercio."
+msgstr ""
+
+#: plugincanualesods.cpp:3084
+msgid "5. Aplicaciones informáticas."
+msgstr ""
+
+#: plugincanualesods.cpp:3088
+msgid "6. Otro inmovilizado intangible."
+msgstr ""
+
+#: plugincanualesods.cpp:3093
+msgid "II. Inmovilizado material."
+msgstr ""
+
+#: plugincanualesods.cpp:3098
+msgid "1. Terrenos y construcciones."
+msgstr ""
+
+#: plugincanualesods.cpp:3102
+msgid "2. Instalaciones técnicas, y otro inmovilizado material."
+msgstr ""
+
+#: plugincanualesods.cpp:3106
+msgid "3. Inmovilizado en curso y anticipos."
+msgstr ""
+
+#: plugincanualesods.cpp:3111
+msgid "III. Inversiones inmobiliarias."
+msgstr ""
+
+#: plugincanualesods.cpp:3116
+msgid "1. Terrenos."
+msgstr ""
+
+#: plugincanualesods.cpp:3120
+msgid "2. Construcciones."
+msgstr ""
+
+#: plugincanualesods.cpp:3125
+msgid "IV. Inversiones en empresas del grupo y asociadas a largo plazo."
+msgstr ""
+
+#: plugincanualesods.cpp:3130 plugincanualesods.cpp:3153
+#: plugincanualesods.cpp:3265 plugincanualesods.cpp:3289
+msgid "1. Instrumentos de patrimonio."
+msgstr ""
+
+#: plugincanualesods.cpp:3134 plugincanualesods.cpp:3269
+msgid "2. Créditos a empresas."
+msgstr ""
+
+#: plugincanualesods.cpp:3138 plugincanualesods.cpp:3273
+#: plugincanualesods.cpp:3297
+msgid "3. Valores representativos de deuda."
+msgstr ""
+
+#: plugincanualesods.cpp:3142 plugincanualesods.cpp:3165
+#: plugincanualesods.cpp:3277 plugincanualesods.cpp:3301
+#: plugincanualesods.cpp:3521 plugincanualesods.cpp:3588
+msgid "4. Derivados."
+msgstr ""
+
+#: plugincanualesods.cpp:3144 plugincanualesods.cpp:3169
+#: plugincanualesods.cpp:3279 plugincanualesods.cpp:3305
+msgid "5. Otros activos financieros."
+msgstr ""
+
+#: plugincanualesods.cpp:3148
+msgid "V. Inversiones financieras a largo plazo."
+msgstr ""
+
+#: plugincanualesods.cpp:3157
+msgid "2. Créditos a terceros"
+msgstr ""
+
+#: plugincanualesods.cpp:3161
+msgid "3. Valores representativos de deuda"
+msgstr ""
+
+#: plugincanualesods.cpp:3174
+msgid "VI. Activos por Impuesto diferido."
+msgstr ""
+
+#: plugincanualesods.cpp:3182
+msgid "B) ACTIVO CORRIENTE"
+msgstr ""
+
+#: plugincanualesods.cpp:3190
+msgid "I. Activos no corrientes mantenidos para la venta."
+msgstr ""
+
+#: plugincanualesods.cpp:3196
+msgid "II. Existencias."
+msgstr ""
+
+#: plugincanualesods.cpp:3201
+msgid "1. Comerciales."
+msgstr ""
+
+#: plugincanualesods.cpp:3205
+msgid "2. Materias primas y otros aprovisionamientos."
+msgstr ""
+
+#: plugincanualesods.cpp:3209
+msgid "3. Productos en curso."
+msgstr ""
+
+#: plugincanualesods.cpp:3213
+msgid "4. Productos terminados."
+msgstr ""
+
+#: plugincanualesods.cpp:3217
+msgid "5. Subproductos, residuos y materiales recuperados."
+msgstr ""
+
+#: plugincanualesods.cpp:3221
+msgid "6. Anticipos a proveedores"
+msgstr ""
+
+#: plugincanualesods.cpp:3226
+msgid "III. Deudores comerciales y otras cuentas a cobrar."
+msgstr ""
+
+#: plugincanualesods.cpp:3231
+msgid "1. Clientes por ventas y prestaciones de servicios."
+msgstr ""
+
+#: plugincanualesods.cpp:3235
+msgid "2. Clientes, empresas del grupo y asociadas."
+msgstr ""
+
+#: plugincanualesods.cpp:3239
+msgid "3. Deudores varios."
+msgstr ""
+
+#: plugincanualesods.cpp:3243
+msgid "4. Personal."
+msgstr ""
+
+#: plugincanualesods.cpp:3247
+msgid "5. Activos por impuesto corriente."
+msgstr ""
+
+#: plugincanualesods.cpp:3251
+msgid "6. Otros créditos con las Administraciones Públicas."
+msgstr ""
+
+#: plugincanualesods.cpp:3255
+msgid "7. Accionistas (socios) por desembolsos exigidos"
+msgstr ""
+
+#: plugincanualesods.cpp:3260
+msgid "IV. Inversiones en empresas del grupo y asociadas a corto plazo."
+msgstr ""
+
+#: plugincanualesods.cpp:3284
+msgid "V. Inversiones financieras a corto plazo."
+msgstr ""
+
+#: plugincanualesods.cpp:3293
+msgid "2. Créditos a empresas"
+msgstr ""
+
+#: plugincanualesods.cpp:3310 plugincanualesods.cpp:3637
+msgid "VI. Periodificaciones a corto plazo."
+msgstr ""
+
+#: plugincanualesods.cpp:3316
+msgid "VII. Efectivo y otros activos líquidos equivalentes."
+msgstr ""
+
+#: plugincanualesods.cpp:3321
+msgid "1. Tesorería."
+msgstr ""
+
+#: plugincanualesods.cpp:3325
+msgid "2. Otros activos líquidos equivalentes."
+msgstr ""
+
+#: plugincanualesods.cpp:3332
+msgid "TOTAL ACTIVO  (A + B)"
+msgstr ""
+
+#: plugincanualesods.cpp:3340 plugincanualesods.cpp:3346
+msgid "PATRIMONIO NETO Y PASIVO"
+msgstr ""
+
+#: plugincanualesods.cpp:3356
+msgid "A) PATRIMONIO NETO"
+msgstr ""
+
+#: plugincanualesods.cpp:3364
+msgid "A-1) Fondos propios."
+msgstr ""
+
+#: plugincanualesods.cpp:3370
+msgid "I. Capital."
+msgstr ""
+
+#: plugincanualesods.cpp:3375
+msgid "1. Capital escriturado."
+msgstr ""
+
+#: plugincanualesods.cpp:3379
+msgid "2. (Capital no exigido)."
+msgstr ""
+
+#: plugincanualesods.cpp:3384
+msgid "II. Prima de emisión."
+msgstr ""
+
+#: plugincanualesods.cpp:3390
+msgid "III. Reservas."
+msgstr ""
+
+#: plugincanualesods.cpp:3395
+msgid "1. Legal y estatutarias."
+msgstr ""
+
+#: plugincanualesods.cpp:3399
+msgid "2. Otras reservas."
+msgstr ""
+
+#: plugincanualesods.cpp:3404
+msgid "IV. (Acciones y participaciones en patrimonio propias)."
+msgstr ""
+
+#: plugincanualesods.cpp:3410
+msgid "V. Resultados de ejercicios anteriores."
+msgstr ""
+
+#: plugincanualesods.cpp:3415
+msgid "1. Remanente."
+msgstr ""
+
+#: plugincanualesods.cpp:3419
+msgid "2. (Resultados negativos de ejercicios anteriores)."
+msgstr ""
+
+#: plugincanualesods.cpp:3424
+msgid "VI. Otras aportaciones de socios."
+msgstr ""
+
+#: plugincanualesods.cpp:3430
+msgid "VII. Resultado del ejercicio."
+msgstr ""
+
+#: plugincanualesods.cpp:3436
+msgid "VIII. (Dividendo a cuenta)."
+msgstr ""
+
+#: plugincanualesods.cpp:3442
+msgid "IX. Otros instrumentos de patrimonio neto."
+msgstr ""
+
+#: plugincanualesods.cpp:3448
+msgid "A-2) Ajustes por cambios de valor."
+msgstr ""
+
+#: plugincanualesods.cpp:3453
+msgid "I. Activos financieros disponibles para la venta."
+msgstr ""
+
+#: plugincanualesods.cpp:3457
+msgid "II. Operaciones de cobertura."
+msgstr ""
+
+#: plugincanualesods.cpp:3461
+msgid "III. Otros."
+msgstr ""
+
+#: plugincanualesods.cpp:3466
+msgid "A-3) Subvenciones, donaciones y legados recibidos."
+msgstr ""
+
+#: plugincanualesods.cpp:3474
+msgid "B) PASIVO NO CORRIENTE"
+msgstr ""
+
+#: plugincanualesods.cpp:3482
+msgid "I. Provisiones a largo plazo."
+msgstr ""
+
+#: plugincanualesods.cpp:3487
+msgid "1. Obligaciones por prestaciones a largo plazo al personal."
+msgstr ""
+
+#: plugincanualesods.cpp:3491
+msgid "2. Actuaciones medioambientales."
+msgstr ""
+
+#: plugincanualesods.cpp:3495
+msgid "3. Provisiones por reestructuración."
+msgstr ""
+
+#: plugincanualesods.cpp:3499
+msgid "4. Otras provisiones."
+msgstr ""
+
+#: plugincanualesods.cpp:3504
+msgid "II. Deudas a largo plazo."
+msgstr ""
+
+#: plugincanualesods.cpp:3509 plugincanualesods.cpp:3576
+msgid "1. Obligaciones y otros valores negociables."
+msgstr ""
+
+#: plugincanualesods.cpp:3513 plugincanualesods.cpp:3580
+msgid "2. Deudas con entidades de crédito."
+msgstr ""
+
+#: plugincanualesods.cpp:3517 plugincanualesods.cpp:3584
+msgid "3. Acreedores por arrendamiento financiero."
+msgstr ""
+
+#: plugincanualesods.cpp:3525 plugincanualesods.cpp:3592
+msgid "5. Otros pasivos financieros."
+msgstr ""
+
+#: plugincanualesods.cpp:3530
+msgid "III. Deudas con empresas del grupo y asociadas a largo plazo."
+msgstr ""
+
+#: plugincanualesods.cpp:3536
+msgid "IV. Pasivos por impuesto diferido."
+msgstr ""
+
+#: plugincanualesods.cpp:3542
+msgid "V. Periodificaciones a largo plazo."
+msgstr ""
+
+#: plugincanualesods.cpp:3550
+msgid "C) PASIVO CORRIENTE"
+msgstr ""
+
+#: plugincanualesods.cpp:3558
+msgid ""
+"I. Pasivos vinculados con activos no corrientes mantenidos para la venta."
+msgstr ""
+
+#: plugincanualesods.cpp:3564
+msgid "II. Provisiones a corto plazo."
+msgstr ""
+
+#: plugincanualesods.cpp:3571
+msgid "III. Deudas a corto plazo."
+msgstr ""
+
+#: plugincanualesods.cpp:3597
+msgid "IV. Deudas con empresas del grupo y asociadas a corto plazo."
+msgstr ""
+
+#: plugincanualesods.cpp:3603
+msgid "V. Acreedores comerciales y otras cuentas a pagar."
+msgstr ""
+
+#: plugincanualesods.cpp:3608
+msgid "1. Proveedores"
+msgstr ""
+
+#: plugincanualesods.cpp:3612
+msgid "2. Proveedores, empresas del grupo y asociadas."
+msgstr ""
+
+#: plugincanualesods.cpp:3616
+msgid "3. Acreedores varios."
+msgstr ""
+
+#: plugincanualesods.cpp:3620
+msgid "4. Personal (remuneraciones pendientes de pago)."
+msgstr ""
+
+#: plugincanualesods.cpp:3624
+msgid "5. Pasivos por impuesto corriente."
+msgstr ""
+
+#: plugincanualesods.cpp:3628
+msgid "6. Otras deudas con las Administraciones Públicas."
+msgstr ""
+
+#: plugincanualesods.cpp:3632
+msgid "7. Anticipos de clientes."
+msgstr ""
+
+#: plugincanualesods.cpp:3646
+msgid "TOTAL PATRIMONIO NETO Y PASIVO (A + B + C)"
+msgstr ""
+
+#: plugincanualesods.cpp:3659
+msgid "CUENTA DE PÉRDIDAS Y GANANCIAS CORRESPONDIENTE AL EJERCICIO TERMINADO"
+msgstr ""
+
+#: plugincanualesods.cpp:3670
+msgid "A) OPERACIONES CONTINUADAS"
+msgstr ""
+
+#: plugincanualesods.cpp:3676
+msgid "1. Importe neto de la cifra de negocios."
+msgstr ""
+
+#: plugincanualesods.cpp:3681
+msgid "a) Ventas."
+msgstr ""
+
+#: plugincanualesods.cpp:3685
+msgid "b) Prestaciones de servicios."
+msgstr ""
+
+#: plugincanualesods.cpp:3690
+msgid ""
+"2. Variación de existencias de productos terminados y en curso de "
+"fabricación."
+msgstr ""
+
+#: plugincanualesods.cpp:3696
+msgid "3. Trabajos realizados por la empresa para su activo."
+msgstr ""
+
+#: plugincanualesods.cpp:3702
+msgid "4. Aprovisionamientos."
+msgstr ""
+
+#: plugincanualesods.cpp:3707
+msgid "a) Consumo de mercaderías."
+msgstr ""
+
+#: plugincanualesods.cpp:3711
+msgid "b) Consumo de materias primas y otras materias consumibles."
+msgstr ""
+
+#: plugincanualesods.cpp:3715
+msgid "c) Trabajos realizados por otras empresas."
+msgstr ""
+
+#: plugincanualesods.cpp:3719
+msgid ""
+"d) Deterioro de mercaderías, materias primas y otros aprovisionamientos."
+msgstr ""
+
+#: plugincanualesods.cpp:3724
+msgid "5. Otros ingresos de explotación."
+msgstr ""
+
+#: plugincanualesods.cpp:3729
+msgid "a) Ingresos accesorios y otros de gestiÃ³n corriente."
+msgstr ""
+
+#: plugincanualesods.cpp:3733
+msgid "b) Subvenciones de explotación incorporadas al resultado del ejercicio."
+msgstr ""
+
+#: plugincanualesods.cpp:3738
+msgid "6. Gastos de personal."
+msgstr ""
+
+#: plugincanualesods.cpp:3743
+msgid "a) Sueldos, salarios y asimilados."
+msgstr ""
+
+#: plugincanualesods.cpp:3747
+msgid "b) Cargas sociales."
+msgstr ""
+
+#: plugincanualesods.cpp:3751
+msgid "c) Provisiones."
+msgstr ""
+
+#: plugincanualesods.cpp:3756
+msgid "7. Otros gastos de explotación."
+msgstr ""
+
+#: plugincanualesods.cpp:3761
+msgid "a) Servicios exteriores."
+msgstr ""
+
+#: plugincanualesods.cpp:3765
+msgid "b) Tributos."
+msgstr ""
+
+#: plugincanualesods.cpp:3769
+msgid ""
+"c) Pérdidas, deterioro y variación de provisiones por operaciones "
+"comerciales."
+msgstr ""
+
+#: plugincanualesods.cpp:3773
+msgid "d) Otros gastos de gestión corriente"
+msgstr ""
+
+#: plugincanualesods.cpp:3778
+msgid "8. Amortización del inmovilizado."
+msgstr ""
+
+#: plugincanualesods.cpp:3784
+msgid "9. Imputación de subvenciones de inmovilizado no financiero y otras."
+msgstr ""
+
+#: plugincanualesods.cpp:3790
+msgid "10. Excesos de provisiones."
+msgstr ""
+
+#: plugincanualesods.cpp:3796
+msgid "11. Deterioro y resultado por enajenaciones del inmovilizado."
+msgstr ""
+
+#: plugincanualesods.cpp:3801 plugincanualesods.cpp:3894
+msgid "a) Deterioros y pérdidas."
+msgstr ""
+
+#: plugincanualesods.cpp:3805 plugincanualesods.cpp:3898
+msgid "b) Resultados por enajenaciones y otras."
+msgstr ""
+
+#: plugincanualesods.cpp:3812
+msgid "A.1) RESULTADO DE EXPLOTACIÓN"
+msgstr ""
+
+#: plugincanualesods.cpp:3815
+msgid "(1+2+3+4+5+6+7+8+9+10+11)"
+msgstr ""
+
+#: plugincanualesods.cpp:3821
+msgid "12. Ingresos financieros."
+msgstr ""
+
+#: plugincanualesods.cpp:3826
+msgid "a) De participaciones en instrumentos de patrimonio."
+msgstr ""
+
+#: plugincanualesods.cpp:3830
+msgid "a1) En empresas del grupo y asociadas."
+msgstr ""
+
+#: plugincanualesods.cpp:3834
+msgid "a2) En terceros."
+msgstr ""
+
+#: plugincanualesods.cpp:3838
+msgid "b) De valores negociables y otros instrumentos financieros."
+msgstr ""
+
+#: plugincanualesods.cpp:3842
+msgid "b1) De empresas del grupo y asociadas."
+msgstr ""
+
+#: plugincanualesods.cpp:3846
+msgid "b2) De terceros."
+msgstr ""
+
+#: plugincanualesods.cpp:3851
+msgid "13. Gastos financieros."
+msgstr ""
+
+#: plugincanualesods.cpp:3856
+msgid "a) Por deudas con empresas del grupo y asociadas."
+msgstr ""
+
+#: plugincanualesods.cpp:3860
+msgid "b) Por deudas con terceros."
+msgstr ""
+
+#: plugincanualesods.cpp:3864
+msgid "c) Por actualización de provisiones"
+msgstr ""
+
+#: plugincanualesods.cpp:3869
+msgid "14. Variación de valor razonable en instrumentos financieros."
+msgstr ""
+
+#: plugincanualesods.cpp:3874
+msgid "a) Cartera de negociación y otros."
+msgstr ""
+
+#: plugincanualesods.cpp:3878
+msgid ""
+"b) Imputación al resultado del ejercicio por activos financieros disponibles "
+"para la venta."
+msgstr ""
+
+#: plugincanualesods.cpp:3883
+msgid "15. Diferencias de cambio."
+msgstr ""
+
+#: plugincanualesods.cpp:3889
+msgid ""
+"16. Deterioro y resultado por enajenaciones de instrumentos financieros."
+msgstr ""
+
+#: plugincanualesods.cpp:3904
+msgid "A.2) RESULTADO FINANCIERO (12+13+14+15+16 )"
+msgstr ""
+
+#: plugincanualesods.cpp:3911
+msgid "A.3) RESULTADO ANTES DE IMPUESTOS (A.1+A.2)"
+msgstr ""
+
+#: plugincanualesods.cpp:3918
+msgid "17. Impuestos sobre beneficios."
+msgstr ""
+
+#: plugincanualesods.cpp:3925
+msgid ""
+"A.4) RESULTADO DEL EJERCICIO PROCEDENTE DE OPERACIONES CONTINUADAS (A.3+17)"
+msgstr ""
+
+#: plugincanualesods.cpp:3933
+msgid "B) OPERACIONES INTERRUMPIDAS"
+msgstr ""
+
+#: plugincanualesods.cpp:3938
+msgid ""
+"18. Resultado del ejercicio procedente de operaciones interrumpidas neto de "
+"impuestos."
+msgstr ""
+
+#: plugincanualesods.cpp:3944
+msgid "A.5) RESULTADO DEL EJERCICIO (A.4+18)"
+msgstr ""
+
+#: plugincanualesods.cpp:3950 plugincanualesods.cpp:3956
+msgid "INGRESOS Y GASTOS"
+msgstr ""
+
+#: plugincanualesods.cpp:3955
+msgid ""
+"ESTADO DE INGRESOS Y GASTOS RECONOCIDOS CORRESPONDIENTE AL EJERCICIO "
+"TERMINADO"
+msgstr ""
+
+#: plugincanualesods.cpp:3966
+msgid "A) Resultado de la cuenta de perdidas y ganancias"
+msgstr ""
+
+#: plugincanualesods.cpp:3970
+msgid "Ingresos y gastos imputados directamente al patrimonio neto"
+msgstr ""
+
+#: plugincanualesods.cpp:3981
+msgid "1. Activos financieros disponibles para la venta."
+msgstr ""
+
+#: plugincanualesods.cpp:3985 plugincanualesods.cpp:4035
+msgid "2. Otros ingresos/gastos."
+msgstr ""
+
+#: plugincanualesods.cpp:3990
+msgid "II. Por coberturas de flujos de efectivo."
+msgstr ""
+
+#: plugincanualesods.cpp:3996
+msgid "III. Subvenciones, donaciones y legados recibidos."
+msgstr ""
+
+#: plugincanualesods.cpp:4002
+msgid "IV. Por ganancias y pérdidas actuariales y otros ajustes"
+msgstr ""
+
+#: plugincanualesods.cpp:4008
+msgid "V. Efecto impositivo."
+msgstr ""
+
+#: plugincanualesods.cpp:4016
+msgid ""
+"B) Total Ingresos y gastos imputados directamente al patrimonio neto (I+II"
+"+III+IV+V)"
+msgstr ""
+
+#: plugincanualesods.cpp:4020
+msgid "Transferencias a la cuenta de pérdidas y ganancias"
+msgstr ""
+
+#: plugincanualesods.cpp:4026
+msgid "VI. Por valoración de instrumentos financieros."
+msgstr ""
+
+#: plugincanualesods.cpp:4031
+msgid "1.Activos financieros disponibles para la venta."
+msgstr ""
+
+#: plugincanualesods.cpp:4040
+msgid "VII. Por coberturas de flujos de efectivo."
+msgstr ""
+
+#: plugincanualesods.cpp:4046
+msgid "VIII. Subvenciones, donaciones y legados recibidos."
+msgstr ""
+
+#: plugincanualesods.cpp:4052
+msgid "IX. Efecto impositivo."
+msgstr ""
+
+#: plugincanualesods.cpp:4060
+msgid ""
+"C) Total transferencias a la cuenta de pérdidas y ganancias (VI+VII+VIII+IX)"
+msgstr ""
+
+#: plugincanualesods.cpp:4068
+msgid "TOTAL DE INGRESOS Y GASTOS RECONOCIDOS (A+ B +C)"
+msgstr ""
+
+#: ui_datosbase.h:134
+msgid "Datos para generar el balance"
+msgstr ""
+
+#: ui_datosbase.h:135
+msgid "Ejercicio actual:"
+msgstr ""
+
+#: ui_datosbase.h:136 ui_datosbase.h:138
+msgid "Fecha balance:"
+msgstr ""
+
+#: ui_datosbase.h:137
+msgid "Ejercicio anterior:"
+msgstr ""
+
+#: ui_datosbase.h:139
+msgid "&Aceptar"
+msgstr ""
+
+#: ui_datosbase.h:140
+msgid "&Cancelar"
+msgstr ""

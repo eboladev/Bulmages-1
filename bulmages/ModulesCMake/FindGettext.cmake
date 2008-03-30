@@ -99,6 +99,20 @@ FIND_PROGRAM(GETTEXT_MSGFMT_EXECUTABLE msgfmt)
 
 FIND_PROGRAM(GETTEXT_XGETTEXT_EXECUTABLE xgettext)
 
+IF (GETTEXT_MSGMERGE_EXECUTABLE AND GETTEXT_MSGFMT_EXECUTABLE )
+   SET(GETTEXT_FOUND TRUE)
+ELSE (GETTEXT_MSGMERGE_EXECUTABLE AND GETTEXT_MSGFMT_EXECUTABLE )
+   SET(GETTEXT_FOUND FALSE)
+   IF (GetText_REQUIRED)
+      MESSAGE(FATAL_ERROR "GetText not found")
+   ENDIF (GetText_REQUIRED)
+ENDIF (GETTEXT_MSGMERGE_EXECUTABLE AND GETTEXT_MSGFMT_EXECUTABLE )
+
+
+
+
+
+
 MACRO(GETTEXT_CREATE_TRANSLATIONS _potFile _firstPoFile)
 
    SET(_gmoFiles)
@@ -228,92 +242,70 @@ MACRO(GETTEXT_PROCESS_PO_FILES _lang)
    ADD_CUSTOM_TARGET(pofiles ${_addToAll} DEPENDS ${_gmoFiles})
 ENDMACRO(GETTEXT_PROCESS_PO_FILES)
 
-# GETTEXT_CREATE_TEMPLATE ( outputFile [ALL] file1 ... fileN )
-#    This will create a target "translations" which will convert the 
-#    given input po files into the binary output mo file. If the 
-#    ALL option is used, the translations will also be created when
-#    building the default target.
-#GETTEXT_CREATE_TEMPLATE(${plugin} ${plugin_STR} ${CMAKE_CURRENT_SOURCE_DIR})
 
+# This macro creates a file in file_list this the contens of
+# the var lsource. Each parameter is in a line.
+# the macro erase the file previously
+macro(CREATE_FILE_LIST lsource file_list)
+
+if(WIN32)
+	string(ASCII 10 13 line_r)
+else(WIN32)
+	string(ASCII 10 line_r)
+endif(WIN32)
+
+file(REMOVE ${file_list})
+
+foreach(_file ${${lsource}})
+    GET_FILENAME_COMPONENT(_FileName ${_file} NAME)
+    file(APPEND ${file_list} ${_FileName})
+    file(APPEND ${file_list} ${line_r})
+endforeach(_file ${lsource}) 
+
+endmacro(CREATE_FILE_LIST)
+
+
+
+# GETTEXT_CREATE_TEMPLATE( template directory sources)
+# this macro creates the pot file template. It needs: 
+# template, the file output with the name template.pot
+# dirIN, the directory where to find the files to process.
+# sources, a file with the list of the files to process 
 macro(GETTEXT_CREATE_TEMPLATE template dirIN sources )
-	#foreach (file ${sources})
-	#	WRITE_FILE(filelist ${file} APPEND)
-	#endforeach(file)
-	string(REPLACE ";" " " sourcesN "${sources}")
-	message (STATUS "Files to process ${sourcesN}")
-
-	set (XGETTEXT_OPTIONS "--qt\\
-	--keyword=tr --flag=tr:1:pass-c-format --flag=tr:1:pass-qt-format\\
-   --keyword=trUtf8 --flag=tr:1:pass-c-format --flag=tr:1:pass-qt-format\\
-   --keyword=translate:2 --flag=translate:2:pass-c-format --flag=translate:2:pass-qt-format\\
-   --keyword=QT_TR_NOOP --flag=QT_TR_NOOP:1:pass-c-format --flag=QT_TR_NOOP:1:pass-qt-format\\
-   --keyword=QT_TRANSLATE_NOOP:2 --flag=QT_TRANSLATE_NOOP:2:pass-c-format --flag=QT_TRANSLATE_NOOP:2:pass-qt-format\\
-   --keyword=_ --flag=_:1:pass-c-format --flag=_:1:pass-qt-format\\
-   --keyword=N_ --flag=N_:1:pass-c-format --flag=N_:1:pass-qt-format\\
-   --from-code=utf-8")
-
-	message (STATUS ${XGETTEXT_OPTIONS})
+	
 	set (MSGID_BUGS_ADDRESS "bulmages@bulma.net")
+	file(REMOVE ${CMAKE_CURRENT_SOURCE_DIR}/po/${template}.pot)
+	#message (STATUS "Files to create list ${${sources}}")
 
+	CREATE_FILE_LIST(${sources} ${CMAKE_CURRENT_BINARY_DIR}/pot_list)
+	
 	add_custom_command( 
-		OUTPUT ${template}.pot
-		COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE} 
-        ARGS "--add-comments=TRANSLATORS: ${XGETTEXT_OPTIONS} --directory=${dirIN} --output=${template}.pot --msgid-bugs-address=${MSGID_BUGS_ADDRESS} ${sourcesN}"
-        DEPENDS ${template})
+	OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/po/${template}.pot
+	COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE} 
+   ARGS --add-comments=TRANSLATORS: 
+   ARGS --qt
+   ARGS --keyword=tr --flag=tr:1:pass-c-format --flag=tr:1:pass-qt-format
+   ARGS --keyword=trUtf8 --flag=tr:1:pass-c-format --flag=tr:1:pass-qt-format
+   ARGS --keyword=translate:2 --flag=translate:2:pass-c-format --flag=translate:2:pass-qt-format
+   ARGS --keyword=QT_TR_NOOP --flag=QT_TR_NOOP:1:pass-c-format --flag=QT_TR_NOOP:1:pass-qt-format
+   ARGS --keyword=QT_TRANSLATE_NOOP:2 --flag=QT_TRANSLATE_NOOP:2:pass-c-format --flag=QT_TRANSLATE_NOOP:2:pass-qt-format
+   ARGS --keyword=_ --flag=_:1:pass-c-format --flag=_:1:pass-qt-format
+   ARGS --keyword=N_ --flag=N_:1:pass-c-format --flag=N_:1:pass-qt-format
+   ARGS --from-code=utf-8
+   ARGS --directory=${dirIN} --directory=${CMAKE_CURRENT_BINARY_DIR} 
+   ARGS --output=${CMAKE_CURRENT_SOURCE_DIR}/po/${template}.pot
+   ARGS --msgid-bugs-address=${MSGID_BUGS_ADDRESS} --files-from=${CMAKE_CURRENT_BINARY_DIR}/pot_list
+   DEPENDS ${template} VERBATIM)
            
-   add_custom_target( messages_extract DEPENDS ${template}.pot)
+   add_custom_target( messages_extract DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/po/${template}.pot)
 
 endmacro( GETTEXT_CREATE_TEMPLATE)
 
 
-IF (GETTEXT_MSGMERGE_EXECUTABLE AND GETTEXT_MSGFMT_EXECUTABLE )
-   SET(GETTEXT_FOUND TRUE)
-ELSE (GETTEXT_MSGMERGE_EXECUTABLE AND GETTEXT_MSGFMT_EXECUTABLE )
-   SET(GETTEXT_FOUND FALSE)
-   IF (GetText_REQUIRED)
-      MESSAGE(FATAL_ERROR "GetText not found")
-   ENDIF (GetText_REQUIRED)
-ENDIF (GETTEXT_MSGMERGE_EXECUTABLE AND GETTEXT_MSGFMT_EXECUTABLE )
 
 
-# #!/bin/bash
-# 
-# POTFILES="hello.cc"
-# 
-# # Usually the message domain is the same as the package name.
-# DOMAIN="plugincanualesods"
-# 
-# # These options get passed to xgettext.
-# XGETTEXT_OPTIONS="--qt \
-#   --keyword=tr --flag=tr:1:pass-c-format --flag=tr:1:pass-qt-format \
-#   --keyword=trUtf8 --flag=tr:1:pass-c-format --flag=tr:1:pass-qt-format \
-#   --keyword=translate:2 --flag=translate:2:pass-c-format --flag=translate:2:pass-qt-format \
-#   --keyword=QT_TR_NOOP --flag=QT_TR_NOOP:1:pass-c-format --flag=QT_TR_NOOP:1:pass-qt-format \
-#   --keyword=QT_TRANSLATE_NOOP:2 --flag=QT_TRANSLATE_NOOP:2:pass-c-format --flag=QT_TRANSLATE_NOOP:2:pass-qt-format \
-#   --keyword=_ --flag=_:1:pass-c-format --flag=_:1:pass-qt-format \
-#   --keyword=N_ --flag=N_:1:pass-c-format --flag=N_:1:pass-qt-format \
-#   --from-code=utf-8"
-# 
-# COPYRIGHT_HOLDER="Yoyodyne, Inc."
-# 
-# # This is the email address or URL to which the translators shall report
-# # bugs in the untranslated strings:
-# # - Strings which are not entire sentences, see the maintainer guidelines
-# #   in the GNU gettext documentation, section 'Preparing Strings'.
-# # - Strings which use unclear terms or require additional context to be
-# #   understood.
-# # - Strings which make invalid assumptions about notation of date, time or
-# #   money.
-# # - Pluralisation problems.
-# # - Incorrect English spelling.
-# # - Incorrect formatting.
-# # It can be your email address, or a mailing list address where translators
-# # can write to without being subscribed, or the URL of a web page through
-# # which the translators can contact you.
-# MSGID_BUGS_ADDRESS="bug-gnu-gettext@gnu.org"
-# 
-# XGETTEXT=xgettext
-# 
+
+
 # $XGETTEXT --default-domain=$DOMAIN --directory=. \
 # 	      --add-comments=TRANSLATORS: $XGETTEXT_OPTIONS \
 # 	      --copyright-holder='$COPYRIGHT_HOLDER' \

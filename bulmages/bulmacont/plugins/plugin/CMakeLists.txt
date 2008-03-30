@@ -52,3 +52,7 @@ target_link_libraries(${plugin} libbulmacont bulmalib ${QT_LIBRARIES}  ${PGSQL_L
 install_targets(/lib/bulmacont/plugins ${plugin})
 
 add_dependencies(${plugin} bulmacont bulmalib)
+set(plugin_STR ${plugin_SRC} ${plugin_MOC_SRCS}
+   ${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})
+
+GETTEXT_CREATE_TEMPLATE(${plugin} ${CMAKE_CURRENT_SOURCE_DIR} plugin_STR)

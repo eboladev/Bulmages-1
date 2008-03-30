@@ -81,11 +81,7 @@ add_dependencies(${plugin} bulmacont bulmalib)
 install_targets(/lib/bulmacont/plugins ${plugin})
 
 
-file(GLOB plugin_STR RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} *.c *.cpp *.cxx *.h *.hpp *.ui)
+set(plugin_STR ${plugin_SRC} ${plugin_MOC_SRCS}
+   ${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})
 
-#message (STATUS "Files to process ${plugin_STR}")
-#message (STATUS "Parameters: 
-#	${plugin} 
-#	${plugin_STR} 
-#	${CMAKE_CURRENT_SOURCE_DIR}")
-#GETTEXT_CREATE_TEMPLATE(${plugin} ${CMAKE_CURRENT_SOURCE_DIR} ${plugin_STR})
+GETTEXT_CREATE_TEMPLATE(${plugin} ${CMAKE_CURRENT_SOURCE_DIR} plugin_STR)
