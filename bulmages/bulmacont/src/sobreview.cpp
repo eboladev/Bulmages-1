@@ -49,6 +49,7 @@ sobreview::sobreview ( QWidget *parent ) : QDialog ( parent )
                   "<b>Tomeu Borr&aacute;s.</b>&nbsp;<a href=\"mailto:tborras@conetxia.com\">tborras@conetxia.com</a><br/>" \
                   "<b>Fco. Javier M. C. </b>&nbsp;<a href=\"mailto:fcojavmc@todo-redes.com\">fcojavmc@todo-redes.com</a><br/>" \
                   "<b>Antoni Mirabete</b>&nbsp;<a href=\"mailto:amirabet@biada.org\">amirabet@biada.org</a><br />" \
+                  "<b>Leopold Palomo </b>&nbsp;<a href=\"mailto:leo@alaxarxa.net\">leo@alaxarxa.net</a><br/>" \
                   "<b>Jean Ren&eacute; M&egrave;rou</b><br />" \
                   "<b>Josep Burci&oacute;n</b>&nbsp;<a href=\"mailto:josep@burcion.com\">josep@burcion.com</a> <br />" \
                   "<b>Oscar Serna</b>&nbsp;<a href=\"mailto:oserna@regamallorca.com\">oserna@regamallorca.com</a> <br />" \
@@ -57,6 +58,8 @@ sobreview::sobreview ( QWidget *parent ) : QDialog ( parent )
                   "<b>Beatriu Romero</b><br />" \
                   "<b>Ram&oacute;n Navarro</b><br /><br />" \
                   "Depuraci&oacute;n y manuales:<br/>" \
+                  "<b>Laida Clavaguera</b>&nbsp;<a href=\"mailto:laida@alaxarxa.net\">laida@alaxarxa.net</a><br />" \
+                  "<b>M&ordf; Dolores Hernandez</b>&nbsp;<a href=\"mailto:mdhernandez@conetxia.com\">mdhernandez@conetxia.comt</a><br />" \
                   "<b>Cristina Marco.</b>&nbsp;<a href=\"cmarco@conetxia.com\">cmarco@conetxia.com</a><br /><br />" \
                   "Asesoramiento:<br />" \
                   "<b>Antoni Aloy</b>&nbsp;<a href=\"mailto:aloy@ctv.es\">aloy@ctv.es</a><br />" \
