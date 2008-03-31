@@ -100,10 +100,16 @@ int main ( int argc, char **argv )
         if ( confpr->valor ( CONF_TRADUCCION ) == "locales" ) {
             traductor->load ( QString ( "bulmacont_" ) + QLocale::system().name(),
                               confpr->valor ( CONF_DIR_TRADUCCION ).toAscii() );
-        } else {
+        
+		} else {
             QString archivo = "bulmacont_" + confpr->valor ( CONF_TRADUCCION );
-            traductor->load ( archivo.toAscii(), confpr->valor ( CONF_DIR_TRADUCCION ).toAscii() );
-        } // end if
+            bool success = traductor->load ( archivo.toAscii(), confpr->valor ( CONF_DIR_TRADUCCION ).toAscii() );
+			if(!success)
+			{
+				mensajeInfo(QString::QString("Error al carregar el qm: ")+ confpr->valor ( CONF_DIR_TRADUCCION ) + archivo);
+			}	
+        mensajeInfo(archivo);
+	} // end if
         theApp->installTranslator ( traductor );
 
         /// Cargamos el splashScreen.

@@ -131,3 +131,8 @@ add_dependencies(bulmacont libbulmacont)
 
 install_targets(/bin bulmacont)	
 install_targets(/lib/ libbulmacont)                   
+
+set(bulmacont_STR ${bulmacontEx} ${bulmacont_MOCS} ${bulmacont_MOC_SRCS}
+                ${bulmacont_UIS_H} ${bulmacont_SRC} ${bulmacont_SRCS})
+
+GETTEXT_CREATE_TEMPLATE("bulmacont" ${CMAKE_CURRENT_SOURCE_DIR} bulmacont_STR)

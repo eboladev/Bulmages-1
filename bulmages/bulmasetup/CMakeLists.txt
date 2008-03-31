@@ -20,7 +20,7 @@
 
 configure_file( ${CMAKE_SOURCE_DIR}/bulmasetup/bulmasetup.in bulmasetup.py @ONLY)
 
-install(FILES ${CMAKE_BINARY_DIR}/bulmasetup.py DESTINATION bin/bulmasetup
+install(FILES ${CMAKE_BINARY_DIR}/bulmasetup.py DESTINATION bin RENAME bulmasetup
                PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
                 	    GROUP_EXECUTE GROUP_READ
                             WORLD_READ WORLD_EXECUTE)
