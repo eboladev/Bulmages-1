@@ -128,10 +128,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Borrar albaran</string>
+           <string>Imprimir</string>
           </property>
           <property name="whatsThis" >
-           <string>Borrar albaran</string>
+           <string>Imprimir</string>
           </property>
           <property name="text" >
            <string/>
@@ -162,10 +162,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Imprimir albaran</string>
+           <string>Filtrar</string>
           </property>
           <property name="whatsThis" >
-           <string>Imprimir albaran</string>
+           <string>Filtrar</string>
           </property>
           <property name="text" >
            <string/>
@@ -202,10 +202,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Imprimir albaran</string>
+           <string>Actualizar</string>
           </property>
           <property name="whatsThis" >
-           <string>Imprimir albaran</string>
+           <string>Actualizar</string>
           </property>
           <property name="text" >
            <string/>
@@ -242,10 +242,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Imprimir albaran</string>
+           <string>Exportar a Hoja de Cálculo</string>
           </property>
           <property name="whatsThis" >
-           <string>Imprimir albaran</string>
+           <string>Exportar a Hoja de Cálculo</string>
           </property>
           <property name="text" >
            <string/>

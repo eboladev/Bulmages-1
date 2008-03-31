@@ -22,11 +22,14 @@ ln -s $1/bin/bulmages /usr/bin/bulmages
 rm -rf /usr/share/bulmages
 ln -s $1/share/bulmages /usr/share/bulmages
 
-rm /usr/lib/libbulmalib*
-ln -s $1/lib/libbulmalib.so /usr/lib/libbulmalib.so
-ln -s $1/lib/libbulmalib.so.0 /usr/lib/libbulmalib.so.0
-ln -s $1/lib/libbulmalib.so.0.11 /usr/lib/libbulmalib.so.0.11
-ln -s $1/lib/libbulmalib.so.0.11.0 /usr/lib/libbulmalib.so.0.11.0
+#rm /usr/lib/libbulmalib*
+#ln -s $1/lib/libbulmalib.so /usr/lib/libbulmalib.so
+#ln -s $1/lib/libbulmalib.so.0 /usr/lib/libbulmalib.so.0
+#ln -s $1/lib/libbulmalib.so.0.11 /usr/lib/libbulmalib.so.0.11
+#ln -s $1/lib/libbulmalib.so.0.11.0 /usr/lib/libbulmalib.so.0.11.0
+
+rm /usr/lib/libbulma*.so
+find $1/lib -name 'libbulma*.so' | xargs -I '{}' ln -s '{}' /usr/lib
 
 rm -rf /usr/lib/bulmages
 rm -rf /usr/lib/bulmafact

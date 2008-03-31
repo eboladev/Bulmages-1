@@ -578,7 +578,7 @@ void extractoview1::on_mui_borrapunteo_clicked()
 		int valor = QMessageBox::warning ( 0,
 		                                   tr ( "Borrar punteo" ),
 		                                   tr ( "Se dispone a borrar el punteo. Este cambio \
-		                                        es irrecuperable si no ha guardado su el punte. \
+		                                        es irrecuperable si no ha guardado su punteo. \
 		                                        Desea continuar?" ),
 		                                   QMessageBox::Yes, QMessageBox::No );
 		if ( valor == QMessageBox::Yes )

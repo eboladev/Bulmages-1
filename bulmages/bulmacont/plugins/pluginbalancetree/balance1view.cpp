@@ -67,8 +67,8 @@ BalanceTreeView::BalanceTreeView ( Empresa *emp, QWidget *parent, int )
 {
     setupUi ( this );
     _depura ( "BalanceTreeView::BalanceTreeView", 0 );
-
-    setTitleName ( tr ( "Asiento Contable" ) );
+    setAttribute ( Qt::WA_DeleteOnClose );
+    setTitleName ( tr ( "Balance Jerarquico" ) );
     /// Establecemos cual es la tabla en la que basarse para los permisos
     setDBTableName ( "asiento" );
 
@@ -122,8 +122,8 @@ BalanceTreeView::BalanceTreeView ( Empresa *emp, QWidget *parent, int )
 
 
     connect ( listado, SIGNAL ( contextMenuRequested ( QTreeWidgetItem *, const QPoint &, int ) ), this, SLOT ( contextmenu ( QTreeWidgetItem *, const QPoint &, int ) ) );
-
     connect ( combonivel, SIGNAL ( activated ( int ) ), this, SLOT ( nivelactivated ( int ) ) );
+
     /// Iniciamos los componentes de la fecha para que al principio aparezcan
     /// como el a&ntilde;o inicial.
     QString cadena;
@@ -131,7 +131,7 @@ BalanceTreeView::BalanceTreeView ( Empresa *emp, QWidget *parent, int )
     m_fechainicial1->setText ( cadena );
     cadena.sprintf ( "%2.2d/%2.2d/%4.4d", 31, 12, QDate::currentDate().year() );
     m_fechafinal1->setText ( cadena );
-    meteWindow ( windowTitle(), this );
+    meteWindow ( windowTitle(), this, FALSE );
     _depura ( "END BalanceTreeView::BalanceTreeView", 0 );
 }
 
@@ -396,10 +396,12 @@ void BalanceTreeView::presentar()
         } // end if
 
         /// Acumulamos los totales para al final poder escribirlos.
-        tsaldoant += atof ( cursorapt1->valor ( "asaldo" ).toAscii() );
-        tsaldo += atof ( cursorapt1->valor ( "tsaldo" ).toAscii() );
-        tdebe += atof ( cursorapt1->valor ( "tdebe" ).toAscii() );
-        thaber += atof ( cursorapt1->valor ( "thaber" ).toAscii() );
+	if ( cursorapt1->valor("nivel") == combonivel->currentText()) {
+		tsaldoant += atof ( cursorapt1->valor ( "asaldo" ).toAscii() );
+		tsaldo += atof ( cursorapt1->valor ( "tsaldo" ).toAscii() );
+		tdebe += atof ( cursorapt1->valor ( "tdebe" ).toAscii() );
+		thaber += atof ( cursorapt1->valor ( "thaber" ).toAscii() );
+	} // end if
 
         it->setText ( CUENTA, cursorapt1->valor ( "codigo" ) );
         if ( cursorapt1->valor ( "tipocuenta" ) == "1" ) {
