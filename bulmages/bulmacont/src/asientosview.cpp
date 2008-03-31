@@ -140,7 +140,7 @@ void AsientosView::presentar()
             /// Ya existe un saldototal ('igual a') por lo que se hace un OR a la consulta.
             textapuntemayoroigual = " OR (";
         } // end if
-        textapuntemayoroigual += " asiento.idasiento IN (SELECT idasiento FROM apunte WHERE debe >= " + apuntemayoroigual + " OR haber >= " + apuntemayoroigual + ")";
+        textapuntemayoroigual += " asiento.idasiento IN (SELECT idasiento FROM apunte WHERE debe + haber >= " + apuntemayoroigual + ")";
         pand = 1;
     } // end if
     if ( apuntemenoroigual != "" ) {
@@ -154,7 +154,7 @@ void AsientosView::presentar()
                 textapuntemenoroigual = " OR (";
             }// end if
         } // end if
-        textapuntemenoroigual += " asiento.idasiento IN (SELECT idasiento FROM apunte WHERE debe <= " + apuntemenoroigual + " OR haber <= " + apuntemenoroigual + ")";
+        textapuntemenoroigual += " asiento.idasiento IN (SELECT idasiento FROM apunte WHERE debe + haber <= " + apuntemenoroigual + ")";
         pand = 1;
     } // end if
     /// Se mira si se tiene que cerrar el parentesis en la consulta a la base de datos.

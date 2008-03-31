@@ -832,7 +832,7 @@ void Asiento1View::on_mui_abrirasiento_clicked()
 }
 
 
-///
+/// SLOT de cierre de asiento.
 /**
 \return
 **/

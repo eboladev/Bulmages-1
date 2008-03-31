@@ -254,6 +254,25 @@ void DiarioView::presentar()
             cadand = " AND ";
         } // end if
 
+		bool ok = FALSE;
+		float ssup = mui_saldosup->text().toFloat ( &ok );
+		if ( ok )
+		{
+			cad += cadand + tabla + ".debe + " + tabla + ".haber >= " + mui_saldosup->text();
+	            cadand = " AND ";
+		} // end if
+		ok = FALSE;
+		float sinf = mui_saldoinf->text().toFloat ( &ok );
+		if ( ok )
+		{
+			cad += cadand + tabla + ".debe + " + tabla + ".haber <= " + mui_saldoinf->text();
+			cadand = " AND ";
+		} // end if
+
+		if (mui_contrapartida->text() != "") {
+			cad += cadand + tabla + ".contrapartida = "+mui_contrapartida->idcuenta();
+		} // end if
+
         totalcadena = query + cad + " ORDER BY t5.fecha, t5.ordenasiento ";
 
         mui_list->cargar ( totalcadena );

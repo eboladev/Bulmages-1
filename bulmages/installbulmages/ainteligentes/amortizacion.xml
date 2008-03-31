@@ -8,7 +8,7 @@
          <conceptocontable>Amortización</conceptocontable>
          <codcuenta>$cuenta, Cuenta Amortizacion$</codcuenta>
          <descripcionb></descripcionb>
-         <debe>$cuota$</debe>
+         <debe>$cuota, Cuota$</debe>
          <haber>0</haber>
          <contrapartida></contrapartida>
          <comentario></comentario>
