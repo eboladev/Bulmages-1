@@ -145,10 +145,6 @@ void ccosteview::repintar()
     } // end while
     delete cursoraux2;
 
-//    if (idc_coste != 0) {
-//        mostrarplantilla();
-//    } // end if
-
     /// Ya que se han producido cambios en los centros de coste
     /// Se inicializa el selector de centros de coste.
     SelectCCosteView *scoste = empresaBase() ->getselccostes();

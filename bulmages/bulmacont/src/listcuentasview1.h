@@ -70,6 +70,7 @@ public:
     QString codcuenta();
     QString idcuenta();
     QString desccuenta();
+    void imprimir();
 
 public:
     listcuentasview1 ( Empresa *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode );
@@ -91,7 +92,6 @@ public slots:
     virtual void on_mui_busqueda_textChanged ( const QString & );
     virtual void on_mui_busqueda_editFinished();
     virtual bool eventFilter ( QObject *, QEvent * );
-    virtual void on_mui_imprimir_clicked();
     virtual void on_mui_exportar_clicked();
     virtual void on_mui_importar_clicked();
     virtual void on_mui_actualizar_clicked();

@@ -465,9 +465,9 @@ void listcuentasview1::on_mui_busqueda_editFinished()
     que solicitase el rango de cuentas entre el que se quiere el listado. */
 /**
 **/
-void listcuentasview1::on_mui_imprimir_clicked()
+void listcuentasview1::imprimir()
 {
-    _depura ( "listcuentasview1::on_mui_imprimir_clicked", 0 );
+    _depura ( "listcuentasview1::imprimir", 0 );
     QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "listado.rml";
     QString archivod = confpr->valor ( CONF_DIR_USER ) + "listado.rml";
     QString archivologo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
@@ -532,7 +532,7 @@ void listcuentasview1::on_mui_imprimir_clicked()
     } // end if
 
     invocaPDF ( "listado" );
-    _depura ( "END listcuentasview1::on_mui_imprimir_clicked", 0 );
+    _depura ( "END listcuentasview1::imprimir", 0 );
 }
 
 
