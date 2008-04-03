@@ -164,7 +164,7 @@ class ModificarContabilidad(QtGui.QDialog, Ui_ModificarContabilidadBase, Plugins
 		return;
 	self.out = QTextStream(self.file)
 	self.terminador = ""
-	self.out << "CONF_PLUGINS_BULMAFACT   "
+	self.out << "CONF_PLUGINS_BULMACONT   "
 	
 	
 	self.i = 0
