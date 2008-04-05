@@ -32,10 +32,12 @@ configure-stamp:
 
 	# Add here commands to configure the package.
 
-	cd bulmages; mkdir build.debian; cd build.debian; cmake ../ -DCMAKE_INSTALL_PREFIX=/usr \
+	cd bulmages; mkdir build.debian; cd build.debian; cmake \
+	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed" \
 	-DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed" \
-	-DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed";
+	-DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed" \
+	-DCMAKE_BUILD_TYPE=Release  ../;
 
 	touch configure-stamp
 

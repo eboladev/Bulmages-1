@@ -3726,7 +3726,7 @@ doc.set_cell_value(4,18, 'formula', '=D19+D20')\n\
 doc.set_cell_value(5,18, 'formula', '=E19+E20')\n\
 doc.set_cell_property('bold', False)\n\
 \
-doc.set_cell_value(2,19, 'string', ' " + trUtf8("a) Ingresos accesorios y otros de gestiÃ³n corriente.") + "')\n\
+doc.set_cell_value(2,19, 'string', ' " + trUtf8("a) Ingresos accesorios y otros de gestión corriente.") + "')\n\
 doc.set_cell_value(4,19, 'float', '" + ( saldoCuenta (75)).toQString ( '.' ) + "')\n\
 doc.set_cell_value(5,19, 'float', '"+ ( saldoCuentaAnt (75)).toQString ( '.' ) + "')\n\
 \

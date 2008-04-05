@@ -1,10 +1,10 @@
 Instalacion del software de gestion BulmaGes
 --------------------------------------------
-(C) 2007, Asociacion IGLUES
+(C) 2003 - 2008 Asociacion IGLUES
 http://www.iglues.org
 --------------------------------------------
 
-BulmaGés 0.11.0 (marzo 2008)
+BulmaGés 0.11.1 (Abril 2008)
 
 
 Introducción
@@ -19,8 +19,8 @@ b) Facturación - BulmaFact
 c) Terminal Punto de Venta - BTPV
 
 
-En la actualidad, la aplicación de contabilidad (BulmaCont), facturacion (BulmaFact)
-y el terminal Punto de Venta ya son operativos.
+En la actualidad, la aplicación de contabilidad (BulmaCont), facturación 
+(BulmaFact) y el terminal Punto de Venta ya son operativos.
 
 Características
 ===============
@@ -40,12 +40,12 @@ Estos son los directorios principales del svn y sus respectivas explicaciones.
 
 bulmafact 
 ---------- 
-Este directorio contiene el codigo fuente de la facturación. Es un programa escrito en
-C++ y Qt. En las 'code partys' trabajamos sobre ello. Luego tendremos que adaptarlo. Todo
-depende del bulmalib. 
+Este directorio contiene el codigo fuente de la facturación. Es un programa 
+escrito en C++ y Qt. En las 'code partys' trabajamos sobre ello. Luego tendremos
+que adaptarlo. Todo depende del bulmalib. 
 
-Actualmente, (versión 0.11.0) bulmafact realiza las tareas de facturación y de gestión
-habituales de una empresa y contiene los siguientes plugins:
+Actualmente, (versión 0.11.1) bulmafact realiza las tareas de facturación y de 
+gestión habituales de una empresa y contiene los siguientes plugins:
 
 1) comercialbf (Plugin de Comerciales)
 
@@ -54,7 +54,8 @@ el aplicativo para PDA ConPython
 
 2) efacturabf (Plugin De Factura Electrónica)
 
-Permite la exportacion e importacion de facturas en formato UBL 1.0 desde BulmaFact.
+Permite la exportacion e importacion de facturas en formato UBL 1.0 desde 
+BulmaFact.
 
 3) plugin (Plugin ejemplo)
 
@@ -62,8 +63,9 @@ Ejemplo de código para desarrollar un plugin a medida.
 
 4) barcodeopen (Plugin de apertura Rapida a partir de códigos de barras)
 
-Permite abrir cualquier documento identificado con el codigo de barras. Basta con seleccionar la
-apertura rápida, pasar el documento por el lector y se abrira automáticamente el documento correspondiente.
+Permite abrir cualquier documento identificado con el codigo de barras. Basta
+con seleccionar la apertura rápida, pasar el documento por el lector y se abrira
+automáticamente el documento correspondiente.
 
 5) plugincatalogo (Plugin de catálogos)
 
@@ -71,15 +73,20 @@ Permite la impresión de catálogos de productos
 
 6) plugincontratos (Plugin de Informes de Clientes)
 
-Permite el control de contratos con clientes y generar una facturación asociada a dichos contratos.
+Permite el control de contratos con clientes y generar una facturación asociada
+a dichos contratos.
 
 7) impresionesmultiples (Plugin de Impresiones Multiples)
 
-Agrega un checkbox en cada uno de los miembros del listado de presupuestos, pedidos, albaranes y facturas.
-Agrega tres botones de menu en cada uno de dichos listados con las siguientes funcionalidades:
+Agrega un checkbox en cada uno de los miembros del listado de presupuestos,
+pedidos, albaranes y facturas.
+Agrega tres botones de menu en cada uno de dichos listados con las siguientes
+funcionalidades:
 	1.- Invertir Seleccion: Invierte el estado de los checkbox agregados.
-	2.- Imprimir multiples elementos: Imprime los elementos seleccionados de forma directa.
-	3.- Envio múltiple de e-mail: Prepara el envio de e-mail con los documentos seleccionados como
+	2.- Imprimir multiples elementos: Imprime los elementos seleccionados de
+forma directa.
+	3.- Envio múltiple de e-mail: Prepara el envio de e-mail con los documentos
+seleccionados como
 	    adjuntos.
 
 8) plugininformeclientes (Plugin de Informes de Clientes)
@@ -92,7 +99,8 @@ Permite el control de inventarios.
 
 10) pluginmail (Plugin de  envio de documentos por e-mail)
 
-Permite el envio de documentos generados con BulmaGés via e-mai mediante un botón en el programa. 
+Permite el envio de documentos generados con BulmaGés via e-mai mediante un
+botón en el programa. 
 
 11) pluginpromedios (Plugin promedios)
 
@@ -104,11 +112,13 @@ Genera un fichero con formato q19 para los cobros en una entidad bancaria.
 
 13) pluginsyncbulmacont (Sincronizacion con Bulmacont)
 
-Todas las operaciones que se realicen con faturación serán traspasadas a contabilidad.
+Todas las operaciones que se realicen con faturación serán traspasadas a
+contabilidad.
 
 14) plugintarifas (Plugin de tarifas)
 
-Permite especificar diferentes tarifas donde el mismo artículo puede tener precios distintos.
+Permite especificar diferentes tarifas donde el mismo artículo puede tener
+precios distintos.
 
 15) pluginticket (Plugin de  impresion de tickets)
 
@@ -116,7 +126,8 @@ Permite la impresión de tickets.
 
 16) plugintrazabilidad (Plugin de Trazabilidad)
 
-Permite el control de trazabilidad por lotes. Agrega una tabla de movimientos de material y un campo
+Permite el control de trazabilidad por lotes. Agrega una tabla de movimientos de
+material y un campo
 "lote" que permite identificar productos desde su compra hasta su venta.
 
 17) plugintipostrabajo (Plugin de trabajadores)
@@ -127,25 +138,63 @@ Permite especificar diferentes tipos de trabajo de los diferentes trabajadores.
 
 Permite la gestión de una flota de vehículos.
 
+19) plugincuadrante 
+
+Permite la elavoracion de cuadrantes de los trabajadores asignandoles horarios 
+en los distintos almacenes.
+
+libpluginalmacen.so
+libpluginasterisk.so        
+libplugindebugbf.so              
+
+libpluginimpresionesmultiples.so 
+libplugininformeclientes.so      
+libplugininventario.so           
+libpluginmail.so          
+libpluginpreciocoste.so   
+libpluginpromedios.so     
+libpluginq19.so           
+libplugintarifas.so       
+libplugin_tc_articulos.so 
+libpluginticket.so
+libplugintipostrabajo.so
+libplugintpv.so
+libplugintrazabilidad.so
+libpluginvehiculosbf.so
+
+
+add_subdirectory(plugin)
+add_subdirectory(plugintarifas)
+add_subdirectory(comercialbf)
+add_subdirectory(plugintrazabilidad)
+add_subdirectory(pluginbarcodeopen)
+add_subdirectory(plugincatalogo)
+add_subdirectory(plugininformeclientes)
+add_subdirectory(plugininventario)
+add_subdirectory(plugincontratos)
+add_subdirectory(pluginticket)
+add_subdirectory(pluginpromedios)
+add_subdirectory(pluginimpresionesmultiples)
+add_subdirectory(pluginq19)
+add_subdirectory(pluginmail)
+add_subdirectory(pluginalmacen)
+add_subdirectory(plugintipostrabajo)
+add_subdirectory(plugincuadrante)
+add_subdirectory(pluginasterisk)
+add_subdirectory(plugintpv)
+add_subdirectory(plugindebugbf)
+add_subdirectory(pluginpreciocoste)
+add_subdirectory(pluginsyncbulmacont)
+add_subdirectory(plugininformeclientessxc)
+add_subdirectory(pluginetiquetado)
 
 
 
 
 
 
-bulmacont
-pluginbarcodeopen <p>Permite abrir cualquier documento identificado con el codigo de barras. Basta con seleccionar la apertura rapida, pasar el documento por el lector y se abrirá automaticamente el documento correspondiente.</p>
 
-
-plugincatalogo <p>Permite la impresion de catalogos de productos</p>
-
-
-plugincontratos <p>Permite el control de contratos con clientes y generar una facturacion asociada a dichos contratos.</p>
-
-
-plugincuadrante <p>Permite la elavoracion de cuadrantes de los trabajadores asignandoles horarios en los distintos almacenes</p>
-
-
+Bulmacont
 ---------
 Contiene la parte de contabilidad y contiene los siguientes plugins:
 
@@ -170,11 +219,11 @@ Código ejemplo para desarrollar un plugin.
 Permite generar balances en una hoja de cálculo.
 
 
+Bulmatpv
+--------
 
-	<p>Bulmatpv plugins:</p>
-
-
-pluginticket <p>It adds one button in the program to allows the shipment by emai of the document generated with BulmaGés.</p>
+pluginticket <p>It adds one button in the program to allows the shipment by emai
+of the document generated with BulmaGés.</p>
 
 
 pluginabrevs<p>nose</p>
@@ -183,7 +232,8 @@ pluginabrevs<p>nose</p>
 pluginadmin<p>x, y, z, y el boton de salir</p>
 
 
-pluginartgraficos<p>enseña el panel en forma de regilla para poder seleccionarlos.</p>
+pluginartgraficos<p>enseña el panel en forma de regilla para poder
+seleccionarlos.</p>
 
 
 plugincobrar<p>el boton de cobrar</p>
@@ -202,21 +252,28 @@ plugintotal<p>muestra los totales de los tickets</p>
 bulmalib 
 -------- 
 Hay algunas librerias que son comunes a varios de los proyectos. postgresiface,
-configuracion, algunos widgets raros. Son las librerias principales de la suite. A partir de la versión
-0.11.x se intentará que todas las versiones x.y.z con numeración x.y igual sean compatibles en ABI de
-libraria y base de datos. Bulmalib contiene los siguientes plugins: 
-- pluginclipboardbf. Permite el intercambio con hojas de cálculo kspread i oocalc utilizando el portapapeles.
-- pluginsubformods. Permite el intercambio utilizando ficheros OpenDocument. Necesita una libreria de python.
-- pluginsubformsxc. Permite el intercambio utilizando ficheros OpenOffice. Necesita una libreria de perl.
+configuracion, algunos widgets raros. Son las librerias principales de la suite.
+A partir de la versión 0.11.x se intentará que todas las versiones x.y.z con 
+numeración x.y igual sean compatibles en ABI de biblioteca y base de datos. 
+Bulmalib contiene los siguientes plugins: 
+- pluginclipboardbf. Permite el intercambio con hojas de cálculo kspread i
+oocalc utilizando el portapapeles.
+- pluginsubformods. Permite el intercambio utilizando ficheros OpenDocument.
+Necesita una libreria de python.
+- pluginsubformsxc. Permite el intercambio utilizando ficheros OpenOffice.
+Necesita una libreria de perl.
 
 
 bulmatpv 
 --------- 
-Contiene el terminal punto de venta. El programa permite vender y controlar el hardware específico de venta.
-Impresoras de Tickets y Lectores de códigos de Barras. En este programa la velocidad de las operaciones es
+Contiene el terminal punto de venta. El programa permite vender y controlar el
+hardware específico de venta.
+Impresoras de Tickets y Lectores de códigos de Barras. En este programa la
+velocidad de las operaciones es
 lo fundamental.
 
-BulmaTPV es adaptabla a los distintos modelos de negocio gracias a sus sistema de plugins que dominan toda
+BulmaTPV es adaptabla a los distintos modelos de negocio gracias a sus sistema
+de plugins que dominan toda
 la interficie gráfica del programa.
 
 bulmages 
@@ -296,7 +353,7 @@ del
 directorio de desarrollo.
 
 Estos son los archivos que se deben enlazar:
-/usr/lib/libbulmages.0.11.0.so
+/usr/lib/libbulmages.0.11.1.so
 /usr/bin/bulmages
 /usr/bin/bulmafact
 /usr/bin/bulmacont

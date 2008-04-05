@@ -21,7 +21,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <stdlib.h>
+#include <cstdlib>
 
 #include <QApplication>
 #include <QFont>
@@ -50,12 +50,15 @@
 #define CONFGLOBAL CONFIG_DIR_CONFIG + QString("bulmages_")
 #endif
 
+#include <iostream>
 
 /// Estas son las variables globales de la aplicaci&oacute;n.
 /// El puntero de la aplicaci&oacute;n.
 QApplication2 *theApp;
 /// El traductor.
+QTranslator *traductorLib;
 QTranslator *traductor;
+
 /// Faltan el configurador de par&aacute;metros confpr y el sistema de log ctlog.
 
 /// Los datos de ejecuci&oacute;n del programa son sencillos.
@@ -74,6 +77,7 @@ int main ( int argc, char **argv )
     QString db = "";
     QString us = "";
     QString pass = "";
+	bool success = false;
     try {
         /// Inicializamos el objeto global para uso de plugins.
         g_plugins = new Plugins();
@@ -86,29 +90,42 @@ int main ( int argc, char **argv )
         QTextCodec::setCodecForCStrings ( QTextCodec::codecForName ( "UTF-8" ) );
         QTextCodec::setCodecForLocale ( QTextCodec::codecForName ( "UTF-8" ) );
         /// Cargamos las primeras traducciones para bulmalib y para bulmacont.
-        traductor = new QTranslator ( 0 );
+        traductorLib = new QTranslator ( 0 );
         if ( confpr->valor ( CONF_TRADUCCION ) == "locales" ) {
-            traductor->load ( QString ( "bulmalib_" ) + QLocale::system().name(),
+            success = traductorLib->load ( QString ( "bulmalib_" ) + QLocale::system().name(),
                               confpr->valor ( CONF_DIR_TRADUCCION ).toAscii() );
+			if(!success)
+ 			{
+	 			std::cout << "Error al cargar el qm: " << "  " << std::endl;
+
+ 			}	
         } else {
             QString archivo = "bulmalib_" + confpr->valor ( CONF_TRADUCCION );
-            traductor->load ( archivo, confpr->valor ( CONF_DIR_TRADUCCION ).toAscii() );
+            success = traductorLib->load ( archivo, confpr->valor ( CONF_DIR_TRADUCCION ).toAscii() );
+			if(!success)
+ 			{
+ 				std::cout << "Error al cargar el qm: " <<  "  " << archivo.toStdString ()  << std::endl;
+ 			}	
         } // end if
         theApp->installTranslator ( traductor );
 
         traductor = new QTranslator ( 0 );
         if ( confpr->valor ( CONF_TRADUCCION ) == "locales" ) {
-            traductor->load ( QString ( "bulmacont_" ) + QLocale::system().name(),
+            success = traductor->load ( QString ( "bulmacont_" ) + QLocale::system().name(),
                               confpr->valor ( CONF_DIR_TRADUCCION ).toAscii() );
+			if(!success)
+ 			{
+ 				std::cout << "Error al cargar el qm: " << std::endl;
+			}	
         
 		} else {
             QString archivo = "bulmacont_" + confpr->valor ( CONF_TRADUCCION );
             bool success = traductor->load ( archivo.toAscii(), confpr->valor ( CONF_DIR_TRADUCCION ).toAscii() );
-			if(!success)
-			{
-				mensajeInfo(QString::QString("Error al carregar el qm: ")+ confpr->valor ( CONF_DIR_TRADUCCION ) + archivo);
-			}	
-        mensajeInfo(archivo);
+ 			if(!success)
+ 			{
+ 				std::cout << "Error al cargar el qm: " << "  " << archivo.toStdString () << std::endl;
+ 			}	
+         
 	} // end if
         theApp->installTranslator ( traductor );
 
