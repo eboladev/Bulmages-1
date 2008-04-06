@@ -7,7 +7,7 @@
 
 
 # Uncomment this to turn on verbose mode.
-export DH_VERBOSE=1
+#export DH_VERBOSE=1
 
 # shared library versions, option 1
 #version=0.11~svn2389
@@ -26,18 +26,13 @@ configure: configure-stamp
 configure-stamp:
 	dh_testdir
 	#This part should be looked when prepare the relase
-	#tar xzf bulmages-stable.tar.gz
-	#mv bulmages-stable bulmages
-	#$(MAKE) -f /usr/share/quilt/quilt.make patch
-
-	# Add here commands to configure the package.
 
 	cd bulmages; mkdir build.debian; cd build.debian; cmake \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed" \
 	-DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed" \
 	-DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed" \
-	-DCMAKE_BUILD_TYPE=Release  ../;
+	../;
 
 	touch configure-stamp
 
@@ -48,12 +43,7 @@ build-stamp: configure-stamp
 	dh_testdir
 
 	# Add here commands to compile the package.
-	cd bulmages/build.debian; $(MAKE) -j2 VERBOSE=1;
-	#dh_install bulmages/installbulmages/libbulmalib.so.$(version) \
-	#	debian/tmp/usr/lib ;
-	# (cd debian/tmp/usr/lib ; ln -sf libbulmalib.so.$(version) \
-	# libbulmalib.so.0.5 ; ln -sf libbulmalib.so.$(version) \
-	# libbulmalib.so.0; ln -sf libbulmalib.so.$(version) libbulmalib.so )
+	cd bulmages/build.debian; $(MAKE) ;
 
 	touch build-stamp
 
@@ -64,8 +54,6 @@ clean:
 
 #	Add here commands to clean up after the build process.
 	-rm -rf bulmages/build.debian
-# 	[ ! -d bulmages ] || rm -Rf bulmages
-# 	$(MAKE) -f /usr/share/quilt/quilt.make unpatch
 	dh_clean 
 
 install: build
@@ -96,8 +84,6 @@ binary-arch: build install
 	dh_installdocs debian/README.*Debian 
 	dh_installexamples
 	dh_install --sourcedir=debian/tmp
-#	dh_pysupport
-#	dh_install 
 
 #If the private modules are not in a default directory (like
 #/usr/share/$package or /usr/lib/$package) you should pass the directory

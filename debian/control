@@ -11,7 +11,7 @@ XS-Vcs-Browser: http://svn.berlios.de/wsvn/bulmages/trunk/debian/
 
 Package: bulmages
 Architecture: any
-Depends: ${shlibs:Depends}, bulmages-common (>= 0.11), bulmages-admin (>=0.11), bulmacont (>= 0.11), bulmages-docs (>= 0.11), bulmafact (>= 0.11), bulmages-servers (>= 0.11)
+Depends: ${shlibs:Depends}, bulmages-common (>= 0.11), bulmages-admin (>=0.11), bulmacont (>= 0.11), bulmages-doc (>= 0.11), bulmafact (>= 0.11), bulmages-servers (>= 0.11)
 Description: Accounting and invoicing programs for Spanish little businesses
  This package provides the entire Bulmages financial suite for Spanish
  businesses.  Bulmages includes an accounting program (bulmacont), an invoicing
