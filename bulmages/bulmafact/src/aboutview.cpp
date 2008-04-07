@@ -45,7 +45,12 @@ AboutView::AboutView ( QDialog *parent ) : QDialog ( parent )
                   "Programaci&oacute;n:<br/> " \
                   "<b>Tomeu Borr&aacute;s.</b>&nbsp;<a href=\"mailto:tborras@conetxia.com\">tborras@conetxia.com</a><br/>" \
                   "<b>Fco. Javier M. C. </b>&nbsp;<a href=\"mailto:fcojavmc@todo-redes.com\">fcojavmc@todo-redes.com</a><br/>" \
+                  "<b>Leopold Palomo </b>&nbsp;<a href=\"mailto:leo@alaxarxa.net\">leo@alaxarxa.net</a><br/>" \
+                  "<b>Jean Ren&eacute; M&egrave;rou</b><br />" \
+                  "<b>Miguel Gea</b>&nbsp;<a href=\"mailto:xerakko@debian.org\">xerakko@debian.org</a><br/>" \
                   "</p><p>" \
+
+
                   "Depuracion y manuales:<br/>" \
                   "<b>Cristina Marco.</b>&nbsp;<a href=\"cmarco@conetxia.com\">cmarco@conetxia.com</a>" \
                   "</p></center>";

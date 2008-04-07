@@ -51,6 +51,7 @@ sobreview::sobreview ( QWidget *parent ) : QDialog ( parent )
                   "<b>Antoni Mirabete</b>&nbsp;<a href=\"mailto:amirabet@biada.org\">amirabet@biada.org</a><br />" \
                   "<b>Leopold Palomo </b>&nbsp;<a href=\"mailto:leo@alaxarxa.net\">leo@alaxarxa.net</a><br/>" \
                   "<b>Jean Ren&eacute; M&egrave;rou</b><br />" \
+                  "<b>Miguel Gea</b>&nbsp;<a href=\"mailto:xerakko@debian.org\">xerakko@debian.org</a><br/>" \
                   "<b>Josep Burci&oacute;n</b>&nbsp;<a href=\"mailto:josep@burcion.com\">josep@burcion.com</a> <br />" \
                   "<b>Oscar Serna</b>&nbsp;<a href=\"mailto:oserna@regamallorca.com\">oserna@regamallorca.com</a> <br />" \
                   "<b>Celso Gonz&aacute;lez</b>&nbsp;<a href=\"mailto:mitago@ono.com\">mitago@ono.com</a> <br />" \
