@@ -1,0 +1,57 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Format: 1.7
+Date: Fri, 04 Apr 2008 22:23:50 +0200
+Source: bulmages
+Binary: bulmages bulmages-admin bulmages-common bulmages-doc bulmacont bulmafact bulmatpv bulmages-servers libbulmalib0.11-dev libbulmalib0.11 bulmacont-plugins bulmafact-plugins bulmatpv-plugins
+Architecture: source amd64 all
+Version: 0.11.1~rc0-1
+Distribution: unstable
+Urgency: low
+Maintainer: René Mérou <ochominutosdearco@gmail.com>
+Changed-By: Leopold Palomo Avellaneda <leo@alaxarxa.net>
+Description: 
+ bulmacont  - Spanish accounting program
+ bulmacont-plugins - plugins collection for Bulmages
+ bulmafact  - Spanish invoicing program
+ bulmafact-plugins - plugins collection for Bulmafact
+ bulmages   - Accounting and invoicing programs for Spanish little businesses
+ bulmages-admin - Small GUI to launch some management programs for little businesse
+ bulmages-common - Bulmages invoicing and accounting, config and common stuff
+ bulmages-doc - Bulmages invoicing and accounting documentation files
+ bulmages-servers - Spanish accounting program server
+ bulmatpv   - Spanish invoicing program
+ bulmatpv-plugins - plugins collection for Bulmatpv
+ libbulmalib0.11 - bulmages headers (runtime)
+ libbulmalib0.11-dev - bulmages headers for development
+Changes: 
+ bulmages (0.11.1~rc0-1) unstable; urgency=low
+ .
+   [Leopold Palomo Avellaneda]
+   * New upstream release candidate version.
+   * Added -DCMAKE_BUILD_TYPE=Release to the rules.
+Files: 
+ c7e9316d42c49087cd512c70e9036ad7 1141 kde optional bulmages_0.11.1~rc0-1.dsc
+ 1219507b344504a88353ab7b02743e6e 77216562 kde optional bulmages_0.11.1~rc0-1.tar.gz
+ 0cf4f7b5e97864632137ffe84371bae6 94568 kde optional bulmages_0.11.1~rc0-1_amd64.deb
+ 9f5d17222a785af0f75c521927e37f6e 103550 kde optional bulmages-admin_0.11.1~rc0-1_amd64.deb
+ fbaca34ce92fb847d580ed3d17ff7810 34416 kde optional bulmages-common_0.11.1~rc0-1_all.deb
+ 369dcaefccdbe7f9db82a603980045e2 4208 doc optional bulmages-doc_0.11.1~rc0-1_all.deb
+ b89b79b6aacfde49d5bad00fe0a7f56a 872680 kde optional bulmacont_0.11.1~rc0-1_amd64.deb
+ 1f0ee055773f07fc685b249e4b756510 993144 kde optional bulmafact_0.11.1~rc0-1_amd64.deb
+ 9990d718c3a6a1ad2ea617fcfcae5a95 133386 kde optional bulmatpv_0.11.1~rc0-1_amd64.deb
+ b92d32bd9ec485ad53f9a62aa0bc41fe 309508 kde optional bulmages-servers_0.11.1~rc0-1_all.deb
+ 98836e3852930bbe6b0a065cb5343018 23892 libdevel optional libbulmalib0.11-dev_0.11.1~rc0-1_amd64.deb
+ 845c077add7617d5a532ccd9cd7800f5 1571960 libs optional libbulmalib0.11_0.11.1~rc0-1_amd64.deb
+ 18cad736cfb0bfd03f069082babfc98d 511896 kde optional bulmacont-plugins_0.11.1~rc0-1_amd64.deb
+ 2c67ce9afa6fd2b9bc0b8355f0ca01be 801808 kde optional bulmafact-plugins_0.11.1~rc0-1_amd64.deb
+ 34ec8f89782361c0584644df1de83957 110152 kde optional bulmatpv-plugins_0.11.1~rc0-1_amd64.deb
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.6 (GNU/Linux)
+
+iD8DBQFH+PYGnNXIs2fY6GcRAmskAJ9Ptju488K4nsFspiC97odAwWHO3gCdHNo8
+Qoz5x7yrFQaWG9TY7MIbvbM=
+=09/a
+-----END PGP SIGNATURE-----
