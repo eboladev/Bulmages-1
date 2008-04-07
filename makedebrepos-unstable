@@ -81,5 +81,5 @@ done
 
 #Finally is better to clean a bit the directories with:
 
-find $reposdir -name *~ -print0 | xargs -0 rm -f
+#find $reposdir -name *~ -print0 | xargs -0 rm -f
 
