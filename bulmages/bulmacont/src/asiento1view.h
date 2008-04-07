@@ -108,6 +108,8 @@ public slots:
     virtual void on_mui_duplicar_clicked();
     virtual void on_mui_inteligente_clicked();
     virtual void on_mui_fecha_enterPressed();
+    virtual void on_mui_configurar_toggled ( bool checked );
+    virtual void on_mui_list_toogledConfig ( bool check );
     /// Al pulsar return sobre el n&uacute;mero de asiento se procede como si fuese una
     /// carga de dicho asiento.
     void mui_ordenasiento_pulsadoIntro();

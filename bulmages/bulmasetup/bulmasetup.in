@@ -25,7 +25,7 @@ from plugins import PluginsBulmaSetup
 plugins.pathdbbulmafact = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/crear/bulmafact/'
 plugins.pathdbbulmacont = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/crear/bulmacont/'
 plugins.pathdbparches = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/actualizar/'
-plugins.configfiles = '@BULMAGES_CONFIG_DIR@'
+plugins.configfiles = '@BULMAGES_CONFIG_DIR@/'
 
 class HelloWindow(QtGui.QMainWindow, Ui_MainWindow, PluginsBulmaSetup):
     def __init__(self, *args):

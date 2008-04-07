@@ -1137,4 +1137,32 @@ void Asiento1View::asiento_apertura ( QString ffinal )
 }
 
 
+///
+/**
+\param checked
+**/
+void Asiento1View::on_mui_configurar_toggled ( bool checked )
+{
+    _depura ( "Asiento1View::on_mui_configurar_toggled", 0 );
+    if ( checked ) {
+        mui_list->showConfig();
+    } else {
+        mui_list->hideConfig();
+    } // end if
+    _depura ( "END Asiento1View::on_mui_configurar_toggled", 0 );
+}
+
+///
+/**
+\param check
+**/
+void Asiento1View::on_mui_list_toogledConfig ( bool check )
+{
+    _depura ( "Asiento1View::on_mui_list_toogledConfig", 0 );
+
+    QToolButton *botonconfigurar = findChild<QToolButton *> ( "mui_configurar" );
+    if ( botonconfigurar )
+        botonconfigurar->setChecked ( check );
+    _depura ( "END Asiento1View::on_mui_list_toogledConfig", 0 );
+}
 
