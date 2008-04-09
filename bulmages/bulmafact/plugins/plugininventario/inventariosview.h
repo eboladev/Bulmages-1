@@ -59,9 +59,9 @@ public:
     virtual void on_mui_imprimir_clicked();
     virtual void on_mui_crear_clicked();
     virtual void on_mui_editar_clicked();
+    virtual void on_mui_listado_itemDoubleClicked ( QTableWidgetItem * );
 
 public slots:
-    virtual void on_mui_listado_itemDoubleClicked ( QTableWidgetItem * );
     virtual void on_mui_listado_itemDoubleClicked();
     virtual void on_mui_borrar2_clicked();
 };
