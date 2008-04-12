@@ -30,6 +30,7 @@ add_subdirectory(pluginbalancetree)
 add_subdirectory(pluginbalance1)
 add_subdirectory(plugincanualesods)
 add_subdirectory(pluginbalance)
+add_subdirectory(pluginimportcontaplus)
 
 # if you want to add some private code
 # simple put your add_directory in a
