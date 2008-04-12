@@ -65,10 +65,13 @@ private:
     QString mdb_nomarticulo;
     /// BusquedaArticulo almacena el codigo completo del articulo seleccionado en esta variable de clase.
     QString mdb_codigocompletoarticulo;
+    /// Impide que se produzca un dead-lock entre pintar y on_mui_text_changed.
+    bool m_semaforo;
 
 public:
     BusquedaArticulo ( QWidget *parent = 0 );
     ~BusquedaArticulo();
+    void pinta();
     virtual QString codigocompletoarticulo();
     virtual QString idarticulo();
     virtual QString nomarticulo();

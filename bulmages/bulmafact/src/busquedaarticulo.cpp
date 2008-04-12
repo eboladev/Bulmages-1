@@ -37,6 +37,7 @@ BusquedaArticulo::BusquedaArticulo ( QWidget *parent )
     mdb_idarticulo = "";
     mdb_nomarticulo = "";
     mdb_codigocompletoarticulo = "";
+    m_semaforo = FALSE;
     _depura ( "END BusquedaArticulo::BusquedaArticulo", 0 );
 }
 
@@ -77,7 +78,26 @@ void BusquedaArticulo::setidarticulo ( QString val )
     delete cur;
     m_codigocompletoarticulo->setText ( mdb_codigocompletoarticulo );
     m_nomarticulo->setText ( mdb_nomarticulo );
+    pinta();
     _depura ( "END BusquedaArticulo::setidarticulo", 0 );
+}
+
+
+/** Se encarga de presentar en el Widget los valores seleccionados.
+*/
+/**
+**/
+void BusquedaArticulo::pinta()
+{
+    _depura ( "BusquedaCliente::pinta", 0 );
+    m_semaforo = TRUE;
+//    m_cifcliente->setText ( mdb_cifcliente );
+//    m_nomcliente->setText ( mdb_codcliente + " - " + mdb_nomcliente );
+    m_codigocompletoarticulo->setText ( mdb_codigocompletoarticulo );
+    m_nomarticulo->setText ( mdb_nomarticulo );
+    m_semaforo = FALSE;
+    emit ( valueChanged ( mdb_idarticulo ) );
+    _depura ( "END BusquedaCliente::pinta", 0 );
 }
 
 
@@ -115,8 +135,7 @@ void BusquedaArticulo::setcodigocompletoarticulo ( QString val )
         mdb_nomarticulo = "";
     } // end if
     delete cur;
-    m_codigocompletoarticulo->setText ( mdb_codigocompletoarticulo );
-    m_nomarticulo->setText ( mdb_nomarticulo );
+    pinta();
     _depura ( "END BusquedaArticulo::setcodigocompletoarticulo", 0 );
 }
 
@@ -148,11 +167,14 @@ void BusquedaArticulo::on_mui_buscar_clicked()
 
     diag->exec();
     if ( articulos->codigocompletoarticulo() != "" ) {
+/*
         m_codigocompletoarticulo->setText ( articulos->codigocompletoarticulo() );
         mdb_codigocompletoarticulo = articulos->codigocompletoarticulo();
         m_nomarticulo->setText ( articulos->nomarticulo() );
         mdb_nomarticulo = articulos->nomarticulo();
         mdb_idarticulo = articulos->idarticulo();
+*/
+	setcodigocompletoarticulo(articulos->codigocompletoarticulo());
     } // end if
     delete diag;
 }
@@ -168,6 +190,70 @@ void BusquedaArticulo::on_mui_buscar_clicked()
 void BusquedaArticulo::on_m_codigocompletoarticulo_textChanged ( const QString &val )
 {
     _depura ( "BusquedaArticulo::on_m_codigocompletoarticulo_textChanged", 0 );
+    if ( m_semaforo ) {
+        _depura ( "END BusquedaArticulo::on_m_codigocompletoarticulo_textChanged", 0, "Semaforo parado" );
+        return;
+    } // end if
+
+    bool encontrado = FALSE;
+    QString SQLQuery = "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + val + "'";
+    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
+    if ( !cur->eof() ) {
+        mdb_idarticulo = cur->valor ( "idarticulo" );
+        mdb_nomarticulo = cur->valor ( "nomarticulo" );
+	mdb_codigocompletoarticulo = cur->valor("codigocompletoarticulo");
+        encontrado = TRUE;
+    }
+    delete cur;
+
+    bool buscarmas = TRUE;
+    if ( ! encontrado ) {
+        QString SQLQuery = "SELECT * FROM articulo WHERE upper(codigocompletoarticulo) LIKE upper('%" + val + "%')";
+        cur = empresaBase() ->cargacursor ( SQLQuery );
+        if ( cur->numregistros() == 1 ) {
+            mdb_idarticulo = cur->valor ( "idarticulo" );
+            mdb_nomarticulo = cur->valor ( "nomarticulo" );
+      	    mdb_codigocompletoarticulo = cur->valor("codigocompletoarticulo");
+            encontrado = TRUE;
+        } // end if
+
+	if (cur->numregistros() > 1) {
+		buscarmas = FALSE;
+	} // end if
+        delete cur;
+    } // end if
+
+
+    if ( ! encontrado && buscarmas) {
+        QString SQLQuery = "SELECT * FROM articulo WHERE upper(nomarticulo) LIKE upper('%" + val + "%')";
+        cur = empresaBase() ->cargacursor ( SQLQuery );
+        if ( cur->numregistros() == 1 ) {
+            mdb_idarticulo = cur->valor ( "idarticulo" );
+            mdb_nomarticulo = cur->valor ( "nomarticulo" );
+      	    mdb_codigocompletoarticulo = cur->valor("codigocompletoarticulo");
+            encontrado = TRUE;
+        } // end if
+
+        delete cur;
+    } // end if
+
+    if ( !encontrado ) {
+        m_nomarticulo->setText ( "" );
+        mdb_idarticulo = "";
+        mdb_nomarticulo = "";
+        mdb_codigocompletoarticulo = "";
+    } // end if
+
+    if ( encontrado ) {
+	m_codigocompletoarticulo->setText ( mdb_codigocompletoarticulo );
+	m_nomarticulo->setText ( mdb_nomarticulo );
+	emit ( valueChanged ( mdb_idarticulo ) );
+    } // end if
+
+
+
+/// Hasta aqui
+/*
     mdb_codigocompletoarticulo = val;
     QString SQLQuery = "SELECT * FROM articulo WHERE codigocompletoarticulo='" + mdb_codigocompletoarticulo + "'";
     cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
@@ -182,6 +268,7 @@ void BusquedaArticulo::on_m_codigocompletoarticulo_textChanged ( const QString &
     m_codigocompletoarticulo->setText ( mdb_codigocompletoarticulo );
     m_nomarticulo->setText ( mdb_nomarticulo );
     emit ( valueChanged ( mdb_idarticulo ) );
+*/
     _depura ( "END BusquedaArticulo::on_m_codigocompletoarticulo_textChanged", 0 );
 }
 
