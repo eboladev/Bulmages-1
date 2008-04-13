@@ -54,7 +54,7 @@ ListAlmacenView::ListAlmacenView ( Company *comp, QWidget *parent )
     setupUi ( this );
     mui_listado->setEmpresaBase ( comp );
     mui_listado->cargar();
-    meteWindow ( windowTitle(), this );
+    meteWindow ( windowTitle(), this, FALSE );
     _depura ( "END ListAlmacenView::ListAlmacenView", 1 );
 }
 
