@@ -27,7 +27,6 @@
 #include <QApplication>
 #include <QObject>
 #include <QProcess>
-#include <QX11EmbedContainer>
 
 #include "pluginimportcsv.h"
 #include "mypluginimportcsv.h"
