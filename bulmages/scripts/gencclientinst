@@ -62,30 +62,30 @@ mkdir /usr/lib/bulmafact/plugins
 mkdir /usr/lib/bulmatpv/plugins
 mkdir /usr/lib/bulmalib/plugins
 
-find $1/$2/bulmafact/plugins/ -name "*.so" | xargs -I '{}' ln -s '{}' /usr/lib/bulmafact/plugins/
-find $1/$2/bulmacont/plugins/ -name "*.so" | xargs -I '{}' ln -s '{}' /usr/lib/bulmacont/plugins/
-find $1/$2/bulmalib/plugins/  -name "*.so" | xargs -I '{}' ln -s '{}' /usr/lib/bulmalib/plugins/
-find $1/$2/bulmatpv/plugins/ -name "*.so" | xargs -I '{}' ln -s '{}' /usr/lib/bulmatpv/plugins/
+find $1/$2/bulmafact/plugins/ -name "*.so" | grep -v "CMake" |xargs -I '{}' ln -s '{}' /usr/lib/bulmafact/plugins/
+find $1/$2/bulmacont/plugins/ -name "*.so" | grep -v "CMake" |xargs -I '{}' ln -s '{}' /usr/lib/bulmacont/plugins/
+find $1/$2/bulmalib/plugins/  -name "*.so" | grep -v "CMake" |xargs -I '{}' ln -s '{}' /usr/lib/bulmalib/plugins/
+find $1/$2/bulmatpv/plugins/ -name "*.so" | grep -v "CMake" |xargs -I '{}' ln -s '{}' /usr/lib/bulmatpv/plugins/
 
-find $1/$2/privateplugins/ -name "*.so" | xargs -I '{}' ln -s '{}' /usr/lib/bulmafact/plugins/
+find $1/$2/privateplugins/ -name "*.so" | grep -v "CMake" |xargs -I '{}' ln -s '{}' /usr/lib/bulmafact/plugins/
 
 
 #Archivos adicionales de bulmafact que pertenezcan a los plugins.
-find $1/bulmafact/plugins/ -name "*.png" | xargs -I '{}' ln -s '{}' /usr/share/bulmages/icons/
-find $1/bulmafact/plugins/ -name "*.jpg" | xargs -I '{}' ln -s '{}' /usr/share/bulmages/icons/
-find $1/bulmafact/plugins/ -name "*.xpn" | xargs -I '{}' ln -s '{}' /usr/share/bulmages/icons/
-find $1/bulmafact/plugins/ -name "*.rml" | xargs -I '{}' ln -s '{}' /usr/share/bulmages/openreports/
+find $1/bulmafact/plugins/ -name "*.png" | grep -v "CMake" |xargs -I '{}' ln -s '{}' /usr/share/bulmages/icons/
+find $1/bulmafact/plugins/ -name "*.jpg" | grep -v "CMake" |xargs -I '{}' ln -s '{}' /usr/share/bulmages/icons/
+find $1/bulmafact/plugins/ -name "*.xpn" | grep -v "CMake" |xargs -I '{}' ln -s '{}' /usr/share/bulmages/icons/
+find $1/bulmafact/plugins/ -name "*.rml" | grep -v "CMake" |xargs -I '{}' ln -s '{}' /usr/share/bulmages/openreports/
 
 #Archivos adicionales de bulmacont que pertenezcan a los plugins.
-find $1/bulmacont/plugins/ -name "*.png" | xargs -I '{}' ln -s '{}' /usr/share/bulmages/icons/
-find $1/bulmacont/plugins/ -name "*.jpg" | xargs -I '{}' ln -s '{}' /usr/share/bulmages/icons/
-find $1/bulmacont/plugins/ -name "*.xpn" | xargs -I '{}' ln -s '{}' /usr/share/bulmages/icons/
-find $1/bulmacont/plugins/ -name "*.rml" | xargs -I '{}' ln -s '{}' /usr/share/bulmages/openreports/
+find $1/bulmacont/plugins/ -name "*.png" | grep -v "CMake" |xargs -I '{}' ln -s '{}' /usr/share/bulmages/icons/
+find $1/bulmacont/plugins/ -name "*.jpg" | grep -v "CMake" |xargs -I '{}' ln -s '{}' /usr/share/bulmages/icons/
+find $1/bulmacont/plugins/ -name "*.xpn" | grep -v "CMake" |xargs -I '{}' ln -s '{}' /usr/share/bulmages/icons/
+find $1/bulmacont/plugins/ -name "*.rml" | grep -v "CMake" |xargs -I '{}' ln -s '{}' /usr/share/bulmages/openreports/
  
 #Archivos adicionales de bulmalib que pertenezcan a los plugins.
-find $1/bulmalib/plugins/ -name "*.png" | xargs -I '{}' ln -s '{}' /usr/share/bulmages/icons/
-find $1/bulmalib/plugins/ -name "*.jpg" | xargs -I '{}' ln -s '{}' /usr/share/bulmages/icons/
-find $1/bulmalib/plugins/ -name "*.xpn" | xargs -I '{}' ln -s '{}' /usr/share/bulmages/icons/
-find $1/bulmalib/plugins/ -name "*.rml" | xargs -I '{}' ln -s '{}' /usr/share/bulmages/openreports/
+find $1/bulmalib/plugins/ -name "*.png" | grep -v "CMake" |xargs -I '{}' ln -s '{}' /usr/share/bulmages/icons/
+find $1/bulmalib/plugins/ -name "*.jpg" | grep -v "CMake" |xargs -I '{}' ln -s '{}' /usr/share/bulmages/icons/
+find $1/bulmalib/plugins/ -name "*.xpn" | grep -v "CMake" |xargs -I '{}' ln -s '{}' /usr/share/bulmages/icons/
+find $1/bulmalib/plugins/ -name "*.rml" | grep -v "CMake" |xargs -I '{}' ln -s '{}' /usr/share/bulmages/openreports/
 
 

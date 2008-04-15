@@ -104,15 +104,15 @@ public:
     void showBusqueda();
     void editar ( int );
     virtual void on_mui_actualizar_clicked();
-
-public slots:
-    virtual void on_m_filtro_textChanged ( const QString &text );
-    void on_mui_list_itemDoubleClicked ( QTableWidgetItem * );
     virtual void on_mui_crear_clicked();
     virtual void on_mui_editar_clicked();
     virtual void on_mui_imprimir_clicked();
     virtual void on_mui_borrar_clicked();
+    virtual void on_m_filtro_textChanged ( const QString &text );
     virtual void on_mui_configurar_toggled ( bool checked );
+
+public slots:
+    void on_mui_list_itemDoubleClicked ( QTableWidgetItem * );
     virtual void on_mui_facturar_clicked();
 signals:
     void selected ( QString );

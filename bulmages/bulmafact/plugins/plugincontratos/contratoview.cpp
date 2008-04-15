@@ -114,7 +114,7 @@ int ContratoView::cargar ( QString id )
             meteWindow ( windowTitle(), this );
         } // end if
         mui_lineas->cargar ( id );
-        subform2->cargar ( "SELECT * FROM factura LEFT JOIN cliente ON cliente.idcliente = factura.idcliente LEFT JOIN almacen ON factura.idalmacen = almacen.idalmacen  WHERE factura.idcliente =" + DBvalue ( "idcliente" ) + " AND reffactura = '" + DBvalue ( "refcontrato" ) + "'" );
+        subform2->cargar ( "SELECT * FROM factura LEFT JOIN cliente ON cliente.idcliente = factura.idcliente LEFT JOIN almacen ON factura.idalmacen = almacen.idalmacen  WHERE factura.idcliente =" + id + " AND reffactura = '" + DBvalue ( "refcontrato" ) + "'" );
         dialogChanges_cargaInicial();
     } catch ( ... ) {
         return -1;
