@@ -1,0 +1,452 @@
+/* ================================ GENERAL ================================= */
+* {
+	font-family: Verdana, Helvetica, Arial, sans-serif;
+	font-size: small;
+}
+body {
+	background:#FFFFFF;
+}
+
+
+/* ================================= FOOTER ================================= */
+#footer {
+	/*border: solid 1px #000000;*/
+	 text-decoration: none;
+         color: #FFFFFF;
+         font-weight: bold;
+	 font-size: 1em;
+         padding-left:6px;
+         padding-right:6px;
+         padding-bottom:2px;
+         padding-top:1px;
+         background: #CC0000;
+         margin-top:0.5em;
+         text-align:right;
+         vertical-align:middle;
+}
+
+/* ================================= HEADER ================================= */
+#printerheader {
+	display:none;
+}
+#printerfooter {
+	display:none;
+}
+
+#header {
+	/*border: solid 1px #000000;*/
+}
+#headerprepend {}
+#headerappend {}
+#searchform input {
+	border: solid 1px #791e1e;
+         background: #fff url(images/search_icon.gif) no-repeat;
+}
+#searchform .button {
+	color: #791e1e;
+         background: #b9b9D7;
+         font-weight:bold;
+}
+#searchform .button:hover {
+	background: #b9b9C7;
+}
+#qsearch_out {
+	background: #fff;
+         border: solid 1px #791e1e;
+}
+#qsearch_out a {
+	color: #791e1e;
+         text-decoration: none;
+}
+
+/* =============================== NAVIGATION =============================== */
+#navigation li a {
+	text-decoration: none;
+         color: #791e1e;
+         font-weight: bold;
+	 font-size: 1em;
+         font-variant: small-caps;
+         border: solid 1px #791e1e;
+         padding-left:6px;
+         padding-right:6px;
+         padding-bottom:2px;
+         padding-top:1px;
+         background:#b9b9D7;
+}
+#navigation li a:hover{
+	background: #b9b9C7;
+}
+
+/* ================================== MENU ================================== */
+.menu {
+	border: solid 1px #791e1e;
+}
+.menutitle {
+	margin-top:6px;
+         color: #000;
+         font-weight: bold;
+         font-variant: small-caps;
+}
+.menuprepend {
+	background-color: #b9b9D7;
+}
+.menuprepend .free1 {
+	border-bottom: solid 1px #791e1e;
+}
+.menuappend {}
+.menuappend .free1 {}
+.menu .menubody {}
+.menu a {
+	color: #791e1e;
+         text-decoration: none;
+}
+.menu a:hover {
+	color: #a92929;
+}
+
+/* ================================ PAGEMAP ================================= */
+.pagemap .menubody .toc .level1 {
+	list-style: none;
+}
+.pagemap .menubody .toc .level1 a {
+	color: #791e1e;
+         font-weight: bold;
+}
+.pagemap .menubody .toc .level1 a:hover {
+	color: #a92929;
+}
+.pagemap .menubody .toc .level2 {
+	color: #000;
+         list-style-image:url("images/dot.gif");
+}
+.pagemap .menubody .toc .level2 a {
+	color: #791e1e;
+         font-weight: normal;
+}
+.pagemap .menubody .toc .level3 {
+	color: #000;
+         list-style: list-style-image:url("images/dot.gif");
+}
+.pagemap .menubody .toc .level3 a {
+	color: #791e1e;
+         font-weight: normal;
+}
+
+/* =============================== EXPLORER ================================= */
+.menu .explorer .folder {
+	list-style-image: url(images/folder.gif);
+}
+.menu .explorer .folderopen {
+	list-style-image: url(images/folder_open.gif);
+}
+.menu .explorer .file {
+	list-style-image: url(images/file.gif);
+}
+
+/* ================================ CONTENT ================================= */
+#content {
+	border: solid 1px #791e1e;
+}
+#contentprepend {
+	background-color: #b9b9D7;
+}
+#contentprepend .free1 {
+	border-bottom: solid 1px #791e1e;
+}
+#contentappend {}
+#contentappend .free1 {}
+#contentbody {}
+#contentprepend .commands {
+	margin-top:6px;
+         color: #791e1e;
+         font-weight: bold;
+         font-variant: small-caps;
+}
+#contentprepend .commands a {
+	color: #791e1e;
+         font-weight: bold;
+         font-variant: small-caps;
+         text-decoration: none;
+}
+#contentprepend .commands a:hover {
+	color: #a92929;
+}
+
+/* ============================= CONTENT WIKI =============================== */
+/* ********* GENERAL ********* */
+#contentbody a {
+	text-decoration: none;
+         color: #791e1e;
+}
+#contentbody a:hover {
+	color: #a92929;
+}
+#contentbody .wikilink1 {}
+#contentbody .wikilink2 {
+	color: #f00;
+}
+#contentbody .wikilink2:hover {
+	color: #ff5d5d;
+}
+#contentbody .interwiki {
+	background: no-repeat url("images/interwiki.png");
+         padding-left: 20px;
+}
+#contentbody .urlextern{
+	background: no-repeat url("images/link_icon.gif");
+	padding-left: 18px;
+}
+
+#contentbody p {
+	text-align: justify;
+}
+
+#contentbody li {
+	text-align: justify;
+}
+
+
+
+/* ********* EDIT ********* */
+#contentbody .secedit {
+	border-bottom: solid 1px #791e1e;
+}
+#contentbody .secedit input{
+	border: solid 1px #791e1e;
+	background:#b9b9D7;
+	color: #791e1e;
+	font-weight: bold;
+         font-size:0.7em;
+}
+#contentbody .secedit input:hover{
+	background: #999966;
+}
+
+/* ********* HEADERS ********* */
+#contentbody h1 {
+	color: #000;
+	font-size: 1.5em;
+}
+#contentbody h2 {
+	color: #000;
+	font-size: 1.2em;
+}
+#contentbody h3 {
+	color: #000;
+	font-size: 1em;
+}
+#contentbody h4 {
+	color: #000;
+	font-size: 1em;
+}
+#contentbody h5 {
+	color: #000;
+	font-size: 1em;
+}
+
+/* ********* LEVELS ********* */
+div.level1 { }
+div.level2 { }
+div.level3 { }
+div.level4 { }
+div.level5 { }
+
+/* ********* TABLES ********* */
+#contentbody table {
+	border: solid 1px #999;
+}
+#contentbody table th {
+	border: solid 1px #999;
+         background-color: #b9b9D7;
+}
+#contentbody table td {
+	border: solid 1px #ccc;
+         background-color: #fff;
+}
+#contentbody table tr:hover {
+	background-color: #ffffe5;
+}
+
+/* ********* FOOTNOTE ********* */
+.fn {
+	border-top: dashed 1px #999;
+         background-color: #ffe;
+         margin-top: 20px;
+}
+.fn+.fn {
+	border-top: none;
+         margin-top: 0;
+}
+.fn_top {
+	font-size: .7em;
+         vertical-align: super;
+}
+.fn_bot {
+	font-size: .7em;
+         vertical-align: super;
+}
+
+/* ********* PREVIEW ********* */
+#contentbody .preview {
+	border: dotted 1px #999;
+         margin: 1em;
+         padding: 1em;
+}
+
+/* ********* BLOCKQUOTE ********* */
+#contentbody blockquote {
+	border-left: solid 2px #a58fbb;
+         margin: 0;
+         padding: 0 0 0 .5em;
+}
+
+/* ********* PARAGRAPH ********* */
+#contentbody p {
+	margin: .5em 0 0 0;
+}
+
+/* ********* PRE ********* */
+#contentbody pre {
+	padding: 2px;
+	border: 1px dotted #8cacbb;
+	color: #000;
+	overflow: auto;
+}
+
+/* ********* CODE ********* */
+#contentbody .code {
+         background-color: #fffff5;
+	padding: 2px 2px 2px 2px;
+	font-family: "Courier New",Courier,monospace;
+	white-space: pre;
+         border: 1px dotted #791e1e;
+}
+#contentbody pre.php {}
+#contentbody pre.actionscript {}
+#contentbody pre.css {}
+#contentbody pre.html4strict {}
+#contentbody pre.javascript {}
+#contentbody pre.bash {}
+
+#contentbody pre * {
+	background-color: #fffff5;
+         font-size: 1em;
+         font-family: "Courier New",Courier,monospace;
+}
+#contentbody pre.code .br0 {
+	color: #66cc66;
+}
+#contentbody pre.code .co1 {
+	color: #808080;
+         font-style: normal;
+         background-color: #f0f0f0;
+}
+#contentbody pre.code .co2 {
+	color: #808080;
+         font-style: normal;
+         background-color: #f0f0f0;
+}
+#contentbody pre.code .coMULTI {
+	color: #808080;
+         font-style: normal;
+         background-color: #f0f0f0;
+}
+#contentbody pre.code .es0 {
+	color: #000099;
+         font-weight: normal;
+}
+#contentbody pre.code .kw1 {
+	color: #b1b100;
+}
+#contentbody pre.code .kw2 {
+	color: #000000;
+         font-weight: normal;
+}
+#contentbody pre.code .kw3 {
+	color: #000066;
+}
+#contentbody pre.code .kw4 {
+	color: #993333;
+}
+#contentbody pre.code .kw5 {
+	color: #7777ff;
+}
+#contentbody pre.code .me0 {
+	color: #006600;
+}
+#contentbody pre.code .nu0 {
+	color: #cc66cc;
+}
+#contentbody pre.code .re0 {
+	color: #7777ff;
+}
+#contentbody pre.code .re1 {
+	color: #7777ff;
+}
+#contentbody pre.code .re2 {
+	color: #7777ff;
+}
+#contentbody pre.code .re4 {
+	color: #009999;
+}
+#contentbody pre.code .sc0 {
+	color: #00bbdd;
+}
+#contentbody pre.code .sc1 {
+	color: #ddbb00;
+}
+#contentbody pre.code .sc2 {
+	color: #009900;
+}
+#contentbody pre.code .st0 {
+	color: #0000ff;
+}
+#contentbody code {
+	font-family: "Courier New",Courier,monospace;
+}
+
+/* ********* DIFF ********* */
+#contentbody .diff-deletedline {
+	background-color: #f99;
+}
+#contentbody .diff-addedline {
+	background-color: #99f;
+}
+#contentbody .diffchange {
+	background-color: #ff6;
+}
+
+/* ********* MEDIA ********* */
+#media .mediaselect .mediaselect-left li {
+	margin-left: 15px;
+         list-style-image: url(images/folder.gif);
+}
+#media .mediaselect .mediaselect-right {
+	border-left: solid 1px #000;
+}
+#media .mediaselect .mediaselect-right ul li {
+	border: solid 1px #999;
+}
+#media .mediaselect .mediaselect-right ul li .imagemeta {
+	border-top: solid 1px #ccc;
+}
+#media .uploadform {
+	margin-top: 20px;
+}
+#mediaedit .footer {
+	border-top: solid 1px #999;
+}
+
+/* ********* PAGEINFO ********* */
+#contentbody .pageinfo {
+	border-top: solid 1px #ccc;
+         color: #999;
+}
+
+/* ********* WIKIEDIT ********* */
+#wikitext {
+        width:100%;
+        height:100%;
+        font-family: "Courier New",Courier,monospace;
+        font-size: 12px;
+}
