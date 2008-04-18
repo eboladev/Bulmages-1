@@ -1,0 +1,530 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" dir="ltr" lang="es"><head><title>bulmasetup:start</title>
+
+
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	  <meta name="generator" content="DokuWiki Release 2005-09-22e">
+  <link rel="stylesheet" media="screen" type="text/css" href="bulmasetup_files/style.css">
+  <meta name="robots" content="noindex,nofollow">
+
+
+  <link rel="stylesheet" type="text/css" href="bulmasetup_files/style_002.css">
+	<link rel="stylesheet" media="screen" type="text/css" href="bulmasetup_files/layout.css">
+	<link rel="stylesheet" media="screen" type="text/css" href="bulmasetup_files/design.css">
+	<link rel="stylesheet" media="screen" type="text/css" href="bulmasetup_files/plugins.css">
+		<link rel="stylesheet" media="print" type="text/css" href="bulmasetup_files/print.css"></head><body>
+	<!-- ====================== PRINTER HEADER ====================== -->
+	<!-- ========================== HEADER ========================== -->
+
+	<!-- ========================== TOC ========================== -->
+		<!-- ========================== EXPLORER ========================== -->
+
+	<!-- ========================== LINKS ========================== -->
+
+	<!-- ========================== CONTENT ========================== -->
+		<div id="contentbody">
+			
+						
+
+<a name="manual_de_bulmafact_indice_completo"></a><h1>Manual de BulmaFact (Indice Completo)</h1>
+<div class="level1">
+<ol>
+<li class="level1"><div class="li"> <a href="#">Introducción a BulmaSetup</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="#">El Menú de BulmaSetup</a></div>
+</li>
+</ol>
+<ol>
+<li class="level1"><div class="li"> <a href="#">Crear Usuarios</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="#">Crear Empresas de Contabilidad (BulmaCont)</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="#">Crear Empresas de Facturación (BulmaFact y BulmaTPV)</a></div>
+</li>
+</ol>
+<ol>
+<li class="level1"><div class="li"> <a href="#">Administrar Empresas Existentes</a></div>
+<ol>
+<li class="level3"><div class="li"> <a href="#">Administrar Empresas de Contabilidad</a></div>
+</li>
+<li class="level3"><div class="li"> <a href="#">Administrar Empresas de Facturación</a></div>
+</li>
+</ol>
+</li>
+</ol>
+<ol>
+<li class="level1"><div class="li"> <a href="#">Realizar Copias de Seguridad</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="#">Restaurar Copias de Seguridad</a></div>
+</li>
+</ol>
+<a href="#"
+
+</div>
+<div class="secedit"><form class="button" method="post" action="/wiki1/doku.php" onsubmit="return svchk()"><input name="do" value="edit" type="hidden"><input name="lines" value="39-" type="hidden"><input name="id" value="bulmasetup:start" type="hidden"><input value="Editar" class="button" type="submit"></form></div>
+<!-- cachefile /home/iglues/public_html/wiki1/data/cache/9/9c64845f791c222bb6b732a5a814ba7c.xhtml used -->
+
+
+<a name="introduccion_a_bulmasetup"></a><h1>Introducción a BulmaSetup</h1>
+<div class="level1">
+
+<p>
+ Bulmasetup es la aplicación de mantenimiento de la suite BulmaGés.
+</p>
+
+<p>
+Desde BulmaSetup se pueden crear usuarios para trabajar con las bases
+de datos, crear nuevas empresas o actualizar las existentes. También
+permite manejar copias de seguridad.
+</p>
+
+<p>
+BulmaSetup está hecho integramente en Python usando las librerías PyQT.
+</p>
+
+</div>
+
+<a name="puesta_en_marcha_del_programa"></a><h2>Puesta en marcha del programa</h2>
+<div class="level2">
+
+<p>
+ BulmaSetup está diseñado para ser utilizado en modo superusuario (root).
+</p>
+
+<p>
+Para arrancarlo desde su cuenta de usuario utilice el siguiente comando (Debe estar en el grupo de sudoers):
+</p>
+<pre class="code">$ sudo bulmasetup
+</pre>
+
+<p>
+Si tiene un icono en su entorno gráfico para bulmasetup seguramente utilice el comando kdesu 
+</p>
+<pre class="code">$kdesu bulmasetup
+</pre>
+<a href="#"
+
+</div>
+
+<!-- no cachefile used, but created -->
+
+
+<a name="el_menu_de_bulmasetup"></a><h1>El Menú de BulmaSetup</h1>
+<div class="level1">
+
+<p>
+ Al arrancar bulmasetup veremos la siguiente pantalla.
+</p>
+
+<p>
+<a href="#"></a>
+</p>
+
+<p>
+Los diferentes botones permiten realizar las diferentes acciones del programa: 
+</p>
+<ol>
+<li class="level1"><div class="li"> Crear Usuarios.</div>
+</li>
+<li class="level1"><div class="li"> Crear Bases de Datos de BulmaCont.</div>
+</li>
+<li class="level1"><div class="li"> Crear Bases de Datos de BulmaFact.</div>
+</li>
+<li class="level1"><div class="li"> Administrar Base de Datos existentes.</div>
+</li>
+<li class="level1"><div class="li"> Restaurar Copias de Seguridad.</div>
+</li>
+</ol>
+
+<p>
+ <strong>NOTA:</strong> La funcionalidad de Crear Copias de
+Seguridad es accesible desde la pantalla de Administracion de una
+empresa existente. Sin embargo la recuperación se hace siempre en una
+base de datos nueva. Por eso aparece en el menu sólo la restauración.
+</p>
+<a href="#"
+
+</div>
+<!-- no cachefile used, but created -->
+
+
+<a name="creacion_de_usuarios"></a><h1>Creación de Usuarios</h1>
+<div class="level1">
+
+<p>
+ Al pulsar sobre el botón de Nuevo Usuario en el menu principal de BulmaSetup. No aparecerá una nueva pantalla <a href="#"></a>
+</p>
+
+<p>
+Pidiendonos el nombre del usuario y la contraseña que tiene que tener.
+</p>
+
+<p>Una vez cumplimentado el formulario si pulsamos sobre el botón
+“Aceptar” se creará el nuevo usuario de PostGres para manejar bases de
+datos.
+</p>
+
+<p>
+ <strong>NOTA:</strong> El usuario creado será superusuario del
+sistema PostGres. Esta característica puede ser poco deseable para
+instalaciones complejas. Consulte el manual de PostGres para crear
+usuarios manualmente.
+</p>
+
+<p>
+<strong>NOTA:</strong> Segun los métodos de autenticación de usuarios
+en PostGres el usuario puede necesitar la contraseña o estar dado de
+alta como usuario del sistema. Consulte el manual de PostGres para
+mayores referencias.
+</p>
+<a href="#"
+
+</div>
+<!-- no cachefile used, but created -->
+<div class="toc">
+Tabla de Contenidos</div>
+<div id="tocinside">
+<ul class="toc">
+<li class="level1"><span class="li"><a href="#crear_una_empresa_de_contabilidad" class="toc">Crear una Empresa de Contabilidad</a></span><ul class="toc">
+<li class="level2"><span class="li"><a href="#plugins_displonibles" class="toc">Plugins Displonibles</a></span></li>
+<li class="level2"><span class="li"><a href="#ver_consola" class="toc">Ver consola</a></span></li>
+<li class="level2"><span class="li"><a href="#el_boton_generar" class="toc">El Botón Generar</a></span></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+<a name="crear_una_empresa_de_contabilidad"></a><h1>Crear una Empresa de Contabilidad</h1>
+<div class="level1">
+
+<p>
+ Al pulsar sobre el botón “Nueva Contabilidad” desde el menú principal de BulmaSetup aparecera la siguiente ventana:
+</p>
+
+<p>
+<a href="#"></a>
+</p>
+
+<p>En esta ventana se nos pide la información necesaria para realizar
+la puesta en marcha de una empresa contable. Los datos que pide son los
+siguientes: </p>
+<ol>
+<li class="level1"><div class="li"> <strong>Nombre Empresa</strong>
+Este campo permite indicar el nombre por el que conocemos la empresa.
+Su utilidad es descriptiva y puede contener espacios y carácteres
+especiales.</div>
+</li>
+</ol>
+<ol>
+<li class="level1"><div class="li"> <strong>Nombre Base de Datos</strong>
+En este campo debemos indicar el nombre con el que el sistema gestor de
+bases de datos va a nombrar la base de datos que contendrá toda la
+información de la empresa. Dicho nombre debe ser único para todas las
+bases de datos del sistema y no debe contener espacios ni carácteres
+especiales. </div>
+</li>
+</ol>
+
+<p>
+ Estos dos campos son los necesarios para la creación de una empresa.
+</p>
+
+</div>
+<div class="secedit"><form class="button" method="post" action="/wiki1/doku.php" onsubmit="return svchk()"><input name="do" value="edit" type="hidden"><input name="lines" value="37-973" type="hidden"><input name="id" value="bulmasetup::nuevacontabilidad_bs" type="hidden"><input value="Editar" class="button" type="submit"></form></div>
+<a name="plugins_displonibles"></a><h2>Plugins Displonibles</h2>
+<div class="level2">
+
+<p> BulmaCont es una aplicación modular y tiene muy presente las
+adaptaciones y personalizaciones para que el programa resultante pueda
+ajustarse a las necesidades de cada empresa.
+</p>
+
+<p>
+ La tabla de plugins permite realizar (y configurar) la empresa creada para que utilice aquellas extensiones que precisemos.
+</p>
+
+<p>
+En la tabla podremos ver el nombre del Plugin y una descripción de las funcionalidades que aporta el mismo.
+</p>
+
+<p>
+Podemos seleccionar los plugins que deseamos instalar mediante el ComboBox que está situado junto al nombre del plugin.
+</p>
+
+</div>
+<div class="secedit"><form class="button" method="post" action="/wiki1/doku.php" onsubmit="return svchk()"><input name="do" value="edit" type="hidden"><input name="lines" value="974-1544" type="hidden"><input name="id" value="bulmasetup::nuevacontabilidad_bs" type="hidden"><input value="Editar" class="button" type="submit"></form></div>
+<a name="ver_consola"></a><h2>Ver consola</h2>
+<div class="level2">
+
+<p>BulmaSetup ha sido concebido como una herramienta educativa y de
+simplificación de tareas. Es deseo del creador de la aplicación que el
+usuario esté familiarizado con los comandos que BulmaSetup utiliza para
+poder realizar mejoras en la instalación o adecuaciones más
+personalizadas. Por este motivo esta pantalla incorpora una consola que
+muestra toda la iteración que hace el programa con el sistema. La
+información que aparece en la consola es muy útil para detectar
+posibles errores y corregirlos.
+</p>
+
+</div>
+<div class="secedit"><form class="button" method="post" action="/wiki1/doku.php" onsubmit="return svchk()"><input name="do" value="edit" type="hidden"><input name="lines" value="1545-2079" type="hidden"><input name="id" value="bulmasetup::nuevacontabilidad_bs" type="hidden"><input value="Editar" class="button" type="submit"></form></div>
+<a name="el_boton_generar"></a><h2>El Botón Generar</h2>
+<div class="level2">
+
+<p>
+Al pulsar sobre el botón Generar se pondrá en marcha el mecanismo de creación de la empresa.
+</p>
+
+<p>El resultado de dicha generación será por una parte una nueva
+instancia de base de datos de la empresa y por otra un nuevo archivo de
+configuración para dicha empresa ubicado en /etc/bulmages/ o aquel que
+esté designado.
+</p>
+
+<p>
+Tras la generación de la empresa está podrá ser vista refrescando el listado de empresas disponibles de BulmaCont.
+</p>
+<a href="#"
+
+</div>
+<div class="secedit"><form class="button" method="post" action="/wiki1/doku.php" onsubmit="return svchk()"><input name="do" value="edit" type="hidden"><input name="lines" value="2080-" type="hidden"><input name="id" value="bulmasetup::nuevacontabilidad_bs" type="hidden"><input value="Editar" class="button" type="submit"></form></div>
+<!-- no cachefile used, but created -->
+<div class="toc">
+Tabla de Contenidos</div>
+<div id="tocinside">
+<ul class="toc">
+<li class="level1"><span class="li"><a href="#crear_una_empresa_de_facturacion_o_terminal_punto_de_venta" class="toc">Crear una Empresa de Facturación o Terminal Punto de Venta</a></span><ul class="toc">
+<li class="level2"><span class="li"><a href="#plugins_displonibles" class="toc">Plugins Displonibles</a></span></li>
+<li class="level2"><span class="li"><a href="#ver_consola" class="toc">Ver consola</a></span></li>
+<li class="level2"><span class="li"><a href="#el_boton_generar" class="toc">El Botón Generar</a></span></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+<a name="crear_una_empresa_de_facturacion_o_terminal_punto_de_venta"></a><h1>Crear una Empresa de Facturación o Terminal Punto de Venta</h1>
+<div class="level1">
+
+<p>
+ Al pulsar sobre el botón “Nueva Facturación” desde el menú principal de BulmaSetup aparecera la siguiente ventana:
+</p>
+
+<p>
+<a href="#"></a>
+</p>
+
+<p>En esta ventana se nos pide la información necesaria para realizar
+la puesta en marcha de la facturación de una empresa. Los datos que
+pide son los siguientes: </p>
+<ol>
+<li class="level1"><div class="li"> <strong>Nombre Empresa</strong>
+Este campo permite indicar el nombre por el que conocemos la empresa.
+Su utilidad es descriptiva y puede contener espacios y carácteres
+especiales.</div>
+</li>
+</ol>
+<ol>
+<li class="level1"><div class="li"> <strong>Nombre Base de Datos</strong>
+En este campo debemos indicar el nombre con el que el sistema gestor de
+bases de datos va a nombrar la base de datos que contendrá toda la
+información de la empresa. Dicho nombre debe ser único para todas las
+bases de datos del sistema y no debe contener espacios ni carácteres
+especiales. </div>
+</li>
+</ol>
+
+<p>
+ Estos dos campos son los necesarios para la creación de una empresa.
+</p>
+
+</div>
+<div class="secedit"><form class="button" method="post" action="/wiki1/doku.php" onsubmit="return svchk()"><input name="do" value="edit" type="hidden"><input name="lines" value="37-1008" type="hidden"><input name="id" value="bulmasetup::nuevafacturacion_bs" type="hidden"><input value="Editar" class="button" type="submit"></form></div>
+<a name="plugins_displonibles"></a><h2>Plugins Displonibles</h2>
+<div class="level2">
+
+<p> BulmaFact es una aplicación modular y tiene muy presente las
+adaptaciones y personalizaciones para que el programa resultante pueda
+ajustarse a las necesidades de cada empresa.
+</p>
+
+<p>
+ La tabla de plugins permite realizar (y configurar) la empresa creada para que utilice aquellas extensiones que precisemos.
+</p>
+
+<p>
+En la tabla podremos ver el nombre del Plugin y una descripción de las funcionalidades que aporta el mismo.
+</p>
+
+<p>
+Podemos seleccionar los plugins que deseamos instalar mediante el ComboBox que está situado junto al nombre del plugin.
+</p>
+
+</div>
+<div class="secedit"><form class="button" method="post" action="/wiki1/doku.php" onsubmit="return svchk()"><input name="do" value="edit" type="hidden"><input name="lines" value="1009-1579" type="hidden"><input name="id" value="bulmasetup::nuevafacturacion_bs" type="hidden"><input value="Editar" class="button" type="submit"></form></div>
+<a name="ver_consola"></a><h2>Ver consola</h2>
+<div class="level2">
+
+<p>BulmaSetup ha sido concebido como una herramienta educativa y de
+simplificación de tareas. Es deseo del creador de la aplicación que el
+usuario esté familiarizado con los comandos que BulmaSetup utiliza para
+poder realizar mejoras en la instalación o adecuaciones más
+personalizadas. Por este motivo esta pantalla incorpora una consola que
+muestra toda la iteración que hace el programa con el sistema. La
+información que aparece en la consola es muy útil para detectar
+posibles errores y corregirlos.
+</p>
+
+</div>
+<div class="secedit"><form class="button" method="post" action="/wiki1/doku.php" onsubmit="return svchk()"><input name="do" value="edit" type="hidden"><input name="lines" value="1580-2114" type="hidden"><input name="id" value="bulmasetup::nuevafacturacion_bs" type="hidden"><input value="Editar" class="button" type="submit"></form></div>
+<a name="el_boton_generar"></a><h2>El Botón Generar</h2>
+<div class="level2">
+
+<p>
+Al pulsar sobre el botón Generar se pondrá en marcha el mecanismo de creación de la empresa.
+</p>
+
+<p>El resultado de dicha generación será por una parte una nueva
+instancia de base de datos de la empresa y por otra un nuevo archivo de
+configuración para dicha empresa ubicado en /etc/bulmages/ o aquel que
+esté designado.
+</p>
+
+<p>
+Tras la generación de la empresa está podrá ser vista refrescando el listado de empresas disponibles de BulmaFact.
+</p>
+<a href="#"
+
+</div>
+<div class="secedit"><form class="button" method="post" action="/wiki1/doku.php" onsubmit="return svchk()"><input name="do" value="edit" type="hidden"><input name="lines" value="2115-" type="hidden"><input name="id" value="bulmasetup::nuevafacturacion_bs" type="hidden"><input value="Editar" class="button" type="submit"></form></div>
+<!-- no cachefile used, but created -->
+
+
+<a name="administrar_empresas_existentes"></a><h1>Administrar Empresas Existentes</h1>
+<div class="level1">
+
+<p>
+ Al pulsar sobre el botón de Administrar Empresas Existentes en el menu principal de BulmaSetup. Aparecerá una nueva pantalla
+</p>
+
+<p>
+<a href="#"></a>
+</p>
+
+<p>Tras indagar en el sistema las bases de datos existentes nos
+aparecerá el listado de empresas encontradas, el nombre que usa la
+empresa, si son contabilidad o facturación y también la versión de base
+de datos que tiene la empresa.
+</p>
+
+<p>
+Al hacer doble click sobre una de las bases de datos podremos administrar dicha empresa.
+</p>
+<a href="#"
+
+</div>
+<div class="secedit"><form class="button" method="post" action="/wiki1/doku.php" onsubmit="return svchk()"><input name="do" value="edit" type="hidden"><input name="lines" value="36-" type="hidden"><input name="id" value="bulmasetup::admemp_bs" type="hidden"><input value="Editar" class="button" type="submit"></form></div>
+<!-- no cachefile used, but created -->
+
+
+<a name="administrar_empresa_contable"></a><h1>Administrar Empresa Contable</h1>
+<div class="level1">
+
+<p>
+ Al hacer doble click sobre una empresa contable en el listado de empresas existentes nos aparecera una pantalla similar a esta:
+</p>
+
+<p>
+<a href="#"></a>
+</p>
+
+<p>En esta pantalla podemos actualizar la base de datos, agregar o
+quitar plugins y generar el archivo de configuracion para esta empresa.
+</p>
+<a href="#"
+
+</div>
+<div class="secedit"><form class="button" method="post" action="/wiki1/doku.php" onsubmit="return svchk()"><input name="do" value="edit" type="hidden"><input name="lines" value="36-" type="hidden"><input name="id" value="bulmasetup::admcont_bs" type="hidden"><input value="Editar" class="button" type="submit"></form></div>
+<!-- no cachefile used, but created -->
+
+
+<a name="administrar_empresa_de_facturacion"></a><h1>Administrar Empresa de Facturación</h1>
+<div class="level1">
+
+<p> Al hacer doble click sobre una empresa de facturación en el listado
+de empresas existentes nos aparecera una pantalla similar a esta:
+</p>
+
+<p>
+<a href="#"></a>
+</p>
+
+<p>En esta pantalla podemos actualizar la base de datos, agregar o
+quitar plugins y generar el archivo de configuracion para esta empresa.
+</p>
+<a href="#"
+
+</div>
+<div class="secedit"><form class="button" method="post" action="/wiki1/doku.php" onsubmit="return svchk()"><input name="do" value="edit" type="hidden"><input name="lines" value="36-" type="hidden"><input name="id" value="bulmasetup::admfact_bs" type="hidden"><input value="Editar" class="button" type="submit"></form></div>
+<!-- no cachefile used, but created -->
+
+
+<a name="realizar_una_copia_de_seguridad"></a><h1>Realizar una Copia de Seguridad</h1>
+<div class="level1">
+
+<p> Desde la administración de una empresa Contable o de Facturación
+tenemos el botón. Hacer copia de Seguridad que nos permite hacer un
+backup de la base de datos.
+</p>
+
+<p>Al pulsar sobre dicho botón nos aparecerá un dialogo preguntandonos
+por el archivo donde guardar el backup y al pulsar sobre guardar se
+generará el backup.
+</p>
+<a href="#"
+
+</div>
+<div class="secedit"><form class="button" method="post" action="/wiki1/doku.php" onsubmit="return svchk()"><input name="do" value="edit" type="hidden"><input name="lines" value="36-" type="hidden"><input name="id" value="bulmasetup::backup_bs" type="hidden"><input value="Editar" class="button" type="submit"></form></div>
+<!-- no cachefile used, but created -->
+
+
+<a name="restaurar_una_copia_de_seguridad"></a><h1>Restaurar una Copia de Seguridad</h1>
+<div class="level1">
+
+<p>
+ BulmaGés restaura las copias de seguridad en empresas nuevas.
+</p>
+
+<p>
+Al pulsar sobre el botón Restaurar una Copia de Seguridad nos aparecerá esta pantalla:
+</p>
+
+<p>
+ <a href="#"></a>
+</p>
+
+<p>
+Debemos indicar el nombre de la base de datos con que restauraremos y el archivo del backup a restaurar.
+</p>
+
+<p>
+Una vez terminado ya podemos utilizar la empresa restaurada.
+</p>
+
+<p>
+PD: Si desea restaurar el mismo nombre de empresa borre la base de datos original. 
+</p>
+<a href="#"
+
+</div>
+<!-- ============================== FOOTER ============================= -->
+	<!-- div id="footer">
+		www.iglues.org
+	</div -->
+	<img src="bulmasetup_files/indexer.gif" alt="" height="1" width="1">	<br>
+
+</body></html>

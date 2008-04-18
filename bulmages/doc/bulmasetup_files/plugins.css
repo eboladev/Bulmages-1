@@ -1,0 +1,21 @@
+/* ============================ PLUGINS MANAGER ============================= */
+#plugin_manager h3 {
+	background: none;
+}
+#plugin_manager .plugins, #plugin_manager .pm_info {
+	float: none;
+}
+#plugin_manager .plugins {
+	margin-bottom: 1em;
+}
+
+
+
+div.secedit {
+    display: none;
+}
+
+div.toc {
+    display: none;
+}
+
