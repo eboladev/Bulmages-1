@@ -2,6 +2,8 @@
 # Script to create a debian repos
 # Leopold Palomo <leo@alaxarxa.net>
 # v0.1 20080407
+# run ../debian-packaging/makedebrepos-unstable ./ 
+# inside the debian directory
 # -- dists
 #     |-- unstable
 #     |   `-- main
