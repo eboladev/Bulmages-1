@@ -1,0 +1,31 @@
+<ui version="4.0" >
+ <class>correctorbase</class>
+ <widget class="QWidget" name="correctorbase" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>263</width>
+    <height>342</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Resumen de Cuenta</string>
+  </property>
+  <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>0</number>
+   </property>
+   <property name="spacing" >
+    <number>5</number>
+   </property>
+   <item>
+    <widget class="QTextBrowser" name="mui_browser" />
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../../../bulmages.qrc" />
+ </resources>
+ <connections/>
+</ui>
