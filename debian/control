@@ -3,7 +3,7 @@ Section: kde
 Priority: optional
 Maintainer: René Mérou <ochominutosdearco@gmail.com>
 Uploaders: Tomeu Borràs Riera <tborras@conetxcia.com>, Miguel Gea Milvaques <xerakko@debian.org>, Leopold Palomo Avellaneda <leo@alaxarxa.net>
-Build-Depends: debhelper (>= 5.0.37.2), qt4-dev-tools(>= 4.1.4), libqt4-qt3support(>= 4.1.4), libqt4-dev, python,  python-support (>= 0.3), libpq-dev, quilt, cmake (>=2.4.8)
+Build-Depends: debhelper (>= 5.0.37.2), qt4-dev-tools(>= 4.3.1), libqt4-qt3support(>= 4.3.1), libqt4-dev, python,  python-support (>= 0.3), libpq-dev, quilt, cmake (>=2.4.8)
 Standards-Version: 3.7.3
 Homepage: http://www.iglues.org
 XS-Vcs-Svn: svn://svn.berlios.de/bulmages/trunk/debian
@@ -36,15 +36,6 @@ Architecture: all
 Depends: ${shlibs:Depends}, kpdf, python
 Description: Bulmages invoicing and accounting, config and common stuff
  The config file bulmages.conf for all the bulmages programs.
-
-Package: bulmages-doc
-Section: doc
-Architecture: all
-Depends: ${shlibs:Depends}
-Description: Bulmages invoicing and accounting documentation files
- Documentation files for bulmages invoicing and accounting programs.
- .
- This documentation is made in an open community, you are welcome to join us.
 
 Package: bulmacont
 Architecture: any

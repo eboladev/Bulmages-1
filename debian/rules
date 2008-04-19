@@ -89,10 +89,10 @@ binary-arch: build install
 #/usr/share/$package or /usr/lib/$package) you should pass the directory
 #to dh_pysupport and dh_python:
 	dh_pysupport 	-pbulmages-common /usr/share/bulmages/bgtrml2pdf
-	dh_python 	-pbulmages-common /usr/share/bulmages/bgtrml2pdf
+#	dh_python 	-pbulmages-common /usr/share/bulmages/bgtrml2pdf
 
 	dh_pysupport 	-pbulmages-admin /usr/share/bulmages/bulmasetup
-	dh_python 	-pbulmages-admin /usr/share/bulmages/bulmasetup
+#	dh_python 	-pbulmages-admin /usr/share/bulmages/bulmasetup
 
 
 	dh_installdebconf	
@@ -114,6 +114,16 @@ binary-arch: build install
 	dh_installman  	-pbulmages-common debian/tmp/usr/share/man/bulmages.conf.1
 	dh_installman 	-pbulmages-common debian/tmp/usr/share/man/bgtrml2pdf.1
 	dh_installman  	-pbulmages-admin debian/tmp/usr/share/man/bulmasetup.1
+
+	dh_installdocs  -pbulmacont debian/tmp/usr/share/bulmages/doc/bulmacont_files
+	dh_installdocs  -pbulmacont debian/tmp/usr/share/bulmages/doc/bulmacont.html
+
+	dh_installdocs  -pbulmafact debian/tmp/usr/share/bulmages/doc/bulmafact_files
+	dh_installdocs  -pbulmafact debian/tmp/usr/share/bulmages/doc/bulmafact.html
+
+	dh_installdocs  -pbulmages-admin debian/tmp/usr/share/bulmages/doc/bulmasetup_files
+	dh_installdocs  -pbulmages-admin debian/tmp/usr/share/bulmages/doc/bulmasetup.html
+
 
 	dh_installman
 	dh_link

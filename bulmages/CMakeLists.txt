@@ -102,6 +102,8 @@ endif(APPLE)
 message(STATUS "Working on installbulmages")
 add_subdirectory(installbulmages)
 
+message(STATUS "Working on documentation")
+add_subdirectory(doc)
 
 ## We include cpack for others platforms differents than unix
 SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "The BulmaGes Suite")

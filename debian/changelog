@@ -1,3 +1,17 @@
+bulmages (0.11.1~rc0-2) unstable; urgency=low
+
+  [Miguel Gea Milvaques]
+  * Deleted -DCMAKE_BUILD_TYPE=Release to the rules. It provoques 
+  problems when compile in some platforms and version of gcc.
+
+  [Leopold Palomo Avellaneda]
+  * Changed dependecies of Qt>=4.1.4 to Qt >=4.3.1. The package needs it.
+  * Erase the bulmages-doc package. Not needed by now. The documentation of
+  each package goes to the respective package.
+  * Deleted dh_python because dh_pysupport does the job.
+  
+ -- Leopold Palomo Avellaneda <leo@alaxarxa.net>  Sun, 20 Apr 2008 00:55:35 +0200
+
 bulmages (0.11.1~rc0-1) unstable; urgency=low
 
   [Leopold Palomo Avellaneda]

@@ -47,7 +47,17 @@ set_target_properties( ${plugin} PROPERTIES
   SOVERSION "${BULMAGES_VERSION_MAJOR}.${BULMAGES_VERSION_MINOR}"
   VERSION "${BULMAGES_VERSION}")
 
-target_link_libraries(${plugin} bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
-install_targets(/lib/bulmacont/plugins ${plugin})
-add_dependencies(${plugin} bulmafact bulmalib bulmacont)
+target_link_libraries(${plugin} libbulmacont bulmalib ${QT_LIBRARIES}
+${PGSQL_LIBRARIES} )
 
+#think to put here which modules must be compiled "before" this
+add_dependencies(${plugin} bulmacont bulmafact bulmalib)
+
+install_targets(/lib/bulmacont/plugins ${plugin})
+
+
+set(plugin_STR ${plugin_SRC} ${plugin_MOC_SRCS}
+   ${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})
+
+GETTEXT_CREATE_TEMPLATE(${plugin} ${CMAKE_CURRENT_SOURCE_DIR} plugin_STR)
+                                                                                          
