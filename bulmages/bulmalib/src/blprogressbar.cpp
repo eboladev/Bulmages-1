@@ -25,14 +25,21 @@
 ///
 /**
 **/
-BLProgressBar::BLProgressBar (  ) : QProgressBar()
+BLProgressBar::BLProgressBar (  ) : QWidget(0,0)
 {
     _depura ( "BLProgressBar::BLProgressBar", 0 );
+    setupUi(this);
     setWindowFlags(Qt::FramelessWindowHint);
     QDesktopWidget *pantalla = new QDesktopWidget();
     setGeometry ( ( pantalla->screenGeometry().width() / 2 ) - 150, ( pantalla->screenGeometry().height() / 2 ) -25, 300, 50 );
+    mui_label->setText("");
     delete pantalla;
     _depura ( "END BLProgressBar::BLProgressBar", 0 );
+}
+
+
+void BLProgressBar::setText(const QString &text) {
+    mui_label->setText(text);
 }
 
 
@@ -44,3 +51,18 @@ BLProgressBar::~BLProgressBar()
     _depura ( "BLProgressBar::~BLProgressBar", 0 );
     _depura ( "END BLProgressBar::~BLProgressBar", 0 );
 }
+
+void BLProgressBar::setValue(int value) { 
+mui_progressBar->setValue(value);
+}
+
+
+int BLProgressBar::value() {
+return mui_progressBar->value();
+}
+
+
+void BLProgressBar::setRange(int range,  int range1) {
+mui_progressBar->setRange(range, range1);
+}
+

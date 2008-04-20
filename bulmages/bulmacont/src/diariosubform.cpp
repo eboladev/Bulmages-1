@@ -67,6 +67,7 @@ DiarioSubForm::DiarioSubForm ( QWidget *parent, const char * ) : SubForm2Bc ( pa
     setinsercion ( FALSE );
     setOrdenEnabled ( FALSE );
     setOrdenPorQuery ( TRUE );
+    setDelete ( FALSE );
     /// Preparamos el sistema de menus contextuales
     connect ( this, SIGNAL ( pintaMenu ( QMenu * ) ), this, SLOT ( s_pintaMenu ( QMenu * ) ) );
     connect ( this, SIGNAL ( trataMenu ( QAction * ) ), this, SLOT ( s_trataMenu ( QAction * ) ) );

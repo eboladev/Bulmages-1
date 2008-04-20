@@ -14,7 +14,7 @@
    <string>Balance jerarquico de Cuentas</string>
   </property>
   <property name="windowIcon" >
-   <iconset/>
+   <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_arbolBalance.xpm</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="spacing" >

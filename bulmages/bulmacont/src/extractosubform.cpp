@@ -72,7 +72,7 @@ ExtractoSubForm::ExtractoSubForm ( QWidget *parent, const char * ) : SubForm2Bc 
     setinsercion ( FALSE );
     setOrdenEnabled ( TRUE );
     setOrdenPorQuery ( FALSE );
-
+    setDelete ( FALSE );
     connect ( this, SIGNAL ( pintaMenu ( QMenu * ) ), this, SLOT ( s_pintaMenu ( QMenu * ) ) );
     connect ( this, SIGNAL ( trataMenu ( QAction * ) ), this, SLOT ( s_trataMenu ( QAction * ) ) );
 

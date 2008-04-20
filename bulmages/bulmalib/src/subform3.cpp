@@ -1063,9 +1063,11 @@ void SubForm3::cargar ( cursor2 *cur )
 
     /// Preparamos la barra de progreso
     BLProgressBar barra;
+    barra.setText(tr("Cargando SubFormulario"));
     if(cur->numregistros() > 100) {
 	barra.setValue(0);
 	barra.show();
+        barra.setText(tr("Cargando SubFormulario"));
     } // end if
 
     /// Desactivamos el sorting debido a un error en las Qt4.

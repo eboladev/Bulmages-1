@@ -1,0 +1,37 @@
+<ui version="4.0" >
+ <class>BLProgressBarBase</class>
+ <widget class="QWidget" name="BLProgressBarBase" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>524</width>
+    <height>66</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Trabajando</string>
+  </property>
+  <layout class="QVBoxLayout" >
+   <item>
+    <widget class="QLabel" name="mui_label" >
+     <property name="text" >
+      <string>TextLabel</string>
+     </property>
+     <property name="textFormat" >
+      <enum>Qt::PlainText</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QProgressBar" name="mui_progressBar" >
+     <property name="value" >
+      <number>24</number>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

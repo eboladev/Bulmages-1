@@ -135,7 +135,8 @@ set(bulmalib_UIS logpassbase.ui
       subform3base.ui 
       porcentajecargabase.ui 
       fichacfgbase.ui 
-      paisbase.ui)
+      paisbase.ui
+      blprogressbarbase.ui)
 
 include_directories(
       ${QT_INCLUDE_DIR}

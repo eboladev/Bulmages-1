@@ -498,6 +498,7 @@ void extractoview1::on_mui_casacion_clicked()
 		cursor2 *curshaber = empresaBase() ->cargacursor ( query );
 		BLProgressBar barra;
 		barra.setRange ( 0, curshaber->numregistros() );
+		barra.setText(tr("Cargando Extracto de Cuentas"));
 		barra.show();
 		while ( !curshaber->eof() )
 		{

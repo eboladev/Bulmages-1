@@ -133,6 +133,7 @@ void InformeQToolButton::click()
 
     /// Mostramos la barra de progreso
     BLProgressBar barra;
+    barra.setText(tr("Generando Informe"));
     barra.setRange(0, cur->numregistros());
     barra.show();
 
@@ -488,6 +489,7 @@ QString InformeArtQToolButton::generarArticulos()
 
     /// Generamos la barra de progreso.
     BLProgressBar barra;
+    barra.setText(tr("Generando Informe"));
     barra.setRange(0, cur->numregistros());
     barra.show();
 

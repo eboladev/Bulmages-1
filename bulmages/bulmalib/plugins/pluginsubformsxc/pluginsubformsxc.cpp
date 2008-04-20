@@ -155,6 +155,7 @@ void myplugsubformsxc::sacaSXC()
     /// Tratamos el progreso de la operacion.
     BLProgressBar barra;
     barra.setRange(0, subf->mui_list->rowCount()-1);
+    barra.setText(tr("Exportando datos a SXC"));
     barra.show();
 
     /// Sacamos el contenido

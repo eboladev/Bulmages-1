@@ -370,6 +370,7 @@ void BalanceTreeView::presentar()
 
     /// Barra de progreso pq el tema tarda.
     BLProgressBar barra;
+    barra.setText(tr("Generando Balance"));
     barra.show();
     barra.setValue(0);
 
