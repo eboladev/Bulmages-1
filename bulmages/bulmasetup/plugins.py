@@ -72,5 +72,16 @@ class PluginsBulmaSetup:
 
 	]
 	
+	self.pluginsbulmatpv = [
+	['Abreviaciones','libpluginabrevs.so','Incluye metodos rapidos para pantallas tactiles.','',''],
+	['Articulos Graficos','libpluginartgraficos.so','Permite la introduccion de articulos con rejilla','',''],
+	['Teclado numerico','libplugintecladonumerico.so','Permite el control de un teclado numerico en pantallas tactiles','',''],
+	['Totales','libplugintotal.so','Muestra los totales de un ticket','',''],
+	['Administracion','libpluginadmin.so','Funcionalidades de administracion X y Z','',''],
+	['Cobro','libplugincobrar.so','Introduce la funcionalidad del cobro de tickets','',''],
+	['Ticket Basico','libpluginticketbasico.so','Permite el manejo basico de un Ticket','','']
+	]
+	
+
 
 	

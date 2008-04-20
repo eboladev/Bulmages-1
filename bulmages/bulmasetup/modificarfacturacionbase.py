@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'modificarfacturacionbase.ui'
 #
-# Created: Mon Mar 10 20:00:19 2008
+# Created: Sun Apr 20 18:57:51 2008
 #      by: PyQt4 UI code generator 4.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -23,6 +23,7 @@ class Ui_ModificarFacturacionBase(object):
         ModificarFacturacionBase.setWindowIcon(QtGui.QIcon("../../../../.designer/images/png/bulmafact.png"))
 
         self.gridlayout = QtGui.QGridLayout(ModificarFacturacionBase)
+        self.gridlayout.setMargin(5)
         self.gridlayout.setObjectName("gridlayout")
 
         self.label = QtGui.QLabel(ModificarFacturacionBase)
@@ -51,14 +52,44 @@ class Ui_ModificarFacturacionBase(object):
         self.mui_databaserevision.setObjectName("mui_databaserevision")
         self.gridlayout.addWidget(self.mui_databaserevision,1,2,1,1)
 
+        self.mui_soporteTPV = QtGui.QCheckBox(ModificarFacturacionBase)
+        self.mui_soporteTPV.setChecked(False)
+        self.mui_soporteTPV.setObjectName("mui_soporteTPV")
+        self.gridlayout.addWidget(self.mui_soporteTPV,1,3,1,3)
+
         self.label_4 = QtGui.QLabel(ModificarFacturacionBase)
         self.label_4.setObjectName("label_4")
         self.gridlayout.addWidget(self.label_4,2,0,1,3)
 
-        self.mui_plugins = QtGui.QTableWidget(ModificarFacturacionBase)
+        self.tabWidget = QtGui.QTabWidget(ModificarFacturacionBase)
+        self.tabWidget.setObjectName("tabWidget")
+
+        self.tab = QtGui.QWidget()
+        self.tab.setObjectName("tab")
+
+        self.vboxlayout = QtGui.QVBoxLayout(self.tab)
+        self.vboxlayout.setMargin(0)
+        self.vboxlayout.setObjectName("vboxlayout")
+
+        self.mui_plugins = QtGui.QTableWidget(self.tab)
         self.mui_plugins.setAlternatingRowColors(True)
         self.mui_plugins.setObjectName("mui_plugins")
-        self.gridlayout.addWidget(self.mui_plugins,3,0,1,6)
+        self.vboxlayout.addWidget(self.mui_plugins)
+        self.tabWidget.addTab(self.tab,"")
+
+        self.tab_2 = QtGui.QWidget()
+        self.tab_2.setObjectName("tab_2")
+
+        self.vboxlayout1 = QtGui.QVBoxLayout(self.tab_2)
+        self.vboxlayout1.setMargin(0)
+        self.vboxlayout1.setObjectName("vboxlayout1")
+
+        self.mui_plugins1 = QtGui.QTableWidget(self.tab_2)
+        self.mui_plugins1.setAlternatingRowColors(True)
+        self.mui_plugins1.setObjectName("mui_plugins1")
+        self.vboxlayout1.addWidget(self.mui_plugins1)
+        self.tabWidget.addTab(self.tab_2,"")
+        self.gridlayout.addWidget(self.tabWidget,3,0,1,6)
 
         self.mui_checkbox = QtGui.QCheckBox(ModificarFacturacionBase)
         self.mui_checkbox.setChecked(True)
@@ -88,6 +119,7 @@ class Ui_ModificarFacturacionBase(object):
         self.label_2.setBuddy(self.mui_nomdb)
 
         self.retranslateUi(ModificarFacturacionBase)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QObject.connect(self.mui_cancelar,QtCore.SIGNAL("released()"),ModificarFacturacionBase.reject)
         QtCore.QObject.connect(self.mui_checkbox,QtCore.SIGNAL("toggled(bool)"),self.mui_textBrowser.setVisible)
         QtCore.QMetaObject.connectSlotsByName(ModificarFacturacionBase)
@@ -97,6 +129,7 @@ class Ui_ModificarFacturacionBase(object):
         self.label.setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Nombre Empresa", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Nombre Base de Datos", None, QtGui.QApplication.UnicodeUTF8))
         self.label_3.setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Version de la Base de Datos", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_soporteTPV.setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Soporte para TPV", None, QtGui.QApplication.UnicodeUTF8))
         self.label_4.setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Plugins Instalados", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_plugins.clear()
         self.mui_plugins.setColumnCount(3)
@@ -113,6 +146,23 @@ class Ui_ModificarFacturacionBase(object):
         headerItem2 = QtGui.QTableWidgetItem()
         headerItem2.setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Version Instalada", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_plugins.setHorizontalHeaderItem(2,headerItem2)
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QtGui.QApplication.translate("ModificarFacturacionBase", "BulmaFact", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_plugins1.clear()
+        self.mui_plugins1.setColumnCount(3)
+        self.mui_plugins1.setRowCount(0)
+
+        headerItem3 = QtGui.QTableWidgetItem()
+        headerItem3.setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Plugin", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_plugins1.setHorizontalHeaderItem(0,headerItem3)
+
+        headerItem4 = QtGui.QTableWidgetItem()
+        headerItem4.setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Descripcion", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_plugins1.setHorizontalHeaderItem(1,headerItem4)
+
+        headerItem5 = QtGui.QTableWidgetItem()
+        headerItem5.setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Version Instalada", None, QtGui.QApplication.UnicodeUTF8))
+        self.mui_plugins1.setHorizontalHeaderItem(2,headerItem5)
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QtGui.QApplication.translate("ModificarFacturacionBase", "BulmaTPV", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_checkbox.setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Ver Consola", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_actualizardatabase.setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Actualizar Base de Datos", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_hacerbackup.setText(QtGui.QApplication.translate("ModificarFacturacionBase", "Hacer copia de Seguridad", None, QtGui.QApplication.UnicodeUTF8))

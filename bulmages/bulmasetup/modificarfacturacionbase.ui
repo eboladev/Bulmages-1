@@ -28,6 +28,18 @@
    <iconset>../../../../.designer/images/png/bulmafact.png</iconset>
   </property>
   <layout class="QGridLayout" >
+   <property name="leftMargin" >
+    <number>5</number>
+   </property>
+   <property name="topMargin" >
+    <number>5</number>
+   </property>
+   <property name="rightMargin" >
+    <number>5</number>
+   </property>
+   <property name="bottomMargin" >
+    <number>5</number>
+   </property>
    <item row="0" column="0" >
     <widget class="QLabel" name="label" >
      <property name="text" >
@@ -72,6 +84,16 @@
      </property>
     </widget>
    </item>
+   <item row="1" column="3" colspan="3" >
+    <widget class="QCheckBox" name="mui_soporteTPV" >
+     <property name="text" >
+      <string>Soporte para TPV</string>
+     </property>
+     <property name="checked" >
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
    <item row="2" column="0" colspan="3" >
     <widget class="QLabel" name="label_4" >
      <property name="text" >
@@ -80,25 +102,92 @@
     </widget>
    </item>
    <item row="3" column="0" colspan="6" >
-    <widget class="QTableWidget" name="mui_plugins" >
-     <property name="alternatingRowColors" >
-      <bool>true</bool>
+    <widget class="QTabWidget" name="tabWidget" >
+     <property name="currentIndex" >
+      <number>0</number>
      </property>
-     <column>
-      <property name="text" >
-       <string>Plugin</string>
-      </property>
-     </column>
-     <column>
-      <property name="text" >
-       <string>Descripcion</string>
-      </property>
-     </column>
-     <column>
-      <property name="text" >
-       <string>Version Instalada</string>
-      </property>
-     </column>
+     <widget class="QWidget" name="tab" >
+      <attribute name="title" >
+       <string>BulmaFact</string>
+      </attribute>
+      <layout class="QVBoxLayout" >
+       <property name="leftMargin" >
+        <number>0</number>
+       </property>
+       <property name="topMargin" >
+        <number>0</number>
+       </property>
+       <property name="rightMargin" >
+        <number>0</number>
+       </property>
+       <property name="bottomMargin" >
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QTableWidget" name="mui_plugins" >
+         <property name="alternatingRowColors" >
+          <bool>true</bool>
+         </property>
+         <column>
+          <property name="text" >
+           <string>Plugin</string>
+          </property>
+         </column>
+         <column>
+          <property name="text" >
+           <string>Descripcion</string>
+          </property>
+         </column>
+         <column>
+          <property name="text" >
+           <string>Version Instalada</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_2" >
+      <attribute name="title" >
+       <string>BulmaTPV</string>
+      </attribute>
+      <layout class="QVBoxLayout" >
+       <property name="leftMargin" >
+        <number>0</number>
+       </property>
+       <property name="topMargin" >
+        <number>0</number>
+       </property>
+       <property name="rightMargin" >
+        <number>0</number>
+       </property>
+       <property name="bottomMargin" >
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QTableWidget" name="mui_plugins1" >
+         <property name="alternatingRowColors" >
+          <bool>true</bool>
+         </property>
+         <column>
+          <property name="text" >
+           <string>Plugin</string>
+          </property>
+         </column>
+         <column>
+          <property name="text" >
+           <string>Descripcion</string>
+          </property>
+         </column>
+         <column>
+          <property name="text" >
+           <string>Version Instalada</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </item>
    <item row="4" column="0" colspan="3" >

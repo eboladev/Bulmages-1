@@ -37,9 +37,13 @@ BLProgressBar::BLProgressBar (  ) : QWidget(0,0)
     _depura ( "END BLProgressBar::BLProgressBar", 0 );
 }
 
-
+///
+/**
+**/
 void BLProgressBar::setText(const QString &text) {
+    _depura ( "BLProgressBar::setText", 0 );
     mui_label->setText(text);
+    _depura ( "END BLProgressBar::setText", 0 );
 }
 
 
@@ -52,17 +56,31 @@ BLProgressBar::~BLProgressBar()
     _depura ( "END BLProgressBar::~BLProgressBar", 0 );
 }
 
+///
+/**
+**/
 void BLProgressBar::setValue(int value) { 
+    _depura ( "BLProgressBar::setValue", 0 );
 mui_progressBar->setValue(value);
+    _depura ( "END BLProgressBar::setValue", 0 );
+
 }
 
-
+///
+/**
+**/
 int BLProgressBar::value() {
+    _depura ( "BLProgressBar::value", 0 );
+    _depura ( "END BLProgressBar::value", 0 );
 return mui_progressBar->value();
 }
 
-
+///
+/**
+**/
 void BLProgressBar::setRange(int range,  int range1) {
+    _depura ( "BLProgressBar::setRange", 0 );
 mui_progressBar->setRange(range, range1);
+    _depura ( "END BLProgressBar::setRange", 0 );
 }
 

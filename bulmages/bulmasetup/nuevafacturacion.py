@@ -55,6 +55,18 @@ class NuevaFacturacion(QtGui.QDialog, Ui_NuevaFacturacionBase, PluginsBulmaSetup
 		self.mui_plugins.setRowHeight(self.i, 50)
 		self.i = self.i + 1
 	
+	self.mui_plugins1.setRowCount(len(self.pluginsbulmatpv))
+	self.i = 0
+	while (self.i < len(self.pluginsbulmatpv)):
+		self.check = QTableWidgetItem(QtGui.QApplication.translate("MainWindow", self.pluginsbulmatpv[self.i][0], None, QtGui.QApplication.UnicodeUTF8))
+		self.check.setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
+		self.check.setCheckState(Qt.Unchecked)
+		self.mui_plugins1.setItem(self.i, 0, self.check)
+		self.mui_plugins1.setItem(self.i , 1 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmatpv[self.i][2], None, QtGui.QApplication.UnicodeUTF8)))
+		self.mui_plugins1.setRowHeight(self.i, 50)
+		self.i = self.i + 1
+	
+	
 	
     def actualizarPlugins(self):
 	self.writecommand('ACTUALIZANDO PLUGINS')
@@ -70,6 +82,21 @@ class NuevaFacturacion(QtGui.QDialog, Ui_NuevaFacturacionBase, PluginsBulmaSetup
 			self.writecommand(self.process.readAllStandardOutput())
 			self.hayplugins = 1
 		self.i = self.i +1
+
+	if (self.mui_soporteTPV.isChecked()):
+		self.i = 0
+		while (self.i < self.mui_plugins1.rowCount()):
+			self.writecommand('Tratando ' + self.pluginsbulmatpv[self.i][0])
+			if (self.mui_plugins1.item(self.i, 0).checkState() == Qt.Checked):
+				self.writecommand('Ha que actualizar ' + self.pluginsbulmatpv[self.i][0])
+				self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbparches + self.pluginsbulmatpv[self.i][4] +' '+ self.nomdb +'\"'
+				self.writecommand(self.command)
+				self.process.start(self.command)
+				self.process.waitForFinished(-1)
+				self.writecommand(self.process.readAllStandardOutput())
+				self.haypluginstpv = 1
+			self.i = self.i +1
+
 
     def writeConfig(self):
 	self.writecommand('ESCRIBIENDO CONFIGURACION')
@@ -92,6 +119,25 @@ class NuevaFacturacion(QtGui.QDialog, Ui_NuevaFacturacionBase, PluginsBulmaSetup
 		self.i = self.i +1
 	self.out << "\n"
 	self.file.close()
+
+	self.file = QFile( plugins.configfiles + "bulmatpv_" + self.nomdb + ".conf");
+	if not(self.file.open(QIODevice.WriteOnly | QIODevice.Text)):
+		return;
+	self.out = QTextStream(self.file)
+	self.terminador = ""
+	self.out << "CONF_PLUGINS_BULMATPV   "
+	
+	if (self.mui_soporteTPV.isChecked()):
+		self.i = 0
+		while (self.i < self.mui_plugins1.rowCount()):
+			self.writecommand('Tratando ' + self.pluginsbulmatpv[self.i][0])
+			if (self.mui_plugins1.item(self.i, 0).checkState() == Qt.Checked):
+				self.writecommand('Ha que actualizar ' + self.pluginsbulmatpv[self.i][0])
+				self.out << self.terminador << self.pluginsbulmatpv[self.i][1]
+				self.terminador = "; \\\n";
+			self.i = self.i +1
+		self.out << "\n"
+		self.file.close()
 
 
     def on_mui_aceptar_released(self):
@@ -117,6 +163,13 @@ class NuevaFacturacion(QtGui.QDialog, Ui_NuevaFacturacionBase, PluginsBulmaSetup
 	self.writecommand(self.command)
 	self.process.start(self.command)
 	self.process.waitForFinished(-1)
+
+	# Aplicamos el parche de bulmatpv
+	if (self.mui_soporteTPV.isChecked()):
+		self.command = 'su postgres -c "psql ' + self.nomdb + ' < '+ plugins.pathdbbulmatpv+'bulmatpv_schema.sql"'
+		self.writecommand(self.command)
+		self.process.start(self.command)
+		self.process.waitForFinished(-1)
 
 	# Cambiamos el nombre de la empresa
 	self.nomempresa = self.mui_nomempresa.text()

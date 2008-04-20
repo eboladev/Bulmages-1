@@ -102,7 +102,6 @@ class ModificarFacturacion(QtGui.QDialog, Ui_ModificarFacturacionBase, PluginsBu
 		if (self.valores.count() >= 2):
 			self.mui_plugins.setItem(self.i-1 , 1 , QTableWidgetItem(self.valores[1].replace('\n', '')))
 			self.mui_plugins.setItem(self.i-1 , 0 , QTableWidgetItem(self.valores[0].replace('\n', '')))
-
 		self.i = self.i + 1
 	
     def buscaPluginInstalado(self, plugin, libreria):
@@ -114,6 +113,15 @@ class ModificarFacturacion(QtGui.QDialog, Ui_ModificarFacturacionBase, PluginsBu
 	self.process.start(self.command)
 	self.process.waitForFinished(-1)
 	self.version = self.process.readAllStandardOutput()
+	
+	if (self.version == ''):
+		self.command = 'grep '+libreria+' '+ plugins.configfiles + 'bulmatpv_' + self.database + '.conf'
+		self.writecommand(self.command)
+		self.process.start(self.command)
+		self.process.waitForFinished(-1)
+		self.version = self.process.readAllStandardOutput()		
+			
+		
 	if (self.version != ''):
 		self.version = '0.11'
 	return QString(self.version)
@@ -137,6 +145,21 @@ class ModificarFacturacion(QtGui.QDialog, Ui_ModificarFacturacionBase, PluginsBu
 		self.mui_plugins.setRowHeight(self.i, 50)
 		self.i = self.i + 1
 	
+	self.mui_plugins1.setRowCount(len(self.pluginsbulmatpv))
+	self.i = 0
+	while (self.i < len(self.pluginsbulmatpv)):
+		self.versioninst = self.buscaPluginInstalado(self.pluginsbulmatpv[self.i][3], self.pluginsbulmatpv[self.i][1])
+		self.check = QTableWidgetItem(QtGui.QApplication.translate("MainWindow", self.pluginsbulmatpv[self.i][0], None, QtGui.QApplication.UnicodeUTF8))
+		self.check.setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
+		self.check.setCheckState(Qt.Unchecked)
+		if (self.versioninst != ''):
+			self.check.setCheckState(Qt.Checked)
+		self.mui_plugins1.setItem(self.i, 0, self.check)
+		self.mui_plugins1.setItem(self.i, 2, QTableWidgetItem(self.versioninst))
+		self.mui_plugins1.setItem(self.i , 1 , QTableWidgetItem(QtGui.QApplication.translate("MainWindow",self.pluginsbulmatpv[self.i][2], None, QtGui.QApplication.UnicodeUTF8)))
+		self.mui_plugins1.setRowHeight(self.i, 50)
+		self.i = self.i + 1
+	
 	
     def actualizarPlugins(self):
 	self.writecommand('ACTUALIZANDO PLUGINS')
@@ -152,8 +175,30 @@ class ModificarFacturacion(QtGui.QDialog, Ui_ModificarFacturacionBase, PluginsBu
 			self.writecommand(self.process.readAllStandardOutput())
 		self.i = self.i +1
 
+	if (self.mui_soporteTPV.isChecked()):
+		self.i = 0
+		while (self.i < self.mui_plugins1.rowCount()):
+			self.writecommand('Tratando ' + self.pluginsbulmatpv[self.i][0])
+			if (self.mui_plugins1.item(self.i, 0).checkState() == Qt.Checked):
+				self.writecommand('Ha que actualizar ' + self.pluginsbulmatpv[self.i][0])
+				self.command = 'su postgres -c \"psql -t -f  '+ plugins.pathdbparches + self.pluginsbulmatpv[self.i][4] + '\"'
+				self.writecommand(self.command)
+				self.process.start(self.command)
+				self.process.waitForFinished(-1)
+				self.writecommand(self.process.readAllStandardOutput())
+			self.i = self.i +1
+
 
     def on_mui_aceptar_released(self):
+	    
+	    
+	# Aplicamos el parche de bulmatpv
+	if (self.mui_soporteTPV.isChecked()):
+		self.command = 'su postgres -c "psql ' + self.nomdb + ' < '+ plugins.pathdbbulmatpv+'bulmatpv_schema.sql"'
+		self.writecommand(self.command)
+		self.process.start(self.command)
+		self.process.waitForFinished(-1)
+
 	self.writecommand('ESCRIBIENDO CONFIGURACION')
 	self.writecommand("Escribiendo configuracion en "+ plugins.configfiles)
 	self.file = QFile( plugins.configfiles + "bulmafact_" + self.database + ".conf");
@@ -174,6 +219,27 @@ class ModificarFacturacion(QtGui.QDialog, Ui_ModificarFacturacionBase, PluginsBu
 		self.i = self.i +1
 	self.out << "\n"
 	self.file.close()
+
+	if (self.mui_soporteTPV.isChecked()):
+		self.file = QFile( plugins.configfiles + "bulmatpv_" + self.database + ".conf");
+		if not(self.file.open(QIODevice.WriteOnly | QIODevice.Text)):
+			return;
+		self.out = QTextStream(self.file)
+		self.terminador = ""
+		self.out << "CONF_PLUGINS_BULMATPV   "
+		
+		
+		self.i = 0
+		while (self.i < self.mui_plugins1.rowCount()):
+			self.writecommand('Tratando ' + self.pluginsbulmatpv[self.i][0])
+			if (self.mui_plugins1.item(self.i, 0).checkState() == Qt.Checked):
+				self.writecommand('Ha que actualizar ' + self.pluginsbulmatpv[self.i][0])
+				self.out << self.terminador << self.pluginsbulmatpv[self.i][1]
+				self.terminador = "; \\\n";
+			self.i = self.i +1
+		self.out << "\n"
+		self.file.close()
+
 
 def main(args):
     app=QtGui.QApplication(args)
