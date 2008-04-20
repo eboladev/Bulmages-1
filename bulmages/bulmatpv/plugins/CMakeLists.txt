@@ -2,10 +2,10 @@ add_subdirectory(pluginticketbasico)
 add_subdirectory(plugintecladonumerico)
 add_subdirectory(plugintotal)
 add_subdirectory(pluginartgraficos)
-
+if(NOT APPLE)
 #pluginagrevs en desarrollo
 add_subdirectory(pluginabrevs)
-
+endif(NOT APPLE)
 add_subdirectory(pluginadmin)
 add_subdirectory(plugincobrar)
 
