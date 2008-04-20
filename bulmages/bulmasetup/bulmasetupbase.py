@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'bulmasetupbase.ui'
 #
-# Created: Sat Mar 22 00:56:29 2008
+# Created: Sun Apr 20 22:36:14 2008
 #      by: PyQt4 UI code generator 4.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -27,14 +27,14 @@ class Ui_MainWindow(object):
         self.label.setGeometry(QtCore.QRect(20,20,209,150))
         self.label.setMinimumSize(QtCore.QSize(209,150))
         self.label.setMaximumSize(QtCore.QSize(209,150))
-        self.label.setPixmap(QtGui.QPixmap("bulmasetup_iglues.jpg"))
+        self.label.setPixmap(QtGui.QPixmap(":/images/bulmasetup_iglues.jpg"))
         self.label.setObjectName("label")
 
         self.mui_crearusuario = QtGui.QPushButton(self.centralwidget)
         self.mui_crearusuario.setGeometry(QtCore.QRect(250,30,291,61))
         self.mui_crearusuario.setFocusPolicy(QtCore.Qt.NoFocus)
         self.mui_crearusuario.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.mui_crearusuario.setIcon(QtGui.QIcon("bulmasetup_usuario.xpm"))
+        self.mui_crearusuario.setIcon(QtGui.QIcon(":/images/bulmasetup_usuario.xpm"))
         self.mui_crearusuario.setIconSize(QtCore.QSize(48,48))
         self.mui_crearusuario.setObjectName("mui_crearusuario")
 
@@ -50,7 +50,7 @@ class Ui_MainWindow(object):
         self.mui_crearbulmafact.setGeometry(QtCore.QRect(250,170,291,61))
         self.mui_crearbulmafact.setFocusPolicy(QtCore.Qt.NoFocus)
         self.mui_crearbulmafact.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.mui_crearbulmafact.setIcon(QtGui.QIcon("bulmasetup_bulmafact.png"))
+        self.mui_crearbulmafact.setIcon(QtGui.QIcon(":/images/bulmasetup_bulmafact.png"))
         self.mui_crearbulmafact.setIconSize(QtCore.QSize(48,48))
         self.mui_crearbulmafact.setObjectName("mui_crearbulmafact")
 
@@ -107,3 +107,4 @@ class Ui_MainWindow(object):
         self.mui_adminempresas.setText(QtGui.QApplication.translate("MainWindow", "Administrar Empresas Existentes", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_restbackup.setText(QtGui.QApplication.translate("MainWindow", "Restaurar una Copia de Seguridad", None, QtGui.QApplication.UnicodeUTF8))
 
+import resources_rc

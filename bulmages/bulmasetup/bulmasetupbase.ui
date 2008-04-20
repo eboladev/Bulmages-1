@@ -44,7 +44,7 @@
      <string/>
     </property>
     <property name="pixmap" >
-     <pixmap>bulmasetup_iglues.jpg</pixmap>
+     <pixmap resource="resources.qrc" >:/images/bulmasetup_iglues.jpg</pixmap>
     </property>
    </widget>
    <widget class="QPushButton" name="mui_crearusuario" >
@@ -66,7 +66,7 @@
      <string>Nuevo Usuario de PostgreSQL</string>
     </property>
     <property name="icon" >
-     <iconset>bulmasetup_usuario.xpm</iconset>
+     <iconset resource="resources.qrc" >:/images/bulmasetup_usuario.xpm</iconset>
     </property>
     <property name="iconSize" >
      <size>
@@ -122,7 +122,7 @@
      <string>Nueva Empresa de Facturacion / TPV</string>
     </property>
     <property name="icon" >
-     <iconset>bulmasetup_bulmafact.png</iconset>
+     <iconset resource="resources.qrc" >:/images/bulmasetup_bulmafact.png</iconset>
     </property>
     <property name="iconSize" >
      <size>
@@ -240,7 +240,9 @@ p, li { white-space: pre-wrap; }
    </widget>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc" />
+ </resources>
  <connections>
   <connection>
    <sender>mui_salir</sender>
