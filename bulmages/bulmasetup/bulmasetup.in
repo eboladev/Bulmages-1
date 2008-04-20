@@ -23,19 +23,19 @@ import plugins
 from plugins import PluginsBulmaSetup
 
 #Variables para la version de produccion
-#plugins.pathdbbulmafact = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/crear/bulmafact/'
-#plugins.pathdbbulmacont = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/crear/bulmacont/'
-#plugins.pathdbbulmatpv = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/crear/bulmatpv/'
-#plugins.pathdbparches = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/actualizar/'
-#plugins.configfiles = '@BULMAGES_CONFIG_DIR@/'
+plugins.pathdbbulmafact = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/crear/bulmafact/'
+plugins.pathdbbulmacont = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/crear/bulmacont/'
+plugins.pathdbbulmatpv = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/crear/bulmatpv/'
+plugins.pathdbparches = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/actualizar/'
+plugins.configfiles = '@BULMAGES_CONFIG_DIR@/'
 
 
 # Variables para la version de desarrollo
-plugins.pathdbbulmafact = '/usr/share/bulmages/dbmodels/crear/bulmafact/'
-plugins.pathdbbulmacont = '/usr/share/bulmages/dbmodels/crear/bulmacont/'
-plugins.pathdbbulmatpv = '/usr/share/bulmages/dbmodels/crear/bulmatpv/'
-plugins.pathdbparches = '/usr/share/bulmages/dbmodels/actualizar/'
-plugins.configfiles = '/etc/'
+#plugins.pathdbbulmafact = '/usr/share/bulmages/dbmodels/crear/bulmafact/'
+#plugins.pathdbbulmacont = '/usr/share/bulmages/dbmodels/crear/bulmacont/'
+#plugins.pathdbbulmatpv = '/usr/share/bulmages/dbmodels/crear/bulmatpv/'
+#plugins.pathdbparches = '/usr/share/bulmages/dbmodels/actualizar/'
+#plugins.configfiles = '/etc/'
 
 
 class HelloWindow(QtGui.QMainWindow, Ui_MainWindow, PluginsBulmaSetup):
