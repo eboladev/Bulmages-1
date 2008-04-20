@@ -94,7 +94,7 @@
      <string>Nueva Empresa de Contabilidad</string>
     </property>
     <property name="icon" >
-     <iconset>bulmasetup_bulmacont.png</iconset>
+     <iconset resource="resources.qrc" >:/images/bulmasetup_bulmacont.png</iconset>
     </property>
     <property name="iconSize" >
      <size>
@@ -166,7 +166,7 @@ p, li { white-space: pre-wrap; }
      <string>Salir</string>
     </property>
     <property name="icon" >
-     <iconset>bulmasetup_exit.png</iconset>
+     <iconset resource="resources.qrc" >:/images/bulmasetup_exit.png</iconset>
     </property>
    </widget>
    <widget class="Line" name="line" >
@@ -201,7 +201,7 @@ p, li { white-space: pre-wrap; }
      <string>Administrar Empresas Existentes</string>
     </property>
     <property name="icon" >
-     <iconset>bulmasetup_empresa.xpm</iconset>
+     <iconset resource="resources.qrc" >:/images/bulmasetup_empresa.xpm</iconset>
     </property>
     <property name="iconSize" >
      <size>
@@ -229,7 +229,7 @@ p, li { white-space: pre-wrap; }
      <string>Restaurar una Copia de Seguridad</string>
     </property>
     <property name="icon" >
-     <iconset>bulmasetup_cargarempresa.xpm</iconset>
+     <iconset resource="resources.qrc" >:/images/bulmasetup_cargarempresa.xpm</iconset>
     </property>
     <property name="iconSize" >
      <size>

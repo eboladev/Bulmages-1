@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'bulmasetupbase.ui'
 #
-# Created: Sun Apr 20 22:36:14 2008
+# Created: Sun Apr 20 22:48:04 2008
 #      by: PyQt4 UI code generator 4.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -42,7 +42,7 @@ class Ui_MainWindow(object):
         self.mui_crearbulmacont.setGeometry(QtCore.QRect(250,100,291,61))
         self.mui_crearbulmacont.setFocusPolicy(QtCore.Qt.NoFocus)
         self.mui_crearbulmacont.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.mui_crearbulmacont.setIcon(QtGui.QIcon("bulmasetup_bulmacont.png"))
+        self.mui_crearbulmacont.setIcon(QtGui.QIcon(":/images/bulmasetup_bulmacont.png"))
         self.mui_crearbulmacont.setIconSize(QtCore.QSize(48,48))
         self.mui_crearbulmacont.setObjectName("mui_crearbulmacont")
 
@@ -61,7 +61,7 @@ class Ui_MainWindow(object):
 
         self.mui_salir = QtGui.QPushButton(self.centralwidget)
         self.mui_salir.setGeometry(QtCore.QRect(460,420,75,24))
-        self.mui_salir.setIcon(QtGui.QIcon("bulmasetup_exit.png"))
+        self.mui_salir.setIcon(QtGui.QIcon(":/images/bulmasetup_exit.png"))
         self.mui_salir.setObjectName("mui_salir")
 
         self.line = QtGui.QFrame(self.centralwidget)
@@ -74,7 +74,7 @@ class Ui_MainWindow(object):
         self.mui_adminempresas.setGeometry(QtCore.QRect(250,240,291,61))
         self.mui_adminempresas.setFocusPolicy(QtCore.Qt.NoFocus)
         self.mui_adminempresas.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.mui_adminempresas.setIcon(QtGui.QIcon("bulmasetup_empresa.xpm"))
+        self.mui_adminempresas.setIcon(QtGui.QIcon(":/images/bulmasetup_empresa.xpm"))
         self.mui_adminempresas.setIconSize(QtCore.QSize(48,48))
         self.mui_adminempresas.setObjectName("mui_adminempresas")
 
@@ -82,7 +82,7 @@ class Ui_MainWindow(object):
         self.mui_restbackup.setGeometry(QtCore.QRect(250,310,291,61))
         self.mui_restbackup.setFocusPolicy(QtCore.Qt.NoFocus)
         self.mui_restbackup.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.mui_restbackup.setIcon(QtGui.QIcon("bulmasetup_cargarempresa.xpm"))
+        self.mui_restbackup.setIcon(QtGui.QIcon(":/images/bulmasetup_cargarempresa.xpm"))
         self.mui_restbackup.setIconSize(QtCore.QSize(48,48))
         self.mui_restbackup.setObjectName("mui_restbackup")
         MainWindow.setCentralWidget(self.centralwidget)
