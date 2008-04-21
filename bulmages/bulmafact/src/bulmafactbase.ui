@@ -254,7 +254,7 @@
   </widget>
   <action name="actionSalir" >
    <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_editDelete.png</iconset>
+    <iconset resource="../../bulmages.qrc" >:Images/edit-delete.svg</iconset>
    </property>
    <property name="text" >
     <string>&amp;Salir del programa</string>
