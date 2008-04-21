@@ -125,7 +125,7 @@
            </size>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_save.xpm</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Images/edit-save.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>

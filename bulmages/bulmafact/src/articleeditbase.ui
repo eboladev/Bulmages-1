@@ -5,7 +5,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>731</width>
+    <width>742</width>
     <height>668</height>
    </rect>
   </property>
@@ -19,19 +19,37 @@
    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_articulos.48x48.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
-   <property name="margin" >
+   <property name="spacing" >
     <number>5</number>
    </property>
-   <property name="spacing" >
+   <property name="leftMargin" >
+    <number>5</number>
+   </property>
+   <property name="topMargin" >
+    <number>5</number>
+   </property>
+   <property name="rightMargin" >
+    <number>5</number>
+   </property>
+   <property name="bottomMargin" >
     <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
      <property name="spacing" >
       <number>5</number>
+     </property>
+     <property name="leftMargin" >
+      <number>0</number>
+     </property>
+     <property name="topMargin" >
+      <number>0</number>
+     </property>
+     <property name="rightMargin" >
+      <number>0</number>
+     </property>
+     <property name="bottomMargin" >
+      <number>0</number>
      </property>
      <item>
       <widget class="QLabel" name="label" >
@@ -52,10 +70,19 @@
         <enum>QFrame::Raised</enum>
        </property>
        <layout class="QHBoxLayout" >
-        <property name="margin" >
+        <property name="spacing" >
          <number>5</number>
         </property>
-        <property name="spacing" >
+        <property name="leftMargin" >
+         <number>5</number>
+        </property>
+        <property name="topMargin" >
+         <number>5</number>
+        </property>
+        <property name="rightMargin" >
+         <number>5</number>
+        </property>
+        <property name="bottomMargin" >
          <number>5</number>
         </property>
         <item>
@@ -82,7 +109,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_save.xpm</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Images/edit-save.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -152,9 +179,7 @@
         <item>
          <widget class="QLineEdit" name="mui_codigocompletoarticulo" >
           <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>0</hsizetype>
-            <vsizetype>0</vsizetype>
+           <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -654,10 +679,22 @@
        <string>&amp;Datos generales</string>
       </attribute>
       <layout class="QGridLayout" >
-       <property name="margin" >
+       <property name="leftMargin" >
         <number>9</number>
        </property>
-       <property name="spacing" >
+       <property name="topMargin" >
+        <number>9</number>
+       </property>
+       <property name="rightMargin" >
+        <number>9</number>
+       </property>
+       <property name="bottomMargin" >
+        <number>9</number>
+       </property>
+       <property name="horizontalSpacing" >
+        <number>6</number>
+       </property>
+       <property name="verticalSpacing" >
         <number>6</number>
        </property>
        <item row="3" column="0" colspan="2" >
@@ -673,9 +710,7 @@
        <item row="0" column="0" >
         <widget class="QGroupBox" name="groupBox" >
          <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>5</hsizetype>
-           <vsizetype>5</vsizetype>
+          <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -684,10 +719,22 @@
           <string>Codigo del articulo:</string>
          </property>
          <layout class="QGridLayout" >
-          <property name="margin" >
+          <property name="leftMargin" >
            <number>5</number>
           </property>
-          <property name="spacing" >
+          <property name="topMargin" >
+           <number>5</number>
+          </property>
+          <property name="rightMargin" >
+           <number>5</number>
+          </property>
+          <property name="bottomMargin" >
+           <number>5</number>
+          </property>
+          <property name="horizontalSpacing" >
+           <number>5</number>
+          </property>
+          <property name="verticalSpacing" >
            <number>5</number>
           </property>
           <item row="0" column="0" colspan="2" >
@@ -706,9 +753,7 @@
           <item row="1" column="0" >
            <widget class="QLabel" name="textLabel1_2" >
             <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>5</hsizetype>
-              <vsizetype>5</vsizetype>
+             <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -730,9 +775,7 @@
           <item row="1" column="1" >
            <widget class="QLineEdit" name="mui_codarticulo" >
             <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>7</hsizetype>
-              <vsizetype>0</vsizetype>
+             <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -745,9 +788,7 @@
        <item row="2" column="1" >
         <widget class="QGroupBox" name="groupBox_3" >
          <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>5</hsizetype>
-           <vsizetype>0</vsizetype>
+          <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -756,10 +797,19 @@
           <string>Otros datos:</string>
          </property>
          <layout class="QVBoxLayout" >
-          <property name="margin" >
+          <property name="spacing" >
            <number>5</number>
           </property>
-          <property name="spacing" >
+          <property name="leftMargin" >
+           <number>5</number>
+          </property>
+          <property name="topMargin" >
+           <number>5</number>
+          </property>
+          <property name="rightMargin" >
+           <number>5</number>
+          </property>
+          <property name="bottomMargin" >
            <number>5</number>
           </property>
           <item>
@@ -791,18 +841,25 @@
           <string>Imagen del articulo:</string>
          </property>
          <layout class="QVBoxLayout" >
-          <property name="margin" >
+          <property name="spacing" >
            <number>5</number>
           </property>
-          <property name="spacing" >
+          <property name="leftMargin" >
+           <number>5</number>
+          </property>
+          <property name="topMargin" >
+           <number>5</number>
+          </property>
+          <property name="rightMargin" >
+           <number>5</number>
+          </property>
+          <property name="bottomMargin" >
            <number>5</number>
           </property>
           <item>
            <widget class="QLabel" name="m_imagen" >
             <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>5</hsizetype>
-              <vsizetype>5</vsizetype>
+             <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -840,9 +897,7 @@
        <item rowspan="2" row="1" column="0" >
         <widget class="QGroupBox" name="groupBox_2" >
          <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>5</hsizetype>
-           <vsizetype>5</vsizetype>
+          <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -851,18 +906,28 @@
           <string>Informacion del articulo:</string>
          </property>
          <layout class="QGridLayout" >
-          <property name="margin" >
+          <property name="leftMargin" >
            <number>5</number>
           </property>
-          <property name="spacing" >
+          <property name="topMargin" >
+           <number>5</number>
+          </property>
+          <property name="rightMargin" >
+           <number>5</number>
+          </property>
+          <property name="bottomMargin" >
+           <number>5</number>
+          </property>
+          <property name="horizontalSpacing" >
+           <number>5</number>
+          </property>
+          <property name="verticalSpacing" >
            <number>5</number>
           </property>
           <item row="0" column="0" colspan="4" >
            <widget class="BusquedaTipoArticulo" native="1" name="mui_idtipoarticulo" >
             <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>7</hsizetype>
-              <vsizetype>7</vsizetype>
+             <sizepolicy vsizetype="Expanding" hsizetype="Expanding" >
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -881,9 +946,7 @@
           <item row="4" column="1" >
            <widget class="QLineEdit" name="mui_pesoundarticulo" >
             <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>0</hsizetype>
-              <vsizetype>0</vsizetype>
+             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -899,9 +962,7 @@
           <item row="4" column="3" >
            <widget class="QLineEdit" name="mui_volumenundarticulo" >
             <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>0</hsizetype>
-              <vsizetype>5</vsizetype>
+             <sizepolicy vsizetype="Preferred" hsizetype="Fixed" >
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -923,9 +984,7 @@
           <item row="4" column="0" >
            <widget class="QLabel" name="textLabel3_2_4" >
             <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>5</hsizetype>
-              <vsizetype>5</vsizetype>
+             <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -941,9 +1000,7 @@
           <item row="3" column="1" >
            <widget class="QLineEdit" name="mui_pvparticulo" >
             <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>0</hsizetype>
-              <vsizetype>0</vsizetype>
+             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -959,9 +1016,7 @@
           <item row="3" column="0" >
            <widget class="QLabel" name="textLabel3_2_3" >
             <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>5</hsizetype>
-              <vsizetype>5</vsizetype>
+             <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -980,9 +1035,7 @@
           <item row="1" column="0" >
            <widget class="QLabel" name="textLabel2" >
             <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>5</hsizetype>
-              <vsizetype>5</vsizetype>
+             <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1008,9 +1061,7 @@
              <bool>true</bool>
             </property>
             <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>5</hsizetype>
-              <vsizetype>5</vsizetype>
+             <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1026,9 +1077,7 @@
           <item row="4" column="2" >
            <widget class="QLabel" name="textLabel3_2_5" >
             <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>5</hsizetype>
-              <vsizetype>5</vsizetype>
+             <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1044,9 +1093,7 @@
           <item row="3" column="3" >
            <widget class="BusquedaTipoIva" name="mui_idtipo_iva" >
             <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>0</hsizetype>
-              <vsizetype>5</vsizetype>
+             <sizepolicy vsizetype="Preferred" hsizetype="Fixed" >
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1062,9 +1109,7 @@
           <item row="3" column="2" >
            <widget class="QLabel" name="textLabel10" >
             <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>5</hsizetype>
-              <vsizetype>5</vsizetype>
+             <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1087,10 +1132,19 @@
        <string>C&amp;omponentes</string>
       </attribute>
       <layout class="QVBoxLayout" >
-       <property name="margin" >
+       <property name="spacing" >
         <number>5</number>
        </property>
-       <property name="spacing" >
+       <property name="leftMargin" >
+        <number>5</number>
+       </property>
+       <property name="topMargin" >
+        <number>5</number>
+       </property>
+       <property name="rightMargin" >
+        <number>5</number>
+       </property>
+       <property name="bottomMargin" >
         <number>5</number>
        </property>
        <item>
@@ -1103,10 +1157,19 @@
        <string>Descripcio&amp;n</string>
       </attribute>
       <layout class="QHBoxLayout" >
-       <property name="margin" >
+       <property name="spacing" >
         <number>5</number>
        </property>
-       <property name="spacing" >
+       <property name="leftMargin" >
+        <number>5</number>
+       </property>
+       <property name="topMargin" >
+        <number>5</number>
+       </property>
+       <property name="rightMargin" >
+        <number>5</number>
+       </property>
+       <property name="bottomMargin" >
         <number>5</number>
        </property>
        <item>
@@ -1118,11 +1181,20 @@
    </item>
    <item>
     <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
      <property name="spacing" >
       <number>6</number>
+     </property>
+     <property name="leftMargin" >
+      <number>0</number>
+     </property>
+     <property name="topMargin" >
+      <number>0</number>
+     </property>
+     <property name="rightMargin" >
+      <number>0</number>
+     </property>
+     <property name="bottomMargin" >
+      <number>0</number>
      </property>
      <item>
       <spacer>

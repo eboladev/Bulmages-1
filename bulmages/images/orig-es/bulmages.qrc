@@ -1,7 +1,7 @@
 <RCC>
-    <qresource prefix="/Images">
-        <file alias="edit-save.svg">images/orig-es/Actions/edit-save.svg</file>
-        <file alias="edit-delete.svg">images/orig-es/Actions/edit-delete.svg</file>
+    <qresource prefix="/Images" >
+        <file alias="edit-save.svg">Actions/edit-save.svg</file>
+        <file alias="edit-delete.svg">Actions/edit-delete.svg</file>
     </qresource>
     <qresource prefix="/BulmaCont32x32" >
         <file>images/png/decrypted.png</file>
