@@ -2,6 +2,9 @@
     <qresource prefix="/Images" >
         <file alias="edit-save.svg">Actions/edit-save.svg</file>
         <file alias="edit-delete.svg">Actions/edit-delete.svg</file>
+        <file alias="document-new.svg">Actions/document-new.svg</file>
+        <file alias="edit-find.svg">Actions/edit-find.svg</file>
+        <file alias="document-open.svg">Actions/document-open.svg</file>
     </qresource>
     <qresource prefix="/BulmaCont32x32" >
         <file>images/png/decrypted.png</file>

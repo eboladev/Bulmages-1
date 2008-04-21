@@ -182,7 +182,7 @@
            <string comment="Imprimir/Salvar" />
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_find.png</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Images/edit-find.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>

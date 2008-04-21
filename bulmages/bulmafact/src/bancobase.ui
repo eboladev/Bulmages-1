@@ -504,7 +504,7 @@ p, li { white-space: pre-wrap; }
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_fileNew.xpm</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Images/document-new.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
