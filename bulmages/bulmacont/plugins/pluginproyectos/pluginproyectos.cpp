@@ -107,6 +107,7 @@ int ccosteview_ccosteview ( ccosteview *ccoste )
     ListProyectosView *l = new ListProyectosView ( ccoste->empresaBase(), ccoste, 0, Listado::SelectMode );
     l->setObjectName ( QString::fromUtf8 ( "mui_proyectos" ) );
     l->mui_actualizar->setDisabled ( TRUE );
+//    l->setModoEdicion();
     ccoste->tabWidget->addTab ( l, "Proyectos Asociados" );
     return 0;
 }

@@ -40,7 +40,6 @@ ListProyectosView::ListProyectosView ( Empresa *emp, QWidget *parent,  Qt::WFlag
 
     this->setAttribute ( Qt::WA_DeleteOnClose );
     setupUi ( this );
-    setModoEdicion();
     setSubForm ( mui_listado );
     mui_listado->setEmpresaBase ( emp );
     mui_listado->setDBTableName ( "presupuestoc" );
@@ -54,8 +53,14 @@ ListProyectosView::ListProyectosView ( Empresa *emp, QWidget *parent,  Qt::WFlag
     mui_listado->setinsercion ( FALSE );
 
     presentar();
+    if ( modoEdicion() ) {
+        empresaBase() ->meteWindow ( windowTitle(), this );
+    } else {
+        setWindowTitle ( tr ( "Selector de Proyectos" ) );
+        mui_crear->setHidden ( TRUE );
+        mui_borrar->setHidden ( TRUE );
+    } // end if
 
-    meteWindow(windowTitle());
     _depura ( "END ListProyectosView::ListProyectosView", 0 );
 }
 

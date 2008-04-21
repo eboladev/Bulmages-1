@@ -763,6 +763,8 @@
     </qresource>
     <qresource prefix="/Genericos16x16" />
     <qresource prefix="/Genericos32x32" >
+        <file>images/icons/proyecto.svg</file>
+        <file>images/icons/proyecto_listado.svg</file>
         <file>images/png/i_bulmacont_amortizaciones.png</file>
         <file>images/png/i_bulmages.png</file>
         <file>images/png/i_configuracion.xpm</file>
