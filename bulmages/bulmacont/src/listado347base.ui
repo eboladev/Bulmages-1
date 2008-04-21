@@ -92,7 +92,7 @@
            <string comment="Imprimir/Salvar" />
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_print.xpm</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Images/document-print.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
