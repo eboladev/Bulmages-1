@@ -6,6 +6,8 @@
         <file alias="edit-find.svg">Actions/edit-find.svg</file>
         <file alias="document-open.svg">Actions/document-open.svg</file>
         <file alias="document-print.svg">Actions/document-print.svg</file>
+        <file alias="view-refresh.svg">Actions/view-refresh.svg</file>
+        <file alias="document-properties.svg">Actions/document-properties.svg</file>
     </qresource>
     <qresource prefix="/BulmaCont32x32" >
         <file>images/png/decrypted.png</file>

@@ -14,7 +14,7 @@
    <string>Propiedades de la empresa</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_configuracion.xpm</iconset>
+   <iconset resource="../../bulmages.qrc" >:/Images/document-properties.svg</iconset>
   </property>
   <layout class="QGridLayout" >
    <property name="margin" >
@@ -89,7 +89,7 @@
         <string/>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_configuracion.xpm</pixmap>
+        <pixmap resource="../../bulmages.qrc" >:/Images/document-properties.svg</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>

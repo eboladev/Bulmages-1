@@ -39,7 +39,7 @@
         <string/>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_configuracion.xpm</pixmap>
+        <pixmap resource="../../bulmages.qrc" >:/Images/document-properties.svg</pixmap>
        </property>
       </widget>
      </item>

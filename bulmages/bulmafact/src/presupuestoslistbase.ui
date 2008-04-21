@@ -620,7 +620,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_packageSettings.png</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Images/document-properties.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -657,7 +657,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_reload.png</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Images/view-refresh.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>

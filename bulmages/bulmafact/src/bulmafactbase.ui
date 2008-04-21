@@ -265,7 +265,7 @@
   </action>
   <action name="actionParametros" >
    <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_configuracion.xpm</iconset>
+    <iconset resource="../../bulmages.qrc" >:/Images/document-properties.svg</iconset>
    </property>
    <property name="text" >
     <string>&amp;Propiedades de la empresa...</string>
