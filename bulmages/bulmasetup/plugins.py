@@ -12,17 +12,16 @@ global configfiles
 class PluginsBulmaSetup:
     def __init__(self):
 	self.pluginsbulmafact = [
-	['Comerciales','libcomercialbf.so','Tratamiento de Comerciales','DBRev-ComercialBF','revf-comercialbf.sql'],
+	['Comerciales','libcomercialbf.so','Tratamiento de Comerciales \n Rutas, citas y comentarios','DBRev-ComercialBF','revf-comercialbf.sql'],
 	['E-Mail','libpluginmail.so','Envio de documentos \n Por correo electrónico \n Utiliza kmail.','',''],
 	['Contratos','libplugincontratos.so','Gestiona los contratos \n de servicios con clientes','DBRev-Contratos','revf-plugincontratos.sql'],
 	['Imprmir tickets','libpluginticket.so','Impresion de Tickets \n con impresoras ESC / POS','',''],
-#	['Factura Electronica','libefacturabf.so','Emision de Factura Electronica','',''],
 	['Domiciliaciones Bancarias','libpluginnq19.so','Permite controlar los archivos de domiciliaciones enviados al banco','DBRev-PluginnQ19','revf-pluginnq19.sql'],
-	['Corrector de la Factuarcion','libplugincorrectorbf.so','Efectua tests de verificación sobre la facturacion','',''],
+	['Corrector de la Factuarcion','libplugincorrectorbf.so','Efectua tests de verificación sobre la facturacion \n clientes sin CIF, facturas sin albaran, etc','',''],
 	['Tipos de Trabajo','libplugintipostrabajo.so','Tipificar los Trabajadores segun \n su actividad','',''],
 	['Impresiones Multiples','libpluginimpresionesmultiples.so','Permite operar con multiples documentos \n previamente seleccionados','',''],
-	['libpluginpreciocoste.so','libpluginpreciocoste.so','libpluginpreciocoste.so','libpluginpreciocoste.so','libpluginpreciocoste.so'],
-	['Cuadrantes','libplugincuadrante.so','Permite llevar un cuadrante de trabajadores','DBRev-Cuadrante','revf-plugincuadrante.sql'],
+#['libpluginpreciocoste.so','libpluginpreciocoste.so','libpluginpreciocoste.so','libpluginpreciocoste.so','libpluginpreciocoste.so'],
+	['Cuadrantes','libplugincuadrante.so','Permite llevar un cuadrante de trabajadores y horarios de entrada-salida','DBRev-Cuadrante','revf-plugincuadrante.sql'],
 	['TPV','libplugintpv.so','Permite ver en BulmaFact \n Datos de los Puntos de Venta','',''],
 	['Informe de Clientes','libplugininformeclientes.so','Generacion de un informe detallado de clientes','',''],
 	['Almacenes Extendidos','libpluginalmacen.so','Amplia la Gestion de Almacenes \n Permite mayor numero de datos','',''],
