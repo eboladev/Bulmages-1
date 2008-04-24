@@ -756,6 +756,8 @@ QString ascii127(const QString &orig) {
     cadena = cadena.replace ( "ñ", "n" );
     cadena = cadena.replace ( "ç", "c" );
 
+    cadena = cadena.replace ( "&", "." );
+
     QChar *data = cadena.data();
     int i;
     for ( i = 0; i < cadena.length(); i++ ) {
@@ -764,6 +766,5 @@ QString ascii127(const QString &orig) {
         } // end if
         ++data;
     } // end if
-    mensajeInfo(cadenatmp);
     return cadenatmp;
 }

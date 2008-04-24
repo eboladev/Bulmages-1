@@ -941,7 +941,7 @@ QString Ficha::trataQuery ( const QString &query, const QString &datos )
         int pos =  0;
         while ( ( pos = rx.indexIn ( salidatemp, pos ) ) != -1 ) {
             if ( cur->numcampo ( rx.cap ( 1 ) ) != -1 ) {
-                salidatemp.replace ( pos, rx.matchedLength(), cur->valor ( rx.cap ( 1 ) ) );
+                salidatemp.replace ( pos, rx.matchedLength(), ascii127(cur->valor ( rx.cap ( 1 )) ) );
                 pos = 0;
             } else {
                 pos += rx.matchedLength();
