@@ -53,19 +53,20 @@ ListControlStockView::ListControlStockView ( QWidget *parent, const char * )
 /**
 \param idinventario
 **/
-void ListControlStockView::cargar ( QString idinventario )
+/*
+void ListControlStockView::cargar ( int idinventario )
 {
     _depura ( "ListControlStockView::cargar", 0 );
-    mdb_idinventario = idinventario;
+    mdb_idinventario = QString::number(idinventario);
     QString SQLQuery = "SELECT * FROM ";
     SQLQuery += " (SELECT idarticulo, idalmacen, nomarticulo, nomalmacen, codigocompletoarticulo, codigoalmacen FROM articulo, almacen) AS t1 ";
-    SQLQuery += " LEFT JOIN (SELECT punteocontrolstock,stockantcontrolstock, stocknewcontrolstock, idarticulo AS idarticulopk, idalmacen AS idalmacenpk, idinventario FROM controlstock WHERE idinventario = " + idinventario + ") AS t2 ON t1.idarticulo = t2.idarticulopk AND t1.idalmacen = t2.idalmacenpk ";
-    SQLQuery += " WHERE idarticulo IN (SELECT idarticulo from lalbaranp UNION SELECT idarticulo FROM lalbaran)";
+    SQLQuery += " LEFT JOIN (SELECT punteocontrolstock,stockantcontrolstock, stocknewcontrolstock, idarticulo AS idarticulopk, idalmacen AS idalmacenpk, idinventario FROM controlstock WHERE idinventario = " + mdb_idinventario + ") AS t2 ON t1.idarticulo = t2.idarticulopk AND t1.idalmacen = t2.idalmacenpk ";
+
     SQLQuery += " ORDER BY codigoalmacen, codigocompletoarticulo";
     SubForm2Bf::cargar ( SQLQuery );
     _depura ( "END ListControlStockView::cargar", 0 );
 }
-
+*/
 
 ///
 /**
@@ -88,7 +89,7 @@ void ListControlStockView::pregenerar()
     _depura ( "ListControlStockView::pregenerar", 0 );
     QString query;
     query = "SELECT * FROM (SELECT * FROM articulo, almacen) AS t1 LEFT JOIN (SELECT stocknewcontrolstock, idarticulo AS idarticulopk, idalmacen AS idalmacenpk, idinventario AS idinventariopk FROM controlstock WHERE idinventario = 1) AS t2 ON t1.idarticulo = t2.idarticulopk AND t1.idalmacen = t2.idalmacenpk ORDER BY codigoalmacen, codigocompletoarticulo;";
-    SubForm3::cargar ( query );
+//    SubForm3::cargar ( query );
     _depura ( "END ListControlStockView::pregenerar", 0 );
 }
 

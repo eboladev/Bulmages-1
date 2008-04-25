@@ -809,6 +809,16 @@ void Ficha::trataTags ( QString &buff )
     } // end while
 
 
+    /// Buscamos Query's en condicional
+    pos = 0;
+    QRegExp rx14 ( "<!--\\s*IF\\s*SUBQUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*IF\\s*SUBQUERY\\s*-->" );
+    rx14.setMinimal ( TRUE );
+    while ( ( pos = rx14.indexIn ( buff, pos ) ) != -1 ) {
+        QString ldetalle = trataIfQuery ( rx14.cap ( 1 ), rx14.cap ( 2 ) );
+        buff.replace ( pos, rx14.matchedLength(), ldetalle );
+        pos = 0;
+    } // end while
+
     /// Buscamos Query's por tratar
     pos = 0;
     QRegExp rx7 ( "<!--\\s*SUBQUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*SUBQUERY\\s*-->" );

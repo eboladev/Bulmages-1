@@ -14,159 +14,42 @@
    <string>Inventario</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_articulos_familias.48x48.png</iconset>
+   <iconset resource="../../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_articulos_familias.48x48.png</iconset>
   </property>
   <layout class="QGridLayout" >
-   <property name="margin" >
+   <property name="leftMargin" >
     <number>5</number>
    </property>
-   <property name="spacing" >
+   <property name="topMargin" >
     <number>5</number>
    </property>
-   <item row="1" column="0" >
-    <widget class="QLabel" name="textLabel1_5" >
-     <property name="text" >
-      <string>Descripcion:</string>
-     </property>
-     <property name="alignment" >
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0" >
-    <widget class="QLabel" name="textLabel1_2" >
-     <property name="text" >
-      <string>Fecha creacion:</string>
-     </property>
-     <property name="alignment" >
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1" >
-    <widget class="BusquedaFecha" native="1" name="mui_fechainventario" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>7</hsizetype>
-       <vsizetype>5</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="minimumSize" >
-      <size>
-       <width>150</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="focusPolicy" >
-      <enum>Qt::StrongFocus</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="2" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeType" >
-      <enum>QSizePolicy::Expanding</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>61</width>
-       <height>22</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="1" column="1" colspan="3" >
-    <widget class="QLineEdit" name="mui_nominventario" />
-   </item>
-   <item row="2" column="3" >
-    <widget class="QCheckBox" name="m_procesadoinventario" >
-     <property name="enabled" >
-      <bool>false</bool>
-     </property>
-     <property name="text" >
-      <string>Procesado</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0" colspan="4" >
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>5</number>
-     </property>
-     <item>
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" >
-        <size>
-         <width>581</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="mui_aceptar" >
-       <property name="text" >
-        <string>&amp;Aceptar</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="mui_cancelar" >
-       <property name="text" >
-        <string>&amp;Cancelar</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="3" column="0" colspan="4" >
-    <widget class="QTabWidget" name="discounts" >
-     <property name="enabled" >
-      <bool>true</bool>
-     </property>
-     <widget class="QWidget" name="tab" >
-      <attribute name="title" >
-       <string>&amp;Detalle</string>
-      </attribute>
-      <layout class="QVBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
-       </property>
-       <property name="spacing" >
-        <number>2</number>
-       </property>
-       <item>
-        <widget class="ListControlStockView" native="1" name="subform2" />
-       </item>
-      </layout>
-     </widget>
-    </widget>
-   </item>
+   <property name="rightMargin" >
+    <number>5</number>
+   </property>
+   <property name="bottomMargin" >
+    <number>5</number>
+   </property>
    <item row="0" column="0" colspan="4" >
     <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
      <property name="spacing" >
       <number>5</number>
+     </property>
+     <property name="leftMargin" >
+      <number>0</number>
+     </property>
+     <property name="topMargin" >
+      <number>0</number>
+     </property>
+     <property name="rightMargin" >
+      <number>0</number>
+     </property>
+     <property name="bottomMargin" >
+      <number>0</number>
      </property>
      <item>
       <widget class="QLabel" name="pixmapLabel1" >
        <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>0</hsizetype>
-         <vsizetype>0</vsizetype>
+        <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -184,7 +67,7 @@
         </size>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_articulos_familias.48x48.png</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_articulos_familias.48x48.png</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>
@@ -200,10 +83,16 @@
         <enum>QFrame::Raised</enum>
        </property>
        <layout class="QHBoxLayout" >
-        <property name="margin" >
+        <property name="leftMargin" >
          <number>5</number>
         </property>
-        <property name="spacing" >
+        <property name="topMargin" >
+         <number>5</number>
+        </property>
+        <property name="rightMargin" >
+         <number>5</number>
+        </property>
+        <property name="bottomMargin" >
          <number>5</number>
         </property>
         <item>
@@ -230,7 +119,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/edit-save.svg</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Images/edit-save.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -264,7 +153,112 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:Images/edit-delete.svg</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Images/edit-delete.svg</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="mui_filtrar" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="toolTip" >
+           <string>Filtrar listado</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Filtrar listado</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../../bulmages.qrc" >:/Images/edit-find.svg</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="checkable" >
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="mui_imprimir" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="toolTip" >
+           <string>Imprimir listado</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Imprimir listado</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../../bulmages.qrc" >:/Images/document-print.svg</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="mui_actualizar" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="toolTip" >
+           <string>Actualizar listado</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Actualizar listado</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../../bulmages.qrc" >:/Images/view-refresh.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -284,8 +278,8 @@
           </property>
           <property name="sizeHint" >
            <size>
-            <width>300</width>
-            <height>21</height>
+            <width>321</width>
+            <height>34</height>
            </size>
           </property>
          </spacer>
@@ -314,7 +308,7 @@
            <string>Pregenerar inventario</string>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_articulos_familias.48x48.png</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_articulos_familias.48x48.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -325,6 +319,199 @@
          </widget>
         </item>
        </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0" colspan="4" >
+    <widget class="QFrame" name="m_busqueda" >
+     <property name="frameShape" >
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow" >
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="leftMargin" >
+       <number>5</number>
+      </property>
+      <property name="topMargin" >
+       <number>5</number>
+      </property>
+      <property name="rightMargin" >
+       <number>5</number>
+      </property>
+      <property name="bottomMargin" >
+       <number>5</number>
+      </property>
+      <item row="0" column="2" >
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" >
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="label" >
+        <property name="text" >
+         <string>Familia</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" >
+       <widget class="BusquedaFamilia" name="mui_idfamilia" />
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="0" >
+    <widget class="QLabel" name="textLabel1_5" >
+     <property name="text" >
+      <string>Descripcion:</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1" colspan="3" >
+    <widget class="QLineEdit" name="mui_nominventario" />
+   </item>
+   <item row="3" column="0" >
+    <widget class="QLabel" name="textLabel1_2" >
+     <property name="text" >
+      <string>Fecha creacion:</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1" >
+    <widget class="BusquedaFecha" native="1" name="mui_fechainventario" >
+     <property name="sizePolicy" >
+      <sizepolicy vsizetype="Preferred" hsizetype="Expanding" >
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize" >
+      <size>
+       <width>150</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="focusPolicy" >
+      <enum>Qt::StrongFocus</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>61</width>
+       <height>22</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="3" column="3" >
+    <widget class="QCheckBox" name="m_procesadoinventario" >
+     <property name="enabled" >
+      <bool>false</bool>
+     </property>
+     <property name="text" >
+      <string>Procesado</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="4" >
+    <widget class="QTabWidget" name="discounts" >
+     <property name="enabled" >
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="tab" >
+      <attribute name="title" >
+       <string>&amp;Detalle</string>
+      </attribute>
+      <layout class="QVBoxLayout" >
+       <property name="spacing" >
+        <number>2</number>
+       </property>
+       <property name="leftMargin" >
+        <number>0</number>
+       </property>
+       <property name="topMargin" >
+        <number>0</number>
+       </property>
+       <property name="rightMargin" >
+        <number>0</number>
+       </property>
+       <property name="bottomMargin" >
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="ListControlStockView" native="1" name="subform2" />
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item row="5" column="0" colspan="4" >
+    <layout class="QHBoxLayout" >
+     <property name="spacing" >
+      <number>5</number>
+     </property>
+     <property name="leftMargin" >
+      <number>0</number>
+     </property>
+     <property name="topMargin" >
+      <number>0</number>
+     </property>
+     <property name="rightMargin" >
+      <number>0</number>
+     </property>
+     <property name="bottomMargin" >
+      <number>0</number>
+     </property>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>581</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="mui_aceptar" >
+       <property name="text" >
+        <string>&amp;Aceptar</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="mui_cancelar" >
+       <property name="text" >
+        <string>&amp;Cancelar</string>
+       </property>
       </widget>
      </item>
     </layout>
@@ -343,9 +530,14 @@
    <extends>QWidget</extends>
    <header>listcontrolstockview.h</header>
   </customwidget>
+  <customwidget>
+   <class>BusquedaFamilia</class>
+   <extends>QLineEdit</extends>
+   <header>busquedafamilia.h</header>
+  </customwidget>
  </customwidgets>
  <resources>
-  <include location="../../bulmages.qrc" />
+  <include location="../../../bulmages.qrc" />
  </resources>
  <connections>
   <connection>

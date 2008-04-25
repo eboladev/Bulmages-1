@@ -200,7 +200,7 @@ int SubForm2Bf_on_mui_list_editFinished ( SubForm2Bf *subform )
 
 int ArticuloListSubForm_ArticuloListSubForm_Post ( ArticuloListSubForm *artl )
 {
-    artl->addSHeader ( "preciocostearticulo", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, artl->tr ( "P.C." ) );
+    artl->addSHeader ( "preciocostearticulo", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, artl->tr ( "P Coste" ) );
     artl->addSHeader ( "margenarticulo", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, artl->tr ( "Margen" ) );
     artl->addSHeader ( "actualizarmargenarticulo", DBCampo::DBboolean, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, artl->tr ( "Actualizar Margen" ) );
 }

@@ -103,23 +103,7 @@ void Inventario::pintaInventario()
 }
 
 
-/// Esta funcion carga un Inventario.
-/**
-\param idbudget
-\return
-**/
-int Inventario::cargar ( QString idbudget )
-{
-    QString query = "SELECT * FROM inventario WHERE idinventario = " + idbudget;
-    cursor2 * cur = companyact->cargacursor ( query );
-    if ( !cur->eof() ) {
-        DBload ( cur );
-    } // end if
-    delete cur;
-    listalineas->cargar ( idbudget );
-    pintaInventario();
-    return 0;
-}
+
 
 
 ///

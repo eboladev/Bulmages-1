@@ -44,7 +44,6 @@ public:
     virtual ~Inventario();
     void setListControlStock ( ListControlStockView *a );
     ListControlStockView *getlistalineas();
-    virtual int cargar ( QString );
     void pintaInventario();
     virtual int guardar();
     virtual int borrar();
