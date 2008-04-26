@@ -34,8 +34,7 @@ class InventariosSubForm : public SubForm2Bf
 
 public:
     InventariosSubForm ( QWidget *parent = 0 );
-    ~InventariosSubForm()
-    {};
+    ~InventariosSubForm() {};
 
 public slots:
     virtual void cargar();

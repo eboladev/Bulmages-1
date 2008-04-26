@@ -25,14 +25,14 @@
 ///
 /**
 **/
-BLProgressBar::BLProgressBar (  ) : QWidget(0,0)
+BLProgressBar::BLProgressBar (  ) : QWidget ( 0, 0 )
 {
     _depura ( "BLProgressBar::BLProgressBar", 0 );
-    setupUi(this);
-    setWindowFlags(Qt::FramelessWindowHint);
+    setupUi ( this );
+    setWindowFlags ( Qt::FramelessWindowHint );
     QDesktopWidget *pantalla = new QDesktopWidget();
-    setGeometry ( ( pantalla->screenGeometry().width() / 2 ) - 150, ( pantalla->screenGeometry().height() / 2 ) -25, 300, 50 );
-    mui_label->setText("");
+    setGeometry ( ( pantalla->screenGeometry().width() / 2 ) - 150, ( pantalla->screenGeometry().height() / 2 ) - 25, 300, 50 );
+    mui_label->setText ( "" );
     delete pantalla;
     _depura ( "END BLProgressBar::BLProgressBar", 0 );
 }
@@ -40,9 +40,10 @@ BLProgressBar::BLProgressBar (  ) : QWidget(0,0)
 ///
 /**
 **/
-void BLProgressBar::setText(const QString &text) {
+void BLProgressBar::setText ( const QString &text )
+{
     _depura ( "BLProgressBar::setText", 0 );
-    mui_label->setText(text);
+    mui_label->setText ( text );
     _depura ( "END BLProgressBar::setText", 0 );
 }
 
@@ -59,9 +60,10 @@ BLProgressBar::~BLProgressBar()
 ///
 /**
 **/
-void BLProgressBar::setValue(int value) { 
+void BLProgressBar::setValue ( int value )
+{
     _depura ( "BLProgressBar::setValue", 0 );
-mui_progressBar->setValue(value);
+    mui_progressBar->setValue ( value );
     _depura ( "END BLProgressBar::setValue", 0 );
 
 }
@@ -69,18 +71,20 @@ mui_progressBar->setValue(value);
 ///
 /**
 **/
-int BLProgressBar::value() {
+int BLProgressBar::value()
+{
     _depura ( "BLProgressBar::value", 0 );
     _depura ( "END BLProgressBar::value", 0 );
-return mui_progressBar->value();
+    return mui_progressBar->value();
 }
 
 ///
 /**
 **/
-void BLProgressBar::setRange(int range,  int range1) {
+void BLProgressBar::setRange ( int range,  int range1 )
+{
     _depura ( "BLProgressBar::setRange", 0 );
-mui_progressBar->setRange(range, range1);
+    mui_progressBar->setRange ( range, range1 );
     _depura ( "END BLProgressBar::setRange", 0 );
 }
 

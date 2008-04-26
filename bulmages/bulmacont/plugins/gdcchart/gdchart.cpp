@@ -147,8 +147,7 @@ smallarrow ( gdImagePtr  im,
 /* ref is front plane */
 /* allows for intersecting 3D lines      */
 /*  (also used for single 3D lines >:-Q  */
-struct YS
-{
+struct YS {
     int y1; int y2; float slope; int lnclr; int shclr;
 };
 static int qcmpr ( const void *a, const void *b )
@@ -199,8 +198,7 @@ draw_3d_line ( gdImagePtr im,
     }
 
     for ( x = x1 + 1; x <= x2; ++x ) {
-        for ( i = 0; i < num_sets; ++i )      // load set of points
-        {
+        for ( i = 0; i < num_sets; ++i ) {    // load set of points
             ypts[i].y1    = F ( x - 1, i );
             ypts[i].y2    = F ( x, i );
             ypts[i].lnclr = clr[i];
@@ -288,8 +286,7 @@ draw_3d_area ( gdImagePtr  im,
     gdImageLine ( im, x1, y0, x2, y0, clrshd );   // edging along y0
 
     if ( ( xdepth || ydepth ) &&        // front edging only on 3D
-            ( y1 < y0 || y2 < y0 ) )         // and only above y0
-    {
+            ( y1 < y0 || y2 < y0 ) ) {       // and only above y0
         if ( y1 > y0 && y2 < y0 )       // line crosses from below y0
             gdImageLine ( im, y_intercept, y0, x2, y2, clrshd );
         else
@@ -325,8 +322,7 @@ draw_3d_bar ( gdImagePtr   im,
 
 
     if ( xdepth || ydepth ) {
-        if ( y0 != yhigh )           // 0 height?
-        {
+        if ( y0 != yhigh ) {         // 0 height?
             SET_3D_BAR ( poly, x2, x2, y0, yhigh, xdepth, ydepth ); // side
             gdImageFilledPolygon ( im, poly, 4, clrshd );
         }
@@ -343,8 +339,7 @@ draw_3d_bar ( gdImagePtr   im,
 }
 
 /* ------------------------------------------------------------------------- */
-struct BS
-{
+struct BS {
     float y1; float y2; int clr; int shclr;
 };
 static int barcmpr ( const void *a, const void *b )
@@ -526,13 +521,11 @@ out_graph ( short  GIFWIDTH,  /* no check for a gif that's too small to fit */
             highest = MAX ( ( GDC_scatter + i ) ->val, highest );
             lowest  = MIN ( ( GDC_scatter + i ) ->val, lowest  );
         }
-    if ( do_vol )        // for now only one combo set allowed
-    {
+    if ( do_vol ) {      // for now only one combo set allowed
         // vhighest = 1.0;
         // vlowest  = 0.0;
         for ( j = 0; j < num_points; ++j )
-            if ( uvol[j] != GDC_NOVALUE )
-            {
+            if ( uvol[j] != GDC_NOVALUE ) {
                 vhighest = MAX ( uvol[j], vhighest );
                 vlowest  = MIN ( uvol[j], vlowest );
             }
@@ -602,8 +595,7 @@ out_graph ( short  GIFWIDTH,  /* no check for a gif that's too small to fit */
                      2 : 0;          /* space to chart */
         annote_len *= GDC_fontc[GDC_annotation_font].w;
 
-        if ( GDC_xaxis && xlbl )
-        {
+        if ( GDC_xaxis && xlbl ) {
             int biggest     = -MAXINT;
 
             for ( i = 0; i < num_points; ++i ) {
@@ -639,15 +631,15 @@ out_graph ( short  GIFWIDTH,  /* no check for a gif that's too small to fit */
                                 1.0,      2.0,      3.0,      5.0,     10.0,    25.0,
                                 50.0,     100.0,    250.0,    500.0,   1000.0,  2500,    5000.0,
                                 10000.0,  25000.0,  50000.0,  100000.0, 500000.0, 1000000, 5000000,
-                                10000000 };
+                                10000000
+                              };
 #define NUM_YPOINTS (sizeof(ypoints) / sizeof(float))
             int  max_num_ylbls;
             int  longest_ylblen = 0;
             /* maximum y lables that'll fit... */
             max_num_ylbls = grapheight / ( 3 + GDC_fontc[GDC_yaxisfont_size==GDC_TINY? GDC_yaxisfont_size+1:
                                            GDC_yaxisfont_size].h );
-            if ( max_num_ylbls < 3 )
-            {
+            if ( max_num_ylbls < 3 ) {
                 /* gdImageDestroy(im);  haven't yet created it */
                 out_err ( GIFWIDTH, GIFHEIGHT,
                           gif_fptr,
@@ -672,8 +664,7 @@ out_graph ( short  GIFWIDTH,  /* no check for a gif that's too small to fit */
             /* perform floating point remainders */
             /* gonculate largest interval-point < lowest */
             if ( lowest != 0.0 &&
-                    lowest != GDC_requested_ymin )
-            {
+                    lowest != GDC_requested_ymin ) {
                 if ( lowest < 0.0 )
                     lowest -= ylbl_interval;
                 // lowest = (lowest-ypoints[0]) -
@@ -683,8 +674,7 @@ out_graph ( short  GIFWIDTH,  /* no check for a gif that's too small to fit */
             }
             /* find smallest interval-point > highest */
             tmp_highest = lowest;
-            do // while( (tmp_highest += ylbl_interval) <= highest )
-            {
+            do { // while( (tmp_highest += ylbl_interval) <= highest )
                 int  nmrtr, dmntr, whole;
                 char *price_to_str ( float, int*, int*, int*, char* );
                 int  lbl_len;
@@ -705,8 +695,7 @@ out_graph ( short  GIFWIDTH,  /* no check for a gif that's too small to fit */
             highest = GDC_requested_ymax == GDC_NOVALUE ? tmp_highest :
                       MAX ( GDC_requested_ymax, highest );
 
-            if ( do_vol )
-    {
+            if ( do_vol ) {
                 float num_yintrvls = ( highest - lowest ) / ylbl_interval;
                 /* no skyscrapers */
                 if ( vhighest != 0.0 )
@@ -740,8 +729,7 @@ out_graph ( short  GIFWIDTH,  /* no check for a gif that's too small to fit */
         /* offset to 0 at lower left (where it should be) */
         xscl = ( float ) ( graphwidth - xdepth_3Dtotal ) / ( float ) ( num_points + ( do_bar ? 2 : 0 ) );
         yscl = - ( ( float ) grapheight ) / ( float ) ( highest - lowest );
-        if ( do_vol )
-        {
+        if ( do_vol ) {
             float hilow_diff = vhighest - vlowest == 0.0 ? 1.0 : vhighest - vlowest;
 
             vyscl = - ( ( float ) grapheight ) / hilow_diff;
@@ -805,15 +793,13 @@ out_graph ( short  GIFWIDTH,  /* no check for a gif that's too small to fit */
         if ( !in ) {
             ; // Cant load background image, drop it
         } else {
-            if ( bg_img = gdImageCreateFromGif ( in ) )     // =
-            {
+            if ( bg_img = gdImageCreateFromGif ( in ) ) {   // =
                 int bgxpos = gdImageSX ( bg_img ) < GIFWIDTH ?  GIFWIDTH / 2 - gdImageSX ( bg_img ) / 2 :  0,
                              bgypos = gdImageSY ( bg_img ) < GIFHEIGHT ? GIFHEIGHT / 2 - gdImageSY ( bg_img ) / 2 : 0;
 
 
                 if ( gdImageSX ( bg_img ) > GIFWIDTH ||    // resize only if too big
-                        gdImageSY ( bg_img ) > GIFHEIGHT )    //  [and center]
-                {
+                        gdImageSY ( bg_img ) > GIFHEIGHT ) {  //  [and center]
                     gdImageCopyResized ( im, bg_img,    // dst, src
                                          bgxpos, bgypos,   // dstX, dstY
                                          0, 0,     // srcX, srcY
@@ -889,8 +875,7 @@ out_graph ( short  GIFWIDTH,  /* no check for a gif that's too small to fit */
         /* step from lowest to highest puting in labels and grid at interval points */
         /* since now "odd" intervals may be requested, try to step starting at 0,   */
         /* if lowest < 0 < highest                                                  */
-        for ( i = -1; i <= 1; i += 2 )         // -1, 1
-        {
+        for ( i = -1; i <= 1; i += 2 ) {       // -1, 1
             if ( i == -1 ) if ( lowest >= 0.0 )     // all pos plotting
                     continue;
                 else
@@ -910,8 +895,7 @@ out_graph ( short  GIFWIDTH,  /* no check for a gif that's too small to fit */
 //   else
 //    tmp_y = 0;
 
-            do // while( (tmp_y (+-)= ylbl_interval) < [highest,lowest] )
-            {
+            do { // while( (tmp_y (+-)= ylbl_interval) < [highest,lowest] )
                 int  n, d, w;
                 char *price_to_str ( float, int*, int*, int*, char* );
                 char nmrtr[3+1], dmntr[3+1], whole[8];
@@ -1186,8 +1170,7 @@ out_graph ( short  GIFWIDTH,  /* no check for a gif that's too small to fit */
         setno = 0;
     }  // volume polys done
 
-    if ( GDC_annotation && threeD )  /* back half of annotation line */
-    {
+    if ( GDC_annotation && threeD ) { /* back half of annotation line */
         int x1 = PX ( GDC_annotation->point + ( do_bar ? 1 : 0 ) ),
                  y1 = PY ( lowest );
         setno = GDC_stack_type == GDC_STACK_DEPTH ? num_hlc_sets ? num_hlc_sets :
@@ -1325,38 +1308,36 @@ out_graph ( short  GIFWIDTH,  /* no check for a gif that's too small to fit */
                     }
             } else
                 if ( GDC_stack_type == GDC_STACK_BESIDE ||
-                        GDC_stack_type == GDC_STACK_SUM )   // all same plane
-                {
+                        GDC_stack_type == GDC_STACK_SUM ) { // all same plane
                     int  set;
                     int  clr[num_sets],
                     clrshd[num_sets];
                     float usey1 = 0.0,
                                   usey2 = 0.0;
                     for ( j = 0, set = 0; j < num_sets; ++j )
-                            if ( uvals[j][i-1] != GDC_NOVALUE &&
-                                    uvals[j][i]   != GDC_NOVALUE )
-                            {
-                                if ( GDC_stack_type == GDC_STACK_SUM ) {
-                                    usey1 += uvals[j][i-1];
-                                    usey2 += uvals[j][i];
-                                } else {
-                                    usey1 = uvals[j][i-1];
-                                    usey2 = uvals[j][i];
-                                }
-                                y1[set]     = PY ( usey1 );
-                                y2[set]     = PY ( usey2 );
-                                clr[set]    = ExtColor[j][i];
-                                clrshd[set] = ExtColorShd[j][i]; /* fred */
-                                ++set;
+                        if ( uvals[j][i-1] != GDC_NOVALUE &&
+                                uvals[j][i]   != GDC_NOVALUE ) {
+                            if ( GDC_stack_type == GDC_STACK_SUM ) {
+                                usey1 += uvals[j][i-1];
+                                usey2 += uvals[j][i];
+                            } else {
+                                usey1 = uvals[j][i-1];
+                                usey2 = uvals[j][i];
                             }
+                            y1[set]     = PY ( usey1 );
+                            y2[set]     = PY ( usey2 );
+                            clr[set]    = ExtColor[j][i];
+                            clrshd[set] = ExtColorShd[j][i]; /* fred */
+                            ++set;
+                        }
                     draw_3d_line ( im,
                                    PY ( 0 ),
                                    PX ( i - 1 ), PX ( i ),
                                    y1, y2,
                                    xdepth_3D, ydepth_3D,
                                    set,
-                                       clr,
-                                       clrshd );
+                                   clr,
+                                   clrshd );
                 }
         }
     }
@@ -1464,16 +1445,14 @@ out_graph ( short  GIFWIDTH,  /* no check for a gif that's too small to fit */
 
                     if ( i < num_points &&
                             uvals[CLOSESET+j*3][i] != GDC_NOVALUE ) {
-                        if ( GDC_HLC_style & GDC_HLC_CLOSE_CONNECTED ) /* line from prev close */
-                        {
+                        if ( GDC_HLC_style & GDC_HLC_CLOSE_CONNECTED ) { /* line from prev close */
                             SET_3D_POLY ( poly, PX ( i - 1 ), PX ( i ),
                                           PY ( uvals[CLOSESET+j*3][i-1] ), PY ( uvals[CLOSESET+j*3][i-1] ),
                                           xdepth_3D, ydepth_3D );
                             gdImageFilledPolygon ( im, poly, 4, ExtColor[CLOSESET+j*3][i] );
                             gdImagePolygon ( im, poly, 4, ExtColorShd[CLOSESET+j*3][i] );
                         } else // CLOSE_CONNECTED and CONNECTING are mutually exclusive
-                            if ( GDC_HLC_style & GDC_HLC_CONNECTING ) /* thin connecting line */
-                            {
+                            if ( GDC_HLC_style & GDC_HLC_CONNECTING ) { /* thin connecting line */
                                 int y1 = PY ( uvals[CLOSESET+j*3][i-1] ),
                                          y2 = PY ( uvals[CLOSESET+j*3][i] );
                                 draw_3d_line ( im,
@@ -1754,29 +1733,24 @@ out_graph ( short  GIFWIDTH,  /* no check for a gif that's too small to fit */
         setno = 0;            // set back to foremost
     }
 
-    if ( GDC_annotation )   /* front half of annotation line */
-    {
+    if ( GDC_annotation ) { /* front half of annotation line */
         int  x1 = PX ( GDC_annotation->point + ( do_bar ? 1 : 0 ) ),
                   y1 = PY ( highest );
         int  x2;
         // front line
         gdImageLine ( im, x1, PY ( lowest ) + 1, x1, y1, AnnoteColor );
-        if ( threeD )
-        {            // on back plane
+        if ( threeD ) {           // on back plane
         setno = GDC_stack_type == GDC_STACK_DEPTH ? num_hlc_sets ? num_hlc_sets : num_sets : 1;
             x2 = PX ( GDC_annotation->point + ( do_bar ? 1 : 0 ) );
             // prspective line
             gdImageLine ( im, x1, y1, x2, PY ( highest ), AnnoteColor );
-        } else            // for 3D done with back line
-        {
+        } else {          // for 3D done with back line
             x2 = PX ( GDC_annotation->point + ( do_bar ? 1 : 0 ) );
             gdImageLine ( im, x1, y1, x1, y1 - 2, AnnoteColor );
         }
         /* line-to and note */
-        if ( * ( GDC_annotation->note ) )      // any note?
-        {
-            if ( GDC_annotation->point >= ( num_points / 2 ) )  /* note to the left */
-            {
+        if ( * ( GDC_annotation->note ) ) {    // any note?
+            if ( GDC_annotation->point >= ( num_points / 2 ) ) { /* note to the left */
                 gdImageLine ( im, x2,              PY ( highest ) - 2,
                               x2 - annote_hgt / 2, PY ( highest ) - 2 - annote_hgt / 2,
                               AnnoteColor );
@@ -1787,8 +1761,7 @@ out_graph ( short  GIFWIDTH,  /* no check for a gif that's too small to fit */
                                    GDC_annotation->note,
                                    AnnoteColor,
                                    GDC_JUSTIFY_RIGHT );
-            } else            /* note to right */
-            {
+            } else {          /* note to right */
                 gdImageLine ( im, x2,              PY ( highest ) - 2,
                               x2 + annote_hgt / 2, PY ( highest ) - 2 - annote_hgt / 2,
                               AnnoteColor );

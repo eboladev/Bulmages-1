@@ -38,15 +38,13 @@ private:
     QString mensajein;
 
 private:
-    void inicializaMensajeria()
-    {
+    void inicializaMensajeria() {
         mensajein = "";
     };
 
 public:
     ImportExportBulmafactView ( postgresiface2 *, QWidget *, Qt::WFlags );
-    ~ImportExportBulmafactView()
-    {}
+    ~ImportExportBulmafactView() {}
     ;
     virtual void alerta ( int, int );
     virtual void mensajeria ( QString );

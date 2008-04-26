@@ -55,15 +55,13 @@ public:
     ListLinPrevCobro ( Empresa *comp );
     ListLinPrevCobro();
     void inicializaVariables();
-    void setcompany ( Empresa *c )
-    {
+    void setcompany ( Empresa *c ) {
         m_companyact = c;
     };
     virtual ~ListLinPrevCobro();
     void guardaListLinPrevCobro();
     void vaciar();
-    virtual void pintaListLinPrevCobro()
-    {
+    virtual void pintaListLinPrevCobro() {
         _depura ( "La funcion pintaListLinPrevCobro aun no ha sido implementada", 10 );
     };
     int chargeBudgetLines();
@@ -71,8 +69,7 @@ public:
     void nuevalinea ( QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString );
     linprevcobro *linpos ( int );
     void borralinprevcobro ( int );
-    void setidregistroiva ( QString id )
-    {
+    void setidregistroiva ( QString id ) {
         mdb_idregistroiva = id;
         linprevcobro *linea;
         QMutableListIterator<linprevcobro*> m_ilista ( m_lista );

@@ -31,8 +31,7 @@ class TarifaListView : public FichaBf, private Ui_TarifaListBase, public pgimpor
     Q_OBJECT
 
 public:
-    enum edmode
-    {
+    enum edmode {
         EditMode = 0, SelectMode = 1
     };
 
@@ -47,8 +46,7 @@ public slots:
     void on_mui_crear_clicked();
     void on_mui_editar_clicked();
     void on_mui_borrar_clicked();
-    void on_mui_list_itemDoubleClicked ( QTableWidgetItem * )
-    {
+    void on_mui_list_itemDoubleClicked ( QTableWidgetItem * ) {
         on_mui_editar_clicked();
     };
 };

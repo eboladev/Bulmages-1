@@ -38,8 +38,7 @@ class ListLinFacturaProveedorView : public SubForm2Bf
 public:
     QString mdb_idfacturap;
     ListLinFacturaProveedorView ( QWidget *parent = 0 );
-    ~ListLinFacturaProveedorView()
-    {}
+    ~ListLinFacturaProveedorView() {}
     ;
 
 public slots:

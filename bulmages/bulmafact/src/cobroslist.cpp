@@ -34,7 +34,7 @@
 
 /** Inicializa todos los componentes.
     Mete la ventana en el workSpace.
-    Este constructor no es completo, debe inicializarse con setcompany para que la clase pueda operar.    
+    Este constructor no es completo, debe inicializarse con setcompany para que la clase pueda operar.
 */
 CobrosList::CobrosList ( QWidget *parent, Qt::WFlags flag, edmode editmodo )
         : Listado ( NULL, parent, flag, editmodo )

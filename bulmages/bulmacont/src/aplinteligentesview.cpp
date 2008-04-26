@@ -72,7 +72,7 @@ aplinteligentesview::aplinteligentesview ( Empresa *emp, QWidget *parent )
     variablesapunte[VAR_APUNT_CIFCUENTA][0] = "$cifcuenta$";
     empresaBase() ->meteWindow ( windowTitle(), this );
     setmodo ( 0 );
-    empresaBase() ->intapuntsempresa()->mui_inteligente->setDisabled(TRUE);
+    empresaBase() ->intapuntsempresa()->mui_inteligente->setDisabled ( TRUE );
     _depura ( "END aplinteligentesview::aplinteligentesview", 0 );
 }
 
@@ -85,7 +85,7 @@ aplinteligentesview::~aplinteligentesview()
     _depura ( "aplinteligentesview::~aplinteligentesview", 0 );
     borrawidgets();
     empresaBase() ->sacaWindow ( this );
-    empresaBase() ->intapuntsempresa()->mui_inteligente->setEnabled(TRUE);
+    empresaBase() ->intapuntsempresa()->mui_inteligente->setEnabled ( TRUE );
     _depura ( "END aplinteligentesview::~aplinteligentesview", 0 );
 }
 
@@ -100,7 +100,7 @@ void aplinteligentesview::inicializa ( int idasiento )
     numasiento = idasiento;
     inicializavariables();
 
-    QDir dir ( confpr->valor(CONF_PROGDATA) + "ainteligentes/" );
+    QDir dir ( confpr->valor ( CONF_PROGDATA ) + "ainteligentes/" );
     dir.setFilter ( QDir::Files );
     dir.setNameFilters ( QStringList ( "*.xml" ) );
     dir.setSorting ( QDir::Size | QDir::Reversed );

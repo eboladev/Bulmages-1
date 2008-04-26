@@ -80,13 +80,13 @@ QString XMLProtect ( const QString &string )
     QChar *data = cadena.data();
 
     /// Cambia tambien otros caracteres no adecuados.
-/*
-    cadenatmp.replace ( "&", "&#38;" );
-    cadenatmp.replace ( ">", "&#62;" );
-    cadenatmp.replace ( "<", "&#60;" );
-    cadenatmp.replace ( "\"", "&#34;" );
-    cadenatmp.replace ( "\'", "&#39;" );
-*/
+    /*
+        cadenatmp.replace ( "&", "&#38;" );
+        cadenatmp.replace ( ">", "&#62;" );
+        cadenatmp.replace ( "<", "&#60;" );
+        cadenatmp.replace ( "\"", "&#34;" );
+        cadenatmp.replace ( "\'", "&#39;" );
+    */
     int i;
     for ( i = 0; i < cadena.length(); i++ ) {
         if ( data->unicode() > 127 ) {
@@ -95,18 +95,18 @@ QString XMLProtect ( const QString &string )
             /// Cambiamos los Intros por el formato HTML.
             cadenatmp = cadenatmp + QString ( "\n" );
 
-	} else if ( data->unicode() == 37 ) { // %
-	    cadenatmp = cadenatmp + QString ( "&#37;" );
-	} else if ( data->unicode() == 38 ) { // &
-	    cadenatmp = cadenatmp + QString ( "&#38;" );
-	} else if ( data->unicode() == 62 ) { // >
-	    cadenatmp = cadenatmp + QString ( "&#62;" );
-	} else if ( data->unicode() == 60 ) { // <
-	    cadenatmp = cadenatmp + QString ( "&#60;" );
-	} else if ( data->unicode() == 34 ) { // "
-	    cadenatmp = cadenatmp + QString ( "&#34;" );
-	} else if ( data->unicode() == 39 ) { // '
-	    cadenatmp = cadenatmp + QString ( "&#39;" );
+        } else if ( data->unicode() == 37 ) { // %
+            cadenatmp = cadenatmp + QString ( "&#37;" );
+        } else if ( data->unicode() == 38 ) { // &
+            cadenatmp = cadenatmp + QString ( "&#38;" );
+        } else if ( data->unicode() == 62 ) { // >
+            cadenatmp = cadenatmp + QString ( "&#62;" );
+        } else if ( data->unicode() == 60 ) { // <
+            cadenatmp = cadenatmp + QString ( "&#60;" );
+        } else if ( data->unicode() == 34 ) { // "
+            cadenatmp = cadenatmp + QString ( "&#34;" );
+        } else if ( data->unicode() == 39 ) { // '
+            cadenatmp = cadenatmp + QString ( "&#39;" );
 
         } else {
             cadenatmp = cadenatmp + QString ( *data );
@@ -720,7 +720,8 @@ void cargaTraducciones ( const QString &traduccion )
     theApp->installTranslator ( traductor );
 }
 
-QString ascii127(const QString &orig) {
+QString ascii127 ( const QString &orig )
+{
     /// Recorre todo el QString y sustituye los caracteres NO ASCII y
     /// los caracteres que no van muy bien en un XML.
 

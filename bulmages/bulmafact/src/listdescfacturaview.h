@@ -35,13 +35,11 @@ class ListDescuentoFacturaView : public SubForm2Bf
 public:
     QString mdb_idfactura;
     ListDescuentoFacturaView ( QWidget *parent = 0 );
-    ~ListDescuentoFacturaView()
-    {}
+    ~ListDescuentoFacturaView() {}
     ;
 
 public slots:
-    virtual void cargar ( QString idfactura )
-    {
+    virtual void cargar ( QString idfactura ) {
         _depura ( "ListCompArticulo::cargaListCompArticulo\n", 0 );
         mdb_idfactura = idfactura;
         SubForm3::cargar ( "SELECT * FROM dfactura WHERE idfactura = " + mdb_idfactura );

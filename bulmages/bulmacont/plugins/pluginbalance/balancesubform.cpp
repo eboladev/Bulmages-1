@@ -23,23 +23,24 @@
 #include "balancesubform.h"
 
 
-BalanceSubForm::BalanceSubForm(QWidget *parent, const char *) : SubForm2Bc(parent) {
-    _depura("BalanceSubForm::BalanceSubForm", 0);
-    setDBTableName("borrador");
-    setFileConfig("balancesubform");
-    setDBCampoId("idborrador");
-    addSHeader("idcuenta", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("idcuenta"));
-    addSHeader("tipocuenta", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("tipocuenta"));
-    addSHeader("codigo", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("codigo"));
-    addSHeader("descripcion", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("descripcion"));
-    addSHeader("asaldo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("asaldo"));
-    addSHeader("tdebe", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("tdebe"));
-    addSHeader("thaber", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("thaber"));
-    addSHeader("tsaldo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("tsaldo"));
-    addSHeader("ejdebe", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("ejdebe"));
-    addSHeader("ejhaber", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("ejhaber"));
-    addSHeader("ejsaldo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("ejsaldo"));
-    setinsercion(FALSE);
-    _depura("END BalanceSubForm::BalanceSubForm", 0);
+BalanceSubForm::BalanceSubForm ( QWidget *parent, const char * ) : SubForm2Bc ( parent )
+{
+    _depura ( "BalanceSubForm::BalanceSubForm", 0 );
+    setDBTableName ( "borrador" );
+    setFileConfig ( "balancesubform" );
+    setDBCampoId ( "idborrador" );
+    addSHeader ( "idcuenta", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "idcuenta" ) );
+    addSHeader ( "tipocuenta", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "tipocuenta" ) );
+    addSHeader ( "codigo", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "codigo" ) );
+    addSHeader ( "descripcion", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "descripcion" ) );
+    addSHeader ( "asaldo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "asaldo" ) );
+    addSHeader ( "tdebe", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "tdebe" ) );
+    addSHeader ( "thaber", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "thaber" ) );
+    addSHeader ( "tsaldo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "tsaldo" ) );
+    addSHeader ( "ejdebe", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "ejdebe" ) );
+    addSHeader ( "ejhaber", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "ejhaber" ) );
+    addSHeader ( "ejsaldo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "ejsaldo" ) );
+    setinsercion ( FALSE );
+    _depura ( "END BalanceSubForm::BalanceSubForm", 0 );
 }
 

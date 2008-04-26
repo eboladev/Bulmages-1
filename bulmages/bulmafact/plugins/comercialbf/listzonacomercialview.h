@@ -40,12 +40,10 @@ class ListZonaComercialSubForm : public SubForm2Bf
 
 public:
     ListZonaComercialSubForm ( QWidget *parent = 0 );
-    ~ListZonaComercialSubForm()
-    {};
+    ~ListZonaComercialSubForm() {};
 
 public slots:
-    virtual void cargar()
-    {
+    virtual void cargar() {
         _depura ( "ListZonaComercialSubForm::cargar\n", 0 );
         SubForm3::cargar ( "SELECT * FROM zonacomercial" );
     };
@@ -64,8 +62,7 @@ public:
     ~ListZonaComercialView();
 
 public slots:
-    virtual void on_mui_aceptar_clicked()
-    {
+    virtual void on_mui_aceptar_clicked() {
         mui_listado->guardar();
         close();
     };

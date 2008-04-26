@@ -519,7 +519,7 @@ QWidget *QSubForm2BfDelegate::createEditor ( QWidget *parent, const QStyleOption
         editor->setEmpresaBase ( ( Company * ) m_subform->empresaBase() );
         _depura ( "END QSubForm2BfDelegate::createEditor", 0, "BusquedaTrabajadorDelegate" );
         return editor;
-    } else if ( linea->nomcampo() == "nomalmacen"  && m_subform->tableName() != "almacen") {
+    } else if ( linea->nomcampo() == "nomalmacen"  && m_subform->tableName() != "almacen" ) {
         BusquedaAlmacenDelegate * editor = new BusquedaAlmacenDelegate ( parent );
         editor->setEmpresaBase ( ( Company * ) m_subform->empresaBase() );
         _depura ( "END QSubForm2BfDelegate::createEditor", 0, "BusquedaAlmacenDelegate" );

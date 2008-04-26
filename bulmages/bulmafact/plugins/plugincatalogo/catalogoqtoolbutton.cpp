@@ -77,7 +77,7 @@ void CatalogoQToolButton::setBoton()
     setStatusTip ( "Imprimir Catalogo" );
     setToolTip ( "Imprimir Catalogo" );
     setMinimumSize ( QSize ( 32, 32 ) );
-    setIcon ( QIcon ( confpr->valor(CONF_PROGDATA) +"icons/catalogo.png" ) );
+    setIcon ( QIcon ( confpr->valor ( CONF_PROGDATA ) + "icons/catalogo.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
     _depura ( "END CatalogoQToolButton::setBoton", 0 );
 }
@@ -147,13 +147,13 @@ QString CatalogoQToolButton::detalleArticulos()
     QString texto = "";
 
     BLProgressBar barra;
-    barra.setText(tr("Generando Catalogo"));
+    barra.setText ( tr ( "Generando Catalogo" ) );
     barra.show();
 
 
     cursor2 *cur = empresaBase() ->cargacursor ( m_articuloList->formaQuery() );
-    barra.setRange(0, cur->numregistros());
-    barra.setValue(0);
+    barra.setRange ( 0, cur->numregistros() );
+    barra.setValue ( 0 );
     while ( !cur->eof() ) {
         texto += "<blockTable style=\"tabla1\">\n";
         texto += "<tr>\n";
@@ -173,7 +173,7 @@ QString CatalogoQToolButton::detalleArticulos()
         texto += "</tr>\n";
         texto += "</blockTable>";
         cur->siguienteregistro();
-	barra.setValue(barra.value() +1);
+        barra.setValue ( barra.value() + 1 );
     } // end while
     delete cur;
     _depura ( "END CatalogoQToolButton::detalleArticulos()", 0 );

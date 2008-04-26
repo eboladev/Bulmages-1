@@ -39,14 +39,12 @@ public:
     BusquedaZonaComercial ( QWidget *parent = 0 );
     ~BusquedaZonaComercial();
     virtual void setidzonacomercial ( QString idzonacomercial );
-    QString idzonacomercial()
-    {
+    QString idzonacomercial() {
         return m_cursorcombo->valor ( "idzonacomercial", currentIndex() - 1 );
     };
 
 public slots:
-    void m_activated ( int index )
-    {
+    void m_activated ( int index ) {
         _depura ( "Activado el combo box", 0 );
         if ( index > 0 ) {
             emit ( valueChanged ( m_cursorcombo->valor ( "idzonacomercial", index - 1 ) ) );

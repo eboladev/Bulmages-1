@@ -413,7 +413,7 @@ int pgimportfiles::bulmages2Contaplus ( QFile &subcuentas, QFile &asientos )
 /**
 \param subcuentas
 \param asientos
-\return 
+\return
 **/
 int pgimportfiles::contaplus2Bulmages ( QFile &subcuentas, QFile &asientos )
 {

@@ -38,8 +38,7 @@ class ListLinPresupuestoView : public SubForm2Bf
 public:
     QString mdb_idpresupuesto;
     ListLinPresupuestoView ( QWidget *parent = 0 );
-    ~ListLinPresupuestoView()
-    {};
+    ~ListLinPresupuestoView() {};
 
 public slots:
     virtual void cargar ( QString idpresupuesto );

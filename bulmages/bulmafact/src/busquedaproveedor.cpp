@@ -47,7 +47,7 @@ BusquedaProveedor::BusquedaProveedor ( QWidget *parent )
 
 
 /** Presenta en pantalla el proveedor seleccionado.
-    Usa la variable de clase m_semaforo para que no haya dead-lock entre este metodo y 
+    Usa la variable de clase m_semaforo para que no haya dead-lock entre este metodo y
     el slot on_mui_textChanged
 */
 /**

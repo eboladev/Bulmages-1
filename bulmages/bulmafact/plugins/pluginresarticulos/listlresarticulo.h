@@ -34,7 +34,7 @@ class ListLResArticulo : public SubForm2Bf
 public:
     QString mdb_idarticulo;
     ListLResArticulo ( QWidget *parent = 0 );
-    ~ListLResArticulo(){};
+    ~ListLResArticulo() {};
 
 public slots:
     virtual void cargar ( QString idarticulo );
@@ -48,7 +48,7 @@ class ListEntregas : public SubForm2Bf
 public:
     QString mdb_idarticulo;
     ListEntregas ( QWidget *parent = 0 );
-    ~ListEntregas(){};
+    ~ListEntregas() {};
 
 public slots:
     virtual void cargar ( QString idarticulo );
@@ -61,7 +61,7 @@ class ListCompras : public SubForm2Bf
 public:
     QString mdb_idarticulo;
     ListCompras ( QWidget *parent = 0 );
-    ~ListCompras(){};
+    ~ListCompras() {};
 
 public slots:
     virtual void cargar ( QString idarticulo );
@@ -74,7 +74,7 @@ class ListRecogidas : public SubForm2Bf
 public:
     QString mdb_idarticulo;
     ListRecogidas ( QWidget *parent = 0 );
-    ~ListRecogidas(){};
+    ~ListRecogidas() {};
 
 public slots:
     virtual void cargar ( QString idarticulo );

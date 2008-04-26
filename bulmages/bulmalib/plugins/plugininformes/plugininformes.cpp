@@ -28,6 +28,7 @@
 #include <QApplication>
 #include <QObject>
 #include <QProcess>
+#include <QTextStream>
 
 #include "plugininformes.h"
 #include "funcaux.h"
@@ -39,6 +40,8 @@
 
 QMainWindow *g_bges = NULL;
 EmpresaBase *g_emp = NULL;
+
+
 ///
 /**
 **/
@@ -67,9 +70,9 @@ void MyPluginInformes::elslot1( )
 {
     _depura ( "MyPluginInformes::elslot", 0 );
 
-	    Ficha *ficha = new Ficha(g_emp, 0);
-            ficha->generaRML ( sender()->objectName() );
-            invocaPDF ( sender()->objectName().left ( sender()->objectName().size() - 4 ) );
+    Ficha *ficha = new Ficha ( g_emp, 0 );
+    ficha->generaRML ( sender()->objectName() );
+    invocaPDF ( sender()->objectName().left ( sender()->objectName().size() - 4 ) );
 
     _depura ( "END MyPluginInformes::elslot", 0 );
 }
@@ -87,20 +90,20 @@ void entryPoint ( QMainWindow *bges )
     pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "menuInformes" );
     /// En BulmaCont el menu de Herramientas tiene otro nombre.
     if ( !pPluginMenu ) {
-	pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "menuInformes" );
+        pPluginMenu = bges->menuBar() ->findChild<QMenu *> ( "menuInformes" );
     } // end if
-	
+
     /// Creamos el men&uacute;.
     if ( !pPluginMenu ) {
         pPluginMenu = new QMenu ( "&Informes", bges->menuBar() );
         pPluginMenu->setObjectName ( QString::fromUtf8 ( "Informes" ) );
     } // end if
 
-/*
-    pPluginMenu->addSeparator();
-    pPluginMenu->addAction ( accion );
-    pPluginMenu->addAction ( accion1 );
-*/
+    /*
+        pPluginMenu->addSeparator();
+        pPluginMenu->addAction ( accion );
+        pPluginMenu->addAction ( accion1 );
+    */
 
 //    QMenu *ajust = menu->addMenu ( tr ( "Informes Personales" ) );
 
@@ -117,12 +120,29 @@ void entryPoint ( QMainWindow *bges )
     QFileInfoList list = dir.entryInfoList();
     for ( int i = 0; i < list.size(); ++i ) {
         QFileInfo fileInfo = list.at ( i );
-	/// Creamos el men&uacute;.
-    	QAction *accion = new QAction ( fileInfo.fileName(), 0 );
+
+        QFile file;
+        file.setFileName ( confpr->valor ( CONF_DIR_OPENREPORTS ) + fileInfo.fileName() );
+        file.open ( QIODevice::ReadOnly );
+        QTextStream stream ( &file );
+        QString buff = stream.readAll();
+        file.close();
+
+        /// Buscamos Query's por tratar
+        QString titulo = fileInfo.fileName();
+        QRegExp rx1 ( "title\\s*=\\s*\"(.*)\"" );
+        rx1.setMinimal ( TRUE );
+        if ( rx1.indexIn ( buff, 0 )  != -1 ) {
+            titulo = rx1.cap ( 1 );
+        } // end while
+
+
+        /// Creamos el men&uacute;.
+        QAction *accion = new QAction ( titulo, 0 );
         accion->setObjectName ( fileInfo.fileName() );
-    	accion->setStatusTip ( "Informe" );
-    	accion->setWhatsThis ( "Informe" );
-	mcont->connect ( accion, SIGNAL ( activated() ), mcont, SLOT ( elslot1() ) );
+        accion->setStatusTip ( "Informe" );
+        accion->setWhatsThis ( "Informe" );
+        mcont->connect ( accion, SIGNAL ( activated() ), mcont, SLOT ( elslot1() ) );
         pPluginMenu->addAction ( accion );
     } // end for
 

@@ -69,7 +69,7 @@ bool ImportBalance::startElement ( const QString &a, const QString &b, const QSt
 /// Dependiendo del paso en que nos encontremos hace la llamada a una función u a otra.
 /**
 \param a
-\param b 
+\param b
 \param c
 \return
 **/

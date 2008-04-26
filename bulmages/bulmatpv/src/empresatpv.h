@@ -59,16 +59,13 @@ public:
     void cobrar();
     void z();
     void x();
-    Ticket *ticketActual()
-    {
+    Ticket *ticketActual() {
         return m_ticketActual;
     };
-    QList<Ticket *> *listaTickets()
-    {
+    QList<Ticket *> *listaTickets() {
         return & m_listaTickets;
     };
-    void setTicketActual ( Ticket *tick )
-    {
+    void setTicketActual ( Ticket *tick ) {
         m_ticketActual = tick;
     };
 

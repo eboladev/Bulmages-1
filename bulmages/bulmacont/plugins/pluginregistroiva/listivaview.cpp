@@ -162,7 +162,7 @@ void ListIvaView::pintaListIva()
 ///
 /**
 \param row
-\param pos 
+\param pos
 **/
 void ListIvaView::contextMenu ( int row, int, const QPoint & pos )
 {

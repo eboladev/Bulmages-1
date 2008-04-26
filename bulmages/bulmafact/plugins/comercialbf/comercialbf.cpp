@@ -107,12 +107,12 @@ int ClienteView_saveClient(ClienteView *cli) {
     cli->setDBvalue("fechabasecomercialcliente", bus->mui_fechabasecomercialcliente->fecha());
     cli->setDBvalue("periodocomercialcliente", bus->mui_periodocomercialcliente->periodo());
     cli->setDBvalue("comentcomercialcliente", bus->mui_comentcomercialcliente->toPlainText());
- 
+
     _depura("END ClienteView_saveClient", 0);
     return 0;
 }
- 
- 
+
+
 int Cliente_pintaCliente(Cliente *cli) {
     _depura("Cliente_pintaCliente", 0);
     ClienteView *clo = (ClienteView *) cli;

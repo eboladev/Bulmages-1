@@ -43,8 +43,7 @@ class ListTipoIVASubForm : public SubForm2Bf
 
 public:
     ListTipoIVASubForm ( QWidget *parent = 0 );
-    virtual ~ListTipoIVASubForm()
-    {};
+    virtual ~ListTipoIVASubForm() {};
 
 public slots:
     virtual void cargar();

@@ -35,8 +35,7 @@ class ListDescuentoPedidoClienteView : public SubForm2Bf
 public:
     QString mdb_idpedidocliente;
     ListDescuentoPedidoClienteView ( QWidget *parent = 0 );
-    ~ListDescuentoPedidoClienteView()
-    {};
+    ~ListDescuentoPedidoClienteView() {};
 
 public slots:
     virtual void cargar ( QString idpedidocliente );

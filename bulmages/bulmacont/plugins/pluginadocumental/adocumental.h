@@ -77,12 +77,10 @@ private:
 public:
     adocumental ( Empresa *, QWidget *parent = 0 );
     ~adocumental();
-    void setmodoedicion()
-    {
+    void setmodoedicion() {
         modo = 0;
     };
-    void setmodoconsulta()
-    {
+    void setmodoconsulta() {
         modo = 1;
     };
     QString getidadocumental();

@@ -20,10 +20,10 @@
 
 /***************************************************************************
       LISTA DE BUGS CONOCIDOS
-      
+
       - Las cuentas del estilo 47200477 o 47700472 deformaran los resultados
        ya que la busqueda esta hecha con un LIKE que no contempla estos casos.
- 
+
       - Las fechas incorrectas producen mal funcionamiento pej: 31/06/2003 no
       dara ningun registro porque el dia 31 no existe.
  ***************************************************************************/
@@ -64,8 +64,7 @@ public slots:
     virtual void on_mui_tablarepercutido_trataMenu ( QAction *ac );
     virtual void on_mui_actualizar_clicked();
     virtual void boton_print();
-    virtual void on_mui_list_editFinished ( int, int )
-    {}
+    virtual void on_mui_list_editFinished ( int, int ) {}
     ;
 };
 

@@ -183,7 +183,7 @@ int listcuentasview1::inicializa()
 
             ctas->siguienteregistro();
         } // end while
-	mui_arbolcuentas->expandAll();
+        mui_arbolcuentas->expandAll();
         delete ctas;
 
         /// Cargamos el n&uacute;mero de d&iacute;gitos de cuenta para poder hacer una

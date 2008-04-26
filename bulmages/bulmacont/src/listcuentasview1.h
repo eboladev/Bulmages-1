@@ -40,8 +40,7 @@ class listcuentasview1 : public FichaBc, public Ui_ListCuentasBase, public pgimp
     Q_OBJECT
 
 public:
-    enum edmode
-    {
+    enum edmode {
         EditMode = 0,
         SelectMode = 1
     };

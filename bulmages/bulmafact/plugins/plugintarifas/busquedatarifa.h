@@ -39,14 +39,12 @@ public:
     BusquedaTarifa ( QWidget *parent = 0 );
     ~BusquedaTarifa();
     virtual void setidtarifa ( QString idtarifa );
-    QString idtarifa()
-    {
+    QString idtarifa() {
         return mdb_idtarifa;
     };
 
 public slots:
-    void m_activated ( int index )
-    {
+    void m_activated ( int index ) {
         if ( index > 0 ) {
             mdb_idtarifa = m_cursorcombo->valor ( "idtarifa", index - 1 );
             emit ( valueChanged ( m_cursorcombo->valor ( "idtarifa", index - 1 ) ) );

@@ -337,18 +337,23 @@ void resmensualview::generargrafico ( float *h1, char**t2 )
     fprintf ( stderr, "Principio de generargrafico\n" );
     /* set some sample data points */
     float h[12]  = { 17.8,  17.1,  17.3,  0,  17.2,  17.1,
-                     17.3,  17.3,  17.3,  17.1,         17.5,  17.4 };
+                     17.3,  17.3,  17.3,  17.1,         17.5,  17.4
+                   };
 
     float c[12]  =  { 17.0,  16.8,  16.9,  0,  16.9,  16.8,
-                      17.2,  16.8,  17.0,  16.9,         16.4,  16.1 };
+                      17.2,  16.8,  17.0,  16.9,         16.4,  16.1
+                    };
 
     float l[12]  = {  16.8,  16.8,  16.7,  0,  16.5,  16.0,
-                      16.1,  16.8,  16.5,  16.9,         16.2,  16.0 };
+                      16.1,  16.8,  16.5,  16.9,         16.2,  16.0
+                   };
 
     float v[12]  = {  150.0, 100.0, 340.0,  0, 999.0, 390.0,
-                      420.0, 150.0, 100.0,  340.0,       1590.0, 700.0 };
+                      420.0, 150.0, 100.0,  340.0,       1590.0, 700.0
+                   };
     char *t[12] = { "May", "Jun", "Jul",  "Aug",       "Sep",  "Oct",
-                    "Nov", "Dec", "Jan", "Feb",        "Mar",  "Apr" };
+                    "Nov", "Dec", "Jan", "Feb",        "Mar",  "Apr"
+                  };
 
 // /* set color RGB as ulong array */
 // unsigned long setcolor[3]    = { 0xC0C0FF, 0xFF4040, 0xFFFFFF };
@@ -457,7 +462,7 @@ void resmensualview::generargrafico ( float *h1, char**t2 )
       pieclr(ic1ray,ic2ray,5);
       pietyp("3d");
       axspos(300,2700);
-      piegrf(cbuf,0,y2ray,5);       
+      piegrf(cbuf,0,y2ray,5);
     */
     disfin();
 }// end resmensualview

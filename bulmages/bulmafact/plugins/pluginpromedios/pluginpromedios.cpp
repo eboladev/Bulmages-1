@@ -32,19 +32,19 @@
 
 /*
 myplugin1::myplugin1() {}
- 
- 
+
+
 myplugin1::~myplugin1() {}
- 
- 
+
+
 void myplugin1::elslot() {
- 
+
 //    TarifaListView *tar = new TarifaListView(m_companyact, NULL);
 //    m_companyact->m_pWorkspace->addWindow(tar);
 //    tar->show();
 }
- 
- 
+
+
 void myplugin1::inicializa(bulmafact *bges) {
     /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
     m_companyact = bges->getcompany();
@@ -55,8 +55,8 @@ void myplugin1::inicializa(bulmafact *bges) {
     bges->menuArticulos->addAction(planCuentas);
     connect(planCuentas, SIGNAL(activated()), this, SLOT(elslot()));
 }
- 
- 
+
+
 */
 
 

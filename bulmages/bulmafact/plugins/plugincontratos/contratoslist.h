@@ -72,8 +72,7 @@ class ContratosList : public Listado, public Ui_ContratosListBase, public pgimpo
     Q_OBJECT
 
 public:
-    enum edmode
-    {
+    enum edmode {
         EditMode = 0,
         SelectMode = 1
     };

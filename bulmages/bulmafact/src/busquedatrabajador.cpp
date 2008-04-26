@@ -142,7 +142,7 @@ void BusquedaTrabajador::m_activated ( int index )
 /// ========================= ITEM DELEGATE ===============================0
 
 /** Inicializa todos los componentes del Widget a NULL para que no haya posibles confusiones
-    sobre si un elemento ha sido creado o no. 
+    sobre si un elemento ha sido creado o no.
     Conecta el SIGNAL activated() con m_activated() para tratarlo.
 */
 /**

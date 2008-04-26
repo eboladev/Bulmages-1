@@ -37,8 +37,7 @@ class ListLinContratoView : public SubForm2Bf
 public:
     QString mdb_idcontrato;
     ListLinContratoView ( QWidget *parent = 0 );
-    ~ListLinContratoView()
-    {};
+    ~ListLinContratoView() {};
 public slots:
     virtual void cargar ( QString idcontrato );
 };

@@ -55,12 +55,12 @@ public:
     ImportCSV ( EmpresaBase *, QWidget * );
     ~ImportCSV();
     void rellenarTablas();
-    void procesarLinea(const QString &linea);
+    void procesarLinea ( const QString &linea );
 public slots:
     void on_mui_aceptar_clicked();
     void on_mui_combotablas_activated ( const QString & text );
     void on_mui_buscarArchivo_clicked();
-    void on_mui_cabeceras_stateChanged(int state);
+    void on_mui_cabeceras_stateChanged ( int state );
 };
 
 

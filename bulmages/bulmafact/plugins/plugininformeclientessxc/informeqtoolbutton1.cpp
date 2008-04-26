@@ -75,7 +75,7 @@ void InformeQToolButton1::setBoton()
     setStatusTip ( "Informe de Cobros en Hoja de Cálculo" );
     setToolTip ( "Informe de Cobros en Hoja de Cálculo" );
     setMinimumSize ( QSize ( 32, 32 ) );
-    setIcon ( QIcon ( confpr->valor(CONF_PROGDATA) +"icons/informeclientessxc.png" ) );
+    setIcon ( QIcon ( confpr->valor ( CONF_PROGDATA ) + "icons/informeclientessxc.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
     _depura ( "END InformeQToolButton1::setBoton", 0 );
 }
@@ -177,8 +177,8 @@ void InformeQToolButton1::click()
     QString SQLQuery = "SELECT * FROM cliente ORDER BY nomcliente";
     cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
     BLProgressBar barra;
-    barra.setText(tr("Generando Informe"));
-    barra.setRange(0, cur->numregistros());
+    barra.setText ( tr ( "Generando Informe" ) );
+    barra.setRange ( 0, cur->numregistros() );
     barra.show();
     while ( !cur->eof() ) {
         QString gen = generarCliente ( cur->valor ( "idcliente" ), y, anyo );
@@ -195,7 +195,7 @@ void InformeQToolButton1::click()
             y++;
         } // end if
         cur->siguienteregistro();
-	barra.setValue(barra.value() +1);
+        barra.setValue ( barra.value() + 1 );
     } // end while
     delete cur;
 
@@ -327,7 +327,7 @@ void InformeProveedorQToolButton1::setBoton()
     setStatusTip ( "Informe de Pagos en Hoja de Cálculo" );
     setToolTip ( "Informe de Pagos en Hoja de Cálculo" );
     setMinimumSize ( QSize ( 32, 32 ) );
-    setIcon ( QIcon ( confpr->valor(CONF_PROGDATA) + "icons/informeclientessxc.png" ) );
+    setIcon ( QIcon ( confpr->valor ( CONF_PROGDATA ) + "icons/informeclientessxc.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
     _depura ( "END InformeProveedorQToolButton1::setBoton", 0 );
 }
@@ -431,9 +431,9 @@ void InformeProveedorQToolButton1::click()
 
     /// Ponemos la barra de progreso
     BLProgressBar barra;
-    barra.setText(tr("Generando Informe"));
-    barra.setText(tr("Generando Informe"));
-    barra.setRange(0, cur->numregistros());
+    barra.setText ( tr ( "Generando Informe" ) );
+    barra.setText ( tr ( "Generando Informe" ) );
+    barra.setRange ( 0, cur->numregistros() );
     barra.show();
 
     while ( !cur->eof() ) {
@@ -450,7 +450,7 @@ void InformeProveedorQToolButton1::click()
             y++;
         } // end if
         cur->siguienteregistro();
-	barra.setValue(barra.value() +1);
+        barra.setValue ( barra.value() + 1 );
     } // end while
     delete cur;
 

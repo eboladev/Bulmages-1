@@ -34,8 +34,7 @@ price_to_str ( float price,
     /* float  pow( double, double ); */
 
     // caller doesn't want fractions
-    if ( fltfmt )
-    {
+    if ( fltfmt ) {
         sprintf ( rtn, fltfmt, price );
         *numorator = *demoninator = *decimal = 0;
         return rtn;
@@ -50,8 +49,7 @@ price_to_str ( float price,
             ;       /* close enough to frac */
         else if ( ( 1 - rdec ) < EPSILON ) /* just over but close enough */
             ++numr;
-        else       /* no frac match */
-        {
+        else {     /* no frac match */
             sprintf ( rtn, "%f", price );
             *numorator = *demoninator = *decimal = 0;
             return rtn;
@@ -60,8 +58,7 @@ price_to_str ( float price,
 
     /* now have numr 256ths */
     /* resolve down */
-    if ( numr != 0 )
-    {
+    if ( numr != 0 ) {
         int cnt = 8;
 
         while ( ( float ) ( numr ) / 2.0 == ( float ) ( int ) ( numr / 2 ) ) {
@@ -78,8 +75,7 @@ price_to_str ( float price,
         sprintf ( rtn, "%d %d/%d", whole,
                   ( int ) numr,
                   *demoninator );
-    } else
-    {
+    } else {
         *numorator = *demoninator = 0;
         *decimal = whole;
         sprintf ( rtn, "%d", whole );

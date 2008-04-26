@@ -1,7 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2008 by Adelaida Clavaguera Mora <laida@alaxarxa.net>   *
  *   Copyright (C) 2008 by Leopold Palomo Avellaneda <leo@alaxarxa.net>    *
- *   Copyright (C) 2006 by Fco. Javier M. C. >fcojavmc@todo-redes.com>     *  
+ *   Copyright (C) 2006 by Fco. Javier M. C. >fcojavmc@todo-redes.com>     *
  *   Copyright (C) 2005 by Tomeu Borras Riera <tborras@conetxia.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -64,16 +64,16 @@ private:
     Fixed saldoCuentaAnt ( int cuenta );
     QString ejercicioActual_fechaBalance;
     QString ejercicioAnterior_fechaBalance;
-    Fixed cuentaPositiva( Fixed valor );
-    Fixed cuentaNegativa( Fixed valor );
+    Fixed cuentaPositiva ( Fixed valor );
+    Fixed cuentaNegativa ( Fixed valor );
 
-    void mensajeAdvertenciaPGC(CAnuales tipus);
+    void mensajeAdvertenciaPGC ( CAnuales tipus );
 
     QString cuentaAnualAsociancionSinLucro ();
     QString cuentaAnualCAPGC07();
     QString cuentaAnualCAPYMES08();
     QString cuentaAnualCAAPGC08();
-	QString cuentaAnualCAPGC08();
+    QString cuentaAnualCAPGC08();
 
 
 public:
@@ -86,14 +86,14 @@ public:
     void inicializa ( Bulmacont * );
 
 public slots:
-    void balanceSituacionODS(CAnuales tipus);
-	void formDatosBalance(CAnuales tipus);
-	void balsitCAAASL ();
-	void balsitCAPGC07 ();
-	void balsitCAPYMES08 ();
-	void balsitCAPGC08();
-	void balsitCAAPGC08();
-    
+    void balanceSituacionODS ( CAnuales tipus );
+    void formDatosBalance ( CAnuales tipus );
+    void balsitCAAASL ();
+    void balsitCAPGC07 ();
+    void balsitCAPYMES08 ();
+    void balsitCAPGC08();
+    void balsitCAAPGC08();
+
 };
 
 

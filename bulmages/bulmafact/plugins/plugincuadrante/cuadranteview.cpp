@@ -154,12 +154,12 @@ void CuadranteView::inicializaCuadrante ( const QDate &dateorig )
 
         int row = 0;
         BLProgressBar barra;
-	barra.setText(tr("Generando Informe"));
-	barra.setRange(0, cur->numregistros());
-	barra.show();
+        barra.setText ( tr ( "Generando Informe" ) );
+        barra.setRange ( 0, cur->numregistros() );
+        barra.show();
 
         while ( !cur->eof() ) {
-	    
+
             /// Establecemos la altura de los campos.
             mui_cuadrante->setRowHeight ( row, 100 );
 
@@ -180,7 +180,7 @@ void CuadranteView::inicializaCuadrante ( const QDate &dateorig )
             } // end for
             cur->siguienteregistro();
             row++;
-	    barra.setValue(row);
+            barra.setValue ( row );
         } // end while
         cargaconfig();
     } catch ( ... ) {

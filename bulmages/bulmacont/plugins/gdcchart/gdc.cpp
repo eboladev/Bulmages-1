@@ -8,17 +8,11 @@
 
 
 
-struct GDC_FONT_T GDC_fontc[GDC_numfonts] =
+struct GDC_FONT_T GDC_fontc[GDC_numfonts] = {
     {
-        {
-            ( gdFontPtr ) NULL, 8,  5
-        },
-        { ( gdFontPtr ) NULL, 8,  5},
-        { ( gdFontPtr ) NULL, 12, 6},
-        { ( gdFontPtr ) NULL, 13, 7},
-        { ( gdFontPtr ) NULL, 16, 8},
-        { ( gdFontPtr ) NULL, 15, 9}
-    };
+        ( gdFontPtr ) NULL, 8,  5
+    }, { ( gdFontPtr ) NULL, 8,  5}, { ( gdFontPtr ) NULL, 12, 6}, { ( gdFontPtr ) NULL, 13, 7}, { ( gdFontPtr ) NULL, 16, 8}, { ( gdFontPtr ) NULL, 15, 9}
+};
 
 /* ------------------------------------------------------------------- *\
  * convert from enum GDC_font_size to gd fonts
@@ -47,15 +41,13 @@ cnt_nl ( char *nstr,
     short max_seg_len = 0;
     short tmplen      = 0;
 
-    if ( !nstr )
-    {
+    if ( !nstr ) {
         if ( len )
             * len = 0;
         return 0;
     }
 
-    while ( *nstr )
-    {
+    while ( *nstr ) {
         if ( *nstr == '\n' ) {
             ++c;
             max_seg_len = MAX ( tmplen, max_seg_len );
@@ -95,8 +87,7 @@ GDCImageStringNL ( gdImagePtr  im,
     len      = -1;
     strs_num = -1;
     i = -1;
-    do
-    {
+    do {
         ++i;
         ++len;
         sub_str[len] = * ( str + i );

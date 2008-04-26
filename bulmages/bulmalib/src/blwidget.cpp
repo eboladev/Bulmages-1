@@ -68,7 +68,7 @@ void PEmpresaBase::setEmpresaBase ( EmpresaBase *emp )
 
 ///
 /**
-\return 
+\return
 **/
 EmpresaBase *PEmpresaBase::empresaBase()
 {
@@ -80,7 +80,7 @@ EmpresaBase *PEmpresaBase::empresaBase()
 
 ///
 /**
-\return 
+\return
 **/
 QString PEmpresaBase::valorCampo()
 {

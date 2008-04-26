@@ -35,8 +35,7 @@ class ProveedorListSubform : public SubForm2Bf
 
 public:
     ProveedorListSubform ( QWidget *parent = 0 );
-    ~ProveedorListSubform()
-    {}
+    ~ProveedorListSubform() {}
 
 public slots:
     virtual void cargar();

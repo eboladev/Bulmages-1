@@ -35,19 +35,16 @@ class RutaComercialListSubForm : public SubForm2Bf
 
 public:
     RutaComercialListSubForm ( QWidget *parent = 0 );
-    ~RutaComercialListSubForm()
-    {}
+    ~RutaComercialListSubForm() {}
     ;
 
 public slots:
-    virtual void cargar()
-    {
+    virtual void cargar() {
         _depura ( "RutaComercialListSubForm::cargar\n", 0 );
         QString SQLQuery = "SELECT * FROM presupuesto";
         SubForm3::cargar ( SQLQuery );
     };
-    virtual void cargar ( QString query )
-    {
+    virtual void cargar ( QString query ) {
         _depura ( "RutaComercialListSubForm::cargar\n", 0 );
         SubForm3::cargar ( query );
     };

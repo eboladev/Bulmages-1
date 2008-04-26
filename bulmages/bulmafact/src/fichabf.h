@@ -51,8 +51,7 @@ public:
     virtual void generaRML();
     virtual void generaRML ( const QString &arch );
     virtual void calculaypintatotales();
-    virtual void pintatotales ( Fixed, Fixed, Fixed, Fixed, Fixed, Fixed )
-    {};
+    virtual void pintatotales ( Fixed, Fixed, Fixed, Fixed, Fixed, Fixed ) {};
     virtual void trataTags ( QString &buff );
     virtual QString trataLineasDetalle ( const QString &det );
     virtual QString trataLineasDescuento ( const QString &det );

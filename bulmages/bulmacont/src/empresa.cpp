@@ -637,8 +637,7 @@ int Empresa::boton_primero()
     widget = m_pWorkspace->activeWindow();
     if ( widget == introapunts2 ) {
         introapunts2->boton_inicio();
-    } else if ( widget == diario ) {}
-    else if ( widget == extracto ) {
+    } else if ( widget == diario ) {} else if ( widget == extracto ) {
         extracto->boton_inicio();
     } // end if
     _depura ( "END Empresa::boton_primero", 0 );
@@ -657,8 +656,7 @@ int Empresa::boton_ultimo()
     widget = m_pWorkspace->activeWindow();
     if ( widget == introapunts2 ) {
         introapunts2->boton_fin();
-    } else if ( widget == diario ) {}
-    else if ( widget == extracto ) {
+    } else if ( widget == diario ) {} else if ( widget == extracto ) {
         extracto->boton_fin();
     } // end if
     _depura ( "END Empresa::boton_ultimo", 0 );

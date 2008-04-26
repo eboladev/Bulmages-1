@@ -79,7 +79,7 @@ void InformeQToolButton::setBoton()
     setStatusTip ( "Imprimir Catalogo" );
     setToolTip ( "Imprimir Catalogo" );
     setMinimumSize ( QSize ( 32, 32 ) );
-    setIcon ( QIcon (  confpr->valor(CONF_PROGDATA) +"icons/catalogo.png" ) );
+    setIcon ( QIcon (  confpr->valor ( CONF_PROGDATA ) + "icons/catalogo.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
     _depura ( "END InformeQToolButton::setBoton", 0 );
 }
@@ -133,8 +133,8 @@ void InformeQToolButton::click()
 
     /// Mostramos la barra de progreso
     BLProgressBar barra;
-    barra.setText(tr("Generando Informe"));
-    barra.setRange(0, cur->numregistros());
+    barra.setText ( tr ( "Generando Informe" ) );
+    barra.setRange ( 0, cur->numregistros() );
     barra.show();
 
     while ( !cur->eof() ) {
@@ -147,7 +147,7 @@ void InformeQToolButton::click()
             fitxersortidatxt += "\n<nextFrame/>\n";
         } // end if
         cur->siguienteregistro();
-	barra.setValue(barra.value() +1);
+        barra.setValue ( barra.value() + 1 );
     } // end while
     delete cur;
 
@@ -391,7 +391,7 @@ void InformeArtQToolButton::setBoton()
     setStatusTip ( "Imprimir Informe Resumen" );
     setToolTip ( "Imprimir Informe Resumen" );
     setMinimumSize ( QSize ( 32, 32 ) );
-    setIcon ( QIcon ( confpr->valor(CONF_PROGDATA) +"icons/catalogo.png" ) );
+    setIcon ( QIcon ( confpr->valor ( CONF_PROGDATA ) + "icons/catalogo.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
     _depura ( "END InformeArtQToolButton::setBoton", 0 );
 }
@@ -489,8 +489,8 @@ QString InformeArtQToolButton::generarArticulos()
 
     /// Generamos la barra de progreso.
     BLProgressBar barra;
-    barra.setText(tr("Generando Informe"));
-    barra.setRange(0, cur->numregistros());
+    barra.setText ( tr ( "Generando Informe" ) );
+    barra.setRange ( 0, cur->numregistros() );
     barra.show();
 
     while ( !cur->eof() ) {
@@ -505,7 +505,7 @@ QString InformeArtQToolButton::generarArticulos()
         fitxersortidatxt += "    <td>" + cur->valor ( "cantlfacturat" ) + "</td>\n";
         fitxersortidatxt += "</tr>\n";
         cur->siguienteregistro();
-	barra.setValue(barra.value() +1);
+        barra.setValue ( barra.value() + 1 );
     } // end while
     delete cur;
 

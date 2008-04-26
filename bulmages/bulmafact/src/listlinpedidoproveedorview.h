@@ -40,8 +40,7 @@ private:
 
 public:
     ListLinPedidoProveedorView ( QWidget *parent = 0 );
-    virtual ~ListLinPedidoProveedorView()
-    {};
+    virtual ~ListLinPedidoProveedorView() {};
 
 public slots:
     virtual void cargar ( QString idpedidoproveedor );

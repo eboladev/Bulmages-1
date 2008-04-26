@@ -92,7 +92,7 @@ ArticuloView::ArticuloView ( Company *comp, QWidget *parent )
         dialogChanges_setQObjectExcluido ( m_componentes );
         dialogChanges_setQObjectExcluido ( m_componentes->mui_list );
         m_archivoimagen = "";
-        m_imagen->setPixmap ( QPixmap ( confpr->valor(CONF_PROGDATA) + "images/logopeq.png" ) );
+        m_imagen->setPixmap ( QPixmap ( confpr->valor ( CONF_PROGDATA ) + "images/logopeq.png" ) );
 
         /// Disparamos los plugins.
         g_plugins->lanza ( "ArticuloView_ArticuloView_Post", this );

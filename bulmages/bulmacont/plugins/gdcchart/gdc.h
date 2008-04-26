@@ -63,7 +63,8 @@ enum GDC_font_size { GDC_pad     = 0,
                      GDC_MEDBOLD = 3,
                      GDC_LARGE   = 4,
                      GDC_GIANT   = 5,
-                     GDC_numfonts = 6 };  /* GDC[PIE]_fontc depends on this */
+                     GDC_numfonts = 6
+                   };  /* GDC[PIE]_fontc depends on this */
 
 typedef enum {
     GDC_DESTROY_IMAGE = 0,   /* default */
@@ -72,8 +73,7 @@ typedef enum {
 } GDC_HOLD_IMAGE_T;   /* EXPOSE & REUSE */
 
 #ifdef GDC_INCL
-struct GDC_FONT_T
-{
+struct GDC_FONT_T {
     gdFontPtr f;
     char  h;
     char  w;
@@ -81,7 +81,8 @@ struct GDC_FONT_T
 
 typedef enum { GDC_JUSTIFY_RIGHT,
                GDC_JUSTIFY_CENTER,
-               GDC_JUSTIFY_LEFT } GDC_justify_t;
+               GDC_JUSTIFY_LEFT
+             } GDC_justify_t;
 
 void GDCImageStringNL ( gdImagePtr, struct GDC_FONT_T*, int, int, char*, int, GDC_justify_t );
 void load_font_conversions();
@@ -105,7 +106,7 @@ extern struct GDC_FONT_T GDC_fontc[];
 /*
 EXTERND char    GDC_generate_gif DEFAULTO( TRUE );
 EXTERND GDC_HOLD_IMAGE_T GDC_hold_img  DEFAULTO( GDC_DESTROY_IMAGE );
-EXTERND void    *GDC_image   DEFAULTO( (void*)NULL ); 
+EXTERND void    *GDC_image   DEFAULTO( (void*)NULL );
 */
 
 extern char GDC_generate_gif;

@@ -46,12 +46,10 @@ class ListSerieFacturaSubForm : public SubForm2Bf
 
 public:
     ListSerieFacturaSubForm ( QWidget *parent = 0 );
-    ~ListSerieFacturaSubForm()
-    {}
+    ~ListSerieFacturaSubForm() {}
 
 public slots:
-    virtual void cargar()
-    {
+    virtual void cargar() {
         _depura ( "ListSerieFacturaSubForm::cargar\n", 0 );
         SubForm3::cargar ( "SELECT *, codigoserie_factura AS codigoserie_facturaorig FROM serie_factura" );
     }
@@ -72,8 +70,7 @@ public:
     virtual ~ListSerieFacturaView();
 
 public slots:
-    virtual void on_mui_aceptar_clicked()
-    {
+    virtual void on_mui_aceptar_clicked() {
         mui_listado->guardar();
         close();
     }

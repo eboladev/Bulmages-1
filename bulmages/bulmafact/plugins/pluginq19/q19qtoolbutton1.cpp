@@ -71,7 +71,7 @@ void Q19QToolButton1::setBoton()
     setStatusTip ( "Generar Q19" );
     setToolTip ( "Generar archivo Q19 de los elementos seleccionados" );
     setMinimumSize ( QSize ( 32, 32 ) );
-    setIcon ( QIcon ( confpr->valor(CONF_PROGDATA) +"icons/q19.png" ) );
+    setIcon ( QIcon ( confpr->valor ( CONF_PROGDATA ) + "icons/q19.png" ) );
     setIconSize ( QSize ( 22, 22 ) );
     _depura ( "END Q19QToolButton1::setBoton", 0 );
 }

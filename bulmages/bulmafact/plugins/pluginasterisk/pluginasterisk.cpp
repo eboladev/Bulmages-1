@@ -237,7 +237,7 @@ int Ficha_cargar ( Ficha *fich )
 {
     SubForm3 * form = fich->findChild<SubForm3 *> ( "m_validacionesalm" );
     if ( form )
-        form->cargar ( "SELECT * FROM valasterisk NATURAL LEFT JOIN trabajador WHERE idalmacen = " + fich->DBvalue ( "idalmacen" ) + " ORDER BY fechavalasterisk, horavalasterisk");
+        form->cargar ( "SELECT * FROM valasterisk NATURAL LEFT JOIN trabajador WHERE idalmacen = " + fich->DBvalue ( "idalmacen" ) + " ORDER BY fechavalasterisk, horavalasterisk" );
     return 0;
 }
 

@@ -75,8 +75,7 @@ Mod300ps::Mod300ps ( QWidget *parent ) : QDialog ( parent )
     delete cur;
     delete metabase;
 
-    if ( nTuples == 0 ) /// Si no tenemos ninguna cuenta de banco...
-    {
+    if ( nTuples == 0 ) { /// Si no tenemos ninguna cuenta de banco...
         sincuentasbancarias = true;
         personalButton->setChecked ( true );
         personalButtonPressed();
@@ -209,8 +208,7 @@ void Mod300ps::generaps()
             escribe_postscriptdefs();
 
             m_fichlec.readLine ( cad1, 256 );
-            while ( cad1 != "showpage\n" ) ///h Hsta que encuentre un showpage.
-            {
+            while ( cad1 != "showpage\n" ) { ///h Hsta que encuentre un showpage.
                 m_output << cad1;
                 m_fichlec.readLine ( cad1, 256 );
             } // end while
@@ -223,8 +221,7 @@ void Mod300ps::generaps()
             m_output << cad1;
 
             m_fichlec.readLine ( cad1, 256 );
-            while ( cad1 != "showpage\n" ) /// Hasta que encuentre un showpage.
-            {
+            while ( cad1 != "showpage\n" ) { /// Hasta que encuentre un showpage.
                 m_output << cad1;
                 m_fichlec.readLine ( cad1, 256 );
             } // end while
@@ -237,8 +234,7 @@ void Mod300ps::generaps()
             m_output << cad1;
 
             m_fichlec.readLine ( cad1, 256 );
-            while ( cad1 != "showpage\n" ) /// Hasta que encuentre un showpage.
-            {
+            while ( cad1 != "showpage\n" ) { /// Hasta que encuentre un showpage.
                 m_output << cad1;
                 m_fichlec.readLine ( cad1, 256 );
             } // end while
@@ -249,8 +245,7 @@ void Mod300ps::generaps()
             rellena_compensacion();
             m_output << cad1;
 
-            while ( !m_fichlec.atEnd() ) ///Leo el resto del fichero.
-            {
+            while ( !m_fichlec.atEnd() ) { ///Leo el resto del fichero.
                 m_fichlec.readLine ( cad1, 256 );
                 m_output << cad1 << "\n";
             } // end while
@@ -331,9 +326,9 @@ void Mod300ps::escribe_cuenta_bancaria ( int x, int y )
     _depura ( "Mod300ps::escribe_cuenta_bancaria", 0 );
 
     const int steps[] = {
-                            0, 11, 11, 11, 12, 11, 11, 11, 12, 11, 12, 11, 11, 11, 12, 11,
-                            11, 11, 12, 11, 11
-                        };
+        0, 11, 11, 11, 12, 11, 11, 11, 12, 11, 12, 11, 11, 11, 12, 11,
+        11, 11, 12, 11, 11
+    };
     //76,32 para devolver
     //338,73 para pagar
     int acum = x; /// Coordenada x de la primera casilla a rellenar.
@@ -422,8 +417,7 @@ void Mod300ps::rellena_compensacion()
             escribe_cuenta_bancaria ( 76, 32 ); /// Ponemos la cuenta bancaria si hay que devolver.
         } // end if
     } else {
-        if ( trimestre->currentIndex() == 3 ) /// Si estamos en el cuarto trimestre...
-        {
+        if ( trimestre->currentIndex() == 3 ) { /// Si estamos en el cuarto trimestre...
             marca_casilla ( "X", 464, 134 ); /// Casilla de adeudo en cuenta.
             escribe_cuenta_bancaria ( 338, 73 );
         } // end if

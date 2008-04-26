@@ -41,29 +41,25 @@ public:
 public:
     ListIva ( Empresa *comp );
     ListIva();
-    void setcompany ( Empresa *c )
-    {
+    void setcompany ( Empresa *c ) {
         companyact = c;
     };
     virtual ~ListIva();
     void guardaListIva();
     void vaciar();
-    virtual void pintaListIva()
-    {
+    virtual void pintaListIva() {
         _depura ( "Esta funcion aun no ha sido implementada\n", 2 );
     };
     int cargaListIva ( QString );
     void borrar();
     Iva *linpos ( int );
-    void append ( Iva *iva )
-    {
+    void append ( Iva *iva ) {
         m_lista.append ( iva );
     };
     Fixed calculaiva();
     Fixed calculabase();
     void borraIva ( int );
-    void setidregistroiva ( QString id )
-    {
+    void setidregistroiva ( QString id ) {
         mdb_idregistroiva = id;
         Iva *linea;
         QMutableListIterator<Iva*> m_ilista ( m_lista );

@@ -85,7 +85,7 @@ void TicketQToolButton::setBoton()
     setStatusTip ( "Imprimir Ticket" );
     setToolTip ( "Imprimir Ticket" );
     setMinimumSize ( QSize ( 32, 32 ) );
-    setIcon ( QIcon ( confpr->valor(CONF_PROGDATA) +"icons/ticket.png"  ) );
+    setIcon ( QIcon ( confpr->valor ( CONF_PROGDATA ) + "icons/ticket.png"  ) );
     setIconSize ( QSize ( 22, 22 ) );
     _depura ( "END TicketQToolButton::setBoton", 0 );
 }

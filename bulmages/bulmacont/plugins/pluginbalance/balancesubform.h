@@ -26,11 +26,12 @@
 
 ///
 /** */
-class BalanceSubForm : public SubForm2Bc {
+class BalanceSubForm : public SubForm2Bc
+{
     Q_OBJECT
 
 public:
-    BalanceSubForm(QWidget *parent = 0, const char *name = 0);
+    BalanceSubForm ( QWidget *parent = 0, const char *name = 0 );
     virtual ~BalanceSubForm() {};
 };
 

@@ -53,7 +53,7 @@ int PresupuestoView_PresupuestoView(PresupuestoView *l) {
        _depura("END PresupuestoView_PresupuestoView", 0);
        return 0;
 }
- 
+
 int PedidoClienteView_PedidoClienteView(PedidoClienteView *l) {
        _depura("PedidoClienteView_PedidoClienteView", 0);
        TicketQToolButton *mui_exporta_efactura2 = new TicketQToolButton(NULL, l, NULL, NULL, l->mui_plugbotones);

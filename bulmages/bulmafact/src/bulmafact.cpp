@@ -264,7 +264,7 @@ void Bulmafact::on_actionDocumentacion_triggered()
     QAssistantClient *asistenteAyuda = new QAssistantClient ( QLibraryInfo::location ( QLibraryInfo::BinariesPath ), 0 );
     connect ( asistenteAyuda, SIGNAL ( error ( const QString ) ), this, SLOT ( documentacionError ( const QString ) ) );
     QStringList parametros;
-    parametros << "-profile" << QString ( confpr->valor(CONF_PROGDATA) + "help/bulmafact/bulmafact.adp" );
+    parametros << "-profile" << QString ( confpr->valor ( CONF_PROGDATA ) + "help/bulmafact/bulmafact.adp" );
     asistenteAyuda->setArguments ( parametros );
     asistenteAyuda->openAssistant();
     _depura ( "END Bulmafact::on_actionDocumentacion_triggered", 0 );

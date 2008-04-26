@@ -189,7 +189,8 @@ void estadisticasview::sacapie ( float *p1, char **lbl1, int numslices1 )
                      "IBM",
                      "SGI",
                      "SUN\nSPARC",
-                     "other" };
+                     "other"
+                   };
     /* values to chart */
     float   p[] = { 12.5,
                     20.1,
@@ -197,7 +198,8 @@ void estadisticasview::sacapie ( float *p1, char **lbl1, int numslices1 )
                     22.0,
                     5.0,
                     18.0,
-                    13.0 };
+                    13.0
+                  };
 
     /* set which slices to explode, and by how much */
     int    expl[] = { 0, 0, 0, 0, 0, 20, 0 };

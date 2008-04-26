@@ -343,6 +343,6 @@ void Psprogressdialog::customEvent(QCustomEvent *event) {
         setValue(100);
     } // end if
 }
- 
+
 */
 

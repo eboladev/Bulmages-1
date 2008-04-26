@@ -316,7 +316,7 @@ void DBRecord::setDBTableName ( QString nom )
 Si se establece TRUE entonces se hará una inserción del registro en la tabla por
 defecto. Si por el contrario se establece como FALSE se hará una modificacion de los
 registros que coincidan en sus PrimaryKey con los datos del registro.
- 
+
 Este metodo es de uso interno. Es la propia clase la que regula si es una insercion
 o no dependiendo de si se hecho una carga previa del registro.
 \param n Registro para insertar o para modificar.

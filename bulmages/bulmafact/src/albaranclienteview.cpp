@@ -159,7 +159,7 @@ void AlbaranClienteView::pintatotales ( Fixed iva, Fixed base, Fixed total, Fixe
 
 /** Metodo que responde a la opcion de ver el presupuesto correspondiente con
     este albaran.
- 
+
     Busca los presupuestos por referencia y abre los que tienen la misma referencia.
 */
 /**
@@ -542,7 +542,7 @@ int AlbaranClienteView::cargarPost ( QString idalbaran )
     descuentos de albar&aacute;n. Tras hacer el guardado se hace una carga del albaran
     para recuperar los datos que haya podido escribir la base de datos automaticamente.
     Dichos datos son la referencia y el n&uacute;mero de albar&aacute;n.
- 
+
     Si todo funciona bien este m&eacute;todo devuelve 0. Si se produce algun error
     se genera una excepcion -1.
 */

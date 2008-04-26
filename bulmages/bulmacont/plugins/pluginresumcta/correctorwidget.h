@@ -37,7 +37,7 @@
     contables como puedan ser asientos no cerrados, amortizaciones con plazos expirados,
     cobros no realizados, etc.
     Realiza un informe de los errores encontrados para pasarselos al usuario. Tambien
-    proporciona el acceso de forma sencilla a los errores encontrados. 
+    proporciona el acceso de forma sencilla a los errores encontrados.
     El corrector solo tiene una instancia en toda la ejecucion del programa, es la clase
     empresa la que se encarga de construirlo y una vez construido permanece siempre en
     ejecucion. */

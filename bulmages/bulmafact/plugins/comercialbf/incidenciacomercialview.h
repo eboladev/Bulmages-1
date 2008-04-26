@@ -45,8 +45,7 @@ public:
     ~IncidenciaComercialView();
     IncidenciaComercialView ( Company *, QWidget *parent = NULL );
     void closeEvent ( QCloseEvent * );
-    virtual void pintar()
-    {}
+    virtual void pintar() {}
     ;
     void setEmpresaBase ( Company *comp );
     virtual int guardar();

@@ -44,8 +44,7 @@ public:
     RutaComercialView ( Company *, QWidget *parent = NULL );
     RutaComercialView ( QWidget *parent = NULL );
     ~RutaComercialView();
-    virtual void pintar()
-    {};
+    virtual void pintar() {};
     void setEmpresaBase ( Company *comp );
     virtual int guardar();
     virtual int cargar ( QString id );

@@ -30,10 +30,10 @@ class BLProgressBar : public QWidget, public Ui_BLProgressBarBase
 public:
     BLProgressBar (  );
     virtual ~BLProgressBar();
-    void setValue(int value);
+    void setValue ( int value );
     int value();
-    void setRange(int range,  int range1);
-    void setText(const QString &text);
+    void setRange ( int range,  int range1 );
+    void setText ( const QString &text );
 };
 
 #endif

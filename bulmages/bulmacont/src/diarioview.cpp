@@ -213,7 +213,7 @@ void DiarioView::presentar()
         if ( mui_asAbiertos->isChecked() ) {
             query += " LEFT JOIN (SELECT idregistroiva, factura, idborrador FROM registroiva) AS t3 ON t3.idborrador = " + tabla + ".idborrador ";
         } else {
-	    query += " LEFT JOIN (SELECT idborrador AS idborr, idapunte AS idap FROM borrador) AS t9 ON apunte.idapunte = t9.idap ";
+            query += " LEFT JOIN (SELECT idborrador AS idborr, idapunte AS idap FROM borrador) AS t9 ON apunte.idapunte = t9.idap ";
             query += " LEFT JOIN (SELECT idregistroiva, factura, idborrador FROM registroiva) AS t3 ON t3.idborrador = t9.idborr";
         } // end if
         query += " LEFT JOIN (SELECT idcuenta AS idcontrapartida, codigo AS codcontrapartida FROM cuenta) as t8 ON t8.idcontrapartida = " + tabla + ".contrapartida";
@@ -254,24 +254,22 @@ void DiarioView::presentar()
             cadand = " AND ";
         } // end if
 
-		bool ok = FALSE;
-		float ssup = mui_saldosup->text().toFloat ( &ok );
-		if ( ok )
-		{
-			cad += cadand + tabla + ".debe + " + tabla + ".haber >= " + mui_saldosup->text();
-	            cadand = " AND ";
-		} // end if
-		ok = FALSE;
-		float sinf = mui_saldoinf->text().toFloat ( &ok );
-		if ( ok )
-		{
-			cad += cadand + tabla + ".debe + " + tabla + ".haber <= " + mui_saldoinf->text();
-			cadand = " AND ";
-		} // end if
+        bool ok = FALSE;
+        float ssup = mui_saldosup->text().toFloat ( &ok );
+        if ( ok ) {
+            cad += cadand + tabla + ".debe + " + tabla + ".haber >= " + mui_saldosup->text();
+            cadand = " AND ";
+        } // end if
+        ok = FALSE;
+        float sinf = mui_saldoinf->text().toFloat ( &ok );
+        if ( ok ) {
+            cad += cadand + tabla + ".debe + " + tabla + ".haber <= " + mui_saldoinf->text();
+            cadand = " AND ";
+        } // end if
 
-		if (mui_contrapartida->text() != "") {
-			cad += cadand + tabla + ".contrapartida = "+mui_contrapartida->idcuenta();
-		} // end if
+        if ( mui_contrapartida->text() != "" ) {
+            cad += cadand + tabla + ".contrapartida = " + mui_contrapartida->idcuenta();
+        } // end if
 
         totalcadena = query + cad + " ORDER BY t5.fecha, t5.ordenasiento ";
 

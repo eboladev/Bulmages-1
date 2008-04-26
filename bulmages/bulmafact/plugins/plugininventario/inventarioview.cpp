@@ -177,7 +177,7 @@ void InventarioView::on_mui_pregenerar_clicked()
 void InventarioView::on_mui_actualizar_released()
 {
     _depura ( "InventarioView::on_mui_actualizar_released", 0 );
-    cargar(DBvalue("idinventario"));
+    cargar ( DBvalue ( "idinventario" ) );
     _depura ( "END InventarioView::on_mui_actualizar_released", 0 );
 }
 
@@ -189,7 +189,7 @@ void InventarioView::on_mui_actualizar_released()
 **/
 int InventarioView::cargar ( QString idbudget )
 {
-    if (idbudget == "") idbudget = "0";
+    if ( idbudget == "" ) idbudget = "0";
     QString query = "SELECT * FROM inventario WHERE idinventario = " + idbudget;
     cursor2 * cur = companyact->cargacursor ( query );
     if ( !cur->eof() ) {
@@ -201,8 +201,8 @@ int InventarioView::cargar ( QString idbudget )
     SQLQuery += " (SELECT idarticulo, idalmacen, nomarticulo, nomalmacen, codigocompletoarticulo, codigoalmacen, idfamilia FROM articulo, almacen) AS t1 ";
     SQLQuery += " LEFT JOIN (SELECT punteocontrolstock,stockantcontrolstock, stocknewcontrolstock, idarticulo AS idarticulopk, idalmacen AS idalmacenpk, idinventario FROM controlstock WHERE idinventario = " + idbudget + ") AS t2 ON t1.idarticulo = t2.idarticulopk AND t1.idalmacen = t2.idalmacenpk ";
 
-    if (mui_idfamilia->idfamilia() != "") {
-	SQLQuery += " WHERE t1.idfamilia = " + mui_idfamilia->idfamilia();
+    if ( mui_idfamilia->idfamilia() != "" ) {
+        SQLQuery += " WHERE t1.idfamilia = " + mui_idfamilia->idfamilia();
     } // end if
 
     listalineas->cargar ( SQLQuery );

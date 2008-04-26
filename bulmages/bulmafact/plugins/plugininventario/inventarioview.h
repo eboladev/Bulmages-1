@@ -45,7 +45,7 @@ public:
     void pintafechainventario ( QString id );
     void pintanominventario ( QString id );
     virtual int sacaWindow();
-    virtual int cargar( QString id);
+    virtual int cargar ( QString id );
 
 public slots:
     virtual void on_mui_guardar2_clicked();

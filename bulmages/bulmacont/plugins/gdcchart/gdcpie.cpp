@@ -13,28 +13,28 @@
 #include <stdlib.h>
 
 /*
- 
-unsigned long  GDCPIE_BGColor   DEFAULTO( 0x000000L ); 
-unsigned long  GDCPIE_PlotColor  DEFAULTO( 0xC0C0C0L ); 
+
+unsigned long  GDCPIE_BGColor   DEFAULTO( 0x000000L );
+unsigned long  GDCPIE_PlotColor  DEFAULTO( 0xC0C0C0L );
 unsigned long  GDCPIE_LineColor  DEFAULTO( GDC_DFLTCOLOR );
-unsigned long  GDCPIE_EdgeColor  DEFAULTO( GDC_NOCOLOR ); 
- 
+unsigned long  GDCPIE_EdgeColor  DEFAULTO( GDC_NOCOLOR );
+
 char    GDCPIE_other_threshold DEFAULTO( -1 );
-unsigned short  GDCPIE_3d_angle   DEFAULTO( 45 );   
-unsigned short  GDCPIE_3d_depth   DEFAULTO( 10 );   
-char    *GDCPIE_title   DEFAULTO( NULL );  
+unsigned short  GDCPIE_3d_angle   DEFAULTO( 45 );
+unsigned short  GDCPIE_3d_depth   DEFAULTO( 10 );
+char    *GDCPIE_title   DEFAULTO( NULL );
 enum GDC_font_size GDCPIE_title_size  DEFAULTO( GDC_MEDBOLD );
 enum GDC_font_size GDCPIE_label_size  DEFAULTO( GDC_SMALL );
-int     GDCPIE_label_dist  DEFAULTO( 1+8/2 );  
-unsigned char  GDCPIE_label_line  DEFAULTO( FALSE );  
- 
-int     *GDCPIE_explode   DEFAULTO( (int*)NULL ); 
-               
+int     GDCPIE_label_dist  DEFAULTO( 1+8/2 );
+unsigned char  GDCPIE_label_line  DEFAULTO( FALSE );
+
+int     *GDCPIE_explode   DEFAULTO( (int*)NULL );
+
 unsigned long  *GDCPIE_Color   DEFAULTO( (unsigned long*)NULL );
-unsigned char  *GDCPIE_missing   DEFAULTO( (unsigned char*)NULL ); 
- 
+unsigned char  *GDCPIE_missing   DEFAULTO( (unsigned char*)NULL );
+
 GDCPIE_PCT_TYPE  GDCPIE_percent_labels DEFAULTO( GDCPIE_PCT_NONE );
- 
+
 */
 /* rem circle:  x = rcos(@), y = rsin(@) */
 
@@ -75,8 +75,7 @@ extern struct GDC_FONT_T GDC_fontc[];
 #define MOD_2PI(o)   ( (o)>=(2.0*M_PI)? ((o)-(2.0*M_PI)): (((o)<0)? ((o)+(2.0*M_PI)): (o)) )
 #define MOD_360(o)   ( (o)>=360? (o)-360: (o) )        /* assume !> 720 */
 
-struct tmp_slice_t
-{
+struct tmp_slice_t {
     int i;     // original index
     char hidden;    // 'behind' top [3D] pie
     float angle;    // radian
@@ -126,7 +125,7 @@ static int ocmpr ( const void *a1, const void *b1 )
 
 /* ======================================================= *\
  * PIE
- * 
+ *
  * Notes:
  *  always drawn from 12:00 position clockwise
  *  'missing' slices don't get labels
@@ -215,13 +214,11 @@ pie_gif ( short   GIFWIDTH,
         cwidth  = cx;
 
         /* walk around pie. determine spacing to edge */
-        for ( i = 0; i < num_points; ++i )
-        {
+        for ( i = 0; i < num_points; ++i ) {
             float thos_pct = val[i] / tot_val;      /* should never be > 100% */
             float thos = thos_pct * ( 2.0 * M_PI );      /* pie-portion */
             if ( ( thos_pct > min_grphable ) ||      /* too small */
-                    ( !GDCPIE_missing || !GDCPIE_missing[i] ) )   /* still want angles */
-            {
+                    ( !GDCPIE_missing || !GDCPIE_missing[i] ) ) { /* still want angles */
                 int thos_explode = GDCPIE_explode ? GDCPIE_explode[i] : 0;
                 double thos_sin;
                 double thos_cos;
@@ -231,8 +228,7 @@ pie_gif ( short   GIFWIDTH,
                 thos_sin        = sin ( ( double ) slice_angle[0][i] );
                 thos_cos        = cos ( ( double ) slice_angle[0][i] );
 
-                if ( !GDCPIE_missing || ! ( GDCPIE_missing[i] ) )
-                {
+                if ( !GDCPIE_missing || ! ( GDCPIE_missing[i] ) ) {
                     short lbl_wdth,
                     lbl_hgt;
                     float thos_y_explode_limit,
@@ -342,8 +338,7 @@ pie_gif ( short   GIFWIDTH,
     BGColor   = clrallocate ( im, GDCPIE_BGColor );
     LineColor = clrallocate ( im, GDCPIE_LineColor );
     PlotColor = clrallocate ( im, GDCPIE_PlotColor );
-    if ( GDCPIE_EdgeColor != GDC_NOCOLOR )
-    {
+    if ( GDCPIE_EdgeColor != GDC_NOCOLOR ) {
         EdgeColor = clrallocate ( im, GDCPIE_EdgeColor );
         if ( threeD )
             EdgeColorShd = clrshdallocate ( im, GDCPIE_EdgeColor );
@@ -351,15 +346,13 @@ pie_gif ( short   GIFWIDTH,
 
     /* --- set color for each slice --- */
     for ( i = 0; i < num_points; ++i )
-        if ( GDCPIE_Color )
-        {
+        if ( GDCPIE_Color ) {
             unsigned long slc_clr = GDCPIE_Color[i];
 
             SliceColor[i]     = clrallocate ( im, slc_clr );
             if ( threeD )
                 SliceColorShd[i] = clrshdallocate ( im, slc_clr );
-        } else
-        {
+        } else {
             SliceColor[i]     = PlotColor;
             if ( threeD )
                 SliceColorShd[i] = clrshdallocate ( im, GDCPIE_PlotColor );
@@ -376,15 +369,13 @@ pie_gif ( short   GIFWIDTH,
 //       ( 2.0 * (float)GIFHEIGHT / (float)(SFONTHGT+1+TFONTHGT+2) );
 
 
-    if ( threeD )
-    {
+    if ( threeD ) {
         /* draw background shaded pie */
         {
             float rad1 = rad;
             for ( i = 0; i < num_points; ++i )
                 if ( ! ( others[i] ) &&
-                        ( !GDCPIE_missing || !GDCPIE_missing[i] ) )
-                {
+                        ( !GDCPIE_missing || !GDCPIE_missing[i] ) ) {
                     float rad = rad1;
 
                     gdImageLine ( im, CX ( i, 1 ), CY ( i, 1 ), IX ( i, 1, 1 ), IY ( i, 1, 1 ), SliceColorShd[i] );
@@ -417,8 +408,7 @@ pie_gif ( short   GIFWIDTH,
             num_slice_angles = 0;
 
             for ( i = 0; i < num_points; ++i )
-                if ( !GDCPIE_missing || !GDCPIE_missing[i] )
-                {
+                if ( !GDCPIE_missing || !GDCPIE_missing[i] ) {
                     if ( RAD_DIST1 ( slice_angle[1][i] ) < RAD_DIST2 ( slice_angle[0][i] ) )
                         tmp_slice[num_slice_angles].hidden = FALSE;
                     else
@@ -449,8 +439,7 @@ pie_gif ( short   GIFWIDTH,
                 }
 
             qsort ( ( void * ) tmp_slice, num_slice_angles, sizeof ( struct tmp_slice_t ), ocmpr );
-            for ( t = 0; t < num_slice_angles; ++t )
-            {
+            for ( t = 0; t < num_slice_angles; ++t ) {
                 gdPoint gdp[4];
 
                 i = tmp_slice[t].i;
@@ -493,8 +482,7 @@ pie_gif ( short   GIFWIDTH,
         float rad1 = rad;
         for ( i = 0; i < num_points; ++i )
             if ( !others[i] &&
-                    ( !GDCPIE_missing || !GDCPIE_missing[i] ) )
-            {
+                    ( !GDCPIE_missing || !GDCPIE_missing[i] ) ) {
                 float rad = rad1;
 
                 // last += val[i];
@@ -525,8 +513,7 @@ pie_gif ( short   GIFWIDTH,
             }
     }
 
-    if ( GDCPIE_title )
-    {
+    if ( GDCPIE_title ) {
         int title_len;
 
         cnt_nl ( GDCPIE_title, &title_len );
@@ -540,8 +527,7 @@ pie_gif ( short   GIFWIDTH,
     }
 
     /* labels */
-    if ( lbl )
-    {
+    if ( lbl ) {
         float liner = rad;
 
         rad += GDCPIE_label_dist;
@@ -570,8 +556,7 @@ pie_gif ( short   GIFWIDTH,
                 lbly = ( liney = IY ( i, 0, 0 ) ) - ( num_nl * ( 1 + GDC_fontc[GDCPIE_label_size].h ) ) / 2;
                 lblx = pctx = linex = IX ( i, 0, 0 );
 
-                if ( slice_angle[0][i] > M_PI )        /* which semicircle */
-                {
+                if ( slice_angle[0][i] > M_PI ) {      /* which semicircle */
                     lblx -= lbl_wdth;
                     pctx = lblx;
                     ++linex;

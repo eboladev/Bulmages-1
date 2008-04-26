@@ -35,8 +35,7 @@ class ListDescuentoAlbaranClienteView : public SubForm2Bf
 public:
     QString mdb_idalbaran;
     ListDescuentoAlbaranClienteView ( QWidget *parent = 0 );
-    ~ListDescuentoAlbaranClienteView()
-    {}
+    ~ListDescuentoAlbaranClienteView() {}
     ;
 
 public slots:

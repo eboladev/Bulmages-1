@@ -38,58 +38,45 @@ public:
     Iva ( Empresa *, QString );
     Iva ( Empresa *, cursor2 * );
     virtual ~Iva();
-    virtual void pintaIva()
-    {}
+    virtual void pintaIva() {}
     ;
     void guardaIva();
     void vaciaIva();
-    inline QString idiva()
-    {
+    inline QString idiva() {
         return DBvalue ( "idiva" );
     };
-    inline QString idtipoiva()
-    {
+    inline QString idtipoiva() {
         return DBvalue ( "idtipoiva" );
     };
-    inline QString idregistroiva()
-    {
+    inline QString idregistroiva() {
         return DBvalue ( "idregistroiva" );
     };
-    inline QString idcuenta()
-    {
+    inline QString idcuenta() {
         return DBvalue ( "idcuenta" );
     };
-    inline QString codigo()
-    {
+    inline QString codigo() {
         return DBvalue ( "codigo" );
     };
-    inline QString nombretipoiva()
-    {
+    inline QString nombretipoiva() {
         return DBvalue ( "nombretipoiva" );
     };
-    inline QString baseiva()
-    {
+    inline QString baseiva() {
         return DBvalue ( "baseiva" );
     };
-    inline QString ivaiva()
-    {
+    inline QString ivaiva() {
         return DBvalue ( "ivaiva" );
     };
-    inline void setidiva ( QString val )
-    {
+    inline void setidiva ( QString val ) {
         setDBvalue ( "idiva", val );
     };
     void setidtipoiva ( const QString &val );
-    inline void setidregistroiva ( QString val )
-    {
+    inline void setidregistroiva ( QString val ) {
         setDBvalue ( "idregistroiva", val );
     };
-    inline void setbaseiva ( QString val )
-    {
+    inline void setbaseiva ( QString val ) {
         setDBvalue ( "baseiva", val );
     };
-    inline void setivaiva ( QString val )
-    {
+    inline void setivaiva ( QString val ) {
         setDBvalue ( "ivaiva", val );
     };
     int borrar();

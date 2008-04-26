@@ -42,8 +42,8 @@ class DBCampo
 {
 public:
     /**
-    Indica el tipo de dato al que pertenece el campo. 
-    - DBint  . Entero 
+    Indica el tipo de dato al que pertenece el campo.
+    - DBint  . Entero
     - DBvarchar . String de longitud indeterminada.
     - DBdate . Fecha en formato Europeo (dd/mm/yyyy)
     - DBnumeric . Numero en punto fijo
@@ -51,17 +51,18 @@ public:
     */
     enum dbtype {DBint = 1, DBvarchar = 2, DBdate = 3, DBnumeric = 4, DBboolean = 5};
     /** Indica las restricciones que soporta el dato.
-    - DBNothing . Ninguna, 
-    - DBNotNull . No puede ser nulo, 
-    - DBPrimaryKey . Es clave primaria, 
+    - DBNothing . Ninguna,
+    - DBNotNull . No puede ser nulo,
+    - DBPrimaryKey . Es clave primaria,
     - DBNoSave . No se debe almacenenar en la base de datos.
-    - DBAuto . Es autonumerico, 
+    - DBAuto . Es autonumerico,
     - DBDupPrimaryKey . Duplicado de la clave primaria (util para aquellos casos en que la clave principal puede ser modificada). En este caso el valor del campo comentario es el de la llave a la que duplica.
-    - DBRequired . Requerido, 
+    - DBRequired . Requerido,
     - DBNoLoad . No debe cargarse desde la base de datos.
     **/
     enum dbrestrict {DBNothing = 0, DBNotNull = 1, DBPrimaryKey = 2,
-                     DBNoSave = 4, DBAuto = 8, DBDupPrimaryKey = 16, DBRequired = 32, DBNoLoad = 64};
+                     DBNoSave = 4, DBAuto = 8, DBDupPrimaryKey = 16, DBRequired = 32, DBNoLoad = 64
+                    };
 
 private:
     QString m_nomcampo;          ///< El nombre del campo

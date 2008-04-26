@@ -364,7 +364,7 @@ int AlbaranProveedorView::cargarPost ( QString idbudget )
     Para ello hace el guardado de DBRecord y luego guarda las lineas y los descuentos.
     Una vez hecho el guardado se hace una carga para recuperar posibles datos que haya
     introducido la base de datos como la referencia.
- 
+
     Si algo falla devuelve una excepcion -1.
 */
 /**

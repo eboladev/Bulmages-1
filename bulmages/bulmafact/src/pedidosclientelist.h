@@ -38,8 +38,7 @@ class PedidosClienteListSubform : public SubForm2Bf
 
 public:
     PedidosClienteListSubform ( QWidget *parent = 0, const char *name = 0 );
-    ~PedidosClienteListSubform()
-    {}
+    ~PedidosClienteListSubform() {}
 
 public slots:
     virtual void cargar();

@@ -45,12 +45,10 @@ class FacturasContratoListSubForm : public SubForm2Bf
     Q_OBJECT
 public:
     FacturasContratoListSubForm ( QWidget *parent = 0, const char *name = 0 );
-    ~FacturasContratoListSubForm()
-    {}
+    ~FacturasContratoListSubForm() {}
 
 public slots:
-    virtual void cargar ( QString query )
-    {
+    virtual void cargar ( QString query ) {
         SubForm3::cargar ( query );
     }
 };
@@ -79,8 +77,7 @@ public:
     /// Estos metodos deben existir para poder trabajar con la clase Ficha
     virtual int guardar();
     virtual int cargar ( QString id );
-    virtual int borrar()
-    {
+    virtual int borrar() {
         return Contrato::borrar();
     };
 

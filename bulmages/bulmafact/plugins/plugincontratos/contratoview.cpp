@@ -97,7 +97,7 @@ void ContratoView::inicializar()
 
 
 /** Carga una contrato de la base de datos.
-    Deleta toda la carga a la clase \ref Contrato 
+    Deleta toda la carga a la clase \ref Contrato
     Cambia el titulo de la ventana y reseta el control de cambios.
 */
 /**

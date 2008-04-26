@@ -538,7 +538,7 @@ static int strlen16 ( unsigned short *s )
 
 /* s and e are integers modulo 360 (degrees), with 0 degrees
   being the rightmost extreme and degrees changing clockwise.
-  cx and cy are the center in pixels; w and h are the horizontal 
+  cx and cy are the center in pixels; w and h are the horizontal
   and vertical diameter in pixels. Nice interface, but slow, since
   I don't yet use Bresenham (I'm using an inefficient but
   simple solution with too much work going on in it; generalizing
@@ -574,7 +574,7 @@ void gdImageArc ( gdImagePtr im, int cx, int cy, int w, int h, int s, int e, int
 int x, y, d;
 x = 0;
 y = w;
-d = 3 - 2*w;
+d = 3 - 2 * w;
 while ( x < y )
 {
     gdImageSetPixel ( im, cx + x, cy + y, color );
@@ -768,7 +768,7 @@ void gdImageFill ( gdImagePtr im, int x, int y, int color )
 ** CompuServe Incorporated.  GIF(sm) is a Service Mark property of
 ** CompuServe Incorporated.
 *
-*  Heavily modified by Mouse, 1998-02-12.  
+*  Heavily modified by Mouse, 1998-02-12.
 *  Remove LZW compression.
 *  Added miGIF run length compression.
 *
@@ -1103,22 +1103,22 @@ Putword ( int w, FILE *fp )
  * documentation for any purpose and without fee is hereby granted, provided
  * that the above copyright notice appear in all copies and that both that
  * copyright notice and this permission notice appear in supporting
- * documentation.  This software is provided "AS IS." The Hutchison Avenue 
- * Software Corporation disclaims all warranties, either express or implied, 
- * including but not limited to implied warranties of merchantability and 
+ * documentation.  This software is provided "AS IS." The Hutchison Avenue
+ * Software Corporation disclaims all warranties, either express or implied,
+ * including but not limited to implied warranties of merchantability and
  * fitness for a particular purpose, with respect to this code and accompanying
- * documentation. 
- * 
- * The miGIF compression routines do not, strictly speaking, generate files 
- * conforming to the GIF spec, since the image data is not LZW-compressed 
- * (this is the point: in order to avoid transgression of the Unisys patent 
- * on the LZW algorithm.)  However, miGIF generates data streams that any 
+ * documentation.
+ *
+ * The miGIF compression routines do not, strictly speaking, generate files
+ * conforming to the GIF spec, since the image data is not LZW-compressed
+ * (this is the point: in order to avoid transgression of the Unisys patent
+ * on the LZW algorithm.)  However, miGIF generates data streams that any
  * reasonably sane LZW decompresser will decompress to what we want.
  *
- * miGIF compression uses run length encoding. It compresses horizontal runs 
+ * miGIF compression uses run length encoding. It compresses horizontal runs
  * of pixels of the same color. This type of compression gives good results
- * on images with many runs, for example images with lines, text and solid 
- * shapes on a solid-colored background. It gives little or no compression 
+ * on images with many runs, for example images with lines, text and solid
+ * shapes on a solid-colored background. It gives little or no compression
  * on images with few runs, for example digital or scanned photos.
  *
  *                               der Mouse
@@ -1445,8 +1445,7 @@ static void compress ( int init_bits, FILE *outfile, gdImagePtr im, int backgrou
 #ifdef DEBUGGING_ENVARS
     { const char *ocienv;
         ocienv = getenv ( "GIF_OUT_CLEAR_INIT" );
-        if ( ocienv )
-        {
+        if ( ocienv ) {
             out_clear_init = atoi ( ocienv );
             if ( VERBOSE ) printf ( "[overriding out_clear_init to %d]\n", out_clear_init );
         }
@@ -1477,8 +1476,8 @@ static void compress ( int init_bits, FILE *outfile, gdImagePtr im, int backgrou
  * End of miGIF section  - See copyright notice at start of section.
  *
 /*-----------------------------------------------------------------------
- 
- 
+
+
 /******************************************************************************
  *
  * GIF Specific routines
@@ -1553,8 +1552,7 @@ static void init_statics ( void )
 
 /* We may eventually want to use this information, but def it out for now */
 #if 0
-static struct
-{
+static struct {
     unsigned int    Width;
     unsigned int    Height;
     unsigned char   ColorMap[3][MAXCOLORMAPSIZE];
@@ -1566,8 +1564,7 @@ static struct
 GifScreen;
 #endif
 
-static struct
-{
+static struct {
     int     transparent;
     int     delayTime;
     int     inputFlag;
@@ -2515,10 +2512,10 @@ void gdImageFilledPolygon ( gdImagePtr im, gdPointPtr p, int n, int c )
                 int inter =
                     ( y - y1 ) * ( x2 - x1 ) / ( y2 - y1 ) + x1;
                 /* Only count intersections once
-                 except at maxima and minima. Also, 
+                 except at maxima and minima. Also,
                  if two consecutive intersections are
                  endpoints of the same horizontal line
-                 that is not at a maxima or minima, 
+                 that is not at a maxima or minima,
                  discard the leftmost of the two. */
                 if ( !interFirst ) {
                     if ( ( p[ind1].y == p[lastInd1].y ) &&

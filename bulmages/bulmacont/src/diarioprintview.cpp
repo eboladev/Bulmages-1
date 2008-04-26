@@ -131,7 +131,7 @@ void DiarioPrintView::accept()
 /**
 \param tipus
 **/
-void DiarioPrintView::presentar (const char *tipus )
+void DiarioPrintView::presentar ( const char *tipus )
 {
     _depura ( "DiarioPrintView::presentar", 0 );
     DiarioView *diario = ( ( Empresa * ) empresaBase() ) ->diarioempresa();

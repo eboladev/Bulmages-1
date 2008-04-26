@@ -33,10 +33,10 @@
 /** Esta clase se encarga de implementar el subformulario de albaranes a clientes.
     Es una clase derivada de SubForm2Bf, donde estan las funciones especificas de la facturacion.
     que a su vez deriva de SubForm3 que tiene las funciones de subformularios.
- 
+
     La funcionalidad de esta clase es configurar el subformulario para que funcione
     con la tabla de albaranes.
- 
+
     Reimplementa los metodos de cargar para producir el query adecuado.
 */
 class AlbaranClienteListSubform : public SubForm2Bf

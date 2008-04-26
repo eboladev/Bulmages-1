@@ -8,7 +8,7 @@
  from bdf font
  -misc-fixed-medium-r-normal--16-140-75-75-c-80-iso8859-2
  at Tue Jan  6 19:39:27 1998.
- 
+
  The original bdf was holding following copyright:
  "Libor Skarvada, libor@informatics.muni.cz"
  */

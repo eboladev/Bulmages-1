@@ -55,7 +55,7 @@
 \param fac
 \param cob
 \param parent
-\param 
+\param
 **/
 ImpQToolButton::ImpQToolButton ( PresupuestoList *pres, PedidosClienteList *ped, AlbaranClienteList *alb,  FacturasList *fac, CobrosList *cob , QWidget *parent ) : QToolButton ( parent )
 {

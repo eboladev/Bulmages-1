@@ -2,17 +2,17 @@
 /*
  * TOra - An Oracle Toolkit for DBA's and developers
  * Copyright (C) 2000-2001,2001 Underscore AB
- * 
+ *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
  * as published by the Free Software Foundation;  only version 2 of
  * the License is valid for this program.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -272,8 +272,7 @@ public:
      * Get the workspace widget of the main window.
      * @return Workspace widget.
      */
-    QWorkspace *workspace()
-    {
+    QWorkspace *workspace() {
         return Workspace;
     }
 
@@ -324,32 +323,28 @@ public:
      * Get the file menu.
      * @return File menu
      */
-    QPopupMenu *fileMenu()
-    {
+    QPopupMenu *fileMenu() {
         return FileMenu;
     }
     /**
      * Get the edit menu.
      * @return Edit menu
      */
-    QPopupMenu *editMenu()
-    {
+    QPopupMenu *editMenu() {
         return EditMenu;
     }
     /**
      * Get the tools menu.
      * @return Tools menu
      */
-    QPopupMenu *toolsMenu()
-    {
+    QPopupMenu *toolsMenu() {
         return ToolsMenu;
     }
     /**
      * Get the help menu.
      * @return Help menu
      */
-    QPopupMenu *helpMenu()
-    {
+    QPopupMenu *helpMenu() {
         return HelpMenu;
     }
 
@@ -526,8 +521,8 @@ QString toGetSessionType ( void );
  * @param def Default value of the combobox.
  * @param item Combo box to fill. If not specified a new combobox is created.
  */
-QComboBox *toRefreshCreate ( QWidget *parent, const char *name = NULL, const QString &def = QString::null,
-                             QComboBox *item = NULL );
+QComboBox *toRefreshCreate ( QWidget *parent, const char *name = NULL, const QString & def = QString::null,
+                             QComboBox * item = NULL );
 /** Set a timer with the value from a refresh combobox (See @ref toRefreshCreate).
  * @param timer Timer to set timeout in.
  * @param str String from currentText of combobox. If empty, set to default.

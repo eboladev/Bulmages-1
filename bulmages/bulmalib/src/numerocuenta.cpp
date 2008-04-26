@@ -176,8 +176,8 @@ QString numerocuenta::getdc()
     /// MilMill. =  1
 
     const int we[] = {
-                         1, 2, 4, 8, 5, 10, 9, 7, 3, 6
-                     };
+        1, 2, 4, 8, 5, 10, 9, 7, 3, 6
+    };
 
     for ( i = 0; i < 4; i++ )
         sum += QString ( banco[i] ).toInt() * we[i + 2];

@@ -25,6 +25,8 @@
 #include <QList>
 #include <QMenu>
 #include <QAction>
+#include <QTextStream>
+#include <QFile>
 
 
 #include "fixed.h"
@@ -79,7 +81,26 @@ void EQToolButton::pintaMenu ( QMenu *menu )
     QFileInfoList list = dir.entryInfoList();
     for ( int i = 0; i < list.size(); ++i ) {
         QFileInfo fileInfo = list.at ( i );
-        ajust->addAction ( fileInfo.fileName() );
+
+
+        QFile file;
+        file.setFileName ( confpr->valor ( CONF_DIR_OPENREPORTS ) + fileInfo.fileName() );
+        file.open ( QIODevice::ReadOnly );
+        QTextStream stream ( &file );
+        QString buff = stream.readAll();
+        file.close();
+
+        /// Buscamos Query's por tratar
+        QString titulo = fileInfo.fileName();
+        QRegExp rx1 ( "title\\s*=\\s*\"(.*)\"" );
+        rx1.setMinimal ( TRUE );
+        if ( rx1.indexIn ( buff, 0 )  != -1 ) {
+            titulo = rx1.cap ( 1 );
+        } // end while
+
+
+        ajust->addAction ( titulo );
+        ajust->setObjectName ( fileInfo.fileName() );
     }
     _depura ( "END EQToolButton::pintaMenu", 0 );
 }
@@ -106,7 +127,7 @@ void EQToolButton::trataMenu ( QAction *action )
     QFileInfoList list = dir.entryInfoList();
     for ( int i = 0; i < list.size(); ++i ) {
         QFileInfo fileInfo = list.at ( i );
-        if ( action->text() == fileInfo.fileName() ) {
+        if ( action->objectName() == fileInfo.fileName() ) {
             m_ficha->generaRML ( fileInfo.fileName() );
             invocaPDF ( fileInfo.fileName().left ( fileInfo.fileName().size() - 4 ) );
         } // end if

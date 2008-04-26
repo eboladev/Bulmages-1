@@ -39,8 +39,7 @@ private:
 public:
     PromedioView ( Company *emp, QWidget *parent = 0 );
     ~PromedioView();
-    Company *companyact()
-    {
+    Company *companyact() {
         return m_companyact;
     };
 

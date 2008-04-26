@@ -39,8 +39,7 @@ class PresupuestoListSubForm : public SubForm2Bf
 
 public:
     PresupuestoListSubForm ( QWidget *parent = 0, const char *name = 0 );
-    ~PresupuestoListSubForm()
-    {}
+    ~PresupuestoListSubForm() {}
 
 public slots:
     virtual void cargar();

@@ -43,8 +43,7 @@ typedef enum {
 } GDC_HLC_STYLE_T;    /* can be OR'd */
 
 /* only 1 annotation allowed */
-typedef struct
-{
+typedef struct {
     float   point;   /* 0 <= point < num_points */
     unsigned long color;
     char   note[MAX_NOTE_LEN+1]; /* NLs ok here */
@@ -55,8 +54,7 @@ typedef enum {
     GDC_SCATTER_TRIANGLE_DOWN,
     GDC_SCATTER_TRIANGLE_UP
 } GDC_SCATTER_IND_T;
-typedef struct
-{
+typedef struct {
     float    point;  /* 0 <= point < num_points */
     float    val;
     unsigned short  width;  /* % (1-100) */
@@ -175,17 +173,17 @@ GDC_AREA   float vals[], ...
 GDC_HILOCLOSE  float high[],
      float low[],
      float close[]
- 
+
 GDC_COMBO_LINE_BAR
 GDC_COMBO_LINE_AREA float val[],
      float   vol[]
- 
+
 GDC_COMBO_HLC_BAR
 GDC_COMBO_HLC_AREA float   high[],
                     float   low[],
                     float   close[],
      float   vol[]
- 
+
 */
 
 /* Notes:

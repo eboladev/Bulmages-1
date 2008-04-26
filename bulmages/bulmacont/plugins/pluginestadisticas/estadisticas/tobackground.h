@@ -2,17 +2,17 @@
 /*
  * TOra - An Oracle Toolkit for DBA's and developers
  * Copyright (C) 2000-2001,2001 Underscore AB
- * 
+ *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
  * as published by the Free Software Foundation;  only version 2 of
  * the License is valid for this program.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -51,21 +51,18 @@ public:
      * @param name Name of timer.
      */
     toTimer ( QObject *parent = 0, const char * name = 0 )
-            : QTimer ( parent, name )
-    { }
+            : QTimer ( parent, name ) { }
     /** Start timer.
      * @param msec Milliseconds to timeout.
      * @param sshot Set to true if only timeout once.
      */
-    int start ( int msec, bool sshot = false )
-    {
+    int start ( int msec, bool sshot = false ) {
         LastTimer = msec; return QTimer::start ( msec, sshot );
     }
     /** Get last timer start timeout.
      * @return Last timeout in millisecond.
      */
-    int lastTimer ( void )
-    {
+    int lastTimer ( void ) {
         return LastTimer;
     }
 };
@@ -87,8 +84,7 @@ public:
      * @param name Name of widget.
      */
     toBackground ( QObject* parent = 0, const char* name = 0 )
-            : toTimer ( parent, name )
-    { }
+            : toTimer ( parent, name ) { }
     ~toBackground();
     /** Start repeating timer with msec interval.
      * @param msec Millsecond repeat interval.

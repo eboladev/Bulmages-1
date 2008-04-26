@@ -38,8 +38,7 @@ class ListLinPedidoClienteView : public SubForm2Bf
 public:
     QString mdb_idpedidocliente;
     ListLinPedidoClienteView ( QWidget *parent = 0 );
-    ~ListLinPedidoClienteView()
-    {}
+    ~ListLinPedidoClienteView() {}
     ;
 
 public slots:

@@ -127,8 +127,7 @@ private:
 
 public:
     eventos_mui_ordenasiento ( Asiento1View *ob );
-    ~eventos_mui_ordenasiento()
-    {};
+    ~eventos_mui_ordenasiento() {};
 
 protected:
     bool eventFilter ( QObject *obj, QEvent *event );

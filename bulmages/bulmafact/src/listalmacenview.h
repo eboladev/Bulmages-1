@@ -46,8 +46,7 @@ class ListAlmacenSubForm : public SubForm2Bf
 
 public:
     ListAlmacenSubForm ( QWidget *parent = 0 );
-    virtual ~ListAlmacenSubForm()
-    {};
+    virtual ~ListAlmacenSubForm() {};
 
 public slots:
     virtual void cargar();

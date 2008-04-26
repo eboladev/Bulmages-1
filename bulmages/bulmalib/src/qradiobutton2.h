@@ -34,12 +34,10 @@ public:
     QRadioButton2 ( QWidget *parent );
     QRadioButton2 ( const QString & text, QWidget * parent = 0 );
     ~QRadioButton2();
-    void setValorCampo ( QString val )
-    {
+    void setValorCampo ( QString val ) {
         m_valorcampo = val;
     };
-    QString valorCampo()
-    {
+    QString valorCampo() {
         return m_valorcampo;
     };
 };

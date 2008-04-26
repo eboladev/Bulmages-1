@@ -38,8 +38,7 @@ class ListLinFacturaView : public SubForm2Bf
 public:
     QString mdb_idfactura;
     ListLinFacturaView ( QWidget *parent = 0 );
-    ~ListLinFacturaView()
-    {};
+    ~ListLinFacturaView() {};
 public slots:
     virtual void cargar ( QString idfactura );
 };

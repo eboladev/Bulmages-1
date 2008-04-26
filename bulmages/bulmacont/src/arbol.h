@@ -41,13 +41,11 @@ class Arbol
 {
 private:
     struct tipohoja;
-    struct tiporama
-    {
+    struct tiporama {
         tipohoja* hoja; /// Puntero a la hoja donde se almacena los datos de la cuenta.
         tiporama* sgte; /// Puntero a una rama que apunta a una hoja hermana (del mismo nivel).
     };
-    struct tipohoja
-    {
+    struct tipohoja {
         int idcuenta; /// Identificador de la cuenta de la base de datos.
         QString codigo; /// C&oacute;digo de la cuenta.
         QString descripcion; /// Su descripci&oacute;n contable.

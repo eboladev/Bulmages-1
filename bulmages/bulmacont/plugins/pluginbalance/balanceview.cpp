@@ -81,27 +81,27 @@ BalanceView::BalanceView ( Empresa *emp, QWidget *parent, int )
 //    mui_combocoste->setEmpresaBase ( emp );
 //    mui_combocoste->setidc_coste ( "0" );
 
-     mui_listado->setEmpresaBase(empresaBase());
-/*
-    listado->clear();
+    mui_listado->setEmpresaBase ( empresaBase() );
+    /*
+        listado->clear();
 
-    listado->setColumnCount ( 12 );
-    QStringList nombrecolumnas;
-    nombrecolumnas << "J" << tr ( "Codigo cuenta" )
-    << tr ( "Nombre de la cuenta" )
-    << tr ( "Saldo anterior" )
-    << tr ( "Debe" )
-    << tr ( "Haber" )
-    << tr ( "Saldo periodo" )
-    << tr ( "Debe ejercicio" )
-    << tr ( "Haber ejercicio" )
-    << tr ( "Saldo ejercicio" )
-    << tr ( "Nivel" )
-    << tr ( "ID cuenta" )
-    << tr ( "Padre" );
+        listado->setColumnCount ( 12 );
+        QStringList nombrecolumnas;
+        nombrecolumnas << "J" << tr ( "Codigo cuenta" )
+        << tr ( "Nombre de la cuenta" )
+        << tr ( "Saldo anterior" )
+        << tr ( "Debe" )
+        << tr ( "Haber" )
+        << tr ( "Saldo periodo" )
+        << tr ( "Debe ejercicio" )
+        << tr ( "Haber ejercicio" )
+        << tr ( "Saldo ejercicio" )
+        << tr ( "Nivel" )
+        << tr ( "ID cuenta" )
+        << tr ( "Padre" );
 
-    listado->setHeaderLabels ( nombrecolumnas );
-*/
+        listado->setHeaderLabels ( nombrecolumnas );
+    */
 
     CUENTA = 1;
     DENOMINACION = 2;
@@ -347,8 +347,8 @@ void BalanceView::generarBalance()
     empresaBase() ->ejecuta ( query );
 
 //    if(!mui_jerarquico->isChecked()) {
-	query = "DELETE FROM balancetemp WHERE nivel <> " + combonivel->currentText();
-	empresaBase()->ejecuta ( query );
+    query = "DELETE FROM balancetemp WHERE nivel <> " + combonivel->currentText();
+    empresaBase()->ejecuta ( query );
 //    } // end if
 
 }
@@ -367,7 +367,7 @@ void BalanceView::presentar()
 
 
     query = "SELECT * FROM balancetemp WHERE debe <> 0  OR haber <> 0 ORDER BY padre, codigo";
-    mui_listado->cargar(query);
+    mui_listado->cargar ( query );
 
     /// Eliminamos la tabla temporal y cerramos la transacci&oacute;n.
     query.sprintf ( "DROP TABLE balancetemp" );

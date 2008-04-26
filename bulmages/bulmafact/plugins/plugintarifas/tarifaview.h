@@ -39,8 +39,7 @@ private:
 public:
     TarifaView ( Company *emp, QWidget *parent = 0 );
     ~TarifaView();
-    Company *companyact()
-    {
+    Company *companyact() {
         return empresaBase();
     };
 
@@ -53,8 +52,7 @@ public:
     QString formaQuery ( QString );
 
 public slots:
-    virtual void on_mui_guardar_clicked()
-    {
+    virtual void on_mui_guardar_clicked() {
         guardar();
     };
     virtual void on_mui_crear_clicked();

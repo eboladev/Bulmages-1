@@ -44,8 +44,7 @@ class ListTasaIVASubForm : public SubForm2Bf
 
 public:
     ListTasaIVASubForm ( QWidget *parent = 0 );
-    virtual ~ListTasaIVASubForm()
-    {};
+    virtual ~ListTasaIVASubForm() {};
 
 public slots:
     virtual void cargar();

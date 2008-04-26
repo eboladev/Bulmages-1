@@ -1063,11 +1063,11 @@ void SubForm3::cargar ( cursor2 *cur )
 
     /// Preparamos la barra de progreso
     BLProgressBar barra;
-    barra.setText(tr("Cargando SubFormulario"));
-    if(cur->numregistros() > 100) {
-	barra.setValue(0);
-	barra.show();
-        barra.setText(tr("Cargando SubFormulario"));
+    barra.setText ( tr ( "Cargando SubFormulario" ) );
+    if ( cur->numregistros() > 100 ) {
+        barra.setValue ( 0 );
+        barra.show();
+        barra.setText ( tr ( "Cargando SubFormulario" ) );
     } // end if
 
     /// Desactivamos el sorting debido a un error en las Qt4.
@@ -1151,7 +1151,7 @@ void SubForm3::cargar ( cursor2 *cur )
 
     /// Inicializamos la tabla con las filas necesarias.
     mui_list->setRowCount ( m_lista.count() );
-    barra.setRange(0, m_lista.size());
+    barra.setRange ( 0, m_lista.size() );
     for ( int i = 0; i < m_lista.size(); ++i ) {
         reg = m_lista.at ( i );
         QRegExp patronFecha ( "^.*00:00:00.*$" ); /// Para emparejar los valores fechas.
@@ -1165,7 +1165,7 @@ void SubForm3::cargar ( cursor2 *cur )
             /// Rellena la tabla con los datos.
             mui_list->setItem ( i, j, camp );
         } // end for
-	barra.setValue(i);
+        barra.setValue ( i );
     } // end for
 
     /// Establece el "rowSpan" de la tabla.
@@ -2028,14 +2028,14 @@ QString SubForm3::imprimir()
     _depura ( "SubForm3::imprimir", 0 );
     BLProgressBar barra;
     barra.show();
-    barra.setRange(0, mui_listcolumnas->rowCount() + mui_list->rowCount());
-    barra.setValue(0);
+    barra.setRange ( 0, mui_listcolumnas->rowCount() + mui_list->rowCount() );
+    barra.setValue ( 0 );
     QString fitxersortidarml = "<tr>\n";
     for ( int h = 0; h < mui_listcolumnas->rowCount(); ++h ) {
         if ( mui_listcolumnas->item ( h, 0 ) ->checkState() == Qt::Checked ) {
             fitxersortidarml += "    <td>" + XMLProtect ( mui_listcolumnas->item ( h, 2 ) ->text() ) + "</td>\n";
         } // end if
-	barra.setValue(barra.value() +1);
+        barra.setValue ( barra.value() + 1 );
     } // end for
     fitxersortidarml += "</tr>\n";
     for ( int i = 0; i < mui_list->rowCount(); ++i ) {
@@ -2047,7 +2047,7 @@ QString SubForm3::imprimir()
             } // end if
         } // end for
         fitxersortidarml += "</tr>\n";
-	barra.setValue(barra.value() +1);
+        barra.setValue ( barra.value() + 1 );
     } // end for
     _depura ( "END SubForm3::imprimir", 0 );
     return fitxersortidarml;

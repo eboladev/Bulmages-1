@@ -36,8 +36,7 @@ class Listado : public BLWidget
 {
     Q_OBJECT
 public:
-    enum edmode
-    {
+    enum edmode {
         EditMode = 0, SelectMode = 1
     };
 

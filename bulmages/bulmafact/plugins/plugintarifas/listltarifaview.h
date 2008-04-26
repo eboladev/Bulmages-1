@@ -33,13 +33,11 @@ class ListLTarifaView : public SubForm2Bf
 public:
     QString mdb_idarticulo;
     ListLTarifaView ( QWidget *parent = 0 );
-    ~ListLTarifaView()
-    {}
+    ~ListLTarifaView() {}
     ;
 
 public slots:
-    virtual void cargar ( QString idarticulo )
-    {
+    virtual void cargar ( QString idarticulo ) {
         _depura ( "ListLTarifaView::cargaListCompArticulo\n", 0 );
         mdb_idarticulo = idarticulo;
         QString SQLQuery = "SELECT * FROM (SELECT * FROM almacen, tarifa) AS t2 LEFT JOIN (SELECT * FROM articulo WHERE idarticulo = " + mdb_idarticulo + ") AS t3 ON 1 = 1 ";
@@ -56,13 +54,11 @@ class ListLTarifaView1 : public SubForm2Bf
 
 public:
     ListLTarifaView1 ( QWidget *parent = 0 );
-    ~ListLTarifaView1()
-    {}
+    ~ListLTarifaView1() {}
     ;
 
 public slots:
-    virtual void cargar ( QString SQLQuery )
-    {
+    virtual void cargar ( QString SQLQuery ) {
         _depura ( "ListCompArticulo::cargar\n", 0 );
         SubForm2Bf::cargar ( SQLQuery );
     };

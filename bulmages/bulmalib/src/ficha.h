@@ -36,8 +36,7 @@ class Ficha : public BLWidget, public DBRecord, public dialogChanges
     Q_OBJECT
 
 public:
-    enum edmode
-    {
+    enum edmode {
         EditMode = 0, SelectMode = 1
     };
 

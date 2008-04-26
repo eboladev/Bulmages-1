@@ -39,213 +39,161 @@ protected:
     SubForm2Bc *m_lineas;
 
 public:
-    void setLineas ( SubForm2Bc *l )
-    {
+    void setLineas ( SubForm2Bc *l ) {
         m_lineas = l;
     };
     RegistroIva ( Empresa *, QWidget * );
-    QString idregistroiva()
-    {
+    QString idregistroiva() {
         return DBvalue ( "idregistroiva" );
     };
-    QString contrapartida()
-    {
+    QString contrapartida() {
         return DBvalue ( "contrapartida" );
     };
-    QString baseimp()
-    {
+    QString baseimp() {
         return DBvalue ( "baseimp" );
     };
-    QString iva()
-    {
+    QString iva() {
         return DBvalue ( "iva" );
     };
-    QString ffactura()
-    {
+    QString ffactura() {
         return DBvalue ( "ffactura" );
     };
-    QString femisionregistroiva()
-    {
+    QString femisionregistroiva() {
         return DBvalue ( "femisionregistroiva" );
     };
-    QString factura()
-    {
+    QString factura() {
         return DBvalue ( "factura" );
     };
-    QString idborrador()
-    {
+    QString idborrador() {
         return DBvalue ( "idborrador" );
     };
-    QString incregistro()
-    {
+    QString incregistro() {
         return DBvalue ( "incregistro" );
     };
-    QString regularizacion()
-    {
+    QString regularizacion() {
         return DBvalue ( "regularizacion" );
     };
-    QString plan349()
-    {
+    QString plan349() {
         return DBvalue ( "plan349" );
     };
-    QString numorden()
-    {
+    QString numorden() {
         return DBvalue ( "numorden" );
     };
-    QString cif()
-    {
+    QString cif() {
         return DBvalue ( "cif" );
     };
-    QString idfpago()
-    {
+    QString idfpago() {
         return DBvalue ( "idfpago" );
     };
-    QString factemitida()
-    {
+    QString factemitida() {
         return DBvalue ( "factemitida" );
     };
-    QString rectificaaregistroiva()
-    {
+    QString rectificaaregistroiva() {
         return DBvalue ( "rectificaaregistroiva" );
     };
-    QString serieregistroiva()
-    {
+    QString serieregistroiva() {
         return DBvalue ( "serieregistroiva" );
     };
-    void setidregistroiva ( const QString &val )
-    {
+    void setidregistroiva ( const QString &val ) {
         setDBvalue ( "idregistroiva", val );
     };
-    void setcontrapartida ( const QString &val )
-    {
+    void setcontrapartida ( const QString &val ) {
         setDBvalue ( "contrapartida", val );
     };
-    void setbaseimp ( const QString &val )
-    {
+    void setbaseimp ( const QString &val ) {
         setDBvalue ( "baseimp", val );
     };
-    void setiva ( const QString &val )
-    {
+    void setiva ( const QString &val ) {
         setDBvalue ( "iva", val );
     };
-    void setffactura ( const QString &val )
-    {
+    void setffactura ( const QString &val ) {
         setDBvalue ( "ffactura", val );
     };
-    void setfactura ( const QString &val )
-    {
+    void setfactura ( const QString &val ) {
         setDBvalue ( "factura", val );
     };
-    void setidborrador ( const QString &val )
-    {
+    void setidborrador ( const QString &val ) {
         setDBvalue ( "idborrador", val );
     };
-    void setincregistro ( const QString &val )
-    {
+    void setincregistro ( const QString &val ) {
         setDBvalue ( "incregistro", val );
     };
-    void setregularizacion ( const QString &val )
-    {
+    void setregularizacion ( const QString &val ) {
         setDBvalue ( "regularizacion", val );
     };
-    void setplan349 ( const QString &val )
-    {
+    void setplan349 ( const QString &val ) {
         setDBvalue ( "plan349", val );
     };
-    void setnumorden ( const QString &val )
-    {
+    void setnumorden ( const QString &val ) {
         setDBvalue ( "numorden", val );
     };
-    void setcif ( const QString &val )
-    {
+    void setcif ( const QString &val ) {
         setDBvalue ( "cif", val );
     };
-    void setidfpago ( const QString &val )
-    {
+    void setidfpago ( const QString &val ) {
         setDBvalue ( "idfpago", val );
     };
-    void setfactemitida ( const QString &val )
-    {
+    void setfactemitida ( const QString &val ) {
         setDBvalue ( "factemitida", val );
     };
-    void setrectificaaregistroiva ( const QString &val )
-    {
+    void setrectificaaregistroiva ( const QString &val ) {
         setDBvalue ( "rectificaaregistroiva", val );
     };
-    void setfemisionregistroiva ( const QString &val )
-    {
+    void setfemisionregistroiva ( const QString &val ) {
         setDBvalue ( "femisionregistroiva", val );
     };
-    void setserieregistroiva ( const QString &val )
-    {
+    void setserieregistroiva ( const QString &val ) {
         setDBvalue ( "serieregistroiva", val );
     };
-    virtual void pintaidregistroiva ( const QString & )
-    {
+    virtual void pintaidregistroiva ( const QString & ) {
         _depura ( "funcion no implementada", 2 );
     };
-    virtual void pintacontrapartida ( const QString & )
-    {
+    virtual void pintacontrapartida ( const QString & ) {
         _depura ( "funcion no implementada", 2 );
     };
-    virtual void pintabaseimp ( const QString & )
-    {
+    virtual void pintabaseimp ( const QString & ) {
         _depura ( "funcion no implementada", 2 );
     };
-    virtual void pintaiva ( const QString & )
-    {
+    virtual void pintaiva ( const QString & ) {
         _depura ( "funcion no implementada", 2 );
     };
-    virtual void pintaffactura ( const QString & )
-    {
+    virtual void pintaffactura ( const QString & ) {
         _depura ( "funcion no implementada", 2 );
     };
-    virtual void pintafactura ( const QString & )
-    {
+    virtual void pintafactura ( const QString & ) {
         _depura ( "funcion no implementada", 2 );
     };
-    virtual void pintaidborrador ( const QString & )
-    {
+    virtual void pintaidborrador ( const QString & ) {
         _depura ( "funcion no implementada", 2 );
     };
-    virtual void pintaincregistro ( const QString & )
-    {
+    virtual void pintaincregistro ( const QString & ) {
         _depura ( "funcion no implementada", 2 );
     };
-    virtual void pintaregularizacion ( const QString & )
-    {
+    virtual void pintaregularizacion ( const QString & ) {
         _depura ( "funcion no implementada", 2 );
     };
-    virtual void pintaplan349 ( const QString & )
-    {
+    virtual void pintaplan349 ( const QString & ) {
         _depura ( "funcion no implementada", 2 );
     };
-    virtual void pintanumorden ( const QString & )
-    {
+    virtual void pintanumorden ( const QString & ) {
         _depura ( "funcion no implementada", 2 );
     };
-    virtual void pintacif ( const QString & )
-    {
+    virtual void pintacif ( const QString & ) {
         _depura ( "funcion no implementada", 2 );
     };
-    virtual void pintaidfpago ( const QString & )
-    {
+    virtual void pintaidfpago ( const QString & ) {
         _depura ( "funcion no implementada", 2 );
     };
-    virtual void pintafactemitida ( const QString & )
-    {
+    virtual void pintafactemitida ( const QString & ) {
         _depura ( "funcion no implementada", 2 );
     };
-    virtual void pintarectificaaregistroiva ( const QString & )
-    {
+    virtual void pintarectificaaregistroiva ( const QString & ) {
         _depura ( "funcion no implementada", 2 );
     };
-    virtual void pintafemisionregistroiva ( const QString & )
-    {
+    virtual void pintafemisionregistroiva ( const QString & ) {
         _depura ( "funcion no implementada", 2 );
     };
-    virtual void pintaserieregistroiva ( const QString & )
-    {
+    virtual void pintaserieregistroiva ( const QString & ) {
         _depura ( "funcion no implementada", 2 );
     };
     virtual ~RegistroIva();
@@ -253,11 +201,9 @@ public:
     virtual void pintaRegistroIva();
     virtual int guardar();
     virtual int borrar();
-    virtual void calculaypintatotales()
-    {}
+    virtual void calculaypintatotales() {}
     ;
-    virtual void recalculaIva()
-    {
+    virtual void recalculaIva() {
         _depura ( "no implementada", 2 );
     };
     void vaciaRegistroIva();

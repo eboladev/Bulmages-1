@@ -75,7 +75,7 @@ void reemplazaarchivo ( QString, QString, QString, QString );
 QString editaTexto ( QString texto );
 
 #if CONFIG_DEBUG == TRUE
-void _depura ( const QString &cad, int nivel = 0, const QString &param = "" );
+void _depura ( const QString &cad, int nivel = 0, const QString & param = "" );
 #else
 #define _depura(...)       // sin debug
 #endif
@@ -95,6 +95,6 @@ void cargaTraducciones ( const QString &traduccion );
 QString windowID ( const QString & );
 /// Convierte un string en un string valido para ser escrito desde un script.
 QString parsearCode ( const QString &cad );
-QString ascii127(const QString &orig);
+QString ascii127 ( const QString &orig );
 #endif
 

@@ -45,12 +45,10 @@ class ListConfiguracionSubForm : public SubForm2Bf
 
 public:
     ListConfiguracionSubForm ( QWidget *parent = 0 );
-    ~ListConfiguracionSubForm()
-    {}
+    ~ListConfiguracionSubForm() {}
 
 public slots:
-    virtual void cargar()
-    {
+    virtual void cargar() {
         _depura ( "ListConfiguracionSubForm::cargar\n", 0 );
         SubForm3::cargar ( "SELECT *, nombre AS nombreorig FROM configuracion" );
     };
@@ -70,8 +68,7 @@ public:
     ~ListConfiguracionView();
 
 public slots:
-    virtual void on_mui_aceptar_clicked()
-    {
+    virtual void on_mui_aceptar_clicked() {
         mui_listado->guardar();
         close();
     };

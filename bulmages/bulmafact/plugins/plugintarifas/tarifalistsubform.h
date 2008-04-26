@@ -31,8 +31,7 @@ class TarifaListSubform : public SubForm2Bf
 
 public:
     TarifaListSubform ( QWidget *parent = 0 );
-    ~TarifaListSubform()
-    {}    ;
+    ~TarifaListSubform() {}    ;
 
 public slots:
     virtual void cargar();

@@ -35,13 +35,11 @@ class ListDescuentoPresupuestoView : public SubForm2Bf
 public:
     QString mdb_idpresupuesto;
     ListDescuentoPresupuestoView ( QWidget *parent = 0 );
-    ~ListDescuentoPresupuestoView()
-    {}
+    ~ListDescuentoPresupuestoView() {}
     ;
 
 public slots:
-    virtual void cargar ( QString idpresupuesto )
-    {
+    virtual void cargar ( QString idpresupuesto ) {
         _depura ( "ListDescuentoPresupuestoView::cargar\n", 0 );
         mdb_idpresupuesto = idpresupuesto;
         SubForm3::cargar ( "SELECT * FROM dpresupuesto WHERE idpresupuesto = " + mdb_idpresupuesto );

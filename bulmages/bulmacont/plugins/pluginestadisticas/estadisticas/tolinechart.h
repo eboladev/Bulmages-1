@@ -2,17 +2,17 @@
 /*
  * TOra - An Oracle Toolkit for DBA's and developers
  * Copyright (C) 2000-2001,2001 Underscore AB
- * 
+ *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
  * as published by the Free Software Foundation;  only version 2 of
  * the License is valid for this program.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -105,123 +105,106 @@ public:
     /** Specify if legend should be displayed to the right of the graph, default is on.
      * @param on Whether to display legend or not.
      */
-    void showLegend ( bool on )
-    {
+    void showLegend ( bool on ) {
         Legend = on; update();
     }
     /** Check if legend is displayed or not.
      * @return If legend is displayed or not.
      */
-    bool legend ( void ) const
-    {
+    bool legend ( void ) const {
         return Legend;
     }
 
     /** Show most recent value on top of graph
      * @param on Whether to display or not.
      */
-    void showLast ( bool on )
-    {
+    void showLast ( bool on ) {
         Last = on; update();
     }
     /** Check if last value is displayed or not.
      * @return If value is displayed or not.
      */
-    bool last ( void ) const
-    {
+    bool last ( void ) const {
         return Last;
     }
 
     /** Set title of the chart. Set to empty string to not display title.
      * @param title Title of chart.
      */
-    void setTitle ( const QString &title = QString::null )
-    {
+    void setTitle ( const QString &title = QString::null ) {
         Title = title; update();
     }
     /** Get title of chart.
      * @return Title of chart.
      */
-    const QString &title ( void )
-    {
+    const QString &title ( void ) {
         return Title;
     }
 
     /** Specify if a grid should be displayed in the graph, default is on.
      * @param div Number of parts to divide grid into.
      */
-    void showGrid ( int div = 0 )
-    {
+    void showGrid ( int div = 0 ) {
         Grid = div; update();
     }
     /** Check if grid is displayed or not.
      * @return Number of parts to divide grid into.
      */
-    int grid ( void ) const
-    {
+    int grid ( void ) const {
         return Grid;
     }
 
     /** Specify if a y-axis legend should be displayed in the graph, default is on.
      * @param on Whether to display legend or not.
      */
-    void showAxisLegend ( bool on )
-    {
+    void showAxisLegend ( bool on ) {
         AxisText = on; update();
     }
     /** Check if y-axis legend is displayed or not.
      * @return If legend is displayed or not.
      */
-    bool axisLegend ( void ) const
-    {
+    bool axisLegend ( void ) const {
         return AxisText;
     }
 
     /** Set y postfix value. This will be appended to the values in the axis legend.
      * @param postfix The string to append.
      */
-    void setYPostfix ( const QString &postfix )
-    {
+    void setYPostfix ( const QString &postfix ) {
         YPostfix = postfix; update();
     }
     /** Set max value on y-axis to auto.
      */
-    void setMaxValueAuto ( void )
-    {
+    void setMaxValueAuto ( void ) {
         MaxAuto = true; update();
     }
     /** Set min value on y-axis to auto.
      */
-    void setMinValueAuto ( void )
-    {
+    void setMinValueAuto ( void ) {
         MinAuto = true; update();
     }
     /** Set max value on y-axis.
      * @param val Max value on y-axis.
      */
-    void setMaxValue ( double maxVal )
-    {
+    void setMaxValue ( double maxVal ) {
         MaxAuto = false; MaxValue = maxVal; update();
     }
     /** Set min value on y-axis.
      * @param val Min value on y-axis.
      */
-    void setMinValue ( double minVal )
-    {
+    void setMinValue ( double minVal ) {
         MinAuto = false; MinValue = minVal; update();
     }
     /** Get minimum value on y-axis. Will not return the automatically determinned minimum value.
      * @return Minimum value on y-axis.
      */
-    double minValue ( void ) const
-    {
+    double minValue ( void ) const {
         return MinValue;
     }
     /** Get maximum value on y-axis. Will not return the automatically determinned maximum value.
      * @return Maximum value on y-axis.
      */
-    double maxValue ( void ) const
-    {
+    double maxValue ( void ) const {
         return MaxValue;
     }
 
@@ -232,23 +215,20 @@ public:
     /** Get the maximum number of samples on the x-axis.
      * @return Max number of samples.
      */
-    int samples ( void ) const
-    {
+    int samples ( void ) const {
         return Samples;
     }
 
     /** Set the labels on the chart lines.
      * @param labels Labels of the lines. Empty labels will not show up in the legend.
      */
-    void setLabels ( const std::list<QString> &labels )
-    {
+    void setLabels ( const std::list<QString> &labels ) {
         Labels = labels; update();
     }
     /** Get the labels of the chart lines.
      * @return List of labels.
      */
-    std::list<QString> &labels ( void )
-    {
+    std::list<QString> &labels ( void ) {
         return Labels;
     }
 
@@ -261,24 +241,21 @@ public:
     /** Get list of labels
      * @return List of labels
      */
-    std::list<QString> &xValues ( void )
-    {
+    std::list<QString> &xValues ( void ) {
         return XValues;
     }
 
     /** Get list of values.
      * @return Values in piechart.
      */
-    std::list<std::list<double> > &values ( void )
-    {
+    std::list<std::list<double> > &values ( void ) {
         return Values;
     }
 
 public slots:
     /** Clear the values from the chart.
      */
-    virtual void clear ( void )
-    {
+    virtual void clear ( void ) {
         Values.clear(); XValues.clear(); update();
     }
 

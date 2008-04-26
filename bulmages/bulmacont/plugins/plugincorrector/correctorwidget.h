@@ -38,7 +38,7 @@
     contables como puedan ser asientos no cerrados, amortizaciones con plazos expirados,
     cobros no realizados, etc.
     Realiza un informe de los errores encontrados para pasarselos al usuario. Tambien
-    proporciona el acceso de forma sencilla a los errores encontrados. 
+    proporciona el acceso de forma sencilla a los errores encontrados.
     El corrector solo tiene una instancia en toda la ejecucion del programa, es la clase
     empresa la que se encarga de construirlo y una vez construido permanece siempre en
     ejecucion. */
@@ -67,8 +67,7 @@ public:
     /// funcion setEmpresa para inicializar el objeto. Esto es debido a que la construccion
     /// del corrector es anterior a la construccion de la clase empresa.
 
-    void setEmpresa ( Empresa *empres )
-    {
+    void setEmpresa ( Empresa *empres ) {
         empresaactual = empres;
         conexionbase = empres->bdempresa();
     }
@@ -78,8 +77,7 @@ public slots:
     virtual void on_mui_corregir_clicked();
     virtual void on_mui_configurar_clicked();
     virtual void alink ( const QUrl &url );
-    virtual void cambia ( bool a )
-    {
+    virtual void cambia ( bool a ) {
         if ( a ) {
             dock->hide();
             dock->show();

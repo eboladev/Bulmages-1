@@ -55,17 +55,17 @@ extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 /*
 class myplugin : public QObject {
     Q_OBJECT
- 
+
 public:
     postgresiface2 *conexionbase;
- 
+
 public:
     myplugin();
     ~myplugin();
     void inicializa(bulmafact *);
- 
+
 public slots:
     void elslot();
 };
- 
+
 */

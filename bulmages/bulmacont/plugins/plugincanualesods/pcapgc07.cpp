@@ -1,7 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2008 by Adelaida Clavaguera Mora <laida@alaxarxa.net>   *
  *   Copyright (C) 2008 by Leopold Palomo Avellaneda <leo@alaxarxa.net>    *
- *   Copyright (C) 2006 by Fco. Javier M. C. >fcojavmc@todo-redes.com>     *  
+ *   Copyright (C) 2006 by Fco. Javier M. C. >fcojavmc@todo-redes.com>     *
  *   Copyright (C) 2005 by Tomeu Borras Riera <tborras@conetxia.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -28,7 +28,7 @@
 **/
 QString pluginCAnualesODS::cuentaAnualCAPGC07()
 {
-	return QString::QString("\
+    return QString::QString ( "\
 #!/usr/bin/python\n\
 # -*- coding: utf8 -*-\n\
 \n\
@@ -944,6 +944,6 @@ doc.set_cell_value(4, 55, 'formula', '=D52+Debe.D56+Debe.D57')\n\
 \
 \
 # Guardamos el documento\n\
-doc.save(\"canualesods.ods\")\n");
-}
+doc.save(\"canualesods.ods\")\n" );
+                          }
 

@@ -38,14 +38,12 @@ public:
     BusquedaEstadoIncidencia ( QWidget *parent = 0 );
     ~BusquedaEstadoIncidencia();
     virtual void setestado ( QString estado );
-    QString estado()
-    {
+    QString estado() {
         return m_valores[currentIndex() ];
     };
 
 public slots:
-    void s_activated ( int index )
-    {
+    void s_activated ( int index ) {
         _depura ( "Activado el combo box", 0 );
         if ( index > 0 ) {
             emit ( valueChanged ( m_valores[currentIndex() ] ) );

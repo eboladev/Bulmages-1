@@ -349,9 +349,9 @@ void BalanceTreeView::generarBalance()
     query.sprintf ( "DELETE FROM balancetemp WHERE tdebe = 0 AND thaber = 0" );
     empresaBase() ->ejecuta ( query );
 
-    if(!mui_jerarquico->isChecked()) {
-	query = "DELETE FROM balancetemp WHERE nivel <> " + combonivel->currentText();
-	empresaBase()->ejecuta ( query );
+    if ( !mui_jerarquico->isChecked() ) {
+        query = "DELETE FROM balancetemp WHERE nivel <> " + combonivel->currentText();
+        empresaBase()->ejecuta ( query );
     } // end if
 
 }
@@ -370,13 +370,13 @@ void BalanceTreeView::presentar()
 
     /// Barra de progreso pq el tema tarda.
     BLProgressBar barra;
-    barra.setText(tr("Generando Balance"));
+    barra.setText ( tr ( "Generando Balance" ) );
     barra.show();
-    barra.setValue(0);
+    barra.setValue ( 0 );
 
     query = "SELECT * FROM balancetemp WHERE debe <> 0  OR haber <> 0 ORDER BY padre, codigo";
     cursor2 *cursorapt1 = empresaBase() ->cargacursor ( query );
-    barra.setRange(0, cursorapt1->numregistros());
+    barra.setRange ( 0, cursorapt1->numregistros() );
     /// Calculamos cuantos registros van a crearse y dimensionamos la tabla.
     num1 = cursorapt1->numregistros();
     listado->clear();
@@ -397,12 +397,12 @@ void BalanceTreeView::presentar()
         } // end if
 
         /// Acumulamos los totales para al final poder escribirlos.
-	if ( cursorapt1->valor("nivel") == combonivel->currentText()) {
-		tsaldoant += atof ( cursorapt1->valor ( "asaldo" ).toAscii() );
-		tsaldo += atof ( cursorapt1->valor ( "tsaldo" ).toAscii() );
-		tdebe += atof ( cursorapt1->valor ( "tdebe" ).toAscii() );
-		thaber += atof ( cursorapt1->valor ( "thaber" ).toAscii() );
-	} // end if
+        if ( cursorapt1->valor ( "nivel" ) == combonivel->currentText() ) {
+            tsaldoant += atof ( cursorapt1->valor ( "asaldo" ).toAscii() );
+            tsaldo += atof ( cursorapt1->valor ( "tsaldo" ).toAscii() );
+            tdebe += atof ( cursorapt1->valor ( "tdebe" ).toAscii() );
+            thaber += atof ( cursorapt1->valor ( "thaber" ).toAscii() );
+        } // end if
 
         it->setText ( CUENTA, cursorapt1->valor ( "codigo" ) );
         if ( cursorapt1->valor ( "tipocuenta" ) == "1" ) {
@@ -491,7 +491,7 @@ void BalanceTreeView::presentar()
 
 
         cursorapt1->siguienteregistro();
-	barra.setValue(barra.value() + 1);
+        barra.setValue ( barra.value() + 1 );
     } // end while
 
     /// Vaciamos el cursor de la base de datos.

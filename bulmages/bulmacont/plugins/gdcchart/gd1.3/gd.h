@@ -2,7 +2,7 @@
 #define GD_H 1
 
 /* gd.h: declarations file for the gifdraw module.
- 
+
  Written by Tom Boutell, 5/94.
  Copyright 1994, Cold Spring Harbor Labs.
  Permission granted to use this code in any fashion provided
@@ -20,11 +20,10 @@
 
 /* Image type. See functions below; you will not need to change
  the elements directly. Use the provided macros to
- access sx, sy, the color table, and colorsTotal for 
+ access sx, sy, the color table, and colorsTotal for
  read-only purposes. */
 
-typedef struct gdImageStruct
-{
+typedef struct gdImageStruct {
     unsigned char ** pixels;
     int sx;
     int sy;
@@ -49,8 +48,7 @@ gdImage;
 
 typedef gdImage * gdImagePtr;
 
-typedef struct
-{
+typedef struct {
     /* # of characters in font */
     int nchars;
     /* First character is numbered... (usually 32 = space) */
@@ -112,8 +110,7 @@ void gdImageStringUp16 ( gdImagePtr im, gdFontPtr f, int x, int y, unsigned shor
 
 /* Point type for use in polygon drawing. */
 
-typedef struct
-{
+typedef struct {
     int x, y;
 }
 gdPoint, *gdPointPtr;

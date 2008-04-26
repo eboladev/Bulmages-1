@@ -824,7 +824,7 @@ void Bulmacont::on_actionAyuda_triggered()
     QAssistantClient *asistenteAyuda = new QAssistantClient ( QLibraryInfo::location ( QLibraryInfo::BinariesPath ), 0 );
     connect ( asistenteAyuda, SIGNAL ( error ( const QString ) ), this, SLOT ( documentacionError ( const QString ) ) );
     QStringList parametros;
-    parametros << "-profile" << QString ( confpr->valor(CONF_PROGDATA) + "help/bulmacont/bulmacont.adp" );
+    parametros << "-profile" << QString ( confpr->valor ( CONF_PROGDATA ) + "help/bulmacont/bulmacont.adp" );
     asistenteAyuda->setArguments ( parametros );
     asistenteAyuda->openAssistant();
     _depura ( "END Bulmacont::on_actionAyuda_triggered", 0 );

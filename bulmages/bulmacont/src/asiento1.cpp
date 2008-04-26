@@ -172,7 +172,7 @@ int Asiento1::borrar ( bool atendido )
                 } // end if
                 empresaBase() ->commit();
                 vaciar();
-		dialogChanges_cargaInicial();
+                dialogChanges_cargaInicial();
                 return 3;
             case QMessageBox::Cancel: /// Abort clicked or Escape pressed.
                 return 2;
@@ -188,7 +188,7 @@ int Asiento1::borrar ( bool atendido )
             } // end if
             empresaBase() ->commit();
             vaciar();
-	    dialogChanges_cargaInicial();
+            dialogChanges_cargaInicial();
             return 3;
         } // end if
     } // end if
@@ -240,23 +240,23 @@ int Asiento1::cargar ( QString idasiento )
 {
     _depura ( "Asiento1::cargar", 0, idasiento );
 
-    if(dialogChanges_hayCambios()) {
-	switch( QMessageBox::warning( this, "BulmaCont",
-		"Asiento cambiado.\n"
-		"Desea guardar los cambios \n\n ",
-		QMessageBox::Save | QMessageBox::Discard
-                   | QMessageBox::Cancel,
-                   QMessageBox::Save ) ) {
-	case QMessageBox::Save: // The user clicked the Retry again button or pressed Enter
-		// try again
-		guardar();
-		break;
-	case QMessageBox::Discard: // The user clicked the Quit or pressed Escape
-		// exit
-		break;
-	case QMessageBox::Cancel: 
-		return 0;
-	}
+    if ( dialogChanges_hayCambios() ) {
+        switch ( QMessageBox::warning ( this, "BulmaCont",
+                                        "Asiento cambiado.\n"
+                                        "Desea guardar los cambios \n\n ",
+                                        QMessageBox::Save | QMessageBox::Discard
+                                        | QMessageBox::Cancel,
+                                        QMessageBox::Save ) ) {
+        case QMessageBox::Save: // The user clicked the Retry again button or pressed Enter
+            // try again
+            guardar();
+            break;
+        case QMessageBox::Discard: // The user clicked the Quit or pressed Escape
+            // exit
+            break;
+        case QMessageBox::Cancel:
+            return 0;
+        }
     } // end if
 
     QString query = "SELECT * FROM asiento WHERE idasiento = " + idasiento;
@@ -404,7 +404,7 @@ int Asiento1::guardar()
 
         if ( estadoAsiento1() == ASCerrado )
             empresaBase() ->cierraasiento ( id.toInt() );
-	dialogChanges_cargaInicial();
+        dialogChanges_cargaInicial();
         cargar ( id );
         g_main->statusBar() ->showMessage ( tr ( "El asiento se ha guardado correctamente." ), 2000 );
         _depura ( "END Asiento1::guardar", 0 );

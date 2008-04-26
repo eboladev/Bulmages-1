@@ -35,13 +35,11 @@ class ListDescuentoAlbaranProvView : public SubForm2Bf
 public:
     QString mdb_idalbaranp;
     ListDescuentoAlbaranProvView ( QWidget *parent = 0 );
-    ~ListDescuentoAlbaranProvView()
-    {}
+    ~ListDescuentoAlbaranProvView() {}
     ;
 
 public slots:
-    virtual void cargar ( QString idalbaranp )
-    {
+    virtual void cargar ( QString idalbaranp ) {
         _depura ( "ListDescuentoAlbaranProvView::cargar\n", 0 );
         mdb_idalbaranp = idalbaranp;
         SubForm3::cargar ( "SELECT * FROM dalbaranp WHERE idalbaranp = " + mdb_idalbaranp );

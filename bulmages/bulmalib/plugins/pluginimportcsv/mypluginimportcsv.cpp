@@ -55,7 +55,7 @@ void mypluginimportcsv::elslot()
 {
     _depura ( "mypluginimportcsv::elslot", 0 );
 
-    ImportCSV *imp = new ImportCSV(g_emp_importcsv,0);
+    ImportCSV *imp = new ImportCSV ( g_emp_importcsv, 0 );
     g_emp_importcsv->pWorkspace() ->addWindow ( imp );
     imp->show();
 
