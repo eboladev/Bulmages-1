@@ -39,7 +39,6 @@ CONF_BG_DESCFACTURASCLIENTE   #C3CC33
 CONF_BG_LISTARTICULOS         #DDFFDD
 
 CONF_PLUGINS_BULMAFACT        libpluginq19.so; \
-                              libpluginsyncbulmacont.so;\
                               libpluginimpresionesmultiples.so; \
                               libplugininformeclientes.so; \
                               libplugininformeclientessxc.so; \
