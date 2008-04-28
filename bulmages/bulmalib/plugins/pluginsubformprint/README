@@ -1,0 +1,31 @@
+Plugin de exportacion de listados a ODS (Hoja de calculo de formato Open Document)
+==================================================================================
+
+
+Basado en el plugin 'pluginsubformsxc' de:
+(C) 2007 Conetxia Soluciones Informaticas.
+Software Bajo Licencia G.P.L.
+
+
+Version: 0.9.3
+
+Descripcion
+===========
+
+Permite la impresion de cualquier subformulario mediante un menu contextual.
+
+
+Compilacion
+===========
+
+El plugin se compilara con el resto de bulmages y se ubicara en bulmages/installbulmages/plugins con el
+nombre libpluginsubformprint.so
+
+
+Instalacion
+===========
+
+Configure la directiva CONF_PLUGINS_BULMAFACT para que contenga la llamada a este plugin. Dicha directiva
+puede ser a modo global en el archivo /etc/bulmages.conf o personalizada con los archivos /etc/bulmafact_<<database>>.conf
+
+Copie todos los archivos *.qm al directorio /usr/share/bulmages/traducciones
