@@ -48,6 +48,8 @@ class PluginsBulmaSetup:
 	['Exportar subforms a SXC', 'libpluginsubformsxc.so', 'Permite, mediante un menu contextual exportar cualquier\n subformulario a formato SXC y abrirlo con KSpread o OpenOffice','',''],
 	['Embeber aplicaciones', 'libplugindocked.so', 'Embeba cualquier aplicacion X en el entorno de BulmaFact para\n tener las aplicaciones mas a mano','',''],
 	['Exportar subforms a ODS', 'libpluginsubformods.so', 'Permite, mediante un menu contextual exportar cualquier\n subformulario a formato SXC y abrirlo con KSpread o OpenOffice','','']
+	['Impresion de Informes', 'libplugininformes.so', 'Permite generar inforems RML\n Y agregarlos a las aplicaciones sin tener que programar.','','']
+	['Impresion de Subformularios', 'libpluginprint.so', 'Permite imprimir cualquier subformulario del programa mediante un menu contextual.','','']
 
 	]
 
@@ -68,6 +70,8 @@ class PluginsBulmaSetup:
 	['Exportar subforms a SXC', 'libpluginsubformsxc.so', 'Permite, mediante un menu contextual exportar cualquier\n subformulario a formato SXC y abrirlo con KSpread o OpenOffice','',''],
 	['Embeber aplicaciones', 'libplugindocked.so', 'Embeba cualquier aplicacion X en el entorno de BulmaFact para\n tener las aplicaciones mas a mano','',''],
 	['Exportar subforms a ODS', 'libpluginsubformods.so', 'Permite, mediante un menu contextual exportar cualquier\n subformulario a formato SXC y abrirlo con KSpread o OpenOffice','','']
+	['Impresion de Informes', 'libplugininformes.so', 'Permite generar inforems RML\n Y agregarlos a las aplicaciones sin tener que programar.','','']
+	['Impresion de Subformularios', 'libpluginprint.so', 'Permite imprimir cualquier subformulario del programa mediante un menu contextual.','','']
 
 	]
 	
