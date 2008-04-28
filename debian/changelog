@@ -2,6 +2,8 @@ bulmages (0.11.1~rc1-1) unstable; urgency=low
 
   [Leopold Palomo Avellaneda]
   * New Upstream release.
+  * Added postgresql-contrib as dependecy of bulmafact-plugins because
+  there's one plugin that needs it.
   
  -- Leopold Palomo Avellaneda <leo@alaxarxa.net>  Sun, 27 Apr 2008 11:07:49 +0200
 
