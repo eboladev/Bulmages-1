@@ -28,7 +28,7 @@ plugins.pathdbbulmacont = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/crear/
 plugins.pathdbbulmatpv = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/crear/bulmatpv/'
 plugins.pathdbparches = '@CMAKE_INSTALL_PREFIX@/share/bulmages/dbmodels/actualizar/'
 plugins.configfiles = '@BULMAGES_CONFIG_DIR@/'
-
+plugins.confsharebulmages = '@CMAKE_INSTALL_PREFIX@/share/bulmages/'
 
 # Variables para la version de desarrollo
 #plugins.pathdbbulmafact = '/usr/share/bulmages/dbmodels/crear/bulmafact/'

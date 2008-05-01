@@ -90,6 +90,7 @@ Ficha::Ficha ( EmpresaBase *emp, QWidget *parent, Qt::WFlags f, edmode modo ) : 
 Ficha::~Ficha()
 {
     _depura ( "Ficha::~Ficha", 0, this->windowTitle() );
+    g_plugins->lanza ( "Ficha_DesFicha", this );
     sacaWindow();
     _depura ( "END Ficha::~Ficha", 0 );
 }
