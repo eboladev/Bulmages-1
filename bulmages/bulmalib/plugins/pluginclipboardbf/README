@@ -1,30 +1,35 @@
-Plugin de  Clipboard
-====================
+=======
+Plugins
+=======
+#README
+20080501
 
-Versión: 0.9.3
+Nombre: Plugin de Clipboard
+
+Biblioteca: libpluginclipboardbf.so
+
+Descripción: Descripcion: Permite hacer paste desde una hoja de calculo en las
+facturas para pegar contenidos de forma rápida en la facturación.
+
+ParmBD: -
+
+ArchivoSQLpatch: -
+
+ArchivoSQLdeins: -
+
+Comentarios: -
 
 
-Descripcion: Permite hacer paste desde una hoja de calculo en las facturas para
-pegar contenidos de forma rápida en la facturación.
-
-Compilacion
-===========
-Siuiendo el proceso de compilacion normal el plugin se compilará con el resto de bulmages y el plugin se ubicara en bulmages/installbulmages/plugins con el nombre libpluginclipboardbf.so
 
 
-
-Instalacion
-===========
-La instalacion no requiere de parches de base de datos ni pasos adicionales. Simplemente cambie el parametro CONF_PLUGINS_BULMAFACT para que llame al archivo de plugin y ya tendra
-la funcionalidad instalada.
-
-Copie los archivos de traducciones *.qm a la ruta /usr/share/bulmages/traducciones
+Cal fer als readme dels plugins
 
 
-Nota de Conetxia
-================
-Este plugin forma parte del software de Gestión BulmaGés.
-Si desea conocer nuevas versiones del plugin, u otros componentes relacionados con BulmaGés visite: http://bulmages.conetxia.com
+1.- nom
+2.- llibreria
+3.- Descripcio
+4.,- Nom del parametre de la bd
+5.- Arxiu SQL del parche de la base de dades
+6.- Arxiu SQL de desinstalació del parche de la base de dades
 
-Este plugin se suministra como codigo fuente.
 

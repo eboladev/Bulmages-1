@@ -1,11 +1,24 @@
-Instalacion del software de gestion BulmaGes
---------------------------------------------
+========================================
+Software de Gestion Empresarial BulmaGes
+
 (C) 2003 - 2008 Asociacion IGLUES
 http://www.iglues.org
---------------------------------------------
+========================================
+#README.es
 
-BulmaGés 0.11.1 (Abril 2008)
+BulmaGés 0.11.1 (Mayo 2008)
 
+Contenido
+---------
+
+- Introducción
+- Características
+- Requerimientos
+- Estructura de directorios
+- Construir la suite
+- Puesta en marcha
+- Bugs, comentarios, problemas, etc
+- Código específico o no liberado
 
 Introducción
 ============
@@ -13,14 +26,13 @@ Introducción
 BulmaGés es una aplicación modular que pretende cubrir las necesidades de
 gestión empresarial de cualquier pequeña y mediana empresa dentro del entorno
 del software libre. Se identifican claramente cuatro áreas que en las que el
-software debe actuar: 
+software puede actuar: 
 a) Contabilidad - BulmaCont
 b) Facturación - BulmaFact
-c) Terminal Punto de Venta - BTPV
+c) Terminal Punto de Venta - BulmaTPV
 
-
-En la actualidad, la aplicación de contabilidad (BulmaCont), facturación 
-(BulmaFact) y el terminal Punto de Venta ya son operativos.
+En la actualidad (Mayo 2008), la aplicación de contabilidad (BulmaCont), facturación 
+(BulmaFact) y el terminal Punto de Venta (BulmaTPV) ya son operativos.
 
 Características
 ===============
@@ -33,327 +45,136 @@ libre y está liberado bajo licencia GPL, se puede obtener, tanto el software
 como el código fuente, de forma gratuita a través de Internet o de las
 diferentes distribuciones (CD) que facilita la asociación IGLUES. 
 
-Módulos
-=======
+BulmaGés ofrece la máxima calidad de una completa herramienta de gestión
+integrada configurable para adaptarse a las necesidades de la empresa mediante
+un sistema de módulos y plugins en función del sector en el que se opere y el
+tamaño de la organización.
+
+BulmaGés puede funcionar en múltiples plataformas. Los desarrolladores trabajan
+principalmente con GNU/Linux. También se puede utilizar en MacOSX y en
+MSWindows. Las limitaciones estan en los requerimientos, más que en la
+suite. El aplicativo puede ser ejecutado en local y en remoto, sin límites de
+licencias, empresas o usuarios. 
+
+BulmaGés es una suite de software que incluye varios binarios, una biblioteca, 
+un programa de configuración, enlaze con base de datos, múltiples scripts, 
+múltiples plugins (pequeñas bibliotecas) y cierta documentación. Todo ello hace
+que sea un software complejo. 
+
+BulmaGés está desarrollado por diferentes personas que han colaborado en
+el proyecto, algunas activas actualmente y otras no. En general són personas en
+torno a la Asociación Iglues (www.iglues.org). 
+
+El ámbito de aplicación del programa es el de empresas, asociaciones o entidades
+que deseen llevar un sistema de gestión ya sea a nivel de contabilidad, o de 
+factuaración o de venta. El sistema de contabilidad és el hispano, teniendo
+incorporados los planes contables españoles. Ahora bien, el sistema de
+contabilidad (facturación) se puede adaptar a otros sistemas contables,
+únicamente cambiando el plan contable.
+
+
+Requerimientos
+==============
+
+Para poder utilizar BulmaGés hay que compilar el código fuente y realizar una 
+instalación. Se pueden realizar pruebas sin instalar el software, pero es
+recomendable sólo a nivel de desarrollo. Toda la suite necesita ulitzar
+una base de datos, en concreto Postgresql.
+
+Para compilar el código fuente se necesita:
+
+- biblioteca Qt, como mínimo 4.3. http://trolltech.com/downloads/opensource
+Esta és la biblioteca de los widgets, de la interfície gráfica. 
+
+- python y pyqt4. python 2.4 y el "binding" pyqt4 acorde a la versión de Qt
+instalada. 
+
+- cmake, como mínimo versión 2.4.8 http://www.cmake.org/HTML/index.html. És la
+herramienta de construcción del software.
+
+- libpq y postgresql. Se necesita como mínimo postgresql 8.1. Para poder
+compilar el aplicativo se necesita libpq, que és la biblioteca para poder
+acceder a una base de datos Postgresql. Y Postgresql para poder ejecutar la
+aplicación. http://www.postgresql.org/download/
+
+
+Estructura de directorios
+=========================
 
 Estos son los directorios principales del svn y sus respectivas explicaciones.
 
-bulmafact 
----------- 
-Este directorio contiene el codigo fuente de la facturación. Es un programa 
-escrito en C++ y Qt. En las 'code partys' trabajamos sobre ello. Luego tendremos
-que adaptarlo. Todo depende del bulmalib. 
-
-Actualmente, (versión 0.11.1) bulmafact realiza las tareas de facturación y de 
-gestión habituales de una empresa y contiene los siguientes plugins:
-
-1) comercialbf (Plugin de Comerciales)
-
-Permite el control del trabajo de los comerciales y la combinación de éstos con 
-el aplicativo para PDA ConPython
-
-2) efacturabf (Plugin De Factura Electrónica)
-
-Permite la exportacion e importacion de facturas en formato UBL 1.0 desde 
-BulmaFact.
-
-3) plugin (Plugin ejemplo)
-
-Ejemplo de código para desarrollar un plugin a medida.
-
-4) barcodeopen (Plugin de apertura Rapida a partir de códigos de barras)
-
-Permite abrir cualquier documento identificado con el codigo de barras. Basta
-con seleccionar la apertura rápida, pasar el documento por el lector y se abrira
-automáticamente el documento correspondiente.
-
-5) plugincatalogo (Plugin de catálogos)
-
-Permite la impresión de catálogos de productos
-
-6) plugincontratos (Plugin de Informes de Clientes)
-
-Permite el control de contratos con clientes y generar una facturación asociada
-a dichos contratos.
-
-7) impresionesmultiples (Plugin de Impresiones Multiples)
-
-Agrega un checkbox en cada uno de los miembros del listado de presupuestos,
-pedidos, albaranes y facturas.
-Agrega tres botones de menu en cada uno de dichos listados con las siguientes
-funcionalidades:
-	1.- Invertir Seleccion: Invierte el estado de los checkbox agregados.
-	2.- Imprimir multiples elementos: Imprime los elementos seleccionados de
-forma directa.
-	3.- Envio múltiple de e-mail: Prepara el envio de e-mail con los documentos
-seleccionados como
-	    adjuntos.
-
-8) plugininformeclientes (Plugin de Informes de Clientes)
-
-Permite la impresion del informe de compras y ventas  por clientes.
-
-9) plugininventarios (Plugin de Inventarios)
-
-Permite el control de inventarios.
-
-10) pluginmail (Plugin de  envio de documentos por e-mail)
-
-Permite el envio de documentos generados con BulmaGés via e-mai mediante un
-botón en el programa. 
-
-11) pluginpromedios (Plugin promedios)
-
-Muestra el promedio de compra y de venta por artículo.
-
-12) pluginq19 (Plugin q19)
-
-Genera un fichero con formato q19 para los cobros en una entidad bancaria.
-
-13) pluginsyncbulmacont (Sincronizacion con Bulmacont)
-
-Todas las operaciones que se realicen con faturación serán traspasadas a
-contabilidad.
-
-14) plugintarifas (Plugin de tarifas)
-
-Permite especificar diferentes tarifas donde el mismo artículo puede tener
-precios distintos.
-
-15) pluginticket (Plugin de  impresion de tickets)
-
-Permite la impresión de tickets.
-
-16) plugintrazabilidad (Plugin de Trazabilidad)
-
-Permite el control de trazabilidad por lotes. Agrega una tabla de movimientos de
-material y un campo
-"lote" que permite identificar productos desde su compra hasta su venta.
-
-17) plugintipostrabajo (Plugin de trabajadores)
-
-Permite especificar diferentes tipos de trabajo de los diferentes trabajadores.
-
-18) pluginvehiculos (Plugin de vehículos)
-
-Permite la gestión de una flota de vehículos.
-
-19) plugincuadrante 
-
-Permite la elavoracion de cuadrantes de los trabajadores asignandoles horarios 
-en los distintos almacenes.
-
-libpluginalmacen.so
-libpluginasterisk.so        
-libplugindebugbf.so              
-
-libpluginimpresionesmultiples.so 
-libplugininformeclientes.so      
-libplugininventario.so           
-libpluginmail.so          
-libpluginpreciocoste.so   
-libpluginpromedios.so     
-libpluginq19.so           
-libplugintarifas.so       
-libplugin_tc_articulos.so 
-libpluginticket.so
-libplugintipostrabajo.so
-libplugintpv.so
-libplugintrazabilidad.so
-libpluginvehiculosbf.so
-
-
-add_subdirectory(plugin)
-add_subdirectory(plugintarifas)
-add_subdirectory(comercialbf)
-add_subdirectory(plugintrazabilidad)
-add_subdirectory(pluginbarcodeopen)
-add_subdirectory(plugincatalogo)
-add_subdirectory(plugininformeclientes)
-add_subdirectory(plugininventario)
-add_subdirectory(plugincontratos)
-add_subdirectory(pluginticket)
-add_subdirectory(pluginpromedios)
-add_subdirectory(pluginimpresionesmultiples)
-add_subdirectory(pluginq19)
-add_subdirectory(pluginmail)
-add_subdirectory(pluginalmacen)
-add_subdirectory(plugintipostrabajo)
-add_subdirectory(plugincuadrante)
-add_subdirectory(pluginasterisk)
-add_subdirectory(plugintpv)
-add_subdirectory(plugindebugbf)
-add_subdirectory(pluginpreciocoste)
-add_subdirectory(pluginsyncbulmacont)
-add_subdirectory(plugininformeclientessxc)
-add_subdirectory(pluginetiquetado)
-
-
-
-
-
-
-
-Bulmacont
----------
-Contiene la parte de contabilidad y contiene los siguientes plugins:
-
-1) pluginregistroiva (Plugin registro de IVA)
-
-Permite registras las facturas para hacer el listado modelo 377.
-
-2) pluginadocumental (Plugin de documentos)
-
-Permite introducir documentos. Actualmente (0.11.0) no está operativo.
-
-3) plugincorrector (Plugin corrector)
-
-permite testear los errors contables de la base de datos.
-
-4) plugin (Plugin ejemplo)
-
-Código ejemplo para desarrollar un plugin.
-         
-5) plugincanualesods (Plugin de balances)
-
-Permite generar balances en una hoja de cálculo.
-
-
-Bulmatpv
---------
-
-pluginticket <p>It adds one button in the program to allows the shipment by emai
-of the document generated with BulmaGés.</p>
-
-
-pluginabrevs<p>nose</p>
-
-
-pluginadmin<p>x, y, z, y el boton de salir</p>
-
-
-pluginartgraficos<p>enseña el panel en forma de regilla para poder
-seleccionarlos.</p>
-
-
-plugincobrar<p>el boton de cobrar</p>
-
-
-plugintecladonumerico<p>añade un teclado numérico</p>
-
-
-pluginticketbasico<p>Ticket</p>
-
-
-plugintotal<p>muestra los totales de los tickets</p>
-
-
-
-bulmalib 
--------- 
+- bulmalib 
 Hay algunas librerias que son comunes a varios de los proyectos. postgresiface,
 configuracion, algunos widgets raros. Son las librerias principales de la suite.
-A partir de la versión 0.11.x se intentará que todas las versiones x.y.z con 
-numeración x.y igual sean compatibles en ABI de biblioteca y base de datos. 
-Bulmalib contiene los siguientes plugins: 
-- pluginclipboardbf. Permite el intercambio con hojas de cálculo kspread i
-oocalc utilizando el portapapeles.
-- pluginsubformods. Permite el intercambio utilizando ficheros OpenDocument.
-Necesita una libreria de python.
-- pluginsubformsxc. Permite el intercambio utilizando ficheros OpenOffice.
-Necesita una libreria de perl.
 
+- bulmages 
+Contiene el lanzador del programa. 
 
-bulmatpv 
---------- 
-Contiene el terminal punto de venta. El programa permite vender y controlar el
-hardware específico de venta.
-Impresoras de Tickets y Lectores de códigos de Barras. En este programa la
-velocidad de las operaciones es
-lo fundamental.
-
-BulmaTPV es adaptabla a los distintos modelos de negocio gracias a sus sistema
-de plugins que dominan toda
-la interficie gráfica del programa.
-
-bulmages 
-------- 
-Contiene el lanzador del programa.
-
-installbulmages 
---------------- 
-Con el directorio fuentes obtenemos el binario de bulmages. En este directorio
-tenemos todo lo necesario para realizar una instalación.
-Lo que se traduce en que: 
-1.- Si modificas la base de datos tienes que plasmar los cambios aquí para que
-se hagan en las nuevas versiones. Por coherencia de datos tenemos los scripts de
-creación de una base de datos nueva y los scripts de cambios entre versiones y
-hay que mantenerlos.
-
-- Los scripts de instalacion estan en dbmodels/crear
-- Los scripts de actualizacion estan en dbmodels/actualizar
+- bulmacont
+Directorio del programa bulmacont.
  
-2.- También está el archivos bulmages.conf que se instalará en las próximas
-versiones. Por tanto todo lo que se agrega en la configuración debe ir también
-reflejado en su correspondiente archivo aquí. También hay unos archivos de
-revisión entre versiones del archivo. Para que las actualizaciones no cambien
-toda la configuración del sistema. 
+- bulmasetup
+Directorio del programa bulmasetup, para realizar la configuración del programa.
 
-3.- También están los scripts de instalación.
+- bulmafact
+Directorio del programa bulmafact.
 
-- installbulmages-server que monta las bases de datos y prepara un servidor.
-- installbulmages-client que monta un clienta.
+- installbulmages 
+En este directorio esta la parte de la suite que falta para hacer una
+instalación. Archivos de configuración, etc.
 
-scripts
--------
+- scripts
 Contiene scripts utiles para el desarrollo.
 
+- images
+Contiene imagenes (recursos) que son usadas junto con el archivo bulmages.qrc
+como iconos de los programas.
 
-images
-------
-Contiene imagenes (recursos) que son usadas junto con el archivo
-bulmages.qrc como iconos de los programas.
+- ModulesCMake    
+Código CMake para poder construir la suite.
+
+- doc
+Documencatión sobre la suite.
 
 
-COMPILACION
------------
+Construir la suite
+==================
 
-Para compilar basta con hacer en el directorio que se desee (para compilar todo
-lo que haya dentro del directorio)
+Se puede obtener de varias manera el directorio con el código fuente de la
+suite. Sea descargandose el comprimido (tar.bz2, tar.gz, tgz, zip, etc) o
+haciendo un checkout del repositorio subversion: 
 
-Se necesita la versión 2.4.8 de cmake
+svn checkout http://svn.berlios.de/svnroot/repos/bulmages/trunk/bulmages 
 
-dentro del directorio trunk hacer:
+Dentro del directorio hay que hacer:
 
 1)	mkdir build
 2)	cd build
 3)	cmake ../
 4)	make
 
-
-INSTALACION
------------
-
-Nota: Debe tener privilegios de root para instalar BulmaGes.
-
-Ejecute los scripts 
-
-#installbulmages-server
-#installbulmages-client
+hasta aquí, si todos los requerimientos han sido completados, la suite deberia
+compilarse sin problemas. Si solo desea compilar una parte del programa puede
+entrar dentro del directorio correspondiente y compilar ejecutando make. Pero
+tenga en cuenta que hay una parte mínima que necesita compilar.
 
 
-Notas para la instalacion
--------------------------
+5) make install
+Instala el software en /usr/local (plataformas Unix), 
+en %PROGRAMFILES%\bulmages\ en MSWindows.
+
+Notas para la instalacion:
+
 El programa depende de ciertos archivos en /etc para ejecutarse correctamente.
 Sin embargo cuando se esta desarrollando es engorroso reinstalar para
 comprobar el correcto funcionamiento del programa.
-En dicho caso es util cambiar en la instalacion los siguientes archivos
+
+En dicho caso es útil cambiar en la instalacion los siguientes archivos
 por soft links a los ejecutables resultantes en el directorio installbulmages
-del
-directorio de desarrollo.
+del directorio de desarrollo.
 
 Estos son los archivos que se deben enlazar:
-/usr/lib/libbulmages.0.11.1.so
+/usr/lib/libbulmages.X.Y.Z.so
 /usr/bin/bulmages
 /usr/bin/bulmafact
 /usr/bin/bulmacont
@@ -361,3 +182,69 @@ Estos son los archivos que se deben enlazar:
 De esta forma siempre se puede tener en ejecucion una version en desarrollo
 
 
+Puesta en marcha
+================
+
+Una vez instalada la suite se tiene que poner en marcha las bases de datos, los
+usuarios y las empresas. Este proceso se puede realizar principalmente de dos
+formas: utilizando bulmasetup o de forma manual.
+
+1) bulmasetup
+
+BulmaSetup es un aplicativo que ayuda a realizar la puesta en marcha de la
+suite,
+- dando de alta usuarios a la base de datos
+- creando empresas para la contabilidad, facturación/tpv
+- realizando cópias de seguridad.
+
+Se necesitan privilegios de superusuario de postgres para poder ejecutar este
+aplicación. En una instalación típica de GNU/Linux, se ejecuta com permisos de
+root, sea con sudo o desde un terminal root.
+
+2) de forma manual
+
+En el directorio share/bulmages/examples hay una série de scripts que pueden
+servir de ejemplo de como dar de alta a un usuario, crear una empresa y
+realizar las tareas típicas de gestión del programa.
+
+
+Bugs, comentarios, problemas, etc
+=================================
+
+Si tiene algun comentario, sugerencia, error encontrado, lo mejor que puede
+hacer es informar a los desarrolladores. Para hacerlo puede:
+
+- subscribirse a la llista de correo bulmages:
+http://llistes.bulma.net/mailman/listinfo/bulmages
+
+lista de tráfico medio donde los desarrolladores y la gente del proyecto
+utilizan para intercambiar noticias, dudas, etc sobre bulmages.
+
+- poner un bug en el sistema de gestión de bugs de berlios.
+
+http://developer.berlios.de/bugs/?func=browse&group_id=4472
+
+*ha de estar dado de alta como usuario de berlios.
+
+Código específico o no liberado
+===============================
+
+Puede crear sus propios plugins de proyecto. Recuerde que BulmaGés está
+liberado bajo licencia GPL y por tanto sus plugins también lo serán. Ahora
+bien, usted no está obligado a hacer públicos sus plugins, por mucho que a
+nosotros nos gustaria. 
+
+El proyecto BulmaGés tiene como fin promocionar el software libre al nivel de
+gestión empresarial y poder fomentar la pequeña industria "local" en éste
+ámbito. Cree un plugins de personalizaciones para cada uno de sus clientes
+y ofrezca un servicio de mantenimiento compilando las últimas versiones de
+la suite con sus plugins especificos.
+
+Si tiene código "privado", añadalo creando un fichero CMakeLists.txt.private,
+apuntando a los directorios que necesite. De esta forma sus plugins se
+compilaran junto con todo el programa, incluso podra actualizar el repositorio
+del programa y mantener sus desarrollos particulares actualizados en todo
+momento sin tener que realizar complicadas gestiones.
+
+
+ 

@@ -2,12 +2,12 @@ add_subdirectory(pluginticketbasico)
 add_subdirectory(plugintecladonumerico)
 add_subdirectory(plugintotal)
 add_subdirectory(pluginartgraficos)
-if(NOT APPLE)
-#pluginagrevs en desarrollo
-add_subdirectory(pluginabrevs)
-endif(NOT APPLE)
 add_subdirectory(pluginadmin)
 add_subdirectory(plugincobrar)
+if(NOT APPLE)
+add_subdirectory(pluginabrevs)
+endif(NOT APPLE)
+
 
 # if you want to add some private code
 # simple put your add_directory in a

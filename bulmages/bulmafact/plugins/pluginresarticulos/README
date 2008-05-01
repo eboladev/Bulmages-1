@@ -5,7 +5,7 @@ Plugin de Resumenes por Articulo
 Software Bajo Licencia G.P.L. (Vea el archivo COPYNG adjunto)
 
 
-Versión: 0.9.1
+Versión:= bulmages
 
 
 Descripcion: Permite el control de listas de precios a las que se suscribe cada cliente.
@@ -13,7 +13,8 @@ Descripcion: Permite el control de listas de precios a las que se suscribe cada 
 Compilacion
 ===========
 
-El plugin se compilará con el resto de bulmages y  se ubicara en bulmages/installbulmages/plugins con el nombre libtarifasbf.so
+El plugin se compilará con el resto de bulmages con el nombre
+pluginresarticulos.so
 
 
 

@@ -5,7 +5,7 @@ Plugin de Informes de Clientes
 Software Bajo Licencia G.P.L. (Vea el archivo COPYNG adjunto)
 
 
-Versión: 0.9.1
+Versión:= bulmages
 
 
 Descripcion: Permite la impresion del informe de compras y ventas  por clientes.
@@ -13,7 +13,8 @@ Descripcion: Permite la impresion del informe de compras y ventas  por clientes.
 Compilacion
 ===========
 
-El plugin se compilará con el resto de bulmages y  se ubicara en bulmages/installbulmages/plugins con el nombre libplugincatalogo.so
+El plugin se compilará con el resto de bulmages con el nombre
+libplugininformeclientessxc.so
 
 
 
