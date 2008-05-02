@@ -1,28 +1,22 @@
-Plugin de  Importacion de datos separados por coma
-==================================================
+=======
+Plugins
+=======
+#README
+20080502
 
-(C) 2007 Asociación IGLUES.
-Software Bajo Licencia G.P.L. (Vea el archivo COPYNG adjunto)
+Nombre: Plugin de Importacion de datos separados por coma
 
+Biblioteca: libpluginimportcsv.so
 
-Versión: 0.10.1
+Descripción: Permite la importacion de datos tabulares en formato CSV (coma
+separated values). 
 
+ParmBD: -
 
-Descripcion: Permite la importacion de datos tabulares en formato CSV (coma separated values).
-Con este plugin aparece un menu contextual en las fichas que permite la importacion de datos
-en la tabla que la ficha representa.
+ArchivoSQLpatch: -
 
+ArchivoSQLdeins: -
 
-Compilacion
-===========
-Siguiendo el proceso de compilacion normal el plugin se compilará con el resto de bulmages y el plugin se ubicara en bulmages/installbulmages/plugins con el nombre libpluginimpers.so
-
-
-
-Instalacion
-===========
-La instalacion no requiere de parches de base de datos ni pasos adicionales. Simplemente cambie el parametro CONF_PLUGINS_BULMAFACT o CONF_PLUGINS_BULMACONT para que llame al archivo de plugin y ya tendra
-la funcionalidad instalada.
-
-
+Comentarios: Con este plugin aparece un menu contextual en las fichas que
+permite la importacion de datos en la tabla que la ficha representa.
 

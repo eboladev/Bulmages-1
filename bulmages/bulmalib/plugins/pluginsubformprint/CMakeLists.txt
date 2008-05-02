@@ -24,7 +24,7 @@
 #pluginsubformprint
 
 set (plugin pluginsubformprint)
-
+set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
@@ -67,10 +67,14 @@ set_target_properties( ${plugin} PROPERTIES
   VERSION "${BULMAGES_VERSION}")
 
 target_link_libraries(${plugin} bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+add_dependencies(${plugin} bulmalib)
 
 install_targets(/lib/bulmalib/plugins ${plugin})
 
-add_dependencies(${plugin} bulmalib)
+foreach(dfile ${docs})
+ install (FILES ${dfile}
+DESTINATION share/bulmages/bulmalib-plugins/ RENAME ${dfile}.${plugin})
+endforeach(dfile in ${docs})
 
 # 
 # set(TRANSLATIONS pluginsubformods_es.ts 

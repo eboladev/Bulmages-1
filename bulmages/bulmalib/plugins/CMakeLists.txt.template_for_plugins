@@ -24,6 +24,7 @@
 #name of the plugin
 # replaces ################ by the name of the plugin
 set (plugin ################)
+set (docs README.es) #add the name of the README.nn files that you have
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
@@ -74,4 +75,12 @@ set_target_properties( ${plugin} PROPERTIES
 
 target_link_libraries(${plugin} bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 add_dependencies(${plugin} bulmalib)
+
 install_targets(/lib/bulmalib/plugins ${plugin})
+
+foreach(dfile ${docs})
+ install (FILES ${dfile}
+DESTINATION share/bulmages/bulmalib-plugins/ RENAME ${dfile}.${plugin})
+endforeach(dfile in ${docs})
+
+add_dependencies(${plugin} bulmalib)
