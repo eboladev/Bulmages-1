@@ -17,6 +17,8 @@ ArchivoSQLpatch: -
 
 ArchivoSQLdeins: -
 
-Comentarios: -
+Comentarios: Basado en el plugin 'pluginsubformsxc'. (c) 2007 Conetxia Soluciones Informaticas.
+Software Bajo Licencia G.P.L.
+
 
 

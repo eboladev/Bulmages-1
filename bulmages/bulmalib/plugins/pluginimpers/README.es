@@ -23,4 +23,5 @@ contenga el nombre de la tabla a la que representa la ficha. De este modo el
 informe aparecerá como opcion al pulsar sobre la opcion informes personalizados
 en el menu contextual de la ficha.
 
+(c) 2007 Asociación IGLUES. Software Bajo Licencia G.P.L.
 

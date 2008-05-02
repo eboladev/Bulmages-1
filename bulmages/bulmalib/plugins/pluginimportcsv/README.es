@@ -20,3 +20,4 @@ ArchivoSQLdeins: -
 Comentarios: Con este plugin aparece un menu contextual en las fichas que
 permite la importacion de datos en la tabla que la ficha representa.
 
+(c) 2007 Asociación IGLUES. Software Bajo Licencia G.P.L.
