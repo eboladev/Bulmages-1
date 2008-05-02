@@ -1,12 +1,23 @@
-Sincronizacion con Bulmacont.
-==============================
+#######
+#Plugins
+#######
+#README.es
+#20080501
 
-(C) 2007 Conetxia Soluciones Informaticas.
-Software Bajo Licencia G.P.L. (Vea el archivo COPYNG adjunto)
+Nombre: Sincronización con BulmaCont
 
+Biblioteca: 
 
-Versión: = bulmages
+Descripción: Permite la sincronización con Bulmacont
 
+ParmBD: DBRev-SyncBulmaCont
+
+ArchivoSQLpatch: revf-pluginsyncbulmacont.sql
+
+ArchivoSQLdeins: rm-pluginsyncbulmacont.sql
+
+Comentarios: Precisa de tener instalado dblink.
+No se instala propiamente como un plugin ya que no lleva librerías asociadas.
 
 
 Prerequisitos:

@@ -4,6 +4,7 @@
 #pluginpreciocoste
 
 set (plugin pluginpreciocoste)
+set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
@@ -52,6 +53,11 @@ set_target_properties( ${plugin} PROPERTIES
 
 target_link_libraries(${plugin} libbulmafact bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 install_targets(/lib/bulmafact/plugins ${plugin})
+
+foreach(dfile ${docs})
+   install (FILES ${dfile} DESTINATION share/bulmages/bulmafact-plugins/ RENAME ${dfile}.${plugin})
+endforeach(dfile in ${docs})
+
 add_dependencies(${plugin} bulmafact bulmalib)
 install(DIRECTORY dbmodels/ 
 		DESTINATION share/bulmages/dbmodels/plugins
