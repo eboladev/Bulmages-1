@@ -24,7 +24,7 @@ add_subdirectory(plugin)
 add_subdirectory(plugindebugbc)
 add_subdirectory(pluginbalancetree)
 add_subdirectory(plugincanualesods)
-add_subdirectory(pluginbalance)
+#add_subdirectory(pluginbalance)
 add_subdirectory(pluginresumcta)
 
 # pluginadocumental deprecated.

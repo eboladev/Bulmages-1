@@ -4,6 +4,7 @@
 # pluginticketbasico
 
 set (plugin pluginticketbasico)
+set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
@@ -52,6 +53,10 @@ set_target_properties( ${plugin} PROPERTIES
   VERSION "${BULMAGES_VERSION}")
 
 target_link_libraries(${plugin} libbulmatpv bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
+
+foreach(dfile ${docs})
+   install (FILES ${dfile} DESTINATION share/bulmages/bulmatpv-plugins/ RENAME ${dfile}.${plugin})
+endforeach(dfile in ${docs})
 
 add_dependencies(${plugin} bulmatpv bulmalib)
 
