@@ -44,7 +44,7 @@ class PluginsBulmaSetup:
 			m = re.search('Biblioteca: (.*)', cont)
 			if m <> None:
 				biblioteca = m.group(1)
-			m = re.search("(?smu)Descripción: (.*)Parm", cont)
+			m = re.search("(?smu)Descripción: (.*)\n\nParm", cont)
 			if m <> None:
 				descripcion = m.group(1)
 			m = re.search('ParmDB: (.*)', cont)
@@ -60,4 +60,9 @@ class PluginsBulmaSetup:
 
 
 if __name__=="__main__":
-  win=PluginsBulmaSetup()
+   pathdbbulmafact = ""
+   pathdbbulmacont = ""
+   pathdbparches = ""
+   configfiles = ""
+   confsharebulmages = "/opt/bulmages/share/bulmages/"
+   win=PluginsBulmaSetup()
