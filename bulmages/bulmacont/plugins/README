@@ -1,60 +1,50 @@
+=======
+Plugins
+=======
+#README.es
+20080502
 
-DISLIN
-------
-http://www.linmpi.mpg.de/dislin/
+Este directorio contiene lo plugins de BulmaCont. No todos los plugins son
+utilizables. Los que estan operativos son:
 
-Esta libreria de graficos es free for non-comercial, asi que si compila BulmaGes con 
-esta libreria el codigo deja de ser GPL.
+- pluginbalancetree  
+- pluginbalance
+- pluginbalance1
+- plugincanualesods  
+- pluginregistroiva
+- plugincorrector    
+- plugin
+- plugindebugbc
+- pluginresumcta
 
-debe existir el directorio src/dislin y debe contener exactamente el archivo:
-ftp://ftp.gwdg.de/pub/grafik/dislin/linux/i386/dislin-8.2.linux.tar.gz
+No funcionales:
+
+- pluginonline
+- pluginpychart
+- gdcchart
+- pluginestadisticas 
+
+En desarrollo:
+
+- pluginadocumental
+- pluginproyectos
+- pluginimportcontaplus
 
 
-GDCHART
--------
+Código antiguo
+==============
+
+En el directorio gdchart hay un plugin antiguo que utiliza la biblioteca
+gdchart.
+
 http://www.fred.net/brv/chart/
-Esta libreria es GPL, pero lleva bastante tiempo sin ser desarrollada.
-De momento hay un bug en la compilacion que no esta resuelto.
 
-Con las gd1.3 no hay problemas
-con las gd1.8 o superiores es con quien no compila
+Esta libreria es GPL, pero lleva bastante tiempo sin ser desarrollada. De
+momento hay un bug en la compilacion que no esta resuelto.
+
+Con las gd1.3 no hay problema pero con las gd1.8 o superiores es no compila
 El archivo usado es:
 http://www.fred.net/brv/chart/gdchart0.11.4dev.tar.gz
 
 Que debe descomprimirse en /src/gdchart
 
-
-REPORTS
--------
-
-El proyecto reports de Santiago Capel aporta funcionalidad de generacion de informes.
-Dicho proyecto puede obtenerse de sourceforge y debe estar descomprimido
-en /src/reports.
-
-http://sourceforge.net/projects/reports/
-
-
-------------------
-Para compilar el programa debemos usar solo una de las tres librerias
-graficas disponibles.
-
-estadisticas
-gdchart
-dislin
-
-
-Para que el codigo fuente compile con la que queramos debemos eliminar los directorios que no queramos (o renombrarlos).
-
-Luego ejecutar qmake en el directorio raiz y compilar normalmente.
-
-
-No estan incluidos los directorios de subproyectos con los que Bulmages puede compilar.
-
-Todos ellos son, de momento, opcionales, esto quiere decir que se puede poner en marcha
-BulmaGes sin ninguna de estas librerias de terceros, pero que el programa pierde
-funcionalidades.
-
-
---
-Tomeu Borras
-tborras@conetxia.com

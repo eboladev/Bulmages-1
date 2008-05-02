@@ -19,19 +19,21 @@
 #                                                                       #
 
 add_subdirectory(pluginregistroiva)
-# pluginadocumental deprecated.
-#add_subdirectory(pluginadocumental)
 add_subdirectory(plugincorrector)
 add_subdirectory(plugin)
 add_subdirectory(plugindebugbc)
-# pluginproyectos bajo desarrollo.
-add_subdirectory(pluginproyectos)
 add_subdirectory(pluginbalancetree)
 add_subdirectory(pluginbalance1)
 add_subdirectory(plugincanualesods)
 add_subdirectory(pluginbalance)
-#add_subdirectory(pluginimportcontaplus)
 add_subdirectory(pluginresumcta)
+
+# pluginadocumental deprecated.
+#add_subdirectory(pluginadocumental)
+# pluginproyectos bajo desarrollo.
+#add_subdirectory(pluginproyectos)
+# pluginimportcontaplus bajo desarrollo.
+#add_subdirectory(pluginimportcontaplus)
 
 
 # if you want to add some private code
