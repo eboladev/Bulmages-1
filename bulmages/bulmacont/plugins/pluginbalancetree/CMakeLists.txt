@@ -4,6 +4,7 @@
 #pluginbalancetree
 
 set (plugin pluginbalancetree)
+set (docs README.es) #add the README.nn files
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
@@ -56,6 +57,18 @@ set_target_properties( ${plugin} PROPERTIES
 target_link_libraries(${plugin} libbulmacont bulmalib ${QT_LIBRARIES} ${PGSQL_LIBRARIES})
 install_targets(/lib/bulmacont/plugins ${plugin})
 add_dependencies(${plugin} bulmacont bulmalib)
+
+install_targets(/lib/bulmacont/plugins ${plugin})
+foreach(dfile ${docs})
+ install (FILES ${dfile}
+DESTINATION share/bulmages/bulmacont-plugins/ RENAME ${dfile}.${plugin})
+endforeach(dfile in ${docs})
+
+set(plugin_STR ${plugin_SRC} ${plugin_MOC_SRCS}
+   ${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})
+
+GETTEXT_CREATE_TEMPLATE(${plugin} ${CMAKE_CURRENT_SOURCE_DIR} plugin_STR)
+
 
 set(plugin_STR ${plugin_SRC} ${plugin_MOC_SRCS}
    ${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})

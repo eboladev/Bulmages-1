@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <stdio.h>
+#include <cstdio>
 
 #include <QAction>
 #include <QMessageBox>
@@ -31,7 +31,7 @@
 #include <QTextCodec>
 #include <QLocale>
 
-#include "pluginbalance1.h"
+#include "pluginbalance.h"
 #include "balanceview.h"
 #include "empresa.h"
 
@@ -112,10 +112,10 @@ void entryPoint ( Bulmacont *bcont )
     /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
     QTranslator *traductor = new QTranslator ( 0 );
     if ( confpr->valor ( CONF_TRADUCCION ) == "locales" ) {
-        traductor->load ( QString ( "pluginbalance1_" ) + QLocale::system().name(),
+        traductor->load ( QString ( "pluginbalance_" ) + QLocale::system().name(),
                           confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
     } else {
-        QString archivo = "pluginbalance1_" + confpr->valor ( CONF_TRADUCCION );
+        QString archivo = "pluginbalance_" + confpr->valor ( CONF_TRADUCCION );
         traductor->load ( archivo, confpr->valor ( CONF_DIR_TRADUCCION ).toAscii().constData() );
     } // end if
     theApp->installTranslator ( traductor );

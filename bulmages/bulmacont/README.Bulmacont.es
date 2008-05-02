@@ -1,43 +1,51 @@
 ========================================
-Software de Gestion Empresarial BulmaGes
+Software de Gestión Empresarial BulmaGés
 
-(C) 2007, Asociacion Iglues
+(C) 2003 - 2008 Asociación IGLUES
 http://www.iglues.org
 ========================================
+#README.Bulmacont
+20080501
 
 BulmaCont
----------
-Este directorio contiene todo el codigo fuente del programa de facturacion 
-Bulmafact. Tanto el programa principal como algunos plugins especificos.
+=========
 
+Este directorio contiene todo el código fuente del programa de
+contabilidad BulmaCont. Tanto el programa principal como su plugins.
 
 Estructura
-----------
-Dentro del directorio src/contabilidad esta el codigo fuente de la aplicacion.
-El resto de directorios  son plugins.
+==========
 
-Compilacion
------------
-Este programa se desarrolla normalmente con Debian, Ubuntu y Suse por lo que 
-no deberia tener problemas para compilar con estas distribuciones.
+Dentro del directorio src/ está el código fuente de la aplicación. El el
+directorio plugins estan los plugins del programa.
+  
 
-Ejecute desde este directorio:
-   $ qmake-qt4 (O qmake si usa Suse)
-   $ make
-   
-Si solo desea compilar una parte del programa puede entrar dentro
-del directorio correspondiente y compilar siguiendo los mismos 
-pasos.
-
-El programa compilado y los plugins se ubican en el directorio installbulmages.
-
-Mire los archivos .pro de cada directorio para comprender mejor el
-sistema de compilacion.
-
-
-Modulos adicionales y personalizaciones
+Módulos adicionales y personalizaciones
 =======================================
-Usted puede crear extensiones al programa creando dichas extensiones en forma de plugin.
+Usted puede crear extensiones al programa creando dichas extensiones en forma de
+plugin.
 
-Nota: Cree plugins especificos para sus clientes y ofrezca un servicio de mantenimiento 
-compilando bulmacont en sus nuevas versiones junto a sus plugins.
+Nota: Cree plugins específicos para sus clientes y ofrezca un servicio de
+mantenimiento compilando bulmacont en sus nuevas versiones junto a sus plugins.
+
+Plugins
+=======
+
+Actualmente se compilan estos plugins por defecto en la mayoria de plataformas:
+
+- pluginregistroiva (Plugin registro de IVA)
+- plugincorrector (Plugin corrector)
+- plugin (Plugin ejemplo)
+- plugindebugbc
+- pluginbalancetree
+- pluginbalance1
+- plugincanualesods (Plugin de balances)
+- pluginbalance
+- pluginresumcta
+
+Bajo desarrollo y no operativos estan:
+- pluginproyectos
+- pluginimportcontaplus
+
+
+
