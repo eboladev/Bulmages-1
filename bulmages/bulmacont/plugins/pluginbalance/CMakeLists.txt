@@ -1,9 +1,10 @@
 ###########################################
 # Plugin for bulmacont					  #
 ###########################################
-#pluginbalance1
+#pluginbalance
 
-set (plugin pluginbalance1)
+set (plugin pluginbalance)
+set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)

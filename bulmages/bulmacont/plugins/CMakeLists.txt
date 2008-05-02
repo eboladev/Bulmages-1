@@ -23,7 +23,6 @@ add_subdirectory(plugincorrector)
 add_subdirectory(plugin)
 add_subdirectory(plugindebugbc)
 add_subdirectory(pluginbalancetree)
-add_subdirectory(pluginbalance1)
 add_subdirectory(plugincanualesods)
 add_subdirectory(pluginbalance)
 add_subdirectory(pluginresumcta)
@@ -34,7 +33,8 @@ add_subdirectory(pluginresumcta)
 #add_subdirectory(pluginproyectos)
 # pluginimportcontaplus bajo desarrollo.
 #add_subdirectory(pluginimportcontaplus)
-
+# pluginbalance-old pendiente de fusionar con pluginbalance
+#add_subdirectory(pluginbalance-old)
 
 # if you want to add some private code
 # simple put your add_directory in a

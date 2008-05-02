@@ -9,7 +9,6 @@ utilizables. Los que estan operativos son:
 
 - pluginbalancetree  
 - pluginbalance
-- pluginbalance1
 - plugincanualesods  
 - pluginregistroiva
 - plugincorrector    
@@ -23,6 +22,7 @@ No funcionales:
 - pluginpychart
 - gdcchart
 - pluginestadisticas 
+- pluginbalance-old, antiguo código, pendiente de fusionar con pluginbalance.
 
 En desarrollo:
 
