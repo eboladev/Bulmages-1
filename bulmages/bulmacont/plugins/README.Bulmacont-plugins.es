@@ -7,13 +7,13 @@ Plugins
 Este directorio contiene lo plugins de BulmaCont. No todos los plugins son
 utilizables. Los que estan operativos son:
 
-- pluginbalancetree  
-- pluginbalance
-- plugincanualesods  
-- pluginregistroiva
-- plugincorrector    
 - plugin
+- pluginbalance
+- pluginbalancetree  
+- plugincanualesods  
+- plugincorrector    
 - plugindebugbc
+- pluginregistroiva
 - pluginresumcta
 
 No funcionales:

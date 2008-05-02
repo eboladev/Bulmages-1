@@ -25,6 +25,7 @@
 # plugin#################
 
 set (plugin plugincanualesods)
+set (docs README.es) #add the README.nn files
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
@@ -79,7 +80,10 @@ target_link_libraries(${plugin} libbulmacont bulmalib ${QT_LIBRARIES} ${PGSQL_LI
 add_dependencies(${plugin} bulmacont bulmalib)
 
 install_targets(/lib/bulmacont/plugins ${plugin})
-
+foreach(dfile ${docs})
+ install (FILES ${dfile}
+DESTINATION share/bulmages/bulmacont-plugins/ RENAME ${dfile}.${plugin})
+endforeach(dfile in ${docs})
 
 set(plugin_STR ${plugin_SRC} ${plugin_MOC_SRCS}
    ${plugin_UIS_H} ${plugin_SRCS} ${plugin_MOCS})

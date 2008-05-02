@@ -4,6 +4,7 @@
 #pluginresumcta
 
 set (plugin pluginresumcta)
+set (docs README.es) #add the README.nn files
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
@@ -54,6 +55,11 @@ ${PGSQL_LIBRARIES} )
 add_dependencies(${plugin} bulmacont bulmafact bulmalib)
 
 install_targets(/lib/bulmacont/plugins ${plugin})
+
+foreach(dfile ${docs})
+ install (FILES ${dfile}
+DESTINATION share/bulmages/bulmacont-plugins/ RENAME ${dfile}.${plugin})
+endforeach(dfile in ${docs})
 
 
 set(plugin_STR ${plugin_SRC} ${plugin_MOC_SRCS}
