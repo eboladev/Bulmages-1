@@ -48,8 +48,8 @@ CONF_PROGDATA                 @CMAKE_INSTALL_PREFIX@/share/bulmages/
 CONF_DIR_OPENREPORTS          @CMAKE_INSTALL_PREFIX@/share/bulmages/openreports/
 
 # Este parametro indica familias genericas para Bulmages.
-CONF_FONTFAMILY_BULMAGES      Lucida
-CONF_FONTSIZE_BULMAGES        9
+CONF_FONTFAMILY_BULMAGES      Sans
+CONF_FONTSIZE_BULMAGES        10
 
 CONF_DEBUG                    FALSE
 

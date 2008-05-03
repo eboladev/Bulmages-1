@@ -45,7 +45,6 @@ CONF_PLUGINS_BULMAFACT        libpluginq19.so; \
                               libpluginmail.so; \
                               libpluginpromedios.so; \
                               libplugintrazabilidad.so; \
-                              libpluginvehiculosbf.so; \
                               libpluginimpers.so; \
                               libpluginsubformsxc.so; \
                               libplugindocked.so; \

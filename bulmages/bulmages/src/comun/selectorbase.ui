@@ -32,20 +32,19 @@
    <string>BulmaGes</string>
   </property>
   <widget class="QWidget" name="widget" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>592</width>
+     <height>400</height>
+    </rect>
+   </property>
    <layout class="QVBoxLayout" >
     <property name="spacing" >
      <number>0</number>
     </property>
-    <property name="leftMargin" >
-     <number>0</number>
-    </property>
-    <property name="topMargin" >
-     <number>0</number>
-    </property>
-    <property name="rightMargin" >
-     <number>0</number>
-    </property>
-    <property name="bottomMargin" >
+    <property name="margin" >
      <number>0</number>
     </property>
     <item>
@@ -53,16 +52,7 @@
       <property name="spacing" >
        <number>2</number>
       </property>
-      <property name="leftMargin" >
-       <number>0</number>
-      </property>
-      <property name="topMargin" >
-       <number>0</number>
-      </property>
-      <property name="rightMargin" >
-       <number>0</number>
-      </property>
-      <property name="bottomMargin" >
+      <property name="margin" >
        <number>0</number>
       </property>
       <item>
@@ -89,7 +79,8 @@
          <string/>
         </property>
         <property name="icon" >
-         <iconset resource="../../../bulmages.qrc" >:/Genericos48x48/images/png/bulmafact.png</iconset>
+         <iconset resource="../../../bulmages.qrc" >
+          <normaloff>:/Genericos48x48/images/png/bulmafact.png</normaloff>:/Genericos48x48/images/png/bulmafact.png</iconset>
         </property>
         <property name="iconSize" >
          <size>
@@ -132,7 +123,8 @@
          <string/>
         </property>
         <property name="icon" >
-         <iconset resource="../../../bulmages.qrc" >:/Genericos48x48/images/png/bulmatpv.png</iconset>
+         <iconset resource="../../../bulmages.qrc" >
+          <normaloff>:/Genericos48x48/images/png/bulmatpv.png</normaloff>:/Genericos48x48/images/png/bulmatpv.png</iconset>
         </property>
         <property name="iconSize" >
          <size>
@@ -160,7 +152,8 @@
          <string/>
         </property>
         <property name="icon" >
-         <iconset resource="../../../bulmages.qrc" >:/Genericos48x48/images/png/bulmacont.png</iconset>
+         <iconset resource="../../../bulmages.qrc" >
+          <normaloff>:/Genericos48x48/images/png/bulmacont.png</normaloff>:/Genericos48x48/images/png/bulmacont.png</iconset>
         </property>
         <property name="iconSize" >
          <size>
@@ -183,16 +176,7 @@
       <property name="spacing" >
        <number>2</number>
       </property>
-      <property name="leftMargin" >
-       <number>0</number>
-      </property>
-      <property name="topMargin" >
-       <number>0</number>
-      </property>
-      <property name="rightMargin" >
-       <number>0</number>
-      </property>
-      <property name="bottomMargin" >
+      <property name="margin" >
        <number>0</number>
       </property>
       <item>
@@ -213,7 +197,8 @@
          <string/>
         </property>
         <property name="icon" >
-         <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_tux.png</iconset>
+         <iconset resource="../../../bulmages.qrc" >
+          <normaloff>:/BulmaCont32x32/images/png/i_tux.png</normaloff>:/BulmaCont32x32/images/png/i_tux.png</iconset>
         </property>
         <property name="iconSize" >
          <size>
@@ -238,7 +223,8 @@
          <string/>
         </property>
         <property name="icon" >
-         <iconset resource="../../../bulmages.qrc" >:/Genericos48x48/images/logotipo/variaciones 18/variacion 18 - logotipo 02.jpg</iconset>
+         <iconset resource="../../../bulmages.qrc" >
+          <normaloff>:/Genericos48x48/images/logotipo/variaciones 18/variacion 18 - logotipo 02.jpg</normaloff>:/Genericos48x48/images/logotipo/variaciones 18/variacion 18 - logotipo 02.jpg</iconset>
         </property>
         <property name="iconSize" >
          <size>
@@ -266,7 +252,8 @@
          <string/>
         </property>
         <property name="icon" >
-         <iconset resource="../../../bulmages.qrc" >:/Genericos48x48/images/logotipo/variaciones 18/variacion 18 - logotipo 05.jpg</iconset>
+         <iconset resource="../../../bulmages.qrc" >
+          <normaloff>:/Genericos48x48/images/logotipo/variaciones 18/variacion 18 - logotipo 05.jpg</normaloff>:/Genericos48x48/images/logotipo/variaciones 18/variacion 18 - logotipo 05.jpg</iconset>
         </property>
         <property name="iconSize" >
          <size>
@@ -296,16 +283,7 @@
       <property name="spacing" >
        <number>2</number>
       </property>
-      <property name="leftMargin" >
-       <number>0</number>
-      </property>
-      <property name="topMargin" >
-       <number>0</number>
-      </property>
-      <property name="rightMargin" >
-       <number>0</number>
-      </property>
-      <property name="bottomMargin" >
+      <property name="margin" >
        <number>0</number>
       </property>
       <item>
@@ -804,16 +782,7 @@
       <property name="spacing" >
        <number>0</number>
       </property>
-      <property name="leftMargin" >
-       <number>0</number>
-      </property>
-      <property name="topMargin" >
-       <number>0</number>
-      </property>
-      <property name="rightMargin" >
-       <number>0</number>
-      </property>
-      <property name="bottomMargin" >
+      <property name="margin" >
        <number>0</number>
       </property>
       <item>
@@ -825,29 +794,8 @@
          <string/>
         </property>
         <property name="icon" >
-         <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_empresa.xpm</iconset>
-        </property>
-        <property name="iconSize" >
-         <size>
-          <width>32</width>
-          <height>32</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="configura" >
-        <property name="enabled" >
-         <bool>false</bool>
-        </property>
-        <property name="toolTip" >
-         <string>Configuración</string>
-        </property>
-        <property name="text" >
-         <string/>
-        </property>
-        <property name="icon" >
-         <iconset resource="../../../bulmages.qrc" >:/Images/document-properties.svg</iconset>
+         <iconset resource="../../../bulmages.qrc" >
+          <normaloff>:/BulmaCont32x32/images/png/i_empresa.xpm</normaloff>:/BulmaCont32x32/images/png/i_empresa.xpm</iconset>
         </property>
         <property name="iconSize" >
          <size>
@@ -865,7 +813,7 @@
         <property name="sizeType" >
          <enum>QSizePolicy::Expanding</enum>
         </property>
-        <property name="sizeHint" >
+        <property name="sizeHint" stdset="0" >
          <size>
           <width>51</width>
           <height>21</height>
@@ -907,7 +855,6 @@
   <tabstop>mui_info</tabstop>
   <tabstop>m_bulmafact</tabstop>
   <tabstop>seleccionaempresa</tabstop>
-  <tabstop>configura</tabstop>
   <tabstop>nombreempresa</tabstop>
  </tabstops>
  <resources>

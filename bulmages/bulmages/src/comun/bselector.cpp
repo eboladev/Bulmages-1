@@ -50,7 +50,7 @@ BSelector::BSelector ( QWidget *parent )
     QObject::connect ( m_bulmacont, SIGNAL ( clicked() ), this, SLOT ( contabilidad_clicked() ) );
     QObject::connect ( m_galopin, SIGNAL ( clicked() ), this, SLOT ( produccion_clicked() ) );
     QObject::connect ( m_bulmafact, SIGNAL ( clicked() ), this, SLOT ( m_bulmafact_clicked() ) );
-    QObject::connect ( configura, SIGNAL ( clicked() ), this, SLOT ( configura_clicked() ) );
+//    QObject::connect ( configura, SIGNAL ( clicked() ), this, SLOT ( configura_clicked() ) );
 
 
     /// Al crear el selector, todos los modulos estan cerrados = NULL
