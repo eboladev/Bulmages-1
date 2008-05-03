@@ -1703,6 +1703,13 @@ int SubForm3::borrar()
     SDBRecord *rec;
     int i = 0;
     int error = 0;
+
+    /// Si la lista esta vacia no podemos borrar.
+    if (m_lista.count() <= 0) {
+        _depura ( "END SubForm3::borrar", 0 );
+	return error;
+    } // end if
+
     try {
         for ( rec = m_lista.at ( i++ ); i < m_lista.count(); rec = m_lista.at ( i++ ) ) {
             error = rec->borrar();

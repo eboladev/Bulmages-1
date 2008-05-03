@@ -84,9 +84,9 @@ CobroView::~CobroView()
 }
 
 
-void CobroView::on_mui_imprimir_clicked()
+void CobroView::imprimir()
 {
-    _depura ( "CobroView::on_mui_imprimir_clicked", 0 );
+    _depura ( "CobroView::imprimir", 0 );
 
     /// Disparamos los plugins
     int res = g_plugins->lanza ( "CoboView_on_mui_imprimir_clicked", this );
@@ -173,7 +173,7 @@ void CobroView::on_mui_imprimir_clicked()
     _depura ( "FichaBf::imprimir", 0 );
     invocaPDF ( "recibo" );
 
-    _depura ( "END CobroView::on_mui_imprimir_clicked", 0 );
+    _depura ( "END CobroView::imprimir", 0 );
 }
 
 

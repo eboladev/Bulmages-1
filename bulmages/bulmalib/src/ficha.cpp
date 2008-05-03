@@ -711,11 +711,19 @@ int Ficha::borrarPre()
 **/
 int Ficha::borrar()
 {
-    _depura ( "Ficha::borrar existe solo para ser derivado", 0 );
-    /// Lanzamos los plugins.
-    if ( g_plugins->lanza ( "Ficha_borrar", this ) ) return 0;
-    borrarPre();
-    return DBRecord::borrar();
+    _depura ( "Ficha::borrar", 0 );
+    try {
+	/// Lanzamos los plugins.
+	if ( g_plugins->lanza ( "Ficha_borrar", this ) ) return 0;
+	borrarPre();
+	int err;
+	err =  DBRecord::borrar();
+	_depura ( "END Ficha::borrar", 0 );
+	return err;
+    } catch(...) {
+        _depura ( "END Ficha::borrar", 0, "Error en el guardado" );
+	return -1;
+    } // end try
 }
 
 

@@ -76,7 +76,7 @@ FamiliasView::FamiliasView ( Company *comp, QWidget *parent, bool modoConsulta )
     } else {
         setModoEdicion();
         setAttribute ( Qt::WA_DeleteOnClose );
-        empresaBase()->meteWindow ( windowTitle(), this );
+        empresaBase()->meteWindow ( windowTitle(), this, FALSE );
     } // end if
 
     pintar();

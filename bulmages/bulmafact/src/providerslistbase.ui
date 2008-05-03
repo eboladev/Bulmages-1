@@ -113,10 +113,10 @@
            <enum>Qt::TabFocus</enum>
           </property>
           <property name="toolTip" >
-           <string>Nuevo articulo</string>
+           <string>Nuevo</string>
           </property>
           <property name="whatsThis" >
-           <string>Nuevo articulo</string>
+           <string>Nuevo</string>
           </property>
           <property name="text" >
            <string/>
@@ -147,10 +147,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Editar articulo</string>
+           <string>Editar</string>
           </property>
           <property name="whatsThis" >
-           <string>Editar articulo</string>
+           <string>Editar</string>
           </property>
           <property name="text" >
            <string/>
@@ -181,10 +181,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Borrar articulo</string>
+           <string>Borrar</string>
           </property>
           <property name="whatsThis" >
-           <string>Borrar articulo</string>
+           <string>Borrar</string>
           </property>
           <property name="text" >
            <string/>
@@ -357,10 +357,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Exportar articulos</string>
+           <string>Exportar</string>
           </property>
           <property name="whatsThis" >
-           <string>Exportar articulos</string>
+           <string>Exportar</string>
           </property>
           <property name="text" >
            <string/>
@@ -391,10 +391,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Importar articulos</string>
+           <string>Importar</string>
           </property>
           <property name="whatsThis" >
-           <string>Importar articulos</string>
+           <string>Importar</string>
           </property>
           <property name="text" >
            <string>Exportar</string>
@@ -540,5 +540,22 @@
  <resources>
   <include location="../../bulmages.qrc" />
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>mui_filtrar</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_busqueda</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>234</x>
+     <y>36</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>204</x>
+     <y>74</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

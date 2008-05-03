@@ -61,7 +61,7 @@ TrabajadorView::TrabajadorView ( Company *emp, QWidget *parent )
         return;
     } // end if
     pintar();
-    meteWindow ( windowTitle(), this );
+    meteWindow ( windowTitle(), this, FALSE );
     _depura ( "END TrabajadorView::TrabajadorView", 0 );
 }
 

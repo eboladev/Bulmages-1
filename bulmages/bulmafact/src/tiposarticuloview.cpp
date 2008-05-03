@@ -60,7 +60,7 @@ TipoArticuloList::TipoArticuloList ( Company *comp, QWidget *parent, bool modoCo
     } else {
         setModoEdicion();
         setAttribute ( Qt::WA_DeleteOnClose );
-        empresaBase()->meteWindow ( windowTitle(), this );
+        empresaBase()->meteWindow ( windowTitle(), this, FALSE );
     } // end if
     pintar();
     _depura ( "END TipoArticuloList::TipoArticuloList", 0 );

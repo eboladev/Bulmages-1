@@ -232,3 +232,19 @@ void FPagoView::setModoEdicion()
     _depura ( "END FPagoView::setModoEdicion", 0 );
 }
 
+
+/// SLOT que responde a la pulsacion del boton de borrar la familia que se esta editando.
+/// Lo que hace es que se hace un update de todos los campos.
+/**
+\return
+**/
+void FPagoView::on_mui_aceptar_clicked()
+{
+    _depura ( "FPagoView::on_mui_aceptar_clicked", 0 );
+    trataModificado();
+    close();
+    _depura ( "END FPagoView::on_mui_aceptar_clicked", 0 );
+}
+
+
+

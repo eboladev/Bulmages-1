@@ -49,10 +49,8 @@ class CobroView : public FichaBf, public Ui_CobroBase
 public:
     CobroView ( Company *, QWidget * );
     ~CobroView();
+    virtual void imprimir();
 
-
-public slots:
-    virtual void on_mui_imprimir_clicked();
 };
 
 #endif
