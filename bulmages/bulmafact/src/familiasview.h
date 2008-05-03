@@ -36,7 +36,6 @@ class FamiliasView : public FichaBf, public Ui_familiasbase
     Q_OBJECT
 
 private:
-    Company *companyact;
     /// Indica cu&aacute;l es el registro que se est&aacute; modificando. Sirve para saber los
     /// cambios que hay que guardar despu&eacute;s de que se haya modificado.
     QString m_idfamilia;
@@ -68,6 +67,7 @@ public slots:
     virtual void on_m_listFamilias_itemDoubleClicked ( QTreeWidgetItem * );
     virtual void on_m_listFamilias_currentItemChanged ( QTreeWidgetItem *current, QTreeWidgetItem *previous );
     virtual void on_mui_crear_clicked();
+    virtual void on_mui_crearRaiz_clicked();
 
 
 signals:

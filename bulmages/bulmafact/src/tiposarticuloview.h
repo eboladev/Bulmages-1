@@ -23,7 +23,7 @@
 #define TIPOSARTICULOVIEW_H
 
 #include "ui_tiposarticulobase.h"
-#include "ficha.h"
+#include "fichabf.h"
 
 
 class Company;
@@ -31,18 +31,20 @@ class Company;
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un tipo de art&iacute;culo.
 /** */
-class TipoArticuloList : public Ficha, public Ui_tiposarticulobase
+class TipoArticuloList : public FichaBf, public Ui_tiposarticulobase
 {
     Q_OBJECT
 
 private:
-    Company *companyact;
+
     /// Indica cual es el registro que se esta modificando. Sirve para saber los
     /// cambios que hay que guardar cuando se ha modificado.
     QString m_idtipo;
     /// Indica si es modo consulta o modo edicion. (altera el comportamiento del
     /// doble click sobre la lista)
     bool m_modoConsulta;
+    /// Este semaforo indica si se esta en el proceso de pintado.
+    bool m_semaforoPintar;
 
 public:
     TipoArticuloList ( Company *, QWidget *parent = 0, bool modoConsulta = FALSE );
@@ -55,7 +57,9 @@ public:
     QString idtipo_articulo();
     QString desctipo_articulo();
     virtual int guardar();
+    virtual int borrar();
     virtual void on_mui_borrar_clicked();
+    void pintar ( QTreeWidgetItem * );
 
 public slots:
     virtual void pintar();

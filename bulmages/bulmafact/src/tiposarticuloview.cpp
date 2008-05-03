@@ -38,15 +38,15 @@
 \param modoConsultas
 **/
 TipoArticuloList::TipoArticuloList ( Company *comp, QWidget *parent, bool modoConsulta )
-        : Ficha ( parent )
+        : FichaBf ( comp, parent )
 {
     _depura ( "TipoArticuloList::TipoArticuloList", 0 );
     setupUi ( this );
-    companyact = comp;
     m_listTipos->setColumnCount ( 3 );
     QStringList headers;
     headers << tr ( "Id" ) << tr ( "Codigo" ) << tr ( "Descripcion" );
     m_listTipos->setHeaderLabels ( headers );
+    m_semaforoPintar = FALSE;
     m_idtipo = "";
     if ( modoConsulta ) {
         setModoConsulta();
@@ -60,7 +60,7 @@ TipoArticuloList::TipoArticuloList ( Company *comp, QWidget *parent, bool modoCo
     } else {
         setModoEdicion();
         setAttribute ( Qt::WA_DeleteOnClose );
-        companyact->meteWindow ( windowTitle(), this );
+        empresaBase()->meteWindow ( windowTitle(), this );
     } // end if
     pintar();
     _depura ( "END TipoArticuloList::TipoArticuloList", 0 );
@@ -106,20 +106,19 @@ void TipoArticuloList::setModoEdicion()
 void TipoArticuloList::pintar()
 {
     _depura ( "TipoArticuloList::pintar", 0 );
+    m_semaforoPintar = TRUE;
     cursor2 *cursoraux1 = NULL;
     try {
         QTreeWidgetItem * it;
 
-        /// vaciamos el arbol.
-        /// \TODO Hay problemas en el vaciado del arbol. No lo hace bien y se cuelga. Por eso escondo sus items
-        while ( m_listTipos->topLevelItemCount() > 1 ) {
-            it = m_listTipos->topLevelItem ( 0 );
-            delete it;
-        } // end while
-        it = m_listTipos->topLevelItem ( 0 );
-        if ( it ) it->setHidden ( TRUE );
 
-        cursoraux1 = companyact->cargacursor ( "SELECT * FROM tipo_articulo ORDER BY codtipo_articulo" );
+    /// Vaciamos el arbol.
+    while ( m_listTipos->topLevelItemCount() > 0 ) {
+        it = m_listTipos->takeTopLevelItem ( 0 );
+        delete it;
+    } // end while
+
+        cursoraux1 = empresaBase()->cargacursor ( "SELECT * FROM tipo_articulo ORDER BY codtipo_articulo" );
         while ( !cursoraux1->eof() ) {
             it = new QTreeWidgetItem ( m_listTipos );
             it->setText ( COL_IDTIPOARTICULO, cursoraux1->valor ( "idtipo_articulo" ) );
@@ -132,6 +131,7 @@ void TipoArticuloList::pintar()
         m_idtipo = "";
         /// Comprobamos cual es la cadena inicial.
         dialogChanges_cargaInicial();
+        m_semaforoPintar = FALSE;
         _depura ( "END TipoArticuloList::pintar", 0 );
     } catch ( ... ) {
         mensajeInfo ( "Error en la carga" );
@@ -214,16 +214,22 @@ void TipoArticuloList::on_m_listTipos_itemDoubleClicked ( QTreeWidgetItem *item,
 /**
 \param current
 **/
-void TipoArticuloList::on_m_listTipos_currentItemChanged ( QTreeWidgetItem *current, QTreeWidgetItem * )
+void TipoArticuloList::on_m_listTipos_currentItemChanged ( QTreeWidgetItem *current, QTreeWidgetItem *previous )
 {
     _depura ( "TipoArticuloList::on_m_listTipos_currentItemChanged", 0 );
-    QString idtipoold = current->text ( COL_IDTIPOARTICULO );
-    if ( idtipoold != "" ) {
-        /// Si usamos el trataModificado peta porque si se guarda se sobreescribe el puntero it.
-        trataModificado();
-        m_idtipo = idtipoold;
-        mostrarplantilla();
+    /// Si estamos dentro del proceso de pintado salimos sin hacer nada ya que puede haber problemas.
+    if ( m_semaforoPintar ) return;
+
+    QString idtipoold = "";
+    if ( previous ) {
+        m_idtipo = previous->text ( COL_IDTIPOARTICULO );
     } // end if
+    if ( m_idtipo != "" ) {
+        trataModificado();
+        pintar ( previous );
+    } // end if
+    m_idtipo = current->text ( COL_IDTIPOARTICULO );
+    mostrarplantilla();
     _depura ( "END TipoArticuloList::on_m_listTipos_currentItemChanged", 0 );
 }
 
@@ -236,10 +242,10 @@ void TipoArticuloList::mostrarplantilla()
     _depura ( "TipoArticuloList::mostrarplantilla", 0 );
     QString query;
     query = "SELECT * from tipo_articulo WHERE idtipo_articulo = " + m_idtipo;
-    cursor2 *cursortipo = companyact->cargacursor ( query );
+    cursor2 *cursortipo = empresaBase()->cargacursor ( query );
     if ( !cursortipo->eof() ) {
-        m_codTipo->setText ( cursortipo->valor ( "codtipo_articulo" ) );
-        m_descTipo->setPlainText ( cursortipo->valor ( "desctipo_articulo" ) );
+        mui_codigotipo_articulo->setText ( cursortipo->valor ( "codtipo_articulo" ) );
+        mui_desctipo_articulo->setPlainText ( cursortipo->valor ( "desctipo_articulo" ) );
     } // end if
     delete cursortipo;
     /// Comprobamos cual es la cadena inicial.
@@ -259,7 +265,7 @@ bool TipoArticuloList::trataModificado()
     /// Si se ha modificado el contenido advertimos y guardamos.
     if ( dialogChanges_hayCambios() ) {
         if ( QMessageBox::warning ( this,
-                                    tr ( "Guardar familia" ),
+                                    tr ( "Guardar Tipo de Articulo" ),
                                     tr ( "Desea guardar los cambios?" ),
                                     QMessageBox::Ok,
                                     QMessageBox::Cancel ) == QMessageBox::Ok )
@@ -279,21 +285,21 @@ bool TipoArticuloList::trataModificado()
 int TipoArticuloList::guardar()
 {
     QString query = "UPDATE tipo_articulo SET codtipo_articulo = '" +
-                    companyact->sanearCadena ( m_codTipo->text() ) + "', desctipo_articulo = '" +
-                    companyact->sanearCadena ( m_descTipo->toPlainText() ) + "' WHERE idtipo_articulo = " + m_idtipo;
-    companyact->begin();
-    int error = companyact->ejecuta ( query );
+                    empresaBase()->sanearCadena ( mui_codigotipo_articulo->text() ) + "', desctipo_articulo = '" +
+                    empresaBase()->sanearCadena ( mui_desctipo_articulo->toPlainText() ) + "' WHERE idtipo_articulo = " + m_idtipo;
+    empresaBase()->begin();
+    int error = empresaBase()->ejecuta ( query );
     if ( error ) {
-        companyact->rollback();
+        empresaBase()->rollback();
         return -1;
     } // end if
-    companyact->commit();
+    empresaBase()->commit();
     //pintar();
 
     /// Vamos a hacer algo no reentrante.
     QList<QTreeWidgetItem *> listit =  m_listTipos->findItems ( m_idtipo, Qt::MatchExactly, COL_IDTIPOARTICULO );
     QTreeWidgetItem *it = listit.first();
-    cursor2 *cursoraux1 = companyact->cargacursor ( "SELECT * FROM tipo_articulo WHERE idtipo_articulo = " + m_idtipo );
+    cursor2 *cursoraux1 = empresaBase()->cargacursor ( "SELECT * FROM tipo_articulo WHERE idtipo_articulo = " + m_idtipo );
     if ( !cursoraux1->eof() ) {
         it->setText ( COL_IDTIPOARTICULO, cursoraux1->valor ( "idtipo_articulo" ) );
         it->setText ( COL_CODTIPOARTICULO, cursoraux1->valor ( "codtipo_articulo" ) );
@@ -317,18 +323,18 @@ void TipoArticuloList::on_mui_crear_clicked()
     trataModificado();
     try {
         QString query = "INSERT INTO tipo_articulo (codtipo_articulo, desctipo_articulo) VALUES ('XXXXXX', 'Descripcion del tipo')";
-        companyact->begin();
-        int error = companyact->ejecuta ( query );
+        empresaBase()->begin();
+        int error = empresaBase()->ejecuta ( query );
         if ( error ) throw - 1;
-        cur = companyact->cargacursor ( "SELECT max(idtipo_articulo) AS idtipo FROM tipo_articulo" );
-        companyact->commit();
+        cur = empresaBase()->cargacursor ( "SELECT max(idtipo_articulo) AS idtipo FROM tipo_articulo" );
+        empresaBase()->commit();
         m_idtipo = cur->valor ( "idtipo" );
         delete cur;
         pintar();
         _depura ( "END TipoArticuloList::on_mui_crear_clicked", 0 );
     } catch ( ... ) {
         mensajeInfo ( "Error en la creacion" );
-        companyact->rollback();
+        empresaBase()->rollback();
         return;
     } // end try
 }
@@ -342,17 +348,71 @@ void TipoArticuloList::on_mui_crear_clicked()
 void TipoArticuloList::on_mui_borrar_clicked()
 {
     _depura ( "TipoArticuloList::on_mui_borrar_clicked", 0 );
-    QTreeWidgetItem *it = m_listTipos->currentItem();
-    if ( !it )
-        return;
-    trataModificado();
-    QString query = "DELETE FROM tipo_articulo WHERE idtipo_articulo = " + m_idtipo;
-    int error = companyact->ejecuta ( query );
-    if ( error ) {
-        return;
+
+
+    int val = QMessageBox::question ( this,
+                                      tr ( "Borrar" ) + " " + windowTitle(),
+                                      tr ( "Desea eliminar" ) + " " + windowTitle(),
+                                      QMessageBox::Yes,
+                                      QMessageBox::Cancel | QMessageBox::Escape | QMessageBox::Default );
+
+    if ( val == QMessageBox::Yes ) {
+        if ( !borrar() ) {
+            dialogChanges_cargaInicial();
+            _depura ( windowTitle() + " " + "borrado satisfactoriamente.", 10 );
+        } else {
+            mensajeInfo ( windowTitle() + tr ( "No se ha podido borrar" ) );
+        } // end if
     } // end if
-    it = m_listTipos->takeTopLevelItem ( m_listTipos->indexOfTopLevelItem ( m_listTipos->currentItem() ) );
-    delete it;
+
     _depura ( "END TipoArticuloList::on_mui_borrar_clicked", 0 );
 }
 
+
+/// SLOT que responde a la pulsacion del botón de borrar la familia que se está editando.
+/// Lo que hace es que se hace un update de todos los campos.
+/**
+\return
+**/
+int TipoArticuloList::borrar()
+{
+    _depura ( "TipoArticuloList::borrar", 0 );
+    if ( m_idtipo == "" ) {
+        mensajeInfo ( tr ( "Debe seleccionar un tipo" ) );
+        return -1;
+    } // end if
+    try {
+        QString query = "DELETE FROM tipo_articulo WHERE idtipo_articulo = " + m_idtipo;
+        int error = empresaBase()->ejecuta ( query );
+        if ( error ) {
+            throw - 1;
+        } // end if
+        m_idtipo = "";
+        dialogChanges_cargaInicial();
+        pintar();
+        _depura ( "END TipoArticuloList::borrar", 0 );
+    } catch ( ... ) {
+        mensajeInfo ( "Error al borrar la familia" );
+        return -1;
+    } // end try
+    return 0;
+}
+
+
+/// Pinta una fila especifica del listado de familias presentado.
+/**
+\param it
+**/
+void TipoArticuloList::pintar ( QTreeWidgetItem *it )
+{
+    QString idtipo = it->text ( COL_IDTIPOARTICULO );
+    if ( it ) {
+        cursor2 * cursoraux1 = empresaBase()->cargacursor ( "SELECT * FROM tipo_articulo WHERE idtipo_articulo = " + idtipo );
+        if ( !cursoraux1->eof() ) {
+            it->setText ( COL_IDTIPOARTICULO, cursoraux1->valor ( "idtipo_articulo" ) );
+            it->setText ( COL_CODTIPOARTICULO, cursoraux1->valor ( "codtipo_articulo" ) );
+            it->setText ( COL_DESCTIPOARTICULO, cursoraux1->valor ( "desctipo_articulo" ) );
+        } // end if
+        delete cursoraux1;
+    } // end if
+}
