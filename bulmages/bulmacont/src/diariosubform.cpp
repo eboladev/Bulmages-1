@@ -33,11 +33,12 @@ DiarioSubForm::DiarioSubForm ( QWidget *parent, const char * ) : SubForm2Bc ( pa
     setFileConfig ( "DiarioSubForm" );
     setDBCampoId ( "idborrador" );
     addSHeader ( "idasiento", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "idasiento" ) );
-    addSHeader ( "ordenasientoconfecha", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Asiento" ) );
+//     addSHeader ( "ordenasientoconfecha", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Asiento" ) );
+    addSHeader ( "ordenasiento", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Asiento" ) );
     addSHeader ( "fecha", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Fecha" ) );
     addSHeader ( "codigo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Cuenta" ) );
     addSHeader ( "descripcion", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Descripcion" ) );
-    addSHeader ( "conceptocontable", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Concepto" ) );
+    addSHeader ( "conceptocontable", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Concepto contable" ) );
     addSHeader ( "debe", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Debe" ) );
     addSHeader ( "haber", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Haber" ) );
     addSHeader ( "comentario", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoWrite, tr ( "Comentario" ) );
@@ -58,7 +59,6 @@ DiarioSubForm::DiarioSubForm ( QWidget *parent, const char * ) : SubForm2Bc ( pa
     addSHeader ( "idc_coste", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr ( "idc_coste" ) );
     addSHeader ( "iddiario", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "iddiario" ) );
     addSHeader ( "idcuenta", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "idcuenta" ) );
-    addSHeader ( "orden", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "orden" ) );
     /// Van juntas. Desactivas un tipo de pijama y se activa otro personalizado al hacer 'rowspan'.
     setListadoPijama ( FALSE );
     setColumnToRowSpan ( "ordenasientoconfecha" );

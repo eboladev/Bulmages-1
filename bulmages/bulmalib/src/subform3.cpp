@@ -2037,6 +2037,9 @@ QString SubForm3::imprimir()
     barra.show();
     barra.setRange ( 0, mui_listcolumnas->rowCount() + mui_list->rowCount() );
     barra.setValue ( 0 );
+    QLocale::setDefault ( QLocale ( QLocale::Spanish, QLocale::Spain ) );
+    QLocale spanish;
+
     QString fitxersortidarml = "<tr>\n";
     for ( int h = 0; h < mui_listcolumnas->rowCount(); ++h ) {
         if ( mui_listcolumnas->item ( h, 0 ) ->checkState() == Qt::Checked ) {
@@ -2050,7 +2053,11 @@ QString SubForm3::imprimir()
         for ( int j = 0; j < mui_listcolumnas->rowCount(); ++j ) {
             if ( mui_listcolumnas->item ( j, 0 ) ->checkState() == Qt::Checked ) {
                 QString restante;
-                fitxersortidarml += "    <td>" + XMLProtect ( mui_list->item ( i, j ) ->text() ) + "</td>\n";
+		SDBCampo *valor = (SDBCampo *) mui_list->item ( i, j );
+		if ( valor->tipo() & DBCampo::DBnumeric )
+		    fitxersortidarml += "    <td>" + XMLProtect ( spanish.toString( valor->text().toDouble(), 'f', 2 ) ) + "</td>\n";
+		else
+                    fitxersortidarml += "    <td>" + XMLProtect ( valor->text() ) + "</td>\n";
             } // end if
         } // end for
         fitxersortidarml += "</tr>\n";

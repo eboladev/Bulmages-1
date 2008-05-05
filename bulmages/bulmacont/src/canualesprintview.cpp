@@ -135,8 +135,8 @@ void CAnualesPrintView::on_mui_aceptar_clicked()
     arbolP2 = new Arbol;
     while ( !ramas->eof() ) {
         if ( atoi ( ramas->valor ( "nivel" ).toAscii().constData() ) == 2 ) { /// Cuenta ra&iacute;z.
-            arbolP1->nuevarama ( ramas );
-            arbolP2->nuevarama ( ramas );
+            arbolP1->nuevaRama ( ramas );
+            arbolP2->nuevaRama ( ramas );
         } // end if
         ramas->siguienteregistro();
     } // end while
@@ -168,7 +168,7 @@ void CAnualesPrintView::on_mui_aceptar_clicked()
     hojas = empresaBase() ->cargacursor ( query, "Periodo1" );
     /// Para cada cuenta con sus saldos calculados hay que actualizar hojas del &aacute;rbol.
     while ( !hojas->eof() ) {
-        arbolP1->actualizahojas ( hojas );
+        arbolP1->actualizaHojas ( hojas );
         hojas->siguienteregistro();
     } // end while
     empresaBase() ->commit();
@@ -185,7 +185,7 @@ void CAnualesPrintView::on_mui_aceptar_clicked()
     hojas = empresaBase() ->cargacursor ( query, "Periodo2" );
     /// Para cada cuenta con sus saldos calculados hay que actualizar hojas del &aacute;rbol.
     while ( !hojas->eof() ) {
-        arbolP2->actualizahojas ( hojas );
+        arbolP2->actualizaHojas ( hojas );
         hojas->siguienteregistro();
     } // end while
     delete hojas;
@@ -200,12 +200,12 @@ void CAnualesPrintView::on_mui_aceptar_clicked()
         Fixed valor = Fixed ( "0.00" );
         if ( !e1.isNull() ) {
             if ( arbolP1->irHoja ( e1.text() ) )
-                valor = Fixed ( arbolP1->hojaactual ( "saldo" ) );
+                valor = Fixed ( arbolP1->hojaActual ( "saldo" ) );
             else
                 valor = Fixed ( "0.00" );
             valorP1 = valor.toQString();
             if ( arbolP2->irHoja ( e1.text() ) )
-                valor = Fixed ( arbolP2->hojaactual ( "saldo" ) );
+                valor = Fixed ( arbolP2->hojaActual ( "saldo" ) );
             else
                 valor = Fixed ( "0.00" );
             valorP2 = valor.toQString();

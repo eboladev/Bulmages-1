@@ -54,7 +54,8 @@ private:
         int numapuntes; /// N&uacute;mero de apuntes que modifican los valores a calcular.
         tiporama* ramas; /// Puntero a m&aacute;s ramas con hojas.
     };
-    tipohoja** raiz; /// Raiz del arbol que contiene todas las cuentas de nivel 2.
+    //tipohoja** raiz; /// Raiz del arbol que contiene todas las cuentas de nivel 2.
+    QList <tipohoja*> raiz; /// Raiz del arbol que contiene todas las cuentas de nivel 2.
     tipohoja* hoja; /// Hoja que contiene los datos de una cuenta.
     tiporama* rama; /// Rama que contiene una hoja y m&aacute;s ramas o no.
     postgresiface2 *conexionbase; /// Nos da acceso a la base de datos con la que estamos trabajando.
@@ -68,18 +69,25 @@ private:
 public:
     Arbol();
     ~Arbol();
+
     /// A&ntilde;ade una nueva rama al arbol con su hoja.
-    void nuevarama ( cursor2* );
+    void nuevaRama ( cursor2* );
+
     /// Constituye el arbol inicializando los valores que corresponden a cada cuenta (hoja).
     void inicializa ( cursor2* );
+
     /// Actualiza los valores de las hojas en el arbol.
-    void actualizahojas ( cursor2* );
+    void actualizaHojas ( cursor2* );
+
     /// Inicializa el acceso al arbol cambiando el valor de la variable "visitada".
     void inicia();
+
     /// Mueve el puntero que indexa una hoja del arbol: primer parametro indica el nivel en el que queremos deshojar; el segundo si deshoja o no otros niveles
     bool deshoja ( unsigned int, bool );
+
     /// Devuelve el valor solicitado: codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej, etc.
-    QString hojaactual ( QString );
+    QString hojaActual ( QString );
+
     /// Se posiciona el puntero en la hoja cuyo codigo corresponde al pasado por parametro e informa del exito o no
     /// El segundo parametro indica a que nivel de profundidad buscar las cuentas; por defecto a 4, el minimo exigido en un balance abreviado
     bool irHoja ( QString, unsigned int nivel = 4 );

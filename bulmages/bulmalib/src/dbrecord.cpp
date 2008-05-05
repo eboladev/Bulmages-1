@@ -25,6 +25,7 @@
 #include <QTextStream>
 #include <QLocale>
 
+#include <QDebug>
 
 ///
 /**
@@ -793,6 +794,8 @@ void DBRecord::imprimir()
     QString buff = stream.readAll();
     file.close();
     QString fitxersortidatxt = "";
+    QLocale::setDefault ( QLocale ( QLocale::Spanish, QLocale::Spain ) );
+    QLocale spanish;
 
     /// Impresion de la tabla de contenidos.
     for ( int i = 0; i < m_lista.size(); ++i ) {
@@ -800,10 +803,15 @@ void DBRecord::imprimir()
         fitxersortidatxt += "<tr>\n";
         fitxersortidatxt += "   <td>" + campo->nomcampo() + "</td>\n";
         fitxersortidatxt += "   <td>" + campo->nompresentacion() + "</td>\n";
-        fitxersortidatxt += "   <td>" + campo->valorcampo() + "</td>\n";
+	if ( campo->tipo() & DBCampo::DBnumeric )
+            fitxersortidatxt += "   <td>" + spanish.toString( campo->valorcampo().toDouble(), 'f', 2 ) + "</td>\n";
+	else
+	    fitxersortidatxt += "   <td>" + campo->valorcampo() + "</td>\n";
         fitxersortidatxt += "</tr>";
+qDebug() << spanish.toString( campo->valorcampo().toDouble(), 'f', 2 );
     } // end for
 
+    QLocale::setDefault ( QLocale::C );
     buff.replace ( "[ficha]", m_tablename );
     buff.replace ( "[story]", fitxersortidatxt );
 

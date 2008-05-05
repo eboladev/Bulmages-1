@@ -208,7 +208,8 @@ void DiarioView::presentar()
 
         QString query = "SELECT *, cuenta.descripcion AS descripcioncuenta FROM " + tabla + " LEFT JOIN cuenta ON cuenta.idcuenta = " + tabla + ".idcuenta ";
         query += " LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste FROM c_coste) AS t1 ON t1.idc_coste = " + tabla + ".idc_coste ";
-        query += " LEFT JOIN (SELECT (ordenasiento || ' - ' || fecha) AS ordenasientoconfecha, ordenasiento, idasiento, fecha FROM asiento) AS t5 ON t5.idasiento = " + tabla + ".idasiento";
+//         query += " LEFT JOIN (SELECT (ordenasiento || ' - ' || fecha) AS ordenasientoconfecha, ordenasiento, idasiento, fecha FROM asiento) AS t5 ON t5.idasiento = " + tabla + ".idasiento";
+	query += " LEFT JOIN (SELECT ordenasiento, fecha, idasiento FROM asiento) AS t5 ON t5.idasiento = " + tabla + ".idasiento";
         query += " LEFT JOIN (SELECT idcanal, nombre as nombrecanal FROM canal) AS t2 ON t2.idcanal = " + tabla + ".idcanal";
         if ( mui_asAbiertos->isChecked() ) {
             query += " LEFT JOIN (SELECT idregistroiva, factura, idborrador FROM registroiva) AS t3 ON t3.idborrador = " + tabla + ".idborrador ";
@@ -271,7 +272,7 @@ void DiarioView::presentar()
             cad += cadand + tabla + ".contrapartida = " + mui_contrapartida->idcuenta();
         } // end if
 
-        totalcadena = query + cad + " ORDER BY t5.fecha, t5.ordenasiento ";
+        totalcadena = query + cad + " ORDER BY ordenasiento,apunte.haber,codigo ";
 
         mui_list->cargar ( totalcadena );
 
