@@ -42,9 +42,12 @@ usr/share/bulmages/dbmodels/crear/bulmafact/bulmafact_data.sql
 usr/share/bulmages/dbmodels/crear/bulmafact/bulmafact_data2.sql
 usr/share/bulmages/dbmodels/crear/bulmafact/bulmafact_min_data.sql
 usr/share/bulmages/dbmodels/crear/bulmafact/bulmafact_schema.sql
-usr/share/bulmages/dbmodels/crear/bulmatpv/README
+usr/share/bulmages/dbmodels/crear/bulmatpv/README.es
 usr/share/bulmages/dbmodels/crear/bulmatpv/bulmatpv_schema.sql
 usr/share/bulmages/bulmasetup
 usr/bin/bulmasetup
 usr/share/bulmages/icons/icon_bulmasetup_16x16.xpm
 usr/share/bulmages/icons/icon_bulmasetup_32x32.xpm
+usr/share/bulmages/doc/bulmasetup.html
+usr/share/bulmages/doc/bulmasetup_files
+

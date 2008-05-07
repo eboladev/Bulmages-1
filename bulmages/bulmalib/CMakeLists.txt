@@ -24,4 +24,6 @@ project(bulmalib)
 add_subdirectory(src)
 add_subdirectory(plugins)
 
+set (r_files README.Bulmalib.es)
+install(FILES ${r_files} DESTINATION share/bulmages/)
 #add_subdirectory(po)

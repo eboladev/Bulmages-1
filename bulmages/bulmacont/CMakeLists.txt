@@ -29,6 +29,7 @@ add_subdirectory(plugins)
 # simple put your add_directory in a
 # CMakeLists.txt.private
 
+
 if(EXISTS "${CMAKE_SOURCE_DIR}/bulmacont/CMakeLists.txt.private")
    message(STATUS "Private code inserted in bulmacont")
    include("${CMAKE_SOURCE_DIR}/bulmacont/CMakeLists.txt.private")

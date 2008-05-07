@@ -1,21 +1,29 @@
 This package was debianized by René Mérou <rene.merou@gmail.com> on
 Sun,  2 Apr 2006 09:29:45 +0200.
 
-It was downloaded from http://download.berlios.de/bulmages/bulmages-0.5.1.1.tar.gz
+This package have been received the help from Tomeu Borràs, Miguel Gea and 
+Leopold Palomo to continue the work. Wed May  7 21:14:50 CEST 2008
 
-Copyright Holder:  (C) 2004-2006 IGLUES  <tborras@conetxia.com>
+It was downloaded from http://download.berlios.de/bulmages/bulmages-0.11.1~rc2.tar.gz
 
-Upstream Authors: Tomeu Borrás <tborras@conetxia.com>,  Josep Maria Estopa Rey
+Copyright Holder:  (C) 2004-2008 IGLUES 
+
+Upstream Authors: Tomeu Borrás <tborras@conetxia.com>, Josep Maria Estopa Rey
 <pepma@telefonica.net>, Josep Burción <josep@burcion.com >, René Mérou 
 <rene.merou@kdemail.net>, David Gutiérez <davidi@telefonica.net>, Joan Miquel 
 Torres Rigó <joanmi@bulma.net>, Francisco Santiago Capel Torres 
-<santiagocapel@yahoo.es>
+<santiagocapel@yahoo.es>, Fco. Javier M. C. <fcojavmc@todo-redes.com>, 
+Leopold Palomo <leo@alaxarxa.net>, Miguel Gea <xerakko@debian.org>, 
+Oscar Serna <oserna@regamallorca.com>, Celso González <mitago@ono.com>, 
+Víctor G. Marimón, Beatriu Romero, Ramón Navarro
+
+
 License:
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of the "GNU General Public License". On Debian GNU/Linux
 systems, the complete text of that license can be found in
-`/usr/share/common-licenses/GPL'.
+`/usr/share/common-licenses/GPL-2'.
 
 * There are two files (fixed.h, i fixed.cpp that they was released as Public Domain and has been modified for bulmages)
 	Upstream: Philip Erdelsky's <pje@efgh.com>

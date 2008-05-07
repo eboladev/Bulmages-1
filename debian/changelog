@@ -1,3 +1,13 @@
+bulmages (0.11.1~rc2-1) unstable; urgency=low
+
+  [Leopold Palomo Avellaneda]
+  * New Upstream release.
+  * Erased bulmages-admin as dependecy of bulmacont and bulmafact. 
+  Now, they recomend it.
+  * Updated the copyright file.
+
+ -- Leopold Palomo Avellaneda <leo@alaxarxa.net>  Wed, 07 May 2008 19:48:35 +0200
+
 bulmages (0.11.1~rc1-1) unstable; urgency=low
 
   [Leopold Palomo Avellaneda]

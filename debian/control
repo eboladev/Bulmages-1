@@ -11,7 +11,8 @@ XS-Vcs-Browser: http://svn.berlios.de/wsvn/bulmages/trunk/debian/
 
 Package: bulmages
 Architecture: any
-Depends: ${shlibs:Depends}, bulmages-common (>= 0.11), bulmages-admin (>=0.11), bulmacont (>= 0.11), bulmafact  (>= 0.11), bulmages-servers (>= 0.11)
+Depends: ${shlibs:Depends}, bulmages-common (>= 0.11), bulmacont (>= 0.11), bulmafact  (>= 0.11), bulmages-servers (>= 0.11)
+Recommends: bulmages-admin, bulmages-servers
 Description: Accounting and invoicing programs for Spanish little businesses
  This package provides the entire Bulmages financial suite for Spanish
  businesses.  Bulmages includes an accounting program (bulmacont), an invoicing
@@ -39,8 +40,8 @@ Description: Bulmages invoicing and accounting, config and common stuff
 
 Package: bulmacont
 Architecture: any
-Depends: ${shlibs:Depends}, python-reportlab, python, postgresql-client (>= 8.1.0), bulmages-admin (>= 0.11), bulmages-common (>= 0.11)
-Recommends: bulmages-servers
+Depends: ${shlibs:Depends}, python-reportlab, python, postgresql-client (>= 8.1.0), bulmages-common (>= 0.11)
+Recommends: bulmages-admin, bulmages-servers
 Description: Spanish accounting program
  This package helps with the accounting task for small or medium sized 
  businesses with statistics and the usual procedures.
@@ -49,8 +50,8 @@ Description: Spanish accounting program
 
 Package: bulmafact
 Architecture: any
-Depends: ${shlibs:Depends}, python-reportlab, python, postgresql-client (>= 8.1.0), bulmages-admin (>= 0.11), bulmages-common (>= 0.11)
-Recommends: bulmages-servers
+Depends: ${shlibs:Depends}, python-reportlab, python, postgresql-client (>= 8.1.0), bulmages-common (>= 0.11)
+Recommends: bulmages-admin, bulmages-servers
 Description: Spanish invoicing program
  This package helps to manage the invoicing of small or medium sized businesses
  in Spain.
@@ -71,6 +72,7 @@ Package: bulmages-servers
 Architecture: all
 Depends: ${shlibs:Depends}, postgresql-client (>= 8.1.0), bulmages-common (>= 0.11), postgresql (>= 8.1.0)
 Conflicts: bulmacont-server (<= 0.10), bulmafact-server (<= 0.10)
+Recommends: bulmages-admin
 Description: Spanish accounting program server
  This package helps with the accounting tasks for small or medium sized 
  businesses with statistics and the usual procedures.

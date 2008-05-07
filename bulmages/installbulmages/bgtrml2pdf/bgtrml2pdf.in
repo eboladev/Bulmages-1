@@ -34,7 +34,7 @@ import reportlab
 from reportlab.pdfgen import canvas
 from reportlab import platypus
 
-sys.path.append('/usr/lib/bulmages')
+sys.path.append('@CMAKE_INSTALL_PREFIX@/share/bulmages/bgtrml2pdf')
 
 import bgutils
 import bgcolor

@@ -48,7 +48,7 @@ STRING(REGEX REPLACE "^[0-9]+\\.([0-9])+\\.[0-9]+.*" "\\1" QT_MINOR_VERSION "${Q
 STRING(REGEX REPLACE "^[0-9]+\\.[0-9]+\\.([0-9]+).*" "\\1" QT_PATCH_VERSION "${QTVERSION}")
 
 if (${QT_MAJOR_VERSION}.${QT_MINOR_VERSION} LESS 4.3)
-   message(FATAL_ERROR " Bulmages needs >= QT4.3 to compile")
+    message(FATAL_ERROR " Bulmages needs >= QT4.3 to compile")
 endif (${QT_MAJOR_VERSION}.${QT_MINOR_VERSION} LESS 4.3) 
 
 
@@ -104,6 +104,11 @@ add_subdirectory(installbulmages)
 
 message(STATUS "Working on documentation")
 add_subdirectory(doc)
+
+
+set (r_files README.es README.plugins.es)
+install(FILES ${r_files} DESTINATION share/bulmages/)
+
 
 ## We include cpack for others platforms differents than unix
 SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "The BulmaGes Suite")
