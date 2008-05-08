@@ -5,6 +5,7 @@ bulmages (0.11.1~rc2-1) unstable; urgency=low
   * Erased bulmages-admin as dependecy of bulmacont and bulmafact. 
   Now, they recomend it.
   * Updated the copyright file.
+  * Added libooolib-perl. bulmacont-plugins needs it.
 
  -- Leopold Palomo Avellaneda <leo@alaxarxa.net>  Wed, 07 May 2008 19:48:35 +0200
 
