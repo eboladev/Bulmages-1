@@ -69,7 +69,7 @@ class ModificarContabilidad(QtGui.QDialog, Ui_ModificarContabilidadBase, Plugins
 	return QString(self.process.readAllStandardOutput())
 
     def on_mui_actualizardatabase_released(self):
-	self.revisiones = ["rev-0.9.1.sql", "rev-0.9.3.sql", "rev-0.10.sql", "rev-0.11.sql"]
+	self.revisiones = ["rev-0.5.3.sql", "rev-0.9.1.sql", "rev-0.9.3.sql", "rev-0.10.sql", "rev-0.11.sql"]
 	#Parcheamos todo lo que hay que parchear
 	for self.parche in self.revisiones:
 		self.command = 'su postgres -c \"psql -t -f ' + plugins.pathdbparches + self.parche + ' ' + self.database  + '\"'
