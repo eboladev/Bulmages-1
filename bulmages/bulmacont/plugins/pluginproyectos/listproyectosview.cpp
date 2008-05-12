@@ -44,12 +44,12 @@ ListProyectosView::ListProyectosView ( Empresa *emp, QWidget *parent,  Qt::WFlag
     mui_listado->setEmpresaBase ( emp );
     mui_listado->setDBTableName ( "presupuestoc" );
     mui_listado->setDBCampoId ( "idpresupuestoc" );
-    mui_listado->addSHeader ( "idpresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing , SHeader::DBNoWrite, QApplication::translate ( "TrabajadorView", "Fecha" ) );
-    mui_listado->addSHeader ( "idc_coste", DBCampo::DBvarchar, DBCampo::DBNothing , SHeader::DBNoWrite, QApplication::translate ( "TrabajadorView", "Hora" ) );
-    mui_listado->addSHeader ( "fechapresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , QApplication::translate ( "TrabajadorView", "Almacén" ) );
-    mui_listado->addSHeader ( "nombrepresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , QApplication::translate ( "TrabajadorView", "Apertura Mañanas" ) );
-    mui_listado->addSHeader ( "comentpresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , QApplication::translate ( "TrabajadorView", "Cierre Mañanas" ) );
-    mui_listado->addSHeader ( "archpresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , QApplication::translate ( "TrabajadorView", "Apertura Tardes" ) );
+    mui_listado->addSHeader ( "idpresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing , SHeader::DBNoWrite, tr( "Identificador" ) );
+    mui_listado->addSHeader ( "idc_coste", DBCampo::DBvarchar, DBCampo::DBNothing , SHeader::DBNoWrite, tr( "C. Coste" ) );
+    mui_listado->addSHeader ( "fechapresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , tr( "Fecha" ) );
+    mui_listado->addSHeader ( "nombrepresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , tr ( "Nombre" ) );
+    mui_listado->addSHeader ( "comentpresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , tr ( "Comentarios" ) );
+    mui_listado->addSHeader ( "archpresupuestoc", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , tr ( "Archivo" ) );
     mui_listado->setinsercion ( FALSE );
 
     presentar();

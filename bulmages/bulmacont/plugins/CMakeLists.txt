@@ -30,7 +30,7 @@ add_subdirectory(pluginresumcta)
 # pluginadocumental deprecated.
 #add_subdirectory(pluginadocumental)
 # pluginproyectos bajo desarrollo.
-#add_subdirectory(pluginproyectos)
+add_subdirectory(pluginproyectos)
 # pluginimportcontaplus bajo desarrollo.
 #add_subdirectory(pluginimportcontaplus)
 # pluginbalance-old pendiente de fusionar con pluginbalance

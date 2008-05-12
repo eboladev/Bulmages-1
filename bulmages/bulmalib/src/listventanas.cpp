@@ -291,8 +291,9 @@ int ListVentanas::meteWindow ( QString nombre, QObject *obj, bool compdup )
             if ( m->nombre() == nombre && compdup ) {
                 ( ( QWidget * ) m->object() ) ->hide();
                 ( ( QWidget * ) m->object() ) ->show();
-                sacaWindow ( obj );
-                throw - 1;
+		nombre = nombre + "(i)";
+//                sacaWindow ( obj );
+//                throw - 1;
             } // end if
             i++;
         } // end while
@@ -304,7 +305,7 @@ int ListVentanas::meteWindow ( QString nombre, QObject *obj, bool compdup )
         } // end if
     } catch ( ... ) {
         _depura ( "END ListVentanas::meteWindow", 0, " ventana duplicada" );
-        throw - 1;
+        return - 1;
     } // end try
     _depura ( "END ListVentanas::meteWindow", 0 );
     return 0;

@@ -83,20 +83,14 @@
         <enum>QFrame::Raised</enum>
        </property>
        <layout class="QHBoxLayout" >
-        <property name="spacing" >
-         <number>5</number>
-        </property>
-        <property name="leftMargin" >
-         <number>5</number>
-        </property>
         <property name="topMargin" >
-         <number>5</number>
+         <number>0</number>
         </property>
         <property name="rightMargin" >
-         <number>5</number>
+         <number>0</number>
         </property>
         <property name="bottomMargin" >
-         <number>5</number>
+         <number>0</number>
         </property>
         <item>
          <widget class="QToolButton" name="mui_guardar" >
@@ -159,7 +153,44 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:Images/edit-delete.svg</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Images/edit-delete.svg</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+D</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="mui_geninforme" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="toolTip" >
+           <string>Borrar proyecto</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Borrar proyecto</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../../bulmages.qrc" >:/Images/document-print.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -182,7 +213,7 @@
           </property>
           <property name="sizeHint" >
            <size>
-            <width>41</width>
+            <width>621</width>
             <height>34</height>
            </size>
           </property>

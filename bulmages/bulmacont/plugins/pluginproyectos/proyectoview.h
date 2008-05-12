@@ -49,6 +49,10 @@ public:
     ~ProyectoView();
     int cargarPost ( QString );
     int guardarPost();
+
+public slots:
+    void on_mui_geninforme_clicked();
+
 signals:
     void save();
 };
