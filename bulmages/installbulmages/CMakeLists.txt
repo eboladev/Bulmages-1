@@ -70,8 +70,8 @@ FILE(GLOB scripts_ex ${CMAKE_BINARY_DIR}/installbulmages-db
                      ${CMAKE_BINARY_DIR}/actualizabulmafact
                      ${CMAKE_BINARY_DIR}/creabulmacont
                      ${CMAKE_BINARY_DIR}/creabulmafact)
-install(FILES ${scripts_ex} DESTINATION DESTINATION share/bulmages/examples/scripts
-PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
+install(FILES ${scripts_ex} DESTINATION share/bulmages/examples/scripts
+	PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
                 	    GROUP_EXECUTE GROUP_READ
                             WORLD_READ WORLD_EXECUTE)
 
