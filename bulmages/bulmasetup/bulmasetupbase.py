@@ -92,7 +92,7 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QtGui.QApplication.translate("MainWindow", "MainWindow", None, QtGui.QApplication.UnicodeUTF8))
+        MainWindow.setWindowTitle(QtGui.QApplication.translate("MainWindow", "BulmaSetup", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_crearusuario.setText(QtGui.QApplication.translate("MainWindow", "Nuevo Usuario de PostgreSQL", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_crearbulmacont.setText(QtGui.QApplication.translate("MainWindow", "Nueva Empresa de Contabilidad", None, QtGui.QApplication.UnicodeUTF8))
         self.mui_crearbulmafact.setText(QtGui.QApplication.translate("MainWindow", "Nueva Empresa de Facturacion / TPV", None, QtGui.QApplication.UnicodeUTF8))

@@ -16,7 +16,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle" >
-   <string>MainWindow</string>
+   <string>BulmaSetup</string>
   </property>
   <widget class="QWidget" name="centralwidget" >
    <widget class="QLabel" name="label" >

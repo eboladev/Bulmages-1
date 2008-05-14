@@ -7,6 +7,7 @@ __author__ = "Tomeu Borras <tborras@conetxia.com>"
 __all__ = ["bulmasetup"]
 __doc__ = "Sistema de instalacion y mantenimiento de Bases de Datos para BulmaGes.\r\n"
 
+import commands
 import sys
 
 sys.path.append('@CMAKE_INSTALL_PREFIX@/share/bulmages/bulmasetup')
@@ -42,6 +43,20 @@ class HelloWindow(QtGui.QMainWindow, Ui_MainWindow, PluginsBulmaSetup):
     def __init__(self, *args):
         apply(QtGui.QMainWindow.__init__, (self,) + args)
 	self.setupUi(self)
+	
+	# Detecta si hemos accedido como 'root' o no y deshabilita las opciones que necesitan esos permisos.
+	if commands.getstatusoutput("whoami")[1] == 'root':
+	    self.mui_crearusuario.setEnabled(True)
+	    self.mui_crearbulmafact.setEnabled(True)
+	    self.mui_crearbulmacont.setEnabled(True)
+	    self.mui_adminempresas.setEnabled(True)
+	    self.mui_restbackup.setEnabled(True)
+	else:
+	    self.mui_crearusuario.setEnabled(False)
+	    self.mui_crearbulmafact.setEnabled(False)
+	    self.mui_crearbulmacont.setEnabled(False)
+	    self.mui_adminempresas.setEnabled(False)
+	    self.mui_restbackup.setEnabled(False)
 	
     def on_mui_crearusuario_released(self):
 	    win = NuevoUsuario()
