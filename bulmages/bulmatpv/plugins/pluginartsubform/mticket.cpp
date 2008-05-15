@@ -6,6 +6,8 @@
 #include "subform2bt.h"
 #include <QTextBrowser>
 
+#include "articulolisttpv.h"
+
 //extern QTextBrowser *g_browser;
 
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
@@ -54,6 +56,11 @@ void myplugin::inicializa ( BulmaTPV *tpv )
     _depura ( "myplugin::inicializa", 0 );
     m_tpv = tpv;
 
+    ArticuloList1 *art = new ArticuloList1((Company *) tpv->empresaTPV());
+    tpv->workspace() ->addWindow ( art );
+    art->showFullScreen();
+
+/*
     m_lan = new SubForm2Bt ( NULL );
     m_lan->setEmpresaBase ( tpv->empresaTPV() );
     m_lan->setDBTableName ( "articulo" );
@@ -75,5 +82,6 @@ void myplugin::inicializa ( BulmaTPV *tpv )
     m_lan->cargar ( "SELECT * FROM articulo" );
 
     connect ( m_lan, SIGNAL ( itemDoubleClicked ( QTableWidgetItem * ) ), this, SLOT ( elslot ( QTableWidgetItem * ) ) );
+*/
     _depura ( "END myplugin::inicializa", 0 );
 }
