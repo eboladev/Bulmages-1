@@ -63,6 +63,7 @@ public:
     void setLineaActual ( DBRecord * );
     void setDescuentoGlobal ( Fixed descuento );
     virtual void imprimir();
+    virtual void abrircajon();
     int guardar();
 
 public slots:

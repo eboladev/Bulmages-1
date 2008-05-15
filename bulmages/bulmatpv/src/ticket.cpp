@@ -214,6 +214,17 @@ void Ticket::setLineaActual ( DBRecord *rec )
 void  Ticket::setDescuentoGlobal ( Fixed descuento )
 {}
 
+void Ticket::abrircajon() {
+    QFile file ( confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
+    if ( !file.open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
+        _depura ( "Error en la Impresion de ticket", 2 );
+    } // end if
+
+    /// El corte de papel.
+    file.write ( "\x1B\x70\x0\x64\x64", 5 );
+    file.close();
+}
+
 void  Ticket::imprimir()
 {
     base basesimp;
@@ -460,6 +471,9 @@ void  Ticket::imprimir()
     /// El corte de papel.
     file.write ( "\x1D\x56\x01", 3 );
     file.close();
+
+    /// La apertura del cajon.
+    abrircajon();
 }
 
 

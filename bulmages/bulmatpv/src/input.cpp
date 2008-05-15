@@ -35,6 +35,9 @@ void Input::keyPressEvent ( QKeyEvent *e )
     case Qt::Key_F2:
         m_empresaTPV->ticketActual() ->imprimir();
         break;
+    case Qt::Key_F3:
+        m_empresaTPV->ticketActual() ->abrircajon();
+        break;
     case Qt::Key_Up:
         m_empresaTPV->ticketActual() ->subir();
         break;
