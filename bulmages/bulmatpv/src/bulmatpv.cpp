@@ -87,8 +87,8 @@ BulmaTPV::BulmaTPV ( QString bd ) : QMainWindow()
 
 
 
-    QDockWidget *widgetPrueba = new QDockWidget ( NULL );
-    addDockWidget ( Qt::LeftDockWidgetArea, widgetPrueba );
+//    QDockWidget *widgetPrueba = new QDockWidget ( NULL );
+//    addDockWidget ( Qt::LeftDockWidgetArea, widgetPrueba );
 //    m_company->setListVentanas(m_list);
 
     m_pb->setVisible ( FALSE );

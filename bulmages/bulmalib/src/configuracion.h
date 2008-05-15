@@ -192,6 +192,8 @@
 #define CONF_IDCLIENTE_DEFECTO      520
 #define CONF_IDALMACEN_DEFECTO       521
 #define CONF_IDARTICULO_DEFECTO      522
+#define CONF_IDTRABAJADOR_DEFECTO      523
+
 
 /// CONF_DEBUG indica el modo de debug.
 #define CONF_DEBUG                   550

@@ -54,6 +54,7 @@ Ticket::Ticket ( EmpresaBase *emp, QWidget *parent ) : BLWidget ( emp, parent ),
     setDBvalue ( "ticketalbaran", "TRUE" );
     setDBvalue ( "idalmacen", confpr->valor ( CONF_IDALMACEN_DEFECTO ) );
     setDBvalue ( "idcliente", confpr->valor ( CONF_IDCLIENTE_DEFECTO ) );
+    setDBvalue ( "idtrabajador", confpr->valor ( CONF_IDTRABAJADOR_DEFECTO ) );
     setDBvalue ( "descalbaran", "Ticket de venta" );
 
     m_lineaActual = NULL;

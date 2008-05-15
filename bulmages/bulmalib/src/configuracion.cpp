@@ -346,6 +346,8 @@ QString configuracion::nombre ( int i )
         return "CONF_IDALMACEN_DEFECTO";
     if ( i == CONF_IDARTICULO_DEFECTO )
         return "CONF_IDARTICULO_DEFECTO";
+    if ( i == CONF_IDTRABAJADOR_DEFECTO )
+        return "CONF_IDTRABAJADOR_DEFECTO";
     if ( i == CONF_DIR_PLUGINS )
         return "CONF_DIR_PLUGINS";
     return "";

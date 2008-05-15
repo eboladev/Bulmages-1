@@ -23,18 +23,12 @@
 #include <QLineEdit>
 #include <QTableWidget>
 
-#include "pluginticketbasico.h"
+#include "pluginartsubform.h"
 #include "funcaux.h"
 #include "ticket.h"
 #include "empresatpv.h"
 #include "mticket.h"
 
-
-QDockWidget *g_doc1;
-QDockWidget *g_doc2;
-
-MTicket *g_bud;
-QTextBrowser *g_browser;
 
 
 ///
@@ -45,43 +39,13 @@ int entryPoint ( BulmaTPV *tpv )
 {
     _depura ( "entryPoint", 0 );
 
-    /// Vamos a probar con un docwindow.
-    g_doc1 = new QDockWidget ( "Ticket", tpv );
-    g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
-
-    g_doc1->setGeometry ( 100, 100, 100, 500 );
-    g_doc1->resize ( 330, 400 );
-    tpv->addDockWidget ( Qt::RightDockWidgetArea, g_doc1 );
-    g_doc1->show();
+    myplugin *plug = new myplugin();
+    plug->inicializa ( tpv );
 
 
-    /// Vamos a probar con un docwindow.
-    g_doc2 = new QDockWidget ( "Total", tpv );
-    g_doc2->setFeatures ( QDockWidget::AllDockWidgetFeatures );
-
-    g_doc2->setGeometry ( 100, 100, 100, 500 );
-    g_doc2->resize ( 330, 400 );
-    tpv->addDockWidget ( Qt::LeftDockWidgetArea, g_doc2 );
-    g_doc2->show();
 
     _depura ( "END entryPoint", 0 );
     return 0;
 }
 
-int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
-{
-    g_bud =  new MTicket ( etpv, g_doc1 );
-    g_doc1->setWidget ( ( QWidget * ) g_bud );
-
-    g_browser = new QTextBrowser ( g_doc2 );
-    g_doc2->setWidget ( g_browser );
-
-    return 0;
-}
-
-int Ticket_pintar ( Ticket * )
-{
-    g_bud->pintar();
-    return 0;
-}
 
