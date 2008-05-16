@@ -1,7 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2004 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,32 +18,26 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef MTICKET_H
-#define MTICKET_H
-
-#include <QLabel>
-#include <QTableWidget>
-#include "ticket.h"
-#include "empresatpv.h"
-#include "subform2bt.h"
-#include "articulolisttpv.h"
-
-class myplugin : public QObject
-{
-    Q_OBJECT
-private:
-    BulmaTPV *m_tpv;
-    ArticuloList1 *m_lan;
-
-public:
-    myplugin();
-    ~myplugin();
-    void inicializa ( BulmaTPV *tpv );
-
-public slots:
-    virtual void elslot ( QTableWidgetItem * );
-
-};
-
+#ifdef Q_WS_WIN
+# define MY_EXPORT __declspec(dllexport)
+#else
+# define MY_EXPORT
 #endif
 
+#include <QStringList>
+#include <QWidget>
+#include <QIcon>
+#include <QApplication>
+#include <QObject>
+
+#include "company.h"
+#include "bulmafact.h"
+#include "articuloview.h"
+#include "busquedaarticulo.h"
+
+extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
+extern "C" MY_EXPORT int ArticuloView_ArticuloView ( ArticuloView * );
+extern "C" MY_EXPORT int ArticuloView_cargar ( ArticuloView * );
+extern "C" MY_EXPORT int ArticuloView_guardar_post ( ArticuloView * );
+
+extern "C" MY_EXPORT int BusquedaArticulo_on_m_codigocompletoarticulo_textChanged_Post(BusquedaArticulo *);

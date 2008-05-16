@@ -60,7 +60,7 @@ void Input::keyPressEvent ( QKeyEvent *e )
         m_empresaTPV->ticketActual() ->ponerPrecio ( text() );
         setText ( "" );
         break;
-    case Qt::Key_C:
+    case Qt::Key_F4:
         setText ( "" );
         break;
     case Qt::Key_Return:
@@ -71,7 +71,7 @@ void Input::keyPressEvent ( QKeyEvent *e )
         m_empresaTPV->ticketActual() ->insertarArticuloCodigoNL ( text() );
         setText ( "" );
         break;
-    case Qt::Key_M:
+    case Qt::Key_F5:
         setText ( "MESA " );
         break;
     default:

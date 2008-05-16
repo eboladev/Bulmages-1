@@ -194,145 +194,6 @@
          <number>5</number>
         </property>
         <item>
-         <widget class="QToolButton" name="mui_crear" >
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="focusPolicy" >
-           <enum>Qt::TabFocus</enum>
-          </property>
-          <property name="toolTip" >
-           <string>Nuevo articulo</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Nuevo articulo</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Images/document-new.svg</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="mui_editar" >
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Editar articulo</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Editar articulo</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset/>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="mui_borrar" >
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Borrar articulo</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Borrar articulo</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset/>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="mui_imprimir" >
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Imprimir listado</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Imprimir listado</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset/>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QToolButton" name="mui_filtrar" >
           <property name="minimumSize" >
            <size>
@@ -356,7 +217,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset/>
+           <iconset resource="../../../bulmages.qrc" >:/Images/edit-find.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -393,7 +254,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset/>
+           <iconset resource="../../../bulmages.qrc" >:/Images/document-properties.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -430,75 +291,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset/>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="mui_exportar" >
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Exportar articulos</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Exportar articulos</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset/>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="mui_importar" >
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Importar articulos</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Importar articulos</string>
-          </property>
-          <property name="text" >
-           <string>Exportar</string>
-          </property>
-          <property name="icon" >
-           <iconset/>
+           <iconset resource="../../../bulmages.qrc" >:/Images/view-refresh.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>

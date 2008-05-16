@@ -31,6 +31,7 @@ add_subdirectory(plugintpv)
 add_subdirectory(plugindebugbf)
 add_subdirectory(pluginpreciocoste)
 add_subdirectory(pluginresarticulos)
+add_subdirectory(pluginalias)
 
 #pluginivainc en desarrollo
 #add_subdirectory(pluginivainc)

@@ -190,6 +190,7 @@ void BusquedaArticulo::on_mui_buscar_clicked()
 void BusquedaArticulo::on_m_codigocompletoarticulo_textChanged ( const QString &val )
 {
     _depura ( "BusquedaArticulo::on_m_codigocompletoarticulo_textChanged", 0 );
+
     if ( m_semaforo ) {
         _depura ( "END BusquedaArticulo::on_m_codigocompletoarticulo_textChanged", 0, "Semaforo parado" );
         return;
@@ -242,6 +243,9 @@ void BusquedaArticulo::on_m_codigocompletoarticulo_textChanged ( const QString &
         mdb_idarticulo = "";
         mdb_nomarticulo = "";
         mdb_codigocompletoarticulo = "";
+
+	g_plugins->lanza("BusquedaArticulo_on_m_codigocompletoarticulo_textChanged_Post", this);
+
     } // end if
 
     if ( encontrado ) {

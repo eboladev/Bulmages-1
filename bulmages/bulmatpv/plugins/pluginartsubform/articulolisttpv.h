@@ -70,10 +70,6 @@ public:
     QString nomarticulo();
     QString codigocompletoarticulo();
     void presentar();
-    void editar ( int );
-    void imprimir();
-    void borrar();
-    void crear();
     void submenu ( const QPoint & );
 
 signals:

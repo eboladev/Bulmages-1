@@ -72,12 +72,6 @@ ArticuloList1::ArticuloList1 ( Company *comp, QWidget *parent, Qt::WFlags flag, 
 //        empresaBase() ->meteWindow ( windowTitle(), this );
     } else {
         setWindowTitle ( tr ( "Selector de articulos" ) );
-        mui_editar->setHidden ( TRUE );
-        mui_crear->setHidden ( TRUE );
-        mui_borrar->setHidden ( TRUE );
-        mui_exportar->setHidden ( TRUE );
-        mui_importar->setHidden ( TRUE );
-        mui_imprimir->setHidden ( TRUE );
     } // end if
     presentar();
     hideBusqueda();
@@ -98,42 +92,6 @@ void ArticuloList1::presentar()
 }
 
 
-/** Se encarga de la accion preseleccionada al hacer doble click o al darle
-    al boton de editar.
-    Si estamos en modo seleccion actualiza el valor de los campos de seleccion y
-    cierra la ventana.
-    Si estamos en modo edicion abre una instancia de ArticuloView y lo carga con el
-    valor seleccionado.
-*/
-/// \TODO: este metodo deberia ser editar
-/**
-\param row
-\return
-**/
-void ArticuloList1::editar ( int row )
-{
-    _depura ( "ArticuloList1::editar", 0 );
-    mdb_idarticulo = mui_list->DBvalue ( "idarticulo", row );
-    mdb_nomarticulo = mui_list->DBvalue ( "nomarticulo", row );
-    mdb_codigocompletoarticulo = mui_list->DBvalue ( "codigocompletoarticulo", row );
-    if ( modoEdicion() ) {
-        ArticuloView * art = ( ( Company * ) empresaBase() ) ->newArticuloView();
-        empresaBase() ->m_pWorkspace->addWindow ( art );
-        /// Si la carga no va bien entonces terminamos.
-        if ( art->cargar ( mdb_idarticulo ) ) {
-            delete art;
-            _depura ( "END ArticuloList1::editar", 0, "Carga Erronea" );
-            return;
-        } // end if
-        art->hide();
-        art->show();
-    } else {
-        close();
-        emit ( selected ( mdb_idarticulo ) );
-    } // end if
-    _depura ( "END ArticuloList1::editar", 0 );
-}
-
 
 /// No requiere de ninguna accion adicional
 /**
@@ -145,39 +103,6 @@ ArticuloList1::~ArticuloList1()
 }
 
 
-/** SLOT que responde a la pulsacion del boton borrar
-    Verifica que queremos borrar el articulo y lo borra tras preguntar.
-*/
-/// \TODO: Deberia crear una instancia del articulo e invocar a su metodo de borrado
-/// ya que si hay algun plugin puede que no se vea afectado por este metodo.
-/**
-\return
-**/
-void ArticuloList1::borrar()
-{
-    _depura ( "ArticuloList1::on_mui_borrar_clicked", 0 );
-    int a = mui_list->currentRow();
-    if ( a < 0 ) {
-        mensajeInfo ( tr ( "Tiene que seleccionar un articulo" ) );
-        return;
-    } // end if
-    try {
-        QString idarticulo = mui_list->DBvalue ( "idarticulo" );
-        if ( QMessageBox::Yes == QMessageBox::question ( this,
-                tr ( "Borrar articulo" ),
-                tr ( "Esta a punto de borrar un articulo. Estos datos pueden dar problemas." ),
-                QMessageBox::Yes, QMessageBox::No ) ) {
-            QString SQLQuery = "DELETE FROM articulo WHERE idarticulo = " + idarticulo;
-            int error = empresaBase() ->ejecuta ( SQLQuery );
-            if ( error )
-                throw - 1;
-            presentar();
-        } // end if
-        _depura ( "END ArticuloList1::on_mui_borrar_clicked", 0 );
-    } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al borrar el articulo" ) );
-    } // end try
-}
 
 
 /** Metodo auxiliar que forma el query de presentacion a partir de los datos
@@ -216,16 +141,6 @@ QString ArticuloList1::formaQuery()
 }
 
 
-/// La impresion del listado esta completamente delegada en SubForm3.
-/**
-**/
-void ArticuloList1::imprimir()
-{
-    _depura ( "ArticuloList1::s_imprimir1", 0 );
-    mui_list->imprimirPDF ( "Listado de artículos" );
-    _depura ( "END ArticuloList1::s_imprimir1", 0 );
-}
-
 
 
 /** \TODO: REVISAR ESTE METODO YA QUE NO PARECE SER EL ADECUADO
@@ -251,16 +166,6 @@ void ArticuloList1::submenu ( const QPoint & )
     delete popup;
 }
 
-
-///
-/**
-**/
-void ArticuloList1::crear()
-{
-    _depura ( "ArticuloList1::crear", 0 );
-    ( ( Company * ) empresaBase() ) ->s_newArticulo();
-    _depura ( "END ArticuloList1::crear", 0 );
-}
 
 
 ///

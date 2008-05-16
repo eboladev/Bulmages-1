@@ -6,7 +6,7 @@
 #include "subform2bt.h"
 #include <QTextBrowser>
 
-#include "articulolisttpv.h"
+
 
 //extern QTextBrowser *g_browser;
 
@@ -41,7 +41,7 @@ myplugin::~myplugin()
 void myplugin::elslot ( QTableWidgetItem * )
 {
     _depura ( "myplugin::elslot", 0 );
-    QString idarticulo =  m_lan->DBvalue ( "idarticulo" );
+    QString idarticulo =  m_lan->mui_list->DBvalue ( "idarticulo" );
     m_tpv->empresaTPV() ->ticketActual() ->insertarArticulo ( idarticulo, Fixed ( "1" ) );
     _depura ( "END myplugin::elslot", 0 );
 }
@@ -56,9 +56,11 @@ void myplugin::inicializa ( BulmaTPV *tpv )
     _depura ( "myplugin::inicializa", 0 );
     m_tpv = tpv;
 
-    ArticuloList1 *art = new ArticuloList1((Company *) tpv->empresaTPV());
-    tpv->workspace() ->addWindow ( art );
-    art->showFullScreen();
+    m_lan = new ArticuloList1((Company *) tpv->empresaTPV(), NULL, 0, Listado::SelectMode);
+    tpv->workspace() ->addWindow ( m_lan );
+    m_lan->showFullScreen();
+
+    connect ( m_lan, SIGNAL ( itemDoubleClicked ( QTableWidgetItem * ) ), this, SLOT ( elslot ( QTableWidgetItem * ) ) );
 
 /*
     m_lan = new SubForm2Bt ( NULL );

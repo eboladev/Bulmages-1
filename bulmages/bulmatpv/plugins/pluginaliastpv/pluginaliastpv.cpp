@@ -1,7 +1,8 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org                                                 *
+ *   Copyright (C) 2006 by Fco. Javier M. C.                               *
+ *   fcojavmc@todo-redes.com                                               *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,32 +20,38 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef MTICKET_H
-#define MTICKET_H
+#include <QDockWidget>
 
-#include <QLabel>
-#include <QTableWidget>
-#include "ticket.h"
+#include "pluginaliastpv.h"
+#include "funcaux.h"
 #include "empresatpv.h"
-#include "subform2bt.h"
-#include "articulolisttpv.h"
 
-class myplugin : public QObject
+
+
+
+
+
+int Ticket_insertarArticuloNL_Post ( Ticket *tick )
 {
-    Q_OBJECT
-private:
-    BulmaTPV *m_tpv;
-    ArticuloList1 *m_lan;
+    QString query = "SELECT * FROM alias WHERE cadalias = '" + ((EmpresaTPV *)tick->empresaBase())->valorInput() + "'";
+    cursor2 *cur = tick->empresaBase() ->cargacursor ( query );
+    if ( !cur->eof() ) {
+        tick->insertarArticulo ( cur->valor ( "idarticulo" ), Fixed ( "1" ) );
+    } // end if
+    delete cur;
 
-public:
-    myplugin();
-    ~myplugin();
-    void inicializa ( BulmaTPV *tpv );
+    return 0;
+}
 
-public slots:
-    virtual void elslot ( QTableWidgetItem * );
 
-};
 
-#endif
-
+int Ticket_insertarArticulo_Post ( Ticket *tick )
+{
+    QString query = "SELECT * FROM alias WHERE cadalias = '" + ((EmpresaTPV *)tick->empresaBase())->valorInput() + "'";
+    cursor2 *cur = tick->empresaBase() ->cargacursor ( query );
+    if ( !cur->eof() ) {
+        tick->insertarArticulo ( cur->valor ( "idarticulo" ), Fixed ( "1" ) );
+    } // end if
+    delete cur;
+    return 0;
+}
