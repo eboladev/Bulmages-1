@@ -235,13 +235,43 @@ void  Ticket::imprimir()
     if ( !file.open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
         _depura ( "Error en la Impresion de ticket", 2 );
     } // end if
-    file.write ( QString ( "Empresa S.L\n" ).toAscii() );
-    file.write ( QString ( "====================================\n" ).toAscii() );
-    file.write ( QString ( "Direccion\n" ).toAscii() );
-    file.write ( QString ( "CP: 07000 Palma de Mallorca\n" ).toAscii() );
-    file.write ( QString ( "Tel: 971 00 00 00\n" ).toAscii() );
-    /// Imprimimos espacios
-    file.write ( "\n \n", 3 );
+   cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
+    if ( !cur->eof() ) {
+        file.write ( cur->valor ( "valor" ).toAscii() );
+        file.write ( "\n", 1 );
+    } // end if
+    delete cur;
+    cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" );
+    if ( !cur->eof() ) {
+        file.write ( cur->valor ( "valor" ).toAscii() );
+        file.write ( "\n", 1 );
+    } // end if
+    ///file.write ( QString ( "C/LAS POZAS 181, LOCAL 43\n" ).toAscii() );
+    delete cur;
+    /// file.write ( QString ( "ALIMENTACION ECOLOGICA. HERBOLARIO\n" ).toAscii() );
+    cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
+    if ( !cur->eof() ) {
+        file.write ( cur->valor ( "valor" ).toAscii() );
+    } // end if
+    delete cur;
+    
+    file.write ( QString ( " " ).toAscii() );
+    cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Ciudad'" );
+    if ( !cur->eof() ) {
+        file.write ( cur->valor ( "valor" ).toAscii() );
+	file.write ( QString ( " " ).toAscii() );
+    } // end if
+    delete cur;
+    
+    
+    cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Provincia'" );
+    if ( !cur->eof() ) {
+        file.write ( QString ( "(" ).toAscii() );
+        file.write ( cur->valor ( "valor" ).toAscii() );
+	file.write ( QString ( ")" ).toAscii() );
+	file.write ( "\n", 1 );
+    } // end if
+    delete cur;
 
     /// Imprimimos el numero de Ticket
     file.write ( QString ( "Ticket: " ).toAscii() );
@@ -262,7 +292,7 @@ void  Ticket::imprimir()
 
     /// Imprimimos el trabajador
     file.write ( QString ( "Trabajador: " ).toAscii() );
-    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM trabajador WHERE idtrabajador=" + DBvalue ( "idtrabajador" ) );
+    cur = empresaBase() ->cargacursor ( "SELECT * FROM trabajador WHERE idtrabajador=" + DBvalue ( "idtrabajador" ) );
     if ( !cur->eof() ) {
         file.write ( DBvalue ( "idtrabajador" ).toAscii() );
         file.write ( " " );
@@ -294,11 +324,7 @@ void  Ticket::imprimir()
 
     file.write ( "\n", 1 );
     file.write ( "\n", 1 );
-    /*
-            file.write( QString("Descripcion: ").toAscii());
-            file.write( m_albaranClienteView->DBvalue("descalbaran").toAscii());
-            file.write ( "\n", 1);
-    */
+
 // ============================================
     /// Impresion de los contenidos.
     QString l;
@@ -321,11 +347,16 @@ void  Ticket::imprimir()
         Fixed desc1 ( linea->DBvalue ( "descuentolalbaran" ) );
         Fixed cantpvp = cant * pvpund;
         Fixed base = cantpvp - cantpvp * desc1 / 100;
-        descuentolinea = descuentolinea + ( cantpvp * desc1 / 100 );
+	Fixed iva = ( linea->DBvalue ( "ivalalbaran" ) );
+        Fixed percentiva = ( iva / 100 );
+	descuentolinea = descuentolinea + ( cantpvp * desc1 / 100 );
+        Fixed subtotreq =(base +  linea->DBvalue ( "reqeqlalbaran" ));
+	Fixed subtotaliva = (subtotreq * percentiva) + subtotreq;
+	Fixed totalunidad = pvpund + (( pvpund -  (pvpund * desc1 / 100) ) * percentiva);
         basesimp[linea->DBvalue ( "ivalalbaran" ) ] = basesimp[linea->DBvalue ( "ivalalbaran" ) ] + base;
         basesimpreqeq[linea->DBvalue ( "reqeqlalbaran" ) ] = basesimpreqeq[linea->DBvalue ( "reqeqlalbaran" ) ] + base;
         /// Hacemos la impresion
-        QString str = linea->DBvalue ( "cantlalbaran" ).rightJustified ( 5, ' ' ) + QString ( "   " ) + linea->DBvalue ( "desclalbaran" ).leftJustified ( 24, ' ', TRUE ) + linea->DBvalue ( "pvplalbaran" ).rightJustified ( 10, ' ' );
+        QString str =  linea->DBvalue ( "desclalbaran" ).leftJustified ( 22, ' ', TRUE ) + linea->DBvalue ( "cantlalbaran" ).rightJustified ( 1, ' ' ) + QString ( " " ) + totalunidad.toQString().rightJustified ( 2, ' ')  + subtotaliva.toQString().rightJustified ( 8, ' ' );
         file.write ( str.toAscii() );
         file.write ( "\n", 1 );
     } // end for
@@ -427,6 +458,21 @@ void  Ticket::imprimir()
     file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
     file.write ( "\n", 1 );
 
+    str = "* IVA INCLUIDO *";
+    file.write ( str.rightJustified ( 20, ' ' ).toAscii() );
+    file.write ( "\n", 1 );
+
+    /// Imprimimos el trabajador
+
+    file.write ( QString ( "LE ATENDIO: " ).toAscii() );
+    cur = empresaBase() ->cargacursor ( "SELECT * FROM trabajador WHERE idtrabajador=" + DBvalue ( "idtrabajador" ) );
+    if ( !cur->eof() ) {
+        file.write ( DBvalue ( "idtrabajador" ).toAscii() );
+        file.write ( " " );
+        file.write ( cur->valor ( "nomtrabajador" ).toAscii() );
+        file.write ( "\n", 1 );
+    } // end if
+    delete cur;
 
 // ============================================
 
@@ -455,7 +501,25 @@ void  Ticket::imprimir()
     file.write ( " ", 1 );
     file.write ( DBvalue ( "refalbaran" ).toAscii() );
     file.write ( "\x00", 1 );
-
+    file.write ( "\n", 1 );
+    file.write ( QString ( "TELF. " ).toAscii() );
+    cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='telefono'" );
+    if ( !cur->eof() ) {
+        file.write ( cur->valor ( "valor" ).toAscii() );
+	file.write ( QString ( " " ).toAscii() );
+    } // end if
+    delete cur;
+    
+    file.write ( "\n", 1 );
+	
+    cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='web'" );
+    if ( !cur->eof() ) {
+        file.write ( cur->valor ( "valor" ).toAscii() );
+	file.write ( QString ( " " ).toAscii() );
+    } // end if
+    delete cur;
+    
+    file.write ( "\n", 1 );
 
     /// Imprimimos el dibujo final
     /*

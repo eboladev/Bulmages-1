@@ -9,7 +9,7 @@ Input::Input ( EmpresaTPV *emp )
 {
     /// Establece valores iniciales.
     setText ( "" );
-    setMaxLength ( 12 );
+    setMaxLength ( 13 );
     m_empresaTPV = emp;
 }
 

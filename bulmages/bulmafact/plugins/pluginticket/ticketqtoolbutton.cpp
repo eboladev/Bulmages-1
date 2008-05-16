@@ -105,17 +105,49 @@ void TicketQToolButton::click()
         m_companyact = m_albaranClienteView->empresaBase();
 
 
-        QFile file ( "/dev/usblp0" );
+        QFile file ( confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
         if ( !file.open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
             _depura ( "Error en la Impresion de ticket", 2 );
         } // end if
 
 
-        file.write ( QString ( "Conetxia Soluciones Informaticas S.L\n" ).toAscii() );
+	cursor2 *cur = m_companyact ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
+        if ( !cur->eof() ) {
+        	file.write ( cur->valor ( "valor" ).toAscii() );
+        	file.write ( "\n", 1 );
+    	  } // end if
+    	delete cur;
+        // file.write ( QString ( "Conetxia Soluciones Informaticas S.L\n" ).toAscii() );
         file.write ( QString ( "====================================\n" ).toAscii() );
-        file.write ( QString ( "Joaquin Turina, 1 Local 4\n" ).toAscii() );
-        file.write ( QString ( "CP: 07004 Palma de Mallorca\n" ).toAscii() );
-        file.write ( QString ( "Tel: 971 29 06 29\n" ).toAscii() );
+        // file.write ( QString ( "Joaquin Turina, 1 Local 4\n" ).toAscii() );
+	cur = m_companyact ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" );
+	   if ( !cur->eof() ) {
+           file.write ( cur->valor ( "valor" ).toAscii() );
+           file.write ( "\n", 1 );
+	} // end if
+	delete cur;
+	cur = m_companyact ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
+	    if ( !cur->eof() ) {
+		file.write ( QString ( "CP: " ).toAscii() );
+	        file.write ( cur->valor ( "valor" ).toAscii() );
+	    } // end if
+	delete cur;
+	cur = m_companyact ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Provincia'" );
+    	   if ( !cur->eof() ) {
+        	file.write ( QString ( " " ).toAscii() );
+        	file.write ( cur->valor ( "valor" ).toAscii() );
+		file.write ( "\n", 1 );
+    	} // end if
+   	delete cur;
+	        
+	// file.write ( QString ( "CP: 07004 Palma de Mallorca\n" ).toAscii() );
+	cur = m_companyact ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Telefono'" );
+	    if ( !cur->eof() ) {
+	file.write ( QString ( "Tel: " ).toAscii() );
+        file.write ( cur->valor ( "valor" ).toAscii() );
+	file.write (  "\n", 1 ) ;
+	} // end if
+    	delete cur;
         /// Imprimimos espacios
         file.write ( "\n \n", 3 );
         /// Imprimimos la fecha
@@ -232,11 +264,43 @@ void TicketQToolButton::click()
         } // end if
 
 
-        file.write ( QString ( "Conetxia Soluciones Informaticas S.L\n" ).toAscii() );
+	cursor2 *cur = m_companyact ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
+        if ( !cur->eof() ) {
+        	file.write ( cur->valor ( "valor" ).toAscii() );
+        	file.write ( "\n", 1 );
+    	  } // end if
+    	delete cur;
+        // file.write ( QString ( "Conetxia Soluciones Informaticas S.L\n" ).toAscii() );
         file.write ( QString ( "====================================\n" ).toAscii() );
-        file.write ( QString ( "Joaquin Turina, 1 Local 4\n" ).toAscii() );
-        file.write ( QString ( "CP: 07004 Palma de Mallorca\n" ).toAscii() );
-        file.write ( QString ( "Tel: 971 29 06 29\n" ).toAscii() );
+        // file.write ( QString ( "Joaquin Turina, 1 Local 4\n" ).toAscii() );
+	cur = m_companyact ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" );
+	   if ( !cur->eof() ) {
+           file.write ( cur->valor ( "valor" ).toAscii() );
+           file.write ( "\n", 1 );
+	} // end if
+	delete cur;
+	cur = m_companyact ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
+	    if ( !cur->eof() ) {
+		file.write ( QString ( "CP: " ).toAscii() );
+	        file.write ( cur->valor ( "valor" ).toAscii() );
+	    } // end if
+	delete cur;
+	cur = m_companyact ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Provincia'" );
+    	   if ( !cur->eof() ) {
+        	file.write ( QString ( " " ).toAscii() );
+        	file.write ( cur->valor ( "valor" ).toAscii() );
+		file.write ( "\n", 1 );
+    	} // end if
+   	delete cur;
+	        
+	// file.write ( QString ( "CP: 07004 Palma de Mallorca\n" ).toAscii() );
+	cur = m_companyact ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Telefono'" );
+	    if ( !cur->eof() ) {
+	file.write ( QString ( "Tel: " ).toAscii() );
+        file.write ( cur->valor ( "valor" ).toAscii() );
+	file.write ( "\n", 1 );
+	} // end if
+    	delete cur;
         /// Imprimimos espacios
         file.write ( "\n \n", 3 );
         /// Imprimimos la fecha
