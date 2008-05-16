@@ -55,6 +55,7 @@ language 'plpgsql';
 
 -- ======================== COMPROBACION DE CUAL ES LA ULTIMA VERSION ==================================
 
+
 CREATE OR REPLACE FUNCTION compruebarevision() RETURNS INTEGER AS '
 DECLARE
 	as RECORD;
@@ -79,6 +80,7 @@ DROP FUNCTION compruebarevision() CASCADE;
 
 -- ================================= A PARTIR DE AQUI EL PARCHE=========================
 -- =====================================================================================
+
 
 \echo -n ':: Funcion cerrar asiento ... '
 SELECT drop_if_exists_proc('cierraasiento','integer');
@@ -265,7 +267,7 @@ END;
     LANGUAGE plpgsql;
 
 
-\echo -n ':: Disoparador nuevo apunte disminuye valor ... '
+\echo -n ':: Disparador nuevo apunte disminuye valor ... '
 CREATE TRIGGER nuevo_apunte2
     AFTER DELETE ON apunte
     FOR EACH ROW

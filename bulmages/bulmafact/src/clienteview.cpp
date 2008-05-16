@@ -76,6 +76,7 @@ ClienteView::ClienteView ( Company *comp, QWidget *parent )
         addDBCampo ( "faltacliente", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate ( "Cliente", "Fecha de alta del cliente" ) );
         addDBCampo ( "fbajacliente", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate ( "Cliente", "Fecha de baja del cliente" ) );
         addDBCampo ( "comentcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Cliente", "Comentarios" ) );
+        addDBCampo ( "ecommercedatacliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Cliente", "Datos de comercio electronico" ) );
         addDBCampo ( "inactivocliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Cliente", "Cliente inactivo" ) );
         addDBCampo ( "regimenfiscalcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Cliente", "Regimen fiscal" ) );
         addDBCampo ( "codcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Cliente", "Codigo" ) );
@@ -89,8 +90,6 @@ ClienteView::ClienteView ( Company *comp, QWidget *parent )
         if ( res != 0 ) {
             return;
         } // end if
-        mui_idprovincia->setEmpresaBase ( empresaBase() );
-        mui_idprovincia->setIdProvincia ( "" );
 
         /// Inicializamos las pantallas auxiliares a esta.
         m_listpresupuestos->setEmpresaBase ( empresaBase() );
@@ -98,8 +97,13 @@ ClienteView::ClienteView ( Company *comp, QWidget *parent )
         m_listalbaranes->setEmpresaBase ( empresaBase() );
         m_listfacturas->setEmpresaBase ( empresaBase() );
         m_listcobros->setEmpresaBase ( empresaBase() );
+
+	/// Datos por defecto.
+        mui_idprovincia->setEmpresaBase ( empresaBase() );
+        mui_idprovincia->setIdProvincia ( "" );
+
         mui_idforma_pago->setEmpresaBase ( empresaBase() );
-        mui_idforma_pago->setidforma_pago ( "" );
+        mui_idforma_pago->setidforma_pago ( 0 );
 
         /// Metemos la ventana en el workSpace.
         meteWindow ( windowTitle(), this, FALSE );

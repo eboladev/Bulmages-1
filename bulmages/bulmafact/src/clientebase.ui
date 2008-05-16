@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>671</width>
-    <height>629</height>
+    <height>657</height>
    </rect>
   </property>
   <property name="focusPolicy" >
@@ -20,19 +20,40 @@
    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_clientes.48x48.png</iconset>
   </property>
   <layout class="QGridLayout" >
-   <property name="margin" >
+   <property name="leftMargin" >
     <number>5</number>
    </property>
-   <property name="spacing" >
+   <property name="topMargin" >
+    <number>5</number>
+   </property>
+   <property name="rightMargin" >
+    <number>5</number>
+   </property>
+   <property name="bottomMargin" >
+    <number>5</number>
+   </property>
+   <property name="horizontalSpacing" >
+    <number>5</number>
+   </property>
+   <property name="verticalSpacing" >
     <number>5</number>
    </property>
    <item row="2" column="0" >
     <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
      <property name="spacing" >
       <number>5</number>
+     </property>
+     <property name="leftMargin" >
+      <number>0</number>
+     </property>
+     <property name="topMargin" >
+      <number>0</number>
+     </property>
+     <property name="rightMargin" >
+      <number>0</number>
+     </property>
+     <property name="bottomMargin" >
+      <number>0</number>
      </property>
      <item>
       <spacer>
@@ -76,117 +97,161 @@
        <string>&amp;Datos generales</string>
       </attribute>
       <layout class="QGridLayout" >
-       <property name="margin" >
+       <property name="leftMargin" >
         <number>5</number>
        </property>
-       <property name="spacing" >
+       <property name="topMargin" >
         <number>5</number>
        </property>
-       <item row="14" column="1" colspan="7" >
-        <widget class="QLineEdit" name="mui_bancocliente" />
-       </item>
-       <item row="14" column="0" >
-        <widget class="QLabel" name="textLabel2_4_3" >
+       <property name="rightMargin" >
+        <number>5</number>
+       </property>
+       <property name="bottomMargin" >
+        <number>5</number>
+       </property>
+       <property name="horizontalSpacing" >
+        <number>5</number>
+       </property>
+       <property name="verticalSpacing" >
+        <number>5</number>
+       </property>
+       <item row="0" column="0" colspan="2" >
+        <widget class="QLabel" name="textLabel2_5" >
          <property name="text" >
-          <string>Datos bancarios:</string>
+          <string>C.I.F./N.I.F./N.I.E.:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
           <cstring></cstring>
          </property>
         </widget>
        </item>
-       <item row="12" column="0" colspan="4" >
-        <widget class="QLabel" name="textLabel2_4_2_2" >
-         <property name="text" >
-          <string>Comentarios:</string>
-         </property>
-         <property name="buddy" >
-          <cstring></cstring>
+       <item row="0" column="2" >
+        <widget class="QLineEdit" name="mui_cifcliente" >
+         <property name="maxLength" >
+          <number>200</number>
          </property>
         </widget>
        </item>
-       <item row="13" column="0" colspan="4" >
-        <widget class="QTextEdit" name="mui_comentcliente" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>7</hsizetype>
-           <vsizetype>7</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
+       <item row="0" column="3" >
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Horizontal</enum>
          </property>
-        </widget>
-       </item>
-       <item row="12" column="4" colspan="4" >
-        <widget class="QLabel" name="textLabel2_4_2" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>0</hsizetype>
-           <vsizetype>0</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="maximumSize" >
+         <property name="sizeHint" >
           <size>
-           <width>32766</width>
-           <height>32767</height>
+           <width>40</width>
+           <height>20</height>
           </size>
          </property>
+        </spacer>
+       </item>
+       <item row="0" column="5" >
+        <widget class="QLabel" name="textLabel2_10" >
          <property name="text" >
-          <string>Datos de comercio electronico:</string>
+          <string>Codigo de cliente:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="buddy" >
           <cstring></cstring>
          </property>
         </widget>
        </item>
-       <item row="13" column="4" colspan="4" >
-        <widget class="QTextEdit" name="mui_clientEcomerceData" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>7</hsizetype>
-           <vsizetype>7</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
+       <item row="0" column="6" colspan="2" >
+        <widget class="QLineEdit" name="mui_codcliente" >
+         <property name="maxLength" >
+          <number>12</number>
          </property>
         </widget>
        </item>
-       <item row="9" column="6" colspan="2" >
-        <widget class="QCheckBox" name="mui_recargoeqcliente" >
+       <item row="1" column="0" colspan="2" >
+        <widget class="QLabel" name="textLabel2_2" >
          <property name="text" >
-          <string>Aplicar Recargo de Equivalencia</string>
+          <string>Nombre completo:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring></cstring>
          </property>
         </widget>
        </item>
-       <item row="8" column="6" colspan="2" >
-        <widget class="QLineEdit" name="mui_mailcliente" >
+       <item row="1" column="2" colspan="6" >
+        <widget class="QLineEdit" name="mui_nomcliente" >
          <property name="maxLength" >
           <number>100</number>
          </property>
         </widget>
        </item>
-       <item row="7" column="6" colspan="2" >
-        <widget class="QLineEdit" name="mui_movilcliente" >
-         <property name="maxLength" >
-          <number>20</number>
+       <item row="2" column="0" colspan="2" >
+        <widget class="QLabel" name="textLabel2_2_2" >
+         <property name="text" >
+          <string>Empresa:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring></cstring>
          </property>
         </widget>
        </item>
-       <item row="6" column="6" colspan="2" >
-        <widget class="QLineEdit" name="mui_faxcliente" >
+       <item row="2" column="2" colspan="6" >
+        <widget class="QLineEdit" name="mui_corpcliente" >
          <property name="maxLength" >
-          <number>20</number>
+          <number>200</number>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0" colspan="2" >
+        <widget class="QLabel" name="textLabel2_4" >
+         <property name="text" >
+          <string>Nombre comercial:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring></cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2" colspan="6" >
+        <widget class="QLineEdit" name="mui_nomaltcliente" >
+         <property name="maxLength" >
+          <number>300</number>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0" colspan="2" >
+        <widget class="QLabel" name="textLabel2_6" >
+         <property name="text" >
+          <string>Direccion:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring></cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="2" colspan="4" >
+        <widget class="QLineEdit" name="mui_dircliente" >
+         <property name="maxLength" >
+          <number>100</number>
          </property>
         </widget>
        </item>
        <item row="4" column="6" >
         <widget class="QLabel" name="textLabel2_7" >
          <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>0</hsizetype>
-           <vsizetype>0</vsizetype>
+          <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -205,131 +270,13 @@
        <item row="4" column="7" >
         <widget class="QLineEdit" name="mui_cpcliente" >
          <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>0</hsizetype>
-           <vsizetype>0</vsizetype>
+          <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
          <property name="maxLength" >
           <number>10</number>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="6" colspan="2" >
-        <widget class="BusquedaProvincia" native="1" name="mui_idprovincia" >
-         <property name="minimumSize" >
-          <size>
-           <width>150</width>
-           <height>0</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="3" >
-        <spacer>
-         <property name="orientation" >
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" >
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="0" column="2" >
-        <widget class="QLineEdit" name="mui_cifcliente" >
-         <property name="maxLength" >
-          <number>200</number>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="0" colspan="2" >
-        <widget class="QLabel" name="textLabel2_8_2" >
-         <property name="text" >
-          <string>Pagina web:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy" >
-          <cstring></cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="2" colspan="6" >
-        <widget class="QLineEdit" name="mui_nomaltcliente" >
-         <property name="maxLength" >
-          <number>300</number>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0" colspan="2" >
-        <widget class="QLabel" name="textLabel2_5" >
-         <property name="text" >
-          <string>C.I.F./N.I.F./N.I.E.:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy" >
-          <cstring></cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="2" colspan="6" >
-        <widget class="QLineEdit" name="mui_corpcliente" >
-         <property name="maxLength" >
-          <number>200</number>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="5" >
-        <widget class="QLabel" name="textLabel2_8_4" >
-         <property name="text" >
-          <string>Numero de fax:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy" >
-          <cstring></cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="5" >
-        <widget class="QLabel" name="textLabel2_8_5" >
-         <property name="text" >
-          <string>Telefono movil:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy" >
-          <cstring></cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0" colspan="2" >
-        <widget class="QLabel" name="textLabel2_4" >
-         <property name="text" >
-          <string>Nombre comercial:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy" >
-          <cstring></cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="2" colspan="3" >
-        <widget class="QLineEdit" name="mui_urlcliente" >
-         <property name="maxLength" >
-          <number>150</number>
          </property>
         </widget>
        </item>
@@ -346,30 +293,30 @@
          </property>
         </widget>
        </item>
-       <item row="0" column="6" colspan="2" >
-        <widget class="QLineEdit" name="mui_codcliente" >
+       <item row="5" column="2" colspan="3" >
+        <widget class="QLineEdit" name="mui_poblcliente" >
          <property name="maxLength" >
-          <number>12</number>
+          <number>40</number>
          </property>
         </widget>
        </item>
-       <item row="7" column="0" colspan="2" >
-        <widget class="QLabel" name="textLabel2_11" >
+       <item row="5" column="5" >
+        <widget class="QLabel" name="textLabel2_9_2" >
          <property name="text" >
-          <string>Telefono del trabajo:</string>
+          <string>Provincia:</string>
          </property>
          <property name="alignment" >
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
-         <property name="buddy" >
-          <cstring></cstring>
-         </property>
         </widget>
        </item>
-       <item row="1" column="0" colspan="2" >
-        <widget class="QLabel" name="textLabel2_2" >
+       <item row="5" column="6" colspan="2" >
+        <widget class="BusquedaProvincia" name="mui_idprovincia" />
+       </item>
+       <item row="6" column="0" colspan="2" >
+        <widget class="QLabel" name="textLabel2_8" >
          <property name="text" >
-          <string>Nombre completo:</string>
+          <string>Telefono fijo:</string>
          </property>
          <property name="alignment" >
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -386,6 +333,86 @@
          </property>
         </widget>
        </item>
+       <item row="6" column="5" >
+        <widget class="QLabel" name="textLabel2_8_4" >
+         <property name="text" >
+          <string>Numero de fax:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring></cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="6" colspan="2" >
+        <widget class="QLineEdit" name="mui_faxcliente" >
+         <property name="maxLength" >
+          <number>20</number>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0" colspan="2" >
+        <widget class="QLabel" name="textLabel2_11" >
+         <property name="text" >
+          <string>Telefono del trabajo:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring></cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="2" colspan="3" >
+        <widget class="QLineEdit" name="mui_teltrabcliente" >
+         <property name="maxLength" >
+          <number>20</number>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="5" >
+        <widget class="QLabel" name="textLabel2_8_5" >
+         <property name="text" >
+          <string>Telefono movil:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring></cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="6" colspan="2" >
+        <widget class="QLineEdit" name="mui_movilcliente" >
+         <property name="maxLength" >
+          <number>20</number>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0" colspan="2" >
+        <widget class="QLabel" name="textLabel2_8_2" >
+         <property name="text" >
+          <string>Pagina web:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring></cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="2" colspan="3" >
+        <widget class="QLineEdit" name="mui_urlcliente" >
+         <property name="maxLength" >
+          <number>150</number>
+         </property>
+        </widget>
+       </item>
        <item row="8" column="5" >
         <widget class="QLabel" name="textLabel2_8_3" >
          <property name="text" >
@@ -399,91 +426,8 @@
          </property>
         </widget>
        </item>
-       <item row="5" column="2" colspan="3" >
-        <widget class="QLineEdit" name="mui_poblcliente" >
-         <property name="maxLength" >
-          <number>40</number>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0" colspan="2" >
-        <widget class="QLabel" name="textLabel2_2_2" >
-         <property name="text" >
-          <string>Empresa:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy" >
-          <cstring></cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="5" >
-        <widget class="QLabel" name="textLabel2_10" >
-         <property name="text" >
-          <string>Codigo de cliente:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy" >
-          <cstring></cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="5" >
-        <widget class="QLabel" name="textLabel2_9_2" >
-         <property name="text" >
-          <string>Provincia:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="2" colspan="3" >
-        <widget class="QLineEdit" name="mui_teltrabcliente" >
-         <property name="maxLength" >
-          <number>20</number>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0" colspan="2" >
-        <widget class="QLabel" name="textLabel2_6" >
-         <property name="text" >
-          <string>Direccion:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy" >
-          <cstring></cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="0" colspan="2" >
-        <widget class="QLabel" name="textLabel2_8" >
-         <property name="text" >
-          <string>Telefono fijo:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy" >
-          <cstring></cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="2" colspan="6" >
-        <widget class="QLineEdit" name="mui_nomcliente" >
-         <property name="maxLength" >
-          <number>100</number>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="2" colspan="4" >
-        <widget class="QLineEdit" name="mui_dircliente" >
+       <item row="8" column="6" colspan="2" >
+        <widget class="QLineEdit" name="mui_mailcliente" >
          <property name="maxLength" >
           <number>100</number>
          </property>
@@ -504,6 +448,13 @@
        </item>
        <item row="9" column="2" colspan="3" >
         <widget class="BusquedaFormaPago" name="mui_idforma_pago" />
+       </item>
+       <item row="9" column="6" colspan="2" >
+        <widget class="QCheckBox" name="mui_recargoeqcliente" >
+         <property name="text" >
+          <string>Aplicar Recargo de Equivalencia</string>
+         </property>
+        </widget>
        </item>
        <item row="10" column="0" colspan="2" >
         <widget class="QLabel" name="textLabel2_8_7" >
@@ -531,6 +482,77 @@
          </property>
         </widget>
        </item>
+       <item row="12" column="0" colspan="4" >
+        <widget class="QLabel" name="textLabel2_4_2_2" >
+         <property name="text" >
+          <string>Comentarios:</string>
+         </property>
+         <property name="buddy" >
+          <cstring></cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="4" colspan="4" >
+        <widget class="QLabel" name="textLabel2_4_2" >
+         <property name="sizePolicy" >
+          <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize" >
+          <size>
+           <width>32766</width>
+           <height>32767</height>
+          </size>
+         </property>
+         <property name="text" >
+          <string>Datos de comercio electronico:</string>
+         </property>
+         <property name="buddy" >
+          <cstring></cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="13" column="0" colspan="4" >
+        <widget class="QTextEdit" name="mui_comentcliente" >
+         <property name="sizePolicy" >
+          <sizepolicy vsizetype="Expanding" hsizetype="Expanding" >
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="tabChangesFocus" >
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="13" column="4" colspan="4" >
+        <widget class="QTextEdit" name="mui_ecommercedatacliente" >
+         <property name="sizePolicy" >
+          <sizepolicy vsizetype="Expanding" hsizetype="Expanding" >
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="tabChangesFocus" >
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="14" column="0" >
+        <widget class="QLabel" name="textLabel2_4_3" >
+         <property name="text" >
+          <string>Datos bancarios:</string>
+         </property>
+         <property name="buddy" >
+          <cstring></cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="14" column="1" colspan="7" >
+        <widget class="QLineEdit" name="mui_bancocliente" />
+       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="Tab2" >
@@ -538,10 +560,19 @@
        <string>Pres&amp;upuestos</string>
       </attribute>
       <layout class="QVBoxLayout" >
-       <property name="margin" >
+       <property name="spacing" >
         <number>5</number>
        </property>
-       <property name="spacing" >
+       <property name="leftMargin" >
+        <number>5</number>
+       </property>
+       <property name="topMargin" >
+        <number>5</number>
+       </property>
+       <property name="rightMargin" >
+        <number>5</number>
+       </property>
+       <property name="bottomMargin" >
         <number>5</number>
        </property>
        <item>
@@ -554,10 +585,19 @@
        <string>Pedidos</string>
       </attribute>
       <layout class="QVBoxLayout" >
-       <property name="margin" >
+       <property name="spacing" >
         <number>5</number>
        </property>
-       <property name="spacing" >
+       <property name="leftMargin" >
+        <number>5</number>
+       </property>
+       <property name="topMargin" >
+        <number>5</number>
+       </property>
+       <property name="rightMargin" >
+        <number>5</number>
+       </property>
+       <property name="bottomMargin" >
         <number>5</number>
        </property>
        <item>
@@ -570,10 +610,19 @@
        <string>Albaranes</string>
       </attribute>
       <layout class="QVBoxLayout" >
-       <property name="margin" >
+       <property name="spacing" >
         <number>5</number>
        </property>
-       <property name="spacing" >
+       <property name="leftMargin" >
+        <number>5</number>
+       </property>
+       <property name="topMargin" >
+        <number>5</number>
+       </property>
+       <property name="rightMargin" >
+        <number>5</number>
+       </property>
+       <property name="bottomMargin" >
         <number>5</number>
        </property>
        <item>
@@ -586,10 +635,19 @@
        <string>&amp;Facturas</string>
       </attribute>
       <layout class="QVBoxLayout" >
-       <property name="margin" >
+       <property name="spacing" >
         <number>5</number>
        </property>
-       <property name="spacing" >
+       <property name="leftMargin" >
+        <number>5</number>
+       </property>
+       <property name="topMargin" >
+        <number>5</number>
+       </property>
+       <property name="rightMargin" >
+        <number>5</number>
+       </property>
+       <property name="bottomMargin" >
         <number>5</number>
        </property>
        <item>
@@ -602,10 +660,22 @@
        <string>Cobros</string>
       </attribute>
       <layout class="QGridLayout" >
-       <property name="margin" >
+       <property name="leftMargin" >
         <number>5</number>
        </property>
-       <property name="spacing" >
+       <property name="topMargin" >
+        <number>5</number>
+       </property>
+       <property name="rightMargin" >
+        <number>5</number>
+       </property>
+       <property name="bottomMargin" >
+        <number>5</number>
+       </property>
+       <property name="horizontalSpacing" >
+        <number>5</number>
+       </property>
+       <property name="verticalSpacing" >
         <number>5</number>
        </property>
        <item row="0" column="0" >
@@ -617,11 +687,20 @@
    </item>
    <item row="0" column="0" >
     <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
      <property name="spacing" >
       <number>5</number>
+     </property>
+     <property name="leftMargin" >
+      <number>0</number>
+     </property>
+     <property name="topMargin" >
+      <number>0</number>
+     </property>
+     <property name="rightMargin" >
+      <number>0</number>
+     </property>
+     <property name="bottomMargin" >
+      <number>0</number>
      </property>
      <item>
       <widget class="QLabel" name="label" >
@@ -654,10 +733,19 @@
         <enum>QFrame::Raised</enum>
        </property>
        <layout class="QHBoxLayout" >
-        <property name="margin" >
+        <property name="spacing" >
          <number>5</number>
         </property>
-        <property name="spacing" >
+        <property name="leftMargin" >
+         <number>5</number>
+        </property>
+        <property name="topMargin" >
+         <number>5</number>
+        </property>
+        <property name="rightMargin" >
+         <number>5</number>
+        </property>
+        <property name="bottomMargin" >
          <number>5</number>
         </property>
         <item>
@@ -727,7 +815,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:Images/edit-delete.svg</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Images/edit-delete.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -808,11 +896,6 @@
    <header>pedidosclientelist.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaProvincia</class>
-   <extends>QWidget</extends>
-   <header>busquedaprovincia.h</header>
-  </customwidget>
-  <customwidget>
    <class>PresupuestoList</class>
    <extends>QWidget</extends>
    <header>presupuestolist.h</header>
@@ -842,8 +925,16 @@
    <extends>QComboBox</extends>
    <header>busquedaformapago.h</header>
   </customwidget>
+  <customwidget>
+   <class>BusquedaProvincia</class>
+   <extends>QComboBox</extends>
+   <header>busquedaprovincia.h</header>
+  </customwidget>
  </customwidgets>
  <tabstops>
+  <tabstop>mui_guardar</tabstop>
+  <tabstop>mui_eliminar</tabstop>
+  <tabstop>mui_informe</tabstop>
   <tabstop>mui_tab</tabstop>
   <tabstop>mui_cifcliente</tabstop>
   <tabstop>mui_codcliente</tabstop>
@@ -853,20 +944,22 @@
   <tabstop>mui_dircliente</tabstop>
   <tabstop>mui_cpcliente</tabstop>
   <tabstop>mui_poblcliente</tabstop>
+  <tabstop>mui_idprovincia</tabstop>
   <tabstop>mui_telcliente</tabstop>
   <tabstop>mui_faxcliente</tabstop>
   <tabstop>mui_teltrabcliente</tabstop>
   <tabstop>mui_movilcliente</tabstop>
   <tabstop>mui_urlcliente</tabstop>
   <tabstop>mui_mailcliente</tabstop>
+  <tabstop>mui_idforma_pago</tabstop>
+  <tabstop>mui_recargoeqcliente</tabstop>
+  <tabstop>mui_regimenfiscalcliente</tabstop>
   <tabstop>mui_comentcliente</tabstop>
-  <tabstop>mui_clientEcomerceData</tabstop>
+  <tabstop>mui_ecommercedatacliente</tabstop>
   <tabstop>mui_bancocliente</tabstop>
-  <tabstop>mui_guardar</tabstop>
-  <tabstop>mui_eliminar</tabstop>
-  <tabstop>mui_informe</tabstop>
-  <tabstop>mui_cancelar</tabstop>
   <tabstop>mui_aceptar</tabstop>
+  <tabstop>mui_cancelar</tabstop>
+  <tabstop>m_listcobros</tabstop>
  </tabstops>
  <resources>
   <include location="../../bulmages.qrc" />
