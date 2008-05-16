@@ -69,7 +69,7 @@ ProveedorView::ProveedorView ( Company *comp, QWidget *parent )
         mui_idprovincia->setEmpresaBase ( empresaBase() );
         mui_idprovincia->setIdProvincia ( "" );
 
-        /// Desabilitamos los tabs que aun no se usan
+        /// Deshabilitamos los tabs que aun no se usan.
         masdf->setTabEnabled ( 5, FALSE );
         masdf->setTabEnabled ( 6, FALSE );
         masdf->setTabEnabled ( 7, FALSE );
@@ -87,8 +87,8 @@ ProveedorView::ProveedorView ( Company *comp, QWidget *parent )
         m_listpagosprov->setEmpresaBase ( empresaBase() );
         m_listpagosprov->hideBusqueda();
 
-        mui_forma_pago->setEmpresaBase ( empresaBase() );
-        mui_forma_pago->setidforma_pago ( "0" );
+        mui_idforma_pago->setEmpresaBase ( empresaBase() );
+        mui_idforma_pago->setidforma_pago ( "0" );
 
 
         meteWindow ( windowTitle(), this, FALSE );

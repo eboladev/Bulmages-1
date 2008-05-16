@@ -136,7 +136,7 @@
       <used>false</used>
       <version>3</version>
       <includestyle>3</includestyle>
-      <root></root>
+      <root>/usr/lib/qt3</root>
       <designerintegration>EmbeddedKDevDesigner</designerintegration>
       <qmake>/usr/bin/qmake</qmake>
       <designer>/usr/bin/designer</designer>
