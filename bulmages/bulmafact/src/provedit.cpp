@@ -63,18 +63,14 @@ ProveedorView::ProveedorView ( Company *comp, QWidget *parent )
         addDBCampo ( "recargoeqproveedor", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate ( "Proveedor", "Recargo de Equivalencia" ) );
         addDBCampo ( "irpfproveedor", DBCampo::DBnumeric, DBCampo::DBNothing, QApplication::translate ( "Proveedor", "IRPF" ) );
 
-
         setupUi ( this );
-
-        mui_idprovincia->setEmpresaBase ( empresaBase() );
-        mui_idprovincia->setIdProvincia ( "" );
 
         /// Deshabilitamos los tabs que aun no se usan.
         masdf->setTabEnabled ( 5, FALSE );
         masdf->setTabEnabled ( 6, FALSE );
         masdf->setTabEnabled ( 7, FALSE );
 
-        /// Cargamos el listado de pedidos del proveedor y dejamos presentable.
+        /// Cargamos los documentos relacionados con el proveedor y dejamos presentable.
         m_listpedidosprov->setEmpresaBase ( empresaBase() );
         m_listpedidosprov->hideBusqueda();
 
@@ -87,8 +83,12 @@ ProveedorView::ProveedorView ( Company *comp, QWidget *parent )
         m_listpagosprov->setEmpresaBase ( empresaBase() );
         m_listpagosprov->hideBusqueda();
 
+	/// Cargamos algunos valores por defecto.
         mui_idforma_pago->setEmpresaBase ( empresaBase() );
         mui_idforma_pago->setidforma_pago ( "0" );
+
+        mui_idprovincia->setEmpresaBase ( empresaBase() );
+        mui_idprovincia->setIdProvincia ( "" );
 
 
         meteWindow ( windowTitle(), this, FALSE );
@@ -125,10 +125,13 @@ int ProveedorView::cargarPost ( QString idprov )
     /// Cargamos las ventanas auxiliares.
     m_listpedidosprov->setidproveedor ( DBvalue ( "idproveedor" ) );
     m_listpedidosprov->presentar();
+
     m_albaranesprov->setidproveedor ( DBvalue ( "idproveedor" ) );
     m_albaranesprov->presentar();
+
     m_listfacturasprov->setidproveedor ( DBvalue ( "idproveedor" ) );
     m_listfacturasprov->presentar();
+
     m_listpagosprov->setidproveedor ( DBvalue ( "idproveedor" ) );
     m_listpagosprov->presentar();
 
