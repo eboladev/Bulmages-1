@@ -22,6 +22,8 @@
 #include <QToolButton>
 #include <QLineEdit>
 #include <QTableWidget>
+#include <QFile>
+#include <QTextStream>
 
 #include "pluginticketbasico.h"
 #include "funcaux.h"
@@ -31,10 +33,9 @@
 
 
 QDockWidget *g_doc1;
-QDockWidget *g_doc2;
 
 MTicket *g_bud;
-QTextBrowser *g_browser;
+
 
 
 ///
@@ -48,21 +49,70 @@ int entryPoint ( BulmaTPV *tpv )
     /// Vamos a probar con un docwindow.
     g_doc1 = new QDockWidget ( "Ticket", tpv );
     g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
+//    g_doc1->setFeatures ( QDockWidget::DockWidgetMovable |  QDockWidget::DockWidgetFloatable);
 
     g_doc1->setGeometry ( 100, 100, 100, 500 );
     g_doc1->resize ( 330, 400 );
+
+
+
+
+// ============================
+    QFile file ( confpr->valor ( CONF_DIR_USER ) + "pluginticketbasico.cfn" );
+    QString line;
+    if ( file.open ( QIODevice::ReadOnly ) ) {
+        QTextStream stream ( &file );
+        /// Establecemos la columna de ordenaci&oacute;n
+        QString linea = stream.readLine();
+        int width = linea.toInt();
+
+        /// Establecemos el tipo de ordenaci&oacute;n
+        linea = stream.readLine();
+	int height = linea.toInt();
+
+        g_doc1->resize ( width, height );
+	g_doc1->setMinimumWidth(width);
+	g_doc1->setMinimumHeight(height);
+
+	file.close();
+    } // end if
+
+
+// ============================
+
     tpv->addDockWidget ( Qt::RightDockWidgetArea, g_doc1 );
     g_doc1->show();
 
+    g_doc1->setMinimumWidth(0);
+    g_doc1->setMinimumHeight(0);
+
+
+    _depura ( "END entryPoint", 0 );
+    return 0;
+}
+
+
+///
+/**
+\return
+**/
+int exitPoint ( BulmaTPV *tpv )
+{
+    _depura ( "entryPoint", 0 );
 
     /// Vamos a probar con un docwindow.
-    g_doc2 = new QDockWidget ( "Total", tpv );
-    g_doc2->setFeatures ( QDockWidget::AllDockWidgetFeatures );
+    int width = g_doc1->width();
+    int height = g_doc1->height();
 
-    g_doc2->setGeometry ( 100, 100, 100, 500 );
-    g_doc2->resize ( 330, 400 );
-    tpv->addDockWidget ( Qt::LeftDockWidgetArea, g_doc2 );
-    g_doc2->show();
+    QString aux = "";
+    QFile file ( confpr->valor ( CONF_DIR_USER ) + "pluginticketbasico.cfn" );
+    /// Guardado del orden y de configuraciones varias.
+    if ( file.open ( QIODevice::WriteOnly ) ) {
+        QTextStream stream ( &file );
+        stream << width << "\n";
+        stream << height << "\n";
+        file.close();
+    } // end if
 
     _depura ( "END entryPoint", 0 );
     return 0;
@@ -72,9 +122,6 @@ int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
 {
     g_bud =  new MTicket ( etpv, g_doc1 );
     g_doc1->setWidget ( ( QWidget * ) g_bud );
-
-    g_browser = new QTextBrowser ( g_doc2 );
-    g_doc2->setWidget ( g_browser );
 
     return 0;
 }

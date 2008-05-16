@@ -1,8 +1,6 @@
 /***************************************************************************
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   Copyright (C) 2006 by Fco. Javier M. C.                               *
- *   fcojavmc@todo-redes.com                                               *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -20,47 +18,22 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QDockWidget>
+#ifdef Q_WS_WIN
+# define MY_EXPORT __declspec(dllexport)
+#else
+# define MY_EXPORT
+#endif
 
-#include "plugintecladonumerico.h"
-#include "funcaux.h"
+#include "bulmatpv.h"
+#include "ticket.h"
 #include "empresatpv.h"
-#include "tecladonumerico.h"
+
+extern "C" MY_EXPORT int entryPoint ( BulmaTPV * );
+extern "C" MY_EXPORT int Ticket_pintar ( Ticket * );
+extern "C" MY_EXPORT int EmpresaTPV_createMainWindows_Post ( EmpresaTPV * );
 
 
 
-QDockWidget *g_doc1;
 
-TecladoNumerico *g_tecl;
-///
-/**
-\return
-**/
-int entryPoint ( BulmaTPV *tpv )
-{
-    _depura ( "entryPoint", 0 );
-    /// Vamos a probar con un docwindow.
-    g_doc1 = new QDockWidget ( "Teclado", tpv );
-    g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
-    g_doc1->setGeometry ( 100, 100, 100, 500 );
-    g_doc1->resize ( 330, 400 );
-    tpv->addDockWidget ( Qt::LeftDockWidgetArea, g_doc1 );
-    g_doc1->show();
 
-    _depura ( "END entryPoint", 0 );
-    return 0;
-}
-
-int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
-{
-    g_tecl = new TecladoNumerico ( etpv, g_doc1 );
-// etpv->pWorkspace()->addWindow(g_tecl);
-    g_doc1->setWidget ( g_tecl );
-    return 0;
-}
-
-int Input_keyPressEvent_Post ( Input *in )
-{
-    g_tecl->mui_display->setText ( in->valorInput() );
-}
 

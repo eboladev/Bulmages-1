@@ -1,8 +1,7 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2007 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   Copyright (C) 2006 by Fco. Javier M. C.                               *
- *   fcojavmc@todo-redes.com                                               *
+ *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -20,47 +19,28 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QDockWidget>
+#ifndef MTICKET1_H
+#define MTICKET1_H
 
-#include "plugintecladonumerico.h"
-#include "funcaux.h"
+#include <QLabel>
+#include <QTableWidget>
+#include <QTextBrowser>
+
+#include "ticket.h"
 #include "empresatpv.h"
-#include "tecladonumerico.h"
+#include "subform2bt.h"
 
-
-
-QDockWidget *g_doc1;
-
-TecladoNumerico *g_tecl;
-///
-/**
-\return
-**/
-int entryPoint ( BulmaTPV *tpv )
+class MTicket : public QTextBrowser, public PEmpresaBase
 {
-    _depura ( "entryPoint", 0 );
-    /// Vamos a probar con un docwindow.
-    g_doc1 = new QDockWidget ( "Teclado", tpv );
-    g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
-    g_doc1->setGeometry ( 100, 100, 100, 500 );
-    g_doc1->resize ( 330, 400 );
-    tpv->addDockWidget ( Qt::LeftDockWidgetArea, g_doc1 );
-    g_doc1->show();
+    Q_OBJECT
+public:
+    MTicket ( EmpresaTPV *emp, QWidget *parent );
+    virtual ~MTicket();
+    virtual void pintar();
 
-    _depura ( "END entryPoint", 0 );
-    return 0;
-}
+};
 
-int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
-{
-    g_tecl = new TecladoNumerico ( etpv, g_doc1 );
-// etpv->pWorkspace()->addWindow(g_tecl);
-    g_doc1->setWidget ( g_tecl );
-    return 0;
-}
 
-int Input_keyPressEvent_Post ( Input *in )
-{
-    g_tecl->mui_display->setText ( in->valorInput() );
-}
+
+#endif
 

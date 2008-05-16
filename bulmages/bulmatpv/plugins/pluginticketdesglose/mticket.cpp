@@ -6,17 +6,18 @@
 #include "subform2bt.h"
 #include <QTextBrowser>
 
+extern QTextBrowser *g_browser;
+
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
 /// como un QMap.
 typedef QMap<QString, Fixed> base;
 
 
-MTicket::MTicket ( EmpresaTPV *emp, QWidget *parent ) : BLWidget ( emp, parent )
+MTicket::MTicket ( EmpresaTPV *emp, QWidget *parent ) : QTextBrowser (parent) , PEmpresaBase ( emp )
 {
     _depura ( "MTicket::MTicket", 0 );
-    setupUi ( this );
-    emp->pWorkspace() ->addWindow ( this );
-    setWindowTitle ( "Ticket" );
+//    emp->pWorkspace() ->addWindow ( this );
+//    setWindowTitle ( "Ticket" );
     _depura ( "END MTicket::MTicket", 0 );
 }
 
@@ -173,31 +174,7 @@ void MTicket::pintar()
 
 // ======================================
     /// Pintamos el HTML en el textBrowser
-    mui_browser->setText ( html );
+    setText ( html1 );
     _depura ( "END MTicket::pintar", 0 );
 }
 
-
-void MTicket::on_mui_subir_clicked()
-{
-/// Simulamos la pulsacion de la techa arriba
-    ( ( EmpresaTPV * ) empresaBase() ) ->pulsaTecla ( Qt::Key_Up );
-
-}
-
-
-void MTicket::on_mui_bajar_clicked()
-{
-/// Simulamos la pulsacion de la techa arriba
-    ( ( EmpresaTPV * ) empresaBase() ) ->pulsaTecla ( Qt::Key_Down );
-}
-
-
-void MTicket::on_mui_borrar_clicked()
-{
-
-    Ticket * tick = ( ( EmpresaTPV * ) empresaBase() ) ->ticketActual();
-    tick->ponerCantidad ( "0" );
-
-    pintar();
-}
