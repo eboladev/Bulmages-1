@@ -86,7 +86,16 @@ BulmaTPV::BulmaTPV ( QString bd ) : QMainWindow()
     setCorner ( Qt::BottomRightCorner, Qt::RightDockWidgetArea );
 
 
+// ============== OJO El listventanas no se utiliza pero lo pongo para poder usar componentes de bulmafact.
+    /// Aqui creamos la ventana dock para meter las distintas ventanas.
+    ListVentanas *list = new ListVentanas ( 0 );
+    list->setVisible ( FALSE );
+    /// Iniciamos el listventanas con el workspace para que pueda operar con el.
+    list->setWorkspace ( pWorkspace );
+//    addDockWidget ( Qt::LeftDockWidgetArea, m_list );
 
+    m_empresaTPV->setListVentanas ( list );
+// ===============
 //    QDockWidget *widgetPrueba = new QDockWidget ( NULL );
 //    addDockWidget ( Qt::LeftDockWidgetArea, widgetPrueba );
 //    m_company->setListVentanas(m_list);
@@ -194,9 +203,14 @@ QWorkspace2 * BulmaTPV::workspace()
 
 void BulmaTPV::keyPressEvent ( QKeyEvent * e )
 {
-    m_empresaTPV->keyPressEvent ( e );
+//    m_empresaTPV->keyPressEvent ( e );
 }
 
+
+void BulmaTPV::keyReleaseEvent ( QKeyEvent * e )
+{
+    m_empresaTPV->keyPressEvent ( e );
+}
 
 EmpresaTPV *BulmaTPV::empresaTPV()
 {

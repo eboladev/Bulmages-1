@@ -71,6 +71,7 @@ public:
     QString codigocompletoarticulo();
     void presentar();
     void submenu ( const QPoint & );
+    virtual void on_mui_list_cellDoubleClicked ( int, int);
 
 signals:
     void selected ( QString );

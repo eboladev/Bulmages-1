@@ -39,7 +39,11 @@
     <number>5</number>
    </property>
    <item row="2" column="0" >
-    <widget class="ArticuloListSubForm" name="mui_list" />
+    <widget class="ArticuloListSubForm" name="mui_list" >
+     <property name="focusPolicy" >
+      <enum>Qt::NoFocus</enum>
+     </property>
+    </widget>
    </item>
    <item row="1" column="0" >
     <widget class="QFrame" name="m_busqueda" >
@@ -86,6 +90,9 @@
       </item>
       <item row="1" column="0" >
        <widget class="QCheckBox" name="m_usadoarticulo" >
+        <property name="focusPolicy" >
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="text" >
          <string>Solo usados</string>
         </property>
@@ -99,6 +106,9 @@
       </item>
       <item row="2" column="0" >
        <widget class="QCheckBox" name="m_presentablearticulo" >
+        <property name="focusPolicy" >
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="text" >
          <string>S&amp;olo presentables</string>
         </property>
@@ -207,6 +217,9 @@
             <height>32</height>
            </size>
           </property>
+          <property name="focusPolicy" >
+           <enum>Qt::NoFocus</enum>
+          </property>
           <property name="toolTip" >
            <string>Filtrar listado</string>
           </property>
@@ -244,6 +257,9 @@
             <height>32</height>
            </size>
           </property>
+          <property name="focusPolicy" >
+           <enum>Qt::NoFocus</enum>
+          </property>
           <property name="toolTip" >
            <string>Configurar listado</string>
           </property>
@@ -280,6 +296,9 @@
             <width>32</width>
             <height>32</height>
            </size>
+          </property>
+          <property name="focusPolicy" >
+           <enum>Qt::NoFocus</enum>
           </property>
           <property name="toolTip" >
            <string>Actualizar listado</string>
@@ -350,6 +369,9 @@
             <width>150</width>
             <height>0</height>
            </size>
+          </property>
+          <property name="focusPolicy" >
+           <enum>Qt::ClickFocus</enum>
           </property>
          </widget>
         </item>

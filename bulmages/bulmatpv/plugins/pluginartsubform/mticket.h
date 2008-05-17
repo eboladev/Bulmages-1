@@ -33,16 +33,17 @@ class myplugin : public QObject
 {
     Q_OBJECT
 private:
-    BulmaTPV *m_tpv;
+    EmpresaTPV *m_etpv;
     ArticuloList1 *m_lan;
 
 public:
     myplugin();
     ~myplugin();
-    void inicializa ( BulmaTPV *tpv );
+    void inicializa ( EmpresaTPV *etpv );
 
 public slots:
-    virtual void elslot ( QTableWidgetItem * );
+    virtual void elslot ( QString );
+    virtual void elslot1 ( QTableWidgetItem *);
 
 };
 

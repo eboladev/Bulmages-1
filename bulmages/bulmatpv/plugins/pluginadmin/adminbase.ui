@@ -13,10 +13,19 @@
    <string>Form</string>
   </property>
   <layout class="QHBoxLayout" >
-   <property name="margin" >
+   <property name="spacing" >
     <number>0</number>
    </property>
-   <property name="spacing" >
+   <property name="leftMargin" >
+    <number>0</number>
+   </property>
+   <property name="topMargin" >
+    <number>0</number>
+   </property>
+   <property name="rightMargin" >
+    <number>0</number>
+   </property>
+   <property name="bottomMargin" >
     <number>0</number>
    </property>
    <item>
@@ -32,6 +41,9 @@
        <width>200</width>
        <height>72</height>
       </size>
+     </property>
+     <property name="focusPolicy" >
+      <enum>Qt::NoFocus</enum>
      </property>
      <property name="text" >
       <string>X</string>
@@ -52,6 +64,9 @@
        <height>72</height>
       </size>
      </property>
+     <property name="focusPolicy" >
+      <enum>Qt::NoFocus</enum>
+     </property>
      <property name="text" >
       <string>Z</string>
      </property>
@@ -70,6 +85,9 @@
        <width>200</width>
        <height>72</height>
       </size>
+     </property>
+     <property name="focusPolicy" >
+      <enum>Qt::NoFocus</enum>
      </property>
      <property name="text" >
       <string>SALIR</string>

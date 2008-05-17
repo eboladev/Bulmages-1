@@ -57,6 +57,7 @@ public:
     void createMainWindows ( Splash * );
     EmpresaTPV *empresaTPV();
     virtual void keyPressEvent ( QKeyEvent *e );
+    virtual void keyReleaseEvent ( QKeyEvent *e );
 
 public slots:
     virtual void closeEvent ( QCloseEvent * );

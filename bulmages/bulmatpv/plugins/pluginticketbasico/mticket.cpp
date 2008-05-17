@@ -15,6 +15,7 @@ MTicket::MTicket ( EmpresaTPV *emp, QWidget *parent ) : BLWidget ( emp, parent )
 {
     _depura ( "MTicket::MTicket", 0 );
     setupUi ( this );
+    setFocusPolicy(Qt::NoFocus);
     emp->pWorkspace() ->addWindow ( this );
     setWindowTitle ( "Ticket" );
     _depura ( "END MTicket::MTicket", 0 );

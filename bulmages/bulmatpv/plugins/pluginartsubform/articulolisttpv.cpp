@@ -35,7 +35,7 @@
 #include "busquedatipoarticulo.h"
 #include "funcaux.h"
 #include "plugins.h"
-
+#include "empresatpv.h"
 
 /** Constructor de la ventana de listado de articulos
     Inicializa todos los componentes, propaga el puntero a m_company
@@ -56,6 +56,8 @@ ArticuloList1::ArticuloList1 ( Company *comp, QWidget *parent, Qt::WFlags flag, 
 {
     _depura ( "ArticuloList1::ArticuloList1", 0 );
     setupUi ( this );
+
+    showFullScreen();
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "ArticuloList1_ArticuloList1", this );
     if ( res != 0 ) {
@@ -66,13 +68,10 @@ ArticuloList1::ArticuloList1 ( Company *comp, QWidget *parent, Qt::WFlags flag, 
     m_familia->setEmpresaBase ( comp );
     mui_list->setEmpresaBase ( comp );
     setSubForm ( mui_list );
+    mui_list->setFocusPolicy(Qt::NoFocus);
     m_usadoarticulo->setCheckState ( Qt::Unchecked );
 
-    if ( modoEdicion() ) {
-//        empresaBase() ->meteWindow ( windowTitle(), this );
-    } else {
-        setWindowTitle ( tr ( "Selector de articulos" ) );
-    } // end if
+
     presentar();
     hideBusqueda();
     /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
@@ -203,6 +202,17 @@ QString ArticuloList1::codigocompletoarticulo()
     return mdb_codigocompletoarticulo;
 }
 
+
+///
+/**
+**/
+void ArticuloList1::on_mui_list_cellDoubleClicked ( int, int)
+{
+    _depura ( "myplugin::elslot", 0 );
+    QString idarticulo =  mui_list->DBvalue ( "idarticulo" );
+    ((EmpresaTPV *) empresaBase())->ticketActual() ->insertarArticulo ( idarticulo, Fixed ( "1" ) );
+    _depura ( "END myplugin::elslot", 0 );
+}
 
 /// =============================================================================
 ///                    SUBFORMULARIO

@@ -27,7 +27,6 @@ void Input::pulsaTecla ( int tecla, const QString &texto )
 
 void Input::keyPressEvent ( QKeyEvent *e )
 {
-
     switch ( e->key() ) {
     case Qt::Key_F1:
         m_empresaTPV->cobrar();

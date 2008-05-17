@@ -583,18 +583,22 @@ void  Ticket::imprimir()
 
 void Ticket::subir()
 {
-	int i = listaLineas() ->indexOf ( lineaActTicket() );
-	if ( i > 0 ) i--;
-	setLineaActual ( listaLineas() ->at ( i ) );
-	pintar();
+	if (listaLineas()->count() > 0) {
+		int i = listaLineas() ->indexOf ( lineaActTicket() );
+		if ( i > 0 ) i--;
+		setLineaActual ( listaLineas() ->at ( i ) );
+		pintar();
+	} // end if
 }
 
 void Ticket::bajar()
 {
-	int i = listaLineas() ->indexOf ( lineaActTicket() );
-	if ( i < listaLineas() ->size() - 1 ) i++;
-	setLineaActual ( listaLineas() ->at ( i ) );
-	pintar();
+	if (listaLineas()->count() > 0) {
+		int i = listaLineas() ->indexOf ( lineaActTicket() );
+		if ( i < listaLineas() ->size() - 1 ) i++;
+		setLineaActual ( listaLineas() ->at ( i ) );
+		pintar();
+	} // end if
 }
 
 

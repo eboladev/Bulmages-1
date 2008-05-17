@@ -38,52 +38,41 @@ myplugin::~myplugin()
 ///
 /**
 **/
-void myplugin::elslot ( QTableWidgetItem * )
+void myplugin::elslot ( QString item )
 {
     _depura ( "myplugin::elslot", 0 );
+    mensajeInfo("Seleccionado");
     QString idarticulo =  m_lan->mui_list->DBvalue ( "idarticulo" );
-    m_tpv->empresaTPV() ->ticketActual() ->insertarArticulo ( idarticulo, Fixed ( "1" ) );
+    m_etpv->ticketActual() ->insertarArticulo ( idarticulo, Fixed ( "1" ) );
     _depura ( "END myplugin::elslot", 0 );
 }
 
+
+void myplugin::elslot1 ( QTableWidgetItem *item )
+{
+    _depura ( "myplugin::elslot", 0 );
+    mensajeInfo("Seleccionado");
+    QString idarticulo =  m_lan->mui_list->DBvalue ( "idarticulo" );
+    m_etpv->ticketActual() ->insertarArticulo ( idarticulo, Fixed ( "1" ) );
+    _depura ( "END myplugin::elslot", 0 );
+}
 
 ///
 /**
 \param bges
 **/
-void myplugin::inicializa ( BulmaTPV *tpv )
+void myplugin::inicializa ( EmpresaTPV *etpv )
 {
     _depura ( "myplugin::inicializa", 0 );
-    m_tpv = tpv;
 
-    m_lan = new ArticuloList1((Company *) tpv->empresaTPV(), NULL, 0, Listado::SelectMode);
-    tpv->workspace() ->addWindow ( m_lan );
-    m_lan->showFullScreen();
-
-    connect ( m_lan, SIGNAL ( itemDoubleClicked ( QTableWidgetItem * ) ), this, SLOT ( elslot ( QTableWidgetItem * ) ) );
-
+    m_etpv = etpv;
 /*
-    m_lan = new SubForm2Bt ( NULL );
-    m_lan->setEmpresaBase ( tpv->empresaTPV() );
-    m_lan->setDBTableName ( "articulo" );
-    m_lan->setDBCampoId ( "idarticulo" );
-    m_lan->addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "ticketbasico", "ID articulo" ) );
-    m_lan->addSHeader ( "codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, QApplication::translate ( "ticketbasico", "Codigo completo del articulo" ) );
-    m_lan->addSHeader ( "nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, QApplication::translate ( "ticketbasico", "Nombre del articulo" ) );
-    m_lan->addSHeader ( "abrevarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, QApplication::translate ( "ticketbasico", "Descripcion abreviada del articulo" ) );
-    m_lan->addSHeader ( "obserarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, QApplication::translate ( "ticketbasico", "Observaciones sobre el articulo" ) );
-    m_lan->addSHeader ( "desctipo_articulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, QApplication::translate ( "ticketbasico", "Descripcion del tipo de articulo" ) );
-    m_lan->addSHeader ( "desctipo_iva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, QApplication::translate ( "ticketbasico", "Descripcion tipo de I.V.A." ) );
-    m_lan->addSHeader ( "pvparticulo", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, QApplication::translate ( "ticketbasico", "P.V.P. articulo" ) );
-    m_lan->addSHeader ( "stockarticulo", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, QApplication::translate ( "ticketbasico", "Disponible en stock" ) );
-    m_lan->setinsercion ( FALSE );
-    m_lan->setDelete ( FALSE );
-    m_lan->setSortingEnabled ( TRUE );
-    tpv->workspace() ->addWindow ( m_lan );
-    m_lan->showFullScreen();
-    m_lan->cargar ( "SELECT * FROM articulo" );
+    m_lan = new ArticuloList1((Company *) etpv, NULL, 0, Listado::SelectMode);
 
-    connect ( m_lan, SIGNAL ( itemDoubleClicked ( QTableWidgetItem * ) ), this, SLOT ( elslot ( QTableWidgetItem * ) ) );
+    g_main->setCentralWidget ( m_lan );
+    connect ( m_lan, SIGNAL ( selected ( QString  ) ), this, SLOT ( elslot ( QString ) ) );
+
+    connect ( m_lan->mui_list, SIGNAL ( itemDoubleClicked(QTableWidgetItem *)), SLOT ( elslot1 (QTableWidgetItem *)));
 */
     _depura ( "END myplugin::inicializa", 0 );
 }

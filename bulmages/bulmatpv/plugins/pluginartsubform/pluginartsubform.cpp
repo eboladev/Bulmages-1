@@ -28,7 +28,7 @@
 #include "ticket.h"
 #include "empresatpv.h"
 #include "mticket.h"
-
+#include "busquedaarticulo.h"
 
 
 ///
@@ -38,14 +38,24 @@
 int entryPoint ( BulmaTPV *tpv )
 {
     _depura ( "entryPoint", 0 );
-
-    myplugin *plug = new myplugin();
-    plug->inicializa ( tpv );
-
-
-
     _depura ( "END entryPoint", 0 );
     return 0;
 }
 
 
+int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
+{
+
+
+    ArticuloList1 *lan = new ArticuloList1((Company *) etpv, NULL, 0, ArticuloList1::SelectMode);
+    g_main->setCentralWidget( lan );
+
+/*
+    BusquedaArticulo *busc = new BusquedaArticulo(0);
+    busc->setEmpresaBase(etpv);
+    g_main->setCentralWidget ( busc );
+*/
+//    lan->connect ( lan, SIGNAL ( selected ( QString  ) ), this, SLOT ( elslot ( QString ) ) );
+
+    return 0;
+}

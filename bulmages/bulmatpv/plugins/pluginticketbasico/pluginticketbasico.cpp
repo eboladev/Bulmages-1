@@ -56,7 +56,7 @@ int entryPoint ( BulmaTPV *tpv )
 
 
 
-
+    /// Si existe el archivo de configuracion lo cargamos y configuramos el aspecto del widget.
 // ============================
     QFile file ( confpr->valor ( CONF_DIR_USER ) + "pluginticketbasico.cfn" );
     QString line;
@@ -77,14 +77,9 @@ int entryPoint ( BulmaTPV *tpv )
 	file.close();
     } // end if
 
-
-// ============================
-
+    /// Presentamos el widget
     tpv->addDockWidget ( Qt::RightDockWidgetArea, g_doc1 );
     g_doc1->show();
-
-    g_doc1->setMinimumWidth(0);
-    g_doc1->setMinimumHeight(0);
 
 
     _depura ( "END entryPoint", 0 );
@@ -104,6 +99,7 @@ int exitPoint ( BulmaTPV *tpv )
     int width = g_doc1->width();
     int height = g_doc1->height();
 
+/*
     QString aux = "";
     QFile file ( confpr->valor ( CONF_DIR_USER ) + "pluginticketbasico.cfn" );
     /// Guardado del orden y de configuraciones varias.
@@ -113,6 +109,7 @@ int exitPoint ( BulmaTPV *tpv )
         stream << height << "\n";
         file.close();
     } // end if
+*/
 
     _depura ( "END entryPoint", 0 );
     return 0;

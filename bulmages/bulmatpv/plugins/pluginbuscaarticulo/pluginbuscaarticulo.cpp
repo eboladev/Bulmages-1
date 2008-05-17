@@ -19,23 +19,24 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#include <QToolButton>
-#include <QLineEdit>
-#include <QTableWidget>
 
-#include "pluginticketdesglose.h"
+#include <QDockWidget>
+
+#include "pluginbuscaarticulo.h"
 #include "funcaux.h"
-#include "ticket.h"
 #include "empresatpv.h"
-#include "mticket.h"
+#include "plugins.h"
+#include "ticket.h"
+#include "qapplication2.h"
+#include "busquedaarticulo.h"
+
+/// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
+/// como un QMap.
+typedef QMap<QString, Fixed> base;
 
 
+BusquedaArticulo *g_busc;
 QDockWidget *g_doc1;
-
-MTicket *g_bud;
-
-
-
 ///
 /**
 \return
@@ -45,14 +46,12 @@ int entryPoint ( BulmaTPV *tpv )
     _depura ( "entryPoint", 0 );
 
     /// Vamos a probar con un docwindow.
-    g_doc1 = new QDockWidget ( "Total", tpv );
+    g_doc1 = new QDockWidget ( "Articulo", tpv );
     g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
     g_doc1->setGeometry ( 100, 100, 100, 500 );
     g_doc1->resize ( 330, 400 );
-    tpv->addDockWidget ( Qt::RightDockWidgetArea, g_doc1 );
+    tpv->addDockWidget ( Qt::LeftDockWidgetArea, g_doc1 );
     g_doc1->show();
-
-
 
     _depura ( "END entryPoint", 0 );
     return 0;
@@ -60,17 +59,12 @@ int entryPoint ( BulmaTPV *tpv )
 
 int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
 {
-    g_bud =  new MTicket ( etpv, g_doc1 );
-    g_bud->setFocusPolicy(Qt::NoFocus);
-    g_doc1->setWidget ( ( QWidget * ) g_bud );
-
+    g_busc = new BusquedaArticulo(0);
+    g_busc->setEmpresaBase(etpv);
+    g_doc1->setWidget ( g_busc );
 
     return 0;
 }
 
-int Ticket_pintar ( Ticket * )
-{
-    g_bud->pintar();
-    return 0;
-}
+
 
