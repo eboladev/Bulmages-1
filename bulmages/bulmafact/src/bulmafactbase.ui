@@ -31,7 +31,7 @@
      <x>0</x>
      <y>0</y>
      <width>1016</width>
-     <height>26</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuCompras" >
@@ -169,7 +169,10 @@
     </size>
    </property>
    <attribute name="toolBarArea" >
-    <number>4</number>
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak" >
+    <bool>false</bool>
    </attribute>
    <addaction name="actionListado_Pedidos_Proveedor" />
    <addaction name="actionListado_Albaranes_Proveedor" />
@@ -188,17 +191,15 @@
   </widget>
   <widget class="QToolBar" name="Fichas" >
    <property name="sizePolicy" >
-    <sizepolicy>
-     <hsizetype>1</hsizetype>
-     <vsizetype>7</vsizetype>
+    <sizepolicy vsizetype="Expanding" hsizetype="Minimum" >
      <horstretch>0</horstretch>
      <verstretch>0</verstretch>
     </sizepolicy>
    </property>
    <property name="minimumSize" >
     <size>
-     <width>71</width>
-     <height>47</height>
+     <width>0</width>
+     <height>0</height>
     </size>
    </property>
    <property name="windowTitle" >
@@ -235,7 +236,10 @@
     <enum>Qt::ToolButtonIconOnly</enum>
    </property>
    <attribute name="toolBarArea" >
-    <number>4</number>
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak" >
+    <bool>false</bool>
    </attribute>
    <addaction name="actionNuevo_Pedido_Proveedor" />
    <addaction name="actionNuevo_Albaran_Proveedor" />
@@ -254,7 +258,7 @@
   </widget>
   <action name="actionSalir" >
    <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >:Images/edit-delete.svg</iconset>
+    <iconset/>
    </property>
    <property name="text" >
     <string>&amp;Salir del programa</string>
@@ -506,7 +510,7 @@
     <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_cobros.48x48.png</iconset>
    </property>
    <property name="text" >
-    <string>Nuevo co&amp;bro a cliente...</string>
+    <string>Nuevo co&amp;bro de cliente...</string>
    </property>
   </action>
   <action name="actionListado_de_Cobros" >
@@ -514,7 +518,7 @@
     <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_cobros_listado.48x48.png</iconset>
    </property>
    <property name="text" >
-    <string>Co&amp;bros a clientes</string>
+    <string>Co&amp;bros de clientes</string>
    </property>
   </action>
   <action name="actionFichas" >
