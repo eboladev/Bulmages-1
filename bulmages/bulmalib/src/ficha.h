@@ -80,6 +80,8 @@ public:
     virtual QString trataExists ( const QString &query, const QString &datos );
     virtual void cargaSpecs();
     virtual void generaCampo ( const QString &objname, const QString &textname, const QString &type );
+    virtual void activaDocumentos();
+    virtual void desactivaDocumentos();
 
 public slots:
     virtual void on_mui_aceptar_clicked();

@@ -39,7 +39,7 @@
 
 
 /** Inicializa todos los componentes.
-    MEte la ventana en el workSpace.
+    Mete la ventana en el workSpace.
     Resetea el control de cambios.
 */
 /**
@@ -124,6 +124,7 @@ ClienteView::ClienteView ( Company *comp, QWidget *parent )
 ClienteView::~ClienteView()
 {
     _depura ( "ClienteView::~ClienteView", 0 );
+    empresaBase() ->refreshClientes();
     /// Disparamos los plugins.
     g_plugins->lanza ( "ClienteView_Des_ClienteView", this );
     empresaBase() ->sacaWindow ( this );
@@ -182,5 +183,37 @@ void ClienteView::on_mui_informe_clicked()
     inf.setCliente ( DBvalue ( "idcliente" ) );
     inf.generarInforme();
     _depura ( "END ClienteView::on_mui_informe_clicked", 0 );
+}
+
+
+/**
+*/
+/**
+**/
+void ClienteView::activaDocumentos()
+{
+    _depura ( "ClienteView::activaDocumentos", 0 );
+    mui_tab->setTabEnabled(1, TRUE);
+    mui_tab->setTabEnabled(2, TRUE);
+    mui_tab->setTabEnabled(3, TRUE);
+    mui_tab->setTabEnabled(4, TRUE);
+    mui_tab->setTabEnabled(5, TRUE);
+    _depura ( "END ClienteView::activaDocumentos", 0 );
+}
+
+
+/**
+*/
+/**
+**/
+void ClienteView::desactivaDocumentos()
+{
+    _depura ( "ClienteView::desactivaDocumentos", 0 );
+    mui_tab->setTabEnabled(1, FALSE);
+    mui_tab->setTabEnabled(2, FALSE);
+    mui_tab->setTabEnabled(3, FALSE);
+    mui_tab->setTabEnabled(4, FALSE);
+    mui_tab->setTabEnabled(5, FALSE);
+    _depura ( "END ClienteView::desactivaDocumentos", 0 );
 }
 

@@ -646,6 +646,9 @@ int Ficha::cargar ( QString id )
         if ( g_plugins->lanza ( "Ficha_cargar", this ) ) return 0;
         cargarPost ( id );
         setWindowTitle ( m_title + " " + DBvalue ( m_campoid ) );
+	/// Activamos documentos adicionales
+	activaDocumentos();
+
         pintar();
         dialogChanges_cargaInicial();
         meteWindow ( windowTitle(), this );
@@ -1066,4 +1069,22 @@ void Ficha::generaRML ( const QString &arch )
 }
 
 
+///
+/** Clase para ser derivada para activar documentos adicionales en las fichas.
+**/
+void Ficha::activaDocumentos ()
+{
+    _depura ( "Ficha::activaDocumentos", 0 );
+    _depura ( "END Ficha::activaDocumentos", 0 );
+}
+
+
+///
+/** Clase para ser derivada para desactivar documentos adicionales en las fichas.
+**/
+void Ficha::desactivaDocumentos ()
+{
+    _depura ( "Ficha::desactivaDocumentos", 0 );
+    _depura ( "END Ficha::desactivaDocumentos", 0 );
+}
 

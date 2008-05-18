@@ -481,7 +481,8 @@ void Company::refreshArticles()
 
 
 /** Crea una instancia de la ficha de cliente.
-    Tiene la ventaja de que no debe implementarse en cada sitio que se quiera instanciar la ficha de lciente.
+    Tiene la ventaja de que no debe implementarse en cada sitio que se quiera instanciar la
+    ficha de cliente.
     Y ademas hace el tratamiento adecuado de plugins.
 */
 /**
@@ -501,7 +502,8 @@ ClienteView *Company::newClienteView()
 
 
 /** Crea y agrega al workSpace una instancia de la ficha de cliente.
-    Tiene la ventaja de que el tratamiento esta centralizado y es facil de invocar desde cualquier parte.
+    Tiene la ventaja de que el tratamiento esta centralizado y es facil de invocar desde
+    cualquier parte.
     Si no se desea que la ventana aparezca en pantalla puede usarse newClienteView()
 */
 /**
@@ -513,6 +515,10 @@ void Company::s_newClienteView()
     m_pWorkspace->addWindow ( bud );
     bud->pintar();
     bud->show();
+    bud->setWindowTitle(QApplication::translate("Company", "Nuevo cliente"));
+    /// Deshabilitamos las pestanyas que no se utilizan al crear un nuevo cliente.
+    bud->desactivaDocumentos();
+    bud->mui_cifcliente->setFocus(Qt::OtherFocusReason);
     _depura ( "END Company::s_newClienteView", 0 );
 }
 
@@ -538,8 +544,9 @@ ProveedorView *Company::newProveedorView()
 
 
 /** Crea y agrega al workSpace una instancia de la ficha de proveedor.
-    Tiene la ventaja de que el tratamiento esta centralizado y es facil de invocar desde cualquier parte.
-    Si no se desea que la ventana aparezca en pantalla puede usarse newClienteView()
+    Tiene la ventaja de que el tratamiento esta centralizado y es facil de invocar desde
+    cualquier parte.
+    Si no se desea que la ventana aparezca en pantalla puede usarse newProveedorView()
 */
 /**
 **/

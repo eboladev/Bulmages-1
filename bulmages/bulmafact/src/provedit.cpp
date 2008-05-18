@@ -106,6 +106,7 @@ ProveedorView::ProveedorView ( Company *comp, QWidget *parent )
 ProveedorView::~ProveedorView()
 {
     _depura ( "ProveedorView::~ProveedorView", 0 );
+    empresaBase() ->refreshProveedores();
     _depura ( "END ProveedorView::~ProveedorView", 0 );
 }
 
