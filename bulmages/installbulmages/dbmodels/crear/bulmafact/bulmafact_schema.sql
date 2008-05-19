@@ -583,7 +583,7 @@ CREATE TABLE division (
 \echo -n ':: Cliente ... '
 CREATE TABLE cliente (
     idcliente serial PRIMARY KEY,
-    nomcliente character varying(100),
+    nomcliente character varying(100) UNIQUE NOT NULL,
     nomaltcliente character varying(300),
     cifcliente character varying(200) UNIQUE,
     codcliente character varying(12) UNIQUE,

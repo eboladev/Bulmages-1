@@ -73,7 +73,25 @@ DROP FUNCTION compruebarevision() CASCADE;
 \echo "Comprobada la revision"
 
 -- ========================  FIN DE LA COMPROBACION ============================
-\echo -n ":: Agrega el campo de Tipo de Almacen"
+\echo -n ':: Tabla "cliente" se hace obligatorio y no nulo el campo "nomcliente" ... '
+CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
+DECLARE
+	bs RECORD;
+	cs RECORD;
+BEGIN
+	SELECT INTO bs * FROM pg_constraint WHERE conname=''cliente_nomcliente_key'';
+	IF NOT FOUND THEN
+		ALTER TABLE cliente ADD CONSTRAINT cliente_nomcliente_key UNIQUE (nomcliente);
+		ALTER TABLE cliente ALTER COLUMN nomcliente SET NOT NULL;
+	END IF;
+	RETURN 0;
+END;
+' LANGUAGE plpgsql;
+SELECT aux();
+DROP FUNCTION aux() CASCADE;
+
+
+\echo -n ':: Agrega el campo de Tipo de Almacen ... '
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
 	as RECORD;
@@ -117,9 +135,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.10.1-0003'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.10.1-0004'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.10.1-0003'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.10.1-0004'');
 	END IF;
 	RETURN 0;
 END;
