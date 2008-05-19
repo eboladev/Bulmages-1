@@ -179,8 +179,8 @@ void BusquedaCliente::on_mui_buscar_clicked()
     diag->setWindowTitle ( clients->windowTitle() );
 
     diag->exec();
-    if ( clients->cifclient() != "" ) {
-        setcifcliente ( clients->cifclient() );
+    if ( clients->idclient() != "" ) {
+        setidcliente ( clients->idclient() );
     } // end if
     delete diag;
 
