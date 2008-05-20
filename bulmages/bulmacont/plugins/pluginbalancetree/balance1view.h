@@ -36,6 +36,7 @@
 #include "configuracion.h"
 #include "ui_balancetreebase.h"
 #include "fichabc.h"
+#include "arbol.h"
 
 
 class intapunts3view;
@@ -56,8 +57,6 @@ class BalanceTreeView : public FichaBc, public Ui_BalanceTreeBase
     Q_OBJECT
 
 private:
-    /// Indica el n&uacute;mero de d&iacute;gitos que tienen por defecto las cuentas.
-    int numdigitos;
     int m_ccuenta;
     int m_cdenominacion;
     int m_csaldo_ant;
@@ -67,9 +66,10 @@ private:
     int m_cdebeej;
     int m_chaberej;
     int m_csaldoej;
-    int m_cidcuenta;
-    int m_cnivel;
-    int m_cpadre;
+//     int m_cidcuenta;
+//     int m_cnivel;
+//     int m_cpadre;
+    Arbol *arbol; /// el arbol de cuentas
 
 public:
     BalanceTreeView ( Empresa *, QWidget *parent = 0, int flags = 0 );
@@ -79,12 +79,12 @@ public:
 
 private:
     void presentar();
-    void generarBalance();
+    bool generaBalance(); /// Genera el balance con un árbol de cuentas y devuelve 1 si se consigue con éxito
 
 private slots:
     virtual void contextmenu ( const QPoint & );
-    virtual void nivelactivated ( int );
-    virtual void nivelactivated1 ( int, QTreeWidgetItem * );
+//     virtual void nivelactivated ( int );
+//     virtual void nivelactivated1 ( int, QTreeWidgetItem * );
     virtual void boton_extracto1 ( int );
     virtual void boton_asiento();
     virtual void boton_diario1 ( int );

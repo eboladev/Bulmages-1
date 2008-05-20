@@ -58,8 +58,9 @@ private:
     QList <tipohoja*> raiz; /// Raiz del arbol que contiene todas las cuentas de nivel 2.
     tipohoja* hoja; /// Hoja que contiene los datos de una cuenta.
     tiporama* rama; /// Rama que contiene una hoja y m&aacute;s ramas o no.
-    postgresiface2 *conexionbase; /// Nos da acceso a la base de datos con la que estamos trabajando.
-    QString hojaactiva; /// C&oacute;digo de la &uacute;ltima hoja visitada (nos servir&aacute; de &iacute;ndice).
+    postgresiface2* conexionbase; /// Nos da acceso a la base de datos con la que estamos trabajando.
+    /*QString hojaactiva;*/ /// Código de la última hoja visitada (nos servirá de índice para recorred el árbol).
+    tipohoja* hojaactiva;
 
 private:
     void SintetizarRamas ( cursor2**, tiporama** );
@@ -79,7 +80,7 @@ public:
     /// Actualiza los valores de las hojas en el arbol.
     void actualizaHojas ( cursor2* );
 
-    /// Inicializa el acceso al arbol cambiando el valor de la variable "visitada".
+    /// Inicializa el acceso al arbol. Para ello, cambia el valor de la variable índice "hojaactiva" a la raíz.
     void inicia();
 
     /// Mueve el puntero que indexa una hoja del arbol: primer parametro indica el nivel en el que queremos deshojar; el segundo si deshoja o no otros niveles
@@ -91,6 +92,14 @@ public:
     /// Se posiciona el puntero en la hoja cuyo codigo corresponde al pasado por parametro e informa del exito o no
     /// El segundo parametro indica a que nivel de profundidad buscar las cuentas; por defecto a 4, el minimo exigido en un balance abreviado
     bool irHoja ( QString, unsigned int nivel = 4 );
+
+    /// Devuelvo el c�digo de la cuenta mayor que hay en el Arbol. A no ser que se indique otro nivel, 
+    /// se obtiene el máximo de nivel 4.
+    QString codigoCuentaMayor( unsigned int nivel = 4 );
+
+    /// Devuelvo el c�digo cuenta del hijo que hay en el Arbol para esa cuenta. El primer parametro indica el codigo de
+    /// cuenta que representa la hoja padre. El segundo parametro indica que se busque hasta ese nivel del Arbol.
+    QString hijoMayor( QString, unsigned int nivel = 4 );
 };
 
 #endif

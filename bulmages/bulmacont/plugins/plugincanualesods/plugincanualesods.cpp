@@ -1,4 +1,5 @@
 /***************************************************************************
+ *   Copyright (C) 2008 by Ricardo DÃ­az de la Calle <richard@galdi.es>     *
  *   Copyright (C) 2008 by Adelaida Clavaguera Mora <laida@alaxarxa.net>   *
  *   Copyright (C) 2008 by Leopold Palomo Avellaneda <leo@alaxarxa.net>    *
  *   Copyright (C) 2006 by Fco. Javier M. C. >fcojavmc@todo-redes.com>     *
@@ -56,13 +57,11 @@ pluginCAnualesODS::~pluginCAnualesODS()
 
 bool pluginCAnualesODS::Arboles()
 {
-    _depura ( "pluginCAnualesODS::crearArboles", 0 );
+    _depura ( "pluginCAnualesODS::Arboles", 0 );
 
     /// Para no acceder constantemete a la BD cada vez que se quiere averiguar el saldo 
-    /// de una cuenta, vamos a crear una estructura tipo árbol (usando la clase Arbol) donde,
-    /// con un par consultas a BD, se averigüen todos los saldos y puedan estar disponibles en la RAM.
-
-    /// Empezamos en el constructor de esta clase.
+    /// de una cuenta, vamos a crear una estructura tipo Ã¡rbol (usando la clase Arbol) donde,
+    /// con un par consultas a BD, se averigÃ¼en todos los saldos y puedan estar disponibles en la RAM.
 
     /// Primero, averiguaremos la cantidad de ramas iniciales (tantos como
     /// numero de cuentas de nivel 2) y las vamos creando.
@@ -79,20 +78,20 @@ bool pluginCAnualesODS::Arboles()
     arbolEjercicioActual = new Arbol;
     arbolEjercicioAnterior = new Arbol;
     while ( !ramas->eof() ) {
-        if ( ramas->valor ( "nivel" ).toInt() == 2 ) { /// Cuenta raíz.
+        if ( ramas->valor ( "nivel" ).toInt() == 2 ) { /// Cuenta raÃ­z.
             arbolEjercicioActual->nuevaRama ( ramas );
             arbolEjercicioAnterior->nuevaRama ( ramas );
         } // end if
         ramas->siguienteregistro();
     } // end while
 
-    /// Inicializamos el árbol desde sus raices (desde sus cuentas de nivel 2)
-    /// con el resto de cuentas (las hojas del árbol)
+    /// Inicializamos el Ã¡rbol desde sus raices (desde sus cuentas de nivel 2)
+    /// con el resto de cuentas (las hojas del Ã¡rbol)
     arbolEjercicioActual->inicializa ( ramas );
     arbolEjercicioAnterior->inicializa ( ramas );
 
     /// Seguidamente, recopilamos todos los apuntes agrupados por cuenta para poder
-    /// establecer así los valores de cada cuenta para el Ejercicio N.
+    /// establecer asi los valores de cada cuenta para el Ejercicio N.
     conexionbase->begin();
     query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes, sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = '" + ejercicioActual_fechaBalance.right(4) + "' GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '01/01/" + ejercicioActual_fechaBalance.right(4) + "' AND fecha <= '" + ejercicioActual_fechaBalance + "' AND conceptocontable !~* '.*asiento.*(cierre|regularizaci).*' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '01/01/" + ejercicioActual_fechaBalance.right(4) + "' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo";
 
@@ -105,14 +104,14 @@ bool pluginCAnualesODS::Arboles()
 	return 0;
     }
 
-    /// Para cada cuenta con sus saldos ya calculados hay que actualizar las hojas del árbol.
+    /// Para cada cuenta con sus saldos ya calculados hay que actualizar las hojas del ï¿½rbol.
     while ( !hojas->eof() ) {
         arbolEjercicioActual->actualizaHojas( hojas );
         hojas->siguienteregistro();
     } // end while
 
     /// Finalmente, recopilamos todos los apuntes agrupados por cuenta para poder
-    /// establecer así los valores de cada cuenta para el Ejercicio N-1.
+    /// establecer asÃ­ los valores de cada cuenta para el Ejercicio N-1.
     conexionbase->begin();
     query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = '" + ejercicioAnterior_fechaBalance.right(4) + "' GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '01/01/" + ejercicioAnterior_fechaBalance.right(4) + "' AND fecha <= '" + ejercicioAnterior_fechaBalance + "' AND conceptocontable !~* '.*asiento.*(cierre|regularizaci).*' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '01/01/" + ejercicioAnterior_fechaBalance.right(4) + "' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo";
     hojas = conexionbase->cargacursor( query, "Ejercicio N-1" );
@@ -122,15 +121,14 @@ bool pluginCAnualesODS::Arboles()
 	return 0;
     }
 
-    /// De nuevo, para cada cuenta con sus saldos ya calculados hay que actualizar las hojas del árbol.
+    /// De nuevo, para cada cuenta con sus saldos ya calculados hay que actualizar las hojas del Ã¡rbol.
     while ( !hojas->eof() ) {
         arbolEjercicioAnterior->actualizaHojas ( hojas );
         hojas->siguienteregistro();
     } // end while
 
+    _depura ( "END pluginCAnualesODS::Arboles", 0 );
     return 1;
-
-    _depura ( "END pluginCAnualesODS::crearArboles", 0 );
 }
 
 

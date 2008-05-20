@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ricardo DÃ­az de la Calle <richard@galdi.es>     *
+ *   Copyright (C) 2008 by Ricardo Díaz de la Calle <richard@galdi.es>     *
  *   Copyright (C) 2008 by Adelaida Clavaguera Mora <laida@alaxarxa.net>   *
  *   Copyright (C) 2008 by Leopold Palomo Avellaneda <leo@alaxarxa.net>    *
  *   Copyright (C) 2006 by Fco. Javier M. C. >fcojavmc@todo-redes.com>     *  
@@ -39,7 +39,7 @@ QString pluginCAnualesODS::cuentaAnualCAPGC07()
 	QString ejercicioActual = ejercicioActual_fechaBalance.right(4);
 	QString ejercicioAnterior = ejercicioAnterior_fechaBalance.right(4);
 	QList <QString> meses;	// Para poder indexar los meses de ejercicio según la fecha pasada
-	meses  << "Enero" << "Febrero"<< "Marzo" << "Abril" << "Mayo" << "Junio" << "Julio" << "Agosto"  << "Septiembre" << "Octubre" << "Noviembre" << "Diciembre";
+	meses  << trUtf8 ( "Enero" ) << trUtf8 ( "Febrero" ) << trUtf8 ( "Marzo" ) << trUtf8 ( "Abril" ) << trUtf8 ( "Mayo" ) << trUtf8 ( "Junio" ) << trUtf8 ( "Julio" ) << trUtf8 ( "Agosto" ) << trUtf8 ( "Septiembre" ) << trUtf8 ( "Octubre" ) << trUtf8 ( "Noviembre" ) << trUtf8 ( "Diciembre" );
 	unsigned int mesInicio = 0;
 	unsigned int mesFin = ejercicioActual_fechaBalance.mid(3,2).toInt() - 1;
 
