@@ -66,7 +66,7 @@ ArticuloView::ArticuloView ( Company *comp, QWidget *parent )
         addDBCampo ( "presentablearticulo", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate ( "Articulo", "Incluir en presentaciones" ) );
         addDBCampo ( "controlstockarticulo", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate ( "Articulo", "Incluir en control de stock" ) );
         addDBCampo ( "idtipo_articulo", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Articulo", "Tipo de articulo" ) );
-        addDBCampo ( "idtipo_iva", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Articulo", "Tipo de I.V.A." ) );
+        addDBCampo ( "idtipo_iva", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "Articulo", "Tipo de I.V.A." ) );
         addDBCampo ( "codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, QApplication::translate ( "Articulo", "Codigo completo" ) );
         addDBCampo ( "idfamilia", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "Articulo", "Familia" ) );
         addDBCampo ( "stockarticulo", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Articulo", "Stock" ) );

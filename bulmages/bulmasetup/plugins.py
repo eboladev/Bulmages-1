@@ -7,6 +7,7 @@ import re
 global pathdbbulmafact
 global pathdbbulmacont
 global pathdbparches
+global pathdbplugins
 global configfiles
 global confsharebulmages
 

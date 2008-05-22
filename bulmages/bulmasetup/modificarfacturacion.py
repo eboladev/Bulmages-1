@@ -168,7 +168,7 @@ class ModificarFacturacion(QtGui.QDialog, Ui_ModificarFacturacionBase, PluginsBu
 		self.writecommand('Tratando ' + self.pluginsbulmafact[self.i][0])
 		if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
 			self.writecommand('Ha que actualizar ' + self.pluginsbulmafact[self.i][0])
-			self.command = 'su postgres -c \"psql -t -f  '+ plugins.pathdbparches + self.pluginsbulmafact[self.i][4] + '\"'
+			self.command = 'su postgres -c \"psql -t -f  '+ plugins.pathdbplugins + self.pluginsbulmafact[self.i][4] + ' ' + self.database +'\"'
 			self.writecommand(self.command)
 			self.process.start(self.command)
 			self.process.waitForFinished(-1)
@@ -181,7 +181,7 @@ class ModificarFacturacion(QtGui.QDialog, Ui_ModificarFacturacionBase, PluginsBu
 			self.writecommand('Tratando ' + self.pluginsbulmatpv[self.i][0])
 			if (self.mui_plugins1.item(self.i, 0).checkState() == Qt.Checked):
 				self.writecommand('Ha que actualizar ' + self.pluginsbulmatpv[self.i][0])
-				self.command = 'su postgres -c \"psql -t -f  '+ plugins.pathdbparches + self.pluginsbulmatpv[self.i][4] + '\"'
+				self.command = 'su postgres -c \"psql -t -f  '+ plugins.pathdbplugins + self.pluginsbulmatpv[self.i][4] + '\"'
 				self.writecommand(self.command)
 				self.process.start(self.command)
 				self.process.waitForFinished(-1)

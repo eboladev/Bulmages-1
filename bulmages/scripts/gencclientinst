@@ -62,13 +62,19 @@ mkdir /usr/lib/bulmafact/plugins
 mkdir /usr/lib/bulmatpv/plugins
 mkdir /usr/lib/bulmalib/plugins
 
+#Instalacion de Plugins
 find $1/$2/bulmafact/plugins/ -name "*.so" | grep -v "CMake" |xargs -I '{}' ln -s '{}' /usr/lib/bulmafact/plugins/
 find $1/$2/bulmacont/plugins/ -name "*.so" | grep -v "CMake" |xargs -I '{}' ln -s '{}' /usr/lib/bulmacont/plugins/
 find $1/$2/bulmalib/plugins/  -name "*.so" | grep -v "CMake" |xargs -I '{}' ln -s '{}' /usr/lib/bulmalib/plugins/
 find $1/$2/bulmatpv/plugins/ -name "*.so" | grep -v "CMake" |xargs -I '{}' ln -s '{}' /usr/lib/bulmatpv/plugins/
-
 find $1/$2/privateplugins/ -name "*.so" | grep -v "CMake" |xargs -I '{}' ln -s '{}' /usr/lib/bulmafact/plugins/
 
+#Instalacion de los sql de los plugins
+find $1/bulmafact/plugins/ -name "*.sql" | grep -v "CMake" | xargs -I '{}' ln -s '{}' /usr/share/bulmages/dbmodels/plugins/
+find $1/bulmacont/plugins/ -name "*.sql" | grep -v "CMake" | xargs -I '{}' ln -s '{}' /usr/share/bulmages/dbmodels/plugins/
+find $1/bulmalib/plugins/ -name "*.sql" | grep -v "CMake" | xargs -I '{}' ln -s '{}' /usr/share/bulmages/dbmodels/plugins/
+find $1/bulmatpv/plugins/ -name "*.sql" | grep -v "CMake" | xargs -I '{}' ln -s '{}' /usr/share/bulmages/dbmodels/plugins/
+find $1/privateplugins/ -name "*.sql" | grep -v "CMake" |xargs -I '{}' ln -s '{}' /usr/share/bulmages/dbmodels/plugins/
 
 #Archivos adicionales de bulmafact que pertenezcan a los plugins.
 find $1/bulmafact/plugins/ -name "*.png" | grep -v "CMake" |xargs -I '{}' ln -s '{}' /usr/share/bulmages/icons/

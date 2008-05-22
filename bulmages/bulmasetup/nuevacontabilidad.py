@@ -66,7 +66,7 @@ class NuevaContabilidad(QtGui.QDialog, Ui_NuevaContabilidadBase, PluginsBulmaSet
 		self.writecommand('Tratando ' + self.pluginsbulmacont[self.i][0])
 		if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
 			self.writecommand('Ha que actualizar ' + self.pluginsbulmacont[self.i][0])
-			self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbparches + self.pluginsbulmacont[self.i][4] +' '+ self.nomdb +'\"'
+			self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.pluginsbulmacont[self.i][4] +' '+ self.nomdb +'\"'
 			self.writecommand(self.command)
 			self.process.start(self.command)
 			self.process.waitForFinished(-1)
