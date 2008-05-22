@@ -218,100 +218,118 @@ void PresupuestoView::pintatotales ( Fixed iva, Fixed base, Fixed total, Fixed d
 void PresupuestoView::generarPedidoCliente()
 {
     _depura ( "PresupuestoView::generarPedidoCliente", 0 );
-    /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos.
-    QString SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + DBvalue ( "refpresupuesto" ) + "' AND idcliente = " + DBvalue ( "idcliente" );
-    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
-    if ( !cur->eof() ) {
+    PedidoClienteView *bud = NULL;
+    cursor2 *cur = NULL;
 
+    try {
+	/// Comprueba si disponemos de los datos m&iacute;nimos. Si no se hace esta
+	/// comprobaci&oacute;n la consulta a la base de datos ser&aacute; erronea y al hacer
+	/// el siguiente cur->eof() el programa fallar&aacute;.
+	if (!DBvalue ( "refpresupuesto" ).isEmpty() || !DBvalue ( "idcliente" ).isEmpty()) {
 
-        /// Informamos que ya hay una factura y que la abriremos.
-        /// Si no salimos de la funci&oacute;n.
-        if ( QMessageBox::question ( this,
-                                     tr ( "Pedido existente" ),
-                                     tr ( "Existe un pedido a este cliente con la misma referencia que este presupuesto. Desea abrirla para verificar?" ),
-                                     tr ( "&Si" ), tr ( "&No" ), QString::null, 0, 1 ) ) {
-            return;
-        }
-        PedidoClienteView *bud = empresaBase() ->newPedidoClienteView();
-        empresaBase() ->m_pWorkspace->addWindow ( bud );
-        bud->cargar ( cur->valor ( "idpedidocliente" ) );
-        bud->show();
-        delete cur;
-        return;
-    } // end if
-    delete cur;
+		/// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos.
+		QString SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + DBvalue ( "refpresupuesto" ) + "' AND idcliente = " + DBvalue ( "idcliente" );
+		//cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
+		cur = empresaBase()->cargacursor ( SQLQuery );
+	
+		if ( !cur->eof() ) {
+			/// Informamos que ya hay un pedido y lo abrimos.
+			/// Si no existe pedido salimos de la funci&oacute;n y creamos el pedido.
+			if ( QMessageBox::question ( this,
+						tr ( "Pedido existente" ),
+						tr ( "Existe un pedido a este cliente con la misma referencia que este presupuesto. Desea abrirla para verificar?" ),
+						tr ( "&Si" ), tr ( "&No" ), QString::null, 0, 1 ) ) {
+				return;
+			} // end if
+	
+			//PedidoClienteView *bud = empresaBase() ->newPedidoClienteView();
+			bud = empresaBase() ->newPedidoClienteView();
+			empresaBase() ->m_pWorkspace->addWindow ( bud );
+			bud->cargar ( cur->valor ( "idpedidocliente" ) );
+			bud->show();
+			delete cur;
+			return;
+		} // end if
 
-    /// Informamos de que no existe el pedido y a ver si lo queremos realizar.
-    /// Sino salimos de la funcion.
-    //    if (QMessageBox::question(this,
-    //                              tr("Pedido de cliente inexistente"),
-    //                              tr("No existe un pedido asociado a este presupuesto. Desea crearlo?"),
-    //                              tr("&Si"), tr("&No"),
-    //                              QString::null, 0, 1))
-    //        return;
+	} // end if
 
-    /// Creamos el pedido.
-    PedidoClienteView *bud = empresaBase() ->newPedidoClienteView();
-    bud->cargar ( "0" );
-    empresaBase() ->m_pWorkspace->addWindow ( bud );
+	delete cur;
 
-    /// Traspasamos toda la informacion del presupuesto al pedido.
-    recogeValores();
-    bud->setDBvalue ( "idcliente", DBvalue ( "idcliente" ) );
-    bud->setDBvalue ( "comentpedidocliente", DBvalue ( "comentpresupuesto" ) );
-    bud->setDBvalue ( "descpedidocliente", DBvalue ( "descpresupuesto" ) );
-    bud->setDBvalue ( "fechapedidocliente", DBvalue ( "fpresupuesto" ) );
-    bud->setDBvalue ( "idforma_pago", DBvalue ( "idforma_pago" ) );
-    bud->setDBvalue ( "refpedidocliente", DBvalue ( "refpresupuesto" ) );
-    bud->setDBvalue ( "procesadopedidocliente", DBvalue ( "procesadopresupuesto" ) );
-    bud->setDBvalue ( "idalmacen", DBvalue ( "idalmacen" ) );
-    bud->setDBvalue ( "contactpedidocliente", DBvalue ( "contactpresupuesto" ) );
-    bud->setDBvalue ( "telpedidocliente", DBvalue ( "telpresupuesto" ) );
+	/// Informamos de que no existe el pedido y a ver si lo queremos realizar.
+	/// Sino salimos de la funcion.
+	//    if (QMessageBox::question(this,
+	//                              tr("Pedido de cliente inexistente"),
+	//                              tr("No existe un pedido asociado a este presupuesto. Desea crearlo?"),
+	//                              tr("&Si"), tr("&No"),
+	//                              QString::null, 0, 1))
+	//        return;
+	
+	/// Creamos el pedido.
+	//PedidoClienteView *bud = empresaBase() ->newPedidoClienteView();
+	bud = empresaBase() ->newPedidoClienteView();
+	bud->cargar ( "0" );
+	empresaBase() ->m_pWorkspace->addWindow ( bud );
+	
+	/// Traspasamos toda la informacion del presupuesto al pedido.
+	recogeValores();
+	bud->setDBvalue ( "idcliente", DBvalue ( "idcliente" ) );
+	bud->setDBvalue ( "comentpedidocliente", DBvalue ( "comentpresupuesto" ) );
+	bud->setDBvalue ( "descpedidocliente", DBvalue ( "descpresupuesto" ) );
+	bud->setDBvalue ( "fechapedidocliente", DBvalue ( "fpresupuesto" ) );
+	bud->setDBvalue ( "idforma_pago", DBvalue ( "idforma_pago" ) );
+	bud->setDBvalue ( "refpedidocliente", DBvalue ( "refpresupuesto" ) );
+	bud->setDBvalue ( "procesadopedidocliente", DBvalue ( "procesadopresupuesto" ) );
+	bud->setDBvalue ( "idalmacen", DBvalue ( "idalmacen" ) );
+	bud->setDBvalue ( "contactpedidocliente", DBvalue ( "contactpresupuesto" ) );
+	bud->setDBvalue ( "telpedidocliente", DBvalue ( "telpresupuesto" ) );
+	
+	/// Traspasamos las lineas del presupuesto a lineas del pedido.
+	SDBRecord *linea;
+	SDBRecord *linea2;
+	
+	for ( int i = 0; i < m_listalineas->rowCount(); i++ ) {
+		linea = m_listalineas->lineaat ( i );
+		if ( linea->DBvalue ( "idarticulo" ) != "" ) {
+		linea2 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
+		bud->getlistalineas() ->nuevoRegistro();
+		bud->getlistalineas() ->setProcesarCambios ( FALSE );
+		linea2->setDBvalue ( "desclpedidocliente", linea->DBvalue ( "desclpresupuesto" ) );
+		linea2->setDBvalue ( "cantlpedidocliente", linea->DBvalue ( "cantlpresupuesto" ) );
+		linea2->setDBvalue ( "pvplpedidocliente", linea->DBvalue ( "pvplpresupuesto" ) );
+		linea2->setDBvalue ( "ivalpedidocliente", linea->DBvalue ( "ivalpresupuesto" ) );
+		linea2->setDBvalue ( "descuentolpedidocliente", linea->DBvalue ( "descuentolpresupuesto" ) );
+		linea2->setDBvalue ( "idarticulo", linea->DBvalue ( "idarticulo" ) );
+		linea2->setDBvalue ( "codigocompletoarticulo", linea->DBvalue ( "codigocompletoarticulo" ) );
+		linea2->setDBvalue ( "nomarticulo", linea->DBvalue ( "nomarticulo" ) );
+		bud->getlistalineas() ->setProcesarCambios ( TRUE );
+		} // end if
+	} // end for
+	
+	/// Traspasamos los descuentos del presupuesto a descuentos del pedido.
+	SDBRecord *linea1;
+	SDBRecord *linea3;
+	for ( int i = 0; i < m_listadescuentos->rowCount(); i++ ) {
+		linea1 = m_listadescuentos->lineaat ( i );
+		if ( linea1->DBvalue ( "proporciondpresupuesto" ) != "" ) {
+		linea3 = bud->getlistadescuentos() ->lineaat ( bud->getlistadescuentos() ->rowCount() - 1 );
+		bud->getlistadescuentos() ->setProcesarCambios ( FALSE );
+		linea3->setDBvalue ( "conceptdpedidocliente", linea1->DBvalue ( "conceptdpresupuesto" ) );
+		linea3->setDBvalue ( "proporciondpedidocliente", linea1->DBvalue ( "proporciondpresupuesto" ) );
+		bud->getlistadescuentos() ->setProcesarCambios ( TRUE );
+		bud->getlistadescuentos() ->nuevoRegistro();
+		} // end if
+	} // end for
 
-    /// Traspasamos las lineas del presupuesto a lineas del pedido.
-    SDBRecord *linea;
-    SDBRecord *linea2;
+	/// Pintamos el pedido y lo presentamos.
+	bud->pintar();
+	bud->show();
 
+    } catch ( ... ) {
+        mensajeInfo ( tr("Error inesperado") );
+        if ( cur ) delete cur;
+        if ( bud ) delete bud;
+    } // end try
 
-    for ( int i = 0; i < m_listalineas->rowCount(); i++ ) {
-        linea = m_listalineas->lineaat ( i );
-        if ( linea->DBvalue ( "idarticulo" ) != "" ) {
-            linea2 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
-            bud->getlistalineas() ->nuevoRegistro();
-            bud->getlistalineas() ->setProcesarCambios ( FALSE );
-            linea2->setDBvalue ( "desclpedidocliente", linea->DBvalue ( "desclpresupuesto" ) );
-            linea2->setDBvalue ( "cantlpedidocliente", linea->DBvalue ( "cantlpresupuesto" ) );
-            linea2->setDBvalue ( "pvplpedidocliente", linea->DBvalue ( "pvplpresupuesto" ) );
-            linea2->setDBvalue ( "ivalpedidocliente", linea->DBvalue ( "ivalpresupuesto" ) );
-            linea2->setDBvalue ( "descuentolpedidocliente", linea->DBvalue ( "descuentolpresupuesto" ) );
-            linea2->setDBvalue ( "idarticulo", linea->DBvalue ( "idarticulo" ) );
-            linea2->setDBvalue ( "codigocompletoarticulo", linea->DBvalue ( "codigocompletoarticulo" ) );
-            linea2->setDBvalue ( "nomarticulo", linea->DBvalue ( "nomarticulo" ) );
-            bud->getlistalineas() ->setProcesarCambios ( TRUE );
-        } // end if
-    } // end for
-
-
-
-    /// Traspasamos los descuentos del presupuesto a descuentos del pedido.
-    SDBRecord *linea1;
-    SDBRecord *linea3;
-    for ( int i = 0; i < m_listadescuentos->rowCount(); i++ ) {
-        linea1 = m_listadescuentos->lineaat ( i );
-        if ( linea1->DBvalue ( "proporciondpresupuesto" ) != "" ) {
-            linea3 = bud->getlistadescuentos() ->lineaat ( bud->getlistadescuentos() ->rowCount() - 1 );
-            bud->getlistadescuentos() ->setProcesarCambios ( FALSE );
-            linea3->setDBvalue ( "conceptdpedidocliente", linea1->DBvalue ( "conceptdpresupuesto" ) );
-            linea3->setDBvalue ( "proporciondpedidocliente", linea1->DBvalue ( "proporciondpresupuesto" ) );
-            bud->getlistadescuentos() ->setProcesarCambios ( TRUE );
-            bud->getlistadescuentos() ->nuevoRegistro();
-        } // end if
-    } // end for
-
-
-    /// Pintamos el pedido y lo presentamos.
-    bud->pintar();
-    bud->show();
     _depura ( "END PresupuestoView::generarPedidoCliente", 0 );
 }
 
