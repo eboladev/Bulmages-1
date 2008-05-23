@@ -151,23 +151,45 @@ void PedidoClienteView::pintatotales ( Fixed iva, Fixed base, Fixed total, Fixed
 void PedidoClienteView::on_mui_verpresupuesto_clicked()
 {
     _depura ( "PedidoClienteView::on_mui_verpresupuesto_clicked", 0 );
-    QString SQLQuery = "SELECT * FROM presupuesto WHERE refpresupuesto = '" + DBvalue ( "refpedidocliente" ) + "' AND idcliente = " + DBvalue ( "idcliente" );
-    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
-    if ( !cur->eof() ) {
-        while ( !cur->eof() ) {
-            PresupuestoView * bud = empresaBase() ->nuevoPresupuestoView();
-            empresaBase() ->m_pWorkspace->addWindow ( bud );
-            if ( bud->cargar ( cur->valor ( "idpresupuesto" ) ) ) {
-                delete bud;
-                return;
-            } // end if
-            bud->show();
-            cur->siguienteregistro();
-        } // end while
-    } else {
-        _depura ( "No hay presupuestos con la misma referencia.", 2 );
-    } // end if
-    delete cur;
+    PresupuestoView *bud = NULL;
+    cursor2 *cur = NULL;
+
+    try {
+	/// Comprueba si disponemos de los datos m&iacute;nimos. Si no se hace esta
+	/// comprobaci&oacute;n la consulta a la base de datos ser&aacute; erronea y al hacer
+	/// el siguiente cur->eof() el programa fallar&aacute;.
+	if (!DBvalue ( "refpedidocliente" ).isEmpty() && !DBvalue ( "idcliente" ).isEmpty()) {
+		QString SQLQuery = "SELECT * FROM presupuesto WHERE refpresupuesto = '" + DBvalue ( "refpedidocliente" ) + "' AND idcliente = " + DBvalue ( "idcliente" );
+		cur = empresaBase() ->cargacursor ( SQLQuery );
+
+		if ( !cur->eof() ) {
+			while ( !cur->eof() ) {
+			bud = empresaBase() ->nuevoPresupuestoView();
+			empresaBase() ->m_pWorkspace->addWindow ( bud );
+			if ( bud->cargar ( cur->valor ( "idpresupuesto" ) ) ) {
+				delete bud;
+				return;
+			} // end if
+			bud->show();
+			cur->siguienteregistro();
+			} // end while
+		} else {
+			mensajeInfo (tr("No hay presupuestos con la misma referencia."));
+			_depura ( "No hay presupuestos con la misma referencia.", 2 );
+		} // end if
+
+	} else {
+		mensajeInfo (tr("Se necesita una 'referencia' para buscar el presupuesto asociado."));
+	}// end if
+
+	delete cur;
+
+    } catch ( ... ) {
+        mensajeInfo ( tr("Error inesperado.") );
+        if ( cur ) delete cur;
+        if ( bud ) delete bud;
+    } // end try
+
     _depura ( "END PedidoClienteView::on_mui_verpresupuesto_clicked", 0 );
 }
 

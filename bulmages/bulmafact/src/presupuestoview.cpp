@@ -225,45 +225,46 @@ void PresupuestoView::generarPedidoCliente()
 	/// Comprueba si disponemos de los datos m&iacute;nimos. Si no se hace esta
 	/// comprobaci&oacute;n la consulta a la base de datos ser&aacute; erronea y al hacer
 	/// el siguiente cur->eof() el programa fallar&aacute;.
-	if (!DBvalue ( "refpresupuesto" ).isEmpty() || !DBvalue ( "idcliente" ).isEmpty()) {
+	/// Comprobamos que existe el pedido con esos datos, y en caso afirmativo lo mostramos.
 
-		/// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos.
-		QString SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + DBvalue ( "refpresupuesto" ) + "' AND idcliente = " + DBvalue ( "idcliente" );
-		//cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
-		cur = empresaBase()->cargacursor ( SQLQuery );
-	
-		if ( !cur->eof() ) {
-			/// Informamos que ya hay un pedido y lo abrimos.
-			/// Si no existe pedido salimos de la funci&oacute;n y creamos el pedido.
-			if ( QMessageBox::question ( this,
-						tr ( "Pedido existente" ),
-						tr ( "Existe un pedido a este cliente con la misma referencia que este presupuesto. Desea abrirla para verificar?" ),
-						tr ( "&Si" ), tr ( "&No" ), QString::null, 0, 1 ) ) {
-				return;
-			} // end if
-	
-			//PedidoClienteView *bud = empresaBase() ->newPedidoClienteView();
-			bud = empresaBase() ->newPedidoClienteView();
-			empresaBase() ->m_pWorkspace->addWindow ( bud );
-			bud->cargar ( cur->valor ( "idpedidocliente" ) );
-			bud->show();
-			delete cur;
+	QString SQLQuery = "";
+
+	if (DBvalue("refpresupuesto").isEmpty() || DBvalue("idcliente").isEmpty()) {
+		/// El presupuesto no se ha guardado y no se dispone en la base de datos
+		/// de estos datos. Se utilizan en su lugar los del formulario.
+		/// Verifica que exista, por lo menos, un cliente seleccionado.
+		if (mui_idcliente->idcliente().isEmpty()) {
+			mensajeInfo(tr("Tiene que seleccionar un cliente"));
+			return;
+		} else { 
+			SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + mui_refpresupuesto->text() + "' AND idcliente = " + mui_idcliente->idcliente();
+		} // end if
+	} else {
+		SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + DBvalue ( "refpresupuesto" ) + "' AND idcliente = " + DBvalue ( "idcliente" );
+	} // end if
+
+	cur = empresaBase()->cargacursor ( SQLQuery );
+
+	if ( !cur->eof() ) {
+		/// Informamos que ya hay un pedido y lo abrimos.
+		/// Si no existe pedido salimos de la funci&oacute;n y creamos el pedido.
+		if ( QMessageBox::question ( this,
+					tr ( "Pedido existente" ),
+					tr ( "Existe un pedido a este cliente con la misma referencia que este presupuesto. Desea abrirla para verificar?" ),
+					tr ( "&Si" ), tr ( "&No" ), QString::null, 0, 1 ) ) {
 			return;
 		} // end if
 
+		bud = empresaBase() ->newPedidoClienteView();
+		empresaBase() ->m_pWorkspace->addWindow ( bud );
+		bud->cargar ( cur->valor ( "idpedidocliente" ) );
+		bud->show();
+		delete cur;
+		return;
 	} // end if
 
 	delete cur;
 
-	/// Informamos de que no existe el pedido y a ver si lo queremos realizar.
-	/// Sino salimos de la funcion.
-	//    if (QMessageBox::question(this,
-	//                              tr("Pedido de cliente inexistente"),
-	//                              tr("No existe un pedido asociado a este presupuesto. Desea crearlo?"),
-	//                              tr("&Si"), tr("&No"),
-	//                              QString::null, 0, 1))
-	//        return;
-	
 	/// Creamos el pedido.
 	//PedidoClienteView *bud = empresaBase() ->newPedidoClienteView();
 	bud = empresaBase() ->newPedidoClienteView();
