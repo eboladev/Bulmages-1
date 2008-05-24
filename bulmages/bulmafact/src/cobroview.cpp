@@ -87,6 +87,16 @@ CobroView::~CobroView()
 void CobroView::imprimir()
 {
     _depura ( "CobroView::imprimir", 0 );
+    /// Comprobamos que se disponen de los datos minimos para imprimir el recibo.
+    QString SQLQuery = "";
+	
+    if (DBvalue("idcliente").isEmpty()) {
+	/// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
+	mensajeInfo(tr("Tiene que guardar el documento antes de poder imprimirlo."));
+	return;
+    } else {
+	SQLQuery = "SELECT * FROM cliente WHERE idcliente = " + DBvalue ( "idcliente" );
+    } // end if
 
     /// Disparamos los plugins
     int res = g_plugins->lanza ( "CoboView_on_mui_imprimir_clicked", this );
@@ -98,7 +108,6 @@ void CobroView::imprimir()
     QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "recibo.rml";
     QString archivod = confpr->valor ( CONF_DIR_USER ) + "recibo.rml";
     QString archivologo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
-
 
     /// Copiamos el archivo.
 #ifdef WINDOWS
@@ -129,7 +138,6 @@ void CobroView::imprimir()
     QString fitxersortidatxt = "";
 
     /// Linea de totales del Presupuesto.
-    QString SQLQuery = "SELECT * FROM cliente WHERE idcliente = " + DBvalue ( "idcliente" );
     cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
     if ( !cur->eof() ) {
         buff.replace ( "[dircliente]", cur->valor ( "dircliente" ) );
@@ -147,14 +155,9 @@ void CobroView::imprimir()
     buff.replace ( "[cantidad]" , DBvalue ( "cantcobro" ) );
     buff.replace ( "[comentario]" , DBvalue ( "comentcobro" ) );
     buff.replace ( "[fecha]" , DBvalue ( "fechacobro" ) );
-
-
-
     buff.replace ( "[story]", fitxersortidatxt );
 
     Fixed basei ( "0.00" );
-
-
 
     /// En la version para windows hay problemas con las imagenes,
     /// por eso de momento lo dejamos asi.
@@ -167,8 +170,6 @@ void CobroView::imprimir()
         stream << buff;
         file.close();
     } // end if
-
-
 
     _depura ( "FichaBf::imprimir", 0 );
     invocaPDF ( "recibo" );

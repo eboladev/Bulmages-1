@@ -48,8 +48,8 @@ public:
     SubForm2Bf* getlistalineas();
     SubForm2Bf* getlistadescuentos();
     virtual void imprimir();
-    virtual void generaRML();
-    virtual void generaRML ( const QString &arch );
+    virtual int generaRML();
+    virtual int generaRML ( const QString &arch );
     virtual void calculaypintatotales();
     virtual void pintatotales ( Fixed, Fixed, Fixed, Fixed, Fixed, Fixed ) {};
     virtual void trataTags ( QString &buff );

@@ -130,8 +130,6 @@ void Company::createMainWindows ( Splash *splash )
         m_bulmafact->actionGestion_Tipos_Articulo->setEnabled ( TRUE );
     } // end if
 
-
-
     /// pb = 8%
     _depura ( "Company::createMainWindows inicializamos m_providerslist", 1 );
     splash->mensaje ( QApplication::translate ( "Company", "Inicializando listado de proveedores" ) );

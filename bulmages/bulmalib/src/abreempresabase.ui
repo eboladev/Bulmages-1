@@ -74,7 +74,7 @@
         <string/>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../bulmages.qrc" >:/BulmaCont32x32/images/png/i_empresa.xpm</pixmap>
+        <pixmap resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_empresa.xpm</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>
@@ -120,7 +120,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../bulmages.qrc" >:/Images/view-refresh.svg</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Images/view-refresh.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -301,7 +301,7 @@
   <tabstop>botonCancelar</tabstop>
  </tabstops>
  <resources>
-  <include location="../bulmages.qrc" />
+  <include location="../../bulmages.qrc" />
  </resources>
  <connections/>
 </ui>

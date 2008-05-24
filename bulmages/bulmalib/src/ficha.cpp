@@ -327,6 +327,7 @@ void Ficha::on_mui_eliminar_clicked()
     on_mui_borrar_clicked();
 }
 
+
 ///
 /**
 **/
@@ -1018,14 +1019,14 @@ QString Ficha::trataExists ( const QString &query, const QString &datos )
 ///
 /**
 **/
-void Ficha::generaRML ( const QString &arch )
+int Ficha::generaRML ( const QString &arch )
 {
     _depura ( "Ficha::generaRML", 0 );
 
     /// Disparamos los plugins
     int res = g_plugins->lanza ( "Ficha_generaRML", this );
     if ( res != 0 ) {
-        return;
+        return 0;
     } // end if
     QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + arch;
     QString archivod = confpr->valor ( CONF_DIR_USER ) + arch;
@@ -1068,6 +1069,7 @@ void Ficha::generaRML ( const QString &arch )
     } // end if
 
     _depura ( "END Ficha::generaRML", 0 );
+    return 0;
 }
 
 

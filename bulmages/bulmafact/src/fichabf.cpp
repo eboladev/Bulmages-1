@@ -235,9 +235,6 @@ void FichaBf::trataTags ( QString &buff )
 }
 
 
-
-
-
 /// Trata las lineas de detalle encontradas dentro de los tags <!--LINEAS DETALLE-->
 /**
 \param det Texto de entrada para ser tratado por iteracion.
@@ -273,9 +270,7 @@ QString FichaBf::trataLineasDetalle ( const QString &det )
             } // end if
         } // end for
 
-
         salidatemp.replace ( "[desc" + m_listalineas->tableName() + "]", desc1 );
-
         salidatemp.replace ( "[cant" + m_listalineas->tableName() + "]", l.sprintf ( "%s", linea->DBvalue ( "cant" + m_listalineas->tableName() ).toAscii().constData() ) );
         salidatemp.replace ( "[pvp" + m_listalineas->tableName() + "]", l.sprintf ( "%s", XMLProtect ( linea->DBvalue ( "pvp" + m_listalineas->tableName() ) ).toAscii().constData() ) );
         salidatemp.replace ( "[descuento" + m_listalineas->tableName() + "]" , l.sprintf ( "%s", XMLProtect ( linea->DBvalue ( "descuento" + m_listalineas->tableName() ) ).toAscii().constData() ) );
@@ -519,31 +514,43 @@ QString FichaBf::trataTotales ( const QString &det )
 }
 
 
-
 ///
 /**
 **/
-void FichaBf::generaRML()
+int FichaBf::generaRML()
 {
     _depura ( "FichaBf::generaRML", 0 );
-    generaRML ( m_tablename + ".rml" );
+    int resultado;
+    resultado = generaRML ( m_tablename + ".rml" );
     _depura ( "END FichaBf::generaRML", 0 );
-
+    return resultado;
 }
+
 
 ///
 /**
 \param arch archivo a generar
 **/
-void FichaBf::generaRML ( const QString &arch )
+int FichaBf::generaRML ( const QString &arch )
 {
     _depura ( "FichaBf::generaRML", 0, arch );
     cursor2 *cur = NULL;
     try {
+
+	QString SQLQuery = "";
+
+	if (DBvalue("idcliente").isEmpty()) {
+		/// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
+		mensajeInfo(tr("Tiene que guardar el documento antes de poder imprimirlo."));
+		return -1;
+	} else {
+		SQLQuery = "SELECT * FROM cliente WHERE idcliente = " + DBvalue ( "idcliente" );
+	} // end if
+
         /// Disparamos los plugins
         int res = g_plugins->lanza ( "FichaBf_generaRML", this );
         if ( res != 0 ) {
-            return;
+            return 0;
         } // end if
         base basesimp;
         base basesimpreqeq;
@@ -593,12 +600,8 @@ void FichaBf::generaRML ( const QString &arch )
 
         QString fitxersortidatxt = "";
 
-
-
-        /// Impresion del cliente
-        QString SQLQuery = "SELECT * FROM cliente WHERE idcliente = " + DBvalue ( "idcliente" );
         cur = empresaBase() ->cargacursor ( SQLQuery );
-        if ( !cur ) throw - 1;
+
         if ( !cur->eof() ) {
             buff.replace ( "[dircliente]", cur->valor ( "dircliente" ) );
             buff.replace ( "[poblcliente]", cur->valor ( "poblcliente" ) );
@@ -747,9 +750,6 @@ void FichaBf::generaRML ( const QString &arch )
         tr2 += "    <td>" + l.sprintf ( " %s ", ( totiva + totbaseimp + totreqeq - totirpf ).toQString().toAscii().constData() ) + "</td>\n";
         fitxersortidatxt += "<tr>" + tr1 + "</tr><tr>" + tr2 + "</tr></blockTable>\n";
         buff.replace ( "[totales]", fitxersortidatxt );
-
-
-
         buff.replace ( "[irpf]", totirpf.toQString() );
         buff.replace ( "[tirpf]", irpf.toQString() );
         buff.replace ( "[totalre]", totreqeq.toQString() );
@@ -758,7 +758,6 @@ void FichaBf::generaRML ( const QString &arch )
         buff.replace ( "[totaldesc]", totdesc.toQString() );
         buff.replace ( "[totaliva]", totiva.toQString() );
         buff.replace ( "[total]", ( totiva + totbaseimp + totreqeq - totirpf ).toQString().toAscii().constData() );
-
 
         /// En la version para windows hay problemas con las imagenes,
         /// por eso de momento lo dejamos asi.
@@ -773,6 +772,8 @@ void FichaBf::generaRML ( const QString &arch )
         } // end if
 
         _depura ( "END FichaBf::generaRML", 0 );
+	return 0;
+
     } catch ( ... ) {
         if ( cur ) delete cur;
         throw - 1;
@@ -793,8 +794,13 @@ void FichaBf::imprimir()
         if ( res != 0 ) {
             return;
         } // end if
-        generaRML();
-        invocaPDF ( m_tablename );
+
+	/// Si devuelve 0 significa que el archivo RML se ha generado bien y puede generar
+	/// el PDF correspondiente.
+        if (generaRML() == 0) {
+        	invocaPDF ( m_tablename );
+	} // end if
+
         _depura ( "END FichaBf::imprimir", 0 );
     } catch ( ... ) {
         mensajeInfo ( tr ( "Error inesperado en la impresion" ) );
