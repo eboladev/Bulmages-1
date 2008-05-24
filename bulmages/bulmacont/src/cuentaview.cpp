@@ -43,7 +43,7 @@ CuentaView::CuentaView ( Empresa  *emp, QWidget *parent, Qt::WFlags fl )
     addDBCampo ( "idcuenta", DBCampo::DBint, DBCampo::DBPrimaryKey, tr ( "ID cuenta" ) );
     addDBCampo ( "codigo", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Codigo cuenta" ) );
     addDBCampo ( "descripcion", DBCampo::DBvarchar, DBCampo::DBNothing, tr ( "Descripcion" ) );
-    addDBCampo ( "padre", DBCampo::DBboolean  , DBCampo::DBNothing, tr ( "Padre" ) );
+    addDBCampo ( "padre", DBCampo::DBint  , DBCampo::DBNothing, tr ( "Padre" ) );
     addDBCampo ( "imputacion", DBCampo::DBboolean , DBCampo::DBNothing, tr ( "Imputacion" ) );
     addDBCampo ( "bloqueada", DBCampo::DBboolean , DBCampo::DBNothing, tr ( "Bloqueada" ) );
     addDBCampo ( "nodebe", DBCampo::DBboolean , DBCampo::DBNothing, tr ( "NoDebe" ) );

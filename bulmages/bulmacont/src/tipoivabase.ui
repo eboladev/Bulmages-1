@@ -16,19 +16,37 @@
    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_iva.48x48.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
-   <property name="margin" >
+   <property name="spacing" >
     <number>5</number>
    </property>
-   <property name="spacing" >
+   <property name="leftMargin" >
+    <number>5</number>
+   </property>
+   <property name="topMargin" >
+    <number>5</number>
+   </property>
+   <property name="rightMargin" >
+    <number>5</number>
+   </property>
+   <property name="bottomMargin" >
     <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
      <property name="spacing" >
       <number>5</number>
+     </property>
+     <property name="leftMargin" >
+      <number>0</number>
+     </property>
+     <property name="topMargin" >
+      <number>0</number>
+     </property>
+     <property name="rightMargin" >
+      <number>0</number>
+     </property>
+     <property name="bottomMargin" >
+      <number>0</number>
      </property>
      <item>
       <widget class="QLabel" name="label" >
@@ -49,14 +67,20 @@
         <enum>QFrame::Raised</enum>
        </property>
        <layout class="QHBoxLayout" >
-        <property name="margin" >
+        <property name="leftMargin" >
          <number>5</number>
         </property>
-        <property name="spacing" >
+        <property name="topMargin" >
+         <number>5</number>
+        </property>
+        <property name="rightMargin" >
+         <number>5</number>
+        </property>
+        <property name="bottomMargin" >
          <number>5</number>
         </property>
         <item>
-         <widget class="QToolButton" name="mui_nuevo2" >
+         <widget class="QToolButton" name="mui_crear" >
           <property name="minimumSize" >
            <size>
             <width>32</width>
@@ -84,35 +108,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_borrar2" >
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:Images/edit-delete.svg</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>22</width>
-            <height>22</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="mui_guardar2" >
+         <widget class="QToolButton" name="mui_guardar" >
           <property name="minimumSize" >
            <size>
             <width>32</width>
@@ -130,6 +126,34 @@
           </property>
           <property name="icon" >
            <iconset resource="../../bulmages.qrc" >:/Images/edit-save.svg</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="mui_borrar" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../bulmages.qrc" >:/Images/edit-delete.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -162,11 +186,20 @@
    </item>
    <item>
     <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
      <property name="spacing" >
       <number>6</number>
+     </property>
+     <property name="leftMargin" >
+      <number>0</number>
+     </property>
+     <property name="topMargin" >
+      <number>0</number>
+     </property>
+     <property name="rightMargin" >
+      <number>0</number>
+     </property>
+     <property name="bottomMargin" >
+      <number>0</number>
      </property>
      <item>
       <widget class="QLabel" name="textLabel2" >
@@ -178,9 +211,7 @@
      <item>
       <widget class="QComboBox" name="mui_comboTipoIVA" >
        <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>7</hsizetype>
-         <vsizetype>0</vsizetype>
+        <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -195,10 +226,22 @@
       <string>Información del tipo de IVA:</string>
      </property>
      <layout class="QGridLayout" >
-      <property name="margin" >
+      <property name="leftMargin" >
        <number>5</number>
       </property>
-      <property name="spacing" >
+      <property name="topMargin" >
+       <number>5</number>
+      </property>
+      <property name="rightMargin" >
+       <number>5</number>
+      </property>
+      <property name="bottomMargin" >
+       <number>5</number>
+      </property>
+      <property name="horizontalSpacing" >
+       <number>5</number>
+      </property>
+      <property name="verticalSpacing" >
        <number>5</number>
       </property>
       <item row="2" column="2" >
@@ -215,7 +258,7 @@
        </spacer>
       </item>
       <item row="2" column="1" >
-       <widget class="QLineEdit" name="mui_porcentTipoIVA" />
+       <widget class="QLineEdit" name="mui_porcentajetipoiva" />
       </item>
       <item row="3" column="0" colspan="3" >
        <spacer>
@@ -246,9 +289,7 @@
       <item row="2" column="0" >
        <widget class="QLabel" name="textLabel1_2_2" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>5</hsizetype>
-          <vsizetype>5</vsizetype>
+         <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -264,9 +305,7 @@
       <item row="1" column="0" >
        <widget class="QLabel" name="textLabel1_2_3" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>5</hsizetype>
-          <vsizetype>5</vsizetype>
+         <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -280,21 +319,30 @@
        </widget>
       </item>
       <item row="0" column="1" colspan="2" >
-       <widget class="QLineEdit" name="mui_nombreTipoIVA" />
+       <widget class="QLineEdit" name="mui_nombretipoiva" />
       </item>
       <item row="1" column="1" colspan="2" >
-       <widget class="BusquedaCuenta" native="1" name="mui_codigoCtaTipoIVA" />
+       <widget class="BusquedaCuenta" native="1" name="mui_idcuenta" />
       </item>
      </layout>
     </widget>
    </item>
    <item>
     <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
      <property name="spacing" >
       <number>6</number>
+     </property>
+     <property name="leftMargin" >
+      <number>0</number>
+     </property>
+     <property name="topMargin" >
+      <number>0</number>
+     </property>
+     <property name="rightMargin" >
+      <number>0</number>
+     </property>
+     <property name="bottomMargin" >
+      <number>0</number>
      </property>
      <item>
       <spacer>
@@ -336,12 +384,12 @@
   </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>mui_nuevo2</tabstop>
-  <tabstop>mui_borrar2</tabstop>
-  <tabstop>mui_guardar2</tabstop>
+  <tabstop>mui_crear</tabstop>
+  <tabstop>mui_borrar</tabstop>
+  <tabstop>mui_guardar</tabstop>
   <tabstop>mui_comboTipoIVA</tabstop>
-  <tabstop>mui_nombreTipoIVA</tabstop>
-  <tabstop>mui_porcentTipoIVA</tabstop>
+  <tabstop>mui_nombretipoiva</tabstop>
+  <tabstop>mui_porcentajetipoiva</tabstop>
   <tabstop>mui_aceptar</tabstop>
   <tabstop>mui_cancelar</tabstop>
  </tabstops>
