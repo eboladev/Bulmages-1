@@ -43,17 +43,17 @@ ListLinPedidoClienteView::ListLinPedidoClienteView ( QWidget *parent ) : SubForm
     if ( res != 0 ) {
         return;
     } // end if
-    addSHeader ( "puntlpedidocliente", DBCampo::DBboolean, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Puntl pedido cliente" ) );
+    addSHeader ( "puntlpedidocliente", DBCampo::DBboolean, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Punteo" ) );
     addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr ( "Id articulo" ) );
     addSHeader ( "codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr ( "Codigo completo articulo" ) );
     addSHeader ( "nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr ( "Nombre articulo" ) );
-    addSHeader ( "numlpedidocliente", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr ( "Numl pedido cliente" ) );
-    addSHeader ( "desclpedidocliente", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Descl pedido cliente" ) );
-    addSHeader ( "cantlpedidocliente", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Cantl pedido cliente" ) );
-    addSHeader ( "pvplpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr ( "PVPl pedido cliente" ) );
-    addSHeader ( "ivalpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr ( "IVAl pedido cliente" ) );
+    addSHeader ( "numlpedidocliente", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr ( "No de linea" ) );
+    addSHeader ( "desclpedidocliente", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Descripcion" ) );
+    addSHeader ( "cantlpedidocliente", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Cantidad" ) );
+    addSHeader ( "pvplpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Precio de venta s/IVA" ) );
+    addSHeader ( "ivalpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr ( "% I.V.A." ) );
     addSHeader ( "reqeqlpedidocliente", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, tr ( "% Recargo E.Q." ) );
-    addSHeader ( "descuentolpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Descuentol pedido cliente" ) );
+    addSHeader ( "descuentolpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr ( "% Descuento" ) );
     addSHeader ( "idpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "Id pedido cliente" ) );
     addSHeader ( "ordenlpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr ( "Orden" ) );
 
@@ -76,7 +76,7 @@ void ListLinPedidoClienteView::cargar ( QString idpedidocliente )
 {
     _depura ( "ListLinPedidoClienteView::cargar", 0 );
     mdb_idpedidocliente = idpedidocliente;
-    SubForm3::cargar ( "SELECT * FROM lpedidocliente LEFT JOIN articulo ON lpedidocliente.idarticulo = articulo.idarticulo WHERE idpedidocliente=" + mdb_idpedidocliente + " ORDER BY ordenlpedidocliente" );
+    SubForm3::cargar ( "SELECT * FROM lpedidocliente LEFT JOIN articulo ON lpedidocliente.idarticulo = articulo.idarticulo WHERE idpedidocliente = " + mdb_idpedidocliente + " ORDER BY ordenlpedidocliente" );
     _depura ( "END ListLinPedidoClienteView::cargar", 0 );
 }
 

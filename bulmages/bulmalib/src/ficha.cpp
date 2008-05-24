@@ -776,8 +776,14 @@ void Ficha::pintarPost()
 void Ficha::trataTags ( QString &buff )
 {
     _depura ( "Ficha::trataTags", 0 );
-    int pos =  0;
+    /// Tratamos la sustitucion de los valores de configuracion.
+    for (int i = 0; i < 500; i++) {
+	if (confpr->nombre(i) != "") {
+		buff.replace ( "[" + confpr->nombre(i) + "]", confpr->valor(i));
+	} // end if
+    } // end for
 
+    int pos =  0;
     /// Buscamos parametros en el query y los ponemos.
     QRegExp rx ( "\\[(\\w*)\\]" );
     while ( ( pos = rx.indexIn ( buff, pos ) ) != -1 ) {
@@ -809,9 +815,6 @@ void Ficha::trataTags ( QString &buff )
         pos = 0;
     } // end while
 
-
-
-
     /// Buscamos Query's por tratar
     pos = 0;
     QRegExp rx1 ( "<!--\\s*QUERY\\s*=\\s*\"([^\"]*)\"\\s*-->(.*)<!--\\s*END\\s*QUERY\\s*-->" );
@@ -821,7 +824,6 @@ void Ficha::trataTags ( QString &buff )
         buff.replace ( pos, rx1.matchedLength(), ldetalle );
         pos = 0;
     } // end while
-
 
     /// Buscamos Query's en condicional
     pos = 0;
@@ -852,7 +854,6 @@ void Ficha::trataTags ( QString &buff )
         buff.replace ( pos, rx11.matchedLength(), ldetalle );
         pos = 0;
     } // end while
-
 
     _depura ( "END Ficha::trataTags", 0 );
 }
@@ -1029,7 +1030,6 @@ void Ficha::generaRML ( const QString &arch )
     QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + arch;
     QString archivod = confpr->valor ( CONF_DIR_USER ) + arch;
     QString archivologo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
-
 
     /// Copiamos el archivo.
 #ifdef WINDOWS

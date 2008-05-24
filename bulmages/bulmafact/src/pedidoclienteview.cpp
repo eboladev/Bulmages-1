@@ -276,7 +276,6 @@ void PedidoClienteView::generarAlbaran()
 	bud->setDBvalue ( "telalbaran", DBvalue ( "telpedidocliente" ) );
 	bud->setDBvalue ( "idtrabajador", DBvalue ( "idtrabajador" ) );
 	
-	
 	/// Traspasamos las lineas al albaran.
 	SDBRecord *linea, *linea1;
 	for ( int i = 0; i < m_listalineas->rowCount(); ++i ) {
@@ -330,6 +329,7 @@ void PedidoClienteView::generarAlbaran()
 void PedidoClienteView::on_mui_cobrar_clicked()
 {
     _depura ( "PedidoClienteView::on_mui_cobrar_clicked", 0 );
+    recogeValores();
     CobroView *bud = empresaBase() ->newCobroView();
     bud->setDBvalue ( "idcliente", DBvalue ( "idcliente" ) );
     bud->setDBvalue ( "cantcobro", m_totalpedidocliente->text() );

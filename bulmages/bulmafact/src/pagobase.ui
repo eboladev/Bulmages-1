@@ -17,19 +17,37 @@
    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_pagos.48x48.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
-   <property name="margin" >
+   <property name="spacing" >
     <number>5</number>
    </property>
-   <property name="spacing" >
+   <property name="leftMargin" >
+    <number>5</number>
+   </property>
+   <property name="topMargin" >
+    <number>5</number>
+   </property>
+   <property name="rightMargin" >
+    <number>5</number>
+   </property>
+   <property name="bottomMargin" >
     <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
      <property name="spacing" >
       <number>5</number>
+     </property>
+     <property name="leftMargin" >
+      <number>0</number>
+     </property>
+     <property name="topMargin" >
+      <number>0</number>
+     </property>
+     <property name="rightMargin" >
+      <number>0</number>
+     </property>
+     <property name="bottomMargin" >
+      <number>0</number>
      </property>
      <item>
       <widget class="QLabel" name="label" >
@@ -50,9 +68,7 @@
      <item>
       <widget class="QFrame" name="frame" >
        <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>5</hsizetype>
-         <vsizetype>0</vsizetype>
+        <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -70,10 +86,19 @@
         <enum>QFrame::Raised</enum>
        </property>
        <layout class="QHBoxLayout" >
-        <property name="margin" >
+        <property name="spacing" >
          <number>5</number>
         </property>
-        <property name="spacing" >
+        <property name="leftMargin" >
+         <number>5</number>
+        </property>
+        <property name="topMargin" >
+         <number>5</number>
+        </property>
+        <property name="rightMargin" >
+         <number>5</number>
+        </property>
+        <property name="bottomMargin" >
          <number>5</number>
         </property>
         <item>
@@ -134,7 +159,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:Images/edit-delete.svg</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Images/edit-delete.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -163,9 +188,7 @@
         <item>
          <widget class="QLabel" name="textLabel1_2_2_3_2_2" >
           <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>1</hsizetype>
-            <vsizetype>0</vsizetype>
+           <sizepolicy vsizetype="Fixed" hsizetype="Minimum" >
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -195,10 +218,22 @@
       <enum>QFrame::Raised</enum>
      </property>
      <layout class="QGridLayout" >
-      <property name="margin" >
+      <property name="leftMargin" >
        <number>5</number>
       </property>
-      <property name="spacing" >
+      <property name="topMargin" >
+       <number>5</number>
+      </property>
+      <property name="rightMargin" >
+       <number>5</number>
+      </property>
+      <property name="bottomMargin" >
+       <number>5</number>
+      </property>
+      <property name="horizontalSpacing" >
+       <number>5</number>
+      </property>
+      <property name="verticalSpacing" >
        <number>5</number>
       </property>
       <item row="1" column="0" colspan="4" >
@@ -214,9 +249,7 @@
       <item row="3" column="0" >
        <widget class="QLabel" name="textLabel1_4_4" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>5</hsizetype>
-          <vsizetype>0</vsizetype>
+         <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -251,9 +284,7 @@
       <item row="2" column="0" >
        <widget class="QLabel" name="textLabel1_2_2_3_2" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>5</hsizetype>
-          <vsizetype>5</vsizetype>
+         <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -306,9 +337,7 @@
       <item row="0" column="1" >
        <widget class="BusquedaFecha" native="1" name="mui_fechapago" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>7</hsizetype>
-          <vsizetype>5</vsizetype>
+         <sizepolicy vsizetype="Preferred" hsizetype="Expanding" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -330,11 +359,20 @@
       </item>
       <item row="0" column="2" colspan="2" >
        <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
         <property name="spacing" >
          <number>5</number>
+        </property>
+        <property name="leftMargin" >
+         <number>0</number>
+        </property>
+        <property name="topMargin" >
+         <number>0</number>
+        </property>
+        <property name="rightMargin" >
+         <number>0</number>
+        </property>
+        <property name="bottomMargin" >
+         <number>0</number>
         </property>
         <item>
          <spacer>
@@ -364,9 +402,7 @@
       <item row="4" column="0" >
        <widget class="QLabel" name="textLabel1_4_5" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>5</hsizetype>
-          <vsizetype>0</vsizetype>
+         <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -390,11 +426,20 @@
    </item>
    <item>
     <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
      <property name="spacing" >
       <number>5</number>
+     </property>
+     <property name="leftMargin" >
+      <number>0</number>
+     </property>
+     <property name="topMargin" >
+      <number>0</number>
+     </property>
+     <property name="rightMargin" >
+      <number>0</number>
+     </property>
+     <property name="bottomMargin" >
+      <number>0</number>
      </property>
      <item>
       <spacer>

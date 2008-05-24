@@ -177,6 +177,7 @@ void PresupuestoView::on_m_descuentos_editFinish ( int, int )
     _depura ( "END PresupuestoView::on_m_descuentos_editFinish", 0 );
 }
 
+
 ///
 /**
 **/
@@ -186,7 +187,6 @@ void PresupuestoView::on_subform2_editFinish ( int, int )
     calculaypintatotales();
     _depura ( "END PresupuestoView::on_subform2_editFinish", 0 );
 }
-
 
 
 ///
@@ -448,10 +448,4 @@ QString PresupuestoView::detalleArticulos()
     _depura ( "END PresupuestoView::detalleArticulos", 0 );
     return texto;
 }
-
-
-
-
-
-
 
