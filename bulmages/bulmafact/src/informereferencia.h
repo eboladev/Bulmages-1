@@ -27,23 +27,6 @@
 
 class Company;
 
-
-/// Genera un informe utilizando una referencia.
-/** */
-class InformeReferencia
-{
-private:
-    QString m_referencia;
-    Company* companyact;
-
-public:
-    InformeReferencia ( Company * );
-    ~InformeReferencia();
-    void setreferencia ( QString val );
-    void generarinforme();
-};
-
-
 /// Genera un informe utilizando un identificador de cliente.
 /** */
 class InformeCliente

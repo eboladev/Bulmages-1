@@ -31,6 +31,7 @@
 #include "pedidoproveedorview.h"
 #include "albaranproveedorview.h"
 #include "facturapview.h"
+#include "ficha.h"
 
 
 /** Inicializa todos los componentes del Widget a NULL para que no haya
@@ -67,10 +68,14 @@ BusquedaReferencia::~BusquedaReferencia()
 void BusquedaReferencia::on_mui_informe_clicked()
 {
     _depura ( "BusquedaReferencia::on_mui_buscar_clicked\n", 0 );
-    InformeReferencia *inf = new InformeReferencia ( ( Company * ) empresaBase() );
-    inf->setreferencia ( mui_referencia->text() );
-    inf->generarinforme();
-    delete inf;
+
+    Ficha newfich(empresaBase(), NULL);
+    newfich.setTitleName ( tr ( "Informe" ) );
+    newfich.addDBCampo ( "referencia", DBCampo::DBvarchar, DBCampo::DBPrimaryKey, QApplication::translate ( "Referencia", "Referencia" ) );
+    newfich.setDBvalue("referencia", mui_referencia->text());
+    newfich.generaRML("informereferencia.rml");
+    invocaPDF ( "informereferencia" );
+
     _depura ( "END BusquedaReferencia::on_mui_buscar_clicked\n", 0 );
 
 }

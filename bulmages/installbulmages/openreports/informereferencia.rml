@@ -5,7 +5,7 @@
 	<pageTemplate id="main">
 		<pageGraphics>
 		<!-- EL LOGO DE CABECERA -->
-		<image x="3cm" y="26cm" width="17cm" file="logo.jpg"/>
+		<image x="3cm" y="26cm" width="8cm" file="logo.jpg"/>
 
 		<!-- EL PIE DE PAGINA -->
 		<setFont name="Helvetica" size="8"/>		
@@ -24,13 +24,19 @@
 		<!-- EL RECUADRO DONDE VA EL CLIENTE -->
 		<stroke color="(0,0,0)"/>
 		<lineMode width="0.3mm"/>
-		<rect round="0.25cm" x="8cm" y="22.4cm" width="11cm" height="2.5cm" fill="no" stroke="yes"/>
+		<rect round="0.25cm" x="7.5cm" y="22.4cm" width="11cm" height="2.5cm" fill="no" stroke="yes"/>
 
 		<!-- LOS DATOS DEL CLIENTE -->
-		<setFont name="Helvetica" size="12"/>
-		<drawString x="8.5cm" y="24cm">[nomcliente] -- [telcliente]</drawString>
-		<drawString x="8.5cm" y="23.5cm">[dircliente]</drawString>
-		<drawString x="8.5cm" y="23cm">[poblcliente]</drawString>
+<place x="8cm" y="22.4cm" width="11cm" height="2.5cm">
+<para><b>Clientes</b></para>
+<!--QUERY ="SELECT * FROM cliente WHERE idcliente IN (SELECT idcliente FROM presupuesto WHERE refpresupuesto = '[referencia]' UNION SELECT idcliente FROM pedidocliente WHERE refpedidocliente = '[referencia]' UNION SELECT idcliente FROM albaran WHERE refalbaran = '[referencia]' UNION SELECT idcliente FROM factura WHERE reffactura = '[referencia]' UNION SELECT idcliente FROM cobro WHERE refcobro = '[referencia]')"-->
+<para>[nomcliente] ([cifcliente])</para>
+<!--END QUERY-->
+<para><b>Proveedores</b></para>
+<!--QUERY ="SELECT * FROM proveedor WHERE idproveedor IN ( SELECT idproveedor FROM pedidoproveedor WHERE refpedidoproveedor = '[referencia]' UNION SELECT idproveedor FROM albaranp WHERE refalbaranp = '[referencia]' UNION SELECT idproveedor FROM facturap WHERE reffacturap = '[referencia]' UNION SELECT idproveedor FROM pago WHERE refpago = '[referencia]')-->
+<para>[nomproveedor] ([cifproveedor])</para>
+<!--END QUERY-->
+</place>
 		</pageGraphics>
 
 		<!-- FRAME DE CONTENIDOS -->
@@ -70,11 +76,115 @@
 
 <story>
 
-	[story]
+ <spacer length="15"/>
+<para>Resumen de ventas por articulo</para>";
+<blockTable style="tablaresumen" colWidths="7cm, 3cm, 3cm, 3cm, 3cm" repeatRows="1">
+<tr>
+<td>Articulo</td>
+<td>Pres.</td>
+<td>Pedido</td>
+<td>Entregado</td>
+<td>Facturado</td>
+</tr>
+<!--QUERY="SELECT * FROM articulo LEFT JOIN (SELECT idarticulo, SUM(cantlpresupuesto) AS cantlpresupuestot  FROM lpresupuesto WHERE idpresupuesto IN (SELECT idpresupuesto FROM presupuesto WHERE refpresupuesto = '[referencia]') GROUP BY idarticulo) AS t1 ON t1.idarticulo = articulo.idarticulo LEFT JOIN (SELECT idarticulo, SUM(cantlpedidocliente) AS cantlpedidoclientet  FROM lpedidocliente WHERE idpedidocliente IN (SELECT idpedidocliente FROM pedidocliente WHERE refpedidocliente = '[referencia]') GROUP BY idarticulo) AS t2 ON t2.idarticulo = articulo.idarticulo LEFT JOIN (SELECT idarticulo, SUM(cantlalbaran) AS cantlalbarant  FROM lalbaran WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE refalbaran = '[referencia]') GROUP BY idarticulo) AS t3 ON t3.idarticulo = articulo.idarticulo LEFT JOIN (SELECT idarticulo, SUM(cantlfactura) AS cantlfacturat  FROM lfactura WHERE idfactura IN (SELECT idfactura FROM factura WHERE reffactura = '[referencia]') GROUP BY idarticulo) AS t4 ON t4.idarticulo = articulo.idarticulo WHERE  (cantlpresupuestot <>0 OR cantlpedidoclientet <> 0 OR cantlalbarant <> 0 OR cantlfacturat <> 0)"-->
+<tr>
+<td>[nomarticulo]</td>
+<td>[cantlpresupuestot]</td>
+<td>[cantlpedidoclientet]</td>
+<td>[cantlalbarant]</td>
+<td>[cantlfacturat]</td>
+</tr>
+<!--END QUERY-->
+</blockTable>
+
+
 
 <spacer length="15"/>
+<para>Resumen de compras por articulo</para>
+<blockTable style="tablaresumen" colWidths="10cm, 3cm, 3cm, 3cm" repeatRows="1">
+<tr>
+<td>Articulo</td>
+<td>Pedido</td>
+<td>Entregado</td>
+<td>Facturado</td>
+</tr>
+<!--QUERY=" SELECT * FROM articulo LEFT JOIN (SELECT idarticulo, SUM(cantlpedidoproveedor) AS cantlpedidoproveedort FROM lpedidoproveedor WHERE idpedidoproveedor IN (SELECT idpedidoproveedor FROM pedidoproveedor WHERE refpedidoproveedor = '[referencia]') GROUP BY idarticulo) AS t2 ON t2.idarticulo = articulo.idarticulo LEFT JOIN (SELECT idarticulo, SUM(cantlalbaranp) AS cantlalbaranpt FROM lalbaranp WHERE idalbaranp IN (SELECT idalbaranp FROM albaranp WHERE refalbaranp = '[referencia]') GROUP BY idarticulo) AS t3 ON t3.idarticulo = articulo.idarticulo LEFT JOIN (SELECT idarticulo, SUM(cantlfacturap) AS cantlfacturapt FROM lfacturap WHERE idfacturap IN (SELECT idfacturap FROM facturap WHERE reffacturap = '[referencia]') GROUP BY idarticulo) AS t4 ON t4.idarticulo = articulo.idarticulo WHERE  ( cantlpedidoproveedort <> 0 OR cantlalbaranpt <> 0 OR cantlfacturapt <> 0)"-->
+<tr>
+<td>[nomarticulo]</td>
+<td>[cantlpedidoproveedort]</td>
+<td>[cantlalbaranpt]</td>
+<td>[cantlfacturapt]</td>
+</tr>
+<!--END QUERY-->
+</blockTable>
 
-	[totales]
+
+<spacer length="15"/>
+<para>Totales ventas</para>
+<blockTable style="tablatotales" colWidths="3cm, 3cm, 3cm, 3cm, 3cm" repeatRows="1">
+<tr>
+<td>Pres</td>
+<td>Pedido</td>
+<td>Entregado</td>
+<td>Facturado</td>
+<td>Cobrado</td>
+</tr>
+
+<tr>
+<!--QUERY="SELECT SUM(totalpresupuesto) AS tpres FROM presupuesto WHERE refpresupuesto='[referencia]'"--> 
+<td>[tpres]</td>
+<!--END QUERY-->
+
+<!--QUERY="SELECT SUM(totalpedidocliente) AS tpedcli FROM pedidocliente WHERE refpedidocliente='[referencia]'"-->
+<td>[tpedcli]</td>
+<!--END QUERY-->
+
+<!--QUERY="SELECT SUM(totalalbaran) AS talb FROM albaran WHERE refalbaran='[referencia]'"-->
+<td>[talb]</td>
+<!--END QUERY-->
+
+<!--QUERY="SELECT SUM(totalfactura) AS tfact FROM factura WHERE reffactura='[referencia]'"-->
+<td>[tfact]</td>
+<!--END QUERY-->
+
+<!--QUERY="SELECT SUM(cantcobro) AS tcobro FROM cobro WHERE refcobro = '[referencia]'"-->
+<td>[tcobro]</td>
+<!--END QUERY-->
+</tr>
+</blockTable>
+
+
+<spacer length="15"/>
+<para>Totales compras</para>
+<blockTable style="tablatotales" colWidths=" 4cm, 4cm, 4cm, 3cm" repeatRows="1">
+<tr>
+<td>Pedido</td>
+<td>Entregado</td>
+<td>Facturado</td>
+<td>Pagado</td>
+</tr>
+
+<tr>
+<!--QUERY="SELECT SUM(totalpedidoproveedor) AS tpedpro FROM pedidoproveedor WHERE refpedidoproveedor='[referencia]'"-->
+<td>[tpedpro]</td>
+<!--END QUERY-->
+
+<!--QUERY="SELECT SUM(totalalbaranp) AS talbp FROM albaranp WHERE refalbaranp='[referencia]'"-->
+<td>[talbp]</td>\
+<!--END QUERY-->
+
+<!--QUERY="SELECT SUM(totalfacturap) AS tfactp FROM facturap WHERE reffacturap = '[referencia]'"-->
+<td>[tfactp]</td>
+<!--END QUERY-->
+
+<!--QUERY="SELECT SUM(cantpago) AS tpago FROM pago WHERE refpago = '[referencia ]'"-->
+<td>[tpago]</td>
+<!--END QUERY-->
+
+</tr>
+</blockTable>
+
+<spacer length="15"/>
 
 </story>
 </document>
