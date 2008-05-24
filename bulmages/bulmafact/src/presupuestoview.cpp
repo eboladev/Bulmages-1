@@ -266,7 +266,6 @@ void PresupuestoView::generarPedidoCliente()
 	delete cur;
 
 	/// Creamos el pedido.
-	//PedidoClienteView *bud = empresaBase() ->newPedidoClienteView();
 	bud = empresaBase() ->newPedidoClienteView();
 	bud->cargar ( "0" );
 	empresaBase() ->m_pWorkspace->addWindow ( bud );
@@ -323,6 +322,7 @@ void PresupuestoView::generarPedidoCliente()
 
 	/// Pintamos el pedido y lo presentamos.
 	bud->pintar();
+	bud->calculaypintatotales();
 	bud->show();
 
     } catch ( ... ) {

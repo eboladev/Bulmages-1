@@ -521,12 +521,12 @@ void Ficha::pintar()
     /// Recorremos todos los campos definidos.
     for ( int i = 0; i < m_lista.size(); ++i ) {
         campo = m_lista.at ( i );
-        /// Buscamos un QLineEdit con nombre coincidente.
+        /// Buscamos los QLineEdit con nombre coincidente.
         QLineEdit *l = findChild<QLineEdit *> ( "mui_" + campo->nomcampo() );
         if ( l ) {
             l->setText ( campo->valorcampo() );
         } // end if
-        /// Buscamos un QTextEdit con nombre coincidente.
+        /// Buscamos los QTextEdit con nombre coincidente.
         QTextEdit *l3 = findChild<QTextEdit *> ( "mui_" + campo->nomcampo() );
         if ( l3 ) {
             l3->setText ( campo->valorcampo() );
@@ -543,6 +543,7 @@ void Ficha::pintar()
         if ( l2 ) {
             l2->setValorCampo ( campo->valorcampo() );
         } // end if
+        /// Buscamos los QCheckBox con nombre coincidente.
         QCheckBox *l5 = findChild<QCheckBox *> ( "mui_" + campo->nomcampo() );
         if ( l5 ) {
             if ( campo->valorcampo() == "t" ) {
@@ -552,7 +553,7 @@ void Ficha::pintar()
             } // end if
         } // end if
 
-        /// Buscamos los radio buttons y los preparamos.
+        /// Buscamos los 'Radio Buttons' y los preparamos.
         QList<QRadioButton2 *> l6 = findChildren<QRadioButton2 *> ( QRegExp ( "mui_" + campo->nomcampo() + "_*" ) );
         for ( int i = 0; i < l6.size(); ++i ) {
             if ( l6.at ( i ) ->valorCampo() == campo->valorcampo() ) {
@@ -586,21 +587,22 @@ void Ficha::recogeValores()
         if ( l )
             campo->set ( l->text() );
 
-        /// Buscamos un QLineEdit con nombre coincidente.
+        /// Buscamos un QTextEdit con nombre coincidente.
         QTextEdit *l3 = findChild<QTextEdit *> ( "mui_" + campo->nomcampo() );
         if ( l3 )
             campo->set ( l3->toPlainText() );
 
-        /// Buscamos BLWidgets que coincidan con el campo supuestamente sirve para los campos personales
+        /// Buscamos BLWidgets que coincidan con el campo. Supuestamente sirve para los campos personales.
         BLWidget *l1 = findChild<BLWidget *> ( "mui_" + campo->nomcampo() );
         if ( l1 )
             campo->set ( l1->valorCampo() );
 
-        /// Buscamos QComboBox2 que coincidan con el campo supuestamente sirve para los campos personales
+        /// Buscamos QComboBox2 que coincidan con el campo. Supuestamente sirve para los campos personales.
         QComboBox2 *l2 = findChild<QComboBox2 *> ( "mui_" + campo->nomcampo() );
         if ( l2 )
             campo->set ( l2->valorCampo() );
 
+        /// Buscamos un QCheckBox con nombre coincidente.
         QCheckBox *l5 = findChild<QCheckBox *> ( "mui_" + campo->nomcampo() );
         if ( l5 ) {
             if ( l5->isChecked() ) {
@@ -610,7 +612,7 @@ void Ficha::recogeValores()
             } // end if
         } // end if
 
-        /// Buscamos los radio buttons y los preparamos.
+        /// Buscamos los 'Radio Buttons' y los preparamos.
         QList<QRadioButton2 *> l6 = findChildren<QRadioButton2 *> ( QRegExp ( "mui_" + campo->nomcampo() + "_*" ) );
         if ( l6.size() > 0 ) {
             int aux = 0;

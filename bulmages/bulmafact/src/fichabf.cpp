@@ -69,8 +69,8 @@ Company * FichaBf::empresaBase()
 }
 
 
-/** Calcula los totales de factura, descuentos e impuestos y invoca al metodo de pintaTotales para
-    que se pinten dichos valores en la pantalla.
+/** Calcula los totales de los documentos teniendo en cuenta los descuentos e impuestos.
+    Invoca al metodo de pintaTotales para que se pinten dichos valores en la pantalla.
 */
 /**
 \return
