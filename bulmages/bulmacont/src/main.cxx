@@ -45,9 +45,9 @@
 #include "config.h"
 
 #ifdef WIN32
-#define CONFGLOBAL "C:\\bulmages\\bulmages_"
+#define CONFGLOBAL "C:\\bulmages\\bulmacont_"
 #else
-#define CONFGLOBAL CONFIG_DIR_CONFIG + QString("bulmages_")
+#define CONFGLOBAL CONFIG_DIR_CONFIG + QString("bulmacont_")
 #endif
 
 #include <iostream>

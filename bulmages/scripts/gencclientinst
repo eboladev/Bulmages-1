@@ -18,11 +18,11 @@ ln -s $1/$2/bulmafact/src/bulmafact /usr/bin/bulmafact
 rm /usr/bin/bulmatpv
 ln -s $1/$2/bulmatpv/src/bulmatpv /usr/bin/bulmatpv
 
-rm /usr/bin/bgtrml2pdf.py
-ln -s $1/installbulmages/bgtrml2pdf/bgtrml2pdf.py /usr/bin/bgtrml2pdf.py
+#rm /usr/bin/bgtrml2pdf.py
+#ln -s $1/$2/bgtrml2pdf /usr/bin/bgtrml2pdf
 
 rm /usr/bin/bgtrml2pdf
-ln -s $1/installbulmages/bgtrml2pdf/bgtrml2pdf /usr/bin/bgtrml2pdf
+ln -s $1/$2/bgtrml2pdf /usr/bin/bgtrml2pdf
 
 
 rm /usr/bin/bulmages

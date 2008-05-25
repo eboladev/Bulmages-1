@@ -106,7 +106,7 @@ configuracion::configuracion ( QString nombreprograma )
             exit ( -1 );
         } else {
             /// 1) Leemos la configuracion del archivo generico global.
-            mensaje = "--> El archivo '" + m_dirGlobalConf + m_genericGlobalConfFile + "' existe. Se va a leer.<--\n";
+            mensaje = "--> Leyendo el archivo '" + m_dirGlobalConf + m_genericGlobalConfFile + "'<--\n";
             fprintf ( stderr, mensaje.toAscii().constData() );
             leeconfig ( m_dirGlobalConf + m_genericGlobalConfFile );
         }// end if
