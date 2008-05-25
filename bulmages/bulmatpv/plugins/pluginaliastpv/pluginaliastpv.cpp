@@ -33,7 +33,7 @@
 
 int Ticket_insertarArticuloNL_Post ( Ticket *tick )
 {
-    QString query = "SELECT * FROM alias WHERE cadalias = '" + ((EmpresaTPV *)tick->empresaBase())->valorInput() + "'";
+    QString query = "SELECT * FROM alias WHERE cadalias = '" + ( ( EmpresaTPV * ) tick->empresaBase() )->valorInput() + "'";
     cursor2 *cur = tick->empresaBase() ->cargacursor ( query );
     if ( !cur->eof() ) {
         tick->insertarArticulo ( cur->valor ( "idarticulo" ), Fixed ( "1" ) );
@@ -47,7 +47,7 @@ int Ticket_insertarArticuloNL_Post ( Ticket *tick )
 
 int Ticket_insertarArticulo_Post ( Ticket *tick )
 {
-    QString query = "SELECT * FROM alias WHERE cadalias = '" + ((EmpresaTPV *)tick->empresaBase())->valorInput() + "'";
+    QString query = "SELECT * FROM alias WHERE cadalias = '" + ( ( EmpresaTPV * ) tick->empresaBase() )->valorInput() + "'";
     cursor2 *cur = tick->empresaBase() ->cargacursor ( query );
     if ( !cur->eof() ) {
         tick->insertarArticulo ( cur->valor ( "idarticulo" ), Fixed ( "1" ) );

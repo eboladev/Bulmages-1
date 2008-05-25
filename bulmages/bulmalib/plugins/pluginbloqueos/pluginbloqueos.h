@@ -33,5 +33,5 @@
 
 
 extern "C" MY_EXPORT int entryPoint ( QMainWindow * );
-extern "C" MY_EXPORT int Ficha_cargar(Ficha *);
-extern "C" MY_EXPORT int Ficha_DesFicha(Ficha *);
+extern "C" MY_EXPORT int Ficha_cargar ( Ficha * );
+extern "C" MY_EXPORT int Ficha_DesFicha ( Ficha * );

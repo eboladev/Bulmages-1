@@ -59,8 +59,8 @@ int entryPoint ( BulmaTPV *tpv )
 
 int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
 {
-    g_busc = new BusquedaArticulo(0);
-    g_busc->setEmpresaBase(etpv);
+    g_busc = new BusquedaArticulo ( 0 );
+    g_busc->setEmpresaBase ( etpv );
     g_doc1->setWidget ( g_busc );
 
     return 0;

@@ -61,7 +61,7 @@ int entryPoint ( BulmaTPV *tpv )
 int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
 {
     g_bud =  new MTicket ( etpv, g_doc1 );
-    g_bud->setFocusPolicy(Qt::NoFocus);
+    g_bud->setFocusPolicy ( Qt::NoFocus );
     g_doc1->setWidget ( ( QWidget * ) g_bud );
 
 

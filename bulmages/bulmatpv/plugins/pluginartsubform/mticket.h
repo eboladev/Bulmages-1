@@ -43,7 +43,7 @@ public:
 
 public slots:
     virtual void elslot ( QString );
-    virtual void elslot1 ( QTableWidgetItem *);
+    virtual void elslot1 ( QTableWidgetItem * );
 
 };
 

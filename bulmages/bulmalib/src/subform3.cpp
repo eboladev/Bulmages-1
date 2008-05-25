@@ -1705,9 +1705,9 @@ int SubForm3::borrar()
     int error = 0;
 
     /// Si la lista esta vacia no podemos borrar.
-    if (m_lista.count() <= 0) {
+    if ( m_lista.count() <= 0 ) {
         _depura ( "END SubForm3::borrar", 0 );
-	return error;
+        return error;
     } // end if
 
     try {
@@ -2053,10 +2053,10 @@ QString SubForm3::imprimir()
         for ( int j = 0; j < mui_listcolumnas->rowCount(); ++j ) {
             if ( mui_listcolumnas->item ( j, 0 ) ->checkState() == Qt::Checked ) {
                 QString restante;
-		SDBCampo *valor = (SDBCampo *) mui_list->item ( i, j );
-		if ( valor->tipo() & DBCampo::DBnumeric )
-		    fitxersortidarml += "    <td>" + XMLProtect ( spanish.toString( valor->text().toDouble(), 'f', 2 ) ) + "</td>\n";
-		else
+                SDBCampo *valor = ( SDBCampo * ) mui_list->item ( i, j );
+                if ( valor->tipo() & DBCampo::DBnumeric )
+                    fitxersortidarml += "    <td>" + XMLProtect ( spanish.toString ( valor->text().toDouble(), 'f', 2 ) ) + "</td>\n";
+                else
                     fitxersortidarml += "    <td>" + XMLProtect ( valor->text() ) + "</td>\n";
             } // end if
         } // end for

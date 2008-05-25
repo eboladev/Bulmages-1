@@ -83,7 +83,7 @@ ProveedorView::ProveedorView ( Company *comp, QWidget *parent )
         m_listpagosprov->setEmpresaBase ( empresaBase() );
         m_listpagosprov->hideBusqueda();
 
-	/// Cargamos algunos valores por defecto.
+        /// Cargamos algunos valores por defecto.
         mui_idforma_pago->setEmpresaBase ( empresaBase() );
         mui_idforma_pago->setidforma_pago ( "0" );
 

@@ -20,6 +20,7 @@
 
 #include <QWidget>
 #include <QInputDialog>
+#include <QDate>
 
 #include "bbloqfecha.h"
 #include "empresa.h"
@@ -232,38 +233,57 @@ void BbloqFecha::on_mui_treeWidget_itemDoubleClicked ( QTreeWidgetItem *item, in
 void BbloqFecha::on_mui_crear_clicked()
 {
     _depura ( "BbloqFecha::on_mui_crear_clicked", 0 );
-    int ejer = 0;
+    /// Tomamos el anyo pasado como referencia.
+    int ejer = QDate::currentDate().year() - 1;
 
-    /*
-        QString consultabd = "SELECT max(ejercicio) AS ej FROM ejercicios";
-        cursor2 *cur = empresaBase()->cargacursor(consultabd);
-        if (!cur->eof()) {
-            ejer = cur->valor("ej").toInt();
+    /// Miramos si ya hay ejercicios introducidos y si es asi cogemos el siguiente como referencia.
+    QString consultabd = "SELECT max(ejercicio) AS ej FROM ejercicios";
+    cursor2 *cur = empresaBase()->cargacursor ( consultabd );
+    if ( cur ) {
+        if ( !cur->eof() ) {
+            if ( cur->valor ( "ej" ).toInt() != 0 )
+                ejer = cur->valor ( "ej" ).toInt();
         } // end if
         delete cur;
-     
-        ejer++;
-    */
+    } // end if
+    ejer++;
 
+    /// Presentamos el dialogo preguntado que ejercicio crear.
     bool ok = FALSE;
-    while ( ejer < 1000 ) {
+    ejer = QInputDialog::getInteger ( this, tr ( "Introduzca Ejercicio a Crear" ),
+                                      tr ( "Ponga el año:" ), ejer, 0, 10000, 1, &ok );
 
-        ejer = QInputDialog::getInteger ( this, tr ( "Introduzca Ejercicio a Crear" ),
-                                          tr ( "Ponga el año:" ), 2000, 0, 10000, 1, &ok );
-        if ( !ok ) return;
-        if ( ejer < 1000 ) {
-            mensajeInfo ( "Ejercicio invalido" );
+    /// Comprobamos que el ejercicio introducido sea valido.
+    if ( !ok ) return;
+    if ( ejer < 1000 ) {
+        mensajeInfo ( "Ejercicio invalido" );
+        return;
+    } // end if
+    QString query = "SELECT * FROM ejercicios WHERE ejercicio = " + QString::number ( ejer );
+    cur = empresaBase()->cargacursor ( query );
+    if ( cur ) {
+        if ( cur->numregistros() > 0 ) {
+            delete cur;
+            mensajeInfo ( tr ( "Ejercicios ya contemplado" ) );
+            return;
         } // end if
-
-
     } // end if
 
 
+    /// Creamos el ejercicio.
     for ( int x = 0; x <= 12; x++ ) {
-        QString consultabd = "INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES('" + QString::number ( ejer ) + "', '" + QString::number ( x ) + "', 'f')";
-        empresaBase() ->ejecuta ( consultabd );
+        try {
+            QString consultabd = "INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES('" + QString::number ( ejer ) + "', '" + QString::number ( x ) + "', 'f')";
+            empresaBase()->begin();
+            empresaBase() ->ejecuta ( consultabd );
+            empresaBase()->commit();
+        } catch ( ... ) {
+            mensajeInfo ( "Error con la base de datos" );
+            empresaBase()->rollback();
+        } // end try
     } // end for
 
+    /// Presentamos
     inicializa();
 
     _depura ( "BbloqFecha::on_mui_crear_clicked", 0 );

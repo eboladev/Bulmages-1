@@ -76,8 +76,8 @@ int ArticuloView_cargar ( ArticuloView *art )
 {
     _depura ( "ArticuloView_cargar", 0 );
     SubForm2Bf *l = art->findChild<SubForm2Bf *> ( "lalias" );
-    if (l) {
-    	l->cargar ( "SELECT * FROM alias WHERE idarticulo = " + art->DBvalue("idarticulo") );
+    if ( l ) {
+        l->cargar ( "SELECT * FROM alias WHERE idarticulo = " + art->DBvalue ( "idarticulo" ) );
     } // end if
     _depura ( "END ArticuloView_cargar", 0 );
     return 0;
@@ -105,21 +105,22 @@ int ArticuloView_guardar_post ( ArticuloView *art )
 }
 
 
-int BusquedaArticulo_on_m_codigocompletoarticulo_textChanged_Post(BusquedaArticulo *busc) {
+int BusquedaArticulo_on_m_codigocompletoarticulo_textChanged_Post ( BusquedaArticulo *busc )
+{
     bool encontrado = FALSE;
-    
+
     QString val = busc->m_codigocompletoarticulo->text();
 
     QString SQLQuery = "SELECT * FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE cadalias = '" + val + "'";
     cursor2 *cur = busc->empresaBase() ->cargacursor ( SQLQuery );
     if ( !cur->eof() ) {
-	busc->setidarticulo(cur->valor ( "idarticulo" ));
+        busc->setidarticulo ( cur->valor ( "idarticulo" ) );
         encontrado = TRUE;
     }
     delete cur;
 
     if ( encontrado ) {
-	return -1;
+        return -1;
     } // end if
     return 0;
 }

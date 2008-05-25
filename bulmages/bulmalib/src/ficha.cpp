@@ -649,8 +649,8 @@ int Ficha::cargar ( QString id )
         if ( g_plugins->lanza ( "Ficha_cargar", this ) ) return 0;
         cargarPost ( id );
         setWindowTitle ( m_title + " " + DBvalue ( m_campoid ) );
-	/// Activamos documentos adicionales
-	activaDocumentos();
+        /// Activamos documentos adicionales
+        activaDocumentos();
 
         pintar();
         dialogChanges_cargaInicial();
@@ -719,16 +719,16 @@ int Ficha::borrar()
 {
     _depura ( "Ficha::borrar", 0 );
     try {
-	/// Lanzamos los plugins.
-	if ( g_plugins->lanza ( "Ficha_borrar", this ) ) return 0;
-	borrarPre();
-	int err;
-	err =  DBRecord::borrar();
-	_depura ( "END Ficha::borrar", 0 );
-	return err;
-    } catch(...) {
+        /// Lanzamos los plugins.
+        if ( g_plugins->lanza ( "Ficha_borrar", this ) ) return 0;
+        borrarPre();
+        int err;
+        err =  DBRecord::borrar();
+        _depura ( "END Ficha::borrar", 0 );
+        return err;
+    } catch ( ... ) {
         _depura ( "END Ficha::borrar", 0, "Error en el guardado" );
-	return -1;
+        return -1;
     } // end try
 }
 
@@ -778,10 +778,10 @@ void Ficha::trataTags ( QString &buff )
 {
     _depura ( "Ficha::trataTags", 0 );
     /// Tratamos la sustitucion de los valores de configuracion.
-    for (int i = 0; i < 500; i++) {
-	if (confpr->nombre(i) != "") {
-		buff.replace ( "[" + confpr->nombre(i) + "]", confpr->valor(i));
-	} // end if
+    for ( int i = 0; i < 500; i++ ) {
+        if ( confpr->nombre ( i ) != "" ) {
+            buff.replace ( "[" + confpr->nombre ( i ) + "]", confpr->valor ( i ) );
+        } // end if
     } // end for
 
     int pos =  0;

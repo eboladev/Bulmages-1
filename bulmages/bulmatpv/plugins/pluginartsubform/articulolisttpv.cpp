@@ -68,7 +68,7 @@ ArticuloList1::ArticuloList1 ( Company *comp, QWidget *parent, Qt::WFlags flag, 
     m_familia->setEmpresaBase ( comp );
     mui_list->setEmpresaBase ( comp );
     setSubForm ( mui_list );
-    mui_list->setFocusPolicy(Qt::NoFocus);
+    mui_list->setFocusPolicy ( Qt::NoFocus );
     m_usadoarticulo->setCheckState ( Qt::Unchecked );
 
 
@@ -206,11 +206,11 @@ QString ArticuloList1::codigocompletoarticulo()
 ///
 /**
 **/
-void ArticuloList1::on_mui_list_cellDoubleClicked ( int, int)
+void ArticuloList1::on_mui_list_cellDoubleClicked ( int, int )
 {
     _depura ( "myplugin::elslot", 0 );
     QString idarticulo =  mui_list->DBvalue ( "idarticulo" );
-    ((EmpresaTPV *) empresaBase())->ticketActual() ->insertarArticulo ( idarticulo, Fixed ( "1" ) );
+    ( ( EmpresaTPV * ) empresaBase() )->ticketActual() ->insertarArticulo ( idarticulo, Fixed ( "1" ) );
     _depura ( "END myplugin::elslot", 0 );
 }
 

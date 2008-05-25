@@ -537,15 +537,15 @@ int FichaBf::generaRML ( const QString &arch )
     cursor2 *cur = NULL;
     try {
 
-	QString SQLQuery = "";
+        QString SQLQuery = "";
 
-	if (DBvalue("idcliente").isEmpty()) {
-		/// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
-		mensajeInfo(tr("Tiene que guardar el documento antes de poder imprimirlo."));
-		return -1;
-	} else {
-		SQLQuery = "SELECT * FROM cliente WHERE idcliente = " + DBvalue ( "idcliente" );
-	} // end if
+        if ( DBvalue ( "idcliente" ).isEmpty() ) {
+            /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
+            mensajeInfo ( tr ( "Tiene que guardar el documento antes de poder imprimirlo." ) );
+            return -1;
+        } else {
+            SQLQuery = "SELECT * FROM cliente WHERE idcliente = " + DBvalue ( "idcliente" );
+        } // end if
 
         /// Disparamos los plugins
         int res = g_plugins->lanza ( "FichaBf_generaRML", this );
@@ -772,7 +772,7 @@ int FichaBf::generaRML ( const QString &arch )
         } // end if
 
         _depura ( "END FichaBf::generaRML", 0 );
-	return 0;
+        return 0;
 
     } catch ( ... ) {
         if ( cur ) delete cur;
@@ -795,11 +795,11 @@ void FichaBf::imprimir()
             return;
         } // end if
 
-	/// Si devuelve 0 significa que el archivo RML se ha generado bien y puede generar
-	/// el PDF correspondiente.
-        if (generaRML() == 0) {
-        	invocaPDF ( m_tablename );
-	} // end if
+        /// Si devuelve 0 significa que el archivo RML se ha generado bien y puede generar
+        /// el PDF correspondiente.
+        if ( generaRML() == 0 ) {
+            invocaPDF ( m_tablename );
+        } // end if
 
         _depura ( "END FichaBf::imprimir", 0 );
     } catch ( ... ) {

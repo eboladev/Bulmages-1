@@ -47,14 +47,14 @@ int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
 {
 
 
-    ArticuloList1 *lan = new ArticuloList1((Company *) etpv, NULL, 0, ArticuloList1::SelectMode);
-    g_main->setCentralWidget( lan );
+    ArticuloList1 *lan = new ArticuloList1 ( ( Company * ) etpv, NULL, 0, ArticuloList1::SelectMode );
+    g_main->setCentralWidget ( lan );
 
-/*
-    BusquedaArticulo *busc = new BusquedaArticulo(0);
-    busc->setEmpresaBase(etpv);
-    g_main->setCentralWidget ( busc );
-*/
+    /*
+        BusquedaArticulo *busc = new BusquedaArticulo(0);
+        busc->setEmpresaBase(etpv);
+        g_main->setCentralWidget ( busc );
+    */
 //    lan->connect ( lan, SIGNAL ( selected ( QString  ) ), this, SLOT ( elslot ( QString ) ) );
 
     return 0;

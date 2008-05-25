@@ -363,7 +363,7 @@ void FamiliasView::pintar ( QTreeWidgetItem *it )
 }
 
 
-/// SLOT que responde a la pulsacion del boton de nuevo 
+/// SLOT que responde a la pulsacion del boton de nuevo
 /// Inserta en la tabla de Familias
 /**
 **/
@@ -400,7 +400,7 @@ void FamiliasView::on_mui_crear_clicked()
 }
 
 
-/// SLOT que responde a la pulsacion del boton de nuevo desde Raiz 
+/// SLOT que responde a la pulsacion del boton de nuevo desde Raiz
 /// Inserta en la tabla de Familias
 /**
 **/

@@ -89,13 +89,13 @@ void CobroView::imprimir()
     _depura ( "CobroView::imprimir", 0 );
     /// Comprobamos que se disponen de los datos minimos para imprimir el recibo.
     QString SQLQuery = "";
-	
-    if (DBvalue("idcliente").isEmpty()) {
-	/// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
-	mensajeInfo(tr("Tiene que guardar el documento antes de poder imprimirlo."));
-	return;
+
+    if ( DBvalue ( "idcliente" ).isEmpty() ) {
+        /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
+        mensajeInfo ( tr ( "Tiene que guardar el documento antes de poder imprimirlo." ) );
+        return;
     } else {
-	SQLQuery = "SELECT * FROM cliente WHERE idcliente = " + DBvalue ( "idcliente" );
+        SQLQuery = "SELECT * FROM cliente WHERE idcliente = " + DBvalue ( "idcliente" );
     } // end if
 
     /// Disparamos los plugins

@@ -13,7 +13,7 @@ extern QTextBrowser *g_browser;
 typedef QMap<QString, Fixed> base;
 
 
-MTicket::MTicket ( EmpresaTPV *emp, QWidget *parent ) : QTextBrowser (parent) , PEmpresaBase ( emp )
+MTicket::MTicket ( EmpresaTPV *emp, QWidget *parent ) : QTextBrowser ( parent ) , PEmpresaBase ( emp )
 {
     _depura ( "MTicket::MTicket", 0 );
 //    emp->pWorkspace() ->addWindow ( this );
@@ -41,7 +41,7 @@ void MTicket::pintar()
 
     QString querytrab = "SELECT * FROM trabajador WHERE idtrabajador = " + tick->DBvalue ( "idtrabajador" );
     cursor2 *curtrab = empresaBase() ->cargacursor ( querytrab );
-    html1 += "Trabajador: " + tick->DBvalue ( "idtrabajador" ) + " " + curtrab->valor("nomtrabajador") + "<BR>";
+    html1 += "Trabajador: " + tick->DBvalue ( "idtrabajador" ) + " " + curtrab->valor ( "nomtrabajador" ) + "<BR>";
     delete curtrab;
     QString query = "SELECT * FROM cliente WHERE idcliente = " + tick->DBvalue ( "idcliente" );
     cursor2 *cur1 = empresaBase() ->cargacursor ( query );

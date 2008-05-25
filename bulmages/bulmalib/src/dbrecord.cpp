@@ -803,12 +803,12 @@ void DBRecord::imprimir()
         fitxersortidatxt += "<tr>\n";
         fitxersortidatxt += "   <td>" + campo->nomcampo() + "</td>\n";
         fitxersortidatxt += "   <td>" + campo->nompresentacion() + "</td>\n";
-	if ( campo->tipo() & DBCampo::DBnumeric )
-            fitxersortidatxt += "   <td>" + spanish.toString( campo->valorcampo().toDouble(), 'f', 2 ) + "</td>\n";
-	else
-	    fitxersortidatxt += "   <td>" + campo->valorcampo() + "</td>\n";
+        if ( campo->tipo() & DBCampo::DBnumeric )
+            fitxersortidatxt += "   <td>" + spanish.toString ( campo->valorcampo().toDouble(), 'f', 2 ) + "</td>\n";
+        else
+            fitxersortidatxt += "   <td>" + campo->valorcampo() + "</td>\n";
         fitxersortidatxt += "</tr>";
-qDebug() << spanish.toString( campo->valorcampo().toDouble(), 'f', 2 );
+        qDebug() << spanish.toString ( campo->valorcampo().toDouble(), 'f', 2 );
     } // end for
 
     QLocale::setDefault ( QLocale::C );

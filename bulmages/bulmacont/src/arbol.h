@@ -93,13 +93,13 @@ public:
     /// El segundo parametro indica a que nivel de profundidad buscar las cuentas; por defecto a 4, el minimo exigido en un balance abreviado
     bool irHoja ( QString, unsigned int nivel = 4 );
 
-    /// Devuelvo el código de la cuenta mayor que hay en el Arbol. A no ser que se indique otro nivel, 
+    /// Devuelvo el código de la cuenta mayor que hay en el Arbol. A no ser que se indique otro nivel,
     /// se obtiene el mÃ¡ximo de nivel 4.
-    QString codigoCuentaMayor( unsigned int nivel = 4 );
+    QString codigoCuentaMayor ( unsigned int nivel = 4 );
 
     /// Devuelvo el código cuenta del hijo que hay en el Arbol para esa cuenta. El primer parametro indica el codigo de
     /// cuenta que representa la hoja padre. El segundo parametro indica que se busque hasta ese nivel del Arbol.
-    QString hijoMayor( QString, unsigned int nivel = 4 );
+    QString hijoMayor ( QString, unsigned int nivel = 4 );
 };
 
 #endif

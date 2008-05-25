@@ -98,7 +98,7 @@ ClienteView::ClienteView ( Company *comp, QWidget *parent )
         m_listfacturas->setEmpresaBase ( empresaBase() );
         m_listcobros->setEmpresaBase ( empresaBase() );
 
-	/// Datos por defecto.
+        /// Datos por defecto.
         mui_idprovincia->setEmpresaBase ( empresaBase() );
         mui_idprovincia->setIdProvincia ( "" );
 
@@ -193,11 +193,11 @@ void ClienteView::on_mui_informe_clicked()
 void ClienteView::activaDocumentos()
 {
     _depura ( "ClienteView::activaDocumentos", 0 );
-    mui_tab->setTabEnabled(1, TRUE);
-    mui_tab->setTabEnabled(2, TRUE);
-    mui_tab->setTabEnabled(3, TRUE);
-    mui_tab->setTabEnabled(4, TRUE);
-    mui_tab->setTabEnabled(5, TRUE);
+    mui_tab->setTabEnabled ( 1, TRUE );
+    mui_tab->setTabEnabled ( 2, TRUE );
+    mui_tab->setTabEnabled ( 3, TRUE );
+    mui_tab->setTabEnabled ( 4, TRUE );
+    mui_tab->setTabEnabled ( 5, TRUE );
     _depura ( "END ClienteView::activaDocumentos", 0 );
 }
 
@@ -209,11 +209,11 @@ void ClienteView::activaDocumentos()
 void ClienteView::desactivaDocumentos()
 {
     _depura ( "ClienteView::desactivaDocumentos", 0 );
-    mui_tab->setTabEnabled(1, FALSE);
-    mui_tab->setTabEnabled(2, FALSE);
-    mui_tab->setTabEnabled(3, FALSE);
-    mui_tab->setTabEnabled(4, FALSE);
-    mui_tab->setTabEnabled(5, FALSE);
+    mui_tab->setTabEnabled ( 1, FALSE );
+    mui_tab->setTabEnabled ( 2, FALSE );
+    mui_tab->setTabEnabled ( 3, FALSE );
+    mui_tab->setTabEnabled ( 4, FALSE );
+    mui_tab->setTabEnabled ( 5, FALSE );
     _depura ( "END ClienteView::desactivaDocumentos", 0 );
 }
 

@@ -244,7 +244,7 @@ void BusquedaArticulo::on_m_codigocompletoarticulo_textChanged ( const QString &
         mdb_nomarticulo = "";
         mdb_codigocompletoarticulo = "";
 
-	g_plugins->lanza("BusquedaArticulo_on_m_codigocompletoarticulo_textChanged_Post", this);
+        g_plugins->lanza ( "BusquedaArticulo_on_m_codigocompletoarticulo_textChanged_Post", this );
 
     } // end if
 

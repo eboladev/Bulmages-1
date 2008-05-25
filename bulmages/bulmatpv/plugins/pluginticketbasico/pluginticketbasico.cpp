@@ -68,13 +68,13 @@ int entryPoint ( BulmaTPV *tpv )
 
         /// Establecemos el tipo de ordenaci&oacute;n
         linea = stream.readLine();
-	int height = linea.toInt();
+        int height = linea.toInt();
 
         g_doc1->resize ( width, height );
-	g_doc1->setMinimumWidth(width);
-	g_doc1->setMinimumHeight(height);
+        g_doc1->setMinimumWidth ( width );
+        g_doc1->setMinimumHeight ( height );
 
-	file.close();
+        file.close();
     } // end if
 
     /// Presentamos el widget
@@ -99,17 +99,17 @@ int exitPoint ( BulmaTPV *tpv )
     int width = g_doc1->width();
     int height = g_doc1->height();
 
-/*
-    QString aux = "";
-    QFile file ( confpr->valor ( CONF_DIR_USER ) + "pluginticketbasico.cfn" );
-    /// Guardado del orden y de configuraciones varias.
-    if ( file.open ( QIODevice::WriteOnly ) ) {
-        QTextStream stream ( &file );
-        stream << width << "\n";
-        stream << height << "\n";
-        file.close();
-    } // end if
-*/
+    /*
+        QString aux = "";
+        QFile file ( confpr->valor ( CONF_DIR_USER ) + "pluginticketbasico.cfn" );
+        /// Guardado del orden y de configuraciones varias.
+        if ( file.open ( QIODevice::WriteOnly ) ) {
+            QTextStream stream ( &file );
+            stream << width << "\n";
+            stream << height << "\n";
+            file.close();
+        } // end if
+    */
 
     _depura ( "END entryPoint", 0 );
     return 0;

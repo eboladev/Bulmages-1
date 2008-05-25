@@ -274,11 +274,11 @@ void FacturaView::on_mui_veralbaranes_clicked()
                 cur->siguienteregistro();
             } // end while
         } else {
-            mensajeInfo ( tr("No hay albaranes con esta referencia") );
+            mensajeInfo ( tr ( "No hay albaranes con esta referencia" ) );
         } // end if
         delete cur;
     } catch ( ... ) {
-        mensajeInfo ( tr("Error inesperado") );
+        mensajeInfo ( tr ( "Error inesperado" ) );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try

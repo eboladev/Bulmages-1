@@ -78,8 +78,8 @@ void Arbol::inicializa ( cursor2 *ramas )
     tiporama* guia = NULL;
     ramas->primerregistro();
     /// Hay que construir el arbol con todas sus hojitas (cuentas).
-    for ( i = 0; i < raiz.size(); ++i) {
-        padre = raiz.at(i)->codigo;
+    for ( i = 0; i < raiz.size(); ++i ) {
+        padre = raiz.at ( i )->codigo;
         /// Creamos las primeras hojas en la ra&iacute;z y sintetizamos el resto
         /// recursivamente (si es que existen aun m&aacute;s hojas hijas).
         while ( !ramas->eof() && ramas->valor ( "codigo" ).startsWith ( padre ) ) {
@@ -96,8 +96,8 @@ void Arbol::inicializa ( cursor2 *ramas )
                 rama->hoja = hoja;
                 rama->sgte = NULL;
                 /// Creamos la uni&oacute;n con la ra&iacute;z.
-                if ( !raiz.at(i)->ramas ) {
-                    raiz.at(i)->ramas = guia = rama;
+                if ( !raiz.at ( i )->ramas ) {
+                    raiz.at ( i )->ramas = guia = rama;
                 } else { /// Avanzamos el puntero a la siguiente supuesta rama.
                     guia->sgte = rama;
                     guia = guia->sgte;
@@ -174,24 +174,24 @@ void Arbol::actualizaHojas ( cursor2 *cuenta )
 
     /// Buscamos la rama del arbol que es la padre la cuenta pasada.
     for ( ; i < raiz.size(); ++i ) {
-        hojaraiz = raiz.at(i);
-	if ( cuentapadre == hojaraiz->codigo )
-	    break;
+        hojaraiz = raiz.at ( i );
+        if ( cuentapadre == hojaraiz->codigo )
+            break;
     }
 
     /// Si la rama principal se ha encontrado y tiene hijos, se actualiza
     if ( i < raiz.size() && hojaraiz->ramas ) {
         ActualizarHoja ( & ( hojaraiz->ramas ), cuenta, &actualizado );
-	if ( actualizado ) {
-	    hojaraiz->saldoant = hojaraiz->saldoant + Fixed ( cuenta->valor ( "saldoant" ) );
-	    hojaraiz->debe = hojaraiz->debe + Fixed ( cuenta->valor ( "debe" ) );
-	    hojaraiz->haber = hojaraiz->haber + Fixed ( cuenta->valor ( "haber" ) );
-	    hojaraiz->saldo = hojaraiz->saldo + Fixed ( cuenta->valor ( "saldo" ) );
-	    hojaraiz->debeej = hojaraiz->debeej + Fixed ( cuenta->valor ( "debeej" ) );
-	    hojaraiz->haberej = hojaraiz->haberej + Fixed ( cuenta->valor ( "haberej" ) );
-	    hojaraiz->saldoej = hojaraiz->saldoej + Fixed ( cuenta->valor ( "saldoej" ) );
-	    hojaraiz->numapuntes += cuenta->valor ( "numapuntes" ).toInt();
-	} // end if
+        if ( actualizado ) {
+            hojaraiz->saldoant = hojaraiz->saldoant + Fixed ( cuenta->valor ( "saldoant" ) );
+            hojaraiz->debe = hojaraiz->debe + Fixed ( cuenta->valor ( "debe" ) );
+            hojaraiz->haber = hojaraiz->haber + Fixed ( cuenta->valor ( "haber" ) );
+            hojaraiz->saldo = hojaraiz->saldo + Fixed ( cuenta->valor ( "saldo" ) );
+            hojaraiz->debeej = hojaraiz->debeej + Fixed ( cuenta->valor ( "debeej" ) );
+            hojaraiz->haberej = hojaraiz->haberej + Fixed ( cuenta->valor ( "haberej" ) );
+            hojaraiz->saldoej = hojaraiz->saldoej + Fixed ( cuenta->valor ( "saldoej" ) );
+            hojaraiz->numapuntes += cuenta->valor ( "numapuntes" ).toInt();
+        } // end if
     } // end if
 
     _depura ( "END Arbol::actualizaHojas", 0 );
@@ -282,24 +282,24 @@ void Arbol::inicia()
 //         else
 //             for ( i = 0; ( i < raiz.size() && raiz.at(i)->codigo != raizcandidata ); ++i );
 //         /// Miramos si hay hoja candidata que deshojar.
-// 	while ( !deshojada && i < raiz.size() ) {
-// 		/// Si hay que sacar los niveles superiores tenemos que deshojar tambi&eacute;n
-// 		/// en el nivel 2.
-// 		if ( superiores && raiz.at(i)->codigo > hojaactiva && raiz.at(i)->numapuntes > 0 ) {
-// 			hoja = raiz[i];
-// 			/// S&oacute;lo deshojamos si ha habido movimientos en la cuenta durante
-// 			/// el ejercicio.
-// 			if ( hoja->numapuntes > 0 ) {
-// 			hojaactiva = hoja->codigo;
-// 			deshojada = true;
-// 			} // end if
-// 		} else {
-// 			if ( raiz.at(i)->ramas )
-// 			/// Buscamos por las hojas hijas.
-// 			Deshojar ( raiz.at(i)->ramas, nivel, superiores, &deshojada );
-// 		} // end if
-// 		i++;
-// 	} // end while
+//  while ( !deshojada && i < raiz.size() ) {
+//   /// Si hay que sacar los niveles superiores tenemos que deshojar tambi&eacute;n
+//   /// en el nivel 2.
+//   if ( superiores && raiz.at(i)->codigo > hojaactiva && raiz.at(i)->numapuntes > 0 ) {
+//    hoja = raiz[i];
+//    /// S&oacute;lo deshojamos si ha habido movimientos en la cuenta durante
+//    /// el ejercicio.
+//    if ( hoja->numapuntes > 0 ) {
+//    hojaactiva = hoja->codigo;
+//    deshojada = true;
+//    } // end if
+//   } else {
+//    if ( raiz.at(i)->ramas )
+//    /// Buscamos por las hojas hijas.
+//    Deshojar ( raiz.at(i)->ramas, nivel, superiores, &deshojada );
+//   } // end if
+//   i++;
+//  } // end while
 //     } else {
 //         if ( hojaactiva == QString ( "10" ) ) {
 //             if ( raiz.at(0) ) {
@@ -323,7 +323,7 @@ void Arbol::inicia()
 //         } // end if
 //     } // end if
 //     return deshojada;
-// 
+//
 //     _depura ( "END Arbol::deshoja", 0 );
 // }
 
@@ -345,41 +345,41 @@ bool Arbol::deshoja ( unsigned int nivel, bool superiores )
         if ( hojaactiva == NULL )
             i = 0;
         else
-            for ( i = 0; ( i < raiz.size() && raiz.at(i)->codigo != hojaactiva->codigo.left ( 2 ) ); ++i );
+            for ( i = 0; ( i < raiz.size() && raiz.at ( i )->codigo != hojaactiva->codigo.left ( 2 ) ); ++i );
         /// Miramos si hay hoja candidata que deshojar.
-	while ( !deshojada && i < raiz.size() ) {
-		/// Si hay que sacar los niveles superiores tenemos que deshojar también
-		/// en el nivel 2.
-		if ( superiores && ( !hojaactiva || ( raiz.at( i )->codigo > hojaactiva->codigo && raiz.at(i)->numapuntes > 0 ) ) ) {
-			hoja = raiz.at( i );
-			/// S&oacute;lo deshojamos si ha habido movimientos en la cuenta durante
-			/// el ejercicio.
-			if ( hoja->numapuntes > 0 )
-                            deshojada = true;
-			hojaactiva = hoja;
-		} else {
-			if ( raiz.at( i )->ramas )
-			/// Buscamos por las hojas hijas.
-			    Deshojar ( raiz.at( i )->ramas, nivel, superiores, &deshojada );
-		} // end if
-		i++;
-	} // end while
+        while ( !deshojada && i < raiz.size() ) {
+            /// Si hay que sacar los niveles superiores tenemos que deshojar también
+            /// en el nivel 2.
+            if ( superiores && ( !hojaactiva || ( raiz.at ( i )->codigo > hojaactiva->codigo && raiz.at ( i )->numapuntes > 0 ) ) ) {
+                hoja = raiz.at ( i );
+                /// S&oacute;lo deshojamos si ha habido movimientos en la cuenta durante
+                /// el ejercicio.
+                if ( hoja->numapuntes > 0 )
+                    deshojada = true;
+                hojaactiva = hoja;
+            } else {
+                if ( raiz.at ( i )->ramas )
+                    /// Buscamos por las hojas hijas.
+                    Deshojar ( raiz.at ( i )->ramas, nivel, superiores, &deshojada );
+            } // end if
+            i++;
+        } // end while
     } else {
         if ( hojaactiva == NULL ) {
-                hoja = raiz.first();
-                hojaactiva = hoja;
-                deshojada = true;
+            hoja = raiz.first();
+            hojaactiva = hoja;
+            deshojada = true;
         } else {
-                i = raiz.indexOf( hojaactiva ) + 1;
-                while ( i < raiz.size() && !deshojada ) {
-                    hoja = raiz.at( i );
-                    /// Sólo deshojamos si ha habido movimientos en la cuenta
-                    /// durante el ejercicio.
-                    if ( hoja->numapuntes > 0 )
-                        deshojada = true;
-		    hojaactiva = hoja;
-		    ++i;
-                } // end while
+            i = raiz.indexOf ( hojaactiva ) + 1;
+            while ( i < raiz.size() && !deshojada ) {
+                hoja = raiz.at ( i );
+                /// Sólo deshojamos si ha habido movimientos en la cuenta
+                /// durante el ejercicio.
+                if ( hoja->numapuntes > 0 )
+                    deshojada = true;
+                hojaactiva = hoja;
+                ++i;
+            } // end while
         } // end if
     } // end if
 
@@ -398,7 +398,7 @@ bool Arbol::deshoja ( unsigned int nivel, bool superiores )
 // void Arbol::Deshojar ( tiporama *rama, unsigned int nivel, bool superiores, bool *deshojada )
 // {
 //     _depura ( "Arbol::Deshojar", 0 );
-// 
+//
 //     unsigned int nivelhoja = rama->hoja->codigo.length();
 //     if ( hojaactiva >= rama->hoja->codigo ) {
 //         if ( rama->hoja->ramas && nivelhoja < nivel )
@@ -440,7 +440,7 @@ bool Arbol::deshoja ( unsigned int nivel, bool superiores )
 //             } // end if
 //         } // end if
 //     } // end if
-// 
+//
 //     _depura ( "END Arbol::Deshojar", 0 );
 // }
 
@@ -506,19 +506,19 @@ QString Arbol::hojaActual ( QString valor )
 
     QString resultado;
     if ( valor == "saldoant" )
-        resultado = hoja->saldoant.toQString('.');
+        resultado = hoja->saldoant.toQString ( '.' );
     else if ( valor == "debe" )
-        resultado = hoja->debe.toQString('.');
+        resultado = hoja->debe.toQString ( '.' );
     else if ( valor == "haber" )
-        resultado = hoja->haber.toQString('.');
+        resultado = hoja->haber.toQString ( '.' );
     else if ( valor == "saldo" )
-        resultado = hoja->saldo.toQString('.');
+        resultado = hoja->saldo.toQString ( '.' );
     else if ( valor == "debeej" )
-        resultado = hoja->debeej.toQString('.');
+        resultado = hoja->debeej.toQString ( '.' );
     else if ( valor == "haberej" )
-        resultado = hoja->haberej.toQString('.');
+        resultado = hoja->haberej.toQString ( '.' );
     else if ( valor == "saldoej" )
-        resultado = hoja->saldoej.toQString('.');
+        resultado = hoja->saldoej.toQString ( '.' );
     else if ( valor == "codigo" )
         resultado = hoja->codigo;
     else if ( valor == "descripcion" )
@@ -560,7 +560,7 @@ bool Arbol::irHoja ( QString codigo, unsigned int nivel )
 \param nivel
 \return
 **/
-QString Arbol::codigoCuentaMayor( unsigned int nivel )
+QString Arbol::codigoCuentaMayor ( unsigned int nivel )
 {
     _depura ( "Arbol::codigoCuentaMayor", 0 );
 
@@ -581,7 +581,7 @@ QString Arbol::codigoCuentaMayor( unsigned int nivel )
 \param nivel
 \return
 **/
-QString Arbol::hijoMayor( QString cuenta, unsigned int nivel )
+QString Arbol::hijoMayor ( QString cuenta, unsigned int nivel )
 {
     _depura ( "Arbol::hijoMayor", 0 );
 
@@ -589,9 +589,9 @@ QString Arbol::hijoMayor( QString cuenta, unsigned int nivel )
 
     inicia();
     while ( deshoja ( nivel, true ) ) {
-	codigohoja = hojaActual ( "codigo" );
-	if( codigohoja.startsWith(cuenta) && codigohoja.length() >= codigohijo.length() )
-	    codigohijo = codigohoja;
+        codigohoja = hojaActual ( "codigo" );
+        if ( codigohoja.startsWith ( cuenta ) && codigohoja.length() >= codigohijo.length() )
+            codigohijo = codigohoja;
     }
 
     _depura ( "Arbol::hijoMayor", 0 );

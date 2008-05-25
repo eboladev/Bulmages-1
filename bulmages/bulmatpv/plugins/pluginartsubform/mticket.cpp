@@ -41,7 +41,7 @@ myplugin::~myplugin()
 void myplugin::elslot ( QString item )
 {
     _depura ( "myplugin::elslot", 0 );
-    mensajeInfo("Seleccionado");
+    mensajeInfo ( "Seleccionado" );
     QString idarticulo =  m_lan->mui_list->DBvalue ( "idarticulo" );
     m_etpv->ticketActual() ->insertarArticulo ( idarticulo, Fixed ( "1" ) );
     _depura ( "END myplugin::elslot", 0 );
@@ -51,7 +51,7 @@ void myplugin::elslot ( QString item )
 void myplugin::elslot1 ( QTableWidgetItem *item )
 {
     _depura ( "myplugin::elslot", 0 );
-    mensajeInfo("Seleccionado");
+    mensajeInfo ( "Seleccionado" );
     QString idarticulo =  m_lan->mui_list->DBvalue ( "idarticulo" );
     m_etpv->ticketActual() ->insertarArticulo ( idarticulo, Fixed ( "1" ) );
     _depura ( "END myplugin::elslot", 0 );
@@ -66,13 +66,13 @@ void myplugin::inicializa ( EmpresaTPV *etpv )
     _depura ( "myplugin::inicializa", 0 );
 
     m_etpv = etpv;
-/*
-    m_lan = new ArticuloList1((Company *) etpv, NULL, 0, Listado::SelectMode);
+    /*
+        m_lan = new ArticuloList1((Company *) etpv, NULL, 0, Listado::SelectMode);
 
-    g_main->setCentralWidget ( m_lan );
-    connect ( m_lan, SIGNAL ( selected ( QString  ) ), this, SLOT ( elslot ( QString ) ) );
+        g_main->setCentralWidget ( m_lan );
+        connect ( m_lan, SIGNAL ( selected ( QString  ) ), this, SLOT ( elslot ( QString ) ) );
 
-    connect ( m_lan->mui_list, SIGNAL ( itemDoubleClicked(QTableWidgetItem *)), SLOT ( elslot1 (QTableWidgetItem *)));
-*/
+        connect ( m_lan->mui_list, SIGNAL ( itemDoubleClicked(QTableWidgetItem *)), SLOT ( elslot1 (QTableWidgetItem *)));
+    */
     _depura ( "END myplugin::inicializa", 0 );
 }

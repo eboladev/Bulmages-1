@@ -291,7 +291,7 @@ int ListVentanas::meteWindow ( QString nombre, QObject *obj, bool compdup )
             if ( m->nombre() == nombre && compdup ) {
                 ( ( QWidget * ) m->object() ) ->hide();
                 ( ( QWidget * ) m->object() ) ->show();
-		nombre = nombre + "(i)";
+                nombre = nombre + "(i)";
 //                sacaWindow ( obj );
 //                throw - 1;
             } // end if

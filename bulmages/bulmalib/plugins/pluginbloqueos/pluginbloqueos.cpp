@@ -46,40 +46,41 @@ int entryPoint ( QMainWindow *bcont )
     return ( 0 );
 }
 
-int Ficha_cargar(Ficha *ficha) {
+int Ficha_cargar ( Ficha *ficha )
+{
     _depura ( "PBloqueos::Ficha_cargar", 0 );
     QString query;
 
-    query = "SELECT * FROM bloqueo WHERE fichabloqueo = '"+ficha->campoId()+"' AND identificadorfichabloqueo= '"+ficha->DBvalue(ficha->campoId())+"'";
-    cursor2 *cur1 = ficha->empresaBase()->cargacursor(query);
-    if (!cur1->eof()) {
-	mensajeInfo("Ficha Bloqueada por otro usuario, no podrá hacer modificaciones");
-	
-	/// Miramos si existe un boton de guardar, borrar y uno de aceptar y los desactivamos
-	QToolButton *pguardar = ficha->findChild<QToolButton *> ( "mui_guardar" );
-	if (pguardar) pguardar->setEnabled(FALSE);
+    query = "SELECT * FROM bloqueo WHERE fichabloqueo = '" + ficha->campoId() + "' AND identificadorfichabloqueo= '" + ficha->DBvalue ( ficha->campoId() ) + "'";
+    cursor2 *cur1 = ficha->empresaBase()->cargacursor ( query );
+    if ( !cur1->eof() ) {
+        mensajeInfo ( "Ficha Bloqueada por otro usuario, no podrá hacer modificaciones" );
 
-	QPushButton *paceptar = ficha->findChild<QPushButton *> ( "mui_aceptar" );
-	if (paceptar) paceptar->setEnabled(FALSE);
+        /// Miramos si existe un boton de guardar, borrar y uno de aceptar y los desactivamos
+        QToolButton *pguardar = ficha->findChild<QToolButton *> ( "mui_guardar" );
+        if ( pguardar ) pguardar->setEnabled ( FALSE );
 
-	QToolButton *pborrar = ficha->findChild<QToolButton *> ( "mui_borrar" );
-	if (pborrar) pborrar->setEnabled(FALSE);
+        QPushButton *paceptar = ficha->findChild<QPushButton *> ( "mui_aceptar" );
+        if ( paceptar ) paceptar->setEnabled ( FALSE );
 
-	QToolButton *peliminar = ficha->findChild<QToolButton *> ( "mui_eliminar" );
-	if (peliminar) peliminar->setEnabled(FALSE);
+        QToolButton *pborrar = ficha->findChild<QToolButton *> ( "mui_borrar" );
+        if ( pborrar ) pborrar->setEnabled ( FALSE );
+
+        QToolButton *peliminar = ficha->findChild<QToolButton *> ( "mui_eliminar" );
+        if ( peliminar ) peliminar->setEnabled ( FALSE );
 
 
     } else {
 
-	QString usuario = "";
-	cursor2 *cur = ficha->empresaBase()->cargacursor("SELECT current_user");
-	if (!cur->eof()) {
-		usuario = cur->valor("current_user");
-	} // end if
-	delete cur;
-	
-	query = "INSERT INTO bloqueo (fichabloqueo, identificadorfichabloqueo, usuariobloqueo) VALUES ('"+ficha->campoId()+"','"+ficha->DBvalue(ficha->campoId())+"','"+usuario+"')";
-	ficha->empresaBase()->ejecuta(query);
+        QString usuario = "";
+        cursor2 *cur = ficha->empresaBase()->cargacursor ( "SELECT current_user" );
+        if ( !cur->eof() ) {
+            usuario = cur->valor ( "current_user" );
+        } // end if
+        delete cur;
+
+        query = "INSERT INTO bloqueo (fichabloqueo, identificadorfichabloqueo, usuariobloqueo) VALUES ('" + ficha->campoId() + "','" + ficha->DBvalue ( ficha->campoId() ) + "','" + usuario + "')";
+        ficha->empresaBase()->ejecuta ( query );
     } // end if
     delete cur1;
     return 0;
@@ -87,22 +88,23 @@ int Ficha_cargar(Ficha *ficha) {
 }
 
 
-int Ficha_DesFicha(Ficha *ficha) {
-	QString query = "";
-	if (ficha->DBvalue(ficha->campoId()) != "") {
-		QString usuario = "";
-		cursor2 *cur = ficha->empresaBase()->cargacursor("SELECT current_user");
-		if (!cur->eof()) {
-			usuario = cur->valor("current_user");
-		} // end if
-		delete cur;
-		query = "SELECT * FROM bloqueo WHERE fichabloqueo = '"+ficha->campoId()+"' AND identificadorfichabloqueo= '"+ficha->DBvalue(ficha->campoId())+"' AND usuariobloqueo = '"+usuario+"'";
-		cursor2 *cur1 = ficha->empresaBase()->cargacursor(query);
-		if (!cur1->eof()) {
-			query = "DELETE FROM bloqueo WHERE fichabloqueo = '"+ficha->campoId()+"' AND identificadorfichabloqueo= '"+ficha->DBvalue(ficha->campoId())+"'";
-			ficha->empresaBase()->ejecuta(query);
-		} // end if
-		delete cur1;
-	} // end if
-	return 0;
+int Ficha_DesFicha ( Ficha *ficha )
+{
+    QString query = "";
+    if ( ficha->DBvalue ( ficha->campoId() ) != "" ) {
+        QString usuario = "";
+        cursor2 *cur = ficha->empresaBase()->cargacursor ( "SELECT current_user" );
+        if ( !cur->eof() ) {
+            usuario = cur->valor ( "current_user" );
+        } // end if
+        delete cur;
+        query = "SELECT * FROM bloqueo WHERE fichabloqueo = '" + ficha->campoId() + "' AND identificadorfichabloqueo= '" + ficha->DBvalue ( ficha->campoId() ) + "' AND usuariobloqueo = '" + usuario + "'";
+        cursor2 *cur1 = ficha->empresaBase()->cargacursor ( query );
+        if ( !cur1->eof() ) {
+            query = "DELETE FROM bloqueo WHERE fichabloqueo = '" + ficha->campoId() + "' AND identificadorfichabloqueo= '" + ficha->DBvalue ( ficha->campoId() ) + "'";
+            ficha->empresaBase()->ejecuta ( query );
+        } // end if
+        delete cur1;
+    } // end if
+    return 0;
 }

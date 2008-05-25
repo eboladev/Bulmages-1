@@ -490,14 +490,17 @@ void EmpresaTPV::cobrar()
 
 
 
-Ticket *EmpresaTPV::ticketActual() {
-        return m_ticketActual;
-    }
-QList<Ticket *> *EmpresaTPV::listaTickets() {
-        return & m_listaTickets;
-    }
-void EmpresaTPV::setTicketActual ( Ticket *tick ) {
-        m_ticketActual = tick;
-    }
+Ticket *EmpresaTPV::ticketActual()
+{
+    return m_ticketActual;
+}
+QList<Ticket *> *EmpresaTPV::listaTickets()
+{
+    return & m_listaTickets;
+}
+void EmpresaTPV::setTicketActual ( Ticket *tick )
+{
+    m_ticketActual = tick;
+}
 
 

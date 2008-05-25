@@ -513,10 +513,10 @@ void Company::s_newClienteView()
     m_pWorkspace->addWindow ( bud );
     bud->pintar();
     bud->show();
-    bud->setWindowTitle(QApplication::translate("Company", "Nuevo cliente"));
+    bud->setWindowTitle ( QApplication::translate ( "Company", "Nuevo cliente" ) );
     /// Deshabilitamos las pestanyas que no se utilizan al crear un nuevo cliente.
     bud->desactivaDocumentos();
-    bud->mui_cifcliente->setFocus(Qt::OtherFocusReason);
+    bud->mui_cifcliente->setFocus ( Qt::OtherFocusReason );
     _depura ( "END Company::s_newClienteView", 0 );
 }
 
