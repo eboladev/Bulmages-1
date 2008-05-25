@@ -60,17 +60,17 @@ FacturaView::FacturaView ( Company *comp, QWidget *parent )
         setDBTableName ( "factura" );
         setDBCampoId ( "idfactura" );
         addDBCampo ( "idfactura", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "Factura", "Id factura" ) );
-        addDBCampo ( "idcliente", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "Factura", "Id cliente" ) );
-        addDBCampo ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "Factura", "Id almacen" ) );
+        addDBCampo ( "idcliente", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "Factura", "Cliente" ) );
+        addDBCampo ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "Factura", "Almacen" ) );
         addDBCampo ( "numfactura", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Factura", "Numero factura" ) );
         addDBCampo ( "ffactura", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate ( "Factura", "Ffactura" ) );
         addDBCampo ( "procesadafactura", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate ( "Factura", "Procesada factura" ) );
-        addDBCampo ( "codigoserie_factura", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Factura", "Codigo serie factura" ) );
-        addDBCampo ( "comentfactura", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Factura", "Comentario factura" ) );
-        addDBCampo ( "reffactura", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Factura", "Referencia factura" ) );
-        addDBCampo ( "descfactura", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Factura", "Descripcion factura" ) );
-        addDBCampo ( "idtrabajador", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Factura", "Id trabajador" ) );
-        addDBCampo ( "idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Factura", "Id formad de pago" ) );
+        addDBCampo ( "codigoserie_factura", DBCampo::DBvarchar, DBCampo::DBNotNull, QApplication::translate ( "Factura", "Serie" ) );
+        addDBCampo ( "comentfactura", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Factura", "Comentario" ) );
+        addDBCampo ( "reffactura", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Factura", "Referencia" ) );
+        addDBCampo ( "descfactura", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Factura", "Descripcion" ) );
+        addDBCampo ( "idtrabajador", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Factura", "Trabajador" ) );
+        addDBCampo ( "idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Factura", "Forma de pago" ) );
 
         /// Establecemos algunos Buddies.
         mui_labelAlmacen->setText ( tr ( "Al&macen" ) );

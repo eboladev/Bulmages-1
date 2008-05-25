@@ -192,7 +192,7 @@ QString DBCampo::valorcampoprep ( int &error )
     if ( ( m_restrict & DBNotNull ) && ! ( m_restrict & DBAuto ) ) {
         if ( m_valorcampo == "" ) {
             mensajeAviso ( "El campo '" + m_nompresentacion + "' no puede estar vacio." );
-            error = -1;
+            error = -20200;
             _depura ( "END DBCampo::valorcampoprep", 0, m_nomcampo + " " + m_valorcampo + "-->" + valor );
             return valor;
         } // end if
@@ -467,7 +467,7 @@ int DBRecord::DBsave ( QString &id )
             if ( campo->restrictcampo() & DBCampo::DBDupPrimaryKey ) {
                 QString lin = campo->valorcampoprep ( err );
                 if ( err )
-                    throw ( -1 );
+                    throw ( err );
                 querywhere += separadorwhere + campo->nompresentacion() + " = " + lin;
                 separadorwhere = " AND ";
             } // end if
@@ -484,7 +484,7 @@ int DBRecord::DBsave ( QString &id )
                 if ( campo->restrictcampo() & DBCampo::DBPrimaryKey ) {
                     QString lin = campo->valorcampoprep ( err );
                     if ( err )
-                        throw - 1;
+                    	throw ( err );
                     querywhere += separadorwhere + campo->nomcampo() + " = " + lin;
                     separadorwhere = " AND ";
                 } // end if
@@ -493,12 +493,12 @@ int DBRecord::DBsave ( QString &id )
                     separador1 = ", ";
                 } // end if
                 if ( err )
-                    throw - 1;
+                    throw ( err );
                 if ( ( campo->valorcampoprep ( err ) != "NULL" ) && ( campo->valorcampoprep ( err ) != "" ) ) {
                     listcampos += separador + campo->nomcampo();
                     listvalores += separador + campo->valorcampoprep ( err );
                     if ( err )
-                        throw - 1;
+                    	throw ( err );
                     separador = ", ";
                 } // end if
                 /// Si es el ID entonces lo asignamos porque ya tiene el valor correspondiente.
@@ -520,9 +520,9 @@ int DBRecord::DBsave ( QString &id )
             m_conexionbase->ejecuta ( query );
         } // end if
         m_nuevoCampo = FALSE;
-    } catch ( ... ) {
+    } catch ( int error ) {
         _depura ( "END DBRecord::DBsave", 0, "Error de guardado" );
-        throw - 1;
+	throw error;
     } // end try
     _depura ( "END DBRecord::DBSave", 0 );
     return 0;

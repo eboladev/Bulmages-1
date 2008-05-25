@@ -693,6 +693,15 @@ int Ficha::guardar()
 
         _depura ( "END Ficha::guardar", 0 );
         return 0;
+    } catch (int valor) {
+	/// Valor del error diferente a -1 significa que ya se ha mostrado algun mensaje de
+	/// error y no hay que mostrar otro.
+	if (valor == -1) {
+	        mensajeInfo ( "Error inesperado al guardar");
+	} // end if
+        empresaBase() ->rollback();
+        return -1;
+
     } catch ( ... ) {
         mensajeInfo ( "Error inesperado al guardar" );
         empresaBase() ->rollback();
