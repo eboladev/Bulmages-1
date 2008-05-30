@@ -41,7 +41,7 @@ Description: Bulmages invoicing and accounting, config and common stuff
 Package: bulmacont
 Architecture: any
 Depends: ${shlibs:Depends}, python-reportlab, python, postgresql-client (>= 8.1.0), bulmages-common (>= 0.11)
-Recommends: bulmages-admin, bulmages-servers
+Recommends: bulmages-admin, bulmages-servers, bulmacont-plugins
 Description: Spanish accounting program
  This package helps with the accounting task for small or medium sized 
  businesses with statistics and the usual procedures.
@@ -51,7 +51,7 @@ Description: Spanish accounting program
 Package: bulmafact
 Architecture: any
 Depends: ${shlibs:Depends}, python-reportlab, python, postgresql-client (>= 8.1.0), bulmages-common (>= 0.11)
-Recommends: bulmages-admin, bulmages-servers
+Recommends: bulmages-admin, bulmages-servers, bulmafact-plugins
 Description: Spanish invoicing program
  This package helps to manage the invoicing of small or medium sized businesses
  in Spain.
@@ -61,7 +61,7 @@ Description: Spanish invoicing program
 Package: bulmatpv
 Architecture: any
 Depends: ${shlibs:Depends}, python-reportlab, python, postgresql-client (>= 8.1.0), bulmages-common (>= 0.11)
-Recommends: bulmages-admin, bulmages-servers
+Recommends: bulmages-admin, bulmages-servers, bulmatpv-plugins
 Description: Spanish invoicing program 
  This package contains a Point of sale (POS) program for a small or medium 
  sized businesses in Spain.
@@ -82,7 +82,7 @@ Description: Spanish accounting program server
  This program is made in an open community, you are welcome to join us.
 
 Package: libbulmalib0.11-dev
-Conflicts: libbulmalib-1-dev,libbulmalib0
+Conflicts: libbulmalib-1-dev, libbulmalib0
 Section: libdevel
 Architecture: any
 Depends: libbulmalib0.11, ${shlibs:Depends}

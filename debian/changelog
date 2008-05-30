@@ -1,3 +1,13 @@
+bulmages (0.11.1~rc3-1) unstable; urgency=low
+
+  [Leopold Palomo Avellaneda]
+  * New upstream release. Closes: #482918.
+  * Added bulmacont-plugins to Recommends of bulmacont.
+  * Added bulmafact-plugins to Recommends of bulmafact.
+  * Added bulmatpv-plugins to Recommends of bulmatpv.
+
+ -- Leopold Palomo Avellaneda <leo@alaxarxa.net>  Fri, 30 May 2008 20:56:09 +0200
+
 bulmages (0.11.1~rc2-1) unstable; urgency=low
 
   [Leopold Palomo Avellaneda]

@@ -14,7 +14,7 @@
 #
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
-
+# Differences between CMake 2.4 and 2.6
 
 if (LIBC_HAS_DGETTEXT OR LIBINTL_HAS_DGETTEXT)
 

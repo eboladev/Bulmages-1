@@ -26,11 +26,41 @@
 PROJECT(bulmages)
 CMAKE_MINIMUM_REQUIRED(VERSION 2.4.8)
 
-SET( BULMAGES_VERSION 0.11.0 )
+SET( BULMAGES_VERSION 0.11.1 )
 STRING( REGEX MATCHALL "[0-9]+" BULMAGES_VERSIONS ${BULMAGES_VERSION} )
 LIST( GET BULMAGES_VERSIONS 0 BULMAGES_VERSION_MAJOR)
 LIST( GET BULMAGES_VERSIONS 1 BULMAGES_VERSION_MINOR)
 LIST( GET BULMAGES_VERSIONS 2 BULMAGES_VERSION_PATCH)
+
+# Differences between CMake 2.4 and 2.6
+if("${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" GREATER 2.4)
+   message(STATUS "Using cmake version ${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" )
+   # some developers may be using an cmake cvs version which didn't have set_property() yet
+   # Tell them that a more recent version is required.
+   if(NOT COMMAND SET_PROPERTY)
+      message(FATAL_ERROR "You are using an old version of CMake from cvs, please update to CMake >= 2.6.0 or cvs at least from Feb 20th, 2008")
+   endif(NOT COMMAND SET_PROPERTY)
+
+
+   # CMake 2.6 gives errors if there are multiple targets with the same name
+   # we use this for the target "buildtests", which is created for the unit tests
+   # and which depends on the tests, so building "buildtests" builds all the tests
+   # enabling this property disables this check in CMake
+   set_property(GLOBAL PROPERTY ALLOW_DUPLICATE_CUSTOM_TARGETS 1)
+    
+   # CMP0002: in KDE4 we have multiple targets with the same name for the unit tests
+   cmake_policy(SET CMP0002 OLD)
+   # CMP0003: add the link paths to the link command as with cmake 2.4
+   cmake_policy(SET CMP0003 OLD)
+   # CMake 2.6 uses the full file names of the libraries when linking and so 
+   # doesn't use -L anymore to list the link dirs. Now the dependencies created
+   # export_library_dependencies() lists the in-project libraries without 
+   # path, i.e. with only the logical name ("kdecore"), so they don't link
+   # Setting this variable to true has the effect that the link dirs are
+   # listed nevertheless also with CMake 2.6.
+   set(CMAKE_LINK_OLD_PATHS TRUE)
+
+endif("${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" GREATER 2.4)
 
 
 # ######### General setup ##########
@@ -51,7 +81,6 @@ if (${QT_MAJOR_VERSION}.${QT_MINOR_VERSION} LESS 4.3)
     message(FATAL_ERROR " Bulmages needs >= QT4.3 to compile")
 endif (${QT_MAJOR_VERSION}.${QT_MINOR_VERSION} LESS 4.3) 
 
-
 INCLUDE (${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindPostgreSQL.cmake)
 INCLUDE (${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindGettext.cmake)
 
@@ -59,7 +88,10 @@ if(NOT PGSQL_FOUND)
   message(FATAL_ERROR "Bulmages needs libpq to compile")
 endif(NOT PGSQL_FOUND)
 
+
+
 set( BULMAGES_CONFIG_DIR /etc/bulmages CACHE PATH "The location of bulmages configuration dir")
+
 
 ########### bulmages library ##########
 message(STATUS "Working on bulmalib")
