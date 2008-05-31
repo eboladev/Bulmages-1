@@ -55,7 +55,7 @@ public:
     virtual void trataTags ( QString &buff );
     virtual QString trataLineasDetalle ( const QString &det );
     virtual QString trataLineasDescuento ( const QString &det );
-    virtual QString trataTotales ( const QString &det );
+    virtual QString trataTotales ( const QString &det, int bimporeq = 1 );
 };
 
 #endif

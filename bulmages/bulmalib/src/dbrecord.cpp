@@ -757,8 +757,7 @@ int DBRecord::cargar ( QString id )
 **/
 void DBRecord::imprimir()
 {
-    /// Impresion de un Pedido de Proveedor
-    /** Usa la plantilla pedidoproveedor.rml */
+    /// Usa la plantilla ficha.rml para realizar la impresion.
     _depura ( "DBRecord::imprimir", 0 );
     DBCampo *campo;
     QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "ficha.rml";

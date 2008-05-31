@@ -199,7 +199,6 @@ void Ficha::generaCampo ( const QString &objname, const QString &textname, const
         vboxl->setObjectName ( QString::fromUtf8 ( "m_framevboxlayout" ) );
     } // end if
 
-
     QHBoxLayout *hboxLayout160 = new QHBoxLayout();
     hboxLayout160->setSpacing ( 2 );
     hboxLayout160->setMargin ( 0 );

@@ -101,15 +101,21 @@
 </storyPlace>
 <!--END IF DESCUENTOS-->
 
-<storyPlace x="2cm" y="0cm" width="19cm" height="1cm">
-<place x="2cm" y="2cm" width="19cm" height="2.5cm">
+<storyPlace x="2cm" y="0cm" width="19cm" height="2cm">
+<place x="2cm" y="0.5cm" width="19cm" height="4.5cm">
 <blockTable colWidths="7cm, 7cm">
-<tr>
 <!--TOTALES-->
-<td><para>Base Imponible [tbimp]% <font color="blue">[bimp]</font></para></td>
-<td><para>I.V.A. [tbimp]%  <font color="blue">[iva]</font></para></td>
-<!--END TOTALES-->
+<tr>
+<td><para>Base Imponible [tbimp]%: <font color="blue">[bimp]</font></para></td>
+<td><para>I.V.A. [tbimp]%:  <font color="blue">[iva]</font></para></td>
 </tr>
+<!--END TOTALES-->
+
+<!--TOTREQ-->
+<tr>
+<td colspan="2"><para>R.Eq. [tre]%: <font color="blue">[re]</font></para></td>
+</tr>
+<!--END TOTREQ-->
 </blockTable>
 
 
@@ -118,6 +124,7 @@
 <!-- td><para>Total Descuentos <font color="blue">[totaldesc]</font></para></td-->
 <td><para>Total Base Imponible <font color="blue">[totalbimp]</font></para></td>
 <td><para>Total I.V.A <font color="blue">[totaliva]</font></para></td>
+<td><para>Total R.Eq <font color="blue">[totalre]</font></para></td>
 <td><para><b><font size="15"> Total <font color="blue">[total]</font></font></b></para></td>
 </tr>
 </blockTable>
