@@ -5,102 +5,92 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>220</width>
-    <height>74</height>
+    <width>223</width>
+    <height>72</height>
    </rect>
   </property>
   <property name="windowTitle" >
    <string>Form1</string>
   </property>
-  <layout class="QVBoxLayout" >
-   <property name="margin" >
+  <layout class="QGridLayout" >
+   <property name="leftMargin" >
     <number>0</number>
    </property>
-   <property name="spacing" >
+   <property name="topMargin" >
     <number>0</number>
    </property>
-   <item>
-    <layout class="QVBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
+   <property name="rightMargin" >
+    <number>0</number>
+   </property>
+   <property name="bottomMargin" >
+    <number>0</number>
+   </property>
+   <property name="horizontalSpacing" >
+    <number>5</number>
+   </property>
+   <property name="verticalSpacing" >
+    <number>5</number>
+   </property>
+   <item row="0" column="0" colspan="2" >
+    <widget class="QLabel" name="label" >
+     <property name="text" >
+      <string>Tipo de articulo:</string>
      </property>
-     <property name="spacing" >
-      <number>5</number>
+    </widget>
+   </item>
+   <item row="1" column="0" >
+    <widget class="QLineEdit" name="m_codtipo_articulo" >
+     <property name="sizePolicy" >
+      <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
-     <item>
-      <layout class="QVBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
-       </property>
-       <property name="spacing" >
-        <number>0</number>
-       </property>
-       <item>
-        <widget class="QLabel" name="label" >
-         <property name="text" >
-          <string>Tipo de articulo:</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>5</number>
-         </property>
-         <item>
-          <widget class="QLineEdit" name="m_codtipo_articulo" >
-           <property name="sizePolicy" >
-            <sizepolicy>
-             <hsizetype>5</hsizetype>
-             <vsizetype>0</vsizetype>
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QToolButton" name="mui_buscar" >
-           <property name="minimumSize" >
-            <size>
-             <width>21</width>
-             <height>21</height>
-            </size>
-           </property>
-           <property name="text" >
-            <string/>
-           </property>
-           <property name="icon" >
-            <iconset resource="../../bulmages.qrc" >:/Images/edit-find.svg</iconset>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <widget class="QLabel" name="m_desctipo_articulo" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>7</hsizetype>
-         <vsizetype>5</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="frameShape" >
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="text" >
-        <string>Tipo de articulo</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    </widget>
+   </item>
+   <item row="1" column="1" >
+    <widget class="QToolButton" name="mui_buscar" >
+     <property name="minimumSize" >
+      <size>
+       <width>22</width>
+       <height>22</height>
+      </size>
+     </property>
+     <property name="maximumSize" >
+      <size>
+       <width>22</width>
+       <height>22</height>
+      </size>
+     </property>
+     <property name="text" >
+      <string/>
+     </property>
+     <property name="icon" >
+      <iconset resource="../../bulmages.qrc" >:/Images/edit-find.svg</iconset>
+     </property>
+     <property name="iconSize" >
+      <size>
+       <width>22</width>
+       <height>22</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="2" >
+    <widget class="QLabel" name="m_desctipo_articulo" >
+     <property name="sizePolicy" >
+      <sizepolicy vsizetype="Preferred" hsizetype="Expanding" >
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="frameShape" >
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="text" >
+      <string>Tipo de articulo</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

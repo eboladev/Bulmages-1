@@ -13,18 +13,28 @@
    <string>Configuracion Subformularios</string>
   </property>
   <layout class="QGridLayout" >
-   <property name="margin" >
+   <property name="leftMargin" >
     <number>0</number>
    </property>
-   <property name="spacing" >
+   <property name="topMargin" >
+    <number>0</number>
+   </property>
+   <property name="rightMargin" >
+    <number>0</number>
+   </property>
+   <property name="bottomMargin" >
+    <number>0</number>
+   </property>
+   <property name="horizontalSpacing" >
+    <number>0</number>
+   </property>
+   <property name="verticalSpacing" >
     <number>0</number>
    </property>
    <item row="0" column="1" >
     <widget class="QFrame" name="mui_configurador" >
      <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>7</hsizetype>
-       <vsizetype>5</vsizetype>
+      <sizepolicy vsizetype="Preferred" hsizetype="Expanding" >
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -48,18 +58,28 @@
       <number>2</number>
      </property>
      <layout class="QGridLayout" >
-      <property name="margin" >
+      <property name="leftMargin" >
        <number>0</number>
       </property>
-      <property name="spacing" >
+      <property name="topMargin" >
+       <number>0</number>
+      </property>
+      <property name="rightMargin" >
+       <number>0</number>
+      </property>
+      <property name="bottomMargin" >
+       <number>0</number>
+      </property>
+      <property name="horizontalSpacing" >
+       <number>0</number>
+      </property>
+      <property name="verticalSpacing" >
        <number>0</number>
       </property>
       <item row="1" column="0" >
        <widget class="QTabWidget" name="mui_selectorsubform3" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>5</hsizetype>
-          <vsizetype>7</vsizetype>
+         <sizepolicy vsizetype="Expanding" hsizetype="Preferred" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -78,16 +98,28 @@
           <string>Columnas visibles</string>
          </attribute>
          <layout class="QVBoxLayout" >
-          <property name="margin" >
+          <property name="spacing" >
            <number>0</number>
           </property>
-          <property name="spacing" >
+          <property name="leftMargin" >
+           <number>0</number>
+          </property>
+          <property name="topMargin" >
+           <number>0</number>
+          </property>
+          <property name="rightMargin" >
+           <number>0</number>
+          </property>
+          <property name="bottomMargin" >
            <number>0</number>
           </property>
           <item>
            <widget class="QTableWidget" name="mui_listcolumnas" >
             <property name="selectionMode" >
              <enum>QAbstractItemView::SingleSelection</enum>
+            </property>
+            <property name="horizontalScrollMode" >
+             <enum>QAbstractItemView::ScrollPerPixel</enum>
             </property>
            </widget>
           </item>
@@ -98,18 +130,39 @@
           <string>Paginacion</string>
          </attribute>
          <layout class="QVBoxLayout" >
-          <property name="margin" >
+          <property name="spacing" >
            <number>0</number>
           </property>
-          <property name="spacing" >
+          <property name="leftMargin" >
+           <number>0</number>
+          </property>
+          <property name="topMargin" >
+           <number>0</number>
+          </property>
+          <property name="rightMargin" >
+           <number>0</number>
+          </property>
+          <property name="bottomMargin" >
            <number>0</number>
           </property>
           <item>
            <layout class="QGridLayout" >
-            <property name="margin" >
+            <property name="leftMargin" >
              <number>5</number>
             </property>
-            <property name="spacing" >
+            <property name="topMargin" >
+             <number>5</number>
+            </property>
+            <property name="rightMargin" >
+             <number>5</number>
+            </property>
+            <property name="bottomMargin" >
+             <number>5</number>
+            </property>
+            <property name="horizontalSpacing" >
+             <number>6</number>
+            </property>
+            <property name="verticalSpacing" >
              <number>6</number>
             </property>
             <item row="2" column="0" >
@@ -611,11 +664,11 @@
             </item>
             <item row="1" column="1" >
              <widget class="QSpinBox" name="mui_paginaact" >
-              <property name="maximum" >
-               <number>999</number>
-              </property>
               <property name="minimum" >
                <number>1</number>
+              </property>
+              <property name="maximum" >
+               <number>999</number>
               </property>
               <property name="value" >
                <number>1</number>
@@ -1107,11 +1160,11 @@
             </item>
             <item row="0" column="1" >
              <widget class="QSpinBox" name="mui_filaspagina" >
-              <property name="maximum" >
-               <number>99999</number>
-              </property>
               <property name="minimum" >
                <number>0</number>
+              </property>
+              <property name="maximum" >
+               <number>99999</number>
               </property>
               <property name="value" >
                <number>0</number>
@@ -1122,11 +1175,20 @@
           </item>
           <item>
            <layout class="QHBoxLayout" >
-            <property name="margin" >
-             <number>5</number>
-            </property>
             <property name="spacing" >
              <number>6</number>
+            </property>
+            <property name="leftMargin" >
+             <number>5</number>
+            </property>
+            <property name="topMargin" >
+             <number>5</number>
+            </property>
+            <property name="rightMargin" >
+             <number>5</number>
+            </property>
+            <property name="bottomMargin" >
+             <number>5</number>
             </property>
             <item>
              <widget class="QPushButton" name="mui_paganterior" >
@@ -1241,19 +1303,40 @@
           <string>SQL</string>
          </attribute>
          <layout class="QGridLayout" >
-          <property name="margin" >
+          <property name="leftMargin" >
            <number>0</number>
           </property>
-          <property name="spacing" >
+          <property name="topMargin" >
+           <number>0</number>
+          </property>
+          <property name="rightMargin" >
+           <number>0</number>
+          </property>
+          <property name="bottomMargin" >
+           <number>0</number>
+          </property>
+          <property name="horizontalSpacing" >
+           <number>0</number>
+          </property>
+          <property name="verticalSpacing" >
            <number>0</number>
           </property>
           <item row="1" column="0" >
            <layout class="QVBoxLayout" >
-            <property name="margin" >
-             <number>5</number>
-            </property>
             <property name="spacing" >
              <number>6</number>
+            </property>
+            <property name="leftMargin" >
+             <number>5</number>
+            </property>
+            <property name="topMargin" >
+             <number>5</number>
+            </property>
+            <property name="rightMargin" >
+             <number>5</number>
+            </property>
+            <property name="bottomMargin" >
+             <number>5</number>
             </property>
             <item>
              <widget class="QTextEdit" name="mui_query" >
@@ -1737,8 +1820,8 @@
                 <strikeout>false</strikeout>
                </font>
               </property>
-              <property name="cursor" >
-               <cursor>4</cursor>
+              <property name="cursor" stdset="0" >
+               <cursorShape>IBeamCursor</cursorShape>
               </property>
               <property name="contextMenuPolicy" >
                <enum>Qt::NoContextMenu</enum>
@@ -2259,9 +2342,7 @@
           <item row="2" column="0" >
            <widget class="QToolButton" name="mui_confquery" >
             <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>7</hsizetype>
-              <vsizetype>0</vsizetype>
+             <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -2354,10 +2435,19 @@
          <enum>QFrame::Raised</enum>
         </property>
         <layout class="QHBoxLayout" >
-         <property name="margin" >
+         <property name="spacing" >
           <number>5</number>
          </property>
-         <property name="spacing" >
+         <property name="leftMargin" >
+          <number>5</number>
+         </property>
+         <property name="topMargin" >
+          <number>5</number>
+         </property>
+         <property name="rightMargin" >
+          <number>5</number>
+         </property>
+         <property name="bottomMargin" >
           <number>5</number>
          </property>
          <item>
@@ -2395,9 +2485,7 @@
    <item row="0" column="0" >
     <widget class="QTableWidget2" name="mui_list" >
      <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>7</hsizetype>
-       <vsizetype>7</vsizetype>
+      <sizepolicy vsizetype="Expanding" hsizetype="Expanding" >
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
