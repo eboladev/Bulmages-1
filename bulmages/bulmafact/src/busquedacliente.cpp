@@ -39,6 +39,7 @@ BusquedaCliente::BusquedaCliente ( QWidget *parent )
     mui_labelCliente->setText ( tr ( "Clien&te:" ) );
     mui_labelCliente->setBuddy ( mui_buscar );
 
+    m_nomcliente->setText ( "" );
     mdb_idcliente = "";
     mdb_nomcliente = "";
     mdb_cifcliente = "";
@@ -68,7 +69,12 @@ void BusquedaCliente::pinta()
     _depura ( "BusquedaCliente::pinta", 0 );
     m_semaforo = TRUE;
     m_cifcliente->setText ( mdb_cifcliente );
-    m_nomcliente->setText ( mdb_codcliente + " - " + mdb_nomcliente );
+
+    if (mdb_codcliente.isEmpty() && mdb_nomcliente.isEmpty()) {
+	m_nomcliente->setText ( "" );
+    } else {
+	m_nomcliente->setText ( mdb_codcliente + " - " + mdb_nomcliente );
+    } // end if
     m_semaforo = FALSE;
     emit ( valueChanged ( mdb_idcliente ) );
     _depura ( "END BusquedaCliente::pinta", 0 );
@@ -90,6 +96,8 @@ void BusquedaCliente::setidcliente ( QString val )
     mdb_idcliente = val;
 
     if ( val == "" ) {
+        m_cifcliente->setText ( "" );
+        m_nomcliente->setText ( "" );
         mdb_idcliente = "";
         mdb_nomcliente = "";
         mdb_cifcliente = "";
@@ -149,6 +157,17 @@ void BusquedaCliente::setcifcliente ( QString val )
     delete cur;
     pinta();
     _depura ( "END BusquedaCliente::setcifcliente", 0, val );
+}
+
+
+/** Resetea el valor del 'id_cliente' y vacia la informacion del formulario.
+    Es util sobre todo el los filtros por cliente para anular el filtro.
+*/
+void BusquedaCliente::on_mui_borrar_idcliente_clicked()
+{
+    _depura ( "BusquedaCliente::on_mui_borrar_idcliente_clicked", 0 );
+    setidcliente ( "" );
+    _depura ( "END BusquedaCliente::on_mui_borrar_idcliente_clicked", 0 );
 }
 
 

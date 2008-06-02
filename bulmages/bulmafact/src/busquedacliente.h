@@ -61,6 +61,7 @@ public:
 
 public slots:
     virtual void on_mui_buscar_clicked();
+    virtual void on_mui_borrar_idcliente_clicked();
     virtual void on_m_cifcliente_textChanged ( const QString & );
     virtual void on_m_cifcliente_editingFinished();
 

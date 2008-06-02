@@ -260,4 +260,3 @@ QString BusquedaReferencia::valorCampo()
     return mui_referencia->text();
 }
 
-

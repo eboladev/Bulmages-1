@@ -94,15 +94,6 @@ PresupuestoView::PresupuestoView ( Company *comp, QWidget *parent )
         setListaLineas ( subform2 );
         setListaDescuentos ( m_descuentos );
 
-        m_totalBases->setReadOnly ( TRUE );
-        m_totalBases->setAlignment ( Qt::AlignRight );
-        m_totalTaxes->setReadOnly ( TRUE );
-        m_totalTaxes->setAlignment ( Qt::AlignRight );
-        m_totalDiscounts->setReadOnly ( TRUE );
-        m_totalDiscounts->setAlignment ( Qt::AlignRight );
-        m_totalPresupuestoCliente->setReadOnly ( TRUE );
-        m_totalPresupuestoCliente->setAlignment ( Qt::AlignRight );
-
         /// Inicializamos para que no se queden sin ser pintada.
         mui_idforma_pago->setValorCampo ( "0" );
         mui_idalmacen->setValorCampo ( "0" );

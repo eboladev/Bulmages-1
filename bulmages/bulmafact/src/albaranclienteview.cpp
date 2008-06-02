@@ -82,7 +82,6 @@ AlbaranClienteView::AlbaranClienteView ( Company *comp, QWidget *parent )
         addDBCampo ( "descalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "AlbaranCliente", "Descripcion" ) );
         addDBCampo ( "refalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "AlbaranCliente", "Referencia" ) );
 
-
         /// Disparamos los plugins.
         int res = g_plugins->lanza ( "AlbaranClienteView_AlbaranClienteView", this );
         if ( res != 0 )
@@ -95,10 +94,18 @@ AlbaranClienteView::AlbaranClienteView ( Company *comp, QWidget *parent )
         mui_idcliente->setEmpresaBase ( comp );
         mui_idtrabajador->setEmpresaBase ( comp );
         mui_refalbaran->setEmpresaBase ( comp );
+
         setListaLineas ( subform2 );
         setListaDescuentos ( m_descuentos );
+
+        /// Inicializamos para que no se queden sin ser pintada.
+        mui_idforma_pago->setValorCampo ( "0" );
+        mui_idalmacen->setValorCampo ( "0" );
+        mui_idtrabajador->setValorCampo ( "0" );
+
         meteWindow ( windowTitle(), this, FALSE );
-        dialogChanges_cargaInicial();
+        /// Disparamos los plugins por flanco descendente.
+        g_plugins->lanza ( "AlbaranClienteView_AlbaranClienteView_Post", this );
     } catch ( ... ) {
         mensajeInfo ( tr ( "Error al crear el albaran a cliente" ) );
     } // end try
