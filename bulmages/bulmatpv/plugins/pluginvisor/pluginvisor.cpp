@@ -20,46 +20,65 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QDockWidget>
+#include <QFile>
+#include <QTextStream>
 
-#include "pluginaliastpv.h"
+#include "pluginvisor.h"
 #include "funcaux.h"
 #include "empresatpv.h"
+#include "plugins.h"
+#include "ticket.h"
+#include "qapplication2.h"
 
+/// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
+/// como un QMap.
+typedef QMap<QString, Fixed> base;
 
+QFile *g_file;
 
-
-
-
-int Ticket_insertarArticuloNL_Post ( Ticket *tick )
+///
+/**
+\return
+**/
+int entryPoint ( BulmaTPV *tpv )
 {
-    QString query = "SELECT * FROM alias WHERE cadalias = '" + ( ( EmpresaTPV * ) tick->empresaBase() )->valorInput() + "'";
-    cursor2 *cur = tick->empresaBase() ->cargacursor ( query );
-    if ( !cur->eof() ) {
-        tick->insertarArticulo ( cur->valor ( "idarticulo" ), Fixed ( "1" ) );
-    } // end if
-    delete cur;
-
+    _depura ( "entryPoint", 0 );
+    g_file = new QFile(confpr->valor(CONF_TPV_VISOR_FILE));
+    g_file->open(QIODevice::WriteOnly | QIODevice::Unbuffered);
+    g_file->write ( "\x0Ch", 1 );
+    g_file->write( "Ready.", 6);
+    g_file->flush();
+    _depura ( "END entryPoint", 0 );
     return 0;
 }
 
-
-
-int Ticket_insertarArticulo_Post ( Ticket *tick )
+///
+/**
+\return
+**/
+int exitPoint ( BulmaTPV *tpv )
 {
-    static int semaforo = 0;
-    if (semaforo == 0) {
-	semaforo = 1;
-    QString query = "SELECT * FROM alias WHERE cadalias = '" + ( ( EmpresaTPV * ) tick->empresaBase() )->valorInput() + "'";
-    cursor2 *cur = tick->empresaBase() ->cargacursor ( query );
-    if ( !cur->eof() ) {
-        tick->insertarArticulo ( cur->valor ( "idarticulo" ), Fixed ( "1" ) );
-    } // end if
-    delete cur;
-	semaforo = 0;
-    } else {
-	return -1;
-    } // end if
-
+    _depura ( "entryPoint", 0 );
+    g_file->write ( "\x0Ch", 1 );
+    g_file->close();
+    delete g_file;
+    _depura ( "END entryPoint", 0 );
     return 0;
 }
+
+int Ticket_insertarArticulo_Post(Ticket *tick) {
+        g_file->write ( "\x0Ch", 1 );
+	QTextStream out(g_file);
+	out <<   tick->lineaActTicket()->DBvalue("codigocompletoarticulo").left(5);
+	out << " " << tick->lineaActTicket()->DBvalue("nomarticulo").left(10);
+	out << "\n      P.V.P. : " << tick->lineaActTicket()->DBvalue("pvplalbaran");
+	g_file->flush();
+}
+
+int Ticket_total(QString *total) {
+        g_file->write ( "\x0Ch", 1 );
+	QTextStream out(g_file);
+	out << "Total : " << total;
+	g_file->flush();
+}
+

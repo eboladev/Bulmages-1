@@ -459,9 +459,11 @@ void EmpresaTPV::cobrar()
     QString idtrabajador = m_ticketActual->DBvalue ( "idtrabajador" );
     m_ticketActual->guardar();
     m_ticketActual->imprimir();
+
+    g_plugins->lanza("EmpresaTPV_cobrar", this);
+
     m_listaTickets.removeAt ( m_listaTickets.indexOf ( m_ticketActual ) );
     m_ticketActual = NULL;
-
 
     Ticket *ticket = NULL;
     Ticket *ticketv = NULL;
@@ -485,6 +487,8 @@ void EmpresaTPV::cobrar()
         m_listaTickets.append ( tick );
         tick->pintar();
     }// end if
+
+    g_plugins->lanza("EmpresaTPV_cobrar_Post", this);
 
 }
 

@@ -1,8 +1,6 @@
 /***************************************************************************
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   Copyright (C) 2006 by Fco. Javier M. C.                               *
- *   fcojavmc@todo-redes.com                                               *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -20,46 +18,19 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QDockWidget>
+#ifdef Q_WS_WIN
+# define MY_EXPORT __declspec(dllexport)
+#else
+# define MY_EXPORT
+#endif
 
-#include "pluginaliastpv.h"
-#include "funcaux.h"
+#include "bulmatpv.h"
 #include "empresatpv.h"
+#include "ticket.h"
 
+extern "C" MY_EXPORT int entryPoint ( BulmaTPV * );
+extern "C" MY_EXPORT int exitPoint ( QMainWindow * );
+extern "C" MY_EXPORT int EmpresaTPV_createMainWindows_Post ( EmpresaTPV * );
+extern "C" MY_EXPORT int Ticket_insertarArticulo_Post(Ticket *);
+extern "C" MY_EXPORT int Ticket_total(Ticket *);
 
-
-
-
-
-int Ticket_insertarArticuloNL_Post ( Ticket *tick )
-{
-    QString query = "SELECT * FROM alias WHERE cadalias = '" + ( ( EmpresaTPV * ) tick->empresaBase() )->valorInput() + "'";
-    cursor2 *cur = tick->empresaBase() ->cargacursor ( query );
-    if ( !cur->eof() ) {
-        tick->insertarArticulo ( cur->valor ( "idarticulo" ), Fixed ( "1" ) );
-    } // end if
-    delete cur;
-
-    return 0;
-}
-
-
-
-int Ticket_insertarArticulo_Post ( Ticket *tick )
-{
-    static int semaforo = 0;
-    if (semaforo == 0) {
-	semaforo = 1;
-    QString query = "SELECT * FROM alias WHERE cadalias = '" + ( ( EmpresaTPV * ) tick->empresaBase() )->valorInput() + "'";
-    cursor2 *cur = tick->empresaBase() ->cargacursor ( query );
-    if ( !cur->eof() ) {
-        tick->insertarArticulo ( cur->valor ( "idarticulo" ), Fixed ( "1" ) );
-    } // end if
-    delete cur;
-	semaforo = 0;
-    } else {
-	return -1;
-    } // end if
-
-    return 0;
-}

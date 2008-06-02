@@ -161,6 +161,10 @@ DBRecord *Ticket::insertarArticulo ( QString idArticulo, Fixed cantidad, bool nu
     } // end if
 
 
+    /// Disparamos los plugins.
+    g_plugins->lanza ( "Ticket_insertarArticulo_Post", this );
+
+
     /// Pintamos el ticket ya que se ha modificado.
     pintar();
 
@@ -460,6 +464,10 @@ void  Ticket::imprimir()
     str = "TOTAL " + total.toQString().rightJustified ( 10, ' ' );
     file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
     file.write ( "\n", 1 );
+
+    /// Lanzamiento de un plugin extraño hacia el total
+    QString stotal = total.toQString();
+    g_plugins->lanza("Ticket_total", &stotal);
 
     str = "* IVA INCLUIDO *";
     file.write ( str.rightJustified ( 20, ' ' ).toAscii() );

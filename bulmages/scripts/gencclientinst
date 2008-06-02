@@ -25,6 +25,9 @@ rm /usr/bin/bgtrml2pdf
 ln -s $1/$2/bgtrml2pdf /usr/bin/bgtrml2pdf
 
 
+rm /usr/bin/bulmasetup
+ln -s $1/$2/bulmasetup.py /usr/bin/bulmasetup
+
 rm /usr/bin/bulmages
 ln -s $1/$2/bulmages/src/bulmages /usr/bin/bulmages
 

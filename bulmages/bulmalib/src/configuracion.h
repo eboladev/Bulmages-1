@@ -178,6 +178,8 @@
 
 /// Impresora de tickets
 #define CONF_TICKET_PRINTER_FILE     450
+/// Visor de TPV
+#define CONF_TPV_VISOR_FILE          451
 
 /// CONF_NUM_AUT_* determina si se utilizaran numeradores automaticos para presupuestos,
 /// albaranes y facturas inicialmente vale "".
