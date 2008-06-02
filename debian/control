@@ -3,7 +3,7 @@ Section: kde
 Priority: optional
 Maintainer: René Mérou <ochominutosdearco@gmail.com>
 Uploaders: Tomeu Borràs Riera <tborras@conetxcia.com>, Miguel Gea Milvaques <xerakko@debian.org>, Leopold Palomo Avellaneda <leo@alaxarxa.net>
-Build-Depends: debhelper (>= 5.0.37.2), qt4-dev-tools(>= 4.3.1), libqt4-qt3support(>= 4.3.1), libqt4-dev, python,  python-support (>= 0.3), libpq-dev, quilt, cmake (>=2.4.8)
+Build-Depends: debhelper (>= 5.0.37.2), qt4-dev-tools (>= 4.3.1), libqt4-qt3support (>= 4.3.1), libqt4-dev, python, python-support (>= 0.3), libpq-dev, quilt, cmake (>=2.6.0)
 Standards-Version: 3.7.3
 Homepage: http://www.iglues.org
 XS-Vcs-Svn: svn://svn.berlios.de/bulmages/trunk/debian
@@ -11,8 +11,8 @@ XS-Vcs-Browser: http://svn.berlios.de/wsvn/bulmages/trunk/debian/
 
 Package: bulmages
 Architecture: any
-Depends: ${shlibs:Depends}, bulmages-common (>= 0.11), bulmacont (>= 0.11), bulmafact  (>= 0.11), bulmages-servers (>= 0.11)
-Recommends: bulmages-admin, bulmages-servers
+Depends: ${shlibs:Depends}, bulmages-common (>= 0.11)
+Recommends: bulmages-admin, bulmages-servers (>= 0.11), bulmacont (>= 0.11), bulmafact (>= 0.11)
 Description: Accounting and invoicing programs for Spanish little businesses
  This package provides the entire Bulmages financial suite for Spanish
  businesses.  Bulmages includes an accounting program (bulmacont), an invoicing
