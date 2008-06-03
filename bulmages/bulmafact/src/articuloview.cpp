@@ -112,7 +112,7 @@ ArticuloView::ArticuloView ( Company *comp, QWidget *parent )
 ArticuloView::~ArticuloView()
 {
     _depura ( "ArticuloView::~ArticuloView", 0 );
-    empresaBase() ->refreshArticles();
+        empresaBase() ->refreshArticles();
     _depura ( "END ArticuloView::~ArticuloView", 0 );
 }
 
@@ -196,6 +196,7 @@ int ArticuloView::guardarPost()
     if ( m_archivoimagen != "" ) {
         cursor2 * cur1 = empresaBase() ->cargacursor ( "SELECT codigocompletoarticulo FROM articulo WHERE idarticulo = " + DBvalue ( "idarticulo" ) );
         if ( !cur1 ) throw - 1;
+	m_archivoimagen = m_archivoimagen.replace(" ", "\\ ");
         QString cadena = "cp " + m_archivoimagen + " " + confpr->valor ( CONF_DIR_IMG_ARTICLES ) + cur1->valor ( "codigocompletoarticulo" ) + ".jpg";
         delete cur1;
         system ( cadena.toAscii().constData() );

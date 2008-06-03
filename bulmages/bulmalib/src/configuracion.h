@@ -100,31 +100,36 @@
 #define CONF_BG_DESCFACTURASCLIENTE  151
 
 #define CONF_BG_LISTARTICULOS        152
-
+#define CONF_SPLASH_BULMACONT        170
+#define CONF_SPLASH_BULMATPV         171
 /// Indica que base de datos es la META (OBSOLETO=
 #define CONF_METABASE                180
 /// Indica por defecto que servidor de bases de datos utilizar.
 #define CONF_SERVIDOR                181
 /// Indica por defecto que puerto tiene el servidor de bases de datos para conectar con el.
 #define CONF_PUERTO                  182
-/// Indica que navegador utilizar para mostrar los resultados de los listados (por defecto
-/// mozilla).
-#define CONF_NAVEGADOR               197
-/// Indica que editor usar para mostrar listados (por defecto kedit).
-#define CONF_EDITOR                  198
+
 /// Indica que visor de documentos PDF va a utilizar el programa.
 #define CONF_PDF                     195
 #define CONF_DIR_TMP                 194
 #define CONF_PYTHON                  193
 #define CONF_FLIP                    192
-/// Indica que imagen utilizar como splash de BulmaCont.
-#define CONF_SPLASH                  199
-#define CONF_SPLASH_BULMACONT        170
-/// Indica que imagen utilizar como Background.
-#define CONF_BACKGROUND              200
 /// Indica que imagen utilizar como splash de Bulmafact.
 #define CONF_SPLASH_BULMAFACT        196
-#define CONF_SPLASH_BULMATPV         171
+/// Indica que navegador utilizar para mostrar los resultados de los listados (por defecto
+/// mozilla).
+#define CONF_NAVEGADOR               197
+/// Indica que editor usar para mostrar listados (por defecto kedit).
+#define CONF_EDITOR                  198
+/// Indica que imagen utilizar como splash de BulmaCont.
+#define CONF_SPLASH                  199
+
+/// Indica que imagen utilizar como Background.
+#define CONF_BACKGROUND              200
+
+/// Determina si hay refresco 
+#define CONF_REFRESH_LIST            210
+
 /// Esto indica donde se van a albergar los programas auxiliares a bulmages (cargaemp,
 /// creaemp, borraemp).
 #define CONF_EJECUTABLES             300
