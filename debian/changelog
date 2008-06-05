@@ -1,7 +1,14 @@
+bulmages (0.11.1~rc4-1) unstable; urgency=medium
+
+  [ Leopold Palomo Avellaneda ]
+  * New upstream release.
+  * Corrected some typo in the names of the maintainers.
+
+ -- Leopold Palomo Avellaneda <leo@alaxarxa.net>  Thu, 05 Jun 2008 20:59:16 +0200
+
 bulmages (0.11.1~rc3-1) unstable; urgency=low
 
   [ Leopold Palomo Avellaneda ]
-  [Leopold Palomo Avellaneda]
   * New upstream release. Closes: #482918.
   * Added bulmacont-plugins to Recommends of bulmacont.
   * Added bulmafact-plugins to Recommends of bulmafact.
@@ -14,7 +21,7 @@ bulmages (0.11.1~rc3-1) unstable; urgency=low
 
 bulmages (0.11.1~rc2-1) unstable; urgency=low
 
-  [Leopold Palomo Avellaneda]
+  [ Leopold Palomo Avellaneda ]
   * New Upstream release.
   * Erased bulmages-admin as dependecy of bulmacont and bulmafact. 
   Now, they recomend it.
@@ -25,7 +32,7 @@ bulmages (0.11.1~rc2-1) unstable; urgency=low
 
 bulmages (0.11.1~rc1-1) unstable; urgency=low
 
-  [Leopold Palomo Avellaneda]
+  [ Leopold Palomo Avellaneda ]
   * New Upstream release.
   * Added postgresql-contrib as dependecy of bulmafact-plugins because
   there's one plugin that needs it.
@@ -34,11 +41,11 @@ bulmages (0.11.1~rc1-1) unstable; urgency=low
 
 bulmages (0.11.1~rc0-2) unstable; urgency=low
 
-  [Miguel Gea Milvaques]
+  [ Miguel Gea Milvaques ]
   * Deleted -DCMAKE_BUILD_TYPE=Release to the rules. It provoques 
   problems when compile in some platforms and version of gcc.
 
-  [Leopold Palomo Avellaneda]
+  [ Leopold Palomo Avellaneda ]
   * Changed dependecies of Qt>=4.1.4 to Qt >=4.3.1. The package needs it.
   * Erase the bulmages-doc package. Not needed by now. The documentation of
   each package goes to the respective package.
@@ -48,7 +55,7 @@ bulmages (0.11.1~rc0-2) unstable; urgency=low
 
 bulmages (0.11.1~rc0-1) unstable; urgency=low
 
-  [Leopold Palomo Avellaneda]
+  [ Leopold Palomo Avellaneda ]
   * New upstream release candidate version.
   * Added -DCMAKE_BUILD_TYPE=Release to the rules.
 
@@ -56,7 +63,7 @@ bulmages (0.11.1~rc0-1) unstable; urgency=low
 
 bulmages (0.11+svn20080327-1) unstable; urgency=low
 
-  [Leopold Palomo Avellaneda]
+  [ Leopold Palomo Avellaneda ]
   * New subversion upstream.
   * Added the python support to acomplish the debian policy.
   * Corrected the number of the version from +1 to -1.
@@ -67,7 +74,7 @@ bulmages (0.11+svn20080327-1) unstable; urgency=low
 
 bulmages (0.11+svn20080324-1) unstable; urgency=low
 
-  [Leopold Palomo Avellaneda]
+  [ Leopold Palomo Avellaneda ]
   * New subversion upstream. Solves warnings of linkages.
   * Added postinst and postrm to bulmacont, bulmafact and bulmatpv
   because now they have libs.
@@ -85,7 +92,7 @@ bulmages (0.11+svn20080324-1) unstable; urgency=low
 
 bulmages (0.11+svn20080308-1) unstable; urgency=low
   
-  [Leopold Palomo Avellaneda]
+  [ Leopold Palomo Avellaneda ]
   * Added Uploaders: Miguel Gea Milvaques, Tomeu Borràs Riera and 
     Leopold Palomo Avellaneda
   * Working on the svn preparing the new upstream version
@@ -105,7 +112,7 @@ bulmages (0.11+svn20080308-1) unstable; urgency=low
 
 bulmages (0.10.0-1) unstable; urgency=low
 
-  [Miguel Gea Milvaques]
+  [ Miguel Gea Milvaques ]
   * New upstream version
   * Added new bulmages-plugins package.
   * Moved Homepage as field in debian/control
@@ -113,7 +120,7 @@ bulmages (0.10.0-1) unstable; urgency=low
  -- Miguel Gea Milvaques <xerakko@debian.org>  Wed, 02 Jan 2008 13:19:16 +0100
 
 bulmages (0.9.1-2) unstable; urgency=low
-  [ Miguel Gea Milvaques]
+  [ Miguel Gea Milvaques ]
   * Add only the libbulmalib.so.1 library (Closes: #423845).
 
  -- René Mérou <ochominutosdearco@gmail.com>  Sun, 13 May 2007 19:33:44 +0200
@@ -133,7 +140,7 @@ bulmages (0.9.1-1) unstable; urgency=low
 
 bulmages (0.5.9+svn20061021+20061210-1) unstable; urgency=low
 
-  [  Miguel Gea Milvaques]
+  [ Miguel Gea Milvaques ]
   * added btrml2pdf.py manual
   * removed debconf templates
   * added python dependence
