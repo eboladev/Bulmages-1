@@ -6,14 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>690</width>
-    <height>490</height>
+    <width>750</width>
+    <height>550</height>
    </rect>
   </property>
   <property name="sizePolicy" >
-   <sizepolicy>
-    <hsizetype>5</hsizetype>
-    <vsizetype>7</vsizetype>
+   <sizepolicy vsizetype="Expanding" hsizetype="Preferred" >
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -24,20 +22,41 @@
   <property name="windowIcon" >
    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_pedidos.48x48.png</iconset>
   </property>
-  <layout class="QVBoxLayout" >
-   <property name="margin" >
+  <layout class="QGridLayout" >
+   <property name="leftMargin" >
     <number>5</number>
    </property>
-   <property name="spacing" >
+   <property name="topMargin" >
     <number>5</number>
    </property>
-   <item>
+   <property name="rightMargin" >
+    <number>5</number>
+   </property>
+   <property name="bottomMargin" >
+    <number>5</number>
+   </property>
+   <property name="horizontalSpacing" >
+    <number>5</number>
+   </property>
+   <property name="verticalSpacing" >
+    <number>5</number>
+   </property>
+   <item row="0" column="0" colspan="9" >
     <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
      <property name="spacing" >
       <number>5</number>
+     </property>
+     <property name="leftMargin" >
+      <number>0</number>
+     </property>
+     <property name="topMargin" >
+      <number>0</number>
+     </property>
+     <property name="rightMargin" >
+      <number>0</number>
+     </property>
+     <property name="bottomMargin" >
+      <number>0</number>
      </property>
      <item>
       <widget class="QLabel" name="label5" >
@@ -81,10 +100,19 @@
         <enum>QFrame::Raised</enum>
        </property>
        <layout class="QHBoxLayout" >
-        <property name="margin" >
+        <property name="spacing" >
          <number>5</number>
         </property>
-        <property name="spacing" >
+        <property name="leftMargin" >
+         <number>5</number>
+        </property>
+        <property name="topMargin" >
+         <number>5</number>
+        </property>
+        <property name="rightMargin" >
+         <number>5</number>
+        </property>
+        <property name="bottomMargin" >
          <number>5</number>
         </property>
         <item>
@@ -148,7 +176,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:Images/edit-delete.svg</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Images/edit-delete.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -307,15 +335,13 @@
         <item>
          <widget class="QLabel" name="textLabel1_2_2_3_2_2" >
           <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>1</hsizetype>
-            <vsizetype>0</vsizetype>
+           <sizepolicy vsizetype="Fixed" hsizetype="Minimum" >
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
           <property name="text" >
-           <string>Referencia del pedido:</string>
+           <string>Referencia:</string>
           </property>
           <property name="buddy" >
            <cstring>mui_refpedidoproveedor</cstring>
@@ -324,14 +350,6 @@
         </item>
         <item>
          <widget class="BusquedaReferencia" name="mui_refpedidoproveedor" >
-          <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>5</hsizetype>
-            <vsizetype>13</vsizetype>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
           <property name="minimumSize" >
            <size>
             <width>150</width>
@@ -345,119 +363,107 @@
      </item>
     </layout>
    </item>
-   <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
+   <item row="1" column="0" >
+    <widget class="QToolButton" name="mui_detalles" >
+     <property name="minimumSize" >
+      <size>
+       <width>22</width>
+       <height>22</height>
+      </size>
      </property>
-     <property name="spacing" >
-      <number>5</number>
+     <property name="maximumSize" >
+      <size>
+       <width>22</width>
+       <height>22</height>
+      </size>
      </property>
-     <item>
-      <widget class="QToolButton" name="mui_detalles" >
-       <property name="minimumSize" >
-        <size>
-         <width>22</width>
-         <height>22</height>
-        </size>
-       </property>
-       <property name="maximumSize" >
-        <size>
-         <width>22</width>
-         <height>22</height>
-        </size>
-       </property>
-       <property name="toolTip" >
-        <string>Mostrar/ocultar cabecera</string>
-       </property>
-       <property name="whatsThis" >
-        <string>Mostrar/ocultar cabecera</string>
-       </property>
-       <property name="text" >
-        <string/>
-       </property>
-       <property name="icon" >
-        <iconset resource="../../bulmages.qrc" >:/Images/document-open.svg</iconset>
-       </property>
-       <property name="iconSize" >
-        <size>
-         <width>32</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="shortcut" >
-        <string>Ctrl+G</string>
-       </property>
-       <property name="checkable" >
-        <bool>true</bool>
-       </property>
-       <property name="checked" >
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="textLabel1_2_2_3_2" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>1</hsizetype>
-         <vsizetype>5</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text" >
-        <string>Descripcion:</string>
-       </property>
-       <property name="buddy" >
-        <cstring>mui_descpedidoproveedor</cstring>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="mui_descpedidoproveedor" />
-     </item>
-     <item>
-      <widget class="QLabel" name="label6" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>1</hsizetype>
-         <vsizetype>5</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text" >
-        <string>Nº de pedido:</string>
-       </property>
-       <property name="buddy" >
-        <cstring>mui_numeroPedido</cstring>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="mui_numeroPedido" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>0</hsizetype>
-         <vsizetype>0</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-      </widget>
-     </item>
-    </layout>
+     <property name="toolTip" >
+      <string>Mostrar/ocultar cabecera</string>
+     </property>
+     <property name="whatsThis" >
+      <string>Mostrar/ocultar cabecera</string>
+     </property>
+     <property name="text" >
+      <string/>
+     </property>
+     <property name="icon" >
+      <iconset resource="../../bulmages.qrc" >:/Images/document-open.svg</iconset>
+     </property>
+     <property name="iconSize" >
+      <size>
+       <width>32</width>
+       <height>32</height>
+      </size>
+     </property>
+     <property name="shortcut" >
+      <string>Ctrl+G</string>
+     </property>
+     <property name="checkable" >
+      <bool>true</bool>
+     </property>
+     <property name="checked" >
+      <bool>true</bool>
+     </property>
+    </widget>
    </item>
-   <item>
-    <widget class="QFrame" name="frame" >
+   <item row="1" column="1" >
+    <widget class="QLabel" name="textLabel1_2_2_3_2" >
      <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>5</hsizetype>
-       <vsizetype>1</vsizetype>
+      <sizepolicy vsizetype="Preferred" hsizetype="Minimum" >
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
+     </property>
+     <property name="text" >
+      <string>Descripcion:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>mui_descpedidoproveedor</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2" colspan="4" >
+    <widget class="QLineEdit" name="mui_descpedidoproveedor" />
+   </item>
+   <item row="1" column="6" colspan="2" >
+    <widget class="QLabel" name="label6" >
+     <property name="sizePolicy" >
+      <sizepolicy vsizetype="Preferred" hsizetype="Minimum" >
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text" >
+      <string>Numero de pedido:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>mui_numpedidoproveedor</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="8" >
+    <widget class="QLineEdit" name="mui_numpedidoproveedor" >
+     <property name="sizePolicy" >
+      <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize" >
+      <size>
+       <width>150</width>
+       <height>0</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="9" >
+    <widget class="QFrame" name="frame" >
+     <property name="minimumSize" >
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
      </property>
      <property name="frameShape" >
       <enum>QFrame::StyledPanel</enum>
@@ -466,54 +472,61 @@
       <enum>QFrame::Raised</enum>
      </property>
      <layout class="QGridLayout" >
-      <property name="margin" >
+      <property name="leftMargin" >
        <number>5</number>
       </property>
-      <property name="spacing" >
+      <property name="topMargin" >
        <number>5</number>
       </property>
-      <item row="4" column="2" >
-       <widget class="QLabel" name="m_lblalmacen_2" >
-        <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>1</hsizetype>
-          <vsizetype>5</vsizetype>
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
+      <property name="rightMargin" >
+       <number>5</number>
+      </property>
+      <property name="bottomMargin" >
+       <number>5</number>
+      </property>
+      <property name="horizontalSpacing" >
+       <number>5</number>
+      </property>
+      <property name="verticalSpacing" >
+       <number>5</number>
+      </property>
+      <item row="0" column="0" colspan="4" >
+       <widget class="QCheckBox" name="mui_tramitadoPedido" >
         <property name="text" >
-         <string>Foma de pago:</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         <string>Pedido &amp;tramitado</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="2" >
-       <widget class="QLabel" name="m_lblalmacen" >
+      <item rowspan="3" row="1" column="0" colspan="2" >
+       <widget class="BusquedaProveedor" name="mui_idproveedor" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>1</hsizetype>
-          <vsizetype>5</vsizetype>
+         <sizepolicy vsizetype="Ignored" hsizetype="Expanding" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
-        <property name="text" >
-         <string>Almacen de destino:</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
        </widget>
+      </item>
+      <item row="1" column="2" colspan="2" >
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType" >
+         <enum>QSizePolicy::Ignored</enum>
+        </property>
+        <property name="sizeHint" >
+         <size>
+          <width>231</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
       </item>
       <item row="2" column="2" >
        <widget class="QLabel" name="m_lblalmacen_2_2" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>1</hsizetype>
-          <vsizetype>5</vsizetype>
+         <sizepolicy vsizetype="Preferred" hsizetype="Minimum" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -526,22 +539,10 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="3" >
-       <widget class="BusquedaFecha" native="1" name="mui_fechaPedido" >
-        <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>13</hsizetype>
-          <vsizetype>0</vsizetype>
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="focusPolicy" >
-         <enum>Qt::StrongFocus</enum>
-        </property>
-       </widget>
+      <item row="2" column="3" >
+       <widget class="BusquedaTrabajador" name="mui_idtrabajador" />
       </item>
-      <item row="1" column="2" >
+      <item row="3" column="2" >
        <widget class="QLabel" name="textLabel1_2" >
         <property name="text" >
          <string>Fecha del pedido:</string>
@@ -551,52 +552,10 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="3" >
-       <widget class="BusquedaTrabajador" native="1" name="mui_idtrabajador" >
-        <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>5</hsizetype>
-          <vsizetype>0</vsizetype>
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="focusPolicy" >
-         <enum>Qt::StrongFocus</enum>
-        </property>
-       </widget>
-      </item>
       <item row="3" column="3" >
-       <widget class="BusquedaAlmacen" native="1" name="mui_idalmacen" >
-        <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>13</hsizetype>
-          <vsizetype>0</vsizetype>
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="focusPolicy" >
-         <enum>Qt::StrongFocus</enum>
-        </property>
-       </widget>
+       <widget class="BusquedaFecha" name="mui_fechapedidoproveedor" />
       </item>
-      <item row="4" column="3" >
-       <widget class="BusquedaFormaPago" native="1" name="mui_idforma_pago" >
-        <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>5</hsizetype>
-          <vsizetype>0</vsizetype>
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="focusPolicy" >
-         <enum>Qt::StrongFocus</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0" >
+      <item row="4" column="0" >
        <widget class="QLabel" name="label7" >
         <property name="text" >
          <string>Persona de contacto:</string>
@@ -605,14 +564,33 @@
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
         <property name="buddy" >
-         <cstring>mui_numeroPedido</cstring>
+         <cstring>mui_numpedidoproveedor</cstring>
         </property>
        </widget>
       </item>
-      <item row="3" column="1" >
+      <item row="4" column="1" >
        <widget class="QLineEdit" name="mui_contactpedidoproveedor" />
       </item>
-      <item row="4" column="0" >
+      <item row="4" column="2" >
+       <widget class="QLabel" name="m_lblalmacen_2" >
+        <property name="sizePolicy" >
+         <sizepolicy vsizetype="Preferred" hsizetype="Minimum" >
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text" >
+         <string>Foma de pago:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="3" >
+       <widget class="BusquedaFormaPago" name="mui_idforma_pago" />
+      </item>
+      <item row="5" column="0" >
        <widget class="QLabel" name="label8" >
         <property name="text" >
          <string>Telefono de contacto:</string>
@@ -622,68 +600,32 @@
         </property>
        </widget>
       </item>
-      <item row="4" column="1" >
+      <item row="5" column="1" >
        <widget class="QLineEdit" name="mui_telpedidoproveedor" />
       </item>
-      <item rowspan="3" row="0" column="0" colspan="2" >
-       <widget class="BusquedaProveedor" native="1" name="mui_idproveedor" >
+      <item row="5" column="2" >
+       <widget class="QLabel" name="m_lblalmacen" >
         <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>7</hsizetype>
-          <vsizetype>13</vsizetype>
+         <sizepolicy vsizetype="Preferred" hsizetype="Minimum" >
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
-        <property name="minimumSize" >
-         <size>
-          <width>250</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="focusPolicy" >
-         <enum>Qt::StrongFocus</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="3" >
-       <widget class="QCheckBox" name="mui_tramitadoPedido" >
-        <property name="font" >
-         <font>
-          <family>Sans Serif</family>
-          <pointsize>9</pointsize>
-          <weight>50</weight>
-          <italic>false</italic>
-          <bold>false</bold>
-          <underline>false</underline>
-          <strikeout>false</strikeout>
-         </font>
-        </property>
         <property name="text" >
-         <string>Pedido &amp;tramitado</string>
+         <string>Almacen de destino:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
-      <item row="0" column="2" >
-       <spacer>
-        <property name="orientation" >
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeType" >
-         <enum>QSizePolicy::Fixed</enum>
-        </property>
-        <property name="sizeHint" >
-         <size>
-          <width>20</width>
-          <height>22</height>
-         </size>
-        </property>
-       </spacer>
+      <item row="5" column="3" >
+       <widget class="BusquedaAlmacen" name="mui_idalmacen" />
       </item>
      </layout>
     </widget>
    </item>
-   <item>
+   <item row="3" column="0" colspan="9" >
     <widget class="QTabWidget" name="discounts" >
      <property name="enabled" >
       <bool>true</bool>
@@ -696,10 +638,19 @@
        <string>&amp;Detalle</string>
       </attribute>
       <layout class="QVBoxLayout" >
-       <property name="margin" >
+       <property name="spacing" >
         <number>5</number>
        </property>
-       <property name="spacing" >
+       <property name="leftMargin" >
+        <number>5</number>
+       </property>
+       <property name="topMargin" >
+        <number>5</number>
+       </property>
+       <property name="rightMargin" >
+        <number>5</number>
+       </property>
+       <property name="bottomMargin" >
         <number>5</number>
        </property>
        <item>
@@ -716,10 +667,19 @@
        <string>Descuen&amp;tos</string>
       </attribute>
       <layout class="QVBoxLayout" >
-       <property name="margin" >
+       <property name="spacing" >
         <number>5</number>
        </property>
-       <property name="spacing" >
+       <property name="leftMargin" >
+        <number>5</number>
+       </property>
+       <property name="topMargin" >
+        <number>5</number>
+       </property>
+       <property name="rightMargin" >
+        <number>5</number>
+       </property>
+       <property name="bottomMargin" >
         <number>5</number>
        </property>
        <item>
@@ -736,18 +696,25 @@
        <string>Comentario&amp;s</string>
       </attribute>
       <layout class="QVBoxLayout" >
-       <property name="margin" >
-        <number>5</number>
-       </property>
        <property name="spacing" >
         <number>5</number>
        </property>
+       <property name="leftMargin" >
+        <number>5</number>
+       </property>
+       <property name="topMargin" >
+        <number>5</number>
+       </property>
+       <property name="rightMargin" >
+        <number>5</number>
+       </property>
+       <property name="bottomMargin" >
+        <number>5</number>
+       </property>
        <item>
-        <widget class="QTextEdit" name="mui_comentarios" >
+        <widget class="QTextEdit" name="mui_comentpedidoproveedor" >
          <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>7</hsizetype>
-           <vsizetype>5</vsizetype>
+          <sizepolicy vsizetype="Preferred" hsizetype="Expanding" >
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -761,671 +728,526 @@
      </widget>
     </widget>
    </item>
-   <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
+   <item row="4" column="0" colspan="2" >
+    <widget class="QLabel" name="label3" >
+     <property name="text" >
+      <string>Descuentos:</string>
      </property>
-     <property name="spacing" >
-      <number>6</number>
+     <property name="alignment" >
+      <set>Qt::AlignCenter</set>
      </property>
-     <item>
-      <layout class="QVBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
-       </property>
-       <property name="spacing" >
-        <number>5</number>
-       </property>
-       <item>
-        <widget class="QLabel" name="label3" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>7</hsizetype>
-           <vsizetype>5</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font" >
-          <font>
-           <family>Sans Serif</family>
-           <pointsize>9</pointsize>
-           <weight>50</weight>
-           <italic>false</italic>
-           <bold>false</bold>
-           <underline>false</underline>
-           <strikeout>false</strikeout>
-          </font>
-         </property>
-         <property name="text" >
-          <string>Descuentos:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="mui_totalDescuentos" >
-         <property name="enabled" >
-          <bool>true</bool>
-         </property>
-         <property name="palette" >
-          <palette>
-           <active>
-            <colorrole role="Base" >
-             <brush brushstyle="SolidPattern" >
-              <color alpha="255" >
-               <red>238</red>
-               <green>238</green>
-               <blue>238</blue>
-              </color>
-             </brush>
-            </colorrole>
-           </active>
-           <inactive>
-            <colorrole role="Base" >
-             <brush brushstyle="SolidPattern" >
-              <color alpha="255" >
-               <red>238</red>
-               <green>238</green>
-               <blue>238</blue>
-              </color>
-             </brush>
-            </colorrole>
-           </inactive>
-           <disabled>
-            <colorrole role="Base" >
-             <brush brushstyle="SolidPattern" >
-              <color alpha="255" >
-               <red>255</red>
-               <green>255</green>
-               <blue>255</blue>
-              </color>
-             </brush>
-            </colorrole>
-           </disabled>
-          </palette>
-         </property>
-         <property name="font" >
-          <font>
-           <family>Sans Serif</family>
-           <pointsize>12</pointsize>
-           <weight>75</weight>
-           <italic>false</italic>
-           <bold>true</bold>
-           <underline>false</underline>
-           <strikeout>false</strikeout>
-          </font>
-         </property>
-         <property name="focusPolicy" >
-          <enum>Qt::NoFocus</enum>
-         </property>
-         <property name="acceptDrops" >
-          <bool>false</bool>
-         </property>
-         <property name="text" >
-          <string>0.00</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight</set>
-         </property>
-         <property name="readOnly" >
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
-       </property>
-       <property name="spacing" >
-        <number>5</number>
-       </property>
-       <item>
-        <widget class="QLabel" name="label2" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>7</hsizetype>
-           <vsizetype>5</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font" >
-          <font>
-           <family>Sans Serif</family>
-           <pointsize>9</pointsize>
-           <weight>50</weight>
-           <italic>false</italic>
-           <bold>false</bold>
-           <underline>false</underline>
-           <strikeout>false</strikeout>
-          </font>
-         </property>
-         <property name="text" >
-          <string>Base imponible:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="mui_totalBaseImponible" >
-         <property name="palette" >
-          <palette>
-           <active>
-            <colorrole role="Base" >
-             <brush brushstyle="SolidPattern" >
-              <color alpha="255" >
-               <red>238</red>
-               <green>238</green>
-               <blue>238</blue>
-              </color>
-             </brush>
-            </colorrole>
-           </active>
-           <inactive>
-            <colorrole role="Base" >
-             <brush brushstyle="SolidPattern" >
-              <color alpha="255" >
-               <red>238</red>
-               <green>238</green>
-               <blue>238</blue>
-              </color>
-             </brush>
-            </colorrole>
-           </inactive>
-           <disabled>
-            <colorrole role="Base" >
-             <brush brushstyle="SolidPattern" >
-              <color alpha="255" >
-               <red>255</red>
-               <green>255</green>
-               <blue>255</blue>
-              </color>
-             </brush>
-            </colorrole>
-           </disabled>
-          </palette>
-         </property>
-         <property name="font" >
-          <font>
-           <family>Sans Serif</family>
-           <pointsize>12</pointsize>
-           <weight>75</weight>
-           <italic>false</italic>
-           <bold>true</bold>
-           <underline>false</underline>
-           <strikeout>false</strikeout>
-          </font>
-         </property>
-         <property name="focusPolicy" >
-          <enum>Qt::NoFocus</enum>
-         </property>
-         <property name="acceptDrops" >
-          <bool>false</bool>
-         </property>
-         <property name="text" >
-          <string>0.00</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight</set>
-         </property>
-         <property name="readOnly" >
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
-       </property>
-       <property name="spacing" >
-        <number>5</number>
-       </property>
-       <item>
-        <widget class="QLabel" name="label4_3" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>7</hsizetype>
-           <vsizetype>5</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font" >
-          <font>
-           <family>Sans Serif</family>
-           <pointsize>9</pointsize>
-           <weight>50</weight>
-           <italic>false</italic>
-           <bold>false</bold>
-           <underline>false</underline>
-           <strikeout>false</strikeout>
-          </font>
-         </property>
-         <property name="text" >
-          <string>I.R.P.F.:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="mui_totalIRPF" >
-         <property name="palette" >
-          <palette>
-           <active>
-            <colorrole role="Base" >
-             <brush brushstyle="SolidPattern" >
-              <color alpha="255" >
-               <red>238</red>
-               <green>238</green>
-               <blue>238</blue>
-              </color>
-             </brush>
-            </colorrole>
-           </active>
-           <inactive>
-            <colorrole role="Base" >
-             <brush brushstyle="SolidPattern" >
-              <color alpha="255" >
-               <red>238</red>
-               <green>238</green>
-               <blue>238</blue>
-              </color>
-             </brush>
-            </colorrole>
-           </inactive>
-           <disabled>
-            <colorrole role="Base" >
-             <brush brushstyle="SolidPattern" >
-              <color alpha="255" >
-               <red>255</red>
-               <green>255</green>
-               <blue>255</blue>
-              </color>
-             </brush>
-            </colorrole>
-           </disabled>
-          </palette>
-         </property>
-         <property name="font" >
-          <font>
-           <family>Sans Serif</family>
-           <pointsize>12</pointsize>
-           <weight>75</weight>
-           <italic>false</italic>
-           <bold>true</bold>
-           <underline>false</underline>
-           <strikeout>false</strikeout>
-          </font>
-         </property>
-         <property name="focusPolicy" >
-          <enum>Qt::NoFocus</enum>
-         </property>
-         <property name="acceptDrops" >
-          <bool>false</bool>
-         </property>
-         <property name="text" >
-          <string>0.00</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight</set>
-         </property>
-         <property name="readOnly" >
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
-       </property>
-       <property name="spacing" >
-        <number>5</number>
-       </property>
-       <item>
-        <widget class="QLabel" name="label4" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>7</hsizetype>
-           <vsizetype>5</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font" >
-          <font>
-           <family>Sans Serif</family>
-           <pointsize>9</pointsize>
-           <weight>50</weight>
-           <italic>false</italic>
-           <bold>false</bold>
-           <underline>false</underline>
-           <strikeout>false</strikeout>
-          </font>
-         </property>
-         <property name="text" >
-          <string>Impuestos:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="mui_totalImpuestos" >
-         <property name="palette" >
-          <palette>
-           <active>
-            <colorrole role="Base" >
-             <brush brushstyle="SolidPattern" >
-              <color alpha="255" >
-               <red>238</red>
-               <green>238</green>
-               <blue>238</blue>
-              </color>
-             </brush>
-            </colorrole>
-           </active>
-           <inactive>
-            <colorrole role="Base" >
-             <brush brushstyle="SolidPattern" >
-              <color alpha="255" >
-               <red>238</red>
-               <green>238</green>
-               <blue>238</blue>
-              </color>
-             </brush>
-            </colorrole>
-           </inactive>
-           <disabled>
-            <colorrole role="Base" >
-             <brush brushstyle="SolidPattern" >
-              <color alpha="255" >
-               <red>255</red>
-               <green>255</green>
-               <blue>255</blue>
-              </color>
-             </brush>
-            </colorrole>
-           </disabled>
-          </palette>
-         </property>
-         <property name="font" >
-          <font>
-           <family>Sans Serif</family>
-           <pointsize>12</pointsize>
-           <weight>75</weight>
-           <italic>false</italic>
-           <bold>true</bold>
-           <underline>false</underline>
-           <strikeout>false</strikeout>
-          </font>
-         </property>
-         <property name="focusPolicy" >
-          <enum>Qt::NoFocus</enum>
-         </property>
-         <property name="acceptDrops" >
-          <bool>false</bool>
-         </property>
-         <property name="text" >
-          <string>0.00</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight</set>
-         </property>
-         <property name="readOnly" >
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
-       </property>
-       <property name="spacing" >
-        <number>5</number>
-       </property>
-       <item>
-        <widget class="QLabel" name="label4_2" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>7</hsizetype>
-           <vsizetype>5</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font" >
-          <font>
-           <family>Sans Serif</family>
-           <pointsize>9</pointsize>
-           <weight>50</weight>
-           <italic>false</italic>
-           <bold>false</bold>
-           <underline>false</underline>
-           <strikeout>false</strikeout>
-          </font>
-         </property>
-         <property name="text" >
-          <string>R.E.:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="mui_totalRecargo" >
-         <property name="palette" >
-          <palette>
-           <active>
-            <colorrole role="Base" >
-             <brush brushstyle="SolidPattern" >
-              <color alpha="255" >
-               <red>238</red>
-               <green>238</green>
-               <blue>238</blue>
-              </color>
-             </brush>
-            </colorrole>
-           </active>
-           <inactive>
-            <colorrole role="Base" >
-             <brush brushstyle="SolidPattern" >
-              <color alpha="255" >
-               <red>238</red>
-               <green>238</green>
-               <blue>238</blue>
-              </color>
-             </brush>
-            </colorrole>
-           </inactive>
-           <disabled>
-            <colorrole role="Base" >
-             <brush brushstyle="SolidPattern" >
-              <color alpha="255" >
-               <red>255</red>
-               <green>255</green>
-               <blue>255</blue>
-              </color>
-             </brush>
-            </colorrole>
-           </disabled>
-          </palette>
-         </property>
-         <property name="font" >
-          <font>
-           <family>Sans Serif</family>
-           <pointsize>12</pointsize>
-           <weight>75</weight>
-           <italic>false</italic>
-           <bold>true</bold>
-           <underline>false</underline>
-           <strikeout>false</strikeout>
-          </font>
-         </property>
-         <property name="focusPolicy" >
-          <enum>Qt::NoFocus</enum>
-         </property>
-         <property name="acceptDrops" >
-          <bool>false</bool>
-         </property>
-         <property name="text" >
-          <string>0.00</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight</set>
-         </property>
-         <property name="readOnly" >
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
-       </property>
-       <property name="spacing" >
-        <number>5</number>
-       </property>
-       <item>
-        <widget class="QLabel" name="label1" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>7</hsizetype>
-           <vsizetype>5</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font" >
-          <font>
-           <family>Sans Serif</family>
-           <pointsize>9</pointsize>
-           <weight>50</weight>
-           <italic>false</italic>
-           <bold>false</bold>
-           <underline>false</underline>
-           <strikeout>false</strikeout>
-          </font>
-         </property>
-         <property name="text" >
-          <string>Total:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="mui_totalPedido" >
-         <property name="enabled" >
-          <bool>true</bool>
-         </property>
-         <property name="palette" >
-          <palette>
-           <active>
-            <colorrole role="Base" >
-             <brush brushstyle="SolidPattern" >
-              <color alpha="255" >
-               <red>238</red>
-               <green>238</green>
-               <blue>238</blue>
-              </color>
-             </brush>
-            </colorrole>
-           </active>
-           <inactive>
-            <colorrole role="Base" >
-             <brush brushstyle="SolidPattern" >
-              <color alpha="255" >
-               <red>238</red>
-               <green>238</green>
-               <blue>238</blue>
-              </color>
-             </brush>
-            </colorrole>
-           </inactive>
-           <disabled>
-            <colorrole role="Base" >
-             <brush brushstyle="SolidPattern" >
-              <color alpha="255" >
-               <red>255</red>
-               <green>255</green>
-               <blue>255</blue>
-              </color>
-             </brush>
-            </colorrole>
-           </disabled>
-          </palette>
-         </property>
-         <property name="font" >
-          <font>
-           <family>Sans Serif</family>
-           <pointsize>12</pointsize>
-           <weight>75</weight>
-           <italic>false</italic>
-           <bold>true</bold>
-           <underline>false</underline>
-           <strikeout>false</strikeout>
-          </font>
-         </property>
-         <property name="focusPolicy" >
-          <enum>Qt::NoFocus</enum>
-         </property>
-         <property name="acceptDrops" >
-          <bool>false</bool>
-         </property>
-         <property name="autoFillBackground" >
-          <bool>true</bool>
-         </property>
-         <property name="text" >
-          <string>0.00</string>
-         </property>
-         <property name="frame" >
-          <bool>true</bool>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight</set>
-         </property>
-         <property name="readOnly" >
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-    </layout>
+    </widget>
    </item>
-   <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
+   <item row="4" column="2" >
+    <widget class="QLabel" name="label2" >
+     <property name="text" >
+      <string>Base imponible:</string>
      </property>
+     <property name="alignment" >
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="3" >
+    <widget class="QLabel" name="label4_3" >
+     <property name="text" >
+      <string>I.R.P.F.:</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="4" >
+    <widget class="QLabel" name="label4" >
+     <property name="text" >
+      <string>Impuestos:</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="5" colspan="2" >
+    <widget class="QLabel" name="label4_2" >
+     <property name="text" >
+      <string>R.E.:</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="7" colspan="2" >
+    <widget class="QLabel" name="label1" >
+     <property name="text" >
+      <string>Total:</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0" colspan="2" >
+    <widget class="QLineEdit" name="mui_totalDescuentos" >
+     <property name="enabled" >
+      <bool>true</bool>
+     </property>
+     <property name="minimumSize" >
+      <size>
+       <width>100</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="palette" >
+      <palette>
+       <active>
+        <colorrole role="Base" >
+         <brush brushstyle="SolidPattern" >
+          <color alpha="255" >
+           <red>238</red>
+           <green>238</green>
+           <blue>238</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </active>
+       <inactive>
+        <colorrole role="Base" >
+         <brush brushstyle="SolidPattern" >
+          <color alpha="255" >
+           <red>238</red>
+           <green>238</green>
+           <blue>238</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </inactive>
+       <disabled>
+        <colorrole role="Base" >
+         <brush brushstyle="SolidPattern" >
+          <color alpha="255" >
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </disabled>
+      </palette>
+     </property>
+     <property name="font" >
+      <font>
+       <family>Sans Serif</family>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <italic>false</italic>
+       <bold>true</bold>
+       <underline>false</underline>
+       <strikeout>false</strikeout>
+      </font>
+     </property>
+     <property name="focusPolicy" >
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="acceptDrops" >
+      <bool>false</bool>
+     </property>
+     <property name="text" >
+      <string>0.00</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignRight</set>
+     </property>
+     <property name="readOnly" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="2" >
+    <widget class="QLineEdit" name="mui_totalBaseImponible" >
+     <property name="minimumSize" >
+      <size>
+       <width>100</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="palette" >
+      <palette>
+       <active>
+        <colorrole role="Base" >
+         <brush brushstyle="SolidPattern" >
+          <color alpha="255" >
+           <red>238</red>
+           <green>238</green>
+           <blue>238</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </active>
+       <inactive>
+        <colorrole role="Base" >
+         <brush brushstyle="SolidPattern" >
+          <color alpha="255" >
+           <red>238</red>
+           <green>238</green>
+           <blue>238</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </inactive>
+       <disabled>
+        <colorrole role="Base" >
+         <brush brushstyle="SolidPattern" >
+          <color alpha="255" >
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </disabled>
+      </palette>
+     </property>
+     <property name="font" >
+      <font>
+       <family>Sans Serif</family>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <italic>false</italic>
+       <bold>true</bold>
+       <underline>false</underline>
+       <strikeout>false</strikeout>
+      </font>
+     </property>
+     <property name="focusPolicy" >
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="acceptDrops" >
+      <bool>false</bool>
+     </property>
+     <property name="text" >
+      <string>0.00</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignRight</set>
+     </property>
+     <property name="readOnly" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="3" >
+    <widget class="QLineEdit" name="mui_totalIRPF" >
+     <property name="minimumSize" >
+      <size>
+       <width>100</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="palette" >
+      <palette>
+       <active>
+        <colorrole role="Base" >
+         <brush brushstyle="SolidPattern" >
+          <color alpha="255" >
+           <red>238</red>
+           <green>238</green>
+           <blue>238</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </active>
+       <inactive>
+        <colorrole role="Base" >
+         <brush brushstyle="SolidPattern" >
+          <color alpha="255" >
+           <red>238</red>
+           <green>238</green>
+           <blue>238</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </inactive>
+       <disabled>
+        <colorrole role="Base" >
+         <brush brushstyle="SolidPattern" >
+          <color alpha="255" >
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </disabled>
+      </palette>
+     </property>
+     <property name="font" >
+      <font>
+       <family>Sans Serif</family>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <italic>false</italic>
+       <bold>true</bold>
+       <underline>false</underline>
+       <strikeout>false</strikeout>
+      </font>
+     </property>
+     <property name="focusPolicy" >
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="acceptDrops" >
+      <bool>false</bool>
+     </property>
+     <property name="text" >
+      <string>0.00</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignRight</set>
+     </property>
+     <property name="readOnly" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="4" >
+    <widget class="QLineEdit" name="mui_totalImpuestos" >
+     <property name="minimumSize" >
+      <size>
+       <width>100</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="palette" >
+      <palette>
+       <active>
+        <colorrole role="Base" >
+         <brush brushstyle="SolidPattern" >
+          <color alpha="255" >
+           <red>238</red>
+           <green>238</green>
+           <blue>238</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </active>
+       <inactive>
+        <colorrole role="Base" >
+         <brush brushstyle="SolidPattern" >
+          <color alpha="255" >
+           <red>238</red>
+           <green>238</green>
+           <blue>238</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </inactive>
+       <disabled>
+        <colorrole role="Base" >
+         <brush brushstyle="SolidPattern" >
+          <color alpha="255" >
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </disabled>
+      </palette>
+     </property>
+     <property name="font" >
+      <font>
+       <family>Sans Serif</family>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <italic>false</italic>
+       <bold>true</bold>
+       <underline>false</underline>
+       <strikeout>false</strikeout>
+      </font>
+     </property>
+     <property name="focusPolicy" >
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="acceptDrops" >
+      <bool>false</bool>
+     </property>
+     <property name="text" >
+      <string>0.00</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignRight</set>
+     </property>
+     <property name="readOnly" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="5" colspan="2" >
+    <widget class="QLineEdit" name="mui_totalRecargo" >
+     <property name="minimumSize" >
+      <size>
+       <width>100</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="palette" >
+      <palette>
+       <active>
+        <colorrole role="Base" >
+         <brush brushstyle="SolidPattern" >
+          <color alpha="255" >
+           <red>238</red>
+           <green>238</green>
+           <blue>238</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </active>
+       <inactive>
+        <colorrole role="Base" >
+         <brush brushstyle="SolidPattern" >
+          <color alpha="255" >
+           <red>238</red>
+           <green>238</green>
+           <blue>238</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </inactive>
+       <disabled>
+        <colorrole role="Base" >
+         <brush brushstyle="SolidPattern" >
+          <color alpha="255" >
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </disabled>
+      </palette>
+     </property>
+     <property name="font" >
+      <font>
+       <family>Sans Serif</family>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <italic>false</italic>
+       <bold>true</bold>
+       <underline>false</underline>
+       <strikeout>false</strikeout>
+      </font>
+     </property>
+     <property name="focusPolicy" >
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="acceptDrops" >
+      <bool>false</bool>
+     </property>
+     <property name="text" >
+      <string>0.00</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignRight</set>
+     </property>
+     <property name="readOnly" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="7" colspan="2" >
+    <widget class="QLineEdit" name="mui_totalPedido" >
+     <property name="enabled" >
+      <bool>true</bool>
+     </property>
+     <property name="palette" >
+      <palette>
+       <active>
+        <colorrole role="Base" >
+         <brush brushstyle="SolidPattern" >
+          <color alpha="255" >
+           <red>238</red>
+           <green>238</green>
+           <blue>238</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </active>
+       <inactive>
+        <colorrole role="Base" >
+         <brush brushstyle="SolidPattern" >
+          <color alpha="255" >
+           <red>238</red>
+           <green>238</green>
+           <blue>238</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </inactive>
+       <disabled>
+        <colorrole role="Base" >
+         <brush brushstyle="SolidPattern" >
+          <color alpha="255" >
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </disabled>
+      </palette>
+     </property>
+     <property name="font" >
+      <font>
+       <family>Sans Serif</family>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <italic>false</italic>
+       <bold>true</bold>
+       <underline>false</underline>
+       <strikeout>false</strikeout>
+      </font>
+     </property>
+     <property name="focusPolicy" >
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="acceptDrops" >
+      <bool>false</bool>
+     </property>
+     <property name="autoFillBackground" >
+      <bool>true</bool>
+     </property>
+     <property name="text" >
+      <string>0.00</string>
+     </property>
+     <property name="frame" >
+      <bool>true</bool>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignRight</set>
+     </property>
+     <property name="readOnly" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0" colspan="9" >
+    <layout class="QHBoxLayout" >
      <property name="spacing" >
       <number>5</number>
+     </property>
+     <property name="leftMargin" >
+      <number>0</number>
+     </property>
+     <property name="topMargin" >
+      <number>0</number>
+     </property>
+     <property name="rightMargin" >
+      <number>0</number>
+     </property>
+     <property name="bottomMargin" >
+      <number>0</number>
      </property>
      <item>
       <spacer>
@@ -1461,16 +1283,6 @@
  <layoutdefault spacing="2" margin="2" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaProveedor</class>
-   <extends>QWidget</extends>
-   <header>busquedaproveedor.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaFecha</class>
-   <extends>QWidget</extends>
-   <header>../../bulmalib/src/busquedafecha.h</header>
-  </customwidget>
-  <customwidget>
    <class>ListLinPedidoProveedorView</class>
    <extends>QWidget</extends>
    <header>listlinpedidoproveedorview.h</header>
@@ -1481,43 +1293,48 @@
    <header>busquedareferencia.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaFormaPago</class>
-   <extends>QWidget</extends>
-   <header>busquedaformapago.h</header>
-  </customwidget>
-  <customwidget>
    <class>ListDescuentoPedidoProveedorView</class>
    <extends>QWidget</extends>
    <header>listdescpedidoproveedorview.h</header>
   </customwidget>
   <customwidget>
+   <class>BusquedaProveedor</class>
+   <extends>QTextEdit</extends>
+   <header>busquedaproveedor.h</header>
+  </customwidget>
+  <customwidget>
    <class>BusquedaAlmacen</class>
-   <extends>QWidget</extends>
+   <extends>QComboBox</extends>
    <header>busquedaalmacen.h</header>
   </customwidget>
   <customwidget>
+   <class>BusquedaFormaPago</class>
+   <extends>QComboBox</extends>
+   <header>busquedaformapago.h</header>
+  </customwidget>
+  <customwidget>
    <class>BusquedaTrabajador</class>
-   <extends>QWidget</extends>
+   <extends>QComboBox</extends>
    <header>busquedatrabajador.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaFecha</class>
+   <extends>QLineEdit</extends>
+   <header>../../bulmalib/src/busquedafecha.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>mui_refpedidoproveedor</tabstop>
   <tabstop>mui_detalles</tabstop>
   <tabstop>mui_descpedidoproveedor</tabstop>
-  <tabstop>mui_numeroPedido</tabstop>
-  <tabstop>mui_idproveedor</tabstop>
+  <tabstop>mui_numpedidoproveedor</tabstop>
   <tabstop>mui_tramitadoPedido</tabstop>
-  <tabstop>mui_fechaPedido</tabstop>
-  <tabstop>mui_idtrabajador</tabstop>
   <tabstop>mui_contactpedidoproveedor</tabstop>
-  <tabstop>mui_idalmacen</tabstop>
   <tabstop>mui_telpedidoproveedor</tabstop>
-  <tabstop>mui_idforma_pago</tabstop>
   <tabstop>discounts</tabstop>
   <tabstop>mui_lineasDetalle</tabstop>
   <tabstop>mui_descuentos</tabstop>
-  <tabstop>mui_comentarios</tabstop>
+  <tabstop>mui_comentpedidoproveedor</tabstop>
   <tabstop>mui_guardar</tabstop>
   <tabstop>mui_borrar</tabstop>
   <tabstop>mui_imprimir</tabstop>

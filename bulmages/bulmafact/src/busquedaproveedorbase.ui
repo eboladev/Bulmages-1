@@ -33,26 +33,13 @@
    </property>
    <item row="0" column="0" colspan="2" >
     <widget class="QLabel" name="label" >
-     <property name="sizePolicy" >
-      <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
      <property name="text" >
       <string>Proveedor:</string>
      </property>
     </widget>
    </item>
    <item row="1" column="0" >
-    <widget class="QLineEdit" name="m_cifproveedor" >
-     <property name="sizePolicy" >
-      <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-    </widget>
+    <widget class="QLineEdit" name="m_cifproveedor" />
    </item>
    <item row="1" column="1" >
     <widget class="QToolButton" name="mui_buscar" >

@@ -109,7 +109,7 @@
    <item row="2" column="0" colspan="3" >
     <widget class="QLabel" name="m_nomcliente" >
      <property name="sizePolicy" >
-      <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
+      <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
