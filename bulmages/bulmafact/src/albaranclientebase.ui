@@ -504,6 +504,9 @@
          <height>0</height>
         </size>
        </property>
+       <property name="maxLength" >
+        <number>150</number>
+       </property>
       </widget>
      </item>
      <item>

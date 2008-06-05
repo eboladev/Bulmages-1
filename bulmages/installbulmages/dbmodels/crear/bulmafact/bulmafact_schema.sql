@@ -992,7 +992,7 @@ CREATE TABLE pedidocliente (
     numpedidocliente integer UNIQUE NOT NULL,
     fechapedidocliente date DEFAULT now(),
     refpedidocliente character varying(12) NOT NULL,   
-    descpedidocliente character varying(500),
+    descpedidocliente character varying(150),
     comentpedidocliente character varying(3000),
     contactpedidocliente character varying(90),
     telpedidocliente character varying(20),
@@ -1158,7 +1158,7 @@ CREATE TABLE factura (
     numfactura integer NOT NULL,
     reffactura character varying(15) NOT NULL,
     ffactura date DEFAULT now(),
-    descfactura character varying(500),   
+    descfactura character varying(150),
     idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
     contactfactura character varying(90),
     telfactura character varying(20),
@@ -1465,7 +1465,7 @@ CREATE TABLE facturap (
     numfacturap character varying (20) NOT NULL UNIQUE,
     reffacturap character varying(15) NOT NULL,
     ffacturap date DEFAULT now(),
-    descfacturap character varying(500),   
+    descfacturap character varying(150),
     contactfacturap character varying(90),
     telfacturap character varying(20),
     comentfacturap character varying(3000),
@@ -2292,7 +2292,7 @@ CREATE TABLE pedidoproveedor (
     numpedidoproveedor integer UNIQUE NOT NULL,
     fechapedidoproveedor date DEFAULT now(),
     refpedidoproveedor character varying(12) NOT NULL,   
-    descpedidoproveedor character varying(500),
+    descpedidoproveedor character varying(150),
     comentpedidoproveedor character varying(3000),
     contactpedidoproveedor character varying(90),
     telpedidoproveedor character varying(20),   
@@ -2942,9 +2942,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.10.1-0003'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.10.1-0005'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.10.1-0003'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.10.1-0005'');
 	END IF;
 	RETURN 0;
 END;

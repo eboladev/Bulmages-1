@@ -73,6 +73,7 @@ DROP FUNCTION compruebarevision() CASCADE;
 \echo "Comprobada la revision"
 
 -- ========================  FIN DE LA COMPROBACION ============================
+
 \echo -n ':: Tabla "cliente" se hace obligatorio y no nulo el campo "nomcliente" ... '
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
@@ -124,6 +125,45 @@ SELECT aux();
 DROP FUNCTION aux() CASCADE;
 
 
+\echo -n ':: Reduce la longitud del campo descpedidocliente ... '
+CREATE OR REPLACE FUNCTION cambia_longitud(cadena CHARACTER VARYING) RETURNS CHARACTER VARYING AS '
+BEGIN
+    RETURN substr(cadena, 1, 150);
+END
+' LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
+DECLARE
+        bs RECORD;
+BEGIN
+	SELECT INTO bs * FROM pg_attribute WHERE attname=''descpedidocliente'';
+	IF FOUND THEN
+		ALTER TABLE pedidocliente ALTER COLUMN descpedidocliente TYPE CHARACTER VARYING(150) USING cambia_longitud(descpedidocliente);
+	END IF;
+
+	SELECT INTO bs * FROM pg_attribute WHERE attname=''descfactura'';
+	IF FOUND THEN
+		ALTER TABLE factura ALTER COLUMN descfactura TYPE CHARACTER VARYING(150) USING cambia_longitud(descfactura);
+	END IF;
+
+	SELECT INTO bs * FROM pg_attribute WHERE attname=''descpedidoproveedor'';
+	IF FOUND THEN
+		ALTER TABLE pedidoproveedor ALTER COLUMN descpedidoproveedor TYPE CHARACTER VARYING(150) USING cambia_longitud(descpedidoproveedor);
+	END IF;
+
+	SELECT INTO bs * FROM pg_attribute WHERE attname=''descfacturap'';
+	IF FOUND THEN
+		ALTER TABLE facturap ALTER COLUMN descfacturap TYPE CHARACTER VARYING(150) USING cambia_longitud(descfacturap);
+	END IF;
+
+	RETURN 0;
+END;
+' LANGUAGE plpgsql;
+SELECT aux();
+DROP FUNCTION aux() CASCADE;
+DROP FUNCTION cambia_longitud(CHARACTER VARYING) CASCADE;
+
+
 -- ================================== ACTUALIZACION  ===================================
 -- =====================================================================================
 
@@ -135,9 +175,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.10.1-0004'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.10.1-0005'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.10.1-0004'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.10.1-0005'');
 	END IF;
 	RETURN 0;
 END;

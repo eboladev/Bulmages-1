@@ -57,6 +57,9 @@
        <height>26</height>
       </size>
      </property>
+     <property name="maxLength" >
+      <number>12</number>
+     </property>
     </widget>
    </item>
    <item row="0" column="1" >
@@ -73,8 +76,8 @@
        <height>22</height>
       </size>
      </property>
-     <property name="text" >
-      <string/>
+     <property name="toolTip" >
+      <string>Informe por referencia</string>
      </property>
      <property name="icon" >
       <iconset resource="../../bulmages.qrc" >:/Bulmafact32x32/images/png/32x32/i_bulmages_informexreferencia.32x32.png</iconset>
@@ -101,8 +104,8 @@
        <height>22</height>
       </size>
      </property>
-     <property name="text" >
-      <string/>
+     <property name="toolTip" >
+      <string>Abre todos los documentos con esta referencia</string>
      </property>
      <property name="icon" >
       <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_tuxPeq.png</iconset>
