@@ -294,7 +294,7 @@ void AlbaranClienteView::generarFactura()
         QString SQLQuery = "";
 
         if ( DBvalue ( "refalbaran" ).isEmpty() || DBvalue ( "idcliente" ).isEmpty() ) {
-            /// El presupuesto no se ha guardado y no se dispone en la base de datos
+            /// El albaran no se ha guardado y no se dispone en la base de datos
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
             if ( mui_idcliente->idcliente().isEmpty() ) {

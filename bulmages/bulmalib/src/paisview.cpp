@@ -22,6 +22,7 @@
 #include "empresabase.h"
 #include "subform3.h"
 
+
 /// Esta clase se encarga de presentar los centros de coste, la ventana, y
 /// de controlar la inserci&oacute;n de nuevos centros de coste, borrarlos, etc.
 /**

@@ -179,9 +179,15 @@ int ClienteView::cargarPost ( QString idcliente )
 void ClienteView::on_mui_informe_clicked()
 {
     _depura ( "ClienteView::on_mui_informe_clicked", 0 );
-    InformeCliente inf ( empresaBase() );
-    inf.setCliente ( DBvalue ( "idcliente" ) );
-    inf.generarInforme();
+
+    if ( DBvalue ( "idcliente" ).isEmpty() ) {
+	mensajeInfo ( tr ( "Tiene que guardar el documento antes de poder imprimirlo." ) );
+    } else {
+	InformeCliente inf ( empresaBase() );
+	inf.setCliente ( DBvalue ( "idcliente" ) );
+	inf.generarInforme();
+    } // end if
+
     _depura ( "END ClienteView::on_mui_informe_clicked", 0 );
 }
 
