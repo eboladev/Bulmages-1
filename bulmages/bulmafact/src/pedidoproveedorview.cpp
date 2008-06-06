@@ -324,167 +324,185 @@ int PedidoProveedorView::guardarPost()
 void PedidoProveedorView::imprimir()
 {
     _depura ( "PedidoProveedor::imprimirPedidoProveedor", 0 );
+    cursor2 *cur = NULL;
 
-    base basesimp;
+    try {
 
-    QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "pedidoproveedor.rml";
-    QString archivod = confpr->valor ( CONF_DIR_USER ) + "pedidoproveedor.rml";
-    QString archivologo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+        QString SQLQuery = "";
 
-    /// Copiamos el archivo.
+        if ( DBvalue ( "idproveedor" ).isEmpty() ) {
+            /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
+            mensajeInfo ( tr ( "Tiene que guardar el documento antes de poder imprimirlo." ) );
+            return;
+        } else {
+	    SQLQuery = "SELECT * FROM proveedor WHERE idproveedor = " + DBvalue ( "idproveedor" );
+        } // end if
+
+	base basesimp;
+	
+	QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "pedidoproveedor.rml";
+	QString archivod = confpr->valor ( CONF_DIR_USER ) + "pedidoproveedor.rml";
+	QString archivologo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
+	
+	/// Copiamos el archivo.
 #ifdef WINDOWS
 
-    archivo = "copy " + archivo + " " + archivod;
+	archivo = "copy " + archivo + " " + archivod;
 #else
 
-    archivo = "cp " + archivo + " " + archivod;
+	archivo = "cp " + archivo + " " + archivod;
 #endif
 
-    system ( archivo.toAscii().constData() );
+	system ( archivo.toAscii().constData() );
 
-    /// Copiamos el logo.
+	/// Copiamos el logo.
 #ifdef WINDOWS
 
-    archivologo = "copy " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+	archivologo = "copy " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #else
 
-    archivologo = "cp " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
+	archivologo = "cp " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
-    system ( archivologo.toAscii().constData() );
+	system ( archivologo.toAscii().constData() );
+	
+	QFile file;
+	file.setFileName ( archivod );
+	file.open ( QIODevice::ReadOnly );
+	QTextStream stream ( &file );
+	QString buff = stream.readAll();
+	file.close();
+	QString fitxersortidatxt = "";
+	
+	/// Tratamos la sustitucion de los valores de configuracion.
+	for ( int i = 0; i < 500; i++ ) {
+		if ( confpr->nombre ( i ) != "" ) {
+		buff.replace ( "[" + confpr->nombre ( i ) + "]", confpr->valor ( i ) );
+		} // end if
+	} // end for
+	
+	/// Linea de totales del pedido.
+	cur = empresaBase() ->cargacursor ( SQLQuery );
+	if ( !cur->eof() ) {
+		buff.replace ( "[dirproveedor]", cur->valor ( "dirproveedor" ) );
+		buff.replace ( "[poblproveedor]", cur->valor ( "poblproveedor" ) );
+		buff.replace ( "[telproveedor]", cur->valor ( "telproveedor" ) );
+		buff.replace ( "[nomproveedor]", cur->valor ( "nomproveedor" ) );
+		buff.replace ( "[cifproveedor]", cur->valor ( "cifproveedor" ) );
+		buff.replace ( "[idproveedor]", cur->valor ( "idproveedor" ) );
+		buff.replace ( "[cpproveedor]", cur->valor ( "cpproveedor" ) );
+	} // end if
+	delete cur;
+	
+	buff.replace ( "[numpedidoproveedor]", DBvalue ( "numpedidoproveedor" ) );
+	buff.replace ( "[fechapedidoproveedor]", DBvalue ( "fechapedidoproveedor" ) );
+	buff.replace ( "[contactpedidoproveedor]", DBvalue ( "contactpedidoproveedor" ) );
+	buff.replace ( "[telpedidoproveedor]", DBvalue ( "telpedidoproveedor" ) );
+	buff.replace ( "[comentpedidoproveedor]", DBvalue ( "comentpedidoproveedor" ) );
+	buff.replace ( "[descpedidoproveedor]", DBvalue ( "descpedidoproveedor" ) );
+	buff.replace ( "[refpedidoproveedor]", DBvalue ( "refpedidoproveedor" ) );
+	
+	/// Impresion de la tabla de contenidos.
+	QString l;
+	
+	SDBRecord *linea;
+	for ( int i = 0; i < m_listalineas->rowCount() - 1; ++i ) {
+		linea = m_listalineas->lineaat ( i );
+		Fixed base = Fixed ( linea->DBvalue ( "cantlpedidoproveedor" ).toAscii().constData() ) * Fixed ( linea->DBvalue ( "pvplpedidoproveedor" ).toAscii().constData() );
+		basesimp[linea->DBvalue ( "ivalpedidoproveedor" ) ] = basesimp[linea->DBvalue ( "ivalpedidoproveedor" ) ] + base - base * Fixed ( linea->DBvalue ( "descuentolpedidoproveedor" ).toAscii().constData() ) / 100;
+		fitxersortidatxt += "<tr>\n";
+		fitxersortidatxt += "   <td>" + linea->DBvalue ( "codigocompletoarticulo" ) + "</td>\n";
+		fitxersortidatxt += "   <td><para>" + XMLProtect ( linea->DBvalue ( "desclpedidoproveedor" ) ) + "</para></td>\n";
+		fitxersortidatxt += "   <td>" + l.sprintf ( "%s", linea->DBvalue ( "cantlpedidoproveedor" ).toAscii().constData() ) + "</td>\n";
+		fitxersortidatxt += "   <td>" + l.sprintf ( "%s", linea->DBvalue ( "pvplpedidoproveedor" ).toAscii().constData() ) + "</td>\n";
+		fitxersortidatxt += "   <td>" + l.sprintf ( "%s", linea->DBvalue ( "descuentolpedidoproveedor" ).toAscii().constData() ) + " %</td>\n";
+		fitxersortidatxt += "   <td>" + l.sprintf ( "%s", ( base - base * Fixed ( linea->DBvalue ( "descuentolpedidoproveedor" ) ) / 100 ).toQString().toAscii().constData() ) + "</td>\n";
+		fitxersortidatxt += "</tr>";
+	} // end for
+	
+	
+	buff.replace ( "[story]", fitxersortidatxt );
+	
+	Fixed basei ( "0.00" );
+	base::Iterator it;
+	for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+		basei = basei + it.value();
+	} // end for
+	
+	/// Impresion de los descuentos.
+	fitxersortidatxt = "";
+	Fixed porcentt ( "0.00" );
+	SDBRecord *linea1;
+	if ( m_listadescuentos->rowCount() - 1 ) {
+		fitxersortidatxt += "<blockTable style=\"tabladescuento\" colWidths=\"12cm, 2cm, 3cm\" repeatRows=\"1\">\n";
+		fitxersortidatxt += "<tr>\n";
+		fitxersortidatxt += "        <td>" + QApplication::translate ( "PedidoCliente", "Descuento" ) + "</td>\n";
+		fitxersortidatxt += "        <td>" + QApplication::translate ( "PedidoCliente", "Porcentaje" ) + "</td>\n";
+		fitxersortidatxt += "        <td>" + QApplication::translate ( "PedidoCliente", "Total" ) + "</td>\n";
+		fitxersortidatxt += "</tr>\n";
+		for ( int i = 0; i < m_listadescuentos->rowCount() - 1; ++i ) {
+		linea1 = m_listadescuentos->lineaat ( i );
+		porcentt = porcentt + Fixed ( linea1->DBvalue ( "proporciondpedidoproveedor" ).toAscii().constData() );
+		fitxersortidatxt += "<tr>\n";
+		fitxersortidatxt += "        <td>" + linea1->DBvalue ( "conceptdpedidoproveedor" ) + "</td>\n";
+		fitxersortidatxt += "        <td>" + l.sprintf ( "%s", linea1->DBvalue ( "proporciondpedidoproveedor" ).toAscii().constData() ) + " %</td>\n";
+		fitxersortidatxt += "        <td>" + l.sprintf ( "-%s", ( Fixed ( linea1->DBvalue ( "proporciondpedidoproveedor" ) ) * basei / 100 ).toQString().toAscii().constData() ) + "</td>\n";
+		fitxersortidatxt += "</tr>";
+		} // end for
+		fitxersortidatxt += "</blockTable>\n";
+	} // end if
+	buff.replace ( "[descuentos]", fitxersortidatxt );
+	
+	/// Impresion de los totales.
+	fitxersortidatxt = "";
+	QString tr1 = ""; /// Rellena el primer tr de titulares.
+	QString tr2 = ""; /// Rellena el segundo tr de cantidades.
+	fitxersortidatxt += "<blockTable style=\"tablatotales\">\n";
+	
+	Fixed totbaseimp ( "0.00" );
+	Fixed parbaseimp ( "0.00" );
+	for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+		if ( porcentt > 0 ) {
+		parbaseimp = it.value() - it.value() * porcentt / 100;
+		} else {
+		parbaseimp = it.value();
+		} // end if
+		totbaseimp = totbaseimp + parbaseimp;
+		tr1 += "        <td>" + QApplication::translate ( "PedidoCliente", "Base " ) + it.key() + " %</td>\n";
+		tr2 += "        <td>" + l.sprintf ( "%s", parbaseimp.toQString().toAscii().constData() ) + "</td>\n";
+	} // end for
+	
+	Fixed totiva ( "0.0" );
+	Fixed pariva ( "0.0" );
+	for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+		if ( porcentt > 0 ) {
+		pariva = ( it.value() - it.value() * porcentt / 100 ) * Fixed ( it.key() ) / 100;
+		} else {
+		pariva = it.value() * Fixed ( it.key() ) / 100;
+		} // end if
+		totiva = totiva + pariva;
+		tr1 += "        <td>" + QApplication::translate ( "PedidoCliente", "Iva " ) + it.key() + " %</td>\n";
+		tr2 += "        <td>" + l.sprintf ( "%s", pariva.toQString().toAscii().constData() ) + "</td>\n";
+	} // end for
+	tr1 += "        <td>" + QApplication::translate ( "PedidoCliente", "Total " ) + " </td>\n";
+	tr2 += "        <td>" + l.sprintf ( "%s", ( totiva + totbaseimp ).toQString().toAscii().constData() ) + "</td>\n";
+	fitxersortidatxt += "<tr>" + tr1 + "</tr><tr>" + tr2 + "</tr></blockTable>\n";
+	buff.replace ( "[totales]", fitxersortidatxt );
+	
+	if ( file.open ( QIODevice::WriteOnly ) ) {
+		QTextStream stream ( &file );
+		stream << buff;
+		file.close();
+	}
+	
+	invocaPDF ( "pedidoproveedor" );
+	_depura ( "PedidoProveedor::imprimirPedidoProveedor", 0 );
+	return;
 
-    QFile file;
-    file.setFileName ( archivod );
-    file.open ( QIODevice::ReadOnly );
-    QTextStream stream ( &file );
-    QString buff = stream.readAll();
-    file.close();
-    QString fitxersortidatxt = "";
-
-    /// Tratamos la sustitucion de los valores de configuracion.
-    for ( int i = 0; i < 500; i++ ) {
-        if ( confpr->nombre ( i ) != "" ) {
-            buff.replace ( "[" + confpr->nombre ( i ) + "]", confpr->valor ( i ) );
-        } // end if
-    } // end for
-
-    /// Linea de totales del pedido.
-    QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor = " + DBvalue ( "idproveedor" );
-    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
-    if ( !cur->eof() ) {
-        buff.replace ( "[dirproveedor]", cur->valor ( "dirproveedor" ) );
-        buff.replace ( "[poblproveedor]", cur->valor ( "poblproveedor" ) );
-        buff.replace ( "[telproveedor]", cur->valor ( "telproveedor" ) );
-        buff.replace ( "[nomproveedor]", cur->valor ( "nomproveedor" ) );
-        buff.replace ( "[cifproveedor]", cur->valor ( "cifproveedor" ) );
-        buff.replace ( "[idproveedor]", cur->valor ( "idproveedor" ) );
-        buff.replace ( "[cpproveedor]", cur->valor ( "cpproveedor" ) );
-    } // end if
-    delete cur;
-
-    buff.replace ( "[numpedidoproveedor]", DBvalue ( "numpedidoproveedor" ) );
-    buff.replace ( "[fechapedidoproveedor]", DBvalue ( "fechapedidoproveedor" ) );
-    buff.replace ( "[contactpedidoproveedor]", DBvalue ( "contactpedidoproveedor" ) );
-    buff.replace ( "[telpedidoproveedor]", DBvalue ( "telpedidoproveedor" ) );
-    buff.replace ( "[comentpedidoproveedor]", DBvalue ( "comentpedidoproveedor" ) );
-    buff.replace ( "[descpedidoproveedor]", DBvalue ( "descpedidoproveedor" ) );
-    buff.replace ( "[refpedidoproveedor]", DBvalue ( "refpedidoproveedor" ) );
-
-    /// Impresion de la tabla de contenidos.
-    QString l;
-
-    SDBRecord *linea;
-    for ( int i = 0; i < m_listalineas->rowCount() - 1; ++i ) {
-        linea = m_listalineas->lineaat ( i );
-        Fixed base = Fixed ( linea->DBvalue ( "cantlpedidoproveedor" ).toAscii().constData() ) * Fixed ( linea->DBvalue ( "pvplpedidoproveedor" ).toAscii().constData() );
-        basesimp[linea->DBvalue ( "ivalpedidoproveedor" ) ] = basesimp[linea->DBvalue ( "ivalpedidoproveedor" ) ] + base - base * Fixed ( linea->DBvalue ( "descuentolpedidoproveedor" ).toAscii().constData() ) / 100;
-        fitxersortidatxt += "<tr>\n";
-        fitxersortidatxt += "   <td>" + linea->DBvalue ( "codigocompletoarticulo" ) + "</td>\n";
-        fitxersortidatxt += "   <td><para>" + XMLProtect ( linea->DBvalue ( "desclpedidoproveedor" ) ) + "</para></td>\n";
-        fitxersortidatxt += "   <td>" + l.sprintf ( "%s", linea->DBvalue ( "cantlpedidoproveedor" ).toAscii().constData() ) + "</td>\n";
-        fitxersortidatxt += "   <td>" + l.sprintf ( "%s", linea->DBvalue ( "pvplpedidoproveedor" ).toAscii().constData() ) + "</td>\n";
-        fitxersortidatxt += "   <td>" + l.sprintf ( "%s", linea->DBvalue ( "descuentolpedidoproveedor" ).toAscii().constData() ) + " %</td>\n";
-        fitxersortidatxt += "   <td>" + l.sprintf ( "%s", ( base - base * Fixed ( linea->DBvalue ( "descuentolpedidoproveedor" ) ) / 100 ).toQString().toAscii().constData() ) + "</td>\n";
-        fitxersortidatxt += "</tr>";
-    } // end for
-
-
-    buff.replace ( "[story]", fitxersortidatxt );
-
-    Fixed basei ( "0.00" );
-    base::Iterator it;
-    for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-        basei = basei + it.value();
-    } // end for
-
-    /// Impresion de los descuentos.
-    fitxersortidatxt = "";
-    Fixed porcentt ( "0.00" );
-    SDBRecord *linea1;
-    if ( m_listadescuentos->rowCount() - 1 ) {
-        fitxersortidatxt += "<blockTable style=\"tabladescuento\" colWidths=\"12cm, 2cm, 3cm\" repeatRows=\"1\">\n";
-        fitxersortidatxt += "<tr>\n";
-        fitxersortidatxt += "        <td>" + QApplication::translate ( "PedidoCliente", "Descuento" ) + "</td>\n";
-        fitxersortidatxt += "        <td>" + QApplication::translate ( "PedidoCliente", "Porcentaje" ) + "</td>\n";
-        fitxersortidatxt += "        <td>" + QApplication::translate ( "PedidoCliente", "Total" ) + "</td>\n";
-        fitxersortidatxt += "</tr>\n";
-        for ( int i = 0; i < m_listadescuentos->rowCount() - 1; ++i ) {
-            linea1 = m_listadescuentos->lineaat ( i );
-            porcentt = porcentt + Fixed ( linea1->DBvalue ( "proporciondpedidoproveedor" ).toAscii().constData() );
-            fitxersortidatxt += "<tr>\n";
-            fitxersortidatxt += "        <td>" + linea1->DBvalue ( "conceptdpedidoproveedor" ) + "</td>\n";
-            fitxersortidatxt += "        <td>" + l.sprintf ( "%s", linea1->DBvalue ( "proporciondpedidoproveedor" ).toAscii().constData() ) + " %</td>\n";
-            fitxersortidatxt += "        <td>" + l.sprintf ( "-%s", ( Fixed ( linea1->DBvalue ( "proporciondpedidoproveedor" ) ) * basei / 100 ).toQString().toAscii().constData() ) + "</td>\n";
-            fitxersortidatxt += "</tr>";
-        } // end for
-        fitxersortidatxt += "</blockTable>\n";
-    } // end if
-    buff.replace ( "[descuentos]", fitxersortidatxt );
-
-    /// Impresion de los totales.
-    fitxersortidatxt = "";
-    QString tr1 = ""; /// Rellena el primer tr de titulares.
-    QString tr2 = ""; /// Rellena el segundo tr de cantidades.
-    fitxersortidatxt += "<blockTable style=\"tablatotales\">\n";
-
-    Fixed totbaseimp ( "0.00" );
-    Fixed parbaseimp ( "0.00" );
-    for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-        if ( porcentt > 0 ) {
-            parbaseimp = it.value() - it.value() * porcentt / 100;
-        } else {
-            parbaseimp = it.value();
-        } // end if
-        totbaseimp = totbaseimp + parbaseimp;
-        tr1 += "        <td>" + QApplication::translate ( "PedidoCliente", "Base " ) + it.key() + " %</td>\n";
-        tr2 += "        <td>" + l.sprintf ( "%s", parbaseimp.toQString().toAscii().constData() ) + "</td>\n";
-    } // end for
-
-    Fixed totiva ( "0.0" );
-    Fixed pariva ( "0.0" );
-    for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-        if ( porcentt > 0 ) {
-            pariva = ( it.value() - it.value() * porcentt / 100 ) * Fixed ( it.key() ) / 100;
-        } else {
-            pariva = it.value() * Fixed ( it.key() ) / 100;
-        } // end if
-        totiva = totiva + pariva;
-        tr1 += "        <td>" + QApplication::translate ( "PedidoCliente", "Iva " ) + it.key() + " %</td>\n";
-        tr2 += "        <td>" + l.sprintf ( "%s", pariva.toQString().toAscii().constData() ) + "</td>\n";
-    } // end for
-    tr1 += "        <td>" + QApplication::translate ( "PedidoCliente", "Total " ) + " </td>\n";
-    tr2 += "        <td>" + l.sprintf ( "%s", ( totiva + totbaseimp ).toQString().toAscii().constData() ) + "</td>\n";
-    fitxersortidatxt += "<tr>" + tr1 + "</tr><tr>" + tr2 + "</tr></blockTable>\n";
-    buff.replace ( "[totales]", fitxersortidatxt );
-
-    if ( file.open ( QIODevice::WriteOnly ) ) {
-        QTextStream stream ( &file );
-        stream << buff;
-        file.close();
-    }
-
-    invocaPDF ( "pedidoproveedor" );
-    _depura ( "PedidoProveedor::imprimirPedidoProveedor", 0 );
+    } catch ( ... ) {
+        if ( cur ) delete cur;
+        throw - 1;
+    } // end try
 }
 
 
