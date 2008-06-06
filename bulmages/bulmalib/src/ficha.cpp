@@ -785,6 +785,7 @@ void Ficha::pintarPost()
 void Ficha::trataTags ( QString &buff )
 {
     _depura ( "Ficha::trataTags", 0 );
+
     /// Tratamos la sustitucion de los valores de configuracion.
     for ( int i = 0; i < 500; i++ ) {
         if ( confpr->nombre ( i ) != "" ) {

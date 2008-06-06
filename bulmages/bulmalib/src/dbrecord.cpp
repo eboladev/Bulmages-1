@@ -796,6 +796,15 @@ void DBRecord::imprimir()
     QLocale::setDefault ( QLocale ( QLocale::Spanish, QLocale::Spain ) );
     QLocale spanish;
 
+    ///\TODO: Este tratamiento esta repetido en Ficha::trataTags y en PedidoProveedorView::imprimir.
+    ///       Se puede simplificar?
+    /// Tratamos la sustitucion de los valores de configuracion.
+    for ( int i = 0; i < 500; i++ ) {
+        if ( confpr->nombre ( i ) != "" ) {
+            buff.replace ( "[" + confpr->nombre ( i ) + "]", confpr->valor ( i ) );
+        } // end if
+    } // end for
+
     /// Impresion de la tabla de contenidos.
     for ( int i = 0; i < m_lista.size(); ++i ) {
         campo = m_lista.at ( i );
