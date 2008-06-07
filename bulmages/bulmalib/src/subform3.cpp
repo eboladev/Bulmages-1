@@ -1062,12 +1062,12 @@ void SubForm3::cargar ( cursor2 *cur )
     bool coloraponerfondo = FALSE;
 
     /// Preparamos la barra de progreso
-    BLProgressBar barra;
-    barra.setText ( tr ( "Cargando SubFormulario" ) );
+    BLProgressBar *barra = new BLProgressBar;
+//    barra.setText ( tr ( "Cargando SubFormulario" ) );
     if ( cur->numregistros() > 100 ) {
-        barra.setValue ( 0 );
-        barra.show();
-        barra.setText ( tr ( "Cargando SubFormulario" ) );
+        barra->setValue ( 0 );
+        barra->show();
+        barra->setText ( tr ( "Cargando SubFormulario " ) + m_tablename );
     } // end if
 
     /// Desactivamos el sorting debido a un error en las Qt4.
@@ -1151,7 +1151,7 @@ void SubForm3::cargar ( cursor2 *cur )
 
     /// Inicializamos la tabla con las filas necesarias.
     mui_list->setRowCount ( m_lista.count() );
-    barra.setRange ( 0, m_lista.size() );
+    barra->setRange ( 0, m_lista.size() );
     for ( int i = 0; i < m_lista.size(); ++i ) {
         reg = m_lista.at ( i );
         QRegExp patronFecha ( "^.*00:00:00.*$" ); /// Para emparejar los valores fechas.
@@ -1165,7 +1165,7 @@ void SubForm3::cargar ( cursor2 *cur )
             /// Rellena la tabla con los datos.
             mui_list->setItem ( i, j, camp );
         } // end for
-        barra.setValue ( i );
+        barra->setValue ( i );
     } // end for
 
     /// Establece el "rowSpan" de la tabla.
@@ -1262,6 +1262,8 @@ void SubForm3::cargar ( cursor2 *cur )
 
     /// Reactivamos el sorting
     mui_list->setSortingEnabled ( m_sorting );
+    /// Borramos la barra de progreso
+    delete barra;
 
     m_procesacambios = TRUE;
 
@@ -2036,6 +2038,7 @@ QString SubForm3::imprimir()
     BLProgressBar barra;
     barra.show();
     barra.setRange ( 0, mui_listcolumnas->rowCount() + mui_list->rowCount() );
+    barra.setText(tr ("Imprimiendo ") +  m_tablename);
     barra.setValue ( 0 );
     QLocale::setDefault ( QLocale ( QLocale::Spanish, QLocale::Spain ) );
     QLocale spanish;

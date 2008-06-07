@@ -33,8 +33,8 @@ QString pluginCAnualesODS::cuentaAnualCAPGC07()
     BLProgressBar barra;
     barra.setRange ( 0, 21 );
     barra.setValue ( 0 );
-    barra.setText ( trUtf8 ( "Calculando Balance y Resultados" ) );
     barra.show();
+    barra.setText ( trUtf8 ( "Calculando Balance y Resultados" ) );
 
     QString ejercicioActual = ejercicioActual_fechaBalance.right ( 4 );
     QString ejercicioAnterior = ejercicioAnterior_fechaBalance.right ( 4 );

@@ -20,30 +20,35 @@
 
 #include "blprogressbar.h"
 #include "funcaux.h"
+#include "configuracion.h"
 #include <QDesktopWidget>
 
 ///
 /**
 **/
-BLProgressBar::BLProgressBar (  ) : QWidget ( 0, 0 )
+BLProgressBar::BLProgressBar (  ) : QDialog ( 0, Qt::SplashScreen )
 {
     _depura ( "BLProgressBar::BLProgressBar", 0 );
     setupUi ( this );
-    setWindowFlags ( Qt::FramelessWindowHint );
+//    setWindowFlags ( Qt::SplashScreen | Qt::FramelessWindowHint );
     QDesktopWidget *pantalla = new QDesktopWidget();
-    setGeometry ( ( pantalla->screenGeometry().width() / 2 ) - 150, ( pantalla->screenGeometry().height() / 2 ) - 25, 300, 50 );
-    mui_label->setText ( "" );
+    setGeometry ( ( pantalla->screenGeometry().width() / 2 ) - this->width() /2, ( pantalla->screenGeometry().height() / 2 ) - this->height() / 2, this->width(), this->height() );
     delete pantalla;
+
     _depura ( "END BLProgressBar::BLProgressBar", 0 );
 }
 
 ///
 /**
 **/
-void BLProgressBar::setText ( const QString &text )
+void BLProgressBar::setText ( const QString &tex )
 {
     _depura ( "BLProgressBar::setText", 0 );
-    mui_label->setText ( text );
+    mui_label1->setText ( tex );
+//    mui_label1->repaint();
+    /// Si no hacemos una espera no se pinta bien el setText.
+    for (int i = 0; i < 20; i++)
+       repaint();
     _depura ( "END BLProgressBar::setText", 0 );
 }
 
@@ -88,3 +93,14 @@ void BLProgressBar::setRange ( int range,  int range1 )
     _depura ( "END BLProgressBar::setRange", 0 );
 }
 
+///
+/**
+**/
+void BLProgressBar::show (  )
+{
+    _depura ( "BLProgressBar::show", 0 );
+    if (confpr->valor(CONF_REFRESH_LIST) == "TRUE") {
+	QWidget::show();
+    } // end if
+    _depura ( "END BLProgressBar::show", 0 );
+}

@@ -467,8 +467,8 @@ void extractoview1::on_mui_casacion_clicked()
         cursor2 *curshaber = empresaBase() ->cargacursor ( query );
         BLProgressBar barra;
         barra.setRange ( 0, curshaber->numregistros() );
-        barra.setText ( tr ( "Cargando Extracto de Cuentas" ) );
         barra.show();
+        barra.setText ( tr ( "Cargando Extracto de Cuentas" ) );
         while ( !curshaber->eof() ) {
             query =  "SELECT * FROM apunte WHERE punteo = FALSE AND debe = " + curshaber->valor ( "haber" ) + " AND idcuenta = " + m_cursorcta->valor ( "idcuenta" ) + " ORDER BY fecha";
             cursor2 *cursdebe = empresaBase() ->cargacursor ( query.toAscii(), "cursdebe" );

@@ -157,6 +157,7 @@ void myplugsubformsxc::sacaSXC()
     barra.setRange ( 0, subf->mui_list->rowCount() - 1 );
     barra.setText ( tr ( "Exportando datos a SXC" ) );
     barra.show();
+    barra.setText ( tr ( "Exportando datos a SXC" ) );
 
     /// Sacamos el contenido
     for ( int i = 0; i < subf->mui_list->rowCount(); ++i ) {

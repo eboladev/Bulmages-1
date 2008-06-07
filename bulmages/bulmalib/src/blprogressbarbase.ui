@@ -9,12 +9,42 @@
     <height>66</height>
    </rect>
   </property>
+  <property name="sizePolicy" >
+   <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize" >
+   <size>
+    <width>524</width>
+    <height>66</height>
+   </size>
+  </property>
+  <property name="maximumSize" >
+   <size>
+    <width>524</width>
+    <height>66</height>
+   </size>
+  </property>
   <property name="windowTitle" >
    <string>Trabajando</string>
   </property>
-  <layout class="QVBoxLayout" >
-   <item>
-    <widget class="QLabel" name="mui_label" >
+  <layout class="QGridLayout" >
+   <property name="leftMargin" >
+    <number>2</number>
+   </property>
+   <property name="topMargin" >
+    <number>2</number>
+   </property>
+   <property name="rightMargin" >
+    <number>2</number>
+   </property>
+   <property name="bottomMargin" >
+    <number>2</number>
+   </property>
+   <item row="0" column="0" >
+    <widget class="QLabel" name="mui_label1" >
      <property name="text" >
       <string>TextLabel</string>
      </property>
@@ -23,7 +53,7 @@
      </property>
     </widget>
    </item>
-   <item>
+   <item row="1" column="0" >
     <widget class="QProgressBar" name="mui_progressBar" >
      <property name="value" >
       <number>24</number>

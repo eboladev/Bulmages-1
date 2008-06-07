@@ -23,17 +23,19 @@
 #define BLPROGRESSBAR_H
 
 #include <QProgressBar>
+#include <QDialog>
 #include "ui_blprogressbarbase.h"
 
-class BLProgressBar : public QWidget, public Ui_BLProgressBarBase
+class BLProgressBar : public QDialog, public Ui_BLProgressBarBase
 {
 public:
     BLProgressBar (  );
     virtual ~BLProgressBar();
-    void setValue ( int value );
+    void setValue ( int );
     int value();
-    void setRange ( int range,  int range1 );
-    void setText ( const QString &text );
+    void setRange ( int,  int );
+    void setText ( const QString & );
+    void show();
 };
 
 #endif
