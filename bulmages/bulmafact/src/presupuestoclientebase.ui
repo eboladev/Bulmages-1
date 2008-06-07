@@ -41,7 +41,7 @@
    <property name="verticalSpacing" >
     <number>5</number>
    </property>
-   <item row="0" column="0" colspan="8" >
+   <item row="0" column="0" colspan="6" >
     <layout class="QHBoxLayout" >
      <property name="spacing" >
       <number>5</number>
@@ -309,7 +309,7 @@
         <item>
          <widget class="QLabel" name="label6" >
           <property name="sizePolicy" >
-           <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
+           <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -319,6 +319,9 @@
           </property>
           <property name="alignment" >
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+          <property name="buddy" >
+           <cstring>mui_refpresupuesto</cstring>
           </property>
          </widget>
         </item>
@@ -336,6 +339,12 @@
             <height>20</height>
            </size>
           </property>
+          <property name="maximumSize" >
+           <size>
+            <width>150</width>
+            <height>16777215</height>
+           </size>
+          </property>
          </widget>
         </item>
        </layout>
@@ -343,111 +352,127 @@
      </item>
     </layout>
    </item>
-   <item row="1" column="0" >
-    <widget class="QToolButton" name="mui_detalles" >
-     <property name="minimumSize" >
-      <size>
-       <width>22</width>
-       <height>22</height>
-      </size>
-     </property>
-     <property name="maximumSize" >
-      <size>
-       <width>22</width>
-       <height>22</height>
-      </size>
-     </property>
-     <property name="toolTip" >
-      <string>Mostrar/Ocultar cabecera</string>
-     </property>
-     <property name="whatsThis" >
-      <string>Mostrar/Ocultar cabecera</string>
-     </property>
-     <property name="text" >
-      <string/>
-     </property>
-     <property name="icon" >
-      <iconset resource="../../bulmages.qrc" >:/Images/document-open.svg</iconset>
-     </property>
-     <property name="iconSize" >
-      <size>
-       <width>32</width>
-       <height>32</height>
-      </size>
-     </property>
-     <property name="shortcut" >
-      <string>Ctrl+G</string>
-     </property>
-     <property name="checkable" >
-      <bool>true</bool>
-     </property>
-     <property name="checked" >
-      <bool>true</bool>
-     </property>
-    </widget>
+   <item row="1" column="0" colspan="6" >
+    <layout class="QHBoxLayout" >
+     <item>
+      <widget class="QToolButton" name="mui_detalles" >
+       <property name="minimumSize" >
+        <size>
+         <width>22</width>
+         <height>22</height>
+        </size>
+       </property>
+       <property name="maximumSize" >
+        <size>
+         <width>22</width>
+         <height>22</height>
+        </size>
+       </property>
+       <property name="toolTip" >
+        <string>Mostrar/Ocultar cabecera</string>
+       </property>
+       <property name="whatsThis" >
+        <string>Mostrar/Ocultar cabecera</string>
+       </property>
+       <property name="text" >
+        <string/>
+       </property>
+       <property name="icon" >
+        <iconset resource="../../bulmages.qrc" >:/Images/document-open.svg</iconset>
+       </property>
+       <property name="iconSize" >
+        <size>
+         <width>32</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="shortcut" >
+        <string>Ctrl+G</string>
+       </property>
+       <property name="checkable" >
+        <bool>true</bool>
+       </property>
+       <property name="checked" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label8" >
+       <property name="sizePolicy" >
+        <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text" >
+        <string>Descripcion:</string>
+       </property>
+       <property name="alignment" >
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="buddy" >
+        <cstring>mui_descpresupuesto</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="mui_descpresupuesto" >
+       <property name="sizePolicy" >
+        <sizepolicy vsizetype="Preferred" hsizetype="Expanding" >
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="maxLength" >
+        <number>150</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label7" >
+       <property name="sizePolicy" >
+        <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text" >
+        <string>Numero de presupuesto:</string>
+       </property>
+       <property name="alignment" >
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="buddy" >
+        <cstring>mui_numpresupuesto</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="mui_numpresupuesto" >
+       <property name="sizePolicy" >
+        <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize" >
+        <size>
+         <width>150</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize" >
+        <size>
+         <width>150</width>
+         <height>16777215</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
-   <item row="1" column="1" >
-    <widget class="QLabel" name="label8" >
-     <property name="sizePolicy" >
-      <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text" >
-      <string>Descripcion:</string>
-     </property>
-     <property name="alignment" >
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="2" colspan="3" >
-    <widget class="QLineEdit" name="mui_descpresupuesto" >
-     <property name="sizePolicy" >
-      <sizepolicy vsizetype="Preferred" hsizetype="Expanding" >
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="maxLength" >
-      <number>150</number>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="5" colspan="2" >
-    <widget class="QLabel" name="label7" >
-     <property name="sizePolicy" >
-      <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text" >
-      <string>Numero de presupuesto:</string>
-     </property>
-     <property name="alignment" >
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="7" >
-    <widget class="QLineEdit" name="mui_numpresupuesto" >
-     <property name="sizePolicy" >
-      <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="minimumSize" >
-      <size>
-       <width>150</width>
-       <height>0</height>
-      </size>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0" colspan="8" >
+   <item row="2" column="0" colspan="6" >
     <widget class="QFrame" name="frame" >
      <property name="sizePolicy" >
       <sizepolicy vsizetype="Preferred" hsizetype="Expanding" >
@@ -457,8 +482,8 @@
      </property>
      <property name="minimumSize" >
       <size>
-       <width>16</width>
-       <height>182</height>
+       <width>0</width>
+       <height>0</height>
       </size>
      </property>
      <property name="frameShape" >
@@ -504,6 +529,12 @@
           <height>0</height>
          </size>
         </property>
+        <property name="maximumSize" >
+         <size>
+          <width>150</width>
+          <height>16777215</height>
+         </size>
+        </property>
        </widget>
       </item>
       <item rowspan="3" row="1" column="0" colspan="2" >
@@ -536,6 +567,9 @@
         <property name="alignment" >
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
+        <property name="buddy" >
+         <cstring>mui_idtrabajador</cstring>
+        </property>
        </widget>
       </item>
       <item row="2" column="2" >
@@ -552,10 +586,26 @@
         <property name="alignment" >
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
+        <property name="buddy" >
+         <cstring>mui_fpresupuesto</cstring>
+        </property>
        </widget>
       </item>
       <item row="2" column="3" colspan="2" >
-       <widget class="BusquedaFecha" name="mui_fpresupuesto" />
+       <widget class="BusquedaFecha" name="mui_fpresupuesto" >
+        <property name="minimumSize" >
+         <size>
+          <width>150</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize" >
+         <size>
+          <width>150</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
       </item>
       <item row="3" column="2" >
        <widget class="QLabel" name="label11" >
@@ -571,10 +621,26 @@
         <property name="alignment" >
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
+        <property name="buddy" >
+         <cstring>mui_vencpresupuesto</cstring>
+        </property>
        </widget>
       </item>
       <item row="3" column="3" colspan="2" >
-       <widget class="BusquedaFecha" name="mui_vencpresupuesto" />
+       <widget class="BusquedaFecha" name="mui_vencpresupuesto" >
+        <property name="minimumSize" >
+         <size>
+          <width>150</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize" >
+         <size>
+          <width>150</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
       </item>
       <item row="4" column="0" >
        <widget class="QLabel" name="label9" >
@@ -625,13 +691,29 @@
         <property name="alignment" >
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
+        <property name="buddy" >
+         <cstring>mui_idforma_pago</cstring>
+        </property>
        </widget>
       </item>
       <item row="4" column="3" colspan="2" >
-       <widget class="BusquedaFormaPago" name="mui_idforma_pago" />
+       <widget class="BusquedaFormaPago" name="mui_idforma_pago" >
+        <property name="maximumSize" >
+         <size>
+          <width>150</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
       </item>
       <item row="5" column="0" >
        <widget class="QLabel" name="label14" >
+        <property name="sizePolicy" >
+         <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text" >
          <string>Telefono de contacto:</string>
         </property>
@@ -667,15 +749,31 @@
         <property name="alignment" >
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
+        <property name="buddy" >
+         <cstring>mui_idalmacen</cstring>
+        </property>
        </widget>
       </item>
       <item row="5" column="3" colspan="2" >
-       <widget class="BusquedaAlmacen" name="mui_idalmacen" />
+       <widget class="BusquedaAlmacen" name="mui_idalmacen" >
+        <property name="minimumSize" >
+         <size>
+          <width>150</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize" >
+         <size>
+          <width>150</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
    </item>
-   <item row="3" column="0" colspan="8" >
+   <item row="3" column="0" colspan="6" >
     <widget class="QTabWidget" name="m_general" >
      <property name="sizePolicy" >
       <sizepolicy vsizetype="Expanding" hsizetype="Expanding" >
@@ -787,7 +885,7 @@
      </widget>
     </widget>
    </item>
-   <item row="4" column="0" colspan="2" >
+   <item row="4" column="0" >
     <widget class="QLabel" name="label3" >
      <property name="sizePolicy" >
       <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
@@ -803,7 +901,7 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="2" >
+   <item row="4" column="1" >
     <widget class="QLabel" name="label2" >
      <property name="sizePolicy" >
       <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
@@ -819,7 +917,7 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="3" >
+   <item row="4" column="2" >
     <widget class="QLabel" name="label4_3" >
      <property name="sizePolicy" >
       <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
@@ -835,7 +933,7 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="4" >
+   <item row="4" column="3" >
     <widget class="QLabel" name="label4" >
      <property name="sizePolicy" >
       <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
@@ -851,7 +949,7 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="5" >
+   <item row="4" column="4" >
     <widget class="QLabel" name="label4_2" >
      <property name="sizePolicy" >
       <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
@@ -873,7 +971,7 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="6" colspan="2" >
+   <item row="4" column="5" >
     <widget class="QLabel" name="label1" >
      <property name="sizePolicy" >
       <sizepolicy vsizetype="Preferred" hsizetype="Expanding" >
@@ -889,7 +987,7 @@
      </property>
     </widget>
    </item>
-   <item row="5" column="0" colspan="2" >
+   <item row="5" column="0" >
     <widget class="QLineEdit" name="m_totalDiscounts" >
      <property name="enabled" >
       <bool>true</bool>
@@ -998,7 +1096,7 @@
      </property>
     </widget>
    </item>
-   <item row="5" column="2" >
+   <item row="5" column="1" >
     <widget class="QLineEdit" name="m_totalBases" >
      <property name="sizePolicy" >
       <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
@@ -1077,7 +1175,7 @@
      </property>
     </widget>
    </item>
-   <item row="5" column="3" >
+   <item row="5" column="2" >
     <widget class="QLineEdit" name="m_totalIRPF" >
      <property name="sizePolicy" >
       <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
@@ -1156,7 +1254,7 @@
      </property>
     </widget>
    </item>
-   <item row="5" column="4" >
+   <item row="5" column="3" >
     <widget class="QLineEdit" name="m_totalTaxes" >
      <property name="sizePolicy" >
       <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
@@ -1235,7 +1333,7 @@
      </property>
     </widget>
    </item>
-   <item row="5" column="5" >
+   <item row="5" column="4" >
     <widget class="QLineEdit" name="m_totalReqEq" >
      <property name="sizePolicy" >
       <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
@@ -1320,7 +1418,7 @@
      </property>
     </widget>
    </item>
-   <item row="5" column="6" colspan="2" >
+   <item row="5" column="5" >
     <widget class="QLineEdit" name="m_totalPresupuestoCliente" >
      <property name="enabled" >
       <bool>true</bool>
@@ -1408,7 +1506,7 @@
      </property>
     </widget>
    </item>
-   <item row="6" column="0" colspan="8" >
+   <item row="6" column="0" colspan="6" >
     <layout class="QHBoxLayout" >
      <property name="spacing" >
       <number>5</number>

@@ -409,6 +409,9 @@
           <property name="text" >
            <string>Referencia:</string>
           </property>
+          <property name="buddy" >
+           <cstring>mui_refalbaran</cstring>
+          </property>
          </widget>
         </item>
         <item>
@@ -417,6 +420,12 @@
            <size>
             <width>150</width>
             <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>150</width>
+            <height>16777215</height>
            </size>
           </property>
          </widget>
@@ -494,6 +503,9 @@
        <property name="text" >
         <string>Descripcion:</string>
        </property>
+       <property name="buddy" >
+        <cstring>mui_descalbaran</cstring>
+       </property>
       </widget>
      </item>
      <item>
@@ -520,6 +532,9 @@
        <property name="text" >
         <string>Numero de albaran:</string>
        </property>
+       <property name="buddy" >
+        <cstring>mui_numalbaran</cstring>
+       </property>
       </widget>
      </item>
      <item>
@@ -536,6 +551,12 @@
          <height>0</height>
         </size>
        </property>
+       <property name="maximumSize" >
+        <size>
+         <width>150</width>
+         <height>16777215</height>
+        </size>
+       </property>
       </widget>
      </item>
     </layout>
@@ -547,6 +568,12 @@
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
+     </property>
+     <property name="minimumSize" >
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
      </property>
      <property name="frameShape" >
       <enum>QFrame::StyledPanel</enum>
@@ -619,6 +646,9 @@
         <property name="alignment" >
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
+        <property name="buddy" >
+         <cstring>mui_idtrabajador</cstring>
+        </property>
        </widget>
       </item>
       <item row="2" column="3" >
@@ -650,6 +680,9 @@
         </property>
         <property name="alignment" >
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="buddy" >
+         <cstring>mui_fechaalbaran</cstring>
         </property>
        </widget>
       </item>
@@ -683,6 +716,9 @@
         <property name="alignment" >
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
+        <property name="buddy" >
+         <cstring>mui_contactalbaran</cstring>
+        </property>
        </widget>
       </item>
       <item row="4" column="1" >
@@ -701,6 +737,9 @@
         </property>
         <property name="alignment" >
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="buddy" >
+         <cstring>mui_idforma_pago</cstring>
         </property>
        </widget>
       </item>
@@ -734,6 +773,9 @@
         <property name="alignment" >
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
+        <property name="buddy" >
+         <cstring>mui_telalbaran</cstring>
+        </property>
        </widget>
       </item>
       <item row="5" column="1" >
@@ -755,6 +797,9 @@
         </property>
         <property name="alignment" >
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="buddy" >
+         <cstring>mui_idalmacen</cstring>
         </property>
        </widget>
       </item>
