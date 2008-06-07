@@ -155,16 +155,21 @@ int PaisView::guardar()
 {
     _depura ( "PaisView::on_mui_guardar_clicked", 0 );
     QString id;
-    setDBvalue ( "descpais", mui_descpais->text() );
-    setDBvalue ( "cod2pais", mui_cod2pais->text() );
-    setDBvalue ( "cod3pais", mui_cod3pais->text() );
-    empresaBase() ->begin();
-    DBsave ( id );
-    mui_listprovincias->setColumnValue ( "idpais", id );
-    mui_listprovincias->guardar();
-    empresaBase() ->commit();
-    dialogChanges_cargaInicial();
-    pintar();
+
+    if (DBvalue ( "idpais" ).isEmpty()) {
+	mensajeInfo ( tr ( "Seleccione un pais para guardar" ) );
+    } else {
+	setDBvalue ( "descpais", mui_descpais->text() );
+	setDBvalue ( "cod2pais", mui_cod2pais->text() );
+	setDBvalue ( "cod3pais", mui_cod3pais->text() );
+	empresaBase() ->begin();
+	DBsave ( id );
+	mui_listprovincias->setColumnValue ( "idpais", id );
+	mui_listprovincias->guardar();
+	empresaBase() ->commit();
+	dialogChanges_cargaInicial();
+	pintar();
+    } 
     _depura ( "END PaisView::on_mui_guardar_clicked", 0 );
     return 0;
 }
