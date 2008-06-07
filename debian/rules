@@ -15,11 +15,19 @@
 
 
 CFLAGS = -Wall -g
+ARCH:=$(shell dpkg --print-architecture)
 
 ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
 	CFLAGS += -O0
+	CXXFLAGS += -O0
 else
-	CFLAGS += -O2
+ifeq ($(ARCH),s390)
+        CXXFLAGS += -O0
+        CFLAGS += -O0
+else
+        CXXFLAGS += -O2
+        CFLAGS += -O2
+endif
 endif
 
 configure: configure-stamp
