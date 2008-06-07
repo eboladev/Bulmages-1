@@ -180,6 +180,20 @@ void BusquedaArticulo::on_mui_buscar_clicked()
 }
 
 
+/** SLOT que responde al fin de la edicion del campos de texto.
+    Se supone que hemos introducido un cliente identificable por codigo, por nombre o por CIF
+    Asi que se encarga de buscarlo y encontrarlo.
+*/
+/**
+**/
+void BusquedaArticulo::on_m_codigocompletoarticulo_editingFinished()
+{
+    _depura ( "BusquedaCliente::on_m_codigocompletoarticulo_editingFinished", 0 );
+    pinta();
+    g_plugins->lanza("BusquedaArticulo_on_m_codigocompletoarticulo_editingFinished_Post",this);
+    _depura ( "END BusquedaArticulo::on_m_codigocompletoarticulo_editingFinished", 0 );
+}
+
 /** SLOT que responde a terminar de escribir en el cuadro de texto del Widget.
     Busca en la tabla de articulos un elemento con el codigocompletoarticulo coincidente
     y si lo encuentra lo muestra y lo considera como el elemento seleccionado por este Widget.

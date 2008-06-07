@@ -217,6 +217,7 @@ void BusquedaCliente::on_m_cifcliente_editingFinished()
 {
     _depura ( "BusquedaCliente::on_m_cifcliente_editingFinished", 0 );
     pinta();
+    g_plugins->lanza("BusquedaCliente_on_m_cifcliente_editingFinished_Post",this);
     _depura ( "END BusquedaCliente::on_m_cifcliente_editingFinished", 0 );
 }
 

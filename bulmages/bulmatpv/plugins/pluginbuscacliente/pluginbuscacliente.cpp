@@ -22,45 +22,59 @@
 
 #include <QDockWidget>
 
-#include "pluginaliastpv.h"
+#include "pluginbuscacliente.h"
 #include "funcaux.h"
 #include "empresatpv.h"
+#include "plugins.h"
+#include "ticket.h"
+#include "qapplication2.h"
+#include "busquedacliente.h"
+
+/// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
+/// como un QMap.
+typedef QMap<QString, Fixed> base;
 
 
-
-
-
-
-int Ticket_insertarArticuloNL_Post ( Ticket *tick )
+BusquedaCliente *g_busc;
+QDockWidget *g_doc1;
+EmpresaTPV * g_emp;
+///
+/**
+\return
+**/
+int entryPoint ( BulmaTPV *tpv )
 {
-    QString query = "SELECT * FROM alias WHERE cadalias = '" + ( ( EmpresaTPV * ) tick->empresaBase() )->valorInput() + "'";
-    cursor2 *cur = tick->empresaBase() ->cargacursor ( query );
-    if ( !cur->eof() ) {
-        tick->insertarArticulo ( cur->valor ( "idarticulo" ), Fixed ( "1" ) );
-    } // end if
-    delete cur;
+    _depura ( "entryPoint", 0 );
+    g_emp = tpv->empresaTPV();
+
+    /// Vamos a probar con un docwindow.
+    g_doc1 = new QDockWidget ( "Cliente", tpv );
+    g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
+    g_doc1->setGeometry ( 100, 100, 100, 500 );
+    g_doc1->resize ( 330, 400 );
+    tpv->addDockWidget ( Qt::TopDockWidgetArea, g_doc1 );
+    g_doc1->show();
+
+    _depura ( "END entryPoint", 0 );
+    return 0;
+}
+
+int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
+{
+    g_busc = new BusquedaCliente ( 0 );
+    g_busc->setEmpresaBase ( etpv );
+    g_doc1->setWidget ( g_busc );
 
     return 0;
 }
 
-
-
-int Ticket_insertarArticulo_Post ( Ticket *tick )
-{
-    int valor = -1;
-    _depura("pluginaliastpv::Ticket_insertarArticulo_Post", 0);
-    static int semaforo = 0;
-    if (semaforo == 0) {
-	semaforo = 1;
-	QString query = "SELECT * FROM alias WHERE cadalias = '" + ( ( EmpresaTPV * ) tick->empresaBase() )->valorInput() + "'";
-	cursor2 *cur = tick->empresaBase() ->cargacursor ( query );
-	if ( !cur->eof() ) {
-		tick->insertarArticulo ( cur->valor ( "idarticulo" ), Fixed ( "1" ) );
-	} // end if
-	delete cur;
-        valor = 0;
-	semaforo = 0;
+int BusquedaCliente_on_m_cifcliente_editingFinished_Post (BusquedaCliente *busc) {
+    if (busc->idcliente() != "") {
+	g_emp->ticketActual() ->setDBvalue ( "idcliente", busc->idcliente() );
+	g_emp->ticketActual() ->pintar();
+	g_emp->setValorInput ( "" );
+	g_emp->pulsaTecla ( 0, "" );
     } // end if
-    _depura("END pluginaliastpv::Ticket_insertarArticulo_Post", 0);
-    return valor;
+    return 0;
 }
+

@@ -29,6 +29,7 @@
 #include "ticket.h"
 #include "qapplication2.h"
 #include "busquedaarticulo.h"
+#include "fixed.h"
 
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
 /// como un QMap.
@@ -37,6 +38,7 @@ typedef QMap<QString, Fixed> base;
 
 BusquedaArticulo *g_busc;
 QDockWidget *g_doc1;
+EmpresaTPV * g_emp;
 ///
 /**
 \return
@@ -45,12 +47,14 @@ int entryPoint ( BulmaTPV *tpv )
 {
     _depura ( "entryPoint", 0 );
 
+    g_emp = tpv->empresaTPV();
+
     /// Vamos a probar con un docwindow.
     g_doc1 = new QDockWidget ( "Articulo", tpv );
     g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
     g_doc1->setGeometry ( 100, 100, 100, 500 );
     g_doc1->resize ( 330, 400 );
-    tpv->addDockWidget ( Qt::LeftDockWidgetArea, g_doc1 );
+    tpv->addDockWidget ( Qt::TopDockWidgetArea, g_doc1 );
     g_doc1->show();
 
     _depura ( "END entryPoint", 0 );
@@ -66,5 +70,9 @@ int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
     return 0;
 }
 
-
+int BusquedaArticulo_on_m_codigocompletoarticulo_editingFinished_Post (BusquedaArticulo *busc) {
+    if (busc->idarticulo() != "")
+    	g_emp->ticketActual() ->insertarArticulo (  busc->idarticulo(), Fixed("1") );
+    return 0;
+}
 

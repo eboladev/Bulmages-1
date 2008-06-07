@@ -83,6 +83,7 @@ public:
 public slots:
     virtual void on_mui_buscar_clicked();
     virtual void on_m_codigocompletoarticulo_textChanged ( const QString & );
+    virtual void on_m_codigocompletoarticulo_editingFinished();
 
 signals:
     void valueChanged ( QString );

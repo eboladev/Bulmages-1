@@ -44,10 +44,12 @@ int entryPoint ( BulmaTPV *tpv )
 {
     _depura ( "entryPoint", 0 );
     g_file = new QFile(confpr->valor(CONF_TPV_VISOR_FILE));
-    g_file->open(QIODevice::WriteOnly | QIODevice::Unbuffered);
-    g_file->write ( "\x0Ch", 1 );
-    g_file->write( "Ready.", 6);
-    g_file->flush();
+    if (g_file->open(QIODevice::WriteOnly | QIODevice::Unbuffered)) {
+	g_file->write ( "\x0Ch", 1 );
+	g_file->write( "Ready.", 6);
+	g_file->flush();
+	g_file->close();
+    } // end if
     _depura ( "END entryPoint", 0 );
     return 0;
 }
@@ -59,26 +61,36 @@ int entryPoint ( BulmaTPV *tpv )
 int exitPoint ( BulmaTPV *tpv )
 {
     _depura ( "entryPoint", 0 );
-    g_file->write ( "\x0Ch", 1 );
-    g_file->close();
+    if (g_file->open(QIODevice::WriteOnly | QIODevice::Unbuffered)) {
+	    g_file->write ( "\x0Ch", 1 );
+	    g_file->close();
+    } // end if
     delete g_file;
     _depura ( "END entryPoint", 0 );
     return 0;
 }
 
 int Ticket_insertarArticulo_Post(Ticket *tick) {
-        g_file->write ( "\x0Ch", 1 );
-	QTextStream out(g_file);
-	out <<   tick->lineaActTicket()->DBvalue("codigocompletoarticulo").left(5);
-	out << " " << tick->lineaActTicket()->DBvalue("nomarticulo").left(10);
-	out << "\n      P.V.P. : " << tick->lineaActTicket()->DBvalue("pvplalbaran");
-	g_file->flush();
+	_depura("pluginvisor::Ticket_insertarArticulo_Post", 0);
+	if (g_file->open(QIODevice::WriteOnly | QIODevice::Unbuffered)) {
+		g_file->write ( "\x0Ch", 1 );
+		QTextStream out(g_file);
+		out <<   tick->lineaActTicket()->DBvalue("codigocompletoarticulo").left(5);
+		out << " " << tick->lineaActTicket()->DBvalue("nomarticulo").left(10);
+		out << "\n      P.V.P. : " << tick->lineaActTicket()->DBvalue("pvplalbaran");
+		g_file->flush();
+		g_file->close();
+	 } // end if
+	_depura("END pluginvisor::Ticket_insertarArticulo_Post", 0);
 }
 
 int Ticket_total(QString *total) {
-        g_file->write ( "\x0Ch", 1 );
-	QTextStream out(g_file);
-	out << "Total : " << total;
-	g_file->flush();
+	if (g_file->open(QIODevice::WriteOnly | QIODevice::Unbuffered)) {
+		g_file->write ( "\x0Ch", 1 );
+		QTextStream out(g_file);
+		out << "Total : " << total;
+		g_file->flush();
+		g_file->close();
+	} // end if
 }
 
