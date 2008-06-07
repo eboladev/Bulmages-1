@@ -312,7 +312,7 @@ void AlbaranesProveedor::borrar()
     _depura ( "AlbaranesProveedor::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( tr ( "Debe seleccionar una linea" ) );
+        mensajeInfo ( tr ( "Debe seleccionar una linea" ), this );
         return;
     } // end if
     try {
@@ -327,7 +327,7 @@ void AlbaranesProveedor::borrar()
         } // end if
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al borrar albaran de proveedor" ) );
+        mensajeInfo ( tr ( "Error al borrar albaran de proveedor" ), this );
     } // end try
     _depura ( "END AlbaranesProveedor::borrar", 0 );
 }

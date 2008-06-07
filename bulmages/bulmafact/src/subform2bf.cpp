@@ -225,7 +225,7 @@ void SubForm2Bf::editFinished ( int row, int col, SDBRecord *rec, SDBCampo *camp
                 rec->setDBvalue ( "pvp" + m_tablename, cur->valor ( "pvparticulo" ) );
             } // end if
         } else {
-            mensajeAviso ( tr ( "Articulo inexistente" ) );
+            mensajeAviso ( tr ( "Articulo inexistente" ), this );
             delete cur;
             _depura ( "END SubForm2Bf::editFinished", 0, "Articulo inexistente" );
             return;

@@ -106,7 +106,7 @@ FacturaView::FacturaView ( Company *comp, QWidget *parent )
         m_totalfactura->setAlignment ( Qt::AlignRight );
         meteWindow ( windowTitle(), this, FALSE );
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al crear la factura" ) );
+        mensajeInfo ( tr ( "Error al crear la factura" ), this );
     }
     _depura ( "END FacturaView::FacturaView" );
 }
@@ -274,11 +274,11 @@ void FacturaView::on_mui_veralbaranes_clicked()
                 cur->siguienteregistro();
             } // end while
         } else {
-            mensajeInfo ( tr ( "No hay albaranes con esta referencia" ) );
+            mensajeInfo ( tr ( "No hay albaranes con esta referencia" ), this );
         } // end if
         delete cur;
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error inesperado" ) );
+        mensajeInfo ( tr ( "Error inesperado" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try

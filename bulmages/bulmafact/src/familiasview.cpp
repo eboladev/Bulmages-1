@@ -308,7 +308,7 @@ int FamiliasView::guardar()
     QString prodfam;
     try {
         if ( m_idfamilia == "" ) {
-            mensajeInfo ( tr ( "Debe seleccionar una familia" ) );
+            mensajeInfo ( tr ( "Debe seleccionar una familia" ), this );
             return -1;
         } // end if
         if ( mui_productofamilia->isChecked() ) {
@@ -335,7 +335,7 @@ int FamiliasView::guardar()
         _depura ( "END FamiliasView::guardar", 0 );
         return 0;
     } catch ( ... ) {
-        mensajeInfo ( "Error al guardar la familia" );
+        mensajeInfo ( tr("Error al guardar la familia"), this );
         return -1;
     } // end try
 }
@@ -395,7 +395,7 @@ void FamiliasView::on_mui_crear_clicked()
         _depura ( "END FamiliasView::on_mui_crear_clicked", 0 );
     } catch ( ... ) {
         empresaBase()->rollback();
-        mensajeInfo ( "Error al crear la familia" );
+        mensajeInfo ( tr("Error al crear la familia"), this );
     } // end try
 }
 
@@ -426,7 +426,7 @@ void FamiliasView::on_mui_crearRaiz_clicked()
         _depura ( "END FamiliasView::on_mui_crearRaiz_clicked", 0 );
     } catch ( ... ) {
         empresaBase()->rollback();
-        mensajeInfo ( "Error al crear la familia" );
+        mensajeInfo ( tr("Error al crear la familia"), this );
     } // end try
 }
 
@@ -451,7 +451,7 @@ void FamiliasView::on_mui_borrar_clicked()
             dialogChanges_cargaInicial();
             _depura ( windowTitle() + " " + "borrado satisfactoriamente.", 10 );
         } else {
-            mensajeInfo ( windowTitle() + tr ( "No se ha podido borrar" ) );
+            mensajeInfo ( windowTitle() + " " + tr ( "no se ha podido borrar" ), this );
         } // end if
     } // end if
     _depura ( "END FamiliasView::on_mui_borrar_clicked", 0 );
@@ -467,7 +467,7 @@ int FamiliasView::borrar()
 {
     _depura ( "FamiliasView::borrar", 0 );
     if ( m_idfamilia == "" ) {
-        mensajeInfo ( tr ( "Debe seleccionar una familia" ) );
+        mensajeInfo ( tr ( "Debe seleccionar una familia" ), this );
         return -1;
     } // end if
     try {
@@ -481,7 +481,7 @@ int FamiliasView::borrar()
         pintar();
         _depura ( "END FamiliasView::borrar", 0 );
     } catch ( ... ) {
-        mensajeInfo ( "Error al borrar la familia" );
+        mensajeInfo ( tr("Error al borrar la familia"), this );
         return -1;
     } // end try
     return 0;

@@ -602,7 +602,7 @@ int FichaBf::generaRML ( const QString &arch )
 
         if ( DBvalue ( "idcliente" ).isEmpty() ) {
             /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
-            mensajeInfo ( tr ( "Tiene que guardar el documento antes de poder imprimirlo." ) );
+            mensajeInfo ( tr ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
             return -1;
         } else {
             SQLQuery = "SELECT * FROM cliente WHERE idcliente = " + DBvalue ( "idcliente" );
@@ -864,7 +864,7 @@ void FichaBf::imprimir()
 
         _depura ( "END FichaBf::imprimir", 0 );
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error inesperado en la impresion" ) );
+        mensajeInfo ( tr ( "Error inesperado en la impresion" ), this );
     } // end try
 }
 

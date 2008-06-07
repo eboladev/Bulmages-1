@@ -92,7 +92,7 @@ PedidoClienteView::PedidoClienteView ( Company *comp, QWidget *parent )
         setListaDescuentos ( m_descuentos );
         meteWindow ( windowTitle(), this, FALSE );
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al crear el pedido cliente" ) );
+        mensajeInfo ( tr ( "Error al crear el pedido cliente" ), this );
     } // end try
     _depura ( "END PedidoClienteView::PedidoClienteView", 0 );
 }
@@ -166,7 +166,7 @@ void PedidoClienteView::on_mui_verpresupuesto_clicked()
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
             if ( mui_idcliente->idcliente().isEmpty() ) {
-                mensajeInfo ( tr ( "Tiene que seleccionar un cliente" ) );
+                mensajeInfo ( tr ( "Tiene que seleccionar un cliente" ), this );
                 return;
             } else {
                 SQLQuery = "SELECT * FROM presupuesto WHERE refpresupuesto = '" + mui_refpedidocliente->text() + "' AND idcliente = " + mui_idcliente->idcliente();
@@ -189,14 +189,14 @@ void PedidoClienteView::on_mui_verpresupuesto_clicked()
                 cur->siguienteregistro();
             } // end while
         } else {
-            mensajeInfo ( tr ( "No hay presupuestos con la misma referencia." ) );
+            mensajeInfo ( tr ( "No hay presupuestos con la misma referencia." ), this );
             _depura ( "No hay presupuestos con la misma referencia.", 2 );
         } // end if
 
         delete cur;
 
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error inesperado." ) );
+        mensajeInfo ( tr ( "Error inesperado." ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try
@@ -231,7 +231,7 @@ void PedidoClienteView::generarAlbaran()
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
             if ( mui_idcliente->idcliente().isEmpty() ) {
-                mensajeInfo ( tr ( "Tiene que seleccionar un cliente" ) );
+                mensajeInfo ( tr ( "Tiene que seleccionar un cliente" ), this );
                 return;
             } else {
                 SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + mui_refpedidocliente->text() + "' AND idcliente = " + mui_idcliente->idcliente();
@@ -314,7 +314,7 @@ void PedidoClienteView::generarAlbaran()
         bud->show();
 
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error inesperado" ) );
+        mensajeInfo ( tr ( "Error inesperado" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try

@@ -100,7 +100,7 @@ ArticuloView::ArticuloView ( Company *comp, QWidget *parent )
         meteWindow ( windowTitle(), this, FALSE );
         dialogChanges_cargaInicial();
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al crear el articulo" ) );
+        mensajeInfo ( tr ( "Error al crear el articulo" ), this );
     } // end try
     _depura ( "END ArticuloView::ArticuloView", 0 );
 }

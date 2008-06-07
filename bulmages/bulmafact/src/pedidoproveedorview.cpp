@@ -89,7 +89,7 @@ PedidoProveedorView::PedidoProveedorView ( Company *comp, QWidget *parent )
         dialogChanges_cargaInicial();
         meteWindow ( windowTitle(), this, FALSE );
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al crear el pedido a proveedor" ) );
+        mensajeInfo ( tr ( "Error al crear el pedido a proveedor" ), this );
     } // end try
     _depura ( "END PedidoProveedorView::PedidoProveedorView", 0 );
 }
@@ -332,7 +332,7 @@ void PedidoProveedorView::imprimir()
 
         if ( DBvalue ( "idproveedor" ).isEmpty() ) {
             /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
-            mensajeInfo ( tr ( "Tiene que guardar el documento antes de poder imprimirlo." ) );
+            mensajeInfo ( tr ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
             return;
         } else {
 	    SQLQuery = "SELECT * FROM proveedor WHERE idproveedor = " + DBvalue ( "idproveedor" );

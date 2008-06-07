@@ -69,7 +69,7 @@ void ListAlmacenView::on_mui_aceptar_clicked()
         mui_listado->guardar();
         close();
     } catch ( ... ) {
-        mensajeInfo ( "Error al guardar los almacenes" );
+        mensajeInfo ( tr("Error al guardar los almacenes"), this );
     } // end try
     _depura ( "END ListAlmacenView::on_mui_aceptar_clicked", 0 );
 }

@@ -67,7 +67,7 @@ CobroView::CobroView ( Company *comp, QWidget *parent )
         pintar();
         dialogChanges_cargaInicial();
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al crear el cobro" ) );
+        mensajeInfo ( tr ( "Error al crear el cobro" ), this );
     } // end try
     _depura ( "END CobroView::CobroView", 0 );
 }
@@ -92,7 +92,7 @@ void CobroView::imprimir()
 
     if ( DBvalue ( "idcliente" ).isEmpty() ) {
         /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
-        mensajeInfo ( tr ( "Tiene que guardar el documento antes de poder imprimirlo." ) );
+        mensajeInfo ( tr ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
         return;
     } else {
         SQLQuery = "SELECT * FROM cliente WHERE idcliente = " + DBvalue ( "idcliente" );

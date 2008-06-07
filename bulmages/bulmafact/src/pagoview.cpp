@@ -72,7 +72,7 @@ PagoView::PagoView ( Company *comp, QWidget *parent )
         pintar();
         dialogChanges_cargaInicial();
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al crear el pago" ) );
+        mensajeInfo ( tr ( "Error al crear el pago" ), this );
     } // end try
     _depura ( "Fin de la inicializacion de PagoView\n", 0 );
     _depura ( "END PagoView::PagoView", 0 );

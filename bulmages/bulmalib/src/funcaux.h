@@ -80,9 +80,9 @@ void _depura ( const QString &cad, int nivel = 0, const QString & param = "" );
 #define _depura(...)       // sin debug
 #endif
 
-void mensajeInfo ( QString cad );
-void mensajeAviso ( QString cad );
-void mensajeError ( QString cad );
+void mensajeInfo ( QString cad, QWidget *parent = 0);
+void mensajeAviso ( QString cad, QWidget *parent = 0);
+void mensajeError ( QString cad, QWidget *parent = 0);
 /// En la impresion de documentos con trml2pdf esta funcion hace casi todo el trabajo.
 /// de la invocacion de trml2pdf.
 /// Para evitar trabajo duplicado. El archivo debe estar ubicado ya en el directorio.

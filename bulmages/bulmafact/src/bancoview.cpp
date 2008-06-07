@@ -166,7 +166,7 @@ int BancoView::guardar()
         _depura ( "END BancoView::on_mui_guardar_clicked", 0 );
         return 0;
     } catch ( ... ) {
-        mensajeInfo ( "Error al guardar" );
+        mensajeInfo ( tr("Error al guardar"), this );
         return -1;
     } // end try
 }
@@ -214,7 +214,7 @@ void BancoView::on_mui_nuevo_clicked()
         pintar();
         _depura ( "END BancoView::on_mui_nuevo_clicked", 0 );
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error inesperado el crear el Banco" ) );
+        mensajeInfo ( tr ( "Error inesperado el crear el Banco" ), this );
         empresaBase() ->rollback();
     } // end catch
 }
@@ -242,7 +242,7 @@ void BancoView::on_mui_borrar_clicked()
         pintar();
         _depura ( "END BancoView::on_mui_borrar_clicked", 0 );
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error inesperado al borrar el banco" ) );
+        mensajeInfo ( tr ( "Error inesperado al borrar el banco" ), this );
         empresaBase() ->rollback();
     } // end try
 }

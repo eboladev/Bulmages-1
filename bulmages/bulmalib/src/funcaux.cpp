@@ -469,34 +469,37 @@ void _depura ( const QString &cad, int nivel, const QString &param )
 //}
 #endif
 
-void mensajeInfo ( QString cad )
+void mensajeInfo ( QString cad, QWidget *parent)
 {
-    QMessageBox::information ( NULL,
+    QMessageBox msgBox;
+    msgBox.information ( parent,
                                QApplication::translate ( "funcaux", "Informacion del programa" ),
                                cad, QApplication::translate ( "funcaux", "&Continuar" ),
                                QString::null, 0 );
 }
 
 
-void mensajeAviso ( QString cad )
+void mensajeAviso ( QString cad, QWidget *parent )
 {
-    QMessageBox::warning ( NULL,
+    QMessageBox msgBox;
+    msgBox.warning ( parent,
                            QApplication::translate ( "funcaux", "Aviso del programa" ),
                            cad, QApplication::translate ( "funcaux", "&Continuar" ),
                            QString::null, 0 );
 }
 
 
-void mensajeError ( QString cad )
+void mensajeError ( QString cad, QWidget *parent )
 {
-    QMessageBox::critical ( NULL,
+    QMessageBox msgBox;
+    msgBox.critical ( parent,
                             QApplication::translate ( "funcaux", "Error del programa" ),
                             cad, QApplication::translate ( "funcaux", "&Continuar" ),
                             QString::null, 0 );
 }
 
 
-QString  num2texto ( QString numero, QString moneda, QString singular )
+QString num2texto ( QString numero, QString moneda, QString singular )
 {
     /// Si es 0 el n&uacute;mero, no tiene caso procesar toda la informaci&oacute;n.
     if ( numero == "0" || numero == "00" ) {

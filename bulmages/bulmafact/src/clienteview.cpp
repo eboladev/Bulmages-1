@@ -111,7 +111,7 @@ ClienteView::ClienteView ( Company *comp, QWidget *parent )
         /// Disparamos los plugins.
         res = g_plugins->lanza ( "ClienteView_ClienteView_Post", this );
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al crear el cliente" ) );
+        mensajeInfo ( tr ( "Error al crear el cliente" ), this );
     } // end try
     _depura ( "END ClienteView::ClienteView", 0 );
 }
@@ -181,7 +181,7 @@ void ClienteView::on_mui_informe_clicked()
     _depura ( "ClienteView::on_mui_informe_clicked", 0 );
 
     if ( DBvalue ( "idcliente" ).isEmpty() ) {
-	mensajeInfo ( tr ( "Tiene que guardar el documento antes de poder imprimirlo." ) );
+	mensajeInfo ( tr ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
     } else {
 	InformeCliente inf ( empresaBase() );
 	inf.setCliente ( DBvalue ( "idcliente" ) );

@@ -189,7 +189,7 @@ void ProveedorList::borrar()
         delete prov;
         presentar();
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al borrar el proveedor" ) );
+        mensajeInfo ( tr ( "Error al borrar el proveedor" ), this );
     } // end try
     _depura ( "END ProveedorList::borrar", 0 );
 }

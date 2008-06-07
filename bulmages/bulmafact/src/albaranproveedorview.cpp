@@ -99,7 +99,7 @@ AlbaranProveedorView::AlbaranProveedorView ( Company *comp, QWidget *parent )
         mui_idalmacen->setidalmacen ( "0" );
         meteWindow ( windowTitle(), this, FALSE );
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error al crear el albaran proveedor" ) );
+        mensajeInfo ( tr ( "Error al crear el albaran proveedor" ), this );
     } // end try
     _depura ( "END AlbaranProveedorView::AlbaranProveedorView", 0 );
 }
@@ -263,7 +263,7 @@ void AlbaranProveedorView::generarFacturaProveedor()
             /// de estos datos. Se utilizan en su lugar los del formulario.
             /// Verifica que exista, por lo menos, un cliente seleccionado.
             if ( mui_idproveedor->idproveedor().isEmpty() ) {
-                mensajeInfo ( tr ( "Tiene que seleccionar un proveedor" ) );
+                mensajeInfo ( tr ( "Tiene que seleccionar un proveedor" ), this );
                 return;
             } else {
                 SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + mui_refalbaranp->text() + "' AND idproveedor = " + mui_idproveedor->idproveedor();
@@ -327,7 +327,7 @@ void AlbaranProveedorView::generarFacturaProveedor()
 	bud->calculaypintatotales();
 
     } catch ( ... ) {
-        mensajeInfo ( tr ( "Error inesperado" ) );
+        mensajeInfo ( tr ( "Error inesperado" ), this );
         if ( cur ) delete cur;
         if ( bud ) delete bud;
     } // end try

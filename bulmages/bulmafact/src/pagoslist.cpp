@@ -177,7 +177,7 @@ void PagosList::borrar()
     _depura ( "PagosList::borrar", 0 );
     int a = mui_list->currentRow();
     if ( a < 0 ) {
-        mensajeInfo ( tr ( "Debe seleccionar una linea" ) );
+        mensajeInfo ( tr ( "Debe seleccionar una linea" ), this );
         return;
     } // end if
     try {
@@ -189,7 +189,7 @@ void PagosList::borrar()
         } // end if
         presentar();
     } catch ( ... )  {
-        mensajeInfo ( tr ( "Error al borrar el pago" ) );
+        mensajeInfo ( tr ( "Error al borrar el pago" ), this );
     } // end try
     _depura ( "END PagosList::borrar", 0 );
 }

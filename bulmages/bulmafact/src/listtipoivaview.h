@@ -35,7 +35,7 @@
 #include "fichabf.h"
 
 
-/// Muestra y administra las l&iacute;neas de detalle del listado de almacenes.
+/// Muestra y administra las l&iacute;neas de detalle del listado de tipos de IVA.
 /** */
 class ListTipoIVASubForm : public SubForm2Bf
 {
@@ -53,7 +53,7 @@ public slots:
 #include "ui_listtipoivabase.h"
 
 
-/// Muestra y administra el listado de almacenes.
+/// Muestra y administra el listado de tipos de IVA.
 /** */
 class ListTipoIVAView : public FichaBf, public Ui_ListTipoIVABase
 {

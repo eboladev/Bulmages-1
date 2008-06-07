@@ -36,7 +36,7 @@
 
 
 
-/// Muestra y administra las l&iacute;neas de detalle del listado de almacenes.
+/// Muestra y administra las l&iacute;neas de detalle del listado de tasas de IVA.
 /** */
 class ListTasaIVASubForm : public SubForm2Bf
 {
@@ -54,7 +54,7 @@ public slots:
 #include "ui_listtasaivabase.h"
 
 
-/// Muestra y administra el listado de almacenes.
+/// Muestra y administra el listado de tasas de IVA.
 /** */
 class ListTasaIVAView : public FichaBf, public Ui_ListTasaIVABase
 {
