@@ -29,12 +29,12 @@
 BLProgressBar::BLProgressBar (  ) : QDialog ( 0, Qt::SplashScreen )
 {
     _depura ( "BLProgressBar::BLProgressBar", 0 );
-    setupUi ( this );
-//    setWindowFlags ( Qt::SplashScreen | Qt::FramelessWindowHint );
-    QDesktopWidget *pantalla = new QDesktopWidget();
-    setGeometry ( ( pantalla->screenGeometry().width() / 2 ) - this->width() /2, ( pantalla->screenGeometry().height() / 2 ) - this->height() / 2, this->width(), this->height() );
-    delete pantalla;
-
+     if(confpr->valor(CONF_SHOW_PROGRES_BAR) == "TRUE") {
+	   setupUi ( this );
+	    QDesktopWidget *pantalla = new QDesktopWidget();
+	    setGeometry ( ( pantalla->screenGeometry().width() / 2 ) - this->width() /2, ( pantalla->screenGeometry().height() / 2 ) - this->height() / 2, this->width(), this->height() );
+	    delete pantalla;
+    } // end if
     _depura ( "END BLProgressBar::BLProgressBar", 0 );
 }
 
@@ -44,11 +44,13 @@ BLProgressBar::BLProgressBar (  ) : QDialog ( 0, Qt::SplashScreen )
 void BLProgressBar::setText ( const QString &tex )
 {
     _depura ( "BLProgressBar::setText", 0 );
-    mui_label1->setText ( tex );
-//    mui_label1->repaint();
-    /// Si no hacemos una espera no se pinta bien el setText.
-    for (int i = 0; i < 20; i++)
-       repaint();
+
+    if(confpr->valor(CONF_SHOW_PROGRES_BAR) == "TRUE") {
+	    mui_label1->setText ( tex );
+	    /// Si no hacemos una espera no se pinta bien el setText.
+	    for (int i = 0; i < 20; i++)
+	       repaint();
+    } // end if
     _depura ( "END BLProgressBar::setText", 0 );
 }
 
@@ -68,7 +70,8 @@ BLProgressBar::~BLProgressBar()
 void BLProgressBar::setValue ( int value )
 {
     _depura ( "BLProgressBar::setValue", 0 );
-    mui_progressBar->setValue ( value );
+      if(confpr->valor(CONF_SHOW_PROGRES_BAR) == "TRUE") 
+	   mui_progressBar->setValue ( value );
     _depura ( "END BLProgressBar::setValue", 0 );
 
 }
@@ -80,7 +83,11 @@ int BLProgressBar::value()
 {
     _depura ( "BLProgressBar::value", 0 );
     _depura ( "END BLProgressBar::value", 0 );
-    return mui_progressBar->value();
+       if(confpr->valor(CONF_SHOW_PROGRES_BAR) == "TRUE") {
+	   return mui_progressBar->value();
+    } else {
+	return 0;
+    } // end if
 }
 
 ///
@@ -89,7 +96,8 @@ int BLProgressBar::value()
 void BLProgressBar::setRange ( int range,  int range1 )
 {
     _depura ( "BLProgressBar::setRange", 0 );
-    mui_progressBar->setRange ( range, range1 );
+        if(confpr->valor(CONF_SHOW_PROGRES_BAR) == "TRUE") 
+	   mui_progressBar->setRange ( range, range1 );
     _depura ( "END BLProgressBar::setRange", 0 );
 }
 
@@ -99,7 +107,7 @@ void BLProgressBar::setRange ( int range,  int range1 )
 void BLProgressBar::show (  )
 {
     _depura ( "BLProgressBar::show", 0 );
-    if (confpr->valor(CONF_REFRESH_LIST) == "TRUE") {
+    if (confpr->valor(CONF_SHOW_PROGRES_BAR) == "TRUE") {
 	QWidget::show();
     } // end if
     _depura ( "END BLProgressBar::show", 0 );

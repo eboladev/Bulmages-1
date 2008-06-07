@@ -54,6 +54,9 @@ CONF_FONTSIZE_BULMAGES        10
 # Refresco de los listados tras el cierre de una ficha.
 CONF_REFRESH_LIST             FALSE
 
+#Mostrar la barra de progreso
+CONF_SHOW_PROGRES_BAR         FALSE
+
 CONF_DEBUG                    FALSE
 
 CONF_ALERTAS_DBF               Yes

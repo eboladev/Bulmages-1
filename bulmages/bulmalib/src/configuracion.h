@@ -129,6 +129,7 @@
 
 /// Determina si hay refresco 
 #define CONF_REFRESH_LIST            210
+#define CONF_SHOW_PROGRES_BAR        211
 
 /// Esto indica donde se van a albergar los programas auxiliares a bulmages (cargaemp,
 /// creaemp, borraemp).
