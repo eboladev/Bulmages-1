@@ -3,6 +3,8 @@ bulmages (0.11.1~rc4-1) unstable; urgency=medium
   [ Leopold Palomo Avellaneda ]
   * New upstream release.
   * Corrected some typo in the names of the maintainers.
+  * Erased patches directory. We don't have patches by now. Erased quilt 
+  as dependency in Build-Depends. We don't need it. Closes: #485155
 
   [ Miguel Gea Milvaques ]
   * Build in s390 with O0 instead O2 to avoid FTBFS

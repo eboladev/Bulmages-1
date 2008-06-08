@@ -3,7 +3,7 @@ Section: kde
 Priority: optional
 Maintainer: René Mérou <ochominutosdearco@gmail.com>
 Uploaders: Tomeu Borràs Riera <tborras@conetxcia.com>, Miguel Gea Milvaques <xerakko@debian.org>, Leopold Palomo Avellaneda <leo@alaxarxa.net>
-Build-Depends: debhelper (>= 5.0.37.2), qt4-dev-tools (>= 4.3.1), libqt4-qt3support (>= 4.3.1), libqt4-dev, python, python-support (>= 0.3), libpq-dev, quilt, cmake (>=2.6.0)
+Build-Depends: debhelper (>= 5.0.37.2), qt4-dev-tools (>= 4.3.1), libqt4-qt3support (>= 4.3.1), libqt4-dev, python, python-support (>= 0.3), libpq-dev, cmake (>=2.6.0)
 Standards-Version: 3.7.3
 Homepage: http://www.iglues.org
 XS-Vcs-Svn: svn://svn.berlios.de/bulmages/trunk/debian
