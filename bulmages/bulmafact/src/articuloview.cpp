@@ -1,4 +1,4 @@
-/***************************************************************************
+/***************************************************************************f
  *   Copyright (C) 2004 by Alvaro de Miguel                                *
  *   alvaro.demiguel@gmail.com                                             *
  *                                                                         *
@@ -92,7 +92,7 @@ ArticuloView::ArticuloView ( Company *comp, QWidget *parent )
         dialogChanges_setQObjectExcluido ( m_componentes );
         dialogChanges_setQObjectExcluido ( m_componentes->mui_list );
         m_archivoimagen = "";
-        m_imagen->setPixmap ( QPixmap ( confpr->valor ( CONF_PROGDATA ) + "images/logopeq.png" ) );
+        mui_imagen->setPixmap ( QPixmap ( confpr->valor ( CONF_PROGDATA ) + "images/logopeq.png" ) );
 
         /// Disparamos los plugins.
         g_plugins->lanza ( "ArticuloView_ArticuloView_Post", this );
@@ -125,7 +125,24 @@ ArticuloView::~ArticuloView()
 void ArticuloView::pintarPost()
 {
     _depura ( "ArticuloView::pintar", 0 );
-    m_imagen->setPixmap ( QPixmap ( confpr->valor ( CONF_DIR_IMG_ARTICLES ) + mui_codigocompletoarticulo->text() + ".jpg" ) );
+
+    /// Comprueba que exista la imagen del articulo y sino carga la imagen por defecto para indicar
+    /// que el articulo no tiene imagen asociada.
+
+    QString archivoimagen;
+    archivoimagen = confpr->valor ( CONF_DIR_IMG_ARTICLES ) + mui_codigocompletoarticulo->text() + ".jpg";
+
+    QFile archivo;
+    archivo.setFileName(archivoimagen);
+
+    if (archivo.exists()) {
+	/// Muestra la imagen si existe el archivo.
+	mui_imagen->setPixmap ( QPixmap ( archivoimagen ) );
+    } else  {
+	/// Muestra la imagen por defecto.
+	mui_imagen->setPixmap ( QPixmap ( confpr->valor ( CONF_PROGDATA ) + "images/logopeq.png" ) );
+    } // end if
+
     _depura ( "END ArticuloView::pintar", 0 );
 }
 
@@ -193,13 +210,17 @@ int ArticuloView::guardarPost()
 {
     _depura ( "ArticuloView::guardarPost", 0 );
     /// Guardamos la imagen, si es que existe.
-    if ( m_archivoimagen != "" ) {
+    if ( !m_archivoimagen.isEmpty() ) {
         cursor2 * cur1 = empresaBase() ->cargacursor ( "SELECT codigocompletoarticulo FROM articulo WHERE idarticulo = " + DBvalue ( "idarticulo" ) );
         if ( !cur1 ) throw - 1;
 	m_archivoimagen = m_archivoimagen.replace(" ", "\\ ");
-        QString cadena = "cp " + m_archivoimagen + " " + confpr->valor ( CONF_DIR_IMG_ARTICLES ) + cur1->valor ( "codigocompletoarticulo" ) + ".jpg";
+
+	/// Coge la imagen del recuadro y la guarda en un archivo con el nombre correcto.
+	if (mui_imagen->pixmap()->save(confpr->valor(CONF_DIR_IMG_ARTICLES ) + cur1->valor ( "codigocompletoarticulo" ) + ".jpg") == false) {
+		mensajeError(tr("No se ha podido guardar la imagen.\nRevise los permisos de escritura y que disponga\nde espacio libre suficiente en el disco duro."), this);
+	} // end if
+
         delete cur1;
-        system ( cadena.toAscii().constData() );
     } // end if
 
     /// Guardamos la lista de componentes.
@@ -245,14 +266,57 @@ int ArticuloView::borrarPre()
 **/
 void ArticuloView::on_mui_cambiarimagen_clicked()
 {
-    _depura ( "ArticuloView::INIT_s_cambiarimagen()", 0 );
+    _depura ( "ArticuloView::on_mui_cambiarimagen_clicked()", 0 );
+    QPixmap imagen;
+
     m_archivoimagen = QFileDialog::getOpenFileName (
                           this,
-                          tr ( "Abrir ventana de archivo" ),
+                          tr ( "Seleccione un archivo de imagen" ),
                           "",
                           tr ( "Imagenes (*.jpg)" ) );
 
-    m_imagen->setPixmap ( QPixmap ( m_archivoimagen ) );
-    _depura ( "ArticuloView::END_s_cambiarimagen()", 0 );
+    /// Comprueba si se ha seleccionado un archivo.
+    if (!m_archivoimagen.isNull()) {
+	/// Comprueba que la imagen del archivo es valida.
+	if (imagen.load(m_archivoimagen) == false) {
+		mensajeError(tr("No se ha podido cargar la imagen.\nCompruebe que la imagen sea valida."), this);
+		return;
+	} // end if
+
+	/// Muestra la imagen en el recuadro de la imagen.
+        mui_imagen->setPixmap ( imagen );
+    } // end if
+
+    _depura ( "END ArticuloView::on_mui_cambiarimagen_clicked()", 0 );
+}
+
+
+/** Elimina la imagen del articulo asociado si existe.
+**/
+void ArticuloView::on_mui_borrarimagen_clicked()
+{
+    QString archivoimagen;
+    archivoimagen = confpr->valor ( CONF_DIR_IMG_ARTICLES ) + mui_codigocompletoarticulo->text() + ".jpg";
+
+    QFile archivo;
+    archivo.setFileName(archivoimagen);
+
+    if (archivo.exists()) {
+    	int val = QMessageBox::question ( this,
+                                      tr ( "Borrar imagen del articulo" ),
+                                      tr ( "Esta seguro que quiere borrar\nla imagen asociada a este articulo?"),
+                                      QMessageBox::Yes,
+                                      QMessageBox::Cancel | QMessageBox::Escape | QMessageBox::Default );
+
+    	if ( val == QMessageBox::Yes ) {
+		/// Se borra el archivo de la imagen y se muestra la imagen por defecto en el QLabel.
+
+		if (archivo.remove() == false) {
+			mensajeError(tr("No se ha podido borrar el archivo.\nCompruebe que el archivo tenga los permisos correctos."), this);
+		} // end if
+    	} // end if
+    } // end if
+
+    pintarPost();
 }
 
