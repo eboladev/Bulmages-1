@@ -5,7 +5,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>208</width>
+    <width>214</width>
     <height>72</height>
    </rect>
   </property>
@@ -31,7 +31,7 @@
    <property name="verticalSpacing" >
     <number>5</number>
    </property>
-   <item row="0" column="0" colspan="2" >
+   <item row="0" column="0" colspan="3" >
     <widget class="QLabel" name="label" >
      <property name="text" >
       <string>Proveedor:</string>
@@ -69,7 +69,35 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="2" >
+   <item row="1" column="2" >
+    <widget class="QToolButton" name="mui_borrar_idproveedor" >
+     <property name="minimumSize" >
+      <size>
+       <width>22</width>
+       <height>22</height>
+      </size>
+     </property>
+     <property name="maximumSize" >
+      <size>
+       <width>22</width>
+       <height>22</height>
+      </size>
+     </property>
+     <property name="text" >
+      <string/>
+     </property>
+     <property name="icon" >
+      <iconset resource="../../bulmages.qrc" >:/Images/edit-delete.svg</iconset>
+     </property>
+     <property name="iconSize" >
+      <size>
+       <width>22</width>
+       <height>22</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="3" >
     <widget class="QLabel" name="m_nomproveedor" >
      <property name="sizePolicy" >
       <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >

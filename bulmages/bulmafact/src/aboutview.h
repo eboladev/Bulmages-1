@@ -23,7 +23,9 @@
 #define ABOUTVIEW_H
 
 #include <QDialog>
+
 #include <ui_aboutbase.h>
+#include "funcaux.h"
 
 
 /// Clase que muestra la ventana de informaci&oacute;n sobre el programa.

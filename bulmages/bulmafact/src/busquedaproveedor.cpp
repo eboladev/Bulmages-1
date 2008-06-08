@@ -57,7 +57,12 @@ void BusquedaProveedor::pinta()
     _depura ( "BusquedaProveedor::pinta", 0 );
     m_semaforo = TRUE;
     m_cifproveedor->setText ( mdb_cifproveedor );
-    m_nomproveedor->setText ( mdb_codproveedor + ".- " + mdb_nomproveedor );
+
+    if (mdb_codproveedor.isEmpty() && mdb_nomproveedor.isEmpty()) {
+	m_nomproveedor->setText ( "" );
+    } else {
+	m_nomproveedor->setText ( mdb_codproveedor + " - " + mdb_nomproveedor );
+    } // end if
     m_semaforo = FALSE;
     emit ( valueChanged ( mdb_idproveedor ) );
     _depura ( "END BusquedaProveedor::pinta", 0 );
@@ -86,7 +91,15 @@ void BusquedaProveedor::setidproveedor ( QString val )
 {
     _depura ( "BusquedaProveedor::setidproveedor", 0 );
     mdb_idproveedor = val;
-    if ( mdb_idproveedor != "" ) {
+
+    if ( val == "" ) {
+        m_cifproveedor->setText ( "" );
+        m_nomproveedor->setText ( "" );
+        mdb_idproveedor = "";
+        mdb_nomproveedor = "";
+        mdb_cifproveedor = "";
+        mdb_codproveedor = "";
+    } else {
         QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor = '" + mdb_idproveedor + "'";
         cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
         if ( !cur->eof() ) {
@@ -95,11 +108,6 @@ void BusquedaProveedor::setidproveedor ( QString val )
             mdb_codproveedor = cur->valor ( "codproveedor" );
         } // end if
         delete cur;
-    } else {
-        mdb_idproveedor = "";
-        mdb_nomproveedor = "";
-        mdb_cifproveedor = "";
-        mdb_codproveedor = "";
     } // end if
     pinta();
     _depura ( "END BusquedaProveedor::setidproveedor", 0 );
@@ -160,6 +168,8 @@ void BusquedaProveedor::on_mui_buscar_clicked()
     /// Esto es convertir un QWidget en un sistema modal de di&aacute;logo.
     QDialog *diag = new QDialog ( 0 );
     diag->setModal ( true );
+    diag->setGeometry(QRect (0, 0, 750, 550));
+    centrarEnPantalla(diag);
 
     ProveedorList *providers = new ProveedorList ( ( Company * ) empresaBase(), diag, 0, ProveedorList::SelectMode );
     connect ( providers, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
@@ -197,6 +207,18 @@ void BusquedaProveedor::on_m_cifproveedor_editingFinished()
     emit ( valueChanged ( mdb_idproveedor ) );
     _depura ( "END BusquedaProveedor::on_m_cifproveedor_editingFinished", 0 );
 }
+
+
+/** Resetea el valor del 'id_proveedor' y vacia la informacion del formulario.
+    Es util sobre todo el los filtros por proveedor para anular el filtro.
+*/
+void BusquedaProveedor::on_mui_borrar_idproveedor_clicked()
+{
+    _depura ( "BusquedaProveedor::on_mui_borrar_idproveedor_clicked", 0 );
+    setidproveedor ( "" );
+    _depura ( "END BusquedaProveedor::on_mui_borrar_idproveedor_clicked", 0 );
+}
+
 
 /** SLOT que responde a la produccion de cambios en el campo de texto del widget.
     Busca en la tabla proveedor un registro que se parezca en cif y si lo encuentra.

@@ -184,6 +184,8 @@ void BusquedaCliente::on_mui_buscar_clicked()
     _depura ( "BusquedaCliente::on_mui_buscar_clicked", 0 );
     QDialog *diag = new QDialog ( 0 );
     diag->setModal ( true );
+    diag->setGeometry(QRect (0, 0, 750, 550));
+    centrarEnPantalla(diag);
 
     ClientsList *clients = new ClientsList ( ( Company * ) empresaBase(), diag, 0, ClientsList::SelectMode );
     connect ( clients, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
