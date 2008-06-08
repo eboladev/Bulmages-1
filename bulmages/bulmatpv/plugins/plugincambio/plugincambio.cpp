@@ -2,7 +2,7 @@
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *   Copyright (C) 2006 by Fco. Javier M. C.                               *
- *   fcojavmc@todo-redes.com                                               *
+ *   fcojavmc@todo-redes.com                                               *f
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -70,7 +70,10 @@ int EmpresaTPV_cobrar ( EmpresaTPV *etpv )
     diag->setWindowTitle ( "Cobro" );
 
     diag->exec();
+
+    int valor = camb->m_value;
+
     delete diag;
 
-    return 0;
+    return valor;
 }

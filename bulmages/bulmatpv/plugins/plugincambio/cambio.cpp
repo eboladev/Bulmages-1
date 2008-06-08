@@ -12,6 +12,7 @@ Cambio::Cambio ( EmpresaTPV *emp, QWidget *parent ) : BLWidget ( emp, parent )
 
 //======================
 
+    m_value = 0;
     base basesimp;
     base basesimpreqeq;
     DBRecord *linea;
@@ -124,12 +125,18 @@ void Cambio::on_mui_pago_textChanged() {
 	mui_cambio->setText(cambio.toQString());
 }
 
-void Cambio::on_mui_cobrar_clicked()
-{
-    ( ( EmpresaTPV * ) empresaBase() ) ->pulsaTecla ( Qt::Key_F1 );
+
+void Cambio::on_mui_cancelar_clicked() {
+	m_value = -1;
+	((QDialog *)parent())->accept();
 }
 
-void Cambio::on_mui_abrircajon_clicked()
-{
-    ( ( EmpresaTPV * ) empresaBase() ) ->pulsaTecla ( Qt::Key_F3 );
+void Cambio::on_mui_cobrar_clicked() {
+	((QDialog *)parent())->accept();
 }
+
+void Cambio::on_mui_visa_clicked() {
+	((EmpresaTPV *) empresaBase())->ticketActual()->setDBvalue("idforma_pago", confpr->valor(CONF_IDFORMA_PAGO_VISA));
+	((QDialog *)parent())->accept();
+}
+

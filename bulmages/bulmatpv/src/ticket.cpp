@@ -49,6 +49,7 @@ Ticket::Ticket ( EmpresaBase *emp, QWidget *parent ) : BLWidget ( emp, parent ),
     addDBCampo ( "numalbaran", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Ticket", "Num" ) );
     addDBCampo ( "refalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Ticket", "Referencia" ) );
     addDBCampo ( "ticketalbaran", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate ( "Ticket", "Ticket" ) );
+    addDBCampo ( "idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Ticket", "Forma Pago" ) );
 
 
     setDBvalue ( "ticketalbaran", "TRUE" );
@@ -56,6 +57,7 @@ Ticket::Ticket ( EmpresaBase *emp, QWidget *parent ) : BLWidget ( emp, parent ),
     setDBvalue ( "idcliente", confpr->valor ( CONF_IDCLIENTE_DEFECTO ) );
     setDBvalue ( "idtrabajador", confpr->valor ( CONF_IDTRABAJADOR_DEFECTO ) );
     setDBvalue ( "descalbaran", "Ticket de venta" );
+    setDBvalue ( "idforma_pago", confpr->valor (CONF_IDFORMA_PAGO_CONTADO) );
 
     m_lineaActual = NULL;
     m_listaLineas = new QList<DBRecord *>;

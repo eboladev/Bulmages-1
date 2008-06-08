@@ -201,7 +201,8 @@
 #define CONF_IDALMACEN_DEFECTO       521
 #define CONF_IDARTICULO_DEFECTO      522
 #define CONF_IDTRABAJADOR_DEFECTO      523
-
+#define CONF_IDFORMA_PAGO_VISA         524
+#define CONF_IDFORMA_PAGO_CONTADO      525
 
 /// CONF_DEBUG indica el modo de debug.
 #define CONF_DEBUG                   550
