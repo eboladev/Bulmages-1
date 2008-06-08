@@ -194,6 +194,7 @@ void FacturaView::on_mui_cobrar_clicked()
 void FacturaView::on_mui_agregaralbaran_clicked()
 {
     _depura ( "FacturaView::on_mui_agregaralbaran_clicked", 0 );
+
     QDialog *diag = new QDialog ( 0 );
     diag->setModal ( true );
     AlbaranClienteList *fac = new AlbaranClienteList ( empresaBase(), diag, 0, AlbaranClienteList::SelectMode );
