@@ -578,6 +578,23 @@ void Ticket::bajar()
 
 void Ticket::agregarCantidad ( QString cantidad )
 {
+   Fixed cant ( cantidad );
+   /// Comprueba la existencia de la linea de ticket.
+   if ( m_lineaActual == NULL ) {
+	mensajeAviso ( "No existe linea" );
+	return;
+   } // end if
+   Fixed cantorig ( m_lineaActual->DBvalue ( "cantlalbaran" ) );
+   Fixed suma = cant + cantorig;
+   if ( suma == Fixed ( "0.00" ) ) {
+	borrarLinea(m_lineaActual);
+	//listaLineas() ->removeAt ( listaLineas() ->indexOf ( m_lineaActual ));
+	//m_lineaActual = listaLineas() ->at ( 0 );
+   } else {
+	m_lineaActual->setDBvalue ( "cantlalbaran", suma.toQString() );
+   } // end if
+   pintar();
+/*
     Fixed cant ( cantidad );
     /// Comprueba la existencia de la linea de ticket.
     if ( m_lineaActual == NULL ) {
@@ -593,10 +610,27 @@ void Ticket::agregarCantidad ( QString cantidad )
         m_lineaActual->setDBvalue ( "cantlalbaran", suma.toQString() );
     } // end if
     pintar();
+*/
 }
 
 void Ticket::ponerCantidad ( QString cantidad )
 {
+   Fixed cant ( cantidad );
+   /// Comprueba la existencia de la linea de ticket.
+   if ( m_lineaActual == NULL ) {
+	mensajeAviso ( "No existe linea" );
+	return;
+   } // end if
+
+   if ( cant == 0 ) {
+	borrarLinea(m_lineaActual);
+	//listaLineas() ->removeAt ( listaLineas() ->indexOf ( m_lineaActual ));
+	//m_lineaActual = listaLineas() ->at ( 0 );
+   } else {
+	m_lineaActual->setDBvalue ( "cantlalbaran", cant.toQString() );
+   } // end if
+   pintar();
+/*
     Fixed cant ( cantidad );
     /// Comprueba la existencia de la linea de ticket.
     if ( m_lineaActual == NULL ) {
@@ -611,6 +645,7 @@ void Ticket::ponerCantidad ( QString cantidad )
         m_lineaActual->setDBvalue ( "cantlalbaran", cant.toQString() );
     } // end if
     pintar();
+*/
 }
 
 void Ticket::ponerPrecio ( QString precio )
@@ -692,4 +727,26 @@ int Ticket::guardar()
         return -1;
     } // end try
 }
+
+
+void Ticket::borrarLinea(DBRecord* linea)
+{
+   if(linea == NULL)
+	return;
+   int numlinea = listaLineas()->indexOf(linea);
+
+   if(linea == m_lineaActual){
+	listaLineas() ->removeAt ( listaLineas() ->indexOf ( linea ) );
+	if(numlinea > listaLineas()->count()-1)
+	{
+		m_lineaActual = listaLineas()->count() > 0?listaLineas()->at ( listaLineas()->count()-1 ):NULL;
+	} else {
+		m_lineaActual = listaLineas()->count() > 0?listaLineas() ->at (numlinea):NULL;
+	}
+   } else {
+	listaLineas() ->removeAt ( listaLineas() ->indexOf ( linea ) );
+   }
+}
+
+
 

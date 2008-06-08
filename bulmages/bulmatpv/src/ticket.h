@@ -65,6 +65,7 @@ public:
     virtual void imprimir();
     virtual void abrircajon();
     int guardar();
+    void borrarLinea(DBRecord* linea);
 
 public slots:
     virtual void subir();
