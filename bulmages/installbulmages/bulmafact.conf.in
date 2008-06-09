@@ -4,7 +4,7 @@
 #                                                                    #
 #--------------------------------------------------------------------#
 
-CONF_SPLASH_BULMAFACT          @CMAKE_INSTALL_PREFIX@/share/bulmages/splashbulmafact.jpg
+CONF_SPLASH_BULMAFACT          @CMAKE_INSTALL_PREFIX@/share/bulmages/images/splashbulmafact.jpg
 
 
 # Estos parametros indican si los numeradores son automaticos.

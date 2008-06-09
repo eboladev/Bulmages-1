@@ -34,8 +34,17 @@
 Splash::Splash ( QString appSplash, QString appName, QString appVersion ) : QDialog ( 0, Qt::FramelessWindowHint )
 {
     _depura ( "Splash::Splash", 0 );
-    image0 = new QPixmap();
-    image0->load ( appSplash );
+
+    QFile archivo(appSplash);
+    if (!archivo.exists()) {
+	QString mensaje = "Splash: No existe el archivo " + appSplash + "\n";
+	fprintf(stderr, mensaje.toAscii());
+        image0 = new QPixmap(350, 263);
+	image0->fill(QColor(QColor(150, 150, 200)));
+    } else {
+        image0 = new QPixmap();
+        image0->load ( appSplash );
+    }// end if
 
     /// Se modifica la paleta para que utilize la imagen como fondo.
     QPalette p = this->palette();
@@ -61,13 +70,10 @@ Splash::Splash ( QString appSplash, QString appName, QString appVersion ) : QDia
     m_label->setFont ( QFont ( "helvetica", 8, QFont::Bold ) );
     m_label->show();
 
-
     m_label1 = new QLabel ( this );
     m_label1->setAlignment ( Qt::AlignBottom );
     m_label1->setFont ( QFont ( "helvetica", 9, QFont::Normal ) );
     m_label1->setGeometry ( 0, image0->height() - 50, image0->width(), 50 );
-
-
 
     barra = new QProgressBar ( this );
     barra->setTextVisible ( FALSE );
@@ -95,7 +101,6 @@ Splash::~Splash()
     delete image0;
     _depura ( "END Splash::~Splash", 0 );
 }
-
 
 
 ///

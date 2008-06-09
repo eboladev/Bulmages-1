@@ -194,8 +194,6 @@ int main ( int argc, char **argv )
         /// Lanzamos la creacion de las ventanas principales.
         bges->createMainWindows ( splashScr );
 
-
-
         splashScr->mensaje ( QApplication::translate ( "main", "Terminado" ) );
         splashScr->setBarraProgreso ( 100 );
 

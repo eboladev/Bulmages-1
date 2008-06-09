@@ -378,6 +378,9 @@ void ListVentanas::sacaWindow ( QObject *obj )
         } // end if
         i++;
     } // end while
+    /// Deseleccionamos cualquier elemento del listado para que no se quede marcado si
+    /// ninguna otra ventana recoge el foco.
+    deSeleccionaWindow();
     _depura ( "END ListVentanas::sacaWindow", 0 );
 }
 

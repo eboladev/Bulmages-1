@@ -24,7 +24,7 @@
 		<fill color="(0,0,0)"/>	
 		<stroke color="(0,0,0)"/>
 		<drawString x="13.3cm" y="0.5cm">www.iglues.org -- info@iglues.org --</drawString>
-		<drawString x="0.3cm" y="0.2cm">Estas plantillas son de demostracion. Puede personalizar sus formatos de impresion modificando las plantillas ubicadas en [CONF_DIR_OPENREPORTS]</drawString>	
+		<drawString x="0.3cm" y="0.2cm">Estas plantillas son de demostracion.</drawString>	
 
 
 		<fill color="(0,0,0)"/>	

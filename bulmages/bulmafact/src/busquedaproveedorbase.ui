@@ -9,9 +9,6 @@
     <height>72</height>
    </rect>
   </property>
-  <property name="windowTitle" >
-   <string>Form1</string>
-  </property>
   <layout class="QGridLayout" >
    <property name="leftMargin" >
     <number>0</number>
@@ -110,9 +107,6 @@
      </property>
      <property name="frameShadow" >
       <enum>QFrame::Plain</enum>
-     </property>
-     <property name="text" >
-      <string>Proveedor</string>
      </property>
     </widget>
    </item>

@@ -32,6 +32,7 @@
 #include <QPalette>
 #include <QProgressBar>
 #include <QDesktopWidget>
+#include <QFile>
 
 #include <stdlib.h>
 #include <stdio.h>
