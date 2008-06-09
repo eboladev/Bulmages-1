@@ -26,10 +26,10 @@
 #include "funcaux.h"
 #include "empresatpv.h"
 #include "tecladonumerico.h"
+#include "bdockwidget.h"
 
 
-
-QDockWidget *g_doc1;
+BDockWidget *g_doc1;
 
 TecladoNumerico *g_tecl;
 ///
@@ -38,16 +38,16 @@ TecladoNumerico *g_tecl;
 **/
 int entryPoint ( BulmaTPV *tpv )
 {
-    _depura ( "entryPoint", 0 );
+    _depura ( "plugintecladonumerico::entryPoint", 0 );
     /// Vamos a probar con un docwindow.
-    g_doc1 = new QDockWidget ( "Teclado", tpv );
+    g_doc1 = new BDockWidget ( "Teclado", tpv, "tecladonumericodock" );
     g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
     g_doc1->setGeometry ( 100, 100, 100, 500 );
     g_doc1->resize ( 330, 400 );
     tpv->addDockWidget ( Qt::LeftDockWidgetArea, g_doc1 );
     g_doc1->show();
-
-    _depura ( "END entryPoint", 0 );
+    g_doc1->cargaconf();
+    _depura ( "END plugintecladonumerico::entryPoint", 0 );
     return 0;
 }
 

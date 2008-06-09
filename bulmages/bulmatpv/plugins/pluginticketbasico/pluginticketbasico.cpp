@@ -30,9 +30,9 @@
 #include "ticket.h"
 #include "empresatpv.h"
 #include "mticket.h"
+#include "bdockwidget.h"
 
-
-QDockWidget *g_doc1;
+BDockWidget *g_doc1;
 
 MTicket *g_bud;
 
@@ -47,38 +47,18 @@ int entryPoint ( BulmaTPV *tpv )
     _depura ( "entryPoint", 0 );
 
     /// Vamos a probar con un docwindow.
-    g_doc1 = new QDockWidget ( "Ticket", tpv );
+    g_doc1 = new BDockWidget ( "Ticket", tpv, "ticketbasico" );
     g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
 //    g_doc1->setFeatures ( QDockWidget::DockWidgetMovable |  QDockWidget::DockWidgetFloatable);
 
     g_doc1->setGeometry ( 100, 100, 100, 500 );
     g_doc1->resize ( 330, 400 );
 
-
-
-    /// Si existe el archivo de configuracion lo cargamos y configuramos el aspecto del widget.
-// ============================
-    QFile file ( confpr->valor ( CONF_DIR_USER ) + "pluginticketbasico.cfn" );
-    QString line;
-    if ( file.open ( QIODevice::ReadOnly ) ) {
-        QTextStream stream ( &file );
-        /// Establecemos la columna de ordenaci&oacute;n
-        QString linea = stream.readLine();
-        int width = linea.toInt();
-
-        /// Establecemos el tipo de ordenaci&oacute;n
-        linea = stream.readLine();
-        int height = linea.toInt();
-
-        g_doc1->resize ( width, height );
-        g_doc1->setMinimumWidth ( width );
-        g_doc1->setMinimumHeight ( height );
-
-        file.close();
-    } // end if
-
     /// Presentamos el widget
     tpv->addDockWidget ( Qt::RightDockWidgetArea, g_doc1 );
+
+    g_doc1->cargaconf();
+
     g_doc1->show();
 
 
@@ -93,25 +73,9 @@ int entryPoint ( BulmaTPV *tpv )
 **/
 int exitPoint ( BulmaTPV *tpv )
 {
-    _depura ( "entryPoint", 0 );
-
-    /// Vamos a probar con un docwindow.
-    int width = g_doc1->width();
-    int height = g_doc1->height();
-
-    /*
-        QString aux = "";
-        QFile file ( confpr->valor ( CONF_DIR_USER ) + "pluginticketbasico.cfn" );
-        /// Guardado del orden y de configuraciones varias.
-        if ( file.open ( QIODevice::WriteOnly ) ) {
-            QTextStream stream ( &file );
-            stream << width << "\n";
-            stream << height << "\n";
-            file.close();
-        } // end if
-    */
-
-    _depura ( "END entryPoint", 0 );
+    _depura ( "pluginticketbasico::exitPoint", 0 );
+    delete g_doc1;
+    _depura ( "END pluginticketbasico::exitPoint", 0 );
     return 0;
 }
 

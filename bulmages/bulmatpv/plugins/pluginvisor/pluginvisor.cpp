@@ -60,13 +60,13 @@ int entryPoint ( BulmaTPV *tpv )
 **/
 int exitPoint ( BulmaTPV *tpv )
 {
-    _depura ( "entryPoint", 0 );
+    _depura ( "pluginvisor::entryPoint", 0 );
     if (g_file->open(QIODevice::WriteOnly | QIODevice::Unbuffered)) {
 	    g_file->write ( "\x0Ch", 1 );
 	    g_file->close();
     } // end if
     delete g_file;
-    _depura ( "END entryPoint", 0 );
+    _depura ( "END pluginvisor::entryPoint", 0 );
     return 0;
 }
 

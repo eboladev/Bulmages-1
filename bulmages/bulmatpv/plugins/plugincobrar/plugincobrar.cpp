@@ -28,6 +28,7 @@
 #include "plugins.h"
 #include "ticket.h"
 #include "qapplication2.h"
+#include "bdockwidget.h"
 
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
 /// como un QMap.
@@ -35,7 +36,7 @@ typedef QMap<QString, Fixed> base;
 
 
 Cobrar *g_cobrar;
-QDockWidget *g_doc1;
+BDockWidget *g_doc1;
 ///
 /**
 \return
@@ -45,7 +46,7 @@ int entryPoint ( BulmaTPV *tpv )
     _depura ( "entryPoint", 0 );
 
     /// Vamos a probar con un docwindow.
-    g_doc1 = new QDockWidget ( "Cobrar", tpv );
+    g_doc1 = new BDockWidget ( "Cobrar", tpv, "cobrardocked" );
     g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
     g_doc1->setGeometry ( 100, 100, 100, 500 );
     g_doc1->resize ( 330, 400 );

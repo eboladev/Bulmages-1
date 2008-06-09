@@ -29,6 +29,7 @@
 #include "ticket.h"
 #include "qapplication2.h"
 #include "busquedacliente.h"
+#include "bdockwidget.h"
 
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
 /// como un QMap.
@@ -36,7 +37,7 @@ typedef QMap<QString, Fixed> base;
 
 
 BusquedaCliente *g_busc;
-QDockWidget *g_doc1;
+BDockWidget *g_doc1;
 EmpresaTPV * g_emp;
 ///
 /**
@@ -48,13 +49,13 @@ int entryPoint ( BulmaTPV *tpv )
     g_emp = tpv->empresaTPV();
 
     /// Vamos a probar con un docwindow.
-    g_doc1 = new QDockWidget ( "Cliente", tpv );
+    g_doc1 = new BDockWidget ( "Cliente", tpv, "buscaclientedock" );
     g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
     g_doc1->setGeometry ( 100, 100, 100, 500 );
     g_doc1->resize ( 330, 400 );
     tpv->addDockWidget ( Qt::TopDockWidgetArea, g_doc1 );
     g_doc1->show();
-
+    g_doc1->cargaconf();
     _depura ( "END entryPoint", 0 );
     return 0;
 }

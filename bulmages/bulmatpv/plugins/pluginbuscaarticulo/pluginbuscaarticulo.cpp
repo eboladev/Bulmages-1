@@ -30,6 +30,7 @@
 #include "qapplication2.h"
 #include "busquedaarticulo.h"
 #include "fixed.h"
+#include "bdockwidget.h"
 
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
 /// como un QMap.
@@ -37,7 +38,7 @@ typedef QMap<QString, Fixed> base;
 
 
 BusquedaArticulo *g_busc;
-QDockWidget *g_doc1;
+BDockWidget *g_doc1;
 EmpresaTPV * g_emp;
 ///
 /**
@@ -45,19 +46,19 @@ EmpresaTPV * g_emp;
 **/
 int entryPoint ( BulmaTPV *tpv )
 {
-    _depura ( "entryPoint", 0 );
+    _depura ( "pluginbuscaarticulo::entryPoint", 0 );
 
     g_emp = tpv->empresaTPV();
 
     /// Vamos a probar con un docwindow.
-    g_doc1 = new QDockWidget ( "Articulo", tpv );
+    g_doc1 = new BDockWidget ( "Articulo", tpv, "articulodock" );
     g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
     g_doc1->setGeometry ( 100, 100, 100, 500 );
     g_doc1->resize ( 330, 400 );
     tpv->addDockWidget ( Qt::TopDockWidgetArea, g_doc1 );
     g_doc1->show();
-
-    _depura ( "END entryPoint", 0 );
+    g_doc1->cargaconf();
+    _depura ( "END pluginbuscaarticulo::entryPoint", 0 );
     return 0;
 }
 

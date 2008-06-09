@@ -36,14 +36,19 @@ class BDockWidget : public QDockWidget
 
 private:
     QWorkspace2 *m_pWorkspace;
+    Qt::DockWidgetArea m_area;
+    QString m_name;
 
 public:
     void setWorkspace ( QWorkspace2 *w );
-    BDockWidget ( const QString & title, QWidget * parent = 0, Qt::WindowFlags flags = 0 );
+    BDockWidget ( const QString & title, QWidget * parent = 0, const QString &name = "",  Qt::WindowFlags flags = 0 );
     ~BDockWidget();
+    void guardaconf();
+    void cargaconf();
 
 public slots:
     void cambiaVisible ( bool );
+    virtual void mi_dockLocationChanged(Qt::DockWidgetArea area);
 
 protected:
     void closeEvent ( QCloseEvent *event );

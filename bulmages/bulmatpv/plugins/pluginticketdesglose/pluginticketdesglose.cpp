@@ -28,9 +28,9 @@
 #include "ticket.h"
 #include "empresatpv.h"
 #include "mticket.h"
+#include "bdockwidget.h"
 
-
-QDockWidget *g_doc1;
+BDockWidget *g_doc1;
 
 MTicket *g_bud;
 
@@ -45,12 +45,14 @@ int entryPoint ( BulmaTPV *tpv )
     _depura ( "entryPoint", 0 );
 
     /// Vamos a probar con un docwindow.
-    g_doc1 = new QDockWidget ( "Total", tpv );
+    g_doc1 = new BDockWidget ( "Total", tpv, "plugindesglosedocked" );
     g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
     g_doc1->setGeometry ( 100, 100, 100, 500 );
     g_doc1->resize ( 330, 400 );
     tpv->addDockWidget ( Qt::RightDockWidgetArea, g_doc1 );
+    g_doc1->cargaconf();
     g_doc1->show();
+
 
 
 

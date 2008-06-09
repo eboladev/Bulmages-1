@@ -27,12 +27,13 @@
 #include "admin.h"
 #include "plugins.h"
 #include "ticket.h"
+#include "bdockwidget.h"
 #include "qapplication2.h"
 
 
 
 Admin *g_admin;
-QDockWidget *g_admin1;
+BDockWidget *g_admin1;
 ///
 /**
 \return
@@ -42,16 +43,30 @@ int entryPoint ( BulmaTPV *tpv )
     _depura ( "entryPoint", 0 );
 
     /// Vamos a probar con un docwindow.
-    g_admin1 = new QDockWidget ( "Administracion", tpv );
+    g_admin1 = new BDockWidget ( "Administracion", tpv, "pluginadministracion" );
     g_admin1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
     g_admin1->setGeometry ( 100, 100, 100, 500 );
     g_admin1->resize ( 330, 400 );
     tpv->addDockWidget ( Qt::BottomDockWidgetArea, g_admin1 );
     g_admin1->show();
+    g_admin1->cargaconf();
 
     _depura ( "END entryPoint", 0 );
     return 0;
 }
+
+///
+/**
+\return
+**/
+int exitPoint ( BulmaTPV *tpv )
+{
+    _depura ( "pluginadmin::exitPoint", 0 );
+    delete g_admin;
+    _depura ( "END pluginadmin::exitPoint", 0 );
+    return 0;
+}
+
 
 int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
 {

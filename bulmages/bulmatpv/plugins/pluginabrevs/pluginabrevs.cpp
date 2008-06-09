@@ -28,11 +28,12 @@
 #include "plugins.h"
 #include "qapplication2.h"
 #include "trabajadores.h"
+#include "bdockwidget.h"
 #include <QX11EmbedContainer>
 #include <QProcess>
 
 Abrevs *g_tot;
-QDockWidget *g_doc1;
+BDockWidget *g_doc1;
 
 ///
 /**
@@ -43,11 +44,11 @@ int entryPoint ( BulmaTPV *tpv )
     _depura ( "entryPoint", 0 );
 
     /// Vamos a probar con un docwindow.
-    g_doc1 = new QDockWidget ( "Abreviaturas", tpv );
+    g_doc1 = new BDockWidget ( "Abreviaturas", tpv, "abrevsdock" );
     g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
     tpv->addDockWidget ( Qt::BottomDockWidgetArea, g_doc1 );
     g_doc1->show();
-
+    g_doc1->cargaconf();
     _depura ( "END entryPoint", 0 );
     return 0;
 }
@@ -58,12 +59,11 @@ int entryPoint ( BulmaTPV *tpv )
 **/
 int exitPoint ( BulmaTPV *tpv )
 {
-    _depura ( "exitPoint", 0 );
+    _depura ( "pluginabrevs::exitPoint", 0 );
 
     /// Vamos a probar con un docwindow.
     delete g_doc1;
-    delete g_tot;
-    _depura ( "END exitPoint", 0 );
+    _depura ( "END pluginabrevs::exitPoint", 0 );
     return 0;
 }
 

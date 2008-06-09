@@ -28,6 +28,8 @@
 #include "plugins.h"
 #include "ticket.h"
 #include "qapplication2.h"
+#include "bdockwidget.h"
+
 
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
 /// como un QMap.
@@ -35,7 +37,7 @@ typedef QMap<QString, Fixed> base;
 
 
 Total *g_tot = NULL;
-QDockWidget *g_doc1 = NULL;
+BDockWidget *g_doc1 = NULL;
 ///
 /**
 \return
@@ -45,11 +47,12 @@ int entryPoint ( BulmaTPV *tpv )
     _depura ( "plugintotal::entryPoint", 0 );
 
     /// Vamos a probar con un docwindow.
-    g_doc1 = new QDockWidget ( "Total", tpv );
+    g_doc1 = new BDockWidget ( "Total", tpv );
     g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
     g_doc1->setGeometry ( 100, 100, 100, 500 );
     g_doc1->resize ( 330, 400 );
     tpv->addDockWidget ( Qt::LeftDockWidgetArea, g_doc1 );
+    g_doc1->cargaconf();
     g_doc1->show();
 
     _depura ( "END plugintotal::entryPoint", 0 );
@@ -64,6 +67,19 @@ int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
     g_doc1->setWidget ( g_tot );
     _depura ( "END plugintotal::EmpresaTPV_createMainWindows_Post", 0 );
 
+    return 0;
+}
+
+
+///
+/**
+\return
+**/
+int exitPoint ( BulmaTPV *tpv )
+{
+    _depura ( "plugintotal::exitPoint", 0 );
+    delete g_doc1;
+    _depura ( "END plugintotal::exitPoint", 0 );
     return 0;
 }
 
