@@ -124,20 +124,68 @@ void EmpresaTPV::z()
     commit();
     delete cur;
 
+    QString querycont = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz = "+idz+" AND ticketalbaran = TRUE AND idforma_pago = "+ confpr->valor(CONF_IDFORMA_PAGO_CONTADO);
+    cursor2 *cur1 = cargacursor ( querycont );
+    QString numticketscont = cur1->valor ( "numtickets" );
+    QString totalcont = cur1->valor ( "total" );
+    if ( totalcont == "" ) totalcont = "0";
+    delete cur1;
+
+    QString queryvisa = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz = "+idz+" AND ticketalbaran = TRUE AND idforma_pago <> "+ confpr->valor(CONF_IDFORMA_PAGO_CONTADO);
+    cursor2 *cur2 = cargacursor ( queryvisa );
+    QString numticketsvisa = cur2->valor ( "numtickets" );
+    QString totalvisa = cur2->valor ( "total" );
+    if ( totalvisa == "" ) totalvisa = "0";
+    delete cur2;
 
 // ========================================
 
     QFile file ( confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
     if ( !file.open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
         _depura ( "Error en la Impresion de ticket", 2 );
+	return;
     } // end if
     file.write ( QString ( "Informe Z\n" ).toAscii() );
     file.write ( QString ( "=========\n" ).toAscii() );
-    file.write ( QString ( "Empresa S.L\n" ).toAscii() );
+    cursor2 *curemp = cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
+    if ( !curemp->eof() ) {
+        file.write ( curemp->valor ( "valor" ).toAscii() );
+        file.write ( "\n", 1 );
+    } // end if
+    delete curemp;
     file.write ( QString ( "====================================\n" ).toAscii() );
-    file.write ( QString ( "Direccion\n" ).toAscii() );
-    file.write ( QString ( "CP: 07000 Palma de Mallorca\n" ).toAscii() );
-    file.write ( QString ( "Tel: 971 00 00 00\n" ).toAscii() );
+    cur = cargacursor ( "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" );
+    if ( !cur->eof() ) {
+        file.write ( cur->valor ( "valor" ).toAscii() );
+        file.write ( "\n", 1 );
+    } // end if
+    ///file.write ( QString ( "C/LAS POZAS 181, LOCAL 43\n" ).toAscii() );
+    delete cur;
+    /// file.write ( QString ( "ALIMENTACION ECOLOGICA. HERBOLARIO\n" ).toAscii() );
+    cur = cargacursor ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
+    if ( !cur->eof() ) {
+        file.write ( cur->valor ( "valor" ).toAscii() );
+    } // end if
+    delete cur;
+
+    file.write ( QString ( " " ).toAscii() );
+    cur = cargacursor ( "SELECT * FROM configuracion WHERE nombre='Ciudad'" );
+    if ( !cur->eof() ) {
+        file.write ( cur->valor ( "valor" ).toAscii() );
+        file.write ( QString ( " " ).toAscii() );
+    } // end if
+    delete cur;
+
+
+    cur = cargacursor ( "SELECT * FROM configuracion WHERE nombre='Provincia'" );
+    if ( !cur->eof() ) {
+        file.write ( QString ( "(" ).toAscii() );
+        file.write ( cur->valor ( "valor" ).toAscii() );
+        file.write ( QString ( ")" ).toAscii() );
+        file.write ( "\n", 1 );
+    } // end if
+    delete cur;
+
     /// Imprimimos espacios
     file.write ( "\n \n", 3 );
 
@@ -180,6 +228,21 @@ void EmpresaTPV::z()
     file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
     file.write ( "\n", 1 );
 
+    str = "Num tickets Contado" + numticketscont.rightJustified ( 10, ' ' );
+    file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
+    file.write ( "\n", 1 );
+
+    str = "Total Contado" + totalcont.rightJustified ( 10, ' ' );
+    file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
+    file.write ( "\n", 1 );
+
+    str = "Num tickets Visa" + numticketsvisa.rightJustified ( 10, ' ' );
+    file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
+    file.write ( "\n", 1 );
+
+    str = "Total Visa" + totalvisa.rightJustified ( 10, ' ' );
+    file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
+    file.write ( "\n", 1 );
 
 // ============================================
 
@@ -229,20 +292,69 @@ void EmpresaTPV::x()
     if ( total == "" ) total = "0";
     delete cur;
 
+    QString querycont = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE AND idforma_pago = "+ confpr->valor(CONF_IDFORMA_PAGO_CONTADO);
+    cursor2 *cur1 = cargacursor ( querycont );
+    QString numticketscont = cur1->valor ( "numtickets" );
+    QString totalcont = cur1->valor ( "total" );
+    if ( totalcont == "" ) totalcont = "0";
+    delete cur1;
+
+    QString queryvisa = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE AND idforma_pago <> "+ confpr->valor(CONF_IDFORMA_PAGO_CONTADO);
+    cursor2 *cur2 = cargacursor ( queryvisa );
+    QString numticketsvisa = cur2->valor ( "numtickets" );
+    QString totalvisa = cur2->valor ( "total" );
+    if ( totalvisa == "" ) totalvisa = "0";
+    delete cur2;
+
 
 // ========================================
 
     QFile file ( confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
     if ( !file.open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
         _depura ( "Error en la Impresion de ticket", 2 );
+	return;
     } // end if
     file.write ( QString ( "Informe X\n" ).toAscii() );
     file.write ( QString ( "=========\n" ).toAscii() );
-    file.write ( QString ( "Empresa S.L.\n" ).toAscii() );
+    cursor2 *curemp = cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
+    if ( !curemp->eof() ) {
+        file.write ( curemp->valor ( "valor" ).toAscii() );
+        file.write ( "\n", 1 );
+    } // end if
+    delete curemp;
     file.write ( QString ( "====================================\n" ).toAscii() );
-    file.write ( QString ( "Direccion\n" ).toAscii() );
-    file.write ( QString ( "CP: 07000 Palma de Mallorca\n" ).toAscii() );
-    file.write ( QString ( "Tel: 971 00 00 00\n" ).toAscii() );
+    cur = cargacursor ( "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" );
+    if ( !cur->eof() ) {
+        file.write ( cur->valor ( "valor" ).toAscii() );
+        file.write ( "\n", 1 );
+    } // end if
+    ///file.write ( QString ( "C/LAS POZAS 181, LOCAL 43\n" ).toAscii() );
+    delete cur;
+    /// file.write ( QString ( "ALIMENTACION ECOLOGICA. HERBOLARIO\n" ).toAscii() );
+    cur = cargacursor ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
+    if ( !cur->eof() ) {
+        file.write ( cur->valor ( "valor" ).toAscii() );
+    } // end if
+    delete cur;
+
+    file.write ( QString ( " " ).toAscii() );
+    cur = cargacursor ( "SELECT * FROM configuracion WHERE nombre='Ciudad'" );
+    if ( !cur->eof() ) {
+        file.write ( cur->valor ( "valor" ).toAscii() );
+        file.write ( QString ( " " ).toAscii() );
+    } // end if
+    delete cur;
+
+
+    cur = cargacursor ( "SELECT * FROM configuracion WHERE nombre='Provincia'" );
+    if ( !cur->eof() ) {
+        file.write ( QString ( "(" ).toAscii() );
+        file.write ( cur->valor ( "valor" ).toAscii() );
+        file.write ( QString ( ")" ).toAscii() );
+        file.write ( "\n", 1 );
+    } // end if
+    delete cur;
+
     /// Imprimimos espacios
     file.write ( "\n \n", 3 );
 
@@ -285,9 +397,23 @@ void EmpresaTPV::x()
     file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
     file.write ( "\n", 1 );
 
+    str = "Num tickets Contado" + numticketscont.rightJustified ( 10, ' ' );
+    file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
+    file.write ( "\n", 1 );
+
+    str = "Total Contado" + totalcont.rightJustified ( 10, ' ' );
+    file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
+    file.write ( "\n", 1 );
+
+    str = "Num tickets Visa" + numticketsvisa.rightJustified ( 10, ' ' );
+    file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
+    file.write ( "\n", 1 );
+
+    str = "Total Visa" + totalvisa.rightJustified ( 10, ' ' );
+    file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
+    file.write ( "\n", 1 );
 
 // ============================================
-
 
     /// Imprimimos espacios
     file.write ( "\n \n \n \n", 7 );
