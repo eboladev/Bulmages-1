@@ -457,10 +457,13 @@ Ticket *EmpresaTPV::newTicket()
 void EmpresaTPV::cobrar()
 {
     QString idtrabajador = m_ticketActual->DBvalue ( "idtrabajador" );
+
+    if (g_plugins->lanza("EmpresaTPV_cobrar", this) ) {
+	return;
+    } // end if
+
     m_ticketActual->guardar();
     m_ticketActual->imprimir();
-
-    g_plugins->lanza("EmpresaTPV_cobrar", this);
 
     m_listaTickets.removeAt ( m_listaTickets.indexOf ( m_ticketActual ) );
     m_ticketActual = NULL;

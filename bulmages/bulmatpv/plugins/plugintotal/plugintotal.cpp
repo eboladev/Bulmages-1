@@ -34,15 +34,15 @@
 typedef QMap<QString, Fixed> base;
 
 
-Total *g_tot;
-QDockWidget *g_doc1;
+Total *g_tot = NULL;
+QDockWidget *g_doc1 = NULL;
 ///
 /**
 \return
 **/
 int entryPoint ( BulmaTPV *tpv )
 {
-    _depura ( "entryPoint", 0 );
+    _depura ( "plugintotal::entryPoint", 0 );
 
     /// Vamos a probar con un docwindow.
     g_doc1 = new QDockWidget ( "Total", tpv );
@@ -52,22 +52,24 @@ int entryPoint ( BulmaTPV *tpv )
     tpv->addDockWidget ( Qt::LeftDockWidgetArea, g_doc1 );
     g_doc1->show();
 
-    _depura ( "END entryPoint", 0 );
+    _depura ( "END plugintotal::entryPoint", 0 );
     return 0;
 }
 
 int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
 {
-    g_tot = new Total ( etpv, g_doc1 );
-// etpv->pWorkspace()->addWindow(g_tot);
-    g_doc1->setWidget ( g_tot );
+    _depura ( "plugintotal::EmpresaTPV_createMainWindows_Post", 0 );
 
-//        ((BulmaTPV *)etpv->parent())->addDockWidget(Qt::LeftDockWidgetArea, g_tot);
+    g_tot = new Total ( etpv, g_doc1 );
+    g_doc1->setWidget ( g_tot );
+    _depura ( "END plugintotal::EmpresaTPV_createMainWindows_Post", 0 );
+
     return 0;
 }
 
 int Ticket_pintar ( Ticket *tick )
 {
+    _depura ( "plugintotal::Ticket_pintar", 0 );
 
     base basesimp;
     base basesimpreqeq;
@@ -110,16 +112,6 @@ int Ticket_pintar ( Ticket *tick )
     /// Calculamos el total de los descuentos.
     /// De momento aqui no se usan descuentos generales en venta.
     Fixed porcentt ( "0.00" );
-    /*
-        SDBRecord *linea1;
-        if (m_listadescuentos->rowCount()) {
-            for (int i = 0; i < m_listadescuentos->rowCount(); ++i) {
-                linea1 = m_listadescuentos->lineaat(i);
-                Fixed propor(linea1->DBvalue("proporcion" + m_listadescuentos->tableName()).toAscii().constData());
-                porcentt = porcentt + propor;
-            } // end for
-        } // end if
-    */
 
     /// Calculamos el total de base imponible.
     Fixed totbaseimp ( "0.00" );
@@ -167,7 +159,13 @@ int Ticket_pintar ( Ticket *tick )
 
 
     /// Pintamos el total
-    g_tot->mui_display->display ( total.toQString() );
+    if (g_tot)
+    	g_tot->mui_total->setText( total.toQString() );
+
+    _depura ( "END plugintotal::Ticket_pintar", 0 );
+
+    return 0;
+
 }
 
 

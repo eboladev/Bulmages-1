@@ -10,8 +10,6 @@ Cambio::Cambio ( EmpresaTPV *emp, QWidget *parent ) : BLWidget ( emp, parent )
 {
     setupUi ( this );
 
-//======================
-
     m_value = 0;
     base basesimp;
     base basesimpreqeq;
@@ -54,16 +52,6 @@ Cambio::Cambio ( EmpresaTPV *emp, QWidget *parent ) : BLWidget ( emp, parent )
     /// Calculamos el total de los descuentos.
     /// De momento aqui no se usan descuentos generales en venta.
     Fixed porcentt ( "0.00" );
-    /*
-        SDBRecord *linea1;
-        if (m_listadescuentos->rowCount()) {
-            for (int i = 0; i < m_listadescuentos->rowCount(); ++i) {
-                linea1 = m_listadescuentos->lineaat(i);
-                Fixed propor(linea1->DBvalue("proporcion" + m_listadescuentos->tableName()).toAscii().constData());
-                porcentt = porcentt + propor;
-            } // end for
-        } // end if
-    */
 
     /// Calculamos el total de base imponible.
     Fixed totbaseimp ( "0.00" );
@@ -103,12 +91,10 @@ Cambio::Cambio ( EmpresaTPV *emp, QWidget *parent ) : BLWidget ( emp, parent )
         totreqeq = totreqeq + parreqeq;
     } // end for
 
-
-
     Fixed totirpf = totbaseimp * irpf / 100;
 
     Fixed total = totiva + totbaseimp + totreqeq - totirpf;
-//======================
+
     mui_total->setText(total.toQString());
 
 }
