@@ -107,6 +107,9 @@
        <height>15</height>
       </size>
      </property>
+     <property name="shortcut" >
+      <string>Ctrl+F</string>
+     </property>
     </widget>
    </item>
   </layout>

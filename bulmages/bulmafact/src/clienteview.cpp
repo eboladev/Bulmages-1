@@ -84,7 +84,6 @@ ClienteView::ClienteView ( Company *comp, QWidget *parent )
         addDBCampo ( "idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Cliente", "Forma de pago" ) );
         addDBCampo ( "recargoeqcliente", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate ( "Cliente", "Recargo de Equivalencia" ) );
 
-
         /// Disparamos los plugins.
         int res = g_plugins->lanza ( "ClienteView_ClienteView", this );
         if ( res != 0 ) {
@@ -152,7 +151,6 @@ int ClienteView::cargarPost ( QString idcliente )
 {
     _depura ( "ClienteView::cargarPost", 0 );
 
-
     /// Hacemos que el listado de presupuestos de un cliente se inicialize.
     m_listpresupuestos->setidcliente ( idcliente );
     m_listpresupuestos->presentar();
@@ -164,7 +162,6 @@ int ClienteView::cargarPost ( QString idcliente )
     m_listfacturas->presentar();
     m_listcobros->setidcliente ( idcliente );
     m_listcobros->presentar();
-
 
     _depura ( "END ClienteView::cargarPost", 0 );
     return 0;
@@ -199,11 +196,11 @@ void ClienteView::on_mui_informe_clicked()
 void ClienteView::activaDocumentos()
 {
     _depura ( "ClienteView::activaDocumentos", 0 );
-    mui_tab->setTabEnabled ( 1, TRUE );
     mui_tab->setTabEnabled ( 2, TRUE );
     mui_tab->setTabEnabled ( 3, TRUE );
     mui_tab->setTabEnabled ( 4, TRUE );
     mui_tab->setTabEnabled ( 5, TRUE );
+    mui_tab->setTabEnabled ( 6, TRUE );
     _depura ( "END ClienteView::activaDocumentos", 0 );
 }
 
@@ -215,11 +212,11 @@ void ClienteView::activaDocumentos()
 void ClienteView::desactivaDocumentos()
 {
     _depura ( "ClienteView::desactivaDocumentos", 0 );
-    mui_tab->setTabEnabled ( 1, FALSE );
     mui_tab->setTabEnabled ( 2, FALSE );
     mui_tab->setTabEnabled ( 3, FALSE );
     mui_tab->setTabEnabled ( 4, FALSE );
     mui_tab->setTabEnabled ( 5, FALSE );
+    mui_tab->setTabEnabled ( 6, FALSE );
     _depura ( "END ClienteView::desactivaDocumentos", 0 );
 }
 

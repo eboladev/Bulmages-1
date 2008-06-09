@@ -593,6 +593,7 @@ void Company::s_newFacturaPro()
     m_pWorkspace->addWindow ( bud );
     bud->inicializar();
     bud->show();
+    bud->mui_descfacturap->setFocus ( Qt::OtherFocusReason );
     _depura ( "END Company::s_newFacturaPro", 0 );
 }
 
@@ -630,6 +631,7 @@ void Company::s_newCobroView()
     CobroView *bud = newCobroView();
     m_pWorkspace->addWindow ( bud );
     bud->show();
+    bud->mui_fechacobro->mui_textoFecha->setFocus ( Qt::OtherFocusReason );
     _depura ( "END Company::s_newCobroView", 0 );
 }
 
@@ -647,6 +649,7 @@ void Company::s_newAlbaranPro()
     m_pWorkspace->addWindow ( bud );
     bud->inicializar();
     bud->show();
+    bud->mui_descalbaranp->setFocus ( Qt::OtherFocusReason );
     _depura ( "END Company::s_newAlbaranPro", 0 );
 }
 
@@ -664,6 +667,7 @@ void Company::s_newPedidoPro()
     m_pWorkspace->addWindow ( ppv );
     ppv->pintar();
     ppv->show();
+    ppv->mui_descpedidoproveedor->setFocus ( Qt::OtherFocusReason );
     _depura ( "END Company::s_newPedidoPro", 0 );
 }
 
@@ -814,6 +818,7 @@ void Company::s_newPresupuestoCli()
     m_pWorkspace->addWindow ( bud );
     bud->inicializar();
     bud->show();
+    bud->mui_descpresupuesto->setFocus ( Qt::OtherFocusReason );
     _depura ( "END Company::s_newPresupuestoCli", 0 );
 }
 
@@ -855,6 +860,7 @@ void Company::s_newFacturaCli()
     bud->inicializar();
     bud->pintar();
     bud->show();
+    bud->mui_descfactura->setFocus ( Qt::OtherFocusReason );
     _depura ( "END Company::s_newFacturaCli", 0 );
 }
 
@@ -1207,6 +1213,7 @@ void Company::s_newAlbaranClienteView()
     bud->inicializar();
     bud->pintar();
     bud->show();
+    bud->mui_descalbaran->setFocus ( Qt::OtherFocusReason );
     _depura ( "END Company::s_newAlbaranClienteView", 0 );
 
 }
@@ -1281,6 +1288,7 @@ void Company::s_newPedidoClienteView()
     bud->inicializar();
     bud->pintar();
     bud->show();
+    bud->mui_descpedidocliente->setFocus ( Qt::OtherFocusReason );
     _depura ( "END Company::s_newPedidoClienteView", 0 );
 }
 
@@ -1366,6 +1374,7 @@ void Company::s_newPagoView()
     PagoView *pag = newPagoView();
     m_pWorkspace->addWindow ( pag );
     pag->show();
+    pag->mui_fechapago->mui_textoFecha->setFocus ( Qt::OtherFocusReason );
     _depura ( "END Company::s_newPagoView", 0 );
 }
 

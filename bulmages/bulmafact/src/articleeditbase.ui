@@ -9,12 +9,6 @@
     <height>550</height>
    </rect>
   </property>
-  <property name="minimumSize" >
-   <size>
-    <width>750</width>
-    <height>550</height>
-   </size>
-  </property>
   <property name="focusPolicy" >
    <enum>Qt::NoFocus</enum>
   </property>
