@@ -76,8 +76,8 @@ AmortizacionView::AmortizacionView ( Empresa *emp, QWidget *parent )
     mui_listcuotas->setDBTableName ( "linamortizacion" );
     mui_listcuotas->setDBCampoId ( "idlinamortizacion" );
     mui_listcuotas->addSHeader ( "ejercicio", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone, tr ( "Ejercicio" ) );
-    mui_listcuotas->addSHeader ( "fechaprevista", DBCampo::DBdate, DBCampo::DBNothing, SHeader::DBNone, tr ( "Fecha prevista" ) );
-    mui_listcuotas->addSHeader ( "cantidad", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, tr ( "Cantidad" ) );
+    mui_listcuotas->addSHeader ( "fechaprevista", DBCampo::DBdate, DBCampo::DBNotNull, SHeader::DBNone , tr ( "Fecha prevista" ) );
+    mui_listcuotas->addSHeader ( "cantidad", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr ( "Cantidad" ) );
     mui_listcuotas->addSHeader ( "idasiento", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoWrite , tr ( "Id asiento" ) );
     mui_listcuotas->addSHeader ( "idlinamortizacion", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoWrite , tr ( "Id lineas de amortizacion" ) );
     mui_listcuotas->addSHeader ( "idamortizacion", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoWrite , tr ( "Id amortizacion" ) );
@@ -166,6 +166,8 @@ int AmortizacionView::cargar ( QString idamortizacion )
         m_idamortizacion = idamortizacion;
         DBRecord::cargar ( m_idamortizacion );
 
+        mui_listcuotas->setinsercion ( TRUE );
+
         /// se ha cargado de la base de datos.
         nomamortizacion->setText ( DBvalue ( "nomamortizacion" ) );
         valorcompra->setText ( DBvalue ( "valorcompra" ) );
@@ -202,6 +204,7 @@ int AmortizacionView::cargar ( QString idamortizacion )
         mui_btcalcular->setDisabled ( TRUE );
         dialogChanges_cargaInicial();
         empresaBase() ->meteWindow ( windowTitle() + DBvalue ( "idamortizacion" ), this );
+
         _depura ( "END AmortizacionView::cargar", 0 );
         return 0;
     } catch ( ... ) {
@@ -337,6 +340,7 @@ void AmortizacionView::on_mui_btcalcular_clicked()
             } // end if
         } // end for
     } // end if
+    mui_listcuotas->setinsercion ( TRUE );
     _depura ( "AmortizacionView::calculaamortizacion", 0 );
 }
 
