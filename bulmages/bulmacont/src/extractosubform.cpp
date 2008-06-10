@@ -70,7 +70,7 @@ ExtractoSubForm::ExtractoSubForm ( QWidget *parent, const char * ) : SubForm2Bc 
     addSHeader ( "idtipoiva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "idtipoiva" ) );
     addSHeader ( "orden", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Orden" ) );
     setinsercion ( FALSE );
-    setOrdenEnabled ( TRUE );
+    setOrdenEnabled ( FALSE );
     setOrdenPorQuery ( FALSE );
     setDelete ( FALSE );
     connect ( this, SIGNAL ( pintaMenu ( QMenu * ) ), this, SLOT ( s_pintaMenu ( QMenu * ) ) );
