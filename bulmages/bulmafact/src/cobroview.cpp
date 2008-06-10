@@ -81,6 +81,10 @@ CobroView::~CobroView()
     _depura ( "CobroView::~CobroView", 0 );
     /// ATENCION: Hacer esto es un error ya que puede machacar procesos dependientes del listado.
     // ((Company *)empresaBase())->refreshCobrosCliente();
+
+    /// \TODO 10/Junio/2008: Habilito esta linea. Alguien puso el mensaje de que no es buena idea
+    /// pero no veo el motivo. Si algo falla revisar esto.
+    ((Company *)empresaBase())->refreshCobrosCliente();
     _depura ( "END CobroView::~CobroView", 0 );
 }
 

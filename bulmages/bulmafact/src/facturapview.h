@@ -53,6 +53,7 @@ public:
     virtual int cargarPost ( QString id );
     virtual int borrarPre();
     virtual void imprimirFacturaProveedor();
+
 public slots:
     virtual void on_mui_pagar_clicked();
     virtual void s_nuevoPago();

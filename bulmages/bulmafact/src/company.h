@@ -118,6 +118,7 @@ public:
     void refreshArticles();
     void refreshPresupuestos();
     void refreshCobrosCliente();
+    void refreshPagosProveedor();
     void refreshPedidosCliente();
     void refreshPedidosProveedor();
     void refreshClientDelivNotes();

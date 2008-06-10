@@ -1052,6 +1052,22 @@ void Company::refreshCobrosCliente()
 }
 
 
+/** Metodo para refrescar la lista de pagos a proveedor.
+    Mediante este metodo es sencillo actualizar el listado de pagos a proveedor sin disponer
+    de un puntero a dicha ventana.
+*/
+/**
+**/
+void Company::refreshPagosProveedor()
+{
+    _depura ( "Company::refreshPagosProveedor", 0 );
+    if (confpr->valor(CONF_REFRESH_LIST) == "TRUE")
+    if ( m_pagosList != NULL )
+        m_pagosList->presentar();
+    _depura ( "END Company::refreshPagosProveedor", 0 );
+}
+
+
 /** Metodo para refrescar la lista de Pedidos de Clientes.
     Mediante este metodo es sencillo actualizar el listado de pedidos de clientes sin disponer
     de un puntero a dicha ventana.

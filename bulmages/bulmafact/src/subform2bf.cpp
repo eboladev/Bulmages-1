@@ -376,7 +376,14 @@ void SubForm2Bf::setIdProveedor ( QString id )
         rec->setDBvalue ( "reqeq" + m_tablename, "0" );
     } // end for
 
+    /// Si el idproveedor no existe salimos.
+    if ( id == "" ) {
+        _depura ( "END SubForm2Bf::setIdProveedor", 0, "idproveedor invalido" );
+        return;
+    } // end if
+
     cursor2 *curproveedor = empresaBase() ->cargacursor ( "SELECT recargoeqproveedor, regimenfiscalproveedor FROM proveedor WHERE idproveedor=" + mdb_idproveedor );
+
     if ( !curproveedor->eof() ) {
         /// Cuando se cambia el cliente se deben recalcular las lineas por si hay Recargo Equivalente
         for ( int i = 0; i < rowCount() - 1; i++ ) {
