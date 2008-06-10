@@ -520,7 +520,8 @@ void pluginCAnualesODS::balsitCAAASL ()
 {
     CAnuales CA = CAAASL;
     mensajeAdvertenciaPGC ( CA );
-    formDatosBalance ( CA );
+    if ( formDatosBalance ( CA ) && Arboles() )
+        balanceSituacionODS ( CA );    
 }
 
 void pluginCAnualesODS::balsitCAPGC07 ()
@@ -535,21 +536,24 @@ void pluginCAnualesODS::balsitCAPYMES08 ()
 {
     CAnuales CA = CAPYMES08;
     mensajeAdvertenciaPGC ( CA );
-    formDatosBalance ( CA );
+    if ( formDatosBalance ( CA ) && Arboles() )
+        balanceSituacionODS ( CA );
 }
 
 void pluginCAnualesODS::balsitCAPGC08()
 {
     CAnuales CA = CAPGC08;
     mensajeAdvertenciaPGC ( CA );
-    formDatosBalance ( CA );
+    if ( formDatosBalance ( CA ) && Arboles() )
+        balanceSituacionODS ( CA );
 }
 
 void pluginCAnualesODS::balsitCAAPGC08()
 {
     CAnuales CA = CAAPGC08;
     mensajeAdvertenciaPGC ( CA );
-    formDatosBalance ( CA );
+    if ( formDatosBalance ( CA ) && Arboles() )
+        balanceSituacionODS ( CA );
 }
 
 void pluginCAnualesODS::mensajeAdvertenciaPGC ( CAnuales tipus )
