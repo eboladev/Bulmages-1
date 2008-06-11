@@ -183,8 +183,6 @@ void SubForm2Bf::editFinished ( int row, int col, SDBRecord *rec, SDBCampo *camp
         return;
     } // end if
 
-
-
     if ( camp->nomcampo() == "desctipo_iva" ) {
         cur = empresaBase() ->cargacursor ( "SELECT * FROM tipo_iva WHERE desctipo_iva = '" + camp->text() + "'" );
         if ( !cur->eof() ) {
@@ -225,7 +223,42 @@ void SubForm2Bf::editFinished ( int row, int col, SDBRecord *rec, SDBCampo *camp
                 rec->setDBvalue ( "pvp" + m_tablename, cur->valor ( "pvparticulo" ) );
             } // end if
         } else {
-            mensajeAviso ( tr ( "Articulo inexistente" ), this );
+	    mensajeAviso(tr("El codigo del articulo no existe.\nATENCION: No se guadara bien el documento hasta que sea valido."), this);
+	    /// \TODO Preparo para revisarlo para la version 0.11.2 o posterior.
+	    /** El codigo introducido no existe en la base de datos.
+		Aqui se tiene que dar la siguiente informacion:
+		- "El uso de codigos de articulos inexistentes esta prohibido. Corrija
+		   esta situacion para poder guardar el documento."
+		Se tiene que informar de las siguientes opciones:
+		- Crear articulo con ese codigo.
+		- Mostrar el listado de articulos para seleccionar uno valido.
+		- Editar codigo para corregirlo.
+	    **/
+		/*
+		QMessageBox msgBox(this);
+		msgBox.setIcon(QMessageBox::Question);
+		msgBox.setWindowTitle(tr("Articulo inexistente"));
+		msgBox.setText(tr("El uso de codigos de articulos inexistentes esta prohibido.\nCorrija esta situacion para poder guardar el documento."));
+		QPushButton *botonCrear = msgBox.addButton(tr("&Crear articulo"), QMessageBox::ActionRole);
+		QPushButton *botonSeleccionar = msgBox.addButton(tr("&Seleccionar articulo"), QMessageBox::ActionRole);
+		QPushButton *botonEditar = msgBox.addButton(tr("&Editar codigo"), QMessageBox::ActionRole);
+		msgBox.setDefaultButton(botonCrear);
+		msgBox.setEscapeButton(botonEditar);
+		
+		msgBox.exec();
+		
+		if (msgBox.clickedButton() == botonCrear) {
+			mensajeInfo("Crear", this);
+		
+		} else if (msgBox.clickedButton() == botonSeleccionar) {
+			mensajeInfo("Seleccionar", this);
+		
+		} else if (msgBox.clickedButton() == botonEditar) {
+		
+		
+		}
+		*/
+
             delete cur;
             _depura ( "END SubForm2Bf::editFinished", 0, "Articulo inexistente" );
             return;
