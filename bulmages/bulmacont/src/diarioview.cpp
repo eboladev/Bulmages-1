@@ -198,15 +198,17 @@ void DiarioView::presentar()
     cursor2 *cur = NULL;
     try {
         QString tabla = "apunte";
+	QString tabla2 = "";
         mui_list->setDBTableName ( "apunte" );
         mui_list->setDBCampoId ( "idapunte" );
         if ( mui_asAbiertos->isChecked() ) {
             tabla = "borrador";
+            tabla2 = "apunte,";
             mui_list->setDBTableName ( "borrador" );
             mui_list->setDBCampoId ( "idborrador" );
         } // end if
 
-        QString query = "SELECT *, cuenta.descripcion AS descripcioncuenta FROM " + tabla + " LEFT JOIN cuenta ON cuenta.idcuenta = " + tabla + ".idcuenta ";
+        QString query = "SELECT *, cuenta.descripcion AS descripcioncuenta FROM " + tabla2 + tabla + " LEFT JOIN cuenta ON cuenta.idcuenta = " + tabla + ".idcuenta ";
         query += " LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste FROM c_coste) AS t1 ON t1.idc_coste = " + tabla + ".idc_coste ";
 //         query += " LEFT JOIN (SELECT (ordenasiento || ' - ' || fecha) AS ordenasientoconfecha, ordenasiento, idasiento, fecha FROM asiento) AS t5 ON t5.idasiento = " + tabla + ".idasiento";
         query += " LEFT JOIN (SELECT ordenasiento, fecha, idasiento FROM asiento) AS t5 ON t5.idasiento = " + tabla + ".idasiento";
