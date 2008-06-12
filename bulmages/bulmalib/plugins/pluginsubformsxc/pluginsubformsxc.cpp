@@ -74,7 +74,7 @@ void myplugsubformsxc::s_pintaMenu ( QMenu *menu )
 {
     _depura ( "myplugsubformsxc::s_pintaMenu", 0 );
     menu->addSeparator();
-    menu->addAction ( tr ( "Exportar a Hoja de Calculo" ) );
+    menu->addAction ( tr ( "Exportar a hoja de calculo (SXC)" ) );
     _depura ( "END myplugsubformsxc::s_pintaMenu", 0 );
 }
 
@@ -86,7 +86,7 @@ void myplugsubformsxc::s_pintaMenu ( QMenu *menu )
 void myplugsubformsxc::s_trataMenu ( QAction *action )
 {
     _depura ( "myplugsubformsxc::s_trataMenu", 0 );
-    if ( action->text() == tr ( "Exportar a Hoja de Calculo" ) ) {
+    if ( action->text() == tr ( "Exportar a hoja de calculo (SXC)" ) ) {
         sacaSXC();
     } // end if
     _depura ( "END myplugsubformsxc::s_trataMenu", 0 );

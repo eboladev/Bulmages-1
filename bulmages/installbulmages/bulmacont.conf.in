@@ -46,13 +46,13 @@ CONF_BACKGROUND                @CMAKE_INSTALL_PREFIX@/share/bulmages/images/univ
 CONF_SPLASH_BULMACONT          @CMAKE_INSTALL_PREFIX@/share/bulmages/images/splashbulmacont.jpg
 
 # Este parametro indica los plugins que se deben instalar con el programa.
-CONF_PLUGINS_BULMACONT        libplugincanualesods.so; \
-                              libpluginbalancetree.so; \
-                              libplugincorrector.so; \
-                              libpluginimpers.so; \
-                              libpluginsubformsxc.so; \
-                              libplugindocked.so; \
-                              libpluginsubformods.so
+CONF_PLUGINS_BULMACONT        libplugincanualesods@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+                              libpluginbalancetree@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+                              libplugincorrector@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+                              libpluginimpers@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+                              libpluginsubformsxc@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+                              libplugindocked@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+                              libpluginsubformods@CMAKE_SHARED_LIBRARY_SUFFIX@
                               
 
 

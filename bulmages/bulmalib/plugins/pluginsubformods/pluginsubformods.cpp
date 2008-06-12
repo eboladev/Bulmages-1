@@ -83,7 +83,7 @@ void myplugsubformods::s_pintaMenu ( QMenu *menu )
 {
     _depura ( "myplugsubformods::s_pintaMenu", 0 );
     menu->addSeparator();
-    menu->addAction ( tr ( "Exportar a hoja de calculo" ) );
+    menu->addAction ( tr ( "Exportar a hoja de calculo (ODS)" ) );
     _depura ( "END myplugsubformods::s_pintaMenu", 0 );
 }
 
@@ -95,7 +95,7 @@ void myplugsubformods::s_pintaMenu ( QMenu *menu )
 void myplugsubformods::s_trataMenu ( QAction *action )
 {
     _depura ( "myplugsubformods::s_trataMenu", 0 );
-    if ( action->text() == tr ( "Exportar a hoja de calculo" ) ) {
+    if ( action->text() == tr ( "Exportar a hoja de calculo (ODS)" ) ) {
         sacaods();
     } // end if
     _depura ( "END myplugsubformods::s_trataMenu", 0 );

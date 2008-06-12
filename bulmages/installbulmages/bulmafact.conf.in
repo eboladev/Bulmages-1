@@ -38,17 +38,17 @@ CONF_BG_DESCFACTURASCLIENTE   #C3CC33
 
 CONF_BG_LISTARTICULOS         #DDFFDD
 
-CONF_PLUGINS_BULMAFACT        libpluginq19.so; \
-                              libpluginimpresionesmultiples.so; \
-                              libplugininformeclientes.so; \
-                              libplugininformeclientessxc.so; \
-                              libpluginmail.so; \
-                              libpluginpromedios.so; \
-                              libplugintrazabilidad.so; \
-                              libpluginimpers.so; \
-                              libpluginsubformsxc.so; \
-                              libplugindocked.so; \
-                              libpluginsubformods.so
+CONF_PLUGINS_BULMAFACT        libpluginq19@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+                              libpluginimpresionesmultiples@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+                              libplugininformeclientes@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+                              libplugininformeclientessxc@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+                              libpluginmail@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+                              libpluginpromedios@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+                              libplugintrazabilidad@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+                              libpluginimpers@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+                              libpluginsubformsxc@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+                              libplugindocked@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+                              libpluginsubformods@CMAKE_SHARED_LIBRARY_SUFFIX@
 
   
 # NOTA PARA DESARROLLADORES:

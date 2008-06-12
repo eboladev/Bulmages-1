@@ -7,12 +7,12 @@
 
 
 
-CONF_PLUGINS_BULMATPV	libplugintecladonumerico.so; \
-				            libpluginticketbasico.so; \
-				            libplugintotal.so; \
-				            libpluginimpers.so; \
-				            libpluginartgraficos.so; \
-				            libpluginabrevs.so
+CONF_PLUGINS_BULMATPV	libplugintecladonumerico@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+				            libpluginticketbasico@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+				            libplugintotal@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+				            libpluginimpers@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+				            libpluginartgraficos@CMAKE_SHARED_LIBRARY_SUFFIX@; \
+				            libpluginabrevs@CMAKE_SHARED_LIBRARY_SUFFIX@
 
 CONF_DIR_THUMB_ARTICLES		/var/bulmages/articles_thumbs/
 CONF_TICKET_PRINTER_FILE	/dev/null
