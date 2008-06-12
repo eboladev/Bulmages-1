@@ -273,7 +273,7 @@ void DiarioView::presentar()
         } // end if
 
         totalcadena = query + cad + " ORDER BY ordenasiento,apunte.haber,codigo ";
-
+fprintf(stderr, totalcadena.toAscii());
         mui_list->cargar ( totalcadena );
 
         cur = empresaBase() ->cargacursor ( "SELECT sum(debe) as totaldebe, sum(haber) as totalhaber from " + tabla + cad );
