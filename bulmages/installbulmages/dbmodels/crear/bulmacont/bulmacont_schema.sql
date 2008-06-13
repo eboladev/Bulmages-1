@@ -2040,7 +2040,7 @@ END;
 '   LANGUAGE plpgsql;
 SELECT actualizarevision();
 DROP FUNCTION actualizarevision() CASCADE;
-\echo "Actualizada la revision de la base de datos a la version 0.10.1"
+\echo "Actualizada la revision de la base de datos a la version 0.11.1"
 
 \echo -n ':: '
 COMMENT ON SCHEMA public IS 'Standard public schema';
