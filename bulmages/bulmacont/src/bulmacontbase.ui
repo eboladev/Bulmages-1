@@ -19,16 +19,26 @@
    <string>BulmaCont - Contabilidad GPL</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/iconbulmacont.xpm</iconset>
+   <iconset resource="../../bulmages.qrc" >
+    <normaloff>:/BulmaCont32x32/images/png/iconbulmacont.xpm</normaloff>:/BulmaCont32x32/images/png/iconbulmacont.xpm</iconset>
   </property>
-  <widget class="QWidget" name="centralwidget" />
+  <widget class="QWidget" name="centralwidget" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>78</y>
+     <width>800</width>
+     <height>498</height>
+    </rect>
+   </property>
+  </widget>
   <widget class="QMenuBar" name="menubar" >
    <property name="geometry" >
     <rect>
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>26</height>
+     <height>31</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuVentana" >
@@ -119,8 +129,25 @@
    <addaction name="menuVer" />
    <addaction name="menuAyuda" />
   </widget>
-  <widget class="QStatusBar" name="statusbar" />
+  <widget class="QStatusBar" name="statusbar" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>576</y>
+     <width>800</width>
+     <height>24</height>
+    </rect>
+   </property>
+  </widget>
   <widget class="QToolBar" name="toolBar" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>31</y>
+     <width>800</width>
+     <height>47</height>
+    </rect>
+   </property>
    <property name="orientation" >
     <enum>Qt::Horizontal</enum>
    </property>
@@ -131,7 +158,10 @@
     </size>
    </property>
    <attribute name="toolBarArea" >
-    <number>4</number>
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak" >
+    <bool>false</bool>
    </attribute>
    <addaction name="actionConfiguracion" />
    <addaction name="actionPlan_Contable" />
@@ -146,7 +176,8 @@
   </widget>
   <action name="actionConfiguracion" >
    <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >:/Images/document-properties.svg</iconset>
+    <iconset resource="../../bulmages.qrc" >
+     <normaloff>:/Images/document-properties.svg</normaloff>:/Images/document-properties.svg</iconset>
    </property>
    <property name="text" >
     <string>&amp;Propiedades de la empresa...</string>
@@ -208,7 +239,8 @@
   </action>
   <action name="actionPlan_Contable" >
    <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_cuentas.xpm</iconset>
+    <iconset resource="../../bulmages.qrc" >
+     <normaloff>:/BulmaCont32x32/images/png/i_cuentas.xpm</normaloff>:/BulmaCont32x32/images/png/i_cuentas.xpm</iconset>
    </property>
    <property name="text" >
     <string>&amp;Plan Contable</string>
@@ -216,7 +248,8 @@
   </action>
   <action name="actionAsientos" >
    <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_asiento.xpm</iconset>
+    <iconset resource="../../bulmages.qrc" >
+     <normaloff>:/BulmaCont32x32/images/png/i_asiento.xpm</normaloff>:/BulmaCont32x32/images/png/i_asiento.xpm</iconset>
    </property>
    <property name="text" >
     <string>&amp;Asientos</string>
@@ -227,7 +260,8 @@
   </action>
   <action name="actionApuntes_Contables" >
    <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_lapiz.xpm</iconset>
+    <iconset resource="../../bulmages.qrc" >
+     <normaloff>:/BulmaCont32x32/images/png/i_lapiz.xpm</normaloff>:/BulmaCont32x32/images/png/i_lapiz.xpm</iconset>
    </property>
    <property name="text" >
     <string>Apuntes &amp;contables</string>
@@ -238,7 +272,8 @@
   </action>
   <action name="actionLibro_Mayor" >
    <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_mayor.xpm</iconset>
+    <iconset resource="../../bulmages.qrc" >
+     <normaloff>:/BulmaCont32x32/images/png/i_mayor.xpm</normaloff>:/BulmaCont32x32/images/png/i_mayor.xpm</iconset>
    </property>
    <property name="text" >
     <string>Libro &amp;Mayor</string>
@@ -246,7 +281,8 @@
   </action>
   <action name="actionLibro_Diario" >
    <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_diario.xpm</iconset>
+    <iconset resource="../../bulmages.qrc" >
+     <normaloff>:/BulmaCont32x32/images/png/i_diario.xpm</normaloff>:/BulmaCont32x32/images/png/i_diario.xpm</iconset>
    </property>
    <property name="text" >
     <string>Libro &amp;Diario</string>
@@ -264,7 +300,8 @@
   </action>
   <action name="actionCentros_de_Coste" >
    <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_centroCoste.xpm</iconset>
+    <iconset resource="../../bulmages.qrc" >
+     <normaloff>:/BulmaCont32x32/images/png/i_centroCoste.xpm</normaloff>:/BulmaCont32x32/images/png/i_centroCoste.xpm</iconset>
    </property>
    <property name="text" >
     <string>Centros de cos&amp;te</string>
@@ -272,7 +309,8 @@
   </action>
   <action name="actionCanales" >
    <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_canales.xpm</iconset>
+    <iconset resource="../../bulmages.qrc" >
+     <normaloff>:/BulmaCont32x32/images/png/i_canales.xpm</normaloff>:/BulmaCont32x32/images/png/i_canales.xpm</iconset>
    </property>
    <property name="text" >
     <string>&amp;Canales</string>
@@ -280,7 +318,8 @@
   </action>
   <action name="actionAsientos_Inteligentes" >
    <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_asientoListo.xpm</iconset>
+    <iconset resource="../../bulmages.qrc" >
+     <normaloff>:/BulmaCont32x32/images/png/i_asientoListo.xpm</normaloff>:/BulmaCont32x32/images/png/i_asientoListo.xpm</iconset>
    </property>
    <property name="text" >
     <string>Asientos Inteligentes</string>
@@ -288,7 +327,8 @@
   </action>
   <action name="actionImprimir" >
    <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >:/Images/document-print.svg</iconset>
+    <iconset resource="../../bulmages.qrc" >
+     <normaloff>:/Images/document-print.svg</normaloff>:/Images/document-print.svg</iconset>
    </property>
    <property name="text" >
     <string>&amp;Imprimir</string>
@@ -296,7 +336,8 @@
   </action>
   <action name="actionGuardar" >
    <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >:/Images/edit-save.svg</iconset>
+    <iconset resource="../../bulmages.qrc" >
+     <normaloff>:/Images/edit-save.svg</normaloff>:/Images/edit-save.svg</iconset>
    </property>
    <property name="text" >
     <string>&amp;Guardar</string>
@@ -304,7 +345,8 @@
   </action>
   <action name="actionActualizar" >
    <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >:/Images/view-refresh.svg</iconset>
+    <iconset resource="../../bulmages.qrc" >
+     <normaloff>:/Images/view-refresh.svg</normaloff>:/Images/view-refresh.svg</iconset>
    </property>
    <property name="text" >
     <string>&amp;Actualizar</string>
@@ -312,7 +354,8 @@
   </action>
   <action name="actionFiltrar" >
    <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >:/Images/edit-find.svg</iconset>
+    <iconset resource="../../bulmages.qrc" >
+     <normaloff>:/Images/edit-find.svg</normaloff>:/Images/edit-find.svg</iconset>
    </property>
    <property name="text" >
     <string>&amp;Filtrar</string>
@@ -330,7 +373,7 @@
   </action>
   <action name="actionBloquear_Fechas" >
    <property name="text" >
-    <string>&amp;Bloquear fechas</string>
+    <string>&amp;Bloquear fechas/Crear ejercicio</string>
    </property>
   </action>
   <action name="actionCanal_por_Defecto" >
@@ -376,7 +419,8 @@
   </action>
   <action name="actionSiguiente" >
    <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_forward.xpm</iconset>
+    <iconset resource="../../bulmages.qrc" >
+     <normaloff>:/BulmaCont32x32/images/png/i_forward.xpm</normaloff>:/BulmaCont32x32/images/png/i_forward.xpm</iconset>
    </property>
    <property name="text" >
     <string>Siguiente</string>
@@ -387,7 +431,8 @@
   </action>
   <action name="actionAnterior" >
    <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_back.xpm</iconset>
+    <iconset resource="../../bulmages.qrc" >
+     <normaloff>:/BulmaCont32x32/images/png/i_back.xpm</normaloff>:/BulmaCont32x32/images/png/i_back.xpm</iconset>
    </property>
    <property name="text" >
     <string>Anterior</string>
@@ -398,7 +443,8 @@
   </action>
   <action name="actionInicio" >
    <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_start.png</iconset>
+    <iconset resource="../../bulmages.qrc" >
+     <normaloff>:/BulmaCont32x32/images/png/i_start.png</normaloff>:/BulmaCont32x32/images/png/i_start.png</iconset>
    </property>
    <property name="text" >
     <string>Inicio</string>
@@ -409,7 +455,8 @@
   </action>
   <action name="actionFin" >
    <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_finish.png</iconset>
+    <iconset resource="../../bulmages.qrc" >
+     <normaloff>:/BulmaCont32x32/images/png/i_finish.png</normaloff>:/BulmaCont32x32/images/png/i_finish.png</iconset>
    </property>
    <property name="text" >
     <string>Fin</string>

@@ -24,7 +24,7 @@
 #pluginsubformods
 
 set (plugin pluginsubformods)
-
+set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
