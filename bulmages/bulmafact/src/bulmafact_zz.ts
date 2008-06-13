@@ -7134,7 +7134,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="aboutbase.ui" line="554"/>
-        <source>Facturacion GPL - Version 0.10.1 -</source>
+        <source>Facturacion GPL - Version 0.11.1 -</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
