@@ -22,7 +22,7 @@ Description: Accounting and invoicing programs for Spanish little businesses
 
 Package: bulmages-admin
 Architecture: any
-Depends: ${shlibs:Depends}, postgresql-client (>= 8.1.0), bulmages-common (>= 0.11), python (>= 2.4), python-qt4 (>= 4.3)
+Depends: ${shlibs:Depends}, postgresql-client (>= 8.1.0), bulmages-common (>= 0.11), python (>= 2.4), python-qt4 (>= 4.3),bulmatpv-plugins, bulmacont-plugins, bulmafact-plugins
 Description: Small GUI to launch some management programs for little businesses
  This package helps to start BulmaCont, and when available BulmaFact and 
  BulmaTPV.
