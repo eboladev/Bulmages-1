@@ -1,9 +1,25 @@
+bulmages (0.11.1-2) unstable; urgency=low
+
+  * Changed order in rules dh_shlibdeps 
+
+ -- Miguel Gea Milvaques <xerakko@debian.org>  Sat, 14 Jun 2008 22:25:45 +0200
+
+bulmages (0.11.1-1) unstable; urgency=medium
+
+  [ Leopold Palomo Avellaneda ]
+  * New upstream release. Finally 0.11.1
+  * Solved a bug in the share/*bulma*-plugins.
+
+ -- Leopold Palomo Avellaneda <leo@alaxarxa.net>  Fri, 13 Jun 2008 10:53:51 +0200
+
 bulmages (0.11.1~rc4-1) unstable; urgency=medium
 
   [ Leopold Palomo Avellaneda ]
   * New upstream release.
   * Corrected some typo in the names of the maintainers.
-
+  * Erased patches directory. We don't have patches by now. Erased quilt 
+  as dependency in Build-Depends. We don't need it. Closes: #485155
+ 
   [ Miguel Gea Milvaques ]
   * Build in s390 with O0 instead O2 to avoid FTBFS
 
