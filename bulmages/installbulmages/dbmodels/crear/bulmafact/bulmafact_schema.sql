@@ -1,7 +1,9 @@
 -- -------------------------------------------------------------------------------------------
 -- (C) Joan Miquel Torres Rigo & Tomeu Borras Riera & Mateu Borras Marco, Agosto 2007
 -- joanmi@bulma.net, tborras@conetxia.com mborras@conetxia.com
---
+-- Revisado, Jose Maria Avendaño Cabezas, Junio 2008
+-- jac_bulmages@ya.com
+-- 
 --   This program is free software; you can redistribute it and/or modify
 --   it under the terms of the GNU General Public License as published by
 --   the Free Software Foundation; either version 2 of the License, or
@@ -120,8 +122,9 @@ CREATE TABLE forma_pago (
 -- cpalmacen: Codigo Postal del almacen.
 -- telalmacen: Telefono del almacen.
 -- faxalmacen: Fax del almacen.
--- tipoalmacen: Tipo de almacen (Tienda, Almacen, Coche ...)
 -- emailalmacen: Direccion de correo electronico del almacen.
+-- tipoalmacen: Tipo de almacen (Tienda, Almacen, Coche ...)
+-- inactivoalmacen:
 \echo -n ':: Almacen ... '
 CREATE TABLE almacen (
     idalmacen serial PRIMARY KEY,
@@ -139,14 +142,20 @@ CREATE TABLE almacen (
 );
 
 -- ** banco **
--- codigoalmacen: Codigo numerico del almacen.
--- nomalmacen: Nombre identificativo del almacen.
--- diralmacen: Direccion del almacen.
--- poblalmacen: Poblacion del almacen.
--- cpalmacen: Codigo Postal del almacen.
--- telalmacen: Telefono del almacen.
--- faxalmacen: Fax del almacen.
--- emailalmacen: Direccion de correo electronico del almacen.
+-- nombanco: Nombre de la entidad bancaria.
+-- dirbanco: Direccion de la entidad bancaria.
+-- poblbanco: Poblacion de la entidad bancaria.
+-- cpbanco: Codigo postal de la entidad bancaria.
+-- telbanco: Telefono de la entidad bancaria (solo puede tener uno??)
+-- faxbanco: Fax de la entidad bancaria.
+-- emailbanco: Direccion de correo electronico de la entidad bancaria.
+-- contactobanco: Persona de contacto en la entidad bancaria.
+-- codentidadbanco: Codigo de la entidad bancaria.
+-- codagenciabanco: Codigo de la agencia bancaria.
+-- numcuentabanco : Codigo de la cuenta bancaria
+-- dcbanco: Digito de control de la cuenta bancaria.
+-- comentbanco: Comentario de la entidad bancaria.
+-- webbanco: Direccion web de la entidad bancaria.
 \echo -n ':: Banco ... '
 CREATE TABLE banco (
     idbanco serial PRIMARY KEY,
@@ -192,8 +201,6 @@ CREATE TABLE trabajador (
 );
 
 
-
-
 -- ** moneda **
 -- cod2moneda: Codigo internacional de dos digitos.
 -- cod3moneda: Codigo internacional de tres digitos.
@@ -219,9 +226,10 @@ CREATE TABLE tipo_iva (
 
 -- ** tasa_iva **
 -- Esta tabla contiene las tasas de cada tipo de IVA a partir de una fecha dada.
+-- idtipo_iva: 
 -- porcentasa_iva: Contiene el porcentaje de la tasa de IVA a aplicar.
--- fechatasa_iva: Es la fecha de entrada en vigor del % de IVA para el tipo descrito.
 -- porcentretasa_iva: Indica el recargo de equivalencia a aplicar.
+-- fechatasa_iva: Es la fecha de entrada en vigor del % de IVA para el tipo descrito.
 \echo -n ':: Tasa de IVA ... '
 CREATE TABLE tasa_iva (
     idtasa_iva serial PRIMARY KEY,
@@ -237,6 +245,8 @@ CREATE TABLE tasa_iva (
 -- Tabla con series de IVA, codigo y descripcion.
 -- Basicamente sirve para garantizar la integridad referencial en las series de facturacion.
 -- Deberan existir en contabilidad tambien.
+-- codigoserie_factura: Codigo para la serie de facturacion.
+-- descserie_factura: Descripcion de la serie de facturacion.
 \echo -n ':: Serie de factura ... '
 CREATE TABLE serie_factura (
     codigoserie_factura character varying (6) PRIMARY KEY,
@@ -249,10 +259,10 @@ CREATE TABLE serie_factura (
 -- codigofamilia: Codigo de la familia.
 -- nombrefamilia: Nombre de la familia
 -- descfamilia: Descripcion extendida de la familia.
+-- padrefamilia: 
 -- codigocompletofamilia: Codigo completo de la familia. Es la concatenacion del codigo de
 --                        familia con sus codigos padres. Este campo es de solo lectura.
--- productofisicofamilia: TRUE es producto Fisico, FALSE es servicio.
-
+-- productofisicofamilia: TRUE indica que es producto fisico, FALSE que es servicio.
 \echo -n ':: Familia ... '
 CREATE TABLE familia (
     idfamilia serial PRIMARY KEY,
@@ -329,14 +339,19 @@ CREATE TABLE tipo_articulo (
 -- abrevarticulo: Nombre abreviado del articulo (para TPV o cartelitos de estanteria)
 -- observarticulo: Campo de texto para a comentarios y observaciones.
 -- presentablearticulo: Indica que se incluira en presentaciones (catalogos de articulos).
--- controlstockarticulo:
+-- controlstockarticulo: Define si se ha de mantener control de stocks sobre existencias.
+--                       Por defecto si (TRUE), si es un servicion seria no (FALSE).
 -- idtipo_articulo: Identificador de tipo de articulo que se utilizara para agrupar
 --                  articulos como clasificacion.
 -- idtipo_iva: Identificador del tipo de IVA que se aplica a este articulo.
 -- codigocompletoarticulo: Codigo completo del articulo. Este campo solo puede ser de lectura.
--- stockarticulo:
+-- idfamilia: Identificador de la familia a la que pertenece el articulo.
+-- stockarticulo: ???Total de unidades disponibles en stock.
 -- inactivoarticulo: Indica si el articulo esta activo o no.
--- pvparticulo:
+-- pvparticulo: ???
+--
+-- Peso del articulo.
+-- Volumen del articulo.
 \echo -n ':: Articulo ... '
 CREATE TABLE articulo (
     idarticulo serial PRIMARY KEY,
@@ -425,6 +440,7 @@ CREATE TRIGGER calculacodigocompletoarticulotrigger
 
 -- ** comparticulo **
 -- cantcomparticulo: Cantidad del articulo referenciado.
+-- idcomponente: 
 \echo -n ':: Componentes de articulo ... '
 CREATE TABLE comparticulo (
     idarticulo integer NOT NULL REFERENCES articulo(idarticulo),
@@ -448,6 +464,9 @@ CREATE TABLE tarifa (
 
 
 -- ** ltarifa **
+-- idalmacen:
+-- idarticulo:
+-- idtarifa:
 -- pvpltarifa:: Precio de venta.
 \echo -n ':: Lineas de tarifa ... '
 CREATE TABLE ltarifa (
@@ -505,8 +524,11 @@ END;
 -- urlproveedor: URL de la web de comercio electronico B2B del proveedor.
 -- clavewebproveedor: Clave para entrar en el comercio electronico B2B del proveedor.
 -- inactivoproveedor: Indica si el proveedor lo tenemos marcado como inactivo para suministro.
--- provproveedor: Provincia del proveedor.
+-- recargoeqproveedor: Recargo de equivalencia del proveedor.
 -- irpfproveedor: Indica el IRPF que usa el proveedor por defecto.
+-- idforma_pago: Forma de pago al proveedor.
+-- regimenfiscalproveedor: Regimen fiscal en que se encuentra el proveedor.
+-- idprovincia: Provincia del proveedor.
 \echo -n ':: Proveedor ... '
 CREATE TABLE proveedor (
     idproveedor serial PRIMARY KEY,
@@ -539,9 +561,11 @@ CREATE TABLE proveedor (
 -- Detalle de todas las divisiones de un proveedor.
 -- descdivision: Descripcion completa de la division.
 -- contactosdivision: Nombre de persona o personas de contacto en esa division.
+-- comentdivision: Comentario de la division.
 -- teldivision: Numero de telefono de la division.
 -- faxdivision: Numero de fax de la division.
 -- maildivision: Direccion de correo electronico de la division.
+-- idproveedor: Proveedor al que pertenece la division.
 -- inactivodivision: Marca de inactivo de la division.
 \echo -n ':: Division ... '
 CREATE TABLE division (
@@ -572,14 +596,18 @@ CREATE TABLE division (
 -- faxcliente: Numero de fax.
 -- mailcliente: Direccion de correo electronico.
 -- urlcliente: Direccion web de cliente.
--- corpcliente:
+-- corpcliente: Grupo al que pertenece el cliente.
 -- faltacliente: Fecha alta como cliente.
 -- fbajacliente: Fecha de baja como cliente.
--- comentcliente: Comentario.
--- inactivocliente:
--- provcliente: Provincia del cliente.
--- idtarifa: Identificador de la tarifa aplicada a este cliente.
 -- regimenfiscalcliente Indica el regimen al que se acoge el cliente (Normal, comunitario, extracomunitario)
+-- comentcliente: Comentario.
+-- ecommercedatacliente: ???Comercio electronico.
+-- inactivocliente:
+-- idtarifa: Identificador de la tarifa aplicada a este cliente.
+-- recargoeqcliente: Recargo de equivalencia a aplicar al cliente.
+-- idforma_pago: Forma de pago del cliente.
+-- departamento: ???Departamento al que pertenece el cliente.
+-- idprovincia: Provincia del cliente.
 \echo -n ':: Cliente ... '
 CREATE TABLE cliente (
     idcliente serial PRIMARY KEY,
@@ -613,11 +641,15 @@ CREATE TABLE cliente (
 
 
 -- ** cobro **
+-- idcliente: Identidad del cliente.
 -- fechacobro: Fecha del cobro.
+-- fechavenccobro: ???Fecha vencimiento cobro.
 -- cantcobro: Cantidad cobrada.
 -- refcobro: Codigo de referencia del cobro.
 -- previsioncobro:
 -- comentcobro: Comentario.
+-- idtrabajador: ???Trabajador que realiza el cobro.
+-- idbanco: ???Entidad bancaria que realiza el cobro.
 \echo -n ':: Cobro ... '
 CREATE TABLE cobro (
     idcobro serial PRIMARY KEY,
@@ -660,11 +692,14 @@ CREATE TRIGGER restriccionescobrotrigger
     EXECUTE PROCEDURE restriccionescobro();
 
 -- ** pago **
--- fechapago: Fecha del cobro.
--- cantpago: Cantidad cobrada.
--- refpago: Codigo de referencia del cobro.
+-- idproveedor: Proveedor al que se realiza el pago.
+-- fechapago: Fecha del pago.
+-- cantpago: Cantidad del pago.
+-- refpago: Codigo de referencia del pago.
 -- previsiopago:
 -- comentpago: Comentario.
+-- idtrabajador: Trabajador que realiza el pago.
+-- idbanco: Entidad bancaria que realiza el pago.
 \echo -n ':: Pago ... '
 CREATE TABLE pago (
     idpago serial PRIMARY KEY,
@@ -710,6 +745,9 @@ CREATE TRIGGER restriccionespagotrigger
 -- numpedido: Numero de pedido.
 -- fechapedido: Fecha de salida del pedido.
 -- descpedido: Descripcion del pedido.
+-- iddivision: Division que realiza el pedido.
+-- idalmacen: Almacen que realiza el pedido.
+-- idtrabajador: Trabajador que realiza el pedido.
 \echo -n ':: Pedido ... '
 CREATE TABLE pedido (
     idpedido serial PRIMARY KEY,
@@ -723,7 +761,8 @@ CREATE TABLE pedido (
 
 
 -- ** usuario **
--- nombreusuario: Nombre del usuario.
+-- loginusuario: Identidad del usuario.
+-- nombreusuario: Nombre real del usuario.
 -- apellido1usuario: Primer apellido del usuario.
 -- apellido2usuario: Segundo apellido del usuario.
 -- claveusuario: Clave de acceso del usuario.
@@ -741,7 +780,7 @@ CREATE TABLE usuario (
 
 -- ** fra_pro **
 -- numfra_pro: Numero de factura del proveedor.
--- fcrefra_pro: Fecha de creacion de la factura.
+-- fcrefra_pro: Fecha de la factura el proveedor.
 -- comentafra_pro: Comentario a la factura.
 \echo -n ':: Factura de proveedor ... '
 CREATE TABLE fra_pro (
@@ -758,6 +797,8 @@ CREATE TABLE fra_pro (
 -- fcrealb_pro: Fecha de creacion del albaran.
 -- frecepalb_pro: Fecha de recepcion del albaran.
 -- comentalb_pro: Comentario.
+-- idfra_pro: Factura de proveedor al que pertenece el albaran.
+-- idalmacen: Almacen que recepciona la mercancia del proveedor.
 \echo -n ':: Albaran de proveedor ... '
 CREATE TABLE alb_pro (
     idalb_pro serial PRIMARY KEY,
@@ -797,7 +838,7 @@ CREATE TABLE lpedido (
 
 
 -- ** presupuesto **
--- Entendemos que un presupuesto es una relacion de materiales y trabajos cuantificada que
+-- Entendemos que un presupuesto es una relacion de materiales y/o trabajos cuantificada que
 -- hacemos a peticion de un cliente determinado.
 -- numpresupuesto: Numero de presupuesto.
 -- refpresupuesto: Codigo de referencia que se asigna a ese presupuesto.
@@ -808,7 +849,12 @@ CREATE TABLE lpedido (
 -- telpresupuesto: Telefono de la persona de contacto.
 -- vencpresupuesto: Fecha limite de validez del presupuesto.
 -- comentpresupuesto: Comentario al presupuesto.
+-- idusuari: ???Usuario que realiza el presupuesto.
 -- procesadopresupuesto: Indica si al presupuesto se le ha dado curso o esta en modo borrador.
+-- idcliente: Cliente que solicita el presupuesto.
+-- idalmacen: Almacen que realiza el presupuesto.
+-- idforma_pago: Forma de pago para el presupuesto.
+-- idtrabajador: ???Trabajador que realiza el presupuesto.
 -- bimppresupuesto: Total de Base Imponible del presupuesto.
 -- imppresupuesto: Total de impuestos (IVA) del presupuesto.
 -- totalpresupuesto: Total presupuesto.
@@ -876,6 +922,7 @@ CREATE TRIGGER restriccionespresupuestotrigger
 -- Descuento en presupuesto a clientes.
 -- conceptdpresupuesto: Motivo del descuento en presupuesto.
 -- proporciondpresupuesto: Porcentaje del descuento.
+-- idpresupuesto: Presupuesto sobre el que se realiza el descuento.
 \echo -n ':: Descuento de presupuesto ... '
 CREATE TABLE dpresupuesto (
     iddpresupuesto serial PRIMARY KEY,
@@ -891,8 +938,11 @@ CREATE TABLE dpresupuesto (
 -- cantlpresupuesto: Cantidad.
 -- pvplpresupuesto: Precio de venta del articulo.
 -- ivalpresupuesto: IVA aplicado al articulo.
+-- reqeqlpresupuesto: Recargo equivalencia a aplicar.
 -- descuentolpresupuesto: Porcentaje de descuento aplicado al precio de venta.
 -- ordenlpresupuesto: Indica el orden en que aparecen las lineas listadas.
+-- idpresupuesto: Presupuesto al que pertenece esta linea.
+-- idarticulo: Articulo de la linea del presupuesto.
 \echo -n ':: Lineas de presupuesto ... '
 CREATE TABLE lpresupuesto (
     idlpresupuesto serial PRIMARY KEY,
@@ -982,7 +1032,13 @@ CREATE TRIGGER restriccionespedidoclientetriggerd1
 -- contactpedidocliente: Persona de contacto del pedido. Solo en caso de que sea diferente
 --                       que los datos del cliente asociado.
 -- telpedidoclient: Telefono de la persona de contacto.
+-- idusuari: ???Ususario que realiza el pedido.
+-- idpresupuesto: Presupuesto al que corresponde este pedido.
 -- procesadopedidocliente: Indica si se ha dado curso al pedido o es un borrador.
+-- idcliente: Cliente que realiza el pedido.
+-- idforma_pago: Forma de pago para este pedido.
+-- idalmacen: Almacen que prepara el pedido.
+-- idtrabajador: ???Trabajador que realiza el pedido.
 -- totalpedidocliente: Total del pedido.
 -- bimppedidocliente: Base imponible total del pedido.
 -- imppedidocliente: Total de impuestos (IVA) del pedido.
@@ -1049,6 +1105,7 @@ CREATE TRIGGER restriccionespedidoclientetrigger
 -- Descuento de pedidocliente.
 -- conceptdpedidocliente: Descripcion del motivo de descuento.
 -- proporciondpedidocliente: Porcentaje del descuento.
+-- idpedidocliente: Pedido de cliente sobre el que se realiza el descuento.
 \echo -n ':: Descuento de pedido de cliente ... '
 CREATE TABLE dpedidocliente (
     iddpedidocliente serial PRIMARY KEY,
@@ -1060,14 +1117,18 @@ CREATE TABLE dpedidocliente (
 
 
 -- ** lpedidocliente **
--- Linea de detalle del pedido.
+-- Linea de detalle del pedido de cliente.
 -- numlpedidocliente: Numero de linea del pedido de cliente.
 -- desclpedidocliente: Descripcion del articulo.
 -- cantlpedidocliente: Cantidad.
 -- pvplpedidocliente: Precio de venta del articulo.
 -- prevlpedidocliente: Fecha prevista de recepcion de la mercancia.
 -- ivalpedidocliente: Total IVA aplicado al articulo.
+-- reqeqlpedidocliente: Recargo de equivalencia para la linea de pedido.
 -- descuentolpedidocliente: Porcentaje de descuento aplicado a la linea de articulo.
+-- idpedidocliente: Pedido de cliente al que corresponde esta linea.
+-- ordenlpedidocliente: ???
+-- idarticulo: Articulo de la linea de pedido de cliente. 
 \echo -n ':: Lineas de pedido de cliente ... '
 CREATE TABLE lpedidocliente (
     numlpedidocliente serial PRIMARY KEY,
@@ -1151,6 +1212,24 @@ CREATE TRIGGER totalesautomaticospedidoclientetriggerd1
 
 -- ** factura **
 -- factura a cliente.
+-- codigoserie_factura: Codgio de serie de la factura de cliente.
+-- numfactura: Numero factura cliente.
+-- reffactura: Referencia factura cliente.
+-- ffactura: Fecha de la factura de cliente.
+-- descfactura: Descripcion factura cliente.
+-- idalmacen: Almacen que emite la factura de cliente.
+-- contactfactura: Contacto factura cliente.
+-- telfactura: Telefono factura cliente.
+-- comentfactura: Comentario factura cliente.
+-- procesadafactura:
+-- idusuari: ???Usuario que emite la factura de cliente.
+-- idcliente: Cliente al que se emite la factura de cliente.
+-- idforma_pago: Forma de pago factura cliente.
+-- UNIQUE: Almacen que emite la factura, numero de serie de la factura y numero de factura de cliente.
+-- idtrabajador: ???Trabajador que realiza la factura.
+-- totalfactura: Total factura cliente.
+-- bimpfactura: Base imponible factura cliente.
+-- impfactura: Total impuestos factura cliente.
 \echo -n ':: Factura ... '
 CREATE TABLE factura (
     idfactura serial PRIMARY KEY,
@@ -1230,7 +1309,11 @@ CREATE TABLE dfactura (
 -- cantlfactura: Cantidad de articulos.
 -- pvplfactura: Precio de venta unitario del articulo.
 -- ivalfactura: IVA aplicado al articulo.
+-- reqeqlfactura: Recargo equivalencia factura.
 -- descuentolfactura: Porcentaja de descuento aplicado al articulo.
+-- ordenlfactura: Numero orden linea factura.
+-- idfactura: Factura a la que pretenece esta linea de factura.
+-- idarticulo: Articulo linea factura.
 \echo -n ':: Lineas de factura ... '
 CREATE TABLE lfactura (
     idlfactura serial PRIMARY KEY,
@@ -1456,6 +1539,10 @@ CREATE TRIGGER totalesautomaticosfacturatriggerd1
 -- telfacturap: Numero de telefono de la persona de contacto.
 -- comentfacturap: Comentario.
 -- procesadafacturap: Indica que la factura de proveedor esta procesada.
+-- idusuari: ???Usuario que emite la factura.
+-- idproveedor: Proveedor que emite la factura.
+-- idforma_pago: Forma de pago de la factura de proveedor.
+-- idtrabajador: ???Trabajador que emite la factura.
 -- totalfacturap: Total de factura.
 -- bimpfacturap: Base Imponible de la factura.
 -- impfacturap: Total de impuestos (IVA).
@@ -1510,6 +1597,15 @@ CREATE TRIGGER restriccionesfacturaptrigger
 
 -- ** lfacturap **
 -- Linea detalle de la factura.
+-- desclfacturap: Descripcion linea factura proveedor.
+-- cantlfacturap: Cantidad linea factura proveedor.
+-- pvplfacturap: Precio linea factura proveedor.
+-- ivalfacturap: IVA linea factura proveedor.
+-- reqeqlfacturap: Recargo equivalencia linea facura proveedor.
+-- descuentolfacturap: Descuento linea factura proveedor.
+-- ordenlfacturap: Orden linea factura proveedor.
+-- idfacturap: Factura proveedor de esta linea de factura de proveedor.
+-- idarticulo: Articulo de la linea de proveedor.
 \echo -n ':: Lineas de factura de proveedor ... '
 CREATE TABLE lfacturap (
     idlfacturap serial PRIMARY KEY,
@@ -1526,10 +1622,9 @@ CREATE TABLE lfacturap (
 
 
 -- Descuento de factura proveedor
--- Numero
--- Concepte: Descripcio del motiu de descompte.
--- Proporcio: Percentatge a descomptar.
--- Descompte de pressupost a clients.
+-- conceptdfacturap: Descripcion del descuento de la factura de proveedor.
+-- proporciondfacturap: Descuento de la factura de proveedor.
+-- idfacturap: Factura de proveedor a la que corresponde este descuento.
 \echo -n ':: Descuento de facturas de proveedor ... '
 CREATE TABLE dfacturap (
     iddfacturap serial PRIMARY KEY,
@@ -1701,6 +1796,21 @@ CREATE TRIGGER totalesautomaticosfacturaptriggerd1
 
 -- ** albaranp **
 -- Albaranes de proveedor.
+-- numalbaranp: Numero albaran de proveedor.
+-- descalbaranp: Descripcion albaran de proveedor.
+-- refalbaranp: Referencia albaran de proveedor.
+-- fechaalbaranp: Fecha albaran de proveedor.
+-- comentalbaranp: Comentario albaran de proveedor.
+-- procesadoalbaranp: Procesado albaran de proveedor.
+-- idproveedor: Proveedor del albaran.
+-- idforma_pago: Forma de pago del albaran de proveedor.
+-- idusuari: ???Usuario que tramita el albaran de proveedor.
+-- idalmacen: Almacen que recibe el albaran de proveedor.
+-- idtrabajador: ???Trabajador que tramita el albaran de proveedor.
+-- UNIQUE: 
+-- totalalbaranp: Total albaran proveedor.
+-- bimpalbaranp: Base imponible albaran proveedor.
+-- impalbaranp: Total impuestos albaran proveedor.
 -- COMPROBACIONES DE INTEGRIDAD: Todos los albaranes de una factura corresponden al mismo
 --                               proveedor.
 \echo -n ':: Albaran de proveedor ... '
@@ -1761,11 +1871,15 @@ CREATE TRIGGER restriccionesalbaranptrigger
 
 
 -- ** lalbaranp **
--- desclalbaranp: Descripcion.
+-- desclalbaranp: Descripcion linea albaran proveedor.
 -- cantlalbaranp: Cantidad.
 -- ivalalbaranp: IVA aplicado al precio.
+-- reqeqlalbaranp: Recargo equivalencia.
 -- pvplalbaranp: Precio sin IVA.
 -- descuentolbaranp: Porcentaje de descuento.
+-- ordenlalbaranp: Orden linea albaran proveedor.
+-- idalbaranp: Albaran al que corresponde la linea de albaran de proveedor.
+-- idarticulo: Articulo de la linea de albaran de proveedor.
 \echo -n ':: Lineas de albaran de proveedor ... '
 
 CREATE TABLE lalbaranp (
@@ -1786,6 +1900,7 @@ CREATE TABLE lalbaranp (
 -- Descuento en albaran de proveedor
 -- conceptdalbaranp: Concepto por el que se realiza el descuento en el albaran.
 -- proporciondalbaranp: Porcentaje de descuento.
+-- idalbaranp: Albaran al que corresponde el descuento albaran de proveedor.
 \echo -n ':: Descuento en albaran de proveedor ... '
 CREATE TABLE dalbaranp (
     iddalbaranp serial PRIMARY KEY,
@@ -2045,6 +2160,16 @@ END;
 -- procesadoalbaran: Indica si se ha procesado el albaran.
 -- contactalbaran: Persona de contacto que ha realizado el albaran.
 -- telalbaran: Telefono de la persona de contacto.
+-- idusuari: ???Usuario que tramita el albaran.
+-- idcliente: Cliente al que se emite el albaran.
+-- iidforma_pago: Forma de pago del abaran.
+-- idfactura: Factura a la que pertene el albaran.
+-- idalmacen: Almacen que emite el albaran.
+-- idtrabajador: ???Trabajador que tramita el abaran.
+-- totalalbaran: Importe total albaran
+-- bimpalbaran: Base imponible albaran.
+-- impalbaran: Total impuestos albaran.
+-- UNIQUE:
 \echo -n ':: Albaran ... '
 CREATE TABLE albaran (
     idalbaran serial PRIMARY KEY,
@@ -2109,6 +2234,7 @@ CREATE TRIGGER restriccionesalbarantrigger
 -- ** dalbaran **
 -- conceptdalbaran: Motivo por el que se realiza el descuento en el albaran.
 -- proporciondalbaran: Porcentaje de descuento a aplicar.
+-- idalbaran: Albaran al que se realiza el descuento de albaran.
 \echo -n ':: Descuento de albaran ... '
 CREATE TABLE dalbaran (
     iddalbaran serial PRIMARY KEY,
@@ -2120,10 +2246,15 @@ CREATE TABLE dalbaran (
 
 -- ** lalbaran **
 -- Linea de detalle del albaran.
+-- desclalbaran: Descripcion linea albaran.
 -- cantlalbaran: Cantidad.
 -- pvplalbaran: Precio de venta.
 -- descuentolalbaran: Porcentaje de descuento a aplicar.
 -- ivalalbaran: IVA correspondiente al articulo.
+-- reqeqlalbaran: Recargo de equivalencia linea albaran.
+-- ordenlalbaran: 
+-- idalbaran: Albaran al que pertenece la linea de albaran.
+-- idarticulo: Articulo linea albaran.
 \echo -n ':: Lineas de albaran ... '
 CREATE TABLE lalbaran (
     numlalbaran serial PRIMARY KEY,
@@ -2205,6 +2336,7 @@ CREATE TRIGGER totalesautomaticosalbarantriggerd1
     
 -- ** ticket **
 -- Para uso exclusivo con TPV:
+-- fechaticket: Fecha emision de ticket.
 \echo -n ':: Ticket ... '
 CREATE TABLE ticket (
     numticket integer PRIMARY KEY,
@@ -2215,6 +2347,10 @@ CREATE TABLE ticket (
 -- ** suministra **
 -- Almacena la informacion necesaria para saber que proveedor suministra un determinado
 -- articulo.
+-- refpro: Referencia del proveedor.
+-- principalsuministra:
+-- idproveedor: Proveedor que suministra.
+-- idarticulo: Articulo a suministrar.
 \echo -n ':: Controla que proveedor suministra un articulo ... '
 CREATE TABLE suministra (
     idsuministra serial PRIMARY KEY,
@@ -2225,8 +2361,12 @@ CREATE TABLE suministra (
 );
 
 
-
 -- ** precio_compra **
+-- idarticulo: Articulo precio compra.
+-- iddivision: Division precio compra.
+-- idalmacen: Almacen precio compra.
+-- fechapreciocompra: Fecha precio de compra.
+-- valorpreciocompra: Importe precio compra.
 \echo -n ':: Precio de compra ... '
 CREATE TABLE precio_compra (
     idprecio_compra serial PRIMARY KEY,
@@ -2239,6 +2379,11 @@ CREATE TABLE precio_compra (
 
 
 -- ** codigobarras **
+-- idarticulo: Articulo codigo barras.
+-- ean14codigobarras: Codigo de barras del articulo.
+-- unixcajacodigobarras: Codigo de barras del articulo (envase: cajas).
+-- cajxpaletcodigobarras: Codigo de barras del articulo (envase: palets).
+-- unidadcodigobarras: 
 \echo -n ':: Codigo de barras ... '
 CREATE TABLE codigobarras (
     idcodigobarras serial PRIMARY KEY,
@@ -2286,6 +2431,21 @@ END;
 
 
 -- ** pedidoproveedor **
+-- numpedidoproveedor: Numero de pedido a proveedor.
+-- fechapedidoproveedor: Fecha de pedido a proveedor.
+-- refpedidoproveedor: Referencia de pedido a proveedor.
+-- descpedidoproveedor: Descripcion pedido a proveedor.
+-- comentpedidoproveedor: Comentario pedido a provedor.
+-- contactpedidoproveedor: Contacto pedido a proveedor.
+-- telpedidoproveedor: Telefono contacto pedido a proveedor.
+-- procesadopedidoproveedor: Pedido de proveedor procesado.
+-- idproveedor: Proveedor del pedido.
+-- idforma_pago: Forma de pago de pedido a proveedor.
+-- idalmacen: Almacen que realiza el pedido a proveedor.
+-- idtrabajador: Trabajador que realiza el pedido a proveedor.
+-- totalpedidoproveedor: Total pedido a proveedor.
+-- bimppedidoproveedor: Base imponible pedido a proveedor.
+-- imppedidoproveedor: Impuestos pedido a proveedor.
 \echo -n ':: Pedido a proveedor ... '
 CREATE TABLE pedidoproveedor (
     idpedidoproveedor serial PRIMARY KEY,
@@ -2346,6 +2506,7 @@ CREATE TRIGGER restriccionespedidoproveedortrigger
 -- ** dpedidoproveedor **
 -- conceptdpedidoproveedor: Motivo por el que se aplica el descuento al pedido.
 -- proporciondpedidoproveedor: Porcentaje de descuento.
+-- idpedidoproveedor: Pedido a proveedor sobre el que se realiza el descuento.
 \echo -n ':: Descuento en pedido a proveedor ... '
 CREATE TABLE dpedidoproveedor (
     iddpedidoproveedor serial PRIMARY KEY,
@@ -2357,11 +2518,17 @@ CREATE TABLE dpedidoproveedor (
     
 -- ** lpedidoproveedor **
 -- Linea de detalle del pedido a proveedor.
+-- desclpedidoproveedor: Descripcion linea pedido proveedor.
 -- cantlpedidoproveedor: Cantidad.
 -- pvplpedidoproveedor: Precio de compra.
 -- prevlpedidoproveedor: Prevision de recepcion de la mercancia.
 -- ivalpedidoproveedor: IVA aplicado al articulo.
+-- reqeqlpedidoproveedor: Recaro de equivalencia linea pedido proveedor.
 -- descuentolpedidoproveedor: Descuento aplicado al articulo.
+-- ordenlpedidoproveedor: Numero de orden linea pedido proveedor.
+-- idpedidoproveedor: Pedido a proveedor al que pertenece esta linea de pedido.
+-- puntlpedidoproveedor: 
+-- idarticulo: Articulo linea pedido proveedor.
 \echo -n ':: Lineas de pedido a proveedor ... '
 CREATE TABLE lpedidoproveedor (
     idlpedidoproveedor serial PRIMARY KEY,
@@ -2838,7 +3005,6 @@ CREATE TRIGGER disminuyestockt
     EXECUTE PROCEDURE disminuyestock();
 
 
-
 \echo -n ':: Funcion para aumentar stock ... '
 CREATE FUNCTION aumentastock() RETURNS "trigger"
 AS '
@@ -2920,9 +3086,6 @@ CREATE TRIGGER modificastocktrigger
     AFTER UPDATE ON articulo
     FOR EACH ROW
     EXECUTE PROCEDURE modificadostock();
-
-
-
 
 
 
