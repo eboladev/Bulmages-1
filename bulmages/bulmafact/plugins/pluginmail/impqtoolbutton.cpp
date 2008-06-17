@@ -39,8 +39,6 @@
 #include "company.h"
 #include "dbrecord.h"
 
-#define MAIL_CLIENT "kmail"
-
 ///
 /**
 \param pres
