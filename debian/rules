@@ -17,22 +17,16 @@
 CFLAGS = -Wall -g
 ARCH:=$(shell dpkg --print-architecture)
 
-ifeq ($(ARCH),s390)
-        CXXFLAGS += -O0
-        CFLAGS += -O0
-	SETCFL=1
-endif
-ifeq ($(ARCH),arm)
-        CXXFLAGS += -O0
-        CFLAGS += -O0
-	SETCFL = 1
-endif
 
 ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
+
 	CFLAGS += -O0
 	CXXFLAGS += -O0
 else
-ifneq ($(SETCFL),1)
+ifneq (,$(findstring $(ARCH),s390 arm))
+        CXXFLAGS += -O0
+	CFLAGS += -O0
+else
         CXXFLAGS += -O2
         CFLAGS += -O2
 endif
