@@ -63,6 +63,12 @@ FamiliasView::FamiliasView ( Company *comp, QWidget *parent, bool modoConsulta )
 
     m_idfamilia = "";
 
+	mui_nomFamilia->setEnabled(FALSE);
+	mui_descFamilia->setEnabled(FALSE);
+	mui_codCompletoFamilia->setEnabled(FALSE);
+	mui_codFamilia->setEnabled(FALSE);
+
+
     if ( modoConsulta ) {
         setModoConsulta();
         groupBox1->hide();
@@ -265,6 +271,11 @@ void FamiliasView::mostrarplantilla()
     _depura ( "FamiliasView::mostrarplantilla", 0 );
     QString query;
     if (!m_idfamilia.isEmpty()) {
+		mui_nomFamilia->setEnabled(TRUE);
+		mui_descFamilia->setEnabled(TRUE);
+		mui_codCompletoFamilia->setEnabled(TRUE);
+		mui_codFamilia->setEnabled(TRUE);
+
 	query = "SELECT * from familia WHERE idfamilia = " + m_idfamilia;
 	cursor2 *cursorfamilia = empresaBase()->cargacursor ( query );
 	if ( !cursorfamilia->eof() ) {
@@ -281,6 +292,10 @@ void FamiliasView::mostrarplantilla()
 	} // end if
 	delete cursorfamilia;
     } else {
+		mui_nomFamilia->setEnabled(FALSE);
+		mui_descFamilia->setEnabled(FALSE);
+		mui_codCompletoFamilia->setEnabled(FALSE);
+		mui_codFamilia->setEnabled(FALSE);
 		mui_nomFamilia->setText ( "" );
 		mui_descFamilia->setPlainText ( "" );
 		mui_codCompletoFamilia->setText ( "" );

@@ -48,6 +48,9 @@ TipoArticuloList::TipoArticuloList ( Company *comp, QWidget *parent, bool modoCo
     m_listTipos->setHeaderLabels ( headers );
     m_semaforoPintar = FALSE;
     m_idtipo = "";
+
+		mui_codigotipo_articulo->setEnabled(FALSE);
+		mui_desctipo_articulo->setEnabled(FALSE);
     if ( modoConsulta ) {
         setModoConsulta();
         groupBox1->hide();
@@ -216,21 +219,30 @@ void TipoArticuloList::on_m_listTipos_itemDoubleClicked ( QTreeWidgetItem *item,
 **/
 void TipoArticuloList::on_m_listTipos_currentItemChanged ( QTreeWidgetItem *current, QTreeWidgetItem *previous )
 {
+    if ( m_semaforoPintar ) return;
+    m_semaforoPintar = TRUE;
+
     _depura ( "TipoArticuloList::on_m_listTipos_currentItemChanged", 0 );
     /// Si estamos dentro del proceso de pintado salimos sin hacer nada ya que puede haber problemas.
-    if ( m_semaforoPintar ) return;
-
     QString idtipoold = "";
     if ( previous ) {
         m_idtipo = previous->text ( COL_IDTIPOARTICULO );
     } // end if
-    if ( m_idtipo != "" ) {
-        trataModificado();
-        pintar ( previous );
+
+    if (!m_idtipo.isEmpty()) {
+		trataModificado();
+		if (previous)
+			pintar(previous);
     } // end if
-    m_idtipo = current->text ( COL_IDTIPOARTICULO );
+
+    if (current) {
+    	m_idtipo = current->text ( COL_IDTIPOARTICULO );
+    } else {
+	m_idtipo = "";
+    } // end if
     mostrarplantilla();
     _depura ( "END TipoArticuloList::on_m_listTipos_currentItemChanged", 0 );
+    m_semaforoPintar= FALSE;
 }
 
 
@@ -240,6 +252,10 @@ void TipoArticuloList::on_m_listTipos_currentItemChanged ( QTreeWidgetItem *curr
 void TipoArticuloList::mostrarplantilla()
 {
     _depura ( "TipoArticuloList::mostrarplantilla", 0 );
+    if (!m_idtipo.isEmpty()) {
+		mui_codigotipo_articulo->setEnabled(TRUE);
+		mui_desctipo_articulo->setEnabled(TRUE);
+
     QString query;
     query = "SELECT * from tipo_articulo WHERE idtipo_articulo = " + m_idtipo;
     cursor2 *cursortipo = empresaBase()->cargacursor ( query );
@@ -248,6 +264,13 @@ void TipoArticuloList::mostrarplantilla()
         mui_desctipo_articulo->setPlainText ( cursortipo->valor ( "desctipo_articulo" ) );
     } // end if
     delete cursortipo;
+
+    } else {
+		mui_codigotipo_articulo->setEnabled(FALSE);
+		mui_desctipo_articulo->setEnabled(FALSE);
+		mui_codigotipo_articulo->setText("");
+		mui_desctipo_articulo->setText("");
+    } // end if
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
     _depura ( "END TipoArticuloList::mostrarplantilla", 0 );
@@ -284,7 +307,7 @@ bool TipoArticuloList::trataModificado()
 **/
 int TipoArticuloList::guardar()
 {
-    if ( m_idtipo == "" )
+    if ( m_idtipo.isEmpty() )
         return 0;
 
     if ( mui_codigotipo_articulo->text() == "" )
@@ -305,13 +328,15 @@ int TipoArticuloList::guardar()
     /// Vamos a hacer algo no reentrante.
     QList<QTreeWidgetItem *> listit =  m_listTipos->findItems ( m_idtipo, Qt::MatchExactly, COL_IDTIPOARTICULO );
     QTreeWidgetItem *it = listit.first();
-    cursor2 *cursoraux1 = empresaBase()->cargacursor ( "SELECT * FROM tipo_articulo WHERE idtipo_articulo = " + m_idtipo );
-    if ( !cursoraux1->eof() ) {
-        it->setText ( COL_IDTIPOARTICULO, cursoraux1->valor ( "idtipo_articulo" ) );
-        it->setText ( COL_CODTIPOARTICULO, cursoraux1->valor ( "codtipo_articulo" ) );
-        it->setText ( COL_DESCTIPOARTICULO, cursoraux1->valor ( "desctipo_articulo" ) );
+    if (it) {
+	cursor2 *cursoraux1 = empresaBase()->cargacursor ( "SELECT * FROM tipo_articulo WHERE idtipo_articulo = " + m_idtipo );
+	if ( !cursoraux1->eof() ) {
+		it->setText ( COL_IDTIPOARTICULO, cursoraux1->valor ( "idtipo_articulo" ) );
+		it->setText ( COL_CODTIPOARTICULO, cursoraux1->valor ( "codtipo_articulo" ) );
+		it->setText ( COL_DESCTIPOARTICULO, cursoraux1->valor ( "desctipo_articulo" ) );
+	} // end if
+	delete cursoraux1;
     } // end if
-    delete cursoraux1;
     return 0;
 }
 
