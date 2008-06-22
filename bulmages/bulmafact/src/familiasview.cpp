@@ -229,22 +229,31 @@ void FamiliasView::on_m_listFamilias_itemDoubleClicked ( QTreeWidgetItem *it )
 **/
 void FamiliasView::on_m_listFamilias_currentItemChanged ( QTreeWidgetItem *current, QTreeWidgetItem *previous )
 {
-    _depura ( "FamiliasView::on_m_listFamilias_currentItemChanged", 0 );
 
-    /// Si estamos dentro del proceso de pintado salimos sin hacer nada ya que puede haber problemas.
     if ( m_semaforoPintar ) return;
+    m_semaforoPintar = TRUE;
+    _depura ( "FamiliasView::on_m_listFamilias_currentItemChanged", 0, m_idfamilia );
+    /// Si estamos dentro del proceso de pintado salimos sin hacer nada ya que puede haber problemas.
 
-    QString idfamiliaold = "";
     if ( previous ) {
         m_idfamilia = previous->text ( COL_IDFAMILIA );
     } // end if
-    if ( m_idfamilia != "" ) {
-        trataModificado();
-        pintar ( previous );
+
+	if ( !m_idfamilia.isEmpty() ) {
+		trataModificado();
+		if (previous)
+			pintar(previous);
+
+	} // end if
+    if (current) {
+	m_idfamilia = current->text ( COL_IDFAMILIA );
+    } else {
+	m_idfamilia = "";
     } // end if
-    m_idfamilia = current->text ( COL_IDFAMILIA );
+
     mostrarplantilla();
     _depura ( "END FamiliasView::on_m_listFamilias_currentItemChanged", 0 );
+    m_semaforoPintar = FALSE;
 }
 
 
@@ -255,21 +264,28 @@ void FamiliasView::mostrarplantilla()
 {
     _depura ( "FamiliasView::mostrarplantilla", 0 );
     QString query;
-    query = "SELECT * from familia WHERE idfamilia = " + m_idfamilia;
-    cursor2 *cursorfamilia = empresaBase()->cargacursor ( query );
-    if ( !cursorfamilia->eof() ) {
-        mui_nomFamilia->setText ( cursorfamilia->valor ( "nombrefamilia" ) );
-        mui_descFamilia->setPlainText ( cursorfamilia->valor ( "descfamilia" ) );
-        mui_codCompletoFamilia->setText ( cursorfamilia->valor ( "codigocompletofamilia" ) );
-        mui_codFamilia->setText ( cursorfamilia->valor ( "codigofamilia" ) );
-
-        if ( cursorfamilia->valor ( "productofisicofamilia" ) == "t" ) {
-            mui_productofamilia->setChecked ( TRUE );
-        } else {
-            mui_serviciofamilia->setChecked ( TRUE );
-        } // end if
+    if (!m_idfamilia.isEmpty()) {
+	query = "SELECT * from familia WHERE idfamilia = " + m_idfamilia;
+	cursor2 *cursorfamilia = empresaBase()->cargacursor ( query );
+	if ( !cursorfamilia->eof() ) {
+		mui_nomFamilia->setText ( cursorfamilia->valor ( "nombrefamilia" ) );
+		mui_descFamilia->setPlainText ( cursorfamilia->valor ( "descfamilia" ) );
+		mui_codCompletoFamilia->setText ( cursorfamilia->valor ( "codigocompletofamilia" ) );
+		mui_codFamilia->setText ( cursorfamilia->valor ( "codigofamilia" ) );
+	
+		if ( cursorfamilia->valor ( "productofisicofamilia" ) == "t" ) {
+		mui_productofamilia->setChecked ( TRUE );
+		} else {
+		mui_serviciofamilia->setChecked ( TRUE );
+		} // end if
+	} // end if
+	delete cursorfamilia;
+    } else {
+		mui_nomFamilia->setText ( "" );
+		mui_descFamilia->setPlainText ( "" );
+		mui_codCompletoFamilia->setText ( "" );
+		mui_codFamilia->setText ( "" );
     } // end if
-    delete cursorfamilia;
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
     _depura ( "END FamiliasView::mostrarplantilla", 0 );
@@ -282,6 +298,7 @@ void FamiliasView::mostrarplantilla()
 **/
 bool FamiliasView::trataModificado()
 {
+    _depura ( "FamiliasView::trataModificado", 0 );
     /// Si se ha modificado el contenido advertimos y guardamos.
     if ( dialogChanges_hayCambios() ) {
         if ( QMessageBox::warning ( this,
@@ -291,8 +308,8 @@ bool FamiliasView::trataModificado()
                                     QMessageBox::Cancel ) == QMessageBox::Ok ) {
             on_mui_guardar_clicked();
         } // end if
-        return ( TRUE );
     } // end if
+    _depura ( "END FamiliasView::trataModificado", 0 );
     return ( FALSE );
 }
 
@@ -307,7 +324,7 @@ int FamiliasView::guardar()
     _depura ( "FamiliasView::guardar", 0 );
     QString prodfam;
     try {
-        if ( m_idfamilia == "" ) {
+        if ( m_idfamilia.isEmpty() ) {
             mensajeInfo ( tr ( "Debe seleccionar una familia" ), this );
             return -1;
         } // end if
@@ -328,9 +345,11 @@ int FamiliasView::guardar()
         /// a ponerla despues.
         QTreeWidgetItem *posicionCursor;
         posicionCursor = m_listFamilias->currentItem();
-        posicionCursor->setSelected ( TRUE );
-        /// Pintamos los datos en el listado.
-        pintar ( posicionCursor );
+	if (posicionCursor) {
+		posicionCursor->setSelected ( TRUE );
+		/// Pintamos los datos en el listado.
+		pintar ( posicionCursor );
+	} // end if
         dialogChanges_cargaInicial();
         _depura ( "END FamiliasView::guardar", 0 );
         return 0;
@@ -404,6 +423,7 @@ void FamiliasView::on_mui_crear_clicked()
 /// Inserta en la tabla de Familias
 /**
 **/
+/** No es necesario con las Qt 4.4
 void FamiliasView::on_mui_crearRaiz_clicked()
 {
     _depura ( "FamiliasView::on_mui_crearRaiz_clicked", 0 );
@@ -430,7 +450,7 @@ void FamiliasView::on_mui_crearRaiz_clicked()
     } // end try
 }
 
-
+*/
 
 
 ///

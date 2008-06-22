@@ -14,19 +14,11 @@
    <string>Familias</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../bulmages.qrc" >:/Bulmafact32x32/images/png/32x32/i_bulmages_articulos_familias.32x32.png</iconset>
+   <iconset resource="../../bulmages.qrc" >
+    <normaloff>:/Bulmafact32x32/images/png/32x32/i_bulmages_articulos_familias.32x32.png</normaloff>:/Bulmafact32x32/images/png/32x32/i_bulmages_articulos_familias.32x32.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
-   <property name="leftMargin" >
-    <number>5</number>
-   </property>
-   <property name="topMargin" >
-    <number>5</number>
-   </property>
-   <property name="rightMargin" >
-    <number>5</number>
-   </property>
-   <property name="bottomMargin" >
+   <property name="margin" >
     <number>5</number>
    </property>
    <item>
@@ -34,16 +26,7 @@
      <property name="spacing" >
       <number>5</number>
      </property>
-     <property name="leftMargin" >
-      <number>0</number>
-     </property>
-     <property name="topMargin" >
-      <number>0</number>
-     </property>
-     <property name="rightMargin" >
-      <number>0</number>
-     </property>
-     <property name="bottomMargin" >
+     <property name="margin" >
       <number>0</number>
      </property>
      <item>
@@ -89,52 +72,9 @@
         <enum>QFrame::Raised</enum>
        </property>
        <layout class="QHBoxLayout" >
-        <property name="leftMargin" >
+        <property name="margin" >
          <number>5</number>
         </property>
-        <property name="topMargin" >
-         <number>5</number>
-        </property>
-        <property name="rightMargin" >
-         <number>5</number>
-        </property>
-        <property name="bottomMargin" >
-         <number>5</number>
-        </property>
-        <item>
-         <widget class="QToolButton" name="mui_crearRaiz" >
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Nueva Familia Padre</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Nueva Familia Padre</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/document-new.svg</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-         </widget>
-        </item>
         <item>
          <widget class="QToolButton" name="mui_crear" >
           <property name="minimumSize" >
@@ -159,7 +99,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/document-new.svg</iconset>
+           <iconset resource="../../bulmages.qrc" >
+            <normaloff>:/Images/document-new.svg</normaloff>:/Images/document-new.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -193,7 +134,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/edit-delete.svg</iconset>
+           <iconset resource="../../bulmages.qrc" >
+            <normaloff>:/Images/edit-delete.svg</normaloff>:/Images/edit-delete.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -227,7 +169,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/edit-save.svg</iconset>
+           <iconset resource="../../bulmages.qrc" >
+            <normaloff>:/Images/edit-save.svg</normaloff>:/Images/edit-save.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -261,7 +204,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/document-print.svg</iconset>
+           <iconset resource="../../bulmages.qrc" >
+            <normaloff>:/Images/document-print.svg</normaloff>:/Images/document-print.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -279,7 +223,7 @@
           <property name="sizeType" >
            <enum>QSizePolicy::Expanding</enum>
           </property>
-          <property name="sizeHint" >
+          <property name="sizeHint" stdset="0" >
            <size>
             <width>191</width>
             <height>30</height>
@@ -306,16 +250,7 @@
      <property name="spacing" >
       <number>5</number>
      </property>
-     <property name="leftMargin" >
-      <number>0</number>
-     </property>
-     <property name="topMargin" >
-      <number>0</number>
-     </property>
-     <property name="rightMargin" >
-      <number>0</number>
-     </property>
-     <property name="bottomMargin" >
+     <property name="margin" >
       <number>0</number>
      </property>
      <item>
@@ -342,7 +277,8 @@
         <string/>
        </property>
        <property name="icon" >
-        <iconset resource="../../bulmages.qrc" >:/Images/document-open.svg</iconset>
+        <iconset resource="../../bulmages.qrc" >
+         <normaloff>:/Images/document-open.svg</normaloff>:/Images/document-open.svg</iconset>
        </property>
        <property name="iconSize" >
         <size>
@@ -363,7 +299,7 @@
        <property name="orientation" >
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeHint" >
+       <property name="sizeHint" stdset="0" >
         <size>
          <width>40</width>
          <height>20</height>
@@ -379,22 +315,10 @@
       <string>Contenido de la familia:</string>
      </property>
      <layout class="QGridLayout" >
-      <property name="leftMargin" >
+      <property name="margin" >
        <number>5</number>
       </property>
-      <property name="topMargin" >
-       <number>5</number>
-      </property>
-      <property name="rightMargin" >
-       <number>5</number>
-      </property>
-      <property name="bottomMargin" >
-       <number>5</number>
-      </property>
-      <property name="horizontalSpacing" >
-       <number>5</number>
-      </property>
-      <property name="verticalSpacing" >
+      <property name="spacing" >
        <number>5</number>
       </property>
       <item row="2" column="0" colspan="5" >
@@ -489,16 +413,7 @@
          <property name="spacing" >
           <number>5</number>
          </property>
-         <property name="leftMargin" >
-          <number>5</number>
-         </property>
-         <property name="topMargin" >
-          <number>5</number>
-         </property>
-         <property name="rightMargin" >
-          <number>5</number>
-         </property>
-         <property name="bottomMargin" >
+         <property name="margin" >
           <number>5</number>
          </property>
          <item>
@@ -526,16 +441,7 @@
      <property name="spacing" >
       <number>5</number>
      </property>
-     <property name="leftMargin" >
-      <number>0</number>
-     </property>
-     <property name="topMargin" >
-      <number>0</number>
-     </property>
-     <property name="rightMargin" >
-      <number>0</number>
-     </property>
-     <property name="bottomMargin" >
+     <property name="margin" >
       <number>0</number>
      </property>
      <item>
@@ -543,7 +449,7 @@
        <property name="orientation" >
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeHint" >
+       <property name="sizeHint" stdset="0" >
         <size>
          <width>331</width>
          <height>27</height>

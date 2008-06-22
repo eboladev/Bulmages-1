@@ -43,8 +43,6 @@ MTicket *g_bud;
 int entryPoint ( BulmaTPV *tpv )
 {
     _depura ( "entryPoint pluginticketdesglose::entryPoint", 0 );
-    mensajeInfo ( "entryPoint pluginticketdesglose::entryPoint");
-
 
     /// Vamos a probar con un docwindow.
     g_doc1 = new BDockWidget ( "Total", tpv, "plugindesglosedocked" );
@@ -54,9 +52,6 @@ int entryPoint ( BulmaTPV *tpv )
     tpv->addDockWidget ( Qt::RightDockWidgetArea, g_doc1 );
     g_doc1->cargaconf();
     g_doc1->show();
-
-
-
 
     _depura ( "END pluginticketdesglose::entryPoint", 0 );
     return 0;

@@ -67,7 +67,9 @@ public slots:
     virtual void on_m_listFamilias_itemDoubleClicked ( QTreeWidgetItem * );
     virtual void on_m_listFamilias_currentItemChanged ( QTreeWidgetItem *current, QTreeWidgetItem *previous );
     virtual void on_mui_crear_clicked();
-    virtual void on_mui_crearRaiz_clicked();
+
+// No es necesario en Qt4.4
+//    virtual void on_mui_crearRaiz_clicked();
 
 
 signals:
