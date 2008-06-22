@@ -188,7 +188,7 @@
 #define CONF_TPV_VISOR_FILE          451
 /// Modo Full Screen para el TPV     
 #define CONF_TPV_FULLSCREEN          452
-
+#define CONF_TPV_PRINTER_LOGO        453
 
 /// CONF_NUM_AUT_* determina si se utilizaran numeradores automaticos para presupuestos,
 /// albaranes y facturas inicialmente vale "".

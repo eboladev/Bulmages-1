@@ -350,6 +350,8 @@ QString configuracion::nombre ( int i )
         return "CONF_IDTRABAJADOR_DEFECTO";
     if ( i == CONF_TPV_VISOR_FILE )
         return "CONF_TPV_VISOR_FILE";
+    if ( i == CONF_TPV_PRINTER_LOGO )
+        return "CONF_TPV_PRINTER_LOGO";
     if ( i == CONF_TPV_FULLSCREEN )
         return "CONF_TPV_FULLSCREEN";
     if ( i == CONF_REFRESH_LIST )

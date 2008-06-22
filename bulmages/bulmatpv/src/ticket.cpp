@@ -27,6 +27,8 @@
 #include "empresabase.h"
 #include "ticket.h"
 #include "plugins.h"
+#include "escprinter.h"
+
 
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
 /// como un QMap.
@@ -235,6 +237,8 @@ void Ticket::abrircajon()
     file.close();
 }
 
+
+/*
 void  Ticket::imprimir()
 {
     base basesimp;
@@ -467,7 +471,7 @@ void  Ticket::imprimir()
     file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
     file.write ( "\n", 1 );
 
-    /// Lanzamiento de un plugin extraÃ±o hacia el total
+    /// Lanzamiento de un plugin extraño hacia el total
     QString stotal = total.toQString();
     g_plugins->lanza("Ticket_total", &stotal);
 
@@ -534,14 +538,7 @@ void  Ticket::imprimir()
 
     file.write ( "\n", 1 );
 
-    /// Imprimimos el dibujo final
-    /*
-            file.write ("\x1B\x2A\x00\xD2\x00", 5);
-            for (int i=0; i <15; i++) {
-                file.write ( "\x01\x02\x04\x08\x10\x20\x40\x80", 8);
-                file.write ("\x40\x20\x10\x08\x04\x02", 6);
-            }
-    */
+
     /// Imprimimos espacios
     file.write ( "\n \n \n \n \n", 9 );
 
@@ -553,7 +550,185 @@ void  Ticket::imprimir()
     /// La apertura del cajon.
     abrircajon();
 }
+*/
 
+
+
+// =========================
+
+
+void Ticket::imprimir()
+{
+   struct empresastr
+   {
+	QString nombre;
+	QString direccionCompleta;
+	QString codigoPostal;
+      QString ciudad;
+      QString provincia;
+   }empresa;
+
+   struct clientestr
+   {
+      QString cif;
+      QString nombre;
+   }cliente;
+
+   struct trabajadorstr
+   {
+      QString nombre;
+      QString id;
+   }trabajador;
+
+   struct almacenstr
+   {
+      QString nombre;
+   }almacen;
+
+   struct fechastr
+   {
+      QString dia;
+      QString hora;
+   }fecha;
+
+   struct totalstr
+   {
+      int iva;
+      float baseImponible;
+      float totalIva;
+   }total;
+
+   cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
+   if ( !cur->eof() )
+      empresa.nombre =cur->valor ( "valor" );
+   delete cur;
+
+   cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" );
+   if ( !cur->eof() )
+      empresa.direccionCompleta = cur->valor ( "valor" );
+   delete cur;
+
+   cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
+   if ( !cur->eof() )
+      empresa.codigoPostal = cur->valor ( "valor" ).toAscii();
+   delete cur;
+
+   cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Ciudad'" );
+   if ( !cur->eof() )
+      empresa.ciudad = cur->valor ( "valor" );
+   delete cur;
+
+   cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Provincia'" );
+   if ( !cur->eof() )
+      empresa.provincia = cur->valor("valor");
+   delete cur;
+
+   fecha.dia = QDate::currentDate().toString("d-M-yyyy");
+   fecha.hora = QTime::currentTime().toString("HH:mm");
+
+   trabajador.id = DBvalue("idtrabajador");
+   cur = empresaBase() ->cargacursor ( "SELECT * FROM trabajador WHERE idtrabajador=" + DBvalue ( "idtrabajador" ) );
+   if ( !cur->eof() )
+      trabajador.nombre = cur->valor ( "nomtrabajador" );
+   delete cur;
+
+   cur = empresaBase() ->cargacursor ( "SELECT * FROM cliente WHERE idcliente=" + DBvalue ( "idcliente" ) );
+   if ( !cur->eof() )
+   {
+      cliente.cif = cur->valor ( "cifcliente" ).toAscii();
+      cliente.nombre = cur->valor ( "nomcliente" ).toAscii();
+   } // end if
+   delete cur;
+
+   cur = empresaBase() ->cargacursor ( "SELECT * FROM almacen WHERE idalmacen=" + DBvalue ( "idalmacen" ) );
+   if ( !cur->eof() )
+      almacen.nombre = cur->valor ( "nomalmacen" ).toAscii() ;
+   delete cur;
+
+   DBRecord *linea;
+   if (listaLineas() ->size()) total.iva = listaLineas()->at(0)->DBvalue( "ivalalbaran" ).toFloat();
+   for ( int i = 0; i < listaLineas() ->size(); ++i )
+   {
+      linea = listaLineas() ->at ( i );
+      float cantidad = linea->DBvalue ( "cantlalbaran" ).toFloat();
+      total.baseImponible += cantidad*linea->DBvalue ( "pvplalbaran" ).toFloat();
+   }
+   total.totalIva = total.baseImponible + total.baseImponible*total.iva/100.0f;
+
+   EscPrinter pr(confpr->valor ( CONF_TICKET_PRINTER_FILE ));
+   pr.initializePrinter();
+   pr.setCharacterCodeTable ( page19 );
+   pr.setJustification ( center );
+
+   if(confpr->valor(CONF_TPV_PRINTER_LOGO) != "") {
+   	pr.printImage(confpr->valor(CONF_TPV_PRINTER_LOGO));
+   } // end if
+   pr.printText(empresa.nombre+"\n");
+   pr.setCharacterPrintMode(CHARACTER_FONTB_SELECTED);
+   pr.setCharacterSize(CHAR_WIDTH_1|CHAR_HEIGHT_1);
+   pr.setColor(red);
+   pr.printText(empresa.direccionCompleta+"\n");
+
+   pr.initializePrinter();
+   pr.setCharacterCodeTable ( page19 );
+
+   pr.printText("\n");
+   pr.printText(fecha.dia+" "+fecha.hora+"\n");
+   pr.printText("Cliente, "+cliente.cif+" "+cliente.nombre+"\n");
+   pr.printText("\n");
+
+   pr.turnWhiteBlack(1);
+   pr.printText(" Uds. PRODUCTO              P.U.  IMPORTE \n");
+
+   pr.turnWhiteBlack(0);
+   pr.setCharacterPrintMode(CHARACTER_FONTB_SELECTED);
+   pr.setCharacterSize(CHAR_WIDTH_1|CHAR_HEIGHT_1);
+
+   for ( int i = 0; i < listaLineas() ->size(); ++i )
+   {
+      if(i == listaLineas()->size()-1)
+         pr.setUnderlineMode(1);
+      linea = listaLineas() ->at ( i );
+      float iva = linea->DBvalue( "ivalalbaran" ).toFloat();
+      float pvp = linea->DBvalue ( "pvplalbaran" ).toFloat();
+      pvp = pvp + pvp*iva/100.0f;
+      float pvptotal = linea->DBvalue("cantlalbaran").toFloat()*pvp;
+      pr.printText(linea->DBvalue ( "cantlalbaran" ).rightJustified ( 5, ' ', TRUE )+"  ");
+      pr.printText(linea->DBvalue("desclalbaran").leftJustified(27,' ', true)+" ");
+      QString pvpstr = QString( "%L2 " ).arg( pvp, 0, 'f', 2 );
+      QString pvptotalstr = QString( "%L2 " ).arg( pvptotal, 0, 'f', 2 );
+      pr.printText(QString(pvpstr+"€").rightJustified ( 10, ' ', TRUE )+" ");
+      pr.printText(QString(pvptotalstr+"€").rightJustified ( 10, ' ', TRUE ));
+      pr.printText("\n");
+   }
+   pr.setUnderlineMode(0);
+   pr.setJustification(right);
+   pr.setCharacterPrintMode(CHARACTER_FONTA_SELECTED);
+   pr.printText("Base Imponible: "+QString( "%L2 " ).arg(
+total.baseImponible, 0, 'f', 2 )+"€\n");
+   pr.printText("IVA "+QString( "%1 " ).arg( total.iva, 0, 10 )+"%:"+QString( "%L2 " ).arg( total.totalIva-total.baseImponible, 0, 'f', 2)+"€\n");
+   pr.setCharacterPrintMode(CHARACTER_FONTA_SELECTED|EMPHASIZED_MODE|DOUBLE_HEIGHT|DOUBLE_WIDTH);
+   pr.printText("TOTAL: "+QString( "%L2 " ).arg( total.totalIva, 0, 'f',2 )+"€\n");
+   pr.printText("\n\n");
+   pr.setJustification(left);
+   pr.setCharacterPrintMode(CHARACTER_FONTA_SELECTED);
+   pr.printText("Le ha atendido "+trabajador.nombre+"\n");
+   pr.printText("\n");
+   pr.setJustification(center);
+   pr.setColor(red);
+   pr.printText("*** GRACIAS POR SU VISITA ***\n");
+
+   
+   QByteArray qba = DBvalue ( "refalbaran" ).toAscii();
+   char* barcode = qba.data();
+   pr.setJustification ( center );
+   pr.setBarcodeFormat(2, 50, both, fontB);
+   pr.printBarCode(code39, qba.size(), barcode);
+   pr.cutPaperAndFeed(TRUE,10);
+   pr.print();
+}
+
+// ===========================
 
 void Ticket::subir()
 {
