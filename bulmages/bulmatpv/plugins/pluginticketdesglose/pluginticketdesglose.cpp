@@ -42,7 +42,9 @@ MTicket *g_bud;
 **/
 int entryPoint ( BulmaTPV *tpv )
 {
-    _depura ( "entryPoint", 0 );
+    _depura ( "entryPoint pluginticketdesglose::entryPoint", 0 );
+    mensajeInfo ( "entryPoint pluginticketdesglose::entryPoint");
+
 
     /// Vamos a probar con un docwindow.
     g_doc1 = new BDockWidget ( "Total", tpv, "plugindesglosedocked" );
@@ -56,7 +58,7 @@ int entryPoint ( BulmaTPV *tpv )
 
 
 
-    _depura ( "END entryPoint", 0 );
+    _depura ( "END pluginticketdesglose::entryPoint", 0 );
     return 0;
 }
 

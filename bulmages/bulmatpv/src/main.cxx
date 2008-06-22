@@ -143,14 +143,14 @@ int main ( int argc, char **argv )
         splashScr->setBarraProgreso ( 2 );
 
         /// Leemos la configuracion especifica de la base de datos que se ha abierto.
-//        QString confEsp = CONFGLOBAL + bges->getcompany()->nameDB() + ".conf";
-//        QDir archivoConf;
-//        if (!archivoConf.exists(confEsp)) {
-//            QString mensaje = "--> El archivo '" + confEsp + "' no existe. <--\n";
-//            fprintf(stderr, mensaje.toAscii().constData());
-//        } else {
-//            confpr->leeconfig(confEsp);
-//        } // end if
+        QString confEsp = CONFGLOBAL + bges->empresaTPV()->nameDB() + ".conf";
+        QDir archivoConf;
+        if (!archivoConf.exists(confEsp)) {
+            QString mensaje = "--> El archivo '" + confEsp + "' no existe. <--\n";
+            fprintf(stderr, mensaje.toAscii().constData());
+        } else {
+            confpr->leeconfig(confEsp);
+        } // end if
 
         splashScr->mensaje ( QApplication::translate ( "main", "Cargando traducciones" ) );
         splashScr->setBarraProgreso ( 3 );
@@ -198,7 +198,11 @@ int main ( int argc, char **argv )
         splashScr->setBarraProgreso ( 100 );
 
         delete splashScr;
-        bges->showFullScreen();
+	if (confpr->valor(CONF_TPV_FULLSCREEN) == "TRUE") {
+	        bges->showFullScreen();
+	} else {
+		bges->showMaximized();
+	} // end if
 
         theApp->exec();
 

@@ -13,7 +13,9 @@ set(bulmatpv_MOCS bulmatpv.h
 	   empresatpv.h 
 	   ticket.h 
 	   subform2bt.h 
-	   input.h)
+	   input.h
+	   escprinter.h
+	   cp850eurocodec.h)
 
 set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)

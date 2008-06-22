@@ -186,6 +186,9 @@
 #define CONF_TICKET_PRINTER_FILE     450
 /// Visor de TPV
 #define CONF_TPV_VISOR_FILE          451
+/// Modo Full Screen para el TPV     
+#define CONF_TPV_FULLSCREEN          452
+
 
 /// CONF_NUM_AUT_* determina si se utilizaran numeradores automaticos para presupuestos,
 /// albaranes y facturas inicialmente vale "".
