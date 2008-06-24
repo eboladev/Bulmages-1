@@ -200,8 +200,9 @@ void ClientsList::on_mui_importar_clicked()
     } else {
         _depura ( "ERROR AL ABRIR EL ARCHIVO\n", 2 );
     } // end if
-    _depura ( "ClientsList::on_mui_importar_clicked", 0 );
+    _depura ( "END ClientsList::on_mui_importar_clicked", 0 );
 }
+
 
 /** Devuelve el identificador del cliente seleccionado
 **/
