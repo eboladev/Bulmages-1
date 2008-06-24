@@ -1,8 +1,9 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2004 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   Copyright (C) 2006 by Fco. Javier M. C.                               *
+ *   Copyright (C) 2006 by Fco. Javier M. C. (Porting to QT4)              *
  *   fcojavmc@todo-redes.com                                               *
+ *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -20,18 +21,52 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "plugin_tc_articulos.h"
-#include "company.h"
-#include "funcaux.h"
-#include "plugarticulos.h"
+#ifndef LISTCOLORESVIEW_H
+#define LISTCOLORESVIEW_H
 
-///
-/**
-\param bges
-**/
-void entryPoint ( Bulmafact *bges )
+#include <QLineEdit>
+#include <QLabel>
+#include <QCheckBox>
+
+#include "postgresiface2.h"
+#include "subform2bf.h"
+#include "fichabf.h"
+
+
+class company;
+
+/// Muestra y administra las l&iacute;neas de detalle del listado de almacenes.
+/** */
+class ListColoresSubForm : public SubForm2Bf
 {
-    _depura ( "Estoy dentro del plugin de tallas y colores", 0 );
-    plugin_tc_articulos *plug = new plugin_tc_articulos();
-    plug->inicializa ( bges );
-}
+    Q_OBJECT
+
+public:
+    ListColoresSubForm ( QWidget *parent = 0 );
+    virtual ~ListColoresSubForm() {};
+
+public slots:
+    virtual void cargar();
+};
+
+
+
+#include "ui_listcoloresbase.h"
+
+
+/// Muestra y administra el listado de almacenes.
+/** */
+class ListColoresView : public FichaBf, public Ui_ListColoresBase
+{
+    Q_OBJECT
+
+public:
+    ListColoresView ( Company *comp, QWidget *parent );
+    virtual ~ListColoresView();
+
+public slots:
+    virtual void on_mui_aceptar_clicked();
+};
+
+#endif
+

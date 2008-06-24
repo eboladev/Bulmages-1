@@ -24,35 +24,13 @@
 # define MY_EXPORT
 #endif
 
-#include <QStringList>
-#include <QWidget>
-#include <QIcon>
-#include <QObject>
 
-#include "qapplication2.h"
 #include "bulmafact.h"
-#include "postgresiface2.h"
 
 
 extern "C" MY_EXPORT void entryPoint ( Bulmafact * );
 
-extern QApplication2 *theApp;
 
 
-class plugin_tc_articulos : public QObject
-{
-    Q_OBJECT
 
-public:
-    postgresiface2 *conexionbase;
-
-public:
-    plugin_tc_articulos();
-    ~plugin_tc_articulos();
-    void inicializa ( Bulmafact * );
-
-public slots:
-    void tallas();
-    void colores();
-};
 

@@ -17,7 +17,7 @@ add_subdirectory(plugincontratos)
 add_subdirectory(pluginticket)
 
 #plugin_tc_articulos en desarrollo
-#add_subdirectory(plugin_tc_articulos)
+add_subdirectory(plugin_tc_articulos)
 
 add_subdirectory(pluginpromedios)
 add_subdirectory(pluginimpresionesmultiples)

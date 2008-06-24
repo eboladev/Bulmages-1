@@ -1,7 +1,7 @@
 <ui version="4.0" >
  <author>Tomeu Borrás Riera</author>
- <class>ListTallasBase</class>
- <widget class="QWidget" name="ListTallasBase" >
+ <class>ListColoresBase</class>
+ <widget class="QWidget" name="ListColoresBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>
@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Tallas</string>
+   <string>Colores</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../../bulmages.qrc" >
@@ -62,7 +62,7 @@
     </layout>
    </item>
    <item row="1" column="0" >
-    <widget class="ListTallasSubForm" name="mui_listado" >
+    <widget class="ListColoresSubForm" name="mui_listado" >
      <property name="horizontalScrollMode" >
       <enum>QAbstractItemView::ScrollPerPixel</enum>
      </property>
@@ -106,9 +106,9 @@
  <layoutdefault spacing="2" margin="6" />
  <customwidgets>
   <customwidget>
-   <class>ListTallasSubForm</class>
+   <class>ListColoresSubForm</class>
    <extends>QTableWidget</extends>
-   <header>listtallasview.h</header>
+   <header>listcoloresview.h</header>
   </customwidget>
  </customwidgets>
  <resources>
