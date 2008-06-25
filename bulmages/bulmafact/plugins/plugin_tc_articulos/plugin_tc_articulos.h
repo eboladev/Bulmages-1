@@ -27,6 +27,11 @@
 
 #include "bulmafact.h"
 #include "articuloview.h"
+#include "busquedaarticulo.h"
+#include "listlinalbaranproveedorview.h"
+#include "listlinalbaranclienteview.h"
+#include "listlinfacturaview.h"
+#include "listlinfacturapview.h"
 
 extern "C" MY_EXPORT void entryPoint ( Bulmafact * );
 
@@ -34,5 +39,9 @@ extern "C" MY_EXPORT int ArticuloView_ArticuloView ( ArticuloView * );
 extern "C" MY_EXPORT int ArticuloView_cargar ( ArticuloView * );
 extern "C" MY_EXPORT int ArticuloView_guardar_post ( ArticuloView * );
 
+extern "C" MY_EXPORT int BusquedaArticulo_on_m_codigocompletoarticulo_textChanged_Post ( BusquedaArticulo * );
 
-
+extern "C" MY_EXPORT int ListLinAlbaranProveedorView_ListLinAlbaranProveedorView ( ListLinAlbaranProveedorView * );
+extern "C" MY_EXPORT int ListLinAlbaranClienteView_ListLinAlbaranClienteView ( ListLinAlbaranClienteView * );
+extern "C" MY_EXPORT int ListLinFacturaView_ListLinFacturaView ( ListLinFacturaView * );
+extern "C" MY_EXPORT int ListLinFacturaProveedorView_ListLinFacturaProveedorView ( ListLinFacturaProveedorView * );
