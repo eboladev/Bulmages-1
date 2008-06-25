@@ -26,11 +26,13 @@
 
 
 #include "bulmafact.h"
-
+#include "articuloview.h"
 
 extern "C" MY_EXPORT void entryPoint ( Bulmafact * );
 
-
+extern "C" MY_EXPORT int ArticuloView_ArticuloView ( ArticuloView * );
+extern "C" MY_EXPORT int ArticuloView_cargar ( ArticuloView * );
+extern "C" MY_EXPORT int ArticuloView_guardar_post ( ArticuloView * );
 
 
 

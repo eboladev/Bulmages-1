@@ -36,7 +36,6 @@ BusquedaTalla::BusquedaTalla ( QWidget *parent, const char * )
     _depura ( "BusquedaTalla::BusquedaTalla", 0 );
     m_cursorcombo = NULL;
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
-    m_codigoalmacen = "";
     _depura ( "END BusquedaTalla::BusquedaTalla", 0 );
 }
 
@@ -57,16 +56,16 @@ BusquedaTalla::~BusquedaTalla()
     Recarga el cursor y presenta en el combo aquel que se ajusta al id pasado.
 */
 /**
-\param idalmacen
+\param idtc_talla
 \return
 **/
-void BusquedaTalla::setidalmacen ( QString idalmacen )
+void BusquedaTalla::setidtc_talla ( QString idtc_talla )
 {
-    _depura ( "BusquedaTalla::setidalmacen", 0, idalmacen );
+    _depura ( "BusquedaTalla::setidtc_talla", 0, idtc_talla );
     if ( m_cursorcombo != NULL ) {
         delete m_cursorcombo;
     } // end if
-    m_cursorcombo = empresaBase() ->cargacursor ( "SELECT * FROM almacen ORDER BY nomalmacen" );
+    m_cursorcombo = empresaBase() ->cargacursor ( "SELECT * FROM tc_talla ORDER BY nomtc_talla" );
     if ( !m_cursorcombo ) return;
     int i = 0;
     int i1 = 0;
@@ -75,11 +74,9 @@ void BusquedaTalla::setidalmacen ( QString idalmacen )
     addItem ( "--" );
     while ( !m_cursorcombo->eof() ) {
         i++;
-        if ( m_cursorcombo->valor ( "codigoalmacen" ) == m_codigoalmacen )
-            i2 = i;
-        if ( m_cursorcombo->valor ( "idalmacen" ) == idalmacen )
+        if ( m_cursorcombo->valor ( "idtc_talla" ) == idtc_talla )
             i1 = i;
-        addItem ( m_cursorcombo->valor ( "nomalmacen" ) );
+        addItem ( m_cursorcombo->valor ( "nomtc_talla" ) );
         m_cursorcombo->siguienteregistro();
     } //end while
     if ( i1 != 0 ) {
@@ -87,18 +84,18 @@ void BusquedaTalla::setidalmacen ( QString idalmacen )
     } else {
         setCurrentIndex ( i2 );
     } // end if
-    _depura ( "END BusquedaTalla::setidalmacen", 0, idalmacen );
+    _depura ( "END BusquedaTalla::setidtc_talla", 0, idtc_talla );
 }
 
 
 ///
 /**
-\param idalmacen
+\param idtc_talla
 **/
-void BusquedaTalla::setValorCampo ( QString idalmacen )
+void BusquedaTalla::setValorCampo ( QString idtc_talla )
 {
     _depura ( "BusquedaTalla::setValorCampo", 0 );
-    setidalmacen ( idalmacen );
+    setidtc_talla ( idtc_talla );
     _depura ( "END BusquedaTalla::setValorCampo", 0 );
 }
 
@@ -107,15 +104,15 @@ void BusquedaTalla::setValorCampo ( QString idalmacen )
 /**
 \return
 **/
-QString BusquedaTalla::idalmacen()
+QString BusquedaTalla::idtc_talla()
 {
-    _depura ( "BusquedaTalla::idalmacen", 0 );
+    _depura ( "BusquedaTalla::idtc_talla", 0 );
     int index = currentIndex();
     if ( index > 0 ) {
-        _depura ( "END BusquedaTalla::idalmacen", 0, m_cursorcombo->valor ( "idalmacen", index - 1 ) );
-        return ( m_cursorcombo->valor ( "idalmacen", index - 1 ) );
+        _depura ( "END BusquedaTalla::idtc_talla", 0, m_cursorcombo->valor ( "idtc_talla", index - 1 ) );
+        return ( m_cursorcombo->valor ( "idtc_talla", index - 1 ) );
     } else {
-        _depura ( "END BusquedaTalla::idalmacen", 0 );
+        _depura ( "END BusquedaTalla::idtc_talla", 0 );
         return "";
     } // end if
 }
@@ -129,7 +126,7 @@ QString BusquedaTalla::valorCampo()
 {
     _depura ( "BusquedaTalla::valorCampo", 0 );
     _depura ( "END BusquedaTalla::valorCampo", 0 );
-    return idalmacen();
+    return idtc_talla();
 }
 
 
@@ -141,13 +138,6 @@ void BusquedaTalla::setEmpresaBase ( Company *comp )
 {
     _depura ( "BusquedaTalla::setEmpresaBase", 0 );
     PEmpresaBase::setEmpresaBase ( comp );
-    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre ='AlmacenDefecto'" );
-    if ( cur ) {
-        if ( !cur->eof() ) {
-            m_codigoalmacen = cur->valor ( "valor" );
-        } // end if
-        delete cur;
-    } // end if
     _depura ( "END BusquedaTalla::setEmpresaBase", 0 );
 }
 
@@ -160,7 +150,7 @@ void BusquedaTalla::m_activated ( int index )
 {
     _depura ( "BusquedaTalla::m_activated", 0 );
     if ( index > 0 ) {
-        emit ( valueChanged ( m_cursorcombo->valor ( "idalmacen", index - 1 ) ) );
+        emit ( valueChanged ( m_cursorcombo->valor ( "idtc_talla", index - 1 ) ) );
     } else {
         emit ( valueChanged ( "" ) );
     } // end if
@@ -216,12 +206,12 @@ void BusquedaTallaDelegate::set ( const QString &cod )
     if ( m_cursorcombo != NULL )
         delete m_cursorcombo;
 
-    m_cursorcombo = empresaBase() ->cargacursor ( "SELECT codigoalmacen, nomalmacen FROM almacen ORDER BY nomalmacen" );
+    m_cursorcombo = empresaBase() ->cargacursor ( "SELECT idtc_talla, nomtc_talla FROM tc_talla ORDER BY nomtc_talla" );
     clear();
     while ( !m_cursorcombo->eof() ) {
-        addItem ( m_cursorcombo->valor ( "nomalmacen" ) + ", " + m_cursorcombo->valor ( "codigoalmacen" ) );
+        addItem ( m_cursorcombo->valor ( "nomtc_talla" ) );
         m_cursorcombo->siguienteregistro();
-        if ( m_cursorcombo->valor ( "nomalmacen" ) + ", " + m_cursorcombo->valor ( "codigoalmacen" ) == cod )
+        if ( m_cursorcombo->valor ( "nomtc_talla" )  == cod )
             index = m_cursorcombo->regactual();
     }// end while
     setEditText ( cod );
@@ -230,3 +220,15 @@ void BusquedaTallaDelegate::set ( const QString &cod )
     _depura ( "END BusquedaTallaDelegate::set", 0 );
 }
 
+
+
+///
+/**
+\return
+**/
+QString BusquedaTallaDelegate::id()
+{
+    _depura ( "BusquedaColorDelegate::id", 0 );
+    _depura ( "END BusquedaColorDelegate::id", 0 );
+    return m_cursorcombo->valor ( "idtc_talla", currentIndex() );
+}

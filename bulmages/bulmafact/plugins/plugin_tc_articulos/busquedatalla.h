@@ -44,6 +44,7 @@ public:
     BusquedaTallaDelegate ( QWidget *parent = 0 );
     ~BusquedaTallaDelegate();
     virtual void set ( const QString & );
+    QString id();
 };
 
 
@@ -63,9 +64,9 @@ private:
 public:
     BusquedaTalla ( QWidget *parent = 0, const char *name = 0 );
     ~BusquedaTalla();
-    virtual void setidalmacen ( QString idalmacen );
+    virtual void setidtc_talla ( QString idalmacen );
     virtual void setValorCampo ( QString idalmacen );
-    QString idalmacen();
+    QString idtc_talla();
     void setEmpresaBase ( Company * );
     virtual QString valorCampo();
 

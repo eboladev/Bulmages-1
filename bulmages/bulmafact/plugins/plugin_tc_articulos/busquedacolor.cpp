@@ -36,7 +36,6 @@ BusquedaColor::BusquedaColor ( QWidget *parent, const char * )
     _depura ( "BusquedaColor::BusquedaColor", 0 );
     m_cursorcombo = NULL;
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
-    m_codigoalmacen = "";
     _depura ( "END BusquedaColor::BusquedaColor", 0 );
 }
 
@@ -52,21 +51,21 @@ BusquedaColor::~BusquedaColor()
 }
 
 
-/** Mediante este metodo establecemos el almacen que debe presentar el Widget
+/** Mediante este metodo establecemos el color que debe presentar el Widget
     como seleccionado.
     Recarga el cursor y presenta en el combo aquel que se ajusta al id pasado.
 */
 /**
-\param idalmacen
+\param idtc_color
 \return
 **/
-void BusquedaColor::setidalmacen ( QString idalmacen )
+void BusquedaColor::setidtc_color ( QString idtc_color )
 {
-    _depura ( "BusquedaColor::setidalmacen", 0, idalmacen );
+    _depura ( "BusquedaColor::setidtc_color", 0, idtc_color );
     if ( m_cursorcombo != NULL ) {
         delete m_cursorcombo;
     } // end if
-    m_cursorcombo = empresaBase() ->cargacursor ( "SELECT * FROM almacen ORDER BY nomalmacen" );
+    m_cursorcombo = empresaBase() ->cargacursor ( "SELECT * FROM tc_color ORDER BY nomtc_color" );
     if ( !m_cursorcombo ) return;
     int i = 0;
     int i1 = 0;
@@ -75,11 +74,9 @@ void BusquedaColor::setidalmacen ( QString idalmacen )
     addItem ( "--" );
     while ( !m_cursorcombo->eof() ) {
         i++;
-        if ( m_cursorcombo->valor ( "codigoalmacen" ) == m_codigoalmacen )
-            i2 = i;
-        if ( m_cursorcombo->valor ( "idalmacen" ) == idalmacen )
+        if ( m_cursorcombo->valor ( "idtc_color" ) == idtc_color )
             i1 = i;
-        addItem ( m_cursorcombo->valor ( "nomalmacen" ) );
+        addItem ( m_cursorcombo->valor ( "nomtc_color" ) );
         m_cursorcombo->siguienteregistro();
     } //end while
     if ( i1 != 0 ) {
@@ -87,18 +84,18 @@ void BusquedaColor::setidalmacen ( QString idalmacen )
     } else {
         setCurrentIndex ( i2 );
     } // end if
-    _depura ( "END BusquedaColor::setidalmacen", 0, idalmacen );
+    _depura ( "END BusquedaColor::setidtc_color", 0, idtc_color );
 }
 
 
 ///
 /**
-\param idalmacen
+\param idtc_color
 **/
-void BusquedaColor::setValorCampo ( QString idalmacen )
+void BusquedaColor::setValorCampo ( QString idtc_color )
 {
     _depura ( "BusquedaColor::setValorCampo", 0 );
-    setidalmacen ( idalmacen );
+    setidtc_color ( idtc_color );
     _depura ( "END BusquedaColor::setValorCampo", 0 );
 }
 
@@ -107,15 +104,15 @@ void BusquedaColor::setValorCampo ( QString idalmacen )
 /**
 \return
 **/
-QString BusquedaColor::idalmacen()
+QString BusquedaColor::idtc_color()
 {
-    _depura ( "BusquedaColor::idalmacen", 0 );
+    _depura ( "BusquedaColor::idtc_color", 0 );
     int index = currentIndex();
     if ( index > 0 ) {
-        _depura ( "END BusquedaColor::idalmacen", 0, m_cursorcombo->valor ( "idalmacen", index - 1 ) );
-        return ( m_cursorcombo->valor ( "idalmacen", index - 1 ) );
+        _depura ( "END BusquedaColor::idtc_color", 0, m_cursorcombo->valor ( "idtc_color", index - 1 ) );
+        return ( m_cursorcombo->valor ( "idtc_color", index - 1 ) );
     } else {
-        _depura ( "END BusquedaColor::idalmacen", 0 );
+        _depura ( "END BusquedaColor::idtc_color", 0 );
         return "";
     } // end if
 }
@@ -129,7 +126,7 @@ QString BusquedaColor::valorCampo()
 {
     _depura ( "BusquedaColor::valorCampo", 0 );
     _depura ( "END BusquedaColor::valorCampo", 0 );
-    return idalmacen();
+    return idtc_color();
 }
 
 
@@ -141,13 +138,6 @@ void BusquedaColor::setEmpresaBase ( Company *comp )
 {
     _depura ( "BusquedaColor::setEmpresaBase", 0 );
     PEmpresaBase::setEmpresaBase ( comp );
-    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre ='AlmacenDefecto'" );
-    if ( cur ) {
-        if ( !cur->eof() ) {
-            m_codigoalmacen = cur->valor ( "valor" );
-        } // end if
-        delete cur;
-    } // end if
     _depura ( "END BusquedaColor::setEmpresaBase", 0 );
 }
 
@@ -160,7 +150,7 @@ void BusquedaColor::m_activated ( int index )
 {
     _depura ( "BusquedaColor::m_activated", 0 );
     if ( index > 0 ) {
-        emit ( valueChanged ( m_cursorcombo->valor ( "idalmacen", index - 1 ) ) );
+        emit ( valueChanged ( m_cursorcombo->valor ( "idtc_color", index - 1 ) ) );
     } else {
         emit ( valueChanged ( "" ) );
     } // end if
@@ -200,8 +190,8 @@ BusquedaColorDelegate::~BusquedaColorDelegate()
 }
 
 
-/** Permite indicar al Widget cual es la serie de factura seleccionada por defecto.
-    Recarga cursor de serie_factura y cuando encuentra un registro cuyo codigoserie_factura coincide con el pasado
+/** Permite indicar al Widget cual es el color seleccionado por defecto.
+    Recarga cursor de color y cuando encuentra un registro cuyo nomtc_color coincide con el pasado
     como parametro lo establece como el registro activo por el comboBox.
 */
 /**
@@ -216,12 +206,13 @@ void BusquedaColorDelegate::set ( const QString &cod )
     if ( m_cursorcombo != NULL )
         delete m_cursorcombo;
 
-    m_cursorcombo = empresaBase() ->cargacursor ( "SELECT codigoalmacen, nomalmacen FROM almacen ORDER BY nomalmacen" );
+    m_cursorcombo = empresaBase() ->cargacursor ( "SELECT idtc_color, nomtc_color FROM tc_color ORDER BY nomtc_color" );
     clear();
+//    addItem("--");
     while ( !m_cursorcombo->eof() ) {
-        addItem ( m_cursorcombo->valor ( "nomalmacen" ) + ", " + m_cursorcombo->valor ( "codigoalmacen" ) );
+        addItem ( m_cursorcombo->valor ( "nomtc_color" ) );
         m_cursorcombo->siguienteregistro();
-        if ( m_cursorcombo->valor ( "nomalmacen" ) + ", " + m_cursorcombo->valor ( "codigoalmacen" ) == cod )
+        if ( m_cursorcombo->valor ( "nomtc_color" ) == cod )
             index = m_cursorcombo->regactual();
     }// end while
     setEditText ( cod );
@@ -230,3 +221,14 @@ void BusquedaColorDelegate::set ( const QString &cod )
     _depura ( "END BusquedaColorDelegate::set", 0 );
 }
 
+
+///
+/**
+\return
+**/
+QString BusquedaColorDelegate::id()
+{
+    _depura ( "BusquedaColorDelegate::id", 0 );
+    _depura ( "END BusquedaColorDelegate::id", 0 );
+    return m_cursorcombo->valor ( "idtc_color", currentIndex() );
+}

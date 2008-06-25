@@ -20,10 +20,19 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+
+#include <QStringList>
+#include <QWidget>
+#include <QIcon>
+#include <QApplication>
+#include <QObject>
+
 #include "plugin_tc_articulos.h"
 #include "company.h"
 #include "funcaux.h"
 #include "plugarticulos.h"
+#include "busquedacolor.h"
+#include "busquedatalla.h"
 
 ///
 /**
@@ -35,3 +44,205 @@ void entryPoint ( Bulmafact *bges )
     plugin_tc_articulos *plug = new plugin_tc_articulos();
     plug->inicializa ( bges );
 }
+
+
+///
+/**
+\param art
+\return
+**/
+int ArticuloView_ArticuloView ( ArticuloView *art )
+{
+    _depura ( "ArticuloView_ArticuloView", 0 );
+
+    /// Agregamos el subformulario de validaciones.
+    SubForm2Bf *l = new SubForm2Bf ( art );
+
+    /// Ponemos un delegate al subformulario para que coja los combos asignados.
+
+    delete l->m_delegate;
+    l->m_delegate = new QSubForm3BfDelegate ( l );
+    l->mui_list->setItemDelegate ( l->m_delegate );
+
+    l->setObjectName ( QString::fromUtf8 ( "laliastc" ) );
+    l->setEmpresaBase ( art->empresaBase() );
+    l->setDBTableName ( "tc_articulo_alias" );
+    l->setDBCampoId ( "idarticulo" );
+    l->addSHeader ( "aliastc_articulo_tallacolor", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone , QApplication::translate ( "aliastc_articulo_tallacolor", "Alias" ) );
+    l->addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite , QApplication::translate ( "TrabajadorView", "Id Articulo" ) );
+    l->addSHeader ( "idtc_color", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "TrabajadorView", "color" ) );
+    l->addSHeader ( "idtc_talla", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "TrabajadorView", "Talla" ) );
+
+
+    l->addSHeader ( "nomtc_color", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, QApplication::translate ( "TrabajadorView", "Nombre color" ) );
+
+    l->addSHeader ( "nomtc_talla", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, QApplication::translate ( "TrabajadorView", "Nombre talla" ) );
+
+    l->setinsercion ( TRUE );
+    l->setDelete ( TRUE );
+    l->setSortingEnabled ( FALSE );
+    art->dialogChanges_setQObjectExcluido ( l->mui_list );
+
+    art->mui_tab->addTab ( l, "Tallas y Colores" );
+
+    _depura ( "END ArticuloView_ArticuloView", 0 );
+    return 0;
+}
+
+
+///
+/**
+\param art
+\return
+**/
+int ArticuloView_cargar ( ArticuloView *art )
+{
+    _depura ( "ArticuloView_cargar", 0 );
+    SubForm2Bf *l = art->findChild<SubForm2Bf *> ( "laliastc" );
+    if ( l ) {
+	QString query = "SELECT * FROM tc_articulo_alias LEFT JOIN tc_talla AS t1 ON tc_articulo_alias.idtc_talla = t1.idtc_talla LEFT JOIN tc_color AS t2 ON tc_articulo_alias.idtc_color = t2.idtc_color WHERE tc_articulo_alias.idarticulo = " + art->DBvalue ( "idarticulo" );
+        l->cargar ( query );
+    } // end if
+    _depura ( "END ArticuloView_cargar", 0 );
+    return 0;
+}
+
+
+
+///
+/**
+\param art
+\return
+**/
+int ArticuloView_guardar_post ( ArticuloView *art )
+{
+    _depura ( "ArticuloView_guardar_post", 0 );
+    try {
+        SubForm2Bf *l = art->findChild<SubForm2Bf *> ( "laliastc" );
+        l->setColumnValue ( "idarticulo", art->DBvalue ( "idarticulo" ) );
+        l->guardar();
+        return 0;
+    } catch ( ... ) {
+        _depura ( "Hubo un error al guardar los alias", 2 );
+        return 0;
+    }
+}
+
+
+
+
+/// ============================= SUBFORM3BFDELEGATE =============================================
+/// ===============================================================
+///  Tratamientos del Item Delegate
+/// ===============================================================
+
+
+///
+/**
+\param parent
+**/
+QSubForm3BfDelegate::QSubForm3BfDelegate ( QObject *parent = 0 ) : QSubForm2BfDelegate ( parent )
+{
+    _depura ( "QSubForm3BfDelegate::QSubForm3BfDelegate", 0 );
+    _depura ( "END QSubForm3BfDelegate::QSubForm3BfDelegate", 0 );
+}
+
+
+///
+/**
+**/
+QSubForm3BfDelegate::~QSubForm3BfDelegate()
+{
+    _depura ( "QSubForm3BfDelegate::~QSubForm3BfDelegate", 0 );
+    _depura ( "END QSubForm3BfDelegate::~QSubForm3BfDelegate", 0 );
+}
+
+
+///
+/**
+\param parent
+\param option
+\param index
+\return
+**/
+QWidget *QSubForm3BfDelegate::createEditor ( QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index ) const
+{
+    _depura ( "QSubForm3BfDelegate::createEditor", 0 );
+    SHeader *linea;
+    linea = m_subform->cabecera() ->at ( index.column() );
+
+    if ( linea->nomcampo() == "nomtc_color" ) {
+        BusquedaColorDelegate * editor = new BusquedaColorDelegate ( parent );
+        editor->setEmpresaBase ( ( Company * ) m_subform->empresaBase() );
+        return editor;
+    } else if ( linea->nomcampo() == "nomtc_talla" ) {
+        BusquedaTallaDelegate * editor = new BusquedaTallaDelegate ( parent );
+        editor->setEmpresaBase ( ( Company * ) m_subform->empresaBase() );
+        return editor;
+    } else  {
+        return QSubForm2BfDelegate::createEditor ( parent, option, index );
+    } // end if
+    _depura ( "END QSubForm3BfDelegate::createEditor", 0 );
+}
+
+
+///
+/**
+\param editor
+\param model
+\param index
+\return
+**/
+void QSubForm3BfDelegate::setModelData ( QWidget *editor, QAbstractItemModel *model, const QModelIndex &index ) const
+{
+    _depura ( "QSubForm3BfDelegate::setModelData", 0 );
+
+    /// Si la fila o columna pasadas son invalidas salimos.
+    if ( index.column() < 0 || index.row() < 0 )
+        return;
+
+    SHeader *linea;
+    linea = m_subform->cabecera() ->at ( index.column() );
+    if ( linea->nomcampo() == "nomtc_color" ) {
+        BusquedaColorDelegate * comboBox = static_cast<BusquedaColorDelegate*> ( editor );
+        QString value = comboBox->currentText();
+        model->setData ( index, value );
+        m_subform->lineaat ( index.row() ) ->setDBvalue ( "idtc_color", comboBox->id() );
+    } else     if ( linea->nomcampo() == "nomtc_talla" ) {
+        BusquedaTallaDelegate * comboBox = static_cast<BusquedaTallaDelegate*> ( editor );
+        QString value = comboBox->currentText();
+        model->setData ( index, value );
+        m_subform->lineaat ( index.row() ) ->setDBvalue ( "idtc_talla", comboBox->id() );
+    } else {
+        QSubForm2BfDelegate::setModelData ( editor, model, index );
+    } // end if
+    _depura ( "END QSubForm3BfDelegate::setModelData", 0 );
+}
+
+
+///
+/**
+\param editor
+\param index
+**/
+void QSubForm3BfDelegate::setEditorData ( QWidget* editor, const QModelIndex& index ) const
+{
+    _depura ( "QSubForm3BfDelegate::setEditorData", 0 );
+    SHeader *linea;
+    linea = m_subform->cabecera() ->at ( index.column() );
+    if ( linea->nomcampo() == "nomtc_color" ) {
+        QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
+        BusquedaColorDelegate *comboBox = static_cast<BusquedaColorDelegate*> ( editor );
+        comboBox->set ( value );
+    } else if ( linea->nomcampo() == "nomtc_talla" ) {
+        QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
+        BusquedaTallaDelegate *comboBox = static_cast<BusquedaTallaDelegate*> ( editor );
+        comboBox->set ( value );
+    } else {
+        QSubForm2BfDelegate::setEditorData ( editor, index );
+    } // end if
+    _depura ( "END QSubForm3BfDelegate::setEditorData", 0 );
+}
+
+
+
