@@ -57,6 +57,8 @@ ArticuloList1::ArticuloList1 ( Company *comp, QWidget *parent, Qt::WFlags flag, 
     _depura ( "ArticuloList1::ArticuloList1", 0 );
     setupUi ( this );
 
+    setObjectName("ArticuloList1");
+
     showFullScreen();
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "ArticuloList1_ArticuloList1", this );

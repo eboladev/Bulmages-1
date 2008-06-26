@@ -477,7 +477,7 @@ void  Ticket::imprimir()
     file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
     file.write ( "\n", 1 );
 
-    /// Lanzamiento de un plugin extraño hacia el total
+    /// Lanzamiento de un plugin extraï¿½o hacia el total
     QString stotal = total.toQString();
     g_plugins->lanza("Ticket_total", &stotal);
 
@@ -565,6 +565,13 @@ void  Ticket::imprimir()
 
 void Ticket::imprimir()
 {
+
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza ( "Ticket_imprimir", this );
+
+    if ( res != 0 ) {
+        return;
+    } // end if
    struct empresastr
    {
 	QString nombre;
@@ -684,7 +691,7 @@ void Ticket::imprimir()
    pr.printText("\n");
 
    pr.turnWhiteBlack(1);
-   pr.printText(" Uds. PRODUCTO              P.U.  IMPORTE \n");
+   pr.printText(" Uds. PRODUCTO ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ ï¿½P.U. ï¿½IMPORTE \n");
 
    pr.turnWhiteBlack(0);
    pr.setCharacterPrintMode(CHARACTER_FONTB_SELECTED);
@@ -699,22 +706,22 @@ void Ticket::imprimir()
       float pvp = linea->DBvalue ( "pvplalbaran" ).toFloat();
       pvp = pvp + pvp*iva/100.0f;
       float pvptotal = linea->DBvalue("cantlalbaran").toFloat()*pvp;
-      pr.printText(linea->DBvalue ( "cantlalbaran" ).rightJustified ( 5, ' ', TRUE )+"  ");
+      pr.printText(linea->DBvalue ( "cantlalbaran" ).rightJustified ( 5, ' ', TRUE )+" ï¿½");
       pr.printText(linea->DBvalue("desclalbaran").leftJustified(27,' ', true)+" ");
       QString pvpstr = QString( "%L2 " ).arg( pvp, 0, 'f', 2 );
       QString pvptotalstr = QString( "%L2 " ).arg( pvptotal, 0, 'f', 2 );
-      pr.printText(QString(pvpstr+"€").rightJustified ( 10, ' ', TRUE )+" ");
-      pr.printText(QString(pvptotalstr+"€").rightJustified ( 10, ' ', TRUE ));
+      pr.printText(QString(pvpstr+"ï¿½").rightJustified ( 10, ' ', TRUE )+" ");
+      pr.printText(QString(pvptotalstr+"ï¿½").rightJustified ( 10, ' ', TRUE ));
       pr.printText("\n");
    }
    pr.setUnderlineMode(0);
    pr.setJustification(right);
    pr.setCharacterPrintMode(CHARACTER_FONTA_SELECTED);
    pr.printText("Base Imponible: "+QString( "%L2 " ).arg(
-total.baseImponible, 0, 'f', 2 )+"€\n");
-   pr.printText("IVA "+QString( "%1 " ).arg( total.iva, 0, 10 )+"%:"+QString( "%L2 " ).arg( total.totalIva-total.baseImponible, 0, 'f', 2)+"€\n");
+total.baseImponible, 0, 'f', 2 )+"ï¿½\n");
+   pr.printText("IVA "+QString( "%1 " ).arg( total.iva, 0, 10 )+"%:"+QString( "%L2 " ).arg( total.totalIva-total.baseImponible, 0, 'f', 2)+"ï¿½\n");
    pr.setCharacterPrintMode(CHARACTER_FONTA_SELECTED|EMPHASIZED_MODE|DOUBLE_HEIGHT|DOUBLE_WIDTH);
-   pr.printText("TOTAL: "+QString( "%L2 " ).arg( total.totalIva, 0, 'f',2 )+"€\n");
+   pr.printText("TOTAL: "+QString( "%L2 " ).arg( total.totalIva, 0, 'f',2 )+"ï¿½\n");
    pr.printText("\n\n");
    pr.setJustification(left);
    pr.setCharacterPrintMode(CHARACTER_FONTA_SELECTED);

@@ -54,6 +54,7 @@ BDockWidget::BDockWidget ( const QString & title, QWidget * parent, const QStrin
     _depura ( "BDockWidget::BDockWidget", 0 );
     setFocusPolicy ( Qt::StrongFocus );
     m_name = name;
+    setObjectName(name);
     connect (this, SIGNAL (dockLocationChanged(Qt::DockWidgetArea)), this, SLOT(mi_dockLocationChanged(Qt::DockWidgetArea)));
     _depura ( "END BDockWidget::BDockWidget", 0 );
 }

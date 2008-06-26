@@ -49,6 +49,8 @@ private:
     QWorkspace2 *pWorkspace;
     /// La clase corazon de la aplicacion y centralizadora de mensajes y componentes.
     EmpresaTPV *m_empresaTPV;
+    void cargaConf();
+    void guardaConf();
 
 public:
     BulmaTPV ( QString bd );
