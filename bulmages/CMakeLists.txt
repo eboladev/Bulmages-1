@@ -71,15 +71,15 @@ if(NOT QT4_FOUND)
   message(FATAL_ERROR "Bulmages needs QT4 to compile")
 endif(NOT QT4_FOUND)
 
-###############################################3
+###############################################
 # and now the version string given by qmake
 STRING(REGEX REPLACE "^([0-9]+)\\.[0-9]+\\.[0-9]+.*" "\\1" QT_MAJOR_VERSION "${QTVERSION}")
 STRING(REGEX REPLACE "^[0-9]+\\.([0-9])+\\.[0-9]+.*" "\\1" QT_MINOR_VERSION "${QTVERSION}")
 STRING(REGEX REPLACE "^[0-9]+\\.[0-9]+\\.([0-9]+).*" "\\1" QT_PATCH_VERSION "${QTVERSION}")
 
-if (${QT_MAJOR_VERSION}.${QT_MINOR_VERSION} LESS 4.3)
-    message(FATAL_ERROR " Bulmages needs >= QT4.3 to compile")
-endif (${QT_MAJOR_VERSION}.${QT_MINOR_VERSION} LESS 4.3) 
+if (${QT_MAJOR_VERSION}.${QT_MINOR_VERSION} LESS 4.4)
+    message(FATAL_ERROR " Bulmages needs >= QT4.4 to compile")
+endif (${QT_MAJOR_VERSION}.${QT_MINOR_VERSION} LESS 4.4)
 
 INCLUDE (${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindPostgreSQL.cmake)
 INCLUDE (${CMAKE_CURRENT_SOURCE_DIR}/ModulesCMake/FindGettext.cmake)
