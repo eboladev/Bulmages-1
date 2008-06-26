@@ -139,7 +139,7 @@
       <root></root>
       <designerintegration>EmbeddedKDevDesigner</designerintegration>
       <qmake>/usr/bin/qmake</qmake>
-      <designer>/usr/bin/designer</designer>
+      <designer></designer>
       <designerpluginpaths/>
     </qt>
   </kdevcppsupport>

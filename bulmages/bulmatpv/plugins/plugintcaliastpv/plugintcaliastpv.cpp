@@ -1,44 +1,96 @@
+/***************************************************************************
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2006 by Fco. Javier M. C.                               *
+ *   fcojavmc@todo-redes.com                                               *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
 
-#include <QLabel>
-#include "mticket.h"
-#include "dbrecord.h"
-#include "bulmatpv.h"
-#include "subform2bt.h"
-#include <QTextBrowser>
+#include <QDockWidget>
+
+#include "plugintcaliastpv.h"
+#include "funcaux.h"
+#include "empresatpv.h"
 
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
 /// como un QMap.
 typedef QMap<QString, Fixed> base;
 
+int Ticket_agregarLinea_Post(Ticket *tick, DBRecord * &rec) {
+    rec->addDBCampo ( "idtc_talla", DBCampo::DBnumeric, DBCampo::DBNothing, QApplication::translate ( "Ticket", "Talla" ) );
 
-MTicket::MTicket ( EmpresaTPV *emp, QWidget *parent ) : BLWidget ( emp, parent )
-{
-    _depura ( "MTicket::MTicket", 0 );
-    setupUi ( this );
-    setFocusPolicy ( Qt::NoFocus );
-    emp->pWorkspace() ->addWindow ( this );
-    setWindowTitle ( "Ticket" );
-    _depura ( "END MTicket::MTicket", 0 );
+    rec->addDBCampo ( "idtc_color", DBCampo::DBnumeric, DBCampo::DBNothing, QApplication::translate ( "Ticket", "Color" ) );
+
+    rec->addDBCampo ( "nomtc_talla", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Ticket", "Talla" ) );
+
+    rec->addDBCampo ( "nomtc_color", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Ticket", "Color" ) );
+
 }
 
 
-MTicket::~MTicket()
+int Ticket_insertarArticuloNL_Post ( Ticket *tick )
 {
-    _depura ( "MTicket::~MTicket", 0 );
-    _depura ( "END MTicket::~MTicket", 0 );
-}
-
-
-void MTicket::pintar()
-{
-    _depura ( "MTicket::pintar", 0 );
-
-    if (g_plugins->lanza("MTicket_pintar", this)) {
-        _depura ( "END MTicket::pintar", 0 );
-	return;
+    QString query = "SELECT * FROM tc_articulo_alias LEFT JOIN tc_talla AS t1 ON tc_articulo_alias.idtc_talla = t1.idtc_talla LEFT JOIN tc_color AS t2 ON tc_articulo_alias.idtc_color = t2.idtc_color WHERE aliastc_articulo_tallacolor = '" + ( ( EmpresaTPV * ) tick->empresaBase() )->valorInput() + "'";
+    cursor2 *cur = tick->empresaBase() ->cargacursor ( query );
+    if ( !cur->eof() ) {
+        DBRecord * rec = tick->insertarArticulo ( cur->valor ( "idarticulo" ), Fixed ( "1" ), TRUE );
+	rec->setDBvalue("idtc_talla", cur->valor("idtc_talla"));
+	rec->setDBvalue("idtc_color", cur->valor("idtc_color"));
+	rec->setDBvalue("nomtc_talla", cur->valor("nomtc_talla"));
+	rec->setDBvalue("nomtc_color", cur->valor("nomtc_color"));
+	tick->pintar();
     } // end if
+    delete cur;
 
-    Ticket *tick =     ( ( EmpresaTPV * ) empresaBase() ) ->ticketActual();
+    return 0;
+}
+
+
+
+int Ticket_insertarArticulo_Post ( Ticket *tick )
+{
+    int valor = -1;
+    _depura("pluginaliastpv::Ticket_insertarArticulo_Post", 0);
+    static int semaforo = 0;
+    if (semaforo == 0) {
+	semaforo = 1;
+	QString query = "SELECT * FROM tc_articulo_alias LEFT JOIN tc_talla AS t1 ON tc_articulo_alias.idtc_talla = t1.idtc_talla LEFT JOIN tc_color AS t2 ON tc_articulo_alias.idtc_color = t2.idtc_color WHERE aliastc_articulo_tallacolor = '" + ( ( EmpresaTPV * ) tick->empresaBase() )->valorInput() + "'";
+	cursor2 *cur = tick->empresaBase() ->cargacursor ( query );
+	if ( !cur->eof() ) {
+		DBRecord * rec = tick->insertarArticulo ( cur->valor ( "idarticulo" ), Fixed ( "1" ), TRUE );
+		rec->setDBvalue("idtc_talla", cur->valor("idtc_talla"));
+		rec->setDBvalue("idtc_color", cur->valor("idtc_color"));
+		rec->setDBvalue("nomtc_talla", cur->valor("nomtc_talla"));
+		rec->setDBvalue("nomtc_color", cur->valor("nomtc_color"));
+	} // end if
+	delete cur;
+	tick->pintar();
+        valor = 0;
+	semaforo = 0;
+    } // end if
+    _depura("END pluginaliastpv::Ticket_insertarArticulo_Post", 0);
+    return valor;
+}
+
+
+int MTicket_pintar(MTicket *mtick) {
+    _depura ( "MTicket_pintar", 0 );
+
+    Ticket *tick =     ( ( EmpresaTPV * ) mtick->empresaBase() ) ->ticketActual();
     //QString html = "<font size=\"1\">";
     QString html = "<p style=\"font-family:monospace; font-size: 12pt;\">";
     QString html1 = "<font size=\"1\">";
@@ -46,11 +98,11 @@ void MTicket::pintar()
     html1 += "Ticket: " + tick->DBvalue ( "nomticket" ) + "<BR>";
 
     QString querytrab = "SELECT * FROM trabajador WHERE idtrabajador = " + tick->DBvalue ( "idtrabajador" );
-    cursor2 *curtrab = empresaBase() ->cargacursor ( querytrab );
+    cursor2 *curtrab = mtick->empresaBase() ->cargacursor ( querytrab );
     html1 += "Trabajador: " + tick->DBvalue ( "idtrabajador" ) + " " + curtrab->valor ( "nomtrabajador" ) + "<BR>";
     delete curtrab;
     QString query = "SELECT * FROM cliente WHERE idcliente = " + tick->DBvalue ( "idcliente" );
-    cursor2 *cur1 = empresaBase() ->cargacursor ( query );
+    cursor2 *cur1 = mtick->empresaBase() ->cargacursor ( query );
     html1 += "Cliente: " + tick->DBvalue ( "idcliente" ) + " " + cur1->valor ( "nomcliente" ) + "<BR>";
     delete cur1;
 
@@ -59,10 +111,14 @@ void MTicket::pintar()
     for ( int i = 0; i < tick->listaLineas() ->size(); ++i ) {
         item = tick->listaLineas() ->at ( i );
         QString bgcolor = "#FFFFFF";
-        if ( item == tick->lineaActTicket() ) bgcolor = "#CCCCFF";
+        if ( item == tick->lineaActTicket() ) bgcolor = "#CCFFFF";
         html += "<TR>";
         html += "<TD bgcolor=\"" + bgcolor + "\" align=\"right\" width=\"50\">" + item->DBvalue ( "cantlalbaran" ) + "</TD>";
         html += "<TD bgcolor=\"" + bgcolor + "\">" + item->DBvalue ( "nomarticulo" ) + "</TD>";
+
+        html += "<TD bgcolor=\"" + bgcolor + "\">" + item->DBvalue ( "nomtc_talla" ) + "</TD>";
+        html += "<TD bgcolor=\"" + bgcolor + "\">" + item->DBvalue ( "nomtc_color" ) + "</TD>";
+
         Fixed totalLinea ( "0.00" );
         totalLinea = Fixed ( item->DBvalue ( "cantlalbaran" ) ) * Fixed ( item->DBvalue ( "pvplalbaran" ) );
         html += "<TD bgcolor=\"" + bgcolor + "\" align=\"right\" width=\"50\">" + totalLinea.toQString(); + "</TD>";
@@ -79,7 +135,7 @@ void MTicket::pintar()
     QString l;
     Fixed irpf ( "0" );
 
-    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
+    cursor2 *cur = mtick->empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
     if ( cur ) {
         if ( !cur->eof() ) {
             irpf = Fixed ( cur->valor ( "valor" ) );
@@ -180,31 +236,7 @@ void MTicket::pintar()
 
 // ======================================
     /// Pintamos el HTML en el textBrowser
-    mui_browser->setText ( html );
+    mtick->mui_browser->setText ( html );
     _depura ( "END MTicket::pintar", 0 );
-}
-
-
-void MTicket::on_mui_subir_clicked()
-{
-/// Simulamos la pulsacion de la techa arriba
-    ( ( EmpresaTPV * ) empresaBase() ) ->pulsaTecla ( Qt::Key_Up );
-
-}
-
-
-void MTicket::on_mui_bajar_clicked()
-{
-/// Simulamos la pulsacion de la techa arriba
-    ( ( EmpresaTPV * ) empresaBase() ) ->pulsaTecla ( Qt::Key_Down );
-}
-
-
-void MTicket::on_mui_borrar_clicked()
-{
-
-    Ticket * tick = ( ( EmpresaTPV * ) empresaBase() ) ->ticketActual();
-    tick->ponerCantidad ( "0" );
-
-    pintar();
+    return -1;
 }

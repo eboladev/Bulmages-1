@@ -64,6 +64,8 @@ Ticket::Ticket ( EmpresaBase *emp, QWidget *parent ) : BLWidget ( emp, parent ),
     m_lineaActual = NULL;
     m_listaLineas = new QList<DBRecord *>;
 
+    g_plugins->lanza("Ticket_Ticket_Post", this);
+
     _depura ( "END Ticket::Ticket", 0 );
 }
 
@@ -99,6 +101,10 @@ DBRecord * Ticket::agregarLinea()
     item->setDBvalue ( "descuentolalbaran", "0" );
     /// Agregamos el DBRecord a la lista de lineas de ticket.
     m_listaLineas->append ( item );
+
+
+//    g_plugins->lanza("Ticket_agregarLinea_Post", this);
+    g_plugins->lanza ( "Ticket_agregarLinea_Post", this, ( void ** ) & item );
 
     _depura ( "END Ticket::agregarLinea", 0 );
     return item;
