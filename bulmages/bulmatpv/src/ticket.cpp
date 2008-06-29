@@ -568,7 +568,6 @@ void Ticket::imprimir()
 
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "Ticket_imprimir", this );
-
     if ( res != 0 ) {
         return;
     } // end if
@@ -579,6 +578,7 @@ void Ticket::imprimir()
 	QString codigoPostal;
       QString ciudad;
       QString provincia;
+	QString telefono;
    }empresa;
 
    struct clientestr
@@ -606,9 +606,9 @@ void Ticket::imprimir()
 
    struct totalstr
    {
-      int iva;
-      float baseImponible;
-      float totalIva;
+      Fixed iva;
+      Fixed baseImponible;
+      Fixed totalIva;
    }total;
 
    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
@@ -629,6 +629,11 @@ void Ticket::imprimir()
    cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Ciudad'" );
    if ( !cur->eof() )
       empresa.ciudad = cur->valor ( "valor" );
+   delete cur;
+
+   cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Telefono'" );
+   if ( !cur->eof() )
+      empresa.telefono = cur->valor ( "valor" );
    delete cur;
 
    cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Provincia'" );
@@ -659,14 +664,15 @@ void Ticket::imprimir()
    delete cur;
 
    DBRecord *linea;
-   if (listaLineas() ->size()) total.iva = listaLineas()->at(0)->DBvalue( "ivalalbaran" ).toFloat();
+   if (listaLineas() ->size()) 
+	total.iva = Fixed (listaLineas()->at(0)->DBvalue( "ivalalbaran" ));
    for ( int i = 0; i < listaLineas() ->size(); ++i )
    {
       linea = listaLineas() ->at ( i );
-      float cantidad = linea->DBvalue ( "cantlalbaran" ).toFloat();
-      total.baseImponible += cantidad*linea->DBvalue ( "pvplalbaran" ).toFloat();
-   }
-   total.totalIva = total.baseImponible + total.baseImponible*total.iva/100.0f;
+      Fixed cantidad = Fixed(linea->DBvalue ( "cantlalbaran" ));
+      total.baseImponible = total.baseImponible + cantidad * Fixed(linea->DBvalue ( "pvplalbaran" ));
+   } // end for
+   total.totalIva = total.baseImponible + total.baseImponible * total.iva / Fixed("100");
 
    EscPrinter pr(confpr->valor ( CONF_TICKET_PRINTER_FILE ));
    pr.initializePrinter();
@@ -681,7 +687,6 @@ void Ticket::imprimir()
    pr.setCharacterSize(CHAR_WIDTH_1|CHAR_HEIGHT_1);
    pr.setColor(red);
    pr.printText(empresa.direccionCompleta+"\n");
-
    pr.initializePrinter();
    pr.setCharacterCodeTable ( page19 );
 
@@ -702,14 +707,14 @@ void Ticket::imprimir()
       if(i == listaLineas()->size()-1)
          pr.setUnderlineMode(1);
       linea = listaLineas() ->at ( i );
-      float iva = linea->DBvalue( "ivalalbaran" ).toFloat();
-      float pvp = linea->DBvalue ( "pvplalbaran" ).toFloat();
-      pvp = pvp + pvp*iva/100.0f;
-      float pvptotal = linea->DBvalue("cantlalbaran").toFloat()*pvp;
+      Fixed iva = Fixed(linea->DBvalue( "ivalalbaran" ));
+      Fixed pvp = Fixed(linea->DBvalue ( "pvplalbaran" ));
+      pvp = pvp + pvp*iva/ Fixed("100");
+      Fixed pvptotal = Fixed(linea->DBvalue("cantlalbaran"))*pvp;
       pr.printText(linea->DBvalue ( "cantlalbaran" ).rightJustified ( 5, ' ', TRUE )+" �");
       pr.printText(linea->DBvalue("desclalbaran").leftJustified(27,' ', true)+" ");
-      QString pvpstr = QString( "%L2 " ).arg( pvp, 0, 'f', 2 );
-      QString pvptotalstr = QString( "%L2 " ).arg( pvptotal, 0, 'f', 2 );
+      QString pvpstr = pvp.toQString();
+      QString pvptotalstr = pvptotal.toQString();
       pr.printText(QString(pvpstr+"�").rightJustified ( 10, ' ', TRUE )+" ");
       pr.printText(QString(pvptotalstr+"�").rightJustified ( 10, ' ', TRUE ));
       pr.printText("\n");
@@ -717,16 +722,23 @@ void Ticket::imprimir()
    pr.setUnderlineMode(0);
    pr.setJustification(right);
    pr.setCharacterPrintMode(CHARACTER_FONTA_SELECTED);
-   pr.printText("Base Imponible: "+QString( "%L2 " ).arg(
-total.baseImponible, 0, 'f', 2 )+"�\n");
-   pr.printText("IVA "+QString( "%1 " ).arg( total.iva, 0, 10 )+"%:"+QString( "%L2 " ).arg( total.totalIva-total.baseImponible, 0, 'f', 2)+"�\n");
+   pr.printText("Base Imponible: "+total.baseImponible.toQString()+"�\n");
+   pr.printText("IVA "+total.iva.toQString()+"%:"+ (total.totalIva - total.baseImponible).toQString() + "�\n");
    pr.setCharacterPrintMode(CHARACTER_FONTA_SELECTED|EMPHASIZED_MODE|DOUBLE_HEIGHT|DOUBLE_WIDTH);
-   pr.printText("TOTAL: "+QString( "%L2 " ).arg( total.totalIva, 0, 'f',2 )+"�\n");
+   pr.printText("TOTAL: " + total.totalIva.toQString() + "�\n");
    pr.printText("\n\n");
    pr.setJustification(left);
    pr.setCharacterPrintMode(CHARACTER_FONTA_SELECTED);
    pr.printText("Le ha atendido "+trabajador.nombre+"\n");
    pr.printText("\n");
+
+   pr.printText("Plazo maximo para cambio 15 dias, unicamente \n");
+   pr.printText("con ticket de compra. \n");
+   pr.printText("\n");
+
+   pr.printText("Tel. " + empresa.telefono+"\n");
+   pr.printText("\n");
+
    pr.setJustification(center);
    pr.setColor(red);
    pr.printText("*** GRACIAS POR SU VISITA ***\n");

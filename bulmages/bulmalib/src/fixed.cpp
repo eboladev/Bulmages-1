@@ -146,10 +146,6 @@ QString Fixed::toQString ( QChar separadorDecimal, int precision )
     do {
         if ( n == precision ) {
             if ( n > 0 || options & DECIMAL )
-                /// 10/07/2007
-                /// Se cambio para poder poner otro caracter como separador decimal.
-                //buffer[sizeof(buffer) - ++n] = ',';
-
                 buffer[sizeof ( buffer ) - ++n] = separadorDecimal.toAscii();
 
             units = n;
