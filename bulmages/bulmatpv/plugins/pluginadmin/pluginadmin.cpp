@@ -51,6 +51,8 @@ int entryPoint ( BulmaTPV *tpv )
     g_admin1->show();
     g_admin1->cargaconf();
 
+
+
     _depura ( "END entryPoint", 0 );
     return 0;
 }
@@ -71,6 +73,22 @@ int exitPoint ( BulmaTPV *tpv )
 int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
 {
     g_admin = new Admin ( etpv, g_admin1 );
-    g_admin1->setWidget ( g_admin );
+//    g_admin1->setWidget ( g_admin );
+
+
+
+    // ============ Pruebas con abrevs
+    QFrame *fr = g_main->findChild<QFrame *> ("mui_frameabrevs");
+    if (fr) {
+    QHBoxLayout *m_hboxLayout1 = fr->findChild<QHBoxLayout *> ( "hboxLayout1" );
+    if ( !m_hboxLayout1 ) {
+        m_hboxLayout1 = new QHBoxLayout ( fr );
+        m_hboxLayout1->setSpacing ( 5 );
+        m_hboxLayout1->setMargin ( 5 );
+        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    } // end if
+    m_hboxLayout1->addWidget (g_admin);
+    } // end if
+
     return 0;
 }

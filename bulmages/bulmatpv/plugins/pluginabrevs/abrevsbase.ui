@@ -5,18 +5,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>418</width>
-    <height>84</height>
+    <width>400</width>
+    <height>72</height>
    </rect>
   </property>
   <property name="windowTitle" >
    <string>Form</string>
   </property>
-  <layout class="QHBoxLayout" >
+  <layout class="QHBoxLayout" name="horizontalLayout" >
    <property name="margin" >
-    <number>0</number>
-   </property>
-   <property name="spacing" >
     <number>0</number>
    </property>
    <item>
@@ -111,6 +108,16 @@
      </property>
      <property name="text" >
       <string>RECUPERAR</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QFrame" name="mui_frameabrevs" >
+     <property name="frameShape" >
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow" >
+      <enum>QFrame::Plain</enum>
      </property>
     </widget>
    </item>
