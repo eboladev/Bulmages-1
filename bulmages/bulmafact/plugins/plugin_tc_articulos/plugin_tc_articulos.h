@@ -45,3 +45,7 @@ extern "C" MY_EXPORT int ListLinAlbaranProveedorView_ListLinAlbaranProveedorView
 extern "C" MY_EXPORT int ListLinAlbaranClienteView_ListLinAlbaranClienteView ( ListLinAlbaranClienteView * );
 extern "C" MY_EXPORT int ListLinFacturaView_ListLinFacturaView ( ListLinFacturaView * );
 extern "C" MY_EXPORT int ListLinFacturaProveedorView_ListLinFacturaProveedorView ( ListLinFacturaProveedorView * );
+
+extern "C" MY_EXPORT int ListLinAlbaranClienteView_cargar ( ListLinAlbaranClienteView * );
+
+extern "C" MY_EXPORT int ListLinFacturaView_cargar ( ListLinFacturaView * );

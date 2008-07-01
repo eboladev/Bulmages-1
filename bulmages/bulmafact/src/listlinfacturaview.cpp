@@ -74,6 +74,10 @@ void ListLinFacturaView::cargar ( QString idfactura )
 {
     _depura ( "ListLinFacturaView::cargar", 0 );
     mdb_idfactura = idfactura;
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza ( "ListLinFacturaView_cargar", this );
+    if ( res != 0 )
+        return;
     SubForm3::cargar ( "SELECT * FROM lfactura LEFT JOIN articulo ON lfactura.idarticulo = articulo.idarticulo WHERE idfactura=" + mdb_idfactura + " ORDER BY ordenlfactura" );
     _depura ( "END ListLinFacturaView::cargar", 0 );
 }

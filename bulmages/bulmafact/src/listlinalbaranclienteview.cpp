@@ -72,6 +72,11 @@ void ListLinAlbaranClienteView::cargar ( QString idalbaran )
 {
     _depura ( "ListLinAlbaranClienteView::cargar", 0 );
     mdb_idalbaran = idalbaran;
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza ( "ListLinAlbaranClienteView_cargar", this );
+    if ( res != 0 )
+        return;
+
     SubForm3::cargar ( "SELECT * FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran=" + mdb_idalbaran + "   ORDER BY ordenlalbaran" );
     _depura ( "END ListLinAlbaranClienteView::cargar", 0 );
 }

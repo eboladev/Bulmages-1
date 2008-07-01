@@ -320,15 +320,23 @@ int ListLinFacturaProveedorView_ListLinFacturaProveedorView ( ListLinFacturaProv
 int ListLinAlbaranClienteView_ListLinAlbaranClienteView ( ListLinAlbaranClienteView *subform )
 {
     _depura ( "ListLinAlbaranClienteView_ListLinAlbaranClienteView", 0 );
-    subform->addSHeader ( "idtc_color", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "TrabajadorView", "color" ) );
-    subform->addSHeader ( "idtc_talla", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "TrabajadorView", "Talla" ) );
+    subform->addSHeader ( "idtc_color", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "TrabajadorView", "color" ) );
+    subform->addSHeader ( "idtc_talla", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "TrabajadorView", "Talla" ) );
     subform->addSHeader ( "nomtc_color", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, QApplication::translate ( "TrabajadorView", "Nombre color" ) );
     subform->addSHeader ( "nomtc_talla", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, QApplication::translate ( "TrabajadorView", "Nombre talla" ) );
 
     delete subform->m_delegate;
     subform->m_delegate = new QSubForm3BfDelegate ( subform );
-    subform->mui_list->setItemDelegate ( subform->m_delegate );    _depura ( "END ListLinAlbaranClienteView_ListLinAlbaranClienteView", 0 );
+    subform->mui_list->setItemDelegate ( subform->m_delegate );
+    _depura ( "END ListLinAlbaranClienteView_ListLinAlbaranClienteView", 0 );
     return 0;
+}
+
+
+int ListLinAlbaranClienteView_cargar(ListLinAlbaranClienteView *subform) {
+    QString query = "SELECT * FROM lalbaran LEFT JOIN articulo AS t1 ON lalbaran.idarticulo = t1.idarticulo LEFT JOIN tc_color AS t2 on t2.idtc_color = lalbaran.idtc_color LEFT JOIN tc_talla AS t3 ON t3.idtc_talla= lalbaran.idtc_talla WHERE idalbaran=" + subform->mdb_idalbaran + "   ORDER BY ordenlalbaran";
+    subform->SubForm3::cargar ( query );
+    return -1;
 }
 
 
@@ -340,8 +348,8 @@ int ListLinAlbaranClienteView_ListLinAlbaranClienteView ( ListLinAlbaranClienteV
 int ListLinFacturaView_ListLinFacturaView ( ListLinFacturaView *subform )
 {
     _depura ( "ListLinFacturaView_ListLinFacturaView", 0 );
-    subform->addSHeader ( "idtc_color", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "TrabajadorView", "color" ) );
-    subform->addSHeader ( "idtc_talla", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "TrabajadorView", "Talla" ) );
+    subform->addSHeader ( "idtc_color", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "TrabajadorView", "color" ) );
+    subform->addSHeader ( "idtc_talla", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoView | SHeader::DBNoWrite, QApplication::translate ( "TrabajadorView", "Talla" ) );
     subform->addSHeader ( "nomtc_color", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, QApplication::translate ( "TrabajadorView", "Nombre color" ) );
     subform->addSHeader ( "nomtc_talla", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, QApplication::translate ( "TrabajadorView", "Nombre talla" ) );
 
@@ -351,3 +359,10 @@ int ListLinFacturaView_ListLinFacturaView ( ListLinFacturaView *subform )
     return 0;
 }
 
+
+
+int ListLinFacturaView_cargar(ListLinFacturaView *subform) {
+    QString query = "SELECT * FROM lfactura LEFT JOIN articulo AS t1 ON lfactura.idarticulo = t1.idarticulo LEFT JOIN tc_color AS t2 on t2.idtc_color = lfactura.idtc_color LEFT JOIN tc_talla AS t3 ON t3.idtc_talla= lfactura.idtc_talla WHERE idfactura=" + subform->mdb_idfactura + "   ORDER BY ordenlfactura";
+    subform->SubForm3::cargar ( query );
+    return -1;
+}
