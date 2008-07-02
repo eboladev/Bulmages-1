@@ -887,7 +887,29 @@ void Ticket::insertarArticuloCodigoNL ( QString codigo )
 
 }
 
-
+int Ticket::cargar(QString id) {
+try {
+	QString query = "SELECT * FROM albaran WHERE idalbaran = " + id;
+	mensajeInfo(query);
+        cursor2 *cur = empresaBase() ->cargacursor ( query );
+	if (cur) {
+	if (!cur->eof()) {
+	        DBload ( cur );
+	}
+        delete cur;
+	} // end if
+	cur = empresaBase() ->cargacursor ( "SELECT * FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran = " + id );
+	while (!cur->eof()) {
+		DBRecord *l = agregarLinea();
+		l->DBload(cur);
+		cur->siguienteregistro();
+	} // end while
+        delete cur;
+} catch(...) {
+    mensajeInfo("Error en la carga");
+}
+return 0;
+}
 
 
 /// Guarda los datos de la ficha en la base de datos.
