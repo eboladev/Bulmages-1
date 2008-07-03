@@ -105,6 +105,29 @@ Devolucion::Devolucion ( EmpresaTPV *emp, QWidget *parent ) : BLWidget ( emp, pa
 Devolucion::~Devolucion()
 {}
 
+void Devolucion::on_mui_devolver_clicked() {
+   if (m_ticket->DBvalue("idalbaran").isEmpty()) return;
+   int sizein = m_ticket->listaLineas()->size();
+    for ( int i = 0; i < sizein; ++i ) {
+        DBRecord *item = m_ticket->listaLineas() ->at ( i );
+	DBRecord *nitem = m_ticket->agregarLinea();
+	QList<DBCampo *> *lista = item->lista();
+	for(int j=0; j < lista->size(); ++j) {
+		DBCampo * camp = lista->at(j);
+		if (camp->nomcampo() != "numlalbaran" ) {
+			nitem->setDBvalue(camp->nomcampo(), camp->valorcampo());
+		}
+		if (camp->nomcampo() == "cantlalbaran" && camp->valorcampo().toFloat() > 0) {
+			nitem->setDBvalue(camp->nomcampo(), "-"+camp->valorcampo());
+		}
+	} // end for
+    }// end for
+
+//	pintar();
+
+    m_ticket->guardar();
+    ( ( QDialog * ) parent() )->accept();
+}
 
 
 void Devolucion::on_mui_cancelar_clicked()
@@ -129,7 +152,11 @@ void Devolucion::on_mui_ref_returnPressed()
     }
     delete curs;
 
-    if ( !m_ticket ) return;
+    pintar();
+}
+
+void Devolucion::pintar() {
+   if ( !m_ticket ) return;
 
 // ====================== PINTAMOS ========================
     QString html = "<p style=\"font-family:monospace; font-size: 12pt;\">";
@@ -270,8 +297,9 @@ void Devolucion::on_mui_ref_returnPressed()
     html += "</p>";
     html1 += "</FONT>";
 
+    mui_total->setText(total.toQString());
+
 // ======================================
     /// Pintamos el HTML en el textBrowser
     mui_browser->setText ( html );
-
 }

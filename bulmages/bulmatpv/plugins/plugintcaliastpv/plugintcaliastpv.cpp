@@ -35,9 +35,9 @@ int Ticket_agregarLinea_Post(Ticket *tick, DBRecord * &rec) {
 
     rec->addDBCampo ( "idtc_color", DBCampo::DBnumeric, DBCampo::DBNothing, QApplication::translate ( "Ticket", "Color" ) );
 
-    rec->addDBCampo ( "nomtc_talla", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Ticket", "Talla" ) );
+    rec->addDBCampo ( "nomtc_talla", DBCampo::DBvarchar, DBCampo::DBNoSave, QApplication::translate ( "Ticket", "Talla" ) );
 
-    rec->addDBCampo ( "nomtc_color", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "Ticket", "Color" ) );
+    rec->addDBCampo ( "nomtc_color", DBCampo::DBvarchar, DBCampo::DBNoSave, QApplication::translate ( "Ticket", "Color" ) );
 
 }
 

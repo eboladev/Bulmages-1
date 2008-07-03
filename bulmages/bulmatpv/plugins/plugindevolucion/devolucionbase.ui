@@ -146,7 +146,7 @@
     <widget class="QTextBrowser" name="mui_browser" />
    </item>
    <item row="2" column="0" >
-    <widget class="QLineEdit" name="mui_total_2" >
+    <widget class="QLineEdit" name="mui_total" >
      <property name="minimumSize" >
       <size>
        <width>0</width>
@@ -482,17 +482,20 @@
     </widget>
    </item>
    <item row="3" column="0" colspan="3" >
-    <widget class="QTextEdit" name="textEdit" />
+    <widget class="QTextEdit" name="mui_comentarios" />
    </item>
    <item row="4" column="0" colspan="3" >
     <layout class="QHBoxLayout" >
      <item>
-      <widget class="QPushButton" name="mui_cobrar" >
+      <widget class="QPushButton" name="mui_devolver" >
        <property name="minimumSize" >
         <size>
          <width>0</width>
          <height>75</height>
         </size>
+       </property>
+       <property name="focusPolicy" >
+        <enum>Qt::NoFocus</enum>
        </property>
        <property name="text" >
         <string>EFECTIVO</string>
@@ -506,6 +509,9 @@
          <width>0</width>
          <height>75</height>
         </size>
+       </property>
+       <property name="focusPolicy" >
+        <enum>Qt::NoFocus</enum>
        </property>
        <property name="text" >
         <string>CANCELAR</string>

@@ -890,7 +890,6 @@ void Ticket::insertarArticuloCodigoNL ( QString codigo )
 int Ticket::cargar(QString id) {
 try {
 	QString query = "SELECT * FROM albaran WHERE idalbaran = " + id;
-	mensajeInfo(query);
         cursor2 *cur = empresaBase() ->cargacursor ( query );
 	if (cur) {
 	if (!cur->eof()) {

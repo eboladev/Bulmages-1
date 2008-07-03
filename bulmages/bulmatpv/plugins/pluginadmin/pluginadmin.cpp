@@ -43,6 +43,7 @@ int entryPoint ( BulmaTPV *tpv )
     _depura ( "entryPoint", 0 );
 
     /// Vamos a probar con un docwindow.
+/*
     g_admin1 = new BDockWidget ( "Administracion", tpv, "pluginadministracion" );
     g_admin1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
     g_admin1->setGeometry ( 100, 100, 100, 500 );
@@ -50,7 +51,7 @@ int entryPoint ( BulmaTPV *tpv )
     tpv->addDockWidget ( Qt::BottomDockWidgetArea, g_admin1 );
     g_admin1->show();
     g_admin1->cargaconf();
-
+*/
 
 
     _depura ( "END entryPoint", 0 );

@@ -28,10 +28,11 @@ public:
 public:
     Devolucion ( EmpresaTPV *emp, QWidget *parent );
     virtual ~Devolucion();
-
+    virtual void pintar();
 public slots:
     virtual void on_mui_cancelar_clicked();
     virtual void on_mui_ref_returnPressed();
+    virtual void on_mui_devolver_clicked();
 
 /// La parte de las teclas
 public slots:

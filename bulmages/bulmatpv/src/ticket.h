@@ -38,15 +38,13 @@ private:
     QList<DBRecord *> *m_listaLineas;
     DBRecord *m_lineaActual;
 
-private:
-    DBRecord *agregarLinea();
-
 public:
     virtual void pintar();
 
 public:
     Ticket ( EmpresaBase *emp = NULL, QWidget *parent = 0 );
     virtual ~Ticket();
+    DBRecord *agregarLinea();
 
     QList<DBRecord *> *listaLineas();
     /// Inserta o agrega cantidad de articulos al ticket
