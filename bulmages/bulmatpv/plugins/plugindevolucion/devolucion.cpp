@@ -1,6 +1,7 @@
 #include "devolucion.h"
 #include "fixed.h"
 #include <QWidget>
+#include "escprinter.h"
 
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base
 /// como un QMap.
@@ -13,94 +14,6 @@ Devolucion::Devolucion ( EmpresaTPV *emp, QWidget *parent ) : BLWidget ( emp, pa
     m_ticket = NULL;
     mui_browser->setOpenLinks ( FALSE );
     m_totalin = "";
-    /*
-        m_value = 0;
-        base basesimp;
-        base basesimpreqeq;
-        DBRecord *linea;
-
-        Ticket *tick = emp->ticketActual();
-
-        /// Impresion de los contenidos.
-        QString l;
-        Fixed irpf ( "0" );
-
-        cursor2 *cur = emp->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
-        if ( cur ) {
-            if ( !cur->eof() ) {
-                irpf = Fixed ( cur->valor ( "valor" ) );
-            } // end if
-            delete cur;
-        } // end if
-
-
-        Fixed descuentolinea ( "0.00" );
-        for ( int i = 0; i < tick->listaLineas() ->size(); ++i ) {
-            linea = tick->listaLineas() ->at ( i );
-            Fixed cant ( linea->DBvalue ( "cantlalbaran" ) );
-            Fixed pvpund ( linea->DBvalue ( "pvplalbaran" ) );
-            Fixed desc1 ( linea->DBvalue ( "descuentolalbaran" ) );
-            Fixed cantpvp = cant * pvpund;
-            Fixed base = cantpvp - cantpvp * desc1 / 100;
-            descuentolinea = descuentolinea + ( cantpvp * desc1 / 100 );
-            basesimp[linea->DBvalue ( "ivalalbaran" ) ] = basesimp[linea->DBvalue ( "ivalalbaran" ) ] + base;
-            basesimpreqeq[linea->DBvalue ( "reqeqlalbaran" ) ] = basesimpreqeq[linea->DBvalue ( "reqeqlalbaran" ) ] + base;
-        } // end for
-
-        Fixed basei ( "0.00" );
-        base::Iterator it;
-        for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-            basei = basei + it.value();
-        } // end for
-
-        /// Calculamos el total de los descuentos.
-        /// De momento aqui no se usan descuentos generales en venta.
-        Fixed porcentt ( "0.00" );
-
-        /// Calculamos el total de base imponible.
-        Fixed totbaseimp ( "0.00" );
-        Fixed parbaseimp ( "0.00" );
-        for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-            if ( porcentt > Fixed ( "0.00" ) ) {
-                parbaseimp = it.value() - it.value() * porcentt / 100;
-            } else {
-                parbaseimp = it.value();
-            } // end if
-            totbaseimp = totbaseimp + parbaseimp;
-        } // end for
-
-        /// Calculamos el total de IVA.
-        Fixed totiva ( "0.00" );
-        Fixed pariva ( "0.00" );
-        for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-            Fixed piva ( it.key().toAscii().constData() );
-            if ( porcentt > Fixed ( "0.00" ) ) {
-                pariva = ( it.value() - it.value() * porcentt / 100 ) * piva / 100;
-            } else {
-                pariva = it.value() * piva / 100;
-            } // end if
-            totiva = totiva + pariva;
-        } // end for
-
-        /// Calculamos el total de recargo de equivalencia.
-        Fixed totreqeq ( "0.00" );
-        Fixed parreqeq ( "0.00" );
-        for ( it = basesimpreqeq.begin(); it != basesimpreqeq.end(); ++it ) {
-            Fixed preqeq ( it.key().toAscii().constData() );
-            if ( porcentt > Fixed ( "0.00" ) ) {
-                parreqeq = ( it.value() - it.value() * porcentt / 100 ) * preqeq / 100;
-            } else {
-                parreqeq = it.value() * preqeq / 100;
-            } // end if
-            totreqeq = totreqeq + parreqeq;
-        } // end for
-
-        Fixed totirpf = totbaseimp * irpf / 100;
-
-        Fixed total = totiva + totbaseimp + totreqeq - totirpf;
-
-        mui_total->setText(total.toQString());
-    */
 }
 
 
@@ -108,26 +21,6 @@ Devolucion::~Devolucion()
 {}
 
 void Devolucion::on_mui_devolver_clicked() {
-/*
-   if (m_ticket->DBvalue("idalbaran").isEmpty()) return;
-   int sizein = m_ticket->listaLineas()->size();
-    for ( int i = 0; i < sizein; ++i ) {
-        DBRecord *item = m_ticket->listaLineas() ->at ( i );
-	DBRecord *nitem = m_ticket->agregarLinea();
-	QList<DBCampo *> *lista = item->lista();
-	for(int j=0; j < lista->size(); ++j) {
-		DBCampo * camp = lista->at(j);
-		if (camp->nomcampo() != "numlalbaran" ) {
-			nitem->setDBvalue(camp->nomcampo(), camp->valorcampo());
-		}
-		if (camp->nomcampo() == "cantlalbaran" && camp->valorcampo().toFloat() > 0) {
-			nitem->setDBvalue(camp->nomcampo(), "-"+camp->valorcampo());
-		}
-	} // end for
-    }// end for
-
-//	pintar();
-*/
     m_ticket->guardar();
     ( ( QDialog * ) parent() )->accept();
 }
@@ -136,6 +29,151 @@ void Devolucion::on_mui_devolver_clicked() {
 void Devolucion::on_mui_cancelar_clicked()
 {
     m_value = -1;
+    ( ( QDialog * ) parent() )->accept();
+}
+
+void Devolucion::on_mui_vale_clicked() {
+
+   struct empresastr
+   {
+	QString nombre;
+	QString direccionCompleta;
+	QString codigoPostal;
+      QString ciudad;
+      QString provincia;
+	QString telefono;
+   }empresa;
+
+   struct clientestr
+   {
+      QString cif;
+      QString nombre;
+   }cliente;
+
+   struct trabajadorstr
+   {
+      QString nombre;
+      QString id;
+   }trabajador;
+
+   struct almacenstr
+   {
+      QString nombre;
+   }almacen;
+
+   struct fechastr
+   {
+      QString dia;
+      QString hora;
+   }fecha;
+
+   struct totalstr
+   {
+      Fixed iva;
+      Fixed baseImponible;
+      Fixed totalIva;
+   }total;
+
+   cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
+   if ( !cur->eof() )
+      empresa.nombre =cur->valor ( "valor" );
+   delete cur;
+
+   cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" );
+   if ( !cur->eof() )
+      empresa.direccionCompleta = cur->valor ( "valor" );
+   delete cur;
+
+   cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
+   if ( !cur->eof() )
+      empresa.codigoPostal = cur->valor ( "valor" ).toAscii();
+   delete cur;
+
+   cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Ciudad'" );
+   if ( !cur->eof() )
+      empresa.ciudad = cur->valor ( "valor" );
+   delete cur;
+
+   cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Telefono'" );
+   if ( !cur->eof() )
+      empresa.telefono = cur->valor ( "valor" );
+   delete cur;
+
+   cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Provincia'" );
+   if ( !cur->eof() )
+      empresa.provincia = cur->valor("valor");
+   delete cur;
+
+   fecha.dia = QDate::currentDate().toString("d-M-yyyy");
+   fecha.hora = QTime::currentTime().toString("HH:mm");
+
+   trabajador.id = m_ticket->DBvalue("idtrabajador");
+   cur = empresaBase() ->cargacursor ( "SELECT * FROM trabajador WHERE idtrabajador=" + m_ticket->DBvalue ( "idtrabajador" ) );
+   if ( !cur->eof() )
+      trabajador.nombre = cur->valor ( "nomtrabajador" );
+   delete cur;
+
+   cur = empresaBase() ->cargacursor ( "SELECT * FROM cliente WHERE idcliente=" + m_ticket->DBvalue ( "idcliente" ) );
+   if ( !cur->eof() )
+   {
+      cliente.cif = cur->valor ( "cifcliente" ).toAscii();
+      cliente.nombre = cur->valor ( "nomcliente" ).toAscii();
+   } // end if
+   delete cur;
+
+   cur = empresaBase() ->cargacursor ( "SELECT * FROM almacen WHERE idalmacen=" + m_ticket->DBvalue ( "idalmacen" ) );
+   if ( !cur->eof() )
+      almacen.nombre = cur->valor ( "nomalmacen" ).toAscii() ;
+   delete cur;
+
+
+   EscPrinter pr(confpr->valor ( CONF_TICKET_PRINTER_FILE ));
+   pr.initializePrinter();
+   pr.setCharacterCodeTable ( page19 );
+   pr.setJustification ( center );
+
+   if(confpr->valor(CONF_TPV_PRINTER_LOGO) != "") {
+   	pr.printImage(confpr->valor(CONF_TPV_PRINTER_LOGO));
+   } // end if
+   pr.printText(empresa.nombre+"\n");
+   pr.setCharacterPrintMode(CHARACTER_FONTB_SELECTED);
+   pr.setCharacterSize(CHAR_WIDTH_1|CHAR_HEIGHT_1);
+   pr.setColor(red);
+   pr.printText(empresa.direccionCompleta+"\n");
+   pr.initializePrinter();
+   pr.setCharacterCodeTable ( page19 );
+
+   pr.printText("\n");
+   pr.printText(fecha.dia+" "+fecha.hora+"\n");
+   pr.printText("Cliente, "+cliente.cif+" "+cliente.nombre+"\n");
+   pr.printText("\n");
+
+   pr.printText("Vale de Compra por valor de: \n");
+   pr.printText(mui_difprice->text());
+
+   pr.printText("\n\n");
+   pr.setJustification(left);
+   pr.setCharacterPrintMode(CHARACTER_FONTA_SELECTED);
+   pr.printText("Le ha atendido "+trabajador.nombre+"\n");
+   pr.printText("\n");
+
+   pr.printText("Tel. " + empresa.telefono+"\n");
+   pr.printText("\n");
+
+   pr.setJustification(center);
+   pr.setColor(red);
+   pr.printText("*** GRACIAS POR SU VISITA ***\n");
+
+   
+   QByteArray qba = m_ticket->DBvalue ( "refalbaran" ).toAscii();
+   char* barcode = qba.data();
+   pr.setJustification ( center );
+   pr.setBarcodeFormat(2, 50, both, fontB);
+   pr.printBarCode(code39, qba.size(), barcode);
+   pr.cutPaperAndFeed(TRUE,10);
+   pr.print();
+
+    m_ticket->guardar();
     ( ( QDialog * ) parent() )->accept();
 }
 

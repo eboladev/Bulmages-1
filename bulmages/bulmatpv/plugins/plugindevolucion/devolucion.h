@@ -35,6 +35,7 @@ public slots:
     virtual void on_mui_ref_returnPressed();
     virtual void on_mui_devolver_clicked();
     virtual void on_mui_browser_anchorClicked(const QUrl &);
+    virtual void on_mui_vale_clicked();
 
 };
 
