@@ -196,7 +196,8 @@ void Asiento1View::iniciar_asiento_nuevo ( QString nuevoordenasiento )
     _depura ( "Asiento1View::iniciar_asiento_nuevo", 0 );
     try {
         /// TRATAMIENTO DE BASE DE DATOS.
-        QString idasiento, ordenasiento, query;
+        unsigned int idasiento;
+        QString ordenasiento, query;
         QString fecha = mui_fecha->text();
         cursor2 *cur;
         empresaBase() ->begin();
@@ -204,33 +205,30 @@ void Asiento1View::iniciar_asiento_nuevo ( QString nuevoordenasiento )
             QString query = "SELECT COALESCE(MAX(ordenasiento) + 1, 1) AS orden FROM asiento WHERE EXTRACT(YEAR FROM fecha) = '" + fecha.left ( 10 ).right ( 4 ) + "'";
             cur = empresaBase() ->cargacursor ( query );
             ordenasiento = cur->valor ( "orden" );
-            delete cur;
         } else {
             ordenasiento = nuevoordenasiento;
         } // end if
-
-
-        //empresaBase()->commit();
-        query = "INSERT INTO asiento (fecha, ordenasiento) VALUES ('" + empresaBase() ->sanearCadena ( fecha ) + "', " + ordenasiento + ")";
-        empresaBase() ->ejecuta ( query );
 
         /// Creamos el asiento en la base de datos.
         query = "SELECT MAX(idasiento) AS id FROM asiento";
         cur = empresaBase() ->cargacursor ( query );
         if ( !cur->eof() )
-            idasiento = cur->valor ( "id" );
+            idasiento = cur->valor ( "id" ).toInt() + 1;
         delete cur;
+
+        query = "INSERT INTO asiento (idasiento, fecha, ordenasiento) VALUES (" + QString( "%1" ).arg( idasiento ) + ", '" + empresaBase() ->sanearCadena ( fecha ) + "', " + ordenasiento + ")";
+        empresaBase() ->ejecuta ( query );
 
         empresaBase() ->commit();
         /// FIN TRATAMIENTO DE BASE DE DATOS.
 
         cargaasientos();
 
-        muestraasiento ( idasiento.toInt() );
+        muestraasiento ( idasiento );
 
         abrir();
 
-        _depura ( "END Asiento1View::iniciar_asiento_nuevo", 0, idasiento );
+        _depura ( "END Asiento1View::iniciar_asiento_nuevo", 0 );
         return;
     } catch ( ... ) {
         mensajeInfo ( "Asiento no pudo crearse" );
