@@ -25,6 +25,7 @@ class Devolucion : public BLWidget, public Ui_DevolucionBase
 public:
     int m_value;
     Ticket *m_ticket;
+    QString m_totalin;
 public:
     Devolucion ( EmpresaTPV *emp, QWidget *parent );
     virtual ~Devolucion();
@@ -33,9 +34,7 @@ public slots:
     virtual void on_mui_cancelar_clicked();
     virtual void on_mui_ref_returnPressed();
     virtual void on_mui_devolver_clicked();
-
-/// La parte de las teclas
-public slots:
+    virtual void on_mui_browser_anchorClicked(const QUrl &);
 
 };
 

@@ -11,6 +11,8 @@ Devolucion::Devolucion ( EmpresaTPV *emp, QWidget *parent ) : BLWidget ( emp, pa
     setupUi ( this );
 
     m_ticket = NULL;
+    mui_browser->setOpenLinks ( FALSE );
+    m_totalin = "";
     /*
         m_value = 0;
         base basesimp;
@@ -106,6 +108,7 @@ Devolucion::~Devolucion()
 {}
 
 void Devolucion::on_mui_devolver_clicked() {
+/*
    if (m_ticket->DBvalue("idalbaran").isEmpty()) return;
    int sizein = m_ticket->listaLineas()->size();
     for ( int i = 0; i < sizein; ++i ) {
@@ -124,7 +127,7 @@ void Devolucion::on_mui_devolver_clicked() {
     }// end for
 
 //	pintar();
-
+*/
     m_ticket->guardar();
     ( ( QDialog * ) parent() )->accept();
 }
@@ -151,7 +154,7 @@ void Devolucion::on_mui_ref_returnPressed()
         m_ticket->cargar ( curs->valor ( "idalbaran" ) );
     }
     delete curs;
-
+    m_totalin = "";
     pintar();
 }
 
@@ -159,7 +162,7 @@ void Devolucion::pintar() {
    if ( !m_ticket ) return;
 
 // ====================== PINTAMOS ========================
-    QString html = "<p style=\"font-family:monospace; font-size: 12pt;\">";
+    QString html = "<p style=\"font-family:monospace; font-size: 8pt;\">";
     QString html1 = "<font size=\"1\">";
 
     html1 += "Ticket: " + m_ticket->DBvalue ( "nomticket" ) + "<BR>";
@@ -174,18 +177,29 @@ void Devolucion::pintar() {
     delete cur1;
 
     html += "<TABLE border=\"0\">";
+
+    html += "<TR bgcolor = \"#CCCCCC\">";
+    html += "<TD>SEL</TD>";
+    for (int z = 0; z < m_ticket->listaLineas()->at(1)->lista()->size(); ++z) {
+	DBCampo *head = m_ticket->listaLineas()->at(1)->lista()->at(z);
+	if (head->nomcampo().left(2) != "id" && head->nomcampo().left(3) != "num")
+	html += "<TD>"+head->nomcampo().left(4)+"</TD>";
+    } // end for
+    html += "</TR>";
+
     DBRecord *item;
     for ( int i = 0; i < m_ticket->listaLineas() ->size(); ++i ) {
         item = m_ticket->listaLineas() ->at ( i );
-        QString bgcolor = "#FFFFFF";
-        if ( item == m_ticket->lineaActTicket() ) bgcolor = "#CCCCFF";
-        html += "<TR>";
-        html += "<TD bgcolor=\"" + bgcolor + "\" align=\"right\" width=\"50\">" + item->DBvalue ( "cantlalbaran" ) + "</TD>";
-        html += "<TD bgcolor=\"" + bgcolor + "\">" + item->DBvalue ( "nomarticulo" ) + "</TD>";
-        Fixed totalLinea ( "0.00" );
-        totalLinea = Fixed ( item->DBvalue ( "cantlalbaran" ) ) * Fixed ( item->DBvalue ( "pvplalbaran" ) );
-        html += "<TD bgcolor=\"" + bgcolor + "\" align=\"right\" width=\"50\">" + totalLinea.toQString(); + "</TD>";
-        html += "</TR>";
+
+	html += "<TR>";
+        html += "<TD><A NAME=\"plus\" HREF=\"?op=plus&numlalbaran="+item->DBvalue("numlalbaran")+"\">+</A>  <A HREF=\"?op=minus&numlalbaran="+item->DBvalue("numlalbaran")+"\">-</A></td>";
+	for ( int j = 0; j < item->lista()->size(); ++j) {
+		DBCampo *camp = item->lista()->at(j);
+ 	  	if (camp->nomcampo().left(2) != "id" && camp->nomcampo().left(3) != "num")
+			html += "<TD>"+camp->valorcampo()+"</TD>";
+	} // end for
+
+		html += "</TR>";
     }// end for
     html += "</TABLE>";
 
@@ -229,16 +243,6 @@ void Devolucion::pintar() {
     /// Calculamos el total de los descuentos.
     /// De momento aqui no se usan descuentos generales en venta.
     Fixed porcentt ( "0.00" );
-    /*
-        SDBRecord *linea1;
-        if (m_listadescuentos->rowCount()) {
-            for (int i = 0; i < m_listadescuentos->rowCount(); ++i) {
-                linea1 = m_listadescuentos->lineaat(i);
-                Fixed propor(linea1->DBvalue("proporcion" + m_listadescuentos->tableName()).toAscii().constData());
-                porcentt = porcentt + propor;
-            } // end for
-        } // end if
-    */
 
     /// Calculamos el total de base imponible.
     Fixed totbaseimp ( "0.00" );
@@ -292,14 +296,52 @@ void Devolucion::pintar() {
     Fixed total = totiva + totbaseimp + totreqeq - totirpf;
     html1 += "<B>Total: " + total.toQString() + "<BR>";
 
-
-
     html += "</p>";
     html1 += "</FONT>";
 
-    mui_total->setText(total.toQString());
+    if (m_totalin == "") {
+        mui_total->setText(total.toQString());
+	m_totalin = total.toQString();
+    }
+    mui_newtotal->setText(total.toQString());
+    Fixed diff (m_totalin);
+    diff = diff - total;
+    mui_difprice->setText(diff.toQString());
+
 
 // ======================================
     /// Pintamos el HTML en el textBrowser
     mui_browser->setText ( html );
+}
+
+
+void Devolucion::on_mui_browser_anchorClicked(const QUrl &anchor) {
+	if (anchor.queryItemValue("op") == "minus") {
+
+   if (m_ticket->DBvalue("idalbaran").isEmpty()) return;
+   int sizein = m_ticket->listaLineas()->size();
+    for ( int i = 0; i < sizein; ++i ) {
+        DBRecord *item = m_ticket->listaLineas() ->at ( i );
+	if (item->DBvalue("numlalbaran") == anchor.queryItemValue("numlalbaran")) {
+	DBRecord *nitem = m_ticket->agregarLinea();
+	QList<DBCampo *> *lista = item->lista();
+	for(int j=0; j < lista->size(); ++j) {
+		DBCampo * camp = lista->at(j);
+		if (camp->nomcampo() != "numlalbaran" ) {
+			nitem->setDBvalue(camp->nomcampo(), camp->valorcampo());
+		} // end if
+		if (camp->nomcampo() == "cantlalbaran" && camp->valorcampo().toFloat() > 0) {
+			nitem->setDBvalue(camp->nomcampo(), "-1");
+		}// end if
+	} // end if
+	} // end for
+    }// end for
+
+//	pintar();
+
+//    m_ticket->guardar();
+
+	} // end if
+
+	pintar();
 }
