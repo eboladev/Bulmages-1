@@ -40,6 +40,9 @@ class PluginsBulmaSetup:
 		        parmdb = ""
 		        archivosqlpatch = ""
 		        archivosqldeins = ""
+			dependencias = ""
+			incompatibles = ""
+			orden = ""
 		        m = re.search('Nombre: (.*)', cont)
 		        if m <> None:
 		            nombre = m.group(1)
@@ -49,7 +52,7 @@ class PluginsBulmaSetup:
 		        m = re.search("(?smu)Descripción: (.*)\n\nParm", cont)
 		        if m <> None:
 		            descripcion = m.group(1)
-		        m = re.search('ParmDB: (.*)', cont)
+		        m = re.search('ParmBD: (.*)', cont)
 		        if m <> None:
 		            parmdb = m.group(1)
 		        m = re.search('ArchivoSQLpatch: (.*)', cont)
@@ -58,7 +61,18 @@ class PluginsBulmaSetup:
 		        m = re.search('ArchivoSQLdeins: (.*)', cont)
 		        if m <> None:
 		            archivosqldeins = m.group(1)
-		        plugins.append([nombre, biblioteca, descripcion, parmdb, archivosqlpatch])
+			m = re.search('Dependencias: (.*)', cont)
+			if m <> None:
+			    dependencias = m.group(1)
+			m = re.search('Incompatibles: (.*)', cont)
+			if m <> None:
+			    incompatibles = m.group(1)
+			m = re.search('Orden: (.*)', cont)
+			orden = 99
+			if m <> None:
+			    if (m.group(1).isdigit()):
+			        orden = int(m.group(1))
+		        plugins.append([nombre, biblioteca, descripcion, parmdb, archivosqlpatch, dependencias, incompatibles, orden])
     
 
 if __name__=="__main__":
