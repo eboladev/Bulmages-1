@@ -13,6 +13,8 @@ add_subdirectory(pluginvisor)
 add_subdirectory(pluginbuscacliente)
 add_subdirectory(plugincambio)
 add_subdirectory(plugindevolucion)
+add_subdirectory(plugindevolucion2)
+
 if(NOT APPLE)
 add_subdirectory(pluginabrevs)
 endif(NOT APPLE)
