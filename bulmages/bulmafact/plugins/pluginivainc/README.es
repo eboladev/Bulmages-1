@@ -16,4 +16,10 @@ ArchivoSQLpatch: revf-pluginivainc.sql
 
 ArchivoSQLdeins: 
 
+Dependencias:
+
+Incompatibles:
+
+Orden:
+
 Comentarios: 

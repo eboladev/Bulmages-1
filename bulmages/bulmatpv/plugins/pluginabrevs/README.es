@@ -4,7 +4,7 @@
 #README.es
 #20080501 
 
-Nombre: Plugin Accesos Rapidos
+Nombre: Accesos Rapidos
 
 Biblioteca: libpluginabrevs.so
 
@@ -15,5 +15,11 @@ ParmBD:
 ArchivoSQLpatch: 
 
 ArchivoSQLdeins: 
+
+Dependencias: libplugintpv.so
+
+Incompatibles:
+
+Orden: 4
 
 Comentarios: 

@@ -375,10 +375,6 @@ void Devolucion::on_mui_browser_anchorClicked(const QUrl &anchor) {
 	} // end for
     }// end for
 
-//	pintar();
-
-//    m_ticket->guardar();
-
 	} // end if
 
 	pintar();

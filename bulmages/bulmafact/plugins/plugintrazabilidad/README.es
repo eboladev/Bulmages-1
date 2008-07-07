@@ -17,4 +17,10 @@ ArchivoSQLpatch: revf-plugintrazabilidad.sql
 
 ArchivoSQLdeins: 
 
+Dependencias:
+
+Incompatibles:
+
+Orden:
+
 Comentarios: 

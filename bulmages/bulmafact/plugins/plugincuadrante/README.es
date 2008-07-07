@@ -17,4 +17,10 @@ ArchivoSQLpatch: revf-plugincuadrante.sql
 
 ArchivoSQLdeins: 
 
+Dependencias:
+
+Incompatibles:
+
+Orden:
+
 Comentarios: Muy útil en sistemas de control de personal y en combinacion con el pluginasterisk.

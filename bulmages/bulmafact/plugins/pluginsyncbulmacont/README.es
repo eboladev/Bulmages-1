@@ -16,6 +16,12 @@ ArchivoSQLpatch: revf-pluginsyncbulmacont.sql
 
 ArchivoSQLdeins: rm-pluginsyncbulmacont.sql
 
+Dependencias:
+
+Incompatibles:
+
+Orden:
+
 Comentarios: Precisa de tener instalado dblink.
 No se instala propiamente como un plugin ya que no lleva librerías asociadas.
 

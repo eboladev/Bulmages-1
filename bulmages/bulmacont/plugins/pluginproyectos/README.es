@@ -4,7 +4,7 @@
 #README.es
 #20080512
 
-Nombre: Plugin de Proyectos Contables
+Nombre: Proyectos Contables
 
 Biblioteca: libpluginproyectos.so
 
@@ -15,6 +15,12 @@ ParmBD: DBRev-PresContables
 ArchivoSQLpatch: rev-pluginpresupuestos.sql
 
 ArchivoSQLdeins: -
+
+Dependencias:
+
+Incompatibles:
+
+Orden:
 
 Comentarios: Para instalar debe aplicar el parche ubicado en dbmodels a las bases de datos elegidas para funcionar con este plugin.
 

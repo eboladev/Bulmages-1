@@ -17,4 +17,10 @@ ArchivoSQLpatch: revf-plugin_tc_articulos.sql
 
 ArchivoSQLdeins: 
 
+Dependencias:
+
+Incompatibles:
+
+Orden:
+
 Comentarios: 

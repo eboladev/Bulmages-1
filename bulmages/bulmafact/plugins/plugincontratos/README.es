@@ -16,4 +16,10 @@ ArchivoSQLpatch: revf-plugincontratos.sql
 
 ArchivoSQLdeins: 
 
+Dependencias:
+
+Incompatibles:
+
+Orden:
+
 Comentarios: Muy útil en sistemas de facturación periódicos.

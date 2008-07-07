@@ -16,4 +16,10 @@ ArchivoSQLpatch:
 
 ArchivoSQLdeins: 
 
+Dependencias:
+
+Incompatibles:
+
+Orden:
+
 Comentarios: Agrega varios botones a los listados en los que podemos hacer la manipulación múltiple.

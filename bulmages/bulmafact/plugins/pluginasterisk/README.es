@@ -17,6 +17,12 @@ ArchivoSQLpatch: revf-pluginasterisk.sql
 
 ArchivoSQLdeins: 
 
+Dependencias:
+
+Incompatibles:
+
+Orden:
+
 Comentarios: Requiere el pluginalmacen y el plugincuadrante, sin los cuales no funcionará.
 También incluye en el código fuente ejemplos de scritps de validacion hecho en php para ser
 puestos en marcha en la centralita con agi.

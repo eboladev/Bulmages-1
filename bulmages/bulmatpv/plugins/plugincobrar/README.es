@@ -4,7 +4,7 @@
 #README.es
 #20080501 
 
-Nombre: Plugin de Cobro
+Nombre: Cobro de Tickets
 
 Biblioteca: libplugincobrar.so
 
@@ -16,5 +16,11 @@ ParmBD:
 ArchivoSQLpatch: 
 
 ArchivoSQLdeins: 
+
+Dependencias: libplugintpv.so
+
+Incompatibles:
+
+Orden: 40
 
 Comentarios: Ideal para Bares, Cafeterias y Restaurantes.

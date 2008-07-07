@@ -16,4 +16,10 @@ ArchivoSQLpatch:
 
 ArchivoSQLdeins: 
 
+Dependencias:
+
+Incompatibles:
+
+Orden:
+
 Comentarios: Útil en comercios donde hay que etiquetar los productos.

@@ -18,4 +18,10 @@ ArchivoSQLpatch: revf-pluginalias.sql
 
 ArchivoSQLdeins: 
 
+Dependencias:
+
+Incompatibles:
+
+Orden:
+
 Comentarios: 

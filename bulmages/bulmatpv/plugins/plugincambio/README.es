@@ -16,4 +16,10 @@ ArchivoSQLpatch:
 
 ArchivoSQLdeins: 
 
+Dependencias: libplugintpv.so
+
+Incompatibles:
+
+Orden:
+
 Comentarios: Ideal para Bares, Cafeterias y Restaurantes.

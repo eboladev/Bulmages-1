@@ -17,4 +17,10 @@ ArchivoSQLpatch:
 
 ArchivoSQLdeins: 
 
+Dependencias:
+
+Incompatibles:
+
+Orden:
+
 Comentarios: Ideal para meter los codigos de barras como alias y poder tickarlos.

@@ -16,4 +16,10 @@ ArchivoSQLpatch:
 
 ArchivoSQLdeins: 
 
+Dependencias:
+
+Incompatibles:
+
+Orden:
+
 Comentarios: Precisa de la impresora conectada al dispositivo serie o usb. De momento no hace control de desconexión por lo que si la impresora se bloquea el programa también lo hace.

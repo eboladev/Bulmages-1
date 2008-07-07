@@ -16,4 +16,10 @@ ArchivoSQLpatch:
 
 ArchivoSQLdeins: 
 
+Dependencias:
+
+Incompatibles:
+
+Orden:
+
 Comentarios: Es imprescindible tener la funcionalidad de TPV instalada o sino este plugin no funcionará

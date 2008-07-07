@@ -4,7 +4,7 @@ Plugins
 #README
 20080502
 
-Nombre: Plugin de resumen de una cuenta.
+Nombre: Resumen de una cuenta.
 
 Biblioteca: libpluginresumcta.so
 
@@ -16,5 +16,11 @@ ParmBD: -
 ArchivoSQLpatch: -
 
 ArchivoSQLdeins: -
+
+Dependencias:
+
+Incompatibles:
+
+Orden: 40
 
 Comentarios: -

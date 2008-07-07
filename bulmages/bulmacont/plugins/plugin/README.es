@@ -4,7 +4,7 @@
 #README.es
 20080502
 
-Nombre: Plugin ejemplo
+Nombre: Ejemplo de desarrollo
 
 Biblioteca: libplugin.so
 
@@ -15,5 +15,11 @@ ParmBD: -
 ArchivoSQLpatch: -
 
 ArchivoSQLdeins: -
+
+Dependencias:
+
+Incompatibles:
+
+Orden: 90
 
 Comentarios: -

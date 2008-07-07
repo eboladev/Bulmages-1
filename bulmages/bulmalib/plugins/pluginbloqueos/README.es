@@ -4,7 +4,7 @@
 #README
 #20080501
 
-Nombre: Plugin Bloqueo de Fichas
+Nombre: Bloqueo de Fichas
 
 Biblioteca: libpluginbloqueos.so
 
@@ -16,5 +16,11 @@ ParmBD: DBRev-Bloqueo
 ArchivoSQLpatch: rev-pluginbloqueos.sql
 
 ArchivoSQLdeins: 
+
+Dependencias:
+
+Incompatibles:
+
+Orden: 10
 
 Comentarios: Este plugin es importante en entornos multi-usuario ya que sin el se puede cometer facilmente un cambio que sea borrado por otro usuario.

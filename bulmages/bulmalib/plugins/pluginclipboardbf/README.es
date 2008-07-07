@@ -4,7 +4,7 @@ Plugins
 #README
 20080501
 
-Nombre: Plugin de Clipboard
+Nombre: Clipboard
 
 Biblioteca: libpluginclipboardbf.so
 
@@ -16,6 +16,12 @@ ParmBD: -
 ArchivoSQLpatch: -
 
 ArchivoSQLdeins: -
+
+Dependencias:
+
+Incompatibles:
+
+Orden: 50
 
 Comentarios: -
 

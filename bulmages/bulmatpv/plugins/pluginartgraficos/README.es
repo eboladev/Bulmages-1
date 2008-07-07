@@ -4,7 +4,7 @@
 #README.es
 #20080501 
 
-Nombre: Plugin de Parrilla Gráfica
+Nombre: Parrilla Gráfica
 
 Biblioteca: libpluginartgraficos.so
 
@@ -15,5 +15,11 @@ ParmBD:
 ArchivoSQLpatch: 
 
 ArchivoSQLdeins: 
+
+Dependencias: libplugintpv.so
+
+Incompatibles: libpluginartsubform.so
+
+Orden: 40
 
 Comentarios: Ideal para Bares, Cafeterias y Restaurantes.

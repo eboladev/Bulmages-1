@@ -17,6 +17,12 @@ ArchivoSQLpatch:
 
 ArchivoSQLdeins: 
 
+Dependencias:
+
+Incompatibles:
+
+Orden:
+
 Comentarios: Imprescindible para empresas con múltiples almacenes.
 
 Instalacion

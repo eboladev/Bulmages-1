@@ -18,5 +18,11 @@ ArchivoSQLpatch:
 
 ArchivoSQLdeins: 
 
+Dependencias:
+
+Incompatibles:
+
+Orden: 90
+
 Comentarios: Util para trabajos en ventana completa donde queremos tener algunas aplicaciones
 Visibles sin perder la capacidad de controlar el correo o el jabber.

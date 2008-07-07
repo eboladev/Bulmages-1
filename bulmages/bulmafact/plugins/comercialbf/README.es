@@ -17,6 +17,12 @@ ArchivoSQLpatch: revf-comercialbf.sql
 
 ArchivoSQLdeins: 
 
+Dependencias:
+
+Incompatibles:
+
+Orden:
+
 Comentarios: Imprescindible para empresas con comerciales.
 
 

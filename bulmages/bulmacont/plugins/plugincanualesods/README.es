@@ -4,7 +4,7 @@ Plugins
 #README
 20080502
 
-Nombre: Plugin de Cuentas Anuales 
+Nombre: Cuentas Anuales 
 
 Biblioteca: plugincanualesods.so
 
@@ -18,6 +18,12 @@ ParmBD: -
 ArchivoSQLpatch: -
 
 ArchivoSQLdeins: -
+
+Dependencias:
+
+Incompatibles:
+
+Orden: 70
 
 Comentarios: El formato de salida es ods. Esta basado en el plugincanualesods,
 creado por Fco. Javier a partir de un código de Tomeu Borràs. A partir de esto,

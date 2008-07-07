@@ -4,7 +4,7 @@
 #README.es
 #20080501 
 
-Nombre: Plugin de Administracion
+Nombre: Administracion del TPV (X Y Z)
 
 Biblioteca: libpluginadmin.so
 
@@ -15,5 +15,11 @@ ParmBD:
 ArchivoSQLpatch: 
 
 ArchivoSQLdeins: 
+
+Dependencias: libpluginabrevs.so
+
+Incompatibles:
+
+Orden: 5
 
 Comentarios: 

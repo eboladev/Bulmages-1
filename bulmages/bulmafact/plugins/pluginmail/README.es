@@ -16,4 +16,10 @@ ArchivoSQLpatch:
 
 ArchivoSQLdeins: 
 
+Dependencias:
+
+Incompatibles:
+
+Orden:
+
 Comentarios: Precisa el kmail, aunque sería sencilla hacer versiones para otros gestores de correo electronico.

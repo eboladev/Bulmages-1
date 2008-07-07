@@ -16,6 +16,12 @@ ArchivoSQLpatch: revf-plugindatosbase.sql
 
 ArchivoSQLdeins: rm-plugindatosbase.sql
 
+Dependencias:
+
+Incompatibles:
+
+Orden:
+
 Comentarios: Perfecto para empezar a trabajar sin tener que introducir toda la informacion inicial.
 
 

@@ -18,9 +18,6 @@ ln -s $1/$2/bulmafact/src/bulmafact /usr/bin/bulmafact
 rm /usr/bin/bulmatpv
 ln -s $1/$2/bulmatpv/src/bulmatpv /usr/bin/bulmatpv
 
-#rm /usr/bin/bgtrml2pdf.py
-#ln -s $1/$2/bgtrml2pdf /usr/bin/bgtrml2pdf
-
 rm /usr/bin/bgtrml2pdf
 ln -s $1/$2/bgtrml2pdf /usr/bin/bgtrml2pdf
 
@@ -46,11 +43,6 @@ rm -rf /usr/lib/bulmafact
 rm -rf /usr/lib/bulmatpv
 rm -rf /usr/lib/bulmacont
 rm -rf /usr/lib/bulmalib
-
-#ln -s $1/lib/bulmafact /usr/lib/bulmafact
-#ln -s $1/lib/bulmatpv  /usr/lib/bulmatpv
-#ln -s $1/lib/bulmacont /usr/lib/bulmacont
-#ln -s $1/lib/bulmalib  /usr/lib/bulmalib
 
 mkdir /usr/lib/bulmages
 ln -s $1/installbulmages/bgtrml2pdf/bgcolor.py /usr/lib/bulmages
@@ -97,5 +89,58 @@ find $1/bulmalib/plugins/ -name "*.png" | grep -v "CMake" |xargs -I '{}' ln -s '
 find $1/bulmalib/plugins/ -name "*.jpg" | grep -v "CMake" |xargs -I '{}' ln -s '{}' /usr/share/bulmages/icons/
 find $1/bulmalib/plugins/ -name "*.xpn" | grep -v "CMake" |xargs -I '{}' ln -s '{}' /usr/share/bulmages/icons/
 find $1/bulmalib/plugins/ -name "*.rml" | grep -v "CMake" |xargs -I '{}' ln -s '{}' /usr/share/bulmages/openreports/
+
+#Hacemos la instalacion de los README en el docs.
+mkdir /usr/share/bulmages
+mkdir /usr/share/bulmages/bulmafact-plugins
+mkdir /usr/share/bulmages/bulmalib-plugins
+mkdir /usr/share/bulmages/bulmacont-plugins
+mkdir /usr/share/bulmages/bulmatpv-plugins
+
+
+
+for archivo in `find $1/bulmalib -name "README.es" | grep -v ".svn"`; do
+archivo1=$archivo
+archiv=`echo  $archivo | sed "s#/README.es##g" | sed "s#.*/##g"`
+echo $archivo1
+
+echo "ln -s $archivo1 /usr/share/bulmages/bulmalib-plugins/README.es.$archiv"
+ln -s $archivo1 /usr/share/bulmages/bulmalib-plugins/README.es.$archiv
+done
+
+
+
+
+for archivo in `find $1/bulmacont -name "README.es" | grep -v ".svn"`; do
+archivo1=$archivo
+archiv=`echo  $archivo | sed "s#/README.es##g" | sed "s#.*/##g"`
+echo $archivo1
+
+echo "ln -s $archivo1 /usr/share/bulmages/bulmacont-plugins/README.es.$archiv"
+ln -s $archivo1 /usr/share/bulmages/bulmacont-plugins/README.es.$archiv
+done
+
+
+
+for archivo in `find $1/bulmafact -name "README.es" | grep -v ".svn"`; do
+archivo1=$archivo
+archiv=`echo  $archivo | sed "s#/README.es##g" | sed "s#.*/##g"`
+echo $archivo1
+
+echo "ln -s $archivo1 /usr/share/bulmages/bulmafact-plugins/README.es.$archiv"
+ln -s $archivo1 /usr/share/bulmages/bulmafact-plugins/README.es.$archiv
+done
+
+
+
+for archivo in `find $1/bulmatpv -name "README.es" | grep -v ".svn"`; do
+archivo1=$archivo
+archiv=`echo  $archivo | sed "s#/README.es##g" | sed "s#.*/##g"`
+echo $archivo1
+
+echo "ln -s $archivo1 /usr/share/bulmages/bulmatpv-plugins/README.es.$archiv"
+ln -s $archivo1 /usr/share/bulmages/bulmatpv-plugins/README.es.$archiv
+done
+
 
 

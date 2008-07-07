@@ -17,4 +17,10 @@ ArchivoSQLpatch:
 
 ArchivoSQLdeins: 
 
+Dependencias: libplugintpv.so
+
+Incompatibles: libpluginartgraficos.so
+
+Orden:
+
 Comentarios: Ideal para Sistemas con muchos articulos.

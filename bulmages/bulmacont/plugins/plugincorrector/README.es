@@ -4,7 +4,7 @@ Plugins
 #README
 20080502
 
-Nombre: Plugin corrector
+Nombre: Corrector Contable
 
 Biblioteca: libplugincorrector.so
 
@@ -15,6 +15,12 @@ ParmBD: -
 ArchivoSQLpatch: -
 
 ArchivoSQLdeins: -
+
+Dependencias:
+
+Incompatibles:
+
+Orden: 80
 
 Comentarios: -
 

@@ -16,4 +16,10 @@ ArchivoSQLpatch: revf-pluginvehiculosbf.sql
 
 ArchivoSQLdeins: 
 
+Dependencias:
+
+Incompatibles:
+
+Orden:
+
 Comentarios: No está terminado

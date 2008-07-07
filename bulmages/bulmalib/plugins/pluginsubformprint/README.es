@@ -4,7 +4,7 @@ Plugins
 #README
 20080502
 
-Nombre: Plugin de impresión subformulario.
+Nombre: Impresión subformulario
 
 Biblioteca: libpluginsubformprint.so
 
@@ -16,6 +16,12 @@ ParmBD: -
 ArchivoSQLpatch: -
 
 ArchivoSQLdeins: -
+
+Dependencias:
+
+Incompatibles:
+
+Orden: 50
 
 Comentarios: Basado en el plugin 'pluginsubformsxc'. (c) 2007 Conetxia Soluciones Informaticas.
 Software Bajo Licencia G.P.L.

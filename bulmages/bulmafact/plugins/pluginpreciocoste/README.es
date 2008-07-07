@@ -16,4 +16,10 @@ ArchivoSQLpatch: revf-pluginpreciocoste.sql
 
 ArchivoSQLdeins: 
 
+Dependencias:
+
+Incompatibles:
+
+Orden:
+
 Comentarios: 

@@ -16,4 +16,10 @@ ArchivoSQLpatch:
 
 ArchivoSQLdeins: 
 
+Dependencias:
+
+Incompatibles:
+
+Orden: 90
+
 Comentarios: Sólo tiene interés para los desarrolladores.

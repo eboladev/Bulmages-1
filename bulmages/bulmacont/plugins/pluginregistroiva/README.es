@@ -4,7 +4,7 @@ Plugins
 #README
 20080502
 
-Nombre: Plugin de registro de IVA
+Nombre: Registro de IVA
 
 Biblioteca: libpluginregistroiva.so
 
@@ -15,6 +15,12 @@ ParmBD: -
 ArchivoSQLpatch: -
 
 ArchivoSQLdeins: -
+
+Dependencias:
+
+Incompatibles:
+
+Orden:
 
 Comentarios: -
   

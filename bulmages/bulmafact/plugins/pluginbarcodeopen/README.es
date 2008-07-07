@@ -18,4 +18,10 @@ ArchivoSQLpatch:
 
 ArchivoSQLdeins: 
 
+Dependencias:
+
+Incompatibles:
+
+Orden: 60
+
 Comentarios: Requiere de la extensión rlbarcode instalada en reportlab.

@@ -16,4 +16,10 @@ ArchivoSQLpatch: revf-plugininventario.sql
 
 ArchivoSQLdeins: 
 
+Dependencias:
+
+Incompatibles:
+
+Orden:
+
 Comentarios: Imprescindible en los sistema de control de stock.

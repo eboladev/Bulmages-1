@@ -4,7 +4,7 @@
 #README.es
 #20080501 
 
-Nombre: Plugin de Visor TPV
+Nombre: Visor TPV
 
 Biblioteca: libpluginvisor.so
 
@@ -17,5 +17,11 @@ ParmBD:
 ArchivoSQLpatch: 
 
 ArchivoSQLdeins: 
+
+Dependencias:
+
+Incompatibles:
+
+Orden:
 
 Comentarios: Testeado con un visor SamSung Bixolon BCD1000

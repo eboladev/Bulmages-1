@@ -4,7 +4,7 @@ Plugins
 #README
 20080502
 
-Nombre: Plugin de balance jerárquico.
+Nombre: Balance Jerárquico.
 
 Biblioteca: libpluginbalancetree.so
 
@@ -15,6 +15,12 @@ ParmBD: -
 ArchivoSQLpatch: -
 
 ArchivoSQLdeins: -
+
+Dependencias:
+
+Incompatibles:
+
+Orden: 20
 
 Comentarios: -
 

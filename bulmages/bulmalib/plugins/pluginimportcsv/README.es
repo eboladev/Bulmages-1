@@ -4,7 +4,7 @@ Plugins
 #README
 20080502
 
-Nombre: Plugin de Importacion de datos separados por coma
+Nombre: Importacion de datos separados por coma
 
 Biblioteca: libpluginimportcsv.so
 
@@ -16,6 +16,12 @@ ParmBD: -
 ArchivoSQLpatch: -
 
 ArchivoSQLdeins: -
+
+Dependencias:
+
+Incompatibles:
+
+Orden: 40
 
 Comentarios: Con este plugin aparece un menu contextual en las fichas que
 permite la importacion de datos en la tabla que la ficha representa.

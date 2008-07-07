@@ -16,4 +16,10 @@ ArchivoSQLpatch: revf-plugintipostrabajo.sql
 
 ArchivoSQLdeins: 
 
+Dependencias:
+
+Incompatibles:
+
+Orden:
+
 Comentarios: Funciona en conjuncion con el plugin de cuadrantes.
