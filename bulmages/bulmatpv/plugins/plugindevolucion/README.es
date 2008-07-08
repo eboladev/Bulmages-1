@@ -18,8 +18,8 @@ ArchivoSQLdeins:
 
 Dependencias:
 
-Incompatibles:
+Incompatibles: libplugindevolucion2.so
 
-Orden:
+Orden: 50
 
 Comentarios: Ideal todo tipo de comercio.

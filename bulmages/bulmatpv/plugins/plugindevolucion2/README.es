@@ -16,4 +16,9 @@ ArchivoSQLpatch:
 
 ArchivoSQLdeins: 
 
+Dependencias:
+
+Incompatibles: libplugindevolucion.so
+
+Orden: 50
 Comentarios: Ideal todo tipo de comercio.
