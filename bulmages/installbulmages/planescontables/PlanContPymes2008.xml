@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding = "UTF8"?>
 <!DOCTYPE FUGIT>
-<FUGIT version='0.3.1' origen='BulmaGes' date=''>
+<FUGIT version='0.11.1' origen='BulmaGes' date='03/06/2008'>
 <CUENTA>
  <IDCUENTA>1</IDCUENTA>
  <CODIGO>10</CODIGO>
@@ -1016,7 +1016,7 @@
 <CUENTA>
  <IDCUENTA>47</IDCUENTA>
  <CODIGO>154</CODIGO>
- <DESCRIPCION> Aportaciones no dinerarias pendientes por acciones o participaciones consideradas como pasivos financieros</DESCRIPCION>
+ <DESCRIPCION> Aportaciones no dinerarias pendientes por acciones o participaciones consideradas pasivos financieros</DESCRIPCION>
  <CIFENT_CUENTA></CIFENT_CUENTA>
  <DIRENT_CUENTA></DIRENT_CUENTA>
  <CODPADRE>15</CODPADRE>
