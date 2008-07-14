@@ -60,3 +60,6 @@ install(DIRECTORY dbmodels/
 		DESTINATION share/bulmages/dbmodels/plugins
 		PATTERN ".svn" EXCLUDE)
 
+
+set (files1 openreports/inf_ventas.rml)
+install (FILES ${files1} DESTINATION share/bulmages/openreports)
