@@ -131,7 +131,7 @@ void EmpresaTPV::z()
     if ( totalcont == "" ) totalcont = "0";
     delete cur1;
 
-    QString queryvisa = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz = "+idz+" AND ticketalbaran = TRUE AND idforma_pago <> "+ confpr->valor(CONF_IDFORMA_PAGO_VISA);
+    QString queryvisa = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz = "+idz+" AND ticketalbaran = TRUE AND idforma_pago = "+ confpr->valor(CONF_IDFORMA_PAGO_VISA);
 
     cursor2 *cur2 = cargacursor ( queryvisa );
     QString numticketsvisa = cur2->valor ( "numtickets" );
@@ -301,7 +301,7 @@ void EmpresaTPV::x()
     delete cur1;
 
 
-    QString queryvisa = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE AND idforma_pago <> "+ confpr->valor(CONF_IDFORMA_PAGO_VISA);
+    QString queryvisa = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE AND idforma_pago = "+ confpr->valor(CONF_IDFORMA_PAGO_VISA);
 
     cursor2 *cur2 = cargacursor ( queryvisa );
     QString numticketsvisa = cur2->valor ( "numtickets" );
