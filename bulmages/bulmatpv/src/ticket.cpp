@@ -696,7 +696,7 @@ void Ticket::imprimir()
    pr.printText("\n");
 
    pr.turnWhiteBlack(1);
-   pr.printText(" Uds. PRODUCTO � � � � � � �P.U. �IMPORTE \n");
+   pr.printText(" Uds. PRODUCTO � � � � � � �T.C. �IMPORTE \n");
 
    pr.turnWhiteBlack(0);
    pr.setCharacterPrintMode(CHARACTER_FONTB_SELECTED);
@@ -711,11 +711,13 @@ void Ticket::imprimir()
       Fixed pvp = Fixed(linea->DBvalue ( "pvplalbaran" ));
       pvp = pvp + pvp*iva/ Fixed("100");
       Fixed pvptotal = Fixed(linea->DBvalue("cantlalbaran"))*pvp;
-      pr.printText(linea->DBvalue ( "cantlalbaran" ).rightJustified ( 5, ' ', TRUE )+" �");
+      pr.printText(linea->DBvalue ( "cantlalbaran" ).rightJustified ( 5, ' ', TRUE )+" ");
       pr.printText(linea->DBvalue("desclalbaran").leftJustified(27,' ', true)+" ");
       QString pvpstr = pvp.toQString();
       QString pvptotalstr = pvptotal.toQString();
-      pr.printText(QString(pvpstr+"�").rightJustified ( 10, ' ', TRUE )+" ");
+//      pr.printText(QString(pvpstr+"�").rightJustified ( 10, ' ', TRUE )+" ");
+      pr.printText(linea->DBvalue("nomtc_talla").left(4).rightJustified(5, ' ', TRUE));
+      pr.printText(linea->DBvalue("nomtc_color").left(4).rightJustified(5, ' ', TRUE) + " ");
       pr.printText(QString(pvptotalstr+"�").rightJustified ( 10, ' ', TRUE ));
       pr.printText("\n");
    }
@@ -732,8 +734,8 @@ void Ticket::imprimir()
    pr.printText("Le ha atendido "+trabajador.nombre+"\n");
    pr.printText("\n");
 
-   pr.printText("Plazo maximo para cambio 15 dias, unicamente \n");
-   pr.printText("con ticket de compra. \n");
+   pr.printText("Plazo maximo para cambio 15 dias, \n");
+   pr.printText(" unicamente con ticket de compra. \n");
    pr.printText("\n");
 
    pr.printText("Tel. " + empresa.telefono+"\n");
