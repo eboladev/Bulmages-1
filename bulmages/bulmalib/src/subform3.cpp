@@ -2038,7 +2038,7 @@ QString SubForm3::imprimir()
     BLProgressBar barra;
     barra.show();
     barra.setRange ( 0, mui_listcolumnas->rowCount() + mui_list->rowCount() );
-    barra.setText(tr ("Imprimiendo ") +  m_tablename);
+    barra.setText ( tr ( "Imprimiendo " ) +  m_tablename );
     barra.setValue ( 0 );
     QLocale::setDefault ( QLocale ( QLocale::Spanish, QLocale::Spain ) );
     QLocale spanish;

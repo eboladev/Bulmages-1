@@ -178,11 +178,11 @@ void ClienteView::on_mui_informe_clicked()
     _depura ( "ClienteView::on_mui_informe_clicked", 0 );
 
     if ( DBvalue ( "idcliente" ).isEmpty() ) {
-	mensajeInfo ( tr ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
+        mensajeInfo ( tr ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
     } else {
-	InformeCliente inf ( empresaBase() );
-	inf.setCliente ( DBvalue ( "idcliente" ) );
-	inf.generarInforme();
+        InformeCliente inf ( empresaBase() );
+        inf.setCliente ( DBvalue ( "idcliente" ) );
+        inf.generarInforme();
     } // end if
 
     _depura ( "END ClienteView::on_mui_informe_clicked", 0 );

@@ -216,7 +216,7 @@ void Asiento1View::iniciar_asiento_nuevo ( QString nuevoordenasiento )
             idasiento = cur->valor ( "id" ).toInt() + 1;
         delete cur;
 
-        query = "INSERT INTO asiento (idasiento, fecha, ordenasiento) VALUES (" + QString( "%1" ).arg( idasiento ) + ", '" + empresaBase() ->sanearCadena ( fecha ) + "', " + ordenasiento + ")";
+        query = "INSERT INTO asiento (idasiento, fecha, ordenasiento) VALUES (" + QString ( "%1" ).arg ( idasiento ) + ", '" + empresaBase() ->sanearCadena ( fecha ) + "', " + ordenasiento + ")";
         empresaBase() ->ejecuta ( query );
 
         empresaBase() ->commit();

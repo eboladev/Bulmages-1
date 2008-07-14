@@ -20,7 +20,8 @@ Devolucion::Devolucion ( EmpresaTPV *emp, QWidget *parent ) : BLWidget ( emp, pa
 Devolucion::~Devolucion()
 {}
 
-void Devolucion::on_mui_devolver_clicked() {
+void Devolucion::on_mui_devolver_clicked()
+{
     m_ticket->guardar();
     ( ( QDialog * ) parent() )->accept();
 }
@@ -32,146 +33,140 @@ void Devolucion::on_mui_cancelar_clicked()
     ( ( QDialog * ) parent() )->accept();
 }
 
-void Devolucion::on_mui_vale_clicked() {
+void Devolucion::on_mui_vale_clicked()
+{
 
-   struct empresastr
-   {
-	QString nombre;
-	QString direccionCompleta;
-	QString codigoPostal;
-      QString ciudad;
-      QString provincia;
-	QString telefono;
-   }empresa;
+    struct empresastr {
+        QString nombre;
+        QString direccionCompleta;
+        QString codigoPostal;
+        QString ciudad;
+        QString provincia;
+        QString telefono;
+    }empresa;
 
-   struct clientestr
-   {
-      QString cif;
-      QString nombre;
-   }cliente;
+    struct clientestr {
+        QString cif;
+        QString nombre;
+    }cliente;
 
-   struct trabajadorstr
-   {
-      QString nombre;
-      QString id;
-   }trabajador;
+    struct trabajadorstr {
+        QString nombre;
+        QString id;
+    }trabajador;
 
-   struct almacenstr
-   {
-      QString nombre;
-   }almacen;
+    struct almacenstr {
+        QString nombre;
+    }almacen;
 
-   struct fechastr
-   {
-      QString dia;
-      QString hora;
-   }fecha;
+    struct fechastr {
+        QString dia;
+        QString hora;
+    }fecha;
 
-   struct totalstr
-   {
-      Fixed iva;
-      Fixed baseImponible;
-      Fixed totalIva;
-   }total;
+    struct totalstr {
+        Fixed iva;
+        Fixed baseImponible;
+        Fixed totalIva;
+    }total;
 
-   cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
-   if ( !cur->eof() )
-      empresa.nombre =cur->valor ( "valor" );
-   delete cur;
+    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
+    if ( !cur->eof() )
+        empresa.nombre = cur->valor ( "valor" );
+    delete cur;
 
-   cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" );
-   if ( !cur->eof() )
-      empresa.direccionCompleta = cur->valor ( "valor" );
-   delete cur;
+    cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" );
+    if ( !cur->eof() )
+        empresa.direccionCompleta = cur->valor ( "valor" );
+    delete cur;
 
-   cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
-   if ( !cur->eof() )
-      empresa.codigoPostal = cur->valor ( "valor" ).toAscii();
-   delete cur;
+    cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
+    if ( !cur->eof() )
+        empresa.codigoPostal = cur->valor ( "valor" ).toAscii();
+    delete cur;
 
-   cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Ciudad'" );
-   if ( !cur->eof() )
-      empresa.ciudad = cur->valor ( "valor" );
-   delete cur;
+    cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Ciudad'" );
+    if ( !cur->eof() )
+        empresa.ciudad = cur->valor ( "valor" );
+    delete cur;
 
-   cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Telefono'" );
-   if ( !cur->eof() )
-      empresa.telefono = cur->valor ( "valor" );
-   delete cur;
+    cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Telefono'" );
+    if ( !cur->eof() )
+        empresa.telefono = cur->valor ( "valor" );
+    delete cur;
 
-   cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Provincia'" );
-   if ( !cur->eof() )
-      empresa.provincia = cur->valor("valor");
-   delete cur;
+    cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Provincia'" );
+    if ( !cur->eof() )
+        empresa.provincia = cur->valor ( "valor" );
+    delete cur;
 
-   fecha.dia = QDate::currentDate().toString("d-M-yyyy");
-   fecha.hora = QTime::currentTime().toString("HH:mm");
+    fecha.dia = QDate::currentDate().toString ( "d-M-yyyy" );
+    fecha.hora = QTime::currentTime().toString ( "HH:mm" );
 
-   trabajador.id = m_ticket->DBvalue("idtrabajador");
-   cur = empresaBase() ->cargacursor ( "SELECT * FROM trabajador WHERE idtrabajador=" + m_ticket->DBvalue ( "idtrabajador" ) );
-   if ( !cur->eof() )
-      trabajador.nombre = cur->valor ( "nomtrabajador" );
-   delete cur;
+    trabajador.id = m_ticket->DBvalue ( "idtrabajador" );
+    cur = empresaBase() ->cargacursor ( "SELECT * FROM trabajador WHERE idtrabajador=" + m_ticket->DBvalue ( "idtrabajador" ) );
+    if ( !cur->eof() )
+        trabajador.nombre = cur->valor ( "nomtrabajador" );
+    delete cur;
 
-   cur = empresaBase() ->cargacursor ( "SELECT * FROM cliente WHERE idcliente=" + m_ticket->DBvalue ( "idcliente" ) );
-   if ( !cur->eof() )
-   {
-      cliente.cif = cur->valor ( "cifcliente" ).toAscii();
-      cliente.nombre = cur->valor ( "nomcliente" ).toAscii();
-   } // end if
-   delete cur;
+    cur = empresaBase() ->cargacursor ( "SELECT * FROM cliente WHERE idcliente=" + m_ticket->DBvalue ( "idcliente" ) );
+    if ( !cur->eof() ) {
+        cliente.cif = cur->valor ( "cifcliente" ).toAscii();
+        cliente.nombre = cur->valor ( "nomcliente" ).toAscii();
+    } // end if
+    delete cur;
 
-   cur = empresaBase() ->cargacursor ( "SELECT * FROM almacen WHERE idalmacen=" + m_ticket->DBvalue ( "idalmacen" ) );
-   if ( !cur->eof() )
-      almacen.nombre = cur->valor ( "nomalmacen" ).toAscii() ;
-   delete cur;
+    cur = empresaBase() ->cargacursor ( "SELECT * FROM almacen WHERE idalmacen=" + m_ticket->DBvalue ( "idalmacen" ) );
+    if ( !cur->eof() )
+        almacen.nombre = cur->valor ( "nomalmacen" ).toAscii() ;
+    delete cur;
 
 
-   EscPrinter pr(confpr->valor ( CONF_TICKET_PRINTER_FILE ));
-   pr.initializePrinter();
-   pr.setCharacterCodeTable ( page19 );
-   pr.setJustification ( center );
+    EscPrinter pr ( confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
+    pr.initializePrinter();
+    pr.setCharacterCodeTable ( page19 );
+    pr.setJustification ( center );
 
-   if(confpr->valor(CONF_TPV_PRINTER_LOGO) != "") {
-   	pr.printImage(confpr->valor(CONF_TPV_PRINTER_LOGO));
-   } // end if
-   pr.printText(empresa.nombre+"\n");
-   pr.setCharacterPrintMode(CHARACTER_FONTB_SELECTED);
-   pr.setCharacterSize(CHAR_WIDTH_1|CHAR_HEIGHT_1);
-   pr.setColor(red);
-   pr.printText(empresa.direccionCompleta+"\n");
-   pr.initializePrinter();
-   pr.setCharacterCodeTable ( page19 );
+    if ( confpr->valor ( CONF_TPV_PRINTER_LOGO ) != "" ) {
+        pr.printImage ( confpr->valor ( CONF_TPV_PRINTER_LOGO ) );
+    } // end if
+    pr.printText ( empresa.nombre + "\n" );
+    pr.setCharacterPrintMode ( CHARACTER_FONTB_SELECTED );
+    pr.setCharacterSize ( CHAR_WIDTH_1 | CHAR_HEIGHT_1 );
+    pr.setColor ( red );
+    pr.printText ( empresa.direccionCompleta + "\n" );
+    pr.initializePrinter();
+    pr.setCharacterCodeTable ( page19 );
 
-   pr.printText("\n");
-   pr.printText(fecha.dia+" "+fecha.hora+"\n");
-   pr.printText("Cliente, "+cliente.cif+" "+cliente.nombre+"\n");
-   pr.printText("\n");
+    pr.printText ( "\n" );
+    pr.printText ( fecha.dia + " " + fecha.hora + "\n" );
+    pr.printText ( "Cliente, " + cliente.cif + " " + cliente.nombre + "\n" );
+    pr.printText ( "\n" );
 
-   pr.printText("Vale de Compra por valor de: \n");
-   pr.printText(mui_difprice->text());
+    pr.printText ( "Vale de Compra por valor de: \n" );
+    pr.printText ( mui_difprice->text() );
 
-   pr.printText("\n\n");
-   pr.setJustification(left);
-   pr.setCharacterPrintMode(CHARACTER_FONTA_SELECTED);
-   pr.printText("Le ha atendido "+trabajador.nombre+"\n");
-   pr.printText("\n");
+    pr.printText ( "\n\n" );
+    pr.setJustification ( left );
+    pr.setCharacterPrintMode ( CHARACTER_FONTA_SELECTED );
+    pr.printText ( "Le ha atendido " + trabajador.nombre + "\n" );
+    pr.printText ( "\n" );
 
-   pr.printText("Tel. " + empresa.telefono+"\n");
-   pr.printText("\n");
+    pr.printText ( "Tel. " + empresa.telefono + "\n" );
+    pr.printText ( "\n" );
 
-   pr.setJustification(center);
-   pr.setColor(red);
-   pr.printText("*** GRACIAS POR SU VISITA ***\n");
+    pr.setJustification ( center );
+    pr.setColor ( red );
+    pr.printText ( "*** GRACIAS POR SU VISITA ***\n" );
 
-   
-   QByteArray qba = m_ticket->DBvalue ( "refalbaran" ).toAscii();
-   char* barcode = qba.data();
-   pr.setJustification ( center );
-   pr.setBarcodeFormat(2, 50, both, fontB);
-   pr.printBarCode(code39, qba.size(), barcode);
-   pr.cutPaperAndFeed(TRUE,10);
-   pr.print();
+
+    QByteArray qba = m_ticket->DBvalue ( "refalbaran" ).toAscii();
+    char* barcode = qba.data();
+    pr.setJustification ( center );
+    pr.setBarcodeFormat ( 2, 50, both, fontB );
+    pr.printBarCode ( code39, qba.size(), barcode );
+    pr.cutPaperAndFeed ( TRUE, 10 );
+    pr.print();
 
     m_ticket->guardar();
     ( ( QDialog * ) parent() )->accept();
@@ -196,8 +191,9 @@ void Devolucion::on_mui_ref_returnPressed()
     pintar();
 }
 
-void Devolucion::pintar() {
-   if ( !m_ticket ) return;
+void Devolucion::pintar()
+{
+    if ( !m_ticket ) return;
 
 // ====================== PINTAMOS ========================
     QString html = "<p style=\"font-family:monospace; font-size: 8pt;\">";
@@ -218,10 +214,10 @@ void Devolucion::pintar() {
 
     html += "<TR bgcolor = \"#CCCCCC\">";
     html += "<TD>SEL</TD>";
-    for (int z = 0; z < m_ticket->listaLineas()->at(1)->lista()->size(); ++z) {
-	DBCampo *head = m_ticket->listaLineas()->at(1)->lista()->at(z);
-	if (head->nomcampo().left(2) != "id" && head->nomcampo().left(3) != "num")
-	html += "<TD>"+head->nomcampo().left(4)+"</TD>";
+    for ( int z = 0; z < m_ticket->listaLineas()->at ( 1 )->lista()->size(); ++z ) {
+        DBCampo *head = m_ticket->listaLineas()->at ( 1 )->lista()->at ( z );
+        if ( head->nomcampo().left ( 2 ) != "id" && head->nomcampo().left ( 3 ) != "num" )
+            html += "<TD>" + head->nomcampo().left ( 4 ) + "</TD>";
     } // end for
     html += "</TR>";
 
@@ -229,15 +225,15 @@ void Devolucion::pintar() {
     for ( int i = 0; i < m_ticket->listaLineas() ->size(); ++i ) {
         item = m_ticket->listaLineas() ->at ( i );
 
-	html += "<TR>";
-        html += "<TD><A NAME=\"plus\" HREF=\"?op=plus&numlalbaran="+item->DBvalue("numlalbaran")+"\">+</A>  <A HREF=\"?op=minus&numlalbaran="+item->DBvalue("numlalbaran")+"\">-</A></td>";
-	for ( int j = 0; j < item->lista()->size(); ++j) {
-		DBCampo *camp = item->lista()->at(j);
- 	  	if (camp->nomcampo().left(2) != "id" && camp->nomcampo().left(3) != "num")
-			html += "<TD>"+camp->valorcampo()+"</TD>";
-	} // end for
+        html += "<TR>";
+        html += "<TD><A NAME=\"plus\" HREF=\"?op=plus&numlalbaran=" + item->DBvalue ( "numlalbaran" ) + "\">+</A>  <A HREF=\"?op=minus&numlalbaran=" + item->DBvalue ( "numlalbaran" ) + "\">-</A></td>";
+        for ( int j = 0; j < item->lista()->size(); ++j ) {
+            DBCampo *camp = item->lista()->at ( j );
+            if ( camp->nomcampo().left ( 2 ) != "id" && camp->nomcampo().left ( 3 ) != "num" )
+                html += "<TD>" + camp->valorcampo() + "</TD>";
+        } // end for
 
-		html += "</TR>";
+        html += "</TR>";
     }// end for
     html += "</TABLE>";
 
@@ -337,14 +333,14 @@ void Devolucion::pintar() {
     html += "</p>";
     html1 += "</FONT>";
 
-    if (m_totalin == "") {
-        mui_total->setText(total.toQString());
-	m_totalin = total.toQString();
+    if ( m_totalin == "" ) {
+        mui_total->setText ( total.toQString() );
+        m_totalin = total.toQString();
     }
-    mui_newtotal->setText(total.toQString());
-    Fixed diff (m_totalin);
+    mui_newtotal->setText ( total.toQString() );
+    Fixed diff ( m_totalin );
     diff = diff - total;
-    mui_difprice->setText(diff.toQString());
+    mui_difprice->setText ( diff.toQString() );
 
 
 // ======================================
@@ -353,29 +349,30 @@ void Devolucion::pintar() {
 }
 
 
-void Devolucion::on_mui_browser_anchorClicked(const QUrl &anchor) {
-	if (anchor.queryItemValue("op") == "minus") {
+void Devolucion::on_mui_browser_anchorClicked ( const QUrl &anchor )
+{
+    if ( anchor.queryItemValue ( "op" ) == "minus" ) {
 
-   if (m_ticket->DBvalue("idalbaran").isEmpty()) return;
-   int sizein = m_ticket->listaLineas()->size();
-    for ( int i = 0; i < sizein; ++i ) {
-        DBRecord *item = m_ticket->listaLineas() ->at ( i );
-	if (item->DBvalue("numlalbaran") == anchor.queryItemValue("numlalbaran")) {
-	DBRecord *nitem = m_ticket->agregarLinea();
-	QList<DBCampo *> *lista = item->lista();
-	for(int j=0; j < lista->size(); ++j) {
-		DBCampo * camp = lista->at(j);
-		if (camp->nomcampo() != "numlalbaran" ) {
-			nitem->setDBvalue(camp->nomcampo(), camp->valorcampo());
-		} // end if
-		if (camp->nomcampo() == "cantlalbaran" && camp->valorcampo().toFloat() > 0) {
-			nitem->setDBvalue(camp->nomcampo(), "-1");
-		}// end if
-	} // end if
-	} // end for
-    }// end for
+        if ( m_ticket->DBvalue ( "idalbaran" ).isEmpty() ) return;
+        int sizein = m_ticket->listaLineas()->size();
+        for ( int i = 0; i < sizein; ++i ) {
+            DBRecord *item = m_ticket->listaLineas() ->at ( i );
+            if ( item->DBvalue ( "numlalbaran" ) == anchor.queryItemValue ( "numlalbaran" ) ) {
+                DBRecord *nitem = m_ticket->agregarLinea();
+                QList<DBCampo *> *lista = item->lista();
+                for ( int j = 0; j < lista->size(); ++j ) {
+                    DBCampo * camp = lista->at ( j );
+                    if ( camp->nomcampo() != "numlalbaran" ) {
+                        nitem->setDBvalue ( camp->nomcampo(), camp->valorcampo() );
+                    } // end if
+                    if ( camp->nomcampo() == "cantlalbaran" && camp->valorcampo().toFloat() > 0 ) {
+                        nitem->setDBvalue ( camp->nomcampo(), "-1" );
+                    }// end if
+                } // end if
+            } // end for
+        }// end for
 
-	} // end if
+    } // end if
 
-	pintar();
+    pintar();
 }

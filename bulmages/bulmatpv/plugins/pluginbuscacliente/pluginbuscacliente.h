@@ -30,4 +30,4 @@
 
 extern "C" MY_EXPORT int entryPoint ( BulmaTPV * );
 extern "C" MY_EXPORT int EmpresaTPV_createMainWindows_Post ( EmpresaTPV * );
-extern "C" MY_EXPORT int BusquedaCliente_on_m_cifcliente_editingFinished_Post (BusquedaCliente *);
+extern "C" MY_EXPORT int BusquedaCliente_on_m_cifcliente_editingFinished_Post ( BusquedaCliente * );

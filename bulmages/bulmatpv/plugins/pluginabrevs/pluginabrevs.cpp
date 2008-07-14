@@ -45,7 +45,7 @@ int entryPoint ( BulmaTPV *tpv )
 
     /// Vamos a probar con un docwindow.
     g_doc1 = new BDockWidget ( "Abreviaturas", tpv, "abrevsdock" );
-    g_doc1->setObjectName("abrevsdock");
+    g_doc1->setObjectName ( "abrevsdock" );
     g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
     tpv->addDockWidget ( Qt::BottomDockWidgetArea, g_doc1 );
     g_doc1->show();
@@ -71,7 +71,7 @@ int exitPoint ( BulmaTPV *tpv )
 int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
 {
     g_tot = new Abrevs ( etpv, g_doc1 );
-    g_tot->setObjectName("abrevs");
+    g_tot->setObjectName ( "abrevs" );
     g_doc1->setWidget ( g_tot );
 
     Trabajadores *trab = new Trabajadores ( etpv, 0 );

@@ -27,9 +27,9 @@
 **/
 porcentajeCarga::porcentajeCarga ( QWidget *parent ) : QDialog ( parent )
 {
-   if (confpr->valor(CONF_REFRESH_LIST) != "TRUE" ) {
-	close();
-   } // end if
+    if ( confpr->valor ( CONF_REFRESH_LIST ) != "TRUE" ) {
+        close();
+    } // end if
 }
 
 
@@ -39,9 +39,9 @@ porcentajeCarga::porcentajeCarga ( QWidget *parent ) : QDialog ( parent )
 void porcentajeCarga::mostrar()
 {
 
-    if (confpr->valor(CONF_REFRESH_LIST) == "TRUE") {
-	    setupUi ( this );
-	    show();
+    if ( confpr->valor ( CONF_REFRESH_LIST ) == "TRUE" ) {
+        setupUi ( this );
+        show();
     } // end if
 }
 

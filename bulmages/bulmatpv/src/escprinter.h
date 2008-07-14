@@ -50,182 +50,173 @@
 #define CHAR_HEIGHT_7 0x06
 #define CHAR_HEIGHT_8 0x07
 
-enum printColor
-{
-	black=49,
-	red
+enum printColor {
+    black = 49,
+    red
 };
 
-enum characterCodeTable
-{
-	page0 = 0, // [PC437 (U.S.A., Standard Europe)]
-	page1, // [Katakana]
-	page2, //[PC850 (Multilingual)]
-	page3, // [PC860 (Portuguese)]
-	page4, // [PC863 (Canadian-French)]
-	page5, // [PC865 (Nordic)]
-	page6, // [Simplified Kanji, Hirakana]
-	page7, // [Simplified Kanji]
-	page8, // [Simplified Kanji]
-	page16 = 16, // [WPC1252]
-	page17, // [PC866 (Cyrillic #2)]
-	page18, // [PC852 (Latin 2)]
-	page19, // [PC858 (Euro)]
-	page20, // [Thailand character code 42]
-	page21, // [Thailand character code 11]
-	page22, // [Thailand character code 13]
-	page23, // [Thailand character code 14]
-	page24, // [Thailand character code 16]
-	page25, // [Thailand character code 17]
-	page26, // [Thailand character code 18]
-	page254 = 254,
-	page255
+enum characterCodeTable {
+    page0 = 0, // [PC437 (U.S.A., Standard Europe)]
+    page1, // [Katakana]
+    page2, //[PC850 (Multilingual)]
+    page3, // [PC860 (Portuguese)]
+    page4, // [PC863 (Canadian-French)]
+    page5, // [PC865 (Nordic)]
+    page6, // [Simplified Kanji, Hirakana]
+    page7, // [Simplified Kanji]
+    page8, // [Simplified Kanji]
+    page16 = 16, // [WPC1252]
+    page17, // [PC866 (Cyrillic #2)]
+    page18, // [PC852 (Latin 2)]
+    page19, // [PC858 (Euro)]
+    page20, // [Thailand character code 42]
+    page21, // [Thailand character code 11]
+    page22, // [Thailand character code 13]
+    page23, // [Thailand character code 14]
+    page24, // [Thailand character code 16]
+    page25, // [Thailand character code 17]
+    page26, // [Thailand character code 18]
+    page254 = 254,
+    page255
 
 
 };
 
 
-enum printerFont
-{
-	fontA = 0,
-	fontB
+enum printerFont {
+    fontA = 0,
+    fontB
 };
 
-enum justification
-{
-	left = 0,
-	center,
-	right
+enum justification {
+    left = 0,
+    center,
+    right
 };
 
-enum barcodeSystem
-{
-	upca = 0, //UPC-A
-	upce,
-	jan13, //EAN13
-	jan8, //EAN8
-	code39,
-	itf, //interleaved 2 of 5
-	codabar, //NW7
-	code93,
-	code128
+enum barcodeSystem {
+    upca = 0, //UPC-A
+    upce,
+    jan13, //EAN13
+    jan8, //EAN8
+    code39,
+    itf, //interleaved 2 of 5
+    codabar, //NW7
+    code93,
+    code128
 };
 
-enum barCodeTextPos
-{
-	notPrinted =0,
-	above, //above the bar code
-	below,
-	both //below and above
+enum barCodeTextPos {
+    notPrinted = 0,
+    above, //above the bar code
+    below,
+    both //below and above
 };
 
-enum printDirection
-{
-	leftToRight =0,
-	bottomTotop,
-	rightToLeft,
-	topToBottom
+enum printDirection {
+    leftToRight = 0,
+    bottomTotop,
+    rightToLeft,
+    topToBottom
 };
 
-enum qrModel
-{
-	qrModel1 = 49,
-	qrModel2
+enum qrModel {
+    qrModel1 = 49,
+    qrModel2
 };
 
-enum qrErrorCorrection
-{
-	qrlevelL = 48, // 7%
-	qrlevelM, //15%
-	qrlevelQ, //25%
-	qrlevelH //30%
+enum qrErrorCorrection {
+    qrlevelL = 48, // 7%
+    qrlevelM, //15%
+    qrlevelQ, //25%
+    qrlevelH //30%
 
 };
 
 class EscPrinter
 {
-	public:
-		EscPrinter();
-		EscPrinter ( QString device );
-		~EscPrinter() {}
-		
-		void test();
-			
-		void print();
-		void printAndClearBuffer();
-		void clearBuffer();
+public:
+    EscPrinter();
+    EscPrinter ( QString device );
+    ~EscPrinter() {}
 
-		void initializePrinter();
-		
-		void printImage ( QString path );
-		void printText ( QString text );
+    void test();
 
-		//Character ops
-		void setCharacterSpacing ( unsigned char n );
-		void setCharacterCodeTable ( characterCodeTable n );
-		void setCharacterPrintMode ( char mask );
-		void setUnderlineMode ( bool mode );
-		void setCharacterSize ( char mask );
-		void setSmoothing ( bool mode );
-		void setDoubleStrike ( bool mode );
-		void turnUpsideDown ( bool mode );
-		void turn90CWRotation ( bool onoff, bool extraSpacing );
-		void turnWhiteBlack ( bool mode );
-		void setColor ( printColor color );
+    void print();
+    void printAndClearBuffer();
+    void clearBuffer();
 
-		//PRINT POSITION COMMANDS
-		void horizontalTab();
-		void setHorizontalTabPos ( int numtabs, char* tabspos );
-		void setLeftMargin ( unsigned short margin );
-		void setPrintingAreaWidth ( unsigned short width ); //width default = 512
-		void setJustification ( justification j );
-		void setHAbsolutePos ( unsigned short pos );
-		void setHRelativePos ( unsigned short pos );
+    void initializePrinter();
 
-		//Barcode commands
-		void setBarcodeFormat ( int width, int height, barCodeTextPos pos, printerFont font );
-		void printBarCode ( barcodeSystem m, int n, char* codeData );
-		void setBarCodeHeight ( int n );
-		void setBarCodeWidth ( int n );
+    void printImage ( QString path );
+    void printText ( QString text );
 
-		//Page mode
-		void selectPageMode();
-		void setPrintArea ( unsigned short x, unsigned short y, unsigned short dx, unsigned short dy );
-		void setPrintDirection ( printDirection dir );
-		void setVAbsolutePos ( unsigned short pos );
-		void setVRelativePos ( unsigned short pos );
-		void cancelPrintData();
+    //Character ops
+    void setCharacterSpacing ( unsigned char n );
+    void setCharacterCodeTable ( characterCodeTable n );
+    void setCharacterPrintMode ( char mask );
+    void setUnderlineMode ( bool mode );
+    void setCharacterSize ( char mask );
+    void setSmoothing ( bool mode );
+    void setDoubleStrike ( bool mode );
+    void turnUpsideDown ( bool mode );
+    void turn90CWRotation ( bool onoff, bool extraSpacing );
+    void turnWhiteBlack ( bool mode );
+    void setColor ( printColor color );
 
-		//MACRO FUNCTION COMMANDS
-		void startEndMacro();
-		void executeMacro ( int rep, int timePeriod, bool mode );
+    //PRINT POSITION COMMANDS
+    void horizontalTab();
+    void setHorizontalTabPos ( int numtabs, char* tabspos );
+    void setLeftMargin ( unsigned short margin );
+    void setPrintingAreaWidth ( unsigned short width ); //width default = 512
+    void setJustification ( justification j );
+    void setHAbsolutePos ( unsigned short pos );
+    void setHRelativePos ( unsigned short pos );
 
-		//MECHANISM CONTROL COMMANDS
-		void turnUnidirPrintMode ( bool onoff ); //No on TM-t88II TM-L60II
-		void returnHome();//No on TM-t88II TM-L60II
-		void cutPaper ( bool partialcut ); //ONLY partial cut on tm-t88II
-		void cutPaperAndFeed ( bool partialcut, int feed );//ONLY partial cut on tm-t88II
+    //Barcode commands
+    void setBarcodeFormat ( int width, int height, barCodeTextPos pos, printerFont font );
+    void printBarCode ( barcodeSystem m, int n, char* codeData );
+    void setBarCodeHeight ( int n );
+    void setBarCodeWidth ( int n );
+
+    //Page mode
+    void selectPageMode();
+    void setPrintArea ( unsigned short x, unsigned short y, unsigned short dx, unsigned short dy );
+    void setPrintDirection ( printDirection dir );
+    void setVAbsolutePos ( unsigned short pos );
+    void setVRelativePos ( unsigned short pos );
+    void cancelPrintData();
+
+    //MACRO FUNCTION COMMANDS
+    void startEndMacro();
+    void executeMacro ( int rep, int timePeriod, bool mode );
+
+    //MECHANISM CONTROL COMMANDS
+    void turnUnidirPrintMode ( bool onoff ); //No on TM-t88II TM-L60II
+    void returnHome();//No on TM-t88II TM-L60II
+    void cutPaper ( bool partialcut ); //ONLY partial cut on tm-t88II
+    void cutPaperAndFeed ( bool partialcut, int feed );//ONLY partial cut on tm-t88II
 
 
-		//Print commands
-		void printAndLineFeed();
-		void printAndReturnStandardMode();
-		void printAndCarriageReturn();
-		void printDataPageMode();
-		void printAndFeedPaper ( int feed );
-		void printAndFeedLines ( int lines );
-		void printAndReverseFeed ( int feed ); //Not compatible TM-t88II III ,
+    //Print commands
+    void printAndLineFeed();
+    void printAndReturnStandardMode();
+    void printAndCarriageReturn();
+    void printDataPageMode();
+    void printAndFeedPaper ( int feed );
+    void printAndFeedLines ( int lines );
+    void printAndReverseFeed ( int feed ); //Not compatible TM-t88II III ,
 
-		//Line spacing commands
-		void selectDefaultLineSpacing();
-		void setLineSpacing ( int lspacing );
+    //Line spacing commands
+    void selectDefaultLineSpacing();
+    void setLineSpacing ( int lspacing );
 
-		//2D CODES
-		void printQRCode( qrModel model, int dotSize, qrErrorCorrection error, unsigned short numData, char* data ); //1<=dotSize<=16
-		void printTest();
+    //2D CODES
+    void printQRCode ( qrModel model, int dotSize, qrErrorCorrection error, unsigned short numData, char* data ); //1<=dotSize<=16
+    void printTest();
 
-	private:
-		QByteArray buffer;
-		QString device;
+private:
+    QByteArray buffer;
+    QString device;
 };
 #endif

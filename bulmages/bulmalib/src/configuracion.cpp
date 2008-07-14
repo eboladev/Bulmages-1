@@ -356,11 +356,11 @@ QString configuracion::nombre ( int i )
         return "CONF_TPV_FULLSCREEN";
     if ( i == CONF_REFRESH_LIST )
         return "CONF_REFRESH_LIST";
-     if ( i == CONF_SHOW_PROGRESS_BAR )
+    if ( i == CONF_SHOW_PROGRESS_BAR )
         return "CONF_SHOW_PROGRESS_BAR";
-     if ( i == CONF_IDFORMA_PAGO_VISA )
+    if ( i == CONF_IDFORMA_PAGO_VISA )
         return "CONF_IDFORMA_PAGO_VISA";
-     if ( i == CONF_IDFORMA_PAGO_CONTADO )
+    if ( i == CONF_IDFORMA_PAGO_CONTADO )
         return "CONF_IDFORMA_PAGO_CONTADO";
     if ( i == CONF_DIR_PLUGINS )
         return "CONF_DIR_PLUGINS";

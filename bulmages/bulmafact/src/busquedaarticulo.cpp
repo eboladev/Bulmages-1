@@ -190,7 +190,7 @@ void BusquedaArticulo::on_m_codigocompletoarticulo_editingFinished()
 {
     _depura ( "BusquedaCliente::on_m_codigocompletoarticulo_editingFinished", 0 );
     pinta();
-    g_plugins->lanza("BusquedaArticulo_on_m_codigocompletoarticulo_editingFinished_Post",this);
+    g_plugins->lanza ( "BusquedaArticulo_on_m_codigocompletoarticulo_editingFinished_Post", this );
     _depura ( "END BusquedaArticulo::on_m_codigocompletoarticulo_editingFinished", 0 );
 }
 

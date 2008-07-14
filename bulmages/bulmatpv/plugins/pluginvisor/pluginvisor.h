@@ -31,6 +31,6 @@
 extern "C" MY_EXPORT int entryPoint ( BulmaTPV * );
 extern "C" MY_EXPORT int exitPoint ( QMainWindow * );
 extern "C" MY_EXPORT int EmpresaTPV_createMainWindows_Post ( EmpresaTPV * );
-extern "C" MY_EXPORT int Ticket_insertarArticulo_Post(Ticket *);
-extern "C" MY_EXPORT int Ticket_total(Ticket *);
+extern "C" MY_EXPORT int Ticket_insertarArticulo_Post ( Ticket * );
+extern "C" MY_EXPORT int Ticket_total ( Ticket * );
 

@@ -35,7 +35,8 @@
 #include "pedidoclienteview.h"
 #include "albaranclienteview.h"
 
-class EmailThunderbirdQToolButton : public QToolButton {
+class EmailThunderbirdQToolButton : public QToolButton
+{
     Q_OBJECT
 
 private:

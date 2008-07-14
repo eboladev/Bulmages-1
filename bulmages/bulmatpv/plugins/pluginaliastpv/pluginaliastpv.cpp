@@ -28,9 +28,10 @@
 
 
 
-int Ticket_agregarLinea_Post(Ticket *tick, DBRecord * &item ) {
+int Ticket_agregarLinea_Post ( Ticket *tick, DBRecord * &item )
+{
 
-    mensajeInfo("hola");
+    mensajeInfo ( "hola" );
     item->addDBCampo ( "idtc_talla", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Ticket", "Talla" ) );
     item->addDBCampo ( "idtc_color", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Ticket", "Color" ) );
 
@@ -56,19 +57,19 @@ int Ticket_insertarArticuloNL_Post ( Ticket *tick )
 int Ticket_insertarArticulo_Post ( Ticket *tick )
 {
     int valor = -1;
-    _depura("pluginaliastpv::Ticket_insertarArticulo_Post", 0);
+    _depura ( "pluginaliastpv::Ticket_insertarArticulo_Post", 0 );
     static int semaforo = 0;
-    if (semaforo == 0) {
-	semaforo = 1;
-	QString query = "SELECT * FROM tc_articulo_alias WHERE aliastc_articulo_tallacolor = '" + ( ( EmpresaTPV * ) tick->empresaBase() )->valorInput() + "'";
-	cursor2 *cur = tick->empresaBase() ->cargacursor ( query );
-	if ( !cur->eof() ) {
-		tick->insertarArticulo ( cur->valor ( "idarticulo" ), Fixed ( "1" ) );
-	} // end if
-	delete cur;
+    if ( semaforo == 0 ) {
+        semaforo = 1;
+        QString query = "SELECT * FROM tc_articulo_alias WHERE aliastc_articulo_tallacolor = '" + ( ( EmpresaTPV * ) tick->empresaBase() )->valorInput() + "'";
+        cursor2 *cur = tick->empresaBase() ->cargacursor ( query );
+        if ( !cur->eof() ) {
+            tick->insertarArticulo ( cur->valor ( "idarticulo" ), Fixed ( "1" ) );
+        } // end if
+        delete cur;
         valor = 0;
-	semaforo = 0;
+        semaforo = 0;
     } // end if
-    _depura("END pluginaliastpv::Ticket_insertarArticulo_Post", 0);
+    _depura ( "END pluginaliastpv::Ticket_insertarArticulo_Post", 0 );
     return valor;
 }

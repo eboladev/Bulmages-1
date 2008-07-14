@@ -484,7 +484,7 @@ int DBRecord::DBsave ( QString &id )
                 if ( campo->restrictcampo() & DBCampo::DBPrimaryKey ) {
                     QString lin = campo->valorcampoprep ( err );
                     if ( err )
-                    	throw ( err );
+                        throw ( err );
                     querywhere += separadorwhere + campo->nomcampo() + " = " + lin;
                     separadorwhere = " AND ";
                 } // end if
@@ -498,7 +498,7 @@ int DBRecord::DBsave ( QString &id )
                     listcampos += separador + campo->nomcampo();
                     listvalores += separador + campo->valorcampoprep ( err );
                     if ( err )
-                    	throw ( err );
+                        throw ( err );
                     separador = ", ";
                 } // end if
                 /// Si es el ID entonces lo asignamos porque ya tiene el valor correspondiente.
@@ -522,7 +522,7 @@ int DBRecord::DBsave ( QString &id )
         m_nuevoCampo = FALSE;
     } catch ( int error ) {
         _depura ( "END DBRecord::DBsave", 0, "Error de guardado" );
-	throw error;
+        throw error;
     } // end try
     _depura ( "END DBRecord::DBSave", 0 );
     return 0;

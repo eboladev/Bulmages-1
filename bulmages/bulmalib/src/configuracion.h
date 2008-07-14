@@ -127,7 +127,7 @@
 /// Indica que imagen utilizar como Background.
 #define CONF_BACKGROUND              200
 
-/// Determina si hay refresco 
+/// Determina si hay refresco
 #define CONF_REFRESH_LIST            210
 #define CONF_SHOW_PROGRESS_BAR        211
 
@@ -186,7 +186,7 @@
 #define CONF_TICKET_PRINTER_FILE     450
 /// Visor de TPV
 #define CONF_TPV_VISOR_FILE          451
-/// Modo Full Screen para el TPV     
+/// Modo Full Screen para el TPV
 #define CONF_TPV_FULLSCREEN          452
 #define CONF_TPV_PRINTER_LOGO        453
 

@@ -43,15 +43,15 @@ int entryPoint ( BulmaTPV *tpv )
     _depura ( "entryPoint", 0 );
 
     /// Vamos a probar con un docwindow.
-/*
-    g_admin1 = new BDockWidget ( "Administracion", tpv, "pluginadministracion" );
-    g_admin1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
-    g_admin1->setGeometry ( 100, 100, 100, 500 );
-    g_admin1->resize ( 330, 400 );
-    tpv->addDockWidget ( Qt::BottomDockWidgetArea, g_admin1 );
-    g_admin1->show();
-    g_admin1->cargaconf();
-*/
+    /*
+        g_admin1 = new BDockWidget ( "Administracion", tpv, "pluginadministracion" );
+        g_admin1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
+        g_admin1->setGeometry ( 100, 100, 100, 500 );
+        g_admin1->resize ( 330, 400 );
+        tpv->addDockWidget ( Qt::BottomDockWidgetArea, g_admin1 );
+        g_admin1->show();
+        g_admin1->cargaconf();
+    */
 
 
     _depura ( "END entryPoint", 0 );
@@ -79,16 +79,16 @@ int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
 
 
     // ============ Pruebas con abrevs
-    QFrame *fr = g_main->findChild<QFrame *> ("mui_frameabrevs");
-    if (fr) {
-    QHBoxLayout *m_hboxLayout1 = fr->findChild<QHBoxLayout *> ( "hboxLayout1" );
-    if ( !m_hboxLayout1 ) {
-        m_hboxLayout1 = new QHBoxLayout ( fr );
-        m_hboxLayout1->setSpacing ( 5 );
-        m_hboxLayout1->setMargin ( 5 );
-        m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
-    } // end if
-    m_hboxLayout1->addWidget (g_admin);
+    QFrame *fr = g_main->findChild<QFrame *> ( "mui_frameabrevs" );
+    if ( fr ) {
+        QHBoxLayout *m_hboxLayout1 = fr->findChild<QHBoxLayout *> ( "hboxLayout1" );
+        if ( !m_hboxLayout1 ) {
+            m_hboxLayout1 = new QHBoxLayout ( fr );
+            m_hboxLayout1->setSpacing ( 5 );
+            m_hboxLayout1->setMargin ( 5 );
+            m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+        } // end if
+        m_hboxLayout1->addWidget ( g_admin );
     } // end if
 
     return 0;

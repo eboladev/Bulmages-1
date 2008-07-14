@@ -59,12 +59,12 @@ Ticket::Ticket ( EmpresaBase *emp, QWidget *parent ) : BLWidget ( emp, parent ),
     setDBvalue ( "idcliente", confpr->valor ( CONF_IDCLIENTE_DEFECTO ) );
     setDBvalue ( "idtrabajador", confpr->valor ( CONF_IDTRABAJADOR_DEFECTO ) );
     setDBvalue ( "descalbaran", "Ticket de venta" );
-    setDBvalue ( "idforma_pago", confpr->valor (CONF_IDFORMA_PAGO_CONTADO) );
+    setDBvalue ( "idforma_pago", confpr->valor ( CONF_IDFORMA_PAGO_CONTADO ) );
 
     m_lineaActual = NULL;
     m_listaLineas = new QList<DBRecord *>;
 
-    g_plugins->lanza("Ticket_Ticket_Post", this);
+    g_plugins->lanza ( "Ticket_Ticket_Post", this );
 
     _depura ( "END Ticket::Ticket", 0 );
 }
@@ -571,188 +571,178 @@ void Ticket::imprimir()
     if ( res != 0 ) {
         return;
     } // end if
-   struct empresastr
-   {
-	QString nombre;
-	QString direccionCompleta;
-	QString codigoPostal;
-      QString ciudad;
-      QString provincia;
-	QString telefono;
-   }empresa;
+    struct empresastr {
+        QString nombre;
+        QString direccionCompleta;
+        QString codigoPostal;
+        QString ciudad;
+        QString provincia;
+        QString telefono;
+    }empresa;
 
-   struct clientestr
-   {
-      QString cif;
-      QString nombre;
-   }cliente;
+    struct clientestr {
+        QString cif;
+        QString nombre;
+    }cliente;
 
-   struct trabajadorstr
-   {
-      QString nombre;
-      QString id;
-   }trabajador;
+    struct trabajadorstr {
+        QString nombre;
+        QString id;
+    }trabajador;
 
-   struct almacenstr
-   {
-      QString nombre;
-   }almacen;
+    struct almacenstr {
+        QString nombre;
+    }almacen;
 
-   struct fechastr
-   {
-      QString dia;
-      QString hora;
-   }fecha;
+    struct fechastr {
+        QString dia;
+        QString hora;
+    }fecha;
 
-   struct totalstr
-   {
-      Fixed iva;
-      Fixed baseImponible;
-      Fixed totalIva;
-   }total;
+    struct totalstr {
+        Fixed iva;
+        Fixed baseImponible;
+        Fixed totalIva;
+    }total;
 
-   cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
-   if ( !cur->eof() )
-      empresa.nombre =cur->valor ( "valor" );
-   delete cur;
+    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='NombreEmpresa'" );
+    if ( !cur->eof() )
+        empresa.nombre = cur->valor ( "valor" );
+    delete cur;
 
-   cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" );
-   if ( !cur->eof() )
-      empresa.direccionCompleta = cur->valor ( "valor" );
-   delete cur;
+    cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" );
+    if ( !cur->eof() )
+        empresa.direccionCompleta = cur->valor ( "valor" );
+    delete cur;
 
-   cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
-   if ( !cur->eof() )
-      empresa.codigoPostal = cur->valor ( "valor" ).toAscii();
-   delete cur;
+    cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
+    if ( !cur->eof() )
+        empresa.codigoPostal = cur->valor ( "valor" ).toAscii();
+    delete cur;
 
-   cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Ciudad'" );
-   if ( !cur->eof() )
-      empresa.ciudad = cur->valor ( "valor" );
-   delete cur;
+    cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Ciudad'" );
+    if ( !cur->eof() )
+        empresa.ciudad = cur->valor ( "valor" );
+    delete cur;
 
-   cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Telefono'" );
-   if ( !cur->eof() )
-      empresa.telefono = cur->valor ( "valor" );
-   delete cur;
+    cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Telefono'" );
+    if ( !cur->eof() )
+        empresa.telefono = cur->valor ( "valor" );
+    delete cur;
 
-   cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Provincia'" );
-   if ( !cur->eof() )
-      empresa.provincia = cur->valor("valor");
-   delete cur;
+    cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='Provincia'" );
+    if ( !cur->eof() )
+        empresa.provincia = cur->valor ( "valor" );
+    delete cur;
 
-   fecha.dia = QDate::currentDate().toString("d-M-yyyy");
-   fecha.hora = QTime::currentTime().toString("HH:mm");
+    fecha.dia = QDate::currentDate().toString ( "d-M-yyyy" );
+    fecha.hora = QTime::currentTime().toString ( "HH:mm" );
 
-   trabajador.id = DBvalue("idtrabajador");
-   cur = empresaBase() ->cargacursor ( "SELECT * FROM trabajador WHERE idtrabajador=" + DBvalue ( "idtrabajador" ) );
-   if ( !cur->eof() )
-      trabajador.nombre = cur->valor ( "nomtrabajador" );
-   delete cur;
+    trabajador.id = DBvalue ( "idtrabajador" );
+    cur = empresaBase() ->cargacursor ( "SELECT * FROM trabajador WHERE idtrabajador=" + DBvalue ( "idtrabajador" ) );
+    if ( !cur->eof() )
+        trabajador.nombre = cur->valor ( "nomtrabajador" );
+    delete cur;
 
-   cur = empresaBase() ->cargacursor ( "SELECT * FROM cliente WHERE idcliente=" + DBvalue ( "idcliente" ) );
-   if ( !cur->eof() )
-   {
-      cliente.cif = cur->valor ( "cifcliente" ).toAscii();
-      cliente.nombre = cur->valor ( "nomcliente" ).toAscii();
-   } // end if
-   delete cur;
+    cur = empresaBase() ->cargacursor ( "SELECT * FROM cliente WHERE idcliente=" + DBvalue ( "idcliente" ) );
+    if ( !cur->eof() ) {
+        cliente.cif = cur->valor ( "cifcliente" ).toAscii();
+        cliente.nombre = cur->valor ( "nomcliente" ).toAscii();
+    } // end if
+    delete cur;
 
-   cur = empresaBase() ->cargacursor ( "SELECT * FROM almacen WHERE idalmacen=" + DBvalue ( "idalmacen" ) );
-   if ( !cur->eof() )
-      almacen.nombre = cur->valor ( "nomalmacen" ).toAscii() ;
-   delete cur;
+    cur = empresaBase() ->cargacursor ( "SELECT * FROM almacen WHERE idalmacen=" + DBvalue ( "idalmacen" ) );
+    if ( !cur->eof() )
+        almacen.nombre = cur->valor ( "nomalmacen" ).toAscii() ;
+    delete cur;
 
-   DBRecord *linea;
-   if (listaLineas() ->size()) 
-	total.iva = Fixed (listaLineas()->at(0)->DBvalue( "ivalalbaran" ));
-   for ( int i = 0; i < listaLineas() ->size(); ++i )
-   {
-      linea = listaLineas() ->at ( i );
-      Fixed cantidad = Fixed(linea->DBvalue ( "cantlalbaran" ));
-      total.baseImponible = total.baseImponible + cantidad * Fixed(linea->DBvalue ( "pvplalbaran" ));
-   } // end for
-   total.totalIva = total.baseImponible + total.baseImponible * total.iva / Fixed("100");
+    DBRecord *linea;
+    if ( listaLineas() ->size() )
+        total.iva = Fixed ( listaLineas()->at ( 0 )->DBvalue ( "ivalalbaran" ) );
+    for ( int i = 0; i < listaLineas() ->size(); ++i ) {
+        linea = listaLineas() ->at ( i );
+        Fixed cantidad = Fixed ( linea->DBvalue ( "cantlalbaran" ) );
+        total.baseImponible = total.baseImponible + cantidad * Fixed ( linea->DBvalue ( "pvplalbaran" ) );
+    } // end for
+    total.totalIva = total.baseImponible + total.baseImponible * total.iva / Fixed ( "100" );
 
-   EscPrinter pr(confpr->valor ( CONF_TICKET_PRINTER_FILE ));
-   pr.initializePrinter();
-   pr.setCharacterCodeTable ( page19 );
-   pr.setJustification ( center );
+    EscPrinter pr ( confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
+    pr.initializePrinter();
+    pr.setCharacterCodeTable ( page19 );
+    pr.setJustification ( center );
 
-   if(confpr->valor(CONF_TPV_PRINTER_LOGO) != "") {
-   	pr.printImage(confpr->valor(CONF_TPV_PRINTER_LOGO));
-   } // end if
-   pr.printText(empresa.nombre+"\n");
-   pr.setCharacterPrintMode(CHARACTER_FONTB_SELECTED);
-   pr.setCharacterSize(CHAR_WIDTH_1|CHAR_HEIGHT_1);
-   pr.setColor(red);
-   pr.printText(empresa.direccionCompleta+"\n");
-   pr.initializePrinter();
-   pr.setCharacterCodeTable ( page19 );
+    if ( confpr->valor ( CONF_TPV_PRINTER_LOGO ) != "" ) {
+        pr.printImage ( confpr->valor ( CONF_TPV_PRINTER_LOGO ) );
+    } // end if
+    pr.printText ( empresa.nombre + "\n" );
+    pr.setCharacterPrintMode ( CHARACTER_FONTB_SELECTED );
+    pr.setCharacterSize ( CHAR_WIDTH_1 | CHAR_HEIGHT_1 );
+    pr.setColor ( red );
+    pr.printText ( empresa.direccionCompleta + "\n" );
+    pr.initializePrinter();
+    pr.setCharacterCodeTable ( page19 );
 
-   pr.printText("\n");
-   pr.printText(fecha.dia+" "+fecha.hora+"\n");
-   pr.printText("Cliente, "+cliente.cif+" "+cliente.nombre+"\n");
-   pr.printText("\n");
+    pr.printText ( "\n" );
+    pr.printText ( fecha.dia + " " + fecha.hora + "\n" );
+    pr.printText ( "Cliente, " + cliente.cif + " " + cliente.nombre + "\n" );
+    pr.printText ( "\n" );
 
-   pr.turnWhiteBlack(1);
-   pr.printText(" Uds. PRODUCTO � � � � � � �T.C. �IMPORTE \n");
+    pr.turnWhiteBlack ( 1 );
+    pr.printText ( " Uds. PRODUCTO � � � � � � �P.U. �IMPORTE \n" );
 
-   pr.turnWhiteBlack(0);
-   pr.setCharacterPrintMode(CHARACTER_FONTB_SELECTED);
-   pr.setCharacterSize(CHAR_WIDTH_1|CHAR_HEIGHT_1);
+    pr.turnWhiteBlack ( 0 );
+    pr.setCharacterPrintMode ( CHARACTER_FONTB_SELECTED );
+    pr.setCharacterSize ( CHAR_WIDTH_1 | CHAR_HEIGHT_1 );
 
-   for ( int i = 0; i < listaLineas() ->size(); ++i )
-   {
-      if(i == listaLineas()->size()-1)
-         pr.setUnderlineMode(1);
-      linea = listaLineas() ->at ( i );
-      Fixed iva = Fixed(linea->DBvalue( "ivalalbaran" ));
-      Fixed pvp = Fixed(linea->DBvalue ( "pvplalbaran" ));
-      pvp = pvp + pvp*iva/ Fixed("100");
-      Fixed pvptotal = Fixed(linea->DBvalue("cantlalbaran"))*pvp;
-      pr.printText(linea->DBvalue ( "cantlalbaran" ).rightJustified ( 5, ' ', TRUE )+" ");
-      pr.printText(linea->DBvalue("desclalbaran").leftJustified(27,' ', true)+" ");
-      QString pvpstr = pvp.toQString();
-      QString pvptotalstr = pvptotal.toQString();
-//      pr.printText(QString(pvpstr+"�").rightJustified ( 10, ' ', TRUE )+" ");
-      pr.printText(linea->DBvalue("nomtc_talla").left(4).rightJustified(5, ' ', TRUE));
-      pr.printText(linea->DBvalue("nomtc_color").left(4).rightJustified(5, ' ', TRUE) + " ");
-      pr.printText(QString(pvptotalstr+"�").rightJustified ( 10, ' ', TRUE ));
-      pr.printText("\n");
-   }
-   pr.setUnderlineMode(0);
-   pr.setJustification(right);
-   pr.setCharacterPrintMode(CHARACTER_FONTA_SELECTED);
-   pr.printText("Base Imponible: "+total.baseImponible.toQString()+"�\n");
-   pr.printText("IVA "+total.iva.toQString()+"%:"+ (total.totalIva - total.baseImponible).toQString() + "�\n");
-   pr.setCharacterPrintMode(CHARACTER_FONTA_SELECTED|EMPHASIZED_MODE|DOUBLE_HEIGHT|DOUBLE_WIDTH);
-   pr.printText("TOTAL: " + total.totalIva.toQString() + "�\n");
-   pr.printText("\n\n");
-   pr.setJustification(left);
-   pr.setCharacterPrintMode(CHARACTER_FONTA_SELECTED);
-   pr.printText("Le ha atendido "+trabajador.nombre+"\n");
-   pr.printText("\n");
+    for ( int i = 0; i < listaLineas() ->size(); ++i ) {
+        if ( i == listaLineas()->size() - 1 )
+            pr.setUnderlineMode ( 1 );
+        linea = listaLineas() ->at ( i );
+        Fixed iva = Fixed ( linea->DBvalue ( "ivalalbaran" ) );
+        Fixed pvp = Fixed ( linea->DBvalue ( "pvplalbaran" ) );
+        pvp = pvp + pvp * iva / Fixed ( "100" );
+        Fixed pvptotal = Fixed ( linea->DBvalue ( "cantlalbaran" ) ) * pvp;
+        pr.printText ( linea->DBvalue ( "cantlalbaran" ).rightJustified ( 5, ' ', TRUE ) + " �" );
+        pr.printText ( linea->DBvalue ( "desclalbaran" ).leftJustified ( 27, ' ', true ) + " " );
+        QString pvpstr = pvp.toQString();
+        QString pvptotalstr = pvptotal.toQString();
+        pr.printText ( QString ( pvpstr + "�" ).rightJustified ( 10, ' ', TRUE ) + " " );
+        pr.printText ( QString ( pvptotalstr + "�" ).rightJustified ( 10, ' ', TRUE ) );
+        pr.printText ( "\n" );
+    }
+    pr.setUnderlineMode ( 0 );
+    pr.setJustification ( right );
+    pr.setCharacterPrintMode ( CHARACTER_FONTA_SELECTED );
+    pr.printText ( "Base Imponible: " + total.baseImponible.toQString() + "�\n" );
+    pr.printText ( "IVA " + total.iva.toQString() + "%:" + ( total.totalIva - total.baseImponible ).toQString() + "�\n" );
+    pr.setCharacterPrintMode ( CHARACTER_FONTA_SELECTED | EMPHASIZED_MODE | DOUBLE_HEIGHT | DOUBLE_WIDTH );
+    pr.printText ( "TOTAL: " + total.totalIva.toQString() + "�\n" );
+    pr.printText ( "\n\n" );
+    pr.setJustification ( left );
+    pr.setCharacterPrintMode ( CHARACTER_FONTA_SELECTED );
+    pr.printText ( "Le ha atendido " + trabajador.nombre + "\n" );
+    pr.printText ( "\n" );
 
    pr.printText("Plazo maximo para cambio 15 dias, \n");
    pr.printText(" unicamente con ticket de compra. \n");
    pr.printText("\n");
 
-   pr.printText("Tel. " + empresa.telefono+"\n");
-   pr.printText("\n");
 
-   pr.setJustification(center);
-   pr.setColor(red);
-   pr.printText("*** GRACIAS POR SU VISITA ***\n");
+    pr.printText ( "Tel. " + empresa.telefono + "\n" );
+    pr.printText ( "\n" );
 
-   
-   QByteArray qba = DBvalue ( "refalbaran" ).toAscii();
-   char* barcode = qba.data();
-   pr.setJustification ( center );
-   pr.setBarcodeFormat(2, 50, both, fontB);
-   pr.printBarCode(code39, qba.size(), barcode);
-   pr.cutPaperAndFeed(TRUE,10);
-   pr.print();
+    pr.setJustification ( center );
+    pr.setColor ( red );
+    pr.printText ( "*** GRACIAS POR SU VISITA ***\n" );
+
+
+    QByteArray qba = DBvalue ( "refalbaran" ).toAscii();
+    char* barcode = qba.data();
+    pr.setJustification ( center );
+    pr.setBarcodeFormat ( 2, 50, both, fontB );
+    pr.printBarCode ( code39, qba.size(), barcode );
+    pr.cutPaperAndFeed ( TRUE, 10 );
+    pr.print();
 }
 
 // ===========================
@@ -780,23 +770,6 @@ void Ticket::bajar()
 
 void Ticket::agregarCantidad ( QString cantidad )
 {
-   Fixed cant ( cantidad );
-   /// Comprueba la existencia de la linea de ticket.
-   if ( m_lineaActual == NULL ) {
-	mensajeAviso ( "No existe linea" );
-	return;
-   } // end if
-   Fixed cantorig ( m_lineaActual->DBvalue ( "cantlalbaran" ) );
-   Fixed suma = cant + cantorig;
-   if ( suma == Fixed ( "0.00" ) ) {
-	borrarLinea(m_lineaActual);
-	//listaLineas() ->removeAt ( listaLineas() ->indexOf ( m_lineaActual ));
-	//m_lineaActual = listaLineas() ->at ( 0 );
-   } else {
-	m_lineaActual->setDBvalue ( "cantlalbaran", suma.toQString() );
-   } // end if
-   pintar();
-/*
     Fixed cant ( cantidad );
     /// Comprueba la existencia de la linea de ticket.
     if ( m_lineaActual == NULL ) {
@@ -806,33 +779,34 @@ void Ticket::agregarCantidad ( QString cantidad )
     Fixed cantorig ( m_lineaActual->DBvalue ( "cantlalbaran" ) );
     Fixed suma = cant + cantorig;
     if ( suma == Fixed ( "0.00" ) ) {
-        listaLineas() ->removeAt ( listaLineas() ->indexOf ( m_lineaActual ) );
-        m_lineaActual = listaLineas() ->at ( 0 );
+        borrarLinea ( m_lineaActual );
+        //listaLineas() ->removeAt ( listaLineas() ->indexOf ( m_lineaActual ));
+        //m_lineaActual = listaLineas() ->at ( 0 );
     } else {
         m_lineaActual->setDBvalue ( "cantlalbaran", suma.toQString() );
     } // end if
     pintar();
-*/
+    /*
+        Fixed cant ( cantidad );
+        /// Comprueba la existencia de la linea de ticket.
+        if ( m_lineaActual == NULL ) {
+            mensajeAviso ( "No existe linea" );
+            return;
+        } // end if
+        Fixed cantorig ( m_lineaActual->DBvalue ( "cantlalbaran" ) );
+        Fixed suma = cant + cantorig;
+        if ( suma == Fixed ( "0.00" ) ) {
+            listaLineas() ->removeAt ( listaLineas() ->indexOf ( m_lineaActual ) );
+            m_lineaActual = listaLineas() ->at ( 0 );
+        } else {
+            m_lineaActual->setDBvalue ( "cantlalbaran", suma.toQString() );
+        } // end if
+        pintar();
+    */
 }
 
 void Ticket::ponerCantidad ( QString cantidad )
 {
-   Fixed cant ( cantidad );
-   /// Comprueba la existencia de la linea de ticket.
-   if ( m_lineaActual == NULL ) {
-	mensajeAviso ( "No existe linea" );
-	return;
-   } // end if
-
-   if ( cant == 0 ) {
-	borrarLinea(m_lineaActual);
-	//listaLineas() ->removeAt ( listaLineas() ->indexOf ( m_lineaActual ));
-	//m_lineaActual = listaLineas() ->at ( 0 );
-   } else {
-	m_lineaActual->setDBvalue ( "cantlalbaran", cant.toQString() );
-   } // end if
-   pintar();
-/*
     Fixed cant ( cantidad );
     /// Comprueba la existencia de la linea de ticket.
     if ( m_lineaActual == NULL ) {
@@ -841,13 +815,29 @@ void Ticket::ponerCantidad ( QString cantidad )
     } // end if
 
     if ( cant == 0 ) {
-        listaLineas() ->removeAt ( listaLineas() ->indexOf ( m_lineaActual ) );
-        m_lineaActual = listaLineas() ->at ( 0 );
+        borrarLinea ( m_lineaActual );
+        //listaLineas() ->removeAt ( listaLineas() ->indexOf ( m_lineaActual ));
+        //m_lineaActual = listaLineas() ->at ( 0 );
     } else {
         m_lineaActual->setDBvalue ( "cantlalbaran", cant.toQString() );
     } // end if
     pintar();
-*/
+    /*
+        Fixed cant ( cantidad );
+        /// Comprueba la existencia de la linea de ticket.
+        if ( m_lineaActual == NULL ) {
+            mensajeAviso ( "No existe linea" );
+            return;
+        } // end if
+
+        if ( cant == 0 ) {
+            listaLineas() ->removeAt ( listaLineas() ->indexOf ( m_lineaActual ) );
+            m_lineaActual = listaLineas() ->at ( 0 );
+        } else {
+            m_lineaActual->setDBvalue ( "cantlalbaran", cant.toQString() );
+        } // end if
+        pintar();
+    */
 }
 
 void Ticket::ponerPrecio ( QString precio )
@@ -889,27 +879,28 @@ void Ticket::insertarArticuloCodigoNL ( QString codigo )
 
 }
 
-int Ticket::cargar(QString id) {
-try {
-	QString query = "SELECT * FROM albaran WHERE idalbaran = " + id;
+int Ticket::cargar ( QString id )
+{
+    try {
+        QString query = "SELECT * FROM albaran WHERE idalbaran = " + id;
         cursor2 *cur = empresaBase() ->cargacursor ( query );
-	if (cur) {
-	if (!cur->eof()) {
-	        DBload ( cur );
-	}
+        if ( cur ) {
+            if ( !cur->eof() ) {
+                DBload ( cur );
+            }
+            delete cur;
+        } // end if
+        cur = empresaBase() ->cargacursor ( "SELECT * FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran = " + id );
+        while ( !cur->eof() ) {
+            DBRecord *l = agregarLinea();
+            l->DBload ( cur );
+            cur->siguienteregistro();
+        } // end while
         delete cur;
-	} // end if
-	cur = empresaBase() ->cargacursor ( "SELECT * FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran = " + id );
-	while (!cur->eof()) {
-		DBRecord *l = agregarLinea();
-		l->DBload(cur);
-		cur->siguienteregistro();
-	} // end while
-        delete cur;
-} catch(...) {
-    mensajeInfo("Error en la carga");
-}
-return 0;
+    } catch ( ... ) {
+        mensajeInfo ( "Error en la carga" );
+    }
+    return 0;
 }
 
 
@@ -952,23 +943,22 @@ int Ticket::guardar()
 }
 
 
-void Ticket::borrarLinea(DBRecord* linea)
+void Ticket::borrarLinea ( DBRecord* linea )
 {
-   if(linea == NULL)
-	return;
-   int numlinea = listaLineas()->indexOf(linea);
+    if ( linea == NULL )
+        return;
+    int numlinea = listaLineas()->indexOf ( linea );
 
-   if(linea == m_lineaActual){
-	listaLineas() ->removeAt ( listaLineas() ->indexOf ( linea ) );
-	if(numlinea > listaLineas()->count()-1)
-	{
-		m_lineaActual = listaLineas()->count() > 0?listaLineas()->at ( listaLineas()->count()-1 ):NULL;
-	} else {
-		m_lineaActual = listaLineas()->count() > 0?listaLineas() ->at (numlinea):NULL;
-	}
-   } else {
-	listaLineas() ->removeAt ( listaLineas() ->indexOf ( linea ) );
-   }
+    if ( linea == m_lineaActual ) {
+        listaLineas() ->removeAt ( listaLineas() ->indexOf ( linea ) );
+        if ( numlinea > listaLineas()->count() - 1 ) {
+            m_lineaActual = listaLineas()->count() > 0 ? listaLineas()->at ( listaLineas()->count() - 1 ) : NULL;
+        } else {
+            m_lineaActual = listaLineas()->count() > 0 ? listaLineas() ->at ( numlinea ) : NULL;
+        }
+    } else {
+        listaLineas() ->removeAt ( listaLineas() ->indexOf ( linea ) );
+    }
 }
 
 

@@ -101,8 +101,8 @@ int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
 {
     // ============ Pruebas con abrevs
     g_plug = new MyDevButton ( "DEVOLUCION", etpv, etpv );
-    g_plug->setMinimumSize(QSize(72, 72));
-    g_plug->setMaximumSize(QSize(200, 72));
+    g_plug->setMinimumSize ( QSize ( 72, 72 ) );
+    g_plug->setMaximumSize ( QSize ( 200, 72 ) );
 
 
     QFrame *fr = g_main->findChild<QFrame *> ( "mui_frameabrevs" );

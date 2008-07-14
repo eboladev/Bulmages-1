@@ -33,6 +33,7 @@
 #include <QTextStream>
 #include <QDomDocument>
 #include <QDomNode>
+#include <QInputDialog>
 
 ///
 /**
@@ -692,12 +693,12 @@ int Ficha::guardar()
 
         _depura ( "END Ficha::guardar", 0 );
         return 0;
-    } catch (int valor) {
-	/// Valor del error diferente a -1 significa que ya se ha mostrado algun mensaje de
-	/// error y no hay que mostrar otro.
-	if (valor == -1) {
-	        mensajeInfo ( "Error inesperado al guardar");
-	} // end if
+    } catch ( int valor ) {
+        /// Valor del error diferente a -1 significa que ya se ha mostrado algun mensaje de
+        /// error y no hay que mostrar otro.
+        if ( valor == -1 ) {
+            mensajeInfo ( "Error inesperado al guardar" );
+        } // end if
         empresaBase() ->rollback();
         return -1;
 
@@ -786,6 +787,27 @@ void Ficha::trataTags ( QString &buff )
 {
     _depura ( "Ficha::trataTags", 0 );
 
+    ///Buscamos parametros, los preguntamos y los ponemos.
+    int pos = 0;
+    QRegExp rx69 ( "<!--\\s*PARAM\\s*NAME\\s*=\\s*\"([^\"]*)\"\\s*TYPE\\s*=\\s*\"([^\"]*)\"\\s*-->" );
+    rx69.setMinimal ( TRUE );
+    while ( ( pos = rx69.indexIn ( buff, pos ) ) != -1 ) {
+        bool ok = FALSE;
+        while ( !ok ) {
+            QString text = QInputDialog::getText ( this, tr ( "Parametros de Carga" ),
+                                                   rx69.cap ( 1 ), QLineEdit::Normal,
+                                                   "", &ok );
+            if ( ok && !text.isEmpty() ) {
+
+                addDBCampo ( rx69.cap ( 1 ), DBCampo::DBvarchar, DBCampo::DBNoSave, rx69.cap ( 1 )  );
+                setDBvalue ( rx69.cap ( 1 ), text );
+            } // end if
+        } //end while
+        buff.replace ( pos, rx69.matchedLength(), "" );
+        pos = 0;
+    } // end while
+
+
     /// Tratamos la sustitucion de los valores de configuracion.
     for ( int i = 0; i < 500; i++ ) {
         if ( confpr->nombre ( i ) != "" ) {
@@ -793,7 +815,7 @@ void Ficha::trataTags ( QString &buff )
         } // end if
     } // end for
 
-    int pos =  0;
+    pos =  0;
     /// Buscamos parametros en el query y los ponemos.
     QRegExp rx ( "\\[(\\w*)\\]" );
     while ( ( pos = rx.indexIn ( buff, pos ) ) != -1 ) {

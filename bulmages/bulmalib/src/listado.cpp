@@ -249,14 +249,15 @@ void Listado::on_m_filtro_editingFinished()
     Comprueba que solo haya un item en el listado. Si
     es asi, abre ese item.
 */
-void Listado::on_m_filtro_returnPressed() {
-    _depura ("Listado::on_mui_importar_clicked", 0);
-        
-    if (m_listado->lista()->count() == 1) {
-        editar(0);
+void Listado::on_m_filtro_returnPressed()
+{
+    _depura ( "Listado::on_mui_importar_clicked", 0 );
+
+    if ( m_listado->lista()->count() == 1 ) {
+        editar ( 0 );
     }
-        
-    _depura("END Listado::on_mui_importar_clicked", 0);
+
+    _depura ( "END Listado::on_mui_importar_clicked", 0 );
 }
 
 

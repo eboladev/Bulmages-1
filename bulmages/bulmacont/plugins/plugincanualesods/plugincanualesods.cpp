@@ -521,7 +521,7 @@ void pluginCAnualesODS::balsitCAAASL ()
     CAnuales CA = CAAASL;
     mensajeAdvertenciaPGC ( CA );
     if ( formDatosBalance ( CA ) && Arboles() )
-        balanceSituacionODS ( CA );    
+        balanceSituacionODS ( CA );
 }
 
 void pluginCAnualesODS::balsitCAPGC07 ()

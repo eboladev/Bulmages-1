@@ -45,7 +45,7 @@ CobroView::CobroView ( Company *comp, QWidget *parent )
     setAttribute ( Qt::WA_DeleteOnClose );
     try {
         setupUi ( this );
-	centrarEnPantalla(this);
+        centrarEnPantalla ( this );
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
         mui_idcliente->setEmpresaBase ( comp );
         mui_refcobro->setEmpresaBase ( comp );
@@ -84,7 +84,7 @@ CobroView::~CobroView()
 
     /// \TODO 10/Junio/2008: Habilito esta linea. Alguien puso el mensaje de que no es buena idea
     /// pero no veo el motivo. Si algo falla revisar esto.
-    ((Company *)empresaBase())->refreshCobrosCliente();
+    ( ( Company * ) empresaBase() )->refreshCobrosCliente();
     _depura ( "END CobroView::~CobroView", 0 );
 }
 

@@ -49,143 +49,147 @@
 \param fac
 \param parent
 **/
-EmailThunderbirdQToolButton::EmailThunderbirdQToolButton(PresupuestoView *pres, PedidoClienteView *ped, AlbaranClienteView *alb, FacturaView *fac , QWidget *parent) : QToolButton(parent) {
-    _depura("EmailThunderbirdQToolButton::EmailThunderbirdQToolButton", 0);
-    
+EmailThunderbirdQToolButton::EmailThunderbirdQToolButton ( PresupuestoView *pres, PedidoClienteView *ped, AlbaranClienteView *alb, FacturaView *fac , QWidget *parent ) : QToolButton ( parent )
+{
+    _depura ( "EmailThunderbirdQToolButton::EmailThunderbirdQToolButton", 0 );
+
     m_presupuestoView = pres;
     m_pedidoClienteView = ped;
     m_albaranClienteView = alb;
     m_facturaView = fac;
-    
+
     setBoton();
-    
-    _depura("END EmailThunderbirdQToolButton::EmailThunderbirdQToolButton", 0);
+
+    _depura ( "END EmailThunderbirdQToolButton::EmailThunderbirdQToolButton", 0 );
 }
 
 ///
 /**
 **/
-EmailThunderbirdQToolButton::~EmailThunderbirdQToolButton() {
-    _depura("EmailThunderbirdQToolButton::~EmailThunderbirdQToolButton", 0);
-    _depura("END EmailThunderbirdQToolButton::~EmailThunderbirdQToolButton", 0);
+EmailThunderbirdQToolButton::~EmailThunderbirdQToolButton()
+{
+    _depura ( "EmailThunderbirdQToolButton::~EmailThunderbirdQToolButton", 0 );
+    _depura ( "END EmailThunderbirdQToolButton::~EmailThunderbirdQToolButton", 0 );
 }
 
 ///
 /**
 **/
-void EmailThunderbirdQToolButton::setBoton() {
-    _depura("EmailThunderbirdQToolButton::setBoton", 0);
+void EmailThunderbirdQToolButton::setBoton()
+{
+    _depura ( "EmailThunderbirdQToolButton::setBoton", 0 );
 
-    connect(this, SIGNAL(clicked()), this, SLOT(click()));
-    
-    setObjectName(QString::fromUtf8("exporta"));
-    setStatusTip("Enviar por e-mail con Thunderbird al cliente");
-    setToolTip("Enviar por e-mail con Thunderbird al cliente");
-    setMinimumSize(QSize(32, 32));
-    setIcon(QIcon(QString::fromUtf8(":/Genericos32x32/images/png/i_mail.png")));
-    setIconSize(QSize(22, 22));
-        
-    _depura("END EmailThunderbirdQToolButton::setBoton", 0);
+    connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
+
+    setObjectName ( QString::fromUtf8 ( "exporta" ) );
+    setStatusTip ( "Enviar por e-mail con Thunderbird al cliente" );
+    setToolTip ( "Enviar por e-mail con Thunderbird al cliente" );
+    setMinimumSize ( QSize ( 32, 32 ) );
+    setIcon ( QIcon ( QString::fromUtf8 ( ":/Genericos32x32/images/png/i_mail.png" ) ) );
+    setIconSize ( QSize ( 22, 22 ) );
+
+    _depura ( "END EmailThunderbirdQToolButton::setBoton", 0 );
 }
 
 ///
 /**
 **/
-void EmailThunderbirdQToolButton::click() {
-    _depura("EmailThunderbirdQToolButton::click", 0);
+void EmailThunderbirdQToolButton::click()
+{
+    _depura ( "EmailThunderbirdQToolButton::click", 0 );
 
-    if (m_presupuestoView != NULL) {
+    if ( m_presupuestoView != NULL ) {
         m_companyact = m_presupuestoView->empresaBase();
 
-        QString id = m_presupuestoView->DBvalue("idpresupuesto");
-        QString num = m_presupuestoView->DBvalue("numpresupuesto");
-        QString ref = m_presupuestoView->DBvalue("refpresupuesto");
-        QString idcliente = m_presupuestoView->DBvalue("idcliente");
+        QString id = m_presupuestoView->DBvalue ( "idpresupuesto" );
+        QString num = m_presupuestoView->DBvalue ( "numpresupuesto" );
+        QString ref = m_presupuestoView->DBvalue ( "refpresupuesto" );
+        QString idcliente = m_presupuestoView->DBvalue ( "idcliente" );
         QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
-        cursor2 *curs = m_companyact->cargacursor(query);
-        QString email = curs->valor("mailcliente");
+        cursor2 *curs = m_companyact->cargacursor ( query );
+        QString email = curs->valor ( "mailcliente" );
 
         m_presupuestoView->generaRML();
-        generaPDF("presupuesto");
+        generaPDF ( "presupuesto" );
 
-        QString cad = "mv " + confpr->valor(CONF_DIR_USER) + "presupuesto.pdf " + confpr->valor(CONF_DIR_USER) + "presupuesto" + num + ".pdf";
-        system(cad.toAscii().data());
-        
-        cad = "thunderbird -compose to='" + email + "',subject='Presupuesto " + num + "',body='Adjunto remito presupuesto número " + num + ". Con referencia " + ref + "\n\n Atentamente\n',attachment='file://" + confpr->valor(CONF_DIR_USER) + "presupuesto" + num + ".pdf'";
-        
-        system(cad.toAscii().data());
+        QString cad = "mv " + confpr->valor ( CONF_DIR_USER ) + "presupuesto.pdf " + confpr->valor ( CONF_DIR_USER ) + "presupuesto" + num + ".pdf";
+        system ( cad.toAscii().data() );
+
+        cad = "thunderbird -compose to='" + email + "',subject='Presupuesto " + num + "',body='Adjunto remito presupuesto número " + num + ". Con referencia " + ref + "\n\n Atentamente\n',attachment='file://" + confpr->valor ( CONF_DIR_USER ) + "presupuesto" + num + ".pdf'";
+
+        system ( cad.toAscii().data() );
     } // end if
 
-    if (m_pedidoClienteView != NULL) {
+    if ( m_pedidoClienteView != NULL ) {
         m_companyact = m_pedidoClienteView->empresaBase();
 
-        QString id = m_pedidoClienteView->DBvalue("idpedidocliente");
-        QString num = m_pedidoClienteView->DBvalue("numpedidocliente");
-        QString ref = m_pedidoClienteView->DBvalue("refpedidocliente");
+        QString id = m_pedidoClienteView->DBvalue ( "idpedidocliente" );
+        QString num = m_pedidoClienteView->DBvalue ( "numpedidocliente" );
+        QString ref = m_pedidoClienteView->DBvalue ( "refpedidocliente" );
 
-        QString idcliente = m_pedidoClienteView->DBvalue("idcliente");
+        QString idcliente = m_pedidoClienteView->DBvalue ( "idcliente" );
         QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
-        cursor2 *curs = m_companyact->cargacursor(query);
-        QString email = curs->valor("mailcliente");
+        cursor2 *curs = m_companyact->cargacursor ( query );
+        QString email = curs->valor ( "mailcliente" );
 
         m_pedidoClienteView->generaRML();
-        generaPDF("pedidocliente");
+        generaPDF ( "pedidocliente" );
 
-        QString cad = "mv " + confpr->valor(CONF_DIR_USER) + "pedidocliente.pdf " + confpr->valor(CONF_DIR_USER) + "pedidocliente" + num + ".pdf";
-        system(cad.toAscii().data());
-        
-        cad = "thunderbird -compose to='" + email + "',subject='Pedido " + num + "',body='Adjunto remito pedido número " + num + ". Con referencia " + ref + "\n\n Atentamente\n',attachment='file://" + confpr->valor(CONF_DIR_USER) + "pedidocliente" + num + ".pdf'";
-        
-        system(cad.toAscii().data());
+        QString cad = "mv " + confpr->valor ( CONF_DIR_USER ) + "pedidocliente.pdf " + confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf";
+        system ( cad.toAscii().data() );
+
+        cad = "thunderbird -compose to='" + email + "',subject='Pedido " + num + "',body='Adjunto remito pedido número " + num + ". Con referencia " + ref + "\n\n Atentamente\n',attachment='file://" + confpr->valor ( CONF_DIR_USER ) + "pedidocliente" + num + ".pdf'";
+
+        system ( cad.toAscii().data() );
     } // end if
 
-    if (m_albaranClienteView != NULL) {
+    if ( m_albaranClienteView != NULL ) {
         m_companyact = m_albaranClienteView->empresaBase();
 
-        QString id = m_albaranClienteView->DBvalue("idalbaran");
-        QString num = m_albaranClienteView->DBvalue("numalbaran");
-        QString ref = m_albaranClienteView->DBvalue("refalbaran");
+        QString id = m_albaranClienteView->DBvalue ( "idalbaran" );
+        QString num = m_albaranClienteView->DBvalue ( "numalbaran" );
+        QString ref = m_albaranClienteView->DBvalue ( "refalbaran" );
 
-        QString idcliente = m_albaranClienteView->DBvalue("idcliente");
+        QString idcliente = m_albaranClienteView->DBvalue ( "idcliente" );
         QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
-        cursor2 *curs = m_companyact->cargacursor(query);
-        QString email = curs->valor("mailcliente");
+        cursor2 *curs = m_companyact->cargacursor ( query );
+        QString email = curs->valor ( "mailcliente" );
 
         m_albaranClienteView->generaRML();
-        generaPDF("albaran");
+        generaPDF ( "albaran" );
 
-        QString cad = "mv " + confpr->valor(CONF_DIR_USER) + "albaran.pdf " + confpr->valor(CONF_DIR_USER) + "albaran" + num + ".pdf";
-        system(cad.toAscii().data());
-        
-        cad = "thunderbird -compose to='" + email + "',subject='Albarán " + num + "',body='Adjunto remito albarán número " + num + ". Con referencia " + ref + "\n\n Atentamente\n',attachment='file://" + confpr->valor(CONF_DIR_USER) + "albaran" + num + ".pdf'";
-        
-        system(cad.toAscii().data());
+        QString cad = "mv " + confpr->valor ( CONF_DIR_USER ) + "albaran.pdf " + confpr->valor ( CONF_DIR_USER ) + "albaran" + num + ".pdf";
+        system ( cad.toAscii().data() );
+
+        cad = "thunderbird -compose to='" + email + "',subject='Albarán " + num + "',body='Adjunto remito albarán número " + num + ". Con referencia " + ref + "\n\n Atentamente\n',attachment='file://" + confpr->valor ( CONF_DIR_USER ) + "albaran" + num + ".pdf'";
+
+        system ( cad.toAscii().data() );
     } // end if
 
-    if (m_facturaView != NULL) {
+    if ( m_facturaView != NULL ) {
         m_companyact = m_facturaView->empresaBase();
 
-        QString id = m_facturaView->DBvalue("idfactura");
-        QString num = m_facturaView->DBvalue("numfactura");
-        QString serie = m_facturaView->DBvalue("codigoserie_factura");
-        QString ref = m_facturaView->DBvalue("reffactura");
-        QString fecha = m_facturaView->DBvalue("ffactura");
+        QString id = m_facturaView->DBvalue ( "idfactura" );
+        QString num = m_facturaView->DBvalue ( "numfactura" );
+        QString serie = m_facturaView->DBvalue ( "codigoserie_factura" );
+        QString ref = m_facturaView->DBvalue ( "reffactura" );
+        QString fecha = m_facturaView->DBvalue ( "ffactura" );
 
-        QString idcliente = m_facturaView->DBvalue("idcliente");
+        QString idcliente = m_facturaView->DBvalue ( "idcliente" );
         QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
-        cursor2 *curs = m_companyact->cargacursor(query);
-        QString email = curs->valor("mailcliente");
+        cursor2 *curs = m_companyact->cargacursor ( query );
+        QString email = curs->valor ( "mailcliente" );
 
         m_facturaView->generaRML();
-        generaPDF("factura");
+        generaPDF ( "factura" );
 
-        QString cad = "mv " + confpr->valor(CONF_DIR_USER) + "factura.pdf " + confpr->valor(CONF_DIR_USER) + "factura" + serie + num + ".pdf";
-        system(cad.toAscii().data());
-        
-        cad = "thunderbird -compose to='" + email + "',subject='Factura " + num + "',body='Estimado cliente:\n\nAdjunto le enviamos la factura número " + serie + num + " con fecha " + fecha + "\nSin otro particular reciba un cordial saludo.\n',attachment='file://" + confpr->valor(CONF_DIR_USER) + "factura" + serie + num + ".pdf'";
-        
-        system(cad.toAscii().data());
+        QString cad = "mv " + confpr->valor ( CONF_DIR_USER ) + "factura.pdf " + confpr->valor ( CONF_DIR_USER ) + "factura" + serie + num + ".pdf";
+        system ( cad.toAscii().data() );
+
+        cad = "thunderbird -compose to='" + email + "',subject='Factura " + num + "',body='Estimado cliente:\n\nAdjunto le enviamos la factura número " + serie + num + " con fecha " + fecha + "\nSin otro particular reciba un cordial saludo.\n',attachment='file://" + confpr->valor ( CONF_DIR_USER ) + "factura" + serie + num + ".pdf'";
+
+        system ( cad.toAscii().data() );
     } // end if
 
-    _depura("END EmailThunderbirdQToolButton::click", 0);
+    _depura ( "END EmailThunderbirdQToolButton::click", 0 );
 }

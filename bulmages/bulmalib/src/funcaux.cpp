@@ -469,13 +469,13 @@ void _depura ( const QString &cad, int nivel, const QString &param )
 //}
 #endif
 
-void mensajeInfo ( QString cad, QWidget *parent)
+void mensajeInfo ( QString cad, QWidget *parent )
 {
     QMessageBox msgBox;
     msgBox.information ( parent,
-                               QApplication::translate ( "funcaux", "Informacion del programa" ),
-                               cad, QApplication::translate ( "funcaux", "&Continuar" ),
-                               QString::null, 0 );
+                         QApplication::translate ( "funcaux", "Informacion del programa" ),
+                         cad, QApplication::translate ( "funcaux", "&Continuar" ),
+                         QString::null, 0 );
 }
 
 
@@ -483,9 +483,9 @@ void mensajeAviso ( QString cad, QWidget *parent )
 {
     QMessageBox msgBox;
     msgBox.warning ( parent,
-                           QApplication::translate ( "funcaux", "Aviso del programa" ),
-                           cad, QApplication::translate ( "funcaux", "&Continuar" ),
-                           QString::null, 0 );
+                     QApplication::translate ( "funcaux", "Aviso del programa" ),
+                     cad, QApplication::translate ( "funcaux", "&Continuar" ),
+                     QString::null, 0 );
 }
 
 
@@ -493,9 +493,9 @@ void mensajeError ( QString cad, QWidget *parent )
 {
     QMessageBox msgBox;
     msgBox.critical ( parent,
-                            QApplication::translate ( "funcaux", "Error del programa" ),
-                            cad, QApplication::translate ( "funcaux", "&Continuar" ),
-                            QString::null, 0 );
+                      QApplication::translate ( "funcaux", "Error del programa" ),
+                      cad, QApplication::translate ( "funcaux", "&Continuar" ),
+                      QString::null, 0 );
 }
 
 

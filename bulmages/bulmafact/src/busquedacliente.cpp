@@ -70,10 +70,10 @@ void BusquedaCliente::pinta()
     m_semaforo = TRUE;
     m_cifcliente->setText ( mdb_cifcliente );
 
-    if (mdb_codcliente.isEmpty() && mdb_nomcliente.isEmpty()) {
-	m_nomcliente->setText ( "" );
+    if ( mdb_codcliente.isEmpty() && mdb_nomcliente.isEmpty() ) {
+        m_nomcliente->setText ( "" );
     } else {
-	m_nomcliente->setText ( mdb_codcliente + " - " + mdb_nomcliente );
+        m_nomcliente->setText ( mdb_codcliente + " - " + mdb_nomcliente );
     } // end if
     m_semaforo = FALSE;
     emit ( valueChanged ( mdb_idcliente ) );
@@ -184,8 +184,8 @@ void BusquedaCliente::on_mui_buscar_clicked()
     _depura ( "BusquedaCliente::on_mui_buscar_clicked", 0 );
     QDialog *diag = new QDialog ( 0 );
     diag->setModal ( true );
-    diag->setGeometry(QRect (0, 0, 750, 550));
-    centrarEnPantalla(diag);
+    diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
+    centrarEnPantalla ( diag );
 
     ClientsList *clients = new ClientsList ( ( Company * ) empresaBase(), diag, 0, ClientsList::SelectMode );
     connect ( clients, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
@@ -219,7 +219,7 @@ void BusquedaCliente::on_m_cifcliente_editingFinished()
 {
     _depura ( "BusquedaCliente::on_m_cifcliente_editingFinished", 0 );
     pinta();
-    g_plugins->lanza("BusquedaCliente_on_m_cifcliente_editingFinished_Post",this);
+    g_plugins->lanza ( "BusquedaCliente_on_m_cifcliente_editingFinished_Post", this );
     _depura ( "END BusquedaCliente::on_m_cifcliente_editingFinished", 0 );
 }
 

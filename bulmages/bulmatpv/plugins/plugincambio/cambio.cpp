@@ -95,7 +95,7 @@ Cambio::Cambio ( EmpresaTPV *emp, QWidget *parent ) : BLWidget ( emp, parent )
 
     Fixed total = totiva + totbaseimp + totreqeq - totirpf;
 
-    mui_total->setText(total.toQString());
+    mui_total->setText ( total.toQString() );
 
 }
 
@@ -104,25 +104,29 @@ Cambio::~Cambio()
 {}
 
 
-void Cambio::on_mui_pago_textChanged() {
-	Fixed total( mui_total->text().replace(",","."));
-	Fixed pago ( mui_pago->text().replace(",","."));
-	Fixed cambio = pago - total;
-	mui_cambio->setText(cambio.toQString());
+void Cambio::on_mui_pago_textChanged()
+{
+    Fixed total ( mui_total->text().replace ( ",", "." ) );
+    Fixed pago ( mui_pago->text().replace ( ",", "." ) );
+    Fixed cambio = pago - total;
+    mui_cambio->setText ( cambio.toQString() );
 }
 
 
-void Cambio::on_mui_cancelar_clicked() {
-	m_value = -1;
-	((QDialog *)parent())->accept();
+void Cambio::on_mui_cancelar_clicked()
+{
+    m_value = -1;
+    ( ( QDialog * ) parent() )->accept();
 }
 
-void Cambio::on_mui_cobrar_clicked() {
-	((QDialog *)parent())->accept();
+void Cambio::on_mui_cobrar_clicked()
+{
+    ( ( QDialog * ) parent() )->accept();
 }
 
-void Cambio::on_mui_visa_clicked() {
-	((EmpresaTPV *) empresaBase())->ticketActual()->setDBvalue("idforma_pago", confpr->valor(CONF_IDFORMA_PAGO_VISA));
-	((QDialog *)parent())->accept();
+void Cambio::on_mui_visa_clicked()
+{
+    ( ( EmpresaTPV * ) empresaBase() )->ticketActual()->setDBvalue ( "idforma_pago", confpr->valor ( CONF_IDFORMA_PAGO_VISA ) );
+    ( ( QDialog * ) parent() )->accept();
 }
 

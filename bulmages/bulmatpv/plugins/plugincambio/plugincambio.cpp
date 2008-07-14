@@ -52,7 +52,7 @@ int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
 int EmpresaTPV_cobrar ( EmpresaTPV *etpv )
 {
     QDialog *diag = new QDialog;
-    Cambio *camb = new Cambio(etpv, diag);
+    Cambio *camb = new Cambio ( etpv, diag );
 
 
     diag->setModal ( true );

@@ -472,9 +472,9 @@ void Company::listarticles()
 void Company::refreshArticles()
 {
     _depura ( "Company::refreshArticles", 0 );
-    if (confpr->valor(CONF_REFRESH_LIST) == "TRUE")
-    if ( m_articleslist != NULL )
-        m_articleslist->presentar();
+    if ( confpr->valor ( CONF_REFRESH_LIST ) == "TRUE" )
+        if ( m_articleslist != NULL )
+            m_articleslist->presentar();
     _depura ( "END Company::refreshArticles", 0 );
 }
 
@@ -874,8 +874,8 @@ void Company::s_newFacturaCli()
 void Company::refreshPresupuestos()
 {
     _depura ( "Company::refreshPresupuestos", 0 );
-    if (confpr->valor(CONF_REFRESH_LIST) == "TRUE")
-    m_presupuestosList->presentar();
+    if ( confpr->valor ( CONF_REFRESH_LIST ) == "TRUE" )
+        m_presupuestosList->presentar();
     _depura ( "END Company::refreshPresupuestos", 0 );
 }
 
@@ -889,9 +889,9 @@ void Company::refreshPresupuestos()
 void Company::refreshFacturas()
 {
     _depura ( "Company::refreshFacturas", 0 );
-    if (confpr->valor(CONF_REFRESH_LIST) == "TRUE")
-    if ( m_facturasList != NULL )
-        m_facturasList->presentar();
+    if ( confpr->valor ( CONF_REFRESH_LIST ) == "TRUE" )
+        if ( m_facturasList != NULL )
+            m_facturasList->presentar();
     _depura ( "END Company::refreshFacturas", 0 );
 }
 
@@ -905,9 +905,9 @@ void Company::refreshFacturas()
 void Company::refreshFacturasProveedor()
 {
     _depura ( "Company::refreshFacturasProveedor", 0 );
-    if (confpr->valor(CONF_REFRESH_LIST) == "TRUE")
-    if ( m_facturasproveedorlist != NULL )
-        m_facturasproveedorlist->presentar();
+    if ( confpr->valor ( CONF_REFRESH_LIST ) == "TRUE" )
+        if ( m_facturasproveedorlist != NULL )
+            m_facturasproveedorlist->presentar();
     _depura ( "END Company::refreshFacturasProveedor", 0 );
 
 }
@@ -953,9 +953,9 @@ void Company::newClientDelivNote()
 void Company::refreshClientDelivNotes()
 {
     _depura ( "Company::refreshClientDelivNotes", 0 );
-    if (confpr->valor(CONF_REFRESH_LIST) == "TRUE")
-    if ( m_clientDelivNotesList != NULL )
-        m_clientDelivNotesList->presentar();
+    if ( confpr->valor ( CONF_REFRESH_LIST ) == "TRUE" )
+        if ( m_clientDelivNotesList != NULL )
+            m_clientDelivNotesList->presentar();
     _depura ( "END Company::refreshClientDelivNotes", 0 );
 }
 
@@ -969,9 +969,9 @@ void Company::refreshClientDelivNotes()
 void Company::refreshAlbaranesCliente()
 {
     _depura ( "Company::refreshAlbaranesCliente", 0 );
-    if (confpr->valor(CONF_REFRESH_LIST) == "TRUE")
-    if ( m_clientDelivNotesList != NULL )
-        m_clientDelivNotesList->presentar();
+    if ( confpr->valor ( CONF_REFRESH_LIST ) == "TRUE" )
+        if ( m_clientDelivNotesList != NULL )
+            m_clientDelivNotesList->presentar();
     _depura ( "END Company::refreshAlbaranesCliente", 0 );
 }
 
@@ -985,9 +985,9 @@ void Company::refreshAlbaranesCliente()
 void Company::refreshAlbaranesProveedor()
 {
     _depura ( "Company::refreshAlbaranesProveedor", 0 );
-    if (confpr->valor(CONF_REFRESH_LIST) == "TRUE")
-    if ( m_albaranesproveedor != NULL )
-        m_albaranesproveedor->presentar();
+    if ( confpr->valor ( CONF_REFRESH_LIST ) == "TRUE" )
+        if ( m_albaranesproveedor != NULL )
+            m_albaranesproveedor->presentar();
     _depura ( "END Company::refreshAlbaranesProveedor", 0 );
 }
 
@@ -999,9 +999,9 @@ void Company::refreshAlbaranesProveedor()
 void Company::refreshClientes()
 {
     _depura ( "Company::refreshClientes", 0 );
-    if (confpr->valor(CONF_REFRESH_LIST) == "TRUE")
-    if ( m_clientsList != NULL )
-        m_clientsList->presentar();
+    if ( confpr->valor ( CONF_REFRESH_LIST ) == "TRUE" )
+        if ( m_clientsList != NULL )
+            m_clientsList->presentar();
     _depura ( "END Company::refreshClientes", 0 );
 }
 
@@ -1013,9 +1013,9 @@ void Company::refreshClientes()
 void Company::refreshProveedores()
 {
     _depura ( "Company::refreshProveedores", 0 );
-    if (confpr->valor(CONF_REFRESH_LIST) == "TRUE")
-    if ( m_providerslist != NULL )
-        m_providerslist->presentar();
+    if ( confpr->valor ( CONF_REFRESH_LIST ) == "TRUE" )
+        if ( m_providerslist != NULL )
+            m_providerslist->presentar();
     _depura ( "END Company::refreshProveedores", 0 );
 }
 
@@ -1045,9 +1045,9 @@ void Company::newPedidoCliente()
 void Company::refreshCobrosCliente()
 {
     _depura ( "Company::refreshCobrosCliente", 0 );
-    if (confpr->valor(CONF_REFRESH_LIST) == "TRUE")
-    if ( m_cobrosList != NULL )
-        m_cobrosList->presentar();
+    if ( confpr->valor ( CONF_REFRESH_LIST ) == "TRUE" )
+        if ( m_cobrosList != NULL )
+            m_cobrosList->presentar();
     _depura ( "END Company::refreshCobrosCliente", 0 );
 }
 
@@ -1061,9 +1061,9 @@ void Company::refreshCobrosCliente()
 void Company::refreshPagosProveedor()
 {
     _depura ( "Company::refreshPagosProveedor", 0 );
-    if (confpr->valor(CONF_REFRESH_LIST) == "TRUE")
-    if ( m_pagosList != NULL )
-        m_pagosList->presentar();
+    if ( confpr->valor ( CONF_REFRESH_LIST ) == "TRUE" )
+        if ( m_pagosList != NULL )
+            m_pagosList->presentar();
     _depura ( "END Company::refreshPagosProveedor", 0 );
 }
 
@@ -1077,9 +1077,9 @@ void Company::refreshPagosProveedor()
 void Company::refreshPedidosCliente()
 {
     _depura ( "Company::refreshPedidosCliente", 0 );
-    if (confpr->valor(CONF_REFRESH_LIST) == "TRUE")
-    if ( m_pedidosclienteList != NULL )
-        m_pedidosclienteList->presentar();
+    if ( confpr->valor ( CONF_REFRESH_LIST ) == "TRUE" )
+        if ( m_pedidosclienteList != NULL )
+            m_pedidosclienteList->presentar();
     _depura ( "END Company::refreshPedidosCliente", 0 );
 }
 
@@ -1093,9 +1093,9 @@ void Company::refreshPedidosCliente()
 void Company::refreshPedidosProveedor()
 {
     _depura ( "Company::refreshPedidosProveedor", 0 );
-    if (confpr->valor(CONF_REFRESH_LIST) == "TRUE")
-    if ( m_pedidosproveedorList != NULL )
-        m_pedidosproveedorList->presentar();
+    if ( confpr->valor ( CONF_REFRESH_LIST ) == "TRUE" )
+        if ( m_pedidosproveedorList != NULL )
+            m_pedidosproveedorList->presentar();
     _depura ( "END Company::refreshPedidosProveedor", 0 );
 }
 

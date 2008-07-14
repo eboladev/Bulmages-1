@@ -222,15 +222,13 @@ EmpresaTPV *BulmaTPV::empresaTPV()
 
 void BulmaTPV::cargaConf()
 {
-    QFile inputFile(confpr->valor ( CONF_DIR_USER ) + "bulmatpv_conf.dat");
-    if (inputFile.open(QIODevice::ReadOnly)) {
-        QDataStream inputStream(&inputFile);
-         QByteArray state;
-        inputStream>>state;
-        restoreState(state);
-    }
-    else
-    {
+    QFile inputFile ( confpr->valor ( CONF_DIR_USER ) + "bulmatpv_conf.dat" );
+    if ( inputFile.open ( QIODevice::ReadOnly ) ) {
+        QDataStream inputStream ( &inputFile );
+        QByteArray state;
+        inputStream >> state;
+        restoreState ( state );
+    } else {
         //ERROR
     }
     inputFile.close();
@@ -238,14 +236,12 @@ void BulmaTPV::cargaConf()
 
 void BulmaTPV::guardaConf()
 {
-    QFile outputFile(confpr->valor ( CONF_DIR_USER ) +"bulmatpv_conf.dat");
-    if (outputFile.open(QIODevice::WriteOnly)) {
-		QDataStream outputStream(&outputFile);
-		outputStream << saveState();
-    }
-    else
-    {
-		//ERROR
+    QFile outputFile ( confpr->valor ( CONF_DIR_USER ) + "bulmatpv_conf.dat" );
+    if ( outputFile.open ( QIODevice::WriteOnly ) ) {
+        QDataStream outputStream ( &outputFile );
+        outputStream << saveState();
+    } else {
+        //ERROR
     }
     outputFile.close();
 }

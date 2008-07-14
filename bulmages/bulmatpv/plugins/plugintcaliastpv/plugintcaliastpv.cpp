@@ -30,7 +30,8 @@
 /// como un QMap.
 typedef QMap<QString, Fixed> base;
 
-int Ticket_agregarLinea_Post(Ticket *tick, DBRecord * &rec) {
+int Ticket_agregarLinea_Post ( Ticket *tick, DBRecord * &rec )
+{
     rec->addDBCampo ( "idtc_talla", DBCampo::DBnumeric, DBCampo::DBNothing, QApplication::translate ( "Ticket", "Talla" ) );
 
     rec->addDBCampo ( "idtc_color", DBCampo::DBnumeric, DBCampo::DBNothing, QApplication::translate ( "Ticket", "Color" ) );
@@ -48,11 +49,11 @@ int Ticket_insertarArticuloNL_Post ( Ticket *tick )
     cursor2 *cur = tick->empresaBase() ->cargacursor ( query );
     if ( !cur->eof() ) {
         DBRecord * rec = tick->insertarArticulo ( cur->valor ( "idarticulo" ), Fixed ( "1" ), TRUE );
-	rec->setDBvalue("idtc_talla", cur->valor("idtc_talla"));
-	rec->setDBvalue("idtc_color", cur->valor("idtc_color"));
-	rec->setDBvalue("nomtc_talla", cur->valor("nomtc_talla"));
-	rec->setDBvalue("nomtc_color", cur->valor("nomtc_color"));
-	tick->pintar();
+        rec->setDBvalue ( "idtc_talla", cur->valor ( "idtc_talla" ) );
+        rec->setDBvalue ( "idtc_color", cur->valor ( "idtc_color" ) );
+        rec->setDBvalue ( "nomtc_talla", cur->valor ( "nomtc_talla" ) );
+        rec->setDBvalue ( "nomtc_color", cur->valor ( "nomtc_color" ) );
+        tick->pintar();
     } // end if
     delete cur;
 
@@ -64,30 +65,31 @@ int Ticket_insertarArticuloNL_Post ( Ticket *tick )
 int Ticket_insertarArticulo_Post ( Ticket *tick )
 {
     int valor = -1;
-    _depura("pluginaliastpv::Ticket_insertarArticulo_Post", 0);
+    _depura ( "pluginaliastpv::Ticket_insertarArticulo_Post", 0 );
     static int semaforo = 0;
-    if (semaforo == 0) {
-	semaforo = 1;
-	QString query = "SELECT * FROM tc_articulo_alias LEFT JOIN tc_talla AS t1 ON tc_articulo_alias.idtc_talla = t1.idtc_talla LEFT JOIN tc_color AS t2 ON tc_articulo_alias.idtc_color = t2.idtc_color WHERE aliastc_articulo_tallacolor = '" + ( ( EmpresaTPV * ) tick->empresaBase() )->valorInput() + "'";
-	cursor2 *cur = tick->empresaBase() ->cargacursor ( query );
-	if ( !cur->eof() ) {
-		DBRecord * rec = tick->insertarArticulo ( cur->valor ( "idarticulo" ), Fixed ( "1" ), TRUE );
-		rec->setDBvalue("idtc_talla", cur->valor("idtc_talla"));
-		rec->setDBvalue("idtc_color", cur->valor("idtc_color"));
-		rec->setDBvalue("nomtc_talla", cur->valor("nomtc_talla"));
-		rec->setDBvalue("nomtc_color", cur->valor("nomtc_color"));
-	} // end if
-	delete cur;
-	tick->pintar();
+    if ( semaforo == 0 ) {
+        semaforo = 1;
+        QString query = "SELECT * FROM tc_articulo_alias LEFT JOIN tc_talla AS t1 ON tc_articulo_alias.idtc_talla = t1.idtc_talla LEFT JOIN tc_color AS t2 ON tc_articulo_alias.idtc_color = t2.idtc_color WHERE aliastc_articulo_tallacolor = '" + ( ( EmpresaTPV * ) tick->empresaBase() )->valorInput() + "'";
+        cursor2 *cur = tick->empresaBase() ->cargacursor ( query );
+        if ( !cur->eof() ) {
+            DBRecord * rec = tick->insertarArticulo ( cur->valor ( "idarticulo" ), Fixed ( "1" ), TRUE );
+            rec->setDBvalue ( "idtc_talla", cur->valor ( "idtc_talla" ) );
+            rec->setDBvalue ( "idtc_color", cur->valor ( "idtc_color" ) );
+            rec->setDBvalue ( "nomtc_talla", cur->valor ( "nomtc_talla" ) );
+            rec->setDBvalue ( "nomtc_color", cur->valor ( "nomtc_color" ) );
+        } // end if
+        delete cur;
+        tick->pintar();
         valor = 0;
-	semaforo = 0;
+        semaforo = 0;
     } // end if
-    _depura("END pluginaliastpv::Ticket_insertarArticulo_Post", 0);
+    _depura ( "END pluginaliastpv::Ticket_insertarArticulo_Post", 0 );
     return valor;
 }
 
 
-int MTicket_pintar(MTicket *mtick) {
+int MTicket_pintar ( MTicket *mtick )
+{
     _depura ( "MTicket_pintar", 0 );
 
     Ticket *tick =     ( ( EmpresaTPV * ) mtick->empresaBase() ) ->ticketActual();

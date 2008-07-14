@@ -49,8 +49,8 @@ TipoArticuloList::TipoArticuloList ( Company *comp, QWidget *parent, bool modoCo
     m_semaforoPintar = FALSE;
     m_idtipo = "";
 
-		mui_codigotipo_articulo->setEnabled(FALSE);
-		mui_desctipo_articulo->setEnabled(FALSE);
+    mui_codigotipo_articulo->setEnabled ( FALSE );
+    mui_desctipo_articulo->setEnabled ( FALSE );
     if ( modoConsulta ) {
         setModoConsulta();
         groupBox1->hide();
@@ -137,7 +137,7 @@ void TipoArticuloList::pintar()
         m_semaforoPintar = FALSE;
         _depura ( "END TipoArticuloList::pintar", 0 );
     } catch ( ... ) {
-        mensajeInfo ( tr("Error en la carga"), this );
+        mensajeInfo ( tr ( "Error en la carga" ), this );
         if ( cursoraux1 ) delete cursoraux1;
     } // end try
 }
@@ -229,20 +229,20 @@ void TipoArticuloList::on_m_listTipos_currentItemChanged ( QTreeWidgetItem *curr
         m_idtipo = previous->text ( COL_IDTIPOARTICULO );
     } // end if
 
-    if (!m_idtipo.isEmpty()) {
-		trataModificado();
-		if (previous)
-			pintar(previous);
+    if ( !m_idtipo.isEmpty() ) {
+        trataModificado();
+        if ( previous )
+            pintar ( previous );
     } // end if
 
-    if (current) {
-    	m_idtipo = current->text ( COL_IDTIPOARTICULO );
+    if ( current ) {
+        m_idtipo = current->text ( COL_IDTIPOARTICULO );
     } else {
-	m_idtipo = "";
+        m_idtipo = "";
     } // end if
     mostrarplantilla();
     _depura ( "END TipoArticuloList::on_m_listTipos_currentItemChanged", 0 );
-    m_semaforoPintar= FALSE;
+    m_semaforoPintar = FALSE;
 }
 
 
@@ -252,24 +252,24 @@ void TipoArticuloList::on_m_listTipos_currentItemChanged ( QTreeWidgetItem *curr
 void TipoArticuloList::mostrarplantilla()
 {
     _depura ( "TipoArticuloList::mostrarplantilla", 0 );
-    if (!m_idtipo.isEmpty()) {
-		mui_codigotipo_articulo->setEnabled(TRUE);
-		mui_desctipo_articulo->setEnabled(TRUE);
+    if ( !m_idtipo.isEmpty() ) {
+        mui_codigotipo_articulo->setEnabled ( TRUE );
+        mui_desctipo_articulo->setEnabled ( TRUE );
 
-    QString query;
-    query = "SELECT * from tipo_articulo WHERE idtipo_articulo = " + m_idtipo;
-    cursor2 *cursortipo = empresaBase()->cargacursor ( query );
-    if ( !cursortipo->eof() ) {
-        mui_codigotipo_articulo->setText ( cursortipo->valor ( "codtipo_articulo" ) );
-        mui_desctipo_articulo->setPlainText ( cursortipo->valor ( "desctipo_articulo" ) );
-    } // end if
-    delete cursortipo;
+        QString query;
+        query = "SELECT * from tipo_articulo WHERE idtipo_articulo = " + m_idtipo;
+        cursor2 *cursortipo = empresaBase()->cargacursor ( query );
+        if ( !cursortipo->eof() ) {
+            mui_codigotipo_articulo->setText ( cursortipo->valor ( "codtipo_articulo" ) );
+            mui_desctipo_articulo->setPlainText ( cursortipo->valor ( "desctipo_articulo" ) );
+        } // end if
+        delete cursortipo;
 
     } else {
-		mui_codigotipo_articulo->setEnabled(FALSE);
-		mui_desctipo_articulo->setEnabled(FALSE);
-		mui_codigotipo_articulo->setText("");
-		mui_desctipo_articulo->setText("");
+        mui_codigotipo_articulo->setEnabled ( FALSE );
+        mui_desctipo_articulo->setEnabled ( FALSE );
+        mui_codigotipo_articulo->setText ( "" );
+        mui_desctipo_articulo->setText ( "" );
     } // end if
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
@@ -328,14 +328,14 @@ int TipoArticuloList::guardar()
     /// Vamos a hacer algo no reentrante.
     QList<QTreeWidgetItem *> listit =  m_listTipos->findItems ( m_idtipo, Qt::MatchExactly, COL_IDTIPOARTICULO );
     QTreeWidgetItem *it = listit.first();
-    if (it) {
-	cursor2 *cursoraux1 = empresaBase()->cargacursor ( "SELECT * FROM tipo_articulo WHERE idtipo_articulo = " + m_idtipo );
-	if ( !cursoraux1->eof() ) {
-		it->setText ( COL_IDTIPOARTICULO, cursoraux1->valor ( "idtipo_articulo" ) );
-		it->setText ( COL_CODTIPOARTICULO, cursoraux1->valor ( "codtipo_articulo" ) );
-		it->setText ( COL_DESCTIPOARTICULO, cursoraux1->valor ( "desctipo_articulo" ) );
-	} // end if
-	delete cursoraux1;
+    if ( it ) {
+        cursor2 *cursoraux1 = empresaBase()->cargacursor ( "SELECT * FROM tipo_articulo WHERE idtipo_articulo = " + m_idtipo );
+        if ( !cursoraux1->eof() ) {
+            it->setText ( COL_IDTIPOARTICULO, cursoraux1->valor ( "idtipo_articulo" ) );
+            it->setText ( COL_CODTIPOARTICULO, cursoraux1->valor ( "codtipo_articulo" ) );
+            it->setText ( COL_DESCTIPOARTICULO, cursoraux1->valor ( "desctipo_articulo" ) );
+        } // end if
+        delete cursoraux1;
     } // end if
     return 0;
 }
@@ -364,7 +364,7 @@ void TipoArticuloList::on_mui_crear_clicked()
         pintar();
         _depura ( "END TipoArticuloList::on_mui_crear_clicked", 0 );
     } catch ( ... ) {
-        mensajeInfo ( tr("Error en la creacion"), this );
+        mensajeInfo ( tr ( "Error en la creacion" ), this );
         empresaBase()->rollback();
         return;
     } // end try
@@ -423,7 +423,7 @@ int TipoArticuloList::borrar()
         pintar();
         _depura ( "END TipoArticuloList::borrar", 0 );
     } catch ( ... ) {
-        mensajeInfo ( tr("Error al borrar la familia"), this );
+        mensajeInfo ( tr ( "Error al borrar la familia" ), this );
         return -1;
     } // end try
     return 0;

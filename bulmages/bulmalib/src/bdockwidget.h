@@ -48,7 +48,7 @@ public:
 
 public slots:
     void cambiaVisible ( bool );
-    virtual void mi_dockLocationChanged(Qt::DockWidgetArea area);
+    virtual void mi_dockLocationChanged ( Qt::DockWidgetArea area );
 
 protected:
     void closeEvent ( QCloseEvent *event );

@@ -71,9 +71,10 @@ int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
     return 0;
 }
 
-int BusquedaArticulo_on_m_codigocompletoarticulo_editingFinished_Post (BusquedaArticulo *busc) {
-    if (busc->idarticulo() != "")
-    	g_emp->ticketActual() ->insertarArticulo (  busc->idarticulo(), Fixed("1") );
+int BusquedaArticulo_on_m_codigocompletoarticulo_editingFinished_Post ( BusquedaArticulo *busc )
+{
+    if ( busc->idarticulo() != "" )
+        g_emp->ticketActual() ->insertarArticulo (  busc->idarticulo(), Fixed ( "1" ) );
     return 0;
 }
 

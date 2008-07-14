@@ -54,8 +54,8 @@ BDockWidget::BDockWidget ( const QString & title, QWidget * parent, const QStrin
     _depura ( "BDockWidget::BDockWidget", 0 );
     setFocusPolicy ( Qt::StrongFocus );
     m_name = name;
-    setObjectName(name);
-    connect (this, SIGNAL (dockLocationChanged(Qt::DockWidgetArea)), this, SLOT(mi_dockLocationChanged(Qt::DockWidgetArea)));
+    setObjectName ( name );
+    connect ( this, SIGNAL ( dockLocationChanged ( Qt::DockWidgetArea ) ), this, SLOT ( mi_dockLocationChanged ( Qt::DockWidgetArea ) ) );
     _depura ( "END BDockWidget::BDockWidget", 0 );
 }
 
@@ -98,22 +98,24 @@ void BDockWidget::closeEvent ( QCloseEvent * )
     _depura ( "END BDockWidget::closeEvent", 0 );
 }
 
-void BDockWidget::mi_dockLocationChanged(Qt::DockWidgetArea area) {
-	m_area = area;
+void BDockWidget::mi_dockLocationChanged ( Qt::DockWidgetArea area )
+{
+    m_area = area;
 }
 
-void BDockWidget::cargaconf() {
+void BDockWidget::cargaconf()
+{
     /// Si existe el archivo de configuracion lo cargamos y configuramos el aspecto del widget.
 // ============================
-    QFile file ( confpr->valor ( CONF_DIR_USER ) + m_name +".cfn" );
+    QFile file ( confpr->valor ( CONF_DIR_USER ) + m_name + ".cfn" );
     QString line;
     if ( file.open ( QIODevice::ReadOnly ) ) {
         QTextStream stream ( &file );
 
-	// Buscamos el area
-	int area = stream.readLine().toInt();
-//	theApp->((QMainWindow *)mainWidget())->
-	g_main->addDockWidget((Qt::DockWidgetArea)area, this);
+        // Buscamos el area
+        int area = stream.readLine().toInt();
+// theApp->((QMainWindow *)mainWidget())->
+        g_main->addDockWidget ( ( Qt::DockWidgetArea ) area, this );
 
         /// Establecemos la columna de ordenaci&oacute;n
         QString linea = stream.readLine();
@@ -132,23 +134,24 @@ void BDockWidget::cargaconf() {
 }
 
 
-void BDockWidget::guardaconf() {
-    _depura ("BDockWidget::guardaconf", 0);
+void BDockWidget::guardaconf()
+{
+    _depura ( "BDockWidget::guardaconf", 0 );
     /// Vamos a probar con un docwindow.
     int lwidth = width();
     int lheight = height();
 
-        QString aux = "";
-        QFile file ( confpr->valor ( CONF_DIR_USER ) + m_name + ".cfn" );
-        /// Guardado del orden y de configuraciones varias.
-        if ( file.open ( QIODevice::WriteOnly ) ) {
-            QTextStream stream ( &file );
-	    stream << m_area << "\n";
-            stream << lwidth << "\n";
-            stream << lheight << "\n";
-            file.close();
-        } // end if
-    _depura ("END BDockWidget::guardaconf", 0);
+    QString aux = "";
+    QFile file ( confpr->valor ( CONF_DIR_USER ) + m_name + ".cfn" );
+    /// Guardado del orden y de configuraciones varias.
+    if ( file.open ( QIODevice::WriteOnly ) ) {
+        QTextStream stream ( &file );
+        stream << m_area << "\n";
+        stream << lwidth << "\n";
+        stream << lheight << "\n";
+        file.close();
+    } // end if
+    _depura ( "END BDockWidget::guardaconf", 0 );
 }
 
 

@@ -25,46 +25,46 @@ public slots:
 /// La parte de las teclas
 public slots:
     virtual void on_mui_00_clicked() {
-        mui_pago->setText(mui_pago->text() + "00");
+        mui_pago->setText ( mui_pago->text() + "00" );
     };
     virtual void on_mui_0_clicked() {
-        mui_pago->setText(mui_pago->text() + "0");
+        mui_pago->setText ( mui_pago->text() + "0" );
     };
     virtual void on_mui_1_clicked() {
-        mui_pago->setText(mui_pago->text() + "1");
+        mui_pago->setText ( mui_pago->text() + "1" );
     };
     virtual void on_mui_2_clicked() {
-        mui_pago->setText(mui_pago->text() + "2");
+        mui_pago->setText ( mui_pago->text() + "2" );
     };
     virtual void on_mui_3_clicked() {
-        mui_pago->setText(mui_pago->text() + "3");
+        mui_pago->setText ( mui_pago->text() + "3" );
     };
     virtual void on_mui_4_clicked() {
-        mui_pago->setText(mui_pago->text() + "4");
+        mui_pago->setText ( mui_pago->text() + "4" );
     };
     virtual void on_mui_5_clicked() {
-        mui_pago->setText(mui_pago->text() + "5");
+        mui_pago->setText ( mui_pago->text() + "5" );
     };
     virtual void on_mui_6_clicked() {
-        mui_pago->setText(mui_pago->text() + "6");
+        mui_pago->setText ( mui_pago->text() + "6" );
     };
     virtual void on_mui_7_clicked() {
-        mui_pago->setText(mui_pago->text() + "7");
+        mui_pago->setText ( mui_pago->text() + "7" );
     };
     virtual void on_mui_8_clicked() {
-        mui_pago->setText(mui_pago->text() + "8");
+        mui_pago->setText ( mui_pago->text() + "8" );
     };
     virtual void on_mui_9_clicked() {
-        mui_pago->setText(mui_pago->text() + "9");
+        mui_pago->setText ( mui_pago->text() + "9" );
     };
     virtual void on_mui_punto_clicked() {
-        mui_pago->setText(mui_pago->text() + ".");
+        mui_pago->setText ( mui_pago->text() + "." );
     };
     virtual void on_mui_borrar_clicked() {
-        mui_pago->setText("");
+        mui_pago->setText ( "" );
     };
     virtual void on_mui_c_clicked() {
-        mui_pago->setText("");
+        mui_pago->setText ( "" );
     };
 };
 

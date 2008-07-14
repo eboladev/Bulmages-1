@@ -69,7 +69,7 @@ void ListTasaIVAView::on_mui_aceptar_clicked()
         mui_listado->guardar();
         close();
     } catch ( ... ) {
-        mensajeInfo ( tr("Error al guardar las tasas de IVA"), this );
+        mensajeInfo ( tr ( "Error al guardar las tasas de IVA" ), this );
     } // end try
     _depura ( "END ListTasaIVAView::on_mui_aceptar_clicked", 0 );
 }

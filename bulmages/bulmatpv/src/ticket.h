@@ -63,8 +63,8 @@ public:
     virtual void imprimir();
     virtual void abrircajon();
     int guardar();
-    int cargar(QString);
-    void borrarLinea(DBRecord* linea);
+    int cargar ( QString );
+    void borrarLinea ( DBRecord* linea );
 
 public slots:
     virtual void subir();

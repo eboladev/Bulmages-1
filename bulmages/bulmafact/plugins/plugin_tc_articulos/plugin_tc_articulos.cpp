@@ -99,7 +99,7 @@ int ArticuloView_cargar ( ArticuloView *art )
     _depura ( "ArticuloView_cargar", 0 );
     SubForm2Bf *l = art->findChild<SubForm2Bf *> ( "laliastc" );
     if ( l ) {
-	QString query = "SELECT * FROM tc_articulo_alias LEFT JOIN tc_talla AS t1 ON tc_articulo_alias.idtc_talla = t1.idtc_talla LEFT JOIN tc_color AS t2 ON tc_articulo_alias.idtc_color = t2.idtc_color WHERE tc_articulo_alias.idarticulo = " + art->DBvalue ( "idarticulo" );
+        QString query = "SELECT * FROM tc_articulo_alias LEFT JOIN tc_talla AS t1 ON tc_articulo_alias.idtc_talla = t1.idtc_talla LEFT JOIN tc_color AS t2 ON tc_articulo_alias.idtc_color = t2.idtc_color WHERE tc_articulo_alias.idarticulo = " + art->DBvalue ( "idarticulo" );
         l->cargar ( query );
     } // end if
     _depura ( "END ArticuloView_cargar", 0 );
@@ -333,7 +333,8 @@ int ListLinAlbaranClienteView_ListLinAlbaranClienteView ( ListLinAlbaranClienteV
 }
 
 
-int ListLinAlbaranClienteView_cargar(ListLinAlbaranClienteView *subform) {
+int ListLinAlbaranClienteView_cargar ( ListLinAlbaranClienteView *subform )
+{
     QString query = "SELECT * FROM lalbaran LEFT JOIN articulo AS t1 ON lalbaran.idarticulo = t1.idarticulo LEFT JOIN tc_color AS t2 on t2.idtc_color = lalbaran.idtc_color LEFT JOIN tc_talla AS t3 ON t3.idtc_talla= lalbaran.idtc_talla WHERE idalbaran=" + subform->mdb_idalbaran + "   ORDER BY ordenlalbaran";
     subform->SubForm3::cargar ( query );
     return -1;
@@ -361,7 +362,8 @@ int ListLinFacturaView_ListLinFacturaView ( ListLinFacturaView *subform )
 
 
 
-int ListLinFacturaView_cargar(ListLinFacturaView *subform) {
+int ListLinFacturaView_cargar ( ListLinFacturaView *subform )
+{
     QString query = "SELECT * FROM lfactura LEFT JOIN articulo AS t1 ON lfactura.idarticulo = t1.idarticulo LEFT JOIN tc_color AS t2 on t2.idtc_color = lfactura.idtc_color LEFT JOIN tc_talla AS t3 ON t3.idtc_talla= lfactura.idtc_talla WHERE idfactura=" + subform->mdb_idfactura + "   ORDER BY ordenlfactura";
     subform->SubForm3::cargar ( query );
     return -1;

@@ -35,12 +35,12 @@ Splash::Splash ( QString appSplash, QString appName, QString appVersion ) : QDia
 {
     _depura ( "Splash::Splash", 0 );
 
-    QFile archivo(appSplash);
-    if (!archivo.exists()) {
-	QString mensaje = "Splash: No existe el archivo " + appSplash + "\n";
-	fprintf(stderr, mensaje.toAscii());
-        image0 = new QPixmap(350, 263);
-	image0->fill(QColor(QColor(150, 150, 200)));
+    QFile archivo ( appSplash );
+    if ( !archivo.exists() ) {
+        QString mensaje = "Splash: No existe el archivo " + appSplash + "\n";
+        fprintf ( stderr, mensaje.toAscii() );
+        image0 = new QPixmap ( 350, 263 );
+        image0->fill ( QColor ( QColor ( 150, 150, 200 ) ) );
     } else {
         image0 = new QPixmap();
         image0->load ( appSplash );

@@ -33,9 +33,10 @@
 /**
 \return
 **/
-int entryPoint(Bulmafact *) {
-    _depura("Estoy dentro del plugin de envio de e-mail", 0);
-    
+int entryPoint ( Bulmafact * )
+{
+    _depura ( "Estoy dentro del plugin de envio de e-mail", 0 );
+
     return 0;
 }
 
@@ -45,19 +46,20 @@ int entryPoint(Bulmafact *) {
 \param l
 \return
 **/
-int PresupuestoView_PresupuestoView(PresupuestoView *l) {
-    _depura ("PresupuestoView_PresupuestoView", 0 );
-    
-    EmailThunderbirdQToolButton *mui_envia_email = new EmailThunderbirdQToolButton( l, NULL, NULL,  NULL, l->mui_plugbotones );
-    QHBoxLayout *m_hboxLayout1 = new QHBoxLayout( l->mui_plugbotones );
-    
-    m_hboxLayout1->setSpacing(5);
-    m_hboxLayout1->setMargin(5);
-    m_hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));
-    m_hboxLayout1->addWidget(mui_envia_email);
-    
-    _depura ("END PresupuestoView_PresupuestoView", 0);
-    
+int PresupuestoView_PresupuestoView ( PresupuestoView *l )
+{
+    _depura ( "PresupuestoView_PresupuestoView", 0 );
+
+    EmailThunderbirdQToolButton *mui_envia_email = new EmailThunderbirdQToolButton ( l, NULL, NULL,  NULL, l->mui_plugbotones );
+    QHBoxLayout *m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
+
+    m_hboxLayout1->setSpacing ( 5 );
+    m_hboxLayout1->setMargin ( 5 );
+    m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    m_hboxLayout1->addWidget ( mui_envia_email );
+
+    _depura ( "END PresupuestoView_PresupuestoView", 0 );
+
     return 0;
 }
 
@@ -67,19 +69,20 @@ int PresupuestoView_PresupuestoView(PresupuestoView *l) {
 \param l
 \return
 **/
-int PedidoClienteView_PedidoClienteView(PedidoClienteView *l) {
-    _depura ("PedidoClienteView_PedidoClienteView", 0 );
-    
-    EmailThunderbirdQToolButton *mui_envia_email = new EmailThunderbirdQToolButton(NULL, l, NULL, NULL, l->mui_plugbotones);
-    QHBoxLayout *m_hboxLayout1 = new QHBoxLayout(l->mui_plugbotones);
-    
-    m_hboxLayout1->setSpacing(5);
-    m_hboxLayout1->setMargin(5);
-    m_hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));
-    m_hboxLayout1->addWidget(mui_envia_email);
-    
-    _depura("END PedidoClienteView_PedidoClienteView", 0);
-    
+int PedidoClienteView_PedidoClienteView ( PedidoClienteView *l )
+{
+    _depura ( "PedidoClienteView_PedidoClienteView", 0 );
+
+    EmailThunderbirdQToolButton *mui_envia_email = new EmailThunderbirdQToolButton ( NULL, l, NULL, NULL, l->mui_plugbotones );
+    QHBoxLayout *m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
+
+    m_hboxLayout1->setSpacing ( 5 );
+    m_hboxLayout1->setMargin ( 5 );
+    m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    m_hboxLayout1->addWidget ( mui_envia_email );
+
+    _depura ( "END PedidoClienteView_PedidoClienteView", 0 );
+
     return 0;
 }
 
@@ -89,19 +92,20 @@ int PedidoClienteView_PedidoClienteView(PedidoClienteView *l) {
 \param l
 \return
 **/
-int AlbaranClienteView_AlbaranClienteView(AlbaranClienteView *l) {
-    _depura("FacturaView_FacturaView", 0);
-    
-    EmailThunderbirdQToolButton *mui_envia_email = new EmailThunderbirdQToolButton(NULL, NULL, l, NULL, l->mui_plugbotones);
-    QHBoxLayout *m_hboxLayout1 = new QHBoxLayout(l->mui_plugbotones);
-    
-    m_hboxLayout1->setSpacing(5);
-    m_hboxLayout1->setMargin(5);
-    m_hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));
-    m_hboxLayout1->addWidget(mui_envia_email);
-    
-    _depura("END FacturaView_FacturaView", 0);
-    
+int AlbaranClienteView_AlbaranClienteView ( AlbaranClienteView *l )
+{
+    _depura ( "FacturaView_FacturaView", 0 );
+
+    EmailThunderbirdQToolButton *mui_envia_email = new EmailThunderbirdQToolButton ( NULL, NULL, l, NULL, l->mui_plugbotones );
+    QHBoxLayout *m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
+
+    m_hboxLayout1->setSpacing ( 5 );
+    m_hboxLayout1->setMargin ( 5 );
+    m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    m_hboxLayout1->addWidget ( mui_envia_email );
+
+    _depura ( "END FacturaView_FacturaView", 0 );
+
     return 0;
 }
 
@@ -111,18 +115,19 @@ int AlbaranClienteView_AlbaranClienteView(AlbaranClienteView *l) {
 \param l
 \return
 **/
-int FacturaView_FacturaView(FacturaView *l) {
-    _depura("FacturaView_FacturaView", 0);
-    
-    EmailThunderbirdQToolButton *mui_envia_email = new EmailThunderbirdQToolButton(NULL, NULL, NULL, l, l->mui_plugbotones);
-    QHBoxLayout *m_hboxLayout1 = new QHBoxLayout(l->mui_plugbotones);
-    
-    m_hboxLayout1->setSpacing(5);
-    m_hboxLayout1->setMargin(5);
-    m_hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));
-    m_hboxLayout1->addWidget(mui_envia_email);
-    
-    _depura("END FacturaView_FacturaView", 0);
-    
+int FacturaView_FacturaView ( FacturaView *l )
+{
+    _depura ( "FacturaView_FacturaView", 0 );
+
+    EmailThunderbirdQToolButton *mui_envia_email = new EmailThunderbirdQToolButton ( NULL, NULL, NULL, l, l->mui_plugbotones );
+    QHBoxLayout *m_hboxLayout1 = new QHBoxLayout ( l->mui_plugbotones );
+
+    m_hboxLayout1->setSpacing ( 5 );
+    m_hboxLayout1->setMargin ( 5 );
+    m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+    m_hboxLayout1->addWidget ( mui_envia_email );
+
+    _depura ( "END FacturaView_FacturaView", 0 );
+
     return 0;
 }

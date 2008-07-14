@@ -51,7 +51,7 @@ PagoView::PagoView ( Company *comp, QWidget *parent )
     try {
         setAttribute ( Qt::WA_DeleteOnClose );
         setupUi ( this );
-	centrarEnPantalla(this);
+        centrarEnPantalla ( this );
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
         mui_idproveedor->setEmpresaBase ( comp );
         mui_refpago->setEmpresaBase ( comp );
@@ -86,7 +86,7 @@ PagoView::PagoView ( Company *comp, QWidget *parent )
 PagoView::~PagoView()
 {
     _depura ( "PagoView::~PagoView", 0 );
-    ((Company *)empresaBase())->refreshPagosProveedor();
+    ( ( Company * ) empresaBase() )->refreshPagosProveedor();
     _depura ( "END PagoView::~PagoView", 0 );
 }
 

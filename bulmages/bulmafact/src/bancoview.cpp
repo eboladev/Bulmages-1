@@ -166,7 +166,7 @@ int BancoView::guardar()
         _depura ( "END BancoView::on_mui_guardar_clicked", 0 );
         return 0;
     } catch ( ... ) {
-        mensajeInfo ( tr("Error al guardar"), this );
+        mensajeInfo ( tr ( "Error al guardar" ), this );
         return -1;
     } // end try
 }

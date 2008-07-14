@@ -63,10 +63,10 @@ FamiliasView::FamiliasView ( Company *comp, QWidget *parent, bool modoConsulta )
 
     m_idfamilia = "";
 
-	mui_nomFamilia->setEnabled(FALSE);
-	mui_descFamilia->setEnabled(FALSE);
-	mui_codCompletoFamilia->setEnabled(FALSE);
-	mui_codFamilia->setEnabled(FALSE);
+    mui_nomFamilia->setEnabled ( FALSE );
+    mui_descFamilia->setEnabled ( FALSE );
+    mui_codCompletoFamilia->setEnabled ( FALSE );
+    mui_codFamilia->setEnabled ( FALSE );
 
 
     if ( modoConsulta ) {
@@ -245,16 +245,16 @@ void FamiliasView::on_m_listFamilias_currentItemChanged ( QTreeWidgetItem *curre
         m_idfamilia = previous->text ( COL_IDFAMILIA );
     } // end if
 
-	if ( !m_idfamilia.isEmpty() ) {
-		trataModificado();
-		if (previous)
-			pintar(previous);
+    if ( !m_idfamilia.isEmpty() ) {
+        trataModificado();
+        if ( previous )
+            pintar ( previous );
 
-	} // end if
-    if (current) {
-	m_idfamilia = current->text ( COL_IDFAMILIA );
+    } // end if
+    if ( current ) {
+        m_idfamilia = current->text ( COL_IDFAMILIA );
     } else {
-	m_idfamilia = "";
+        m_idfamilia = "";
     } // end if
 
     mostrarplantilla();
@@ -270,36 +270,36 @@ void FamiliasView::mostrarplantilla()
 {
     _depura ( "FamiliasView::mostrarplantilla", 0 );
     QString query;
-    if (!m_idfamilia.isEmpty()) {
-		mui_nomFamilia->setEnabled(TRUE);
-		mui_descFamilia->setEnabled(TRUE);
-		mui_codCompletoFamilia->setEnabled(TRUE);
-		mui_codFamilia->setEnabled(TRUE);
+    if ( !m_idfamilia.isEmpty() ) {
+        mui_nomFamilia->setEnabled ( TRUE );
+        mui_descFamilia->setEnabled ( TRUE );
+        mui_codCompletoFamilia->setEnabled ( TRUE );
+        mui_codFamilia->setEnabled ( TRUE );
 
-	query = "SELECT * from familia WHERE idfamilia = " + m_idfamilia;
-	cursor2 *cursorfamilia = empresaBase()->cargacursor ( query );
-	if ( !cursorfamilia->eof() ) {
-		mui_nomFamilia->setText ( cursorfamilia->valor ( "nombrefamilia" ) );
-		mui_descFamilia->setPlainText ( cursorfamilia->valor ( "descfamilia" ) );
-		mui_codCompletoFamilia->setText ( cursorfamilia->valor ( "codigocompletofamilia" ) );
-		mui_codFamilia->setText ( cursorfamilia->valor ( "codigofamilia" ) );
-	
-		if ( cursorfamilia->valor ( "productofisicofamilia" ) == "t" ) {
-		mui_productofamilia->setChecked ( TRUE );
-		} else {
-		mui_serviciofamilia->setChecked ( TRUE );
-		} // end if
-	} // end if
-	delete cursorfamilia;
+        query = "SELECT * from familia WHERE idfamilia = " + m_idfamilia;
+        cursor2 *cursorfamilia = empresaBase()->cargacursor ( query );
+        if ( !cursorfamilia->eof() ) {
+            mui_nomFamilia->setText ( cursorfamilia->valor ( "nombrefamilia" ) );
+            mui_descFamilia->setPlainText ( cursorfamilia->valor ( "descfamilia" ) );
+            mui_codCompletoFamilia->setText ( cursorfamilia->valor ( "codigocompletofamilia" ) );
+            mui_codFamilia->setText ( cursorfamilia->valor ( "codigofamilia" ) );
+
+            if ( cursorfamilia->valor ( "productofisicofamilia" ) == "t" ) {
+                mui_productofamilia->setChecked ( TRUE );
+            } else {
+                mui_serviciofamilia->setChecked ( TRUE );
+            } // end if
+        } // end if
+        delete cursorfamilia;
     } else {
-		mui_nomFamilia->setEnabled(FALSE);
-		mui_descFamilia->setEnabled(FALSE);
-		mui_codCompletoFamilia->setEnabled(FALSE);
-		mui_codFamilia->setEnabled(FALSE);
-		mui_nomFamilia->setText ( "" );
-		mui_descFamilia->setPlainText ( "" );
-		mui_codCompletoFamilia->setText ( "" );
-		mui_codFamilia->setText ( "" );
+        mui_nomFamilia->setEnabled ( FALSE );
+        mui_descFamilia->setEnabled ( FALSE );
+        mui_codCompletoFamilia->setEnabled ( FALSE );
+        mui_codFamilia->setEnabled ( FALSE );
+        mui_nomFamilia->setText ( "" );
+        mui_descFamilia->setPlainText ( "" );
+        mui_codCompletoFamilia->setText ( "" );
+        mui_codFamilia->setText ( "" );
     } // end if
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
@@ -360,16 +360,16 @@ int FamiliasView::guardar()
         /// a ponerla despues.
         QTreeWidgetItem *posicionCursor;
         posicionCursor = m_listFamilias->currentItem();
-	if (posicionCursor) {
-		posicionCursor->setSelected ( TRUE );
-		/// Pintamos los datos en el listado.
-		pintar ( posicionCursor );
-	} // end if
+        if ( posicionCursor ) {
+            posicionCursor->setSelected ( TRUE );
+            /// Pintamos los datos en el listado.
+            pintar ( posicionCursor );
+        } // end if
         dialogChanges_cargaInicial();
         _depura ( "END FamiliasView::guardar", 0 );
         return 0;
     } catch ( ... ) {
-        mensajeInfo ( tr("Error al guardar la familia"), this );
+        mensajeInfo ( tr ( "Error al guardar la familia" ), this );
         return -1;
     } // end try
 }
@@ -429,7 +429,7 @@ void FamiliasView::on_mui_crear_clicked()
         _depura ( "END FamiliasView::on_mui_crear_clicked", 0 );
     } catch ( ... ) {
         empresaBase()->rollback();
-        mensajeInfo ( tr("Error al crear la familia"), this );
+        mensajeInfo ( tr ( "Error al crear la familia" ), this );
     } // end try
 }
 
@@ -516,7 +516,7 @@ int FamiliasView::borrar()
         pintar();
         _depura ( "END FamiliasView::borrar", 0 );
     } catch ( ... ) {
-        mensajeInfo ( tr("Error al borrar la familia"), this );
+        mensajeInfo ( tr ( "Error al borrar la familia" ), this );
         return -1;
     } // end try
     return 0;

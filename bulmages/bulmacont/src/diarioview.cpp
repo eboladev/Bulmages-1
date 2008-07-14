@@ -198,7 +198,7 @@ void DiarioView::presentar()
     cursor2 *cur = NULL;
     try {
         QString tabla = "apunte";
-	QString tabla2 = "";
+        QString tabla2 = "";
         mui_list->setDBTableName ( "apunte" );
         mui_list->setDBCampoId ( "idapunte" );
         if ( mui_asAbiertos->isChecked() ) {

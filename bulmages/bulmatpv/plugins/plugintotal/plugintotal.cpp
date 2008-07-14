@@ -175,8 +175,8 @@ int Ticket_pintar ( Ticket *tick )
 
 
     /// Pintamos el total
-    if (g_tot)
-    	g_tot->mui_total->setText( total.toQString() );
+    if ( g_tot )
+        g_tot->mui_total->setText ( total.toQString() );
 
     _depura ( "END plugintotal::Ticket_pintar", 0 );
 

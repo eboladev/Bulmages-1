@@ -124,7 +124,7 @@ void EmpresaTPV::z()
     commit();
     delete cur;
 
-    QString querycont = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz = "+idz+" AND ticketalbaran = TRUE AND idforma_pago = "+ confpr->valor(CONF_IDFORMA_PAGO_CONTADO);
+    QString querycont = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz = " + idz + " AND ticketalbaran = TRUE AND idforma_pago = " + confpr->valor ( CONF_IDFORMA_PAGO_CONTADO );
     cursor2 *cur1 = cargacursor ( querycont );
     QString numticketscont = cur1->valor ( "numtickets" );
     QString totalcont = cur1->valor ( "total" );
@@ -132,6 +132,7 @@ void EmpresaTPV::z()
     delete cur1;
 
     QString queryvisa = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz = "+idz+" AND ticketalbaran = TRUE AND idforma_pago <> "+ confpr->valor(CONF_IDFORMA_PAGO_VISA);
+
     cursor2 *cur2 = cargacursor ( queryvisa );
     QString numticketsvisa = cur2->valor ( "numtickets" );
     QString totalvisa = cur2->valor ( "total" );
@@ -143,7 +144,7 @@ void EmpresaTPV::z()
     QFile file ( confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
     if ( !file.open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
         _depura ( "Error en la Impresion de ticket", 2 );
-	return;
+        return;
     } // end if
     file.write ( QString ( "Informe Z\n" ).toAscii() );
     file.write ( QString ( "=========\n" ).toAscii() );
@@ -292,14 +293,16 @@ void EmpresaTPV::x()
     if ( total == "" ) total = "0";
     delete cur;
 
-    QString querycont = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE AND idforma_pago = "+ confpr->valor(CONF_IDFORMA_PAGO_CONTADO);
+    QString querycont = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE AND idforma_pago = " + confpr->valor ( CONF_IDFORMA_PAGO_CONTADO );
     cursor2 *cur1 = cargacursor ( querycont );
     QString numticketscont = cur1->valor ( "numtickets" );
     QString totalcont = cur1->valor ( "total" );
     if ( totalcont == "" ) totalcont = "0";
     delete cur1;
 
+
     QString queryvisa = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE AND idforma_pago <> "+ confpr->valor(CONF_IDFORMA_PAGO_VISA);
+
     cursor2 *cur2 = cargacursor ( queryvisa );
     QString numticketsvisa = cur2->valor ( "numtickets" );
     QString totalvisa = cur2->valor ( "total" );
@@ -312,7 +315,7 @@ void EmpresaTPV::x()
     QFile file ( confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
     if ( !file.open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
         _depura ( "Error en la Impresion de ticket", 2 );
-	return;
+        return;
     } // end if
     file.write ( QString ( "Informe X\n" ).toAscii() );
     file.write ( QString ( "=========\n" ).toAscii() );
@@ -584,8 +587,8 @@ void EmpresaTPV::cobrar()
 {
     QString idtrabajador = m_ticketActual->DBvalue ( "idtrabajador" );
 
-    if (g_plugins->lanza("EmpresaTPV_cobrar", this) ) {
-	return;
+    if ( g_plugins->lanza ( "EmpresaTPV_cobrar", this ) ) {
+        return;
     } // end if
 
     m_ticketActual->guardar();
@@ -617,7 +620,7 @@ void EmpresaTPV::cobrar()
         tick->pintar();
     }// end if
 
-    g_plugins->lanza("EmpresaTPV_cobrar_Post", this);
+    g_plugins->lanza ( "EmpresaTPV_cobrar_Post", this );
 
 }
 

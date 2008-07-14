@@ -67,11 +67,11 @@ class QCP850EuroTextCodec: public QTextCodec
 {
 public:
     enum { numSimpleCodecs = 1 };
-    explicit QCP850EuroTextCodec(int);
+    explicit QCP850EuroTextCodec ( int );
     ~QCP850EuroTextCodec();
 
-    QString convertToUnicode(const char *, int, ConverterState *) const;
-    QByteArray convertFromUnicode(const QChar *, int, ConverterState *) const;
+    QString convertToUnicode ( const char *, int, ConverterState * ) const;
+    QByteArray convertFromUnicode ( const QChar *, int, ConverterState * ) const;
 
     QByteArray name() const;
     QList<QByteArray> aliases() const;

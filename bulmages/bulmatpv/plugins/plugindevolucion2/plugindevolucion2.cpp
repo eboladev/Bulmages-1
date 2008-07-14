@@ -1,5 +1,5 @@
 /***************************************************************************
- * 
+ *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -74,7 +74,7 @@ void MyDevButton::on_click (  )
 int entryPoint ( BulmaTPV *tpv )
 {
     _depura ( "entryPoint", 0 );
-	    g_doc1 = new BDockWidget ( "Articulo", tpv, "articulodock" );
+    g_doc1 = new BDockWidget ( "Articulo", tpv, "articulodock" );
     g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
     g_doc1->setGeometry ( 100, 100, 100, 500 );
     g_doc1->resize ( 330, 400 );
@@ -88,21 +88,21 @@ int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
 {
     // ============ Pruebas con abrevs
     g_plug = new MyDevButton ( "DEVOLUCION", etpv, etpv );
-    g_plug->setMinimumSize(QSize(72, 72));
-    g_plug->setMaximumSize(QSize(200, 72));
-	  g_doc1->setWidget ( g_plug );
+    g_plug->setMinimumSize ( QSize ( 72, 72 ) );
+    g_plug->setMaximumSize ( QSize ( 200, 72 ) );
+    g_doc1->setWidget ( g_plug );
 
-   /* QFrame *fr = g_main->findChild<QFrame *> ( "mui_frameabrevs" );
-    if ( fr ) {
-        QHBoxLayout *m_hboxLayout1 = fr->findChild<QHBoxLayout *> ( "hboxLayout1" );
-        if ( !m_hboxLayout1 ) {
-            m_hboxLayout1 = new QHBoxLayout ( fr );
-            m_hboxLayout1->setSpacing ( 5 );
-            m_hboxLayout1->setMargin ( 5 );
-            m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
-        } // end if
-        m_hboxLayout1->addWidget ( g_plug );
-    } // end if*/
+    /* QFrame *fr = g_main->findChild<QFrame *> ( "mui_frameabrevs" );
+     if ( fr ) {
+         QHBoxLayout *m_hboxLayout1 = fr->findChild<QHBoxLayout *> ( "hboxLayout1" );
+         if ( !m_hboxLayout1 ) {
+             m_hboxLayout1 = new QHBoxLayout ( fr );
+             m_hboxLayout1->setSpacing ( 5 );
+             m_hboxLayout1->setMargin ( 5 );
+             m_hboxLayout1->setObjectName ( QString::fromUtf8 ( "hboxLayout1" ) );
+         } // end if
+         m_hboxLayout1->addWidget ( g_plug );
+     } // end if*/
     return 0;
 }
 

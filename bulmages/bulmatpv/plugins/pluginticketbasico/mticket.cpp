@@ -33,9 +33,9 @@ void MTicket::pintar()
 {
     _depura ( "MTicket::pintar", 0 );
 
-    if (g_plugins->lanza("MTicket_pintar", this)) {
+    if ( g_plugins->lanza ( "MTicket_pintar", this ) ) {
         _depura ( "END MTicket::pintar", 0 );
-	return;
+        return;
     } // end if
 
     Ticket *tick =     ( ( EmpresaTPV * ) empresaBase() ) ->ticketActual();

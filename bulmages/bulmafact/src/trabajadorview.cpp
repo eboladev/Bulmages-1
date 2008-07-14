@@ -198,7 +198,7 @@ void TrabajadorView::on_mui_guardar_clicked()
         /// Comprobamos cual es la cadena inicial.
         dialogChanges_cargaInicial();
     } catch ( ... ) {
-        mensajeInfo ( tr("Error al guardar el trabajador"), this );
+        mensajeInfo ( tr ( "Error al guardar el trabajador" ), this );
         empresaBase() ->rollback();
     } // end try
     _depura ( "END TrabajadorView::on_mui_guardar_clicked", 0 );

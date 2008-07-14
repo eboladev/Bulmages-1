@@ -58,10 +58,10 @@ void BusquedaProveedor::pinta()
     m_semaforo = TRUE;
     m_cifproveedor->setText ( mdb_cifproveedor );
 
-    if (mdb_codproveedor.isEmpty() && mdb_nomproveedor.isEmpty()) {
-	m_nomproveedor->setText ( "" );
+    if ( mdb_codproveedor.isEmpty() && mdb_nomproveedor.isEmpty() ) {
+        m_nomproveedor->setText ( "" );
     } else {
-	m_nomproveedor->setText ( mdb_codproveedor + " - " + mdb_nomproveedor );
+        m_nomproveedor->setText ( mdb_codproveedor + " - " + mdb_nomproveedor );
     } // end if
     m_semaforo = FALSE;
     emit ( valueChanged ( mdb_idproveedor ) );
@@ -168,8 +168,8 @@ void BusquedaProveedor::on_mui_buscar_clicked()
     /// Esto es convertir un QWidget en un sistema modal de di&aacute;logo.
     QDialog *diag = new QDialog ( 0 );
     diag->setModal ( true );
-    diag->setGeometry(QRect (0, 0, 750, 550));
-    centrarEnPantalla(diag);
+    diag->setGeometry ( QRect ( 0, 0, 750, 550 ) );
+    centrarEnPantalla ( diag );
 
     ProveedorList *providers = new ProveedorList ( ( Company * ) empresaBase(), diag, 0, ProveedorList::SelectMode );
     connect ( providers, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );

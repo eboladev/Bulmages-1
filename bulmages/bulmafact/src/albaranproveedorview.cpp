@@ -269,62 +269,62 @@ void AlbaranProveedorView::generarFacturaProveedor()
                 SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + mui_refalbaranp->text() + "' AND idproveedor = " + mui_idproveedor->idproveedor();
             } // end if
         } else {
-	    SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + DBvalue ( "refalbaranp" ) + "' AND idproveedor = " + DBvalue ( "idproveedor" );
+            SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + DBvalue ( "refalbaranp" ) + "' AND idproveedor = " + DBvalue ( "idproveedor" );
         } // end if
 
         cur = empresaBase() ->cargacursor ( SQLQuery );
 
-	if ( !cur->eof() ) {
-		/// Informamos que ya hay una factura y que la abriremos.
-		/// Si no salimos de la funci&oacute;n.
-		if ( QMessageBox::question ( this,
-					tr ( "Factura de proveedor existente" ),
-					tr ( "Existe una factura de este proveedor con la misma referencia que este albaran. Desea abrirla para verificar?" ),
-					tr ( "&Si" ), tr ( "&No" ), QString::null, 0, 1 ) ) {
-		return;
-		} // end if
-		FacturaProveedorView *bud = empresaBase() ->newFacturaProveedorView();
-		empresaBase() ->m_pWorkspace->addWindow ( bud );
-		bud->cargar ( cur->valor ( "idfacturap" ) );
-		bud->show();
-		return;
-	} // end if
-	delete cur;
-	
-	/// Creamos la factura.
-	FacturaProveedorView *bud = empresaBase() ->newFacturaProveedorView();
-	empresaBase() ->m_pWorkspace->addWindow ( bud );
-	
-	/// Cargamos un elemento que no existe para inicializar bien la clase.
-	bud->inicializar();
-	
-	bud->setDBvalue ( "comentfacturap", DBvalue ( "comentalbaranp" ) );
-	bud->setDBvalue ( "idforma_pago", DBvalue ( "idforma_pago" ) );
-	bud->setDBvalue ( "reffacturap", DBvalue ( "refalbaranp" ) );
-	bud->setDBvalue ( "idproveedor", DBvalue ( "idproveedor" ) );
-	bud->pintar();
-	bud->show();
-	
-	QString l;
-	SDBRecord *linea, *linea1;
-	for ( int i = 0; i < m_listalineas->rowCount(); ++i ) {
-		linea = m_listalineas->lineaat ( i );
-		if ( linea->DBvalue ( "idarticulo" ) != "" ) {
-		linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
-		bud->getlistalineas() ->nuevoRegistro();
-		bud->getlistalineas() ->setProcesarCambios ( FALSE );
-		linea1->setDBvalue ( "desclfacturap", linea->DBvalue ( "desclalbaranp" ) );
-		linea1->setDBvalue ( "cantlfacturap", linea->DBvalue ( "cantlalbaranp" ) );
-		linea1->setDBvalue ( "pvplfacturap", linea->DBvalue ( "pvplalbaranp" ) );
-		linea1->setDBvalue ( "descuentolfacturap", linea->DBvalue ( "descuentolalbaranp" ) );
-		linea1->setDBvalue ( "idarticulo", linea->DBvalue ( "idarticulo" ) );
-		linea1->setDBvalue ( "codigocompletoarticulo", linea->DBvalue ( "codigocompletoarticulo" ) );
-		linea1->setDBvalue ( "nomarticulo", linea->DBvalue ( "nomarticulo" ) );
-		linea1->setDBvalue ( "ivalfacturap", linea->DBvalue ( "ivalalbaranp" ) );
-		bud->getlistalineas() ->setProcesarCambios ( TRUE );
-		} // end if
-	} // end for
-	bud->calculaypintatotales();
+        if ( !cur->eof() ) {
+            /// Informamos que ya hay una factura y que la abriremos.
+            /// Si no salimos de la funci&oacute;n.
+            if ( QMessageBox::question ( this,
+                                         tr ( "Factura de proveedor existente" ),
+                                         tr ( "Existe una factura de este proveedor con la misma referencia que este albaran. Desea abrirla para verificar?" ),
+                                         tr ( "&Si" ), tr ( "&No" ), QString::null, 0, 1 ) ) {
+                return;
+            } // end if
+            FacturaProveedorView *bud = empresaBase() ->newFacturaProveedorView();
+            empresaBase() ->m_pWorkspace->addWindow ( bud );
+            bud->cargar ( cur->valor ( "idfacturap" ) );
+            bud->show();
+            return;
+        } // end if
+        delete cur;
+
+        /// Creamos la factura.
+        FacturaProveedorView *bud = empresaBase() ->newFacturaProveedorView();
+        empresaBase() ->m_pWorkspace->addWindow ( bud );
+
+        /// Cargamos un elemento que no existe para inicializar bien la clase.
+        bud->inicializar();
+
+        bud->setDBvalue ( "comentfacturap", DBvalue ( "comentalbaranp" ) );
+        bud->setDBvalue ( "idforma_pago", DBvalue ( "idforma_pago" ) );
+        bud->setDBvalue ( "reffacturap", DBvalue ( "refalbaranp" ) );
+        bud->setDBvalue ( "idproveedor", DBvalue ( "idproveedor" ) );
+        bud->pintar();
+        bud->show();
+
+        QString l;
+        SDBRecord *linea, *linea1;
+        for ( int i = 0; i < m_listalineas->rowCount(); ++i ) {
+            linea = m_listalineas->lineaat ( i );
+            if ( linea->DBvalue ( "idarticulo" ) != "" ) {
+                linea1 = bud->getlistalineas() ->lineaat ( bud->getlistalineas() ->rowCount() - 1 );
+                bud->getlistalineas() ->nuevoRegistro();
+                bud->getlistalineas() ->setProcesarCambios ( FALSE );
+                linea1->setDBvalue ( "desclfacturap", linea->DBvalue ( "desclalbaranp" ) );
+                linea1->setDBvalue ( "cantlfacturap", linea->DBvalue ( "cantlalbaranp" ) );
+                linea1->setDBvalue ( "pvplfacturap", linea->DBvalue ( "pvplalbaranp" ) );
+                linea1->setDBvalue ( "descuentolfacturap", linea->DBvalue ( "descuentolalbaranp" ) );
+                linea1->setDBvalue ( "idarticulo", linea->DBvalue ( "idarticulo" ) );
+                linea1->setDBvalue ( "codigocompletoarticulo", linea->DBvalue ( "codigocompletoarticulo" ) );
+                linea1->setDBvalue ( "nomarticulo", linea->DBvalue ( "nomarticulo" ) );
+                linea1->setDBvalue ( "ivalfacturap", linea->DBvalue ( "ivalalbaranp" ) );
+                bud->getlistalineas() ->setProcesarCambios ( TRUE );
+            } // end if
+        } // end for
+        bud->calculaypintatotales();
 
     } catch ( ... ) {
         mensajeInfo ( tr ( "Error inesperado" ), this );

@@ -112,7 +112,7 @@ ArticuloView::ArticuloView ( Company *comp, QWidget *parent )
 ArticuloView::~ArticuloView()
 {
     _depura ( "ArticuloView::~ArticuloView", 0 );
-        empresaBase() ->refreshArticles();
+    empresaBase() ->refreshArticles();
     _depura ( "END ArticuloView::~ArticuloView", 0 );
 }
 
@@ -133,14 +133,14 @@ void ArticuloView::pintarPost()
     archivoimagen = confpr->valor ( CONF_DIR_IMG_ARTICLES ) + mui_codigocompletoarticulo->text() + ".jpg";
 
     QFile archivo;
-    archivo.setFileName(archivoimagen);
+    archivo.setFileName ( archivoimagen );
 
-    if (archivo.exists()) {
-	/// Muestra la imagen si existe el archivo.
-	mui_imagen->setPixmap ( QPixmap ( archivoimagen ) );
+    if ( archivo.exists() ) {
+        /// Muestra la imagen si existe el archivo.
+        mui_imagen->setPixmap ( QPixmap ( archivoimagen ) );
     } else  {
-	/// Muestra la imagen por defecto.
-	mui_imagen->setPixmap ( QPixmap ( confpr->valor ( CONF_PROGDATA ) + "images/logopeq.png" ) );
+        /// Muestra la imagen por defecto.
+        mui_imagen->setPixmap ( QPixmap ( confpr->valor ( CONF_PROGDATA ) + "images/logopeq.png" ) );
     } // end if
 
     _depura ( "END ArticuloView::pintar", 0 );
@@ -213,12 +213,12 @@ int ArticuloView::guardarPost()
     if ( !m_archivoimagen.isEmpty() ) {
         cursor2 * cur1 = empresaBase() ->cargacursor ( "SELECT codigocompletoarticulo FROM articulo WHERE idarticulo = " + DBvalue ( "idarticulo" ) );
         if ( !cur1 ) throw - 1;
-	m_archivoimagen = m_archivoimagen.replace(" ", "\\ ");
+        m_archivoimagen = m_archivoimagen.replace ( " ", "\\ " );
 
-	/// Coge la imagen del recuadro y la guarda en un archivo con el nombre correcto.
-	if (mui_imagen->pixmap()->save(confpr->valor(CONF_DIR_IMG_ARTICLES ) + cur1->valor ( "codigocompletoarticulo" ) + ".jpg") == false) {
-		mensajeError(tr("No se ha podido guardar la imagen.\nRevise los permisos de escritura y que disponga\nde espacio libre suficiente en el disco duro."), this);
-	} // end if
+        /// Coge la imagen del recuadro y la guarda en un archivo con el nombre correcto.
+        if ( mui_imagen->pixmap()->save ( confpr->valor ( CONF_DIR_IMG_ARTICLES ) + cur1->valor ( "codigocompletoarticulo" ) + ".jpg" ) == false ) {
+            mensajeError ( tr ( "No se ha podido guardar la imagen.\nRevise los permisos de escritura y que disponga\nde espacio libre suficiente en el disco duro." ), this );
+        } // end if
 
         delete cur1;
     } // end if
@@ -276,14 +276,14 @@ void ArticuloView::on_mui_cambiarimagen_clicked()
                           tr ( "Imagenes (*.jpg)" ) );
 
     /// Comprueba si se ha seleccionado un archivo.
-    if (!m_archivoimagen.isNull()) {
-	/// Comprueba que la imagen del archivo es valida.
-	if (imagen.load(m_archivoimagen) == false) {
-		mensajeError(tr("No se ha podido cargar la imagen.\nCompruebe que la imagen sea valida."), this);
-		return;
-	} // end if
+    if ( !m_archivoimagen.isNull() ) {
+        /// Comprueba que la imagen del archivo es valida.
+        if ( imagen.load ( m_archivoimagen ) == false ) {
+            mensajeError ( tr ( "No se ha podido cargar la imagen.\nCompruebe que la imagen sea valida." ), this );
+            return;
+        } // end if
 
-	/// Muestra la imagen en el recuadro de la imagen.
+        /// Muestra la imagen en el recuadro de la imagen.
         mui_imagen->setPixmap ( imagen );
     } // end if
 
@@ -299,22 +299,22 @@ void ArticuloView::on_mui_borrarimagen_clicked()
     archivoimagen = confpr->valor ( CONF_DIR_IMG_ARTICLES ) + mui_codigocompletoarticulo->text() + ".jpg";
 
     QFile archivo;
-    archivo.setFileName(archivoimagen);
+    archivo.setFileName ( archivoimagen );
 
-    if (archivo.exists()) {
-    	int val = QMessageBox::question ( this,
-                                      tr ( "Borrar imagen del articulo" ),
-                                      tr ( "Esta seguro que quiere borrar\nla imagen asociada a este articulo?"),
-                                      QMessageBox::Yes,
-                                      QMessageBox::Cancel | QMessageBox::Escape | QMessageBox::Default );
+    if ( archivo.exists() ) {
+        int val = QMessageBox::question ( this,
+                                          tr ( "Borrar imagen del articulo" ),
+                                          tr ( "Esta seguro que quiere borrar\nla imagen asociada a este articulo?" ),
+                                          QMessageBox::Yes,
+                                          QMessageBox::Cancel | QMessageBox::Escape | QMessageBox::Default );
 
-    	if ( val == QMessageBox::Yes ) {
-		/// Se borra el archivo de la imagen y se muestra la imagen por defecto en el QLabel.
+        if ( val == QMessageBox::Yes ) {
+            /// Se borra el archivo de la imagen y se muestra la imagen por defecto en el QLabel.
 
-		if (archivo.remove() == false) {
-			mensajeError(tr("No se ha podido borrar el archivo.\nCompruebe que el archivo tenga los permisos correctos."), this);
-		} // end if
-    	} // end if
+            if ( archivo.remove() == false ) {
+                mensajeError ( tr ( "No se ha podido borrar el archivo.\nCompruebe que el archivo tenga los permisos correctos." ), this );
+            } // end if
+        } // end if
     } // end if
 
     pintarPost();

@@ -473,100 +473,100 @@ QString FichaBf::trataTotales ( const QString &det, int bimporeq )
 
     Fixed totirpf = totbaseimp * irpf / 100;
 
-    QString cero = Fixed("0.00").toQString().toAscii();
+    QString cero = Fixed ( "0.00" ).toQString().toAscii();
 
     base::Iterator ot;
     base::Iterator at;
 
-    switch(bimporeq) {
-	case 1:
-		/// Sustituye Bases Imponibles de cada tipo de IVA.
-	
-		/// Comprueba que haya elementos. Si no sustituye con ceros.
-		if (basesimp.isEmpty()) {
-			salidatemp = det;
-			
-			salidatemp.replace ( "[bimp]", cero );
-			salidatemp.replace ( "[tbimp]", cero );
-			salidatemp.replace ( "[iva]", cero );
-			salidatemp.replace ( "[tiva]", cero );
-			salidatemp.replace ( "[irpf]", cero );
-			salidatemp.replace ( "[tirpf]", cero );
-			salidatemp.replace ( "[totalre]", cero );
-			salidatemp.replace ( "[teoricbimp]", cero );
-			salidatemp.replace ( "[totalbimp]", cero );
-			salidatemp.replace ( "[totaldesc]", cero );
-			salidatemp.replace ( "[totaliva]", cero );
-			salidatemp.replace ( "[total]", cero );
+    switch ( bimporeq ) {
+    case 1:
+        /// Sustituye Bases Imponibles de cada tipo de IVA.
 
-			result += salidatemp;
+        /// Comprueba que haya elementos. Si no sustituye con ceros.
+        if ( basesimp.isEmpty() ) {
+            salidatemp = det;
 
-		} else {
-			for ( ot = basesimp.begin(); ot != basesimp.end(); ++ot ) {
-			
-				salidatemp = det;
-				if ( porcentt > Fixed ( "0.00" ) ) {
-				parbaseimp = ot.value() - ot.value() * porcentt / 100;
-				} else {
-				parbaseimp = ot.value();
-				} // end if
-				salidatemp.replace ( "[bimp]", parbaseimp.toQString() );
-				salidatemp.replace ( "[tbimp]", ot.key() );
-			
-				Fixed piva ( ot.key().toAscii().constData() );
-				if ( porcentt > Fixed ( "0.00" ) ) {
-				pariva = ( ot.value() - ot.value() * porcentt / 100 ) * piva / 100;
-				} else {
-				pariva = ot.value() * piva / 100;
-				} // end if
-			
-				salidatemp.replace ( "[iva]", pariva.toQString() );
-				salidatemp.replace ( "[tiva]", ot.key() );
-				salidatemp.replace ( "[irpf]", totirpf.toQString() );
-				salidatemp.replace ( "[tirpf]", irpf.toQString() );
-				salidatemp.replace ( "[totalre]", totreqeq.toQString() );
-				salidatemp.replace ( "[teoricbimp]", basei.toQString() );
-				salidatemp.replace ( "[totalbimp]", totbaseimp.toQString() );
-				salidatemp.replace ( "[totaldesc]", totdesc.toQString() );
-				salidatemp.replace ( "[totaliva]", totiva.toQString() );
-				salidatemp.replace ( "[total]", ( totiva + totbaseimp + totreqeq - totirpf ).toQString().toAscii().constData() );
-			
-				result += salidatemp;
-			} // end for
-		} // end if
+            salidatemp.replace ( "[bimp]", cero );
+            salidatemp.replace ( "[tbimp]", cero );
+            salidatemp.replace ( "[iva]", cero );
+            salidatemp.replace ( "[tiva]", cero );
+            salidatemp.replace ( "[irpf]", cero );
+            salidatemp.replace ( "[tirpf]", cero );
+            salidatemp.replace ( "[totalre]", cero );
+            salidatemp.replace ( "[teoricbimp]", cero );
+            salidatemp.replace ( "[totalbimp]", cero );
+            salidatemp.replace ( "[totaldesc]", cero );
+            salidatemp.replace ( "[totaliva]", cero );
+            salidatemp.replace ( "[total]", cero );
 
-		break;
+            result += salidatemp;
 
-	case 2:
-		/// Sustituye Recargos de equivalencia
+        } else {
+            for ( ot = basesimp.begin(); ot != basesimp.end(); ++ot ) {
 
-		/// Comprueba que haya elementos. Si no sustituye con ceros.
-		if (basesimpreqeq.isEmpty()) {
-			salidatemp = det;
-			salidatemp.replace ( "[re]", cero );
-			salidatemp.replace ( "[tre]", cero );
-		
-			result += salidatemp;
+                salidatemp = det;
+                if ( porcentt > Fixed ( "0.00" ) ) {
+                    parbaseimp = ot.value() - ot.value() * porcentt / 100;
+                } else {
+                    parbaseimp = ot.value();
+                } // end if
+                salidatemp.replace ( "[bimp]", parbaseimp.toQString() );
+                salidatemp.replace ( "[tbimp]", ot.key() );
 
-		} else {
-			for ( at = basesimpreqeq.begin(); at != basesimpreqeq.end(); ++at ) {
-			
-				salidatemp = det;
-				Fixed preqeq ( at.key().toAscii().constData() );
-			
-				if ( porcentt > Fixed ( "0.00" ) ) {
-				parreqeq = ( at.value() - at.value() * porcentt / 100 ) * preqeq / 100;
-				} else {
-				parreqeq = at.value() * preqeq / 100;
-				} // end if
-			
-				salidatemp.replace ( "[re]", parreqeq.toQString() );
-				salidatemp.replace ( "[tre]", at.key() );
-			
-				result += salidatemp;
-			} // end for
-		} // end if
-		break;
+                Fixed piva ( ot.key().toAscii().constData() );
+                if ( porcentt > Fixed ( "0.00" ) ) {
+                    pariva = ( ot.value() - ot.value() * porcentt / 100 ) * piva / 100;
+                } else {
+                    pariva = ot.value() * piva / 100;
+                } // end if
+
+                salidatemp.replace ( "[iva]", pariva.toQString() );
+                salidatemp.replace ( "[tiva]", ot.key() );
+                salidatemp.replace ( "[irpf]", totirpf.toQString() );
+                salidatemp.replace ( "[tirpf]", irpf.toQString() );
+                salidatemp.replace ( "[totalre]", totreqeq.toQString() );
+                salidatemp.replace ( "[teoricbimp]", basei.toQString() );
+                salidatemp.replace ( "[totalbimp]", totbaseimp.toQString() );
+                salidatemp.replace ( "[totaldesc]", totdesc.toQString() );
+                salidatemp.replace ( "[totaliva]", totiva.toQString() );
+                salidatemp.replace ( "[total]", ( totiva + totbaseimp + totreqeq - totirpf ).toQString().toAscii().constData() );
+
+                result += salidatemp;
+            } // end for
+        } // end if
+
+        break;
+
+    case 2:
+        /// Sustituye Recargos de equivalencia
+
+        /// Comprueba que haya elementos. Si no sustituye con ceros.
+        if ( basesimpreqeq.isEmpty() ) {
+            salidatemp = det;
+            salidatemp.replace ( "[re]", cero );
+            salidatemp.replace ( "[tre]", cero );
+
+            result += salidatemp;
+
+        } else {
+            for ( at = basesimpreqeq.begin(); at != basesimpreqeq.end(); ++at ) {
+
+                salidatemp = det;
+                Fixed preqeq ( at.key().toAscii().constData() );
+
+                if ( porcentt > Fixed ( "0.00" ) ) {
+                    parreqeq = ( at.value() - at.value() * porcentt / 100 ) * preqeq / 100;
+                } else {
+                    parreqeq = at.value() * preqeq / 100;
+                } // end if
+
+                salidatemp.replace ( "[re]", parreqeq.toQString() );
+                salidatemp.replace ( "[tre]", at.key() );
+
+                result += salidatemp;
+            } // end for
+        } // end if
+        break;
 
     } // end switch
 

@@ -69,12 +69,13 @@ int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
     return 0;
 }
 
-int BusquedaCliente_on_m_cifcliente_editingFinished_Post (BusquedaCliente *busc) {
-    if (busc->idcliente() != "") {
-	g_emp->ticketActual() ->setDBvalue ( "idcliente", busc->idcliente() );
-	g_emp->ticketActual() ->pintar();
-	g_emp->setValorInput ( "" );
-	g_emp->pulsaTecla ( 0, "" );
+int BusquedaCliente_on_m_cifcliente_editingFinished_Post ( BusquedaCliente *busc )
+{
+    if ( busc->idcliente() != "" ) {
+        g_emp->ticketActual() ->setDBvalue ( "idcliente", busc->idcliente() );
+        g_emp->ticketActual() ->pintar();
+        g_emp->setValorInput ( "" );
+        g_emp->pulsaTecla ( 0, "" );
     } // end if
     return 0;
 }

@@ -10,7 +10,7 @@
 ArtGraficos::ArtGraficos ( EmpresaBase *emp, QWidget *parent ) : BLWidget ( emp, parent )
 {
     setupUi ( this );
-    setObjectName("ArtGraficos");
+    setObjectName ( "ArtGraficos" );
     m_numPantallas = 0;
     m_pantallaActual = 0;
     mui_list->horizontalHeader() ->hide();
