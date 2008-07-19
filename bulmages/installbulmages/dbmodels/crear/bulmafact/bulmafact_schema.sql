@@ -2142,6 +2142,9 @@ BEGIN
 	IF FOUND THEN
 		efound := FALSE;
 	END IF;
+
+-- PLUGINS
+
     END LOOP;
     RETURN result;
 END;

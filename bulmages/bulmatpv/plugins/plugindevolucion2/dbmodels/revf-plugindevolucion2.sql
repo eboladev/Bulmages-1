@@ -5,8 +5,8 @@
 
 \echo ":: Establecemos los mensajes minimos a avisos y otros parametros ... "
 \echo -n ":: "
-SET client_min_messages TO WARNING;
-SET log_min_messages TO WARNING;
+-- SET client_min_messages TO WARNING;
+-- SET log_min_messages TO WARNING;
 -- SET log_error_verbosity TO TERSE;
 BEGIN;
 
@@ -83,9 +83,7 @@ BEGIN
 		anuladovale boolean,
 		iddevolucion integer REFERENCES devolucion (iddevolucion),
 		idalbaran_canjeo integer REFERENCES albaran (idalbaran)
-		)
-
-
+		);
 	END IF;
 
 	RETURN 0;
@@ -96,6 +94,23 @@ DROP FUNCTION aux() CASCADE;
 \echo "Creo las tablas de devolucion y vale"
 
 
+CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS
+$BODY$
+DECLARE
+	asf RECORD;
+	txt TEXT;
+BEGIN
+	SELECT INTO asf prosrc FROM pg_proc WHERE proname='crearef';
+	txt := E'CREATE OR REPLACE FUNCTION crearef() RETURNS character varying(15) AS $BB$ ' || asf.prosrc || E' $BB$ LANGUAGE \'plpgsql\' ;';
+	txt := REPLACE(txt, '-- PLUGINS', E'	SELECT INTO asd idvale FROM vale WHERE refvale = result;\n	IF FOUND THEN\n		efound := FALSE;\n	END IF;\n-- PLUGINS\n');
+	EXECUTE txt;
+	RETURN 0;
+END;
+$BODY$
+LANGUAGE plpgsql;
+SELECT aux();
+DROP FUNCTION aux() CASCADE;
+\echo "Parcheo la funcion crearef para que contemple la nueva referencia."
 
 
 -- Function: restriccionesvale()
@@ -105,7 +120,8 @@ SELECT drop_if_exists_proc('restriccionesvale', '');
 \echo -n ':: Funcion que crea restricciones en los vales ... '
 CREATE OR REPLACE FUNCTION restriccionesvale()
 RETURNS "trigger" AS
-$BODY$DECLARE
+$BODY$
+DECLARE
 asd RECORD;
 
 BEGIN
@@ -122,74 +138,6 @@ RETURN NEW;
 END;$BODY$
 LANGUAGE 'plpgsql' VOLATILE;
 ALTER FUNCTION restriccionesvale() OWNER TO postgres;
-
--- Function: crearef()
-
--- DROP FUNCTION crearef();
-SELECT drop_if_exists_proc('crearef', '');
-\echo -n ':: Funcion que crea restricciones en vales ... '
-CREATE OR REPLACE FUNCTION crearef()
-RETURNS character varying AS
-$BODY$
-DECLARE
-asd RECORD;
-result character varying(15);
-efound boolean;
-
-BEGIN
-efound := FALSE;
-WHILE efound = FALSE LOOP
-	result := random_string(6);
-	efound := TRUE;
-	SELECT INTO asd idpresupuesto FROM presupuesto WHERE refpresupuesto = result;
-	IF FOUND THEN
-	efound := FALSE;
-	END IF;
-	SELECT INTO asd idpedidocliente FROM pedidocliente WHERE
-refpedidocliente = result;
-	IF FOUND THEN
-	efound := FALSE;
-	END IF;
-	SELECT INTO asd idalbaran FROM albaran WHERE refalbaran = result;
-	IF FOUND THEN
-	efound := FALSE;
-	END IF; 
-	SELECT INTO asd idfactura FROM factura WHERE reffactura = result;
-	IF FOUND THEN
-		efound := FALSE;
-	END IF;
-	SELECT INTO asd idcobro FROM cobro WHERE refcobro = result;
-	IF FOUND THEN
-		efound := FALSE;
-	END IF;
-	SELECT INTO asd idpedidoproveedor FROM pedidoproveedor WHERE
-refpedidoproveedor = result;
-	IF FOUND THEN
-		efound := FALSE;
-	END IF;
-	SELECT INTO asd idalbaranp FROM albaranp WHERE refalbaranp = result;
-	IF FOUND THEN
-		efound := FALSE;
-	END IF;
-	SELECT INTO asd idfacturap FROM facturap WHERE reffacturap = result;
-	IF FOUND THEN
-		efound := FALSE;
-	END IF;
-	SELECT INTO asd idpago FROM pago WHERE refpago = result;
-	IF FOUND THEN
-		efound := FALSE;
-	END IF;
-	SELECT INTO asd idvale FROM vale WHERE refvale = result;
-	IF FOUND THEN
-		efound := FALSE;
-	END IF;
-END LOOP;
-RETURN result;
-END;
-$BODY$
-LANGUAGE 'plpgsql' VOLATILE;
-ALTER FUNCTION crearef() OWNER TO postgres;
-
 
 CREATE TRIGGER restriccionesvaletrigger
 BEFORE INSERT OR UPDATE

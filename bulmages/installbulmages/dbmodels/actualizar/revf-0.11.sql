@@ -76,6 +76,65 @@ DROP FUNCTION compruebarevision() CASCADE;
 
 
 -- ================================== ACTUALIZACION  ===================================
+
+SELECT drop_if_exists_proc('crearef', '');
+\echo -n ':: Funcion crearef para crear codigos de referencia ... '
+CREATE FUNCTION crearef() RETURNS character varying(15)
+AS '
+DECLARE
+    asd RECORD;
+    result character varying(15);
+    efound boolean;
+
+BEGIN
+    efound := FALSE;
+    WHILE efound = FALSE LOOP
+	result := random_string(6);
+	efound := TRUE;
+	SELECT INTO asd idpresupuesto FROM presupuesto WHERE refpresupuesto = result;
+	IF FOUND THEN
+	    efound := FALSE;
+	END IF;
+	SELECT INTO asd idpedidocliente FROM pedidocliente WHERE refpedidocliente = result;
+	IF FOUND THEN
+	    efound := FALSE;
+	END IF;
+	SELECT INTO asd idalbaran FROM albaran WHERE refalbaran = result;
+	IF FOUND THEN
+	    efound := FALSE;
+	END IF;	
+	SELECT INTO asd idfactura FROM factura WHERE reffactura = result;
+	IF FOUND THEN
+		efound := FALSE;
+	END IF;
+	SELECT INTO asd idcobro FROM cobro WHERE refcobro = result;
+	IF FOUND THEN
+		efound := FALSE;
+	END IF;
+	SELECT INTO asd idpedidoproveedor FROM pedidoproveedor WHERE refpedidoproveedor = result;
+	IF FOUND THEN
+		efound := FALSE;
+	END IF;
+	SELECT INTO asd idalbaranp FROM albaranp WHERE refalbaranp = result;
+	IF FOUND THEN
+		efound := FALSE;
+	END IF;
+	SELECT INTO asd idfacturap FROM facturap WHERE reffacturap = result;
+	IF FOUND THEN
+		efound := FALSE;
+	END IF;
+	SELECT INTO asd idpago FROM pago WHERE refpago = result;
+	IF FOUND THEN
+		efound := FALSE;
+	END IF;
+
+-- PLUGINS
+
+    END LOOP;
+    RETURN result;
+END;
+' LANGUAGE plpgsql;
+
 -- =====================================================================================
 
 -- Agregamos nuevos parametros de configuracion
@@ -86,9 +145,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.11.1-0001'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.11.1-0002'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.11.1-0001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.11.1-0002'');
 	END IF;
 	RETURN 0;
 END;
