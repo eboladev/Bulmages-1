@@ -10,9 +10,9 @@ Biblioteca: libplugindevolucion2.so
 
 Descripción: Presenta la ventana de devolucion de material. Y genera vales de devolucion o abonos de dinero.
 
-ParmBD: 
+ParmBD: DBRev-Devolucion2
 
-ArchivoSQLpatch: 
+ArchivoSQLpatch: revf-plugindevolucion2.sql
 
 ArchivoSQLdeins: 
 

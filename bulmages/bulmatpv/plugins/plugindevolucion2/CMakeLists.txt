@@ -57,3 +57,8 @@ endforeach(dfile in ${docs})
 add_dependencies(${plugin} bulmatpv bulmalib)
 
 install_targets(/lib/bulmatpv/plugins ${plugin})
+
+install(DIRECTORY dbmodels/ 
+	DESTINATION share/bulmages/dbmodels/plugins
+	PATTERN ".svn" EXCLUDE)
+
