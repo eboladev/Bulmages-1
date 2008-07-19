@@ -102,7 +102,7 @@ DECLARE
 BEGIN
 	SELECT INTO asf prosrc FROM pg_proc WHERE proname='crearef';
 	txt := E'CREATE OR REPLACE FUNCTION crearef() RETURNS character varying(15) AS $BB$ ' || asf.prosrc || E' $BB$ LANGUAGE \'plpgsql\' ;';
-	txt := REPLACE(txt, '-- PLUGINS', E'	SELECT INTO asd idvale FROM vale WHERE refvale = result;\n	IF FOUND THEN\n		efound := FALSE;\n	END IF;\n-- PLUGINS\n');
+	txt := REPLACE(txt, '-- PLUGINS', E'-- MODIFICACION PLUGINDEVOLUCION2\n 	SELECT INTO asd idvale FROM vale WHERE refvale = result;\n	IF FOUND THEN\n		efound := FALSE;\n	END IF;\n-- END MODIFICACION PLUGINDEVOLUCION2\n-- PLUGINS\n');
 	EXECUTE txt;
 	RETURN 0;
 END;
