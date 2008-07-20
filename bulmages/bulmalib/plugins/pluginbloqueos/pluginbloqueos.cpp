@@ -37,7 +37,7 @@
 #include "funcaux.h"
 #include "ficha.h"
 #include "empresabase.h"
-
+#include "bloqmenu.h"
 
 int entryPoint ( QMainWindow *bcont )
 {
@@ -106,5 +106,20 @@ int Ficha_DesFicha ( Ficha *ficha )
         } // end if
         delete cur1;
     } // end if
+    return 0;
+}
+
+///
+/**
+\param l
+\return
+**/
+int Ficha_Ficha ( Ficha *l )
+{
+    _depura ( "Ficha_Ficha", 0 );
+
+    BloqMenu *mui_imp = new BloqMenu ( l );
+
+    _depura ( "END Ficha_Ficha", 0 );
     return 0;
 }

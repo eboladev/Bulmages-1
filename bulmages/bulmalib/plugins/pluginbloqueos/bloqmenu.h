@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2007 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,22 +17,34 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifndef _BLOQMENU_
+#define _BLOQMENU_
 
-#ifdef Q_WS_WIN
-# define MY_EXPORT __declspec(dllexport)
-#else
-# define MY_EXPORT
-#endif
+#include <QWidget>
+#include <QString>
+#include <QMap>
 
-
-#include "postgresiface2.h"
 #include "empresabase.h"
-#include "bulmacont.h"
-#include "bulmafact.h"
+#include "funcaux.h"
 #include "ficha.h"
 
+class BloqMenu : public QWidget
+{
+    Q_OBJECT
 
-extern "C" MY_EXPORT int entryPoint ( QMainWindow * );
-extern "C" MY_EXPORT int Ficha_cargar ( Ficha * );
-extern "C" MY_EXPORT int Ficha_DesFicha ( Ficha * );
-extern "C" MY_EXPORT int Ficha_Ficha ( Ficha * );
+private:
+    EmpresaBase *m_companyact;
+    Ficha *m_ficha;
+
+public:
+    BloqMenu ( QWidget *parent = NULL );
+    ~BloqMenu();
+
+public slots:
+// virtual void click();
+    virtual void pintaMenu ( QMenu * );
+    virtual void trataMenu ( QAction *action );
+
+};
+
+#endif
