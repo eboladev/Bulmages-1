@@ -138,7 +138,6 @@ END IF;
 RETURN NEW;
 END;$BODY$
 LANGUAGE 'plpgsql' VOLATILE;
-ALTER FUNCTION restriccionesvale() OWNER TO postgres;
 
 CREATE TRIGGER restriccionesvaletrigger
 BEFORE INSERT OR UPDATE

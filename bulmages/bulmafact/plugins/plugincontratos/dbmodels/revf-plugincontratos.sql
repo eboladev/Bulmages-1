@@ -92,6 +92,53 @@ DROP FUNCTION aux() CASCADE;
 \echo ':: Agregamos los campos y tablas para el plugin PluginContratos ... '
 
 
+CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS
+$BODY$
+DECLARE
+	asf RECORD;
+	txt TEXT;
+BEGIN
+	SELECT INTO asf REGEXP_REPLACE(prosrc,'-- MODIFICACION PLUGINCONTRATOS.*-- END MODIFICACION PLUGINCONTRATOS','','g') AS prosrc FROM pg_proc WHERE proname='crearef';
+	txt := E'CREATE OR REPLACE FUNCTION crearef() RETURNS character varying(15) AS $BB$ ' || asf.prosrc || E' $BB$ LANGUAGE \'plpgsql\' ;';
+	txt := REPLACE(txt, '-- PLUGINS', E'-- MODIFICACION PLUGINCONTRATOS\n 	SELECT INTO asd idcontrato FROM contrato WHERE refcontrato = result;\n	IF FOUND THEN\n		efound := FALSE;\n	END IF;\n-- END MODIFICACION PLUGINCONTRATOS\n-- PLUGINS\n');
+	RAISE NOTICE '%', txt;
+	EXECUTE txt;
+	RETURN 0;
+END;
+$BODY$
+LANGUAGE plpgsql;
+SELECT aux();
+DROP FUNCTION aux() CASCADE;
+\echo "Parcheo la funcion crearef para que contemple la nueva referencia."
+
+
+-- Function: restriccionesvale()
+
+-- DROP FUNCTION restriccionesvale();
+SELECT drop_if_exists_proc('restriccionescontrato', '');
+\echo -n ':: Funcion que crea restricciones en los contratos ... '
+CREATE OR REPLACE FUNCTION restriccionescontrato()
+RETURNS "trigger" AS
+$BODY$
+DECLARE
+asd RECORD;
+
+BEGIN
+IF NEW.refcontrato IS NULL OR NEW.refcontrato = '' THEN
+	SELECT INTO asd crearef() AS m;
+	IF FOUND THEN
+	NEW.refcontrato := asd.m;
+	END IF;
+END IF;
+RETURN NEW;
+END;$BODY$
+LANGUAGE 'plpgsql' VOLATILE;
+
+CREATE TRIGGER restriccionescontratotrigger
+BEFORE INSERT OR UPDATE
+ON contrato
+FOR EACH ROW
+EXECUTE PROCEDURE restriccionescontrato();
 
 -- ==============================================================================
 
@@ -104,9 +151,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre=''DBRev-Contratos'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.9.1-0002'' WHERE nombre=''DBRev-Contratos'';
+		UPDATE CONFIGURACION SET valor=''0.11.1-0001'' WHERE nombre=''DBRev-Contratos'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DBRev-Contratos'', ''0.9.1-0002'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DBRev-Contratos'', ''0.11.1-0001'');
 	END IF;
 	RETURN 0;
 END;
