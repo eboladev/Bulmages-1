@@ -100,9 +100,10 @@ DECLARE
 	asf RECORD;
 	txt TEXT;
 BEGIN
-	SELECT INTO asf prosrc FROM pg_proc WHERE proname='crearef';
+	SELECT INTO asf REGEXP_REPLACE(prosrc,'-- MODIFICACION PLUGINDEVOLUCION2.*-- END MODIFICACION PLUGINDEVOLUCION2','','g') AS prosrc FROM pg_proc WHERE proname='crearef';
 	txt := E'CREATE OR REPLACE FUNCTION crearef() RETURNS character varying(15) AS $BB$ ' || asf.prosrc || E' $BB$ LANGUAGE \'plpgsql\' ;';
 	txt := REPLACE(txt, '-- PLUGINS', E'-- MODIFICACION PLUGINDEVOLUCION2\n 	SELECT INTO asd idvale FROM vale WHERE refvale = result;\n	IF FOUND THEN\n		efound := FALSE;\n	END IF;\n-- END MODIFICACION PLUGINDEVOLUCION2\n-- PLUGINS\n');
+	RAISE NOTICE '%', txt;
 	EXECUTE txt;
 	RETURN 0;
 END;
