@@ -1,4 +1,5 @@
-<RCC>
+<!DOCTYPE RCC>
+<RCC version="1.0">
     <qresource prefix="/Images">
         <file alias="edit-save.svg">images/default-spa/Actions/edit-save.svg</file>
         <file alias="edit-delete.svg">images/default-spa/Actions/edit-delete.svg</file>

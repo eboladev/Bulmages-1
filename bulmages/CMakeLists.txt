@@ -89,10 +89,6 @@ if(NOT PGSQL_FOUND)
 endif(NOT PGSQL_FOUND)
 
 
-SET(QT_USE_QTUITOOLS TRUE)
-SET(QT_USE_QTXML TRUE)  # uitools depends on xml
-
-
 set( BULMAGES_CONFIG_DIR /etc/bulmages CACHE PATH "The location of bulmages configuration dir")
 
 

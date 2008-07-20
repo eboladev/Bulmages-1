@@ -25,7 +25,8 @@
    <string>Seleccione una empresa</string>
   </property>
   <property name="windowIcon" >
-   <iconset/>
+   <iconset resource="../../bulmages.qrc" >
+    <normaloff>:/BulmaCont32x32/images/png/i_cargaEmpresa.xpm</normaloff>:/BulmaCont32x32/images/png/i_cargaEmpresa.xpm</iconset>
   </property>
   <property name="toolTip" >
    <string>Seleccione una empresa</string>
@@ -34,22 +35,10 @@
    <bool>true</bool>
   </property>
   <layout class="QGridLayout" >
-   <property name="leftMargin" >
+   <property name="margin" >
     <number>5</number>
    </property>
-   <property name="topMargin" >
-    <number>5</number>
-   </property>
-   <property name="rightMargin" >
-    <number>5</number>
-   </property>
-   <property name="bottomMargin" >
-    <number>5</number>
-   </property>
-   <property name="horizontalSpacing" >
-    <number>5</number>
-   </property>
-   <property name="verticalSpacing" >
+   <property name="spacing" >
     <number>5</number>
    </property>
    <item row="0" column="0" colspan="3" >
@@ -57,16 +46,7 @@
      <property name="spacing" >
       <number>5</number>
      </property>
-     <property name="leftMargin" >
-      <number>0</number>
-     </property>
-     <property name="topMargin" >
-      <number>0</number>
-     </property>
-     <property name="rightMargin" >
-      <number>0</number>
-     </property>
-     <property name="bottomMargin" >
+     <property name="margin" >
       <number>0</number>
      </property>
      <item>
@@ -106,16 +86,7 @@
         <property name="spacing" >
          <number>5</number>
         </property>
-        <property name="leftMargin" >
-         <number>5</number>
-        </property>
-        <property name="topMargin" >
-         <number>5</number>
-        </property>
-        <property name="rightMargin" >
-         <number>5</number>
-        </property>
-        <property name="bottomMargin" >
+        <property name="margin" >
          <number>5</number>
         </property>
         <item>
@@ -142,7 +113,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/view-refresh.svg</iconset>
+           <iconset resource="../../bulmages.qrc" >
+            <normaloff>:/Images/view-refresh.svg</normaloff>:/Images/view-refresh.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -182,7 +154,7 @@
           <property name="sizeType" >
            <enum>QSizePolicy::Expanding</enum>
           </property>
-          <property name="sizeHint" >
+          <property name="sizeHint" stdset="0" >
            <size>
             <width>101</width>
             <height>34</height>
@@ -207,7 +179,7 @@
      <property name="orientation" >
       <enum>Qt::Horizontal</enum>
      </property>
-     <property name="sizeHint" >
+     <property name="sizeHint" stdset="0" >
       <size>
        <width>40</width>
        <height>22</height>
