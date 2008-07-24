@@ -6,7 +6,7 @@ Plugins
 
 Nombre: Cuentas Anuales 
 
-Biblioteca: plugincanualesods.so
+Biblioteca: libplugincanualesods.so
 
 Descripción: Permite obtener un balance de cuentas anuales para los planes
 contables españoles del 2008: Cuentas Anuales, Abreviadas y de PYMES. Y para
