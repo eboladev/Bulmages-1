@@ -108,7 +108,7 @@
       <string>Abre todos los documentos con esta referencia</string>
      </property>
      <property name="icon" >
-      <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_tuxPeq.png</iconset>
+      <iconset resource="../../bulmages.qrc" >:/Images/document-report.svg</iconset>
      </property>
      <property name="iconSize" >
       <size>

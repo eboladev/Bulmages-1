@@ -416,7 +416,7 @@ void SelQToolButton::setBoton()
     setStatusTip ( "Invertir seleccion de elementos" );
     setToolTip ( "Invertir seleccion de elementos" );
     setMinimumSize ( QSize ( 32, 32 ) );
-    setIcon ( QIcon ( QString::fromUtf8 ( ":/Genericos32x32/images/png/i_invert.png" ) ) );
+    setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/selection-invert.svg" ) ) );
     setIconSize ( QSize ( 22, 22 ) );
 
     connect ( this, SIGNAL ( clicked() ), this, SLOT ( click() ) );
