@@ -10,6 +10,8 @@
         <file alias="view-refresh.svg">images/default-spa/Actions/view-refresh.svg</file>
         <file alias="document-properties.svg">images/default-spa/Actions/document-properties.svg</file>
         <file alias="document-import.svg">images/default-spa/Actions/document-import.svg</file>
+        <file alias="document-export.svg">images/default-spa/Actions/document-export.svg</file>
+        <file alias="mail-send.svg">images/default-spa/Actions/mail-send.svg</file>
     </qresource>
     <qresource prefix="/BulmaCont32x32" >
         <file>images/png/decrypted.png</file>

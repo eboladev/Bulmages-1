@@ -80,7 +80,7 @@ void EmailQToolButton::setBoton()
     setStatusTip ( "Enviar por e-mail al cliente" );
     setToolTip ( "Enviar por e-mail al cliente" );
     setMinimumSize ( QSize ( 32, 32 ) );
-    setIcon ( QIcon ( QString::fromUtf8 ( ":/Genericos32x32/images/png/i_mail.png" ) ) );
+    setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/mail-send.svg" ) ) );
     setIconSize ( QSize ( 22, 22 ) );
     _depura ( "END EmailQToolButton::setBoton", 0 );
 }

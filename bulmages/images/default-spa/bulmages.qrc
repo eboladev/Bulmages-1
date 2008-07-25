@@ -9,6 +9,8 @@
         <file alias="view-refresh.svg">Actions/view-refresh.svg</file>
         <file alias="document-properties.svg">Actions/document-properties.svg</file>
 	<file alias="document-import.svg">Actions/document-import.svg</file>
+	<file alias="document-export.svg">Actions/document-export.svg</file>
+	<file alias="mail-send.svg">Actions/mail-send.svg</file>
     </qresource>
     <qresource prefix="/BulmaCont32x32" >
         <file>images/png/decrypted.png</file>

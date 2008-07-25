@@ -564,7 +564,7 @@ void EmailQToolButton::setBoton()
     setStatusTip ( "Enviar elementos seleccionados por e-mail" );
     setToolTip ( "Enviar elementos seleccionados por e-mail" );
     setMinimumSize ( QSize ( 32, 32 ) );
-    setIcon ( QIcon ( QString::fromUtf8 ( ":/Genericos32x32/images/png/i_mail.png" ) ) );
+    setIcon ( QIcon ( QString::fromUtf8 ( ":/Images/mail-send.svg" ) ) );
     setIconSize ( QSize ( 22, 22 ) );
     _depura ( "END EmailQToolButton::setBoton", 0 );
 }
