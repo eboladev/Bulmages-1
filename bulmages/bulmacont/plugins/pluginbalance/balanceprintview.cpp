@@ -103,7 +103,7 @@ void BalancePrintView::inicializa1 ( QString codinicial1, QString codfinal1, QSt
 }
 
 
-/// Se ha pulsado sobre el bot&oacute;n aceptar del formulario.
+/// Se ha pulsado sobre el bot&oacute;n aceptar del formulario.8
 /**
 **/
 void BalancePrintView::on_mui_imprimir_clicked()
@@ -195,7 +195,7 @@ void BalancePrintView::presentar ( const char* tipus )
             arbol = new Arbol;
             while ( !ramas->eof() ) {
                 if ( atoi ( ramas->valor ( "nivel" ).toAscii().constData() ) == 2 ) { /// Cuenta ra&iacute;z.
-                    arbol->nuevarama ( ramas );
+                    arbol->nuevaRama ( ramas );
                 } // end if
                 ramas->siguienteregistro();
             } // end while
@@ -264,7 +264,7 @@ void BalancePrintView::presentar ( const char* tipus )
             /// Para cada cuenta con sus apuntes hechos hay que actualizar hojas
             /// del &aacute;rbol.
             while ( !cuentas->eof() ) {
-                arbol->actualizahojas ( cuentas );
+                arbol->actualizaHojas ( cuentas );
                 cuentas->siguienteregistro();
             } // end while
 
@@ -276,15 +276,15 @@ void BalancePrintView::presentar ( const char* tipus )
             /// Ahora imprimimos los valores.
             arbol->inicia();
             while ( arbol->deshoja ( nivel, superiores ) ) {
-                QString lcuenta = arbol->hojaactual ( "codigo" );
-                QString ldenominacion = arbol->hojaactual ( "descripcion" );
-                QString lsaldoant = arbol->hojaactual ( "saldoant" );
-                QString ldebe = arbol->hojaactual ( "debe" );
-                QString lhaber = arbol->hojaactual ( "haber" );
-                QString lsaldo = arbol->hojaactual ( "saldo" );
-                QString ldebeej = arbol->hojaactual ( "debeej" );
-                QString lhaberej = arbol->hojaactual ( "haberej" );
-                QString lsaldoej = arbol->hojaactual ( "saldoej" );
+                QString lcuenta = arbol->hojaActual ( "codigo" );
+                QString ldenominacion = arbol->hojaActual ( "descripcion" );
+                QString lsaldoant = arbol->hojaActual ( "saldoant" );
+                QString ldebe = arbol->hojaActual ( "debe" );
+                QString lhaber = arbol->hojaActual ( "haber" );
+                QString lsaldo = arbol->hojaActual ( "saldo" );
+                QString ldebeej = arbol->hojaActual ( "debeej" );
+                QString lhaberej = arbol->hojaActual ( "haberej" );
+                QString lsaldoej = arbol->hojaActual ( "saldoej" );
 
                 /// Acumulamos los totales para al final poder escribirlos.
                 tsaldoant += lsaldoant.toDouble();

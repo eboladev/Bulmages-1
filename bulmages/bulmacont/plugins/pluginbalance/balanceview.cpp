@@ -201,7 +201,7 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
             if ( ramas->valor ( "nivel" ).toInt() == 2 ) { /// Cuenta ra&iacute;z.
                 /// Se crea una rama en el &aacute;rbol (de las primeritas que salen
                 /// de una ra&iacute;z).
-                arbol->nuevarama ( ramas );
+                arbol->nuevaRama ( ramas );
             } // end if
             ramas->siguienteregistro();
         } // end while
@@ -246,7 +246,7 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
         hojas = empresaBase() ->cargacursor ( query );
         while ( !hojas->eof() ) {
             /// Para cada cuenta con apuntes introducidos hay que actualizar hojas del &aacute;rbol.
-            arbol->actualizahojas ( hojas );
+            arbol->actualizaHojas ( hojas );
             hojas->siguienteregistro();
         } // end while
         delete hojas;
@@ -283,15 +283,15 @@ void BalanceView::presentarSyS ( QString finicial, QString ffinal, QString cinic
 
 
         while ( arbol->deshoja ( nivel, jerarquico ) ) {
-            QString lcuenta = arbol->hojaactual ( "codigo" );
-            QString ldenominacion = arbol->hojaactual ( "descripcion" );
-            QString lsaldoant = arbol->hojaactual ( "saldoant" );
-            QString ldebe = arbol->hojaactual ( "debe" );
-            QString lhaber = arbol->hojaactual ( "haber" );
-            QString lsaldo = arbol->hojaactual ( "saldo" );
-            QString ldebeej = arbol->hojaactual ( "debeej" );
-            QString lhaberej = arbol->hojaactual ( "haberej" );
-            QString lsaldoej = arbol->hojaactual ( "saldoej" );
+            QString lcuenta = arbol->hojaActual ( "codigo" );
+            QString ldenominacion = arbol->hojaActual ( "descripcion" );
+            QString lsaldoant = arbol->hojaActual ( "saldoant" );
+            QString ldebe = arbol->hojaActual ( "debe" );
+            QString lhaber = arbol->hojaActual ( "haber" );
+            QString lsaldo = arbol->hojaActual ( "saldo" );
+            QString ldebeej = arbol->hojaActual ( "debeej" );
+            QString lhaberej = arbol->hojaActual ( "haberej" );
+            QString lsaldoej = arbol->hojaActual ( "saldoej" );
 
             if ( lcuenta >= cinicial and lcuenta <= cfinal ) {
                 /// Acumulamos los totales para al final poder escribirlos.

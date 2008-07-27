@@ -111,6 +111,7 @@ void myplugin4::inicializa ( Bulmacont *bges )
 void entryPoint ( Bulmacont *bcont )
 {
     _depura ( "entryPoint::entryPoint", 0 );
+    mensajeInfo("BalanceTree entryPoint");
     /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
     QTranslator *traductor = new QTranslator ( 0 );
     if ( confpr->valor ( CONF_TRADUCCION ) == "locales" ) {

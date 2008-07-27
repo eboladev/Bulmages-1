@@ -3,7 +3,7 @@
 ###########################################
 #pluginbalance
 
-set (plugin pluginbalance)
+set (plugin pluginbalanceold)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
 file(GLOB plugin_MOCS *.hpp *.h)
