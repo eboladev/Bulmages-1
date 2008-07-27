@@ -327,13 +327,11 @@ bool BalanceTreeView::generaBalance()
     }
     QString ejercicio = ffinal.right ( 4 );
 
+    /// Cargamos las cuentas afectadas con sus saldos y demas cosas.
     query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes, sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = '" + ejercicio + "' GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' AND conceptocontable !~* '.*asiento.*(cierre|regularizaci).*' " + clauswhere + " GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '" + finicial + "'" + clauswhere + " GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo";
 
-    mensajeInfo(query);
-    empresaBase() ->begin();
     cursor2 *hojas;
-    hojas = empresaBase() ->cargacursor ( query, "Balance Sumas y Saldos" );
-    empresaBase() ->commit();
+    hojas = empresaBase() ->cargacursor ( query);
     if ( hojas == NULL ) {
         mensajeInfo ( trUtf8 ( "Error con la base de datos" ) );
         return 0;
@@ -344,7 +342,7 @@ bool BalanceTreeView::generaBalance()
         arbol->actualizaHojas ( hojas );
         hojas->siguienteregistro();
     } // end while
-
+    delete hojas;
     _depura ( "END BalanceTreeView::generaBalance", 0 );
     return 1;
 }
@@ -355,8 +353,7 @@ bool BalanceTreeView::generaBalance()
 **/
 void BalanceTreeView::presentar()
 {
-    _depura ( "BalanceTreeView::presentar", 2 );
-    mensajeInfo("algo es algo");
+    _depura ( "BalanceTreeView::presentar", 0 );
 
     if ( generaBalance() ) {
 
