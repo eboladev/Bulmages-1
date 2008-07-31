@@ -36,7 +36,26 @@ rm /usr/lib/libbulmalib*
 ln -s $1/$2/bulmalib/src/libbulmalib.so /usr/lib/libbulmalib.so
 ln -s $1/$2/bulmalib/src/libbulmalib.so.0 /usr/lib/libbulmalib.so.0
 ln -s $1/$2/bulmalib/src/libbulmalib.so.0.11 /usr/lib/libbulmalib.so.0.11
-ln -s $1/$2/bulmalib/src/libbulmalib.so.0.11.0 /usr/lib/libbulmalib.so.0.11.0
+ln -s $1/$2/bulmalib/src/libbulmalib.so.0.11.1 /usr/lib/libbulmalib.so.0.11.1
+
+rm /usr/lib/libbulmafact*
+ln -s $1/$2/bulmafact/src/libbulmafact.so /usr/lib/libbulmafact.so
+ln -s $1/$2/bulmafact/src/libbulmafact.so.0 /usr/lib/libbulmafact.so.0
+ln -s $1/$2/bulmafact/src/libbulmafact.so.0.11 /usr/lib/libbulmafact.so.0.11
+ln -s $1/$2/bulmafact/src/libbulmafact.so.0.11.1 /usr/lib/libbulmafact.so.0.11.1
+
+rm /usr/lib/libbulmacont*
+ln -s $1/$2/bulmacont/src/libbulmacont.so /usr/lib/libbulmacont.so
+ln -s $1/$2/bulmacont/src/libbulmacont.so.0 /usr/lib/libbulmacont.so.0
+ln -s $1/$2/bulmacont/src/libbulmacont.so.0.11 /usr/lib/libbulmacont.so.0.11
+ln -s $1/$2/bulmacont/src/libbulmacont.so.0.11.1 /usr/lib/libbulmacont.so.0.11.1
+
+rm /usr/lib/libbulmatpv*
+ln -s $1/$2/bulmatpv/src/libbulmatpv.so /usr/lib/libbulmatpv.so
+ln -s $1/$2/bulmatpv/src/libbulmatpv.so.0 /usr/lib/libbulmatpv.so.0
+ln -s $1/$2/bulmatpv/src/libbulmatpv.so.0.11 /usr/lib/libbulmatpv.so.0.11
+ln -s $1/$2/bulmatpv/src/libbulmatpv.so.0.11.1 /usr/lib/libbulmatpv.so.0.11.1
+
 
 rm -rf /usr/lib/bulmages
 rm -rf /usr/lib/bulmafact
