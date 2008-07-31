@@ -1299,6 +1299,10 @@ void SubForm3::cargar ( QString query )
     try {
         m_query = query;
 
+	if ( m_primero ) {
+		cargaconfig();
+	} // end if
+
         /// Tratramos con la paginacion.
         int limit = mui_filaspagina->text().toInt();
         if ( limit <= 0 ) {
