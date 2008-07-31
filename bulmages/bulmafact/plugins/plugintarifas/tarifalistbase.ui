@@ -70,7 +70,7 @@
            <string>Nueva tarifa</string>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_fileNew.xpm</iconset>
+		  <iconset  resource="../../../bulmages.qrc">:/Images/document-new.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -89,7 +89,7 @@
            <string>Editar tarifa</string>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_edit.png</iconset>
+		  <iconset resource="../../../bulmages.qrc" >:/Images/document-open.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -108,7 +108,7 @@
            <string>Borrar tarifa</string>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_editDelete.png</iconset>
+		  <iconset resource="../../../bulmages.qrc" >:/Images/edit-delete.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -193,7 +193,6 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../../bulmages.qrc" />
   <include location="../../../bulmages.qrc" />
  </resources>
  <connections/>
