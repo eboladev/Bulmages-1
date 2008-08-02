@@ -34,6 +34,7 @@
 #include <QDomDocument>
 #include <QDomNode>
 #include <QInputDialog>
+#include <QUiLoader>
 
 ///
 /**
@@ -787,8 +788,57 @@ void Ficha::trataTags ( QString &buff )
 {
     _depura ( "Ficha::trataTags", 0 );
 
-    ///Buscamos parametros, los preguntamos y los ponemos.
+    ///Buscamos interfaces, los preguntamos y los ponemos.
     int pos = 0;
+    QRegExp rx70 ( "<!--\\s*IFACE\\s*SRC\\s*=\\s*\"([^\"]*)\"\\s*-->" );
+    rx70.setMinimal ( TRUE );
+    while ( ( pos = rx70.indexIn ( buff, pos ) ) != -1 ) {
+
+	    QFile fichero(rx70.cap( 1 ));
+	    if (fichero.exists()) {
+		QUiLoader loader;
+		fichero.open(QFile::ReadOnly);
+		QWidget *iface = loader.load(&fichero, this);
+		fichero.close();
+		QDialog *diag = new QDialog ( 0 );
+		diag->setModal ( true );
+		
+		/// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
+		/// para que sea redimensionable y aparezca el titulo de la ventana.
+		QHBoxLayout *layout = new QHBoxLayout;
+		layout->addWidget ( iface );
+		layout->setMargin ( 5 );
+		layout->setSpacing ( 5 );
+		diag->setLayout ( layout );
+		diag->setWindowTitle ( iface->windowTitle() );
+		diag->setGeometry(0, 0, iface->width(), iface->height());
+		QPushButton *button = iface->findChild<QPushButton *>("mui_aceptar");
+		connect ( button, SIGNAL ( released ( ) ), diag, SLOT ( accept() ) );
+
+		diag->exec();
+		// ========================
+		QList<QLineEdit *> l2 = iface->findChildren<QLineEdit *>();
+		QListIterator<QLineEdit *> it2 ( l2 );
+		while ( it2.hasNext() ) {
+			QLineEdit * item = it2.next();
+			QString nombre = item->objectName().right(item->objectName().size()-4);
+			QString valor = item->text();
+			addDBCampo ( nombre, DBCampo::DBvarchar, DBCampo::DBNoSave, nombre  );
+			setDBvalue ( nombre, valor );
+		} // end while
+		// ========================
+		delete diag;
+	    } else {
+		mensajeInfo("Archivo de Interficie no existe");
+	    }// end if
+
+        buff.replace ( pos, rx70.matchedLength(), "" );
+        pos = 0;
+    } // end while
+
+
+    ///Buscamos parametros, los preguntamos y los ponemos.
+    pos = 0;
     QRegExp rx69 ( "<!--\\s*PARAM\\s*NAME\\s*=\\s*\"([^\"]*)\"\\s*TYPE\\s*=\\s*\"([^\"]*)\"\\s*-->" );
     rx69.setMinimal ( TRUE );
     while ( ( pos = rx69.indexIn ( buff, pos ) ) != -1 ) {
