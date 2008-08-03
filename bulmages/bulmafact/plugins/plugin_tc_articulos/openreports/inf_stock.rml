@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <!DOCTYPE document SYSTEM "rml_1_0.dtd">
+<!--IFACE SRC="[CONF_DIR_OPENREPORTS]inf_ventas.ui"-->
 <document>
 <template pageSize="(29.7cm, 21cm)" leftMargin="0cm" rightMargin="0cm" topMargin="2.0cm" bottomMargin="2.0cm" title="Articulos Vendidos por Talla y Color" author="Tomeu Borras" allowSplitting="20">
 	<pageTemplate id="main">

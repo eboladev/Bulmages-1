@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <!DOCTYPE document SYSTEM "rml_1_0.dtd">
+
+<!--IFACE SRC="[CONF_DIR_OPENREPORTS]inf_ventas.ui"-->
 <!--PARAM NAME="fecha_inicial" TYPE="date"-->
 <!--PARAM NAME="fecha_final" TYPE="date"-->
 <document>

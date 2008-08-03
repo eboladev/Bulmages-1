@@ -793,7 +793,6 @@ void Ficha::trataTags ( QString &buff )
     QRegExp rx70 ( "<!--\\s*IFACE\\s*SRC\\s*=\\s*\"([^\"]*)\"\\s*-->" );
     rx70.setMinimal ( TRUE );
     while ( ( pos = rx70.indexIn ( buff, pos ) ) != -1 ) {
-
 	    QFile fichero(rx70.cap( 1 ));
 	    if (fichero.exists()) {
 		QUiLoader loader;
@@ -814,20 +813,23 @@ void Ficha::trataTags ( QString &buff )
 		diag->setGeometry(0, 0, iface->width(), iface->height());
 		QPushButton *button = iface->findChild<QPushButton *>("mui_aceptar");
 		connect ( button, SIGNAL ( released ( ) ), diag, SLOT ( accept() ) );
-
-		diag->exec();
-		// ========================
-		QList<QLineEdit *> l2 = iface->findChildren<QLineEdit *>();
-		QListIterator<QLineEdit *> it2 ( l2 );
-		while ( it2.hasNext() ) {
-			QLineEdit * item = it2.next();
-			QString nombre = item->objectName().right(item->objectName().size()-4);
-			QString valor = item->text();
-			addDBCampo ( nombre, DBCampo::DBvarchar, DBCampo::DBNoSave, nombre  );
-			setDBvalue ( nombre, valor );
-		} // end while
-		// ========================
+		QPushButton *button1 = iface->findChild<QPushButton *>("mui_cancelar");
+		connect ( button1, SIGNAL ( released ( ) ), diag, SLOT ( reject() ) );
+		int ret = diag->exec();
+		if (ret) {
+			QList<QLineEdit *> l2 = iface->findChildren<QLineEdit *>();
+			QListIterator<QLineEdit *> it2 ( l2 );
+			while ( it2.hasNext() ) {
+				QLineEdit * item = it2.next();
+				QString nombre = item->objectName().right(item->objectName().size()-4);
+				QString valor = item->text();
+				addDBCampo ( nombre, DBCampo::DBvarchar, DBCampo::DBNoSave, nombre  );
+				setDBvalue ( nombre, valor );
+			} // end while
+		} // end if
 		delete diag;
+		// Si se ha pulsado cancelar entonce se sale del informe.
+		if (!ret) return;
 	    } else {
 		mensajeInfo("Archivo de Interficie no existe");
 	    }// end if
