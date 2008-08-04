@@ -23,6 +23,7 @@ Devolucion::~Devolucion()
 void Devolucion::on_mui_devolver_clicked()
 {
     m_ticket->guardar();
+    m_ticket->imprimir();
     ( ( QDialog * ) parent() )->accept();
 }
 
@@ -169,6 +170,7 @@ void Devolucion::on_mui_vale_clicked()
     pr.print();
 
     m_ticket->guardar();
+    m_ticket->imprimir();
     ( ( QDialog * ) parent() )->accept();
 }
 
@@ -210,33 +212,36 @@ void Devolucion::pintar()
     html1 += "Cliente: " + m_ticket->DBvalue ( "idcliente" ) + " " + cur1->valor ( "nomcliente" ) + "<BR>";
     delete cur1;
 
-    html += "<TABLE border=\"0\">";
+    if (m_ticket->listaLineas()->size() > 0) {
 
-    html += "<TR bgcolor = \"#CCCCCC\">";
-    html += "<TD>SEL</TD>";
-    for ( int z = 0; z < m_ticket->listaLineas()->at ( 1 )->lista()->size(); ++z ) {
-        DBCampo *head = m_ticket->listaLineas()->at ( 1 )->lista()->at ( z );
-        if ( head->nomcampo().left ( 2 ) != "id" && head->nomcampo().left ( 3 ) != "num" )
-            html += "<TD>" + head->nomcampo().left ( 4 ) + "</TD>";
-    } // end for
-    html += "</TR>";
+	html += "<TABLE border=\"0\">";
+	
+	html += "<TR bgcolor = \"#CCCCCC\">";
+	html += "<TD>SEL</TD>";
+	for ( int z = 0; z < m_ticket->listaLineas()->at ( 0 )->lista()->size(); ++z ) {
+		DBCampo *head = m_ticket->listaLineas()->at ( 0 )->lista()->at ( z );
+		if ( head->nomcampo().left ( 2 ) != "id" && head->nomcampo().left ( 3 ) != "num" )
+			html += "<TD>" + head->nomcampo().left ( 4 ) + "</TD>";
+	} // end for
+	html += "</TR>";
+	
+	DBRecord *item;
+	for ( int i = 0; i < m_ticket->listaLineas() ->size(); ++i ) {
+		item = m_ticket->listaLineas() ->at ( i );
+	
+		html += "<TR>";
+		html += "<TD><A NAME=\"plus\" HREF=\"?op=plus&numlalbaran=" + item->DBvalue ( "numlalbaran" ) + "\">+</A>  <A HREF=\"?op=minus&numlalbaran=" + item->DBvalue ( "numlalbaran" ) + "\">-</A></td>";
+		for ( int j = 0; j < item->lista()->size(); ++j ) {
+		DBCampo *camp = item->lista()->at ( j );
+		if ( camp->nomcampo().left ( 2 ) != "id" && camp->nomcampo().left ( 3 ) != "num" )
+			html += "<TD>" + camp->valorcampo() + "</TD>";
+		} // end for
+	
+		html += "</TR>";
+	}// end for
+	html += "</TABLE>";
 
-    DBRecord *item;
-    for ( int i = 0; i < m_ticket->listaLineas() ->size(); ++i ) {
-        item = m_ticket->listaLineas() ->at ( i );
-
-        html += "<TR>";
-        html += "<TD><A NAME=\"plus\" HREF=\"?op=plus&numlalbaran=" + item->DBvalue ( "numlalbaran" ) + "\">+</A>  <A HREF=\"?op=minus&numlalbaran=" + item->DBvalue ( "numlalbaran" ) + "\">-</A></td>";
-        for ( int j = 0; j < item->lista()->size(); ++j ) {
-            DBCampo *camp = item->lista()->at ( j );
-            if ( camp->nomcampo().left ( 2 ) != "id" && camp->nomcampo().left ( 3 ) != "num" )
-                html += "<TD>" + camp->valorcampo() + "</TD>";
-        } // end for
-
-        html += "</TR>";
-    }// end for
-    html += "</TABLE>";
-
+    } // end if
 // ======================================
     html += "<BR><HR><BR>";
     base basesimp;
