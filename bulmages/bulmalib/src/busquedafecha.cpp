@@ -33,7 +33,7 @@ BusquedaFecha::BusquedaFecha ( QWidget *parent ) : BLWidget ( parent )
     _depura ( "BusquedaFecha::BusquedaFecha", 0 );
     setupUi ( this );
     QObject::connect ( mui_busquedaFecha, SIGNAL ( clicked ( bool ) ), this, SLOT ( s_searchFecha() ) );
-    QObject::connect ( mui_textoFecha, SIGNAL ( enterPressed() ), this, SLOT ( s_enterPressed() ) );
+    QObject::connect ( mui_textoFecha, SIGNAL ( returnPressed() ), this, SLOT ( s_returnPressed() ) );
     QObject::connect ( mui_textoFecha, SIGNAL ( editingFinished() ), this, SLOT ( s_fechalostFocus() ) );
     QObject::connect ( mui_textoFecha, SIGNAL ( editingFinished() ), this, SIGNAL ( editingFinished() ) );
     _depura ( "END BusquedaFecha::BusquedaFecha", 0 );
@@ -128,11 +128,11 @@ QString BusquedaFecha::valorCampo()
 ///
 /**
 **/
-void BusquedaFecha::s_enterPressed()
+void BusquedaFecha::s_returnPressed()
 {
     _depura ( "BusquedaFecha::s_enterPressed", 0 );
     s_fechalostFocus();
-    emit enterPressed();
+    emit returnPressed();
     _depura ( "END BusquedaFecha::s_enterPressed", 0 );
 }
 
