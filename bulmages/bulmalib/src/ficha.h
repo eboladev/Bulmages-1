@@ -73,7 +73,7 @@ public:
     virtual void creaMenu ( QMenu * );
     virtual void procesaMenu ( QAction * );
     virtual int generaRML ( const QString & );
-    virtual void trataTags ( QString &buff );
+    virtual int trataTags ( QString &buff );
     virtual QString trataQuery ( const QString &query, const QString &datos );
     virtual QString trataIfQuery ( const QString &query, const QString &datos );
     virtual QString trataIf ( const QString &query, const QString &datos, const QString &datos1 );

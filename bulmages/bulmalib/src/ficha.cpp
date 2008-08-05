@@ -781,10 +781,12 @@ void Ficha::pintarPost()
 
 /// Busca strings del tipo [xxxx] entro del texto pasado y los sustituye
 /// Por valores existentes en la base de datos.
+/// Tambien busca los parametros PARAM e IFACE para tambien tratarlos.
+/// Devuelve 1 Si todo esta OK o 0 Si hay algun error
 /**
 \param buff El texto entero sobre el que se hace el reemplazo de sentencias.
 **/
-void Ficha::trataTags ( QString &buff )
+int Ficha::trataTags ( QString &buff )
 {
     _depura ( "Ficha::trataTags", 0 );
 
@@ -829,7 +831,7 @@ void Ficha::trataTags ( QString &buff )
 		} // end if
 		delete diag;
 		// Si se ha pulsado cancelar entonce se sale del informe.
-		if (!ret) return;
+		if (!ret) return 0;
 	    } else {
 		mensajeInfo("Archivo de Interficie no existe");
 	    }// end if
@@ -940,6 +942,7 @@ void Ficha::trataTags ( QString &buff )
     } // end while
 
     _depura ( "END Ficha::trataTags", 0 );
+    return 1;
 }
 
 
@@ -1109,7 +1112,7 @@ int Ficha::generaRML ( const QString &arch )
     /// Disparamos los plugins
     int res = g_plugins->lanza ( "Ficha_generaRML", this );
     if ( res != 0 ) {
-        return 0;
+        return 1;
     } // end if
     QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + arch;
     QString archivod = confpr->valor ( CONF_DIR_USER ) + arch;
@@ -1143,7 +1146,8 @@ int Ficha::generaRML ( const QString &arch )
     file.close();
 
     /// Hacemos el tratamiento avanzado de TAGS
-    trataTags ( buff );
+    if (!trataTags ( buff ))
+	return 0;
 
     if ( file.open ( QIODevice::WriteOnly ) ) {
         QTextStream stream ( &file );
@@ -1152,7 +1156,7 @@ int Ficha::generaRML ( const QString &arch )
     } // end if
 
     _depura ( "END Ficha::generaRML", 0 );
-    return 0;
+    return 1;
 }
 
 

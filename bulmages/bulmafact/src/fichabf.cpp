@@ -182,7 +182,7 @@ void FichaBf::calculaypintatotales()
 /**
 \param buff El texto entero sobre el que se hace el reemplazo de sentencias.
 **/
-void FichaBf::trataTags ( QString &buff )
+int FichaBf::trataTags ( QString &buff )
 {
     _depura ( "FichaBf::trataTags", 0 );
     int pos =  0;
@@ -239,9 +239,10 @@ void FichaBf::trataTags ( QString &buff )
         pos = 0;
     } // end while
 
-    Ficha::trataTags ( buff );
+    int ret = Ficha::trataTags ( buff );
 
     _depura ( "END FichaBf::trataTags", 0 );
+    return ret;
 }
 
 

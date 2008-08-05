@@ -52,7 +52,7 @@ public:
     virtual int generaRML ( const QString &arch );
     virtual void calculaypintatotales();
     virtual void pintatotales ( Fixed, Fixed, Fixed, Fixed, Fixed, Fixed ) {};
-    virtual void trataTags ( QString &buff );
+    virtual int trataTags ( QString &buff );
     virtual QString trataLineasDetalle ( const QString &det );
     virtual QString trataLineasDescuento ( const QString &det );
     virtual QString trataTotales ( const QString &det, int bimporeq = 1 );

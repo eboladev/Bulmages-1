@@ -440,8 +440,9 @@ void BalanceView::imprimir()
     QString query;
     generarBalance();
 
-    generaRML ( "balance.rml" );
-    invocaPDF ( "balance" );
+    if (generaRML ( "balance.rml" )) {
+	    invocaPDF ( "balance" );
+    } // end if
 
     /// Eliminamos la tabla temporal y cerramos la transacci&oacute;n.
     query = "DROP TABLE balancetemp" ;

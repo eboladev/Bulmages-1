@@ -129,8 +129,9 @@ void EQToolButton::trataMenu ( QAction *action )
     for ( int i = 0; i < list.size(); ++i ) {
         QFileInfo fileInfo = list.at ( i );
         if ( action->objectName() == fileInfo.fileName() ) {
-            m_ficha->generaRML ( fileInfo.fileName() );
-            invocaPDF ( fileInfo.fileName().left ( fileInfo.fileName().size() - 4 ) );
+            if(m_ficha->generaRML ( fileInfo.fileName() )) {
+            	invocaPDF ( fileInfo.fileName().left ( fileInfo.fileName().size() - 4 ) );
+	    } // end if
         } // end if
     }
     _depura ( "END EQToolButton::trataMenu", 0 );

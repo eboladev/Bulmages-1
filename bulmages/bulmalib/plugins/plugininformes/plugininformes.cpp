@@ -71,7 +71,7 @@ void MyPluginInformes::elslot1( )
     _depura ( "MyPluginInformes::elslot", 0 );
 
     Ficha *ficha = new Ficha ( g_emp, 0 );
-    ficha->generaRML ( sender()->objectName() );
+    if (!ficha->generaRML ( sender()->objectName() )) return;
     invocaPDF ( sender()->objectName().left ( sender()->objectName().size() - 4 ) );
 
     _depura ( "END MyPluginInformes::elslot", 0 );
