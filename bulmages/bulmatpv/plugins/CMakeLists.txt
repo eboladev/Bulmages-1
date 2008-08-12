@@ -14,6 +14,7 @@ add_subdirectory(pluginbuscacliente)
 add_subdirectory(plugincambio)
 add_subdirectory(plugindevolucion)
 add_subdirectory(plugindevolucion2)
+add_subdirectory(pluginticketsdevueltos)
 
 if(NOT APPLE)
 add_subdirectory(pluginabrevs)

@@ -20,6 +20,6 @@ Dependencias: libplugintpv.so
 
 Incompatibles:
 
-Orden:
+Orden: 4
 
 Comentarios: Ideal para Bares, Cafeterias y Restaurantes.

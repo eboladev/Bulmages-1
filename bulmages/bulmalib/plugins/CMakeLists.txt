@@ -7,6 +7,8 @@ add_subdirectory(pluginimportcsv)
 add_subdirectory(plugininformes)
 add_subdirectory(pluginbloqueos)
 add_subdirectory(pluginsubformprint)
+add_subdirectory(pluginarchivos)
+
 if(NOT APPLE)
 add_subdirectory(plugindocked)
 endif(NOT APPLE)
