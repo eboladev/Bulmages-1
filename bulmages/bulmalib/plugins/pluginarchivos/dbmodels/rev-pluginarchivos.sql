@@ -69,6 +69,7 @@ BEGIN
 		CREATE TABLE archivo (
 		idarchivo SERIAL PRIMARY KEY,
 		identificadorfichaarchivo varchar NOT NULL,
+		fichaarchivo	varchar NOT NULL,
 		rutaarchivo	varchar NOT NULL,
 		fechabloqueo    date default now(),
 		horabloqueo     time default now()

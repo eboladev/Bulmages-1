@@ -35,6 +35,7 @@
 #include "dbrecord.h"
 #include "archmenu.h"
 #include "funcaux.h"
+#include "archivo.h"
 
 ///
 /**
@@ -69,8 +70,16 @@ void ArchMenu::pintaMenu ( QMenu *menu )
     _depura ( "ArchMenu::pintaMenu", 0 );
     QMenu *nmenu = menu->addMenu(tr("Archivo Documental"));
     QAction *addaction = nmenu->addAction(tr("Agregar Archivo "));
-    addaction->setObjectName("addaction");
+    addaction->setObjectName("addarchivo");
     nmenu->addSeparator();
+    QString query = "SELECT * FROM archivo WHERE fichaarchivo = '" + m_ficha->campoId() + "' AND identificadorfichaarchivo= '" +m_ficha->DBvalue ( m_ficha->campoId() ) + "'";
+    cursor2 *cur = m_ficha->empresaBase()->cargacursor(query);
+    while(!cur->eof()) {
+	QAction *addaction = nmenu->addAction(cur->valor("rutaarchivo"));
+	addaction->setObjectName("archivo_" + cur->valor("idarchivo"));
+	cur->siguienteregistro();
+    } // end while
+    delete cur;
     _depura ( "END ArchMenu::pintaMenu", 0 );
 }
 
@@ -82,24 +91,47 @@ void ArchMenu::pintaMenu ( QMenu *menu )
 void ArchMenu::trataMenu ( QAction *action )
 {
     _depura ( "ArchMenu::trataMenu", 0 );
-    if ( action->objectName() == "desbloquearficha" ) {
-        QString query = "DELETE FROM bloqueo WHERE fichabloqueo = '" + m_ficha->campoId() + "' AND identificadorfichabloqueo= '" + m_ficha->DBvalue ( m_ficha->campoId() ) + "'";
-        m_ficha->empresaBase()->ejecuta ( query );
+    if ( action->objectName() == "addarchivo" ) {
+    QDialog *diag = new QDialog;
+    Archivo *camb = new Archivo ( m_ficha->empresaBase(), diag );
+    diag->setModal ( true );
 
-        /// Miramos si existe un boton de guardar, borrar y uno de aceptar y los desactivamos
-        QToolButton *pguardar = m_ficha->findChild<QToolButton *> ( "mui_guardar" );
-        if ( pguardar ) pguardar->setEnabled ( TRUE );
+		QPushButton *button = camb->findChild<QPushButton *>("mui_aceptar");
+		connect ( button, SIGNAL ( released ( ) ), diag, SLOT ( accept() ) );
+		QPushButton *button1 = camb->findChild<QPushButton *>("mui_cancelar");
+		connect ( button1, SIGNAL ( released ( ) ), diag, SLOT ( reject() ) );
 
-        QPushButton *paceptar = m_ficha->findChild<QPushButton *> ( "mui_aceptar" );
-        if ( paceptar ) paceptar->setEnabled ( TRUE );
+    /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
+    /// para que sea redimensionable y aparezca el titulo de la ventana.
+    QHBoxLayout *layout = new QHBoxLayout;
+    layout->addWidget ( camb );
+    layout->setMargin ( 0 );
+    layout->setSpacing ( 0 );
+    diag->setLayout ( layout );
+    diag->setWindowTitle ( "Agregar Archivo Documental" );
 
-        QToolButton *pborrar = m_ficha->findChild<QToolButton *> ( "mui_borrar" );
-        if ( pborrar ) pborrar->setEnabled ( TRUE );
-
-        QToolButton *peliminar = m_ficha->findChild<QToolButton *> ( "mui_eliminar" );
-        if ( peliminar ) peliminar->setEnabled ( TRUE );
-
+    if (diag->exec()) {
+    QString query = "INSERT INTO archivo (fichaarchivo, identificadorfichaarchivo, rutaarchivo) VALUES ('" + m_ficha->campoId() + "', '" +m_ficha->DBvalue ( m_ficha->campoId() ) + "' , '"+ camb->mui_archivo->text() +"') ";
+    m_ficha->empresaBase()->ejecuta(query);
     } // end if
+
+    delete diag;
+    return;
+    } // end if
+
+    if( action->objectName().left(8) == "archivo_") {
+	QString idarchivo = action->objectName().right(action->objectName().size() - 8);
+	QString query = "SELECT * FROM archivo WHERE idarchivo = "+ idarchivo;
+	cursor2 *cur = m_ficha->empresaBase()->cargacursor(query);
+	if (!cur->eof()) {
+		QString comando = "konqueror "+ cur->valor("rutaarchivo") + " &";
+		system(comando.toAscii());
+	} // end if
+	delete cur;
+	return;
+    } // end if
+
+
     _depura ( "END ArchMenu::trataMenu", 0 );
 }
 
