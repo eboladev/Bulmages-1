@@ -145,7 +145,7 @@ QString ExtractoPrintView::montaQuery()
 /**
 \param tipus
 **/
-void ExtractoPrintView::presentar ( char *tipus )
+void ExtractoPrintView::presentar ( const QString &tipus )
 {
     _depura ( "ExtractoPrintView::presentar", 0 );
     int txt, html;
@@ -166,8 +166,8 @@ void ExtractoPrintView::presentar ( char *tipus )
     QString cfinal = extracto->m_codigofinal->text();
 
     /// Tipos de presentaci&oacute;n.
-    txt = ! strcmp ( tipus, "txt" );
-    html = ! strcmp ( tipus, "html" );
+    txt = (tipus == "txt"?1:0); 
+    html = (tipus == "html"?1:0);
 
 
     QString archivo = confpr->valor ( CONF_DIR_USER ) + "mayor.txt";

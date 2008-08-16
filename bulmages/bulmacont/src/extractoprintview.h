@@ -48,7 +48,7 @@ class ExtractoPrintView : public QDialog, public Ui_ExtractoPrintBase, PEmpresaB
 public:
     char *fichero;
     ExtractoPrintView ( Empresa *, QWidget * );
-    void presentar ( char *tipus );
+    void presentar ( const QString &tipus );
     ~ExtractoPrintView();
 
 private:
