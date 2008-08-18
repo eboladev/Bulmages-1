@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>750</width>
-    <height>592</height>
+    <width>867</width>
+    <height>905</height>
    </rect>
   </property>
   <property name="focusPolicy" >
@@ -36,11 +36,20 @@
      </property>
      <item>
       <widget class="QLabel" name="label" >
+       <property name="maximumSize" >
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
        <property name="text" >
         <string/>
        </property>
        <property name="pixmap" >
         <pixmap resource="../../bulmages.qrc" >:/Images/product.svg</pixmap>
+       </property>
+       <property name="scaledContents" >
+        <bool>true</bool>
        </property>
       </widget>
      </item>
@@ -670,8 +679,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>736</width>
-        <height>467</height>
+        <width>853</width>
+        <height>765</height>
        </rect>
       </property>
       <attribute name="title" >
