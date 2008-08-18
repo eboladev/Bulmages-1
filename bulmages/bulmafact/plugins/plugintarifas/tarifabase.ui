@@ -16,7 +16,7 @@
    <string>Tarifa</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_articulos.48x48.png</iconset>
+   <iconset resource="../../../bulmages.qrc" >:/Images/product.svg</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >

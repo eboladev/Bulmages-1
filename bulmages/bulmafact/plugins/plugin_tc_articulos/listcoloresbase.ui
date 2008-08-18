@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon" >
    <iconset resource="../../../bulmages.qrc" >
-    <normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_articulos.48x48.png</normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_articulos.48x48.png</iconset>
+    <normaloff>:/Images/product.svg</normaloff>:/Images/product.svg</iconset>
   </property>
   <layout class="QGridLayout" >
    <property name="margin" >
@@ -79,7 +79,7 @@
      <item>
       <widget class="QLabel" name="label" >
        <property name="pixmap" >
-        <pixmap resource="../../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_articulos.48x48.png</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/Images/product.svg</pixmap>
        </property>
       </widget>
      </item>
