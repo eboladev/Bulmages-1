@@ -17,7 +17,7 @@
    <string>Listado de inventarios</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_articulos_listado.48x48.png</iconset>
+   <iconset resource="../../../bulmages.qrc" >:/Images/product-list.svg</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
@@ -49,7 +49,7 @@
         </size>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_articulos_listado.48x48.png</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/Images/product-list.svg</pixmap>
        </property>
       </widget>
      </item>

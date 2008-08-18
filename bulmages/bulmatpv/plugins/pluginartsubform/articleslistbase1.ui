@@ -17,7 +17,7 @@
    <string>Articulos</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_articulos_listado.48x48.png</iconset>
+   <iconset resource="../../../bulmages.qrc" >:/Images/product-list.svg</iconset>
   </property>
   <layout class="QGridLayout" >
    <property name="leftMargin" >

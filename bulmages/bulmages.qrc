@@ -14,6 +14,7 @@
         <file alias="mail-send.svg">images/default-spa/Actions/mail-send.svg</file>
         <file alias="selection-invert.svg">images/default-spa/Actions/selection-invert.svg</file>
         <file alias="document-report.svg">images/default-spa/Actions/document-report.svg</file>
+        <file alias="product-list.svg">images/default-spa/mimetypes/product-list.svg</file>
     </qresource>
     <qresource prefix="/BulmaCont32x32" >
         <file>images/png/decrypted.png</file>
