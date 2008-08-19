@@ -16,6 +16,8 @@
 	<file alias="product-list.svg">mimetypes/product-list.svg</file>
 	<file alias="product.svg">mimetypes/product.svg</file>
 	<file alias="product-family.svg">mimetypes/product-family.svg</file>
+	<file alias="client.svg">mimetypes/client.svg</file>
+	<file alias="client-list.svg">mimetypes/client-list.svg</file>
     </qresource>
     <qresource prefix="/BulmaCont32x32" >
         <file>images/png/decrypted.png</file>

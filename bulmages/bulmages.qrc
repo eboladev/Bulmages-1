@@ -17,6 +17,8 @@
         <file alias="product-list.svg">images/default-spa/mimetypes/product-list.svg</file>
 	<file alias="product.svg">images/default-spa/mimetypes/product.svg</file>
 	<file alias="product-family.svg">images/default-spa/mimetypes/product-family.svg</file>
+	<file alias="client.svg">images/default-spa/mimetypes/client.svg</file>
+	<file alias="client-list.svg">images/default-spa/mimetypes/client-list.svg</file>
     </qresource>
     <qresource prefix="/BulmaCont32x32" >
         <file>images/png/decrypted.png</file>
@@ -135,14 +137,6 @@
         <file>images/png/16x16/i_bulmages_almacen_listado.16x16.png</file>
         <file>images/png/16x16/i_bulmages_almacen_mas.16x16.png</file>
         <file>images/png/16x16/i_bulmages_almacen_menos.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_articulos.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_articulos_familias.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_articulos_familias_listado.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_articulos_familias_mas.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_articulos_familias_menos.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_articulos_listado.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_articulos_mas.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_articulos_menos.16x16.png</file>
         <file>images/png/16x16/i_bulmages_bancos.16x16.png</file>
         <file>images/png/16x16/i_bulmages_bancos_listado.16x16.png</file>
         <file>images/png/16x16/i_bulmages_bancos_mas.16x16.png</file>
@@ -154,10 +148,6 @@
         <file>images/png/16x16/i_bulmages_caja_listado.16x16.png</file>
         <file>images/png/16x16/i_bulmages_caja_mas.16x16.png</file>
         <file>images/png/16x16/i_bulmages_caja_menos.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_clientes.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_clientes_listado.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_clientes_mas.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_clientes_menos.16x16.png</file>
         <file>images/png/16x16/i_bulmages_cobros.16x16.png</file>
         <file>images/png/16x16/i_bulmages_cobros_listado.16x16.png</file>
         <file>images/png/16x16/i_bulmages_cobros_mas.16x16.png</file>
@@ -522,14 +512,6 @@
         <file>images/png/32x32/i_bulmages_almacen_listado.32x32.png</file>
         <file>images/png/32x32/i_bulmages_almacen_mas.32x32.png</file>
         <file>images/png/32x32/i_bulmages_almacen_menos.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_articulos.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_articulos_familias.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_articulos_familias_listado.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_articulos_familias_mas.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_articulos_familias_menos.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_articulos_listado.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_articulos_mas.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_articulos_menos.32x32.png</file>
         <file>images/png/32x32/i_bulmages_bancos.32x32.png</file>
         <file>images/png/32x32/i_bulmages_bancos_listado.32x32.png</file>
         <file>images/png/32x32/i_bulmages_bancos_mas.32x32.png</file>
@@ -541,10 +523,6 @@
         <file>images/png/32x32/i_bulmages_caja_listado.32x32.png</file>
         <file>images/png/32x32/i_bulmages_caja_mas.32x32.png</file>
         <file>images/png/32x32/i_bulmages_caja_menos.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_clientes.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_clientes_listado.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_clientes_mas.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_clientes_menos.32x32.png</file>
         <file>images/png/32x32/i_bulmages_cobros.32x32.png</file>
         <file>images/png/32x32/i_bulmages_cobros_listado.32x32.png</file>
         <file>images/png/32x32/i_bulmages_cobros_mas.32x32.png</file>
@@ -654,14 +632,6 @@
         <file>images/png/48x48/i_bulmages_almacen_listado.48x48.png</file>
         <file>images/png/48x48/i_bulmages_almacen_mas.48x48.png</file>
         <file>images/png/48x48/i_bulmages_almacen_menos.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_articulos.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_articulos_familias.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_articulos_familias_listado.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_articulos_familias_mas.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_articulos_familias_menos.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_articulos_listado.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_articulos_mas.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_articulos_menos.48x48.png</file>
         <file>images/png/48x48/i_bulmages_bancos.48x48.png</file>
         <file>images/png/48x48/i_bulmages_bancos_listado.48x48.png</file>
         <file>images/png/48x48/i_bulmages_bancos_mas.48x48.png</file>
@@ -673,10 +643,6 @@
         <file>images/png/48x48/i_bulmages_caja_listado.48x48.png</file>
         <file>images/png/48x48/i_bulmages_caja_mas.48x48.png</file>
         <file>images/png/48x48/i_bulmages_caja_menos.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_clientes.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_clientes_listado.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_clientes_mas.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_clientes_menos.48x48.png</file>
         <file>images/png/48x48/i_bulmages_cobros.48x48.png</file>
         <file>images/png/48x48/i_bulmages_cobros_listado.48x48.png</file>
         <file>images/png/48x48/i_bulmages_cobros_mas.48x48.png</file>
