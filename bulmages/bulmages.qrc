@@ -19,6 +19,8 @@
 	<file alias="product-family.svg">images/default-spa/mimetypes/product-family.svg</file>
 	<file alias="client.svg">images/default-spa/mimetypes/client.svg</file>
 	<file alias="client-list.svg">images/default-spa/mimetypes/client-list.svg</file>
+	<file alias="supplier.svg">images/default-spa/mimetypes/supplier.svg</file>
+	<file alias="supplier-list.svg">images/default-spa/mimetypes/supplier-list.svg</file>
     </qresource>
     <qresource prefix="/BulmaCont32x32" >
         <file>images/png/decrypted.png</file>
@@ -210,10 +212,6 @@
         <file>images/png/16x16/i_bulmages_pagos_listado.16x16.png</file>
         <file>images/png/16x16/i_bulmages_pagos_mas.16x16.png</file>
         <file>images/png/16x16/i_bulmages_pagos_menos.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_proveedores.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_proveedores_listado.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_proveedores_menos.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_proveedores_menos_mas.16x16.png</file>
         <file>images/png/16x16/i_bulmages_tarifa.16x16.png</file>
         <file>images/png/16x16/i_bulmages_tarifa_listado.16x16.png</file>
         <file>images/png/16x16/i_bulmages_tarifa_mas.16x16.png</file>
@@ -585,10 +583,6 @@
         <file>images/png/32x32/i_bulmages_pagos_listado.32x32.png</file>
         <file>images/png/32x32/i_bulmages_pagos_mas.32x32.png</file>
         <file>images/png/32x32/i_bulmages_pagos_menos.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_proveedores.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_proveedores_listado.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_proveedores_menos.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_proveedores_menos_mas.32x32.png</file>
         <file>images/png/32x32/i_bulmages_tarifa.32x32.png</file>
         <file>images/png/32x32/i_bulmages_tarifa_listado.32x32.png</file>
         <file>images/png/32x32/i_bulmages_tarifa_mas.32x32.png</file>
@@ -705,10 +699,6 @@
         <file>images/png/48x48/i_bulmages_pagos_listado.48x48.png</file>
         <file>images/png/48x48/i_bulmages_pagos_mas.48x48.png</file>
         <file>images/png/48x48/i_bulmages_pagos_menos.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_proveedores.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_proveedores_listado.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_proveedores_menos.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_proveedores_menos_mas.48x48.png</file>
         <file>images/png/48x48/i_bulmages_tarifa.48x48.png</file>
         <file>images/png/48x48/i_bulmages_tarifa_listado.48x48.png</file>
         <file>images/png/48x48/i_bulmages_tarifa_mas.48x48.png</file>
