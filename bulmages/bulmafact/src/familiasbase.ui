@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon" >
    <iconset resource="../../bulmages.qrc" >
-    <normaloff>:/Bulmafact32x32/images/png/32x32/i_bulmages_articulos_familias.32x32.png</normaloff>:/Bulmafact32x32/images/png/32x32/i_bulmages_articulos_familias.32x32.png</iconset>
+    <normaloff>:/Images/product-family.svg</normaloff>:/Images/product-family.svg</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
@@ -47,7 +47,7 @@
         <string/>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_articulos_familias.48x48.png</pixmap>
+        <pixmap resource="../../bulmages.qrc" >:/Images/product-family.svg</pixmap>
        </property>
       </widget>
      </item>

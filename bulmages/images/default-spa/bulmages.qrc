@@ -15,6 +15,7 @@
 	<file alias="document-report.svg">Actions/document-report.svg</file>
 	<file alias="product-list.svg">mimetypes/product-list.svg</file>
 	<file alias="product.svg">mimetypes/product.svg</file>
+	<file alias="product-family.svg">mimetypes/product-family.svg</file>
     </qresource>
     <qresource prefix="/BulmaCont32x32" >
         <file>images/png/decrypted.png</file>

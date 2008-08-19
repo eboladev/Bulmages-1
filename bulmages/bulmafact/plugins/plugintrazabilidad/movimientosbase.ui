@@ -17,7 +17,7 @@
    <string>Movimientos</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_articulos_familias.48x48.png</iconset>
+   <iconset resource="../../../bulmages.qrc" >:/Images/product-family.svg</iconset>
   </property>
   <layout class="QGridLayout" >
    <property name="margin" >
@@ -52,7 +52,7 @@
         <string/>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_articulos_familias.48x48.png</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/Images/product-family.svg</pixmap>
        </property>
       </widget>
      </item>

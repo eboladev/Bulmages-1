@@ -10,7 +10,7 @@
 
 # Parametros de configuracion de la base de datos postgresql.
 CONF_SERVIDOR                  --
-CONF_PUERTO                    5432
+CONF_PUERTO                    5433
 
 # Parametros de configuracion de programas.
 # Por defecto se proponen estos programas. Configurar a gusto.
