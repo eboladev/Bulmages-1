@@ -17,19 +17,11 @@
    <string>Proveedores</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../bulmages.qrc" >:/Images/supplier-list.svg</iconset>
+   <iconset resource="../../bulmages.qrc" >
+    <normaloff>:/Images/supplier-list.svg</normaloff>:/Images/supplier-list.svg</iconset>
   </property>
   <layout class="QVBoxLayout" >
-   <property name="leftMargin" >
-    <number>5</number>
-   </property>
-   <property name="topMargin" >
-    <number>5</number>
-   </property>
-   <property name="rightMargin" >
-    <number>5</number>
-   </property>
-   <property name="bottomMargin" >
+   <property name="margin" >
     <number>5</number>
    </property>
    <item>
@@ -37,16 +29,7 @@
      <property name="spacing" >
       <number>5</number>
      </property>
-     <property name="leftMargin" >
-      <number>0</number>
-     </property>
-     <property name="topMargin" >
-      <number>0</number>
-     </property>
-     <property name="rightMargin" >
-      <number>0</number>
-     </property>
-     <property name="bottomMargin" >
+     <property name="margin" >
       <number>0</number>
      </property>
      <item>
@@ -69,6 +52,9 @@
        <property name="pixmap" >
         <pixmap resource="../../bulmages.qrc" >:/Images/supplier-list.svg</pixmap>
        </property>
+       <property name="scaledContents" >
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
      <item>
@@ -83,16 +69,7 @@
         <property name="spacing" >
          <number>5</number>
         </property>
-        <property name="leftMargin" >
-         <number>5</number>
-        </property>
-        <property name="topMargin" >
-         <number>5</number>
-        </property>
-        <property name="rightMargin" >
-         <number>5</number>
-        </property>
-        <property name="bottomMargin" >
+        <property name="margin" >
          <number>5</number>
         </property>
         <item>
@@ -122,7 +99,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/document-new.svg</iconset>
+           <iconset resource="../../bulmages.qrc" >
+            <normaloff>:/Images/document-new.svg</normaloff>:/Images/document-new.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -156,7 +134,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/document-open.svg</iconset>
+           <iconset resource="../../bulmages.qrc" >
+            <normaloff>:/Images/document-open.svg</normaloff>:/Images/document-open.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -190,7 +169,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/edit-delete.svg</iconset>
+           <iconset resource="../../bulmages.qrc" >
+            <normaloff>:/Images/edit-delete.svg</normaloff>:/Images/edit-delete.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -224,7 +204,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/document-print.svg</iconset>
+           <iconset resource="../../bulmages.qrc" >
+            <normaloff>:/Images/document-print.svg</normaloff>:/Images/document-print.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -258,7 +239,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/edit-find.svg</iconset>
+           <iconset resource="../../bulmages.qrc" >
+            <normaloff>:/Images/edit-find.svg</normaloff>:/Images/edit-find.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -295,7 +277,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/document-properties.svg</iconset>
+           <iconset resource="../../bulmages.qrc" >
+            <normaloff>:/Images/document-properties.svg</normaloff>:/Images/document-properties.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -332,7 +315,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/view-refresh.svg</iconset>
+           <iconset resource="../../bulmages.qrc" >
+            <normaloff>:/Images/view-refresh.svg</normaloff>:/Images/view-refresh.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -366,7 +350,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/document-export.svg</iconset>
+           <iconset resource="../../bulmages.qrc" >
+            <normaloff>:/Images/document-export.svg</normaloff>:/Images/document-export.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -400,7 +385,8 @@
            <string>Exportar</string>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/document-import.svg</iconset>
+           <iconset resource="../../bulmages.qrc" >
+            <normaloff>:/Images/document-import.svg</normaloff>:/Images/document-import.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -437,7 +423,7 @@
           <property name="sizeType" >
            <enum>QSizePolicy::Expanding</enum>
           </property>
-          <property name="sizeHint" >
+          <property name="sizeHint" stdset="0" >
            <size>
             <width>161</width>
             <height>34</height>
@@ -479,16 +465,7 @@
       <property name="spacing" >
        <number>5</number>
       </property>
-      <property name="leftMargin" >
-       <number>5</number>
-      </property>
-      <property name="topMargin" >
-       <number>5</number>
-      </property>
-      <property name="rightMargin" >
-       <number>5</number>
-      </property>
-      <property name="bottomMargin" >
+      <property name="margin" >
        <number>5</number>
       </property>
       <item>
@@ -506,7 +483,7 @@
         <property name="sizeType" >
          <enum>QSizePolicy::Expanding</enum>
         </property>
-        <property name="sizeHint" >
+        <property name="sizeHint" stdset="0" >
          <size>
           <width>50</width>
           <height>31</height>

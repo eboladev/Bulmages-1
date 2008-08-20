@@ -389,7 +389,7 @@
            <string>Crea empresa</string>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_almacen.48x48.png</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Images/warehouse.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>

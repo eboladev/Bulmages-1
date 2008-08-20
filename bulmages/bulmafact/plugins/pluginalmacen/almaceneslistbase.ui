@@ -52,7 +52,7 @@
         <string/>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_almacen_listado.48x48.png</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/Images/warehouse-list.svg</pixmap>
        </property>
       </widget>
      </item>

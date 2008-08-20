@@ -17,25 +17,14 @@
    <string>Cliente</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../bulmages.qrc" >:/Images/client.svg</iconset>
+   <iconset resource="../../bulmages.qrc" >
+    <normaloff>:/Images/client.svg</normaloff>:/Images/client.svg</iconset>
   </property>
   <layout class="QGridLayout" >
-   <property name="leftMargin" >
+   <property name="margin" >
     <number>5</number>
    </property>
-   <property name="topMargin" >
-    <number>5</number>
-   </property>
-   <property name="rightMargin" >
-    <number>5</number>
-   </property>
-   <property name="bottomMargin" >
-    <number>5</number>
-   </property>
-   <property name="horizontalSpacing" >
-    <number>5</number>
-   </property>
-   <property name="verticalSpacing" >
+   <property name="spacing" >
     <number>5</number>
    </property>
    <item row="0" column="0" >
@@ -43,16 +32,7 @@
      <property name="spacing" >
       <number>5</number>
      </property>
-     <property name="leftMargin" >
-      <number>0</number>
-     </property>
-     <property name="topMargin" >
-      <number>0</number>
-     </property>
-     <property name="rightMargin" >
-      <number>0</number>
-     </property>
-     <property name="bottomMargin" >
+     <property name="margin" >
       <number>0</number>
      </property>
      <item>
@@ -75,6 +55,9 @@
        <property name="pixmap" >
         <pixmap resource="../../bulmages.qrc" >:/Images/client.svg</pixmap>
        </property>
+       <property name="scaledContents" >
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
      <item>
@@ -89,16 +72,7 @@
         <property name="spacing" >
          <number>5</number>
         </property>
-        <property name="leftMargin" >
-         <number>5</number>
-        </property>
-        <property name="topMargin" >
-         <number>5</number>
-        </property>
-        <property name="rightMargin" >
-         <number>5</number>
-        </property>
-        <property name="bottomMargin" >
+        <property name="margin" >
          <number>5</number>
         </property>
         <item>
@@ -128,7 +102,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/edit-save.svg</iconset>
+           <iconset resource="../../bulmages.qrc" >
+            <normaloff>:/Images/edit-save.svg</normaloff>:/Images/edit-save.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -168,7 +143,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/edit-delete.svg</iconset>
+           <iconset resource="../../bulmages.qrc" >
+            <normaloff>:/Images/edit-delete.svg</normaloff>:/Images/edit-delete.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -208,7 +184,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/document-print.svg</iconset>
+           <iconset resource="../../bulmages.qrc" >
+            <normaloff>:/Images/document-print.svg</normaloff>:/Images/document-print.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -226,7 +203,7 @@
           <property name="sizeType" >
            <enum>QSizePolicy::Expanding</enum>
           </property>
-          <property name="sizeHint" >
+          <property name="sizeHint" stdset="0" >
            <size>
             <width>371</width>
             <height>26</height>
@@ -248,26 +225,22 @@
       <number>0</number>
      </property>
      <widget class="QWidget" name="Tab1" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>736</width>
+        <height>422</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>&amp;Datos generales</string>
       </attribute>
       <layout class="QGridLayout" >
-       <property name="leftMargin" >
+       <property name="margin" >
         <number>5</number>
        </property>
-       <property name="topMargin" >
-        <number>5</number>
-       </property>
-       <property name="rightMargin" >
-        <number>5</number>
-       </property>
-       <property name="bottomMargin" >
-        <number>5</number>
-       </property>
-       <property name="horizontalSpacing" >
-        <number>5</number>
-       </property>
-       <property name="verticalSpacing" >
+       <property name="spacing" >
         <number>5</number>
        </property>
        <item row="0" column="0" >
@@ -295,7 +268,7 @@
          <property name="orientation" >
           <enum>Qt::Horizontal</enum>
          </property>
-         <property name="sizeHint" >
+         <property name="sizeHint" stdset="0" >
           <size>
            <width>40</width>
            <height>20</height>
@@ -632,7 +605,7 @@
          <property name="orientation" >
           <enum>Qt::Vertical</enum>
          </property>
-         <property name="sizeHint" >
+         <property name="sizeHint" stdset="0" >
           <size>
            <width>20</width>
            <height>40</height>
@@ -643,26 +616,22 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tabOtros" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>640</width>
+        <height>409</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>Otros datos</string>
       </attribute>
       <layout class="QGridLayout" >
-       <property name="leftMargin" >
+       <property name="margin" >
         <number>5</number>
        </property>
-       <property name="topMargin" >
-        <number>5</number>
-       </property>
-       <property name="rightMargin" >
-        <number>5</number>
-       </property>
-       <property name="bottomMargin" >
-        <number>5</number>
-       </property>
-       <property name="horizontalSpacing" >
-        <number>5</number>
-       </property>
-       <property name="verticalSpacing" >
+       <property name="spacing" >
         <number>5</number>
        </property>
        <item row="0" column="0" colspan="3" >
@@ -756,6 +725,14 @@
       </layout>
      </widget>
      <widget class="QWidget" name="Tab2" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>640</width>
+        <height>409</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>Pres&amp;upuestos</string>
       </attribute>
@@ -763,16 +740,7 @@
        <property name="spacing" >
         <number>5</number>
        </property>
-       <property name="leftMargin" >
-        <number>5</number>
-       </property>
-       <property name="topMargin" >
-        <number>5</number>
-       </property>
-       <property name="rightMargin" >
-        <number>5</number>
-       </property>
-       <property name="bottomMargin" >
+       <property name="margin" >
         <number>5</number>
        </property>
        <item>
@@ -781,6 +749,14 @@
       </layout>
      </widget>
      <widget class="QWidget" name="Tab3" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>640</width>
+        <height>409</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>Pedidos</string>
       </attribute>
@@ -788,16 +764,7 @@
        <property name="spacing" >
         <number>5</number>
        </property>
-       <property name="leftMargin" >
-        <number>5</number>
-       </property>
-       <property name="topMargin" >
-        <number>5</number>
-       </property>
-       <property name="rightMargin" >
-        <number>5</number>
-       </property>
-       <property name="bottomMargin" >
+       <property name="margin" >
         <number>5</number>
        </property>
        <item>
@@ -806,6 +773,14 @@
       </layout>
      </widget>
      <widget class="QWidget" name="Tab4" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>640</width>
+        <height>409</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>Albaranes</string>
       </attribute>
@@ -813,16 +788,7 @@
        <property name="spacing" >
         <number>5</number>
        </property>
-       <property name="leftMargin" >
-        <number>5</number>
-       </property>
-       <property name="topMargin" >
-        <number>5</number>
-       </property>
-       <property name="rightMargin" >
-        <number>5</number>
-       </property>
-       <property name="bottomMargin" >
+       <property name="margin" >
         <number>5</number>
        </property>
        <item>
@@ -831,6 +797,14 @@
       </layout>
      </widget>
      <widget class="QWidget" name="Tab5" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>640</width>
+        <height>409</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>&amp;Facturas</string>
       </attribute>
@@ -838,16 +812,7 @@
        <property name="spacing" >
         <number>5</number>
        </property>
-       <property name="leftMargin" >
-        <number>5</number>
-       </property>
-       <property name="topMargin" >
-        <number>5</number>
-       </property>
-       <property name="rightMargin" >
-        <number>5</number>
-       </property>
-       <property name="bottomMargin" >
+       <property name="margin" >
         <number>5</number>
        </property>
        <item>
@@ -856,26 +821,22 @@
       </layout>
      </widget>
      <widget class="QWidget" name="Tab6" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>640</width>
+        <height>409</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>Cobros</string>
       </attribute>
       <layout class="QGridLayout" >
-       <property name="leftMargin" >
+       <property name="margin" >
         <number>5</number>
        </property>
-       <property name="topMargin" >
-        <number>5</number>
-       </property>
-       <property name="rightMargin" >
-        <number>5</number>
-       </property>
-       <property name="bottomMargin" >
-        <number>5</number>
-       </property>
-       <property name="horizontalSpacing" >
-        <number>5</number>
-       </property>
-       <property name="verticalSpacing" >
+       <property name="spacing" >
         <number>5</number>
        </property>
        <item row="0" column="0" >
@@ -890,16 +851,7 @@
      <property name="spacing" >
       <number>5</number>
      </property>
-     <property name="leftMargin" >
-      <number>0</number>
-     </property>
-     <property name="topMargin" >
-      <number>0</number>
-     </property>
-     <property name="rightMargin" >
-      <number>0</number>
-     </property>
-     <property name="bottomMargin" >
+     <property name="margin" >
       <number>0</number>
      </property>
      <item>
@@ -907,7 +859,7 @@
        <property name="orientation" >
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeHint" >
+       <property name="sizeHint" stdset="0" >
         <size>
          <width>331</width>
          <height>27</height>

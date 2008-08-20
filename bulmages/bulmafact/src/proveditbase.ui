@@ -7,32 +7,21 @@
     <x>0</x>
     <y>0</y>
     <width>690</width>
-    <height>582</height>
+    <height>793</height>
    </rect>
   </property>
   <property name="windowTitle" >
    <string>Proveedor</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../bulmages.qrc" >:/Images/supplier.svg</iconset>
+   <iconset resource="../../bulmages.qrc" >
+    <normaloff>:/Images/supplier.svg</normaloff>:/Images/supplier.svg</iconset>
   </property>
   <layout class="QGridLayout" >
-   <property name="leftMargin" >
+   <property name="margin" >
     <number>5</number>
    </property>
-   <property name="topMargin" >
-    <number>5</number>
-   </property>
-   <property name="rightMargin" >
-    <number>5</number>
-   </property>
-   <property name="bottomMargin" >
-    <number>5</number>
-   </property>
-   <property name="horizontalSpacing" >
-    <number>5</number>
-   </property>
-   <property name="verticalSpacing" >
+   <property name="spacing" >
     <number>5</number>
    </property>
    <item row="2" column="0" >
@@ -40,16 +29,7 @@
      <property name="spacing" >
       <number>5</number>
      </property>
-     <property name="leftMargin" >
-      <number>0</number>
-     </property>
-     <property name="topMargin" >
-      <number>0</number>
-     </property>
-     <property name="rightMargin" >
-      <number>0</number>
-     </property>
-     <property name="bottomMargin" >
+     <property name="margin" >
       <number>0</number>
      </property>
      <item>
@@ -57,7 +37,7 @@
        <property name="orientation" >
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeHint" >
+       <property name="sizeHint" stdset="0" >
         <size>
          <width>481</width>
          <height>27</height>
@@ -87,26 +67,22 @@
       <number>0</number>
      </property>
      <widget class="QWidget" name="tab1" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>676</width>
+        <height>661</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>&amp;Datos generales</string>
       </attribute>
       <layout class="QGridLayout" >
-       <property name="leftMargin" >
+       <property name="margin" >
         <number>5</number>
        </property>
-       <property name="topMargin" >
-        <number>5</number>
-       </property>
-       <property name="rightMargin" >
-        <number>5</number>
-       </property>
-       <property name="bottomMargin" >
-        <number>5</number>
-       </property>
-       <property name="horizontalSpacing" >
-        <number>5</number>
-       </property>
-       <property name="verticalSpacing" >
+       <property name="spacing" >
         <number>5</number>
        </property>
        <item row="0" column="0" >
@@ -273,7 +249,7 @@
          <property name="orientation" >
           <enum>Qt::Horizontal</enum>
          </property>
-         <property name="sizeHint" >
+         <property name="sizeHint" stdset="0" >
           <size>
            <width>171</width>
            <height>20</height>
@@ -421,7 +397,7 @@
          <property name="sizeType" >
           <enum>QSizePolicy::Preferred</enum>
          </property>
-         <property name="sizeHint" >
+         <property name="sizeHint" stdset="0" >
           <size>
            <width>141</width>
            <height>20</height>
@@ -473,7 +449,7 @@
          <property name="orientation" >
           <enum>Qt::Horizontal</enum>
          </property>
-         <property name="sizeHint" >
+         <property name="sizeHint" stdset="0" >
           <size>
            <width>81</width>
            <height>20</height>
@@ -571,6 +547,14 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tab2" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>640</width>
+        <height>409</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>&amp;Pedidos</string>
       </attribute>
@@ -578,16 +562,7 @@
        <property name="spacing" >
         <number>5</number>
        </property>
-       <property name="leftMargin" >
-        <number>5</number>
-       </property>
-       <property name="topMargin" >
-        <number>5</number>
-       </property>
-       <property name="rightMargin" >
-        <number>5</number>
-       </property>
-       <property name="bottomMargin" >
+       <property name="margin" >
         <number>5</number>
        </property>
        <item>
@@ -596,6 +571,14 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tab3" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>640</width>
+        <height>409</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>&amp;Albaranes</string>
       </attribute>
@@ -603,16 +586,7 @@
        <property name="spacing" >
         <number>5</number>
        </property>
-       <property name="leftMargin" >
-        <number>5</number>
-       </property>
-       <property name="topMargin" >
-        <number>5</number>
-       </property>
-       <property name="rightMargin" >
-        <number>5</number>
-       </property>
-       <property name="bottomMargin" >
+       <property name="margin" >
         <number>5</number>
        </property>
        <item>
@@ -621,6 +595,14 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tab4" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>640</width>
+        <height>409</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>&amp;Facturas</string>
       </attribute>
@@ -628,16 +610,7 @@
        <property name="spacing" >
         <number>5</number>
        </property>
-       <property name="leftMargin" >
-        <number>5</number>
-       </property>
-       <property name="topMargin" >
-        <number>5</number>
-       </property>
-       <property name="rightMargin" >
-        <number>5</number>
-       </property>
-       <property name="bottomMargin" >
+       <property name="margin" >
         <number>5</number>
        </property>
        <item>
@@ -646,6 +619,14 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tab5" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>640</width>
+        <height>409</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>&amp;Pagos</string>
       </attribute>
@@ -653,16 +634,7 @@
        <property name="spacing" >
         <number>5</number>
        </property>
-       <property name="leftMargin" >
-        <number>5</number>
-       </property>
-       <property name="topMargin" >
-        <number>5</number>
-       </property>
-       <property name="rightMargin" >
-        <number>5</number>
-       </property>
-       <property name="bottomMargin" >
+       <property name="margin" >
         <number>5</number>
        </property>
        <item>
@@ -671,6 +643,14 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tab6" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>640</width>
+        <height>409</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>Di&amp;visiones</string>
       </attribute>
@@ -678,16 +658,7 @@
        <property name="spacing" >
         <number>5</number>
        </property>
-       <property name="leftMargin" >
-        <number>5</number>
-       </property>
-       <property name="topMargin" >
-        <number>5</number>
-       </property>
-       <property name="rightMargin" >
-        <number>5</number>
-       </property>
-       <property name="bottomMargin" >
+       <property name="margin" >
         <number>5</number>
        </property>
        <item>
@@ -695,16 +666,7 @@
          <property name="spacing" >
           <number>0</number>
          </property>
-         <property name="leftMargin" >
-          <number>0</number>
-         </property>
-         <property name="topMargin" >
-          <number>0</number>
-         </property>
-         <property name="rightMargin" >
-          <number>0</number>
-         </property>
-         <property name="bottomMargin" >
+         <property name="margin" >
           <number>0</number>
          </property>
          <item>
@@ -716,7 +678,8 @@
             <string/>
            </property>
            <property name="icon" >
-            <iconset>image7</iconset>
+            <iconset>
+             <normaloff>image7</normaloff>image7</iconset>
            </property>
           </widget>
          </item>
@@ -729,7 +692,8 @@
             <string/>
            </property>
            <property name="icon" >
-            <iconset>image8</iconset>
+            <iconset>
+             <normaloff>image8</normaloff>image8</iconset>
            </property>
           </widget>
          </item>
@@ -742,7 +706,8 @@
             <string/>
            </property>
            <property name="icon" >
-            <iconset>image9</iconset>
+            <iconset>
+             <normaloff>image9</normaloff>image9</iconset>
            </property>
           </widget>
          </item>
@@ -755,7 +720,8 @@
             <string/>
            </property>
            <property name="icon" >
-            <iconset>image10</iconset>
+            <iconset>
+             <normaloff>image10</normaloff>image10</iconset>
            </property>
           </widget>
          </item>
@@ -768,7 +734,8 @@
             <string/>
            </property>
            <property name="icon" >
-            <iconset>image11</iconset>
+            <iconset>
+             <normaloff>image11</normaloff>image11</iconset>
            </property>
           </widget>
          </item>
@@ -780,7 +747,7 @@
            <property name="sizeType" >
             <enum>QSizePolicy::Expanding</enum>
            </property>
-           <property name="sizeHint" >
+           <property name="sizeHint" stdset="0" >
             <size>
              <width>341</width>
              <height>21</height>
@@ -793,6 +760,14 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tab7" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>640</width>
+        <height>409</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>Productos &amp;suministrados</string>
       </attribute>
@@ -800,16 +775,7 @@
        <property name="spacing" >
         <number>5</number>
        </property>
-       <property name="leftMargin" >
-        <number>5</number>
-       </property>
-       <property name="topMargin" >
-        <number>5</number>
-       </property>
-       <property name="rightMargin" >
-        <number>5</number>
-       </property>
-       <property name="bottomMargin" >
+       <property name="margin" >
         <number>5</number>
        </property>
        <item>
@@ -817,16 +783,7 @@
          <property name="spacing" >
           <number>0</number>
          </property>
-         <property name="leftMargin" >
-          <number>0</number>
-         </property>
-         <property name="topMargin" >
-          <number>0</number>
-         </property>
-         <property name="rightMargin" >
-          <number>0</number>
-         </property>
-         <property name="bottomMargin" >
+         <property name="margin" >
           <number>0</number>
          </property>
          <item>
@@ -835,7 +792,8 @@
             <string/>
            </property>
            <property name="icon" >
-            <iconset>image7</iconset>
+            <iconset>
+             <normaloff>image7</normaloff>image7</iconset>
            </property>
           </widget>
          </item>
@@ -845,7 +803,8 @@
             <string/>
            </property>
            <property name="icon" >
-            <iconset>image12</iconset>
+            <iconset>
+             <normaloff>image12</normaloff>image12</iconset>
            </property>
           </widget>
          </item>
@@ -855,7 +814,8 @@
             <string/>
            </property>
            <property name="icon" >
-            <iconset>image13</iconset>
+            <iconset>
+             <normaloff>image13</normaloff>image13</iconset>
            </property>
           </widget>
          </item>
@@ -865,7 +825,8 @@
             <string/>
            </property>
            <property name="icon" >
-            <iconset>image14</iconset>
+            <iconset>
+             <normaloff>image14</normaloff>image14</iconset>
            </property>
           </widget>
          </item>
@@ -877,7 +838,7 @@
            <property name="sizeType" >
             <enum>QSizePolicy::Expanding</enum>
            </property>
-           <property name="sizeHint" >
+           <property name="sizeHint" stdset="0" >
             <size>
              <width>414</width>
              <height>21</height>
@@ -890,6 +851,14 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tab8" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>640</width>
+        <height>409</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>&amp;Contratos</string>
       </attribute>
@@ -906,16 +875,7 @@
         <property name="spacing" >
          <number>0</number>
         </property>
-        <property name="leftMargin" >
-         <number>0</number>
-        </property>
-        <property name="topMargin" >
-         <number>0</number>
-        </property>
-        <property name="rightMargin" >
-         <number>0</number>
-        </property>
-        <property name="bottomMargin" >
+        <property name="margin" >
          <number>0</number>
         </property>
         <item>
@@ -927,7 +887,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset>image7</iconset>
+           <iconset>
+            <normaloff>image7</normaloff>image7</iconset>
           </property>
          </widget>
         </item>
@@ -940,7 +901,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset>image12</iconset>
+           <iconset>
+            <normaloff>image12</normaloff>image12</iconset>
           </property>
          </widget>
         </item>
@@ -953,7 +915,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset>image9</iconset>
+           <iconset>
+            <normaloff>image9</normaloff>image9</iconset>
           </property>
          </widget>
         </item>
@@ -966,7 +929,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset>image13</iconset>
+           <iconset>
+            <normaloff>image13</normaloff>image13</iconset>
           </property>
          </widget>
         </item>
@@ -979,7 +943,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset>image15</iconset>
+           <iconset>
+            <normaloff>image15</normaloff>image15</iconset>
           </property>
          </widget>
         </item>
@@ -991,7 +956,7 @@
           <property name="sizeType" >
            <enum>QSizePolicy::Expanding</enum>
           </property>
-          <property name="sizeHint" >
+          <property name="sizeHint" stdset="0" >
            <size>
             <width>321</width>
             <height>21</height>
@@ -1004,16 +969,7 @@
           <property name="spacing" >
            <number>2</number>
           </property>
-          <property name="leftMargin" >
-           <number>0</number>
-          </property>
-          <property name="topMargin" >
-           <number>0</number>
-          </property>
-          <property name="rightMargin" >
-           <number>0</number>
-          </property>
-          <property name="bottomMargin" >
+          <property name="margin" >
            <number>0</number>
           </property>
           <item>
@@ -1081,25 +1037,25 @@
      <property name="spacing" >
       <number>5</number>
      </property>
-     <property name="leftMargin" >
-      <number>0</number>
-     </property>
-     <property name="topMargin" >
-      <number>0</number>
-     </property>
-     <property name="rightMargin" >
-      <number>0</number>
-     </property>
-     <property name="bottomMargin" >
+     <property name="margin" >
       <number>0</number>
      </property>
      <item>
       <widget class="QLabel" name="label" >
+       <property name="maximumSize" >
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
        <property name="text" >
         <string/>
        </property>
        <property name="pixmap" >
         <pixmap resource="../../bulmages.qrc" >:/Images/supplier.svg</pixmap>
+       </property>
+       <property name="scaledContents" >
+        <bool>true</bool>
        </property>
       </widget>
      </item>
@@ -1115,16 +1071,7 @@
         <property name="spacing" >
          <number>5</number>
         </property>
-        <property name="leftMargin" >
-         <number>5</number>
-        </property>
-        <property name="topMargin" >
-         <number>5</number>
-        </property>
-        <property name="rightMargin" >
-         <number>5</number>
-        </property>
-        <property name="bottomMargin" >
+        <property name="margin" >
          <number>5</number>
         </property>
         <item>
@@ -1142,7 +1089,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/edit-save.svg</iconset>
+           <iconset resource="../../bulmages.qrc" >
+            <normaloff>:/Images/edit-save.svg</normaloff>:/Images/edit-save.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -1170,7 +1118,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/edit-delete.svg</iconset>
+           <iconset resource="../../bulmages.qrc" >
+            <normaloff>:/Images/edit-delete.svg</normaloff>:/Images/edit-delete.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -1188,7 +1137,7 @@
           <property name="sizeType" >
            <enum>QSizePolicy::Expanding</enum>
           </property>
-          <property name="sizeHint" >
+          <property name="sizeHint" stdset="0" >
            <size>
             <width>451</width>
             <height>20</height>
