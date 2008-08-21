@@ -14,7 +14,7 @@
    <string>Bancos</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_bancos.48x48.png</iconset>
+   <iconset resource="../../bulmages.qrc" >:/Images/bank.svg</iconset>
   </property>
   <layout class="QGridLayout" >
    <property name="margin" >
@@ -377,7 +377,7 @@ p, li { white-space: pre-wrap; }
         </size>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_bancos.48x48.png</pixmap>
+        <pixmap resource="../../bulmages.qrc" >:/Images/bank.svg</pixmap>
        </property>
       </widget>
      </item>

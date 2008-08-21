@@ -23,6 +23,8 @@
 	<file alias="supplier-list.svg">images/default-spa/mimetypes/supplier-list.svg</file>
 	<file alias="warehouse.svg">images/default-spa/mimetypes/warehouse.svg</file>
 	<file alias="warehouse-list.svg">images/default-spa/mimetypes/warehouse-list.svg</file>
+	<file alias="bank.svg">images/default-spa/mimetypes/bank.svg</file>
+	<file alias="bank-list.svg">images/default-spa/mimetypes/bank-list.svg</file>
     </qresource>
     <qresource prefix="/BulmaCont32x32" >
         <file>images/png/decrypted.png</file>
@@ -137,10 +139,6 @@
         <file>images/png/wizard.png</file>
     </qresource>
     <qresource prefix="/Bulmafact16x16" >
-        <file>images/png/16x16/i_bulmages_bancos.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_bancos_listado.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_bancos_mas.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_bancos_menos.16x16.png</file>
         <file>images/png/16x16/i_bulmages_boton_listado.16x16.png</file>
         <file>images/png/16x16/i_bulmages_boton_mas.16x16.png</file>
         <file>images/png/16x16/i_bulmages_boton_menos.16x16.png</file>
@@ -504,10 +502,6 @@
         <file>images/png/16x16/i_bulmages_ventas_presupuestos_menos.16x16.png</file>
     </qresource>
     <qresource prefix="/Bulmafact32x32" >
-        <file>images/png/32x32/i_bulmages_bancos.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_bancos_listado.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_bancos_mas.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_bancos_menos.32x32.png</file>
         <file>images/png/32x32/i_bulmages_boton_listado.32x32.png</file>
         <file>images/png/32x32/i_bulmages_boton_mas.32x32.png</file>
         <file>images/png/32x32/i_bulmages_boton_menos.32x32.png</file>
@@ -616,10 +610,6 @@
         <file>images/png/iconbulmafact.xpm</file>
     </qresource>
     <qresource prefix="/Bulmafact48x48" >
-        <file>images/png/48x48/i_bulmages_bancos.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_bancos_listado.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_bancos_mas.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_bancos_menos.48x48.png</file>
         <file>images/png/48x48/i_bulmages_boton_listado.48x48.png</file>
         <file>images/png/48x48/i_bulmages_boton_mas.48x48.png</file>
         <file>images/png/48x48/i_bulmages_boton_menos.48x48.png</file>
