@@ -24,6 +24,8 @@
 	<file alias="warehouse-list.svg">mimetypes/warehouse-list.svg</file>
 	<file alias="bank.svg">mimetypes/bank.svg</file>
 	<file alias="bank-list.svg">mimetypes/bank-list.svg</file>
+	<file alias="cash.svg">mimetypes/cash.svg</file>
+	<file alias="cash-list.svg">mimetypes/cash-list.svg</file>
     </qresource>
     <qresource prefix="/BulmaCont32x32" >
         <file>images/png/decrypted.png</file>

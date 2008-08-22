@@ -25,6 +25,8 @@
 	<file alias="warehouse-list.svg">images/default-spa/mimetypes/warehouse-list.svg</file>
 	<file alias="bank.svg">images/default-spa/mimetypes/bank.svg</file>
 	<file alias="bank-list.svg">images/default-spa/mimetypes/bank-list.svg</file>
+	<file alias="cash.svg">images/default-spa/mimetypes/cash.svg</file>
+	<file alias="cash-list.svg">images/default-spa/mimetypes/cash-list.svg</file>
     </qresource>
     <qresource prefix="/BulmaCont32x32" >
         <file>images/png/decrypted.png</file>
@@ -142,10 +144,6 @@
         <file>images/png/16x16/i_bulmages_boton_listado.16x16.png</file>
         <file>images/png/16x16/i_bulmages_boton_mas.16x16.png</file>
         <file>images/png/16x16/i_bulmages_boton_menos.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_caja.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_caja_listado.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_caja_mas.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_caja_menos.16x16.png</file>
         <file>images/png/16x16/i_bulmages_cobros.16x16.png</file>
         <file>images/png/16x16/i_bulmages_cobros_listado.16x16.png</file>
         <file>images/png/16x16/i_bulmages_cobros_mas.16x16.png</file>
@@ -505,10 +503,6 @@
         <file>images/png/32x32/i_bulmages_boton_listado.32x32.png</file>
         <file>images/png/32x32/i_bulmages_boton_mas.32x32.png</file>
         <file>images/png/32x32/i_bulmages_boton_menos.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_caja.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_caja_listado.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_caja_mas.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_caja_menos.32x32.png</file>
         <file>images/png/32x32/i_bulmages_cobros.32x32.png</file>
         <file>images/png/32x32/i_bulmages_cobros_listado.32x32.png</file>
         <file>images/png/32x32/i_bulmages_cobros_mas.32x32.png</file>
@@ -613,10 +607,6 @@
         <file>images/png/48x48/i_bulmages_boton_listado.48x48.png</file>
         <file>images/png/48x48/i_bulmages_boton_mas.48x48.png</file>
         <file>images/png/48x48/i_bulmages_boton_menos.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_caja.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_caja_listado.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_caja_mas.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_caja_menos.48x48.png</file>
         <file>images/png/48x48/i_bulmages_cobros.48x48.png</file>
         <file>images/png/48x48/i_bulmages_cobros_listado.48x48.png</file>
         <file>images/png/48x48/i_bulmages_cobros_mas.48x48.png</file>
