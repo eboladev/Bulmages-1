@@ -27,6 +27,8 @@
 	<file alias="bank-list.svg">images/default-spa/mimetypes/bank-list.svg</file>
 	<file alias="cash.svg">images/default-spa/mimetypes/cash.svg</file>
 	<file alias="cash-list.svg">images/default-spa/mimetypes/cash-list.svg</file>
+	<file alias="receive.svg">images/default-spa/mimetypes/receive.svg</file>
+	<file alias="receive-list.svg">images/default-spa/mimetypes/receive-list.svg</file>
     </qresource>
     <qresource prefix="/BulmaCont32x32" >
         <file>images/png/decrypted.png</file>
@@ -144,10 +146,6 @@
         <file>images/png/16x16/i_bulmages_boton_listado.16x16.png</file>
         <file>images/png/16x16/i_bulmages_boton_mas.16x16.png</file>
         <file>images/png/16x16/i_bulmages_boton_menos.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_cobros.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_cobros_listado.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_cobros_mas.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_cobros_menos.16x16.png</file>
         <file>images/png/16x16/i_bulmages_compras.16x16.png</file>
         <file>images/png/16x16/i_bulmages_compras_albaran.16x16.png</file>
         <file>images/png/16x16/i_bulmages_compras_albaran_listado.16x16.png</file>
@@ -503,10 +501,6 @@
         <file>images/png/32x32/i_bulmages_boton_listado.32x32.png</file>
         <file>images/png/32x32/i_bulmages_boton_mas.32x32.png</file>
         <file>images/png/32x32/i_bulmages_boton_menos.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_cobros.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_cobros_listado.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_cobros_mas.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_cobros_menos.32x32.png</file>
         <file>images/png/32x32/i_bulmages_compras.32x32.png</file>
         <file>images/png/32x32/i_bulmages_compras_albaran.32x32.png</file>
         <file>images/png/32x32/i_bulmages_compras_albaran_listado.32x32.png</file>
@@ -607,10 +601,6 @@
         <file>images/png/48x48/i_bulmages_boton_listado.48x48.png</file>
         <file>images/png/48x48/i_bulmages_boton_mas.48x48.png</file>
         <file>images/png/48x48/i_bulmages_boton_menos.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_cobros.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_cobros_listado.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_cobros_mas.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_cobros_menos.48x48.png</file>
         <file>images/png/48x48/i_bulmages_compras.48x48.png</file>
         <file>images/png/48x48/i_bulmages_compras_albaran.48x48.png</file>
         <file>images/png/48x48/i_bulmages_compras_albaran_listado.48x48.png</file>

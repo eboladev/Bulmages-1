@@ -14,7 +14,7 @@
    <string>Nuevo almacen</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_cobros.48x48.png</iconset>
+   <iconset resource="../../../bulmages.qrc" >:/Images/receive.svg</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >

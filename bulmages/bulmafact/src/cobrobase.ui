@@ -20,7 +20,7 @@
    <string>Nuevo cobro de cliente</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_cobros.48x48.png</iconset>
+   <iconset resource="../../bulmages.qrc" >:/Images/receive.svg</iconset>
   </property>
   <layout class="QGridLayout" >
    <property name="leftMargin" >
@@ -76,7 +76,7 @@
         <string/>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_cobros.48x48.png</pixmap>
+        <pixmap resource="../../bulmages.qrc" >:/Images/receive.svg</pixmap>
        </property>
       </widget>
      </item>
