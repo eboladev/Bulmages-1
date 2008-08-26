@@ -29,6 +29,8 @@
 	<file alias="cash-list.svg">images/default-spa/mimetypes/cash-list.svg</file>
 	<file alias="receive.svg">images/default-spa/mimetypes/receive.svg</file>
 	<file alias="receive-list.svg">images/default-spa/mimetypes/receive-list.svg</file>
+	<file alias="pay.svg">images/default-spa/mimetypes/pay.svg</file>
+	<file alias="pay-list.svg">images/default-spa/mimetypes/pay-list.svg</file>
     </qresource>
     <qresource prefix="/BulmaCont32x32" >
         <file>images/png/decrypted.png</file>
@@ -200,10 +202,6 @@
         <file>images/png/16x16/i_bulmages_monedas_listado.16x16.png</file>
         <file>images/png/16x16/i_bulmages_monedas_mas.16x16.png</file>
         <file>images/png/16x16/i_bulmages_monedas_menos.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_pagos.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_pagos_listado.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_pagos_mas.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_pagos_menos.16x16.png</file>
         <file>images/png/16x16/i_bulmages_tarifa.16x16.png</file>
         <file>images/png/16x16/i_bulmages_tarifa_listado.16x16.png</file>
         <file>images/png/16x16/i_bulmages_tarifa_mas.16x16.png</file>
@@ -555,10 +553,6 @@
         <file>images/png/32x32/i_bulmages_monedas_listado.32x32.png</file>
         <file>images/png/32x32/i_bulmages_monedas_mas.32x32.png</file>
         <file>images/png/32x32/i_bulmages_monedas_menos.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_pagos.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_pagos_listado.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_pagos_mas.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_pagos_menos.32x32.png</file>
         <file>images/png/32x32/i_bulmages_tarifa.32x32.png</file>
         <file>images/png/32x32/i_bulmages_tarifa_listado.32x32.png</file>
         <file>images/png/32x32/i_bulmages_tarifa_mas.32x32.png</file>
@@ -655,10 +649,6 @@
         <file>images/png/48x48/i_bulmages_monedas_listado.48x48.png</file>
         <file>images/png/48x48/i_bulmages_monedas_mas.48x48.png</file>
         <file>images/png/48x48/i_bulmages_monedas_menos.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_pagos.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_pagos_listado.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_pagos_mas.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_pagos_menos.48x48.png</file>
         <file>images/png/48x48/i_bulmages_tarifa.48x48.png</file>
         <file>images/png/48x48/i_bulmages_tarifa_listado.48x48.png</file>
         <file>images/png/48x48/i_bulmages_tarifa_mas.48x48.png</file>

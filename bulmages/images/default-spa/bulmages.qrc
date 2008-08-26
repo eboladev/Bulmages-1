@@ -28,6 +28,8 @@
 	<file alias="cash-list.svg">mimetypes/cash-list.svg</file>
 	<file alias="receive.svg">mimetypes/receive.svg</file>
 	<file alias="receive-list.svg">mimetypes/receive-list.svg</file>
+	<file alias="pay.svg">mimetypes/pay.svg</file>
+	<file alias="pay-list.svg">mimetypes/pay-list.svg</file>
     </qresource>
     <qresource prefix="/BulmaCont32x32" >
         <file>images/png/decrypted.png</file>
