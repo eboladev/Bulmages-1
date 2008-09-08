@@ -15,10 +15,11 @@ add_subdirectory(plugincambio)
 add_subdirectory(plugindevolucion)
 add_subdirectory(plugindevolucion2)
 add_subdirectory(pluginticketsdevueltos)
-add_subdirectory(plugintccompras)
+
 
 if(NOT APPLE)
 add_subdirectory(pluginabrevs)
+add_subdirectory(plugintccompras)
 endif(NOT APPLE)
 
 
