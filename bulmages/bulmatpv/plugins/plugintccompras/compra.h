@@ -34,6 +34,8 @@ public:
     void quitar ( int row );
 */
 public slots:
+    virtual void on_mui_aceptar_released();
+    virtual void on_mui_codigoarticulo_returnPressed();
 /*
     virtual void on_mui_refLineEdit_returnPressed();
     virtual void on_mui_todoButton_clicked();

@@ -105,6 +105,22 @@ Compra::Compra ( EmpresaTPV *emp, QWidget *parent ) : BLWidget ( emp, parent )
     */
 }
 
+void Compra::on_mui_aceptar_released() {
+	close();
+	
+}
+
+void Compra::on_mui_codigoarticulo_returnPressed() {
+	QString texto = "";
+	QString query ="SELECT * FROM articulo WHERE codigocompletoarticulo = '"+mui_codigoarticulo->text()+"'";
+	cursor2 *cur = empresaBase()->cargacursor(query);
+	while (! cur->eof()) {
+		texto += "<B>Hola mundo</B><br>Adios";
+		cur->siguienteregistro();
+	} // end while
+	delete cur;
+	mui_subform->setText(texto);
+}
 
 Compra::~Compra()
 {}

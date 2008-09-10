@@ -74,12 +74,14 @@ void MyDevButton1::on_click (  )
 int entryPoint ( BulmaTPV *tpv )
 {
     _depura ( "entryPoint", 0 );
+/*
     g_doc1 = new BDockWidget ( "Articulo", tpv, "articulodock" );
     g_doc1->setFeatures ( QDockWidget::AllDockWidgetFeatures );
     g_doc1->setGeometry ( 100, 100, 100, 500 );
     g_doc1->resize ( 330, 400 );
     tpv->addDockWidget ( Qt::TopDockWidgetArea, g_doc1 );
     g_doc1->show();
+*/
     _depura ( "END entryPoint", 0 );
     return 0;
 }
@@ -88,9 +90,10 @@ int EmpresaTPV_createMainWindows_Post ( EmpresaTPV *etpv )
 {
     // ============ Pruebas con abrevs
     g_plug = new MyDevButton1 ( "STOCK", etpv, etpv );
-/*
+
     g_plug->setMinimumSize ( QSize ( 72, 72 ) );
     g_plug->setMaximumSize ( QSize ( 200, 72 ) );
+/*
     g_doc1->setWidget ( g_plug );
 */
      QFrame *fr = g_main->findChild<QFrame *> ( "mui_frameabrevs" );
