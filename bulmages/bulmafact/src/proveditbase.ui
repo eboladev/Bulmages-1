@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>690</width>
-    <height>793</height>
+    <height>555</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -72,7 +72,7 @@
         <x>0</x>
         <y>0</y>
         <width>676</width>
-        <height>661</height>
+        <height>430</height>
        </rect>
       </property>
       <attribute name="title" >
@@ -1042,6 +1042,12 @@
      </property>
      <item>
       <widget class="QLabel" name="label" >
+       <property name="minimumSize" >
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
        <property name="maximumSize" >
         <size>
          <width>48</width>
@@ -1079,6 +1085,18 @@
           <property name="enabled" >
            <bool>true</bool>
           </property>
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip" >
            <string>Guardar proveedor</string>
           </property>
@@ -1107,6 +1125,18 @@
          <widget class="QToolButton" name="mui_eliminar" >
           <property name="enabled" >
            <bool>true</bool>
+          </property>
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
           </property>
           <property name="toolTip" >
            <string>Borrar proveedor</string>

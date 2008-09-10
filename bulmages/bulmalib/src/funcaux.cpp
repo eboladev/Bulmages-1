@@ -706,6 +706,7 @@ void centrarEnPantalla ( QWidget *ventana )
     ventana->move ( rect.center() - ventana->rect().center() );
 }
 
+
 /// Carga las traducciones de un archivo concreto.
 /// Distingue entre locales o un idioma configurado.
 /// Hace la carga y la pone en funcionamiento.
@@ -722,6 +723,7 @@ void cargaTraducciones ( const QString &traduccion )
     } // end if
     theApp->installTranslator ( traductor );
 }
+
 
 QString ascii127 ( const QString &orig )
 {

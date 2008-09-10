@@ -601,8 +601,9 @@ void Ficha::recogeValores()
 
         /// Buscamos QComboBox2 que coincidan con el campo. Supuestamente sirve para los campos personales.
         QComboBox2 *l2 = findChild<QComboBox2 *> ( "mui_" + campo->nomcampo() );
-        if ( l2 )
+        if ( l2 ) {
             campo->set ( l2->valorCampo() );
+	} // end if
 
         /// Buscamos un QCheckBox con nombre coincidente.
         QCheckBox *l5 = findChild<QCheckBox *> ( "mui_" + campo->nomcampo() );

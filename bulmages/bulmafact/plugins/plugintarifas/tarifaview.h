@@ -1,6 +1,8 @@
 /***************************************************************************
  *   Copyright (C) 2004 by Alvaro de Miguel                                *
  *   alvaro_demiguel@gmail.com                                             *
+ *   Copyright (C) 2008 by Fco. Javier M. C.                               *
+ *   fcojavmc@todo-redes.com                                               *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -27,7 +29,6 @@
 #include "fichabf.h"
 
 
-
 class TarifaView : public FichaBf, public Ui_TarifaBase
 {
     Q_OBJECT
@@ -36,28 +37,22 @@ private:
     QString m_idtarifa;
     QString m_nomtarifa;
     cursor2 *m_cursorcombo;
+
 public:
     TarifaView ( Company *emp, QWidget *parent = 0 );
     ~TarifaView();
-    Company *companyact() {
-        return empresaBase();
-    };
+    Company *companyact();
 
 public:
     void pintar();
     int cargar ( QString );
     int guardar();
     int cargarcomboiva ( QString );
-    void closeEvent ( QCloseEvent * );
     QString formaQuery ( QString );
+    void on_mui_borrar_clicked();
 
 public slots:
-    virtual void on_mui_guardar_clicked() {
-        guardar();
-    };
     virtual void on_mui_crear_clicked();
-    virtual void on_mui_borrar_clicked();
-    virtual void on_mui_aceptar_clicked();
     virtual void on_mui_actualizar_clicked();
 };
 

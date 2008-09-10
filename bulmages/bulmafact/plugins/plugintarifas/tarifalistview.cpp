@@ -24,6 +24,7 @@
 #include "company.h"
 #include "funcaux.h"
 
+
 ///
 /**
 \param comp
@@ -39,6 +40,7 @@ TarifaListView::TarifaListView ( Company *comp, QWidget *parent, edmode editmodo
     setupUi ( this );
     mui_list->setEmpresaBase ( empresaBase() );
     mui_list->cargar();
+    mui_list->setColumnWidth(0, 250);
     meteWindow ( tr ( "Tarifas" ), this );
     _depura ( "TarifaListView::END_TarifaListView()\n", 0 );
 }
@@ -94,9 +96,8 @@ void TarifaListView::on_mui_crear_clicked()
 {
     _depura ( "TarifaListView::editar", 0 );
     TarifaView *tar = new TarifaView ( empresaBase(), parentWidget() );
-    /// Hacemos una carga "especial" para que se carguen todos los elementos.
-    tar->cargar ( "0" );
     empresaBase() ->m_pWorkspace->addWindow ( tar );
+    tar->setWindowTitle(tr("Nueva tarifa"));
     tar->show();
     _depura ( "END  TarifaListView::editar", 0 );
 }
@@ -114,5 +115,24 @@ void TarifaListView::on_mui_borrar_clicked()
     tar->on_mui_borrar_clicked();
     delete tar;
     _depura ( "END TarifaListView::on_mui_borrar_clicked\n", 0 );
+}
+
+
+void TarifaListView::on_mui_aceptar_clicked()
+{
+    _depura ( "TarifaListView::on_mui_aceptar_clicked\n", 0 );
+    on_mui_cancelar_clicked();
+    _depura ( "END TarifaListView::on_mui_aceptar_clicked\n", 0 );
+}
+
+
+///
+/**
+**/
+void TarifaListView::on_mui_actualizar_clicked()
+{
+    _depura ( "TarifaListView::on_mui_actualizar_clicked\n", 0 );
+    mui_list->cargar();
+    _depura ( "END TarifaListView::on_mui_actualizar_clicked\n", 0 );
 }
 

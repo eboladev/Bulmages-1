@@ -18,8 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QComboBox>
-
 #include "busquedatarifa.h"
 #include "company.h"
 #include "funcaux.h"
@@ -30,7 +28,7 @@
 \param parent
 **/
 BusquedaTarifa::BusquedaTarifa ( QWidget *parent )
-        : QComboBox ( parent ), PEmpresaBase()
+        : QComboBox2 ( parent )
 {
     _depura ( "BusquedaTarifa::BusquedaTarifa", 0 );
     m_cursorcombo = NULL;
@@ -53,12 +51,13 @@ BusquedaTarifa::~BusquedaTarifa()
 /**
 \param idtarifa
 **/
-void BusquedaTarifa::setidtarifa ( QString idtarifa )
+void BusquedaTarifa::setIdTarifa ( QString idtarifa )
 {
-    _depura ( "BusquedaTarifa::setidtarifa", 0 );
-    mdb_idtarifa = idtarifa;
-    if ( m_cursorcombo != NULL )
+    _depura ( "BusquedaTarifa::setIdTarifa", 0 );
+//    mdb_idtarifa = idtarifa;
+    if ( m_cursorcombo != NULL ) {
         delete m_cursorcombo;
+    } // end if
     m_cursorcombo = empresaBase() ->cargacursor ( "SELECT * FROM tarifa" );
     int i = 0;
     int i1 = 0;
@@ -72,6 +71,52 @@ void BusquedaTarifa::setidtarifa ( QString idtarifa )
         m_cursorcombo->siguienteregistro();
     }
     setCurrentIndex ( i1 );
-    _depura ( "END BusquedaTarifa::setidtarifa", 0 );
+    _depura ( "END BusquedaTarifa::setIdTarifa", 0 );
+}
+
+
+void BusquedaTarifa::m_activated(int index)
+{
+    _depura("BusquedaTarifa::m_activated", 0);
+    if ( index > 0 ) {
+	emit (valueChanged ( m_cursorcombo->valor("idtarifa", index -1) ));
+    } else {
+	emit (valueChanged ( "" ));
+    } // end if
+    
+    _depura("END BusquedaTarifa::m_activated", 0);
+    
+}
+
+
+QString BusquedaTarifa::idtarifa()
+{
+    _depura("BusquedaTarifa::idtarifa", 0);
+    
+    int index = currentIndex();
+    if ( index > 0 ) {
+        _depura("END BusquedaTarifa::idtarifa", 0, m_cursorcombo->valor("idtarifa", index -1));
+	return ( m_cursorcombo->valor("idtarifa", index -1));
+    } else {
+        _depura("END BusquedaTarifa::idtarifa", 0);
+	return "";
+    } // end if
+    
+}
+
+
+QString BusquedaTarifa::valorCampo()
+{
+    _depura("BusquedaTarifa::valorCampo", 0);
+    _depura("END BusquedaTarifa::valorCampo", 0);
+    return idtarifa();
+}
+
+
+void BusquedaTarifa::setValorCampo(QString idtarifa)
+{
+    _depura("BusquedaTarifa::setValorCampo", 0);
+    setIdTarifa(idtarifa);
+    _depura("END BusquedaTarifa::setValorCampo", 0);
 }
 

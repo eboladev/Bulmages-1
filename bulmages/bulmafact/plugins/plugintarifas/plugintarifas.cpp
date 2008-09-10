@@ -105,7 +105,7 @@ int ClienteView_ClienteView ( ClienteView *cli )
 {
     _depura ( "dentro del plugin", 0 );
 
-    cli->addDBCampo ( "idtarifa", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Identificador", "plugintarifas" ) );
+    cli->addDBCampo ( "idtarifa", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "PluginTarifas", "plugintarifas" ) );
 
     QHBoxLayout *hboxLayout160 = new QHBoxLayout();
     hboxLayout160->setSpacing ( 2 );
@@ -120,10 +120,21 @@ int ClienteView_ClienteView ( ClienteView *cli )
     BusquedaTarifa *bus = new BusquedaTarifa ( cli->m_frameplugin );
     bus->setObjectName ( QString::fromUtf8 ( "mui_idtarifa" ) );
     bus->setEmpresaBase ( cli->empresaBase() );
-    bus->setidtarifa ( "" );
+    bus->setIdTarifa ( "" );
     hboxLayout160->addWidget ( bus );
 
-    cli->vboxLayout2->addLayout ( hboxLayout160 );
+    /// 1) Comprueba si existe un 'layout' dentro de m_frameplugin
+    /// 2) Si existe es porque otro 'plugin' ha metido 'widgets' y no se pueden tocar. Ponemos nuestros
+    ///    'widgets' a continuacion. Si no existe lo creamos y ponemos el nuestro.
+    if (cli->m_frameplugin->layout() == 0) {
+	/// No existe layout creamos uno.
+        cli->m_frameplugin->setLayout(hboxLayout160);
+    } else {
+	/// \TODO: Existe layout ponemos nuestros 'widgets' a continuacion.
+
+
+    } // end if
+
     return 0;
 }
 

@@ -31,6 +31,7 @@ set(bulmafactEx main.cxx)
 
 set(QT_USE_QTASSISTANT true)
 set(QT_USE_QTXML true)
+set(QT_USE_QTDBUS true)
 
 INCLUDE(   ${QT_USE_FILE}   )
 

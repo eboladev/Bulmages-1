@@ -22,6 +22,8 @@
 #include <QTextCodec>
 #include <QLocale>
 #include <QDir>
+#include <QtDBus/QtDBus>
+#include <QtDBus/QDBusConnection>
 
 #include "qapplication2.h"
 #include "configuracion.h"
@@ -34,6 +36,9 @@
 #include "plugins.h"
 #include "config.h"
 
+//#include "dbusobject.h"
+
+
 #ifdef WIN32
 #define CONFGLOBAL "C:\\bulmages\\bulmafact_"
 #else
@@ -45,6 +50,7 @@ QApplication2 *theApp;
 Bulmafact *bges;
 QTranslator *traductor;
 
+
 /// Inicio de ejecucion del programa.
 /// NOTA: En el main no se puede utilizar _depura ya que puede que no este bien inicializado confpr.
 int main ( int argc, char **argv )
@@ -55,10 +61,13 @@ int main ( int argc, char **argv )
 
         /// Leemos la configuracion que luego podremos usar siempre.
         confpr = new configuracion ( "bulmafact" );
-        /// Preparamos el sistema de plugins.
-        g_plugins = new Plugins();
+	
+
         /// Iniciamos la clase QApplication para el uso de las Qt.
         theApp = new QApplication2 ( argc, argv );
+
+        /// Preparamos el sistema de plugins.
+        g_plugins = new Plugins();
 
         /// Definimos la codificacion a Unicode.
         QTextCodec::setCodecForCStrings ( QTextCodec::codecForName ( "UTF-8" ) );

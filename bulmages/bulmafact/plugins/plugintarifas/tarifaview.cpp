@@ -1,6 +1,8 @@
 /***************************************************************************
  *   Copyright (C) 2004 by Alvaro de Miguel                                *
  *   alvaro.demiguel@gmail.com                                             *
+ *   Copyright (C) 2008 by Fco. Javier M. C.                               *
+ *   fcojavmc@todo-redes.com                                               *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -47,10 +49,20 @@ TarifaView::TarifaView ( Company *comp, QWidget *parent )
     setDBCampoId ( "idtarifa" );
     addDBCampo ( "idtarifa", DBCampo::DBint, DBCampo::DBPrimaryKey, tr ( "ID tarifa" ) );
     addDBCampo ( "nomtarifa", DBCampo::DBvarchar, DBCampo::DBNotNull, tr ( "Nombre de la tarifa" ) );
+    ///\TODO: Existen en la base de datos 2 campos mas para establecer fecha de inicio y de 
+    ///       fin de aplicacion de una tarifa. Actualmente no se usan estos valores.
     mui_idfamilia->setEmpresaBase ( comp );
     mui_almacen->setEmpresaBase ( comp );
     mui_almacen->setidalmacen ( "" );
     mui_list->setEmpresaBase ( comp );
+
+    /// Desactivamos los campos que solo se utilizan si existe un 'idtarifa',
+    /// es decir, si estamos creando una nueva tarifa no tenemos que emplear
+    /// estos campos.
+    mui_list->setEnabled(FALSE);
+    mui_filtro->setEnabled(FALSE);
+    mui_actualizar->setEnabled(FALSE);
+    mui_borrar->setEnabled(FALSE);
 
     meteWindow ( tr ( "Tarifa edicion" ), this );
 
@@ -67,6 +79,14 @@ TarifaView::~TarifaView()
     _depura ( "TarifaView::INIT_destructor()\n", 0 );
     empresaBase() ->sacaWindow ( this );
     _depura ( "TarifaView::END_destructor()\n", 0 );
+}
+
+
+///
+/**
+**/
+Company *TarifaView::companyact() {
+	return empresaBase();
 }
 
 
@@ -115,9 +135,7 @@ QString TarifaView::formaQuery ( QString idtarifa )
 }
 
 
-/// Esta funci&oacute;n carga un art&iacute;culo de la base de datos y lo presenta.
-/// Si el par&aacute;metro pasado no es un identificador v&aacute;lido entonces se pone
-/// la ventana de edici&oacute;n en modo de inserci&oacute;n.
+///
 /**
 \param idtarifa
 \return
@@ -126,21 +144,30 @@ int TarifaView::cargar ( QString idtarifa )
 {
     _depura ( "TarifaView::cargar(" + idtarifa + ")\n", 0 );
     int error = 0;
-    setDBvalue ( "idtarifa", idtarifa );
-    DBRecord::cargar ( idtarifa );
-    mui_list->cargar ( formaQuery ( idtarifa ) );
+    m_idtarifa = idtarifa;
+
+    /// Si se ha guardado bien entonces de habilitan los botones y demas.
+    mui_list->setEnabled(TRUE);
+    mui_filtro->setEnabled(TRUE);
+    mui_actualizar->setEnabled(TRUE);
+    mui_borrar->setEnabled(TRUE);
+
+    setDBvalue ( "idtarifa", m_idtarifa );
+    DBRecord::cargar ( m_idtarifa );
+    mui_list->cargar ( formaQuery ( m_idtarifa ) );
 
     setWindowTitle ( tr ( "Tarifa" ) + " " + DBvalue ( "nomtarifa" ) );
     meteWindow ( windowTitle(), this );
 
-    dialogChanges_cargaInicial();
     /// Tratamiento de excepciones.
     if ( error == 1 ) {
-        _depura ( "TarifaView::END_chargeArticle Error en la carga del articulo()\n", 0 );
+        _depura ( "TarifaView::cargar Error en la carga del articulo.\n", 0 );
         return -1;
     } // end if
     pintar();
-    _depura ( "END TarifaView::cargar()\n", 0 );
+
+    dialogChanges_cargaInicial();
+    _depura ( "END TarifaView::cargar\n", 0 );
     return 0;
 }
 
@@ -152,12 +179,27 @@ int TarifaView::cargar ( QString idtarifa )
 int TarifaView::guardar()
 {
     _depura ( "TarifaView::INIT_s_grabarClicked()\n", 0 );
+
+    /// Al pulsar sobre 'guardar' se tiene que comprobar si existe un 'idtarifa'
+    /// Si no existe se crea una nueva tarifa (INSERT) en la base de datos con el nombre proporcionado:
+    /// - Se comprueba que el nombre no este vacio.
+    /// - \TODO: Se comprueba que no exista un nombre igual.
+    /// Si existe un 'idtarifa' se actualiza sus datos (UPDATE).
+    if (mui_nomtarifa->text().isEmpty()) {
+	mensajeAviso(tr("El nombre de la tarifa no puede estar vacio."));
+	return -1;
+    } // end if
+
     setDBvalue ( "nomtarifa", mui_nomtarifa->text() );
     DBRecord::guardar();
     /// Guardamos la lista de componentes.
     mui_list->setColumnValue ( "idtarifa", DBvalue ( "idtarifa" ) );
     mui_list->guardar();
     dialogChanges_cargaInicial();
+
+    /// Se recarga el listado de articulos para poder establecer precios a esa tarifa.
+    cargar( DBvalue ( "idtarifa" ) );
+
     _depura ( "TarifaView::END_s_grabarClicked()\n", 0 );
     return 0;
 }
@@ -181,9 +223,7 @@ void TarifaView::on_mui_crear_clicked()
 void TarifaView::on_mui_actualizar_clicked()
 {
     _depura ( "TarifaView::INIT_boton_nuevo()\n", 0 );
-    guardar();
-    QString idtarifa = DBvalue ( "idtarifa" );
-    cargar ( idtarifa );
+    cargar ( m_idtarifa );
     _depura ( "TarifaView::END_boton_nuevo()\n", 0 );
 }
 
@@ -211,37 +251,5 @@ void TarifaView::on_mui_borrar_clicked()
         } // end if
     } // end if
     _depura ( "TarifaView::END_boton_borrar()\n", 0 );
-}
-
-
-///
-/**
-\param e
-**/
-void TarifaView::closeEvent ( QCloseEvent *e )
-{
-    _depura ( "closeEvent", 0 );
-    if ( dialogChanges_hayCambios() )  {
-        int val = QMessageBox::warning ( this,
-                                         tr ( "Guardar tarifa" ),
-                                         tr ( "Desea guardar los cambios?" ),
-                                         tr ( "&Si" ), tr ( "&No" ), tr ( "&Cancelar" ), 0, 2 );
-        if ( val == 0 )
-            on_mui_guardar_clicked();
-        if ( val == 2 )
-            e->ignore();
-    } // end if
-}
-
-
-///
-/**
-**/
-void TarifaView::on_mui_aceptar_clicked()
-{
-    _depura ( "TarifaView::on_mui_aceptar_clicked", 0 );
-    on_mui_guardar_clicked();
-    close();
-    _depura ( "END TarifaView::on_mui_aceptar_clicked", 0 );
 }
 

@@ -21,38 +21,29 @@
 #ifndef BUSQUEDATARIFA_H
 #define BUSQUEDATARIFA_H
 
-#include <QComboBox>
-
 #include "company.h"
 #include "postgresiface2.h"
-#include "blwidget.h"
+#include "qcombobox2.h"
 
-class BusquedaTarifa : public QComboBox, public PEmpresaBase
+
+class BusquedaTarifa : public QComboBox2
 {
     Q_OBJECT
 
 private:
     cursor2 *m_cursorcombo;
-    QString mdb_idtarifa;
+    QString m_codigotarifa;
 
 public:
     BusquedaTarifa ( QWidget *parent = 0 );
     ~BusquedaTarifa();
-    virtual void setidtarifa ( QString idtarifa );
-    QString idtarifa() {
-        return mdb_idtarifa;
-    };
+    virtual void setIdTarifa ( QString idtarifa );
+    virtual QString valorCampo();
+    virtual void setValorCampo( QString idtarifa );
+    QString idtarifa();
 
 public slots:
-    void m_activated ( int index ) {
-        if ( index > 0 ) {
-            mdb_idtarifa = m_cursorcombo->valor ( "idtarifa", index - 1 );
-            emit ( valueChanged ( m_cursorcombo->valor ( "idtarifa", index - 1 ) ) );
-        } else {
-            emit ( valueChanged ( "" ) );
-            mdb_idtarifa = "";
-        }
-    };
+    void m_activated ( int index );
 
 signals:
     void valueChanged ( QString );

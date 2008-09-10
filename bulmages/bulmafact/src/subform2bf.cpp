@@ -175,6 +175,7 @@ void SubForm2Bf::editFinished ( int row, int col, SDBRecord *rec, SDBCampo *camp
     cursor2 *cur2 = NULL;
     cursor2 *cur = NULL;
     cursor2 *cur1 = NULL;
+    cursor2 *cur3 = NULL;
 
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "SubForm2Bf_on_mui_list_editFinished", this );
@@ -220,7 +221,28 @@ void SubForm2Bf::editFinished ( int row, int col, SDBRecord *rec, SDBCampo *camp
                 rec->setDBvalue ( "desc" + m_tablename, cur->valor ( "nomarticulo" ) );
                 rec->setDBvalue ( "cant" + m_tablename, "1.00" );
                 rec->setDBvalue ( "descuento" + m_tablename, "0.00" );
-                rec->setDBvalue ( "pvp" + m_tablename, cur->valor ( "pvparticulo" ) );
+
+		/// Aqui se establece el precio del articulo. Se tiene que tener en cuenta
+		/// el cliente y la tarifa asignada si procede.
+		/// \TODO: No tiene en cuenta el almacen para establecer la tarifa. Subform2bf no
+		///        dispone de esta informacion.
+		if (!mdb_idcliente.isEmpty()) {
+			/// Se ha seleccionado un cliente.
+			cur3 = empresaBase() ->cargacursor ( "SELECT ltarifa.pvpltarifa FROM cliente INNER JOIN ltarifa ON (cliente.idtarifa = ltarifa.idtarifa) WHERE cliente.idcliente = " + mdb_idcliente + " AND ltarifa.idarticulo = " + cur->valor ( "idarticulo" ) );
+			if (cur3->numregistros() > 0) {
+				/// A) Se dispone de tarifa especial.
+				rec->setDBvalue ( "pvp" + m_tablename, cur3->valor ( "pvpltarifa" ) );
+			} else {
+				/// B) No tiene tarifa especial se usa la asignada por defecto.
+				rec->setDBvalue ( "pvp" + m_tablename, cur->valor ( "pvparticulo" ) );
+			} // end if
+		} else {
+			/// Sin cliente asignado se usa la tarifa asignada por defecto.
+			rec->setDBvalue ( "pvp" + m_tablename, cur->valor ( "pvparticulo" ) );
+		} // end if
+
+		delete cur3;
+
             } // end if
         } else {
             mensajeAviso ( tr ( "El codigo del articulo no existe.\nATENCION: No se guadara bien el documento hasta que sea valido." ), this );

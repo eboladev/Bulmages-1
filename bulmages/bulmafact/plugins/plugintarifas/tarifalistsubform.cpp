@@ -46,7 +46,7 @@ TarifaListSubform::TarifaListSubform ( QWidget *parent )
 void TarifaListSubform::cargar()
 {
     _depura ( "TarifaListSubform::cargar\n", 0 );
-    QString SQLQuery = "SELECT * FROM tarifa";
+    QString SQLQuery = "SELECT * FROM tarifa ORDER BY idtarifa";
     SubForm3::cargar ( SQLQuery );
 }
 
