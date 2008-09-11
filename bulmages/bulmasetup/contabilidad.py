@@ -90,13 +90,14 @@ class Contabilidad(Empresa):
 			self.writecommand('Tratando ' + self.pluginsbulmacont[self.i][0])
 			if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
 				self.writecommand('Ha que actualizar ' + self.pluginsbulmacont[self.i][0])
-				self.command = 'su postgres -c \"psql -t -f ' + plugins.pathdbplugins + self.pluginsbulmacont[self.i][4] + ' ' + self.database + '\"'
-				self.writecommand(self.command)
-				self.process.start(self.command)
-				self.process.waitForFinished(-1)
-				self.writecommand(self.process.readAllStandardOutput())
+                if (len(self.pluginsbulmacont[self.i][4]) > 0):
+			self.command = 'su postgres -c \"psql -t -f ' + plugins.pathdbplugins + self.pluginsbulmacont[self.i][4] + ' ' + self.database + '\"'
+			self.writecommand(self.command)
+			self.process.start(self.command)
+			self.process.waitForFinished(-1)
+			self.writecommand(self.process.readAllStandardOutput())
 			self.i = self.i +1
-			
+
 	def marcar(self, plug):
 		self.j = 0
 		for self.it in self.pluginsbulmacont:

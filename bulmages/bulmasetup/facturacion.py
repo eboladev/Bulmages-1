@@ -144,12 +144,13 @@ class Facturacion(Empresa):
 		while (self.i < self.mui_plugins.rowCount()):
 			self.writecommand('Tratando ' + self.pluginsbulmafact[self.i][0])
 			if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
-				self.writecommand('Ha que actualizar ' + self.pluginsbulmafact[self.i][0])
-				self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.pluginsbulmafact[self.i][4] +' '+ self.database +'\"'
-				self.writecommand(self.command)
-				self.process.start(self.command)
-				self.process.waitForFinished(-1)
-				self.writecommand(self.process.readAllStandardOutput())
+                		self.writecommand('Actualizando ' + self.pluginsbulmafact[self.i][0])
+				if (len(self.pluginsbulmafact[self.i][4]) > 0):
+				    self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.pluginsbulmafact[self.i][4] +' '+ self.database +'\"'
+				    self.writecommand(self.command)
+				    self.process.start(self.command)
+				    self.process.waitForFinished(-1)
+				    self.writecommand(self.process.readAllStandardOutput())
 			self.i = self.i +1
 	
 		if (self.mui_soporteTPV.isChecked()):
@@ -157,12 +158,13 @@ class Facturacion(Empresa):
 			while (self.i < self.mui_plugins1.rowCount()):
 				self.writecommand('Tratando ' + self.pluginsbulmatpv[self.i][0])
 				if (self.mui_plugins1.item(self.i, 0).checkState() == Qt.Checked):
-					self.writecommand('Ha que actualizar ' + self.pluginsbulmatpv[self.i][0])
-					self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.pluginsbulmatpv[self.i][4] +' '+ self.database +'\"'
-					self.writecommand(self.command)
-					self.process.start(self.command)
-					self.process.waitForFinished(-1)
-					self.writecommand(self.process.readAllStandardOutput())
+					if (len(self.pluginsbulmatpv[self.i][4]) >0):
+					    self.writecommand('Actualizando ' + self.pluginsbulmatpv[self.i][0])
+					    self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.pluginsbulmatpv[self.i][4] +' '+ self.database +'\"'
+					    self.writecommand(self.command)
+					    self.process.start(self.command)
+					    self.process.waitForFinished(-1)
+					    self.writecommand(self.process.readAllStandardOutput())
 				self.i = self.i +1
 
 	def buscaPlugins(self):
