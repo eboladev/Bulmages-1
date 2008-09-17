@@ -1109,7 +1109,6 @@ QString Ficha::trataExists ( const QString &query, const QString &datos )
 int Ficha::generaRML ( const QString &arch )
 {
     _depura ( "Ficha::generaRML", 0 );
-
     /// Disparamos los plugins
     int res = g_plugins->lanza ( "Ficha_generaRML", this );
     if ( res != 0 ) {
@@ -1147,8 +1146,9 @@ int Ficha::generaRML ( const QString &arch )
     file.close();
 
     /// Hacemos el tratamiento avanzado de TAGS
-    if (!trataTags ( buff ))
+    if (!trataTags ( buff )) {
 	return 0;
+    } // end if
 
     if ( file.open ( QIODevice::WriteOnly ) ) {
         QTextStream stream ( &file );

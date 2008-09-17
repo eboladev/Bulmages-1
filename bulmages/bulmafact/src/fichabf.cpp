@@ -592,6 +592,7 @@ int FichaBf::generaRML()
 ///
 /**
 \param arch archivo a generar
+\return 0 si ha ocurrido un error, != 0 si todo ha ido bien.
 **/
 int FichaBf::generaRML ( const QString &arch )
 {
@@ -599,20 +600,22 @@ int FichaBf::generaRML ( const QString &arch )
     cursor2 *cur = NULL;
     try {
 
-        QString SQLQuery = "";
+//        QString SQLQuery = "";
 
-        if ( DBvalue ( "idcliente" ).isEmpty() ) {
+        if ( DBvalue ( "id"+m_tablename ).isEmpty()  && DBvalue ( "num"+m_tablename ).isEmpty()) {
             /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
-            mensajeInfo ( tr ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
-            return -1;
+            mensajeInfo ( tr ( "Tiene que guardar el documento antes de poder procesarlo." ), this );
+            return 0;
+/*
         } else {
             SQLQuery = "SELECT * FROM cliente WHERE idcliente = " + DBvalue ( "idcliente" );
+*/
         } // end if
 
         /// Disparamos los plugins
         int res = g_plugins->lanza ( "FichaBf_generaRML", this );
         if ( res != 0 ) {
-            return 0;
+            return 1;
         } // end if
         base basesimp;
         base basesimpreqeq;
@@ -662,6 +665,7 @@ int FichaBf::generaRML ( const QString &arch )
 
         QString fitxersortidatxt = "";
 
+/*
         cur = empresaBase() ->cargacursor ( SQLQuery );
 
         if ( !cur->eof() ) {
@@ -675,6 +679,7 @@ int FichaBf::generaRML ( const QString &arch )
             buff.replace ( "[codcliente]", cur->valor ( "codcliente" ) );
         } // end if
         delete cur;
+*/
 
         if ( exists ( "id" + m_tablename ) )
             buff.replace ( "[id" + m_tablename + "]", DBvalue ( "id" + m_tablename ) );
@@ -834,10 +839,11 @@ int FichaBf::generaRML ( const QString &arch )
         } // end if
 
         _depura ( "END FichaBf::generaRML", 0 );
-        return 0;
+        return 1;
 
     } catch ( ... ) {
         if ( cur ) delete cur;
+	mensajeInfo("Error en el procesado del archivo RML");
         throw - 1;
     } // end try
 }
@@ -857,7 +863,7 @@ void FichaBf::imprimir()
             return;
         } // end if
 
-        /// Si devuelve 0 significa que el archivo RML se ha generado bien y puede generar
+        /// Si devuelve 0 significa que el archivo RML se ha generado mal
         /// el PDF correspondiente.
         if ( generaRML() == 0 ) {
             invocaPDF ( m_tablename );

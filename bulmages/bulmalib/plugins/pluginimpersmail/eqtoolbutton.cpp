@@ -40,23 +40,23 @@
 /**
 \param parent
 **/
-EQToolButton::EQToolButton ( QWidget *parent ) : QWidget ( parent )
+EQToolButtonMail::EQToolButtonMail ( QWidget *parent ) : QWidget ( parent )
 {
-    _depura ( "EQToolButton::EQToolButton", 0 );
+    _depura ( "EQToolButtonMail::EQToolButtonMail", 0 );
     connect ( parent, SIGNAL ( pintaMenu ( QMenu * ) ), this, SLOT ( pintaMenu ( QMenu * ) ) );
     connect ( parent, SIGNAL ( trataMenu ( QAction * ) ), this, SLOT ( trataMenu ( QAction * ) ) );
     m_ficha = ( Ficha * ) parent;
-    _depura ( "END EQToolButton::EQToolButton", 0 );
+    _depura ( "END EQToolButtonMail::EQToolButtonMail", 0 );
 }
 
 
 ///
 /**
 **/
-EQToolButton::~EQToolButton()
+EQToolButtonMail::~EQToolButtonMail()
 {
-    _depura ( "EQToolButton::~EQToolButton", 0 );
-    _depura ( "END EQToolButton::~EQToolButton", 0 );
+    _depura ( "EQToolButtonMail::~EQToolButtonMail", 0 );
+    _depura ( "END EQToolButtonMail::~EQToolButtonMail", 0 );
 }
 
 
@@ -64,10 +64,10 @@ EQToolButton::~EQToolButton()
 /**
 \param menu El menu sobre el que pintar la opcion
 **/
-void EQToolButton::pintaMenu ( QMenu *menu )
+void EQToolButtonMail::pintaMenu ( QMenu *menu )
 {
-    _depura ( "EQToolButton::pintaMenu", 0 );
-    QMenu *ajust = menu->addMenu ( tr ( "Informes Personales" ) );
+    _depura ( "EQToolButtonMail::pintaMenu", 0 );
+    QMenu *ajust = menu->addMenu ( tr ( "Inf. Personales por e-mail" ) );
 
     /// Buscamos ficheros que tengan el nombre de la tabla
     QDir dir ( confpr->valor ( CONF_DIR_OPENREPORTS ) );
@@ -100,10 +100,10 @@ void EQToolButton::pintaMenu ( QMenu *menu )
         } // end while
 
 
-        QAction *accion = ajust->addAction ( titulo );
-        accion->setObjectName ( fileInfo.fileName() );
+        QAction * action = ajust->addAction ( titulo );
+        action->setObjectName ( "em_"+fileInfo.fileName() );
     }
-    _depura ( "END EQToolButton::pintaMenu", 0 );
+    _depura ( "END EQToolButtonMail::pintaMenu", 0 );
 }
 
 
@@ -111,9 +111,9 @@ void EQToolButton::pintaMenu ( QMenu *menu )
 /**
 \param menu El menu sobre el que pintar la opcion
 **/
-void EQToolButton::trataMenu ( QAction *action )
+void EQToolButtonMail::trataMenu ( QAction *action )
 {
-    _depura ( "EQToolButton::trataMenu", 0 );
+    _depura ( "EQToolButtonMail::trataMenu", 0 );
 
     /// Buscamos ficheros que tengan el nombre de la tabla
     QDir dir ( confpr->valor ( CONF_DIR_OPENREPORTS ) );
@@ -128,13 +128,40 @@ void EQToolButton::trataMenu ( QAction *action )
     QFileInfoList list = dir.entryInfoList();
     for ( int i = 0; i < list.size(); ++i ) {
         QFileInfo fileInfo = list.at ( i );
-        if ( action->objectName() == fileInfo.fileName() ) {
+
+        if ( action->objectName() == "em_"+fileInfo.fileName() ) {
+
             if(m_ficha->generaRML ( fileInfo.fileName() )) {
-            	invocaPDF ( fileInfo.fileName().left ( fileInfo.fileName().size() - 4 ) );
+
+		QString email = "";
+		QString id = m_ficha->DBvalue ( "id"+m_ficha->tableName() );
+		QString num = m_ficha->DBvalue ( "num"+m_ficha->tableName() );
+		QString ref = m_ficha->DBvalue ( "ref"+m_ficha->tableName() );
+		QString idcliente = m_ficha->DBvalue ( "idcliente" );
+		if (!idcliente.isEmpty()) {
+			QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
+			cursor2 *curs = ((Ficha *)parent())->empresaBase()->cargacursor ( query );
+			if (!curs->eof()) {
+				email = curs->valor ( "mailcliente" );
+			} // end if
+			delete curs;
+		} // end if
+
+		QString doc = fileInfo.fileName().left ( fileInfo.fileName().size() - 4 );
+            	generaPDF ( doc );
+	
+		QString cad = "mv " + confpr->valor ( CONF_DIR_USER ) + doc + ".pdf " + confpr->valor ( CONF_DIR_USER ) +   doc  + num + ".pdf";
+		system ( cad.toAscii().data() );
+	
+		cad = "kmail -s \" "+ doc + num + "\" --body \" Adjunto remito " + doc + " numero " + num + ". Con referencia " + ref + "\n Atentamente\n\" --attach " + confpr->valor ( CONF_DIR_USER ) + doc + num + ".pdf " + email;
+
+		system ( cad.toAscii().data() );
+
+
 	    } // end if
         } // end if
     }
-    _depura ( "END EQToolButton::trataMenu", 0 );
+    _depura ( "END EQToolButtonMail::trataMenu", 0 );
 }
 
 

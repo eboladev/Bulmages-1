@@ -106,6 +106,7 @@ void EmailQToolButton::click()
         QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
         cursor2 *curs = m_companyact->cargacursor ( query );
         QString email = curs->valor ( "mailcliente" );
+	delete curs;
 
 
         if (m_presupuestoView->generaRML()) {
@@ -131,6 +132,7 @@ void EmailQToolButton::click()
         QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
         cursor2 *curs = m_companyact->cargacursor ( query );
         QString email = curs->valor ( "mailcliente" );
+	delete curs;
 
 
         if (m_pedidoClienteView->generaRML()) {
@@ -157,6 +159,7 @@ void EmailQToolButton::click()
         QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
         cursor2 *curs = m_companyact->cargacursor ( query );
         QString email = curs->valor ( "mailcliente" );
+	delete curs;
 
 
         if (m_albaranClienteView->generaRML()) {
@@ -185,6 +188,7 @@ void EmailQToolButton::click()
         QString query = "SELECT mailcliente from cliente WHERE idcliente=" + idcliente;
         cursor2 *curs = m_companyact->cargacursor ( query );
         QString email = curs->valor ( "mailcliente" );
+	delete curs;
 
 
         if (m_facturaView->generaRML()) {
