@@ -600,16 +600,8 @@ int FichaBf::generaRML ( const QString &arch )
     cursor2 *cur = NULL;
     try {
 
-//        QString SQLQuery = "";
-
-        if ( DBvalue ( "id"+m_tablename ).isEmpty()  && DBvalue ( "num"+m_tablename ).isEmpty()) {
-            /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
-            mensajeInfo ( tr ( "Tiene que guardar el documento antes de poder procesarlo." ), this );
-            return 0;
-/*
-        } else {
-            SQLQuery = "SELECT * FROM cliente WHERE idcliente = " + DBvalue ( "idcliente" );
-*/
+        if ( DBvalue ( "id" + m_tablename ).isEmpty() || DBvalue ( "num" + m_tablename ).isEmpty()) {
+		throw 100;
         } // end if
 
         /// Disparamos los plugins
@@ -664,22 +656,6 @@ int FichaBf::generaRML ( const QString &arch )
         trataTags ( buff );
 
         QString fitxersortidatxt = "";
-
-/*
-        cur = empresaBase() ->cargacursor ( SQLQuery );
-
-        if ( !cur->eof() ) {
-            buff.replace ( "[dircliente]", cur->valor ( "dircliente" ) );
-            buff.replace ( "[poblcliente]", cur->valor ( "poblcliente" ) );
-            buff.replace ( "[telcliente]", cur->valor ( "telcliente" ) );
-            buff.replace ( "[nomcliente]", cur->valor ( "nomcliente" ) );
-            buff.replace ( "[cifcliente]", cur->valor ( "cifcliente" ) );
-            buff.replace ( "[idcliente]", cur->valor ( "idcliente" ) );
-            buff.replace ( "[cpcliente]", cur->valor ( "cpcliente" ) );
-            buff.replace ( "[codcliente]", cur->valor ( "codcliente" ) );
-        } // end if
-        delete cur;
-*/
 
         if ( exists ( "id" + m_tablename ) )
             buff.replace ( "[id" + m_tablename + "]", DBvalue ( "id" + m_tablename ) );
@@ -841,10 +817,14 @@ int FichaBf::generaRML ( const QString &arch )
         _depura ( "END FichaBf::generaRML", 0 );
         return 1;
 
+    } catch (int e) {
+	_depura("Error en el procesado del archivo RML", 2);
+	throw e;
+
     } catch ( ... ) {
         if ( cur ) delete cur;
-	mensajeInfo("Error en el procesado del archivo RML");
-        throw - 1;
+	_depura("Error en el procesado del archivo RML", 2);
+        throw (-1);
     } // end try
 }
 
@@ -865,11 +845,18 @@ void FichaBf::imprimir()
 
         /// Si devuelve 0 significa que el archivo RML se ha generado mal
         /// el PDF correspondiente.
-        if ( generaRML() == 0 ) {
+        if ( generaRML() ) {
             invocaPDF ( m_tablename );
         } // end if
 
         _depura ( "END FichaBf::imprimir", 0 );
+
+    } catch (int e) {
+	if (e == 100) {
+		/// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
+		mensajeInfo ( tr ( "Tiene que guardar el documento antes de poder procesarlo." ), this );
+		throw (-1);
+	} // end if
     } catch ( ... ) {
         mensajeInfo ( tr ( "Error inesperado en la impresion" ), this );
     } // end try
