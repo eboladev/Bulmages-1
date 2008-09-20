@@ -233,13 +233,17 @@ void  Ticket::setDescuentoGlobal ( Fixed descuento )
 
 void Ticket::abrircajon()
 {
-    QFile file ( confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
+    QFile file ( confpr->valor ( CONF_CASHBOX_FILE ) );
     if ( !file.open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
         _depura ( "Error en la Impresion de ticket", 2 );
     } // end if
 
-    /// El corte de papel.
-    file.write ( "\x1B\x70\x0\x64\x64", 5 );
+    QStringList secuencia = confpr->valor (CONF_CASHBOX_OPEN_CODE).split(",");
+    /// El comando de apertura de cajon
+    for (int i = 0; i < secuencia.size(); ++i) {
+	    QString cad = QChar(secuencia.at(i).toInt());
+	    file.write ( cad.toAscii(), 1 );
+    } // end for
     file.close();
 }
 

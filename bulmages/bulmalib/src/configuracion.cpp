@@ -336,6 +336,10 @@ QString configuracion::nombre ( int i )
         return "CONF_DIR_CANUALES";
     if ( i == CONF_TICKET_PRINTER_FILE )
         return "CONF_TICKET_PRINTER_FILE";
+    if ( i == CONF_CASHBOX_FILE )
+        return "CONF_CASHBOX_FILE";
+    if ( i == CONF_CASHBOX_OPEN_CODE )
+        return "CONF_CASHBOX_OPEN_CODE";
     if ( i == CONF_DEBUG )
         return "CONF_DEBUG";
     if ( i == CONF_ALERTAS_DB )

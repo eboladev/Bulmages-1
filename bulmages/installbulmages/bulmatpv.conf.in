@@ -17,7 +17,8 @@ CONF_PLUGINS_BULMATPV	libplugintecladonumerico@CMAKE_SHARED_LIBRARY_SUFFIX@; \
 CONF_DIR_THUMB_ARTICLES		/var/bulmages/articles_thumbs/
 CONF_TICKET_PRINTER_FILE	/dev/null
 CONF_TPV_VISOR_FILE		/dev/null
-
+CONF_CASHBOX_FILE		/dev/null
+CONF_CASHBOX_OPEN_CODE		27,112,0,60,240
 CONF_TPV_FULLSCREEN		FALSE
 
 # El logotipo para la ticketera.

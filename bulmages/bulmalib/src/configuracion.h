@@ -189,6 +189,9 @@
 /// Modo Full Screen para el TPV
 #define CONF_TPV_FULLSCREEN          452
 #define CONF_TPV_PRINTER_LOGO        453
+/// Cajon Portamonedas
+#define CONF_CASHBOX_FILE	     454
+#define CONF_CASHBOX_OPEN_CODE	     455
 
 /// CONF_NUM_AUT_* determina si se utilizaran numeradores automaticos para presupuestos,
 /// albaranes y facturas inicialmente vale "".
