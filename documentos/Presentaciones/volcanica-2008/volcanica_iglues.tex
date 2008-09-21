@@ -1,0 +1,312 @@
+% Set 2008
+% Autors: Adelaida Clavaguera/Leopold Palomo
+% Presentació de l'aplicatiu Bulmages
+%
+% Aquest document està alliberat sota llicència
+% Creative Commons 
+% http://creativecommons.org/licenses/by-sa/2.5/es/
+% Licencia Reconocimiento-Compartir bajo la misma licencia 2.5 España 
+% License de Creative Commons
+
+\documentclass{beamer}
+\setbeamertemplate{navigation symbols}{}
+\usepackage[utf8x]{inputenc}
+\usepackage[catalan]{babel}
+\usepackage{eurosym}
+\usepackage{url}
+%\usepackage[T1]{fontenc}
+
+\usetheme{Warsaw}
+
+\beamersetuncovermixins{\opaqueness<1>{25}}{\opaqueness<2->{15}}
+
+\title{BulmaGés}
+\subtitle{Gestió empresarial amb programari lliure}
+\author{Adelaida Clavaguera - Leopold Palomo}
+\date{18 de setembre de 2008}
+
+
+\institute{\begin{large}Associació Iglues\end{large} \\
+ Volcànica.cat LAN Party 2008 \\ Les Preses }
+
+% Show current subsection at subsection begining
+\AtBeginSection[]{
+    \begin{frame}
+        \frametitle{}
+        \tableofcontents[currentsubsection,hideothersubsections]
+    \end{frame}
+}
+
+\begin{document}
+
+
+% Title page %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}
+\titlepage
+\begin{overprint}
+\includegraphics[scale=0.1]{iglues.eps}
+\end{overprint}
+
+\end{frame}
+
+\begin{frame}\frametitle{Continguts de la presentació}
+\tableofcontents[hideallsubsections]
+\end{frame} 
+
+
+\section{Presentació} 
+\subsection{Qui som}
+\begin{frame}\frametitle{Qui som} 
+\begin{itemize}
+\item Adelaida Clavaguera Mora
+\item Leopold Palomo Avellaneda
+\end{itemize} 
+Membres de l'associació Iglues
+\end{frame}
+
+\subsection{El context actual}
+\begin{frame}\frametitle{Aplicacions de gestió empresarial} 
+\begin{itemize}
+\item n'hi ha des de l'origen de la informàtica
+\item \dots i sobretot des del PC
+\end{itemize} 
+Existeixen diverses alternatives al mercat, per a les PIMES
+\begin{itemize}
+\item Conegudes: Contaplus, Navision, SAP, Vaan \dots
+\item Creades a mida
+\end{itemize} 
+\end{frame}
+
+\subsection{El programari lliure}
+\begin{frame}\frametitle{Què és el programari lliure} 
+Què és el programari?
+\begin{itemize}
+\item Ordinadors només entenen llenguatge binari
+\item Els humans fem servir lenguatges de programació entenibles i després
+es tradueixen a binari
+\item És molt difícil i quasi imposible treballar amb llenguatge binari
+\end{itemize} 
+\end{frame}
+
+\begin{frame}\frametitle{Què és el programari lliure} 
+1984 Sorgeix el projecte GNU per proporcionar un \textit{complete Unix-compatible software system}
+\begin{itemize}
+\item Es creen les bases del concepte programari lliure i la llicència GPL
+\item Es defineixen les quatre llibertats: 
+\begin{itemize}
+ \item Utilitzar-lo com vulgui i on vulgui
+ \item Redistribuir-lo a qui vulgui pels mitjans que vulgui
+ \item Modificar-lo (millora o adaptació)
+ \item Redistribuir les modificacions
+\end{itemize} \end{itemize} 
+\centering{\textbf{Programari lliure $\neq $ programari gratuït}}
+\end{frame}
+
+
+
+\section{Bulma i Iglues} 
+\subsection{Bulma}
+\begin{frame}\frametitle{Bulma} 
+Bergantells Usuaris de GNU/Linux de Mallorca i Afegitons / Bisoños Usuarios de GNU/Linux de Mallorca y Alrededores
+\begin{itemize}
+\item Un grup d'usuaris de programari lliure de les Illes Balears
+\item Va néixer l'any 1998/1999
+\item http://bulma.net/
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}\frametitle{Bulma \dots BulmaGés} 
+Sorgeix un grup de gent que vol fer quelcom per evitar la manca de programes en el sector empresarial
+\begin{itemize}
+ \item Trobades setmanals ``socials'' i de ``feina''
+\item El programa de comptabilitat és el primer a abordar degut al marc estatal de les aplicacions de comptabilitat
+\end{itemize}
+\end{frame}
+
+\subsection{Iglues}
+\begin{frame}\frametitle{Iglues} 
+\textbf{I}niciativa de \textbf{G}estió \textbf{L}liure \textbf{U}niversal per a \textbf{E}mpreses i \textbf{S}ocietats
+
+\begin{exampleblock}{}
+Associació sense ànim de lucre formada per desenvolupadors i usuaris 
+amb l'objectiu comú de promoure i desenvolupar el programari empresarial obert i lliure
+\end{exampleblock}
+
+\begin{exampleblock}{Objectiu}
+Donar marc legal de cobertura a BulmaGés
+\end{exampleblock}
+\end{frame}
+
+\subsection{Els projectes}
+\begin{frame}\frametitle{Projectes} 
+\begin{columns}
+\begin{column}{3cm}
+\begin{itemize}
+\item<1-> Suite BulmaGés
+\item<2-> GestiONG
+\item<3-> Galopin
+\end{itemize}
+\vspace{1cm} 
+\end{column}
+\begin{column}{5cm}
+\begin{overprint}
+\includegraphics<1>[scale=0.5]{SelectorBulmages.eps}
+\includegraphics<2>[scale=0.3]{gestiong.eps}
+\end{overprint}
+\end{column}
+\end{columns}
+\end{frame}
+
+\section{Un exemple de migració}
+\subsection{El cas de l'ADENC}
+\begin{frame}\frametitle{ADENC} 
+\begin{block}{}
+Associació per la Defensa i l'Estudi de la Natura
+\end{block}
+\begin{itemize}
+ \item 800 socis 
+    \begin{itemize}
+        \item Junta directiva $\Rightarrow$ Oficina tècnica de 5 treballadors
+    \end{itemize}
+ \item Pressupost anual $\sim$ 250K\euro
+    \begin{itemize}
+        \item Declarada d'utilitat pública $\Rightarrow$ Presenta comptes anuals a l'administració
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\subsection{Procés de migració}
+\begin{frame}\frametitle{Migració a PL} 
+\begin{itemize}
+\item Migració de Macintosh a PC i portar-nos la comptabilitat: \\
+  $\Rightarrow$resoldre la comptabilitat era un requisit per migrar a Linux
+\item Jornades de Programari Lliure (2004)
+\item Formació en comptabilitat
+\item BulmaGés 0.5.1: versió operativa però no enllestida
+\item Co\lgem aboració amb el projecte (intercanvi entre entitats): \\
+  $\Rightarrow$ per millorar el projecte (reportar errors, proposar millores...)\\
+  $\Rightarrow$ adaptació al nou pla comptable
+\item Ara s'ha alliberat la nova versió que funciona:\\
+  $\Rightarrow$ BulmaGés 0.11.1
+\end{itemize}
+\end{frame}
+
+\section{Perquè fer servir BulmaGés}
+\subsection{Aspectes previs}
+\begin{frame}\frametitle{Aspectes previs} 
+\begin{itemize}
+\item Costos: \\
+ $\Rightarrow$ instal·lar, aprendre \dots posar en marxa \\
+ $\Rightarrow$ adaptar a l'empresa \\
+ $\Rightarrow$ migrar les dades \\
+ $\Rightarrow$ mantenir
+\item Requisits: \\
+ $\Rightarrow$ Sistemes Operatius: Macintosh, GNU/Linux \\
+ $\Rightarrow$ Es pot utilitzar en MSWindows (no encara \dots )
+\end{itemize}
+\end{frame}
+
+\subsection{PIME usuària}
+\begin{frame}\frametitle{Com a PIME usuària} 
+\begin{itemize}
+\item Les dades comptables no estan captives
+\item Independència del proveïdor (hi ha mercat)
+\item Adaptabilitat
+\item Dóna la possibilitat d'actualitzar el programa encara que qui l'ha fet, l'abandoni
+\end{itemize}
+\end{frame}
+
+\subsection{PIME gestora comptable}
+\begin{frame}\frametitle{Com a PIME gestora comptable} 
+\begin{itemize}
+\item Multiempresa i multiusuari
+\item Es pot administrar remotament i via web
+\item Reducció de costos
+\item Es pot oferir al client un servei d'assesorament i adaptació del programa (informàtic)
+\end{itemize}
+\end{frame}
+
+\subsection{PIME informàtica}
+\begin{frame}\frametitle{Com a PIME informàtica} 
+\begin{itemize}
+\item Aplicació amb una tecnologia solvent
+\item Es pot adaptar el programa
+\item Existència d'una comunitat d'usuaris que testen i reporten errors
+\item Camp de negoci no menystenible
+\end{itemize}
+\end{frame}
+
+\section{Utilitzar BulmaGés}
+\subsection{BulmaCont}
+\begin{frame}\frametitle{Com funciona BulmaCont: COMPTABILITAT} 
+\begin{itemize}
+\item Multiplataforma, multiempresa, multiusuari 
+\item Funcionament en xarxa (interna i externa)
+\item Plans comptables: antics, PGC 2008, Pimes, Associacions sense lucre
+      \dots i el que calgui
+\item Nombre dígits dels comptes (des de 7 fins a 12)
+\item Generació d'informes en PDF, Full de càlcul \dots
+\item Corrector: localitza errors, assentaments oberts, desquadres
+\item Centres de cost
+\item Assentaments inte\lgem igents (predeterminats)
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Com funciona BulmaCont: COMPTABILITAT} 
+\includegraphics<1>[scale=0.5]{bulmacont.eps}
+\end{frame}
+
+
+\subsection{BulmaFact}
+\begin{frame}\frametitle{Com funciona BulmaFact: FACTURACIÓ} 
+\includegraphics<1>[scale=0.5]{bulmafact.eps}
+\end{frame}
+
+
+\subsection{BulmaTPV}
+\begin{frame}\frametitle{Com funciona BulmaTPV: TERMINAL PUNT DE VENDA} 
+\includegraphics<1>[scale=0.5]{bulmatpv.eps}
+\end{frame}
+
+
+\subsection{Informació addicional}
+\begin{frame}\frametitle{Informació addicional} 
+\begin{block}{Manuals d'usuari}
+\url{http://www.iglues.org/wiki1/doku.php}
+\end{block}
+
+\begin{block}{Documentació tècnica}
+\url{http://www.iglues.org/wiki/doku.php?id=documentacion:start}
+\end{block}
+\end{frame}
+
+\section{Projectes de futur}
+\begin{frame}\frametitle{Projectes de futur} 
+\begin{itemize}
+ \item Difusió usuaris/co\lgem aboradors \\
+  $\Rightarrow$  Revista Todo linux
+ \item Ampliació de les funcionalitats \\
+  $\Rightarrow$ Beca per desenvolupar gestió de socis/clients d'una entitat
+ \item Empreses que donin serveis a Catalunya  \\
+  $\Rightarrow$ a Mallorca són dues i van saturades
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{BulmaGés} 
+Gestió empresarial amb programari lliure
+\vspace{1cm}
+\begin{block}{Web}
+\url{http://bulmages.org} \\
+\url{http://iglues.org}
+\end{block}
+
+\begin{block}{Llista de correu}
+bulmages-main@lists.berlios.de
+\end{block}
+\end{frame}
+
+\end{document}
+

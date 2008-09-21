@@ -83,6 +83,7 @@ extractoview1::extractoview1 ( Empresa *emp, QWidget *parent, int ) : FichaBc ( 
 extractoview1::~extractoview1()
 {
     _depura ( "extractoview1::~extractoview1", 0 );
+   guardar();
     delete m_cursorcta;
     empresaBase() ->sacaWindow ( this );
     _depura ( "END extractoview1::~extractoview1", 0 );

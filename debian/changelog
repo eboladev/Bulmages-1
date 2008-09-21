@@ -1,3 +1,9 @@
+bulmages (0.11.1-3) unstable; urgency=low
+
+  * Closes: #496382
+
+ -- Leopold Palomo Avellaneda <leo@alaxarxa.net>  Tue, 09 Sep 2008 14:59:03 +0200
+
 bulmages (0.11.1-2) unstable; urgency=low
 
   * Changed order in rules dh_shlibdeps 
