@@ -76,6 +76,7 @@ class myplugin1 : public QObject, public PEmpresaBase
 
 public:
     Bulmafact *m_bges;
+
 public:
     myplugin1();
     ~myplugin1();

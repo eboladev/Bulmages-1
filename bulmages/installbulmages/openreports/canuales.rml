@@ -23,7 +23,6 @@
 		<setFont name="Helvetica" size="8"/>		
 		<fill color="(0,0,0)"/>	
 		<stroke color="(0,0,0)"/>
-		<drawString x="9.5cm" y="0.5cm">info@galdi.es</drawString>
 		<fill color="(0,0,0)"/>	
 		<stroke color="(0,0,0)"/>
 		<setFont name="Helvetica" size="16"/>

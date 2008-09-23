@@ -200,6 +200,8 @@ int TarifaView::guardar()
     /// Se recarga el listado de articulos para poder establecer precios a esa tarifa.
     cargar( DBvalue ( "idtarifa" ) );
 
+    emit guardartarifa();
+
     _depura ( "TarifaView::END_s_grabarClicked()\n", 0 );
     return 0;
 }
@@ -244,8 +246,10 @@ void TarifaView::on_mui_borrar_clicked()
             error += borrar();
             if ( error ) {
                 empresaBase() ->rollback();
-            } else
+            } else {
                 empresaBase() ->commit();
+                emit guardartarifa();
+            } // end if
             dialogChanges_cargaInicial();
             close();
         } // end if

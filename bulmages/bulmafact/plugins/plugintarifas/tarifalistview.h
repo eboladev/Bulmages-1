@@ -24,34 +24,22 @@
 #include "ui_tarifalistbase.h"
 #include "company.h"
 #include "pgimportfiles.h"
-#include "fichabf.h"
+#include "listado.h"
 
-class TarifaListView : public FichaBf, private Ui_TarifaListBase, public pgimportfiles
+
+class TarifaListView : public Listado, private Ui_TarifaListBase, public pgimportfiles
 {
     Q_OBJECT
 
 public:
-    enum edmode {
-        EditMode = 0, SelectMode = 1
-    };
-
-private:
-    edmode m_modo;
-
-public:
-    TarifaListView ( Company *, QWidget *parent = 0, edmode editmodo = EditMode );
+    TarifaListView ( Company *comp, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode );
     ~TarifaListView();
-    void editar ( int );
+    void editar(int);
+    void borrar();
+    void crear();
 
 public slots:
-    void on_mui_aceptar_clicked();
-    void on_mui_crear_clicked();
-    void on_mui_editar_clicked();
-    void on_mui_borrar_clicked();
-    void on_mui_actualizar_clicked();
-    void on_mui_list_itemDoubleClicked ( QTableWidgetItem * ) {
-        on_mui_editar_clicked();
-    };
+    void actualizar();
 };
 
 #endif

@@ -50,8 +50,6 @@ private:
 protected:
     void setSubForm ( SubForm3 * );
 
-
-
 public:
     Listado ( QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode );
     Listado ( EmpresaBase *emp = NULL, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode );

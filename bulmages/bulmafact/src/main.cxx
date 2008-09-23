@@ -69,6 +69,8 @@ int main ( int argc, char **argv )
         /// Preparamos el sistema de plugins.
         g_plugins = new Plugins();
 
+	//theApp->setStyleSheet("QPushButton:focus { background-color: green }");
+
         /// Definimos la codificacion a Unicode.
         QTextCodec::setCodecForCStrings ( QTextCodec::codecForName ( "UTF-8" ) );
         QTextCodec::setCodecForLocale ( QTextCodec::codecForName ( "UTF-8" ) );

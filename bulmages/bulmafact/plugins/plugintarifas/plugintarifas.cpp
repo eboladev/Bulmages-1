@@ -25,6 +25,7 @@
 #include "funcaux.h"
 #include "busquedatarifa.h"
 #include "listltarifaview.h"
+#include "listlvartarifaview.h"
 #include "tarifalistview.h"
 
 
@@ -148,11 +149,52 @@ int ClienteView_ClienteView ( ClienteView *cli )
 int ArticuloView_ArticuloView ( ArticuloView *art )
 {
     _depura ( "ArticuloView_ArticuloView", 0 );
-    ListLTarifaView *l = new ListLTarifaView ( art );
-    l->setObjectName ( QString::fromUtf8 ( "ltarifas" ) );
+    ListLTarifaView *l1 = new ListLTarifaView ( art );
+    l1->setObjectName ( QString::fromUtf8 ( "ltarifas" ) );
+    l1->setEmpresaBase ( art->empresaBase() );
+    l1->cargar ( "0" );
+    art->mui_tab->addTab ( l1, QApplication::translate ( "PluginTarifas", "Tarifas") );
+
+    /// VARIACION DE TARIFAS
+
+    /// Agregamos el subformulario de validaciones.
+    SubForm2Bf *l = new SubForm2Bf ( art );
+
+    /// Ponemos un delegate al subformulario para que coja los combos asignados.
+    delete l->m_delegate;
+    l->m_delegate = new QSubFormVarTarifaBfDelegate ( l );
+    l->mui_list->setItemDelegate ( l->m_delegate );
+
+    l->setObjectName ( QString::fromUtf8 ( "lvariaciontarifas" ) );
     l->setEmpresaBase ( art->empresaBase() );
-    l->cargar ( "0" );
-    art->mui_tab->addTab ( l, "Tarifas" );
+    l->setDBTableName ( "variaciontarifa" );
+    l->setDBCampoId ( "idarticulo" );
+    l->addSHeader ( "idvariaciontarifa", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite , QApplication::translate ( "VariacionTarifa", "ID Variacion Tarifa" ) );
+    l->addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, QApplication::translate ( "VariacionTarifa", "ID Articulo" ) );
+
+    l->addSHeader ( "idtarifa", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoView, QApplication::translate ( "VariacionTarifa", "ID Tarifa" ) );
+    l->addSHeader ( "nomtarifa", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone, QApplication::translate ( "VariacionTarifa", "Tarifa" ) );
+
+    l->addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoView, QApplication::translate ( "VariacionTarifa", "ID Almacen" ) );
+    l->addSHeader ( "nomalmacen", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone, QApplication::translate ( "VariacionTarifa", "Almacen" ) );
+
+    l->addSHeader ( "cantidadmayoroigualque", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, QApplication::translate ( "VariacionTarifa", "Cantidad Mayor o Igual que" ) );
+    l->addSHeader ( "porcentajevariacion", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, QApplication::translate ( "VariacionTarifa", "Porcentaje Variacion" ) );
+
+    l->setinsercion ( TRUE );
+    l->setDelete ( TRUE );
+    l->setSortingEnabled ( FALSE );
+    art->dialogChanges_setQObjectExcluido ( l->mui_list );
+
+    art->mui_tab->addTab ( l, "Variacion Tarifas" );
+
+
+    /// Establece anchos de las columnas.
+    l->setColumnWidth(1, 150);
+    l->setColumnWidth(2, 250);
+    l->setColumnWidth(3, 250);
+    l->setColumnWidth(4, 200);
+
     _depura ( "END ArticuloView_ArticuloView", 0 );
     return 0;
 }
@@ -166,8 +208,16 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
 int ArticuloView_cargar ( ArticuloView *art )
 {
     _depura ( "ArticuloView_cargar", 0 );
-    ListLTarifaView *l = art->findChild<ListLTarifaView *> ( "ltarifas" );
-    l->cargar ( art->DBvalue ( "idarticulo" ) );
+    ListLTarifaView *l1 = art->findChild<ListLTarifaView *> ( "ltarifas" );
+    l1->cargar ( art->DBvalue ( "idarticulo" ) );
+
+    /// Variacion de tarifas.
+    SubForm2Bf *l = art->findChild<SubForm2Bf *> ( "lvariaciontarifas" );
+    if ( l ) {
+	QString SQLQuery = "SELECT * FROM variaciontarifa AS t1 LEFT JOIN (SELECT idtarifa, nomtarifa FROM tarifa) AS t2 ON t1.idtarifa = t2.idtarifa LEFT JOIN (SELECT idalmacen, nomalmacen FROM almacen) AS t3 ON t1.idalmacen = t3.idalmacen WHERE t1.idarticulo = " + art->DBvalue ( "idarticulo" ) + " ORDER BY t1.idtarifa, t1.idalmacen, t1.cantidadmayoroigualque";
+        l->cargar ( SQLQuery );
+    } // end if
+
     _depura ( "END ArticuloView_cargar", 0 );
     return 0;
 }
@@ -182,14 +232,21 @@ int ArticuloView_guardar_post ( ArticuloView *art )
 {
     _depura ( "ArticuloView_guardar_post", 0 );
     try {
-        ListLTarifaView *l = art->findChild<ListLTarifaView *> ( "ltarifas" );
+        ListLTarifaView *l1 = art->findChild<ListLTarifaView *> ( "ltarifas" );
+        l1->setColumnValue ( "idarticulo", art->DBvalue ( "idarticulo" ) );
+
+    	/// Variacion de tarifas.
+        SubForm2Bf *l = art->findChild<SubForm2Bf *> ( "lvariaciontarifas" );
         l->setColumnValue ( "idarticulo", art->DBvalue ( "idarticulo" ) );
+
+        l1->guardar();
         l->guardar();
+
         return 0;
     } catch ( ... ) {
         _depura ( "Hubo un error al guardar las tarifas", 2 );
         return 0;
-    }
+    } // end try
 }
 
 
@@ -202,7 +259,13 @@ int ArticuloView_borrar ( ArticuloView *art )
 {
     _depura ( "ArticuloView_borrar", 0 );
     try {
-        ListLTarifaView *l = art->findChild<ListLTarifaView *> ( "ltarifas" );
+        ListLTarifaView *l1 = art->findChild<ListLTarifaView *> ( "ltarifas" );
+
+    	/// Variacion de tarifas.
+        SubForm2Bf *l = art->findChild<SubForm2Bf *> ( "lvariaciontarifas" );
+        l->setColumnValue ( "idarticulo", art->DBvalue ( "idarticulo" ) );
+
+        l1->borrar();
         l->borrar();
         return 0;
     } catch ( ... ) {

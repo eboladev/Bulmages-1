@@ -32,6 +32,7 @@ BusquedaTarifa::BusquedaTarifa ( QWidget *parent )
 {
     _depura ( "BusquedaTarifa::BusquedaTarifa", 0 );
     m_cursorcombo = NULL;
+    setMouseTracking(TRUE);
     connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
     _depura ( "END BusquedaTarifa::BusquedaTarifa", 0 );
 }
@@ -58,6 +59,7 @@ void BusquedaTarifa::setIdTarifa ( QString idtarifa )
     if ( m_cursorcombo != NULL ) {
         delete m_cursorcombo;
     } // end if
+
     m_cursorcombo = empresaBase() ->cargacursor ( "SELECT * FROM tarifa" );
     int i = 0;
     int i1 = 0;

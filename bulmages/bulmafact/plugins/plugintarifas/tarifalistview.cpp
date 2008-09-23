@@ -31,17 +31,20 @@
 \param parent
 \param editomodo
 **/
-TarifaListView::TarifaListView ( Company *comp, QWidget *parent, edmode editmodo )
-        : FichaBf ( comp, parent ), pgimportfiles ( comp )
+TarifaListView::TarifaListView ( Company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo )
+        : Listado ( comp, parent, flag, editmodo ), pgimportfiles ( comp )
 {
     _depura ( "TarifaListView::INIT_TarifaListView()\n", 0 );
     setAttribute ( Qt::WA_DeleteOnClose );
-    m_modo = editmodo;
     setupUi ( this );
     mui_list->setEmpresaBase ( empresaBase() );
     mui_list->cargar();
     mui_list->setColumnWidth(0, 250);
-    meteWindow ( tr ( "Tarifas" ), this );
+    empresaBase() ->meteWindow ( tr ( "Tarifas" ), this );
+    setSubForm(mui_list);
+    /// Hacemos el tratamiento de los permisos que desabilita botones en caso de no haber suficientes permisos.
+    //trataPermisos ( "tarifas" );
+
     _depura ( "TarifaListView::END_TarifaListView()\n", 0 );
 }
 
@@ -59,29 +62,13 @@ TarifaListView::~TarifaListView()
 
 ///
 /**
-\return
-**/
-void TarifaListView::on_mui_editar_clicked()
-{
-    _depura ( "TarifaListView::INIT_s_editArticle()\n", 0 );
-    int a = mui_list->currentRow();
-    if ( a < 0 ) {
-        _depura ( "Debe seleccionar una linea", 2 );
-        return;
-    } // end if
-    editar ( a );
-    _depura ( "TarifaListView::END_s_editArticle()\n", 0 );
-}
-
-
-///
-/**
 \param row
 **/
-void TarifaListView::editar ( int row )
+void TarifaListView::editar (int row)
 {
     _depura ( "TarifaListView::editar", 0 );
-    TarifaView *tar = new TarifaView ( empresaBase(), 0 );
+    TarifaView *tar = new TarifaView ( ( Company * ) empresaBase(), 0 );
+    QObject::connect(tar, SIGNAL(guardartarifa()), this, SLOT(actualizar()));
     empresaBase() ->m_pWorkspace->addWindow ( tar );
     tar->cargar ( mui_list->DBvalue ( QString ( "idtarifa" ), row ) );
     tar->show();
@@ -92,47 +79,45 @@ void TarifaListView::editar ( int row )
 ///
 /**
 **/
-void TarifaListView::on_mui_crear_clicked()
+void TarifaListView::crear()
 {
-    _depura ( "TarifaListView::editar", 0 );
-    TarifaView *tar = new TarifaView ( empresaBase(), parentWidget() );
+    _depura ( "TarifaListView::crear", 0 );
+    TarifaView *tar = new TarifaView ( ( Company * ) empresaBase(), parentWidget() );
+    QObject::connect(tar, SIGNAL(guardartarifa()), this, SLOT(actualizar()));
     empresaBase() ->m_pWorkspace->addWindow ( tar );
     tar->setWindowTitle(tr("Nueva tarifa"));
     tar->show();
-    _depura ( "END  TarifaListView::editar", 0 );
+    _depura ( "END  TarifaListView::crear", 0 );
 }
 
 
 ///
 /**
 **/
-void TarifaListView::on_mui_borrar_clicked()
+void TarifaListView::borrar()
 {
-    _depura ( "TarifaListView::on_mui_borrar_clicked\n", 0 );
+    _depura ( "TarifaListView::borrar\n", 0 );
     int a = mui_list->currentRow();
-    TarifaView *tar = new TarifaView ( empresaBase(), 0 );
-    tar->cargar ( mui_list->DBvalue ( QString ( "idtarifa" ), a ) );
-    tar->on_mui_borrar_clicked();
-    delete tar;
-    _depura ( "END TarifaListView::on_mui_borrar_clicked\n", 0 );
-}
-
-
-void TarifaListView::on_mui_aceptar_clicked()
-{
-    _depura ( "TarifaListView::on_mui_aceptar_clicked\n", 0 );
-    on_mui_cancelar_clicked();
-    _depura ( "END TarifaListView::on_mui_aceptar_clicked\n", 0 );
+    if (a >= 0) {
+	TarifaView *tar = new TarifaView ( ( Company * ) empresaBase(), 0 );
+        QObject::connect(tar, SIGNAL(guardartarifa()), this, SLOT(actualizar()));
+	tar->cargar ( mui_list->DBvalue ( QString ( "idtarifa" ), a ) );
+	tar->on_mui_borrar_clicked();
+	delete tar;
+    } else {
+	mensajeInfo(tr("No ha seleccionado ninguna tarifa"));
+    } // end if
+    _depura ( "END TarifaListView::borrar\n", 0 );
 }
 
 
 ///
 /**
 **/
-void TarifaListView::on_mui_actualizar_clicked()
+void TarifaListView::actualizar()
 {
-    _depura ( "TarifaListView::on_mui_actualizar_clicked\n", 0 );
+    _depura ( "TarifaListView::actualizar\n", 0 );
     mui_list->cargar();
-    _depura ( "END TarifaListView::on_mui_actualizar_clicked\n", 0 );
+    _depura ( "END TarifaListView::actualizar\n", 0 );
 }
 
