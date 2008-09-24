@@ -188,7 +188,6 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
 
     art->mui_tab->addTab ( l, "Variacion Tarifas" );
 
-
     /// Establece anchos de las columnas.
     l->setColumnWidth(1, 150);
     l->setColumnWidth(2, 250);
