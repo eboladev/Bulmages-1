@@ -42,7 +42,7 @@ add_subdirectory(pluginsyncbulmacont)
 add_subdirectory(plugininformeclientessxc)
 add_subdirectory(pluginetiquetado)
 add_subdirectory(plugincompraventa)
-
+add_subdirectory(pluginclientprov)
 
 #pluginqwebcam depende de opencv y esta en desarrollo
 #add_subdirectory(pluginqwebcam)

@@ -64,7 +64,31 @@ CompraVentaView::CompraVentaView ( Company *comp, QWidget *parent )
     try {
         setupUi ( this );
 
-        setTitleName ( tr ( "Albaran" ) );
+	m_albaranp = new FichaBf(comp, parent);
+	m_albaranp->setDBTableName("albaranp");
+        m_albaranp->setDBCampoId ( "idalbaranp" );
+        m_albaranp->addDBCampo ( "idalbaranp", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "AlbaranCliente", "Id albaran" ) );
+        m_albaranp->addDBCampo ( "idproveedor", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "AlbaranCliente", "Cliente" ) );
+        m_albaranp->addDBCampo ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "AlbaranCliente", "Almacen" ) );
+        m_albaranp->addDBCampo ( "numalbaranp", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "AlbaranCliente", "Numero de albaran" ) );
+        m_albaranp->addDBCampo ( "fechaalbaranp", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate ( "AlbaranCliente", "Fecha de creacion" ) );
+        m_albaranp->addDBCampo ( "contactalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "AlbaranCliente", "Persona de contacto" ) );
+        m_albaranp->addDBCampo ( "telalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "AlbaranCliente", "Telefono de contacto" ) );
+        m_albaranp->addDBCampo ( "comentalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "AlbaranCliente", "Comentario" ) );
+        m_albaranp->addDBCampo ( "comentprivalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "AlbaranCliente", "Comentario privado" ) );
+        m_albaranp->addDBCampo ( "idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "AlbaranCliente", "Forma de pago" ) );
+        m_albaranp->addDBCampo ( "idtrabajador", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "AlbaranCliente", "Trabajador" ) );
+        m_albaranp->addDBCampo ( "procesadoalbaranp", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate ( "AlbaranCliente", "Procesado" ) );
+        m_albaranp->addDBCampo ( "descalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "AlbaranCliente", "Descripcion" ) );
+        m_albaranp->addDBCampo ( "refalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "AlbaranCliente", "Referencia" ) );
+
+        subform3->setEmpresaBase ( comp );
+        m_descuentos3->setEmpresaBase ( comp );
+        m_albaranp->setListaLineas ( subform3 );
+        m_albaranp->setListaDescuentos ( m_descuentos3 );
+
+
+        setTitleName ( tr ( "Compra Venta" ) );
         setDBTableName ( "albaran" );
         setDBCampoId ( "idalbaran" );
         addDBCampo ( "idalbaran", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "AlbaranCliente", "Id albaran" ) );
@@ -104,6 +128,7 @@ CompraVentaView::CompraVentaView ( Company *comp, QWidget *parent )
         mui_idtrabajador->setValorCampo ( "0" );
 
         meteWindow ( windowTitle(), this, FALSE );
+
         /// Disparamos los plugins por flanco descendente.
         g_plugins->lanza ( "CompraVentaView_CompraVentaView_Post", this );
     } catch ( ... ) {
@@ -123,6 +148,7 @@ CompraVentaView::CompraVentaView ( Company *comp, QWidget *parent )
 CompraVentaView::~CompraVentaView()
 {
     _depura ( "CompraVentaView::~CompraVentaView", 0 );
+    delete m_albaranp;
     empresaBase() ->refreshAlbaranesCliente();
     _depura ( "END CompraVentaView::~CompraVentaView", 0 );
 }
@@ -163,110 +189,6 @@ void CompraVentaView::pintatotales ( Fixed iva, Fixed base, Fixed total, Fixed d
     _depura ( "END CompraVentaView::pintatotales", 0 );
 }
 
-
-/** Metodo que responde a la opcion de ver el presupuesto correspondiente con
-    este albaran.
-
-    \TODO Este metodo esta en desuso. Revisarlo antes de usar.
-
-    Busca los presupuestos por referencia y abre los que tienen la misma referencia.
-*/
-/**
-**/
-void CompraVentaView::s_verpresupuesto()
-{
-    _depura ( "CompraVentaView::s_verpresupuesto", 0 );
-    QString SQLQuery = "SELECT * FROM presupuesto WHERE refpresupuesto = '" +
-                       DBvalue ( "refalbaran" ) + "'";
-    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
-
-    if ( cur->numregistros() > 1 ) {
-        /// \TODO Debe pasar por company la creacion de esta ventana
-        PresupuestoList * list = new PresupuestoList ( empresaBase(), NULL );
-        list->setModoConsulta();
-        list->show();
-
-        while ( !list->isHidden() )  {
-            theApp->processEvents();
-        } // end while
-
-        this->setEnabled ( true );
-
-        if ( list->idpresupuesto() != QString ( "" ) ) {
-            PresupuestoView * bud = empresaBase() ->nuevoPresupuestoView();
-            bud->cargar ( list->idpresupuesto() );
-            bud->show();
-        } // end if
-    } else if ( !cur->eof() ) {
-        PresupuestoView * bud = empresaBase() ->nuevoPresupuestoView();
-        bud->cargar ( cur->valor ( "idpresupuesto" ) );
-        bud->show();
-    } // end if
-    delete cur;
-    _depura ( "END CompraVentaView::s_verpresupuesto", 0 );
-}
-
-
-/** SLOT de ver el pedidocliente.
-    Busca los pedidos a cliente que tienen la misma referencia que el albaran
-    y los abre.
-*/
-/**
-**/
-void CompraVentaView::on_mui_verpedidocliente_clicked()
-{
-    _depura ( "CompraVentaView::on_mui_verpedidocliente_clicked", 0 );
-
-    PedidoClienteView *bud = NULL;
-    cursor2 *cur = NULL;
-
-    try {
-        /// Comprueba si disponemos de los datos m&iacute;nimos. Si no se hace esta
-        /// comprobaci&oacute;n la consulta a la base de datos ser&aacute; erronea y al hacer
-        /// el siguiente cur->eof() el programa fallar&aacute;.
-        /// Comprobamos que existe el pedido con esos datos, y en caso afirmativo lo mostramos.
-
-        QString SQLQuery = "";
-
-        if ( DBvalue ( "refalbaran" ).isEmpty() || DBvalue ( "idcliente" ).isEmpty() ) {
-            /// El presupuesto no se ha guardado y no se dispone en la base de datos
-            /// de estos datos. Se utilizan en su lugar los del formulario.
-            /// Verifica que exista, por lo menos, un cliente seleccionado.
-            if ( mui_idcliente->idcliente().isEmpty() ) {
-                mensajeInfo ( tr ( "Tiene que seleccionar un cliente" ), this );
-                return;
-            } else {
-                SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + mui_refalbaran->text() + "' AND idcliente = " + mui_idcliente->idcliente();
-            } // end if
-        } else {
-            SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + DBvalue ( "refalbaran" ) + "' AND idcliente = " + DBvalue ( "idcliente" );
-        } // end if
-
-        cur = empresaBase() ->cargacursor ( SQLQuery );
-
-        if ( !cur->eof() ) {
-            while ( !cur->eof() ) {
-                bud = empresaBase() ->newPedidoClienteView();
-                empresaBase() ->m_pWorkspace->addWindow ( bud );
-                bud->cargar ( cur->valor ( "idpedidocliente" ) );
-                bud->show();
-                cur->siguienteregistro();
-            } // end while
-        } else {
-            mensajeInfo ( tr ( "No hay pedidos con la misma referencia." ), this );
-            _depura ( "no hay pedidos con esta referencia", 2 );
-        } // end if
-
-        delete cur;
-
-    } catch ( ... ) {
-        mensajeInfo ( tr ( "Error inesperado" ), this );
-        if ( cur ) delete cur;
-        if ( bud ) delete bud;
-    } // end try
-
-    _depura ( "END CompraVentaView::on_mui_verpedidocliente_clicked", 0 );
-}
 
 
 /// Se encarga de generar una factura a partir de un albar&aacute;n.
@@ -586,16 +508,34 @@ int CompraVentaView::borrarPre()
 int CompraVentaView::cargarPost ( QString idalbaran )
 {
     _depura ( "CompraVentaView::cargar", 0 );
+	try {
+	m_listalineas->cargar ( idalbaran );
+	m_listadescuentos->cargar ( idalbaran );
+	
+	/// Establecemos los valores del albaran de proveedor por si acaso el albaran de proveedor no existiese.
+	m_albaranp->setDBvalue("refalbaranp", DBvalue("refalbaran"));
 
-    m_listalineas->cargar ( idalbaran );
-    m_listadescuentos->cargar ( idalbaran );
 
-    /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
-    g_plugins->lanza ( "AlbaranCliente_cargarPost_Post", this );
-
-    calculaypintatotales();
-    _depura ( "END CompraVentaView::cargar", 0 );
-    return 0;
+	/// Buscamos si hay algun albaran de proveedor y lo cargamos.
+	QString query = "SELECT * FROM albaranp WHERE refalbaranp='" + DBvalue("refalbaran")+"'";
+	cursor2 *cur = empresaBase()->cargacursor(query);
+	if (!cur->eof()) {
+		m_albaranp->cargar(cur->valor("idalbaranp"));
+		m_albaranp->m_listalineas->cargar(cur->valor("idalbaranp"));
+		m_albaranp->m_listadescuentos->cargar(cur->valor("idalbaranp"));
+	} // end if
+	delete cur;
+	
+	/// Disparamos los plugins con presupuesto_imprimirPresupuesto.
+	g_plugins->lanza ( "AlbaranCliente_cargarPost_Post", this );
+	
+	calculaypintatotales();
+	_depura ( "END CompraVentaView::cargar", 0 );
+	return 0;
+	} catch(...) {
+		_depura("error en la funcion CompraVentaView::cargar",2);
+		return 0;
+	} // end try
 }
 
 
@@ -614,7 +554,6 @@ int CompraVentaView::cargarPost ( QString idalbaran )
 int CompraVentaView::guardarPost()
 {
     _depura ( "CompraVentaView::guardarPost", 0 );
-
     m_listalineas->setColumnValue ( "idalbaran", DBvalue ( "idalbaran" ) );
     m_listalineas->guardar();
     m_listadescuentos->setColumnValue ( "idalbaran", DBvalue ( "idalbaran" ) );
@@ -624,3 +563,15 @@ int CompraVentaView::guardarPost()
     return 0;
 }
 
+void CompraVentaView::on_mui_refalbaran_returnPressed() {
+	QString nuevaref = mui_refalbaran->text();
+	QString idalbaran = "";
+	QString query = "SELECT * FROM albaran WHERE refalbaran='"+nuevaref+"'";
+	cursor2 *cur = empresaBase()->cargacursor(query);
+	while (!cur->eof()) {
+		idalbaran = cur->valor("idalbaran");
+		cur->siguienteregistro();
+	} // end while
+	cargar(idalbaran);
+
+}

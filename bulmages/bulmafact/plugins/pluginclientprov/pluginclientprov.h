@@ -1,7 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
- *   http://www.iglues.org                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,41 +18,36 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef BUSQUEDAREFERENCIA_H
-#define BUSQUEDAREFERENCIA_H
+#ifdef Q_WS_WIN
+# define MY_EXPORT __declspec(dllexport)
+#else
+# define MY_EXPORT
+#endif
 
-#include <QLineEdit>
-#include <QLabel>
+#include "ficha.h"
+#include "bulmafact.h"
 
-#include "ui_busquedareferenciabase.h"
-#include "blwidget.h"
+extern "C" MY_EXPORT int Ficha_guardar_Post ( Ficha * );
+
+extern "C" MY_EXPORT int entryPoint ( Bulmafact * );
 
 
+// extern QApplication2 *theApp;
 
-/// Permite introducir una referencia.
-/** Este Widget permite introducir una referencia. */
-class BusquedaReferencia : public BLWidget, public Ui_BusquedaReferenciaBase
-{
+/*
+class myplugin : public QObject {
     Q_OBJECT
 
 public:
-    BusquedaReferencia ( QWidget *parent = 0 );
-    ~BusquedaReferencia();
-    virtual void setText ( QString val );
-    virtual void setValorCampo ( QString val );
-    virtual QString text();
-    virtual QString valorCampo();
+    postgresiface2 *conexionbase;
+
+public:
+    myplugin();
+    ~myplugin();
+    void inicializa(bulmafact *);
 
 public slots:
-    virtual void on_mui_informe_clicked();
-    virtual void on_mui_referencia_editingFinished();
-    virtual void on_mui_rferencia_returnPressed();
-    virtual void on_mui_abrirtodo_clicked();
-
-signals:
-    void valueChanged ( const QString &);
-    void returnPressed();
+    void elslot();
 };
 
-#endif
-
+*/

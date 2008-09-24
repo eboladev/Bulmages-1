@@ -45,6 +45,7 @@ BusquedaReferencia::BusquedaReferencia ( QWidget *parent )
 {
     _depura ( "BusquedaReferencia::BusquedaReferencia", 0 );
     setupUi ( this );
+    connect (mui_referencia, SIGNAL(returnPressed()), this, SLOT(on_mui_rferencia_returnPressed()));
     _depura ( "END BusquedaReferencia::BusquedaReferencia", 0 );
 }
 
@@ -89,9 +90,21 @@ void BusquedaReferencia::on_mui_informe_clicked()
 **/
 void BusquedaReferencia::on_mui_referencia_editingFinished()
 {
-    _depura ( "BusquedaReferencia::on_m_cifcliente_editingFinished", 0 );
+    _depura ( "BusquedaReferencia::on_mui_referencia_editingFinished", 0 );
     emit ( valueChanged ( mui_referencia->text() ) );
-    _depura ( "END BusquedaReferencia::on_m_cifcliente_editingFinished", 0 );
+    _depura ( "END BusquedaReferencia::on_mui_referencia_editingFinished", 0 );
+}
+
+/** SLOT que responde a la pulsacion de RETURN sobre la casilla de referencia.
+    Emite la se&ntilde;al returnPressed() para notificaciones.
+*/
+/**
+**/
+void BusquedaReferencia::on_mui_rferencia_returnPressed()
+{
+    _depura ( "BusquedaReferencia::on_mui_referencia_returnPressed", 0 );
+    emit ( returnPressed ( ) );
+    _depura ( "END BusquedaReferencia::on_mui_referencia_returnPressed", 0 );
 }
 
 
