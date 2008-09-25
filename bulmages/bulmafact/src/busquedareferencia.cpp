@@ -103,7 +103,11 @@ void BusquedaReferencia::on_mui_referencia_editingFinished()
 void BusquedaReferencia::on_mui_rferencia_returnPressed()
 {
     _depura ( "BusquedaReferencia::on_mui_referencia_returnPressed", 0 );
-    emit ( returnPressed ( ) );
+        /// Disparamos los plugins
+        int res = g_plugins->lanza ( "BusquedaReferencia_on_mui_rferencia_returnPressed", this );
+        if ( res == 0 ) {
+	    emit ( returnPressed ( ) );
+        } // end if
     _depura ( "END BusquedaReferencia::on_mui_referencia_returnPressed", 0 );
 }
 

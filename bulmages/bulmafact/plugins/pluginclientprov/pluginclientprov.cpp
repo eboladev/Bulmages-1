@@ -72,8 +72,7 @@ int Ficha_guardar_Post ( Ficha *l )
         fich->addDBCampo ( "recargoeqproveedor", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate ( "Proveedor", "Recargo de Equivalencia" ) );
         fich->addDBCampo ( "irpfproveedor", DBCampo::DBnumeric, DBCampo::DBNothing, QApplication::translate ( "Proveedor", "IRPF" ) );
 
-	QString query = "SELECT * FROM proveedor WHERE cifproveedor = '"+l->DBvalue("cif\q
-cliente")+"'";
+	QString query = "SELECT * FROM proveedor WHERE cifproveedor = '"+l->DBvalue("cifcliente")+"'";
 	cursor2 *cur = l->empresaBase()->cargacursor(query);
 	if (!cur->eof()) {
 		fich->cargar(cur->valor("idproveedor"));

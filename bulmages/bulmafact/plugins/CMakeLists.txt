@@ -43,6 +43,7 @@ add_subdirectory(plugininformeclientessxc)
 add_subdirectory(pluginetiquetado)
 add_subdirectory(plugincompraventa)
 add_subdirectory(pluginclientprov)
+add_subdirectory(pluginopenref)
 
 #pluginqwebcam depende de opencv y esta en desarrollo
 #add_subdirectory(pluginqwebcam)
