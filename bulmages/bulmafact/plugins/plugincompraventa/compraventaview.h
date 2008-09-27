@@ -53,7 +53,6 @@ class CompraVentaView : public FichaBf, public Ui_CompraVentaBase
 
 public:
     FichaBf *m_albaranp;
-    virtual int guardarPost();
     virtual int borrarPre();
     virtual int cargarPost ( QString );
     CompraVentaView ( Company *, QWidget * );
@@ -63,6 +62,7 @@ public:
     void pintatotales ( Fixed, Fixed, Fixed, Fixed, Fixed, Fixed );
     void generarFactura();
     void agregarFactura();
+	virtual void on_mui_guardar_clicked();
 
 
 public slots:
@@ -75,6 +75,7 @@ public slots:
     virtual void on_mui_cobrar_clicked();
     virtual void on_mui_idcliente_valueChanged ( QString id );
     virtual void on_mui_refalbaran_returnPressed();
+	virtual void on_mui_idcliente_valueChanged();
 };
 
 #endif

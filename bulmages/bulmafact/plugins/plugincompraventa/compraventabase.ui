@@ -832,7 +832,7 @@
        </rect>
       </property>
       <attribute name="title" >
-       <string>&amp;Detalle</string>
+       <string>&amp;Detalle Ventas</string>
       </attribute>
       <layout class="QGridLayout" >
        <property name="margin" >
@@ -1590,7 +1590,7 @@
        </rect>
       </property>
       <attribute name="title" >
-       <string>&amp;Detalle</string>
+       <string>&amp;Detalle Compras</string>
       </attribute>
       <layout class="QGridLayout" name="_2" >
        <property name="margin" >

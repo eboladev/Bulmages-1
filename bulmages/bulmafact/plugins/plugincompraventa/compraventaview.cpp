@@ -67,20 +67,15 @@ CompraVentaView::CompraVentaView ( Company *comp, QWidget *parent )
 	m_albaranp = new FichaBf(comp, parent);
 	m_albaranp->setDBTableName("albaranp");
         m_albaranp->setDBCampoId ( "idalbaranp" );
-        m_albaranp->addDBCampo ( "idalbaranp", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "AlbaranCliente", "Id albaran" ) );
-        m_albaranp->addDBCampo ( "idproveedor", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "AlbaranCliente", "Cliente" ) );
-        m_albaranp->addDBCampo ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "AlbaranCliente", "Almacen" ) );
-        m_albaranp->addDBCampo ( "numalbaranp", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "AlbaranCliente", "Numero de albaran" ) );
-        m_albaranp->addDBCampo ( "fechaalbaranp", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate ( "AlbaranCliente", "Fecha de creacion" ) );
-        m_albaranp->addDBCampo ( "contactalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "AlbaranCliente", "Persona de contacto" ) );
-        m_albaranp->addDBCampo ( "telalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "AlbaranCliente", "Telefono de contacto" ) );
-        m_albaranp->addDBCampo ( "comentalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "AlbaranCliente", "Comentario" ) );
-        m_albaranp->addDBCampo ( "comentprivalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "AlbaranCliente", "Comentario privado" ) );
-        m_albaranp->addDBCampo ( "idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "AlbaranCliente", "Forma de pago" ) );
-        m_albaranp->addDBCampo ( "idtrabajador", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "AlbaranCliente", "Trabajador" ) );
-        m_albaranp->addDBCampo ( "procesadoalbaranp", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate ( "AlbaranCliente", "Procesado" ) );
-        m_albaranp->addDBCampo ( "descalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "AlbaranCliente", "Descripcion" ) );
-        m_albaranp->addDBCampo ( "refalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "AlbaranCliente", "Referencia" ) );
+        m_albaranp->addDBCampo ( "idalbaranp", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "AlbaranProveedor", "Id albaran proveedor" ) );
+        m_albaranp->addDBCampo ( "numalbaranp", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "AlbaranProveedor", "Numero albaran proveedor" ) );
+        m_albaranp->addDBCampo ( "fechaalbaranp", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate ( "AlbaranProveedor", "Fecha albaran proveedor" ) );
+        m_albaranp->addDBCampo ( "comentalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "AlbaranProveedor", "Comentario albaran proveedor" ) );
+        m_albaranp->addDBCampo ( "idproveedor", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "AlbaranProveedor", "Id proveedor" ) );
+        m_albaranp->addDBCampo ( "idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "AlbaranProveedor", "Id forma de pago" ) );
+        m_albaranp->addDBCampo ( "idalmacen", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate ( "AlbaranProveedor", "Id almacen" ) );
+        m_albaranp->addDBCampo ( "refalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "AlbaranProveedor", "Referencia albaran proveedor" ) );
+        m_albaranp->addDBCampo ( "descalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "AlbaranProveedor", "Descripcion albaran proveedor" ) );
 
         subform3->setEmpresaBase ( comp );
         m_descuentos3->setEmpresaBase ( comp );
@@ -496,6 +491,11 @@ int CompraVentaView::borrarPre()
 
 
 
+void CompraVentaView::on_mui_idcliente_valueChanged() {
+	mensajeInfo("Cliente cambiado");
+}
+
+
 /** Este m&eacute;todo carga un AlbaranCliente. Tambi&eacute;n carga las lineas
     de albar&aacute;n y los descuentos de albar&aacute;n.
     Tras la carga tambi&eacute;n invoca un repintado del albaran para que se vea
@@ -551,16 +551,26 @@ int CompraVentaView::cargarPost ( QString idalbaran )
 /**
 \return
 **/
-int CompraVentaView::guardarPost()
+void CompraVentaView::on_mui_guardar_clicked()
 {
-    _depura ( "CompraVentaView::guardarPost", 0 );
+    _depura ( "CompraVentaView::on_mui_guardar_clicked", 0 );
+    mensajeInfo ( "CompraVentaView::on_mui_guardar_clicked" );
+	DBRecord::guardar();
     m_listalineas->setColumnValue ( "idalbaran", DBvalue ( "idalbaran" ) );
     m_listalineas->guardar();
     m_listadescuentos->setColumnValue ( "idalbaran", DBvalue ( "idalbaran" ) );
     m_listadescuentos->guardar();
 
-    _depura ( "END CompraVentaView::guardarPost", 0 );
-    return 0;
+	mensajeInfo("guardamos el proveedor");
+	m_albaranp->setDBvalue("refalbaranp", DBvalue("refalbaran"));
+
+	m_albaranp->DBRecord::guardar();
+    m_albaranp->m_listalineas->setColumnValue ( "idalbaranp", m_albaranp->DBvalue ( "idalbaranp" ) );
+    m_albaranp->m_listadescuentos->setColumnValue ( "idalbaranp", m_albaranp->DBvalue ( "idalbaranp" ) );
+	m_albaranp->m_listalineas->guardar();
+	m_albaranp->m_listadescuentos->guardar();
+
+    _depura ( "END CompraVentaView::on_mui_guardar_clicked", 0 );
 }
 
 void CompraVentaView::on_mui_refalbaran_returnPressed() {
@@ -568,10 +578,29 @@ void CompraVentaView::on_mui_refalbaran_returnPressed() {
 	QString idalbaran = "";
 	QString query = "SELECT * FROM albaran WHERE refalbaran='"+nuevaref+"'";
 	cursor2 *cur = empresaBase()->cargacursor(query);
-	while (!cur->eof()) {
+	if (!cur->eof()) {
 		idalbaran = cur->valor("idalbaran");
-		cur->siguienteregistro();
-	} // end while
-	cargar(idalbaran);
+		cargar(idalbaran);
+		m_listalineas->cargar ( idalbaran );
+		m_listadescuentos->cargar ( idalbaran );
+	} // end if
+	delete cur;
+
+
+	/// Si no existe albaran de cliente hay que cargar el albaran de proveedor.
+	/// Establecemos los valores del albaran de proveedor por si acaso el albaran de proveedor no existiese.
+	m_albaranp->setDBvalue("refalbaranp", DBvalue("refalbaran"));
+
+
+	/// Buscamos si hay algun albaran de proveedor y lo cargamos.
+	QString query1 = "SELECT * FROM albaranp WHERE refalbaranp='" + nuevaref+"'";
+	cursor2 *cur1 = empresaBase()->cargacursor(query1);
+	if (!cur1->eof()) {
+		m_albaranp->cargar(cur1->valor("idalbaranp"));
+		m_albaranp->m_listalineas->cargar(cur1->valor("idalbaranp"));
+		m_albaranp->m_listadescuentos->cargar(cur1->valor("idalbaranp"));
+	} // end if
+	delete cur1;
+	
 
 }
