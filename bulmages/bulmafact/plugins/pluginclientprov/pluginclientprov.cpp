@@ -46,6 +46,7 @@ int entryPoint ( Bulmafact * )
 int Ficha_guardar_Post ( Ficha *l )
 {
     _depura ( "Ficha_guardar_Post", 0 );
+	bool guardar = FALSE;
 	if (l->tableName() == "cliente") {
 
 	FichaBf *fich = new FichaBf((Company *)l->empresaBase(), l);
@@ -76,6 +77,11 @@ int Ficha_guardar_Post ( Ficha *l )
 	cursor2 *cur = l->empresaBase()->cargacursor(query);
 	if (!cur->eof()) {
 		fich->cargar(cur->valor("idproveedor"));
+		guardar = TRUE;
+	} else {
+		if (QMessageBox::question(l,"Crear proveedor", "Desea crear un proveedor con los datos del cliente", QMessageBox::Yes | QMessageBox::No)== QMessageBox::Yes) {
+			guardar = TRUE;
+		} // end if
 	} // end if
 	delete cur;
 
@@ -84,8 +90,8 @@ int Ficha_guardar_Post ( Ficha *l )
 	fich->setDBvalue("cifproveedor", l->DBvalue("cifcliente"));
 	fich->setDBvalue("cpproveedor", l->DBvalue("cpcliente"));
 
-
-	fich->guardar();
+	if (guardar)
+		fich->guardar();
 	delete fich;
 	} // end if
     _depura ( "END Ficha_guardar_Post", 0 );
