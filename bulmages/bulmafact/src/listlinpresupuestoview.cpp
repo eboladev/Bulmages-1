@@ -59,6 +59,7 @@ ListLinPresupuestoView::ListLinPresupuestoView ( QWidget *parent ) : SubForm2Bf 
     setinsercion ( TRUE );
     setOrdenEnabled ( TRUE );
     setOrdenPorQuery ( FALSE );
+
     /// Lanzamos los plugins
     g_plugins->lanza ( "ListLinPresupuestoView_ListLinPresupuestoView_Post", this );
     _depura ( "END ListLinPresupuestoView::ListLinPresupuestoView", 0 );
@@ -77,9 +78,6 @@ void ListLinPresupuestoView::cargar ( QString idpresupuesto )
     SubForm3::cargar ( "SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE idpresupuesto = " + mdb_idpresupuesto + " ORDER BY ordenlpresupuesto" );
     _depura ( "END ListLinPresupuestoView::cargar", 0 );
 }
-
-
-
 
 
 

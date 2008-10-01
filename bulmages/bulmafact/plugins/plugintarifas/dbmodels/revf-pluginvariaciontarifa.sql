@@ -62,7 +62,7 @@ BEGIN
 		idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
 		cantidadmayoroigualque numeric(12,2),
 		porcentajevariacion numeric(12,2),
-		UNIQUE(cantidadmayoroigualque)
+		UNIQUE(idtarifa, idalmacen, cantidadmayoroigualque)
                 );
 
         END IF;

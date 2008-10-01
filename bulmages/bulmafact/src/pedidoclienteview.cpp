@@ -448,3 +448,15 @@ void PedidoClienteView::on_subform3_editFinish ( int, int )
     _depura ( "END sPedidoClienteView::on_subform3_editFinish", 0 );
 }
 
+
+///
+/**
+\param id
+**/
+void PedidoClienteView::on_mui_idalmacen_valueChanged ( QString id )
+{
+    _depura ( "PedidoClienteView::on_mui_idalmacen_valueChanged", 0 );
+    m_listalineas->setIdAlmacen ( id );
+    _depura ( "END PedidoClienteView::on_mui_idalmacen_valueChanged", 0 );
+}
+

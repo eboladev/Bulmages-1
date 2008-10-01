@@ -332,10 +332,22 @@ void PresupuestoView::generarPedidoCliente()
 **/
 void PresupuestoView::on_mui_idcliente_valueChanged ( QString id )
 {
-    _depura ( "PresupuestoView::on_m_cliente_valueChanged", 0 );
+    _depura ( "PresupuestoView::on_mui_idcliente_valueChanged", 0 );
     subform2->setIdCliente ( id );
     mui_idforma_pago->setIdCliente ( id );
-    _depura ( "END PresupuestoView::on_m_cliente_valueChanged", 0 );
+    _depura ( "END PresupuestoView::on_mui_idcliente_valueChanged", 0 );
+}
+
+
+///
+/**
+\param id
+**/
+void PresupuestoView::on_mui_idalmacen_valueChanged ( QString id )
+{
+    _depura ( "PresupuestoView::on_mui_idalmacen_valueChanged", 0 );
+    m_listalineas->setIdAlmacen ( id );
+    _depura ( "END PresupuestoView::on_mui_idalmacen_valueChanged", 0 );
 }
 
 

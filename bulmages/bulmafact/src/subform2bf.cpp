@@ -48,6 +48,14 @@ SubForm2Bf::SubForm2Bf ( QWidget *parent ) : SubForm3 ( parent )
     m_delegate = new QSubForm2BfDelegate ( this );
     mui_list->setItemDelegate ( m_delegate );
     mdb_idcliente = "";
+
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza ( "SubForm2Bf_SubForm2Bf", this );
+    if ( res != 0 ) {
+        _depura ( "END SubForm2Bf::SubForm2Bf", 0, "Salida por plugins" );
+        return;
+    } // end if
+
     _depura ( "END SubForm2Bf::SubForm2Bf", 0 );
 }
 
@@ -172,10 +180,11 @@ void SubForm2Bf::editFinished ( int row, int col, SDBRecord *rec, SDBCampo *camp
 {
     _depura ( "SubForm2Bf::editFinished", 0, QString::number ( row ) + " " + QString::number ( col ) );
 
+    m_registrolinea = rec;
+
     cursor2 *cur2 = NULL;
     cursor2 *cur = NULL;
     cursor2 *cur1 = NULL;
-    cursor2 *cur3 = NULL;
 
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "SubForm2Bf_on_mui_list_editFinished", this );
@@ -222,26 +231,7 @@ void SubForm2Bf::editFinished ( int row, int col, SDBRecord *rec, SDBCampo *camp
                 rec->setDBvalue ( "cant" + m_tablename, "1.00" );
                 rec->setDBvalue ( "descuento" + m_tablename, "0.00" );
 
-		/// Aqui se establece el precio del articulo. Se tiene que tener en cuenta
-		/// el cliente y la tarifa asignada si procede.
-		/// \TODO: No tiene en cuenta el almacen para establecer la tarifa. Subform2bf no
-		///        dispone de esta informacion.
-		if (!mdb_idcliente.isEmpty()) {
-			/// Se ha seleccionado un cliente.
-			cur3 = empresaBase() ->cargacursor ( "SELECT ltarifa.pvpltarifa FROM cliente INNER JOIN ltarifa ON (cliente.idtarifa = ltarifa.idtarifa) WHERE cliente.idcliente = " + mdb_idcliente + " AND ltarifa.idarticulo = " + cur->valor ( "idarticulo" ) );
-			if (cur3->numregistros() > 0) {
-				/// A) Se dispone de tarifa especial.
-				rec->setDBvalue ( "pvp" + m_tablename, cur3->valor ( "pvpltarifa" ) );
-			} else {
-				/// B) No tiene tarifa especial se usa la asignada por defecto.
-				rec->setDBvalue ( "pvp" + m_tablename, cur->valor ( "pvparticulo" ) );
-			} // end if
-		} else {
-			/// Sin cliente asignado se usa la tarifa asignada por defecto.
-			rec->setDBvalue ( "pvp" + m_tablename, cur->valor ( "pvparticulo" ) );
-		} // end if
-
-		delete cur3;
+		calculaPVP(rec);
 
             } // end if
         } else {
@@ -348,7 +338,7 @@ void SubForm2Bf::setIdCliente ( QString id )
 {
     _depura ( "SubForm2Bf::setIdCliente", 0, id );
 
-    /// En la primera carga no hay reajustes, pero si actualización del cliente.
+    /// En la primera carga no hay reajustes, pero si actualizacion del cliente.
     if ( mdb_idcliente  == "" ) {
         mdb_idcliente = id;
         _depura ( "END SubForm2Bf::setIdCliente", 0, "Primera carga" );
@@ -465,6 +455,18 @@ void SubForm2Bf::setIdProveedor ( QString id )
 
 ///
 /**
+\param id
+**/
+void SubForm2Bf::setIdAlmacen ( QString id )
+{
+	_depura("SubForm2Bf::setIdAlmacen", 0);
+	m_idAlmacen = id;
+	_depura("END SubForm2Bf::setIdAlmacen", 0);
+}
+
+
+///
+/**
 \param c
 **/
 void SubForm2Bf::setEmpresaBase ( EmpresaBase *c )
@@ -507,6 +509,17 @@ QString SubForm2Bf::idcliente()
 QString SubForm2Bf::idproveedor()
 {
     return mdb_idproveedor;
+}
+
+
+///
+/**
+**/
+QString SubForm2Bf::idAlmacen ()
+{
+	_depura("SubForm2Bf::idAlmacen", 0);
+	_depura("END SubForm2Bf::idAlmacen", 0);
+	return m_idAlmacen;
 }
 
 
@@ -624,7 +637,17 @@ void QSubForm2BfDelegate::setModelData ( QWidget *editor, QAbstractItemModel *mo
         QDoubleSpinBox2 * spinBox = static_cast<QDoubleSpinBox2*> ( editor );
         spinBox->interpretText();
         QString value = spinBox->text();
+	QString valueanterior = m_subform->lista()->at ( index.row() )->DBvalue ( "cant" + m_subform->tableName());
+
         model->setData ( index, value );
+
+	/// Dispara senyales:
+	if ( linea->nomcampo() == "cant" + m_subform->tableName() ) {
+		/// Mira si se ha cambiado la cantidad o es la misma que habia.
+		if (valueanterior.toDouble() != value.toDouble()) {
+			emit cant_changed(m_subform->lista()->at ( index.row() ));
+		} // end if
+	} // end if
 
     } else if ( linea->nomcampo() == "codigocompletoarticulo" ) {
         BusquedaArticuloDelegate * comboBox = static_cast<BusquedaArticuloDelegate*> ( editor );
@@ -763,6 +786,70 @@ int QSubForm2BfDelegate::cerrarEditor ( QWidget *editor )
     emit closeEditor ( editor, QAbstractItemDelegate::NoHint );
     _depura ( "END QSubForm2BfDelegate::cerrarEditor", 0 );
     return 0;
+}
+
+
+///
+/**
+**/
+QString SubForm2Bf::idArticulo()
+{
+	return m_idArticulo;
+}
+
+
+///
+/**
+**/
+QString SubForm2Bf::idTarifa()
+{
+	return m_idTarifa;
+}
+
+
+///
+/**
+**/
+void SubForm2Bf::calculaPVP(SDBRecord *rec) {
+	cursor2 *cur = NULL;
+	cursor2 *cur3 = NULL;
+
+	/// Saca 'codigocompletoarticulo' del SDBRecord pasado como parametro.
+	QString codigocompleto = rec->DBvalue("codigocompletoarticulo");
+
+        cur = empresaBase() ->cargacursor ( "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + codigocompleto + "'" );
+        if ( !cur->eof() ) {
+		/// Aqui se establece el precio del articulo. Se tiene que tener en cuenta
+		/// el cliente y la tarifa asignada si procede.
+		if (!mdb_idcliente.isEmpty() && !m_idAlmacen.isEmpty()) {
+			/// Se ha seleccionado un cliente.
+			m_idArticulo = cur->valor ( "idarticulo" );
+			cur3 = empresaBase() ->cargacursor ( "SELECT cliente.idtarifa, ltarifa.pvpltarifa, ltarifa.idalmacen FROM cliente INNER JOIN ltarifa ON (cliente.idtarifa = ltarifa.idtarifa) WHERE ltarifa.idalmacen = " + m_idAlmacen + " AND cliente.idcliente = " + mdb_idcliente + " AND ltarifa.idarticulo = " + m_idArticulo );
+			m_idTarifa = cur3->valor ( "idtarifa" );
+			if (cur3->numregistros() > 0) {
+				/// A) Se dispone de tarifa especial.
+				rec->setDBvalue ( "pvp" + m_tablename, cur3->valor ( "pvpltarifa" ) );
+
+				/// Disparamos los plugins.
+				int res = g_plugins->lanza ( "SubForm2Bf_calculaPVP", this );
+				if ( res != 0 ) {
+					_depura ( "END SubForm2Bf::calculapvp", 0, "Salida por plugins" );
+					return;
+				} // end if
+
+			} else {
+				/// B) No tiene tarifa especial se usa la asignada por defecto.
+				rec->setDBvalue ( "pvp" + m_tablename, cur->valor ( "pvparticulo" ) );
+			} // end if
+		} else {
+			/// Sin cliente asignado se usa la tarifa asignada por defecto.
+			rec->setDBvalue ( "pvp" + m_tablename, cur->valor ( "pvparticulo" ) );
+		} // end if
+		
+	} // end if
+
+	delete cur;
+	delete cur3;
 }
 
 

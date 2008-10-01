@@ -39,6 +39,8 @@ class SubForm2Bf;
 /** Se encarga del control de los 'Widgets' de edici&oacute;n del sistema.*/
 class QSubForm2BfDelegate : public QItemDelegate, public PEmpresaBase
 {
+    Q_OBJECT
+
 protected:
     SubForm2Bf *m_subform;
 
@@ -50,6 +52,9 @@ public:
     virtual QWidget *createEditor ( QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index ) const;
     virtual bool eventFilter ( QObject *obj, QEvent *event );
     virtual int cerrarEditor ( QWidget *editor );
+
+signals:
+     void cant_changed(SDBRecord *) const;
 };
 
 
@@ -63,10 +68,14 @@ class SubForm2Bf : public SubForm3
 
 public:
     QSubForm2BfDelegate *m_delegate;
+    SDBRecord *m_registrolinea;
 
 protected:
     QString mdb_idcliente;
     QString mdb_idproveedor;
+    QString m_idArticulo;
+    QString m_idTarifa;
+    QString m_idAlmacen;
 
 public:
     SubForm2Bf ( QWidget *parent = 0 );
@@ -80,8 +89,15 @@ public:
     virtual int cerrarEditor();
     void setIdCliente ( QString id );
     void setIdProveedor ( QString id );
+    void setIdAlmacen ( QString id );
     QString idcliente();
     QString idproveedor();
+    QString idArticulo();
+    QString idTarifa();
+    QString idAlmacen();
+
+public slots:
+    virtual void calculaPVP(SDBRecord *rec);
 };
 
 #endif

@@ -624,3 +624,15 @@ int AlbaranClienteView::guardarPost()
     return 0;
 }
 
+
+///
+/**
+\param id
+**/
+void AlbaranClienteView::on_mui_idalmacen_valueChanged ( QString id )
+{
+    _depura ( "AlbaranClienteView::on_mui_idalmacen_valueChanged", 0 );
+    m_listalineas->setIdAlmacen ( id );
+    _depura ( "END AlbaranClienteView::on_mui_idalmacen_valueChanged", 0 );
+}
+

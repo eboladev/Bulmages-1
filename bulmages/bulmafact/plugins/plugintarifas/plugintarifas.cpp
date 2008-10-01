@@ -178,8 +178,8 @@ int ArticuloView_ArticuloView ( ArticuloView *art )
     l->addSHeader ( "idalmacen", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoView, QApplication::translate ( "VariacionTarifa", "ID Almacen" ) );
     l->addSHeader ( "nomalmacen", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone, QApplication::translate ( "VariacionTarifa", "Almacen" ) );
 
-    l->addSHeader ( "cantidadmayoroigualque", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, QApplication::translate ( "VariacionTarifa", "Cantidad Mayor o Igual que" ) );
-    l->addSHeader ( "porcentajevariacion", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, QApplication::translate ( "VariacionTarifa", "Porcentaje Variacion" ) );
+    l->addSHeader ( "cantidadmayoroigualque", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, QApplication::translate ( "VariacionTarifa", "Cantidad Mayor o Igual que" ) );
+    l->addSHeader ( "porcentajevariacion", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, QApplication::translate ( "VariacionTarifa", "Porcentaje Variacion" ) );
 
     l->setinsercion ( TRUE );
     l->setDelete ( TRUE );
@@ -270,6 +270,53 @@ int ArticuloView_borrar ( ArticuloView *art )
     } catch ( ... ) {
         _depura ( "Hubo un error al borrar las tarifas", 0 );
         throw - 1;
-    }
+    } // end try
 }
 
+
+///
+/**
+**/
+int SubForm2Bf_SubForm2Bf ( SubForm2Bf *sub )
+{
+    _depura ( "PluginTarifas SubForm2Bf_SubForm2Bf", 0 );
+    /// Este codigo hace que cuando se cambie el campo cantidad de articulo de una linea salte el
+    /// calculo del PVP en funcion del cliente y otros parametros.
+    QObject::connect(sub->m_delegate, SIGNAL(cant_changed(SDBRecord *)), sub, SLOT(calculaPVP(SDBRecord *)));
+    _depura ( "END PluginTarifas SubForm2Bf_SubForm2Bf", 0 );
+    return 0;
+}
+
+
+/// Busca el porcentaje de variacion de tarifa en funcion de la cantidad.
+/**
+**/
+int SubForm2Bf_calculaPVP ( SubForm2Bf *sub )
+{
+    _depura ( "PluginTarifas SubForm2Bf_calculaPVP", 0 );
+
+    cursor2 *cur = NULL;
+
+    QString cantactual = sub->m_registrolinea->DBvalue ( "cant" + sub->tableName() );
+    QString pvpactual = sub->m_registrolinea->DBvalue ( "pvp" + sub->tableName() );
+    QString variacionpvp;
+
+    /// Comprueba que se tengan todos los datos para aplicar variacion de tarifas.
+    if (sub->idArticulo().isEmpty() || sub->idTarifa().isEmpty() || sub->idAlmacen().isEmpty()) {
+        _depura ( "END PluginTarifas SubForm2Bf_calculaPVP -sin suficientes datos-", 0 );
+	return 0;
+    } else {
+    	cur = sub->empresaBase()->cargacursor ( "SELECT * FROM variaciontarifa WHERE idarticulo = " + sub->idArticulo() + " AND idtarifa = " + sub->idTarifa() + " AND idalmacen = " + sub->idAlmacen() + " AND cantidadmayoroigualque <= " + QString::number(cantactual.toDouble()) + " ORDER BY cantidadmayoroigualque DESC LIMIT 1" );
+    } // end if
+
+    /// Si no se devuelve ningun resultado no se aplica variacion a la tarifa.
+    if (cur->numregistros() > 0) {
+    	variacionpvp = cur->valor ( "porcentajevariacion" );
+
+	/// Aplica al precio la variacion correspondiente.
+	sub->m_registrolinea->setDBvalue ( "pvp" + sub->tableName(), QString::number(pvpactual.toDouble() + (pvpactual.toDouble() * (variacionpvp.toDouble() / 100))) );
+    } // end if
+
+    _depura ( "END PluginTarifas SubForm2Bf_calculaPVP", 0 );
+    return 0;
+}

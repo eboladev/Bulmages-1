@@ -88,6 +88,16 @@ QWidget *QSubFormVarTarifaBfDelegate::createEditor ( QWidget *parent, const QSty
         BusquedaAlmacen *editor = new BusquedaAlmacen ( parent );
         editor->setEmpresaBase ( ( Company * ) m_subform->empresaBase() );
         return editor;
+
+    } else if ( linea->nomcampo() == "cantidadmayoroigualque"
+                || linea->nomcampo() == "porcentajevariacion") {
+
+        QDoubleSpinBox2 * editor = new QDoubleSpinBox2 ( parent );
+        editor->setMinimum ( -1000000 );
+        editor->setMaximum ( 1000000 );
+        _depura ( "END QSubFormVarTarifaBfDelegate::createEditor", 0, "QSPinBox" );
+        return editor;
+
     } else  {
         return QSubForm2BfDelegate::createEditor ( parent, option, index );
     } // end if
@@ -124,6 +134,15 @@ void QSubFormVarTarifaBfDelegate::setModelData ( QWidget *editor, QAbstractItemM
 	QString idvalue = comboBox->idalmacen();
         model->setData ( index, value );
         m_subform->lineaat ( index.row() ) ->setDBvalue ( "idalmacen", idvalue );
+
+    } else if ( linea->nomcampo() == "cantidadmayoroigualque"
+                || linea->nomcampo() == "porcentajevariacion") {
+
+        QDoubleSpinBox2 * spinBox = static_cast<QDoubleSpinBox2*> ( editor );
+        spinBox->interpretText();
+        QString value = spinBox->text();
+        model->setData ( index, value );
+
     } else {
         QSubForm2BfDelegate::setModelData ( editor, model, index );
     } // end if
@@ -149,6 +168,15 @@ void QSubFormVarTarifaBfDelegate::setEditorData ( QWidget* editor, const QModelI
         QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
         BusquedaAlmacen *comboBox = static_cast<BusquedaAlmacen*> ( editor );
 	comboBox->setidalmacen(m_subform->lineaat ( index.row() ) ->DBvalue("idalmacen"));
+
+    } else if ( linea->nomcampo() == "cantidadmayoroigualque"
+                || linea->nomcampo() == "porcentajevariacion") {
+
+        QString value = index.model() ->data ( index, Qt::DisplayRole ).toString();
+        QDoubleSpinBox2 *spinBox = static_cast<QDoubleSpinBox2*> ( editor );
+        spinBox->setValue ( value.toDouble() );
+        spinBox->selectAll();
+
     } else {
         QSubForm2BfDelegate::setEditorData ( editor, index );
     } // end if

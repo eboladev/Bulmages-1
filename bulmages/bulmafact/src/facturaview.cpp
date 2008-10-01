@@ -377,4 +377,15 @@ int FacturaView::guardarPost()
 }
 
 
+///
+/**
+\param id
+**/
+void FacturaView::on_mui_idalmacen_valueChanged ( QString id )
+{
+    _depura ( "FacturaView::on_mui_idalmacen_valueChanged", 0 );
+    m_listalineas->setIdAlmacen ( id );
+    _depura ( "END FacturaView::on_mui_idalmacen_valueChanged", 0 );
+}
+
 

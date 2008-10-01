@@ -65,6 +65,7 @@ public slots:
     virtual void on_m_descuentos_editFinish ( int, int );
     virtual void on_subform3_editFinish ( int, int );
     virtual void on_mui_idcliente_valueChanged ( QString id );
+    virtual void on_mui_idalmacen_valueChanged ( QString id );
 };
 
 #endif
