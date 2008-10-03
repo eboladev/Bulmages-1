@@ -61,5 +61,5 @@ install(DIRECTORY dbmodels/
 		PATTERN ".svn" EXCLUDE)
 
 
-set (files1 openreports/inf_ventas.rml openreports/inf_stock.rml openreports/inf_ventas.ui)
+set (files1 openreports/inf_ventas.rml openreports/inf_stock.rml openreports/inf_ventas.ui openreports/inf_ventas.pys)
 install (FILES ${files1} DESTINATION share/bulmages/openreports)

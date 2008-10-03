@@ -1,0 +1,47 @@
+#!/usr/bin/python
+# -*- coding: utf8 -*-
+
+# title="Ventas por talla y color"
+<!--IFACE SRC="[CONF_DIR_OPENREPORTS]inf_ventas.ui"-->
+<!--PARAM NAME="fecha_inicial" TYPE="date"-->
+<!--PARAM NAME="fecha_final" TYPE="date"-->
+
+import ooolib
+
+# Crea el documento
+doc = ooolib.Calc("Clientes")
+
+doc.set_column_property(1, 'width', '0.5in')
+doc.set_column_property(2, 'width', '5in')
+doc.set_cell_property('bold', True)
+doc.set_cell_value(2, 2, 'string', 'Ventas por Talla y Color')
+i = 5
+
+
+doc.set_cell_value(1,4,'string','codigocompletoarticulo')
+doc.set_cell_value(2,4,'string','nomarticulo')
+doc.set_cell_value(3,4,'string','nomtc_talla')
+doc.set_cell_value(4,4,'string','nomtc_color')
+doc.set_cell_value(5,4,'string','cant')
+
+<!--QUERY="SELECT DISTINCT idarticulo, codigocompletoarticulo, nomarticulo, idtc_talla, idtc_color, nomtc_talla, nomtc_color FROM lalbaran NATURAL LEFT JOIN albaran NATURAL LEFT JOIN articulo NATURAL LEFT JOIN tc_talla NATURAL LEFT JOIN tc_color WHERE albaran.fechaalbaran>='[fecha_inicial]' AND albaran.fechaalbaran<='[fecha_final]'"-->
+
+
+
+<!--IF SUBQUERY="SELECT sum(cantlalbaran) AS cant FROM lalbaran NATURAL LEFT JOIN albaran WHERE idarticulo=[idarticulo] AND idtc_talla=[idtc_talla] AND idtc_color=[idtc_color] AND fechaalbaran>='[fecha_inicial]' AND fechaalbaran<='[fecha_final]'"-->
+
+<!-- SUBQUERY="SELECT sum(cantlalbaran) AS cant FROM lalbaran NATURAL LEFT JOIN albaran WHERE idarticulo=[idarticulo] AND idtc_talla=[idtc_talla] AND idtc_color=[idtc_color] AND fechaalbaran>='[fecha_inicial]' AND fechaalbaran<='[fecha_final]'"-->
+
+doc.set_cell_value(1,i,'string','[codigocompletoarticulo]')
+doc.set_cell_value(2,i,'string','[nomarticulo]')
+doc.set_cell_value(3,i,'string','[nomtc_talla]')
+doc.set_cell_value(4,i,'string','[nomtc_color]')
+doc.set_cell_value(5,i,'string','[cant]')
+i = i + 1
+
+<!-- END SUBQUERY-->
+<!--END IF SUBQUERY-->
+<!--END QUERY-->
+
+# Guardamos el documento
+doc.save("inf_ventas.ods")

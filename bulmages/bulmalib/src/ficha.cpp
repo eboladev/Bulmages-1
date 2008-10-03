@@ -796,7 +796,17 @@ int Ficha::trataTags ( QString &buff )
     QRegExp rx70 ( "<!--\\s*IFACE\\s*SRC\\s*=\\s*\"([^\"]*)\"\\s*-->" );
     rx70.setMinimal ( TRUE );
     while ( ( pos = rx70.indexIn ( buff, pos ) ) != -1 ) {
-	    QFile fichero(rx70.cap( 1 ));
+		QString cadarchivo = rx70.cap(1);
+	
+
+		/// Tratamos la sustitucion de los valores de configuracion.
+		for ( int i = 0; i < 500; i++ ) {
+			if ( confpr->nombre ( i ) != "" ) {
+				cadarchivo.replace ( "[" + confpr->nombre ( i ) + "]", confpr->valor ( i ) );
+			} // end if
+		} // end for
+
+	    QFile fichero(cadarchivo);
 	    if (fichero.exists()) {
 		QUiLoader loader;
 		fichero.open(QFile::ReadOnly);
