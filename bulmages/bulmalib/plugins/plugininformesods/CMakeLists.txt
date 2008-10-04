@@ -64,6 +64,9 @@ foreach(dfile ${docs})
 DESTINATION share/bulmages/bulmalib-plugins/ RENAME ${dfile}.${plugin})
 endforeach(dfile in ${docs})
 
-set (files1 openreports/inf_clientes.pys)
-install (FILES ${files1} DESTINATION share/bulmages/openreports)
+#set (files1 openreports/inf_clientes.pys)
+
+file(GLOB report_files openreports/*.ui openreports/*.pys openreports/*.rml)
+
+install (FILES ${report_files} DESTINATION share/bulmages/openreports)
 
