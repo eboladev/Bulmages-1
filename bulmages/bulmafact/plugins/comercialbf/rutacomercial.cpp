@@ -34,6 +34,7 @@
 **/
 RutaComercial::RutaComercial ( Company *comp, QWidget *parent ) : FichaBf ( comp, parent )
 {
+
     _depura ( "RutaComercial::RutaComercial", 0 );
     setTitleName ( tr ( "Ruta Comercial" ) );
     setDBTableName ( "rutacomercial" );

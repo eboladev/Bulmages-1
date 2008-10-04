@@ -59,7 +59,6 @@ class RutaComercialList : public Listado, public Ui_RutaComercialListBase
     Q_OBJECT
 
 private:
-
     QString m_idpresupuesto;
 
 public:
@@ -67,22 +66,14 @@ public:
     RutaComercialList ( Company *comp = NULL, QWidget *parent = 0 );
     ~RutaComercialList();
     void presenta();
-
     QString idpresupuesto();
-
     void setEmpresaBase ( Company *comp );
     void imprimir();
     void setidcliente ( QString val );
     QString generaFiltro();
     void editar ( int );
-
-public slots:
-
-
-    virtual void on_mui_crear_clicked();
-    virtual void on_mui_borrar_clicked();
-
-
+    virtual void crear();
+    virtual void borrar();
 
 signals:
     void selected ( QString );

@@ -489,12 +489,14 @@ void Ficha::setDBTableName ( QString nom )
     _depura ( "Ficha::setDBTableName", 0 );
     DBRecord::setDBTableName ( nom );
 
-    if ( !empresaBase() ->has_table_privilege ( nom, "INSERT" ) ) {
-        /// Buscamos los permisos que tiene el usuario y desactivamos botones.
-        QToolButton * b = findChild<QToolButton *> ( "mui_guardar" );
-        if ( b ) b->setDisabled ( TRUE );
-        b = findChild<QToolButton *> ( "mui_borrar" );
-        if ( b ) b->setDisabled ( TRUE );
+    if (empresaBase() != NULL) {
+	if ( !empresaBase() ->has_table_privilege ( nom, "INSERT" ) ) {
+		/// Buscamos los permisos que tiene el usuario y desactivamos botones.
+		QToolButton * b = findChild<QToolButton *> ( "mui_guardar" );
+		if ( b ) b->setDisabled ( TRUE );
+		b = findChild<QToolButton *> ( "mui_borrar" );
+		if ( b ) b->setDisabled ( TRUE );
+	} // end if
     } // end if
 
     _depura ( "END Ficha::setDBTableName", 0 );

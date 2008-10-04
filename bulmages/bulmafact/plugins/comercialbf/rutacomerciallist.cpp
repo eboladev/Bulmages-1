@@ -147,14 +147,14 @@ void RutaComercialList::editar ( int row )
 ///
 /**
 **/
-void RutaComercialList::on_mui_crear_clicked()
+void RutaComercialList::crear()
 {
-    _depura ( "RutaComercialList::on_mui_crear_clicked", 0 );
+    _depura ( "RutaComercialList::crear", 0 );
     RutaComercialIncView *rut = new RutaComercialIncView ( ( Company * ) empresaBase(), NULL );
     empresaBase() ->m_pWorkspace->addWindow ( rut );
     empresaBase() ->meteWindow ( "Nueva Incidencia Comercial", rut );
     rut->show();
-    _depura ( "END RutaComercialList::on_mui_crear_clicked", 0 );
+    _depura ( "END RutaComercialList::crear", 0 );
 }
 
 
@@ -216,16 +216,16 @@ void RutaComercialList::imprimir()
 /**
 \return
 **/
-void RutaComercialList::on_mui_borrar_clicked()
+void RutaComercialList::borrar()
 {
-    _depura ( "RutaComercialList::on_mui_borrar_clicked", 0 );
+    _depura ( "RutaComercialList::borrar", 0 );
     QString idrutacomercial = mui_list->DBvalue ( "idrutacomercial" );
     QString idincidenciacomercial = mui_list->DBvalue ( "idincidenciacomercial" );
     RutaComercialIncView *rut = new RutaComercialIncView ( ( Company * ) empresaBase(), NULL );
     if ( rut->cargar ( idrutacomercial, idincidenciacomercial ) )
         return;
     rut->on_mui_borrar_clicked();
-    _depura ( "END RutaComercialList::on_mui_borrar_clicked", 0 );
+    _depura ( "END RutaComercialList::borrar", 0 );
 }
 
 
