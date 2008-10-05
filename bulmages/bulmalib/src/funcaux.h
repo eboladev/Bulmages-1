@@ -89,6 +89,9 @@ void mensajeError ( QString cad, QWidget *parent = 0 );
 /// especificado por CONF_DIR_USER.
 void invocaPDF ( const QString arch );
 void generaPDF ( const QString arch );
+void invocaPYS ( const QString arch );
+void generaPYS ( const QString arch );
+
 QString num2texto ( QString numero, QString moneda = "euros", QString singular = "euro" );
 void centrarEnPantalla ( QWidget *ventana );
 void cargaTraducciones ( const QString &traduccion );

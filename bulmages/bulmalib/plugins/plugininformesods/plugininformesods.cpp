@@ -74,7 +74,9 @@ void MyPluginInformesODS::elslot1( )
     if (!ficha->generaRML ( sender()->objectName() )) return;
     QString archivod = sender()->objectName();
     QString archivo =  sender()->objectName().left ( sender()->objectName().size() - 4 );
+	invocaPYS(archivo);
 
+/*
     QString cadena = "rm " + confpr->valor ( CONF_DIR_USER ) + archivo + ".ods";
     system ( cadena.toAscii() );
 
@@ -82,7 +84,7 @@ void MyPluginInformesODS::elslot1( )
     system ( cadena.toAscii() );
     cadena = "oocalc " + confpr->valor ( CONF_DIR_USER ) + archivo + ".ods &";
     system ( cadena.toAscii() );
-
+*/
 
 	delete ficha;
     _depura ( "END MyPluginInformesODS::elslot", 0 );

@@ -600,7 +600,7 @@ int FichaBf::generaRML ( const QString &arch )
     cursor2 *cur = NULL;
     try {
 
-        if ( DBvalue ( "id" + m_tablename ).isEmpty() || DBvalue ( "num" + m_tablename ).isEmpty()) {
+        if ( DBvalue ( "id" + m_tablename ).isEmpty() && DBvalue ( "num" + m_tablename ).isEmpty()) {
 		throw 100;
         } // end if
 
@@ -616,7 +616,6 @@ int FichaBf::generaRML ( const QString &arch )
         QString archivologo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
 
         Fixed irpf ( "0" );
-
         cur = empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre = 'IRPF'" );
         if ( cur ) {
             if ( !cur->eof() ) {
@@ -685,6 +684,7 @@ int FichaBf::generaRML ( const QString &arch )
         /// Contador que sirve para poner lineas de mas en caso de que sea preciso.
         SDBRecord *linea;
         /// Impresion de las lineas
+		if (m_listalineas)
         for ( int i = 0; i < ( m_listalineas->rowCount() - 1 ); ++i ) {
             linea = m_listalineas->lineaat ( i );
             Fixed base = Fixed ( linea->DBvalue ( "cant" + m_listalineas->tableName() ).toAscii().constData() ) * Fixed ( linea->DBvalue ( "pvp" + m_listalineas->tableName() ).toAscii().constData() );
@@ -713,6 +713,7 @@ int FichaBf::generaRML ( const QString &arch )
         fitxersortidatxt = "";
         Fixed porcentt ( "0.00" );
         SDBRecord *linea1;
+		if (m_listadescuentos)
         if ( m_listadescuentos->rowCount() - 1 ) {
             fitxersortidatxt += "<blockTable style=\"tabladescuento\">\n";
             fitxersortidatxt += "<tr>\n";

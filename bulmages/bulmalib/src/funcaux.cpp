@@ -299,6 +299,28 @@ void generaPDF ( const QString arch )
 #endif
 }
 
+/// Genera un ODS a partir de un pys sin abrirlo.
+void generaPYS ( const QString arch ) {
+    _depura ( "generaPYS " + arch, 0 );
+    QDir::setCurrent ( confpr->valor ( CONF_DIR_USER ) );
+    QString cadsys;
+
+    QString cadena = "rm " + confpr->valor ( CONF_DIR_USER ) + arch + ".ods";
+    system ( cadena.toAscii() );
+
+    cadena = " cd " + confpr->valor ( CONF_DIR_USER ) + "; python " + arch + ".pys";
+    system ( cadena.toAscii() );
+
+}
+
+
+/// Genera un ODS a partir de un pys usand python. y ademas lo muestra.
+void invocaPYS (const QString arch) {
+    generaPYS (arch);
+    QString cadena = "oocalc " + confpr->valor ( CONF_DIR_USER ) + arch + ".ods &";
+    system ( cadena.toAscii() );
+
+}
 
 /// Genera un PDF a partir de un RML usando trml2pdf y adem&aacute;s lo muestra con el visor
 /// de PDF pasado en la configuraci&oacute;n.

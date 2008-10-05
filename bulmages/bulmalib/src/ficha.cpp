@@ -1115,6 +1115,7 @@ QString Ficha::trataExists ( const QString &query, const QString &datos )
 }
 
 
+
 ///
 /**
 **/
