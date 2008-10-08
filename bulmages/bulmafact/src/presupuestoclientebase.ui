@@ -20,8 +20,8 @@
    <string>Nuevo presupuesto a cliente</string>
   </property>
   <property name="windowIcon" >
-   <iconset>
-    <normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_presupuestos.48x48.png</normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_presupuestos.48x48.png</iconset>
+   <iconset resource="../../bulmages.qrc" >
+    <normaloff>:/Images/client-quote.svg</normaloff>:/Images/client-quote.svg</iconset>
   </property>
   <layout class="QGridLayout" >
    <property name="margin" >
@@ -235,8 +235,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset>
-            <normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_presupuesto_a_pedido.48x48.png</normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_presupuesto_a_pedido.48x48.png</iconset>
+           <iconset resource="../../bulmages.qrc" >
+            <normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_pedidos_mas.48x48.png</normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_pedidos_mas.48x48.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -754,7 +754,7 @@
         <x>0</x>
         <y>0</y>
         <width>736</width>
-        <height>145</height>
+        <height>147</height>
        </rect>
       </property>
       <attribute name="title" >
