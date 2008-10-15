@@ -64,7 +64,7 @@ CompraVentaView::CompraVentaView ( Company *comp, QWidget *parent )
     try {
         setupUi ( this );
 
-	m_albaranp = new FichaBf(comp, parent);
+	m_albaranp = new DBRecord(comp);
 	m_albaranp->setDBTableName("albaranp");
         m_albaranp->setDBCampoId ( "idalbaranp" );
         m_albaranp->addDBCampo ( "idalbaranp", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate ( "AlbaranProveedor", "Id albaran proveedor" ) );
@@ -79,8 +79,8 @@ CompraVentaView::CompraVentaView ( Company *comp, QWidget *parent )
 
         subform3->setEmpresaBase ( comp );
         m_descuentos3->setEmpresaBase ( comp );
-        m_albaranp->setListaLineas ( subform3 );
-        m_albaranp->setListaDescuentos ( m_descuentos3 );
+//        m_albaranp->setListaLineas ( subform3 );
+//        m_albaranp->setListaDescuentos ( m_descuentos3 );
 
 
         setTitleName ( tr ( "Compra Venta" ) );
@@ -521,8 +521,8 @@ int CompraVentaView::cargarPost ( QString idalbaran )
 	cursor2 *cur = empresaBase()->cargacursor(query);
 	if (!cur->eof()) {
 		m_albaranp->cargar(cur->valor("idalbaranp"));
-		m_albaranp->m_listalineas->cargar(cur->valor("idalbaranp"));
-		m_albaranp->m_listadescuentos->cargar(cur->valor("idalbaranp"));
+		subform3->cargar(cur->valor("idalbaranp"));
+		m_descuentos3->cargar(cur->valor("idalbaranp"));
 	} // end if
 	delete cur;
 	
@@ -565,10 +565,10 @@ void CompraVentaView::on_mui_guardar_clicked()
 	m_albaranp->setDBvalue("refalbaranp", DBvalue("refalbaran"));
 
 	m_albaranp->DBRecord::guardar();
-    m_albaranp->m_listalineas->setColumnValue ( "idalbaranp", m_albaranp->DBvalue ( "idalbaranp" ) );
-    m_albaranp->m_listadescuentos->setColumnValue ( "idalbaranp", m_albaranp->DBvalue ( "idalbaranp" ) );
-	m_albaranp->m_listalineas->guardar();
-	m_albaranp->m_listadescuentos->guardar();
+    subform3->setColumnValue ( "idalbaranp", m_albaranp->DBvalue ( "idalbaranp" ) );
+    m_descuentos3->setColumnValue ( "idalbaranp", m_albaranp->DBvalue ( "idalbaranp" ) );
+	subform3->guardar();
+	m_descuentos3->guardar();
 
     _depura ( "END CompraVentaView::on_mui_guardar_clicked", 0 );
 }
@@ -597,10 +597,34 @@ void CompraVentaView::on_mui_refalbaran_returnPressed() {
 	cursor2 *cur1 = empresaBase()->cargacursor(query1);
 	if (!cur1->eof()) {
 		m_albaranp->cargar(cur1->valor("idalbaranp"));
-		m_albaranp->m_listalineas->cargar(cur1->valor("idalbaranp"));
-		m_albaranp->m_listadescuentos->cargar(cur1->valor("idalbaranp"));
+		subform3->cargar(cur1->valor("idalbaranp"));
+		m_descuentos3->cargar(cur1->valor("idalbaranp"));
 	} // end if
 	delete cur1;
-	
+}
+
+void CompraVentaView::imprimir() {
+
+    _depura ( "FichaBf::imprimir", 0 );
+    try {
+
+        /// Si devuelve 0 significa que el archivo RML se ha generado mal
+        /// el PDF correspondiente.
+        if ( generaRML("compraventa.rml") ) {
+            invocaPDF ( "compraventa" );
+        } // end if
+
+        _depura ( "END FichaBf::imprimir", 0 );
+
+    } catch (int e) {
+	if (e == 100) {
+		/// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
+		mensajeInfo ( tr ( "Tiene que guardar el documento antes de poder procesarlo." ), this );
+		throw (-1);
+	} // end if
+    } catch ( ... ) {
+        mensajeInfo ( tr ( "Error inesperado en la impresion" ), this );
+    } // end try
 
 }
+

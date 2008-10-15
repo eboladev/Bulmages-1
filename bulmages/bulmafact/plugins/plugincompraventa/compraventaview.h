@@ -52,7 +52,7 @@ class CompraVentaView : public FichaBf, public Ui_CompraVentaBase
     Q_OBJECT
 
 public:
-    FichaBf *m_albaranp;
+    DBRecord *m_albaranp;
     virtual int borrarPre();
     virtual int cargarPost ( QString );
     CompraVentaView ( Company *, QWidget * );
@@ -63,6 +63,7 @@ public:
     void generarFactura();
     void agregarFactura();
 	virtual void on_mui_guardar_clicked();
+	void imprimir();
 
 
 public slots:
