@@ -181,6 +181,7 @@ void SubForm2Bf::editFinished ( int row, int col, SDBRecord *rec, SDBCampo *camp
     _depura ( "SubForm2Bf::editFinished", 0, QString::number ( row ) + " " + QString::number ( col ) );
 
     m_registrolinea = rec;
+    m_campoactual = camp;
 
     cursor2 *cur2 = NULL;
     cursor2 *cur = NULL;
@@ -213,6 +214,9 @@ void SubForm2Bf::editFinished ( int row, int col, SDBRecord *rec, SDBCampo *camp
             rec->setDBvalue ( "idalmacen", cur->valor ( "idalmacen" ) );
         } // end if
     } // end if
+
+
+
 
     if ( camp->nomcampo() == "codigocompletoarticulo" ) {
         cur = empresaBase() ->cargacursor ( "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + camp->text() + "'" );
@@ -276,8 +280,9 @@ void SubForm2Bf::editFinished ( int row, int col, SDBRecord *rec, SDBCampo *camp
             return;
         } // end if
 
+	// Miramos el IVA del articulo y lo ponemos.
         cur1 = empresaBase() ->cargacursor ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1" );
-        if ( !cur->eof() ) {
+        if ( !cur1->eof() ) {
             if ( m_tablename == "lpresupuesto"
                     || m_tablename == "lpedidocliente"
                     || m_tablename == "lpedidoproveedor"
@@ -296,11 +301,7 @@ void SubForm2Bf::editFinished ( int row, int col, SDBRecord *rec, SDBCampo *camp
                         } // end if
                     } // end if
                     delete cur2;
-                } else {
-                    rec->setDBvalue ( "reqeq" + m_tablename, "0" );
-                } // end if
-
-                if ( mdb_idproveedor != "" ) {
+                } else if ( mdb_idproveedor != "" ) {
                     cur2 = empresaBase() ->cargacursor ( "SELECT recargoeqproveedor FROM proveedor WHERE idproveedor = " + mdb_idproveedor );
                     if ( !cur2->eof() ) {
                         if ( cur2->valor ( "recargoeqproveedor" ) == "t" ) {
@@ -811,6 +812,9 @@ QString SubForm2Bf::idTarifa()
 /**
 **/
 void SubForm2Bf::calculaPVP(SDBRecord *rec) {
+
+	_depura("SubForm2Bf::calculaPVP",2);
+
 	cursor2 *cur = NULL;
 	cursor2 *cur3 = NULL;
 
@@ -821,6 +825,8 @@ void SubForm2Bf::calculaPVP(SDBRecord *rec) {
         if ( !cur->eof() ) {
 		/// Aqui se establece el precio del articulo. Se tiene que tener en cuenta
 		/// el cliente y la tarifa asignada si procede.
+		_depura(mdb_idcliente,2);
+		_depura(m_idAlmacen,2);
 		if (!mdb_idcliente.isEmpty() && !m_idAlmacen.isEmpty()) {
 			/// Se ha seleccionado un cliente.
 			m_idArticulo = cur->valor ( "idarticulo" );
@@ -850,6 +856,7 @@ void SubForm2Bf::calculaPVP(SDBRecord *rec) {
 
 	delete cur;
 	delete cur3;
+	_depura("END SubForm2Bf::calculaPVP",2);
 }
 
 

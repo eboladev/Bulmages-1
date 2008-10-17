@@ -69,6 +69,7 @@ class SubForm2Bf : public SubForm3
 public:
     QSubForm2BfDelegate *m_delegate;
     SDBRecord *m_registrolinea;
+    SDBCampo  *m_campoactual;			/// Usada para pasar parametros a los plugins.
 
 protected:
     QString mdb_idcliente;

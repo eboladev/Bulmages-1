@@ -62,7 +62,7 @@ public:
     void pintatotales ( Fixed, Fixed, Fixed, Fixed, Fixed, Fixed );
     void generarFactura();
     void agregarFactura();
-	virtual void on_mui_guardar_clicked();
+	virtual int guardarPost();
 	void imprimir();
 
 
@@ -75,8 +75,8 @@ public slots:
     virtual void on_subform2_editFinish ( int, int );
     virtual void on_mui_cobrar_clicked();
     virtual void on_mui_idcliente_valueChanged ( QString id );
+    virtual void on_mui_idalmacen_valueChanged ( QString id );
     virtual void on_mui_refalbaran_returnPressed();
-	virtual void on_mui_idcliente_valueChanged();
 };
 
 #endif

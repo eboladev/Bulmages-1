@@ -35,7 +35,8 @@ BusquedaAlmacen::BusquedaAlmacen ( QWidget *parent, const char * )
 {
     _depura ( "BusquedaAlmacen::BusquedaAlmacen", 0 );
     m_cursorcombo = NULL;
-    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
+//    connect ( this, SIGNAL ( activated ( int ) ), this, SLOT ( m_activated ( int ) ) );
+    connect ( this, SIGNAL ( currentIndexChanged ( int ) ), this, SLOT ( m_activated ( int ) ) );
     m_codigoalmacen = "";
     _depura ( "END BusquedaAlmacen::BusquedaAlmacen", 0 );
 }
@@ -158,13 +159,13 @@ void BusquedaAlmacen::setEmpresaBase ( Company *comp )
 **/
 void BusquedaAlmacen::m_activated ( int index )
 {
-    _depura ( "BusquedaAlmacen::m_activated", 0 );
+    _depura ( "BusquedaAlmacen::m_activated", 2 );
     if ( index > 0 ) {
         emit ( valueChanged ( m_cursorcombo->valor ( "idalmacen", index - 1 ) ) );
     } else {
         emit ( valueChanged ( "" ) );
     } // end if
-    _depura ( "END BusquedaAlmacen::m_activated", 0 );
+    _depura ( "END BusquedaAlmacen::m_activated", 2 );
 }
 
 /// ========================= ITEM DELEGATE ===============================0

@@ -5,6 +5,9 @@ add_subdirectory(pluginartgraficos)
 add_subdirectory(pluginadmin)
 add_subdirectory(plugincobrar)
 add_subdirectory(pluginartsubform)
+
+add_subdirectory(pluginalias1)
+
 add_subdirectory(pluginaliastpv)
 add_subdirectory(plugintcaliastpv)
 add_subdirectory(pluginticketdesglose)

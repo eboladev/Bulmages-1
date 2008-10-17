@@ -122,6 +122,10 @@ CompraVentaView::CompraVentaView ( Company *comp, QWidget *parent )
         mui_idalmacen->setValorCampo ( "0" );
         mui_idtrabajador->setValorCampo ( "0" );
 
+
+	/// Conectamos algunos elementos para que funcionen.
+//    	connect ( mui_idalmacen, SIGNAL ( valueChanged ( QString ) ), this, SLOT ( on_mui_idalmacen_valueChanged ( QString ) ) );
+
         meteWindow ( windowTitle(), this, FALSE );
 
         /// Disparamos los plugins por flanco descendente.
@@ -402,15 +406,37 @@ void CompraVentaView::on_mui_cobrar_clicked()
 **/
 void CompraVentaView::on_mui_idcliente_valueChanged ( QString id )
 {
-    _depura ( "CompraVentaView::on_m_cliente_valueChanged", 0 );
+    _depura ( "CompraVentaView::on_mui_idcliente_valueChanged", 2 );
     subform2->setIdCliente ( id );
     mui_idforma_pago->setIdCliente ( id );
-    _depura ( "END CompraVentaView::on_m_cliente_valueChanged", 0 );
+    setDBvalue("idcliente", id);
+
+	QString query = "SELECT idproveedor FROM proveedor WHERE cifproveedor IN (SELECT cifcliente FROM cliente WHERE idcliente= "+id+")";
+	cursor2 *cur = empresaBase()->cargacursor(query);
+	if (!cur->eof()) {
+		m_albaranp->setDBvalue("idproveedor", cur->valor("idproveedor"));
+		subform3->setIdProveedor ( cur->valor("idproveedor") );
+		m_descuentos3->setIdProveedor ( cur->valor("idproveedor") );
+	} else {
+		mensajeInfo("No hay proveedor para este cliente");
+	} // end if
+	delete cur;
+    _depura ( "END CompraVentaView::on_m_cliente_valueChanged", 2 );
 }
 
 
 
-
+///
+/**
+\param id
+**/
+void CompraVentaView::on_mui_idalmacen_valueChanged ( QString id )
+{
+    _depura ( "CompraVentaView::on_mui_idalmacen_valueChanged", 2 );
+    subform2->setIdAlmacen ( id );
+    subform3->setIdAlmacen ( id );
+    _depura ( "END CompraVentaView::on_mui_idalmacen_valueChanged", 2 );
+}
 
 
 /// Este slot se activa cuando hay cambios en los subformularios.
@@ -491,9 +517,6 @@ int CompraVentaView::borrarPre()
 
 
 
-void CompraVentaView::on_mui_idcliente_valueChanged() {
-	mensajeInfo("Cliente cambiado");
-}
 
 
 /** Este m&eacute;todo carga un AlbaranCliente. Tambi&eacute;n carga las lineas
@@ -551,18 +574,23 @@ int CompraVentaView::cargarPost ( QString idalbaran )
 /**
 \return
 **/
-void CompraVentaView::on_mui_guardar_clicked()
+int CompraVentaView::guardarPost()
 {
-    _depura ( "CompraVentaView::on_mui_guardar_clicked", 0 );
-    mensajeInfo ( "CompraVentaView::on_mui_guardar_clicked" );
-	DBRecord::guardar();
+    _depura ( "CompraVentaView::guardarPost", 0 );
+try {
+//	setDBvalue("idalmacen" , mdb_idalmacen->text());
+//	DBRecord::guardar();
+//	guardar();
+//	cargar(id);
     m_listalineas->setColumnValue ( "idalbaran", DBvalue ( "idalbaran" ) );
     m_listalineas->guardar();
     m_listadescuentos->setColumnValue ( "idalbaran", DBvalue ( "idalbaran" ) );
     m_listadescuentos->guardar();
 
-	mensajeInfo("guardamos el proveedor");
+
+
 	m_albaranp->setDBvalue("refalbaranp", DBvalue("refalbaran"));
+	m_albaranp->setDBvalue("idalmacen", DBvalue("idalmacen"));
 
 	m_albaranp->DBRecord::guardar();
     subform3->setColumnValue ( "idalbaranp", m_albaranp->DBvalue ( "idalbaranp" ) );
@@ -570,10 +598,15 @@ void CompraVentaView::on_mui_guardar_clicked()
 	subform3->guardar();
 	m_descuentos3->guardar();
 
-    _depura ( "END CompraVentaView::on_mui_guardar_clicked", 0 );
+    _depura ( "END CompraVentaView::guardarPost", 0 );
+} catch(...) {
+	_depura("error en la funicon",2);
+} // end try
+	return 0;
 }
 
 void CompraVentaView::on_mui_refalbaran_returnPressed() {
+/*
 	QString nuevaref = mui_refalbaran->text();
 	QString idalbaran = "";
 	QString query = "SELECT * FROM albaran WHERE refalbaran='"+nuevaref+"'";
@@ -601,6 +634,7 @@ void CompraVentaView::on_mui_refalbaran_returnPressed() {
 		m_descuentos3->cargar(cur1->valor("idalbaranp"));
 	} // end if
 	delete cur1;
+*/
 }
 
 void CompraVentaView::imprimir() {
