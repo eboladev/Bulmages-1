@@ -38,12 +38,19 @@ int Ticket_agregarLinea_Post ( Ticket *tick, DBRecord * &item )
 
 int Ticket_insertarArticuloNL_Post ( Ticket *tick )
 {
+	cursor2 *cur=0;
+
     QString query = "SELECT * FROM alias WHERE cadalias = '" + ( ( EmpresaTPV * ) tick->empresaBase() )->valorInput() + "'";
-    cursor2 *cur = tick->empresaBase() ->cargacursor ( query );
-    if ( !cur->eof() ) {
-        tick->insertarArticulo ( cur->valor ( "idarticulo" ), Fixed ( "1" ) );
+
+    cur = tick->empresaBase() ->cargacursor ( query );
+    if (cur) {
+	if ( !cur->eof() ) {
+		tick->insertarArticulo ( cur->valor ( "idarticulo" ), Fixed ( "1" ) );
+	} // end if
+	
+		
+	delete cur;
     } // end if
-    delete cur;
 
     return 0;
 }
@@ -57,7 +64,7 @@ int Ticket_insertarArticulo_Post ( Ticket *tick )
     static int semaforo = 0;
     if ( semaforo == 0 ) {
         semaforo = 1;
-        QString query = "SELECT * FROM alias WHERE cadaliaas = '" + ( ( EmpresaTPV * ) tick->empresaBase() )->valorInput() + "'";
+        QString query = "SELECT * FROM alias WHERE cadalias = '" + ( ( EmpresaTPV * ) tick->empresaBase() )->valorInput() + "'";
         cursor2 *cur = tick->empresaBase() ->cargacursor ( query );
         if ( !cur->eof() ) {
             tick->insertarArticulo ( cur->valor ( "idarticulo" ), Fixed ( "1" ) );
