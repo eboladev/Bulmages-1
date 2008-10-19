@@ -64,30 +64,40 @@ BusquedaAlmacen::~BusquedaAlmacen()
 void BusquedaAlmacen::setidalmacen ( QString idalmacen )
 {
     _depura ( "BusquedaAlmacen::setidalmacen", 0, idalmacen );
-    if ( m_cursorcombo != NULL ) {
-        delete m_cursorcombo;
-    } // end if
-    m_cursorcombo = empresaBase() ->cargacursor ( "SELECT * FROM almacen ORDER BY nomalmacen" );
-    if ( !m_cursorcombo ) return;
-    int i = 0;
-    int i1 = 0;
-    int i2 = 0;
-    clear();
-    addItem ( "--" );
-    while ( !m_cursorcombo->eof() ) {
-        i++;
-        if ( m_cursorcombo->valor ( "codigoalmacen" ) == m_codigoalmacen )
-            i2 = i;
-        if ( m_cursorcombo->valor ( "idalmacen" ) == idalmacen )
-            i1 = i;
-        addItem ( m_cursorcombo->valor ( "nomalmacen" ) );
-        m_cursorcombo->siguienteregistro();
-    } //end while
-    if ( i1 != 0 ) {
-        setCurrentIndex ( i1 );
-    } else {
-        setCurrentIndex ( i2 );
-    } // end if
+
+     try {
+	/// Si no existe la empresaBase() pq aun no ha sido establecida salimos
+	if (!empresaBase()) return;
+
+	/// Si ya esta creado el cursorcombo lo borramos.	
+	if ( m_cursorcombo != NULL ) {
+		delete m_cursorcombo;
+	} // end if
+
+	m_cursorcombo = empresaBase() ->cargacursor ( "SELECT * FROM almacen ORDER BY nomalmacen" );
+	if ( !m_cursorcombo ) return;
+	int i = 0;
+	int i1 = 0;
+	int i2 = 0;
+	clear();
+	addItem ( "--" );
+	while ( !m_cursorcombo->eof() ) {
+		i++;
+		if ( m_cursorcombo->valor ( "codigoalmacen" ) == m_codigoalmacen )
+		i2 = i;
+		if ( m_cursorcombo->valor ( "idalmacen" ) == idalmacen )
+		i1 = i;
+		addItem ( m_cursorcombo->valor ( "nomalmacen" ) );
+		m_cursorcombo->siguienteregistro();
+	} //end while
+	if ( i1 != 0 ) {
+		setCurrentIndex ( i1 );
+	} else {
+		setCurrentIndex ( i2 );
+	} // end if
+    } catch(...) {
+	_depura("Error en BusquedaAlmacen::setidalmacen", 2);
+    } // end try
     _depura ( "END BusquedaAlmacen::setidalmacen", 0, idalmacen );
 }
 

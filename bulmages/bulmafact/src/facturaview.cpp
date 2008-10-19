@@ -83,18 +83,20 @@ FacturaView::FacturaView ( Company *comp, QWidget *parent )
         } // end if
         subform2->setEmpresaBase ( comp );
         mui_idalmacen->setEmpresaBase ( comp );
-        mui_idalmacen->setidalmacen ( "" );
         mui_idforma_pago->setEmpresaBase ( comp );
-        mui_idforma_pago->setidforma_pago ( "" );
         mui_idcliente->setEmpresaBase ( comp );
         m_descuentos->setEmpresaBase ( comp );
         mui_codigoserie_factura->setEmpresaBase ( comp );
-        mui_codigoserie_factura->setcodigoserie_factura ( "" );
         mui_reffactura->setEmpresaBase ( comp );
 
         /// Inicializamos FichaBf.
         setListaLineas ( subform2 );
         setListaDescuentos ( m_descuentos );
+
+	/// Establecemos valores por defecto en los combo boxes para que no se queden sin inicializar.
+        mui_idalmacen->setidalmacen ( "" );
+        mui_codigoserie_factura->setcodigoserie_factura ( "" );
+        mui_idforma_pago->setidforma_pago ( "" );
 
         m_totalBases->setReadOnly ( TRUE );
         m_totalBases->setAlignment ( Qt::AlignRight );

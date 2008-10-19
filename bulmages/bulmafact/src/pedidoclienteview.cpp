@@ -81,15 +81,15 @@ PedidoClienteView::PedidoClienteView ( Company *comp, QWidget *parent )
         subform3->setEmpresaBase ( comp );
         mui_idcliente->setEmpresaBase ( comp );
         mui_idforma_pago->setEmpresaBase ( comp );
-        mui_idforma_pago->setidforma_pago ( "" );
         m_descuentos->setEmpresaBase ( comp );
         mui_idalmacen->setEmpresaBase ( comp );
-        mui_idalmacen->setidalmacen ( "" );
         mui_idtrabajador->setEmpresaBase ( comp );
-        mui_idtrabajador->setidtrabajador ( "" );
         mui_refpedidocliente->setEmpresaBase ( comp );
         setListaLineas ( subform3 );
         setListaDescuentos ( m_descuentos );
+        mui_idforma_pago->setidforma_pago ( "" );
+        mui_idalmacen->setidalmacen ( "" );
+        mui_idtrabajador->setidtrabajador ( "" );
         meteWindow ( windowTitle(), this, FALSE );
     } catch ( ... ) {
         mensajeInfo ( tr ( "Error al crear el pedido cliente" ), this );

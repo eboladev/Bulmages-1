@@ -366,6 +366,8 @@ QString configuracion::nombre ( int i )
         return "CONF_IDFORMA_PAGO_VISA";
     if ( i == CONF_IDFORMA_PAGO_CONTADO )
         return "CONF_IDFORMA_PAGO_CONTADO";
+    if ( i == CONF_SERIE_FACTURA_DEFECTO )
+        return "CONF_SERIE_FACTURA_DEFECTO";
     if ( i == CONF_DIR_PLUGINS )
         return "CONF_DIR_PLUGINS";
     return "";

@@ -67,6 +67,11 @@ BusquedaSerieFactura::~BusquedaSerieFactura()
 void BusquedaSerieFactura::setcodigoserie_factura ( QString codigo )
 {
     _depura ( "BusquedaSerieFactura::setcodigoserie_factura", 0 );
+    /// Si lo que se pasa como serie es un valor malo cogemos la serie de factura por defecto.
+    if (codigo.isEmpty() || codigo == "0") {
+	codigo = confpr->valor(CONF_SERIE_FACTURA_DEFECTO);
+    } // end if
+
     if ( m_cursorcombo != NULL )
         delete m_cursorcombo;
     m_cursorcombo = empresaBase() ->cargacursor ( "SELECT * FROM serie_factura" );
