@@ -61,6 +61,7 @@ public:
 
     void pintatotales ( Fixed, Fixed, Fixed, Fixed, Fixed, Fixed );
     void generarFactura();
+    void generarFacturaProveedor();
 	virtual int guardarPost();
 	void imprimir();
 

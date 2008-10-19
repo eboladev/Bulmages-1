@@ -305,6 +305,7 @@ void AlbaranProveedorView::generarFacturaProveedor()
         bud->pintar();
         bud->show();
 
+	/// Traspasamos las lineas de factura
         QString l;
         SDBRecord *linea, *linea1;
         for ( int i = 0; i < m_listalineas->rowCount(); ++i ) {
