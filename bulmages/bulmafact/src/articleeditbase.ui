@@ -680,7 +680,7 @@
         <x>0</x>
         <y>0</y>
         <width>853</width>
-        <height>765</height>
+        <height>775</height>
        </rect>
       </property>
       <attribute name="title" >
@@ -857,7 +857,7 @@
            <number>5</number>
           </property>
           <item row="0" column="0" colspan="4" >
-           <widget class="BusquedaTipoArticulo" name="mui_idtipoarticulo" />
+           <widget class="BusquedaTipoArticulo" name="mui_idtipo_articulo" />
           </item>
           <item row="1" column="0" >
            <widget class="QLabel" name="textLabel2" >
@@ -1242,7 +1242,7 @@
   <tabstop>mui_tab</tabstop>
   <tabstop>mui_idfamilia</tabstop>
   <tabstop>mui_codarticulo</tabstop>
-  <tabstop>mui_idtipoarticulo</tabstop>
+  <tabstop>mui_idtipo_articulo</tabstop>
   <tabstop>mui_nomarticulo</tabstop>
   <tabstop>mui_abrevarticulo</tabstop>
   <tabstop>mui_pvparticulo</tabstop>

@@ -82,7 +82,7 @@ ArticuloView::ArticuloView ( Company *comp, QWidget *parent )
         } // end if
 
         mui_idfamilia->setEmpresaBase ( comp );
-        mui_idtipoarticulo->setEmpresaBase ( comp );
+        mui_idtipo_articulo->setEmpresaBase ( comp );
         mui_idtipo_iva->setEmpresaBase ( comp );
         m_componentes->setEmpresaBase ( comp );
 
