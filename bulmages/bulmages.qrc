@@ -1,6 +1,41 @@
 <!DOCTYPE RCC>
 <RCC version="1.0">
     <qresource prefix="/Images">
+        <file alias="edit-save.svg">images/oxygen/actions/document_save.svg</file>
+        <file alias="edit-delete.svg">images/oxygen/actions/edit_delete.svg</file>
+        <file alias="document-new.svg">images/oxygen/actions/document.svg</file>
+        <file alias="edit-find.svg">images/oxygen/actions/edit_find.svg</file>
+        <file alias="document-open.svg">images/oxygen/actions/document_open.svg</file>
+        <file alias="document-print.svg">images/oxygen/actions/document_print.svg</file>
+        <file alias="view-refresh.svg">images/oxygen/actions/view_refresh.svg</file>
+        <file alias="document-properties.svg">images/oxygen/actions/document_properties.svg</file>
+        <file alias="document-import.svg">images/oxygen/actions/document_import.svg</file>
+        <file alias="document-export.svg">images/oxygen/actions/document_export.svg</file>
+        <file alias="mail-send.svg">images/oxygen/actions/mail_send.svg</file>
+        <file alias="selection-invert.svg">images/default-spa/Actions/selection-invert.svg</file>
+        <file alias="document-report.svg">images/oxygen/actions/document_report.svg</file>
+        <file alias="product-list.svg">images/default-spa/mimetypes/product-list.svg</file>
+		<file alias="product.svg">images/default-spa/mimetypes/product.svg</file>
+		<file alias="product-family.svg">images/default-spa/mimetypes/product-family.svg</file>
+		<file alias="client.svg">images/default-spa/mimetypes/client.svg</file>
+		<file alias="client-list.svg">images/default-spa/mimetypes/client-list.svg</file>
+		<file alias="supplier.svg">images/default-spa/mimetypes/supplier.svg</file>
+		<file alias="supplier-list.svg">images/default-spa/mimetypes/supplier-list.svg</file>
+		<file alias="warehouse.svg">images/default-spa/mimetypes/warehouse.svg</file>
+		<file alias="warehouse-list.svg">images/default-spa/mimetypes/warehouse-list.svg</file>
+		<file alias="bank.svg">images/default-spa/mimetypes/bank.svg</file>
+		<file alias="bank-list.svg">images/default-spa/mimetypes/bank-list.svg</file>
+		<file alias="cash.svg">images/default-spa/mimetypes/cash.svg</file>
+		<file alias="cash-list.svg">images/default-spa/mimetypes/cash-list.svg</file>
+		<file alias="receive.svg">images/default-spa/mimetypes/receive.svg</file>
+		<file alias="receive-list.svg">images/default-spa/mimetypes/receive-list.svg</file>
+		<file alias="pay.svg">images/default-spa/mimetypes/pay.svg</file>
+		<file alias="pay-list.svg">images/default-spa/mimetypes/pay-list.svg</file>
+		<file alias="client-quote.svg">images/default-spa/mimetypes/client-quote.svg</file>
+		<file alias="client-quote-list.svg">images/default-spa/mimetypes/client-quote-list.svg</file>
+    </qresource>
+<!-- Cambiando el prefix por el de Images se puede cambiar el conjunto de imagenes -->
+    <qresource prefix="/Images_defaultspa">
         <file alias="edit-save.svg">images/default-spa/Actions/edit-save.svg</file>
         <file alias="edit-delete.svg">images/default-spa/Actions/edit-delete.svg</file>
         <file alias="document-new.svg">images/default-spa/Actions/document-new.svg</file>
