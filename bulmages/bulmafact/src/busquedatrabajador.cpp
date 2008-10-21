@@ -65,6 +65,11 @@ BusquedaTrabajador::~BusquedaTrabajador()
 void BusquedaTrabajador::setidtrabajador ( QString idtrabajador )
 {
     _depura ( "BusquedaTrabajador::setidtrabajador", 0 );
+
+	/// Si lo que se pasa como forma de pago es un valor malo cogemos la forma de pago por defecto.
+	if (idtrabajador.isEmpty() || idtrabajador == "0")
+		idtrabajador = confpr->valor(CONF_IDTRABAJADOR_DEFECTO);
+
     if ( m_cursorcombo != NULL )
         delete m_cursorcombo;
     m_cursorcombo = empresaBase() ->cargacursor ( "SELECT * FROM trabajador" );

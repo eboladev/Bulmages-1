@@ -33,6 +33,7 @@
 		<file alias="pay-list.svg">images/default-spa/mimetypes/pay-list.svg</file>
 		<file alias="client-quote.svg">images/default-spa/mimetypes/client-quote.svg</file>
 		<file alias="client-quote-list.svg">images/default-spa/mimetypes/client-quote-list.svg</file>
+		<file alias="vat.svg">images/oxygen/actions/vat.svg</file>
     </qresource>
 <!-- Cambiando el prefix por el de Images se puede cambiar el conjunto de imagenes -->
     <qresource prefix="/Images_defaultspa">
@@ -68,6 +69,7 @@
 		<file alias="pay-list.svg">images/default-spa/mimetypes/pay-list.svg</file>
 		<file alias="client-quote.svg">images/default-spa/mimetypes/client-quote.svg</file>
 		<file alias="client-quote-list.svg">images/default-spa/mimetypes/client-quote-list.svg</file>
+		<file alias="vat.svg">images/oxygen/actions/vat.svg</file>
     </qresource>
     <qresource prefix="/BulmaCont32x32" >
         <file>images/png/decrypted.png</file>
@@ -133,7 +135,6 @@
         <file>images/png/i_help.xpm</file>
         <file>images/png/i_hwInfo.png</file>
         <file>images/png/i_immportar.png</file>
-        <file>images/png/i_iva.xpm</file>
         <file>images/png/i_kate.png</file>
         <file>images/png/i_kcmkwm.png</file>
         <file>images/png/i_kcmsystem.png</file>
@@ -231,10 +232,6 @@
         <file>images/png/16x16/i_bulmages_informexreferencia_listado.16x16.png</file>
         <file>images/png/16x16/i_bulmages_informexreferencia_mas.16x16.png</file>
         <file>images/png/16x16/i_bulmages_informexreferencia_menos.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_iva.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_iva_listado.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_iva_mas.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_iva_menos.16x16.png</file>
         <file>images/png/16x16/i_bulmages_monedas.16x16.png</file>
         <file>images/png/16x16/i_bulmages_monedas_listado.16x16.png</file>
         <file>images/png/16x16/i_bulmages_monedas_mas.16x16.png</file>
@@ -322,10 +319,6 @@
         <file>images/png/32x32/i_bulmages_informexreferencia_listado.32x32.png</file>
         <file>images/png/32x32/i_bulmages_informexreferencia_mas.32x32.png</file>
         <file>images/png/32x32/i_bulmages_informexreferencia_menos.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_iva.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_iva_listado.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_iva_mas.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_iva_menos.32x32.png</file>
         <file>images/png/32x32/i_bulmages_monedas.32x32.png</file>
         <file>images/png/32x32/i_bulmages_monedas_listado.32x32.png</file>
         <file>images/png/32x32/i_bulmages_monedas_mas.32x32.png</file>
@@ -414,10 +407,6 @@
         <file>images/png/48x48/i_bulmages_informexreferencia_listado.48x48.png</file>
         <file>images/png/48x48/i_bulmages_informexreferencia_mas.48x48.png</file>
         <file>images/png/48x48/i_bulmages_informexreferencia_menos.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_iva.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_iva_listado.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_iva_mas.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_iva_menos.48x48.png</file>
         <file>images/png/48x48/i_bulmages_monedas.48x48.png</file>
         <file>images/png/48x48/i_bulmages_monedas_listado.48x48.png</file>
         <file>images/png/48x48/i_bulmages_monedas_mas.48x48.png</file>

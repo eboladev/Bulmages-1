@@ -45,6 +45,7 @@ private:
     /// doble click sobre la lista)
     edmode m_modo;
     QString m_title;
+	QMap<QString,QString> m_variables;
 
 protected:
     void setModoConsulta();
@@ -55,6 +56,7 @@ protected:
 public:
     Ficha ( QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode );
     Ficha ( EmpresaBase *emp = NULL, QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode );
+	void substrVars(QString &);
     virtual ~Ficha();
     virtual int guardar();
     virtual int guardarPost();

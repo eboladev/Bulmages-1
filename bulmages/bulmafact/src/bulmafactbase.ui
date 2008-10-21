@@ -29,9 +29,9 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>64</y>
+     <y>66</y>
      <width>991</width>
-     <height>483</height>
+     <height>479</height>
     </rect>
    </property>
   </widget>
@@ -41,7 +41,7 @@
      <x>0</x>
      <y>0</y>
      <width>991</width>
-     <height>22</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuCompras" >
@@ -150,9 +150,9 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>547</y>
+     <y>545</y>
      <width>991</width>
-     <height>22</height>
+     <height>24</height>
     </rect>
    </property>
   </widget>
@@ -160,7 +160,7 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>22</y>
+     <y>24</y>
      <width>494</width>
      <height>42</height>
     </rect>
@@ -220,7 +220,7 @@
    <property name="geometry" >
     <rect>
      <x>494</x>
-     <y>22</y>
+     <y>24</y>
      <width>497</width>
      <height>42</height>
     </rect>
@@ -640,7 +640,7 @@
   <action name="actionTipoIVA" >
    <property name="icon" >
     <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/Bulmafact32x32/images/png/32x32/i_bulmages_iva_listado.32x32.png</normaloff>:/Bulmafact32x32/images/png/32x32/i_bulmages_iva_listado.32x32.png</iconset>
+     <normaloff>:/Images/vat.svg</normaloff>:/Images/vat.svg</iconset>
    </property>
    <property name="text" >
     <string>Tipos de IVA</string>
@@ -649,7 +649,7 @@
   <action name="actionTasaIVA" >
    <property name="icon" >
     <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/Bulmafact32x32/images/png/32x32/i_bulmages_iva_mas.32x32.png</normaloff>:/Bulmafact32x32/images/png/32x32/i_bulmages_iva_mas.32x32.png</iconset>
+     <normaloff>:/Images/vat.svg</normaloff>:/Images/vat.svg</iconset>
    </property>
    <property name="text" >
     <string>Tasas de IVA</string>

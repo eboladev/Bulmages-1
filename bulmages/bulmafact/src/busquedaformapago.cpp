@@ -67,6 +67,11 @@ BusquedaFormaPago::~BusquedaFormaPago()
 void BusquedaFormaPago::setidforma_pago ( QString idforma_pago )
 {
     _depura ( "BusquedaFormaPago::setidforma_pago", 0 );
+
+	/// Si lo que se pasa como forma de pago es un valor malo cogemos la forma de pago por defecto.
+	if (idforma_pago.isEmpty() || idforma_pago == "0")
+		idforma_pago = confpr->valor(CONF_IDFORMA_PAGO_DEFECTO);
+
     if ( m_cursorcombo != NULL )
         delete m_cursorcombo;
     m_cursorcombo = empresaBase() ->cargacursor ( "SELECT * FROM forma_pago" );

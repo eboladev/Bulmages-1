@@ -210,6 +210,7 @@
 #define CONF_IDFORMA_PAGO_VISA         524
 #define CONF_IDFORMA_PAGO_CONTADO      525
 #define CONF_SERIE_FACTURA_DEFECTO   526
+#define CONF_IDFORMA_PAGO_DEFECTO      527
 
 /// CONF_DEBUG indica el modo de debug.
 #define CONF_DEBUG                   550

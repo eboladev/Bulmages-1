@@ -782,6 +782,42 @@ void Ficha::pintarPost()
 
 
 
+/// Sustituye valores en el texto pasado como variables por su valor.
+void Ficha::substrVars ( QString &buff ) {
+
+	int pos = 0;
+
+    /// Tratamos la sustitucion de variables de m_variables
+	QMapIterator<QString, QString> i(m_variables);
+	while (i.hasNext()) {
+		i.next();
+        buff.replace ( "[" + i.key() + "]", i.value() );
+	} // end while
+
+
+    /// Tratamos la sustitucion de los valores de configuracion.
+    for ( int i = 0; i < 500; i++ ) {
+        if ( confpr->nombre ( i ) != "" ) {
+            buff.replace ( "[" + confpr->nombre ( i ) + "]", confpr->valor ( i ) );
+        } // end if
+    } // end for
+
+    pos =  0;
+    /// Buscamos parametros en el query y los ponemos.
+    QRegExp rx ( "\\[(\\w*)\\]" );
+    while ( ( pos = rx.indexIn ( buff, pos ) ) != -1 ) {
+        if ( exists ( rx.cap ( 1 ) ) ) {
+            buff.replace ( pos, rx.matchedLength(), DBvalue ( rx.cap ( 1 ) ) );
+            pos = 0;
+        } else {
+            pos += rx.matchedLength();
+        }
+    } // end while
+
+}
+
+
+
 /// Busca strings del tipo [xxxx] entro del texto pasado y los sustituye
 /// Por valores existentes en la base de datos.
 /// Tambien busca los parametros PARAM e IFACE para tambien tratarlos.
@@ -853,6 +889,16 @@ int Ficha::trataTags ( QString &buff )
         pos = 0;
     } // end while
 
+	/// Buscamos establecimiento de variables y los ponemos en m_variables
+	pos = 0;
+	QRegExp rx54 ( "<!--\\s*SETVAR\\s*NAME\\s*=\\s*\"([^\"]*)\"\\s*VALUE\\s*=\\s*\"([^\"]*)\"\\s*-->" );
+	rx54.setMinimal ( TRUE );
+	while ( ( pos = rx54.indexIn ( buff, pos ) ) != -1) {
+		m_variables[rx54.cap (1)] = rx54.cap(2);
+		buff.replace( pos, rx54.matchedLength(), "");
+		pos = 0;
+	} // end while
+
 
     ///Buscamos parametros, los preguntamos y los ponemos.
     pos = 0;
@@ -875,24 +921,7 @@ int Ficha::trataTags ( QString &buff )
     } // end while
 
 
-    /// Tratamos la sustitucion de los valores de configuracion.
-    for ( int i = 0; i < 500; i++ ) {
-        if ( confpr->nombre ( i ) != "" ) {
-            buff.replace ( "[" + confpr->nombre ( i ) + "]", confpr->valor ( i ) );
-        } // end if
-    } // end for
-
-    pos =  0;
-    /// Buscamos parametros en el query y los ponemos.
-    QRegExp rx ( "\\[(\\w*)\\]" );
-    while ( ( pos = rx.indexIn ( buff, pos ) ) != -1 ) {
-        if ( exists ( rx.cap ( 1 ) ) ) {
-            buff.replace ( pos, rx.matchedLength(), DBvalue ( rx.cap ( 1 ) ) );
-            pos = 0;
-        } else {
-            pos += rx.matchedLength();
-        }
-    } // end while
+	substrVars(buff);
 
     /// Buscamos Query's en condicional
     pos = 0;
@@ -971,16 +1000,8 @@ QString Ficha::trataIfQuery ( const QString &query, const QString &datos )
     QString query1 = query;
 
     /// Buscamos parametros en el query y los ponemos.
-    QRegExp rx ( "\\[(\\w*)\\]" );
-    int pos =  0;
-    while ( ( pos = rx.indexIn ( query1, pos ) ) != -1 ) {
-        if ( exists ( rx.cap ( 1 ) ) ) {
-            query1.replace ( pos, rx.matchedLength(), DBvalue ( rx.cap ( 1 ) ) );
-            pos = 0;
-        } else {
-            pos += rx.matchedLength();
-        }
-    } // end while
+	substrVars(query1);
+
     /// Cargamos el query y lo recorremos
     cursor2 *cur = empresaBase() ->cargacursor ( query1 );
     if ( !cur ) return "";
@@ -1005,16 +1026,8 @@ QString Ficha::trataIf ( const QString &query, const QString &datos, const QStri
     QString query1 = query;
 
     /// Buscamos parametros en el query y los ponemos.
-    QRegExp rx ( "\\[(\\w*)\\]" );
-    int pos =  0;
-    while ( ( pos = rx.indexIn ( query1, pos ) ) != -1 ) {
-        if ( exists ( rx.cap ( 1 ) ) ) {
-            query1.replace ( pos, rx.matchedLength(), DBvalue ( rx.cap ( 1 ) ) );
-            pos = 0;
-        } else {
-            pos += rx.matchedLength();
-        }
-    } // end while
+	substrVars(query1);
+
     QString query2 = "SELECT (" + query1 + ") AS res";
     /// Cargamos el query y lo recorremos
     cursor2 *cur = empresaBase() ->cargacursor ( query2 );
@@ -1044,16 +1057,7 @@ QString Ficha::trataQuery ( const QString &query, const QString &datos )
     QString query1 = query;
 
     /// Buscamos parametros en el query y los ponemos.
-    QRegExp rx ( "\\[(\\w*)\\]" );
-    int pos =  0;
-    while ( ( pos = rx.indexIn ( query1, pos ) ) != -1 ) {
-        if ( exists ( rx.cap ( 1 ) ) ) {
-            query1.replace ( pos, rx.matchedLength(), DBvalue ( rx.cap ( 1 ) ) );
-            pos = 0;
-        } else {
-            pos += rx.matchedLength();
-        }
-    } // end while
+	substrVars(query1);
 
     /// Cargamos el query y lo recorremos
     cursor2 *cur = empresaBase() ->cargacursor ( query1 );
@@ -1095,16 +1099,7 @@ QString Ficha::trataExists ( const QString &query, const QString &datos )
     QString query1 = query;
 
     /// Buscamos parametros en el query y los ponemos.
-    QRegExp rx ( "\\[(\\w*)\\]" );
-    int pos =  0;
-    while ( ( pos = rx.indexIn ( query1, pos ) ) != -1 ) {
-        if ( exists ( rx.cap ( 1 ) ) ) {
-            query1.replace ( pos, rx.matchedLength(), DBvalue ( rx.cap ( 1 ) ) );
-            pos = 0;
-        } else {
-            pos += rx.matchedLength();
-        }
-    } // end while
+	substrVars(query1);
 
     QFile file ( query1 );
     if ( file.exists() )
@@ -1122,6 +1117,10 @@ QString Ficha::trataExists ( const QString &query, const QString &datos )
 int Ficha::generaRML ( const QString &arch )
 {
     _depura ( "Ficha::generaRML", 0 );
+
+	/// Vaciamos las variables de RML
+	m_variables.clear();
+
     /// Disparamos los plugins
     int res = g_plugins->lanza ( "Ficha_generaRML", this );
     if ( res != 0 ) {
