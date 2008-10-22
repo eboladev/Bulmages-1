@@ -35,8 +35,7 @@ add_subdirectory(pluginresarticulos)
 add_subdirectory(pluginalias)
 add_subdirectory(plugindatosbase)
 
-#pluginivainc en desarrollo
-#add_subdirectory(pluginivainc)
+add_subdirectory(pluginivainc)
 
 add_subdirectory(pluginsyncbulmacont)
 add_subdirectory(plugininformeclientessxc)

@@ -853,6 +853,9 @@ void Ticket::ponerPrecio ( QString precio )
         return;
     } // end if
     m_lineaActual->setDBvalue ( "pvplalbaran", valor.toQString() );
+
+    g_plugins->lanza ( "Ticket_ponerPrecio_Post", this );
+
     pintar();
 }
 

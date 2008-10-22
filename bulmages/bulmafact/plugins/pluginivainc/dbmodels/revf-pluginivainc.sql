@@ -62,6 +62,13 @@ BEGIN
 		ALTER TABLE articulo ADD COLUMN ivaincarticulo BOOLEAN DEFAULT FALSE;
 	END IF;
 
+	SELECT INTO as * FROM pg_attribute  WHERE attname=''ivaincarticulo'';
+	IF NOT FOUND THEN
+		ALTER TABLE lalbaran ADD COLUMN pvpivainclalbaran NUMERIC(12,2) DEFAULT 0;
+		ALTER TABLE lfactura ADD COLUMN pvpivainclfactura NUMERIC(12,2) DEFAULT 0;
+		ALTER TABLE articulo ADD COLUMN pvpivaincarticulo NUMERIC(12,2) DEFAULT 0;
+	END IF;
+
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;
@@ -81,9 +88,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre=''DBRev-IVAInc'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.10.1-0001'' WHERE nombre=''DBRev-IVAInc'';
+		UPDATE CONFIGURACION SET valor=''0.10.1-0002'' WHERE nombre=''DBRev-IVAInc'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DBRev-IVAInc'', ''0.10.1-0001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DBRev-IVAInc'', ''0.10.1-0002'');
 	END IF;
 	RETURN 0;
 END;

@@ -456,15 +456,15 @@ void CompraVentaView::generarFacturaProveedor()
             /// Si no salimos de la funci&oacute;n.
             if ( QMessageBox::question ( this,
                                          tr ( "Factura de proveedor existente" ),
-                                         tr ( "Existe una factura de este proveedor con la misma referencia que este albaran. Desea abrirla para verificar?" ),
+                                         tr ( "Existe una factura de este proveedor con la misma referencia que este albaran. Desea rehacerla ?" ),
                                          tr ( "&Si" ), tr ( "&No" ), QString::null, 0, 1 ) ) {
                 return;
             } // end if
-            FacturaProveedorView *bud = empresaBase() ->newFacturaProveedorView();
-            empresaBase() ->m_pWorkspace->addWindow ( bud );
-            bud->cargar ( cur->valor ( "idfacturap" ) );
-            bud->show();
-            return;
+		SQLQuery = "DELETE FROM lfacturap WHERE idfacturap=" + cur->valor("idfacturap");
+		empresaBase()->ejecuta( SQLQuery);
+		SQLQuery = "DELETE FROM facturap WHERE idfacturap = " + cur->valor("idfacturap");
+		empresaBase()->ejecuta( SQLQuery);
+
         } // end if
         delete cur;
 
@@ -510,6 +510,8 @@ void CompraVentaView::generarFacturaProveedor()
                 linea1->setDBvalue ( "codigocompletoarticulo", linea->DBvalue ( "codigocompletoarticulo" ) );
                 linea1->setDBvalue ( "nomarticulo", linea->DBvalue ( "nomarticulo" ) );
                 linea1->setDBvalue ( "ivalfacturap", linea->DBvalue ( "ivalalbaranp" ) );
+		mensajeInfo(linea->DBvalue( "impesplalbaranp"));
+                linea1->setDBvalue ( "impesplfacturap", linea->DBvalue ( "impesplalbaranp" ) );
                 bud->getlistalineas() ->setProcesarCambios ( TRUE );
             } // end if
         } // end for
@@ -618,9 +620,10 @@ void CompraVentaView::generarFactura()
                 bud->getlistalineas() ->nuevoRegistro();
                 bud->getlistalineas() ->setProcesarCambios ( FALSE );
                 linea1->setDBvalue ( "codigocompletoarticulo", linea->DBvalue ( "codigocompletoarticulo" ) );
-                linea1->setDBvalue ( "desclfactura", linea->DBvalue ( "desclalbaran" ) );
+                linea1->setDBvalue ( "desclfactura", linea->DBvalue ( "desclalbaran" ));
                 linea1->setDBvalue ( "cantlfactura", linea->DBvalue ( "cantlalbaran" ) );
                 linea1->setDBvalue ( "pvplfactura", linea->DBvalue ( "pvplalbaran" ) );
+		linea1->setDBvalue ( "reqeqlfactura", linea->DBvalue( "reqeqlalbaran") );
                 linea1->setDBvalue ( "ivalfactura", linea->DBvalue ( "ivalalbaran" ) );
                 linea1->setDBvalue ( "descuentolfactura", linea->DBvalue ( "descuentolalbaran" ) );
                 linea1->setDBvalue ( "idarticulo", linea->DBvalue ( "idarticulo" ) );

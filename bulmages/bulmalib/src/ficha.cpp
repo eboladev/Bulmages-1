@@ -889,39 +889,24 @@ int Ficha::trataTags ( QString &buff )
         pos = 0;
     } // end while
 
+
 	/// Buscamos establecimiento de variables y los ponemos en m_variables
 	pos = 0;
 	QRegExp rx54 ( "<!--\\s*SETVAR\\s*NAME\\s*=\\s*\"([^\"]*)\"\\s*VALUE\\s*=\\s*\"([^\"]*)\"\\s*-->" );
 	rx54.setMinimal ( TRUE );
 	while ( ( pos = rx54.indexIn ( buff, pos ) ) != -1) {
-		m_variables[rx54.cap (1)] = rx54.cap(2);
+		QString valor = rx54.cap(2);
+		substrVars(valor);
+		m_variables[rx54.cap (1)] = valor;
 		buff.replace( pos, rx54.matchedLength(), "");
 		pos = 0;
 	} // end while
 
-
-    ///Buscamos parametros, los preguntamos y los ponemos.
-    pos = 0;
-    QRegExp rx69 ( "<!--\\s*PARAM\\s*NAME\\s*=\\s*\"([^\"]*)\"\\s*TYPE\\s*=\\s*\"([^\"]*)\"\\s*-->" );
-    rx69.setMinimal ( TRUE );
-    while ( ( pos = rx69.indexIn ( buff, pos ) ) != -1 ) {
-        bool ok = FALSE;
-        while ( !ok ) {
-            QString text = QInputDialog::getText ( this, tr ( "Parametros de Carga" ),
-                                                   rx69.cap ( 1 ), QLineEdit::Normal,
-                                                   "", &ok );
-            if ( ok && !text.isEmpty() ) {
-
-                addDBCampo ( rx69.cap ( 1 ), DBCampo::DBvarchar, DBCampo::DBNoSave, rx69.cap ( 1 )  );
-                setDBvalue ( rx69.cap ( 1 ), text );
-            } // end if
-        } //end while
-        buff.replace ( pos, rx69.matchedLength(), "" );
-        pos = 0;
-    } // end while
-
-
+	/// Tratamos las variables establecidas.
 	substrVars(buff);
+
+
+
 
     /// Buscamos Query's en condicional
     pos = 0;
@@ -1066,6 +1051,7 @@ QString Ficha::trataQuery ( const QString &query, const QString &datos )
         QString salidatemp = datos;
 
         /// Buscamos cadenas perdidas adicionales que puedan quedar por poner.
+
         QRegExp rx ( "\\[(\\w*)\\]" );
         int pos =  0;
         while ( ( pos = rx.indexIn ( salidatemp, pos ) ) != -1 ) {
