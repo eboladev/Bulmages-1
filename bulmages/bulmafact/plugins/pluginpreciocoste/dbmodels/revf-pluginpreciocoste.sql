@@ -96,6 +96,39 @@ CREATE TRIGGER actpvparticulot
     EXECUTE PROCEDURE actpvparticulo();
 
 
+
+
+CREATE OR REPLACE FUNCTION calcstocks() RETURNS INTEGER AS '
+DECLARE
+	ms RECORD;
+	bs RECORD;
+	cs RECORD;
+	salidas1 NUMERIC(12,2);
+	entradas1 NUMERIC(12,2);
+BEGIN
+
+    FOR ms IN SELECT * FROM articulo  LOOP
+	SELECT INTO bs sum(cantlalbaran) AS salidas FROM lalbaran WHERE idarticulo = ms.idarticulo;
+	IF bs.salidas IS NOT NULL THEN
+		salidas1 := bs.salidas;
+	ELSE
+		salidas1 := 0;
+	END IF;
+
+	SELECT INTO cs sum(cantlalbaranp) AS entradas FROM lalbaranp WHERE idarticulo = ms.idarticulo;
+	IF cs.entradas IS NOT NULL THEN
+		entradas1 := cs.entradas;
+	ELSE
+		entradas1 := 0;
+	END IF;
+	UPDATE articulo set stockarticulo = entradas1 - salidas1 WHERE idarticulo =ms.idarticulo;
+	RAISE NOTICE '' Articulo % con entradas % y salidas %'', ms.idarticulo, entradas1, salidas1;
+    END LOOP;
+
+	RETURN 0;
+END;
+'   LANGUAGE plpgsql;
+
 -- ==============================================================================
 
 

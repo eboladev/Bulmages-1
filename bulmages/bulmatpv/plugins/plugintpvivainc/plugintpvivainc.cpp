@@ -111,6 +111,11 @@ int Ticket_imprimir(Ticket *tick)
         empresa.nombre = cur->valor ( "valor" );
     delete cur;
 
+    cur = tick->empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='CIF'" );
+    if ( !cur->eof() )
+        empresa.nombre += "\n" + cur->valor ( "valor" );
+    delete cur;
+
     cur = tick->empresaBase() ->cargacursor ( "SELECT * FROM configuracion WHERE nombre='DireccionCompleta'" );
     if ( !cur->eof() )
         empresa.direccionCompleta = cur->valor ( "valor" );
@@ -160,13 +165,20 @@ int Ticket_imprimir(Ticket *tick)
     DBRecord *linea;
     base totales;
 
+    /// Inicializamos los componentes.
+    for ( int i = 0; i < tick->listaLineas() ->size(); ++i ) {
+        linea = tick->listaLineas() ->at ( i );
+	Fixed init("0.00");
+        totales[linea->DBvalue ( "ivalalbaran" ) ] = init;
+    } // end for
+
+
     for ( int i = 0; i < tick->listaLineas() ->size(); ++i ) {
         linea = tick->listaLineas() ->at ( i );
         Fixed cantidad = Fixed ( linea->DBvalue ( "cantlalbaran" ) );
 	Fixed totlinea = cantidad * Fixed( linea->DBvalue("pvpivainclalbaran"));
         total.totalIva = total.totalIva + cantidad * Fixed ( linea->DBvalue ( "pvpivainclalbaran" ) );
         totales[linea->DBvalue ( "ivalalbaran" ) ] = totales[linea->DBvalue ( "ivalalbaran" ) ] + totlinea;
-
     } // end for
 
     EscPrinter pr ( confpr->valor ( CONF_TICKET_PRINTER_FILE ) );
@@ -187,7 +199,9 @@ int Ticket_imprimir(Ticket *tick)
 
     pr.printText ( "\n" );
     pr.printText ( fecha.dia + " " + fecha.hora + "\n" );
-    pr.printText ( "Cliente, " + cliente.cif + " " + cliente.nombre + "\n" );
+    pr.printText ( "Cliente: " + cliente.cif + " " + cliente.nombre + "\n" );
+    pr.printText ( "Num. Ticket:  " + tick->DBvalue("numalbaran") + "\n" );
+
     pr.printText ( "\n" );
 
     pr.turnWhiteBlack ( 1 );
@@ -222,10 +236,13 @@ int Ticket_imprimir(Ticket *tick)
 
     base::Iterator it;
     for ( it = totales.begin(); it != totales.end(); ++it ) {
-        	Fixed basei = it.value() / (1 + it.key());
-		Fixed totiva = it.value() - basei;
-	    pr.printText ( "Base Imponible: " + basei.toQString() + "�\n" );
-    	pr.printText ( "IVA " + totiva.toQString() + "�\n" );
+		QString sqlquery = "SELECT " +it.value().toQString('.') + "/ ( 1 + " + it.key() + "/100 ) AS base ";
+		cursor2 *cur = tick->empresaBase()->cargacursor(sqlquery);
+        	Fixed baseimp = Fixed(cur->valor("base"));;
+		Fixed totiva = it.value() - baseimp;
+		delete cur;
+	    pr.printText ( "Base Imponible: "+ it.key() + "%  " + baseimp.toQString() + "�\n" );
+    	pr.printText ( "IVA " +it.key() + "%  " + totiva.toQString() + "�\n" );
     } // end for
 
 
