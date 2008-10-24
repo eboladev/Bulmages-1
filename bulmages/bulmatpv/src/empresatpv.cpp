@@ -105,6 +105,8 @@ void EmpresaTPV::createMainWindows ( Splash *splash )
 
 void EmpresaTPV::z()
 {
+	if (g_plugins->lanza("EmpresaTPV_z", this) )
+		return;
     begin();
     QString query = "INSERT INTO z (idalmacen) VALUES(" + confpr->valor ( CONF_IDALMACEN_DEFECTO ) + ")";
     ejecuta ( query );
@@ -286,6 +288,9 @@ void EmpresaTPV::z()
 
 void EmpresaTPV::x()
 {
+	if (g_plugins->lanza("EmpresaTPV_x", this) )
+		return;
+
     QString query = "SELECT count(idalbaran) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE";
     cursor2 *cur = cargacursor ( query );
     QString numtickets = cur->valor ( "numtickets" );

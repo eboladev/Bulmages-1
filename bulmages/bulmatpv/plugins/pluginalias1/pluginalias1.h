@@ -29,7 +29,7 @@
 #include "ticket.h"
 
 //extern "C" MY_EXPORT int entryPoint ( BulmaTPV * );
-extern "C" MY_EXPORT int Ticket_insertarArticuloNL_Post ( Ticket * );
-extern "C" MY_EXPORT int Ticket_insertarArticulo_Post ( Ticket * );
+extern "C" MY_EXPORT int Ticket_insertarArticuloCodigoNL_Post ( Ticket * );
+extern "C" MY_EXPORT int Ticket_insertarArticuloCodigo_Post ( Ticket * );
 
 

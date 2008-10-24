@@ -100,7 +100,10 @@ Fixed Fixed::operator = ( int x )
 
 Fixed operator / ( Fixed x, Fixed y )
 {
-    x.value = x.value / y.value;
+    x.setprecision(6);
+    y.setprecision(6);
+    int valor = round (x.value / y.value);
+    x.value = valor;
     x.precision += y.precision;
     return x;
 }
@@ -267,6 +270,7 @@ void Fixed::fromFixed ( const char *s )
         value = - value;
     if ( value == 0 )
         precision = 1;
+
     _depura ( "END Fixed::fromFixed", 0 );
 }
 

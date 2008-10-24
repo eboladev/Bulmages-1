@@ -30,13 +30,12 @@
 
 int Ticket_agregarLinea_Post ( Ticket *tick, DBRecord * &item )
 {
-
     return 0;
 }
 
 
 
-int Ticket_insertarArticuloNL_Post ( Ticket *tick )
+int Ticket_insertarArticuloCodigoNL_Post ( Ticket *tick )
 {
 	cursor2 *cur=0;
 
@@ -57,7 +56,7 @@ int Ticket_insertarArticuloNL_Post ( Ticket *tick )
 
 
 
-int Ticket_insertarArticulo_Post ( Ticket *tick )
+int Ticket_insertarArticuloCodigo_Post ( Ticket *tick )
 {
     int valor = -1;
     _depura ( "pluginalias1::Ticket_insertarArticulo_Post", 0 );

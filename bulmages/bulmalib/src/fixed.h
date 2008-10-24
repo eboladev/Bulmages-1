@@ -13,7 +13,7 @@
 #include <QChar>
 
 
-const int MAX_FIXED_PRECISION = 12;
+const int MAX_FIXED_PRECISION = 24;
 const int MAX_FIXED_LENGTH = 25;
 
 typedef long long int Fixed_numerator;

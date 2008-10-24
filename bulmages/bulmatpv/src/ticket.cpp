@@ -53,7 +53,6 @@ Ticket::Ticket ( EmpresaBase *emp, QWidget *parent ) : BLWidget ( emp, parent ),
     addDBCampo ( "ticketalbaran", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate ( "Ticket", "Ticket" ) );
     addDBCampo ( "idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "Ticket", "Forma Pago" ) );
 
-
     setDBvalue ( "ticketalbaran", "TRUE" );
     setDBvalue ( "idalmacen", confpr->valor ( CONF_IDALMACEN_DEFECTO ) );
     setDBvalue ( "idcliente", confpr->valor ( CONF_IDCLIENTE_DEFECTO ) );
@@ -133,6 +132,7 @@ DBRecord *Ticket::insertarArticulo ( QString idArticulo, Fixed cantidad, bool nu
     /// Buscamos si ya hay una linea con el articulo que buscamos
     m_lineaActual = NULL;
     DBRecord *item;
+
     for ( int i = 0; i < listaLineas() ->size(); ++i ) {
         item = listaLineas() ->at ( i );
         if ( item->DBvalue ( "idarticulo" ) == idArticulo )
@@ -862,6 +862,7 @@ void Ticket::ponerPrecio ( QString precio )
 void Ticket::insertarArticuloCodigo ( QString codigo )
 {
     _depura ( "Ticket::insertarArticuloCodigo", 0 );
+
     QString query = "SELECT * FROM articulo WHERE codigocompletoarticulo= '" + codigo + "'";
     cursor2 *cur = empresaBase() ->cargacursor ( query );
     if ( !cur->eof() ) {
@@ -869,20 +870,22 @@ void Ticket::insertarArticuloCodigo ( QString codigo )
     } // end if
     delete cur;
 
-    g_plugins->lanza ( "Ticket_insertarArticulo_Post", this );
-    _depura ( "Ticket::insertarArticuloCodigo", 0 );
+    g_plugins->lanza ( "Ticket_insertarArticuloCodigo_Post", this );
+    _depura ( "END Ticket::insertarArticuloCodigo", 0 );
 
 }
 
 void Ticket::insertarArticuloCodigoNL ( QString codigo )
 {
+	_depura("Ticket::insertarArticuloCodigoNL",0);
     QString query = "SELECT * FROM articulo WHERE codigocompletoarticulo= '" + codigo + "'";
     cursor2 *cur = empresaBase() ->cargacursor ( query );
     if ( !cur->eof() ) {
         insertarArticulo ( cur->valor ( "idarticulo" ), Fixed ( "1" ), TRUE );
     } // end if
     delete cur;
-    g_plugins->lanza ( "Ticket_insertarArticuloNL_Post", this );
+    g_plugins->lanza ( "Ticket_insertarArticuloCodigoNL_Post", this );
+	_depura("END Ticket::insertarArticuloCodigoNL",0);
 
 }
 
