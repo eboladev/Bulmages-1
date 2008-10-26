@@ -178,6 +178,8 @@ public:
     QString nameDB();
     /// Returns table privileges of current user
     bool has_table_privilege ( QString tabla, QString permiso );
+    /// Evalua expresiones con el motor de calculo de la base de datos
+    QString PGEval(QString evalexp, int precision = 2 );
 };
 
 #endif

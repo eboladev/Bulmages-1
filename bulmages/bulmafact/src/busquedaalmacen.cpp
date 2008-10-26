@@ -174,13 +174,13 @@ void BusquedaAlmacen::setEmpresaBase ( Company *comp )
 **/
 void BusquedaAlmacen::m_activated ( int index )
 {
-    _depura ( "BusquedaAlmacen::m_activated", 2 );
+    _depura ( "BusquedaAlmacen::m_activated", 0 );
     if ( index > 0 ) {
         emit ( valueChanged ( m_cursorcombo->valor ( "idalmacen", index - 1 ) ) );
     } else {
         emit ( valueChanged ( "" ) );
     } // end if
-    _depura ( "END BusquedaAlmacen::m_activated", 2 );
+    _depura ( "END BusquedaAlmacen::m_activated", 0 );
 }
 
 /// ========================= ITEM DELEGATE ===============================0

@@ -578,6 +578,7 @@ cursor2 *postgresiface2::cargacursor ( QString query, QString nomcursor, int lim
         cur = new cursor2 ( nomcursor, conn, query );
     } catch ( ... ) {
         if ( cur ) delete cur;
+	_depura("La consulta: \"" + query + "\" Ha generado un error",2);
         _depura ( "END postgresiface2::cargacursor", 0, "Error en la base de datos" );
         return NULL;
     } // end try
@@ -1242,5 +1243,19 @@ bool postgresiface2::has_table_privilege ( QString tabla, QString permiso )
     } // end if
     _depura ( "END postgresiface2::has_table_privilege", 0 );
     return privileges;
+}
+
+/// Evaluacion de formulas usando la base de dato como motor de calculo
+QString postgresiface2::PGEval(QString evalexp, int precision) {
+	QString res="";
+	/// Ninguna expresion numerica acepta comas.
+	evalexp.replace(",", ".");
+	QString query = "SELECT (" + evalexp + ")::NUMERIC(12,"+QString::number(precision)+") AS res";
+	cursor2 *cur = cargacursor(query);
+	if (cur) {
+		res = cur->valor("res");
+		delete cur;
+	} // end if
+	return res;
 }
 

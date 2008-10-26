@@ -813,7 +813,7 @@ QString SubForm2Bf::idTarifa()
 **/
 void SubForm2Bf::calculaPVP(SDBRecord *rec) {
 
-	_depura("SubForm2Bf::calculaPVP",2);
+	_depura("SubForm2Bf::calculaPVP" , 0);
 
 	cursor2 *cur = NULL;
 	cursor2 *cur3 = NULL;
@@ -825,8 +825,6 @@ void SubForm2Bf::calculaPVP(SDBRecord *rec) {
         if ( !cur->eof() ) {
 		/// Aqui se establece el precio del articulo. Se tiene que tener en cuenta
 		/// el cliente y la tarifa asignada si procede.
-		_depura(mdb_idcliente,2);
-		_depura(m_idAlmacen,2);
 		if (!mdb_idcliente.isEmpty() && !m_idAlmacen.isEmpty()) {
 			/// Se ha seleccionado un cliente.
 			m_idArticulo = cur->valor ( "idarticulo" );
@@ -856,7 +854,7 @@ void SubForm2Bf::calculaPVP(SDBRecord *rec) {
 
 	delete cur;
 	delete cur3;
-	_depura("END SubForm2Bf::calculaPVP",2);
+	_depura("END SubForm2Bf::calculaPVP",0);
 }
 
 

@@ -62,7 +62,8 @@ BusquedaCliente::~BusquedaCliente()
 
 /** Se encarga de presentar en el Widget los valores seleccionados.
 */
-/**
+/** Esta funcion lanza un signal avisando de que se ha cambiado el id cliente. Y debe tenerse en cuenta que el
+    idcliente puede estar vacio ya que tambien se puede haber borrado el cliente que estaba puesto.
 **/
 void BusquedaCliente::pinta()
 {

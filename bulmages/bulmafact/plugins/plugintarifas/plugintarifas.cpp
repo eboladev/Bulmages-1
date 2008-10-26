@@ -297,8 +297,8 @@ int SubForm2Bf_calculaPVP ( SubForm2Bf *sub )
 
     cursor2 *cur = NULL;
 
-    QString cantactual = sub->m_registrolinea->DBvalue ( "cant" + sub->tableName() );
-    QString pvpactual = sub->m_registrolinea->DBvalue ( "pvp" + sub->tableName() );
+    QString cantactual = sub->m_registrolinea->DBvalue ( "cant" + sub->tableName() ).replace(",",".");
+    QString pvpactual = sub->m_registrolinea->DBvalue ( "pvp" + sub->tableName() ).replace(",",".");
     QString variacionpvp;
 
     /// Comprueba que se tengan todos los datos para aplicar variacion de tarifas.
@@ -306,7 +306,7 @@ int SubForm2Bf_calculaPVP ( SubForm2Bf *sub )
         _depura ( "END PluginTarifas SubForm2Bf_calculaPVP -sin suficientes datos-", 0 );
 	return 0;
     } else {
-    	cur = sub->empresaBase()->cargacursor ( "SELECT * FROM variaciontarifa WHERE idarticulo = " + sub->idArticulo() + " AND idtarifa = " + sub->idTarifa() + " AND idalmacen = " + sub->idAlmacen() + " AND cantidadmayoroigualque <= " + QString::number(cantactual.toDouble()) + " ORDER BY cantidadmayoroigualque DESC LIMIT 1" );
+    	cur = sub->empresaBase()->cargacursor ( "SELECT * FROM variaciontarifa WHERE idarticulo = " + sub->idArticulo() + " AND idtarifa = " + sub->idTarifa() + " AND idalmacen = " + sub->idAlmacen() + " AND cantidadmayoroigualque <= " + cantactual + " ORDER BY cantidadmayoroigualque DESC LIMIT 1" );
     } // end if
 
     /// Si no se devuelve ningun resultado no se aplica variacion a la tarifa.
@@ -314,7 +314,8 @@ int SubForm2Bf_calculaPVP ( SubForm2Bf *sub )
     	variacionpvp = cur->valor ( "porcentajevariacion" );
 
 	/// Aplica al precio la variacion correspondiente.
-	sub->m_registrolinea->setDBvalue ( "pvp" + sub->tableName(), QString::number(pvpactual.toDouble() + (pvpactual.toDouble() * (variacionpvp.toDouble() / 100))) );
+	QString res = sub->empresaBase()->PGEval( pvpactual +" * (1 + " + variacionpvp + " / 100)", 2);
+	sub->m_registrolinea->setDBvalue ( "pvp" + sub->tableName(), res);
     } // end if
 
     _depura ( "END PluginTarifas SubForm2Bf_calculaPVP", 0 );

@@ -223,24 +223,31 @@ void CompraVentaView::on_mui_cobrar_clicked()
 **/
 void CompraVentaView::on_mui_idcliente_valueChanged ( QString id )
 {
-    _depura ( "CompraVentaView::on_mui_idcliente_valueChanged", 2 );
+    _depura ( "CompraVentaView::on_mui_idcliente_valueChanged", 0 );
     subform2->setIdCliente ( id );
     subform3->setIdCliente( id );
 
     mui_idforma_pago->setIdCliente ( id );
     setDBvalue("idcliente", id);
 
-	QString query = "SELECT idproveedor FROM proveedor WHERE cifproveedor IN (SELECT cifcliente FROM cliente WHERE idcliente= "+id+")";
-	cursor2 *cur = empresaBase()->cargacursor(query);
-	if (!cur->eof()) {
-		m_albaranp->setDBvalue("idproveedor", cur->valor("idproveedor"));
-		subform3->setIdProveedor ( cur->valor("idproveedor") );
-		m_descuentos3->setIdProveedor ( cur->valor("idproveedor") );
+	if (! id.isEmpty()) {
+		QString query = "SELECT idproveedor FROM proveedor WHERE cifproveedor IN (SELECT cifcliente FROM cliente WHERE idcliente= "+id+")";
+		cursor2 *cur = empresaBase()->cargacursor(query);
+		if (!cur->eof()) {
+			m_albaranp->setDBvalue("idproveedor", cur->valor("idproveedor"));
+			subform3->setIdProveedor ( cur->valor("idproveedor") );
+			m_descuentos3->setIdProveedor ( cur->valor("idproveedor") );
+		} else {
+			mensajeInfo("No hay proveedor para este cliente");
+		} // end if
+		delete cur;
 	} else {
-		mensajeInfo("No hay proveedor para este cliente");
+		m_albaranp->setDBvalue("idproveedor", "");
+		subform3->setIdProveedor ( "" );
+		m_descuentos3->setIdProveedor ( "" );
 	} // end if
-	delete cur;
-    _depura ( "END CompraVentaView::on_m_cliente_valueChanged", 2 );
+
+    _depura ( "END CompraVentaView::on_m_cliente_valueChanged", 0 );
 }
 
 
