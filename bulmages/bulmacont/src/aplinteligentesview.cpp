@@ -289,11 +289,13 @@ void aplinteligentesview::on_mui_aceptar_clicked()
         variablespredefinidas[VAR_PRED_FECHAASIENTO][1] = fechaasiento->text().toAscii().constData();
         empresaBase() ->intapuntsempresa() ->setFecha ( fechaasiento->text() );
         empresaBase() ->intapuntsempresa() ->vaciar();
+    	empresaBase() ->intapuntsempresa() ->dialogChanges_cargaInicial();
         empresaBase() ->intapuntsempresa() ->iniciar_asiento_nuevo();
         numasiento = empresaBase() ->intapuntsempresa() ->idasiento().toInt();
         recogevalores();
         creaasiento();
         empresaBase() ->intapuntsempresa() ->cerrar();
+    	empresaBase() ->intapuntsempresa() ->dialogChanges_cargaInicial();
         numasiento = 0;
         fechaasiento->selectAll();
         fechaasiento->setFocus();
