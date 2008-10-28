@@ -1,0 +1,10 @@
+UPDATE cliente set idcliente = idcliente;
+UPDATE proveedor SET idproveedor = idproveedor;
+UPDATE banco SET idbanco = idbanco;
+UPDATE almacen SET idalmacen = idalmacen;
+UPDATE cobro SET idcobro = idcobro;
+UPDATE pago SET idpago = idpago;
+-- UPDATE lfacturap SET idlfacturap = idlfacturap;
+-- UPDATE lfactura SET idlfactura = idlfactura;
+UPDATE factura SET idfactura = idfactura;
+UPDATE facturap SET idfacturap = idfacturap;

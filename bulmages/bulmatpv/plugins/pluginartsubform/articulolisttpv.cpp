@@ -229,8 +229,15 @@ ArticuloList1SubForm1::ArticuloList1SubForm1 ( QWidget *parent, const char * )
         : SubForm2Bf ( parent )
 {
     _depura ( "ArticuloList1SubForm1::ArticuloList1SubForm1", 0 );
+
     setDBTableName ( "articulo" );
     setDBCampoId ( "idarticulo" );
+
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza ( "ArticuloList1SubForm1_ArticuloList1SubForm1", this );
+    if ( res != 0 )
+        return;
+
     addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "ID articulo" ) );
     addSHeader ( "codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Codigo completo del articulo" ) );
     addSHeader ( "nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre del articulo" ) );

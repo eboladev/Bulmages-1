@@ -360,6 +360,8 @@ ArticuloListSubForm::ArticuloListSubForm ( QWidget *parent, const char * )
     _depura ( "ArticuloListSubForm::ArticuloListSubForm", 0 );
     setDBTableName ( "articulo" );
     setDBCampoId ( "idarticulo" );
+
+
     addSHeader ( "idarticulo", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr ( "ID articulo" ) );
     addSHeader ( "codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Codigo completo del articulo" ) );
     addSHeader ( "nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Nombre del articulo" ) );

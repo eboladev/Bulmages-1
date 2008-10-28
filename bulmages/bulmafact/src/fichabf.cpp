@@ -151,9 +151,14 @@ void FichaBf::calculaypintatotales()
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
         Fixed piva ( it.key().toAscii().constData() );
         if ( porcentt > Fixed ( "0.00" ) ) {
-            pariva = ( it.value() - it.value() * porcentt / 100 ) * piva / 100;
+	    QString evpariva = "( 1 - " + porcentt.toQString() + " / 100 ) * " + it.value().toQString() + " * " + piva.toQString() + " / 100";
+	    QString tot = empresaBase()->PGEval(evpariva);
+	    pariva = Fixed(tot);
+//            pariva = ( it.value() - it.value() * porcentt / 100 ) * piva / 100;
         } else {
-            pariva = it.value() * piva / 100;
+	    QString evpariva = it.value().toQString() + " * " + piva.toQString() + " / 100";
+	    QString tot = empresaBase()->PGEval(evpariva);
+	    pariva = Fixed(tot);
         } // end if
         totiva = totiva + pariva;
     } // end for
@@ -403,6 +408,7 @@ QString FichaBf::trataTotales ( const QString &det, int bimporeq )
     } // end if
 
     Fixed descuentolinea ( "0.00" );
+    /// Iteramos para cada linea para saber totales.
     for ( int i = 0; i < m_listalineas->rowCount() - 1; ++i ) {
         linea = m_listalineas->lineaat ( i );
         Fixed cant ( linea->DBvalue ( "cant" + m_listalineas->tableName() ).toAscii().constData() );
@@ -412,6 +418,7 @@ QString FichaBf::trataTotales ( const QString &det, int bimporeq )
         Fixed base = cantpvp - cantpvp * desc1 / 100;
         descuentolinea = descuentolinea + ( cantpvp * desc1 / 100 );
         basesimp[linea->DBvalue ( "iva" + m_listalineas->tableName() ) ] = basesimp[linea->DBvalue ( "iva" + m_listalineas->tableName() ) ] + base;
+	mensajeInfo(basesimp[linea->DBvalue("iva" +  m_listalineas->tableName())].toQString());
         basesimpreqeq[linea->DBvalue ( "reqeq" + m_listalineas->tableName() ) ] = basesimpreqeq[linea->DBvalue ( "reqeq" + m_listalineas->tableName() ) ] + base;
     } // end for
 
@@ -452,7 +459,9 @@ QString FichaBf::trataTotales ( const QString &det, int bimporeq )
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
         Fixed piva ( it.key().toAscii().constData() );
         if ( porcentt > Fixed ( "0.00" ) ) {
-            pariva = ( it.value() - it.value() * porcentt / 100 ) * piva / 100;
+	    QString evpariva = "( 1 - " + porcentt.toQString() + " / 100 ) * " + it.value().toQString() + " * " + piva.toQString() + " / 100";
+	    QString tot = empresaBase()->PGEval(evpariva);
+	    pariva = Fixed(tot);
         } else {
             pariva = it.value() * piva / 100;
         } // end if

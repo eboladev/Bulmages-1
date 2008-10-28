@@ -36,6 +36,8 @@ int Ticket_agregarLinea_Post ( Ticket *tick, DBRecord * &item )
 }
 
 
+
+
 int Ticket_insertarArticulo_Post ( Ticket *tick )
 {
     int valor = -1;
@@ -613,5 +615,8 @@ int EmpresaTPV_x(EmpresaTPV *emp)
 	return -1;
 }
 
-
+int ArticuloListSubForm_ArticuloListSubForm_Post(ArticuloListSubForm *list) {
+	list->addSHeader ( "pvpivaincarticulo", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "PVP Iva Inc." );
+	return 0;
+}
 
