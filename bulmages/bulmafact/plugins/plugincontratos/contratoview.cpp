@@ -316,6 +316,14 @@ void ContratoView::on_mui_facturar_clicked()
             fac->setDBvalue ( "idcliente", DBvalue ( "idcliente" ) );
             fac->setDBvalue ( "descfactura", DBvalue ( "nomcontrato" ) + " Periodo:  " + cur1->valor ( "finperiodo" ).left ( 10 ) + " -- " + cur1->valor ( "ffinperiodo" ).left ( 10 ) );
 
+            cursor2 *curcliente = empresaBase() ->cargacursor ( "SELECT recargoeqcliente, regimenfiscalcliente FROM cliente WHERE idcliente = " + DBvalue ( "idcliente" ) );
+            if ( ! curcliente ) {
+                return;
+            } // end if
+            if ( curcliente->eof() ) {
+                return;
+            } // end if
+
             QString l;
             SDBRecord *linea, *linea1;
             for ( int i = 0; i < m_listalineas->rowCount(); ++i ) {
@@ -332,14 +340,34 @@ void ContratoView::on_mui_facturar_clicked()
                     linea1->setDBvalue ( "descuentolfactura", "0" );
                     linea1->setDBvalue ( "cantlfactura", linea->DBvalue ( "cantlcontrato" ) );
                     linea1->setDBvalue ( "pvplfactura", linea->DBvalue ( "pvplcontrato" ) );
+                    /// Buscamos el tipo de iva que corresponde al articulo y lo ponemos.
+                    cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM articulo WHERE idarticulo = " + linea->DBvalue ( "idarticulo" ) );
+                    cursor2 *cur1 = empresaBase() ->cargacursor ( "SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor ( "idtipo_iva" ) + " ORDER BY fechatasa_iva LIMIT 1" );
+                    if ( !cur->eof() ) {
+
+                        if ( curcliente->valor ( "regimenfiscalcliente" ) == "Normal" ) {
+                            linea1->setDBvalue ( "ivalfactura", cur1->valor ( "porcentasa_iva" ) );
+                        } // end if
+
+                        if ( curcliente->valor ( "recargoeqcliente" ) == "t" ) {
+                            linea1->setDBvalue ( "reqeqlfactura", cur1->valor ( "porcentretasa_iva" ) );
+                        } // end if
+
+                    } // end if
+                    delete cur1;
+                    delete cur;
+
+
                     fac->getlistalineas() ->setProcesarCambios ( TRUE );
                     linea1->refresh();
                 } // end if
             } // end for
             fac->calculaypintatotales();
             fac->pintar();
+            delete curcliente;
         } // end if
         delete cur;
+
 
         query = "SELECT (now() < '" + DBvalue ( "fincontrato" ) + "'::DATE + '" + DBvalue ( "periodicidadcontrato" ) + "'::INTERVAL *" + QString::number ( periodo ) + " ) AS dato";
         cur = empresaBase() ->cargacursor ( query );
