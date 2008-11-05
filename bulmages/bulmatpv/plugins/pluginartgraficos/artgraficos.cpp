@@ -4,6 +4,9 @@
 #include <QHeaderView>
 #include <QFile>
 #include <QDomDocument>
+#include <QPicture>
+#include <QPainter>
+
 #include "funcaux.h"
 #include "configuracion.h"
 
@@ -83,8 +86,17 @@ void ArtGraficos::muestraPantalla ( int numpantalla )
 
             if ( nitem < nodos.count() ) {
                 QDomNode ventana = nodos.item ( nitem );
+
+		QString nombre = ventana.firstChildElement ( "TITULO").toElement().text();
+
                 QDomElement e1 = ventana.toElement(); /// try to convert the node to an element.
                 QString text = e1.text();
+
+		QString codigo = ventana.firstChildElement ( "CODIGO").toElement().text();
+		if (codigo.isEmpty()) {
+			codigo = text;
+		} // end if
+
 
                 /// Creamos el elemento y lo ponemos en la tabla.
                 QLabel *lab = new QLabel ( NULL );
@@ -93,10 +105,33 @@ void ArtGraficos::muestraPantalla ( int numpantalla )
                 /// El escalado lateral tambien tarda demasiado
 //                lab->setPixmap(QPixmap("/var/bulmages/articles/"+text+".jpg").scaledToWidth(cellwidth.toInt()));
                 /// Ponemos las imagenes sin escalado.
-                lab->setPixmap ( QPixmap ( confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + text + ".jpg" ) );
+//                lab->setPixmap ( QPixmap ( confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + text + ".jpg" ) );
+
+// Probamos con una Picture 
+         QPicture picture; 
+         QPainter painter;
+         painter.begin(&picture);           // paint in picture
+//	 painter.drawPixmap(0,0,cellwidth.toInt(),cellwidth.toInt(),QPixmap ( confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" ));
+	 painter.drawPixmap(0,0,cellwidth.toInt(),cellwidth.toInt(),QPixmap ( confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" ));
+
+//         painter.drawEllipse(10,20, 80,70); // draw an ellipse
+	 painter.setPen(QColor(200,0,0));
+	 painter.drawText(5,cellwidth.toInt()-5,nombre);
+	 painter.setPen(QColor(0,255,0));
+	 painter.drawText(5,10,nombre);
+//	 painter.drawText(5,15,nombre);
+//	 painter.drawText(5,5,codigo);
+//	 painter.drawText(5,10,cellwidth);
+
+         painter.end();                     // painting done
+
+
+       lab->setPicture ( picture );
+
+
 
                 mui_list->setCellWidget ( row, column, lab );
-                m_articulos[row][column] = text;
+                m_articulos[row][column] = codigo;
                 nitem ++;
             } // end if
 

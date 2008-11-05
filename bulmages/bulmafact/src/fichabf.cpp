@@ -418,7 +418,6 @@ QString FichaBf::trataTotales ( const QString &det, int bimporeq )
         Fixed base = cantpvp - cantpvp * desc1 / 100;
         descuentolinea = descuentolinea + ( cantpvp * desc1 / 100 );
         basesimp[linea->DBvalue ( "iva" + m_listalineas->tableName() ) ] = basesimp[linea->DBvalue ( "iva" + m_listalineas->tableName() ) ] + base;
-	mensajeInfo(basesimp[linea->DBvalue("iva" +  m_listalineas->tableName())].toQString());
         basesimpreqeq[linea->DBvalue ( "reqeq" + m_listalineas->tableName() ) ] = basesimpreqeq[linea->DBvalue ( "reqeq" + m_listalineas->tableName() ) ] + base;
     } // end for
 

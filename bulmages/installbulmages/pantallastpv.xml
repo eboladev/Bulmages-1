@@ -1,8 +1,289 @@
 <TPV>
 <PANTALLA>
-   <NOMBRE>CATEGORIA</NOMBRE>
+   <NOMBRE>BEBIDAS REFRESCOS</NOMBRE>
    <GRID>5</GRID>
    <CELLWIDTH>120</CELLWIDTH>
-   <ITEM></ITEM>
+   <ITEM>
+	<TITULO>Café</TITULO>
+        <CODIGO>00000001</CODIGO>
+    </ITEM>
+   <ITEM>
+	<TITULO>Cortado</TITULO>
+        <CODIGO>00000002</CODIGO>
+    </ITEM>
+    <ITEM>
+	    <TITULO>Cafe Leche</TITULO>
+	    <CODIGO>00000003</CODIGO>
+    </ITEM>
+    <ITEM>
+	    <TITULO>Carajillo</TITULO>
+	    <CODIGO>00000004</CODIGO>
+    </ITEM>
+    <ITEM>
+	    <TITULO>Carajillo Wisky</TITULO>
+	    <CODIGO>00000005</CODIGO>
+    </ITEM>
+    <ITEM>
+	    <TITULO>Infusión</TITULO>
+	    <CODIGO>00000006</CODIGO>
+    </ITEM>
+    <ITEM>
+	    <TITULO>Cola Cao</TITULO>
+	    <CODIGO>00000007</CODIGO>
+    </ITEM>
+
+    
+    <ITEM>
+	    <TITULO>Coca Cola</TITULO>
+	    <CODIGO>00010001</CODIGO>
+    </ITEM>
+    <ITEM>
+	    <TITULO>Naranja</TITULO>
+	    <CODIGO>00010002</CODIGO>
+    </ITEM>
+    <ITEM>
+	    <TITULO>Limon</TITULO>
+	    <CODIGO>00010003</CODIGO>
+    </ITEM>
+    <ITEM>
+	    <TITULO>7n Up</TITULO>
+	    <CODIGO>00010004</CODIGO>
+    </ITEM>
+    <ITEM>
+	    <TITULO>Tonica</TITULO>
+	    <CODIGO>00010005</CODIGO>
+    </ITEM>
+    <ITEM>
+	    <TITULO>La Casera 1/2</TITULO>
+	    <CODIGO>00010006</CODIGO>
+    </ITEM>
+    <ITEM>
+	    <TITULO>Caña</TITULO>
+	    <CODIGO>00020001</CODIGO>
+    </ITEM>
+    <ITEM>
+	    <TITULO>Caña 33</TITULO>
+	    <CODIGO>00020002</CODIGO>
+    </ITEM>
+
+    <ITEM>
+	    <TITULO>Cerveza 1/3</TITULO>
+	    <CODIGO>00020003</CODIGO>
+    </ITEM>
+    <ITEM>
+	    <TITULO>Cerveza Sin</TITULO>
+	    <CODIGO>00020004</CODIGO>
+    </ITEM>
+    <ITEM>
+	    <TITULO>Agua Font Dor 1/2</TITULO>
+	    <CODIGO>00030001</CODIGO>
+    </ITEM>
+    <ITEM>
+	    <TITULO>Agua Font Dor 1</TITULO>
+	    <CODIGO>00030002</CODIGO>
+    </ITEM>
+    <ITEM>
+	    <TITULO>Agua Font Dor .75</TITULO>
+	    <CODIGO>00030003</CODIGO>
+    </ITEM>
+    <ITEM>
+	    <TITULO>Agua Font Dor 2</TITULO>
+	    <CODIGO>00030004</CODIGO>
+    </ITEM>
+
 </PANTALLA>
+
+
+<PANTALLA>
+	<NOMBRE>LICORES</NOMBRE>
+	<GRID>5</GRID>
+   <CELLWIDTH>120</CELLWIDTH>
+   <ITEM>
+	   <TITULO>Melocotón</TITULO>
+	   <CODIGO>00040001</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Zanahoria</TITULO>
+	   <CODIGO>00040002</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Piña</TITULO>
+	   <CODIGO>00040003</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Naranja</TITULO>
+	   <CODIGO>00040004</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Manzana</TITULO>
+	   <CODIGO>00040005</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Brandy</TITULO>
+	   <CODIGO>00050001</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Hierbas</TITULO>
+	   <CODIGO>00050002</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Tres Caires</TITULO>
+	   <CODIGO>00050003</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Palo</TITULO>
+	   <CODIGO>00050004</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Suau</TITULO>
+	   <CODIGO>00050005</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Whiskey</TITULO>
+	   <CODIGO>00050006</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Whiskey C/H</TITULO>
+	   <CODIGO>00050007</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Cardhu</TITULO>
+	   <CODIGO>00050008</CODIGO>
+   </ITEM>
+   
+   <ITEM>
+	   <TITULO>Cuba Libre</TITULO>
+	   <CODIGO>00060001</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Gin Tonic</TITULO>
+	   <CODIGO>00060002</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Vodka Naranja</TITULO>
+	   <CODIGO>00060003</CODIGO>
+   </ITEM>
+   
+   <ITEM>
+	   <TITULO>Martini</TITULO>
+	   <CODIGO>00070001</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Palo Sifon</TITULO>
+	   <CODIGO>00070002</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Bitter Kas</TITULO>
+	   <CODIGO>00070003</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Campary</TITULO>
+	   <CODIGO>00070004</CODIGO>
+   </ITEM>
+
+</PANTALLA>
+
+<PANTALLA>
+	<NOMBRE>COMIDA</NOMBRE>
+	<GRID>5</GRID>
+   <CELLWIDTH>120</CELLWIDTH>
+   <ITEM>
+	   <TITULO>Pa de Tafona</TITULO>
+	   <CODIGO>00080001</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Pa Oli i Tomatiga</TITULO>
+	   <CODIGO>00080002</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Pa Pate Oliva Negre</TITULO>
+	   <CODIGO>00080003</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>All i Oli Pa</TITULO>
+	   <CODIGO>00080004</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Mahonesa i Pa</TITULO>
+	   <CODIGO>00080005</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Ensalada</TITULO>
+	   <CODIGO>00080006</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Parrillada Verdures</TITULO>
+	   <CODIGO>00080007</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Pernil Reserva</TITULO>
+	   <CODIGO>00080008</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Pernil Iberic</TITULO>
+	   <CODIGO>00080009</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Formatge Mallorqui</TITULO>
+	   <CODIGO>00080010</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Formatge Mahones</TITULO>
+	   <CODIGO>00080011</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Formatge Manchego</TITULO>
+	   <CODIGO>00080012</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Anchoves</TITULO>
+	   <CODIGO>00080013</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Llom Iberic</TITULO>
+	   <CODIGO>00080014</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Salchicho Iberic</TITULO>
+	   <CODIGO>00080015</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Choris Iberic</TITULO>
+	   <CODIGO>00080016</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Varia Negre</TITULO>
+	   <CODIGO>00080017</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Llom de Porc</TITULO>
+	   <CODIGO>00080018</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Solomillo de Porc</TITULO>
+	   <CODIGO>00080019</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Pitera de pollastre</TITULO>
+	   <CODIGO>00080020</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Costelles de me</TITULO>
+	   <CODIGO>00080021</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Guatleres</TITULO>
+	   <CODIGO>00080022</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Sipia a la plancha</TITULO>
+	   <CODIGO>00080023</CODIGO>
+   </ITEM>
+   <ITEM>
+	   <TITULO>Tonyna plancha</TITULO>
+	   <CODIGO>00080024</CODIGO>
+   </ITEM>
+
+</PANTALLA>
+
 </TPV>
