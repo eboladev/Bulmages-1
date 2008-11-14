@@ -12,7 +12,14 @@ Admin::~Admin()
 
 void Admin::on_mui_z_clicked()
 {
-    ( ( EmpresaTPV * ) empresaBase() ) ->z();
+    if ( QMessageBox::warning ( this,
+                                tr ( "Salir" ),
+                                tr ( "Realmente desea Realizar la Z" ),
+                                QMessageBox::Ok,
+                                QMessageBox::Cancel ) == QMessageBox::Ok ) {
+  	  ( ( EmpresaTPV * ) empresaBase() ) ->z();
+    } // end if
+
 }
 
 void Admin::on_mui_x_clicked()

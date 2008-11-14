@@ -236,13 +236,13 @@ int Ticket_imprimir(Ticket *tick)
 
     base::Iterator it;
     for ( it = totales.begin(); it != totales.end(); ++it ) {
-		QString sqlquery = "SELECT " +it.value().toQString('.') + "/ ( 1 + " + it.key() + "/100 ) AS base ";
+		QString sqlquery = "SELECT (" +it.value().toQString('.') + "/ ( 1 + " + it.key() + "/100 ))::NUMERIC(12,2) AS base, " + it.value().toQString('.') + "- ("+it.value().toQString('.') + "/ ( 1 + " + it.key() + "/100 ))::NUMERIC(12,2) AS iva";
 		cursor2 *cur = tick->empresaBase()->cargacursor(sqlquery);
-        	Fixed baseimp = Fixed(cur->valor("base"));;
-		Fixed totiva = it.value() - baseimp;
+//        	Fixed baseimp = Fixed(cur->valor("base"));;
+//		Fixed totiva = it.value() - baseimp;
+	    pr.printText ( "Base Imponible: "+ it.key() + "%  " + cur-> valor("base") + "�\n" );
+    	pr.printText ( "IVA " +it.key() + "%  " + cur->valor("iva") + "�\n" );
 		delete cur;
-	    pr.printText ( "Base Imponible: "+ it.key() + "%  " + baseimp.toQString() + "�\n" );
-    	pr.printText ( "IVA " +it.key() + "%  " + totiva.toQString() + "�\n" );
     } // end for
 
 
@@ -255,12 +255,12 @@ int Ticket_imprimir(Ticket *tick)
     pr.printText ( "Le ha atendido " + trabajador.nombre + "\n" );
     pr.printText ( "\n" );
 
-   pr.printText("Plazo maximo para cambio 15 dias, \n");
+/*   pr.printText("Plazo maximo para cambio 15 dias, \n");
    pr.printText(" unicamente con ticket de compra. \n");
    pr.printText("\n");
+*/
 
-
-    pr.printText ( "Tel. " + empresa.telefono + "\n" );
+//    pr.printText ( "Tel. " + empresa.telefono + "\n" );
     pr.printText ( "\n" );
 
     pr.setJustification ( center );
@@ -426,7 +426,40 @@ int EmpresaTPV_z(EmpresaTPV * emp)
     file.write ( "\n", 1 );
 
 // ============================================
+// ============================================
+    file.write ( QString ( "=======================\n" ).rightJustified ( 43, ' ' ).toAscii() );
+    file.write ( QString ( "=======================\n" ).rightJustified ( 43, ' ' ).toAscii() );
+    file.write ( QString ( "==== RESUMEN FAMILIAS ======\n" ).rightJustified ( 43, ' ' ).toAscii() );
+// Informes por familias
 
+    /// Imprimimos el almacen
+    cur = emp->cargacursor ( "SELECT * FROM familia");
+    while ( !cur->eof() ) {
+        file.write ( QString ( "Familia: " ).toAscii() );
+        file.write (cur->valor ( "nombrefamilia" ).toAscii() );
+        file.write ( "\n", 1 );
+
+	QString querycont = "SELECT sum(cantlalbaran) AS unidades, sum(pvpivainclalbaran * cantlalbaran)::NUMERIC(12,2) as total FROM lalbaran NATURAL LEFT JOIN articulo WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE idz="+idz+")  AND idfamilia = " + cur->valor("idfamilia");
+	cursor2 *cur1 = emp->cargacursor ( querycont );
+	QString numticketscont = cur1->valor ( "unidades" );
+	QString totalcont = cur1->valor ( "total" );
+	if ( totalcont == "" ) totalcont = "0";
+	delete cur1;
+
+	str = "Und. Vendidas: " + numticketscont.rightJustified ( 10, ' ' );
+	file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
+	file.write ( "\n", 1 );
+	
+	str = "Total:" + totalcont.rightJustified ( 10, ' ' );
+	file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
+	file.write ( "\n", 1 );
+
+        file.write ( QString ( "=======================\n" ).rightJustified ( 43, ' ' ).toAscii() );
+
+	cur-> siguienteregistro();
+    } // end if
+    delete cur;
+// Fin informes por familias
 
     /// Imprimimos espacios
     file.write ( "\n \n \n \n", 7 );

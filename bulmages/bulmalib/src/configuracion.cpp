@@ -372,6 +372,8 @@ QString configuracion::nombre ( int i )
         return "CONF_SERIE_FACTURA_DEFECTO";
     if ( i == CONF_DIR_PLUGINS )
         return "CONF_DIR_PLUGINS";
+    if ( i == CONF_ARTICULOS_VARIOS )
+        return "CONF_ARTICULOS_VARIOS";
     return "";
 //    _depura("END configuracion::nombre", 0);
 }
@@ -418,7 +420,9 @@ bool configuracion::leeconfig ( QString fich )
 //    _depura("configuracion::leeconfig", 0);
     QFile arch ( fich );
     if ( arch.open ( QIODevice::ReadOnly ) ) {
-        fprintf ( stderr, "Leyendo configuracion\n" );
+	QString cadaux1 = "Leyendo configuracion" + fich + "\n";
+        fprintf ( stderr, cadaux1.toAscii() );
+	fprintf ( stderr, "\n");
         QTextStream in ( &arch );
         while ( !in.atEnd() ) {
             QString cad = in.readLine();
@@ -430,6 +434,7 @@ bool configuracion::leeconfig ( QString fich )
             for ( int i = 0; i < 1000; i++ ) {
                 if ( cad.startsWith ( nombre ( i ) ) && nombre ( i ) != "" ) {
                     _depura ( "[" + nombre ( i ) + "]" + "--->" + cad, 0 );
+
                     cad = cad.right ( cad.length() - nombre ( i ).length() );
                     cad = cad.trimmed();
                     m_valores[i] = cad;

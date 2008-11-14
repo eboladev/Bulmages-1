@@ -28,7 +28,13 @@ ArtGraficos::~ArtGraficos()
 
 void ArtGraficos::on_mui_list_cellClicked ( int row, int column )
 {
-    ( ( EmpresaTPV * ) empresaBase() ) ->ticketActual() ->insertarArticuloCodigo ( m_articulos[row][column] );
+    QString artvarios = confpr->valor(CONF_ARTICULOS_VARIOS);
+    QString codigo = m_articulos[row][column];
+    if (! artvarios.contains(codigo)) {
+	    ( ( EmpresaTPV * ) empresaBase() ) ->ticketActual() ->insertarArticuloCodigo ( m_articulos[row][column] );
+    } else {
+	    ( ( EmpresaTPV * ) empresaBase() ) ->ticketActual() ->insertarArticuloCodigoNL ( m_articulos[row][column]);
+    } // end if
 }
 
 void ArtGraficos::on_mui_botonSiguiente_clicked()
@@ -112,13 +118,18 @@ void ArtGraficos::muestraPantalla ( int numpantalla )
          QPainter painter;
          painter.begin(&picture);           // paint in picture
 //	 painter.drawPixmap(0,0,cellwidth.toInt(),cellwidth.toInt(),QPixmap ( confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" ));
-	 painter.drawPixmap(0,0,cellwidth.toInt(),cellwidth.toInt(),QPixmap ( confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" ));
+
+	 painter.drawPixmap(0,0,cellwidth.toInt(),cellwidth.toInt(),QPixmap ( confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + "blanco.jpg" ));
+
+	 painter.drawPixmap(0,0,cellwidth.toInt(),cellwidth.toInt()-25,QPixmap ( confpr->valor ( CONF_DIR_THUMB_ARTICLES ) + codigo + ".jpg" ));
 
 //         painter.drawEllipse(10,20, 80,70); // draw an ellipse
-	 painter.setPen(QColor(200,0,0));
-	 painter.drawText(5,cellwidth.toInt()-5,nombre);
-	 painter.setPen(QColor(0,255,0));
-	 painter.drawText(5,10,nombre);
+	 painter.setPen(QColor(0,0,0));
+	 painter.setBackground(QColor(0,0,0));
+
+	 painter.drawText(5,95,nombre);
+//	 painter.setPen(QColor(0,25,0));
+//	 painter.drawText(5,10,nombre);
 //	 painter.drawText(5,15,nombre);
 //	 painter.drawText(5,5,codigo);
 //	 painter.drawText(5,10,cellwidth);
@@ -127,8 +138,6 @@ void ArtGraficos::muestraPantalla ( int numpantalla )
 
 
        lab->setPicture ( picture );
-
-
 
                 mui_list->setCellWidget ( row, column, lab );
                 m_articulos[row][column] = codigo;

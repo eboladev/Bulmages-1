@@ -192,6 +192,8 @@
 /// Cajon Portamonedas
 #define CONF_CASHBOX_FILE	     454
 #define CONF_CASHBOX_OPEN_CODE	     455
+/// Configuracion para articulos varios
+#define CONF_ARTICULOS_VARIOS        456
 
 /// CONF_NUM_AUT_* determina si se utilizaran numeradores automaticos para presupuestos,
 /// albaranes y facturas inicialmente vale "".

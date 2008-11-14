@@ -233,17 +233,24 @@ void  Ticket::setDescuentoGlobal ( Fixed descuento )
 
 void Ticket::abrircajon()
 {
-    QFile file ( confpr->valor ( CONF_CASHBOX_FILE ) );
+
+    QString filestr="/dev/null";
+    if (confpr->valor ( CONF_CASHBOX_FILE ) != "") {
+	filestr = confpr->valor(CONF_CASHBOX_FILE);
+    } // end if
+    QFile file ( filestr );
     if ( !file.open ( QIODevice::WriteOnly | QIODevice::Unbuffered ) ) {
         _depura ( "Error en la Impresion de ticket", 2 );
     } // end if
 
     QStringList secuencia = confpr->valor (CONF_CASHBOX_OPEN_CODE).split(",");
+
     /// El comando de apertura de cajon
     for (int i = 0; i < secuencia.size(); ++i) {
 	    QString cad = QChar(secuencia.at(i).toInt());
 	    file.write ( cad.toAscii(), 1 );
     } // end for
+//	file.write("hola mundo\n");
     file.close();
 }
 
@@ -570,6 +577,8 @@ void  Ticket::imprimir()
 void Ticket::imprimir()
 {
 
+    guardar();
+
     /// Disparamos los plugins.
     int res = g_plugins->lanza ( "Ticket_imprimir", this );
     if ( res != 0 ) {
@@ -727,10 +736,11 @@ void Ticket::imprimir()
     pr.printText ( "Le ha atendido " + trabajador.nombre + "\n" );
     pr.printText ( "\n" );
 
+/*
    pr.printText("Plazo maximo para cambio 15 dias, \n");
    pr.printText(" unicamente con ticket de compra. \n");
    pr.printText("\n");
-
+*/
 
     pr.printText ( "Tel. " + empresa.telefono + "\n" );
     pr.printText ( "\n" );
@@ -926,6 +936,12 @@ int Ticket::guardar()
     _depura ( "Ticket::guardar", 0 );
 
     try {
+
+	if ( listaLineas() ->count() == 0 ) {
+		mensajeAviso ( tr ( "El ticket esta vacio." ) );
+		return -1;
+	} // end if
+
         QString id;
         empresaBase() ->begin();
         DBsave ( id );
@@ -938,9 +954,12 @@ int Ticket::guardar()
             item->DBsave ( id1 );
         }// end for
         empresaBase() ->commit();
-
+	setDBvalue("idalbaran", id);
         cursor2 *cur = empresaBase() ->cargacursor ( "SELECT * FROM albaran WHERE idalbaran = " + id );
-        DBload ( cur );
+	setDBvalue("refalbaran", cur->valor("refalbaran"));
+	setDBvalue("numalbaran", cur->valor("numalbaran"));
+
+//        DBload ( cur );
         delete cur;
 
         _depura ( "END Ticket::guardar", 0 );

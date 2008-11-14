@@ -57,6 +57,7 @@ int EmpresaTPV_cobrar ( EmpresaTPV *etpv )
 
     diag->setModal ( true );
 
+    etpv->ticketActual()->abrircajon();
 //    TipoArticuloList *tip = ( ( Company * ) empresaBase() ) ->newTipoArticuloList ( diag, TRUE );
 //    connect ( tip, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 

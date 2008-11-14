@@ -162,9 +162,7 @@ void EmpresaTPV::z()
         file.write ( cur->valor ( "valor" ).toAscii() );
         file.write ( "\n", 1 );
     } // end if
-    ///file.write ( QString ( "C/LAS POZAS 181, LOCAL 43\n" ).toAscii() );
     delete cur;
-    /// file.write ( QString ( "ALIMENTACION ECOLOGICA. HERBOLARIO\n" ).toAscii() );
     cur = cargacursor ( "SELECT * FROM configuracion WHERE nombre='CodPostal'" );
     if ( !cur->eof() ) {
         file.write ( cur->valor ( "valor" ).toAscii() );
@@ -248,7 +246,39 @@ void EmpresaTPV::z()
     file.write ( "\n", 1 );
 
 // ============================================
+    file.write ( QString ( "=======================\n" ).rightJustified ( 43, ' ' ).toAscii() );
+    file.write ( QString ( "=======================\n" ).rightJustified ( 43, ' ' ).toAscii() );
+    file.write ( QString ( "==== RESUMEN FAMILIAS ======\n" ).rightJustified ( 43, ' ' ).toAscii() );
+// Informes por familias
 
+    /// Imprimimos el almacen
+    cur = cargacursor ( "SELECT * FROM familia");
+    while ( !cur->eof() ) {
+        file.write ( QString ( "Familia: " ).toAscii() );
+        file.write (cur->valor ( "nomfamilia" ).toAscii() );
+        file.write ( "\n", 1 );
+
+	QString querycont = "SELECT sum(cantlalbaran) AS unidades, sum(pvpivainclalbaran * cantlalbaran) as total FROM lalbaran NATURAL LEFT JOIN articulo WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE idz="+idz+")  AND idfamilia = " + cur->valor("idfamilia");
+	cursor2 *cur1 = cargacursor ( querycont );
+	QString numticketscont = cur1->valor ( "unidades" );
+	QString totalcont = cur1->valor ( "total" );
+	if ( totalcont == "" ) totalcont = "0";
+	delete cur1;
+
+	str = "Und. Vendidas: " + numticketscont.rightJustified ( 10, ' ' );
+	file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
+	file.write ( "\n", 1 );
+	
+	str = "Total:" + totalcont.rightJustified ( 10, ' ' );
+	file.write ( str.rightJustified ( 42, ' ' ).toAscii() );
+	file.write ( "\n", 1 );
+
+        file.write ( QString ( "=======================\n" ).rightJustified ( 43, ' ' ).toAscii() );
+
+	cur-> siguienteregistro();
+    } // end if
+    delete cur;
+// Fin informes por familias
 
     /// Imprimimos espacios
     file.write ( "\n \n \n \n", 7 );
@@ -596,8 +626,12 @@ void EmpresaTPV::cobrar()
         return;
     } // end if
 
-    m_ticketActual->guardar();
-    m_ticketActual->imprimir();
+    if (m_ticketActual->DBvalue("idalbaran") != "") {
+	    m_ticketActual->guardar();
+    } else {
+	    m_ticketActual->guardar();
+	    m_ticketActual->imprimir();
+    } // end if
 
     m_listaTickets.removeAt ( m_listaTickets.indexOf ( m_ticketActual ) );
     m_ticketActual = NULL;
