@@ -19,7 +19,7 @@
    sodipodi:docname="payment_method_list.svg"
    sodipodi:docbase="/home/elferrer/Desktop"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
-   inkscape:export-filename="/home/elferrer/Desktop/nuevo iglues.org/png blog/payment_method_list.png"
+   inkscape:export-filename="/home/elferrer/Desktop/nuevo iglues.org/png blog/-payment_method_list.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <metadata
@@ -111,6 +111,13 @@
   </sodipodi:namedview>
   <defs
      id="defs3">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 64 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="128 : 64 : 1"
+       inkscape:persp3d-origin="64 : 42.666667 : 1"
+       id="perspective616" />
     <linearGradient
        x1="71.999496"
        y1="14.2578"
