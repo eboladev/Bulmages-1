@@ -11,6 +11,9 @@
 		<setFont name="Helvetica" size="22"/>
 		<drawString x="1.5cm" y="24.5cm">ALBARAN</drawString>
 
+<!--IF QUERY="SELECT * FROM CLIENTE WHERE idcliente = [idcliente]"-->
+<!--QUERY="SELECT * FROM cliente WHERE idcliente=[idcliente]"-->
+
 		<!-- LOS DATOS DEL CLIENTE -->
 		<setFont name="Helvetica" size="12"/>
 		<drawString x="8.5cm" y="24cm">[nomcliente] -- [telcliente]</drawString>
@@ -31,7 +34,11 @@
 		<drawCentredString x="11.5cm" y="20.4cm">[fechaalbaran]</drawCentredString>
 		<drawCentredString x="14.5cm" y="20.4cm">[numalbaran]</drawCentredString>
 		<drawCentredString x="17.5cm" y="20.4cm">[refalbaran]</drawCentredString>
-		</pageGraphics>
+	</pageGraphics>
+
+<!--END QUERY-->
+<!--END IF QUERY-->
+
 		<!-- FRAME DE CONTENIDOS -->
 		<frame id="column" x1="1cm" y1="5cm" width="19cm" height="15cm"/>
 	</pageTemplate>
