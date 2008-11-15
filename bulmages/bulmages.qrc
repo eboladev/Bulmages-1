@@ -34,6 +34,7 @@
 		<file alias="client-quote.svg">images/default-spa/mimetypes/client-quote.svg</file>
 		<file alias="client-quote-list.svg">images/default-spa/mimetypes/client-quote-list.svg</file>
 		<file alias="vat.svg">images/oxygen/actions/vat.svg</file>
+		<file alias="employee-list.svg">images/oxygen/actions/employee_list.svg</file>
     </qresource>
 <!-- Cambiando el prefix por el de Images se puede cambiar el conjunto de imagenes -->
     <qresource prefix="/Images_defaultspa">
@@ -70,6 +71,7 @@
 		<file alias="client-quote.svg">images/default-spa/mimetypes/client-quote.svg</file>
 		<file alias="client-quote-list.svg">images/default-spa/mimetypes/client-quote-list.svg</file>
 		<file alias="vat.svg">images/oxygen/actions/vat.svg</file>
+		<file alias="employee-list.svg">images/oxygen/actions/employee_list.svg</file>
     </qresource>
     <qresource prefix="/BulmaCont32x32" >
         <file>images/png/decrypted.png</file>
@@ -240,10 +242,6 @@
         <file>images/png/16x16/i_bulmages_tarifa_listado.16x16.png</file>
         <file>images/png/16x16/i_bulmages_tarifa_mas.16x16.png</file>
         <file>images/png/16x16/i_bulmages_tarifa_menos.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_trabajadores.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_trabajadores_listado.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_trabajadores_mas.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_trabajadores_menos.16x16.png</file>
         <file>images/png/16x16/i_bulmages_ventas.16x16.png</file>
         <file>images/png/16x16/i_bulmages_ventas_albaran.16x16.png</file>
         <file>images/png/16x16/i_bulmages_ventas_albaran_a_factura.16x16.png</file>
@@ -327,10 +325,6 @@
         <file>images/png/32x32/i_bulmages_tarifa_listado.32x32.png</file>
         <file>images/png/32x32/i_bulmages_tarifa_mas.32x32.png</file>
         <file>images/png/32x32/i_bulmages_tarifa_menos.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_trabajadores.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_trabajadores_listado.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_trabajadores_mas.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_trabajadores_menos.32x32.png</file>
         <file>images/png/32x32/i_bulmages_ventas.32x32.png</file>
         <file>images/png/32x32/i_bulmages_ventas_albaran.32x32.png</file>
         <file>images/png/32x32/i_bulmages_ventas_albaran_a_factura.32x32.png</file>
@@ -415,10 +409,6 @@
         <file>images/png/48x48/i_bulmages_tarifa_listado.48x48.png</file>
         <file>images/png/48x48/i_bulmages_tarifa_mas.48x48.png</file>
         <file>images/png/48x48/i_bulmages_tarifa_menos.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_trabajadores.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_trabajadores_listado.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_trabajadores_mas.48x48.png</file>
-        <file>images/png/48x48/i_bulmages_trabajadores_menos.48x48.png</file>
         <file>images/png/48x48/i_bulmages_ventas.48x48.png</file>
         <file>images/png/48x48/i_bulmages_ventas_albaran.48x48.png</file>
         <file>images/png/48x48/i_bulmages_ventas_albaran_a_factura.48x48.png</file>
