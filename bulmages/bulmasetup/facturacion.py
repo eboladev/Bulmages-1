@@ -95,6 +95,7 @@ class Facturacion(Empresa):
 			self.j = self.j + 1
 
 	def on_mui_plugins_cellClicked(self, row, col):
+                self.writecommand('Activado ' + self.pluginsbulmafact[self.i][0])
 		if (self.semaforo == 1):
 			# Marcamos las dependencias
 			self.i = 0
@@ -145,6 +146,7 @@ class Facturacion(Empresa):
 			self.writecommand('Tratando ' + self.pluginsbulmafact[self.i][0])
 			if (self.mui_plugins.item(self.i, 0).checkState() == Qt.Checked):
                 		self.writecommand('Actualizando ' + self.pluginsbulmafact[self.i][0])
+                		self.writecommand('============ \n ' )
 				if (len(self.pluginsbulmafact[self.i][4]) > 0):
 				    self.command = 'su postgres -c \"psql -t -f  ' + plugins.pathdbplugins + self.pluginsbulmafact[self.i][4] +' '+ self.database +'\"'
 				    self.writecommand(self.command)

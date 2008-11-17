@@ -25,19 +25,11 @@
    <string>Nueva Facturacion</string>
   </property>
   <property name="windowIcon" >
-   <iconset>../../../../.designer/images/png/bulmafact.png</iconset>
+   <iconset>
+    <normaloff>../../../../.designer/images/png/bulmafact.png</normaloff>../../../../.designer/images/png/bulmafact.png</iconset>
   </property>
   <layout class="QGridLayout" >
-   <property name="leftMargin" >
-    <number>5</number>
-   </property>
-   <property name="topMargin" >
-    <number>5</number>
-   </property>
-   <property name="rightMargin" >
-    <number>5</number>
-   </property>
-   <property name="bottomMargin" >
+   <property name="margin" >
     <number>5</number>
    </property>
    <item row="0" column="0" >
@@ -111,16 +103,7 @@
        <string>BulmaFact</string>
       </attribute>
       <layout class="QVBoxLayout" >
-       <property name="leftMargin" >
-        <number>0</number>
-       </property>
-       <property name="topMargin" >
-        <number>0</number>
-       </property>
-       <property name="rightMargin" >
-        <number>0</number>
-       </property>
-       <property name="bottomMargin" >
+       <property name="margin" >
         <number>0</number>
        </property>
        <item>
@@ -152,16 +135,7 @@
        <string>BulmaTPV</string>
       </attribute>
       <layout class="QVBoxLayout" >
-       <property name="leftMargin" >
-        <number>0</number>
-       </property>
-       <property name="topMargin" >
-        <number>0</number>
-       </property>
-       <property name="rightMargin" >
-        <number>0</number>
-       </property>
-       <property name="bottomMargin" >
+       <property name="margin" >
         <number>0</number>
        </property>
        <item>
@@ -220,7 +194,7 @@
    <item row="6" column="3" colspan="2" >
     <widget class="QPushButton" name="mui_aceptar" >
      <property name="text" >
-      <string>Generar .conf</string>
+      <string>Aplicar plugins</string>
      </property>
     </widget>
    </item>
