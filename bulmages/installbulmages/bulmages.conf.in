@@ -16,7 +16,7 @@ CONF_PUERTO                    5432
 # Por defecto se proponen estos programas. Configurar a gusto.
 CONF_EDITOR                    kate
 CONF_NAVEGADOR                 x-www-browser
-CONF_PDF                       kpdf
+CONF_PDF                       konqueror
 CONF_DIR_TMP                   /tmp/
 
 # Parametros de configuracion del programa.
