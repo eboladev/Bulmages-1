@@ -51,9 +51,11 @@
         <file alias="supplier-purchase-order-list.svg">images/oxygen/actions/supplier_purchase_order_new.svg</file>
         <file alias="supplier-invoice.svg">images/oxygen/actions/supplier_invoice_new.svg</file>
         <file alias="supplier-invoice-list.svg">images/oxygen/actions/supplier_invoice_new.svg</file>
+        <file alias="flag-world.svg">images/oxygen/international/flag_world.svg</file>
+        <file alias="payment-method.svg">images/oxygen/actions/payment_method_list.svg</file>
     </qresource>
 <!-- Cambiando el prefix por el de Images se puede cambiar el conjunto de imagenes -->
-    <qresource prefix="/Images_defaultspa">
+    <qresource prefix="/Images_default_spa">
         <file alias="edit-save.svg">images/default-spa/Actions/edit-save.svg</file>
         <file alias="edit-delete.svg">images/default-spa/Actions/edit-delete.svg</file>
         <file alias="document-new.svg">images/default-spa/Actions/document-new.svg</file>
@@ -103,6 +105,8 @@
         <file alias="supplier-purchase-order-list.svg">images/default-spa/mimetypes/supplier-purchase-order-list.svg</file>
         <file alias="supplier-invoice.svg">images/default-spa/mimetypes/supplier-invoice.svg</file>
         <file alias="supplier-invoice-list.svg">images/default-spa/mimetypes/supplier-invoice-list.svg</file>
+        <file alias="flag-world.svg">images/oxygen/international/flag_world.svg</file>
+        <file alias="payment-method.svg">images/oxygen/actions/payment_method_list.svg</file>
     </qresource>
     <qresource prefix="/BulmaCont32x32" >
         <file>images/png/decrypted.png</file>

@@ -570,6 +570,10 @@
    </property>
   </action>
   <action name="actionFormas_de_Pago" >
+   <property name="icon" >
+    <iconset resource="../../bulmages.qrc" >
+     <normaloff>:/Images/payment-method.svg</normaloff>:/Images/payment-method.svg</iconset>
+   </property>
    <property name="text" >
     <string>&amp;Formas de pago</string>
    </property>
@@ -649,6 +653,10 @@
    </property>
   </action>
   <action name="actionPaises" >
+   <property name="icon" >
+    <iconset resource="../../bulmages.qrc" >
+     <normaloff>:/Images/flag-world.svg</normaloff>:/Images/flag-world.svg</iconset>
+   </property>
    <property name="text" >
     <string>Paises / Provincias</string>
    </property>

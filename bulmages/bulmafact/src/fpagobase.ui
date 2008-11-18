@@ -14,7 +14,7 @@
   </property>
   <property name="windowIcon" >
    <iconset resource="../../bulmages.qrc" >
-    <normaloff>:/Images/bank.svg</normaloff>:/Images/bank.svg</iconset>
+    <normaloff>:/Images/payment-method.svg</normaloff>:/Images/payment-method.svg</iconset>
   </property>
   <layout class="QGridLayout" >
    <property name="margin" >
@@ -248,7 +248,7 @@
         <string/>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../bulmages.qrc" >:/Images/bank.svg</pixmap>
+        <pixmap resource="../../bulmages.qrc" >:/Images/payment-method.svg</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>
