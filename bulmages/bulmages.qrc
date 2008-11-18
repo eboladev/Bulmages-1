@@ -12,29 +12,45 @@
         <file alias="document-import.svg">images/oxygen/actions/document_import.svg</file>
         <file alias="document-export.svg">images/oxygen/actions/document_export.svg</file>
         <file alias="mail-send.svg">images/oxygen/actions/mail_send.svg</file>
-        <file alias="selection-invert.svg">images/default-spa/Actions/selection-invert.svg</file>
+        <file alias="selection-invert.svg">images/oxygen/actions/edit_select_invert.svg</file>
         <file alias="document-report.svg">images/oxygen/actions/document_report.svg</file>
         <file alias="product-list.svg">images/oxygen/actions/product_window.svg</file>
-		<file alias="product.svg">images/oxygen/actions/product.svg</file>
-		<file alias="product-family.svg">images/oxygen/actions/product_group.svg</file>
-		<file alias="client.svg">images/oxygen/actions/client_list.svg</file>
-		<file alias="client-list.svg">images/oxygen/actions/client_list.svg</file>
-		<file alias="supplier.svg">images/oxygen/actions/supplier.svg</file>
-		<file alias="supplier-list.svg">images/oxygen/actions/supplier.svg</file>
-		<file alias="warehouse.svg">images/default-spa/mimetypes/warehouse.svg</file>
-		<file alias="warehouse-list.svg">images/default-spa/mimetypes/warehouse-list.svg</file>
-		<file alias="bank.svg">images/oxygen/actions/bank_list.svg</file>
-		<file alias="bank-list.svg">images/oxygen/actions/bank_list.svg</file>
-		<file alias="cash.svg">images/oxygen/actions/cash.svg</file>
-		<file alias="cash-list.svg">images/oxygen/actions/cash.svg</file>
-		<file alias="receive.svg">images/default-spa/mimetypes/receive.svg</file>
-		<file alias="receive-list.svg">images/default-spa/mimetypes/receive-list.svg</file>
-		<file alias="pay.svg">images/default-spa/mimetypes/pay.svg</file>
-		<file alias="pay-list.svg">images/default-spa/mimetypes/pay-list.svg</file>
-		<file alias="client-quote.svg">images/default-spa/mimetypes/client-quote.svg</file>
-		<file alias="client-quote-list.svg">images/default-spa/mimetypes/client-quote-list.svg</file>
-		<file alias="vat.svg">images/oxygen/actions/vat.svg</file>
-		<file alias="employee-list.svg">images/oxygen/actions/employee_list.svg</file>
+	<file alias="product.svg">images/oxygen/actions/product.svg</file>
+	<file alias="product-family.svg">images/oxygen/actions/product_group.svg</file>
+	<file alias="client.svg">images/oxygen/actions/client_list.svg</file>
+	<file alias="client-list.svg">images/oxygen/actions/client_list.svg</file>
+	<file alias="supplier.svg">images/oxygen/actions/supplier.svg</file>
+	<file alias="supplier-list.svg">images/oxygen/actions/supplier.svg</file>
+	<file alias="warehouse.svg">images/oxygen/actions/warehouse_list.svg</file>
+	<file alias="warehouse-list.svg">images/oxygen/actions/warehouse_list.svg</file>
+	<file alias="bank.svg">images/oxygen/actions/bank_list.svg</file>
+	<file alias="bank-list.svg">images/oxygen/actions/bank_list.svg</file>
+	<file alias="cash.svg">images/oxygen/actions/cash.svg</file>
+	<file alias="cash-list.svg">images/oxygen/actions/cash.svg</file>
+	<file alias="receive.svg">images/oxygen/actions/collect.svg</file>
+	<file alias="receive-list.svg">images/oxygen/actions/collect.svg</file>
+	<file alias="pay.svg">images/oxygen/actions/payment.svg</file>
+	<file alias="pay-list.svg">images/oxygen/actions/payment.svg</file>
+	<file alias="client-quote.svg">images/oxygen/actions/client_quote.svg</file>
+	<file alias="client-quote-list.svg">images/oxygen/actions/client_quote.svg</file>
+	<file alias="client-delivery-order.svg">images/oxygen/actions/client_delivery_order.svg</file>
+	<file alias="client-delivery-order-list.svg">images/oxygen/actions/client_delivery_order.svg</file>
+	<file alias="client-delivery-note.svg">images/oxygen/actions/client_delivery_note.svg</file>
+	<file alias="client-delivery-note-list.svg">images/oxygen/actions/client_delivery_note.svg</file>
+	<file alias="client-invoice.svg">images/oxygen/actions/client_invoice.svg</file>
+	<file alias="client-invoice-list.svg">images/oxygen/actions/client_invoice.svg</file>
+	<file alias="vat.svg">images/oxygen/actions/vat.svg</file>
+	<file alias="employee-list.svg">images/oxygen/actions/employee_list.svg</file>
+	<file alias="account_plan.svg">images/oxygen/actions/account_plan.svg</file>
+	<file alias="account.svg">images/oxygen/actions/account.svg</file>
+	<file alias="bank-statement.svg">images/oxygen/actions/bank_statement.svg</file>
+	<file alias="balance-sheet.svg">images/oxygen/actions/balance_sheet.svg</file>
+        <file alias="supplier-delivery-note.svg">images/oxygen/actions/supplier_delivery_note_new.svg</file>
+        <file alias="supplier-delivery-note-list.svg">images/oxygen/actions/supplier_delivery_note_new.svg</file>
+        <file alias="supplier-purchase-order.svg">images/oxygen/actions/supplier_purchase_order_new.svg</file>
+        <file alias="supplier-purchase-order-list.svg">images/oxygen/actions/supplier_purchase_order_new.svg</file>
+        <file alias="supplier-invoice.svg">images/oxygen/actions/supplier_invoice_new.svg</file>
+        <file alias="supplier-invoice-list.svg">images/oxygen/actions/supplier_invoice_new.svg</file>
     </qresource>
 <!-- Cambiando el prefix por el de Images se puede cambiar el conjunto de imagenes -->
     <qresource prefix="/Images_defaultspa">
@@ -52,25 +68,41 @@
         <file alias="selection-invert.svg">images/default-spa/Actions/selection-invert.svg</file>
         <file alias="document-report.svg">images/default-spa/Actions/document-report.svg</file>
         <file alias="product-list.svg">images/default-spa/mimetypes/product-list.svg</file>
-		<file alias="product.svg">images/default-spa/mimetypes/product.svg</file>
-		<file alias="product-family.svg">images/default-spa/mimetypes/product-family.svg</file>
-		<file alias="client.svg">images/default-spa/mimetypes/client.svg</file>
-		<file alias="client-list.svg">images/default-spa/mimetypes/client-list.svg</file>
-		<file alias="supplier.svg">images/default-spa/mimetypes/supplier.svg</file>
-		<file alias="supplier-list.svg">images/default-spa/mimetypes/supplier-list.svg</file>
-		<file alias="warehouse.svg">images/default-spa/mimetypes/warehouse.svg</file>
-		<file alias="warehouse-list.svg">images/default-spa/mimetypes/warehouse-list.svg</file>
-		<file alias="bank.svg">images/default-spa/mimetypes/bank.svg</file>
-		<file alias="bank-list.svg">images/default-spa/mimetypes/bank-list.svg</file>
-		<file alias="cash.svg">images/default-spa/mimetypes/cash.svg</file>
-		<file alias="cash-list.svg">images/default-spa/mimetypes/cash-list.svg</file>
-		<file alias="receive.svg">images/default-spa/mimetypes/receive.svg</file>
-		<file alias="receive-list.svg">images/default-spa/mimetypes/receive-list.svg</file>
-		<file alias="pay.svg">images/default-spa/mimetypes/pay.svg</file>
-		<file alias="pay-list.svg">images/default-spa/mimetypes/pay-list.svg</file>
-		<file alias="client-quote.svg">images/default-spa/mimetypes/client-quote.svg</file>
-		<file alias="client-quote-list.svg">images/default-spa/mimetypes/client-quote-list.svg</file>
-		<file alias="vat.svg">images/oxygen/actions/vat.svg</file>
+	<file alias="product.svg">images/default-spa/mimetypes/product.svg</file>
+	<file alias="product-family.svg">images/default-spa/mimetypes/product-family.svg</file>
+	<file alias="client.svg">images/default-spa/mimetypes/client.svg</file>
+	<file alias="client-list.svg">images/default-spa/mimetypes/client-list.svg</file>
+	<file alias="supplier.svg">images/default-spa/mimetypes/supplier.svg</file>
+	<file alias="supplier-list.svg">images/default-spa/mimetypes/supplier-list.svg</file>
+	<file alias="warehouse.svg">images/default-spa/mimetypes/warehouse.svg</file>
+	<file alias="warehouse-list.svg">images/default-spa/mimetypes/warehouse-list.svg</file>
+	<file alias="bank.svg">images/default-spa/mimetypes/bank.svg</file>
+	<file alias="bank-list.svg">images/default-spa/mimetypes/bank-list.svg</file>
+	<file alias="cash.svg">images/default-spa/mimetypes/cash.svg</file>
+	<file alias="cash-list.svg">images/default-spa/mimetypes/cash-list.svg</file>
+	<file alias="receive.svg">images/default-spa/mimetypes/receive.svg</file>
+	<file alias="receive-list.svg">images/default-spa/mimetypes/receive-list.svg</file>
+	<file alias="pay.svg">images/default-spa/mimetypes/pay.svg</file>
+	<file alias="pay-list.svg">images/default-spa/mimetypes/pay-list.svg</file>
+	<file alias="client-quote.svg">images/default-spa/mimetypes/client-quote.svg</file>
+	<file alias="client-quote-list.svg">images/default-spa/mimetypes/client-quote-list.svg</file>
+	<file alias="client-delivery-order.svg">images/default-spa/mimetypes/client-delivery-order.svg</file>
+	<file alias="client-delivery-order-list.svg">images/default-spa/mimetypes/client-delivery-order-list.svg</file>
+	<file alias="client-delivery-note.svg">images/default-spa/mimetypes/client-delivery-note.svg</file>
+	<file alias="client-delivery-note-list.svg">images/default-spa/mimetypes/client-delivery-note-list.svg</file>
+	<file alias="client-invoice.svg">images/default-spa/mimetypes/client-invoice.svg</file>
+	<file alias="client-invoice-list.svg">images/default-spa/mimetypes/client-invoice-list.svg</file>
+	<file alias="vat.svg">images/oxygen/actions/vat.svg</file>
+	<file alias="account_plan.svg">images/oxygen/actions/account_plan.svg</file>
+	<file alias="account.svg">images/oxygen/actions/account.svg</file>
+	<file alias="bank-statement.svg">images/oxygen/actions/bank_statement.svg</file>
+	<file alias="balance-sheet.svg">images/oxygen/actions/balance_sheet.svg</file>
+        <file alias="supplier-delivery-note.svg">images/default-spa/mimetypes/supplier-delivery-note.svg</file>
+        <file alias="supplier-delivery-note-list.svg">images/default-spa/mimetypes/supplier-delivery-note-list.svg</file>
+        <file alias="supplier-purchase-order.svg">images/default-spa/mimetypes/supplier-purchase-order.svg</file>
+        <file alias="supplier-purchase-order-list.svg">images/default-spa/mimetypes/supplier-purchase-order-list.svg</file>
+        <file alias="supplier-invoice.svg">images/default-spa/mimetypes/supplier-invoice.svg</file>
+        <file alias="supplier-invoice-list.svg">images/default-spa/mimetypes/supplier-invoice-list.svg</file>
     </qresource>
     <qresource prefix="/BulmaCont32x32" >
         <file>images/png/decrypted.png</file>
@@ -184,27 +216,6 @@
         <file>images/png/wizard.png</file>
     </qresource>
     <qresource prefix="/Bulmafact16x16" >
-        <file>images/png/16x16/i_bulmages_boton_listado.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_boton_mas.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_boton_menos.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_compras.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_compras_albaran.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_compras_albaran_listado.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_compras_albaran_mas.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_compras_albaran_menos.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_compras_facturas.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_compras_facturas_listado.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_compras_facturas_mas.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_compras_facturas_menos.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_compras_listado.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_compras_mas.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_compras_menos.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_compras_pedidos.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_compras_pedidos_listado.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_compras_pedidos_mas.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_compras_pedidos_menos.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_correo_electronico.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_cuentas.16x16.png</file>
         <file>images/png/16x16/i_bulmages_cuentas_activo.16x16.png</file>
         <file>images/png/16x16/i_bulmages_cuentas_gastos.16x16.png</file>
         <file>images/png/16x16/i_bulmages_cuentas_ingresos.16x16.png</file>
@@ -237,52 +248,10 @@
         <file>images/png/16x16/i_bulmages_tarifa_listado.16x16.png</file>
         <file>images/png/16x16/i_bulmages_tarifa_mas.16x16.png</file>
         <file>images/png/16x16/i_bulmages_tarifa_menos.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_ventas.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_ventas_albaran.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_ventas_albaran_a_factura.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_ventas_albaran_listado.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_ventas_albaran_mas.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_ventas_albaran_menos.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_ventas_facturas.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_ventas_facturas_automaticas.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_ventas_facturas_listado.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_ventas_facturas_mas.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_ventas_facturas_menos.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_ventas_listado.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_ventas_mas.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_ventas_menos.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_ventas_partes.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_ventas_partes_listado.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_ventas_partes_mas.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_ventas_partes_menos.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_ventas_pedido_a_albaran.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_ventas_pedidos.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_ventas_pedidos_listado.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_ventas_pedidos_mas.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_ventas_pedidos_menos.16x16.png</file>
-        <file>images/png/16x16/i_bulmages_ventas_presupuesto_a_pedido.16x16.png</file>
+
     </qresource>
     <qresource prefix="/Bulmafact32x32" >
-        <file>images/png/32x32/i_bulmages_boton_listado.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_boton_mas.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_boton_menos.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_compras.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_compras_albaran.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_compras_albaran_listado.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_compras_albaran_mas.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_compras_albaran_menos.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_compras_facturas.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_compras_facturas_listado.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_compras_facturas_mas.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_compras_facturas_menos.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_compras_listado.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_compras_mas.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_compras_menos.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_compras_pedidos.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_compras_pedidos_listado.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_compras_pedidos_mas.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_compras_pedidos_menos.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_correo_electronico.32x32.png</file>
+
         <file>images/png/32x32/i_bulmages_cuentas.32x32.png</file>
         <file>images/png/32x32/i_bulmages_cuentas_activo.32x32.png</file>
         <file>images/png/32x32/i_bulmages_cuentas_gastos.32x32.png</file>
@@ -316,18 +285,6 @@
         <file>images/png/32x32/i_bulmages_tarifa_listado.32x32.png</file>
         <file>images/png/32x32/i_bulmages_tarifa_mas.32x32.png</file>
         <file>images/png/32x32/i_bulmages_tarifa_menos.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_ventas.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_ventas_albaran.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_ventas_albaran_a_factura.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_ventas_albaran_listado.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_ventas_albaran_mas.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_ventas_albaran_menos.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_ventas_facturas.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_ventas_facturas_automaticas.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_ventas_facturas_listado.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_ventas_facturas_mas.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_ventas_facturas_menos.32x32.png</file>
-        <file>images/png/32x32/i_bulmages_ventas_listado.32x32.png</file>
         <file>images/png/32x32/i_bulmages_ventas_mas.32x32.png</file>
         <file>images/png/32x32/i_bulmages_ventas_menos.32x32.png</file>
         <file>images/png/32x32/i_bulmages_ventas_partes.32x32.png</file>

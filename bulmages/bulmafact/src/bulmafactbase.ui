@@ -25,23 +25,14 @@
    <iconset resource="../../bulmages.qrc" >
     <normaloff>:/Bulmafact32x32/images/png/iconbulmafact.xpm</normaloff>:/Bulmafact32x32/images/png/iconbulmafact.xpm</iconset>
   </property>
-  <widget class="QWidget" name="centralwidget" >
-   <property name="geometry" >
-    <rect>
-     <x>0</x>
-     <y>66</y>
-     <width>991</width>
-     <height>479</height>
-    </rect>
-   </property>
-  </widget>
+  <widget class="QWidget" name="centralwidget" />
   <widget class="QMenuBar" name="menubar" >
    <property name="geometry" >
     <rect>
      <x>0</x>
      <y>0</y>
      <width>991</width>
-     <height>24</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuCompras" >
@@ -146,25 +137,8 @@
    <addaction name="menuVentana" />
    <addaction name="menuAcerca_de" />
   </widget>
-  <widget class="QStatusBar" name="statusbar" >
-   <property name="geometry" >
-    <rect>
-     <x>0</x>
-     <y>545</y>
-     <width>991</width>
-     <height>24</height>
-    </rect>
-   </property>
-  </widget>
+  <widget class="QStatusBar" name="statusbar" />
   <widget class="QToolBar" name="Listados" >
-   <property name="geometry" >
-    <rect>
-     <x>0</x>
-     <y>24</y>
-     <width>494</width>
-     <height>42</height>
-    </rect>
-   </property>
    <property name="focusPolicy" >
     <enum>Qt::TabFocus</enum>
    </property>
@@ -217,14 +191,6 @@
    <addaction name="actionListado_Clientes" />
   </widget>
   <widget class="QToolBar" name="Fichas" >
-   <property name="geometry" >
-    <rect>
-     <x>494</x>
-     <y>24</y>
-     <width>497</width>
-     <height>42</height>
-    </rect>
-   </property>
    <property name="sizePolicy" >
     <sizepolicy vsizetype="Expanding" hsizetype="Minimum" >
      <horstretch>0</horstretch>
@@ -319,7 +285,7 @@
   <action name="actionNuevo_Pedido_Proveedor" >
    <property name="icon" >
     <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_pedidos.48x48.png</normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_pedidos.48x48.png</iconset>
+     <normaloff>:/Images/supplier-purchase-order.svg</normaloff>:/Images/supplier-purchase-order.svg</iconset>
    </property>
    <property name="text" >
     <string>Nuevo pe&amp;dido a proveedor...</string>
@@ -328,7 +294,7 @@
   <action name="actionListado_Pedidos_Proveedor" >
    <property name="icon" >
     <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_pedidos_listado.48x48.png</normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_pedidos_listado.48x48.png</iconset>
+     <normaloff>:/Images/supplier-purchase-order-list.svg</normaloff>:/Images/supplier-purchase-order-list.svg</iconset>
    </property>
    <property name="text" >
     <string>Pe&amp;didos a proveedores</string>
@@ -337,7 +303,7 @@
   <action name="actionNuevo_Albaran_Proveedor" >
    <property name="icon" >
     <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_albaran.48x48.png</normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_albaran.48x48.png</iconset>
+     <normaloff>:/Images/supplier-delivery-note.svg</normaloff>:/Images/supplier-delivery-note.svg</iconset>
    </property>
    <property name="text" >
     <string>Nuevo &amp;albaran de proveedor...</string>
@@ -346,7 +312,7 @@
   <action name="actionListado_Albaranes_Proveedor" >
    <property name="icon" >
     <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_albaran_listado.48x48.png</normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_albaran_listado.48x48.png</iconset>
+     <normaloff>:/Images/supplier-delivery-note-list.svg</normaloff>:/Images/supplier-delivery-note-list.svg</iconset>
    </property>
    <property name="text" >
     <string>&amp;Albaranes de proveedores</string>
@@ -355,7 +321,7 @@
   <action name="actionNueva_Factura_Proveedor" >
    <property name="icon" >
     <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_facturas.48x48.png</normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_facturas.48x48.png</iconset>
+     <normaloff>:/Images/supplier-invoice.svg</normaloff>:/Images/supplier-invoice.svg</iconset>
    </property>
    <property name="text" >
     <string>Nueva &amp;factura de proveedor...</string>
@@ -364,7 +330,7 @@
   <action name="actionListado_Facturas_Proveedor" >
    <property name="icon" >
     <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_facturas_listado.48x48.png</normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_facturas_listado.48x48.png</iconset>
+     <normaloff>:/Images/supplier-invoice-list.svg</normaloff>:/Images/supplier-invoice-list.svg</iconset>
    </property>
    <property name="text" >
     <string>&amp;Facturas de proveedores</string>
@@ -394,7 +360,7 @@
   <action name="actionNuevo_Pedido_Cliente" >
    <property name="icon" >
     <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_pedidos.48x48.png</normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_pedidos.48x48.png</iconset>
+     <normaloff>:/Images/client-delivery-order.svg</normaloff>:/Images/client-delivery-order.svg</iconset>
    </property>
    <property name="text" >
     <string>Nuevo pe&amp;dido de cliente...</string>
@@ -403,7 +369,7 @@
   <action name="actionListado_Pedidos_Cliente" >
    <property name="icon" >
     <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_pedidos_listado.48x48.png</normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_pedidos_listado.48x48.png</iconset>
+     <normaloff>:/Images/client-delivery-order-list.svg</normaloff>:/Images/client-delivery-order-list.svg</iconset>
    </property>
    <property name="text" >
     <string>Pe&amp;didos de clientes</string>
@@ -412,7 +378,7 @@
   <action name="actionNuevo_Albaran_Cliente" >
    <property name="icon" >
     <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_albaran.48x48.png</normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_albaran.48x48.png</iconset>
+     <normaloff>:/Images/client-delivery-note.svg</normaloff>:/Images/client-delivery-note.svg</iconset>
    </property>
    <property name="text" >
     <string>Nuevo &amp;albaran a cliente...</string>
@@ -421,7 +387,7 @@
   <action name="actionListado_Albaranes_Cliente" >
    <property name="icon" >
     <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_albaran_listado.48x48.png</normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_albaran_listado.48x48.png</iconset>
+     <normaloff>:/Images/client-delivery-note-list.svg</normaloff>:/Images/client-delivery-note-list.svg</iconset>
    </property>
    <property name="text" >
     <string>&amp;Albaranes a clientes</string>
@@ -430,7 +396,7 @@
   <action name="actionNueva_Factura_Cliente" >
    <property name="icon" >
     <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_facturas.48x48.png</normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_facturas.48x48.png</iconset>
+     <normaloff>:/Images/client-invoice.svg</normaloff>:/Images/client-invoice.svg</iconset>
    </property>
    <property name="text" >
     <string>Nueva &amp;factura a cliente...</string>
@@ -442,18 +408,26 @@
   <action name="actionListado_Facturas_Cliente" >
    <property name="icon" >
     <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_facturas_listado.48x48.png</normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_facturas_listado.48x48.png</iconset>
+     <normaloff>:/Images/client-invoice-list.svg</normaloff>:/Images/client-invoice-list.svg</iconset>
    </property>
    <property name="text" >
     <string>&amp;Facturas a clientes</string>
    </property>
   </action>
   <action name="actionGestion_Familias" >
+   <property name="icon" >
+    <iconset resource="../../bulmages.qrc" >
+     <normaloff>:/Images/product-family.svg</normaloff>:/Images/product-family.svg</iconset>
+   </property>
    <property name="text" >
     <string>Gestion de &amp;familias</string>
    </property>
   </action>
   <action name="actionGestion_Tipos_Articulo" >
+   <property name="icon" >
+    <iconset resource="../../bulmages.qrc" >
+     <normaloff>:/Images/product-list.svg</normaloff>:/Images/product-list.svg</iconset>
+   </property>
    <property name="text" >
     <string>&amp;Tipos de articulo</string>
    </property>
@@ -526,7 +500,7 @@
   <action name="actionTrabajadores" >
    <property name="icon" >
     <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_trabajadores.48x48.png</normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_trabajadores.48x48.png</iconset>
+     <normaloff>:/Images/employee-list.svg</normaloff>:/Images/employee-list.svg</iconset>
    </property>
    <property name="text" >
     <string>&amp;Trabajadores</string>
