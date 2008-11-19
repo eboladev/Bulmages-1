@@ -259,7 +259,7 @@
           </property>
           <property name="icon" >
            <iconset resource="../../bulmages.qrc" >
-            <normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_facturas.48x48.png</normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_facturas.48x48.png</iconset>
+            <normaloff>:/Images/client-delivery-order-to-note.svg</normaloff>:/Images/client-delivery-order-to-note.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>

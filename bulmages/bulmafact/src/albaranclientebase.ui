@@ -261,7 +261,7 @@
           </property>
           <property name="icon" >
            <iconset resource="../../bulmages.qrc" >
-            <normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_facturas.48x48.png</normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_facturas.48x48.png</iconset>
+            <normaloff>:/Images/client-delivery-note-to-invoice.svg</normaloff>:/Images/client-delivery-note-to-invoice.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -296,7 +296,7 @@
           </property>
           <property name="icon" >
            <iconset resource="../../bulmages.qrc" >
-            <normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_facturas_mas.48x48.png</normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_facturas_mas.48x48.png</iconset>
+            <normaloff>:/Images/client-delivery-note-to-exist-invoice.svg</normaloff>:/Images/client-delivery-note-to-exist-invoice.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>

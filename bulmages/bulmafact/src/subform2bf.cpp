@@ -739,15 +739,19 @@ bool QSubForm2BfDelegate::eventFilter ( QObject *obj, QEvent *event )
         Qt::KeyboardModifiers mod = keyEvent->modifiers();
         /// Anulamos el caso de una pulsacion de tabulador o de enter
         switch ( key ) {
+/*
         case Qt::Key_Return:
         case Qt::Key_Enter:
             if ( obj->objectName() == "QTextEditDelegate" ) {
                 obj->event ( event );
+		event->ignore();
                 return TRUE;
             } // end if
         case Qt::Key_Tab:
             return TRUE;
+*/
         } // end switch
+
         return QItemDelegate::eventFilter ( obj, event );
     } // end if
 
@@ -759,15 +763,18 @@ bool QSubForm2BfDelegate::eventFilter ( QObject *obj, QEvent *event )
         Qt::KeyboardModifiers mod = keyEvent->modifiers();
         /// En caso de pulsacion de un retorno de carro o similar procesamos por nuestra cuenta.
         switch ( key ) {
+/*
         case Qt::Key_Return:
         case Qt::Key_Enter:
             if ( obj->objectName() == "QTextEditDelegate" ) {
                 obj->event ( event );
+		event->ignore();
                 return TRUE;
             } // end if
         case Qt::Key_Tab:
             QApplication::sendEvent ( m_subform->mui_list, event );
             return TRUE;
+*/
         } // end switch
         return QItemDelegate::eventFilter ( obj, event );
     } // end if

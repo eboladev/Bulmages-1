@@ -40,6 +40,7 @@
 	<file alias="client-invoice.svg">images/oxygen/actions/client_invoice.svg</file>
 	<file alias="client-invoice-list.svg">images/oxygen/actions/client_invoice_list.svg</file>
 	<file alias="vat.svg">images/oxygen/actions/vat.svg</file>
+	<file alias="vat-list.svg">images/oxygen/actions/vat.svg</file>
 	<file alias="employee-list.svg">images/oxygen/actions/employee_list.svg</file>
 	<file alias="account_plan.svg">images/oxygen/actions/account_plan.svg</file>
 	<file alias="account.svg">images/oxygen/actions/account.svg</file>
@@ -53,6 +54,20 @@
         <file alias="supplier-invoice-list.svg">images/oxygen/actions/supplier_invoice_new.svg</file>
         <file alias="flag-world.svg">images/oxygen/international/flag_world.svg</file>
         <file alias="payment-method.svg">images/oxygen/actions/payment_method_list.svg</file>
+        <file alias="book.svg">images/oxygen/actions/book.svg</file>
+        <file alias="book-list.svg">images/oxygen/actions/account_libility.svg</file>
+        <file alias="client-quote-to-order.svg">images/oxygen/actions/client_quote_to_order.svg</file>
+        <file alias="client-delivery-order-to-note.svg">images/oxygen/actions/client_delivery_order_to_note.svg</file>
+        <file alias="client-delivery-note-to-invoice.svg">images/oxygen/actions/client_delivery_note_to_invoice.svg</file>
+        <file alias="client-delivery-note-to-exist-invoice.svg">images/oxygen/actions/client_invoice.svg</file>
+        <file alias="supplier-delivery-order-to-note.svg">images/oxygen/actions/client_delivery_order_to_note.svg</file>
+        <file alias="supplier-delivery-note-to-invoice.svg">images/oxygen/actions/client_delivery_note_to_invoice.svg</file>
+        <file alias="reference-report.svg">images/oxygen/actions/reference_report.svg</file>
+	<file alias="company-list.svg">images/default-spa/mimetypes/company-list.svg</file>
+	<file alias="company.svg">images/default-spa/mimetypes/company.svg</file>
+	<file alias="bulmafact.svg">images/default-spa/mimetypes/bulmafact.svg</file>
+	<file alias="bulmacont.svg">images/default-spa/mimetypes/bulmacont.svg</file>
+	<file alias="bulmatpv.svg">images/default-spa/mimetypes/bulmatpv.svg</file>
     </qresource>
 <!-- Cambiando el prefix por el de Images se puede cambiar el conjunto de imagenes -->
     <qresource prefix="/Images_default_spa">
@@ -95,6 +110,7 @@
 	<file alias="client-invoice.svg">images/default-spa/mimetypes/client-invoice.svg</file>
 	<file alias="client-invoice-list.svg">images/default-spa/mimetypes/client-invoice-list.svg</file>
 	<file alias="vat.svg">images/oxygen/actions/vat.svg</file>
+	<file alias="vat-list.svg">images/oxygen/actions/vat.svg</file>
 	<file alias="account_plan.svg">images/oxygen/actions/account_plan.svg</file>
 	<file alias="account.svg">images/oxygen/actions/account.svg</file>
 	<file alias="bank-statement.svg">images/oxygen/actions/bank_statement.svg</file>
@@ -107,6 +123,20 @@
         <file alias="supplier-invoice-list.svg">images/default-spa/mimetypes/supplier-invoice-list.svg</file>
         <file alias="flag-world.svg">images/oxygen/international/flag_world.svg</file>
         <file alias="payment-method.svg">images/oxygen/actions/payment_method_list.svg</file>
+        <file alias="book.svg">images/oxygen/actions/book.svg</file>
+        <file alias="book-list.svg">images/oxygen/actions/account_libility.svg</file>
+        <file alias="client-quote-to-order.svg">images/oxygen/actions/client_quote_to_order.svg</file>
+        <file alias="client-delivery-order-to-note.svg">images/oxygen/actions/client_delivery_order_to_note.svg</file>
+        <file alias="client-delivery-note-to-invoice.svg">images/oxygen/actions/client_delivery_note_to_invoice.svg</file>
+        <file alias="client-delivery-note-to-exist-invoice.svg">images/oxygen/actions/client_invoice.svg</file>
+        <file alias="supplier-delivery-order-to-note.svg">images/oxygen/actions/client_delivery_order_to_note.svg</file>
+        <file alias="supplier-delivery-note-to-invoice.svg">images/oxygen/actions/client_delivery_note_to_invoice.svg</file>
+        <file alias="reference-report.svg">images/oxygen/actions/reference_report.svg</file>
+	<file alias="company-list.svg">images/default-spa/mimetypes/company-list.svg</file>
+	<file alias="company.svg">images/default-spa/mimetypes/company.svg</file>
+	<file alias="bulmafact.svg">images/default-spa/mimetypes/bulmafact.svg</file>
+	<file alias="bulmacont.svg">images/default-spa/mimetypes/bulmacont.svg</file>
+	<file alias="bulmatpv.svg">images/default-spa/mimetypes/bulmatpv.svg</file>
     </qresource>
     <qresource prefix="/BulmaCont32x32" >
         <file>images/png/decrypted.png</file>

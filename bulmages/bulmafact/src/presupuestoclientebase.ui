@@ -236,7 +236,7 @@
           </property>
           <property name="icon" >
            <iconset resource="../../bulmages.qrc" >
-            <normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_pedidos_mas.48x48.png</normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_pedidos_mas.48x48.png</iconset>
+            <normaloff>:/Images/client-quote-to-order.svg</normaloff>:/Images/client-quote-to-order.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -749,14 +749,6 @@
       <number>0</number>
      </property>
      <widget class="QWidget" name="tab1" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>736</width>
-        <height>147</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>&amp;Detalle</string>
       </attribute>
@@ -780,14 +772,6 @@
       </layout>
      </widget>
      <widget class="QWidget" name="Tab2" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>512</width>
-        <height>240</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>Desc&amp;uentos</string>
       </attribute>
@@ -811,14 +795,6 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tab3" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>512</width>
-        <height>240</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>Datos &amp;generales</string>
       </attribute>

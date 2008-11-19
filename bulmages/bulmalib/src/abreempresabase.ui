@@ -26,7 +26,7 @@
   </property>
   <property name="windowIcon" >
    <iconset resource="../../bulmages.qrc" >
-    <normaloff>:/BulmaCont32x32/images/png/i_cargaEmpresa.xpm</normaloff>:/BulmaCont32x32/images/png/i_cargaEmpresa.xpm</iconset>
+    <normaloff>:/Images/company-list.svg</normaloff>:/Images/company-list.svg</iconset>
   </property>
   <property name="toolTip" >
    <string>Seleccione una empresa</string>
@@ -67,7 +67,7 @@
         <string/>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_empresa.xpm</pixmap>
+        <pixmap resource="../../bulmages.qrc" >:/Images/company-list.svg</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>

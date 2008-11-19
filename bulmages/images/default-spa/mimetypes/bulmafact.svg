@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="256.00000pt"
+   height="256.00000pt"
+   id="svg1"
+   sodipodi:version="0.32"
+   inkscape:version="0.43"
+   sodipodi:docbase="/home/raul/Documents/iglues/logos"
+   sodipodi:docname="iglues - svg sencillo bulmafact.svg"
+   inkscape:export-filename="/home/raul/arxius/iglues/v0.4/logos/iglues - svg sencillo bulmafact.png"
+   inkscape:export-xdpi="96.000000"
+   inkscape:export-ydpi="96.000000">
+  <defs
+     id="defs3" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.1544660"
+     inkscape:cx="201.21561"
+     inkscape:cy="37.715918"
+     inkscape:current-layer="svg1"
+     inkscape:window-width="1016"
+     inkscape:window-height="705"
+     inkscape:window-x="0"
+     inkscape:window-y="0" />
+  <metadata
+     id="metadata4">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1" />
+  <path
+     style="fill:#007fff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:7.5000000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4.0000000;stroke-dashoffset:30.000000;stroke-opacity:1.0000000"
+     d="M 148.86554,8.7862335 C 115.20623,12.574699 79.536772,24.797649 59.780732,54.109522 C 46.962362,69.656862 35.783042,87.095486 32.201342,107.21511 C 23.793172,136.52391 21.870312,169.66927 34.620352,197.98910 C 49.280772,223.58348 80.416272,231.46594 107.91810,232.57027 C 125.91358,234.23277 143.99419,234.71524 162.08005,234.58101 C 164.91677,247.00488 170.44974,257.91504 233.31652,245.44960 C 265.35927,240.96214 236.75353,229.51937 250.18231,223.75566 C 263.61109,217.99195 284.09111,208.93721 290.51838,194.87372 C 299.93335,174.60764 301.40770,150.47132 295.95424,129.13634 C 291.35005,117.45656 290.91046,104.30677 284.31134,93.176566 C 276.19718,75.488852 263.74080,60.326392 253.29117,44.191962 C 229.89540,18.861097 194.21731,9.7443975 160.86312,8.4189605 C 156.86393,8.5413855 152.86474,8.6638085 148.86554,8.7862335 z "
+     id="path4399"
+     sodipodi:nodetypes="cccccccscccccc" />
+  <text
+     xml:space="preserve"
+     style="font-size:55.000000px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125.00000%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:DejaVu Sans Condensed"
+     x="156.88342"
+     y="301.89807"
+     id="text1391"
+     sodipodi:linespacing="125.00000%"><tspan
+       sodipodi:role="line"
+       id="tspan1393"
+       x="156.88342"
+       y="301.89807">BulmaFact</tspan></text>
+</svg>

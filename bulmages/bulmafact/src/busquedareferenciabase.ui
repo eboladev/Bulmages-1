@@ -25,22 +25,10 @@
    <string>Form1</string>
   </property>
   <layout class="QGridLayout" >
-   <property name="leftMargin" >
+   <property name="margin" >
     <number>0</number>
    </property>
-   <property name="topMargin" >
-    <number>0</number>
-   </property>
-   <property name="rightMargin" >
-    <number>0</number>
-   </property>
-   <property name="bottomMargin" >
-    <number>0</number>
-   </property>
-   <property name="horizontalSpacing" >
-    <number>5</number>
-   </property>
-   <property name="verticalSpacing" >
+   <property name="spacing" >
     <number>5</number>
    </property>
    <item row="0" column="0" >
@@ -80,7 +68,8 @@
       <string>Informe por referencia</string>
      </property>
      <property name="icon" >
-      <iconset resource="../../bulmages.qrc" >:/Bulmafact32x32/images/png/32x32/i_bulmages_informexreferencia.32x32.png</iconset>
+      <iconset resource="../../bulmages.qrc" >
+       <normaloff>:/Images/reference-report.svg</normaloff>:/Images/reference-report.svg</iconset>
      </property>
      <property name="iconSize" >
       <size>
@@ -108,7 +97,8 @@
       <string>Abre todos los documentos con esta referencia</string>
      </property>
      <property name="icon" >
-      <iconset resource="../../bulmages.qrc" >:/Images/document-report.svg</iconset>
+      <iconset resource="../../bulmages.qrc" >
+       <normaloff>:/Images/document-open.svg</normaloff>:/Images/document-open.svg</iconset>
      </property>
      <property name="iconSize" >
       <size>

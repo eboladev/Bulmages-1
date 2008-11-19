@@ -7,29 +7,21 @@
     <x>0</x>
     <y>0</y>
     <width>818</width>
-    <height>807</height>
+    <height>699</height>
    </rect>
   </property>
   <property name="windowTitle" >
    <string>Asiento</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_lapiz.xpm</iconset>
+   <iconset resource="../../bulmages.qrc" >
+    <normaloff>:/Images/book.svg</normaloff>:/Images/book.svg</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="spacing" >
     <number>5</number>
    </property>
-   <property name="leftMargin" >
-    <number>5</number>
-   </property>
-   <property name="topMargin" >
-    <number>5</number>
-   </property>
-   <property name="rightMargin" >
-    <number>5</number>
-   </property>
-   <property name="bottomMargin" >
+   <property name="margin" >
     <number>5</number>
    </property>
    <item>
@@ -37,16 +29,7 @@
      <property name="spacing" >
       <number>6</number>
      </property>
-     <property name="leftMargin" >
-      <number>0</number>
-     </property>
-     <property name="topMargin" >
-      <number>0</number>
-     </property>
-     <property name="rightMargin" >
-      <number>0</number>
-     </property>
-     <property name="bottomMargin" >
+     <property name="margin" >
       <number>0</number>
      </property>
      <item>
@@ -70,7 +53,7 @@
         </size>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_lapiz.xpm</pixmap>
+        <pixmap resource="../../bulmages.qrc" >:/Images/book.svg</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>
@@ -104,16 +87,7 @@
         <enum>QFrame::Raised</enum>
        </property>
        <layout class="QHBoxLayout" >
-        <property name="leftMargin" >
-         <number>0</number>
-        </property>
-        <property name="topMargin" >
-         <number>0</number>
-        </property>
-        <property name="rightMargin" >
-         <number>0</number>
-        </property>
-        <property name="bottomMargin" >
+        <property name="margin" >
          <number>0</number>
         </property>
         <item>
@@ -146,7 +120,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/decrypted.png</iconset>
+           <iconset resource="../../bulmages.qrc" >
+            <normaloff>:/BulmaCont32x32/images/png/decrypted.png</normaloff>:/BulmaCont32x32/images/png/decrypted.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -189,7 +164,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/encrypted.png</iconset>
+           <iconset resource="../../bulmages.qrc" >
+            <normaloff>:/BulmaCont32x32/images/png/encrypted.png</normaloff>:/BulmaCont32x32/images/png/encrypted.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -232,7 +208,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/edit-save.svg</iconset>
+           <iconset resource="../../bulmages.qrc" >
+            <normaloff>:/Images/edit-save.svg</normaloff>:/Images/edit-save.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -281,7 +258,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/document-new.svg</iconset>
+           <iconset resource="../../bulmages.qrc" >
+            <normaloff>:/Images/document-new.svg</normaloff>:/Images/document-new.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -324,7 +302,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/document-open.svg</iconset>
+           <iconset resource="../../bulmages.qrc" >
+            <normaloff>:/Images/document-open.svg</normaloff>:/Images/document-open.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -367,7 +346,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/document-properties.svg</iconset>
+           <iconset resource="../../bulmages.qrc" >
+            <normaloff>:/Images/document-properties.svg</normaloff>:/Images/document-properties.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -413,7 +393,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:Images/edit-delete.svg</iconset>
+           <iconset>
+            <normaloff>:Images/edit-delete.svg</normaloff>:Images/edit-delete.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -456,7 +437,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/igualant.xpm</iconset>
+           <iconset resource="../../bulmages.qrc" >
+            <normaloff>:/BulmaCont32x32/images/png/igualant.xpm</normaloff>:/BulmaCont32x32/images/png/igualant.xpm</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -502,7 +484,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/document-import.svg</iconset>
+           <iconset resource="../../bulmages.qrc" >
+            <normaloff>:/Images/document-import.svg</normaloff>:/Images/document-import.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -545,7 +528,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Images/document-export.svg</iconset>
+           <iconset resource="../../bulmages.qrc" >
+            <normaloff>:/Images/document-export.svg</normaloff>:/Images/document-export.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -585,7 +569,8 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/wizard.png</iconset>
+           <iconset resource="../../bulmages.qrc" >
+            <normaloff>:/BulmaCont32x32/images/png/wizard.png</normaloff>:/BulmaCont32x32/images/png/wizard.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -631,7 +616,7 @@
           <property name="sizeType" >
            <enum>QSizePolicy::Expanding</enum>
           </property>
-          <property name="sizeHint" >
+          <property name="sizeHint" stdset="0" >
            <size>
             <width>201</width>
             <height>44</height>
@@ -649,16 +634,7 @@
      <property name="spacing" >
       <number>5</number>
      </property>
-     <property name="leftMargin" >
-      <number>0</number>
-     </property>
-     <property name="topMargin" >
-      <number>0</number>
-     </property>
-     <property name="rightMargin" >
-      <number>0</number>
-     </property>
-     <property name="bottomMargin" >
+     <property name="margin" >
       <number>0</number>
      </property>
      <item>
@@ -781,16 +757,7 @@
       <property name="spacing" >
        <number>5</number>
       </property>
-      <property name="leftMargin" >
-       <number>5</number>
-      </property>
-      <property name="topMargin" >
-       <number>5</number>
-      </property>
-      <property name="rightMargin" >
-       <number>5</number>
-      </property>
-      <property name="bottomMargin" >
+      <property name="margin" >
        <number>5</number>
       </property>
       <item>
@@ -801,16 +768,7 @@
         <property name="spacing" >
          <number>5</number>
         </property>
-        <property name="leftMargin" >
-         <number>0</number>
-        </property>
-        <property name="topMargin" >
-         <number>0</number>
-        </property>
-        <property name="rightMargin" >
-         <number>0</number>
-        </property>
-        <property name="bottomMargin" >
+        <property name="margin" >
          <number>0</number>
         </property>
         <item>
@@ -848,7 +806,7 @@
           <property name="orientation" >
            <enum>Qt::Horizontal</enum>
           </property>
-          <property name="sizeHint" >
+          <property name="sizeHint" stdset="0" >
            <size>
             <width>40</width>
             <height>20</height>
@@ -869,16 +827,7 @@
      <property name="spacing" >
       <number>5</number>
      </property>
-     <property name="leftMargin" >
-      <number>0</number>
-     </property>
-     <property name="topMargin" >
-      <number>0</number>
-     </property>
-     <property name="rightMargin" >
-      <number>0</number>
-     </property>
-     <property name="bottomMargin" >
+     <property name="margin" >
       <number>0</number>
      </property>
      <item>
@@ -889,7 +838,7 @@
        <property name="sizeType" >
         <enum>QSizePolicy::Expanding</enum>
        </property>
-       <property name="sizeHint" >
+       <property name="sizeHint" stdset="0" >
         <size>
          <width>96</width>
          <height>25</height>

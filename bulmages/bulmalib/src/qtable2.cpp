@@ -347,14 +347,13 @@ bool QTableWidget2::eventFilter ( QObject *obj, QEvent *event )
         } // end if
         Qt::KeyboardModifiers mod = keyEvent->modifiers();
         switch ( key ) {
-        case Qt::Key_Return:
-        case Qt::Key_Enter:
+//        case Qt::Key_Return:
+//        case Qt::Key_Enter:
         case Qt::Key_Tab:
-            m_teclasalida = key;
-            emit cellRePosition ( row, col );
+	    m_teclasalida = key;
+	    emit cellRePosition ( row, col );
             return TRUE;
             break;
-
         case Qt::Key_Slash:
             if ( ( mod & Qt::ControlModifier ) || ( mod & Qt::AltModifier ) ) {
                 emit pressedSlash ( row, col );

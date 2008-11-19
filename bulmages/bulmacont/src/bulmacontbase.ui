@@ -223,7 +223,7 @@
   <action name="actionAsientos" >
    <property name="icon" >
     <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/BulmaCont32x32/images/png/i_asiento.xpm</normaloff>:/BulmaCont32x32/images/png/i_asiento.xpm</iconset>
+     <normaloff>:/Images/book-list.svg</normaloff>:/Images/book-list.svg</iconset>
    </property>
    <property name="text" >
     <string>&amp;Asientos</string>
@@ -235,7 +235,7 @@
   <action name="actionApuntes_Contables" >
    <property name="icon" >
     <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/BulmaCont32x32/images/png/i_lapiz.xpm</normaloff>:/BulmaCont32x32/images/png/i_lapiz.xpm</iconset>
+     <normaloff>:/Images/book.svg</normaloff>:/Images/book.svg</iconset>
    </property>
    <property name="text" >
     <string>Apuntes &amp;contables</string>
