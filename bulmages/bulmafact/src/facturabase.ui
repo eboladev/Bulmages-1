@@ -265,7 +265,7 @@
           </property>
           <property name="icon" >
            <iconset resource="../../bulmages.qrc" >
-            <normaloff>:/Images/client-delivery-note-to-invoice.svg</normaloff>:/Images/client-delivery-note-to-invoice.svg</iconset>
+            <normaloff>:/Images/client-delivery-note-add-to-invoice.svg</normaloff>:/Images/client-delivery-note-add-to-invoice.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>

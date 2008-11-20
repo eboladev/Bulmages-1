@@ -13,7 +13,8 @@
    <string>BulmaTPV</string>
   </property>
   <property name="windowIcon" >
-   <iconset/>
+   <iconset resource="../../bulmages.qrc" >
+    <normaloff>:/Images/bulmatpv.svg</normaloff>:/Images/bulmatpv.svg</iconset>
   </property>
   <widget class="QWidget" name="centralwidget" />
   <widget class="QStatusBar" name="statusbar" />
@@ -78,6 +79,8 @@
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../bulmages.qrc" />
+ </resources>
  <connections/>
 </ui>

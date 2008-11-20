@@ -20,7 +20,7 @@
   </property>
   <property name="windowIcon" >
    <iconset resource="../../bulmages.qrc" >
-    <normaloff>:/BulmaCont32x32/images/png/iconbulmacont.xpm</normaloff>:/BulmaCont32x32/images/png/iconbulmacont.xpm</iconset>
+    <normaloff>:/Images/bulmacont.svg</normaloff>:/Images/bulmacont.svg</iconset>
   </property>
   <widget class="QWidget" name="centralwidget" />
   <widget class="QMenuBar" name="menubar" >
