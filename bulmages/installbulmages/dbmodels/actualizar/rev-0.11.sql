@@ -98,9 +98,9 @@ BEGIN
 	IF mrecord.tdebe <> mrecord.thaber THEN
 		RETURN -1;
 	END IF;
-	IF mrecord.tdebe = 0 THEN
-		RETURN -1;
-	END IF;
+--	IF mrecord.tdebe = 0 THEN
+--		RETURN -1;
+--	END IF;
      ELSE
 	RETURN -1;
      END IF;
