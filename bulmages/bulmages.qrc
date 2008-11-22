@@ -140,6 +140,79 @@
 	<file alias="bulmacont.svg">images/default-spa/mimetypes/bulmacont.svg</file>
 	<file alias="bulmatpv.svg">images/default-spa/mimetypes/bulmatpv.svg</file>
     </qresource>
+
+
+    <qresource prefix="/Images_Test">
+        <file alias="edit-save.svg">images/oxygen/actions/document_save.svg</file>
+        <file alias="edit-delete.svg">images/oxygen/actions/document_save.svg</file>
+        <file alias="document-new.svg">images/oxygen/actions/document_save.svg</file>
+        <file alias="edit-find.svg">images/oxygen/actions/document_save.svg</file>
+        <file alias="document-open.svg">images/oxygen/actions/document_save.svg</file>
+        <file alias="document-print.svg">images/oxygen/actions/document_save.svg</file>
+        <file alias="view-refresh.svg">images/oxygen/actions/document_save.svg</file>
+        <file alias="document-properties.svg">images/oxygen/actions/document_save.svg</file>
+        <file alias="document-import.svg">images/oxygen/actions/document_save.svg</file>
+        <file alias="document-export.svg">images/oxygen/actions/document_save.svg</file>
+        <file alias="mail-send.svg">images/oxygen/actions/document_save.svg</file>
+        <file alias="selection-invert.svg">images/oxygen/actions/document_save.svg</file>
+        <file alias="document-report.svg">images/oxygen/actions/document_save.svg</file>
+        <file alias="product-list.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="product.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="product-family.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="client.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="client-list.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="supplier.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="supplier-list.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="warehouse.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="warehouse-list.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="bank.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="bank-list.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="cash.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="cash-list.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="receive.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="receive-list.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="pay.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="pay-list.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="client-quote.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="client-quote-list.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="client-delivery-order.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="client-delivery-order-list.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="client-delivery-note.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="client-delivery-note-list.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="client-invoice.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="client-invoice-list.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="vat.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="vat-list.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="employee-list.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="account_plan.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="account.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="bank-statement.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="balance-sheet.svg">images/oxygen/actions/document_save.svg</file>
+        <file alias="supplier-delivery-note.svg">images/oxygen/actions/document_save.svg</file>
+        <file alias="supplier-delivery-note-list.svg">images/oxygen/actions/document_save.svg</file>
+        <file alias="supplier-purchase-order.svg">images/oxygen/actions/document_save.svg</file>
+        <file alias="supplier-purchase-order-list.svg">images/oxygen/actions/document_save.svg</file>
+        <file alias="supplier-invoice.svg">images/oxygen/actions/document_save.svg</file>
+        <file alias="supplier-invoice-list.svg">images/oxygen/actions/document_save.svg</file>
+        <file alias="flag-world.svg">images/oxygen/actions/document_save.svg</file>
+        <file alias="payment-method.svg">images/oxygen/actions/document_save.svg</file>
+        <file alias="book.svg">images/oxygen/actions/document_save.svg</file>
+        <file alias="book-list.svg">images/oxygen/actions/document_save.svg</file>
+        <file alias="client-quote-to-order.svg">images/oxygen/actions/document_save.svg</file>
+        <file alias="client-delivery-order-to-note.svg">images/oxygen/actions/document_save.svg</file>
+        <file alias="client-delivery-note-to-invoice.svg">images/oxygen/actions/document_save.svg</file>
+        <file alias="client-delivery-note-to-exist-invoice.svg">images/oxygen/actions/document_save.svg</file>
+        <file alias="supplier-delivery-order-to-note.svg">images/oxygen/actions/document_save.svg</file>
+        <file alias="supplier-delivery-note-to-invoice.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="client-delivery-note-add-to-invoice.svg">images/oxygen/actions/document_save.svg</file>
+        <file alias="reference-report.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="company-list.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="company.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="bulmafact.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="bulmacont.svg">images/oxygen/actions/document_save.svg</file>
+	<file alias="bulmatpv.svg">images/oxygen/actions/document_save.svg</file>
+    </qresource>
+
     <qresource prefix="/BulmaCont32x32" >
         <file>images/png/decrypted.png</file>
         <file>images/png/encrypted.png</file>
