@@ -22,6 +22,7 @@
 #include  "listcuentasview1.h"
 #include  "empresa.h"
 #include  "plugins.h"
+#include  "cuentalistview.h"
 
 
 ///
@@ -284,24 +285,26 @@ void BusquedaCuenta::s_searchCuenta()
     diag->setModal ( true );
 
     /// Creamos una instancia del selector de cuentas.
-    listcuentasview1 *listcuentas = new listcuentasview1 ( ( Empresa * ) empresaBase(), diag, 0, listcuentasview1::SelectMode );
+    CuentaListView *listcuentas = new CuentaListView ( ( Empresa * ) empresaBase(), diag, 0, CuentaListView::SelectMode );
 
     /// Hacemos la conexi&oacute;n del cerrar de las cuentas con el cerrar di&aacute;logo.
     connect ( listcuentas, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
     connect ( listcuentas, SIGNAL ( destroyed ( QObject ) ), diag, SLOT ( accept() ) );
 
-    listcuentas->inicializa();
+//    listcuentas->inicializa();
 
     /// Sacamos el di&aacute;logo.
     diag->exec();
-    if ( listcuentas->codcuenta() != "" ) {
+
+    if ( listcuentas->codigocuenta() != "" ) {
         mdb_idcuenta = listcuentas->idcuenta();
-        mdb_codigocuenta = listcuentas->codcuenta();
-        mdb_nomcuenta = listcuentas->desccuenta();
+        mdb_codigocuenta = listcuentas->codigocuenta();
+        mdb_nomcuenta = listcuentas->nombrecuenta();
         mui_codigocuenta->setText ( mdb_codigocuenta );
         mui_nomcuenta->setText ( mdb_nomcuenta );
     } // end if
     delete diag;
+
     _depura ( "END BusquedaCuenta::s_searchCuenta", 0 );
 }
 

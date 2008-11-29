@@ -467,3 +467,16 @@ void QTableWidget2::sortItems ( int column, Qt::SortOrder order )
     _depura ( "END QTableWidget2::sortItems", 0 );
 }
 
+
+void QTableWidget2::showColumn(int column) {
+    _depura ( "QTableWidget2::showColumn", 0 );
+    QTableWidget::showColumn ( column );
+    _depura ( "END QTableWidget2::showColumn", 0 );
+}
+
+
+void QTableWidget2::hideColumn(int column) {
+    _depura ( "QTableWidget2::hideColumn", 0 );
+    QTableWidget::hideColumn ( column );
+    _depura ( "END QTableWidget2::hideColumn", 0 );
+}

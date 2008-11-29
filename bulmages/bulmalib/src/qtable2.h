@@ -84,6 +84,8 @@ public:
     void sortByColumn ( int column, Qt::SortOrder order = Qt::AscendingOrder );
     void sortItems ( int column, Qt::SortOrder order = Qt::AscendingOrder );
     void setSortingEnabled ( bool );
+    void showColumn(int);
+    void hideColumn(int);
 
 public slots:
     virtual void sitemChanged ( QTableWidgetItem *it );

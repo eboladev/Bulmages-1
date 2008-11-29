@@ -117,7 +117,7 @@ BalanceTreeView::BalanceTreeView ( Empresa *emp, QWidget *parent, int )
 //     IDCUENTA = 11;
 //     PADRE = 12;
 
-    for ( int i = 2; i <= numdigitos; i++ ) {
+    for ( int i = numdigitos; i >= 2; i-- ) {
         /// Inicializamos la tabla de nivel.
         combonivel->insertItem ( i, QString::number ( i ) );
     } // end for

@@ -823,7 +823,7 @@ void SubForm3::nuevoRegistro()
 **/
 void SubForm3::pintaCabeceras()
 {
-    _depura ( "SubForm3::pintaCabeceras", 0 );
+    _depura ( "SubForm3::", 0 );
     QStringList headers;
     SHeader *linea;
     for ( int i = 0; i < m_lcabecera.size(); ++i ) {
@@ -1099,9 +1099,6 @@ void SubForm3::cargar ( cursor2 *cur )
     /// Inicializamos las columnas y pintamos las cabeceras.
     mui_list->setColumnCount ( m_lcabecera.count() );
     pintaCabeceras();
-    if ( m_primero ) {
-        cargaconfig();
-    } // end if
 
     /// Si hay un problema con el cursor, se sale antes de generar Segmentation Fault.
     if ( cur == NULL ) return;
@@ -1253,12 +1250,16 @@ void SubForm3::cargar ( cursor2 *cur )
             mui_list->ordenar();
         } // end if
     } // end if
-
     /// Generamos el registro de insercion.
     nuevoRegistro();
 
+    ///  Cargamos la configuracion previamente almacenada.
     /// Configuramos que registros son visibles y que registros no lo son
-    on_mui_confcol_clicked();
+    if ( m_primero ) {
+        cargaconfig();
+    } else {
+	    on_mui_confcol_clicked();
+    } // end if
 
     /// Reactivamos el sorting
     mui_list->setSortingEnabled ( m_sorting );
@@ -1299,9 +1300,9 @@ void SubForm3::cargar ( QString query )
     try {
         m_query = query;
 
-	if ( m_primero ) {
-		cargaconfig();
-	} // end if
+//	if ( m_primero ) {
+//		cargaconfig();
+//	} // end if
 
         /// Tratramos con la paginacion.
         int limit = mui_filaspagina->text().toInt();
@@ -1849,6 +1850,7 @@ void SubForm3::cargaconfig()
     QString line;
     int error = 1;
     if ( file.open ( QIODevice::ReadOnly ) ) {
+
         error = 0;
         QTextStream stream ( &file );
         /// Establecemos la columna de ordenaci&oacute;n

@@ -373,6 +373,17 @@ QString windowID ( const QString &app )
 }
 
 
+
+void _debugOn () {
+    confpr->setValor ( CONF_DEBUG, "TRUE" );
+}
+
+
+void _debugOff () {
+    confpr->setValor ( CONF_DEBUG, "FALSE" );
+}
+
+
 /// cad = String a presentar como texto de depuracion o como mensaje de error.
 /// nivel 0 = normal.
 /// nivel 1 = Bajo.

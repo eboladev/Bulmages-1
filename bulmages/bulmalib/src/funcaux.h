@@ -79,6 +79,9 @@ void _depura ( const QString &cad, int nivel = 0, const QString & param = "" );
 #else
 #define _depura(...)       // sin debug
 #endif
+void _debugOn();
+void _debugOff();
+
 
 void mensajeInfo ( QString cad, QWidget *parent = 0 );
 void mensajeAviso ( QString cad, QWidget *parent = 0 );
