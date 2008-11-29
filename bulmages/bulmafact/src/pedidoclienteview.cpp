@@ -365,6 +365,7 @@ if (msgBox.clickedButton() == abortButton)
 	/// Creacion de un cobro nuevo a partir de la factura.
 	if (nuevo) {
     CobroView *bud = empresaBase() ->newCobroView();
+	empresaBase() ->m_pWorkspace->addWindow ( bud );
     bud->setDBvalue ( "idcliente", DBvalue ( "idcliente" ) );
     bud->setDBvalue ( "cantcobro", m_totalpedidocliente->text() );
     bud->setDBvalue ( "refcobro", DBvalue ( "refpedidocliente" ) );
