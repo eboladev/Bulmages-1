@@ -33,7 +33,7 @@
 #include "qdoublespinbox2.h"
 #include "busquedacanal.h"
 #include "busquedaccoste.h"
-#include "listcuentasview1.h"
+#include "cuentalistview.h"
 #include "diarioview.h"
 
 /// Constructor de la clase
@@ -166,12 +166,12 @@ void SubForm2Bc::pressedAsterisk ( int row, int col, SDBRecord *rec, SDBCampo *c
     ///TODO: De esta manera se recarga de la base de datos toda la info de las cuentas cada
     /// vez que se necesita la lista de cuentas. Hay que buscar la manera de que este siempre
     /// disponible para no cargar el trabajo a la red ni al gestor de base de datos.
-    listcuentasview1 *listcuentas = new listcuentasview1 ( ( Empresa * ) empresaBase(), diag, 0, listcuentasview1::SelectMode );
-    listcuentas->inicializa();
+    CuentaListView *listcuentas = new CuentaListView ( ( Empresa * ) empresaBase(), diag, 0, CuentaListView::SelectMode );
+//    listcuentas->inicializa();
     connect ( listcuentas, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
 
     diag->exec();
-    QString codigo = listcuentas->codcuenta();
+    QString codigo = listcuentas->codigocuenta();
     delete diag;
 
     if ( codigo != "" ) {
