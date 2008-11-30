@@ -101,6 +101,7 @@ void PagosList::presentar()
 QString PagosList::generaFiltro()
 {
     _depura ( "PagosList::generaFiltro", 0 );
+
     QString filtro = "";
     if ( m_filtro->text() != "" ) {
         filtro = " AND ( lower(descpago) LIKE lower('%" + m_filtro->text() + "%') ";
@@ -109,9 +110,11 @@ QString PagosList::generaFiltro()
     } else {
         filtro = "";
     } // end if
+
     if ( m_proveedor->idproveedor() != "" ) {
         filtro += " AND pago.idproveedor = " + m_proveedor->idproveedor();
     } // end if
+
     QString subfiltro = " AND ";
     if ( mui_efectivos->isChecked() ) {
         filtro += " AND NOT previsionpago";
@@ -128,6 +131,7 @@ QString PagosList::generaFiltro()
     } // end if
     if ( mui_idbanco->idbanco() != "" )
         filtro += " AND idbanco = " + mui_idbanco->idbanco();
+
     _depura ( "END PagosList::generaFiltro", 0 );
     return ( filtro );
 }

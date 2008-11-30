@@ -179,7 +179,10 @@ QString BusquedaFormaPago::idforma_pago()
     _depura ( "BusquedaFormaPago::idforma_pago", 0 );
     _depura ( "END BusquedaFormaPago::idforma_pago", 0 );
     if ( !m_cursorcombo ) return "0";
-    return ( m_cursorcombo->valor ( "idforma_pago", currentIndex() - 1 ) );
+    if (currentIndex() > 0) {
+	    return ( m_cursorcombo->valor ( "idforma_pago", currentIndex() - 1 ) );
+    } // end if
+    return "";
 }
 
 

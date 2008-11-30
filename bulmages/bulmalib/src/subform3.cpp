@@ -1058,6 +1058,7 @@ void SubForm3::cargar ( cursor2 *cur )
     _depura ( "SubForm3::cargar", 0, objectName() );
     m_procesacambios = FALSE;
 
+
     SDBRecord *reg;
     SDBRecord *reg2;
     SDBCampo *camp;

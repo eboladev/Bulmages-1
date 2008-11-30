@@ -108,7 +108,10 @@ QString BusquedaBanco::idbanco()
     _depura ( "END BusquedaBanco::idbanco", 0 );
     /// Como puede haber habido un error con la base de datos debemos tratar dicho caso.
     if ( !m_cursorcombo ) return "0";
-    return m_cursorcombo->valor ( "idbanco", currentIndex() - 1 );
+    if (currentIndex() > 0) {
+	    return m_cursorcombo->valor ( "idbanco", currentIndex() - 1 );
+    } // end if
+    return "";
 }
 
 /** Devuelve el identificador del banco seleccionado
