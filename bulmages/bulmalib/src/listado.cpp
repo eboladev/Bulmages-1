@@ -209,6 +209,12 @@ void Listado::setSubForm ( SubForm3 *list )
 {
     _depura ( "Listado::setSubForm", 0 );
     m_listado = list;
+    /// Establecemos el mismo modo en el subformulario que en el listado.
+    if (m_modo == EditMode) {
+	m_listado->setModoEdicion();
+    } else {
+	m_listado->setModoConsulta();
+    } // end if
     _depura ( "END Listado::setSubForm", 0 );
 }
 

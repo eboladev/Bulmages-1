@@ -41,6 +41,10 @@ SubForm3::SubForm3 ( QWidget *parent ) : BLWidget ( parent )
 {
     _depura ( "SubForm3::SubForm3", 0 );
     setupUi ( this );
+
+    /// Por defecto es modo edicion
+    m_modo = EditMode;
+
     /// Inicializamos los valores de columna y fila previas para que no tengan un valor indefinido.
     /// Se inicializan con -1 para considerar que no hay celda previa.
     m_prevCol = -1;
@@ -1813,7 +1817,7 @@ void SubForm3::guardaconfig()
 {
     _depura ( "SubForm3::guardaconfig", 0 );
     QString aux = "";
-    QFile file ( confpr->valor ( CONF_DIR_USER ) + m_fileconfig + "tablecfn.cfn" );
+    QFile file ( confpr->valor ( CONF_DIR_USER ) + m_fileconfig + "_" + empresaBase()->nameDB() +"_" + QString::number(m_modo) + "_tablecfn.cfn" );
     /// Guardado del orden y de configuraciones varias.
     if ( file.open ( QIODevice::WriteOnly ) ) {
         QTextStream stream ( &file );
@@ -1846,7 +1850,7 @@ void SubForm3::guardaconfig()
 void SubForm3::cargaconfig()
 {
     _depura ( "SubForm3::cargaconfig", 0 );
-    QFile file ( confpr->valor ( CONF_DIR_USER ) + m_fileconfig + "tablecfn.cfn" );
+    QFile file ( confpr->valor ( CONF_DIR_USER ) + m_fileconfig + "_" + empresaBase()->nameDB() +"_" + QString::number(m_modo) + "_tablecfn.cfn" );
     QString line;
     int error = 1;
     if ( file.open ( QIODevice::ReadOnly ) ) {
@@ -2459,3 +2463,49 @@ void SubForm3::pressedSlash ( int, int, SDBRecord *, SDBCampo * )
     _depura ( "END SubForm3::pressedSlash", 0 );
 }
 
+
+///
+/**
+**/
+void SubForm3::setModoConsulta()
+{
+    _depura ( "SubForm3::setModoConsulta", 0 );
+    m_modo = SelectMode;
+    _depura ( "END SubForm3::setModoConsulta", 0 );
+
+}
+
+
+///
+/**
+**/
+void SubForm3::setModoEdicion()
+{
+    _depura ( "SubForm3::setModoEdicion", 0 );
+    m_modo = EditMode;
+    _depura ( "END SubForm3::setModoEdicion", 0 );
+}
+
+
+///
+/**
+\return
+**/
+bool SubForm3::modoEdicion()
+{
+    _depura ( "SubForm3::modoEdicion", 0 );
+    _depura ( "END SubForm3::modoEdicion", 0 );
+    return m_modo == EditMode;
+}
+
+
+///
+/**
+\return
+**/
+bool SubForm3::modoConsulta()
+{
+    _depura ( "SubForm3::modoConsulta", 0 );
+    _depura ( "END SubForm3::modoConsulta", 0 );
+    return m_modo == SelectMode;
+}

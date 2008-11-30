@@ -125,6 +125,7 @@ private:
     PGconn *conn; /// Representa la conexi&oacute;n.
     int open; /// Indica si el postgresiface esta abierto o no.
     bool m_transaccion; /// Indica si estamos dentro de una transacci&oacute;n.
+    QString m_currentUser;   /// Indica el usuario que se ha conectado.
 
 private:
     /// Establece en la base de datos cual va a ser el formato de fecha a utilizar.
@@ -135,6 +136,7 @@ public:
     postgresiface2();
     /// Destructor de la clase que libera memoria.
     ~postgresiface2();
+    const QString currentUser();
     /// La clase debe ser inicializada con algunos par&aacute;metros para poder funcionar.
     int inicializa ( QString nomdb );
     /// Inicia una transacci&oacute;n.

@@ -51,7 +51,8 @@ int Ficha_cargar ( Ficha *ficha )
     _depura ( "PBloqueos::Ficha_cargar", 0 );
     QString query;
 
-    query = "SELECT * FROM bloqueo WHERE fichabloqueo = '" + ficha->campoId() + "' AND identificadorfichabloqueo= '" + ficha->DBvalue ( ficha->campoId() ) + "'";
+
+    query = "SELECT * FROM bloqueo WHERE fichabloqueo = '" + ficha->campoId() + "' AND identificadorfichabloqueo= '" + ficha->DBvalue ( ficha->campoId() ) + "' AND usuariobloqueo <> '" + ficha->empresaBase()->currentUser() + "'";
     cursor2 *cur1 = ficha->empresaBase()->cargacursor ( query );
     if ( !cur1->eof() ) {
         mensajeInfo ( "Ficha Bloqueada por otro usuario, no podrá hacer modificaciones" );
@@ -72,14 +73,9 @@ int Ficha_cargar ( Ficha *ficha )
 
     } else {
 
-        QString usuario = "";
-        cursor2 *cur = ficha->empresaBase()->cargacursor ( "SELECT current_user" );
-        if ( !cur->eof() ) {
-            usuario = cur->valor ( "current_user" );
-        } // end if
-        delete cur;
 
-        query = "INSERT INTO bloqueo (fichabloqueo, identificadorfichabloqueo, usuariobloqueo) VALUES ('" + ficha->campoId() + "','" + ficha->DBvalue ( ficha->campoId() ) + "','" + usuario + "')";
+
+        query = "INSERT INTO bloqueo (fichabloqueo, identificadorfichabloqueo, usuariobloqueo) VALUES ('" + ficha->campoId() + "','" + ficha->DBvalue ( ficha->campoId() ) + "','" + ficha->empresaBase()->currentUser() + "')";
         ficha->empresaBase()->ejecuta ( query );
     } // end if
     delete cur1;

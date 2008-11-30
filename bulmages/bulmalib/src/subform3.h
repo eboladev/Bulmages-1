@@ -46,12 +46,19 @@ tabular de datos que puede generar desde listados hasta subformularios
 class SubForm3: public BLWidget, public Ui_SubForm3Base
 {
     Q_OBJECT
+public:
+    enum edmode {
+        EditMode = 0, SelectMode = 1
+    };
 
 private:
     virtual void cargar ( cursor2 *cur );
 
 private:
     QString m_query;
+    /// Indica si es modo consulta o modo edicion. (altera el comportamiento del
+    /// doble click sobre la lista)
+    edmode m_modo;
 
 protected:
     /// Nombre de la tabla en la BD.
@@ -231,6 +238,11 @@ public:
     virtual int cerrarEditor();
     virtual void confquery();
     QString columnDBfieldName ( int columna );
+    /// Funciones para manipular los modos.
+    void setModoConsulta();
+    void setModoEdicion();
+    bool modoEdicion();
+    bool modoConsulta();
 
 public slots:
     virtual void on_mui_list_cellRePosition ( int, int );

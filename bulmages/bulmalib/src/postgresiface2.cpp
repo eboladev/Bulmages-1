@@ -446,6 +446,16 @@ int postgresiface2::inicializa ( QString nomdb )
     } // end if
     _depura ( "La conexion con la base de datos ha ido bien, ahora vamos a por la fecha", 0 );
     formatofecha();
+
+    /// Buscamos cual es el usuario ejecutando y lo almacenamos.
+        cursor2 *cur = cargacursor ( "SELECT current_user" );
+        if ( !cur->eof() ) {
+            m_currentUser = cur->valor ( "current_user" );
+	} else {
+	    m_currentUser = "";
+        } // end if
+        delete cur;
+
     _depura ( "END postgresiface2::inicializa", 0, nomdb );
     return 0;
 }
@@ -1257,5 +1267,9 @@ QString postgresiface2::PGEval(QString evalexp, int precision) {
 		delete cur;
 	} // end if
 	return res;
+}
+
+const QString postgresiface2::currentUser() {
+	return m_currentUser;
 }
 
