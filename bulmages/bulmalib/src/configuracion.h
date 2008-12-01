@@ -182,6 +182,9 @@
 #define CONF_DIR_CANUALES            427
 #define CONF_DIR_THUMB_ARTICLES      428
 
+/// Hoja de estilo a usar con bulmages
+#define CONF_STYLESHEET		     429
+
 /// Impresora de tickets
 #define CONF_TICKET_PRINTER_FILE     450
 /// Visor de TPV

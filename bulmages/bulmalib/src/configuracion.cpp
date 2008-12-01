@@ -374,6 +374,8 @@ QString configuracion::nombre ( int i )
         return "CONF_DIR_PLUGINS";
     if ( i == CONF_ARTICULOS_VARIOS )
         return "CONF_ARTICULOS_VARIOS";
+    if ( i == CONF_STYLESHEET )
+        return "CONF_STYLESHEET";
     return "";
 //    _depura("END configuracion::nombre", 0);
 }

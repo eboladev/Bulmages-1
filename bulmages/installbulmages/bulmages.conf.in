@@ -19,6 +19,11 @@ CONF_NAVEGADOR                 x-www-browser
 CONF_PDF                       konqueror
 CONF_DIR_TMP                   /tmp/
 
+
+# Hoja de estilo a utilizar
+CONF_STYLESHEET                 @CMAKE_INSTALL_PREFIX@/share/bulmages/css/bulmages.css
+
+
 # Parametros de configuracion del programa.
 # Esto indica donde se van a albergar los programas auxiliares a bulmages (cargaemp, creaemp, borraemp).
 CONF_EJECUTABLES               @CMAKE_INSTALL_PREFIX@/bin/

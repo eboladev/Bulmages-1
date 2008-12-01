@@ -187,6 +187,18 @@ int main ( int argc, char **argv )
         } // end if
         theApp->installTranslator ( traductor );
 
+
+	/// Hacemos la carga de las hojas de estilo.
+	QFile arch(confpr->valor(CONF_STYLESHEET));
+	if (arch.open(QIODevice::ReadOnly | QIODevice::Text)) {
+	  QString style = arch.readAll();
+	  fprintf(stderr,"Hoja de estilo");
+	  theApp->setStyleSheet(style);
+	  fprintf(stderr,"Fin hoja de estilo");
+	} // end if
+
+
+
         splashScr->mensaje ( QApplication::translate ( "main", "Cargando plugins" ) );
         splashScr->setBarraProgreso ( 4 );
 

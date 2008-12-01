@@ -45,7 +45,7 @@ file(GLOB f_rml bgtrml2pdf/*.py)
 install(FILES ${f_rml} 
 		DESTINATION share/bulmages/bgtrml2pdf)
 
-install(DIRECTORY ainteligentes canuales planescontables 
+install(DIRECTORY ainteligentes canuales planescontables css
             openreports icons images
             DESTINATION share/bulmages
             PATTERN ".svn" EXCLUDE)
