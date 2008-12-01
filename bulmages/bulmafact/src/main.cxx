@@ -192,9 +192,7 @@ int main ( int argc, char **argv )
 	QFile arch(confpr->valor(CONF_STYLESHEET));
 	if (arch.open(QIODevice::ReadOnly | QIODevice::Text)) {
 	  QString style = arch.readAll();
-	  fprintf(stderr,"Hoja de estilo");
 	  theApp->setStyleSheet(style);
-	  fprintf(stderr,"Fin hoja de estilo");
 	} // end if
 
 
