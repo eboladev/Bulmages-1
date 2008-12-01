@@ -803,6 +803,7 @@ void Ficha::substrVars ( QString &buff ) {
     } // end for
 
     pos =  0;
+    
     /// Buscamos parametros en el query y los ponemos.
     QRegExp rx ( "\\[(\\w*)\\]" );
     while ( ( pos = rx.indexIn ( buff, pos ) ) != -1 ) {
@@ -1056,7 +1057,7 @@ QString Ficha::trataQuery ( const QString &query, const QString &datos )
         int pos =  0;
         while ( ( pos = rx.indexIn ( salidatemp, pos ) ) != -1 ) {
             if ( cur->numcampo ( rx.cap ( 1 ) ) != -1 ) {
-                salidatemp.replace ( pos, rx.matchedLength(), ascii127 ( cur->valor ( rx.cap ( 1 ) ) ) );
+                salidatemp.replace ( pos, rx.matchedLength(), data2python ( ascii127 ( cur->valor ( rx.cap ( 1 ) ) ) ) );
                 pos = 0;
             } else {
                 pos += rx.matchedLength();

@@ -807,3 +807,16 @@ QString ascii127 ( const QString &orig )
     } // end if
     return cadenatmp;
 }
+
+/// Trata una cadena para ser escrita dentro de un fichero en Python sin que esta
+/// rompa la sintaxis relacionada con el indentado del lenguaje
+QString data2python(QString string) {
+
+    string = string.replace ( "\n", " " );
+    string = string.replace ( "\t", " " );
+    string = string.replace ( "\'", " " );
+    string = string.replace ( "\"", " " );
+    
+    return string;
+    
+}
