@@ -4,6 +4,7 @@
  *   Licence: Public Domain                                                *
  *   December 2, 1998                                                      *
  *   Modified by: Tomeu Borras Riera.                                      *
+ *   Modified by: Fco. Javier M. C. (2008)                                 *
  ***************************************************************************/
 
 #include <QString>
@@ -66,6 +67,22 @@ Fixed::Fixed()
 }
 
 
+Fixed::scale Fixed::SCALE;
+
+
+Fixed::scale::scale(void)
+{
+  int i;
+  Fixed_numerator n;
+  n = 1;
+  for (i = 0; i <= MAX_FIXED_PRECISION; i++)
+  {
+    x[i] = n;
+    n = 10 * n;
+  }
+}
+
+
 Fixed operator + ( Fixed x, Fixed y )
 {
     x.equalize_precision ( y );
@@ -102,9 +119,7 @@ Fixed operator / ( Fixed x, Fixed y )
 {
     x.setprecision(6);
     y.setprecision(6);
-    int valor = round (x.value / y.value);
-    x.value = valor;
-    x.precision += y.precision;
+    x.value = (x.value * Fixed::SCALE.x[y.precision]) / y.value;
     return x;
 }
 

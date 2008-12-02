@@ -4,6 +4,7 @@
  *   Licence: Public Domain                                                *
  *   December 2, 1998                                                      *
  *   Modified by: Tomeu Borras Riera.                                      *
+ *   Modified by: Fco. Javier M. C. (2008)                                 *
  ***************************************************************************/
 
 #ifndef H__FIXED
@@ -13,8 +14,8 @@
 #include <QChar>
 
 
-const int MAX_FIXED_PRECISION = 24;
-const int MAX_FIXED_LENGTH = 25;
+const int MAX_FIXED_PRECISION = 15;
+const int MAX_FIXED_LENGTH = 28;
 
 typedef long long int Fixed_numerator;
 
@@ -35,6 +36,13 @@ public:
     int precision;
     void equalize_precision ( Fixed & );
     void setprecision ( int );
+    class scale
+    {
+      public:
+        Fixed_numerator x[MAX_FIXED_PRECISION + 1];
+        scale();
+    };
+    static scale SCALE;
 
 public:
     Fixed ( int x, int p );
