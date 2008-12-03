@@ -393,19 +393,21 @@ try {
 
 	/// Cargamos el albaran para que se refresquen los valores puestos por la base de datos.
 	cargar(DBvalue("idalbaran"));
-
-	m_albaranp->setDBvalue("refalbaranp", DBvalue("refalbaran"));
-	m_albaranp->setDBvalue("idalmacen", DBvalue("idalmacen"));
-
-	m_albaranp->DBRecord::guardar();
-        subform3->setColumnValue ( "idalbaranp", m_albaranp->DBvalue ( "idalbaranp" ) );
-        m_descuentos3->setColumnValue ( "idalbaranp", m_albaranp->DBvalue ( "idalbaranp" ) );
-	subform3->guardar();
-	m_descuentos3->guardar();
-	m_albaranp->DBRecord::cargar(m_albaranp->DBvalue("idalbaranp"));
-
 	generarFactura();
-	generarFacturaProveedor();
+
+
+	if (subform3->rowCount() > 1) {
+		m_albaranp->setDBvalue("refalbaranp", DBvalue("refalbaran"));
+		m_albaranp->setDBvalue("idalmacen", DBvalue("idalmacen"));
+		m_albaranp->DBRecord::guardar();
+		subform3->setColumnValue ( "idalbaranp", m_albaranp->DBvalue ( "idalbaranp" ) );
+		m_descuentos3->setColumnValue ( "idalbaranp", m_albaranp->DBvalue ( "idalbaranp" ) );
+		subform3->guardar();
+		m_descuentos3->guardar();
+		m_albaranp->DBRecord::cargar(m_albaranp->DBvalue("idalbaranp"));
+	
+		generarFacturaProveedor();
+	} // end if
 
     _depura ( "END CompraVentaView::guardarPost", 0 );
 } catch(...) {

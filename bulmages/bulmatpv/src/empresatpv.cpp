@@ -108,21 +108,24 @@ void EmpresaTPV::z()
 	if (g_plugins->lanza("EmpresaTPV_z", this) )
 		return;
     begin();
-    QString query = "INSERT INTO z (idalmacen) VALUES(" + confpr->valor ( CONF_IDALMACEN_DEFECTO ) + ")";
+
+    QString query = "SELECT count(idz) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz IS NULL AND ticketalbaran = TRUE ";
+    cursor2 *cur = cargacursor ( query );
+    QString numtickets = cur->valor ( "numtickets" );
+    QString total = cur->valor ( "total" );
+    if ( total == "" ) total = "0";
+    delete cur;
+    query = "INSERT INTO z (idalmacen, totalz, numtickets) VALUES(" + confpr->valor ( CONF_IDALMACEN_DEFECTO ) + ", "+total+","+numtickets+")";
     ejecuta ( query );
     query = "SELECT max(idz) AS id FROM z";
-    cursor2 *cur = cargacursor ( query );
+    cur = cargacursor ( query );
     QString idz = cur->valor ( "id" );
     delete cur;
     query = "UPDATE albaran set idz = " + idz + " WHERE idz IS NULL AND ticketalbaran = TRUE";
     ejecuta ( query );
-    query = "SELECT count(idz) AS numtickets, sum(totalalbaran) as total FROM albaran WHERE idz = " + idz;
-    cur = cargacursor ( query );
-    QString numtickets = cur->valor ( "numtickets" );
-    QString total = cur->valor ( "total" );
-    if ( total == "" ) total = "0";
-    query = "UPDATE z SET totalz = " + total + ", numtickets = " + numtickets + " WHERE idz =" + idz;
-    ejecuta ( query );
+
+//    query = "UPDATE z SET totalz = " + total + ", numtickets = " + numtickets + " WHERE idz =" + idz;
+//    ejecuta ( query );
     commit();
     delete cur;
 
