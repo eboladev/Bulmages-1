@@ -278,6 +278,8 @@ QString configuracion::nombre ( int i )
         return "CONF_DIR_KUGAR";
     if ( i == CONF_DIR_OPENREPORTS )
         return "CONF_DIR_OPENREPORTS";
+    if ( i == CONF_DIR_AINTELIGENTES )
+        return "CONF_DIR_AINTELIGENTES";
     if ( i == CONF_PLUGINS_BULMACONT )
         return "CONF_PLUGINS_BULMACONT";
     if ( i == CONF_PLUGINS_BULMAFACT )

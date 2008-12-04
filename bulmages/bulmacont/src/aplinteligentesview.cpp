@@ -100,7 +100,7 @@ void aplinteligentesview::inicializa ( int idasiento )
     numasiento = idasiento;
     inicializavariables();
 
-    QDir dir ( confpr->valor ( CONF_PROGDATA ) + "ainteligentes/" );
+    QDir dir ( confpr->valor ( CONF_DIR_AINTELIGENTES ) );
     dir.setFilter ( QDir::Files );
     dir.setNameFilters ( QStringList ( "*.xml" ) );
     dir.setSorting ( QDir::Size | QDir::Reversed );

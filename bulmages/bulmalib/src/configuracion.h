@@ -164,6 +164,10 @@
 #define CONF_PROGDATA                321
 /// Determina el directorio donde se hayan ubicados los archivos de datos para OPENREPORTS.
 #define CONF_DIR_OPENREPORTS         330
+
+/// Determina el directorio de los asientos inteligentes
+#define CONF_DIR_AINTELIGENTES       331
+
 /// Dictamina cuales son los privilegios del usuario.
 #define CONF_PRIVILEGIOS_USUARIO     420
 /// ALERTAS_DB Determina si los errores de la base de datos deben ser alertados via
