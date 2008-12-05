@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2008 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -55,7 +55,10 @@ void BLBancoEdit::setText ( QString val )
 {
     _depura ( "BLBancoEdit::setText", 0 );
     s_cuentalostFocus();
-    m_cuenta->setText ( val );
+    m_entidad->setText(val.left(4));
+    m_oficina->setText(val.left(8).right(4));
+    m_dc->setText(val.left(10).right(2));
+    m_cuenta->setText ( val.left(20).right(10) );
     _depura ( "END BLBancoEdit::setText", 0 );
 }
 
@@ -67,7 +70,7 @@ void BLBancoEdit::setText ( QString val )
 void BLBancoEdit::setValorCampo ( QString val )
 {
     _depura ( "BLBancoEdit::setValorCampo", 0 );
-    m_cuenta->setText ( val );
+    setText ( val );
     _depura ( "END BLBancoEdit::setValorCampo", 0 );
 }
 
@@ -83,7 +86,8 @@ QString BLBancoEdit::text()
     _depura ( "BLBancoEdit::text", 0 );
     _depura ( "END BLBancoEdit::text", 0 );
     s_cuentalostFocus();
-    return m_cuenta->text();
+    QString val = m_entidad->text() + m_oficina->text() + m_dc->text() + m_cuenta->text();
+    return val;
 }
 
 
@@ -94,9 +98,8 @@ QString BLBancoEdit::text()
 QString BLBancoEdit::valorCampo()
 {
     _depura ( "BLBancoEdit::valorCampo", 0 );
-    s_cuentalostFocus();
     _depura ( "END BLBancoEdit::valorCampo", 0 );
-    return m_cuenta->text();
+    return text();
 }
 
 
@@ -153,7 +156,7 @@ void BLBancoEdit::s_cuentatextChanged ( const QString &texto )
         return;
     } // end if
 */
-    emit ( valueChanged ( m_cuenta->text() ) );
+    emit ( valueChanged ( m_entidad->text() + m_oficina->text() + m_dc->text() + m_cuenta->text() ) );
     _depura ( "END BLBancoEdit::s_fechatextChanged", 0 );
 }
 
@@ -165,7 +168,7 @@ void BLBancoEdit::s_cuentatextChanged ( const QString &texto )
 void BLBancoEdit::s_cuentalostFocus()
 {
     _depura ( "BLBancoEdit::s_cuentalostFocus", 0 );
-    QString fech = m_cuenta->text();
+    QString fech = m_entidad->text() + m_oficina->text() + m_dc->text() + m_cuenta->text();
     if ( fech != "" )
         s_cuentatextChanged ( fech );
     _depura ( "END BLBancoEdit::s_cuentalostFocus", 0 );
