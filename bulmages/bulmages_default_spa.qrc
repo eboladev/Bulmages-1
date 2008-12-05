@@ -55,7 +55,7 @@
         <file alias="flag-world.svg">images/oxygen/international/flag_world.svg</file>
         <file alias="payment-method.svg">images/oxygen/actions/payment_method_list.svg</file>
         <file alias="book.svg">images/oxygen/actions/book.svg</file>
-        <file alias="book-list.svg">images/oxygen/actions/account_libility.svg</file>
+        <file alias="book-list.svg">images/oxygen/actions/book.svg</file>
         <file alias="client-quote-to-order.svg">images/oxygen/actions/client_quote_to_order.svg</file>
         <file alias="client-delivery-order-to-note.svg">images/oxygen/actions/client_delivery_order_to_note.svg</file>
         <file alias="client-delivery-note-to-invoice.svg">images/oxygen/actions/client_delivery_note_to_invoice.svg</file>

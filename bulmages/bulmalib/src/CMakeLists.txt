@@ -62,7 +62,8 @@ set(bulmalib_SRCS postgresiface2.cpp configuracion.cpp numerocuenta.cpp
          busquedaprovincia.cpp
          qradiobutton2.cpp
          qcombobox2.cpp
-         blprogressbar.cpp)
+         blprogressbar.cpp
+	 blbancoedit.cpp)
 
 set(bulmalib_MOCS 
          logpass.h 
@@ -88,7 +89,8 @@ set(bulmalib_MOCS
          paisview.h 
          busquedaprovincia.h 
          qradiobutton2.h
-         qcombobox2.h)
+         qcombobox2.h
+	 blbancoedit.h)
 
 set (bulmalib_HDRS abreempresaview.h
 			busquedafecha.h
@@ -113,7 +115,8 @@ set (bulmalib_HDRS abreempresaview.h
 			qworkspace2.h
 			subform.h
 			subform3.h
-			blprogressbar.h)
+			blprogressbar.h
+			blbancoedit.h)
 #headers that are not moc'ed
 #			postgresiface2.h 
 #			configuracion.h 
@@ -137,7 +140,8 @@ set(bulmalib_UIS logpassbase.ui
       porcentajecargabase.ui 
       fichacfgbase.ui 
       paisbase.ui
-      blprogressbarbase.ui)
+      blprogressbarbase.ui
+      blbancoeditbase.ui)
 
 include_directories(
       ${QT_INCLUDE_DIR}
