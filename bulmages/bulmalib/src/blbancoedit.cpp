@@ -21,6 +21,9 @@
 #include "blbancoedit.h"
 #include "funcaux.h"
 
+int pesosdc[] = {6,3,7,9,10,5,8,4,2,1};
+
+
 
 ///  Inicializa el objeto y hace todas las conexiones necesarias.
 /**
@@ -44,6 +47,46 @@ BLBancoEdit::~BLBancoEdit()
 {
     _depura ( "BLBancoEdit::~BLBancoEdit", 0 );
     _depura ( "END BLBancoEdit::~BLBancoEdit", 0 );
+}
+
+
+/// Comprueba que los DC son correctos y si no lo son da un mensaje de aviso
+void BLBancoEdit::checkDC() {
+	_depura ( "BLBancoEdit::checkDC", 0 );
+	QString cad1 = m_entidad->text() + m_oficina->text(); 
+	QString cad2 = m_cuenta->text();
+	int dc1 = 0;
+	int dc2 = 0;
+
+	/// Si no hay cuenta bancaria puesta entonces no hacemos comprobaciones.
+	if (cad1.size() + cad2.size() == 0)
+		return;
+
+
+	int resparcial = 0;
+	for (int i= 0; i < 8; i++) {
+		resparcial += cad1[8-i-1].digitValue() * pesosdc[i];
+	} // end for
+	dc1 = 11 - (resparcial % 11);
+	if (dc1 == 11) dc1 = 0;
+	if (dc1 == 10) dc1 = 1;
+
+	int resparcial1 = 0;
+	for (int i= 0; i < 10; i++) {
+		resparcial1 += cad2[10-i-1].digitValue() * pesosdc[i];
+	} // end for
+	dc2 = 11 - (resparcial1 % 11);
+	if (dc2 == 11) dc2 = 0;
+	if (dc2 == 10) dc2 = 1;
+
+	QString dc = QString::number(dc1) + QString::number(dc2);
+
+	/// Si los digitos de control no se corresponden damos un error.
+	if (dc != m_dc->text()) {
+		mensajeInfo("Cuenta bancaria incorrecta");
+		throw -1;
+	} // end if
+	_depura ( "END BLBancoEdit::checkDC", 0 );
 }
 
 
@@ -87,6 +130,7 @@ QString BLBancoEdit::text()
     _depura ( "END BLBancoEdit::text", 0 );
     s_cuentalostFocus();
     QString val = m_entidad->text() + m_oficina->text() + m_dc->text() + m_cuenta->text();
+    checkDC();
     return val;
 }
 

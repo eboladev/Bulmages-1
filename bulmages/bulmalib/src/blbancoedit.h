@@ -39,6 +39,7 @@ public:
     virtual void setValorCampo ( QString val );
     virtual QString text();
     virtual QString valorCampo();
+    void checkDC();
 
 public slots:
     virtual void s_cuentatextChanged ( const QString & );
