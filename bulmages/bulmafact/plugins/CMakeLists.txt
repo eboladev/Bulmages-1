@@ -44,6 +44,8 @@ add_subdirectory(plugincompraventa)
 add_subdirectory(pluginclientprov)
 add_subdirectory(pluginopenref)
 
+add_subdirectory(plugincorrectorbf)
+
 #pluginqwebcam depende de opencv y esta en desarrollo
 #add_subdirectory(pluginqwebcam)
 
