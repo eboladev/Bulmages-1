@@ -193,6 +193,23 @@ void ClienteView::on_mui_informe_clicked()
 */
 /**
 **/
+void ClienteView::on_mui_cifcliente_lostFocus()
+{
+    _depura ( "ClienteView::on_mui_cifcliente_lostFocus", 0 );
+	if (!validarCIF(mui_cifcliente->text())) {
+		mensajeInfo("Error en el CIF del cliente");
+	} // end if
+    _depura ( "END ClienteView::on_mui_cifcliente_lostFocus", 0 );
+}
+
+
+
+
+
+/**
+*/
+/**
+**/
 void ClienteView::activaDocumentos()
 {
     _depura ( "ClienteView::activaDocumentos", 0 );

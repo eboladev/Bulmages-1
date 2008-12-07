@@ -112,6 +112,22 @@ ProveedorView::~ProveedorView()
 
 
 
+/**
+*/
+/**
+**/
+void ProveedorView::on_mui_cifproveedor_lostFocus()
+{
+    _depura ( "ClienteView::on_mui_cifproveedor_lostFocus", 0 );
+	if (!validarCIF(mui_cifproveedor->text())) {
+		mensajeInfo("Error en el CIF del proveedor");
+	} // end if
+    _depura ( "END ClienteView::on_mui_cifproveedor_lostFocus", 0 );
+}
+
+
+
+
 /// Esta funcion carga un proveedor de la base de datos y lo presenta.
 /// Si el parametro pasado no es un identificador valido entonces se pone
 /// la ventana de edicion en modo de insercion.

@@ -103,5 +103,7 @@ QString windowID ( const QString & );
 QString parsearCode ( const QString &cad );
 QString ascii127 ( const QString &orig );
 QString data2python(QString string);
+bool validarCIF(QString cif1);
+int sumaDigitos(int val);
 #endif
 

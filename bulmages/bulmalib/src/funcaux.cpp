@@ -816,7 +816,55 @@ QString data2python(QString string) {
     string = string.replace ( "\t", " " );
     string = string.replace ( "\'", " " );
     string = string.replace ( "\"", " " );
-    
     return string;
-    
 }
+
+
+QChar codigosCIF[]= {QChar('A'), QChar('B'), QChar('C'), QChar('D'), QChar('E'), QChar('F'), QChar('G'), QChar('H'), QChar('I'), QChar('J')};
+
+int sumaDigitos (int val) {
+	QString cad = QString::number(val);
+	int res = 0;
+	for (int i = 0; i < cad.size(); i++) {
+		res += cad[i].digitValue();
+	} // end for
+	return res;
+}
+
+
+bool validarCIF(QString cif1) {
+	QString cif = cif1.replace("-","");
+	cif = cif.replace(".","");
+	cif = cif.replace("_","");
+	/// Si el CIF tiene menos de 4 caracteres validamos. Ya que igual queremos permitir CIF's Inventados.
+	if (cif.size() < 5) {
+		return TRUE;
+	} // end if
+	int valpar = cif[2].digitValue() + cif[4].digitValue() + cif[6].digitValue();
+	int valimpar = sumaDigitos(cif[1].digitValue() * 2) + sumaDigitos(cif[3].digitValue() *2) + sumaDigitos(cif[5].digitValue() * 2) + sumaDigitos(cif[7].digitValue() * 2);
+	int sumapar = valpar + valimpar;
+	QString textsumapar = QString::number(sumapar);
+	int c = textsumapar[textsumapar.size()-1].digitValue();
+	int d = 10 - c;
+	if (cif[0] == 'K' || cif[0] == 'P' || cif[0] == 'Q' || cif[0] == 'S') {
+		if (cif[8] == codigosCIF[d-1]) {
+			 return TRUE;
+		} else {
+			return FALSE;
+		} // end if
+	} // end if
+	if (cif[0] == 'A' || cif[0] == 'B' || cif[0] == 'E' || cif[0] == 'H') {
+		if (cif[8].digitValue() == d) {
+			return TRUE;
+		} else {
+			return FALSE;
+		} // end if
+	} //end if
+	if (cif[8] == codigosCIF[d-1] || cif[8].digitValue() == d) {
+		return TRUE;
+	} //end if
+	return FALSE;
+}
+
+
+

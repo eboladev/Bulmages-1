@@ -38,6 +38,9 @@ public:
     ProveedorView ( Company *comp, QWidget *parent = 0 );
     ~ProveedorView();
 
+public slots:
+	virtual void on_mui_cifproveedor_lostFocus();
+
 public:
     virtual int cargarPost ( QString );
 };

@@ -47,6 +47,7 @@ public:
 public slots:
     /// \TODO: Muchos metodos aqui implementados deberian estar en Ficha.
     virtual void on_mui_informe_clicked();
+	virtual void on_mui_cifcliente_lostFocus();
 };
 
 #endif
