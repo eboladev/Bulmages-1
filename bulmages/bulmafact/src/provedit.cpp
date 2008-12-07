@@ -119,7 +119,7 @@ ProveedorView::~ProveedorView()
 void ProveedorView::on_mui_cifproveedor_lostFocus()
 {
     _depura ( "ClienteView::on_mui_cifproveedor_lostFocus", 0 );
-	if (!validarCIF(mui_cifproveedor->text())) {
+	if (!validarCIFNIF(mui_cifproveedor->text())) {
 		mensajeInfo("Error en el CIF del proveedor");
 	} // end if
     _depura ( "END ClienteView::on_mui_cifproveedor_lostFocus", 0 );

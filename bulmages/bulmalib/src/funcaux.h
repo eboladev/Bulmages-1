@@ -104,6 +104,9 @@ QString parsearCode ( const QString &cad );
 QString ascii127 ( const QString &orig );
 QString data2python(QString string);
 bool validarCIF(QString cif1);
+bool validarNIF(QString nif1);
 int sumaDigitos(int val);
+bool validarCIFNIF(QString nifcif);
+
 #endif
 

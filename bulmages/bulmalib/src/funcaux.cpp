@@ -820,8 +820,16 @@ QString data2python(QString string) {
 }
 
 
+/// La tabla de conversion de codigos para el CIF
 QChar codigosCIF[]= {QChar('A'), QChar('B'), QChar('C'), QChar('D'), QChar('E'), QChar('F'), QChar('G'), QChar('H'), QChar('I'), QChar('J')};
 
+
+/// La tabla de conversion de codigos para el NIF
+char codigoNIF[] = {'T', 'R', 'W', 'A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E','T'};
+
+
+/// Suma los digitos de un numero  y devuelve el resultado.
+/// por ejemplo sumaDigitos(56) devolveria 5 + 6 = 11
 int sumaDigitos (int val) {
 	QString cad = QString::number(val);
 	int res = 0;
@@ -829,6 +837,35 @@ int sumaDigitos (int val) {
 		res += cad[i].digitValue();
 	} // end for
 	return res;
+}
+
+
+/// Dependiendo de lo que se haya introducido distingue si es un CIF o un NIF y valida
+bool validarCIFNIF(QString nifcif) {
+  if (nifcif[0].isDigit())
+    return validarNIF(nifcif);
+   return validarCIF(nifcif);
+}
+
+
+/// Valida un nif de 9 digitos. Si el nif pasado es menor de 5 digitos
+bool validarNIF (QString nif1) {
+
+	QString nif = nif1.replace("-","");
+	nif = nif.replace(".","");
+	nif = nif.replace("_","");
+	nif = nif1.left(8);
+
+	/// Si el CIF tiene menos de 4 caracteres validamos. Ya que igual queremos permitir CIF's Inventados.
+	if (nif1.size() < 5) {
+		return TRUE;
+	} // end if
+
+	int modulo = nif.toInt() % 23;
+	if (nif1[8] == QChar(codigoNIF[modulo]))
+	    return TRUE;
+	return FALSE;
+  
 }
 
 
