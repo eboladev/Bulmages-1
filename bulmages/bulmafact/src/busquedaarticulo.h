@@ -41,13 +41,20 @@ class BusquedaArticuloDelegate : public QComboBox2
 private:
     /// Este cursor almacena el listado de series de factura para poder trabajar con ellas.
     cursor2 *m_cursorcombo;
+    /// Texto entrado por el usuario (para uso de los plugins)
+    QString m_entrada; 
 
 public:
     BusquedaArticuloDelegate ( QWidget *parent = 0 );
     ~BusquedaArticuloDelegate();
+    QString entrada();
+    QString unicaEleccion(void) ;
+    QString eligeUnico(void) ;
 
 public slots:
     virtual void s_editTextChanged ( const QString & );
+    virtual void focusOutEvent ( QFocusEvent * event );
+
 };
 
 
@@ -67,7 +74,8 @@ private:
     QString mdb_codigocompletoarticulo;
     /// Impide que se produzca un dead-lock entre pintar y on_mui_text_changed.
     bool m_semaforo;
-
+    /// Texto entrado por teclado, para comunicación con pluginalias.
+    QString m_entrada;
 public:
     BusquedaArticulo ( QWidget *parent = 0 );
     ~BusquedaArticulo();

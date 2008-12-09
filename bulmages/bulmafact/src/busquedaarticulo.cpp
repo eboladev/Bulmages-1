@@ -89,7 +89,7 @@ void BusquedaArticulo::setidarticulo ( QString val )
 **/
 void BusquedaArticulo::pinta()
 {
-    _depura ( "BusquedaCliente::pinta", 0 );
+    _depura ( "BusquedaArticulo::pinta", 0 );
     m_semaforo = TRUE;
 //    m_cifcliente->setText ( mdb_cifcliente );
 //    m_nomcliente->setText ( mdb_codcliente + " - " + mdb_nomcliente );
@@ -97,7 +97,7 @@ void BusquedaArticulo::pinta()
     m_nomarticulo->setText ( mdb_nomarticulo );
     m_semaforo = FALSE;
     emit ( valueChanged ( mdb_idarticulo ) );
-    _depura ( "END BusquedaCliente::pinta", 0 );
+    _depura ( "END BusquedaArticulo::pinta", 0 );
 }
 
 
@@ -188,7 +188,7 @@ void BusquedaArticulo::on_mui_buscar_clicked()
 **/
 void BusquedaArticulo::on_m_codigocompletoarticulo_editingFinished()
 {
-    _depura ( "BusquedaCliente::on_m_codigocompletoarticulo_editingFinished", 0 );
+    _depura ( "BusquedaArticulo::on_m_codigocompletoarticulo_editingFinished", 0 );
     pinta();
     g_plugins->lanza ( "BusquedaArticulo_on_m_codigocompletoarticulo_editingFinished_Post", this );
     _depura ( "END BusquedaArticulo::on_m_codigocompletoarticulo_editingFinished", 0 );
@@ -381,32 +381,108 @@ BusquedaArticuloDelegate::~BusquedaArticuloDelegate()
 **/
 void BusquedaArticuloDelegate::s_editTextChanged ( const QString &cod )
 {
-    _depura ( "BusquedaArticuloDelegate::s_editTextChanged", 0 );
-    static bool semaforo = FALSE;
-    QString codigo = cod;
+	_depura ( "BusquedaArticuloDelegate::s_editTextChanged : "+cod, 0 );
+	static bool semaforo = FALSE;
 
-    if ( codigo.size() < 3 ) {
-        return;
-    } // end if
 
-    if ( semaforo ) {
-        return;
-    } else  {
-        semaforo = TRUE;
-    } // end if
 
-    codigo = codigo.left ( codigo.indexOf ( ".-" ) );
+	if ( semaforo )
+	{
+		_depura ( "END BusquedaArticuloDelegate::s_editTextChanged (semafor ocupat)", 0 );
+		return;
+	}
+	else
+	{
+		semaforo = TRUE;
+	} // end if
+	m_entrada = cod;
+	if ( !g_plugins->lanza ( "BusquedaArticuloDelegate_textChanged", this ) )
+	{
+		QString codigo = m_entrada;
+		if ( codigo.size() >= 3 )
+		{
+                    int pos = codigo.indexOf ( ".-" );
+                    // no sé si es el autoComplete o què però em criden a 
+                    // aquesta senyal quan omplo el combo, amb el primer valor 
+                    // i si no m'aturo ara, recalcularia el combo amb només 
+                    // aquest valor encara que l'usuari només hagi escrit 
+                    // un prefix que permeti més candidats
+                    if ( pos < 0 ) 
+                    {
+                        
+			m_cursorcombo = empresaBase() ->cargacursor ( "SELECT codigocompletoarticulo, nomarticulo FROM articulo WHERE codigocompletoarticulo LIKE $1::text ORDER BY codigocompletoarticulo", 1, (QString[]){codigo + "%"},0,25 );
+			clear();
+			while ( !m_cursorcombo->eof() )
+			{
+				addItem ( m_cursorcombo->valor ( "codigocompletoarticulo" ) 
+                                          + ".-" + m_cursorcombo->valor ( "nomarticulo" )
+                                , QVariant(m_cursorcombo->valor ( "codigocompletoarticulo" ) ));
+				m_cursorcombo->siguienteregistro();
+			} // end while
+			delete m_cursorcombo;
 
-    m_cursorcombo = empresaBase() ->cargacursor ( "SELECT codigocompletoarticulo, nomarticulo FROM articulo WHERE codigocompletoarticulo LIKE '" + codigo + "%' ORDER BY codigocompletoarticulo LIMIT 25" );
-    clear();
-    while ( !m_cursorcombo->eof() ) {
-        addItem ( m_cursorcombo->valor ( "codigocompletoarticulo" ) + ".-" + m_cursorcombo->valor ( "nomarticulo" ) );
-        m_cursorcombo->siguienteregistro();
-    } // end while
-    delete m_cursorcombo;
-    setEditText ( cod );
-    //    showPopup();
-    semaforo = FALSE;
-    _depura ( "END BusquedaArticuloDelegate::s_editTextChanged", 0 );
+                }
+		}
+	}
+	//    showPopup();
+	g_plugins->lanza ( "BusquedaArticuloDelegate_textChanged_Post", this );
+        setEditText ( cod );
+   
+	semaforo = FALSE;
+	_depura ( "END BusquedaArticuloDelegate::s_editTextChanged", 0 );
+}
+
+/// Retorna el codi d'article associat a la única entrada del combo que 
+/// hagi estat trobada a la BD a partir de l'entrada de l'usuari. Això 
+/// permet que abans de donar un error per codi d'article incorrecte 
+/// se li assigni l'únic article trobat per l'entrada (incompleta?) de l'usuari.
+/// Retorna NULL si no se n'ha trobat cap o se n'ha trobat més d'un.
+QString BusquedaArticuloDelegate::unicaEleccion(void) {
+   int num = 0;
+   QString elec = NULL;
+   for(int i=0; (num<2)&&(i<count()); i++) {
+       _depura("item "+QString::number(i)+". num= "+QString::number(num)
+               +" itemText='"+itemText(i)+"' itemData="+itemData(i).toString(),0);
+       if (itemData(i).isValid()) {
+         _depura("aquest item és un article trobat, no entrada de l'usuari",0);
+         elec= itemData(i).toString();
+         num++;
+       };
+       _depura("END item "+QString::number(i)+". num= "+QString::number(num)
+               +" itemText='"+itemText(i)+"' itemData="+itemData(i).toString(),0);
+       
+   }
+   return (num==1?elec:NULL);
+}
+
+/// Sii el combo només ha trobat un article a la BD per l'entrada de 
+/// l'usuari substitueix el text entrat per l'entrada del combo de l'article trobat.
+QString BusquedaArticuloDelegate::eligeUnico(void) {
+   _depura("BusquedaArticuloDelegate::eligeUnico. count=" 
+           + QString::number(count()),0);
+  
+   QString elec = unicaEleccion();
+   if (!elec.isNull()) 
+   {  
+      _depura("elec="+elec,0);
+      setEditText(elec);
+   } 
+   _depura("END BusquedaArticuloDelegate::eligeUnico." ,0);
+   return elec;
+} 
+
+/// quan deixa d'editar el camp substituim el que ha posat 
+/// per l'article que volia trobar si només hi ha un article candidat
+void BusquedaArticuloDelegate::focusOutEvent ( QFocusEvent * event ) {
+   _depura("BusquedaArticuloDelegate::focusOutEvent. count=" 
+           + QString::number(count()),0);
+    eligeUnico();
+   _depura("crido pare",0);
+   QComboBox2::focusOutEvent(event);
+   _depura("END BusquedaArticuloDelegate::focusOutEvent",0);
+}
+
+QString BusquedaArticuloDelegate::entrada() {
+   return m_entrada;
 }
 

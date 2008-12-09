@@ -70,10 +70,33 @@ END;
 ' LANGUAGE plpgsql;
 SELECT aux();
 DROP FUNCTION aux() CASCADE;
-\echo ":: Agregamos la tabla de Alias ... "
+\echo ":: Agregada la tabla de Alias ... "
 
 
+-- Uso un índice por código unicode literal, insensible a locale 
+-- para luego poder sacar un mínimo y máximo 
+drop index ix_alias_cadalias ;
 
+CREATE OR REPLACE FUNCTION drop_index(text) RETURNS INTEGER AS '
+DECLARE
+        nom_index ALIAS FOR $1;
+        rec RECORD;
+
+BEGIN
+        SELECT INTO rec * FROM pg_class WHERE relname = $1; 
+        IF FOUND THEN
+             EXECUTE ''DROP INDEX '' || $1 ;
+        END IF;
+        RETURN 0;
+END;
+' LANGUAGE plpgsql;
+SELECT drop_index('ix_alias_cadalias');
+
+create index ix_alias_cadalias on alias (cadalias varchar_pattern_ops )
+
+SELECT drop_index('ix_alias_len_cadalias');
+create index ix_alias_len_cadalias on alias (length(cadalias));
+\echo ":: Indexada la tabla de Alias ... "
 
 
 -- ==============================================================================
@@ -87,9 +110,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre=''DBRev-Alias'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.11.1'' WHERE nombre=''DBRev-Alias'';
+		UPDATE CONFIGURACION SET valor=''0.11.2'' WHERE nombre=''DBRev-Alias'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DBRev-Alias'', ''0.11.1'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DBRev-Alias'', ''0.11.2'');
 	END IF;
 	RETURN 0;
 END;

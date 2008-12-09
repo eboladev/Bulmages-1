@@ -19,12 +19,20 @@
  ***************************************************************************/
 
 #include <stdio.h>
+#include <QTime>
+#include <QWidget>
 
 #include "pluginalias.h"
 #include "company.h"
 #include "funcaux.h"
 
 
+QString g_minAlias=(QString)NULL;
+QString g_maxAlias=(QString)NULL;
+
+QTime g_ultimRefrescAlias;
+int g_maxLenAlias=0;
+int g_minLenAlias=0;
 ///
 /**
 \param bges
@@ -32,10 +40,51 @@
 **/
 int entryPoint ( Bulmafact *bges )
 {
+    
     _depura ( "Punto de Entrada del plugin de Alias\n", 0 );
+    g_ultimRefrescAlias.start();
     return 0;
 }
 
+
+void invalidaEstadAlias(void) {
+        g_minAlias = (QString)NULL;
+        g_maxAlias = (QString)NULL;
+        g_minLenAlias = 0;
+        g_maxLenAlias = 0;
+}
+
+bool posibleAlias(QString alias, EmpresaBase *eb) {
+   if ( MILISEG_REFRESCO_ESTAD_ALIAS &&       
+       (g_ultimRefrescAlias.elapsed()>MILISEG_REFRESCO_ESTAD_ALIAS)) {
+       invalidaEstadAlias();
+   }
+   if ((g_minAlias==NULL)&&(g_maxAlias==NULL)) {
+       	cursor2 *cur = eb ->cargacursor ( 
+        "SELECT \
+   (SELECT cadalias FROM alias ORDER by cadalias  USING ~<~ LIMIT 1) as minalias,\
+   (SELECT cadalias FROM alias ORDER by cadalias  USING ~>~ LIMIT 1) as maxalias,\
+   (SELECT max(length(cadalias)) FROM alias ) as maxlenalias,\
+   (SELECT min(length(cadalias)) FROM alias ) as minlenalias" );
+        g_minAlias = cur->valor("minalias");
+        g_maxAlias = cur->valor("maxalias");
+        g_minLenAlias = cur->valorInt("minlenalias");
+        g_maxLenAlias = cur->valorInt("maxlenalias");
+
+        // si la taula alias és buida posem un max impossible per evitar tornar 
+        // a buscar fins que en donin un d'alta (en l'alta posen NULL a g_maxAlias)
+        if (g_maxAlias == NULL) {
+            g_maxAlias="";
+        }
+        g_ultimRefrescAlias.restart();
+   }
+   return ((g_minAlias!=(QString)NULL) && (g_minAlias!=(QString)NULL)
+           && (alias !=(QString)NULL)
+           && (g_minAlias <= alias) && ( g_maxAlias >= alias )
+           && (g_minLenAlias <= alias.length())
+           && ( g_maxLenAlias >= alias.length() )
+          );
+}
 
 ///
 /**
@@ -97,6 +146,7 @@ int ArticuloView_guardar_post ( ArticuloView *art )
         SubForm2Bf *l = art->findChild<SubForm2Bf *> ( "lalias" );
         l->setColumnValue ( "idarticulo", art->DBvalue ( "idarticulo" ) );
         l->guardar();
+        invalidaEstadAlias();
         return 0;
     } catch ( ... ) {
         _depura ( "Hubo un error al guardar los alias", 2 );
@@ -108,19 +158,80 @@ int ArticuloView_guardar_post ( ArticuloView *art )
 int BusquedaArticulo_on_m_codigocompletoarticulo_textChanged_Post ( BusquedaArticulo *busc )
 {
     bool encontrado = FALSE;
-
-    QString val = busc->m_codigocompletoarticulo->text();
-
-    QString SQLQuery = "SELECT * FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE cadalias = '" + val + "'";
-    cursor2 *cur = busc->empresaBase() ->cargacursor ( SQLQuery );
-    if ( !cur->eof() ) {
-        busc->setidarticulo ( cur->valor ( "idarticulo" ) );
-        encontrado = TRUE;
-    }
-    delete cur;
+	QString val = busc->m_codigocompletoarticulo->text();
+	
+	if ( posibleAlias ( val, busc->empresaBase() ) )
+	{
+                // busco amb l'operador que compara sense locale ~=~ per aprofitar 
+                // els índexos insensibles a locale (si fossin sensibles a 
+                // locale i no hi hagués el mateix locale al servidor PostgreSQL
+                // que al client no funcionaria posibleAlias perquè calcularia 
+                // els mínims i màxims de cadalias amb un ordre de col·lació 
+                // i compararia el valor entrat amb un altre.
+		QString valors[1] = {val};
+		QString SQLQuery = "SELECT * FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE cadalias ~=~ $1";
+		cursor2 *cur = busc->empresaBase() ->cargacursor ( SQLQuery, 1, valors, NULL, NULL );
+		if ( !cur->eof() )
+		{
+			busc->setidarticulo ( cur->valor ( "idarticulo" ) );
+			encontrado = TRUE;
+		}
+		delete cur;
+	}
 
     if ( encontrado ) {
         return -1;
     } // end if
     return 0;
 }
+
+
+int BusquedaArticuloDelegate_textChanged_Post ( BusquedaArticuloDelegate *baDel )
+{
+      _depura ( "BusquedaArticuloDelegate_textChanged_Post", 0 );
+
+	bool encontrado = FALSE;
+	if ( posibleAlias ( baDel->entrada(), baDel->empresaBase() ) )
+	{
+                _depura("possible Alias ",0, baDel->entrada());
+		QString SQLQuery = "SELECT codigocompletoarticulo,nomarticulo,cadalias FROM alias LEFT JOIN articulo ON alias.idarticulo = articulo.idarticulo WHERE cadalias ~=~ $1";
+		QString valors[1] = {baDel->entrada() };
+		cursor2 *cur = baDel->empresaBase() ->cargacursor ( SQLQuery, 1, valors );
+
+		if ( !cur->eof() )
+		{
+			baDel->insertItem ( 0, cur->valor ( "codigocompletoarticulo" ) 
+                                            + ".-" + cur->valor ( "nomarticulo" )
+			                    + " (" + cur->valor ( "cadalias" ) + ") ", 
+                                            QVariant(cur->valor ( "codigocompletoarticulo" )) 
+                                          );
+			baDel->setEditText(baDel->entrada());
+			encontrado = TRUE;
+		}
+		delete cur;
+	}
+      _depura ( "END BusquedaArticuloDelegate_textChanged_Post", 0 );
+
+	if ( encontrado )
+	{
+		return -1;
+	} // end if
+	return 0;
+
+}
+
+int SubForm2Bf_on_mui_list_editFinished(SubForm2Bf *grid) {
+   _depura("SubForm2Bf_on_mui_list_editFinished de pluginalias",0);
+   BusquedaArticuloDelegate *baDel = dynamic_cast<BusquedaArticuloDelegate *>( grid->mui_list->QAbstractItemView::indexWidget ( grid->mui_list->currentIndex() ));
+    if (baDel) {
+         _depura("camp de codi article/alias. count="+QString::number(baDel->count()),0);
+         QString elec=baDel->eligeUnico();
+         if (!elec.isNull()) {
+          grid->m_campoactual->setText(elec);
+         }
+    }
+  
+   _depura("END SubForm2Bf_on_mui_list_editFinished de pluginalias",0);
+    
+  return 0; // continua el processament normal
+ }
