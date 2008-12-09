@@ -36,16 +36,19 @@ from reportlab import platypus
 
 sys.path.append('@CMAKE_INSTALL_PREFIX@/share/bulmages/bgtrml2pdf')
 
+from bgutils import strSafe, encoding
 import bgutils
 import bgcolor
 
+
 #
 # Change this to UTF-8 if you plan tu use Reportlab's UTF-8 support
-#
-encoding = 'UTF-8'
+# (moved to bgutils.py)
+#encoding = 'UTF-8'
 #encoding = 'utf-8'
 #encoding = 'latin1'
 #encoding = 'cp1252'
+
 
 def _child_get(node, childs):
 	clds = []
@@ -94,15 +97,15 @@ class _rml_styles(object):
 				start = bgutils.tuple_int_get(node, 'start', (0,0) )
 				stop = bgutils.tuple_int_get(node, 'stop', (-1,-1) )
 				if node.localName=='blockValign':
-					styles.append(('VALIGN', start, stop, str(node.getAttribute('value'))))
+					styles.append(('VALIGN', start, stop, strSafe(node.getAttribute('value'))))
 				elif node.localName=='blockFont':
-					styles.append(('FONT', start, stop, str(node.getAttribute('name'))))
+					styles.append(('FONT', start, stop, strSafe(node.getAttribute('name'))))
 				elif node.localName=='blockTextColor':
-					styles.append(('TEXTCOLOR', start, stop, bgcolor.get(str(node.getAttribute('colorName')))))
+					styles.append(('TEXTCOLOR', start, stop, bgcolor.get(strSafe(node.getAttribute('colorName')))))
 				elif node.localName=='blockLeading':
 					styles.append(('LEADING', start, stop, bgutils.unit_get(node.getAttribute('length'))))
 				elif node.localName=='blockAlignment':
-					styles.append(('ALIGNMENT', start, stop, str(node.getAttribute('value'))))
+					styles.append(('ALIGNMENT', start, stop, strSafe(node.getAttribute('value'))))
 				elif node.localName=='blockLeftPadding':
 					styles.append(('LEFTPADDING', start, stop, bgutils.unit_get(node.getAttribute('length'))))
 				elif node.localName=='blockRightPadding':
@@ -145,8 +148,13 @@ class _rml_styles(object):
 
 class _rml_doc(object):
 	def __init__(self, data):
-		self.dom = xml.dom.minidom.parseString(data)
-		self.filename = self.dom.documentElement.getAttribute('filename')
+                if isinstance( data, basestring ) :
+			self.dom = xml.dom.minidom.parseString(data)
+			self.filename = self.dom.documentElement.getAttribute('filename')
+                else:
+			self.dom = xml.dom.minidom.parse(data['filename']);
+                        self.filename = data['filename'];
+
 		#Permitimos includes
 		inc = self.dom.documentElement.getElementsByTagName('include')
 		for node in inc:
@@ -299,7 +307,7 @@ class _rml_canvas(object):
 	def _image(self, node):
 		import urllib
 		from reportlab.lib.utils import ImageReader
-		u = urllib.urlopen(str(node.getAttribute('file')))
+		u = urllib.urlopen(strSafe(node.getAttribute('file')))
 		s = StringIO.StringIO()
 		s.write(u.read())
 		s.seek(0)
@@ -553,7 +561,7 @@ class _rml_flowable(object):
 			return platypus.Paragraph(self._textual(node), style, **(bgutils.attr_get(node, [], {'bulletText':'str'})))
 		elif node.localName=='image':
 			from reportlab.lib.utils import ImageReader
-			name = str(node.getAttribute('file'))
+			name = strSafe(node.getAttribute('file'))
 			img = ImageReader(name)
 			(sx,sy) = img.getSize()
 
@@ -583,7 +591,7 @@ class _rml_flowable(object):
 		elif node.localName=='condPageBreak':
 			return platypus.CondPageBreak(**(bgutils.attr_get(node, ['height'])))
 		elif node.localName=='setNextTemplate':
-			return platypus.NextPageTemplate(str(node.getAttribute('name')))
+			return platypus.NextPageTemplate(strSafe(node.getAttribute('name')))
 		elif node.localName=='nextFrame':
 			return platypus.CondPageBreak(1000)           # TODO: change the 1000 !
 		else:
@@ -634,8 +642,7 @@ class _rml_template(object):
 		fis = r.render(node_story)
 		self.doc_tmpl.build(fis)
 
-def parseString(data, fout=None):
-	r = _rml_doc(data)
+def parseDoc(r,fout=None):
 	if fout:
 		fp = file(fout,'wb')
 		r.render(fp)
@@ -645,6 +652,15 @@ def parseString(data, fout=None):
 		fp = StringIO.StringIO()
 		r.render(fp)
 		return fp.getvalue()
+
+
+def parseString(data, fout=None):
+	r = _rml_doc(data)
+        return parseDoc(r,fout)
+
+def parse(filename, fout=None):
+       r = _rml_doc({'filename':filename});
+       return parseDoc(r,fout)
 
 def bgtrml2pdf_help():
 	print 'Usage: bgtrml2pdf input.rml >output.pdf'
@@ -658,9 +674,9 @@ if __name__=="__main__":
 			bgtrml2pdf_help()
 		sys.stderr.write('Processing file: ' + sys.argv[1] + '\n')
 		if len(sys.argv)==3:
-			parseString(file(sys.argv[1], 'r').read(), sys.argv[2])
+			parse(sys.argv[1], sys.argv[2])
 		else:
-			print parseString(file(sys.argv[1], 'r').read()),
+			print parse(sys.argv[1]),
 	else:
 		print 'Usage: bgtrml2pdf input.rml >output.pdf'
 		print 'Try \'bgtrml2pdf --help\' for more information.'

@@ -18,6 +18,16 @@
 import re
 import reportlab
 
+
+#
+# Change this to UTF-8 if you plan tu use Reportlab's UTF-8 support
+#
+encoding = 'UTF-8'
+#encoding = 'utf-8'
+#encoding = 'latin1'
+#encoding = 'cp1252'
+
+
 def text_get(node):
 	rc = ''
 	for node in node.childNodes:
@@ -49,6 +59,13 @@ def tuple_int_get(node, attr_name, default=None):
 def bool_get(value):
 	return (str(value)=="1") or (value.lower()=='yes')
 
+def strSafe(param):
+	if isinstance(param,str):
+        	return param
+        if isinstance(param,unicode):
+        	return param.encode(encoding)
+        return str(param)
+
 def attr_get(node, attrs, dict={}):
 	res = {}
 	for name in attrs:
@@ -57,7 +74,7 @@ def attr_get(node, attrs, dict={}):
 	for key in dict:
 		if node.hasAttribute(key):
 			if dict[key]=='str':
-				res[key] = str(node.getAttribute(key))
+				res[key] = strSafe(node.getAttribute(key))
 			elif dict[key]=='bool':
 				res[key] = bool_get(node.getAttribute(key))
 			elif dict[key]=='int':
