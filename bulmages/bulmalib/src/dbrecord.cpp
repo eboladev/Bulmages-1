@@ -354,7 +354,7 @@ QString DBRecord::campoId()
 }
 
 
-/// Establece el nombre del campo identificador en la talba por defecto.
+/// Establece el nombre del campo identificador en la tabla por defecto.
 /**
 \param nom El nombre del campo que se considera la clave primaria
 **/
