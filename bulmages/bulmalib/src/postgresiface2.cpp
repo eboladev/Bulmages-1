@@ -22,6 +22,8 @@
 /// acceso a las bases de datos de postgres de forma sencilla y eficiente.
 #include <QMessageBox>
 #include <QApplication>
+#include <climits>
+#include <math.h>
 
 #include "postgresiface2.h"
 
@@ -73,9 +75,32 @@ int cursor2::regactual()
 /// \param nombre Nombre que obtendra el query (OBSOLETO)
 /// \param conn1 Conexion con la base de datos (Inicializada en \ref postgresiface2
 /// \param SQLQuery Query en formato SQL a realizar en la base de datos.
-cursor2::cursor2 ( QString nombre, PGconn *conn1, QString SQLQuery )
+cursor2::cursor2 ( QString nombre, PGconn *conn1, QString SQLQuery)
+{
+   cursor2(nombre, conn1, SQLQuery, 0, (char **)NULL);
+}
+
+cursor2::cursor2 ( QString nombre, PGconn *conn1, QString SQLQuery, int numParams,
+                       const QString *paramValues
+                       ) {
+         char *charValues[numParams]; 
+         QByteArray qbaValues[numParams]; //si sabés C++ i Qt sabria si no cal ?
+         for (int i=0; i<numParams ; i++) {
+             qbaValues[i] = paramValues[i].toUtf8();
+             charValues[i] = qbaValues[i].data();
+         };
+      cursor2(nombre, conn1, SQLQuery, numParams, charValues);
+}
+
+cursor2::cursor2 ( QString nombre, PGconn *conn1, QString SQLQuery, int numParams,
+                       const char * const *paramValues
+                       )
+
 {
     _depura ( "cursor2::cursor2", 0, SQLQuery );
+    for( int i=0; i<numParams; i++) {
+       _depura("param=",0, QString::fromUtf8(paramValues[i]));
+    } ;
     try {
         conn = conn1;
         m_error = FALSE;
@@ -84,7 +109,8 @@ cursor2::cursor2 ( QString nombre, PGconn *conn1, QString SQLQuery )
         nregistros = 0;
         registroactual = 0;
         _depura ( SQLQuery, 0 );
-        result = PQexec ( conn, SQLQuery.toAscii().data() );
+        result = PQexecParams ( conn, SQLQuery.toUtf8().data(), numParams, NULL, 
+                                paramValues, NULL, NULL, 0  );
         switch ( PQresultStatus ( result ) ) {
         case PGRES_NONFATAL_ERROR:
         case PGRES_FATAL_ERROR:
@@ -247,6 +273,51 @@ QString cursor2::valor ( const QString &campo, int registro )
     return ( QString::fromUtf8 ( PQgetvalue ( result, registro, i ) ) );
 }
 
+/// Esta funci&oacute;n devuelve el valor entero del campo posicion del registro
+/// pasado, o siNull si el campo es null .
+/// Si se pasa -1 como registro se devuelve el registro actual. 
+/// Si el campo no es entero no la llames, explotar&aacute;.
+/// \param posicion El n&uacute;mero de campo del que se quiere la posicion.
+/// \param registro El registro del que se quiere devolver el campo.
+/// Si vale -1 entonces se usa el recorrido  en forma de lista de campos para hacerlo.
+/// \param siNull Valor a devolver cuando el campo esté a nulo
+/// \return El valor de la posicion.
+int cursor2::valorInt ( int posicion, int registro , int siNull)
+{
+    _depura ( "cursor2::valor", 0, QString::number ( posicion ) + QString::number ( registro ) );
+    if ( registro == -1 ) {
+        registro = registroactual;
+    } // end if
+    _depura ( "END cursor2::valor", 0 );
+    if (PQgetisnull(result, registro, posicion )) {
+       _depura ( "END cursor2::valor ", 0," ----- Valor: null");
+        return siNull;
+    }
+    _depura ( "END cursor2::valor ", 0,  (QString)" ----- Valor:" + PQgetvalue ( result, registro, posicion ) );
+
+    return (atoi (PQgetvalue ( result, registro, posicion  ) ));
+}
+
+/// Esta funci&oacute;n devuelve el valor entero del campo especificado 
+/// (por nombre) del registro pasado, o siNull en caso que el campo sea null.
+/// Si se pasa como registro -1 se devuelve el registro actual.
+/// Si el campo no es entero no la llames, explotar&aacute;.
+/// \param campo Nombre del campo a devolver
+/// \param registro El registro del que se quiere devolver el campo.
+/// Si vale -1 entonces se usa el recorrido  en forma de lista de campos para hacerlo.
+/// \param siNull Valor a devolver cuando el campo esté a nulo
+/// \return El valor de la posici&oacute;n.
+int cursor2::valorInt ( const QString &campo, int registro , int siNull)
+{
+    _depura ( "cursor2::valor", 0, campo + " " + QString::number ( registro ) );
+    int i = 0;
+    i = numcampo ( campo );
+    if ( i == -1 ) {
+        _depura ( "END cursor2::valor ", 0, "No hay valor" );
+        return siNull;
+    } // end if
+    return valorInt(i,registro,siNull);
+}
 
 /// Devuelve la posici&oacute;n siguiente al registro que se est&aacute; recorriendo.
 /**
@@ -576,23 +647,65 @@ void postgresiface2::rollback()
 **/
 cursor2 *postgresiface2::cargacursor ( QString query, QString nomcursor, int limit, int offset )
 {
-    _depura ( "postgresiface2::cargacursor", 0, query );
+ return cargacursor(query,0,NULL,nomcursor,limit,offset);
+}
+
+ const size_t digitsInt = 1+int(ceil(log10(1+INT_MAX)));
+
+cursor2 *postgresiface2::cargacursor ( QString query, int numParams,
+                       QString *paramValues, QString nomcursor, 
+                       int limit, int offset )
+{ 
+        _depura ( "postgresiface2::cargacursor", 0, query );
+
+        //digitsInt >= longitud expressió decimal d'un int positiu qualsevol 
+         int midaParams = numParams + (limit !=0 ? 1:0) + (offset !=0 ? 1 : 0);
+         //char **charValues = (midaParams==0 ? NULL : new char*[midaParams]) ;
+         char *charValues[midaParams]; 
+         //char *offsetChar=NULL;
+         char offsetChar[digitsInt];
+         //char *limitChar=NULL; 
+         char limitChar[digitsInt];
+         QByteArray qbaValues[numParams]; //si sabés C++ i Qt sabria si no cal ?
+         for (int i=0; i<numParams ; i++) {
+             qbaValues[i] = paramValues[i].toUtf8();
+             charValues[i] = qbaValues[i].data();
+         };
+         /// Si hay establecidas clausulas limit o offset modificamos el query
+         /// y añadimos parámetros
+         if ( limit != 0 ) {
+//             limitChar=new char[digitsInt];
+             int res = snprintf(limitChar,digitsInt,"%d",limit);
+             charValues[numParams]=limitChar; 
+             query += " LIMIT $" + QString::number ( ++numParams ) +"::int4";
+         };
+         if ( offset != 0 ) {
+  //           offsetChar=new char[digitsInt];
+             snprintf(offsetChar,digitsInt,"%d",offset);
+             charValues[numParams]=offsetChar; 
+             query += " OFFSET $" + QString::number ( ++numParams )+"::int4";
+         };
     cursor2 *cur = NULL;
     try {
-        /// Si hay establecidas clausulas limit o offset modificamos el query
-        if ( limit != 0 )
-            query += " LIMIT " + QString::number ( limit );
-        if ( offset != 0 )
-            query += " OFFSET " + QString::number ( offset );
 
-        cur = new cursor2 ( nomcursor, conn, query );
+        cur = new cursor2 ( nomcursor, conn, query, numParams, charValues );
+    _depura ( "END postgresiface2::cargacursor", 0, nomcursor );
+
     } catch ( ... ) {
         if ( cur ) delete cur;
 	_depura("La consulta: \"" + query + "\" Ha generado un error",2);
         _depura ( "END postgresiface2::cargacursor", 0, "Error en la base de datos" );
-        return NULL;
+        cur = NULL;
     } // end try
-    _depura ( "END postgresiface2::cargacursor", 0, nomcursor );
+/*    if (offsetChar!=NULL) {
+        delete[] offsetChar;
+    }
+    if (limitChar!=NULL) {
+        delete[] limitChar;
+    }
+    if (charValues!=NULL) {
+        delete[] charValues;
+    }*/
     return cur;
 }
 

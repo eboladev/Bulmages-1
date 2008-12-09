@@ -72,6 +72,44 @@ private:
 public:
     /// Constructor, inicializa la estructura y realiza la consulta.
     cursor2 ( QString nombre, PGconn *conn1, QString SQLQuery );
+
+    /**
+     * Constructor para consultas parametrizadas (menos escapes y formateos, 
+     * algo más de seguridad y dejamos puertas abiertas para futuras optimizaciones
+     * con consultas precompiladas)
+     * @param nombre nombre para el cursor
+     * @param conn1 conexión de BD
+     * @param SQLQuery sentencia SQL a enviar a base de datos. Contendrá tantos 
+     *                  $1, $2, etc. como numParams. Pueden incluir sufijo con el
+     *                   tipo de datos psql, como $1::int4, $2::varchar etc.
+     * @param numParams número de parámetros ($) en la consulta y número de elementos de 
+     *                  paramValues.
+     * @param paramValues Valores para los parámetros. Sólo aceptamos formato texto
+     *                    no el formato binario
+     */
+     cursor2 ( QString nombre, PGconn *conn1, QString SQLQuery, int numParams,
+                       const QString *paramValues
+                       ) ;
+  
+
+    /**
+     * Constructor para consultas parametrizadas (menos escapes y formateos, 
+     * algo más de seguridad y dejamos puertas abiertas para futuras optimizaciones
+     * con consultas precompiladas)
+     * @param nombre nombre para el cursor
+     * @param conn1 conexión de BD
+     * @param SQLQuery sentencia SQL a enviar a base de datos. Contendrá tantos 
+     *                  $1, $2, etc. como numParams. Pueden incluir sufijo con el
+     *                   tipo de datos psql, como $1::int4, $2::varchar etc.
+     * @param numParams número de parámetros ($) en la consulta y número de elementos de 
+     *                  paramValues.
+     * @param paramValues Valores para los parámetros. Sólo aceptamos formato texto
+     *                    no el formato binario. Sólo los leemos, no los destruimos.
+     */
+    cursor2 ( QString nombre, PGconn *conn1, QString SQLQuery, int numParams,
+                       const char *const * const paramValues);
+
+
     /// Destructor, elimina la memoria ocupada.
     ~cursor2();
     /// Devuelve el n&uacute;mero de registros del cursor.
@@ -80,6 +118,14 @@ public:
     QString valor ( int posicion, int registro = -1 );
     bool error();
     QString query();
+
+    /// Esta funci&oacute;n devuelve el valor entero del campo posicion del registro
+    /// pasado, o siNull si el campo es null .
+    int valorInt ( int posicion, int registro = -1, int siNull = 0);
+
+    /// Esta funci&oacute;n devuelve el valor entero del campo especificado 
+    /// (por nombre) del registro pasado, o siNull en caso que el campo sea null.
+    int valorInt ( const QString &campo, int registro=-1 , int siNull = 0);
 
 public:
     /// Devuelve el valor de una determinada posici&oacute;n del query.
@@ -147,6 +193,10 @@ public:
     void rollback();
     /// Carga el cursor con una consulta.
     cursor2 *cargacursor ( QString query, QString nomcursor = "", int limit = 0, int offset = 0 );
+    cursor2 *cargacursor ( QString query, int numParams,
+                       QString  * paramValues, QString nomcursor = "", 
+                       int limit =0, int offset = 0 );
+
     /// Ejecuta una sentencia de c&oacute;digo SQL en la base de datos.
     int ejecuta ( QString );
     int nuevoborrador ( int idcuenta, int idasiento, QString concepto, QString descripcion, float debe, float haber, QString fecha, int idcontrapartida, int idtipoiva, int idccoste, int idcanal );
