@@ -732,8 +732,10 @@ int postgresiface2::ejecuta ( QString Query )
             throw 42501;
         /// Fi prova. Nota: 42501 = INSUFFICIENT PRIVILEGE en SQL Standard.
         result = PQexec ( conn, ( const char * ) Query.toUtf8() );
-        if ( !result || PQresultStatus ( result ) != PGRES_COMMAND_OK )
-            throw - 1;
+        if ( !result )
+            throw -1;
+		if (PQresultStatus ( result ) != PGRES_COMMAND_OK && PQresultStatus( result ) != 2 )
+			throw -1;
         PQclear ( result );
         _depura ( "END postgresiface2::ejecuta", 0 );
         return 0;
@@ -746,7 +748,7 @@ int postgresiface2::ejecuta ( QString Query )
             throw - 1;
         } else {
             _depura ( "END postgresiface2::ejecuta", 0, "SQL command failed: " + Query );
-            QString mensaje = "Error al intentar modificar la base de datos:\n";
+            QString mensaje = "Error al intentar modificar la base de datos:\n Codigo de error: " +QString::number(PQresultStatus ( result )) + "\n";
             msgError ( mensaje + ( QString ) PQerrorMessage ( conn ), Query + "\n" + ( QString ) PQerrorMessage ( conn ) );
             PQclear ( result );
             throw - 1;
