@@ -210,14 +210,15 @@ void Asiento1View::iniciar_asiento_nuevo ( QString nuevoordenasiento )
         } // end if
 
         /// Creamos el asiento en la base de datos.
+        query = "INSERT INTO asiento ( fecha, ordenasiento) VALUES ('" + empresaBase() ->sanearCadena ( fecha ) + "', " + ordenasiento + ")";
+        empresaBase() ->ejecuta ( query );
+
         query = "SELECT MAX(idasiento) AS id FROM asiento";
         cur = empresaBase() ->cargacursor ( query );
         if ( !cur->eof() )
-            idasiento = cur->valor ( "id" ).toInt() + 1;
+            idasiento = cur->valor ( "id" ).toInt();
         delete cur;
 
-        query = "INSERT INTO asiento (idasiento, fecha, ordenasiento) VALUES (" + QString ( "%1" ).arg ( idasiento ) + ", '" + empresaBase() ->sanearCadena ( fecha ) + "', " + ordenasiento + ")";
-        empresaBase() ->ejecuta ( query );
 
         empresaBase() ->commit();
         /// FIN TRATAMIENTO DE BASE DE DATOS.

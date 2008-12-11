@@ -306,7 +306,7 @@ void Bulmacont::on_actionRecalcular_Saldos_Iniciales_triggered()
 {
     _depura ( "Bulmacont::on_actionRecalcular_Saldos_Iniciales_triggered", 0 );
     _depura ( "END Bulmacont::on_actionRecalcular_Saldos_Iniciales_triggered", 0 );
-    // empresaactual->recalculasaldos();
+    m_empresaactual->recalculasaldos();
 }
 
 

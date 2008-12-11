@@ -905,7 +905,9 @@ void Empresa::reemplazacuentaenasientos()
 void Empresa::recalculasaldos()
 {
     _depura ( "Empresa::recalculasaldos", 0 );
-    ejecuta ( "SELECT recalculasaldos()" );
+	mensajeInfo("recalcular Saldos");
+    cursor2 *cur = cargacursor("SELECT recalculasaldos()");
+    delete cur;
     _depura ( "END Empresa::recalculasaldos", 0 );
 }
 
