@@ -316,7 +316,7 @@ void BusquedaCuenta::s_searchCuenta()
 void BusquedaCuenta::s_codigocuentatextChanged ( const QString &val )
 {
     _depura ( "BusquedaCuenta::s_codigocuentatextChanged", 0, val );
-    if ( val == "+" ) {
+    if ( val == "*" ) {
         s_searchCuenta();
         emit ( valueChanged ( mui_codigocuenta->text() ) );
     } // end if

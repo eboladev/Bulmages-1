@@ -276,43 +276,50 @@ void aplinteligentesview::muestraplantilla ( QString plantilla )
 void aplinteligentesview::on_mui_aceptar_clicked()
 {
     _depura ( "aplinteligentesview::on_mui_aceptar_clicked", 0 );
-    /// Se est&aacute; insertando sobre un asiento abierto, con lo que debemos
-    /// Cerrar la ventana, ya que es un introducci&oacute;n de asiento normal.
-    if ( numasiento != 0 ) {
-        recogevalores();
-        creaasiento();
-        empresaBase() ->intapuntsempresa() ->muestraasiento ( numasiento );
-        selectfirst();
-    } else {
-        /// Se est&aacute; insertando de forma sistem&aacute;tica asientos inteligentes.
-        /// Asi que debemos facilitar las cosas al m&aacute;ximo.
-        variablespredefinidas[VAR_PRED_FECHAASIENTO][1] = fechaasiento->text().toAscii().constData();
-        empresaBase() ->intapuntsempresa() ->setFecha ( fechaasiento->text() );
-        empresaBase() ->intapuntsempresa() ->vaciar();
-    	empresaBase() ->intapuntsempresa() ->dialogChanges_cargaInicial();
-        empresaBase() ->intapuntsempresa() ->iniciar_asiento_nuevo();
-        numasiento = empresaBase() ->intapuntsempresa() ->idasiento().toInt();
-        recogevalores();
-        creaasiento();
-        empresaBase() ->intapuntsempresa() ->cerrar();
-    	empresaBase() ->intapuntsempresa() ->dialogChanges_cargaInicial();
-        numasiento = 0;
-        fechaasiento->selectAll();
-        fechaasiento->setFocus();
-    } // end if
-    /// Si estamos en modo exclusivo cerramos la ventana. Y as&iacute; devolvemos
-    /// el control a la aplicaci&oacute;n principal.
-    if ( modo == 1 ) {
-        close();
-    } else {
-        /// Reseteamos los valores de numeros y texto para que no haya dobles inserciones.
-        for ( int i = 0; i < indvariablesnumero; i++ ) {
-            varnumero[i]->setText ( "" );
-        } // end for
-        for ( int i = 0; i < indvariablestexto; i++ ) {
-            vartexto[i]->setText ( "" );
-        } // end for
-    } // end if
+	try {
+		
+		
+		/// Se est&aacute; insertando sobre un asiento abierto, con lo que debemos
+		/// Cerrar la ventana, ya que es un introducci&oacute;n de asiento normal.
+		if ( numasiento != 0 ) {
+			recogevalores();
+			creaasiento();
+			empresaBase() ->intapuntsempresa() ->muestraasiento ( numasiento );
+			selectfirst();
+		} else {
+			/// Se est&aacute; insertando de forma sistem&aacute;tica asientos inteligentes.
+			/// Asi que debemos facilitar las cosas al m&aacute;ximo.
+			variablespredefinidas[VAR_PRED_FECHAASIENTO][1] = fechaasiento->text().toAscii().constData();
+			recogevalores();
+			empresaBase() ->intapuntsempresa() ->setFecha ( fechaasiento->text() );
+			empresaBase() ->intapuntsempresa() ->vaciar();
+			empresaBase() ->intapuntsempresa() ->dialogChanges_cargaInicial();
+			empresaBase() ->intapuntsempresa() ->iniciar_asiento_nuevo();
+			numasiento = empresaBase() ->intapuntsempresa() ->idasiento().toInt();
+			creaasiento();
+			empresaBase() ->intapuntsempresa() ->cerrar();
+			empresaBase() ->intapuntsempresa() ->dialogChanges_cargaInicial();
+			numasiento = 0;
+			fechaasiento->selectAll();
+			fechaasiento->setFocus();
+		} // end if
+		/// Si estamos en modo exclusivo cerramos la ventana. Y as&iacute; devolvemos
+		/// el control a la aplicaci&oacute;n principal.
+		if ( modo == 1 ) {
+			close();
+		} else {
+			/// Reseteamos los valores de numeros y texto para que no haya dobles inserciones.
+			for ( int i = 0; i < indvariablesnumero; i++ ) {
+			varnumero[i]->setText ( "" );
+			} // end for
+			for ( int i = 0; i < indvariablestexto; i++ ) {
+			vartexto[i]->setText ( "" );
+			} // end for
+		} // end if
+
+	} catch (...) {
+		mensajeInfo ("Fue imposible crear el asiento");
+	} /// end try
     _depura ( "END aplinteligentesview::on_mui_aceptar_clicked", 0 );
 }
 
@@ -328,7 +335,6 @@ void aplinteligentesview::mostrarplantilla()
 {
     _depura ( "aplinteligentesview::mostrarplantilla", 0 );
     QString query;
-    int j = 0;
     int inc = 30;
     QString cadena;
     QString subcadena;
@@ -424,51 +430,55 @@ void aplinteligentesview::mostrarplantilla()
 
         for ( int i = 0;i < indvariablescta; i++ ) {
             labelcta[i] = new QLabel ( "", mui_datosAsiento );
-            labelcta[i]->setGeometry ( QRect ( 5, inc + 32 * ( j ), 150, 25 ) );
+            labelcta[i]->setGeometry ( QRect ( 5, inc , 150, 25 ) );
             labelcta[i]->setText ( variablescta[i][2] );
             labelcta[i]->show();
             varcta[i] = new BusquedaCuenta ( mui_datosAsiento );
-            varcta[i]->setGeometry ( QRect ( 150, inc + 32 * ( j++ ), 300, 25 ) );
+            varcta[i]->setGeometry ( QRect ( 150, inc , 300, 50 ) );
             varcta[i]->setEmpresaBase ( empresaBase() );
             connect ( varcta[i], SIGNAL ( enterPressed() ), this, SLOT ( eturn_cta() ) );
             connect ( varcta[i], SIGNAL ( textChanged ( const QString & ) ), this, SLOT ( codigo_textChanged ( const QString & ) ) );
             varcta[i]->show();
+	    inc += 57;
         } // end for
 
         for ( int i = 0;i < indvariablesfecha; i++ ) {
             labelfecha[i] = new QLabel ( "", mui_datosAsiento );
-            labelfecha[i]->setGeometry ( QRect ( 5, inc + 32 * ( j ), 150, 25 ) );
+            labelfecha[i]->setGeometry ( QRect ( 5, inc , 150, 25 ) );
             labelfecha[i]->setText ( variablesfecha[i][2] );
             labelfecha[i]->show();
 
             varfecha[i] = new BusquedaFecha ( mui_datosAsiento );
-            varfecha[i]->setGeometry ( QRect ( 150, inc + 32 * ( j++ ), 150, 25 ) );
+            varfecha[i]->setGeometry ( QRect ( 150, inc , 150, 25 ) );
 
             connect ( varfecha[i], SIGNAL ( enterPressed() ), this, SLOT ( eturn_fecha() ) );
             connect ( varfecha[i], SIGNAL ( textChanged ( const QString & ) ), this, SLOT ( fecha_textChanged ( const QString & ) ) );
             varfecha[i]->show();
+	    inc += 32;
         } // end for
 
         for ( int i = 0;i < indvariablesnumero; i++ ) {
             labelnumero[i] = new QLabel ( "", mui_datosAsiento );
-            labelnumero[i]->setGeometry ( QRect ( 5, inc + 32 * ( j ), 150, 25 ) );
+            labelnumero[i]->setGeometry ( QRect ( 5, inc , 150, 25 ) );
             labelnumero[i]->setText ( variablesnumero[i][2] );
             labelnumero[i]->show();
             varnumero[i] = new QLineEdit ( "", mui_datosAsiento );
-            varnumero[i]->setGeometry ( QRect ( 150, inc + 32 * ( j++ ), 150, 25 ) );
+            varnumero[i]->setGeometry ( QRect ( 150, inc , 150, 25 ) );
             connect ( varnumero[i], SIGNAL ( enterPressed() ), this, SLOT ( eturn_numero() ) );
             varnumero[i]->show();
+	    inc += 32;
         } // end for
 
         for ( int i = 0;i < indvariablestexto; i++ ) {
             labeltexto[i] = new QLabel ( "", mui_datosAsiento );
-            labeltexto[i]->setGeometry ( QRect ( 5, inc + 32 * ( j ), 150, 25 ) );
+            labeltexto[i]->setGeometry ( QRect ( 5, inc , 150, 25 ) );
             labeltexto[i]->setText ( variablestexto[i][2] );
             labeltexto[i]->show();
             vartexto[i] = new QLineEdit ( "", mui_datosAsiento );
-            vartexto[i]->setGeometry ( QRect ( 150, inc + 32 * ( j++ ), 350, 25 ) );
+            vartexto[i]->setGeometry ( QRect ( 150, inc , 350, 25 ) );
             connect ( vartexto[i], SIGNAL ( enterPressed() ), this, SLOT ( eturn_texto() ) );
             vartexto[i]->show();
+	    inc += 32;
         } // end for
     }
     _depura ( "END aplinteligentesview::mostrarplantilla", 0 );
@@ -523,12 +533,18 @@ void aplinteligentesview::recogevalores()
     } // end for
     for ( i = 0; i < indvariablesnumero; i++ ) {
         variablesnumero[i][1] = varnumero[i]->text();
+	if (variablesnumero[i][1].isEmpty())
+		throw -1;
     } // end for
     for ( i = 0; i < indvariablesfecha; i++ ) {
         variablesfecha[i][1] = varfecha[i]->text();
+	if (variablesfecha[i][1].isEmpty())
+		throw -1;
     } // end for
     for ( i = 0; i < indvariablescta; i++ ) {
         variablescta[i][1] = varcta[i]->text();
+	if (variablescta[i][1].isEmpty())
+		throw -1;
     } // end for
     _depura ( "END aplinteligentesview::recogevalores", 0 );
 }

@@ -5,33 +5,43 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>328</width>
-    <height>30</height>
+    <width>353</width>
+    <height>52</height>
    </rect>
+  </property>
+  <property name="sizePolicy" >
+   <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle" >
    <string>Form1</string>
   </property>
-  <layout class="QHBoxLayout" >
-   <property name="margin" >
+  <layout class="QGridLayout" name="gridLayout" >
+   <property name="leftMargin" >
+    <number>2</number>
+   </property>
+   <property name="topMargin" >
     <number>0</number>
    </property>
-   <property name="spacing" >
-    <number>5</number>
+   <property name="rightMargin" >
+    <number>0</number>
    </property>
-   <item>
+   <property name="bottomMargin" >
+    <number>0</number>
+   </property>
+   <item row="0" column="0" >
     <widget class="QLineEdit" name="mui_codigocuenta" >
      <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>5</hsizetype>
-       <vsizetype>0</vsizetype>
+      <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
     </widget>
    </item>
-   <item>
+   <item row="0" column="1" >
     <widget class="QToolButton" name="mui_buscar" >
      <property name="minimumSize" >
       <size>
@@ -49,19 +59,23 @@
       <string/>
      </property>
      <property name="icon" >
-      <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_cuentas.xpm</iconset>
+      <iconset resource="../../bulmages.qrc" >
+       <normaloff>:/BulmaCont32x32/images/png/i_cuentas.xpm</normaloff>:/BulmaCont32x32/images/png/i_cuentas.xpm</iconset>
      </property>
     </widget>
    </item>
-   <item>
+   <item row="1" column="0" colspan="2" >
     <widget class="QLabel" name="mui_nomcuenta" >
      <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>7</hsizetype>
-       <vsizetype>5</vsizetype>
+      <sizepolicy vsizetype="Preferred" hsizetype="Expanding" >
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
+     </property>
+     <property name="font" >
+      <font>
+       <pointsize>7</pointsize>
+      </font>
      </property>
      <property name="text" >
       <string>Cuenta</string>
