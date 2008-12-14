@@ -20,12 +20,15 @@
 
 #include "dbrecord.h"
 #include "funcaux.h"
+#include "plugins.h"
 
 #include <QFile>
 #include <QTextStream>
 #include <QLocale>
-
 #include <QDebug>
+
+#include <QTextCodec>
+#include <QXmlStreamReader>
 
 ///
 /**
@@ -751,17 +754,60 @@ int DBRecord::cargar ( QString id )
     } // end try
 }
 
+void DBRecord::substrConf( QString &buff) {
+    ///\TODO: Este tratamiento esta repetido en Ficha::trataTags y en PedidoProveedorView::imprimir.
+    ///       Se puede simplificar?
+    /// Tratamos la sustitucion de los valores de configuracion.
+    for ( int i = 0; i < 500; i++ ) {
+        if ( confpr->nombre ( i ) != "" ) {
+            buff.replace ( "[" + confpr->nombre ( i ) + "]", confpr->valor ( i ) );
+        } // end if
+    } // end for
+}
 
-/// Realiza una impresion generica del registro a partir de la plantilla ficha.rml
-/**
-**/
-void DBRecord::imprimir()
-{
-    /// Usa la plantilla ficha.rml para realizar la impresion.
-    _depura ( "DBRecord::imprimir", 0 );
+int DBRecord::trataTags ( QString &buff ) {
+    QString fitxersortidatxt = "";
+
+    substrConf(buff); 
+    buff.replace ( "[ficha]", m_tablename );
+    buff.replace ( "[story]", story() );
+
+  return 1;
+}
+
+QString DBRecord::story ( void ) {
+  
+    QString fitxersortidatxt = "";
     DBCampo *campo;
-    QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "ficha.rml";
-    QString archivod = confpr->valor ( CONF_DIR_USER ) + "ficha.rml";
+    QLocale spanish ( QLocale::Spanish, QLocale::Spain );
+    /// Impresion de la tabla de contenidos.
+    for ( int i = 0; i < m_lista.size(); ++i ) {
+        campo = m_lista.at ( i );
+        fitxersortidatxt += "<tr>\n";
+        fitxersortidatxt += "   <td>" + xmlEscape(campo->nomcampo()) + "</td>\n";
+        fitxersortidatxt += "   <td>" + xmlEscape(campo->nompresentacion()) + "</td>\n";
+        if ( campo->tipo() & DBCampo::DBnumeric )
+            fitxersortidatxt += "   <td>" + xmlEscape(spanish.toString ( campo->valorcampo().toDouble(), 'f', 2 )) + "</td>\n";
+        else
+            fitxersortidatxt += "   <td>" + xmlEscape(campo->valorcampo()) + "</td>\n";
+        fitxersortidatxt += "</tr>";
+        qDebug() << spanish.toString ( campo->valorcampo().toDouble(), 'f', 2 );
+    } // end for
+
+  return fitxersortidatxt;
+}
+
+int DBRecord::generaRML ( const QString &arch )
+{
+    _depura ( "DBRecord::generaRML", 0 );
+
+    /// Disparamos los plugins
+    int res = g_plugins->lanza ( "DBRecord_generaRML", this );
+    if ( res != 0 ) {
+        return 1;
+    } // end if
+    QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + arch;
+    QString archivod = confpr->valor ( CONF_DIR_USER ) + arch;
     QString archivologo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
 
     /// Copiamos el archivo.
@@ -774,8 +820,7 @@ void DBRecord::imprimir()
 #endif
 
     system ( archivo.toAscii().constData() );
-
-    /// Copiamos el logo.
+    /// Copiamos el logo
 #ifdef WINDOWS
 
     archivologo = "copy " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
@@ -785,51 +830,116 @@ void DBRecord::imprimir()
 #endif
 
     system ( archivologo.toAscii().constData() );
-
     QFile file;
     file.setFileName ( archivod );
     file.open ( QIODevice::ReadOnly );
+    bool ascii=FALSE; 
+    /// Antes de abrir un fichero como QTextStream debemos saber en qué codificación 
+    /// está, si no leeremos basura (potencialmente). Los ficheros XML deberían 
+    /// declararlo en la primera instrucción de proceso (<?xml ... encoding=""?>)
+    /// Si no lo declaran deberían ser UTF-8. Para parsear la instrucción de proceso
+    /// uso QXmlStreamReader. Para el resto del fichero dejo lo que estaba 
+    /// hecho, que trabaja sobre una QString. Para pasarlo a SAX, DOM o QXmlStreamReader
+    /// habría que cambiarlo todo y no sé si vale la pena.
+    QXmlStreamReader xmlReader(&file);
+    while ((!xmlReader.atEnd())&&(!xmlReader.isStartDocument())) {
+          xmlReader.readNext();
+    };
+    QTextCodec *codec=NULL;
+    if (xmlReader.isStartDocument()) {
+         _depura("El fitxer " + archivod + " té una codificació ("+     
+                     xmlReader.documentEncoding().toString()+") ",0);
+         codec=QTextCodec::codecForName(xmlReader.documentEncoding().toString().toUtf8());
+         if (!codec) { // sembla que no va, per UTF32 (=UCS4)
+             _depura("El fitxer " + archivod + " té una codificació ("+  
+                     xmlReader.documentEncoding().toString()+") que no entenem",2);
+             file.close(); 
+             return 0;
+         } else {
+            _depura("Usarem un codec per a ",0,codec->name());
+         }
+    } else {
+         if (ascii=xmlReader.hasError()) {
+            _depura("El fitxer " + archivod + " no l'hem pogut llegir bé i no sabem quina codificació té. S'imaginarem que és ASCII per si de cas");
+         }
+         _depura("El fitxer " + archivod + " no sé quina codificació té. Deu ser UTF-8",0);   codec=QTextCodec::codecForName("UTF-8");
+         // esto mantendría compatibilidad con el código anterior, pero 
+         // me parece que no queremos porque el código anterior no admitía
+         // contenidos no ASCII (bgtrml2pdf petaba) y los contenidos ASCII ya funcionan aunque 
+         // los trates como UTF-8 
+         // encoding=QtextCodec::codecForLocale();
+    } ;
+    file.close();
+    file.open ( QIODevice::ReadOnly );
     QTextStream stream ( &file );
+    stream.setCodec(codec);
     QString buff = stream.readAll();
     file.close();
-    QString fitxersortidatxt = "";
-    QLocale::setDefault ( QLocale ( QLocale::Spanish, QLocale::Spain ) );
-    QLocale spanish;
 
-    ///\TODO: Este tratamiento esta repetido en Ficha::trataTags y en PedidoProveedorView::imprimir.
-    ///       Se puede simplificar?
-    /// Tratamos la sustitucion de los valores de configuracion.
-    for ( int i = 0; i < 500; i++ ) {
-        if ( confpr->nombre ( i ) != "" ) {
-            buff.replace ( "[" + confpr->nombre ( i ) + "]", confpr->valor ( i ) );
-        } // end if
-    } // end for
-
-    /// Impresion de la tabla de contenidos.
-    for ( int i = 0; i < m_lista.size(); ++i ) {
-        campo = m_lista.at ( i );
-        fitxersortidatxt += "<tr>\n";
-        fitxersortidatxt += "   <td>" + campo->nomcampo() + "</td>\n";
-        fitxersortidatxt += "   <td>" + campo->nompresentacion() + "</td>\n";
-        if ( campo->tipo() & DBCampo::DBnumeric )
-            fitxersortidatxt += "   <td>" + spanish.toString ( campo->valorcampo().toDouble(), 'f', 2 ) + "</td>\n";
-        else
-            fitxersortidatxt += "   <td>" + campo->valorcampo() + "</td>\n";
-        fitxersortidatxt += "</tr>";
-        qDebug() << spanish.toString ( campo->valorcampo().toDouble(), 'f', 2 );
-    } // end for
-
-    QLocale::setDefault ( QLocale::C );
-    buff.replace ( "[ficha]", m_tablename );
-    buff.replace ( "[story]", fitxersortidatxt );
+    /// Hacemos el tratamiento avanzado de TAGS
+    if (!trataTags ( buff )) {
+	return 0;
+    } // end if
 
     if ( file.open ( QIODevice::WriteOnly ) ) {
         QTextStream stream ( &file );
-        stream << buff;
+        stream.setCodec(codec);
+        if ((!ascii)&&(codec->canEncode(buff))) {  
+           // para ficheros UTF-8, UTF-16, UTF-32 así vale
+           // para otros sin caracteres ajenos al encoding también vale
+	   _depura("Llistat sense referències de caracters",0," ");
+           stream << buff;
+        } else { // para otros con caracteres no codificables 
+                 // tenemos que usar referencias numéricas de caracteres de XML
+	   _depura("Llistat amb referències de caracters",0," ");
+           QString::const_iterator i;
+           for (i = buff.begin(); i != buff.end(); ++i) {
+               if ((codec->canEncode(*i))&&((!ascii)||((*i).unicode()<128)) ) {
+                  stream << *i; // si puedo lo escribo
+               } else { // si no pogo referencia numérica de caracter &12345;
+                    uint codepoint = 0; 
+                    // el caracter puede no caber en un QChar.
+                    if ((*i).isHighSurrogate()) {
+                         // sospecho que o este caso o el siguiente nunca se
+                         // dará pero no lo sé seguro y si es así no sé cuál
+                         codepoint = QChar::surrogateToUcs4(*i,*++i);
+                    }  else {
+                       if ((*i).isLowSurrogate()) {
+                         // sospecho que o este caso o el anterior nunca se
+                         // dará pero no lo sé seguro y si es así no sé cuál
+                        codepoint = QChar::surrogateToUcs4(*++i,*i);
+                       } else {
+                          // este caso es más normal, caracter entre 0 i 2^16
+                          codepoint = (*i).unicode();
+                       }
+                    }
+                    _depura((QString)"escric "+*i+" com "+codepoint,0);
+                    stream << "&#" << codepoint << ";" ;
+               }
+           }
+  	   _depura("END Llistat amb referencies de caracters",0);
+        }
         file.close();
+
     } // end if
 
+    _depura ( "END DBRecord::generaRML", 0 );
+    return 1;
+}
+
+
+/// Realiza una impresion generica del registro a partir de la plantilla ficha.rml
+/**
+**/
+void DBRecord::imprimir()
+{
+    /// Usa la plantilla ficha.rml para realizar la impresion.
+    _depura ( "DBRecord::imprimir", 0 );
+
+    generaRML( "ficha.rml" );
+
     invocaPDF ( "ficha" );
+
     _depura ( "END DBRecord::imprimir", 0 );
 }
 

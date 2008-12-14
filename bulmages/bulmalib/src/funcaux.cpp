@@ -69,7 +69,25 @@ QString parsearCode ( const QString &cad )
     return result;
 }
 
+/// Escapa los mínimos caracteres necesarios para 
+/// escribir a cadena a XML, sin usar CDATA, para ahorrar bytes y porque (me suena que) puede no 
+/// estar permitido en todos los lugares de un fichero xml segun esquemas o dtds específicos
+QString xmlEscape ( const QString& param ) {
+   QString text = param;
+   text.replace("&","&amp;");
+   text.replace('"',"&quot;");
+   text.replace("<","&lt;");
+   text.replace(">","&gt;");
+   return text;
+}
+
 /// Proteje cadenas de texto pasandoles una sustitucion de codigos especiales de XML.
+/// Nota: ahora ficha.cpp ya respeta el encoding del XML 
+/// original y pone referencias numéricas de caracter sólo a los caracteres
+/// no soportados en el encoding. Ya no hace tanta falta
+/// esta función, y creo que con escapeXml pasamos (para 
+/// listados rml al menos). Podemos tener el buffer en 
+/// memoria en unicode hasta escribirlo a fichero en ficha::generaRML
 QString XMLProtect ( const QString &string )
 {
     /// Recorre todo el QString y sustituye los caracteres NO ASCII y

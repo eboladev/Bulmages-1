@@ -65,6 +65,13 @@ float fround ( float, unsigned );
 int roundI ( double );
 /// Procesa el string pasado como parametro y devuelve una estructura del tipo QDate.
 QDate normalizafecha ( QString );
+
+
+/// Escapa los mínimos caracteres necesarios para 
+/// escribir a cadena a XML, sin usar CDATA porque puede no 
+/// estar permitido en todos los lugares de un fichero xml 
+QString xmlEscape ( const QString& text ) ;
+
 /// Proteje cadenas de texto pasandoles una sustitucion de codigos especiales de XML.
 QString XMLProtect ( const QString& );
 QString XMLDesProtect ( const QString& );

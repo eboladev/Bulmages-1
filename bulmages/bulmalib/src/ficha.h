@@ -84,8 +84,7 @@ public:
     virtual void generaCampo ( const QString &objname, const QString &textname, const QString &type );
     virtual void activaDocumentos();
     virtual void desactivaDocumentos();
-
-public slots:
+ public slots:
     virtual void on_mui_aceptar_clicked();
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_eliminar_clicked();

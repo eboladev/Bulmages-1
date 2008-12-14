@@ -374,12 +374,7 @@ void PedidoProveedorView::imprimir()
         file.close();
         QString fitxersortidatxt = "";
 
-        /// Tratamos la sustitucion de los valores de configuracion.
-        for ( int i = 0; i < 500; i++ ) {
-            if ( confpr->nombre ( i ) != "" ) {
-                buff.replace ( "[" + confpr->nombre ( i ) + "]", confpr->valor ( i ) );
-            } // end if
-        } // end for
+        substrConf(buff);
 
         /// Linea de totales del pedido.
         cur = empresaBase() ->cargacursor ( SQLQuery );

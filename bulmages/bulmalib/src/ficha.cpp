@@ -35,7 +35,6 @@
 #include <QDomNode>
 #include <QInputDialog>
 #include <QUiLoader>
-
 ///
 /**
 \param parent
@@ -795,12 +794,7 @@ void Ficha::substrVars ( QString &buff ) {
 	} // end while
 
 
-    /// Tratamos la sustitucion de los valores de configuracion.
-    for ( int i = 0; i < 500; i++ ) {
-        if ( confpr->nombre ( i ) != "" ) {
-            buff.replace ( "[" + confpr->nombre ( i ) + "]", confpr->valor ( i ) );
-        } // end if
-    } // end for
+    substrConf(buff);
 
     pos =  0;
     
@@ -808,7 +802,7 @@ void Ficha::substrVars ( QString &buff ) {
     QRegExp rx ( "\\[(\\w*)\\]" );
     while ( ( pos = rx.indexIn ( buff, pos ) ) != -1 ) {
         if ( exists ( rx.cap ( 1 ) ) ) {
-            buff.replace ( pos, rx.matchedLength(), DBvalue ( rx.cap ( 1 ) ) );
+            buff.replace ( pos, rx.matchedLength(), xmlEscape(DBvalue ( rx.cap ( 1 ) )) );
             pos = 0;
         } else {
             pos += rx.matchedLength();
@@ -832,18 +826,13 @@ int Ficha::trataTags ( QString &buff )
 
     ///Buscamos interfaces, los preguntamos y los ponemos.
     int pos = 0;
+
     QRegExp rx70 ( "<!--\\s*IFACE\\s*SRC\\s*=\\s*\"([^\"]*)\"\\s*-->" );
     rx70.setMinimal ( TRUE );
     while ( ( pos = rx70.indexIn ( buff, pos ) ) != -1 ) {
 		QString cadarchivo = rx70.cap(1);
 	
-
-		/// Tratamos la sustitucion de los valores de configuracion.
-		for ( int i = 0; i < 500; i++ ) {
-			if ( confpr->nombre ( i ) != "" ) {
-				cadarchivo.replace ( "[" + confpr->nombre ( i ) + "]", confpr->valor ( i ) );
-			} // end if
-		} // end for
+            substrConf(cadarchivo); 
 
 	    QFile fichero(cadarchivo);
 	    if (fichero.exists()) {
@@ -1057,7 +1046,8 @@ QString Ficha::trataQuery ( const QString &query, const QString &datos )
         int pos =  0;
         while ( ( pos = rx.indexIn ( salidatemp, pos ) ) != -1 ) {
             if ( cur->numcampo ( rx.cap ( 1 ) ) != -1 ) {
-                salidatemp.replace ( pos, rx.matchedLength(), data2python ( ascii127 ( cur->valor ( rx.cap ( 1 ) ) ) ) );
+                salidatemp.replace ( pos, rx.matchedLength(),
+				     xmlEscape ( cur->valor ( rx.cap ( 1 ) ) )  );
                 pos = 0;
             } else {
                 pos += rx.matchedLength();
@@ -1113,50 +1103,11 @@ int Ficha::generaRML ( const QString &arch )
     if ( res != 0 ) {
         return 1;
     } // end if
-    QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + arch;
-    QString archivod = confpr->valor ( CONF_DIR_USER ) + arch;
-    QString archivologo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
 
-    /// Copiamos el archivo.
-#ifdef WINDOWS
-
-    archivo = "copy " + archivo + " " + archivod;
-#else
-
-    archivo = "cp " + archivo + " " + archivod;
-#endif
-
-    system ( archivo.toAscii().constData() );
-    /// Copiamos el logo
-#ifdef WINDOWS
-
-    archivologo = "copy " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
-#else
-
-    archivologo = "cp " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
-#endif
-
-    system ( archivologo.toAscii().constData() );
-    QFile file;
-    file.setFileName ( archivod );
-    file.open ( QIODevice::ReadOnly );
-    QTextStream stream ( &file );
-    QString buff = stream.readAll();
-    file.close();
-
-    /// Hacemos el tratamiento avanzado de TAGS
-    if (!trataTags ( buff )) {
-	return 0;
-    } // end if
-
-    if ( file.open ( QIODevice::WriteOnly ) ) {
-        QTextStream stream ( &file );
-        stream << buff;
-        file.close();
-    } // end if
+    res = DBRecord::generaRML( arch );
 
     _depura ( "END Ficha::generaRML", 0 );
-    return 1;
+    return res;
 }
 
 
