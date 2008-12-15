@@ -493,6 +493,8 @@ int postgresiface2::inicializa ( QString nomdb )
 
     QString user = confpr->valor ( CONF_LOGIN_USER );
     QString passwd = confpr->valor ( CONF_PASSWORD_USER );
+
+    try {
     /// Antes no resolvia bien en caso de querer hacer conexiones al ordenador local.
     /// Ahora si se pone -- se considera conexion local.
     if ( pghost != "--" )
@@ -526,6 +528,9 @@ int postgresiface2::inicializa ( QString nomdb )
 	    m_currentUser = "";
         } // end if
         delete cur;
+	} catch(...) {
+		_depura("Error en la conexion postgresifcace2::inicializa", 2);
+	} // end try
 
     _depura ( "END postgresiface2::inicializa", 0, nomdb );
     return 0;
@@ -658,6 +663,9 @@ cursor2 *postgresiface2::cargacursor ( QString query, int numParams,
 { 
         _depura ( "postgresiface2::cargacursor", 0, query );
 
+    cursor2 *cur = NULL;
+    /// Iniciamos la depuracion.
+    try {
         //digitsInt >= longitud expressió decimal d'un int positiu qualsevol 
          int midaParams = numParams + (limit !=0 ? 1:0) + (offset !=0 ? 1 : 0);
          //char **charValues = (midaParams==0 ? NULL : new char*[midaParams]) ;
@@ -685,8 +693,6 @@ cursor2 *postgresiface2::cargacursor ( QString query, int numParams,
              charValues[numParams]=offsetChar; 
              query += " OFFSET $" + QString::number ( ++numParams )+"::int4";
          };
-    cursor2 *cur = NULL;
-    try {
 
         cur = new cursor2 ( nomcursor, conn, query, numParams, charValues );
     _depura ( "END postgresiface2::cargacursor", 0, nomcursor );
@@ -1169,7 +1175,6 @@ int postgresiface2::borrarcuenta ( int idcuenta )
 int postgresiface2::abreasiento ( int idasiento )
 {
     _depura ( "postgresiface2::abreasiento", 0 );
-    _depura ( "Funcion abreasiento\n" );
     QString query = "";
     query.sprintf ( "SELECT abreasiento(%d)", idasiento );
     cursor2 *cur = cargacursor ( query, "abreasientos" );

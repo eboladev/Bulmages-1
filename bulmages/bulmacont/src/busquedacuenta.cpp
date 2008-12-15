@@ -38,7 +38,7 @@ BusquedaCuenta::BusquedaCuenta ( QWidget *parent )
     mdb_nomcuenta = "";
     mdb_codigocuenta = "";
     mdb_tipocuenta = "";
-    connect ( mui_codigocuenta, SIGNAL ( editingFinished() ), this, SLOT ( s_lostFocus() ) );
+    m_semaforo = FALSE;
     _depura ( "END BusquedaCuenta::BusquedaCuenta", 0 );
 }
 
@@ -59,6 +59,8 @@ BusquedaCuenta::~BusquedaCuenta()
 **/
 QString BusquedaCuenta::text()
 {
+    _depura("BusquedaCuenta::text");
+    _depura("END BusquedaCuenta::text");
     return mdb_codigocuenta;
 }
 
@@ -69,6 +71,8 @@ QString BusquedaCuenta::text()
 **/
 QString BusquedaCuenta::valorCampo()
 {
+    _depura("BusquedaCuenta::valorCampo()");
+    _depura("END BusquedaCuenta::valorCampo()");
     return mdb_idcuenta;
 }
 
@@ -79,7 +83,9 @@ QString BusquedaCuenta::valorCampo()
 **/
 void BusquedaCuenta::setText ( QString val )
 {
+    _depura("BusquedaCuenta::setText", 0, val);
     setcodigocuenta ( val );
+    _depura("END BusquedaCuenta::setText");
 }
 
 ///
@@ -88,6 +94,8 @@ void BusquedaCuenta::setText ( QString val )
 **/
 void BusquedaCuenta::setValorCampo ( QString val )
 {
+    _depura("BusquedaCuenta::setValorCampo", 0, val);
+    _depura("END BusquedaCuenta::setValorCampo"); 
     setidcuenta ( val );
 }
 
@@ -98,6 +106,8 @@ void BusquedaCuenta::setValorCampo ( QString val )
 **/
 QString BusquedaCuenta::codigocuenta()
 {
+    _depura("BusquedaCuenta::codigocuenta");
+    _depura("END BusquedaCuenta::codigocuenta");
     return mui_codigocuenta->text();
 }
 
@@ -108,6 +118,8 @@ QString BusquedaCuenta::codigocuenta()
 **/
 QString BusquedaCuenta::idcuenta()
 {
+     _depura("BusquedaCuenta::idcuenta");
+     _depura("END BusquedaCuenta::idcuenta");
     return mdb_idcuenta;
 }
 
@@ -118,6 +130,8 @@ QString BusquedaCuenta::idcuenta()
 **/
 QString BusquedaCuenta::nomcuenta()
 {
+    _depura("BusquedaCuenta::nomcuenta");
+    _depura("END BusquedaCuenta::nomcuenta()");
     return mdb_nomcuenta;
 }
 
@@ -128,6 +142,8 @@ QString BusquedaCuenta::nomcuenta()
 **/
 QString BusquedaCuenta::tipocuenta()
 {
+    _depura("BusquedaCuenta::tipocuenta");
+    _depura("END BusquedaCuenta::tipocuenta");
     return mdb_tipocuenta;
 }
 
@@ -137,6 +153,8 @@ QString BusquedaCuenta::tipocuenta()
 **/
 void BusquedaCuenta::hideNombre()
 {
+    _depura("BusquedaCuenta::hideNombre");
+    _depura("END BusquedaCuenta::hideNombre");
     mui_nomcuenta->hide();
 }
 
@@ -146,7 +164,9 @@ void BusquedaCuenta::hideNombre()
 **/
 void BusquedaCuenta::showNombre()
 {
+    _depura("BusquedaCuenta::showNombre");
     mui_nomcuenta->show();
+    _depura("END BusquedaCuenta::showNombre");
 }
 
 
@@ -155,7 +175,9 @@ void BusquedaCuenta::showNombre()
 **/
 void BusquedaCuenta::on_mui_buscar_clicked()
 {
+    _depura("BusquedaCuenta::on_mui_buscar_clicked");
     s_searchCuenta();
+    _depura("END BusquedaCuenta::on_mui_buscar_clicked");
 }
 
 
@@ -165,25 +187,9 @@ void BusquedaCuenta::on_mui_buscar_clicked()
 **/
 void BusquedaCuenta::on_mui_codigocuenta_textChanged ( const QString &q )
 {
+    _depura("BusquedaCuenta::on_mui_codigocuenta_textChanged", 0, q);
     s_codigocuentatextChanged ( q );
-}
-
-
-///
-/**
-**/
-void BusquedaCuenta::on_lostFocus()
-{
-    s_lostFocus();
-}
-
-
-///
-/**
-**/
-void BusquedaCuenta::on_enterPressed()
-{
-    s_enterPressed();
+    _depura("END BusquedaCuenta::on_mui_codigocuenta_textChanged");
 }
 
 
@@ -192,7 +198,9 @@ void BusquedaCuenta::on_enterPressed()
 **/
 void BusquedaCuenta::selectAll()
 {
+    _depura("BusquedaCuenta::selectAll");
     mui_codigocuenta->selectAll();
+    _depura("END BusquedaCuenta::selectAll");
 }
 
 
@@ -201,7 +209,9 @@ void BusquedaCuenta::selectAll()
 **/
 void BusquedaCuenta::setFocus()
 {
+    _depura("BusquedaCuenta::setFocus");
     mui_codigocuenta->setFocus();
+    _depura("END BusquedaCuenta::setFocus");
 }
 
 
@@ -291,8 +301,6 @@ void BusquedaCuenta::s_searchCuenta()
     connect ( listcuentas, SIGNAL ( selected ( QString ) ), diag, SLOT ( accept() ) );
     connect ( listcuentas, SIGNAL ( destroyed ( QObject ) ), diag, SLOT ( accept() ) );
 
-//    listcuentas->inicializa();
-
     /// Sacamos el di&aacute;logo.
     diag->exec();
 
@@ -309,64 +317,120 @@ void BusquedaCuenta::s_searchCuenta()
 }
 
 
-///
+/** Se encarga de presentar en el Widget los valores seleccionados.
+*/
 /**
-\param val
+**/
+void BusquedaCuenta::pinta()
+{
+    _depura ( "BusquedaCuenta::pinta", 0 );
+    m_semaforo = TRUE;
+    mui_codigocuenta->setText ( mdb_codigocuenta );
+    mui_nomcuenta->setText ( mdb_nomcuenta );
+    m_semaforo = FALSE;
+    emit ( valueChanged ( mdb_idcuenta ) );
+    _depura ( "END BusquedaCuenta::pinta", 0 );
+}
+
+
+/** Permite indicar al Widget cual es la cuenta seleccionada por defecto.
+    Recarga cursor de serie_factura y cuando encuentra un registro cuyo codigo coincide con el pasado
+    como parametro lo establece como el registro activo por el comboBox.
+*/
+/**
+\param cod
+\return
 **/
 void BusquedaCuenta::s_codigocuentatextChanged ( const QString &val )
 {
-    _depura ( "BusquedaCuenta::s_codigocuentatextChanged", 0, val );
-    if ( val == "*" ) {
-        s_searchCuenta();
-        emit ( valueChanged ( mui_codigocuenta->text() ) );
+	_depura ( "BusquedaCuenta::s_codigocuentatextChanged", 0, val );
+
+    bool encontrado = FALSE;
+
+    if ( m_semaforo ) {
+        _depura ( "END BusquedaCuenta::s_codigocuentatextChanged", 0, "Semaforo parado" );
+        return;
     } // end if
+
+    /// Comprobamos si se ha pulsado el * y entonces hacemos la busqueda
+    if (val == "*") {
+	on_mui_buscar_clicked();
+	_depura ( "END BusquedaCuenta::s_codigocuentatextChanged", 0 );
+	return;
+    } // end if
+
+
+    QString SQLQuery = "SELECT * FROM cuenta WHERE codigo = '" + extiendecodigo ( val, m_numdigitos ) + "'";
+    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
+    if ( !cur->eof() ) {
+        mdb_idcuenta = cur->valor ( "idcuenta" );
+        mdb_nomcuenta = cur->valor ( "descripcion" );
+        mdb_codigocuenta = cur->valor ( "codigo" );
+	mdb_tipocuenta = cur->valor("tipocuenta");
+        encontrado = TRUE;
+    }
+    delete cur;
+
+
+    if ( ! encontrado ) {
+        SQLQuery = "SELECT * FROM cuenta WHERE upper(descripcion) = upper('" + val + "')";
+        cur = empresaBase() ->cargacursor ( SQLQuery );
+        if ( cur->numregistros() == 1 ) {
+            mdb_idcuenta = cur->valor ( "idcuenta" );
+            mdb_nomcuenta = cur->valor ( "descripcion" );
+            mdb_codigocuenta = cur->valor ( "codigo" );
+	    mdb_tipocuenta = cur->valor("tipocuenta");
+            encontrado = TRUE;
+        } // end if
+        delete cur;
+    } // end if
+
+    if ( ! encontrado ) {
+        SQLQuery = "SELECT * FROM cuenta WHERE upper(descripcion) LIKE upper('%" + val + "%')";
+        cur = empresaBase() ->cargacursor ( SQLQuery );
+        if ( cur->numregistros() == 1 ) {
+            mdb_idcuenta = cur->valor ( "idcuenta" );
+            mdb_nomcuenta = cur->valor ( "descripcion" );
+            mdb_codigocuenta = cur->valor ( "codigo" );
+	    mdb_tipocuenta = cur->valor("tipocuenta");
+            encontrado = TRUE;
+        } // end if
+        delete cur;
+    } // end if
+
+
+
+    if ( !encontrado ) {
+        mui_nomcuenta->setText ( "" );
+        mdb_idcuenta = "";
+        mdb_nomcuenta = "";
+        mdb_codigocuenta = "";
+	mdb_tipocuenta = "";
+        g_plugins->lanza ( "BusquedaCuenta_textChanged_Post", this );
+    } // end if
+
+    if ( encontrado ) {
+	mui_nomcuenta->setText(mdb_nomcuenta);
+        emit ( valueChanged ( mdb_idcuenta ) );
+
+    } // end if
+
     _depura ( "END BusquedaCuenta::s_codigocuentatextChanged", 0 );
 }
 
 
-///
+/** SLOT que responde al fin de la edicion del campos de texto.
+    Se supone que hemos introducido un cliente identificable por codigo, por nombre o por CIF
+    Asi que se encarga de buscarlo y encontrarlo.
+*/
 /**
 **/
-void BusquedaCuenta::s_lostFocus()
+void BusquedaCuenta::on_mui_codigocuenta_editingFinished()
 {
-    _depura ( "BusquedaCuenta::s_lostFocus", 0 );
-    mdb_codigocuenta = mui_codigocuenta->text();
-    QString cad = mdb_codigocuenta;
-    if ( cad != "" ) {
-        cad = extiendecodigo ( cad, m_numdigitos );
-        cursor2 *cursorcta = empresaBase() ->cargacuenta ( 0, cad );
-        int num = cursorcta->numregistros();
-        if ( num == 1 ) {
-            mdb_codigocuenta = cursorcta->valor ( "codigo" );
-            mdb_idcuenta = cursorcta->valor ( "idcuenta" );
-            mdb_nomcuenta = cursorcta->valor ( "descripcion" );
-            mdb_tipocuenta = cursorcta->valor ( "tipocuenta" );
-            mui_codigocuenta->setText ( mdb_codigocuenta );
-            mui_nomcuenta->setText ( mdb_nomcuenta );
-        } else {
-            mdb_idcuenta = "";
-            mdb_codigocuenta = "";
-            mdb_nomcuenta = "";
-            mdb_tipocuenta = "";
-            mui_nomcuenta->setText ( "" );
-        } // end if
-        delete cursorcta;
-    } // end if
-    emit ( valueChanged ( mdb_idcuenta ) );
-    g_plugins->lanza ( "BusquedaCuenta_s_lostFocus_post", this );
-    _depura ( "END BusquedaCuenta::s_lostFocus", 0 );
-}
-
-
-///
-/**
-**/
-void BusquedaCuenta::s_enterPressed()
-{
-    _depura ( "BusquedaCuenta::s_enterPressed", 0 );
-    s_lostFocus();
-    emit enterPressed();
-    _depura ( "END BusquedaCuenta::s_enterPressed", 0 );
+    _depura ( "BusquedaCuenta::on_mui_codigocuenta_editingFinished", 0 );
+    pinta();
+    g_plugins->lanza ( "BusquedaCuenta_on_mui_codigocuenta_editingFinished_Post", this );
+    _depura ( "END BusquedaCuenta::on_mui_codigocuenta_editingFinished", 0 );
 }
 
 
@@ -418,7 +482,6 @@ void BusquedaCuentaDelegate::s_editTextChanged ( const QString &cod )
 
     if ( codigo.size() < 3 ) {
         /// Si hay menos de 3 caracteres en el QComboBox no tiene que aparecer el autocompletar.
-        // completar->popup->
         _depura ( "END BusquedaCuentaDelegate::s_editTextChanged", 0, "Menos de tres caracteres" );
         return;
     } // end if

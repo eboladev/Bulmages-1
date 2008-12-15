@@ -63,6 +63,7 @@ private:
     QString mdb_codigocuenta;
     QString mdb_tipocuenta;
     int m_numdigitos;
+    bool m_semaforo;
 
 public:
     BusquedaCuenta ( QWidget *parent = 0 );
@@ -80,16 +81,14 @@ public:
     virtual void setEmpresaBase ( Empresa *emp );
     void hideNombre();
     void showNombre();
+    void pinta();
 
 public slots:
     virtual void on_mui_buscar_clicked();
     virtual void s_searchCuenta();
     virtual void on_mui_codigocuenta_textChanged ( const QString &q );
+    virtual void on_mui_codigocuenta_editingFinished();
     virtual void s_codigocuentatextChanged ( const QString & );
-    virtual void on_lostFocus();
-    virtual void s_lostFocus();
-    virtual void on_enterPressed();
-    virtual void s_enterPressed();
     virtual void selectAll();
     virtual void setFocus();
 

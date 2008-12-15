@@ -175,6 +175,7 @@ void Company::createMainWindows ( Splash *splash )
 
     if ( has_table_privilege ( "presupuesto", "SELECT" ) ) {
         m_presupuestosList = new PresupuestoList ( this );
+	m_presupuestosList->setObjectName("PresupuestoList");
         m_pWorkspace->addWindow ( m_presupuestosList );
         m_presupuestosList->hide();
         m_bulmafact->actionListado_Presupuestos->setEnabled ( TRUE );
