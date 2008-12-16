@@ -519,8 +519,10 @@ void CompraVentaView::generarFacturaProveedor()
                 linea1->setDBvalue ( "codigocompletoarticulo", linea->DBvalue ( "codigocompletoarticulo" ) );
                 linea1->setDBvalue ( "nomarticulo", linea->DBvalue ( "nomarticulo" ) );
                 linea1->setDBvalue ( "ivalfacturap", linea->DBvalue ( "ivalalbaranp" ) );
-		mensajeInfo(linea->DBvalue( "impesplalbaranp"));
+		/// Estos traspasos no son para un plugin generico pero ahora no tengo tiempo de arreglarlo.
                 linea1->setDBvalue ( "impesplfacturap", linea->DBvalue ( "impesplalbaranp" ) );
+		linea1->setDBvalue ( "kiloolivalfacturap", linea->DBvalue ( "kiloolivalalbaranp") );
+		linea1->setDBvalue ( "rendimientolfacturap", linea->DBvalue ( "rendimientolalbaranp") );
                 bud->getlistalineas() ->setProcesarCambios ( TRUE );
             } // end if
         } // end for
@@ -637,6 +639,11 @@ void CompraVentaView::generarFactura()
                 linea1->setDBvalue ( "descuentolfactura", linea->DBvalue ( "descuentolalbaran" ) );
                 linea1->setDBvalue ( "idarticulo", linea->DBvalue ( "idarticulo" ) );
                 linea1->setDBvalue ( "nomarticulo", linea->DBvalue ( "nomarticulo" ) );
+
+		/// Estos traspasos no deberian ir en un plugin generico. Pero no tengo tiempo ahora de arreglarlo.
+		linea1->setDBvalue ( "kiloolivalfactura", linea->DBvalue ( "kiloolivalalbaran") );
+		linea1->setDBvalue ( "litroolivalfactura", linea->DBvalue ( "litroolivalalbaran") );
+		linea1->setDBvalue ( "rendimientolfactura", linea->DBvalue ( "rendimientolalbaran") );
                 bud->getlistalineas() ->setProcesarCambios ( TRUE );
                 linea1->refresh();
             } // end if

@@ -282,6 +282,11 @@ void AlbaranClienteView::generarFactura()
 {
     _depura ( "AlbaranClienteView::generarFactura", 0 );
 
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza ( "AlbaranClienteView_generarFactura", this );
+    if ( res != 0 )
+        return;
+
     FacturaView *bud = NULL;
     cursor2 *cur = NULL;
 
