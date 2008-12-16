@@ -417,9 +417,9 @@ class _rml_flowable(object):
 					self._textual(n)
 				rc += n.toxml()
 			elif (n.nodeType == node.CDATA_SECTION_NODE):
-				rc += n.data
+				rc += n.toxml()
 			elif (n.nodeType == node.TEXT_NODE):
-				rc += n.data
+				rc += n.toxml()
 		return rc.encode(encoding)
 
 	def _table(self, node):
