@@ -77,7 +77,7 @@ int cursor2::regactual()
 /// \param SQLQuery Query en formato SQL a realizar en la base de datos.
 cursor2::cursor2 ( QString nombre, PGconn *conn1, QString SQLQuery)
 {
-   cursor2(nombre, conn1, SQLQuery, 0, (char **)NULL);
+   inicializa(nombre, conn1, SQLQuery, 0, (char **)NULL);
 }
 
 cursor2::cursor2 ( QString nombre, PGconn *conn1, QString SQLQuery, int numParams,
@@ -89,13 +89,18 @@ cursor2::cursor2 ( QString nombre, PGconn *conn1, QString SQLQuery, int numParam
              qbaValues[i] = paramValues[i].toUtf8();
              charValues[i] = qbaValues[i].data();
          };
-      cursor2(nombre, conn1, SQLQuery, numParams, charValues);
+      inicializa(nombre, conn1, SQLQuery, numParams, charValues);
 }
 
 cursor2::cursor2 ( QString nombre, PGconn *conn1, QString SQLQuery, int numParams,
                        const char * const *paramValues
-                       )
+                       ) {
+   inicializa(nombre, conn1, SQLQuery, numParams, paramValues);
+}
 
+void cursor2::inicializa ( QString nombre, PGconn *conn1, QString SQLQuery, int numParams,
+                       const char * const *paramValues
+                       )
 {
     _depura ( "cursor2::cursor2", 0, SQLQuery );
     for( int i=0; i<numParams; i++) {
@@ -110,7 +115,7 @@ cursor2::cursor2 ( QString nombre, PGconn *conn1, QString SQLQuery, int numParam
         registroactual = 0;
         _depura ( SQLQuery, 0 );
         result = PQexecParams ( conn, SQLQuery.toUtf8().data(), numParams, NULL, 
-                                paramValues, NULL, NULL, 0  );
+                               (numParams==0?NULL:paramValues), NULL, NULL, 0  );
         switch ( PQresultStatus ( result ) ) {
         case PGRES_NONFATAL_ERROR:
         case PGRES_FATAL_ERROR:
@@ -668,34 +673,23 @@ cursor2 *postgresiface2::cargacursor ( QString query, int numParams,
     try {
         //digitsInt >= longitud expressió decimal d'un int positiu qualsevol 
          int midaParams = numParams + (limit !=0 ? 1:0) + (offset !=0 ? 1 : 0);
-         //char **charValues = (midaParams==0 ? NULL : new char*[midaParams]) ;
-         char *charValues[midaParams]; 
-         //char *offsetChar=NULL;
-         char offsetChar[digitsInt];
-         //char *limitChar=NULL; 
-         char limitChar[digitsInt];
-         QByteArray qbaValues[numParams]; //si sabés C++ i Qt sabria si no cal ?
+         QString newParamValues[midaParams];
          for (int i=0; i<numParams ; i++) {
-             qbaValues[i] = paramValues[i].toUtf8();
-             charValues[i] = qbaValues[i].data();
+             newParamValues[i] = paramValues[i];
          };
          /// Si hay establecidas clausulas limit o offset modificamos el query
          /// y añadimos parámetros
          if ( limit != 0 ) {
-//             limitChar=new char[digitsInt];
-             int res = snprintf(limitChar,digitsInt,"%d",limit);
-             charValues[numParams]=limitChar; 
+             newParamValues[numParams] =  QString::number ( limit);
              query += " LIMIT $" + QString::number ( ++numParams ) +"::int4";
          };
          if ( offset != 0 ) {
-  //           offsetChar=new char[digitsInt];
-             snprintf(offsetChar,digitsInt,"%d",offset);
-             charValues[numParams]=offsetChar; 
-             query += " OFFSET $" + QString::number ( ++numParams )+"::int4";
+             newParamValues[numParams] =  QString::number ( offset ); 
+             query += " OFFSET $" + QString::number ( ++numParams ) + "::int4";
          };
 
-        cur = new cursor2 ( nomcursor, conn, query, numParams, charValues );
-    _depura ( "END postgresiface2::cargacursor", 0, nomcursor );
+        cur = new cursor2 ( nomcursor, conn, query, numParams, newParamValues );
+        _depura ( "END postgresiface2::cargacursor", 0, nomcursor );
 
     } catch ( ... ) {
         if ( cur ) delete cur;
@@ -703,15 +697,6 @@ cursor2 *postgresiface2::cargacursor ( QString query, int numParams,
         _depura ( "END postgresiface2::cargacursor", 0, "Error en la base de datos" );
         cur = NULL;
     } // end try
-/*    if (offsetChar!=NULL) {
-        delete[] offsetChar;
-    }
-    if (limitChar!=NULL) {
-        delete[] limitChar;
-    }
-    if (charValues!=NULL) {
-        delete[] charValues;
-    }*/
     return cur;
 }
 

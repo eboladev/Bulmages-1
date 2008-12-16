@@ -69,6 +69,10 @@ private:
     QHash<QString, int> m_campos;
 //      QList<QString, int>m_campos;
 //    QMap<QString, int> m_campos;
+
+    void inicializa ( QString nombre, PGconn *conn1, QString SQLQuery, int numParams,
+                       const char * const *paramValues
+                       );
 public:
     /// Constructor, inicializa la estructura y realiza la consulta.
     cursor2 ( QString nombre, PGconn *conn1, QString SQLQuery );
