@@ -257,8 +257,8 @@ void SubForm3::cargaSpecs()
 QList<SDBRecord *> *SubForm3::lista()
 {
     _depura ( "SubForm3::lista", 0 );
-    return &m_lista;
     _depura ( "END SubForm3::lista", 0 );
+    return &m_lista;
 }
 
 
@@ -1413,6 +1413,7 @@ bool SubForm3::campoCompleto ( int row )
 
 /// M&eacute;todo que se dispara cuando se va a reposicionar en el formulario.
 /// Se encarga de resituar el cursor al lugar que se haya indicado.
+/// Con el fin de evitar problemas de reposicionado le activamos un semaforo.
 /**
 \param row
 \param col
@@ -1420,6 +1421,12 @@ bool SubForm3::campoCompleto ( int row )
 void SubForm3::on_mui_list_cellRePosition ( int row, int col )
 {
     _depura ( "SubForm3::on_mui_list_cellReposition", 0, "Row: " + QString::number ( row ) + " col: " + QString::number ( col ) );
+
+    /// Implementacion del semaforo
+    static bool semaforo = FALSE;
+    if (semaforo)
+      return;
+    semaforo = TRUE;
 
     bool creado = FALSE;
 
@@ -1452,6 +1459,8 @@ void SubForm3::on_mui_list_cellRePosition ( int row, int col )
         } // end if
         break;
     } // end switch
+
+    semaforo = FALSE;
 
     _depura ( "END SubForm3::on_mui_list_cellRePosition", 0 );
 }

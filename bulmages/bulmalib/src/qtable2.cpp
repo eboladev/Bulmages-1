@@ -326,7 +326,6 @@ bool QTableWidget2::eventFilter ( QObject *obj, QEvent *event )
         case Qt::Key_Tab:
             m_teclasalida = key;
             return TRUE;
-            break;
         } // end switch
     } // end if
 
