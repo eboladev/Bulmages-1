@@ -48,6 +48,8 @@ ExtractoSubForm::ExtractoSubForm ( QWidget *parent, const char * ) : SubForm2Bc 
     addSHeader ( "codigo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Cuenta" ) );
     addSHeader ( "ordenasiento", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite | SHeader::DBBlockView, tr ( "Asiento" ) );
     addSHeader ( "descripcioncuenta", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Descripcion" ) );
+    addSHeader ( "descripcionapunte", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Descripcion Apunte" ) );
+    addSHeader ( "descripcionasiento", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Descripcion Asiento" ) );
     addSHeader ( "conceptocontable", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr ( "Concepto" ) );
     addSHeader ( "debe", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite | SHeader::DBBlockView, tr ( "Debe" ) );
     addSHeader ( "haber", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite | SHeader::DBBlockView, tr ( "Haber" ) );

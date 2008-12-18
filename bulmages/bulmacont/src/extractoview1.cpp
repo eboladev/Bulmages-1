@@ -355,10 +355,10 @@ void extractoview1::presentar()
         QString cont;
         if ( mui_asAbiertos->isChecked() ) {
             tabla = "borrador";
-            cont = " FALSE AS punteo, * ";
+            cont = " FALSE AS punteo, *, descripcion AS descripcionapunte ";
         } else {
             tabla = "apunte";
-            cont = " * ";
+            cont = " *, descripcion AS descripcionapunte ";
         } // end if
 
         if ( contra != "" ) {
@@ -376,7 +376,7 @@ void extractoview1::presentar()
         } // end if
         query = "SELECT * FROM ((SELECT " + cont + " FROM " + tabla + " WHERE  idcuenta = " + idcuenta + " AND fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' " + ccostes + " " + ccanales + " " + tipopunteo + saldosup + saldoinf + ") AS t2 ";
         query += " LEFT JOIN (SELECT idcuenta AS idc, descripcion, codigo, tipocuenta FROM cuenta) AS t9 ON t2.idcuenta = t9.idc) AS t1";
-        query += " LEFT JOIN asiento ON asiento.idasiento = t1.idasiento ";
+        query += " LEFT JOIN (SELECT *, descripcion AS descripcionasiento FROM asiento) AS t4 ON t4.idasiento = t1.idasiento ";
         query += " LEFT JOIN (SELECT idc_coste AS idccoste, nombre AS nombrec_coste FROM c_coste) AS t5 ON t5.idccoste = t1.idc_coste ";
         query += " LEFT JOIN (SELECT idcanal AS id_canal, nombre AS nombrecanal FROM canal) AS t6 ON t6.id_canal = t1.idcanal ";
         query += " LEFT JOIN (SELECT idcuenta AS idcontrapartida, codigo AS codcontrapartida FROM cuenta) as t8 ON t8.idcontrapartida = t1.contrapartida";
