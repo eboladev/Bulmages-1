@@ -220,18 +220,18 @@ int BusquedaArticuloDelegate_textChanged_Post ( BusquedaArticuloDelegate *baDel 
 
 }
 
-int SubForm2Bf_on_mui_list_editFinished(SubForm2Bf *grid) {
-   _depura("SubForm2Bf_on_mui_list_editFinished de pluginalias",0);
+int SubForm3_campoCompleto(SubForm3 *grid,void **resultat) {
+   _depura("SubForm3_campoCompleto de pluginalias",0);
    BusquedaArticuloDelegate *baDel = dynamic_cast<BusquedaArticuloDelegate *>( grid->mui_list->QAbstractItemView::indexWidget ( grid->mui_list->currentIndex() ));
     if (baDel) {
          _depura("camp de codi article/alias. count="+QString::number(baDel->count()),0);
          QString elec=baDel->eligeUnico();
          if (!elec.isNull()) {
-          grid->m_campoactual->setText(elec);
+          grid->item(grid->currentRow(), grid->currentColumn())->setText(elec);
          }
     }
   
-   _depura("END SubForm2Bf_on_mui_list_editFinished de pluginalias",0);
+   _depura("END SubForm3_campoCompleto de pluginalias",0);
     
   return 0; // continua el processament normal
  }

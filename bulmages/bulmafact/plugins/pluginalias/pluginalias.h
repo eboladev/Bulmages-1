@@ -61,5 +61,5 @@ extern "C" MY_EXPORT int ArticuloView_guardar_post ( ArticuloView * );
 extern "C" MY_EXPORT int BusquedaArticulo_on_m_codigocompletoarticulo_textChanged_Post ( BusquedaArticulo * );
 extern "C" MY_EXPORT int BusquedaArticuloDelegate_textChanged_Post ( BusquedaArticuloDelegate *baDel );
 
-extern "C" MY_EXPORT  int SubForm2Bf_on_mui_list_editFinished(SubForm2Bf *grid);
+extern "C" MY_EXPORT int SubForm3_campoCompleto(SubForm3 *grid,void **resultat) ;
 

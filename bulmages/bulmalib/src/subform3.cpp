@@ -1382,6 +1382,13 @@ SDBRecord *SubForm3::lineaat ( int row )
 bool SubForm3::campoCompleto ( int row )
 {
     _depura ( "SubForm3::campoCompleto", 0 );
+    bool resultat=false;
+    bool *pResultat=&resultat;
+    if (g_plugins->lanza("SubForm3_campoCompleto",this,(void**)&pResultat)) 
+    {
+       _depura ( "END SubForm3::campoCompleto", 0 ,"plugin retorna "+*pResultat);
+       return resultat;
+    } else {
     SDBCampo *camp;
     SHeader *header;
     /// Sacamos celda a celda toda la fila
@@ -1407,6 +1414,7 @@ bool SubForm3::campoCompleto ( int row )
 
     } // end for
     _depura ( "END SubForm3::campoCompleto", 0 );
+    }
     return TRUE;
 }
 
