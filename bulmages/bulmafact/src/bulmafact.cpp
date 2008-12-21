@@ -679,28 +679,6 @@ void Bulmafact::on_actionAlmacenes_triggered()
 ///
 /**
 **/
-void Bulmafact::on_actionListado_de_Pagos_triggered()
-{
-    _depura ( "Bulmafact::on_actionListado_de_Pagos_triggered", 0 );
-    m_company->viewPagosList();
-    _depura ( "END Bulmafact::on_actionListado_de_Pagos_triggered", 0 );
-}
-
-
-///
-/**
-**/
-void Bulmafact::on_actionNuevo_Pago_triggered()
-{
-    _depura ( "Bulmafact::on_actionNuevo_Pago_triggered", 0 );
-    m_company->s_newPagoView();
-    _depura ( "END Bulmafact::on_actionNuevo_Pago_triggered", 0 );
-}
-
-
-///
-/**
-**/
 void Bulmafact::on_actionNuevo_Cobro_triggered()
 {
     _depura ( "Bulmafact::on_actionNuevo_Cobro_triggered", 0 );

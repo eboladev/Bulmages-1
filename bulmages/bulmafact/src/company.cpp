@@ -49,8 +49,6 @@
 #include "listalmacenview.h"
 #include "listconfiguracionview.h"
 #include "listseriefacturaview.h"
-//#include "pagoslist.h"
-//#include "pagoview.h"
 #include "pedidoclienteview.h"
 #include "pedidoproveedorview.h"
 #include "pedidosclientelist.h"
@@ -301,28 +299,6 @@ void Company::createMainWindows ( Splash *splash )
         m_bulmafact->actionNueva_Factura_Proveedor->setEnabled ( TRUE );
     } // end if
 
-    /// pb = 96%
-/*    
-    _depura ( "Company::createMainWindows inicializamos m_pagosList", 1 );
-    splash->mensaje ( QApplication::translate ( "Company", "Inicializando listado de pagos" ) );
-    splash->setBarraProgreso ( 96 );
-    m_progressbar->setValue ( 96 );
-*/
-
-    /// Comprobamos que tengamos permisos para trabajar con 'Listado de pagos'.
-/*    
-    m_bulmafact->actionListado_de_Pagos->setEnabled ( FALSE );
-    m_bulmafact->actionNuevo_Pago->setEnabled ( FALSE );
-
-    if ( has_table_privilege ( "pago", "SELECT" ) ) {
-        m_pagosList = new PagosList ( this );
-        m_pWorkspace->addWindow ( m_pagosList );
-        m_pagosList->hide();
-        m_bulmafact->actionListado_de_Pagos->setEnabled ( TRUE );
-        m_bulmafact->actionNuevo_Pago->setEnabled ( TRUE );
-    } // end if
-*/
-
     /// Comprobamos que tengamos permisos para trabajar con 'Tipos de IVA'.
     m_bulmafact->actionTasaIVA->setEnabled ( FALSE );
     m_bulmafact->actionTipoIVA->setEnabled ( FALSE );
@@ -407,22 +383,6 @@ void Company::viewCobrosList()
     _depura ( "END Company::viewCobrosList", 0 );
 }
 
-
-/** Metodo para ver la ventana de PAgos.
-    Es invocado desde el menu de la aplicacion a traves de la clase BulmaFact.
-*/
-/**
-**/
-void Company::viewPagosList()
-{
-    _depura ( "Company::viewPagosList", 0 );
-/*
-    m_pagosList->show();
-    m_pagosList->parentWidget() ->raise();
-    m_pWorkspace->setActiveWindow ( m_pagosList );
-*/
-    _depura ( "END Company::viewPagosList", 0 );
-}
 
 
 /** Muestra la ventana de proveedores.
@@ -1059,24 +1019,6 @@ void Company::refreshCobrosCliente()
 }
 
 
-/** Metodo para refrescar la lista de pagos a proveedor.
-    Mediante este metodo es sencillo actualizar el listado de pagos a proveedor sin disponer
-    de un puntero a dicha ventana.
-*/
-/**
-**/
-void Company::refreshPagosProveedor()
-{
-    _depura ( "Company::refreshPagosProveedor", 0 );
-/*
-    if ( confpr->valor ( CONF_REFRESH_LIST ) == "TRUE" )
-        if ( m_pagosList != NULL )
-            m_pagosList->presentar();
-*/
-    _depura ( "END Company::refreshPagosProveedor", 0 );
-}
-
-
 /** Metodo para refrescar la lista de Pedidos de Clientes.
     Mediante este metodo es sencillo actualizar el listado de pedidos de clientes sin disponer
     de un puntero a dicha ventana.
@@ -1367,46 +1309,6 @@ void Company::s_newListConfiguracionView()
     _depura ( "END Company::s_newListConfiguracionView", 0 );
 }
 
-
-/** Crea una instancia de la clase PagoView
-    Es importante tener la creacion de instancias centralizada en esta clase para asegurar
-    Que se lanzan los plugins necesarios.
-*/
-/**
-\return
-**/
-void *Company::newPagoView()
-{
-    _depura ( "Company::newPagoView", 0 );
-/*
-    /// Lanzamos los plugins necesarios.
-    PagoView *bud;
-    if ( g_plugins->lanza ( "Company_newPagoView", this, ( void ** ) & bud ) )
-        return bud;
-    bud = new PagoView ( this, 0 );
-    _depura ( "END Company::newPagoView", 0 );
-    return bud;
-*/
-    return NULL;
-}
-
-
-/** Crea y muestra la ficha de PagoView.
-    Si solo se desea crear la ficha sin mostrarla debe usar el metodo newPedidoClienteView().
-*/
-/**
-**/
-void Company::s_newPagoView()
-{
-    _depura ( "Company::s_newPagoView", 0 );
-/*
-    PagoView *pag = newPagoView();
-    m_pWorkspace->addWindow ( pag );
-    pag->show();
-    pag->mui_fechapago->mui_textoFecha->setFocus ( Qt::OtherFocusReason );
-*/
-    _depura ( "END Company::s_newPagoView", 0 );
-}
 
 
 /** Crea una instancia de la clase TipoArticuloList

@@ -86,7 +86,6 @@ PagoView::PagoView ( Company *comp, QWidget *parent )
 PagoView::~PagoView()
 {
     _depura ( "PagoView::~PagoView", 0 );
-    ( ( Company * ) empresaBase() )->refreshPagosProveedor();
     _depura ( "END PagoView::~PagoView", 0 );
 }
 

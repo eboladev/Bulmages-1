@@ -45,7 +45,6 @@ class PedidosProveedorList;
 class AlbaranesProveedor;
 class CobrosList;
 class FacturasProveedorList;
-//class PagosList;
 class PresupuestoView;
 class FacturaView;
 class FacturaProveedorView;
@@ -94,8 +93,6 @@ private:
     CobrosList *m_cobrosList;
     /// Puntero a la ventan ade facturas de proveedor. Esta ventana se crea una vez al inicio del programa.
     FacturasProveedorList *m_facturasproveedorlist;
-    /// Puntero a la ventana de pagos. Esta ventana se crea una vez al inicio del programa.
-//    PagosList *m_pagosList;
 
 public:
     Company ( Bulmafact *bges );
@@ -118,7 +115,6 @@ public:
     void refreshArticles();
     void refreshPresupuestos();
     void refreshCobrosCliente();
-    void refreshPagosProveedor();
     void refreshPedidosCliente();
     void refreshPedidosProveedor();
     void refreshClientDelivNotes();
@@ -148,7 +144,6 @@ public:
     void s_newFacturaCli();
     void s_newArticulo();
     void s_newCobroView();
-    void s_newPagoView();
     void s_newClienteView();
     void s_newProveedorView();
     void s_newListConfiguracionView();
