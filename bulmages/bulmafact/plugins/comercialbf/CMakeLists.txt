@@ -3,7 +3,7 @@
 ###########################################
 #comercialbf
 
-set (plugin comercialbf)
+set (plugin plugincomercialbf)
 set (docs README.es)
 
 file(GLOB plugin_SRC *.c *.cpp *.cxx)
