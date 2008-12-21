@@ -671,6 +671,12 @@ cursor2 *postgresiface2::cargacursor ( QString query, int numParams,
     cursor2 *cur = NULL;
     /// Iniciamos la depuracion.
     try {
+
+	if (query.contains("LIMIT", Qt::CaseInsensitive) ) {
+		int pos = query.lastIndexOf("LIMIT");
+		query = query.left(pos);
+	}// end if
+
         //digitsInt >= longitud expressió decimal d'un int positiu qualsevol 
          int midaParams = numParams + (limit !=0 ? 1:0) + (offset !=0 ? 1 : 0);
          QString newParamValues[midaParams];
@@ -683,7 +689,7 @@ cursor2 *postgresiface2::cargacursor ( QString query, int numParams,
              newParamValues[numParams] =  QString::number ( limit);
              query += " LIMIT $" + QString::number ( ++numParams ) +"::int4";
          };
-         if ( offset != 0 ) {
+         if ( offset != 0 && !query.contains("OFFSET", Qt::CaseInsensitive)) {
              newParamValues[numParams] =  QString::number ( offset ); 
              query += " OFFSET $" + QString::number ( ++numParams ) + "::int4";
          };

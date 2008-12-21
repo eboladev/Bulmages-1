@@ -225,3 +225,4 @@ void ListRecogidas::cargar ( QString idarticulo )
     SubForm2Bf::cargar ( SQLQuery );
     _depura ( "END ListRecogidas::cargar\n", 0 );
 }
+

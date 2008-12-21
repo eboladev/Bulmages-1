@@ -964,6 +964,11 @@ void Empresa::canaldefecto()
 void Empresa::guardaConf()
 {
     _depura ( "Empresa::guardaConf", 0 );
+
+	/// Si iniciamos una empresa de contabilidad sin aplicacion entonces no
+	/// guardamos la configuracion.
+	if (!m_bulmacont) return;
+
     QFile file ( confpr->valor ( CONF_DIR_USER ) + "bulmacont_" + nameDB() + ".cfn" );
     /// Guardado del orden y de configuraciones varias.
     if ( file.open ( QIODevice::WriteOnly ) ) {
@@ -1006,6 +1011,12 @@ void Empresa::guardaConf()
 void Empresa::cargaConf()
 {
     _depura ( "Empresa::cargaConf", 0 );
+
+
+	/// Si iniciamos una empresa de contabilidad sin aplicacion entonces no
+	/// guardamos la configuracion.
+	if (!m_bulmacont) return;
+
     QFile file ( confpr->valor ( CONF_DIR_USER ) + "bulmacont_" + nameDB() + ".cfn" );
     QDomDocument doc ( "mydocument" );
     if ( !file.open ( QIODevice::ReadOnly ) )

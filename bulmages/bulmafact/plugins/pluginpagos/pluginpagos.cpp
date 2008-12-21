@@ -101,7 +101,7 @@ void mypluginpag::inicializa ( Bulmafact *bges )
 	npago->setStatusTip ( tr ( "Nuevo Pago a Proveedor" ) );
 	npago->setWhatsThis ( tr ( "Nuevo Pago a Proveedor" ) );
 	bges->menuCompras->addAction ( npago );
-	bges->Listados->addAction (npago);
+	bges->Fichas->addAction (npago);
 	connect ( npago, SIGNAL ( activated() ), this, SLOT ( elslot1() ) );
 
 

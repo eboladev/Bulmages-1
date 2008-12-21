@@ -57,7 +57,6 @@
     <addaction name="actionNueva_Factura_Proveedor" />
     <addaction name="actionListado_Facturas_Proveedor" />
     <addaction name="separator" />
-    <addaction name="actionNuevo_Pago" />
    </widget>
    <widget class="QMenu" name="menuVentas" >
     <property name="title" >
@@ -160,7 +159,7 @@
     <rect>
      <x>0</x>
      <y>34</y>
-     <width>454</width>
+     <width>494</width>
      <height>47</height>
     </rect>
    </property>
@@ -217,9 +216,9 @@
   <widget class="QToolBar" name="Fichas" >
    <property name="geometry" >
     <rect>
-     <x>454</x>
+     <x>494</x>
      <y>34</y>
-     <width>537</width>
+     <width>497</width>
      <height>47</height>
     </rect>
    </property>
@@ -277,7 +276,6 @@
    <addaction name="actionNuevo_Pedido_Proveedor" />
    <addaction name="actionNuevo_Albaran_Proveedor" />
    <addaction name="actionNueva_Factura_Proveedor" />
-   <addaction name="actionNuevo_Pago" />
    <addaction name="separator" />
    <addaction name="actionNuevo_Presupuesto" />
    <addaction name="actionNuevo_Pedido_Cliente" />
@@ -552,15 +550,6 @@
   <action name="actionAcerta_de" >
    <property name="text" >
     <string>&amp;Acerca de BulmaFact</string>
-   </property>
-  </action>
-  <action name="actionNuevo_Pago" >
-   <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/Images/pay.svg</normaloff>:/Images/pay.svg</iconset>
-   </property>
-   <property name="text" >
-    <string>Nuevo pa&amp;go a proveedor...</string>
    </property>
   </action>
   <action name="actionNuevo_Cobro" >

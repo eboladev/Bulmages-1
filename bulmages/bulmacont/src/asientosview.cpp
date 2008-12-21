@@ -167,7 +167,11 @@ void AsientosView::presentar()
         if ( pand ) {
             textnombreasiento = " AND ";
         } // end if
-        textnombreasiento += " asiento.idasiento in (SELECT idasiento FROM apunte WHERE lower(conceptocontable) LIKE '%" + nombreasiento + "%' )";
+	textnombreasiento += "(";
+        textnombreasiento += " asiento.idasiento in (SELECT idasiento FROM borrador WHERE lower(conceptocontable) LIKE '%" + nombreasiento + "%' )";
+	textnombreasiento += " OR lower(asiento.descripcion) LIKE '%"+ nombreasiento +"%' ";
+	textnombreasiento += " OR lower(asiento.comentariosasiento) LIKE '%"+ nombreasiento +"%' ";
+        textnombreasiento += ")";
         pand = 1;
     } // end if
 

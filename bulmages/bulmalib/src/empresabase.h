@@ -51,6 +51,7 @@ public:
     virtual void init ( QString bd, QString tipo );
     QString searchCompany ( QString );
     void setListVentanas ( ListVentanas *doc );
+    ListVentanas *listVentanas();
     QWorkspace2 *pWorkspace();
     void setWorkspace ( QWorkspace2 *qw );
     void setProgressBar ( QProgressBar *pb );

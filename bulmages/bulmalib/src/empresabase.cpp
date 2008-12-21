@@ -51,6 +51,20 @@ QWorkspace2 *EmpresaBase::pWorkspace()
 
 ///
 /**
+\return
+**/
+ListVentanas *EmpresaBase::listVentanas()
+{
+    _depura ( "EmpresaBase::listVentanas", 0 );
+    _depura ( "END EmpresaBase::listVentanas", 0 );
+    return m_listventanas;
+}
+
+
+
+
+///
+/**
 \param qw
 **/
 void EmpresaBase::setWorkspace ( QWorkspace2 *qw )
