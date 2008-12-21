@@ -35,7 +35,6 @@
 #include "facturaview.h"
 #include "funcaux.h"
 #include "listlinalbaranproveedorview.h"
-//#include "pagoview.h"
 #include "pedidoproveedorview.h"
 #include "postgresiface2.h"
 #include "presupuestolist.h"
@@ -187,29 +186,6 @@ void AlbaranProveedorView::pintatotales ( Fixed iva, Fixed base, Fixed total, Fi
     _depura ( "END AlbaranProveedorView::pintatotales", 0 );
 }
 
-
-/** SLOT que responde a la creacion de un pago.
-    Crea una instancia de la ventana de pagos y la rellena con los datos
-    del AlbaranProveedor y lo muestra.
-*/
-///  \TODO: Actualmente no esta comprobando que el pago ya exista.
-/**
-**/
-void AlbaranProveedorView::on_mui_pagar_clicked()
-{
-    _depura ( "AlbaranProveedorView::on_mui_pagar_clicked", 0 );
-/*
-    PagoView *bud = empresaBase() ->newPagoView();
-    empresaBase() ->m_pWorkspace->addWindow ( bud );
-    bud->setDBvalue ( "idproveedor", DBvalue ( "idproveedor" ) );
-    bud->setDBvalue ( "cantpago", m_totalalbaranp->text() );
-    bud->setDBvalue ( "refpago", DBvalue ( "refalbaranp" ) );
-    bud->setDBvalue ( "comentpago", DBvalue ( "descalbaranp" ) );
-    bud->pintar();
-    bud->show();
-*/
-    _depura ( "END AlbaranProveedorView::on_mui_pagar_clicked", 0 );
-}
 
 /** SLOT que responde a la solicitud de ver todos los pedidos de proveedor
     relacionados con el albaran abierto.

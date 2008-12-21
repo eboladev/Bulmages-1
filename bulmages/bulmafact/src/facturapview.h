@@ -55,8 +55,6 @@ public:
     virtual void imprimirFacturaProveedor();
 
 public slots:
-    virtual void on_mui_pagar_clicked();
-    virtual void s_nuevoPago();
     virtual void on_m_descuentos_editFinish ( int, int );
     virtual void on_subform2_editFinish ( int, int );
     virtual void on_mui_veralbaranes_clicked();

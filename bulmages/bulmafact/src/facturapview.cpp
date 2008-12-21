@@ -111,18 +111,6 @@ FacturaProveedorView::~FacturaProveedorView()
 
 }
 
-
-///
-/**
-**/
-void FacturaProveedorView::on_mui_pagar_clicked()
-{
-    _depura ( "FacturaProveedorView::on_mui_pagar_clicked", 0 );
-    s_nuevoPago();
-    _depura ( "END FacturaProveedorView::on_mui_pagar_clicked", 0 );
-}
-
-
 ///
 /**
 **/
@@ -183,29 +171,6 @@ void FacturaProveedorView::pintatotales ( Fixed iva, Fixed base, Fixed total, Fi
     _depura ( "END PresupuestoView::pintatotales", 0 );
 }
 
-
-/** Metodo que responde al hacer un nuevo pago desde la factura.
-    Crea una instancia de \ref PagoView y la lanza poniendole los parametros
-    del pago iguales a los de la factura de Proveedor.
-*/
-/// \TODO: Deberia ser directamente on_mui_pagar_clicked()
-/**
-**/
-void FacturaProveedorView::s_nuevoPago()
-{
-    _depura ( "FacturaProveedorView::s_nuevoPago", 0 );
-/*
-    PagoView *bud = empresaBase() ->newPagoView();
-    empresaBase() ->m_pWorkspace->addWindow ( bud );
-    bud->setDBvalue ( "idproveedor", DBvalue ( "idproveedor" ) );
-    bud->setDBvalue ( "cantpago", m_totalfacturap->text() );
-    bud->setDBvalue ( "refpago", DBvalue ( "reffacturap" ) );
-    bud->setDBvalue ( "comentpago", DBvalue ( "descfacturap" ) );
-    bud->pintar();
-    bud->show();
-*/
-    _depura ( "END FacturaProveedorView::s_nuevoPago", 0 );
-}
 
 
 /** SLOT que responde  a la pulsacion del boton ver albaranes.
