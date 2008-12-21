@@ -35,7 +35,7 @@
 #include "facturaview.h"
 #include "funcaux.h"
 #include "listlinalbaranproveedorview.h"
-#include "pagoview.h"
+//#include "pagoview.h"
 #include "pedidoproveedorview.h"
 #include "postgresiface2.h"
 #include "presupuestolist.h"
@@ -198,6 +198,7 @@ void AlbaranProveedorView::pintatotales ( Fixed iva, Fixed base, Fixed total, Fi
 void AlbaranProveedorView::on_mui_pagar_clicked()
 {
     _depura ( "AlbaranProveedorView::on_mui_pagar_clicked", 0 );
+/*
     PagoView *bud = empresaBase() ->newPagoView();
     empresaBase() ->m_pWorkspace->addWindow ( bud );
     bud->setDBvalue ( "idproveedor", DBvalue ( "idproveedor" ) );
@@ -206,6 +207,7 @@ void AlbaranProveedorView::on_mui_pagar_clicked()
     bud->setDBvalue ( "comentpago", DBvalue ( "descalbaranp" ) );
     bud->pintar();
     bud->show();
+*/
     _depura ( "END AlbaranProveedorView::on_mui_pagar_clicked", 0 );
 }
 

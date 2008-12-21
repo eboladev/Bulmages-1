@@ -57,6 +57,7 @@ public:
     QWorkspace2 *workspace();
     Company *getcompany();
     void createMainWindows ( Splash * );
+    QProgressBar *m_pb;
 
 public slots:
     virtual void closeEvent ( QCloseEvent * );

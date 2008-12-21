@@ -27,7 +27,7 @@
 #include "albaranclienteview.h"
 #include "facturaview.h"
 #include "cobroview.h"
-#include "pagoview.h"
+//#include "pagoview.h"
 #include "pedidoproveedorview.h"
 #include "albaranproveedorview.h"
 #include "facturapview.h"
@@ -178,17 +178,6 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked()
     } // end while
     delete cur;
 
-    SQLQuery = "SELECT * FROM pago WHERE refpago = '" + mui_referencia->text() + "'";
-    cur = empresaBase() ->cargacursor ( SQLQuery );
-    while ( !cur->eof() ) {
-        PagoView * bud = ( ( Company * ) empresaBase() ) ->newPagoView();
-        empresaBase() ->m_pWorkspace->addWindow ( bud );
-        bud->cargar ( cur->valor ( "idpago" ) );
-        bud->show();
-        cur->siguienteregistro();
-    } // end while
-    delete cur;
-
     SQLQuery = "SELECT * FROM pedidoproveedor WHERE refpedidoproveedor = '" + mui_referencia->text() + "'";
     cur = empresaBase() ->cargacursor ( SQLQuery );
     while ( !cur->eof() ) {
@@ -223,7 +212,9 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked()
     } // end while
     delete cur;
 
-    _depura ( "END BusquedddaReferencia::on_mui_abrirtodo_clicked", 0 );
+    g_plugins->lanza("BusquedaReferencia_on_mui_abrirtodo_clicked_Post", this);
+
+    _depura ( "END BusquedaReferencia::on_mui_abrirtodo_clicked", 0 );
 }
 
 

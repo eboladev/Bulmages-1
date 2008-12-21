@@ -66,9 +66,9 @@ ProveedorView::ProveedorView ( Company *comp, QWidget *parent )
         setupUi ( this );
 
         /// Deshabilitamos los tabs que aun no se usan.
-        masdf->setTabEnabled ( 5, FALSE );
-        masdf->setTabEnabled ( 6, FALSE );
-        masdf->setTabEnabled ( 7, FALSE );
+        mui_tab->setTabEnabled ( 5, FALSE );
+        mui_tab->setTabEnabled ( 6, FALSE );
+        mui_tab->setTabEnabled ( 7, FALSE );
 
         /// Cargamos los documentos relacionados con el proveedor y dejamos presentable.
         m_listpedidosprov->setEmpresaBase ( empresaBase() );
@@ -80,9 +80,6 @@ ProveedorView::ProveedorView ( Company *comp, QWidget *parent )
         m_listfacturasprov->setEmpresaBase ( empresaBase() );
         m_listfacturasprov->hideBusqueda();
 
-        m_listpagosprov->setEmpresaBase ( empresaBase() );
-        m_listpagosprov->hideBusqueda();
-
         /// Cargamos algunos valores por defecto.
         mui_idforma_pago->setEmpresaBase ( empresaBase() );
         mui_idforma_pago->setidforma_pago ( "0" );
@@ -93,6 +90,9 @@ ProveedorView::ProveedorView ( Company *comp, QWidget *parent )
 
         meteWindow ( windowTitle(), this, FALSE );
         dialogChanges_cargaInicial();
+
+        /// Disparamos los plugins.
+        g_plugins->lanza ( "ProveedorView_ProveedorView_Post", this );
     } catch ( ... ) {
         mensajeInfo ( tr ( "Error al crear el proveedor" ), this );
     } // end try
@@ -118,11 +118,11 @@ ProveedorView::~ProveedorView()
 **/
 void ProveedorView::on_mui_cifproveedor_lostFocus()
 {
-    _depura ( "ClienteView::on_mui_cifproveedor_lostFocus", 0 );
+    _depura ( "ProveedorView::on_mui_cifproveedor_lostFocus", 0 );
 	if (!validarCIFNIF(mui_cifproveedor->text())) {
 		mensajeInfo("Error en el CIF del proveedor");
 	} // end if
-    _depura ( "END ClienteView::on_mui_cifproveedor_lostFocus", 0 );
+    _depura ( "END ProveedorView::on_mui_cifproveedor_lostFocus", 0 );
 }
 
 
@@ -149,9 +149,8 @@ int ProveedorView::cargarPost ( QString idprov )
     m_listfacturasprov->setidproveedor ( DBvalue ( "idproveedor" ) );
     m_listfacturasprov->presentar();
 
-    m_listpagosprov->setidproveedor ( DBvalue ( "idproveedor" ) );
-    m_listpagosprov->presentar();
-
+    /// Lanzamos los plugins de carga
+    g_plugins->lanza("ProveedorView_cargarPost_Post", this);
     _depura ( "END ProveedorView::cargar", 0 );
     return 0;
 }

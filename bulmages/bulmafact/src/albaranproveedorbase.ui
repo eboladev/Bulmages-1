@@ -6,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>750</width>
-    <height>550</height>
+    <height>557</height>
    </rect>
   </property>
   <property name="sizePolicy" >
@@ -254,47 +254,6 @@
           <property name="icon" >
            <iconset resource="../../bulmages.qrc" >
             <normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_facturas.48x48.png</normaloff>:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_facturas.48x48.png</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="mui_pagar" >
-          <property name="sizePolicy" >
-           <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Registrar pago a proveedor</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Registrar pago a proveedor</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
-            <normaloff>:/Images/pay.svg</normaloff>:/Images/pay.svg</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -623,6 +582,14 @@
       <number>0</number>
      </property>
      <widget class="QWidget" name="tab1" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>736</width>
+        <height>204</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>&amp;Detalle</string>
       </attribute>
@@ -639,6 +606,14 @@
       </layout>
      </widget>
      <widget class="QWidget" name="Tab2" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>512</width>
+        <height>240</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>Desc&amp;uentos</string>
       </attribute>
@@ -655,6 +630,14 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tab3" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>512</width>
+        <height>240</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>&amp;Comentarios</string>
       </attribute>

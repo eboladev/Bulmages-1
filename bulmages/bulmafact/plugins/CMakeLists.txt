@@ -37,6 +37,8 @@ add_subdirectory(plugindatosbase)
 
 add_subdirectory(pluginivainc)
 
+add_subdirectory(pluginbulmacont)
+
 add_subdirectory(pluginsyncbulmacont)
 add_subdirectory(plugininformeclientessxc)
 add_subdirectory(pluginetiquetado)
@@ -45,6 +47,9 @@ add_subdirectory(pluginclientprov)
 add_subdirectory(pluginopenref)
 
 add_subdirectory(plugincorrectorbf)
+
+
+add_subdirectory(pluginpagos)
 
 #pluginqwebcam depende de opencv y esta en desarrollo
 #add_subdirectory(pluginqwebcam)

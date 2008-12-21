@@ -50,7 +50,7 @@
         <string/>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../bulmages.qrc" >:/Images/pay.svg</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/Images/pay.svg</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>
@@ -108,7 +108,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
+           <iconset resource="../../../bulmages.qrc" >
             <normaloff>:/Images/edit-save.svg</normaloff>:/Images/edit-save.svg</iconset>
           </property>
           <property name="iconSize" >
@@ -470,7 +470,7 @@
   <customwidget>
    <class>BusquedaFecha</class>
    <extends>QLineEdit</extends>
-   <header>../../bulmalib/src/busquedafecha.h</header>
+   <header>../../../bulmalib/src/busquedafecha.h</header>
   </customwidget>
   <customwidget>
    <class>BusquedaReferencia</class>
@@ -493,7 +493,7 @@
   <tabstop>mui_comentpago</tabstop>
  </tabstops>
  <resources>
-  <include location="../../bulmages.qrc" />
+  <include location="../../../bulmages.qrc" />
  </resources>
  <connections>
   <connection>

@@ -49,8 +49,8 @@
 #include "listalmacenview.h"
 #include "listconfiguracionview.h"
 #include "listseriefacturaview.h"
-#include "pagoslist.h"
-#include "pagoview.h"
+//#include "pagoslist.h"
+//#include "pagoview.h"
 #include "pedidoclienteview.h"
 #include "pedidoproveedorview.h"
 #include "pedidosclientelist.h"
@@ -302,12 +302,15 @@ void Company::createMainWindows ( Splash *splash )
     } // end if
 
     /// pb = 96%
+/*    
     _depura ( "Company::createMainWindows inicializamos m_pagosList", 1 );
     splash->mensaje ( QApplication::translate ( "Company", "Inicializando listado de pagos" ) );
     splash->setBarraProgreso ( 96 );
     m_progressbar->setValue ( 96 );
+*/
 
     /// Comprobamos que tengamos permisos para trabajar con 'Listado de pagos'.
+/*    
     m_bulmafact->actionListado_de_Pagos->setEnabled ( FALSE );
     m_bulmafact->actionNuevo_Pago->setEnabled ( FALSE );
 
@@ -318,6 +321,7 @@ void Company::createMainWindows ( Splash *splash )
         m_bulmafact->actionListado_de_Pagos->setEnabled ( TRUE );
         m_bulmafact->actionNuevo_Pago->setEnabled ( TRUE );
     } // end if
+*/
 
     /// Comprobamos que tengamos permisos para trabajar con 'Tipos de IVA'.
     m_bulmafact->actionTasaIVA->setEnabled ( FALSE );
@@ -412,9 +416,11 @@ void Company::viewCobrosList()
 void Company::viewPagosList()
 {
     _depura ( "Company::viewPagosList", 0 );
+/*
     m_pagosList->show();
     m_pagosList->parentWidget() ->raise();
     m_pWorkspace->setActiveWindow ( m_pagosList );
+*/
     _depura ( "END Company::viewPagosList", 0 );
 }
 
@@ -1062,9 +1068,11 @@ void Company::refreshCobrosCliente()
 void Company::refreshPagosProveedor()
 {
     _depura ( "Company::refreshPagosProveedor", 0 );
+/*
     if ( confpr->valor ( CONF_REFRESH_LIST ) == "TRUE" )
         if ( m_pagosList != NULL )
             m_pagosList->presentar();
+*/
     _depura ( "END Company::refreshPagosProveedor", 0 );
 }
 
@@ -1367,9 +1375,10 @@ void Company::s_newListConfiguracionView()
 /**
 \return
 **/
-PagoView *Company::newPagoView()
+void *Company::newPagoView()
 {
     _depura ( "Company::newPagoView", 0 );
+/*
     /// Lanzamos los plugins necesarios.
     PagoView *bud;
     if ( g_plugins->lanza ( "Company_newPagoView", this, ( void ** ) & bud ) )
@@ -1377,6 +1386,8 @@ PagoView *Company::newPagoView()
     bud = new PagoView ( this, 0 );
     _depura ( "END Company::newPagoView", 0 );
     return bud;
+*/
+    return NULL;
 }
 
 
@@ -1388,10 +1399,12 @@ PagoView *Company::newPagoView()
 void Company::s_newPagoView()
 {
     _depura ( "Company::s_newPagoView", 0 );
+/*
     PagoView *pag = newPagoView();
     m_pWorkspace->addWindow ( pag );
     pag->show();
     pag->mui_fechapago->mui_textoFecha->setFocus ( Qt::OtherFocusReason );
+*/
     _depura ( "END Company::s_newPagoView", 0 );
 }
 

@@ -144,7 +144,7 @@ void PagosList::editar ( int )
 {
     mdb_idpago = mui_list->DBvalue ( "idpago" );
     if ( modoEdicion() && mdb_idpago != "" ) {
-        PagoView * bud = ( ( Company * ) empresaBase() ) ->newPagoView();
+        PagoView *bud = new PagoView( ( Company * ) empresaBase(), 0 );
         if ( bud->cargar ( mdb_idpago ) ) {
             delete bud;
             return;
@@ -160,7 +160,7 @@ void PagosList::editar ( int )
 void PagosList::crear()
 {
     _depura ( "PagosList::crear", 0 );
-    PagoView *bud = ( ( Company * ) empresaBase() ) ->newPagoView();
+    PagoView *bud = new PagoView( ( Company * ) empresaBase(), 0 );
     empresaBase() ->m_pWorkspace->addWindow ( bud );
     bud->show();
     bud->setDBvalue ( "idproveedor", m_proveedor->idproveedor() );

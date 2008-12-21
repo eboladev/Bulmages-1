@@ -25,14 +25,23 @@
    <iconset resource="../../bulmages.qrc" >
     <normaloff>:/Bulmafact32x32/images/png/iconbulmafact.xpm</normaloff>:/Bulmafact32x32/images/png/iconbulmafact.xpm</iconset>
   </property>
-  <widget class="QWidget" name="centralwidget" />
+  <widget class="QWidget" name="centralwidget" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>81</y>
+     <width>991</width>
+     <height>461</height>
+    </rect>
+   </property>
+  </widget>
   <widget class="QMenuBar" name="menubar" >
    <property name="geometry" >
     <rect>
      <x>0</x>
      <y>0</y>
      <width>991</width>
-     <height>25</height>
+     <height>34</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuCompras" >
@@ -49,7 +58,6 @@
     <addaction name="actionListado_Facturas_Proveedor" />
     <addaction name="separator" />
     <addaction name="actionNuevo_Pago" />
-    <addaction name="actionListado_de_Pagos" />
    </widget>
    <widget class="QMenu" name="menuVentas" >
     <property name="title" >
@@ -137,8 +145,25 @@
    <addaction name="menuVentana" />
    <addaction name="menuAcerca_de" />
   </widget>
-  <widget class="QStatusBar" name="statusbar" />
+  <widget class="QStatusBar" name="statusbar" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>542</y>
+     <width>991</width>
+     <height>27</height>
+    </rect>
+   </property>
+  </widget>
   <widget class="QToolBar" name="Listados" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>34</y>
+     <width>454</width>
+     <height>47</height>
+    </rect>
+   </property>
    <property name="focusPolicy" >
     <enum>Qt::TabFocus</enum>
    </property>
@@ -179,7 +204,6 @@
    <addaction name="actionListado_Albaranes_Proveedor" />
    <addaction name="actionListado_Facturas_Proveedor" />
    <addaction name="separator" />
-   <addaction name="actionListado_de_Pagos" />
    <addaction name="actionListado_Presupuestos" />
    <addaction name="actionListado_Pedidos_Cliente" />
    <addaction name="actionListado_Albaranes_Cliente" />
@@ -191,6 +215,14 @@
    <addaction name="actionListado_Clientes" />
   </widget>
   <widget class="QToolBar" name="Fichas" >
+   <property name="geometry" >
+    <rect>
+     <x>454</x>
+     <y>34</y>
+     <width>537</width>
+     <height>47</height>
+    </rect>
+   </property>
    <property name="sizePolicy" >
     <sizepolicy vsizetype="Expanding" hsizetype="Minimum" >
      <horstretch>0</horstretch>
@@ -499,7 +531,7 @@
   </action>
   <action name="actionTrabajadores" >
    <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >
+    <iconset>
      <normaloff>:/Images/employee-list.svg</normaloff>:/Images/employee-list.svg</iconset>
    </property>
    <property name="text" >
@@ -520,15 +552,6 @@
   <action name="actionAcerta_de" >
    <property name="text" >
     <string>&amp;Acerca de BulmaFact</string>
-   </property>
-  </action>
-  <action name="actionListado_de_Pagos" >
-   <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >
-     <normaloff>:/Images/pay-list.svg</normaloff>:/Images/pay-list.svg</iconset>
-   </property>
-   <property name="text" >
-    <string>Pa&amp;gos a proveedores</string>
    </property>
   </action>
   <action name="actionNuevo_Pago" >

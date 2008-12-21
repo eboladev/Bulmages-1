@@ -32,7 +32,7 @@
 #include "company.h"
 #include "listlinfacturapview.h"
 #include "providerslist.h"
-#include "pagoview.h"
+//#include "pagoview.h"
 #include "funcaux.h"
 #include "albaranproveedorview.h"
 
@@ -65,6 +65,12 @@ FacturaProveedorView::FacturaProveedorView ( Company *comp, QWidget *parent )
         addDBCampo ( "descfacturap", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "FacturaProveedor", "Descripcion facturap" ) );
         addDBCampo ( "idtrabajador", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "FacturaProveedor", "Id trabajador" ) );
         addDBCampo ( "idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "FacturaProveedor", "Id forma de pago" ) );
+
+        /// Disparamos los plugins.
+        int res = g_plugins->lanza ( "FacturaProveedorView_FacturaProveedorView", this );
+        if ( res != 0 ) {
+            return;
+        } // end if
 
         subform2->setEmpresaBase ( comp );
         m_descuentos->setEmpresaBase ( comp );
@@ -188,6 +194,7 @@ void FacturaProveedorView::pintatotales ( Fixed iva, Fixed base, Fixed total, Fi
 void FacturaProveedorView::s_nuevoPago()
 {
     _depura ( "FacturaProveedorView::s_nuevoPago", 0 );
+/*
     PagoView *bud = empresaBase() ->newPagoView();
     empresaBase() ->m_pWorkspace->addWindow ( bud );
     bud->setDBvalue ( "idproveedor", DBvalue ( "idproveedor" ) );
@@ -196,6 +203,7 @@ void FacturaProveedorView::s_nuevoPago()
     bud->setDBvalue ( "comentpago", DBvalue ( "descfacturap" ) );
     bud->pintar();
     bud->show();
+*/
     _depura ( "END FacturaProveedorView::s_nuevoPago", 0 );
 }
 

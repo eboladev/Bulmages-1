@@ -34,7 +34,7 @@
 #include "providerslist.h"
 #include "presupuestoview.h"
 #include "presupuestolist.h"
-#include "pagoview.h"
+//#include "pagoview.h"
 #include "albaranproveedorview.h"
 #include "funcaux.h"
 
@@ -68,6 +68,12 @@ PedidoProveedorView::PedidoProveedorView ( Company *comp, QWidget *parent )
         addDBCampo ( "idtrabajador", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate ( "PedidoProveedor", "Id trabajador" ) );
         addDBCampo ( "contactpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "PedidoProveedor", "Persona de contacto proveedor" ) );
         addDBCampo ( "telpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate ( "PedidoProveedor", "Telefono proveedor" ) );
+
+        /// Disparamos los plugins.
+        int res = g_plugins->lanza ( "PedidoProveedorView_PedidoProveedorView", this );
+        if ( res != 0 ) {
+            return;
+        } // end if
 
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
         mui_lineasDetalle->setEmpresaBase ( comp );
@@ -134,6 +140,7 @@ void PedidoProveedorView::pintatotales ( Fixed iva, Fixed base, Fixed total, Fix
 void PedidoProveedorView::on_mui_pagar_clicked()
 {
     _depura ( "PedidoProveedorView::on_mui_pagar_clicked", 0 );
+/*
     PagoView *bud = empresaBase() ->newPagoView();
     empresaBase() ->m_pWorkspace->addWindow ( bud );
     bud->setDBvalue ( "idproveedor", DBvalue ( "idproveedor" ) );
@@ -142,6 +149,7 @@ void PedidoProveedorView::on_mui_pagar_clicked()
     bud->setDBvalue ( "comentpago", DBvalue ( "descpedidoproveedor" ) );
     bud->pintar();
     bud->show();
+*/
     _depura ( "END PedidoProveedorView::on_mui_pagar_clicked", 0 );
 }
 

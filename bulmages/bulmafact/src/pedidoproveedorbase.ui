@@ -85,12 +85,9 @@
        <property name="frameShadow" >
         <enum>QFrame::Raised</enum>
        </property>
-       <layout class="QHBoxLayout" >
-        <property name="spacing" >
-         <number>5</number>
-        </property>
+       <layout class="QHBoxLayout" name="horizontalLayout" >
         <property name="margin" >
-         <number>5</number>
+         <number>2</number>
         </property>
         <item>
          <widget class="QToolButton" name="mui_guardar" >
@@ -261,40 +258,21 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_pagar" >
-          <property name="enabled" >
-           <bool>true</bool>
+         <widget class="QFrame" name="mui_plugbotones" >
+          <property name="sizePolicy" >
+           <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
+          <property name="frameShape" >
+           <enum>QFrame::NoFrame</enum>
           </property>
-          <property name="maximumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
+          <property name="frameShadow" >
+           <enum>QFrame::Plain</enum>
           </property>
-          <property name="toolTip" >
-           <string>Registrar pago a proveedor</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Registrar pago a proveedor</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >
-            <normaloff>:/Images/pay.svg</normaloff>:/Images/pay.svg</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
+          <property name="lineWidth" >
+           <number>0</number>
           </property>
          </widget>
         </item>
@@ -706,6 +684,14 @@
       <number>0</number>
      </property>
      <widget class="QWidget" name="tab1" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>736</width>
+        <height>110</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>&amp;Detalle</string>
       </attribute>
@@ -726,6 +712,14 @@
       </layout>
      </widget>
      <widget class="QWidget" name="Tab2" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>736</width>
+        <height>106</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>Descuen&amp;tos</string>
       </attribute>
@@ -746,6 +740,14 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tab3" >
+      <property name="geometry" >
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>736</width>
+        <height>106</height>
+       </rect>
+      </property>
       <attribute name="title" >
        <string>Comentario&amp;s</string>
       </attribute>
@@ -1319,19 +1321,9 @@
  <layoutdefault spacing="2" margin="2" />
  <customwidgets>
   <customwidget>
-   <class>ListLinPedidoProveedorView</class>
-   <extends>QWidget</extends>
-   <header>listlinpedidoproveedorview.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaReferencia</class>
    <extends>QLineEdit</extends>
    <header>busquedareferencia.h</header>
-  </customwidget>
-  <customwidget>
-   <class>ListDescuentoPedidoProveedorView</class>
-   <extends>QWidget</extends>
-   <header>listdescpedidoproveedorview.h</header>
   </customwidget>
   <customwidget>
    <class>BusquedaProveedor</class>
@@ -1339,9 +1331,9 @@
    <header>busquedaproveedor.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaAlmacen</class>
-   <extends>QComboBox</extends>
-   <header>busquedaalmacen.h</header>
+   <class>BusquedaFecha</class>
+   <extends>QLineEdit</extends>
+   <header>busquedafecha.h</header>
   </customwidget>
   <customwidget>
    <class>BusquedaFormaPago</class>
@@ -1349,14 +1341,24 @@
    <header>busquedaformapago.h</header>
   </customwidget>
   <customwidget>
+   <class>BusquedaAlmacen</class>
+   <extends>QComboBox</extends>
+   <header>busquedaalmacen.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ListLinPedidoProveedorView</class>
+   <extends>QWidget</extends>
+   <header>listlinpedidoproveedorview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ListDescuentoPedidoProveedorView</class>
+   <extends>QWidget</extends>
+   <header>listdescpedidoproveedorview.h</header>
+  </customwidget>
+  <customwidget>
    <class>BusquedaTrabajador</class>
    <extends>QComboBox</extends>
    <header>busquedatrabajador.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaFecha</class>
-   <extends>QLineEdit</extends>
-   <header>../../bulmalib/src/busquedafecha.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>
@@ -1375,7 +1377,6 @@
   <tabstop>mui_borrar</tabstop>
   <tabstop>mui_imprimir</tabstop>
   <tabstop>mui_facturar</tabstop>
-  <tabstop>mui_pagar</tabstop>
   <tabstop>mui_aceptar</tabstop>
   <tabstop>mui_cancelar</tabstop>
  </tabstops>
