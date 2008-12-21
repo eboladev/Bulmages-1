@@ -88,6 +88,10 @@ ArticuloView::ArticuloView ( Company *comp, QWidget *parent )
 
         /// Inicializamos para que no se queden sin ser pintada.
         mui_idtipo_iva->setValorCampo ( "0" );
+        mui_pvparticulo->setText("0.0");
+        mui_volumenundarticulo->setText("0.00");
+        mui_pesoundarticulo->setText("0.0");
+	mui_abrevarticulo->setMaxLength(30);
 
         dialogChanges_setQObjectExcluido ( m_componentes );
         dialogChanges_setQObjectExcluido ( m_componentes->mui_list );
