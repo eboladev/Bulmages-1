@@ -11,13 +11,13 @@ SET log_min_messages TO WARNING;
 BEGIN;
 
 --
--- Estas primeras funciones cambiar� los tipos de columnas que est� como flotantes a NUMERIC.
+-- Estas primeras funciones cambiaran los tipos de columnas que está como flotantes a NUMERIC.
 -- Se trata de un parche que se desea aplicar para almacenar los tipos monetarios
 -- ya que actualmente se encuantran almacenados como 'doubles' y es preferible
 -- que se almacenen como tipo 'numeric'.
--- Todas devuelven como valor num�ico el nmero de filas influenciadas por el cambio
--- NOTA: Si alguien sabe como pasar por par�etro un nombre de tabla y campo a modificar se
--- har� mucho m� sencillito porque s�o habr� que implementar un funci� ya que siempre
+-- Todas devuelven como valor numérico el nmero de filas influenciadas por el cambio
+-- NOTA: Si alguien sabe como pasar por parámetro un nombre de tabla y campo a modificar se
+-- hará mucho más sencillito porque sólo habrá que implementar un función ya que siempre
 -- hay que hacer lo mismo.
 --
 
@@ -88,7 +88,7 @@ BEGIN
 END;
 ' LANGUAGE plpgsql;
 
-\echo "Agregamos el trigger que hace la actualizacion de precio de coste.
+\echo "Agregamos el trigger que hace la actualizacion de precio de coste"
 
 CREATE TRIGGER actpvparticulot
     BEFORE INSERT OR UPDATE ON articulo
