@@ -927,7 +927,16 @@ int DBRecord::generaRML ( const QString &arch )
     return 1;
 }
 
+QString DBRecord::nombrePlantilla(void) 
+{
+   return QString("ficha");
+}
 
+int DBRecord::generaRML ( void ) 
+{
+   return generaRML( nombrePlantilla() + ".rml" );
+}
+ 
 /// Realiza una impresion generica del registro a partir de la plantilla ficha.rml
 /**
 **/
@@ -936,9 +945,9 @@ void DBRecord::imprimir()
     /// Usa la plantilla ficha.rml para realizar la impresion.
     _depura ( "DBRecord::imprimir", 0 );
 
-    generaRML( "ficha.rml" );
-
-    invocaPDF ( "ficha" );
+    if (generaRML()) {
+        invocaPDF ( nombrePlantilla());
+    }
 
     _depura ( "END DBRecord::imprimir", 0 );
 }

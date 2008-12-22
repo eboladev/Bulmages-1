@@ -88,6 +88,29 @@ CobroView::~CobroView()
     _depura ( "END CobroView::~CobroView", 0 );
 }
 
+int CobroView::trataTags ( QString &buff ) {
+   // pillar los datos de cliente equivale a un <!--QUERY-->      implícito que contiene toda la plantilla.
+   QString params[1] = {DBvalue ( "idcliente" )};
+   buff = trataCursor(empresaBase() ->cargacursor ( 
+          "SELECT * FROM cliente WHERE idcliente = $1" , 
+           1, params ,NULL,0,0), buff);
+
+    // mantenemos compatibilidad con RML preexistentes 
+    // que usen estos nombres de variable
+    buff.replace ( "[referencia]" , xmlEscape(DBvalue ( "refcobro" )) );
+    buff.replace ( "[cantidad]" , xmlEscape(DBvalue ( "cantcobro" )) );
+    buff.replace ( "[comentario]" , xmlEscape(DBvalue ( "comentcobro" )) );
+    buff.replace ( "[fecha]" , xmlEscape(DBvalue ( "fechacobro" )) );
+
+    // admitimos sustituciones , QUERY, IFACE, SETVAR... y los
+    // nombres de campos de BD para cobros 
+    FichaBf::trataTags(buff);
+}
+
+QString CobroView::nombrePlantilla(void) 
+{
+   return QString("recibo");
+}
 
 void CobroView::imprimir()
 {
@@ -99,85 +122,13 @@ void CobroView::imprimir()
         /// El documento no se ha guardado y no se dispone en la base de datos de estos datos.
         mensajeInfo ( tr ( "Tiene que guardar el documento antes de poder imprimirlo." ), this );
         return;
-    } else {
-        SQLQuery = "SELECT * FROM cliente WHERE idcliente = " + DBvalue ( "idcliente" );
-    } // end if
-
+    } 
     /// Disparamos los plugins
     int res = g_plugins->lanza ( "CoboView_on_mui_imprimir_clicked", this );
     if ( res != 0 ) {
         return;
     } // end if
-    base basesimp;
-    base basesimpreqeq;
-    QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "recibo.rml";
-    QString archivod = confpr->valor ( CONF_DIR_USER ) + "recibo.rml";
-    QString archivologo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
-
-    /// Copiamos el archivo.
-#ifdef WINDOWS
-
-    archivo = "copy " + archivo + " " + archivod;
-#else
-
-    archivo = "cp " + archivo + " " + archivod;
-#endif
-
-    system ( archivo.toAscii().constData() );
-    /// Copiamos el logo
-#ifdef WINDOWS
-
-    archivologo = "copy " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
-#else
-
-    archivologo = "cp " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
-#endif
-
-    system ( archivologo.toAscii().constData() );
-    QFile file;
-    file.setFileName ( archivod );
-    file.open ( QIODevice::ReadOnly );
-    QTextStream stream ( &file );
-    QString buff = stream.readAll();
-    file.close();
-    QString fitxersortidatxt = "";
-
-    /// Linea de totales del Presupuesto.
-    cursor2 *cur = empresaBase() ->cargacursor ( SQLQuery );
-    if ( !cur->eof() ) {
-        buff.replace ( "[dircliente]", cur->valor ( "dircliente" ) );
-        buff.replace ( "[poblcliente]", cur->valor ( "poblcliente" ) );
-        buff.replace ( "[telcliente]", cur->valor ( "telcliente" ) );
-        buff.replace ( "[nomcliente]", cur->valor ( "nomcliente" ) );
-        buff.replace ( "[cifcliente]", cur->valor ( "cifcliente" ) );
-        buff.replace ( "[idcliente]", cur->valor ( "idcliente" ) );
-        buff.replace ( "[cpcliente]", cur->valor ( "cpcliente" ) );
-        buff.replace ( "[codcliente]", cur->valor ( "codcliente" ) );
-    } // end if
-    delete cur;
-
-    buff.replace ( "[referencia]" , DBvalue ( "refcobro" ) );
-    buff.replace ( "[cantidad]" , DBvalue ( "cantcobro" ) );
-    buff.replace ( "[comentario]" , DBvalue ( "comentcobro" ) );
-    buff.replace ( "[fecha]" , DBvalue ( "fechacobro" ) );
-    buff.replace ( "[story]", fitxersortidatxt );
-
-    Fixed basei ( "0.00" );
-
-    /// En la version para windows hay problemas con las imagenes,
-    /// por eso de momento lo dejamos asi.
-#ifndef WINDOWS
-    //   buff.replace("[detallearticulos]", detalleArticulos());
-#endif
-
-    if ( file.open ( QIODevice::WriteOnly ) ) {
-        QTextStream stream ( &file );
-        stream << buff;
-        file.close();
-    } // end if
-
-    _depura ( "FichaBf::imprimir", 0 );
-    invocaPDF ( "recibo" );
+    FichaBf::imprimir();
 
     _depura ( "END CobroView::imprimir", 0 );
 }

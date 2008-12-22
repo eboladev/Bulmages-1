@@ -1035,16 +1035,32 @@ QString Ficha::trataQuery ( const QString &query, const QString &datos )
 	substrVars(query1);
 
     /// Cargamos el query y lo recorremos
-    cursor2 *cur = empresaBase() ->cargacursor ( query1 );
-    if ( !cur ) return "";
+    result = trataCursor( empresaBase() ->cargacursor ( query1 ),
+                          datos);
+    _depura ( "END Ficha::trataQuery", 0 );
+    return result;
+
+}
+
+QString Ficha::trataCursor ( cursor2 *cur, const QString &datos )
+{
+    _depura ( "Ficha::trataCursor", 0 );
+    QString result = "";
+
+    if ( !cur )  
+    {
+        _depura ( "END Ficha::trataCursor", 0 , "cur==NULL");
+        return "";
+    };
     while ( !cur->eof() ) {
         QString salidatemp = datos;
 
         /// Buscamos cadenas perdidas adicionales que puedan quedar por poner.
-
+        //_depura("salidatemp =",0,salidatemp);
         QRegExp rx ( "\\[(\\w*)\\]" );
         int pos =  0;
         while ( ( pos = rx.indexIn ( salidatemp, pos ) ) != -1 ) {
+            //_depura("substituïm ",0,rx.cap(1));
             if ( cur->numcampo ( rx.cap ( 1 ) ) != -1 ) {
                 salidatemp.replace ( pos, rx.matchedLength(),
 				     xmlEscape ( cur->valor ( rx.cap ( 1 ) ) )  );
@@ -1058,7 +1074,7 @@ QString Ficha::trataQuery ( const QString &query, const QString &datos )
         cur->siguienteregistro();
     } // end while
     delete cur;
-    _depura ( "END Ficha::trataQuery", 0 );
+    _depura ( "END Ficha::trataCursor", 0 );
     return result;
 }
 
@@ -1087,7 +1103,10 @@ QString Ficha::trataExists ( const QString &query, const QString &datos )
 }
 
 
-
+int Ficha::generaRML ( void )
+{
+   DBRecord::generaRML();
+}
 ///
 /**
 **/

@@ -138,7 +138,8 @@ public:
     virtual QString story ( void );
     virtual int generaRML ( const QString & );
     virtual void substrConf( QString &buff) ;
-
+    virtual QString nombrePlantilla(void);
+    virtual int generaRML ( void );
 };
 
 #endif

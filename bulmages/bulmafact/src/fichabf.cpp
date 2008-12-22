@@ -270,27 +270,27 @@ void FichaBf::trataTagsBf( QString &buff ) {
         } // end if
 
         if ( exists ( "id" + m_tablename ) )
-            buff.replace ( "[id" + m_tablename + "]", DBvalue ( "id" + m_tablename ) );
+            buff.replace ( "[id" + m_tablename + "]", xmlEscape(DBvalue ( "id" + m_tablename )) );
         if ( exists ( "num" + m_tablename ) )
-            buff.replace ( "[num" + m_tablename + "]", DBvalue ( "num" + m_tablename ) );
+            buff.replace ( "[num" + m_tablename + "]", xmlEscape(DBvalue ( "num" + m_tablename )) );
         if ( exists ( "f" + m_tablename ) )
-            buff.replace ( "[f" + m_tablename + "]", DBvalue ( "f" + m_tablename ) );
+            buff.replace ( "[f" + m_tablename + "]", xmlEscape(DBvalue ( "f" + m_tablename )) );
         if ( exists ( "venc" + m_tablename ) )
-            buff.replace ( "[venc" + m_tablename + "]", DBvalue ( "venc" + m_tablename ) );
+            buff.replace ( "[venc" + m_tablename + "]", xmlEscape(DBvalue ( "venc" + m_tablename )) );
         if ( exists ( "contact" + m_tablename ) )
-            buff.replace ( "[contact" + m_tablename + "]", DBvalue ( "contact" + m_tablename ) );
+            buff.replace ( "[contact" + m_tablename + "]", xmlEscape(DBvalue ( "contact" + m_tablename )) );
         if ( exists ( "tel" + m_tablename ) )
-            buff.replace ( "[tel" + m_tablename + "]", DBvalue ( "tel" + m_tablename ) );
+            buff.replace ( "[tel" + m_tablename + "]", xmlEscape(DBvalue ( "tel" + m_tablename )) );
         if ( exists ( "coment" + m_tablename ) )
-            buff.replace ( "[coment" + m_tablename + "]", DBvalue ( "coment" + m_tablename ) );
+            buff.replace ( "[coment" + m_tablename + "]", xmlEscape(DBvalue ( "coment" + m_tablename )) );
         if ( exists ( "desc" + m_tablename ) )
-            buff.replace ( "[desc" + m_tablename + "]", DBvalue ( "desc" + m_tablename ) );
+            buff.replace ( "[desc" + m_tablename + "]", xmlEscape(DBvalue ( "desc" + m_tablename )) );
         if ( exists ( "ref" + m_tablename ) )
-            buff.replace ( "[ref" + m_tablename + "]", DBvalue ( "ref" + m_tablename ) );
+            buff.replace ( "[ref" + m_tablename + "]", xmlEscape(DBvalue ( "ref" + m_tablename )) );
         if ( exists ( "codigoserie_" + m_tablename ) )
-            buff.replace ( "[codigoserie_" + m_tablename + "]", DBvalue ( "codigoserie_" + m_tablename ) );
+            buff.replace ( "[codigoserie_" + m_tablename + "]", xmlEscape(DBvalue ( "codigoserie_" + m_tablename )) );
         if ( exists ( "fecha" + m_tablename ) )
-            buff.replace ( "[fecha" + m_tablename + "]", DBvalue ( "fecha" + m_tablename ) );
+            buff.replace ( "[fecha" + m_tablename + "]", xmlEscape(DBvalue ( "fecha" + m_tablename )) );
         /// Impresion de la tabla de contenidos.
         QString l;
 
@@ -377,8 +377,8 @@ void FichaBf::trataTagsBf( QString &buff ) {
                 pariva = it.value() * Fixed ( it.key() ) / 100;
             } // end if
             totiva = totiva + pariva;
-            tr1 += "    <td>" + QApplication::translate ( "Presupuesto", "I.V.A." ) + " " + XMLProtect ( it.key() ) + " %</td>\n";
-            tr2 += "    <td>" + l.sprintf ( " %s ", pariva.toQString().toAscii().constData() ) + "</td>\n";
+            tr1 += "    <td>" + xmlEscape(QApplication::translate ( "Presupuesto", "I.V.A." )) + " " + xmlEscape ( it.key() ) + " %</td>\n";
+            tr2 += "    <td>" + l.sprintf ( " %s ", xmlEscape(pariva.toQString()).toAscii().constData() ) + "</td>\n";
         } // end for
 
         /// Impresion de los Recargos de Equivalencia.
@@ -458,9 +458,9 @@ QString FichaBf::trataLineasDetalle ( const QString &det )
         for ( int i = 0; i < descp.size(); ++i ) {
             if ( descp[i] != "" ) {
                 if ( descp[i].startsWith ( " " ) ) {
-                    desc1 += "<pre>" + XMLProtect ( descp[i] ) + "</pre>\n";
+                    desc1 += "<pre>" + xmlEscape ( descp[i] ) + "</pre>\n";
                 } else {
-                    desc1 += "<para>" + XMLProtect ( descp[i] ) + "</para>\n";
+                    desc1 += "<para>" + xmlEscape ( descp[i] ) + "</para>\n";
                 } // end if
             } else {
                 desc1 += "<spacer length=\"0.1cm\"/>\n";
@@ -469,8 +469,8 @@ QString FichaBf::trataLineasDetalle ( const QString &det )
 
         salidatemp.replace ( "[desc" + m_listalineas->tableName() + "]", desc1 );
         salidatemp.replace ( "[cant" + m_listalineas->tableName() + "]", l.sprintf ( "%s", linea->DBvalue ( "cant" + m_listalineas->tableName() ).toAscii().constData() ) );
-        salidatemp.replace ( "[pvp" + m_listalineas->tableName() + "]", l.sprintf ( "%s", XMLProtect ( linea->DBvalue ( "pvp" + m_listalineas->tableName() ) ).toAscii().constData() ) );
-        salidatemp.replace ( "[descuento" + m_listalineas->tableName() + "]" , l.sprintf ( "%s", XMLProtect ( linea->DBvalue ( "descuento" + m_listalineas->tableName() ) ).toAscii().constData() ) );
+        salidatemp.replace ( "[pvp" + m_listalineas->tableName() + "]", l.sprintf ( "%s", xmlEscape ( linea->DBvalue ( "pvp" + m_listalineas->tableName() ) ).toAscii().constData() ) );
+        salidatemp.replace ( "[descuento" + m_listalineas->tableName() + "]" , l.sprintf ( "%s", xmlEscape ( linea->DBvalue ( "descuento" + m_listalineas->tableName() ) ).toAscii().constData() ) );
         salidatemp.replace ( "[total" + m_listalineas->tableName() + "]" , l.sprintf ( "%s", ( base - base * Fixed ( linea->DBvalue ( "descuento" + m_listalineas->tableName() ) ) / 100 ).toQString().toAscii().constData() ) );
 
         /// Buscamos cadenas perdidas adicionales que puedan quedar por poner.
@@ -478,7 +478,7 @@ QString FichaBf::trataLineasDetalle ( const QString &det )
         int pos =  0;
         while ( ( pos = rx.indexIn ( salidatemp, pos ) ) != -1 ) {
             if ( linea->exists ( rx.cap ( 1 ) ) ) {
-                salidatemp.replace ( pos, rx.matchedLength(), linea->DBvalue ( rx.cap ( 1 ) ) );
+                salidatemp.replace ( pos, rx.matchedLength(), xmlEscape(linea->DBvalue ( rx.cap ( 1 ) )) );
                 pos = 0;
             } else {
                 pos += rx.matchedLength();
@@ -529,8 +529,8 @@ QString FichaBf::trataLineasDescuento ( const QString &det )
         QString salidatemp = det;
         linea1 = m_listadescuentos->lineaat ( i );
         QString l;
-        salidatemp.replace ( "[concept" + m_listadescuentos->tableName() + "]", XMLProtect ( linea1->DBvalue ( "concept" + m_listadescuentos->tableName() ) ) );
-        salidatemp.replace ( "[proporciondesc" + m_listadescuentos->tableName() + "]", l.sprintf ( "%s", linea1->DBvalue ( "proporcion" + m_listadescuentos->tableName() ).toAscii().constData() ) );
+        salidatemp.replace ( "[concept" + m_listadescuentos->tableName() + "]", xmlEscape ( linea1->DBvalue ( "concept" + m_listadescuentos->tableName() ) ) );
+        salidatemp.replace ( "[proporciondesc" + m_listadescuentos->tableName() + "]", xmlEscape(l.sprintf ( "%s", linea1->DBvalue ( "proporcion" + m_listadescuentos->tableName() ).toAscii().constData() )) );
         salidatemp.replace ( "[totaldesc" + m_listadescuentos->tableName() + "]", l.sprintf ( "-%s", ( Fixed ( linea1->DBvalue ( "proporcion" + m_listadescuentos->tableName() ) ) * basei / 100 ).toQString().toAscii().constData() ) );
 
         /// Buscamos cadenas perdidas adicionales que puedan quedar por poner.
@@ -538,7 +538,7 @@ QString FichaBf::trataLineasDescuento ( const QString &det )
         int pos =  0;
         while ( ( pos = rx.indexIn ( salidatemp, pos ) ) != -1 ) {
             if ( linea1->exists ( rx.cap ( 1 ) ) ) {
-                salidatemp.replace ( pos, rx.matchedLength(), linea1->DBvalue ( rx.cap ( 1 ) ) );
+                salidatemp.replace ( pos, rx.matchedLength(), xmlEscape(linea1->DBvalue ( rx.cap ( 1 )) ) );
                 pos = 0;
             } else {
                 pos += rx.matchedLength();
@@ -765,18 +765,16 @@ QString FichaBf::trataTotales ( const QString &det, int bimporeq )
 }
 
 
-///
-/**
-**/
-int FichaBf::generaRML()
+
+int FichaBf::generaRML ( void )
 {
-    _depura ( "FichaBf::generaRML", 0 );
-    int resultado;
-    resultado = generaRML ( m_tablename + ".rml" );
-    _depura ( "END FichaBf::generaRML", 0 );
-    return resultado;
+   Ficha::generaRML();
 }
 
+QString FichaBf::nombrePlantilla(void) 
+{
+   return m_tablename;
+}
 
 ///
 /**
@@ -828,11 +826,7 @@ void FichaBf::imprimir()
             return;
         } // end if
 
-        /// Si devuelve 0 significa que el archivo RML se ha generado mal
-        /// el PDF correspondiente.
-        if ( generaRML() ) {
-            invocaPDF ( m_tablename );
-        } // end if
+        Ficha::imprimir(); 
 
         _depura ( "END FichaBf::imprimir", 0 );
 
